@@ -1,0 +1,13 @@
+:- module html_format.
+:- interface.
+:- import_module cord.
+:- import_module display.
+:- import_module profile.
+:- import_module query.
+:- type html == cord.cord(string).
+:- func escape_break_html_attr_string(display.attr_string) = string.
+:- func escape_break_html_string(string) = string.
+:- func escape_html_attr_string(display.attr_string) = string.
+:- func escape_html_string(string) = string.
+:- func html_to_string(html_format.html) = string.
+:- func htmlize_display(profile.deep, query.preferences, display.display) = html_format.html.

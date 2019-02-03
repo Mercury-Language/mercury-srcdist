@@ -1,0 +1,3 @@
+:- module (check_hlds.type_util).
+:- interface.
+:- type is_dummy_type.

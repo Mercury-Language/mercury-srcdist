@@ -1,0 +1,35 @@
+:- module query.
+:- interface.
+:- import_module bool.
+:- import_module io.
+:- import_module maybe.
+:- import_module measurement_units.
+:- import_module profile.
+:- type alloc_fields.
+:- type box_tables.
+:- type caller_groups.
+:- type callseqs_fields.
+:- type cmd.
+:- type colour_column_groups.
+:- type contour_exclusion.
+:- type cost_kind.
+:- type deep_query.
+:- type descendants_meaningful.
+:- type developer_mode.
+:- type display_limit.
+:- type fields.
+:- type inactive_items.
+:- type inactive_status.
+:- type include_descendants.
+:- type measurement_scope.
+:- type memory_fields.
+:- type module_qual.
+:- type order_criteria.
+:- type port_fields.
+:- type preferences.
+:- type preferences_indication.
+:- type resp.
+:- type summarize_ho_call_sites.
+:- type time_fields.
+:- type time_format.
+:- inst (deep_query_with_cmd) == bound(deep_query(bound(yes(ground)), ground, ground)).

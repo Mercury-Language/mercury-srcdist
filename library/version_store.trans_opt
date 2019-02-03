@@ -1,0 +1,31 @@
+:- module version_store.
+:- pragma termination_info((version_store.init) = (builtin.out), infinite, cannot_loop).
+:- pragma termination_info((version_store.new) = (builtin.out), infinite, cannot_loop).
+:- pragma termination_info(version_store.new_mutvar((builtin.in), (builtin.out), (builtin.in), (builtin.out)), infinite, can_loop).
+:- pragma termination_info(version_store.new_cyclic_mutvar((builtin.in), (builtin.out), (builtin.in), (builtin.out)), infinite, can_loop).
+:- pragma termination_info(version_store.copy_mutvar((builtin.in), (builtin.out), (builtin.in), (builtin.out)), infinite, can_loop).
+:- pragma termination_info(version_store.elem((builtin.in), (builtin.in)) = (builtin.out), infinite, can_loop).
+:- pragma termination_info(version_store.lookup((builtin.in), (builtin.in)) = (builtin.out), infinite, can_loop).
+:- pragma termination_info(version_store.get_mutvar((builtin.in), (builtin.out), (builtin.in), (builtin.out)), infinite, can_loop).
+:- pragma termination_info(version_store.'elem :='((builtin.in), (builtin.in), (builtin.in)) = (builtin.out), infinite, cannot_loop).
+:- pragma termination_info(version_store.set((builtin.in), (builtin.in), (builtin.in)) = (builtin.out), infinite, cannot_loop).
+:- pragma termination_info(version_store.set_mutvar((builtin.in), (builtin.in), (builtin.in), (builtin.out)), infinite, cannot_loop).
+:- pragma termination_info(version_store.unsafe_rewind((builtin.in)) = (builtin.out), infinite, cannot_loop).
+:- pragma termination_info(version_store.unsafe_rewind((builtin.in), (builtin.out)), infinite, cannot_loop).
+:- pragma termination_info(version_store.size((builtin.in)) = (builtin.out), infinite, cannot_loop).
+:- pragma termination_info(version_store.resize((builtin.in), (builtin.in)) = (builtin.out), infinite, cannot_loop).
+:- pragma exceptions(function, (version_store.init), 1, 0, will_not_throw).
+:- pragma exceptions(function, (version_store.new), 1, 0, will_not_throw).
+:- pragma exceptions(predicate, (version_store.new_mutvar), 4, 0, may_throw(user_exception)).
+:- pragma exceptions(predicate, (version_store.new_cyclic_mutvar), 4, 0, may_throw(user_exception)).
+:- pragma exceptions(predicate, (version_store.copy_mutvar), 4, 0, may_throw(user_exception)).
+:- pragma exceptions(function, (version_store.elem), 3, 0, may_throw(user_exception)).
+:- pragma exceptions(function, (version_store.lookup), 3, 0, may_throw(user_exception)).
+:- pragma exceptions(predicate, (version_store.get_mutvar), 4, 0, may_throw(user_exception)).
+:- pragma exceptions(function, (version_store.'elem :='), 4, 0, may_throw(user_exception)).
+:- pragma exceptions(function, (version_store.set), 4, 0, may_throw(user_exception)).
+:- pragma exceptions(predicate, (version_store.set_mutvar), 4, 0, may_throw(user_exception)).
+:- pragma exceptions(function, (version_store.unsafe_rewind), 2, 0, will_not_throw).
+:- pragma exceptions(predicate, (version_store.unsafe_rewind), 2, 0, will_not_throw).
+:- pragma exceptions(function, (version_store.size), 2, 0, will_not_throw).
+:- pragma exceptions(function, (version_store.resize), 3, 0, will_not_throw).

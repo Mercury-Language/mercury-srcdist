@@ -1,0 +1,6 @@
+:- module (ll_backend.prog_rep).
+:- interface.
+:- type flatten_par_conjs.
+:- type include_variable_table.
+:- type prog_rep_info.
+:- type var_num_map.

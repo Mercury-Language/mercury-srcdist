@@ -1,0 +1,5955 @@
+/*
+** Automatically generated from `rbmm.points_to_graph.m'
+** by the Mercury compiler,
+** version 11.07-beta-2011-12-16, configured for x86_64-unknown-linux-gnu.
+** Do not edit.
+**
+** The autoconfigured grade settings governing
+** the generation of this C file were
+**
+** TAG_BITS=2
+** UNBOXED_FLOAT=no
+** HIGHLEVEL_CODE=no
+**
+** END_OF_C_GRADE_INFO
+*/
+
+/*
+INIT mercury__transform_hlds__rbmm__points_to_graph__init
+ENDINIT
+*/
+
+#define MR_ALLOW_RESET
+#include "mercury_imp.h"
+#line 526 "../library/io.int"
+#include "io.mh"
+
+#line 28 "transform_hlds.rbmm.points_to_graph.c"
+#line 536 "../library/io.int"
+#include "time.mh"
+
+#line 32 "transform_hlds.rbmm.points_to_graph.c"
+#line 537 "../library/io.int"
+#include "string.mh"
+
+#line 36 "transform_hlds.rbmm.points_to_graph.c"
+#line 31 "../library/bitmap.int2"
+#include "bitmap.mh"
+
+#line 40 "transform_hlds.rbmm.points_to_graph.c"
+#line 33 "../library/array.int2"
+#include "array.mh"
+
+#line 44 "transform_hlds.rbmm.points_to_graph.c"
+#line 39 "../mdbcomp/mdbcomp.rtti_access.int2"
+#include "mdbcomp.rtti_access.mh"
+
+#line 48 "transform_hlds.rbmm.points_to_graph.c"
+#line 49 "transform_hlds.rbmm.points_to_graph.c"
+#include "transform_hlds.rbmm.points_to_graph.mh"
+
+#line 52 "transform_hlds.rbmm.points_to_graph.c"
+#line 53 "transform_hlds.rbmm.points_to_graph.c"
+#ifndef TRANSFORM_HLDS__RBMM__POINTS_TO_GRAPH_DECL_GUARD
+#define TRANSFORM_HLDS__RBMM__POINTS_TO_GRAPH_DECL_GUARD
+
+#line 57 "transform_hlds.rbmm.points_to_graph.c"
+#line 58 "transform_hlds.rbmm.points_to_graph.c"
+
+#endif
+#line 61 "transform_hlds.rbmm.points_to_graph.c"
+
+#ifdef _MSC_VER
+#define MR_STATIC_LINKAGE extern
+#else
+#define MR_STATIC_LINKAGE static
+#endif
+
+struct mercury_type_0 {
+	MR_Word * f1[3];
+};
+MR_STATIC_LINKAGE const struct mercury_type_0 mercury_common_0[];
+
+struct mercury_type_1 {
+	MR_Word * f1[2];
+};
+MR_STATIC_LINKAGE const struct mercury_type_1 mercury_common_1[];
+
+struct mercury_type_2 {
+	MR_Word * f1[2];
+	MR_Integer f2;
+	MR_Word * f3[8];
+};
+MR_STATIC_LINKAGE const struct mercury_type_2 mercury_common_2[];
+
+struct mercury_type_3 {
+	MR_Word * f1[2];
+	MR_Integer f2;
+	MR_Word * f3[3];
+};
+MR_STATIC_LINKAGE const struct mercury_type_3 mercury_common_3[];
+
+struct mercury_type_4 {
+	MR_Word * f1[2];
+	MR_Integer f2;
+	MR_Word * f3[5];
+};
+MR_STATIC_LINKAGE const struct mercury_type_4 mercury_common_4[];
+
+extern const MR_TypeCtorInfo_Struct
+	mercury_data_transform_hlds__rbmm__points_to_graph__type_ctor_info_rpt_graph_0,
+	mercury_data_transform_hlds__rbmm__points_to_graph__type_ctor_info_rptg_edge_0,
+	mercury_data_transform_hlds__rbmm__points_to_graph__type_ctor_info_rptg_edge_content_0,
+	mercury_data_transform_hlds__rbmm__points_to_graph__type_ctor_info_rptg_edge_info_0,
+	mercury_data_transform_hlds__rbmm__points_to_graph__type_ctor_info_rptg_edges_0,
+	mercury_data_transform_hlds__rbmm__points_to_graph__type_ctor_info_rptg_node_0,
+	mercury_data_transform_hlds__rbmm__points_to_graph__type_ctor_info_rptg_node_content_0,
+	mercury_data_transform_hlds__rbmm__points_to_graph__type_ctor_info_rptg_nodes_0,
+	mercury_data_transform_hlds__rbmm__points_to_graph__type_ctor_info_rptg_outedges_0;
+MR_decl_label9(transform_hlds__rbmm__points_to_graph__complex_map_equal_2_3_0, 32,5,7,8,9,10,11,2,1)
+MR_decl_label7(transform_hlds__rbmm__points_to_graph__delete_all_inedges_and_edges_2_6_0, 19,3,5,7,8,9,10)
+MR_decl_label7(transform_hlds__rbmm__points_to_graph__delete_node_3_0, 2,4,5,6,7,8,9)
+MR_decl_label1(transform_hlds__rbmm__points_to_graph__edge_operator_5_0, 2)
+MR_decl_label4(transform_hlds__rbmm__points_to_graph__edge_points_to_node_5_0, 5,4,6,2)
+MR_decl_label5(transform_hlds__rbmm__points_to_graph__find_edge_with_same_content_4_0, 21,3,6,5,1)
+MR_decl_label5(transform_hlds__rbmm__points_to_graph__find_node_with_same_type_4_0, 21,3,6,5,1)
+MR_decl_label5(transform_hlds__rbmm__points_to_graph__get_node_by_node_from_list_4_0, 20,3,5,4,1)
+MR_decl_label4(transform_hlds__rbmm__points_to_graph__get_node_by_region_name_from_list_4_0, 18,3,4,1)
+MR_decl_label5(transform_hlds__rbmm__points_to_graph__get_node_by_vars_from_list_4_0, 25,3,6,4,1)
+MR_decl_label5(transform_hlds__rbmm__points_to_graph__reach_from_a_variable_2_7_0, 20,3,4,6,11)
+MR_decl_label8(transform_hlds__rbmm__points_to_graph__reachable_and_having_type_2_5_0, 24,3,6,8,10,11,14,1)
+MR_decl_label5(transform_hlds__rbmm__points_to_graph__rptg_add_node_4_0, 2,4,6,8,10)
+MR_decl_label2(transform_hlds__rbmm__points_to_graph__rptg_edge_in_graph_4_0, 3,5)
+MR_decl_label10(transform_hlds__rbmm__points_to_graph__rptg_equal_2_0, 2,4,6,7,8,9,11,12,13,14)
+MR_decl_label4(transform_hlds__rbmm__points_to_graph__rptg_equal_2_0, 17,18,19,1)
+MR_decl_label1(transform_hlds__rbmm__points_to_graph__rptg_find_edge_from_node_with_same_content_4_0, 2)
+MR_decl_label1(transform_hlds__rbmm__points_to_graph__rptg_get_edge_contents_5_0, 2)
+MR_decl_label5(transform_hlds__rbmm__points_to_graph__rptg_get_node_by_node_3_0, 3,2,5,7,6)
+MR_decl_label3(transform_hlds__rbmm__points_to_graph__rptg_get_node_by_region_name_3_0, 2,4,3)
+MR_decl_label1(transform_hlds__rbmm__points_to_graph__rptg_get_node_by_variable_3_0, 3)
+MR_decl_label3(transform_hlds__rbmm__points_to_graph__rptg_get_node_by_vars_3_0, 2,4,3)
+MR_decl_label1(transform_hlds__rbmm__points_to_graph__rptg_is_allocated_node_2_0, 2)
+MR_decl_label10(transform_hlds__rbmm__points_to_graph__rptg_path_2_5_0, 2,5,7,6,8,11,4,14,17,20)
+MR_decl_label7(transform_hlds__rbmm__points_to_graph__rptg_path_2_5_1, 2,5,8,4,11,14,17)
+MR_decl_label5(transform_hlds__rbmm__points_to_graph__rptg_reach_from_a_variable_6_0, 3,4,6,7,8)
+MR_decl_label3(transform_hlds__rbmm__points_to_graph__rptg_reachable_and_having_type_4_0, 2,5,4)
+MR_decl_label5(transform_hlds__rbmm__points_to_graph__rptg_set_edge_6_0, 2,5,8,9,10)
+MR_decl_label1(transform_hlds__rbmm__points_to_graph__rptg_set_node_content_4_0, 2)
+MR_decl_label2(transform_hlds__rbmm__points_to_graph__rptg_set_node_is_allocated_4_0, 2,4)
+MR_decl_label6(transform_hlds__rbmm__points_to_graph__simple_map_equal_2_3_0, 24,4,6,7,2,1)
+MR_decl_label1(transform_hlds__rbmm__points_to_graph__transfer_in_edges_4_0, 4)
+MR_decl_label6(transform_hlds__rbmm__points_to_graph__transfer_in_edges_2_4_0, 21,3,4,7,5,9)
+MR_decl_label1(transform_hlds__rbmm__points_to_graph__transfer_out_edges_4_0, 2)
+MR_decl_label6(transform_hlds__rbmm__points_to_graph__transfer_out_edges_2_4_0, 21,3,4,7,5,9)
+MR_decl_label10(transform_hlds__rbmm__points_to_graph__unify_operator_4_0, 2,3,5,6,7,8,9,10,11,13)
+MR_decl_label1(transform_hlds__rbmm__points_to_graph__unify_operator_4_0, 14)
+MR_decl_label7(transform_hlds__rbmm__points_to_graph__update_remembered_list_8_0, 2,3,6,9,19,8,13)
+MR_decl_label5(fn__transform_hlds__rbmm__points_to_graph__rpt_graph_init_0_0, 2,3,4,5,7)
+MR_decl_label1(fn__transform_hlds__rbmm__points_to_graph__rptg_lookup_list_endnodes_2_0, 3)
+MR_decl_label1(fn__transform_hlds__rbmm__points_to_graph__rptg_lookup_list_outedges_2_0, 3)
+MR_decl_label1(fn__transform_hlds__rbmm__points_to_graph__rptg_lookup_node_is_allocated_2_0, 2)
+MR_decl_label1(fn__transform_hlds__rbmm__points_to_graph__rptg_lookup_node_type_2_0, 2)
+MR_decl_label1(fn__transform_hlds__rbmm__points_to_graph__rptg_lookup_node_vars_2_0, 2)
+MR_decl_label1(fn__transform_hlds__rbmm__points_to_graph__rptg_lookup_region_name_2_0, 2)
+MR_decl_label1(fn__transform_hlds__rbmm__points_to_graph__rptg_successors_2_0, 2)
+MR_decl_label6(__Unify___transform_hlds__rbmm__points_to_graph__rpt_graph_0_0, 4,6,8,10,15,1)
+MR_decl_label1(__Unify___transform_hlds__rbmm__points_to_graph__rptg_edge_0_0, 4)
+MR_decl_label1(__Unify___transform_hlds__rbmm__points_to_graph__rptg_edge_content_0_0, 6)
+MR_decl_label4(__Unify___transform_hlds__rbmm__points_to_graph__rptg_edge_info_0_0, 6,35,12,1)
+MR_decl_label1(__Unify___transform_hlds__rbmm__points_to_graph__rptg_node_0_0, 4)
+MR_decl_label5(__Unify___transform_hlds__rbmm__points_to_graph__rptg_node_content_0_0, 5,7,9,11,1)
+MR_decl_label7(__Compare___transform_hlds__rbmm__points_to_graph__rpt_graph_0_0, 3,2,5,9,13,17,61)
+MR_decl_label2(__Compare___transform_hlds__rbmm__points_to_graph__rptg_edge_0_0, 3,2)
+MR_decl_label2(__Compare___transform_hlds__rbmm__points_to_graph__rptg_edge_content_0_0, 3,2)
+MR_decl_label5(__Compare___transform_hlds__rbmm__points_to_graph__rptg_edge_info_0_0, 3,2,5,9,29)
+MR_decl_label2(__Compare___transform_hlds__rbmm__points_to_graph__rptg_node_0_0, 3,2)
+MR_decl_label7(__Compare___transform_hlds__rbmm__points_to_graph__rptg_node_content_0_0, 3,2,6,10,14,18,61)
+MR_def_extern_entry(fn__transform_hlds__rbmm__points_to_graph__rptg_get_nodes_1_0)
+MR_def_extern_entry(fn__transform_hlds__rbmm__points_to_graph__rptg_get_nodes_as_list_1_0)
+MR_def_extern_entry(fn__transform_hlds__rbmm__points_to_graph__rptg_get_edges_1_0)
+MR_def_extern_entry(fn__transform_hlds__rbmm__points_to_graph__rptg_get_outedges_1_0)
+MR_def_extern_entry(fn__transform_hlds__rbmm__points_to_graph__rptg_get_next_node_id_1_0)
+MR_def_extern_entry(fn__transform_hlds__rbmm__points_to_graph__rpt_graph_init_0_0)
+MR_def_extern_entry(fn__transform_hlds__rbmm__points_to_graph__rptg_get_node_content_2_0)
+MR_def_extern_entry(transform_hlds__rbmm__points_to_graph__rptg_set_node_content_4_0)
+MR_def_extern_entry(transform_hlds__rbmm__points_to_graph__rptg_node_content_set_is_allocated_3_0)
+MR_def_extern_entry(transform_hlds__rbmm__points_to_graph__rptg_set_node_is_allocated_4_0)
+MR_def_extern_entry(transform_hlds__rbmm__points_to_graph__rptg_node_content_set_merged_from_3_0)
+MR_def_extern_entry(transform_hlds__rbmm__points_to_graph__rptg_add_node_4_0)
+MR_def_extern_entry(transform_hlds__rbmm__points_to_graph__rptg_get_edge_contents_5_0)
+MR_def_extern_entry(transform_hlds__rbmm__points_to_graph__rptg_set_edge_6_0)
+MR_def_extern_entry(fn__transform_hlds__rbmm__points_to_graph__rptg_lookup_map_outedges_2_0)
+MR_def_extern_entry(fn__transform_hlds__rbmm__points_to_graph__rptg_lookup_list_endnodes_2_0)
+MR_def_extern_entry(fn__transform_hlds__rbmm__points_to_graph__rptg_successors_2_0)
+MR_decl_static(transform_hlds__rbmm__points_to_graph__rptg_path_2_5_0)
+MR_decl_static(transform_hlds__rbmm__points_to_graph__rptg_path_2_5_1)
+MR_def_extern_entry(transform_hlds__rbmm__points_to_graph__rptg_path_4_0)
+MR_def_extern_entry(transform_hlds__rbmm__points_to_graph__rptg_path_4_1)
+MR_def_extern_entry(fn__transform_hlds__rbmm__points_to_graph__rptg_node_content_get_node_type_1_0)
+MR_def_extern_entry(fn__transform_hlds__rbmm__points_to_graph__rptg_lookup_node_type_2_0)
+MR_decl_static(transform_hlds__rbmm__points_to_graph__find_node_with_same_type_4_0)
+MR_decl_static(transform_hlds__rbmm__points_to_graph__reachable_and_having_type_2_5_0)
+MR_def_extern_entry(transform_hlds__rbmm__points_to_graph__rptg_reachable_and_having_type_4_0)
+MR_def_extern_entry(fn__transform_hlds__rbmm__points_to_graph__rptg_node_content_get_region_name_1_0)
+MR_def_extern_entry(fn__transform_hlds__rbmm__points_to_graph__rptg_lookup_region_name_2_0)
+MR_decl_static(transform_hlds__rbmm__points_to_graph__get_node_by_region_name_from_list_4_0)
+MR_def_extern_entry(transform_hlds__rbmm__points_to_graph__rptg_get_node_by_region_name_3_0)
+MR_decl_static(transform_hlds__rbmm__points_to_graph__get_node_by_vars_from_list_4_0)
+MR_def_extern_entry(transform_hlds__rbmm__points_to_graph__rptg_get_node_by_vars_3_0)
+MR_def_extern_entry(transform_hlds__rbmm__points_to_graph__rptg_get_node_by_variable_3_0)
+MR_decl_static(transform_hlds__rbmm__points_to_graph__get_node_by_node_from_list_4_0)
+MR_def_extern_entry(transform_hlds__rbmm__points_to_graph__rptg_get_node_by_node_3_0)
+MR_decl_static(transform_hlds__rbmm__points_to_graph__simple_map_equal_2_3_0)
+MR_decl_static(transform_hlds__rbmm__points_to_graph__complex_map_equal_2_3_0)
+MR_def_extern_entry(transform_hlds__rbmm__points_to_graph__rptg_equal_2_0)
+MR_def_extern_entry(fn__transform_hlds__rbmm__points_to_graph__rptg_lookup_list_outedges_2_0)
+MR_decl_static(transform_hlds__rbmm__points_to_graph__reach_from_a_variable_2_7_0)
+MR_def_extern_entry(transform_hlds__rbmm__points_to_graph__rptg_reach_from_a_variable_6_0)
+MR_decl_static(transform_hlds__rbmm__points_to_graph__find_edge_with_same_content_4_0)
+MR_def_extern_entry(transform_hlds__rbmm__points_to_graph__rptg_find_edge_from_node_with_same_content_4_0)
+MR_def_extern_entry(transform_hlds__rbmm__points_to_graph__rptg_edge_in_graph_4_0)
+MR_def_extern_entry(fn__transform_hlds__rbmm__points_to_graph__rptg_node_content_get_vars_1_0)
+MR_def_extern_entry(fn__transform_hlds__rbmm__points_to_graph__rptg_lookup_node_vars_2_0)
+MR_def_extern_entry(fn__transform_hlds__rbmm__points_to_graph__rptg_node_content_get_is_allocated_1_0)
+MR_def_extern_entry(fn__transform_hlds__rbmm__points_to_graph__rptg_lookup_node_is_allocated_2_0)
+MR_def_extern_entry(transform_hlds__rbmm__points_to_graph__rptg_is_allocated_node_2_0)
+MR_def_extern_entry(transform_hlds__rbmm__points_to_graph__rptg_node_content_set_vars_3_0)
+MR_decl_static(transform_hlds__rbmm__points_to_graph__transfer_out_edges_2_4_0)
+MR_decl_static(transform_hlds__rbmm__points_to_graph__transfer_out_edges_4_0)
+MR_decl_static(transform_hlds__rbmm__points_to_graph__transfer_in_edges_2_4_0)
+MR_decl_static(transform_hlds__rbmm__points_to_graph__transfer_in_edges_4_0)
+MR_decl_static(transform_hlds__rbmm__points_to_graph__delete_all_inedges_and_edges_2_6_0)
+MR_decl_static(transform_hlds__rbmm__points_to_graph__delete_node_3_0)
+MR_def_extern_entry(transform_hlds__rbmm__points_to_graph__unify_operator_4_0)
+MR_def_extern_entry(transform_hlds__rbmm__points_to_graph__edge_operator_5_0)
+MR_def_extern_entry(fn__transform_hlds__rbmm__points_to_graph__rptg_node_content_get_merged_from_1_0)
+MR_def_extern_entry(transform_hlds__rbmm__points_to_graph__rptg_node_content_set_region_name_3_0)
+MR_def_extern_entry(transform_hlds__rbmm__points_to_graph__rptg_node_content_set_node_type_3_0)
+MR_def_extern_entry(fn__transform_hlds__rbmm__points_to_graph__rptg_edge_content_get_label_1_0)
+MR_def_extern_entry(transform_hlds__rbmm__points_to_graph__rptg_edge_content_set_label_3_0)
+MR_decl_static(transform_hlds__rbmm__points_to_graph__edge_points_to_node_5_0)
+MR_decl_static(transform_hlds__rbmm__points_to_graph__update_remembered_list_8_0)
+MR_def_extern_entry(__Unify___transform_hlds__rbmm__points_to_graph__rpt_graph_0_0)
+MR_def_extern_entry(__Compare___transform_hlds__rbmm__points_to_graph__rpt_graph_0_0)
+MR_def_extern_entry(__Unify___transform_hlds__rbmm__points_to_graph__rptg_edge_0_0)
+MR_def_extern_entry(__Compare___transform_hlds__rbmm__points_to_graph__rptg_edge_0_0)
+MR_def_extern_entry(__Unify___transform_hlds__rbmm__points_to_graph__rptg_edge_content_0_0)
+MR_def_extern_entry(__Compare___transform_hlds__rbmm__points_to_graph__rptg_edge_content_0_0)
+MR_def_extern_entry(__Unify___transform_hlds__rbmm__points_to_graph__rptg_edge_info_0_0)
+MR_def_extern_entry(__Compare___transform_hlds__rbmm__points_to_graph__rptg_edge_info_0_0)
+MR_def_extern_entry(__Unify___transform_hlds__rbmm__points_to_graph__rptg_edges_0_0)
+MR_def_extern_entry(__Compare___transform_hlds__rbmm__points_to_graph__rptg_edges_0_0)
+MR_def_extern_entry(__Unify___transform_hlds__rbmm__points_to_graph__rptg_node_0_0)
+MR_def_extern_entry(__Compare___transform_hlds__rbmm__points_to_graph__rptg_node_0_0)
+MR_def_extern_entry(__Unify___transform_hlds__rbmm__points_to_graph__rptg_node_content_0_0)
+MR_def_extern_entry(__Compare___transform_hlds__rbmm__points_to_graph__rptg_node_content_0_0)
+MR_def_extern_entry(__Unify___transform_hlds__rbmm__points_to_graph__rptg_nodes_0_0)
+MR_def_extern_entry(__Compare___transform_hlds__rbmm__points_to_graph__rptg_nodes_0_0)
+MR_def_extern_entry(__Unify___transform_hlds__rbmm__points_to_graph__rptg_outedges_0_0)
+MR_def_extern_entry(__Compare___transform_hlds__rbmm__points_to_graph__rptg_outedges_0_0)
+MR_decl_static(transform_hlds__rbmm__points_to_graph__IntroducedFrom__pred__rptg_edge_in_graph__855__1_3_0)
+MR_decl_static(transform_hlds__rbmm__points_to_graph__IntroducedFrom__pred__delete_all_inedges_and_edges_2__817__1_3_0)
+MR_def_extern_entry(f_116_114_97_110_115_102_111_114_109_95_104_108_100_115_95_95_114_98_109_109_95_95_112_111_105_110_116_115_95_116_111_95_103_114_97_112_104_95_95_85_110_117_115_101_100_65_114_103_115_95_95_112_114_101_100_95_95_114_112_116_103_95_101_100_103_101_95_99_111_110_116_101_110_116_95_115_101_116_95_108_97_98_101_108_95_95_91_50_93_95_48_3_0)
+
+extern const MR_TypeCtorInfo_Struct mercury_data_tree234__type_ctor_info_tree234_2;
+extern const MR_TypeCtorInfo_Struct mercury_data_pair__type_ctor_info_pair_2;
+extern const MR_TypeCtorInfo_Struct mercury_data_transform_hlds__rbmm__points_to_graph__type_ctor_info_rptg_node_0;
+extern const MR_TypeCtorInfo_Struct mercury_data_pair__type_ctor_info_pair_2;
+extern const MR_TypeCtorInfo_Struct mercury_data_transform_hlds__rbmm__points_to_graph__type_ctor_info_rptg_edge_0;
+static const struct mercury_type_0 mercury_common_0[4] =
+{
+{
+{
+MR_CTOR_ADDR(tree234, tree234, 2),
+MR_CTOR0_ADDR(transform_hlds__rbmm__points_to_graph, rptg_edge),
+MR_CTOR0_ADDR(transform_hlds__rbmm__points_to_graph, rptg_node)
+}
+},
+{
+{
+MR_CTOR_ADDR(pair, pair, 2),
+MR_CTOR0_ADDR(transform_hlds__rbmm__points_to_graph, rptg_node),
+MR_COMMON(1,3)
+}
+},
+{
+{
+MR_CTOR_ADDR(pair, pair, 2),
+MR_CTOR0_ADDR(transform_hlds__rbmm__points_to_graph, rptg_node),
+MR_TAG_COMMON(0,1,5)
+}
+},
+{
+{
+MR_CTOR_ADDR(tree234, tree234, 2),
+MR_CTOR0_ADDR(transform_hlds__rbmm__points_to_graph, rptg_edge),
+MR_CTOR0_ADDR(transform_hlds__rbmm__points_to_graph, rptg_node)
+}
+},
+};
+
+extern const MR_TypeCtorInfo_Struct mercury_data_term__type_ctor_info_var_1;
+extern const MR_TypeCtorInfo_Struct mercury_data_parse_tree__prog_data__type_ctor_info_prog_var_type_0;
+extern const MR_TypeCtorInfo_Struct mercury_data_list__type_ctor_info_list_1;
+extern const MR_TypeCtorInfo_Struct mercury_data_parse_tree__prog_data__type_ctor_info_unit_selector_0;
+extern const MR_TypeCtorInfo_Struct mercury_data_list__type_ctor_info_list_1;
+extern const MR_TypeCtorInfo_Struct mercury_data_parse_tree__prog_data__type_ctor_info_unit_selector_0;
+static const struct mercury_type_1 mercury_common_1[9] =
+{
+{
+{
+MR_CTOR1_ADDR(term, var),
+MR_CTOR0_ADDR(parse_tree__prog_data, prog_var_type)
+}
+},
+{
+{
+MR_LIST_CTOR_ADDR,
+MR_CTOR0_ADDR(parse_tree__prog_data, unit_selector)
+}
+},
+{
+{
+MR_LIST_CTOR_ADDR,
+MR_CTOR0_ADDR(transform_hlds__rbmm__points_to_graph, rptg_node)
+}
+},
+{
+{
+MR_LIST_CTOR_ADDR,
+MR_CTOR0_ADDR(parse_tree__prog_data, unit_selector)
+}
+},
+{
+{
+MR_LIST_CTOR_ADDR,
+MR_COMMON(0,1)
+}
+},
+{
+{
+MR_LIST_CTOR_ADDR,
+MR_CTOR0_ADDR(parse_tree__prog_data, unit_selector)
+}
+},
+{
+{
+MR_LIST_CTOR_ADDR,
+MR_TAG_COMMON(0,0,2)
+}
+},
+{
+{
+MR_LIST_CTOR_ADDR,
+MR_CTOR0_ADDR(transform_hlds__rbmm__points_to_graph, rptg_edge)
+}
+},
+{
+{
+MR_LIST_CTOR_ADDR,
+MR_CTOR0_ADDR(transform_hlds__rbmm__points_to_graph, rptg_edge)
+}
+},
+};
+
+static const MR_UserClosureId
+mercury_data__closure_layout__transform_hlds__rbmm__points_to_graph__reach_from_a_variable_2_7_0_1;
+extern const MR_TypeCtorInfo_Struct mercury_data_hlds__hlds_module__type_ctor_info_module_info_0;
+extern const MR_TypeCtorInfo_Struct mercury_data_parse_tree__prog_data__type_ctor_info_mer_type_0;
+extern const MR_TypeCtorInfo_Struct mercury_data_transform_hlds__rbmm__points_to_graph__type_ctor_info_rpt_graph_0;
+extern const MR_TypeCtorInfo_Struct mercury_data_transform_hlds__rbmm__points_to_graph__type_ctor_info_rptg_edge_0;
+static const struct mercury_type_2 mercury_common_2[1] =
+{
+{
+{
+(MR_Word *) &mercury_data__closure_layout__transform_hlds__rbmm__points_to_graph__reach_from_a_variable_2_7_0_1,
+(MR_Word *) (MR_Integer) 0
+},
+8,
+{
+MR_COMMON(1,1),
+MR_CTOR0_ADDR(hlds__hlds_module, module_info),
+MR_CTOR0_ADDR(parse_tree__prog_data, mer_type),
+MR_CTOR0_ADDR(transform_hlds__rbmm__points_to_graph, rpt_graph),
+MR_COMMON(1,2),
+MR_CTOR0_ADDR(transform_hlds__rbmm__points_to_graph, rptg_edge),
+MR_COMMON(1,4),
+MR_COMMON(1,4)
+}
+},
+};
+
+static const MR_UserClosureId
+mercury_data__closure_layout__transform_hlds__rbmm__points_to_graph__rptg_edge_in_graph_4_0_1;
+extern const MR_TypeCtorInfo_Struct mercury_data_transform_hlds__rbmm__points_to_graph__type_ctor_info_rptg_node_0;
+static const MR_UserClosureId
+mercury_data__closure_layout__transform_hlds__rbmm__points_to_graph__delete_all_inedges_and_edges_2_6_0_1;
+static const struct mercury_type_3 mercury_common_3[2] =
+{
+{
+{
+(MR_Word *) &mercury_data__closure_layout__transform_hlds__rbmm__points_to_graph__rptg_edge_in_graph_4_0_1,
+(MR_Word *) (MR_Integer) 0
+},
+3,
+{
+MR_CTOR0_ADDR(transform_hlds__rbmm__points_to_graph, rptg_node),
+MR_COMMON(0,3),
+MR_CTOR0_ADDR(transform_hlds__rbmm__points_to_graph, rptg_edge)
+}
+},
+{
+{
+(MR_Word *) &mercury_data__closure_layout__transform_hlds__rbmm__points_to_graph__delete_all_inedges_and_edges_2_6_0_1,
+(MR_Word *) (MR_Integer) 0
+},
+3,
+{
+MR_CTOR0_ADDR(transform_hlds__rbmm__points_to_graph, rptg_node),
+MR_COMMON(0,3),
+MR_CTOR0_ADDR(transform_hlds__rbmm__points_to_graph, rptg_edge)
+}
+},
+};
+
+static const MR_UserClosureId
+mercury_data__closure_layout__transform_hlds__rbmm__points_to_graph__transfer_in_edges_4_0_1;
+extern const MR_TypeCtorInfo_Struct mercury_data_transform_hlds__rbmm__points_to_graph__type_ctor_info_rptg_edge_info_0;
+static const struct mercury_type_4 mercury_common_4[1] =
+{
+{
+{
+(MR_Word *) &mercury_data__closure_layout__transform_hlds__rbmm__points_to_graph__transfer_in_edges_4_0_1,
+(MR_Word *) (MR_Integer) 0
+},
+5,
+{
+MR_CTOR0_ADDR(transform_hlds__rbmm__points_to_graph, rptg_node),
+MR_CTOR0_ADDR(transform_hlds__rbmm__points_to_graph, rptg_edge),
+MR_CTOR0_ADDR(transform_hlds__rbmm__points_to_graph, rptg_edge_info),
+MR_COMMON(1,7),
+MR_COMMON(1,7)
+}
+},
+};
+extern const MR_TypeCtorInfo_Struct mercury_data_counter__type_ctor_info_counter_0;
+extern const MR_TypeCtorInfo_Struct mercury_data_transform_hlds__rbmm__points_to_graph__type_ctor_info_rptg_node_content_0;
+
+static const MR_FA_TypeInfo_Struct2 mercury_data_tree234__ti_tree234_2transform_hlds__rbmm__points_to_graph__type_ctor_info_rptg_node_0transform_hlds__rbmm__points_to_graph__type_ctor_info_rptg_node_content_0 = {
+	&mercury_data_tree234__type_ctor_info_tree234_2,
+{	(MR_TypeInfo) &mercury_data_transform_hlds__rbmm__points_to_graph__type_ctor_info_rptg_node_0,
+	(MR_TypeInfo) &mercury_data_transform_hlds__rbmm__points_to_graph__type_ctor_info_rptg_node_content_0
+}};
+extern const MR_TypeCtorInfo_Struct mercury_data_transform_hlds__rbmm__points_to_graph__type_ctor_info_rptg_edge_info_0;
+
+static const MR_FA_TypeInfo_Struct2 mercury_data_tree234__ti_tree234_2transform_hlds__rbmm__points_to_graph__type_ctor_info_rptg_edge_0transform_hlds__rbmm__points_to_graph__type_ctor_info_rptg_edge_info_0 = {
+	&mercury_data_tree234__type_ctor_info_tree234_2,
+{	(MR_TypeInfo) &mercury_data_transform_hlds__rbmm__points_to_graph__type_ctor_info_rptg_edge_0,
+	(MR_TypeInfo) &mercury_data_transform_hlds__rbmm__points_to_graph__type_ctor_info_rptg_edge_info_0
+}};
+
+static const MR_FA_TypeInfo_Struct2 mercury_data_tree234__ti_tree234_2transform_hlds__rbmm__points_to_graph__type_ctor_info_rptg_edge_0transform_hlds__rbmm__points_to_graph__type_ctor_info_rptg_node_0 = {
+	&mercury_data_tree234__type_ctor_info_tree234_2,
+{	(MR_TypeInfo) &mercury_data_transform_hlds__rbmm__points_to_graph__type_ctor_info_rptg_edge_0,
+	(MR_TypeInfo) &mercury_data_transform_hlds__rbmm__points_to_graph__type_ctor_info_rptg_node_0
+}};
+
+static const MR_FA_TypeInfo_Struct2 mercury_data_tree234__ti_tree234_2transform_hlds__rbmm__points_to_graph__type_ctor_info_rptg_node_0tree234__ti_tree234_2transform_hlds__rbmm__points_to_graph__type_ctor_info_rptg_edge_0transform_hlds__rbmm__points_to_graph__type_ctor_info_rptg_node_0 = {
+	&mercury_data_tree234__type_ctor_info_tree234_2,
+{	(MR_TypeInfo) &mercury_data_transform_hlds__rbmm__points_to_graph__type_ctor_info_rptg_node_0,
+	(MR_TypeInfo) &mercury_data_tree234__ti_tree234_2transform_hlds__rbmm__points_to_graph__type_ctor_info_rptg_edge_0transform_hlds__rbmm__points_to_graph__type_ctor_info_rptg_node_0
+}};
+extern const MR_TypeCtorInfo_Struct mercury_data_counter__type_ctor_info_counter_0;
+
+const MR_PseudoTypeInfo mercury_data_transform_hlds__rbmm__points_to_graph__field_types_rpt_graph_0_0[] = {
+	(MR_PseudoTypeInfo) &mercury_data_counter__type_ctor_info_counter_0,
+	(MR_PseudoTypeInfo) &mercury_data_counter__type_ctor_info_counter_0,
+	(MR_PseudoTypeInfo) &mercury_data_tree234__ti_tree234_2transform_hlds__rbmm__points_to_graph__type_ctor_info_rptg_node_0transform_hlds__rbmm__points_to_graph__type_ctor_info_rptg_node_content_0,
+	(MR_PseudoTypeInfo) &mercury_data_tree234__ti_tree234_2transform_hlds__rbmm__points_to_graph__type_ctor_info_rptg_edge_0transform_hlds__rbmm__points_to_graph__type_ctor_info_rptg_edge_info_0,
+	(MR_PseudoTypeInfo) &mercury_data_tree234__ti_tree234_2transform_hlds__rbmm__points_to_graph__type_ctor_info_rptg_node_0tree234__ti_tree234_2transform_hlds__rbmm__points_to_graph__type_ctor_info_rptg_edge_0transform_hlds__rbmm__points_to_graph__type_ctor_info_rptg_node_0
+};
+
+const MR_ConstString mercury_data_transform_hlds__rbmm__points_to_graph__field_names_rpt_graph_0_0[] = {
+	"rptg_node_supply",
+	"rptg_edge_supply",
+	"rptg_nodes",
+	"rptg_edges",
+	"rptg_outedges"
+};
+
+static const MR_DuFunctorDesc mercury_data_transform_hlds__rbmm__points_to_graph__du_functor_desc_rpt_graph_0_0 = {
+	"rpt_graph",
+	5,
+	0,
+	MR_SECTAG_NONE,
+	0,
+	-1,
+	0,
+	(MR_PseudoTypeInfo *) mercury_data_transform_hlds__rbmm__points_to_graph__field_types_rpt_graph_0_0,
+	mercury_data_transform_hlds__rbmm__points_to_graph__field_names_rpt_graph_0_0,
+	NULL
+};
+
+const MR_DuFunctorDescPtr mercury_data_transform_hlds__rbmm__points_to_graph__du_stag_ordered_rpt_graph_0_0[] = {
+	&mercury_data_transform_hlds__rbmm__points_to_graph__du_functor_desc_rpt_graph_0_0
+
+};
+
+const MR_DuPtagLayout mercury_data_transform_hlds__rbmm__points_to_graph__du_ptag_ordered_rpt_graph_0[] = {
+	{ 1, MR_SECTAG_NONE,
+	mercury_data_transform_hlds__rbmm__points_to_graph__du_stag_ordered_rpt_graph_0_0 }
+
+};
+
+const MR_DuFunctorDescPtr mercury_data_transform_hlds__rbmm__points_to_graph__du_name_ordered_rpt_graph_0[] = {
+	&mercury_data_transform_hlds__rbmm__points_to_graph__du_functor_desc_rpt_graph_0_0
+};
+
+const MR_Integer mercury_data_transform_hlds__rbmm__points_to_graph__functor_number_map_rpt_graph_0[] = {
+	0 };
+	
+const MR_TypeCtorInfo_Struct mercury_data_transform_hlds__rbmm__points_to_graph__type_ctor_info_rpt_graph_0 = {
+	0,
+	14,
+	1,
+	MR_TYPECTOR_REP_DU,
+	MR_MAYBE_STATIC_CODE(MR_ENTRY_AP(__Unify___transform_hlds__rbmm__points_to_graph__rpt_graph_0_0)),
+	MR_MAYBE_STATIC_CODE(MR_ENTRY_AP(__Compare___transform_hlds__rbmm__points_to_graph__rpt_graph_0_0)),
+	"transform_hlds.rbmm.points_to_graph",
+	"rpt_graph",
+	{ (void *)mercury_data_transform_hlds__rbmm__points_to_graph__du_name_ordered_rpt_graph_0 },
+	{ (void *)mercury_data_transform_hlds__rbmm__points_to_graph__du_ptag_ordered_rpt_graph_0 },
+	1,
+	4,
+	mercury_data_transform_hlds__rbmm__points_to_graph__functor_number_map_rpt_graph_0
+};
+extern const MR_TypeCtorInfo_Struct mercury_data_builtin__type_ctor_info_int_0;
+extern const MR_TypeCtorInfo_Struct mercury_data_builtin__type_ctor_info_int_0;
+
+static const MR_NotagFunctorDesc mercury_data_transform_hlds__rbmm__points_to_graph__notag_functor_desc_rptg_edge_0 = {
+	"rptg_edge",
+	(MR_PseudoTypeInfo) &mercury_data_builtin__type_ctor_info_int_0,
+	NULL
+};
+
+const MR_Integer mercury_data_transform_hlds__rbmm__points_to_graph__functor_number_map_rptg_edge_0[] = {
+	0 };
+	
+const MR_TypeCtorInfo_Struct mercury_data_transform_hlds__rbmm__points_to_graph__type_ctor_info_rptg_edge_0 = {
+	0,
+	14,
+	-1,
+	MR_TYPECTOR_REP_NOTAG_GROUND,
+	MR_MAYBE_STATIC_CODE(MR_ENTRY_AP(__Unify___transform_hlds__rbmm__points_to_graph__rptg_edge_0_0)),
+	MR_MAYBE_STATIC_CODE(MR_ENTRY_AP(__Compare___transform_hlds__rbmm__points_to_graph__rptg_edge_0_0)),
+	"transform_hlds.rbmm.points_to_graph",
+	"rptg_edge",
+	{ (void *)&mercury_data_transform_hlds__rbmm__points_to_graph__notag_functor_desc_rptg_edge_0 },
+	{ (void *)&mercury_data_transform_hlds__rbmm__points_to_graph__notag_functor_desc_rptg_edge_0 },
+	1,
+	4,
+	mercury_data_transform_hlds__rbmm__points_to_graph__functor_number_map_rptg_edge_0
+};
+
+static const MR_FA_TypeInfo_Struct1 mercury_data_list__ti_list_1parse_tree__prog_data__type_ctor_info_unit_selector_0 = {
+	&mercury_data_list__type_ctor_info_list_1,
+{	(MR_TypeInfo) &mercury_data_parse_tree__prog_data__type_ctor_info_unit_selector_0
+}};
+
+static const MR_NotagFunctorDesc mercury_data_transform_hlds__rbmm__points_to_graph__notag_functor_desc_rptg_edge_content_0 = {
+	"rptg_edge_content",
+	(MR_PseudoTypeInfo) &mercury_data_list__ti_list_1parse_tree__prog_data__type_ctor_info_unit_selector_0,
+	"rptg_ec_label"
+};
+
+const MR_Integer mercury_data_transform_hlds__rbmm__points_to_graph__functor_number_map_rptg_edge_content_0[] = {
+	0 };
+	
+const MR_TypeCtorInfo_Struct mercury_data_transform_hlds__rbmm__points_to_graph__type_ctor_info_rptg_edge_content_0 = {
+	0,
+	14,
+	-1,
+	MR_TYPECTOR_REP_NOTAG_GROUND,
+	MR_MAYBE_STATIC_CODE(MR_ENTRY_AP(__Unify___transform_hlds__rbmm__points_to_graph__rptg_edge_content_0_0)),
+	MR_MAYBE_STATIC_CODE(MR_ENTRY_AP(__Compare___transform_hlds__rbmm__points_to_graph__rptg_edge_content_0_0)),
+	"transform_hlds.rbmm.points_to_graph",
+	"rptg_edge_content",
+	{ (void *)&mercury_data_transform_hlds__rbmm__points_to_graph__notag_functor_desc_rptg_edge_content_0 },
+	{ (void *)&mercury_data_transform_hlds__rbmm__points_to_graph__notag_functor_desc_rptg_edge_content_0 },
+	1,
+	4,
+	mercury_data_transform_hlds__rbmm__points_to_graph__functor_number_map_rptg_edge_content_0
+};
+extern const MR_TypeCtorInfo_Struct mercury_data_transform_hlds__rbmm__points_to_graph__type_ctor_info_rptg_edge_content_0;
+
+const MR_PseudoTypeInfo mercury_data_transform_hlds__rbmm__points_to_graph__field_types_rptg_edge_info_0_0[] = {
+	(MR_PseudoTypeInfo) &mercury_data_transform_hlds__rbmm__points_to_graph__type_ctor_info_rptg_node_0,
+	(MR_PseudoTypeInfo) &mercury_data_transform_hlds__rbmm__points_to_graph__type_ctor_info_rptg_node_0,
+	(MR_PseudoTypeInfo) &mercury_data_transform_hlds__rbmm__points_to_graph__type_ctor_info_rptg_edge_content_0
+};
+
+const MR_ConstString mercury_data_transform_hlds__rbmm__points_to_graph__field_names_rptg_edge_info_0_0[] = {
+	"rptg_edge_from_node",
+	"rptg_edge_to_node",
+	"rptg_edge_label"
+};
+
+static const MR_DuFunctorDesc mercury_data_transform_hlds__rbmm__points_to_graph__du_functor_desc_rptg_edge_info_0_0 = {
+	"rptg_edge_info",
+	3,
+	0,
+	MR_SECTAG_NONE,
+	0,
+	-1,
+	0,
+	(MR_PseudoTypeInfo *) mercury_data_transform_hlds__rbmm__points_to_graph__field_types_rptg_edge_info_0_0,
+	mercury_data_transform_hlds__rbmm__points_to_graph__field_names_rptg_edge_info_0_0,
+	NULL
+};
+
+const MR_DuFunctorDescPtr mercury_data_transform_hlds__rbmm__points_to_graph__du_stag_ordered_rptg_edge_info_0_0[] = {
+	&mercury_data_transform_hlds__rbmm__points_to_graph__du_functor_desc_rptg_edge_info_0_0
+
+};
+
+const MR_DuPtagLayout mercury_data_transform_hlds__rbmm__points_to_graph__du_ptag_ordered_rptg_edge_info_0[] = {
+	{ 1, MR_SECTAG_NONE,
+	mercury_data_transform_hlds__rbmm__points_to_graph__du_stag_ordered_rptg_edge_info_0_0 }
+
+};
+
+const MR_DuFunctorDescPtr mercury_data_transform_hlds__rbmm__points_to_graph__du_name_ordered_rptg_edge_info_0[] = {
+	&mercury_data_transform_hlds__rbmm__points_to_graph__du_functor_desc_rptg_edge_info_0_0
+};
+
+const MR_Integer mercury_data_transform_hlds__rbmm__points_to_graph__functor_number_map_rptg_edge_info_0[] = {
+	0 };
+	
+const MR_TypeCtorInfo_Struct mercury_data_transform_hlds__rbmm__points_to_graph__type_ctor_info_rptg_edge_info_0 = {
+	0,
+	14,
+	1,
+	MR_TYPECTOR_REP_DU,
+	MR_MAYBE_STATIC_CODE(MR_ENTRY_AP(__Unify___transform_hlds__rbmm__points_to_graph__rptg_edge_info_0_0)),
+	MR_MAYBE_STATIC_CODE(MR_ENTRY_AP(__Compare___transform_hlds__rbmm__points_to_graph__rptg_edge_info_0_0)),
+	"transform_hlds.rbmm.points_to_graph",
+	"rptg_edge_info",
+	{ (void *)mercury_data_transform_hlds__rbmm__points_to_graph__du_name_ordered_rptg_edge_info_0 },
+	{ (void *)mercury_data_transform_hlds__rbmm__points_to_graph__du_ptag_ordered_rptg_edge_info_0 },
+	1,
+	4,
+	mercury_data_transform_hlds__rbmm__points_to_graph__functor_number_map_rptg_edge_info_0
+};
+
+const MR_TypeCtorInfo_Struct mercury_data_transform_hlds__rbmm__points_to_graph__type_ctor_info_rptg_edges_0 = {
+	0,
+	14,
+	-1,
+	MR_TYPECTOR_REP_EQUIV_GROUND,
+	MR_MAYBE_STATIC_CODE(MR_ENTRY_AP(__Unify___transform_hlds__rbmm__points_to_graph__rptg_edges_0_0)),
+	MR_MAYBE_STATIC_CODE(MR_ENTRY_AP(__Compare___transform_hlds__rbmm__points_to_graph__rptg_edges_0_0)),
+	"transform_hlds.rbmm.points_to_graph",
+	"rptg_edges",
+	{ 0 },
+	{ (void *)&mercury_data_tree234__ti_tree234_2transform_hlds__rbmm__points_to_graph__type_ctor_info_rptg_edge_0transform_hlds__rbmm__points_to_graph__type_ctor_info_rptg_edge_info_0 },
+	-1,
+	0,
+	NULL
+};
+
+static const MR_NotagFunctorDesc mercury_data_transform_hlds__rbmm__points_to_graph__notag_functor_desc_rptg_node_0 = {
+	"rptg_node",
+	(MR_PseudoTypeInfo) &mercury_data_builtin__type_ctor_info_int_0,
+	NULL
+};
+
+const MR_Integer mercury_data_transform_hlds__rbmm__points_to_graph__functor_number_map_rptg_node_0[] = {
+	0 };
+	
+const MR_TypeCtorInfo_Struct mercury_data_transform_hlds__rbmm__points_to_graph__type_ctor_info_rptg_node_0 = {
+	0,
+	14,
+	-1,
+	MR_TYPECTOR_REP_NOTAG_GROUND,
+	MR_MAYBE_STATIC_CODE(MR_ENTRY_AP(__Unify___transform_hlds__rbmm__points_to_graph__rptg_node_0_0)),
+	MR_MAYBE_STATIC_CODE(MR_ENTRY_AP(__Compare___transform_hlds__rbmm__points_to_graph__rptg_node_0_0)),
+	"transform_hlds.rbmm.points_to_graph",
+	"rptg_node",
+	{ (void *)&mercury_data_transform_hlds__rbmm__points_to_graph__notag_functor_desc_rptg_node_0 },
+	{ (void *)&mercury_data_transform_hlds__rbmm__points_to_graph__notag_functor_desc_rptg_node_0 },
+	1,
+	4,
+	mercury_data_transform_hlds__rbmm__points_to_graph__functor_number_map_rptg_node_0
+};
+extern const MR_TypeCtorInfo_Struct mercury_data_set_ordlist__type_ctor_info_set_ordlist_1;
+extern const MR_TypeCtorInfo_Struct mercury_data_parse_tree__prog_data__type_ctor_info_prog_var_type_0;
+
+static const MR_FA_TypeInfo_Struct1 mercury_data_term__ti_var_1parse_tree__prog_data__type_ctor_info_prog_var_type_0 = {
+	&mercury_data_term__type_ctor_info_var_1,
+{	(MR_TypeInfo) &mercury_data_parse_tree__prog_data__type_ctor_info_prog_var_type_0
+}};
+
+static const MR_FA_TypeInfo_Struct1 mercury_data_set_ordlist__ti_set_ordlist_1term__ti_var_1parse_tree__prog_data__type_ctor_info_prog_var_type_0 = {
+	&mercury_data_set_ordlist__type_ctor_info_set_ordlist_1,
+{	(MR_TypeInfo) &mercury_data_term__ti_var_1parse_tree__prog_data__type_ctor_info_prog_var_type_0
+}};
+extern const MR_TypeCtorInfo_Struct mercury_data_builtin__type_ctor_info_string_0;
+
+static const MR_FA_TypeInfo_Struct1 mercury_data_set_ordlist__ti_set_ordlist_1transform_hlds__rbmm__points_to_graph__type_ctor_info_rptg_node_0 = {
+	&mercury_data_set_ordlist__type_ctor_info_set_ordlist_1,
+{	(MR_TypeInfo) &mercury_data_transform_hlds__rbmm__points_to_graph__type_ctor_info_rptg_node_0
+}};
+extern const MR_TypeCtorInfo_Struct mercury_data_parse_tree__prog_data__type_ctor_info_mer_type_0;
+extern const MR_TypeCtorInfo_Struct mercury_data_bool__type_ctor_info_bool_0;
+extern const MR_TypeCtorInfo_Struct mercury_data_builtin__type_ctor_info_string_0;
+extern const MR_TypeCtorInfo_Struct mercury_data_parse_tree__prog_data__type_ctor_info_mer_type_0;
+extern const MR_TypeCtorInfo_Struct mercury_data_bool__type_ctor_info_bool_0;
+
+const MR_PseudoTypeInfo mercury_data_transform_hlds__rbmm__points_to_graph__field_types_rptg_node_content_0_0[] = {
+	(MR_PseudoTypeInfo) &mercury_data_set_ordlist__ti_set_ordlist_1term__ti_var_1parse_tree__prog_data__type_ctor_info_prog_var_type_0,
+	(MR_PseudoTypeInfo) &mercury_data_builtin__type_ctor_info_string_0,
+	(MR_PseudoTypeInfo) &mercury_data_set_ordlist__ti_set_ordlist_1transform_hlds__rbmm__points_to_graph__type_ctor_info_rptg_node_0,
+	(MR_PseudoTypeInfo) &mercury_data_parse_tree__prog_data__type_ctor_info_mer_type_0,
+	(MR_PseudoTypeInfo) &mercury_data_bool__type_ctor_info_bool_0
+};
+
+const MR_ConstString mercury_data_transform_hlds__rbmm__points_to_graph__field_names_rptg_node_content_0_0[] = {
+	"rptg_nc_vars",
+	"rptg_nc_reg_var_name",
+	"rptg_nc_merged_from",
+	"rptg_nc_node_type",
+	"rptg_nc_is_allocated"
+};
+
+static const MR_DuFunctorDesc mercury_data_transform_hlds__rbmm__points_to_graph__du_functor_desc_rptg_node_content_0_0 = {
+	"rptg_node_content",
+	5,
+	0,
+	MR_SECTAG_NONE,
+	0,
+	-1,
+	0,
+	(MR_PseudoTypeInfo *) mercury_data_transform_hlds__rbmm__points_to_graph__field_types_rptg_node_content_0_0,
+	mercury_data_transform_hlds__rbmm__points_to_graph__field_names_rptg_node_content_0_0,
+	NULL
+};
+
+const MR_DuFunctorDescPtr mercury_data_transform_hlds__rbmm__points_to_graph__du_stag_ordered_rptg_node_content_0_0[] = {
+	&mercury_data_transform_hlds__rbmm__points_to_graph__du_functor_desc_rptg_node_content_0_0
+
+};
+
+const MR_DuPtagLayout mercury_data_transform_hlds__rbmm__points_to_graph__du_ptag_ordered_rptg_node_content_0[] = {
+	{ 1, MR_SECTAG_NONE,
+	mercury_data_transform_hlds__rbmm__points_to_graph__du_stag_ordered_rptg_node_content_0_0 }
+
+};
+
+const MR_DuFunctorDescPtr mercury_data_transform_hlds__rbmm__points_to_graph__du_name_ordered_rptg_node_content_0[] = {
+	&mercury_data_transform_hlds__rbmm__points_to_graph__du_functor_desc_rptg_node_content_0_0
+};
+
+const MR_Integer mercury_data_transform_hlds__rbmm__points_to_graph__functor_number_map_rptg_node_content_0[] = {
+	0 };
+	
+const MR_TypeCtorInfo_Struct mercury_data_transform_hlds__rbmm__points_to_graph__type_ctor_info_rptg_node_content_0 = {
+	0,
+	14,
+	1,
+	MR_TYPECTOR_REP_DU,
+	MR_MAYBE_STATIC_CODE(MR_ENTRY_AP(__Unify___transform_hlds__rbmm__points_to_graph__rptg_node_content_0_0)),
+	MR_MAYBE_STATIC_CODE(MR_ENTRY_AP(__Compare___transform_hlds__rbmm__points_to_graph__rptg_node_content_0_0)),
+	"transform_hlds.rbmm.points_to_graph",
+	"rptg_node_content",
+	{ (void *)mercury_data_transform_hlds__rbmm__points_to_graph__du_name_ordered_rptg_node_content_0 },
+	{ (void *)mercury_data_transform_hlds__rbmm__points_to_graph__du_ptag_ordered_rptg_node_content_0 },
+	1,
+	4,
+	mercury_data_transform_hlds__rbmm__points_to_graph__functor_number_map_rptg_node_content_0
+};
+
+const MR_TypeCtorInfo_Struct mercury_data_transform_hlds__rbmm__points_to_graph__type_ctor_info_rptg_nodes_0 = {
+	0,
+	14,
+	-1,
+	MR_TYPECTOR_REP_EQUIV_GROUND,
+	MR_MAYBE_STATIC_CODE(MR_ENTRY_AP(__Unify___transform_hlds__rbmm__points_to_graph__rptg_nodes_0_0)),
+	MR_MAYBE_STATIC_CODE(MR_ENTRY_AP(__Compare___transform_hlds__rbmm__points_to_graph__rptg_nodes_0_0)),
+	"transform_hlds.rbmm.points_to_graph",
+	"rptg_nodes",
+	{ 0 },
+	{ (void *)&mercury_data_tree234__ti_tree234_2transform_hlds__rbmm__points_to_graph__type_ctor_info_rptg_node_0transform_hlds__rbmm__points_to_graph__type_ctor_info_rptg_node_content_0 },
+	-1,
+	0,
+	NULL
+};
+
+const MR_TypeCtorInfo_Struct mercury_data_transform_hlds__rbmm__points_to_graph__type_ctor_info_rptg_outedges_0 = {
+	0,
+	14,
+	-1,
+	MR_TYPECTOR_REP_EQUIV_GROUND,
+	MR_MAYBE_STATIC_CODE(MR_ENTRY_AP(__Unify___transform_hlds__rbmm__points_to_graph__rptg_outedges_0_0)),
+	MR_MAYBE_STATIC_CODE(MR_ENTRY_AP(__Compare___transform_hlds__rbmm__points_to_graph__rptg_outedges_0_0)),
+	"transform_hlds.rbmm.points_to_graph",
+	"rptg_outedges",
+	{ 0 },
+	{ (void *)&mercury_data_tree234__ti_tree234_2transform_hlds__rbmm__points_to_graph__type_ctor_info_rptg_node_0tree234__ti_tree234_2transform_hlds__rbmm__points_to_graph__type_ctor_info_rptg_edge_0transform_hlds__rbmm__points_to_graph__type_ctor_info_rptg_node_0 },
+	-1,
+	0,
+	NULL
+};
+
+
+static const MR_UserClosureId
+mercury_data__closure_layout__transform_hlds__rbmm__points_to_graph__delete_all_inedges_and_edges_2_6_0_1 = {
+{
+MR_PREDICATE,
+"transform_hlds.rbmm.points_to_graph",
+"transform_hlds.rbmm.points_to_graph",
+"lambda_rbmm_points_to_graph_m_817",
+3,
+0
+},
+"transform_hlds.rbmm.points_to_graph",
+"rbmm.points_to_graph.m",
+817,
+"18"
+};
+
+static const MR_UserClosureId
+mercury_data__closure_layout__transform_hlds__rbmm__points_to_graph__transfer_in_edges_4_0_1 = {
+{
+MR_PREDICATE,
+"transform_hlds.rbmm.points_to_graph",
+"transform_hlds.rbmm.points_to_graph",
+"edge_points_to_node",
+5,
+0
+},
+"transform_hlds.rbmm.points_to_graph",
+"rbmm.points_to_graph.m",
+730,
+"6"
+};
+
+static const MR_UserClosureId
+mercury_data__closure_layout__transform_hlds__rbmm__points_to_graph__rptg_edge_in_graph_4_0_1 = {
+{
+MR_PREDICATE,
+"transform_hlds.rbmm.points_to_graph",
+"transform_hlds.rbmm.points_to_graph",
+"lambda_rbmm_points_to_graph_m_855",
+3,
+0
+},
+"transform_hlds.rbmm.points_to_graph",
+"rbmm.points_to_graph.m",
+855,
+"7"
+};
+
+static const MR_UserClosureId
+mercury_data__closure_layout__transform_hlds__rbmm__points_to_graph__reach_from_a_variable_2_7_0_1 = {
+{
+MR_PREDICATE,
+"transform_hlds.rbmm.points_to_graph",
+"transform_hlds.rbmm.points_to_graph",
+"update_remembered_list",
+8,
+0
+},
+"transform_hlds.rbmm.points_to_graph",
+"rbmm.points_to_graph.m",
+980,
+"22"
+};
+
+
+
+MR_BEGIN_MODULE(transform_hlds__rbmm__points_to_graph_module0)
+	MR_init_entry1(fn__transform_hlds__rbmm__points_to_graph__rptg_get_nodes_1_0);
+	MR_INIT_PROC_LAYOUT_ADDR(mercury__fn__transform_hlds__rbmm__points_to_graph__rptg_get_nodes_1_0);
+MR_BEGIN_CODE
+
+/*-------------------------------------------------------------------------*/
+/* code for 'rptg_get_nodes'/2 mode 0 */
+#ifdef MR_maybe_local_thread_engine_base
+	#undef MR_maybe_local_thread_engine_base
+	#define MR_maybe_local_thread_engine_base MR_local_thread_engine_base
+#endif
+MR_define_entry(mercury__fn__transform_hlds__rbmm__points_to_graph__rptg_get_nodes_1_0);
+	MR_MAYBE_INIT_LOCAL_THREAD_ENGINE_BASE
+	MR_r1 = MR_tfield(0, MR_r1, 2);
+	MR_proceed();
+#ifdef MR_maybe_local_thread_engine_base
+	#undef MR_maybe_local_thread_engine_base
+	#define MR_maybe_local_thread_engine_base MR_thread_engine_base
+#endif
+MR_END_MODULE
+
+MR_decl_entry(map__keys_2_0);
+
+MR_BEGIN_MODULE(transform_hlds__rbmm__points_to_graph_module1)
+	MR_init_entry1(fn__transform_hlds__rbmm__points_to_graph__rptg_get_nodes_as_list_1_0);
+	MR_INIT_PROC_LAYOUT_ADDR(mercury__fn__transform_hlds__rbmm__points_to_graph__rptg_get_nodes_as_list_1_0);
+MR_BEGIN_CODE
+
+/*-------------------------------------------------------------------------*/
+/* code for 'rptg_get_nodes_as_list'/2 mode 0 */
+#ifdef MR_maybe_local_thread_engine_base
+	#undef MR_maybe_local_thread_engine_base
+	#define MR_maybe_local_thread_engine_base MR_local_thread_engine_base
+#endif
+MR_define_entry(mercury__fn__transform_hlds__rbmm__points_to_graph__rptg_get_nodes_as_list_1_0);
+	MR_MAYBE_INIT_LOCAL_THREAD_ENGINE_BASE
+	{
+	MR_Word MR_tempr1;
+	MR_tempr1 = MR_r1;
+	MR_r1 = (MR_Word) MR_CTOR0_ADDR(transform_hlds__rbmm__points_to_graph, rptg_node);
+	MR_r2 = (MR_Word) MR_CTOR0_ADDR(transform_hlds__rbmm__points_to_graph, rptg_node_content);
+	MR_r3 = MR_tfield(0, MR_tempr1, 2);
+	MR_np_tailcall_ent(map__keys_2_0);
+	}
+#ifdef MR_maybe_local_thread_engine_base
+	#undef MR_maybe_local_thread_engine_base
+	#define MR_maybe_local_thread_engine_base MR_thread_engine_base
+#endif
+MR_END_MODULE
+
+
+MR_BEGIN_MODULE(transform_hlds__rbmm__points_to_graph_module2)
+	MR_init_entry1(fn__transform_hlds__rbmm__points_to_graph__rptg_get_edges_1_0);
+	MR_INIT_PROC_LAYOUT_ADDR(mercury__fn__transform_hlds__rbmm__points_to_graph__rptg_get_edges_1_0);
+MR_BEGIN_CODE
+
+/*-------------------------------------------------------------------------*/
+/* code for 'rptg_get_edges'/2 mode 0 */
+#ifdef MR_maybe_local_thread_engine_base
+	#undef MR_maybe_local_thread_engine_base
+	#define MR_maybe_local_thread_engine_base MR_local_thread_engine_base
+#endif
+MR_define_entry(mercury__fn__transform_hlds__rbmm__points_to_graph__rptg_get_edges_1_0);
+	MR_MAYBE_INIT_LOCAL_THREAD_ENGINE_BASE
+	MR_r1 = MR_tfield(0, MR_r1, 3);
+	MR_proceed();
+#ifdef MR_maybe_local_thread_engine_base
+	#undef MR_maybe_local_thread_engine_base
+	#define MR_maybe_local_thread_engine_base MR_thread_engine_base
+#endif
+MR_END_MODULE
+
+
+MR_BEGIN_MODULE(transform_hlds__rbmm__points_to_graph_module3)
+	MR_init_entry1(fn__transform_hlds__rbmm__points_to_graph__rptg_get_outedges_1_0);
+	MR_INIT_PROC_LAYOUT_ADDR(mercury__fn__transform_hlds__rbmm__points_to_graph__rptg_get_outedges_1_0);
+MR_BEGIN_CODE
+
+/*-------------------------------------------------------------------------*/
+/* code for 'rptg_get_outedges'/2 mode 0 */
+#ifdef MR_maybe_local_thread_engine_base
+	#undef MR_maybe_local_thread_engine_base
+	#define MR_maybe_local_thread_engine_base MR_local_thread_engine_base
+#endif
+MR_define_entry(mercury__fn__transform_hlds__rbmm__points_to_graph__rptg_get_outedges_1_0);
+	MR_MAYBE_INIT_LOCAL_THREAD_ENGINE_BASE
+	MR_r1 = MR_tfield(0, MR_r1, 4);
+	MR_proceed();
+#ifdef MR_maybe_local_thread_engine_base
+	#undef MR_maybe_local_thread_engine_base
+	#define MR_maybe_local_thread_engine_base MR_thread_engine_base
+#endif
+MR_END_MODULE
+
+MR_decl_entry(counter__allocate_3_0);
+
+MR_BEGIN_MODULE(transform_hlds__rbmm__points_to_graph_module4)
+	MR_init_entry1(fn__transform_hlds__rbmm__points_to_graph__rptg_get_next_node_id_1_0);
+	MR_INIT_PROC_LAYOUT_ADDR(mercury__fn__transform_hlds__rbmm__points_to_graph__rptg_get_next_node_id_1_0);
+MR_BEGIN_CODE
+
+/*-------------------------------------------------------------------------*/
+/* code for 'rptg_get_next_node_id'/2 mode 0 */
+#ifdef MR_maybe_local_thread_engine_base
+	#undef MR_maybe_local_thread_engine_base
+	#define MR_maybe_local_thread_engine_base MR_local_thread_engine_base
+#endif
+MR_define_entry(mercury__fn__transform_hlds__rbmm__points_to_graph__rptg_get_next_node_id_1_0);
+	MR_MAYBE_INIT_LOCAL_THREAD_ENGINE_BASE
+	MR_r1 = MR_tfield(0, MR_r1, 0);
+	MR_np_tailcall_ent(counter__allocate_3_0);
+#ifdef MR_maybe_local_thread_engine_base
+	#undef MR_maybe_local_thread_engine_base
+	#define MR_maybe_local_thread_engine_base MR_thread_engine_base
+#endif
+MR_END_MODULE
+
+MR_decl_entry(counter__init_2_0);
+MR_decl_entry(map__init_1_0);
+
+MR_BEGIN_MODULE(transform_hlds__rbmm__points_to_graph_module5)
+	MR_init_entry1(fn__transform_hlds__rbmm__points_to_graph__rpt_graph_init_0_0);
+	MR_INIT_PROC_LAYOUT_ADDR(mercury__fn__transform_hlds__rbmm__points_to_graph__rpt_graph_init_0_0);
+	MR_init_label5(fn__transform_hlds__rbmm__points_to_graph__rpt_graph_init_0_0,2,3,4,5,7)
+MR_BEGIN_CODE
+
+/*-------------------------------------------------------------------------*/
+/* code for 'rpt_graph_init'/1 mode 0 */
+#ifdef MR_maybe_local_thread_engine_base
+	#undef MR_maybe_local_thread_engine_base
+	#define MR_maybe_local_thread_engine_base MR_local_thread_engine_base
+#endif
+MR_define_entry(mercury__fn__transform_hlds__rbmm__points_to_graph__rpt_graph_init_0_0);
+	MR_MAYBE_INIT_LOCAL_THREAD_ENGINE_BASE
+	MR_incr_sp(6);
+	MR_sv(6) = (MR_Word) MR_succip;
+	MR_r1 = (MR_Integer) 1;
+	MR_np_call_localret_ent(counter__init_2_0,
+		fn__transform_hlds__rbmm__points_to_graph__rpt_graph_init_0_0_i2);
+MR_def_label(fn__transform_hlds__rbmm__points_to_graph__rpt_graph_init_0_0,2)
+	MR_MAYBE_INIT_LOCAL_THREAD_ENGINE_BASE
+	MR_sv(1) = MR_r1;
+	MR_r1 = (MR_Integer) 1;
+	MR_np_call_localret_ent(counter__init_2_0,
+		fn__transform_hlds__rbmm__points_to_graph__rpt_graph_init_0_0_i3);
+MR_def_label(fn__transform_hlds__rbmm__points_to_graph__rpt_graph_init_0_0,3)
+	MR_MAYBE_INIT_LOCAL_THREAD_ENGINE_BASE
+	MR_sv(2) = MR_r1;
+	MR_sv(4) = (MR_Word) MR_CTOR0_ADDR(transform_hlds__rbmm__points_to_graph, rptg_node);
+	MR_r1 = MR_sv(4);
+	MR_r2 = (MR_Word) MR_CTOR0_ADDR(transform_hlds__rbmm__points_to_graph, rptg_node_content);
+	MR_np_call_localret_ent(map__init_1_0,
+		fn__transform_hlds__rbmm__points_to_graph__rpt_graph_init_0_0_i4);
+MR_def_label(fn__transform_hlds__rbmm__points_to_graph__rpt_graph_init_0_0,4)
+	MR_MAYBE_INIT_LOCAL_THREAD_ENGINE_BASE
+	MR_sv(3) = MR_r1;
+	MR_sv(5) = (MR_Word) MR_CTOR0_ADDR(transform_hlds__rbmm__points_to_graph, rptg_edge);
+	MR_r1 = MR_sv(5);
+	MR_r2 = (MR_Word) MR_CTOR0_ADDR(transform_hlds__rbmm__points_to_graph, rptg_edge_info);
+	MR_np_call_localret_ent(map__init_1_0,
+		fn__transform_hlds__rbmm__points_to_graph__rpt_graph_init_0_0_i5);
+MR_def_label(fn__transform_hlds__rbmm__points_to_graph__rpt_graph_init_0_0,5)
+	MR_MAYBE_INIT_LOCAL_THREAD_ENGINE_BASE
+	MR_sv(4) = MR_r1;
+	MR_r1 = (MR_Word) MR_CTOR0_ADDR(transform_hlds__rbmm__points_to_graph, rptg_node);
+	MR_r2 = (MR_Word) MR_TAG_COMMON(0,0,0);
+	MR_np_call_localret_ent(map__init_1_0,
+		fn__transform_hlds__rbmm__points_to_graph__rpt_graph_init_0_0_i7);
+MR_def_label(fn__transform_hlds__rbmm__points_to_graph__rpt_graph_init_0_0,7)
+	MR_MAYBE_INIT_LOCAL_THREAD_ENGINE_BASE
+	MR_tag_alloc_heap(MR_r2, 0, (MR_Integer) 5);
+	MR_tfield(0, MR_r2, 0) = MR_sv(1);
+	MR_tfield(0, MR_r2, 1) = MR_sv(2);
+	MR_tfield(0, MR_r2, 2) = MR_sv(3);
+	MR_tfield(0, MR_r2, 3) = MR_sv(4);
+	MR_tfield(0, MR_r2, 4) = MR_r1;
+	MR_r1 = MR_r2;
+	MR_decr_sp_and_return(6);
+#ifdef MR_maybe_local_thread_engine_base
+	#undef MR_maybe_local_thread_engine_base
+	#define MR_maybe_local_thread_engine_base MR_thread_engine_base
+#endif
+MR_END_MODULE
+
+MR_decl_entry(map__lookup_3_0);
+
+MR_BEGIN_MODULE(transform_hlds__rbmm__points_to_graph_module6)
+	MR_init_entry1(fn__transform_hlds__rbmm__points_to_graph__rptg_get_node_content_2_0);
+	MR_INIT_PROC_LAYOUT_ADDR(mercury__fn__transform_hlds__rbmm__points_to_graph__rptg_get_node_content_2_0);
+MR_BEGIN_CODE
+
+/*-------------------------------------------------------------------------*/
+/* code for 'rptg_get_node_content'/3 mode 0 */
+#ifdef MR_maybe_local_thread_engine_base
+	#undef MR_maybe_local_thread_engine_base
+	#define MR_maybe_local_thread_engine_base MR_local_thread_engine_base
+#endif
+MR_define_entry(mercury__fn__transform_hlds__rbmm__points_to_graph__rptg_get_node_content_2_0);
+	MR_MAYBE_INIT_LOCAL_THREAD_ENGINE_BASE
+	{
+	MR_Word MR_tempr1, MR_tempr2;
+	MR_tempr1 = MR_r1;
+	MR_r1 = (MR_Word) MR_CTOR0_ADDR(transform_hlds__rbmm__points_to_graph, rptg_node);
+	MR_tempr2 = MR_r2;
+	MR_r2 = (MR_Word) MR_CTOR0_ADDR(transform_hlds__rbmm__points_to_graph, rptg_node_content);
+	MR_r3 = MR_tfield(0, MR_tempr1, 2);
+	MR_r4 = MR_tempr2;
+	MR_np_tailcall_ent(map__lookup_3_0);
+	}
+#ifdef MR_maybe_local_thread_engine_base
+	#undef MR_maybe_local_thread_engine_base
+	#define MR_maybe_local_thread_engine_base MR_thread_engine_base
+#endif
+MR_END_MODULE
+
+MR_decl_entry(map__det_update_4_0);
+
+MR_BEGIN_MODULE(transform_hlds__rbmm__points_to_graph_module7)
+	MR_init_entry1(transform_hlds__rbmm__points_to_graph__rptg_set_node_content_4_0);
+	MR_INIT_PROC_LAYOUT_ADDR(mercury__transform_hlds__rbmm__points_to_graph__rptg_set_node_content_4_0);
+	MR_init_label1(transform_hlds__rbmm__points_to_graph__rptg_set_node_content_4_0,2)
+MR_BEGIN_CODE
+
+/*-------------------------------------------------------------------------*/
+/* code for 'rptg_set_node_content'/4 mode 0 */
+#ifdef MR_maybe_local_thread_engine_base
+	#undef MR_maybe_local_thread_engine_base
+	#define MR_maybe_local_thread_engine_base MR_local_thread_engine_base
+#endif
+MR_define_entry(mercury__transform_hlds__rbmm__points_to_graph__rptg_set_node_content_4_0);
+	MR_MAYBE_INIT_LOCAL_THREAD_ENGINE_BASE
+	MR_incr_sp(2);
+	MR_sv(2) = (MR_Word) MR_succip;
+	MR_sv(1) = MR_r3;
+	{
+	MR_Word MR_tempr1, MR_tempr2;
+	MR_tempr1 = MR_r1;
+	MR_r1 = (MR_Word) MR_CTOR0_ADDR(transform_hlds__rbmm__points_to_graph, rptg_node);
+	MR_tempr2 = MR_r2;
+	MR_r2 = (MR_Word) MR_CTOR0_ADDR(transform_hlds__rbmm__points_to_graph, rptg_node_content);
+	MR_r3 = MR_tempr1;
+	MR_r4 = MR_tempr2;
+	MR_r5 = MR_tfield(0, MR_sv(1), 2);
+	}
+	MR_np_call_localret_ent(map__det_update_4_0,
+		transform_hlds__rbmm__points_to_graph__rptg_set_node_content_4_0_i2);
+MR_def_label(transform_hlds__rbmm__points_to_graph__rptg_set_node_content_4_0,2)
+	MR_MAYBE_INIT_LOCAL_THREAD_ENGINE_BASE
+	MR_tag_alloc_heap(MR_r2, 0, (MR_Integer) 5);
+	{
+	MR_Word MR_tempr1;
+	MR_tempr1 = MR_sv(1);
+	MR_tfield(0, MR_r2, 0) = MR_tfield(0, MR_tempr1, 0);
+	MR_tfield(0, MR_r2, 1) = MR_tfield(0, MR_tempr1, 1);
+	MR_tfield(0, MR_r2, 2) = MR_r1;
+	MR_tfield(0, MR_r2, 3) = MR_tfield(0, MR_tempr1, 3);
+	MR_tfield(0, MR_r2, 4) = MR_tfield(0, MR_tempr1, 4);
+	MR_r1 = MR_r2;
+	MR_decr_sp_and_return(2);
+	}
+#ifdef MR_maybe_local_thread_engine_base
+	#undef MR_maybe_local_thread_engine_base
+	#define MR_maybe_local_thread_engine_base MR_thread_engine_base
+#endif
+MR_END_MODULE
+
+
+MR_BEGIN_MODULE(transform_hlds__rbmm__points_to_graph_module8)
+	MR_init_entry1(transform_hlds__rbmm__points_to_graph__rptg_node_content_set_is_allocated_3_0);
+	MR_INIT_PROC_LAYOUT_ADDR(mercury__transform_hlds__rbmm__points_to_graph__rptg_node_content_set_is_allocated_3_0);
+MR_BEGIN_CODE
+
+/*-------------------------------------------------------------------------*/
+/* code for 'rptg_node_content_set_is_allocated'/3 mode 0 */
+#ifdef MR_maybe_local_thread_engine_base
+	#undef MR_maybe_local_thread_engine_base
+	#define MR_maybe_local_thread_engine_base MR_local_thread_engine_base
+#endif
+MR_define_entry(mercury__transform_hlds__rbmm__points_to_graph__rptg_node_content_set_is_allocated_3_0);
+	MR_MAYBE_INIT_LOCAL_THREAD_ENGINE_BASE
+	{
+	MR_Word MR_tempr1;
+	MR_tag_alloc_heap(MR_tempr1, 0, (MR_Integer) 5);
+	MR_tfield(0, MR_tempr1, 0) = MR_tfield(0, MR_r2, 0);
+	MR_tfield(0, MR_tempr1, 1) = MR_tfield(0, MR_r2, 1);
+	MR_tfield(0, MR_tempr1, 2) = MR_tfield(0, MR_r2, 2);
+	MR_tfield(0, MR_tempr1, 3) = MR_tfield(0, MR_r2, 3);
+	MR_tfield(0, MR_tempr1, 4) = MR_r1;
+	MR_r1 = MR_tempr1;
+	MR_proceed();
+	}
+#ifdef MR_maybe_local_thread_engine_base
+	#undef MR_maybe_local_thread_engine_base
+	#define MR_maybe_local_thread_engine_base MR_thread_engine_base
+#endif
+MR_END_MODULE
+
+
+MR_BEGIN_MODULE(transform_hlds__rbmm__points_to_graph_module9)
+	MR_init_entry1(transform_hlds__rbmm__points_to_graph__rptg_set_node_is_allocated_4_0);
+	MR_INIT_PROC_LAYOUT_ADDR(mercury__transform_hlds__rbmm__points_to_graph__rptg_set_node_is_allocated_4_0);
+	MR_init_label2(transform_hlds__rbmm__points_to_graph__rptg_set_node_is_allocated_4_0,2,4)
+MR_BEGIN_CODE
+
+/*-------------------------------------------------------------------------*/
+/* code for 'rptg_set_node_is_allocated'/4 mode 0 */
+#ifdef MR_maybe_local_thread_engine_base
+	#undef MR_maybe_local_thread_engine_base
+	#define MR_maybe_local_thread_engine_base MR_local_thread_engine_base
+#endif
+MR_define_entry(mercury__transform_hlds__rbmm__points_to_graph__rptg_set_node_is_allocated_4_0);
+	MR_MAYBE_INIT_LOCAL_THREAD_ENGINE_BASE
+	MR_incr_sp(4);
+	MR_sv(4) = (MR_Word) MR_succip;
+	MR_sv(1) = MR_r1;
+	MR_sv(2) = MR_r2;
+	MR_sv(3) = MR_r3;
+	MR_r1 = (MR_Word) MR_CTOR0_ADDR(transform_hlds__rbmm__points_to_graph, rptg_node);
+	MR_r2 = (MR_Word) MR_CTOR0_ADDR(transform_hlds__rbmm__points_to_graph, rptg_node_content);
+	MR_r3 = MR_tfield(0, MR_r3, 2);
+	MR_r4 = MR_sv(1);
+	MR_np_call_localret_ent(map__lookup_3_0,
+		transform_hlds__rbmm__points_to_graph__rptg_set_node_is_allocated_4_0_i2);
+MR_def_label(transform_hlds__rbmm__points_to_graph__rptg_set_node_is_allocated_4_0,2)
+	MR_MAYBE_INIT_LOCAL_THREAD_ENGINE_BASE
+	{
+	MR_Word MR_tempr1;
+	MR_tag_alloc_heap(MR_tempr1, 0, (MR_Integer) 5);
+	MR_r4 = MR_tempr1;
+	MR_tfield(0, MR_tempr1, 0) = MR_tfield(0, MR_r1, 0);
+	MR_tfield(0, MR_tempr1, 1) = MR_tfield(0, MR_r1, 1);
+	MR_tfield(0, MR_tempr1, 2) = MR_tfield(0, MR_r1, 2);
+	MR_tfield(0, MR_tempr1, 3) = MR_tfield(0, MR_r1, 3);
+	MR_tfield(0, MR_tempr1, 4) = MR_sv(2);
+	MR_r1 = (MR_Word) MR_CTOR0_ADDR(transform_hlds__rbmm__points_to_graph, rptg_node);
+	MR_r2 = (MR_Word) MR_CTOR0_ADDR(transform_hlds__rbmm__points_to_graph, rptg_node_content);
+	MR_r3 = MR_sv(1);
+	MR_r5 = MR_tfield(0, MR_sv(3), 2);
+	}
+	MR_np_call_localret_ent(map__det_update_4_0,
+		transform_hlds__rbmm__points_to_graph__rptg_set_node_is_allocated_4_0_i4);
+MR_def_label(transform_hlds__rbmm__points_to_graph__rptg_set_node_is_allocated_4_0,4)
+	MR_MAYBE_INIT_LOCAL_THREAD_ENGINE_BASE
+	MR_tag_alloc_heap(MR_r2, 0, (MR_Integer) 5);
+	{
+	MR_Word MR_tempr1;
+	MR_tempr1 = MR_sv(3);
+	MR_tfield(0, MR_r2, 0) = MR_tfield(0, MR_tempr1, 0);
+	MR_tfield(0, MR_r2, 1) = MR_tfield(0, MR_tempr1, 1);
+	MR_tfield(0, MR_r2, 2) = MR_r1;
+	MR_tfield(0, MR_r2, 3) = MR_tfield(0, MR_tempr1, 3);
+	MR_tfield(0, MR_r2, 4) = MR_tfield(0, MR_tempr1, 4);
+	MR_r1 = MR_r2;
+	MR_decr_sp_and_return(4);
+	}
+#ifdef MR_maybe_local_thread_engine_base
+	#undef MR_maybe_local_thread_engine_base
+	#define MR_maybe_local_thread_engine_base MR_thread_engine_base
+#endif
+MR_END_MODULE
+
+
+MR_BEGIN_MODULE(transform_hlds__rbmm__points_to_graph_module10)
+	MR_init_entry1(transform_hlds__rbmm__points_to_graph__rptg_node_content_set_merged_from_3_0);
+	MR_INIT_PROC_LAYOUT_ADDR(mercury__transform_hlds__rbmm__points_to_graph__rptg_node_content_set_merged_from_3_0);
+MR_BEGIN_CODE
+
+/*-------------------------------------------------------------------------*/
+/* code for 'rptg_node_content_set_merged_from'/3 mode 0 */
+#ifdef MR_maybe_local_thread_engine_base
+	#undef MR_maybe_local_thread_engine_base
+	#define MR_maybe_local_thread_engine_base MR_local_thread_engine_base
+#endif
+MR_define_entry(mercury__transform_hlds__rbmm__points_to_graph__rptg_node_content_set_merged_from_3_0);
+	MR_MAYBE_INIT_LOCAL_THREAD_ENGINE_BASE
+	{
+	MR_Word MR_tempr1;
+	MR_tag_alloc_heap(MR_tempr1, 0, (MR_Integer) 5);
+	MR_tfield(0, MR_tempr1, 0) = MR_tfield(0, MR_r2, 0);
+	MR_tfield(0, MR_tempr1, 1) = MR_tfield(0, MR_r2, 1);
+	MR_tfield(0, MR_tempr1, 2) = MR_r1;
+	MR_tfield(0, MR_tempr1, 3) = MR_tfield(0, MR_r2, 3);
+	MR_tfield(0, MR_tempr1, 4) = MR_tfield(0, MR_r2, 4);
+	MR_r1 = MR_tempr1;
+	MR_proceed();
+	}
+#ifdef MR_maybe_local_thread_engine_base
+	#undef MR_maybe_local_thread_engine_base
+	#define MR_maybe_local_thread_engine_base MR_thread_engine_base
+#endif
+MR_END_MODULE
+
+MR_decl_entry(fn__set__make_singleton_set_1_0);
+MR_decl_entry(map__set_4_0);
+MR_decl_entry(fn__map__init_0_0);
+
+MR_BEGIN_MODULE(transform_hlds__rbmm__points_to_graph_module11)
+	MR_init_entry1(transform_hlds__rbmm__points_to_graph__rptg_add_node_4_0);
+	MR_INIT_PROC_LAYOUT_ADDR(mercury__transform_hlds__rbmm__points_to_graph__rptg_add_node_4_0);
+	MR_init_label5(transform_hlds__rbmm__points_to_graph__rptg_add_node_4_0,2,4,6,8,10)
+MR_BEGIN_CODE
+
+/*-------------------------------------------------------------------------*/
+/* code for 'rptg_add_node'/4 mode 0 */
+#ifdef MR_maybe_local_thread_engine_base
+	#undef MR_maybe_local_thread_engine_base
+	#define MR_maybe_local_thread_engine_base MR_local_thread_engine_base
+#endif
+MR_define_entry(mercury__transform_hlds__rbmm__points_to_graph__rptg_add_node_4_0);
+	MR_MAYBE_INIT_LOCAL_THREAD_ENGINE_BASE
+	MR_incr_sp(6);
+	MR_sv(6) = (MR_Word) MR_succip;
+	MR_sv(2) = MR_r1;
+	MR_sv(1) = MR_r2;
+	MR_r1 = MR_tfield(0, MR_r2, 0);
+	MR_np_call_localret_ent(counter__allocate_3_0,
+		transform_hlds__rbmm__points_to_graph__rptg_add_node_4_0_i2);
+MR_def_label(transform_hlds__rbmm__points_to_graph__rptg_add_node_4_0,2)
+	MR_MAYBE_INIT_LOCAL_THREAD_ENGINE_BASE
+	{
+	MR_Word MR_tempr1, MR_tempr2;
+	MR_tag_alloc_heap(MR_tempr1, 0, (MR_Integer) 5);
+	MR_sv(3) = MR_tempr1;
+	MR_tfield(0, MR_tempr1, 0) = MR_r2;
+	MR_tempr2 = MR_sv(1);
+	MR_tfield(0, MR_tempr1, 1) = MR_tfield(0, MR_tempr2, 1);
+	MR_tfield(0, MR_tempr1, 2) = MR_tfield(0, MR_tempr2, 2);
+	MR_tfield(0, MR_tempr1, 3) = MR_tfield(0, MR_tempr2, 3);
+	MR_tfield(0, MR_tempr1, 4) = MR_tfield(0, MR_tempr2, 4);
+	MR_sv(1) = MR_r1;
+	MR_sv(4) = (MR_Word) MR_CTOR0_ADDR(transform_hlds__rbmm__points_to_graph, rptg_node);
+	MR_r1 = MR_sv(4);
+	MR_r2 = MR_sv(1);
+	}
+	MR_np_call_localret_ent(fn__set__make_singleton_set_1_0,
+		transform_hlds__rbmm__points_to_graph__rptg_add_node_4_0_i4);
+MR_def_label(transform_hlds__rbmm__points_to_graph__rptg_add_node_4_0,4)
+	MR_MAYBE_INIT_LOCAL_THREAD_ENGINE_BASE
+	{
+	MR_Word MR_tempr1, MR_tempr2;
+	MR_tag_alloc_heap(MR_tempr1, 0, (MR_Integer) 5);
+	MR_r4 = MR_tempr1;
+	MR_tempr2 = MR_sv(2);
+	MR_tfield(0, MR_tempr1, 0) = MR_tfield(0, MR_tempr2, 0);
+	MR_tfield(0, MR_tempr1, 1) = MR_tfield(0, MR_tempr2, 1);
+	MR_tfield(0, MR_tempr1, 2) = MR_r1;
+	MR_tfield(0, MR_tempr1, 3) = MR_tfield(0, MR_tempr2, 3);
+	MR_tfield(0, MR_tempr1, 4) = MR_tfield(0, MR_tempr2, 4);
+	MR_r1 = MR_sv(4);
+	MR_r2 = (MR_Word) MR_CTOR0_ADDR(transform_hlds__rbmm__points_to_graph, rptg_node_content);
+	MR_r3 = MR_sv(1);
+	MR_r5 = MR_tfield(0, MR_sv(3), 2);
+	}
+	MR_np_call_localret_ent(map__set_4_0,
+		transform_hlds__rbmm__points_to_graph__rptg_add_node_4_0_i6);
+MR_def_label(transform_hlds__rbmm__points_to_graph__rptg_add_node_4_0,6)
+	MR_MAYBE_INIT_LOCAL_THREAD_ENGINE_BASE
+	{
+	MR_Word MR_tempr1, MR_tempr2;
+	MR_tag_alloc_heap(MR_tempr1, 0, (MR_Integer) 5);
+	MR_tempr2 = MR_sv(3);
+	MR_tfield(0, MR_tempr1, 0) = MR_tfield(0, MR_tempr2, 0);
+	MR_tfield(0, MR_tempr1, 1) = MR_tfield(0, MR_tempr2, 1);
+	MR_tfield(0, MR_tempr1, 2) = MR_r1;
+	MR_tfield(0, MR_tempr1, 3) = MR_tfield(0, MR_tempr2, 3);
+	MR_tfield(0, MR_tempr1, 4) = MR_tfield(0, MR_tempr2, 4);
+	MR_sv(2) = MR_tfield(0, MR_tempr1, 4);
+	MR_sv(3) = MR_tempr1;
+	MR_sv(5) = (MR_Word) MR_CTOR0_ADDR(transform_hlds__rbmm__points_to_graph, rptg_edge);
+	MR_r1 = MR_sv(5);
+	MR_r2 = MR_sv(4);
+	}
+	MR_np_call_localret_ent(fn__map__init_0_0,
+		transform_hlds__rbmm__points_to_graph__rptg_add_node_4_0_i8);
+MR_def_label(transform_hlds__rbmm__points_to_graph__rptg_add_node_4_0,8)
+	MR_MAYBE_INIT_LOCAL_THREAD_ENGINE_BASE
+	{
+	MR_Word MR_tempr1;
+	MR_tempr1 = MR_r1;
+	MR_r1 = MR_sv(4);
+	MR_r2 = (MR_Word) MR_TAG_COMMON(0,0,0);
+	MR_r3 = MR_sv(1);
+	MR_r4 = MR_tempr1;
+	MR_r5 = MR_sv(2);
+	}
+	MR_np_call_localret_ent(map__set_4_0,
+		transform_hlds__rbmm__points_to_graph__rptg_add_node_4_0_i10);
+MR_def_label(transform_hlds__rbmm__points_to_graph__rptg_add_node_4_0,10)
+	MR_MAYBE_INIT_LOCAL_THREAD_ENGINE_BASE
+	MR_tag_alloc_heap(MR_r2, 0, (MR_Integer) 5);
+	{
+	MR_Word MR_tempr1;
+	MR_tempr1 = MR_sv(3);
+	MR_tfield(0, MR_r2, 0) = MR_tfield(0, MR_tempr1, 0);
+	MR_tfield(0, MR_r2, 1) = MR_tfield(0, MR_tempr1, 1);
+	MR_tfield(0, MR_r2, 2) = MR_tfield(0, MR_tempr1, 2);
+	MR_tfield(0, MR_r2, 3) = MR_tfield(0, MR_tempr1, 3);
+	MR_tfield(0, MR_r2, 4) = MR_r1;
+	MR_r1 = MR_sv(1);
+	MR_decr_sp_and_return(6);
+	}
+#ifdef MR_maybe_local_thread_engine_base
+	#undef MR_maybe_local_thread_engine_base
+	#define MR_maybe_local_thread_engine_base MR_thread_engine_base
+#endif
+MR_END_MODULE
+
+
+MR_BEGIN_MODULE(transform_hlds__rbmm__points_to_graph_module12)
+	MR_init_entry1(transform_hlds__rbmm__points_to_graph__rptg_get_edge_contents_5_0);
+	MR_INIT_PROC_LAYOUT_ADDR(mercury__transform_hlds__rbmm__points_to_graph__rptg_get_edge_contents_5_0);
+	MR_init_label1(transform_hlds__rbmm__points_to_graph__rptg_get_edge_contents_5_0,2)
+MR_BEGIN_CODE
+
+/*-------------------------------------------------------------------------*/
+/* code for 'rptg_get_edge_contents'/5 mode 0 */
+#ifdef MR_maybe_local_thread_engine_base
+	#undef MR_maybe_local_thread_engine_base
+	#define MR_maybe_local_thread_engine_base MR_local_thread_engine_base
+#endif
+MR_define_entry(mercury__transform_hlds__rbmm__points_to_graph__rptg_get_edge_contents_5_0);
+	MR_MAYBE_INIT_LOCAL_THREAD_ENGINE_BASE
+	MR_incr_sp(1);
+	MR_sv(1) = (MR_Word) MR_succip;
+	{
+	MR_Word MR_tempr1, MR_tempr2;
+	MR_tempr1 = MR_r1;
+	MR_r1 = (MR_Word) MR_CTOR0_ADDR(transform_hlds__rbmm__points_to_graph, rptg_edge);
+	MR_tempr2 = MR_r2;
+	MR_r2 = (MR_Word) MR_CTOR0_ADDR(transform_hlds__rbmm__points_to_graph, rptg_edge_info);
+	MR_r3 = MR_tfield(0, MR_tempr1, 3);
+	MR_r4 = MR_tempr2;
+	}
+	MR_np_call_localret_ent(map__lookup_3_0,
+		transform_hlds__rbmm__points_to_graph__rptg_get_edge_contents_5_0_i2);
+MR_def_label(transform_hlds__rbmm__points_to_graph__rptg_get_edge_contents_5_0,2)
+	MR_MAYBE_INIT_LOCAL_THREAD_ENGINE_BASE
+	{
+	MR_Word MR_tempr1;
+	MR_tempr1 = MR_r1;
+	MR_r1 = MR_tfield(0, MR_r1, 0);
+	MR_r2 = MR_tfield(0, MR_tempr1, 1);
+	MR_r3 = MR_tfield(0, MR_tempr1, 2);
+	MR_decr_sp_and_return(1);
+	}
+#ifdef MR_maybe_local_thread_engine_base
+	#undef MR_maybe_local_thread_engine_base
+	#define MR_maybe_local_thread_engine_base MR_thread_engine_base
+#endif
+MR_END_MODULE
+
+
+MR_BEGIN_MODULE(transform_hlds__rbmm__points_to_graph_module13)
+	MR_init_entry1(transform_hlds__rbmm__points_to_graph__rptg_set_edge_6_0);
+	MR_INIT_PROC_LAYOUT_ADDR(mercury__transform_hlds__rbmm__points_to_graph__rptg_set_edge_6_0);
+	MR_init_label5(transform_hlds__rbmm__points_to_graph__rptg_set_edge_6_0,2,5,8,9,10)
+MR_BEGIN_CODE
+
+/*-------------------------------------------------------------------------*/
+/* code for 'rptg_set_edge'/6 mode 0 */
+#ifdef MR_maybe_local_thread_engine_base
+	#undef MR_maybe_local_thread_engine_base
+	#define MR_maybe_local_thread_engine_base MR_local_thread_engine_base
+#endif
+MR_define_entry(mercury__transform_hlds__rbmm__points_to_graph__rptg_set_edge_6_0);
+	MR_MAYBE_INIT_LOCAL_THREAD_ENGINE_BASE
+	MR_incr_sp(9);
+	MR_sv(9) = (MR_Word) MR_succip;
+	MR_sv(1) = MR_r1;
+	MR_sv(2) = MR_r2;
+	MR_sv(3) = MR_r3;
+	{
+	MR_Word MR_tempr1;
+	MR_tempr1 = MR_r4;
+	MR_sv(4) = MR_tempr1;
+	MR_r1 = MR_tfield(0, MR_tempr1, 1);
+	}
+	MR_np_call_localret_ent(counter__allocate_3_0,
+		transform_hlds__rbmm__points_to_graph__rptg_set_edge_6_0_i2);
+MR_def_label(transform_hlds__rbmm__points_to_graph__rptg_set_edge_6_0,2)
+	MR_MAYBE_INIT_LOCAL_THREAD_ENGINE_BASE
+	{
+	MR_Word MR_tempr1, MR_tempr2, MR_tempr3;
+	MR_tag_alloc_heap(MR_tempr1, 0, (MR_Integer) 5);
+	MR_tempr3 = MR_sv(4);
+	MR_tfield(0, MR_tempr1, 0) = MR_tfield(0, MR_tempr3, 0);
+	MR_tfield(0, MR_tempr1, 1) = MR_r2;
+	MR_tfield(0, MR_tempr1, 2) = MR_tfield(0, MR_tempr3, 2);
+	MR_tfield(0, MR_tempr1, 3) = MR_tfield(0, MR_tempr3, 3);
+	MR_tfield(0, MR_tempr1, 4) = MR_tfield(0, MR_tempr3, 4);
+	MR_tag_alloc_heap(MR_tempr2, 0, (MR_Integer) 3);
+	MR_r4 = MR_tempr2;
+	MR_tfield(0, MR_tempr2, 0) = MR_sv(1);
+	MR_tfield(0, MR_tempr2, 1) = MR_sv(2);
+	MR_tfield(0, MR_tempr2, 2) = MR_sv(3);
+	MR_sv(3) = MR_r1;
+	MR_sv(4) = MR_tempr1;
+	MR_sv(6) = (MR_Word) MR_CTOR0_ADDR(transform_hlds__rbmm__points_to_graph, rptg_edge);
+	MR_r1 = MR_sv(6);
+	MR_r2 = (MR_Word) MR_CTOR0_ADDR(transform_hlds__rbmm__points_to_graph, rptg_edge_info);
+	MR_r3 = MR_sv(3);
+	MR_r5 = MR_tfield(0, MR_tempr1, 3);
+	}
+	MR_np_call_localret_ent(map__set_4_0,
+		transform_hlds__rbmm__points_to_graph__rptg_set_edge_6_0_i5);
+MR_def_label(transform_hlds__rbmm__points_to_graph__rptg_set_edge_6_0,5)
+	MR_MAYBE_INIT_LOCAL_THREAD_ENGINE_BASE
+	{
+	MR_Word MR_tempr1, MR_tempr2;
+	MR_tag_alloc_heap(MR_tempr1, 0, (MR_Integer) 5);
+	MR_sv(5) = MR_tempr1;
+	MR_tempr2 = MR_sv(4);
+	MR_tfield(0, MR_tempr1, 0) = MR_tfield(0, MR_tempr2, 0);
+	MR_tfield(0, MR_tempr1, 1) = MR_tfield(0, MR_tempr2, 1);
+	MR_tfield(0, MR_tempr1, 2) = MR_tfield(0, MR_tempr2, 2);
+	MR_tfield(0, MR_tempr1, 3) = MR_r1;
+	MR_tfield(0, MR_tempr1, 4) = MR_tfield(0, MR_tempr2, 4);
+	MR_sv(4) = MR_tfield(0, MR_tempr1, 4);
+	MR_sv(7) = (MR_Word) MR_CTOR0_ADDR(transform_hlds__rbmm__points_to_graph, rptg_node);
+	MR_sv(8) = (MR_Word) MR_TAG_COMMON(0,0,0);
+	MR_r1 = MR_sv(7);
+	MR_r2 = MR_sv(8);
+	MR_r3 = MR_sv(4);
+	MR_r4 = MR_sv(1);
+	}
+	MR_np_call_localret_ent(map__lookup_3_0,
+		transform_hlds__rbmm__points_to_graph__rptg_set_edge_6_0_i8);
+MR_def_label(transform_hlds__rbmm__points_to_graph__rptg_set_edge_6_0,8)
+	MR_MAYBE_INIT_LOCAL_THREAD_ENGINE_BASE
+	{
+	MR_Word MR_tempr1;
+	MR_tempr1 = MR_r1;
+	MR_r1 = MR_sv(6);
+	MR_r2 = MR_sv(7);
+	MR_r3 = MR_sv(3);
+	MR_r4 = MR_sv(2);
+	MR_r5 = MR_tempr1;
+	}
+	MR_np_call_localret_ent(map__set_4_0,
+		transform_hlds__rbmm__points_to_graph__rptg_set_edge_6_0_i9);
+MR_def_label(transform_hlds__rbmm__points_to_graph__rptg_set_edge_6_0,9)
+	MR_MAYBE_INIT_LOCAL_THREAD_ENGINE_BASE
+	{
+	MR_Word MR_tempr1;
+	MR_tempr1 = MR_r1;
+	MR_r1 = MR_sv(7);
+	MR_r2 = MR_sv(8);
+	MR_r3 = MR_sv(1);
+	MR_r4 = MR_tempr1;
+	MR_r5 = MR_sv(4);
+	}
+	MR_np_call_localret_ent(map__set_4_0,
+		transform_hlds__rbmm__points_to_graph__rptg_set_edge_6_0_i10);
+MR_def_label(transform_hlds__rbmm__points_to_graph__rptg_set_edge_6_0,10)
+	MR_MAYBE_INIT_LOCAL_THREAD_ENGINE_BASE
+	MR_tag_alloc_heap(MR_r2, 0, (MR_Integer) 5);
+	{
+	MR_Word MR_tempr1;
+	MR_tempr1 = MR_sv(5);
+	MR_tfield(0, MR_r2, 0) = MR_tfield(0, MR_tempr1, 0);
+	MR_tfield(0, MR_r2, 1) = MR_tfield(0, MR_tempr1, 1);
+	MR_tfield(0, MR_r2, 2) = MR_tfield(0, MR_tempr1, 2);
+	MR_tfield(0, MR_r2, 3) = MR_tfield(0, MR_tempr1, 3);
+	MR_tfield(0, MR_r2, 4) = MR_r1;
+	MR_r1 = MR_sv(3);
+	MR_decr_sp_and_return(9);
+	}
+#ifdef MR_maybe_local_thread_engine_base
+	#undef MR_maybe_local_thread_engine_base
+	#define MR_maybe_local_thread_engine_base MR_thread_engine_base
+#endif
+MR_END_MODULE
+
+
+MR_BEGIN_MODULE(transform_hlds__rbmm__points_to_graph_module14)
+	MR_init_entry1(fn__transform_hlds__rbmm__points_to_graph__rptg_lookup_map_outedges_2_0);
+	MR_INIT_PROC_LAYOUT_ADDR(mercury__fn__transform_hlds__rbmm__points_to_graph__rptg_lookup_map_outedges_2_0);
+MR_BEGIN_CODE
+
+/*-------------------------------------------------------------------------*/
+/* code for 'rptg_lookup_map_outedges'/3 mode 0 */
+#ifdef MR_maybe_local_thread_engine_base
+	#undef MR_maybe_local_thread_engine_base
+	#define MR_maybe_local_thread_engine_base MR_local_thread_engine_base
+#endif
+MR_define_entry(mercury__fn__transform_hlds__rbmm__points_to_graph__rptg_lookup_map_outedges_2_0);
+	MR_MAYBE_INIT_LOCAL_THREAD_ENGINE_BASE
+	{
+	MR_Word MR_tempr1, MR_tempr2;
+	MR_tempr1 = MR_r1;
+	MR_r1 = (MR_Word) MR_CTOR0_ADDR(transform_hlds__rbmm__points_to_graph, rptg_node);
+	MR_tempr2 = MR_r2;
+	MR_r2 = (MR_Word) MR_TAG_COMMON(0,0,0);
+	MR_r3 = MR_tfield(0, MR_tempr1, 4);
+	MR_r4 = MR_tempr2;
+	MR_np_tailcall_ent(map__lookup_3_0);
+	}
+#ifdef MR_maybe_local_thread_engine_base
+	#undef MR_maybe_local_thread_engine_base
+	#define MR_maybe_local_thread_engine_base MR_thread_engine_base
+#endif
+MR_END_MODULE
+
+MR_decl_entry(map__values_2_0);
+
+MR_BEGIN_MODULE(transform_hlds__rbmm__points_to_graph_module15)
+	MR_init_entry1(fn__transform_hlds__rbmm__points_to_graph__rptg_lookup_list_endnodes_2_0);
+	MR_INIT_PROC_LAYOUT_ADDR(mercury__fn__transform_hlds__rbmm__points_to_graph__rptg_lookup_list_endnodes_2_0);
+	MR_init_label1(fn__transform_hlds__rbmm__points_to_graph__rptg_lookup_list_endnodes_2_0,3)
+MR_BEGIN_CODE
+
+/*-------------------------------------------------------------------------*/
+/* code for 'rptg_lookup_list_endnodes'/3 mode 0 */
+#ifdef MR_maybe_local_thread_engine_base
+	#undef MR_maybe_local_thread_engine_base
+	#define MR_maybe_local_thread_engine_base MR_local_thread_engine_base
+#endif
+MR_define_entry(mercury__fn__transform_hlds__rbmm__points_to_graph__rptg_lookup_list_endnodes_2_0);
+	MR_MAYBE_INIT_LOCAL_THREAD_ENGINE_BASE
+	MR_incr_sp(1);
+	MR_sv(1) = (MR_Word) MR_succip;
+	{
+	MR_Word MR_tempr1, MR_tempr2;
+	MR_tempr1 = MR_r1;
+	MR_r1 = (MR_Word) MR_CTOR0_ADDR(transform_hlds__rbmm__points_to_graph, rptg_node);
+	MR_tempr2 = MR_r2;
+	MR_r2 = (MR_Word) MR_TAG_COMMON(0,0,0);
+	MR_r3 = MR_tfield(0, MR_tempr1, 4);
+	MR_r4 = MR_tempr2;
+	}
+	MR_np_call_localret_ent(map__lookup_3_0,
+		fn__transform_hlds__rbmm__points_to_graph__rptg_lookup_list_endnodes_2_0_i3);
+MR_def_label(fn__transform_hlds__rbmm__points_to_graph__rptg_lookup_list_endnodes_2_0,3)
+	MR_MAYBE_INIT_LOCAL_THREAD_ENGINE_BASE
+	{
+	MR_Word MR_tempr1;
+	MR_tempr1 = MR_r1;
+	MR_r1 = (MR_Word) MR_CTOR0_ADDR(transform_hlds__rbmm__points_to_graph, rptg_edge);
+	MR_r2 = (MR_Word) MR_CTOR0_ADDR(transform_hlds__rbmm__points_to_graph, rptg_node);
+	MR_r3 = MR_tempr1;
+	MR_succip_word = MR_sv(1);
+	MR_decr_sp(1);
+	MR_np_tailcall_ent(map__values_2_0);
+	}
+#ifdef MR_maybe_local_thread_engine_base
+	#undef MR_maybe_local_thread_engine_base
+	#define MR_maybe_local_thread_engine_base MR_thread_engine_base
+#endif
+MR_END_MODULE
+
+MR_decl_entry(set__list_to_set_2_0);
+
+MR_BEGIN_MODULE(transform_hlds__rbmm__points_to_graph_module16)
+	MR_init_entry1(fn__transform_hlds__rbmm__points_to_graph__rptg_successors_2_0);
+	MR_INIT_PROC_LAYOUT_ADDR(mercury__fn__transform_hlds__rbmm__points_to_graph__rptg_successors_2_0);
+	MR_init_label1(fn__transform_hlds__rbmm__points_to_graph__rptg_successors_2_0,2)
+MR_BEGIN_CODE
+
+/*-------------------------------------------------------------------------*/
+/* code for 'rptg_successors'/3 mode 0 */
+#ifdef MR_maybe_local_thread_engine_base
+	#undef MR_maybe_local_thread_engine_base
+	#define MR_maybe_local_thread_engine_base MR_local_thread_engine_base
+#endif
+MR_define_entry(mercury__fn__transform_hlds__rbmm__points_to_graph__rptg_successors_2_0);
+	MR_MAYBE_INIT_LOCAL_THREAD_ENGINE_BASE
+	MR_incr_sp(1);
+	MR_sv(1) = (MR_Word) MR_succip;
+	MR_np_call_localret_ent(fn__transform_hlds__rbmm__points_to_graph__rptg_lookup_list_endnodes_2_0,
+		fn__transform_hlds__rbmm__points_to_graph__rptg_successors_2_0_i2);
+MR_def_label(fn__transform_hlds__rbmm__points_to_graph__rptg_successors_2_0,2)
+	MR_MAYBE_INIT_LOCAL_THREAD_ENGINE_BASE
+	{
+	MR_Word MR_tempr1;
+	MR_tempr1 = MR_r1;
+	MR_r1 = (MR_Word) MR_CTOR0_ADDR(transform_hlds__rbmm__points_to_graph, rptg_node);
+	MR_r2 = MR_tempr1;
+	MR_succip_word = MR_sv(1);
+	MR_decr_sp(1);
+	MR_np_tailcall_ent(set__list_to_set_2_0);
+	}
+#ifdef MR_maybe_local_thread_engine_base
+	#undef MR_maybe_local_thread_engine_base
+	#define MR_maybe_local_thread_engine_base MR_thread_engine_base
+#endif
+MR_END_MODULE
+
+MR_declare_entry(MR_do_fail);
+MR_decl_entry(map__member_3_0);
+MR_declare_entry(MR_do_redo);
+MR_decl_entry(list__member_2_0);
+
+MR_BEGIN_MODULE(transform_hlds__rbmm__points_to_graph_module17)
+	MR_init_entry1(transform_hlds__rbmm__points_to_graph__rptg_path_2_5_0);
+	MR_INIT_PROC_LAYOUT_ADDR(mercury__transform_hlds__rbmm__points_to_graph__rptg_path_2_5_0);
+	MR_init_label10(transform_hlds__rbmm__points_to_graph__rptg_path_2_5_0,2,5,7,6,8,11,4,14,17,20)
+MR_BEGIN_CODE
+
+/*-------------------------------------------------------------------------*/
+/* code for 'rptg_path_2'/5 mode 0 */
+#ifdef MR_maybe_local_thread_engine_base
+	#undef MR_maybe_local_thread_engine_base
+	#define MR_maybe_local_thread_engine_base MR_local_thread_engine_base
+#endif
+MR_def_static(transform_hlds__rbmm__points_to_graph__rptg_path_2_5_0)
+	MR_MAYBE_INIT_LOCAL_THREAD_ENGINE_BASE
+	MR_mkframe("pred transform_hlds.rbmm.points_to_graph.rptg_path_2/5-0", 8,
+		MR_ENTRY(MR_do_fail));
+	MR_fv(1) = MR_r1;
+	MR_fv(2) = MR_r3;
+	MR_fv(3) = MR_r4;
+	MR_fv(6) = (MR_Word) MR_CTOR0_ADDR(transform_hlds__rbmm__points_to_graph, rptg_node);
+	MR_fv(7) = (MR_Word) MR_CTOR0_ADDR(transform_hlds__rbmm__points_to_graph, rptg_edge);
+	MR_r1 = MR_fv(6);
+	{
+	MR_Word MR_tempr1;
+	MR_tempr1 = MR_r2;
+	MR_r2 = (MR_Word) MR_TAG_COMMON(0,0,0);
+	MR_r3 = MR_tfield(0, MR_fv(1), 4);
+	MR_r4 = MR_tempr1;
+	}
+	MR_np_call_localret_ent(map__lookup_3_0,
+		transform_hlds__rbmm__points_to_graph__rptg_path_2_5_0_i2);
+MR_def_label(transform_hlds__rbmm__points_to_graph__rptg_path_2_5_0,2)
+	MR_MAYBE_INIT_LOCAL_THREAD_ENGINE_BASE
+	MR_redoip_slot_word(MR_maxfr) = (MR_Word) MR_LABEL_AP(transform_hlds__rbmm__points_to_graph__rptg_path_2_5_0_i4);
+	MR_fv(4) = MR_r1;
+	MR_r1 = MR_fv(7);
+	MR_r2 = MR_fv(6);
+	MR_r3 = MR_fv(4);
+	MR_np_call_localret_ent(map__member_3_0,
+		transform_hlds__rbmm__points_to_graph__rptg_path_2_5_0_i5);
+MR_def_label(transform_hlds__rbmm__points_to_graph__rptg_path_2_5_0,5)
+	MR_MAYBE_INIT_LOCAL_THREAD_ENGINE_BASE
+	if ((MR_fv(2) == MR_r2)) {
+		MR_GOTO_LAB(transform_hlds__rbmm__points_to_graph__rptg_path_2_5_0_i7);
+	}
+	MR_fv(5) = MR_r1;
+	MR_fv(8) = MR_r2;
+	MR_GOTO_LAB(transform_hlds__rbmm__points_to_graph__rptg_path_2_5_0_i6);
+MR_def_label(transform_hlds__rbmm__points_to_graph__rptg_path_2_5_0,7)
+	MR_MAYBE_INIT_LOCAL_THREAD_ENGINE_BASE
+	MR_r2 = MR_fv(2);
+	MR_r3 = MR_fv(3);
+	MR_fv(5) = MR_r1;
+	MR_r1 = MR_fv(6);
+	MR_GOTO_LAB(transform_hlds__rbmm__points_to_graph__rptg_path_2_5_0_i8);
+MR_def_label(transform_hlds__rbmm__points_to_graph__rptg_path_2_5_0,6)
+	MR_MAYBE_INIT_LOCAL_THREAD_ENGINE_BASE
+	if ((MR_fv(2) != MR_fv(8))) {
+		MR_GOTO(MR_ENTRY(MR_do_redo));
+	}
+	MR_r2 = MR_fv(2);
+	MR_r3 = MR_fv(3);
+	MR_r1 = MR_fv(6);
+MR_def_label(transform_hlds__rbmm__points_to_graph__rptg_path_2_5_0,8)
+	MR_MAYBE_INIT_LOCAL_THREAD_ENGINE_BASE
+	MR_fv(2) = MR_r2;
+	MR_fv(3) = MR_r3;
+	MR_fv(6) = MR_r1;
+	MR_np_call_localret_ent(list__member_2_0,
+		transform_hlds__rbmm__points_to_graph__rptg_path_2_5_0_i11);
+MR_def_label(transform_hlds__rbmm__points_to_graph__rptg_path_2_5_0,11)
+	MR_MAYBE_INIT_LOCAL_THREAD_ENGINE_BASE
+	if (MR_r1) {
+		MR_GOTO(MR_ENTRY(MR_do_redo));
+	}
+	MR_r2 = MR_fv(2);
+	{
+	MR_Word MR_tempr1, MR_tempr2;
+	MR_tempr1 = MR_fv(3);
+	MR_r1 = MR_fv(6);
+	MR_tag_alloc_heap(MR_tempr2, 1, (MR_Integer) 2);
+	MR_tfield(1, MR_tempr2, 0) = MR_fv(5);
+	MR_tfield(1, MR_tempr2, 1) = (MR_Word) MR_tbmkword(0, 0);
+	MR_r1 = MR_tempr2;
+	MR_succeed();
+	}
+MR_def_label(transform_hlds__rbmm__points_to_graph__rptg_path_2_5_0,4)
+	MR_MAYBE_INIT_LOCAL_THREAD_ENGINE_BASE
+	MR_redoip_slot_word(MR_curfr) = (MR_Word) MR_ENTRY(MR_do_fail);
+	MR_r1 = MR_fv(7);
+	MR_r2 = MR_fv(6);
+	MR_r3 = MR_fv(4);
+	MR_np_call_localret_ent(map__member_3_0,
+		transform_hlds__rbmm__points_to_graph__rptg_path_2_5_0_i14);
+MR_def_label(transform_hlds__rbmm__points_to_graph__rptg_path_2_5_0,14)
+	MR_MAYBE_INIT_LOCAL_THREAD_ENGINE_BASE
+	MR_fv(4) = MR_r2;
+	MR_fv(5) = MR_r1;
+	MR_r1 = MR_fv(6);
+	MR_r3 = MR_fv(3);
+	MR_np_call_localret_ent(list__member_2_0,
+		transform_hlds__rbmm__points_to_graph__rptg_path_2_5_0_i17);
+MR_def_label(transform_hlds__rbmm__points_to_graph__rptg_path_2_5_0,17)
+	MR_MAYBE_INIT_LOCAL_THREAD_ENGINE_BASE
+	if (MR_r1) {
+		MR_GOTO(MR_ENTRY(MR_do_redo));
+	}
+	MR_r2 = MR_fv(4);
+	MR_r1 = MR_fv(5);
+	{
+	MR_Word MR_tempr1;
+	MR_tag_alloc_heap(MR_tempr1, 1, (MR_Integer) 2);
+	MR_r4 = MR_tempr1;
+	MR_tfield(1, MR_tempr1, 0) = MR_r2;
+	MR_tfield(1, MR_tempr1, 1) = MR_fv(3);
+	MR_r1 = MR_fv(1);
+	MR_r3 = MR_fv(2);
+	}
+	MR_np_localcall_lab(transform_hlds__rbmm__points_to_graph__rptg_path_2_5_0,
+		transform_hlds__rbmm__points_to_graph__rptg_path_2_5_0_i20);
+MR_def_label(transform_hlds__rbmm__points_to_graph__rptg_path_2_5_0,20)
+	MR_MAYBE_INIT_LOCAL_THREAD_ENGINE_BASE
+	MR_tag_alloc_heap(MR_r2, 1, (MR_Integer) 2);
+	MR_tfield(1, MR_r2, 0) = MR_fv(5);
+	MR_tfield(1, MR_r2, 1) = MR_r1;
+	MR_r1 = MR_r2;
+	MR_succeed();
+#ifdef MR_maybe_local_thread_engine_base
+	#undef MR_maybe_local_thread_engine_base
+	#define MR_maybe_local_thread_engine_base MR_thread_engine_base
+#endif
+MR_END_MODULE
+
+
+MR_BEGIN_MODULE(transform_hlds__rbmm__points_to_graph_module18)
+	MR_init_entry1(transform_hlds__rbmm__points_to_graph__rptg_path_2_5_1);
+	MR_INIT_PROC_LAYOUT_ADDR(mercury__transform_hlds__rbmm__points_to_graph__rptg_path_2_5_1);
+	MR_init_label7(transform_hlds__rbmm__points_to_graph__rptg_path_2_5_1,2,5,8,4,11,14,17)
+MR_BEGIN_CODE
+
+/*-------------------------------------------------------------------------*/
+/* code for 'rptg_path_2'/5 mode 1 */
+#ifdef MR_maybe_local_thread_engine_base
+	#undef MR_maybe_local_thread_engine_base
+	#define MR_maybe_local_thread_engine_base MR_local_thread_engine_base
+#endif
+MR_def_static(transform_hlds__rbmm__points_to_graph__rptg_path_2_5_1)
+	MR_MAYBE_INIT_LOCAL_THREAD_ENGINE_BASE
+	MR_mkframe("pred transform_hlds.rbmm.points_to_graph.rptg_path_2/5-1", 7,
+		MR_ENTRY(MR_do_fail));
+	MR_fv(1) = MR_r1;
+	MR_fv(3) = MR_r3;
+	MR_fv(6) = (MR_Word) MR_CTOR0_ADDR(transform_hlds__rbmm__points_to_graph, rptg_node);
+	MR_fv(7) = (MR_Word) MR_CTOR0_ADDR(transform_hlds__rbmm__points_to_graph, rptg_edge);
+	MR_r1 = MR_fv(6);
+	{
+	MR_Word MR_tempr1;
+	MR_tempr1 = MR_r2;
+	MR_r2 = (MR_Word) MR_TAG_COMMON(0,0,0);
+	MR_r3 = MR_tfield(0, MR_fv(1), 4);
+	MR_r4 = MR_tempr1;
+	}
+	MR_np_call_localret_ent(map__lookup_3_0,
+		transform_hlds__rbmm__points_to_graph__rptg_path_2_5_1_i2);
+MR_def_label(transform_hlds__rbmm__points_to_graph__rptg_path_2_5_1,2)
+	MR_MAYBE_INIT_LOCAL_THREAD_ENGINE_BASE
+	MR_redoip_slot_word(MR_maxfr) = (MR_Word) MR_LABEL_AP(transform_hlds__rbmm__points_to_graph__rptg_path_2_5_1_i4);
+	MR_fv(4) = MR_r1;
+	MR_r1 = MR_fv(7);
+	MR_r2 = MR_fv(6);
+	MR_r3 = MR_fv(4);
+	MR_np_call_localret_ent(map__member_3_0,
+		transform_hlds__rbmm__points_to_graph__rptg_path_2_5_1_i5);
+MR_def_label(transform_hlds__rbmm__points_to_graph__rptg_path_2_5_1,5)
+	MR_MAYBE_INIT_LOCAL_THREAD_ENGINE_BASE
+	MR_fv(2) = MR_r2;
+	MR_fv(5) = MR_r1;
+	MR_r1 = MR_fv(6);
+	MR_r3 = MR_fv(3);
+	MR_np_call_localret_ent(list__member_2_0,
+		transform_hlds__rbmm__points_to_graph__rptg_path_2_5_1_i8);
+MR_def_label(transform_hlds__rbmm__points_to_graph__rptg_path_2_5_1,8)
+	MR_MAYBE_INIT_LOCAL_THREAD_ENGINE_BASE
+	if (MR_r1) {
+		MR_GOTO(MR_ENTRY(MR_do_redo));
+	}
+	MR_r2 = MR_fv(2);
+	MR_r1 = MR_fv(5);
+	{
+	MR_Word MR_tempr1;
+	MR_tag_alloc_heap(MR_tempr1, 1, (MR_Integer) 2);
+	MR_tfield(1, MR_tempr1, 0) = MR_r1;
+	MR_tfield(1, MR_tempr1, 1) = (MR_Word) MR_tbmkword(0, 0);
+	MR_r1 = MR_r2;
+	MR_r2 = MR_tempr1;
+	MR_succeed();
+	}
+MR_def_label(transform_hlds__rbmm__points_to_graph__rptg_path_2_5_1,4)
+	MR_MAYBE_INIT_LOCAL_THREAD_ENGINE_BASE
+	MR_redoip_slot_word(MR_curfr) = (MR_Word) MR_ENTRY(MR_do_fail);
+	MR_r1 = MR_fv(7);
+	MR_r2 = MR_fv(6);
+	MR_r3 = MR_fv(4);
+	MR_np_call_localret_ent(map__member_3_0,
+		transform_hlds__rbmm__points_to_graph__rptg_path_2_5_1_i11);
+MR_def_label(transform_hlds__rbmm__points_to_graph__rptg_path_2_5_1,11)
+	MR_MAYBE_INIT_LOCAL_THREAD_ENGINE_BASE
+	MR_fv(2) = MR_r2;
+	MR_fv(4) = MR_r1;
+	MR_r1 = MR_fv(6);
+	MR_r3 = MR_fv(3);
+	MR_np_call_localret_ent(list__member_2_0,
+		transform_hlds__rbmm__points_to_graph__rptg_path_2_5_1_i14);
+MR_def_label(transform_hlds__rbmm__points_to_graph__rptg_path_2_5_1,14)
+	MR_MAYBE_INIT_LOCAL_THREAD_ENGINE_BASE
+	if (MR_r1) {
+		MR_GOTO(MR_ENTRY(MR_do_redo));
+	}
+	MR_r2 = MR_fv(2);
+	MR_r1 = MR_fv(4);
+	{
+	MR_Word MR_tempr1;
+	MR_tag_alloc_heap(MR_tempr1, 1, (MR_Integer) 2);
+	MR_r3 = MR_tempr1;
+	MR_tfield(1, MR_tempr1, 0) = MR_r2;
+	MR_tfield(1, MR_tempr1, 1) = MR_fv(3);
+	MR_r1 = MR_fv(1);
+	}
+	MR_np_localcall_lab(transform_hlds__rbmm__points_to_graph__rptg_path_2_5_1,
+		transform_hlds__rbmm__points_to_graph__rptg_path_2_5_1_i17);
+MR_def_label(transform_hlds__rbmm__points_to_graph__rptg_path_2_5_1,17)
+	MR_MAYBE_INIT_LOCAL_THREAD_ENGINE_BASE
+	{
+	MR_Word MR_tempr1;
+	MR_tag_alloc_heap(MR_tempr1, 1, (MR_Integer) 2);
+	MR_tfield(1, MR_tempr1, 0) = MR_fv(4);
+	MR_tfield(1, MR_tempr1, 1) = MR_r2;
+	MR_r2 = MR_tempr1;
+	MR_succeed();
+	}
+#ifdef MR_maybe_local_thread_engine_base
+	#undef MR_maybe_local_thread_engine_base
+	#define MR_maybe_local_thread_engine_base MR_thread_engine_base
+#endif
+MR_END_MODULE
+
+
+MR_BEGIN_MODULE(transform_hlds__rbmm__points_to_graph_module19)
+	MR_init_entry1(transform_hlds__rbmm__points_to_graph__rptg_path_4_0);
+	MR_INIT_PROC_LAYOUT_ADDR(mercury__transform_hlds__rbmm__points_to_graph__rptg_path_4_0);
+MR_BEGIN_CODE
+
+/*-------------------------------------------------------------------------*/
+/* code for 'rptg_path'/4 mode 0 */
+#ifdef MR_maybe_local_thread_engine_base
+	#undef MR_maybe_local_thread_engine_base
+	#define MR_maybe_local_thread_engine_base MR_local_thread_engine_base
+#endif
+MR_define_entry(mercury__transform_hlds__rbmm__points_to_graph__rptg_path_4_0);
+	MR_MAYBE_INIT_LOCAL_THREAD_ENGINE_BASE
+	MR_r4 = (MR_Word) MR_tbmkword(0, 0);
+	MR_np_tailcall_ent(transform_hlds__rbmm__points_to_graph__rptg_path_2_5_0);
+#ifdef MR_maybe_local_thread_engine_base
+	#undef MR_maybe_local_thread_engine_base
+	#define MR_maybe_local_thread_engine_base MR_thread_engine_base
+#endif
+MR_END_MODULE
+
+
+MR_BEGIN_MODULE(transform_hlds__rbmm__points_to_graph_module20)
+	MR_init_entry1(transform_hlds__rbmm__points_to_graph__rptg_path_4_1);
+	MR_INIT_PROC_LAYOUT_ADDR(mercury__transform_hlds__rbmm__points_to_graph__rptg_path_4_1);
+MR_BEGIN_CODE
+
+/*-------------------------------------------------------------------------*/
+/* code for 'rptg_path'/4 mode 1 */
+#ifdef MR_maybe_local_thread_engine_base
+	#undef MR_maybe_local_thread_engine_base
+	#define MR_maybe_local_thread_engine_base MR_local_thread_engine_base
+#endif
+MR_define_entry(mercury__transform_hlds__rbmm__points_to_graph__rptg_path_4_1);
+	MR_MAYBE_INIT_LOCAL_THREAD_ENGINE_BASE
+	MR_r3 = (MR_Word) MR_tbmkword(0, 0);
+	MR_np_tailcall_ent(transform_hlds__rbmm__points_to_graph__rptg_path_2_5_1);
+#ifdef MR_maybe_local_thread_engine_base
+	#undef MR_maybe_local_thread_engine_base
+	#define MR_maybe_local_thread_engine_base MR_thread_engine_base
+#endif
+MR_END_MODULE
+
+
+MR_BEGIN_MODULE(transform_hlds__rbmm__points_to_graph_module21)
+	MR_init_entry1(fn__transform_hlds__rbmm__points_to_graph__rptg_node_content_get_node_type_1_0);
+	MR_INIT_PROC_LAYOUT_ADDR(mercury__fn__transform_hlds__rbmm__points_to_graph__rptg_node_content_get_node_type_1_0);
+MR_BEGIN_CODE
+
+/*-------------------------------------------------------------------------*/
+/* code for 'rptg_node_content_get_node_type'/2 mode 0 */
+#ifdef MR_maybe_local_thread_engine_base
+	#undef MR_maybe_local_thread_engine_base
+	#define MR_maybe_local_thread_engine_base MR_local_thread_engine_base
+#endif
+MR_define_entry(mercury__fn__transform_hlds__rbmm__points_to_graph__rptg_node_content_get_node_type_1_0);
+	MR_MAYBE_INIT_LOCAL_THREAD_ENGINE_BASE
+	MR_r1 = MR_tfield(0, MR_r1, 3);
+	MR_proceed();
+#ifdef MR_maybe_local_thread_engine_base
+	#undef MR_maybe_local_thread_engine_base
+	#define MR_maybe_local_thread_engine_base MR_thread_engine_base
+#endif
+MR_END_MODULE
+
+
+MR_BEGIN_MODULE(transform_hlds__rbmm__points_to_graph_module22)
+	MR_init_entry1(fn__transform_hlds__rbmm__points_to_graph__rptg_lookup_node_type_2_0);
+	MR_INIT_PROC_LAYOUT_ADDR(mercury__fn__transform_hlds__rbmm__points_to_graph__rptg_lookup_node_type_2_0);
+	MR_init_label1(fn__transform_hlds__rbmm__points_to_graph__rptg_lookup_node_type_2_0,2)
+MR_BEGIN_CODE
+
+/*-------------------------------------------------------------------------*/
+/* code for 'rptg_lookup_node_type'/3 mode 0 */
+#ifdef MR_maybe_local_thread_engine_base
+	#undef MR_maybe_local_thread_engine_base
+	#define MR_maybe_local_thread_engine_base MR_local_thread_engine_base
+#endif
+MR_define_entry(mercury__fn__transform_hlds__rbmm__points_to_graph__rptg_lookup_node_type_2_0);
+	MR_MAYBE_INIT_LOCAL_THREAD_ENGINE_BASE
+	MR_incr_sp(1);
+	MR_sv(1) = (MR_Word) MR_succip;
+	{
+	MR_Word MR_tempr1, MR_tempr2;
+	MR_tempr1 = MR_r1;
+	MR_r1 = (MR_Word) MR_CTOR0_ADDR(transform_hlds__rbmm__points_to_graph, rptg_node);
+	MR_tempr2 = MR_r2;
+	MR_r2 = (MR_Word) MR_CTOR0_ADDR(transform_hlds__rbmm__points_to_graph, rptg_node_content);
+	MR_r3 = MR_tfield(0, MR_tempr1, 2);
+	MR_r4 = MR_tempr2;
+	}
+	MR_np_call_localret_ent(map__lookup_3_0,
+		fn__transform_hlds__rbmm__points_to_graph__rptg_lookup_node_type_2_0_i2);
+MR_def_label(fn__transform_hlds__rbmm__points_to_graph__rptg_lookup_node_type_2_0,2)
+	MR_MAYBE_INIT_LOCAL_THREAD_ENGINE_BASE
+	MR_r1 = MR_tfield(0, MR_r1, 3);
+	MR_decr_sp_and_return(1);
+#ifdef MR_maybe_local_thread_engine_base
+	#undef MR_maybe_local_thread_engine_base
+	#define MR_maybe_local_thread_engine_base MR_thread_engine_base
+#endif
+MR_END_MODULE
+
+MR_decl_entry(__Unify___parse_tree__prog_data__mer_type_0_0);
+
+MR_BEGIN_MODULE(transform_hlds__rbmm__points_to_graph_module23)
+	MR_init_entry1(transform_hlds__rbmm__points_to_graph__find_node_with_same_type_4_0);
+	MR_INIT_PROC_LAYOUT_ADDR(mercury__transform_hlds__rbmm__points_to_graph__find_node_with_same_type_4_0);
+	MR_init_label5(transform_hlds__rbmm__points_to_graph__find_node_with_same_type_4_0,21,3,6,5,1)
+MR_BEGIN_CODE
+
+/*-------------------------------------------------------------------------*/
+/* code for 'find_node_with_same_type'/4 mode 0 */
+#ifdef MR_maybe_local_thread_engine_base
+	#undef MR_maybe_local_thread_engine_base
+	#define MR_maybe_local_thread_engine_base MR_local_thread_engine_base
+#endif
+MR_def_static(transform_hlds__rbmm__points_to_graph__find_node_with_same_type_4_0)
+	MR_MAYBE_INIT_LOCAL_THREAD_ENGINE_BASE
+	MR_incr_sp(5);
+	MR_sv(5) = (MR_Word) MR_succip;
+MR_def_label(transform_hlds__rbmm__points_to_graph__find_node_with_same_type_4_0,21)
+	MR_MAYBE_INIT_LOCAL_THREAD_ENGINE_BASE
+	if (MR_LTAGS_TEST(MR_r1,0,0)) {
+		MR_GOTO_LAB(transform_hlds__rbmm__points_to_graph__find_node_with_same_type_4_0_i1);
+	}
+	MR_sv(1) = MR_tfield(1, MR_r1, 0);
+	MR_sv(2) = MR_tfield(1, MR_r1, 1);
+	MR_sv(3) = MR_r2;
+	MR_sv(4) = MR_r3;
+	MR_r1 = (MR_Word) MR_CTOR0_ADDR(transform_hlds__rbmm__points_to_graph, rptg_node);
+	MR_r2 = (MR_Word) MR_CTOR0_ADDR(transform_hlds__rbmm__points_to_graph, rptg_node_content);
+	MR_r3 = MR_tfield(0, MR_sv(3), 2);
+	MR_r4 = MR_sv(1);
+	MR_np_call_localret_ent(map__lookup_3_0,
+		transform_hlds__rbmm__points_to_graph__find_node_with_same_type_4_0_i3);
+MR_def_label(transform_hlds__rbmm__points_to_graph__find_node_with_same_type_4_0,3)
+	MR_MAYBE_INIT_LOCAL_THREAD_ENGINE_BASE
+	MR_r1 = MR_tfield(0, MR_r1, 3);
+	MR_r2 = MR_sv(4);
+	MR_np_call_localret_ent(__Unify___parse_tree__prog_data__mer_type_0_0,
+		transform_hlds__rbmm__points_to_graph__find_node_with_same_type_4_0_i6);
+MR_def_label(transform_hlds__rbmm__points_to_graph__find_node_with_same_type_4_0,6)
+	MR_MAYBE_INIT_LOCAL_THREAD_ENGINE_BASE
+	if (!(MR_r1)) {
+		MR_GOTO_LAB(transform_hlds__rbmm__points_to_graph__find_node_with_same_type_4_0_i5);
+	}
+	MR_r2 = MR_sv(1);
+	MR_r1 = MR_TRUE;
+	MR_decr_sp_and_return(5);
+MR_def_label(transform_hlds__rbmm__points_to_graph__find_node_with_same_type_4_0,5)
+	MR_MAYBE_INIT_LOCAL_THREAD_ENGINE_BASE
+	MR_r1 = MR_sv(2);
+	MR_r2 = MR_sv(3);
+	MR_r3 = MR_sv(4);
+	MR_succip_word = MR_sv(5);
+	MR_GOTO_LAB(transform_hlds__rbmm__points_to_graph__find_node_with_same_type_4_0_i21);
+MR_def_label(transform_hlds__rbmm__points_to_graph__find_node_with_same_type_4_0,1)
+	MR_MAYBE_INIT_LOCAL_THREAD_ENGINE_BASE
+	MR_r1 = MR_FALSE;
+	MR_decr_sp_and_return(5);
+#ifdef MR_maybe_local_thread_engine_base
+	#undef MR_maybe_local_thread_engine_base
+	#define MR_maybe_local_thread_engine_base MR_thread_engine_base
+#endif
+MR_END_MODULE
+
+MR_decl_entry(fn__f_108_105_115_116_95_95_43_43_2_0);
+MR_decl_entry(list__remove_dups_2_0);
+MR_decl_entry(list__delete_elems_3_0);
+
+MR_BEGIN_MODULE(transform_hlds__rbmm__points_to_graph_module24)
+	MR_init_entry1(transform_hlds__rbmm__points_to_graph__reachable_and_having_type_2_5_0);
+	MR_INIT_PROC_LAYOUT_ADDR(mercury__transform_hlds__rbmm__points_to_graph__reachable_and_having_type_2_5_0);
+	MR_init_label8(transform_hlds__rbmm__points_to_graph__reachable_and_having_type_2_5_0,24,3,6,8,10,11,14,1)
+MR_BEGIN_CODE
+
+/*-------------------------------------------------------------------------*/
+/* code for 'reachable_and_having_type_2'/5 mode 0 */
+#ifdef MR_maybe_local_thread_engine_base
+	#undef MR_maybe_local_thread_engine_base
+	#define MR_maybe_local_thread_engine_base MR_local_thread_engine_base
+#endif
+MR_def_static(transform_hlds__rbmm__points_to_graph__reachable_and_having_type_2_5_0)
+	MR_MAYBE_INIT_LOCAL_THREAD_ENGINE_BASE
+	MR_incr_sp(7);
+	MR_sv(7) = (MR_Word) MR_succip;
+MR_def_label(transform_hlds__rbmm__points_to_graph__reachable_and_having_type_2_5_0,24)
+	MR_MAYBE_INIT_LOCAL_THREAD_ENGINE_BASE
+	if (MR_LTAGS_TEST(MR_r2,0,0)) {
+		MR_GOTO_LAB(transform_hlds__rbmm__points_to_graph__reachable_and_having_type_2_5_0_i1);
+	}
+	MR_sv(1) = MR_r1;
+	MR_sv(2) = MR_tfield(1, MR_r2, 0);
+	MR_sv(3) = MR_tfield(1, MR_r2, 1);
+	MR_sv(4) = MR_r3;
+	MR_sv(5) = MR_r4;
+	MR_r2 = MR_sv(2);
+	MR_np_call_localret_ent(fn__transform_hlds__rbmm__points_to_graph__rptg_lookup_list_endnodes_2_0,
+		transform_hlds__rbmm__points_to_graph__reachable_and_having_type_2_5_0_i3);
+MR_def_label(transform_hlds__rbmm__points_to_graph__reachable_and_having_type_2_5_0,3)
+	MR_MAYBE_INIT_LOCAL_THREAD_ENGINE_BASE
+	MR_sv(6) = MR_r1;
+	MR_r2 = MR_sv(1);
+	MR_r3 = MR_sv(5);
+	MR_np_call_localret_ent(transform_hlds__rbmm__points_to_graph__find_node_with_same_type_4_0,
+		transform_hlds__rbmm__points_to_graph__reachable_and_having_type_2_5_0_i6);
+MR_def_label(transform_hlds__rbmm__points_to_graph__reachable_and_having_type_2_5_0,6)
+	MR_MAYBE_INIT_LOCAL_THREAD_ENGINE_BASE
+	if (MR_r1) {
+		MR_GOTO_LAB(transform_hlds__rbmm__points_to_graph__reachable_and_having_type_2_5_0_i14);
+	}
+	MR_r1 = MR_sv(6);
+	{
+	MR_Word MR_tempr1, MR_tempr2;
+	MR_tempr1 = MR_sv(3);
+	MR_sv(3) = (MR_Word) MR_CTOR0_ADDR(transform_hlds__rbmm__points_to_graph, rptg_node);
+	MR_tempr2 = MR_r1;
+	MR_r1 = MR_sv(3);
+	MR_r2 = MR_tempr1;
+	MR_r3 = MR_tempr2;
+	}
+	MR_np_call_localret_ent(fn__f_108_105_115_116_95_95_43_43_2_0,
+		transform_hlds__rbmm__points_to_graph__reachable_and_having_type_2_5_0_i8);
+MR_def_label(transform_hlds__rbmm__points_to_graph__reachable_and_having_type_2_5_0,8)
+	MR_MAYBE_INIT_LOCAL_THREAD_ENGINE_BASE
+	MR_tag_alloc_heap(MR_r2, 1, (MR_Integer) 2);
+	MR_tfield(1, MR_r2, 0) = MR_sv(2);
+	MR_tfield(1, MR_r2, 1) = MR_sv(4);
+	MR_sv(2) = MR_r1;
+	MR_r1 = MR_sv(3);
+	MR_np_call_localret_ent(list__remove_dups_2_0,
+		transform_hlds__rbmm__points_to_graph__reachable_and_having_type_2_5_0_i10);
+MR_def_label(transform_hlds__rbmm__points_to_graph__reachable_and_having_type_2_5_0,10)
+	MR_MAYBE_INIT_LOCAL_THREAD_ENGINE_BASE
+	{
+	MR_Word MR_tempr1;
+	MR_tempr1 = MR_sv(2);
+	MR_sv(2) = MR_r1;
+	MR_r1 = MR_sv(3);
+	MR_r2 = MR_tempr1;
+	MR_r3 = MR_sv(2);
+	}
+	MR_np_call_localret_ent(list__delete_elems_3_0,
+		transform_hlds__rbmm__points_to_graph__reachable_and_having_type_2_5_0_i11);
+MR_def_label(transform_hlds__rbmm__points_to_graph__reachable_and_having_type_2_5_0,11)
+	MR_MAYBE_INIT_LOCAL_THREAD_ENGINE_BASE
+	{
+	MR_Word MR_tempr1;
+	MR_tempr1 = MR_r1;
+	MR_r1 = MR_sv(1);
+	MR_r2 = MR_tempr1;
+	MR_r3 = MR_sv(2);
+	MR_r4 = MR_sv(5);
+	MR_succip_word = MR_sv(7);
+	MR_GOTO_LAB(transform_hlds__rbmm__points_to_graph__reachable_and_having_type_2_5_0_i24);
+	}
+MR_def_label(transform_hlds__rbmm__points_to_graph__reachable_and_having_type_2_5_0,14)
+	MR_MAYBE_INIT_LOCAL_THREAD_ENGINE_BASE
+	MR_r1 = MR_TRUE;
+	MR_decr_sp_and_return(7);
+MR_def_label(transform_hlds__rbmm__points_to_graph__reachable_and_having_type_2_5_0,1)
+	MR_MAYBE_INIT_LOCAL_THREAD_ENGINE_BASE
+	MR_r1 = MR_FALSE;
+	MR_decr_sp_and_return(7);
+#ifdef MR_maybe_local_thread_engine_base
+	#undef MR_maybe_local_thread_engine_base
+	#define MR_maybe_local_thread_engine_base MR_thread_engine_base
+#endif
+MR_END_MODULE
+
+
+MR_BEGIN_MODULE(transform_hlds__rbmm__points_to_graph_module25)
+	MR_init_entry1(transform_hlds__rbmm__points_to_graph__rptg_reachable_and_having_type_4_0);
+	MR_INIT_PROC_LAYOUT_ADDR(mercury__transform_hlds__rbmm__points_to_graph__rptg_reachable_and_having_type_4_0);
+	MR_init_label3(transform_hlds__rbmm__points_to_graph__rptg_reachable_and_having_type_4_0,2,5,4)
+MR_BEGIN_CODE
+
+/*-------------------------------------------------------------------------*/
+/* code for 'rptg_reachable_and_having_type'/4 mode 0 */
+#ifdef MR_maybe_local_thread_engine_base
+	#undef MR_maybe_local_thread_engine_base
+	#define MR_maybe_local_thread_engine_base MR_local_thread_engine_base
+#endif
+MR_define_entry(mercury__transform_hlds__rbmm__points_to_graph__rptg_reachable_and_having_type_4_0);
+	MR_MAYBE_INIT_LOCAL_THREAD_ENGINE_BASE
+	MR_incr_sp(4);
+	MR_sv(4) = (MR_Word) MR_succip;
+	MR_sv(1) = MR_r1;
+	MR_sv(2) = MR_r2;
+	MR_sv(3) = MR_r3;
+	MR_r1 = (MR_Word) MR_CTOR0_ADDR(transform_hlds__rbmm__points_to_graph, rptg_node);
+	MR_r2 = (MR_Word) MR_CTOR0_ADDR(transform_hlds__rbmm__points_to_graph, rptg_node_content);
+	MR_r3 = MR_tfield(0, MR_sv(1), 2);
+	MR_r4 = MR_sv(2);
+	MR_np_call_localret_ent(map__lookup_3_0,
+		transform_hlds__rbmm__points_to_graph__rptg_reachable_and_having_type_4_0_i2);
+MR_def_label(transform_hlds__rbmm__points_to_graph__rptg_reachable_and_having_type_4_0,2)
+	MR_MAYBE_INIT_LOCAL_THREAD_ENGINE_BASE
+	MR_r1 = MR_tfield(0, MR_r1, 3);
+	MR_r2 = MR_sv(3);
+	MR_np_call_localret_ent(__Unify___parse_tree__prog_data__mer_type_0_0,
+		transform_hlds__rbmm__points_to_graph__rptg_reachable_and_having_type_4_0_i5);
+MR_def_label(transform_hlds__rbmm__points_to_graph__rptg_reachable_and_having_type_4_0,5)
+	MR_MAYBE_INIT_LOCAL_THREAD_ENGINE_BASE
+	if (!(MR_r1)) {
+		MR_GOTO_LAB(transform_hlds__rbmm__points_to_graph__rptg_reachable_and_having_type_4_0_i4);
+	}
+	MR_r2 = MR_sv(2);
+	MR_succip_word = MR_sv(4);
+	MR_decr_sp(4);
+	MR_r1 = MR_TRUE;
+	MR_proceed();
+MR_def_label(transform_hlds__rbmm__points_to_graph__rptg_reachable_and_having_type_4_0,4)
+	MR_MAYBE_INIT_LOCAL_THREAD_ENGINE_BASE
+	MR_tag_alloc_heap(MR_r2, 1, (MR_Integer) 2);
+	MR_tfield(1, MR_r2, 0) = MR_sv(2);
+	MR_tfield(1, MR_r2, 1) = (MR_Word) MR_tbmkword(0, 0);
+	MR_r1 = MR_sv(1);
+	MR_r3 = MR_r2;
+	MR_r4 = MR_sv(3);
+	MR_succip_word = MR_sv(4);
+	MR_decr_sp(4);
+	MR_np_tailcall_ent(transform_hlds__rbmm__points_to_graph__reachable_and_having_type_2_5_0);
+#ifdef MR_maybe_local_thread_engine_base
+	#undef MR_maybe_local_thread_engine_base
+	#define MR_maybe_local_thread_engine_base MR_thread_engine_base
+#endif
+MR_END_MODULE
+
+
+MR_BEGIN_MODULE(transform_hlds__rbmm__points_to_graph_module26)
+	MR_init_entry1(fn__transform_hlds__rbmm__points_to_graph__rptg_node_content_get_region_name_1_0);
+	MR_INIT_PROC_LAYOUT_ADDR(mercury__fn__transform_hlds__rbmm__points_to_graph__rptg_node_content_get_region_name_1_0);
+MR_BEGIN_CODE
+
+/*-------------------------------------------------------------------------*/
+/* code for 'rptg_node_content_get_region_name'/2 mode 0 */
+#ifdef MR_maybe_local_thread_engine_base
+	#undef MR_maybe_local_thread_engine_base
+	#define MR_maybe_local_thread_engine_base MR_local_thread_engine_base
+#endif
+MR_define_entry(mercury__fn__transform_hlds__rbmm__points_to_graph__rptg_node_content_get_region_name_1_0);
+	MR_MAYBE_INIT_LOCAL_THREAD_ENGINE_BASE
+	MR_r1 = MR_tfield(0, MR_r1, 1);
+	MR_proceed();
+#ifdef MR_maybe_local_thread_engine_base
+	#undef MR_maybe_local_thread_engine_base
+	#define MR_maybe_local_thread_engine_base MR_thread_engine_base
+#endif
+MR_END_MODULE
+
+
+MR_BEGIN_MODULE(transform_hlds__rbmm__points_to_graph_module27)
+	MR_init_entry1(fn__transform_hlds__rbmm__points_to_graph__rptg_lookup_region_name_2_0);
+	MR_INIT_PROC_LAYOUT_ADDR(mercury__fn__transform_hlds__rbmm__points_to_graph__rptg_lookup_region_name_2_0);
+	MR_init_label1(fn__transform_hlds__rbmm__points_to_graph__rptg_lookup_region_name_2_0,2)
+MR_BEGIN_CODE
+
+/*-------------------------------------------------------------------------*/
+/* code for 'rptg_lookup_region_name'/3 mode 0 */
+#ifdef MR_maybe_local_thread_engine_base
+	#undef MR_maybe_local_thread_engine_base
+	#define MR_maybe_local_thread_engine_base MR_local_thread_engine_base
+#endif
+MR_define_entry(mercury__fn__transform_hlds__rbmm__points_to_graph__rptg_lookup_region_name_2_0);
+	MR_MAYBE_INIT_LOCAL_THREAD_ENGINE_BASE
+	MR_incr_sp(1);
+	MR_sv(1) = (MR_Word) MR_succip;
+	{
+	MR_Word MR_tempr1, MR_tempr2;
+	MR_tempr1 = MR_r1;
+	MR_r1 = (MR_Word) MR_CTOR0_ADDR(transform_hlds__rbmm__points_to_graph, rptg_node);
+	MR_tempr2 = MR_r2;
+	MR_r2 = (MR_Word) MR_CTOR0_ADDR(transform_hlds__rbmm__points_to_graph, rptg_node_content);
+	MR_r3 = MR_tfield(0, MR_tempr1, 2);
+	MR_r4 = MR_tempr2;
+	}
+	MR_np_call_localret_ent(map__lookup_3_0,
+		fn__transform_hlds__rbmm__points_to_graph__rptg_lookup_region_name_2_0_i2);
+MR_def_label(fn__transform_hlds__rbmm__points_to_graph__rptg_lookup_region_name_2_0,2)
+	MR_MAYBE_INIT_LOCAL_THREAD_ENGINE_BASE
+	MR_r1 = MR_tfield(0, MR_r1, 1);
+	MR_decr_sp_and_return(1);
+#ifdef MR_maybe_local_thread_engine_base
+	#undef MR_maybe_local_thread_engine_base
+	#define MR_maybe_local_thread_engine_base MR_thread_engine_base
+#endif
+MR_END_MODULE
+
+
+MR_BEGIN_MODULE(transform_hlds__rbmm__points_to_graph_module28)
+	MR_init_entry1(transform_hlds__rbmm__points_to_graph__get_node_by_region_name_from_list_4_0);
+	MR_INIT_PROC_LAYOUT_ADDR(mercury__transform_hlds__rbmm__points_to_graph__get_node_by_region_name_from_list_4_0);
+	MR_init_label4(transform_hlds__rbmm__points_to_graph__get_node_by_region_name_from_list_4_0,18,3,4,1)
+MR_BEGIN_CODE
+
+/*-------------------------------------------------------------------------*/
+/* code for 'get_node_by_region_name_from_list'/4 mode 0 */
+#ifdef MR_maybe_local_thread_engine_base
+	#undef MR_maybe_local_thread_engine_base
+	#define MR_maybe_local_thread_engine_base MR_local_thread_engine_base
+#endif
+MR_def_static(transform_hlds__rbmm__points_to_graph__get_node_by_region_name_from_list_4_0)
+	MR_MAYBE_INIT_LOCAL_THREAD_ENGINE_BASE
+	MR_incr_sp(5);
+	MR_sv(5) = (MR_Word) MR_succip;
+MR_def_label(transform_hlds__rbmm__points_to_graph__get_node_by_region_name_from_list_4_0,18)
+	MR_MAYBE_INIT_LOCAL_THREAD_ENGINE_BASE
+	if (MR_LTAGS_TEST(MR_r2,0,0)) {
+		MR_GOTO_LAB(transform_hlds__rbmm__points_to_graph__get_node_by_region_name_from_list_4_0_i1);
+	}
+	MR_sv(1) = MR_r1;
+	MR_sv(2) = MR_r3;
+	MR_sv(3) = MR_tfield(1, MR_r2, 0);
+	MR_sv(4) = MR_tfield(1, MR_r2, 1);
+	MR_r1 = (MR_Word) MR_CTOR0_ADDR(transform_hlds__rbmm__points_to_graph, rptg_node);
+	MR_r2 = (MR_Word) MR_CTOR0_ADDR(transform_hlds__rbmm__points_to_graph, rptg_node_content);
+	MR_r3 = MR_tfield(0, MR_sv(1), 2);
+	MR_r4 = MR_sv(3);
+	MR_np_call_localret_ent(map__lookup_3_0,
+		transform_hlds__rbmm__points_to_graph__get_node_by_region_name_from_list_4_0_i3);
+MR_def_label(transform_hlds__rbmm__points_to_graph__get_node_by_region_name_from_list_4_0,3)
+	MR_MAYBE_INIT_LOCAL_THREAD_ENGINE_BASE
+	{
+	MR_Word MR_tempr1;
+	MR_tempr1 = MR_tfield(0, MR_r1, 1);
+	if ((strcmp((char *) (MR_Word *) MR_tempr1, (char *) (MR_Word *) MR_sv(2)) != 0)) {
+		MR_GOTO_LAB(transform_hlds__rbmm__points_to_graph__get_node_by_region_name_from_list_4_0_i4);
+	}
+	MR_r2 = MR_sv(3);
+	MR_r1 = MR_TRUE;
+	MR_decr_sp_and_return(5);
+	}
+MR_def_label(transform_hlds__rbmm__points_to_graph__get_node_by_region_name_from_list_4_0,4)
+	MR_MAYBE_INIT_LOCAL_THREAD_ENGINE_BASE
+	MR_r1 = MR_sv(1);
+	MR_r2 = MR_sv(4);
+	MR_r3 = MR_sv(2);
+	MR_succip_word = MR_sv(5);
+	MR_GOTO_LAB(transform_hlds__rbmm__points_to_graph__get_node_by_region_name_from_list_4_0_i18);
+MR_def_label(transform_hlds__rbmm__points_to_graph__get_node_by_region_name_from_list_4_0,1)
+	MR_MAYBE_INIT_LOCAL_THREAD_ENGINE_BASE
+	MR_r1 = MR_FALSE;
+	MR_decr_sp_and_return(5);
+#ifdef MR_maybe_local_thread_engine_base
+	#undef MR_maybe_local_thread_engine_base
+	#define MR_maybe_local_thread_engine_base MR_thread_engine_base
+#endif
+MR_END_MODULE
+
+MR_decl_entry(require__unexpected_3_0);
+
+MR_BEGIN_MODULE(transform_hlds__rbmm__points_to_graph_module29)
+	MR_init_entry1(transform_hlds__rbmm__points_to_graph__rptg_get_node_by_region_name_3_0);
+	MR_INIT_PROC_LAYOUT_ADDR(mercury__transform_hlds__rbmm__points_to_graph__rptg_get_node_by_region_name_3_0);
+	MR_init_label3(transform_hlds__rbmm__points_to_graph__rptg_get_node_by_region_name_3_0,2,4,3)
+MR_BEGIN_CODE
+
+/*-------------------------------------------------------------------------*/
+/* code for 'rptg_get_node_by_region_name'/3 mode 0 */
+#ifdef MR_maybe_local_thread_engine_base
+	#undef MR_maybe_local_thread_engine_base
+	#define MR_maybe_local_thread_engine_base MR_local_thread_engine_base
+#endif
+MR_define_entry(mercury__transform_hlds__rbmm__points_to_graph__rptg_get_node_by_region_name_3_0);
+	MR_MAYBE_INIT_LOCAL_THREAD_ENGINE_BASE
+	MR_incr_sp(3);
+	MR_sv(3) = (MR_Word) MR_succip;
+	MR_sv(1) = MR_r1;
+	MR_sv(2) = MR_r2;
+	MR_r1 = (MR_Word) MR_CTOR0_ADDR(transform_hlds__rbmm__points_to_graph, rptg_node);
+	MR_r2 = (MR_Word) MR_CTOR0_ADDR(transform_hlds__rbmm__points_to_graph, rptg_node_content);
+	MR_r3 = MR_tfield(0, MR_sv(1), 2);
+	MR_np_call_localret_ent(map__keys_2_0,
+		transform_hlds__rbmm__points_to_graph__rptg_get_node_by_region_name_3_0_i2);
+MR_def_label(transform_hlds__rbmm__points_to_graph__rptg_get_node_by_region_name_3_0,2)
+	MR_MAYBE_INIT_LOCAL_THREAD_ENGINE_BASE
+	{
+	MR_Word MR_tempr1;
+	MR_tempr1 = MR_r1;
+	MR_r1 = MR_sv(1);
+	MR_r2 = MR_tempr1;
+	MR_r3 = MR_sv(2);
+	}
+	MR_np_call_localret_ent(transform_hlds__rbmm__points_to_graph__get_node_by_region_name_from_list_4_0,
+		transform_hlds__rbmm__points_to_graph__rptg_get_node_by_region_name_3_0_i4);
+MR_def_label(transform_hlds__rbmm__points_to_graph__rptg_get_node_by_region_name_3_0,4)
+	MR_MAYBE_INIT_LOCAL_THREAD_ENGINE_BASE
+	if (!(MR_r1)) {
+		MR_GOTO_LAB(transform_hlds__rbmm__points_to_graph__rptg_get_node_by_region_name_3_0_i3);
+	}
+	MR_r1 = MR_r2;
+	MR_decr_sp_and_return(3);
+MR_def_label(transform_hlds__rbmm__points_to_graph__rptg_get_node_by_region_name_3_0,3)
+	MR_MAYBE_INIT_LOCAL_THREAD_ENGINE_BASE
+	MR_r1 = (MR_Word) MR_string_const("transform_hlds.rbmm.points_to_graph", 35);
+	MR_r2 = (MR_Word) MR_string_const("predicate \140transform_hlds.rbmm.points_to_graph.rptg_get_node_by_region_name\'/3", 78);
+	MR_r3 = (MR_Word) MR_string_const("node not found", 14);
+	MR_succip_word = MR_sv(3);
+	MR_decr_sp(3);
+	MR_np_tailcall_ent(require__unexpected_3_0);
+#ifdef MR_maybe_local_thread_engine_base
+	#undef MR_maybe_local_thread_engine_base
+	#define MR_maybe_local_thread_engine_base MR_thread_engine_base
+#endif
+MR_END_MODULE
+
+MR_decl_entry(set__subset_2_0);
+
+MR_BEGIN_MODULE(transform_hlds__rbmm__points_to_graph_module30)
+	MR_init_entry1(transform_hlds__rbmm__points_to_graph__get_node_by_vars_from_list_4_0);
+	MR_INIT_PROC_LAYOUT_ADDR(mercury__transform_hlds__rbmm__points_to_graph__get_node_by_vars_from_list_4_0);
+	MR_init_label5(transform_hlds__rbmm__points_to_graph__get_node_by_vars_from_list_4_0,25,3,6,4,1)
+MR_BEGIN_CODE
+
+/*-------------------------------------------------------------------------*/
+/* code for 'get_node_by_vars_from_list'/4 mode 0 */
+#ifdef MR_maybe_local_thread_engine_base
+	#undef MR_maybe_local_thread_engine_base
+	#define MR_maybe_local_thread_engine_base MR_local_thread_engine_base
+#endif
+MR_def_static(transform_hlds__rbmm__points_to_graph__get_node_by_vars_from_list_4_0)
+	MR_MAYBE_INIT_LOCAL_THREAD_ENGINE_BASE
+	MR_incr_sp(5);
+	MR_sv(5) = (MR_Word) MR_succip;
+MR_def_label(transform_hlds__rbmm__points_to_graph__get_node_by_vars_from_list_4_0,25)
+	MR_MAYBE_INIT_LOCAL_THREAD_ENGINE_BASE
+	if (MR_LTAGS_TEST(MR_r2,0,0)) {
+		MR_GOTO_LAB(transform_hlds__rbmm__points_to_graph__get_node_by_vars_from_list_4_0_i1);
+	}
+	MR_sv(1) = MR_r1;
+	MR_sv(2) = MR_r3;
+	MR_sv(3) = MR_tfield(1, MR_r2, 0);
+	MR_sv(4) = MR_tfield(1, MR_r2, 1);
+	MR_r1 = (MR_Word) MR_CTOR0_ADDR(transform_hlds__rbmm__points_to_graph, rptg_node);
+	MR_r2 = (MR_Word) MR_CTOR0_ADDR(transform_hlds__rbmm__points_to_graph, rptg_node_content);
+	MR_r3 = MR_tfield(0, MR_sv(1), 2);
+	MR_r4 = MR_sv(3);
+	MR_np_call_localret_ent(map__lookup_3_0,
+		transform_hlds__rbmm__points_to_graph__get_node_by_vars_from_list_4_0_i3);
+MR_def_label(transform_hlds__rbmm__points_to_graph__get_node_by_vars_from_list_4_0,3)
+	MR_MAYBE_INIT_LOCAL_THREAD_ENGINE_BASE
+	{
+	MR_Word MR_tempr1;
+	MR_tempr1 = MR_r1;
+	MR_r1 = (MR_Word) MR_TAG_COMMON(0,1,0);
+	MR_r2 = MR_sv(2);
+	MR_r3 = MR_tfield(0, MR_tempr1, 0);
+	}
+	MR_np_call_localret_ent(set__subset_2_0,
+		transform_hlds__rbmm__points_to_graph__get_node_by_vars_from_list_4_0_i6);
+MR_def_label(transform_hlds__rbmm__points_to_graph__get_node_by_vars_from_list_4_0,6)
+	MR_MAYBE_INIT_LOCAL_THREAD_ENGINE_BASE
+	if (!(MR_r1)) {
+		MR_GOTO_LAB(transform_hlds__rbmm__points_to_graph__get_node_by_vars_from_list_4_0_i4);
+	}
+	MR_r2 = MR_sv(3);
+	MR_r1 = MR_TRUE;
+	MR_decr_sp_and_return(5);
+MR_def_label(transform_hlds__rbmm__points_to_graph__get_node_by_vars_from_list_4_0,4)
+	MR_MAYBE_INIT_LOCAL_THREAD_ENGINE_BASE
+	MR_r1 = MR_sv(1);
+	MR_r2 = MR_sv(4);
+	MR_r3 = MR_sv(2);
+	MR_succip_word = MR_sv(5);
+	MR_GOTO_LAB(transform_hlds__rbmm__points_to_graph__get_node_by_vars_from_list_4_0_i25);
+MR_def_label(transform_hlds__rbmm__points_to_graph__get_node_by_vars_from_list_4_0,1)
+	MR_MAYBE_INIT_LOCAL_THREAD_ENGINE_BASE
+	MR_r1 = MR_FALSE;
+	MR_decr_sp_and_return(5);
+#ifdef MR_maybe_local_thread_engine_base
+	#undef MR_maybe_local_thread_engine_base
+	#define MR_maybe_local_thread_engine_base MR_thread_engine_base
+#endif
+MR_END_MODULE
+
+
+MR_BEGIN_MODULE(transform_hlds__rbmm__points_to_graph_module31)
+	MR_init_entry1(transform_hlds__rbmm__points_to_graph__rptg_get_node_by_vars_3_0);
+	MR_INIT_PROC_LAYOUT_ADDR(mercury__transform_hlds__rbmm__points_to_graph__rptg_get_node_by_vars_3_0);
+	MR_init_label3(transform_hlds__rbmm__points_to_graph__rptg_get_node_by_vars_3_0,2,4,3)
+MR_BEGIN_CODE
+
+/*-------------------------------------------------------------------------*/
+/* code for 'rptg_get_node_by_vars'/3 mode 0 */
+#ifdef MR_maybe_local_thread_engine_base
+	#undef MR_maybe_local_thread_engine_base
+	#define MR_maybe_local_thread_engine_base MR_local_thread_engine_base
+#endif
+MR_define_entry(mercury__transform_hlds__rbmm__points_to_graph__rptg_get_node_by_vars_3_0);
+	MR_MAYBE_INIT_LOCAL_THREAD_ENGINE_BASE
+	MR_incr_sp(3);
+	MR_sv(3) = (MR_Word) MR_succip;
+	MR_sv(1) = MR_r1;
+	MR_sv(2) = MR_r2;
+	MR_r1 = (MR_Word) MR_CTOR0_ADDR(transform_hlds__rbmm__points_to_graph, rptg_node);
+	MR_r2 = (MR_Word) MR_CTOR0_ADDR(transform_hlds__rbmm__points_to_graph, rptg_node_content);
+	MR_r3 = MR_tfield(0, MR_sv(1), 2);
+	MR_np_call_localret_ent(map__keys_2_0,
+		transform_hlds__rbmm__points_to_graph__rptg_get_node_by_vars_3_0_i2);
+MR_def_label(transform_hlds__rbmm__points_to_graph__rptg_get_node_by_vars_3_0,2)
+	MR_MAYBE_INIT_LOCAL_THREAD_ENGINE_BASE
+	{
+	MR_Word MR_tempr1;
+	MR_tempr1 = MR_r1;
+	MR_r1 = MR_sv(1);
+	MR_r2 = MR_tempr1;
+	MR_r3 = MR_sv(2);
+	}
+	MR_np_call_localret_ent(transform_hlds__rbmm__points_to_graph__get_node_by_vars_from_list_4_0,
+		transform_hlds__rbmm__points_to_graph__rptg_get_node_by_vars_3_0_i4);
+MR_def_label(transform_hlds__rbmm__points_to_graph__rptg_get_node_by_vars_3_0,4)
+	MR_MAYBE_INIT_LOCAL_THREAD_ENGINE_BASE
+	if (!(MR_r1)) {
+		MR_GOTO_LAB(transform_hlds__rbmm__points_to_graph__rptg_get_node_by_vars_3_0_i3);
+	}
+	MR_r1 = MR_r2;
+	MR_decr_sp_and_return(3);
+MR_def_label(transform_hlds__rbmm__points_to_graph__rptg_get_node_by_vars_3_0,3)
+	MR_MAYBE_INIT_LOCAL_THREAD_ENGINE_BASE
+	MR_r1 = (MR_Word) MR_string_const("transform_hlds.rbmm.points_to_graph", 35);
+	MR_r2 = (MR_Word) MR_string_const("predicate \140transform_hlds.rbmm.points_to_graph.rptg_get_node_by_vars\'/3", 71);
+	MR_r3 = (MR_Word) MR_string_const("node not found", 14);
+	MR_succip_word = MR_sv(3);
+	MR_decr_sp(3);
+	MR_np_tailcall_ent(require__unexpected_3_0);
+#ifdef MR_maybe_local_thread_engine_base
+	#undef MR_maybe_local_thread_engine_base
+	#define MR_maybe_local_thread_engine_base MR_thread_engine_base
+#endif
+MR_END_MODULE
+
+
+MR_BEGIN_MODULE(transform_hlds__rbmm__points_to_graph_module32)
+	MR_init_entry1(transform_hlds__rbmm__points_to_graph__rptg_get_node_by_variable_3_0);
+	MR_INIT_PROC_LAYOUT_ADDR(mercury__transform_hlds__rbmm__points_to_graph__rptg_get_node_by_variable_3_0);
+	MR_init_label1(transform_hlds__rbmm__points_to_graph__rptg_get_node_by_variable_3_0,3)
+MR_BEGIN_CODE
+
+/*-------------------------------------------------------------------------*/
+/* code for 'rptg_get_node_by_variable'/3 mode 0 */
+#ifdef MR_maybe_local_thread_engine_base
+	#undef MR_maybe_local_thread_engine_base
+	#define MR_maybe_local_thread_engine_base MR_local_thread_engine_base
+#endif
+MR_define_entry(mercury__transform_hlds__rbmm__points_to_graph__rptg_get_node_by_variable_3_0);
+	MR_MAYBE_INIT_LOCAL_THREAD_ENGINE_BASE
+	MR_incr_sp(2);
+	MR_sv(2) = (MR_Word) MR_succip;
+	MR_sv(1) = MR_r1;
+	MR_r1 = (MR_Word) MR_TAG_COMMON(0,1,0);
+	MR_np_call_localret_ent(fn__set__make_singleton_set_1_0,
+		transform_hlds__rbmm__points_to_graph__rptg_get_node_by_variable_3_0_i3);
+MR_def_label(transform_hlds__rbmm__points_to_graph__rptg_get_node_by_variable_3_0,3)
+	MR_MAYBE_INIT_LOCAL_THREAD_ENGINE_BASE
+	{
+	MR_Word MR_tempr1;
+	MR_tempr1 = MR_r1;
+	MR_r1 = MR_sv(1);
+	MR_r2 = MR_tempr1;
+	MR_succip_word = MR_sv(2);
+	MR_decr_sp(2);
+	MR_np_tailcall_ent(transform_hlds__rbmm__points_to_graph__rptg_get_node_by_vars_3_0);
+	}
+#ifdef MR_maybe_local_thread_engine_base
+	#undef MR_maybe_local_thread_engine_base
+	#define MR_maybe_local_thread_engine_base MR_thread_engine_base
+#endif
+MR_END_MODULE
+
+MR_decl_entry(set__member_2_0);
+
+MR_BEGIN_MODULE(transform_hlds__rbmm__points_to_graph_module33)
+	MR_init_entry1(transform_hlds__rbmm__points_to_graph__get_node_by_node_from_list_4_0);
+	MR_INIT_PROC_LAYOUT_ADDR(mercury__transform_hlds__rbmm__points_to_graph__get_node_by_node_from_list_4_0);
+	MR_init_label5(transform_hlds__rbmm__points_to_graph__get_node_by_node_from_list_4_0,20,3,5,4,1)
+MR_BEGIN_CODE
+
+/*-------------------------------------------------------------------------*/
+/* code for 'get_node_by_node_from_list'/4 mode 0 */
+#ifdef MR_maybe_local_thread_engine_base
+	#undef MR_maybe_local_thread_engine_base
+	#define MR_maybe_local_thread_engine_base MR_local_thread_engine_base
+#endif
+MR_def_static(transform_hlds__rbmm__points_to_graph__get_node_by_node_from_list_4_0)
+	MR_MAYBE_INIT_LOCAL_THREAD_ENGINE_BASE
+	MR_incr_sp(5);
+	MR_sv(5) = (MR_Word) MR_succip;
+MR_def_label(transform_hlds__rbmm__points_to_graph__get_node_by_node_from_list_4_0,20)
+	MR_MAYBE_INIT_LOCAL_THREAD_ENGINE_BASE
+	if (MR_LTAGS_TEST(MR_r2,0,0)) {
+		MR_GOTO_LAB(transform_hlds__rbmm__points_to_graph__get_node_by_node_from_list_4_0_i1);
+	}
+	MR_sv(1) = MR_r1;
+	MR_sv(2) = MR_tfield(1, MR_r2, 0);
+	MR_sv(3) = MR_tfield(1, MR_r2, 1);
+	MR_sv(4) = MR_r3;
+	MR_r1 = (MR_Word) MR_CTOR0_ADDR(transform_hlds__rbmm__points_to_graph, rptg_node);
+	MR_r2 = (MR_Word) MR_CTOR0_ADDR(transform_hlds__rbmm__points_to_graph, rptg_node_content);
+	MR_r3 = MR_tfield(0, MR_sv(1), 2);
+	MR_r4 = MR_sv(2);
+	MR_np_call_localret_ent(map__lookup_3_0,
+		transform_hlds__rbmm__points_to_graph__get_node_by_node_from_list_4_0_i3);
+MR_def_label(transform_hlds__rbmm__points_to_graph__get_node_by_node_from_list_4_0,3)
+	MR_MAYBE_INIT_LOCAL_THREAD_ENGINE_BASE
+	{
+	MR_Word MR_tempr1;
+	MR_tempr1 = MR_r1;
+	MR_r1 = (MR_Word) MR_CTOR0_ADDR(transform_hlds__rbmm__points_to_graph, rptg_node);
+	MR_r2 = MR_sv(4);
+	MR_r3 = MR_tfield(0, MR_tempr1, 2);
+	}
+	MR_np_call_localret_ent(set__member_2_0,
+		transform_hlds__rbmm__points_to_graph__get_node_by_node_from_list_4_0_i5);
+MR_def_label(transform_hlds__rbmm__points_to_graph__get_node_by_node_from_list_4_0,5)
+	MR_MAYBE_INIT_LOCAL_THREAD_ENGINE_BASE
+	if (!(MR_r1)) {
+		MR_GOTO_LAB(transform_hlds__rbmm__points_to_graph__get_node_by_node_from_list_4_0_i4);
+	}
+	MR_r2 = MR_sv(2);
+	MR_r1 = MR_TRUE;
+	MR_decr_sp_and_return(5);
+MR_def_label(transform_hlds__rbmm__points_to_graph__get_node_by_node_from_list_4_0,4)
+	MR_MAYBE_INIT_LOCAL_THREAD_ENGINE_BASE
+	MR_r1 = MR_sv(1);
+	MR_r2 = MR_sv(3);
+	MR_r3 = MR_sv(4);
+	MR_succip_word = MR_sv(5);
+	MR_GOTO_LAB(transform_hlds__rbmm__points_to_graph__get_node_by_node_from_list_4_0_i20);
+MR_def_label(transform_hlds__rbmm__points_to_graph__get_node_by_node_from_list_4_0,1)
+	MR_MAYBE_INIT_LOCAL_THREAD_ENGINE_BASE
+	MR_r1 = MR_FALSE;
+	MR_decr_sp_and_return(5);
+#ifdef MR_maybe_local_thread_engine_base
+	#undef MR_maybe_local_thread_engine_base
+	#define MR_maybe_local_thread_engine_base MR_thread_engine_base
+#endif
+MR_END_MODULE
+
+MR_decl_entry(map__search_3_0);
+
+MR_BEGIN_MODULE(transform_hlds__rbmm__points_to_graph_module34)
+	MR_init_entry1(transform_hlds__rbmm__points_to_graph__rptg_get_node_by_node_3_0);
+	MR_INIT_PROC_LAYOUT_ADDR(mercury__transform_hlds__rbmm__points_to_graph__rptg_get_node_by_node_3_0);
+	MR_init_label5(transform_hlds__rbmm__points_to_graph__rptg_get_node_by_node_3_0,3,2,5,7,6)
+MR_BEGIN_CODE
+
+/*-------------------------------------------------------------------------*/
+/* code for 'rptg_get_node_by_node'/3 mode 0 */
+#ifdef MR_maybe_local_thread_engine_base
+	#undef MR_maybe_local_thread_engine_base
+	#define MR_maybe_local_thread_engine_base MR_local_thread_engine_base
+#endif
+MR_define_entry(mercury__transform_hlds__rbmm__points_to_graph__rptg_get_node_by_node_3_0);
+	MR_MAYBE_INIT_LOCAL_THREAD_ENGINE_BASE
+	MR_incr_sp(3);
+	MR_sv(3) = (MR_Word) MR_succip;
+	MR_sv(1) = MR_r1;
+	MR_sv(2) = MR_r2;
+	MR_r1 = (MR_Word) MR_CTOR0_ADDR(transform_hlds__rbmm__points_to_graph, rptg_node);
+	MR_r2 = (MR_Word) MR_CTOR0_ADDR(transform_hlds__rbmm__points_to_graph, rptg_node_content);
+	MR_r3 = MR_tfield(0, MR_sv(1), 2);
+	MR_r4 = MR_sv(2);
+	MR_np_call_localret_ent(map__search_3_0,
+		transform_hlds__rbmm__points_to_graph__rptg_get_node_by_node_3_0_i3);
+MR_def_label(transform_hlds__rbmm__points_to_graph__rptg_get_node_by_node_3_0,3)
+	MR_MAYBE_INIT_LOCAL_THREAD_ENGINE_BASE
+	if (!(MR_r1)) {
+		MR_GOTO_LAB(transform_hlds__rbmm__points_to_graph__rptg_get_node_by_node_3_0_i2);
+	}
+	MR_r1 = MR_sv(2);
+	MR_decr_sp_and_return(3);
+MR_def_label(transform_hlds__rbmm__points_to_graph__rptg_get_node_by_node_3_0,2)
+	MR_MAYBE_INIT_LOCAL_THREAD_ENGINE_BASE
+	MR_r1 = (MR_Word) MR_CTOR0_ADDR(transform_hlds__rbmm__points_to_graph, rptg_node);
+	MR_r2 = (MR_Word) MR_CTOR0_ADDR(transform_hlds__rbmm__points_to_graph, rptg_node_content);
+	MR_r3 = MR_tfield(0, MR_sv(1), 2);
+	MR_np_call_localret_ent(map__keys_2_0,
+		transform_hlds__rbmm__points_to_graph__rptg_get_node_by_node_3_0_i5);
+MR_def_label(transform_hlds__rbmm__points_to_graph__rptg_get_node_by_node_3_0,5)
+	MR_MAYBE_INIT_LOCAL_THREAD_ENGINE_BASE
+	{
+	MR_Word MR_tempr1;
+	MR_tempr1 = MR_r1;
+	MR_r1 = MR_sv(1);
+	MR_r2 = MR_tempr1;
+	MR_r3 = MR_sv(2);
+	}
+	MR_np_call_localret_ent(transform_hlds__rbmm__points_to_graph__get_node_by_node_from_list_4_0,
+		transform_hlds__rbmm__points_to_graph__rptg_get_node_by_node_3_0_i7);
+MR_def_label(transform_hlds__rbmm__points_to_graph__rptg_get_node_by_node_3_0,7)
+	MR_MAYBE_INIT_LOCAL_THREAD_ENGINE_BASE
+	if (!(MR_r1)) {
+		MR_GOTO_LAB(transform_hlds__rbmm__points_to_graph__rptg_get_node_by_node_3_0_i6);
+	}
+	MR_r1 = MR_r2;
+	MR_decr_sp_and_return(3);
+MR_def_label(transform_hlds__rbmm__points_to_graph__rptg_get_node_by_node_3_0,6)
+	MR_MAYBE_INIT_LOCAL_THREAD_ENGINE_BASE
+	MR_r1 = (MR_Word) MR_string_const("transform_hlds.rbmm.points_to_graph", 35);
+	MR_r2 = (MR_Word) MR_string_const("predicate \140transform_hlds.rbmm.points_to_graph.rptg_get_node_by_node\'/3", 71);
+	MR_r3 = (MR_Word) MR_string_const("node not found", 14);
+	MR_succip_word = MR_sv(3);
+	MR_decr_sp(3);
+	MR_np_tailcall_ent(require__unexpected_3_0);
+#ifdef MR_maybe_local_thread_engine_base
+	#undef MR_maybe_local_thread_engine_base
+	#define MR_maybe_local_thread_engine_base MR_thread_engine_base
+#endif
+MR_END_MODULE
+
+MR_decl_entry(builtin__unify_2_0);
+
+MR_BEGIN_MODULE(transform_hlds__rbmm__points_to_graph_module35)
+	MR_init_entry1(transform_hlds__rbmm__points_to_graph__simple_map_equal_2_3_0);
+	MR_INIT_PROC_LAYOUT_ADDR(mercury__transform_hlds__rbmm__points_to_graph__simple_map_equal_2_3_0);
+	MR_init_label6(transform_hlds__rbmm__points_to_graph__simple_map_equal_2_3_0,24,4,6,7,2,1)
+MR_BEGIN_CODE
+
+/*-------------------------------------------------------------------------*/
+/* code for 'simple_map_equal_2'/3 mode 0 */
+#ifdef MR_maybe_local_thread_engine_base
+	#undef MR_maybe_local_thread_engine_base
+	#define MR_maybe_local_thread_engine_base MR_local_thread_engine_base
+#endif
+MR_def_static(transform_hlds__rbmm__points_to_graph__simple_map_equal_2_3_0)
+	MR_MAYBE_INIT_LOCAL_THREAD_ENGINE_BASE
+	MR_incr_sp(7);
+	MR_sv(7) = (MR_Word) MR_succip;
+MR_def_label(transform_hlds__rbmm__points_to_graph__simple_map_equal_2_3_0,24)
+	MR_MAYBE_INIT_LOCAL_THREAD_ENGINE_BASE
+	if (MR_LTAGS_TEST(MR_r3,0,0)) {
+		MR_GOTO_LAB(transform_hlds__rbmm__points_to_graph__simple_map_equal_2_3_0_i2);
+	}
+	MR_sv(1) = MR_r4;
+	{
+	MR_Word MR_tempr1, MR_tempr2;
+	MR_tempr1 = MR_r5;
+	MR_sv(2) = MR_tempr1;
+	MR_tempr2 = MR_r3;
+	MR_sv(3) = MR_tfield(1, MR_tempr2, 0);
+	MR_sv(4) = MR_tfield(1, MR_tempr2, 1);
+	MR_sv(5) = MR_r1;
+	MR_sv(6) = MR_r2;
+	MR_r3 = MR_tempr1;
+	MR_r4 = MR_sv(3);
+	}
+	MR_np_call_localret_ent(map__search_3_0,
+		transform_hlds__rbmm__points_to_graph__simple_map_equal_2_3_0_i4);
+MR_def_label(transform_hlds__rbmm__points_to_graph__simple_map_equal_2_3_0,4)
+	MR_MAYBE_INIT_LOCAL_THREAD_ENGINE_BASE
+	if (!(MR_r1)) {
+		MR_GOTO_LAB(transform_hlds__rbmm__points_to_graph__simple_map_equal_2_3_0_i1);
+	}
+	{
+	MR_Word MR_tempr1;
+	MR_tempr1 = MR_sv(3);
+	MR_sv(3) = MR_r2;
+	MR_r1 = MR_sv(5);
+	MR_r2 = MR_sv(6);
+	MR_r3 = MR_sv(1);
+	MR_r4 = MR_tempr1;
+	}
+	MR_np_call_localret_ent(map__lookup_3_0,
+		transform_hlds__rbmm__points_to_graph__simple_map_equal_2_3_0_i6);
+MR_def_label(transform_hlds__rbmm__points_to_graph__simple_map_equal_2_3_0,6)
+	MR_MAYBE_INIT_LOCAL_THREAD_ENGINE_BASE
+	{
+	MR_Word MR_tempr1;
+	MR_tempr1 = MR_r1;
+	MR_r1 = MR_sv(6);
+	MR_r2 = MR_tempr1;
+	MR_r3 = MR_sv(3);
+	}
+	MR_np_call_localret_ent(builtin__unify_2_0,
+		transform_hlds__rbmm__points_to_graph__simple_map_equal_2_3_0_i7);
+MR_def_label(transform_hlds__rbmm__points_to_graph__simple_map_equal_2_3_0,7)
+	MR_MAYBE_INIT_LOCAL_THREAD_ENGINE_BASE
+	if (!(MR_r1)) {
+		MR_GOTO_LAB(transform_hlds__rbmm__points_to_graph__simple_map_equal_2_3_0_i1);
+	}
+	MR_r1 = MR_sv(5);
+	MR_r2 = MR_sv(6);
+	MR_r3 = MR_sv(4);
+	MR_r4 = MR_sv(1);
+	MR_r5 = MR_sv(2);
+	MR_succip_word = MR_sv(7);
+	MR_GOTO_LAB(transform_hlds__rbmm__points_to_graph__simple_map_equal_2_3_0_i24);
+MR_def_label(transform_hlds__rbmm__points_to_graph__simple_map_equal_2_3_0,2)
+	MR_MAYBE_INIT_LOCAL_THREAD_ENGINE_BASE
+	MR_r1 = MR_TRUE;
+	MR_decr_sp_and_return(7);
+MR_def_label(transform_hlds__rbmm__points_to_graph__simple_map_equal_2_3_0,1)
+	MR_MAYBE_INIT_LOCAL_THREAD_ENGINE_BASE
+	MR_r1 = MR_FALSE;
+	MR_decr_sp_and_return(7);
+#ifdef MR_maybe_local_thread_engine_base
+	#undef MR_maybe_local_thread_engine_base
+	#define MR_maybe_local_thread_engine_base MR_thread_engine_base
+#endif
+MR_END_MODULE
+
+MR_decl_entry(map__count_2_0);
+
+MR_BEGIN_MODULE(transform_hlds__rbmm__points_to_graph_module36)
+	MR_init_entry1(transform_hlds__rbmm__points_to_graph__complex_map_equal_2_3_0);
+	MR_INIT_PROC_LAYOUT_ADDR(mercury__transform_hlds__rbmm__points_to_graph__complex_map_equal_2_3_0);
+	MR_init_label9(transform_hlds__rbmm__points_to_graph__complex_map_equal_2_3_0,32,5,7,8,9,10,11,2,1)
+MR_BEGIN_CODE
+
+/*-------------------------------------------------------------------------*/
+/* code for 'complex_map_equal_2'/3 mode 0 */
+#ifdef MR_maybe_local_thread_engine_base
+	#undef MR_maybe_local_thread_engine_base
+	#define MR_maybe_local_thread_engine_base MR_local_thread_engine_base
+#endif
+MR_def_static(transform_hlds__rbmm__points_to_graph__complex_map_equal_2_3_0)
+	MR_MAYBE_INIT_LOCAL_THREAD_ENGINE_BASE
+	MR_incr_sp(10);
+	MR_sv(10) = (MR_Word) MR_succip;
+MR_def_label(transform_hlds__rbmm__points_to_graph__complex_map_equal_2_3_0,32)
+	MR_MAYBE_INIT_LOCAL_THREAD_ENGINE_BASE
+	if (MR_LTAGS_TEST(MR_r4,0,0)) {
+		MR_GOTO_LAB(transform_hlds__rbmm__points_to_graph__complex_map_equal_2_3_0_i2);
+	}
+	{
+	MR_Word MR_tempr1, MR_tempr2, MR_tempr3, MR_tempr4;
+	MR_tag_alloc_heap(MR_tempr1, 0, (MR_Integer) 3);
+	MR_tfield(0, MR_tempr1, 0) = (MR_Word) MR_CTOR_ADDR(tree234, tree234, 2);
+	MR_tfield(0, MR_tempr1, 1) = MR_r2;
+	MR_tempr2 = MR_r3;
+	MR_tfield(0, MR_tempr1, 2) = MR_tempr2;
+	MR_sv(1) = MR_r5;
+	MR_tempr3 = MR_r6;
+	MR_sv(2) = MR_tempr3;
+	MR_tempr4 = MR_r4;
+	MR_sv(3) = MR_tfield(1, MR_tempr4, 0);
+	MR_sv(4) = MR_tfield(1, MR_tempr4, 1);
+	MR_sv(6) = MR_r1;
+	MR_sv(7) = MR_r2;
+	MR_sv(8) = MR_tempr2;
+	MR_sv(5) = MR_tempr1;
+	MR_r2 = MR_tempr1;
+	MR_r3 = MR_tempr3;
+	MR_r4 = MR_sv(3);
+	}
+	MR_np_call_localret_ent(map__search_3_0,
+		transform_hlds__rbmm__points_to_graph__complex_map_equal_2_3_0_i5);
+MR_def_label(transform_hlds__rbmm__points_to_graph__complex_map_equal_2_3_0,5)
+	MR_MAYBE_INIT_LOCAL_THREAD_ENGINE_BASE
+	if (!(MR_r1)) {
+		MR_GOTO_LAB(transform_hlds__rbmm__points_to_graph__complex_map_equal_2_3_0_i1);
+	}
+	{
+	MR_Word MR_tempr1;
+	MR_tempr1 = MR_sv(3);
+	MR_sv(3) = MR_r2;
+	MR_r1 = MR_sv(6);
+	MR_r2 = MR_sv(5);
+	MR_r3 = MR_sv(1);
+	MR_r4 = MR_tempr1;
+	}
+	MR_np_call_localret_ent(map__lookup_3_0,
+		transform_hlds__rbmm__points_to_graph__complex_map_equal_2_3_0_i7);
+MR_def_label(transform_hlds__rbmm__points_to_graph__complex_map_equal_2_3_0,7)
+	MR_MAYBE_INIT_LOCAL_THREAD_ENGINE_BASE
+	MR_sv(5) = MR_r1;
+	MR_r1 = MR_sv(7);
+	MR_r2 = MR_sv(8);
+	MR_r3 = MR_sv(5);
+	MR_np_call_localret_ent(map__count_2_0,
+		transform_hlds__rbmm__points_to_graph__complex_map_equal_2_3_0_i8);
+MR_def_label(transform_hlds__rbmm__points_to_graph__complex_map_equal_2_3_0,8)
+	MR_MAYBE_INIT_LOCAL_THREAD_ENGINE_BASE
+	MR_sv(9) = MR_r1;
+	MR_r1 = MR_sv(7);
+	MR_r2 = MR_sv(8);
+	MR_r3 = MR_sv(3);
+	MR_np_call_localret_ent(map__count_2_0,
+		transform_hlds__rbmm__points_to_graph__complex_map_equal_2_3_0_i9);
+MR_def_label(transform_hlds__rbmm__points_to_graph__complex_map_equal_2_3_0,9)
+	MR_MAYBE_INIT_LOCAL_THREAD_ENGINE_BASE
+	if ((MR_sv(9) != MR_r1)) {
+		MR_GOTO_LAB(transform_hlds__rbmm__points_to_graph__complex_map_equal_2_3_0_i1);
+	}
+	MR_r1 = MR_sv(7);
+	MR_r2 = MR_sv(8);
+	MR_r3 = MR_sv(5);
+	MR_np_call_localret_ent(map__keys_2_0,
+		transform_hlds__rbmm__points_to_graph__complex_map_equal_2_3_0_i10);
+MR_def_label(transform_hlds__rbmm__points_to_graph__complex_map_equal_2_3_0,10)
+	MR_MAYBE_INIT_LOCAL_THREAD_ENGINE_BASE
+	{
+	MR_Word MR_tempr1;
+	MR_tempr1 = MR_r1;
+	MR_r1 = MR_sv(7);
+	MR_r2 = MR_sv(8);
+	MR_r3 = MR_tempr1;
+	MR_r4 = MR_sv(5);
+	MR_r5 = MR_sv(3);
+	}
+	MR_np_call_localret_ent(transform_hlds__rbmm__points_to_graph__simple_map_equal_2_3_0,
+		transform_hlds__rbmm__points_to_graph__complex_map_equal_2_3_0_i11);
+MR_def_label(transform_hlds__rbmm__points_to_graph__complex_map_equal_2_3_0,11)
+	MR_MAYBE_INIT_LOCAL_THREAD_ENGINE_BASE
+	if (!(MR_r1)) {
+		MR_GOTO_LAB(transform_hlds__rbmm__points_to_graph__complex_map_equal_2_3_0_i1);
+	}
+	MR_r1 = MR_sv(6);
+	MR_r2 = MR_sv(7);
+	MR_r3 = MR_sv(8);
+	MR_r4 = MR_sv(4);
+	MR_r5 = MR_sv(1);
+	MR_r6 = MR_sv(2);
+	MR_succip_word = MR_sv(10);
+	MR_GOTO_LAB(transform_hlds__rbmm__points_to_graph__complex_map_equal_2_3_0_i32);
+MR_def_label(transform_hlds__rbmm__points_to_graph__complex_map_equal_2_3_0,2)
+	MR_MAYBE_INIT_LOCAL_THREAD_ENGINE_BASE
+	MR_r1 = MR_TRUE;
+	MR_decr_sp_and_return(10);
+MR_def_label(transform_hlds__rbmm__points_to_graph__complex_map_equal_2_3_0,1)
+	MR_MAYBE_INIT_LOCAL_THREAD_ENGINE_BASE
+	MR_r1 = MR_FALSE;
+	MR_decr_sp_and_return(10);
+#ifdef MR_maybe_local_thread_engine_base
+	#undef MR_maybe_local_thread_engine_base
+	#define MR_maybe_local_thread_engine_base MR_thread_engine_base
+#endif
+MR_END_MODULE
+
+MR_decl_entry(__Unify___counter__counter_0_0);
+
+MR_BEGIN_MODULE(transform_hlds__rbmm__points_to_graph_module37)
+	MR_init_entry1(transform_hlds__rbmm__points_to_graph__rptg_equal_2_0);
+	MR_INIT_PROC_LAYOUT_ADDR(mercury__transform_hlds__rbmm__points_to_graph__rptg_equal_2_0);
+	MR_init_label10(transform_hlds__rbmm__points_to_graph__rptg_equal_2_0,2,4,6,7,8,9,11,12,13,14)
+	MR_init_label4(transform_hlds__rbmm__points_to_graph__rptg_equal_2_0,17,18,19,1)
+MR_BEGIN_CODE
+
+/*-------------------------------------------------------------------------*/
+/* code for 'rptg_equal'/2 mode 0 */
+#ifdef MR_maybe_local_thread_engine_base
+	#undef MR_maybe_local_thread_engine_base
+	#define MR_maybe_local_thread_engine_base MR_local_thread_engine_base
+#endif
+MR_define_entry(mercury__transform_hlds__rbmm__points_to_graph__rptg_equal_2_0);
+	MR_MAYBE_INIT_LOCAL_THREAD_ENGINE_BASE
+	MR_incr_sp(10);
+	MR_sv(10) = (MR_Word) MR_succip;
+	MR_sv(1) = MR_tfield(0, MR_r1, 1);
+	MR_sv(2) = MR_tfield(0, MR_r1, 2);
+	MR_sv(3) = MR_tfield(0, MR_r1, 3);
+	MR_sv(4) = MR_tfield(0, MR_r1, 4);
+	MR_sv(5) = MR_tfield(0, MR_r2, 1);
+	MR_sv(6) = MR_tfield(0, MR_r2, 2);
+	MR_sv(7) = MR_tfield(0, MR_r2, 3);
+	MR_sv(8) = MR_tfield(0, MR_r2, 4);
+	MR_r1 = MR_tfield(0, MR_r1, 0);
+	MR_r2 = MR_tfield(0, MR_r2, 0);
+	MR_np_call_localret_ent(__Unify___counter__counter_0_0,
+		transform_hlds__rbmm__points_to_graph__rptg_equal_2_0_i2);
+MR_def_label(transform_hlds__rbmm__points_to_graph__rptg_equal_2_0,2)
+	MR_MAYBE_INIT_LOCAL_THREAD_ENGINE_BASE
+	if (!(MR_r1)) {
+		MR_GOTO_LAB(transform_hlds__rbmm__points_to_graph__rptg_equal_2_0_i1);
+	}
+	MR_r1 = MR_sv(1);
+	MR_r2 = MR_sv(5);
+	MR_np_call_localret_ent(__Unify___counter__counter_0_0,
+		transform_hlds__rbmm__points_to_graph__rptg_equal_2_0_i4);
+MR_def_label(transform_hlds__rbmm__points_to_graph__rptg_equal_2_0,4)
+	MR_MAYBE_INIT_LOCAL_THREAD_ENGINE_BASE
+	if (!(MR_r1)) {
+		MR_GOTO_LAB(transform_hlds__rbmm__points_to_graph__rptg_equal_2_0_i1);
+	}
+	MR_sv(1) = (MR_Word) MR_CTOR0_ADDR(transform_hlds__rbmm__points_to_graph, rptg_node);
+	MR_sv(5) = (MR_Word) MR_CTOR0_ADDR(transform_hlds__rbmm__points_to_graph, rptg_node_content);
+	MR_r1 = MR_sv(1);
+	MR_r2 = MR_sv(5);
+	MR_r3 = MR_sv(2);
+	MR_np_call_localret_ent(map__count_2_0,
+		transform_hlds__rbmm__points_to_graph__rptg_equal_2_0_i6);
+MR_def_label(transform_hlds__rbmm__points_to_graph__rptg_equal_2_0,6)
+	MR_MAYBE_INIT_LOCAL_THREAD_ENGINE_BASE
+	MR_sv(9) = MR_r1;
+	MR_r1 = MR_sv(1);
+	MR_r2 = MR_sv(5);
+	MR_r3 = MR_sv(6);
+	MR_np_call_localret_ent(map__count_2_0,
+		transform_hlds__rbmm__points_to_graph__rptg_equal_2_0_i7);
+MR_def_label(transform_hlds__rbmm__points_to_graph__rptg_equal_2_0,7)
+	MR_MAYBE_INIT_LOCAL_THREAD_ENGINE_BASE
+	if ((MR_sv(9) != MR_r1)) {
+		MR_GOTO_LAB(transform_hlds__rbmm__points_to_graph__rptg_equal_2_0_i1);
+	}
+	MR_r1 = MR_sv(1);
+	MR_r2 = MR_sv(5);
+	MR_r3 = MR_sv(2);
+	MR_np_call_localret_ent(map__keys_2_0,
+		transform_hlds__rbmm__points_to_graph__rptg_equal_2_0_i8);
+MR_def_label(transform_hlds__rbmm__points_to_graph__rptg_equal_2_0,8)
+	MR_MAYBE_INIT_LOCAL_THREAD_ENGINE_BASE
+	{
+	MR_Word MR_tempr1;
+	MR_tempr1 = MR_r1;
+	MR_r1 = MR_sv(1);
+	MR_r2 = MR_sv(5);
+	MR_r3 = MR_tempr1;
+	MR_r4 = MR_sv(2);
+	MR_r5 = MR_sv(6);
+	}
+	MR_np_call_localret_ent(transform_hlds__rbmm__points_to_graph__simple_map_equal_2_3_0,
+		transform_hlds__rbmm__points_to_graph__rptg_equal_2_0_i9);
+MR_def_label(transform_hlds__rbmm__points_to_graph__rptg_equal_2_0,9)
+	MR_MAYBE_INIT_LOCAL_THREAD_ENGINE_BASE
+	if (!(MR_r1)) {
+		MR_GOTO_LAB(transform_hlds__rbmm__points_to_graph__rptg_equal_2_0_i1);
+	}
+	MR_sv(2) = (MR_Word) MR_CTOR0_ADDR(transform_hlds__rbmm__points_to_graph, rptg_edge);
+	MR_sv(5) = (MR_Word) MR_CTOR0_ADDR(transform_hlds__rbmm__points_to_graph, rptg_edge_info);
+	MR_r1 = MR_sv(2);
+	MR_r2 = MR_sv(5);
+	MR_r3 = MR_sv(3);
+	MR_np_call_localret_ent(map__count_2_0,
+		transform_hlds__rbmm__points_to_graph__rptg_equal_2_0_i11);
+MR_def_label(transform_hlds__rbmm__points_to_graph__rptg_equal_2_0,11)
+	MR_MAYBE_INIT_LOCAL_THREAD_ENGINE_BASE
+	MR_sv(6) = MR_r1;
+	MR_r1 = MR_sv(2);
+	MR_r2 = MR_sv(5);
+	MR_r3 = MR_sv(7);
+	MR_np_call_localret_ent(map__count_2_0,
+		transform_hlds__rbmm__points_to_graph__rptg_equal_2_0_i12);
+MR_def_label(transform_hlds__rbmm__points_to_graph__rptg_equal_2_0,12)
+	MR_MAYBE_INIT_LOCAL_THREAD_ENGINE_BASE
+	if ((MR_sv(6) != MR_r1)) {
+		MR_GOTO_LAB(transform_hlds__rbmm__points_to_graph__rptg_equal_2_0_i1);
+	}
+	MR_r1 = MR_sv(2);
+	MR_r2 = MR_sv(5);
+	MR_r3 = MR_sv(3);
+	MR_np_call_localret_ent(map__keys_2_0,
+		transform_hlds__rbmm__points_to_graph__rptg_equal_2_0_i13);
+MR_def_label(transform_hlds__rbmm__points_to_graph__rptg_equal_2_0,13)
+	MR_MAYBE_INIT_LOCAL_THREAD_ENGINE_BASE
+	{
+	MR_Word MR_tempr1;
+	MR_tempr1 = MR_r1;
+	MR_r1 = MR_sv(2);
+	MR_r2 = MR_sv(5);
+	MR_r3 = MR_tempr1;
+	MR_r4 = MR_sv(3);
+	MR_r5 = MR_sv(7);
+	}
+	MR_np_call_localret_ent(transform_hlds__rbmm__points_to_graph__simple_map_equal_2_3_0,
+		transform_hlds__rbmm__points_to_graph__rptg_equal_2_0_i14);
+MR_def_label(transform_hlds__rbmm__points_to_graph__rptg_equal_2_0,14)
+	MR_MAYBE_INIT_LOCAL_THREAD_ENGINE_BASE
+	if (!(MR_r1)) {
+		MR_GOTO_LAB(transform_hlds__rbmm__points_to_graph__rptg_equal_2_0_i1);
+	}
+	MR_sv(5) = (MR_Word) MR_TAG_COMMON(0,0,0);
+	MR_r1 = MR_sv(1);
+	MR_r2 = MR_sv(5);
+	MR_r3 = MR_sv(4);
+	MR_np_call_localret_ent(map__count_2_0,
+		transform_hlds__rbmm__points_to_graph__rptg_equal_2_0_i17);
+MR_def_label(transform_hlds__rbmm__points_to_graph__rptg_equal_2_0,17)
+	MR_MAYBE_INIT_LOCAL_THREAD_ENGINE_BASE
+	MR_sv(3) = MR_r1;
+	MR_r1 = MR_sv(1);
+	MR_r2 = MR_sv(5);
+	MR_r3 = MR_sv(8);
+	MR_np_call_localret_ent(map__count_2_0,
+		transform_hlds__rbmm__points_to_graph__rptg_equal_2_0_i18);
+MR_def_label(transform_hlds__rbmm__points_to_graph__rptg_equal_2_0,18)
+	MR_MAYBE_INIT_LOCAL_THREAD_ENGINE_BASE
+	if ((MR_sv(3) != MR_r1)) {
+		MR_GOTO_LAB(transform_hlds__rbmm__points_to_graph__rptg_equal_2_0_i1);
+	}
+	MR_r1 = MR_sv(1);
+	MR_r2 = MR_sv(5);
+	MR_r3 = MR_sv(4);
+	MR_np_call_localret_ent(map__keys_2_0,
+		transform_hlds__rbmm__points_to_graph__rptg_equal_2_0_i19);
+MR_def_label(transform_hlds__rbmm__points_to_graph__rptg_equal_2_0,19)
+	MR_MAYBE_INIT_LOCAL_THREAD_ENGINE_BASE
+	{
+	MR_Word MR_tempr1;
+	MR_tempr1 = MR_r1;
+	MR_r1 = MR_sv(1);
+	MR_r2 = MR_sv(2);
+	MR_r3 = MR_r1;
+	MR_r4 = MR_tempr1;
+	MR_r5 = MR_sv(4);
+	MR_r6 = MR_sv(8);
+	MR_succip_word = MR_sv(10);
+	MR_decr_sp(10);
+	MR_np_tailcall_ent(transform_hlds__rbmm__points_to_graph__complex_map_equal_2_3_0);
+	}
+MR_def_label(transform_hlds__rbmm__points_to_graph__rptg_equal_2_0,1)
+	MR_MAYBE_INIT_LOCAL_THREAD_ENGINE_BASE
+	MR_succip_word = MR_sv(10);
+	MR_decr_sp(10);
+	MR_r1 = MR_FALSE;
+	MR_proceed();
+#ifdef MR_maybe_local_thread_engine_base
+	#undef MR_maybe_local_thread_engine_base
+	#define MR_maybe_local_thread_engine_base MR_thread_engine_base
+#endif
+MR_END_MODULE
+
+
+MR_BEGIN_MODULE(transform_hlds__rbmm__points_to_graph_module38)
+	MR_init_entry1(fn__transform_hlds__rbmm__points_to_graph__rptg_lookup_list_outedges_2_0);
+	MR_INIT_PROC_LAYOUT_ADDR(mercury__fn__transform_hlds__rbmm__points_to_graph__rptg_lookup_list_outedges_2_0);
+	MR_init_label1(fn__transform_hlds__rbmm__points_to_graph__rptg_lookup_list_outedges_2_0,3)
+MR_BEGIN_CODE
+
+/*-------------------------------------------------------------------------*/
+/* code for 'rptg_lookup_list_outedges'/3 mode 0 */
+#ifdef MR_maybe_local_thread_engine_base
+	#undef MR_maybe_local_thread_engine_base
+	#define MR_maybe_local_thread_engine_base MR_local_thread_engine_base
+#endif
+MR_define_entry(mercury__fn__transform_hlds__rbmm__points_to_graph__rptg_lookup_list_outedges_2_0);
+	MR_MAYBE_INIT_LOCAL_THREAD_ENGINE_BASE
+	MR_incr_sp(1);
+	MR_sv(1) = (MR_Word) MR_succip;
+	{
+	MR_Word MR_tempr1, MR_tempr2;
+	MR_tempr1 = MR_r1;
+	MR_r1 = (MR_Word) MR_CTOR0_ADDR(transform_hlds__rbmm__points_to_graph, rptg_node);
+	MR_tempr2 = MR_r2;
+	MR_r2 = (MR_Word) MR_TAG_COMMON(0,0,0);
+	MR_r3 = MR_tfield(0, MR_tempr1, 4);
+	MR_r4 = MR_tempr2;
+	}
+	MR_np_call_localret_ent(map__lookup_3_0,
+		fn__transform_hlds__rbmm__points_to_graph__rptg_lookup_list_outedges_2_0_i3);
+MR_def_label(fn__transform_hlds__rbmm__points_to_graph__rptg_lookup_list_outedges_2_0,3)
+	MR_MAYBE_INIT_LOCAL_THREAD_ENGINE_BASE
+	{
+	MR_Word MR_tempr1;
+	MR_tempr1 = MR_r1;
+	MR_r1 = (MR_Word) MR_CTOR0_ADDR(transform_hlds__rbmm__points_to_graph, rptg_edge);
+	MR_r2 = (MR_Word) MR_CTOR0_ADDR(transform_hlds__rbmm__points_to_graph, rptg_node);
+	MR_r3 = MR_tempr1;
+	MR_succip_word = MR_sv(1);
+	MR_decr_sp(1);
+	MR_np_tailcall_ent(map__keys_2_0);
+	}
+#ifdef MR_maybe_local_thread_engine_base
+	#undef MR_maybe_local_thread_engine_base
+	#define MR_maybe_local_thread_engine_base MR_thread_engine_base
+#endif
+MR_END_MODULE
+
+MR_decl_entry(set__insert_3_0);
+MR_decl_entry(list__foldl_4_0);
+
+MR_BEGIN_MODULE(transform_hlds__rbmm__points_to_graph_module39)
+	MR_init_entry1(transform_hlds__rbmm__points_to_graph__reach_from_a_variable_2_7_0);
+	MR_INIT_PROC_LAYOUT_ADDR(mercury__transform_hlds__rbmm__points_to_graph__reach_from_a_variable_2_7_0);
+	MR_init_label5(transform_hlds__rbmm__points_to_graph__reach_from_a_variable_2_7_0,20,3,4,6,11)
+MR_BEGIN_CODE
+
+/*-------------------------------------------------------------------------*/
+/* code for 'reach_from_a_variable_2'/7 mode 0 */
+#ifdef MR_maybe_local_thread_engine_base
+	#undef MR_maybe_local_thread_engine_base
+	#define MR_maybe_local_thread_engine_base MR_local_thread_engine_base
+#endif
+MR_def_static(transform_hlds__rbmm__points_to_graph__reach_from_a_variable_2_7_0)
+	MR_MAYBE_INIT_LOCAL_THREAD_ENGINE_BASE
+	MR_incr_sp(9);
+	MR_sv(9) = (MR_Word) MR_succip;
+MR_def_label(transform_hlds__rbmm__points_to_graph__reach_from_a_variable_2_7_0,20)
+	MR_MAYBE_INIT_LOCAL_THREAD_ENGINE_BASE
+	if (MR_LTAGS_TESTR(MR_r1,0,0)) {
+		MR_GOTO_LAB(transform_hlds__rbmm__points_to_graph__reach_from_a_variable_2_7_0_i3);
+	}
+	MR_r1 = MR_r6;
+	MR_decr_sp_and_return(9);
+MR_def_label(transform_hlds__rbmm__points_to_graph__reach_from_a_variable_2_7_0,3)
+	MR_MAYBE_INIT_LOCAL_THREAD_ENGINE_BASE
+	MR_sv(1) = MR_r2;
+	MR_sv(2) = MR_r3;
+	MR_sv(3) = MR_r4;
+	MR_sv(4) = MR_r5;
+	MR_sv(5) = MR_tfield(1, MR_r1, 1);
+	{
+	MR_Word MR_tempr1;
+	MR_tempr1 = MR_tfield(1, MR_r1, 0);
+	MR_sv(6) = MR_tfield(0, MR_tempr1, 0);
+	MR_sv(7) = MR_tfield(0, MR_tempr1, 1);
+	MR_sv(8) = (MR_Word) MR_CTOR0_ADDR(transform_hlds__rbmm__points_to_graph, rptg_node);
+	MR_r1 = MR_sv(8);
+	MR_r2 = MR_sv(6);
+	MR_r3 = MR_r6;
+	}
+	MR_np_call_localret_ent(set__insert_3_0,
+		transform_hlds__rbmm__points_to_graph__reach_from_a_variable_2_7_0_i4);
+MR_def_label(transform_hlds__rbmm__points_to_graph__reach_from_a_variable_2_7_0,4)
+	MR_MAYBE_INIT_LOCAL_THREAD_ENGINE_BASE
+	{
+	MR_Word MR_tempr1;
+	MR_tag_alloc_heap(MR_tempr1, 1, (MR_Integer) 2);
+	MR_tfield(1, MR_tempr1, 0) = MR_sv(6);
+	MR_tfield(1, MR_tempr1, 1) = MR_sv(4);
+	MR_sv(4) = MR_tempr1;
+	MR_sv(6) = MR_r1;
+	MR_r1 = MR_sv(1);
+	MR_r2 = MR_tfield(1, MR_tempr1, 0);
+	}
+	MR_np_call_localret_ent(fn__transform_hlds__rbmm__points_to_graph__rptg_lookup_list_outedges_2_0,
+		transform_hlds__rbmm__points_to_graph__reach_from_a_variable_2_7_0_i6);
+MR_def_label(transform_hlds__rbmm__points_to_graph__reach_from_a_variable_2_7_0,6)
+	MR_MAYBE_INIT_LOCAL_THREAD_ENGINE_BASE
+	{
+	MR_Word MR_tempr1, MR_tempr2;
+	MR_tag_alloc_heap(MR_tempr1, 0, (MR_Integer) 8);
+	MR_r3 = MR_tempr1;
+	MR_tfield(0, MR_tempr1, 0) = (MR_Word) MR_COMMON(2,0);
+	MR_tfield(0, MR_tempr1, 1) = (MR_Word) MR_ENTRY_AP(transform_hlds__rbmm__points_to_graph__update_remembered_list_8_0);
+	MR_tfield(0, MR_tempr1, 2) = (MR_Integer) 5;
+	MR_tfield(0, MR_tempr1, 3) = MR_sv(7);
+	MR_tfield(0, MR_tempr1, 4) = MR_sv(2);
+	MR_tfield(0, MR_tempr1, 5) = MR_sv(3);
+	MR_tfield(0, MR_tempr1, 6) = MR_sv(1);
+	MR_tfield(0, MR_tempr1, 7) = MR_sv(4);
+	MR_tempr2 = MR_r1;
+	MR_r1 = (MR_Word) MR_CTOR0_ADDR(transform_hlds__rbmm__points_to_graph, rptg_edge);
+	MR_r2 = (MR_Word) MR_TAG_COMMON(0,1,6);
+	MR_r4 = MR_tempr2;
+	MR_r5 = MR_sv(5);
+	}
+	MR_np_call_localret_ent(list__foldl_4_0,
+		transform_hlds__rbmm__points_to_graph__reach_from_a_variable_2_7_0_i11);
+MR_def_label(transform_hlds__rbmm__points_to_graph__reach_from_a_variable_2_7_0,11)
+	MR_MAYBE_INIT_LOCAL_THREAD_ENGINE_BASE
+	MR_r2 = MR_sv(1);
+	MR_r3 = MR_sv(2);
+	MR_r4 = MR_sv(3);
+	MR_r5 = MR_sv(4);
+	MR_r6 = MR_sv(6);
+	MR_succip_word = MR_sv(9);
+	MR_GOTO_LAB(transform_hlds__rbmm__points_to_graph__reach_from_a_variable_2_7_0_i20);
+#ifdef MR_maybe_local_thread_engine_base
+	#undef MR_maybe_local_thread_engine_base
+	#define MR_maybe_local_thread_engine_base MR_thread_engine_base
+#endif
+MR_END_MODULE
+
+MR_decl_entry(fn__pair__pair_2_0);
+MR_decl_entry(hlds__hlds_pred__proc_info_get_vartypes_2_0);
+MR_decl_entry(f_109_97_112_95_95_84_121_112_101_83_112_101_99_79_102_95_95_112_114_101_100_95_111_114_95_102_117_110_99_95_95_108_111_111_107_117_112_95_95_91_75_32_61_32_118_97_114_40_86_95_50_41_93_95_48_95_49_3_0);
+
+MR_BEGIN_MODULE(transform_hlds__rbmm__points_to_graph_module40)
+	MR_init_entry1(transform_hlds__rbmm__points_to_graph__rptg_reach_from_a_variable_6_0);
+	MR_INIT_PROC_LAYOUT_ADDR(mercury__transform_hlds__rbmm__points_to_graph__rptg_reach_from_a_variable_6_0);
+	MR_init_label5(transform_hlds__rbmm__points_to_graph__rptg_reach_from_a_variable_6_0,3,4,6,7,8)
+MR_BEGIN_CODE
+
+/*-------------------------------------------------------------------------*/
+/* code for 'rptg_reach_from_a_variable'/6 mode 0 */
+#ifdef MR_maybe_local_thread_engine_base
+	#undef MR_maybe_local_thread_engine_base
+	#define MR_maybe_local_thread_engine_base MR_local_thread_engine_base
+#endif
+MR_define_entry(mercury__transform_hlds__rbmm__points_to_graph__rptg_reach_from_a_variable_6_0);
+	MR_MAYBE_INIT_LOCAL_THREAD_ENGINE_BASE
+	MR_incr_sp(7);
+	MR_sv(7) = (MR_Word) MR_succip;
+	MR_sv(1) = MR_r1;
+	MR_sv(2) = MR_r2;
+	MR_sv(3) = MR_r3;
+	{
+	MR_Word MR_tempr1;
+	MR_tempr1 = MR_r4;
+	MR_sv(4) = MR_tempr1;
+	MR_sv(5) = MR_r5;
+	MR_sv(6) = (MR_Word) MR_TAG_COMMON(0,1,0);
+	MR_r1 = MR_sv(6);
+	MR_r2 = MR_tempr1;
+	}
+	MR_np_call_localret_ent(fn__set__make_singleton_set_1_0,
+		transform_hlds__rbmm__points_to_graph__rptg_reach_from_a_variable_6_0_i3);
+MR_def_label(transform_hlds__rbmm__points_to_graph__rptg_reach_from_a_variable_6_0,3)
+	MR_MAYBE_INIT_LOCAL_THREAD_ENGINE_BASE
+	{
+	MR_Word MR_tempr1;
+	MR_tempr1 = MR_r1;
+	MR_r1 = MR_sv(1);
+	MR_r2 = MR_tempr1;
+	}
+	MR_np_call_localret_ent(transform_hlds__rbmm__points_to_graph__rptg_get_node_by_vars_3_0,
+		transform_hlds__rbmm__points_to_graph__rptg_reach_from_a_variable_6_0_i4);
+MR_def_label(transform_hlds__rbmm__points_to_graph__rptg_reach_from_a_variable_6_0,4)
+	MR_MAYBE_INIT_LOCAL_THREAD_ENGINE_BASE
+	{
+	MR_Word MR_tempr1;
+	MR_tempr1 = MR_r1;
+	MR_r1 = (MR_Word) MR_CTOR0_ADDR(transform_hlds__rbmm__points_to_graph, rptg_node);
+	MR_r2 = (MR_Word) MR_TAG_COMMON(0,1,5);
+	MR_r3 = MR_tempr1;
+	MR_r4 = (MR_Word) MR_tbmkword(0, 0);
+	}
+	MR_np_call_localret_ent(fn__pair__pair_2_0,
+		transform_hlds__rbmm__points_to_graph__rptg_reach_from_a_variable_6_0_i6);
+MR_def_label(transform_hlds__rbmm__points_to_graph__rptg_reach_from_a_variable_6_0,6)
+	MR_MAYBE_INIT_LOCAL_THREAD_ENGINE_BASE
+	MR_r2 = MR_sv(3);
+	MR_sv(3) = MR_r1;
+	MR_r1 = MR_r2;
+	MR_np_call_localret_ent(hlds__hlds_pred__proc_info_get_vartypes_2_0,
+		transform_hlds__rbmm__points_to_graph__rptg_reach_from_a_variable_6_0_i7);
+MR_def_label(transform_hlds__rbmm__points_to_graph__rptg_reach_from_a_variable_6_0,7)
+	MR_MAYBE_INIT_LOCAL_THREAD_ENGINE_BASE
+	{
+	MR_Word MR_tempr1;
+	MR_tempr1 = MR_r1;
+	MR_r1 = (MR_Word) MR_CTOR0_ADDR(parse_tree__prog_data, prog_var_type);
+	MR_r2 = MR_sv(6);
+	MR_r3 = (MR_Word) MR_CTOR0_ADDR(parse_tree__prog_data, mer_type);
+	MR_r4 = MR_tempr1;
+	MR_r5 = MR_sv(4);
+	}
+	MR_np_call_localret_ent(f_109_97_112_95_95_84_121_112_101_83_112_101_99_79_102_95_95_112_114_101_100_95_111_114_95_102_117_110_99_95_95_108_111_111_107_117_112_95_95_91_75_32_61_32_118_97_114_40_86_95_50_41_93_95_48_95_49_3_0,
+		transform_hlds__rbmm__points_to_graph__rptg_reach_from_a_variable_6_0_i8);
+MR_def_label(transform_hlds__rbmm__points_to_graph__rptg_reach_from_a_variable_6_0,8)
+	MR_MAYBE_INIT_LOCAL_THREAD_ENGINE_BASE
+	{
+	MR_Word MR_tempr1, MR_tempr2;
+	MR_tag_alloc_heap(MR_tempr1, 1, (MR_Integer) 2);
+	MR_tfield(1, MR_tempr1, 0) = MR_sv(3);
+	MR_tfield(1, MR_tempr1, 1) = (MR_Word) MR_tbmkword(0, 0);
+	MR_tempr2 = MR_r1;
+	MR_r1 = MR_tempr1;
+	MR_r2 = MR_sv(1);
+	MR_r3 = MR_sv(2);
+	MR_r4 = MR_tempr2;
+	MR_r5 = (MR_Word) MR_tbmkword(0, 0);
+	MR_r6 = MR_sv(5);
+	MR_succip_word = MR_sv(7);
+	MR_decr_sp(7);
+	MR_np_tailcall_ent(transform_hlds__rbmm__points_to_graph__reach_from_a_variable_2_7_0);
+	}
+#ifdef MR_maybe_local_thread_engine_base
+	#undef MR_maybe_local_thread_engine_base
+	#define MR_maybe_local_thread_engine_base MR_thread_engine_base
+#endif
+MR_END_MODULE
+
+
+MR_BEGIN_MODULE(transform_hlds__rbmm__points_to_graph_module41)
+	MR_init_entry1(transform_hlds__rbmm__points_to_graph__find_edge_with_same_content_4_0);
+	MR_INIT_PROC_LAYOUT_ADDR(mercury__transform_hlds__rbmm__points_to_graph__find_edge_with_same_content_4_0);
+	MR_init_label5(transform_hlds__rbmm__points_to_graph__find_edge_with_same_content_4_0,21,3,6,5,1)
+MR_BEGIN_CODE
+
+/*-------------------------------------------------------------------------*/
+/* code for 'find_edge_with_same_content'/4 mode 0 */
+#ifdef MR_maybe_local_thread_engine_base
+	#undef MR_maybe_local_thread_engine_base
+	#define MR_maybe_local_thread_engine_base MR_local_thread_engine_base
+#endif
+MR_def_static(transform_hlds__rbmm__points_to_graph__find_edge_with_same_content_4_0)
+	MR_MAYBE_INIT_LOCAL_THREAD_ENGINE_BASE
+	MR_incr_sp(5);
+	MR_sv(5) = (MR_Word) MR_succip;
+MR_def_label(transform_hlds__rbmm__points_to_graph__find_edge_with_same_content_4_0,21)
+	MR_MAYBE_INIT_LOCAL_THREAD_ENGINE_BASE
+	if (MR_LTAGS_TEST(MR_r2,0,0)) {
+		MR_GOTO_LAB(transform_hlds__rbmm__points_to_graph__find_edge_with_same_content_4_0_i1);
+	}
+	MR_sv(1) = MR_r1;
+	MR_sv(2) = MR_tfield(1, MR_r2, 1);
+	MR_sv(3) = MR_r3;
+	MR_r1 = (MR_Word) MR_CTOR0_ADDR(transform_hlds__rbmm__points_to_graph, rptg_edge);
+	{
+	MR_Word MR_tempr1;
+	MR_tempr1 = MR_r2;
+	MR_r2 = (MR_Word) MR_CTOR0_ADDR(transform_hlds__rbmm__points_to_graph, rptg_edge_info);
+	MR_r3 = MR_tfield(0, MR_r3, 3);
+	MR_r4 = MR_tfield(1, MR_tempr1, 0);
+	}
+	MR_np_call_localret_ent(map__lookup_3_0,
+		transform_hlds__rbmm__points_to_graph__find_edge_with_same_content_4_0_i3);
+MR_def_label(transform_hlds__rbmm__points_to_graph__find_edge_with_same_content_4_0,3)
+	MR_MAYBE_INIT_LOCAL_THREAD_ENGINE_BASE
+	MR_sv(4) = MR_tfield(0, MR_r1, 1);
+	MR_r1 = MR_tfield(0, MR_r1, 2);
+	MR_r2 = MR_sv(1);
+	MR_np_call_localret_ent(__Unify___transform_hlds__rbmm__points_to_graph__rptg_edge_content_0_0,
+		transform_hlds__rbmm__points_to_graph__find_edge_with_same_content_4_0_i6);
+MR_def_label(transform_hlds__rbmm__points_to_graph__find_edge_with_same_content_4_0,6)
+	MR_MAYBE_INIT_LOCAL_THREAD_ENGINE_BASE
+	if (!(MR_r1)) {
+		MR_GOTO_LAB(transform_hlds__rbmm__points_to_graph__find_edge_with_same_content_4_0_i5);
+	}
+	MR_r2 = MR_sv(4);
+	MR_r1 = MR_TRUE;
+	MR_decr_sp_and_return(5);
+MR_def_label(transform_hlds__rbmm__points_to_graph__find_edge_with_same_content_4_0,5)
+	MR_MAYBE_INIT_LOCAL_THREAD_ENGINE_BASE
+	MR_r1 = MR_sv(1);
+	MR_r2 = MR_sv(2);
+	MR_r3 = MR_sv(3);
+	MR_succip_word = MR_sv(5);
+	MR_GOTO_LAB(transform_hlds__rbmm__points_to_graph__find_edge_with_same_content_4_0_i21);
+MR_def_label(transform_hlds__rbmm__points_to_graph__find_edge_with_same_content_4_0,1)
+	MR_MAYBE_INIT_LOCAL_THREAD_ENGINE_BASE
+	MR_r1 = MR_FALSE;
+	MR_decr_sp_and_return(5);
+#ifdef MR_maybe_local_thread_engine_base
+	#undef MR_maybe_local_thread_engine_base
+	#define MR_maybe_local_thread_engine_base MR_thread_engine_base
+#endif
+MR_END_MODULE
+
+
+MR_BEGIN_MODULE(transform_hlds__rbmm__points_to_graph_module42)
+	MR_init_entry1(transform_hlds__rbmm__points_to_graph__rptg_find_edge_from_node_with_same_content_4_0);
+	MR_INIT_PROC_LAYOUT_ADDR(mercury__transform_hlds__rbmm__points_to_graph__rptg_find_edge_from_node_with_same_content_4_0);
+	MR_init_label1(transform_hlds__rbmm__points_to_graph__rptg_find_edge_from_node_with_same_content_4_0,2)
+MR_BEGIN_CODE
+
+/*-------------------------------------------------------------------------*/
+/* code for 'rptg_find_edge_from_node_with_same_content'/4 mode 0 */
+#ifdef MR_maybe_local_thread_engine_base
+	#undef MR_maybe_local_thread_engine_base
+	#define MR_maybe_local_thread_engine_base MR_local_thread_engine_base
+#endif
+MR_define_entry(mercury__transform_hlds__rbmm__points_to_graph__rptg_find_edge_from_node_with_same_content_4_0);
+	MR_MAYBE_INIT_LOCAL_THREAD_ENGINE_BASE
+	MR_incr_sp(3);
+	MR_sv(3) = (MR_Word) MR_succip;
+	MR_sv(1) = MR_r2;
+	{
+	MR_Word MR_tempr1, MR_tempr2;
+	MR_tempr2 = MR_r3;
+	MR_sv(2) = MR_tempr2;
+	MR_tempr1 = MR_r1;
+	MR_r1 = MR_tempr2;
+	MR_r2 = MR_tempr1;
+	}
+	MR_np_call_localret_ent(fn__transform_hlds__rbmm__points_to_graph__rptg_lookup_list_outedges_2_0,
+		transform_hlds__rbmm__points_to_graph__rptg_find_edge_from_node_with_same_content_4_0_i2);
+MR_def_label(transform_hlds__rbmm__points_to_graph__rptg_find_edge_from_node_with_same_content_4_0,2)
+	MR_MAYBE_INIT_LOCAL_THREAD_ENGINE_BASE
+	{
+	MR_Word MR_tempr1;
+	MR_tempr1 = MR_r1;
+	MR_r1 = MR_sv(1);
+	MR_r2 = MR_tempr1;
+	MR_r3 = MR_sv(2);
+	MR_succip_word = MR_sv(3);
+	MR_decr_sp(3);
+	MR_np_tailcall_ent(transform_hlds__rbmm__points_to_graph__find_edge_with_same_content_4_0);
+	}
+#ifdef MR_maybe_local_thread_engine_base
+	#undef MR_maybe_local_thread_engine_base
+	#define MR_maybe_local_thread_engine_base MR_thread_engine_base
+#endif
+MR_END_MODULE
+
+MR_decl_entry(solutions__solutions_2_1);
+
+MR_BEGIN_MODULE(transform_hlds__rbmm__points_to_graph_module43)
+	MR_init_entry1(transform_hlds__rbmm__points_to_graph__rptg_edge_in_graph_4_0);
+	MR_INIT_PROC_LAYOUT_ADDR(mercury__transform_hlds__rbmm__points_to_graph__rptg_edge_in_graph_4_0);
+	MR_init_label2(transform_hlds__rbmm__points_to_graph__rptg_edge_in_graph_4_0,3,5)
+MR_BEGIN_CODE
+
+/*-------------------------------------------------------------------------*/
+/* code for 'rptg_edge_in_graph'/4 mode 0 */
+#ifdef MR_maybe_local_thread_engine_base
+	#undef MR_maybe_local_thread_engine_base
+	#define MR_maybe_local_thread_engine_base MR_local_thread_engine_base
+#endif
+MR_define_entry(mercury__transform_hlds__rbmm__points_to_graph__rptg_edge_in_graph_4_0);
+	MR_MAYBE_INIT_LOCAL_THREAD_ENGINE_BASE
+	MR_incr_sp(4);
+	MR_sv(4) = (MR_Word) MR_succip;
+	MR_sv(1) = MR_r2;
+	MR_sv(2) = MR_r3;
+	{
+	MR_Word MR_tempr1, MR_tempr2;
+	MR_tempr2 = MR_r4;
+	MR_sv(3) = MR_tempr2;
+	MR_tempr1 = MR_r1;
+	MR_r1 = (MR_Word) MR_CTOR0_ADDR(transform_hlds__rbmm__points_to_graph, rptg_node);
+	MR_r2 = (MR_Word) MR_TAG_COMMON(0,0,0);
+	MR_r3 = MR_tfield(0, MR_tempr2, 4);
+	MR_r4 = MR_tempr1;
+	}
+	MR_np_call_localret_ent(map__lookup_3_0,
+		transform_hlds__rbmm__points_to_graph__rptg_edge_in_graph_4_0_i3);
+MR_def_label(transform_hlds__rbmm__points_to_graph__rptg_edge_in_graph_4_0,3)
+	MR_MAYBE_INIT_LOCAL_THREAD_ENGINE_BASE
+	MR_tag_alloc_heap(MR_r2, 0, (MR_Integer) 5);
+	MR_tfield(0, MR_r2, 0) = (MR_Word) MR_COMMON(3,0);
+	MR_tfield(0, MR_r2, 1) = (MR_Word) MR_ENTRY_AP(transform_hlds__rbmm__points_to_graph__IntroducedFrom__pred__rptg_edge_in_graph__855__1_3_0);
+	MR_tfield(0, MR_r2, 2) = (MR_Integer) 2;
+	MR_tfield(0, MR_r2, 3) = MR_sv(2);
+	MR_tfield(0, MR_r2, 4) = MR_r1;
+	MR_r1 = (MR_Word) MR_CTOR0_ADDR(transform_hlds__rbmm__points_to_graph, rptg_edge);
+	MR_np_call_localret_ent(solutions__solutions_2_1,
+		transform_hlds__rbmm__points_to_graph__rptg_edge_in_graph_4_0_i5);
+MR_def_label(transform_hlds__rbmm__points_to_graph__rptg_edge_in_graph_4_0,5)
+	MR_MAYBE_INIT_LOCAL_THREAD_ENGINE_BASE
+	{
+	MR_Word MR_tempr1;
+	MR_tempr1 = MR_r1;
+	MR_r1 = MR_sv(1);
+	MR_r2 = MR_tempr1;
+	MR_r3 = MR_sv(3);
+	MR_succip_word = MR_sv(4);
+	MR_decr_sp(4);
+	MR_np_tailcall_ent(transform_hlds__rbmm__points_to_graph__find_edge_with_same_content_4_0);
+	}
+#ifdef MR_maybe_local_thread_engine_base
+	#undef MR_maybe_local_thread_engine_base
+	#define MR_maybe_local_thread_engine_base MR_thread_engine_base
+#endif
+MR_END_MODULE
+
+
+MR_BEGIN_MODULE(transform_hlds__rbmm__points_to_graph_module44)
+	MR_init_entry1(fn__transform_hlds__rbmm__points_to_graph__rptg_node_content_get_vars_1_0);
+	MR_INIT_PROC_LAYOUT_ADDR(mercury__fn__transform_hlds__rbmm__points_to_graph__rptg_node_content_get_vars_1_0);
+MR_BEGIN_CODE
+
+/*-------------------------------------------------------------------------*/
+/* code for 'rptg_node_content_get_vars'/2 mode 0 */
+#ifdef MR_maybe_local_thread_engine_base
+	#undef MR_maybe_local_thread_engine_base
+	#define MR_maybe_local_thread_engine_base MR_local_thread_engine_base
+#endif
+MR_define_entry(mercury__fn__transform_hlds__rbmm__points_to_graph__rptg_node_content_get_vars_1_0);
+	MR_MAYBE_INIT_LOCAL_THREAD_ENGINE_BASE
+	MR_r1 = MR_tfield(0, MR_r1, 0);
+	MR_proceed();
+#ifdef MR_maybe_local_thread_engine_base
+	#undef MR_maybe_local_thread_engine_base
+	#define MR_maybe_local_thread_engine_base MR_thread_engine_base
+#endif
+MR_END_MODULE
+
+
+MR_BEGIN_MODULE(transform_hlds__rbmm__points_to_graph_module45)
+	MR_init_entry1(fn__transform_hlds__rbmm__points_to_graph__rptg_lookup_node_vars_2_0);
+	MR_INIT_PROC_LAYOUT_ADDR(mercury__fn__transform_hlds__rbmm__points_to_graph__rptg_lookup_node_vars_2_0);
+	MR_init_label1(fn__transform_hlds__rbmm__points_to_graph__rptg_lookup_node_vars_2_0,2)
+MR_BEGIN_CODE
+
+/*-------------------------------------------------------------------------*/
+/* code for 'rptg_lookup_node_vars'/3 mode 0 */
+#ifdef MR_maybe_local_thread_engine_base
+	#undef MR_maybe_local_thread_engine_base
+	#define MR_maybe_local_thread_engine_base MR_local_thread_engine_base
+#endif
+MR_define_entry(mercury__fn__transform_hlds__rbmm__points_to_graph__rptg_lookup_node_vars_2_0);
+	MR_MAYBE_INIT_LOCAL_THREAD_ENGINE_BASE
+	MR_incr_sp(1);
+	MR_sv(1) = (MR_Word) MR_succip;
+	{
+	MR_Word MR_tempr1, MR_tempr2;
+	MR_tempr1 = MR_r1;
+	MR_r1 = (MR_Word) MR_CTOR0_ADDR(transform_hlds__rbmm__points_to_graph, rptg_node);
+	MR_tempr2 = MR_r2;
+	MR_r2 = (MR_Word) MR_CTOR0_ADDR(transform_hlds__rbmm__points_to_graph, rptg_node_content);
+	MR_r3 = MR_tfield(0, MR_tempr1, 2);
+	MR_r4 = MR_tempr2;
+	}
+	MR_np_call_localret_ent(map__lookup_3_0,
+		fn__transform_hlds__rbmm__points_to_graph__rptg_lookup_node_vars_2_0_i2);
+MR_def_label(fn__transform_hlds__rbmm__points_to_graph__rptg_lookup_node_vars_2_0,2)
+	MR_MAYBE_INIT_LOCAL_THREAD_ENGINE_BASE
+	MR_r1 = MR_tfield(0, MR_r1, 0);
+	MR_decr_sp_and_return(1);
+#ifdef MR_maybe_local_thread_engine_base
+	#undef MR_maybe_local_thread_engine_base
+	#define MR_maybe_local_thread_engine_base MR_thread_engine_base
+#endif
+MR_END_MODULE
+
+
+MR_BEGIN_MODULE(transform_hlds__rbmm__points_to_graph_module46)
+	MR_init_entry1(fn__transform_hlds__rbmm__points_to_graph__rptg_node_content_get_is_allocated_1_0);
+	MR_INIT_PROC_LAYOUT_ADDR(mercury__fn__transform_hlds__rbmm__points_to_graph__rptg_node_content_get_is_allocated_1_0);
+MR_BEGIN_CODE
+
+/*-------------------------------------------------------------------------*/
+/* code for 'rptg_node_content_get_is_allocated'/2 mode 0 */
+#ifdef MR_maybe_local_thread_engine_base
+	#undef MR_maybe_local_thread_engine_base
+	#define MR_maybe_local_thread_engine_base MR_local_thread_engine_base
+#endif
+MR_define_entry(mercury__fn__transform_hlds__rbmm__points_to_graph__rptg_node_content_get_is_allocated_1_0);
+	MR_MAYBE_INIT_LOCAL_THREAD_ENGINE_BASE
+	MR_r1 = MR_tfield(0, MR_r1, 4);
+	MR_proceed();
+#ifdef MR_maybe_local_thread_engine_base
+	#undef MR_maybe_local_thread_engine_base
+	#define MR_maybe_local_thread_engine_base MR_thread_engine_base
+#endif
+MR_END_MODULE
+
+
+MR_BEGIN_MODULE(transform_hlds__rbmm__points_to_graph_module47)
+	MR_init_entry1(fn__transform_hlds__rbmm__points_to_graph__rptg_lookup_node_is_allocated_2_0);
+	MR_INIT_PROC_LAYOUT_ADDR(mercury__fn__transform_hlds__rbmm__points_to_graph__rptg_lookup_node_is_allocated_2_0);
+	MR_init_label1(fn__transform_hlds__rbmm__points_to_graph__rptg_lookup_node_is_allocated_2_0,2)
+MR_BEGIN_CODE
+
+/*-------------------------------------------------------------------------*/
+/* code for 'rptg_lookup_node_is_allocated'/3 mode 0 */
+#ifdef MR_maybe_local_thread_engine_base
+	#undef MR_maybe_local_thread_engine_base
+	#define MR_maybe_local_thread_engine_base MR_local_thread_engine_base
+#endif
+MR_define_entry(mercury__fn__transform_hlds__rbmm__points_to_graph__rptg_lookup_node_is_allocated_2_0);
+	MR_MAYBE_INIT_LOCAL_THREAD_ENGINE_BASE
+	MR_incr_sp(1);
+	MR_sv(1) = (MR_Word) MR_succip;
+	{
+	MR_Word MR_tempr1, MR_tempr2;
+	MR_tempr1 = MR_r1;
+	MR_r1 = (MR_Word) MR_CTOR0_ADDR(transform_hlds__rbmm__points_to_graph, rptg_node);
+	MR_tempr2 = MR_r2;
+	MR_r2 = (MR_Word) MR_CTOR0_ADDR(transform_hlds__rbmm__points_to_graph, rptg_node_content);
+	MR_r3 = MR_tfield(0, MR_tempr1, 2);
+	MR_r4 = MR_tempr2;
+	}
+	MR_np_call_localret_ent(map__lookup_3_0,
+		fn__transform_hlds__rbmm__points_to_graph__rptg_lookup_node_is_allocated_2_0_i2);
+MR_def_label(fn__transform_hlds__rbmm__points_to_graph__rptg_lookup_node_is_allocated_2_0,2)
+	MR_MAYBE_INIT_LOCAL_THREAD_ENGINE_BASE
+	MR_r1 = MR_tfield(0, MR_r1, 4);
+	MR_decr_sp_and_return(1);
+#ifdef MR_maybe_local_thread_engine_base
+	#undef MR_maybe_local_thread_engine_base
+	#define MR_maybe_local_thread_engine_base MR_thread_engine_base
+#endif
+MR_END_MODULE
+
+
+MR_BEGIN_MODULE(transform_hlds__rbmm__points_to_graph_module48)
+	MR_init_entry1(transform_hlds__rbmm__points_to_graph__rptg_is_allocated_node_2_0);
+	MR_INIT_PROC_LAYOUT_ADDR(mercury__transform_hlds__rbmm__points_to_graph__rptg_is_allocated_node_2_0);
+	MR_init_label1(transform_hlds__rbmm__points_to_graph__rptg_is_allocated_node_2_0,2)
+MR_BEGIN_CODE
+
+/*-------------------------------------------------------------------------*/
+/* code for 'rptg_is_allocated_node'/2 mode 0 */
+#ifdef MR_maybe_local_thread_engine_base
+	#undef MR_maybe_local_thread_engine_base
+	#define MR_maybe_local_thread_engine_base MR_local_thread_engine_base
+#endif
+MR_define_entry(mercury__transform_hlds__rbmm__points_to_graph__rptg_is_allocated_node_2_0);
+	MR_MAYBE_INIT_LOCAL_THREAD_ENGINE_BASE
+	MR_incr_sp(1);
+	MR_sv(1) = (MR_Word) MR_succip;
+	{
+	MR_Word MR_tempr1, MR_tempr2;
+	MR_tempr1 = MR_r1;
+	MR_r1 = (MR_Word) MR_CTOR0_ADDR(transform_hlds__rbmm__points_to_graph, rptg_node);
+	MR_tempr2 = MR_r2;
+	MR_r2 = (MR_Word) MR_CTOR0_ADDR(transform_hlds__rbmm__points_to_graph, rptg_node_content);
+	MR_r3 = MR_tfield(0, MR_tempr1, 2);
+	MR_r4 = MR_tempr2;
+	}
+	MR_np_call_localret_ent(map__lookup_3_0,
+		transform_hlds__rbmm__points_to_graph__rptg_is_allocated_node_2_0_i2);
+MR_def_label(transform_hlds__rbmm__points_to_graph__rptg_is_allocated_node_2_0,2)
+	MR_MAYBE_INIT_LOCAL_THREAD_ENGINE_BASE
+	MR_r2 = MR_tfield(0, MR_r1, 4);
+	MR_r1 = ((MR_Integer) MR_r2 == (MR_Integer) 1);
+	MR_decr_sp_and_return(1);
+#ifdef MR_maybe_local_thread_engine_base
+	#undef MR_maybe_local_thread_engine_base
+	#define MR_maybe_local_thread_engine_base MR_thread_engine_base
+#endif
+MR_END_MODULE
+
+
+MR_BEGIN_MODULE(transform_hlds__rbmm__points_to_graph_module49)
+	MR_init_entry1(transform_hlds__rbmm__points_to_graph__rptg_node_content_set_vars_3_0);
+	MR_INIT_PROC_LAYOUT_ADDR(mercury__transform_hlds__rbmm__points_to_graph__rptg_node_content_set_vars_3_0);
+MR_BEGIN_CODE
+
+/*-------------------------------------------------------------------------*/
+/* code for 'rptg_node_content_set_vars'/3 mode 0 */
+#ifdef MR_maybe_local_thread_engine_base
+	#undef MR_maybe_local_thread_engine_base
+	#define MR_maybe_local_thread_engine_base MR_local_thread_engine_base
+#endif
+MR_define_entry(mercury__transform_hlds__rbmm__points_to_graph__rptg_node_content_set_vars_3_0);
+	MR_MAYBE_INIT_LOCAL_THREAD_ENGINE_BASE
+	{
+	MR_Word MR_tempr1;
+	MR_tag_alloc_heap(MR_tempr1, 0, (MR_Integer) 5);
+	MR_tfield(0, MR_tempr1, 0) = MR_r1;
+	MR_tfield(0, MR_tempr1, 1) = MR_tfield(0, MR_r2, 1);
+	MR_tfield(0, MR_tempr1, 2) = MR_tfield(0, MR_r2, 2);
+	MR_tfield(0, MR_tempr1, 3) = MR_tfield(0, MR_r2, 3);
+	MR_tfield(0, MR_tempr1, 4) = MR_tfield(0, MR_r2, 4);
+	MR_r1 = MR_tempr1;
+	MR_proceed();
+	}
+#ifdef MR_maybe_local_thread_engine_base
+	#undef MR_maybe_local_thread_engine_base
+	#define MR_maybe_local_thread_engine_base MR_thread_engine_base
+#endif
+MR_END_MODULE
+
+
+MR_BEGIN_MODULE(transform_hlds__rbmm__points_to_graph_module50)
+	MR_init_entry1(transform_hlds__rbmm__points_to_graph__transfer_out_edges_2_4_0);
+	MR_INIT_PROC_LAYOUT_ADDR(mercury__transform_hlds__rbmm__points_to_graph__transfer_out_edges_2_4_0);
+	MR_init_label6(transform_hlds__rbmm__points_to_graph__transfer_out_edges_2_4_0,21,3,4,7,5,9)
+MR_BEGIN_CODE
+
+/*-------------------------------------------------------------------------*/
+/* code for 'transfer_out_edges_2'/4 mode 0 */
+#ifdef MR_maybe_local_thread_engine_base
+	#undef MR_maybe_local_thread_engine_base
+	#define MR_maybe_local_thread_engine_base MR_local_thread_engine_base
+#endif
+MR_def_static(transform_hlds__rbmm__points_to_graph__transfer_out_edges_2_4_0)
+	MR_MAYBE_INIT_LOCAL_THREAD_ENGINE_BASE
+	MR_incr_sp(6);
+	MR_sv(6) = (MR_Word) MR_succip;
+MR_def_label(transform_hlds__rbmm__points_to_graph__transfer_out_edges_2_4_0,21)
+	MR_MAYBE_INIT_LOCAL_THREAD_ENGINE_BASE
+	if (MR_LTAGS_TESTR(MR_r1,0,0)) {
+		MR_GOTO_LAB(transform_hlds__rbmm__points_to_graph__transfer_out_edges_2_4_0_i3);
+	}
+	MR_r1 = MR_r3;
+	MR_decr_sp_and_return(6);
+MR_def_label(transform_hlds__rbmm__points_to_graph__transfer_out_edges_2_4_0,3)
+	MR_MAYBE_INIT_LOCAL_THREAD_ENGINE_BASE
+	MR_sv(1) = MR_r2;
+	MR_sv(2) = MR_r3;
+	MR_sv(3) = MR_tfield(1, MR_r1, 1);
+	{
+	MR_Word MR_tempr1;
+	MR_tempr1 = MR_r1;
+	MR_r1 = (MR_Word) MR_CTOR0_ADDR(transform_hlds__rbmm__points_to_graph, rptg_edge);
+	MR_r2 = (MR_Word) MR_CTOR0_ADDR(transform_hlds__rbmm__points_to_graph, rptg_edge_info);
+	MR_r3 = MR_tfield(0, MR_r3, 3);
+	MR_r4 = MR_tfield(1, MR_tempr1, 0);
+	}
+	MR_np_call_localret_ent(map__lookup_3_0,
+		transform_hlds__rbmm__points_to_graph__transfer_out_edges_2_4_0_i4);
+MR_def_label(transform_hlds__rbmm__points_to_graph__transfer_out_edges_2_4_0,4)
+	MR_MAYBE_INIT_LOCAL_THREAD_ENGINE_BASE
+	MR_r2 = MR_tfield(0, MR_r1, 2);
+	MR_r3 = MR_tfield(0, MR_r1, 1);
+	MR_sv(4) = MR_r3;
+	MR_sv(5) = MR_r2;
+	MR_r1 = MR_sv(1);
+	MR_r4 = MR_sv(2);
+	MR_np_call_localret_ent(transform_hlds__rbmm__points_to_graph__rptg_edge_in_graph_4_0,
+		transform_hlds__rbmm__points_to_graph__transfer_out_edges_2_4_0_i7);
+MR_def_label(transform_hlds__rbmm__points_to_graph__transfer_out_edges_2_4_0,7)
+	MR_MAYBE_INIT_LOCAL_THREAD_ENGINE_BASE
+	if (!(MR_r1)) {
+		MR_GOTO_LAB(transform_hlds__rbmm__points_to_graph__transfer_out_edges_2_4_0_i5);
+	}
+	MR_r2 = MR_sv(1);
+	MR_r1 = MR_sv(3);
+	MR_r3 = MR_sv(2);
+	MR_succip_word = MR_sv(6);
+	MR_GOTO_LAB(transform_hlds__rbmm__points_to_graph__transfer_out_edges_2_4_0_i21);
+MR_def_label(transform_hlds__rbmm__points_to_graph__transfer_out_edges_2_4_0,5)
+	MR_MAYBE_INIT_LOCAL_THREAD_ENGINE_BASE
+	MR_r3 = MR_sv(4);
+	MR_r2 = MR_sv(5);
+	MR_r1 = MR_sv(1);
+	{
+	MR_Word MR_tempr1;
+	MR_tempr1 = MR_r2;
+	MR_r2 = MR_r3;
+	MR_r3 = MR_tempr1;
+	MR_r4 = MR_sv(2);
+	}
+	MR_np_call_localret_ent(transform_hlds__rbmm__points_to_graph__rptg_set_edge_6_0,
+		transform_hlds__rbmm__points_to_graph__transfer_out_edges_2_4_0_i9);
+MR_def_label(transform_hlds__rbmm__points_to_graph__transfer_out_edges_2_4_0,9)
+	MR_MAYBE_INIT_LOCAL_THREAD_ENGINE_BASE
+	{
+	MR_Word MR_tempr1;
+	MR_tempr1 = MR_r2;
+	MR_r2 = MR_sv(1);
+	MR_r1 = MR_sv(3);
+	MR_r3 = MR_tempr1;
+	MR_succip_word = MR_sv(6);
+	MR_GOTO_LAB(transform_hlds__rbmm__points_to_graph__transfer_out_edges_2_4_0_i21);
+	}
+#ifdef MR_maybe_local_thread_engine_base
+	#undef MR_maybe_local_thread_engine_base
+	#define MR_maybe_local_thread_engine_base MR_thread_engine_base
+#endif
+MR_END_MODULE
+
+
+MR_BEGIN_MODULE(transform_hlds__rbmm__points_to_graph_module51)
+	MR_init_entry1(transform_hlds__rbmm__points_to_graph__transfer_out_edges_4_0);
+	MR_INIT_PROC_LAYOUT_ADDR(mercury__transform_hlds__rbmm__points_to_graph__transfer_out_edges_4_0);
+	MR_init_label1(transform_hlds__rbmm__points_to_graph__transfer_out_edges_4_0,2)
+MR_BEGIN_CODE
+
+/*-------------------------------------------------------------------------*/
+/* code for 'transfer_out_edges'/4 mode 0 */
+#ifdef MR_maybe_local_thread_engine_base
+	#undef MR_maybe_local_thread_engine_base
+	#define MR_maybe_local_thread_engine_base MR_local_thread_engine_base
+#endif
+MR_def_static(transform_hlds__rbmm__points_to_graph__transfer_out_edges_4_0)
+	MR_MAYBE_INIT_LOCAL_THREAD_ENGINE_BASE
+	MR_incr_sp(3);
+	MR_sv(3) = (MR_Word) MR_succip;
+	MR_sv(1) = MR_r1;
+	{
+	MR_Word MR_tempr1;
+	MR_tempr1 = MR_r3;
+	MR_sv(2) = MR_tempr1;
+	MR_r1 = MR_tempr1;
+	}
+	MR_np_call_localret_ent(fn__transform_hlds__rbmm__points_to_graph__rptg_lookup_list_outedges_2_0,
+		transform_hlds__rbmm__points_to_graph__transfer_out_edges_4_0_i2);
+MR_def_label(transform_hlds__rbmm__points_to_graph__transfer_out_edges_4_0,2)
+	MR_MAYBE_INIT_LOCAL_THREAD_ENGINE_BASE
+	MR_r2 = MR_sv(1);
+	MR_r3 = MR_sv(2);
+	MR_succip_word = MR_sv(3);
+	MR_decr_sp(3);
+	MR_np_tailcall_ent(transform_hlds__rbmm__points_to_graph__transfer_out_edges_2_4_0);
+#ifdef MR_maybe_local_thread_engine_base
+	#undef MR_maybe_local_thread_engine_base
+	#define MR_maybe_local_thread_engine_base MR_thread_engine_base
+#endif
+MR_END_MODULE
+
+
+MR_BEGIN_MODULE(transform_hlds__rbmm__points_to_graph_module52)
+	MR_init_entry1(transform_hlds__rbmm__points_to_graph__transfer_in_edges_2_4_0);
+	MR_INIT_PROC_LAYOUT_ADDR(mercury__transform_hlds__rbmm__points_to_graph__transfer_in_edges_2_4_0);
+	MR_init_label6(transform_hlds__rbmm__points_to_graph__transfer_in_edges_2_4_0,21,3,4,7,5,9)
+MR_BEGIN_CODE
+
+/*-------------------------------------------------------------------------*/
+/* code for 'transfer_in_edges_2'/4 mode 0 */
+#ifdef MR_maybe_local_thread_engine_base
+	#undef MR_maybe_local_thread_engine_base
+	#define MR_maybe_local_thread_engine_base MR_local_thread_engine_base
+#endif
+MR_def_static(transform_hlds__rbmm__points_to_graph__transfer_in_edges_2_4_0)
+	MR_MAYBE_INIT_LOCAL_THREAD_ENGINE_BASE
+	MR_incr_sp(6);
+	MR_sv(6) = (MR_Word) MR_succip;
+MR_def_label(transform_hlds__rbmm__points_to_graph__transfer_in_edges_2_4_0,21)
+	MR_MAYBE_INIT_LOCAL_THREAD_ENGINE_BASE
+	if (MR_LTAGS_TESTR(MR_r1,0,0)) {
+		MR_GOTO_LAB(transform_hlds__rbmm__points_to_graph__transfer_in_edges_2_4_0_i3);
+	}
+	MR_r1 = MR_r3;
+	MR_decr_sp_and_return(6);
+MR_def_label(transform_hlds__rbmm__points_to_graph__transfer_in_edges_2_4_0,3)
+	MR_MAYBE_INIT_LOCAL_THREAD_ENGINE_BASE
+	MR_sv(1) = MR_r2;
+	MR_sv(2) = MR_r3;
+	MR_sv(3) = MR_tfield(1, MR_r1, 1);
+	{
+	MR_Word MR_tempr1;
+	MR_tempr1 = MR_r1;
+	MR_r1 = (MR_Word) MR_CTOR0_ADDR(transform_hlds__rbmm__points_to_graph, rptg_edge);
+	MR_r2 = (MR_Word) MR_CTOR0_ADDR(transform_hlds__rbmm__points_to_graph, rptg_edge_info);
+	MR_r3 = MR_tfield(0, MR_r3, 3);
+	MR_r4 = MR_tfield(1, MR_tempr1, 0);
+	}
+	MR_np_call_localret_ent(map__lookup_3_0,
+		transform_hlds__rbmm__points_to_graph__transfer_in_edges_2_4_0_i4);
+MR_def_label(transform_hlds__rbmm__points_to_graph__transfer_in_edges_2_4_0,4)
+	MR_MAYBE_INIT_LOCAL_THREAD_ENGINE_BASE
+	MR_r2 = MR_tfield(0, MR_r1, 2);
+	{
+	MR_Word MR_tempr1;
+	MR_tempr1 = MR_tfield(0, MR_r1, 0);
+	MR_sv(4) = MR_tempr1;
+	MR_sv(5) = MR_r2;
+	MR_r1 = MR_tempr1;
+	MR_r3 = MR_sv(1);
+	MR_r4 = MR_sv(2);
+	}
+	MR_np_call_localret_ent(transform_hlds__rbmm__points_to_graph__rptg_edge_in_graph_4_0,
+		transform_hlds__rbmm__points_to_graph__transfer_in_edges_2_4_0_i7);
+MR_def_label(transform_hlds__rbmm__points_to_graph__transfer_in_edges_2_4_0,7)
+	MR_MAYBE_INIT_LOCAL_THREAD_ENGINE_BASE
+	if (!(MR_r1)) {
+		MR_GOTO_LAB(transform_hlds__rbmm__points_to_graph__transfer_in_edges_2_4_0_i5);
+	}
+	MR_r2 = MR_sv(1);
+	MR_r1 = MR_sv(3);
+	MR_r3 = MR_sv(2);
+	MR_succip_word = MR_sv(6);
+	MR_GOTO_LAB(transform_hlds__rbmm__points_to_graph__transfer_in_edges_2_4_0_i21);
+MR_def_label(transform_hlds__rbmm__points_to_graph__transfer_in_edges_2_4_0,5)
+	MR_MAYBE_INIT_LOCAL_THREAD_ENGINE_BASE
+	{
+	MR_Word MR_tempr1, MR_tempr2;
+	MR_tempr1 = MR_sv(4);
+	MR_r2 = MR_sv(5);
+	MR_r1 = MR_tempr1;
+	MR_tempr2 = MR_r2;
+	MR_r2 = MR_sv(1);
+	MR_r3 = MR_tempr2;
+	MR_r4 = MR_sv(2);
+	}
+	MR_np_call_localret_ent(transform_hlds__rbmm__points_to_graph__rptg_set_edge_6_0,
+		transform_hlds__rbmm__points_to_graph__transfer_in_edges_2_4_0_i9);
+MR_def_label(transform_hlds__rbmm__points_to_graph__transfer_in_edges_2_4_0,9)
+	MR_MAYBE_INIT_LOCAL_THREAD_ENGINE_BASE
+	{
+	MR_Word MR_tempr1;
+	MR_tempr1 = MR_r2;
+	MR_r2 = MR_sv(1);
+	MR_r1 = MR_sv(3);
+	MR_r3 = MR_tempr1;
+	MR_succip_word = MR_sv(6);
+	MR_GOTO_LAB(transform_hlds__rbmm__points_to_graph__transfer_in_edges_2_4_0_i21);
+	}
+#ifdef MR_maybe_local_thread_engine_base
+	#undef MR_maybe_local_thread_engine_base
+	#define MR_maybe_local_thread_engine_base MR_thread_engine_base
+#endif
+MR_END_MODULE
+
+MR_decl_entry(map__foldl_4_0);
+
+MR_BEGIN_MODULE(transform_hlds__rbmm__points_to_graph_module53)
+	MR_init_entry1(transform_hlds__rbmm__points_to_graph__transfer_in_edges_4_0);
+	MR_INIT_PROC_LAYOUT_ADDR(mercury__transform_hlds__rbmm__points_to_graph__transfer_in_edges_4_0);
+	MR_init_label1(transform_hlds__rbmm__points_to_graph__transfer_in_edges_4_0,4)
+MR_BEGIN_CODE
+
+/*-------------------------------------------------------------------------*/
+/* code for 'transfer_in_edges'/4 mode 0 */
+#ifdef MR_maybe_local_thread_engine_base
+	#undef MR_maybe_local_thread_engine_base
+	#define MR_maybe_local_thread_engine_base MR_local_thread_engine_base
+#endif
+MR_def_static(transform_hlds__rbmm__points_to_graph__transfer_in_edges_4_0)
+	MR_MAYBE_INIT_LOCAL_THREAD_ENGINE_BASE
+	MR_incr_sp(3);
+	MR_sv(3) = (MR_Word) MR_succip;
+	{
+	MR_Word MR_tempr1;
+	MR_tag_alloc_heap(MR_tempr1, 0, (MR_Integer) 4);
+	MR_r4 = MR_tempr1;
+	MR_tfield(0, MR_tempr1, 0) = (MR_Word) MR_COMMON(4,0);
+	MR_tfield(0, MR_tempr1, 1) = (MR_Word) MR_ENTRY_AP(transform_hlds__rbmm__points_to_graph__edge_points_to_node_5_0);
+	MR_tfield(0, MR_tempr1, 2) = (MR_Integer) 1;
+	MR_tfield(0, MR_tempr1, 3) = MR_r2;
+	MR_sv(1) = MR_r1;
+	MR_sv(2) = MR_r3;
+	MR_r1 = (MR_Word) MR_CTOR0_ADDR(transform_hlds__rbmm__points_to_graph, rptg_edge);
+	MR_r2 = (MR_Word) MR_CTOR0_ADDR(transform_hlds__rbmm__points_to_graph, rptg_edge_info);
+	MR_r3 = (MR_Word) MR_TAG_COMMON(0,1,8);
+	MR_r5 = MR_tfield(0, MR_sv(2), 3);
+	MR_r6 = (MR_Word) MR_tbmkword(0, 0);
+	}
+	MR_np_call_localret_ent(map__foldl_4_0,
+		transform_hlds__rbmm__points_to_graph__transfer_in_edges_4_0_i4);
+MR_def_label(transform_hlds__rbmm__points_to_graph__transfer_in_edges_4_0,4)
+	MR_MAYBE_INIT_LOCAL_THREAD_ENGINE_BASE
+	MR_r2 = MR_sv(1);
+	MR_r3 = MR_sv(2);
+	MR_succip_word = MR_sv(3);
+	MR_decr_sp(3);
+	MR_np_tailcall_ent(transform_hlds__rbmm__points_to_graph__transfer_in_edges_2_4_0);
+#ifdef MR_maybe_local_thread_engine_base
+	#undef MR_maybe_local_thread_engine_base
+	#define MR_maybe_local_thread_engine_base MR_thread_engine_base
+#endif
+MR_END_MODULE
+
+MR_decl_entry(map__delete_list_3_0);
+
+MR_BEGIN_MODULE(transform_hlds__rbmm__points_to_graph_module54)
+	MR_init_entry1(transform_hlds__rbmm__points_to_graph__delete_all_inedges_and_edges_2_6_0);
+	MR_INIT_PROC_LAYOUT_ADDR(mercury__transform_hlds__rbmm__points_to_graph__delete_all_inedges_and_edges_2_6_0);
+	MR_init_label7(transform_hlds__rbmm__points_to_graph__delete_all_inedges_and_edges_2_6_0,19,3,5,7,8,9,10)
+MR_BEGIN_CODE
+
+/*-------------------------------------------------------------------------*/
+/* code for 'delete_all_inedges_and_edges_2'/6 mode 0 */
+#ifdef MR_maybe_local_thread_engine_base
+	#undef MR_maybe_local_thread_engine_base
+	#define MR_maybe_local_thread_engine_base MR_local_thread_engine_base
+#endif
+MR_def_static(transform_hlds__rbmm__points_to_graph__delete_all_inedges_and_edges_2_6_0)
+	MR_MAYBE_INIT_LOCAL_THREAD_ENGINE_BASE
+	MR_incr_sp(10);
+	MR_sv(10) = (MR_Word) MR_succip;
+MR_def_label(transform_hlds__rbmm__points_to_graph__delete_all_inedges_and_edges_2_6_0,19)
+	MR_MAYBE_INIT_LOCAL_THREAD_ENGINE_BASE
+	if (MR_LTAGS_TESTR(MR_r1,0,0)) {
+		MR_GOTO_LAB(transform_hlds__rbmm__points_to_graph__delete_all_inedges_and_edges_2_6_0_i3);
+	}
+	MR_r1 = MR_r3;
+	MR_r2 = MR_r4;
+	MR_decr_sp_and_return(10);
+MR_def_label(transform_hlds__rbmm__points_to_graph__delete_all_inedges_and_edges_2_6_0,3)
+	MR_MAYBE_INIT_LOCAL_THREAD_ENGINE_BASE
+	MR_sv(1) = MR_r2;
+	MR_sv(2) = MR_r3;
+	{
+	MR_Word MR_tempr1;
+	MR_tempr1 = MR_r4;
+	MR_sv(3) = MR_tempr1;
+	MR_sv(4) = MR_tfield(1, MR_r1, 0);
+	MR_sv(5) = MR_tfield(1, MR_r1, 1);
+	MR_sv(7) = (MR_Word) MR_CTOR0_ADDR(transform_hlds__rbmm__points_to_graph, rptg_node);
+	MR_sv(8) = (MR_Word) MR_CTOR0_ADDR(transform_hlds__rbmm__points_to_graph, rptg_edge);
+	MR_sv(9) = (MR_Word) MR_TAG_COMMON(0,0,0);
+	MR_r1 = MR_sv(7);
+	MR_r2 = MR_sv(9);
+	MR_r3 = MR_tempr1;
+	MR_r4 = MR_sv(4);
+	}
+	MR_np_call_localret_ent(map__lookup_3_0,
+		transform_hlds__rbmm__points_to_graph__delete_all_inedges_and_edges_2_6_0_i5);
+MR_def_label(transform_hlds__rbmm__points_to_graph__delete_all_inedges_and_edges_2_6_0,5)
+	MR_MAYBE_INIT_LOCAL_THREAD_ENGINE_BASE
+	MR_tag_alloc_heap(MR_r2, 0, (MR_Integer) 5);
+	MR_tfield(0, MR_r2, 0) = (MR_Word) MR_COMMON(3,1);
+	MR_tfield(0, MR_r2, 1) = (MR_Word) MR_ENTRY_AP(transform_hlds__rbmm__points_to_graph__IntroducedFrom__pred__delete_all_inedges_and_edges_2__817__1_3_0);
+	MR_tfield(0, MR_r2, 2) = (MR_Integer) 2;
+	MR_tfield(0, MR_r2, 3) = MR_sv(1);
+	MR_tfield(0, MR_r2, 4) = MR_r1;
+	MR_sv(6) = MR_r1;
+	MR_r1 = MR_sv(8);
+	MR_np_call_localret_ent(solutions__solutions_2_1,
+		transform_hlds__rbmm__points_to_graph__delete_all_inedges_and_edges_2_6_0_i7);
+MR_def_label(transform_hlds__rbmm__points_to_graph__delete_all_inedges_and_edges_2_6_0,7)
+	MR_MAYBE_INIT_LOCAL_THREAD_ENGINE_BASE
+	{
+	MR_Word MR_tempr1;
+	MR_tempr1 = MR_sv(2);
+	MR_sv(2) = MR_r1;
+	MR_r1 = MR_sv(8);
+	MR_r2 = (MR_Word) MR_CTOR0_ADDR(transform_hlds__rbmm__points_to_graph, rptg_edge_info);
+	MR_r3 = MR_sv(2);
+	MR_r4 = MR_tempr1;
+	}
+	MR_np_call_localret_ent(map__delete_list_3_0,
+		transform_hlds__rbmm__points_to_graph__delete_all_inedges_and_edges_2_6_0_i8);
+MR_def_label(transform_hlds__rbmm__points_to_graph__delete_all_inedges_and_edges_2_6_0,8)
+	MR_MAYBE_INIT_LOCAL_THREAD_ENGINE_BASE
+	{
+	MR_Word MR_tempr1;
+	MR_tempr1 = MR_sv(2);
+	MR_sv(2) = MR_r1;
+	MR_r1 = MR_sv(8);
+	MR_r2 = MR_sv(7);
+	MR_r3 = MR_tempr1;
+	MR_r4 = MR_sv(6);
+	}
+	MR_np_call_localret_ent(map__delete_list_3_0,
+		transform_hlds__rbmm__points_to_graph__delete_all_inedges_and_edges_2_6_0_i9);
+MR_def_label(transform_hlds__rbmm__points_to_graph__delete_all_inedges_and_edges_2_6_0,9)
+	MR_MAYBE_INIT_LOCAL_THREAD_ENGINE_BASE
+	{
+	MR_Word MR_tempr1;
+	MR_tempr1 = MR_r1;
+	MR_r1 = MR_sv(7);
+	MR_r2 = MR_sv(9);
+	MR_r3 = MR_sv(4);
+	MR_r4 = MR_tempr1;
+	MR_r5 = MR_sv(3);
+	}
+	MR_np_call_localret_ent(map__set_4_0,
+		transform_hlds__rbmm__points_to_graph__delete_all_inedges_and_edges_2_6_0_i10);
+MR_def_label(transform_hlds__rbmm__points_to_graph__delete_all_inedges_and_edges_2_6_0,10)
+	MR_MAYBE_INIT_LOCAL_THREAD_ENGINE_BASE
+	{
+	MR_Word MR_tempr1;
+	MR_tempr1 = MR_r1;
+	MR_r1 = MR_sv(5);
+	MR_r2 = MR_sv(1);
+	MR_r3 = MR_sv(2);
+	MR_r4 = MR_tempr1;
+	MR_succip_word = MR_sv(10);
+	MR_GOTO_LAB(transform_hlds__rbmm__points_to_graph__delete_all_inedges_and_edges_2_6_0_i19);
+	}
+#ifdef MR_maybe_local_thread_engine_base
+	#undef MR_maybe_local_thread_engine_base
+	#define MR_maybe_local_thread_engine_base MR_thread_engine_base
+#endif
+MR_END_MODULE
+
+MR_decl_entry(map__delete_3_0);
+
+MR_BEGIN_MODULE(transform_hlds__rbmm__points_to_graph_module55)
+	MR_init_entry1(transform_hlds__rbmm__points_to_graph__delete_node_3_0);
+	MR_INIT_PROC_LAYOUT_ADDR(mercury__transform_hlds__rbmm__points_to_graph__delete_node_3_0);
+	MR_init_label7(transform_hlds__rbmm__points_to_graph__delete_node_3_0,2,4,5,6,7,8,9)
+MR_BEGIN_CODE
+
+/*-------------------------------------------------------------------------*/
+/* code for 'delete_node'/3 mode 0 */
+#ifdef MR_maybe_local_thread_engine_base
+	#undef MR_maybe_local_thread_engine_base
+	#define MR_maybe_local_thread_engine_base MR_local_thread_engine_base
+#endif
+MR_def_static(transform_hlds__rbmm__points_to_graph__delete_node_3_0)
+	MR_MAYBE_INIT_LOCAL_THREAD_ENGINE_BASE
+	MR_incr_sp(10);
+	MR_sv(10) = (MR_Word) MR_succip;
+	MR_sv(1) = MR_r1;
+	MR_sv(2) = MR_tfield(0, MR_r2, 0);
+	MR_sv(3) = MR_tfield(0, MR_r2, 1);
+	MR_sv(4) = MR_tfield(0, MR_r2, 3);
+	MR_sv(5) = MR_tfield(0, MR_r2, 4);
+	MR_r1 = (MR_Word) MR_CTOR0_ADDR(transform_hlds__rbmm__points_to_graph, rptg_node);
+	{
+	MR_Word MR_tempr1;
+	MR_tempr1 = MR_r2;
+	MR_r2 = (MR_Word) MR_CTOR0_ADDR(transform_hlds__rbmm__points_to_graph, rptg_node_content);
+	MR_r3 = MR_sv(1);
+	MR_r4 = MR_tfield(0, MR_tempr1, 2);
+	}
+	MR_np_call_localret_ent(map__delete_3_0,
+		transform_hlds__rbmm__points_to_graph__delete_node_3_0_i2);
+MR_def_label(transform_hlds__rbmm__points_to_graph__delete_node_3_0,2)
+	MR_MAYBE_INIT_LOCAL_THREAD_ENGINE_BASE
+	MR_sv(6) = MR_r1;
+	MR_sv(7) = (MR_Word) MR_CTOR0_ADDR(transform_hlds__rbmm__points_to_graph, rptg_node);
+	MR_sv(8) = (MR_Word) MR_CTOR0_ADDR(transform_hlds__rbmm__points_to_graph, rptg_edge);
+	MR_sv(9) = (MR_Word) MR_TAG_COMMON(0,0,0);
+	MR_r1 = MR_sv(7);
+	MR_r2 = MR_sv(9);
+	MR_r3 = MR_sv(5);
+	MR_r4 = MR_sv(1);
+	MR_np_call_localret_ent(map__lookup_3_0,
+		transform_hlds__rbmm__points_to_graph__delete_node_3_0_i4);
+MR_def_label(transform_hlds__rbmm__points_to_graph__delete_node_3_0,4)
+	MR_MAYBE_INIT_LOCAL_THREAD_ENGINE_BASE
+	{
+	MR_Word MR_tempr1;
+	MR_tempr1 = MR_r1;
+	MR_r1 = MR_sv(8);
+	MR_r2 = MR_sv(7);
+	MR_r3 = MR_tempr1;
+	}
+	MR_np_call_localret_ent(map__keys_2_0,
+		transform_hlds__rbmm__points_to_graph__delete_node_3_0_i5);
+MR_def_label(transform_hlds__rbmm__points_to_graph__delete_node_3_0,5)
+	MR_MAYBE_INIT_LOCAL_THREAD_ENGINE_BASE
+	{
+	MR_Word MR_tempr1;
+	MR_tempr1 = MR_r1;
+	MR_r1 = MR_sv(8);
+	MR_r2 = (MR_Word) MR_CTOR0_ADDR(transform_hlds__rbmm__points_to_graph, rptg_edge_info);
+	MR_r3 = MR_tempr1;
+	MR_r4 = MR_sv(4);
+	}
+	MR_np_call_localret_ent(map__delete_list_3_0,
+		transform_hlds__rbmm__points_to_graph__delete_node_3_0_i6);
+MR_def_label(transform_hlds__rbmm__points_to_graph__delete_node_3_0,6)
+	MR_MAYBE_INIT_LOCAL_THREAD_ENGINE_BASE
+	MR_sv(4) = MR_r1;
+	MR_r1 = MR_sv(7);
+	MR_r2 = MR_sv(9);
+	MR_r3 = MR_sv(1);
+	MR_r4 = MR_sv(5);
+	MR_np_call_localret_ent(map__delete_3_0,
+		transform_hlds__rbmm__points_to_graph__delete_node_3_0_i7);
+MR_def_label(transform_hlds__rbmm__points_to_graph__delete_node_3_0,7)
+	MR_MAYBE_INIT_LOCAL_THREAD_ENGINE_BASE
+	MR_sv(5) = MR_r1;
+	MR_r1 = (MR_Word) MR_CTOR0_ADDR(transform_hlds__rbmm__points_to_graph, rptg_node);
+	MR_r2 = MR_sv(9);
+	MR_r3 = MR_sv(5);
+	MR_np_call_localret_ent(map__keys_2_0,
+		transform_hlds__rbmm__points_to_graph__delete_node_3_0_i8);
+MR_def_label(transform_hlds__rbmm__points_to_graph__delete_node_3_0,8)
+	MR_MAYBE_INIT_LOCAL_THREAD_ENGINE_BASE
+	MR_r2 = MR_sv(1);
+	MR_r3 = MR_sv(4);
+	MR_r4 = MR_sv(5);
+	MR_np_call_localret_ent(transform_hlds__rbmm__points_to_graph__delete_all_inedges_and_edges_2_6_0,
+		transform_hlds__rbmm__points_to_graph__delete_node_3_0_i9);
+MR_def_label(transform_hlds__rbmm__points_to_graph__delete_node_3_0,9)
+	MR_MAYBE_INIT_LOCAL_THREAD_ENGINE_BASE
+	{
+	MR_Word MR_tempr1;
+	MR_tag_alloc_heap(MR_tempr1, 0, (MR_Integer) 5);
+	MR_tfield(0, MR_tempr1, 0) = MR_sv(2);
+	MR_tfield(0, MR_tempr1, 1) = MR_sv(3);
+	MR_tfield(0, MR_tempr1, 2) = MR_sv(6);
+	MR_tfield(0, MR_tempr1, 3) = MR_r1;
+	MR_tfield(0, MR_tempr1, 4) = MR_r2;
+	MR_r1 = MR_tempr1;
+	MR_decr_sp_and_return(10);
+	}
+#ifdef MR_maybe_local_thread_engine_base
+	#undef MR_maybe_local_thread_engine_base
+	#define MR_maybe_local_thread_engine_base MR_thread_engine_base
+#endif
+MR_END_MODULE
+
+MR_decl_entry(f_115_101_116_95_95_84_121_112_101_83_112_101_99_79_102_95_95_112_114_101_100_95_111_114_95_102_117_110_99_95_95_117_110_105_111_110_95_95_91_84_32_61_32_118_97_114_40_86_95_50_41_93_95_48_95_49_3_0);
+MR_decl_entry(set__union_3_0);
+MR_decl_entry(fn__bool__or_2_0);
+
+MR_BEGIN_MODULE(transform_hlds__rbmm__points_to_graph_module56)
+	MR_init_entry1(transform_hlds__rbmm__points_to_graph__unify_operator_4_0);
+	MR_INIT_PROC_LAYOUT_ADDR(mercury__transform_hlds__rbmm__points_to_graph__unify_operator_4_0);
+	MR_init_label10(transform_hlds__rbmm__points_to_graph__unify_operator_4_0,2,3,5,6,7,8,9,10,11,13)
+	MR_init_label1(transform_hlds__rbmm__points_to_graph__unify_operator_4_0,14)
+MR_BEGIN_CODE
+
+/*-------------------------------------------------------------------------*/
+/* code for 'unify_operator'/4 mode 0 */
+#ifdef MR_maybe_local_thread_engine_base
+	#undef MR_maybe_local_thread_engine_base
+	#define MR_maybe_local_thread_engine_base MR_local_thread_engine_base
+#endif
+MR_define_entry(mercury__transform_hlds__rbmm__points_to_graph__unify_operator_4_0);
+	MR_MAYBE_INIT_LOCAL_THREAD_ENGINE_BASE
+	MR_incr_sp(9);
+	MR_sv(9) = (MR_Word) MR_succip;
+	MR_sv(1) = MR_r1;
+	MR_sv(2) = MR_r2;
+	{
+	MR_Word MR_tempr1;
+	MR_tempr1 = MR_r3;
+	MR_sv(3) = MR_tfield(0, MR_tempr1, 2);
+	MR_sv(7) = MR_tempr1;
+	MR_r1 = (MR_Word) MR_CTOR0_ADDR(transform_hlds__rbmm__points_to_graph, rptg_node);
+	MR_r2 = (MR_Word) MR_CTOR0_ADDR(transform_hlds__rbmm__points_to_graph, rptg_node_content);
+	MR_r3 = MR_sv(3);
+	MR_r4 = MR_sv(1);
+	}
+	MR_np_call_localret_ent(map__lookup_3_0,
+		transform_hlds__rbmm__points_to_graph__unify_operator_4_0_i2);
+MR_def_label(transform_hlds__rbmm__points_to_graph__unify_operator_4_0,2)
+	MR_MAYBE_INIT_LOCAL_THREAD_ENGINE_BASE
+	MR_sv(4) = MR_r1;
+	MR_r1 = (MR_Word) MR_CTOR0_ADDR(transform_hlds__rbmm__points_to_graph, rptg_node);
+	MR_r2 = (MR_Word) MR_CTOR0_ADDR(transform_hlds__rbmm__points_to_graph, rptg_node_content);
+	MR_r3 = MR_tfield(0, MR_sv(7), 2);
+	MR_r4 = MR_sv(2);
+	MR_np_call_localret_ent(map__lookup_3_0,
+		transform_hlds__rbmm__points_to_graph__unify_operator_4_0_i3);
+MR_def_label(transform_hlds__rbmm__points_to_graph__unify_operator_4_0,3)
+	MR_MAYBE_INIT_LOCAL_THREAD_ENGINE_BASE
+	MR_sv(5) = MR_r1;
+	MR_r1 = (MR_Word) MR_CTOR0_ADDR(parse_tree__prog_data, prog_var_type);
+	MR_r2 = (MR_Word) MR_TAG_COMMON(0,1,0);
+	MR_r3 = MR_tfield(0, MR_sv(4), 0);
+	MR_r4 = MR_tfield(0, MR_sv(5), 0);
+	MR_np_call_localret_ent(f_115_101_116_95_95_84_121_112_101_83_112_101_99_79_102_95_95_112_114_101_100_95_111_114_95_102_117_110_99_95_95_117_110_105_111_110_95_95_91_84_32_61_32_118_97_114_40_86_95_50_41_93_95_48_95_49_3_0,
+		transform_hlds__rbmm__points_to_graph__unify_operator_4_0_i5);
+MR_def_label(transform_hlds__rbmm__points_to_graph__unify_operator_4_0,5)
+	MR_MAYBE_INIT_LOCAL_THREAD_ENGINE_BASE
+	MR_r2 = MR_sv(4);
+	MR_np_call_localret_ent(transform_hlds__rbmm__points_to_graph__rptg_node_content_set_vars_3_0,
+		transform_hlds__rbmm__points_to_graph__unify_operator_4_0_i6);
+MR_def_label(transform_hlds__rbmm__points_to_graph__unify_operator_4_0,6)
+	MR_MAYBE_INIT_LOCAL_THREAD_ENGINE_BASE
+	MR_sv(6) = MR_r1;
+	MR_sv(8) = (MR_Word) MR_CTOR0_ADDR(transform_hlds__rbmm__points_to_graph, rptg_node);
+	MR_r1 = MR_sv(8);
+	MR_r2 = MR_tfield(0, MR_sv(4), 2);
+	MR_r3 = MR_tfield(0, MR_sv(5), 2);
+	MR_np_call_localret_ent(set__union_3_0,
+		transform_hlds__rbmm__points_to_graph__unify_operator_4_0_i7);
+MR_def_label(transform_hlds__rbmm__points_to_graph__unify_operator_4_0,7)
+	MR_MAYBE_INIT_LOCAL_THREAD_ENGINE_BASE
+	MR_r2 = MR_sv(6);
+	MR_np_call_localret_ent(transform_hlds__rbmm__points_to_graph__rptg_node_content_set_merged_from_3_0,
+		transform_hlds__rbmm__points_to_graph__unify_operator_4_0_i8);
+MR_def_label(transform_hlds__rbmm__points_to_graph__unify_operator_4_0,8)
+	MR_MAYBE_INIT_LOCAL_THREAD_ENGINE_BASE
+	{
+	MR_Word MR_tempr1;
+	MR_tempr1 = MR_sv(4);
+	MR_sv(4) = MR_r1;
+	MR_r1 = MR_tfield(0, MR_tempr1, 4);
+	MR_r2 = MR_tfield(0, MR_sv(5), 4);
+	}
+	MR_np_call_localret_ent(fn__bool__or_2_0,
+		transform_hlds__rbmm__points_to_graph__unify_operator_4_0_i9);
+MR_def_label(transform_hlds__rbmm__points_to_graph__unify_operator_4_0,9)
+	MR_MAYBE_INIT_LOCAL_THREAD_ENGINE_BASE
+	MR_r2 = MR_sv(4);
+	MR_np_call_localret_ent(transform_hlds__rbmm__points_to_graph__rptg_node_content_set_is_allocated_3_0,
+		transform_hlds__rbmm__points_to_graph__unify_operator_4_0_i10);
+MR_def_label(transform_hlds__rbmm__points_to_graph__unify_operator_4_0,10)
+	MR_MAYBE_INIT_LOCAL_THREAD_ENGINE_BASE
+	{
+	MR_Word MR_tempr1;
+	MR_tempr1 = MR_r1;
+	MR_r1 = MR_sv(8);
+	MR_r2 = (MR_Word) MR_CTOR0_ADDR(transform_hlds__rbmm__points_to_graph, rptg_node_content);
+	MR_r3 = MR_sv(1);
+	MR_r4 = MR_tempr1;
+	MR_r5 = MR_sv(3);
+	}
+	MR_np_call_localret_ent(map__det_update_4_0,
+		transform_hlds__rbmm__points_to_graph__unify_operator_4_0_i11);
+MR_def_label(transform_hlds__rbmm__points_to_graph__unify_operator_4_0,11)
+	MR_MAYBE_INIT_LOCAL_THREAD_ENGINE_BASE
+	{
+	MR_Word MR_tempr1, MR_tempr2;
+	MR_tag_alloc_heap(MR_tempr1, 0, (MR_Integer) 5);
+	MR_r3 = MR_tempr1;
+	MR_tempr2 = MR_sv(7);
+	MR_tfield(0, MR_tempr1, 0) = MR_tfield(0, MR_tempr2, 0);
+	MR_tfield(0, MR_tempr1, 1) = MR_tfield(0, MR_tempr2, 1);
+	MR_tfield(0, MR_tempr1, 2) = MR_r1;
+	MR_tfield(0, MR_tempr1, 3) = MR_tfield(0, MR_tempr2, 3);
+	MR_tfield(0, MR_tempr1, 4) = MR_tfield(0, MR_tempr2, 4);
+	MR_r1 = MR_sv(1);
+	MR_r2 = MR_sv(2);
+	}
+	MR_np_call_localret_ent(transform_hlds__rbmm__points_to_graph__transfer_out_edges_4_0,
+		transform_hlds__rbmm__points_to_graph__unify_operator_4_0_i13);
+MR_def_label(transform_hlds__rbmm__points_to_graph__unify_operator_4_0,13)
+	MR_MAYBE_INIT_LOCAL_THREAD_ENGINE_BASE
+	{
+	MR_Word MR_tempr1;
+	MR_tempr1 = MR_r1;
+	MR_r1 = MR_sv(1);
+	MR_r2 = MR_sv(2);
+	MR_r3 = MR_tempr1;
+	}
+	MR_np_call_localret_ent(transform_hlds__rbmm__points_to_graph__transfer_in_edges_4_0,
+		transform_hlds__rbmm__points_to_graph__unify_operator_4_0_i14);
+MR_def_label(transform_hlds__rbmm__points_to_graph__unify_operator_4_0,14)
+	MR_MAYBE_INIT_LOCAL_THREAD_ENGINE_BASE
+	{
+	MR_Word MR_tempr1;
+	MR_tempr1 = MR_r1;
+	MR_r1 = MR_sv(2);
+	MR_r2 = MR_tempr1;
+	MR_succip_word = MR_sv(9);
+	MR_decr_sp(9);
+	MR_np_tailcall_ent(transform_hlds__rbmm__points_to_graph__delete_node_3_0);
+	}
+#ifdef MR_maybe_local_thread_engine_base
+	#undef MR_maybe_local_thread_engine_base
+	#define MR_maybe_local_thread_engine_base MR_thread_engine_base
+#endif
+MR_END_MODULE
+
+
+MR_BEGIN_MODULE(transform_hlds__rbmm__points_to_graph_module57)
+	MR_init_entry1(transform_hlds__rbmm__points_to_graph__edge_operator_5_0);
+	MR_INIT_PROC_LAYOUT_ADDR(mercury__transform_hlds__rbmm__points_to_graph__edge_operator_5_0);
+	MR_init_label1(transform_hlds__rbmm__points_to_graph__edge_operator_5_0,2)
+MR_BEGIN_CODE
+
+/*-------------------------------------------------------------------------*/
+/* code for 'edge_operator'/5 mode 0 */
+#ifdef MR_maybe_local_thread_engine_base
+	#undef MR_maybe_local_thread_engine_base
+	#define MR_maybe_local_thread_engine_base MR_local_thread_engine_base
+#endif
+MR_define_entry(mercury__transform_hlds__rbmm__points_to_graph__edge_operator_5_0);
+	MR_MAYBE_INIT_LOCAL_THREAD_ENGINE_BASE
+	MR_incr_sp(1);
+	MR_sv(1) = (MR_Word) MR_succip;
+	MR_np_call_localret_ent(transform_hlds__rbmm__points_to_graph__rptg_set_edge_6_0,
+		transform_hlds__rbmm__points_to_graph__edge_operator_5_0_i2);
+MR_def_label(transform_hlds__rbmm__points_to_graph__edge_operator_5_0,2)
+	MR_MAYBE_INIT_LOCAL_THREAD_ENGINE_BASE
+	MR_r1 = MR_r2;
+	MR_decr_sp_and_return(1);
+#ifdef MR_maybe_local_thread_engine_base
+	#undef MR_maybe_local_thread_engine_base
+	#define MR_maybe_local_thread_engine_base MR_thread_engine_base
+#endif
+MR_END_MODULE
+
+
+MR_BEGIN_MODULE(transform_hlds__rbmm__points_to_graph_module58)
+	MR_init_entry1(fn__transform_hlds__rbmm__points_to_graph__rptg_node_content_get_merged_from_1_0);
+	MR_INIT_PROC_LAYOUT_ADDR(mercury__fn__transform_hlds__rbmm__points_to_graph__rptg_node_content_get_merged_from_1_0);
+MR_BEGIN_CODE
+
+/*-------------------------------------------------------------------------*/
+/* code for 'rptg_node_content_get_merged_from'/2 mode 0 */
+#ifdef MR_maybe_local_thread_engine_base
+	#undef MR_maybe_local_thread_engine_base
+	#define MR_maybe_local_thread_engine_base MR_local_thread_engine_base
+#endif
+MR_define_entry(mercury__fn__transform_hlds__rbmm__points_to_graph__rptg_node_content_get_merged_from_1_0);
+	MR_MAYBE_INIT_LOCAL_THREAD_ENGINE_BASE
+	MR_r1 = MR_tfield(0, MR_r1, 2);
+	MR_proceed();
+#ifdef MR_maybe_local_thread_engine_base
+	#undef MR_maybe_local_thread_engine_base
+	#define MR_maybe_local_thread_engine_base MR_thread_engine_base
+#endif
+MR_END_MODULE
+
+
+MR_BEGIN_MODULE(transform_hlds__rbmm__points_to_graph_module59)
+	MR_init_entry1(transform_hlds__rbmm__points_to_graph__rptg_node_content_set_region_name_3_0);
+	MR_INIT_PROC_LAYOUT_ADDR(mercury__transform_hlds__rbmm__points_to_graph__rptg_node_content_set_region_name_3_0);
+MR_BEGIN_CODE
+
+/*-------------------------------------------------------------------------*/
+/* code for 'rptg_node_content_set_region_name'/3 mode 0 */
+#ifdef MR_maybe_local_thread_engine_base
+	#undef MR_maybe_local_thread_engine_base
+	#define MR_maybe_local_thread_engine_base MR_local_thread_engine_base
+#endif
+MR_define_entry(mercury__transform_hlds__rbmm__points_to_graph__rptg_node_content_set_region_name_3_0);
+	MR_MAYBE_INIT_LOCAL_THREAD_ENGINE_BASE
+	{
+	MR_Word MR_tempr1;
+	MR_tag_alloc_heap(MR_tempr1, 0, (MR_Integer) 5);
+	MR_tfield(0, MR_tempr1, 0) = MR_tfield(0, MR_r2, 0);
+	MR_tfield(0, MR_tempr1, 1) = MR_r1;
+	MR_tfield(0, MR_tempr1, 2) = MR_tfield(0, MR_r2, 2);
+	MR_tfield(0, MR_tempr1, 3) = MR_tfield(0, MR_r2, 3);
+	MR_tfield(0, MR_tempr1, 4) = MR_tfield(0, MR_r2, 4);
+	MR_r1 = MR_tempr1;
+	MR_proceed();
+	}
+#ifdef MR_maybe_local_thread_engine_base
+	#undef MR_maybe_local_thread_engine_base
+	#define MR_maybe_local_thread_engine_base MR_thread_engine_base
+#endif
+MR_END_MODULE
+
+
+MR_BEGIN_MODULE(transform_hlds__rbmm__points_to_graph_module60)
+	MR_init_entry1(transform_hlds__rbmm__points_to_graph__rptg_node_content_set_node_type_3_0);
+	MR_INIT_PROC_LAYOUT_ADDR(mercury__transform_hlds__rbmm__points_to_graph__rptg_node_content_set_node_type_3_0);
+MR_BEGIN_CODE
+
+/*-------------------------------------------------------------------------*/
+/* code for 'rptg_node_content_set_node_type'/3 mode 0 */
+#ifdef MR_maybe_local_thread_engine_base
+	#undef MR_maybe_local_thread_engine_base
+	#define MR_maybe_local_thread_engine_base MR_local_thread_engine_base
+#endif
+MR_define_entry(mercury__transform_hlds__rbmm__points_to_graph__rptg_node_content_set_node_type_3_0);
+	MR_MAYBE_INIT_LOCAL_THREAD_ENGINE_BASE
+	{
+	MR_Word MR_tempr1;
+	MR_tag_alloc_heap(MR_tempr1, 0, (MR_Integer) 5);
+	MR_tfield(0, MR_tempr1, 0) = MR_tfield(0, MR_r2, 0);
+	MR_tfield(0, MR_tempr1, 1) = MR_tfield(0, MR_r2, 1);
+	MR_tfield(0, MR_tempr1, 2) = MR_tfield(0, MR_r2, 2);
+	MR_tfield(0, MR_tempr1, 3) = MR_r1;
+	MR_tfield(0, MR_tempr1, 4) = MR_tfield(0, MR_r2, 4);
+	MR_r1 = MR_tempr1;
+	MR_proceed();
+	}
+#ifdef MR_maybe_local_thread_engine_base
+	#undef MR_maybe_local_thread_engine_base
+	#define MR_maybe_local_thread_engine_base MR_thread_engine_base
+#endif
+MR_END_MODULE
+
+
+MR_BEGIN_MODULE(transform_hlds__rbmm__points_to_graph_module61)
+	MR_init_entry1(fn__transform_hlds__rbmm__points_to_graph__rptg_edge_content_get_label_1_0);
+	MR_INIT_PROC_LAYOUT_ADDR(mercury__fn__transform_hlds__rbmm__points_to_graph__rptg_edge_content_get_label_1_0);
+MR_BEGIN_CODE
+
+/*-------------------------------------------------------------------------*/
+/* code for 'rptg_edge_content_get_label'/2 mode 0 */
+#ifdef MR_maybe_local_thread_engine_base
+	#undef MR_maybe_local_thread_engine_base
+	#define MR_maybe_local_thread_engine_base MR_local_thread_engine_base
+#endif
+MR_define_entry(mercury__fn__transform_hlds__rbmm__points_to_graph__rptg_edge_content_get_label_1_0);
+	MR_MAYBE_INIT_LOCAL_THREAD_ENGINE_BASE
+	MR_proceed();
+#ifdef MR_maybe_local_thread_engine_base
+	#undef MR_maybe_local_thread_engine_base
+	#define MR_maybe_local_thread_engine_base MR_thread_engine_base
+#endif
+MR_END_MODULE
+
+
+MR_BEGIN_MODULE(transform_hlds__rbmm__points_to_graph_module62)
+	MR_init_entry1(transform_hlds__rbmm__points_to_graph__rptg_edge_content_set_label_3_0);
+	MR_INIT_PROC_LAYOUT_ADDR(mercury__transform_hlds__rbmm__points_to_graph__rptg_edge_content_set_label_3_0);
+MR_BEGIN_CODE
+
+/*-------------------------------------------------------------------------*/
+/* code for 'rptg_edge_content_set_label'/3 mode 0 */
+#ifdef MR_maybe_local_thread_engine_base
+	#undef MR_maybe_local_thread_engine_base
+	#define MR_maybe_local_thread_engine_base MR_local_thread_engine_base
+#endif
+MR_define_entry(mercury__transform_hlds__rbmm__points_to_graph__rptg_edge_content_set_label_3_0);
+	MR_MAYBE_INIT_LOCAL_THREAD_ENGINE_BASE
+	MR_np_tailcall_ent(f_116_114_97_110_115_102_111_114_109_95_104_108_100_115_95_95_114_98_109_109_95_95_112_111_105_110_116_115_95_116_111_95_103_114_97_112_104_95_95_85_110_117_115_101_100_65_114_103_115_95_95_112_114_101_100_95_95_114_112_116_103_95_101_100_103_101_95_99_111_110_116_101_110_116_95_115_101_116_95_108_97_98_101_108_95_95_91_50_93_95_48_3_0);
+#ifdef MR_maybe_local_thread_engine_base
+	#undef MR_maybe_local_thread_engine_base
+	#define MR_maybe_local_thread_engine_base MR_thread_engine_base
+#endif
+MR_END_MODULE
+
+
+MR_BEGIN_MODULE(transform_hlds__rbmm__points_to_graph_module63)
+	MR_init_entry1(transform_hlds__rbmm__points_to_graph__edge_points_to_node_5_0);
+	MR_INIT_PROC_LAYOUT_ADDR(mercury__transform_hlds__rbmm__points_to_graph__edge_points_to_node_5_0);
+	MR_init_label4(transform_hlds__rbmm__points_to_graph__edge_points_to_node_5_0,5,4,6,2)
+MR_BEGIN_CODE
+
+/*-------------------------------------------------------------------------*/
+/* code for 'edge_points_to_node'/5 mode 0 */
+#ifdef MR_maybe_local_thread_engine_base
+	#undef MR_maybe_local_thread_engine_base
+	#define MR_maybe_local_thread_engine_base MR_local_thread_engine_base
+#endif
+MR_def_static(transform_hlds__rbmm__points_to_graph__edge_points_to_node_5_0)
+	MR_MAYBE_INIT_LOCAL_THREAD_ENGINE_BASE
+	MR_incr_sp(4);
+	MR_sv(3) = MR_tfield(0, MR_r3, 1);
+	if ((MR_sv(3) == MR_r1)) {
+		MR_GOTO_LAB(transform_hlds__rbmm__points_to_graph__edge_points_to_node_5_0_i5);
+	}
+	MR_sv(1) = MR_r1;
+	MR_sv(2) = MR_r2;
+	MR_sv(4) = MR_r4;
+	MR_GOTO_LAB(transform_hlds__rbmm__points_to_graph__edge_points_to_node_5_0_i4);
+MR_def_label(transform_hlds__rbmm__points_to_graph__edge_points_to_node_5_0,5)
+	MR_MAYBE_INIT_LOCAL_THREAD_ENGINE_BASE
+	MR_sv(2) = MR_r2;
+	MR_sv(4) = MR_r4;
+	MR_GOTO_LAB(transform_hlds__rbmm__points_to_graph__edge_points_to_node_5_0_i6);
+MR_def_label(transform_hlds__rbmm__points_to_graph__edge_points_to_node_5_0,4)
+	MR_MAYBE_INIT_LOCAL_THREAD_ENGINE_BASE
+	if ((MR_sv(3) != MR_sv(1))) {
+		MR_GOTO_LAB(transform_hlds__rbmm__points_to_graph__edge_points_to_node_5_0_i2);
+	}
+MR_def_label(transform_hlds__rbmm__points_to_graph__edge_points_to_node_5_0,6)
+	MR_MAYBE_INIT_LOCAL_THREAD_ENGINE_BASE
+	MR_tag_alloc_heap(MR_r1, 1, (MR_Integer) 2);
+	MR_tfield(1, MR_r1, 0) = MR_sv(2);
+	MR_tfield(1, MR_r1, 1) = MR_sv(4);
+	MR_decr_sp(4);
+	MR_proceed();
+MR_def_label(transform_hlds__rbmm__points_to_graph__edge_points_to_node_5_0,2)
+	MR_MAYBE_INIT_LOCAL_THREAD_ENGINE_BASE
+	{
+	MR_Word MR_tempr1;
+	MR_tempr1 = MR_sv(4);
+	MR_r1 = MR_tempr1;
+	MR_decr_sp(4);
+	MR_proceed();
+	}
+#ifdef MR_maybe_local_thread_engine_base
+	#undef MR_maybe_local_thread_engine_base
+	#define MR_maybe_local_thread_engine_base MR_thread_engine_base
+#endif
+MR_END_MODULE
+
+MR_decl_entry(transform_hlds__smm_common__check_type_of_node_3_0);
+
+MR_BEGIN_MODULE(transform_hlds__rbmm__points_to_graph_module64)
+	MR_init_entry1(transform_hlds__rbmm__points_to_graph__update_remembered_list_8_0);
+	MR_INIT_PROC_LAYOUT_ADDR(mercury__transform_hlds__rbmm__points_to_graph__update_remembered_list_8_0);
+	MR_init_label7(transform_hlds__rbmm__points_to_graph__update_remembered_list_8_0,2,3,6,9,19,8,13)
+MR_BEGIN_CODE
+
+/*-------------------------------------------------------------------------*/
+/* code for 'update_remembered_list'/8 mode 0 */
+#ifdef MR_maybe_local_thread_engine_base
+	#undef MR_maybe_local_thread_engine_base
+	#define MR_maybe_local_thread_engine_base MR_local_thread_engine_base
+#endif
+MR_def_static(transform_hlds__rbmm__points_to_graph__update_remembered_list_8_0)
+	MR_MAYBE_INIT_LOCAL_THREAD_ENGINE_BASE
+	MR_incr_sp(7);
+	MR_sv(7) = (MR_Word) MR_succip;
+	MR_sv(1) = MR_r1;
+	MR_sv(2) = MR_r2;
+	MR_sv(3) = MR_r3;
+	MR_sv(4) = MR_r5;
+	MR_sv(5) = MR_r7;
+	MR_r1 = (MR_Word) MR_CTOR0_ADDR(transform_hlds__rbmm__points_to_graph, rptg_edge);
+	MR_r2 = (MR_Word) MR_CTOR0_ADDR(transform_hlds__rbmm__points_to_graph, rptg_edge_info);
+	MR_r3 = MR_tfield(0, MR_r4, 3);
+	MR_r4 = MR_r6;
+	MR_np_call_localret_ent(map__lookup_3_0,
+		transform_hlds__rbmm__points_to_graph__update_remembered_list_8_0_i2);
+MR_def_label(transform_hlds__rbmm__points_to_graph__update_remembered_list_8_0,2)
+	MR_MAYBE_INIT_LOCAL_THREAD_ENGINE_BASE
+	{
+	MR_Word MR_tempr1, MR_tempr2;
+	MR_tempr1 = MR_sv(1);
+	MR_sv(1) = MR_tfield(0, MR_r1, 1);
+	MR_sv(6) = (MR_Word) MR_CTOR0_ADDR(parse_tree__prog_data, unit_selector);
+	MR_tempr2 = MR_r1;
+	MR_r1 = MR_sv(6);
+	MR_r2 = MR_tempr1;
+	MR_r3 = MR_tfield(0, MR_tempr2, 2);
+	}
+	MR_np_call_localret_ent(fn__f_108_105_115_116_95_95_43_43_2_0,
+		transform_hlds__rbmm__points_to_graph__update_remembered_list_8_0_i3);
+MR_def_label(transform_hlds__rbmm__points_to_graph__update_remembered_list_8_0,3)
+	MR_MAYBE_INIT_LOCAL_THREAD_ENGINE_BASE
+	{
+	MR_Word MR_tempr1;
+	MR_tempr1 = MR_sv(2);
+	MR_sv(2) = MR_r1;
+	MR_r1 = MR_tempr1;
+	MR_r2 = MR_sv(3);
+	MR_r3 = MR_sv(2);
+	}
+	MR_np_call_localret_ent(transform_hlds__smm_common__check_type_of_node_3_0,
+		transform_hlds__rbmm__points_to_graph__update_remembered_list_8_0_i6);
+MR_def_label(transform_hlds__rbmm__points_to_graph__update_remembered_list_8_0,6)
+	MR_MAYBE_INIT_LOCAL_THREAD_ENGINE_BASE
+	if (!(MR_r1)) {
+		MR_GOTO_LAB(transform_hlds__rbmm__points_to_graph__update_remembered_list_8_0_i19);
+	}
+	MR_r1 = (MR_Word) MR_CTOR0_ADDR(transform_hlds__rbmm__points_to_graph, rptg_node);
+	MR_r2 = MR_sv(1);
+	MR_r3 = MR_sv(4);
+	MR_np_call_localret_ent(list__member_2_0,
+		transform_hlds__rbmm__points_to_graph__update_remembered_list_8_0_i9);
+MR_def_label(transform_hlds__rbmm__points_to_graph__update_remembered_list_8_0,9)
+	MR_MAYBE_INIT_LOCAL_THREAD_ENGINE_BASE
+	if (!(MR_r1)) {
+		MR_GOTO_LAB(transform_hlds__rbmm__points_to_graph__update_remembered_list_8_0_i8);
+	}
+MR_def_label(transform_hlds__rbmm__points_to_graph__update_remembered_list_8_0,19)
+	MR_MAYBE_INIT_LOCAL_THREAD_ENGINE_BASE
+	MR_r1 = MR_sv(5);
+	MR_decr_sp_and_return(7);
+MR_def_label(transform_hlds__rbmm__points_to_graph__update_remembered_list_8_0,8)
+	MR_MAYBE_INIT_LOCAL_THREAD_ENGINE_BASE
+	MR_tag_alloc_heap(MR_r2, 0, (MR_Integer) 2);
+	MR_tfield(0, MR_r2, 0) = (MR_Word) MR_LIST_CTOR_ADDR;
+	MR_tfield(0, MR_r2, 1) = MR_sv(6);
+	{
+	MR_Word MR_tempr1, MR_tempr2;
+	MR_tag_alloc_heap(MR_tempr1, 0, (MR_Integer) 3);
+	MR_tfield(0, MR_tempr1, 0) = (MR_Word) MR_CTOR_ADDR(pair, pair, 2);
+	MR_tfield(0, MR_tempr1, 1) = (MR_Word) MR_CTOR0_ADDR(transform_hlds__rbmm__points_to_graph, rptg_node);
+	MR_tfield(0, MR_tempr1, 2) = MR_r2;
+	MR_tempr2 = MR_sv(1);
+	MR_sv(1) = MR_tempr1;
+	MR_r1 = (MR_Word) MR_CTOR0_ADDR(transform_hlds__rbmm__points_to_graph, rptg_node);
+	MR_r3 = MR_tempr2;
+	MR_r4 = MR_sv(2);
+	}
+	MR_np_call_localret_ent(fn__pair__pair_2_0,
+		transform_hlds__rbmm__points_to_graph__update_remembered_list_8_0_i13);
+MR_def_label(transform_hlds__rbmm__points_to_graph__update_remembered_list_8_0,13)
+	MR_MAYBE_INIT_LOCAL_THREAD_ENGINE_BASE
+	{
+	MR_Word MR_tempr1;
+	MR_tag_alloc_heap(MR_tempr1, 1, (MR_Integer) 2);
+	MR_r3 = MR_tempr1;
+	MR_tfield(1, MR_tempr1, 0) = MR_r1;
+	MR_tfield(1, MR_tempr1, 1) = (MR_Word) MR_tbmkword(0, 0);
+	MR_r1 = MR_sv(1);
+	MR_r2 = MR_sv(5);
+	MR_succip_word = MR_sv(7);
+	MR_decr_sp(7);
+	MR_np_tailcall_ent(fn__f_108_105_115_116_95_95_43_43_2_0);
+	}
+#ifdef MR_maybe_local_thread_engine_base
+	#undef MR_maybe_local_thread_engine_base
+	#define MR_maybe_local_thread_engine_base MR_thread_engine_base
+#endif
+MR_END_MODULE
+
+MR_decl_entry(__Unify___tree234__tree234_2_0);
+
+MR_BEGIN_MODULE(transform_hlds__rbmm__points_to_graph_module65)
+	MR_init_entry1(__Unify___transform_hlds__rbmm__points_to_graph__rpt_graph_0_0);
+	MR_INIT_PROC_LAYOUT_ADDR(mercury____Unify___transform_hlds__rbmm__points_to_graph__rpt_graph_0_0);
+	MR_init_label6(__Unify___transform_hlds__rbmm__points_to_graph__rpt_graph_0_0,4,6,8,10,15,1)
+MR_BEGIN_CODE
+
+/*-------------------------------------------------------------------------*/
+/* code for '__Unify__'/2 mode 0 */
+#ifdef MR_maybe_local_thread_engine_base
+	#undef MR_maybe_local_thread_engine_base
+	#define MR_maybe_local_thread_engine_base MR_local_thread_engine_base
+#endif
+MR_define_entry(mercury____Unify___transform_hlds__rbmm__points_to_graph__rpt_graph_0_0);
+	MR_MAYBE_INIT_LOCAL_THREAD_ENGINE_BASE
+	if ((MR_r1 == MR_r2)) {
+		MR_GOTO_LAB(__Unify___transform_hlds__rbmm__points_to_graph__rpt_graph_0_0_i15);
+	}
+	MR_incr_sp(9);
+	MR_sv(9) = (MR_Word) MR_succip;
+	MR_sv(1) = MR_r1;
+	MR_sv(2) = MR_r2;
+	{
+	MR_Word MR_tempr1, MR_tempr2;
+	MR_tempr1 = MR_sv(1);
+	MR_sv(1) = MR_tfield(0, MR_tempr1, 1);
+	MR_tempr2 = MR_sv(2);
+	MR_sv(2) = MR_tfield(0, MR_tempr1, 2);
+	MR_sv(3) = MR_tfield(0, MR_tempr1, 3);
+	MR_sv(4) = MR_tfield(0, MR_tempr1, 4);
+	MR_sv(5) = MR_tfield(0, MR_tempr2, 1);
+	MR_sv(6) = MR_tfield(0, MR_tempr2, 2);
+	MR_sv(7) = MR_tfield(0, MR_tempr2, 3);
+	MR_sv(8) = MR_tfield(0, MR_tempr2, 4);
+	MR_r1 = MR_tfield(0, MR_tempr1, 0);
+	MR_r2 = MR_tfield(0, MR_tempr2, 0);
+	}
+	MR_np_call_localret_ent(__Unify___counter__counter_0_0,
+		__Unify___transform_hlds__rbmm__points_to_graph__rpt_graph_0_0_i4);
+MR_def_label(__Unify___transform_hlds__rbmm__points_to_graph__rpt_graph_0_0,4)
+	MR_MAYBE_INIT_LOCAL_THREAD_ENGINE_BASE
+	if (!(MR_r1)) {
+		MR_GOTO_LAB(__Unify___transform_hlds__rbmm__points_to_graph__rpt_graph_0_0_i1);
+	}
+	MR_r1 = MR_sv(1);
+	MR_r2 = MR_sv(5);
+	MR_np_call_localret_ent(__Unify___counter__counter_0_0,
+		__Unify___transform_hlds__rbmm__points_to_graph__rpt_graph_0_0_i6);
+MR_def_label(__Unify___transform_hlds__rbmm__points_to_graph__rpt_graph_0_0,6)
+	MR_MAYBE_INIT_LOCAL_THREAD_ENGINE_BASE
+	if (!(MR_r1)) {
+		MR_GOTO_LAB(__Unify___transform_hlds__rbmm__points_to_graph__rpt_graph_0_0_i1);
+	}
+	MR_r1 = (MR_Word) MR_CTOR0_ADDR(transform_hlds__rbmm__points_to_graph, rptg_node);
+	MR_r2 = (MR_Word) MR_CTOR0_ADDR(transform_hlds__rbmm__points_to_graph, rptg_node_content);
+	MR_r3 = MR_sv(2);
+	MR_r4 = MR_sv(6);
+	MR_np_call_localret_ent(__Unify___tree234__tree234_2_0,
+		__Unify___transform_hlds__rbmm__points_to_graph__rpt_graph_0_0_i8);
+MR_def_label(__Unify___transform_hlds__rbmm__points_to_graph__rpt_graph_0_0,8)
+	MR_MAYBE_INIT_LOCAL_THREAD_ENGINE_BASE
+	if (!(MR_r1)) {
+		MR_GOTO_LAB(__Unify___transform_hlds__rbmm__points_to_graph__rpt_graph_0_0_i1);
+	}
+	MR_r1 = (MR_Word) MR_CTOR0_ADDR(transform_hlds__rbmm__points_to_graph, rptg_edge);
+	MR_r2 = (MR_Word) MR_CTOR0_ADDR(transform_hlds__rbmm__points_to_graph, rptg_edge_info);
+	MR_r3 = MR_sv(3);
+	MR_r4 = MR_sv(7);
+	MR_np_call_localret_ent(__Unify___tree234__tree234_2_0,
+		__Unify___transform_hlds__rbmm__points_to_graph__rpt_graph_0_0_i10);
+MR_def_label(__Unify___transform_hlds__rbmm__points_to_graph__rpt_graph_0_0,10)
+	MR_MAYBE_INIT_LOCAL_THREAD_ENGINE_BASE
+	if (!(MR_r1)) {
+		MR_GOTO_LAB(__Unify___transform_hlds__rbmm__points_to_graph__rpt_graph_0_0_i1);
+	}
+	MR_r1 = (MR_Word) MR_CTOR0_ADDR(transform_hlds__rbmm__points_to_graph, rptg_node);
+	MR_r2 = (MR_Word) MR_TAG_COMMON(0,0,0);
+	MR_r3 = MR_sv(4);
+	MR_r4 = MR_sv(8);
+	MR_succip_word = MR_sv(9);
+	MR_decr_sp(9);
+	MR_np_tailcall_ent(__Unify___tree234__tree234_2_0);
+MR_def_label(__Unify___transform_hlds__rbmm__points_to_graph__rpt_graph_0_0,15)
+	MR_MAYBE_INIT_LOCAL_THREAD_ENGINE_BASE
+	MR_r1 = MR_TRUE;
+	MR_proceed();
+MR_def_label(__Unify___transform_hlds__rbmm__points_to_graph__rpt_graph_0_0,1)
+	MR_MAYBE_INIT_LOCAL_THREAD_ENGINE_BASE
+	MR_r1 = MR_FALSE;
+	MR_decr_sp_and_return(9);
+#ifdef MR_maybe_local_thread_engine_base
+	#undef MR_maybe_local_thread_engine_base
+	#define MR_maybe_local_thread_engine_base MR_thread_engine_base
+#endif
+MR_END_MODULE
+
+MR_decl_entry(__Compare___counter__counter_0_0);
+MR_decl_entry(__Compare___tree234__tree234_2_0);
+
+MR_BEGIN_MODULE(transform_hlds__rbmm__points_to_graph_module66)
+	MR_init_entry1(__Compare___transform_hlds__rbmm__points_to_graph__rpt_graph_0_0);
+	MR_INIT_PROC_LAYOUT_ADDR(mercury____Compare___transform_hlds__rbmm__points_to_graph__rpt_graph_0_0);
+	MR_init_label7(__Compare___transform_hlds__rbmm__points_to_graph__rpt_graph_0_0,3,2,5,9,13,17,61)
+MR_BEGIN_CODE
+
+/*-------------------------------------------------------------------------*/
+/* code for '__Compare__'/3 mode 0 */
+#ifdef MR_maybe_local_thread_engine_base
+	#undef MR_maybe_local_thread_engine_base
+	#define MR_maybe_local_thread_engine_base MR_local_thread_engine_base
+#endif
+MR_define_entry(mercury____Compare___transform_hlds__rbmm__points_to_graph__rpt_graph_0_0);
+	MR_MAYBE_INIT_LOCAL_THREAD_ENGINE_BASE
+	if ((MR_r1 == MR_r2)) {
+		MR_GOTO_LAB(__Compare___transform_hlds__rbmm__points_to_graph__rpt_graph_0_0_i3);
+	}
+	MR_incr_sp(9);
+	MR_sv(9) = (MR_Word) MR_succip;
+	MR_sv(1) = MR_r1;
+	MR_sv(2) = MR_r2;
+	MR_GOTO_LAB(__Compare___transform_hlds__rbmm__points_to_graph__rpt_graph_0_0_i2);
+MR_def_label(__Compare___transform_hlds__rbmm__points_to_graph__rpt_graph_0_0,3)
+	MR_MAYBE_INIT_LOCAL_THREAD_ENGINE_BASE
+	MR_r1 = (MR_Integer) 0;
+	MR_proceed();
+MR_def_label(__Compare___transform_hlds__rbmm__points_to_graph__rpt_graph_0_0,2)
+	MR_MAYBE_INIT_LOCAL_THREAD_ENGINE_BASE
+	{
+	MR_Word MR_tempr1, MR_tempr2, MR_tempr3, MR_tempr4, MR_tempr5, MR_tempr6;
+	MR_tempr5 = MR_sv(2);
+	MR_sv(8) = MR_tfield(0, MR_tempr5, 4);
+	MR_sv(7) = MR_tfield(0, MR_tempr5, 3);
+	MR_sv(6) = MR_tfield(0, MR_tempr5, 2);
+	MR_sv(5) = MR_tfield(0, MR_tempr5, 1);
+	MR_tempr6 = MR_sv(1);
+	MR_sv(4) = MR_tfield(0, MR_tempr6, 4);
+	MR_sv(3) = MR_tfield(0, MR_tempr6, 3);
+	MR_tempr1 = MR_tfield(0, MR_tempr6, 2);
+	MR_tempr2 = MR_tfield(0, MR_tempr6, 1);
+	MR_tempr3 = MR_tempr6;
+	MR_sv(1) = MR_tempr2;
+	MR_tempr4 = MR_tempr5;
+	MR_sv(2) = MR_tempr1;
+	MR_r1 = MR_tfield(0, MR_tempr3, 0);
+	MR_r2 = MR_tfield(0, MR_tempr4, 0);
+	}
+	MR_np_call_localret_ent(__Compare___counter__counter_0_0,
+		__Compare___transform_hlds__rbmm__points_to_graph__rpt_graph_0_0_i5);
+MR_def_label(__Compare___transform_hlds__rbmm__points_to_graph__rpt_graph_0_0,5)
+	MR_MAYBE_INIT_LOCAL_THREAD_ENGINE_BASE
+	if (MR_INT_NE(MR_r1,0)) {
+		MR_GOTO_LAB(__Compare___transform_hlds__rbmm__points_to_graph__rpt_graph_0_0_i61);
+	}
+	MR_r1 = MR_sv(1);
+	MR_r2 = MR_sv(5);
+	MR_np_call_localret_ent(__Compare___counter__counter_0_0,
+		__Compare___transform_hlds__rbmm__points_to_graph__rpt_graph_0_0_i9);
+MR_def_label(__Compare___transform_hlds__rbmm__points_to_graph__rpt_graph_0_0,9)
+	MR_MAYBE_INIT_LOCAL_THREAD_ENGINE_BASE
+	if (MR_INT_NE(MR_r1,0)) {
+		MR_GOTO_LAB(__Compare___transform_hlds__rbmm__points_to_graph__rpt_graph_0_0_i61);
+	}
+	MR_r1 = (MR_Word) MR_CTOR0_ADDR(transform_hlds__rbmm__points_to_graph, rptg_node);
+	MR_r2 = (MR_Word) MR_CTOR0_ADDR(transform_hlds__rbmm__points_to_graph, rptg_node_content);
+	MR_r3 = MR_sv(2);
+	MR_r4 = MR_sv(6);
+	MR_np_call_localret_ent(__Compare___tree234__tree234_2_0,
+		__Compare___transform_hlds__rbmm__points_to_graph__rpt_graph_0_0_i13);
+MR_def_label(__Compare___transform_hlds__rbmm__points_to_graph__rpt_graph_0_0,13)
+	MR_MAYBE_INIT_LOCAL_THREAD_ENGINE_BASE
+	if (MR_INT_NE(MR_r1,0)) {
+		MR_GOTO_LAB(__Compare___transform_hlds__rbmm__points_to_graph__rpt_graph_0_0_i61);
+	}
+	MR_r1 = (MR_Word) MR_CTOR0_ADDR(transform_hlds__rbmm__points_to_graph, rptg_edge);
+	MR_r2 = (MR_Word) MR_CTOR0_ADDR(transform_hlds__rbmm__points_to_graph, rptg_edge_info);
+	MR_r3 = MR_sv(3);
+	MR_r4 = MR_sv(7);
+	MR_np_call_localret_ent(__Compare___tree234__tree234_2_0,
+		__Compare___transform_hlds__rbmm__points_to_graph__rpt_graph_0_0_i17);
+MR_def_label(__Compare___transform_hlds__rbmm__points_to_graph__rpt_graph_0_0,17)
+	MR_MAYBE_INIT_LOCAL_THREAD_ENGINE_BASE
+	if (MR_INT_NE(MR_r1,0)) {
+		MR_GOTO_LAB(__Compare___transform_hlds__rbmm__points_to_graph__rpt_graph_0_0_i61);
+	}
+	MR_r1 = (MR_Word) MR_CTOR0_ADDR(transform_hlds__rbmm__points_to_graph, rptg_node);
+	MR_r2 = (MR_Word) MR_TAG_COMMON(0,0,0);
+	MR_r3 = MR_sv(4);
+	MR_r4 = MR_sv(8);
+	MR_succip_word = MR_sv(9);
+	MR_decr_sp(9);
+	MR_np_tailcall_ent(__Compare___tree234__tree234_2_0);
+MR_def_label(__Compare___transform_hlds__rbmm__points_to_graph__rpt_graph_0_0,61)
+	MR_MAYBE_INIT_LOCAL_THREAD_ENGINE_BASE
+	MR_decr_sp_and_return(9);
+#ifdef MR_maybe_local_thread_engine_base
+	#undef MR_maybe_local_thread_engine_base
+	#define MR_maybe_local_thread_engine_base MR_thread_engine_base
+#endif
+MR_END_MODULE
+
+
+MR_BEGIN_MODULE(transform_hlds__rbmm__points_to_graph_module67)
+	MR_init_entry1(__Unify___transform_hlds__rbmm__points_to_graph__rptg_edge_0_0);
+	MR_INIT_PROC_LAYOUT_ADDR(mercury____Unify___transform_hlds__rbmm__points_to_graph__rptg_edge_0_0);
+	MR_init_label1(__Unify___transform_hlds__rbmm__points_to_graph__rptg_edge_0_0,4)
+MR_BEGIN_CODE
+
+/*-------------------------------------------------------------------------*/
+/* code for '__Unify__'/2 mode 0 */
+#ifdef MR_maybe_local_thread_engine_base
+	#undef MR_maybe_local_thread_engine_base
+	#define MR_maybe_local_thread_engine_base MR_local_thread_engine_base
+#endif
+MR_define_entry(mercury____Unify___transform_hlds__rbmm__points_to_graph__rptg_edge_0_0);
+	MR_MAYBE_INIT_LOCAL_THREAD_ENGINE_BASE
+	MR_incr_sp(2);
+	if ((MR_r1 == MR_r2)) {
+		MR_GOTO_LAB(__Unify___transform_hlds__rbmm__points_to_graph__rptg_edge_0_0_i4);
+	}
+	MR_sv(1) = MR_r1;
+	MR_sv(2) = MR_r2;
+	MR_r1 = (MR_sv(1) == MR_sv(2));
+	MR_decr_sp(2);
+	MR_proceed();
+MR_def_label(__Unify___transform_hlds__rbmm__points_to_graph__rptg_edge_0_0,4)
+	MR_MAYBE_INIT_LOCAL_THREAD_ENGINE_BASE
+	MR_decr_sp(2);
+	MR_r1 = MR_TRUE;
+	MR_proceed();
+#ifdef MR_maybe_local_thread_engine_base
+	#undef MR_maybe_local_thread_engine_base
+	#define MR_maybe_local_thread_engine_base MR_thread_engine_base
+#endif
+MR_END_MODULE
+
+MR_decl_entry(private_builtin__builtin_compare_int_3_0);
+
+MR_BEGIN_MODULE(transform_hlds__rbmm__points_to_graph_module68)
+	MR_init_entry1(__Compare___transform_hlds__rbmm__points_to_graph__rptg_edge_0_0);
+	MR_INIT_PROC_LAYOUT_ADDR(mercury____Compare___transform_hlds__rbmm__points_to_graph__rptg_edge_0_0);
+	MR_init_label2(__Compare___transform_hlds__rbmm__points_to_graph__rptg_edge_0_0,3,2)
+MR_BEGIN_CODE
+
+/*-------------------------------------------------------------------------*/
+/* code for '__Compare__'/3 mode 0 */
+#ifdef MR_maybe_local_thread_engine_base
+	#undef MR_maybe_local_thread_engine_base
+	#define MR_maybe_local_thread_engine_base MR_local_thread_engine_base
+#endif
+MR_define_entry(mercury____Compare___transform_hlds__rbmm__points_to_graph__rptg_edge_0_0);
+	MR_MAYBE_INIT_LOCAL_THREAD_ENGINE_BASE
+	if ((MR_r1 == MR_r2)) {
+		MR_GOTO_LAB(__Compare___transform_hlds__rbmm__points_to_graph__rptg_edge_0_0_i3);
+	}
+	MR_incr_sp(3);
+	MR_sv(3) = (MR_Word) MR_succip;
+	MR_sv(1) = MR_r1;
+	MR_sv(2) = MR_r2;
+	MR_GOTO_LAB(__Compare___transform_hlds__rbmm__points_to_graph__rptg_edge_0_0_i2);
+MR_def_label(__Compare___transform_hlds__rbmm__points_to_graph__rptg_edge_0_0,3)
+	MR_MAYBE_INIT_LOCAL_THREAD_ENGINE_BASE
+	MR_r1 = (MR_Integer) 0;
+	MR_proceed();
+MR_def_label(__Compare___transform_hlds__rbmm__points_to_graph__rptg_edge_0_0,2)
+	MR_MAYBE_INIT_LOCAL_THREAD_ENGINE_BASE
+	MR_r1 = MR_sv(1);
+	MR_r2 = MR_sv(2);
+	MR_succip_word = MR_sv(3);
+	MR_decr_sp(3);
+	MR_np_tailcall_ent(private_builtin__builtin_compare_int_3_0);
+#ifdef MR_maybe_local_thread_engine_base
+	#undef MR_maybe_local_thread_engine_base
+	#define MR_maybe_local_thread_engine_base MR_thread_engine_base
+#endif
+MR_END_MODULE
+
+MR_decl_entry(__Unify___list__list_1_0);
+
+MR_BEGIN_MODULE(transform_hlds__rbmm__points_to_graph_module69)
+	MR_init_entry1(__Unify___transform_hlds__rbmm__points_to_graph__rptg_edge_content_0_0);
+	MR_INIT_PROC_LAYOUT_ADDR(mercury____Unify___transform_hlds__rbmm__points_to_graph__rptg_edge_content_0_0);
+	MR_init_label1(__Unify___transform_hlds__rbmm__points_to_graph__rptg_edge_content_0_0,6)
+MR_BEGIN_CODE
+
+/*-------------------------------------------------------------------------*/
+/* code for '__Unify__'/2 mode 0 */
+#ifdef MR_maybe_local_thread_engine_base
+	#undef MR_maybe_local_thread_engine_base
+	#define MR_maybe_local_thread_engine_base MR_local_thread_engine_base
+#endif
+MR_define_entry(mercury____Unify___transform_hlds__rbmm__points_to_graph__rptg_edge_content_0_0);
+	MR_MAYBE_INIT_LOCAL_THREAD_ENGINE_BASE
+	if ((MR_r1 == MR_r2)) {
+		MR_GOTO_LAB(__Unify___transform_hlds__rbmm__points_to_graph__rptg_edge_content_0_0_i6);
+	}
+	MR_incr_sp(3);
+	MR_sv(3) = (MR_Word) MR_succip;
+	MR_sv(1) = MR_r1;
+	MR_sv(2) = MR_r2;
+	MR_r1 = (MR_Word) MR_CTOR0_ADDR(parse_tree__prog_data, unit_selector);
+	MR_r2 = MR_sv(1);
+	MR_r3 = MR_sv(2);
+	MR_decr_sp(3);
+	MR_np_tailcall_ent(__Unify___list__list_1_0);
+MR_def_label(__Unify___transform_hlds__rbmm__points_to_graph__rptg_edge_content_0_0,6)
+	MR_MAYBE_INIT_LOCAL_THREAD_ENGINE_BASE
+	MR_r1 = MR_TRUE;
+	MR_proceed();
+#ifdef MR_maybe_local_thread_engine_base
+	#undef MR_maybe_local_thread_engine_base
+	#define MR_maybe_local_thread_engine_base MR_thread_engine_base
+#endif
+MR_END_MODULE
+
+MR_decl_entry(__Compare___list__list_1_0);
+
+MR_BEGIN_MODULE(transform_hlds__rbmm__points_to_graph_module70)
+	MR_init_entry1(__Compare___transform_hlds__rbmm__points_to_graph__rptg_edge_content_0_0);
+	MR_INIT_PROC_LAYOUT_ADDR(mercury____Compare___transform_hlds__rbmm__points_to_graph__rptg_edge_content_0_0);
+	MR_init_label2(__Compare___transform_hlds__rbmm__points_to_graph__rptg_edge_content_0_0,3,2)
+MR_BEGIN_CODE
+
+/*-------------------------------------------------------------------------*/
+/* code for '__Compare__'/3 mode 0 */
+#ifdef MR_maybe_local_thread_engine_base
+	#undef MR_maybe_local_thread_engine_base
+	#define MR_maybe_local_thread_engine_base MR_local_thread_engine_base
+#endif
+MR_define_entry(mercury____Compare___transform_hlds__rbmm__points_to_graph__rptg_edge_content_0_0);
+	MR_MAYBE_INIT_LOCAL_THREAD_ENGINE_BASE
+	if ((MR_r1 == MR_r2)) {
+		MR_GOTO_LAB(__Compare___transform_hlds__rbmm__points_to_graph__rptg_edge_content_0_0_i3);
+	}
+	MR_incr_sp(3);
+	MR_sv(3) = (MR_Word) MR_succip;
+	MR_sv(1) = MR_r1;
+	MR_sv(2) = MR_r2;
+	MR_GOTO_LAB(__Compare___transform_hlds__rbmm__points_to_graph__rptg_edge_content_0_0_i2);
+MR_def_label(__Compare___transform_hlds__rbmm__points_to_graph__rptg_edge_content_0_0,3)
+	MR_MAYBE_INIT_LOCAL_THREAD_ENGINE_BASE
+	MR_r1 = (MR_Integer) 0;
+	MR_proceed();
+MR_def_label(__Compare___transform_hlds__rbmm__points_to_graph__rptg_edge_content_0_0,2)
+	MR_MAYBE_INIT_LOCAL_THREAD_ENGINE_BASE
+	MR_r1 = (MR_Word) MR_CTOR0_ADDR(parse_tree__prog_data, unit_selector);
+	MR_r2 = MR_sv(1);
+	MR_r3 = MR_sv(2);
+	MR_succip_word = MR_sv(3);
+	MR_decr_sp(3);
+	MR_np_tailcall_ent(__Compare___list__list_1_0);
+#ifdef MR_maybe_local_thread_engine_base
+	#undef MR_maybe_local_thread_engine_base
+	#define MR_maybe_local_thread_engine_base MR_thread_engine_base
+#endif
+MR_END_MODULE
+
+
+MR_BEGIN_MODULE(transform_hlds__rbmm__points_to_graph_module71)
+	MR_init_entry1(__Unify___transform_hlds__rbmm__points_to_graph__rptg_edge_info_0_0);
+	MR_INIT_PROC_LAYOUT_ADDR(mercury____Unify___transform_hlds__rbmm__points_to_graph__rptg_edge_info_0_0);
+	MR_init_label4(__Unify___transform_hlds__rbmm__points_to_graph__rptg_edge_info_0_0,6,35,12,1)
+MR_BEGIN_CODE
+
+/*-------------------------------------------------------------------------*/
+/* code for '__Unify__'/2 mode 0 */
+#ifdef MR_maybe_local_thread_engine_base
+	#undef MR_maybe_local_thread_engine_base
+	#define MR_maybe_local_thread_engine_base MR_local_thread_engine_base
+#endif
+MR_define_entry(mercury____Unify___transform_hlds__rbmm__points_to_graph__rptg_edge_info_0_0);
+	MR_MAYBE_INIT_LOCAL_THREAD_ENGINE_BASE
+	if ((MR_r1 == MR_r2)) {
+		MR_GOTO_LAB(__Unify___transform_hlds__rbmm__points_to_graph__rptg_edge_info_0_0_i12);
+	}
+	MR_incr_sp(7);
+	MR_sv(7) = (MR_Word) MR_succip;
+	{
+	MR_Word MR_tempr1, MR_tempr2, MR_tempr3, MR_tempr4;
+	MR_tempr1 = MR_r1;
+	MR_sv(1) = MR_tempr1;
+	MR_tempr2 = MR_r2;
+	MR_sv(2) = MR_tempr2;
+	MR_r2 = MR_tfield(0, MR_tempr2, 2);
+	MR_sv(5) = MR_tfield(0, MR_tempr2, 1);
+	MR_tempr3 = MR_tfield(0, MR_tempr2, 0);
+	MR_sv(4) = MR_tempr3;
+	MR_r1 = MR_tfield(0, MR_tempr1, 2);
+	MR_sv(2) = MR_tfield(0, MR_tempr1, 1);
+	MR_tempr4 = MR_tfield(0, MR_tempr1, 0);
+	if ((MR_tempr4 == MR_tempr3)) {
+		MR_GOTO_LAB(__Unify___transform_hlds__rbmm__points_to_graph__rptg_edge_info_0_0_i6);
+	}
+	MR_sv(1) = MR_tempr4;
+	MR_sv(3) = MR_r1;
+	MR_sv(6) = MR_r2;
+	if ((MR_sv(1) != MR_tempr3)) {
+		MR_GOTO_LAB(__Unify___transform_hlds__rbmm__points_to_graph__rptg_edge_info_0_0_i1);
+	}
+	}
+MR_def_label(__Unify___transform_hlds__rbmm__points_to_graph__rptg_edge_info_0_0,6)
+	MR_MAYBE_INIT_LOCAL_THREAD_ENGINE_BASE
+	if ((MR_sv(2) == MR_sv(5))) {
+		MR_GOTO_LAB(__Unify___transform_hlds__rbmm__points_to_graph__rptg_edge_info_0_0_i35);
+	}
+	MR_sv(3) = MR_r1;
+	MR_sv(6) = MR_r2;
+	if ((MR_sv(2) != MR_sv(5))) {
+		MR_GOTO_LAB(__Unify___transform_hlds__rbmm__points_to_graph__rptg_edge_info_0_0_i1);
+	}
+MR_def_label(__Unify___transform_hlds__rbmm__points_to_graph__rptg_edge_info_0_0,35)
+	MR_MAYBE_INIT_LOCAL_THREAD_ENGINE_BASE
+	MR_succip_word = MR_sv(7);
+	MR_decr_sp(7);
+	MR_np_tailcall_ent(__Unify___transform_hlds__rbmm__points_to_graph__rptg_edge_content_0_0);
+MR_def_label(__Unify___transform_hlds__rbmm__points_to_graph__rptg_edge_info_0_0,12)
+	MR_MAYBE_INIT_LOCAL_THREAD_ENGINE_BASE
+	MR_r1 = MR_TRUE;
+	MR_proceed();
+MR_def_label(__Unify___transform_hlds__rbmm__points_to_graph__rptg_edge_info_0_0,1)
+	MR_MAYBE_INIT_LOCAL_THREAD_ENGINE_BASE
+	MR_r1 = MR_FALSE;
+	MR_decr_sp_and_return(7);
+#ifdef MR_maybe_local_thread_engine_base
+	#undef MR_maybe_local_thread_engine_base
+	#define MR_maybe_local_thread_engine_base MR_thread_engine_base
+#endif
+MR_END_MODULE
+
+
+MR_BEGIN_MODULE(transform_hlds__rbmm__points_to_graph_module72)
+	MR_init_entry1(__Compare___transform_hlds__rbmm__points_to_graph__rptg_edge_info_0_0);
+	MR_INIT_PROC_LAYOUT_ADDR(mercury____Compare___transform_hlds__rbmm__points_to_graph__rptg_edge_info_0_0);
+	MR_init_label5(__Compare___transform_hlds__rbmm__points_to_graph__rptg_edge_info_0_0,3,2,5,9,29)
+MR_BEGIN_CODE
+
+/*-------------------------------------------------------------------------*/
+/* code for '__Compare__'/3 mode 0 */
+#ifdef MR_maybe_local_thread_engine_base
+	#undef MR_maybe_local_thread_engine_base
+	#define MR_maybe_local_thread_engine_base MR_local_thread_engine_base
+#endif
+MR_define_entry(mercury____Compare___transform_hlds__rbmm__points_to_graph__rptg_edge_info_0_0);
+	MR_MAYBE_INIT_LOCAL_THREAD_ENGINE_BASE
+	if ((MR_r1 == MR_r2)) {
+		MR_GOTO_LAB(__Compare___transform_hlds__rbmm__points_to_graph__rptg_edge_info_0_0_i3);
+	}
+	MR_incr_sp(5);
+	MR_sv(5) = (MR_Word) MR_succip;
+	MR_sv(1) = MR_r1;
+	MR_sv(2) = MR_r2;
+	MR_GOTO_LAB(__Compare___transform_hlds__rbmm__points_to_graph__rptg_edge_info_0_0_i2);
+MR_def_label(__Compare___transform_hlds__rbmm__points_to_graph__rptg_edge_info_0_0,3)
+	MR_MAYBE_INIT_LOCAL_THREAD_ENGINE_BASE
+	MR_r1 = (MR_Integer) 0;
+	MR_proceed();
+MR_def_label(__Compare___transform_hlds__rbmm__points_to_graph__rptg_edge_info_0_0,2)
+	MR_MAYBE_INIT_LOCAL_THREAD_ENGINE_BASE
+	{
+	MR_Word MR_tempr1, MR_tempr2, MR_tempr3, MR_tempr4, MR_tempr5, MR_tempr6;
+	MR_tempr5 = MR_sv(2);
+	MR_sv(4) = MR_tfield(0, MR_tempr5, 2);
+	MR_sv(3) = MR_tfield(0, MR_tempr5, 1);
+	MR_tempr6 = MR_sv(1);
+	MR_tempr1 = MR_tfield(0, MR_tempr6, 2);
+	MR_tempr2 = MR_tfield(0, MR_tempr6, 1);
+	MR_tempr3 = MR_tempr6;
+	MR_sv(1) = MR_tempr2;
+	MR_tempr4 = MR_tempr5;
+	MR_sv(2) = MR_tempr1;
+	MR_r1 = MR_tfield(0, MR_tempr3, 0);
+	MR_r2 = MR_tfield(0, MR_tempr4, 0);
+	}
+	MR_np_call_localret_ent(private_builtin__builtin_compare_int_3_0,
+		__Compare___transform_hlds__rbmm__points_to_graph__rptg_edge_info_0_0_i5);
+MR_def_label(__Compare___transform_hlds__rbmm__points_to_graph__rptg_edge_info_0_0,5)
+	MR_MAYBE_INIT_LOCAL_THREAD_ENGINE_BASE
+	if (MR_INT_NE(MR_r1,0)) {
+		MR_GOTO_LAB(__Compare___transform_hlds__rbmm__points_to_graph__rptg_edge_info_0_0_i29);
+	}
+	MR_r1 = MR_sv(1);
+	MR_r2 = MR_sv(3);
+	MR_np_call_localret_ent(private_builtin__builtin_compare_int_3_0,
+		__Compare___transform_hlds__rbmm__points_to_graph__rptg_edge_info_0_0_i9);
+MR_def_label(__Compare___transform_hlds__rbmm__points_to_graph__rptg_edge_info_0_0,9)
+	MR_MAYBE_INIT_LOCAL_THREAD_ENGINE_BASE
+	if (MR_INT_NE(MR_r1,0)) {
+		MR_GOTO_LAB(__Compare___transform_hlds__rbmm__points_to_graph__rptg_edge_info_0_0_i29);
+	}
+	MR_r1 = MR_sv(2);
+	MR_r2 = MR_sv(4);
+	MR_succip_word = MR_sv(5);
+	MR_decr_sp(5);
+	MR_np_tailcall_ent(__Compare___transform_hlds__rbmm__points_to_graph__rptg_edge_content_0_0);
+MR_def_label(__Compare___transform_hlds__rbmm__points_to_graph__rptg_edge_info_0_0,29)
+	MR_MAYBE_INIT_LOCAL_THREAD_ENGINE_BASE
+	MR_decr_sp_and_return(5);
+#ifdef MR_maybe_local_thread_engine_base
+	#undef MR_maybe_local_thread_engine_base
+	#define MR_maybe_local_thread_engine_base MR_thread_engine_base
+#endif
+MR_END_MODULE
+
+
+MR_BEGIN_MODULE(transform_hlds__rbmm__points_to_graph_module73)
+	MR_init_entry1(__Unify___transform_hlds__rbmm__points_to_graph__rptg_edges_0_0);
+	MR_INIT_PROC_LAYOUT_ADDR(mercury____Unify___transform_hlds__rbmm__points_to_graph__rptg_edges_0_0);
+MR_BEGIN_CODE
+
+/*-------------------------------------------------------------------------*/
+/* code for '__Unify__'/2 mode 0 */
+#ifdef MR_maybe_local_thread_engine_base
+	#undef MR_maybe_local_thread_engine_base
+	#define MR_maybe_local_thread_engine_base MR_local_thread_engine_base
+#endif
+MR_define_entry(mercury____Unify___transform_hlds__rbmm__points_to_graph__rptg_edges_0_0);
+	MR_MAYBE_INIT_LOCAL_THREAD_ENGINE_BASE
+	{
+	MR_Word MR_tempr1, MR_tempr2;
+	MR_tempr1 = MR_r1;
+	MR_r1 = (MR_Word) MR_CTOR0_ADDR(transform_hlds__rbmm__points_to_graph, rptg_edge);
+	MR_tempr2 = MR_r2;
+	MR_r2 = (MR_Word) MR_CTOR0_ADDR(transform_hlds__rbmm__points_to_graph, rptg_edge_info);
+	MR_r3 = MR_tempr1;
+	MR_r4 = MR_tempr2;
+	MR_np_tailcall_ent(__Unify___tree234__tree234_2_0);
+	}
+#ifdef MR_maybe_local_thread_engine_base
+	#undef MR_maybe_local_thread_engine_base
+	#define MR_maybe_local_thread_engine_base MR_thread_engine_base
+#endif
+MR_END_MODULE
+
+
+MR_BEGIN_MODULE(transform_hlds__rbmm__points_to_graph_module74)
+	MR_init_entry1(__Compare___transform_hlds__rbmm__points_to_graph__rptg_edges_0_0);
+	MR_INIT_PROC_LAYOUT_ADDR(mercury____Compare___transform_hlds__rbmm__points_to_graph__rptg_edges_0_0);
+MR_BEGIN_CODE
+
+/*-------------------------------------------------------------------------*/
+/* code for '__Compare__'/3 mode 0 */
+#ifdef MR_maybe_local_thread_engine_base
+	#undef MR_maybe_local_thread_engine_base
+	#define MR_maybe_local_thread_engine_base MR_local_thread_engine_base
+#endif
+MR_define_entry(mercury____Compare___transform_hlds__rbmm__points_to_graph__rptg_edges_0_0);
+	MR_MAYBE_INIT_LOCAL_THREAD_ENGINE_BASE
+	{
+	MR_Word MR_tempr1, MR_tempr2;
+	MR_tempr1 = MR_r1;
+	MR_r1 = (MR_Word) MR_CTOR0_ADDR(transform_hlds__rbmm__points_to_graph, rptg_edge);
+	MR_tempr2 = MR_r2;
+	MR_r2 = (MR_Word) MR_CTOR0_ADDR(transform_hlds__rbmm__points_to_graph, rptg_edge_info);
+	MR_r3 = MR_tempr1;
+	MR_r4 = MR_tempr2;
+	MR_np_tailcall_ent(__Compare___tree234__tree234_2_0);
+	}
+#ifdef MR_maybe_local_thread_engine_base
+	#undef MR_maybe_local_thread_engine_base
+	#define MR_maybe_local_thread_engine_base MR_thread_engine_base
+#endif
+MR_END_MODULE
+
+
+MR_BEGIN_MODULE(transform_hlds__rbmm__points_to_graph_module75)
+	MR_init_entry1(__Unify___transform_hlds__rbmm__points_to_graph__rptg_node_0_0);
+	MR_INIT_PROC_LAYOUT_ADDR(mercury____Unify___transform_hlds__rbmm__points_to_graph__rptg_node_0_0);
+	MR_init_label1(__Unify___transform_hlds__rbmm__points_to_graph__rptg_node_0_0,4)
+MR_BEGIN_CODE
+
+/*-------------------------------------------------------------------------*/
+/* code for '__Unify__'/2 mode 0 */
+#ifdef MR_maybe_local_thread_engine_base
+	#undef MR_maybe_local_thread_engine_base
+	#define MR_maybe_local_thread_engine_base MR_local_thread_engine_base
+#endif
+MR_define_entry(mercury____Unify___transform_hlds__rbmm__points_to_graph__rptg_node_0_0);
+	MR_MAYBE_INIT_LOCAL_THREAD_ENGINE_BASE
+	MR_incr_sp(2);
+	if ((MR_r1 == MR_r2)) {
+		MR_GOTO_LAB(__Unify___transform_hlds__rbmm__points_to_graph__rptg_node_0_0_i4);
+	}
+	MR_sv(1) = MR_r1;
+	MR_sv(2) = MR_r2;
+	MR_r1 = (MR_sv(1) == MR_sv(2));
+	MR_decr_sp(2);
+	MR_proceed();
+MR_def_label(__Unify___transform_hlds__rbmm__points_to_graph__rptg_node_0_0,4)
+	MR_MAYBE_INIT_LOCAL_THREAD_ENGINE_BASE
+	MR_decr_sp(2);
+	MR_r1 = MR_TRUE;
+	MR_proceed();
+#ifdef MR_maybe_local_thread_engine_base
+	#undef MR_maybe_local_thread_engine_base
+	#define MR_maybe_local_thread_engine_base MR_thread_engine_base
+#endif
+MR_END_MODULE
+
+
+MR_BEGIN_MODULE(transform_hlds__rbmm__points_to_graph_module76)
+	MR_init_entry1(__Compare___transform_hlds__rbmm__points_to_graph__rptg_node_0_0);
+	MR_INIT_PROC_LAYOUT_ADDR(mercury____Compare___transform_hlds__rbmm__points_to_graph__rptg_node_0_0);
+	MR_init_label2(__Compare___transform_hlds__rbmm__points_to_graph__rptg_node_0_0,3,2)
+MR_BEGIN_CODE
+
+/*-------------------------------------------------------------------------*/
+/* code for '__Compare__'/3 mode 0 */
+#ifdef MR_maybe_local_thread_engine_base
+	#undef MR_maybe_local_thread_engine_base
+	#define MR_maybe_local_thread_engine_base MR_local_thread_engine_base
+#endif
+MR_define_entry(mercury____Compare___transform_hlds__rbmm__points_to_graph__rptg_node_0_0);
+	MR_MAYBE_INIT_LOCAL_THREAD_ENGINE_BASE
+	if ((MR_r1 == MR_r2)) {
+		MR_GOTO_LAB(__Compare___transform_hlds__rbmm__points_to_graph__rptg_node_0_0_i3);
+	}
+	MR_incr_sp(3);
+	MR_sv(3) = (MR_Word) MR_succip;
+	MR_sv(1) = MR_r1;
+	MR_sv(2) = MR_r2;
+	MR_GOTO_LAB(__Compare___transform_hlds__rbmm__points_to_graph__rptg_node_0_0_i2);
+MR_def_label(__Compare___transform_hlds__rbmm__points_to_graph__rptg_node_0_0,3)
+	MR_MAYBE_INIT_LOCAL_THREAD_ENGINE_BASE
+	MR_r1 = (MR_Integer) 0;
+	MR_proceed();
+MR_def_label(__Compare___transform_hlds__rbmm__points_to_graph__rptg_node_0_0,2)
+	MR_MAYBE_INIT_LOCAL_THREAD_ENGINE_BASE
+	MR_r1 = MR_sv(1);
+	MR_r2 = MR_sv(2);
+	MR_succip_word = MR_sv(3);
+	MR_decr_sp(3);
+	MR_np_tailcall_ent(private_builtin__builtin_compare_int_3_0);
+#ifdef MR_maybe_local_thread_engine_base
+	#undef MR_maybe_local_thread_engine_base
+	#define MR_maybe_local_thread_engine_base MR_thread_engine_base
+#endif
+MR_END_MODULE
+
+MR_decl_entry(__Unify___set_ordlist__set_ordlist_1_0);
+
+MR_BEGIN_MODULE(transform_hlds__rbmm__points_to_graph_module77)
+	MR_init_entry1(__Unify___transform_hlds__rbmm__points_to_graph__rptg_node_content_0_0);
+	MR_INIT_PROC_LAYOUT_ADDR(mercury____Unify___transform_hlds__rbmm__points_to_graph__rptg_node_content_0_0);
+	MR_init_label5(__Unify___transform_hlds__rbmm__points_to_graph__rptg_node_content_0_0,5,7,9,11,1)
+MR_BEGIN_CODE
+
+/*-------------------------------------------------------------------------*/
+/* code for '__Unify__'/2 mode 0 */
+#ifdef MR_maybe_local_thread_engine_base
+	#undef MR_maybe_local_thread_engine_base
+	#define MR_maybe_local_thread_engine_base MR_local_thread_engine_base
+#endif
+MR_define_entry(mercury____Unify___transform_hlds__rbmm__points_to_graph__rptg_node_content_0_0);
+	MR_MAYBE_INIT_LOCAL_THREAD_ENGINE_BASE
+	if ((MR_r1 == MR_r2)) {
+		MR_GOTO_LAB(__Unify___transform_hlds__rbmm__points_to_graph__rptg_node_content_0_0_i11);
+	}
+	MR_incr_sp(9);
+	MR_sv(9) = (MR_Word) MR_succip;
+	MR_sv(1) = MR_r1;
+	MR_sv(2) = MR_r2;
+	{
+	MR_Word MR_tempr1, MR_tempr2;
+	MR_tempr1 = MR_sv(1);
+	MR_sv(1) = MR_tfield(0, MR_tempr1, 1);
+	MR_tempr2 = MR_sv(2);
+	MR_sv(2) = MR_tfield(0, MR_tempr1, 2);
+	MR_sv(3) = MR_tfield(0, MR_tempr1, 3);
+	MR_sv(4) = MR_tfield(0, MR_tempr1, 4);
+	MR_sv(5) = MR_tfield(0, MR_tempr2, 1);
+	MR_sv(6) = MR_tfield(0, MR_tempr2, 2);
+	MR_sv(7) = MR_tfield(0, MR_tempr2, 3);
+	MR_sv(8) = MR_tfield(0, MR_tempr2, 4);
+	MR_r1 = (MR_Word) MR_TAG_COMMON(0,1,0);
+	MR_r2 = MR_tfield(0, MR_tempr1, 0);
+	MR_r3 = MR_tfield(0, MR_tempr2, 0);
+	}
+	MR_np_call_localret_ent(__Unify___set_ordlist__set_ordlist_1_0,
+		__Unify___transform_hlds__rbmm__points_to_graph__rptg_node_content_0_0_i5);
+MR_def_label(__Unify___transform_hlds__rbmm__points_to_graph__rptg_node_content_0_0,5)
+	MR_MAYBE_INIT_LOCAL_THREAD_ENGINE_BASE
+	if (!(MR_r1)) {
+		MR_GOTO_LAB(__Unify___transform_hlds__rbmm__points_to_graph__rptg_node_content_0_0_i1);
+	}
+	if ((strcmp((char *) (MR_Word *) MR_sv(1), (char *) (MR_Word *) MR_sv(5)) != 0)) {
+		MR_GOTO_LAB(__Unify___transform_hlds__rbmm__points_to_graph__rptg_node_content_0_0_i1);
+	}
+	MR_r1 = (MR_Word) MR_CTOR0_ADDR(transform_hlds__rbmm__points_to_graph, rptg_node);
+	MR_r2 = MR_sv(2);
+	MR_r3 = MR_sv(6);
+	MR_np_call_localret_ent(__Unify___set_ordlist__set_ordlist_1_0,
+		__Unify___transform_hlds__rbmm__points_to_graph__rptg_node_content_0_0_i7);
+MR_def_label(__Unify___transform_hlds__rbmm__points_to_graph__rptg_node_content_0_0,7)
+	MR_MAYBE_INIT_LOCAL_THREAD_ENGINE_BASE
+	if (!(MR_r1)) {
+		MR_GOTO_LAB(__Unify___transform_hlds__rbmm__points_to_graph__rptg_node_content_0_0_i1);
+	}
+	MR_r1 = MR_sv(3);
+	MR_r2 = MR_sv(7);
+	MR_np_call_localret_ent(__Unify___parse_tree__prog_data__mer_type_0_0,
+		__Unify___transform_hlds__rbmm__points_to_graph__rptg_node_content_0_0_i9);
+MR_def_label(__Unify___transform_hlds__rbmm__points_to_graph__rptg_node_content_0_0,9)
+	MR_MAYBE_INIT_LOCAL_THREAD_ENGINE_BASE
+	if (!(MR_r1)) {
+		MR_GOTO_LAB(__Unify___transform_hlds__rbmm__points_to_graph__rptg_node_content_0_0_i1);
+	}
+	MR_r1 = (MR_sv(4) == MR_sv(8));
+	MR_decr_sp_and_return(9);
+MR_def_label(__Unify___transform_hlds__rbmm__points_to_graph__rptg_node_content_0_0,11)
+	MR_MAYBE_INIT_LOCAL_THREAD_ENGINE_BASE
+	MR_r1 = MR_TRUE;
+	MR_proceed();
+MR_def_label(__Unify___transform_hlds__rbmm__points_to_graph__rptg_node_content_0_0,1)
+	MR_MAYBE_INIT_LOCAL_THREAD_ENGINE_BASE
+	MR_r1 = MR_FALSE;
+	MR_decr_sp_and_return(9);
+#ifdef MR_maybe_local_thread_engine_base
+	#undef MR_maybe_local_thread_engine_base
+	#define MR_maybe_local_thread_engine_base MR_thread_engine_base
+#endif
+MR_END_MODULE
+
+MR_decl_entry(__Compare___set_ordlist__set_ordlist_1_0);
+MR_decl_entry(private_builtin__builtin_compare_string_3_0);
+MR_decl_entry(__Compare___parse_tree__prog_data__mer_type_0_0);
+
+MR_BEGIN_MODULE(transform_hlds__rbmm__points_to_graph_module78)
+	MR_init_entry1(__Compare___transform_hlds__rbmm__points_to_graph__rptg_node_content_0_0);
+	MR_INIT_PROC_LAYOUT_ADDR(mercury____Compare___transform_hlds__rbmm__points_to_graph__rptg_node_content_0_0);
+	MR_init_label7(__Compare___transform_hlds__rbmm__points_to_graph__rptg_node_content_0_0,3,2,6,10,14,18,61)
+MR_BEGIN_CODE
+
+/*-------------------------------------------------------------------------*/
+/* code for '__Compare__'/3 mode 0 */
+#ifdef MR_maybe_local_thread_engine_base
+	#undef MR_maybe_local_thread_engine_base
+	#define MR_maybe_local_thread_engine_base MR_local_thread_engine_base
+#endif
+MR_define_entry(mercury____Compare___transform_hlds__rbmm__points_to_graph__rptg_node_content_0_0);
+	MR_MAYBE_INIT_LOCAL_THREAD_ENGINE_BASE
+	if ((MR_r1 == MR_r2)) {
+		MR_GOTO_LAB(__Compare___transform_hlds__rbmm__points_to_graph__rptg_node_content_0_0_i3);
+	}
+	MR_incr_sp(9);
+	MR_sv(9) = (MR_Word) MR_succip;
+	MR_sv(1) = MR_r1;
+	MR_sv(2) = MR_r2;
+	MR_GOTO_LAB(__Compare___transform_hlds__rbmm__points_to_graph__rptg_node_content_0_0_i2);
+MR_def_label(__Compare___transform_hlds__rbmm__points_to_graph__rptg_node_content_0_0,3)
+	MR_MAYBE_INIT_LOCAL_THREAD_ENGINE_BASE
+	MR_r1 = (MR_Integer) 0;
+	MR_proceed();
+MR_def_label(__Compare___transform_hlds__rbmm__points_to_graph__rptg_node_content_0_0,2)
+	MR_MAYBE_INIT_LOCAL_THREAD_ENGINE_BASE
+	{
+	MR_Word MR_tempr1, MR_tempr2, MR_tempr3, MR_tempr4, MR_tempr5, MR_tempr6;
+	MR_tempr5 = MR_sv(2);
+	MR_sv(8) = MR_tfield(0, MR_tempr5, 4);
+	MR_sv(7) = MR_tfield(0, MR_tempr5, 3);
+	MR_sv(6) = MR_tfield(0, MR_tempr5, 2);
+	MR_sv(5) = MR_tfield(0, MR_tempr5, 1);
+	MR_tempr6 = MR_sv(1);
+	MR_sv(4) = MR_tfield(0, MR_tempr6, 4);
+	MR_sv(3) = MR_tfield(0, MR_tempr6, 3);
+	MR_tempr1 = MR_tfield(0, MR_tempr6, 2);
+	MR_tempr2 = MR_tfield(0, MR_tempr6, 1);
+	MR_tempr3 = MR_tempr6;
+	MR_sv(1) = MR_tempr2;
+	MR_tempr4 = MR_tempr5;
+	MR_sv(2) = MR_tempr1;
+	MR_r1 = (MR_Word) MR_TAG_COMMON(0,1,0);
+	MR_r2 = MR_tfield(0, MR_tempr3, 0);
+	MR_r3 = MR_tfield(0, MR_tempr4, 0);
+	}
+	MR_np_call_localret_ent(__Compare___set_ordlist__set_ordlist_1_0,
+		__Compare___transform_hlds__rbmm__points_to_graph__rptg_node_content_0_0_i6);
+MR_def_label(__Compare___transform_hlds__rbmm__points_to_graph__rptg_node_content_0_0,6)
+	MR_MAYBE_INIT_LOCAL_THREAD_ENGINE_BASE
+	if (MR_INT_NE(MR_r1,0)) {
+		MR_GOTO_LAB(__Compare___transform_hlds__rbmm__points_to_graph__rptg_node_content_0_0_i61);
+	}
+	MR_r1 = MR_sv(1);
+	MR_r2 = MR_sv(5);
+	MR_np_call_localret_ent(private_builtin__builtin_compare_string_3_0,
+		__Compare___transform_hlds__rbmm__points_to_graph__rptg_node_content_0_0_i10);
+MR_def_label(__Compare___transform_hlds__rbmm__points_to_graph__rptg_node_content_0_0,10)
+	MR_MAYBE_INIT_LOCAL_THREAD_ENGINE_BASE
+	if (MR_INT_NE(MR_r1,0)) {
+		MR_GOTO_LAB(__Compare___transform_hlds__rbmm__points_to_graph__rptg_node_content_0_0_i61);
+	}
+	MR_r1 = (MR_Word) MR_CTOR0_ADDR(transform_hlds__rbmm__points_to_graph, rptg_node);
+	MR_r2 = MR_sv(2);
+	MR_r3 = MR_sv(6);
+	MR_np_call_localret_ent(__Compare___set_ordlist__set_ordlist_1_0,
+		__Compare___transform_hlds__rbmm__points_to_graph__rptg_node_content_0_0_i14);
+MR_def_label(__Compare___transform_hlds__rbmm__points_to_graph__rptg_node_content_0_0,14)
+	MR_MAYBE_INIT_LOCAL_THREAD_ENGINE_BASE
+	if (MR_INT_NE(MR_r1,0)) {
+		MR_GOTO_LAB(__Compare___transform_hlds__rbmm__points_to_graph__rptg_node_content_0_0_i61);
+	}
+	MR_r1 = MR_sv(3);
+	MR_r2 = MR_sv(7);
+	MR_np_call_localret_ent(__Compare___parse_tree__prog_data__mer_type_0_0,
+		__Compare___transform_hlds__rbmm__points_to_graph__rptg_node_content_0_0_i18);
+MR_def_label(__Compare___transform_hlds__rbmm__points_to_graph__rptg_node_content_0_0,18)
+	MR_MAYBE_INIT_LOCAL_THREAD_ENGINE_BASE
+	if (MR_INT_NE(MR_r1,0)) {
+		MR_GOTO_LAB(__Compare___transform_hlds__rbmm__points_to_graph__rptg_node_content_0_0_i61);
+	}
+	MR_r1 = MR_sv(4);
+	MR_r2 = MR_sv(8);
+	MR_succip_word = MR_sv(9);
+	MR_decr_sp(9);
+	MR_np_tailcall_ent(private_builtin__builtin_compare_int_3_0);
+MR_def_label(__Compare___transform_hlds__rbmm__points_to_graph__rptg_node_content_0_0,61)
+	MR_MAYBE_INIT_LOCAL_THREAD_ENGINE_BASE
+	MR_decr_sp_and_return(9);
+#ifdef MR_maybe_local_thread_engine_base
+	#undef MR_maybe_local_thread_engine_base
+	#define MR_maybe_local_thread_engine_base MR_thread_engine_base
+#endif
+MR_END_MODULE
+
+
+MR_BEGIN_MODULE(transform_hlds__rbmm__points_to_graph_module79)
+	MR_init_entry1(__Unify___transform_hlds__rbmm__points_to_graph__rptg_nodes_0_0);
+	MR_INIT_PROC_LAYOUT_ADDR(mercury____Unify___transform_hlds__rbmm__points_to_graph__rptg_nodes_0_0);
+MR_BEGIN_CODE
+
+/*-------------------------------------------------------------------------*/
+/* code for '__Unify__'/2 mode 0 */
+#ifdef MR_maybe_local_thread_engine_base
+	#undef MR_maybe_local_thread_engine_base
+	#define MR_maybe_local_thread_engine_base MR_local_thread_engine_base
+#endif
+MR_define_entry(mercury____Unify___transform_hlds__rbmm__points_to_graph__rptg_nodes_0_0);
+	MR_MAYBE_INIT_LOCAL_THREAD_ENGINE_BASE
+	{
+	MR_Word MR_tempr1, MR_tempr2;
+	MR_tempr1 = MR_r1;
+	MR_r1 = (MR_Word) MR_CTOR0_ADDR(transform_hlds__rbmm__points_to_graph, rptg_node);
+	MR_tempr2 = MR_r2;
+	MR_r2 = (MR_Word) MR_CTOR0_ADDR(transform_hlds__rbmm__points_to_graph, rptg_node_content);
+	MR_r3 = MR_tempr1;
+	MR_r4 = MR_tempr2;
+	MR_np_tailcall_ent(__Unify___tree234__tree234_2_0);
+	}
+#ifdef MR_maybe_local_thread_engine_base
+	#undef MR_maybe_local_thread_engine_base
+	#define MR_maybe_local_thread_engine_base MR_thread_engine_base
+#endif
+MR_END_MODULE
+
+
+MR_BEGIN_MODULE(transform_hlds__rbmm__points_to_graph_module80)
+	MR_init_entry1(__Compare___transform_hlds__rbmm__points_to_graph__rptg_nodes_0_0);
+	MR_INIT_PROC_LAYOUT_ADDR(mercury____Compare___transform_hlds__rbmm__points_to_graph__rptg_nodes_0_0);
+MR_BEGIN_CODE
+
+/*-------------------------------------------------------------------------*/
+/* code for '__Compare__'/3 mode 0 */
+#ifdef MR_maybe_local_thread_engine_base
+	#undef MR_maybe_local_thread_engine_base
+	#define MR_maybe_local_thread_engine_base MR_local_thread_engine_base
+#endif
+MR_define_entry(mercury____Compare___transform_hlds__rbmm__points_to_graph__rptg_nodes_0_0);
+	MR_MAYBE_INIT_LOCAL_THREAD_ENGINE_BASE
+	{
+	MR_Word MR_tempr1, MR_tempr2;
+	MR_tempr1 = MR_r1;
+	MR_r1 = (MR_Word) MR_CTOR0_ADDR(transform_hlds__rbmm__points_to_graph, rptg_node);
+	MR_tempr2 = MR_r2;
+	MR_r2 = (MR_Word) MR_CTOR0_ADDR(transform_hlds__rbmm__points_to_graph, rptg_node_content);
+	MR_r3 = MR_tempr1;
+	MR_r4 = MR_tempr2;
+	MR_np_tailcall_ent(__Compare___tree234__tree234_2_0);
+	}
+#ifdef MR_maybe_local_thread_engine_base
+	#undef MR_maybe_local_thread_engine_base
+	#define MR_maybe_local_thread_engine_base MR_thread_engine_base
+#endif
+MR_END_MODULE
+
+
+MR_BEGIN_MODULE(transform_hlds__rbmm__points_to_graph_module81)
+	MR_init_entry1(__Unify___transform_hlds__rbmm__points_to_graph__rptg_outedges_0_0);
+	MR_INIT_PROC_LAYOUT_ADDR(mercury____Unify___transform_hlds__rbmm__points_to_graph__rptg_outedges_0_0);
+MR_BEGIN_CODE
+
+/*-------------------------------------------------------------------------*/
+/* code for '__Unify__'/2 mode 0 */
+#ifdef MR_maybe_local_thread_engine_base
+	#undef MR_maybe_local_thread_engine_base
+	#define MR_maybe_local_thread_engine_base MR_local_thread_engine_base
+#endif
+MR_define_entry(mercury____Unify___transform_hlds__rbmm__points_to_graph__rptg_outedges_0_0);
+	MR_MAYBE_INIT_LOCAL_THREAD_ENGINE_BASE
+	{
+	MR_Word MR_tempr1, MR_tempr2;
+	MR_tempr1 = MR_r1;
+	MR_r1 = (MR_Word) MR_CTOR0_ADDR(transform_hlds__rbmm__points_to_graph, rptg_node);
+	MR_tempr2 = MR_r2;
+	MR_r2 = (MR_Word) MR_TAG_COMMON(0,0,0);
+	MR_r3 = MR_tempr1;
+	MR_r4 = MR_tempr2;
+	MR_np_tailcall_ent(__Unify___tree234__tree234_2_0);
+	}
+#ifdef MR_maybe_local_thread_engine_base
+	#undef MR_maybe_local_thread_engine_base
+	#define MR_maybe_local_thread_engine_base MR_thread_engine_base
+#endif
+MR_END_MODULE
+
+
+MR_BEGIN_MODULE(transform_hlds__rbmm__points_to_graph_module82)
+	MR_init_entry1(__Compare___transform_hlds__rbmm__points_to_graph__rptg_outedges_0_0);
+	MR_INIT_PROC_LAYOUT_ADDR(mercury____Compare___transform_hlds__rbmm__points_to_graph__rptg_outedges_0_0);
+MR_BEGIN_CODE
+
+/*-------------------------------------------------------------------------*/
+/* code for '__Compare__'/3 mode 0 */
+#ifdef MR_maybe_local_thread_engine_base
+	#undef MR_maybe_local_thread_engine_base
+	#define MR_maybe_local_thread_engine_base MR_local_thread_engine_base
+#endif
+MR_define_entry(mercury____Compare___transform_hlds__rbmm__points_to_graph__rptg_outedges_0_0);
+	MR_MAYBE_INIT_LOCAL_THREAD_ENGINE_BASE
+	{
+	MR_Word MR_tempr1, MR_tempr2;
+	MR_tempr1 = MR_r1;
+	MR_r1 = (MR_Word) MR_CTOR0_ADDR(transform_hlds__rbmm__points_to_graph, rptg_node);
+	MR_tempr2 = MR_r2;
+	MR_r2 = (MR_Word) MR_TAG_COMMON(0,0,0);
+	MR_r3 = MR_tempr1;
+	MR_r4 = MR_tempr2;
+	MR_np_tailcall_ent(__Compare___tree234__tree234_2_0);
+	}
+#ifdef MR_maybe_local_thread_engine_base
+	#undef MR_maybe_local_thread_engine_base
+	#define MR_maybe_local_thread_engine_base MR_thread_engine_base
+#endif
+MR_END_MODULE
+
+MR_decl_entry(map__inverse_search_3_0);
+
+MR_BEGIN_MODULE(transform_hlds__rbmm__points_to_graph_module83)
+	MR_init_entry1(transform_hlds__rbmm__points_to_graph__IntroducedFrom__pred__rptg_edge_in_graph__855__1_3_0);
+	MR_INIT_PROC_LAYOUT_ADDR(mercury__transform_hlds__rbmm__points_to_graph__IntroducedFrom__pred__rptg_edge_in_graph__855__1_3_0);
+MR_BEGIN_CODE
+
+/*-------------------------------------------------------------------------*/
+/* code for 'IntroducedFrom__pred__rptg_edge_in_graph__855__1'/3 mode 0 */
+#ifdef MR_maybe_local_thread_engine_base
+	#undef MR_maybe_local_thread_engine_base
+	#define MR_maybe_local_thread_engine_base MR_local_thread_engine_base
+#endif
+MR_def_static(transform_hlds__rbmm__points_to_graph__IntroducedFrom__pred__rptg_edge_in_graph__855__1_3_0)
+	MR_MAYBE_INIT_LOCAL_THREAD_ENGINE_BASE
+	{
+	MR_Word MR_tempr1, MR_tempr2;
+	MR_tempr1 = MR_r1;
+	MR_r1 = (MR_Word) MR_CTOR0_ADDR(transform_hlds__rbmm__points_to_graph, rptg_edge);
+	MR_tempr2 = MR_r2;
+	MR_r2 = (MR_Word) MR_CTOR0_ADDR(transform_hlds__rbmm__points_to_graph, rptg_node);
+	MR_r3 = MR_tempr2;
+	MR_r4 = MR_tempr1;
+	MR_np_tailcall_ent(map__inverse_search_3_0);
+	}
+#ifdef MR_maybe_local_thread_engine_base
+	#undef MR_maybe_local_thread_engine_base
+	#define MR_maybe_local_thread_engine_base MR_thread_engine_base
+#endif
+MR_END_MODULE
+
+
+MR_BEGIN_MODULE(transform_hlds__rbmm__points_to_graph_module84)
+	MR_init_entry1(transform_hlds__rbmm__points_to_graph__IntroducedFrom__pred__delete_all_inedges_and_edges_2__817__1_3_0);
+	MR_INIT_PROC_LAYOUT_ADDR(mercury__transform_hlds__rbmm__points_to_graph__IntroducedFrom__pred__delete_all_inedges_and_edges_2__817__1_3_0);
+MR_BEGIN_CODE
+
+/*-------------------------------------------------------------------------*/
+/* code for 'IntroducedFrom__pred__delete_all_inedges_and_edges_2__817__1'/3 mode 0 */
+#ifdef MR_maybe_local_thread_engine_base
+	#undef MR_maybe_local_thread_engine_base
+	#define MR_maybe_local_thread_engine_base MR_local_thread_engine_base
+#endif
+MR_def_static(transform_hlds__rbmm__points_to_graph__IntroducedFrom__pred__delete_all_inedges_and_edges_2__817__1_3_0)
+	MR_MAYBE_INIT_LOCAL_THREAD_ENGINE_BASE
+	{
+	MR_Word MR_tempr1, MR_tempr2;
+	MR_tempr1 = MR_r1;
+	MR_r1 = (MR_Word) MR_CTOR0_ADDR(transform_hlds__rbmm__points_to_graph, rptg_edge);
+	MR_tempr2 = MR_r2;
+	MR_r2 = (MR_Word) MR_CTOR0_ADDR(transform_hlds__rbmm__points_to_graph, rptg_node);
+	MR_r3 = MR_tempr2;
+	MR_r4 = MR_tempr1;
+	MR_np_tailcall_ent(map__inverse_search_3_0);
+	}
+#ifdef MR_maybe_local_thread_engine_base
+	#undef MR_maybe_local_thread_engine_base
+	#define MR_maybe_local_thread_engine_base MR_thread_engine_base
+#endif
+MR_END_MODULE
+
+
+MR_BEGIN_MODULE(transform_hlds__rbmm__points_to_graph_module85)
+	MR_init_entry1(f_116_114_97_110_115_102_111_114_109_95_104_108_100_115_95_95_114_98_109_109_95_95_112_111_105_110_116_115_95_116_111_95_103_114_97_112_104_95_95_85_110_117_115_101_100_65_114_103_115_95_95_112_114_101_100_95_95_114_112_116_103_95_101_100_103_101_95_99_111_110_116_101_110_116_95_115_101_116_95_108_97_98_101_108_95_95_91_50_93_95_48_3_0);
+	MR_INIT_PROC_LAYOUT_ADDR(mercury__f_116_114_97_110_115_102_111_114_109_95_104_108_100_115_95_95_114_98_109_109_95_95_112_111_105_110_116_115_95_116_111_95_103_114_97_112_104_95_95_85_110_117_115_101_100_65_114_103_115_95_95_112_114_101_100_95_95_114_112_116_103_95_101_100_103_101_95_99_111_110_116_101_110_116_95_115_101_116_95_108_97_98_101_108_95_95_91_50_93_95_48_3_0);
+MR_BEGIN_CODE
+
+/*-------------------------------------------------------------------------*/
+/* code for 'UnusedArgs__pred__rptg_edge_content_set_label__[2]_0'/3 mode 0 */
+#ifdef MR_maybe_local_thread_engine_base
+	#undef MR_maybe_local_thread_engine_base
+	#define MR_maybe_local_thread_engine_base MR_local_thread_engine_base
+#endif
+MR_define_entry(mercury__f_116_114_97_110_115_102_111_114_109_95_104_108_100_115_95_95_114_98_109_109_95_95_112_111_105_110_116_115_95_116_111_95_103_114_97_112_104_95_95_85_110_117_115_101_100_65_114_103_115_95_95_112_114_101_100_95_95_114_112_116_103_95_101_100_103_101_95_99_111_110_116_101_110_116_95_115_101_116_95_108_97_98_101_108_95_95_91_50_93_95_48_3_0);
+	MR_MAYBE_INIT_LOCAL_THREAD_ENGINE_BASE
+	MR_proceed();
+#ifdef MR_maybe_local_thread_engine_base
+	#undef MR_maybe_local_thread_engine_base
+	#define MR_maybe_local_thread_engine_base MR_thread_engine_base
+#endif
+MR_END_MODULE
+
+static void mercury__transform_hlds__rbmm__points_to_graph_maybe_bunch_0(void)
+{
+	transform_hlds__rbmm__points_to_graph_module0();
+	transform_hlds__rbmm__points_to_graph_module1();
+	transform_hlds__rbmm__points_to_graph_module2();
+	transform_hlds__rbmm__points_to_graph_module3();
+	transform_hlds__rbmm__points_to_graph_module4();
+	transform_hlds__rbmm__points_to_graph_module5();
+	transform_hlds__rbmm__points_to_graph_module6();
+	transform_hlds__rbmm__points_to_graph_module7();
+	transform_hlds__rbmm__points_to_graph_module8();
+	transform_hlds__rbmm__points_to_graph_module9();
+	transform_hlds__rbmm__points_to_graph_module10();
+	transform_hlds__rbmm__points_to_graph_module11();
+	transform_hlds__rbmm__points_to_graph_module12();
+	transform_hlds__rbmm__points_to_graph_module13();
+	transform_hlds__rbmm__points_to_graph_module14();
+	transform_hlds__rbmm__points_to_graph_module15();
+	transform_hlds__rbmm__points_to_graph_module16();
+	transform_hlds__rbmm__points_to_graph_module17();
+	transform_hlds__rbmm__points_to_graph_module18();
+	transform_hlds__rbmm__points_to_graph_module19();
+	transform_hlds__rbmm__points_to_graph_module20();
+	transform_hlds__rbmm__points_to_graph_module21();
+	transform_hlds__rbmm__points_to_graph_module22();
+	transform_hlds__rbmm__points_to_graph_module23();
+	transform_hlds__rbmm__points_to_graph_module24();
+	transform_hlds__rbmm__points_to_graph_module25();
+	transform_hlds__rbmm__points_to_graph_module26();
+	transform_hlds__rbmm__points_to_graph_module27();
+	transform_hlds__rbmm__points_to_graph_module28();
+	transform_hlds__rbmm__points_to_graph_module29();
+	transform_hlds__rbmm__points_to_graph_module30();
+	transform_hlds__rbmm__points_to_graph_module31();
+	transform_hlds__rbmm__points_to_graph_module32();
+	transform_hlds__rbmm__points_to_graph_module33();
+	transform_hlds__rbmm__points_to_graph_module34();
+	transform_hlds__rbmm__points_to_graph_module35();
+	transform_hlds__rbmm__points_to_graph_module36();
+	transform_hlds__rbmm__points_to_graph_module37();
+	transform_hlds__rbmm__points_to_graph_module38();
+	transform_hlds__rbmm__points_to_graph_module39();
+}
+
+static void mercury__transform_hlds__rbmm__points_to_graph_maybe_bunch_1(void)
+{
+	transform_hlds__rbmm__points_to_graph_module40();
+	transform_hlds__rbmm__points_to_graph_module41();
+	transform_hlds__rbmm__points_to_graph_module42();
+	transform_hlds__rbmm__points_to_graph_module43();
+	transform_hlds__rbmm__points_to_graph_module44();
+	transform_hlds__rbmm__points_to_graph_module45();
+	transform_hlds__rbmm__points_to_graph_module46();
+	transform_hlds__rbmm__points_to_graph_module47();
+	transform_hlds__rbmm__points_to_graph_module48();
+	transform_hlds__rbmm__points_to_graph_module49();
+	transform_hlds__rbmm__points_to_graph_module50();
+	transform_hlds__rbmm__points_to_graph_module51();
+	transform_hlds__rbmm__points_to_graph_module52();
+	transform_hlds__rbmm__points_to_graph_module53();
+	transform_hlds__rbmm__points_to_graph_module54();
+	transform_hlds__rbmm__points_to_graph_module55();
+	transform_hlds__rbmm__points_to_graph_module56();
+	transform_hlds__rbmm__points_to_graph_module57();
+	transform_hlds__rbmm__points_to_graph_module58();
+	transform_hlds__rbmm__points_to_graph_module59();
+	transform_hlds__rbmm__points_to_graph_module60();
+	transform_hlds__rbmm__points_to_graph_module61();
+	transform_hlds__rbmm__points_to_graph_module62();
+	transform_hlds__rbmm__points_to_graph_module63();
+	transform_hlds__rbmm__points_to_graph_module64();
+	transform_hlds__rbmm__points_to_graph_module65();
+	transform_hlds__rbmm__points_to_graph_module66();
+	transform_hlds__rbmm__points_to_graph_module67();
+	transform_hlds__rbmm__points_to_graph_module68();
+	transform_hlds__rbmm__points_to_graph_module69();
+	transform_hlds__rbmm__points_to_graph_module70();
+	transform_hlds__rbmm__points_to_graph_module71();
+	transform_hlds__rbmm__points_to_graph_module72();
+	transform_hlds__rbmm__points_to_graph_module73();
+	transform_hlds__rbmm__points_to_graph_module74();
+	transform_hlds__rbmm__points_to_graph_module75();
+	transform_hlds__rbmm__points_to_graph_module76();
+	transform_hlds__rbmm__points_to_graph_module77();
+	transform_hlds__rbmm__points_to_graph_module78();
+	transform_hlds__rbmm__points_to_graph_module79();
+}
+
+static void mercury__transform_hlds__rbmm__points_to_graph_maybe_bunch_2(void)
+{
+	transform_hlds__rbmm__points_to_graph_module80();
+	transform_hlds__rbmm__points_to_graph_module81();
+	transform_hlds__rbmm__points_to_graph_module82();
+	transform_hlds__rbmm__points_to_graph_module83();
+	transform_hlds__rbmm__points_to_graph_module84();
+	transform_hlds__rbmm__points_to_graph_module85();
+}
+
+/* suppress gcc -Wmissing-decls warnings */
+void mercury__transform_hlds__rbmm__points_to_graph__init(void);
+void mercury__transform_hlds__rbmm__points_to_graph__init_type_tables(void);
+void mercury__transform_hlds__rbmm__points_to_graph__init_debugger(void);
+#ifdef MR_DEEP_PROFILING
+void mercury__transform_hlds__rbmm__points_to_graph__write_out_proc_statics(FILE *deep_fp, FILE *procrep_fp);
+#endif
+#ifdef MR_RECORD_TERM_SIZES
+void mercury__transform_hlds__rbmm__points_to_graph__init_complexity_procs(void);
+#endif
+#ifdef MR_THREADSCOPE
+void mercury__transform_hlds__rbmm__points_to_graph__init_threadscope_string_table(void);
+#endif
+
+void mercury__transform_hlds__rbmm__points_to_graph__init(void)
+{
+	static MR_bool done = MR_FALSE;
+	if (done) {
+		return;
+	}
+	done = MR_TRUE;
+	mercury__transform_hlds__rbmm__points_to_graph_maybe_bunch_0();
+	mercury__transform_hlds__rbmm__points_to_graph_maybe_bunch_1();
+	mercury__transform_hlds__rbmm__points_to_graph_maybe_bunch_2();
+	MR_INIT_TYPE_CTOR_INFO(
+		mercury_data_transform_hlds__rbmm__points_to_graph__type_ctor_info_rpt_graph_0,
+		transform_hlds__rbmm__points_to_graph__rpt_graph_0_0);
+	MR_INIT_TYPE_CTOR_INFO(
+		mercury_data_transform_hlds__rbmm__points_to_graph__type_ctor_info_rptg_edge_0,
+		transform_hlds__rbmm__points_to_graph__rptg_edge_0_0);
+	MR_INIT_TYPE_CTOR_INFO(
+		mercury_data_transform_hlds__rbmm__points_to_graph__type_ctor_info_rptg_edge_content_0,
+		transform_hlds__rbmm__points_to_graph__rptg_edge_content_0_0);
+	MR_INIT_TYPE_CTOR_INFO(
+		mercury_data_transform_hlds__rbmm__points_to_graph__type_ctor_info_rptg_edge_info_0,
+		transform_hlds__rbmm__points_to_graph__rptg_edge_info_0_0);
+	MR_INIT_TYPE_CTOR_INFO(
+		mercury_data_transform_hlds__rbmm__points_to_graph__type_ctor_info_rptg_edges_0,
+		transform_hlds__rbmm__points_to_graph__rptg_edges_0_0);
+	MR_INIT_TYPE_CTOR_INFO(
+		mercury_data_transform_hlds__rbmm__points_to_graph__type_ctor_info_rptg_node_0,
+		transform_hlds__rbmm__points_to_graph__rptg_node_0_0);
+	MR_INIT_TYPE_CTOR_INFO(
+		mercury_data_transform_hlds__rbmm__points_to_graph__type_ctor_info_rptg_node_content_0,
+		transform_hlds__rbmm__points_to_graph__rptg_node_content_0_0);
+	MR_INIT_TYPE_CTOR_INFO(
+		mercury_data_transform_hlds__rbmm__points_to_graph__type_ctor_info_rptg_nodes_0,
+		transform_hlds__rbmm__points_to_graph__rptg_nodes_0_0);
+	MR_INIT_TYPE_CTOR_INFO(
+		mercury_data_transform_hlds__rbmm__points_to_graph__type_ctor_info_rptg_outedges_0,
+		transform_hlds__rbmm__points_to_graph__rptg_outedges_0_0);
+	mercury__transform_hlds__rbmm__points_to_graph__init_debugger();
+}
+
+void mercury__transform_hlds__rbmm__points_to_graph__init_type_tables(void)
+{
+	static MR_bool done = MR_FALSE;
+	if (done) {
+		return;
+	}
+	done = MR_TRUE;
+	{
+		MR_register_type_ctor_info(
+		&mercury_data_transform_hlds__rbmm__points_to_graph__type_ctor_info_rpt_graph_0);
+	}
+	{
+		MR_register_type_ctor_info(
+		&mercury_data_transform_hlds__rbmm__points_to_graph__type_ctor_info_rptg_edge_0);
+	}
+	{
+		MR_register_type_ctor_info(
+		&mercury_data_transform_hlds__rbmm__points_to_graph__type_ctor_info_rptg_edge_content_0);
+	}
+	{
+		MR_register_type_ctor_info(
+		&mercury_data_transform_hlds__rbmm__points_to_graph__type_ctor_info_rptg_edge_info_0);
+	}
+	{
+		MR_register_type_ctor_info(
+		&mercury_data_transform_hlds__rbmm__points_to_graph__type_ctor_info_rptg_edges_0);
+	}
+	{
+		MR_register_type_ctor_info(
+		&mercury_data_transform_hlds__rbmm__points_to_graph__type_ctor_info_rptg_node_0);
+	}
+	{
+		MR_register_type_ctor_info(
+		&mercury_data_transform_hlds__rbmm__points_to_graph__type_ctor_info_rptg_node_content_0);
+	}
+	{
+		MR_register_type_ctor_info(
+		&mercury_data_transform_hlds__rbmm__points_to_graph__type_ctor_info_rptg_nodes_0);
+	}
+	{
+		MR_register_type_ctor_info(
+		&mercury_data_transform_hlds__rbmm__points_to_graph__type_ctor_info_rptg_outedges_0);
+	}
+}
+
+
+void mercury__transform_hlds__rbmm__points_to_graph__init_debugger(void)
+{
+	static MR_bool done = MR_FALSE;
+	if (done) {
+		return;
+	}
+	done = MR_TRUE;
+}
+
+#ifdef MR_DEEP_PROFILING
+
+void mercury__transform_hlds__rbmm__points_to_graph__write_out_proc_statics(FILE *deep_fp, FILE *procrep_fp)
+{
+	MR_write_out_module_proc_reps_start(procrep_fp, &mercury_data__module_common_layout__transform_hlds__rbmm__points_to_graph);
+	MR_write_out_module_proc_reps_end(procrep_fp);
+}
+
+#endif
+
+#ifdef MR_RECORD_TERM_SIZES
+
+void mercury__transform_hlds__rbmm__points_to_graph__init_complexity_procs(void)
+{
+}
+
+#endif
+
+#ifdef MR_THREADSCOPE
+
+void mercury__transform_hlds__rbmm__points_to_graph__init_threadscope_string_table(void)
+{
+}
+
+#endif
+
+/* ensure everything is compiled with the same grade */
+static const void *const MR_grade = &MR_GRADE_VAR;

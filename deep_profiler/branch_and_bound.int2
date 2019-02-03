@@ -1,0 +1,6 @@
+:- module branch_and_bound.
+:- interface.
+:- import_module set.
+:- type bnb_profile
+	--->	bnb_profile((branch_and_bound.bnbp_tests_succeeded) :: int, (branch_and_bound.bnbp_tests_failed) :: int, (branch_and_bound.bnbp_new_best_solution) :: int, (branch_and_bound.bnbp_new_equal_solution) :: int, (branch_and_bound.bnbp_not_best_solution) :: int, (branch_and_bound.bnbp_open_branches) :: int, (branch_and_bound.bnbp_closed_branches) :: int, (branch_and_bound.bnbp_time_msecs) :: int).
+:- type bnb_state(T).
