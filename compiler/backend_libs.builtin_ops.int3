@@ -1,0 +1,17 @@
+:- module (backend_libs.builtin_ops).
+:- interface.
+:- import_module hlds.
+:- import_module list.
+:- import_module mdbcomp.
+:- import_module (hlds.hlds_pred).
+:- import_module (mdbcomp.prim_data).
+:- type array_elem_type.
+:- type binary_op.
+:- type scalar_array_elem_type.
+:- type unary_op.
+:- type simple_code(T).
+:- type simple_expr(T).
+:- inst (simple_arg_expr) == bound(float_const(ground) ; int_const(ground) ; leaf(ground)).
+:- inst (simple_assign_expr) == bound(binary(ground, ((backend_libs.builtin_ops).simple_arg_expr), ((backend_libs.builtin_ops).simple_arg_expr)) ; leaf(ground) ; unary(ground, ((backend_libs.builtin_ops).simple_arg_expr))).
+:- inst (simple_code) == bound(assign(ground, ((backend_libs.builtin_ops).simple_assign_expr)) ; noop(ground) ; ref_assign(ground, ground) ; test(((backend_libs.builtin_ops).simple_test_expr))).
+:- inst (simple_test_expr) == bound(binary(ground, ((backend_libs.builtin_ops).simple_arg_expr), ((backend_libs.builtin_ops).simple_arg_expr)) ; unary(ground, ((backend_libs.builtin_ops).simple_arg_expr))).

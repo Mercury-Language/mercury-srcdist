@@ -1,0 +1,13 @@
+module(1, "svmap.m",
+	svmap,
+	{},
+	{builtin, assoc_list, list, map, term, private_builtin},
+	{builtin, assoc_list, list, map, term, private_builtin},
+	{},
+	{},
+	{},
+	{},
+	{},
+	no_foreign_export,
+	no_main
+).

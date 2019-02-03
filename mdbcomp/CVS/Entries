@@ -1,0 +1,19 @@
+/.cvsignore/1.6/Fri Jul 30 13:30:25 2010//Tversion-11_07-branch
+/.mgnuc_copts/1.1/Fri May 20 06:15:14 2005//Tversion-11_07-branch
+/.mgnuc_opts/1.1/Mon Sep 19 08:07:02 2005//Tversion-11_07-branch
+/.nocopyright/1.4/Mon Sep 19 08:07:02 2005//Tversion-11_07-branch
+/MDBCOMP_FLAGS.in/1.6/Mon May 17 01:09:21 2010//Tversion-11_07-branch
+/Mercury.options/1.2/Fri Dec  1 15:04:38 2006//Tversion-11_07-branch
+/Mmakefile/1.19/Tue Oct 26 04:59:10 2010//Tversion-11_07-branch
+/RESERVED_MACRO_NAMES/1.1.8.1/Wed Sep 14 15:17:45 2011//Tversion-11_07-branch
+/feedback.automatic_parallelism.m/1.17/Tue May  3 04:35:01 2011//Tversion-11_07-branch
+/feedback.m/1.25/Tue May  3 04:35:01 2011//Tversion-11_07-branch
+/mdbcomp.goal_path.m/1.6/Tue May  3 04:35:01 2011//Tversion-11_07-branch
+/mdbcomp.m/1.9/Thu Jan 13 00:36:56 2011//Tversion-11_07-branch
+/mer_mdbcomp.m/1.1/Fri Jan 28 07:11:52 2005//Tversion-11_07-branch
+/prim_data.m/1.37/Tue Apr 27 03:39:28 2010//Tversion-11_07-branch
+/program_representation.m/1.62/Tue May 31 03:14:21 2011//Tversion-11_07-branch
+/rtti_access.m/1.20/Fri May 20 04:16:53 2011//Tversion-11_07-branch
+/slice_and_dice.m/1.19/Tue May  3 04:35:01 2011//Tversion-11_07-branch
+/trace_counts.m/1.30/Wed Jun 15 01:05:33 2011//Tversion-11_07-branch
+D

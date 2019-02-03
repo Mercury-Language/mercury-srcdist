@@ -1,0 +1,16 @@
+:- module (ll_backend.frameopt).
+:- interface.
+:- import_module bool.
+:- import_module counter.
+:- import_module list.
+:- import_module set.
+:- import_module (ll_backend.llds).
+:- import_module (mdbcomp.prim_data).
+:- pred frameopt_keep_nondet_frame(mdbcomp.prim_data.proc_label, set.set(ll_backend.llds.label), counter.counter, counter.counter, list.list(ll_backend.llds.instruction), list.list(ll_backend.llds.instruction), bool.bool).
+:- mode frameopt_keep_nondet_frame((builtin.in), (builtin.in), (builtin.in), (builtin.out), (builtin.in), (builtin.out), (builtin.out)) is det.
+:- pred frameopt_main_det_stack(mdbcomp.prim_data.proc_label, counter.counter, counter.counter, list.list(ll_backend.llds.instruction), list.list(ll_backend.llds.instruction), bool.bool, bool.bool).
+:- mode frameopt_main_det_stack((builtin.in), (builtin.in), (builtin.out), (builtin.in), (builtin.out), (builtin.in), (builtin.out)) is det.
+:- pred frameopt_main_nondet_stack(mdbcomp.prim_data.proc_label, counter.counter, counter.counter, list.list(ll_backend.llds.instruction), list.list(ll_backend.llds.instruction), bool.bool, bool.bool).
+:- mode frameopt_main_nondet_stack((builtin.in), (builtin.in), (builtin.out), (builtin.in), (builtin.out), (builtin.in), (builtin.out)) is det.
+:- implementation.
+:- typeclass block_entry_exit(En, Ex) <= ((En -> Ex), (Ex -> En)).
