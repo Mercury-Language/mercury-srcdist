@@ -1,0 +1,125 @@
+:- module stream.
+:- use_module bool, builtin, char, list, private_builtin.
+stream.input_stream_fold(Stream_7, Pred_8, T0_9, Res_10, STATE_VARIABLE_S_0_16, STATE_VARIABLE_S_17) :-
+    stream.get(Stream_7, Result_12, STATE_VARIABLE_S_0_16, STATE_VARIABLE_S_18_18),
+    ( % disjunction
+      Result_12 = stream.ok(Unit_13) : stream.result(Unit_2, Error_4),
+      call(Pred_8, Unit_13, T0_9, T1_14),
+      stream.input_stream_fold(Stream_7, Pred_8, T1_14, Res_10, STATE_VARIABLE_S_18_18, STATE_VARIABLE_S_17)
+    ;
+      Result_12 = stream.eof : stream.result(Unit_2, Error_4),
+      Res_10 = stream.ok(T0_9) : stream.maybe_partial_res(T_3, Error_4),
+      STATE_VARIABLE_S_17 = STATE_VARIABLE_S_18_18
+    ;
+      Result_12 = stream.error(Error_15) : stream.result(Unit_2, Error_4),
+      Res_10 = stream.error(T0_9, Error_15) : stream.maybe_partial_res(T_3, Error_4),
+      STATE_VARIABLE_S_17 = STATE_VARIABLE_S_18_18
+    ).
+stream.input_stream_fold_state(Stream_6, Pred_7, Res_8, STATE_VARIABLE_S_0_13, STATE_VARIABLE_S_14) :-
+    stream.get(Stream_6, Result0_10, STATE_VARIABLE_S_0_13, STATE_VARIABLE_S_15_15),
+    ( % disjunction
+      Result0_10 = stream.ok(Result_11) : stream.result(Unit_2, Error_4),
+      call(Pred_7, Result_11, STATE_VARIABLE_S_15_15, STATE_VARIABLE_S_16_16),
+      stream.input_stream_fold_state(Stream_6, Pred_7, Res_8, STATE_VARIABLE_S_16_16, STATE_VARIABLE_S_14)
+    ;
+      Result0_10 = stream.eof : stream.result(Unit_2, Error_4),
+      Res_8 = stream.ok : stream.res(Error_4),
+      STATE_VARIABLE_S_14 = STATE_VARIABLE_S_15_15
+    ;
+      Result0_10 = stream.error(Error_12) : stream.result(Unit_2, Error_4),
+      Res_8 = stream.error(Error_12) : stream.res(Error_4),
+      STATE_VARIABLE_S_14 = STATE_VARIABLE_S_15_15
+    ).
+stream.input_stream_fold2_state(Stream_7, Pred_8, T0_9, Res_10, STATE_VARIABLE_S_0_16, STATE_VARIABLE_S_17) :-
+    stream.get(Stream_7, Result0_12, STATE_VARIABLE_S_0_16, STATE_VARIABLE_S_18_18),
+    ( % disjunction
+      Result0_12 = stream.ok(Result_13) : stream.result(Unit_2, Error_5),
+      call(Pred_8, Result_13, T0_9, T1_14, STATE_VARIABLE_S_18_18, STATE_VARIABLE_S_19_19),
+      stream.input_stream_fold2_state(Stream_7, Pred_8, T1_14, Res_10, STATE_VARIABLE_S_19_19, STATE_VARIABLE_S_17)
+    ;
+      Result0_12 = stream.eof : stream.result(Unit_2, Error_5),
+      Res_10 = stream.ok(T0_9) : stream.maybe_partial_res(T_3, Error_5),
+      STATE_VARIABLE_S_17 = STATE_VARIABLE_S_18_18
+    ;
+      Result0_12 = stream.error(Error_15) : stream.result(Unit_2, Error_5),
+      Res_10 = stream.error(T0_9, Error_15) : stream.maybe_partial_res(T_3, Error_5),
+      STATE_VARIABLE_S_17 = STATE_VARIABLE_S_18_18
+    ).
+stream.input_stream_fold2_state_maybe_stop(Stream_7, Pred_8, T0_9, Res_10, STATE_VARIABLE_S_0_17, STATE_VARIABLE_S_18) :-
+    stream.get(Stream_7, Result0_12, STATE_VARIABLE_S_0_17, STATE_VARIABLE_S_19_19),
+    ( % disjunction
+      Result0_12 = stream.ok(Result_13) : stream.result(Unit_2, Error_5),
+      call(Pred_8, Result_13, Continue_14, T0_9, T1_15, STATE_VARIABLE_S_19_19, STATE_VARIABLE_S_20_20),
+      ( % disjunction
+        Continue_14 = bool.no : bool.bool,
+        Res_10 = stream.ok(T1_15) : stream.maybe_partial_res(T_3, Error_5),
+        STATE_VARIABLE_S_18 = STATE_VARIABLE_S_20_20
+      ;
+        Continue_14 = bool.yes : bool.bool,
+        stream.input_stream_fold2_state_maybe_stop(Stream_7, Pred_8, T1_15, Res_10, STATE_VARIABLE_S_20_20, STATE_VARIABLE_S_18)
+      )
+    ;
+      Result0_12 = stream.eof : stream.result(Unit_2, Error_5),
+      Res_10 = stream.ok(T0_9) : stream.maybe_partial_res(T_3, Error_5),
+      STATE_VARIABLE_S_18 = STATE_VARIABLE_S_19_19
+    ;
+      Result0_12 = stream.error(Error_16) : stream.result(Unit_2, Error_5),
+      Res_10 = stream.error(T0_9, Error_16) : stream.maybe_partial_res(T_3, Error_5),
+      STATE_VARIABLE_S_18 = STATE_VARIABLE_S_19_19
+    ).
+stream.put_list(_Stream_7, _Pred_8, _Sep_9, list.[], STATE_VARIABLE_State_0_11, STATE_VARIABLE_State_12) :-
+    STATE_VARIABLE_State_12 = STATE_VARIABLE_State_0_11.
+stream.put_list(Stream_13, Pred_14, Sep_15, list.[X_16 | Xs_17], STATE_VARIABLE_State_0_21, STATE_VARIABLE_State_22) :-
+    call(Pred_14, Stream_13, X_16, STATE_VARIABLE_State_0_21, STATE_VARIABLE_State_23_23),
+    ( % disjunction
+      Xs_17 = list.[] : list.list(T_2),
+      STATE_VARIABLE_State_22 = STATE_VARIABLE_State_23_23
+    ;
+      Xs_17 = list.[V_19 | V_20] : list.list(T_2),
+      call(Sep_15, Stream_13, STATE_VARIABLE_State_23_23, STATE_VARIABLE_State_24_24),
+      stream.put_list(Stream_13, Pred_14, Sep_15, Xs_17, STATE_VARIABLE_State_24_24, STATE_VARIABLE_State_22)
+    ).
+:- pragma exceptions(function, (stream.error_message), 2, 0, may_throw(user_exception)).
+:- pragma exceptions(predicate, (stream.name), 4, 0, may_throw(user_exception)).
+:- pragma exceptions(predicate, (stream.get), 4, 0, may_throw(user_exception)).
+:- pragma exceptions(predicate, (stream.bulk_get), 9, 0, may_throw(user_exception)).
+:- pragma exceptions(predicate, (stream.flush), 3, 0, may_throw(user_exception)).
+:- pragma exceptions(predicate, (stream.put), 4, 0, may_throw(user_exception)).
+:- pragma exceptions(predicate, (stream.unget), 4, 0, may_throw(user_exception)).
+:- pragma exceptions(predicate, (stream.seek), 5, 0, may_throw(user_exception)).
+:- pragma exceptions(predicate, (stream.get_line), 4, 0, may_throw(user_exception)).
+:- pragma exceptions(predicate, (stream.set_line), 4, 0, may_throw(user_exception)).
+:- pragma exceptions(predicate, (stream.input_stream_fold), 6, 0, may_throw(user_exception)).
+:- pragma exceptions(predicate, (stream.input_stream_fold), 6, 1, may_throw(user_exception)).
+:- pragma exceptions(predicate, (stream.input_stream_fold_state), 5, 0, may_throw(user_exception)).
+:- pragma exceptions(predicate, (stream.input_stream_fold_state), 5, 1, may_throw(user_exception)).
+:- pragma exceptions(predicate, (stream.input_stream_fold2_state), 6, 0, may_throw(user_exception)).
+:- pragma exceptions(predicate, (stream.input_stream_fold2_state), 6, 1, may_throw(user_exception)).
+:- pragma exceptions(predicate, (stream.input_stream_fold2_state_maybe_stop), 6, 0, may_throw(user_exception)).
+:- pragma exceptions(predicate, (stream.input_stream_fold2_state_maybe_stop), 6, 1, may_throw(user_exception)).
+:- pragma exceptions(predicate, (stream.ignore_whitespace), 4, 0, may_throw(user_exception)).
+:- pragma exceptions(predicate, (stream.put_list), 6, 0, may_throw(user_exception)).
+:- pragma exceptions(predicate, (stream.put_list), 6, 1, may_throw(user_exception)).
+:- pragma exceptions(predicate, (stream.put_list), 6, 2, may_throw(user_exception)).
+:- pragma termination_info(stream.error_message((builtin.in)) = (builtin.out), infinite, can_loop).
+:- pragma termination_info(stream.name((builtin.in), (builtin.out), (builtin.di), (builtin.uo)), infinite, can_loop).
+:- pragma termination_info(stream.get((builtin.in), (builtin.out), (builtin.di), (builtin.uo)), infinite, can_loop).
+:- pragma termination_info(stream.bulk_get((builtin.in), (builtin.in), (builtin.in), (stream.bulk_get_di), (stream.bulk_get_uo), (builtin.out), (builtin.out), (builtin.di), (builtin.uo)), infinite, can_loop).
+:- pragma termination_info(stream.flush((builtin.in), (builtin.di), (builtin.uo)), infinite, can_loop).
+:- pragma termination_info(stream.put((builtin.in), (builtin.in), (builtin.di), (builtin.uo)), infinite, can_loop).
+:- pragma termination_info(stream.unget((builtin.in), (builtin.in), (builtin.di), (builtin.uo)), infinite, can_loop).
+:- pragma termination_info(stream.seek((builtin.in), (builtin.in), (builtin.in), (builtin.di), (builtin.uo)), infinite, can_loop).
+:- pragma termination_info(stream.get_line((builtin.in), (builtin.out), (builtin.di), (builtin.uo)), infinite, can_loop).
+:- pragma termination_info(stream.set_line((builtin.in), (builtin.in), (builtin.di), (builtin.uo)), infinite, can_loop).
+:- pragma termination_info(stream.input_stream_fold((builtin.in), builtin.in((pred((builtin.in), (builtin.in), (builtin.out)) is det)), (builtin.in), (builtin.out), (builtin.di), (builtin.uo)), infinite, can_loop).
+:- pragma termination_info(stream.input_stream_fold((builtin.in), builtin.in((pred((builtin.in), (builtin.in), (builtin.out)) is cc_multi)), (builtin.in), (builtin.out), (builtin.di), (builtin.uo)), infinite, can_loop).
+:- pragma termination_info(stream.input_stream_fold_state((builtin.in), builtin.in((pred((builtin.in), (builtin.di), (builtin.uo)) is det)), (builtin.out), (builtin.di), (builtin.uo)), infinite, can_loop).
+:- pragma termination_info(stream.input_stream_fold_state((builtin.in), builtin.in((pred((builtin.in), (builtin.di), (builtin.uo)) is cc_multi)), (builtin.out), (builtin.di), (builtin.uo)), infinite, can_loop).
+:- pragma termination_info(stream.input_stream_fold2_state((builtin.in), builtin.in((pred((builtin.in), (builtin.in), (builtin.out), (builtin.di), (builtin.uo)) is det)), (builtin.in), (builtin.out), (builtin.di), (builtin.uo)), infinite, can_loop).
+:- pragma termination_info(stream.input_stream_fold2_state((builtin.in), builtin.in((pred((builtin.in), (builtin.in), (builtin.out), (builtin.di), (builtin.uo)) is cc_multi)), (builtin.in), (builtin.out), (builtin.di), (builtin.uo)), infinite, can_loop).
+:- pragma termination_info(stream.input_stream_fold2_state_maybe_stop((builtin.in), builtin.in((pred((builtin.in), (builtin.out), (builtin.in), (builtin.out), (builtin.di), (builtin.uo)) is det)), (builtin.in), (builtin.out), (builtin.di), (builtin.uo)), infinite, can_loop).
+:- pragma termination_info(stream.input_stream_fold2_state_maybe_stop((builtin.in), builtin.in((pred((builtin.in), (builtin.out), (builtin.in), (builtin.out), (builtin.di), (builtin.uo)) is cc_multi)), (builtin.in), (builtin.out), (builtin.di), (builtin.uo)), infinite, can_loop).
+:- pragma termination_info(stream.ignore_whitespace((builtin.in), (builtin.out), (builtin.di), (builtin.uo)), infinite, can_loop).
+:- pragma termination_info(stream.put_list((builtin.in), (pred((builtin.in), (builtin.in), (builtin.di), (builtin.uo)) is det), (pred((builtin.in), (builtin.di), (builtin.uo)) is det), (builtin.in), (builtin.di), (builtin.uo)), infinite, can_loop).
+:- pragma termination_info(stream.put_list((builtin.in), (pred((builtin.in), (builtin.in), (builtin.di), (builtin.uo)) is cc_multi), (pred((builtin.in), (builtin.di), (builtin.uo)) is cc_multi), (builtin.in), (builtin.di), (builtin.uo)), infinite, can_loop).
+:- pragma termination_info(stream.put_list((builtin.in), (pred((builtin.in), (builtin.in), (builtin.di), (builtin.uo)) is cc_multi), (pred((builtin.in), (builtin.di), (builtin.uo)) is det), (builtin.in), (builtin.di), (builtin.uo)), infinite, can_loop).

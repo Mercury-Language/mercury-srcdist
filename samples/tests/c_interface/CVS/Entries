@@ -1,0 +1,11 @@
+/Mmake.thisdir/1.1/Mon Feb 14 05:28:04 2000//Tversion-11_07-branch
+/Mmakefile/1.1/Mon Feb 14 05:28:04 2000//Tversion-11_07-branch
+/runtests/1.2/Fri Feb  9 06:46:04 2001//Tversion-11_07-branch
+/short_example.exp/1.1/Mon Feb 14 05:28:05 2000//Tversion-11_07-branch
+D/c_calls_mercury////
+D/cplusplus_calls_mercury////
+D/mercury_calls_c////
+D/mercury_calls_cplusplus////
+D/mercury_calls_fortran////
+D/simpler_c_calls_mercury////
+D/simpler_cplusplus_calls_mercury////

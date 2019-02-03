@@ -1,0 +1,9 @@
+:- module svstack.
+:- pragma termination_info(svstack.push((builtin.in), (builtin.in), (builtin.out)), finite(2, [no, yes, yes, no]), cannot_loop).
+:- pragma termination_info(svstack.push_list((builtin.in), (builtin.in), (builtin.out)), finite(0, [no, yes, yes, no]), can_loop).
+:- pragma termination_info(svstack.pop((builtin.out), (builtin.in), (builtin.out)), finite(-2, [no, no, yes, no]), cannot_loop).
+:- pragma termination_info(svstack.det_pop((builtin.out), (builtin.in), (builtin.out)), finite(-2, [no, no, yes, no]), cannot_loop).
+:- pragma exceptions(predicate, (svstack.push), 3, 0, will_not_throw).
+:- pragma exceptions(predicate, (svstack.push_list), 3, 0, will_not_throw).
+:- pragma exceptions(predicate, (svstack.pop), 3, 0, will_not_throw).
+:- pragma exceptions(predicate, (svstack.det_pop), 3, 0, may_throw(user_exception)).

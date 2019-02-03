@@ -1,0 +1,7 @@
+:- module stm_builtin.
+:- interface.
+:- type rollback_exception.
+:- type stm.
+:- type stm_dummy_output.
+:- type stm_validation_result.
+:- type stm_var(T).

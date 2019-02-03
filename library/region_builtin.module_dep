@@ -1,0 +1,13 @@
+module(1, "region_builtin.m",
+	region_builtin,
+	{},
+	{builtin, io, private_builtin},
+	{builtin, io, private_builtin},
+	{},
+	{},
+	{},
+	{"C"},
+	{"C" - region_builtin, "C#" - region_builtin, "Java" - region_builtin, "Erlang" - region_builtin, "C" - region_builtin},
+	no_foreign_export,
+	no_main
+).

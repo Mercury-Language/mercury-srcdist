@@ -1,0 +1,106 @@
+#-----------------------------------------------------------------------------#
+# Copyright (C) 1995-2002, 2005, 2006-2007, 2010-2011 The University of Melbourne.
+# This file may only be copied under the terms of the GNU General
+# Public License - see the file COPYING in the Mercury distribution.
+#-----------------------------------------------------------------------------#
+
+# Mmake - Mmake file for the Mercury utilities directory
+
+MAIN_TARGET=all
+
+#-----------------------------------------------------------------------------#
+
+MERCURY_DIR=..
+include $(MERCURY_DIR)/Mmake.common
+
+#-----------------------------------------------------------------------------#
+
+# We need -I$(RUNTIME_DIR) for "mercury_std.h", etc.
+# The -O0 is to get around a stupid compiler bug in gcc 2.7.2.3.
+# Visual C does not have a -O0 option (it uses -Od instead).
+ifeq ($(USING_MICROSOFT_CL_COMPILER),yes)
+    CFLAGS = -I$(RUNTIME_DIR)
+else
+    CFLAGS = -I$(RUNTIME_DIR) -O0
+endif
+
+PROGS=mkinit mkinit_erl mdemangle mfiltercc info_to_mdb
+PROGFILENAMES=$(PROGS:%=%$(EXT_FOR_EXE))
+SRC=$(PROGS:%=%.c)
+
+
+# Only if getopt.h doesn't exist do we link in a version of getopt.
+ifeq ("$(GETOPT_H_AVAILABLE)","no")
+	GETOPT_SRC=$(RUNTIME_DIR)/GETOPT/getopt.c $(RUNTIME_DIR)/GETOPT/getopt1.c
+else
+	GETOPT_SRC=
+endif
+
+# mkinit.c needs `struct stat'
+MGNUCFLAGS-mkinit = --no-ansi
+MGNUCFLAGS-mkinit_erl = --no-ansi
+
+# For the C distribution mfiltercc may not be available until after we build
+# it here.
+MGNUCFLAGS-mfiltercc = --no-filter-cc
+
+#-----------------------------------------------------------------------------#
+
+all:	$(PROGS) $(TAGS_FILE_EXISTS)
+
+ifeq ($(USING_MICROSOFT_CL_COMPILER),yes)
+.c:
+	$(MGNUC) --no-mercury-stdlib-dir \
+		$(GRADEFLAGS) $(ALL_MGNUCFLAGS) -Fe$@ $< $(GETOPT_SRC)
+
+mkinit: mkinit.c mkinit_common.c mkinit_common.h
+	$(MGNUC) --no-mercury-stdlib-dir \
+		$(GRADEFLAGS) $(ALL_MGNUCFLAGS) -Fe$@ \
+			mkinit.c mkinit_common.c $(GETOPT_SRC)
+
+mkinit_erl: mkinit_erl.c mkinit_common.c mkinit_common.h
+	$(MGNUC) --no-mercury-stdlib-dir \
+		$(GRADEFLAGS) $(ALL_MGNUCFLAGS) -Fe$@ \
+			mkinit_erl.c mkinit_common.c $(GETOPT_SRC)
+else
+.c:
+	$(MGNUC) --no-mercury-stdlib-dir \
+		$(GRADEFLAGS) $(ALL_MGNUCFLAGS) -o $@ $< $(GETOPT_SRC)
+
+mkinit: mkinit.c mkinit_common.c mkinit_common.h
+	$(MGNUC) --no-mercury-stdlib-dir \
+		$(GRADEFLAGS) $(ALL_MGNUCFLAGS) -o $@ \
+			mkinit.c mkinit_common.c $(GETOPT_SRC)
+
+mkinit_erl: mkinit_erl.c mkinit_common.c mkinit_common.h
+	$(MGNUC) --no-mercury-stdlib-dir \
+		$(GRADEFLAGS) $(ALL_MGNUCFLAGS) -o $@ \
+			mkinit_erl.c mkinit_common.c $(GETOPT_SRC)
+
+endif
+
+tags:
+	ctags $(SRC)
+
+.PHONY: tags_file_exists
+tags_file_exists:
+	@if test ! -f tags; then echo making tags; \
+	ctags $(SRC) ; fi
+
+#-----------------------------------------------------------------------------#
+
+.PHONY: install
+install: $(PROGS)
+	[ -d $(INSTALL_BINDIR) ] || mkdir -p $(INSTALL_BINDIR)
+	cp `vpath_find $(PROGFILENAMES)` $(INSTALL_BINDIR)
+
+.PHONY: uninstall
+uninstall:
+	-cd $(INSTALL_BINDIR) && rm $(PROGS)
+
+#-----------------------------------------------------------------------------#
+
+realclean_local:
+	-rm -f $(PROGFILENAMES)
+
+#-----------------------------------------------------------------------------#

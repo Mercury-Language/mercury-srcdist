@@ -1,0 +1,6 @@
+:- module make.
+:- interface.
+:- include_module (make.options_file).
+:- include_module (make.util).
+:- type make_info.
+:- type rebuild_module_deps.

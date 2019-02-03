@@ -1,0 +1,49 @@
+:- module (parse_tree.builtin_lib_types).
+:- interface.
+:- import_module (parse_tree.prog_data).
+:- func c_pointer_type = parse_tree.prog_data.mer_type.
+:- func char_type = parse_tree.prog_data.mer_type.
+:- func char_type_ctor = parse_tree.prog_data.type_ctor.
+:- func comparison_result_type = parse_tree.prog_data.mer_type.
+:- func exception_exception_functor = parse_tree.prog_data.cons_id.
+:- func exception_failed_functor = parse_tree.prog_data.cons_id.
+:- func exception_result_type(parse_tree.prog_data.mer_type) = parse_tree.prog_data.mer_type.
+:- func exception_result_type_ctor = parse_tree.prog_data.type_ctor.
+:- func exception_succeeded_functor = parse_tree.prog_data.cons_id.
+:- func float_type = parse_tree.prog_data.mer_type.
+:- func float_type_ctor = parse_tree.prog_data.type_ctor.
+:- func future_type(parse_tree.prog_data.mer_type) = parse_tree.prog_data.mer_type.
+:- func heap_pointer_type = parse_tree.prog_data.mer_type.
+:- func int_type = parse_tree.prog_data.mer_type.
+:- func int_type_ctor = parse_tree.prog_data.type_ctor.
+:- func io_io_type = parse_tree.prog_data.mer_type.
+:- func io_state_type = parse_tree.prog_data.mer_type.
+:- pred is_region_var(parse_tree.prog_data.vartypes, parse_tree.prog_data.prog_var).
+:- mode is_region_var((builtin.in), (builtin.in)) is semidet.
+:- func list_type_ctor = parse_tree.prog_data.type_ctor.
+:- func poly_type_type_ctor = parse_tree.prog_data.type_ctor.
+:- func pseudo_type_desc_type = parse_tree.prog_data.mer_type.
+:- func region_type = parse_tree.prog_data.mer_type.
+:- func sample_type_info_type = parse_tree.prog_data.mer_type.
+:- func sample_typeclass_info_type = parse_tree.prog_data.mer_type.
+:- func stm_atomic_type = parse_tree.prog_data.mer_type.
+:- func stm_dummy_output_functor = parse_tree.prog_data.cons_id.
+:- func stm_dummy_output_type = parse_tree.prog_data.mer_type.
+:- func stm_dummy_output_type_ctor = parse_tree.prog_data.type_ctor.
+:- func stm_rollback_exception_functor = parse_tree.prog_data.cons_id.
+:- func stm_rollback_exception_type = parse_tree.prog_data.mer_type.
+:- func stm_rollback_exception_type_ctor = parse_tree.prog_data.type_ctor.
+:- func stm_rollback_retry_functor = parse_tree.prog_data.cons_id.
+:- func stm_state_type = parse_tree.prog_data.mer_type.
+:- func stm_valid_result_type = parse_tree.prog_data.mer_type.
+:- func stm_valid_result_type_ctor = parse_tree.prog_data.type_ctor.
+:- func stm_validres_invalid_functor = parse_tree.prog_data.cons_id.
+:- func stm_validres_valid_functor = parse_tree.prog_data.cons_id.
+:- func string_type = parse_tree.prog_data.mer_type.
+:- func string_type_ctor = parse_tree.prog_data.type_ctor.
+:- func type_ctor_desc_type = parse_tree.prog_data.mer_type.
+:- func type_ctor_info_type = parse_tree.prog_data.mer_type.
+:- func type_desc_type = parse_tree.prog_data.mer_type.
+:- func type_info_type = parse_tree.prog_data.mer_type.
+:- func univ_type = parse_tree.prog_data.mer_type.
+:- func void_type = parse_tree.prog_data.mer_type.

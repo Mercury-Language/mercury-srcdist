@@ -1,0 +1,29 @@
+:- module svmap.
+:- pragma termination_info(svmap.insert((builtin.in), (builtin.in), (builtin.in), (builtin.out)), infinite, cannot_loop).
+:- pragma termination_info(svmap.det_insert((builtin.in), (builtin.in), (builtin.in), (builtin.out)), infinite, can_loop).
+:- pragma termination_info(svmap.det_insert_from_corresponding_lists((builtin.in), (builtin.in), (builtin.in), (builtin.out)), infinite, can_loop).
+:- pragma termination_info(svmap.det_insert_from_assoc_list((builtin.in), (builtin.in), (builtin.out)), infinite, can_loop).
+:- pragma termination_info(svmap.set_from_corresponding_lists((builtin.in), (builtin.in), (builtin.in), (builtin.out)), infinite, can_loop).
+:- pragma termination_info(svmap.set_from_assoc_list((builtin.in), (builtin.in), (builtin.out)), infinite, can_loop).
+:- pragma termination_info(svmap.update((builtin.in), (builtin.in), (builtin.in), (builtin.out)), finite(0, [no, no, no, yes, yes, no]), cannot_loop).
+:- pragma termination_info(svmap.det_update((builtin.in), (builtin.in), (builtin.in), (builtin.out)), finite(0, [no, no, no, yes, yes, no]), can_loop).
+:- pragma termination_info(svmap.set((builtin.in), (builtin.in), (builtin.in), (builtin.out)), infinite, cannot_loop).
+:- pragma termination_info(svmap.delete((builtin.in), (builtin.in), (builtin.out)), infinite, cannot_loop).
+:- pragma termination_info(svmap.delete_list((builtin.in), (builtin.in), (builtin.out)), infinite, can_loop).
+:- pragma termination_info(svmap.remove((builtin.in), (builtin.out), (builtin.in), (builtin.out)), infinite, cannot_loop).
+:- pragma termination_info(svmap.det_remove((builtin.in), (builtin.out), (builtin.in), (builtin.out)), infinite, can_loop).
+:- pragma termination_info(svmap.remove_smallest((builtin.out), (builtin.out), (builtin.in), (builtin.out)), infinite, cannot_loop).
+:- pragma exceptions(predicate, (svmap.insert), 4, 0, may_throw(type_exception)).
+:- pragma exceptions(predicate, (svmap.det_insert), 4, 0, may_throw(user_exception)).
+:- pragma exceptions(predicate, (svmap.det_insert_from_corresponding_lists), 4, 0, may_throw(user_exception)).
+:- pragma exceptions(predicate, (svmap.det_insert_from_assoc_list), 3, 0, may_throw(user_exception)).
+:- pragma exceptions(predicate, (svmap.set_from_corresponding_lists), 4, 0, may_throw(user_exception)).
+:- pragma exceptions(predicate, (svmap.set_from_assoc_list), 3, 0, may_throw(type_exception)).
+:- pragma exceptions(predicate, (svmap.update), 4, 0, may_throw(type_exception)).
+:- pragma exceptions(predicate, (svmap.det_update), 4, 0, may_throw(user_exception)).
+:- pragma exceptions(predicate, (svmap.set), 4, 0, may_throw(type_exception)).
+:- pragma exceptions(predicate, (svmap.delete), 3, 0, may_throw(user_exception)).
+:- pragma exceptions(predicate, (svmap.delete_list), 3, 0, may_throw(user_exception)).
+:- pragma exceptions(predicate, (svmap.remove), 4, 0, may_throw(user_exception)).
+:- pragma exceptions(predicate, (svmap.det_remove), 4, 0, may_throw(user_exception)).
+:- pragma exceptions(predicate, (svmap.remove_smallest), 4, 0, may_throw(user_exception)).

@@ -1,0 +1,11 @@
+:- module (ml_backend.ml_global_data).
+:- interface.
+:- type ml_alloc_site_data.
+:- type ml_global_data.
+:- type ml_rtti_rval_type_map.
+:- type ml_rval_and_type.
+:- type ml_scalar_cell_group.
+:- type ml_scalar_cell_map.
+:- type ml_vector_cell_group.
+:- type ml_vector_cell_map.
+:- type use_common_cells.
