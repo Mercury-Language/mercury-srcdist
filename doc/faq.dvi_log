@@ -1,0 +1,24 @@
+/usr/bin/texi2dvi: Running etex --file-line-error './faq.texi_pp' ...
+This is pdfTeXk, Version 3.141592-1.40.3 (Web2C 7.5.6)
+ file:line:error style messages enabled.
+ %&-line parsing enabled.
+entering extended mode
+(./faq.texi_pp (./texinfo.tex Loading texinfo [version 2008-04-18.10]: pdf,
+fonts, page headings, tables, conditionals, indexing, sectioning, toc,
+environments, defuns, macros, cross references, insertions, localization,
+formatting, and turning on texinfo input format.) [1] [2] [-1] Chapter 1
+Chapter 2 [1] [2] Chapter 3 Chapter 4 [3] )
+Output written on faq.dvi (6 pages, 9992 bytes).
+Transcript written on faq.log.
+/usr/bin/texi2dvi: Running etex --file-line-error './faq.texi_pp' ...
+This is pdfTeXk, Version 3.141592-1.40.3 (Web2C 7.5.6)
+ file:line:error style messages enabled.
+ %&-line parsing enabled.
+entering extended mode
+(./faq.texi_pp (./texinfo.tex Loading texinfo [version 2008-04-18.10]: pdf,
+fonts, page headings, tables, conditionals, indexing, sectioning, toc,
+environments, defuns, macros, cross references, insertions, localization,
+formatting, and turning on texinfo input format.) (./faq.aux) [1] [2]
+(./faq.toc) [-1] Chapter 1 Chapter 2 [1] [2] Chapter 3 Chapter 4 [3] )
+Output written on faq.dvi (6 pages, 11320 bytes).
+Transcript written on faq.log.

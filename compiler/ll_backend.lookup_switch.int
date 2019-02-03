@@ -1,0 +1,31 @@
+:- module (ll_backend.lookup_switch).
+:- interface.
+:- import_module list.
+:- import_module map.
+:- import_module set.
+:- import_module (backend_libs.switch_util).
+:- import_module (hlds.hlds_data).
+:- import_module (hlds.hlds_goal).
+:- import_module (hlds.hlds_llds).
+:- import_module (ll_backend.code_info).
+:- import_module (ll_backend.llds).
+:- import_module (parse_tree.prog_data).
+:- type case_kind
+	--->	kind_zero_solns 
+	;	kind_one_soln 
+	;	kind_several_solns .
+:- type lookup_switch_info(Key)
+	--->	lookup_switch_info(((ll_backend.lookup_switch).lsi_cases) :: backend_libs.switch_util.case_consts(Key, ll_backend.llds.rval), ((ll_backend.lookup_switch).lsi_variables) :: list.list(parse_tree.prog_data.prog_var), ((ll_backend.lookup_switch).lsi_field_types) :: list.list(ll_backend.llds.llds_type), ((ll_backend.lookup_switch).lsi_liveness) :: set.set(parse_tree.prog_data.prog_var)).
+:- type record_switch_lookup(Key) == pred(backend_libs.switch_util.soln_consts(ll_backend.llds.rval), hlds.hlds_data.tagged_cons_id, map.map(Key, backend_libs.switch_util.soln_consts(ll_backend.llds.rval)), map.map(Key, backend_libs.switch_util.soln_consts(ll_backend.llds.rval))).
+:- inst (record_switch_lookup) == (pred((builtin.in), (builtin.in), (builtin.in), (builtin.out)) is det).
+:- func default_value_for_type(ll_backend.llds.llds_type) = ll_backend.llds.rval.
+:- pred generate_code_for_all_kinds(list.list(ll_backend.lookup_switch.case_kind), int, list.list(parse_tree.prog_data.prog_var), set.set(parse_tree.prog_data.prog_var), ll_backend.llds.label, hlds.hlds_llds.abs_store_map, set.set(parse_tree.prog_data.prog_var), ll_backend.llds.add_trail_ops, ll_backend.llds.lval, ll_backend.llds.rval, ll_backend.code_info.branch_end, ll_backend.code_info.branch_end, ll_backend.llds.llds_code, ll_backend.code_info.code_info, ll_backend.code_info.code_info).
+:- mode generate_code_for_all_kinds((builtin.in), (builtin.in), (builtin.in), (builtin.in), (builtin.in), (builtin.in), (builtin.in), (builtin.in), (builtin.in), (builtin.in), (builtin.in), (builtin.out), (builtin.out), (builtin.in), (builtin.out)) is det.
+:- pred generate_int_lookup_switch(ll_backend.llds.rval, ll_backend.lookup_switch.lookup_switch_info(int), ll_backend.llds.label, hlds.hlds_llds.abs_store_map, int, int, backend_libs.switch_util.need_bit_vec_check, backend_libs.switch_util.need_range_check, ll_backend.code_info.branch_end, ll_backend.code_info.branch_end, ll_backend.llds.llds_code, ll_backend.code_info.code_info, ll_backend.code_info.code_info).
+:- mode generate_int_lookup_switch((builtin.in), (builtin.in), (builtin.in), (builtin.in), (builtin.in), (builtin.in), (builtin.in), (builtin.in), (builtin.in), (builtin.out), (builtin.out), (builtin.in), (builtin.out)) is det.
+:- pred is_lookup_switch(ll_backend.lookup_switch.record_switch_lookup(Key), list.list(hlds.hlds_goal.tagged_case), hlds.hlds_goal.hlds_goal_info, hlds.hlds_llds.abs_store_map, ll_backend.code_info.branch_end, ll_backend.code_info.branch_end, ll_backend.lookup_switch.lookup_switch_info(Key), ll_backend.code_info.code_info, ll_backend.code_info.code_info).
+:- mode is_lookup_switch(builtin.in(((ll_backend.lookup_switch).record_switch_lookup)), (builtin.in), (builtin.in), (builtin.in), (builtin.in), (builtin.out), (builtin.out), (builtin.in), (builtin.out)) is semidet.
+:- pred record_lookup_for_tagged_cons_id_int(backend_libs.switch_util.soln_consts(ll_backend.llds.rval), hlds.hlds_data.tagged_cons_id, map.map(int, backend_libs.switch_util.soln_consts(ll_backend.llds.rval)), map.map(int, backend_libs.switch_util.soln_consts(ll_backend.llds.rval))).
+:- mode record_lookup_for_tagged_cons_id_int((builtin.in), (builtin.in), (builtin.in), (builtin.out)) is det.
+:- pred record_lookup_for_tagged_cons_id_string(backend_libs.switch_util.soln_consts(ll_backend.llds.rval), hlds.hlds_data.tagged_cons_id, map.map(string, backend_libs.switch_util.soln_consts(ll_backend.llds.rval)), map.map(string, backend_libs.switch_util.soln_consts(ll_backend.llds.rval))).
+:- mode record_lookup_for_tagged_cons_id_string((builtin.in), (builtin.in), (builtin.in), (builtin.out)) is det.

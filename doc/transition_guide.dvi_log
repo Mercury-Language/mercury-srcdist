@@ -1,0 +1,28 @@
+/usr/bin/texi2dvi: Running etex --file-line-error './transition_guide.texi_pp' ...
+This is pdfTeXk, Version 3.141592-1.40.3 (Web2C 7.5.6)
+ file:line:error style messages enabled.
+ %&-line parsing enabled.
+entering extended mode
+(./transition_guide.texi_pp (./texinfo.tex
+Loading texinfo [version 2008-04-18.10]: pdf, fonts, page headings, tables,
+conditionals, indexing, sectioning, toc, environments, defuns, macros,
+cross references, insertions, localization, formatting,
+and turning on texinfo input format.) [1] [2] [-1] Chapter 1 Chapter 2
+Chapter 3 [1] [2] Chapter 4 [3] Chapter 5 Chapter 6 [4] Chapter 7 [5]
+Chapter 8 [6] [7] )
+Output written on transition_guide.dvi (10 pages, 22540 bytes).
+Transcript written on transition_guide.log.
+/usr/bin/texi2dvi: Running etex --file-line-error './transition_guide.texi_pp' ...
+This is pdfTeXk, Version 3.141592-1.40.3 (Web2C 7.5.6)
+ file:line:error style messages enabled.
+ %&-line parsing enabled.
+entering extended mode
+(./transition_guide.texi_pp (./texinfo.tex
+Loading texinfo [version 2008-04-18.10]: pdf, fonts, page headings, tables,
+conditionals, indexing, sectioning, toc, environments, defuns, macros,
+cross references, insertions, localization, formatting,
+and turning on texinfo input format.) (./transition_guide.aux) [1] [2]
+(./transition_guide.toc) [-1] Chapter 1 Chapter 2 Chapter 3 [1] [2] Chapter 4
+[3] Chapter 5 Chapter 6 [4] Chapter 7 [5] Chapter 8 [6] [7] )
+Output written on transition_guide.dvi (10 pages, 24640 bytes).
+Transcript written on transition_guide.log.

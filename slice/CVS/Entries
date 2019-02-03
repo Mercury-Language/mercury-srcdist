@@ -1,0 +1,13 @@
+/.cvsignore/1.10/Thu Mar 17 05:59:13 2011//Tversion-11_07_1
+/.mgnuc_copts/1.4/Wed Oct 24 09:21:18 2007//Tversion-11_07_1
+/.mgnuc_opts/1.3/Wed Nov 29 05:18:32 2006//Tversion-11_07_1
+/.nocopyright/1.5/Fri Jun 15 12:46:58 2007//Tversion-11_07_1
+/Mercury.options/1.2/Mon Oct  2 06:30:35 2006//Tversion-11_07_1
+/Mmakefile/1.25.2.1/Thu Feb 16 01:27:07 2012//Tversion-11_07_1
+/SLICE_FLAGS.in/1.7.6.1/Sat Dec  3 14:48:04 2011//Tversion-11_07_1
+/mcov.m/1.9/Tue May  3 04:35:02 2011//Tversion-11_07_1
+/mdice.m/1.4/Thu Dec  7 05:10:38 2006//Tversion-11_07_1
+/mslice.m/1.4/Thu Dec  7 05:10:38 2006//Tversion-11_07_1
+/mtc_diff.m/1.3/Fri Dec  1 15:04:40 2006//Tversion-11_07_1
+/mtc_union.m/1.5/Fri Dec  1 15:04:40 2006//Tversion-11_07_1
+D

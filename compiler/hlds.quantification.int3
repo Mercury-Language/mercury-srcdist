@@ -1,0 +1,4 @@
+:- module (hlds.quantification).
+:- interface.
+:- type nonlocals_to_recompute.
+:- type quant_warning.

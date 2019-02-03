@@ -1,0 +1,23 @@
+:- module svlist.
+:- pragma termination_info(svlist.delete((builtin.in), (builtin.in), (builtin.in)), finite(0, [no, no, no, no]), cannot_loop).
+:- pragma termination_info(svlist.delete((builtin.in), (builtin.in), (builtin.out)), finite(-2, [no, no, yes, no]), cannot_loop).
+:- pragma termination_info(svlist.delete((builtin.out), (builtin.in), (builtin.out)), finite(-2, [no, no, yes, no]), cannot_loop).
+:- pragma termination_info(svlist.delete((builtin.in), (builtin.out), (builtin.in)), finite(2, [no, yes, no, yes]), cannot_loop).
+:- pragma termination_info(svlist.delete_first((builtin.in), (builtin.in), (builtin.out)), finite(-2, [no, no, yes, no]), cannot_loop).
+:- pragma termination_info(svlist.delete_elems((builtin.in), (builtin.in), (builtin.out)), finite(0, [no, no, yes, no]), cannot_loop).
+:- pragma termination_info(svlist.replace((builtin.in), (builtin.in), (builtin.in), (builtin.in)), finite(0, [no, no, no, no, no]), cannot_loop).
+:- pragma termination_info(svlist.replace((builtin.in), (builtin.in), (builtin.in), (builtin.out)), finite(0, [no, no, yes, yes, no]), cannot_loop).
+:- pragma termination_info(svlist.replace_first((builtin.in), (builtin.in), (builtin.in), (builtin.out)), finite(0, [no, no, yes, yes, no]), cannot_loop).
+:- pragma termination_info(svlist.replace_all((builtin.in), (builtin.in), (builtin.in), (builtin.out)), infinite, cannot_loop).
+:- pragma termination_info(svlist.det_replace_nth((builtin.in), (builtin.in), (builtin.in), (builtin.out)), finite(0, [no, no, yes, yes, no]), cannot_loop).
+:- pragma exceptions(predicate, (svlist.delete), 3, 0, conditional).
+:- pragma exceptions(predicate, (svlist.delete), 3, 1, conditional).
+:- pragma exceptions(predicate, (svlist.delete), 3, 2, will_not_throw).
+:- pragma exceptions(predicate, (svlist.delete), 3, 3, will_not_throw).
+:- pragma exceptions(predicate, (svlist.delete_first), 3, 0, conditional).
+:- pragma exceptions(predicate, (svlist.delete_elems), 3, 0, conditional).
+:- pragma exceptions(predicate, (svlist.replace), 4, 0, conditional).
+:- pragma exceptions(predicate, (svlist.replace), 4, 1, conditional).
+:- pragma exceptions(predicate, (svlist.replace_first), 4, 0, conditional).
+:- pragma exceptions(predicate, (svlist.replace_all), 4, 0, conditional).
+:- pragma exceptions(predicate, (svlist.det_replace_nth), 4, 0, may_throw(user_exception)).

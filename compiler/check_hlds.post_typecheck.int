@@ -1,0 +1,26 @@
+:- module (check_hlds.post_typecheck).
+:- interface.
+:- import_module hlds.
+:- import_module list.
+:- import_module mdbcomp.
+:- import_module parse_tree.
+:- import_module (hlds.hlds_goal).
+:- import_module (hlds.hlds_module).
+:- import_module (hlds.hlds_pred).
+:- import_module (mdbcomp.prim_data).
+:- import_module (parse_tree.error_util).
+:- import_module (parse_tree.prog_data).
+:- pred check_for_missing_type_defns(hlds.hlds_module.module_info, list.list(parse_tree.error_util.error_spec)).
+:- mode check_for_missing_type_defns((builtin.in), (builtin.out)) is det.
+:- pred finally_resolve_pred_overloading(list.list(parse_tree.prog_data.prog_var), hlds.hlds_pred.pred_info, hlds.hlds_module.module_info, parse_tree.prog_data.prog_context, mdbcomp.prim_data.sym_name, mdbcomp.prim_data.sym_name, hlds.hlds_pred.pred_id, hlds.hlds_pred.pred_id).
+:- mode finally_resolve_pred_overloading((builtin.in), (builtin.in), (builtin.in), (builtin.in), (builtin.in), (builtin.out), (builtin.in), (builtin.out)) is det.
+:- pred post_typecheck_finish_imported_pred_no_io(hlds.hlds_module.module_info, list.list(hlds.hlds_pred.proc_id), hlds.hlds_pred.pred_info, hlds.hlds_pred.pred_info).
+:- mode post_typecheck_finish_imported_pred_no_io((builtin.in), (builtin.out), (builtin.in), (builtin.out)) is det.
+:- pred post_typecheck_finish_pred_no_io(hlds.hlds_module.module_info, list.list(hlds.hlds_pred.proc_id), hlds.hlds_pred.pred_info, hlds.hlds_pred.pred_info).
+:- mode post_typecheck_finish_pred_no_io((builtin.in), (builtin.out), (builtin.in), (builtin.out)) is det.
+:- pred post_typecheck_finish_preds(hlds.hlds_module.module_info, hlds.hlds_module.module_info, int, list.list(parse_tree.error_util.error_spec), list.list(parse_tree.error_util.error_spec)).
+:- mode post_typecheck_finish_preds((builtin.in), (builtin.out), (builtin.out), (builtin.out), (builtin.out)) is det.
+:- pred post_typecheck_finish_promise(parse_tree.prog_data.promise_type, hlds.hlds_pred.pred_id, hlds.hlds_module.module_info, hlds.hlds_module.module_info, list.list(parse_tree.error_util.error_spec), list.list(parse_tree.error_util.error_spec)).
+:- mode post_typecheck_finish_promise((builtin.in), (builtin.in), (builtin.in), (builtin.out), (builtin.in), (builtin.out)) is det.
+:- pred resolve_unify_functor(parse_tree.prog_data.prog_var, parse_tree.prog_data.cons_id, list.list(parse_tree.prog_data.prog_var), hlds.hlds_goal.unify_mode, hlds.hlds_goal.unification, hlds.hlds_goal.unify_context, hlds.hlds_goal.hlds_goal_info, hlds.hlds_module.module_info, hlds.hlds_pred.pred_info, hlds.hlds_pred.pred_info, parse_tree.prog_data.vartypes, parse_tree.prog_data.vartypes, parse_tree.prog_data.prog_varset, parse_tree.prog_data.prog_varset, hlds.hlds_goal.hlds_goal).
+:- mode resolve_unify_functor((builtin.in), (builtin.in), (builtin.in), (builtin.in), (builtin.in), (builtin.in), (builtin.in), (builtin.in), (builtin.in), (builtin.out), (builtin.in), (builtin.out), (builtin.in), (builtin.out), (builtin.out)) is det.

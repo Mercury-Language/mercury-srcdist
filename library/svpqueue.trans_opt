@@ -1,0 +1,5 @@
+:- module svpqueue.
+:- pragma termination_info(svpqueue.insert((builtin.in), (builtin.in), (builtin.in), (builtin.out)), finite(5, [no, no, yes, yes, yes, no]), cannot_loop).
+:- pragma termination_info(svpqueue.remove((builtin.out), (builtin.out), (builtin.in), (builtin.out)), infinite, cannot_loop).
+:- pragma exceptions(predicate, (svpqueue.insert), 4, 0, conditional).
+:- pragma exceptions(predicate, (svpqueue.remove), 4, 0, conditional).
