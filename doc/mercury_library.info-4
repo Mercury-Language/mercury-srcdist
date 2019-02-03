@@ -1,0 +1,3917 @@
+This is mercury_library.info, produced by makeinfo version 4.13 from
+library.texi_pp.
+
+INFO-DIR-SECTION The Mercury Programming Language
+START-INFO-DIR-ENTRY
+* Mercury Library: (mercury_library).  The Mercury Library Reference Manual.
+END-INFO-DIR-ENTRY
+
+   This file documents the Mercury standard library, version 11.07.2.
+
+   Copyright (C) 1995-1997,1999-2012 The University of Melbourne.
+
+   Permission is granted to make and distribute verbatim copies of this
+manual provided the copyright notice and this permission notice are
+preserved on all copies.
+
+   Permission is granted to copy and distribute modified versions of
+this manual under the conditions for verbatim copying, provided also
+that the entire resulting derived work is distributed under the terms
+of a permission notice identical to this one.
+
+   Permission is granted to copy and distribute translations of this
+manual into another language, under the above conditions for modified
+versions.
+
+
+File: mercury_library.info,  Node: table_statistics,  Next: term,  Prev: svvarset,  Up: Top
+
+88 table_statistics
+*******************
+
+     %--------------------------------------------------%
+     % vim: ft=mercury ts=4 sw=4 et wm=0 tw=0
+     %--------------------------------------------------%
+     % Copyright (C) 2007 The University of Melbourne.
+     % This file may only be copied under the terms of the GNU Library General
+     % Public License - see the file COPYING.LIB in the Mercury distribution.
+     %--------------------------------------------------%
+     %
+     % File: table_statistics.m.
+     % Author: zs.
+     % Stability: low.
+     %
+     % This file is automatically imported, as if via `use_module', into every
+     % module that contains a `pragma memo' that asks the compiler to create
+     % a predicate for returning statistics about the memo table. It defines
+     % the data structure that this predicate will return, and some operations
+     % on this data structure.
+     %
+     %--------------------------------------------------%
+     %--------------------------------------------------%
+
+     :- module table_statistics.
+     :- interface.
+
+     :- import_module io.
+     :- import_module list.
+     :- import_module maybe.
+
+     :- type proc_table_statistics
+         --->    proc_table_statistics(
+                     call_table_stats            :: table_stats_curr_prev,
+                     maybe_answer_table_stats    :: maybe(table_stats_curr_prev)
+                 ).
+
+     :- type table_stats_curr_prev
+         --->    table_stats_curr_prev(
+                     current_stats               :: table_stats,
+                     stats_at_last_call          :: table_stats
+                 ).
+
+     :- type table_stats
+         --->    table_stats(
+                     num_lookups                 :: int,
+                     num_lookups_is_dupl         :: int,
+                     step_statistics             :: list(table_step_stats)
+                 ).
+
+         % The definition of this type be an enum whose implementation matches
+         % the type MR_TableTrieStep in runtime/mercury_tabling.h. It should also
+         % be kept in sync with the type table_trie_step in hlds_pred.m.
+         %
+     :- type table_step_kind
+         --->    table_step_dummy
+         ;       table_step_int
+         ;       table_step_char
+         ;       table_step_string
+         ;       table_step_float
+         ;       table_step_enum
+         ;       table_step_foreign_enum
+         ;       table_step_general
+         ;       table_step_general_addr
+         ;       table_step_general_poly
+         ;       table_step_general_poly_addr
+         ;       table_step_typeinfo
+         ;       table_step_typeclassinfo
+         ;       table_step_promise_implied.
+
+     :- type table_step_stats
+         --->    table_step_stats(
+                     table_step_var_name                 :: string,
+                     table_step_num_lookups              :: int,
+                     table_step_num_lookups_is_dupl      :: int,
+                     table_step_detail                   :: table_step_stat_details
+                 ).
+
+     :- type table_step_stat_details
+         --->    step_stats_none
+         ;       step_stats_start(
+                     start_num_node_allocs               :: int,
+                     start_num_node_bytes                :: int
+                 )
+         ;       step_stats_enum(
+                     enum_num_node_allocs                :: int,
+                     enum_num_node_bytes                 :: int
+                 )
+         ;       step_stats_hash(
+                     hash_num_table_allocs               :: int,
+                     hash_num_table_bytes                :: int,
+                     hash_num_link_chunk_allocs          :: int,
+                     hash_num_link_chunk_bytes           :: int,
+                     hash_num_num_key_compares_not_dupl  :: int,
+                     hash_num_num_key_compares_dupl      :: int,
+                     hash_num_resizes                    :: int,
+                     hash_resizes_num_old_entries        :: int,
+                     hash_resizes_num_new_entries        :: int
+                 )
+         ;       step_stats_du(
+                     du_num_node_allocs                  :: int,
+                     du_num_node_bytes                   :: int,
+                     du_num_arg_lookups                  :: int,
+                     du_num_exist_lookups                :: int,
+
+                     du_enum_num_node_allocs             :: int,
+                     du_enum_num_node_bytes              :: int,
+
+                     du_hash_num_table_allocs            :: int,
+                     du_hash_num_table_bytes             :: int,
+                     du_hash_num_link_chunk_allocs       :: int,
+                     du_hash_num_link_chunk_bytes        :: int,
+                     du_hash_num_num_key_compares_not_dupl :: int,
+                     du_hash_num_num_key_compares_dupl   :: int,
+                     du_hash_num_resizes                 :: int,
+                     du_hash_resizes_num_old_entries     :: int,
+                     du_hash_resizes_num_new_entries     :: int
+                 )
+         ;       step_stats_poly(
+                     poly_du_num_node_allocs             :: int,
+                     poly_du_num_node_bytes              :: int,
+                     poly_du_num_arg_lookups             :: int,
+                     poly_du_num_exist_lookups           :: int,
+
+                     poly_enum_num_node_allocs           :: int,
+                     poly_enum_num_node_bytes            :: int,
+
+                     poly_hash_num_table_allocs          :: int,
+                     poly_hash_num_table_bytes           :: int,
+                     poly_hash_num_link_chunk_allocs     :: int,
+                     poly_hash_num_link_chunk_bytes      :: int,
+                     poly_hash_num_num_key_compares_not_dupl :: int,
+                     poly_hash_num_num_key_compares_dupl :: int,
+                     poly_hash_num_resizes               :: int,
+                     poly_hash_resizes_num_old_entries   :: int,
+                     poly_hash_resizes_num_new_entries   :: int
+                 ).
+
+     :- func table_stats_difference(table_stats, table_stats) = table_stats.
+
+     :- pred write_table_stats(table_stats::in, io::di, io::uo) is det.
+
+     %--------------------------------------------------%
+
+
+File: mercury_library.info,  Node: term,  Next: term_io,  Prev: table_statistics,  Up: Top
+
+89 term
+*******
+
+     %--------------------------------------------------%
+     % vim: ft=mercury ts=4 sw=4 et wm=0 tw=0
+     %--------------------------------------------------%
+     % Copyright (C) 1993-2000, 2003-2009, 2011-2012 The University of Melbourne.
+     % This file may only be copied under the terms of the GNU Library General
+     % Public License - see the file COPYING.LIB in the Mercury distribution.
+     %--------------------------------------------------%
+     %
+     % File: term.m.
+     % Main author: fjh.
+     % Stability: medium.
+     %
+     % This file provides a type `term' used to represent Prolog terms,
+     % and various predicates to manipulate terms and substitutions.
+     % Terms are polymorphic so that terms representing different kinds of
+     % thing can be made to be of different types so they don't get mixed up.
+     %
+     %--------------------------------------------------%
+     %--------------------------------------------------%
+
+     :- module term.
+     :- interface.
+
+     :- import_module enum.
+     :- import_module list.
+     :- import_module map.
+     :- import_module type_desc.
+     :- import_module univ.
+
+     %--------------------------------------------------%
+
+     :- type term(T)
+         --->    functor(
+                     const,
+                     list(term(T)),
+                     term.context
+                 )
+         ;       variable(
+                     var(T),
+                     term.context
+                 ).
+
+     :- type const
+         --->    atom(string)
+         ;       integer(int)
+         ;       string(string)
+         ;       float(float)
+         ;       implementation_defined(string).
+
+     :- type term.context
+         --->    context(string, int).
+                 % file name, line number.
+
+     :- type var(T).
+     :- type var_supply(T).
+
+     :- type generic
+         --->    generic.
+
+     :- type term    ==  term(generic).
+     :- type var     ==  var(generic).
+
+     :- func get_term_context(term(T)) = term.context.
+
+     %--------------------------------------------------%
+
+         % The following predicates can convert values of (almost) any type
+         % to the type `term' and back again.
+
+     :- type term_to_type_result(T, U)
+         --->    ok(T)
+         ;       error(term_to_type_error(U)).
+
+     :- type term_to_type_result(T) == term_to_type_result(T, generic).
+
+         % term.try_term_to_type(Term, Result):
+         % Try to convert the given term to a ground value of type T.
+         % If successful, return `ok(X)' where X is the converted value.
+         % If Term is not ground, return `mode_error(Var, Context)',
+         % where Var is a variable occurring in Term.
+         % If Term is not a valid term of the specified type, return
+         % `type_error(SubTerm, ExpectedType, Context, ArgContexts)',
+         % where SubTerm is a sub-term of Term and ExpectedType is the type
+         % expected for that part of Term.
+         % Context specifies the file and line number where the
+         % offending part of the term was read in from, if available.
+         % ArgContexts specifies the path from the root of the term
+         % to the offending subterm.
+         %
+     :- func try_term_to_type(term(U)) = term_to_type_result(T, U).
+     :- pred try_term_to_type(term(U)::in, term_to_type_result(T, U)::out) is det.
+
+     :- type term_to_type_error(T)
+         --->    type_error(
+                     term(T),
+                     type_desc.type_desc,
+                     context,
+                     term_to_type_context
+                 )
+         ;       mode_error(
+                     var(T),
+                     term_to_type_context
+                 ).
+
+     :- type term_to_type_context == list(term_to_type_arg_context).
+
+     :- type term_to_type_arg_context
+         --->    arg_context(
+                     const,      % functor
+                     int,        % argument number (starting from 1)
+                     context     % filename & line number
+                 ).
+
+         % term_to_type(Term, Type) :- try_term_to_type(Term, ok(Type)).
+         %
+     :- pred term_to_type(term(U)::in, T::out) is semidet.
+
+         % Like term_to_type, but calls error/1 rather than failing.
+         %
+     :- func det_term_to_type(term(_)) = T.
+     :- pred det_term_to_type(term(_)::in, T::out) is det.
+
+         % Converts a value to a term representation of that value.
+         %
+     :- func type_to_term(T) = term(_).
+     :- pred type_to_term(T::in, term(_)::out) is det.
+
+         % Convert the value stored in the univ (as distinct from the univ itself)
+         % to a term.
+         %
+     :- func univ_to_term(univ) = term(_).
+     :- pred univ_to_term(univ::in, term(_)::out) is det.
+
+     %--------------------------------------------------%
+
+         % vars(Term, Vars):
+         %
+         % Vars is the list of variables contained in Term, in the order
+         % obtained by traversing the term depth first, left-to-right.
+         %
+     :- func vars(term(T)) = list(var(T)).
+     :- pred vars(term(T)::in, list(var(T))::out) is det.
+
+         % As above, but with an accumulator.
+         %
+     :- func vars_2(term(T), list(var(T))) = list(var(T)).
+     :- pred vars_2(term(T)::in, list(var(T))::in, list(var(T))::out) is det.
+
+         % vars_list(TermList, Vars):
+         %
+         % Vars is the list of variables contained in TermList, in the order
+         % obtained by traversing the list of terms depth-first, left-to-right.
+         %
+     :- func vars_list(list(term(T))) = list(var(T)).
+     :- pred vars_list(list(term(T))::in, list(var(T))::out) is det.
+
+         % contains_var(Term, Var):
+         %
+         % True if Term contains Var. On backtracking returns all the variables
+         % contained in Term.
+         %
+     :- pred contains_var(term(T), var(T)).
+     :- mode contains_var(in, in) is semidet.
+     :- mode contains_var(in, out) is nondet.
+
+         % contains_var_list(TermList, Var):
+         %
+         % True if TermList contains Var. On backtracking returns all the variables
+         % contained in Term.
+         %
+     :- pred contains_var_list(list(term(T)), var(T)).
+     :- mode contains_var_list(in, in) is semidet.
+     :- mode contains_var_list(in, out) is nondet.
+
+     :- type substitution(T) == map(var(T), term(T)).
+     :- type substitution    == substitution(generic).
+
+         % unify_term(Term1, Term2, Bindings0, Bindings):
+         %
+         % Unify (with occur check) two terms with respect to a set of bindings
+         % and possibly update the set of bindings.
+         %
+     :- pred unify_term(term(T)::in, term(T)::in, substitution(T)::in,
+         substitution(T)::out) is semidet.
+
+         % As above, but unify the corresponding elements of two lists of terms.
+         % Fails if the lists are not of equal length.
+         %
+     :- pred unify_term_list(list(term(T))::in, list(term(T))::in,
+         substitution(T)::in, substitution(T)::out) is semidet.
+
+         % unify_term_dont_bind(Term1, Term2, BoundVars, !Bindings):
+         %
+         % Unify (with occur check) two terms with respect to a set of bindings
+         % and possibly update the set of bindings. Fails if any of the variables
+         % in BoundVars would become bound by the unification.
+         %
+     :- pred unify_term_dont_bind(term(T)::in, term(T)::in, list(var(T))::in,
+         substitution(T)::in, substitution(T)::out) is semidet.
+
+         % As above, but unify the corresponding elements of two lists of terms.
+         % Fails if the lists are not of equal length.
+         %
+     :- pred unify_term_list_dont_bind(list(term(T))::in, list(term(T))::in,
+         list(var(T))::in, substitution(T)::in, substitution(T)::out) is semidet.
+
+         % list_subsumes(Terms1, Terms2, Subst) succeeds iff the list
+         % Terms1 subsumes (is more general than) Terms2, producing a substitution
+         % which when applied to Terms1 will give Terms2.
+         %
+     :- pred list_subsumes(list(term(T))::in, list(term(T))::in,
+         substitution(T)::out) is semidet.
+
+         % substitute(Term0, Var, Replacement, Term):
+         %
+         % Replace all occurrences of Var in Term0 with Replacement,
+         % and return the result in Term.
+         %
+     :- func substitute(term(T), var(T), term(T)) = term(T).
+     :- pred substitute(term(T)::in, var(T)::in, term(T)::in, term(T)::out)
+         is det.
+
+         % As above, except for a list of terms rather than a single
+         %
+     :- func substitute_list(list(term(T)), var(T), term(T)) = list(term(T)).
+     :- pred substitute_list(list(term(T))::in, var(T)::in, term(T)::in,
+         list(term(T))::out) is det.
+
+         % substitute_corresponding(Vars, Repls, Term0, Term):
+         %
+         % Replace all occurrences of variables in Vars with the corresponding
+         % term in Repls, and return the result in Term. If Vars contains
+         % duplicates, or if Vars is not the same length as Repls, the behaviour
+         % is undefined and probably harmful.
+         %
+     :- func substitute_corresponding(list(var(T)), list(term(T)),
+         term(T)) = term(T).
+     :- pred substitute_corresponding(list(var(T))::in, list(term(T))::in,
+         term(T)::in, term(T)::out) is det.
+
+         % As above, except applies to a list of terms rather than a single term.
+         %
+     :- func substitute_corresponding_list(list(var(T)),
+         list(term(T)), list(term(T))) = list(term(T)).
+     :- pred substitute_corresponding_list(list(var(T))::in,
+         list(term(T))::in, list(term(T))::in, list(term(T))::out) is det.
+
+         % apply_rec_substitution(Term0, Substitution, Term):
+         %
+         % Recursively apply substitution to Term0 until no more substitutions
+         % can be applied, and then return the result in Term.
+         %
+     :- func apply_rec_substitution(term(T), substitution(T)) = term(T).
+     :- pred apply_rec_substitution(term(T)::in, substitution(T)::in,
+         term(T)::out) is det.
+
+         % As above, except applies to a list of terms rather than a single term.
+         %
+     :- func apply_rec_substitution_to_list(list(term(T)),
+         substitution(T)) = list(term(T)).
+     :- pred apply_rec_substitution_to_list(list(term(T))::in,
+         substitution(T)::in, list(term(T))::out) is det.
+
+         % apply_substitution(Term0, Substitution, Term):
+         %
+         % Apply substitution to Term0 and return the result in Term.
+         %
+     :- func apply_substitution(term(T), substitution(T)) = term(T).
+     :- pred apply_substitution(term(T)::in, substitution(T)::in,
+         term(T)::out) is det.
+
+         % As above, except applies to a list of terms rather than a single term.
+         %
+     :- func apply_substitution_to_list(list(term(T)),
+         substitution(T)) = list(term(T)).
+     :- pred apply_substitution_to_list(list(term(T))::in,
+         substitution(T)::in, list(term(T))::out) is det.
+
+         % occurs(Term0, Var, Substitution):
+         % True iff Var occurs in the term resulting after applying Substitution
+         % to Term0. Var variable must not be mapped by Substitution.
+         %
+     :- pred occurs(term(T)::in, var(T)::in, substitution(T)::in) is semidet.
+
+         % As above, except for a list of terms rather than a single term.
+         %
+     :- pred occurs_list(list(term(T))::in, var(T)::in, substitution(T)::in)
+         is semidet.
+
+         % relabel_variable(Term0, OldVar, NewVar, Term):
+         %
+         % Replace all occurrences of OldVar in Term0 with NewVar and put the result
+         % in Term.
+         %
+     :- func relabel_variable(term(T), var(T), var(T)) = term(T).
+     :- pred relabel_variable(term(T)::in, var(T)::in, var(T)::in, term(T)::out)
+         is det.
+
+         % As above, except applies to a list of terms rather than a single term.
+         % XXX the name of the predicate is misleading.
+         %
+     :- func relabel_variables(list(term(T)), var(T), var(T)) = list(term(T)).
+     :- pred relabel_variables(list(term(T))::in, var(T)::in, var(T)::in,
+         list(term(T))::out) is det.
+
+         % Same as relabel_variable, except relabels multiple variables.
+         % If a variable is not in the map, it is not replaced.
+         %
+     :- func apply_variable_renaming(term(T), map(var(T), var(T))) = term(T).
+     :- pred apply_variable_renaming(term(T)::in, map(var(T), var(T))::in,
+         term(T)::out) is det.
+
+         % Applies apply_variable_renaming to a list of terms.
+         %
+     :- func apply_variable_renaming_to_list(list(term(T)),
+         map(var(T), var(T))) = list(term(T)).
+     :- pred apply_variable_renaming_to_list(list(term(T))::in,
+         map(var(T), var(T))::in, list(term(T))::out) is det.
+
+         % Applies apply_variable_renaming to a var.
+         %
+     :- func apply_variable_renaming_to_var(map(var(T), var(T)),
+         var(T)) = var(T).
+     :- pred apply_variable_renaming_to_var(map(var(T), var(T))::in,
+         var(T)::in, var(T)::out) is det.
+
+         % Applies apply_variable_renaming to a list of vars.
+         %
+     :- func apply_variable_renaming_to_vars(map(var(T), var(T)),
+         list(var(T))) = list(var(T)).
+     :- pred apply_variable_renaming_to_vars(map(var(T), var(T))::in,
+         list(var(T))::in, list(var(T))::out) is det.
+
+         % is_ground_in_bindings(Term, Bindings) is true iff no variables contained
+         % in Term are non-ground in Bindings.
+         %
+     :- pred is_ground_in_bindings(term(T)::in, substitution(T)::in) is semidet.
+
+         % is_ground(Term) is true iff Term contains no variables.
+         %
+     :- pred is_ground(term(T)::in) is semidet.
+
+     %--------------------------------------------------%
+
+         % To manage a supply of variables, use the following 2 predicates.
+         % (We might want to give these a unique mode later.)
+
+         % init_var_supply(VarSupply):
+         %
+         % Returns a fresh var_supply for producing fresh variables.
+         %
+     :- func init_var_supply = var_supply(T).
+     :- pred init_var_supply(var_supply(T)).
+     :- mode init_var_supply(out) is det.
+     :- mode init_var_supply(in) is semidet. % implied
+
+         % create_var(VarSupply0, Variable, VarSupply):
+         % Create a fresh variable (var) and return the updated var_supply.
+         %
+     :- pred create_var(var(T)::out, var_supply(T)::in, var_supply(T)::out) is det.
+
+         % var_id(Variable):
+         % Returns a unique number associated with this variable w.r.t.
+         % its originating var_supply.
+         %
+     :- func var_id(var(T)) = int.
+
+     %--------------------------------------------------%
+
+         % from_int/1 should only be applied to integers returned by to_int/1.
+         % This instance declaration is needed to allow sets of variables to be
+         % represented using sparse_bitset.m.
+     :- instance enum(var(_)).
+
+         % Convert a variable to an int. Different variables map to different ints.
+         % Other than that, the mapping is unspecified.
+         %
+     :- func var_to_int(var(T)) = int.
+     :- pred var_to_int(var(T)::in, int::out) is det.
+
+     %--------------------------------------------------%
+
+         % Given a term context, return the source line number.
+         %
+     :- func context_line(context) = int.
+     :- pred context_line(context::in, int::out) is det.
+
+         % Given a term context, return the source file.
+         %
+     :- func context_file(context) = string.
+     :- pred context_file(context::in, string::out) is det.
+
+         % Used to initialize the term context when reading in
+         % (or otherwise constructing) a
+         %
+     :- func context_init = context.
+     :- pred context_init(context::out) is det.
+     :- func context_init(string, int) = context.
+     :- pred context_init(string::in, int::in, context::out) is det.
+
+         % Convert a list of terms which are all vars into a list of vars.
+         % Abort (call error/1) if the list contains any non-variables.
+         %
+     :- func term_list_to_var_list(list(term(T))) = list(var(T)).
+
+         % Convert a list of terms which are all vars into a list of vars.
+         %
+     :- pred term_list_to_var_list(list(term(T))::in, list(var(T))::out) is semidet.
+
+         % Convert a list of terms which are all vars into a list of vars
+         % (or vice versa).
+         %
+     :- func var_list_to_term_list(list(var(T))) = list(term(T)).
+     :- pred var_list_to_term_list(list(var(T))::in, list(term(T))::out) is det.
+
+     %--------------------------------------------------%
+
+         % generic_term(Term) is true iff `Term' is a term of type
+         % `term' ie `term(generic)'. It is useful because in some instances
+         % it doesn't matter what the type of a term is, and passing it to this
+         % predicate will ground the type avoiding unbound type variable warnings.
+         %
+     :- pred generic_term(term::in) is det.
+
+         % Coerce a term of type `T' into a term of type `U'.
+         %
+     :- func coerce(term(T)) = term(U).
+     :- pred coerce(term(T)::in, term(U)::out) is det.
+
+         % Coerce a var of type `T' into a var of type `U'.
+         %
+     :- func coerce_var(var(T)) = var(U).
+     :- pred coerce_var(var(T)::in, var(U)::out) is det.
+
+         % Coerce a var_supply of type `T' into a var_supply of type `U'.
+         %
+     :- func coerce_var_supply(var_supply(T)) = var_supply(U).
+     :- pred coerce_var_supply(var_supply(T)::in, var_supply(U)::out) is det.
+
+     %--------------------------------------------------%
+     %--------------------------------------------------%
+
+
+File: mercury_library.info,  Node: term_io,  Next: term_to_xml,  Prev: term,  Up: Top
+
+90 term_io
+**********
+
+     %--------------------------------------------------%
+     % vim: ft=mercury ts=4 sw=4 et
+     %--------------------------------------------------%
+     % Copyright (C) 1994-2006, 2009, 2011-2012 The University of Melbourne.
+     % This file may only be copied under the terms of the GNU Library General
+     % Public License - see the file COPYING.LIB in the Mercury distribution.
+     %--------------------------------------------------%
+     %
+     % File: term_io.m.
+     % Main author: fjh.
+     % Stability: medium to high.
+     %
+     % This file encapsulates all the term I/O.
+     % This exports predicates to read and write terms in the
+     % nice ground representation provided in term.m.
+     %
+     %--------------------------------------------------%
+     %--------------------------------------------------%
+
+     :- module term_io.
+     :- interface.
+
+     :- import_module char.
+     :- import_module io.
+     :- import_module ops.
+     :- import_module stream.
+     :- import_module term.
+     :- import_module varset.
+
+     %--------------------------------------------------%
+
+     :- type read_term(T)
+         --->    eof
+         ;       error(string, int)
+         ;       term(varset(T), term(T)).
+
+     :- type read_term   == read_term(generic).
+
+         % term_io.read_term(Result, !IO):
+         %
+         % Read a term from standard input. Similar to NU-Prolog read_term/2,
+         % except that resulting term is in the ground representation.
+         % Binds Result to either `eof', `term(VarSet, Term)', or
+         % `error(Message, LineNumber)'.
+         %
+     :- pred term_io.read_term(read_term(T)::out, io::di, io::uo) is det.
+
+         % As above, except uses the given operator table instead of
+         % the standard Mercury operators.
+         %
+     :- pred term_io.read_term_with_op_table(Ops::in, read_term(T)::out,
+         io::di, io::uo) is det <= op_table(Ops).
+
+         % Writes a term to standard output. Uses the variable names specified
+         % by the varset. Writes _N for all unnamed variables, with N starting at 0.
+         %
+     :- pred term_io.write_term(varset(T)::in, term(T)::in, io::di, io::uo) is det.
+
+         % As above, except uses the given operator table instead of the
+         % standard Mercury operators.
+         %
+     :- pred term_io.write_term_with_op_table(Ops::in, varset(T)::in, term(T)::in,
+         io::di, io::uo) is det <= op_table(Ops).
+
+         % As above, except it appends a period and new-line.
+         %
+     :- pred term_io.write_term_nl(varset(T)::in, term(T)::in, io::di, io::uo)
+         is det.
+
+         % As above, except it appends a period and new-line.
+         %
+     :- pred term_io.write_term_nl_with_op_table(Ops::in, varset(T)::in,
+         term(T)::in, io::di, io::uo) is det <= op_table(Ops).
+
+         % Writes a constant (integer, float, string, or atom) to stdout.
+         %
+     :- pred term_io.write_constant(const::in, io::di, io::uo) is det.
+
+         % Like term_io.write_constant, but return the result in a string.
+         %
+     :- func term_io.format_constant(const) = string.
+
+         % Writes a variable to stdout.
+         %
+     :- pred term_io.write_variable(var(T)::in, varset(T)::in, io::di, io::uo)
+         is det.
+
+         % As above, except uses the given operator table instead of the
+         % standard Mercury operators.
+         %
+     :- pred term_io.write_variable_with_op_table(Ops::in, var(T)::in,
+         varset(T)::in, io::di, io::uo) is det <= op_table(Ops).
+
+         % Given a string S, write S in double-quotes, with characters
+         % escaped if necessary, to stdout.
+         %
+     :- pred term_io.quote_string(string::in, io::di, io::uo) is det.
+
+     :- pred term_io.quote_string(Stream::in, string::in,
+         State::di, State::uo) is det
+         <= (stream.writer(Stream, string, State),
+         stream.writer(Stream, char, State)).
+
+         % Like term_io.quote_string, but return the result in a string.
+         %
+     :- func term_io.quoted_string(string) = string.
+
+         % Given an atom-name A, write A, enclosed in single-quotes if necessary,
+         % with characters escaped if necessary, to stdout.
+         %
+     :- pred term_io.quote_atom(string::in, io::di, io::uo) is det.
+
+     :- pred term_io.quote_atom(Stream::in, string::in,
+         State::di, State::uo) is det
+         <= (stream.writer(Stream, string, State),
+         stream.writer(Stream, char, State)).
+
+         % Like term_io.quote_atom, but return the result in a string.
+         %
+     :- func term_io.quoted_atom(string) = string.
+
+         % Given a character C, write C in single-quotes,
+         % escaped if necessary, to stdout.
+         %
+     :- pred term_io.quote_char(char::in, io::di, io::uo) is det.
+
+     :- pred term_io.quote_char(Stream::in, char::in,
+         State::di, State::uo) is det
+         <= (stream.writer(Stream, string, State),
+         stream.writer(Stream, char, State)).
+
+         % Like term_io.quote_char, but return the result in a string.
+         %
+     :- func term_io.quoted_char(char) = string.
+
+         % Given a character C, write C, escaped if necessary, to stdout.
+         % The character is not enclosed in quotes.
+         %
+     :- pred term_io.write_escaped_char(char::in, io::di, io::uo) is det.
+
+     :- pred term_io.write_escaped_char(Stream::in, char::in,
+         State::di, State::uo) is det
+         <= (stream.writer(Stream, string, State),
+         stream.writer(Stream, char, State)).
+
+         % Like term_io.write_escaped_char, but return the result in a string.
+         %
+     :- func term_io.escaped_char(char) = string.
+
+         % A reversible version of escaped_char.
+         %
+     :- pred string_is_escaped_char(char, string).
+     :- mode string_is_escaped_char(in, out) is det.
+     :- mode string_is_escaped_char(out, in) is semidet.
+
+         % Given a string S, write S, with characters escaped if necessary,
+         % to stdout. The string is not enclosed in quotes.
+         %
+     :- pred term_io.write_escaped_string(string::in, io::di, io::uo) is det.
+
+     :- pred term_io.write_escaped_string(Stream::in, string::in,
+         State::di, State::uo) is det
+         <= (stream.writer(Stream, string, State),
+         stream.writer(Stream, char, State)).
+
+         % Like term_io.write_escaped_char, but return the result in a string.
+         %
+     :- func term_io.escaped_string(string) = string.
+
+     %--------------------------------------------------%
+     %--------------------------------------------------%
+
+
+File: mercury_library.info,  Node: term_to_xml,  Next: thread.channel,  Prev: term_io,  Up: Top
+
+91 term_to_xml
+**************
+
+     %--------------------------------------------------%
+     % vim: ft=mercury ts=4 sw=4 et
+     %--------------------------------------------------%
+     % Copyright (C) 1993-2007, 2010-2011 The University of Melbourne.
+     % This file may only be copied under the terms of the GNU Library General
+     % Public License - see the file COPYING.LIB in the Mercury distribution.
+     %--------------------------------------------------%
+     %
+     % File: term_to_xml.m.
+     % Main author: maclarty.
+     % Stability: low.
+     %
+     % This module provides two mechanisms for converting Mercury terms
+     % to XML documents.
+     %
+     % Method 1
+     % --------
+     % The first method requires a type to be an instance of the xmlable typeclass
+     % before values of the type can be written as XML.
+     % Members of the xmlable typeclass must implement a to_xml method which
+     % maps values of the type to XML elements.
+     % The XML elements may contain arbitrary children, comments and data.
+     %
+     % Method 2
+     % --------
+     % The second method is less flexible than the first, but it allows for the
+     % automatic generation of a DTD.
+     % Each functor in a term is given a corresponding well-formed element name in
+     % the XML document according to a mapping. Some predefined mappings are
+     % provided, but user defined mappings may also be used.
+     %
+     % Method 1 vs. Method 2
+     % ---------------------
+     %
+     % Method 1 allows values of a specific type to be mapped to arbitrary XML
+     % elements with arbitrary children and arbitrary attributes.
+     % In method 2 each functor in a term can be mapped to only one XML element.
+     % Method 2 also only allows a selected set of attributes.
+     % In method 2 a DTD can be automatically generated. In method 1 DTDs cannot
+     % be automatically generated.
+     %
+     % Method 1 is useful for mapping a specific type to XML,
+     % for example mapping terms which represent mathematical expressions to
+     % MathML.
+     % Method 2 is useful for mapping arbitrary terms of any type to XML.
+     %
+     % In both methods the XML document can be annotated with a stylesheet
+     % reference.
+     %
+     %--------------------------------------------------%
+     %--------------------------------------------------%
+
+     :- module term_to_xml.
+     :- interface.
+
+     :- import_module deconstruct.
+     :- import_module list.
+     :- import_module maybe.
+     :- import_module stream.
+     :- import_module type_desc.
+
+     %--------------------------------------------------%
+     %
+     % Method 1 interface
+     %
+
+         % Instances of this typeclass can be converted to XML.
+         %
+     :- typeclass xmlable(T) where [
+         func to_xml(T::in) = (xml::out(xml_doc)) is det
+     ].
+
+         % Values of this type represent an XML document or a portion of
+         % an XML document.
+         %
+     :- type xml
+         --->    elem(
+                     % An XML element with a name, list of attributes
+                     % and a list of children.
+                     element_name    :: string,
+                     attributes      :: list(attr),
+                     children        :: list(xml)
+                 )
+
+         ;       data(string)
+                 % Textual data. `<', `>', `&', `'' and `"' characters
+                 % will be replaced by `&lt;', `&gt;', `&amp;', `&apos;'
+                 % and `&quot;' respectively.
+
+         ;       cdata(string)
+                 % Data to be enclosed in `<![CDATA[' and `]]>' tags.
+                 % The string may not contain the substring "]]>".
+                 % If it does then invalid XML will be generated.
+
+         ;       comment(string)
+                 % An XML comment. The comment should not
+                 % include the `<!--' and `-->'. Any occurrences of
+                 % the substring "--" will be replaced by " - ",
+                 % since "--" is not allowed in XML comments.
+
+         ;       entity(string)
+                 % An entity reference. The string will
+                 % have `&' prepended and `;' appended before being
+                 % output.
+
+         ;       raw(string).
+                 % Raw XML data. The data will be written out verbatim.
+
+         % An XML document must have an element at the top-level.
+         % The following inst is used to enforce this restriction.
+         %
+     :- inst xml_doc
+         --->    elem(
+                     ground, % element_name
+                     ground, % attributes
+                     ground  % children
+                 ).
+
+         % An element attribute, mapping a name to a value.
+         %
+     :- type attr
+         --->    attr(string, string).
+
+         % Values of this type specify the DOCTYPE of an XML document when
+         % the DOCTYPE is defined by an external DTD.
+         %
+     :- type doctype
+         --->    public(string)                  % Formal Public Identifier (FPI)
+         ;       public_system(string, string)   % FPI, URL
+         ;       system(string).                 % URL
+
+         % Values of this type specify whether a DTD should be included in
+         % a generated XML document and if so how.
+         %
+     :- type maybe_dtd
+         --->    embed_dtd
+                 % Generate and embed the entire DTD in the document
+                 % (only available for method 2).
+
+         ;       external_dtd(doctype)
+                 % Included a reference to an external DTD.
+
+         ;       no_dtd.
+                 % Do not include any DOCTYPE information.
+
+     :- inst non_embedded_dtd
+         --->    external_dtd(ground)
+         ;       no_dtd.
+
+         % Values of this type indicate whether a stylesheet reference should be
+         % included in a generated XML document.
+         %
+     :- type maybe_stylesheet
+         --->    with_stylesheet(
+                     stylesheet_type :: string, % For example "text/xsl"
+                     stylesheet_href :: string
+                 )
+         ;       no_stylesheet.
+
+         % write_xml_doc(Stream, Term, !State):
+         %
+         % Output Term as an XML document to the given stream.
+         % Term must be an instance of the xmlable typeclass.
+         %
+     :- pred write_xml_doc(Stream::in, T::in, State::di, State::uo)
+         is det <= (xmlable(T), stream.writer(Stream, string, State)).
+
+         % write_xml_doc_style_dtd(Stream, Term, MaybeStyleSheet, MaybeDTD,
+         %   !State):
+         %
+         % Write Term to the given stream as an XML document.
+         % MaybeStyleSheet and MaybeDTD specify whether or not a stylesheet
+         % reference and/or a DTD should be included.
+         % Using this predicate, only external DTDs can be included, i.e.
+         % a DTD cannot be automatically generated and embedded
+         % (that feature is available only for method 2 -- see below).
+         %
+     :- pred write_xml_doc_style_dtd(Stream::in, T::in,
+         maybe_stylesheet::in, maybe_dtd::in(non_embedded_dtd),
+         State::di, State::uo) is det
+         <= (xmlable(T), stream.writer(Stream, string, State)).
+
+         % write_xml_element(Stream, Indent, Term, !State):
+         %
+         % Write Term out as XML to the given stream, using Indent as the
+         % indentation level (each indentation level is one tab character).
+         % No `<?xml ... ?>' header will be written.
+         % This is useful for generating large XML documents piecemeal.
+         %
+     :- pred write_xml_element(Stream::in, int::in, T::in,
+         State::di, State::uo) is det
+         <= (xmlable(T), stream.writer(Stream, string, State)).
+
+         % write_xml_header(Stream, MaybeEncoding, !State):
+         %
+         % Write an XML header (i.e. `<?xml version="1.0"?>) to the
+         % current file output stream.
+         % If MaybeEncoding is yes(Encoding), then include `encoding="Encoding"'
+         % in the header.
+         %
+     :- pred write_xml_header(Stream::in, maybe(string)::in,
+         State::di, State::uo) is det <= stream.writer(Stream, string, State).
+
+     %--------------------------------------------------%
+     %
+     % Method 2 interface
+     %
+
+         % Values of this type specify which mapping from functors to elements
+         % to use when generating XML. The role of a mapping is twofold:
+         %   1. To map functors to elements, and
+         %   2. To map functors to a set of attributes that should be
+         %      generated for the corresponding element.
+         %
+         % We provide two predefined mappings:
+         %
+         %   1. simple: The functors `[]', `[|]' and `{}' are mapped to the
+         %   elements `List', `Nil' and `Tuple' respectively. Arrays are
+         %   assigned the `Array' element. The builtin types are assigned
+         %   the elements `Int', `String', `Float' and `Char'. All other
+         %   functors are assigned elements with the same name as the
+         %   functor provided the functor name is well formed and does
+         %   not start with a capital letter. Otherwise a mangled
+         %   version of the functor name is used.
+         %
+         %   All elements except `Int', `String', `Float' and `Char'
+         %   will have their `functor', `arity', `type' and `field' (if
+         %   there is a field name) attributes set. `Int', `String',
+         %   `Float' and `Char' elements will just have their `type' and
+         %   possibly their `field' attributes set.
+         %
+         %   The `simple' mapping is designed to be easy to read and use,
+         %   but may result in the same element being assigned to different
+         %   functors.
+         %
+         %   2. unique: Here we use the same mapping as `simple' except
+         %   we append the functor arity for discriminated unions and
+         %   a mangled version of the type name for every element. The same
+         %   attributes as the `simple' scheme are provided. The advantage
+         %   of this scheme is that it maps each functor to a unique
+         %   element. This means that it will always be possible to
+         %   generate a DTD using this mapping so long as there is only
+         %   one top level functor and no unsupported types can appear in
+         %   terms of the type.
+         %
+         % A custom mapping can be provided using the `custom' functor. See the
+         % documentation for the element_pred type below for more information.
+         %
+     :- type element_mapping
+         --->    simple
+         ;       unique
+         ;       custom(element_pred).
+
+     :- inst element_mapping
+         --->    simple
+         ;       unique
+         ;       custom(element_pred).
+
+         % Deterministic procedures with the following signature can be used as
+         % custom functor to element mappings. The inputs to the procedure are
+         % a type and some information about a functor for that type
+         % if the type is a discriminated union. The output should be a well
+         % formed XML element name and a list of attributes that should be set
+         % for that element. See the types `maybe_functor_info' and
+         % `attr_from_source' below.
+         %
+     :- type element_pred == (pred(type_desc, maybe_functor_info, string,
+         list(attr_from_source))).
+
+     :- inst element_pred == (pred(in, in, out, out) is det).
+
+         % Values of this type are passed to custom functor-to-element
+         % mapping predicates to tell the predicate which functor to generate
+         % an element name for if the type is a discriminated union. If the
+         % type is not a discriminated union, then non_du is passed to
+         % the predicate when requesting an element for the type.
+         %
+     :- type maybe_functor_info
+         --->    du_functor(
+                     % The functor's name and arity.
+                     functor_name    :: string,
+                     functor_arity   :: int
+                 )
+
+         ;       non_du.
+                 % The type is not a discriminated union.
+
+         % Values of this type specify attributes that should be set from
+         % a particular source. The attribute_name field specifies the name
+         % of the attribute in the generated XML and the attribute_source
+         % field indicates where the attribute's value should come from.
+         %
+     :- type attr_from_source
+         --->    attr_from_source(
+                     attr_name   :: string,
+                     attr_source :: attr_source
+                 ).
+
+         % Possible attribute sources.
+         %
+     :- type attr_source
+         --->    functor
+                 % The original functor name as returned by
+                 % deconstruct.deconstruct/5.
+
+         ;       field_name
+                 % The field name if the functor appears in a
+                 % named field (If the field is not named then this
+                 % attribute is omitted).
+
+         ;       type_name
+                 % The fully qualified type name the functor is for.
+
+         ;       arity.
+                 % The arity of the functor as returned by
+                 % deconstruct.deconstruct/5.
+
+         % To support third parties generating XML which is compatible with the
+         % XML generated using method 2, a DTD for a Mercury type can also be
+         % generated. A DTD for a given type and functor-to-element mapping may
+         % be generated provided the following conditions hold:
+         %
+         %   1. If the type is a discriminated union then there must be only
+         %   one top-level functor for the type. This is because the top
+         %   level functor will be used to generate the document type name.
+         %
+         %   2. The functor to element mapping must map each functor to a
+         %   unique element name for every functor that could appear in
+         %   terms of the type.
+         %
+         %   3. Only types whose terms consist of discriminated unions,
+         %   arrays and the builtin types `int', `string', `character' and
+         %   `float' can be used to automatically generate DTDs.
+         %   Existential types are also not supported.
+         %
+         % The generated DTD is also a good reference when creating a stylesheet
+         % as it contains comments describing the mapping from functors to
+         % elements.
+         %
+         % Values of the following type indicate whether a DTD was successfully
+         % generated or not.
+         %
+     :- type dtd_generation_result
+         --->    ok
+
+         ;       multiple_functors_for_root
+                 % The root type is a discriminated union with
+                 % multiple functors.
+
+         ;       duplicate_elements(
+                     % The functor-to-element mapping maps different
+                     % functors to the same element. The duplicate element
+                     % and a list of types whose functors map to that
+                     % element is given.
+                     duplicate_element   :: string,
+                     duplicate_types     :: list(type_desc)
+                 )
+
+         ;       unsupported_dtd_type(type_desc)
+                 % At the moment we only support generation of DTDs for types
+                 % made up of discriminated unions, arrays, strings, ints,
+                 % characters and floats. If a type is not supported, then it is
+                 % returned as the argument of this functor.
+
+         ;       type_not_ground(pseudo_type_desc).
+                 % If one of the arguments of a functor is existentially typed,
+                 % then the pseudo_type_desc for the existentially quantified
+                 % argument is returned as the argument of this functor.
+                 % Since the values of existentially typed arguments can be of
+                 % any type (provided any typeclass constraints are satisfied)
+                 % it is not generally possible to generate DTD rules for functors
+                 % with existentially typed arguments.
+
+         % write_xml_doc_general(Stream, Term, ElementMapping,
+         %   MaybeStyleSheet, MaybeDTD, DTDResult, !State):
+         %
+         % Write Term to the given stream as an XML document using
+         % ElementMapping as the scheme to map functors to elements.
+         % MaybeStyleSheet and MaybeDTD specify whether or not a stylesheet
+         % reference and/or a DTD should be included. Any non-canonical terms
+         % will be canonicalized. If an embedded DTD is requested, but it is
+         % not possible to generate a DTD for Term using ElementMapping, then a
+         % value other than `ok' is returned in DTDResult and nothing is written
+         % out. See the dtd_generation_result type for a list of the other
+         % possible values of DTDResult and their meanings.
+         %
+     :- pred write_xml_doc_general(Stream::in, T::in,
+         element_mapping::in(element_mapping), maybe_stylesheet::in,
+         maybe_dtd::in, dtd_generation_result::out, State::di, State::uo) is det
+         <= stream.writer(Stream, string, State).
+
+         % write_xml_doc_general_cc(Stream, Term, ElementMapping, MaybeStyleSheet,
+         %    MaybeDTD, DTDResult, !State):
+         %
+         % Write Term to the current file output stream as an XML document using
+         % ElementMapping as the scheme to map functors to elements.
+         % MaybeStyleSheet and MaybeDTD specify whether or not a stylesheet
+         % reference and/or a DTD should be included. Any non-canonical terms
+         % will be written out in full. If an embedded DTD is requested, but
+         % it is not possible to generate a DTD for Term using ElementMapping,
+         % then a value other than `ok' is returned in DTDResult and nothing is
+         % written out. See the dtd_generation_result type for a list of the
+         % other possible values of DTDResult and their meanings.
+         %
+     :- pred write_xml_doc_general_cc(Stream::in, T::in,
+         element_mapping::in(element_mapping), maybe_stylesheet::in,
+         maybe_dtd::in, dtd_generation_result::out, State::di, State::uo)
+         is cc_multi <= stream.writer(Stream, string, State).
+
+         % can_generate_dtd(ElementMapping, Type) = Result:
+         %
+         % Check if a DTD can be generated for the given Type using the
+         % functor-to-element mapping scheme ElementMapping. Return `ok' if it
+         % is possible to generate a DTD. See the documentation of the
+         % dtd_generation_result type for the meaning of the return value when
+         % it is not `ok'.
+         %
+     :- func can_generate_dtd(element_mapping::in(element_mapping),
+         type_desc::in) = (dtd_generation_result::out) is det.
+
+         % write_dtd(Stream, Term, ElementMapping, DTDResult, !State):
+         %
+         % Write a DTD for the given term to the current file output stream using
+         % ElementMapping to map functors to elements. If a DTD
+         % cannot be generated for Term using ElementMapping then a value
+         % other than `ok' is returned in DTDResult and nothing is written.
+         % See the dtd_generation_result type for a list of the other
+         % possible values of DTDResult and their meanings.
+         %
+     :- pred write_dtd(Stream::in, T::unused,
+         element_mapping::in(element_mapping), dtd_generation_result::out,
+         State::di, State::uo) is det
+         <= stream.writer(Stream, string, State).
+
+         % write_dtd_for_type(Stream, Type, ElementMapping, DTDResult, !State):
+         %
+         % Write a DTD for the given type to the given stream. If a
+         % DTD cannot be generated for Type using ElementMapping then a value
+         % other than `ok' is returned in DTDResult and nothing is written.
+         % See the dtd_generation_result type for a list of the other
+         % possible values of DTDResult and their meanings.
+         %
+     :- pred write_dtd_from_type(Stream::in, type_desc::in,
+         element_mapping::in(element_mapping), dtd_generation_result::out,
+         State::di, State::uo) is det <= stream.writer(Stream, string, State).
+
+         % write_xml_element_general(Stream, NonCanon, MakeElement, IndentLevel,
+         %   Term, !State):
+         %
+         % Write XML elements for the given term and all its descendents,
+         % using IndentLevel as the initial indentation level (each
+         % indentation level is one tab character) and using the MakeElement
+         % predicate to map functors to elements. No <?xml ... ?>
+         % header will be written. Non-canonical terms will be handled
+         % according to the value of NonCanon. See the deconstruct
+         % module in the standard library for more information on this argument.
+         %
+     :- pred write_xml_element_general(Stream, deconstruct.noncanon_handling,
+         element_mapping, int, T, State, State)
+         <= stream.writer(Stream, string, State).
+     :- mode write_xml_element_general(in, in(do_not_allow), in(element_mapping),
+         in, in, di, uo) is det.
+     :- mode write_xml_element_general(in, in(canonicalize), in(element_mapping),
+         in, in, di, uo) is det.
+     :- mode write_xml_element_general(in, in(include_details_cc),
+         in(element_mapping), in, in, di, uo) is cc_multi.
+     :- mode write_xml_element_general(in, in, in(element_mapping),
+         in, in, di, uo) is cc_multi.
+
+     %--------------------------------------------------%
+     %--------------------------------------------------%
+
+
+File: mercury_library.info,  Node: thread.channel,  Next: thread,  Prev: term_to_xml,  Up: Top
+
+92 thread.channel
+*****************
+
+     %--------------------------------------------------%
+     % vim: ft=mercury ts=4 sw=4 et
+     %--------------------------------------------------%
+     % Copyright (C) 2000-2001, 2006-2007 The University of Melbourne.
+     % This file may only be copied under the terms of the GNU Library General
+     % Public License - see the file COPYING.LIB in the Mercury distribution.
+     %--------------------------------------------------%
+     %
+     % File: thread.channel.m.
+     % Main author: petdr.
+     % Stability: low.
+     %
+     % A mvar can only contain a single value, a channel on the other hand provides
+     % unbounded buffering.
+     %
+     % For example a program could consist of 2 worker threads and one logging
+     % thread.  The worker threads can place messages into the channel, and they
+     % will be buffered for processing by the logging thread.
+     %
+     %--------------------------------------------------%
+     %--------------------------------------------------%
+
+     :- module thread.channel.
+     :- interface.
+
+     :- import_module io.
+     :- import_module maybe.
+
+     %--------------------------------------------------%
+
+     :- type channel(T).
+
+         % Initialise a channel.
+         %
+     :- pred channel.init(channel(T)::out, io::di, io::uo) is det.
+
+         % Put an item at the end of the channel.
+         %
+     :- pred channel.put(channel(T)::in, T::in, io::di, io::uo) is det.
+
+         % Take an item from the start of the channel, block if there is
+         % nothing in the channel.
+         %
+     :- pred channel.take(channel(T)::in, T::out, io::di, io::uo) is det.
+
+         % Take an item from the start of the channel.
+         % Returns immediately with no if the channel was empty.
+         %
+     :- pred channel.try_take(channel(T)::in, maybe(T)::out, io::di, io::uo) is det.
+
+         % Duplicate a channel.  The new channel sees all (and only) the
+         % data written to the channel after the channel.duplicate call.
+         %
+     :- pred channel.duplicate(channel(T)::in, channel(T)::out, io::di, io::uo)
+         is det.
+
+         % Place an item back at the start of the channel.
+         %
+     :- pred channel.untake(channel(T)::in, T::in, io::di, io::uo) is det.
+
+     %--------------------------------------------------%
+     %--------------------------------------------------%
+
+
+File: mercury_library.info,  Node: thread,  Next: thread.mvar,  Prev: thread.channel,  Up: Top
+
+93 thread
+*********
+
+     %--------------------------------------------------%
+     % vim: ft=mercury ts=4 sw=4 et
+     %--------------------------------------------------%
+     % Copyright (C) 2000-2001,2003-2004, 2006-2008, 2010-2011 The University of Melbourne.
+     % This file may only be copied under the terms of the GNU Library General
+     % Public License - see the file COPYING.LIB in the Mercury distribution.
+     %--------------------------------------------------%
+     %
+     % File: thread.m.
+     % Main author: conway.
+     % Stability: medium.
+     %
+     % This module defines the Mercury concurrency interface.
+     %
+     % The term `concurrency' here refers to threads, not necessarily to parallel
+     % execution.  (The latter is also possible if you are using one of the .par
+     % grades and the lowlevel C backend, e.g. grade asm_fast.par.gc).
+     %
+     %--------------------------------------------------%
+     %--------------------------------------------------%
+
+     :- module thread.
+     :- interface.
+
+     :- import_module io.
+
+     :- include_module channel.
+     :- include_module mvar.
+     :- include_module semaphore.
+
+     %--------------------------------------------------%
+
+         % can_spawn succeeds if spawn/3 is supported in the current grade.
+         %
+     :- pred can_spawn is semidet.
+
+         % spawn(Closure, IO0, IO) is true iff `IO0' denotes a list of I/O
+         % transactions that is an interleaving of those performed by `Closure'
+         % and those contained in `IO' - the list of transactions performed by
+         % the continuation of spawn/3.
+         %
+     :- pred spawn(pred(io, io)::in(pred(di, uo) is cc_multi),
+         io::di, io::uo) is cc_multi.
+
+         % yield(IO0, IO) is logically equivalent to (IO = IO0) but
+         % operationally, yields the Mercury engine to some other thread
+         % if one exists.
+         %
+         % NOTE: this is not yet implemented in the hl*.par.gc grades; currently
+         % it is a no-op in those grades.
+         %
+     :- pred yield(io::di, io::uo) is det.
+
+     %--------------------------------------------------%
+     %--------------------------------------------------%
+
+
+File: mercury_library.info,  Node: thread.mvar,  Next: thread.semaphore,  Prev: thread,  Up: Top
+
+94 thread.mvar
+**************
+
+     %--------------------------------------------------%
+     % vim: ft=mercury ts=4 sw=4 et
+     %--------------------------------------------------%
+     % Copyright (C) 2000-2003, 2006-2007, 2011 The University of Melbourne.
+     % This file may only be copied under the terms of the GNU Library General
+     % Public License - see the file COPYING.LIB in the Mercury distribution.
+     %--------------------------------------------------%
+     %
+     % File: thread.mvar.m.
+     % Main author: petdr, fjh.
+     % Stability: low.
+     %
+     % This module provides a Mercury version of Haskell mutable variables.  A
+     % mutable variable (mvar) is a reference to a mutable location which can
+     % either contain a value of type T or be empty.
+     %
+     % Access to a mvar is thread-safe and can be used to synchronize between
+     % different threads.
+     %
+     %--------------------------------------------------%
+     %--------------------------------------------------%
+
+     :- module thread.mvar.
+     :- interface.
+
+     :- import_module bool.
+     :- import_module io.
+     :- import_module maybe.
+
+     %--------------------------------------------------%
+
+     :- type mvar(T).
+
+         % Create an empty mvar.
+         %
+     :- impure func mvar.init = (mvar(T)::uo) is det.
+
+         % Create an empty mvar.
+         %
+     :- pred mvar.init(mvar(T)::out, io::di, io::uo) is det.
+
+         % Take the contents of the mvar out leaving the mvar empty.
+         % If the mvar is empty, block until some thread fills the mvar.
+         %
+     :- pred mvar.take(mvar(T)::in, T::out, io::di, io::uo) is det.
+
+         % Take the contents of the mvar out leaving the mvar empty.
+         % Returns immediately with no if the mvar was empty, or yes(X) if
+         % the mvar contained X.
+         %
+     :- pred mvar.try_take(mvar(T)::in, maybe(T)::out, io::di, io::uo) is det.
+
+         % Place the value of type T into an empty mvar.
+         % If the mvar is full block until it becomes empty.
+         %
+     :- pred mvar.put(mvar(T)::in, T::in, io::di, io::uo) is det.
+
+         % Place the value of type T into an empty mvar, returning yes on success.
+         % If the mvar is full, return no immediately without blocking.
+         %
+     :- pred mvar.try_put(mvar(T)::in, T::in, bool::out, io::di, io::uo) is det.
+
+         % Read the contents of mvar, without taking it out.
+         % If the mvar is empty, block until it is full.
+         % This is equivalent to mvar.take followed by mvar.put.
+         %
+     :- pred mvar.read(mvar(T)::in, T::out, io::di, io::uo) is det.
+
+     %--------------------------------------------------%
+     %--------------------------------------------------%
+
+
+File: mercury_library.info,  Node: thread.semaphore,  Next: time,  Prev: thread.mvar,  Up: Top
+
+95 thread.semaphore
+*******************
+
+     %--------------------------------------------------%
+     % vim: ft=mercury ts=4 sw=4 et
+     %--------------------------------------------------%
+     % Copyright (C) 2000-2001,2003-2004, 2006-2007, 2009-2011 The University of Melbourne.
+     % This file may only be copied under the terms of the GNU Library General
+     % Public License - see the file COPYING.LIB in the Mercury distribution.
+     %--------------------------------------------------%
+     %
+     % File: thread.semaphore.m.
+     % Main author: conway.
+     % Stability: medium.
+     %
+     % This module implements a simple semaphore data type for allowing
+     % coroutines to synchronise with one another.
+     %
+     % The operations in this module are no-ops in the hlc grades that do not
+     % contain a .par component.
+     %
+     %--------------------------------------------------%
+
+     :- module thread.semaphore.
+     :- interface.
+
+     :- import_module bool.
+     :- import_module io.
+
+     %--------------------------------------------------%
+
+     :- type semaphore.
+
+         % init(Sem, !IO) creates a new semaphore `Sem' with its counter
+         % initialized to 0.
+         %
+     :- pred semaphore.init(semaphore::out, io::di, io::uo) is det.
+
+         % A synonym for the above.
+         %
+     :- pragma obsolete(semaphore.new/3).
+     :- pred semaphore.new(semaphore::out, io::di, io::uo) is det.
+
+         % Returns a new semaphore `Sem' with its counter initialized to Count.
+         %
+     :- impure func semaphore.init(int::in) = (semaphore::uo) is det.
+
+         % A synonym for the above.
+         %
+     :- pragma obsolete(semaphore.new/1).
+     :- impure func semaphore.new(int::in) = (semaphore::uo) is det.
+
+         % wait(Sem, !IO) blocks until the counter associated with `Sem'
+         % becomes greater than 0, whereupon it wakes, decrements the
+         % counter and returns.
+         %
+     :- pred semaphore.wait(semaphore::in, io::di, io::uo) is det.
+
+         % try_wait(Sem, Succ, !IO) is the same as wait/3, except that
+         % instead of blocking, it binds `Succ' to a boolean indicating
+         % whether the call succeeded in obtaining the semaphore or not.
+         %
+     :- pred semaphore.try_wait(semaphore::in, bool::out, io::di, io::uo) is det.
+
+         % signal(Sem, !IO) increments the counter associated with `Sem'
+         % and if the resulting counter has a value greater than 0, it wakes
+         % one or more coroutines that are waiting on this semaphore (if
+         % any).
+         %
+     :- pred semaphore.signal(semaphore::in, io::di, io::uo) is det.
+
+     %--------------------------------------------------%
+     %--------------------------------------------------%
+
+
+File: mercury_library.info,  Node: time,  Next: tree234,  Prev: thread.semaphore,  Up: Top
+
+96 time
+*******
+
+     %--------------------------------------------------%
+     % vim: ft=mercury ts=4 sw=4 et wm=0 tw=0
+     %--------------------------------------------------%
+     % Originally written in 1999 by Tomas By <T.By@dcs.shef.ac.uk>
+     % "Feel free to use this code or parts of it any way you want."
+     %
+     % Some portions are Copyright (C) 1999-2007,2009-2012 The University of Melbourne.
+     % This file may only be copied under the terms of the GNU Library General
+     % Public License - see the file COPYING.LIB in the Mercury distribution.
+     %--------------------------------------------------%
+     %
+     % File: time.m.
+     % Main authors: Tomas By <T.By@dcs.shef.ac.uk>, fjh.
+     % Stability: medium.
+     %
+     % Time functions.
+     %
+     %--------------------------------------------------%
+     %--------------------------------------------------%
+
+     :- module time.
+     :- interface.
+
+     :- import_module io.
+     :- import_module maybe.
+
+     %--------------------------------------------------%
+
+         % The `clock_t' type represents times measured in clock ticks.
+         % NOTE: the unit used for a value of this type depends on whether it was
+         % returned by `time.clock' or `time.times'.  See the comments on these
+         % predicates below.
+         %
+     :- type clock_t == int.
+
+         % The `tms' type holds information about the amount of processor
+         % time that a process and its child processes have consumed.
+         %
+     :- type tms
+         --->    tms(
+                     clock_t,    % tms_utime: user time
+                     clock_t,    % tms_stime: system time
+                     clock_t,    % tms_cutime: user time of children
+                     clock_t     % tms_cstime: system time of children
+                 ).
+
+         % The `time_t' type is an abstract type that represents
+         % calendar times.
+         %
+     :- type time_t.
+
+         % The `tm' type is a concrete type that represents calendar
+         % times, broken down into their constituent components.
+         % Comparison (via compare/3) of `tm' values whose `tm_dst'
+         % components are identical is equivalent to comparison of
+         % the times those `tm' values represent.
+         %
+     :- type tm
+         --->    tm(
+                     tm_year :: int,         % Year (number since 1900)
+                     tm_mon  :: int,         % Month (number since January, 0-11)
+                     tm_mday :: int,         % MonthDay (1-31)
+                     tm_hour :: int,         % Hours (after midnight, 0-23)
+                     tm_min  :: int,         % Minutes (0-59)
+                     tm_sec  :: int,         % Seconds (0-61)
+                                             % (60 and 61 are for leap seconds)
+                     tm_yday :: int,         % YearDay (number since Jan 1st, 0-365)
+                     tm_wday :: int,         % WeekDay (number since Sunday, 0-6)
+                     tm_dst  :: maybe(dst)   % IsDST (is DST in effect?)
+                 ).
+
+     :- type dst
+         --->    standard_time   % no, DST is not in effect
+         ;       daylight_time.  % yes, DST is in effect
+
+         % Some of the procedures in this module throw this type
+         % as an exception if they can't obtain a result.
+         %
+     :- type time_error
+         --->    time_error(string). % Error message
+
+     %--------------------------------------------------%
+
+         % time.clock(Result, !IO):
+         %
+         % Returns the elapsed processor time (number of clock ticks). The base time
+         % is arbitrary but doesn't change within a single process. If the time
+         % cannot be obtained, this procedure will throw a time_error exception.
+         % To obtain a time in seconds, divide Result by `time.clocks_per_sec'.
+         %
+         % On Java the elapsed time for the calling thread is returned.
+         %
+     :- pred time.clock(clock_t::out, io::di, io::uo) is det.
+
+         % time.clocks_per_sec:
+         %
+         % Returns the number of "clocks" per second as defined by CLOCKS_PER_SEC.
+         % A `clock_t' value returned by `time.clock' can be divided by this value
+         % to obtain a time in seconds. Note that the value of this function does
+         % not necessarily reflect the actual clock precision; it just indicates the
+         % scaling factor for the results of time.clock.
+         %
+     :- func time.clocks_per_sec = int.
+
+     %--------------------------------------------------%
+
+         % time.time(Result, !IO):
+         %
+         % Returns the current (simple) calendar time. If the time cannot be
+         % obtained, this procedure will throw a time_error exception.
+         %
+     :- pred time.time(time_t::out, io::di, io::uo) is det.
+
+     %--------------------------------------------------%
+
+         % time.times(ProcessorTime, ElapsedRealTime, !IO):
+         %
+         % (POSIX)
+         %
+         % Returns the processor time information in the `tms' value, and the
+         % elapsed real time relative to an arbitrary base in the `clock_t' value.
+         % To obtain a time in seconds, divide the result by `time.clk_tck'.
+         % If the time cannot be obtained, this procedure will throw a time_error
+         % exception.
+         %
+         % On non-POSIX systems that do not support this functionality,
+         % this procedure may simply always throw an exception.
+         %
+         % On Java the times for the calling thread are returned.
+         % On Win32 and Java the child part of 'tms' is always zero.
+         %
+     :- pred time.times(tms::out, clock_t::out, io::di, io::uo) is det.
+
+         % time.clk_tck:
+         %
+         % Returns the number of "clock ticks" per second as defined by
+         % sysconf(_SC_CLK_TCK). A `clock_t' value returned by `time.times'
+         % can be divided by this value to obtain a time in seconds.
+         %
+         % On non-POSIX systems that do not support this functionality,
+         % this procedure may simply always throw an exception.
+         %
+     :- func time.clk_tck = int.
+
+     %--------------------------------------------------%
+
+         % time.difftime(Time1, Time0) = Diff:
+         %
+         % Computes the number of seconds elapsed between `Time1' and `Time0'.
+         %
+     :- func time.difftime(time_t, time_t) = float.
+
+         % time.localtime(Time) = TM:
+         %
+         % Converts the calendar time `Time' to a broken-down representation,
+         % expressed relative to the user's specified time zone.
+         %
+     :- func time.localtime(time_t) = tm.
+
+         % time.gmtime(Time) = TM:
+         %
+         % Converts the calendar time `Time' to a broken-down representation,
+         % expressed as UTC (Universal Coordinated Time).
+         %
+     :- func time.gmtime(time_t) = tm.
+
+         % time.mktime(TM) = Time:
+         %
+         % Converts the broken-down local time value to calendar time.
+         % It also normalises the value by filling in day of week and day of year
+         % based on the other components.
+         %
+     :- func time.mktime(tm) = time_t.
+
+     %--------------------------------------------------%
+
+         % time.asctime(TM) = String:
+         %
+         % Converts the broken-down time value `TM' to a string in a standard
+         % format.
+         %
+     :- func time.asctime(tm) = string.
+
+         % time.ctime(Time) = String:
+         %
+         % Converts the calendar time value `Time' to a string in a standard format
+         % (i.e. same as "asctime (localtime (<time>))").
+         %
+     :- func time.ctime(time_t) = string.
+
+     %--------------------------------------------------%
+     %--------------------------------------------------%
+
+
+File: mercury_library.info,  Node: tree234,  Next: tree_bitset,  Prev: time,  Up: Top
+
+97 tree234
+**********
+
+     %--------------------------------------------------%
+     % vim: ft=mercury ts=4 sw=4 et
+     %--------------------------------------------------%
+     % Copyright (C) 1994-1997,1999-2000,2002-2012 The University of Melbourne.
+     % This file may only be copied under the terms of the GNU Library General
+     % Public License - see the file COPYING.LIB in the Mercury distribution.
+     %--------------------------------------------------%
+     %
+     % File: tree234.m.
+     % Main author: conway.
+     % Stability: medium.
+     %
+     % This module implements a map (dictionary) using 2-3-4 trees - see
+     % map.m for futher documentation.
+     %
+     %--------------------------------------------------%
+     %--------------------------------------------------%
+
+     :- module tree234.
+     :- interface.
+
+     :- import_module assoc_list.
+     :- import_module list.
+     :- import_module pretty_printer.
+     :- import_module term.
+
+     %--------------------------------------------------%
+
+     :- type tree234(K, V).
+
+     :- func tree234.init = tree234(K, V).
+     :- pred tree234.init(tree234(K, V)::uo) is det.
+
+     :- func tree234.singleton(K, V) = tree234(K, V).
+
+     :- pred tree234.is_empty(tree234(K, V)::in) is semidet.
+
+     :- pred tree234.member(tree234(K, V)::in, K::out, V::out) is nondet.
+
+     :- pred tree234.search(tree234(K, V)::in, K::in, V::out) is semidet.
+
+     :- func tree234.lookup(tree234(K, V), K) = V.
+     :- pred tree234.lookup(tree234(K, V)::in, K::in, V::out) is det.
+
+         % Search for a key-value pair using the key.  If there is no entry
+         % for the given key, returns the pair for the next lower key instead.
+         % Fails if there is no key with the given or lower value.
+         %
+     :- pred tree234.lower_bound_search(tree234(K, V)::in, K::in, K::out, V::out)
+         is semidet.
+
+         % Search for a key-value pair using the key.  If there is no entry
+         % for the given key, returns the pair for the next lower key instead.
+         % Aborts if there is no key with the given or lower value.
+         %
+     :- pred tree234.lower_bound_lookup(tree234(K, V)::in, K::in, K::out, V::out)
+         is det.
+
+         % Search for a key-value pair using the key.  If there is no entry
+         % for the given key, returns the pair for the next higher key instead.
+         % Fails if there is no key with the given or higher value.
+         %
+     :- pred tree234.upper_bound_search(tree234(K, V)::in, K::in, K::out, V::out)
+         is semidet.
+
+         % Search for a key-value pair using the key.  If there is no entry
+         % for the given key, returns the pair for the next higher key instead.
+         % Aborts if there is no key with the given or higher value.
+         %
+     :- pred tree234.upper_bound_lookup(tree234(K, V)::in, K::in, K::out, V::out)
+         is det.
+
+     :- func tree234.max_key(tree234(K, V)) = K is semidet.
+
+     :- func tree234.min_key(tree234(K, V)) = K is semidet.
+
+     :- pred tree234.insert(K::in, V::in, tree234(K, V)::in, tree234(K, V)::out)
+         is semidet.
+
+     :- func tree234.set(tree234(K, V), K, V) = tree234(K, V).
+     :- pred tree234.set(K::in, V::in, tree234(K, V)::in, tree234(K, V)::out)
+         is det.
+
+     :- func tree234.delete(tree234(K, V), K) = tree234(K, V).
+     :- pred tree234.delete(K::in, tree234(K, V)::in, tree234(K, V)::out) is det.
+
+     :- pred tree234.remove(K, V, tree234(K, V), tree234(K, V)).
+     :- mode tree234.remove(in, out, in, out) is semidet.
+
+     :- pred tree234.remove_smallest(K, V, tree234(K, V), tree234(K, V)).
+     :- mode tree234.remove_smallest(out, out, in, out) is semidet.
+
+         % Given a tree234, return a list of all the keys in the tree.
+         % The list that is returned is in sorted order.
+         %
+     :- func tree234.keys(tree234(K, V)) = list(K).
+     :- pred tree234.keys(tree234(K, V)::in, list(K)::out) is det.
+
+     :- func tree234.values(tree234(K, V)) = list(V).
+     :- pred tree234.values(tree234(K, V)::in, list(V)::out) is det.
+
+     :- pred tree234.keys_and_values(tree234(K, V)::in, list(K)::out, list(V)::out)
+         is det.
+
+     :- pred tree234.update(K::in, V::in, tree234(K, V)::in, tree234(K, V)::out)
+         is semidet.
+
+         % Update the value at the given key by applying the supplied
+         % transformation to it.  This is faster than first searching for
+         % the value and then updating it.
+         %
+     :- pred tree234.transform_value(pred(V, V)::in(pred(in, out) is det), K::in,
+         tree234(K, V)::in, tree234(K, V)::out) is semidet.
+
+         % Count the number of elements in a tree.
+         %
+     :- func tree234.count(tree234(K, V)) = int.
+     :- pred tree234.count(tree234(K, V)::in, int::out) is det.
+
+     :- func tree234.assoc_list_to_tree234(assoc_list(K, V)) = tree234(K, V).
+     :- pred tree234.assoc_list_to_tree234(assoc_list(K, V)::in,
+         tree234(K, V)::out) is det.
+
+         % Given a tree234, return an association list of all the
+         % keys and values in the tree.  The association list that
+         % is returned is sorted on the keys.
+         %
+     :- func tree234.tree234_to_assoc_list(tree234(K, V)) = assoc_list(K, V).
+     :- pred tree234.tree234_to_assoc_list(tree234(K, V)::in,
+         assoc_list(K, V)::out) is det.
+
+     :- func tree234.foldl(func(K, V, A) = A, tree234(K, V), A) = A.
+
+     :- pred tree234.foldl(pred(K, V, A, A), tree234(K, V), A, A).
+     :- mode tree234.foldl(pred(in, in, in, out) is det, in, in, out) is det.
+     :- mode tree234.foldl(pred(in, in, mdi, muo) is det, in, mdi, muo) is det.
+     :- mode tree234.foldl(pred(in, in, di, uo) is det, in, di, uo) is det.
+     :- mode tree234.foldl(pred(in, in, in, out) is semidet, in, in, out)
+         is semidet.
+     :- mode tree234.foldl(pred(in, in, mdi, muo) is semidet, in, mdi, muo)
+         is semidet.
+     :- mode tree234.foldl(pred(in, in, di, uo) is semidet, in, di, uo)
+         is semidet.
+     :- mode tree234.foldl(pred(in, in, in, out) is cc_multi, in, in, out)
+         is cc_multi.
+     :- mode tree234.foldl(pred(in, in, di, uo) is cc_multi, in, di, uo)
+         is cc_multi.
+     :- mode tree234.foldl(pred(in, in, mdi, muo) is cc_multi, in, mdi, muo)
+         is cc_multi.
+
+     :- pred tree234.foldl2(pred(K, V, A, A, B, B), tree234(K, V), A, A, B, B).
+     :- mode tree234.foldl2(pred(in, in, in, out, in, out) is det,
+         in, in, out, in, out) is det.
+     :- mode tree234.foldl2(pred(in, in, in, out, mdi, muo) is det,
+         in, in, out, mdi, muo) is det.
+     :- mode tree234.foldl2(pred(in, in, in, out, di, uo) is det,
+         in, in, out, di, uo) is det.
+     :- mode tree234.foldl2(pred(in, in, di, uo, di, uo) is det,
+         in, di, uo, di, uo) is det.
+     :- mode tree234.foldl2(pred(in, in, in, out, in, out) is semidet,
+         in, in, out, in, out) is semidet.
+     :- mode tree234.foldl2(pred(in, in, in, out, mdi, muo) is semidet,
+         in, in, out, mdi, muo) is semidet.
+     :- mode tree234.foldl2(pred(in, in, in, out, di, uo) is semidet,
+         in, in, out, di, uo) is semidet.
+     :- mode tree234.foldl2(pred(in, in, in, out, in, out) is cc_multi,
+         in, in, out, in, out) is cc_multi.
+     :- mode tree234.foldl2(pred(in, in, in, out, mdi, muo) is cc_multi,
+         in, in, out, mdi, muo) is cc_multi.
+     :- mode tree234.foldl2(pred(in, in, in, out, di, uo) is cc_multi,
+         in, in, out, di, uo) is cc_multi.
+     :- mode tree234.foldl2(pred(in, in, di, uo, di, uo) is cc_multi,
+         in, di, uo, di, uo) is cc_multi.
+
+     :- pred tree234.foldl3(pred(K, V, A, A, B, B, C, C), tree234(K, V),
+     	A, A, B, B, C, C).
+     :- mode tree234.foldl3(pred(in, in, in, out, in, out, in, out) is det,
+         in, in, out, in, out, in, out) is det.
+     :- mode tree234.foldl3(pred(in, in, in, out, in, out, mdi, muo) is det,
+         in, in, out, in, out, mdi, muo) is det.
+     :- mode tree234.foldl3(pred(in, in, in, out, in, out, di, uo) is det,
+         in, in, out, in, out, di, uo) is det.
+     :- mode tree234.foldl3(pred(in, in, in, out, di, uo, di, uo) is det,
+         in, in, out, di, uo, di, uo) is det.
+     :- mode tree234.foldl3(pred(in, in, di, uo, di, uo, di, uo) is det,
+         in, di, uo, di, uo, di, uo) is det.
+     :- mode tree234.foldl3(pred(in, in, in, out, in, out, in, out) is semidet,
+         in, in, out, in, out, in, out) is semidet.
+     :- mode tree234.foldl3(pred(in, in, in, out, in, out, mdi, muo) is semidet,
+         in, in, out, in, out, mdi, muo) is semidet.
+     :- mode tree234.foldl3(pred(in, in, in, out, in, out, di, uo) is semidet,
+         in, in, out, in, out, di, uo) is semidet.
+
+     :- pred tree234.foldl4(pred(K, V, A, A, B, B, C, C, D, D), tree234(K, V),
+     	A, A, B, B, C, C, D, D).
+     :- mode tree234.foldl4(pred(in, in, in, out, in, out, in, out, in, out)
+     	is det,
+     	in, in, out, in, out, in, out, in, out) is det.
+     :- mode tree234.foldl4(pred(in, in, in, out, in, out, in, out, in, out)
+     	is semidet,
+     	in, in, out, in, out, in, out, in, out) is semidet.
+     :- mode tree234.foldl4(pred(in, in, in, out, in, out, in, out, di, uo) is det,
+     	in, in, out, in, out, in, out, di, uo) is det.
+     :- mode tree234.foldl4(pred(in, in, in, out, in, out, di, uo, di, uo) is det,
+     	in, in, out, in, out, di, uo, di, uo) is det.
+     :- mode tree234.foldl4(pred(in, in, in, out, di, uo, di, uo, di, uo) is det,
+     	in, in, out, di, uo, di, uo, di, uo) is det.
+     :- mode tree234.foldl4(pred(in, in, di, uo, di, uo, di, uo, di, uo) is det,
+     	in, di, uo, di, uo, di, uo, di, uo) is det.
+
+     :- pred tree234.foldl_values(pred(V, A, A), tree234(K, V), A, A).
+     :- mode tree234.foldl_values(pred(in, in, out) is det, in, in, out) is det.
+     :- mode tree234.foldl_values(pred(in, mdi, muo) is det, in, mdi, muo) is det.
+     :- mode tree234.foldl_values(pred(in, di, uo) is det, in, di, uo) is det.
+     :- mode tree234.foldl_values(pred(in, in, out) is semidet, in, in, out)
+         is semidet.
+     :- mode tree234.foldl_values(pred(in, mdi, muo) is semidet, in, mdi, muo)
+         is semidet.
+     :- mode tree234.foldl_values(pred(in, di, uo) is semidet, in, di, uo)
+         is semidet.
+     :- mode tree234.foldl_values(pred(in, in, out) is cc_multi, in, in, out)
+         is cc_multi.
+     :- mode tree234.foldl_values(pred(in, di, uo) is cc_multi, in, di, uo)
+         is cc_multi.
+     :- mode tree234.foldl_values(pred(in, mdi, muo) is cc_multi, in, mdi, muo)
+         is cc_multi.
+
+     :- func tree234.foldr(func(K, V, A) = A, tree234(K, V), A) = A.
+
+     :- pred tree234.foldr(pred(K, V, A, A), tree234(K, V), A, A).
+     :- mode tree234.foldr(pred(in, in, in, out) is det, in, in, out) is det.
+     :- mode tree234.foldr(pred(in, in, mdi, muo) is det, in, mdi, muo) is det.
+     :- mode tree234.foldr(pred(in, in, di, uo) is det, in, di, uo) is det.
+     :- mode tree234.foldr(pred(in, in, in, out) is semidet, in, in, out)
+         is semidet.
+     :- mode tree234.foldr(pred(in, in, mdi, muo) is semidet, in, mdi, muo)
+         is semidet.
+     :- mode tree234.foldr(pred(in, in, di, uo) is semidet, in, di, uo)
+         is semidet.
+     :- mode tree234.foldr(pred(in, in, in, out) is cc_multi, in, in, out)
+         is cc_multi.
+     :- mode tree234.foldr(pred(in, in, di, uo) is cc_multi, in, di, uo)
+         is cc_multi.
+     :- mode tree234.foldr(pred(in, in, mdi, muo) is cc_multi, in, mdi, muo)
+         is cc_multi.
+
+     :- pred tree234.foldr2(pred(K, V, A, A, B, B), tree234(K, V), A, A, B, B).
+     :- mode tree234.foldr2(pred(in, in, in, out, in, out) is det,
+         in, in, out, in, out) is det.
+     :- mode tree234.foldr2(pred(in, in, in, out, mdi, muo) is det,
+         in, in, out, mdi, muo) is det.
+     :- mode tree234.foldr2(pred(in, in, in, out, di, uo) is det,
+         in, in, out, di, uo) is det.
+     :- mode tree234.foldr2(pred(in, in, di, uo, di, uo) is det,
+         in, di, uo, di, uo) is det.
+     :- mode tree234.foldr2(pred(in, in, in, out, in, out) is semidet,
+         in, in, out, in, out) is semidet.
+     :- mode tree234.foldr2(pred(in, in, in, out, mdi, muo) is semidet,
+         in, in, out, mdi, muo) is semidet.
+     :- mode tree234.foldr2(pred(in, in, in, out, di, uo) is semidet,
+         in, in, out, di, uo) is semidet.
+
+     :- pred tree234.foldr3(pred(K, V, A, A, B, B, C, C), tree234(K, V),
+     	A, A, B, B, C, C).
+     :- mode tree234.foldr3(pred(in, in, in, out, in, out, in, out) is det,
+         in, in, out, in, out, in, out) is det.
+     :- mode tree234.foldr3(pred(in, in, in, out, in, out, mdi, muo) is det,
+         in, in, out, in, out, mdi, muo) is det.
+     :- mode tree234.foldr3(pred(in, in, in, out, in, out, di, uo) is det,
+         in, in, out, in, out, di, uo) is det.
+     :- mode tree234.foldr3(pred(in, in, in, out, di, uo, di, uo) is det,
+         in, in, out, di, uo, di, uo) is det.
+     :- mode tree234.foldr3(pred(in, in, di, uo, di, uo, di, uo) is det,
+         in, di, uo, di, uo, di, uo) is det.
+     :- mode tree234.foldr3(pred(in, in, in, out, in, out, in, out) is semidet,
+         in, in, out, in, out, in, out) is semidet.
+     :- mode tree234.foldr3(pred(in, in, in, out, in, out, mdi, muo) is semidet,
+         in, in, out, in, out, mdi, muo) is semidet.
+     :- mode tree234.foldr3(pred(in, in, in, out, in, out, di, uo) is semidet,
+         in, in, out, in, out, di, uo) is semidet.
+
+     :- pred tree234.foldr4(pred(K, V, A, A, B, B, C, C, D, D), tree234(K, V),
+     	A, A, B, B, C, C, D, D).
+     :- mode tree234.foldr4(pred(in, in, in, out, in, out, in, out, in, out)
+     	is det,
+     	in, in, out, in, out, in, out, in, out) is det.
+     :- mode tree234.foldr4(pred(in, in, in, out, in, out, in, out, mdi, muo)
+         is det,
+     	in, in, out, in, out, in, out, mdi, muo) is det.
+     :- mode tree234.foldr4(pred(in, in, in, out, in, out, in, out, di, uo) is det,
+     	in, in, out, in, out, in, out, di, uo) is det.
+     :- mode tree234.foldr4(pred(in, in, in, out, in, out, di, uo, di, uo) is det,
+     	in, in, out, in, out, di, uo, di, uo) is det.
+     :- mode tree234.foldr4(pred(in, in, in, out, di, uo, di, uo, di, uo) is det,
+     	in, in, out, di, uo, di, uo, di, uo) is det.
+     :- mode tree234.foldr4(pred(in, in, di, uo, di, uo, di, uo, di, uo) is det,
+     	in, di, uo, di, uo, di, uo, di, uo) is det.
+     :- mode tree234.foldr4(pred(in, in, in, out, in, out, in, out, in, out)
+     	is semidet,
+     	in, in, out, in, out, in, out, in, out) is semidet.
+     :- mode tree234.foldr4(pred(in, in, in, out, in, out, in, out, mdi, muo)
+     	is semidet,
+     	in, in, out, in, out, in, out, mdi, muo) is semidet.
+     :- mode tree234.foldr4(pred(in, in, in, out, in, out, in, out, di, uo)
+     	is semidet,
+     	in, in, out, in, out, in, out, di, uo) is semidet.
+
+     :- func tree234.map_values(func(K, V) = W, tree234(K, V)) = tree234(K, W).
+
+     :- pred tree234.map_values(pred(K, V, W), tree234(K, V), tree234(K, W)).
+     :- mode tree234.map_values(pred(in, in, out) is det, in, out) is det.
+     :- mode tree234.map_values(pred(in, in, out) is semidet, in, out) is semidet.
+
+     :- func tree234.map_values_only(func(V) = W, tree234(K, V)) = tree234(K, W).
+
+     :- pred tree234.map_values_only(pred(V, W), tree234(K, V), tree234(K, W)).
+     :- mode tree234.map_values_only(pred(in, out) is det, in, out) is det.
+     :- mode tree234.map_values_only(pred(in, out) is semidet, in, out) is semidet.
+
+     :- pred tree234.map_foldl(pred(K, V, W, A, A), tree234(K, V), tree234(K, W),
+         A, A).
+     :- mode tree234.map_foldl(pred(in, in, out, in, out) is det,
+         in, out, in, out) is det.
+     :- mode tree234.map_foldl(pred(in, in, out, mdi, muo) is det,
+         in, out, mdi, muo) is det.
+     :- mode tree234.map_foldl(pred(in, in, out, di, uo) is det,
+         in, out, di, uo) is det.
+     :- mode tree234.map_foldl(pred(in, in, out, in, out) is semidet,
+         in, out, in, out) is semidet.
+     :- mode tree234.map_foldl(pred(in, in, out, mdi, muo) is semidet,
+         in, out, mdi, muo) is semidet.
+     :- mode tree234.map_foldl(pred(in, in, out, di, uo) is semidet,
+         in, out, di, uo) is semidet.
+
+     :- pred tree234.map_foldl2(pred(K, V, W, A, A, B, B),
+         tree234(K, V), tree234(K, W), A, A, B, B).
+     :- mode tree234.map_foldl2(pred(in, in, out, in, out, in, out) is det,
+         in, out, in, out, in, out) is det.
+     :- mode tree234.map_foldl2(pred(in, in, out, in, out, mdi, muo) is det,
+         in, out, in, out, mdi, muo) is det.
+     :- mode tree234.map_foldl2(pred(in, in, out, di, uo, di, uo) is det,
+         in, out, di, uo, di, uo) is det.
+     :- mode tree234.map_foldl2(pred(in, in, out, in, out, di, uo) is det,
+         in, out, in, out, di, uo) is det.
+     :- mode tree234.map_foldl2(pred(in, in, out, in, out, in, out) is semidet,
+         in, out, in, out, in, out) is semidet.
+     :- mode tree234.map_foldl2(pred(in, in, out, in, out, mdi, muo) is semidet,
+         in, out, in, out, mdi, muo) is semidet.
+     :- mode tree234.map_foldl2(pred(in, in, out, in, out, di, uo) is semidet,
+         in, out, in, out, di, uo) is semidet.
+
+     :- pred tree234.map_foldl3(pred(K, V, W, A, A, B, B, C, C),
+         tree234(K, V), tree234(K, W), A, A, B, B, C, C).
+     :- mode tree234.map_foldl3(pred(in, in, out, in, out, in, out, in, out) is det,
+         in, out, in, out, in, out, in, out) is det.
+     :- mode tree234.map_foldl3(pred(in, in, out, in, out, in, out, mdi, muo) is det,
+         in, out, in, out, in, out, mdi, muo) is det.
+     :- mode tree234.map_foldl3(pred(in, in, out, di, uo, di, uo, di, uo) is det,
+         in, out, di, uo, di, uo, di, uo) is det.
+     :- mode tree234.map_foldl3(pred(in, in, out, in, out, di, uo, di, uo) is det,
+         in, out, in, out, di, uo, di, uo) is det.
+     :- mode tree234.map_foldl3(pred(in, in, out, in, out, in, out, di, uo) is det,
+         in, out, in, out, in, out, di, uo) is det.
+     :- mode tree234.map_foldl3(pred(in, in, out, in, out, in, out, in, out)
+         is semidet,
+         in, out, in, out, in, out, in, out) is semidet.
+     :- mode tree234.map_foldl3(pred(in, in, out, in, out, in, out, mdi, muo)
+         is semidet,
+         in, out, in, out, in, out, mdi, muo) is semidet.
+     :- mode tree234.map_foldl3(pred(in, in, out, in, out, in, out, di, uo)
+         is semidet,
+         in, out, in, out, in, out, di, uo) is semidet.
+
+     :- pred tree234.map_values_foldl(pred(V, W, A, A),
+         tree234(K, V), tree234(K, W), A, A).
+     :- mode tree234.map_values_foldl(pred(in, out, di, uo) is det,
+         in, out, di, uo) is det.
+     :- mode tree234.map_values_foldl(pred(in, out, in, out) is det,
+         in, out, in, out) is det.
+     :- mode tree234.map_values_foldl(pred(in, out, in, out) is semidet,
+         in, out, in, out) is semidet.
+
+     :- pred tree234.map_values_foldl2(pred(V, W, A, A, B, B),
+         tree234(K, V), tree234(K, W), A, A, B, B).
+     :- mode tree234.map_values_foldl2(pred(in, out, di, uo, di, uo) is det,
+         in, out, di, uo, di, uo) is det.
+     :- mode tree234.map_values_foldl2(pred(in, out, in, out, di, uo) is det,
+         in, out, in, out, di, uo) is det.
+     :- mode tree234.map_values_foldl2(pred(in, out, in, out, in, out) is det,
+         in, out, in, out, in, out) is det.
+     :- mode tree234.map_values_foldl2(pred(in, out, in, out, in, out) is semidet,
+         in, out, in, out, in, out) is semidet.
+
+     :- pred tree234.map_values_foldl3(pred(V, W, A, A, B, B, C, C),
+         tree234(K, V), tree234(K, W), A, A, B, B, C, C).
+     :- mode tree234.map_values_foldl3(
+         pred(in, out, di, uo, di, uo, di, uo) is det,
+         in, out, di, uo, di, uo, di, uo) is det.
+     :- mode tree234.map_values_foldl3(
+         pred(in, out, in, out, di, uo, di, uo) is det,
+         in, out, in, out, di, uo, di, uo) is det.
+     :- mode tree234.map_values_foldl3(
+         pred(in, out, in, out, in, out, di, uo) is det,
+         in, out, in, out, in, out, di, uo) is det.
+     :- mode tree234.map_values_foldl3(
+         pred(in, out, in, out, in, out, in, out) is det,
+         in, out, in, out, in, out, in, out) is det.
+     :- mode tree234.map_values_foldl3(
+         pred(in, out, in, out, in, out, in, out) is semidet,
+         in, out, in, out, in, out, in, out) is semidet.
+
+         % Convert a tree234 into a pretty_printer.doc.  A tree mapping
+         % K1 to V1, K2 to V2, ... is formatted as
+         % "map([K1 -> V1, K2 -> V2, ...])".  The functor "map" is used
+         % because tree234 values are almost exclusively maps.
+         %
+     :- func tree234_to_doc(tree234(K, V)) = pretty_printer.doc.
+
+         % Given an assoc list of keys and values that are sorted on the keys
+         % in ascending order (with no duplicate keys), convert it directly
+         % to a tree.
+         %
+     :- pred tree234.from_sorted_assoc_list(assoc_list(K, V)::in,
+         tree234(K, V)::out) is det.
+
+         % Given an assoc list of keys and values that are sorted on the keys
+         % in descending order (with no duplicate keys), convert it directly
+         % to a tree.
+         %
+     :- pred tree234.from_rev_sorted_assoc_list(assoc_list(K, V)::in,
+         tree234(K, V)::out) is det.
+
+     %--------------------------------------------------%
+     %--------------------------------------------------%
+
+
+File: mercury_library.info,  Node: tree_bitset,  Next: type_desc,  Prev: tree234,  Up: Top
+
+98 tree_bitset
+**************
+
+     %--------------------------------------------------%
+     % vim: ft=mercury ts=4 sw=4 et
+     %--------------------------------------------------%
+     % Copyright (C) 2006, 2009-2011 The University of Melbourne.
+     % This file may only be copied under the terms of the GNU Library General
+     % Public License - see the file COPYING.LIB in the Mercury distribution.
+     %--------------------------------------------------%
+     %
+     % File: tree_bitset.m.
+     % Author: zs, based on sparse_bitset.m by stayl.
+     % Stability: medium.
+     %
+     % This module provides an ADT for storing sets of non-negative integers.
+     % If the integers stored are closely grouped, a tree_bitset is more compact
+     % than the representation provided by set.m, and the operations will be much
+     % faster. Compared to sparse_bitset.m, the operations provided by this module
+     % for contains, union, intersection and difference can be expected to have
+     % lower asymptotic complexity (often logarithmic in the number of elements in
+     % the sets, rather than linear). The price for this is a representation that
+     % requires more memory, higher constant factors, and an additional factor
+     % representing the tree in the complexity of the operations that construct
+     % tree_bitsets. However, since the depth of the tree has a small upper bound,
+     % we will fold this into the "higher constant factors" in the descriptions of
+     % the complexity of the individual operations below.
+     %
+     % All this means that using a tree_bitset in preference to a sparse_bitset
+     % is likely to be a good idea only when the sizes of the sets to be manipulated
+     % are quite big, or when worst-case performance is important.
+     %
+     % For the time being, this module can only handle items that map to nonnegative
+     % integers. This may change once unsigned integer operations are available.
+     %
+     %--------------------------------------------------%
+     %--------------------------------------------------%
+
+     :- module tree_bitset.
+     :- interface.
+
+     :- import_module enum.
+     :- import_module list.
+     :- import_module term.
+
+     :- use_module set.
+
+     %--------------------------------------------------%
+
+     :- type tree_bitset(T). % <= enum(T).
+
+         % Return an empty set.
+         %
+     :- func init = tree_bitset(T).
+
+     :- pred empty(tree_bitset(T)).
+     :- mode empty(in) is semidet.
+     :- mode empty(out) is det.
+
+     :- pred is_empty(tree_bitset(T)::in) is semidet.
+
+     :- pred is_non_empty(tree_bitset(T)::in) is semidet.
+
+         % `equal(SetA, SetB)' is true iff `SetA' and `SetB' contain the same
+         % elements. Takes O(min(card(SetA), card(SetB))) time.
+         %
+     :- pred equal(tree_bitset(T)::in, tree_bitset(T)::in) is semidet <= enum(T).
+
+         % `list_to_set(List)' returns a set containing only the members of `List'.
+         % Takes O(length(List)) time and space.
+         %
+     :- func list_to_set(list(T)) = tree_bitset(T) <= enum(T).
+
+         % `sorted_list_to_set(List)' returns a set containing only the members
+         % of `List'. `List' must be sorted. Takes O(length(List)) time and space.
+         %
+     :- func sorted_list_to_set(list(T)) = tree_bitset(T) <= enum(T).
+
+         % `from_set(Set)' returns a bitset containing only the members of `Set'.
+         % Takes O(card(Set)) time and space.
+         %
+     :- func from_set(set.set(T)) = tree_bitset(T) <= enum(T).
+
+         % `to_sorted_list(Set)' returns a list containing all the members of `Set',
+         % in sorted order. Takes O(card(Set)) time and space.
+         %
+     :- func to_sorted_list(tree_bitset(T)) = list(T) <= enum(T).
+
+         % `to_sorted_list(Set)' returns a set.set containing all the members
+         % of `Set', in sorted order. Takes O(card(Set)) time and space.
+         %
+     :- func to_set(tree_bitset(T)) = set.set(T) <= enum(T).
+
+         % `make_singleton_set(Elem)' returns a set containing just the single
+         % element `Elem'.
+         %
+     :- func make_singleton_set(T) = tree_bitset(T) <= enum(T).
+
+         % Is the given set a singleton, and if yes, what is the element?
+         %
+     :- pred is_singleton(tree_bitset(T)::in, T::out) is semidet <= enum(T).
+
+         % `subset(Subset, Set)' is true iff `Subset' is a subset of `Set'.
+         % Same as `intersect(Set, Subset, Subset)', but may be more efficient.
+         %
+     :- pred subset(tree_bitset(T)::in, tree_bitset(T)::in) is semidet.
+
+         % `superset(Superset, Set)' is true iff `Superset' is a superset of `Set'.
+         % Same as `intersect(Superset, Set, Set)', but may be more efficient.
+         %
+     :- pred superset(tree_bitset(T)::in, tree_bitset(T)::in) is semidet.
+
+         % `contains(Set, X)' is true iff `X' is a member of `Set'.
+         % Takes O(log(card(Set))) time.
+         %
+     :- pred contains(tree_bitset(T)::in, T::in) is semidet <= enum(T).
+
+         % `member(X, Set)' is true iff `X' is a member of `Set'.
+         % Takes O(card(Set)) time for the semidet mode.
+         %
+     :- pred member(T, tree_bitset(T)) <= enum(T).
+     :- mode member(in, in) is semidet.
+     :- mode member(out, in) is nondet.
+
+         % `insert(Set, X)' returns the union of `Set' and the set containing
+         % only `X'. Takes O(log(card(Set))) time and space.
+         %
+     :- func insert(tree_bitset(T), T) = tree_bitset(T) <= enum(T).
+     :- pred insert(T::in, tree_bitset(T)::in, tree_bitset(T)::out)
+         is det <= enum(T).
+
+         % `insert_list(Set, X)' returns the union of `Set' and the set containing
+         % only the members of `X'. Same as `union(Set, list_to_set(X))', but may be
+         % more efficient.
+         %
+     :- func insert_list(tree_bitset(T), list(T)) = tree_bitset(T) <= enum(T).
+     :- pred insert_list(list(T)::in, tree_bitset(T)::in, tree_bitset(T)::out)
+         is det <= enum(T).
+
+         % `delete(Set, X)' returns the difference of `Set' and the set containing
+         % only `X'. Takes O(card(Set)) time and space.
+         %
+     :- func delete(tree_bitset(T), T) = tree_bitset(T) <= enum(T).
+     :- pred delete(T::in, tree_bitset(T)::in, tree_bitset(T)::out)
+         is det <= enum(T).
+
+         % `delete_list(Set, X)' returns the difference of `Set' and the set
+         % containing only the members of `X'. Same as
+         % `difference(Set, list_to_set(X))', but may be more efficient.
+         %
+     :- func delete_list(tree_bitset(T), list(T)) = tree_bitset(T) <= enum(T).
+     :- pred delete_list(list(T)::in, tree_bitset(T)::in, tree_bitset(T)::out)
+         is det <= enum(T).
+
+         % `remove(X, Set0, Set)' returns in `Set' the difference of `Set0'
+         % and the set containing only `X', failing if `Set0' does not contain `X'.
+         % Takes O(log(card(Set))) time and space.
+         %
+     :- pred remove(T::in, tree_bitset(T)::in, tree_bitset(T)::out)
+         is semidet <= enum(T).
+
+         % `remove_list(X, Set0, Set)' returns in `Set' the difference of `Set0'
+         % and the set containing all the elements of `X', failing if any element
+         % of `X' is not in `Set0'. Same as `subset(list_to_set(X), Set0),
+         % difference(Set0, list_to_set(X), Set)', but may be more efficient.
+         %
+     :- pred remove_list(list(T)::in, tree_bitset(T)::in, tree_bitset(T)::out)
+         is semidet <= enum(T).
+
+         % `remove_leq(Set, X)' returns `Set' with all elements less than or equal
+         % to `X' removed. In other words, it returns the set containing all the
+         % elements of `Set' which are greater than `X'. Takes O(log(card(Set)))
+         % time and space.
+         %
+     :- func remove_leq(tree_bitset(T), T) = tree_bitset(T) <= enum(T).
+
+         % `remove_gt(Set, X)' returns `Set' with all elements greater than `X'
+         % removed. In other words, it returns the set containing all the elements
+         % of `Set' which are less than or equal to `X'. Takes O(log(card(Set)))
+         % time and space.
+         %
+     :- func remove_gt(tree_bitset(T), T) = tree_bitset(T) <= enum(T).
+
+         % `remove_least(Set0, X, Set)' is true iff `X' is the least element in
+         % `Set0', and `Set' is the set which contains all the elements of `Set0'
+         % except `X'. Takes O(1) time and space.
+         %
+     :- pred remove_least(T::out, tree_bitset(T)::in, tree_bitset(T)::out)
+         is semidet <= enum(T).
+
+         % `union(SetA, SetB)' returns the union of `SetA' and `SetB'. The
+         % efficiency of the union operation is not sensitive to the argument
+         % ordering. Takes somewhere between O(log(card(SetA)) + log(card(SetB)))
+         % and O(card(SetA) + card(SetB)) time and space.
+         %
+     :- func union(tree_bitset(T), tree_bitset(T)) = tree_bitset(T).
+     :- pred union(tree_bitset(T)::in, tree_bitset(T)::in, tree_bitset(T)::out)
+         is det.
+
+         % `intersect(SetA, SetB)' returns the intersection of `SetA' and `SetB'.
+         % The efficiency of the intersection operation is not sensitive to the
+         % argument ordering. Takes somewhere between
+         % O(log(card(SetA)) + log(card(SetB))) and O(card(SetA) + card(SetB)) time,
+         % and O(min(card(SetA)), card(SetB)) space.
+         %
+     :- func intersect(tree_bitset(T), tree_bitset(T)) = tree_bitset(T).
+     :- pred intersect(tree_bitset(T)::in, tree_bitset(T)::in, tree_bitset(T)::out)
+         is det.
+
+         % `difference(SetA, SetB)' returns the set containing all the elements
+         % of `SetA' except those that occur in `SetB'. Takes somewhere between
+         % O(log(card(SetA)) + log(card(SetB))) and O(card(SetA) + card(SetB)) time,
+         % and O(card(SetA)) space.
+         %
+     :- func difference(tree_bitset(T), tree_bitset(T)) = tree_bitset(T).
+     :- pred difference(tree_bitset(T)::in, tree_bitset(T)::in, tree_bitset(T)::out)
+         is det.
+
+         % divide(Pred, Set, InPart, OutPart):
+         % InPart consists of those elements of Set for which Pred succeeds;
+         % OutPart consists of those elements of Set for which Pred fails.
+         %
+     :- pred divide(pred(T)::in(pred(in) is semidet), tree_bitset(T)::in,
+         tree_bitset(T)::out, tree_bitset(T)::out) is det <= enum(T).
+
+         % divide_by_set(DivideBySet, Set, InPart, OutPart):
+         % InPart consists of those elements of Set which are also in DivideBySet;
+         % OutPart consists of those elements of Set which are not in DivideBySet.
+         %
+     :- pred divide_by_set(tree_bitset(T)::in, tree_bitset(T)::in,
+         tree_bitset(T)::out, tree_bitset(T)::out) is det <= enum(T).
+
+         % `count(Set)' returns the number of elements in `Set'.
+         % Takes O(card(Set)) time.
+         %
+     :- func count(tree_bitset(T)) = int <= enum(T).
+
+         % `foldl(Func, Set, Start)' calls Func with each element of `Set'
+         % (in sorted order) and an accumulator (with the initial value of `Start'),
+         % and returns the final value. Takes O(card(Set)) time.
+         %
+     :- func foldl(func(T, U) = U, tree_bitset(T), U) = U <= enum(T).
+
+     :- pred foldl(pred(T, U, U), tree_bitset(T), U, U) <= enum(T).
+     :- mode foldl(pred(in, in, out) is det, in, in, out) is det.
+     :- mode foldl(pred(in, mdi, muo) is det, in, mdi, muo) is det.
+     :- mode foldl(pred(in, di, uo) is det, in, di, uo) is det.
+     :- mode foldl(pred(in, in, out) is semidet, in, in, out) is semidet.
+     :- mode foldl(pred(in, mdi, muo) is semidet, in, mdi, muo) is semidet.
+     :- mode foldl(pred(in, di, uo) is semidet, in, di, uo) is semidet.
+     :- mode foldl(pred(in, in, out) is nondet, in, in, out) is nondet.
+     :- mode foldl(pred(in, mdi, muo) is nondet, in, mdi, muo) is nondet.
+     :- mode foldl(pred(in, di, uo) is cc_multi, in, di, uo) is cc_multi.
+     :- mode foldl(pred(in, in, out) is cc_multi, in, in, out) is cc_multi.
+
+     :- pred foldl2(pred(T, U, U, V, V), tree_bitset(T), U, U, V, V) <= enum(T).
+     :- mode foldl2(pred(in, di, uo, di, uo) is det, in, di, uo, di, uo) is det.
+     :- mode foldl2(pred(in, in, out, di, uo) is det, in, in, out, di, uo) is det.
+     :- mode foldl2(pred(in, in, out, in, out) is det, in, in, out, in, out) is det.
+     :- mode foldl2(pred(in, in, out, in, out) is semidet, in, in, out, in, out)
+         is semidet.
+     :- mode foldl2(pred(in, in, out, in, out) is nondet, in, in, out, in, out)
+         is nondet.
+     :- mode foldl2(pred(in, di, uo, di, uo) is cc_multi, in, di, uo, di, uo)
+         is cc_multi.
+     :- mode foldl2(pred(in, in, out, di, uo) is cc_multi, in, in, out, di, uo)
+         is cc_multi.
+     :- mode foldl2(pred(in, in, out, in, out) is cc_multi, in, in, out, in, out)
+         is cc_multi.
+
+         % `foldr(Func, Set, Start)' calls Func with each element of `Set'
+         % (in reverse sorted order) and an accumulator (with the initial value
+         % of `Start'), and returns the final value. Takes O(card(Set)) time.
+         %
+     :- func foldr(func(T, U) = U, tree_bitset(T), U) = U <= enum(T).
+
+     :- pred foldr(pred(T, U, U), tree_bitset(T), U, U) <= enum(T).
+     :- mode foldr(pred(in, di, uo) is det, in, di, uo) is det.
+     :- mode foldr(pred(in, in, out) is det, in, in, out) is det.
+     :- mode foldr(pred(in, in, out) is semidet, in, in, out) is semidet.
+     :- mode foldr(pred(in, in, out) is nondet, in, in, out) is nondet.
+     :- mode foldr(pred(in, di, uo) is cc_multi, in, di, uo) is cc_multi.
+     :- mode foldr(pred(in, in, out) is cc_multi, in, in, out) is cc_multi.
+
+     :- pred foldr2(pred(T, U, U, V, V), tree_bitset(T), U, U, V, V) <= enum(T).
+     :- mode foldr2(pred(in, di, uo, di, uo) is det, in, di, uo, di, uo) is det.
+     :- mode foldr2(pred(in, in, out, di, uo) is det, in, in, out, di, uo) is det.
+     :- mode foldr2(pred(in, in, out, in, out) is det, in, in, out, in, out) is det.
+     :- mode foldr2(pred(in, in, out, in, out) is semidet, in, in, out, in, out)
+         is semidet.
+     :- mode foldr2(pred(in, in, out, in, out) is nondet, in, in, out, in, out)
+         is nondet.
+     :- mode foldr2(pred(in, di, uo, di, uo) is cc_multi, in, di, uo, di, uo)
+         is cc_multi.
+     :- mode foldr2(pred(in, in, out, di, uo) is cc_multi, in, in, out, di, uo)
+         is cc_multi.
+     :- mode foldr2(pred(in, in, out, in, out) is cc_multi, in, in, out, in, out)
+         is cc_multi.
+
+         % `filter(Pred, Set) = TrueSet' returns the elements of Set for which
+         % Pred succeeds.
+         %
+     :- func filter(pred(T), tree_bitset(T)) = tree_bitset(T) <= enum(T).
+     :- mode filter(pred(in) is semidet, in) = out is det.
+
+         % `filter(Pred, Set, TrueSet, FalseSet)' returns the elements of Set
+         % for which Pred succeeds, and those for which it fails.
+         %
+     :- pred filter(pred(T), tree_bitset(T), tree_bitset(T), tree_bitset(T))
+         <= enum(T).
+     :- mode filter(pred(in) is semidet, in, out, out) is det.
+
+     %--------------------------------------------------%
+     %--------------------------------------------------%
+
+
+File: mercury_library.info,  Node: type_desc,  Next: unit,  Prev: tree_bitset,  Up: Top
+
+99 type_desc
+************
+
+     %--------------------------------------------------%
+     % vim: ft=mercury ts=4 sw=4 et wm=0 tw=0
+     %--------------------------------------------------%
+     % Copyright (C) 2002-2007, 2009-2011 The University of Melbourne.
+     % This file may only be copied under the terms of the GNU Library General
+     % Public License - see the file COPYING.LIB in the Mercury distribution.
+     %--------------------------------------------------%
+     %
+     % File: type_desc.m.
+     % Main author: fjh, zs.
+     % Stability: low.
+     %
+     %--------------------------------------------------%
+     %--------------------------------------------------%
+
+     :- module type_desc.
+     :- interface.
+
+     :- import_module list.
+
+     %--------------------------------------------------%
+
+         % The `type_desc', `pseudo_type_desc' and `type_ctor_desc' types
+         % provide access to type information.
+         % A type_desc represents a type, e.g. `list(int)'.
+         % A pseudo_type_desc represents a type that possibly contains type
+         % variables, e.g. `list(T)'.
+         % A type_ctor_desc represents a type constructor, e.g. `list/1'.
+         %
+     :- type type_desc.
+     :- type pseudo_type_desc.
+     :- type type_ctor_desc.
+
+         % The possibly nonground type represented by a pseudo_type_desc
+         % is either a type constructor applied to zero or more
+         % pseudo_type_descs, or a type variable. If the latter, the
+         % type variable may be either universally or existentially quantified.
+         % In either case, the type is identified by an integer, which has no
+         % meaning beyond the fact that two type variables will be represented
+         % by identical integers if and only if they are the same type variable.
+         % Existentially quantified type variables may have type class
+         % constraints placed on them, but for now we can't return these.
+         %
+     :- type pseudo_type_rep
+         --->    bound(type_ctor_desc, list(pseudo_type_desc))
+         ;       univ_tvar(int)
+         ;       exist_tvar(int).
+
+     :- pred pseudo_type_desc_is_ground(pseudo_type_desc::in) is semidet.
+
+         % This function allows the caller to look into the structure
+         % of the given pseudo_type_desc.
+         %
+     :- func pseudo_type_desc_to_rep(pseudo_type_desc) = pseudo_type_rep.
+
+         % Convert a type_desc, which by definition describes a ground type,
+         % to a pseudo_type_desc.
+         %
+     :- func type_desc_to_pseudo_type_desc(type_desc) = pseudo_type_desc.
+
+         % Convert a pseudo_type_desc describing a ground type to a type_desc.
+         % If the pseudo_type_desc describes a non-ground type, fail.
+         %
+     :- func ground_pseudo_type_desc_to_type_desc(pseudo_type_desc) = type_desc
+         is semidet.
+
+         % Convert a pseudo_type_desc describing a ground type to a type_desc.
+         % If the pseudo_type_desc describes a non-ground type, abort.
+         %
+     :- func det_ground_pseudo_type_desc_to_type_desc(pseudo_type_desc) = type_desc.
+
+         % An obsolete synonym for the above.
+         %
+     :- pragma obsolete(ground_pseudo_type_desc_to_type_desc_det/1).
+     :- func ground_pseudo_type_desc_to_type_desc_det(pseudo_type_desc) = type_desc.
+
+         % The function type_of/1 returns a representation of the type
+         % of its argument.
+         %
+         % (Note: it is not possible for the type of a variable to be an unbound
+         % type variable; if there are no constraints on a type variable, then the
+         % typechecker will use the type `void'. `void' is a special (builtin) type
+         % that has no constructors. There is no way of creating an object of
+         % type `void'. `void' is not considered to be a discriminated union, so
+         % get_functor/5 and construct/3 will fail if used upon a value of
+         % this type.)
+         %
+     :- func type_of(T::unused) = (type_desc::out) is det.
+
+         % The predicate has_type/2 is basically an existentially typed inverse
+         % to the function type_of/1. It constrains the type of the first argument
+         % to be the type represented by the second argument.
+         %
+     :- some [T] pred has_type(T::unused, type_desc::in) is det.
+
+         % The predicate same_type/2 ensures type identity of the two arguments.
+         %
+     :- pred same_type(T::unused, T::unused) is det.
+
+         % type_name(Type) returns the name of the specified type
+         % (e.g. type_name(type_of([2,3])) = "list.list(int)").
+         % Any equivalence types will be fully expanded.
+         % Builtin types (those defined in builtin.m) will not have
+         % a module qualifier.
+         %
+     :- func type_name(type_desc) = string.
+
+         % type_ctor_and_args(Type, TypeCtor, TypeArgs):
+         %
+         % True iff `TypeCtor' is a representation of the top-level type constructor
+         % for `Type', and `TypeArgs' is a list of the corresponding type arguments
+         % to `TypeCtor', and `TypeCtor' is not an equivalence type.
+         %
+         % For example, type_ctor_and_args(type_of([2,3]), TypeCtor, TypeArgs)
+         % will bind `TypeCtor' to a representation of the type constructor list/1,
+         % and will bind `TypeArgs' to the list `[Int]', where `Int' is a
+         % representation of the type `int'.
+         %
+         % Note that the requirement that `TypeCtor' not be an equivalence type
+         % is fulfilled by fully expanding any equivalence types. For example,
+         % if you have a declaration `:- type foo == bar.', then
+         % type_ctor_and_args/3 will always return a representation of type
+         % constructor `bar/0', not `foo/0'. (If you don't want them expanded,
+         %% you can use the reverse mode of make_type/2 instead.)
+         %
+     :- pred type_ctor_and_args(type_desc::in,
+         type_ctor_desc::out, list(type_desc)::out) is det.
+
+         % pseudo_type_ctor_and_args(Type, TypeCtor, TypeArgs):
+         %
+         % True iff `TypeCtor' is a representation of the top-level type constructor
+         % for `Type', and `TypeArgs' is a list of the corresponding type arguments
+         % to `TypeCtor', and `TypeCtor' is not an equivalence type.
+         %
+         % Similar to type_ctor_and_args, but works on pseudo_type_infos.
+         % Fails if the input pseudo_type_info is a variable.
+         %
+     :- pred pseudo_type_ctor_and_args(pseudo_type_desc::in,
+         type_ctor_desc::out, list(pseudo_type_desc)::out) is semidet.
+
+         % type_ctor(Type) = TypeCtor :-
+         %   type_ctor_and_args(Type, TypeCtor, _).
+         %
+     :- func type_ctor(type_desc) = type_ctor_desc.
+
+         % pseudo_type_ctor(Type) = TypeCtor :-
+         %   pseudo_type_ctor_and_args(Type, TypeCtor, _).
+         %
+     :- func pseudo_type_ctor(pseudo_type_desc) = type_ctor_desc is semidet.
+
+         % type_args(Type) = TypeArgs :-
+         %   type_ctor_and_args(Type, _, TypeArgs).
+         %
+     :- func type_args(type_desc) = list(type_desc).
+
+         % pseudo_type_args(Type) = TypeArgs :-
+         %   pseudo_type_ctor_and_args(Type, _, TypeArgs).
+         %
+     :- func pseudo_type_args(pseudo_type_desc) = list(pseudo_type_desc) is semidet.
+
+         % type_ctor_name(TypeCtor) returns the name of specified type constructor.
+         % (e.g. type_ctor_name(type_ctor(type_of([2,3]))) = "list").
+         %
+     :- func type_ctor_name(type_ctor_desc) = string.
+
+         % type_ctor_module_name(TypeCtor) returns the module name of specified
+         % type constructor.
+         % (e.g. type_ctor_module_name(type_ctor(type_of(2))) = "builtin").
+         %
+     :- func type_ctor_module_name(type_ctor_desc) = string.
+
+         % type_ctor_arity(TypeCtor) returns the arity of specified
+         % type constructor.
+         % (e.g. type_ctor_arity(type_ctor(type_of([2,3]))) = 1).
+         %
+     :- func type_ctor_arity(type_ctor_desc) = int.
+
+         % type_ctor_name_and_arity(TypeCtor, ModuleName, TypeName, Arity) :-
+         %   Name = type_ctor_name(TypeCtor),
+         %   ModuleName = type_ctor_module_name(TypeCtor),
+         %   Arity = type_ctor_arity(TypeCtor).
+         %
+     :- pred type_ctor_name_and_arity(type_ctor_desc::in,
+         string::out, string::out, int::out) is det.
+
+         % make_type(TypeCtor, TypeArgs) = Type:
+         %
+         % True iff `Type' is a type constructed by applying the type constructor
+         % `TypeCtor' to the type arguments `TypeArgs'.
+         %
+         % Operationally, the forwards mode returns the type formed by applying
+         % the specified type constructor to the specified argument types, or fails
+         % if the length of TypeArgs is not the same as the arity of TypeCtor.
+         % The reverse mode returns a type constructor and its argument types,
+         % given a type_desc; the type constructor returned may be an equivalence
+         % type (and hence this reverse mode of make_type/2 may be more useful
+         % for some purposes than the type_ctor/1 function).
+         %
+     :- func make_type(type_ctor_desc, list(type_desc)) = type_desc.
+     :- mode make_type(in, in) = out is semidet.
+     :- mode make_type(out, out) = in is cc_multi.
+
+         % det_make_type(TypeCtor, TypeArgs):
+         %
+         % Returns the type formed by applying the specified type constructor
+         % to the specified argument types. Aborts if the length of `TypeArgs'
+         % is not the same as the arity of `TypeCtor'.
+         %
+     :- func det_make_type(type_ctor_desc, list(type_desc)) = type_desc.
+
+     %--------------------------------------------------%
+     %--------------------------------------------------%
+
+
+File: mercury_library.info,  Node: unit,  Next: univ,  Prev: type_desc,  Up: Top
+
+100 unit
+********
+
+     %--------------------------------------------------%
+     % vim: ft=mercury ts=4 sw=4 et wm=0 tw=0
+     %--------------------------------------------------%
+     % Copyright (C) 1994-2006 The University of Melbourne.
+     % This file may only be copied under the terms of the GNU Library General
+     % Public License - see the file COPYING.LIB in the Mercury distribution.
+     %--------------------------------------------------%
+     %
+     % File: unit.m.
+     % Main author: fjh.
+     % Stability: high.
+     %
+     % The "unit" type -  stores no information at all.
+     %
+     %--------------------------------------------------%
+     %--------------------------------------------------%
+
+     :- module unit.
+     :- interface.
+
+     %--------------------------------------------------%
+
+     :- type unit ---> unit.
+
+     :- type unit(T) ---> unit1.
+
+     %--------------------------------------------------%
+     :- end_module unit.
+     %--------------------------------------------------%
+
+
+File: mercury_library.info,  Node: univ,  Next: varset,  Prev: unit,  Up: Top
+
+101 univ
+********
+
+     %--------------------------------------------------%
+     % vim: ft=mercury ts=4 sw=4 et wm=0 tw=0
+     %--------------------------------------------------%
+     % Copyright (C) 1994-2010 The University of Melbourne.
+     % This file may only be copied under the terms of the GNU Library General
+     % Public License - see the file COPYING.LIB in the Mercury distribution.
+     %--------------------------------------------------%
+     %
+     % File: univ.m.
+     % Main author: fjh.
+     % Stability: medium.
+     %
+     % The universal type `univ'
+     %
+     %--------------------------------------------------%
+     %--------------------------------------------------%
+
+     :- module univ.
+     :- interface.
+
+     :- import_module type_desc.
+
+     %--------------------------------------------------%
+
+         % An object of type `univ' can hold the type and value of an object of any
+         % other type.
+         %
+     :- type univ.
+
+         % type_to_univ(Object, Univ).
+         %
+         % True iff the type stored in `Univ' is the same as the type of `Object',
+         % and the value stored in `Univ' is equal to the value of `Object'.
+         %
+         % Operational, the forwards mode converts an object to type `univ',
+         % while the reverse mode converts the value stored in `Univ'
+         % to the type of `Object', but fails if the type stored in `Univ'
+         % does not match the type of `Object'.
+         %
+     :- pred type_to_univ(T, univ).
+     :- mode type_to_univ(di, uo) is det.
+     :- mode type_to_univ(in, out) is det.
+     :- mode type_to_univ(out, in) is semidet.
+
+         % univ_to_type(Univ, Object) :- type_to_univ(Object, Univ).
+         %
+     :- pred univ_to_type(univ, T).
+     :- mode univ_to_type(in, out) is semidet.
+     :- mode univ_to_type(out, in) is det.
+     :- mode univ_to_type(uo, di) is det.
+
+         % The function univ/1 provides the same functionality as type_to_univ/2.
+         % univ(Object) = Univ :- type_to_univ(Object, Univ).
+         %
+     :- func univ(T) = univ.
+     :- mode univ(in) = out is det.
+     :- mode univ(di) = uo is det.
+     :- mode univ(out) = in is semidet.
+
+         % det_univ_to_type(Univ, Object).
+         %
+         % The same as the forwards mode of univ_to_type, but aborts
+         % if univ_to_type fails.
+         %
+     :- pred det_univ_to_type(univ::in, T::out) is det.
+
+         % univ_type(Univ).
+         %
+         % Returns the type_desc for the type stored in `Univ'.
+         %
+     :- func univ_type(univ) = type_desc.
+
+         % univ_value(Univ).
+         %
+         % Returns the value of the object stored in Univ.
+         %
+     :- some [T] func univ_value(univ) = T.
+
+     %--------------------------------------------------%
+     %--------------------------------------------------%
+
+
+File: mercury_library.info,  Node: varset,  Next: version_array,  Prev: univ,  Up: Top
+
+102 varset
+**********
+
+     %--------------------------------------------------%
+     % vim: ft=mercury ts=4 sw=4 et wm=0 tw=0
+     %--------------------------------------------------%
+     % Copyright (C) 1993-2000,2002-2007, 2009-2011 The University of Melbourne.
+     % This file may only be copied under the terms of the GNU Library General
+     % Public License - see the file COPYING.LIB in the Mercury distribution.
+     %--------------------------------------------------%
+     %
+     % File: varset.m.
+     % Main author: fjh.
+     % Stability: low.
+     %
+     % This file provides facilities for manipulating collections of
+     % variables and terms.
+     % It provides the 'varset' ADT. A varset is a set of variables.
+     % (These variables are object-level variables, and are represented
+     % as ground terms, so it might help to think of them as "variable ids"
+     % rather than variables.)
+     % Associated with each variable there can be both a name and a value
+     % (binding).
+     %
+     % There may be some design flaws in the relationship between varset.m, and
+     % term.m.  Once we have implemented unique modes and destructive assignment, we
+     % will need to rethink the design;  we may end up modifying these modules
+     % considerably, or we may end up making new single-threaded versions of these
+     % modules.
+     %
+     %--------------------------------------------------%
+     %--------------------------------------------------%
+
+     :- module varset.
+     :- interface.
+
+     :- import_module assoc_list.
+     :- import_module list.
+     :- import_module map.
+     :- import_module maybe.
+     :- import_module set.
+     :- import_module term.
+
+     %--------------------------------------------------%
+
+     :- type varset(T).
+
+     :- type varset  ==  varset(generic).
+
+         % Construct an empty varset.
+         %
+     :- func varset.init = varset(T).
+     :- pred varset.init(varset(T)::out) is det.
+
+         % Check whether a varset is empty.
+         %
+     :- pred varset.is_empty(varset(T)::in) is semidet.
+
+         % Create a new variable.
+         %
+     :- pred varset.new_var(var(T)::out, varset(T)::in, varset(T)::out) is det.
+
+         % Create a new named variable.
+         %
+     :- pred varset.new_named_var(string::in, var(T)::out,
+         varset(T)::in, varset(T)::out) is det.
+
+         % Create a new named variable with a unique (w.r.t. the
+         % varset) number appended to the name.
+         %
+     :- pred varset.new_uniquely_named_var(string::in, var(T)::out,
+         varset(T)::in, varset(T)::out) is det.
+
+         % Create a new variable, and maybe give it a name.
+         %
+     :- pred varset.new_maybe_named_var(maybe(string)::in, var(T)::out,
+         varset(T)::in, varset(T)::out) is det.
+
+         % Create multiple new variables.
+         %
+     :- pred varset.new_vars(int::in, list(var(T))::out,
+         varset(T)::in, varset(T)::out) is det.
+
+         % Delete the name and value for a variable.
+         %
+     :- func varset.delete_var(varset(T), var(T)) = varset(T).
+     :- pred varset.delete_var(var(T)::in, varset(T)::in, varset(T)::out) is det.
+
+         % Delete the names and values for a list of variables.
+         %
+     :- func varset.delete_vars(varset(T), list(var(T))) = varset(T).
+     :- pred varset.delete_vars(list(var(T))::in, varset(T)::in, varset(T)::out)
+         is det.
+
+         % Return a list of all the variables in a varset.
+         %
+     :- func varset.vars(varset(T)) = list(var(T)).
+     :- pred varset.vars(varset(T)::in, list(var(T))::out) is det.
+
+         % Set the name of a variable.
+         %
+     :- func varset.name_var(varset(T), var(T), string) = varset(T).
+     :- pred varset.name_var(var(T)::in, string::in,
+         varset(T)::in, varset(T)::out) is det.
+
+         % Lookup the name of a variable;
+         % create one if it doesn't have one using V_ as a prefix.
+         %
+     :- func varset.lookup_name(varset(T), var(T)) = string.
+     :- pred varset.lookup_name(varset(T)::in, var(T)::in, string::out) is det.
+
+         % Lookup the name of a variable;
+         % create one if it doesn't have one using the specified prefix
+         %
+     :- func varset.lookup_name(varset(T), var(T), string) = string.
+     :- pred varset.lookup_name(varset(T)::in, var(T)::in, string::in, string::out)
+         is det.
+
+         % Lookup the name of a variable;
+         % fail if it doesn't have one
+         %
+     :- pred varset.search_name(varset(T)::in, var(T)::in, string::out) is semidet.
+
+         % Bind a value to a variable.
+         % This will overwrite any existing binding.
+         %
+     :- func varset.bind_var(varset(T), var(T), term(T)) = varset(T).
+     :- pred varset.bind_var(var(T)::in, term(T)::in,
+         varset(T)::in, varset(T)::out) is det.
+
+         % Bind a set of terms to a set of variables.
+         %
+     :- func varset.bind_vars(varset(T), substitution(T)) = varset(T).
+     :- pred varset.bind_vars(substitution(T)::in,
+         varset(T)::in, varset(T)::out) is det.
+
+         % Lookup the value of a variable.
+         %
+     :- pred varset.search_var(varset(T)::in, var(T)::in, term(T)::out) is semidet.
+
+         % Get the bindings for all the bound variables.
+         %
+     :- func varset.lookup_vars(varset(T)) = substitution(T).
+     :- pred varset.lookup_vars(varset(T)::in, substitution(T)::out) is det.
+
+         % Combine two different varsets, renaming apart:
+         % varset.merge_renaming(VarSet0, NewVarSet, VarSet, Subst) is true
+         % iff VarSet is the varset that results from joining a suitably renamed
+         % version of NewVarSet to VarSet0. (Any bindings in NewVarSet are ignored.)
+         % Renaming map the variables in NewVarSet into the corresponding
+         % fresh variable in VarSet.
+         %
+     :- pred varset.merge_renaming(varset(T)::in, varset(T)::in, varset(T)::out,
+         map(var(T), var(T))::out) is det.
+
+         % Does the same job as varset.merge_renaming, but returns the renaming
+         % as a general substitution in which all the terms in the range happen
+         % to be variables.
+         %
+         % Consider using varset.merge_renaming instead.
+         %
+     :- pred varset.merge_subst(varset(T)::in, varset(T)::in, varset(T)::out,
+         substitution(T)::out) is det.
+
+         % varset.merge(VarSet0, NewVarSet, Terms0, VarSet, Terms):
+         %
+         % As varset.merge_renaming, except instead of returning the renaming,
+         % this predicate applies it to the given list of terms.
+         %
+     :- pred varset.merge(varset(T)::in, varset(T)::in, list(term(T))::in,
+         varset(T)::out, list(term(T))::out) is det.
+
+         % Same as varset.merge_renaming, except that the names of variables
+         % in NewVarSet are not included in the final varset.
+         % This is useful if varset.create_name_var_map needs to be used
+         % on the resulting varset.
+         %
+     :- pred varset.merge_renaming_without_names(varset(T)::in,
+         varset(T)::in, varset(T)::out, map(var(T), var(T))::out) is det.
+
+         % Same as varset.merge_subst, except that the names of variables
+         % in NewVarSet are not included in the final varset.
+         % This is useful if varset.create_name_var_map needs to be used
+         % on the resulting varset.
+         %
+         % Consider using varset.merge_renaming_without_names instead.
+         %
+     :- pred varset.merge_subst_without_names(varset(T)::in,
+         varset(T)::in, varset(T)::out, substitution(T)::out) is det.
+
+         % Same as varset.merge, except that the names of variables
+         % in NewVarSet are not included in the final varset.
+         % This is useful if varset.create_name_var_map needs to be used
+         % on the resulting varset.
+         %
+     :- pred varset.merge_without_names(varset(T)::in, varset(T)::in,
+         list(term(T))::in, varset(T)::out, list(term(T))::out) is det.
+
+         % Get the bindings for all the bound variables.
+         %
+     :- func varset.get_bindings(varset(T)) = substitution(T).
+     :- pred varset.get_bindings(varset(T)::in, substitution(T)::out) is det.
+
+         % Set the bindings for all the bound variables.
+         %
+     :- func varset.set_bindings(varset(T), substitution(T)) = varset(T).
+     :- pred varset.set_bindings(varset(T)::in, substitution(T)::in,
+         varset(T)::out) is det.
+
+         % Create a map from names to variables.
+         % Each name is mapped to only one variable, even if a name is
+         % shared by more than one variable. Therefore this predicate
+         % is only really useful if it is already known that no two
+         % variables share the same name.
+         %
+     :- func varset.create_name_var_map(varset(T)) = map(string, var(T)).
+     :- pred varset.create_name_var_map(varset(T)::in, map(string, var(T))::out)
+         is det.
+
+         % Return an association list giving the name of each variable.
+         % Every variable has an entry in the returned association list,
+         % even if it shares its name with another variable.
+         %
+     :- func varset.var_name_list(varset(T)) = assoc_list(var(T), string).
+     :- pred varset.var_name_list(varset(T)::in, assoc_list(var(T), string)::out)
+         is det.
+
+         % Given a list of variable and varset in which some variables have
+         % no name but some other variables may have the same name,
+         % return another varset in which every variable has a unique name.
+         % If necessary, names will have suffixes added on the end;
+         % the second argument gives the suffix to use.
+         %
+     :- func varset.ensure_unique_names(list(var(T)), string, varset(T))
+         = varset(T).
+     :- pred varset.ensure_unique_names(list(var(T))::in,
+         string::in, varset(T)::in, varset(T)::out) is det.
+
+         % Given a varset and a set of variables, remove the names
+         % and values of any other variables stored in the varset.
+         %
+     :- func varset.select(varset(T), set(var(T))) = varset(T).
+     :- pred varset.select(set(var(T))::in, varset(T)::in, varset(T)::out) is det.
+
+         % Given a varset and a list of variables, construct a new varset
+         % containing one variable for each one in the list (and no others).
+         % Also return a substitution mapping the selected variables in the
+         % original varset into variables in the new varset. The relative
+         % ordering of variables in the original varset is maintained.
+         %
+     :- pred varset.squash(varset(T)::in, list(var(T))::in,
+         varset(T)::out, map(var(T), var(T))::out) is det.
+
+         % Coerce the types of the variables in a varset.
+         %
+     :- func varset.coerce(varset(T)) = varset(U).
+     :- pred varset.coerce(varset(T)::in, varset(U)::out) is det.
+
+     %--------------------------------------------------%
+     %--------------------------------------------------%
+
+
+File: mercury_library.info,  Node: version_array,  Next: version_array2d,  Prev: varset,  Up: Top
+
+103 version_array
+*****************
+
+     %--------------------------------------------------%
+     % vim: ts=4 sw=4 et tw=0 wm=0 ft=mercury
+     %--------------------------------------------------%
+     % Copyright (C) 2004-2012 The University of Melbourne.
+     % This file may only be copied under the terms of the GNU Library General
+     % Public License - see the file COPYING.LIB in the Mercury distribution.
+     % vim: ft=mercury ts=4 sw=4 et wm=0 tw=0
+     %--------------------------------------------------%
+     %
+     % File: version_array.m.
+     % Author: Ralph Becket <rafe@cs.mu.oz.au>.
+     % Stability: low.
+     %
+     % Version types are efficient pure implementations of typically imperative
+     % structures, subject to the following caveat: efficient access is only
+     % guaranteed for the "latest" version of a given structure.  An older version
+     % incurs an access cost proportional to the number of its descendants.
+     %
+     % For example, if A0 is a version array, and A1 is created by updating A0,
+     % and A2 is created by updating A1, ..., and An is created by updating An-1,
+     % then accesses to An cost O(1) (assuming no further versions of the array
+     % have been created from An), but accesses to A0 cost O(n).
+     %
+     % Most version data structures come with impure, unsafe means to "rewind"
+     % to an earlier version, restoring that version's O(1) access times, but
+     % leaving later versions undefined (i.e. only do this if you are discarding
+     % all later versions of the structure.)
+     %
+     % The motivation for using version types is that they are ordinary ground
+     % structures and do not depend upon uniqueness, while in many circumstances
+     % offering similar levels of performance.
+     %
+     % This module implements version arrays.  A version array provides O(1)
+     % access and update for the "latest" version of the array.  "Older"
+     % versions of the array incur an O(k) penalty on accesses where k is
+     % the number of updates that have been made since.
+     %
+     % The advantage of version arrays is that in the common, singly threaded,
+     % case, they are almost as fast as unique arrays, but can be treated as
+     % ordinary ground values rather than unique values.
+     %
+     % Version arrays are zero based.
+     %
+     % XXX This implementation is not yet guaranteed to work with the agc (accurate
+     % garbage collection) grades.  Specifically, MR_deep_copy and MR_agc_deep_copy
+     % currently do not recognise version arrays.
+     %
+     %--------------------------------------------------%
+     %--------------------------------------------------%
+
+     :- module version_array.
+     :- interface.
+
+     :- import_module list.
+     :- import_module pretty_printer.
+
+     %--------------------------------------------------%
+
+     :- type version_array(T).
+
+         % empty_array returns the empty array.
+         %
+     :- func empty = version_array(T).
+
+         % init(N, X returns an array of size N with each item initialised to X.
+         %
+     :- func init(int, T) = version_array(T).
+
+         % new(N, X) returns an array of size N with each item initialised to X.
+         %
+     :- pragma obsolete(new/2).
+     :- func new(int, T) = version_array(T).
+
+         % Same as empty/0 except the resulting version_array is not thread safe.
+         %
+         % That is your program can crash or behave strangely if you attempt to
+         % concurrently access or update the array from different threads, or any
+         % two arrays produced from operations on the same original array.
+         % However this version is much quicker if you guarantee that you never
+         % concurrently access the version array.
+         %
+     :- func unsafe_empty = version_array(T).
+
+         % Same as new(N, X) except the resulting version_array is not thread safe.
+         %
+         % That is your program can crash or behave strangely if you attempt to
+         % concurrently access or update the array from different threads, or any
+         % two arrays produced from operations on the same original array.
+         % However this version is much quicker if you guarantee that you never
+         % concurrently access the version array.
+         %
+     :- func unsafe_new(int, T) = version_array(T).
+
+         % version_array(Xs) returns an array constructed from the items in the list
+         % Xs.
+         %
+     :- func version_array(list(T)) = version_array(T).
+
+         % A synonym for the above.
+         %
+     :- func from_list(list(T)) = version_array(T).
+
+         % A ^ elem(I) = X iff the Ith member of A is X (the first item has
+         % index 0).
+         %
+     :- func version_array(T) ^ elem(int) = T.
+
+         % lookup(A, I) = A ^ elem(I).
+         %
+     :- func lookup(version_array(T), int) = T.
+
+         % (A ^ elem(I) := X) is a copy of array A with item I updated to be
+         % X.  An exception is thrown if I is out of bounds.  set/4 is an
+         % equivalent predicate.
+         %
+     :- func (version_array(T) ^ elem(int) := T) = version_array(T).
+
+     :- pred set(int::in, T::in, version_array(T)::in, version_array(T)::out)
+         is det.
+
+         % size(A) = N if A contains N items (i.e. the valid indices for A
+         % range from 0 to N - 1).
+         %
+     :- func size(version_array(T)) = int.
+
+         % max(Z) = size(A) - 1.
+         %
+     :- func max(version_array(T)) = int.
+
+         % resize(A, N, X) returns a new array whose items from
+         % 0..min(size(A), N - 1) are taken from A and whose items
+         % from min(size(A), N - 1)..(N - 1) (if any) are initialised
+         % to X.  A predicate version is also provided.
+         %
+     :- func resize(version_array(T), int, T) = version_array(T).
+     :- pred resize(int::in, T::in, version_array(T)::in, version_array(T)::out)
+         is det.
+
+         % list(A) = Xs where Xs is the list of items in A
+         % (i.e. A = version_array(Xs)).
+         %
+     :- func list(version_array(T)) = list(T).
+
+         % A synonym for the above.
+         %
+     :- func to_list(version_array(T)) = list(T).
+
+         % foldl(F, A, X) is equivalent to list.foldl(F, list(A), X).
+         %
+     :- func foldl(func(T1, T2) = T2, version_array(T1), T2) = T2.
+
+         % foldl(P, A, !X) is equivalent to list.foldl(P, list(A), !X).
+         %
+     :- pred foldl(pred(T1, T2, T2), version_array(T1), T2, T2).
+     :- mode foldl(pred(in, in, out) is det, in, in, out) is det.
+     :- mode foldl(pred(in, mdi, muo) is det, in, mdi, muo) is det.
+     :- mode foldl(pred(in, di, uo) is det, in, di, uo) is det.
+     :- mode foldl(pred(in, in, out) is semidet, in, in, out) is semidet.
+     :- mode foldl(pred(in, mdi, muo) is semidet, in, mdi, muo) is semidet.
+     :- mode foldl(pred(in, di, uo) is semidet, in, di, uo) is semidet.
+
+         % foldl2(P, A, !Acc1, !Acc2) is equivalent to
+         % list.foldl2(P, list(A), !Acc1, !Acc2) but more efficient.
+         %
+     :- pred foldl2(pred(T1, T2, T2, T3, T3), version_array(T1), T2, T2, T3, T3).
+     :- mode foldl2(pred(in, in, out, in, out) is det, in, in, out, in, out)
+         is det.
+     :- mode foldl2(pred(in, in, out, mdi, muo) is det, in, in, out, mdi, muo)
+         is det.
+     :- mode foldl2(pred(in, in, out, di, uo) is det, in, in, out, di, uo)
+         is det.
+     :- mode foldl2(pred(in, in, out, in, out) is semidet, in,
+         in, out, in, out) is semidet.
+     :- mode foldl2(pred(in, in, out, mdi, muo) is semidet, in,
+         in, out, mdi, muo) is semidet.
+     :- mode foldl2(pred(in, in, out, di, uo) is semidet, in,
+         in, out, di, uo) is semidet.
+
+         % foldr(F, A, X) is equivalent to list.foldr(F, list(A), Xs).
+         %
+     :- func foldr(func(T1, T2) = T2, version_array(T1), T2) = T2.
+
+     :- pred foldr(pred(T1, T2, T2), version_array(T1), T2, T2).
+     :- mode foldr(pred(in, in, out) is det, in, in, out) is det.
+     :- mode foldr(pred(in, mdi, muo) is det, in, mdi, muo) is det.
+     :- mode foldr(pred(in, di, uo) is det, in, di, uo) is det.
+     :- mode foldr(pred(in, in, out) is semidet, in, in, out) is semidet.
+     :- mode foldr(pred(in, mdi, muo) is semidet, in, mdi, muo) is semidet.
+     :- mode foldr(pred(in, di, uo) is semidet, in, di, uo) is semidet.
+
+     :- pred foldr2(pred(T1, T2, T2, T3, T3), version_array(T1), T2, T2, T3, T3).
+     :- mode foldr2(pred(in, in, out, in, out) is det, in, in, out, in, out)
+         is det.
+     :- mode foldr2(pred(in, in, out, mdi, muo) is det, in, in, out, mdi, muo)
+         is det.
+     :- mode foldr2(pred(in, in, out, di, uo) is det, in, in, out, di, uo)
+         is det.
+     :- mode foldr2(pred(in, in, out, in, out) is semidet, in,
+         in, out, in, out) is semidet.
+     :- mode foldr2(pred(in, in, out, mdi, muo) is semidet, in,
+         in, out, mdi, muo) is semidet.
+     :- mode foldr2(pred(in, in, out, di, uo) is semidet, in,
+         in, out, di, uo) is semidet.
+
+         % copy(A) is a copy of array A.  Access to the copy is O(1).
+         %
+     :- func copy(version_array(T)) = version_array(T).
+
+         % unsafe_rewind(A) produces a version of A for which all accesses are
+         % O(1).  Invoking this predicate renders A and all later versions undefined
+         % that were derived by performing individual updates.  Only use this when
+         % you are absolutely certain there are no live references to A or later
+         % versions of A.  (A predicate version is also provided.)
+         %
+     :- func unsafe_rewind(version_array(T)) = version_array(T).
+     :- pred unsafe_rewind(version_array(T)::in, version_array(T)::out) is det.
+
+         % Convert a version_array to a pretty_printer.doc for formatting.
+         %
+     :- func version_array_to_doc(version_array(T)) = pretty_printer.doc.
+
+     %--------------------------------------------------%
+     %--------------------------------------------------%
+
+     % The first implementation of version arrays used nb_references.
+     % This incurred three memory allocations for every update. This version
+     % works at a lower level, but only performs one allocation per update.
+
+     %--------------------------------------------------%
+
+
+File: mercury_library.info,  Node: version_array2d,  Next: version_bitmap,  Prev: version_array,  Up: Top
+
+104 version_array2d
+*******************
+
+     %--------------------------------------------------%
+     % Copyright (C) 2004-2006, 2011 The University of Melbourne.
+     % This file may only be copied under the terms of the GNU Library General
+     % Public License - see the file COPYING.LIB in the Mercury distribution.
+     % vim: ft=mercury ts=4 sw=4 et wm=0 tw=0
+     %--------------------------------------------------%
+     %
+     % File: version_array2d.m.
+     % Author: Ralph Becket <rafe@cs.mu.oz.au>.
+     % Stability: medium-low.
+     %
+     % Two-dimensional rectangular (i.e. not ragged) version arrays.
+     %
+     % See the header comments in version_array.m for more details about version
+     % structures.
+     %
+     %--------------------------------------------------%
+     %--------------------------------------------------%
+
+     :- module version_array2d.
+     :- interface.
+
+     :- import_module list.
+
+     %--------------------------------------------------%
+
+         % A version_array2d is a two-dimensional version array stored in row-major
+         % order (that is, the elements of the first row in left-to-right order,
+         % followed by the elements of the second row and so forth.)
+         %
+     :- type version_array2d(T).
+
+         % version_array2d([[X11, ..., X1N], ..., [XM1, ..., XMN]]) constructs a 2d
+         % version array of size M * N, with the special case that
+         % bounds(version_array2d([]), 0, 0).
+         %
+         % An exception is thrown if the sublists are not all the same length.
+         %
+     :- func version_array2d(list(list(T))) = version_array2d(T).
+
+         % init(M, N, X) = version_array2d([[X11, ..., X1N], ..., [XM1, ..., XMN]])
+         % where each XIJ = X.
+         %
+         % An exception is thrown if M < 0 or N < 0.
+         %
+     :- func init(int, int, T) = version_array2d(T).
+
+         % new(M, N, X) = version_array2d([[X11, ..., X1N], ..., [XM1, ..., XMN]])
+         % where each XIJ = X.
+         %
+         % An exception is thrown if M < 0 or N < 0.
+         %
+     :- pragma obsolete(new/3).
+     :- func new(int, int, T) = version_array2d(T).
+
+         % version_array2d([[X11, ..., X1N], ..., [XM1, ..., XMN]]) ^ elem(I, J) = X
+         % where X is the J+1th element of the I+1th row (i.e. indices start from
+         % zero.)
+         %
+         % An exception is thrown unless 0 =< I < M, 0 =< J < N.
+         %
+     :- func version_array2d(T) ^ elem(int, int) = T.
+
+         % ( VA2D0 ^ elem(I, J) := X ) = VA2D
+         % where VA2D ^ elem(II, JJ) = X                    if I = II, J = JJ
+         % and   VA2D ^ elem(II, JJ) = VA2D0 ^ elem(II, JJ) otherwise.
+         %
+         % An exception is thrown unless 0 =< I < M, 0 =< J < N.
+         %
+         % A predicate version is also provided.
+         %
+     :- func ( version_array2d(T) ^ elem(int, int) := T  ) = version_array2d(T).
+     :- pred set(int::in, int::in, T::in, version_array2d(T)::in,
+                 version_array2d(T)::out) is det.
+
+         % bounds(version_array2d([[X11, ..., X1N], ..., [XM1, ..., XMN]), M, N)
+         %
+     :- pred bounds(version_array2d(T)::in, int::out, int::out) is det.
+
+         % in_bounds(version_array2d([[X11, ..., X1N], ..., [XM1, ..., XMN]), I, J)
+         % succeeds iff 0 =< I < M, 0 =< J < N.
+         %
+     :- pred in_bounds(version_array2d(T)::in, int::in, int::in) is semidet.
+
+         % lists(version_array2d([[X11, ..., X1N], ..., [XM1, ..., XMN])) =
+         %     [[X11, ..., X1N], ..., [XM1, ..., XMN]]
+         %
+     :- func lists(version_array2d(T)) = list(list(T)).
+
+         % copy(VA2D) returns a copy of VA2D with O(1) access times.
+         %
+     :- func copy(version_array2d(T)) = version_array2d(T).
+
+         % resize(VA2D, M, N, X) returns a copy of VA2D resized to M * N.
+         % Items with coordinates in common are copied from VA2D; other
+         % items are initialised to X.
+         %
+         % An exception is thrown if M < 0 or N < 0.
+         %
+     :- func resize(version_array2d(T), int, int, T) = version_array2d(T).
+
+         % unsafe_rewind(VA2D) returns a new 2d version array with O(1) access
+         % times, at the cost of rendering VA2D and its descendants undefined.
+         % Only call this function if you are absolutely certain there are no
+         % remaining live references to VA2D or any descendent of VA2D.
+         %
+     :- func unsafe_rewind(version_array2d(T)) = version_array2d(T).
+
+     %--------------------------------------------------%
+     %--------------------------------------------------%
+
+
+File: mercury_library.info,  Node: version_bitmap,  Next: version_hash_table,  Prev: version_array2d,  Up: Top
+
+105 version_bitmap
+******************
+
+     %--------------------------------------------------%
+     % Copyright (C) 2004-2007, 2010-2011 The University of Melbourne
+     % This file may only be copied under the terms of the GNU Library General
+     % Public License - see the file COPYING.LIB in the Mercury distribution.
+     % vim: ft=mercury ts=4 sw=4 et wm=0 tw=0
+     %--------------------------------------------------%
+     %
+     % File: version_bitmap.m.
+     % Author: Ralph Becket <rafe@cs.mu.oz.au>.
+     % Stability: low.
+     %
+     % (See the header comments in version_array.m for an explanation of version
+     % types.)
+     %
+     % Version bitmaps: an implementation of bitmaps using version arrays.
+     %
+     % The advantage of version bitmaps is that in the common, singly threaded,
+     % case, they are almost as fast as unique bitmaps, but can be treated as
+     % ordinary ground values rather than unique values.
+     %
+     %--------------------------------------------------%
+     %--------------------------------------------------%
+
+     :- module version_bitmap.
+     :- interface.
+
+     :- import_module bool.
+
+     %--------------------------------------------------%
+
+     :- type version_bitmap.
+
+         % init(N, B) creates a version_bitmap of size N (indexed 0 .. N-1)
+         % setting each bit if B = yes and clearing each bit if B = no.
+         % An exception is thrown if N is negative.
+         %
+     :- func init(int, bool) = version_bitmap.
+
+         % new(N, B) creates a version_bitmap of size N (indexed 0 .. N-1)
+         % setting each bit if B = yes and clearing each bit if B = no.
+         % An exception is thrown if N is negative.
+         %
+     :- pragma obsolete(new/2).
+     :- func new(int, bool) = version_bitmap.
+
+         % Returns the number of bits in a version_bitmap.
+         %
+     :- func num_bits(version_bitmap) = int.
+
+         % set(BM, I), clear(BM, I) and flip(BM, I) set, clear and flip
+         % bit I in BM respectively.  An exception is thrown if I is out
+         % of range.  Predicate versions are also provided.
+         %
+     :- func set(version_bitmap, int) = version_bitmap.
+     :- pred set(int::in, version_bitmap::in, version_bitmap::out) is det.
+
+     :- func clear(version_bitmap, int) = version_bitmap.
+     :- pred clear(int::in, version_bitmap::in, version_bitmap::out) is det.
+
+     :- func flip(version_bitmap, int) = version_bitmap.
+     :- pred flip(int::in, version_bitmap::in, version_bitmap::out) is det.
+
+         % is_set(BM, I) and is_clear(BM, I) succeed iff bit I in BM
+         % is set or clear respectively.
+         %
+     :- pred is_set(version_bitmap::in, int::in) is semidet.
+     :- pred is_clear(version_bitmap::in, int::in) is semidet.
+
+         % Get the given bit.
+         %
+     :- func version_bitmap ^ bit(int) = bool.
+
+         % Set the given bit.
+         %
+     :- func (version_bitmap ^ bit(int) := bool) = version_bitmap.
+
+         % Create a new copy of a version_bitmap.
+         %
+     :- func copy(version_bitmap) = version_bitmap.
+
+         % Set operations; the second argument is altered in all cases.
+         %
+     :- func complement(version_bitmap) = version_bitmap.
+
+     :- func union(version_bitmap, version_bitmap) = version_bitmap.
+
+     :- func intersect(version_bitmap, version_bitmap) = version_bitmap.
+
+     :- func difference(version_bitmap, version_bitmap) = version_bitmap.
+
+     :- func xor(version_bitmap, version_bitmap) = version_bitmap.
+
+         % resize(BM, N, B) resizes version_bitmap BM to have N bits; if N is
+         % smaller than the current number of bits in BM then the excess
+         % are discarded.  If N is larger than the current number of bits
+         % in BM then the new bits are set if B = yes and cleared if
+         % B = no.
+         %
+     :- func resize(version_bitmap, int, bool) = version_bitmap.
+
+         % Version of the above suitable for use with state variables.
+         %
+     :- pred resize(int::in, bool::in, version_bitmap::in, version_bitmap::out)
+                 is det.
+
+         % unsafe_rewind(B) produces a version of B for which all accesses are
+         % O(1).  Invoking this predicate renders B and all later versions undefined
+         % that were derived by performing individual updates.  Only use this when
+         % you are absolutely certain there are no live references to B or later
+         % versions of B.
+         %
+     :- func unsafe_rewind(version_bitmap) = version_bitmap.
+
+         % A version of the above suitable for use with state variables.
+         %
+     :- pred unsafe_rewind(version_bitmap::in, version_bitmap::out) is det.
+
+     %--------------------------------------------------%
+     %--------------------------------------------------%
+
+
+File: mercury_library.info,  Node: version_hash_table,  Next: version_store,  Prev: version_bitmap,  Up: Top
+
+106 version_hash_table
+**********************
+
+     %--------------------------------------------------%
+     % vim: ft=mercury ts=4 sw=4 et wm=0 tw=0
+     %--------------------------------------------------%
+     % Copyright (C) 2004-2006, 2010-2011 The University of Melbourne.
+     % This file may only be copied under the terms of the GNU Library General
+     % Public License - see the file COPYING.LIB in the Mercury distribution.
+     %--------------------------------------------------%
+     %
+     % File: version_hash_table.m.
+     % Main author: rafe, wangp.
+     % Stability: low.
+     %
+     % (See the header comments in version_array.m for an explanation of version
+     % types.)
+     %
+     % Version hash tables.  The "latest" version of the hash table provides roughly
+     % the same performance as the unique hash table implementation.  "Older"
+     % versions of the hash table are still accessible, but will incurr a growing
+     % performance penalty as more updates are made to the hash table.
+     %
+     %--------------------------------------------------%
+     %--------------------------------------------------%
+
+     :- module version_hash_table.
+     :- interface.
+
+     :- import_module assoc_list.
+     :- import_module char.
+
+     %--------------------------------------------------%
+
+     :- type version_hash_table(K, V).
+
+     :- type hash_pred(K) == ( pred(K,  int)        ).
+     :- inst hash_pred    == ( pred(in, out) is det ).
+
+         % init(HashPred, N, MaxOccupancy)
+         % constructs a new hash table with initial size 2 ^ N that is
+         % doubled whenever MaxOccupancy is achieved; elements are
+         % indexed using HashPred.
+         %
+         % HashPred must compute a hash for a given key.
+         % N must be greater than 0.
+         % MaxOccupancy must be in (0.0, 1.0).
+         %
+         % XXX Values too close to the limits may cause bad things
+         % to happen.
+         %
+     :- func init(hash_pred(K)::in(hash_pred), int::in, float::in) =
+         (version_hash_table(K, V)::out) is det.
+
+     :- pragma obsolete(new/3).
+     :- func new(hash_pred(K)::in(hash_pred), int::in, float::in) =
+         (version_hash_table(K, V)::out) is det.
+
+         % unsafe_init(HashPred, N, MaxOccupancy)
+         %
+         % Like init/3, but the constructed hash table is backed by a non-thread safe
+         % version array. It is unsafe to concurrently access or update the hash
+         % table from different threads, or any two hash tables which were produced
+         % from operations on the same original hash table.
+         % However, if the hash table or its descendents will not be used in such a
+         % manner, a non-thread safe hash table can be much faster than a thread
+         % safe one.
+         %
+     :- func unsafe_init(hash_pred(K)::in(hash_pred), int::in, float::in) =
+        (version_hash_table(K, V)::out) is det.
+
+     :- pragma obsolete(unsafe_new/3).
+     :- func unsafe_new(hash_pred(K)::in(hash_pred), int::in, float::in) =
+        (version_hash_table(K, V)::out) is det.
+
+         % init_default(HashFn) constructs a hash table with default size and
+         % occupancy arguments.
+         %
+     :- func init_default(hash_pred(K)::in(hash_pred)) =
+        (version_hash_table(K, V)::out) is det.
+
+     :- pragma obsolete(new_default/1).
+     :- func new_default(hash_pred(K)::in(hash_pred)) =
+        (version_hash_table(K, V)::out) is det.
+
+         % unsafe_init_default(HashFn)
+         %
+         % Like init_default/3 but the constructed hash table is backed by a
+         % non-thread safe version array. See the description of unsafe_init/3 above.
+         %
+     :- func unsafe_init_default(hash_pred(K)::in(hash_pred)) =
+        (version_hash_table(K, V)::out) is det.
+
+     :- pragma obsolete(unsafe_new_default/1).
+     :- func unsafe_new_default(hash_pred(K)::in(hash_pred)) =
+        (version_hash_table(K, V)::out) is det.
+
+         % Retrieve the hash_pred associated with a hash table.
+         %
+     % :- func hash_pred(version_hash_table(K, V)) = hash_pred(K).
+
+         % Default hash_preds for ints and strings and everything (buwahahaha!)
+         %
+     :- pred int_hash(int::in, int::out) is det.
+     :- pred string_hash(string::in, int::out) is det.
+     :- pred char_hash(char::in, int::out) is det.
+     :- pred float_hash(float::in, int::out) is det.
+     :- pred generic_hash(T::in, int::out) is det.
+
+         % Returns the number of buckets in a hash table.
+         %
+     :- func num_buckets(version_hash_table(K, V)) = int.
+
+         % Returns the number of occupants in a hash table.
+         %
+     :- func num_occupants(version_hash_table(K, V)) = int.
+
+         % Insert key-value binding into a hash table; if one is
+         % already there then the previous value is overwritten.
+         % A predicate version is also provided.
+         %
+     :- func set(version_hash_table(K, V), K, V) = version_hash_table(K, V).
+     :- pred set(K::in, V::in,
+                 version_hash_table(K, V)::in, version_hash_table(K, V)::out)
+                     is det.
+
+         % Field update for hash tables.
+         % HT ^ elem(K) := V  is equivalent to  set(HT, K, V).
+         %
+     :- func 'elem :='(K, version_hash_table(K, V), V) = version_hash_table(K, V).
+
+         % Insert a key-value binding into a hash table.  An
+         % exception is thrown if a binding for the key is already
+         % present.  A predicate version is also provided.
+         %
+     :- func det_insert(version_hash_table(K, V), K, V) = version_hash_table(K, V).
+     :- pred det_insert(K::in, V::in,
+                 version_hash_table(K, V)::in, version_hash_table(K, V)::out)
+                     is det.
+
+         % Change a key-value binding in a hash table.  An
+         % exception is thrown if a binding for the key does not
+         % already exist.  A predicate version is also provided.
+         %
+     :- func det_update(version_hash_table(K, V), K, V) = version_hash_table(K, V).
+     :- pred det_update(K::in, V::in,
+                 version_hash_table(K, V)::in, version_hash_table(K, V)::out)
+                     is det.
+
+         % Delete the entry for the given key, leaving the hash table
+         % unchanged if there is no such entry.  A predicate version is also
+         % provided.
+         %
+     :- func delete(version_hash_table(K, V), K) = version_hash_table(K, V).
+     :- pred delete(K::in, version_hash_table(K, V)::in,
+                 version_hash_table(K, V)::out) is det.
+
+         % Lookup the value associated with the given key.  An exception
+         % is raised if there is no entry for the key.
+         %
+     :- func lookup(version_hash_table(K, V), K) = V.
+
+         % Field access for hash tables.
+         % HT ^ elem(K)  is equivalent to  lookup(HT, K).
+         %
+     :- func version_hash_table(K, V) ^ elem(K) = V.
+
+         % Like lookup, but just fails if there is no entry for the key.
+         %
+     :- func search(version_hash_table(K, V), K) = V is semidet.
+     :- pred search(version_hash_table(K, V)::in, K::in, V::out) is semidet.
+
+         % Convert a hash table into an association list.
+         %
+     :- func to_assoc_list(version_hash_table(K, V)) = assoc_list(K, V).
+
+         % Convert an association list into a hash table.
+         %
+     :- func from_assoc_list(hash_pred(K)::in(hash_pred), assoc_list(K, V)::in) =
+         (version_hash_table(K, V)::out) is det.
+
+         % Fold a function over the key-value bindings in a hash table.
+         %
+     :- func fold(func(K, V, T) = T, version_hash_table(K, V), T) = T.
+
+         % Fold a predicate over the key-value bindings in a hash table.
+         %
+     :- pred fold(pred(K, V, T, T), version_hash_table(K, V), T, T).
+     :- mode fold(in(pred(in, in, in, out) is det), in, in, out) is det.
+     :- mode fold(in(pred(in, in, mdi, muo) is det), in, mdi, muo) is det.
+     :- mode fold(in(pred(in, in, di, uo) is det), in, di, uo) is det.
+     :- mode fold(in(pred(in, in, in, out) is semidet), in, in, out) is semidet.
+     :- mode fold(in(pred(in, in, mdi, muo) is semidet), in, mdi, muo) is semidet.
+     :- mode fold(in(pred(in, in, di, uo) is semidet), in, di, uo) is semidet.
+
+     %--------------------------------------------------%
+     %--------------------------------------------------%
+
+
+File: mercury_library.info,  Node: version_store,  Prev: version_hash_table,  Up: Top
+
+107 version_store
+*****************
+
+     %--------------------------------------------------%
+     % vim: ft=mercury ts=4 sw=4 et wm=0 tw=0
+     %--------------------------------------------------%
+     % Copyright (C) 2004-2006, 2011 The University of Melbourne.
+     % This file may only be copied under the terms of the GNU Library General
+     % Public License - see the file COPYING.LIB in the Mercury distribution.
+     %--------------------------------------------------%
+     %
+     % File: version_store.m.
+     % Author: Ralph Becket <rafe@cs.mu.oz.au>
+     % Stability: low.
+     %
+     % (See the header comments in version_array.m for an explanation of version
+     % types.)
+     %
+     % A version_store is similar to, albeit slightly slower than, an ordinary
+     % store, but does not depend upon uniqueness.
+     %
+     % Note that, unlike ordinary stores, liveness of data is via the version store
+     % rather than the mutvars.  This means that dead data (i.e.  whose mutvar is
+     % out of scope) in a version_store may not be garbage collected.
+     %
+     %--------------------------------------------------%
+     %--------------------------------------------------%
+
+     :- module version_store.
+     :- interface.
+
+     %--------------------------------------------------%
+
+     :- type version_store(S).
+
+     :- type mutvar(T, S).
+
+         % Construct a new version store.  This is distinguished from other
+         % version stores by its existentially quantified type.  This means
+         % the compiler can automatically detect any attempt to use a
+         % mutvar with the wrong version store.
+         %
+     :- some [S] func init = version_store(S).
+
+         % A synonym for the above.
+         %
+     :- pragma obsolete(new/0).
+     :- some [S] func new = version_store(S).
+
+         % new_mutvar(X, Mutvar, VS0, VS) adds a new mutvar with value reference X
+         % to the version store.
+         %
+     :- pred new_mutvar(T::in, mutvar(T, S)::out,
+         version_store(S)::in, version_store(S)::out) is det.
+
+         % new_cyclic_mutvar(F, Mutvar, VS0, VS) adds a new mutvar with value
+         % reference F(Mutvar) to the version store.  This can be used to
+         % construct cyclic terms.
+         %
+     :- pred new_cyclic_mutvar((func(mutvar(T, S)) = T)::in, mutvar(T, S)::out,
+         version_store(S)::in, version_store(S)::out) is det.
+
+         % copy_mutvar(Mutvar, NewMutvar, VS0, VS) constructs NewMutvar
+         % with the same value reference as Mutvar.
+         %
+     :- pred copy_mutvar(mutvar(T, S)::in, mutvar(T, S)::out,
+         version_store(S)::in, version_store(S)::out) is det.
+
+         % VS ^ elem(Mutvar) returns the element referenced by Mutvar in
+         % the version store.
+         %
+     :- func version_store(S) ^ elem(mutvar(T, S)) = T.
+
+         % lookup(VS, Mutvar) = VS ^ elem(Mutvar).
+         %
+         % A predicate version is also provided.
+         %
+     :- func lookup(version_store(S), mutvar(T, S)) = T.
+     :- pred get_mutvar(mutvar(T, S)::in, T::out,
+         version_store(S)::in, version_store(S)::out) is det.
+
+         % ( VS ^ elem(Mutvar) := X ) updates the version store so that
+         % Mutvar now refers to value X.
+         %
+     :- func ( version_store(S) ^ elem(mutvar(T, S)) := T ) = version_store(S).
+
+         % set(VS, Mutvar, X) = ( VS ^ elem(Mutvar) := X ).
+         %
+         % A predicate version is also provided.
+         %
+     :- func set(version_store(S), mutvar(T, S), T) = version_store(S).
+     :- pred set_mutvar(mutvar(T, S)::in, T::in,
+         version_store(S)::in, version_store(S)::out) is det.
+
+         % unsafe_rewind(VS) produces a version of VS for which all accesses are
+         % O(1).  Invoking this predicate renders undefined VS and all later
+         % versions undefined that were derived by performing individual updates.
+         % Only use this when you are absolutely certain there are no live
+         % references to VS or later versions of VS.
+         %
+         % A predicate version is also provided.
+         %
+     :- func unsafe_rewind(version_store(T)) = version_store(T).
+     :- pred unsafe_rewind(version_store(T)::in, version_store(T)::out) is det.
+
+     %--------------------------------------------------%
+     %--------------------------------------------------%
+
+

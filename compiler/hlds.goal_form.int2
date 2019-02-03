@@ -1,0 +1,18 @@
+:- module (hlds.goal_form).
+:- interface.
+:- import_module bool.
+:- import_module list.
+:- import_module set.
+:- import_module (hlds.hlds_goal).
+:- import_module (hlds.hlds_module).
+:- import_module (hlds.hlds_pred).
+:- import_module (parse_tree.prog_data).
+:- type goal_loop_or_throw_status
+	--->	can_loop_or_throw 
+	;	cannot_loop_or_throw .
+:- type goal_loop_status
+	--->	can_loop 
+	;	cannot_loop .
+:- type goal_throw_status
+	--->	can_throw 
+	;	cannot_throw .

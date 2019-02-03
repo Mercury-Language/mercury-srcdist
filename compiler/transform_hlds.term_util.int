@@ -1,0 +1,51 @@
+:- module (transform_hlds.term_util).
+:- interface.
+:- import_module bag.
+:- import_module bool.
+:- import_module list.
+:- import_module map.
+:- import_module maybe.
+:- import_module unit.
+:- import_module (hlds.hlds_goal).
+:- import_module (hlds.hlds_module).
+:- import_module (hlds.hlds_pred).
+:- import_module (parse_tree.prog_data).
+:- import_module (transform_hlds.term_errors).
+:- import_module (transform_hlds.term_norm).
+:- type arg_size_info == parse_tree.prog_data.generic_arg_size_info(transform_hlds.term_errors.termination_error_contexts).
+:- type pass_info
+	--->	pass_info(transform_hlds.term_norm.functor_info, int, int).
+:- type termination_info == parse_tree.prog_data.generic_termination_info(unit.unit, transform_hlds.term_errors.termination_error_contexts).
+:- type used_args == map.map(hlds.hlds_pred.pred_proc_id, list.list(bool.bool)).
+:- pred add_context_to_arg_size_info(maybe.maybe(parse_tree.prog_data.pragma_arg_size_info), parse_tree.prog_data.prog_context, maybe.maybe(transform_hlds.term_util.arg_size_info)).
+:- mode add_context_to_arg_size_info((builtin.in), (builtin.in), (builtin.out)) is det.
+:- pred add_context_to_termination_info(maybe.maybe(parse_tree.prog_data.pragma_termination_info), parse_tree.prog_data.prog_context, maybe.maybe(transform_hlds.term_util.termination_info)).
+:- mode add_context_to_termination_info((builtin.in), (builtin.in), (builtin.out)) is det.
+:- pred all_args_input_or_zero_size(hlds.hlds_module.module_info, hlds.hlds_pred.pred_info, hlds.hlds_pred.proc_info).
+:- mode all_args_input_or_zero_size((builtin.in), (builtin.in), (builtin.in)) is semidet.
+:- pred attributes_imply_termination(parse_tree.prog_data.pragma_foreign_proc_attributes).
+:- mode attributes_imply_termination((builtin.in)) is semidet.
+:- pred get_context_from_scc(list.list(hlds.hlds_pred.pred_proc_id), hlds.hlds_module.module_info, parse_tree.prog_data.prog_context).
+:- mode get_context_from_scc((builtin.in), (builtin.in), (builtin.out)) is det.
+:- pred horder_vars(list.list(parse_tree.prog_data.prog_var), parse_tree.prog_data.vartypes).
+:- mode horder_vars((builtin.in), (builtin.in)) is semidet.
+:- pred is_termination_known(hlds.hlds_module.module_info, hlds.hlds_pred.pred_proc_id).
+:- mode is_termination_known((builtin.in), (builtin.in)) is semidet.
+:- pred lookup_proc_arg_size_info(hlds.hlds_module.module_info, hlds.hlds_pred.pred_proc_id, maybe.maybe(transform_hlds.term_util.arg_size_info)).
+:- mode lookup_proc_arg_size_info((builtin.in), (builtin.in), (builtin.out)) is det.
+:- pred lookup_proc_termination_info(hlds.hlds_module.module_info, hlds.hlds_pred.pred_proc_id, maybe.maybe(transform_hlds.term_util.termination_info)).
+:- mode lookup_proc_termination_info((builtin.in), (builtin.in), (builtin.out)) is det.
+:- pred make_bool_list(list.list(_T), list.list(bool.bool), list.list(bool.bool)).
+:- mode make_bool_list((builtin.in), (builtin.in), (builtin.out)) is det.
+:- pred partition_call_args(hlds.hlds_module.module_info, list.list(parse_tree.prog_data.mer_mode), list.list(parse_tree.prog_data.prog_var), bag.bag(parse_tree.prog_data.prog_var), bag.bag(parse_tree.prog_data.prog_var)).
+:- mode partition_call_args((builtin.in), (builtin.in), (builtin.in), (builtin.out), (builtin.out)) is det.
+:- pred pred_proc_id_terminates(hlds.hlds_module.module_info, hlds.hlds_pred.pred_proc_id).
+:- mode pred_proc_id_terminates((builtin.in), (builtin.in)) is semidet.
+:- pred remove_unused_args(bag.bag(parse_tree.prog_data.prog_var), list.list(parse_tree.prog_data.prog_var), list.list(bool.bool), bag.bag(parse_tree.prog_data.prog_var)).
+:- mode remove_unused_args((builtin.in), (builtin.in), (builtin.in), (builtin.out)) is det.
+:- pred set_pred_proc_ids_arg_size_info(list.list(hlds.hlds_pred.pred_proc_id), transform_hlds.term_util.arg_size_info, hlds.hlds_module.module_info, hlds.hlds_module.module_info).
+:- mode set_pred_proc_ids_arg_size_info((builtin.in), (builtin.in), (builtin.in), (builtin.out)) is det.
+:- pred set_pred_proc_ids_termination_info(list.list(hlds.hlds_pred.pred_proc_id), transform_hlds.term_util.termination_info, hlds.hlds_module.module_info, hlds.hlds_module.module_info).
+:- mode set_pred_proc_ids_termination_info((builtin.in), (builtin.in), (builtin.in), (builtin.out)) is det.
+:- pred split_unification_vars(list.list(parse_tree.prog_data.prog_var), list.list(hlds.hlds_goal.uni_mode), hlds.hlds_module.module_info, bag.bag(parse_tree.prog_data.prog_var), bag.bag(parse_tree.prog_data.prog_var)).
+:- mode split_unification_vars((builtin.in), (builtin.in), (builtin.in), (builtin.out), (builtin.out)) is det.

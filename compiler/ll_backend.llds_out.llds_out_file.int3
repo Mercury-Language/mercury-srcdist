@@ -1,0 +1,3 @@
+:- module ((ll_backend.llds_out).llds_out_file).
+:- interface.
+:- type linkage.

@@ -1,0 +1,38 @@
+:- module (hlds.hlds_llds).
+:- interface.
+:- import_module bool.
+:- import_module map.
+:- import_module maybe.
+:- import_module set.
+:- import_module (hlds.hlds_goal).
+:- import_module (parse_tree.prog_data).
+:- type abs_follow_vars
+	--->	abs_follow_vars(hlds.hlds_llds.abs_follow_vars_map, int).
+:- type abs_follow_vars_map == map.map(parse_tree.prog_data.prog_var, hlds.hlds_llds.abs_locn).
+:- type abs_locn
+	--->	any_reg 
+	;	abs_reg(int)
+	;	abs_stackvar(int)
+	;	abs_parent_stackvar(int)
+	;	abs_framevar(int).
+:- type abs_store_map == map.map(parse_tree.prog_data.prog_var, hlds.hlds_llds.abs_locn).
+:- type llds_code_gen_details.
+:- type need_across_call
+	--->	need_across_call(((hlds.hlds_llds).call_forward_vars) :: set.set(parse_tree.prog_data.prog_var), ((hlds.hlds_llds).call_resume_vars) :: set.set(parse_tree.prog_data.prog_var), ((hlds.hlds_llds).call_nondet_vars) :: set.set(parse_tree.prog_data.prog_var)).
+:- type need_in_par_conj
+	--->	need_in_par_conj(((hlds.hlds_llds).par_conj_engine_vars) :: set.set(parse_tree.prog_data.prog_var)).
+:- type need_in_resume
+	--->	need_in_resume(((hlds.hlds_llds).resume_vars_on_stack) :: bool.bool, ((hlds.hlds_llds).resume_resume_vars) :: set.set(parse_tree.prog_data.prog_var), ((hlds.hlds_llds).resume_nondet_vars) :: set.set(parse_tree.prog_data.prog_var)).
+:- type resume_locs
+	--->	resume_locs_orig_only 
+	;	resume_locs_stack_only 
+	;	resume_locs_orig_and_stack 
+	;	resume_locs_stack_and_orig .
+:- type resume_point
+	--->	resume_point(set.set(parse_tree.prog_data.prog_var), hlds.hlds_llds.resume_locs)
+	;	no_resume_point .
+:- type stack_slot
+	--->	det_slot(int)
+	;	parent_det_slot(int)
+	;	nondet_slot(int).
+:- type stack_slots == map.map(parse_tree.prog_data.prog_var, hlds.hlds_llds.stack_slot).

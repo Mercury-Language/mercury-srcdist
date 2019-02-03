@@ -1,0 +1,3 @@
+:- module (top_level.mercury_compile_front_end).
+:- interface.
+:- type simplify_pass.

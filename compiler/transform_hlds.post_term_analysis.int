@@ -1,0 +1,6 @@
+:- module (transform_hlds.post_term_analysis).
+:- interface.
+:- import_module io.
+:- import_module (hlds.hlds_module).
+:- pred run_post_term_analysis(hlds.hlds_module.module_info, io.io, io.io).
+:- mode run_post_term_analysis((builtin.in), (builtin.di), (builtin.uo)) is det.

@@ -1,0 +1,51 @@
+:- module math.
+:- pragma termination_info((math.pi) = (builtin.out), infinite, cannot_loop).
+:- pragma termination_info((math.e) = (builtin.out), infinite, cannot_loop).
+:- pragma termination_info(math.ceiling((builtin.in)) = (builtin.out), infinite, cannot_loop).
+:- pragma termination_info(math.floor((builtin.in)) = (builtin.out), infinite, cannot_loop).
+:- pragma termination_info(math.round((builtin.in)) = (builtin.out), infinite, cannot_loop).
+:- pragma termination_info(math.truncate((builtin.in)) = (builtin.out), infinite, cannot_loop).
+:- pragma termination_info(math.sqrt((builtin.in)) = (builtin.out), infinite, cannot_loop).
+:- pragma termination_info(math.unchecked_sqrt((builtin.in)) = (builtin.out), infinite, cannot_loop).
+:- pragma termination_info(math.solve_quadratic((builtin.in), (builtin.in), (builtin.in)) = (builtin.out), finite(2, [no, no, no, no]), can_loop).
+:- pragma termination_info(math.pow((builtin.in), (builtin.in)) = (builtin.out), infinite, cannot_loop).
+:- pragma termination_info(math.exp((builtin.in)) = (builtin.out), infinite, cannot_loop).
+:- pragma termination_info(math.ln((builtin.in)) = (builtin.out), infinite, cannot_loop).
+:- pragma termination_info(math.log10((builtin.in)) = (builtin.out), infinite, cannot_loop).
+:- pragma termination_info(math.log2((builtin.in)) = (builtin.out), infinite, cannot_loop).
+:- pragma termination_info(math.log((builtin.in), (builtin.in)) = (builtin.out), infinite, cannot_loop).
+:- pragma termination_info(math.sin((builtin.in)) = (builtin.out), infinite, cannot_loop).
+:- pragma termination_info(math.cos((builtin.in)) = (builtin.out), infinite, cannot_loop).
+:- pragma termination_info(math.tan((builtin.in)) = (builtin.out), infinite, cannot_loop).
+:- pragma termination_info(math.asin((builtin.in)) = (builtin.out), infinite, cannot_loop).
+:- pragma termination_info(math.acos((builtin.in)) = (builtin.out), infinite, cannot_loop).
+:- pragma termination_info(math.atan((builtin.in)) = (builtin.out), infinite, cannot_loop).
+:- pragma termination_info(math.atan2((builtin.in), (builtin.in)) = (builtin.out), infinite, cannot_loop).
+:- pragma termination_info(math.sinh((builtin.in)) = (builtin.out), infinite, cannot_loop).
+:- pragma termination_info(math.cosh((builtin.in)) = (builtin.out), infinite, cannot_loop).
+:- pragma termination_info(math.tanh((builtin.in)) = (builtin.out), infinite, cannot_loop).
+:- pragma exceptions(function, (math.pi), 1, 0, will_not_throw).
+:- pragma exceptions(function, (math.e), 1, 0, will_not_throw).
+:- pragma exceptions(function, (math.ceiling), 2, 0, will_not_throw).
+:- pragma exceptions(function, (math.floor), 2, 0, will_not_throw).
+:- pragma exceptions(function, (math.round), 2, 0, will_not_throw).
+:- pragma exceptions(function, (math.truncate), 2, 0, will_not_throw).
+:- pragma exceptions(function, (math.sqrt), 2, 0, may_throw(user_exception)).
+:- pragma exceptions(function, (math.unchecked_sqrt), 2, 0, will_not_throw).
+:- pragma exceptions(function, (math.solve_quadratic), 4, 0, may_throw(user_exception)).
+:- pragma exceptions(function, (math.pow), 3, 0, may_throw(user_exception)).
+:- pragma exceptions(function, (math.exp), 2, 0, will_not_throw).
+:- pragma exceptions(function, (math.ln), 2, 0, may_throw(user_exception)).
+:- pragma exceptions(function, (math.log10), 2, 0, may_throw(user_exception)).
+:- pragma exceptions(function, (math.log2), 2, 0, may_throw(user_exception)).
+:- pragma exceptions(function, (math.log), 3, 0, may_throw(user_exception)).
+:- pragma exceptions(function, (math.sin), 2, 0, will_not_throw).
+:- pragma exceptions(function, (math.cos), 2, 0, will_not_throw).
+:- pragma exceptions(function, (math.tan), 2, 0, will_not_throw).
+:- pragma exceptions(function, (math.asin), 2, 0, may_throw(user_exception)).
+:- pragma exceptions(function, (math.acos), 2, 0, may_throw(user_exception)).
+:- pragma exceptions(function, (math.atan), 2, 0, will_not_throw).
+:- pragma exceptions(function, (math.atan2), 3, 0, will_not_throw).
+:- pragma exceptions(function, (math.sinh), 2, 0, will_not_throw).
+:- pragma exceptions(function, (math.cosh), 2, 0, will_not_throw).
+:- pragma exceptions(function, (math.tanh), 2, 0, will_not_throw).

@@ -1,0 +1,4 @@
+:- module ((hlds.make_hlds).superhomogeneous).
+:- interface.
+:- type arg_context.
+:- type num_added_goals.

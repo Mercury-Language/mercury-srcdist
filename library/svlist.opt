@@ -1,0 +1,38 @@
+:- module svlist.
+:- use_module builtin, list, private_builtin.
+svlist.delete(E_4, STATE_VARIABLE_List_0_6, STATE_VARIABLE_List_7) :-
+    list.delete(STATE_VARIABLE_List_0_6, E_4, STATE_VARIABLE_List_7).
+svlist.delete_first(E_4, STATE_VARIABLE_List_0_6, STATE_VARIABLE_List_7) :-
+    list.delete_first(STATE_VARIABLE_List_0_6, E_4, STATE_VARIABLE_List_7).
+svlist.delete_elems(Elems_4, STATE_VARIABLE_List_0_6, STATE_VARIABLE_List_7) :-
+    list.delete_elems(STATE_VARIABLE_List_0_6, Elems_4, STATE_VARIABLE_List_7).
+svlist.replace(D_5, R_6, STATE_VARIABLE_List_0_8, STATE_VARIABLE_List_9) :-
+    list.replace(STATE_VARIABLE_List_0_8, D_5, R_6, STATE_VARIABLE_List_9).
+svlist.replace_first(D_5, R_6, STATE_VARIABLE_List_0_8, STATE_VARIABLE_List_9) :-
+    list.replace_first(STATE_VARIABLE_List_0_8, D_5, R_6, STATE_VARIABLE_List_9).
+svlist.replace_all(D_5, R_6, STATE_VARIABLE_List_0_8, STATE_VARIABLE_List_9) :-
+    list.replace_all(STATE_VARIABLE_List_0_8, D_5, R_6, STATE_VARIABLE_List_9).
+svlist.det_replace_nth(N_5, R_6, STATE_VARIABLE_List_0_8, STATE_VARIABLE_List_9) :-
+    list.det_replace_nth(STATE_VARIABLE_List_0_8, N_5, R_6, STATE_VARIABLE_List_9).
+:- pragma exceptions(predicate, (svlist.delete), 3, 0, may_throw(user_exception)).
+:- pragma exceptions(predicate, (svlist.delete), 3, 1, may_throw(user_exception)).
+:- pragma exceptions(predicate, (svlist.delete), 3, 2, may_throw(user_exception)).
+:- pragma exceptions(predicate, (svlist.delete), 3, 3, may_throw(user_exception)).
+:- pragma exceptions(predicate, (svlist.delete_first), 3, 0, may_throw(user_exception)).
+:- pragma exceptions(predicate, (svlist.delete_elems), 3, 0, may_throw(user_exception)).
+:- pragma exceptions(predicate, (svlist.replace), 4, 0, may_throw(user_exception)).
+:- pragma exceptions(predicate, (svlist.replace), 4, 1, may_throw(user_exception)).
+:- pragma exceptions(predicate, (svlist.replace_first), 4, 0, may_throw(user_exception)).
+:- pragma exceptions(predicate, (svlist.replace_all), 4, 0, may_throw(user_exception)).
+:- pragma exceptions(predicate, (svlist.det_replace_nth), 4, 0, may_throw(user_exception)).
+:- pragma termination_info(svlist.delete((builtin.in), (builtin.in), (builtin.in)), finite(0, [no, no, no, no]), can_loop).
+:- pragma termination_info(svlist.delete((builtin.in), (builtin.in), (builtin.out)), infinite, can_loop).
+:- pragma termination_info(svlist.delete((builtin.out), (builtin.in), (builtin.out)), infinite, can_loop).
+:- pragma termination_info(svlist.delete((builtin.in), (builtin.out), (builtin.in)), infinite, can_loop).
+:- pragma termination_info(svlist.delete_first((builtin.in), (builtin.in), (builtin.out)), infinite, can_loop).
+:- pragma termination_info(svlist.delete_elems((builtin.in), (builtin.in), (builtin.out)), infinite, can_loop).
+:- pragma termination_info(svlist.replace((builtin.in), (builtin.in), (builtin.in), (builtin.in)), finite(0, [no, no, no, no, no]), can_loop).
+:- pragma termination_info(svlist.replace((builtin.in), (builtin.in), (builtin.in), (builtin.out)), infinite, can_loop).
+:- pragma termination_info(svlist.replace_first((builtin.in), (builtin.in), (builtin.in), (builtin.out)), infinite, can_loop).
+:- pragma termination_info(svlist.replace_all((builtin.in), (builtin.in), (builtin.in), (builtin.out)), infinite, can_loop).
+:- pragma termination_info(svlist.det_replace_nth((builtin.in), (builtin.in), (builtin.in), (builtin.out)), infinite, can_loop).
