@@ -1,0 +1,34 @@
+/*
+** Automatically generated from `cliques.m'
+** by the Mercury compiler,
+** version 10.04.2, configured for x86_64-unknown-linux-gnu.
+** Do not edit.
+*/
+#ifndef CLIQUES_MH
+#define CLIQUES_MH
+
+#ifdef __cplusplus
+extern "C" {
+#endif
+
+#ifdef MR_HIGHLEVEL_CODE
+#include "mercury.h"
+#else
+  #ifndef MERCURY_HDR_EXCLUDE_IMP_H
+  #include "mercury_imp.h"
+  #endif
+#endif
+#ifdef MR_DEEP_PROFILING
+#include "mercury_deep_profiling.h"
+#endif
+
+#ifndef CLIQUES_DECL_GUARD
+#define CLIQUES_DECL_GUARD
+
+#endif
+
+#ifdef __cplusplus
+}
+#endif
+
+#endif /* CLIQUES_MH */

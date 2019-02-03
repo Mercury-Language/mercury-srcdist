@@ -1,0 +1,23 @@
+/.cvsignore/1.16/Tue May  5 08:05:29 2009//Tversion-10_04_2
+/.mgnuc_copts/1.2/Wed Oct 24 09:21:17 2007//Tversion-10_04_2
+/.mgnuc_opts/1.1/Mon Sep 19 08:07:05 2005//Tversion-10_04_2
+/.nocopyright/1.4/Mon Sep 19 08:07:05 2005//Tversion-10_04_2
+/Mercury.options/1.1/Sat Jun 22 19:16:05 2002//Tversion-10_04_2
+/Mmakefile/1.34/Tue Sep 22 04:37:12 2009//Tversion-10_04_2
+/PROF_FLAGS.in/1.3/Wed Oct 24 09:21:17 2007//Tversion-10_04_2
+/atsort_callgraph.m/1.7/Fri Nov 10 03:26:26 2006//Tversion-10_04_2
+/call_graph.m/1.15/Fri Sep  7 15:08:21 2007//Tversion-10_04_2
+/demangle.m/1.26/Mon Feb 11 14:55:23 2008//Tversion-10_04_2
+/demangle_test.m/1.5/Fri Nov 10 03:26:27 2006//Tversion-10_04_2
+/generate_output.m/1.25/Fri Dec  1 15:04:39 2006//Tversion-10_04_2
+/globals.m/1.14/Fri Nov 10 03:26:27 2006//Tversion-10_04_2
+/mercury_profile.m/1.39/Fri Jan  8 16:41:19 2010//Tversion-10_04_2
+/options.m/1.22/Fri Dec  1 15:04:39 2006//Tversion-10_04_2
+/output.m/1.27/Wed May 23 10:09:24 2007//Tversion-10_04_2
+/output_prof_info.m/1.10/Fri Dec  1 15:04:39 2006//Tversion-10_04_2
+/process_file.m/1.24/Fri Sep  7 15:08:21 2007//Tversion-10_04_2
+/prof_debug.m/1.12/Fri Dec  1 15:04:39 2006//Tversion-10_04_2
+/prof_info.m/1.16/Fri Dec  1 15:04:40 2006//Tversion-10_04_2
+/propagate.m/1.18/Fri Sep  7 15:08:21 2007//Tversion-10_04_2
+/read.m/1.16/Fri Dec  1 15:04:40 2006//Tversion-10_04_2
+D

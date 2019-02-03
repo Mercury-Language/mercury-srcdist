@@ -1,0 +1,40 @@
+:- module (libs.trace_params).
+:- interface.
+:- import_module bool.
+:- import_module hlds.
+:- import_module maybe.
+:- import_module (hlds.hlds_module).
+:- import_module (hlds.hlds_pred).
+:- import_module (mdbcomp.prim_data).
+:- type trace_level.
+:- type trace_suppress_items.
+:- func at_least_at_deep(libs.trace_params.trace_level) = bool.bool.
+:- func at_least_at_shallow(libs.trace_params.trace_level) = bool.bool.
+:- pred convert_trace_level(string, bool.bool, bool.bool, maybe.maybe(libs.trace_params.trace_level)).
+:- mode convert_trace_level((builtin.in), (builtin.in), (builtin.in), (builtin.out)) is semidet.
+:- pred convert_trace_suppress(string, libs.trace_params.trace_suppress_items).
+:- mode convert_trace_suppress((builtin.in), (builtin.out)) is semidet.
+:- func default_trace_suppress = libs.trace_params.trace_suppress_items.
+:- func eff_trace_level(hlds.hlds_module.module_info, hlds.hlds_pred.pred_info, hlds.hlds_pred.proc_info, libs.trace_params.trace_level) = libs.trace_params.trace_level.
+:- func eff_trace_level_is_none(hlds.hlds_module.module_info, hlds.hlds_pred.pred_info, hlds.hlds_pred.proc_info, libs.trace_params.trace_level) = bool.bool.
+:- func eff_trace_level_needs_fail_vars(hlds.hlds_module.module_info, hlds.hlds_pred.pred_info, hlds.hlds_pred.proc_info, libs.trace_params.trace_level) = bool.bool.
+:- func eff_trace_level_needs_fixed_slots(hlds.hlds_module.module_info, hlds.hlds_pred.pred_info, hlds.hlds_pred.proc_info, libs.trace_params.trace_level) = bool.bool.
+:- func eff_trace_level_needs_from_full_slot(hlds.hlds_module.module_info, hlds.hlds_pred.pred_info, hlds.hlds_pred.proc_info, libs.trace_params.trace_level) = bool.bool.
+:- func eff_trace_level_needs_input_vars(hlds.hlds_module.module_info, hlds.hlds_pred.pred_info, hlds.hlds_pred.proc_info, libs.trace_params.trace_level) = bool.bool.
+:- func eff_trace_needs_all_var_names(hlds.hlds_module.module_info, hlds.hlds_pred.pred_info, hlds.hlds_pred.proc_info, libs.trace_params.trace_level, libs.trace_params.trace_suppress_items) = bool.bool.
+:- func eff_trace_needs_port(hlds.hlds_module.module_info, hlds.hlds_pred.pred_info, hlds.hlds_pred.proc_info, libs.trace_params.trace_level, libs.trace_params.trace_suppress_items, mdbcomp.prim_data.trace_port) = bool.bool.
+:- func eff_trace_needs_proc_body_reps(hlds.hlds_module.module_info, hlds.hlds_pred.pred_info, hlds.hlds_pred.proc_info, libs.trace_params.trace_level, libs.trace_params.trace_suppress_items) = bool.bool.
+:- func encode_suppressed_events(libs.trace_params.trace_suppress_items) = int.
+:- func given_trace_level_is_none(libs.trace_params.trace_level) = bool.bool.
+:- func trace_level_allows_delay_death(libs.trace_params.trace_level) = bool.bool.
+:- func trace_level_allows_tail_rec(libs.trace_params.trace_level) = bool.bool.
+:- func trace_level_for_unify_compare(libs.trace_params.trace_level) = libs.trace_params.trace_level.
+:- func trace_level_needs_meaningful_var_names(libs.trace_params.trace_level) = bool.bool.
+:- func trace_level_none = libs.trace_params.trace_level.
+:- func trace_level_rep(libs.trace_params.trace_level) = string.
+:- func trace_needs_return_info(libs.trace_params.trace_level, libs.trace_params.trace_suppress_items) = bool.bool.
+:- implementation.
+:- import_module set.
+:- import_module (mdbcomp.prim_data).
+:- type trace_suppress_item.
+:- type trace_suppress_items == set.set(libs.trace_params.trace_suppress_item).

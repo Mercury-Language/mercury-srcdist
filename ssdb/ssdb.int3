@@ -1,0 +1,10 @@
+:- module ssdb.
+:- interface.
+:- type debugging_paused.
+:- type list_var_value.
+:- type pos.
+:- type ssdb_event_type.
+:- type ssdb_proc_id.
+:- type ssdb_retry.
+:- type var_name.
+:- type var_value.

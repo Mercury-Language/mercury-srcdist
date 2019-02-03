@@ -1,0 +1,4 @@
+:- module (ll_backend.prog_rep).
+:- interface.
+:- type include_variable_table.
+:- type var_num_map.

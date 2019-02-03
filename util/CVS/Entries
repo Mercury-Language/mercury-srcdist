@@ -1,0 +1,13 @@
+/.cvsignore/1.4.2.1/Sun Jul 18 08:22:31 2010//Tversion-10_04_2
+/.nocopyright/1.1/Wed Nov 22 00:07:50 2000//Tversion-10_04_2
+/Mmakefile/1.21.2.1/Sun Jul 11 16:31:03 2010//Tversion-10_04_2
+/getopt.h/1.1/Tue Aug 11 06:23:29 1998//Tversion-10_04_2
+/info_to_mdb.c/1.6/Mon Feb 18 07:01:33 2002//Tversion-10_04_2
+/mdemangle.c/1.55/Thu Nov 27 02:51:27 2008//Tversion-10_04_2
+/mfiltercc.c/1.2.2.2/Sun Jul 11 16:31:03 2010//Tversion-10_04_2
+/mkinit.c/1.122/Sat Feb 13 07:29:10 2010//Tversion-10_04_2
+/mkinit_common.c/1.2/Mon Jun 18 05:41:31 2007//Tversion-10_04_2
+/mkinit_common.h/1.2/Mon Jun 18 05:41:31 2007//Tversion-10_04_2
+/mkinit_erl.c/1.4/Fri Aug 17 02:08:40 2007//Tversion-10_04_2
+/pad_backslash.c/1.2/Mon Oct 30 07:02:13 2006//Tversion-10_04_2
+D

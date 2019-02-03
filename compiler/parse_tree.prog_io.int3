@@ -1,0 +1,4 @@
+:- module (parse_tree.prog_io).
+:- interface.
+:- type maybe_return_timestamp.
+:- type module_error.

@@ -1,0 +1,13 @@
+:- module (thread.semaphore).
+:- pragma termination_info((thread.semaphore).new((builtin.out), (builtin.di), (builtin.uo)), infinite, cannot_loop).
+:- pragma termination_info((thread.semaphore).new((builtin.in)) = (builtin.uo), infinite, cannot_loop).
+:- pragma termination_info((thread.semaphore).wait((builtin.in), (builtin.di), (builtin.uo)), infinite, cannot_loop).
+:- pragma termination_info((thread.semaphore).try_wait((builtin.in), (builtin.out), (builtin.di), (builtin.uo)), infinite, cannot_loop).
+:- pragma termination_info((thread.semaphore).signal((builtin.in), (builtin.di), (builtin.uo)), infinite, cannot_loop).
+:- pragma termination_info((thread.semaphore).try_wait_2((builtin.in), (builtin.out), (builtin.di), (builtin.uo)), infinite, cannot_loop).
+:- pragma exceptions(predicate, ((thread.semaphore).new), 3, 0, will_not_throw).
+:- pragma exceptions(function, ((thread.semaphore).new), 2, 0, will_not_throw).
+:- pragma exceptions(predicate, ((thread.semaphore).wait), 3, 0, will_not_throw).
+:- pragma exceptions(predicate, ((thread.semaphore).try_wait), 4, 0, will_not_throw).
+:- pragma exceptions(predicate, ((thread.semaphore).signal), 3, 0, will_not_throw).
+:- pragma exceptions(predicate, ((thread.semaphore).try_wait_2), 4, 0, will_not_throw).

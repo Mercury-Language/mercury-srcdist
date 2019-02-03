@@ -1,0 +1,13 @@
+module(1, "getopt_io.m",
+	getopt_io,
+	{},
+	{builtin, bool, char, io, list, map, maybe, set, private_builtin},
+	{builtin, bool, char, io, list, map, maybe, set, pair, require, solutions, string, svset, private_builtin},
+	{},
+	{},
+	{},
+	{},
+	{},
+	no_foreign_export,
+	no_main
+).

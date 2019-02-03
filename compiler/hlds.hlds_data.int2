@@ -1,0 +1,148 @@
+:- module (hlds.hlds_data).
+:- interface.
+:- import_module assoc_list.
+:- import_module bool.
+:- import_module list.
+:- import_module map.
+:- import_module maybe.
+:- import_module pair.
+:- import_module set.
+:- import_module (hlds.hlds_pred).
+:- import_module (libs.globals).
+:- import_module (mdbcomp.prim_data).
+:- import_module (mdbcomp.program_representation).
+:- import_module (parse_tree.prog_data).
+:- type ancestor_constraints == map.map(parse_tree.prog_data.prog_constraint, list.list(parse_tree.prog_data.prog_constraint)).
+:- type any_inst_table == map.map(parse_tree.prog_data.inst_name, hlds.hlds_data.maybe_inst_det).
+:- type assert_id.
+:- type assertion_table.
+:- type class_table == map.map(parse_tree.prog_data.class_id, hlds.hlds_data.hlds_class_defn).
+:- type cons_table == map.map(parse_tree.prog_data.cons_id, list.list(hlds.hlds_data.hlds_cons_defn)).
+:- type cons_tag
+	--->	string_tag(string)
+	;	float_tag(float)
+	;	int_tag(int)
+	;	foreign_tag(libs.globals.foreign_language, string)
+	;	closure_tag(hlds.hlds_pred.pred_id, hlds.hlds_pred.proc_id, parse_tree.prog_data.lambda_eval_method)
+	;	type_ctor_info_tag(mdbcomp.prim_data.module_name, string, parse_tree.prog_data.arity)
+	;	base_typeclass_info_tag(mdbcomp.prim_data.module_name, parse_tree.prog_data.class_id, string)
+	;	tabling_info_tag(hlds.hlds_pred.pred_id, hlds.hlds_pred.proc_id)
+	;	deep_profiling_proc_layout_tag(hlds.hlds_pred.pred_id, hlds.hlds_pred.proc_id)
+	;	table_io_decl_tag(hlds.hlds_pred.pred_id, hlds.hlds_pred.proc_id)
+	;	single_functor_tag 
+	;	unshared_tag(hlds.hlds_data.tag_bits)
+	;	shared_remote_tag(hlds.hlds_data.tag_bits, int)
+	;	shared_local_tag(hlds.hlds_data.tag_bits, int)
+	;	no_tag 
+	;	reserved_address_tag(hlds.hlds_data.reserved_address)
+	;	shared_with_reserved_addresses_tag(list.list(hlds.hlds_data.reserved_address), hlds.hlds_data.cons_tag).
+:- type cons_tag_values == map.map(parse_tree.prog_data.cons_id, hlds.hlds_data.cons_tag).
+:- type constraint_id
+	--->	constraint_id(hlds.hlds_data.constraint_type, mdbcomp.program_representation.goal_path, int).
+:- type constraint_map == map.map(hlds.hlds_data.constraint_id, parse_tree.prog_data.prog_constraint).
+:- type constraint_proof
+	--->	apply_instance(hlds.hlds_data.instance_id)
+	;	superclass(parse_tree.prog_data.prog_constraint).
+:- type constraint_proof_map == map.map(parse_tree.prog_data.prog_constraint, hlds.hlds_data.constraint_proof).
+:- type constraint_type
+	--->	unproven 
+	;	assumed .
+:- type ctor_field_table == map.map(parse_tree.prog_data.ctor_field_name, list.list(hlds.hlds_data.hlds_ctor_field_defn)).
+:- type du_type_kind
+	--->	du_type_kind_mercury_enum 
+	;	du_type_kind_foreign_enum(((hlds.hlds_data).dtkfe_language) :: libs.globals.foreign_language)
+	;	du_type_kind_direct_dummy 
+	;	du_type_kind_notag(((hlds.hlds_data).dtkn_functor_name) :: mdbcomp.prim_data.sym_name, ((hlds.hlds_data).dtkn_arg_type) :: parse_tree.prog_data.mer_type, ((hlds.hlds_data).dtkn_maybe_arg_name) :: maybe.maybe(string))
+	;	du_type_kind_general .
+:- type exclusive_id == hlds.hlds_pred.pred_id.
+:- type exclusive_ids == list.list(hlds.hlds_pred.pred_id).
+:- type exclusive_table.
+:- type field_access_type
+	--->	get 
+	;	set .
+:- type foreign_type_body
+	--->	foreign_type_body(((hlds.hlds_data).il) :: hlds.hlds_data.foreign_type_lang_body(parse_tree.prog_data.il_foreign_type), ((hlds.hlds_data).c) :: hlds.hlds_data.foreign_type_lang_body(parse_tree.prog_data.c_foreign_type), ((hlds.hlds_data).java) :: hlds.hlds_data.foreign_type_lang_body(parse_tree.prog_data.java_foreign_type), ((hlds.hlds_data).erlang) :: hlds.hlds_data.foreign_type_lang_body(parse_tree.prog_data.erlang_foreign_type)).
+:- type ground_inst_table == map.map(parse_tree.prog_data.inst_name, hlds.hlds_data.maybe_inst_det).
+:- type hlds_class_argpos == int.
+:- type hlds_class_defn
+	--->	hlds_class_defn(((hlds.hlds_data).class_status) :: hlds.hlds_pred.import_status, ((hlds.hlds_data).class_supers) :: list.list(parse_tree.prog_data.prog_constraint), ((hlds.hlds_data).class_fundeps) :: hlds.hlds_data.hlds_class_fundeps, ((hlds.hlds_data).class_fundep_ancestors) :: list.list(parse_tree.prog_data.prog_constraint), ((hlds.hlds_data).class_vars) :: list.list(parse_tree.prog_data.tvar), ((hlds.hlds_data).class_kinds) :: parse_tree.prog_data.tvar_kind_map, ((hlds.hlds_data).class_interface) :: parse_tree.prog_data.class_interface, ((hlds.hlds_data).class_hlds_interface) :: hlds.hlds_data.hlds_class_interface, ((hlds.hlds_data).class_tvarset) :: parse_tree.prog_data.tvarset, ((hlds.hlds_data).class_context) :: parse_tree.prog_data.prog_context).
+:- type hlds_class_fundep
+	--->	fundep(((hlds.hlds_data).domain) :: set.set(hlds.hlds_data.hlds_class_argpos), ((hlds.hlds_data).range) :: set.set(hlds.hlds_data.hlds_class_argpos)).
+:- type hlds_class_fundeps == list.list(hlds.hlds_data.hlds_class_fundep).
+:- type hlds_class_interface == list.list(hlds.hlds_data.hlds_class_proc).
+:- type hlds_class_proc
+	--->	hlds_class_proc(hlds.hlds_pred.pred_id, hlds.hlds_pred.proc_id).
+:- type hlds_cons_defn
+	--->	hlds_cons_defn(((hlds.hlds_data).cons_type_ctor) :: parse_tree.prog_data.type_ctor, ((hlds.hlds_data).cons_type_tvarset) :: parse_tree.prog_data.tvarset, ((hlds.hlds_data).cons_type_params) :: list.list(parse_tree.prog_data.type_param), ((hlds.hlds_data).cons_type_kinds) :: parse_tree.prog_data.tvar_kind_map, ((hlds.hlds_data).cons_exist_tvars) :: parse_tree.prog_data.existq_tvars, ((hlds.hlds_data).cons_constraints) :: list.list(parse_tree.prog_data.prog_constraint), ((hlds.hlds_data).cons_args) :: list.list(parse_tree.prog_data.constructor_arg), ((hlds.hlds_data).cons_context) :: parse_tree.prog_data.prog_context).
+:- type hlds_constraint
+	--->	constraint(list.list(hlds.hlds_data.constraint_id), parse_tree.prog_data.class_name, list.list(parse_tree.prog_data.mer_type)).
+:- type hlds_constraints
+	--->	constraints(((hlds.hlds_data).unproven) :: list.list(hlds.hlds_data.hlds_constraint), ((hlds.hlds_data).assumed) :: list.list(hlds.hlds_data.hlds_constraint), ((hlds.hlds_data).redundant) :: hlds.hlds_data.redundant_constraints, ((hlds.hlds_data).ancestors) :: hlds.hlds_data.ancestor_constraints).
+:- type hlds_ctor_field_defn
+	--->	hlds_ctor_field_defn(((hlds.hlds_data).field_context) :: parse_tree.prog_data.prog_context, ((hlds.hlds_data).field_status) :: hlds.hlds_pred.import_status, ((hlds.hlds_data).field_type_ctor) :: parse_tree.prog_data.type_ctor, ((hlds.hlds_data).field_cons_id) :: parse_tree.prog_data.cons_id, ((hlds.hlds_data).field_arg_num) :: int).
+:- type hlds_inst_body
+	--->	eqv_inst(parse_tree.prog_data.mer_inst)
+	;	abstract_inst .
+:- type hlds_inst_defn
+	--->	hlds_inst_defn(((hlds.hlds_data).inst_varset) :: parse_tree.prog_data.inst_varset, ((hlds.hlds_data).inst_params) :: list.list(parse_tree.prog_data.inst_var), ((hlds.hlds_data).inst_body) :: hlds.hlds_data.hlds_inst_body, ((hlds.hlds_data).inst_context) :: parse_tree.prog_data.prog_context, ((hlds.hlds_data).inst_status) :: hlds.hlds_pred.import_status).
+:- type hlds_instance_defn
+	--->	hlds_instance_defn(((hlds.hlds_data).instance_module) :: mdbcomp.prim_data.module_name, ((hlds.hlds_data).instance_status) :: hlds.hlds_pred.import_status, ((hlds.hlds_data).instance_context) :: parse_tree.prog_data.prog_context, ((hlds.hlds_data).instance_constraints) :: list.list(parse_tree.prog_data.prog_constraint), ((hlds.hlds_data).instance_types) :: list.list(parse_tree.prog_data.mer_type), ((hlds.hlds_data).instance_body) :: parse_tree.prog_data.instance_body, ((hlds.hlds_data).instance_hlds_interface) :: maybe.maybe(hlds.hlds_data.hlds_class_interface), ((hlds.hlds_data).instance_tvarset) :: parse_tree.prog_data.tvarset, ((hlds.hlds_data).instance_proofs) :: hlds.hlds_data.constraint_proof_map).
+:- type hlds_mode_body
+	--->	eqv_mode(parse_tree.prog_data.mer_mode).
+:- type hlds_mode_defn
+	--->	hlds_mode_defn(((hlds.hlds_data).mode_varset) :: parse_tree.prog_data.inst_varset, ((hlds.hlds_data).mode_params) :: list.list(parse_tree.prog_data.inst_var), ((hlds.hlds_data).mody_body) :: hlds.hlds_data.hlds_mode_body, ((hlds.hlds_data).mode_context) :: parse_tree.prog_data.prog_context, ((hlds.hlds_data).mode_status) :: hlds.hlds_pred.import_status).
+:- type hlds_type_body
+	--->	hlds_du_type(((hlds.hlds_data).du_type_ctors) :: list.list(parse_tree.prog_data.constructor), ((hlds.hlds_data).du_type_cons_tag_values) :: hlds.hlds_data.cons_tag_values, ((hlds.hlds_data).du_type_cheaper_tag_test) :: hlds.hlds_data.maybe_cheaper_tag_test, ((hlds.hlds_data).du_type_kind) :: hlds.hlds_data.du_type_kind, ((hlds.hlds_data).du_type_usereq) :: maybe.maybe(parse_tree.prog_data.unify_compare), ((hlds.hlds_data).du_type_reserved_tag) :: parse_tree.prog_data.uses_reserved_tag, ((hlds.hlds_data).du_type_reserved_addr) :: parse_tree.prog_data.uses_reserved_address, ((hlds.hlds_data).du_type_is_foreign_type) :: maybe.maybe(hlds.hlds_data.foreign_type_body))
+	;	hlds_eqv_type(parse_tree.prog_data.mer_type)
+	;	hlds_foreign_type(hlds.hlds_data.foreign_type_body)
+	;	hlds_solver_type(parse_tree.prog_data.solver_type_details, maybe.maybe(parse_tree.prog_data.unify_compare))
+	;	hlds_abstract_type(parse_tree.prog_data.is_solver_type).
+:- type hlds_type_defn.
+:- type inst_table.
+:- type instance_id == int.
+:- type instance_table == map.map(parse_tree.prog_data.class_id, list.list(hlds.hlds_data.hlds_instance_defn)).
+:- type may_use_atomic_alloc
+	--->	may_use_atomic_alloc 
+	;	may_not_use_atomic_alloc .
+:- type maybe_cheaper_tag_test
+	--->	no_cheaper_tag_test 
+	;	cheaper_tag_test(((hlds.hlds_data).more_expensive_cons_id) :: parse_tree.prog_data.cons_id, ((hlds.hlds_data).more_expensive_cons_tag) :: hlds.hlds_data.cons_tag, ((hlds.hlds_data).less_expensive_cons_id) :: parse_tree.prog_data.cons_id, ((hlds.hlds_data).less_expensive_cons_tag) :: hlds.hlds_data.cons_tag).
+:- type maybe_inst
+	--->	inst_unknown 
+	;	inst_known(parse_tree.prog_data.mer_inst).
+:- type maybe_inst_det
+	--->	inst_det_unknown 
+	;	inst_det_known(parse_tree.prog_data.mer_inst, parse_tree.prog_data.determinism).
+:- type merge_inst_table == map.map(pair.pair(parse_tree.prog_data.mer_inst), hlds.hlds_data.maybe_inst).
+:- type mode_defns == map.map(parse_tree.prog_data.mode_id, hlds.hlds_data.hlds_mode_defn).
+:- type mode_table.
+:- type mostly_uniq_inst_table == map.map(parse_tree.prog_data.inst_name, hlds.hlds_data.maybe_inst).
+:- type no_tag_type
+	--->	no_tag_type(list.list(parse_tree.prog_data.type_param), mdbcomp.prim_data.sym_name, parse_tree.prog_data.mer_type).
+:- type no_tag_type_table == map.map(parse_tree.prog_data.type_ctor, hlds.hlds_data.no_tag_type).
+:- type redundant_constraints == map.map(parse_tree.prog_data.class_id, set.set(hlds.hlds_data.hlds_constraint)).
+:- type reserved_address
+	--->	null_pointer 
+	;	small_pointer(int)
+	;	reserved_object(parse_tree.prog_data.type_ctor, mdbcomp.prim_data.sym_name, parse_tree.prog_data.arity).
+:- type shared_inst_table == map.map(parse_tree.prog_data.inst_name, hlds.hlds_data.maybe_inst).
+:- type tag_bits == int.
+:- type tagged_cons_id
+	--->	tagged_cons_id(parse_tree.prog_data.cons_id, hlds.hlds_data.cons_tag).
+:- type type_table.
+:- type unify_inst_pair
+	--->	unify_inst_pair(parse_tree.prog_data.is_live, parse_tree.prog_data.mer_inst, parse_tree.prog_data.mer_inst, parse_tree.prog_data.unify_is_real).
+:- type unify_inst_table == map.map(parse_tree.prog_data.inst_name, hlds.hlds_data.maybe_inst_det).
+:- type user_inst_defns == map.map(parse_tree.prog_data.inst_id, hlds.hlds_data.hlds_inst_defn).
+:- type user_inst_table.
+:- type foreign_type_lang_body(T) == maybe.maybe(hlds.hlds_data.foreign_type_lang_data(T)).
+:- type foreign_type_lang_data(T)
+	--->	foreign_type_lang_data(T, maybe.maybe(parse_tree.prog_data.unify_compare), list.list(parse_tree.prog_data.foreign_type_assertion)).
+:- implementation.
+:- import_module multi_map.
+:- type assert_id == int.
+:- type exclusive_table == multi_map.multi_map(hlds.hlds_pred.pred_id, hlds.hlds_data.exclusive_id).
+:- type mode_table == hlds.hlds_data.mode_defns.
+:- type type_ctor_table == map.map(parse_tree.prog_data.type_ctor, hlds.hlds_data.hlds_type_defn).
+:- type type_table == map.map(string, hlds.hlds_data.type_ctor_table).
+:- type user_inst_table == hlds.hlds_data.user_inst_defns.

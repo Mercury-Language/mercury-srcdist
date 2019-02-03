@@ -1,0 +1,13 @@
+:- module (ml_backend.mlds_to_il).
+:- interface.
+:- import_module bool.
+:- import_module list.
+:- import_module maybe.
+:- import_module set.
+:- import_module (hlds.hlds_pred).
+:- import_module (libs.globals).
+:- import_module (ml_backend.ilasm).
+:- import_module (ml_backend.ilds).
+:- import_module (ml_backend.mlds).
+:- type il_data_rep
+	--->	il_data_rep(((ml_backend.mlds_to_il).highlevel_data) :: bool.bool, ((ml_backend.mlds_to_il).il_envptr_type) :: ml_backend.ilds.il_type).

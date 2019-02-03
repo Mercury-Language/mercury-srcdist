@@ -1,0 +1,22 @@
+:- module sveqvclass.
+:- use_module builtin, eqvclass, private_builtin.
+sveqvclass.ensure_element(Element_4, EqvClass0_5, EqvClass_6) :-
+    eqvclass.ensure_element(EqvClass0_5, Element_4, EqvClass_6).
+sveqvclass.new_element(Element_4, EqvClass0_5, EqvClass_6) :-
+    eqvclass.new_element(EqvClass0_5, Element_4, EqvClass_6).
+sveqvclass.ensure_equivalence(Element1_5, Element2_6, EqvClass0_7, EqvClass_8) :-
+    eqvclass.ensure_equivalence(EqvClass0_7, Element1_5, Element2_6, EqvClass_8).
+sveqvclass.new_equivalence(Element1_5, Element2_6, EqvClass0_7, EqvClass_8) :-
+    eqvclass.new_equivalence(EqvClass0_7, Element1_5, Element2_6, EqvClass_8).
+sveqvclass.remove_equivalent_elements(X_4, EqvClass0_5, EqvClass_6) :-
+    EqvClass_6 = eqvclass.remove_equivalent_elements(EqvClass0_5, X_4).
+:- pragma exceptions(predicate, (sveqvclass.ensure_element), 3, 0, may_throw(user_exception)).
+:- pragma exceptions(predicate, (sveqvclass.new_element), 3, 0, may_throw(user_exception)).
+:- pragma exceptions(predicate, (sveqvclass.ensure_equivalence), 4, 0, may_throw(user_exception)).
+:- pragma exceptions(predicate, (sveqvclass.new_equivalence), 4, 0, may_throw(user_exception)).
+:- pragma exceptions(predicate, (sveqvclass.remove_equivalent_elements), 3, 0, may_throw(user_exception)).
+:- pragma termination_info(sveqvclass.ensure_element((builtin.in), (builtin.in), (builtin.out)), infinite, can_loop).
+:- pragma termination_info(sveqvclass.new_element((builtin.in), (builtin.in), (builtin.out)), infinite, can_loop).
+:- pragma termination_info(sveqvclass.ensure_equivalence((builtin.in), (builtin.in), (builtin.in), (builtin.out)), infinite, can_loop).
+:- pragma termination_info(sveqvclass.new_equivalence((builtin.in), (builtin.in), (builtin.in), (builtin.out)), infinite, can_loop).
+:- pragma termination_info(sveqvclass.remove_equivalent_elements((builtin.in), (builtin.in), (builtin.out)), infinite, can_loop).

@@ -1,0 +1,34 @@
+/*
+** Automatically generated from `prog_io_sym_name.m'
+** by the Mercury compiler,
+** version 10.04.2, configured for x86_64-unknown-linux-gnu.
+** Do not edit.
+*/
+#ifndef PARSE_TREE__PROG_IO_SYM_NAME_MH
+#define PARSE_TREE__PROG_IO_SYM_NAME_MH
+
+#ifdef __cplusplus
+extern "C" {
+#endif
+
+#ifdef MR_HIGHLEVEL_CODE
+#include "mercury.h"
+#else
+  #ifndef MERCURY_HDR_EXCLUDE_IMP_H
+  #include "mercury_imp.h"
+  #endif
+#endif
+#ifdef MR_DEEP_PROFILING
+#include "mercury_deep_profiling.h"
+#endif
+
+#ifndef PARSE_TREE__PROG_IO_SYM_NAME_DECL_GUARD
+#define PARSE_TREE__PROG_IO_SYM_NAME_DECL_GUARD
+
+#endif
+
+#ifdef __cplusplus
+}
+#endif
+
+#endif /* PARSE_TREE__PROG_IO_SYM_NAME_MH */

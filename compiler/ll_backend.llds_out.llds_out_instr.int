@@ -1,0 +1,19 @@
+:- module ((ll_backend.llds_out).llds_out_instr).
+:- interface.
+:- import_module io.
+:- import_module list.
+:- import_module pair.
+:- import_module set_tree234.
+:- import_module (ll_backend.llds).
+:- import_module ((ll_backend.llds_out).llds_out_util).
+:- type after_layout_label
+	--->	not_after_layout_label 
+	;	after_layout_label .
+:- pred output_debug_instruction(ll_backend.llds_out.llds_out_util.llds_out_info, ll_backend.llds.instr, io.io, io.io).
+:- mode output_debug_instruction((builtin.in), (builtin.in), (builtin.di), (builtin.uo)) is det.
+:- pred output_debug_instruction_and_comment(ll_backend.llds_out.llds_out_util.llds_out_info, ll_backend.llds.instr, string, io.io, io.io).
+:- mode output_debug_instruction_and_comment((builtin.in), (builtin.in), (builtin.in), (builtin.di), (builtin.uo)) is det.
+:- pred output_instruction_list(ll_backend.llds_out.llds_out_util.llds_out_info, list.list(ll_backend.llds.instruction), pair.pair(ll_backend.llds.label, set_tree234.set_tree234(ll_backend.llds.label)), set_tree234.set_tree234(ll_backend.llds.label), ll_backend.llds_out.llds_out_instr.after_layout_label, io.io, io.io).
+:- mode output_instruction_list((builtin.in), (builtin.in), (builtin.in), (builtin.in), (builtin.in), (builtin.di), (builtin.uo)) is det.
+:- pred output_record_instruction_decls(ll_backend.llds_out.llds_out_util.llds_out_info, ll_backend.llds.instruction, ll_backend.llds_out.llds_out_util.decl_set, ll_backend.llds_out.llds_out_util.decl_set, io.io, io.io).
+:- mode output_record_instruction_decls((builtin.in), (builtin.in), (builtin.in), (builtin.out), (builtin.di), (builtin.uo)) is det.

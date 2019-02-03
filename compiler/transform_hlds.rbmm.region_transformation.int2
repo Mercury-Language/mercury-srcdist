@@ -1,0 +1,15 @@
+:- module ((transform_hlds.rbmm).region_transformation).
+:- interface.
+:- import_module hlds.
+:- import_module map.
+:- import_module parse_tree.
+:- import_module string.
+:- import_module (hlds.hlds_module).
+:- import_module (hlds.hlds_pred).
+:- import_module (parse_tree.prog_data).
+:- import_module ((transform_hlds.rbmm).points_to_info).
+:- import_module ((transform_hlds.rbmm).region_arguments).
+:- import_module ((transform_hlds.rbmm).region_instruction).
+:- import_module ((transform_hlds.rbmm).region_resurrection_renaming).
+:- type name_to_prog_var == map.map(string, parse_tree.prog_data.prog_var).
+:- type name_to_prog_var_table == map.map(hlds.hlds_pred.pred_proc_id, transform_hlds.rbmm.region_transformation.name_to_prog_var).

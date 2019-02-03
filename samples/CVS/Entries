@@ -1,0 +1,22 @@
+/.cvsignore/1.5/Tue Mar  4 04:41:05 2008//Tversion-10_04_2
+/.nocopyright/1.1.10.1/Wed Jul  7 09:06:26 2010//Tversion-10_04_2
+/Mmakefile/1.6/Thu Nov  8 15:30:39 2001//Tversion-10_04_2
+/README/1.9.2.1/Wed Jul  7 09:06:26 2010//Tversion-10_04_2
+/calculator.m/1.12/Tue Mar 21 00:50:57 2006//Tversion-10_04_2
+/calculator2.m/1.6/Fri Apr  4 03:58:44 2008//Tversion-10_04_2
+/cat.m/1.7/Fri Aug 12 04:50:36 2005//Tversion-10_04_2
+/e.m/1.6/Tue Mar 21 00:50:57 2006//Tversion-10_04_2
+/eliza.m/1.19/Wed Jun 28 09:11:07 2006//Tversion-10_04_2
+/expand_terms.m/1.5/Tue Mar 21 00:50:57 2006//Tversion-10_04_2
+/hello.m/1.4/Fri Aug 12 04:50:37 2005//Tversion-10_04_2
+/interpreter.m/1.9/Wed Nov  1 23:11:23 2006//Tversion-10_04_2
+/sort.m/1.7/Wed Jun 28 09:11:07 2006//Tversion-10_04_2
+/ultra_sub.m/1.8/Tue Mar 21 00:50:58 2006//Tversion-10_04_2
+D/c_interface////
+D/diff////
+D/java_interface////
+D/muz////
+D/rot13////
+D/solutions////
+D/solver_types////
+D/tests////

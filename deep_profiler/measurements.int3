@@ -1,0 +1,8 @@
+:- module measurements.
+:- interface.
+:- type cs_cost_csq.
+:- type inherit_prof_info.
+:- type is_active.
+:- type own_prof_info.
+:- type parallelism_amount.
+:- type proc_cost_csq.

@@ -1,0 +1,13 @@
+module(1, "listing.m",
+	(mdb.listing),
+	{mdb},
+	{builtin, io, list, private_builtin},
+	{builtin, io, list, dir, int, maybe, type_desc, private_builtin},
+	{},
+	{},
+	{},
+	{"C"},
+	{"C" - (mdb.listing), "Java" - (mdb.listing), "C" - (mdb.listing)},
+	contains_foreign_export,
+	no_main
+).

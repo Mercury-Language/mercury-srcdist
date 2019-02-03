@@ -1,0 +1,56 @@
+:- module (libs.globals).
+:- interface.
+:- import_module bool.
+:- import_module getopt_io.
+:- import_module io.
+:- import_module list.
+:- import_module map.
+:- import_module maybe.
+:- import_module mdbcomp.
+:- import_module (libs.options).
+:- import_module (libs.trace_params).
+:- import_module (mdbcomp.feedback).
+:- import_module (mdbcomp.prim_data).
+:- type c_compiler_type
+	--->	cc_gcc(((libs.globals).gcc_major_ver) :: maybe.maybe(int), ((libs.globals).gcc_minor_ver) :: maybe.maybe(int), ((libs.globals).gcc_patch_level) :: maybe.maybe(int))
+	;	cc_lcc 
+	;	cc_cl 
+	;	cc_unknown .
+:- type compilation_target
+	--->	target_c 
+	;	target_il 
+	;	target_java 
+	;	target_asm 
+	;	target_x86_64 
+	;	target_erlang .
+:- type foreign_language
+	--->	lang_c 
+	;	lang_csharp 
+	;	lang_java 
+	;	lang_il 
+	;	lang_erlang .
+:- type gc_method
+	--->	gc_automatic 
+	;	gc_none 
+	;	gc_boehm 
+	;	gc_boehm_debug 
+	;	gc_hgc 
+	;	gc_mps 
+	;	gc_accurate .
+:- type globals.
+:- type il_version_number
+	--->	il_version_number(((libs.globals).ivn_major) :: int, ((libs.globals).ivn_minor) :: int, ((libs.globals).ivn_build) :: int, ((libs.globals).ivn_revision) :: int).
+:- type may_be_thread_safe == bool.bool.
+:- type reuse_strategy
+	--->	same_cons_id 
+	;	within_n_cells_difference(int).
+:- type source_file_map == map.map(mdbcomp.prim_data.module_name, string).
+:- type tags_method
+	--->	tags_none 
+	;	tags_low 
+	;	tags_high .
+:- type termination_norm
+	--->	norm_simple 
+	;	norm_total 
+	;	norm_num_data_elems 
+	;	norm_size_data_elems .

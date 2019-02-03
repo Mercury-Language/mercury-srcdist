@@ -1,0 +1,5 @@
+:- module (hlds.goal_util).
+:- interface.
+:- type attach_in_from_ground_term.
+:- type goal_is_atomic.
+:- type is_leaf.

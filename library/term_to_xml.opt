@@ -1,0 +1,137 @@
+:- module term_to_xml.
+:- use_module bool, builtin, char, construct, deconstruct, exception, int, io, list, map, maybe, private_builtin, stream, string, type_desc, unit, univ.
+:- type term_to_xml.maybe_format
+	--->	format 
+	;	no_format .
+term_to_xml.write_xml_doc(Stream_5, Term_6, STATE_VARIABLE_State_0_8, STATE_VARIABLE_State_9) :-
+    V_11 = term_to_xml.no_stylesheet : term_to_xml.maybe_stylesheet,
+    V_12 = term_to_xml.no_dtd : term_to_xml.maybe_dtd,
+    term_to_xml.write_xml_doc_style_dtd(Stream_5, Term_6, V_11, V_12, STATE_VARIABLE_State_0_8, STATE_VARIABLE_State_1_10),
+    STATE_VARIABLE_State_9 = STATE_VARIABLE_State_1_10.
+term_to_xml.write_dtd(Stream_7, Term_8, ElementMapping_9, DTDResult_10, STATE_VARIABLE_State_0_13, STATE_VARIABLE_State_14) :-
+    TypeDesc_12 = type_desc.type_of(Term_8),
+    term_to_xml.write_dtd_from_type(Stream_7, TypeDesc_12, ElementMapping_9, DTDResult_10, STATE_VARIABLE_State_0_13, STATE_VARIABLE_State_1_15),
+    STATE_VARIABLE_State_14 = STATE_VARIABLE_State_1_15.
+term_to_xml.write_xml_doc(Term_4, STATE_VARIABLE_IO_0_7, STATE_VARIABLE_IO_8) :-
+    io.output_stream(Stream_6, STATE_VARIABLE_IO_0_7, STATE_VARIABLE_IO_1_9),
+    term_to_xml.write_xml_doc(Stream_6, Term_4, STATE_VARIABLE_IO_1_9, STATE_VARIABLE_IO_2_10),
+    STATE_VARIABLE_IO_8 = STATE_VARIABLE_IO_2_10.
+term_to_xml.write_xml_doc_to_stream(Stream_5, Term_6, STATE_VARIABLE_IO_0_8, STATE_VARIABLE_IO_9) :-
+    term_to_xml.write_xml_doc(Stream_5, Term_6, STATE_VARIABLE_IO_0_8, STATE_VARIABLE_IO_1_10),
+    STATE_VARIABLE_IO_9 = STATE_VARIABLE_IO_1_10.
+term_to_xml.write_xml_doc_style_dtd(Term_6, MaybeStyleSheet_7, MaybeDTD_8, STATE_VARIABLE_IO_0_11, STATE_VARIABLE_IO_12) :-
+    io.output_stream(Stream_10, STATE_VARIABLE_IO_0_11, STATE_VARIABLE_IO_1_13),
+    term_to_xml.write_xml_doc_style_dtd(Stream_10, Term_6, MaybeStyleSheet_7, MaybeDTD_8, STATE_VARIABLE_IO_1_13, STATE_VARIABLE_IO_2_14),
+    STATE_VARIABLE_IO_12 = STATE_VARIABLE_IO_2_14.
+term_to_xml.write_xml_doc_style_dtd_stream(Stream_7, Term_8, MaybeStyleSheet_9, MaybeDTD_10, STATE_VARIABLE_IO_0_12, STATE_VARIABLE_IO_13) :-
+    term_to_xml.write_xml_doc_style_dtd(Stream_7, Term_8, MaybeStyleSheet_9, MaybeDTD_10, STATE_VARIABLE_IO_0_12, STATE_VARIABLE_IO_1_14),
+    STATE_VARIABLE_IO_13 = STATE_VARIABLE_IO_1_14.
+term_to_xml.write_xml_element(Indent_5, Term_6, STATE_VARIABLE_IO_0_9, STATE_VARIABLE_IO_10) :-
+    io.output_stream(Stream_8, STATE_VARIABLE_IO_0_9, STATE_VARIABLE_IO_1_11),
+    term_to_xml.write_xml_element(Stream_8, Indent_5, Term_6, STATE_VARIABLE_IO_1_11, STATE_VARIABLE_IO_2_12),
+    STATE_VARIABLE_IO_10 = STATE_VARIABLE_IO_2_12.
+term_to_xml.write_xml_element_to_stream(Stream_6, Indent_7, Term_8, STATE_VARIABLE_IO_0_10, STATE_VARIABLE_IO_11) :-
+    term_to_xml.write_xml_element(Stream_6, Indent_7, Term_8, STATE_VARIABLE_IO_0_10, STATE_VARIABLE_IO_1_12),
+    STATE_VARIABLE_IO_11 = STATE_VARIABLE_IO_1_12.
+term_to_xml.write_xml_header(MaybeEncoding_4, STATE_VARIABLE_IO_0_7, STATE_VARIABLE_IO_8) :-
+    io.output_stream(Stream_6, STATE_VARIABLE_IO_0_7, STATE_VARIABLE_IO_1_9),
+    term_to_xml.write_xml_header(Stream_6, MaybeEncoding_4, STATE_VARIABLE_IO_1_9, STATE_VARIABLE_IO_2_10),
+    STATE_VARIABLE_IO_8 = STATE_VARIABLE_IO_2_10.
+term_to_xml.write_xml_doc_general(Term_8, Mapping_9, MaybeStyleSheet_10, MaybeDTD_11, DTDGenerationResult_12, STATE_VARIABLE_IO_0_15, STATE_VARIABLE_IO_16) :-
+    io.output_stream(Stream_14, STATE_VARIABLE_IO_0_15, STATE_VARIABLE_IO_1_17),
+    term_to_xml.write_xml_doc_general(Stream_14, Term_8, Mapping_9, MaybeStyleSheet_10, MaybeDTD_11, DTDGenerationResult_12, STATE_VARIABLE_IO_1_17, STATE_VARIABLE_IO_2_18),
+    STATE_VARIABLE_IO_16 = STATE_VARIABLE_IO_2_18.
+term_to_xml.write_xml_doc_general_to_stream(Stream_9, Term_10, Mapping_11, MaybeStyleSheet_12, MaybeDTD_13, DTDGenerationResult_14, STATE_VARIABLE_IO_0_16, STATE_VARIABLE_IO_17) :-
+    term_to_xml.write_xml_doc_general(Stream_9, Term_10, Mapping_11, MaybeStyleSheet_12, MaybeDTD_13, DTDGenerationResult_14, STATE_VARIABLE_IO_0_16, STATE_VARIABLE_IO_1_18),
+    STATE_VARIABLE_IO_17 = STATE_VARIABLE_IO_1_18.
+term_to_xml.write_xml_doc_general_cc(Term_8, Mapping_9, MaybeStyleSheet_10, MaybeDTD_11, DTDGenerationResult_12, STATE_VARIABLE_IO_0_15, STATE_VARIABLE_IO_16) :-
+    io.output_stream(Stream_14, STATE_VARIABLE_IO_0_15, STATE_VARIABLE_IO_1_17),
+    term_to_xml.write_xml_doc_general_cc(Stream_14, Term_8, Mapping_9, MaybeStyleSheet_10, MaybeDTD_11, DTDGenerationResult_12, STATE_VARIABLE_IO_1_17, STATE_VARIABLE_IO_2_18),
+    STATE_VARIABLE_IO_16 = STATE_VARIABLE_IO_2_18.
+term_to_xml.write_xml_doc_general_cc_to_stream(Stream_9, Term_10, Mapping_11, MaybeStyleSheet_12, MaybeDTD_13, DTDGenerationResult_14, STATE_VARIABLE_IO_0_16, STATE_VARIABLE_IO_17) :-
+    term_to_xml.write_xml_doc_general_cc(Stream_9, Term_10, Mapping_11, MaybeStyleSheet_12, MaybeDTD_13, DTDGenerationResult_14, STATE_VARIABLE_IO_0_16, STATE_VARIABLE_IO_1_18),
+    STATE_VARIABLE_IO_17 = STATE_VARIABLE_IO_1_18.
+term_to_xml.write_dtd(Term_6, Mapping_7, DTDGenerationResult_8, STATE_VARIABLE_IO_0_11, STATE_VARIABLE_IO_12) :-
+    io.output_stream(Stream_10, STATE_VARIABLE_IO_0_11, STATE_VARIABLE_IO_1_13),
+    term_to_xml.write_dtd(Stream_10, Term_6, Mapping_7, DTDGenerationResult_8, STATE_VARIABLE_IO_1_13, STATE_VARIABLE_IO_2_14),
+    STATE_VARIABLE_IO_12 = STATE_VARIABLE_IO_2_14.
+term_to_xml.write_dtd_to_stream(Stream_7, Term_8, Mapping_9, DTDGenerationResult_10, STATE_VARIABLE_IO_0_12, STATE_VARIABLE_IO_13) :-
+    term_to_xml.write_dtd(Stream_7, Term_8, Mapping_9, DTDGenerationResult_10, STATE_VARIABLE_IO_0_12, STATE_VARIABLE_IO_1_14),
+    STATE_VARIABLE_IO_13 = STATE_VARIABLE_IO_1_14.
+term_to_xml.write_dtd_from_type(Type_6, Mapping_7, DTDGenerationResult_8, STATE_VARIABLE_IO_0_11, STATE_VARIABLE_IO_12) :-
+    io.output_stream(Stream_10, STATE_VARIABLE_IO_0_11, STATE_VARIABLE_IO_1_13),
+    term_to_xml.write_dtd_from_type(Stream_10, Type_6, Mapping_7, DTDGenerationResult_8, STATE_VARIABLE_IO_1_13, STATE_VARIABLE_IO_2_14),
+    STATE_VARIABLE_IO_12 = STATE_VARIABLE_IO_2_14.
+term_to_xml.write_dtd_from_type_to_stream(Stream_7, Type_8, Mapping_9, DTDGenerationResult_10, STATE_VARIABLE_IO_0_12, STATE_VARIABLE_IO_13) :-
+    term_to_xml.write_dtd_from_type(Stream_7, Type_8, Mapping_9, DTDGenerationResult_10, STATE_VARIABLE_IO_0_12, STATE_VARIABLE_IO_1_14),
+    STATE_VARIABLE_IO_13 = STATE_VARIABLE_IO_1_14.
+term_to_xml.write_xml_element_general(NonCanon_7, Mapping_8, Indent_9, Term_10, STATE_VARIABLE_IO_0_13, STATE_VARIABLE_IO_14) :-
+    io.output_stream(Stream_12, STATE_VARIABLE_IO_0_13, STATE_VARIABLE_IO_1_15),
+    term_to_xml.write_xml_element_general(Stream_12, NonCanon_7, Mapping_8, Indent_9, Term_10, STATE_VARIABLE_IO_1_15, STATE_VARIABLE_IO_2_16),
+    STATE_VARIABLE_IO_14 = STATE_VARIABLE_IO_2_16.
+:- pragma exceptions(function, (term_to_xml.to_xml), 2, 0, may_throw(user_exception)).
+:- pragma exceptions(predicate, (term_to_xml.write_xml_doc), 4, 0, may_throw(user_exception)).
+:- pragma exceptions(predicate, (term_to_xml.write_xml_doc_style_dtd), 6, 0, may_throw(user_exception)).
+:- pragma exceptions(predicate, (term_to_xml.write_xml_element), 5, 0, may_throw(user_exception)).
+:- pragma exceptions(predicate, (term_to_xml.write_xml_header), 4, 0, may_throw(user_exception)).
+:- pragma exceptions(predicate, (term_to_xml.write_xml_doc_general), 8, 0, may_throw(user_exception)).
+:- pragma exceptions(predicate, (term_to_xml.write_xml_doc_general_cc), 8, 0, may_throw(user_exception)).
+:- pragma exceptions(function, (term_to_xml.can_generate_dtd), 3, 0, may_throw(user_exception)).
+:- pragma exceptions(predicate, (term_to_xml.write_dtd), 6, 0, may_throw(user_exception)).
+:- pragma exceptions(predicate, (term_to_xml.write_dtd_from_type), 6, 0, may_throw(user_exception)).
+:- pragma exceptions(predicate, (term_to_xml.write_xml_element_general), 7, 0, may_throw(user_exception)).
+:- pragma exceptions(predicate, (term_to_xml.write_xml_element_general), 7, 1, may_throw(user_exception)).
+:- pragma exceptions(predicate, (term_to_xml.write_xml_element_general), 7, 2, may_throw(user_exception)).
+:- pragma exceptions(predicate, (term_to_xml.write_xml_element_general), 7, 3, may_throw(user_exception)).
+:- pragma exceptions(predicate, (term_to_xml.write_xml_doc), 3, 0, may_throw(user_exception)).
+:- pragma exceptions(predicate, (term_to_xml.write_xml_doc_to_stream), 4, 0, may_throw(user_exception)).
+:- pragma exceptions(predicate, (term_to_xml.write_xml_doc_style_dtd), 5, 0, may_throw(user_exception)).
+:- pragma exceptions(predicate, (term_to_xml.write_xml_doc_style_dtd_stream), 6, 0, may_throw(user_exception)).
+:- pragma exceptions(predicate, (term_to_xml.write_xml_element), 4, 0, may_throw(user_exception)).
+:- pragma exceptions(predicate, (term_to_xml.write_xml_element_to_stream), 5, 0, may_throw(user_exception)).
+:- pragma exceptions(predicate, (term_to_xml.write_xml_header), 3, 0, may_throw(user_exception)).
+:- pragma exceptions(predicate, (term_to_xml.write_xml_doc_general), 7, 0, may_throw(user_exception)).
+:- pragma exceptions(predicate, (term_to_xml.write_xml_doc_general_to_stream), 8, 0, may_throw(user_exception)).
+:- pragma exceptions(predicate, (term_to_xml.write_xml_doc_general_cc), 7, 0, may_throw(user_exception)).
+:- pragma exceptions(predicate, (term_to_xml.write_xml_doc_general_cc_to_stream), 8, 0, may_throw(user_exception)).
+:- pragma exceptions(predicate, (term_to_xml.write_dtd), 5, 0, may_throw(user_exception)).
+:- pragma exceptions(predicate, (term_to_xml.write_dtd_to_stream), 6, 0, may_throw(user_exception)).
+:- pragma exceptions(predicate, (term_to_xml.write_dtd_from_type), 5, 0, may_throw(user_exception)).
+:- pragma exceptions(predicate, (term_to_xml.write_dtd_from_type_to_stream), 6, 0, may_throw(user_exception)).
+:- pragma exceptions(predicate, (term_to_xml.write_xml_element_general), 6, 0, may_throw(user_exception)).
+:- pragma exceptions(predicate, (term_to_xml.write_xml_element_general), 6, 1, may_throw(user_exception)).
+:- pragma exceptions(predicate, (term_to_xml.write_xml_element_general), 6, 2, may_throw(user_exception)).
+:- pragma exceptions(predicate, (term_to_xml.write_xml_element_general), 6, 3, may_throw(user_exception)).
+:- pragma termination_info(term_to_xml.to_xml((builtin.in)) = builtin.out((term_to_xml.xml_doc)), infinite, can_loop).
+:- pragma termination_info(term_to_xml.write_xml_doc((builtin.in), (builtin.in), (builtin.di), (builtin.uo)), infinite, can_loop).
+:- pragma termination_info(term_to_xml.write_xml_doc_style_dtd((builtin.in), (builtin.in), (builtin.in), builtin.in((term_to_xml.non_embedded_dtd)), (builtin.di), (builtin.uo)), infinite, can_loop).
+:- pragma termination_info(term_to_xml.write_xml_element((builtin.in), (builtin.in), (builtin.in), (builtin.di), (builtin.uo)), infinite, can_loop).
+:- pragma termination_info(term_to_xml.write_xml_header((builtin.in), (builtin.in), (builtin.di), (builtin.uo)), infinite, can_loop).
+:- pragma termination_info(term_to_xml.write_xml_doc_general((builtin.in), (builtin.in), builtin.in((term_to_xml.element_mapping)), (builtin.in), (builtin.in), (builtin.out), (builtin.di), (builtin.uo)), infinite, can_loop).
+:- pragma termination_info(term_to_xml.write_xml_doc_general_cc((builtin.in), (builtin.in), builtin.in((term_to_xml.element_mapping)), (builtin.in), (builtin.in), (builtin.out), (builtin.di), (builtin.uo)), infinite, can_loop).
+:- pragma termination_info(term_to_xml.can_generate_dtd(builtin.in((term_to_xml.element_mapping)), (builtin.in)) = (builtin.out), infinite, can_loop).
+:- pragma termination_info(term_to_xml.write_dtd((builtin.in), (builtin.unused), builtin.in((term_to_xml.element_mapping)), (builtin.out), (builtin.di), (builtin.uo)), infinite, can_loop).
+:- pragma termination_info(term_to_xml.write_dtd_from_type((builtin.in), (builtin.in), builtin.in((term_to_xml.element_mapping)), (builtin.out), (builtin.di), (builtin.uo)), infinite, can_loop).
+:- pragma termination_info(term_to_xml.write_xml_element_general((builtin.in), builtin.in((deconstruct.do_not_allow)), builtin.in((term_to_xml.element_mapping)), (builtin.in), (builtin.in), (builtin.di), (builtin.uo)), infinite, can_loop).
+:- pragma termination_info(term_to_xml.write_xml_element_general((builtin.in), builtin.in((deconstruct.canonicalize)), builtin.in((term_to_xml.element_mapping)), (builtin.in), (builtin.in), (builtin.di), (builtin.uo)), infinite, can_loop).
+:- pragma termination_info(term_to_xml.write_xml_element_general((builtin.in), builtin.in((deconstruct.include_details_cc)), builtin.in((term_to_xml.element_mapping)), (builtin.in), (builtin.in), (builtin.di), (builtin.uo)), infinite, can_loop).
+:- pragma termination_info(term_to_xml.write_xml_element_general((builtin.in), (builtin.in), builtin.in((term_to_xml.element_mapping)), (builtin.in), (builtin.in), (builtin.di), (builtin.uo)), infinite, can_loop).
+:- pragma termination_info(term_to_xml.write_xml_doc((builtin.in), (builtin.di), (builtin.uo)), infinite, can_loop).
+:- pragma termination_info(term_to_xml.write_xml_doc_to_stream((builtin.in), (builtin.in), (builtin.di), (builtin.uo)), infinite, can_loop).
+:- pragma termination_info(term_to_xml.write_xml_doc_style_dtd((builtin.in), (builtin.in), builtin.in((term_to_xml.non_embedded_dtd)), (builtin.di), (builtin.uo)), infinite, can_loop).
+:- pragma termination_info(term_to_xml.write_xml_doc_style_dtd_stream((builtin.in), (builtin.in), (builtin.in), builtin.in((term_to_xml.non_embedded_dtd)), (builtin.di), (builtin.uo)), infinite, can_loop).
+:- pragma termination_info(term_to_xml.write_xml_element((builtin.in), (builtin.in), (builtin.di), (builtin.uo)), infinite, can_loop).
+:- pragma termination_info(term_to_xml.write_xml_element_to_stream((builtin.in), (builtin.in), (builtin.in), (builtin.di), (builtin.uo)), infinite, can_loop).
+:- pragma termination_info(term_to_xml.write_xml_header((builtin.in), (builtin.di), (builtin.uo)), infinite, can_loop).
+:- pragma termination_info(term_to_xml.write_xml_doc_general((builtin.in), builtin.in((term_to_xml.element_mapping)), (builtin.in), (builtin.in), (builtin.out), (builtin.di), (builtin.uo)), infinite, can_loop).
+:- pragma termination_info(term_to_xml.write_xml_doc_general_to_stream((builtin.in), (builtin.in), builtin.in((term_to_xml.element_mapping)), (builtin.in), (builtin.in), (builtin.out), (builtin.di), (builtin.uo)), infinite, can_loop).
+:- pragma termination_info(term_to_xml.write_xml_doc_general_cc((builtin.in), builtin.in((term_to_xml.element_mapping)), (builtin.in), (builtin.in), (builtin.out), (builtin.di), (builtin.uo)), infinite, can_loop).
+:- pragma termination_info(term_to_xml.write_xml_doc_general_cc_to_stream((builtin.in), (builtin.in), builtin.in((term_to_xml.element_mapping)), (builtin.in), (builtin.in), (builtin.out), (builtin.di), (builtin.uo)), infinite, can_loop).
+:- pragma termination_info(term_to_xml.write_dtd((builtin.unused), builtin.in((term_to_xml.element_mapping)), (builtin.out), (builtin.di), (builtin.uo)), infinite, can_loop).
+:- pragma termination_info(term_to_xml.write_dtd_to_stream((builtin.in), (builtin.unused), builtin.in((term_to_xml.element_mapping)), (builtin.out), (builtin.di), (builtin.uo)), infinite, can_loop).
+:- pragma termination_info(term_to_xml.write_dtd_from_type((builtin.in), builtin.in((term_to_xml.element_mapping)), (builtin.out), (builtin.di), (builtin.uo)), infinite, can_loop).
+:- pragma termination_info(term_to_xml.write_dtd_from_type_to_stream((builtin.in), (builtin.in), builtin.in((term_to_xml.element_mapping)), (builtin.out), (builtin.di), (builtin.uo)), infinite, can_loop).
+:- pragma termination_info(term_to_xml.write_xml_element_general(builtin.in((deconstruct.do_not_allow)), builtin.in((term_to_xml.element_mapping)), (builtin.in), (builtin.in), (builtin.di), (builtin.uo)), infinite, can_loop).
+:- pragma termination_info(term_to_xml.write_xml_element_general(builtin.in((deconstruct.canonicalize)), builtin.in((term_to_xml.element_mapping)), (builtin.in), (builtin.in), (builtin.di), (builtin.uo)), infinite, can_loop).
+:- pragma termination_info(term_to_xml.write_xml_element_general(builtin.in((deconstruct.include_details_cc)), builtin.in((term_to_xml.element_mapping)), (builtin.in), (builtin.in), (builtin.di), (builtin.uo)), infinite, can_loop).
+:- pragma termination_info(term_to_xml.write_xml_element_general((builtin.in), builtin.in((term_to_xml.element_mapping)), (builtin.in), (builtin.in), (builtin.di), (builtin.uo)), infinite, can_loop).

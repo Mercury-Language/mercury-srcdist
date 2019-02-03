@@ -1,0 +1,5 @@
+:- module (check_hlds.det_util).
+:- interface.
+:- type det_info.
+:- type maybe_changed.
+:- type report_pess_extra_vars.

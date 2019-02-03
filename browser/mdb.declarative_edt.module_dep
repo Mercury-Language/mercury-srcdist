@@ -1,0 +1,13 @@
+module(1, "declarative_edt.m",
+	(mdb.declarative_edt),
+	{mdb},
+	{builtin, bool, list, map, maybe, pair, unit, (mdb.browser_info), (mdb.declarative_debugger), (mdb.declarative_oracle), (mdbcomp.prim_data), (mdbcomp.program_representation), (mdbcomp.rtti_access), private_builtin},
+	{builtin, bool, list, map, maybe, pair, unit, (mdb.browser_info), (mdb.declarative_debugger), (mdb.declarative_oracle), (mdbcomp.prim_data), (mdbcomp.program_representation), (mdbcomp.rtti_access), bimap, counter, exception, int, string, svmap, (mdb.declarative_execution), (mdb.term_rep), private_builtin},
+	{},
+	{},
+	{},
+	{"C"},
+	{"C" - (mdb.declarative_edt), "C" - (mdb.declarative_edt)},
+	no_foreign_export,
+	no_main
+).

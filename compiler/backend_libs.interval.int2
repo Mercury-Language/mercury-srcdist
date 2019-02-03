@@ -1,0 +1,55 @@
+:- module (backend_libs.interval).
+:- interface.
+:- import_module bool.
+:- import_module counter.
+:- import_module hlds.
+:- import_module io.
+:- import_module list.
+:- import_module map.
+:- import_module maybe.
+:- import_module mdbcomp.
+:- import_module parse_tree.
+:- import_module set.
+:- import_module (hlds.hlds_goal).
+:- import_module (hlds.hlds_module).
+:- import_module (mdbcomp.program_representation).
+:- import_module (parse_tree.prog_data).
+:- type anchor
+	--->	anchor_proc_start 
+	;	anchor_proc_end 
+	;	anchor_branch_start(backend_libs.interval.branch_construct, mdbcomp.program_representation.goal_path)
+	;	anchor_cond_then(mdbcomp.program_representation.goal_path)
+	;	anchor_branch_end(backend_libs.interval.branch_construct, mdbcomp.program_representation.goal_path)
+	;	anchor_call_site(mdbcomp.program_representation.goal_path).
+:- type anchor_follow_info
+	--->	anchor_follow_info(set.set(parse_tree.prog_data.prog_var), set.set(backend_libs.interval.interval_id)).
+:- type branch_construct
+	--->	branch_ite 
+	;	branch_disj 
+	;	branch_switch 
+	;	branch_neg 
+	;	branch_par_conj .
+:- type branch_end_info
+	--->	branch_end_info(((backend_libs.interval).flushed_after_branch) :: set.set(parse_tree.prog_data.prog_var), ((backend_libs.interval).accessed_after_branch) :: set.set(parse_tree.prog_data.prog_var), ((backend_libs.interval).interval_after_branch) :: backend_libs.interval.interval_id).
+:- type insert_map == map.map(backend_libs.interval.anchor, list.list(backend_libs.interval.insert_spec)).
+:- type insert_spec
+	--->	insert_spec(hlds.hlds_goal.hlds_goal, set.set(parse_tree.prog_data.prog_var)).
+:- type interval_id
+	--->	interval_id(int).
+:- type interval_info
+	--->	interval_info(((backend_libs.interval).ii_interval_params) :: backend_libs.interval.interval_params, ((backend_libs.interval).ii_flushed_later) :: set.set(parse_tree.prog_data.prog_var), ((backend_libs.interval).ii_accessed_later) :: set.set(parse_tree.prog_data.prog_var), ((backend_libs.interval).ii_branch_resume_map) :: map.map(mdbcomp.program_representation.goal_path, backend_libs.interval.resume_save_status), ((backend_libs.interval).ii_branch_end_map) :: map.map(mdbcomp.program_representation.goal_path, backend_libs.interval.branch_end_info), ((backend_libs.interval).ii_cond_end_map) :: map.map(mdbcomp.program_representation.goal_path, backend_libs.interval.interval_id), ((backend_libs.interval).ii_cur_interval) :: backend_libs.interval.interval_id, ((backend_libs.interval).ii_interval_counter) :: counter.counter, ((backend_libs.interval).ii_open_intervals) :: set.set(backend_libs.interval.interval_id), ((backend_libs.interval).ii_anchor_follow_map) :: map.map(backend_libs.interval.anchor, backend_libs.interval.anchor_follow_info), ((backend_libs.interval).ii_model_non_anchors) :: set.set(backend_libs.interval.anchor), ((backend_libs.interval).ii_interval_start) :: map.map(backend_libs.interval.interval_id, backend_libs.interval.anchor), ((backend_libs.interval).ii_interval_end) :: map.map(backend_libs.interval.interval_id, backend_libs.interval.anchor), ((backend_libs.interval).ii_interval_succ) :: map.map(backend_libs.interval.interval_id, list.list(backend_libs.interval.interval_id)), ((backend_libs.interval).ii_interval_vars) :: map.map(backend_libs.interval.interval_id, set.set(parse_tree.prog_data.prog_var)), ((backend_libs.interval).ii_interval_delvars) :: map.map(backend_libs.interval.interval_id, list.list(set.set(parse_tree.prog_data.prog_var)))).
+:- type interval_params
+	--->	interval_params(((backend_libs.interval).ip_module_info) :: hlds.hlds_module.module_info, ((backend_libs.interval).ip_var_types) :: parse_tree.prog_data.vartypes, ((backend_libs.interval).ip_at_most_zero_calls) :: bool.bool).
+:- type maybe_needs_flush
+	--->	needs_flush 
+	;	doesnt_need_flush .
+:- type rename_map == map.map(parse_tree.prog_data.prog_var, parse_tree.prog_data.prog_var).
+:- type resume_save_status
+	--->	has_resume_save 
+	;	has_no_resume_save .
+:- type save_point
+	--->	save_point(backend_libs.interval.save_point_type, mdbcomp.program_representation.goal_path).
+:- type save_point_type
+	--->	save_point_call_site 
+	;	save_point_resume_point .
+:- typeclass build_interval_info_acc(T).
