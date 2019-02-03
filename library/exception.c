@@ -1,0 +1,9858 @@
+/*
+** Automatically generated from `exception.m'
+** by the Mercury compiler,
+** version 11.07-beta-2011-07-20, configured for x86_64-unknown-linux-gnu.
+** Do not edit.
+**
+** The autoconfigured grade settings governing
+** the generation of this C file were
+**
+** TAG_BITS=2
+** UNBOXED_FLOAT=no
+** HIGHLEVEL_CODE=no
+**
+** END_OF_C_GRADE_INFO
+*/
+
+/*
+INIT mercury__exception__init
+REQUIRED_INIT mercury__exception__required_init
+ENDINIT
+*/
+
+#define MR_ALLOW_RESET
+#include "mercury_imp.h"
+#line 26 "exception.c"
+#include "exception.mh"
+
+#line 29 "exception.c"
+#line 526 "io.int"
+#include "io.mh"
+
+#line 33 "exception.c"
+#line 536 "io.int"
+#include "string.mh"
+
+#line 37 "exception.c"
+#line 57 "stm_builtin.int"
+#include "stm_builtin.mh"
+
+#line 41 "exception.c"
+#line 72 "store.int"
+#include "store.mh"
+
+#line 45 "exception.c"
+#line 31 "bitmap.int2"
+#include "bitmap.mh"
+
+#line 49 "exception.c"
+#line 30 "time.int2"
+#include "time.mh"
+
+#line 53 "exception.c"
+#line 4 "builtin.opt"
+#include "builtin.mh"
+
+#line 57 "exception.c"
+#line 45 "builtin.opt"
+#include "array.mh"
+
+#line 61 "exception.c"
+#line 12 "pretty_printer.opt"
+#include "pretty_printer.mh"
+
+#line 65 "exception.c"
+#line 38 "pretty_printer.opt"
+#include "version_array.mh"
+
+#line 69 "exception.c"
+#line 3 "float.opt"
+#include "float.mh"
+
+#line 73 "exception.c"
+#line 3 "math.opt"
+#include "math.mh"
+
+#line 77 "exception.c"
+#line 4 "char.opt"
+#include "char.mh"
+
+#line 81 "exception.c"
+#line 3 "construct.opt"
+#include "construct.mh"
+
+#line 85 "exception.c"
+#line 6 "type_desc.opt"
+#include "type_desc.mh"
+
+#line 89 "exception.c"
+#line 4 "int.opt"
+#include "int.mh"
+
+#line 93 "exception.c"
+#line 130 "rtti_implementation.opt"
+#include "rtti_implementation.mh"
+
+#line 97 "exception.c"
+#line 156 "io.opt"
+#include "dir.mh"
+
+#line 101 "exception.c"
+#line 170 "io.opt"
+#include "table_builtin.mh"
+
+#line 105 "exception.c"
+#line 6 "benchmarking.opt"
+#include "benchmarking.mh"
+
+#line 109 "exception.c"
+#line 9 "private_builtin.opt"
+#include "private_builtin.mh"
+
+#line 113 "exception.c"
+#line 114 "exception.c"
+#ifndef EXCEPTION_DECL_GUARD
+#define EXCEPTION_DECL_GUARD
+
+#line 118 "exception.c"
+#line 899 "exception.m"
+
+/* protect against multiple inclusion */
+#ifndef ML_HLC_EXCEPTION_GUARD
+#define ML_HLC_EXCEPTION_GUARD
+
+  #ifdef MR_HIGHLEVEL_CODE
+
+  #ifdef MR_USE_GCC_NESTED_FUNCTIONS
+    #define MR_CONT_PARAMS      MR_NestedCont cont
+    #define MR_CONT_PARAM_TYPES MR_NestedCont
+    #define MR_CONT_ARGS        cont
+  #else
+    #define MR_CONT_PARAMS      MR_Cont cont, void *cont_env
+    #define MR_CONT_PARAM_TYPES MR_Cont, void *
+    #define MR_CONT_ARGS        cont, cont_env
+  #endif
+
+    /* det */
+    void MR_CALL
+    mercury__exception__builtin_catch_3_p_0(MR_Mercury_Type_Info type_info,
+        MR_Pred pred, MR_Pred handler_pred, MR_Box *output);
+
+    /* semidet */
+    MR_bool MR_CALL
+    mercury__exception__builtin_catch_3_p_1(MR_Mercury_Type_Info type_info,
+        MR_Pred pred, MR_Pred handler_pred, MR_Box *output);
+
+    /* cc_multi */
+    void MR_CALL
+    mercury__exception__builtin_catch_3_p_2(MR_Mercury_Type_Info type_info,
+        MR_Pred pred, MR_Pred handler_pred, MR_Box *output);
+
+    /* cc_nondet */
+    MR_bool MR_CALL
+    mercury__exception__builtin_catch_3_p_3(MR_Mercury_Type_Info type_info,
+        MR_Pred pred, MR_Pred handler_pred, MR_Box *output);
+
+    /* multi */
+    void MR_CALL
+    mercury__exception__builtin_catch_3_p_4(MR_Mercury_Type_Info type_info,
+        MR_Pred pred, MR_Pred handler_pred, MR_Box *output,
+        MR_CONT_PARAMS);
+
+    /* nondet */
+    void MR_CALL
+    mercury__exception__builtin_catch_3_p_5(MR_Mercury_Type_Info type_info,
+        MR_Pred pred, MR_Pred handler_pred, MR_Box *output,
+        MR_CONT_PARAMS);
+
+  #ifndef MR_AVOID_MACROS
+
+    /* det ==> model_det */
+    #define mercury__exception__builtin_catch_3_p_0         mercury__exception__builtin_catch_model_det
+
+    /* semidet ==> model_semi */
+    #define mercury__exception__builtin_catch_3_p_1         mercury__exception__builtin_catch_model_semi
+
+    /* cc_multi ==> model_det */
+    #define mercury__exception__builtin_catch_3_p_2         mercury__exception__builtin_catch_model_det
+
+    /* cc_nondet ==> model_semi */
+    #define mercury__exception__builtin_catch_3_p_3         mercury__exception__builtin_catch_model_semi
+
+    /* multi ==> model_non */
+    #define mercury__exception__builtin_catch_3_p_4         mercury__exception__builtin_catch_model_non
+
+    /* nondet ==> model_non */
+    #define mercury__exception__builtin_catch_3_p_5         mercury__exception__builtin_catch_model_non
+
+  #endif /* !MR_AVOID_MACROS */
+
+    void MR_CALL mercury__exception__builtin_throw_1_p_0(MR_Univ exception);
+
+    void MR_CALL mercury__exception__builtin_catch_model_det(
+        MR_Mercury_Type_Info type_info, MR_Pred pred,
+        MR_Pred handler_pred, MR_Box *output);
+    MR_bool MR_CALL mercury__exception__builtin_catch_model_semi(
+        MR_Mercury_Type_Info type_info, MR_Pred pred,
+        MR_Pred handler_pred, MR_Box *output);
+    void MR_CALL mercury__exception__builtin_catch_model_non(
+        MR_Mercury_Type_Info type_info, MR_Pred pred,
+        MR_Pred handler_pred, MR_Box *output,
+        MR_CONT_PARAMS);
+
+  #endif /* MR_HIGHLEVEL_CODE */
+
+#endif /* ML_HLC_EXCEPTION_GUARD */
+
+#line 208 "exception.c"
+#line 1809 "exception.m"
+
+#ifndef MR_HIGHLEVEL_CODE
+    #include <assert.h>
+    #include <stdio.h>
+    #include "mercury_deep_copy.h"
+    #include "mercury_trace_base.h"
+    #include "mercury_stack_trace.h"
+    #include "mercury_layout_util.h"
+    #include "mercury_deep_profiling_hand.h"
+
+    MR_DECLARE_TYPE_CTOR_INFO_STRUCT(mercury_data_univ__type_ctor_info_univ_0);
+#endif
+
+#line 223 "exception.c"
+#line 224 "exception.c"
+
+#endif
+#line 227 "exception.c"
+
+#ifdef _MSC_VER
+#define MR_STATIC_LINKAGE extern
+#else
+#define MR_STATIC_LINKAGE static
+#endif
+
+struct mercury_type_0 {
+	MR_Word * f1;
+	MR_Integer f2;
+	MR_Integer f3;
+};
+MR_STATIC_LINKAGE const struct mercury_type_0 mercury_common_0[];
+
+struct mercury_type_1 {
+	MR_Word * f1;
+	MR_Integer f2;
+};
+MR_STATIC_LINKAGE const struct mercury_type_1 mercury_common_1[];
+
+struct mercury_type_2 {
+	MR_Unsigned f1[2];
+};
+MR_STATIC_LINKAGE const struct mercury_type_2 mercury_common_2[];
+
+struct mercury_type_3 {
+	MR_Word * f1[2];
+	MR_Integer f2;
+	MR_Word * f3[3];
+};
+MR_STATIC_LINKAGE const struct mercury_type_3 mercury_common_3[];
+
+struct mercury_type_4 {
+	MR_Word * f1;
+	MR_Integer f2;
+	MR_Word * f3;
+};
+MR_STATIC_LINKAGE const struct mercury_type_4 mercury_common_4[];
+
+struct mercury_type_5 {
+	MR_Integer f1;
+};
+MR_STATIC_LINKAGE const struct mercury_type_5 mercury_common_5[];
+
+struct mercury_type_6 {
+	MR_Word * f1;
+};
+MR_STATIC_LINKAGE const struct mercury_type_6 mercury_common_6[];
+
+struct mercury_type_7 {
+	MR_Word * f1[2];
+	MR_Integer f2;
+	MR_Word * f3[4];
+};
+MR_STATIC_LINKAGE const struct mercury_type_7 mercury_common_7[];
+
+struct mercury_type_8 {
+	MR_Word * f1[2];
+};
+MR_STATIC_LINKAGE const struct mercury_type_8 mercury_common_8[];
+
+struct mercury_type_9 {
+	MR_Word * f1;
+	MR_Integer f2;
+	MR_Integer f3;
+	MR_Word * f4;
+	MR_Word * f5;
+};
+MR_STATIC_LINKAGE const struct mercury_type_9 mercury_common_9[];
+
+struct mercury_type_10 {
+	MR_Word * f1;
+	MR_Word * f2;
+	MR_Integer f3;
+	MR_Word * f4;
+	MR_Word * f5;
+	MR_Integer f6;
+};
+MR_STATIC_LINKAGE const struct mercury_type_10 mercury_common_10[];
+
+struct mercury_type_11 {
+	MR_Word * f1;
+	MR_Integer f2;
+	MR_Integer f3;
+	MR_Word * f4;
+};
+MR_STATIC_LINKAGE const struct mercury_type_11 mercury_common_11[];
+
+struct mercury_type_12 {
+	MR_Unsigned f1[3];
+};
+MR_STATIC_LINKAGE const struct mercury_type_12 mercury_common_12[];
+
+struct mercury_type_13 {
+	MR_Word * f1[2];
+	MR_Integer f2;
+	MR_Word * f3[5];
+};
+MR_STATIC_LINKAGE const struct mercury_type_13 mercury_common_13[];
+
+struct mercury_type_14 {
+	MR_Word * f1;
+	MR_Word * f2;
+	MR_Integer f3;
+	MR_Word * f4;
+	MR_Integer f5;
+	MR_Word * f6;
+	MR_Word * f7;
+};
+MR_STATIC_LINKAGE const struct mercury_type_14 mercury_common_14[];
+
+struct mercury_type_15 {
+	MR_Word * f1;
+	MR_Code * f2;
+	MR_Integer f3;
+	MR_Word * f4;
+};
+MR_STATIC_LINKAGE const struct mercury_type_15 mercury_common_15[];
+
+extern const MR_TypeCtorInfo_Struct
+	mercury_data_exception__type_ctor_info_exception_result_1,
+	mercury_data_exception__type_ctor_info_exp_determinism_0,
+	mercury_data_exception__type_ctor_info_handler_1,
+	mercury_data_exception__type_ctor_info_near_stack_limits_0,
+	mercury_data_exception__type_ctor_info_software_error_0;
+MR_decl_label1(exception__IntroducedFrom__pred__try_stm_cc_multi__784__1_4_0, 2)
+MR_decl_label1(exception__IntroducedFrom__pred__try_stm_det__771__1_4_0, 2)
+MR_decl_label1(exception__IntroducedFrom__pred__try_store_det__631__1_5_0, 2)
+MR_decl_label1(exception__IntroducedFrom__pred__try_store_det__638__1_5_0, 2)
+MR_decl_label2(f_101_120_99_101_112_116_105_111_110_95_95_85_110_117_115_101_100_65_114_103_115_95_95_112_114_101_100_95_95_116_114_121_95_97_108_108_95_100_101_116_95_95_91_50_93_95_48_4_0, 2,4)
+MR_decl_label3(f_101_120_99_101_112_116_105_111_110_95_95_85_110_117_115_101_100_65_114_103_115_95_95_112_114_101_100_95_95_116_114_121_95_97_108_108_95_100_101_116_95_95_91_50_93_95_49_4_1, 2,4,5)
+MR_decl_label1(f_101_120_99_101_112_116_105_111_110_95_95_85_110_117_115_101_100_65_114_103_115_95_95_112_114_101_100_95_95_116_114_121_95_97_108_108_95_100_101_116_95_95_91_50_93_95_50_4_2, 5)
+MR_decl_label1(f_101_120_99_101_112_116_105_111_110_95_95_85_110_117_115_101_100_65_114_103_115_95_95_112_114_101_100_95_95_116_114_121_95_97_108_108_95_100_101_116_95_95_91_50_93_95_51_4_3, 5)
+MR_decl_label1(f_101_120_99_101_112_116_105_111_110_95_95_85_110_117_115_101_100_65_114_103_115_95_95_112_114_101_100_95_95_116_114_121_95_100_101_116_95_95_91_50_93_95_48_3_0, 5)
+MR_decl_label1(f_101_120_99_101_112_116_105_111_110_95_95_85_110_117_115_101_100_65_114_103_115_95_95_112_114_101_100_95_95_116_114_121_95_100_101_116_95_95_91_50_93_95_49_3_1, 5)
+MR_decl_label1(f_101_120_99_101_112_116_105_111_110_95_95_85_110_117_115_101_100_65_114_103_115_95_95_112_114_101_100_95_95_116_114_121_95_100_101_116_95_95_104_111_49_50_95_95_91_49_44_32_50_44_32_51_44_32_52_44_32_53_44_32_54_44_32_55_44_32_56_44_32_49_48_93_95_48_3_0, 5)
+MR_decl_label1(f_101_120_99_101_112_116_105_111_110_95_95_85_110_117_115_101_100_65_114_103_115_95_95_112_114_101_100_95_95_116_114_121_95_100_101_116_95_95_104_111_49_52_95_95_104_111_50_49_95_95_91_49_44_32_50_44_32_51_44_32_52_44_32_53_93_95_48_3_0, 5)
+MR_decl_label1(f_101_120_99_101_112_116_105_111_110_95_95_85_110_117_115_101_100_65_114_103_115_95_95_112_114_101_100_95_95_116_114_121_95_105_111_95_100_101_116_95_95_91_50_93_95_48_5_0, 6)
+MR_decl_label1(f_101_120_99_101_112_116_105_111_110_95_95_85_110_117_115_101_100_65_114_103_115_95_95_112_114_101_100_95_95_116_114_121_95_115_116_109_95_99_99_95_109_117_108_116_105_95_95_91_50_93_95_48_5_0, 7)
+MR_decl_label1(f_101_120_99_101_112_116_105_111_110_95_95_85_110_117_115_101_100_65_114_103_115_95_95_112_114_101_100_95_95_116_114_121_95_115_116_109_95_100_101_116_95_95_91_50_93_95_48_5_0, 7)
+MR_decl_label1(f_101_120_99_101_112_116_105_111_110_95_95_85_110_117_115_101_100_65_114_103_115_95_95_112_114_101_100_95_95_116_114_121_95_115_116_111_114_101_95_100_101_116_95_95_91_51_93_95_48_5_0, 5)
+MR_decl_label1(f_101_120_99_101_112_116_105_111_110_95_95_85_110_117_115_101_100_65_114_103_115_95_95_112_114_101_100_95_95_116_114_121_95_115_116_111_114_101_95_100_101_116_95_95_91_51_93_95_49_5_1, 5)
+MR_decl_label6(exception__finally_2_6_0, 2,3,6,5,7,9)
+MR_decl_label6(exception__finally_2_6_1, 2,3,6,5,7,9)
+MR_decl_label1(exception__handle_stm_result_4_0, 3)
+MR_decl_label1(exception__handle_store_result_4_0, 3)
+MR_decl_label1(exception__incremental_try_all_4_0, 5)
+MR_decl_label1(exception__incremental_try_all_4_1, 5)
+MR_decl_label1(exception__now_near_stack_limits_0_0, 1)
+MR_decl_label2(exception__process_one_exception_result_5_0, 3,5)
+MR_decl_label1(exception__report_uncaught_exception_3_0, 3)
+MR_decl_label6(exception__report_uncaught_exception_2_4_0, 3,2,7,8,9,10)
+MR_decl_label1(exception__throw_1_0, 2)
+MR_decl_label2(exception__throw_if_near_stack_limits_0_0, 3,6)
+MR_decl_label2(exception__try_2_0, 2,6)
+MR_decl_label2(exception__try_2_1, 2,6)
+MR_decl_label1(exception__try_2_2, 2)
+MR_decl_label1(exception__try_2_3, 2)
+MR_decl_label1(exception__try_all_3_0, 2)
+MR_decl_label1(exception__try_all_3_1, 2)
+MR_decl_label1(exception__try_all_3_2, 2)
+MR_decl_label1(exception__try_all_3_3, 2)
+MR_decl_label1(exception__try_io_4_0, 2)
+MR_decl_label1(exception__try_io_4_1, 2)
+MR_decl_label7(exception__try_stm_4_0, 2,3,10,9,13,6,4)
+MR_decl_label7(exception__try_stm_4_1, 2,3,10,9,13,6,4)
+MR_decl_label1(exception__try_store_4_0, 2)
+MR_decl_label1(exception__try_store_4_1, 2)
+MR_decl_label1(exception__unsafe_try_stm_4_0, 2)
+MR_decl_label1(exception__unsafe_try_stm_4_1, 2)
+MR_decl_label1(exception__very_unsafe_perform_io_2_0, 2)
+MR_decl_label1(exception__very_unsafe_perform_io_2_1, 2)
+MR_decl_label1(exception__wrap_success_2_0, 2)
+MR_decl_label2(exception__wrap_success_2_1, 2,1)
+MR_decl_label1(exception__wrap_success_2_2, 1)
+MR_decl_label1(exception__wrap_success_or_failure_2_0, 2)
+MR_decl_label2(exception__wrap_success_or_failure_2_1, 3,2)
+MR_decl_label3(f_101_120_99_101_112_116_105_111_110_95_95_108_105_115_116_95_95_85_110_117_115_101_100_65_114_103_115_95_95_112_114_101_100_95_95_102_111_108_100_108_50_95_95_104_111_57_95_95_91_49_44_32_50_44_32_52_44_32_53_44_32_54_93_95_48_6_0, 10,3,4)
+MR_decl_label1(f_101_120_99_101_112_116_105_111_110_95_95_115_111_108_117_116_105_111_110_115_95_95_85_110_117_115_101_100_65_114_103_115_95_95_112_114_101_100_95_95_117_110_115_111_114_116_101_100_95_115_111_108_117_116_105_111_110_115_95_95_104_111_49_48_95_95_91_49_44_32_50_44_32_51_44_32_52_44_32_53_93_95_48_2_0, 4)
+MR_decl_label1(f_101_120_99_101_112_116_105_111_110_95_95_115_111_108_117_116_105_111_110_115_95_95_85_110_117_115_101_100_65_114_103_115_95_95_112_114_101_100_95_95_117_110_115_111_114_116_101_100_95_115_111_108_117_116_105_111_110_115_95_95_104_111_56_95_95_91_49_44_32_50_44_32_51_44_32_52_44_32_53_93_95_48_2_0, 4)
+MR_decl_label4(__Unify___exception__exception_result_1_0, 5,19,6,1)
+MR_decl_label1(__Unify___exception__software_error_0_0, 4)
+MR_decl_label8(__Compare___exception__exception_result_1_0, 30,7,5,33,11,9,15,16)
+MR_decl_label2(__Compare___exception__exp_determinism_0_0, 2,3)
+MR_decl_label3(__Compare___exception__software_error_0_0, 4,12,5)
+MR_def_extern_entry(exception__throw_1_0)
+MR_def_extern_entry(fn__exception__throw_1_0)
+MR_def_extern_entry(exception__catch_impl_3_0)
+MR_def_extern_entry(exception__catch_impl_3_1)
+MR_def_extern_entry(exception__catch_impl_3_2)
+MR_def_extern_entry(exception__catch_impl_3_3)
+MR_def_extern_entry(exception__catch_impl_3_4)
+MR_def_extern_entry(exception__catch_impl_3_5)
+MR_def_extern_entry(exception__try_det_3_0)
+MR_def_extern_entry(exception__try_det_3_1)
+MR_def_extern_entry(exception__try_det_3_2)
+MR_def_extern_entry(exception__try_det_3_3)
+MR_def_extern_entry(exception__get_determinism_2_0)
+MR_def_extern_entry(exception__get_determinism_2_1)
+MR_def_extern_entry(exception__get_determinism_2_2)
+MR_def_extern_entry(exception__get_determinism_2_3)
+MR_def_extern_entry(exception__get_determinism_2_4)
+MR_def_extern_entry(exception__get_determinism_2_5)
+MR_def_extern_entry(exception__try_2_0)
+MR_def_extern_entry(exception__try_2_1)
+MR_def_extern_entry(exception__try_2_2)
+MR_def_extern_entry(exception__try_2_3)
+MR_def_extern_entry(exception__try_io_det_5_0)
+MR_def_extern_entry(exception__try_io_det_5_1)
+MR_def_extern_entry(exception__get_determinism_2_2_0)
+MR_def_extern_entry(exception__get_determinism_2_2_1)
+MR_def_extern_entry(exception__try_io_4_0)
+MR_def_extern_entry(exception__try_io_4_1)
+MR_def_extern_entry(exception__handle_store_result_4_0)
+MR_def_extern_entry(exception__try_store_det_5_0)
+MR_def_extern_entry(exception__try_store_det_5_1)
+MR_def_extern_entry(exception__try_store_4_0)
+MR_def_extern_entry(exception__try_store_4_1)
+MR_def_extern_entry(exception__try_all_det_4_0)
+MR_def_extern_entry(exception__try_all_det_4_1)
+MR_def_extern_entry(exception__try_all_det_4_2)
+MR_def_extern_entry(exception__try_all_det_4_3)
+MR_def_extern_entry(exception__try_all_3_0)
+MR_def_extern_entry(exception__try_all_3_1)
+MR_def_extern_entry(exception__try_all_3_2)
+MR_def_extern_entry(exception__try_all_3_3)
+MR_def_extern_entry(exception__incremental_try_all_4_0)
+MR_def_extern_entry(exception__incremental_try_all_4_1)
+MR_def_extern_entry(exception__rethrow_1_0)
+MR_def_extern_entry(fn__exception__rethrow_1_0)
+MR_decl_static(exception__use_1_0)
+MR_def_extern_entry(exception__finally_2_6_0)
+MR_def_extern_entry(exception__finally_2_6_1)
+MR_def_extern_entry(exception__finally_6_0)
+MR_def_extern_entry(exception__finally_6_1)
+MR_decl_static(exception__now_near_stack_limits_0_0)
+MR_def_extern_entry(exception__throw_if_near_stack_limits_0_0)
+MR_def_extern_entry(exception__handle_stm_result_4_0)
+MR_def_extern_entry(exception__try_stm_det_5_0)
+MR_def_extern_entry(exception__try_stm_cc_multi_5_0)
+MR_def_extern_entry(exception__unsafe_try_stm_4_0)
+MR_def_extern_entry(exception__unsafe_try_stm_4_1)
+MR_def_extern_entry(exception__try_stm_4_0)
+MR_def_extern_entry(exception__try_stm_4_1)
+MR_def_extern_entry(exception__magic_exception_result_1_0)
+MR_def_extern_entry(exception__unreachable_0_0)
+MR_def_extern_entry(exception__exc_univ_to_type_2_0)
+MR_def_extern_entry(exception__exc_univ_to_type_2_1)
+MR_def_extern_entry(exception__exc_univ_to_type_2_2)
+MR_def_extern_entry(fn__exception__exc_univ_value_1_0)
+MR_def_extern_entry(exception__wrap_success_2_0)
+MR_def_extern_entry(exception__wrap_success_2_1)
+MR_def_extern_entry(exception__wrap_success_2_2)
+MR_def_extern_entry(exception__wrap_success_2_3)
+MR_def_extern_entry(exception__wrap_success_2_4)
+MR_def_extern_entry(exception__wrap_success_2_5)
+MR_def_extern_entry(exception__wrap_success_or_failure_2_0)
+MR_def_extern_entry(exception__wrap_success_or_failure_2_1)
+MR_def_extern_entry(exception__wrap_success_or_failure_2_2)
+MR_def_extern_entry(exception__wrap_success_or_failure_2_3)
+MR_decl_static(exception__process_one_exception_result_5_0)
+MR_decl_static(exception__make_io_state_1_0)
+MR_decl_static(exception__consume_io_state_1_0)
+MR_decl_static(exception__very_unsafe_perform_io_2_0)
+MR_decl_static(exception__very_unsafe_perform_io_2_1)
+MR_def_extern_entry(exception__wrap_exception_2_0)
+MR_decl_static(exception__call_goal_2_0)
+MR_decl_static(exception__call_goal_2_1)
+MR_decl_static(exception__call_handler_3_0)
+MR_decl_static(exception__report_uncaught_exception_3_0)
+MR_decl_static(exception__report_uncaught_exception_2_4_0)
+MR_decl_static(exception__set_get_message_hook_2_0)
+MR_def_extern_entry(__Unify___exception__exception_result_1_0)
+MR_def_extern_entry(__Compare___exception__exception_result_1_0)
+MR_def_extern_entry(__Unify___exception__exp_determinism_0_0)
+MR_def_extern_entry(__Compare___exception__exp_determinism_0_0)
+MR_def_extern_entry(__Unify___exception__handler_1_0)
+MR_def_extern_entry(__Compare___exception__handler_1_0)
+MR_def_extern_entry(__Unify___exception__near_stack_limits_0_0)
+MR_def_extern_entry(__Compare___exception__near_stack_limits_0_0)
+MR_def_extern_entry(__Unify___exception__software_error_0_0)
+MR_def_extern_entry(__Compare___exception__software_error_0_0)
+MR_decl_static(exception__IntroducedFrom__pred__incremental_try_all__613__1_3_0)
+MR_decl_static(exception__IntroducedFrom__pred__incremental_try_all__613__2_3_0)
+MR_decl_static(exception__IntroducedFrom__pred__try_store_det__631__1_5_0)
+MR_decl_static(exception__IntroducedFrom__pred__try_store_det__638__1_5_0)
+MR_decl_static(exception__IntroducedFrom__pred__try_all_det__579__1_3_0)
+MR_decl_static(exception__IntroducedFrom__pred__try_all_det__589__1_3_0)
+MR_decl_static(exception__IntroducedFrom__pred__try_stm_det__771__1_4_0)
+MR_decl_static(exception__IntroducedFrom__pred__try_stm_cc_multi__784__1_4_0)
+MR_def_extern_entry(f_101_120_99_101_112_116_105_111_110_95_95_85_110_117_115_101_100_65_114_103_115_95_95_112_114_101_100_95_95_116_114_121_95_100_101_116_95_95_91_50_93_95_48_3_0)
+MR_def_extern_entry(f_101_120_99_101_112_116_105_111_110_95_95_85_110_117_115_101_100_65_114_103_115_95_95_112_114_101_100_95_95_116_114_121_95_100_101_116_95_95_91_50_93_95_49_3_1)
+MR_def_extern_entry(f_101_120_99_101_112_116_105_111_110_95_95_85_110_117_115_101_100_65_114_103_115_95_95_112_114_101_100_95_95_116_114_121_95_100_101_116_95_95_91_50_93_95_50_3_2)
+MR_def_extern_entry(f_101_120_99_101_112_116_105_111_110_95_95_85_110_117_115_101_100_65_114_103_115_95_95_112_114_101_100_95_95_116_114_121_95_100_101_116_95_95_91_50_93_95_51_3_3)
+MR_def_extern_entry(f_101_120_99_101_112_116_105_111_110_95_95_85_110_117_115_101_100_65_114_103_115_95_95_112_114_101_100_95_95_116_114_121_95_105_111_95_100_101_116_95_95_91_50_93_95_48_5_0)
+MR_def_extern_entry(f_101_120_99_101_112_116_105_111_110_95_95_85_110_117_115_101_100_65_114_103_115_95_95_112_114_101_100_95_95_116_114_121_95_105_111_95_100_101_116_95_95_91_50_93_95_49_5_1)
+MR_def_extern_entry(f_101_120_99_101_112_116_105_111_110_95_95_85_110_117_115_101_100_65_114_103_115_95_95_112_114_101_100_95_95_116_114_121_95_115_116_111_114_101_95_100_101_116_95_95_91_51_93_95_48_5_0)
+MR_def_extern_entry(f_101_120_99_101_112_116_105_111_110_95_95_85_110_117_115_101_100_65_114_103_115_95_95_112_114_101_100_95_95_116_114_121_95_115_116_111_114_101_95_100_101_116_95_95_91_51_93_95_49_5_1)
+MR_def_extern_entry(f_101_120_99_101_112_116_105_111_110_95_95_85_110_117_115_101_100_65_114_103_115_95_95_112_114_101_100_95_95_116_114_121_95_97_108_108_95_100_101_116_95_95_91_50_93_95_48_4_0)
+MR_def_extern_entry(f_101_120_99_101_112_116_105_111_110_95_95_85_110_117_115_101_100_65_114_103_115_95_95_112_114_101_100_95_95_116_114_121_95_97_108_108_95_100_101_116_95_95_91_50_93_95_49_4_1)
+MR_def_extern_entry(f_101_120_99_101_112_116_105_111_110_95_95_85_110_117_115_101_100_65_114_103_115_95_95_112_114_101_100_95_95_116_114_121_95_97_108_108_95_100_101_116_95_95_91_50_93_95_50_4_2)
+MR_def_extern_entry(f_101_120_99_101_112_116_105_111_110_95_95_85_110_117_115_101_100_65_114_103_115_95_95_112_114_101_100_95_95_116_114_121_95_97_108_108_95_100_101_116_95_95_91_50_93_95_51_4_3)
+MR_def_extern_entry(f_101_120_99_101_112_116_105_111_110_95_95_85_110_117_115_101_100_65_114_103_115_95_95_112_114_101_100_95_95_103_101_116_95_100_101_116_101_114_109_105_110_105_115_109_95_95_91_49_44_32_50_93_95_48_2_0)
+MR_def_extern_entry(f_101_120_99_101_112_116_105_111_110_95_95_85_110_117_115_101_100_65_114_103_115_95_95_112_114_101_100_95_95_103_101_116_95_100_101_116_101_114_109_105_110_105_115_109_95_95_91_49_44_32_50_93_95_49_2_1)
+MR_def_extern_entry(f_101_120_99_101_112_116_105_111_110_95_95_85_110_117_115_101_100_65_114_103_115_95_95_112_114_101_100_95_95_103_101_116_95_100_101_116_101_114_109_105_110_105_115_109_95_95_91_49_44_32_50_93_95_50_2_2)
+MR_def_extern_entry(f_101_120_99_101_112_116_105_111_110_95_95_85_110_117_115_101_100_65_114_103_115_95_95_112_114_101_100_95_95_103_101_116_95_100_101_116_101_114_109_105_110_105_115_109_95_95_91_49_44_32_50_93_95_51_2_3)
+MR_def_extern_entry(f_101_120_99_101_112_116_105_111_110_95_95_85_110_117_115_101_100_65_114_103_115_95_95_112_114_101_100_95_95_103_101_116_95_100_101_116_101_114_109_105_110_105_115_109_95_95_91_49_44_32_50_93_95_52_2_4)
+MR_def_extern_entry(f_101_120_99_101_112_116_105_111_110_95_95_85_110_117_115_101_100_65_114_103_115_95_95_112_114_101_100_95_95_103_101_116_95_100_101_116_101_114_109_105_110_105_115_109_95_95_91_49_44_32_50_93_95_53_2_5)
+MR_def_extern_entry(f_101_120_99_101_112_116_105_111_110_95_95_85_110_117_115_101_100_65_114_103_115_95_95_112_114_101_100_95_95_103_101_116_95_100_101_116_101_114_109_105_110_105_115_109_95_50_95_95_91_49_44_32_50_44_32_51_93_95_48_2_0)
+MR_def_extern_entry(f_101_120_99_101_112_116_105_111_110_95_95_85_110_117_115_101_100_65_114_103_115_95_95_112_114_101_100_95_95_103_101_116_95_100_101_116_101_114_109_105_110_105_115_109_95_50_95_95_91_49_44_32_50_44_32_51_93_95_49_2_1)
+MR_decl_static(f_101_120_99_101_112_116_105_111_110_95_95_85_110_117_115_101_100_65_114_103_115_95_95_112_114_101_100_95_95_117_115_101_95_95_91_49_93_95_48_1_0)
+MR_def_extern_entry(f_101_120_99_101_112_116_105_111_110_95_95_85_110_117_115_101_100_65_114_103_115_95_95_112_114_101_100_95_95_116_114_121_95_115_116_109_95_100_101_116_95_95_91_50_93_95_48_5_0)
+MR_def_extern_entry(f_101_120_99_101_112_116_105_111_110_95_95_85_110_117_115_101_100_65_114_103_115_95_95_112_114_101_100_95_95_116_114_121_95_115_116_109_95_99_99_95_109_117_108_116_105_95_95_91_50_93_95_48_5_0)
+MR_decl_static(f_101_120_99_101_112_116_105_111_110_95_95_85_110_117_115_101_100_65_114_103_115_95_95_112_114_101_100_95_95_99_97_108_108_95_103_111_97_108_95_95_91_49_93_95_48_2_0)
+MR_decl_static(f_101_120_99_101_112_116_105_111_110_95_95_85_110_117_115_101_100_65_114_103_115_95_95_112_114_101_100_95_95_99_97_108_108_95_103_111_97_108_95_95_91_49_93_95_49_2_1)
+MR_decl_static(f_101_120_99_101_112_116_105_111_110_95_95_85_110_117_115_101_100_65_114_103_115_95_95_112_114_101_100_95_95_99_97_108_108_95_104_97_110_100_108_101_114_95_95_91_49_93_95_48_3_0)
+MR_def_extern_entry(f_101_120_99_101_112_116_105_111_110_95_95_85_110_117_115_101_100_65_114_103_115_95_95_112_114_101_100_95_95_95_95_85_110_105_102_121_95_95_95_101_120_99_101_112_116_105_111_110_95_95_110_101_97_114_95_115_116_97_99_107_95_108_105_109_105_116_115_95_48_95_95_91_49_44_32_50_93_95_48_2_0)
+MR_def_extern_entry(f_101_120_99_101_112_116_105_111_110_95_95_85_110_117_115_101_100_65_114_103_115_95_95_112_114_101_100_95_95_95_95_67_111_109_112_97_114_101_95_95_95_101_120_99_101_112_116_105_111_110_95_95_110_101_97_114_95_115_116_97_99_107_95_108_105_109_105_116_115_95_48_95_95_91_50_44_32_51_93_95_48_3_0)
+MR_decl_static(fn__f_101_120_99_101_112_116_105_111_110_95_95_111_112_115_95_95_85_110_117_115_101_100_65_114_103_115_95_95_102_117_110_99_95_95_67_108_97_115_115_77_101_116_104_111_100_95_102_111_114_95_111_112_115_95_95_111_112_95_116_97_98_108_101_95_95_95_95_111_112_115_95_95_109_101_114_99_117_114_121_95_111_112_95_116_97_98_108_101_95_95_97_114_105_116_121_48_95_95_95_95_95_95_111_112_115_95_95_109_97_120_95_112_114_105_111_114_105_116_121_95_49_95_95_91_49_93_95_48_1_0)
+MR_decl_static(f_101_120_99_101_112_116_105_111_110_95_95_115_111_108_117_116_105_111_110_115_95_95_85_110_117_115_101_100_65_114_103_115_95_95_112_114_101_100_95_95_117_110_115_111_114_116_101_100_95_115_111_108_117_116_105_111_110_115_95_95_104_111_56_95_95_91_49_44_32_50_44_32_51_44_32_52_44_32_53_93_95_48_2_0)
+MR_decl_static(f_101_120_99_101_112_116_105_111_110_95_95_108_105_115_116_95_95_85_110_117_115_101_100_65_114_103_115_95_95_112_114_101_100_95_95_102_111_108_100_108_50_95_95_104_111_57_95_95_91_49_44_32_50_44_32_52_44_32_53_44_32_54_93_95_48_6_0)
+MR_decl_static(f_101_120_99_101_112_116_105_111_110_95_95_115_111_108_117_116_105_111_110_115_95_95_85_110_117_115_101_100_65_114_103_115_95_95_112_114_101_100_95_95_117_110_115_111_114_116_101_100_95_115_111_108_117_116_105_111_110_115_95_95_104_111_49_48_95_95_91_49_44_32_50_44_32_51_44_32_52_44_32_53_93_95_48_2_0)
+MR_decl_static(f_101_120_99_101_112_116_105_111_110_95_95_85_110_117_115_101_100_65_114_103_115_95_95_112_114_101_100_95_95_116_114_121_95_100_101_116_95_95_104_111_49_49_95_95_91_49_44_32_50_44_32_51_44_32_52_44_32_53_44_32_54_44_32_55_44_32_56_44_32_49_48_93_95_48_3_0)
+MR_decl_static(f_101_120_99_101_112_116_105_111_110_95_95_85_110_117_115_101_100_65_114_103_115_95_95_112_114_101_100_95_95_116_114_121_95_100_101_116_95_95_104_111_49_50_95_95_91_49_44_32_50_44_32_51_44_32_52_44_32_53_44_32_54_44_32_55_44_32_56_44_32_49_48_93_95_48_3_0)
+MR_decl_static(f_101_120_99_101_112_116_105_111_110_95_95_85_110_117_115_101_100_65_114_103_115_95_95_112_114_101_100_95_95_103_101_116_95_100_101_116_101_114_109_105_110_105_115_109_95_50_95_95_104_111_49_57_95_95_91_49_44_32_50_93_95_48_2_0)
+MR_decl_static(f_101_120_99_101_112_116_105_111_110_95_95_85_110_117_115_101_100_65_114_103_115_95_95_112_114_101_100_95_95_116_114_121_95_105_111_95_100_101_116_95_95_104_111_50_48_95_95_91_49_44_32_50_93_95_48_5_0)
+MR_decl_static(f_101_120_99_101_112_116_105_111_110_95_95_85_110_117_115_101_100_65_114_103_115_95_95_112_114_101_100_95_95_116_114_121_95_100_101_116_95_95_104_111_49_52_95_95_104_111_50_49_95_95_91_49_44_32_50_44_32_51_44_32_52_44_32_53_93_95_48_3_0)
+
+extern const MR_TypeCtorInfo_Struct mercury_data_builtin__type_ctor_info_pred_0;
+static const struct mercury_type_0 mercury_common_0[1] =
+{
+{
+MR_CTOR0_ADDR(builtin, pred),
+1,
+1
+},
+};
+
+extern const MR_TypeCtorInfo_Struct mercury_data_store__type_ctor_info_store_1;
+extern const MR_TypeCtorInfo_Struct mercury_data_list__type_ctor_info_list_1;
+static const struct mercury_type_1 mercury_common_1[3] =
+{
+{
+MR_CTOR1_ADDR(exception, exception_result),
+1
+},
+{
+MR_CTOR1_ADDR(store, store),
+2
+},
+{
+MR_LIST_CTOR_ADDR,
+1
+},
+};
+
+static const struct mercury_type_2 mercury_common_2[1] =
+{
+{
+{
+1,
+17
+}
+},
+};
+
+static const MR_UserClosureId
+mercury_data__closure_layout__exception__try_2_0_1;
+extern const MR_TypeCtorInfo_Struct mercury_data_private_builtin__type_ctor_info_type_info_0;
+static const MR_UserClosureId
+mercury_data__closure_layout__exception__try_2_0_2;
+extern const MR_TypeCtorInfo_Struct mercury_data_univ__type_ctor_info_univ_0;
+static const MR_UserClosureId
+mercury_data__closure_layout__exception__try_2_1_1;
+static const MR_UserClosureId
+mercury_data__closure_layout__exception__try_2_1_2;
+static const MR_UserClosureId
+mercury_data__closure_layout__exception__try_2_2_1;
+static const MR_UserClosureId
+mercury_data__closure_layout__exception__try_2_2_2;
+static const MR_UserClosureId
+mercury_data__closure_layout__exception__try_2_3_1;
+static const MR_UserClosureId
+mercury_data__closure_layout__exception__try_2_3_2;
+static const MR_UserClosureId
+mercury_data__closure_layout__exception__incremental_try_all_4_0_1;
+static const MR_UserClosureId
+mercury_data__closure_layout__exception__incremental_try_all_4_0_2;
+static const MR_UserClosureId
+mercury_data__closure_layout__exception__incremental_try_all_4_1_1;
+static const MR_UserClosureId
+mercury_data__closure_layout__exception__incremental_try_all_4_1_2;
+static const MR_UserClosureId
+mercury_data__closure_layout__exception__IntroducedFrom__pred__incremental_try_all__613__1_3_0_1;
+static const MR_UserClosureId
+mercury_data__closure_layout__exception__IntroducedFrom__pred__incremental_try_all__613__2_3_0_1;
+static const MR_UserClosureId
+mercury_data__closure_layout__exception__IntroducedFrom__pred__try_all_det__579__1_3_0_1;
+static const MR_UserClosureId
+mercury_data__closure_layout__exception__IntroducedFrom__pred__try_all_det__589__1_3_0_1;
+static const MR_UserClosureId
+mercury_data__closure_layout__f_101_120_99_101_112_116_105_111_110_95_95_85_110_117_115_101_100_65_114_103_115_95_95_112_114_101_100_95_95_116_114_121_95_100_101_116_95_95_91_50_93_95_48_3_0_1;
+static const MR_UserClosureId
+mercury_data__closure_layout__f_101_120_99_101_112_116_105_111_110_95_95_85_110_117_115_101_100_65_114_103_115_95_95_112_114_101_100_95_95_116_114_121_95_100_101_116_95_95_91_50_93_95_48_3_0_2;
+static const MR_UserClosureId
+mercury_data__closure_layout__f_101_120_99_101_112_116_105_111_110_95_95_85_110_117_115_101_100_65_114_103_115_95_95_112_114_101_100_95_95_116_114_121_95_100_101_116_95_95_91_50_93_95_49_3_1_1;
+static const MR_UserClosureId
+mercury_data__closure_layout__f_101_120_99_101_112_116_105_111_110_95_95_85_110_117_115_101_100_65_114_103_115_95_95_112_114_101_100_95_95_116_114_121_95_100_101_116_95_95_91_50_93_95_49_3_1_2;
+static const MR_UserClosureId
+mercury_data__closure_layout__f_101_120_99_101_112_116_105_111_110_95_95_85_110_117_115_101_100_65_114_103_115_95_95_112_114_101_100_95_95_116_114_121_95_100_101_116_95_95_91_50_93_95_50_3_2_1;
+static const MR_UserClosureId
+mercury_data__closure_layout__f_101_120_99_101_112_116_105_111_110_95_95_85_110_117_115_101_100_65_114_103_115_95_95_112_114_101_100_95_95_116_114_121_95_100_101_116_95_95_91_50_93_95_50_3_2_2;
+static const MR_UserClosureId
+mercury_data__closure_layout__f_101_120_99_101_112_116_105_111_110_95_95_85_110_117_115_101_100_65_114_103_115_95_95_112_114_101_100_95_95_116_114_121_95_100_101_116_95_95_91_50_93_95_51_3_3_1;
+static const MR_UserClosureId
+mercury_data__closure_layout__f_101_120_99_101_112_116_105_111_110_95_95_85_110_117_115_101_100_65_114_103_115_95_95_112_114_101_100_95_95_116_114_121_95_100_101_116_95_95_91_50_93_95_51_3_3_2;
+static const MR_UserClosureId
+mercury_data__closure_layout__f_101_120_99_101_112_116_105_111_110_95_95_85_110_117_115_101_100_65_114_103_115_95_95_112_114_101_100_95_95_116_114_121_95_105_111_95_100_101_116_95_95_91_50_93_95_48_5_0_2;
+static const MR_UserClosureId
+mercury_data__closure_layout__f_101_120_99_101_112_116_105_111_110_95_95_85_110_117_115_101_100_65_114_103_115_95_95_112_114_101_100_95_95_116_114_121_95_105_111_95_100_101_116_95_95_91_50_93_95_48_5_0_3;
+static const MR_UserClosureId
+mercury_data__closure_layout__f_101_120_99_101_112_116_105_111_110_95_95_85_110_117_115_101_100_65_114_103_115_95_95_112_114_101_100_95_95_116_114_121_95_105_111_95_100_101_116_95_95_91_50_93_95_49_5_1_2;
+static const MR_UserClosureId
+mercury_data__closure_layout__f_101_120_99_101_112_116_105_111_110_95_95_85_110_117_115_101_100_65_114_103_115_95_95_112_114_101_100_95_95_116_114_121_95_105_111_95_100_101_116_95_95_91_50_93_95_49_5_1_3;
+static const MR_UserClosureId
+mercury_data__closure_layout__f_101_120_99_101_112_116_105_111_110_95_95_85_110_117_115_101_100_65_114_103_115_95_95_112_114_101_100_95_95_116_114_121_95_97_108_108_95_100_101_116_95_95_91_50_93_95_50_4_2_1;
+static const MR_UserClosureId
+mercury_data__closure_layout__f_101_120_99_101_112_116_105_111_110_95_95_85_110_117_115_101_100_65_114_103_115_95_95_112_114_101_100_95_95_116_114_121_95_97_108_108_95_100_101_116_95_95_91_50_93_95_50_4_2_2;
+static const MR_UserClosureId
+mercury_data__closure_layout__f_101_120_99_101_112_116_105_111_110_95_95_85_110_117_115_101_100_65_114_103_115_95_95_112_114_101_100_95_95_116_114_121_95_97_108_108_95_100_101_116_95_95_91_50_93_95_51_4_3_1;
+static const MR_UserClosureId
+mercury_data__closure_layout__f_101_120_99_101_112_116_105_111_110_95_95_85_110_117_115_101_100_65_114_103_115_95_95_112_114_101_100_95_95_116_114_121_95_97_108_108_95_100_101_116_95_95_91_50_93_95_51_4_3_2;
+static const MR_UserClosureId
+mercury_data__closure_layout__f_101_120_99_101_112_116_105_111_110_95_95_85_110_117_115_101_100_65_114_103_115_95_95_112_114_101_100_95_95_116_114_121_95_115_116_109_95_100_101_116_95_95_91_50_93_95_48_5_0_2;
+static const MR_UserClosureId
+mercury_data__closure_layout__f_101_120_99_101_112_116_105_111_110_95_95_85_110_117_115_101_100_65_114_103_115_95_95_112_114_101_100_95_95_116_114_121_95_115_116_109_95_100_101_116_95_95_91_50_93_95_48_5_0_3;
+static const MR_UserClosureId
+mercury_data__closure_layout__f_101_120_99_101_112_116_105_111_110_95_95_85_110_117_115_101_100_65_114_103_115_95_95_112_114_101_100_95_95_116_114_121_95_115_116_109_95_99_99_95_109_117_108_116_105_95_95_91_50_93_95_48_5_0_2;
+static const MR_UserClosureId
+mercury_data__closure_layout__f_101_120_99_101_112_116_105_111_110_95_95_85_110_117_115_101_100_65_114_103_115_95_95_112_114_101_100_95_95_116_114_121_95_115_116_109_95_99_99_95_109_117_108_116_105_95_95_91_50_93_95_48_5_0_3;
+static const MR_UserClosureId
+mercury_data__closure_layout__f_101_120_99_101_112_116_105_111_110_95_95_85_110_117_115_101_100_65_114_103_115_95_95_112_114_101_100_95_95_116_114_121_95_100_101_116_95_95_104_111_49_49_95_95_91_49_44_32_50_44_32_51_44_32_52_44_32_53_44_32_54_44_32_55_44_32_56_44_32_49_48_93_95_48_3_0_1;
+static const MR_UserClosureId
+mercury_data__closure_layout__f_101_120_99_101_112_116_105_111_110_95_95_85_110_117_115_101_100_65_114_103_115_95_95_112_114_101_100_95_95_116_114_121_95_100_101_116_95_95_104_111_49_49_95_95_91_49_44_32_50_44_32_51_44_32_52_44_32_53_44_32_54_44_32_55_44_32_56_44_32_49_48_93_95_48_3_0_2;
+static const MR_UserClosureId
+mercury_data__closure_layout__f_101_120_99_101_112_116_105_111_110_95_95_85_110_117_115_101_100_65_114_103_115_95_95_112_114_101_100_95_95_116_114_121_95_100_101_116_95_95_104_111_49_50_95_95_91_49_44_32_50_44_32_51_44_32_52_44_32_53_44_32_54_44_32_55_44_32_56_44_32_49_48_93_95_48_3_0_1;
+static const MR_UserClosureId
+mercury_data__closure_layout__f_101_120_99_101_112_116_105_111_110_95_95_85_110_117_115_101_100_65_114_103_115_95_95_112_114_101_100_95_95_116_114_121_95_100_101_116_95_95_104_111_49_50_95_95_91_49_44_32_50_44_32_51_44_32_52_44_32_53_44_32_54_44_32_55_44_32_56_44_32_49_48_93_95_48_3_0_2;
+static const MR_UserClosureId
+mercury_data__closure_layout__f_101_120_99_101_112_116_105_111_110_95_95_85_110_117_115_101_100_65_114_103_115_95_95_112_114_101_100_95_95_116_114_121_95_100_101_116_95_95_104_111_49_52_95_95_104_111_50_49_95_95_91_49_44_32_50_44_32_51_44_32_52_44_32_53_93_95_48_3_0_1;
+static const MR_UserClosureId
+mercury_data__closure_layout__f_101_120_99_101_112_116_105_111_110_95_95_85_110_117_115_101_100_65_114_103_115_95_95_112_114_101_100_95_95_116_114_121_95_100_101_116_95_95_104_111_49_52_95_95_104_111_50_49_95_95_91_49_44_32_50_44_32_51_44_32_52_44_32_53_93_95_48_3_0_2;
+static const struct mercury_type_3 mercury_common_3[42] =
+{
+{
+{
+(MR_Word *) &mercury_data__closure_layout__exception__try_2_0_1,
+MR_COMMON(2,0)
+},
+3,
+{
+MR_CTOR0_ADDR(private_builtin, type_info),
+MR_COMMON(0,0),
+MR_COMMON(1,0)
+}
+},
+{
+{
+(MR_Word *) &mercury_data__closure_layout__exception__try_2_0_2,
+MR_COMMON(2,0)
+},
+3,
+{
+MR_CTOR0_ADDR(private_builtin, type_info),
+MR_CTOR0_ADDR(univ, univ),
+MR_COMMON(1,0)
+}
+},
+{
+{
+(MR_Word *) &mercury_data__closure_layout__exception__try_2_1_1,
+MR_COMMON(2,0)
+},
+3,
+{
+MR_CTOR0_ADDR(private_builtin, type_info),
+MR_COMMON(0,0),
+MR_COMMON(1,0)
+}
+},
+{
+{
+(MR_Word *) &mercury_data__closure_layout__exception__try_2_1_2,
+MR_COMMON(2,0)
+},
+3,
+{
+MR_CTOR0_ADDR(private_builtin, type_info),
+MR_CTOR0_ADDR(univ, univ),
+MR_COMMON(1,0)
+}
+},
+{
+{
+(MR_Word *) &mercury_data__closure_layout__exception__try_2_2_1,
+MR_COMMON(2,0)
+},
+3,
+{
+MR_CTOR0_ADDR(private_builtin, type_info),
+MR_COMMON(0,0),
+MR_COMMON(1,0)
+}
+},
+{
+{
+(MR_Word *) &mercury_data__closure_layout__exception__try_2_2_2,
+MR_COMMON(2,0)
+},
+3,
+{
+MR_CTOR0_ADDR(private_builtin, type_info),
+MR_CTOR0_ADDR(univ, univ),
+MR_COMMON(1,0)
+}
+},
+{
+{
+(MR_Word *) &mercury_data__closure_layout__exception__try_2_3_1,
+MR_COMMON(2,0)
+},
+3,
+{
+MR_CTOR0_ADDR(private_builtin, type_info),
+MR_COMMON(0,0),
+MR_COMMON(1,0)
+}
+},
+{
+{
+(MR_Word *) &mercury_data__closure_layout__exception__try_2_3_2,
+MR_COMMON(2,0)
+},
+3,
+{
+MR_CTOR0_ADDR(private_builtin, type_info),
+MR_CTOR0_ADDR(univ, univ),
+MR_COMMON(1,0)
+}
+},
+{
+{
+(MR_Word *) &mercury_data__closure_layout__exception__incremental_try_all_4_0_1,
+MR_COMMON(2,0)
+},
+3,
+{
+MR_CTOR0_ADDR(private_builtin, type_info),
+MR_COMMON(0,0),
+MR_COMMON(1,0)
+}
+},
+{
+{
+(MR_Word *) &mercury_data__closure_layout__exception__incremental_try_all_4_0_2,
+MR_COMMON(2,0)
+},
+3,
+{
+MR_CTOR0_ADDR(private_builtin, type_info),
+MR_COMMON(4,0),
+MR_COMMON(1,0)
+}
+},
+{
+{
+(MR_Word *) &mercury_data__closure_layout__exception__incremental_try_all_4_1_1,
+MR_COMMON(2,0)
+},
+3,
+{
+MR_CTOR0_ADDR(private_builtin, type_info),
+MR_COMMON(0,0),
+MR_COMMON(1,0)
+}
+},
+{
+{
+(MR_Word *) &mercury_data__closure_layout__exception__incremental_try_all_4_1_2,
+MR_COMMON(2,0)
+},
+3,
+{
+MR_CTOR0_ADDR(private_builtin, type_info),
+MR_COMMON(4,0),
+MR_COMMON(1,0)
+}
+},
+{
+{
+(MR_Word *) &mercury_data__closure_layout__exception__IntroducedFrom__pred__incremental_try_all__613__1_3_0_1,
+MR_COMMON(2,0)
+},
+3,
+{
+MR_CTOR0_ADDR(private_builtin, type_info),
+MR_CTOR0_ADDR(univ, univ),
+MR_COMMON(1,0)
+}
+},
+{
+{
+(MR_Word *) &mercury_data__closure_layout__exception__IntroducedFrom__pred__incremental_try_all__613__2_3_0_1,
+MR_COMMON(2,0)
+},
+3,
+{
+MR_CTOR0_ADDR(private_builtin, type_info),
+MR_CTOR0_ADDR(univ, univ),
+MR_COMMON(1,0)
+}
+},
+{
+{
+(MR_Word *) &mercury_data__closure_layout__exception__IntroducedFrom__pred__try_all_det__579__1_3_0_1,
+MR_COMMON(2,0)
+},
+3,
+{
+MR_CTOR0_ADDR(private_builtin, type_info),
+MR_CTOR0_ADDR(univ, univ),
+MR_COMMON(1,0)
+}
+},
+{
+{
+(MR_Word *) &mercury_data__closure_layout__exception__IntroducedFrom__pred__try_all_det__589__1_3_0_1,
+MR_COMMON(2,0)
+},
+3,
+{
+MR_CTOR0_ADDR(private_builtin, type_info),
+MR_CTOR0_ADDR(univ, univ),
+MR_COMMON(1,0)
+}
+},
+{
+{
+(MR_Word *) &mercury_data__closure_layout__f_101_120_99_101_112_116_105_111_110_95_95_85_110_117_115_101_100_65_114_103_115_95_95_112_114_101_100_95_95_116_114_121_95_100_101_116_95_95_91_50_93_95_48_3_0_1,
+MR_COMMON(2,0)
+},
+3,
+{
+MR_CTOR0_ADDR(private_builtin, type_info),
+MR_COMMON(0,0),
+MR_COMMON(1,0)
+}
+},
+{
+{
+(MR_Word *) &mercury_data__closure_layout__f_101_120_99_101_112_116_105_111_110_95_95_85_110_117_115_101_100_65_114_103_115_95_95_112_114_101_100_95_95_116_114_121_95_100_101_116_95_95_91_50_93_95_48_3_0_2,
+MR_COMMON(2,0)
+},
+3,
+{
+MR_CTOR0_ADDR(private_builtin, type_info),
+MR_CTOR0_ADDR(univ, univ),
+MR_COMMON(1,0)
+}
+},
+{
+{
+(MR_Word *) &mercury_data__closure_layout__f_101_120_99_101_112_116_105_111_110_95_95_85_110_117_115_101_100_65_114_103_115_95_95_112_114_101_100_95_95_116_114_121_95_100_101_116_95_95_91_50_93_95_49_3_1_1,
+MR_COMMON(2,0)
+},
+3,
+{
+MR_CTOR0_ADDR(private_builtin, type_info),
+MR_COMMON(0,0),
+MR_COMMON(1,0)
+}
+},
+{
+{
+(MR_Word *) &mercury_data__closure_layout__f_101_120_99_101_112_116_105_111_110_95_95_85_110_117_115_101_100_65_114_103_115_95_95_112_114_101_100_95_95_116_114_121_95_100_101_116_95_95_91_50_93_95_49_3_1_2,
+MR_COMMON(2,0)
+},
+3,
+{
+MR_CTOR0_ADDR(private_builtin, type_info),
+MR_CTOR0_ADDR(univ, univ),
+MR_COMMON(1,0)
+}
+},
+{
+{
+(MR_Word *) &mercury_data__closure_layout__f_101_120_99_101_112_116_105_111_110_95_95_85_110_117_115_101_100_65_114_103_115_95_95_112_114_101_100_95_95_116_114_121_95_100_101_116_95_95_91_50_93_95_50_3_2_1,
+MR_COMMON(2,0)
+},
+3,
+{
+MR_CTOR0_ADDR(private_builtin, type_info),
+MR_COMMON(0,0),
+MR_COMMON(1,0)
+}
+},
+{
+{
+(MR_Word *) &mercury_data__closure_layout__f_101_120_99_101_112_116_105_111_110_95_95_85_110_117_115_101_100_65_114_103_115_95_95_112_114_101_100_95_95_116_114_121_95_100_101_116_95_95_91_50_93_95_50_3_2_2,
+MR_COMMON(2,0)
+},
+3,
+{
+MR_CTOR0_ADDR(private_builtin, type_info),
+MR_CTOR0_ADDR(univ, univ),
+MR_COMMON(1,0)
+}
+},
+{
+{
+(MR_Word *) &mercury_data__closure_layout__f_101_120_99_101_112_116_105_111_110_95_95_85_110_117_115_101_100_65_114_103_115_95_95_112_114_101_100_95_95_116_114_121_95_100_101_116_95_95_91_50_93_95_51_3_3_1,
+MR_COMMON(2,0)
+},
+3,
+{
+MR_CTOR0_ADDR(private_builtin, type_info),
+MR_COMMON(0,0),
+MR_COMMON(1,0)
+}
+},
+{
+{
+(MR_Word *) &mercury_data__closure_layout__f_101_120_99_101_112_116_105_111_110_95_95_85_110_117_115_101_100_65_114_103_115_95_95_112_114_101_100_95_95_116_114_121_95_100_101_116_95_95_91_50_93_95_51_3_3_2,
+MR_COMMON(2,0)
+},
+3,
+{
+MR_CTOR0_ADDR(private_builtin, type_info),
+MR_CTOR0_ADDR(univ, univ),
+MR_COMMON(1,0)
+}
+},
+{
+{
+(MR_Word *) &mercury_data__closure_layout__f_101_120_99_101_112_116_105_111_110_95_95_85_110_117_115_101_100_65_114_103_115_95_95_112_114_101_100_95_95_116_114_121_95_105_111_95_100_101_116_95_95_91_50_93_95_48_5_0_2,
+MR_COMMON(2,0)
+},
+3,
+{
+MR_CTOR0_ADDR(private_builtin, type_info),
+MR_COMMON(0,0),
+MR_COMMON(1,0)
+}
+},
+{
+{
+(MR_Word *) &mercury_data__closure_layout__f_101_120_99_101_112_116_105_111_110_95_95_85_110_117_115_101_100_65_114_103_115_95_95_112_114_101_100_95_95_116_114_121_95_105_111_95_100_101_116_95_95_91_50_93_95_48_5_0_3,
+MR_COMMON(2,0)
+},
+3,
+{
+MR_CTOR0_ADDR(private_builtin, type_info),
+MR_CTOR0_ADDR(univ, univ),
+MR_COMMON(1,0)
+}
+},
+{
+{
+(MR_Word *) &mercury_data__closure_layout__f_101_120_99_101_112_116_105_111_110_95_95_85_110_117_115_101_100_65_114_103_115_95_95_112_114_101_100_95_95_116_114_121_95_105_111_95_100_101_116_95_95_91_50_93_95_49_5_1_2,
+MR_COMMON(2,0)
+},
+3,
+{
+MR_CTOR0_ADDR(private_builtin, type_info),
+MR_COMMON(0,0),
+MR_COMMON(1,0)
+}
+},
+{
+{
+(MR_Word *) &mercury_data__closure_layout__f_101_120_99_101_112_116_105_111_110_95_95_85_110_117_115_101_100_65_114_103_115_95_95_112_114_101_100_95_95_116_114_121_95_105_111_95_100_101_116_95_95_91_50_93_95_49_5_1_3,
+MR_COMMON(2,0)
+},
+3,
+{
+MR_CTOR0_ADDR(private_builtin, type_info),
+MR_CTOR0_ADDR(univ, univ),
+MR_COMMON(1,0)
+}
+},
+{
+{
+(MR_Word *) &mercury_data__closure_layout__f_101_120_99_101_112_116_105_111_110_95_95_85_110_117_115_101_100_65_114_103_115_95_95_112_114_101_100_95_95_116_114_121_95_97_108_108_95_100_101_116_95_95_91_50_93_95_50_4_2_1,
+MR_COMMON(2,0)
+},
+3,
+{
+MR_CTOR0_ADDR(private_builtin, type_info),
+MR_COMMON(0,0),
+MR_COMMON(1,0)
+}
+},
+{
+{
+(MR_Word *) &mercury_data__closure_layout__f_101_120_99_101_112_116_105_111_110_95_95_85_110_117_115_101_100_65_114_103_115_95_95_112_114_101_100_95_95_116_114_121_95_97_108_108_95_100_101_116_95_95_91_50_93_95_50_4_2_2,
+MR_COMMON(2,0)
+},
+3,
+{
+MR_CTOR0_ADDR(private_builtin, type_info),
+MR_COMMON(4,0),
+MR_COMMON(1,0)
+}
+},
+{
+{
+(MR_Word *) &mercury_data__closure_layout__f_101_120_99_101_112_116_105_111_110_95_95_85_110_117_115_101_100_65_114_103_115_95_95_112_114_101_100_95_95_116_114_121_95_97_108_108_95_100_101_116_95_95_91_50_93_95_51_4_3_1,
+MR_COMMON(2,0)
+},
+3,
+{
+MR_CTOR0_ADDR(private_builtin, type_info),
+MR_COMMON(0,0),
+MR_COMMON(1,0)
+}
+},
+{
+{
+(MR_Word *) &mercury_data__closure_layout__f_101_120_99_101_112_116_105_111_110_95_95_85_110_117_115_101_100_65_114_103_115_95_95_112_114_101_100_95_95_116_114_121_95_97_108_108_95_100_101_116_95_95_91_50_93_95_51_4_3_2,
+MR_COMMON(2,0)
+},
+3,
+{
+MR_CTOR0_ADDR(private_builtin, type_info),
+MR_COMMON(4,0),
+MR_COMMON(1,0)
+}
+},
+{
+{
+(MR_Word *) &mercury_data__closure_layout__f_101_120_99_101_112_116_105_111_110_95_95_85_110_117_115_101_100_65_114_103_115_95_95_112_114_101_100_95_95_116_114_121_95_115_116_109_95_100_101_116_95_95_91_50_93_95_48_5_0_2,
+MR_COMMON(2,0)
+},
+3,
+{
+MR_CTOR0_ADDR(private_builtin, type_info),
+MR_COMMON(0,0),
+MR_COMMON(1,0)
+}
+},
+{
+{
+(MR_Word *) &mercury_data__closure_layout__f_101_120_99_101_112_116_105_111_110_95_95_85_110_117_115_101_100_65_114_103_115_95_95_112_114_101_100_95_95_116_114_121_95_115_116_109_95_100_101_116_95_95_91_50_93_95_48_5_0_3,
+MR_COMMON(2,0)
+},
+3,
+{
+MR_CTOR0_ADDR(private_builtin, type_info),
+MR_CTOR0_ADDR(univ, univ),
+MR_COMMON(1,0)
+}
+},
+{
+{
+(MR_Word *) &mercury_data__closure_layout__f_101_120_99_101_112_116_105_111_110_95_95_85_110_117_115_101_100_65_114_103_115_95_95_112_114_101_100_95_95_116_114_121_95_115_116_109_95_99_99_95_109_117_108_116_105_95_95_91_50_93_95_48_5_0_2,
+MR_COMMON(2,0)
+},
+3,
+{
+MR_CTOR0_ADDR(private_builtin, type_info),
+MR_COMMON(0,0),
+MR_COMMON(1,0)
+}
+},
+{
+{
+(MR_Word *) &mercury_data__closure_layout__f_101_120_99_101_112_116_105_111_110_95_95_85_110_117_115_101_100_65_114_103_115_95_95_112_114_101_100_95_95_116_114_121_95_115_116_109_95_99_99_95_109_117_108_116_105_95_95_91_50_93_95_48_5_0_3,
+MR_COMMON(2,0)
+},
+3,
+{
+MR_CTOR0_ADDR(private_builtin, type_info),
+MR_CTOR0_ADDR(univ, univ),
+MR_COMMON(1,0)
+}
+},
+{
+{
+(MR_Word *) &mercury_data__closure_layout__f_101_120_99_101_112_116_105_111_110_95_95_85_110_117_115_101_100_65_114_103_115_95_95_112_114_101_100_95_95_116_114_121_95_100_101_116_95_95_104_111_49_49_95_95_91_49_44_32_50_44_32_51_44_32_52_44_32_53_44_32_54_44_32_55_44_32_56_44_32_49_48_93_95_48_3_0_1,
+MR_COMMON(2,0)
+},
+3,
+{
+MR_CTOR0_ADDR(private_builtin, type_info),
+MR_COMMON(0,0),
+MR_COMMON(1,0)
+}
+},
+{
+{
+(MR_Word *) &mercury_data__closure_layout__f_101_120_99_101_112_116_105_111_110_95_95_85_110_117_115_101_100_65_114_103_115_95_95_112_114_101_100_95_95_116_114_121_95_100_101_116_95_95_104_111_49_49_95_95_91_49_44_32_50_44_32_51_44_32_52_44_32_53_44_32_54_44_32_55_44_32_56_44_32_49_48_93_95_48_3_0_2,
+MR_COMMON(2,0)
+},
+3,
+{
+MR_CTOR0_ADDR(private_builtin, type_info),
+MR_CTOR0_ADDR(univ, univ),
+MR_COMMON(1,0)
+}
+},
+{
+{
+(MR_Word *) &mercury_data__closure_layout__f_101_120_99_101_112_116_105_111_110_95_95_85_110_117_115_101_100_65_114_103_115_95_95_112_114_101_100_95_95_116_114_121_95_100_101_116_95_95_104_111_49_50_95_95_91_49_44_32_50_44_32_51_44_32_52_44_32_53_44_32_54_44_32_55_44_32_56_44_32_49_48_93_95_48_3_0_1,
+MR_COMMON(2,0)
+},
+3,
+{
+MR_CTOR0_ADDR(private_builtin, type_info),
+MR_COMMON(0,0),
+MR_COMMON(1,0)
+}
+},
+{
+{
+(MR_Word *) &mercury_data__closure_layout__f_101_120_99_101_112_116_105_111_110_95_95_85_110_117_115_101_100_65_114_103_115_95_95_112_114_101_100_95_95_116_114_121_95_100_101_116_95_95_104_111_49_50_95_95_91_49_44_32_50_44_32_51_44_32_52_44_32_53_44_32_54_44_32_55_44_32_56_44_32_49_48_93_95_48_3_0_2,
+MR_COMMON(2,0)
+},
+3,
+{
+MR_CTOR0_ADDR(private_builtin, type_info),
+MR_CTOR0_ADDR(univ, univ),
+MR_COMMON(1,0)
+}
+},
+{
+{
+(MR_Word *) &mercury_data__closure_layout__f_101_120_99_101_112_116_105_111_110_95_95_85_110_117_115_101_100_65_114_103_115_95_95_112_114_101_100_95_95_116_114_121_95_100_101_116_95_95_104_111_49_52_95_95_104_111_50_49_95_95_91_49_44_32_50_44_32_51_44_32_52_44_32_53_93_95_48_3_0_1,
+MR_COMMON(2,0)
+},
+3,
+{
+MR_CTOR0_ADDR(private_builtin, type_info),
+MR_COMMON(0,0),
+MR_COMMON(1,0)
+}
+},
+{
+{
+(MR_Word *) &mercury_data__closure_layout__f_101_120_99_101_112_116_105_111_110_95_95_85_110_117_115_101_100_65_114_103_115_95_95_112_114_101_100_95_95_116_114_121_95_100_101_116_95_95_104_111_49_52_95_95_104_111_50_49_95_95_91_49_44_32_50_44_32_51_44_32_52_44_32_53_93_95_48_3_0_2,
+MR_COMMON(2,0)
+},
+3,
+{
+MR_CTOR0_ADDR(private_builtin, type_info),
+MR_CTOR0_ADDR(univ, univ),
+MR_COMMON(1,0)
+}
+},
+};
+
+static const struct mercury_type_4 mercury_common_4[1] =
+{
+{
+MR_CTOR0_ADDR(builtin, pred),
+1,
+MR_COMMON(1,0)
+},
+};
+
+static const struct mercury_type_5 mercury_common_5[1] =
+{
+{
+-1
+},
+};
+
+static const struct mercury_type_6 mercury_common_6[1] =
+{
+{
+MR_TAG_COMMON(0,5,0)
+},
+};
+
+static const MR_UserClosureId
+mercury_data__closure_layout__exception__report_uncaught_exception_3_0_1;
+extern const MR_TypeCtorInfo_Struct mercury_data_unit__type_ctor_info_unit_0;
+extern const MR_TypeCtorInfo_Struct mercury_data_io__type_ctor_info_state_0;
+static const MR_UserClosureId
+mercury_data__closure_layout__f_101_120_99_101_112_116_105_111_110_95_95_85_110_117_115_101_100_65_114_103_115_95_95_112_114_101_100_95_95_116_114_121_95_115_116_109_95_100_101_116_95_95_91_50_93_95_48_5_0_1;
+extern const MR_TypeCtorInfo_Struct mercury_data_stm_builtin__type_ctor_info_stm_0;
+static const MR_UserClosureId
+mercury_data__closure_layout__f_101_120_99_101_112_116_105_111_110_95_95_85_110_117_115_101_100_65_114_103_115_95_95_112_114_101_100_95_95_116_114_121_95_115_116_109_95_99_99_95_109_117_108_116_105_95_95_91_50_93_95_48_5_0_1;
+static const struct mercury_type_7 mercury_common_7[3] =
+{
+{
+{
+(MR_Word *) &mercury_data__closure_layout__exception__report_uncaught_exception_3_0_1,
+(MR_Word *) (MR_Integer) 0
+},
+4,
+{
+MR_CTOR0_ADDR(univ, univ),
+MR_CTOR0_ADDR(unit, unit),
+MR_IO_CTOR_ADDR,
+MR_IO_CTOR_ADDR
+}
+},
+{
+{
+(MR_Word *) &mercury_data__closure_layout__f_101_120_99_101_112_116_105_111_110_95_95_85_110_117_115_101_100_65_114_103_115_95_95_112_114_101_100_95_95_116_114_121_95_115_116_109_95_100_101_116_95_95_91_50_93_95_48_5_0_1,
+MR_COMMON(2,0)
+},
+4,
+{
+MR_CTOR0_ADDR(private_builtin, type_info),
+MR_COMMON(9,2),
+MR_CTOR0_ADDR(stm_builtin, stm),
+MR_COMMON(11,1)
+}
+},
+{
+{
+(MR_Word *) &mercury_data__closure_layout__f_101_120_99_101_112_116_105_111_110_95_95_85_110_117_115_101_100_65_114_103_115_95_95_112_114_101_100_95_95_116_114_121_95_115_116_109_95_99_99_95_109_117_108_116_105_95_95_91_50_93_95_48_5_0_1,
+MR_COMMON(2,0)
+},
+4,
+{
+MR_CTOR0_ADDR(private_builtin, type_info),
+MR_COMMON(9,2),
+MR_CTOR0_ADDR(stm_builtin, stm),
+MR_COMMON(11,1)
+}
+},
+};
+
+extern const MR_BaseTypeclassInfo mercury_data_base_typeclass_info_ops__op_table__arity1__ops__mercury_op_table__arity0__[];
+extern const MR_TypeCtorInfo_Struct mercury_data_ops__type_ctor_info_mercury_op_table_0;
+extern const MR_TypeCtorInfo_Struct mercury_data_unit__type_ctor_info_unit_0;
+static const struct mercury_type_8 mercury_common_8[2] =
+{
+{
+{
+(MR_Word *) &mercury_data_base_typeclass_info_ops__op_table__arity1__ops__mercury_op_table__arity0__,
+MR_CTOR0_ADDR(ops, mercury_op_table)
+}
+},
+{
+{
+MR_CTOR1_ADDR(exception, exception_result),
+MR_CTOR0_ADDR(unit, unit)
+}
+},
+};
+
+extern const MR_TypeCtorInfo_Struct mercury_data_io__type_ctor_info_state_0;
+extern const MR_TypeCtorInfo_Struct mercury_data_stm_builtin__type_ctor_info_stm_0;
+static const struct mercury_type_9 mercury_common_9[3] =
+{
+{
+MR_CTOR0_ADDR(builtin, pred),
+3,
+1,
+MR_IO_CTOR_ADDR,
+MR_IO_CTOR_ADDR
+},
+{
+MR_CTOR0_ADDR(builtin, pred),
+3,
+1,
+MR_COMMON(1,1),
+MR_COMMON(1,1)
+},
+{
+MR_CTOR0_ADDR(builtin, pred),
+3,
+1,
+MR_CTOR0_ADDR(stm_builtin, stm),
+MR_CTOR0_ADDR(stm_builtin, stm)
+},
+};
+
+static const MR_UserClosureId
+mercury_data__closure_layout__f_101_120_99_101_112_116_105_111_110_95_95_85_110_117_115_101_100_65_114_103_115_95_95_112_114_101_100_95_95_116_114_121_95_105_111_95_100_101_116_95_95_91_50_93_95_48_5_0_1;
+static const MR_UserClosureId
+mercury_data__closure_layout__f_101_120_99_101_112_116_105_111_110_95_95_85_110_117_115_101_100_65_114_103_115_95_95_112_114_101_100_95_95_116_114_121_95_105_111_95_100_101_116_95_95_91_50_93_95_49_5_1_1;
+static const MR_UserClosureId
+mercury_data__closure_layout__f_101_120_99_101_112_116_105_111_110_95_95_85_110_117_115_101_100_65_114_103_115_95_95_112_114_101_100_95_95_116_114_121_95_105_111_95_100_101_116_95_95_104_111_50_48_95_95_91_49_44_32_50_93_95_48_5_0_1;
+static const struct mercury_type_10 mercury_common_10[3] =
+{
+{
+(MR_Word *) &mercury_data__closure_layout__f_101_120_99_101_112_116_105_111_110_95_95_85_110_117_115_101_100_65_114_103_115_95_95_112_114_101_100_95_95_116_114_121_95_105_111_95_100_101_116_95_95_91_50_93_95_48_5_0_1,
+MR_COMMON(2,0),
+3,
+MR_CTOR0_ADDR(private_builtin, type_info),
+MR_COMMON(9,0),
+1
+},
+{
+(MR_Word *) &mercury_data__closure_layout__f_101_120_99_101_112_116_105_111_110_95_95_85_110_117_115_101_100_65_114_103_115_95_95_112_114_101_100_95_95_116_114_121_95_105_111_95_100_101_116_95_95_91_50_93_95_49_5_1_1,
+MR_COMMON(2,0),
+3,
+MR_CTOR0_ADDR(private_builtin, type_info),
+MR_COMMON(9,0),
+1
+},
+{
+(MR_Word *) &mercury_data__closure_layout__f_101_120_99_101_112_116_105_111_110_95_95_85_110_117_115_101_100_65_114_103_115_95_95_112_114_101_100_95_95_116_114_121_95_105_111_95_100_101_116_95_95_104_111_50_48_95_95_91_49_44_32_50_93_95_48_5_0_1,
+MR_COMMON(2,0),
+3,
+MR_CTOR0_ADDR(private_builtin, type_info),
+MR_COMMON(9,0),
+1
+},
+};
+
+extern const MR_TypeCtorInfo_Struct mercury_data_builtin__type_ctor_info_tuple_0;
+static const struct mercury_type_11 mercury_common_11[2] =
+{
+{
+MR_CTOR0_ADDR(builtin, tuple),
+2,
+1,
+MR_COMMON(1,1)
+},
+{
+MR_CTOR0_ADDR(builtin, tuple),
+2,
+1,
+MR_CTOR0_ADDR(stm_builtin, stm)
+},
+};
+
+static const struct mercury_type_12 mercury_common_12[1] =
+{
+{
+{
+2,
+17,
+33
+}
+},
+};
+
+static const MR_UserClosureId
+mercury_data__closure_layout__f_101_120_99_101_112_116_105_111_110_95_95_85_110_117_115_101_100_65_114_103_115_95_95_112_114_101_100_95_95_116_114_121_95_115_116_111_114_101_95_100_101_116_95_95_91_51_93_95_48_5_0_1;
+static const MR_UserClosureId
+mercury_data__closure_layout__f_101_120_99_101_112_116_105_111_110_95_95_85_110_117_115_101_100_65_114_103_115_95_95_112_114_101_100_95_95_116_114_121_95_115_116_111_114_101_95_100_101_116_95_95_91_51_93_95_49_5_1_1;
+static const struct mercury_type_13 mercury_common_13[2] =
+{
+{
+{
+(MR_Word *) &mercury_data__closure_layout__f_101_120_99_101_112_116_105_111_110_95_95_85_110_117_115_101_100_65_114_103_115_95_95_112_114_101_100_95_95_116_114_121_95_115_116_111_114_101_95_100_101_116_95_95_91_51_93_95_48_5_0_1,
+MR_COMMON(12,0)
+},
+5,
+{
+MR_CTOR0_ADDR(private_builtin, type_info),
+MR_CTOR0_ADDR(private_builtin, type_info),
+MR_COMMON(9,1),
+MR_COMMON(1,1),
+MR_COMMON(11,0)
+}
+},
+{
+{
+(MR_Word *) &mercury_data__closure_layout__f_101_120_99_101_112_116_105_111_110_95_95_85_110_117_115_101_100_65_114_103_115_95_95_112_114_101_100_95_95_116_114_121_95_115_116_111_114_101_95_100_101_116_95_95_91_51_93_95_49_5_1_1,
+MR_COMMON(12,0)
+},
+5,
+{
+MR_CTOR0_ADDR(private_builtin, type_info),
+MR_CTOR0_ADDR(private_builtin, type_info),
+MR_COMMON(9,1),
+MR_COMMON(1,1),
+MR_COMMON(11,0)
+}
+},
+};
+
+static const MR_UserClosureId
+mercury_data__closure_layout__f_101_120_99_101_112_116_105_111_110_95_95_115_111_108_117_116_105_111_110_115_95_95_85_110_117_115_101_100_65_114_103_115_95_95_112_114_101_100_95_95_117_110_115_111_114_116_101_100_95_115_111_108_117_116_105_111_110_115_95_95_104_111_56_95_95_91_49_44_32_50_44_32_51_44_32_52_44_32_53_93_95_48_2_0_1;
+static const MR_UserClosureId
+mercury_data__closure_layout__f_101_120_99_101_112_116_105_111_110_95_95_115_111_108_117_116_105_111_110_115_95_95_85_110_117_115_101_100_65_114_103_115_95_95_112_114_101_100_95_95_117_110_115_111_114_116_101_100_95_115_111_108_117_116_105_111_110_115_95_95_104_111_49_48_95_95_91_49_44_32_50_44_32_51_44_32_52_44_32_53_93_95_48_2_0_1;
+static const struct mercury_type_14 mercury_common_14[2] =
+{
+{
+(MR_Word *) &mercury_data__closure_layout__f_101_120_99_101_112_116_105_111_110_95_95_115_111_108_117_116_105_111_110_115_95_95_85_110_117_115_101_100_65_114_103_115_95_95_112_114_101_100_95_95_117_110_115_111_114_116_101_100_95_115_111_108_117_116_105_111_110_115_95_95_104_111_56_95_95_91_49_44_32_50_44_32_51_44_32_52_44_32_53_93_95_48_2_0_1,
+MR_COMMON(2,0),
+4,
+MR_CTOR0_ADDR(private_builtin, type_info),
+1,
+MR_COMMON(1,2),
+MR_COMMON(1,2)
+},
+{
+(MR_Word *) &mercury_data__closure_layout__f_101_120_99_101_112_116_105_111_110_95_95_115_111_108_117_116_105_111_110_115_95_95_85_110_117_115_101_100_65_114_103_115_95_95_112_114_101_100_95_95_117_110_115_111_114_116_101_100_95_115_111_108_117_116_105_111_110_115_95_95_104_111_49_48_95_95_91_49_44_32_50_44_32_51_44_32_52_44_32_53_93_95_48_2_0_1,
+MR_COMMON(2,0),
+4,
+MR_CTOR0_ADDR(private_builtin, type_info),
+1,
+MR_COMMON(1,2),
+MR_COMMON(1,2)
+},
+};
+
+static const struct mercury_type_15 mercury_common_15[1] =
+{
+{
+MR_COMMON(3,41),
+MR_ENTRY_AP(exception__wrap_exception_2_0),
+1,
+MR_CTOR0_ADDR(unit, unit)
+},
+};
+
+const MR_PseudoTypeInfo mercury_data_exception__field_types_exception_result_1_0[] = {
+	(MR_PseudoTypeInfo) 1
+};
+
+static const MR_DuFunctorDesc mercury_data_exception__du_functor_desc_exception_result_1_0 = {
+	"succeeded",
+	1,
+	1,
+	MR_SECTAG_NONE,
+	1,
+	-1,
+	0,
+	(MR_PseudoTypeInfo *) mercury_data_exception__field_types_exception_result_1_0,
+	NULL,
+	NULL
+};
+
+static const MR_DuFunctorDesc mercury_data_exception__du_functor_desc_exception_result_1_1 = {
+	"failed",
+	0,
+	0,
+	MR_SECTAG_LOCAL,
+	0,
+	0,
+	1,
+	(MR_PseudoTypeInfo *) NULL,
+	NULL,
+	NULL
+};
+extern const MR_TypeCtorInfo_Struct mercury_data_univ__type_ctor_info_univ_0;
+extern const MR_TypeCtorInfo_Struct mercury_data_univ__type_ctor_info_univ_0;
+
+const MR_PseudoTypeInfo mercury_data_exception__field_types_exception_result_1_2[] = {
+	(MR_PseudoTypeInfo) &mercury_data_univ__type_ctor_info_univ_0
+};
+
+static const MR_DuFunctorDesc mercury_data_exception__du_functor_desc_exception_result_1_2 = {
+	"exception",
+	1,
+	0,
+	MR_SECTAG_NONE,
+	2,
+	-1,
+	2,
+	(MR_PseudoTypeInfo *) mercury_data_exception__field_types_exception_result_1_2,
+	NULL,
+	NULL
+};
+
+const MR_DuFunctorDescPtr mercury_data_exception__du_stag_ordered_exception_result_1_0[] = {
+	&mercury_data_exception__du_functor_desc_exception_result_1_1
+
+};
+
+const MR_DuFunctorDescPtr mercury_data_exception__du_stag_ordered_exception_result_1_1[] = {
+	&mercury_data_exception__du_functor_desc_exception_result_1_0
+
+};
+
+const MR_DuFunctorDescPtr mercury_data_exception__du_stag_ordered_exception_result_1_2[] = {
+	&mercury_data_exception__du_functor_desc_exception_result_1_2
+
+};
+
+const MR_DuPtagLayout mercury_data_exception__du_ptag_ordered_exception_result_1[] = {
+	{ 1, MR_SECTAG_LOCAL,
+	mercury_data_exception__du_stag_ordered_exception_result_1_0 },
+	{ 1, MR_SECTAG_NONE,
+	mercury_data_exception__du_stag_ordered_exception_result_1_1 },
+	{ 1, MR_SECTAG_NONE,
+	mercury_data_exception__du_stag_ordered_exception_result_1_2 }
+
+};
+
+const MR_DuFunctorDescPtr mercury_data_exception__du_name_ordered_exception_result_1[] = {
+	&mercury_data_exception__du_functor_desc_exception_result_1_2,
+	&mercury_data_exception__du_functor_desc_exception_result_1_1,
+	&mercury_data_exception__du_functor_desc_exception_result_1_0
+};
+
+const MR_Integer mercury_data_exception__functor_number_map_exception_result_1[] = {
+	2,
+	1,
+	0 };
+	
+const MR_TypeCtorInfo_Struct mercury_data_exception__type_ctor_info_exception_result_1 = {
+	1,
+	14,
+	3,
+	MR_TYPECTOR_REP_DU,
+	MR_MAYBE_STATIC_CODE(MR_ENTRY_AP(__Unify___exception__exception_result_1_0)),
+	MR_MAYBE_STATIC_CODE(MR_ENTRY_AP(__Compare___exception__exception_result_1_0)),
+	"exception",
+	"exception_result",
+	{ (void *)mercury_data_exception__du_name_ordered_exception_result_1 },
+	{ (void *)mercury_data_exception__du_ptag_ordered_exception_result_1 },
+	3,
+	4,
+	mercury_data_exception__functor_number_map_exception_result_1
+};
+
+static const MR_EnumFunctorDesc mercury_data_exception__enum_functor_desc_exp_determinism_0_0 = {
+	"exp_detism_det",
+	0
+};
+
+static const MR_EnumFunctorDesc mercury_data_exception__enum_functor_desc_exp_determinism_0_1 = {
+	"exp_detism_semidet",
+	1
+};
+
+static const MR_EnumFunctorDesc mercury_data_exception__enum_functor_desc_exp_determinism_0_2 = {
+	"exp_detism_cc_multi",
+	2
+};
+
+static const MR_EnumFunctorDesc mercury_data_exception__enum_functor_desc_exp_determinism_0_3 = {
+	"exp_detism_cc_nondet",
+	3
+};
+
+static const MR_EnumFunctorDesc mercury_data_exception__enum_functor_desc_exp_determinism_0_4 = {
+	"exp_detism_multi",
+	4
+};
+
+static const MR_EnumFunctorDesc mercury_data_exception__enum_functor_desc_exp_determinism_0_5 = {
+	"exp_detism_nondet",
+	5
+};
+
+static const MR_EnumFunctorDesc mercury_data_exception__enum_functor_desc_exp_determinism_0_6 = {
+	"exp_detism_erroneous",
+	6
+};
+
+static const MR_EnumFunctorDesc mercury_data_exception__enum_functor_desc_exp_determinism_0_7 = {
+	"exp_detism_failure",
+	7
+};
+
+const MR_EnumFunctorDescPtr mercury_data_exception__enum_value_ordered_exp_determinism_0[] = {
+	&mercury_data_exception__enum_functor_desc_exp_determinism_0_0,
+	&mercury_data_exception__enum_functor_desc_exp_determinism_0_1,
+	&mercury_data_exception__enum_functor_desc_exp_determinism_0_2,
+	&mercury_data_exception__enum_functor_desc_exp_determinism_0_3,
+	&mercury_data_exception__enum_functor_desc_exp_determinism_0_4,
+	&mercury_data_exception__enum_functor_desc_exp_determinism_0_5,
+	&mercury_data_exception__enum_functor_desc_exp_determinism_0_6,
+	&mercury_data_exception__enum_functor_desc_exp_determinism_0_7
+};
+
+const MR_EnumFunctorDescPtr mercury_data_exception__enum_name_ordered_exp_determinism_0[] = {
+	&mercury_data_exception__enum_functor_desc_exp_determinism_0_2,
+	&mercury_data_exception__enum_functor_desc_exp_determinism_0_3,
+	&mercury_data_exception__enum_functor_desc_exp_determinism_0_0,
+	&mercury_data_exception__enum_functor_desc_exp_determinism_0_6,
+	&mercury_data_exception__enum_functor_desc_exp_determinism_0_7,
+	&mercury_data_exception__enum_functor_desc_exp_determinism_0_4,
+	&mercury_data_exception__enum_functor_desc_exp_determinism_0_5,
+	&mercury_data_exception__enum_functor_desc_exp_determinism_0_1
+};
+
+const MR_Integer mercury_data_exception__functor_number_map_exp_determinism_0[] = {
+	2,
+	7,
+	0,
+	1,
+	5,
+	6,
+	3,
+	4 };
+	
+const MR_TypeCtorInfo_Struct mercury_data_exception__type_ctor_info_exp_determinism_0 = {
+	0,
+	14,
+	-1,
+	MR_TYPECTOR_REP_ENUM,
+	MR_MAYBE_STATIC_CODE(MR_ENTRY_AP(__Unify___exception__exp_determinism_0_0)),
+	MR_MAYBE_STATIC_CODE(MR_ENTRY_AP(__Compare___exception__exp_determinism_0_0)),
+	"exception",
+	"exp_determinism",
+	{ (void *)mercury_data_exception__enum_name_ordered_exp_determinism_0 },
+	{ (void *)mercury_data_exception__enum_value_ordered_exp_determinism_0 },
+	8,
+	4,
+	mercury_data_exception__functor_number_map_exp_determinism_0
+};
+
+static const MR_VA_PseudoTypeInfo_Struct2 mercury_data___vpti_pred_2__plain_univ__type_ctor_info_univ_0__pseudo_1 = {
+	&mercury_data_builtin__type_ctor_info_pred_0,
+	2,
+{	(MR_PseudoTypeInfo) &mercury_data_univ__type_ctor_info_univ_0,
+	(MR_PseudoTypeInfo) 1
+}};
+
+const MR_TypeCtorInfo_Struct mercury_data_exception__type_ctor_info_handler_1 = {
+	1,
+	14,
+	-1,
+	MR_TYPECTOR_REP_EQUIV,
+	MR_MAYBE_STATIC_CODE(MR_ENTRY_AP(__Unify___exception__handler_1_0)),
+	MR_MAYBE_STATIC_CODE(MR_ENTRY_AP(__Compare___exception__handler_1_0)),
+	"exception",
+	"handler",
+	{ 0 },
+	{ (void *)&mercury_data___vpti_pred_2__plain_univ__type_ctor_info_univ_0__pseudo_1 },
+	-1,
+	0,
+	NULL
+};
+
+static const MR_EnumFunctorDesc mercury_data_exception__enum_functor_desc_near_stack_limits_0_0 = {
+	"near_stack_limits",
+	0
+};
+
+const MR_EnumFunctorDescPtr mercury_data_exception__enum_value_ordered_near_stack_limits_0[] = {
+	&mercury_data_exception__enum_functor_desc_near_stack_limits_0_0
+};
+
+const MR_EnumFunctorDescPtr mercury_data_exception__enum_name_ordered_near_stack_limits_0[] = {
+	&mercury_data_exception__enum_functor_desc_near_stack_limits_0_0
+};
+
+const MR_Integer mercury_data_exception__functor_number_map_near_stack_limits_0[] = {
+	0 };
+	
+const MR_TypeCtorInfo_Struct mercury_data_exception__type_ctor_info_near_stack_limits_0 = {
+	0,
+	14,
+	-1,
+	MR_TYPECTOR_REP_DUMMY,
+	MR_MAYBE_STATIC_CODE(MR_ENTRY_AP(__Unify___exception__near_stack_limits_0_0)),
+	MR_MAYBE_STATIC_CODE(MR_ENTRY_AP(__Compare___exception__near_stack_limits_0_0)),
+	"exception",
+	"near_stack_limits",
+	{ (void *)mercury_data_exception__enum_name_ordered_near_stack_limits_0 },
+	{ (void *)mercury_data_exception__enum_value_ordered_near_stack_limits_0 },
+	1,
+	4,
+	mercury_data_exception__functor_number_map_near_stack_limits_0
+};
+extern const MR_TypeCtorInfo_Struct mercury_data_builtin__type_ctor_info_string_0;
+extern const MR_TypeCtorInfo_Struct mercury_data_builtin__type_ctor_info_string_0;
+
+static const MR_NotagFunctorDesc mercury_data_exception__notag_functor_desc_software_error_0 = {
+	"software_error",
+	(MR_PseudoTypeInfo) &mercury_data_builtin__type_ctor_info_string_0,
+	NULL
+};
+
+const MR_Integer mercury_data_exception__functor_number_map_software_error_0[] = {
+	0 };
+	
+const MR_TypeCtorInfo_Struct mercury_data_exception__type_ctor_info_software_error_0 = {
+	0,
+	14,
+	-1,
+	MR_TYPECTOR_REP_NOTAG_GROUND,
+	MR_MAYBE_STATIC_CODE(MR_ENTRY_AP(__Unify___exception__software_error_0_0)),
+	MR_MAYBE_STATIC_CODE(MR_ENTRY_AP(__Compare___exception__software_error_0_0)),
+	"exception",
+	"software_error",
+	{ (void *)&mercury_data_exception__notag_functor_desc_software_error_0 },
+	{ (void *)&mercury_data_exception__notag_functor_desc_software_error_0 },
+	1,
+	4,
+	mercury_data_exception__functor_number_map_software_error_0
+};
+
+
+static const MR_UserClosureId
+mercury_data__closure_layout__f_101_120_99_101_112_116_105_111_110_95_95_85_110_117_115_101_100_65_114_103_115_95_95_112_114_101_100_95_95_116_114_121_95_100_101_116_95_95_104_111_49_52_95_95_104_111_50_49_95_95_91_49_44_32_50_44_32_51_44_32_52_44_32_53_93_95_48_3_0_2 = {
+{
+MR_PREDICATE,
+"exception",
+"exception",
+"wrap_exception",
+2,
+0
+},
+"exception",
+"exception.m",
+524,
+"10"
+};
+
+static const MR_UserClosureId
+mercury_data__closure_layout__f_101_120_99_101_112_116_105_111_110_95_95_85_110_117_115_101_100_65_114_103_115_95_95_112_114_101_100_95_95_116_114_121_95_100_101_116_95_95_104_111_49_52_95_95_104_111_50_49_95_95_91_49_44_32_50_44_32_51_44_32_52_44_32_53_93_95_48_3_0_1 = {
+{
+MR_PREDICATE,
+"exception",
+"exception",
+"wrap_success_or_failure",
+2,
+0
+},
+"exception",
+"exception.m",
+521,
+"5"
+};
+
+static const MR_UserClosureId
+mercury_data__closure_layout__f_101_120_99_101_112_116_105_111_110_95_95_85_110_117_115_101_100_65_114_103_115_95_95_112_114_101_100_95_95_116_114_121_95_105_111_95_100_101_116_95_95_104_111_50_48_95_95_91_49_44_32_50_93_95_48_5_0_1 = {
+{
+MR_PREDICATE,
+"exception",
+"exception",
+"very_unsafe_perform_io",
+2,
+0
+},
+"exception",
+"exception.m",
+677,
+"7"
+};
+
+static const MR_UserClosureId
+mercury_data__closure_layout__f_101_120_99_101_112_116_105_111_110_95_95_85_110_117_115_101_100_65_114_103_115_95_95_112_114_101_100_95_95_116_114_121_95_100_101_116_95_95_104_111_49_50_95_95_91_49_44_32_50_44_32_51_44_32_52_44_32_53_44_32_54_44_32_55_44_32_56_44_32_49_48_93_95_48_3_0_2 = {
+{
+MR_PREDICATE,
+"exception",
+"exception",
+"wrap_exception",
+2,
+0
+},
+"exception",
+"exception.m",
+524,
+"10"
+};
+
+static const MR_UserClosureId
+mercury_data__closure_layout__f_101_120_99_101_112_116_105_111_110_95_95_85_110_117_115_101_100_65_114_103_115_95_95_112_114_101_100_95_95_116_114_121_95_100_101_116_95_95_104_111_49_50_95_95_91_49_44_32_50_44_32_51_44_32_52_44_32_53_44_32_54_44_32_55_44_32_56_44_32_49_48_93_95_48_3_0_1 = {
+{
+MR_PREDICATE,
+"exception",
+"exception",
+"wrap_success_or_failure",
+2,
+0
+},
+"exception",
+"exception.m",
+521,
+"5"
+};
+
+static const MR_UserClosureId
+mercury_data__closure_layout__f_101_120_99_101_112_116_105_111_110_95_95_85_110_117_115_101_100_65_114_103_115_95_95_112_114_101_100_95_95_116_114_121_95_100_101_116_95_95_104_111_49_49_95_95_91_49_44_32_50_44_32_51_44_32_52_44_32_53_44_32_54_44_32_55_44_32_56_44_32_49_48_93_95_48_3_0_2 = {
+{
+MR_PREDICATE,
+"exception",
+"exception",
+"wrap_exception",
+2,
+0
+},
+"exception",
+"exception.m",
+536,
+"34"
+};
+
+static const MR_UserClosureId
+mercury_data__closure_layout__f_101_120_99_101_112_116_105_111_110_95_95_85_110_117_115_101_100_65_114_103_115_95_95_112_114_101_100_95_95_116_114_121_95_100_101_116_95_95_104_111_49_49_95_95_91_49_44_32_50_44_32_51_44_32_52_44_32_53_44_32_54_44_32_55_44_32_56_44_32_49_48_93_95_48_3_0_1 = {
+{
+MR_PREDICATE,
+"exception",
+"exception",
+"wrap_success_or_failure",
+2,
+2
+},
+"exception",
+"exception.m",
+533,
+"29"
+};
+
+static const MR_UserClosureId
+mercury_data__closure_layout__f_101_120_99_101_112_116_105_111_110_95_95_115_111_108_117_116_105_111_110_115_95_95_85_110_117_115_101_100_65_114_103_115_95_95_112_114_101_100_95_95_117_110_115_111_114_116_101_100_95_115_111_108_117_116_105_111_110_115_95_95_104_111_49_48_95_95_91_49_44_32_50_44_32_51_44_32_52_44_32_53_93_95_48_2_0_1 = {
+{
+MR_PREDICATE,
+"list",
+"list",
+"cons",
+3,
+0
+},
+"exception",
+"solutions.opt",
+68,
+"4"
+};
+
+static const MR_UserClosureId
+mercury_data__closure_layout__f_101_120_99_101_112_116_105_111_110_95_95_115_111_108_117_116_105_111_110_115_95_95_85_110_117_115_101_100_65_114_103_115_95_95_112_114_101_100_95_95_117_110_115_111_114_116_101_100_95_115_111_108_117_116_105_111_110_115_95_95_104_111_56_95_95_91_49_44_32_50_44_32_51_44_32_52_44_32_53_93_95_48_2_0_1 = {
+{
+MR_PREDICATE,
+"list",
+"list",
+"cons",
+3,
+0
+},
+"exception",
+"solutions.opt",
+68,
+"4"
+};
+
+static const MR_UserClosureId
+mercury_data__closure_layout__f_101_120_99_101_112_116_105_111_110_95_95_85_110_117_115_101_100_65_114_103_115_95_95_112_114_101_100_95_95_116_114_121_95_115_116_109_95_99_99_95_109_117_108_116_105_95_95_91_50_93_95_48_5_0_3 = {
+{
+MR_PREDICATE,
+"exception",
+"exception",
+"wrap_exception",
+2,
+0
+},
+"exception",
+"exception.m",
+536,
+"34"
+};
+
+static const MR_UserClosureId
+mercury_data__closure_layout__f_101_120_99_101_112_116_105_111_110_95_95_85_110_117_115_101_100_65_114_103_115_95_95_112_114_101_100_95_95_116_114_121_95_115_116_109_95_99_99_95_109_117_108_116_105_95_95_91_50_93_95_48_5_0_2 = {
+{
+MR_PREDICATE,
+"exception",
+"exception",
+"wrap_success_or_failure",
+2,
+2
+},
+"exception",
+"exception.m",
+533,
+"29"
+};
+
+static const MR_UserClosureId
+mercury_data__closure_layout__f_101_120_99_101_112_116_105_111_110_95_95_85_110_117_115_101_100_65_114_103_115_95_95_112_114_101_100_95_95_116_114_121_95_115_116_109_95_99_99_95_109_117_108_116_105_95_95_91_50_93_95_48_5_0_1 = {
+{
+MR_PREDICATE,
+"exception",
+"exception",
+"lambda_exception_m_784",
+4,
+0
+},
+"exception",
+"exception.m",
+784,
+"7"
+};
+
+static const MR_UserClosureId
+mercury_data__closure_layout__f_101_120_99_101_112_116_105_111_110_95_95_85_110_117_115_101_100_65_114_103_115_95_95_112_114_101_100_95_95_116_114_121_95_115_116_109_95_100_101_116_95_95_91_50_93_95_48_5_0_3 = {
+{
+MR_PREDICATE,
+"exception",
+"exception",
+"wrap_exception",
+2,
+0
+},
+"exception",
+"exception.m",
+524,
+"10"
+};
+
+static const MR_UserClosureId
+mercury_data__closure_layout__f_101_120_99_101_112_116_105_111_110_95_95_85_110_117_115_101_100_65_114_103_115_95_95_112_114_101_100_95_95_116_114_121_95_115_116_109_95_100_101_116_95_95_91_50_93_95_48_5_0_2 = {
+{
+MR_PREDICATE,
+"exception",
+"exception",
+"wrap_success_or_failure",
+2,
+0
+},
+"exception",
+"exception.m",
+521,
+"5"
+};
+
+static const MR_UserClosureId
+mercury_data__closure_layout__f_101_120_99_101_112_116_105_111_110_95_95_85_110_117_115_101_100_65_114_103_115_95_95_112_114_101_100_95_95_116_114_121_95_115_116_109_95_100_101_116_95_95_91_50_93_95_48_5_0_1 = {
+{
+MR_PREDICATE,
+"exception",
+"exception",
+"lambda_exception_m_771",
+4,
+0
+},
+"exception",
+"exception.m",
+771,
+"7"
+};
+
+static const MR_UserClosureId
+mercury_data__closure_layout__f_101_120_99_101_112_116_105_111_110_95_95_85_110_117_115_101_100_65_114_103_115_95_95_112_114_101_100_95_95_116_114_121_95_97_108_108_95_100_101_116_95_95_91_50_93_95_51_4_3_2 = {
+{
+MR_PREDICATE,
+"exception",
+"exception",
+"lambda_exception_m_589",
+3,
+0
+},
+"exception",
+"exception.m",
+589,
+"70"
+};
+
+static const MR_UserClosureId
+mercury_data__closure_layout__f_101_120_99_101_112_116_105_111_110_95_95_85_110_117_115_101_100_65_114_103_115_95_95_112_114_101_100_95_95_116_114_121_95_97_108_108_95_100_101_116_95_95_91_50_93_95_51_4_3_1 = {
+{
+MR_PREDICATE,
+"exception",
+"exception",
+"wrap_success",
+2,
+3
+},
+"exception",
+"exception.m",
+586,
+"65"
+};
+
+static const MR_UserClosureId
+mercury_data__closure_layout__f_101_120_99_101_112_116_105_111_110_95_95_85_110_117_115_101_100_65_114_103_115_95_95_112_114_101_100_95_95_116_114_121_95_97_108_108_95_100_101_116_95_95_91_50_93_95_50_4_2_2 = {
+{
+MR_PREDICATE,
+"exception",
+"exception",
+"lambda_exception_m_579",
+3,
+0
+},
+"exception",
+"exception.m",
+579,
+"49"
+};
+
+static const MR_UserClosureId
+mercury_data__closure_layout__f_101_120_99_101_112_116_105_111_110_95_95_85_110_117_115_101_100_65_114_103_115_95_95_112_114_101_100_95_95_116_114_121_95_97_108_108_95_100_101_116_95_95_91_50_93_95_50_4_2_1 = {
+{
+MR_PREDICATE,
+"exception",
+"exception",
+"wrap_success",
+2,
+2
+},
+"exception",
+"exception.m",
+576,
+"44"
+};
+
+static const MR_UserClosureId
+mercury_data__closure_layout__f_101_120_99_101_112_116_105_111_110_95_95_85_110_117_115_101_100_65_114_103_115_95_95_112_114_101_100_95_95_116_114_121_95_115_116_111_114_101_95_100_101_116_95_95_91_51_93_95_49_5_1_1 = {
+{
+MR_PREDICATE,
+"exception",
+"exception",
+"lambda_exception_m_638",
+5,
+0
+},
+"exception",
+"exception.m",
+638,
+"22"
+};
+
+static const MR_UserClosureId
+mercury_data__closure_layout__f_101_120_99_101_112_116_105_111_110_95_95_85_110_117_115_101_100_65_114_103_115_95_95_112_114_101_100_95_95_116_114_121_95_115_116_111_114_101_95_100_101_116_95_95_91_51_93_95_48_5_0_1 = {
+{
+MR_PREDICATE,
+"exception",
+"exception",
+"lambda_exception_m_631",
+5,
+0
+},
+"exception",
+"exception.m",
+631,
+"7"
+};
+
+static const MR_UserClosureId
+mercury_data__closure_layout__f_101_120_99_101_112_116_105_111_110_95_95_85_110_117_115_101_100_65_114_103_115_95_95_112_114_101_100_95_95_116_114_121_95_105_111_95_100_101_116_95_95_91_50_93_95_49_5_1_3 = {
+{
+MR_PREDICATE,
+"exception",
+"exception",
+"wrap_exception",
+2,
+0
+},
+"exception",
+"exception.m",
+536,
+"34"
+};
+
+static const MR_UserClosureId
+mercury_data__closure_layout__f_101_120_99_101_112_116_105_111_110_95_95_85_110_117_115_101_100_65_114_103_115_95_95_112_114_101_100_95_95_116_114_121_95_105_111_95_100_101_116_95_95_91_50_93_95_49_5_1_2 = {
+{
+MR_PREDICATE,
+"exception",
+"exception",
+"wrap_success_or_failure",
+2,
+2
+},
+"exception",
+"exception.m",
+533,
+"29"
+};
+
+static const MR_UserClosureId
+mercury_data__closure_layout__f_101_120_99_101_112_116_105_111_110_95_95_85_110_117_115_101_100_65_114_103_115_95_95_112_114_101_100_95_95_116_114_121_95_105_111_95_100_101_116_95_95_91_50_93_95_49_5_1_1 = {
+{
+MR_PREDICATE,
+"exception",
+"exception",
+"very_unsafe_perform_io",
+2,
+1
+},
+"exception",
+"exception.m",
+682,
+"21"
+};
+
+static const MR_UserClosureId
+mercury_data__closure_layout__f_101_120_99_101_112_116_105_111_110_95_95_85_110_117_115_101_100_65_114_103_115_95_95_112_114_101_100_95_95_116_114_121_95_105_111_95_100_101_116_95_95_91_50_93_95_48_5_0_3 = {
+{
+MR_PREDICATE,
+"exception",
+"exception",
+"wrap_exception",
+2,
+0
+},
+"exception",
+"exception.m",
+524,
+"10"
+};
+
+static const MR_UserClosureId
+mercury_data__closure_layout__f_101_120_99_101_112_116_105_111_110_95_95_85_110_117_115_101_100_65_114_103_115_95_95_112_114_101_100_95_95_116_114_121_95_105_111_95_100_101_116_95_95_91_50_93_95_48_5_0_2 = {
+{
+MR_PREDICATE,
+"exception",
+"exception",
+"wrap_success_or_failure",
+2,
+0
+},
+"exception",
+"exception.m",
+521,
+"5"
+};
+
+static const MR_UserClosureId
+mercury_data__closure_layout__f_101_120_99_101_112_116_105_111_110_95_95_85_110_117_115_101_100_65_114_103_115_95_95_112_114_101_100_95_95_116_114_121_95_105_111_95_100_101_116_95_95_91_50_93_95_48_5_0_1 = {
+{
+MR_PREDICATE,
+"exception",
+"exception",
+"very_unsafe_perform_io",
+2,
+0
+},
+"exception",
+"exception.m",
+677,
+"7"
+};
+
+static const MR_UserClosureId
+mercury_data__closure_layout__f_101_120_99_101_112_116_105_111_110_95_95_85_110_117_115_101_100_65_114_103_115_95_95_112_114_101_100_95_95_116_114_121_95_100_101_116_95_95_91_50_93_95_51_3_3_2 = {
+{
+MR_PREDICATE,
+"exception",
+"exception",
+"wrap_exception",
+2,
+0
+},
+"exception",
+"exception.m",
+541,
+"45"
+};
+
+static const MR_UserClosureId
+mercury_data__closure_layout__f_101_120_99_101_112_116_105_111_110_95_95_85_110_117_115_101_100_65_114_103_115_95_95_112_114_101_100_95_95_116_114_121_95_100_101_116_95_95_91_50_93_95_51_3_3_1 = {
+{
+MR_PREDICATE,
+"exception",
+"exception",
+"wrap_success_or_failure",
+2,
+3
+},
+"exception",
+"exception.m",
+538,
+"40"
+};
+
+static const MR_UserClosureId
+mercury_data__closure_layout__f_101_120_99_101_112_116_105_111_110_95_95_85_110_117_115_101_100_65_114_103_115_95_95_112_114_101_100_95_95_116_114_121_95_100_101_116_95_95_91_50_93_95_50_3_2_2 = {
+{
+MR_PREDICATE,
+"exception",
+"exception",
+"wrap_exception",
+2,
+0
+},
+"exception",
+"exception.m",
+536,
+"34"
+};
+
+static const MR_UserClosureId
+mercury_data__closure_layout__f_101_120_99_101_112_116_105_111_110_95_95_85_110_117_115_101_100_65_114_103_115_95_95_112_114_101_100_95_95_116_114_121_95_100_101_116_95_95_91_50_93_95_50_3_2_1 = {
+{
+MR_PREDICATE,
+"exception",
+"exception",
+"wrap_success_or_failure",
+2,
+2
+},
+"exception",
+"exception.m",
+533,
+"29"
+};
+
+static const MR_UserClosureId
+mercury_data__closure_layout__f_101_120_99_101_112_116_105_111_110_95_95_85_110_117_115_101_100_65_114_103_115_95_95_112_114_101_100_95_95_116_114_121_95_100_101_116_95_95_91_50_93_95_49_3_1_2 = {
+{
+MR_PREDICATE,
+"exception",
+"exception",
+"wrap_exception",
+2,
+0
+},
+"exception",
+"exception.m",
+530,
+"22"
+};
+
+static const MR_UserClosureId
+mercury_data__closure_layout__f_101_120_99_101_112_116_105_111_110_95_95_85_110_117_115_101_100_65_114_103_115_95_95_112_114_101_100_95_95_116_114_121_95_100_101_116_95_95_91_50_93_95_49_3_1_1 = {
+{
+MR_PREDICATE,
+"exception",
+"exception",
+"wrap_success_or_failure",
+2,
+1
+},
+"exception",
+"exception.m",
+527,
+"17"
+};
+
+static const MR_UserClosureId
+mercury_data__closure_layout__f_101_120_99_101_112_116_105_111_110_95_95_85_110_117_115_101_100_65_114_103_115_95_95_112_114_101_100_95_95_116_114_121_95_100_101_116_95_95_91_50_93_95_48_3_0_2 = {
+{
+MR_PREDICATE,
+"exception",
+"exception",
+"wrap_exception",
+2,
+0
+},
+"exception",
+"exception.m",
+524,
+"10"
+};
+
+static const MR_UserClosureId
+mercury_data__closure_layout__f_101_120_99_101_112_116_105_111_110_95_95_85_110_117_115_101_100_65_114_103_115_95_95_112_114_101_100_95_95_116_114_121_95_100_101_116_95_95_91_50_93_95_48_3_0_1 = {
+{
+MR_PREDICATE,
+"exception",
+"exception",
+"wrap_success_or_failure",
+2,
+0
+},
+"exception",
+"exception.m",
+521,
+"5"
+};
+
+static const MR_UserClosureId
+mercury_data__closure_layout__exception__IntroducedFrom__pred__try_all_det__589__1_3_0_1 = {
+{
+MR_PREDICATE,
+"exception",
+"exception",
+"wrap_exception",
+2,
+0
+},
+"exception",
+"exception.m",
+590,
+"73"
+};
+
+static const MR_UserClosureId
+mercury_data__closure_layout__exception__IntroducedFrom__pred__try_all_det__579__1_3_0_1 = {
+{
+MR_PREDICATE,
+"exception",
+"exception",
+"wrap_exception",
+2,
+0
+},
+"exception",
+"exception.m",
+580,
+"52"
+};
+
+static const MR_UserClosureId
+mercury_data__closure_layout__exception__IntroducedFrom__pred__incremental_try_all__613__2_3_0_1 = {
+{
+MR_PREDICATE,
+"exception",
+"exception",
+"wrap_exception",
+2,
+0
+},
+"exception",
+"exception.m",
+614,
+"14"
+};
+
+static const MR_UserClosureId
+mercury_data__closure_layout__exception__IntroducedFrom__pred__incremental_try_all__613__1_3_0_1 = {
+{
+MR_PREDICATE,
+"exception",
+"exception",
+"wrap_exception",
+2,
+0
+},
+"exception",
+"exception.m",
+614,
+"14"
+};
+
+static const MR_UserClosureId
+mercury_data__closure_layout__exception__report_uncaught_exception_3_0_1 = {
+{
+MR_PREDICATE,
+"exception",
+"exception",
+"report_uncaught_exception_2",
+4,
+0
+},
+"exception",
+"exception.m",
+2831,
+"5"
+};
+
+static const MR_UserClosureId
+mercury_data__closure_layout__exception__incremental_try_all_4_1_2 = {
+{
+MR_PREDICATE,
+"exception",
+"exception",
+"lambda2_exception_m_613",
+3,
+0
+},
+"exception",
+"exception.m",
+613,
+"11"
+};
+
+static const MR_UserClosureId
+mercury_data__closure_layout__exception__incremental_try_all_4_1_1 = {
+{
+MR_PREDICATE,
+"exception",
+"exception",
+"wrap_success",
+2,
+3
+},
+"exception",
+"exception.m",
+610,
+"6"
+};
+
+static const MR_UserClosureId
+mercury_data__closure_layout__exception__incremental_try_all_4_0_2 = {
+{
+MR_PREDICATE,
+"exception",
+"exception",
+"lambda_exception_m_613",
+3,
+0
+},
+"exception",
+"exception.m",
+613,
+"11"
+};
+
+static const MR_UserClosureId
+mercury_data__closure_layout__exception__incremental_try_all_4_0_1 = {
+{
+MR_PREDICATE,
+"exception",
+"exception",
+"wrap_success",
+2,
+3
+},
+"exception",
+"exception.m",
+610,
+"6"
+};
+
+static const MR_UserClosureId
+mercury_data__closure_layout__exception__try_2_3_2 = {
+{
+MR_PREDICATE,
+"exception",
+"exception",
+"wrap_exception",
+2,
+0
+},
+"exception",
+"exception.m",
+541,
+"45"
+};
+
+static const MR_UserClosureId
+mercury_data__closure_layout__exception__try_2_3_1 = {
+{
+MR_PREDICATE,
+"exception",
+"exception",
+"wrap_success_or_failure",
+2,
+3
+},
+"exception",
+"exception.m",
+538,
+"40"
+};
+
+static const MR_UserClosureId
+mercury_data__closure_layout__exception__try_2_2_2 = {
+{
+MR_PREDICATE,
+"exception",
+"exception",
+"wrap_exception",
+2,
+0
+},
+"exception",
+"exception.m",
+536,
+"34"
+};
+
+static const MR_UserClosureId
+mercury_data__closure_layout__exception__try_2_2_1 = {
+{
+MR_PREDICATE,
+"exception",
+"exception",
+"wrap_success_or_failure",
+2,
+2
+},
+"exception",
+"exception.m",
+533,
+"29"
+};
+
+static const MR_UserClosureId
+mercury_data__closure_layout__exception__try_2_1_2 = {
+{
+MR_PREDICATE,
+"exception",
+"exception",
+"wrap_exception",
+2,
+0
+},
+"exception",
+"exception.m",
+530,
+"22"
+};
+
+static const MR_UserClosureId
+mercury_data__closure_layout__exception__try_2_1_1 = {
+{
+MR_PREDICATE,
+"exception",
+"exception",
+"wrap_success_or_failure",
+2,
+1
+},
+"exception",
+"exception.m",
+527,
+"17"
+};
+
+static const MR_UserClosureId
+mercury_data__closure_layout__exception__try_2_0_2 = {
+{
+MR_PREDICATE,
+"exception",
+"exception",
+"wrap_exception",
+2,
+0
+},
+"exception",
+"exception.m",
+524,
+"10"
+};
+
+static const MR_UserClosureId
+mercury_data__closure_layout__exception__try_2_0_1 = {
+{
+MR_PREDICATE,
+"exception",
+"exception",
+"wrap_success_or_failure",
+2,
+0
+},
+"exception",
+"exception.m",
+521,
+"5"
+};
+
+
+MR_decl_entry(univ__type_to_univ_2_1);
+MR_decl_entry(exception__builtin_throw_1_0);
+
+MR_BEGIN_MODULE(exception_module0)
+	MR_init_entry1(exception__throw_1_0);
+	MR_INIT_PROC_LAYOUT_ADDR(mercury__exception__throw_1_0);
+	MR_init_label1(exception__throw_1_0,2)
+MR_BEGIN_CODE
+
+/*-------------------------------------------------------------------------*/
+/* code for 'throw'/1 mode 0 */
+#ifdef MR_maybe_local_thread_engine_base
+	#undef MR_maybe_local_thread_engine_base
+	#define MR_maybe_local_thread_engine_base MR_local_thread_engine_base
+#endif
+MR_define_entry(mercury__exception__throw_1_0);
+	MR_MAYBE_INIT_LOCAL_THREAD_ENGINE_BASE
+	MR_incr_sp(1);
+	MR_sv(1) = (MR_Word) MR_succip;
+	MR_np_call_localret_ent(univ__type_to_univ_2_1,
+		exception__throw_1_0_i2);
+MR_def_label(exception__throw_1_0,2)
+	MR_MAYBE_INIT_LOCAL_THREAD_ENGINE_BASE
+	MR_succip_word = MR_sv(1);
+	MR_decr_sp(1);
+	MR_np_tailcall_ent(exception__builtin_throw_1_0);
+#ifdef MR_maybe_local_thread_engine_base
+	#undef MR_maybe_local_thread_engine_base
+	#define MR_maybe_local_thread_engine_base MR_thread_engine_base
+#endif
+MR_END_MODULE
+
+
+MR_BEGIN_MODULE(exception_module1)
+	MR_init_entry1(fn__exception__throw_1_0);
+	MR_INIT_PROC_LAYOUT_ADDR(mercury__fn__exception__throw_1_0);
+MR_BEGIN_CODE
+
+/*-------------------------------------------------------------------------*/
+/* code for 'throw'/2 mode 0 */
+#ifdef MR_maybe_local_thread_engine_base
+	#undef MR_maybe_local_thread_engine_base
+	#define MR_maybe_local_thread_engine_base MR_local_thread_engine_base
+#endif
+MR_define_entry(mercury__fn__exception__throw_1_0);
+	MR_MAYBE_INIT_LOCAL_THREAD_ENGINE_BASE
+	MR_r2 = MR_r3;
+	MR_np_tailcall_ent(exception__throw_1_0);
+#ifdef MR_maybe_local_thread_engine_base
+	#undef MR_maybe_local_thread_engine_base
+	#define MR_maybe_local_thread_engine_base MR_thread_engine_base
+#endif
+MR_END_MODULE
+
+MR_decl_entry(exception__builtin_catch_3_0);
+
+MR_BEGIN_MODULE(exception_module2)
+	MR_init_entry1(exception__catch_impl_3_0);
+	MR_INIT_PROC_LAYOUT_ADDR(mercury__exception__catch_impl_3_0);
+MR_BEGIN_CODE
+
+/*-------------------------------------------------------------------------*/
+/* code for 'catch_impl'/3 mode 0 */
+#ifdef MR_maybe_local_thread_engine_base
+	#undef MR_maybe_local_thread_engine_base
+	#define MR_maybe_local_thread_engine_base MR_local_thread_engine_base
+#endif
+MR_define_entry(mercury__exception__catch_impl_3_0);
+	MR_MAYBE_INIT_LOCAL_THREAD_ENGINE_BASE
+	MR_np_tailcall_ent(exception__builtin_catch_3_0);
+#ifdef MR_maybe_local_thread_engine_base
+	#undef MR_maybe_local_thread_engine_base
+	#define MR_maybe_local_thread_engine_base MR_thread_engine_base
+#endif
+MR_END_MODULE
+
+MR_decl_entry(exception__builtin_catch_3_1);
+
+MR_BEGIN_MODULE(exception_module3)
+	MR_init_entry1(exception__catch_impl_3_1);
+	MR_INIT_PROC_LAYOUT_ADDR(mercury__exception__catch_impl_3_1);
+MR_BEGIN_CODE
+
+/*-------------------------------------------------------------------------*/
+/* code for 'catch_impl'/3 mode 1 */
+#ifdef MR_maybe_local_thread_engine_base
+	#undef MR_maybe_local_thread_engine_base
+	#define MR_maybe_local_thread_engine_base MR_local_thread_engine_base
+#endif
+MR_define_entry(mercury__exception__catch_impl_3_1);
+	MR_MAYBE_INIT_LOCAL_THREAD_ENGINE_BASE
+	MR_np_tailcall_ent(exception__builtin_catch_3_1);
+#ifdef MR_maybe_local_thread_engine_base
+	#undef MR_maybe_local_thread_engine_base
+	#define MR_maybe_local_thread_engine_base MR_thread_engine_base
+#endif
+MR_END_MODULE
+
+MR_decl_entry(exception__builtin_catch_3_2);
+
+MR_BEGIN_MODULE(exception_module4)
+	MR_init_entry1(exception__catch_impl_3_2);
+	MR_INIT_PROC_LAYOUT_ADDR(mercury__exception__catch_impl_3_2);
+MR_BEGIN_CODE
+
+/*-------------------------------------------------------------------------*/
+/* code for 'catch_impl'/3 mode 2 */
+#ifdef MR_maybe_local_thread_engine_base
+	#undef MR_maybe_local_thread_engine_base
+	#define MR_maybe_local_thread_engine_base MR_local_thread_engine_base
+#endif
+MR_define_entry(mercury__exception__catch_impl_3_2);
+	MR_MAYBE_INIT_LOCAL_THREAD_ENGINE_BASE
+	MR_np_tailcall_ent(exception__builtin_catch_3_2);
+#ifdef MR_maybe_local_thread_engine_base
+	#undef MR_maybe_local_thread_engine_base
+	#define MR_maybe_local_thread_engine_base MR_thread_engine_base
+#endif
+MR_END_MODULE
+
+MR_decl_entry(exception__builtin_catch_3_3);
+
+MR_BEGIN_MODULE(exception_module5)
+	MR_init_entry1(exception__catch_impl_3_3);
+	MR_INIT_PROC_LAYOUT_ADDR(mercury__exception__catch_impl_3_3);
+MR_BEGIN_CODE
+
+/*-------------------------------------------------------------------------*/
+/* code for 'catch_impl'/3 mode 3 */
+#ifdef MR_maybe_local_thread_engine_base
+	#undef MR_maybe_local_thread_engine_base
+	#define MR_maybe_local_thread_engine_base MR_local_thread_engine_base
+#endif
+MR_define_entry(mercury__exception__catch_impl_3_3);
+	MR_MAYBE_INIT_LOCAL_THREAD_ENGINE_BASE
+	MR_np_tailcall_ent(exception__builtin_catch_3_3);
+#ifdef MR_maybe_local_thread_engine_base
+	#undef MR_maybe_local_thread_engine_base
+	#define MR_maybe_local_thread_engine_base MR_thread_engine_base
+#endif
+MR_END_MODULE
+
+MR_decl_entry(exception__builtin_catch_3_4);
+
+MR_BEGIN_MODULE(exception_module6)
+	MR_init_entry1(exception__catch_impl_3_4);
+	MR_INIT_PROC_LAYOUT_ADDR(mercury__exception__catch_impl_3_4);
+MR_BEGIN_CODE
+
+/*-------------------------------------------------------------------------*/
+/* code for 'catch_impl'/3 mode 4 */
+#ifdef MR_maybe_local_thread_engine_base
+	#undef MR_maybe_local_thread_engine_base
+	#define MR_maybe_local_thread_engine_base MR_local_thread_engine_base
+#endif
+MR_define_entry(mercury__exception__catch_impl_3_4);
+	MR_MAYBE_INIT_LOCAL_THREAD_ENGINE_BASE
+	MR_np_tailcall_ent(exception__builtin_catch_3_4);
+#ifdef MR_maybe_local_thread_engine_base
+	#undef MR_maybe_local_thread_engine_base
+	#define MR_maybe_local_thread_engine_base MR_thread_engine_base
+#endif
+MR_END_MODULE
+
+MR_decl_entry(exception__builtin_catch_3_5);
+
+MR_BEGIN_MODULE(exception_module7)
+	MR_init_entry1(exception__catch_impl_3_5);
+	MR_INIT_PROC_LAYOUT_ADDR(mercury__exception__catch_impl_3_5);
+MR_BEGIN_CODE
+
+/*-------------------------------------------------------------------------*/
+/* code for 'catch_impl'/3 mode 5 */
+#ifdef MR_maybe_local_thread_engine_base
+	#undef MR_maybe_local_thread_engine_base
+	#define MR_maybe_local_thread_engine_base MR_local_thread_engine_base
+#endif
+MR_define_entry(mercury__exception__catch_impl_3_5);
+	MR_MAYBE_INIT_LOCAL_THREAD_ENGINE_BASE
+	MR_np_tailcall_ent(exception__builtin_catch_3_5);
+#ifdef MR_maybe_local_thread_engine_base
+	#undef MR_maybe_local_thread_engine_base
+	#define MR_maybe_local_thread_engine_base MR_thread_engine_base
+#endif
+MR_END_MODULE
+
+
+MR_BEGIN_MODULE(exception_module8)
+	MR_init_entry1(exception__try_det_3_0);
+	MR_INIT_PROC_LAYOUT_ADDR(mercury__exception__try_det_3_0);
+MR_BEGIN_CODE
+
+/*-------------------------------------------------------------------------*/
+/* code for 'try_det'/3 mode 0 */
+#ifdef MR_maybe_local_thread_engine_base
+	#undef MR_maybe_local_thread_engine_base
+	#define MR_maybe_local_thread_engine_base MR_local_thread_engine_base
+#endif
+MR_define_entry(mercury__exception__try_det_3_0);
+	MR_MAYBE_INIT_LOCAL_THREAD_ENGINE_BASE
+	MR_r2 = MR_r3;
+	MR_np_tailcall_ent(f_101_120_99_101_112_116_105_111_110_95_95_85_110_117_115_101_100_65_114_103_115_95_95_112_114_101_100_95_95_116_114_121_95_100_101_116_95_95_91_50_93_95_48_3_0);
+#ifdef MR_maybe_local_thread_engine_base
+	#undef MR_maybe_local_thread_engine_base
+	#define MR_maybe_local_thread_engine_base MR_thread_engine_base
+#endif
+MR_END_MODULE
+
+
+MR_BEGIN_MODULE(exception_module9)
+	MR_init_entry1(exception__try_det_3_1);
+	MR_INIT_PROC_LAYOUT_ADDR(mercury__exception__try_det_3_1);
+MR_BEGIN_CODE
+
+/*-------------------------------------------------------------------------*/
+/* code for 'try_det'/3 mode 1 */
+#ifdef MR_maybe_local_thread_engine_base
+	#undef MR_maybe_local_thread_engine_base
+	#define MR_maybe_local_thread_engine_base MR_local_thread_engine_base
+#endif
+MR_define_entry(mercury__exception__try_det_3_1);
+	MR_MAYBE_INIT_LOCAL_THREAD_ENGINE_BASE
+	MR_r2 = MR_r3;
+	MR_np_tailcall_ent(f_101_120_99_101_112_116_105_111_110_95_95_85_110_117_115_101_100_65_114_103_115_95_95_112_114_101_100_95_95_116_114_121_95_100_101_116_95_95_91_50_93_95_49_3_1);
+#ifdef MR_maybe_local_thread_engine_base
+	#undef MR_maybe_local_thread_engine_base
+	#define MR_maybe_local_thread_engine_base MR_thread_engine_base
+#endif
+MR_END_MODULE
+
+
+MR_BEGIN_MODULE(exception_module10)
+	MR_init_entry1(exception__try_det_3_2);
+	MR_INIT_PROC_LAYOUT_ADDR(mercury__exception__try_det_3_2);
+MR_BEGIN_CODE
+
+/*-------------------------------------------------------------------------*/
+/* code for 'try_det'/3 mode 2 */
+#ifdef MR_maybe_local_thread_engine_base
+	#undef MR_maybe_local_thread_engine_base
+	#define MR_maybe_local_thread_engine_base MR_local_thread_engine_base
+#endif
+MR_define_entry(mercury__exception__try_det_3_2);
+	MR_MAYBE_INIT_LOCAL_THREAD_ENGINE_BASE
+	MR_r2 = MR_r3;
+	MR_np_tailcall_ent(f_101_120_99_101_112_116_105_111_110_95_95_85_110_117_115_101_100_65_114_103_115_95_95_112_114_101_100_95_95_116_114_121_95_100_101_116_95_95_91_50_93_95_50_3_2);
+#ifdef MR_maybe_local_thread_engine_base
+	#undef MR_maybe_local_thread_engine_base
+	#define MR_maybe_local_thread_engine_base MR_thread_engine_base
+#endif
+MR_END_MODULE
+
+
+MR_BEGIN_MODULE(exception_module11)
+	MR_init_entry1(exception__try_det_3_3);
+	MR_INIT_PROC_LAYOUT_ADDR(mercury__exception__try_det_3_3);
+MR_BEGIN_CODE
+
+/*-------------------------------------------------------------------------*/
+/* code for 'try_det'/3 mode 3 */
+#ifdef MR_maybe_local_thread_engine_base
+	#undef MR_maybe_local_thread_engine_base
+	#define MR_maybe_local_thread_engine_base MR_local_thread_engine_base
+#endif
+MR_define_entry(mercury__exception__try_det_3_3);
+	MR_MAYBE_INIT_LOCAL_THREAD_ENGINE_BASE
+	MR_r2 = MR_r3;
+	MR_np_tailcall_ent(f_101_120_99_101_112_116_105_111_110_95_95_85_110_117_115_101_100_65_114_103_115_95_95_112_114_101_100_95_95_116_114_121_95_100_101_116_95_95_91_50_93_95_51_3_3);
+#ifdef MR_maybe_local_thread_engine_base
+	#undef MR_maybe_local_thread_engine_base
+	#define MR_maybe_local_thread_engine_base MR_thread_engine_base
+#endif
+MR_END_MODULE
+
+
+MR_BEGIN_MODULE(exception_module12)
+	MR_init_entry1(exception__get_determinism_2_0);
+	MR_INIT_PROC_LAYOUT_ADDR(mercury__exception__get_determinism_2_0);
+MR_BEGIN_CODE
+
+/*-------------------------------------------------------------------------*/
+/* code for 'get_determinism'/2 mode 0 */
+#ifdef MR_maybe_local_thread_engine_base
+	#undef MR_maybe_local_thread_engine_base
+	#define MR_maybe_local_thread_engine_base MR_local_thread_engine_base
+#endif
+MR_define_entry(mercury__exception__get_determinism_2_0);
+	MR_MAYBE_INIT_LOCAL_THREAD_ENGINE_BASE
+	MR_np_tailcall_ent(f_101_120_99_101_112_116_105_111_110_95_95_85_110_117_115_101_100_65_114_103_115_95_95_112_114_101_100_95_95_103_101_116_95_100_101_116_101_114_109_105_110_105_115_109_95_95_91_49_44_32_50_93_95_48_2_0);
+#ifdef MR_maybe_local_thread_engine_base
+	#undef MR_maybe_local_thread_engine_base
+	#define MR_maybe_local_thread_engine_base MR_thread_engine_base
+#endif
+MR_END_MODULE
+
+
+MR_BEGIN_MODULE(exception_module13)
+	MR_init_entry1(exception__get_determinism_2_1);
+	MR_INIT_PROC_LAYOUT_ADDR(mercury__exception__get_determinism_2_1);
+MR_BEGIN_CODE
+
+/*-------------------------------------------------------------------------*/
+/* code for 'get_determinism'/2 mode 1 */
+#ifdef MR_maybe_local_thread_engine_base
+	#undef MR_maybe_local_thread_engine_base
+	#define MR_maybe_local_thread_engine_base MR_local_thread_engine_base
+#endif
+MR_define_entry(mercury__exception__get_determinism_2_1);
+	MR_MAYBE_INIT_LOCAL_THREAD_ENGINE_BASE
+	MR_np_tailcall_ent(f_101_120_99_101_112_116_105_111_110_95_95_85_110_117_115_101_100_65_114_103_115_95_95_112_114_101_100_95_95_103_101_116_95_100_101_116_101_114_109_105_110_105_115_109_95_95_91_49_44_32_50_93_95_49_2_1);
+#ifdef MR_maybe_local_thread_engine_base
+	#undef MR_maybe_local_thread_engine_base
+	#define MR_maybe_local_thread_engine_base MR_thread_engine_base
+#endif
+MR_END_MODULE
+
+
+MR_BEGIN_MODULE(exception_module14)
+	MR_init_entry1(exception__get_determinism_2_2);
+	MR_INIT_PROC_LAYOUT_ADDR(mercury__exception__get_determinism_2_2);
+MR_BEGIN_CODE
+
+/*-------------------------------------------------------------------------*/
+/* code for 'get_determinism'/2 mode 2 */
+#ifdef MR_maybe_local_thread_engine_base
+	#undef MR_maybe_local_thread_engine_base
+	#define MR_maybe_local_thread_engine_base MR_local_thread_engine_base
+#endif
+MR_define_entry(mercury__exception__get_determinism_2_2);
+	MR_MAYBE_INIT_LOCAL_THREAD_ENGINE_BASE
+	MR_np_tailcall_ent(f_101_120_99_101_112_116_105_111_110_95_95_85_110_117_115_101_100_65_114_103_115_95_95_112_114_101_100_95_95_103_101_116_95_100_101_116_101_114_109_105_110_105_115_109_95_95_91_49_44_32_50_93_95_50_2_2);
+#ifdef MR_maybe_local_thread_engine_base
+	#undef MR_maybe_local_thread_engine_base
+	#define MR_maybe_local_thread_engine_base MR_thread_engine_base
+#endif
+MR_END_MODULE
+
+
+MR_BEGIN_MODULE(exception_module15)
+	MR_init_entry1(exception__get_determinism_2_3);
+	MR_INIT_PROC_LAYOUT_ADDR(mercury__exception__get_determinism_2_3);
+MR_BEGIN_CODE
+
+/*-------------------------------------------------------------------------*/
+/* code for 'get_determinism'/2 mode 3 */
+#ifdef MR_maybe_local_thread_engine_base
+	#undef MR_maybe_local_thread_engine_base
+	#define MR_maybe_local_thread_engine_base MR_local_thread_engine_base
+#endif
+MR_define_entry(mercury__exception__get_determinism_2_3);
+	MR_MAYBE_INIT_LOCAL_THREAD_ENGINE_BASE
+	MR_np_tailcall_ent(f_101_120_99_101_112_116_105_111_110_95_95_85_110_117_115_101_100_65_114_103_115_95_95_112_114_101_100_95_95_103_101_116_95_100_101_116_101_114_109_105_110_105_115_109_95_95_91_49_44_32_50_93_95_51_2_3);
+#ifdef MR_maybe_local_thread_engine_base
+	#undef MR_maybe_local_thread_engine_base
+	#define MR_maybe_local_thread_engine_base MR_thread_engine_base
+#endif
+MR_END_MODULE
+
+
+MR_BEGIN_MODULE(exception_module16)
+	MR_init_entry1(exception__get_determinism_2_4);
+	MR_INIT_PROC_LAYOUT_ADDR(mercury__exception__get_determinism_2_4);
+MR_BEGIN_CODE
+
+/*-------------------------------------------------------------------------*/
+/* code for 'get_determinism'/2 mode 4 */
+#ifdef MR_maybe_local_thread_engine_base
+	#undef MR_maybe_local_thread_engine_base
+	#define MR_maybe_local_thread_engine_base MR_local_thread_engine_base
+#endif
+MR_define_entry(mercury__exception__get_determinism_2_4);
+	MR_MAYBE_INIT_LOCAL_THREAD_ENGINE_BASE
+	MR_np_tailcall_ent(f_101_120_99_101_112_116_105_111_110_95_95_85_110_117_115_101_100_65_114_103_115_95_95_112_114_101_100_95_95_103_101_116_95_100_101_116_101_114_109_105_110_105_115_109_95_95_91_49_44_32_50_93_95_52_2_4);
+#ifdef MR_maybe_local_thread_engine_base
+	#undef MR_maybe_local_thread_engine_base
+	#define MR_maybe_local_thread_engine_base MR_thread_engine_base
+#endif
+MR_END_MODULE
+
+
+MR_BEGIN_MODULE(exception_module17)
+	MR_init_entry1(exception__get_determinism_2_5);
+	MR_INIT_PROC_LAYOUT_ADDR(mercury__exception__get_determinism_2_5);
+MR_BEGIN_CODE
+
+/*-------------------------------------------------------------------------*/
+/* code for 'get_determinism'/2 mode 5 */
+#ifdef MR_maybe_local_thread_engine_base
+	#undef MR_maybe_local_thread_engine_base
+	#define MR_maybe_local_thread_engine_base MR_local_thread_engine_base
+#endif
+MR_define_entry(mercury__exception__get_determinism_2_5);
+	MR_MAYBE_INIT_LOCAL_THREAD_ENGINE_BASE
+	MR_np_tailcall_ent(f_101_120_99_101_112_116_105_111_110_95_95_85_110_117_115_101_100_65_114_103_115_95_95_112_114_101_100_95_95_103_101_116_95_100_101_116_101_114_109_105_110_105_115_109_95_95_91_49_44_32_50_93_95_53_2_5);
+#ifdef MR_maybe_local_thread_engine_base
+	#undef MR_maybe_local_thread_engine_base
+	#define MR_maybe_local_thread_engine_base MR_thread_engine_base
+#endif
+MR_END_MODULE
+
+
+MR_BEGIN_MODULE(exception_module18)
+	MR_init_entry1(exception__try_2_0);
+	MR_INIT_PROC_LAYOUT_ADDR(mercury__exception__try_2_0);
+	MR_init_label2(exception__try_2_0,2,6)
+MR_BEGIN_CODE
+
+/*-------------------------------------------------------------------------*/
+/* code for 'try'/2 mode 0 */
+#ifdef MR_maybe_local_thread_engine_base
+	#undef MR_maybe_local_thread_engine_base
+	#define MR_maybe_local_thread_engine_base MR_local_thread_engine_base
+#endif
+MR_define_entry(mercury__exception__try_2_0);
+	MR_MAYBE_INIT_LOCAL_THREAD_ENGINE_BASE
+	MR_incr_sp(3);
+	MR_sv(3) = (MR_Word) MR_succip;
+	MR_sv(1) = MR_r2;
+	MR_sv(2) = MR_r1;
+	MR_np_call_localret_ent(f_101_120_99_101_112_116_105_111_110_95_95_85_110_117_115_101_100_65_114_103_115_95_95_112_114_101_100_95_95_103_101_116_95_100_101_116_101_114_109_105_110_105_115_109_95_95_91_49_44_32_50_93_95_48_2_0,
+		exception__try_2_0_i2);
+MR_def_label(exception__try_2_0,2)
+	MR_MAYBE_INIT_LOCAL_THREAD_ENGINE_BASE
+	MR_tag_alloc_heap(MR_r2, 0, (MR_Integer) 5);
+	MR_tfield(0, MR_r2, 0) = (MR_Word) MR_COMMON(3,0);
+	MR_tfield(0, MR_r2, 1) = (MR_Word) MR_ENTRY_AP(exception__wrap_success_or_failure_2_0);
+	MR_tfield(0, MR_r2, 2) = (MR_Integer) 2;
+	{
+	MR_Word MR_tempr1, MR_tempr2;
+	MR_tempr2 = MR_sv(2);
+	MR_tfield(0, MR_r2, 3) = MR_tempr2;
+	MR_tfield(0, MR_r2, 4) = MR_sv(1);
+	MR_tag_alloc_heap(MR_tempr1, 0, (MR_Integer) 4);
+	MR_r3 = MR_tempr1;
+	MR_tfield(0, MR_tempr1, 0) = (MR_Word) MR_COMMON(3,1);
+	MR_tfield(0, MR_tempr1, 1) = (MR_Word) MR_ENTRY_AP(exception__wrap_exception_2_0);
+	MR_tfield(0, MR_tempr1, 2) = (MR_Integer) 1;
+	MR_tfield(0, MR_tempr1, 3) = MR_tempr2;
+	MR_tag_alloc_heap(MR_r1, 0, (MR_Integer) 2);
+	MR_tfield(0, MR_r1, 0) = (MR_Word) MR_CTOR1_ADDR(exception, exception_result);
+	MR_tfield(0, MR_r1, 1) = MR_tempr2;
+	}
+	MR_np_call_localret_ent(exception__builtin_catch_3_0,
+		exception__try_2_0_i6);
+MR_def_label(exception__try_2_0,6)
+	MR_MAYBE_INIT_LOCAL_THREAD_ENGINE_BASE
+	{
+	MR_Word	X;
+	MR_Word	Y;
+#define	MR_PROC_LABEL	mercury__exception__try_2_0
+	X = MR_r1;
+{
+#line 102 "builtin.opt"
+
+    Y = X;
+;}
+#line 3004 "exception.c"
+	MR_r1 = Y;
+#undef	MR_PROC_LABEL
+	}
+	MR_decr_sp_and_return(3);
+#ifdef MR_maybe_local_thread_engine_base
+	#undef MR_maybe_local_thread_engine_base
+	#define MR_maybe_local_thread_engine_base MR_thread_engine_base
+#endif
+MR_END_MODULE
+
+
+MR_BEGIN_MODULE(exception_module19)
+	MR_init_entry1(exception__try_2_1);
+	MR_INIT_PROC_LAYOUT_ADDR(mercury__exception__try_2_1);
+	MR_init_label2(exception__try_2_1,2,6)
+MR_BEGIN_CODE
+
+/*-------------------------------------------------------------------------*/
+/* code for 'try'/2 mode 1 */
+#ifdef MR_maybe_local_thread_engine_base
+	#undef MR_maybe_local_thread_engine_base
+	#define MR_maybe_local_thread_engine_base MR_local_thread_engine_base
+#endif
+MR_define_entry(mercury__exception__try_2_1);
+	MR_MAYBE_INIT_LOCAL_THREAD_ENGINE_BASE
+	MR_incr_sp(3);
+	MR_sv(3) = (MR_Word) MR_succip;
+	MR_sv(1) = MR_r2;
+	MR_sv(2) = MR_r1;
+	MR_np_call_localret_ent(f_101_120_99_101_112_116_105_111_110_95_95_85_110_117_115_101_100_65_114_103_115_95_95_112_114_101_100_95_95_103_101_116_95_100_101_116_101_114_109_105_110_105_115_109_95_95_91_49_44_32_50_93_95_49_2_1,
+		exception__try_2_1_i2);
+MR_def_label(exception__try_2_1,2)
+	MR_MAYBE_INIT_LOCAL_THREAD_ENGINE_BASE
+	MR_tag_alloc_heap(MR_r2, 0, (MR_Integer) 5);
+	MR_tfield(0, MR_r2, 0) = (MR_Word) MR_COMMON(3,2);
+	MR_tfield(0, MR_r2, 1) = (MR_Word) MR_ENTRY_AP(exception__wrap_success_or_failure_2_1);
+	MR_tfield(0, MR_r2, 2) = (MR_Integer) 2;
+	{
+	MR_Word MR_tempr1, MR_tempr2;
+	MR_tempr2 = MR_sv(2);
+	MR_tfield(0, MR_r2, 3) = MR_tempr2;
+	MR_tfield(0, MR_r2, 4) = MR_sv(1);
+	MR_tag_alloc_heap(MR_tempr1, 0, (MR_Integer) 4);
+	MR_r3 = MR_tempr1;
+	MR_tfield(0, MR_tempr1, 0) = (MR_Word) MR_COMMON(3,3);
+	MR_tfield(0, MR_tempr1, 1) = (MR_Word) MR_ENTRY_AP(exception__wrap_exception_2_0);
+	MR_tfield(0, MR_tempr1, 2) = (MR_Integer) 1;
+	MR_tfield(0, MR_tempr1, 3) = MR_tempr2;
+	MR_tag_alloc_heap(MR_r1, 0, (MR_Integer) 2);
+	MR_tfield(0, MR_r1, 0) = (MR_Word) MR_CTOR1_ADDR(exception, exception_result);
+	MR_tfield(0, MR_r1, 1) = MR_tempr2;
+	}
+	MR_np_call_localret_ent(exception__builtin_catch_3_0,
+		exception__try_2_1_i6);
+MR_def_label(exception__try_2_1,6)
+	MR_MAYBE_INIT_LOCAL_THREAD_ENGINE_BASE
+	{
+	MR_Word	X;
+	MR_Word	Y;
+#define	MR_PROC_LABEL	mercury__exception__try_2_1
+	X = MR_r1;
+{
+#line 102 "builtin.opt"
+
+    Y = X;
+;}
+#line 3071 "exception.c"
+	MR_r1 = Y;
+#undef	MR_PROC_LABEL
+	}
+	MR_decr_sp_and_return(3);
+#ifdef MR_maybe_local_thread_engine_base
+	#undef MR_maybe_local_thread_engine_base
+	#define MR_maybe_local_thread_engine_base MR_thread_engine_base
+#endif
+MR_END_MODULE
+
+
+MR_BEGIN_MODULE(exception_module20)
+	MR_init_entry1(exception__try_2_2);
+	MR_INIT_PROC_LAYOUT_ADDR(mercury__exception__try_2_2);
+	MR_init_label1(exception__try_2_2,2)
+MR_BEGIN_CODE
+
+/*-------------------------------------------------------------------------*/
+/* code for 'try'/2 mode 2 */
+#ifdef MR_maybe_local_thread_engine_base
+	#undef MR_maybe_local_thread_engine_base
+	#define MR_maybe_local_thread_engine_base MR_local_thread_engine_base
+#endif
+MR_define_entry(mercury__exception__try_2_2);
+	MR_MAYBE_INIT_LOCAL_THREAD_ENGINE_BASE
+	MR_incr_sp(3);
+	MR_sv(3) = (MR_Word) MR_succip;
+	MR_sv(1) = MR_r2;
+	MR_sv(2) = MR_r1;
+	MR_np_call_localret_ent(f_101_120_99_101_112_116_105_111_110_95_95_85_110_117_115_101_100_65_114_103_115_95_95_112_114_101_100_95_95_103_101_116_95_100_101_116_101_114_109_105_110_105_115_109_95_95_91_49_44_32_50_93_95_52_2_4,
+		exception__try_2_2_i2);
+MR_def_label(exception__try_2_2,2)
+	MR_MAYBE_INIT_LOCAL_THREAD_ENGINE_BASE
+	MR_tag_alloc_heap(MR_r2, 0, (MR_Integer) 5);
+	MR_tfield(0, MR_r2, 0) = (MR_Word) MR_COMMON(3,4);
+	MR_tfield(0, MR_r2, 1) = (MR_Word) MR_ENTRY_AP(exception__wrap_success_or_failure_2_2);
+	MR_tfield(0, MR_r2, 2) = (MR_Integer) 2;
+	{
+	MR_Word MR_tempr1, MR_tempr2;
+	MR_tempr2 = MR_sv(2);
+	MR_tfield(0, MR_r2, 3) = MR_tempr2;
+	MR_tfield(0, MR_r2, 4) = MR_sv(1);
+	MR_tag_alloc_heap(MR_tempr1, 0, (MR_Integer) 4);
+	MR_r3 = MR_tempr1;
+	MR_tfield(0, MR_tempr1, 0) = (MR_Word) MR_COMMON(3,5);
+	MR_tfield(0, MR_tempr1, 1) = (MR_Word) MR_ENTRY_AP(exception__wrap_exception_2_0);
+	MR_tfield(0, MR_tempr1, 2) = (MR_Integer) 1;
+	MR_tfield(0, MR_tempr1, 3) = MR_tempr2;
+	MR_tag_alloc_heap(MR_r1, 0, (MR_Integer) 2);
+	MR_tfield(0, MR_r1, 0) = (MR_Word) MR_CTOR1_ADDR(exception, exception_result);
+	MR_tfield(0, MR_r1, 1) = MR_tempr2;
+	MR_succip_word = MR_sv(3);
+	MR_decr_sp(3);
+	MR_np_tailcall_ent(exception__builtin_catch_3_2);
+	}
+#ifdef MR_maybe_local_thread_engine_base
+	#undef MR_maybe_local_thread_engine_base
+	#define MR_maybe_local_thread_engine_base MR_thread_engine_base
+#endif
+MR_END_MODULE
+
+
+MR_BEGIN_MODULE(exception_module21)
+	MR_init_entry1(exception__try_2_3);
+	MR_INIT_PROC_LAYOUT_ADDR(mercury__exception__try_2_3);
+	MR_init_label1(exception__try_2_3,2)
+MR_BEGIN_CODE
+
+/*-------------------------------------------------------------------------*/
+/* code for 'try'/2 mode 3 */
+#ifdef MR_maybe_local_thread_engine_base
+	#undef MR_maybe_local_thread_engine_base
+	#define MR_maybe_local_thread_engine_base MR_local_thread_engine_base
+#endif
+MR_define_entry(mercury__exception__try_2_3);
+	MR_MAYBE_INIT_LOCAL_THREAD_ENGINE_BASE
+	MR_incr_sp(3);
+	MR_sv(3) = (MR_Word) MR_succip;
+	MR_sv(1) = MR_r2;
+	MR_sv(2) = MR_r1;
+	MR_np_call_localret_ent(f_101_120_99_101_112_116_105_111_110_95_95_85_110_117_115_101_100_65_114_103_115_95_95_112_114_101_100_95_95_103_101_116_95_100_101_116_101_114_109_105_110_105_115_109_95_95_91_49_44_32_50_93_95_53_2_5,
+		exception__try_2_3_i2);
+MR_def_label(exception__try_2_3,2)
+	MR_MAYBE_INIT_LOCAL_THREAD_ENGINE_BASE
+	MR_tag_alloc_heap(MR_r2, 0, (MR_Integer) 5);
+	MR_tfield(0, MR_r2, 0) = (MR_Word) MR_COMMON(3,6);
+	MR_tfield(0, MR_r2, 1) = (MR_Word) MR_ENTRY_AP(exception__wrap_success_or_failure_2_3);
+	MR_tfield(0, MR_r2, 2) = (MR_Integer) 2;
+	{
+	MR_Word MR_tempr1, MR_tempr2;
+	MR_tempr2 = MR_sv(2);
+	MR_tfield(0, MR_r2, 3) = MR_tempr2;
+	MR_tfield(0, MR_r2, 4) = MR_sv(1);
+	MR_tag_alloc_heap(MR_tempr1, 0, (MR_Integer) 4);
+	MR_r3 = MR_tempr1;
+	MR_tfield(0, MR_tempr1, 0) = (MR_Word) MR_COMMON(3,7);
+	MR_tfield(0, MR_tempr1, 1) = (MR_Word) MR_ENTRY_AP(exception__wrap_exception_2_0);
+	MR_tfield(0, MR_tempr1, 2) = (MR_Integer) 1;
+	MR_tfield(0, MR_tempr1, 3) = MR_tempr2;
+	MR_tag_alloc_heap(MR_r1, 0, (MR_Integer) 2);
+	MR_tfield(0, MR_r1, 0) = (MR_Word) MR_CTOR1_ADDR(exception, exception_result);
+	MR_tfield(0, MR_r1, 1) = MR_tempr2;
+	MR_succip_word = MR_sv(3);
+	MR_decr_sp(3);
+	MR_np_tailcall_ent(exception__builtin_catch_3_2);
+	}
+#ifdef MR_maybe_local_thread_engine_base
+	#undef MR_maybe_local_thread_engine_base
+	#define MR_maybe_local_thread_engine_base MR_thread_engine_base
+#endif
+MR_END_MODULE
+
+
+MR_BEGIN_MODULE(exception_module22)
+	MR_init_entry1(exception__try_io_det_5_0);
+	MR_INIT_PROC_LAYOUT_ADDR(mercury__exception__try_io_det_5_0);
+MR_BEGIN_CODE
+
+/*-------------------------------------------------------------------------*/
+/* code for 'try_io_det'/5 mode 0 */
+#ifdef MR_maybe_local_thread_engine_base
+	#undef MR_maybe_local_thread_engine_base
+	#define MR_maybe_local_thread_engine_base MR_local_thread_engine_base
+#endif
+MR_define_entry(mercury__exception__try_io_det_5_0);
+	MR_MAYBE_INIT_LOCAL_THREAD_ENGINE_BASE
+	MR_r2 = MR_r3;
+	MR_np_tailcall_ent(f_101_120_99_101_112_116_105_111_110_95_95_85_110_117_115_101_100_65_114_103_115_95_95_112_114_101_100_95_95_116_114_121_95_105_111_95_100_101_116_95_95_91_50_93_95_48_5_0);
+#ifdef MR_maybe_local_thread_engine_base
+	#undef MR_maybe_local_thread_engine_base
+	#define MR_maybe_local_thread_engine_base MR_thread_engine_base
+#endif
+MR_END_MODULE
+
+
+MR_BEGIN_MODULE(exception_module23)
+	MR_init_entry1(exception__try_io_det_5_1);
+	MR_INIT_PROC_LAYOUT_ADDR(mercury__exception__try_io_det_5_1);
+MR_BEGIN_CODE
+
+/*-------------------------------------------------------------------------*/
+/* code for 'try_io_det'/5 mode 1 */
+#ifdef MR_maybe_local_thread_engine_base
+	#undef MR_maybe_local_thread_engine_base
+	#define MR_maybe_local_thread_engine_base MR_local_thread_engine_base
+#endif
+MR_define_entry(mercury__exception__try_io_det_5_1);
+	MR_MAYBE_INIT_LOCAL_THREAD_ENGINE_BASE
+	MR_r2 = MR_r3;
+	MR_np_tailcall_ent(f_101_120_99_101_112_116_105_111_110_95_95_85_110_117_115_101_100_65_114_103_115_95_95_112_114_101_100_95_95_116_114_121_95_105_111_95_100_101_116_95_95_91_50_93_95_49_5_1);
+#ifdef MR_maybe_local_thread_engine_base
+	#undef MR_maybe_local_thread_engine_base
+	#define MR_maybe_local_thread_engine_base MR_thread_engine_base
+#endif
+MR_END_MODULE
+
+
+MR_BEGIN_MODULE(exception_module24)
+	MR_init_entry1(exception__get_determinism_2_2_0);
+	MR_INIT_PROC_LAYOUT_ADDR(mercury__exception__get_determinism_2_2_0);
+MR_BEGIN_CODE
+
+/*-------------------------------------------------------------------------*/
+/* code for 'get_determinism_2'/2 mode 0 */
+#ifdef MR_maybe_local_thread_engine_base
+	#undef MR_maybe_local_thread_engine_base
+	#define MR_maybe_local_thread_engine_base MR_local_thread_engine_base
+#endif
+MR_define_entry(mercury__exception__get_determinism_2_2_0);
+	MR_MAYBE_INIT_LOCAL_THREAD_ENGINE_BASE
+	MR_np_tailcall_ent(f_101_120_99_101_112_116_105_111_110_95_95_85_110_117_115_101_100_65_114_103_115_95_95_112_114_101_100_95_95_103_101_116_95_100_101_116_101_114_109_105_110_105_115_109_95_50_95_95_91_49_44_32_50_44_32_51_93_95_48_2_0);
+#ifdef MR_maybe_local_thread_engine_base
+	#undef MR_maybe_local_thread_engine_base
+	#define MR_maybe_local_thread_engine_base MR_thread_engine_base
+#endif
+MR_END_MODULE
+
+
+MR_BEGIN_MODULE(exception_module25)
+	MR_init_entry1(exception__get_determinism_2_2_1);
+	MR_INIT_PROC_LAYOUT_ADDR(mercury__exception__get_determinism_2_2_1);
+MR_BEGIN_CODE
+
+/*-------------------------------------------------------------------------*/
+/* code for 'get_determinism_2'/2 mode 1 */
+#ifdef MR_maybe_local_thread_engine_base
+	#undef MR_maybe_local_thread_engine_base
+	#define MR_maybe_local_thread_engine_base MR_local_thread_engine_base
+#endif
+MR_define_entry(mercury__exception__get_determinism_2_2_1);
+	MR_MAYBE_INIT_LOCAL_THREAD_ENGINE_BASE
+	MR_np_tailcall_ent(f_101_120_99_101_112_116_105_111_110_95_95_85_110_117_115_101_100_65_114_103_115_95_95_112_114_101_100_95_95_103_101_116_95_100_101_116_101_114_109_105_110_105_115_109_95_50_95_95_91_49_44_32_50_44_32_51_93_95_49_2_1);
+#ifdef MR_maybe_local_thread_engine_base
+	#undef MR_maybe_local_thread_engine_base
+	#define MR_maybe_local_thread_engine_base MR_thread_engine_base
+#endif
+MR_END_MODULE
+
+
+MR_BEGIN_MODULE(exception_module26)
+	MR_init_entry1(exception__try_io_4_0);
+	MR_INIT_PROC_LAYOUT_ADDR(mercury__exception__try_io_4_0);
+	MR_init_label1(exception__try_io_4_0,2)
+MR_BEGIN_CODE
+
+/*-------------------------------------------------------------------------*/
+/* code for 'try_io'/4 mode 0 */
+#ifdef MR_maybe_local_thread_engine_base
+	#undef MR_maybe_local_thread_engine_base
+	#define MR_maybe_local_thread_engine_base MR_local_thread_engine_base
+#endif
+MR_define_entry(mercury__exception__try_io_4_0);
+	MR_MAYBE_INIT_LOCAL_THREAD_ENGINE_BASE
+	MR_incr_sp(3);
+	MR_sv(3) = (MR_Word) MR_succip;
+	MR_sv(1) = MR_r2;
+	MR_sv(2) = MR_r1;
+	MR_np_call_localret_ent(f_101_120_99_101_112_116_105_111_110_95_95_85_110_117_115_101_100_65_114_103_115_95_95_112_114_101_100_95_95_103_101_116_95_100_101_116_101_114_109_105_110_105_115_109_95_50_95_95_91_49_44_32_50_44_32_51_93_95_48_2_0,
+		exception__try_io_4_0_i2);
+MR_def_label(exception__try_io_4_0,2)
+	MR_MAYBE_INIT_LOCAL_THREAD_ENGINE_BASE
+	MR_r1 = MR_sv(2);
+	MR_r2 = MR_sv(1);
+	MR_succip_word = MR_sv(3);
+	MR_decr_sp(3);
+	MR_np_tailcall_ent(f_101_120_99_101_112_116_105_111_110_95_95_85_110_117_115_101_100_65_114_103_115_95_95_112_114_101_100_95_95_116_114_121_95_105_111_95_100_101_116_95_95_91_50_93_95_48_5_0);
+#ifdef MR_maybe_local_thread_engine_base
+	#undef MR_maybe_local_thread_engine_base
+	#define MR_maybe_local_thread_engine_base MR_thread_engine_base
+#endif
+MR_END_MODULE
+
+
+MR_BEGIN_MODULE(exception_module27)
+	MR_init_entry1(exception__try_io_4_1);
+	MR_INIT_PROC_LAYOUT_ADDR(mercury__exception__try_io_4_1);
+	MR_init_label1(exception__try_io_4_1,2)
+MR_BEGIN_CODE
+
+/*-------------------------------------------------------------------------*/
+/* code for 'try_io'/4 mode 1 */
+#ifdef MR_maybe_local_thread_engine_base
+	#undef MR_maybe_local_thread_engine_base
+	#define MR_maybe_local_thread_engine_base MR_local_thread_engine_base
+#endif
+MR_define_entry(mercury__exception__try_io_4_1);
+	MR_MAYBE_INIT_LOCAL_THREAD_ENGINE_BASE
+	MR_incr_sp(3);
+	MR_sv(3) = (MR_Word) MR_succip;
+	MR_sv(1) = MR_r2;
+	MR_sv(2) = MR_r1;
+	MR_np_call_localret_ent(f_101_120_99_101_112_116_105_111_110_95_95_85_110_117_115_101_100_65_114_103_115_95_95_112_114_101_100_95_95_103_101_116_95_100_101_116_101_114_109_105_110_105_115_109_95_50_95_95_91_49_44_32_50_44_32_51_93_95_49_2_1,
+		exception__try_io_4_1_i2);
+MR_def_label(exception__try_io_4_1,2)
+	MR_MAYBE_INIT_LOCAL_THREAD_ENGINE_BASE
+	MR_r1 = MR_sv(2);
+	MR_r2 = MR_sv(1);
+	MR_succip_word = MR_sv(3);
+	MR_decr_sp(3);
+	MR_np_tailcall_ent(f_101_120_99_101_112_116_105_111_110_95_95_85_110_117_115_101_100_65_114_103_115_95_95_112_114_101_100_95_95_116_114_121_95_105_111_95_100_101_116_95_95_91_50_93_95_49_5_1);
+#ifdef MR_maybe_local_thread_engine_base
+	#undef MR_maybe_local_thread_engine_base
+	#define MR_maybe_local_thread_engine_base MR_thread_engine_base
+#endif
+MR_END_MODULE
+
+
+MR_BEGIN_MODULE(exception_module28)
+	MR_init_entry1(exception__handle_store_result_4_0);
+	MR_INIT_PROC_LAYOUT_ADDR(mercury__exception__handle_store_result_4_0);
+	MR_init_label1(exception__handle_store_result_4_0,3)
+MR_BEGIN_CODE
+
+/*-------------------------------------------------------------------------*/
+/* code for 'handle_store_result'/4 mode 0 */
+#ifdef MR_maybe_local_thread_engine_base
+	#undef MR_maybe_local_thread_engine_base
+	#define MR_maybe_local_thread_engine_base MR_local_thread_engine_base
+#endif
+MR_define_entry(mercury__exception__handle_store_result_4_0);
+	MR_MAYBE_INIT_LOCAL_THREAD_ENGINE_BASE
+	if (MR_PTAG_TESTR(MR_r3,2)) {
+		MR_GOTO_LAB(exception__handle_store_result_4_0_i3);
+	}
+	{
+	MR_Word MR_tempr1, MR_tempr2;
+	MR_tempr1 = MR_tfield(2, MR_r3, 0);
+	{
+	MR_Word	TypeInfo_for_T;
+	MR_Word	Value;
+	MR_Word	Copy;
+#define	MR_PROC_LABEL	mercury__exception__handle_store_result_4_0
+	TypeInfo_for_T = (MR_Word) MR_CTOR0_ADDR(univ, univ);
+	Value = MR_tempr1;
+{
+#line 55 "builtin.opt"
+
+    MR_save_transient_registers();
+    Copy = MR_deep_copy(Value, (MR_TypeInfo) TypeInfo_for_T, NULL, NULL);
+    MR_restore_transient_registers();
+;}
+#line 3373 "exception.c"
+	MR_tempr2 = Copy;
+#undef	MR_PROC_LABEL
+	}
+	MR_tag_alloc_heap(MR_r1, 2, (MR_Integer) 1);
+	MR_tfield(2, MR_r1, 0) = MR_tempr2;
+	MR_proceed();
+	}
+MR_def_label(exception__handle_store_result_4_0,3)
+	MR_MAYBE_INIT_LOCAL_THREAD_ENGINE_BASE
+	MR_tag_alloc_heap(MR_r1, 1, (MR_Integer) 1);
+	{
+	MR_Word MR_tempr1;
+	MR_tempr1 = MR_tfield(1, MR_r3, 0);
+	MR_tfield(1, MR_r1, 0) = MR_tfield(0, MR_tempr1, 0);
+	MR_proceed();
+	}
+#ifdef MR_maybe_local_thread_engine_base
+	#undef MR_maybe_local_thread_engine_base
+	#define MR_maybe_local_thread_engine_base MR_thread_engine_base
+#endif
+MR_END_MODULE
+
+
+MR_BEGIN_MODULE(exception_module29)
+	MR_init_entry1(exception__try_store_det_5_0);
+	MR_INIT_PROC_LAYOUT_ADDR(mercury__exception__try_store_det_5_0);
+MR_BEGIN_CODE
+
+/*-------------------------------------------------------------------------*/
+/* code for 'try_store_det'/5 mode 0 */
+#ifdef MR_maybe_local_thread_engine_base
+	#undef MR_maybe_local_thread_engine_base
+	#define MR_maybe_local_thread_engine_base MR_local_thread_engine_base
+#endif
+MR_define_entry(mercury__exception__try_store_det_5_0);
+	MR_MAYBE_INIT_LOCAL_THREAD_ENGINE_BASE
+	MR_r3 = MR_r4;
+	MR_np_tailcall_ent(f_101_120_99_101_112_116_105_111_110_95_95_85_110_117_115_101_100_65_114_103_115_95_95_112_114_101_100_95_95_116_114_121_95_115_116_111_114_101_95_100_101_116_95_95_91_51_93_95_48_5_0);
+#ifdef MR_maybe_local_thread_engine_base
+	#undef MR_maybe_local_thread_engine_base
+	#define MR_maybe_local_thread_engine_base MR_thread_engine_base
+#endif
+MR_END_MODULE
+
+
+MR_BEGIN_MODULE(exception_module30)
+	MR_init_entry1(exception__try_store_det_5_1);
+	MR_INIT_PROC_LAYOUT_ADDR(mercury__exception__try_store_det_5_1);
+MR_BEGIN_CODE
+
+/*-------------------------------------------------------------------------*/
+/* code for 'try_store_det'/5 mode 1 */
+#ifdef MR_maybe_local_thread_engine_base
+	#undef MR_maybe_local_thread_engine_base
+	#define MR_maybe_local_thread_engine_base MR_local_thread_engine_base
+#endif
+MR_define_entry(mercury__exception__try_store_det_5_1);
+	MR_MAYBE_INIT_LOCAL_THREAD_ENGINE_BASE
+	MR_r3 = MR_r4;
+	MR_np_tailcall_ent(f_101_120_99_101_112_116_105_111_110_95_95_85_110_117_115_101_100_65_114_103_115_95_95_112_114_101_100_95_95_116_114_121_95_115_116_111_114_101_95_100_101_116_95_95_91_51_93_95_49_5_1);
+#ifdef MR_maybe_local_thread_engine_base
+	#undef MR_maybe_local_thread_engine_base
+	#define MR_maybe_local_thread_engine_base MR_thread_engine_base
+#endif
+MR_END_MODULE
+
+
+MR_BEGIN_MODULE(exception_module31)
+	MR_init_entry1(exception__try_store_4_0);
+	MR_INIT_PROC_LAYOUT_ADDR(mercury__exception__try_store_4_0);
+	MR_init_label1(exception__try_store_4_0,2)
+MR_BEGIN_CODE
+
+/*-------------------------------------------------------------------------*/
+/* code for 'try_store'/4 mode 0 */
+#ifdef MR_maybe_local_thread_engine_base
+	#undef MR_maybe_local_thread_engine_base
+	#define MR_maybe_local_thread_engine_base MR_local_thread_engine_base
+#endif
+MR_define_entry(mercury__exception__try_store_4_0);
+	MR_MAYBE_INIT_LOCAL_THREAD_ENGINE_BASE
+	MR_incr_sp(4);
+	MR_sv(4) = (MR_Word) MR_succip;
+	MR_sv(1) = MR_r3;
+	MR_sv(2) = MR_r1;
+	MR_sv(3) = MR_r2;
+	MR_np_call_localret_ent(f_101_120_99_101_112_116_105_111_110_95_95_85_110_117_115_101_100_65_114_103_115_95_95_112_114_101_100_95_95_103_101_116_95_100_101_116_101_114_109_105_110_105_115_109_95_50_95_95_91_49_44_32_50_44_32_51_93_95_48_2_0,
+		exception__try_store_4_0_i2);
+MR_def_label(exception__try_store_4_0,2)
+	MR_MAYBE_INIT_LOCAL_THREAD_ENGINE_BASE
+	MR_r1 = MR_sv(2);
+	MR_r2 = MR_sv(3);
+	MR_r3 = MR_sv(1);
+	MR_succip_word = MR_sv(4);
+	MR_decr_sp(4);
+	MR_np_tailcall_ent(f_101_120_99_101_112_116_105_111_110_95_95_85_110_117_115_101_100_65_114_103_115_95_95_112_114_101_100_95_95_116_114_121_95_115_116_111_114_101_95_100_101_116_95_95_91_51_93_95_48_5_0);
+#ifdef MR_maybe_local_thread_engine_base
+	#undef MR_maybe_local_thread_engine_base
+	#define MR_maybe_local_thread_engine_base MR_thread_engine_base
+#endif
+MR_END_MODULE
+
+
+MR_BEGIN_MODULE(exception_module32)
+	MR_init_entry1(exception__try_store_4_1);
+	MR_INIT_PROC_LAYOUT_ADDR(mercury__exception__try_store_4_1);
+	MR_init_label1(exception__try_store_4_1,2)
+MR_BEGIN_CODE
+
+/*-------------------------------------------------------------------------*/
+/* code for 'try_store'/4 mode 1 */
+#ifdef MR_maybe_local_thread_engine_base
+	#undef MR_maybe_local_thread_engine_base
+	#define MR_maybe_local_thread_engine_base MR_local_thread_engine_base
+#endif
+MR_define_entry(mercury__exception__try_store_4_1);
+	MR_MAYBE_INIT_LOCAL_THREAD_ENGINE_BASE
+	MR_incr_sp(4);
+	MR_sv(4) = (MR_Word) MR_succip;
+	MR_sv(1) = MR_r3;
+	MR_sv(2) = MR_r1;
+	MR_sv(3) = MR_r2;
+	MR_np_call_localret_ent(f_101_120_99_101_112_116_105_111_110_95_95_85_110_117_115_101_100_65_114_103_115_95_95_112_114_101_100_95_95_103_101_116_95_100_101_116_101_114_109_105_110_105_115_109_95_50_95_95_91_49_44_32_50_44_32_51_93_95_49_2_1,
+		exception__try_store_4_1_i2);
+MR_def_label(exception__try_store_4_1,2)
+	MR_MAYBE_INIT_LOCAL_THREAD_ENGINE_BASE
+	MR_r1 = MR_sv(2);
+	MR_r2 = MR_sv(3);
+	MR_r3 = MR_sv(1);
+	MR_succip_word = MR_sv(4);
+	MR_decr_sp(4);
+	MR_np_tailcall_ent(f_101_120_99_101_112_116_105_111_110_95_95_85_110_117_115_101_100_65_114_103_115_95_95_112_114_101_100_95_95_116_114_121_95_115_116_111_114_101_95_100_101_116_95_95_91_51_93_95_49_5_1);
+#ifdef MR_maybe_local_thread_engine_base
+	#undef MR_maybe_local_thread_engine_base
+	#define MR_maybe_local_thread_engine_base MR_thread_engine_base
+#endif
+MR_END_MODULE
+
+
+MR_BEGIN_MODULE(exception_module33)
+	MR_init_entry1(exception__try_all_det_4_0);
+	MR_INIT_PROC_LAYOUT_ADDR(mercury__exception__try_all_det_4_0);
+MR_BEGIN_CODE
+
+/*-------------------------------------------------------------------------*/
+/* code for 'try_all_det'/4 mode 0 */
+#ifdef MR_maybe_local_thread_engine_base
+	#undef MR_maybe_local_thread_engine_base
+	#define MR_maybe_local_thread_engine_base MR_local_thread_engine_base
+#endif
+MR_define_entry(mercury__exception__try_all_det_4_0);
+	MR_MAYBE_INIT_LOCAL_THREAD_ENGINE_BASE
+	MR_r2 = MR_r3;
+	MR_np_tailcall_ent(f_101_120_99_101_112_116_105_111_110_95_95_85_110_117_115_101_100_65_114_103_115_95_95_112_114_101_100_95_95_116_114_121_95_97_108_108_95_100_101_116_95_95_91_50_93_95_48_4_0);
+#ifdef MR_maybe_local_thread_engine_base
+	#undef MR_maybe_local_thread_engine_base
+	#define MR_maybe_local_thread_engine_base MR_thread_engine_base
+#endif
+MR_END_MODULE
+
+
+MR_BEGIN_MODULE(exception_module34)
+	MR_init_entry1(exception__try_all_det_4_1);
+	MR_INIT_PROC_LAYOUT_ADDR(mercury__exception__try_all_det_4_1);
+MR_BEGIN_CODE
+
+/*-------------------------------------------------------------------------*/
+/* code for 'try_all_det'/4 mode 1 */
+#ifdef MR_maybe_local_thread_engine_base
+	#undef MR_maybe_local_thread_engine_base
+	#define MR_maybe_local_thread_engine_base MR_local_thread_engine_base
+#endif
+MR_define_entry(mercury__exception__try_all_det_4_1);
+	MR_MAYBE_INIT_LOCAL_THREAD_ENGINE_BASE
+	MR_r2 = MR_r3;
+	MR_np_tailcall_ent(f_101_120_99_101_112_116_105_111_110_95_95_85_110_117_115_101_100_65_114_103_115_95_95_112_114_101_100_95_95_116_114_121_95_97_108_108_95_100_101_116_95_95_91_50_93_95_49_4_1);
+#ifdef MR_maybe_local_thread_engine_base
+	#undef MR_maybe_local_thread_engine_base
+	#define MR_maybe_local_thread_engine_base MR_thread_engine_base
+#endif
+MR_END_MODULE
+
+
+MR_BEGIN_MODULE(exception_module35)
+	MR_init_entry1(exception__try_all_det_4_2);
+	MR_INIT_PROC_LAYOUT_ADDR(mercury__exception__try_all_det_4_2);
+MR_BEGIN_CODE
+
+/*-------------------------------------------------------------------------*/
+/* code for 'try_all_det'/4 mode 2 */
+#ifdef MR_maybe_local_thread_engine_base
+	#undef MR_maybe_local_thread_engine_base
+	#define MR_maybe_local_thread_engine_base MR_local_thread_engine_base
+#endif
+MR_define_entry(mercury__exception__try_all_det_4_2);
+	MR_MAYBE_INIT_LOCAL_THREAD_ENGINE_BASE
+	MR_r2 = MR_r3;
+	MR_np_tailcall_ent(f_101_120_99_101_112_116_105_111_110_95_95_85_110_117_115_101_100_65_114_103_115_95_95_112_114_101_100_95_95_116_114_121_95_97_108_108_95_100_101_116_95_95_91_50_93_95_50_4_2);
+#ifdef MR_maybe_local_thread_engine_base
+	#undef MR_maybe_local_thread_engine_base
+	#define MR_maybe_local_thread_engine_base MR_thread_engine_base
+#endif
+MR_END_MODULE
+
+
+MR_BEGIN_MODULE(exception_module36)
+	MR_init_entry1(exception__try_all_det_4_3);
+	MR_INIT_PROC_LAYOUT_ADDR(mercury__exception__try_all_det_4_3);
+MR_BEGIN_CODE
+
+/*-------------------------------------------------------------------------*/
+/* code for 'try_all_det'/4 mode 3 */
+#ifdef MR_maybe_local_thread_engine_base
+	#undef MR_maybe_local_thread_engine_base
+	#define MR_maybe_local_thread_engine_base MR_local_thread_engine_base
+#endif
+MR_define_entry(mercury__exception__try_all_det_4_3);
+	MR_MAYBE_INIT_LOCAL_THREAD_ENGINE_BASE
+	MR_r2 = MR_r3;
+	MR_np_tailcall_ent(f_101_120_99_101_112_116_105_111_110_95_95_85_110_117_115_101_100_65_114_103_115_95_95_112_114_101_100_95_95_116_114_121_95_97_108_108_95_100_101_116_95_95_91_50_93_95_51_4_3);
+#ifdef MR_maybe_local_thread_engine_base
+	#undef MR_maybe_local_thread_engine_base
+	#define MR_maybe_local_thread_engine_base MR_thread_engine_base
+#endif
+MR_END_MODULE
+
+
+MR_BEGIN_MODULE(exception_module37)
+	MR_init_entry1(exception__try_all_3_0);
+	MR_INIT_PROC_LAYOUT_ADDR(mercury__exception__try_all_3_0);
+	MR_init_label1(exception__try_all_3_0,2)
+MR_BEGIN_CODE
+
+/*-------------------------------------------------------------------------*/
+/* code for 'try_all'/3 mode 0 */
+#ifdef MR_maybe_local_thread_engine_base
+	#undef MR_maybe_local_thread_engine_base
+	#define MR_maybe_local_thread_engine_base MR_local_thread_engine_base
+#endif
+MR_define_entry(mercury__exception__try_all_3_0);
+	MR_MAYBE_INIT_LOCAL_THREAD_ENGINE_BASE
+	MR_incr_sp(3);
+	MR_sv(3) = (MR_Word) MR_succip;
+	MR_sv(1) = MR_r2;
+	MR_sv(2) = MR_r1;
+	MR_np_call_localret_ent(f_101_120_99_101_112_116_105_111_110_95_95_85_110_117_115_101_100_65_114_103_115_95_95_112_114_101_100_95_95_103_101_116_95_100_101_116_101_114_109_105_110_105_115_109_95_95_91_49_44_32_50_93_95_48_2_0,
+		exception__try_all_3_0_i2);
+MR_def_label(exception__try_all_3_0,2)
+	MR_MAYBE_INIT_LOCAL_THREAD_ENGINE_BASE
+	MR_r1 = MR_sv(2);
+	MR_r2 = MR_sv(1);
+	MR_succip_word = MR_sv(3);
+	MR_decr_sp(3);
+	MR_np_tailcall_ent(f_101_120_99_101_112_116_105_111_110_95_95_85_110_117_115_101_100_65_114_103_115_95_95_112_114_101_100_95_95_116_114_121_95_97_108_108_95_100_101_116_95_95_91_50_93_95_48_4_0);
+#ifdef MR_maybe_local_thread_engine_base
+	#undef MR_maybe_local_thread_engine_base
+	#define MR_maybe_local_thread_engine_base MR_thread_engine_base
+#endif
+MR_END_MODULE
+
+
+MR_BEGIN_MODULE(exception_module38)
+	MR_init_entry1(exception__try_all_3_1);
+	MR_INIT_PROC_LAYOUT_ADDR(mercury__exception__try_all_3_1);
+	MR_init_label1(exception__try_all_3_1,2)
+MR_BEGIN_CODE
+
+/*-------------------------------------------------------------------------*/
+/* code for 'try_all'/3 mode 1 */
+#ifdef MR_maybe_local_thread_engine_base
+	#undef MR_maybe_local_thread_engine_base
+	#define MR_maybe_local_thread_engine_base MR_local_thread_engine_base
+#endif
+MR_define_entry(mercury__exception__try_all_3_1);
+	MR_MAYBE_INIT_LOCAL_THREAD_ENGINE_BASE
+	MR_incr_sp(3);
+	MR_sv(3) = (MR_Word) MR_succip;
+	MR_sv(1) = MR_r2;
+	MR_sv(2) = MR_r1;
+	MR_np_call_localret_ent(f_101_120_99_101_112_116_105_111_110_95_95_85_110_117_115_101_100_65_114_103_115_95_95_112_114_101_100_95_95_103_101_116_95_100_101_116_101_114_109_105_110_105_115_109_95_95_91_49_44_32_50_93_95_49_2_1,
+		exception__try_all_3_1_i2);
+MR_def_label(exception__try_all_3_1,2)
+	MR_MAYBE_INIT_LOCAL_THREAD_ENGINE_BASE
+	MR_r1 = MR_sv(2);
+	MR_r2 = MR_sv(1);
+	MR_succip_word = MR_sv(3);
+	MR_decr_sp(3);
+	MR_np_tailcall_ent(f_101_120_99_101_112_116_105_111_110_95_95_85_110_117_115_101_100_65_114_103_115_95_95_112_114_101_100_95_95_116_114_121_95_97_108_108_95_100_101_116_95_95_91_50_93_95_49_4_1);
+#ifdef MR_maybe_local_thread_engine_base
+	#undef MR_maybe_local_thread_engine_base
+	#define MR_maybe_local_thread_engine_base MR_thread_engine_base
+#endif
+MR_END_MODULE
+
+
+MR_BEGIN_MODULE(exception_module39)
+	MR_init_entry1(exception__try_all_3_2);
+	MR_INIT_PROC_LAYOUT_ADDR(mercury__exception__try_all_3_2);
+	MR_init_label1(exception__try_all_3_2,2)
+MR_BEGIN_CODE
+
+/*-------------------------------------------------------------------------*/
+/* code for 'try_all'/3 mode 2 */
+#ifdef MR_maybe_local_thread_engine_base
+	#undef MR_maybe_local_thread_engine_base
+	#define MR_maybe_local_thread_engine_base MR_local_thread_engine_base
+#endif
+MR_define_entry(mercury__exception__try_all_3_2);
+	MR_MAYBE_INIT_LOCAL_THREAD_ENGINE_BASE
+	MR_incr_sp(3);
+	MR_sv(3) = (MR_Word) MR_succip;
+	MR_sv(1) = MR_r2;
+	MR_sv(2) = MR_r1;
+	MR_np_call_localret_ent(f_101_120_99_101_112_116_105_111_110_95_95_85_110_117_115_101_100_65_114_103_115_95_95_112_114_101_100_95_95_103_101_116_95_100_101_116_101_114_109_105_110_105_115_109_95_95_91_49_44_32_50_93_95_50_2_2,
+		exception__try_all_3_2_i2);
+MR_def_label(exception__try_all_3_2,2)
+	MR_MAYBE_INIT_LOCAL_THREAD_ENGINE_BASE
+	MR_r1 = MR_sv(2);
+	MR_r2 = MR_sv(1);
+	MR_succip_word = MR_sv(3);
+	MR_decr_sp(3);
+	MR_np_tailcall_ent(f_101_120_99_101_112_116_105_111_110_95_95_85_110_117_115_101_100_65_114_103_115_95_95_112_114_101_100_95_95_116_114_121_95_97_108_108_95_100_101_116_95_95_91_50_93_95_50_4_2);
+#ifdef MR_maybe_local_thread_engine_base
+	#undef MR_maybe_local_thread_engine_base
+	#define MR_maybe_local_thread_engine_base MR_thread_engine_base
+#endif
+MR_END_MODULE
+
+
+MR_BEGIN_MODULE(exception_module40)
+	MR_init_entry1(exception__try_all_3_3);
+	MR_INIT_PROC_LAYOUT_ADDR(mercury__exception__try_all_3_3);
+	MR_init_label1(exception__try_all_3_3,2)
+MR_BEGIN_CODE
+
+/*-------------------------------------------------------------------------*/
+/* code for 'try_all'/3 mode 3 */
+#ifdef MR_maybe_local_thread_engine_base
+	#undef MR_maybe_local_thread_engine_base
+	#define MR_maybe_local_thread_engine_base MR_local_thread_engine_base
+#endif
+MR_define_entry(mercury__exception__try_all_3_3);
+	MR_MAYBE_INIT_LOCAL_THREAD_ENGINE_BASE
+	MR_incr_sp(3);
+	MR_sv(3) = (MR_Word) MR_succip;
+	MR_sv(1) = MR_r2;
+	MR_sv(2) = MR_r1;
+	MR_np_call_localret_ent(f_101_120_99_101_112_116_105_111_110_95_95_85_110_117_115_101_100_65_114_103_115_95_95_112_114_101_100_95_95_103_101_116_95_100_101_116_101_114_109_105_110_105_115_109_95_95_91_49_44_32_50_93_95_51_2_3,
+		exception__try_all_3_3_i2);
+MR_def_label(exception__try_all_3_3,2)
+	MR_MAYBE_INIT_LOCAL_THREAD_ENGINE_BASE
+	MR_r1 = MR_sv(2);
+	MR_r2 = MR_sv(1);
+	MR_succip_word = MR_sv(3);
+	MR_decr_sp(3);
+	MR_np_tailcall_ent(f_101_120_99_101_112_116_105_111_110_95_95_85_110_117_115_101_100_65_114_103_115_95_95_112_114_101_100_95_95_116_114_121_95_97_108_108_95_100_101_116_95_95_91_50_93_95_51_4_3);
+#ifdef MR_maybe_local_thread_engine_base
+	#undef MR_maybe_local_thread_engine_base
+	#define MR_maybe_local_thread_engine_base MR_thread_engine_base
+#endif
+MR_END_MODULE
+
+MR_decl_entry(solutions__builtin_aggregate_4_5);
+
+MR_BEGIN_MODULE(exception_module41)
+	MR_init_entry1(exception__incremental_try_all_4_0);
+	MR_INIT_PROC_LAYOUT_ADDR(mercury__exception__incremental_try_all_4_0);
+	MR_init_label1(exception__incremental_try_all_4_0,5)
+MR_BEGIN_CODE
+
+/*-------------------------------------------------------------------------*/
+/* code for 'incremental_try_all'/4 mode 0 */
+#ifdef MR_maybe_local_thread_engine_base
+	#undef MR_maybe_local_thread_engine_base
+	#define MR_maybe_local_thread_engine_base MR_local_thread_engine_base
+#endif
+MR_define_entry(mercury__exception__incremental_try_all_4_0);
+	MR_MAYBE_INIT_LOCAL_THREAD_ENGINE_BASE
+	MR_incr_sp(1);
+	MR_sv(1) = (MR_Word) MR_succip;
+	{
+	MR_Word MR_tempr1, MR_tempr2, MR_tempr3;
+	MR_tag_alloc_heap(MR_tempr1, 0, (MR_Integer) 5);
+	MR_tfield(0, MR_tempr1, 0) = (MR_Word) MR_COMMON(3,8);
+	MR_tfield(0, MR_tempr1, 1) = (MR_Word) MR_ENTRY_AP(exception__wrap_success_2_3);
+	MR_tfield(0, MR_tempr1, 2) = (MR_Integer) 2;
+	MR_tfield(0, MR_tempr1, 3) = MR_r1;
+	MR_tfield(0, MR_tempr1, 4) = MR_r3;
+	MR_tag_alloc_heap(MR_tempr2, 0, (MR_Integer) 5);
+	MR_r3 = MR_tempr2;
+	MR_tfield(0, MR_tempr2, 0) = (MR_Word) MR_COMMON(3,9);
+	MR_tfield(0, MR_tempr2, 1) = (MR_Word) MR_ENTRY_AP(exception__IntroducedFrom__pred__incremental_try_all__613__1_3_0);
+	MR_tfield(0, MR_tempr2, 2) = (MR_Integer) 2;
+	MR_tfield(0, MR_tempr2, 3) = MR_r1;
+	MR_tfield(0, MR_tempr2, 4) = MR_tempr1;
+	MR_tag_alloc_heap(MR_tempr3, 0, (MR_Integer) 2);
+	MR_tfield(0, MR_tempr3, 0) = (MR_Word) MR_CTOR1_ADDR(exception, exception_result);
+	MR_tfield(0, MR_tempr3, 1) = MR_r1;
+	MR_r1 = MR_tempr3;
+	}
+	MR_np_call_localret_ent(solutions__builtin_aggregate_4_5,
+		exception__incremental_try_all_4_0_i5);
+MR_def_label(exception__incremental_try_all_4_0,5)
+	MR_MAYBE_INIT_LOCAL_THREAD_ENGINE_BASE
+	{
+	MR_Word	X;
+	MR_Word	Y;
+#define	MR_PROC_LABEL	mercury__exception__incremental_try_all_4_0
+	X = MR_r1;
+{
+#line 99 "builtin.opt"
+
+    Y = X;
+;}
+#line 3788 "exception.c"
+	MR_r1 = Y;
+#undef	MR_PROC_LABEL
+	}
+	MR_decr_sp_and_return(1);
+#ifdef MR_maybe_local_thread_engine_base
+	#undef MR_maybe_local_thread_engine_base
+	#define MR_maybe_local_thread_engine_base MR_thread_engine_base
+#endif
+MR_END_MODULE
+
+MR_decl_entry(solutions__builtin_aggregate_4_7);
+
+MR_BEGIN_MODULE(exception_module42)
+	MR_init_entry1(exception__incremental_try_all_4_1);
+	MR_INIT_PROC_LAYOUT_ADDR(mercury__exception__incremental_try_all_4_1);
+	MR_init_label1(exception__incremental_try_all_4_1,5)
+MR_BEGIN_CODE
+
+/*-------------------------------------------------------------------------*/
+/* code for 'incremental_try_all'/4 mode 1 */
+#ifdef MR_maybe_local_thread_engine_base
+	#undef MR_maybe_local_thread_engine_base
+	#define MR_maybe_local_thread_engine_base MR_local_thread_engine_base
+#endif
+MR_define_entry(mercury__exception__incremental_try_all_4_1);
+	MR_MAYBE_INIT_LOCAL_THREAD_ENGINE_BASE
+	MR_incr_sp(1);
+	MR_sv(1) = (MR_Word) MR_succip;
+	{
+	MR_Word MR_tempr1, MR_tempr2, MR_tempr3;
+	MR_tag_alloc_heap(MR_tempr1, 0, (MR_Integer) 5);
+	MR_tfield(0, MR_tempr1, 0) = (MR_Word) MR_COMMON(3,10);
+	MR_tfield(0, MR_tempr1, 1) = (MR_Word) MR_ENTRY_AP(exception__wrap_success_2_3);
+	MR_tfield(0, MR_tempr1, 2) = (MR_Integer) 2;
+	MR_tfield(0, MR_tempr1, 3) = MR_r1;
+	MR_tfield(0, MR_tempr1, 4) = MR_r3;
+	MR_tag_alloc_heap(MR_tempr2, 0, (MR_Integer) 5);
+	MR_r3 = MR_tempr2;
+	MR_tfield(0, MR_tempr2, 0) = (MR_Word) MR_COMMON(3,11);
+	MR_tfield(0, MR_tempr2, 1) = (MR_Word) MR_ENTRY_AP(exception__IntroducedFrom__pred__incremental_try_all__613__2_3_0);
+	MR_tfield(0, MR_tempr2, 2) = (MR_Integer) 2;
+	MR_tfield(0, MR_tempr2, 3) = MR_r1;
+	MR_tfield(0, MR_tempr2, 4) = MR_tempr1;
+	MR_tag_alloc_heap(MR_tempr3, 0, (MR_Integer) 2);
+	MR_tfield(0, MR_tempr3, 0) = (MR_Word) MR_CTOR1_ADDR(exception, exception_result);
+	MR_tfield(0, MR_tempr3, 1) = MR_r1;
+	MR_r1 = MR_tempr3;
+	}
+	MR_np_call_localret_ent(solutions__builtin_aggregate_4_7,
+		exception__incremental_try_all_4_1_i5);
+MR_def_label(exception__incremental_try_all_4_1,5)
+	MR_MAYBE_INIT_LOCAL_THREAD_ENGINE_BASE
+	{
+	MR_Word	X;
+	MR_Word	Y;
+#define	MR_PROC_LABEL	mercury__exception__incremental_try_all_4_1
+	X = MR_r1;
+{
+#line 102 "builtin.opt"
+
+    Y = X;
+;}
+#line 3851 "exception.c"
+	MR_r1 = Y;
+#undef	MR_PROC_LABEL
+	}
+	MR_decr_sp_and_return(1);
+#ifdef MR_maybe_local_thread_engine_base
+	#undef MR_maybe_local_thread_engine_base
+	#define MR_maybe_local_thread_engine_base MR_thread_engine_base
+#endif
+MR_END_MODULE
+
+
+MR_BEGIN_MODULE(exception_module43)
+	MR_init_entry1(exception__rethrow_1_0);
+	MR_INIT_PROC_LAYOUT_ADDR(mercury__exception__rethrow_1_0);
+MR_BEGIN_CODE
+
+/*-------------------------------------------------------------------------*/
+/* code for 'rethrow'/1 mode 0 */
+#ifdef MR_maybe_local_thread_engine_base
+	#undef MR_maybe_local_thread_engine_base
+	#define MR_maybe_local_thread_engine_base MR_local_thread_engine_base
+#endif
+MR_define_entry(mercury__exception__rethrow_1_0);
+	MR_MAYBE_INIT_LOCAL_THREAD_ENGINE_BASE
+	MR_r1 = MR_tfield(2, MR_r2, 0);
+	MR_np_tailcall_ent(exception__builtin_throw_1_0);
+#ifdef MR_maybe_local_thread_engine_base
+	#undef MR_maybe_local_thread_engine_base
+	#define MR_maybe_local_thread_engine_base MR_thread_engine_base
+#endif
+MR_END_MODULE
+
+
+MR_BEGIN_MODULE(exception_module44)
+	MR_init_entry1(fn__exception__rethrow_1_0);
+	MR_INIT_PROC_LAYOUT_ADDR(mercury__fn__exception__rethrow_1_0);
+MR_BEGIN_CODE
+
+/*-------------------------------------------------------------------------*/
+/* code for 'rethrow'/2 mode 0 */
+#ifdef MR_maybe_local_thread_engine_base
+	#undef MR_maybe_local_thread_engine_base
+	#define MR_maybe_local_thread_engine_base MR_local_thread_engine_base
+#endif
+MR_define_entry(mercury__fn__exception__rethrow_1_0);
+	MR_MAYBE_INIT_LOCAL_THREAD_ENGINE_BASE
+	MR_r2 = MR_r3;
+	MR_np_tailcall_ent(exception__rethrow_1_0);
+#ifdef MR_maybe_local_thread_engine_base
+	#undef MR_maybe_local_thread_engine_base
+	#define MR_maybe_local_thread_engine_base MR_thread_engine_base
+#endif
+MR_END_MODULE
+
+
+MR_BEGIN_MODULE(exception_module45)
+	MR_init_entry1(exception__use_1_0);
+	MR_INIT_PROC_LAYOUT_ADDR(mercury__exception__use_1_0);
+MR_BEGIN_CODE
+
+/*-------------------------------------------------------------------------*/
+/* code for 'use'/1 mode 0 */
+#ifdef MR_maybe_local_thread_engine_base
+	#undef MR_maybe_local_thread_engine_base
+	#define MR_maybe_local_thread_engine_base MR_local_thread_engine_base
+#endif
+MR_def_static(exception__use_1_0)
+	MR_MAYBE_INIT_LOCAL_THREAD_ENGINE_BASE
+	MR_r1 = MR_r2;
+	MR_np_tailcall_ent(f_101_120_99_101_112_116_105_111_110_95_95_85_110_117_115_101_100_65_114_103_115_95_95_112_114_101_100_95_95_117_115_101_95_95_91_49_93_95_48_1_0);
+#ifdef MR_maybe_local_thread_engine_base
+	#undef MR_maybe_local_thread_engine_base
+	#define MR_maybe_local_thread_engine_base MR_thread_engine_base
+#endif
+MR_END_MODULE
+
+MR_declare_entry(mercury__do_call_closure_1);
+
+MR_BEGIN_MODULE(exception_module46)
+	MR_init_entry1(exception__finally_2_6_0);
+	MR_INIT_PROC_LAYOUT_ADDR(mercury__exception__finally_2_6_0);
+	MR_init_label6(exception__finally_2_6_0,2,3,6,5,7,9)
+MR_BEGIN_CODE
+
+/*-------------------------------------------------------------------------*/
+/* code for 'finally_2'/6 mode 0 */
+#ifdef MR_maybe_local_thread_engine_base
+	#undef MR_maybe_local_thread_engine_base
+	#define MR_maybe_local_thread_engine_base MR_local_thread_engine_base
+#endif
+MR_define_entry(mercury__exception__finally_2_6_0);
+	MR_MAYBE_INIT_LOCAL_THREAD_ENGINE_BASE
+	MR_incr_sp(4);
+	MR_sv(4) = (MR_Word) MR_succip;
+	MR_sv(1) = MR_r2;
+	MR_sv(2) = MR_r3;
+	MR_sv(3) = MR_r1;
+	MR_np_call_localret_ent(f_101_120_99_101_112_116_105_111_110_95_95_85_110_117_115_101_100_65_114_103_115_95_95_112_114_101_100_95_95_103_101_116_95_100_101_116_101_114_109_105_110_105_115_109_95_50_95_95_91_49_44_32_50_44_32_51_93_95_48_2_0,
+		exception__finally_2_6_0_i2);
+MR_def_label(exception__finally_2_6_0,2)
+	MR_MAYBE_INIT_LOCAL_THREAD_ENGINE_BASE
+	MR_r1 = MR_sv(3);
+	MR_r2 = MR_sv(1);
+	MR_np_call_localret_ent(f_101_120_99_101_112_116_105_111_110_95_95_85_110_117_115_101_100_65_114_103_115_95_95_112_114_101_100_95_95_116_114_121_95_105_111_95_100_101_116_95_95_91_50_93_95_48_5_0,
+		exception__finally_2_6_0_i3);
+MR_def_label(exception__finally_2_6_0,3)
+	MR_MAYBE_INIT_LOCAL_THREAD_ENGINE_BASE
+	if (MR_PTAG_TESTR(MR_r1,1)) {
+		MR_GOTO_LAB(exception__finally_2_6_0_i5);
+	}
+	MR_sv(1) = MR_tfield(1, MR_r1, 0);
+	MR_r1 = MR_sv(2);
+	MR_set_prof_ho_caller_proc(MR_ENTRY_AP(exception__finally_2_6_0));
+	MR_noprof_call_localret(MR_ENTRY(mercury__do_call_closure_1),
+		mercury__exception__finally_2_6_0_i6);
+MR_def_label(exception__finally_2_6_0,6)
+	MR_MAYBE_INIT_LOCAL_THREAD_ENGINE_BASE
+	{
+	MR_Word MR_tempr1;
+	MR_tempr1 = MR_r1;
+	MR_r1 = MR_sv(1);
+	MR_r2 = MR_tempr1;
+	MR_decr_sp_and_return(4);
+	}
+MR_def_label(exception__finally_2_6_0,5)
+	MR_MAYBE_INIT_LOCAL_THREAD_ENGINE_BASE
+	MR_sv(1) = MR_r1;
+	MR_r1 = MR_sv(2);
+	MR_set_prof_ho_caller_proc(MR_ENTRY_AP(exception__finally_2_6_0));
+	MR_noprof_call_localret(MR_ENTRY(mercury__do_call_closure_1),
+		mercury__exception__finally_2_6_0_i7);
+MR_def_label(exception__finally_2_6_0,7)
+	MR_MAYBE_INIT_LOCAL_THREAD_ENGINE_BASE
+	{
+#define	MR_PROC_LABEL	mercury__exception__finally_2_6_0
+	MR_bool MercurySuccessIndicator;
+#undef SUCCESS_INDICATOR
+#define SUCCESS_INDICATOR MercurySuccessIndicator
+{
+#line 88 "builtin.opt"
+
+    SUCCESS_INDICATOR = MR_TRUE;
+;}
+#line 3995 "exception.c"
+if (!MercurySuccessIndicator) MR_GOTO_LAB(exception__finally_2_6_0_i9);
+#undef SUCCESS_INDICATOR
+#define SUCCESS_INDICATOR MR_r1
+#undef	MR_PROC_LABEL
+	}
+	{
+#define	MR_PROC_LABEL	mercury__exception__finally_2_6_0
+{
+#line 468 "exception.m"
+;;}
+#line 4006 "exception.c"
+#undef	MR_PROC_LABEL
+	}
+	MR_r1 = MR_sv(3);
+	MR_r2 = MR_sv(1);
+	MR_succip_word = MR_sv(4);
+	MR_decr_sp(4);
+	MR_np_tailcall_ent(exception__rethrow_1_0);
+MR_def_label(exception__finally_2_6_0,9)
+	MR_MAYBE_INIT_LOCAL_THREAD_ENGINE_BASE
+	MR_r1 = (MR_Word) MR_CTOR0_ADDR(exception, software_error);
+	MR_r2 = (MR_Word) MR_string_const("exception.finally_2", 19);
+	MR_succip_word = MR_sv(4);
+	MR_decr_sp(4);
+	MR_np_tailcall_ent(exception__throw_1_0);
+#ifdef MR_maybe_local_thread_engine_base
+	#undef MR_maybe_local_thread_engine_base
+	#define MR_maybe_local_thread_engine_base MR_thread_engine_base
+#endif
+MR_END_MODULE
+
+
+MR_BEGIN_MODULE(exception_module47)
+	MR_init_entry1(exception__finally_2_6_1);
+	MR_INIT_PROC_LAYOUT_ADDR(mercury__exception__finally_2_6_1);
+	MR_init_label6(exception__finally_2_6_1,2,3,6,5,7,9)
+MR_BEGIN_CODE
+
+/*-------------------------------------------------------------------------*/
+/* code for 'finally_2'/6 mode 1 */
+#ifdef MR_maybe_local_thread_engine_base
+	#undef MR_maybe_local_thread_engine_base
+	#define MR_maybe_local_thread_engine_base MR_local_thread_engine_base
+#endif
+MR_define_entry(mercury__exception__finally_2_6_1);
+	MR_MAYBE_INIT_LOCAL_THREAD_ENGINE_BASE
+	MR_incr_sp(4);
+	MR_sv(4) = (MR_Word) MR_succip;
+	MR_sv(1) = MR_r2;
+	MR_sv(2) = MR_r3;
+	MR_sv(3) = MR_r1;
+	MR_np_call_localret_ent(f_101_120_99_101_112_116_105_111_110_95_95_85_110_117_115_101_100_65_114_103_115_95_95_112_114_101_100_95_95_103_101_116_95_100_101_116_101_114_109_105_110_105_115_109_95_50_95_95_91_49_44_32_50_44_32_51_93_95_49_2_1,
+		exception__finally_2_6_1_i2);
+MR_def_label(exception__finally_2_6_1,2)
+	MR_MAYBE_INIT_LOCAL_THREAD_ENGINE_BASE
+	MR_r1 = MR_sv(3);
+	MR_r2 = MR_sv(1);
+	MR_np_call_localret_ent(f_101_120_99_101_112_116_105_111_110_95_95_85_110_117_115_101_100_65_114_103_115_95_95_112_114_101_100_95_95_116_114_121_95_105_111_95_100_101_116_95_95_91_50_93_95_49_5_1,
+		exception__finally_2_6_1_i3);
+MR_def_label(exception__finally_2_6_1,3)
+	MR_MAYBE_INIT_LOCAL_THREAD_ENGINE_BASE
+	if (MR_PTAG_TESTR(MR_r1,1)) {
+		MR_GOTO_LAB(exception__finally_2_6_1_i5);
+	}
+	MR_sv(1) = MR_tfield(1, MR_r1, 0);
+	MR_r1 = MR_sv(2);
+	MR_set_prof_ho_caller_proc(MR_ENTRY_AP(exception__finally_2_6_1));
+	MR_noprof_call_localret(MR_ENTRY(mercury__do_call_closure_1),
+		mercury__exception__finally_2_6_1_i6);
+MR_def_label(exception__finally_2_6_1,6)
+	MR_MAYBE_INIT_LOCAL_THREAD_ENGINE_BASE
+	{
+	MR_Word MR_tempr1;
+	MR_tempr1 = MR_r1;
+	MR_r1 = MR_sv(1);
+	MR_r2 = MR_tempr1;
+	MR_decr_sp_and_return(4);
+	}
+MR_def_label(exception__finally_2_6_1,5)
+	MR_MAYBE_INIT_LOCAL_THREAD_ENGINE_BASE
+	MR_sv(1) = MR_r1;
+	MR_r1 = MR_sv(2);
+	MR_set_prof_ho_caller_proc(MR_ENTRY_AP(exception__finally_2_6_1));
+	MR_noprof_call_localret(MR_ENTRY(mercury__do_call_closure_1),
+		mercury__exception__finally_2_6_1_i7);
+MR_def_label(exception__finally_2_6_1,7)
+	MR_MAYBE_INIT_LOCAL_THREAD_ENGINE_BASE
+	{
+#define	MR_PROC_LABEL	mercury__exception__finally_2_6_1
+	MR_bool MercurySuccessIndicator;
+#undef SUCCESS_INDICATOR
+#define SUCCESS_INDICATOR MercurySuccessIndicator
+{
+#line 88 "builtin.opt"
+
+    SUCCESS_INDICATOR = MR_TRUE;
+;}
+#line 4093 "exception.c"
+if (!MercurySuccessIndicator) MR_GOTO_LAB(exception__finally_2_6_1_i9);
+#undef SUCCESS_INDICATOR
+#define SUCCESS_INDICATOR MR_r1
+#undef	MR_PROC_LABEL
+	}
+	{
+#define	MR_PROC_LABEL	mercury__exception__finally_2_6_1
+{
+#line 468 "exception.m"
+;;}
+#line 4104 "exception.c"
+#undef	MR_PROC_LABEL
+	}
+	MR_r1 = MR_sv(3);
+	MR_r2 = MR_sv(1);
+	MR_succip_word = MR_sv(4);
+	MR_decr_sp(4);
+	MR_np_tailcall_ent(exception__rethrow_1_0);
+MR_def_label(exception__finally_2_6_1,9)
+	MR_MAYBE_INIT_LOCAL_THREAD_ENGINE_BASE
+	MR_r1 = (MR_Word) MR_CTOR0_ADDR(exception, software_error);
+	MR_r2 = (MR_Word) MR_string_const("exception.finally_2", 19);
+	MR_succip_word = MR_sv(4);
+	MR_decr_sp(4);
+	MR_np_tailcall_ent(exception__throw_1_0);
+#ifdef MR_maybe_local_thread_engine_base
+	#undef MR_maybe_local_thread_engine_base
+	#define MR_maybe_local_thread_engine_base MR_thread_engine_base
+#endif
+MR_END_MODULE
+
+
+MR_BEGIN_MODULE(exception_module48)
+	MR_init_entry1(exception__finally_6_0);
+	MR_INIT_PROC_LAYOUT_ADDR(mercury__exception__finally_6_0);
+MR_BEGIN_CODE
+
+/*-------------------------------------------------------------------------*/
+/* code for 'finally'/6 mode 0 */
+#ifdef MR_maybe_local_thread_engine_base
+	#undef MR_maybe_local_thread_engine_base
+	#define MR_maybe_local_thread_engine_base MR_local_thread_engine_base
+#endif
+MR_define_entry(mercury__exception__finally_6_0);
+	MR_MAYBE_INIT_LOCAL_THREAD_ENGINE_BASE
+	MR_np_tailcall_ent(exception__finally_2_6_0);
+#ifdef MR_maybe_local_thread_engine_base
+	#undef MR_maybe_local_thread_engine_base
+	#define MR_maybe_local_thread_engine_base MR_thread_engine_base
+#endif
+MR_END_MODULE
+
+
+MR_BEGIN_MODULE(exception_module49)
+	MR_init_entry1(exception__finally_6_1);
+	MR_INIT_PROC_LAYOUT_ADDR(mercury__exception__finally_6_1);
+MR_BEGIN_CODE
+
+/*-------------------------------------------------------------------------*/
+/* code for 'finally'/6 mode 1 */
+#ifdef MR_maybe_local_thread_engine_base
+	#undef MR_maybe_local_thread_engine_base
+	#define MR_maybe_local_thread_engine_base MR_local_thread_engine_base
+#endif
+MR_define_entry(mercury__exception__finally_6_1);
+	MR_MAYBE_INIT_LOCAL_THREAD_ENGINE_BASE
+	MR_np_tailcall_ent(exception__finally_2_6_1);
+#ifdef MR_maybe_local_thread_engine_base
+	#undef MR_maybe_local_thread_engine_base
+	#define MR_maybe_local_thread_engine_base MR_thread_engine_base
+#endif
+MR_END_MODULE
+
+
+MR_BEGIN_MODULE(exception_module50)
+	MR_init_entry1(exception__now_near_stack_limits_0_0);
+	MR_INIT_PROC_LAYOUT_ADDR(mercury__exception__now_near_stack_limits_0_0);
+	MR_init_label1(exception__now_near_stack_limits_0_0,1)
+MR_BEGIN_CODE
+
+/*-------------------------------------------------------------------------*/
+/* code for 'now_near_stack_limits'/0 mode 0 */
+#ifdef MR_maybe_local_thread_engine_base
+	#undef MR_maybe_local_thread_engine_base
+	#define MR_maybe_local_thread_engine_base MR_local_thread_engine_base
+#endif
+MR_def_static(exception__now_near_stack_limits_0_0)
+	MR_MAYBE_INIT_LOCAL_THREAD_ENGINE_BASE
+	{
+#define	MR_PROC_LABEL	mercury__exception__now_near_stack_limits_0_0
+	MR_bool MercurySuccessIndicator;
+#undef SUCCESS_INDICATOR
+#define SUCCESS_INDICATOR MercurySuccessIndicator
+	MR_OBTAIN_GLOBAL_LOCK("now_near_stack_limits");
+{
+#line 2900 "exception.m"
+
+#ifdef  MR_HIGHLEVEL_CODE
+    /*
+    ** In high level code grades, I don't know of any portable way
+    ** to check whether we are near the limits of the C stack.
+    */
+    SUCCESS_INDICATOR = MR_FALSE;
+#else
+    int slack = 1024;
+
+    if (((MR_maxfr + slack) <
+        MR_CONTEXT(MR_ctxt_nondetstack_zone)->MR_zone_top)
+    && ((MR_sp + slack) <
+        MR_CONTEXT(MR_ctxt_detstack_zone)->MR_zone_top))
+    {
+        SUCCESS_INDICATOR = MR_FALSE;
+    } else {
+        SUCCESS_INDICATOR = MR_TRUE;
+    }
+#endif
+;}
+#line 4211 "exception.c"
+	MR_RELEASE_GLOBAL_LOCK("now_near_stack_limits");
+if (!MercurySuccessIndicator) MR_GOTO_LAB(exception__now_near_stack_limits_0_0_i1);
+#undef SUCCESS_INDICATOR
+#define SUCCESS_INDICATOR MR_r1
+#undef	MR_PROC_LABEL
+	}
+	MR_r1 = MR_TRUE;
+	MR_proceed();
+MR_def_label(exception__now_near_stack_limits_0_0,1)
+	MR_MAYBE_INIT_LOCAL_THREAD_ENGINE_BASE
+	MR_r1 = MR_FALSE;
+	MR_proceed();
+#ifdef MR_maybe_local_thread_engine_base
+	#undef MR_maybe_local_thread_engine_base
+	#define MR_maybe_local_thread_engine_base MR_thread_engine_base
+#endif
+MR_END_MODULE
+
+
+MR_BEGIN_MODULE(exception_module51)
+	MR_init_entry1(exception__throw_if_near_stack_limits_0_0);
+	MR_INIT_PROC_LAYOUT_ADDR(mercury__exception__throw_if_near_stack_limits_0_0);
+	MR_init_label2(exception__throw_if_near_stack_limits_0_0,3,6)
+MR_BEGIN_CODE
+
+/*-------------------------------------------------------------------------*/
+/* code for 'throw_if_near_stack_limits'/0 mode 0 */
+#ifdef MR_maybe_local_thread_engine_base
+	#undef MR_maybe_local_thread_engine_base
+	#define MR_maybe_local_thread_engine_base MR_local_thread_engine_base
+#endif
+MR_define_entry(mercury__exception__throw_if_near_stack_limits_0_0);
+	MR_MAYBE_INIT_LOCAL_THREAD_ENGINE_BASE
+	MR_incr_sp(1);
+	MR_sv(1) = (MR_Word) MR_succip;
+	MR_np_call_localret_ent(exception__now_near_stack_limits_0_0,
+		exception__throw_if_near_stack_limits_0_0_i3);
+MR_def_label(exception__throw_if_near_stack_limits_0_0,3)
+	MR_MAYBE_INIT_LOCAL_THREAD_ENGINE_BASE
+	if (!(MR_r1)) {
+		MR_GOTO_LAB(exception__throw_if_near_stack_limits_0_0_i6);
+	}
+	MR_r1 = (MR_Word) MR_CTOR0_ADDR(exception, near_stack_limits);
+	MR_succip_word = MR_sv(1);
+	MR_decr_sp(1);
+	MR_np_tailcall_ent(exception__throw_1_0);
+MR_def_label(exception__throw_if_near_stack_limits_0_0,6)
+	MR_MAYBE_INIT_LOCAL_THREAD_ENGINE_BASE
+	MR_decr_sp_and_return(1);
+#ifdef MR_maybe_local_thread_engine_base
+	#undef MR_maybe_local_thread_engine_base
+	#define MR_maybe_local_thread_engine_base MR_thread_engine_base
+#endif
+MR_END_MODULE
+
+
+MR_BEGIN_MODULE(exception_module52)
+	MR_init_entry1(exception__handle_stm_result_4_0);
+	MR_INIT_PROC_LAYOUT_ADDR(mercury__exception__handle_stm_result_4_0);
+	MR_init_label1(exception__handle_stm_result_4_0,3)
+MR_BEGIN_CODE
+
+/*-------------------------------------------------------------------------*/
+/* code for 'handle_stm_result'/4 mode 0 */
+#ifdef MR_maybe_local_thread_engine_base
+	#undef MR_maybe_local_thread_engine_base
+	#define MR_maybe_local_thread_engine_base MR_local_thread_engine_base
+#endif
+MR_define_entry(mercury__exception__handle_stm_result_4_0);
+	MR_MAYBE_INIT_LOCAL_THREAD_ENGINE_BASE
+	if (MR_PTAG_TESTR(MR_r2,2)) {
+		MR_GOTO_LAB(exception__handle_stm_result_4_0_i3);
+	}
+	{
+	MR_Word MR_tempr1;
+	MR_tempr1 = MR_tfield(2, MR_r2, 0);
+	{
+	MR_Word	TypeInfo_for_T;
+	MR_Word	Value;
+	MR_Word	Copy;
+#define	MR_PROC_LABEL	mercury__exception__handle_stm_result_4_0
+	TypeInfo_for_T = (MR_Word) MR_CTOR0_ADDR(univ, univ);
+	Value = MR_tempr1;
+{
+#line 55 "builtin.opt"
+
+    MR_save_transient_registers();
+    Copy = MR_deep_copy(Value, (MR_TypeInfo) TypeInfo_for_T, NULL, NULL);
+    MR_restore_transient_registers();
+;}
+#line 4302 "exception.c"
+	MR_tempr1 = Copy;
+#undef	MR_PROC_LABEL
+	}
+	MR_tag_alloc_heap(MR_r1, 2, (MR_Integer) 1);
+	MR_tfield(2, MR_r1, 0) = MR_tempr1;
+	MR_r2 = MR_r3;
+	MR_proceed();
+	}
+MR_def_label(exception__handle_stm_result_4_0,3)
+	MR_MAYBE_INIT_LOCAL_THREAD_ENGINE_BASE
+	MR_tag_alloc_heap(MR_r1, 1, (MR_Integer) 1);
+	{
+	MR_Word MR_tempr1;
+	MR_tempr1 = MR_tfield(1, MR_r2, 0);
+	MR_tfield(1, MR_r1, 0) = MR_tfield(0, MR_tempr1, 0);
+	MR_r2 = MR_tfield(0, MR_tempr1, 1);
+	MR_proceed();
+	}
+#ifdef MR_maybe_local_thread_engine_base
+	#undef MR_maybe_local_thread_engine_base
+	#define MR_maybe_local_thread_engine_base MR_thread_engine_base
+#endif
+MR_END_MODULE
+
+
+MR_BEGIN_MODULE(exception_module53)
+	MR_init_entry1(exception__try_stm_det_5_0);
+	MR_INIT_PROC_LAYOUT_ADDR(mercury__exception__try_stm_det_5_0);
+MR_BEGIN_CODE
+
+/*-------------------------------------------------------------------------*/
+/* code for 'try_stm_det'/5 mode 0 */
+#ifdef MR_maybe_local_thread_engine_base
+	#undef MR_maybe_local_thread_engine_base
+	#define MR_maybe_local_thread_engine_base MR_local_thread_engine_base
+#endif
+MR_define_entry(mercury__exception__try_stm_det_5_0);
+	MR_MAYBE_INIT_LOCAL_THREAD_ENGINE_BASE
+	MR_r2 = MR_r3;
+	MR_r3 = MR_r4;
+	MR_np_tailcall_ent(f_101_120_99_101_112_116_105_111_110_95_95_85_110_117_115_101_100_65_114_103_115_95_95_112_114_101_100_95_95_116_114_121_95_115_116_109_95_100_101_116_95_95_91_50_93_95_48_5_0);
+#ifdef MR_maybe_local_thread_engine_base
+	#undef MR_maybe_local_thread_engine_base
+	#define MR_maybe_local_thread_engine_base MR_thread_engine_base
+#endif
+MR_END_MODULE
+
+
+MR_BEGIN_MODULE(exception_module54)
+	MR_init_entry1(exception__try_stm_cc_multi_5_0);
+	MR_INIT_PROC_LAYOUT_ADDR(mercury__exception__try_stm_cc_multi_5_0);
+MR_BEGIN_CODE
+
+/*-------------------------------------------------------------------------*/
+/* code for 'try_stm_cc_multi'/5 mode 0 */
+#ifdef MR_maybe_local_thread_engine_base
+	#undef MR_maybe_local_thread_engine_base
+	#define MR_maybe_local_thread_engine_base MR_local_thread_engine_base
+#endif
+MR_define_entry(mercury__exception__try_stm_cc_multi_5_0);
+	MR_MAYBE_INIT_LOCAL_THREAD_ENGINE_BASE
+	MR_r2 = MR_r3;
+	MR_r3 = MR_r4;
+	MR_np_tailcall_ent(f_101_120_99_101_112_116_105_111_110_95_95_85_110_117_115_101_100_65_114_103_115_95_95_112_114_101_100_95_95_116_114_121_95_115_116_109_95_99_99_95_109_117_108_116_105_95_95_91_50_93_95_48_5_0);
+#ifdef MR_maybe_local_thread_engine_base
+	#undef MR_maybe_local_thread_engine_base
+	#define MR_maybe_local_thread_engine_base MR_thread_engine_base
+#endif
+MR_END_MODULE
+
+
+MR_BEGIN_MODULE(exception_module55)
+	MR_init_entry1(exception__unsafe_try_stm_4_0);
+	MR_INIT_PROC_LAYOUT_ADDR(mercury__exception__unsafe_try_stm_4_0);
+	MR_init_label1(exception__unsafe_try_stm_4_0,2)
+MR_BEGIN_CODE
+
+/*-------------------------------------------------------------------------*/
+/* code for 'unsafe_try_stm'/4 mode 0 */
+#ifdef MR_maybe_local_thread_engine_base
+	#undef MR_maybe_local_thread_engine_base
+	#define MR_maybe_local_thread_engine_base MR_local_thread_engine_base
+#endif
+MR_define_entry(mercury__exception__unsafe_try_stm_4_0);
+	MR_MAYBE_INIT_LOCAL_THREAD_ENGINE_BASE
+	MR_incr_sp(4);
+	MR_sv(4) = (MR_Word) MR_succip;
+	MR_sv(1) = MR_r2;
+	MR_sv(2) = MR_r3;
+	MR_sv(3) = MR_r1;
+	MR_np_call_localret_ent(f_101_120_99_101_112_116_105_111_110_95_95_85_110_117_115_101_100_65_114_103_115_95_95_112_114_101_100_95_95_103_101_116_95_100_101_116_101_114_109_105_110_105_115_109_95_50_95_95_91_49_44_32_50_44_32_51_93_95_48_2_0,
+		exception__unsafe_try_stm_4_0_i2);
+MR_def_label(exception__unsafe_try_stm_4_0,2)
+	MR_MAYBE_INIT_LOCAL_THREAD_ENGINE_BASE
+	MR_r1 = MR_sv(3);
+	MR_r2 = MR_sv(1);
+	MR_r3 = MR_sv(2);
+	MR_succip_word = MR_sv(4);
+	MR_decr_sp(4);
+	MR_np_tailcall_ent(f_101_120_99_101_112_116_105_111_110_95_95_85_110_117_115_101_100_65_114_103_115_95_95_112_114_101_100_95_95_116_114_121_95_115_116_109_95_100_101_116_95_95_91_50_93_95_48_5_0);
+#ifdef MR_maybe_local_thread_engine_base
+	#undef MR_maybe_local_thread_engine_base
+	#define MR_maybe_local_thread_engine_base MR_thread_engine_base
+#endif
+MR_END_MODULE
+
+
+MR_BEGIN_MODULE(exception_module56)
+	MR_init_entry1(exception__unsafe_try_stm_4_1);
+	MR_INIT_PROC_LAYOUT_ADDR(mercury__exception__unsafe_try_stm_4_1);
+	MR_init_label1(exception__unsafe_try_stm_4_1,2)
+MR_BEGIN_CODE
+
+/*-------------------------------------------------------------------------*/
+/* code for 'unsafe_try_stm'/4 mode 1 */
+#ifdef MR_maybe_local_thread_engine_base
+	#undef MR_maybe_local_thread_engine_base
+	#define MR_maybe_local_thread_engine_base MR_local_thread_engine_base
+#endif
+MR_define_entry(mercury__exception__unsafe_try_stm_4_1);
+	MR_MAYBE_INIT_LOCAL_THREAD_ENGINE_BASE
+	MR_incr_sp(4);
+	MR_sv(4) = (MR_Word) MR_succip;
+	MR_sv(1) = MR_r2;
+	MR_sv(2) = MR_r3;
+	MR_sv(3) = MR_r1;
+	MR_np_call_localret_ent(f_101_120_99_101_112_116_105_111_110_95_95_85_110_117_115_101_100_65_114_103_115_95_95_112_114_101_100_95_95_103_101_116_95_100_101_116_101_114_109_105_110_105_115_109_95_50_95_95_91_49_44_32_50_44_32_51_93_95_49_2_1,
+		exception__unsafe_try_stm_4_1_i2);
+MR_def_label(exception__unsafe_try_stm_4_1,2)
+	MR_MAYBE_INIT_LOCAL_THREAD_ENGINE_BASE
+	MR_r1 = MR_sv(3);
+	MR_r2 = MR_sv(1);
+	MR_r3 = MR_sv(2);
+	MR_succip_word = MR_sv(4);
+	MR_decr_sp(4);
+	MR_np_tailcall_ent(f_101_120_99_101_112_116_105_111_110_95_95_85_110_117_115_101_100_65_114_103_115_95_95_112_114_101_100_95_95_116_114_121_95_115_116_109_95_99_99_95_109_117_108_116_105_95_95_91_50_93_95_48_5_0);
+#ifdef MR_maybe_local_thread_engine_base
+	#undef MR_maybe_local_thread_engine_base
+	#define MR_maybe_local_thread_engine_base MR_thread_engine_base
+#endif
+MR_END_MODULE
+
+extern const MR_TypeCtorInfo_Struct mercury_data_stm_builtin__type_ctor_info_rollback_exception_0;
+MR_decl_entry(univ__type_to_univ_2_2);
+
+MR_BEGIN_MODULE(exception_module57)
+	MR_init_entry1(exception__try_stm_4_0);
+	MR_INIT_PROC_LAYOUT_ADDR(mercury__exception__try_stm_4_0);
+	MR_init_label7(exception__try_stm_4_0,2,3,10,9,13,6,4)
+MR_BEGIN_CODE
+
+/*-------------------------------------------------------------------------*/
+/* code for 'try_stm'/4 mode 0 */
+#ifdef MR_maybe_local_thread_engine_base
+	#undef MR_maybe_local_thread_engine_base
+	#define MR_maybe_local_thread_engine_base MR_local_thread_engine_base
+#endif
+MR_define_entry(mercury__exception__try_stm_4_0);
+	MR_MAYBE_INIT_LOCAL_THREAD_ENGINE_BASE
+	MR_incr_sp(5);
+	MR_sv(5) = (MR_Word) MR_succip;
+	MR_sv(1) = MR_r2;
+	MR_sv(2) = MR_r3;
+	MR_sv(4) = MR_r1;
+	MR_np_call_localret_ent(f_101_120_99_101_112_116_105_111_110_95_95_85_110_117_115_101_100_65_114_103_115_95_95_112_114_101_100_95_95_103_101_116_95_100_101_116_101_114_109_105_110_105_115_109_95_50_95_95_91_49_44_32_50_44_32_51_93_95_48_2_0,
+		exception__try_stm_4_0_i2);
+MR_def_label(exception__try_stm_4_0,2)
+	MR_MAYBE_INIT_LOCAL_THREAD_ENGINE_BASE
+	MR_r1 = MR_sv(4);
+	MR_r2 = MR_sv(1);
+	MR_r3 = MR_sv(2);
+	MR_np_call_localret_ent(f_101_120_99_101_112_116_105_111_110_95_95_85_110_117_115_101_100_65_114_103_115_95_95_112_114_101_100_95_95_116_114_121_95_115_116_109_95_100_101_116_95_95_91_50_93_95_48_5_0,
+		exception__try_stm_4_0_i3);
+MR_def_label(exception__try_stm_4_0,3)
+	MR_MAYBE_INIT_LOCAL_THREAD_ENGINE_BASE
+	if (MR_PTAG_TESTR(MR_r1,2)) {
+		MR_GOTO_LAB(exception__try_stm_4_0_i4);
+	}
+	{
+	MR_Word MR_tempr1;
+	MR_tempr1 = MR_tfield(2, MR_r1, 0);
+	MR_sv(1) = MR_r1;
+	MR_sv(2) = MR_tempr1;
+	MR_sv(3) = MR_r2;
+	MR_r1 = (MR_Word) MR_CTOR0_ADDR(stm_builtin, rollback_exception);
+	MR_r2 = MR_tempr1;
+	}
+	MR_np_call_localret_ent(univ__type_to_univ_2_2,
+		exception__try_stm_4_0_i10);
+MR_def_label(exception__try_stm_4_0,10)
+	MR_MAYBE_INIT_LOCAL_THREAD_ENGINE_BASE
+	if (!(MR_r1)) {
+		MR_GOTO_LAB(exception__try_stm_4_0_i9);
+	}
+	if (MR_INT_NE(MR_r2,0)) {
+		MR_GOTO_LAB(exception__try_stm_4_0_i9);
+	}
+	MR_r2 = MR_sv(1);
+	MR_r1 = MR_sv(4);
+	MR_succip_word = MR_sv(5);
+	MR_decr_sp(5);
+	MR_np_tailcall_ent(exception__rethrow_1_0);
+MR_def_label(exception__try_stm_4_0,9)
+	MR_MAYBE_INIT_LOCAL_THREAD_ENGINE_BASE
+	MR_r1 = (MR_Word) MR_CTOR0_ADDR(stm_builtin, rollback_exception);
+	MR_r2 = MR_sv(2);
+	MR_np_call_localret_ent(univ__type_to_univ_2_2,
+		exception__try_stm_4_0_i13);
+MR_def_label(exception__try_stm_4_0,13)
+	MR_MAYBE_INIT_LOCAL_THREAD_ENGINE_BASE
+	if (!(MR_r1)) {
+		MR_GOTO_LAB(exception__try_stm_4_0_i6);
+	}
+	if (MR_INT_NE(MR_r2,1)) {
+		MR_GOTO_LAB(exception__try_stm_4_0_i6);
+	}
+	MR_r2 = MR_sv(1);
+	MR_r1 = MR_sv(4);
+	MR_succip_word = MR_sv(5);
+	MR_decr_sp(5);
+	MR_np_tailcall_ent(exception__rethrow_1_0);
+MR_def_label(exception__try_stm_4_0,6)
+	MR_MAYBE_INIT_LOCAL_THREAD_ENGINE_BASE
+	MR_r1 = MR_sv(1);
+	MR_r2 = MR_sv(3);
+MR_def_label(exception__try_stm_4_0,4)
+	MR_MAYBE_INIT_LOCAL_THREAD_ENGINE_BASE
+	MR_decr_sp_and_return(5);
+#ifdef MR_maybe_local_thread_engine_base
+	#undef MR_maybe_local_thread_engine_base
+	#define MR_maybe_local_thread_engine_base MR_thread_engine_base
+#endif
+MR_END_MODULE
+
+
+MR_BEGIN_MODULE(exception_module58)
+	MR_init_entry1(exception__try_stm_4_1);
+	MR_INIT_PROC_LAYOUT_ADDR(mercury__exception__try_stm_4_1);
+	MR_init_label7(exception__try_stm_4_1,2,3,10,9,13,6,4)
+MR_BEGIN_CODE
+
+/*-------------------------------------------------------------------------*/
+/* code for 'try_stm'/4 mode 1 */
+#ifdef MR_maybe_local_thread_engine_base
+	#undef MR_maybe_local_thread_engine_base
+	#define MR_maybe_local_thread_engine_base MR_local_thread_engine_base
+#endif
+MR_define_entry(mercury__exception__try_stm_4_1);
+	MR_MAYBE_INIT_LOCAL_THREAD_ENGINE_BASE
+	MR_incr_sp(5);
+	MR_sv(5) = (MR_Word) MR_succip;
+	MR_sv(1) = MR_r2;
+	MR_sv(2) = MR_r3;
+	MR_sv(4) = MR_r1;
+	MR_np_call_localret_ent(f_101_120_99_101_112_116_105_111_110_95_95_85_110_117_115_101_100_65_114_103_115_95_95_112_114_101_100_95_95_103_101_116_95_100_101_116_101_114_109_105_110_105_115_109_95_50_95_95_91_49_44_32_50_44_32_51_93_95_49_2_1,
+		exception__try_stm_4_1_i2);
+MR_def_label(exception__try_stm_4_1,2)
+	MR_MAYBE_INIT_LOCAL_THREAD_ENGINE_BASE
+	MR_r1 = MR_sv(4);
+	MR_r2 = MR_sv(1);
+	MR_r3 = MR_sv(2);
+	MR_np_call_localret_ent(f_101_120_99_101_112_116_105_111_110_95_95_85_110_117_115_101_100_65_114_103_115_95_95_112_114_101_100_95_95_116_114_121_95_115_116_109_95_99_99_95_109_117_108_116_105_95_95_91_50_93_95_48_5_0,
+		exception__try_stm_4_1_i3);
+MR_def_label(exception__try_stm_4_1,3)
+	MR_MAYBE_INIT_LOCAL_THREAD_ENGINE_BASE
+	if (MR_PTAG_TESTR(MR_r1,2)) {
+		MR_GOTO_LAB(exception__try_stm_4_1_i4);
+	}
+	{
+	MR_Word MR_tempr1;
+	MR_tempr1 = MR_tfield(2, MR_r1, 0);
+	MR_sv(1) = MR_r1;
+	MR_sv(2) = MR_tempr1;
+	MR_sv(3) = MR_r2;
+	MR_r1 = (MR_Word) MR_CTOR0_ADDR(stm_builtin, rollback_exception);
+	MR_r2 = MR_tempr1;
+	}
+	MR_np_call_localret_ent(univ__type_to_univ_2_2,
+		exception__try_stm_4_1_i10);
+MR_def_label(exception__try_stm_4_1,10)
+	MR_MAYBE_INIT_LOCAL_THREAD_ENGINE_BASE
+	if (!(MR_r1)) {
+		MR_GOTO_LAB(exception__try_stm_4_1_i9);
+	}
+	if (MR_INT_NE(MR_r2,0)) {
+		MR_GOTO_LAB(exception__try_stm_4_1_i9);
+	}
+	MR_r2 = MR_sv(1);
+	MR_r1 = MR_sv(4);
+	MR_succip_word = MR_sv(5);
+	MR_decr_sp(5);
+	MR_np_tailcall_ent(exception__rethrow_1_0);
+MR_def_label(exception__try_stm_4_1,9)
+	MR_MAYBE_INIT_LOCAL_THREAD_ENGINE_BASE
+	MR_r1 = (MR_Word) MR_CTOR0_ADDR(stm_builtin, rollback_exception);
+	MR_r2 = MR_sv(2);
+	MR_np_call_localret_ent(univ__type_to_univ_2_2,
+		exception__try_stm_4_1_i13);
+MR_def_label(exception__try_stm_4_1,13)
+	MR_MAYBE_INIT_LOCAL_THREAD_ENGINE_BASE
+	if (!(MR_r1)) {
+		MR_GOTO_LAB(exception__try_stm_4_1_i6);
+	}
+	if (MR_INT_NE(MR_r2,1)) {
+		MR_GOTO_LAB(exception__try_stm_4_1_i6);
+	}
+	MR_r2 = MR_sv(1);
+	MR_r1 = MR_sv(4);
+	MR_succip_word = MR_sv(5);
+	MR_decr_sp(5);
+	MR_np_tailcall_ent(exception__rethrow_1_0);
+MR_def_label(exception__try_stm_4_1,6)
+	MR_MAYBE_INIT_LOCAL_THREAD_ENGINE_BASE
+	MR_r1 = MR_sv(1);
+	MR_r2 = MR_sv(3);
+MR_def_label(exception__try_stm_4_1,4)
+	MR_MAYBE_INIT_LOCAL_THREAD_ENGINE_BASE
+	MR_decr_sp_and_return(5);
+#ifdef MR_maybe_local_thread_engine_base
+	#undef MR_maybe_local_thread_engine_base
+	#define MR_maybe_local_thread_engine_base MR_thread_engine_base
+#endif
+MR_END_MODULE
+
+
+MR_BEGIN_MODULE(exception_module59)
+	MR_init_entry1(exception__magic_exception_result_1_0);
+	MR_INIT_PROC_LAYOUT_ADDR(mercury__exception__magic_exception_result_1_0);
+MR_BEGIN_CODE
+
+/*-------------------------------------------------------------------------*/
+/* code for 'magic_exception_result'/1 mode 0 */
+#ifdef MR_maybe_local_thread_engine_base
+	#undef MR_maybe_local_thread_engine_base
+	#define MR_maybe_local_thread_engine_base MR_local_thread_engine_base
+#endif
+MR_define_entry(mercury__exception__magic_exception_result_1_0);
+	MR_MAYBE_INIT_LOCAL_THREAD_ENGINE_BASE
+	MR_r1 = (MR_Word) MR_TAG_COMMON(1,6,0);
+	MR_proceed();
+#ifdef MR_maybe_local_thread_engine_base
+	#undef MR_maybe_local_thread_engine_base
+	#define MR_maybe_local_thread_engine_base MR_thread_engine_base
+#endif
+MR_END_MODULE
+
+extern const MR_TypeCtorInfo_Struct mercury_data_builtin__type_ctor_info_string_0;
+
+MR_BEGIN_MODULE(exception_module60)
+	MR_init_entry1(exception__unreachable_0_0);
+	MR_INIT_PROC_LAYOUT_ADDR(mercury__exception__unreachable_0_0);
+MR_BEGIN_CODE
+
+/*-------------------------------------------------------------------------*/
+/* code for 'unreachable'/0 mode 0 */
+#ifdef MR_maybe_local_thread_engine_base
+	#undef MR_maybe_local_thread_engine_base
+	#define MR_maybe_local_thread_engine_base MR_local_thread_engine_base
+#endif
+MR_define_entry(mercury__exception__unreachable_0_0);
+	MR_MAYBE_INIT_LOCAL_THREAD_ENGINE_BASE
+	MR_r1 = (MR_Word) MR_STRING_CTOR_ADDR;
+	MR_r2 = (MR_Word) MR_string_const("unreachable code reached", 24);
+	MR_np_tailcall_ent(exception__throw_1_0);
+#ifdef MR_maybe_local_thread_engine_base
+	#undef MR_maybe_local_thread_engine_base
+	#define MR_maybe_local_thread_engine_base MR_thread_engine_base
+#endif
+MR_END_MODULE
+
+
+MR_BEGIN_MODULE(exception_module61)
+	MR_init_entry1(exception__exc_univ_to_type_2_0);
+	MR_INIT_PROC_LAYOUT_ADDR(mercury__exception__exc_univ_to_type_2_0);
+MR_BEGIN_CODE
+
+/*-------------------------------------------------------------------------*/
+/* code for 'exc_univ_to_type'/2 mode 0 */
+#ifdef MR_maybe_local_thread_engine_base
+	#undef MR_maybe_local_thread_engine_base
+	#define MR_maybe_local_thread_engine_base MR_local_thread_engine_base
+#endif
+MR_define_entry(mercury__exception__exc_univ_to_type_2_0);
+	MR_MAYBE_INIT_LOCAL_THREAD_ENGINE_BASE
+	MR_np_tailcall_ent(univ__type_to_univ_2_2);
+#ifdef MR_maybe_local_thread_engine_base
+	#undef MR_maybe_local_thread_engine_base
+	#define MR_maybe_local_thread_engine_base MR_thread_engine_base
+#endif
+MR_END_MODULE
+
+
+MR_BEGIN_MODULE(exception_module62)
+	MR_init_entry1(exception__exc_univ_to_type_2_1);
+	MR_INIT_PROC_LAYOUT_ADDR(mercury__exception__exc_univ_to_type_2_1);
+MR_BEGIN_CODE
+
+/*-------------------------------------------------------------------------*/
+/* code for 'exc_univ_to_type'/2 mode 1 */
+#ifdef MR_maybe_local_thread_engine_base
+	#undef MR_maybe_local_thread_engine_base
+	#define MR_maybe_local_thread_engine_base MR_local_thread_engine_base
+#endif
+MR_define_entry(mercury__exception__exc_univ_to_type_2_1);
+	MR_MAYBE_INIT_LOCAL_THREAD_ENGINE_BASE
+	MR_np_tailcall_ent(univ__type_to_univ_2_1);
+#ifdef MR_maybe_local_thread_engine_base
+	#undef MR_maybe_local_thread_engine_base
+	#define MR_maybe_local_thread_engine_base MR_thread_engine_base
+#endif
+MR_END_MODULE
+
+MR_decl_entry(univ__type_to_univ_2_0);
+
+MR_BEGIN_MODULE(exception_module63)
+	MR_init_entry1(exception__exc_univ_to_type_2_2);
+	MR_INIT_PROC_LAYOUT_ADDR(mercury__exception__exc_univ_to_type_2_2);
+MR_BEGIN_CODE
+
+/*-------------------------------------------------------------------------*/
+/* code for 'exc_univ_to_type'/2 mode 2 */
+#ifdef MR_maybe_local_thread_engine_base
+	#undef MR_maybe_local_thread_engine_base
+	#define MR_maybe_local_thread_engine_base MR_local_thread_engine_base
+#endif
+MR_define_entry(mercury__exception__exc_univ_to_type_2_2);
+	MR_MAYBE_INIT_LOCAL_THREAD_ENGINE_BASE
+	MR_np_tailcall_ent(univ__type_to_univ_2_0);
+#ifdef MR_maybe_local_thread_engine_base
+	#undef MR_maybe_local_thread_engine_base
+	#define MR_maybe_local_thread_engine_base MR_thread_engine_base
+#endif
+MR_END_MODULE
+
+
+MR_BEGIN_MODULE(exception_module64)
+	MR_init_entry1(fn__exception__exc_univ_value_1_0);
+	MR_INIT_PROC_LAYOUT_ADDR(mercury__fn__exception__exc_univ_value_1_0);
+MR_BEGIN_CODE
+
+/*-------------------------------------------------------------------------*/
+/* code for 'exc_univ_value'/2 mode 0 */
+#ifdef MR_maybe_local_thread_engine_base
+	#undef MR_maybe_local_thread_engine_base
+	#define MR_maybe_local_thread_engine_base MR_local_thread_engine_base
+#endif
+MR_define_entry(mercury__fn__exception__exc_univ_value_1_0);
+	MR_MAYBE_INIT_LOCAL_THREAD_ENGINE_BASE
+	{
+	MR_Word MR_tempr1;
+	MR_tempr1 = MR_r1;
+	MR_r1 = MR_tfield(0, MR_r1, 0);
+	MR_r2 = MR_tfield(0, MR_tempr1, 1);
+	MR_proceed();
+	}
+#ifdef MR_maybe_local_thread_engine_base
+	#undef MR_maybe_local_thread_engine_base
+	#define MR_maybe_local_thread_engine_base MR_thread_engine_base
+#endif
+MR_END_MODULE
+
+MR_declare_entry(mercury__do_call_closure_0);
+
+MR_BEGIN_MODULE(exception_module65)
+	MR_init_entry1(exception__wrap_success_2_0);
+	MR_INIT_PROC_LAYOUT_ADDR(mercury__exception__wrap_success_2_0);
+	MR_init_label1(exception__wrap_success_2_0,2)
+MR_BEGIN_CODE
+
+/*-------------------------------------------------------------------------*/
+/* code for 'wrap_success'/2 mode 0 */
+#ifdef MR_maybe_local_thread_engine_base
+	#undef MR_maybe_local_thread_engine_base
+	#define MR_maybe_local_thread_engine_base MR_local_thread_engine_base
+#endif
+MR_define_entry(mercury__exception__wrap_success_2_0);
+	MR_MAYBE_INIT_LOCAL_THREAD_ENGINE_BASE
+	MR_incr_sp(1);
+	MR_sv(1) = (MR_Word) MR_succip;
+	MR_r1 = MR_r2;
+	MR_set_prof_ho_caller_proc(MR_ENTRY_AP(exception__wrap_success_2_0));
+	MR_noprof_call_localret(MR_ENTRY(mercury__do_call_closure_0),
+		mercury__exception__wrap_success_2_0_i2);
+MR_def_label(exception__wrap_success_2_0,2)
+	MR_MAYBE_INIT_LOCAL_THREAD_ENGINE_BASE
+	MR_tag_alloc_heap(MR_r2, 1, (MR_Integer) 1);
+	MR_tfield(1, MR_r2, 0) = MR_r1;
+	MR_r1 = MR_r2;
+	MR_decr_sp_and_return(1);
+#ifdef MR_maybe_local_thread_engine_base
+	#undef MR_maybe_local_thread_engine_base
+	#define MR_maybe_local_thread_engine_base MR_thread_engine_base
+#endif
+MR_END_MODULE
+
+
+MR_BEGIN_MODULE(exception_module66)
+	MR_init_entry1(exception__wrap_success_2_1);
+	MR_INIT_PROC_LAYOUT_ADDR(mercury__exception__wrap_success_2_1);
+	MR_init_label2(exception__wrap_success_2_1,2,1)
+MR_BEGIN_CODE
+
+/*-------------------------------------------------------------------------*/
+/* code for 'wrap_success'/2 mode 1 */
+#ifdef MR_maybe_local_thread_engine_base
+	#undef MR_maybe_local_thread_engine_base
+	#define MR_maybe_local_thread_engine_base MR_local_thread_engine_base
+#endif
+MR_define_entry(mercury__exception__wrap_success_2_1);
+	MR_MAYBE_INIT_LOCAL_THREAD_ENGINE_BASE
+	MR_incr_sp(1);
+	MR_sv(1) = (MR_Word) MR_succip;
+	MR_r1 = MR_r2;
+	MR_set_prof_ho_caller_proc(MR_ENTRY_AP(exception__wrap_success_2_1));
+	MR_noprof_call_localret(MR_ENTRY(mercury__do_call_closure_0),
+		mercury__exception__wrap_success_2_1_i2);
+MR_def_label(exception__wrap_success_2_1,2)
+	MR_MAYBE_INIT_LOCAL_THREAD_ENGINE_BASE
+	if (!(MR_r1)) {
+		MR_GOTO_LAB(exception__wrap_success_2_1_i1);
+	}
+	{
+	MR_Word MR_tempr1;
+	MR_tag_alloc_heap(MR_tempr1, 1, (MR_Integer) 1);
+	MR_tfield(1, MR_tempr1, 0) = MR_r2;
+	MR_r2 = MR_tempr1;
+	MR_succip_word = MR_sv(1);
+	MR_decr_sp(1);
+	MR_r1 = MR_TRUE;
+	MR_proceed();
+	}
+MR_def_label(exception__wrap_success_2_1,1)
+	MR_MAYBE_INIT_LOCAL_THREAD_ENGINE_BASE
+	MR_succip_word = MR_sv(1);
+	MR_decr_sp(1);
+	MR_r1 = MR_FALSE;
+	MR_proceed();
+#ifdef MR_maybe_local_thread_engine_base
+	#undef MR_maybe_local_thread_engine_base
+	#define MR_maybe_local_thread_engine_base MR_thread_engine_base
+#endif
+MR_END_MODULE
+
+MR_declare_entry(MR_do_fail);
+
+MR_BEGIN_MODULE(exception_module67)
+	MR_init_entry1(exception__wrap_success_2_2);
+	MR_INIT_PROC_LAYOUT_ADDR(mercury__exception__wrap_success_2_2);
+	MR_init_label1(exception__wrap_success_2_2,1)
+MR_BEGIN_CODE
+
+/*-------------------------------------------------------------------------*/
+/* code for 'wrap_success'/2 mode 2 */
+#ifdef MR_maybe_local_thread_engine_base
+	#undef MR_maybe_local_thread_engine_base
+	#define MR_maybe_local_thread_engine_base MR_local_thread_engine_base
+#endif
+MR_define_entry(mercury__exception__wrap_success_2_2);
+	MR_MAYBE_INIT_LOCAL_THREAD_ENGINE_BASE
+	MR_mkframe("pred exception.wrap_success/2-2", 0,
+		MR_ENTRY(MR_do_fail));
+	MR_r1 = MR_r2;
+	MR_set_prof_ho_caller_proc(MR_ENTRY_AP(exception__wrap_success_2_2));
+	MR_noprof_call_localret(MR_ENTRY(mercury__do_call_closure_0),
+		mercury__exception__wrap_success_2_2_i1);
+MR_def_label(exception__wrap_success_2_2,1)
+	MR_MAYBE_INIT_LOCAL_THREAD_ENGINE_BASE
+	MR_tag_alloc_heap(MR_r2, 1, (MR_Integer) 1);
+	MR_tfield(1, MR_r2, 0) = MR_r1;
+	MR_r1 = MR_r2;
+	MR_succeed();
+#ifdef MR_maybe_local_thread_engine_base
+	#undef MR_maybe_local_thread_engine_base
+	#define MR_maybe_local_thread_engine_base MR_thread_engine_base
+#endif
+MR_END_MODULE
+
+
+MR_BEGIN_MODULE(exception_module68)
+	MR_init_entry1(exception__wrap_success_2_3);
+	MR_INIT_PROC_LAYOUT_ADDR(mercury__exception__wrap_success_2_3);
+MR_BEGIN_CODE
+
+/*-------------------------------------------------------------------------*/
+/* code for 'wrap_success'/2 mode 3 */
+#ifdef MR_maybe_local_thread_engine_base
+	#undef MR_maybe_local_thread_engine_base
+	#define MR_maybe_local_thread_engine_base MR_local_thread_engine_base
+#endif
+MR_define_entry(mercury__exception__wrap_success_2_3);
+	MR_MAYBE_INIT_LOCAL_THREAD_ENGINE_BASE
+	MR_np_tailcall_ent(exception__wrap_success_2_2);
+#ifdef MR_maybe_local_thread_engine_base
+	#undef MR_maybe_local_thread_engine_base
+	#define MR_maybe_local_thread_engine_base MR_thread_engine_base
+#endif
+MR_END_MODULE
+
+
+MR_BEGIN_MODULE(exception_module69)
+	MR_init_entry1(exception__wrap_success_2_4);
+	MR_INIT_PROC_LAYOUT_ADDR(mercury__exception__wrap_success_2_4);
+MR_BEGIN_CODE
+
+/*-------------------------------------------------------------------------*/
+/* code for 'wrap_success'/2 mode 4 */
+#ifdef MR_maybe_local_thread_engine_base
+	#undef MR_maybe_local_thread_engine_base
+	#define MR_maybe_local_thread_engine_base MR_local_thread_engine_base
+#endif
+MR_define_entry(mercury__exception__wrap_success_2_4);
+	MR_MAYBE_INIT_LOCAL_THREAD_ENGINE_BASE
+	MR_np_tailcall_ent(exception__wrap_success_2_0);
+#ifdef MR_maybe_local_thread_engine_base
+	#undef MR_maybe_local_thread_engine_base
+	#define MR_maybe_local_thread_engine_base MR_thread_engine_base
+#endif
+MR_END_MODULE
+
+
+MR_BEGIN_MODULE(exception_module70)
+	MR_init_entry1(exception__wrap_success_2_5);
+	MR_INIT_PROC_LAYOUT_ADDR(mercury__exception__wrap_success_2_5);
+MR_BEGIN_CODE
+
+/*-------------------------------------------------------------------------*/
+/* code for 'wrap_success'/2 mode 5 */
+#ifdef MR_maybe_local_thread_engine_base
+	#undef MR_maybe_local_thread_engine_base
+	#define MR_maybe_local_thread_engine_base MR_local_thread_engine_base
+#endif
+MR_define_entry(mercury__exception__wrap_success_2_5);
+	MR_MAYBE_INIT_LOCAL_THREAD_ENGINE_BASE
+	MR_np_tailcall_ent(exception__wrap_success_2_1);
+#ifdef MR_maybe_local_thread_engine_base
+	#undef MR_maybe_local_thread_engine_base
+	#define MR_maybe_local_thread_engine_base MR_thread_engine_base
+#endif
+MR_END_MODULE
+
+
+MR_BEGIN_MODULE(exception_module71)
+	MR_init_entry1(exception__wrap_success_or_failure_2_0);
+	MR_INIT_PROC_LAYOUT_ADDR(mercury__exception__wrap_success_or_failure_2_0);
+	MR_init_label1(exception__wrap_success_or_failure_2_0,2)
+MR_BEGIN_CODE
+
+/*-------------------------------------------------------------------------*/
+/* code for 'wrap_success_or_failure'/2 mode 0 */
+#ifdef MR_maybe_local_thread_engine_base
+	#undef MR_maybe_local_thread_engine_base
+	#define MR_maybe_local_thread_engine_base MR_local_thread_engine_base
+#endif
+MR_define_entry(mercury__exception__wrap_success_or_failure_2_0);
+	MR_MAYBE_INIT_LOCAL_THREAD_ENGINE_BASE
+	MR_incr_sp(1);
+	MR_sv(1) = (MR_Word) MR_succip;
+	MR_r1 = MR_r2;
+	MR_set_prof_ho_caller_proc(MR_ENTRY_AP(exception__wrap_success_or_failure_2_0));
+	MR_noprof_call_localret(MR_ENTRY(mercury__do_call_closure_0),
+		mercury__exception__wrap_success_or_failure_2_0_i2);
+MR_def_label(exception__wrap_success_or_failure_2_0,2)
+	MR_MAYBE_INIT_LOCAL_THREAD_ENGINE_BASE
+	MR_tag_alloc_heap(MR_r2, 1, (MR_Integer) 1);
+	MR_tfield(1, MR_r2, 0) = MR_r1;
+	MR_r1 = MR_r2;
+	MR_decr_sp_and_return(1);
+#ifdef MR_maybe_local_thread_engine_base
+	#undef MR_maybe_local_thread_engine_base
+	#define MR_maybe_local_thread_engine_base MR_thread_engine_base
+#endif
+MR_END_MODULE
+
+
+MR_BEGIN_MODULE(exception_module72)
+	MR_init_entry1(exception__wrap_success_or_failure_2_1);
+	MR_INIT_PROC_LAYOUT_ADDR(mercury__exception__wrap_success_or_failure_2_1);
+	MR_init_label2(exception__wrap_success_or_failure_2_1,3,2)
+MR_BEGIN_CODE
+
+/*-------------------------------------------------------------------------*/
+/* code for 'wrap_success_or_failure'/2 mode 1 */
+#ifdef MR_maybe_local_thread_engine_base
+	#undef MR_maybe_local_thread_engine_base
+	#define MR_maybe_local_thread_engine_base MR_local_thread_engine_base
+#endif
+MR_define_entry(mercury__exception__wrap_success_or_failure_2_1);
+	MR_MAYBE_INIT_LOCAL_THREAD_ENGINE_BASE
+	MR_incr_sp(1);
+	MR_sv(1) = (MR_Word) MR_succip;
+	MR_r1 = MR_r2;
+	MR_set_prof_ho_caller_proc(MR_ENTRY_AP(exception__wrap_success_or_failure_2_1));
+	MR_noprof_call_localret(MR_ENTRY(mercury__do_call_closure_0),
+		mercury__exception__wrap_success_or_failure_2_1_i3);
+MR_def_label(exception__wrap_success_or_failure_2_1,3)
+	MR_MAYBE_INIT_LOCAL_THREAD_ENGINE_BASE
+	if (!(MR_r1)) {
+		MR_GOTO_LAB(exception__wrap_success_or_failure_2_1_i2);
+	}
+	MR_tag_alloc_heap(MR_r1, 1, (MR_Integer) 1);
+	MR_tfield(1, MR_r1, 0) = MR_r2;
+	MR_decr_sp_and_return(1);
+MR_def_label(exception__wrap_success_or_failure_2_1,2)
+	MR_MAYBE_INIT_LOCAL_THREAD_ENGINE_BASE
+	MR_r1 = (MR_Word) MR_tbmkword(0, 0);
+	MR_decr_sp_and_return(1);
+#ifdef MR_maybe_local_thread_engine_base
+	#undef MR_maybe_local_thread_engine_base
+	#define MR_maybe_local_thread_engine_base MR_thread_engine_base
+#endif
+MR_END_MODULE
+
+
+MR_BEGIN_MODULE(exception_module73)
+	MR_init_entry1(exception__wrap_success_or_failure_2_2);
+	MR_INIT_PROC_LAYOUT_ADDR(mercury__exception__wrap_success_or_failure_2_2);
+MR_BEGIN_CODE
+
+/*-------------------------------------------------------------------------*/
+/* code for 'wrap_success_or_failure'/2 mode 2 */
+#ifdef MR_maybe_local_thread_engine_base
+	#undef MR_maybe_local_thread_engine_base
+	#define MR_maybe_local_thread_engine_base MR_local_thread_engine_base
+#endif
+MR_define_entry(mercury__exception__wrap_success_or_failure_2_2);
+	MR_MAYBE_INIT_LOCAL_THREAD_ENGINE_BASE
+	MR_np_tailcall_ent(exception__wrap_success_or_failure_2_0);
+#ifdef MR_maybe_local_thread_engine_base
+	#undef MR_maybe_local_thread_engine_base
+	#define MR_maybe_local_thread_engine_base MR_thread_engine_base
+#endif
+MR_END_MODULE
+
+
+MR_BEGIN_MODULE(exception_module74)
+	MR_init_entry1(exception__wrap_success_or_failure_2_3);
+	MR_INIT_PROC_LAYOUT_ADDR(mercury__exception__wrap_success_or_failure_2_3);
+MR_BEGIN_CODE
+
+/*-------------------------------------------------------------------------*/
+/* code for 'wrap_success_or_failure'/2 mode 3 */
+#ifdef MR_maybe_local_thread_engine_base
+	#undef MR_maybe_local_thread_engine_base
+	#define MR_maybe_local_thread_engine_base MR_local_thread_engine_base
+#endif
+MR_define_entry(mercury__exception__wrap_success_or_failure_2_3);
+	MR_MAYBE_INIT_LOCAL_THREAD_ENGINE_BASE
+	MR_np_tailcall_ent(exception__wrap_success_or_failure_2_1);
+#ifdef MR_maybe_local_thread_engine_base
+	#undef MR_maybe_local_thread_engine_base
+	#define MR_maybe_local_thread_engine_base MR_thread_engine_base
+#endif
+MR_END_MODULE
+
+
+MR_BEGIN_MODULE(exception_module75)
+	MR_init_entry1(exception__process_one_exception_result_5_0);
+	MR_INIT_PROC_LAYOUT_ADDR(mercury__exception__process_one_exception_result_5_0);
+	MR_init_label2(exception__process_one_exception_result_5_0,3,5)
+MR_BEGIN_CODE
+
+/*-------------------------------------------------------------------------*/
+/* code for 'process_one_exception_result'/5 mode 0 */
+#ifdef MR_maybe_local_thread_engine_base
+	#undef MR_maybe_local_thread_engine_base
+	#define MR_maybe_local_thread_engine_base MR_local_thread_engine_base
+#endif
+MR_def_static(exception__process_one_exception_result_5_0)
+	MR_MAYBE_INIT_LOCAL_THREAD_ENGINE_BASE
+	if (MR_PTAG_TESTR(MR_r2,2)) {
+		MR_GOTO_LAB(exception__process_one_exception_result_5_0_i3);
+	}
+	MR_tag_alloc_heap(MR_r1, 1, (MR_Integer) 1);
+	MR_tfield(1, MR_r1, 0) = MR_tfield(2, MR_r2, 0);
+	MR_r2 = MR_r4;
+	MR_proceed();
+MR_def_label(exception__process_one_exception_result_5_0,3)
+	MR_MAYBE_INIT_LOCAL_THREAD_ENGINE_BASE
+	if (MR_PTAG_TESTR(MR_r2,1)) {
+		MR_GOTO_LAB(exception__process_one_exception_result_5_0_i5);
+	}
+	{
+	MR_Word MR_tempr1;
+	MR_tag_alloc_heap(MR_tempr1, 1, (MR_Integer) 2);
+	MR_tfield(1, MR_tempr1, 0) = MR_tfield(1, MR_r2, 0);
+	MR_tfield(1, MR_tempr1, 1) = MR_r4;
+	MR_r1 = MR_r3;
+	MR_r2 = MR_tempr1;
+	MR_proceed();
+	}
+MR_def_label(exception__process_one_exception_result_5_0,5)
+	MR_MAYBE_INIT_LOCAL_THREAD_ENGINE_BASE
+	MR_r1 = (MR_Word) MR_CTOR0_ADDR(exception, software_error);
+	MR_r2 = (MR_Word) MR_string_const("process_one_exception_result: unexpected failure", 48);
+	MR_np_tailcall_ent(exception__throw_1_0);
+#ifdef MR_maybe_local_thread_engine_base
+	#undef MR_maybe_local_thread_engine_base
+	#define MR_maybe_local_thread_engine_base MR_thread_engine_base
+#endif
+MR_END_MODULE
+
+
+MR_BEGIN_MODULE(exception_module76)
+	MR_init_entry1(exception__make_io_state_1_0);
+	MR_INIT_PROC_LAYOUT_ADDR(mercury__exception__make_io_state_1_0);
+MR_BEGIN_CODE
+
+/*-------------------------------------------------------------------------*/
+/* code for 'make_io_state'/1 mode 0 */
+#ifdef MR_maybe_local_thread_engine_base
+	#undef MR_maybe_local_thread_engine_base
+	#define MR_maybe_local_thread_engine_base MR_local_thread_engine_base
+#endif
+MR_def_static(exception__make_io_state_1_0)
+	MR_MAYBE_INIT_LOCAL_THREAD_ENGINE_BASE
+	{
+#define	MR_PROC_LABEL	mercury__exception__make_io_state_1_0
+#undef	MR_PROC_LABEL
+	}
+	MR_proceed();
+#ifdef MR_maybe_local_thread_engine_base
+	#undef MR_maybe_local_thread_engine_base
+	#define MR_maybe_local_thread_engine_base MR_thread_engine_base
+#endif
+MR_END_MODULE
+
+
+MR_BEGIN_MODULE(exception_module77)
+	MR_init_entry1(exception__consume_io_state_1_0);
+	MR_INIT_PROC_LAYOUT_ADDR(mercury__exception__consume_io_state_1_0);
+MR_BEGIN_CODE
+
+/*-------------------------------------------------------------------------*/
+/* code for 'consume_io_state'/1 mode 0 */
+#ifdef MR_maybe_local_thread_engine_base
+	#undef MR_maybe_local_thread_engine_base
+	#define MR_maybe_local_thread_engine_base MR_local_thread_engine_base
+#endif
+MR_def_static(exception__consume_io_state_1_0)
+	MR_MAYBE_INIT_LOCAL_THREAD_ENGINE_BASE
+	{
+#define	MR_PROC_LABEL	mercury__exception__consume_io_state_1_0
+#undef	MR_PROC_LABEL
+	}
+	MR_proceed();
+#ifdef MR_maybe_local_thread_engine_base
+	#undef MR_maybe_local_thread_engine_base
+	#define MR_maybe_local_thread_engine_base MR_thread_engine_base
+#endif
+MR_END_MODULE
+
+
+MR_BEGIN_MODULE(exception_module78)
+	MR_init_entry1(exception__very_unsafe_perform_io_2_0);
+	MR_INIT_PROC_LAYOUT_ADDR(mercury__exception__very_unsafe_perform_io_2_0);
+	MR_init_label1(exception__very_unsafe_perform_io_2_0,2)
+MR_BEGIN_CODE
+
+/*-------------------------------------------------------------------------*/
+/* code for 'very_unsafe_perform_io'/2 mode 0 */
+#ifdef MR_maybe_local_thread_engine_base
+	#undef MR_maybe_local_thread_engine_base
+	#define MR_maybe_local_thread_engine_base MR_local_thread_engine_base
+#endif
+MR_def_static(exception__very_unsafe_perform_io_2_0)
+	MR_MAYBE_INIT_LOCAL_THREAD_ENGINE_BASE
+	MR_incr_sp(1);
+	MR_sv(1) = (MR_Word) MR_succip;
+	{
+#define	MR_PROC_LABEL	mercury__exception__very_unsafe_perform_io_2_0
+#undef	MR_PROC_LABEL
+	}
+	MR_r1 = MR_r2;
+	MR_set_prof_ho_caller_proc(MR_ENTRY_AP(exception__very_unsafe_perform_io_2_0));
+	MR_noprof_call_localret(MR_ENTRY(mercury__do_call_closure_1),
+		mercury__exception__very_unsafe_perform_io_2_0_i2);
+MR_def_label(exception__very_unsafe_perform_io_2_0,2)
+	MR_MAYBE_INIT_LOCAL_THREAD_ENGINE_BASE
+	{
+#define	MR_PROC_LABEL	mercury__exception__very_unsafe_perform_io_2_0
+#undef	MR_PROC_LABEL
+	}
+	MR_decr_sp_and_return(1);
+#ifdef MR_maybe_local_thread_engine_base
+	#undef MR_maybe_local_thread_engine_base
+	#define MR_maybe_local_thread_engine_base MR_thread_engine_base
+#endif
+MR_END_MODULE
+
+
+MR_BEGIN_MODULE(exception_module79)
+	MR_init_entry1(exception__very_unsafe_perform_io_2_1);
+	MR_INIT_PROC_LAYOUT_ADDR(mercury__exception__very_unsafe_perform_io_2_1);
+	MR_init_label1(exception__very_unsafe_perform_io_2_1,2)
+MR_BEGIN_CODE
+
+/*-------------------------------------------------------------------------*/
+/* code for 'very_unsafe_perform_io'/2 mode 1 */
+#ifdef MR_maybe_local_thread_engine_base
+	#undef MR_maybe_local_thread_engine_base
+	#define MR_maybe_local_thread_engine_base MR_local_thread_engine_base
+#endif
+MR_def_static(exception__very_unsafe_perform_io_2_1)
+	MR_MAYBE_INIT_LOCAL_THREAD_ENGINE_BASE
+	MR_incr_sp(1);
+	MR_sv(1) = (MR_Word) MR_succip;
+	{
+#define	MR_PROC_LABEL	mercury__exception__very_unsafe_perform_io_2_1
+#undef	MR_PROC_LABEL
+	}
+	MR_r1 = MR_r2;
+	MR_set_prof_ho_caller_proc(MR_ENTRY_AP(exception__very_unsafe_perform_io_2_1));
+	MR_noprof_call_localret(MR_ENTRY(mercury__do_call_closure_1),
+		mercury__exception__very_unsafe_perform_io_2_1_i2);
+MR_def_label(exception__very_unsafe_perform_io_2_1,2)
+	MR_MAYBE_INIT_LOCAL_THREAD_ENGINE_BASE
+	{
+#define	MR_PROC_LABEL	mercury__exception__very_unsafe_perform_io_2_1
+#undef	MR_PROC_LABEL
+	}
+	MR_decr_sp_and_return(1);
+#ifdef MR_maybe_local_thread_engine_base
+	#undef MR_maybe_local_thread_engine_base
+	#define MR_maybe_local_thread_engine_base MR_thread_engine_base
+#endif
+MR_END_MODULE
+
+
+MR_BEGIN_MODULE(exception_module80)
+	MR_init_entry1(exception__wrap_exception_2_0);
+	MR_INIT_PROC_LAYOUT_ADDR(mercury__exception__wrap_exception_2_0);
+MR_BEGIN_CODE
+
+/*-------------------------------------------------------------------------*/
+/* code for 'wrap_exception'/2 mode 0 */
+#ifdef MR_maybe_local_thread_engine_base
+	#undef MR_maybe_local_thread_engine_base
+	#define MR_maybe_local_thread_engine_base MR_local_thread_engine_base
+#endif
+MR_define_entry(mercury__exception__wrap_exception_2_0);
+	MR_MAYBE_INIT_LOCAL_THREAD_ENGINE_BASE
+	MR_tag_alloc_heap(MR_r1, 2, (MR_Integer) 1);
+	MR_tfield(2, MR_r1, 0) = MR_r2;
+	MR_proceed();
+#ifdef MR_maybe_local_thread_engine_base
+	#undef MR_maybe_local_thread_engine_base
+	#define MR_maybe_local_thread_engine_base MR_thread_engine_base
+#endif
+MR_END_MODULE
+
+
+MR_BEGIN_MODULE(exception_module81)
+	MR_init_entry1(exception__call_goal_2_0);
+	MR_INIT_PROC_LAYOUT_ADDR(mercury__exception__call_goal_2_0);
+MR_BEGIN_CODE
+
+/*-------------------------------------------------------------------------*/
+/* code for 'call_goal'/2 mode 0 */
+#ifdef MR_maybe_local_thread_engine_base
+	#undef MR_maybe_local_thread_engine_base
+	#define MR_maybe_local_thread_engine_base MR_local_thread_engine_base
+#endif
+MR_def_static(exception__call_goal_2_0)
+	MR_MAYBE_INIT_LOCAL_THREAD_ENGINE_BASE
+	MR_r1 = MR_r2;
+	MR_np_tailcall_ent(f_101_120_99_101_112_116_105_111_110_95_95_85_110_117_115_101_100_65_114_103_115_95_95_112_114_101_100_95_95_99_97_108_108_95_103_111_97_108_95_95_91_49_93_95_48_2_0);
+#ifdef MR_maybe_local_thread_engine_base
+	#undef MR_maybe_local_thread_engine_base
+	#define MR_maybe_local_thread_engine_base MR_thread_engine_base
+#endif
+MR_END_MODULE
+
+
+MR_BEGIN_MODULE(exception_module82)
+	MR_init_entry1(exception__call_goal_2_1);
+	MR_INIT_PROC_LAYOUT_ADDR(mercury__exception__call_goal_2_1);
+MR_BEGIN_CODE
+
+/*-------------------------------------------------------------------------*/
+/* code for 'call_goal'/2 mode 1 */
+#ifdef MR_maybe_local_thread_engine_base
+	#undef MR_maybe_local_thread_engine_base
+	#define MR_maybe_local_thread_engine_base MR_local_thread_engine_base
+#endif
+MR_def_static(exception__call_goal_2_1)
+	MR_MAYBE_INIT_LOCAL_THREAD_ENGINE_BASE
+	MR_r1 = MR_r2;
+	MR_np_tailcall_ent(f_101_120_99_101_112_116_105_111_110_95_95_85_110_117_115_101_100_65_114_103_115_95_95_112_114_101_100_95_95_99_97_108_108_95_103_111_97_108_95_95_91_49_93_95_49_2_1);
+#ifdef MR_maybe_local_thread_engine_base
+	#undef MR_maybe_local_thread_engine_base
+	#define MR_maybe_local_thread_engine_base MR_thread_engine_base
+#endif
+MR_END_MODULE
+
+
+MR_BEGIN_MODULE(exception_module83)
+	MR_init_entry1(exception__call_handler_3_0);
+	MR_INIT_PROC_LAYOUT_ADDR(mercury__exception__call_handler_3_0);
+MR_BEGIN_CODE
+
+/*-------------------------------------------------------------------------*/
+/* code for 'call_handler'/3 mode 0 */
+#ifdef MR_maybe_local_thread_engine_base
+	#undef MR_maybe_local_thread_engine_base
+	#define MR_maybe_local_thread_engine_base MR_local_thread_engine_base
+#endif
+MR_def_static(exception__call_handler_3_0)
+	MR_MAYBE_INIT_LOCAL_THREAD_ENGINE_BASE
+	MR_r1 = MR_r2;
+	MR_r2 = MR_r3;
+	MR_np_tailcall_ent(f_101_120_99_101_112_116_105_111_110_95_95_85_110_117_115_101_100_65_114_103_115_95_95_112_114_101_100_95_95_99_97_108_108_95_104_97_110_100_108_101_114_95_95_91_49_93_95_48_3_0);
+#ifdef MR_maybe_local_thread_engine_base
+	#undef MR_maybe_local_thread_engine_base
+	#define MR_maybe_local_thread_engine_base MR_thread_engine_base
+#endif
+MR_END_MODULE
+
+
+MR_BEGIN_MODULE(exception_module84)
+	MR_init_entry1(exception__report_uncaught_exception_3_0);
+	MR_INIT_PROC_LAYOUT_ADDR(mercury__exception__report_uncaught_exception_3_0);
+	MR_init_label1(exception__report_uncaught_exception_3_0,3)
+MR_BEGIN_CODE
+
+/*-------------------------------------------------------------------------*/
+/* code for 'report_uncaught_exception'/3 mode 0 */
+#ifdef MR_maybe_local_thread_engine_base
+	#undef MR_maybe_local_thread_engine_base
+	#define MR_maybe_local_thread_engine_base MR_local_thread_engine_base
+#endif
+MR_def_static(exception__report_uncaught_exception_3_0)
+	MR_MAYBE_INIT_LOCAL_THREAD_ENGINE_BASE
+	MR_incr_sp(2);
+	MR_sv(2) = (MR_Word) MR_succip;
+	{
+	MR_Word MR_tempr1;
+	MR_tag_alloc_heap(MR_tempr1, 0, (MR_Integer) 4);
+	MR_sv(1) = MR_tempr1;
+	MR_tfield(0, MR_tempr1, 0) = (MR_Word) MR_COMMON(7,0);
+	MR_tfield(0, MR_tempr1, 1) = (MR_Word) MR_ENTRY_AP(exception__report_uncaught_exception_2_4_0);
+	MR_tfield(0, MR_tempr1, 2) = (MR_Integer) 1;
+	MR_tfield(0, MR_tempr1, 3) = MR_r1;
+	}
+	MR_np_call_localret_ent(f_101_120_99_101_112_116_105_111_110_95_95_85_110_117_115_101_100_65_114_103_115_95_95_112_114_101_100_95_95_103_101_116_95_100_101_116_101_114_109_105_110_105_115_109_95_50_95_95_104_111_49_57_95_95_91_49_44_32_50_93_95_48_2_0,
+		exception__report_uncaught_exception_3_0_i3);
+MR_def_label(exception__report_uncaught_exception_3_0,3)
+	MR_MAYBE_INIT_LOCAL_THREAD_ENGINE_BASE
+	MR_r1 = MR_sv(1);
+	MR_succip_word = MR_sv(2);
+	MR_decr_sp(2);
+	MR_np_tailcall_ent(f_101_120_99_101_112_116_105_111_110_95_95_85_110_117_115_101_100_65_114_103_115_95_95_112_114_101_100_95_95_116_114_121_95_105_111_95_100_101_116_95_95_104_111_50_48_95_95_91_49_44_32_50_93_95_48_5_0);
+#ifdef MR_maybe_local_thread_engine_base
+	#undef MR_maybe_local_thread_engine_base
+	#define MR_maybe_local_thread_engine_base MR_thread_engine_base
+#endif
+MR_END_MODULE
+
+MR_decl_entry(string__append_3_2);
+MR_declare_entry(mercury__do_call_class_method_1);
+MR_decl_entry(string__value_to_revstrings_prio_6_1);
+MR_decl_entry(list__reverse_2_0);
+MR_decl_entry(fn__string__append_list_1_0);
+
+MR_BEGIN_MODULE(exception_module85)
+	MR_init_entry1(exception__report_uncaught_exception_2_4_0);
+	MR_INIT_PROC_LAYOUT_ADDR(mercury__exception__report_uncaught_exception_2_4_0);
+	MR_init_label6(exception__report_uncaught_exception_2_4_0,3,2,7,8,9,10)
+MR_BEGIN_CODE
+
+/*-------------------------------------------------------------------------*/
+/* code for 'report_uncaught_exception_2'/4 mode 0 */
+#ifdef MR_maybe_local_thread_engine_base
+	#undef MR_maybe_local_thread_engine_base
+	#define MR_maybe_local_thread_engine_base MR_local_thread_engine_base
+#endif
+MR_def_static(exception__report_uncaught_exception_2_4_0)
+	MR_MAYBE_INIT_LOCAL_THREAD_ENGINE_BASE
+	MR_incr_sp(4);
+	MR_sv(4) = (MR_Word) MR_succip;
+	MR_sv(1) = MR_r1;
+	{
+	MR_Word MR_tempr1, MR_tempr2;
+	{
+	MR_Word	IO0;
+	MR_Word	IO;
+#define	MR_PROC_LABEL	mercury__exception__report_uncaught_exception_2_4_0
+	MR_save_registers();
+{
+#line 601 "io.opt"
+
+    MercuryFilePtr out = mercury_current_text_output();
+    if (MR_FLUSH(*out) < 0) {
+        mercury_output_error(out);
+    }
+    MR_update_io(IO0, IO);
+;}
+#line 5399 "exception.c"
+#ifndef MR_CONSERVATIVE_GC
+	MR_restore_registers();
+#endif
+#undef	MR_PROC_LABEL
+	}
+	{
+	MercuryFilePtr	Stream;
+	MR_Word	IO0;
+	MR_Word	IO;
+#define	MR_PROC_LABEL	mercury__exception__report_uncaught_exception_2_4_0
+{
+#line 1348 "io.opt"
+
+    Stream = &mercury_stderr;
+    MR_update_io(IO0, IO);
+;}
+#line 5416 "exception.c"
+	MR_tempr1 = (MR_Word) Stream;
+#undef	MR_PROC_LABEL
+	}
+	MR_sv(2) = MR_tempr1;
+	{
+	MercuryFilePtr	Stream;
+	MR_String	Message;
+	MR_Word	IO0;
+	MR_Word	IO;
+#define	MR_PROC_LABEL	mercury__exception__report_uncaught_exception_2_4_0
+	Stream = (MercuryFilePtr) MR_tempr1;
+	Message = (MR_String) (MR_Word) MR_string_const("Uncaught Mercury exception:\n", 28);
+	MR_save_registers();
+{
+#line 1272 "io.opt"
+
+    mercury_print_string(Stream, Message);
+    MR_update_io(IO0, IO);
+;}
+#line 5436 "exception.c"
+#ifndef MR_CONSERVATIVE_GC
+	MR_restore_registers();
+#endif
+#undef	MR_PROC_LABEL
+	}
+	MR_r1 = (MR_Word) MR_CTOR0_ADDR(exception, software_error);
+	MR_r2 = MR_sv(1);
+	}
+	MR_np_call_localret_ent(univ__type_to_univ_2_2,
+		exception__report_uncaught_exception_2_4_0_i3);
+MR_def_label(exception__report_uncaught_exception_2_4_0,3)
+	MR_MAYBE_INIT_LOCAL_THREAD_ENGINE_BASE
+	if (!(MR_r1)) {
+		MR_GOTO_LAB(exception__report_uncaught_exception_2_4_0_i2);
+	}
+	MR_r1 = (MR_Word) MR_string_const("Software Error: ", 16);
+	MR_np_call_localret_ent(string__append_3_2,
+		exception__report_uncaught_exception_2_4_0_i10);
+MR_def_label(exception__report_uncaught_exception_2_4_0,2)
+	MR_MAYBE_INIT_LOCAL_THREAD_ENGINE_BASE
+	{
+	MR_Word MR_tempr1;
+	MR_tempr1 = MR_sv(1);
+	MR_sv(1) = MR_tfield(0, MR_tempr1, 1);
+	MR_sv(3) = MR_tfield(0, MR_tempr1, 0);
+	MR_r1 = (MR_Word) MR_TAG_COMMON(0,8,0);
+	MR_r2 = (MR_Integer) 8;
+	}
+	MR_set_prof_ho_caller_proc(MR_ENTRY_AP(exception__report_uncaught_exception_2_4_0));
+	MR_noprof_call_localret(MR_ENTRY(mercury__do_call_class_method_1),
+		mercury__exception__report_uncaught_exception_2_4_0_i7);
+MR_def_label(exception__report_uncaught_exception_2_4_0,7)
+	MR_MAYBE_INIT_LOCAL_THREAD_ENGINE_BASE
+	{
+	MR_Word MR_tempr1;
+	MR_tempr1 = MR_r1;
+	MR_r1 = MR_sv(3);
+	MR_r2 = (MR_Integer) 1;
+	MR_r4 = ((MR_Integer) MR_tempr1 + (MR_Integer) 1);
+	MR_r5 = MR_sv(1);
+	MR_r6 = (MR_Word) MR_tbmkword(0, 0);
+	}
+	MR_np_call_localret_ent(string__value_to_revstrings_prio_6_1,
+		exception__report_uncaught_exception_2_4_0_i8);
+MR_def_label(exception__report_uncaught_exception_2_4_0,8)
+	MR_MAYBE_INIT_LOCAL_THREAD_ENGINE_BASE
+	{
+	MR_Word MR_tempr1;
+	MR_tempr1 = MR_r1;
+	MR_r1 = (MR_Word) MR_STRING_CTOR_ADDR;
+	MR_r2 = MR_tempr1;
+	}
+	MR_np_call_localret_ent(list__reverse_2_0,
+		exception__report_uncaught_exception_2_4_0_i9);
+MR_def_label(exception__report_uncaught_exception_2_4_0,9)
+	MR_MAYBE_INIT_LOCAL_THREAD_ENGINE_BASE
+	MR_np_call_localret_ent(fn__string__append_list_1_0,
+		exception__report_uncaught_exception_2_4_0_i10);
+MR_def_label(exception__report_uncaught_exception_2_4_0,10)
+	MR_MAYBE_INIT_LOCAL_THREAD_ENGINE_BASE
+	MR_r2 = MR_sv(2);
+	{
+	MR_Word MR_tempr1;
+	{
+	MercuryFilePtr	Stream;
+	MR_String	Message;
+	MR_Word	IO0;
+	MR_Word	IO;
+#define	MR_PROC_LABEL	mercury__exception__report_uncaught_exception_2_4_0
+	Stream = (MercuryFilePtr) MR_r2;
+	Message = (MR_String) MR_r1;
+	MR_save_registers();
+{
+#line 1272 "io.opt"
+
+    mercury_print_string(Stream, Message);
+    MR_update_io(IO0, IO);
+;}
+#line 5515 "exception.c"
+#ifndef MR_CONSERVATIVE_GC
+	MR_restore_registers();
+#endif
+#undef	MR_PROC_LABEL
+	}
+	{
+	MercuryFilePtr	Stream;
+	MR_Char	Character;
+	MR_Word	IO0;
+	MR_Word	IO;
+#define	MR_PROC_LABEL	mercury__exception__report_uncaught_exception_2_4_0
+	Stream = (MercuryFilePtr) MR_sv(2);
+	Character = (MR_Integer) 10;
+	MR_save_registers();
+{
+#line 1276 "io.opt"
+
+    if (Character <= 0x7f) {
+        if (MR_PUTCH(*Stream, Character) < 0) {
+            mercury_output_error(Stream);
+        }
+        if (Character == '\n') {
+            MR_line_number(*Stream)++;
+        }
+    } else {
+        char    buf[5];
+        size_t  len;
+        int     i;
+        len = MR_utf8_encode(buf, Character);
+        for (i = 0; i < len; i++) {
+            if (MR_PUTCH(*Stream, buf[i]) < 0) {
+                mercury_output_error(Stream);
+                break;
+            }
+        }
+    }
+    MR_update_io(IO0, IO);
+;}
+#line 5554 "exception.c"
+#ifndef MR_CONSERVATIVE_GC
+	MR_restore_registers();
+#endif
+#undef	MR_PROC_LABEL
+	}
+	{
+	MercuryFilePtr	Stream;
+	MR_Word	IO0;
+	MR_Word	IO;
+#define	MR_PROC_LABEL	mercury__exception__report_uncaught_exception_2_4_0
+	Stream = (MercuryFilePtr) MR_sv(2);
+	MR_save_registers();
+{
+#line 1319 "io.opt"
+
+    if (MR_FLUSH(*Stream) < 0) {
+        mercury_output_error(Stream);
+    }
+    MR_update_io(IO0, IO);
+;}
+#line 5575 "exception.c"
+#ifndef MR_CONSERVATIVE_GC
+	MR_restore_registers();
+#endif
+#undef	MR_PROC_LABEL
+	}
+	MR_decr_sp_and_return(4);
+	}
+#ifdef MR_maybe_local_thread_engine_base
+	#undef MR_maybe_local_thread_engine_base
+	#define MR_maybe_local_thread_engine_base MR_thread_engine_base
+#endif
+MR_END_MODULE
+
+
+MR_BEGIN_MODULE(exception_module86)
+	MR_init_entry1(exception__set_get_message_hook_2_0);
+	MR_INIT_PROC_LAYOUT_ADDR(mercury__exception__set_get_message_hook_2_0);
+MR_BEGIN_CODE
+
+/*-------------------------------------------------------------------------*/
+/* code for 'set_get_message_hook'/2 mode 0 */
+#ifdef MR_maybe_local_thread_engine_base
+	#undef MR_maybe_local_thread_engine_base
+	#define MR_maybe_local_thread_engine_base MR_local_thread_engine_base
+#endif
+MR_def_static(exception__set_get_message_hook_2_0)
+	MR_MAYBE_INIT_LOCAL_THREAD_ENGINE_BASE
+	MR_proceed();
+#ifdef MR_maybe_local_thread_engine_base
+	#undef MR_maybe_local_thread_engine_base
+	#define MR_maybe_local_thread_engine_base MR_thread_engine_base
+#endif
+MR_END_MODULE
+
+MR_decl_entry(__Unify___univ__univ_0_0);
+MR_decl_entry(builtin__unify_2_0);
+
+MR_BEGIN_MODULE(exception_module87)
+	MR_init_entry1(__Unify___exception__exception_result_1_0);
+	MR_INIT_PROC_LAYOUT_ADDR(mercury____Unify___exception__exception_result_1_0);
+	MR_init_label4(__Unify___exception__exception_result_1_0,5,19,6,1)
+MR_BEGIN_CODE
+
+/*-------------------------------------------------------------------------*/
+/* code for '__Unify__'/2 mode 0 */
+#ifdef MR_maybe_local_thread_engine_base
+	#undef MR_maybe_local_thread_engine_base
+	#define MR_maybe_local_thread_engine_base MR_local_thread_engine_base
+#endif
+MR_define_entry(mercury____Unify___exception__exception_result_1_0);
+	MR_MAYBE_INIT_LOCAL_THREAD_ENGINE_BASE
+	if ((MR_r2 == MR_r3)) {
+		MR_GOTO_LAB(__Unify___exception__exception_result_1_0_i19);
+	}
+	MR_incr_sp(4);
+	MR_sv(4) = (MR_Word) MR_succip;
+	{
+	MR_Word MR_tempr1;
+	MR_tempr1 = MR_r2;
+	MR_sv(1) = MR_tempr1;
+	MR_sv(2) = MR_r3;
+	MR_sv(3) = MR_r1;
+	if (MR_LTAGS_TESTR(MR_tempr1,0,0)) {
+		MR_GOTO_LAB(__Unify___exception__exception_result_1_0_i5);
+	}
+	MR_r1 = (MR_sv(2) == MR_tempr1);
+	MR_decr_sp(4);
+	MR_proceed();
+	}
+MR_def_label(__Unify___exception__exception_result_1_0,5)
+	MR_MAYBE_INIT_LOCAL_THREAD_ENGINE_BASE
+	if (MR_PTAG_TESTR(MR_sv(1),2)) {
+		MR_GOTO_LAB(__Unify___exception__exception_result_1_0_i6);
+	}
+	if (MR_PTAG_TESTR(MR_sv(2),2)) {
+		MR_GOTO_LAB(__Unify___exception__exception_result_1_0_i1);
+	}
+	MR_r1 = MR_tfield(2, MR_sv(1), 0);
+	MR_r2 = MR_tfield(2, MR_sv(2), 0);
+	MR_succip_word = MR_sv(4);
+	MR_decr_sp(4);
+	MR_np_tailcall_ent(__Unify___univ__univ_0_0);
+MR_def_label(__Unify___exception__exception_result_1_0,19)
+	MR_MAYBE_INIT_LOCAL_THREAD_ENGINE_BASE
+	MR_r1 = MR_TRUE;
+	MR_proceed();
+MR_def_label(__Unify___exception__exception_result_1_0,6)
+	MR_MAYBE_INIT_LOCAL_THREAD_ENGINE_BASE
+	if (MR_PTAG_TESTR(MR_sv(2),1)) {
+		MR_GOTO_LAB(__Unify___exception__exception_result_1_0_i1);
+	}
+	MR_r1 = MR_sv(3);
+	MR_r2 = MR_tfield(1, MR_sv(1), 0);
+	MR_r3 = MR_tfield(1, MR_sv(2), 0);
+	MR_succip_word = MR_sv(4);
+	MR_decr_sp(4);
+	MR_np_tailcall_ent(builtin__unify_2_0);
+MR_def_label(__Unify___exception__exception_result_1_0,1)
+	MR_MAYBE_INIT_LOCAL_THREAD_ENGINE_BASE
+	MR_r1 = MR_FALSE;
+	MR_decr_sp_and_return(4);
+#ifdef MR_maybe_local_thread_engine_base
+	#undef MR_maybe_local_thread_engine_base
+	#define MR_maybe_local_thread_engine_base MR_thread_engine_base
+#endif
+MR_END_MODULE
+
+MR_decl_entry(__Compare___univ__univ_0_0);
+MR_decl_entry(builtin__compare_3_0);
+
+MR_BEGIN_MODULE(exception_module88)
+	MR_init_entry1(__Compare___exception__exception_result_1_0);
+	MR_INIT_PROC_LAYOUT_ADDR(mercury____Compare___exception__exception_result_1_0);
+	MR_init_label8(__Compare___exception__exception_result_1_0,30,7,5,33,11,9,15,16)
+MR_BEGIN_CODE
+
+/*-------------------------------------------------------------------------*/
+/* code for '__Compare__'/3 mode 0 */
+#ifdef MR_maybe_local_thread_engine_base
+	#undef MR_maybe_local_thread_engine_base
+	#define MR_maybe_local_thread_engine_base MR_local_thread_engine_base
+#endif
+MR_define_entry(mercury____Compare___exception__exception_result_1_0);
+	MR_MAYBE_INIT_LOCAL_THREAD_ENGINE_BASE
+	MR_incr_sp(4);
+	MR_sv(4) = (MR_Word) MR_succip;
+	if ((MR_r2 == MR_r3)) {
+		MR_GOTO_LAB(__Compare___exception__exception_result_1_0_i30);
+	}
+	MR_sv(1) = MR_r2;
+	MR_sv(2) = MR_r3;
+	MR_sv(3) = MR_r1;
+	if (MR_LTAGS_TESTR(MR_sv(1),0,0)) {
+		MR_GOTO_LAB(__Compare___exception__exception_result_1_0_i5);
+	}
+	if (MR_LTAGS_TESTR(MR_sv(2),0,0)) {
+		MR_GOTO_LAB(__Compare___exception__exception_result_1_0_i7);
+	}
+MR_def_label(__Compare___exception__exception_result_1_0,30)
+	MR_MAYBE_INIT_LOCAL_THREAD_ENGINE_BASE
+	MR_r1 = (MR_Integer) 0;
+	MR_decr_sp_and_return(4);
+MR_def_label(__Compare___exception__exception_result_1_0,7)
+	MR_MAYBE_INIT_LOCAL_THREAD_ENGINE_BASE
+	if (MR_PTAG_TESTR(MR_sv(2),2)) {
+		MR_GOTO_LAB(__Compare___exception__exception_result_1_0_i33);
+	}
+	MR_r1 = (MR_Integer) 1;
+	MR_decr_sp_and_return(4);
+MR_def_label(__Compare___exception__exception_result_1_0,5)
+	MR_MAYBE_INIT_LOCAL_THREAD_ENGINE_BASE
+	if (MR_PTAG_TESTR(MR_sv(1),2)) {
+		MR_GOTO_LAB(__Compare___exception__exception_result_1_0_i9);
+	}
+	if (MR_LTAGS_TESTR(MR_sv(2),0,0)) {
+		MR_GOTO_LAB(__Compare___exception__exception_result_1_0_i11);
+	}
+MR_def_label(__Compare___exception__exception_result_1_0,33)
+	MR_MAYBE_INIT_LOCAL_THREAD_ENGINE_BASE
+	MR_r1 = (MR_Integer) 2;
+	MR_decr_sp_and_return(4);
+MR_def_label(__Compare___exception__exception_result_1_0,11)
+	MR_MAYBE_INIT_LOCAL_THREAD_ENGINE_BASE
+	if (MR_PTAG_TESTR(MR_sv(2),2)) {
+		MR_GOTO_LAB(__Compare___exception__exception_result_1_0_i33);
+	}
+	MR_r1 = MR_tfield(2, MR_sv(1), 0);
+	MR_r2 = MR_tfield(2, MR_sv(2), 0);
+	MR_succip_word = MR_sv(4);
+	MR_decr_sp(4);
+	MR_np_tailcall_ent(__Compare___univ__univ_0_0);
+MR_def_label(__Compare___exception__exception_result_1_0,9)
+	MR_MAYBE_INIT_LOCAL_THREAD_ENGINE_BASE
+	if (MR_LTAGS_TESTR(MR_sv(2),0,0)) {
+		MR_GOTO_LAB(__Compare___exception__exception_result_1_0_i15);
+	}
+	MR_r1 = (MR_Integer) 1;
+	MR_decr_sp_and_return(4);
+MR_def_label(__Compare___exception__exception_result_1_0,15)
+	MR_MAYBE_INIT_LOCAL_THREAD_ENGINE_BASE
+	if (MR_PTAG_TESTR(MR_sv(2),2)) {
+		MR_GOTO_LAB(__Compare___exception__exception_result_1_0_i16);
+	}
+	MR_r1 = (MR_Integer) 1;
+	MR_decr_sp_and_return(4);
+MR_def_label(__Compare___exception__exception_result_1_0,16)
+	MR_MAYBE_INIT_LOCAL_THREAD_ENGINE_BASE
+	MR_r1 = MR_sv(3);
+	MR_r2 = MR_tfield(1, MR_sv(1), 0);
+	MR_r3 = MR_tfield(1, MR_sv(2), 0);
+	MR_succip_word = MR_sv(4);
+	MR_decr_sp(4);
+	MR_np_tailcall_ent(builtin__compare_3_0);
+#ifdef MR_maybe_local_thread_engine_base
+	#undef MR_maybe_local_thread_engine_base
+	#define MR_maybe_local_thread_engine_base MR_thread_engine_base
+#endif
+MR_END_MODULE
+
+
+MR_BEGIN_MODULE(exception_module89)
+	MR_init_entry1(__Unify___exception__exp_determinism_0_0);
+	MR_INIT_PROC_LAYOUT_ADDR(mercury____Unify___exception__exp_determinism_0_0);
+MR_BEGIN_CODE
+
+/*-------------------------------------------------------------------------*/
+/* code for '__Unify__'/2 mode 0 */
+#ifdef MR_maybe_local_thread_engine_base
+	#undef MR_maybe_local_thread_engine_base
+	#define MR_maybe_local_thread_engine_base MR_local_thread_engine_base
+#endif
+MR_define_entry(mercury____Unify___exception__exp_determinism_0_0);
+	MR_MAYBE_INIT_LOCAL_THREAD_ENGINE_BASE
+	MR_r1 = (MR_r1 == MR_r2);
+	MR_proceed();
+#ifdef MR_maybe_local_thread_engine_base
+	#undef MR_maybe_local_thread_engine_base
+	#define MR_maybe_local_thread_engine_base MR_thread_engine_base
+#endif
+MR_END_MODULE
+
+
+MR_BEGIN_MODULE(exception_module90)
+	MR_init_entry1(__Compare___exception__exp_determinism_0_0);
+	MR_INIT_PROC_LAYOUT_ADDR(mercury____Compare___exception__exp_determinism_0_0);
+	MR_init_label2(__Compare___exception__exp_determinism_0_0,2,3)
+MR_BEGIN_CODE
+
+/*-------------------------------------------------------------------------*/
+/* code for '__Compare__'/3 mode 0 */
+#ifdef MR_maybe_local_thread_engine_base
+	#undef MR_maybe_local_thread_engine_base
+	#define MR_maybe_local_thread_engine_base MR_local_thread_engine_base
+#endif
+MR_define_entry(mercury____Compare___exception__exp_determinism_0_0);
+	MR_MAYBE_INIT_LOCAL_THREAD_ENGINE_BASE
+	MR_r3 = MR_r2;
+	MR_r2 = MR_r1;
+	if (((MR_Integer) MR_r2 >= (MR_Integer) MR_r3)) {
+		MR_GOTO_LAB(__Compare___exception__exp_determinism_0_0_i2);
+	}
+	MR_r1 = (MR_Integer) 1;
+	MR_proceed();
+MR_def_label(__Compare___exception__exp_determinism_0_0,2)
+	MR_MAYBE_INIT_LOCAL_THREAD_ENGINE_BASE
+	if ((MR_r2 != MR_r3)) {
+		MR_GOTO_LAB(__Compare___exception__exp_determinism_0_0_i3);
+	}
+	MR_r1 = (MR_Integer) 0;
+	MR_proceed();
+MR_def_label(__Compare___exception__exp_determinism_0_0,3)
+	MR_MAYBE_INIT_LOCAL_THREAD_ENGINE_BASE
+	MR_r1 = (MR_Integer) 2;
+	MR_proceed();
+#ifdef MR_maybe_local_thread_engine_base
+	#undef MR_maybe_local_thread_engine_base
+	#define MR_maybe_local_thread_engine_base MR_thread_engine_base
+#endif
+MR_END_MODULE
+
+MR_decl_entry(private_builtin__builtin_unify_pred_2_0);
+
+MR_BEGIN_MODULE(exception_module91)
+	MR_init_entry1(__Unify___exception__handler_1_0);
+	MR_INIT_PROC_LAYOUT_ADDR(mercury____Unify___exception__handler_1_0);
+MR_BEGIN_CODE
+
+/*-------------------------------------------------------------------------*/
+/* code for '__Unify__'/2 mode 0 */
+#ifdef MR_maybe_local_thread_engine_base
+	#undef MR_maybe_local_thread_engine_base
+	#define MR_maybe_local_thread_engine_base MR_local_thread_engine_base
+#endif
+MR_define_entry(mercury____Unify___exception__handler_1_0);
+	MR_MAYBE_INIT_LOCAL_THREAD_ENGINE_BASE
+	MR_r1 = MR_r2;
+	MR_r2 = MR_r3;
+	MR_np_tailcall_ent(private_builtin__builtin_unify_pred_2_0);
+#ifdef MR_maybe_local_thread_engine_base
+	#undef MR_maybe_local_thread_engine_base
+	#define MR_maybe_local_thread_engine_base MR_thread_engine_base
+#endif
+MR_END_MODULE
+
+MR_decl_entry(private_builtin__builtin_compare_pred_3_0);
+
+MR_BEGIN_MODULE(exception_module92)
+	MR_init_entry1(__Compare___exception__handler_1_0);
+	MR_INIT_PROC_LAYOUT_ADDR(mercury____Compare___exception__handler_1_0);
+MR_BEGIN_CODE
+
+/*-------------------------------------------------------------------------*/
+/* code for '__Compare__'/3 mode 0 */
+#ifdef MR_maybe_local_thread_engine_base
+	#undef MR_maybe_local_thread_engine_base
+	#define MR_maybe_local_thread_engine_base MR_local_thread_engine_base
+#endif
+MR_define_entry(mercury____Compare___exception__handler_1_0);
+	MR_MAYBE_INIT_LOCAL_THREAD_ENGINE_BASE
+	MR_r1 = MR_r2;
+	MR_r2 = MR_r3;
+	MR_np_tailcall_ent(private_builtin__builtin_compare_pred_3_0);
+#ifdef MR_maybe_local_thread_engine_base
+	#undef MR_maybe_local_thread_engine_base
+	#define MR_maybe_local_thread_engine_base MR_thread_engine_base
+#endif
+MR_END_MODULE
+
+
+MR_BEGIN_MODULE(exception_module93)
+	MR_init_entry1(__Unify___exception__near_stack_limits_0_0);
+	MR_INIT_PROC_LAYOUT_ADDR(mercury____Unify___exception__near_stack_limits_0_0);
+MR_BEGIN_CODE
+
+/*-------------------------------------------------------------------------*/
+/* code for '__Unify__'/2 mode 0 */
+#ifdef MR_maybe_local_thread_engine_base
+	#undef MR_maybe_local_thread_engine_base
+	#define MR_maybe_local_thread_engine_base MR_local_thread_engine_base
+#endif
+MR_define_entry(mercury____Unify___exception__near_stack_limits_0_0);
+	MR_MAYBE_INIT_LOCAL_THREAD_ENGINE_BASE
+	MR_np_tailcall_ent(f_101_120_99_101_112_116_105_111_110_95_95_85_110_117_115_101_100_65_114_103_115_95_95_112_114_101_100_95_95_95_95_85_110_105_102_121_95_95_95_101_120_99_101_112_116_105_111_110_95_95_110_101_97_114_95_115_116_97_99_107_95_108_105_109_105_116_115_95_48_95_95_91_49_44_32_50_93_95_48_2_0);
+#ifdef MR_maybe_local_thread_engine_base
+	#undef MR_maybe_local_thread_engine_base
+	#define MR_maybe_local_thread_engine_base MR_thread_engine_base
+#endif
+MR_END_MODULE
+
+
+MR_BEGIN_MODULE(exception_module94)
+	MR_init_entry1(__Compare___exception__near_stack_limits_0_0);
+	MR_INIT_PROC_LAYOUT_ADDR(mercury____Compare___exception__near_stack_limits_0_0);
+MR_BEGIN_CODE
+
+/*-------------------------------------------------------------------------*/
+/* code for '__Compare__'/3 mode 0 */
+#ifdef MR_maybe_local_thread_engine_base
+	#undef MR_maybe_local_thread_engine_base
+	#define MR_maybe_local_thread_engine_base MR_local_thread_engine_base
+#endif
+MR_define_entry(mercury____Compare___exception__near_stack_limits_0_0);
+	MR_MAYBE_INIT_LOCAL_THREAD_ENGINE_BASE
+	MR_np_tailcall_ent(f_101_120_99_101_112_116_105_111_110_95_95_85_110_117_115_101_100_65_114_103_115_95_95_112_114_101_100_95_95_95_95_67_111_109_112_97_114_101_95_95_95_101_120_99_101_112_116_105_111_110_95_95_110_101_97_114_95_115_116_97_99_107_95_108_105_109_105_116_115_95_48_95_95_91_50_44_32_51_93_95_48_3_0);
+#ifdef MR_maybe_local_thread_engine_base
+	#undef MR_maybe_local_thread_engine_base
+	#define MR_maybe_local_thread_engine_base MR_thread_engine_base
+#endif
+MR_END_MODULE
+
+
+MR_BEGIN_MODULE(exception_module95)
+	MR_init_entry1(__Unify___exception__software_error_0_0);
+	MR_INIT_PROC_LAYOUT_ADDR(mercury____Unify___exception__software_error_0_0);
+	MR_init_label1(__Unify___exception__software_error_0_0,4)
+MR_BEGIN_CODE
+
+/*-------------------------------------------------------------------------*/
+/* code for '__Unify__'/2 mode 0 */
+#ifdef MR_maybe_local_thread_engine_base
+	#undef MR_maybe_local_thread_engine_base
+	#define MR_maybe_local_thread_engine_base MR_local_thread_engine_base
+#endif
+MR_define_entry(mercury____Unify___exception__software_error_0_0);
+	MR_MAYBE_INIT_LOCAL_THREAD_ENGINE_BASE
+	MR_incr_sp(2);
+	if ((MR_r1 == MR_r2)) {
+		MR_GOTO_LAB(__Unify___exception__software_error_0_0_i4);
+	}
+	MR_sv(1) = MR_r1;
+	MR_sv(2) = MR_r2;
+	MR_r1 = (strcmp((char *) (MR_Word *) MR_sv(1), (char *) (MR_Word *) MR_sv(2)) == 0);
+	MR_decr_sp(2);
+	MR_proceed();
+MR_def_label(__Unify___exception__software_error_0_0,4)
+	MR_MAYBE_INIT_LOCAL_THREAD_ENGINE_BASE
+	MR_decr_sp(2);
+	MR_r1 = MR_TRUE;
+	MR_proceed();
+#ifdef MR_maybe_local_thread_engine_base
+	#undef MR_maybe_local_thread_engine_base
+	#define MR_maybe_local_thread_engine_base MR_thread_engine_base
+#endif
+MR_END_MODULE
+
+
+MR_BEGIN_MODULE(exception_module96)
+	MR_init_entry1(__Compare___exception__software_error_0_0);
+	MR_INIT_PROC_LAYOUT_ADDR(mercury____Compare___exception__software_error_0_0);
+	MR_init_label3(__Compare___exception__software_error_0_0,4,12,5)
+MR_BEGIN_CODE
+
+/*-------------------------------------------------------------------------*/
+/* code for '__Compare__'/3 mode 0 */
+#ifdef MR_maybe_local_thread_engine_base
+	#undef MR_maybe_local_thread_engine_base
+	#define MR_maybe_local_thread_engine_base MR_local_thread_engine_base
+#endif
+MR_define_entry(mercury____Compare___exception__software_error_0_0);
+	MR_MAYBE_INIT_LOCAL_THREAD_ENGINE_BASE
+	MR_incr_sp(2);
+	if ((MR_r1 == MR_r2)) {
+		MR_GOTO_LAB(__Compare___exception__software_error_0_0_i12);
+	}
+	MR_sv(1) = MR_r1;
+	MR_sv(2) = MR_r2;
+	{
+	MR_Integer	Res;
+	MR_String	S1;
+	MR_String	S2;
+#define	MR_PROC_LABEL	mercury____Compare___exception__software_error_0_0
+	S1 = (MR_String) MR_sv(1);
+	S2 = (MR_String) MR_sv(2);
+{
+#line 129 "private_builtin.opt"
+
+    Res = strcmp(S1, S2);
+;}
+#line 5994 "exception.c"
+	MR_r2 = Res;
+#undef	MR_PROC_LABEL
+	}
+	if (MR_INT_GE(MR_r2,0)) {
+		MR_GOTO_LAB(__Compare___exception__software_error_0_0_i4);
+	}
+	MR_r1 = (MR_Integer) 1;
+	MR_decr_sp(2);
+	MR_proceed();
+MR_def_label(__Compare___exception__software_error_0_0,4)
+	MR_MAYBE_INIT_LOCAL_THREAD_ENGINE_BASE
+	if (MR_INT_NE(MR_r2,0)) {
+		MR_GOTO_LAB(__Compare___exception__software_error_0_0_i5);
+	}
+MR_def_label(__Compare___exception__software_error_0_0,12)
+	MR_MAYBE_INIT_LOCAL_THREAD_ENGINE_BASE
+	MR_r1 = (MR_Integer) 0;
+	MR_decr_sp(2);
+	MR_proceed();
+MR_def_label(__Compare___exception__software_error_0_0,5)
+	MR_MAYBE_INIT_LOCAL_THREAD_ENGINE_BASE
+	MR_r1 = (MR_Integer) 2;
+	MR_decr_sp(2);
+	MR_proceed();
+#ifdef MR_maybe_local_thread_engine_base
+	#undef MR_maybe_local_thread_engine_base
+	#define MR_maybe_local_thread_engine_base MR_thread_engine_base
+#endif
+MR_END_MODULE
+
+
+MR_BEGIN_MODULE(exception_module97)
+	MR_init_entry1(exception__IntroducedFrom__pred__incremental_try_all__613__1_3_0);
+	MR_INIT_PROC_LAYOUT_ADDR(mercury__exception__IntroducedFrom__pred__incremental_try_all__613__1_3_0);
+MR_BEGIN_CODE
+
+/*-------------------------------------------------------------------------*/
+/* code for 'IntroducedFrom__pred__incremental_try_all__613__1'/3 mode 0 */
+#ifdef MR_maybe_local_thread_engine_base
+	#undef MR_maybe_local_thread_engine_base
+	#define MR_maybe_local_thread_engine_base MR_local_thread_engine_base
+#endif
+MR_def_static(exception__IntroducedFrom__pred__incremental_try_all__613__1_3_0)
+	MR_MAYBE_INIT_LOCAL_THREAD_ENGINE_BASE
+	{
+	MR_Word MR_tempr1, MR_tempr2;
+	MR_tag_alloc_heap(MR_tempr1, 0, (MR_Integer) 4);
+	MR_r3 = MR_tempr1;
+	MR_tfield(0, MR_tempr1, 0) = (MR_Word) MR_COMMON(3,12);
+	MR_tfield(0, MR_tempr1, 1) = (MR_Word) MR_ENTRY_AP(exception__wrap_exception_2_0);
+	MR_tfield(0, MR_tempr1, 2) = (MR_Integer) 1;
+	MR_tfield(0, MR_tempr1, 3) = MR_r1;
+	MR_tag_alloc_heap(MR_tempr2, 0, (MR_Integer) 2);
+	MR_tfield(0, MR_tempr2, 0) = (MR_Word) MR_CTOR1_ADDR(exception, exception_result);
+	MR_tfield(0, MR_tempr2, 1) = MR_r1;
+	MR_r1 = MR_tempr2;
+	MR_np_tailcall_ent(exception__builtin_catch_3_5);
+	}
+#ifdef MR_maybe_local_thread_engine_base
+	#undef MR_maybe_local_thread_engine_base
+	#define MR_maybe_local_thread_engine_base MR_thread_engine_base
+#endif
+MR_END_MODULE
+
+
+MR_BEGIN_MODULE(exception_module98)
+	MR_init_entry1(exception__IntroducedFrom__pred__incremental_try_all__613__2_3_0);
+	MR_INIT_PROC_LAYOUT_ADDR(mercury__exception__IntroducedFrom__pred__incremental_try_all__613__2_3_0);
+MR_BEGIN_CODE
+
+/*-------------------------------------------------------------------------*/
+/* code for 'IntroducedFrom__pred__incremental_try_all__613__2'/3 mode 0 */
+#ifdef MR_maybe_local_thread_engine_base
+	#undef MR_maybe_local_thread_engine_base
+	#define MR_maybe_local_thread_engine_base MR_local_thread_engine_base
+#endif
+MR_def_static(exception__IntroducedFrom__pred__incremental_try_all__613__2_3_0)
+	MR_MAYBE_INIT_LOCAL_THREAD_ENGINE_BASE
+	{
+	MR_Word MR_tempr1, MR_tempr2;
+	MR_tag_alloc_heap(MR_tempr1, 0, (MR_Integer) 4);
+	MR_r3 = MR_tempr1;
+	MR_tfield(0, MR_tempr1, 0) = (MR_Word) MR_COMMON(3,13);
+	MR_tfield(0, MR_tempr1, 1) = (MR_Word) MR_ENTRY_AP(exception__wrap_exception_2_0);
+	MR_tfield(0, MR_tempr1, 2) = (MR_Integer) 1;
+	MR_tfield(0, MR_tempr1, 3) = MR_r1;
+	MR_tag_alloc_heap(MR_tempr2, 0, (MR_Integer) 2);
+	MR_tfield(0, MR_tempr2, 0) = (MR_Word) MR_CTOR1_ADDR(exception, exception_result);
+	MR_tfield(0, MR_tempr2, 1) = MR_r1;
+	MR_r1 = MR_tempr2;
+	MR_np_tailcall_ent(exception__builtin_catch_3_5);
+	}
+#ifdef MR_maybe_local_thread_engine_base
+	#undef MR_maybe_local_thread_engine_base
+	#define MR_maybe_local_thread_engine_base MR_thread_engine_base
+#endif
+MR_END_MODULE
+
+
+MR_BEGIN_MODULE(exception_module99)
+	MR_init_entry1(exception__IntroducedFrom__pred__try_store_det__631__1_5_0);
+	MR_INIT_PROC_LAYOUT_ADDR(mercury__exception__IntroducedFrom__pred__try_store_det__631__1_5_0);
+	MR_init_label1(exception__IntroducedFrom__pred__try_store_det__631__1_5_0,2)
+MR_BEGIN_CODE
+
+/*-------------------------------------------------------------------------*/
+/* code for 'IntroducedFrom__pred__try_store_det__631__1'/5 mode 0 */
+#ifdef MR_maybe_local_thread_engine_base
+	#undef MR_maybe_local_thread_engine_base
+	#define MR_maybe_local_thread_engine_base MR_local_thread_engine_base
+#endif
+MR_def_static(exception__IntroducedFrom__pred__try_store_det__631__1_5_0)
+	MR_MAYBE_INIT_LOCAL_THREAD_ENGINE_BASE
+	MR_incr_sp(1);
+	MR_sv(1) = (MR_Word) MR_succip;
+	MR_r1 = MR_r3;
+	MR_set_prof_ho_caller_proc(MR_ENTRY_AP(exception__IntroducedFrom__pred__try_store_det__631__1_5_0));
+	MR_noprof_call_localret(MR_ENTRY(mercury__do_call_closure_1),
+		mercury__exception__IntroducedFrom__pred__try_store_det__631__1_5_0_i2);
+MR_def_label(exception__IntroducedFrom__pred__try_store_det__631__1_5_0,2)
+	MR_MAYBE_INIT_LOCAL_THREAD_ENGINE_BASE
+	{
+	MR_Word MR_tempr1;
+	MR_tag_alloc_heap(MR_tempr1, 0, (MR_Integer) 2);
+	MR_tfield(0, MR_tempr1, 0) = MR_r1;
+	MR_r1 = MR_tempr1;
+	MR_decr_sp_and_return(1);
+	}
+#ifdef MR_maybe_local_thread_engine_base
+	#undef MR_maybe_local_thread_engine_base
+	#define MR_maybe_local_thread_engine_base MR_thread_engine_base
+#endif
+MR_END_MODULE
+
+
+MR_BEGIN_MODULE(exception_module100)
+	MR_init_entry1(exception__IntroducedFrom__pred__try_store_det__638__1_5_0);
+	MR_INIT_PROC_LAYOUT_ADDR(mercury__exception__IntroducedFrom__pred__try_store_det__638__1_5_0);
+	MR_init_label1(exception__IntroducedFrom__pred__try_store_det__638__1_5_0,2)
+MR_BEGIN_CODE
+
+/*-------------------------------------------------------------------------*/
+/* code for 'IntroducedFrom__pred__try_store_det__638__1'/5 mode 0 */
+#ifdef MR_maybe_local_thread_engine_base
+	#undef MR_maybe_local_thread_engine_base
+	#define MR_maybe_local_thread_engine_base MR_local_thread_engine_base
+#endif
+MR_def_static(exception__IntroducedFrom__pred__try_store_det__638__1_5_0)
+	MR_MAYBE_INIT_LOCAL_THREAD_ENGINE_BASE
+	MR_incr_sp(1);
+	MR_sv(1) = (MR_Word) MR_succip;
+	MR_r1 = MR_r3;
+	MR_set_prof_ho_caller_proc(MR_ENTRY_AP(exception__IntroducedFrom__pred__try_store_det__638__1_5_0));
+	MR_noprof_call_localret(MR_ENTRY(mercury__do_call_closure_1),
+		mercury__exception__IntroducedFrom__pred__try_store_det__638__1_5_0_i2);
+MR_def_label(exception__IntroducedFrom__pred__try_store_det__638__1_5_0,2)
+	MR_MAYBE_INIT_LOCAL_THREAD_ENGINE_BASE
+	{
+	MR_Word MR_tempr1;
+	MR_tag_alloc_heap(MR_tempr1, 0, (MR_Integer) 2);
+	MR_tfield(0, MR_tempr1, 0) = MR_r1;
+	MR_r1 = MR_tempr1;
+	MR_decr_sp_and_return(1);
+	}
+#ifdef MR_maybe_local_thread_engine_base
+	#undef MR_maybe_local_thread_engine_base
+	#define MR_maybe_local_thread_engine_base MR_thread_engine_base
+#endif
+MR_END_MODULE
+
+
+MR_BEGIN_MODULE(exception_module101)
+	MR_init_entry1(exception__IntroducedFrom__pred__try_all_det__579__1_3_0);
+	MR_INIT_PROC_LAYOUT_ADDR(mercury__exception__IntroducedFrom__pred__try_all_det__579__1_3_0);
+MR_BEGIN_CODE
+
+/*-------------------------------------------------------------------------*/
+/* code for 'IntroducedFrom__pred__try_all_det__579__1'/3 mode 0 */
+#ifdef MR_maybe_local_thread_engine_base
+	#undef MR_maybe_local_thread_engine_base
+	#define MR_maybe_local_thread_engine_base MR_local_thread_engine_base
+#endif
+MR_def_static(exception__IntroducedFrom__pred__try_all_det__579__1_3_0)
+	MR_MAYBE_INIT_LOCAL_THREAD_ENGINE_BASE
+	{
+	MR_Word MR_tempr1, MR_tempr2;
+	MR_tag_alloc_heap(MR_tempr1, 0, (MR_Integer) 4);
+	MR_r3 = MR_tempr1;
+	MR_tfield(0, MR_tempr1, 0) = (MR_Word) MR_COMMON(3,14);
+	MR_tfield(0, MR_tempr1, 1) = (MR_Word) MR_ENTRY_AP(exception__wrap_exception_2_0);
+	MR_tfield(0, MR_tempr1, 2) = (MR_Integer) 1;
+	MR_tfield(0, MR_tempr1, 3) = MR_r1;
+	MR_tag_alloc_heap(MR_tempr2, 0, (MR_Integer) 2);
+	MR_tfield(0, MR_tempr2, 0) = (MR_Word) MR_CTOR1_ADDR(exception, exception_result);
+	MR_tfield(0, MR_tempr2, 1) = MR_r1;
+	MR_r1 = MR_tempr2;
+	MR_np_tailcall_ent(exception__catch_impl_3_4);
+	}
+#ifdef MR_maybe_local_thread_engine_base
+	#undef MR_maybe_local_thread_engine_base
+	#define MR_maybe_local_thread_engine_base MR_thread_engine_base
+#endif
+MR_END_MODULE
+
+
+MR_BEGIN_MODULE(exception_module102)
+	MR_init_entry1(exception__IntroducedFrom__pred__try_all_det__589__1_3_0);
+	MR_INIT_PROC_LAYOUT_ADDR(mercury__exception__IntroducedFrom__pred__try_all_det__589__1_3_0);
+MR_BEGIN_CODE
+
+/*-------------------------------------------------------------------------*/
+/* code for 'IntroducedFrom__pred__try_all_det__589__1'/3 mode 0 */
+#ifdef MR_maybe_local_thread_engine_base
+	#undef MR_maybe_local_thread_engine_base
+	#define MR_maybe_local_thread_engine_base MR_local_thread_engine_base
+#endif
+MR_def_static(exception__IntroducedFrom__pred__try_all_det__589__1_3_0)
+	MR_MAYBE_INIT_LOCAL_THREAD_ENGINE_BASE
+	{
+	MR_Word MR_tempr1, MR_tempr2;
+	MR_tag_alloc_heap(MR_tempr1, 0, (MR_Integer) 4);
+	MR_r3 = MR_tempr1;
+	MR_tfield(0, MR_tempr1, 0) = (MR_Word) MR_COMMON(3,15);
+	MR_tfield(0, MR_tempr1, 1) = (MR_Word) MR_ENTRY_AP(exception__wrap_exception_2_0);
+	MR_tfield(0, MR_tempr1, 2) = (MR_Integer) 1;
+	MR_tfield(0, MR_tempr1, 3) = MR_r1;
+	MR_tag_alloc_heap(MR_tempr2, 0, (MR_Integer) 2);
+	MR_tfield(0, MR_tempr2, 0) = (MR_Word) MR_CTOR1_ADDR(exception, exception_result);
+	MR_tfield(0, MR_tempr2, 1) = MR_r1;
+	MR_r1 = MR_tempr2;
+	MR_np_tailcall_ent(exception__catch_impl_3_5);
+	}
+#ifdef MR_maybe_local_thread_engine_base
+	#undef MR_maybe_local_thread_engine_base
+	#define MR_maybe_local_thread_engine_base MR_thread_engine_base
+#endif
+MR_END_MODULE
+
+
+MR_BEGIN_MODULE(exception_module103)
+	MR_init_entry1(exception__IntroducedFrom__pred__try_stm_det__771__1_4_0);
+	MR_INIT_PROC_LAYOUT_ADDR(mercury__exception__IntroducedFrom__pred__try_stm_det__771__1_4_0);
+	MR_init_label1(exception__IntroducedFrom__pred__try_stm_det__771__1_4_0,2)
+MR_BEGIN_CODE
+
+/*-------------------------------------------------------------------------*/
+/* code for 'IntroducedFrom__pred__try_stm_det__771__1'/4 mode 0 */
+#ifdef MR_maybe_local_thread_engine_base
+	#undef MR_maybe_local_thread_engine_base
+	#define MR_maybe_local_thread_engine_base MR_local_thread_engine_base
+#endif
+MR_def_static(exception__IntroducedFrom__pred__try_stm_det__771__1_4_0)
+	MR_MAYBE_INIT_LOCAL_THREAD_ENGINE_BASE
+	MR_incr_sp(1);
+	MR_sv(1) = (MR_Word) MR_succip;
+	MR_r1 = MR_r2;
+	MR_r2 = MR_r3;
+	MR_set_prof_ho_caller_proc(MR_ENTRY_AP(exception__IntroducedFrom__pred__try_stm_det__771__1_4_0));
+	MR_noprof_call_localret(MR_ENTRY(mercury__do_call_closure_1),
+		mercury__exception__IntroducedFrom__pred__try_stm_det__771__1_4_0_i2);
+MR_def_label(exception__IntroducedFrom__pred__try_stm_det__771__1_4_0,2)
+	MR_MAYBE_INIT_LOCAL_THREAD_ENGINE_BASE
+	{
+	MR_Word MR_tempr1;
+	MR_tag_alloc_heap(MR_tempr1, 0, (MR_Integer) 2);
+	MR_tfield(0, MR_tempr1, 0) = MR_r1;
+	MR_tfield(0, MR_tempr1, 1) = MR_r2;
+	MR_r1 = MR_tempr1;
+	MR_decr_sp_and_return(1);
+	}
+#ifdef MR_maybe_local_thread_engine_base
+	#undef MR_maybe_local_thread_engine_base
+	#define MR_maybe_local_thread_engine_base MR_thread_engine_base
+#endif
+MR_END_MODULE
+
+
+MR_BEGIN_MODULE(exception_module104)
+	MR_init_entry1(exception__IntroducedFrom__pred__try_stm_cc_multi__784__1_4_0);
+	MR_INIT_PROC_LAYOUT_ADDR(mercury__exception__IntroducedFrom__pred__try_stm_cc_multi__784__1_4_0);
+	MR_init_label1(exception__IntroducedFrom__pred__try_stm_cc_multi__784__1_4_0,2)
+MR_BEGIN_CODE
+
+/*-------------------------------------------------------------------------*/
+/* code for 'IntroducedFrom__pred__try_stm_cc_multi__784__1'/4 mode 0 */
+#ifdef MR_maybe_local_thread_engine_base
+	#undef MR_maybe_local_thread_engine_base
+	#define MR_maybe_local_thread_engine_base MR_local_thread_engine_base
+#endif
+MR_def_static(exception__IntroducedFrom__pred__try_stm_cc_multi__784__1_4_0)
+	MR_MAYBE_INIT_LOCAL_THREAD_ENGINE_BASE
+	MR_incr_sp(1);
+	MR_sv(1) = (MR_Word) MR_succip;
+	MR_r1 = MR_r2;
+	MR_r2 = MR_r3;
+	MR_set_prof_ho_caller_proc(MR_ENTRY_AP(exception__IntroducedFrom__pred__try_stm_cc_multi__784__1_4_0));
+	MR_noprof_call_localret(MR_ENTRY(mercury__do_call_closure_1),
+		mercury__exception__IntroducedFrom__pred__try_stm_cc_multi__784__1_4_0_i2);
+MR_def_label(exception__IntroducedFrom__pred__try_stm_cc_multi__784__1_4_0,2)
+	MR_MAYBE_INIT_LOCAL_THREAD_ENGINE_BASE
+	{
+	MR_Word MR_tempr1;
+	MR_tag_alloc_heap(MR_tempr1, 0, (MR_Integer) 2);
+	MR_tfield(0, MR_tempr1, 0) = MR_r1;
+	MR_tfield(0, MR_tempr1, 1) = MR_r2;
+	MR_r1 = MR_tempr1;
+	MR_decr_sp_and_return(1);
+	}
+#ifdef MR_maybe_local_thread_engine_base
+	#undef MR_maybe_local_thread_engine_base
+	#define MR_maybe_local_thread_engine_base MR_thread_engine_base
+#endif
+MR_END_MODULE
+
+
+MR_BEGIN_MODULE(exception_module105)
+	MR_init_entry1(f_101_120_99_101_112_116_105_111_110_95_95_85_110_117_115_101_100_65_114_103_115_95_95_112_114_101_100_95_95_116_114_121_95_100_101_116_95_95_91_50_93_95_48_3_0);
+	MR_INIT_PROC_LAYOUT_ADDR(mercury__f_101_120_99_101_112_116_105_111_110_95_95_85_110_117_115_101_100_65_114_103_115_95_95_112_114_101_100_95_95_116_114_121_95_100_101_116_95_95_91_50_93_95_48_3_0);
+	MR_init_label1(f_101_120_99_101_112_116_105_111_110_95_95_85_110_117_115_101_100_65_114_103_115_95_95_112_114_101_100_95_95_116_114_121_95_100_101_116_95_95_91_50_93_95_48_3_0,5)
+MR_BEGIN_CODE
+
+/*-------------------------------------------------------------------------*/
+/* code for 'UnusedArgs__pred__try_det__[2]_0'/3 mode 0 */
+#ifdef MR_maybe_local_thread_engine_base
+	#undef MR_maybe_local_thread_engine_base
+	#define MR_maybe_local_thread_engine_base MR_local_thread_engine_base
+#endif
+MR_define_entry(mercury__f_101_120_99_101_112_116_105_111_110_95_95_85_110_117_115_101_100_65_114_103_115_95_95_112_114_101_100_95_95_116_114_121_95_100_101_116_95_95_91_50_93_95_48_3_0);
+	MR_MAYBE_INIT_LOCAL_THREAD_ENGINE_BASE
+	MR_incr_sp(1);
+	MR_sv(1) = (MR_Word) MR_succip;
+	{
+	MR_Word MR_tempr1, MR_tempr2, MR_tempr3;
+	MR_tag_alloc_heap(MR_tempr1, 0, (MR_Integer) 5);
+	MR_tfield(0, MR_tempr1, 0) = (MR_Word) MR_COMMON(3,16);
+	MR_tfield(0, MR_tempr1, 1) = (MR_Word) MR_ENTRY_AP(exception__wrap_success_or_failure_2_0);
+	MR_tfield(0, MR_tempr1, 2) = (MR_Integer) 2;
+	MR_tfield(0, MR_tempr1, 3) = MR_r1;
+	MR_tfield(0, MR_tempr1, 4) = MR_r2;
+	MR_tag_alloc_heap(MR_tempr2, 0, (MR_Integer) 4);
+	MR_r3 = MR_tempr2;
+	MR_tfield(0, MR_tempr2, 0) = (MR_Word) MR_COMMON(3,17);
+	MR_tfield(0, MR_tempr2, 1) = (MR_Word) MR_ENTRY_AP(exception__wrap_exception_2_0);
+	MR_tfield(0, MR_tempr2, 2) = (MR_Integer) 1;
+	MR_tfield(0, MR_tempr2, 3) = MR_r1;
+	MR_tag_alloc_heap(MR_tempr3, 0, (MR_Integer) 2);
+	MR_tfield(0, MR_tempr3, 0) = (MR_Word) MR_CTOR1_ADDR(exception, exception_result);
+	MR_tfield(0, MR_tempr3, 1) = MR_r1;
+	MR_r1 = MR_tempr3;
+	MR_r2 = MR_tempr1;
+	}
+	MR_np_call_localret_ent(exception__builtin_catch_3_0,
+		f_101_120_99_101_112_116_105_111_110_95_95_85_110_117_115_101_100_65_114_103_115_95_95_112_114_101_100_95_95_116_114_121_95_100_101_116_95_95_91_50_93_95_48_3_0_i5);
+MR_def_label(f_101_120_99_101_112_116_105_111_110_95_95_85_110_117_115_101_100_65_114_103_115_95_95_112_114_101_100_95_95_116_114_121_95_100_101_116_95_95_91_50_93_95_48_3_0,5)
+	MR_MAYBE_INIT_LOCAL_THREAD_ENGINE_BASE
+	{
+	MR_Word	X;
+	MR_Word	Y;
+#define	MR_PROC_LABEL	mercury__f_101_120_99_101_112_116_105_111_110_95_95_85_110_117_115_101_100_65_114_103_115_95_95_112_114_101_100_95_95_116_114_121_95_100_101_116_95_95_91_50_93_95_48_3_0
+	X = MR_r1;
+{
+#line 102 "builtin.opt"
+
+    Y = X;
+;}
+#line 6360 "exception.c"
+	MR_r1 = Y;
+#undef	MR_PROC_LABEL
+	}
+	MR_decr_sp_and_return(1);
+#ifdef MR_maybe_local_thread_engine_base
+	#undef MR_maybe_local_thread_engine_base
+	#define MR_maybe_local_thread_engine_base MR_thread_engine_base
+#endif
+MR_END_MODULE
+
+
+MR_BEGIN_MODULE(exception_module106)
+	MR_init_entry1(f_101_120_99_101_112_116_105_111_110_95_95_85_110_117_115_101_100_65_114_103_115_95_95_112_114_101_100_95_95_116_114_121_95_100_101_116_95_95_91_50_93_95_49_3_1);
+	MR_INIT_PROC_LAYOUT_ADDR(mercury__f_101_120_99_101_112_116_105_111_110_95_95_85_110_117_115_101_100_65_114_103_115_95_95_112_114_101_100_95_95_116_114_121_95_100_101_116_95_95_91_50_93_95_49_3_1);
+	MR_init_label1(f_101_120_99_101_112_116_105_111_110_95_95_85_110_117_115_101_100_65_114_103_115_95_95_112_114_101_100_95_95_116_114_121_95_100_101_116_95_95_91_50_93_95_49_3_1,5)
+MR_BEGIN_CODE
+
+/*-------------------------------------------------------------------------*/
+/* code for 'UnusedArgs__pred__try_det__[2]_1'/3 mode 1 */
+#ifdef MR_maybe_local_thread_engine_base
+	#undef MR_maybe_local_thread_engine_base
+	#define MR_maybe_local_thread_engine_base MR_local_thread_engine_base
+#endif
+MR_define_entry(mercury__f_101_120_99_101_112_116_105_111_110_95_95_85_110_117_115_101_100_65_114_103_115_95_95_112_114_101_100_95_95_116_114_121_95_100_101_116_95_95_91_50_93_95_49_3_1);
+	MR_MAYBE_INIT_LOCAL_THREAD_ENGINE_BASE
+	MR_incr_sp(1);
+	MR_sv(1) = (MR_Word) MR_succip;
+	{
+	MR_Word MR_tempr1, MR_tempr2, MR_tempr3;
+	MR_tag_alloc_heap(MR_tempr1, 0, (MR_Integer) 5);
+	MR_tfield(0, MR_tempr1, 0) = (MR_Word) MR_COMMON(3,18);
+	MR_tfield(0, MR_tempr1, 1) = (MR_Word) MR_ENTRY_AP(exception__wrap_success_or_failure_2_1);
+	MR_tfield(0, MR_tempr1, 2) = (MR_Integer) 2;
+	MR_tfield(0, MR_tempr1, 3) = MR_r1;
+	MR_tfield(0, MR_tempr1, 4) = MR_r2;
+	MR_tag_alloc_heap(MR_tempr2, 0, (MR_Integer) 4);
+	MR_r3 = MR_tempr2;
+	MR_tfield(0, MR_tempr2, 0) = (MR_Word) MR_COMMON(3,19);
+	MR_tfield(0, MR_tempr2, 1) = (MR_Word) MR_ENTRY_AP(exception__wrap_exception_2_0);
+	MR_tfield(0, MR_tempr2, 2) = (MR_Integer) 1;
+	MR_tfield(0, MR_tempr2, 3) = MR_r1;
+	MR_tag_alloc_heap(MR_tempr3, 0, (MR_Integer) 2);
+	MR_tfield(0, MR_tempr3, 0) = (MR_Word) MR_CTOR1_ADDR(exception, exception_result);
+	MR_tfield(0, MR_tempr3, 1) = MR_r1;
+	MR_r1 = MR_tempr3;
+	MR_r2 = MR_tempr1;
+	}
+	MR_np_call_localret_ent(exception__builtin_catch_3_0,
+		f_101_120_99_101_112_116_105_111_110_95_95_85_110_117_115_101_100_65_114_103_115_95_95_112_114_101_100_95_95_116_114_121_95_100_101_116_95_95_91_50_93_95_49_3_1_i5);
+MR_def_label(f_101_120_99_101_112_116_105_111_110_95_95_85_110_117_115_101_100_65_114_103_115_95_95_112_114_101_100_95_95_116_114_121_95_100_101_116_95_95_91_50_93_95_49_3_1,5)
+	MR_MAYBE_INIT_LOCAL_THREAD_ENGINE_BASE
+	{
+	MR_Word	X;
+	MR_Word	Y;
+#define	MR_PROC_LABEL	mercury__f_101_120_99_101_112_116_105_111_110_95_95_85_110_117_115_101_100_65_114_103_115_95_95_112_114_101_100_95_95_116_114_121_95_100_101_116_95_95_91_50_93_95_49_3_1
+	X = MR_r1;
+{
+#line 102 "builtin.opt"
+
+    Y = X;
+;}
+#line 6422 "exception.c"
+	MR_r1 = Y;
+#undef	MR_PROC_LABEL
+	}
+	MR_decr_sp_and_return(1);
+#ifdef MR_maybe_local_thread_engine_base
+	#undef MR_maybe_local_thread_engine_base
+	#define MR_maybe_local_thread_engine_base MR_thread_engine_base
+#endif
+MR_END_MODULE
+
+
+MR_BEGIN_MODULE(exception_module107)
+	MR_init_entry1(f_101_120_99_101_112_116_105_111_110_95_95_85_110_117_115_101_100_65_114_103_115_95_95_112_114_101_100_95_95_116_114_121_95_100_101_116_95_95_91_50_93_95_50_3_2);
+	MR_INIT_PROC_LAYOUT_ADDR(mercury__f_101_120_99_101_112_116_105_111_110_95_95_85_110_117_115_101_100_65_114_103_115_95_95_112_114_101_100_95_95_116_114_121_95_100_101_116_95_95_91_50_93_95_50_3_2);
+MR_BEGIN_CODE
+
+/*-------------------------------------------------------------------------*/
+/* code for 'UnusedArgs__pred__try_det__[2]_2'/3 mode 2 */
+#ifdef MR_maybe_local_thread_engine_base
+	#undef MR_maybe_local_thread_engine_base
+	#define MR_maybe_local_thread_engine_base MR_local_thread_engine_base
+#endif
+MR_define_entry(mercury__f_101_120_99_101_112_116_105_111_110_95_95_85_110_117_115_101_100_65_114_103_115_95_95_112_114_101_100_95_95_116_114_121_95_100_101_116_95_95_91_50_93_95_50_3_2);
+	MR_MAYBE_INIT_LOCAL_THREAD_ENGINE_BASE
+	{
+	MR_Word MR_tempr1, MR_tempr2, MR_tempr3;
+	MR_tag_alloc_heap(MR_tempr1, 0, (MR_Integer) 5);
+	MR_tfield(0, MR_tempr1, 0) = (MR_Word) MR_COMMON(3,20);
+	MR_tfield(0, MR_tempr1, 1) = (MR_Word) MR_ENTRY_AP(exception__wrap_success_or_failure_2_2);
+	MR_tfield(0, MR_tempr1, 2) = (MR_Integer) 2;
+	MR_tfield(0, MR_tempr1, 3) = MR_r1;
+	MR_tfield(0, MR_tempr1, 4) = MR_r2;
+	MR_tag_alloc_heap(MR_tempr2, 0, (MR_Integer) 4);
+	MR_r3 = MR_tempr2;
+	MR_tfield(0, MR_tempr2, 0) = (MR_Word) MR_COMMON(3,21);
+	MR_tfield(0, MR_tempr2, 1) = (MR_Word) MR_ENTRY_AP(exception__wrap_exception_2_0);
+	MR_tfield(0, MR_tempr2, 2) = (MR_Integer) 1;
+	MR_tfield(0, MR_tempr2, 3) = MR_r1;
+	MR_tag_alloc_heap(MR_tempr3, 0, (MR_Integer) 2);
+	MR_tfield(0, MR_tempr3, 0) = (MR_Word) MR_CTOR1_ADDR(exception, exception_result);
+	MR_tfield(0, MR_tempr3, 1) = MR_r1;
+	MR_r1 = MR_tempr3;
+	MR_r2 = MR_tempr1;
+	MR_np_tailcall_ent(exception__builtin_catch_3_2);
+	}
+#ifdef MR_maybe_local_thread_engine_base
+	#undef MR_maybe_local_thread_engine_base
+	#define MR_maybe_local_thread_engine_base MR_thread_engine_base
+#endif
+MR_END_MODULE
+
+
+MR_BEGIN_MODULE(exception_module108)
+	MR_init_entry1(f_101_120_99_101_112_116_105_111_110_95_95_85_110_117_115_101_100_65_114_103_115_95_95_112_114_101_100_95_95_116_114_121_95_100_101_116_95_95_91_50_93_95_51_3_3);
+	MR_INIT_PROC_LAYOUT_ADDR(mercury__f_101_120_99_101_112_116_105_111_110_95_95_85_110_117_115_101_100_65_114_103_115_95_95_112_114_101_100_95_95_116_114_121_95_100_101_116_95_95_91_50_93_95_51_3_3);
+MR_BEGIN_CODE
+
+/*-------------------------------------------------------------------------*/
+/* code for 'UnusedArgs__pred__try_det__[2]_3'/3 mode 3 */
+#ifdef MR_maybe_local_thread_engine_base
+	#undef MR_maybe_local_thread_engine_base
+	#define MR_maybe_local_thread_engine_base MR_local_thread_engine_base
+#endif
+MR_define_entry(mercury__f_101_120_99_101_112_116_105_111_110_95_95_85_110_117_115_101_100_65_114_103_115_95_95_112_114_101_100_95_95_116_114_121_95_100_101_116_95_95_91_50_93_95_51_3_3);
+	MR_MAYBE_INIT_LOCAL_THREAD_ENGINE_BASE
+	{
+	MR_Word MR_tempr1, MR_tempr2, MR_tempr3;
+	MR_tag_alloc_heap(MR_tempr1, 0, (MR_Integer) 5);
+	MR_tfield(0, MR_tempr1, 0) = (MR_Word) MR_COMMON(3,22);
+	MR_tfield(0, MR_tempr1, 1) = (MR_Word) MR_ENTRY_AP(exception__wrap_success_or_failure_2_3);
+	MR_tfield(0, MR_tempr1, 2) = (MR_Integer) 2;
+	MR_tfield(0, MR_tempr1, 3) = MR_r1;
+	MR_tfield(0, MR_tempr1, 4) = MR_r2;
+	MR_tag_alloc_heap(MR_tempr2, 0, (MR_Integer) 4);
+	MR_r3 = MR_tempr2;
+	MR_tfield(0, MR_tempr2, 0) = (MR_Word) MR_COMMON(3,23);
+	MR_tfield(0, MR_tempr2, 1) = (MR_Word) MR_ENTRY_AP(exception__wrap_exception_2_0);
+	MR_tfield(0, MR_tempr2, 2) = (MR_Integer) 1;
+	MR_tfield(0, MR_tempr2, 3) = MR_r1;
+	MR_tag_alloc_heap(MR_tempr3, 0, (MR_Integer) 2);
+	MR_tfield(0, MR_tempr3, 0) = (MR_Word) MR_CTOR1_ADDR(exception, exception_result);
+	MR_tfield(0, MR_tempr3, 1) = MR_r1;
+	MR_r1 = MR_tempr3;
+	MR_r2 = MR_tempr1;
+	MR_np_tailcall_ent(exception__builtin_catch_3_2);
+	}
+#ifdef MR_maybe_local_thread_engine_base
+	#undef MR_maybe_local_thread_engine_base
+	#define MR_maybe_local_thread_engine_base MR_thread_engine_base
+#endif
+MR_END_MODULE
+
+
+MR_BEGIN_MODULE(exception_module109)
+	MR_init_entry1(f_101_120_99_101_112_116_105_111_110_95_95_85_110_117_115_101_100_65_114_103_115_95_95_112_114_101_100_95_95_116_114_121_95_105_111_95_100_101_116_95_95_91_50_93_95_48_5_0);
+	MR_INIT_PROC_LAYOUT_ADDR(mercury__f_101_120_99_101_112_116_105_111_110_95_95_85_110_117_115_101_100_65_114_103_115_95_95_112_114_101_100_95_95_116_114_121_95_105_111_95_100_101_116_95_95_91_50_93_95_48_5_0);
+	MR_init_label1(f_101_120_99_101_112_116_105_111_110_95_95_85_110_117_115_101_100_65_114_103_115_95_95_112_114_101_100_95_95_116_114_121_95_105_111_95_100_101_116_95_95_91_50_93_95_48_5_0,6)
+MR_BEGIN_CODE
+
+/*-------------------------------------------------------------------------*/
+/* code for 'UnusedArgs__pred__try_io_det__[2]_0'/5 mode 0 */
+#ifdef MR_maybe_local_thread_engine_base
+	#undef MR_maybe_local_thread_engine_base
+	#define MR_maybe_local_thread_engine_base MR_local_thread_engine_base
+#endif
+MR_define_entry(mercury__f_101_120_99_101_112_116_105_111_110_95_95_85_110_117_115_101_100_65_114_103_115_95_95_112_114_101_100_95_95_116_114_121_95_105_111_95_100_101_116_95_95_91_50_93_95_48_5_0);
+	MR_MAYBE_INIT_LOCAL_THREAD_ENGINE_BASE
+	MR_incr_sp(1);
+	MR_sv(1) = (MR_Word) MR_succip;
+	{
+	MR_Word MR_tempr1, MR_tempr2, MR_tempr3;
+	MR_tag_alloc_heap(MR_tempr1, 0, (MR_Integer) 5);
+	MR_tfield(0, MR_tempr1, 0) = (MR_Word) MR_COMMON(10,0);
+	MR_tfield(0, MR_tempr1, 1) = (MR_Word) MR_ENTRY_AP(exception__very_unsafe_perform_io_2_0);
+	MR_tfield(0, MR_tempr1, 2) = (MR_Integer) 2;
+	MR_tfield(0, MR_tempr1, 3) = MR_r1;
+	MR_tfield(0, MR_tempr1, 4) = MR_r2;
+	MR_tag_alloc_heap(MR_r2, 0, (MR_Integer) 5);
+	MR_tfield(0, MR_r2, 0) = (MR_Word) MR_COMMON(3,24);
+	MR_tfield(0, MR_r2, 1) = (MR_Word) MR_ENTRY_AP(exception__wrap_success_or_failure_2_0);
+	MR_tfield(0, MR_r2, 2) = (MR_Integer) 2;
+	MR_tfield(0, MR_r2, 3) = MR_r1;
+	MR_tfield(0, MR_r2, 4) = MR_tempr1;
+	MR_tag_alloc_heap(MR_tempr2, 0, (MR_Integer) 4);
+	MR_tfield(0, MR_tempr2, 0) = (MR_Word) MR_COMMON(3,25);
+	MR_tfield(0, MR_tempr2, 1) = (MR_Word) MR_ENTRY_AP(exception__wrap_exception_2_0);
+	MR_tfield(0, MR_tempr2, 2) = (MR_Integer) 1;
+	MR_tfield(0, MR_tempr2, 3) = MR_r1;
+	MR_tag_alloc_heap(MR_tempr3, 0, (MR_Integer) 2);
+	MR_tfield(0, MR_tempr3, 0) = (MR_Word) MR_CTOR1_ADDR(exception, exception_result);
+	MR_tfield(0, MR_tempr3, 1) = MR_r1;
+	MR_r1 = MR_tempr3;
+	MR_r3 = MR_tempr2;
+	}
+	MR_np_call_localret_ent(exception__builtin_catch_3_0,
+		f_101_120_99_101_112_116_105_111_110_95_95_85_110_117_115_101_100_65_114_103_115_95_95_112_114_101_100_95_95_116_114_121_95_105_111_95_100_101_116_95_95_91_50_93_95_48_5_0_i6);
+MR_def_label(f_101_120_99_101_112_116_105_111_110_95_95_85_110_117_115_101_100_65_114_103_115_95_95_112_114_101_100_95_95_116_114_121_95_105_111_95_100_101_116_95_95_91_50_93_95_48_5_0,6)
+	MR_MAYBE_INIT_LOCAL_THREAD_ENGINE_BASE
+	{
+	MR_Word	X;
+	MR_Word	Y;
+#define	MR_PROC_LABEL	mercury__f_101_120_99_101_112_116_105_111_110_95_95_85_110_117_115_101_100_65_114_103_115_95_95_112_114_101_100_95_95_116_114_121_95_105_111_95_100_101_116_95_95_91_50_93_95_48_5_0
+	X = MR_r1;
+{
+#line 102 "builtin.opt"
+
+    Y = X;
+;}
+#line 6571 "exception.c"
+	MR_r1 = Y;
+#undef	MR_PROC_LABEL
+	}
+	MR_decr_sp_and_return(1);
+#ifdef MR_maybe_local_thread_engine_base
+	#undef MR_maybe_local_thread_engine_base
+	#define MR_maybe_local_thread_engine_base MR_thread_engine_base
+#endif
+MR_END_MODULE
+
+
+MR_BEGIN_MODULE(exception_module110)
+	MR_init_entry1(f_101_120_99_101_112_116_105_111_110_95_95_85_110_117_115_101_100_65_114_103_115_95_95_112_114_101_100_95_95_116_114_121_95_105_111_95_100_101_116_95_95_91_50_93_95_49_5_1);
+	MR_INIT_PROC_LAYOUT_ADDR(mercury__f_101_120_99_101_112_116_105_111_110_95_95_85_110_117_115_101_100_65_114_103_115_95_95_112_114_101_100_95_95_116_114_121_95_105_111_95_100_101_116_95_95_91_50_93_95_49_5_1);
+MR_BEGIN_CODE
+
+/*-------------------------------------------------------------------------*/
+/* code for 'UnusedArgs__pred__try_io_det__[2]_1'/5 mode 1 */
+#ifdef MR_maybe_local_thread_engine_base
+	#undef MR_maybe_local_thread_engine_base
+	#define MR_maybe_local_thread_engine_base MR_local_thread_engine_base
+#endif
+MR_define_entry(mercury__f_101_120_99_101_112_116_105_111_110_95_95_85_110_117_115_101_100_65_114_103_115_95_95_112_114_101_100_95_95_116_114_121_95_105_111_95_100_101_116_95_95_91_50_93_95_49_5_1);
+	MR_MAYBE_INIT_LOCAL_THREAD_ENGINE_BASE
+	{
+	MR_Word MR_tempr1, MR_tempr2, MR_tempr3;
+	MR_tag_alloc_heap(MR_tempr1, 0, (MR_Integer) 5);
+	MR_tfield(0, MR_tempr1, 0) = (MR_Word) MR_COMMON(10,1);
+	MR_tfield(0, MR_tempr1, 1) = (MR_Word) MR_ENTRY_AP(exception__very_unsafe_perform_io_2_1);
+	MR_tfield(0, MR_tempr1, 2) = (MR_Integer) 2;
+	MR_tfield(0, MR_tempr1, 3) = MR_r1;
+	MR_tfield(0, MR_tempr1, 4) = MR_r2;
+	MR_tag_alloc_heap(MR_r2, 0, (MR_Integer) 5);
+	MR_tfield(0, MR_r2, 0) = (MR_Word) MR_COMMON(3,26);
+	MR_tfield(0, MR_r2, 1) = (MR_Word) MR_ENTRY_AP(exception__wrap_success_or_failure_2_2);
+	MR_tfield(0, MR_r2, 2) = (MR_Integer) 2;
+	MR_tfield(0, MR_r2, 3) = MR_r1;
+	MR_tfield(0, MR_r2, 4) = MR_tempr1;
+	MR_tag_alloc_heap(MR_tempr2, 0, (MR_Integer) 4);
+	MR_tfield(0, MR_tempr2, 0) = (MR_Word) MR_COMMON(3,27);
+	MR_tfield(0, MR_tempr2, 1) = (MR_Word) MR_ENTRY_AP(exception__wrap_exception_2_0);
+	MR_tfield(0, MR_tempr2, 2) = (MR_Integer) 1;
+	MR_tfield(0, MR_tempr2, 3) = MR_r1;
+	MR_tag_alloc_heap(MR_tempr3, 0, (MR_Integer) 2);
+	MR_tfield(0, MR_tempr3, 0) = (MR_Word) MR_CTOR1_ADDR(exception, exception_result);
+	MR_tfield(0, MR_tempr3, 1) = MR_r1;
+	MR_r1 = MR_tempr3;
+	MR_r3 = MR_tempr2;
+	MR_np_tailcall_ent(exception__builtin_catch_3_2);
+	}
+#ifdef MR_maybe_local_thread_engine_base
+	#undef MR_maybe_local_thread_engine_base
+	#define MR_maybe_local_thread_engine_base MR_thread_engine_base
+#endif
+MR_END_MODULE
+
+extern const MR_TypeCtorInfo_Struct mercury_data_builtin__type_ctor_info_tuple_0;
+
+MR_BEGIN_MODULE(exception_module111)
+	MR_init_entry1(f_101_120_99_101_112_116_105_111_110_95_95_85_110_117_115_101_100_65_114_103_115_95_95_112_114_101_100_95_95_116_114_121_95_115_116_111_114_101_95_100_101_116_95_95_91_51_93_95_48_5_0);
+	MR_INIT_PROC_LAYOUT_ADDR(mercury__f_101_120_99_101_112_116_105_111_110_95_95_85_110_117_115_101_100_65_114_103_115_95_95_112_114_101_100_95_95_116_114_121_95_115_116_111_114_101_95_100_101_116_95_95_91_51_93_95_48_5_0);
+	MR_init_label1(f_101_120_99_101_112_116_105_111_110_95_95_85_110_117_115_101_100_65_114_103_115_95_95_112_114_101_100_95_95_116_114_121_95_115_116_111_114_101_95_100_101_116_95_95_91_51_93_95_48_5_0,5)
+MR_BEGIN_CODE
+
+/*-------------------------------------------------------------------------*/
+/* code for 'UnusedArgs__pred__try_store_det__[3]_0'/5 mode 0 */
+#ifdef MR_maybe_local_thread_engine_base
+	#undef MR_maybe_local_thread_engine_base
+	#define MR_maybe_local_thread_engine_base MR_local_thread_engine_base
+#endif
+MR_define_entry(mercury__f_101_120_99_101_112_116_105_111_110_95_95_85_110_117_115_101_100_65_114_103_115_95_95_112_114_101_100_95_95_116_114_121_95_115_116_111_114_101_95_100_101_116_95_95_91_51_93_95_48_5_0);
+	MR_MAYBE_INIT_LOCAL_THREAD_ENGINE_BASE
+	MR_incr_sp(3);
+	MR_sv(3) = (MR_Word) MR_succip;
+	{
+	MR_Word MR_tempr1, MR_tempr2, MR_tempr3;
+	MR_tag_alloc_heap(MR_tempr1, 0, (MR_Integer) 7);
+	MR_tfield(0, MR_tempr1, 0) = (MR_Word) MR_COMMON(13,0);
+	MR_tfield(0, MR_tempr1, 1) = (MR_Word) MR_ENTRY_AP(exception__IntroducedFrom__pred__try_store_det__631__1_5_0);
+	MR_tfield(0, MR_tempr1, 2) = (MR_Integer) 4;
+	MR_tfield(0, MR_tempr1, 3) = MR_r1;
+	MR_tfield(0, MR_tempr1, 4) = MR_r2;
+	MR_tfield(0, MR_tempr1, 5) = MR_r3;
+	MR_tfield(0, MR_tempr1, 6) = (MR_Integer) 0;
+	MR_tag_alloc_heap(MR_tempr2, 0, (MR_Integer) 2);
+	MR_tfield(0, MR_tempr2, 0) = (MR_Word) MR_CTOR1_ADDR(store, store);
+	MR_tfield(0, MR_tempr2, 1) = MR_r2;
+	MR_tag_alloc_heap(MR_tempr3, 0, (MR_Integer) 4);
+	MR_tfield(0, MR_tempr3, 0) = (MR_Word) MR_CTOR0_ADDR(builtin, tuple);
+	MR_tfield(0, MR_tempr3, 1) = (MR_Integer) 2;
+	MR_tfield(0, MR_tempr3, 2) = MR_r1;
+	MR_tfield(0, MR_tempr3, 3) = MR_tempr2;
+	MR_sv(1) = MR_r1;
+	MR_sv(2) = MR_r2;
+	MR_r1 = MR_tempr3;
+	MR_r2 = MR_tempr1;
+	}
+	MR_np_call_localret_ent(f_101_120_99_101_112_116_105_111_110_95_95_85_110_117_115_101_100_65_114_103_115_95_95_112_114_101_100_95_95_116_114_121_95_100_101_116_95_95_104_111_49_50_95_95_91_49_44_32_50_44_32_51_44_32_52_44_32_53_44_32_54_44_32_55_44_32_56_44_32_49_48_93_95_48_3_0,
+		f_101_120_99_101_112_116_105_111_110_95_95_85_110_117_115_101_100_65_114_103_115_95_95_112_114_101_100_95_95_116_114_121_95_115_116_111_114_101_95_100_101_116_95_95_91_51_93_95_48_5_0_i5);
+MR_def_label(f_101_120_99_101_112_116_105_111_110_95_95_85_110_117_115_101_100_65_114_103_115_95_95_112_114_101_100_95_95_116_114_121_95_115_116_111_114_101_95_100_101_116_95_95_91_51_93_95_48_5_0,5)
+	MR_MAYBE_INIT_LOCAL_THREAD_ENGINE_BASE
+	{
+	MR_Word MR_tempr1;
+	MR_tempr1 = MR_r1;
+	MR_r1 = MR_sv(1);
+	MR_r2 = MR_sv(2);
+	MR_r3 = MR_tempr1;
+	MR_succip_word = MR_sv(3);
+	MR_decr_sp(3);
+	MR_np_tailcall_ent(exception__handle_store_result_4_0);
+	}
+#ifdef MR_maybe_local_thread_engine_base
+	#undef MR_maybe_local_thread_engine_base
+	#define MR_maybe_local_thread_engine_base MR_thread_engine_base
+#endif
+MR_END_MODULE
+
+
+MR_BEGIN_MODULE(exception_module112)
+	MR_init_entry1(f_101_120_99_101_112_116_105_111_110_95_95_85_110_117_115_101_100_65_114_103_115_95_95_112_114_101_100_95_95_116_114_121_95_115_116_111_114_101_95_100_101_116_95_95_91_51_93_95_49_5_1);
+	MR_INIT_PROC_LAYOUT_ADDR(mercury__f_101_120_99_101_112_116_105_111_110_95_95_85_110_117_115_101_100_65_114_103_115_95_95_112_114_101_100_95_95_116_114_121_95_115_116_111_114_101_95_100_101_116_95_95_91_51_93_95_49_5_1);
+	MR_init_label1(f_101_120_99_101_112_116_105_111_110_95_95_85_110_117_115_101_100_65_114_103_115_95_95_112_114_101_100_95_95_116_114_121_95_115_116_111_114_101_95_100_101_116_95_95_91_51_93_95_49_5_1,5)
+MR_BEGIN_CODE
+
+/*-------------------------------------------------------------------------*/
+/* code for 'UnusedArgs__pred__try_store_det__[3]_1'/5 mode 1 */
+#ifdef MR_maybe_local_thread_engine_base
+	#undef MR_maybe_local_thread_engine_base
+	#define MR_maybe_local_thread_engine_base MR_local_thread_engine_base
+#endif
+MR_define_entry(mercury__f_101_120_99_101_112_116_105_111_110_95_95_85_110_117_115_101_100_65_114_103_115_95_95_112_114_101_100_95_95_116_114_121_95_115_116_111_114_101_95_100_101_116_95_95_91_51_93_95_49_5_1);
+	MR_MAYBE_INIT_LOCAL_THREAD_ENGINE_BASE
+	MR_incr_sp(3);
+	MR_sv(3) = (MR_Word) MR_succip;
+	{
+	MR_Word MR_tempr1, MR_tempr2, MR_tempr3;
+	MR_tag_alloc_heap(MR_tempr1, 0, (MR_Integer) 7);
+	MR_tfield(0, MR_tempr1, 0) = (MR_Word) MR_COMMON(13,1);
+	MR_tfield(0, MR_tempr1, 1) = (MR_Word) MR_ENTRY_AP(exception__IntroducedFrom__pred__try_store_det__638__1_5_0);
+	MR_tfield(0, MR_tempr1, 2) = (MR_Integer) 4;
+	MR_tfield(0, MR_tempr1, 3) = MR_r1;
+	MR_tfield(0, MR_tempr1, 4) = MR_r2;
+	MR_tfield(0, MR_tempr1, 5) = MR_r3;
+	MR_tfield(0, MR_tempr1, 6) = (MR_Integer) 0;
+	MR_tag_alloc_heap(MR_tempr2, 0, (MR_Integer) 2);
+	MR_tfield(0, MR_tempr2, 0) = (MR_Word) MR_CTOR1_ADDR(store, store);
+	MR_tfield(0, MR_tempr2, 1) = MR_r2;
+	MR_tag_alloc_heap(MR_tempr3, 0, (MR_Integer) 4);
+	MR_tfield(0, MR_tempr3, 0) = (MR_Word) MR_CTOR0_ADDR(builtin, tuple);
+	MR_tfield(0, MR_tempr3, 1) = (MR_Integer) 2;
+	MR_tfield(0, MR_tempr3, 2) = MR_r1;
+	MR_tfield(0, MR_tempr3, 3) = MR_tempr2;
+	MR_sv(1) = MR_r1;
+	MR_sv(2) = MR_r2;
+	MR_r1 = MR_tempr3;
+	MR_r2 = MR_tempr1;
+	}
+	MR_np_call_localret_ent(f_101_120_99_101_112_116_105_111_110_95_95_85_110_117_115_101_100_65_114_103_115_95_95_112_114_101_100_95_95_116_114_121_95_100_101_116_95_95_104_111_49_49_95_95_91_49_44_32_50_44_32_51_44_32_52_44_32_53_44_32_54_44_32_55_44_32_56_44_32_49_48_93_95_48_3_0,
+		f_101_120_99_101_112_116_105_111_110_95_95_85_110_117_115_101_100_65_114_103_115_95_95_112_114_101_100_95_95_116_114_121_95_115_116_111_114_101_95_100_101_116_95_95_91_51_93_95_49_5_1_i5);
+MR_def_label(f_101_120_99_101_112_116_105_111_110_95_95_85_110_117_115_101_100_65_114_103_115_95_95_112_114_101_100_95_95_116_114_121_95_115_116_111_114_101_95_100_101_116_95_95_91_51_93_95_49_5_1,5)
+	MR_MAYBE_INIT_LOCAL_THREAD_ENGINE_BASE
+	{
+	MR_Word MR_tempr1;
+	MR_tempr1 = MR_r1;
+	MR_r1 = MR_sv(1);
+	MR_r2 = MR_sv(2);
+	MR_r3 = MR_tempr1;
+	MR_succip_word = MR_sv(3);
+	MR_decr_sp(3);
+	MR_np_tailcall_ent(exception__handle_store_result_4_0);
+	}
+#ifdef MR_maybe_local_thread_engine_base
+	#undef MR_maybe_local_thread_engine_base
+	#define MR_maybe_local_thread_engine_base MR_thread_engine_base
+#endif
+MR_END_MODULE
+
+
+MR_BEGIN_MODULE(exception_module113)
+	MR_init_entry1(f_101_120_99_101_112_116_105_111_110_95_95_85_110_117_115_101_100_65_114_103_115_95_95_112_114_101_100_95_95_116_114_121_95_97_108_108_95_100_101_116_95_95_91_50_93_95_48_4_0);
+	MR_INIT_PROC_LAYOUT_ADDR(mercury__f_101_120_99_101_112_116_105_111_110_95_95_85_110_117_115_101_100_65_114_103_115_95_95_112_114_101_100_95_95_116_114_121_95_97_108_108_95_100_101_116_95_95_91_50_93_95_48_4_0);
+	MR_init_label2(f_101_120_99_101_112_116_105_111_110_95_95_85_110_117_115_101_100_65_114_103_115_95_95_112_114_101_100_95_95_116_114_121_95_97_108_108_95_100_101_116_95_95_91_50_93_95_48_4_0,2,4)
+MR_BEGIN_CODE
+
+/*-------------------------------------------------------------------------*/
+/* code for 'UnusedArgs__pred__try_all_det__[2]_0'/4 mode 0 */
+#ifdef MR_maybe_local_thread_engine_base
+	#undef MR_maybe_local_thread_engine_base
+	#define MR_maybe_local_thread_engine_base MR_local_thread_engine_base
+#endif
+MR_define_entry(mercury__f_101_120_99_101_112_116_105_111_110_95_95_85_110_117_115_101_100_65_114_103_115_95_95_112_114_101_100_95_95_116_114_121_95_97_108_108_95_100_101_116_95_95_91_50_93_95_48_4_0);
+	MR_MAYBE_INIT_LOCAL_THREAD_ENGINE_BASE
+	MR_incr_sp(1);
+	MR_sv(1) = (MR_Word) MR_succip;
+	MR_np_call_localret_ent(f_101_120_99_101_112_116_105_111_110_95_95_85_110_117_115_101_100_65_114_103_115_95_95_112_114_101_100_95_95_116_114_121_95_100_101_116_95_95_91_50_93_95_48_3_0,
+		f_101_120_99_101_112_116_105_111_110_95_95_85_110_117_115_101_100_65_114_103_115_95_95_112_114_101_100_95_95_116_114_121_95_97_108_108_95_100_101_116_95_95_91_50_93_95_48_4_0_i2);
+MR_def_label(f_101_120_99_101_112_116_105_111_110_95_95_85_110_117_115_101_100_65_114_103_115_95_95_112_114_101_100_95_95_116_114_121_95_97_108_108_95_100_101_116_95_95_91_50_93_95_48_4_0,2)
+	MR_MAYBE_INIT_LOCAL_THREAD_ENGINE_BASE
+	if (MR_PTAG_TESTR(MR_r1,2)) {
+		MR_GOTO_LAB(f_101_120_99_101_112_116_105_111_110_95_95_85_110_117_115_101_100_65_114_103_115_95_95_112_114_101_100_95_95_116_114_121_95_97_108_108_95_100_101_116_95_95_91_50_93_95_48_4_0_i4);
+	}
+	{
+	MR_Word MR_tempr1;
+	MR_tag_alloc_heap(MR_tempr1, 1, (MR_Integer) 1);
+	MR_tfield(1, MR_tempr1, 0) = MR_tfield(2, MR_r1, 0);
+	MR_r1 = MR_tempr1;
+	MR_r2 = (MR_Word) MR_tbmkword(0, 0);
+	MR_decr_sp_and_return(1);
+	}
+MR_def_label(f_101_120_99_101_112_116_105_111_110_95_95_85_110_117_115_101_100_65_114_103_115_95_95_112_114_101_100_95_95_116_114_121_95_97_108_108_95_100_101_116_95_95_91_50_93_95_48_4_0,4)
+	MR_MAYBE_INIT_LOCAL_THREAD_ENGINE_BASE
+	MR_tag_alloc_heap(MR_r2, 1, (MR_Integer) 2);
+	MR_tfield(1, MR_r2, 0) = MR_tfield(1, MR_r1, 0);
+	MR_tfield(1, MR_r2, 1) = (MR_Word) MR_tbmkword(0, 0);
+	MR_r1 = (MR_Word) MR_tbmkword(0, 0);
+	MR_decr_sp_and_return(1);
+#ifdef MR_maybe_local_thread_engine_base
+	#undef MR_maybe_local_thread_engine_base
+	#define MR_maybe_local_thread_engine_base MR_thread_engine_base
+#endif
+MR_END_MODULE
+
+
+MR_BEGIN_MODULE(exception_module114)
+	MR_init_entry1(f_101_120_99_101_112_116_105_111_110_95_95_85_110_117_115_101_100_65_114_103_115_95_95_112_114_101_100_95_95_116_114_121_95_97_108_108_95_100_101_116_95_95_91_50_93_95_49_4_1);
+	MR_INIT_PROC_LAYOUT_ADDR(mercury__f_101_120_99_101_112_116_105_111_110_95_95_85_110_117_115_101_100_65_114_103_115_95_95_112_114_101_100_95_95_116_114_121_95_97_108_108_95_100_101_116_95_95_91_50_93_95_49_4_1);
+	MR_init_label3(f_101_120_99_101_112_116_105_111_110_95_95_85_110_117_115_101_100_65_114_103_115_95_95_112_114_101_100_95_95_116_114_121_95_97_108_108_95_100_101_116_95_95_91_50_93_95_49_4_1,2,4,5)
+MR_BEGIN_CODE
+
+/*-------------------------------------------------------------------------*/
+/* code for 'UnusedArgs__pred__try_all_det__[2]_1'/4 mode 1 */
+#ifdef MR_maybe_local_thread_engine_base
+	#undef MR_maybe_local_thread_engine_base
+	#define MR_maybe_local_thread_engine_base MR_local_thread_engine_base
+#endif
+MR_define_entry(mercury__f_101_120_99_101_112_116_105_111_110_95_95_85_110_117_115_101_100_65_114_103_115_95_95_112_114_101_100_95_95_116_114_121_95_97_108_108_95_100_101_116_95_95_91_50_93_95_49_4_1);
+	MR_MAYBE_INIT_LOCAL_THREAD_ENGINE_BASE
+	MR_incr_sp(1);
+	MR_sv(1) = (MR_Word) MR_succip;
+	MR_np_call_localret_ent(f_101_120_99_101_112_116_105_111_110_95_95_85_110_117_115_101_100_65_114_103_115_95_95_112_114_101_100_95_95_116_114_121_95_100_101_116_95_95_91_50_93_95_49_3_1,
+		f_101_120_99_101_112_116_105_111_110_95_95_85_110_117_115_101_100_65_114_103_115_95_95_112_114_101_100_95_95_116_114_121_95_97_108_108_95_100_101_116_95_95_91_50_93_95_49_4_1_i2);
+MR_def_label(f_101_120_99_101_112_116_105_111_110_95_95_85_110_117_115_101_100_65_114_103_115_95_95_112_114_101_100_95_95_116_114_121_95_97_108_108_95_100_101_116_95_95_91_50_93_95_49_4_1,2)
+	MR_MAYBE_INIT_LOCAL_THREAD_ENGINE_BASE
+	if (MR_LTAGS_TESTR(MR_r1,0,0)) {
+		MR_GOTO_LAB(f_101_120_99_101_112_116_105_111_110_95_95_85_110_117_115_101_100_65_114_103_115_95_95_112_114_101_100_95_95_116_114_121_95_97_108_108_95_100_101_116_95_95_91_50_93_95_49_4_1_i4);
+	}
+	MR_r1 = (MR_Word) MR_tbmkword(0, 0);
+	MR_r2 = (MR_Word) MR_tbmkword(0, 0);
+	MR_decr_sp_and_return(1);
+MR_def_label(f_101_120_99_101_112_116_105_111_110_95_95_85_110_117_115_101_100_65_114_103_115_95_95_112_114_101_100_95_95_116_114_121_95_97_108_108_95_100_101_116_95_95_91_50_93_95_49_4_1,4)
+	MR_MAYBE_INIT_LOCAL_THREAD_ENGINE_BASE
+	if (MR_PTAG_TESTR(MR_r1,2)) {
+		MR_GOTO_LAB(f_101_120_99_101_112_116_105_111_110_95_95_85_110_117_115_101_100_65_114_103_115_95_95_112_114_101_100_95_95_116_114_121_95_97_108_108_95_100_101_116_95_95_91_50_93_95_49_4_1_i5);
+	}
+	{
+	MR_Word MR_tempr1;
+	MR_tag_alloc_heap(MR_tempr1, 1, (MR_Integer) 1);
+	MR_tfield(1, MR_tempr1, 0) = MR_tfield(2, MR_r1, 0);
+	MR_r1 = MR_tempr1;
+	MR_r2 = (MR_Word) MR_tbmkword(0, 0);
+	MR_decr_sp_and_return(1);
+	}
+MR_def_label(f_101_120_99_101_112_116_105_111_110_95_95_85_110_117_115_101_100_65_114_103_115_95_95_112_114_101_100_95_95_116_114_121_95_97_108_108_95_100_101_116_95_95_91_50_93_95_49_4_1,5)
+	MR_MAYBE_INIT_LOCAL_THREAD_ENGINE_BASE
+	MR_tag_alloc_heap(MR_r2, 1, (MR_Integer) 2);
+	MR_tfield(1, MR_r2, 0) = MR_tfield(1, MR_r1, 0);
+	MR_tfield(1, MR_r2, 1) = (MR_Word) MR_tbmkword(0, 0);
+	MR_r1 = (MR_Word) MR_tbmkword(0, 0);
+	MR_decr_sp_and_return(1);
+#ifdef MR_maybe_local_thread_engine_base
+	#undef MR_maybe_local_thread_engine_base
+	#define MR_maybe_local_thread_engine_base MR_thread_engine_base
+#endif
+MR_END_MODULE
+
+
+MR_BEGIN_MODULE(exception_module115)
+	MR_init_entry1(f_101_120_99_101_112_116_105_111_110_95_95_85_110_117_115_101_100_65_114_103_115_95_95_112_114_101_100_95_95_116_114_121_95_97_108_108_95_100_101_116_95_95_91_50_93_95_50_4_2);
+	MR_INIT_PROC_LAYOUT_ADDR(mercury__f_101_120_99_101_112_116_105_111_110_95_95_85_110_117_115_101_100_65_114_103_115_95_95_112_114_101_100_95_95_116_114_121_95_97_108_108_95_100_101_116_95_95_91_50_93_95_50_4_2);
+	MR_init_label1(f_101_120_99_101_112_116_105_111_110_95_95_85_110_117_115_101_100_65_114_103_115_95_95_112_114_101_100_95_95_116_114_121_95_97_108_108_95_100_101_116_95_95_91_50_93_95_50_4_2,5)
+MR_BEGIN_CODE
+
+/*-------------------------------------------------------------------------*/
+/* code for 'UnusedArgs__pred__try_all_det__[2]_2'/4 mode 2 */
+#ifdef MR_maybe_local_thread_engine_base
+	#undef MR_maybe_local_thread_engine_base
+	#define MR_maybe_local_thread_engine_base MR_local_thread_engine_base
+#endif
+MR_define_entry(mercury__f_101_120_99_101_112_116_105_111_110_95_95_85_110_117_115_101_100_65_114_103_115_95_95_112_114_101_100_95_95_116_114_121_95_97_108_108_95_100_101_116_95_95_91_50_93_95_50_4_2);
+	MR_MAYBE_INIT_LOCAL_THREAD_ENGINE_BASE
+	MR_incr_sp(2);
+	MR_sv(2) = (MR_Word) MR_succip;
+	{
+	MR_Word MR_tempr1, MR_tempr2;
+	MR_tag_alloc_heap(MR_tempr1, 0, (MR_Integer) 5);
+	MR_tfield(0, MR_tempr1, 0) = (MR_Word) MR_COMMON(3,28);
+	MR_tfield(0, MR_tempr1, 1) = (MR_Word) MR_ENTRY_AP(exception__wrap_success_2_2);
+	MR_tfield(0, MR_tempr1, 2) = (MR_Integer) 2;
+	MR_tfield(0, MR_tempr1, 3) = MR_r1;
+	MR_tfield(0, MR_tempr1, 4) = MR_r2;
+	MR_tag_alloc_heap(MR_r2, 0, (MR_Integer) 5);
+	MR_tfield(0, MR_r2, 0) = (MR_Word) MR_COMMON(3,29);
+	MR_tfield(0, MR_r2, 1) = (MR_Word) MR_ENTRY_AP(exception__IntroducedFrom__pred__try_all_det__579__1_3_0);
+	MR_tfield(0, MR_r2, 2) = (MR_Integer) 2;
+	MR_tfield(0, MR_r2, 3) = MR_r1;
+	MR_tfield(0, MR_r2, 4) = MR_tempr1;
+	MR_tag_alloc_heap(MR_tempr2, 0, (MR_Integer) 2);
+	MR_tfield(0, MR_tempr2, 0) = (MR_Word) MR_CTOR1_ADDR(exception, exception_result);
+	MR_tfield(0, MR_tempr2, 1) = MR_r1;
+	MR_sv(1) = MR_r1;
+	MR_r1 = MR_tempr2;
+	}
+	MR_np_call_localret_ent(f_101_120_99_101_112_116_105_111_110_95_95_115_111_108_117_116_105_111_110_115_95_95_85_110_117_115_101_100_65_114_103_115_95_95_112_114_101_100_95_95_117_110_115_111_114_116_101_100_95_115_111_108_117_116_105_111_110_115_95_95_104_111_49_48_95_95_91_49_44_32_50_44_32_51_44_32_52_44_32_53_93_95_48_2_0,
+		f_101_120_99_101_112_116_105_111_110_95_95_85_110_117_115_101_100_65_114_103_115_95_95_112_114_101_100_95_95_116_114_121_95_97_108_108_95_100_101_116_95_95_91_50_93_95_50_4_2_i5);
+MR_def_label(f_101_120_99_101_112_116_105_111_110_95_95_85_110_117_115_101_100_65_114_103_115_95_95_112_114_101_100_95_95_116_114_121_95_97_108_108_95_100_101_116_95_95_91_50_93_95_50_4_2,5)
+	MR_MAYBE_INIT_LOCAL_THREAD_ENGINE_BASE
+	{
+	MR_Word MR_tempr1;
+	MR_tempr1 = MR_r1;
+	MR_r1 = MR_sv(1);
+	MR_r2 = MR_tempr1;
+	MR_r3 = (MR_Word) MR_tbmkword(0, 0);
+	MR_r4 = (MR_Word) MR_tbmkword(0, 0);
+	MR_succip_word = MR_sv(2);
+	MR_decr_sp(2);
+	MR_np_tailcall_ent(f_101_120_99_101_112_116_105_111_110_95_95_108_105_115_116_95_95_85_110_117_115_101_100_65_114_103_115_95_95_112_114_101_100_95_95_102_111_108_100_108_50_95_95_104_111_57_95_95_91_49_44_32_50_44_32_52_44_32_53_44_32_54_93_95_48_6_0);
+	}
+#ifdef MR_maybe_local_thread_engine_base
+	#undef MR_maybe_local_thread_engine_base
+	#define MR_maybe_local_thread_engine_base MR_thread_engine_base
+#endif
+MR_END_MODULE
+
+
+MR_BEGIN_MODULE(exception_module116)
+	MR_init_entry1(f_101_120_99_101_112_116_105_111_110_95_95_85_110_117_115_101_100_65_114_103_115_95_95_112_114_101_100_95_95_116_114_121_95_97_108_108_95_100_101_116_95_95_91_50_93_95_51_4_3);
+	MR_INIT_PROC_LAYOUT_ADDR(mercury__f_101_120_99_101_112_116_105_111_110_95_95_85_110_117_115_101_100_65_114_103_115_95_95_112_114_101_100_95_95_116_114_121_95_97_108_108_95_100_101_116_95_95_91_50_93_95_51_4_3);
+	MR_init_label1(f_101_120_99_101_112_116_105_111_110_95_95_85_110_117_115_101_100_65_114_103_115_95_95_112_114_101_100_95_95_116_114_121_95_97_108_108_95_100_101_116_95_95_91_50_93_95_51_4_3,5)
+MR_BEGIN_CODE
+
+/*-------------------------------------------------------------------------*/
+/* code for 'UnusedArgs__pred__try_all_det__[2]_3'/4 mode 3 */
+#ifdef MR_maybe_local_thread_engine_base
+	#undef MR_maybe_local_thread_engine_base
+	#define MR_maybe_local_thread_engine_base MR_local_thread_engine_base
+#endif
+MR_define_entry(mercury__f_101_120_99_101_112_116_105_111_110_95_95_85_110_117_115_101_100_65_114_103_115_95_95_112_114_101_100_95_95_116_114_121_95_97_108_108_95_100_101_116_95_95_91_50_93_95_51_4_3);
+	MR_MAYBE_INIT_LOCAL_THREAD_ENGINE_BASE
+	MR_incr_sp(2);
+	MR_sv(2) = (MR_Word) MR_succip;
+	{
+	MR_Word MR_tempr1, MR_tempr2;
+	MR_tag_alloc_heap(MR_tempr1, 0, (MR_Integer) 5);
+	MR_tfield(0, MR_tempr1, 0) = (MR_Word) MR_COMMON(3,30);
+	MR_tfield(0, MR_tempr1, 1) = (MR_Word) MR_ENTRY_AP(exception__wrap_success_2_3);
+	MR_tfield(0, MR_tempr1, 2) = (MR_Integer) 2;
+	MR_tfield(0, MR_tempr1, 3) = MR_r1;
+	MR_tfield(0, MR_tempr1, 4) = MR_r2;
+	MR_tag_alloc_heap(MR_r2, 0, (MR_Integer) 5);
+	MR_tfield(0, MR_r2, 0) = (MR_Word) MR_COMMON(3,31);
+	MR_tfield(0, MR_r2, 1) = (MR_Word) MR_ENTRY_AP(exception__IntroducedFrom__pred__try_all_det__589__1_3_0);
+	MR_tfield(0, MR_r2, 2) = (MR_Integer) 2;
+	MR_tfield(0, MR_r2, 3) = MR_r1;
+	MR_tfield(0, MR_r2, 4) = MR_tempr1;
+	MR_tag_alloc_heap(MR_tempr2, 0, (MR_Integer) 2);
+	MR_tfield(0, MR_tempr2, 0) = (MR_Word) MR_CTOR1_ADDR(exception, exception_result);
+	MR_tfield(0, MR_tempr2, 1) = MR_r1;
+	MR_sv(1) = MR_r1;
+	MR_r1 = MR_tempr2;
+	}
+	MR_np_call_localret_ent(f_101_120_99_101_112_116_105_111_110_95_95_115_111_108_117_116_105_111_110_115_95_95_85_110_117_115_101_100_65_114_103_115_95_95_112_114_101_100_95_95_117_110_115_111_114_116_101_100_95_115_111_108_117_116_105_111_110_115_95_95_104_111_56_95_95_91_49_44_32_50_44_32_51_44_32_52_44_32_53_93_95_48_2_0,
+		f_101_120_99_101_112_116_105_111_110_95_95_85_110_117_115_101_100_65_114_103_115_95_95_112_114_101_100_95_95_116_114_121_95_97_108_108_95_100_101_116_95_95_91_50_93_95_51_4_3_i5);
+MR_def_label(f_101_120_99_101_112_116_105_111_110_95_95_85_110_117_115_101_100_65_114_103_115_95_95_112_114_101_100_95_95_116_114_121_95_97_108_108_95_100_101_116_95_95_91_50_93_95_51_4_3,5)
+	MR_MAYBE_INIT_LOCAL_THREAD_ENGINE_BASE
+	{
+	MR_Word MR_tempr1;
+	MR_tempr1 = MR_r1;
+	MR_r1 = MR_sv(1);
+	MR_r2 = MR_tempr1;
+	MR_r3 = (MR_Word) MR_tbmkword(0, 0);
+	MR_r4 = (MR_Word) MR_tbmkword(0, 0);
+	MR_succip_word = MR_sv(2);
+	MR_decr_sp(2);
+	MR_np_tailcall_ent(f_101_120_99_101_112_116_105_111_110_95_95_108_105_115_116_95_95_85_110_117_115_101_100_65_114_103_115_95_95_112_114_101_100_95_95_102_111_108_100_108_50_95_95_104_111_57_95_95_91_49_44_32_50_44_32_52_44_32_53_44_32_54_93_95_48_6_0);
+	}
+#ifdef MR_maybe_local_thread_engine_base
+	#undef MR_maybe_local_thread_engine_base
+	#define MR_maybe_local_thread_engine_base MR_thread_engine_base
+#endif
+MR_END_MODULE
+
+
+MR_BEGIN_MODULE(exception_module117)
+	MR_init_entry1(f_101_120_99_101_112_116_105_111_110_95_95_85_110_117_115_101_100_65_114_103_115_95_95_112_114_101_100_95_95_103_101_116_95_100_101_116_101_114_109_105_110_105_115_109_95_95_91_49_44_32_50_93_95_48_2_0);
+	MR_INIT_PROC_LAYOUT_ADDR(mercury__f_101_120_99_101_112_116_105_111_110_95_95_85_110_117_115_101_100_65_114_103_115_95_95_112_114_101_100_95_95_103_101_116_95_100_101_116_101_114_109_105_110_105_115_109_95_95_91_49_44_32_50_93_95_48_2_0);
+MR_BEGIN_CODE
+
+/*-------------------------------------------------------------------------*/
+/* code for 'UnusedArgs__pred__get_determinism__[1, 2]_0'/2 mode 0 */
+#ifdef MR_maybe_local_thread_engine_base
+	#undef MR_maybe_local_thread_engine_base
+	#define MR_maybe_local_thread_engine_base MR_local_thread_engine_base
+#endif
+MR_define_entry(mercury__f_101_120_99_101_112_116_105_111_110_95_95_85_110_117_115_101_100_65_114_103_115_95_95_112_114_101_100_95_95_103_101_116_95_100_101_116_101_114_109_105_110_105_115_109_95_95_91_49_44_32_50_93_95_48_2_0);
+	MR_MAYBE_INIT_LOCAL_THREAD_ENGINE_BASE
+	{
+	MR_Word	X;
+	MR_Word	Y;
+#define	MR_PROC_LABEL	mercury__f_101_120_99_101_112_116_105_111_110_95_95_85_110_117_115_101_100_65_114_103_115_95_95_112_114_101_100_95_95_103_101_116_95_100_101_116_101_114_109_105_110_105_115_109_95_95_91_49_44_32_50_93_95_48_2_0
+	X = (MR_Integer) 0;
+{
+#line 99 "builtin.opt"
+
+    Y = X;
+;}
+#line 6987 "exception.c"
+	MR_r1 = Y;
+#undef	MR_PROC_LABEL
+	}
+	MR_proceed();
+#ifdef MR_maybe_local_thread_engine_base
+	#undef MR_maybe_local_thread_engine_base
+	#define MR_maybe_local_thread_engine_base MR_thread_engine_base
+#endif
+MR_END_MODULE
+
+
+MR_BEGIN_MODULE(exception_module118)
+	MR_init_entry1(f_101_120_99_101_112_116_105_111_110_95_95_85_110_117_115_101_100_65_114_103_115_95_95_112_114_101_100_95_95_103_101_116_95_100_101_116_101_114_109_105_110_105_115_109_95_95_91_49_44_32_50_93_95_49_2_1);
+	MR_INIT_PROC_LAYOUT_ADDR(mercury__f_101_120_99_101_112_116_105_111_110_95_95_85_110_117_115_101_100_65_114_103_115_95_95_112_114_101_100_95_95_103_101_116_95_100_101_116_101_114_109_105_110_105_115_109_95_95_91_49_44_32_50_93_95_49_2_1);
+MR_BEGIN_CODE
+
+/*-------------------------------------------------------------------------*/
+/* code for 'UnusedArgs__pred__get_determinism__[1, 2]_1'/2 mode 1 */
+#ifdef MR_maybe_local_thread_engine_base
+	#undef MR_maybe_local_thread_engine_base
+	#define MR_maybe_local_thread_engine_base MR_local_thread_engine_base
+#endif
+MR_define_entry(mercury__f_101_120_99_101_112_116_105_111_110_95_95_85_110_117_115_101_100_65_114_103_115_95_95_112_114_101_100_95_95_103_101_116_95_100_101_116_101_114_109_105_110_105_115_109_95_95_91_49_44_32_50_93_95_49_2_1);
+	MR_MAYBE_INIT_LOCAL_THREAD_ENGINE_BASE
+	{
+	MR_Word	X;
+	MR_Word	Y;
+#define	MR_PROC_LABEL	mercury__f_101_120_99_101_112_116_105_111_110_95_95_85_110_117_115_101_100_65_114_103_115_95_95_112_114_101_100_95_95_103_101_116_95_100_101_116_101_114_109_105_110_105_115_109_95_95_91_49_44_32_50_93_95_49_2_1
+	X = (MR_Integer) 1;
+{
+#line 99 "builtin.opt"
+
+    Y = X;
+;}
+#line 7022 "exception.c"
+	MR_r1 = Y;
+#undef	MR_PROC_LABEL
+	}
+	MR_proceed();
+#ifdef MR_maybe_local_thread_engine_base
+	#undef MR_maybe_local_thread_engine_base
+	#define MR_maybe_local_thread_engine_base MR_thread_engine_base
+#endif
+MR_END_MODULE
+
+
+MR_BEGIN_MODULE(exception_module119)
+	MR_init_entry1(f_101_120_99_101_112_116_105_111_110_95_95_85_110_117_115_101_100_65_114_103_115_95_95_112_114_101_100_95_95_103_101_116_95_100_101_116_101_114_109_105_110_105_115_109_95_95_91_49_44_32_50_93_95_50_2_2);
+	MR_INIT_PROC_LAYOUT_ADDR(mercury__f_101_120_99_101_112_116_105_111_110_95_95_85_110_117_115_101_100_65_114_103_115_95_95_112_114_101_100_95_95_103_101_116_95_100_101_116_101_114_109_105_110_105_115_109_95_95_91_49_44_32_50_93_95_50_2_2);
+MR_BEGIN_CODE
+
+/*-------------------------------------------------------------------------*/
+/* code for 'UnusedArgs__pred__get_determinism__[1, 2]_2'/2 mode 2 */
+#ifdef MR_maybe_local_thread_engine_base
+	#undef MR_maybe_local_thread_engine_base
+	#define MR_maybe_local_thread_engine_base MR_local_thread_engine_base
+#endif
+MR_define_entry(mercury__f_101_120_99_101_112_116_105_111_110_95_95_85_110_117_115_101_100_65_114_103_115_95_95_112_114_101_100_95_95_103_101_116_95_100_101_116_101_114_109_105_110_105_115_109_95_95_91_49_44_32_50_93_95_50_2_2);
+	MR_MAYBE_INIT_LOCAL_THREAD_ENGINE_BASE
+	{
+	MR_Word	X;
+	MR_Word	Y;
+#define	MR_PROC_LABEL	mercury__f_101_120_99_101_112_116_105_111_110_95_95_85_110_117_115_101_100_65_114_103_115_95_95_112_114_101_100_95_95_103_101_116_95_100_101_116_101_114_109_105_110_105_115_109_95_95_91_49_44_32_50_93_95_50_2_2
+	X = (MR_Integer) 4;
+{
+#line 99 "builtin.opt"
+
+    Y = X;
+;}
+#line 7057 "exception.c"
+	MR_r1 = Y;
+#undef	MR_PROC_LABEL
+	}
+	MR_proceed();
+#ifdef MR_maybe_local_thread_engine_base
+	#undef MR_maybe_local_thread_engine_base
+	#define MR_maybe_local_thread_engine_base MR_thread_engine_base
+#endif
+MR_END_MODULE
+
+
+MR_BEGIN_MODULE(exception_module120)
+	MR_init_entry1(f_101_120_99_101_112_116_105_111_110_95_95_85_110_117_115_101_100_65_114_103_115_95_95_112_114_101_100_95_95_103_101_116_95_100_101_116_101_114_109_105_110_105_115_109_95_95_91_49_44_32_50_93_95_51_2_3);
+	MR_INIT_PROC_LAYOUT_ADDR(mercury__f_101_120_99_101_112_116_105_111_110_95_95_85_110_117_115_101_100_65_114_103_115_95_95_112_114_101_100_95_95_103_101_116_95_100_101_116_101_114_109_105_110_105_115_109_95_95_91_49_44_32_50_93_95_51_2_3);
+MR_BEGIN_CODE
+
+/*-------------------------------------------------------------------------*/
+/* code for 'UnusedArgs__pred__get_determinism__[1, 2]_3'/2 mode 3 */
+#ifdef MR_maybe_local_thread_engine_base
+	#undef MR_maybe_local_thread_engine_base
+	#define MR_maybe_local_thread_engine_base MR_local_thread_engine_base
+#endif
+MR_define_entry(mercury__f_101_120_99_101_112_116_105_111_110_95_95_85_110_117_115_101_100_65_114_103_115_95_95_112_114_101_100_95_95_103_101_116_95_100_101_116_101_114_109_105_110_105_115_109_95_95_91_49_44_32_50_93_95_51_2_3);
+	MR_MAYBE_INIT_LOCAL_THREAD_ENGINE_BASE
+	{
+	MR_Word	X;
+	MR_Word	Y;
+#define	MR_PROC_LABEL	mercury__f_101_120_99_101_112_116_105_111_110_95_95_85_110_117_115_101_100_65_114_103_115_95_95_112_114_101_100_95_95_103_101_116_95_100_101_116_101_114_109_105_110_105_115_109_95_95_91_49_44_32_50_93_95_51_2_3
+	X = (MR_Integer) 5;
+{
+#line 99 "builtin.opt"
+
+    Y = X;
+;}
+#line 7092 "exception.c"
+	MR_r1 = Y;
+#undef	MR_PROC_LABEL
+	}
+	MR_proceed();
+#ifdef MR_maybe_local_thread_engine_base
+	#undef MR_maybe_local_thread_engine_base
+	#define MR_maybe_local_thread_engine_base MR_thread_engine_base
+#endif
+MR_END_MODULE
+
+
+MR_BEGIN_MODULE(exception_module121)
+	MR_init_entry1(f_101_120_99_101_112_116_105_111_110_95_95_85_110_117_115_101_100_65_114_103_115_95_95_112_114_101_100_95_95_103_101_116_95_100_101_116_101_114_109_105_110_105_115_109_95_95_91_49_44_32_50_93_95_52_2_4);
+	MR_INIT_PROC_LAYOUT_ADDR(mercury__f_101_120_99_101_112_116_105_111_110_95_95_85_110_117_115_101_100_65_114_103_115_95_95_112_114_101_100_95_95_103_101_116_95_100_101_116_101_114_109_105_110_105_115_109_95_95_91_49_44_32_50_93_95_52_2_4);
+MR_BEGIN_CODE
+
+/*-------------------------------------------------------------------------*/
+/* code for 'UnusedArgs__pred__get_determinism__[1, 2]_4'/2 mode 4 */
+#ifdef MR_maybe_local_thread_engine_base
+	#undef MR_maybe_local_thread_engine_base
+	#define MR_maybe_local_thread_engine_base MR_local_thread_engine_base
+#endif
+MR_define_entry(mercury__f_101_120_99_101_112_116_105_111_110_95_95_85_110_117_115_101_100_65_114_103_115_95_95_112_114_101_100_95_95_103_101_116_95_100_101_116_101_114_109_105_110_105_115_109_95_95_91_49_44_32_50_93_95_52_2_4);
+	MR_MAYBE_INIT_LOCAL_THREAD_ENGINE_BASE
+	{
+	MR_Word	X;
+	MR_Word	Y;
+#define	MR_PROC_LABEL	mercury__f_101_120_99_101_112_116_105_111_110_95_95_85_110_117_115_101_100_65_114_103_115_95_95_112_114_101_100_95_95_103_101_116_95_100_101_116_101_114_109_105_110_105_115_109_95_95_91_49_44_32_50_93_95_52_2_4
+	X = (MR_Integer) 2;
+{
+#line 99 "builtin.opt"
+
+    Y = X;
+;}
+#line 7127 "exception.c"
+	MR_r1 = Y;
+#undef	MR_PROC_LABEL
+	}
+	MR_proceed();
+#ifdef MR_maybe_local_thread_engine_base
+	#undef MR_maybe_local_thread_engine_base
+	#define MR_maybe_local_thread_engine_base MR_thread_engine_base
+#endif
+MR_END_MODULE
+
+
+MR_BEGIN_MODULE(exception_module122)
+	MR_init_entry1(f_101_120_99_101_112_116_105_111_110_95_95_85_110_117_115_101_100_65_114_103_115_95_95_112_114_101_100_95_95_103_101_116_95_100_101_116_101_114_109_105_110_105_115_109_95_95_91_49_44_32_50_93_95_53_2_5);
+	MR_INIT_PROC_LAYOUT_ADDR(mercury__f_101_120_99_101_112_116_105_111_110_95_95_85_110_117_115_101_100_65_114_103_115_95_95_112_114_101_100_95_95_103_101_116_95_100_101_116_101_114_109_105_110_105_115_109_95_95_91_49_44_32_50_93_95_53_2_5);
+MR_BEGIN_CODE
+
+/*-------------------------------------------------------------------------*/
+/* code for 'UnusedArgs__pred__get_determinism__[1, 2]_5'/2 mode 5 */
+#ifdef MR_maybe_local_thread_engine_base
+	#undef MR_maybe_local_thread_engine_base
+	#define MR_maybe_local_thread_engine_base MR_local_thread_engine_base
+#endif
+MR_define_entry(mercury__f_101_120_99_101_112_116_105_111_110_95_95_85_110_117_115_101_100_65_114_103_115_95_95_112_114_101_100_95_95_103_101_116_95_100_101_116_101_114_109_105_110_105_115_109_95_95_91_49_44_32_50_93_95_53_2_5);
+	MR_MAYBE_INIT_LOCAL_THREAD_ENGINE_BASE
+	{
+	MR_Word	X;
+	MR_Word	Y;
+#define	MR_PROC_LABEL	mercury__f_101_120_99_101_112_116_105_111_110_95_95_85_110_117_115_101_100_65_114_103_115_95_95_112_114_101_100_95_95_103_101_116_95_100_101_116_101_114_109_105_110_105_115_109_95_95_91_49_44_32_50_93_95_53_2_5
+	X = (MR_Integer) 3;
+{
+#line 99 "builtin.opt"
+
+    Y = X;
+;}
+#line 7162 "exception.c"
+	MR_r1 = Y;
+#undef	MR_PROC_LABEL
+	}
+	MR_proceed();
+#ifdef MR_maybe_local_thread_engine_base
+	#undef MR_maybe_local_thread_engine_base
+	#define MR_maybe_local_thread_engine_base MR_thread_engine_base
+#endif
+MR_END_MODULE
+
+
+MR_BEGIN_MODULE(exception_module123)
+	MR_init_entry1(f_101_120_99_101_112_116_105_111_110_95_95_85_110_117_115_101_100_65_114_103_115_95_95_112_114_101_100_95_95_103_101_116_95_100_101_116_101_114_109_105_110_105_115_109_95_50_95_95_91_49_44_32_50_44_32_51_93_95_48_2_0);
+	MR_INIT_PROC_LAYOUT_ADDR(mercury__f_101_120_99_101_112_116_105_111_110_95_95_85_110_117_115_101_100_65_114_103_115_95_95_112_114_101_100_95_95_103_101_116_95_100_101_116_101_114_109_105_110_105_115_109_95_50_95_95_91_49_44_32_50_44_32_51_93_95_48_2_0);
+MR_BEGIN_CODE
+
+/*-------------------------------------------------------------------------*/
+/* code for 'UnusedArgs__pred__get_determinism_2__[1, 2, 3]_0'/2 mode 0 */
+#ifdef MR_maybe_local_thread_engine_base
+	#undef MR_maybe_local_thread_engine_base
+	#define MR_maybe_local_thread_engine_base MR_local_thread_engine_base
+#endif
+MR_define_entry(mercury__f_101_120_99_101_112_116_105_111_110_95_95_85_110_117_115_101_100_65_114_103_115_95_95_112_114_101_100_95_95_103_101_116_95_100_101_116_101_114_109_105_110_105_115_109_95_50_95_95_91_49_44_32_50_44_32_51_93_95_48_2_0);
+	MR_MAYBE_INIT_LOCAL_THREAD_ENGINE_BASE
+	{
+	MR_Word	X;
+	MR_Word	Y;
+#define	MR_PROC_LABEL	mercury__f_101_120_99_101_112_116_105_111_110_95_95_85_110_117_115_101_100_65_114_103_115_95_95_112_114_101_100_95_95_103_101_116_95_100_101_116_101_114_109_105_110_105_115_109_95_50_95_95_91_49_44_32_50_44_32_51_93_95_48_2_0
+	X = (MR_Integer) 0;
+{
+#line 99 "builtin.opt"
+
+    Y = X;
+;}
+#line 7197 "exception.c"
+	MR_r1 = Y;
+#undef	MR_PROC_LABEL
+	}
+	MR_proceed();
+#ifdef MR_maybe_local_thread_engine_base
+	#undef MR_maybe_local_thread_engine_base
+	#define MR_maybe_local_thread_engine_base MR_thread_engine_base
+#endif
+MR_END_MODULE
+
+
+MR_BEGIN_MODULE(exception_module124)
+	MR_init_entry1(f_101_120_99_101_112_116_105_111_110_95_95_85_110_117_115_101_100_65_114_103_115_95_95_112_114_101_100_95_95_103_101_116_95_100_101_116_101_114_109_105_110_105_115_109_95_50_95_95_91_49_44_32_50_44_32_51_93_95_49_2_1);
+	MR_INIT_PROC_LAYOUT_ADDR(mercury__f_101_120_99_101_112_116_105_111_110_95_95_85_110_117_115_101_100_65_114_103_115_95_95_112_114_101_100_95_95_103_101_116_95_100_101_116_101_114_109_105_110_105_115_109_95_50_95_95_91_49_44_32_50_44_32_51_93_95_49_2_1);
+MR_BEGIN_CODE
+
+/*-------------------------------------------------------------------------*/
+/* code for 'UnusedArgs__pred__get_determinism_2__[1, 2, 3]_1'/2 mode 1 */
+#ifdef MR_maybe_local_thread_engine_base
+	#undef MR_maybe_local_thread_engine_base
+	#define MR_maybe_local_thread_engine_base MR_local_thread_engine_base
+#endif
+MR_define_entry(mercury__f_101_120_99_101_112_116_105_111_110_95_95_85_110_117_115_101_100_65_114_103_115_95_95_112_114_101_100_95_95_103_101_116_95_100_101_116_101_114_109_105_110_105_115_109_95_50_95_95_91_49_44_32_50_44_32_51_93_95_49_2_1);
+	MR_MAYBE_INIT_LOCAL_THREAD_ENGINE_BASE
+	{
+	MR_Word	X;
+	MR_Word	Y;
+#define	MR_PROC_LABEL	mercury__f_101_120_99_101_112_116_105_111_110_95_95_85_110_117_115_101_100_65_114_103_115_95_95_112_114_101_100_95_95_103_101_116_95_100_101_116_101_114_109_105_110_105_115_109_95_50_95_95_91_49_44_32_50_44_32_51_93_95_49_2_1
+	X = (MR_Integer) 2;
+{
+#line 99 "builtin.opt"
+
+    Y = X;
+;}
+#line 7232 "exception.c"
+	MR_r1 = Y;
+#undef	MR_PROC_LABEL
+	}
+	MR_proceed();
+#ifdef MR_maybe_local_thread_engine_base
+	#undef MR_maybe_local_thread_engine_base
+	#define MR_maybe_local_thread_engine_base MR_thread_engine_base
+#endif
+MR_END_MODULE
+
+
+MR_BEGIN_MODULE(exception_module125)
+	MR_init_entry1(f_101_120_99_101_112_116_105_111_110_95_95_85_110_117_115_101_100_65_114_103_115_95_95_112_114_101_100_95_95_117_115_101_95_95_91_49_93_95_48_1_0);
+	MR_INIT_PROC_LAYOUT_ADDR(mercury__f_101_120_99_101_112_116_105_111_110_95_95_85_110_117_115_101_100_65_114_103_115_95_95_112_114_101_100_95_95_117_115_101_95_95_91_49_93_95_48_1_0);
+MR_BEGIN_CODE
+
+/*-------------------------------------------------------------------------*/
+/* code for 'UnusedArgs__pred__use__[1]_0'/1 mode 0 */
+#ifdef MR_maybe_local_thread_engine_base
+	#undef MR_maybe_local_thread_engine_base
+	#define MR_maybe_local_thread_engine_base MR_local_thread_engine_base
+#endif
+MR_def_static(f_101_120_99_101_112_116_105_111_110_95_95_85_110_117_115_101_100_65_114_103_115_95_95_112_114_101_100_95_95_117_115_101_95_95_91_49_93_95_48_1_0)
+	MR_MAYBE_INIT_LOCAL_THREAD_ENGINE_BASE
+	{
+#define	MR_PROC_LABEL	mercury__f_101_120_99_101_112_116_105_111_110_95_95_85_110_117_115_101_100_65_114_103_115_95_95_112_114_101_100_95_95_117_115_101_95_95_91_49_93_95_48_1_0
+{
+#line 468 "exception.m"
+;;}
+#line 7262 "exception.c"
+#undef	MR_PROC_LABEL
+	}
+	MR_proceed();
+#ifdef MR_maybe_local_thread_engine_base
+	#undef MR_maybe_local_thread_engine_base
+	#define MR_maybe_local_thread_engine_base MR_thread_engine_base
+#endif
+MR_END_MODULE
+
+extern const MR_TypeCtorInfo_Struct mercury_data_stm_builtin__type_ctor_info_stm_0;
+
+MR_BEGIN_MODULE(exception_module126)
+	MR_init_entry1(f_101_120_99_101_112_116_105_111_110_95_95_85_110_117_115_101_100_65_114_103_115_95_95_112_114_101_100_95_95_116_114_121_95_115_116_109_95_100_101_116_95_95_91_50_93_95_48_5_0);
+	MR_INIT_PROC_LAYOUT_ADDR(mercury__f_101_120_99_101_112_116_105_111_110_95_95_85_110_117_115_101_100_65_114_103_115_95_95_112_114_101_100_95_95_116_114_121_95_115_116_109_95_100_101_116_95_95_91_50_93_95_48_5_0);
+	MR_init_label1(f_101_120_99_101_112_116_105_111_110_95_95_85_110_117_115_101_100_65_114_103_115_95_95_112_114_101_100_95_95_116_114_121_95_115_116_109_95_100_101_116_95_95_91_50_93_95_48_5_0,7)
+MR_BEGIN_CODE
+
+/*-------------------------------------------------------------------------*/
+/* code for 'UnusedArgs__pred__try_stm_det__[2]_0'/5 mode 0 */
+#ifdef MR_maybe_local_thread_engine_base
+	#undef MR_maybe_local_thread_engine_base
+	#define MR_maybe_local_thread_engine_base MR_local_thread_engine_base
+#endif
+MR_define_entry(mercury__f_101_120_99_101_112_116_105_111_110_95_95_85_110_117_115_101_100_65_114_103_115_95_95_112_114_101_100_95_95_116_114_121_95_115_116_109_95_100_101_116_95_95_91_50_93_95_48_5_0);
+	MR_MAYBE_INIT_LOCAL_THREAD_ENGINE_BASE
+	MR_incr_sp(3);
+	MR_sv(3) = (MR_Word) MR_succip;
+	{
+	MR_Word MR_tempr1, MR_tempr2, MR_tempr3, MR_tempr4, MR_tempr5;
+	MR_tag_alloc_heap(MR_tempr1, 0, (MR_Integer) 6);
+	MR_tfield(0, MR_tempr1, 0) = (MR_Word) MR_COMMON(7,1);
+	MR_tfield(0, MR_tempr1, 1) = (MR_Word) MR_ENTRY_AP(exception__IntroducedFrom__pred__try_stm_det__771__1_4_0);
+	MR_tfield(0, MR_tempr1, 2) = (MR_Integer) 3;
+	MR_tfield(0, MR_tempr1, 3) = MR_r1;
+	MR_tfield(0, MR_tempr1, 4) = MR_r2;
+	MR_tempr5 = MR_r3;
+	MR_tfield(0, MR_tempr1, 5) = MR_tempr5;
+	MR_tag_alloc_heap(MR_tempr2, 0, (MR_Integer) 4);
+	MR_tfield(0, MR_tempr2, 0) = (MR_Word) MR_CTOR0_ADDR(builtin, tuple);
+	MR_tfield(0, MR_tempr2, 1) = (MR_Integer) 2;
+	MR_tfield(0, MR_tempr2, 2) = MR_r1;
+	MR_tfield(0, MR_tempr2, 3) = (MR_Word) MR_CTOR0_ADDR(stm_builtin, stm);
+	MR_tag_alloc_heap(MR_r2, 0, (MR_Integer) 5);
+	MR_tfield(0, MR_r2, 0) = (MR_Word) MR_COMMON(3,32);
+	MR_tfield(0, MR_r2, 1) = (MR_Word) MR_ENTRY_AP(exception__wrap_success_or_failure_2_0);
+	MR_tfield(0, MR_r2, 2) = (MR_Integer) 2;
+	MR_tfield(0, MR_r2, 3) = MR_tempr2;
+	MR_tfield(0, MR_r2, 4) = MR_tempr1;
+	MR_tag_alloc_heap(MR_tempr3, 0, (MR_Integer) 4);
+	MR_tfield(0, MR_tempr3, 0) = (MR_Word) MR_COMMON(3,33);
+	MR_tfield(0, MR_tempr3, 1) = (MR_Word) MR_ENTRY_AP(exception__wrap_exception_2_0);
+	MR_tfield(0, MR_tempr3, 2) = (MR_Integer) 1;
+	MR_tfield(0, MR_tempr3, 3) = MR_tempr2;
+	MR_tag_alloc_heap(MR_tempr4, 0, (MR_Integer) 2);
+	MR_tfield(0, MR_tempr4, 0) = (MR_Word) MR_CTOR1_ADDR(exception, exception_result);
+	MR_tfield(0, MR_tempr4, 1) = MR_tempr2;
+	MR_sv(1) = MR_tempr5;
+	MR_sv(2) = MR_r1;
+	MR_r1 = MR_tempr4;
+	MR_r3 = MR_tempr3;
+	}
+	MR_np_call_localret_ent(exception__builtin_catch_3_0,
+		f_101_120_99_101_112_116_105_111_110_95_95_85_110_117_115_101_100_65_114_103_115_95_95_112_114_101_100_95_95_116_114_121_95_115_116_109_95_100_101_116_95_95_91_50_93_95_48_5_0_i7);
+MR_def_label(f_101_120_99_101_112_116_105_111_110_95_95_85_110_117_115_101_100_65_114_103_115_95_95_112_114_101_100_95_95_116_114_121_95_115_116_109_95_100_101_116_95_95_91_50_93_95_48_5_0,7)
+	MR_MAYBE_INIT_LOCAL_THREAD_ENGINE_BASE
+	{
+	MR_Word	X;
+	MR_Word	Y;
+#define	MR_PROC_LABEL	mercury__f_101_120_99_101_112_116_105_111_110_95_95_85_110_117_115_101_100_65_114_103_115_95_95_112_114_101_100_95_95_116_114_121_95_115_116_109_95_100_101_116_95_95_91_50_93_95_48_5_0
+	X = MR_r1;
+{
+#line 102 "builtin.opt"
+
+    Y = X;
+;}
+#line 7338 "exception.c"
+	MR_r2 = Y;
+#undef	MR_PROC_LABEL
+	}
+	MR_r1 = MR_sv(2);
+	MR_r3 = MR_sv(1);
+	MR_succip_word = MR_sv(3);
+	MR_decr_sp(3);
+	MR_np_tailcall_ent(exception__handle_stm_result_4_0);
+#ifdef MR_maybe_local_thread_engine_base
+	#undef MR_maybe_local_thread_engine_base
+	#define MR_maybe_local_thread_engine_base MR_thread_engine_base
+#endif
+MR_END_MODULE
+
+
+MR_BEGIN_MODULE(exception_module127)
+	MR_init_entry1(f_101_120_99_101_112_116_105_111_110_95_95_85_110_117_115_101_100_65_114_103_115_95_95_112_114_101_100_95_95_116_114_121_95_115_116_109_95_99_99_95_109_117_108_116_105_95_95_91_50_93_95_48_5_0);
+	MR_INIT_PROC_LAYOUT_ADDR(mercury__f_101_120_99_101_112_116_105_111_110_95_95_85_110_117_115_101_100_65_114_103_115_95_95_112_114_101_100_95_95_116_114_121_95_115_116_109_95_99_99_95_109_117_108_116_105_95_95_91_50_93_95_48_5_0);
+	MR_init_label1(f_101_120_99_101_112_116_105_111_110_95_95_85_110_117_115_101_100_65_114_103_115_95_95_112_114_101_100_95_95_116_114_121_95_115_116_109_95_99_99_95_109_117_108_116_105_95_95_91_50_93_95_48_5_0,7)
+MR_BEGIN_CODE
+
+/*-------------------------------------------------------------------------*/
+/* code for 'UnusedArgs__pred__try_stm_cc_multi__[2]_0'/5 mode 0 */
+#ifdef MR_maybe_local_thread_engine_base
+	#undef MR_maybe_local_thread_engine_base
+	#define MR_maybe_local_thread_engine_base MR_local_thread_engine_base
+#endif
+MR_define_entry(mercury__f_101_120_99_101_112_116_105_111_110_95_95_85_110_117_115_101_100_65_114_103_115_95_95_112_114_101_100_95_95_116_114_121_95_115_116_109_95_99_99_95_109_117_108_116_105_95_95_91_50_93_95_48_5_0);
+	MR_MAYBE_INIT_LOCAL_THREAD_ENGINE_BASE
+	MR_incr_sp(3);
+	MR_sv(3) = (MR_Word) MR_succip;
+	{
+	MR_Word MR_tempr1, MR_tempr2, MR_tempr3, MR_tempr4, MR_tempr5;
+	MR_tag_alloc_heap(MR_tempr1, 0, (MR_Integer) 6);
+	MR_tfield(0, MR_tempr1, 0) = (MR_Word) MR_COMMON(7,2);
+	MR_tfield(0, MR_tempr1, 1) = (MR_Word) MR_ENTRY_AP(exception__IntroducedFrom__pred__try_stm_cc_multi__784__1_4_0);
+	MR_tfield(0, MR_tempr1, 2) = (MR_Integer) 3;
+	MR_tfield(0, MR_tempr1, 3) = MR_r1;
+	MR_tfield(0, MR_tempr1, 4) = MR_r2;
+	MR_tempr5 = MR_r3;
+	MR_tfield(0, MR_tempr1, 5) = MR_tempr5;
+	MR_tag_alloc_heap(MR_tempr2, 0, (MR_Integer) 4);
+	MR_tfield(0, MR_tempr2, 0) = (MR_Word) MR_CTOR0_ADDR(builtin, tuple);
+	MR_tfield(0, MR_tempr2, 1) = (MR_Integer) 2;
+	MR_tfield(0, MR_tempr2, 2) = MR_r1;
+	MR_tfield(0, MR_tempr2, 3) = (MR_Word) MR_CTOR0_ADDR(stm_builtin, stm);
+	MR_tag_alloc_heap(MR_r2, 0, (MR_Integer) 5);
+	MR_tfield(0, MR_r2, 0) = (MR_Word) MR_COMMON(3,34);
+	MR_tfield(0, MR_r2, 1) = (MR_Word) MR_ENTRY_AP(exception__wrap_success_or_failure_2_2);
+	MR_tfield(0, MR_r2, 2) = (MR_Integer) 2;
+	MR_tfield(0, MR_r2, 3) = MR_tempr2;
+	MR_tfield(0, MR_r2, 4) = MR_tempr1;
+	MR_tag_alloc_heap(MR_tempr3, 0, (MR_Integer) 4);
+	MR_tfield(0, MR_tempr3, 0) = (MR_Word) MR_COMMON(3,35);
+	MR_tfield(0, MR_tempr3, 1) = (MR_Word) MR_ENTRY_AP(exception__wrap_exception_2_0);
+	MR_tfield(0, MR_tempr3, 2) = (MR_Integer) 1;
+	MR_tfield(0, MR_tempr3, 3) = MR_tempr2;
+	MR_tag_alloc_heap(MR_tempr4, 0, (MR_Integer) 2);
+	MR_tfield(0, MR_tempr4, 0) = (MR_Word) MR_CTOR1_ADDR(exception, exception_result);
+	MR_tfield(0, MR_tempr4, 1) = MR_tempr2;
+	MR_sv(1) = MR_tempr5;
+	MR_sv(2) = MR_r1;
+	MR_r1 = MR_tempr4;
+	MR_r3 = MR_tempr3;
+	}
+	MR_np_call_localret_ent(exception__builtin_catch_3_2,
+		f_101_120_99_101_112_116_105_111_110_95_95_85_110_117_115_101_100_65_114_103_115_95_95_112_114_101_100_95_95_116_114_121_95_115_116_109_95_99_99_95_109_117_108_116_105_95_95_91_50_93_95_48_5_0_i7);
+MR_def_label(f_101_120_99_101_112_116_105_111_110_95_95_85_110_117_115_101_100_65_114_103_115_95_95_112_114_101_100_95_95_116_114_121_95_115_116_109_95_99_99_95_109_117_108_116_105_95_95_91_50_93_95_48_5_0,7)
+	MR_MAYBE_INIT_LOCAL_THREAD_ENGINE_BASE
+	{
+	MR_Word MR_tempr1;
+	MR_tempr1 = MR_r1;
+	MR_r1 = MR_sv(2);
+	MR_r2 = MR_tempr1;
+	MR_r3 = MR_sv(1);
+	MR_succip_word = MR_sv(3);
+	MR_decr_sp(3);
+	MR_np_tailcall_ent(exception__handle_stm_result_4_0);
+	}
+#ifdef MR_maybe_local_thread_engine_base
+	#undef MR_maybe_local_thread_engine_base
+	#define MR_maybe_local_thread_engine_base MR_thread_engine_base
+#endif
+MR_END_MODULE
+
+
+MR_BEGIN_MODULE(exception_module128)
+	MR_init_entry1(f_101_120_99_101_112_116_105_111_110_95_95_85_110_117_115_101_100_65_114_103_115_95_95_112_114_101_100_95_95_99_97_108_108_95_103_111_97_108_95_95_91_49_93_95_48_2_0);
+	MR_INIT_PROC_LAYOUT_ADDR(mercury__f_101_120_99_101_112_116_105_111_110_95_95_85_110_117_115_101_100_65_114_103_115_95_95_112_114_101_100_95_95_99_97_108_108_95_103_111_97_108_95_95_91_49_93_95_48_2_0);
+MR_BEGIN_CODE
+
+/*-------------------------------------------------------------------------*/
+/* code for 'UnusedArgs__pred__call_goal__[1]_0'/2 mode 0 */
+#ifdef MR_maybe_local_thread_engine_base
+	#undef MR_maybe_local_thread_engine_base
+	#define MR_maybe_local_thread_engine_base MR_local_thread_engine_base
+#endif
+MR_def_static(f_101_120_99_101_112_116_105_111_110_95_95_85_110_117_115_101_100_65_114_103_115_95_95_112_114_101_100_95_95_99_97_108_108_95_103_111_97_108_95_95_91_49_93_95_48_2_0)
+	MR_MAYBE_INIT_LOCAL_THREAD_ENGINE_BASE
+	MR_set_prof_ho_caller_proc(MR_ENTRY_AP(f_101_120_99_101_112_116_105_111_110_95_95_85_110_117_115_101_100_65_114_103_115_95_95_112_114_101_100_95_95_99_97_108_108_95_103_111_97_108_95_95_91_49_93_95_48_2_0));
+	MR_np_tailcall_ent(do_call_closure_0);
+#ifdef MR_maybe_local_thread_engine_base
+	#undef MR_maybe_local_thread_engine_base
+	#define MR_maybe_local_thread_engine_base MR_thread_engine_base
+#endif
+MR_END_MODULE
+
+
+MR_BEGIN_MODULE(exception_module129)
+	MR_init_entry1(f_101_120_99_101_112_116_105_111_110_95_95_85_110_117_115_101_100_65_114_103_115_95_95_112_114_101_100_95_95_99_97_108_108_95_103_111_97_108_95_95_91_49_93_95_49_2_1);
+	MR_INIT_PROC_LAYOUT_ADDR(mercury__f_101_120_99_101_112_116_105_111_110_95_95_85_110_117_115_101_100_65_114_103_115_95_95_112_114_101_100_95_95_99_97_108_108_95_103_111_97_108_95_95_91_49_93_95_49_2_1);
+MR_BEGIN_CODE
+
+/*-------------------------------------------------------------------------*/
+/* code for 'UnusedArgs__pred__call_goal__[1]_1'/2 mode 1 */
+#ifdef MR_maybe_local_thread_engine_base
+	#undef MR_maybe_local_thread_engine_base
+	#define MR_maybe_local_thread_engine_base MR_local_thread_engine_base
+#endif
+MR_def_static(f_101_120_99_101_112_116_105_111_110_95_95_85_110_117_115_101_100_65_114_103_115_95_95_112_114_101_100_95_95_99_97_108_108_95_103_111_97_108_95_95_91_49_93_95_49_2_1)
+	MR_MAYBE_INIT_LOCAL_THREAD_ENGINE_BASE
+	MR_set_prof_ho_caller_proc(MR_ENTRY_AP(f_101_120_99_101_112_116_105_111_110_95_95_85_110_117_115_101_100_65_114_103_115_95_95_112_114_101_100_95_95_99_97_108_108_95_103_111_97_108_95_95_91_49_93_95_49_2_1));
+	MR_np_tailcall_ent(do_call_closure_0);
+#ifdef MR_maybe_local_thread_engine_base
+	#undef MR_maybe_local_thread_engine_base
+	#define MR_maybe_local_thread_engine_base MR_thread_engine_base
+#endif
+MR_END_MODULE
+
+
+MR_BEGIN_MODULE(exception_module130)
+	MR_init_entry1(f_101_120_99_101_112_116_105_111_110_95_95_85_110_117_115_101_100_65_114_103_115_95_95_112_114_101_100_95_95_99_97_108_108_95_104_97_110_100_108_101_114_95_95_91_49_93_95_48_3_0);
+	MR_INIT_PROC_LAYOUT_ADDR(mercury__f_101_120_99_101_112_116_105_111_110_95_95_85_110_117_115_101_100_65_114_103_115_95_95_112_114_101_100_95_95_99_97_108_108_95_104_97_110_100_108_101_114_95_95_91_49_93_95_48_3_0);
+MR_BEGIN_CODE
+
+/*-------------------------------------------------------------------------*/
+/* code for 'UnusedArgs__pred__call_handler__[1]_0'/3 mode 0 */
+#ifdef MR_maybe_local_thread_engine_base
+	#undef MR_maybe_local_thread_engine_base
+	#define MR_maybe_local_thread_engine_base MR_local_thread_engine_base
+#endif
+MR_def_static(f_101_120_99_101_112_116_105_111_110_95_95_85_110_117_115_101_100_65_114_103_115_95_95_112_114_101_100_95_95_99_97_108_108_95_104_97_110_100_108_101_114_95_95_91_49_93_95_48_3_0)
+	MR_MAYBE_INIT_LOCAL_THREAD_ENGINE_BASE
+	MR_set_prof_ho_caller_proc(MR_ENTRY_AP(f_101_120_99_101_112_116_105_111_110_95_95_85_110_117_115_101_100_65_114_103_115_95_95_112_114_101_100_95_95_99_97_108_108_95_104_97_110_100_108_101_114_95_95_91_49_93_95_48_3_0));
+	MR_np_tailcall_ent(do_call_closure_1);
+#ifdef MR_maybe_local_thread_engine_base
+	#undef MR_maybe_local_thread_engine_base
+	#define MR_maybe_local_thread_engine_base MR_thread_engine_base
+#endif
+MR_END_MODULE
+
+
+MR_BEGIN_MODULE(exception_module131)
+	MR_init_entry1(f_101_120_99_101_112_116_105_111_110_95_95_85_110_117_115_101_100_65_114_103_115_95_95_112_114_101_100_95_95_95_95_85_110_105_102_121_95_95_95_101_120_99_101_112_116_105_111_110_95_95_110_101_97_114_95_115_116_97_99_107_95_108_105_109_105_116_115_95_48_95_95_91_49_44_32_50_93_95_48_2_0);
+	MR_INIT_PROC_LAYOUT_ADDR(mercury__f_101_120_99_101_112_116_105_111_110_95_95_85_110_117_115_101_100_65_114_103_115_95_95_112_114_101_100_95_95_95_95_85_110_105_102_121_95_95_95_101_120_99_101_112_116_105_111_110_95_95_110_101_97_114_95_115_116_97_99_107_95_108_105_109_105_116_115_95_48_95_95_91_49_44_32_50_93_95_48_2_0);
+MR_BEGIN_CODE
+
+/*-------------------------------------------------------------------------*/
+/* code for 'UnusedArgs__pred____Unify___exception__near_stack_limits_0__[1, 2]_0'/2 mode 0 */
+#ifdef MR_maybe_local_thread_engine_base
+	#undef MR_maybe_local_thread_engine_base
+	#define MR_maybe_local_thread_engine_base MR_local_thread_engine_base
+#endif
+MR_define_entry(mercury__f_101_120_99_101_112_116_105_111_110_95_95_85_110_117_115_101_100_65_114_103_115_95_95_112_114_101_100_95_95_95_95_85_110_105_102_121_95_95_95_101_120_99_101_112_116_105_111_110_95_95_110_101_97_114_95_115_116_97_99_107_95_108_105_109_105_116_115_95_48_95_95_91_49_44_32_50_93_95_48_2_0);
+	MR_MAYBE_INIT_LOCAL_THREAD_ENGINE_BASE
+	MR_r1 = MR_TRUE;
+	MR_proceed();
+#ifdef MR_maybe_local_thread_engine_base
+	#undef MR_maybe_local_thread_engine_base
+	#define MR_maybe_local_thread_engine_base MR_thread_engine_base
+#endif
+MR_END_MODULE
+
+
+MR_BEGIN_MODULE(exception_module132)
+	MR_init_entry1(f_101_120_99_101_112_116_105_111_110_95_95_85_110_117_115_101_100_65_114_103_115_95_95_112_114_101_100_95_95_95_95_67_111_109_112_97_114_101_95_95_95_101_120_99_101_112_116_105_111_110_95_95_110_101_97_114_95_115_116_97_99_107_95_108_105_109_105_116_115_95_48_95_95_91_50_44_32_51_93_95_48_3_0);
+	MR_INIT_PROC_LAYOUT_ADDR(mercury__f_101_120_99_101_112_116_105_111_110_95_95_85_110_117_115_101_100_65_114_103_115_95_95_112_114_101_100_95_95_95_95_67_111_109_112_97_114_101_95_95_95_101_120_99_101_112_116_105_111_110_95_95_110_101_97_114_95_115_116_97_99_107_95_108_105_109_105_116_115_95_48_95_95_91_50_44_32_51_93_95_48_3_0);
+MR_BEGIN_CODE
+
+/*-------------------------------------------------------------------------*/
+/* code for 'UnusedArgs__pred____Compare___exception__near_stack_limits_0__[2, 3]_0'/3 mode 0 */
+#ifdef MR_maybe_local_thread_engine_base
+	#undef MR_maybe_local_thread_engine_base
+	#define MR_maybe_local_thread_engine_base MR_local_thread_engine_base
+#endif
+MR_define_entry(mercury__f_101_120_99_101_112_116_105_111_110_95_95_85_110_117_115_101_100_65_114_103_115_95_95_112_114_101_100_95_95_95_95_67_111_109_112_97_114_101_95_95_95_101_120_99_101_112_116_105_111_110_95_95_110_101_97_114_95_115_116_97_99_107_95_108_105_109_105_116_115_95_48_95_95_91_50_44_32_51_93_95_48_3_0);
+	MR_MAYBE_INIT_LOCAL_THREAD_ENGINE_BASE
+	MR_r1 = (MR_Integer) 0;
+	MR_proceed();
+#ifdef MR_maybe_local_thread_engine_base
+	#undef MR_maybe_local_thread_engine_base
+	#define MR_maybe_local_thread_engine_base MR_thread_engine_base
+#endif
+MR_END_MODULE
+
+
+MR_BEGIN_MODULE(exception_module133)
+	MR_init_entry1(fn__f_101_120_99_101_112_116_105_111_110_95_95_111_112_115_95_95_85_110_117_115_101_100_65_114_103_115_95_95_102_117_110_99_95_95_67_108_97_115_115_77_101_116_104_111_100_95_102_111_114_95_111_112_115_95_95_111_112_95_116_97_98_108_101_95_95_95_95_111_112_115_95_95_109_101_114_99_117_114_121_95_111_112_95_116_97_98_108_101_95_95_97_114_105_116_121_48_95_95_95_95_95_95_111_112_115_95_95_109_97_120_95_112_114_105_111_114_105_116_121_95_49_95_95_91_49_93_95_48_1_0);
+	MR_INIT_PROC_LAYOUT_ADDR(mercury__fn__f_101_120_99_101_112_116_105_111_110_95_95_111_112_115_95_95_85_110_117_115_101_100_65_114_103_115_95_95_102_117_110_99_95_95_67_108_97_115_115_77_101_116_104_111_100_95_102_111_114_95_111_112_115_95_95_111_112_95_116_97_98_108_101_95_95_95_95_111_112_115_95_95_109_101_114_99_117_114_121_95_111_112_95_116_97_98_108_101_95_95_97_114_105_116_121_48_95_95_95_95_95_95_111_112_115_95_95_109_97_120_95_112_114_105_111_114_105_116_121_95_49_95_95_91_49_93_95_48_1_0);
+MR_BEGIN_CODE
+
+/*-------------------------------------------------------------------------*/
+/* code for 'UnusedArgs__func__ClassMethod_for_ops__op_table____ops__mercury_op_table__arity0______ops__max_priority_1__[1]_0'/2 mode 0 */
+#ifdef MR_maybe_local_thread_engine_base
+	#undef MR_maybe_local_thread_engine_base
+	#define MR_maybe_local_thread_engine_base MR_local_thread_engine_base
+#endif
+MR_def_static(fn__f_101_120_99_101_112_116_105_111_110_95_95_111_112_115_95_95_85_110_117_115_101_100_65_114_103_115_95_95_102_117_110_99_95_95_67_108_97_115_115_77_101_116_104_111_100_95_102_111_114_95_111_112_115_95_95_111_112_95_116_97_98_108_101_95_95_95_95_111_112_115_95_95_109_101_114_99_117_114_121_95_111_112_95_116_97_98_108_101_95_95_97_114_105_116_121_48_95_95_95_95_95_95_111_112_115_95_95_109_97_120_95_112_114_105_111_114_105_116_121_95_49_95_95_91_49_93_95_48_1_0)
+	MR_MAYBE_INIT_LOCAL_THREAD_ENGINE_BASE
+	MR_r1 = (MR_Integer) 1200;
+	MR_proceed();
+#ifdef MR_maybe_local_thread_engine_base
+	#undef MR_maybe_local_thread_engine_base
+	#define MR_maybe_local_thread_engine_base MR_thread_engine_base
+#endif
+MR_END_MODULE
+
+MR_decl_entry(list__cons_3_0);
+
+MR_BEGIN_MODULE(exception_module134)
+	MR_init_entry1(f_101_120_99_101_112_116_105_111_110_95_95_115_111_108_117_116_105_111_110_115_95_95_85_110_117_115_101_100_65_114_103_115_95_95_112_114_101_100_95_95_117_110_115_111_114_116_101_100_95_115_111_108_117_116_105_111_110_115_95_95_104_111_56_95_95_91_49_44_32_50_44_32_51_44_32_52_44_32_53_93_95_48_2_0);
+	MR_INIT_PROC_LAYOUT_ADDR(mercury__f_101_120_99_101_112_116_105_111_110_95_95_115_111_108_117_116_105_111_110_115_95_95_85_110_117_115_101_100_65_114_103_115_95_95_112_114_101_100_95_95_117_110_115_111_114_116_101_100_95_115_111_108_117_116_105_111_110_115_95_95_104_111_56_95_95_91_49_44_32_50_44_32_51_44_32_52_44_32_53_93_95_48_2_0);
+	MR_init_label1(f_101_120_99_101_112_116_105_111_110_95_95_115_111_108_117_116_105_111_110_115_95_95_85_110_117_115_101_100_65_114_103_115_95_95_112_114_101_100_95_95_117_110_115_111_114_116_101_100_95_115_111_108_117_116_105_111_110_115_95_95_104_111_56_95_95_91_49_44_32_50_44_32_51_44_32_52_44_32_53_93_95_48_2_0,4)
+MR_BEGIN_CODE
+
+/*-------------------------------------------------------------------------*/
+/* code for 'UnusedArgs__pred__unsorted_solutions__ho8__[1, 2, 3, 4, 5]_0'/2 mode 0 */
+#ifdef MR_maybe_local_thread_engine_base
+	#undef MR_maybe_local_thread_engine_base
+	#define MR_maybe_local_thread_engine_base MR_local_thread_engine_base
+#endif
+MR_def_static(f_101_120_99_101_112_116_105_111_110_95_95_115_111_108_117_116_105_111_110_115_95_95_85_110_117_115_101_100_65_114_103_115_95_95_112_114_101_100_95_95_117_110_115_111_114_116_101_100_95_115_111_108_117_116_105_111_110_115_95_95_104_111_56_95_95_91_49_44_32_50_44_32_51_44_32_52_44_32_53_93_95_48_2_0)
+	MR_MAYBE_INIT_LOCAL_THREAD_ENGINE_BASE
+	MR_incr_sp(1);
+	MR_sv(1) = (MR_Word) MR_succip;
+	{
+	MR_Word MR_tempr1, MR_tempr2, MR_tempr3;
+	MR_tag_alloc_heap(MR_tempr1, 0, (MR_Integer) 4);
+	MR_r4 = MR_tempr1;
+	MR_tfield(0, MR_tempr1, 0) = (MR_Word) MR_COMMON(14,0);
+	MR_tfield(0, MR_tempr1, 1) = (MR_Word) MR_ENTRY_AP(list__cons_3_0);
+	MR_tfield(0, MR_tempr1, 2) = (MR_Integer) 1;
+	MR_tfield(0, MR_tempr1, 3) = MR_r1;
+	MR_tag_alloc_heap(MR_tempr2, 0, (MR_Integer) 2);
+	MR_tfield(0, MR_tempr2, 0) = (MR_Word) MR_LIST_CTOR_ADDR;
+	MR_tfield(0, MR_tempr2, 1) = MR_r1;
+	MR_tempr3 = MR_r2;
+	MR_r2 = MR_tempr2;
+	MR_r3 = MR_tempr3;
+	MR_r5 = (MR_Word) MR_tbmkword(0, 0);
+	}
+	MR_np_call_localret_ent(solutions__builtin_aggregate_4_7,
+		f_101_120_99_101_112_116_105_111_110_95_95_115_111_108_117_116_105_111_110_115_95_95_85_110_117_115_101_100_65_114_103_115_95_95_112_114_101_100_95_95_117_110_115_111_114_116_101_100_95_115_111_108_117_116_105_111_110_115_95_95_104_111_56_95_95_91_49_44_32_50_44_32_51_44_32_52_44_32_53_93_95_48_2_0_i4);
+MR_def_label(f_101_120_99_101_112_116_105_111_110_95_95_115_111_108_117_116_105_111_110_115_95_95_85_110_117_115_101_100_65_114_103_115_95_95_112_114_101_100_95_95_117_110_115_111_114_116_101_100_95_115_111_108_117_116_105_111_110_115_95_95_104_111_56_95_95_91_49_44_32_50_44_32_51_44_32_52_44_32_53_93_95_48_2_0,4)
+	MR_MAYBE_INIT_LOCAL_THREAD_ENGINE_BASE
+	{
+	MR_Word	X;
+	MR_Word	Y;
+#define	MR_PROC_LABEL	mercury__f_101_120_99_101_112_116_105_111_110_95_95_115_111_108_117_116_105_111_110_115_95_95_85_110_117_115_101_100_65_114_103_115_95_95_112_114_101_100_95_95_117_110_115_111_114_116_101_100_95_115_111_108_117_116_105_111_110_115_95_95_104_111_56_95_95_91_49_44_32_50_44_32_51_44_32_52_44_32_53_93_95_48_2_0
+	X = MR_r1;
+{
+#line 102 "builtin.opt"
+
+    Y = X;
+;}
+#line 7604 "exception.c"
+	MR_r1 = Y;
+#undef	MR_PROC_LABEL
+	}
+	MR_decr_sp_and_return(1);
+#ifdef MR_maybe_local_thread_engine_base
+	#undef MR_maybe_local_thread_engine_base
+	#define MR_maybe_local_thread_engine_base MR_thread_engine_base
+#endif
+MR_END_MODULE
+
+
+MR_BEGIN_MODULE(exception_module135)
+	MR_init_entry1(f_101_120_99_101_112_116_105_111_110_95_95_108_105_115_116_95_95_85_110_117_115_101_100_65_114_103_115_95_95_112_114_101_100_95_95_102_111_108_100_108_50_95_95_104_111_57_95_95_91_49_44_32_50_44_32_52_44_32_53_44_32_54_93_95_48_6_0);
+	MR_INIT_PROC_LAYOUT_ADDR(mercury__f_101_120_99_101_112_116_105_111_110_95_95_108_105_115_116_95_95_85_110_117_115_101_100_65_114_103_115_95_95_112_114_101_100_95_95_102_111_108_100_108_50_95_95_104_111_57_95_95_91_49_44_32_50_44_32_52_44_32_53_44_32_54_93_95_48_6_0);
+	MR_init_label3(f_101_120_99_101_112_116_105_111_110_95_95_108_105_115_116_95_95_85_110_117_115_101_100_65_114_103_115_95_95_112_114_101_100_95_95_102_111_108_100_108_50_95_95_104_111_57_95_95_91_49_44_32_50_44_32_52_44_32_53_44_32_54_93_95_48_6_0,10,3,4)
+MR_BEGIN_CODE
+
+/*-------------------------------------------------------------------------*/
+/* code for 'UnusedArgs__pred__foldl2__ho9__[1, 2, 4, 5, 6]_0'/6 mode 0 */
+#ifdef MR_maybe_local_thread_engine_base
+	#undef MR_maybe_local_thread_engine_base
+	#define MR_maybe_local_thread_engine_base MR_local_thread_engine_base
+#endif
+MR_def_static(f_101_120_99_101_112_116_105_111_110_95_95_108_105_115_116_95_95_85_110_117_115_101_100_65_114_103_115_95_95_112_114_101_100_95_95_102_111_108_100_108_50_95_95_104_111_57_95_95_91_49_44_32_50_44_32_52_44_32_53_44_32_54_93_95_48_6_0)
+	MR_MAYBE_INIT_LOCAL_THREAD_ENGINE_BASE
+	MR_incr_sp(3);
+	MR_sv(3) = (MR_Word) MR_succip;
+MR_def_label(f_101_120_99_101_112_116_105_111_110_95_95_108_105_115_116_95_95_85_110_117_115_101_100_65_114_103_115_95_95_112_114_101_100_95_95_102_111_108_100_108_50_95_95_104_111_57_95_95_91_49_44_32_50_44_32_52_44_32_53_44_32_54_93_95_48_6_0,10)
+	MR_MAYBE_INIT_LOCAL_THREAD_ENGINE_BASE
+	if (MR_LTAGS_TESTR(MR_r2,0,0)) {
+		MR_GOTO_LAB(f_101_120_99_101_112_116_105_111_110_95_95_108_105_115_116_95_95_85_110_117_115_101_100_65_114_103_115_95_95_112_114_101_100_95_95_102_111_108_100_108_50_95_95_104_111_57_95_95_91_49_44_32_50_44_32_52_44_32_53_44_32_54_93_95_48_6_0_i3);
+	}
+	MR_r1 = MR_r3;
+	MR_r2 = MR_r4;
+	MR_decr_sp_and_return(3);
+MR_def_label(f_101_120_99_101_112_116_105_111_110_95_95_108_105_115_116_95_95_85_110_117_115_101_100_65_114_103_115_95_95_112_114_101_100_95_95_102_111_108_100_108_50_95_95_104_111_57_95_95_91_49_44_32_50_44_32_52_44_32_53_44_32_54_93_95_48_6_0,3)
+	MR_MAYBE_INIT_LOCAL_THREAD_ENGINE_BASE
+	MR_sv(1) = MR_tfield(1, MR_r2, 1);
+	MR_sv(2) = MR_r1;
+	MR_r2 = MR_tfield(1, MR_r2, 0);
+	MR_np_call_localret_ent(exception__process_one_exception_result_5_0,
+		f_101_120_99_101_112_116_105_111_110_95_95_108_105_115_116_95_95_85_110_117_115_101_100_65_114_103_115_95_95_112_114_101_100_95_95_102_111_108_100_108_50_95_95_104_111_57_95_95_91_49_44_32_50_44_32_52_44_32_53_44_32_54_93_95_48_6_0_i4);
+MR_def_label(f_101_120_99_101_112_116_105_111_110_95_95_108_105_115_116_95_95_85_110_117_115_101_100_65_114_103_115_95_95_112_114_101_100_95_95_102_111_108_100_108_50_95_95_104_111_57_95_95_91_49_44_32_50_44_32_52_44_32_53_44_32_54_93_95_48_6_0,4)
+	MR_MAYBE_INIT_LOCAL_THREAD_ENGINE_BASE
+	{
+	MR_Word MR_tempr1, MR_tempr2;
+	MR_tempr1 = MR_r1;
+	MR_r1 = MR_sv(2);
+	MR_tempr2 = MR_r2;
+	MR_r2 = MR_sv(1);
+	MR_r3 = MR_tempr1;
+	MR_r4 = MR_tempr2;
+	MR_succip_word = MR_sv(3);
+	MR_GOTO_LAB(f_101_120_99_101_112_116_105_111_110_95_95_108_105_115_116_95_95_85_110_117_115_101_100_65_114_103_115_95_95_112_114_101_100_95_95_102_111_108_100_108_50_95_95_104_111_57_95_95_91_49_44_32_50_44_32_52_44_32_53_44_32_54_93_95_48_6_0_i10);
+	}
+#ifdef MR_maybe_local_thread_engine_base
+	#undef MR_maybe_local_thread_engine_base
+	#define MR_maybe_local_thread_engine_base MR_thread_engine_base
+#endif
+MR_END_MODULE
+
+MR_decl_entry(solutions__builtin_aggregate_4_0);
+
+MR_BEGIN_MODULE(exception_module136)
+	MR_init_entry1(f_101_120_99_101_112_116_105_111_110_95_95_115_111_108_117_116_105_111_110_115_95_95_85_110_117_115_101_100_65_114_103_115_95_95_112_114_101_100_95_95_117_110_115_111_114_116_101_100_95_115_111_108_117_116_105_111_110_115_95_95_104_111_49_48_95_95_91_49_44_32_50_44_32_51_44_32_52_44_32_53_93_95_48_2_0);
+	MR_INIT_PROC_LAYOUT_ADDR(mercury__f_101_120_99_101_112_116_105_111_110_95_95_115_111_108_117_116_105_111_110_115_95_95_85_110_117_115_101_100_65_114_103_115_95_95_112_114_101_100_95_95_117_110_115_111_114_116_101_100_95_115_111_108_117_116_105_111_110_115_95_95_104_111_49_48_95_95_91_49_44_32_50_44_32_51_44_32_52_44_32_53_93_95_48_2_0);
+	MR_init_label1(f_101_120_99_101_112_116_105_111_110_95_95_115_111_108_117_116_105_111_110_115_95_95_85_110_117_115_101_100_65_114_103_115_95_95_112_114_101_100_95_95_117_110_115_111_114_116_101_100_95_115_111_108_117_116_105_111_110_115_95_95_104_111_49_48_95_95_91_49_44_32_50_44_32_51_44_32_52_44_32_53_93_95_48_2_0,4)
+MR_BEGIN_CODE
+
+/*-------------------------------------------------------------------------*/
+/* code for 'UnusedArgs__pred__unsorted_solutions__ho10__[1, 2, 3, 4, 5]_0'/2 mode 0 */
+#ifdef MR_maybe_local_thread_engine_base
+	#undef MR_maybe_local_thread_engine_base
+	#define MR_maybe_local_thread_engine_base MR_local_thread_engine_base
+#endif
+MR_def_static(f_101_120_99_101_112_116_105_111_110_95_95_115_111_108_117_116_105_111_110_115_95_95_85_110_117_115_101_100_65_114_103_115_95_95_112_114_101_100_95_95_117_110_115_111_114_116_101_100_95_115_111_108_117_116_105_111_110_115_95_95_104_111_49_48_95_95_91_49_44_32_50_44_32_51_44_32_52_44_32_53_93_95_48_2_0)
+	MR_MAYBE_INIT_LOCAL_THREAD_ENGINE_BASE
+	MR_incr_sp(1);
+	MR_sv(1) = (MR_Word) MR_succip;
+	{
+	MR_Word MR_tempr1, MR_tempr2, MR_tempr3;
+	MR_tag_alloc_heap(MR_tempr1, 0, (MR_Integer) 4);
+	MR_r4 = MR_tempr1;
+	MR_tfield(0, MR_tempr1, 0) = (MR_Word) MR_COMMON(14,1);
+	MR_tfield(0, MR_tempr1, 1) = (MR_Word) MR_ENTRY_AP(list__cons_3_0);
+	MR_tfield(0, MR_tempr1, 2) = (MR_Integer) 1;
+	MR_tfield(0, MR_tempr1, 3) = MR_r1;
+	MR_tag_alloc_heap(MR_tempr2, 0, (MR_Integer) 2);
+	MR_tfield(0, MR_tempr2, 0) = (MR_Word) MR_LIST_CTOR_ADDR;
+	MR_tfield(0, MR_tempr2, 1) = MR_r1;
+	MR_tempr3 = MR_r2;
+	MR_r2 = MR_tempr2;
+	MR_r3 = MR_tempr3;
+	MR_r5 = (MR_Word) MR_tbmkword(0, 0);
+	}
+	MR_np_call_localret_ent(solutions__builtin_aggregate_4_0,
+		f_101_120_99_101_112_116_105_111_110_95_95_115_111_108_117_116_105_111_110_115_95_95_85_110_117_115_101_100_65_114_103_115_95_95_112_114_101_100_95_95_117_110_115_111_114_116_101_100_95_115_111_108_117_116_105_111_110_115_95_95_104_111_49_48_95_95_91_49_44_32_50_44_32_51_44_32_52_44_32_53_93_95_48_2_0_i4);
+MR_def_label(f_101_120_99_101_112_116_105_111_110_95_95_115_111_108_117_116_105_111_110_115_95_95_85_110_117_115_101_100_65_114_103_115_95_95_112_114_101_100_95_95_117_110_115_111_114_116_101_100_95_115_111_108_117_116_105_111_110_115_95_95_104_111_49_48_95_95_91_49_44_32_50_44_32_51_44_32_52_44_32_53_93_95_48_2_0,4)
+	MR_MAYBE_INIT_LOCAL_THREAD_ENGINE_BASE
+	{
+	MR_Word	X;
+	MR_Word	Y;
+#define	MR_PROC_LABEL	mercury__f_101_120_99_101_112_116_105_111_110_95_95_115_111_108_117_116_105_111_110_115_95_95_85_110_117_115_101_100_65_114_103_115_95_95_112_114_101_100_95_95_117_110_115_111_114_116_101_100_95_115_111_108_117_116_105_111_110_115_95_95_104_111_49_48_95_95_91_49_44_32_50_44_32_51_44_32_52_44_32_53_93_95_48_2_0
+	X = MR_r1;
+{
+#line 102 "builtin.opt"
+
+    Y = X;
+;}
+#line 7714 "exception.c"
+	MR_r1 = Y;
+#undef	MR_PROC_LABEL
+	}
+	MR_decr_sp_and_return(1);
+#ifdef MR_maybe_local_thread_engine_base
+	#undef MR_maybe_local_thread_engine_base
+	#define MR_maybe_local_thread_engine_base MR_thread_engine_base
+#endif
+MR_END_MODULE
+
+
+MR_BEGIN_MODULE(exception_module137)
+	MR_init_entry1(f_101_120_99_101_112_116_105_111_110_95_95_85_110_117_115_101_100_65_114_103_115_95_95_112_114_101_100_95_95_116_114_121_95_100_101_116_95_95_104_111_49_49_95_95_91_49_44_32_50_44_32_51_44_32_52_44_32_53_44_32_54_44_32_55_44_32_56_44_32_49_48_93_95_48_3_0);
+	MR_INIT_PROC_LAYOUT_ADDR(mercury__f_101_120_99_101_112_116_105_111_110_95_95_85_110_117_115_101_100_65_114_103_115_95_95_112_114_101_100_95_95_116_114_121_95_100_101_116_95_95_104_111_49_49_95_95_91_49_44_32_50_44_32_51_44_32_52_44_32_53_44_32_54_44_32_55_44_32_56_44_32_49_48_93_95_48_3_0);
+MR_BEGIN_CODE
+
+/*-------------------------------------------------------------------------*/
+/* code for 'UnusedArgs__pred__try_det__ho11__[1, 2, 3, 4, 5, 6, 7, 8, 10]_0'/3 mode 0 */
+#ifdef MR_maybe_local_thread_engine_base
+	#undef MR_maybe_local_thread_engine_base
+	#define MR_maybe_local_thread_engine_base MR_local_thread_engine_base
+#endif
+MR_def_static(f_101_120_99_101_112_116_105_111_110_95_95_85_110_117_115_101_100_65_114_103_115_95_95_112_114_101_100_95_95_116_114_121_95_100_101_116_95_95_104_111_49_49_95_95_91_49_44_32_50_44_32_51_44_32_52_44_32_53_44_32_54_44_32_55_44_32_56_44_32_49_48_93_95_48_3_0)
+	MR_MAYBE_INIT_LOCAL_THREAD_ENGINE_BASE
+	{
+	MR_Word MR_tempr1, MR_tempr2, MR_tempr3;
+	MR_tag_alloc_heap(MR_tempr1, 0, (MR_Integer) 5);
+	MR_tfield(0, MR_tempr1, 0) = (MR_Word) MR_COMMON(3,36);
+	MR_tfield(0, MR_tempr1, 1) = (MR_Word) MR_ENTRY_AP(exception__wrap_success_or_failure_2_2);
+	MR_tfield(0, MR_tempr1, 2) = (MR_Integer) 2;
+	MR_tfield(0, MR_tempr1, 3) = MR_r1;
+	MR_tfield(0, MR_tempr1, 4) = MR_r2;
+	MR_tag_alloc_heap(MR_tempr2, 0, (MR_Integer) 4);
+	MR_r3 = MR_tempr2;
+	MR_tfield(0, MR_tempr2, 0) = (MR_Word) MR_COMMON(3,37);
+	MR_tfield(0, MR_tempr2, 1) = (MR_Word) MR_ENTRY_AP(exception__wrap_exception_2_0);
+	MR_tfield(0, MR_tempr2, 2) = (MR_Integer) 1;
+	MR_tfield(0, MR_tempr2, 3) = MR_r1;
+	MR_tag_alloc_heap(MR_tempr3, 0, (MR_Integer) 2);
+	MR_tfield(0, MR_tempr3, 0) = (MR_Word) MR_CTOR1_ADDR(exception, exception_result);
+	MR_tfield(0, MR_tempr3, 1) = MR_r1;
+	MR_r1 = MR_tempr3;
+	MR_r2 = MR_tempr1;
+	MR_np_tailcall_ent(exception__builtin_catch_3_2);
+	}
+#ifdef MR_maybe_local_thread_engine_base
+	#undef MR_maybe_local_thread_engine_base
+	#define MR_maybe_local_thread_engine_base MR_thread_engine_base
+#endif
+MR_END_MODULE
+
+
+MR_BEGIN_MODULE(exception_module138)
+	MR_init_entry1(f_101_120_99_101_112_116_105_111_110_95_95_85_110_117_115_101_100_65_114_103_115_95_95_112_114_101_100_95_95_116_114_121_95_100_101_116_95_95_104_111_49_50_95_95_91_49_44_32_50_44_32_51_44_32_52_44_32_53_44_32_54_44_32_55_44_32_56_44_32_49_48_93_95_48_3_0);
+	MR_INIT_PROC_LAYOUT_ADDR(mercury__f_101_120_99_101_112_116_105_111_110_95_95_85_110_117_115_101_100_65_114_103_115_95_95_112_114_101_100_95_95_116_114_121_95_100_101_116_95_95_104_111_49_50_95_95_91_49_44_32_50_44_32_51_44_32_52_44_32_53_44_32_54_44_32_55_44_32_56_44_32_49_48_93_95_48_3_0);
+	MR_init_label1(f_101_120_99_101_112_116_105_111_110_95_95_85_110_117_115_101_100_65_114_103_115_95_95_112_114_101_100_95_95_116_114_121_95_100_101_116_95_95_104_111_49_50_95_95_91_49_44_32_50_44_32_51_44_32_52_44_32_53_44_32_54_44_32_55_44_32_56_44_32_49_48_93_95_48_3_0,5)
+MR_BEGIN_CODE
+
+/*-------------------------------------------------------------------------*/
+/* code for 'UnusedArgs__pred__try_det__ho12__[1, 2, 3, 4, 5, 6, 7, 8, 10]_0'/3 mode 0 */
+#ifdef MR_maybe_local_thread_engine_base
+	#undef MR_maybe_local_thread_engine_base
+	#define MR_maybe_local_thread_engine_base MR_local_thread_engine_base
+#endif
+MR_def_static(f_101_120_99_101_112_116_105_111_110_95_95_85_110_117_115_101_100_65_114_103_115_95_95_112_114_101_100_95_95_116_114_121_95_100_101_116_95_95_104_111_49_50_95_95_91_49_44_32_50_44_32_51_44_32_52_44_32_53_44_32_54_44_32_55_44_32_56_44_32_49_48_93_95_48_3_0)
+	MR_MAYBE_INIT_LOCAL_THREAD_ENGINE_BASE
+	MR_incr_sp(1);
+	MR_sv(1) = (MR_Word) MR_succip;
+	{
+	MR_Word MR_tempr1, MR_tempr2, MR_tempr3;
+	MR_tag_alloc_heap(MR_tempr1, 0, (MR_Integer) 5);
+	MR_tfield(0, MR_tempr1, 0) = (MR_Word) MR_COMMON(3,38);
+	MR_tfield(0, MR_tempr1, 1) = (MR_Word) MR_ENTRY_AP(exception__wrap_success_or_failure_2_0);
+	MR_tfield(0, MR_tempr1, 2) = (MR_Integer) 2;
+	MR_tfield(0, MR_tempr1, 3) = MR_r1;
+	MR_tfield(0, MR_tempr1, 4) = MR_r2;
+	MR_tag_alloc_heap(MR_tempr2, 0, (MR_Integer) 4);
+	MR_r3 = MR_tempr2;
+	MR_tfield(0, MR_tempr2, 0) = (MR_Word) MR_COMMON(3,39);
+	MR_tfield(0, MR_tempr2, 1) = (MR_Word) MR_ENTRY_AP(exception__wrap_exception_2_0);
+	MR_tfield(0, MR_tempr2, 2) = (MR_Integer) 1;
+	MR_tfield(0, MR_tempr2, 3) = MR_r1;
+	MR_tag_alloc_heap(MR_tempr3, 0, (MR_Integer) 2);
+	MR_tfield(0, MR_tempr3, 0) = (MR_Word) MR_CTOR1_ADDR(exception, exception_result);
+	MR_tfield(0, MR_tempr3, 1) = MR_r1;
+	MR_r1 = MR_tempr3;
+	MR_r2 = MR_tempr1;
+	}
+	MR_np_call_localret_ent(exception__builtin_catch_3_0,
+		f_101_120_99_101_112_116_105_111_110_95_95_85_110_117_115_101_100_65_114_103_115_95_95_112_114_101_100_95_95_116_114_121_95_100_101_116_95_95_104_111_49_50_95_95_91_49_44_32_50_44_32_51_44_32_52_44_32_53_44_32_54_44_32_55_44_32_56_44_32_49_48_93_95_48_3_0_i5);
+MR_def_label(f_101_120_99_101_112_116_105_111_110_95_95_85_110_117_115_101_100_65_114_103_115_95_95_112_114_101_100_95_95_116_114_121_95_100_101_116_95_95_104_111_49_50_95_95_91_49_44_32_50_44_32_51_44_32_52_44_32_53_44_32_54_44_32_55_44_32_56_44_32_49_48_93_95_48_3_0,5)
+	MR_MAYBE_INIT_LOCAL_THREAD_ENGINE_BASE
+	{
+	MR_Word	X;
+	MR_Word	Y;
+#define	MR_PROC_LABEL	mercury__f_101_120_99_101_112_116_105_111_110_95_95_85_110_117_115_101_100_65_114_103_115_95_95_112_114_101_100_95_95_116_114_121_95_100_101_116_95_95_104_111_49_50_95_95_91_49_44_32_50_44_32_51_44_32_52_44_32_53_44_32_54_44_32_55_44_32_56_44_32_49_48_93_95_48_3_0
+	X = MR_r1;
+{
+#line 102 "builtin.opt"
+
+    Y = X;
+;}
+#line 7817 "exception.c"
+	MR_r1 = Y;
+#undef	MR_PROC_LABEL
+	}
+	MR_decr_sp_and_return(1);
+#ifdef MR_maybe_local_thread_engine_base
+	#undef MR_maybe_local_thread_engine_base
+	#define MR_maybe_local_thread_engine_base MR_thread_engine_base
+#endif
+MR_END_MODULE
+
+
+MR_BEGIN_MODULE(exception_module139)
+	MR_init_entry1(f_101_120_99_101_112_116_105_111_110_95_95_85_110_117_115_101_100_65_114_103_115_95_95_112_114_101_100_95_95_103_101_116_95_100_101_116_101_114_109_105_110_105_115_109_95_50_95_95_104_111_49_57_95_95_91_49_44_32_50_93_95_48_2_0);
+	MR_INIT_PROC_LAYOUT_ADDR(mercury__f_101_120_99_101_112_116_105_111_110_95_95_85_110_117_115_101_100_65_114_103_115_95_95_112_114_101_100_95_95_103_101_116_95_100_101_116_101_114_109_105_110_105_115_109_95_50_95_95_104_111_49_57_95_95_91_49_44_32_50_93_95_48_2_0);
+MR_BEGIN_CODE
+
+/*-------------------------------------------------------------------------*/
+/* code for 'UnusedArgs__pred__get_determinism_2__ho19__[1, 2]_0'/2 mode 0 */
+#ifdef MR_maybe_local_thread_engine_base
+	#undef MR_maybe_local_thread_engine_base
+	#define MR_maybe_local_thread_engine_base MR_local_thread_engine_base
+#endif
+MR_def_static(f_101_120_99_101_112_116_105_111_110_95_95_85_110_117_115_101_100_65_114_103_115_95_95_112_114_101_100_95_95_103_101_116_95_100_101_116_101_114_109_105_110_105_115_109_95_50_95_95_104_111_49_57_95_95_91_49_44_32_50_93_95_48_2_0)
+	MR_MAYBE_INIT_LOCAL_THREAD_ENGINE_BASE
+	{
+	MR_Word	X;
+	MR_Word	Y;
+#define	MR_PROC_LABEL	mercury__f_101_120_99_101_112_116_105_111_110_95_95_85_110_117_115_101_100_65_114_103_115_95_95_112_114_101_100_95_95_103_101_116_95_100_101_116_101_114_109_105_110_105_115_109_95_50_95_95_104_111_49_57_95_95_91_49_44_32_50_93_95_48_2_0
+	X = (MR_Integer) 0;
+{
+#line 99 "builtin.opt"
+
+    Y = X;
+;}
+#line 7852 "exception.c"
+	MR_r1 = Y;
+#undef	MR_PROC_LABEL
+	}
+	MR_proceed();
+#ifdef MR_maybe_local_thread_engine_base
+	#undef MR_maybe_local_thread_engine_base
+	#define MR_maybe_local_thread_engine_base MR_thread_engine_base
+#endif
+MR_END_MODULE
+
+
+MR_BEGIN_MODULE(exception_module140)
+	MR_init_entry1(f_101_120_99_101_112_116_105_111_110_95_95_85_110_117_115_101_100_65_114_103_115_95_95_112_114_101_100_95_95_116_114_121_95_105_111_95_100_101_116_95_95_104_111_50_48_95_95_91_49_44_32_50_93_95_48_5_0);
+	MR_INIT_PROC_LAYOUT_ADDR(mercury__f_101_120_99_101_112_116_105_111_110_95_95_85_110_117_115_101_100_65_114_103_115_95_95_112_114_101_100_95_95_116_114_121_95_105_111_95_100_101_116_95_95_104_111_50_48_95_95_91_49_44_32_50_93_95_48_5_0);
+MR_BEGIN_CODE
+
+/*-------------------------------------------------------------------------*/
+/* code for 'UnusedArgs__pred__try_io_det__ho20__[1, 2]_0'/5 mode 0 */
+#ifdef MR_maybe_local_thread_engine_base
+	#undef MR_maybe_local_thread_engine_base
+	#define MR_maybe_local_thread_engine_base MR_local_thread_engine_base
+#endif
+MR_def_static(f_101_120_99_101_112_116_105_111_110_95_95_85_110_117_115_101_100_65_114_103_115_95_95_112_114_101_100_95_95_116_114_121_95_105_111_95_100_101_116_95_95_104_111_50_48_95_95_91_49_44_32_50_93_95_48_5_0)
+	MR_MAYBE_INIT_LOCAL_THREAD_ENGINE_BASE
+	{
+	MR_Word MR_tempr1;
+	MR_tag_alloc_heap(MR_tempr1, 0, (MR_Integer) 5);
+	MR_tfield(0, MR_tempr1, 0) = (MR_Word) MR_COMMON(10,2);
+	MR_tfield(0, MR_tempr1, 1) = (MR_Word) MR_ENTRY_AP(exception__very_unsafe_perform_io_2_0);
+	MR_tfield(0, MR_tempr1, 2) = (MR_Integer) 2;
+	MR_tfield(0, MR_tempr1, 3) = (MR_Word) MR_CTOR0_ADDR(unit, unit);
+	MR_tfield(0, MR_tempr1, 4) = MR_r1;
+	MR_r1 = MR_tempr1;
+	MR_np_tailcall_ent(f_101_120_99_101_112_116_105_111_110_95_95_85_110_117_115_101_100_65_114_103_115_95_95_112_114_101_100_95_95_116_114_121_95_100_101_116_95_95_104_111_49_52_95_95_104_111_50_49_95_95_91_49_44_32_50_44_32_51_44_32_52_44_32_53_93_95_48_3_0);
+	}
+#ifdef MR_maybe_local_thread_engine_base
+	#undef MR_maybe_local_thread_engine_base
+	#define MR_maybe_local_thread_engine_base MR_thread_engine_base
+#endif
+MR_END_MODULE
+
+
+MR_BEGIN_MODULE(exception_module141)
+	MR_init_entry1(f_101_120_99_101_112_116_105_111_110_95_95_85_110_117_115_101_100_65_114_103_115_95_95_112_114_101_100_95_95_116_114_121_95_100_101_116_95_95_104_111_49_52_95_95_104_111_50_49_95_95_91_49_44_32_50_44_32_51_44_32_52_44_32_53_93_95_48_3_0);
+	MR_INIT_PROC_LAYOUT_ADDR(mercury__f_101_120_99_101_112_116_105_111_110_95_95_85_110_117_115_101_100_65_114_103_115_95_95_112_114_101_100_95_95_116_114_121_95_100_101_116_95_95_104_111_49_52_95_95_104_111_50_49_95_95_91_49_44_32_50_44_32_51_44_32_52_44_32_53_93_95_48_3_0);
+	MR_init_label1(f_101_120_99_101_112_116_105_111_110_95_95_85_110_117_115_101_100_65_114_103_115_95_95_112_114_101_100_95_95_116_114_121_95_100_101_116_95_95_104_111_49_52_95_95_104_111_50_49_95_95_91_49_44_32_50_44_32_51_44_32_52_44_32_53_93_95_48_3_0,5)
+MR_BEGIN_CODE
+
+/*-------------------------------------------------------------------------*/
+/* code for 'UnusedArgs__pred__try_det__ho14__ho21__[1, 2, 3, 4, 5]_0'/3 mode 0 */
+#ifdef MR_maybe_local_thread_engine_base
+	#undef MR_maybe_local_thread_engine_base
+	#define MR_maybe_local_thread_engine_base MR_local_thread_engine_base
+#endif
+MR_def_static(f_101_120_99_101_112_116_105_111_110_95_95_85_110_117_115_101_100_65_114_103_115_95_95_112_114_101_100_95_95_116_114_121_95_100_101_116_95_95_104_111_49_52_95_95_104_111_50_49_95_95_91_49_44_32_50_44_32_51_44_32_52_44_32_53_93_95_48_3_0)
+	MR_MAYBE_INIT_LOCAL_THREAD_ENGINE_BASE
+	MR_incr_sp(1);
+	MR_sv(1) = (MR_Word) MR_succip;
+	MR_tag_alloc_heap(MR_r2, 0, (MR_Integer) 5);
+	MR_tfield(0, MR_r2, 0) = (MR_Word) MR_COMMON(3,40);
+	MR_tfield(0, MR_r2, 1) = (MR_Word) MR_ENTRY_AP(exception__wrap_success_or_failure_2_0);
+	MR_tfield(0, MR_r2, 2) = (MR_Integer) 2;
+	MR_tfield(0, MR_r2, 3) = (MR_Word) MR_CTOR0_ADDR(unit, unit);
+	MR_tfield(0, MR_r2, 4) = MR_r1;
+	MR_r1 = (MR_Word) MR_TAG_COMMON(0,8,1);
+	MR_r3 = (MR_Word) MR_TAG_COMMON(0,15,0);
+	MR_np_call_localret_ent(exception__builtin_catch_3_0,
+		f_101_120_99_101_112_116_105_111_110_95_95_85_110_117_115_101_100_65_114_103_115_95_95_112_114_101_100_95_95_116_114_121_95_100_101_116_95_95_104_111_49_52_95_95_104_111_50_49_95_95_91_49_44_32_50_44_32_51_44_32_52_44_32_53_93_95_48_3_0_i5);
+MR_def_label(f_101_120_99_101_112_116_105_111_110_95_95_85_110_117_115_101_100_65_114_103_115_95_95_112_114_101_100_95_95_116_114_121_95_100_101_116_95_95_104_111_49_52_95_95_104_111_50_49_95_95_91_49_44_32_50_44_32_51_44_32_52_44_32_53_93_95_48_3_0,5)
+	MR_MAYBE_INIT_LOCAL_THREAD_ENGINE_BASE
+	{
+	MR_Word	X;
+	MR_Word	Y;
+#define	MR_PROC_LABEL	mercury__f_101_120_99_101_112_116_105_111_110_95_95_85_110_117_115_101_100_65_114_103_115_95_95_112_114_101_100_95_95_116_114_121_95_100_101_116_95_95_104_111_49_52_95_95_104_111_50_49_95_95_91_49_44_32_50_44_32_51_44_32_52_44_32_53_93_95_48_3_0
+	X = MR_r1;
+{
+#line 102 "builtin.opt"
+
+    Y = X;
+;}
+#line 7933 "exception.c"
+	MR_r1 = Y;
+#undef	MR_PROC_LABEL
+	}
+	MR_decr_sp_and_return(1);
+#ifdef MR_maybe_local_thread_engine_base
+	#undef MR_maybe_local_thread_engine_base
+	#define MR_maybe_local_thread_engine_base MR_thread_engine_base
+#endif
+MR_END_MODULE
+#line 1824 "exception.m"
+
+/* forward decls, to suppress gcc -Wmissing-decl warnings */
+void mercury_sys_init_exceptions_init(void);
+void mercury_sys_init_exceptions_init_type_tables(void);
+#ifdef  MR_DEEP_PROFILING
+void mercury_sys_init_exceptions_write_out_proc_statics(FILE *deep_fp,
+    FILE *procrep_fp);
+#endif
+
+#ifndef MR_HIGHLEVEL_CODE
+
+/*
+** MR_throw_walk_stack():
+** Unwind the stack as far as possible, until we reach a frame
+** with an exception handler.  As we go, invoke either or both
+** of two actions.
+**
+** (1) If MR_debug_enabled is set, then invoke
+**     `MR_trace(..., MR_PORT_EXCEPTION, ...)' for each stack frame,
+**     to signal to the debugger that the procedure has exited via
+**     an exception.  This allows to user to use the `retry' command
+**     to restart a goal which exited via an exception.
+**
+**     Note that if MR_STACK_TRACE is not defined, then we may not be
+**     able to traverse the stack all the way; in that case, we just
+**     print a warning and then continue.  It might be better to just
+**     `#ifdef' out all this code (and the code in builtin_throw which
+**     calls it) if MR_STACK_TRACE is not defined.
+**
+** (2) In deep profiling grades, execute the actions appropriate for
+**     execution leaving the procedure invocation via the exception port.
+**     (Deep profiling grades always set MR_STACK_TRACE, so in such grades
+**     we *will* be able to traverse the stack all the way.)
+**
+** The arguments base_sp and base_curfr always hold MR_sp and MR_curfr.
+** They exist only because we cannot take the addresses of MR_sp and MR_curfr.
+*/
+
+  #ifdef MR_DEEP_PROFILING
+    #define WARNING(msg)                                            \
+    do {                                                            \
+        MR_fatal_error("cannot update exception counts: %s\n",   \
+            msg);                                                   \
+    } while (0)
+  #else
+    #define WARNING(msg)                                            \
+    do {                                                            \
+        fflush(stdout);                                             \
+        fprintf(stderr, "mdb: warning: %s\n"                     \
+            "This may result in some exception events\n"         \
+            "being omitted from the trace.\n", (msg));           \
+    } while (0)
+  #endif
+
+static MR_Code *
+ML_throw_walk_stack(MR_Code *success_pointer, MR_Word *base_sp,
+    MR_Word *base_curfr)
+{
+    const MR_Internal               *label;
+    const MR_LabelLayout            *return_label_layout;
+
+    /*
+    ** Find the layout info for the stack frame pointed to by MR_succip.
+    */
+
+    label = MR_lookup_internal_by_addr(success_pointer);
+    if (label == NULL) {
+        WARNING("internal label not found\n");
+        return NULL;
+    }
+    return_label_layout = label->MR_internal_layout;
+
+    while (return_label_layout != NULL) {
+        const MR_ProcLayout         *entry_layout;
+        MR_Code                     *MR_jumpaddr;
+        MR_StackWalkStepResult      result;
+        const char                  *problem;
+        MR_Unsigned                 reused_frames;
+  #ifdef MR_DEEP_PROFILING
+        MR_CallSiteDynamic          *csd;
+        const MR_ProcLayout         *pl;
+        MR_ProcStatic               *ps;
+        MR_ProcStatic               *proc_static;
+        int                         top_csd_slot;
+        int                         middle_csd_slot;
+        MR_CallSiteDynamic          *top_csd;
+        MR_CallSiteDynamic          *middle_csd;
+    #ifndef MR_USE_ACTIVATION_COUNTS
+        int                         old_outermost_slot;
+        MR_ProcDynamic              *old_outermost;
+    #endif
+  #endif
+
+        /*
+        ** Check if we've reached a frame with an exception handler.
+        */
+
+        entry_layout = return_label_layout->MR_sll_entry;
+        if (!MR_DETISM_DET_STACK(entry_layout->MR_sle_detism)
+            && MR_redoip_slot(base_curfr) ==
+                MR_ENTRY(MR_exception_handler_do_fail))
+        {
+            return NULL;
+        }
+
+  #ifdef MR_DEEP_PROFILING
+
+        /*
+        ** The following code is based on the logic of
+        ** runtime/mercury_deep_leave_port_body.h, differing
+        ** in getting its parameters directly from stack frames
+        ** guided by RTTI data and in having the additional error
+        ** handling required by this. Any changes here may need to be
+        ** reflected there and vice versa.
+        */
+
+    #ifdef MR_EXEC_TRACE
+        if (! MR_disable_deep_profiling_in_debugger) {
+        /* The matching parenthesis is near the end of the loop */
+    #endif
+
+        MR_enter_instrumentation();
+
+        proc_static = entry_layout->MR_sle_proc_static;
+        top_csd_slot = proc_static->MR_ps_cur_csd_stack_slot;
+        middle_csd_slot = proc_static->MR_ps_next_csd_stack_slot;
+
+        if (top_csd_slot <= 0) {
+            MR_fatal_error("builtin_throw: no top csd slot");
+        }
+
+        if (middle_csd_slot <= 0) {
+            MR_fatal_error("builtin_throw: no middle csd slot");
+        }
+
+    #ifndef MR_USE_ACTIVATION_COUNTS
+        old_outermost_slot = proc_static->MR_ps_old_outermost_stack_slot;
+
+        if (old_outermost_slot <= 0) {
+            MR_fatal_error("builtin_throw: no old_outer slot");
+        }
+    #endif
+
+        if (MR_DETISM_DET_STACK(entry_layout->MR_sle_detism)) {
+            top_csd = (MR_CallSiteDynamic *)
+                MR_based_stackvar(base_sp, top_csd_slot);
+            middle_csd = (MR_CallSiteDynamic *)
+                MR_based_stackvar(base_sp, middle_csd_slot);
+    #ifndef MR_USE_ACTIVATION_COUNTS
+            old_outermost = (MR_ProcDynamic *)
+                MR_based_stackvar(base_sp, old_outermost_slot);
+    #endif
+        } else {
+            top_csd = (MR_CallSiteDynamic *)
+                MR_based_framevar(base_curfr, top_csd_slot);
+            middle_csd = (MR_CallSiteDynamic *)
+                MR_based_framevar(base_curfr, middle_csd_slot);
+    #ifndef MR_USE_ACTIVATION_COUNTS
+            old_outermost = (MR_ProcDynamic *)
+                MR_based_framevar(base_curfr, old_outermost_slot);
+    #endif
+        }
+
+        csd = middle_csd;
+        MR_deep_assert(csd, NULL, NULL, csd == MR_current_call_site_dynamic);
+
+    #ifdef MR_DEEP_PROFILING_PORT_COUNTS
+        csd->MR_csd_own.MR_own_excps++;
+    #endif
+
+        MR_deep_assert(csd, NULL, NULL, csd->MR_csd_callee_ptr != NULL);
+        pl = csd->MR_csd_callee_ptr->MR_pd_proc_layout;
+        MR_deep_assert(csd, pl, NULL, pl != NULL);
+        ps = pl->MR_sle_proc_static;
+        MR_deep_assert(csd, pl, ps, ps != NULL);
+
+    #ifdef MR_USE_ACTIVATION_COUNTS
+        /* decrement activation count */
+        ps->MR_ps_activation_count--;
+        MR_deep_assert(csd, pl, ps, ps->MR_ps_activation_count >= 0);
+    #else
+        /* set outermost activation pointer */
+        ps->MR_ps_outermost_activation_ptr = old_outermost;
+    #endif
+
+        /* set current csd */
+        MR_current_call_site_dynamic = top_csd;
+
+        MR_leave_instrumentation();
+    #ifdef MR_EXEC_TRACE
+        /* The matching parenthesis is near the start of the loop */
+        }
+    #endif
+
+  #endif
+
+        if (MR_debug_enabled) {
+            /* Invoke MR_trace() to trace the exception. */
+            if (return_label_layout->MR_sll_port != MR_PORT_EXCEPTION) {
+                MR_fatal_error("return layout port is not exception");
+            }
+
+            MR_jumpaddr = MR_trace(return_label_layout);
+            if (MR_jumpaddr != NULL) {
+                return MR_jumpaddr;
+            }
+        }
+
+        /*
+        ** Unwind the stacks back to the previous stack frame.
+        ** Note that we don't care whether the frame has been reused.
+        */
+        result = MR_stack_walk_step(entry_layout, &return_label_layout,
+            &base_sp, &base_curfr, &reused_frames, &problem);
+        if (result != MR_STEP_OK) {
+            WARNING(problem);
+            return NULL;
+        }
+        MR_restore_transient_registers();
+        MR_sp_word = (MR_Word) base_sp;
+        MR_curfr_word = (MR_Word) base_curfr;
+        MR_save_transient_registers();
+    }
+    return NULL;
+}
+
+/* swap the heap with the solutions heap */
+#define swap_heaps()                                                \
+{                                                                   \
+    /* save the current heap */                                     \
+    MR_Word         *swap_heaps_temp_hp;                            \
+    MR_MemoryZone   *swap_heaps_temp_hp_zone;                       \
+                                                                    \
+    swap_heaps_temp_hp = MR_hp;                                     \
+    swap_heaps_temp_hp_zone = MR_ENGINE(MR_eng_heap_zone);          \
+                                                                    \
+    /* set heap to solutions heap */                                \
+    MR_hp_word = (MR_Word) MR_sol_hp;                               \
+    MR_ENGINE(MR_eng_heap_zone) =                                   \
+        MR_ENGINE(MR_eng_solutions_heap_zone);                      \
+                                                                    \
+    /* set the solutions heap to be the old heap */                 \
+    MR_sol_hp = swap_heaps_temp_hp;                                 \
+    MR_ENGINE(MR_eng_solutions_heap_zone) = swap_heaps_temp_hp_zone;\
+}
+
+MR_define_extern_entry(mercury__exception__builtin_catch_3_0); /* det */
+MR_define_extern_entry(mercury__exception__builtin_catch_3_1); /* semidet */
+MR_define_extern_entry(mercury__exception__builtin_catch_3_2); /* cc_multi */
+MR_define_extern_entry(mercury__exception__builtin_catch_3_3); /* cc_nondet */
+MR_define_extern_entry(mercury__exception__builtin_catch_3_4); /* multi */
+MR_define_extern_entry(mercury__exception__builtin_catch_3_5); /* nondet */
+
+MR_define_extern_entry(mercury__exception__builtin_throw_1_0);
+
+/* the following is defined in runtime/mercury_ho_call.c */
+MR_declare_entry(mercury__do_call_closure_compact);
+
+/* the following is defined in runtime/mercury_trace_base.c */
+MR_declare_entry(MR_do_trace_redo_fail);
+
+#ifdef  MR_DEEP_PROFILING
+MR_declare_label(mercury__exception__builtin_catch_3_0_i1);
+MR_declare_label(mercury__exception__builtin_catch_3_1_i1);
+MR_declare_label(mercury__exception__builtin_catch_3_2_i1);
+MR_declare_label(mercury__exception__builtin_catch_3_3_i1);
+MR_declare_label(mercury__exception__builtin_catch_3_4_i1);
+MR_declare_label(mercury__exception__builtin_catch_3_5_i1);
+#endif
+
+MR_declare_label(mercury__exception__builtin_catch_3_0_i2);
+MR_declare_label(mercury__exception__builtin_catch_3_1_i2);
+MR_declare_label(mercury__exception__builtin_catch_3_2_i2);
+MR_declare_label(mercury__exception__builtin_catch_3_3_i2);
+MR_declare_label(mercury__exception__builtin_catch_3_4_i2);
+MR_declare_label(mercury__exception__builtin_catch_3_5_i2);
+
+#ifdef  MR_DEEP_PROFILING
+MR_declare_label(mercury__exception__builtin_catch_3_0_i3);
+MR_declare_label(mercury__exception__builtin_catch_3_1_i3);
+MR_declare_label(mercury__exception__builtin_catch_3_2_i3);
+MR_declare_label(mercury__exception__builtin_catch_3_3_i3);
+MR_declare_label(mercury__exception__builtin_catch_3_4_i3);
+MR_declare_label(mercury__exception__builtin_catch_3_5_i3);
+
+MR_declare_label(mercury__exception__builtin_catch_3_4_i4);
+MR_declare_label(mercury__exception__builtin_catch_3_5_i4);
+MR_declare_label(mercury__exception__builtin_catch_3_4_i5);
+MR_declare_label(mercury__exception__builtin_catch_3_5_i5);
+#endif
+
+#if defined(MR_USE_TRAIL) || defined(MR_DEEP_PROFILING)
+  MR_declare_label(mercury__exception__builtin_catch_3_4_i6);
+  MR_declare_label(mercury__exception__builtin_catch_3_5_i6);
+#endif
+
+#ifdef  MR_DEEP_PROFILING
+MR_declare_label(mercury__exception__builtin_catch_3_4_i7);
+MR_declare_label(mercury__exception__builtin_catch_3_5_i7);
+#endif
+
+#ifdef  MR_DEEP_PROFILING
+MR_declare_label(mercury__exception__builtin_catch_3_0_i8);
+MR_declare_label(mercury__exception__builtin_catch_3_1_i8);
+MR_declare_label(mercury__exception__builtin_catch_3_2_i8);
+MR_declare_label(mercury__exception__builtin_catch_3_3_i8);
+MR_declare_label(mercury__exception__builtin_catch_3_4_i8);
+MR_declare_label(mercury__exception__builtin_catch_3_5_i8);
+#endif
+
+MR_declare_label(mercury__exception__builtin_throw_1_0_i1);
+
+#define MR_DUMMY_LINE   0
+
+MR_call_sites_user_one_ho(exception, builtin_catch, 3, 0, MR_DUMMY_LINE);
+MR_proc_static_user_one_site(exception, builtin_catch, 3, 0,
+    "exception.m", MR_DUMMY_LINE, MR_TRUE);
+MR_call_sites_user_one_ho(exception, builtin_catch, 3, 1, MR_DUMMY_LINE);
+MR_proc_static_user_one_site(exception, builtin_catch, 3, 1,
+    "exception.m", MR_DUMMY_LINE, MR_TRUE);
+MR_call_sites_user_one_ho(exception, builtin_catch, 3, 2, MR_DUMMY_LINE);
+MR_proc_static_user_one_site(exception, builtin_catch, 3, 2,
+    "exception.m", MR_DUMMY_LINE, MR_TRUE);
+MR_call_sites_user_one_ho(exception, builtin_catch, 3, 3, MR_DUMMY_LINE);
+MR_proc_static_user_one_site(exception, builtin_catch, 3, 3,
+    "exception.m", MR_DUMMY_LINE, MR_TRUE);
+MR_call_sites_user_one_ho(exception, builtin_catch, 3, 4, MR_DUMMY_LINE);
+MR_proc_static_user_one_site(exception, builtin_catch, 3, 4,
+    "exception.m", MR_DUMMY_LINE, MR_TRUE);
+MR_call_sites_user_one_ho(exception, builtin_catch, 3, 5, MR_DUMMY_LINE);
+MR_proc_static_user_one_site(exception, builtin_catch, 3, 5,
+    "exception.m", MR_DUMMY_LINE, MR_TRUE);
+
+/*
+** The various procedures of builtin_catch all allocate their stack frames
+** on the nondet stack, so for the purposes of doing stack traces we say
+** they have MR_DETISM_NON, even though they are not actually nondet.
+**
+** The fields of the MR_EXTERN_USER_PROC_STATIC_PROC_LAYOUT macro are
+** the following:
+**
+** MR_EXTERN_USER_PROC_STATIC_PROC_LAYOUT(detism, slots, succip_locn,
+**  pred_or_func, module, name, arity, mode)
+**
+** We must use MR_EXTERN_USER_PROC_STATIC_PROC_LAYOUT instead of the
+** MR_STATIC_USER_PROC_STATIC_PROC_LAYOUT version, because with intermodule
+** optimization, the caller of builtin_catch may be inlined in other modules
+** (e.g. browser/declarative_debugger.m), and deep profiling may therefore
+** need the address of the proc_layout structure for the call's
+** call_site_static structure.
+**
+** Additionally, the compiler generated declaration for the proc_layout
+** structure will be declared extern if the address is required in other
+** modules.  GCC 4 and above consider a static definition and a non-static
+** declaration to be an error.
+*/
+MR_EXTERN_USER_PROC_STATIC_PROC_LAYOUT(
+    MR_DETISM_NON, MR_PROC_NO_SLOT_COUNT, -1,
+    MR_PREDICATE, exception, builtin_catch, 3, 0);
+MR_EXTERN_USER_PROC_STATIC_PROC_LAYOUT(
+    MR_DETISM_NON, MR_PROC_NO_SLOT_COUNT, -1,
+    MR_PREDICATE, exception, builtin_catch, 3, 1);
+MR_EXTERN_USER_PROC_STATIC_PROC_LAYOUT(
+    MR_DETISM_NON, MR_PROC_NO_SLOT_COUNT, -1,
+    MR_PREDICATE, exception, builtin_catch, 3, 2);
+MR_EXTERN_USER_PROC_STATIC_PROC_LAYOUT(
+    MR_DETISM_NON, MR_PROC_NO_SLOT_COUNT, -1,
+    MR_PREDICATE, exception, builtin_catch, 3, 3);
+MR_EXTERN_USER_PROC_STATIC_PROC_LAYOUT(
+    MR_DETISM_NON, MR_PROC_NO_SLOT_COUNT, -1,
+    MR_PREDICATE, exception, builtin_catch, 3, 4);
+MR_EXTERN_USER_PROC_STATIC_PROC_LAYOUT(
+    MR_DETISM_NON, MR_PROC_NO_SLOT_COUNT, -1,
+    MR_PREDICATE, exception, builtin_catch, 3, 5);
+
+#ifdef  MR_DEEP_PROFILING
+MR_MAKE_USER_INTERNAL_LAYOUT(exception, builtin_catch, 3, 0, 1);
+MR_MAKE_USER_INTERNAL_LAYOUT(exception, builtin_catch, 3, 1, 1);
+MR_MAKE_USER_INTERNAL_LAYOUT(exception, builtin_catch, 3, 2, 1);
+MR_MAKE_USER_INTERNAL_LAYOUT(exception, builtin_catch, 3, 3, 1);
+MR_MAKE_USER_INTERNAL_LAYOUT(exception, builtin_catch, 3, 4, 1);
+MR_MAKE_USER_INTERNAL_LAYOUT(exception, builtin_catch, 3, 5, 1);
+#endif
+
+MR_MAKE_USER_INTERNAL_LAYOUT(exception, builtin_catch, 3, 0, 2);
+MR_MAKE_USER_INTERNAL_LAYOUT(exception, builtin_catch, 3, 1, 2);
+MR_MAKE_USER_INTERNAL_LAYOUT(exception, builtin_catch, 3, 2, 2);
+MR_MAKE_USER_INTERNAL_LAYOUT(exception, builtin_catch, 3, 3, 2);
+MR_MAKE_USER_INTERNAL_LAYOUT(exception, builtin_catch, 3, 4, 2);
+MR_MAKE_USER_INTERNAL_LAYOUT(exception, builtin_catch, 3, 5, 2);
+
+#ifdef  MR_DEEP_PROFILING
+MR_MAKE_USER_INTERNAL_LAYOUT(exception, builtin_catch, 3, 0, 3);
+MR_MAKE_USER_INTERNAL_LAYOUT(exception, builtin_catch, 3, 1, 3);
+MR_MAKE_USER_INTERNAL_LAYOUT(exception, builtin_catch, 3, 2, 3);
+MR_MAKE_USER_INTERNAL_LAYOUT(exception, builtin_catch, 3, 3, 3);
+MR_MAKE_USER_INTERNAL_LAYOUT(exception, builtin_catch, 3, 4, 3);
+MR_MAKE_USER_INTERNAL_LAYOUT(exception, builtin_catch, 3, 5, 3);
+#endif
+
+#ifdef  MR_DEEP_PROFILING
+MR_MAKE_USER_INTERNAL_LAYOUT(exception, builtin_catch, 3, 4, 4);
+MR_MAKE_USER_INTERNAL_LAYOUT(exception, builtin_catch, 3, 5, 4);
+MR_MAKE_USER_INTERNAL_LAYOUT(exception, builtin_catch, 3, 4, 5);
+MR_MAKE_USER_INTERNAL_LAYOUT(exception, builtin_catch, 3, 5, 5);
+#endif
+
+#if defined(MR_USE_TRAIL) || defined(MR_DEEP_PROFILING)
+MR_MAKE_USER_INTERNAL_LAYOUT(exception, builtin_catch, 3, 4, 6);
+MR_MAKE_USER_INTERNAL_LAYOUT(exception, builtin_catch, 3, 5, 6);
+#endif
+
+#ifdef  MR_DEEP_PROFILING
+MR_MAKE_USER_INTERNAL_LAYOUT(exception, builtin_catch, 3, 4, 7);
+MR_MAKE_USER_INTERNAL_LAYOUT(exception, builtin_catch, 3, 5, 7);
+#endif
+
+#ifdef  MR_DEEP_PROFILING
+MR_MAKE_USER_INTERNAL_LAYOUT(exception, builtin_catch, 3, 0, 8);
+MR_MAKE_USER_INTERNAL_LAYOUT(exception, builtin_catch, 3, 1, 8);
+MR_MAKE_USER_INTERNAL_LAYOUT(exception, builtin_catch, 3, 2, 8);
+MR_MAKE_USER_INTERNAL_LAYOUT(exception, builtin_catch, 3, 3, 8);
+MR_MAKE_USER_INTERNAL_LAYOUT(exception, builtin_catch, 3, 4, 8);
+MR_MAKE_USER_INTERNAL_LAYOUT(exception, builtin_catch, 3, 5, 8);
+#endif
+
+MR_proc_static_user_no_site(exception, builtin_throw, 1, 0,
+    "exception.m", MR_DUMMY_LINE, MR_TRUE);
+
+/*
+** See the above comments regarding builtin_catch for the reason we
+** must use MR_EXTERN_USER_PROC_STATIC_PROC_LAYOUT instead of 
+** MR_STATIC_USER_PROC_STATIC_PROC_LAYOUT here.
+*/
+MR_EXTERN_USER_PROC_STATIC_PROC_LAYOUT(
+        MR_DETISM_DET, 1, MR_LONG_LVAL_STACKVAR_INT(1),
+        MR_PREDICATE, exception, builtin_throw, 1, 0);
+MR_MAKE_USER_INTERNAL_LAYOUT(exception, builtin_throw, 1, 0, 1);
+
+MR_BEGIN_MODULE(hand_written_exception_module)
+    MR_init_entry_sl(mercury__exception__builtin_catch_3_0);
+    MR_init_entry_sl(mercury__exception__builtin_catch_3_1);
+    MR_init_entry_sl(mercury__exception__builtin_catch_3_2);
+    MR_init_entry_sl(mercury__exception__builtin_catch_3_3);
+    MR_init_entry_sl(mercury__exception__builtin_catch_3_4);
+    MR_init_entry_sl(mercury__exception__builtin_catch_3_5);
+
+#ifdef  MR_DEEP_PROFILING
+    MR_init_label(mercury__exception__builtin_catch_3_0_i1);
+    MR_init_label(mercury__exception__builtin_catch_3_1_i1);
+    MR_init_label(mercury__exception__builtin_catch_3_2_i1);
+    MR_init_label(mercury__exception__builtin_catch_3_3_i1);
+    MR_init_label(mercury__exception__builtin_catch_3_4_i1);
+    MR_init_label(mercury__exception__builtin_catch_3_5_i1);
+#endif
+
+    MR_init_label_sl(mercury__exception__builtin_catch_3_0_i2);
+    MR_init_label_sl(mercury__exception__builtin_catch_3_1_i2);
+    MR_init_label_sl(mercury__exception__builtin_catch_3_2_i2);
+    MR_init_label_sl(mercury__exception__builtin_catch_3_3_i2);
+    MR_init_label_sl(mercury__exception__builtin_catch_3_4_i2);
+    MR_init_label_sl(mercury__exception__builtin_catch_3_5_i2);
+
+#ifdef  MR_DEEP_PROFILING
+    MR_init_label_sl(mercury__exception__builtin_catch_3_0_i3);
+    MR_init_label_sl(mercury__exception__builtin_catch_3_1_i3);
+    MR_init_label_sl(mercury__exception__builtin_catch_3_2_i3);
+    MR_init_label_sl(mercury__exception__builtin_catch_3_3_i3);
+    MR_init_label_sl(mercury__exception__builtin_catch_3_4_i3);
+    MR_init_label_sl(mercury__exception__builtin_catch_3_5_i3);
+#endif
+
+#ifdef  MR_DEEP_PROFILING
+    MR_init_label_sl(mercury__exception__builtin_catch_3_4_i4);
+    MR_init_label_sl(mercury__exception__builtin_catch_3_5_i4);
+    MR_init_label_sl(mercury__exception__builtin_catch_3_4_i5);
+    MR_init_label_sl(mercury__exception__builtin_catch_3_5_i5);
+#endif
+
+#if defined(MR_USE_TRAIL) || defined(MR_DEEP_PROFILING)
+    MR_init_label_sl(mercury__exception__builtin_catch_3_4_i6);
+    MR_init_label_sl(mercury__exception__builtin_catch_3_5_i6);
+#endif
+
+#ifdef  MR_DEEP_PROFILING
+    MR_init_label_sl(mercury__exception__builtin_catch_3_4_i7);
+    MR_init_label_sl(mercury__exception__builtin_catch_3_5_i7);
+#endif
+
+#ifdef  MR_DEEP_PROFILING
+    MR_init_label(mercury__exception__builtin_catch_3_0_i8);
+    MR_init_label(mercury__exception__builtin_catch_3_1_i8);
+    MR_init_label(mercury__exception__builtin_catch_3_2_i8);
+    MR_init_label(mercury__exception__builtin_catch_3_3_i8);
+    MR_init_label(mercury__exception__builtin_catch_3_4_i8);
+    MR_init_label(mercury__exception__builtin_catch_3_5_i8);
+#endif
+
+    MR_init_entry_sl(mercury__exception__builtin_throw_1_0);
+    MR_init_label_sl(mercury__exception__builtin_throw_1_0_i1);
+MR_BEGIN_CODE
+
+/*
+** builtin_catch(Goal, Handler, Result)
+**  call Goal(R).
+**  if succeeds, set Result = R.
+**  if fails, fail.
+**  if throws an exception, call Handler(Exception, Result).
+**
+** On entry, we have a type_info (which we don't use) in MR_r1,
+** the Goal to execute in MR_r2 and the Handler in MR_r3.
+** On exit, we should put Result in MR_r1.
+**
+** There are slight differences between the versions of the code
+** for the different determinisms.
+*/
+
+#define save_r1                 do {                                                                        MR_framevar(1) = MR_r1;                                             } while (0)
+#define save_r1r2               do {                                                                        MR_framevar(1) = MR_r1;                                                 MR_framevar(2) = MR_r2;                                             } while (0)
+#define restore_r1              do {                                                                        MR_r1 = MR_framevar(1);                                             } while (0)
+#define restore_r1r2            do {                                                                        MR_r1 = MR_framevar(1);                                                 MR_r2 = MR_framevar(2);                                             } while (0)
+
+/* mercury__exception__builtin_catch_3_0: the det version */
+#define proc_label              mercury__exception__builtin_catch_3_0
+#define proc_layout             MR_proc_layout_user_name(exception,                                         builtin_catch, 3, 0)
+#define excp_handler            MR_MODEL_DET_HANDLER
+#define model                   "[model det]"
+#define save_results()          save_r1
+#define restore_results()       restore_r1
+#define handle_ticket_on_exit() do {                                                                        MR_prune_ticket();                                                  } while (0)
+
+#include "mercury_exception_catch_body.h"
+
+#undef  proc_layout
+#undef  proc_label
+
+/* mercury__exception__builtin_catch_3_2: the cc_multi version */
+/* identical to mercury__exception__builtin_catch_3_0 except for label names */
+#define proc_label              mercury__exception__builtin_catch_3_2
+#define proc_layout             MR_proc_layout_user_name(exception,                                     builtin_catch, 3, 2)
+
+#include "mercury_exception_catch_body.h"
+
+#undef  handle_ticket_on_exit
+#undef  restore_results
+#undef  save_results
+#undef  model
+#undef  excp_handler
+#undef  proc_layout
+#undef  proc_label
+
+/* mercury__exception__builtin_catch_3_1: the semidet version */
+#define proc_label              mercury__exception__builtin_catch_3_1
+#define proc_layout             MR_proc_layout_user_name(exception,                                     builtin_catch, 3, 1)
+#define excp_handler            MR_MODEL_SEMI_HANDLER
+#define model                   "[model semi]"
+#define save_results()          save_r1r2
+#define restore_results()       restore_r1r2
+#define handle_ticket_on_exit() do {                                                                        if (MR_r1) {                                                                MR_prune_ticket();                                                  } else {                                                                    MR_discard_ticket();                                                }                                                                   } while (0)
+
+#include "mercury_exception_catch_body.h"
+
+#undef  proc_layout
+#undef  proc_label
+
+/* mercury__exception__builtin_catch_3_3: the cc_nondet version */
+/* identical to mercury__exception__builtin_catch_3_1 except for label names */
+#define proc_label              mercury__exception__builtin_catch_3_3
+#define proc_layout             MR_proc_layout_user_name(exception,                                     builtin_catch, 3, 3)
+
+#include "mercury_exception_catch_body.h"
+
+#undef  handle_ticket_on_exit
+#undef  restore_results
+#undef  save_results
+#undef  model
+#undef  excp_handler
+#undef  proc_layout
+#undef  proc_label
+
+/* mercury__exception__builtin_catch_3_4: the multi version */
+#define proc_label              mercury__exception__builtin_catch_3_4
+#define proc_layout             MR_proc_layout_user_name(exception,                                     builtin_catch, 3, 4)
+#define excp_handler            MR_MODEL_NON_HANDLER
+#define model                   "[model non]"
+#define save_results()          save_r1
+#define restore_results()       restore_r1
+#define version_model_non       MR_TRUE
+#define handle_ticket_on_exit() ((void) 0)
+#define handle_ticket_on_fail() do {                                                                MR_prune_ticket();                                          } while (0)
+
+#include "mercury_exception_catch_body.h"
+
+#undef  proc_layout
+#undef  proc_label
+
+/* mercury__exception__builtin_catch_3_5: the nondet version */
+/* identical to mercury__exception__builtin_catch_3_4 except for label names */
+#define proc_label              mercury__exception__builtin_catch_3_5
+#define proc_layout             MR_proc_layout_user_name(exception,                                         builtin_catch, 3, 5)
+
+#include "mercury_exception_catch_body.h"
+
+#undef  handle_ticket_on_fail
+#undef  handle_ticket_on_exit
+#undef  version_model_non
+#undef  restore_results
+#undef  save_results
+#undef  model
+#undef  excp_handler
+#undef  proc_layout
+#undef  proc_label
+
+/*
+** builtin_throw(Exception):
+**
+** Throw the specified exception.
+** That means unwinding the nondet stack until we find a handler,
+** unwinding all the other Mercury stacks, and then
+** calling longjmp() to unwind the C stack.
+** The longjmp() will branch to builtin_catch which will then
+** call Handler(Exception, Result).
+**
+** On entry, we have Exception in MR_r1.
+*/
+
+MR_define_entry(mercury__exception__builtin_throw_1_0);
+{
+    MR_Word                     exception;
+    MR_Word                     handler;
+    enum MR_HandlerCodeModel    catch_code_model;
+    MR_bool                     trace_from_full;
+    MR_Word                     *orig_curfr;
+    MR_Unsigned                 exception_event_number;
+    MR_bool                     walk_stack;
+
+    exception = MR_r1;
+    exception_event_number = MR_trace_event_number;
+
+    /*
+    ** Let the debugger and/or the deep profiler trace exception throwing.
+    */
+
+#ifdef  MR_DEEP_PROFILING
+    walk_stack = MR_TRUE;
+#else
+    walk_stack = MR_debug_enabled;
+#endif
+
+    if (walk_stack) {
+        MR_Code     *MR_jumpaddr;
+
+        MR_trace_set_exception_value(exception);
+        MR_save_transient_registers();
+        MR_jumpaddr = ML_throw_walk_stack(MR_succip, MR_sp, MR_curfr);
+        MR_restore_transient_registers();
+
+        if (MR_jumpaddr != NULL) {
+            MR_GOTO(MR_jumpaddr);
+        }
+    }
+
+    /*
+    ** Search the nondet stack for an exception handler,
+    ** i.e. a frame whose redoip is `MR_exception_handler_do_fail'
+    ** (one created by `builtin_catch').
+    ** N.B.  We search down the `succfr' chain, not the `prevfr' chain;
+    ** this ensures that we only find handlers installed by our callers,
+    ** not handlers installed by procedures that we called but which
+    ** are still on the nondet stack because they left choice points
+    ** behind.
+    */
+
+    orig_curfr = MR_curfr;
+    while (MR_redoip_slot(MR_curfr)
+        != MR_ENTRY(MR_exception_handler_do_fail))
+    {
+        MR_curfr_word = MR_succfr_slot_word(MR_curfr);
+        if (MR_curfr < MR_CONTEXT(MR_ctxt_nondetstack_zone)->MR_zone_min) {
+            MR_Word save_succip_word;
+
+            /*
+            ** There was no exception handler.
+            **
+            ** We restore the original value of MR_curfr, print out some
+            ** diagnostics, and then terminate execution.
+            **
+            ** We need to save the registers to the fake_reg array using
+            ** MR_save_registers() before calling ML_report_uncaught_exception,
+            ** since that is Mercury code and the C->Mercury interface expects
+            ** the registers to be saved. We also need to save & restore
+            ** the MR_succip across that call, since any call to Mercury code
+            ** may clobber MR_succip (and also the Mercury registers MR_r1,
+            ** MR_r2, MR_r3, etc., but for those we don't care, since we don't
+            ** use them). Note that the MR_save_registers() alone is not
+            ** sufficient since the Mercury code may clobber the copy of
+            ** MR_succip in the fake_reg.
+            */
+
+            MR_curfr_word = (MR_Word) orig_curfr;
+            fflush(stdout);
+            save_succip_word = MR_succip_word;
+            MR_save_registers();
+            ML_report_uncaught_exception(exception);
+            MR_succip_word = save_succip_word;
+            MR_trace_report(stderr);
+            if (exception_event_number > 0) {
+                if (MR_standardize_event_details) {
+                    fprintf(stderr,
+                        "Last trace event before the unhandled exception"
+                        " was event #E%ld.\n",
+                        (long)
+                            MR_standardize_event_num(exception_event_number));
+                } else {
+                    fprintf(stderr,
+                        "Last trace event before the unhandled exception"
+                        " was event #%ld.\n",
+                        (long) exception_event_number);
+                }
+            }
+            if (walk_stack) {
+                /*
+                ** The stack has already been unwound by ML_throw_walk_stack(),
+                ** so we can't dump it. (In fact, if we tried to dump the
+                ** now-empty stack, we'd get incorrect results, since
+                ** ML_throw_walk_stack() does not restore MR_succip
+                ** to the appropriate value.)
+                */
+            } else {
+                MR_dump_stack(MR_succip, MR_sp, MR_curfr, MR_FALSE);
+            }
+
+            MR_perform_registered_exception_cleanups();
+            exit(1);
+        }
+    }
+
+    /*
+    ** Save the handler we found.
+    */
+    catch_code_model = MR_EXCEPTION_STRUCT->MR_excp_code_model;
+    handler = MR_EXCEPTION_STRUCT->MR_excp_handler;
+    trace_from_full = (MR_bool) MR_EXCEPTION_STRUCT->MR_excp_full_trace;
+
+    /*
+    ** Reset the success ip (i.e. return address).
+    ** This ensures that when we return from this procedure,
+    ** we will return to the caller of `builtin_catch'.
+    */
+    MR_succip_word = MR_succip_slot_word(MR_curfr);
+
+    /*
+    ** Reset the det stack.
+    */
+    MR_sp_word = (MR_Word) MR_EXCEPTION_STRUCT->MR_excp_stack_ptr;
+
+#ifdef MR_USE_TRAIL
+    /*
+    ** Reset the trail.
+    */
+    MR_reset_ticket(MR_EXCEPTION_STRUCT->MR_excp_trail_ptr,
+        MR_exception);
+    MR_discard_tickets_to(MR_EXCEPTION_STRUCT->MR_excp_ticket_counter);
+#endif
+#ifdef MR_RECLAIM_HP_ON_FAILURE
+    /*
+    ** Reset the heap.  But we need to be careful to preserve the
+    ** thrown exception object.
+    **
+    ** The following algorithm uses the `solutions heap', and will work
+    ** with non-conservative gc. We copy the exception object to the
+    ** solutions_heap, reset the heap pointer, and then copy it back.
+    **
+    ** An improvement to this would be to copy the exception object to the
+    ** solutions heap, but have deep_copy add an offset to the pointers
+    ** (at least, those that would otherwise point to the solutions heap),
+    ** so that, when finished, a block move of the solutions heap back to
+    ** the real heap will leave all the pointers in the correct place.
+    */
+{
+    MR_Word * saved_solns_heap_ptr;
+
+    /* Switch to the solutions heap. */
+    if (MR_ENGINE(MR_eng_heap_zone) == MR_EXCEPTION_STRUCT->MR_excp_heap_zone) {
+        swap_heaps();
+    }
+
+    saved_solns_heap_ptr = MR_hp;
+
+    /*
+    ** MR_deep_copy() the exception to the solutions heap.
+    ** Note that we need to save/restore the hp register, if it
+    ** is transient, before/after calling MR_deep_copy().
+    */
+    assert(MR_EXCEPTION_STRUCT->MR_excp_heap_ptr <=
+        MR_EXCEPTION_STRUCT->MR_excp_heap_zone->MR_zone_top);
+    MR_save_transient_registers();
+    exception = MR_deep_copy(exception,
+        (MR_TypeInfo) &mercury_data_univ__type_ctor_info_univ_0,
+        MR_EXCEPTION_STRUCT->MR_excp_heap_ptr,
+        MR_EXCEPTION_STRUCT->MR_excp_heap_zone->MR_zone_top);
+    MR_restore_transient_registers();
+
+    /* Switch back to the ordinary heap. */
+    swap_heaps();
+
+    /* Reset the heap. */
+    assert(MR_EXCEPTION_STRUCT->MR_excp_heap_ptr <= MR_hp);
+    MR_hp_word = (MR_Word) MR_EXCEPTION_STRUCT->MR_excp_heap_ptr;
+
+    /* MR_deep_copy the exception back to the ordinary heap. */
+    assert(MR_EXCEPTION_STRUCT->MR_excp_solns_heap_ptr <=
+        MR_ENGINE(MR_eng_solutions_heap_zone)->MR_zone_top);
+    MR_save_transient_registers();
+    exception = MR_deep_copy(exception,
+        (MR_TypeInfo) &mercury_data_univ__type_ctor_info_univ_0,
+        saved_solns_heap_ptr,
+        MR_ENGINE(MR_eng_solutions_heap_zone)->MR_zone_top);
+    MR_restore_transient_registers();
+
+    /* Reset the solutions heap. */
+    assert(MR_EXCEPTION_STRUCT->MR_excp_solns_heap_ptr <= saved_solns_heap_ptr);
+    assert(saved_solns_heap_ptr <= MR_sol_hp);
+    if (catch_code_model == MR_MODEL_NON_HANDLER) {
+        /*
+        ** If the code inside the try (catch) was nondet, then its caller
+        ** (which may be solutions/2) may have put some more stuff on the
+        ** solutions-heap after the goal succeeded; the goal may have only thrown
+        ** after being re-entered on backtracking. Thus we can only reset the
+        ** solutions heap to where it was before copying the exception object
+        ** to it.
+        */
+        MR_sol_hp = saved_solns_heap_ptr;
+    } else {
+        /*
+        ** If the code inside the try (catch) was det or semidet,
+        ** we can safely reset the solutions heap to where
+        ** it was when it try (catch) was entered.
+        */
+        MR_sol_hp = MR_EXCEPTION_STRUCT->MR_excp_solns_heap_ptr;
+    }
+}
+#endif /* !defined(MR_CONSERVATIVE_GC) */
+
+    /*
+    ** Pop the final exception handler frame off the nondet stack,
+    ** and reset the nondet stack top.  (This must be done last,
+    ** since it invalidates all the framevars.)
+    */
+    MR_maxfr_word = MR_prevfr_slot_word(MR_curfr);
+    MR_curfr_word = MR_succfr_slot_word(MR_curfr);
+
+    /*
+    ** Now longjmp to the catch, which will invoke the handler that we found.
+    */
+
+#ifdef  MR_DEBUG_JMPBUFS
+    fprintf(stderr, "throw catch_code_model %d\n", catch_code_model);
+#endif
+
+    if (catch_code_model == MR_C_LONGJMP_HANDLER) {
+#ifdef  MR_DEBUG_JMPBUFS
+        fprintf(stderr, "throw longjmp %p\n",
+            *(MR_ENGINE(MR_eng_jmp_buf)));
+#endif
+
+        MR_ENGINE(MR_eng_exception) = (MR_Word *) exception;
+        MR_save_registers();
+        longjmp(*(MR_ENGINE(MR_eng_jmp_buf)), 1);
+    }
+
+    /*
+    ** Otherwise, the handler is a Mercury closure.
+    ** Invoke the handler as `Handler(Exception, Result)'.
+    */
+
+#ifdef  MR_DEEP_PROFILING
+    MR_fatal_error("builtin_throw cannot (yet) invoke"
+        " Mercury handlers in deep profiling grades");
+#endif
+
+    MR_r1 = handler;    /* get the Handler closure */
+    MR_r2 = 1;          /* One additional input argument */
+    MR_r3 = exception;  /* This is our one input argument */
+
+    /*
+    ** Restore the value of MR_trace_from_full that we saved at the
+    ** start of builtin_catch.
+    */
+    MR_trace_from_full = trace_from_full;
+
+    /*
+    ** If the catch was semidet, we need to set the success indicator
+    ** MR_r1 to MR_TRUE and return the result in MR_r2; otherwise, we return
+    ** the result in MR_r1, which is where mercury__do_call_closure_compact
+    ** puts it, so we can do a tailcall.
+    */
+    if (catch_code_model != MR_MODEL_SEMI_HANDLER) {
+        MR_tailcall(MR_ENTRY(mercury__do_call_closure_compact),
+            MR_ENTRY(mercury__exception__builtin_throw_1_0));
+    }
+    MR_incr_sp_push_msg(1, "pred builtin_throw/1");
+    MR_stackvar(1) = MR_succip_word;
+    MR_call(MR_ENTRY(mercury__do_call_closure_compact),
+        MR_LABEL(mercury__exception__builtin_throw_1_0_i1),
+        MR_ENTRY(mercury__exception__builtin_throw_1_0));
+}
+MR_define_label(mercury__exception__builtin_throw_1_0_i1);
+    MR_update_prof_current_proc(
+        MR_LABEL(mercury__exception__builtin_throw_1_0));
+    /* We've just returned from mercury__do_call_closure_compact. */
+    MR_r2 = MR_r1;
+    MR_r1 = MR_TRUE;
+    MR_succip_word = MR_stackvar(1);
+    MR_decr_sp_pop_msg(1);
+    MR_proceed(); /* return to the caller of `builtin_catch' */
+
+MR_END_MODULE
+
+#endif /* ! MR_HIGHLEVEL_CODE */
+
+/* Ensure that the initialization code for the above module gets run. */
+/*
+INIT mercury_sys_init_exceptions
+*/
+
+void
+mercury_sys_init_exceptions_init(void)
+{
+#ifndef MR_HIGHLEVEL_CODE
+    hand_written_exception_module();
+#endif
+}
+
+void
+mercury_sys_init_exceptions_init_type_tables(void)
+{
+    /* no types to register */
+}
+
+#ifdef  MR_DEEP_PROFILING
+void
+mercury_sys_init_exceptions_write_out_proc_statics(FILE *deep_fp,
+    FILE *procrep_fp)
+{
+    MR_write_out_user_proc_static(deep_fp, procrep_fp,
+        &MR_proc_layout_user_name(exception, builtin_catch, 3, 0));
+    MR_write_out_user_proc_static(deep_fp, procrep_fp,
+        &MR_proc_layout_user_name(exception, builtin_catch, 3, 1));
+    MR_write_out_user_proc_static(deep_fp, procrep_fp,
+        &MR_proc_layout_user_name(exception, builtin_catch, 3, 2));
+    MR_write_out_user_proc_static(deep_fp, procrep_fp,
+        &MR_proc_layout_user_name(exception, builtin_catch, 3, 3));
+    MR_write_out_user_proc_static(deep_fp, procrep_fp,
+        &MR_proc_layout_user_name(exception, builtin_catch, 3, 4));
+    MR_write_out_user_proc_static(deep_fp, procrep_fp,
+        &MR_proc_layout_user_name(exception, builtin_catch, 3, 5));
+    MR_write_out_user_proc_static(deep_fp, procrep_fp,
+        &MR_proc_layout_user_name(exception, builtin_throw, 1, 0));
+}
+#endif
+
+
+#line 8907 "exception.c"
+#line 995 "exception.m"
+
+#ifdef MR_HIGHLEVEL_CODE
+
+/*
+** We also need to provide definitions of these builtins
+** as functions rather than as macros.  This is needed
+** (a) in case we take their address, and (b) for the
+** GCC back-end interface.
+*/
+
+#undef mercury__exception__builtin_catch_3_p_0
+#undef mercury__exception__builtin_catch_3_p_1
+#undef mercury__exception__builtin_catch_3_p_2
+#undef mercury__exception__builtin_catch_3_p_3
+#undef mercury__exception__builtin_catch_3_p_4
+#undef mercury__exception__builtin_catch_3_p_5
+
+/* det ==> model_det */
+void MR_CALL
+mercury__exception__builtin_catch_3_p_0(MR_Mercury_Type_Info type_info,
+    MR_Pred pred, MR_Pred handler_pred, MR_Box *output)
+{
+    mercury__exception__builtin_catch_model_det(type_info,
+        pred, handler_pred, output);
+}
+
+/* semidet ==> model_semi */
+MR_bool MR_CALL
+mercury__exception__builtin_catch_3_p_1(MR_Mercury_Type_Info type_info,
+    MR_Pred pred, MR_Pred handler_pred, MR_Box *output)
+{
+    return mercury__exception__builtin_catch_model_semi(type_info,
+        pred, handler_pred, output);
+}
+
+/* cc_multi ==> model_det */
+void MR_CALL
+mercury__exception__builtin_catch_3_p_2(MR_Mercury_Type_Info type_info,
+    MR_Pred pred, MR_Pred handler_pred, MR_Box *output)
+{
+    mercury__exception__builtin_catch_model_det(type_info,
+        pred, handler_pred, output);
+}
+
+/* cc_nondet ==> model_semi */
+MR_bool MR_CALL
+mercury__exception__builtin_catch_3_p_3(MR_Mercury_Type_Info type_info,
+    MR_Pred pred, MR_Pred handler_pred, MR_Box *output)
+{
+    return mercury__exception__builtin_catch_model_semi(type_info,
+        pred, handler_pred, output);
+}
+
+/* multi ==> model_non */
+void MR_CALL
+mercury__exception__builtin_catch_3_p_4(MR_Mercury_Type_Info type_info,
+    MR_Pred pred, MR_Pred handler_pred, MR_Box *output,
+    MR_CONT_PARAMS)
+{
+    mercury__exception__builtin_catch_model_non(type_info,
+        pred, handler_pred, output, MR_CONT_ARGS);
+}
+
+/* multi ==> model_non */
+void MR_CALL
+mercury__exception__builtin_catch_3_p_5(MR_Mercury_Type_Info type_info,
+    MR_Pred pred, MR_Pred handler_pred, MR_Box *output,
+    MR_CONT_PARAMS)
+{
+    mercury__exception__builtin_catch_model_non(type_info,
+        pred, handler_pred, output, MR_CONT_ARGS);
+}
+
+/*---------------------------------------------------------------------------*/
+
+static void
+ML_call_goal_det_handcoded(MR_Mercury_Type_Info type_info,
+    MR_Pred closure, MR_Box *result)
+{
+    typedef void MR_CALL DetFuncType(void *, MR_Box *);
+    DetFuncType *code = (DetFuncType *)
+        MR_field(MR_mktag(0), closure, (MR_Integer) 1);
+    (*code)((void *) closure, result);
+}
+
+static MR_bool
+ML_call_goal_semi_handcoded(MR_Mercury_Type_Info type_info,
+    MR_Pred closure, MR_Box *result)
+{
+    typedef MR_bool MR_CALL SemidetFuncType(void *, MR_Box *);
+    SemidetFuncType *code = (SemidetFuncType *)
+        MR_field(MR_mktag(0), closure, (MR_Integer) 1);
+    return (*code)((void *) closure, result);
+}
+
+static void
+ML_call_goal_non_handcoded(MR_Mercury_Type_Info type_info,
+    MR_Pred closure, MR_Box *result, MR_CONT_PARAMS)
+{
+    typedef void MR_CALL NondetFuncType(void *, MR_Box *,
+        MR_CONT_PARAM_TYPES);
+    NondetFuncType *code = (NondetFuncType *)
+        MR_field(MR_mktag(0), closure, (MR_Integer) 1);
+    (*code)((void *) closure, result, MR_CONT_ARGS);
+}
+
+/*---------------------------------------------------------------------------*/
+
+static void
+ML_call_handler_det_handcoded(MR_Mercury_Type_Info type_info,
+    MR_Pred closure, MR_Univ exception, MR_Box *result)
+{
+    typedef void MR_CALL HandlerFuncType(void *, MR_Box, MR_Box *);
+    HandlerFuncType *code = (HandlerFuncType *)
+        MR_field(MR_mktag(0), closure, (MR_Integer) 1);
+    (*code)((void *) closure, (MR_Box) exception, result);
+}
+
+/*---------------------------------------------------------------------------*/
+
+#include <stdlib.h>
+#include <setjmp.h>
+
+typedef struct ML_ExceptionHandler_struct {
+    struct ML_ExceptionHandler_struct *prev;
+    jmp_buf     handler;
+    MR_Univ     exception;
+} ML_ExceptionHandler;
+
+  #ifndef MR_THREAD_SAFE
+  ML_ExceptionHandler   *ML_exception_handler;
+  #endif
+
+  #ifdef MR_THREAD_SAFE
+
+    #define ML_GET_EXCEPTION_HANDLER()              MR_GETSPECIFIC(MR_exception_handler_key)
+    #define ML_SET_EXCEPTION_HANDLER(val)       pthread_setspecific(MR_exception_handler_key, (val))
+
+  #else  /* !MR_THREAD_SAFE */
+
+    #define ML_GET_EXCEPTION_HANDLER()      ML_exception_handler
+    #define ML_SET_EXCEPTION_HANDLER(val)   ML_exception_handler = (val)
+
+  #endif /* !MR_THREAD_SAFE */
+
+void MR_CALL
+mercury__exception__builtin_throw_1_p_0(MR_Univ exception)
+{
+    ML_ExceptionHandler *exception_handler = ML_GET_EXCEPTION_HANDLER();
+
+    if (exception_handler == NULL) {
+        ML_report_uncaught_exception((MR_Word) exception);
+        exit(EXIT_FAILURE);
+    } else {
+  #ifdef MR_DEBUG_JMPBUFS
+        fprintf(stderr, "throw longjmp %p\n", exception_handler->handler);
+  #endif
+        exception_handler->exception = exception;
+        longjmp(exception_handler->handler, 1);
+    }
+}
+
+  #ifdef MR_NATIVE_GC
+
+/*
+** The following code is needed to trace the local variables
+** in the builtin_catch_* functions for accurate GC.
+*/
+
+struct mercury__exception__builtin_catch_locals {
+    /* fixed fields, from struct MR_StackChain */
+    struct MR_StackChain *prev;
+    void (*trace)(void *this_frame);
+    /* locals for this function */
+    MR_Mercury_Type_Info type_info;
+    MR_Pred handler_pred;
+};
+
+static void
+mercury__exception__builtin_catch_gc_trace(void *frame)
+{
+    struct mercury__exception__builtin_catch_locals *agc_locals = frame;
+    /*
+    ** Construct a type_info for the type `pred(univ, T)',
+    ** which is the type of the handler_pred.
+    */
+    MR_VAR_ARITY_TYPEINFO_STRUCT(s, 2) type_info_for_handler_pred;
+    type_info_for_handler_pred.MR_ti_type_ctor_info =
+        &mercury__builtin__builtin__type_ctor_info_pred_0;
+    type_info_for_handler_pred.MR_ti_var_arity_arity = 2;
+    type_info_for_handler_pred.MR_ti_var_arity_arg_typeinfos[0] =
+        (MR_TypeInfo)
+        &mercury__univ__univ__type_ctor_info_univ_0;
+    type_info_for_handler_pred.MR_ti_var_arity_arg_typeinfos[1] =
+        (MR_TypeInfo) agc_locals->type_info;
+    /*
+    ** Call gc_trace/1 to trace the two local variables in this frame.
+    */
+    mercury__private_builtin__gc_trace_1_p_0(
+        (MR_Word)
+        &mercury__type_desc__type_desc__type_ctor_info_type_desc_0,
+        (MR_Word) &agc_locals->type_info);
+    mercury__private_builtin__gc_trace_1_p_0(
+        (MR_Word) &type_info_for_handler_pred,
+        (MR_Word) &agc_locals->handler_pred);
+}
+
+ #define ML_DECLARE_AGC_HANDLER                                                 struct mercury__exception__builtin_catch_locals agc_locals;
+
+ #define ML_INSTALL_AGC_HANDLER(TYPE_INFO, HANDLER_PRED)                        do {                                                                            agc_locals.prev = mercury__private_builtin__stack_chain;                    agc_locals.trace = mercury__exception__builtin_catch_gc_trace;              agc_locals.type_info = (TYPE_INFO);                                         agc_locals.handler_pred = (HANDLER_PRED);                                   mercury__private_builtin__stack_chain = &agc_locals;                    } while(0)
+
+ #define ML_UNINSTALL_AGC_HANDLER()                                             do {                                                                            mercury__private_builtin__stack_chain = agc_locals.prev;                } while (0)
+
+  #define ML_AGC_LOCAL(NAME) (agc_locals.NAME)
+
+  #else /* !MR_NATIVE_GC */
+
+  /* If accurate GC is not enabled, we define all of these as NOPs. */
+  #define ML_DECLARE_AGC_HANDLER
+  #define ML_INSTALL_AGC_HANDLER(type_info, handler_pred)
+  #define ML_UNINSTALL_AGC_HANDLER()
+  #define ML_AGC_LOCAL(name) (name)
+
+  #endif /* !MR_NATIVE_GC */
+
+void MR_CALL
+mercury__exception__builtin_catch_model_det(MR_Mercury_Type_Info type_info,
+    MR_Pred pred, MR_Pred handler_pred, MR_Box *output)
+{
+    ML_ExceptionHandler this_handler;
+    ML_DECLARE_AGC_HANDLER
+
+    this_handler.prev = ML_GET_EXCEPTION_HANDLER();
+    ML_SET_EXCEPTION_HANDLER(&this_handler);
+
+    ML_INSTALL_AGC_HANDLER(type_info, handler_pred);
+
+  #ifdef MR_DEBUG_JMPBUFS
+    fprintf(stderr, "detcatch setjmp %p\n", this_handler.handler);
+  #endif
+
+    if (setjmp(this_handler.handler) == 0) {
+        ML_call_goal_det_handcoded(type_info, pred, output);
+        ML_SET_EXCEPTION_HANDLER(this_handler.prev);
+        ML_UNINSTALL_AGC_HANDLER();
+    } else {
+  #ifdef MR_DEBUG_JMPBUFS
+        fprintf(stderr, "detcatch caught jmp %p\n", this_handler.handler);
+  #endif
+
+        ML_SET_EXCEPTION_HANDLER(this_handler.prev);
+        ML_UNINSTALL_AGC_HANDLER();
+        ML_call_handler_det_handcoded(
+            ML_AGC_LOCAL(type_info), ML_AGC_LOCAL(handler_pred),
+            this_handler.exception, output);
+    }
+}
+
+MR_bool MR_CALL
+mercury__exception__builtin_catch_model_semi(MR_Mercury_Type_Info type_info,
+    MR_Pred pred, MR_Pred handler_pred, MR_Box *output)
+{
+    ML_ExceptionHandler this_handler;
+    ML_DECLARE_AGC_HANDLER
+
+    this_handler.prev = ML_GET_EXCEPTION_HANDLER();
+    ML_SET_EXCEPTION_HANDLER(&this_handler);
+
+    ML_INSTALL_AGC_HANDLER(type_info, handler_pred);
+
+  #ifdef MR_DEBUG_JMPBUFS
+    fprintf(stderr, "semicatch setjmp %p\n", this_handler.handler);
+  #endif
+
+    if (setjmp(this_handler.handler) == 0) {
+        MR_bool result = ML_call_goal_semi_handcoded(type_info, pred,
+            output);
+        ML_SET_EXCEPTION_HANDLER(this_handler.prev);
+        ML_UNINSTALL_AGC_HANDLER();
+        return result;
+    } else {
+  #ifdef MR_DEBUG_JMPBUFS
+        fprintf(stderr, "semicatch caught jmp %p\n", this_handler.handler);
+  #endif
+
+        ML_SET_EXCEPTION_HANDLER(this_handler.prev);
+        ML_UNINSTALL_AGC_HANDLER();
+        ML_call_handler_det_handcoded(
+            ML_AGC_LOCAL(type_info), ML_AGC_LOCAL(handler_pred),
+            this_handler.exception, output);
+        return MR_TRUE;
+    }
+}
+
+  #ifdef MR_USE_GCC_NESTED_FUNCTIONS
+
+void MR_CALL
+mercury__exception__builtin_catch_model_non(MR_Mercury_Type_Info type_info,
+    MR_Pred pred, MR_Pred handler_pred, MR_Box *output,
+    MR_NestedCont cont)
+{
+    ML_ExceptionHandler this_handler;
+    ML_DECLARE_AGC_HANDLER
+
+    auto void MR_CALL success_cont(void);
+    void MR_CALL success_cont(void) {
+        /*
+        ** If we reach here, it means that
+        ** the nondet goal has succeeded, so we
+        ** need to restore the previous exception
+        ** handler before calling its continuation
+        */
+        ML_SET_EXCEPTION_HANDLER(this_handler.prev);
+        (*cont)();
+
+        /*
+        ** If we get here, it means that the continuation
+        ** has failed, and so we are about to redo the
+        ** nondet goal.  Thus we need to re-establish
+        ** its exception handler.
+        */
+        ML_SET_EXCEPTION_HANDLER(&this_handler);
+    }
+
+    this_handler.prev = ML_GET_EXCEPTION_HANDLER();
+    ML_SET_EXCEPTION_HANDLER(&this_handler);
+
+    ML_INSTALL_AGC_HANDLER(type_info, handler_pred);
+
+    #ifdef MR_DEBUG_JMPBUFS
+    fprintf(stderr, "noncatch setjmp %p\n", this_handler.handler);
+    #endif
+
+    if (setjmp(this_handler.handler) == 0) {
+        ML_call_goal_non_handcoded(type_info, pred, output,
+            success_cont);
+        ML_SET_EXCEPTION_HANDLER(this_handler.prev);
+        ML_UNINSTALL_AGC_HANDLER();
+    } else {
+    #ifdef MR_DEBUG_JMPBUFS
+        fprintf(stderr, "noncatch caught jmp %p\n", this_handler.handler);
+    #endif
+
+        ML_SET_EXCEPTION_HANDLER(this_handler.prev);
+        ML_UNINSTALL_AGC_HANDLER();
+        ML_call_handler_det_handcoded(
+            ML_AGC_LOCAL(type_info), ML_AGC_LOCAL(handler_pred),
+            this_handler.exception, output);
+        (*cont)();
+    }
+}
+
+  #else /* ! MR_USE_GCC_NESTED_FUNCTIONS */
+
+struct ML_catch_env {
+    ML_ExceptionHandler this_handler;
+    MR_Cont             cont;
+    void                *cont_env;
+};
+
+static void MR_CALL
+ML_catch_success_cont(void *env_ptr) {
+    struct ML_catch_env *env = (struct ML_catch_env *) env_ptr;
+
+    /*
+    ** If we reach here, it means that the nondet goal has succeeded, so we
+    ** need to restore the previous exception handler before calling its
+    ** continuation.
+    */
+    ML_SET_EXCEPTION_HANDLER(env->this_handler.prev);
+    (*env->cont)(env->cont_env);
+
+    /*
+    ** If we get here, it means that the continuation has failed, and so we
+    ** are about to redo the nondet goal. Thus we need to re-establish
+    ** its exception handler.
+    */
+    ML_SET_EXCEPTION_HANDLER(&env->this_handler);
+}
+
+void MR_CALL
+mercury__exception__builtin_catch_model_non(MR_Mercury_Type_Info type_info,
+    MR_Pred pred, MR_Pred handler_pred, MR_Box *output,
+    MR_Cont cont, void *cont_env)
+{
+    ML_DECLARE_AGC_HANDLER
+    struct ML_catch_env locals;
+    locals.cont = cont;
+    locals.cont_env = cont_env;
+
+    locals.this_handler.prev = ML_GET_EXCEPTION_HANDLER();
+    ML_SET_EXCEPTION_HANDLER(&locals.this_handler);
+
+    ML_INSTALL_AGC_HANDLER(type_info, handler_pred);
+
+    #ifdef MR_DEBUG_JMPBUFS
+    fprintf(stderr, "noncatch setjmp %p\n", locals.this_handler.handler);
+    #endif
+
+    if (setjmp(locals.this_handler.handler) == 0) {
+        ML_call_goal_non_handcoded(type_info, pred, output,
+            ML_catch_success_cont, &locals);
+
+        /*
+        ** If we reach here, it means that the nondet goal has failed, so we
+        ** need to restore the previous exception handler.
+        */
+        ML_SET_EXCEPTION_HANDLER(locals.this_handler.prev);
+        ML_UNINSTALL_AGC_HANDLER();
+        return;
+    } else {
+        /*
+        ** We caught an exception. Restore the previous exception handler,
+        ** and then invoke the handler predicate for this handler.
+        */
+
+    #ifdef MR_DEBUG_JMPBUFS
+        fprintf(stderr, "noncatch caught jmp %p\n",
+            locals.this_handler.handler);
+    #endif
+
+        ML_SET_EXCEPTION_HANDLER(locals.this_handler.prev);
+        ML_UNINSTALL_AGC_HANDLER();
+        ML_call_handler_det_handcoded(
+            ML_AGC_LOCAL(type_info), ML_AGC_LOCAL(handler_pred),
+            locals.this_handler.exception, output);
+        cont(cont_env);
+    }
+}
+
+  #endif /* ! MR_USE_GCC_NESTED_FUNCTIONS */
+
+#endif /* MR_HIGHLEVEL_CODE */
+
+#line 9343 "exception.c"
+
+MR_declare_static(mercury__exception__set_get_message_hook_2_0);
+
+void
+mercury__exception__user_init_pred_0(void);
+
+void
+mercury__exception__user_init_pred_0(void)
+{
+#if MR_NUM_REAL_REGS > 0
+	MR_Word c_regs[MR_NUM_REAL_REGS];
+#endif
+#if MR_THREAD_SAFE
+	MR_bool must_finalize_engine;
+#endif
+#if MR_DEEP_PROFILING
+	MR_CallSiteDynList **saved_cur_callback;
+	MR_CallSiteDynamic *saved_cur_csd;
+#endif
+
+	MR_save_regs_to_mem(c_regs);
+#if MR_THREAD_SAFE
+	must_finalize_engine = MR_init_thread(MR_use_now);
+#endif
+#if MR_DEEP_PROFILING
+	saved_cur_callback = MR_current_callback_site;
+	saved_cur_csd = MR_current_call_site_dynamic;
+	MR_setup_callback(MR_ENTRY(mercury__exception__set_get_message_hook_2_0));
+#endif
+	MR_restore_registers();
+	MR_save_transient_registers();
+	(void) MR_call_engine(MR_ENTRY(mercury__exception__set_get_message_hook_2_0), MR_FALSE);
+	MR_restore_transient_registers();
+#if MR_DEEP_PROFILING
+	MR_current_call_site_dynamic = saved_cur_csd;
+	MR_current_callback_site = saved_cur_callback;
+#endif
+#if MR_THREAD_SAFE
+	if (must_finalize_engine) {
+		 MR_finalize_thread_engine();
+	}
+#endif
+	MR_restore_regs_from_mem(c_regs);
+}
+
+
+MR_declare_static(mercury__exception__report_uncaught_exception_3_0);
+
+void
+ML_report_uncaught_exception(MR_Word Mercury__argument1);
+
+void
+ML_report_uncaught_exception(MR_Word Mercury__argument1)
+{
+#if MR_NUM_REAL_REGS > 0
+	MR_Word c_regs[MR_NUM_REAL_REGS];
+#endif
+#if MR_THREAD_SAFE
+	MR_bool must_finalize_engine;
+#endif
+#if MR_DEEP_PROFILING
+	MR_CallSiteDynList **saved_cur_callback;
+	MR_CallSiteDynamic *saved_cur_csd;
+#endif
+
+	MR_save_regs_to_mem(c_regs);
+#if MR_THREAD_SAFE
+	must_finalize_engine = MR_init_thread(MR_use_now);
+#endif
+#if MR_DEEP_PROFILING
+	saved_cur_callback = MR_current_callback_site;
+	saved_cur_csd = MR_current_call_site_dynamic;
+	MR_setup_callback(MR_ENTRY(mercury__exception__report_uncaught_exception_3_0));
+#endif
+	MR_restore_registers();
+	MR_r1 = Mercury__argument1;
+	MR_save_transient_registers();
+	(void) MR_call_engine(MR_ENTRY(mercury__exception__report_uncaught_exception_3_0), MR_FALSE);
+	MR_restore_transient_registers();
+#if MR_DEEP_PROFILING
+	MR_current_call_site_dynamic = saved_cur_csd;
+	MR_current_callback_site = saved_cur_callback;
+#endif
+#if MR_THREAD_SAFE
+	if (must_finalize_engine) {
+		 MR_finalize_thread_engine();
+	}
+#endif
+	MR_restore_regs_from_mem(c_regs);
+}
+
+
+MR_declare_static(mercury__exception__call_handler_3_0);
+
+void
+ML_call_handler_det(MR_Word Mercury__argument1, MR_Word Mercury__argument2, MR_Word Mercury__argument3, MR_Word * Mercury__argument4);
+
+void
+ML_call_handler_det(MR_Word Mercury__argument1, MR_Word Mercury__argument2, MR_Word Mercury__argument3, MR_Word * Mercury__argument4)
+{
+#if MR_NUM_REAL_REGS > 0
+	MR_Word c_regs[MR_NUM_REAL_REGS];
+#endif
+#if MR_THREAD_SAFE
+	MR_bool must_finalize_engine;
+#endif
+#if MR_DEEP_PROFILING
+	MR_CallSiteDynList **saved_cur_callback;
+	MR_CallSiteDynamic *saved_cur_csd;
+#endif
+
+	MR_save_regs_to_mem(c_regs);
+#if MR_THREAD_SAFE
+	must_finalize_engine = MR_init_thread(MR_use_now);
+#endif
+#if MR_DEEP_PROFILING
+	saved_cur_callback = MR_current_callback_site;
+	saved_cur_csd = MR_current_call_site_dynamic;
+	MR_setup_callback(MR_ENTRY(mercury__exception__call_handler_3_0));
+#endif
+	MR_restore_registers();
+	MR_r1 = Mercury__argument1;
+	MR_r2 = Mercury__argument2;
+	MR_r3 = Mercury__argument3;
+	MR_save_transient_registers();
+	(void) MR_call_engine(MR_ENTRY(mercury__exception__call_handler_3_0), MR_FALSE);
+	MR_restore_transient_registers();
+#if MR_DEEP_PROFILING
+	MR_current_call_site_dynamic = saved_cur_csd;
+	MR_current_callback_site = saved_cur_callback;
+#endif
+	*Mercury__argument4 = MR_r1;
+#if MR_THREAD_SAFE
+	if (must_finalize_engine) {
+		 MR_finalize_thread_engine();
+	}
+#endif
+	MR_restore_regs_from_mem(c_regs);
+}
+
+
+MR_declare_static(mercury__exception__call_goal_2_1);
+
+MR_bool
+ML_call_goal_semidet(MR_Word Mercury__argument1, MR_Word Mercury__argument2, MR_Word * Mercury__argument3);
+
+MR_bool
+ML_call_goal_semidet(MR_Word Mercury__argument1, MR_Word Mercury__argument2, MR_Word * Mercury__argument3)
+{
+#if MR_NUM_REAL_REGS > 0
+	MR_Word c_regs[MR_NUM_REAL_REGS];
+#endif
+#if MR_THREAD_SAFE
+	MR_bool must_finalize_engine;
+#endif
+#if MR_DEEP_PROFILING
+	MR_CallSiteDynList **saved_cur_callback;
+	MR_CallSiteDynamic *saved_cur_csd;
+#endif
+
+	MR_save_regs_to_mem(c_regs);
+#if MR_THREAD_SAFE
+	must_finalize_engine = MR_init_thread(MR_use_now);
+#endif
+#if MR_DEEP_PROFILING
+	saved_cur_callback = MR_current_callback_site;
+	saved_cur_csd = MR_current_call_site_dynamic;
+	MR_setup_callback(MR_ENTRY(mercury__exception__call_goal_2_1));
+#endif
+	MR_restore_registers();
+	MR_r1 = Mercury__argument1;
+	MR_r2 = Mercury__argument2;
+	MR_save_transient_registers();
+	(void) MR_call_engine(MR_ENTRY(mercury__exception__call_goal_2_1), MR_FALSE);
+	MR_restore_transient_registers();
+#if MR_DEEP_PROFILING
+	MR_current_call_site_dynamic = saved_cur_csd;
+	MR_current_callback_site = saved_cur_callback;
+#endif
+	if (!MR_r1) {
+		MR_restore_regs_from_mem(c_regs);
+	return MR_FALSE;
+	}
+	*Mercury__argument3 = MR_r2;
+#if MR_THREAD_SAFE
+	if (must_finalize_engine) {
+		 MR_finalize_thread_engine();
+	}
+#endif
+	MR_restore_regs_from_mem(c_regs);
+	return MR_TRUE;
+}
+
+
+MR_declare_static(mercury__exception__call_goal_2_0);
+
+void
+ML_call_goal_det(MR_Word Mercury__argument1, MR_Word Mercury__argument2, MR_Word * Mercury__argument3);
+
+void
+ML_call_goal_det(MR_Word Mercury__argument1, MR_Word Mercury__argument2, MR_Word * Mercury__argument3)
+{
+#if MR_NUM_REAL_REGS > 0
+	MR_Word c_regs[MR_NUM_REAL_REGS];
+#endif
+#if MR_THREAD_SAFE
+	MR_bool must_finalize_engine;
+#endif
+#if MR_DEEP_PROFILING
+	MR_CallSiteDynList **saved_cur_callback;
+	MR_CallSiteDynamic *saved_cur_csd;
+#endif
+
+	MR_save_regs_to_mem(c_regs);
+#if MR_THREAD_SAFE
+	must_finalize_engine = MR_init_thread(MR_use_now);
+#endif
+#if MR_DEEP_PROFILING
+	saved_cur_callback = MR_current_callback_site;
+	saved_cur_csd = MR_current_call_site_dynamic;
+	MR_setup_callback(MR_ENTRY(mercury__exception__call_goal_2_0));
+#endif
+	MR_restore_registers();
+	MR_r1 = Mercury__argument1;
+	MR_r2 = Mercury__argument2;
+	MR_save_transient_registers();
+	(void) MR_call_engine(MR_ENTRY(mercury__exception__call_goal_2_0), MR_FALSE);
+	MR_restore_transient_registers();
+#if MR_DEEP_PROFILING
+	MR_current_call_site_dynamic = saved_cur_csd;
+	MR_current_callback_site = saved_cur_callback;
+#endif
+	*Mercury__argument3 = MR_r1;
+#if MR_THREAD_SAFE
+	if (must_finalize_engine) {
+		 MR_finalize_thread_engine();
+	}
+#endif
+	MR_restore_regs_from_mem(c_regs);
+}
+
+
+static void mercury__exception_maybe_bunch_0(void)
+{
+	exception_module0();
+	exception_module1();
+	exception_module2();
+	exception_module3();
+	exception_module4();
+	exception_module5();
+	exception_module6();
+	exception_module7();
+	exception_module8();
+	exception_module9();
+	exception_module10();
+	exception_module11();
+	exception_module12();
+	exception_module13();
+	exception_module14();
+	exception_module15();
+	exception_module16();
+	exception_module17();
+	exception_module18();
+	exception_module19();
+	exception_module20();
+	exception_module21();
+	exception_module22();
+	exception_module23();
+	exception_module24();
+	exception_module25();
+	exception_module26();
+	exception_module27();
+	exception_module28();
+	exception_module29();
+	exception_module30();
+	exception_module31();
+	exception_module32();
+	exception_module33();
+	exception_module34();
+	exception_module35();
+	exception_module36();
+	exception_module37();
+	exception_module38();
+	exception_module39();
+}
+
+static void mercury__exception_maybe_bunch_1(void)
+{
+	exception_module40();
+	exception_module41();
+	exception_module42();
+	exception_module43();
+	exception_module44();
+	exception_module45();
+	exception_module46();
+	exception_module47();
+	exception_module48();
+	exception_module49();
+	exception_module50();
+	exception_module51();
+	exception_module52();
+	exception_module53();
+	exception_module54();
+	exception_module55();
+	exception_module56();
+	exception_module57();
+	exception_module58();
+	exception_module59();
+	exception_module60();
+	exception_module61();
+	exception_module62();
+	exception_module63();
+	exception_module64();
+	exception_module65();
+	exception_module66();
+	exception_module67();
+	exception_module68();
+	exception_module69();
+	exception_module70();
+	exception_module71();
+	exception_module72();
+	exception_module73();
+	exception_module74();
+	exception_module75();
+	exception_module76();
+	exception_module77();
+	exception_module78();
+	exception_module79();
+}
+
+static void mercury__exception_maybe_bunch_2(void)
+{
+	exception_module80();
+	exception_module81();
+	exception_module82();
+	exception_module83();
+	exception_module84();
+	exception_module85();
+	exception_module86();
+	exception_module87();
+	exception_module88();
+	exception_module89();
+	exception_module90();
+	exception_module91();
+	exception_module92();
+	exception_module93();
+	exception_module94();
+	exception_module95();
+	exception_module96();
+	exception_module97();
+	exception_module98();
+	exception_module99();
+	exception_module100();
+	exception_module101();
+	exception_module102();
+	exception_module103();
+	exception_module104();
+	exception_module105();
+	exception_module106();
+	exception_module107();
+	exception_module108();
+	exception_module109();
+	exception_module110();
+	exception_module111();
+	exception_module112();
+	exception_module113();
+	exception_module114();
+	exception_module115();
+	exception_module116();
+	exception_module117();
+	exception_module118();
+	exception_module119();
+}
+
+static void mercury__exception_maybe_bunch_3(void)
+{
+	exception_module120();
+	exception_module121();
+	exception_module122();
+	exception_module123();
+	exception_module124();
+	exception_module125();
+	exception_module126();
+	exception_module127();
+	exception_module128();
+	exception_module129();
+	exception_module130();
+	exception_module131();
+	exception_module132();
+	exception_module133();
+	exception_module134();
+	exception_module135();
+	exception_module136();
+	exception_module137();
+	exception_module138();
+	exception_module139();
+	exception_module140();
+	exception_module141();
+}
+
+/* suppress gcc -Wmissing-decls warnings */
+void mercury__exception__init(void);
+void mercury__exception__init_type_tables(void);
+void mercury__exception__init_debugger(void);
+#ifdef MR_DEEP_PROFILING
+void mercury__exception__write_out_proc_statics(FILE *deep_fp, FILE *procrep_fp);
+#endif
+#ifdef MR_RECORD_TERM_SIZES
+void mercury__exception__init_complexity_procs(void);
+#endif
+#ifdef MR_THREADSCOPE
+void mercury__exception__init_threadscope_string_table(void);
+#endif
+void mercury__exception__required_init(void);
+
+void mercury__exception__init(void)
+{
+	static MR_bool done = MR_FALSE;
+	if (done) {
+		return;
+	}
+	done = MR_TRUE;
+	mercury__exception_maybe_bunch_0();
+	mercury__exception_maybe_bunch_1();
+	mercury__exception_maybe_bunch_2();
+	mercury__exception_maybe_bunch_3();
+	MR_INIT_TYPE_CTOR_INFO(
+		mercury_data_exception__type_ctor_info_exception_result_1,
+		exception__exception_result_1_0);
+	MR_INIT_TYPE_CTOR_INFO(
+		mercury_data_exception__type_ctor_info_exp_determinism_0,
+		exception__exp_determinism_0_0);
+	MR_INIT_TYPE_CTOR_INFO(
+		mercury_data_exception__type_ctor_info_handler_1,
+		exception__handler_1_0);
+	MR_INIT_TYPE_CTOR_INFO(
+		mercury_data_exception__type_ctor_info_near_stack_limits_0,
+		exception__near_stack_limits_0_0);
+	MR_INIT_TYPE_CTOR_INFO(
+		mercury_data_exception__type_ctor_info_software_error_0,
+		exception__software_error_0_0);
+	mercury__exception__init_debugger();
+}
+
+void mercury__exception__init_type_tables(void)
+{
+	static MR_bool done = MR_FALSE;
+	if (done) {
+		return;
+	}
+	done = MR_TRUE;
+	{
+		MR_register_type_ctor_info(
+		&mercury_data_exception__type_ctor_info_exception_result_1);
+	}
+	{
+		MR_register_type_ctor_info(
+		&mercury_data_exception__type_ctor_info_exp_determinism_0);
+	}
+	{
+		MR_register_type_ctor_info(
+		&mercury_data_exception__type_ctor_info_handler_1);
+	}
+	{
+		MR_register_type_ctor_info(
+		&mercury_data_exception__type_ctor_info_near_stack_limits_0);
+	}
+	{
+		MR_register_type_ctor_info(
+		&mercury_data_exception__type_ctor_info_software_error_0);
+	}
+}
+
+
+void mercury__exception__init_debugger(void)
+{
+	static MR_bool done = MR_FALSE;
+	if (done) {
+		return;
+	}
+	done = MR_TRUE;
+}
+
+#ifdef MR_DEEP_PROFILING
+
+void mercury__exception__write_out_proc_statics(FILE *deep_fp, FILE *procrep_fp)
+{
+	MR_write_out_module_proc_reps_start(procrep_fp, &mercury_data__module_common_layout__exception);
+	MR_write_out_module_proc_reps_end(procrep_fp);
+}
+
+#endif
+
+#ifdef MR_RECORD_TERM_SIZES
+
+void mercury__exception__init_complexity_procs(void)
+{
+}
+
+#endif
+
+#ifdef MR_THREADSCOPE
+
+void mercury__exception__init_threadscope_string_table(void)
+{
+}
+
+#endif
+
+void mercury__exception__required_init(void)
+{
+	mercury__exception__user_init_pred_0();
+}
+
+/* ensure everything is compiled with the same grade */
+static const void *const MR_grade = &MR_GRADE_VAR;

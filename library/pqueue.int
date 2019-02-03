@@ -1,0 +1,22 @@
+:- module pqueue.
+:- interface.
+:- import_module assoc_list.
+:- type pqueue(K, V).
+:- func assoc_list_to_pqueue(assoc_list.assoc_list(K, V)) = pqueue.pqueue(K, V).
+:- pred assoc_list_to_pqueue(assoc_list.assoc_list(K, V), pqueue.pqueue(K, V)).
+:- mode assoc_list_to_pqueue((builtin.in), (builtin.out)) is det.
+:- pred det_remove(K, V, pqueue.pqueue(K, V), pqueue.pqueue(K, V)).
+:- mode det_remove((builtin.out), (builtin.out), (builtin.in), (builtin.out)) is det.
+:- func from_assoc_list(assoc_list.assoc_list(K, V)) = pqueue.pqueue(K, V).
+:- func init = pqueue.pqueue(K, V).
+:- pred init(pqueue.pqueue(K, V)).
+:- mode init((builtin.out)) is det.
+:- func insert(pqueue.pqueue(K, V), K, V) = pqueue.pqueue(K, V).
+:- pred insert(pqueue.pqueue(K, V), K, V, pqueue.pqueue(K, V)).
+:- mode insert((builtin.in), (builtin.in), (builtin.in), (builtin.out)) is det.
+:- func length(pqueue.pqueue(K, V)) = int.
+:- pred remove(pqueue.pqueue(K, V), K, V, pqueue.pqueue(K, V)).
+:- mode remove((builtin.in), (builtin.out), (builtin.out), (builtin.out)) is semidet.
+:- func to_assoc_list(pqueue.pqueue(K, V)) = assoc_list.assoc_list(K, V).
+:- pred to_assoc_list(pqueue.pqueue(K, V), assoc_list.assoc_list(K, V)).
+:- mode to_assoc_list((builtin.in), (builtin.out)) is det.

@@ -1,0 +1,12 @@
+:- module (ml_backend.ml_lookup_switch).
+:- interface.
+:- import_module list.
+:- import_module set.
+:- import_module (backend_libs.switch_util).
+:- import_module (hlds.code_model).
+:- import_module (hlds.hlds_goal).
+:- import_module (ml_backend.ml_gen_info).
+:- import_module (ml_backend.mlds).
+:- import_module (parse_tree.prog_data).
+:- pred ml_gen_lookup_switch(parse_tree.prog_data.prog_var, list.list(hlds.hlds_goal.tagged_case), set.set(parse_tree.prog_data.prog_var), hlds.code_model.code_model, parse_tree.prog_data.prog_context, int, int, backend_libs.switch_util.need_bit_vec_check, backend_libs.switch_util.need_range_check, ml_backend.mlds.statement, ml_backend.ml_gen_info.ml_gen_info, ml_backend.ml_gen_info.ml_gen_info).
+:- mode ml_gen_lookup_switch((builtin.in), (builtin.in), (builtin.in), (builtin.in), (builtin.in), (builtin.in), (builtin.in), (builtin.in), (builtin.in), (builtin.out), (builtin.in), (builtin.out)) is semidet.

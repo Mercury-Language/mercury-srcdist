@@ -1,0 +1,55 @@
+:- module (hlds.goal_form).
+:- interface.
+:- import_module bool.
+:- import_module list.
+:- import_module set.
+:- import_module (hlds.hlds_goal).
+:- import_module (hlds.hlds_module).
+:- import_module (hlds.hlds_pred).
+:- import_module (parse_tree.prog_data).
+:- type goal_loop_or_throw_status
+	--->	can_loop_or_throw 
+	;	cannot_loop_or_throw .
+:- type goal_loop_status
+	--->	can_loop 
+	;	cannot_loop .
+:- type goal_throw_status
+	--->	can_throw 
+	;	cannot_throw .
+:- pred all_disjuncts_are_conj_of_unify(set.set(parse_tree.prog_data.prog_var), list.list(hlds.hlds_goal.hlds_goal)).
+:- mode all_disjuncts_are_conj_of_unify((builtin.in), (builtin.in)) is semidet.
+:- pred cannot_fail_before_stack_flush(hlds.hlds_goal.hlds_goal).
+:- mode cannot_fail_before_stack_flush((builtin.in)) is semidet.
+:- pred cannot_stack_flush(hlds.hlds_goal.hlds_goal).
+:- mode cannot_stack_flush((builtin.in)) is semidet.
+:- pred count_recursive_calls(hlds.hlds_goal.hlds_goal, hlds.hlds_pred.pred_id, hlds.hlds_pred.proc_id, int, int).
+:- mode count_recursive_calls((builtin.in), (builtin.in), (builtin.in), (builtin.out), (builtin.out)) is det.
+:- pred goal_can_loop(hlds.hlds_module.module_info, hlds.hlds_goal.hlds_goal).
+:- mode goal_can_loop((builtin.in), (builtin.in)) is semidet.
+:- pred goal_can_loop_or_throw(hlds.hlds_goal.hlds_goal, hlds.goal_form.goal_loop_or_throw_status, hlds.hlds_module.module_info, hlds.hlds_module.module_info).
+:- mode goal_can_loop_or_throw((builtin.in), (builtin.out), (builtin.in), (builtin.out)) is det.
+:- pred goal_can_loop_or_throw(hlds.hlds_module.module_info, hlds.hlds_goal.hlds_goal).
+:- mode goal_can_loop_or_throw((builtin.in), (builtin.in)) is semidet.
+:- pred goal_can_loop_or_throw(hlds.hlds_goal.hlds_goal).
+:- mode goal_can_loop_or_throw((builtin.in)) is semidet.
+:- pred goal_can_throw(hlds.hlds_goal.hlds_goal, hlds.goal_form.goal_throw_status, hlds.hlds_module.module_info, hlds.hlds_module.module_info).
+:- mode goal_can_throw((builtin.in), (builtin.out), (builtin.in), (builtin.out)) is det.
+:- pred goal_can_throw(hlds.hlds_module.module_info, hlds.hlds_goal.hlds_goal).
+:- mode goal_can_throw((builtin.in), (builtin.in)) is semidet.
+:- pred goal_cannot_loop(hlds.hlds_module.module_info, hlds.hlds_goal.hlds_goal).
+:- mode goal_cannot_loop((builtin.in), (builtin.in)) is semidet.
+:- pred goal_cannot_loop_or_throw(hlds.hlds_module.module_info, hlds.hlds_goal.hlds_goal).
+:- mode goal_cannot_loop_or_throw((builtin.in), (builtin.in)) is semidet.
+:- pred goal_cannot_loop_or_throw(hlds.hlds_goal.hlds_goal).
+:- mode goal_cannot_loop_or_throw((builtin.in)) is semidet.
+:- func goal_cannot_modify_trail(hlds.hlds_goal.hlds_goal_info) = bool.bool.
+:- pred goal_cannot_throw(hlds.hlds_module.module_info, hlds.hlds_goal.hlds_goal).
+:- mode goal_cannot_throw((builtin.in), (builtin.in)) is semidet.
+:- pred goal_is_conj_of_unify(set.set(parse_tree.prog_data.prog_var), hlds.hlds_goal.hlds_goal).
+:- mode goal_is_conj_of_unify((builtin.in), (builtin.in)) is semidet.
+:- func goal_is_flat(hlds.hlds_goal.hlds_goal) = bool.bool.
+:- pred goal_list_may_allocate_heap(hlds.hlds_goal.hlds_goals).
+:- mode goal_list_may_allocate_heap((builtin.in)) is semidet.
+:- pred goal_may_allocate_heap(hlds.hlds_goal.hlds_goal).
+:- mode goal_may_allocate_heap((builtin.in)) is semidet.
+:- func goal_may_modify_trail(hlds.hlds_goal.hlds_goal_info) = bool.bool.

@@ -1,0 +1,19 @@
+:- module private_builtin.
+:- interface.
+:- import_module io.
+:- type base_typeclass_info.
+:- type heap_pointer.
+:- type sample_type_info
+	--->	sample_type_info(private_builtin.type_info).
+:- type sample_typeclass_info
+	--->	sample_typeclass_info(private_builtin.typeclass_info).
+:- type ticket == builtin.c_pointer.
+:- type ticket_counter == builtin.c_pointer.
+:- type type_ctor_info.
+:- type type_info.
+:- type typeclass_info.
+:- type mutvar(T)
+	--->	mutvar(builtin.c_pointer).
+:- type ref(T).
+:- type store_at_ref_type(T)
+	--->	store_at_ref_type(int).

@@ -1,0 +1,16 @@
+:- module (ll_backend.lookup_switch).
+:- interface.
+:- import_module list.
+:- import_module map.
+:- import_module set.
+:- import_module (backend_libs.switch_util).
+:- import_module (hlds.hlds_data).
+:- import_module (hlds.hlds_goal).
+:- import_module (hlds.hlds_llds).
+:- import_module (ll_backend.code_info).
+:- import_module (ll_backend.llds).
+:- import_module (parse_tree.prog_data).
+:- type case_kind.
+:- type lookup_switch_info(Key).
+:- type record_switch_lookup(Key).
+:- inst (record_switch_lookup) == (pred(in, in, in, out) is det).
