@@ -1,0 +1,26 @@
+:- module (mdb.declarative_edt).
+:- interface.
+:- import_module bool.
+:- import_module list.
+:- import_module map.
+:- import_module maybe.
+:- import_module pair.
+:- import_module unit.
+:- import_module (mdb.browser_info).
+:- import_module (mdb.declarative_debugger).
+:- import_module (mdb.declarative_oracle).
+:- import_module (mdbcomp.prim_data).
+:- import_module (mdbcomp.program_representation).
+:- import_module (mdbcomp.rtti_access).
+:- type find_origin_response.
+:- type maybe_found_descendant.
+:- type primitive_op_type
+	where	type_is_abstract_enum(2).
+:- type search_space(T).
+:- type subterm_mode
+	where	type_is_abstract_enum(1).
+:- type subterm_origin(T).
+:- type suspect_id.
+:- type weighting_heuristic
+	where	type_is_abstract_enum(1).
+:- typeclass mercury_edt(S, T).
