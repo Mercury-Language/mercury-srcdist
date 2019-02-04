@@ -1,0 +1,6 @@
+:- module output_prof_info.
+:- interface.
+:- type child.
+:- type output.
+:- type output_prof.
+:- type parent.

@@ -1,0 +1,8 @@
+:- module eqvclass.
+:- interface.
+:- import_module list.
+:- import_module set.
+:- type partition_id.
+:- type eqvclass(T).
+:- implementation.
+:- type partition_id == int.

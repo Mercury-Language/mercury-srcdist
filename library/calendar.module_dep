@@ -1,0 +1,13 @@
+module(1, "calendar.m",
+	calendar,
+	{},
+	{builtin, io, private_builtin},
+	{builtin, io, char, int, list, require, string, time, private_builtin},
+	{},
+	{},
+	{},
+	{},
+	{},
+	no_foreign_export,
+	no_main
+).

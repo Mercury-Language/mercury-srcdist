@@ -1,0 +1,7 @@
+:- module analysis_utils.
+:- interface.
+:- type callee.
+:- type cost_and_callees.
+:- type higher_order
+	where	type_is_abstract_enum(1).
+:- type cost_and_callees(Callee).
