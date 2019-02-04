@@ -1,0 +1,201 @@
+/*
+** Automatically generated from `process_util.m'
+** by the Mercury compiler,
+** version rotd-2018-09-20
+** configured for x86_64-pc-linux-gnu.
+** Do not edit.
+**
+** The autoconfigured grade settings governing
+** the generation of this C file were
+**
+** TAG_BITS=2
+** UNBOXED_FLOAT=no
+** UNBOXED_INT64S=no
+** PREGENERATED_DIST=yes
+** HIGHLEVEL_CODE=yes
+**
+** END_OF_C_GRADE_INFO
+*/
+
+
+// :- module libs.process_util.
+// :- interface.
+
+#ifndef MR_HEADER_GUARD_libs__process_util
+#define MR_HEADER_GUARD_libs__process_util
+
+#ifdef __cplusplus
+extern "C" {
+#endif
+
+#include "mercury.h"
+
+
+#ifndef LIBS__PROCESS_UTIL_DECL_GUARD
+#define LIBS__PROCESS_UTIL_DECL_GUARD
+#include "libs.mih"
+
+#ifdef MR_HAVE_UNISTD_H
+  #include <unistd.h>
+#endif
+
+#ifdef MR_HAVE_SYS_TYPES_H
+  #include <sys/types.h>
+#endif
+
+#ifdef MR_HAVE_SYS_WAIT_H
+  #include <sys/wait.h>
+#endif
+
+#include <errno.h>
+
+#include "mercury_signal.h"
+#include "mercury_types.h"
+#include "mercury_heap.h"
+#include "mercury_misc.h"
+
+#if defined(MR_HAVE_FORK) && defined(MR_HAVE_WAIT) && defined(MR_HAVE_KILL)
+  #define MC_CAN_FORK 1
+#endif
+
+#define MC_SETUP_SIGNAL_HANDLER(sig, handler)         MR_setup_signal(sig, (MR_Code *) handler, MR_FALSE,             "mercury_compile: cannot install signal handler");
+
+    /* Have we received a signal. */
+extern volatile sig_atomic_t MC_signalled;
+
+    /*
+    ** Which signal did we receive.
+    ** XXX This assumes a signal number will fit into a sig_atomic_t.
+    */
+extern volatile sig_atomic_t MC_signal_received;
+
+void MC_mercury_compile_signal_handler(int sig);
+
+#include <signal.h>
+
+#endif
+
+
+
+
+extern const MR_TypeCtorInfo_Struct libs__process_util__libs__process_util__type_ctor_info_build0_1;
+
+extern const MR_TypeCtorInfo_Struct libs__process_util__libs__process_util__type_ctor_info_io_pred_0;
+
+extern const MR_TypeCtorInfo_Struct libs__process_util__libs__process_util__type_ctor_info_pid_0;
+
+extern const MR_TypeCtorInfo_Struct libs__process_util__libs__process_util__type_ctor_info_post_signal_cleanup_1;
+
+extern const MR_TypeCtorInfo_Struct libs__process_util__libs__process_util__type_ctor_info_signal_action_0;
+
+void MR_CALL 
+libs__process_util__build_with_check_for_interrupt_8_p_0(
+  MR_Word param_1,
+  MR_Word param_2,
+  MR_Word param_3,
+  MR_Word param_4,
+  MR_Word * param_5,
+  MR_Box param_6,
+  MR_Box * param_7);
+
+void MR_CALL 
+libs__process_util__call_in_forked_process_4_p_0(
+  MR_Word param_1,
+  MR_Word * param_2);
+
+void MR_CALL 
+libs__process_util__call_in_forked_process_with_backup_5_p_0(
+  MR_Word param_1,
+  MR_Word param_2,
+  MR_Word * param_3);
+
+MR_bool MR_CALL 
+libs__process_util__can_fork_0_p_0(void);
+
+void MR_CALL 
+libs__process_util__raise_signal_3_p_0(
+  MR_Integer param_1);
+
+void MR_CALL 
+libs__process_util__send_signal_4_p_0(
+  MR_Integer param_1,
+  MR_Integer param_2);
+
+void MR_CALL 
+libs__process_util__start_in_forked_process_4_p_0(
+  MR_Word param_1,
+  MR_Word * param_2);
+
+void MR_CALL 
+libs__process_util__wait_any_4_p_0(
+  MR_Integer * param_1,
+  MR_Word * param_2);
+
+void MR_CALL 
+libs__process_util__wait_pid_4_p_0(
+  MR_Integer param_1,
+  MR_Word * param_2);
+
+MR_Integer MR_CALL 
+libs__process_util__sigint_0_f_0(void);
+
+void MR_CALL 
+libs__process_util____Compare____build0_1_0(
+  MR_Word param_1,
+  MR_Word * param_2,
+  MR_Word param_3,
+  MR_Word param_4);
+
+void MR_CALL 
+libs__process_util____Compare____io_pred_0_0(
+  MR_Word * param_1,
+  MR_Word param_2,
+  MR_Word param_3);
+
+void MR_CALL 
+libs__process_util____Compare____pid_0_0(
+  MR_Word * param_1,
+  MR_Integer param_2,
+  MR_Integer param_3);
+
+void MR_CALL 
+libs__process_util____Compare____post_signal_cleanup_1_0(
+  MR_Word param_1,
+  MR_Word * param_2,
+  MR_Word param_3,
+  MR_Word param_4);
+
+MR_bool MR_CALL 
+libs__process_util____Unify____build0_1_0(
+  MR_Word param_1,
+  MR_Word param_2,
+  MR_Word param_3);
+
+MR_bool MR_CALL 
+libs__process_util____Unify____io_pred_0_0(
+  MR_Word param_1,
+  MR_Word param_2);
+
+MR_bool MR_CALL 
+libs__process_util____Unify____pid_0_0(
+  MR_Integer param_1,
+  MR_Integer param_2);
+
+MR_bool MR_CALL 
+libs__process_util____Unify____post_signal_cleanup_1_0(
+  MR_Word param_1,
+  MR_Word param_2,
+  MR_Word param_3);
+
+void mercury__libs__process_util__init(void);
+void mercury__libs__process_util__init_type_tables(void);
+void mercury__libs__process_util__init_debugger(void);
+const char *mercury__libs__process_util__grade_check(void);
+
+#ifdef __cplusplus
+}
+#endif
+
+#endif // MR_HEADER_GUARD_libs.process_util
+
+// :- end_interface libs.process_util.

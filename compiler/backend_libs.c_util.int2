@@ -1,0 +1,32 @@
+:- module (backend_libs.c_util).
+:- interface.
+:- import_module char.
+:- import_module io.
+:- import_module libs.
+:- import_module list.
+:- import_module maybe.
+:- import_module (backend_libs.builtin_ops).
+:- import_module (libs.globals).
+:- import_module (libs.options).
+:- type binop_category
+    --->    array_index_binop 
+    ;       string_index_binop 
+    ;       pointer_compare_binop 
+    ;       compound_compare_binop 
+    ;       offset_string_compare_binop(int)
+    ;       general_string_compare_binop 
+    ;       string_compare_binop 
+    ;       unsigned_compare_binop 
+    ;       float_compare_binop 
+    ;       float_arith_binop 
+    ;       int_or_bool_binary_infix_binop 
+    ;       int_macro_binop 
+    ;       float_macro_binop .
+:- type literal_language
+    --->    literal_c 
+    ;       literal_java 
+    ;       literal_csharp .
+:- type maybe_set_line_numbers
+    --->    dont_set_line_numbers 
+    ;       set_line_numbers .
+:- type multi_string == list.list(string).
