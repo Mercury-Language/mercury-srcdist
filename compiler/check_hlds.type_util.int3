@@ -1,0 +1,7 @@
+:- module (check_hlds.type_util).
+:- interface.
+:- type ctor_defn.
+:- type is_dummy_type
+	where	type_is_abstract_enum(1).
+:- type is_either_dummy_type
+	where	type_is_abstract_enum(1).
