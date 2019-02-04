@@ -1,0 +1,62 @@
+:- module (ml_backend.ml_unify_gen_util).
+:- interface.
+:- import_module assoc_list.
+:- import_module bool.
+:- import_module hlds.
+:- import_module list.
+:- import_module maybe.
+:- import_module parse_tree.
+:- import_module (hlds.const_struct).
+:- import_module (hlds.hlds_data).
+:- import_module (hlds.hlds_goal).
+:- import_module (hlds.hlds_module).
+:- import_module (ml_backend.ml_gen_info).
+:- import_module (ml_backend.mlds).
+:- import_module (parse_tree.prog_data).
+:- type arg_const_type_and_width == ml_backend.ml_unify_gen_util.arg_type_and_width(hlds.const_struct.const_struct_arg).
+:- type arg_to_type(Arg) == ((func Arg) = parse_tree.prog_data.mer_type).
+:- type arg_type_and_width(Arg)
+    --->    arg_type_and_width(Arg, parse_tree.prog_data.mer_type, parse_tree.prog_data.arg_pos_width).
+:- type arg_var_type_and_width == ml_backend.ml_unify_gen_util.arg_type_and_width(parse_tree.prog_data.prog_var).
+:- type assign_dir
+    --->    assign_nondummy_left 
+    ;       assign_nondummy_right 
+    ;       assign_nondummy_unused 
+    ;       assign_dummy .
+:- type field_gen
+    --->    field_gen(maybe.maybe(hlds.hlds_data.ptag), ml_backend.mlds.mlds_rval, ml_backend.mlds.mlds_type, ml_backend.ml_unify_gen_util.field_via).
+:- type field_via
+    --->    field_via_offset 
+    ;       field_via_name(ml_backend.mlds.mlds_module_name, ml_backend.mlds.mlds_type).
+:- type may_have_extra_args
+    --->    may_not_have_extra_args 
+    ;       may_have_extra_args .
+:- type ml_maybe_zero_const
+    --->    ml_is_not_zero_const 
+    ;       ml_is_zero_const .
+:- pred associate_cons_id_args_with_types_widths(hlds.hlds_module.module_info, ml_backend.ml_unify_gen_util.arg_to_type(Arg), ml_backend.ml_unify_gen_util.may_have_extra_args, parse_tree.prog_data.mer_type, parse_tree.prog_data.cons_id, list.list(Arg), list.list(ml_backend.ml_unify_gen_util.arg_type_and_width(Arg))).
+:- mode associate_cons_id_args_with_types_widths((builtin.in), (builtin.in), builtin.in(bound(may_have_extra_args)), (builtin.in), (builtin.in), (builtin.in), (builtin.out)) is det.
+:- mode associate_cons_id_args_with_types_widths((builtin.in), (builtin.in), builtin.in(bound(may_not_have_extra_args)), (builtin.in), (builtin.in), (builtin.in), (builtin.out)) is det.
+:- pred decide_field_gen(ml_backend.ml_gen_info.ml_gen_info, ml_backend.mlds.mlds_lval, parse_tree.prog_data.mer_type, parse_tree.prog_data.cons_id, hlds.hlds_data.cons_tag, hlds.hlds_data.ptag, ml_backend.ml_unify_gen_util.field_gen).
+:- mode decide_field_gen((builtin.in), (builtin.in), (builtin.in), (builtin.in), (builtin.in), (builtin.in), (builtin.out)) is det.
+:- func ml_bitwise_mask(ml_backend.mlds.mlds_rval, int) = ml_backend.mlds.mlds_rval.
+:- func ml_bitwise_or_rvals(list.list(ml_backend.mlds.mlds_rval)) = ml_backend.mlds.mlds_rval.
+:- func ml_bitwise_or_some_rvals(ml_backend.mlds.mlds_rval, list.list(ml_backend.mlds.mlds_rval)) = ml_backend.mlds.mlds_rval.
+:- func ml_bitwise_or_two_rvals(ml_backend.mlds.mlds_rval, ml_backend.mlds.mlds_rval) = ml_backend.mlds.mlds_rval.
+:- pred ml_compute_assign_direction(hlds.hlds_module.module_info, hlds.hlds_goal.unify_mode, parse_tree.prog_data.mer_type, parse_tree.prog_data.mer_type, ml_backend.ml_unify_gen_util.assign_dir).
+:- mode ml_compute_assign_direction((builtin.in), (builtin.in), (builtin.in), (builtin.in), (builtin.out)) is det.
+:- pred ml_cons_id_to_tag(ml_backend.ml_gen_info.ml_gen_info, parse_tree.prog_data.cons_id, hlds.hlds_data.cons_tag).
+:- mode ml_cons_id_to_tag((builtin.in), (builtin.in), (builtin.out)) is det.
+:- pred ml_field_names_and_types(ml_backend.ml_gen_info.ml_gen_info, parse_tree.prog_data.mer_type, parse_tree.prog_data.cons_id, parse_tree.prog_data.cell_offset, list.list(parse_tree.prog_data.prog_var), assoc_list.assoc_list(parse_tree.prog_data.prog_var, hlds.hlds_data.constructor_arg_repn)).
+:- mode ml_field_names_and_types((builtin.in), (builtin.in), (builtin.in), (builtin.in), (builtin.in), (builtin.out)) is det.
+:- pred ml_gen_secondary_tag_rval(ml_backend.ml_gen_info.ml_gen_info, parse_tree.prog_data.mer_type, ml_backend.mlds.mlds_rval, hlds.hlds_data.ptag, ml_backend.mlds.mlds_rval).
+:- mode ml_gen_secondary_tag_rval((builtin.in), (builtin.in), (builtin.in), (builtin.in), (builtin.out)) is det.
+:- func ml_is_zero_const(ml_backend.mlds.mlds_rval_const) = ml_backend.ml_unify_gen_util.ml_maybe_zero_const.
+:- func ml_left_shift_rval(ml_backend.mlds.mlds_rval, parse_tree.prog_data.arg_shift, parse_tree.prog_data.fill_kind) = ml_backend.mlds.mlds_rval.
+:- func ml_right_shift_rval(ml_backend.mlds.mlds_rval, parse_tree.prog_data.arg_shift) = ml_backend.mlds.mlds_rval.
+:- pred ml_tag_ptag_and_initial_offset(hlds.hlds_data.cons_tag, hlds.hlds_data.ptag, parse_tree.prog_data.cell_offset).
+:- mode ml_tag_ptag_and_initial_offset((builtin.in), (builtin.out), (builtin.out)) is det.
+:- pred ml_type_as_field(hlds.hlds_module.module_info, bool.bool, parse_tree.prog_data.mer_type, parse_tree.prog_data.arg_width, parse_tree.prog_data.mer_type).
+:- mode ml_type_as_field((builtin.in), (builtin.in), (builtin.in), (builtin.in), (builtin.out)) is det.
+:- pred specified_arg_types_and_consecutive_full_words(parse_tree.prog_data.mer_type, int, list.list(Arg), list.list(ml_backend.ml_unify_gen_util.arg_type_and_width(Arg))).
+:- mode specified_arg_types_and_consecutive_full_words((builtin.in), (builtin.in), (builtin.in), (builtin.out)) is det.
