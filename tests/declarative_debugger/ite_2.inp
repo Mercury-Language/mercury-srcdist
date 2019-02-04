@@ -1,0 +1,22 @@
+echo on
+register --quiet
+break ite_2.ite
+*
+continue
+finish
+dd -d 3 -n 7
+no
+yes
+yes
+yes
+yes
+continue
+finish
+dd -d 3 -n 7
+no
+yes
+yes
+yes
+yes
+yes
+continue
