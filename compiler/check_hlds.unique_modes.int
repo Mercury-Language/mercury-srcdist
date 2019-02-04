@@ -1,0 +1,22 @@
+:- module (check_hlds.unique_modes).
+:- interface.
+:- import_module bool.
+:- import_module hlds.
+:- import_module io.
+:- import_module parse_tree.
+:- import_module set.
+:- import_module (check_hlds.mode_info).
+:- import_module (hlds.hlds_goal).
+:- import_module (hlds.hlds_module).
+:- import_module (hlds.hlds_pred).
+:- import_module (parse_tree.prog_data).
+:- pred make_all_nondet_live_vars_mostly_uniq(check_hlds.mode_info.mode_info, check_hlds.mode_info.mode_info).
+:- mode make_all_nondet_live_vars_mostly_uniq((builtin.in), (builtin.out)) is det.
+:- pred prepare_for_disjunct(hlds.hlds_goal.hlds_goal, parse_tree.prog_data.determinism, set.set(parse_tree.prog_data.prog_var), check_hlds.mode_info.mode_info, check_hlds.mode_info.mode_info).
+:- mode prepare_for_disjunct((builtin.in), (builtin.in), (builtin.in), (builtin.in), (builtin.out)) is det.
+:- pred unique_modes_check_goal(hlds.hlds_goal.hlds_goal, hlds.hlds_goal.hlds_goal, check_hlds.mode_info.mode_info, check_hlds.mode_info.mode_info, io.io, io.io).
+:- mode unique_modes_check_goal((builtin.in), (builtin.out), (builtin.in), (builtin.out), (builtin.di), (builtin.uo)) is det.
+:- pred unique_modes_check_module(hlds.hlds_module.module_info, hlds.hlds_module.module_info, io.io, io.io).
+:- mode unique_modes_check_module((builtin.in), (builtin.out), (builtin.di), (builtin.uo)) is det.
+:- pred unique_modes_check_proc(hlds.hlds_pred.proc_id, hlds.hlds_pred.pred_id, hlds.hlds_module.module_info, hlds.hlds_module.module_info, bool.bool, io.io, io.io).
+:- mode unique_modes_check_proc((builtin.in), (builtin.in), (builtin.in), (builtin.out), (builtin.out), (builtin.di), (builtin.uo)) is det.

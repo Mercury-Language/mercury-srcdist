@@ -1,0 +1,8 @@
+:- module bintree_set.
+:- interface.
+:- import_module list.
+:- type bintree_set(_T).
+:- implementation.
+:- import_module bintree.
+:- import_module unit.
+:- type bintree_set(T) == bintree.bintree(T, unit.unit).

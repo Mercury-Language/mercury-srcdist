@@ -1,0 +1,13 @@
+module(1, "univ.m",
+	univ,
+	{},
+	{builtin, type_desc, private_builtin},
+	{builtin, type_desc, list, require, string, private_builtin},
+	{},
+	{},
+	{},
+	{"C"},
+	{"C" - univ, "IL" - univ, "C" - univ},
+	contains_foreign_export,
+	no_main
+).

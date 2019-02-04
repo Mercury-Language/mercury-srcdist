@@ -1,0 +1,17 @@
+:- module (check_hlds.mode_info).
+:- interface.
+:- type call_context.
+:- type debug_flags.
+:- type how_to_check_goal.
+:- type in_dupl_for_switch.
+:- type in_from_ground_term.
+:- type in_promise_purity_scope.
+:- type locked_vars.
+:- type may_change_called_proc.
+:- type may_init_solver_vars.
+:- type mode_context.
+:- type mode_info.
+:- type par_conj_mode_check.
+:- type par_conj_mode_check_stack.
+:- type side.
+:- type var_lock_reason.

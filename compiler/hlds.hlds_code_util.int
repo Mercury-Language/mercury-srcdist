@@ -1,0 +1,13 @@
+:- module (hlds.hlds_code_util).
+:- interface.
+:- import_module list.
+:- import_module (hlds.hlds_data).
+:- import_module (hlds.hlds_module).
+:- import_module (parse_tree.prog_data).
+:- pred are_equivalence_types_expanded(hlds.hlds_module.module_info).
+:- mode are_equivalence_types_expanded((builtin.in)) is semidet.
+:- func cons_id_to_tag(hlds.hlds_module.module_info, parse_tree.prog_data.mer_type, parse_tree.prog_data.cons_id) = hlds.hlds_data.cons_tag.
+:- pred is_valid_mutable_inst(hlds.hlds_module.module_info, parse_tree.prog_data.mer_inst).
+:- mode is_valid_mutable_inst((builtin.in), (builtin.in)) is semidet.
+:- pred make_instance_string(list.list(parse_tree.prog_data.mer_type), string).
+:- mode make_instance_string((builtin.in), (builtin.out)) is det.

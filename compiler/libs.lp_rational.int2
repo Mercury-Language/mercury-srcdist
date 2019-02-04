@@ -1,0 +1,41 @@
+:- module (libs.lp_rational).
+:- interface.
+:- import_module io.
+:- import_module list.
+:- import_module map.
+:- import_module maybe.
+:- import_module pair.
+:- import_module set.
+:- import_module term.
+:- import_module varset.
+:- import_module (libs.rat).
+:- type coefficient == libs.rat.rat.
+:- type constant == libs.rat.rat.
+:- type constraint.
+:- type constraints == list.list(libs.lp_rational.constraint).
+:- type direction
+	--->	max 
+	;	min .
+:- type entailment_result
+	--->	entailed 
+	;	not_entailed 
+	;	inconsistent .
+:- type lp_result
+	--->	lp_res_unbounded 
+	;	lp_res_inconsistent 
+	;	lp_res_satisfiable(libs.rat.rat, map.map(libs.lp_rational.lp_var, libs.rat.rat)).
+:- type lp_term == pair.pair(libs.lp_rational.lp_var, libs.lp_rational.coefficient).
+:- type lp_terms == list.list(libs.lp_rational.lp_term).
+:- type lp_var == term.var.
+:- type lp_vars == list.list(libs.lp_rational.lp_var).
+:- type lp_varset == varset.varset.
+:- type objective == libs.lp_rational.lp_terms.
+:- type operator
+	--->	(=<) 
+	;	(=) 
+	;	(>=) .
+:- type output_var == ((func libs.lp_rational.lp_var) = string).
+:- type projection_result
+	--->	pr_res_ok(libs.lp_rational.constraints)
+	;	pr_res_inconsistent 
+	;	pr_res_aborted .

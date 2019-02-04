@@ -1,0 +1,37 @@
+:- module (check_hlds.unify_proc).
+:- interface.
+:- import_module bool.
+:- import_module hlds.
+:- import_module io.
+:- import_module list.
+:- import_module maybe.
+:- import_module mdbcomp.
+:- import_module parse_tree.
+:- import_module (check_hlds.mode_info).
+:- import_module (hlds.hlds_clauses).
+:- import_module (hlds.hlds_data).
+:- import_module (hlds.hlds_goal).
+:- import_module (hlds.hlds_module).
+:- import_module (hlds.hlds_pred).
+:- import_module (hlds.pred_table).
+:- import_module (mdbcomp.prim_data).
+:- import_module (parse_tree.prog_data).
+:- type proc_requests.
+:- type unify_proc_id
+	--->	unify_proc_id(parse_tree.prog_data.type_ctor, hlds.hlds_goal.uni_mode).
+:- pred add_lazily_generated_compare_pred_decl(parse_tree.prog_data.type_ctor, hlds.hlds_pred.pred_id, hlds.hlds_module.module_info, hlds.hlds_module.module_info).
+:- mode add_lazily_generated_compare_pred_decl((builtin.in), (builtin.out), (builtin.in), (builtin.out)) is det.
+:- pred add_lazily_generated_unify_pred(parse_tree.prog_data.type_ctor, hlds.hlds_pred.pred_id, hlds.hlds_module.module_info, hlds.hlds_module.module_info).
+:- mode add_lazily_generated_unify_pred((builtin.in), (builtin.out), (builtin.in), (builtin.out)) is det.
+:- pred generate_clause_info(mdbcomp.prim_data.special_pred_id, parse_tree.prog_data.mer_type, hlds.hlds_data.hlds_type_body, parse_tree.prog_data.prog_context, hlds.hlds_module.module_info, hlds.hlds_clauses.clauses_info).
+:- mode generate_clause_info((builtin.in), (builtin.in), (builtin.in), (builtin.in), (builtin.in), (builtin.out)) is det.
+:- pred init_requests(check_hlds.unify_proc.proc_requests).
+:- mode init_requests((builtin.out)) is det.
+:- pred lookup_mode_num(hlds.hlds_module.module_info, parse_tree.prog_data.type_ctor, hlds.hlds_goal.uni_mode, parse_tree.prog_data.determinism, hlds.hlds_pred.proc_id).
+:- mode lookup_mode_num((builtin.in), (builtin.in), (builtin.in), (builtin.in), (builtin.out)) is det.
+:- pred modecheck_queued_procs(check_hlds.mode_info.how_to_check_goal, hlds.pred_table.pred_table, hlds.pred_table.pred_table, hlds.hlds_module.module_info, hlds.hlds_module.module_info, bool.bool, io.io, io.io).
+:- mode modecheck_queued_procs((builtin.in), (builtin.in), (builtin.out), (builtin.in), (builtin.out), (builtin.out), (builtin.di), (builtin.uo)) is det.
+:- pred request_proc(hlds.hlds_pred.pred_id, list.list(parse_tree.prog_data.mer_mode), parse_tree.prog_data.inst_varset, maybe.maybe(list.list(parse_tree.prog_data.is_live)), maybe.maybe(parse_tree.prog_data.determinism), parse_tree.prog_data.prog_context, hlds.hlds_pred.proc_id, hlds.hlds_module.module_info, hlds.hlds_module.module_info).
+:- mode request_proc((builtin.in), (builtin.in), (builtin.in), (builtin.in), (builtin.in), (builtin.in), (builtin.out), (builtin.in), (builtin.out)) is det.
+:- pred request_unify(check_hlds.unify_proc.unify_proc_id, parse_tree.prog_data.inst_varset, parse_tree.prog_data.determinism, parse_tree.prog_data.prog_context, hlds.hlds_module.module_info, hlds.hlds_module.module_info).
+:- mode request_unify((builtin.in), (builtin.in), (builtin.in), (builtin.in), (builtin.in), (builtin.out)) is det.

@@ -1,0 +1,77 @@
+     __________________________________________________________________
+
+   The compiler contains some code for the following features, which are
+   not yet completed, but which we hope to complete at some time in the
+   future:
+
+     * There is a [1]`--target il' option, which generates MSIL code for
+       Microsoft's new [2].NET Common Language Runtime. We're still
+       working on this.
+     * There is a `--target java' option, which generates Java. We still
+       need to add support for Java foreign language interfacing, and
+       implement the Mercury standard library for Java.
+     * Thread-safe engine (the `.par' grades).
+     * Independent AND-parallelism (the `&' parallel conjunction
+       operator). See Tom Conway's PhD thesis.
+     * We have incomplete support for a new, more expressive design for
+       representing information about type classes and type class
+       instances at runtime. When complete, the new design would allow
+       runtime tests of type class membership, it would allow the tabling
+       of predicates with type class constraints, and it would allow the
+       debugger to print type_class_infos.
+     * We have added support for dynamic link libraries (DLLs) on Windows.
+       This is not yet enabled by default because it has not yet been
+       tested properly.
+     * There is a new `--optimize-constructor-last-call' option which
+       identifies opportunities for LCO where a call is followed only by
+       some constructor invocations. However, these opportunities are not
+       exploited yet.
+     * There is a new garbage collector that does accurate garbage
+       collection (hlc.agc grade). See the comments in
+       compiler/ml_elim_nested.m and the paper on our web page for more
+       details.
+     * There is a `--generate-bytecode' option, for a new back-end that
+       generates bytecode. The bytecode generator is basically complete,
+       but we don't have a bytecode interpreter.
+
+   We also have some code that goes at least some part of the way towards
+   implementing the features below. However, for these features, the code
+   has not yet been committed and thus is not part of the standard
+   distribution.
+
+     * A new implementation of the mode system using constraints. This is
+       on the "mode-constraints" branch of our CVS repository.
+     * Support for aliasing in the mode system. This is on the "alias"
+       branch of our CVS repository.
+     * Support for automatic structure reuse (reusing old data structures
+       that are no longer live, rather than allocating new memory on the
+       heap) and compile time garbage collection This is on the "reuse"
+       branch of our CVS repository.
+     * Better support for inter-module analysis and optimization.
+     * Support for GCC 3.3 in the native code back-end. This is on the
+       "gcc_3_3" branch of our CVS repository.
+     __________________________________________________________________
+
+Work Not In Progress
+
+   The compiler also contains some code for the following features, but
+   work on them has stopped, since finishing them off would be quite a bit
+   more work, and our current priorities lie elsewhere. Still, these could
+   make interesting and worthwhile projects if someone has the time for
+   it.
+
+     * A SOAP interface.
+     * A bytecode interpreter, for use with the `--generate-bytecode'
+       option.
+     * Sequence quantification (see the [3]description from the meeting
+       minutes).
+     __________________________________________________________________
+
+   Last update was $Date: 2006-02-23 09:37:20 $ by $Author: zs
+   $@cs.mu.oz.au.
+
+References
+
+   1. http://www.cs.mu.oz.au/mercury/dotnet.html
+   2. http://msdn.microsoft.com/net/
+   3. http://www.cs.mu.oz.au/research/mercury/information/reports/minutes_15_12_00.html

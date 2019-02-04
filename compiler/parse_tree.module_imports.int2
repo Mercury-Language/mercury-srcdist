@@ -1,0 +1,19 @@
+:- module (parse_tree.module_imports).
+:- interface.
+:- import_module cord.
+:- import_module list.
+:- import_module map.
+:- import_module maybe.
+:- import_module pair.
+:- import_module (libs.file_util).
+:- import_module (libs.globals).
+:- import_module (libs.timestamp).
+:- import_module (mdbcomp.prim_data).
+:- import_module (parse_tree.prog_data).
+:- import_module (parse_tree.prog_io).
+:- import_module (parse_tree.prog_item).
+:- type module_imports
+	--->	module_imports(((parse_tree.module_imports).source_file_name) :: libs.file_util.file_name, ((parse_tree.module_imports).source_file_module_name) :: mdbcomp.prim_data.module_name, ((parse_tree.module_imports).module_name) :: mdbcomp.prim_data.module_name, ((parse_tree.module_imports).parent_deps) :: list.list(mdbcomp.prim_data.module_name), ((parse_tree.module_imports).int_deps) :: list.list(mdbcomp.prim_data.module_name), ((parse_tree.module_imports).impl_deps) :: list.list(mdbcomp.prim_data.module_name), ((parse_tree.module_imports).indirect_deps) :: list.list(mdbcomp.prim_data.module_name), ((parse_tree.module_imports).children) :: list.list(mdbcomp.prim_data.module_name), ((parse_tree.module_imports).public_children) :: list.list(mdbcomp.prim_data.module_name), ((parse_tree.module_imports).nested_children) :: list.list(mdbcomp.prim_data.module_name), ((parse_tree.module_imports).fact_table_deps) :: list.list(string), ((parse_tree.module_imports).has_foreign_code) :: parse_tree.prog_item.contains_foreign_code, ((parse_tree.module_imports).foreign_import_modules) :: parse_tree.prog_data.foreign_import_module_info_list, ((parse_tree.module_imports).contains_foreign_export) :: parse_tree.prog_item.contains_foreign_export, ((parse_tree.module_imports).items) :: cord.cord(parse_tree.prog_item.item), ((parse_tree.module_imports).error) :: parse_tree.prog_io.module_error, ((parse_tree.module_imports).maybe_timestamps) :: maybe.maybe(parse_tree.module_imports.module_timestamps), ((parse_tree.module_imports).has_main) :: parse_tree.prog_data.has_main, ((parse_tree.module_imports).module_dir) :: libs.file_util.dir_name).
+:- type module_timestamp
+	--->	module_timestamp(((parse_tree.module_imports).suffix) :: string, ((parse_tree.module_imports).timestamp) :: libs.timestamp.timestamp, ((parse_tree.module_imports).need_qualifier) :: parse_tree.prog_data.need_qualifier).
+:- type module_timestamps == map.map(mdbcomp.prim_data.module_name, parse_tree.module_imports.module_timestamp).

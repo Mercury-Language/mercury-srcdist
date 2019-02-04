@@ -1,0 +1,29 @@
+:- module (check_hlds.det_analysis).
+:- interface.
+:- import_module hlds.
+:- import_module list.
+:- import_module maybe.
+:- import_module parse_tree.
+:- import_module (check_hlds.det_report).
+:- import_module (check_hlds.det_util).
+:- import_module (hlds.hlds_goal).
+:- import_module (hlds.hlds_module).
+:- import_module (hlds.hlds_pred).
+:- import_module (hlds.instmap).
+:- import_module (parse_tree.error_util).
+:- import_module (parse_tree.prog_data).
+:- type pess_info
+	--->	pess_info(parse_tree.prog_data.prog_vars, parse_tree.prog_data.prog_context).
+:- type soln_context
+	--->	all_solns 
+	;	first_soln .
+:- pred det_get_soln_context(parse_tree.prog_data.determinism, check_hlds.det_analysis.soln_context).
+:- mode det_get_soln_context((builtin.in), (builtin.out)) is det.
+:- pred det_infer_goal(hlds.hlds_goal.hlds_goal, hlds.hlds_goal.hlds_goal, hlds.instmap.instmap, check_hlds.det_analysis.soln_context, list.list(check_hlds.det_report.failing_context), maybe.maybe(check_hlds.det_analysis.pess_info), parse_tree.prog_data.determinism, list.list(check_hlds.det_report.failing_context), check_hlds.det_util.det_info, check_hlds.det_util.det_info, list.list(parse_tree.error_util.error_spec), list.list(parse_tree.error_util.error_spec)).
+:- mode det_infer_goal((builtin.in), (builtin.out), (builtin.in), (builtin.in), (builtin.in), (builtin.in), (builtin.out), (builtin.out), (builtin.in), (builtin.out), (builtin.in), (builtin.out)) is det.
+:- pred det_infer_proc(hlds.hlds_pred.pred_id, hlds.hlds_pred.proc_id, hlds.hlds_module.module_info, hlds.hlds_module.module_info, parse_tree.prog_data.determinism, parse_tree.prog_data.determinism, list.list(parse_tree.error_util.error_spec)).
+:- mode det_infer_proc((builtin.in), (builtin.in), (builtin.in), (builtin.out), (builtin.out), (builtin.out), (builtin.out)) is det.
+:- pred determinism_check_proc(hlds.hlds_pred.proc_id, hlds.hlds_pred.pred_id, hlds.hlds_module.module_info, hlds.hlds_module.module_info, list.list(parse_tree.error_util.error_spec)).
+:- mode determinism_check_proc((builtin.in), (builtin.in), (builtin.in), (builtin.out), (builtin.out)) is det.
+:- pred determinism_pass(hlds.hlds_module.module_info, hlds.hlds_module.module_info, list.list(parse_tree.error_util.error_spec)).
+:- mode determinism_pass((builtin.in), (builtin.out), (builtin.out)) is det.

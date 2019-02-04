@@ -1,0 +1,32 @@
+/usr/bin/texi2dvi: Running etex --file-line-error './faq.texi_pp' ...
+This is pdfTeXk, Version 3.141592-1.40.3 (Web2C 7.5.6)
+ file:line:error style messages enabled.
+ %&-line parsing enabled.
+entering extended mode
+(./faq.texi_pp (./texinfo.tex Loading texinfo [version 1999-09-25.10]: Basics,
+pdf, (/usr/share/texmf-texlive/tex/plain/misc/pdfcolor.tex) fonts,
+page headings, tables, conditionals, indexing, sectioning, toc, environments,
+defuns, macros, cross references,
+(/usr/share/texmf-texlive/tex/generic/epsf/epsf.tex
+This is `epsf.tex' v2.7.3 <23 July 2005>
+) localization, and turning on texinfo input format.) [1{/var/lib/texmf/fonts/m
+ap/pdftex/updmap/pdftex.map}] [2] [-1] Chapter 1
+Underfull \hbox (badness 4205) in paragraph at lines 98--104
+ @textrm the root di-rec-tory of the un-packed source named `@texttt Mmake.para
+ms[]@textrm '[] con-tain-
+
+Underfull \hbox (badness 6658) in paragraph at lines 98--104
+ @textrm ing the line `@texttt -EXTRA_CFLAGS=-O0[]@textrm '[], and run `@texttt
+ configure[]@textrm '[] as `@texttt ./configure
+
+Underfull \hbox (badness 3849) in paragraph at lines 98--104
+ @texttt --with-llds-base-grade=none --with-default-grade=hlc.gc[]@textrm '[]. 
+This dis-ables
+Chapter 2 [1] [2] Chapter 3 Chapter 4 [3] )
+(see the transcript file for additional information)</usr/share/texmf-texlive/f
+onts/type1/bluesky/cm/cmbx12.pfb></usr/share/texmf-texlive/fonts/type1/bluesky/
+cm/cmr10.pfb></usr/share/texmf-texlive/fonts/type1/bluesky/cm/cmsy10.pfb></usr/
+share/texmf-texlive/fonts/type1/bluesky/cm/cmti10.pfb></usr/share/texmf-texlive
+/fonts/type1/bluesky/cm/cmtt10.pfb>
+Output written on faq.pdf (6 pages, 60979 bytes).
+Transcript written on faq.log.

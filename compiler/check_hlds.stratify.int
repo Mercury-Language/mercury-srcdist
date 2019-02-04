@@ -1,0 +1,7 @@
+:- module (check_hlds.stratify).
+:- interface.
+:- import_module hlds.
+:- import_module io.
+:- import_module (hlds.hlds_module).
+:- pred check_stratification(hlds.hlds_module.module_info, hlds.hlds_module.module_info, io.io, io.io).
+:- mode check_stratification((builtin.in), (builtin.out), (builtin.di), (builtin.uo)) is det.

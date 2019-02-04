@@ -1,0 +1,71 @@
+:- module (check_hlds.modes).
+:- interface.
+:- import_module bool.
+:- import_module hlds.
+:- import_module io.
+:- import_module list.
+:- import_module maybe.
+:- import_module parse_tree.
+:- import_module (check_hlds.mode_info).
+:- import_module (hlds.hlds_goal).
+:- import_module (hlds.hlds_module).
+:- import_module (hlds.hlds_pred).
+:- import_module (hlds.instmap).
+:- import_module (parse_tree.error_util).
+:- import_module (parse_tree.prog_data).
+:- type after_goals
+	--->	no_after_goals 
+	;	after_goals(((check_hlds.modes).after_instmap) :: hlds.instmap.instmap, ((check_hlds.modes).after_goals) :: list.list(hlds.hlds_goal.hlds_goal)).
+:- type extra_goals
+	--->	no_extra_goals 
+	;	extra_goals(((check_hlds.modes).extra_before_main) :: list.list(hlds.hlds_goal.hlds_goal), ((check_hlds.modes).extra_after_main) :: list.list(hlds.hlds_goal.hlds_goal)).
+:- pred append_extra_goals(check_hlds.modes.extra_goals, check_hlds.modes.extra_goals, check_hlds.modes.extra_goals).
+:- mode append_extra_goals((builtin.in), (builtin.in), (builtin.out)) is det.
+:- pred check_pred_modes(check_hlds.mode_info.how_to_check_goal, check_hlds.mode_info.may_change_called_proc, hlds.hlds_module.module_info, hlds.hlds_module.module_info, bool.bool, io.io, io.io).
+:- mode check_pred_modes((builtin.in), (builtin.in), (builtin.in), (builtin.out), (builtin.out), (builtin.di), (builtin.uo)) is det.
+:- pred compute_arg_offset(hlds.hlds_pred.pred_info, int).
+:- mode compute_arg_offset((builtin.in), (builtin.out)) is det.
+:- pred compute_goal_instmap_delta(hlds.instmap.instmap, hlds.hlds_goal.hlds_goal_expr, hlds.hlds_goal.hlds_goal_info, hlds.hlds_goal.hlds_goal_info, check_hlds.mode_info.mode_info, check_hlds.mode_info.mode_info).
+:- mode compute_goal_instmap_delta((builtin.in), (builtin.in), (builtin.in), (builtin.out), (builtin.in), (builtin.out)) is det.
+:- pred construct_initialisation_call(parse_tree.prog_data.prog_var, parse_tree.prog_data.mer_type, parse_tree.prog_data.mer_inst, parse_tree.prog_data.prog_context, maybe.maybe(hlds.hlds_goal.call_unify_context), hlds.hlds_goal.hlds_goal, check_hlds.mode_info.mode_info, check_hlds.mode_info.mode_info).
+:- mode construct_initialisation_call((builtin.in), (builtin.in), (builtin.in), (builtin.in), (builtin.in), (builtin.out), (builtin.in), (builtin.out)) is det.
+:- pred construct_initialisation_calls(list.list(parse_tree.prog_data.prog_var), list.list(hlds.hlds_goal.hlds_goal), check_hlds.mode_info.mode_info, check_hlds.mode_info.mode_info).
+:- mode construct_initialisation_calls((builtin.in), (builtin.out), (builtin.in), (builtin.out)) is det.
+:- pred get_live_vars(list.list(parse_tree.prog_data.prog_var), list.list(parse_tree.prog_data.is_live), list.list(parse_tree.prog_data.prog_var)).
+:- mode get_live_vars((builtin.in), (builtin.in), (builtin.out)) is det.
+:- pred handle_extra_goals(hlds.hlds_goal.hlds_goal_expr, check_hlds.modes.extra_goals, hlds.hlds_goal.hlds_goal_info, list.list(parse_tree.prog_data.prog_var), list.list(parse_tree.prog_data.prog_var), hlds.instmap.instmap, hlds.hlds_goal.hlds_goal_expr, check_hlds.mode_info.mode_info, check_hlds.mode_info.mode_info, io.io, io.io).
+:- mode handle_extra_goals((builtin.in), (builtin.in), (builtin.in), (builtin.in), (builtin.in), (builtin.in), (builtin.out), (builtin.in), (builtin.out), (builtin.di), (builtin.uo)) is det.
+:- pred mode_context_to_unify_context(check_hlds.mode_info.mode_info, check_hlds.mode_info.mode_context, hlds.hlds_goal.unify_context).
+:- mode mode_context_to_unify_context((builtin.in), (builtin.in), (builtin.out)) is det.
+:- pred mode_info_add_goals_live_vars(hlds.hlds_goal.conj_type, list.list(hlds.hlds_goal.hlds_goal), check_hlds.mode_info.mode_info, check_hlds.mode_info.mode_info).
+:- mode mode_info_add_goals_live_vars((builtin.in), (builtin.in), (builtin.in), (builtin.out)) is det.
+:- pred mode_info_remove_goals_live_vars(list.list(hlds.hlds_goal.hlds_goal), check_hlds.mode_info.mode_info, check_hlds.mode_info.mode_info).
+:- mode mode_info_remove_goals_live_vars((builtin.in), (builtin.in), (builtin.out)) is det.
+:- pred modecheck(hlds.hlds_module.module_info, hlds.hlds_module.module_info, bool.bool, io.io, io.io).
+:- mode modecheck((builtin.in), (builtin.out), (builtin.out), (builtin.di), (builtin.uo)) is det.
+:- pred modecheck_functor_test(parse_tree.prog_data.prog_var, parse_tree.prog_data.cons_id, check_hlds.mode_info.mode_info, check_hlds.mode_info.mode_info).
+:- mode modecheck_functor_test((builtin.in), (builtin.in), (builtin.in), (builtin.out)) is det.
+:- pred modecheck_functors_test(parse_tree.prog_data.prog_var, parse_tree.prog_data.cons_id, list.list(parse_tree.prog_data.cons_id), check_hlds.mode_info.mode_info, check_hlds.mode_info.mode_info).
+:- mode modecheck_functors_test((builtin.in), (builtin.in), (builtin.in), (builtin.in), (builtin.out)) is det.
+:- pred modecheck_goal(hlds.hlds_goal.hlds_goal, hlds.hlds_goal.hlds_goal, check_hlds.mode_info.mode_info, check_hlds.mode_info.mode_info, io.io, io.io).
+:- mode modecheck_goal((builtin.in), (builtin.out), (builtin.in), (builtin.out), (builtin.di), (builtin.uo)) is det.
+:- pred modecheck_goal_expr(hlds.hlds_goal.hlds_goal_expr, hlds.hlds_goal.hlds_goal_info, hlds.hlds_goal.hlds_goal_expr, check_hlds.mode_info.mode_info, check_hlds.mode_info.mode_info, io.io, io.io).
+:- mode modecheck_goal_expr((builtin.in), (builtin.in), (builtin.out), (builtin.in), (builtin.out), (builtin.di), (builtin.uo)) is det.
+:- pred modecheck_lambda_final_insts(list.list(parse_tree.prog_data.prog_var), list.list(parse_tree.prog_data.mer_inst), hlds.hlds_goal.hlds_goal, hlds.hlds_goal.hlds_goal, check_hlds.mode_info.mode_info, check_hlds.mode_info.mode_info).
+:- mode modecheck_lambda_final_insts((builtin.in), (builtin.in), (builtin.in), (builtin.out), (builtin.in), (builtin.out)) is det.
+:- pred modecheck_proc(hlds.hlds_pred.proc_id, hlds.hlds_pred.pred_id, hlds.hlds_module.module_info, hlds.hlds_module.module_info, list.list(parse_tree.error_util.error_spec), bool.bool, io.io, io.io).
+:- mode modecheck_proc((builtin.in), (builtin.in), (builtin.in), (builtin.out), (builtin.out), (builtin.out), (builtin.di), (builtin.uo)) is det.
+:- pred modecheck_proc_general(hlds.hlds_pred.proc_id, hlds.hlds_pred.pred_id, check_hlds.mode_info.how_to_check_goal, check_hlds.mode_info.may_change_called_proc, hlds.hlds_module.module_info, hlds.hlds_module.module_info, list.list(parse_tree.error_util.error_spec), bool.bool, io.io, io.io).
+:- mode modecheck_proc_general((builtin.in), (builtin.in), (builtin.in), (builtin.in), (builtin.in), (builtin.out), (builtin.out), (builtin.out), (builtin.di), (builtin.uo)) is det.
+:- pred modecheck_set_var_inst(parse_tree.prog_data.prog_var, parse_tree.prog_data.mer_inst, maybe.maybe(parse_tree.prog_data.mer_inst), check_hlds.mode_info.mode_info, check_hlds.mode_info.mode_info).
+:- mode modecheck_set_var_inst((builtin.in), (builtin.in), (builtin.in), (builtin.in), (builtin.out)) is det.
+:- pred modecheck_set_var_inst_list(list.list(parse_tree.prog_data.prog_var), list.list(parse_tree.prog_data.mer_inst), list.list(parse_tree.prog_data.mer_inst), int, list.list(parse_tree.prog_data.prog_var), check_hlds.modes.extra_goals, check_hlds.mode_info.mode_info, check_hlds.mode_info.mode_info).
+:- mode modecheck_set_var_inst_list((builtin.in), (builtin.in), (builtin.in), (builtin.in), (builtin.out), (builtin.out), (builtin.in), (builtin.out)) is det.
+:- pred modecheck_var_has_inst_list_exact_match(list.list(parse_tree.prog_data.prog_var), list.list(parse_tree.prog_data.mer_inst), int, parse_tree.prog_data.inst_var_sub, check_hlds.mode_info.mode_info, check_hlds.mode_info.mode_info).
+:- mode modecheck_var_has_inst_list_exact_match((builtin.in), (builtin.in), (builtin.in), (builtin.out), (builtin.in), (builtin.out)) is det.
+:- pred modecheck_var_has_inst_list_no_exact_match(list.list(parse_tree.prog_data.prog_var), list.list(parse_tree.prog_data.mer_inst), int, parse_tree.prog_data.inst_var_sub, check_hlds.mode_info.mode_info, check_hlds.mode_info.mode_info).
+:- mode modecheck_var_has_inst_list_no_exact_match((builtin.in), (builtin.in), (builtin.in), (builtin.out), (builtin.in), (builtin.out)) is det.
+:- pred modecheck_var_list_is_live_exact_match(list.list(parse_tree.prog_data.prog_var), list.list(parse_tree.prog_data.is_live), int, check_hlds.mode_info.mode_info, check_hlds.mode_info.mode_info).
+:- mode modecheck_var_list_is_live_exact_match((builtin.in), (builtin.in), (builtin.in), (builtin.in), (builtin.out)) is det.
+:- pred modecheck_var_list_is_live_no_exact_match(list.list(parse_tree.prog_data.prog_var), list.list(parse_tree.prog_data.is_live), int, check_hlds.mode_info.mode_info, check_hlds.mode_info.mode_info).
+:- mode modecheck_var_list_is_live_no_exact_match((builtin.in), (builtin.in), (builtin.in), (builtin.in), (builtin.out)) is det.

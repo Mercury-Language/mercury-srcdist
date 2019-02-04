@@ -1,0 +1,7 @@
+:- module (check_hlds.inst_check).
+:- interface.
+:- import_module hlds.
+:- import_module io.
+:- import_module (hlds.hlds_module).
+:- pred check_insts_have_matching_types(hlds.hlds_module.module_info, io.io, io.io).
+:- mode check_insts_have_matching_types((builtin.in), (builtin.di), (builtin.uo)) is det.

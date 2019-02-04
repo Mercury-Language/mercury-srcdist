@@ -1,0 +1,62 @@
+:- module assoc_list.
+:- use_module builtin, list, pair, private_builtin, require, string, type_desc.
+assoc_list.reverse_members(AL1_3) = AL2_4 :-
+    assoc_list.reverse_members(AL1_3, AL2_4).
+assoc_list.from_corresponding_lists(Ks_4, Vs_5) = AL_6 :-
+    assoc_list.from_corresponding_lists(Ks_4, Vs_5, AL_6).
+assoc_list.keys(AL_3) = Ks_4 :-
+    assoc_list.keys(AL_3, Ks_4).
+assoc_list.values(AL_3) = Vs_4 :-
+    assoc_list.values(AL_3, Vs_4).
+assoc_list.elem(K_5, AL_4) = V_6 :-
+    assoc_list.search(AL_4, K_5, V_6).
+assoc_list.map_keys_only(_F_4, list.[]) = list.[].
+assoc_list.map_keys_only(F_5, list.[V_11 | KVs0_8]) = list.[V_12 | KVs_10] :-
+    V_11 = pair.(K0_6 - V_7) : pair.pair(K_1, V_3),
+    V_12 = pair.(K_9 - V_7) : pair.pair(L_2, V_3),
+    K_9 = apply(F_5, K0_6),
+    KVs_10 = assoc_list.map_keys_only(F_5, KVs0_8).
+assoc_list.map_values_only(_F_4, list.[]) = list.[].
+assoc_list.map_values_only(F_5, list.[V_11 | KVs0_8]) = list.[V_12 | KVs_10] :-
+    V_11 = pair.(K_6 - V0_7) : pair.pair(K_3, V_1),
+    V_12 = pair.(K_6 - V_9) : pair.pair(K_3, W_2),
+    V_9 = apply(F_5, V0_7),
+    KVs_10 = assoc_list.map_values_only(F_5, KVs0_8).
+assoc_list.map_values(_F_4, list.[]) = list.[].
+assoc_list.map_values(F_5, list.[V_11 | KVs0_8]) = list.[V_12 | KVs_10] :-
+    V_11 = pair.(K_6 - V0_7) : pair.pair(K_1, V_2),
+    V_12 = pair.(K_6 - V_9) : pair.pair(K_1, W_3),
+    V_9 = apply(F_5, K_6, V0_7),
+    KVs_10 = assoc_list.map_values(F_5, KVs0_8).
+:- pragma exceptions(function, (assoc_list.reverse_members), 2, 0, will_not_throw).
+:- pragma exceptions(predicate, (assoc_list.reverse_members), 2, 0, will_not_throw).
+:- pragma exceptions(function, (assoc_list.from_corresponding_lists), 3, 0, may_throw(user_exception)).
+:- pragma exceptions(predicate, (assoc_list.from_corresponding_lists), 3, 0, may_throw(user_exception)).
+:- pragma exceptions(predicate, (assoc_list.keys), 2, 0, will_not_throw).
+:- pragma exceptions(function, (assoc_list.keys), 2, 0, will_not_throw).
+:- pragma exceptions(function, (assoc_list.values), 2, 0, will_not_throw).
+:- pragma exceptions(predicate, (assoc_list.values), 2, 0, will_not_throw).
+:- pragma exceptions(predicate, (assoc_list.keys_and_values), 3, 0, will_not_throw).
+:- pragma exceptions(predicate, (assoc_list.search), 3, 0, conditional).
+:- pragma exceptions(function, (assoc_list.elem), 3, 0, conditional).
+:- pragma exceptions(function, (assoc_list.det_elem), 3, 0, may_throw(user_exception)).
+:- pragma exceptions(predicate, (assoc_list.remove), 4, 0, conditional).
+:- pragma exceptions(function, (assoc_list.map_keys_only), 3, 0, may_throw(user_exception)).
+:- pragma exceptions(function, (assoc_list.map_values_only), 3, 0, may_throw(user_exception)).
+:- pragma exceptions(function, (assoc_list.map_values), 3, 0, may_throw(user_exception)).
+:- pragma termination_info(assoc_list.reverse_members((builtin.in)) = (builtin.out), finite(0, [no, no, yes, no]), cannot_loop).
+:- pragma termination_info(assoc_list.reverse_members((builtin.in), (builtin.out)), finite(0, [no, no, yes, no]), cannot_loop).
+:- pragma termination_info(assoc_list.from_corresponding_lists((builtin.in), (builtin.in)) = (builtin.out), finite(0, [no, no, yes, yes, no]), can_loop).
+:- pragma termination_info(assoc_list.from_corresponding_lists((builtin.in), (builtin.in), (builtin.out)), finite(0, [no, no, yes, yes, no]), can_loop).
+:- pragma termination_info(assoc_list.keys((builtin.in), (builtin.out)), finite(0, [no, no, yes, no]), cannot_loop).
+:- pragma termination_info(assoc_list.keys((builtin.in)) = (builtin.out), finite(0, [no, no, yes, no]), cannot_loop).
+:- pragma termination_info(assoc_list.values((builtin.in)) = (builtin.out), finite(0, [no, no, yes, no]), cannot_loop).
+:- pragma termination_info(assoc_list.values((builtin.in), (builtin.out)), finite(0, [no, no, yes, no]), cannot_loop).
+:- pragma termination_info(assoc_list.keys_and_values((builtin.in), (builtin.out), (builtin.out)), finite(0, [no, no, yes, no, no]), cannot_loop).
+:- pragma termination_info(assoc_list.search((builtin.in), (builtin.in), (builtin.out)), finite(-4, [no, no, yes, no, no]), cannot_loop).
+:- pragma termination_info(assoc_list.elem((builtin.in), (builtin.in)) = (builtin.out), finite(-4, [no, no, no, yes, no]), cannot_loop).
+:- pragma termination_info(assoc_list.det_elem((builtin.in), (builtin.in)) = (builtin.out), finite(-4, [no, no, no, yes, no]), can_loop).
+:- pragma termination_info(assoc_list.remove((builtin.in), (builtin.in), (builtin.out), (builtin.out)), finite(-4, [no, no, yes, no, no, no]), cannot_loop).
+:- pragma termination_info(assoc_list.map_keys_only((builtin.in), (builtin.in)) = (builtin.out), infinite, can_loop).
+:- pragma termination_info(assoc_list.map_values_only((builtin.in), (builtin.in)) = (builtin.out), infinite, can_loop).
+:- pragma termination_info(assoc_list.map_values((builtin.in), (builtin.in)) = (builtin.out), infinite, can_loop).

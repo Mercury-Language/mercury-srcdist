@@ -1,0 +1,13 @@
+module(1, "parsing_utils.m",
+	parsing_utils,
+	{},
+	{builtin, char, float, int, list, maybe, string, unit, private_builtin},
+	{builtin, char, float, int, list, maybe, string, unit, private_builtin},
+	{},
+	{},
+	{},
+	{},
+	{},
+	no_foreign_export,
+	no_main
+).

@@ -1,0 +1,17 @@
+:- module (parse_tree.read_modules).
+:- interface.
+:- import_module io.
+:- import_module list.
+:- import_module map.
+:- import_module maybe.
+:- import_module pair.
+:- import_module (libs.file_util).
+:- import_module (libs.timestamp).
+:- import_module (mdbcomp.prim_data).
+:- import_module (parse_tree.file_names).
+:- import_module (parse_tree.module_imports).
+:- import_module (parse_tree.prog_io).
+:- import_module (parse_tree.prog_item).
+:- type read_module
+	--->	read_module(parse_tree.module_imports.module_timestamp, list.list(parse_tree.prog_item.item), parse_tree.prog_io.module_error, libs.file_util.file_name).
+:- type read_modules == map.map(pair.pair(mdbcomp.prim_data.module_name, string), parse_tree.read_modules.read_module).

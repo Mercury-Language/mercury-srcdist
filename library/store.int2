@@ -1,0 +1,25 @@
+:- module store.
+:- interface.
+:- import_module io.
+:- type store(S).
+:- type io_mutvar(T) == store.generic_mutvar(T, io.state).
+:- type generic_mutvar(T, S).
+:- type generic_ref(T, S).
+:- type io_ref(T, S) == store.generic_ref(T, io.state).
+:- type store_mutvar(T, S) == store.generic_mutvar(T, store.store(S)).
+:- type store_ref(T, S) == store.generic_ref(T, store.store(S)).
+:- typeclass store(T).
+:- instance (store.store(io.state)).
+:- instance (store.store(store.store(S))).
+:- implementation.
+:- type generic_mutvar(T, S)
+	--->	mutvar(private_builtin.ref(T)).
+:- pragma foreign_type(java, generic_mutvar(T, S), "mercury.mutvar.Mutvar").
+:- pragma foreign_type(erlang, generic_mutvar(T, S), "").
+:- type generic_ref(T, S)
+	--->	ref(private_builtin.ref(T)).
+:- pragma foreign_type(java, generic_ref(T, S), "mercury.store.Ref").
+:- pragma foreign_import_module("Java", store).
+:- pragma foreign_import_module("Erlang", store).
+:- pragma foreign_import_module("Java", store).
+:- pragma foreign_import_module("Erlang", store).

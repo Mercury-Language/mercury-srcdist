@@ -1,0 +1,10 @@
+:- module (ml_backend.mlds_to_managed).
+:- interface.
+:- import_module io.
+:- import_module (ml_backend.mlds).
+:- pred output_csharp_code(ml_backend.mlds.mlds, io.io, io.io).
+:- mode output_csharp_code((builtin.in), (builtin.di), (builtin.uo)) is det.
+:- pred output_src_end(ml_backend.mlds.mercury_module_name, io.io, io.io).
+:- mode output_src_end((builtin.in), (builtin.di), (builtin.uo)) is det.
+:- pred output_src_start(ml_backend.mlds.mercury_module_name, io.io, io.io).
+:- mode output_src_start((builtin.in), (builtin.di), (builtin.uo)) is det.

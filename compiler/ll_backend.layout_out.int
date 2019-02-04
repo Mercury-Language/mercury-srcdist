@@ -1,0 +1,26 @@
+:- module (ll_backend.layout_out).
+:- interface.
+:- import_module bool.
+:- import_module io.
+:- import_module (ll_backend.layout).
+:- import_module (ll_backend.llds).
+:- import_module (ll_backend.llds_out).
+:- import_module (mdbcomp.prim_data).
+:- func layout_name_would_include_code_addr(ll_backend.layout.layout_name) = bool.bool.
+:- func make_label_layout_name(ll_backend.llds.label) = string.
+:- pred output_layout_data_defn(ll_backend.layout.layout_data, ll_backend.llds_out.decl_set, ll_backend.llds_out.decl_set, io.io, io.io).
+:- mode output_layout_data_defn((builtin.in), (builtin.in), (builtin.out), (builtin.di), (builtin.uo)) is det.
+:- pred output_layout_name(ll_backend.layout.layout_name, io.io, io.io).
+:- mode output_layout_name((builtin.in), (builtin.di), (builtin.uo)) is det.
+:- pred output_layout_name_decl(ll_backend.layout.layout_name, io.io, io.io).
+:- mode output_layout_name_decl((builtin.in), (builtin.di), (builtin.uo)) is det.
+:- pred output_layout_name_storage_type_name(ll_backend.layout.layout_name, bool.bool, io.io, io.io).
+:- mode output_layout_name_storage_type_name((builtin.in), (builtin.in), (builtin.di), (builtin.uo)) is det.
+:- pred output_maybe_layout_data_decl(ll_backend.layout.layout_data, ll_backend.llds_out.decl_set, ll_backend.llds_out.decl_set, io.io, io.io).
+:- mode output_maybe_layout_data_decl((builtin.in), (builtin.in), (builtin.out), (builtin.di), (builtin.uo)) is det.
+:- pred output_maybe_layout_name_decl(ll_backend.layout.layout_name, ll_backend.llds_out.decl_set, ll_backend.llds_out.decl_set, io.io, io.io).
+:- mode output_maybe_layout_name_decl((builtin.in), (builtin.in), (builtin.out), (builtin.di), (builtin.uo)) is det.
+:- pred output_pred_or_func(mdbcomp.prim_data.pred_or_func, io.io, io.io).
+:- mode output_pred_or_func((builtin.in), (builtin.di), (builtin.uo)) is det.
+:- func proc_label_user_or_uci(mdbcomp.prim_data.proc_label) = ll_backend.layout.proc_layout_user_or_uci.
+:- func trace_port_to_string(mdbcomp.prim_data.trace_port) = string.

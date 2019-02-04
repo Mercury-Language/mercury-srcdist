@@ -1,0 +1,38 @@
+:- module version_array.
+:- interface.
+:- import_module list.
+:- type version_array(T).
+:- func copy(version_array.version_array(T)) = version_array.version_array(T).
+:- func elem(int, version_array.version_array(T)) = T.
+:- func 'elem :='(int, version_array.version_array(T), T) = version_array.version_array(T).
+:- func empty = version_array.version_array(T).
+:- func foldl((func(T1, T2) = T2), version_array.version_array(T1), T2) = T2.
+:- pred foldl(pred(T1, T2, T2), version_array.version_array(T1), T2, T2).
+:- mode foldl((pred((builtin.in), (builtin.in), (builtin.out)) is det), (builtin.in), (builtin.in), (builtin.out)) is det.
+:- mode foldl((pred((builtin.in), (builtin.mdi), (builtin.muo)) is det), (builtin.in), (builtin.mdi), (builtin.muo)) is det.
+:- mode foldl((pred((builtin.in), (builtin.di), (builtin.uo)) is det), (builtin.in), (builtin.di), (builtin.uo)) is det.
+:- func foldr((func(T1, T2) = T2), version_array.version_array(T1), T2) = T2.
+:- func from_list(list.list(T)) = version_array.version_array(T).
+:- func init(int, T) = version_array.version_array(T).
+:- func list(version_array.version_array(T)) = list.list(T).
+:- func lookup(version_array.version_array(T), int) = T.
+:- func max(version_array.version_array(T)) = int.
+:- func new(int, T) = version_array.version_array(T).
+:- func resize(version_array.version_array(T), int, T) = version_array.version_array(T).
+:- pred resize(int, T, version_array.version_array(T), version_array.version_array(T)).
+:- mode resize((builtin.in), (builtin.in), (builtin.in), (builtin.out)) is det.
+:- pred set(int, T, version_array.version_array(T), version_array.version_array(T)).
+:- mode set((builtin.in), (builtin.in), (builtin.in), (builtin.out)) is det.
+:- func size(version_array.version_array(T)) = int.
+:- func to_list(version_array.version_array(T)) = list.list(T).
+:- func unsafe_rewind(version_array.version_array(T)) = version_array.version_array(T).
+:- pred unsafe_rewind(version_array.version_array(T), version_array.version_array(T)).
+:- mode unsafe_rewind((builtin.in), (builtin.out)) is det.
+:- func version_array(list.list(T)) = version_array.version_array(T).
+:- implementation.
+:- type version_array(T)
+	--->	version_array(T).
+:- pragma foreign_type(c, version_array(T), "struct ML_va *")
+	where	type_is_abstract_noncanonical.
+:- pragma foreign_import_module("C", version_array).
+:- pragma foreign_import_module("C", version_array).

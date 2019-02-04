@@ -1,0 +1,34 @@
+:- module ((hlds.make_hlds).make_hlds_passes).
+:- interface.
+:- import_module bool.
+:- import_module io.
+:- import_module list.
+:- import_module term.
+:- import_module (hlds.hlds_module).
+:- import_module (hlds.hlds_pred).
+:- import_module (mdbcomp.prim_data).
+:- import_module (parse_tree.equiv_type).
+:- import_module (parse_tree.error_util).
+:- import_module (parse_tree.module_qual).
+:- import_module (parse_tree.prog_data).
+:- import_module ((hlds.make_hlds).qual_info).
+:- type add_marker_pred_info == pred(hlds.hlds_pred.pred_info, hlds.hlds_pred.pred_info).
+:- type item_status
+	--->	item_status(hlds.hlds_pred.import_status, parse_tree.prog_data.need_qualifier).
+:- inst (add_marker_pred_info) == (pred((builtin.in), (builtin.out)) is det).
+:- pred add_item_decl_pass_1(parse_tree.prog_item.item, bool.bool, hlds.make_hlds.make_hlds_passes.item_status, hlds.make_hlds.make_hlds_passes.item_status, hlds.hlds_module.module_info, hlds.hlds_module.module_info, list.list(parse_tree.error_util.error_spec), list.list(parse_tree.error_util.error_spec)).
+:- mode add_item_decl_pass_1((builtin.in), (builtin.out), (builtin.in), (builtin.out), (builtin.in), (builtin.out), (builtin.in), (builtin.out)) is det.
+:- pred add_item_pass_3(parse_tree.prog_item.item, hlds.hlds_pred.import_status, hlds.hlds_pred.import_status, hlds.hlds_module.module_info, hlds.hlds_module.module_info, hlds.make_hlds.qual_info.qual_info, hlds.make_hlds.qual_info.qual_info, list.list(parse_tree.error_util.error_spec), list.list(parse_tree.error_util.error_spec)).
+:- mode add_item_pass_3((builtin.in), (builtin.in), (builtin.out), (builtin.in), (builtin.out), (builtin.in), (builtin.out), (builtin.in), (builtin.out)) is det.
+:- pred add_pred_marker(string, mdbcomp.prim_data.sym_name, parse_tree.prog_data.arity, hlds.hlds_pred.import_status, parse_tree.prog_data.prog_context, hlds.hlds_pred.marker, list.list(hlds.hlds_pred.marker), hlds.hlds_module.module_info, hlds.hlds_module.module_info, list.list(parse_tree.error_util.error_spec), list.list(parse_tree.error_util.error_spec)).
+:- mode add_pred_marker((builtin.in), (builtin.in), (builtin.in), (builtin.in), (builtin.in), (builtin.in), (builtin.in), (builtin.in), (builtin.out), (builtin.in), (builtin.out)) is det.
+:- pred add_stratified_pred(string, mdbcomp.prim_data.sym_name, parse_tree.prog_data.arity, term.context, hlds.hlds_module.module_info, hlds.hlds_module.module_info, list.list(parse_tree.error_util.error_spec), list.list(parse_tree.error_util.error_spec)).
+:- mode add_stratified_pred((builtin.in), (builtin.in), (builtin.in), (builtin.in), (builtin.in), (builtin.out), (builtin.in), (builtin.out)) is det.
+:- pred do_add_pred_marker(string, mdbcomp.prim_data.sym_name, parse_tree.prog_data.arity, hlds.hlds_pred.import_status, bool.bool, term.context, hlds.make_hlds.make_hlds_passes.add_marker_pred_info, hlds.hlds_module.module_info, hlds.hlds_module.module_info, list.list(hlds.hlds_pred.pred_id), list.list(parse_tree.error_util.error_spec), list.list(parse_tree.error_util.error_spec)).
+:- mode do_add_pred_marker((builtin.in), (builtin.in), (builtin.in), (builtin.in), (builtin.in), (builtin.in), builtin.in((((hlds.make_hlds).make_hlds_passes).add_marker_pred_info)), (builtin.in), (builtin.out), (builtin.out), (builtin.in), (builtin.out)) is det.
+:- pred do_parse_tree_to_hlds(parse_tree.prog_item.compilation_unit, parse_tree.module_qual.mq_info, parse_tree.equiv_type.eqv_map, parse_tree.prog_data.used_modules, hlds.hlds_module.module_info, hlds.make_hlds.qual_info.qual_info, bool.bool, bool.bool, io.io, io.io).
+:- mode do_parse_tree_to_hlds((builtin.in), (builtin.in), (builtin.in), (builtin.in), (builtin.out), (builtin.out), (builtin.out), (builtin.out), (builtin.di), (builtin.uo)) is det.
+:- pred maybe_check_field_access_function(mdbcomp.prim_data.sym_name, parse_tree.prog_data.arity, hlds.hlds_pred.import_status, parse_tree.prog_data.prog_context, hlds.hlds_module.module_info, list.list(parse_tree.error_util.error_spec), list.list(parse_tree.error_util.error_spec)).
+:- mode maybe_check_field_access_function((builtin.in), (builtin.in), (builtin.in), (builtin.in), (builtin.in), (builtin.in), (builtin.out)) is det.
+:- pred module_mark_as_external(mdbcomp.prim_data.sym_name, int, parse_tree.prog_data.prog_context, hlds.hlds_module.module_info, hlds.hlds_module.module_info, list.list(parse_tree.error_util.error_spec), list.list(parse_tree.error_util.error_spec)).
+:- mode module_mark_as_external((builtin.in), (builtin.in), (builtin.in), (builtin.in), (builtin.out), (builtin.in), (builtin.out)) is det.

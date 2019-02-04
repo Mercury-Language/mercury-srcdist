@@ -1,0 +1,15 @@
+:- module parsing_utils.
+:- interface.
+:- import_module char.
+:- import_module float.
+:- import_module int.
+:- import_module list.
+:- import_module maybe.
+:- import_module string.
+:- import_module unit.
+:- type ps.
+:- type src.
+:- type parser(T) == pred(parsing_utils.src, T, parsing_utils.ps, parsing_utils.ps).
+:- inst (parser) == (pred((builtin.in), (builtin.out), (builtin.in), (builtin.out)) is semidet).
+:- implementation.
+:- type ps == int.

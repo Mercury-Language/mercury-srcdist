@@ -1,0 +1,82 @@
+:- module (thread.semaphore).
+:- use_module bool, builtin, io, private_builtin.
+:- type thread.semaphore.semaphore.
+:- pragma foreign_type(il, thread.semaphore.semaphore, "class [mercury]mercury.thread.semaphore__csharp_code.mercury_code.ML_Semaphore").
+:- pragma foreign_type(c, thread.semaphore.semaphore, "ML_Semaphore *", [can_pass_as_mercury_type]).
+:- pragma foreign_type(java, thread.semaphore.semaphore, "java.util.concurrent.Semaphore").
+:- pragma foreign_type(erlang, thread.semaphore.semaphore, "").
+:- pragma foreign_import_module("C", (thread.semaphore)).
+:- pragma foreign_import_module("C#", (thread.semaphore)).
+:- pragma foreign_import_module("Java", (thread.semaphore)).
+:- pragma foreign_import_module("IL", (thread.semaphore)).
+:- pragma foreign_import_module("Erlang", (thread.semaphore)).
+:- pragma foreign_import_module("C", thread).
+:- pragma foreign_import_module("C#", thread).
+:- pragma foreign_import_module("IL", thread).
+:- pragma foreign_import_module("C", io).
+:- pragma foreign_import_module("Java", io).
+:- pragma foreign_import_module("IL", io).
+:- pragma foreign_import_module("Erlang", io).
+:- pragma foreign_import_module("C", io).
+:- pragma foreign_import_module("Java", io).
+:- pragma foreign_import_module("IL", io).
+:- pragma foreign_import_module("Erlang", io).
+:- pragma foreign_import_module("C", string).
+:- pragma foreign_import_module("C", bitmap).
+:- pragma foreign_import_module("Java", bitmap).
+:- pragma foreign_import_module("IL", bitmap).
+:- pragma foreign_import_module("Erlang", bitmap).
+:- pragma foreign_import_module("C", bitmap).
+:- pragma foreign_import_module("Java", bitmap).
+:- pragma foreign_import_module("IL", bitmap).
+:- pragma foreign_import_module("Erlang", bitmap).
+:- pragma foreign_import_module("C", time).
+:- pragma foreign_import_module("Java", time).
+:- pragma foreign_import_module("IL", time).
+:- pragma foreign_import_module("Erlang", time).
+:- pragma foreign_import_module("C", time).
+:- pragma foreign_import_module("Java", time).
+:- pragma foreign_import_module("IL", time).
+:- pragma foreign_import_module("Erlang", time).
+(thread.semaphore).new(Semaphore_4, STATE_VARIABLE_IO_0_6, STATE_VARIABLE_IO_7) :-
+    Semaphore_4 = (thread.semaphore).new(V_9),
+    V_9 = 0 : int,
+    STATE_VARIABLE_IO_7 = STATE_VARIABLE_IO_0_6.
+:- pragma foreign_proc("C", (thread.semaphore).new(Count :: (builtin.in)) = (Semaphore :: (builtin.uo)), [will_not_call_mercury, thread_safe, not_tabled_for_io, promise_pure, may_modify_trail], "
+    MR_Word         sem_mem;
+    ML_Semaphore    *sem;
+
+    MR_alloc_heap(sem_mem,
+        MR_round_up(sizeof(ML_Semaphore), sizeof(MR_Word)));
+    sem = (ML_Semaphore *) sem_mem;
+    sem->count = Count;
+#ifndef MR_HIGHLEVEL_CODE
+    sem->suspended_head = NULL;
+    sem->suspended_tail = NULL;
+#else
+  #ifdef MR_THREAD_SAFE
+    pthread_cond_init(&(sem->cond), MR_COND_ATTR);
+  #endif
+#endif
+#ifdef MR_THREAD_SAFE
+    pthread_mutex_init(&(sem->lock), MR_MUTEX_ATTR);
+#endif
+
+    /*
+    ** The condvar and the mutex will need to be destroyed
+    ** when the semaphore is garbage collected.
+    */
+    MR_GC_register_finalizer(sem, ML_finalize_semaphore, NULL);
+
+    Semaphore = sem;
+").
+:- pragma exceptions(predicate, ((thread.semaphore).new), 3, 0, will_not_throw).
+:- pragma exceptions(function, ((thread.semaphore).new), 2, 0, will_not_throw).
+:- pragma exceptions(predicate, ((thread.semaphore).wait), 3, 0, will_not_throw).
+:- pragma exceptions(predicate, ((thread.semaphore).try_wait), 4, 0, will_not_throw).
+:- pragma exceptions(predicate, ((thread.semaphore).signal), 3, 0, will_not_throw).
+:- pragma termination_info((thread.semaphore).new((builtin.out), (builtin.di), (builtin.uo)), infinite, cannot_loop).
+:- pragma termination_info((thread.semaphore).new((builtin.in)) = (builtin.uo), infinite, cannot_loop).
+:- pragma termination_info((thread.semaphore).wait((builtin.in), (builtin.di), (builtin.uo)), infinite, cannot_loop).
+:- pragma termination_info((thread.semaphore).try_wait((builtin.in), (builtin.out), (builtin.di), (builtin.uo)), infinite, cannot_loop).
+:- pragma termination_info((thread.semaphore).signal((builtin.in), (builtin.di), (builtin.uo)), infinite, cannot_loop).

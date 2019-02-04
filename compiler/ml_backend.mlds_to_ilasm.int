@@ -1,0 +1,6 @@
+:- module (ml_backend.mlds_to_ilasm).
+:- interface.
+:- import_module io.
+:- import_module (ml_backend.mlds).
+:- pred output_mlds(ml_backend.mlds.mlds, io.io, io.io).
+:- mode output_mlds((builtin.in), (builtin.di), (builtin.uo)) is det.

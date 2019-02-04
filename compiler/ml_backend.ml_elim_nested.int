@@ -1,0 +1,9 @@
+:- module (ml_backend.ml_elim_nested).
+:- interface.
+:- import_module io.
+:- import_module (ml_backend.mlds).
+:- type action
+	--->	hoist_nested_funcs 
+	;	chain_gc_stack_frames .
+:- pred ml_elim_nested(ml_backend.ml_elim_nested.action, ml_backend.mlds.mlds, ml_backend.mlds.mlds, io.io, io.io).
+:- mode ml_elim_nested((builtin.in), (builtin.in), (builtin.out), (builtin.di), (builtin.uo)) is det.

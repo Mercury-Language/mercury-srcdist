@@ -1,0 +1,135 @@
+:- module parsing_utils.
+:- use_module builtin, char, float, int, list, maybe, private_builtin, string, unit.
+:- type parsing_utils.src
+	--->	src((parsing_utils.input_length) :: int, (parsing_utils.input_string) :: string).
+:- type parsing_utils.ps == int.
+:- pred parsing_utils.match_string(string, parsing_utils.src, int, int).
+:- mode parsing_utils.match_string((builtin.in), (builtin.in), (builtin.in), (builtin.out)) is semidet.
+parsing_utils.new_src_and_ps(InputString_4, Src_5, PS_6) :-
+    Src_5 = parsing_utils.src(V_7, InputString_4) : parsing_utils.src,
+    V_7 = string.length(InputString_4),
+    PS_6 = 0 : int.
+parsing_utils.current_offset(_Src_5, Offset_6, STATE_VARIABLE_PS_0_8, STATE_VARIABLE_PS_9) :-
+    Offset_6 = STATE_VARIABLE_PS_0_8,
+    STATE_VARIABLE_PS_9 = STATE_VARIABLE_PS_0_8.
+parsing_utils.char_in_class(CharClass_6, Src_7, Char_8, STATE_VARIABLE_PS_0_10, STATE_VARIABLE_PS_11) :-
+    parsing_utils.next_char(Src_7, Char_8, STATE_VARIABLE_PS_0_10, STATE_VARIABLE_PS_1_12),
+    string.contains_char(CharClass_6, Char_8),
+    STATE_VARIABLE_PS_11 = STATE_VARIABLE_PS_1_12.
+parsing_utils.punct(Punct_6, Src_7, unit.unit, STATE_VARIABLE_PS_0_10, STATE_VARIABLE_PS_11) :-
+    parsing_utils.match_string(Punct_6, Src_7, STATE_VARIABLE_PS_0_10, STATE_VARIABLE_PS_1_12),
+    parsing_utils.whitespace(Src_7, V_9, STATE_VARIABLE_PS_1_12, STATE_VARIABLE_PS_2_13),
+    STATE_VARIABLE_PS_11 = STATE_VARIABLE_PS_2_13.
+parsing_utils.eof(Src_5, unit.unit, STATE_VARIABLE_PS_0_8, STATE_VARIABLE_PS_9) :-
+    parsing_utils.current_offset(Src_5, Offset_7, STATE_VARIABLE_PS_0_8, STATE_VARIABLE_PS_1_10),
+    Src_5 = parsing_utils.src(Offset_7, V_12) : parsing_utils.src,
+    STATE_VARIABLE_PS_9 = STATE_VARIABLE_PS_1_10.
+parsing_utils.float_literal(Src_5, Float_6, STATE_VARIABLE_PS_0_9, STATE_VARIABLE_PS_10) :-
+    parsing_utils.float_literal_as_string(Src_5, FloatStr_8, STATE_VARIABLE_PS_0_9, STATE_VARIABLE_PS_1_11),
+    string.to_float(FloatStr_8, Float_6),
+    STATE_VARIABLE_PS_10 = STATE_VARIABLE_PS_1_11.
+parsing_utils.int_literal(Src_5, Int_6, STATE_VARIABLE_PS_0_9, STATE_VARIABLE_PS_10) :-
+    parsing_utils.int_literal_as_string(Src_5, IntStr_8, STATE_VARIABLE_PS_0_9, STATE_VARIABLE_PS_1_11),
+    string.to_int(IntStr_8, Int_6),
+    STATE_VARIABLE_PS_10 = STATE_VARIABLE_PS_1_11.
+parsing_utils.optional(P_6, Src_7, Result_8, STATE_VARIABLE_PS_0_11, STATE_VARIABLE_PS_12) :-
+    (if
+      call(P_6, Src_7, X_10, STATE_VARIABLE_PS_0_11, STATE_VARIABLE_PS_1_13)
+    then
+      STATE_VARIABLE_PS_3_15 = STATE_VARIABLE_PS_1_13,
+      Result_8 = maybe.yes(X_10) : maybe.maybe(T_1)
+    else
+      Result_8 = maybe.no : maybe.maybe(T_1),
+      builtin.semidet_true,
+      STATE_VARIABLE_PS_3_15 = STATE_VARIABLE_PS_0_11
+    ),
+    STATE_VARIABLE_PS_12 = STATE_VARIABLE_PS_3_15.
+parsing_utils.zero_or_more(P_6, Src_7, Result_8, STATE_VARIABLE_PS_0_12, STATE_VARIABLE_PS_13) :-
+    (if
+      call(P_6, Src_7, X_10, STATE_VARIABLE_PS_0_12, STATE_VARIABLE_PS_1_14),
+      parsing_utils.zero_or_more(P_6, Src_7, Xs_11, STATE_VARIABLE_PS_1_14, STATE_VARIABLE_PS_2_15)
+    then
+      STATE_VARIABLE_PS_4_17 = STATE_VARIABLE_PS_2_15,
+      Result_8 = list.[X_10 | Xs_11] : list.list(T_1)
+    else
+      Result_8 = list.[] : list.list(T_1),
+      builtin.semidet_true,
+      STATE_VARIABLE_PS_4_17 = STATE_VARIABLE_PS_0_12
+    ),
+    STATE_VARIABLE_PS_13 = STATE_VARIABLE_PS_4_17.
+parsing_utils.one_or_more(P_6, Src_7, Result_8, STATE_VARIABLE_PS_0_12, STATE_VARIABLE_PS_13) :-
+    call(P_6, Src_7, X_10, STATE_VARIABLE_PS_0_12, STATE_VARIABLE_PS_1_14),
+    parsing_utils.zero_or_more(P_6, Src_7, Xs_11, STATE_VARIABLE_PS_1_14, STATE_VARIABLE_PS_2_15),
+    Result_8 = list.[X_10 | Xs_11] : list.list(T_1),
+    STATE_VARIABLE_PS_13 = STATE_VARIABLE_PS_2_15.
+parsing_utils.brackets(L_8, R_9, P_10, Src_11, Result_12, STATE_VARIABLE_PS_0_16, STATE_VARIABLE_PS_17) :-
+    parsing_utils.punct(L_8, Src_11, V_14, STATE_VARIABLE_PS_0_16, STATE_VARIABLE_PS_1_18),
+    call(P_10, Src_11, Result_12, STATE_VARIABLE_PS_1_18, STATE_VARIABLE_PS_2_19),
+    parsing_utils.punct(R_9, Src_11, V_15, STATE_VARIABLE_PS_2_19, STATE_VARIABLE_PS_3_20),
+    STATE_VARIABLE_PS_17 = STATE_VARIABLE_PS_3_20.
+parsing_utils.separated_list(Separator_7, P_8, Src_9, Result_10, STATE_VARIABLE_PS_0_18, STATE_VARIABLE_PS_19) :-
+    CommaP_12 = (pred(V_26::(builtin.in), V_25::(builtin.out), V_24::(builtin.in), V_23::(builtin.out)) is semidet :-
+      some [] (
+        V_26 = CommaPSrc_32,
+        V_24 = STATE_VARIABLE_PS_0_34,
+        parsing_utils.punct(Separator_7, CommaPSrc_32, V_15, STATE_VARIABLE_PS_0_34, STATE_VARIABLE_PS_1_27),
+        call(P_8, CommaPSrc_32, CommaPX_33, STATE_VARIABLE_PS_1_27, STATE_VARIABLE_PS_2_28),
+        V_25 = CommaPX_33,
+        V_23 = STATE_VARIABLE_PS_35,
+        STATE_VARIABLE_PS_35 = STATE_VARIABLE_PS_2_28
+      )
+    ) : pred(parsing_utils.src, T_1, int, int),
+    call(P_8, Src_9, X_16, STATE_VARIABLE_PS_0_18, STATE_VARIABLE_PS_1_20),
+    parsing_utils.zero_or_more(CommaP_12, Src_9, Xs_17, STATE_VARIABLE_PS_1_20, STATE_VARIABLE_PS_3_30),
+    Result_10 = list.[X_16 | Xs_17] : list.list(T_1),
+    STATE_VARIABLE_PS_19 = STATE_VARIABLE_PS_3_30.
+parsing_utils.comma_separated_list(P_6, Src_7, Result_8, STATE_VARIABLE_PS_0_10, STATE_VARIABLE_PS_11) :-
+    V_13 = "," : string,
+    parsing_utils.separated_list(V_13, P_6, Src_7, Result_8, STATE_VARIABLE_PS_0_10, STATE_VARIABLE_PS_1_12),
+    STATE_VARIABLE_PS_11 = STATE_VARIABLE_PS_1_12.
+:- pragma exceptions(predicate, (parsing_utils.new_src_and_ps), 3, 0, may_throw(user_exception)).
+:- pragma exceptions(predicate, (parsing_utils.current_offset), 4, 0, will_not_throw).
+:- pragma exceptions(predicate, (parsing_utils.input_substring), 4, 0, may_throw(user_exception)).
+:- pragma exceptions(predicate, (parsing_utils.next_char), 4, 0, may_throw(user_exception)).
+:- pragma exceptions(predicate, (parsing_utils.char_in_class), 5, 0, may_throw(user_exception)).
+:- pragma exceptions(predicate, (parsing_utils.punct), 5, 0, may_throw(user_exception)).
+:- pragma exceptions(predicate, (parsing_utils.keyword), 6, 0, may_throw(user_exception)).
+:- pragma exceptions(predicate, (parsing_utils.identifier), 6, 0, may_throw(user_exception)).
+:- pragma exceptions(predicate, (parsing_utils.whitespace), 4, 0, may_throw(user_exception)).
+:- pragma exceptions(predicate, (parsing_utils.skip_to_eol), 4, 0, may_throw(user_exception)).
+:- pragma exceptions(predicate, (parsing_utils.eof), 4, 0, will_not_throw).
+:- pragma exceptions(predicate, (parsing_utils.float_literal_as_string), 4, 0, may_throw(user_exception)).
+:- pragma exceptions(predicate, (parsing_utils.float_literal), 4, 0, may_throw(user_exception)).
+:- pragma exceptions(predicate, (parsing_utils.int_literal_as_string), 4, 0, may_throw(user_exception)).
+:- pragma exceptions(predicate, (parsing_utils.int_literal), 4, 0, may_throw(user_exception)).
+:- pragma exceptions(predicate, (parsing_utils.string_literal), 5, 0, may_throw(user_exception)).
+:- pragma exceptions(predicate, (parsing_utils.optional), 5, 0, may_throw(user_exception)).
+:- pragma exceptions(predicate, (parsing_utils.zero_or_more), 5, 0, may_throw(user_exception)).
+:- pragma exceptions(predicate, (parsing_utils.one_or_more), 5, 0, may_throw(user_exception)).
+:- pragma exceptions(predicate, (parsing_utils.brackets), 7, 0, may_throw(user_exception)).
+:- pragma exceptions(predicate, (parsing_utils.separated_list), 6, 0, may_throw(user_exception)).
+:- pragma exceptions(predicate, (parsing_utils.comma_separated_list), 5, 0, may_throw(user_exception)).
+:- pragma exceptions(predicate, (parsing_utils.match_string), 4, 0, may_throw(user_exception)).
+:- pragma termination_info(parsing_utils.new_src_and_ps((builtin.in), (builtin.out), (builtin.out)), infinite, can_loop).
+:- pragma termination_info(parsing_utils.current_offset((builtin.in), (builtin.out), (builtin.in), (builtin.out)), infinite, cannot_loop).
+:- pragma termination_info(parsing_utils.input_substring((builtin.in), (builtin.in), (builtin.in), (builtin.out)), infinite, can_loop).
+:- pragma termination_info(parsing_utils.next_char((builtin.in), (builtin.out), (builtin.in), (builtin.out)), infinite, can_loop).
+:- pragma termination_info(parsing_utils.char_in_class((builtin.in), (builtin.in), (builtin.out), (builtin.in), (builtin.out)), infinite, can_loop).
+:- pragma termination_info(parsing_utils.punct((builtin.in), (builtin.in), (builtin.out), (builtin.in), (builtin.out)), infinite, can_loop).
+:- pragma termination_info(parsing_utils.keyword((builtin.in), (builtin.in), (builtin.in), (builtin.out), (builtin.in), (builtin.out)), infinite, can_loop).
+:- pragma termination_info(parsing_utils.identifier((builtin.in), (builtin.in), (builtin.in), (builtin.out), (builtin.in), (builtin.out)), infinite, can_loop).
+:- pragma termination_info(parsing_utils.whitespace((builtin.in), (builtin.out), (builtin.in), (builtin.out)), infinite, can_loop).
+:- pragma termination_info(parsing_utils.skip_to_eol((builtin.in), (builtin.out), (builtin.in), (builtin.out)), infinite, can_loop).
+:- pragma termination_info(parsing_utils.eof((builtin.in), (builtin.out), (builtin.in), (builtin.out)), infinite, cannot_loop).
+:- pragma termination_info(parsing_utils.float_literal_as_string((builtin.in), (builtin.out), (builtin.in), (builtin.out)), infinite, can_loop).
+:- pragma termination_info(parsing_utils.float_literal((builtin.in), (builtin.out), (builtin.in), (builtin.out)), infinite, can_loop).
+:- pragma termination_info(parsing_utils.int_literal_as_string((builtin.in), (builtin.out), (builtin.in), (builtin.out)), infinite, can_loop).
+:- pragma termination_info(parsing_utils.int_literal((builtin.in), (builtin.out), (builtin.in), (builtin.out)), infinite, can_loop).
+:- pragma termination_info(parsing_utils.string_literal((builtin.in), (builtin.in), (builtin.out), (builtin.in), (builtin.out)), infinite, can_loop).
+:- pragma termination_info(parsing_utils.optional(builtin.in((parsing_utils.parser)), (builtin.in), (builtin.out), (builtin.in), (builtin.out)), infinite, can_loop).
+:- pragma termination_info(parsing_utils.zero_or_more(builtin.in((parsing_utils.parser)), (builtin.in), (builtin.out), (builtin.in), (builtin.out)), infinite, can_loop).
+:- pragma termination_info(parsing_utils.one_or_more(builtin.in((parsing_utils.parser)), (builtin.in), (builtin.out), (builtin.in), (builtin.out)), infinite, can_loop).
+:- pragma termination_info(parsing_utils.brackets((builtin.in), (builtin.in), builtin.in((parsing_utils.parser)), (builtin.in), (builtin.out), (builtin.in), (builtin.out)), infinite, can_loop).
+:- pragma termination_info(parsing_utils.separated_list((builtin.in), builtin.in((parsing_utils.parser)), (builtin.in), (builtin.out), (builtin.in), (builtin.out)), infinite, can_loop).
+:- pragma termination_info(parsing_utils.comma_separated_list(builtin.in((parsing_utils.parser)), (builtin.in), (builtin.out), (builtin.in), (builtin.out)), infinite, can_loop).
+:- pragma termination_info(parsing_utils.match_string((builtin.in), (builtin.in), (builtin.in), (builtin.out)), finite(0, [no, no, no, no]), can_loop).

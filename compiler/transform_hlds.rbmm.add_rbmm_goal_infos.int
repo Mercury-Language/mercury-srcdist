@@ -1,0 +1,10 @@
+:- module ((transform_hlds.rbmm).add_rbmm_goal_infos).
+:- interface.
+:- import_module hlds.
+:- import_module (hlds.hlds_module).
+:- import_module ((transform_hlds.rbmm).actual_region_arguments).
+:- import_module ((transform_hlds.rbmm).points_to_info).
+:- import_module ((transform_hlds.rbmm).region_resurrection_renaming).
+:- import_module ((transform_hlds.rbmm).region_transformation).
+:- pred collect_rbmm_goal_info(transform_hlds.rbmm.points_to_info.rpta_info_table, transform_hlds.rbmm.actual_region_arguments.proc_pp_actual_region_args_table, transform_hlds.rbmm.region_resurrection_renaming.renaming_table, transform_hlds.rbmm.region_resurrection_renaming.renaming_table, transform_hlds.rbmm.region_transformation.name_to_prog_var_table, hlds.hlds_module.module_info, hlds.hlds_module.module_info).
+:- mode collect_rbmm_goal_info((builtin.in), (builtin.in), (builtin.in), (builtin.in), (builtin.in), (builtin.in), (builtin.out)) is det.

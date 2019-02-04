@@ -1,0 +1,4 @@
+:- module (parse_tree.java_names).
+:- interface.
+:- type java_qual_kind.
+:- type package_name_mangling.

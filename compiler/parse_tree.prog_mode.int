@@ -1,0 +1,59 @@
+:- module (parse_tree.prog_mode).
+:- interface.
+:- import_module list.
+:- import_module (parse_tree.prog_data).
+:- func any_inst = parse_tree.prog_data.mer_inst.
+:- pred di_mode(parse_tree.prog_data.mer_mode).
+:- mode di_mode((builtin.out)) is det.
+:- func di_mode = parse_tree.prog_data.mer_mode.
+:- func free_inst = parse_tree.prog_data.mer_inst.
+:- pred functors_to_cons_ids(list.list(parse_tree.prog_data.bound_inst), list.list(parse_tree.prog_data.cons_id)).
+:- mode functors_to_cons_ids((builtin.in), (builtin.out)) is det.
+:- pred get_arg_insts(parse_tree.prog_data.mer_inst, parse_tree.prog_data.cons_id, parse_tree.prog_data.arity, list.list(parse_tree.prog_data.mer_inst)).
+:- mode get_arg_insts((builtin.in), (builtin.in), (builtin.in), (builtin.out)) is semidet.
+:- func ground_inst = parse_tree.prog_data.mer_inst.
+:- func in_any_mode = parse_tree.prog_data.mer_mode.
+:- pred in_mode(parse_tree.prog_data.mer_mode).
+:- mode in_mode((builtin.out)) is det.
+:- func in_mode = parse_tree.prog_data.mer_mode.
+:- func in_mode(parse_tree.prog_data.mer_inst) = parse_tree.prog_data.mer_mode.
+:- pred inst_contains_unconstrained_var(parse_tree.prog_data.mer_inst).
+:- mode inst_contains_unconstrained_var((builtin.in)) is semidet.
+:- pred inst_list_apply_substitution(parse_tree.prog_data.inst_var_sub, list.list(parse_tree.prog_data.mer_inst), list.list(parse_tree.prog_data.mer_inst)).
+:- mode inst_list_apply_substitution((builtin.in), (builtin.in), (builtin.out)) is det.
+:- pred inst_lists_to_mode_list(list.list(parse_tree.prog_data.mer_inst), list.list(parse_tree.prog_data.mer_inst), list.list(parse_tree.prog_data.mer_mode)).
+:- mode inst_lists_to_mode_list((builtin.in), (builtin.in), (builtin.out)) is det.
+:- pred inst_substitute_arg_list(list.list(parse_tree.prog_data.inst_var), list.list(parse_tree.prog_data.mer_inst), parse_tree.prog_data.mer_inst, parse_tree.prog_data.mer_inst).
+:- mode inst_substitute_arg_list((builtin.in), (builtin.in), (builtin.in), (builtin.out)) is det.
+:- pred insts_to_mode(parse_tree.prog_data.mer_inst, parse_tree.prog_data.mer_inst, parse_tree.prog_data.mer_mode).
+:- mode insts_to_mode((builtin.in), (builtin.in), (builtin.out)) is det.
+:- pred make_std_mode(string, list.list(parse_tree.prog_data.mer_inst), parse_tree.prog_data.mer_mode).
+:- mode make_std_mode((builtin.in), (builtin.in), (builtin.out)) is det.
+:- func make_std_mode(string, list.list(parse_tree.prog_data.mer_inst)) = parse_tree.prog_data.mer_mode.
+:- pred mode_id_to_int(parse_tree.prog_data.mode_id, int).
+:- mode mode_id_to_int((builtin.in), (builtin.out)) is det.
+:- pred mode_list_apply_substitution(parse_tree.prog_data.inst_var_sub, list.list(parse_tree.prog_data.mer_mode), list.list(parse_tree.prog_data.mer_mode)).
+:- mode mode_list_apply_substitution((builtin.in), (builtin.in), (builtin.out)) is det.
+:- pred mode_substitute_arg_list(parse_tree.prog_data.mer_mode, list.list(parse_tree.prog_data.inst_var), list.list(parse_tree.prog_data.mer_inst), parse_tree.prog_data.mer_mode).
+:- mode mode_substitute_arg_list((builtin.in), (builtin.in), (builtin.in), (builtin.out)) is det.
+:- func out_any_mode = parse_tree.prog_data.mer_mode.
+:- pred out_mode(parse_tree.prog_data.mer_mode).
+:- mode out_mode((builtin.out)) is det.
+:- func out_mode = parse_tree.prog_data.mer_mode.
+:- func out_mode(parse_tree.prog_data.mer_inst) = parse_tree.prog_data.mer_mode.
+:- pred rename_apart_inst_vars(parse_tree.prog_data.inst_varset, parse_tree.prog_data.inst_varset, list.list(parse_tree.prog_data.mer_mode), list.list(parse_tree.prog_data.mer_mode)).
+:- mode rename_apart_inst_vars((builtin.in), (builtin.in), (builtin.in), (builtin.out)) is det.
+:- pred strip_builtin_qualifier_from_cons_id(parse_tree.prog_data.cons_id, parse_tree.prog_data.cons_id).
+:- mode strip_builtin_qualifier_from_cons_id((builtin.in), (builtin.out)) is det.
+:- pred strip_builtin_qualifiers_from_inst(parse_tree.prog_data.mer_inst, parse_tree.prog_data.mer_inst).
+:- mode strip_builtin_qualifiers_from_inst((builtin.in), (builtin.out)) is det.
+:- pred strip_builtin_qualifiers_from_inst_list(list.list(parse_tree.prog_data.mer_inst), list.list(parse_tree.prog_data.mer_inst)).
+:- mode strip_builtin_qualifiers_from_inst_list((builtin.in), (builtin.out)) is det.
+:- pred strip_builtin_qualifiers_from_mode_list(list.list(parse_tree.prog_data.mer_mode), list.list(parse_tree.prog_data.mer_mode)).
+:- mode strip_builtin_qualifiers_from_mode_list((builtin.in), (builtin.out)) is det.
+:- pred unused_mode(parse_tree.prog_data.mer_mode).
+:- mode unused_mode((builtin.out)) is det.
+:- func unused_mode = parse_tree.prog_data.mer_mode.
+:- pred uo_mode(parse_tree.prog_data.mer_mode).
+:- mode uo_mode((builtin.out)) is det.
+:- func uo_mode = parse_tree.prog_data.mer_mode.

@@ -1,0 +1,233 @@
+This is mercury_ref.info, produced by makeinfo version 4.11 from
+reference_manual.texi_pp.
+
+INFO-DIR-SECTION The Mercury Programming Language
+START-INFO-DIR-ENTRY
+* Mercury Language: (mercury_ref).  The Mercury Language Reference Manual.
+END-INFO-DIR-ENTRY
+
+   This file documents the Mercury programming language, version
+rotd-2009-06-06.
+
+   Copyright (C) 1995-2009 The University of Melbourne.
+
+   Permission is granted to make and distribute verbatim copies of this
+manual provided the copyright notice and this permission notice are
+preserved on all copies.
+
+   Permission is granted to copy and distribute modified versions of
+this manual under the conditions for verbatim copying, provided also
+that the entire resulting derived work is distributed under the terms
+of a permission notice identical to this one.
+
+   Permission is granted to copy and distribute translations of this
+manual into another language, under the above conditions for modified
+versions.
+
+
+Indirect:
+mercury_ref.info-1: 969
+mercury_ref.info-2: 300458
+
+Tag Table:
+(Indirect)
+Node: Top969
+Node: Introduction3363
+Node: Syntax5273
+Node: Syntax Overview5655
+Node: Tokens6426
+Node: Terms11777
+Node: Builtin Operators15264
+Ref: Builtin Operators-Footnote-122320
+Node: Items22359
+Node: Declarations23131
+Node: Facts23965
+Node: Rules24747
+Node: Goals25479
+Node: State variables34479
+Node: DCG-rules40836
+Node: DCG-goals42122
+Node: Data-terms46827
+Node: Data-functors47939
+Node: Record syntax49614
+Node: Unification expressions52675
+Node: Conditional expressions53744
+Node: Lambda expressions54449
+Node: Higher-order function applications56619
+Node: Explicit type qualification57362
+Node: Variable scoping58261
+Node: Implicit quantification60316
+Node: Elimination of double negation61732
+Node: Types62644
+Node: Builtin types63056
+Node: User-defined types64696
+Node: Discriminated unions65061
+Node: Equivalence types69182
+Node: Abstract types70079
+Node: Predicate and function type declarations70815
+Ref: Predicate and function type declarations-Footnote-176660
+Node: Field access functions77043
+Node: Field selection77864
+Node: Field update78914
+Node: User-supplied field access function declarations80675
+Node: Field access examples82715
+Node: Solver types84451
+Node: The any inst85376
+Node: Abstract solver type declarations86386
+Node: Solver type definitions86868
+Node: Implementing solver types91216
+Node: Solver types and negated contexts92616
+Node: Modes95330
+Node: Insts modes and mode definitions95600
+Node: Predicate and function mode declarations101132
+Node: Constrained polymorphic modes107682
+Node: Different clauses for different modes110390
+Node: Unique modes114623
+Node: Destructive update115830
+Node: Backtrackable destructive update117255
+Node: Limitations of the current implementation118785
+Node: Determinism119715
+Node: Determinism categories120095
+Node: Determinism checking and inference125103
+Node: Replacing compile-time checking with run-time checking133916
+Node: Interfacing nondeterministic code with the real world136373
+Node: Committed choice nondeterminism139746
+Node: User-defined equality and comparison142679
+Ref: User-defined equality and comparison-Footnote-1150214
+Node: Higher-order150594
+Node: Creating higher-order terms151245
+Node: Calling higher-order terms156086
+Node: Higher-order modes159127
+Node: Modules163182
+Node: The module system163452
+Node: An example module167280
+Node: Sub-modules168550
+Node: Nested sub-modules169284
+Node: Separate sub-modules170823
+Node: Visibility rules173322
+Node: Implementation bugs and limitations174645
+Node: Module initialisation175342
+Node: Module finalisation176972
+Node: Module-local mutable variables178444
+Node: Type classes183429
+Node: Typeclass declarations184136
+Node: Instance declarations186978
+Node: Abstract typeclass declarations194271
+Node: Abstract instance declarations195280
+Node: Type class constraints on predicates and functions196858
+Node: Type class constraints on type class declarations198546
+Node: Type class constraints on instance declarations200569
+Node: Functional dependencies202607
+Node: Existential types208594
+Node: Existentially typed predicates and functions209426
+Node: Syntax for explicit type quantifiers209859
+Node: Semantics of type quantifiers211402
+Node: Examples of correct code using type quantifiers214256
+Node: Examples of incorrect code using type quantifiers215539
+Node: Existential class constraints216588
+Node: Existentially typed data types218113
+Node: Some idioms using existentially quantified types221761
+Node: Exception handling225856
+Node: Semantics230113
+Node: Foreign language interface237221
+Node: Calling foreign code from Mercury239220
+Node: pragma foreign_proc239728
+Node: Foreign code attributes242992
+Node: Calling Mercury from foreign code251008
+Node: Data passing conventions252069
+Node: C data passing conventions252684
+Node: IL and C# data passing conventions255688
+Node: Java data passing conventions258607
+Node: Erlang data passing conventions261496
+Node: Using foreign types from Mercury263814
+Node: Using Mercury enumerations in foreign code267688
+Node: Using foreign enumerations in Mercury code271373
+Node: Adding foreign declarations273130
+Node: Adding foreign definitions276633
+Node: Language specific bindings277580
+Node: Interfacing with C278927
+Node: Using pragma foreign_type for C279813
+Node: Using pragma foreign_export_enum for C281579
+Node: Using pragma foreign_enum for C282563
+Node: Using pragma foreign_proc for C283006
+Node: Using pragma foreign_export for C285586
+Node: Using pragma foreign_decl for C288223
+Node: Using pragma foreign_code for C289791
+Node: Memory management for C290354
+Node: Interfacing with C#292451
+Node: Using pragma foreign_type for C#293010
+Node: Using pragma foreign_proc for C#293507
+Node: Using pragma foreign_export for C#295276
+Node: Using pragma foreign_decl for C#295602
+Node: Using pragma foreign_code for C#296468
+Node: Interfacing with IL297455
+Node: Using pragma foreign_type for IL298017
+Node: Using pragma foreign_proc for IL300458
+Node: Using pragma foreign_export for IL301604
+Node: Using pragma foreign_decl for IL304224
+Node: Using pragma foreign_code for IL304544
+Node: Interfacing with Java304821
+Node: Using pragma foreign_type for Java305405
+Node: Using pragma foreign_proc for Java305960
+Node: Using pragma foreign_export for Java307758
+Node: Using pragma foreign_decl for Java308098
+Node: Using pragma foreign_code for Java309197
+Node: Interfacing with Erlang310208
+Node: Using pragma foreign_type for Erlang310788
+Node: Using pragma foreign_proc for Erlang311327
+Node: Using pragma foreign_export for Erlang312520
+Node: Using pragma foreign_decl for Erlang314002
+Node: Using pragma foreign_code for Erlang315063
+Node: C interface315854
+Node: Calling C code from Mercury317226
+Node: pragma import318181
+Node: pragma c_code320297
+Node: Nondet pragma c_code323843
+Node: C code attributes328585
+Node: Purity and side effects330600
+Node: Including C headers333067
+Node: Including C code334100
+Node: Calling Mercury code from C334573
+Node: Linking with C object files337882
+Node: Passing data to and from C339257
+Node: Using C pointers339521
+Node: Impurity341080
+Node: Purity levels343384
+Node: Purity ordering345301
+Node: Impurity semantics345600
+Node: Declaring impurity348006
+Node: Impure goals349399
+Node: Promising purity351023
+Node: Impurity Example353411
+Node: Higher-order impurity354867
+Node: Purity annotations on higher-order types355496
+Node: Purity annotations on lambda expressions356588
+Node: Purity annotations on higher-order calls357628
+Node: Trace goals358962
+Node: Pragmas367100
+Node: Inlining368282
+Node: Type specialization368992
+Node: Syntax and semantics of type specialization pragmas369637
+Node: When to use type specialization370897
+Node: Implementation specific details371861
+Node: Obsolescence372356
+Node: Source file name373489
+Node: Implementation-dependent extensions375146
+Node: Fact tables376096
+Node: Tabled evaluation377693
+Node: Termination analysis389376
+Node: Feature sets393610
+Node: Trailing396430
+Node: Choice points397844
+Node: Value trailing398793
+Node: Function trailing399932
+Node: Delayed goals and floundering403256
+Node: Avoiding redundant trailing404998
+Node: Bibliography411862
+Node: [1]412521
+Node: [2]412947
+Node: [3]413298
+Node: [4]413631
+Node: [5]413944
+
+End Tag Table

@@ -1,0 +1,9 @@
+:- module (libs.lp).
+:- interface.
+:- type coeff.
+:- type direction.
+:- type equation.
+:- type equations.
+:- type objective.
+:- type operator.
+:- type result.

@@ -1,0 +1,44 @@
+:- module analysis.
+:- interface.
+:- import_module bool.
+:- import_module hlds.
+:- import_module io.
+:- import_module list.
+:- import_module maybe.
+:- import_module mdbcomp.
+:- import_module set.
+:- import_module term.
+:- import_module unit.
+:- import_module (hlds.hlds_module).
+:- import_module (hlds.hlds_pred).
+:- import_module (mdbcomp.prim_data).
+:- type analysis_info.
+:- type analysis_name == string.
+:- type analysis_status
+	--->	invalid 
+	;	suboptimal 
+	;	optimal .
+:- type any_call
+	--->	any_call .
+:- type fixpoint_type
+	--->	least_fixpoint 
+	;	greatest_fixpoint .
+:- type func_id
+	--->	func_id((analysis.fid_pf) :: mdbcomp.prim_data.pred_or_func, (analysis.fid_name) :: string, (analysis.fid_arity) :: int, (analysis.fid_mode) :: hlds.hlds_pred.proc_id).
+:- type no_func_info
+	--->	no_func_info .
+:- type analysis_result(Call, Answer)
+	--->	analysis_result((analysis.ar_call) :: Call, (analysis.ar_answer) :: Answer, (analysis.ar_status) :: analysis.analysis_status).
+:- type analysis_type
+	--->	some [FuncInfo, Call, Answer] (analysis_type(unit.unit(Call), unit.unit(Answer)) => (analysis.analysis(FuncInfo, Call, Answer))).
+:- typeclass compiler(Compiler).
+:- typeclass to_term(S).
+:- typeclass partial_order(FuncInfo, T) <= ((T -> FuncInfo)).
+:- typeclass analysis(FuncInfo, Call, Answer) <= (analysis.call_pattern(FuncInfo, Call), analysis.answer_pattern(FuncInfo, Answer)).
+:- typeclass answer_pattern(FuncInfo, Answer) <= (analysis.partial_order(FuncInfo, Answer), analysis.to_term(Answer)).
+:- typeclass call_pattern(FuncInfo, Call) <= (analysis.partial_order(FuncInfo, Call), analysis.to_term(Call)).
+:- instance (analysis.call_pattern(analysis.no_func_info, analysis.any_call)).
+:- instance (analysis.partial_order(analysis.no_func_info, analysis.any_call)).
+:- instance (analysis.to_term(analysis.any_call)).
+:- implementation.
+:- include_module (analysis.file).

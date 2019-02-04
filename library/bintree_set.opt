@@ -1,0 +1,142 @@
+:- module bintree_set.
+:- use_module assoc_list, bintree, builtin, list, pair, private_builtin, unit.
+:- type bintree_set.bintree_set(T) == bintree.bintree(T, unit.unit).
+:- pred bintree_set.assoc_unit(list.list(T_1), list.list(pair.pair(T_1, unit.unit))).
+:- mode bintree_set.assoc_unit((builtin.in), (builtin.out)) is det.
+:- pred bintree_set.contains_list(list.list(T_1), bintree.bintree(T_1, unit.unit)).
+:- mode bintree_set.contains_list((builtin.in), (builtin.in)) is semidet.
+bintree_set.list_to_set(List_3, Set_4) :-
+    list.sort_and_remove_dups(List_3, SortedList_5),
+    bintree_set.sorted_list_to_set(SortedList_5, Set_4).
+bintree_set.list_to_set(Xs_3) = BT_4 :-
+    bintree_set.list_to_set(Xs_3, BT_4).
+bintree_set.sorted_list_to_set(List_3, Set_4) :-
+    bintree_set.assoc_unit(List_3, AssocList_5),
+    bintree.from_sorted_list(AssocList_5, Set_4).
+bintree_set.sorted_list_to_set(Xs_3) = BT_4 :-
+    bintree_set.sorted_list_to_set(Xs_3, BT_4).
+bintree_set.to_sorted_list(Set_3, List_4) :-
+    bintree.keys(Set_3, List_4).
+bintree_set.to_sorted_list(BT_3) = Xs_4 :-
+    bintree_set.to_sorted_list(BT_3, Xs_4).
+bintree_set.init(Set_2) :-
+    bintree.init(Set_2).
+bintree_set.init = BT_2 :-
+    bintree_set.init(BT_2).
+bintree_set.singleton_set(Set_3, Elem_4) :-
+    bintree.init(Set0_5),
+    V_6 = unit.unit : unit.unit,
+    bintree.set(Set0_5, Elem_4, V_6, Set_3).
+bintree_set.equal(SetA_3, SetB_4) :-
+    bintree.keys(SetA_3, SortedElements_5),
+    bintree.keys(SetB_4, SortedElements_5).
+bintree_set.subset(S0_3, S1_4) :-
+    bintree.keys(S0_3, SortedElements0_5),
+    bintree_set.contains_list(SortedElements0_5, S1_4).
+bintree_set.superset(S0_3, S1_4) :-
+    bintree_set.subset(S1_4, S0_3).
+bintree_set.member(E_3, S_4) :-
+    bintree.keys(S_4, Elements_5),
+    list.member(E_3, Elements_5).
+bintree_set.is_member(E_3, S_4) :-
+    bintree.search(S_4, E_3, V_5).
+bintree_set.contains(S_3, E_4) :-
+    bintree_set.is_member(E_4, S_3).
+bintree_set.insert(S0_4, E_5, S_6) :-
+    V_7 = unit.unit : unit.unit,
+    bintree.set(S0_4, E_5, V_7, S_6).
+bintree_set.insert(BT1_4, X_5) = BT2_6 :-
+    bintree_set.insert(BT1_4, X_5, BT2_6).
+bintree_set.insert_list(BT1_4, Xs_5) = BT2_6 :-
+    bintree_set.insert_list(BT1_4, Xs_5, BT2_6).
+bintree_set.remove(S0_4, E_5, S_6) :-
+    bintree.remove(S0_4, E_5, V_7, S_6).
+bintree_set.delete(S0_4, E_5, S_6) :-
+    bintree.delete(S0_4, E_5, S_6).
+bintree_set.delete(BT1_4, X_5) = BT2_6 :-
+    bintree_set.delete(BT1_4, X_5, BT2_6).
+bintree_set.delete_list(BT1_4, Xs_5) = BT2_6 :-
+    bintree_set.delete_list(BT1_4, Xs_5, BT2_6).
+bintree_set.union(S0_4, S1_5, S_6) :-
+    bintree.to_list(S0_4, L0_7),
+    bintree.to_list(S1_5, L1_8),
+    list.merge(L0_7, L1_8, L_9),
+    bintree.from_sorted_list(L_9, S_6).
+bintree_set.union(BT1_4, BT2_5) = BT3_6 :-
+    bintree_set.union(BT1_4, BT2_5, BT3_6).
+bintree_set.intersect(S0_4, S1_5, S_6) :-
+    bintree.keys(S1_5, L1_7),
+    bintree_set.delete_list(S0_4, L1_7, S_6).
+bintree_set.intersect(BT1_4, BT2_5) = BT3_6 :-
+    bintree_set.intersect(BT1_4, BT2_5, BT3_6).
+bintree_set.contains_list(list.[E_3 | Es_4], S_5) :-
+    bintree.search(S_5, E_3, V_6),
+    bintree_set.contains_list(Es_4, S_5).
+:- pragma exceptions(predicate, (bintree_set.list_to_set), 2, 0, may_throw(user_exception)).
+:- pragma exceptions(function, (bintree_set.list_to_set), 2, 0, may_throw(user_exception)).
+:- pragma exceptions(predicate, (bintree_set.sorted_list_to_set), 2, 0, may_throw(user_exception)).
+:- pragma exceptions(function, (bintree_set.sorted_list_to_set), 2, 0, may_throw(user_exception)).
+:- pragma exceptions(predicate, (bintree_set.to_sorted_list), 2, 0, may_throw(user_exception)).
+:- pragma exceptions(function, (bintree_set.to_sorted_list), 2, 0, may_throw(user_exception)).
+:- pragma exceptions(predicate, (bintree_set.init), 1, 0, may_throw(user_exception)).
+:- pragma exceptions(function, (bintree_set.init), 1, 0, may_throw(user_exception)).
+:- pragma exceptions(predicate, (bintree_set.singleton_set), 2, 0, may_throw(user_exception)).
+:- pragma exceptions(predicate, (bintree_set.equal), 2, 0, may_throw(user_exception)).
+:- pragma exceptions(predicate, (bintree_set.subset), 2, 0, may_throw(user_exception)).
+:- pragma exceptions(predicate, (bintree_set.superset), 2, 0, may_throw(user_exception)).
+:- pragma exceptions(predicate, (bintree_set.member), 2, 0, may_throw(user_exception)).
+:- pragma exceptions(predicate, (bintree_set.member), 2, 1, may_throw(user_exception)).
+:- pragma exceptions(predicate, (bintree_set.is_member), 2, 0, may_throw(user_exception)).
+:- pragma exceptions(predicate, (bintree_set.contains), 2, 0, may_throw(user_exception)).
+:- pragma exceptions(predicate, (bintree_set.insert), 3, 0, may_throw(user_exception)).
+:- pragma exceptions(predicate, (bintree_set.insert), 3, 1, may_throw(user_exception)).
+:- pragma exceptions(function, (bintree_set.insert), 3, 0, may_throw(user_exception)).
+:- pragma exceptions(predicate, (bintree_set.insert_list), 3, 0, may_throw(user_exception)).
+:- pragma exceptions(predicate, (bintree_set.insert_list), 3, 1, may_throw(user_exception)).
+:- pragma exceptions(function, (bintree_set.insert_list), 3, 0, may_throw(user_exception)).
+:- pragma exceptions(predicate, (bintree_set.remove), 3, 0, may_throw(user_exception)).
+:- pragma exceptions(predicate, (bintree_set.remove_list), 3, 0, may_throw(user_exception)).
+:- pragma exceptions(predicate, (bintree_set.delete), 3, 0, may_throw(user_exception)).
+:- pragma exceptions(function, (bintree_set.delete), 3, 0, may_throw(user_exception)).
+:- pragma exceptions(predicate, (bintree_set.delete_list), 3, 0, may_throw(user_exception)).
+:- pragma exceptions(function, (bintree_set.delete_list), 3, 0, may_throw(user_exception)).
+:- pragma exceptions(predicate, (bintree_set.union), 3, 0, may_throw(user_exception)).
+:- pragma exceptions(function, (bintree_set.union), 3, 0, may_throw(user_exception)).
+:- pragma exceptions(predicate, (bintree_set.intersect), 3, 0, may_throw(user_exception)).
+:- pragma exceptions(function, (bintree_set.intersect), 3, 0, may_throw(user_exception)).
+:- pragma exceptions(predicate, (bintree_set.assoc_unit), 2, 0, will_not_throw).
+:- pragma exceptions(predicate, (bintree_set.contains_list), 2, 0, may_throw(user_exception)).
+:- pragma termination_info(bintree_set.list_to_set((builtin.in), (builtin.out)), infinite, can_loop).
+:- pragma termination_info(bintree_set.list_to_set((builtin.in)) = (builtin.out), infinite, can_loop).
+:- pragma termination_info(bintree_set.sorted_list_to_set((builtin.in), (builtin.out)), infinite, can_loop).
+:- pragma termination_info(bintree_set.sorted_list_to_set((builtin.in)) = (builtin.out), infinite, can_loop).
+:- pragma termination_info(bintree_set.to_sorted_list((builtin.in), (builtin.out)), infinite, can_loop).
+:- pragma termination_info(bintree_set.to_sorted_list((builtin.in)) = (builtin.out), infinite, can_loop).
+:- pragma termination_info(bintree_set.init((builtin.uo)), infinite, can_loop).
+:- pragma termination_info((bintree_set.init) = (builtin.out), infinite, can_loop).
+:- pragma termination_info(bintree_set.singleton_set((builtin.out), (builtin.in)), infinite, can_loop).
+:- pragma termination_info(bintree_set.equal((builtin.in), (builtin.in)), finite(0, [no, no, no]), can_loop).
+:- pragma termination_info(bintree_set.subset((builtin.in), (builtin.in)), finite(0, [no, no, no]), can_loop).
+:- pragma termination_info(bintree_set.superset((builtin.in), (builtin.in)), finite(0, [no, no, no]), can_loop).
+:- pragma termination_info(bintree_set.member((builtin.in), (builtin.in)), finite(0, [no, no, no]), can_loop).
+:- pragma termination_info(bintree_set.member((builtin.out), (builtin.in)), infinite, can_loop).
+:- pragma termination_info(bintree_set.is_member((builtin.in), (builtin.in)), finite(0, [no, no, no]), can_loop).
+:- pragma termination_info(bintree_set.contains((builtin.in), (builtin.in)), finite(0, [no, no, no]), can_loop).
+:- pragma termination_info(bintree_set.insert((builtin.di), (builtin.di), (builtin.uo)), infinite, can_loop).
+:- pragma termination_info(bintree_set.insert((builtin.in), (builtin.in), (builtin.out)), infinite, can_loop).
+:- pragma termination_info(bintree_set.insert((builtin.in), (builtin.in)) = (builtin.out), infinite, can_loop).
+:- pragma termination_info(bintree_set.insert_list((builtin.di), (builtin.di), (builtin.uo)), infinite, can_loop).
+:- pragma termination_info(bintree_set.insert_list((builtin.in), (builtin.in), (builtin.out)), infinite, can_loop).
+:- pragma termination_info(bintree_set.insert_list((builtin.in), (builtin.in)) = (builtin.out), infinite, can_loop).
+:- pragma termination_info(bintree_set.remove((builtin.in), (builtin.in), (builtin.out)), infinite, can_loop).
+:- pragma termination_info(bintree_set.remove_list((builtin.in), (builtin.in), (builtin.out)), infinite, can_loop).
+:- pragma termination_info(bintree_set.delete((builtin.in), (builtin.in), (builtin.out)), infinite, can_loop).
+:- pragma termination_info(bintree_set.delete((builtin.in), (builtin.in)) = (builtin.out), infinite, can_loop).
+:- pragma termination_info(bintree_set.delete_list((builtin.in), (builtin.in), (builtin.out)), infinite, can_loop).
+:- pragma termination_info(bintree_set.delete_list((builtin.in), (builtin.in)) = (builtin.out), infinite, can_loop).
+:- pragma termination_info(bintree_set.union((builtin.in), (builtin.in), (builtin.out)), infinite, can_loop).
+:- pragma termination_info(bintree_set.union((builtin.in), (builtin.in)) = (builtin.out), infinite, can_loop).
+:- pragma termination_info(bintree_set.intersect((builtin.in), (builtin.in), (builtin.out)), infinite, can_loop).
+:- pragma termination_info(bintree_set.intersect((builtin.in), (builtin.in)) = (builtin.out), infinite, can_loop).
+:- pragma termination_info(bintree_set.assoc_unit((builtin.in), (builtin.out)), infinite, cannot_loop).
+:- pragma termination_info(bintree_set.contains_list((builtin.in), (builtin.in)), finite(0, [no, no, no]), can_loop).

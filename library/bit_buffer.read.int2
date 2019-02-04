@@ -1,0 +1,10 @@
+:- module (bit_buffer.read).
+:- interface.
+:- import_module io.
+:- type io_read_buffer == bit_buffer.read.read_buffer(io.binary_input_stream, io.state, io.error).
+:- type read_buffer == bit_buffer.read.read_buffer(bit_buffer.error_stream, bit_buffer.error_state, bit_buffer.error_stream_error).
+:- type read_buffer(Stream, State, Error).
+:- inst (uniq_read_buffer) == ground.
+:- mode (read_buffer_di) == builtin.in(((bit_buffer.read).uniq_read_buffer)).
+:- mode (read_buffer_ui) == builtin.in(((bit_buffer.read).uniq_read_buffer)).
+:- mode (read_buffer_uo) == builtin.out(((bit_buffer.read).uniq_read_buffer)).

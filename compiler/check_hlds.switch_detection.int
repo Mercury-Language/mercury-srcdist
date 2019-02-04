@@ -1,0 +1,21 @@
+:- module (check_hlds.switch_detection).
+:- interface.
+:- import_module hlds.
+:- import_module io.
+:- import_module list.
+:- import_module parse_tree.
+:- import_module (hlds.hlds_goal).
+:- import_module (hlds.hlds_module).
+:- import_module (hlds.hlds_pred).
+:- import_module (parse_tree.prog_data).
+:- type found_deconstruct
+	--->	did_find_deconstruct 
+	;	did_not_find_deconstruct .
+:- type process_unify(Result, Info) == pred(parse_tree.prog_data.prog_var, hlds.hlds_goal.hlds_goal, list.list(hlds.hlds_goal.hlds_goal), Result, Result, Info, Info).
+:- inst (process_unify) == (pred((builtin.in), (builtin.in), (builtin.out), (builtin.in), (builtin.out), (builtin.in), (builtin.out)) is det).
+:- pred detect_switches(hlds.hlds_module.module_info, hlds.hlds_module.module_info, io.io, io.io).
+:- mode detect_switches((builtin.in), (builtin.out), (builtin.di), (builtin.uo)) is det.
+:- pred detect_switches_in_proc(hlds.hlds_pred.proc_id, hlds.hlds_pred.pred_id, hlds.hlds_module.module_info, hlds.hlds_module.module_info).
+:- mode detect_switches_in_proc((builtin.in), (builtin.in), (builtin.in), (builtin.out)) is det.
+:- pred find_bind_var(parse_tree.prog_data.prog_var, check_hlds.switch_detection.process_unify(Result, Info), hlds.hlds_goal.hlds_goal, hlds.hlds_goal.hlds_goal, Result, Result, Info, Info, check_hlds.switch_detection.found_deconstruct).
+:- mode find_bind_var((builtin.in), builtin.in(((check_hlds.switch_detection).process_unify)), (builtin.in), (builtin.out), (builtin.in), (builtin.out), (builtin.in), (builtin.out), (builtin.out)) is det.

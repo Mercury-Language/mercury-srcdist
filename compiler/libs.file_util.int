@@ -1,0 +1,30 @@
+:- module (libs.file_util).
+:- interface.
+:- import_module bool.
+:- import_module io.
+:- import_module list.
+:- import_module maybe.
+:- type dir_name == string.
+:- type file_name == string.
+:- type open_file(FileInfo) == pred(maybe.maybe_error(FileInfo), io.io, io.io).
+:- inst (open_file) == (pred((builtin.out), (builtin.di), (builtin.uo)) is det).
+:- pred get_install_name_option(string, string, io.io, io.io).
+:- mode get_install_name_option((builtin.in), (builtin.out), (builtin.di), (builtin.uo)) is det.
+:- pred maybe_flush_output(bool.bool, io.io, io.io).
+:- mode maybe_flush_output((builtin.in), (builtin.di), (builtin.uo)) is det.
+:- pred maybe_report_stats(bool.bool, io.io, io.io).
+:- mode maybe_report_stats((builtin.in), (builtin.di), (builtin.uo)) is det.
+:- pred maybe_write_string(bool.bool, string, io.io, io.io).
+:- mode maybe_write_string((builtin.in), (builtin.in), (builtin.di), (builtin.uo)) is det.
+:- pred output_to_file(string, pred(io.io, io.io), io.io, io.io).
+:- mode output_to_file((builtin.in), builtin.in((pred((builtin.di), (builtin.uo)) is det)), (builtin.di), (builtin.uo)) is det.
+:- pred output_to_file_return_result(string, pred(T, io.io, io.io), maybe.maybe(T), io.io, io.io).
+:- mode output_to_file_return_result((builtin.in), builtin.in((pred((builtin.out), (builtin.di), (builtin.uo)) is det)), (builtin.out), (builtin.di), (builtin.uo)) is det.
+:- pred report_error(string, io.io, io.io).
+:- mode report_error((builtin.in), (builtin.di), (builtin.uo)) is det.
+:- pred report_error_to_stream(io.output_stream, string, io.io, io.io).
+:- mode report_error_to_stream((builtin.in), (builtin.in), (builtin.di), (builtin.uo)) is det.
+:- pred search_for_file(list.list(libs.file_util.dir_name), libs.file_util.file_name, maybe.maybe_error(libs.file_util.file_name), io.io, io.io).
+:- mode search_for_file((builtin.in), (builtin.in), (builtin.out), (builtin.di), (builtin.uo)) is det.
+:- pred search_for_file_returning_dir(list.list(libs.file_util.dir_name), libs.file_util.file_name, maybe.maybe_error(libs.file_util.dir_name), io.io, io.io).
+:- mode search_for_file_returning_dir((builtin.in), (builtin.in), (builtin.out), (builtin.di), (builtin.uo)) is det.

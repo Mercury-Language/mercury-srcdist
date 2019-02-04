@@ -1,0 +1,20 @@
+:- module (parse_tree.write_deps_file).
+:- interface.
+:- import_module bool.
+:- import_module io.
+:- import_module list.
+:- import_module maybe.
+:- import_module set.
+:- import_module (libs.file_util).
+:- import_module (mdbcomp.prim_data).
+:- import_module (parse_tree.deps_map).
+:- import_module (parse_tree.module_imports).
+:- pred generate_dependencies_write_dep_file(libs.file_util.file_name, mdbcomp.prim_data.module_name, parse_tree.deps_map.deps_map, io.io, io.io).
+:- mode generate_dependencies_write_dep_file((builtin.in), (builtin.in), (builtin.in), (builtin.di), (builtin.uo)) is det.
+:- pred generate_dependencies_write_dv_file(libs.file_util.file_name, mdbcomp.prim_data.module_name, parse_tree.deps_map.deps_map, io.io, io.io).
+:- mode generate_dependencies_write_dv_file((builtin.in), (builtin.in), (builtin.in), (builtin.di), (builtin.uo)) is det.
+:- pred get_opt_deps(bool.bool, list.list(mdbcomp.prim_data.module_name), list.list(string), string, list.list(mdbcomp.prim_data.module_name), io.io, io.io).
+:- mode get_opt_deps((builtin.in), (builtin.in), (builtin.in), (builtin.in), (builtin.out), (builtin.di), (builtin.uo)) is det.
+:- func referenced_dlls(mdbcomp.prim_data.module_name, list.list(mdbcomp.prim_data.module_name)) = list.list(mdbcomp.prim_data.module_name).
+:- pred write_dependency_file(parse_tree.module_imports.module_imports, set.set(mdbcomp.prim_data.module_name), maybe.maybe(list.list(mdbcomp.prim_data.module_name)), io.io, io.io).
+:- mode write_dependency_file((builtin.in), (builtin.in), (builtin.in), (builtin.di), (builtin.uo)) is det.

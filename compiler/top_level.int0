@@ -1,0 +1,19 @@
+:- module top_level.
+:- interface.
+:- import_module analysis.
+:- import_module check_hlds.
+:- import_module hlds.
+:- import_module mode_robdd.
+:- import_module parse_tree.
+:- import_module transform_hlds.
+:- import_module ll_backend.
+:- import_module ml_backend.
+:- import_module bytecode_backend.
+:- import_module erl_backend.
+:- import_module backend_libs.
+:- import_module libs.
+:- include_module (top_level.mercury_compile).
+:- use_module io.
+:- pred main(io.state, io.state).
+:- mode main((builtin.di), (builtin.uo)) is det.
+:- use_module (top_level.mercury_compile).

@@ -1,0 +1,26 @@
+:- module (ml_backend.ml_type_gen).
+:- interface.
+:- import_module io.
+:- import_module list.
+:- import_module (hlds.hlds_data).
+:- import_module (hlds.hlds_module).
+:- import_module (libs.globals).
+:- import_module (mdbcomp.prim_data).
+:- import_module (ml_backend.mlds).
+:- import_module (parse_tree.prog_data).
+:- func ml_gen_du_ctor_name(libs.globals.compilation_target, parse_tree.prog_data.type_ctor, mdbcomp.prim_data.sym_name, int) = string.
+:- func ml_gen_du_ctor_name_unqual_type(libs.globals.compilation_target, string, int, mdbcomp.prim_data.sym_name, int) = string.
+:- func ml_gen_enum_constant_decl_flags = ml_backend.mlds.mlds_decl_flags.
+:- pred ml_gen_exported_enums(hlds.hlds_module.module_info, ml_backend.mlds.mlds_exported_enums, io.io, io.io).
+:- mode ml_gen_exported_enums((builtin.in), (builtin.out), (builtin.di), (builtin.uo)) is det.
+:- func ml_gen_member_decl_flags = ml_backend.mlds.mlds_decl_flags.
+:- func ml_gen_special_member_decl_flags = ml_backend.mlds.mlds_decl_flags.
+:- func ml_gen_type_decl_flags = ml_backend.mlds.mlds_decl_flags.
+:- pred ml_gen_type_name(parse_tree.prog_data.type_ctor, ml_backend.mlds.mlds_class, parse_tree.prog_data.arity).
+:- mode ml_gen_type_name((builtin.in), (builtin.out), (builtin.out)) is det.
+:- pred ml_gen_types(hlds.hlds_module.module_info, list.list(ml_backend.mlds.mlds_defn), io.io, io.io).
+:- mode ml_gen_types((builtin.in), (builtin.out), (builtin.di), (builtin.uo)) is det.
+:- pred ml_tag_uses_base_class(hlds.hlds_data.cons_tag).
+:- mode ml_tag_uses_base_class((builtin.in)) is semidet.
+:- pred ml_uses_secondary_tag(hlds.hlds_data.cons_tag_values, parse_tree.prog_data.constructor, int).
+:- mode ml_uses_secondary_tag((builtin.in), (builtin.in), (builtin.out)) is semidet.

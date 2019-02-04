@@ -1,0 +1,20 @@
+:- module display.
+:- interface.
+:- type attr_string.
+:- type deep_link.
+:- type display.
+:- type display_item.
+:- type link_class.
+:- type list_class.
+:- type pseudo_link.
+:- type str_attr.
+:- type table.
+:- type table_cell.
+:- type table_class.
+:- type table_column_class.
+:- type table_column_colour.
+:- type table_data.
+:- type table_header.
+:- type table_header_group.
+:- type table_header_group_columns.
+:- type table_row.

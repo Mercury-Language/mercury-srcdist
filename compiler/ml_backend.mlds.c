@@ -1,0 +1,21493 @@
+/*
+** Automatically generated from `mlds.m'
+** by the Mercury compiler,
+** version rotd-2009-06-06, configured for i686-pc-linux-gnu.
+** Do not edit.
+**
+** The autoconfigured grade settings governing
+** the generation of this C file were
+**
+** TAG_BITS=2
+** UNBOXED_FLOAT=no
+**
+** END_OF_C_GRADE_INFO
+*/
+
+/*
+INIT mercury__ml_backend__mlds__init
+ENDINIT
+*/
+
+#define MR_ALLOW_RESET
+#include "mercury_imp.h"
+#line 136 "../library/io.int2"
+#include "io.mh"
+
+#line 27 "ml_backend.mlds.c"
+#line 144 "../library/io.int2"
+#include "string.mh"
+
+#line 31 "ml_backend.mlds.c"
+#line 33 "../mdbcomp/mdbcomp.rtti_access.int2"
+#include "mdbcomp.rtti_access.mh"
+
+#line 35 "ml_backend.mlds.c"
+#line 29 "../library/bitmap.int2"
+#include "bitmap.mh"
+
+#line 39 "ml_backend.mlds.c"
+#line 28 "../library/time.int2"
+#include "time.mh"
+
+#line 43 "ml_backend.mlds.c"
+#line 31 "../library/array.int2"
+#include "array.mh"
+
+#line 47 "ml_backend.mlds.c"
+#line 48 "ml_backend.mlds.c"
+#include "ml_backend.mlds.mh"
+
+#line 51 "ml_backend.mlds.c"
+#line 52 "ml_backend.mlds.c"
+#ifndef ML_BACKEND__MLDS_DECL_GUARD
+#define ML_BACKEND__MLDS_DECL_GUARD
+
+#line 56 "ml_backend.mlds.c"
+#line 57 "ml_backend.mlds.c"
+
+#endif
+#line 60 "ml_backend.mlds.c"
+
+#ifdef _MSC_VER
+#define MR_STATIC_LINKAGE extern
+#else
+#define MR_STATIC_LINKAGE static
+#endif
+
+struct mercury_type_0 {
+	MR_Word * f1;
+	MR_Word * f2;
+	MR_Integer f3;
+	MR_Word * f4;
+	MR_Word * f5;
+};
+MR_STATIC_LINKAGE const struct mercury_type_0 mercury_common_0[];
+
+struct mercury_type_1 {
+	MR_Word * f1;
+	MR_Code * f2;
+	MR_Integer f3;
+};
+MR_STATIC_LINKAGE const struct mercury_type_1 mercury_common_1[];
+
+struct mercury_type_3 {
+	MR_Word * f1[2];
+};
+MR_STATIC_LINKAGE const struct mercury_type_3 mercury_common_3[];
+
+struct mercury_type_2 {
+	MR_Integer f1;
+};
+MR_STATIC_LINKAGE const struct mercury_type_2 mercury_vector_common_2_0[];
+
+MR_STATIC_LINKAGE const struct mercury_type_2 mercury_vector_common_2_1[];
+
+extern const MR_TypeCtorInfo_Struct
+	mercury_data_ml_backend__mlds__type_ctor_info_virtuality_0,
+	mercury_data_ml_backend__mlds__type_ctor_info_trail_op_0,
+	mercury_data_ml_backend__mlds__type_ctor_info_target_code_component_0,
+	mercury_data_ml_backend__mlds__type_ctor_info_target_code_attributes_0,
+	mercury_data_ml_backend__mlds__type_ctor_info_target_code_attribute_0,
+	mercury_data_ml_backend__mlds__type_ctor_info_statement_0,
+	mercury_data_ml_backend__mlds__type_ctor_info_per_instance_0,
+	mercury_data_ml_backend__mlds__type_ctor_info_outline_arg_0,
+	mercury_data_ml_backend__mlds__type_ctor_info_mlds_var_name_0,
+	mercury_data_ml_backend__mlds__type_ctor_info_mlds_var_0;
+
+extern const MR_TypeCtorInfo_Struct
+	mercury_data_ml_backend__mlds__type_ctor_info_mlds_unary_op_0,
+	mercury_data_ml_backend__mlds__type_ctor_info_mlds_type_0,
+	mercury_data_ml_backend__mlds__type_ctor_info_mlds_target_lang_0,
+	mercury_data_ml_backend__mlds__type_ctor_info_mlds_tag_0,
+	mercury_data_ml_backend__mlds__type_ctor_info_mlds_switch_range_0,
+	mercury_data_ml_backend__mlds__type_ctor_info_mlds_switch_default_0,
+	mercury_data_ml_backend__mlds__type_ctor_info_mlds_switch_cases_0,
+	mercury_data_ml_backend__mlds__type_ctor_info_mlds_switch_case_0,
+	mercury_data_ml_backend__mlds__type_ctor_info_mlds_stmt_0,
+	mercury_data_ml_backend__mlds__type_ctor_info_mlds_rval_const_0;
+
+extern const MR_TypeCtorInfo_Struct
+	mercury_data_ml_backend__mlds__type_ctor_info_mlds_rval_0,
+	mercury_data_ml_backend__mlds__type_ctor_info_mlds_return_types_0,
+	mercury_data_ml_backend__mlds__type_ctor_info_mlds_reset_trail_reason_0,
+	mercury_data_ml_backend__mlds__type_ctor_info_mlds_qualified_proc_label_0,
+	mercury_data_ml_backend__mlds__type_ctor_info_mlds_qualified_pred_label_0,
+	mercury_data_ml_backend__mlds__type_ctor_info_mlds_qualified_entity_name_0,
+	mercury_data_ml_backend__mlds__type_ctor_info_mlds_qualified_ctor_id_0,
+	mercury_data_ml_backend__mlds__type_ctor_info_mlds_qual_kind_0,
+	mercury_data_ml_backend__mlds__type_ctor_info_mlds_proc_label_0,
+	mercury_data_ml_backend__mlds__type_ctor_info_mlds_pred_label_0;
+
+extern const MR_TypeCtorInfo_Struct
+	mercury_data_ml_backend__mlds__type_ctor_info_mlds_pragma_export_0,
+	mercury_data_ml_backend__mlds__type_ctor_info_mlds_package_name_0,
+	mercury_data_ml_backend__mlds__type_ctor_info_mlds_module_name_0,
+	mercury_data_ml_backend__mlds__type_ctor_info_mlds_lval_0,
+	mercury_data_ml_backend__mlds__type_ctor_info_mlds_label_0,
+	mercury_data_ml_backend__mlds__type_ctor_info_mlds_interface_id_0,
+	mercury_data_ml_backend__mlds__type_ctor_info_mlds_initializer_0,
+	mercury_data_ml_backend__mlds__type_ctor_info_mlds_imports_0,
+	mercury_data_ml_backend__mlds__type_ctor_info_mlds_import_0,
+	mercury_data_ml_backend__mlds__type_ctor_info_mlds_goto_target_0;
+
+extern const MR_TypeCtorInfo_Struct
+	mercury_data_ml_backend__mlds__type_ctor_info_mlds_gc_statement_0,
+	mercury_data_ml_backend__mlds__type_ctor_info_mlds_function_body_0,
+	mercury_data_ml_backend__mlds__type_ctor_info_mlds_func_signature_0,
+	mercury_data_ml_backend__mlds__type_ctor_info_mlds_func_sequence_num_0,
+	mercury_data_ml_backend__mlds__type_ctor_info_mlds_func_params_0,
+	mercury_data_ml_backend__mlds__type_ctor_info_mlds_fully_qualified_name_1,
+	mercury_data_ml_backend__mlds__type_ctor_info_mlds_foreign_code_0,
+	mercury_data_ml_backend__mlds__type_ctor_info_mlds_field_name_0,
+	mercury_data_ml_backend__mlds__type_ctor_info_mlds_field_id_0,
+	mercury_data_ml_backend__mlds__type_ctor_info_mlds_exported_enums_0;
+
+extern const MR_TypeCtorInfo_Struct
+	mercury_data_ml_backend__mlds__type_ctor_info_mlds_exported_enum_constant_0,
+	mercury_data_ml_backend__mlds__type_ctor_info_mlds_exported_enum_0,
+	mercury_data_ml_backend__mlds__type_ctor_info_mlds_exception_handler_0,
+	mercury_data_ml_backend__mlds__type_ctor_info_mlds_entity_name_0,
+	mercury_data_ml_backend__mlds__type_ctor_info_mlds_entity_defn_0,
+	mercury_data_ml_backend__mlds__type_ctor_info_mlds_defn_0,
+	mercury_data_ml_backend__mlds__type_ctor_info_mlds_decl_flags_0,
+	mercury_data_ml_backend__mlds__type_ctor_info_mlds_data_name_0,
+	mercury_data_ml_backend__mlds__type_ctor_info_mlds_data_addr_0,
+	mercury_data_ml_backend__mlds__type_ctor_info_mlds_data_0;
+
+extern const MR_TypeCtorInfo_Struct
+	mercury_data_ml_backend__mlds__type_ctor_info_mlds_ctor_id_0,
+	mercury_data_ml_backend__mlds__type_ctor_info_mlds_context_0,
+	mercury_data_ml_backend__mlds__type_ctor_info_mlds_code_addr_0,
+	mercury_data_ml_backend__mlds__type_ctor_info_mlds_class_name_0,
+	mercury_data_ml_backend__mlds__type_ctor_info_mlds_class_kind_0,
+	mercury_data_ml_backend__mlds__type_ctor_info_mlds_class_id_0,
+	mercury_data_ml_backend__mlds__type_ctor_info_mlds_class_defn_0,
+	mercury_data_ml_backend__mlds__type_ctor_info_mlds_class_0,
+	mercury_data_ml_backend__mlds__type_ctor_info_mlds_case_match_conds_0,
+	mercury_data_ml_backend__mlds__type_ctor_info_mlds_case_match_cond_0;
+
+extern const MR_TypeCtorInfo_Struct
+	mercury_data_ml_backend__mlds__type_ctor_info_mlds_attribute_0,
+	mercury_data_ml_backend__mlds__type_ctor_info_mlds_atomic_statement_0,
+	mercury_data_ml_backend__mlds__type_ctor_info_mlds_arguments_0,
+	mercury_data_ml_backend__mlds__type_ctor_info_mlds_argument_0,
+	mercury_data_ml_backend__mlds__type_ctor_info_mlds_arg_types_0,
+	mercury_data_ml_backend__mlds__type_ctor_info_mlds_0,
+	mercury_data_ml_backend__mlds__type_ctor_info_ml_call_kind_0,
+	mercury_data_ml_backend__mlds__type_ctor_info_mercury_module_name_0,
+	mercury_data_ml_backend__mlds__type_ctor_info_mercury_mlds_import_type_0,
+	mercury_data_ml_backend__mlds__type_ctor_info_global_var_ref_0;
+
+extern const MR_TypeCtorInfo_Struct
+	mercury_data_ml_backend__mlds__type_ctor_info_foreign_import_name_0,
+	mercury_data_ml_backend__mlds__type_ctor_info_finality_0,
+	mercury_data_ml_backend__mlds__type_ctor_info_ctor_name_0,
+	mercury_data_ml_backend__mlds__type_ctor_info_constness_0,
+	mercury_data_ml_backend__mlds__type_ctor_info_access_0,
+	mercury_data_ml_backend__mlds__type_ctor_info_abstractness_0;
+MR_decl_label2(ml_backend__mlds__IntroducedFrom__pred__abstractness__2089__1_2_0, 3,1)
+MR_decl_label1(ml_backend__mlds__IntroducedFrom__pred__access__2074__1_2_0, 1)
+MR_decl_label2(ml_backend__mlds__IntroducedFrom__pred__constness__2086__1_2_0, 3,1)
+MR_decl_label2(ml_backend__mlds__IntroducedFrom__pred__finality__2083__1_2_0, 3,1)
+MR_decl_label2(ml_backend__mlds__IntroducedFrom__pred__per_instance__2077__1_2_0, 3,1)
+MR_decl_label2(ml_backend__mlds__IntroducedFrom__pred__virtuality__2080__1_2_0, 3,1)
+MR_decl_label3(ml_backend__mlds__is_std_lib_module_2_0, 2,4,1)
+MR_decl_label2(fn__ml_backend__mlds__abstractness_1_0, 3,2)
+MR_decl_label2(fn__ml_backend__mlds__access_1_0, 3,2)
+MR_decl_label2(fn__ml_backend__mlds__constness_1_0, 3,2)
+MR_decl_label2(fn__ml_backend__mlds__finality_1_0, 3,2)
+MR_decl_label8(fn__ml_backend__mlds__init_decl_flags_6_0, 4,3,6,5,8,7,10,9)
+MR_decl_label1(fn__ml_backend__mlds__init_decl_flags_6_0, 12)
+MR_decl_label3(fn__ml_backend__mlds__mercury_module_name_to_mlds_1_0, 4,6,2)
+MR_decl_label8(fn__ml_backend__mlds__mercury_type_to_mlds_type_2_0, 3,6,13,2,16,19,22,23)
+MR_decl_label8(fn__ml_backend__mlds__mercury_type_to_mlds_type_2_0, 27,15,30,32,33,35,37,38)
+MR_decl_label8(fn__ml_backend__mlds__mercury_type_to_mlds_type_2_0, 40,42,46,48,52,54,56,60)
+MR_decl_label5(fn__ml_backend__mlds__mercury_type_to_mlds_type_2_0, 62,66,29,68,69)
+MR_decl_label4(fn__ml_backend__mlds__mlds_append_class_qualifier_5_0, 3,6,2,16)
+MR_decl_label1(fn__ml_backend__mlds__mlds_get_func_signature_1_0, 3)
+MR_decl_label1(fn__ml_backend__mlds__mlds_std_tabling_proc_label_1_0, 3)
+MR_decl_label2(fn__ml_backend__mlds__per_instance_1_0, 3,2)
+MR_decl_label1(fn__ml_backend__mlds__set_abstractness_2_0, 3)
+MR_decl_label5(fn__ml_backend__mlds__set_access_2_0, 3,4,5,6,7)
+MR_decl_label1(fn__ml_backend__mlds__set_constness_2_0, 3)
+MR_decl_label1(fn__ml_backend__mlds__set_finality_2_0, 3)
+MR_decl_label1(fn__ml_backend__mlds__set_per_instance_2_0, 3)
+MR_decl_label1(fn__ml_backend__mlds__set_virtuality_2_0, 3)
+MR_decl_label2(fn__ml_backend__mlds__virtuality_1_0, 3,2)
+MR_decl_label1(__Unify___ml_backend__mlds__foreign_import_name_0_0, 6)
+MR_decl_label1(__Unify___ml_backend__mlds__global_var_ref_0_0, 4)
+MR_decl_label8(__Unify___ml_backend__mlds__mlds_0_0, 4,6,8,10,12,14,18,1)
+MR_decl_label4(__Unify___ml_backend__mlds__mlds_argument_0_0, 4,6,10,1)
+MR_decl_label8(__Unify___ml_backend__mlds__mlds_atomic_statement_0_0, 23,17,5,7,66,11,13,19)
+MR_decl_label8(__Unify___ml_backend__mlds__mlds_atomic_statement_0_0, 24,28,32,34,36,38,40,43)
+MR_decl_label8(__Unify___ml_backend__mlds__mlds_atomic_statement_0_0, 45,47,49,51,53,55,59,67)
+MR_decl_label1(__Unify___ml_backend__mlds__mlds_atomic_statement_0_0, 1)
+MR_decl_label1(__Unify___ml_backend__mlds__mlds_attribute_0_0, 6)
+MR_decl_label4(__Unify___ml_backend__mlds__mlds_case_match_cond_0_0, 7,19,5,1)
+MR_decl_label6(__Unify___ml_backend__mlds__mlds_class_defn_0_0, 4,6,8,10,14,1)
+MR_decl_label5(__Unify___ml_backend__mlds__mlds_code_addr_0_0, 7,22,5,12,1)
+MR_decl_label1(__Unify___ml_backend__mlds__mlds_context_0_0, 6)
+MR_decl_label2(__Unify___ml_backend__mlds__mlds_ctor_id_0_0, 4,1)
+MR_decl_label3(__Unify___ml_backend__mlds__mlds_data_addr_0_0, 4,8,1)
+MR_decl_label8(__Unify___ml_backend__mlds__mlds_data_name_0_0, 11,26,5,33,22,7,9,12)
+MR_decl_label3(__Unify___ml_backend__mlds__mlds_data_name_0_0, 16,34,1)
+MR_decl_label4(__Unify___ml_backend__mlds__mlds_defn_0_0, 4,6,10,1)
+MR_decl_label8(__Unify___ml_backend__mlds__mlds_entity_defn_0_0, 11,13,5,17,19,21,23,25)
+MR_decl_label2(__Unify___ml_backend__mlds__mlds_entity_defn_0_0, 31,1)
+MR_decl_label8(__Unify___ml_backend__mlds__mlds_entity_name_0_0, 17,5,11,13,15,9,23,1)
+MR_decl_label3(__Unify___ml_backend__mlds__mlds_exception_handler_0_0, 4,8,1)
+MR_decl_label4(__Unify___ml_backend__mlds__mlds_exported_enum_0_0, 4,6,10,1)
+MR_decl_label2(__Unify___ml_backend__mlds__mlds_exported_enum_constant_0_0, 6,1)
+MR_decl_label4(__Unify___ml_backend__mlds__mlds_field_id_0_0, 7,19,5,1)
+MR_decl_label5(__Unify___ml_backend__mlds__mlds_foreign_code_0_0, 4,6,8,12,1)
+MR_decl_label3(__Unify___ml_backend__mlds__mlds_fully_qualified_name_1_0, 4,8,1)
+MR_decl_label3(__Unify___ml_backend__mlds__mlds_func_params_0_0, 4,8,1)
+MR_decl_label3(__Unify___ml_backend__mlds__mlds_func_signature_0_0, 4,8,1)
+MR_decl_label3(__Unify___ml_backend__mlds__mlds_function_body_0_0, 12,5,1)
+MR_decl_label4(__Unify___ml_backend__mlds__mlds_gc_statement_0_0, 5,10,16,1)
+MR_decl_label3(__Unify___ml_backend__mlds__mlds_goto_target_0_0, 7,11,1)
+MR_decl_label3(__Unify___ml_backend__mlds__mlds_import_0_0, 20,5,1)
+MR_decl_label7(__Unify___ml_backend__mlds__mlds_initializer_0_0, 19,9,13,15,5,24,1)
+MR_decl_label8(__Unify___ml_backend__mlds__mlds_lval_0_0, 5,7,9,11,13,22,24,17)
+MR_decl_label4(__Unify___ml_backend__mlds__mlds_lval_0_0, 28,30,38,1)
+MR_decl_label3(__Unify___ml_backend__mlds__mlds_module_name_0_0, 4,8,1)
+MR_decl_label4(__Unify___ml_backend__mlds__mlds_pragma_export_0_0, 4,6,10,1)
+MR_decl_label5(__Unify___ml_backend__mlds__mlds_pred_label_0_0, 7,19,5,10,1)
+MR_decl_label3(__Unify___ml_backend__mlds__mlds_proc_label_0_0, 4,6,1)
+MR_decl_label8(__Unify___ml_backend__mlds__mlds_rval_0_0, 111,17,25,13,42,5,7,9)
+MR_decl_label5(__Unify___ml_backend__mlds__mlds_rval_0_0, 21,33,35,43,1)
+MR_decl_label8(__Unify___ml_backend__mlds__mlds_rval_const_0_0, 35,20,16,39,5,9,14,22)
+MR_decl_label5(__Unify___ml_backend__mlds__mlds_rval_const_0_0, 26,28,32,40,1)
+MR_decl_label8(__Unify___ml_backend__mlds__mlds_stmt_0_0, 9,11,75,77,79,41,43,45)
+MR_decl_label8(__Unify___ml_backend__mlds__mlds_stmt_0_0, 84,5,15,17,19,21,23,25)
+MR_decl_label8(__Unify___ml_backend__mlds__mlds_stmt_0_0, 27,29,33,37,49,51,55,57)
+MR_decl_label8(__Unify___ml_backend__mlds__mlds_stmt_0_0, 59,61,63,67,69,71,85,1)
+MR_decl_label3(__Unify___ml_backend__mlds__mlds_switch_case_0_0, 4,8,1)
+MR_decl_label3(__Unify___ml_backend__mlds__mlds_switch_default_0_0, 5,13,1)
+MR_decl_label3(__Unify___ml_backend__mlds__mlds_switch_range_0_0, 10,5,1)
+MR_decl_label8(__Unify___ml_backend__mlds__mlds_type_0_0, 174,5,7,9,36,62,13,17)
+MR_decl_label8(__Unify___ml_backend__mlds__mlds_type_0_0, 19,22,26,30,45,49,53,58)
+MR_decl_label2(__Unify___ml_backend__mlds__mlds_type_0_0, 63,1)
+MR_decl_label6(__Unify___ml_backend__mlds__mlds_unary_op_0_0, 5,15,9,13,23,1)
+MR_decl_label2(__Unify___ml_backend__mlds__mlds_var_name_0_0, 6,1)
+MR_decl_label6(__Unify___ml_backend__mlds__outline_arg_0_0, 11,13,5,7,20,1)
+MR_decl_label3(__Unify___ml_backend__mlds__statement_0_0, 4,8,1)
+MR_decl_label1(__Unify___ml_backend__mlds__target_code_attribute_0_0, 4)
+MR_decl_label8(__Unify___ml_backend__mlds__target_code_component_0_0, 21,23,9,13,30,5,32,1)
+MR_decl_label8(__Unify___ml_backend__mlds__trail_op_0_0, 23,19,15,17,27,11,29,1)
+MR_decl_label8(__Index___ml_backend__mlds__mlds_type_0_0, 23,3,12,26,4,5,6,7)
+MR_decl_label8(__Index___ml_backend__mlds__mlds_type_0_0, 8,9,10,11,13,14,15,16)
+MR_decl_label6(__Index___ml_backend__mlds__mlds_type_0_0, 17,18,19,20,21,22)
+MR_decl_label2(__Compare___ml_backend__mlds__foreign_import_name_0_0, 3,2)
+MR_decl_label2(__Compare___ml_backend__mlds__global_var_ref_0_0, 3,2)
+MR_decl_label8(__Compare___ml_backend__mlds__mlds_0_0, 3,2,5,9,13,17,21,25)
+MR_decl_label1(__Compare___ml_backend__mlds__mlds_0_0, 61)
+MR_decl_label5(__Compare___ml_backend__mlds__mlds_argument_0_0, 3,2,5,9,29)
+MR_decl_label8(__Compare___ml_backend__mlds__mlds_atomic_statement_0_0, 87,93,103,51,55,5,7,9)
+MR_decl_label8(__Compare___ml_backend__mlds__mlds_atomic_statement_0_0, 276,28,50,33,69,86,104,111)
+MR_decl_label8(__Compare___ml_backend__mlds__mlds_atomic_statement_0_0, 113,127,135,145,203,154,156,160)
+MR_decl_label8(__Compare___ml_backend__mlds__mlds_atomic_statement_0_0, 164,168,172,177,181,185,204,216)
+MR_decl_label8(__Compare___ml_backend__mlds__mlds_atomic_statement_0_0, 220,224,237,248,255,265,266,267)
+MR_decl_label1(__Compare___ml_backend__mlds__mlds_atomic_statement_0_0, 277)
+MR_decl_label2(__Compare___ml_backend__mlds__mlds_attribute_0_0, 3,2)
+MR_decl_label7(__Compare___ml_backend__mlds__mlds_case_match_cond_0_0, 3,2,9,7,5,15,45)
+MR_decl_label8(__Compare___ml_backend__mlds__mlds_class_defn_0_0, 3,2,5,9,13,17,21,53)
+MR_decl_label8(__Compare___ml_backend__mlds__mlds_code_addr_0_0, 3,2,9,13,7,5,20,22)
+MR_decl_label1(__Compare___ml_backend__mlds__mlds_code_addr_0_0, 63)
+MR_decl_label2(__Compare___ml_backend__mlds__mlds_context_0_0, 3,2)
+MR_decl_label4(__Compare___ml_backend__mlds__mlds_ctor_id_0_0, 3,2,5,21)
+MR_decl_label4(__Compare___ml_backend__mlds__mlds_data_addr_0_0, 3,2,5,21)
+MR_decl_label8(__Compare___ml_backend__mlds__mlds_data_name_0_0, 38,42,50,98,106,111,5,7)
+MR_decl_label8(__Compare___ml_backend__mlds__mlds_data_name_0_0, 18,115,88,19,22,24,51,56)
+MR_decl_label6(__Compare___ml_backend__mlds__mlds_data_name_0_0, 65,67,78,143,71,116)
+MR_decl_label6(__Compare___ml_backend__mlds__mlds_defn_0_0, 3,2,5,9,13,37)
+MR_decl_label8(__Compare___ml_backend__mlds__mlds_entity_defn_0_0, 3,2,18,22,5,7,31,87)
+MR_decl_label7(__Compare___ml_backend__mlds__mlds_entity_defn_0_0, 33,35,37,41,45,49,143)
+MR_decl_label8(__Compare___ml_backend__mlds__mlds_entity_name_0_0, 3,53,60,5,7,27,31,33)
+MR_decl_label7(__Compare___ml_backend__mlds__mlds_entity_name_0_0, 37,41,30,16,21,19,118)
+MR_decl_label4(__Compare___ml_backend__mlds__mlds_exception_handler_0_0, 3,2,5,21)
+MR_decl_label6(__Compare___ml_backend__mlds__mlds_exported_enum_0_0, 3,2,5,9,13,37)
+MR_decl_label4(__Compare___ml_backend__mlds__mlds_exported_enum_constant_0_0, 3,2,5,21)
+MR_decl_label7(__Compare___ml_backend__mlds__mlds_field_id_0_0, 3,2,9,7,5,15,45)
+MR_decl_label6(__Compare___ml_backend__mlds__mlds_foreign_code_0_0, 3,2,5,9,13,37)
+MR_decl_label5(__Compare___ml_backend__mlds__mlds_fully_qualified_name_1_0, 3,2,5,9,29)
+MR_decl_label4(__Compare___ml_backend__mlds__mlds_func_params_0_0, 3,2,5,21)
+MR_decl_label4(__Compare___ml_backend__mlds__mlds_func_signature_0_0, 3,2,5,21)
+MR_decl_label4(__Compare___ml_backend__mlds__mlds_function_body_0_0, 18,7,5,9)
+MR_decl_label5(__Compare___ml_backend__mlds__mlds_gc_statement_0_0, 44,5,10,20,24)
+MR_decl_label6(__Compare___ml_backend__mlds__mlds_goto_target_0_0, 34,12,44,19,38,23)
+MR_decl_label7(__Compare___ml_backend__mlds__mlds_import_0_0, 3,2,7,5,10,12,45)
+MR_decl_label8(__Compare___ml_backend__mlds__mlds_initializer_0_0, 43,48,16,27,31,33,5,11)
+MR_decl_label3(__Compare___ml_backend__mlds__mlds_initializer_0_0, 10,7,57)
+MR_decl_label8(__Compare___ml_backend__mlds__mlds_lval_0_0, 3,5,9,13,17,21,47,51)
+MR_decl_label8(__Compare___ml_backend__mlds__mlds_lval_0_0, 53,36,39,42,63,66,68,70)
+MR_decl_label1(__Compare___ml_backend__mlds__mlds_lval_0_0, 140)
+MR_decl_label4(__Compare___ml_backend__mlds__mlds_module_name_0_0, 3,2,5,21)
+MR_decl_label7(__Compare___ml_backend__mlds__mlds_pragma_export_0_0, 3,2,5,9,13,17,45)
+MR_decl_label8(__Compare___ml_backend__mlds__mlds_pred_label_0_0, 3,2,9,13,17,7,5,25)
+MR_decl_label6(__Compare___ml_backend__mlds__mlds_pred_label_0_0, 27,31,35,39,43,108)
+MR_decl_label4(__Compare___ml_backend__mlds__mlds_proc_label_0_0, 3,2,5,21)
+MR_decl_label8(__Compare___ml_backend__mlds__mlds_rval_0_0, 275,3,43,47,56,71,77,79)
+MR_decl_label8(__Compare___ml_backend__mlds__mlds_rval_0_0, 89,29,32,42,126,5,7,9)
+MR_decl_label8(__Compare___ml_backend__mlds__mlds_rval_0_0, 13,57,62,104,107,122,155,112)
+MR_decl_label2(__Compare___ml_backend__mlds__mlds_rval_0_0, 114,291)
+MR_decl_label8(__Compare___ml_backend__mlds__mlds_rval_const_0_0, 222,217,230,43,56,109,123,116)
+MR_decl_label8(__Compare___ml_backend__mlds__mlds_rval_const_0_0, 80,104,86,88,92,108,226,5)
+MR_decl_label8(__Compare___ml_backend__mlds__mlds_rval_const_0_0, 19,23,7,24,38,42,27,61)
+MR_decl_label8(__Compare___ml_backend__mlds__mlds_rval_const_0_0, 75,79,128,142,146,136,147,161)
+MR_decl_label8(__Compare___ml_backend__mlds__mlds_rval_const_0_0, 311,165,166,184,185,195,196,227)
+MR_decl_label8(__Compare___ml_backend__mlds__mlds_stmt_0_0, 3,24,29,289,302,304,308,154)
+MR_decl_label8(__Compare___ml_backend__mlds__mlds_stmt_0_0, 162,164,168,321,5,48,52,54)
+MR_decl_label8(__Compare___ml_backend__mlds__mlds_stmt_0_0, 58,62,66,70,92,97,99,116)
+MR_decl_label8(__Compare___ml_backend__mlds__mlds_stmt_0_0, 122,135,142,183,192,202,212,221)
+MR_decl_label8(__Compare___ml_backend__mlds__mlds_stmt_0_0, 234,238,242,246,260,266,271,272)
+MR_decl_label3(__Compare___ml_backend__mlds__mlds_stmt_0_0, 274,278,509)
+MR_decl_label4(__Compare___ml_backend__mlds__mlds_switch_case_0_0, 3,2,5,21)
+MR_decl_label5(__Compare___ml_backend__mlds__mlds_switch_default_0_0, 34,13,15,5,7)
+MR_decl_label6(__Compare___ml_backend__mlds__mlds_switch_range_0_0, 24,7,5,9,11,16)
+MR_decl_label8(__Compare___ml_backend__mlds__mlds_type_0_0, 184,4,5,6,7,10,13,17)
+MR_decl_label8(__Compare___ml_backend__mlds__mlds_type_0_0, 51,73,23,26,29,33,40,43)
+MR_decl_label7(__Compare___ml_backend__mlds__mlds_type_0_0, 46,59,62,65,69,198,199)
+MR_decl_label8(__Compare___ml_backend__mlds__mlds_unary_op_0_0, 3,5,38,16,19,21,27,30)
+MR_decl_label1(__Compare___ml_backend__mlds__mlds_unary_op_0_0, 31)
+MR_decl_label4(__Compare___ml_backend__mlds__mlds_var_name_0_0, 3,2,5,21)
+MR_decl_label8(__Compare___ml_backend__mlds__outline_arg_0_0, 68,23,26,28,32,25,5,7)
+MR_decl_label3(__Compare___ml_backend__mlds__outline_arg_0_0, 9,13,50)
+MR_decl_label4(__Compare___ml_backend__mlds__statement_0_0, 3,2,5,21)
+MR_decl_label2(__Compare___ml_backend__mlds__target_code_attribute_0_0, 3,2)
+MR_decl_label8(__Compare___ml_backend__mlds__target_code_component_0_0, 3,62,68,70,74,83,18,21)
+MR_decl_label8(__Compare___ml_backend__mlds__target_code_component_0_0, 23,126,36,40,88,5,100,7)
+MR_decl_label1(__Compare___ml_backend__mlds__target_code_component_0_0, 160)
+MR_decl_label8(__Compare___ml_backend__mlds__trail_op_0_0, 98,13,107,17,34,42,46,83)
+MR_decl_label8(__Compare___ml_backend__mlds__trail_op_0_0, 92,90,96,63,77,154,69,71)
+MR_decl_label8(__Compare___ml_backend__mlds__trail_op_0_0, 102,28,32,48,57,61,120,53)
+MR_decl_label1(__Compare___ml_backend__mlds__trail_op_0_0, 104)
+MR_def_extern_entry(fn__ml_backend__mlds__mlds_get_module_name_1_0)
+MR_def_extern_entry(fn__ml_backend__mlds__mercury_module_name_to_mlds_1_0)
+MR_def_extern_entry(fn__ml_backend__mlds__mercury_module_and_package_name_to_mlds_2_0)
+MR_def_extern_entry(fn__ml_backend__mlds__mlds_module_name_to_sym_name_1_0)
+MR_def_extern_entry(fn__ml_backend__mlds__mlds_module_name_to_package_name_1_0)
+MR_def_extern_entry(ml_backend__mlds__is_std_lib_module_2_0)
+MR_def_extern_entry(fn__ml_backend__mlds__mlds_append_class_qualifier_5_0)
+MR_def_extern_entry(fn__ml_backend__mlds__mlds_append_name_2_0)
+MR_def_extern_entry(fn__ml_backend__mlds__wrapper_class_name_0_0)
+MR_def_extern_entry(fn__ml_backend__mlds__mlds_append_wrapper_class_1_0)
+MR_def_extern_entry(fn__ml_backend__mlds__mlds_get_arg_types_1_0)
+MR_def_extern_entry(fn__ml_backend__mlds__mlds_get_func_signature_1_0)
+MR_def_extern_entry(fn__ml_backend__mlds__mercury_type_to_mlds_type_2_0)
+MR_def_extern_entry(fn__ml_backend__mlds__access_1_0)
+MR_def_extern_entry(fn__ml_backend__mlds__per_instance_1_0)
+MR_def_extern_entry(fn__ml_backend__mlds__virtuality_1_0)
+MR_def_extern_entry(fn__ml_backend__mlds__finality_1_0)
+MR_def_extern_entry(fn__ml_backend__mlds__constness_1_0)
+MR_def_extern_entry(fn__ml_backend__mlds__abstractness_1_0)
+MR_def_extern_entry(fn__ml_backend__mlds__set_access_2_0)
+MR_def_extern_entry(fn__ml_backend__mlds__set_per_instance_2_0)
+MR_def_extern_entry(fn__ml_backend__mlds__set_virtuality_2_0)
+MR_def_extern_entry(fn__ml_backend__mlds__set_finality_2_0)
+MR_def_extern_entry(fn__ml_backend__mlds__set_constness_2_0)
+MR_def_extern_entry(fn__ml_backend__mlds__set_abstractness_2_0)
+MR_def_extern_entry(fn__ml_backend__mlds__init_decl_flags_6_0)
+MR_def_extern_entry(fn__ml_backend__mlds__mlds_make_context_1_0)
+MR_def_extern_entry(fn__ml_backend__mlds__mlds_get_prog_context_1_0)
+MR_def_extern_entry(fn__ml_backend__mlds__mlds_std_tabling_proc_label_1_0)
+MR_def_extern_entry(__Unify___ml_backend__mlds__abstractness_0_0)
+MR_def_extern_entry(__Compare___ml_backend__mlds__abstractness_0_0)
+MR_def_extern_entry(__Unify___ml_backend__mlds__access_0_0)
+MR_def_extern_entry(__Compare___ml_backend__mlds__access_0_0)
+MR_def_extern_entry(__Unify___ml_backend__mlds__constness_0_0)
+MR_def_extern_entry(__Compare___ml_backend__mlds__constness_0_0)
+MR_def_extern_entry(__Unify___ml_backend__mlds__ctor_name_0_0)
+MR_def_extern_entry(__Compare___ml_backend__mlds__ctor_name_0_0)
+MR_def_extern_entry(__Unify___ml_backend__mlds__finality_0_0)
+MR_def_extern_entry(__Compare___ml_backend__mlds__finality_0_0)
+MR_def_extern_entry(__Unify___ml_backend__mlds__foreign_import_name_0_0)
+MR_def_extern_entry(__Compare___ml_backend__mlds__foreign_import_name_0_0)
+MR_def_extern_entry(__Unify___ml_backend__mlds__global_var_ref_0_0)
+MR_def_extern_entry(__Compare___ml_backend__mlds__global_var_ref_0_0)
+MR_def_extern_entry(__Unify___ml_backend__mlds__mercury_mlds_import_type_0_0)
+MR_def_extern_entry(__Compare___ml_backend__mlds__mercury_mlds_import_type_0_0)
+MR_def_extern_entry(__Unify___ml_backend__mlds__mercury_module_name_0_0)
+MR_def_extern_entry(__Compare___ml_backend__mlds__mercury_module_name_0_0)
+MR_def_extern_entry(__Unify___ml_backend__mlds__ml_call_kind_0_0)
+MR_def_extern_entry(__Compare___ml_backend__mlds__ml_call_kind_0_0)
+MR_def_extern_entry(__Unify___ml_backend__mlds__mlds_0_0)
+MR_def_extern_entry(__Compare___ml_backend__mlds__mlds_0_0)
+MR_def_extern_entry(__Unify___ml_backend__mlds__mlds_arg_types_0_0)
+MR_def_extern_entry(__Compare___ml_backend__mlds__mlds_arg_types_0_0)
+MR_def_extern_entry(__Unify___ml_backend__mlds__mlds_argument_0_0)
+MR_def_extern_entry(__Compare___ml_backend__mlds__mlds_argument_0_0)
+MR_def_extern_entry(__Unify___ml_backend__mlds__mlds_arguments_0_0)
+MR_def_extern_entry(__Compare___ml_backend__mlds__mlds_arguments_0_0)
+MR_def_extern_entry(__Unify___ml_backend__mlds__mlds_atomic_statement_0_0)
+MR_def_extern_entry(__Compare___ml_backend__mlds__mlds_atomic_statement_0_0)
+MR_def_extern_entry(__Unify___ml_backend__mlds__mlds_attribute_0_0)
+MR_def_extern_entry(__Compare___ml_backend__mlds__mlds_attribute_0_0)
+MR_def_extern_entry(__Unify___ml_backend__mlds__mlds_case_match_cond_0_0)
+MR_def_extern_entry(__Compare___ml_backend__mlds__mlds_case_match_cond_0_0)
+MR_def_extern_entry(__Unify___ml_backend__mlds__mlds_case_match_conds_0_0)
+MR_def_extern_entry(__Compare___ml_backend__mlds__mlds_case_match_conds_0_0)
+MR_def_extern_entry(__Unify___ml_backend__mlds__mlds_class_0_0)
+MR_def_extern_entry(__Compare___ml_backend__mlds__mlds_class_0_0)
+MR_def_extern_entry(__Unify___ml_backend__mlds__mlds_class_defn_0_0)
+MR_def_extern_entry(__Compare___ml_backend__mlds__mlds_class_defn_0_0)
+MR_def_extern_entry(__Unify___ml_backend__mlds__mlds_class_id_0_0)
+MR_def_extern_entry(__Compare___ml_backend__mlds__mlds_class_id_0_0)
+MR_def_extern_entry(__Unify___ml_backend__mlds__mlds_class_kind_0_0)
+MR_def_extern_entry(__Compare___ml_backend__mlds__mlds_class_kind_0_0)
+MR_def_extern_entry(__Unify___ml_backend__mlds__mlds_class_name_0_0)
+MR_def_extern_entry(__Compare___ml_backend__mlds__mlds_class_name_0_0)
+MR_def_extern_entry(__Unify___ml_backend__mlds__mlds_code_addr_0_0)
+MR_def_extern_entry(__Compare___ml_backend__mlds__mlds_code_addr_0_0)
+MR_def_extern_entry(__Unify___ml_backend__mlds__mlds_context_0_0)
+MR_def_extern_entry(__Compare___ml_backend__mlds__mlds_context_0_0)
+MR_def_extern_entry(__Unify___ml_backend__mlds__mlds_ctor_id_0_0)
+MR_def_extern_entry(__Compare___ml_backend__mlds__mlds_ctor_id_0_0)
+MR_def_extern_entry(__Unify___ml_backend__mlds__mlds_data_0_0)
+MR_def_extern_entry(__Compare___ml_backend__mlds__mlds_data_0_0)
+MR_def_extern_entry(__Unify___ml_backend__mlds__mlds_data_addr_0_0)
+MR_def_extern_entry(__Compare___ml_backend__mlds__mlds_data_addr_0_0)
+MR_def_extern_entry(__Unify___ml_backend__mlds__mlds_data_name_0_0)
+MR_def_extern_entry(__Compare___ml_backend__mlds__mlds_data_name_0_0)
+MR_def_extern_entry(__Unify___ml_backend__mlds__mlds_decl_flags_0_0)
+MR_def_extern_entry(__Compare___ml_backend__mlds__mlds_decl_flags_0_0)
+MR_def_extern_entry(__Unify___ml_backend__mlds__mlds_defn_0_0)
+MR_def_extern_entry(__Compare___ml_backend__mlds__mlds_defn_0_0)
+MR_def_extern_entry(__Unify___ml_backend__mlds__mlds_entity_defn_0_0)
+MR_def_extern_entry(__Compare___ml_backend__mlds__mlds_entity_defn_0_0)
+MR_def_extern_entry(__Unify___ml_backend__mlds__mlds_entity_name_0_0)
+MR_def_extern_entry(__Compare___ml_backend__mlds__mlds_entity_name_0_0)
+MR_def_extern_entry(__Unify___ml_backend__mlds__mlds_exception_handler_0_0)
+MR_def_extern_entry(__Compare___ml_backend__mlds__mlds_exception_handler_0_0)
+MR_def_extern_entry(__Unify___ml_backend__mlds__mlds_exported_enum_0_0)
+MR_def_extern_entry(__Compare___ml_backend__mlds__mlds_exported_enum_0_0)
+MR_def_extern_entry(__Unify___ml_backend__mlds__mlds_exported_enum_constant_0_0)
+MR_def_extern_entry(__Compare___ml_backend__mlds__mlds_exported_enum_constant_0_0)
+MR_def_extern_entry(__Unify___ml_backend__mlds__mlds_exported_enums_0_0)
+MR_def_extern_entry(__Compare___ml_backend__mlds__mlds_exported_enums_0_0)
+MR_def_extern_entry(__Unify___ml_backend__mlds__mlds_field_id_0_0)
+MR_def_extern_entry(__Compare___ml_backend__mlds__mlds_field_id_0_0)
+MR_def_extern_entry(__Unify___ml_backend__mlds__mlds_field_name_0_0)
+MR_def_extern_entry(__Compare___ml_backend__mlds__mlds_field_name_0_0)
+MR_def_extern_entry(__Unify___ml_backend__mlds__mlds_foreign_code_0_0)
+MR_def_extern_entry(__Compare___ml_backend__mlds__mlds_foreign_code_0_0)
+MR_def_extern_entry(__Unify___ml_backend__mlds__mlds_fully_qualified_name_1_0)
+MR_def_extern_entry(__Compare___ml_backend__mlds__mlds_fully_qualified_name_1_0)
+MR_def_extern_entry(__Unify___ml_backend__mlds__mlds_func_params_0_0)
+MR_def_extern_entry(__Compare___ml_backend__mlds__mlds_func_params_0_0)
+MR_def_extern_entry(__Unify___ml_backend__mlds__mlds_func_sequence_num_0_0)
+MR_def_extern_entry(__Compare___ml_backend__mlds__mlds_func_sequence_num_0_0)
+MR_def_extern_entry(__Unify___ml_backend__mlds__mlds_func_signature_0_0)
+MR_def_extern_entry(__Compare___ml_backend__mlds__mlds_func_signature_0_0)
+MR_def_extern_entry(__Unify___ml_backend__mlds__mlds_function_body_0_0)
+MR_def_extern_entry(__Compare___ml_backend__mlds__mlds_function_body_0_0)
+MR_def_extern_entry(__Unify___ml_backend__mlds__mlds_gc_statement_0_0)
+MR_def_extern_entry(__Compare___ml_backend__mlds__mlds_gc_statement_0_0)
+MR_def_extern_entry(__Unify___ml_backend__mlds__mlds_goto_target_0_0)
+MR_def_extern_entry(__Compare___ml_backend__mlds__mlds_goto_target_0_0)
+MR_def_extern_entry(__Unify___ml_backend__mlds__mlds_import_0_0)
+MR_def_extern_entry(__Compare___ml_backend__mlds__mlds_import_0_0)
+MR_def_extern_entry(__Unify___ml_backend__mlds__mlds_imports_0_0)
+MR_def_extern_entry(__Compare___ml_backend__mlds__mlds_imports_0_0)
+MR_def_extern_entry(__Unify___ml_backend__mlds__mlds_initializer_0_0)
+MR_def_extern_entry(__Compare___ml_backend__mlds__mlds_initializer_0_0)
+MR_def_extern_entry(__Unify___ml_backend__mlds__mlds_interface_id_0_0)
+MR_def_extern_entry(__Compare___ml_backend__mlds__mlds_interface_id_0_0)
+MR_def_extern_entry(__Unify___ml_backend__mlds__mlds_label_0_0)
+MR_def_extern_entry(__Compare___ml_backend__mlds__mlds_label_0_0)
+MR_def_extern_entry(__Unify___ml_backend__mlds__mlds_lval_0_0)
+MR_def_extern_entry(__Compare___ml_backend__mlds__mlds_lval_0_0)
+MR_def_extern_entry(__Unify___ml_backend__mlds__mlds_module_name_0_0)
+MR_def_extern_entry(__Compare___ml_backend__mlds__mlds_module_name_0_0)
+MR_def_extern_entry(__Unify___ml_backend__mlds__mlds_package_name_0_0)
+MR_def_extern_entry(__Compare___ml_backend__mlds__mlds_package_name_0_0)
+MR_def_extern_entry(__Unify___ml_backend__mlds__mlds_pragma_export_0_0)
+MR_def_extern_entry(__Compare___ml_backend__mlds__mlds_pragma_export_0_0)
+MR_def_extern_entry(__Unify___ml_backend__mlds__mlds_pred_label_0_0)
+MR_def_extern_entry(__Compare___ml_backend__mlds__mlds_pred_label_0_0)
+MR_def_extern_entry(__Unify___ml_backend__mlds__mlds_proc_label_0_0)
+MR_def_extern_entry(__Compare___ml_backend__mlds__mlds_proc_label_0_0)
+MR_def_extern_entry(__Unify___ml_backend__mlds__mlds_qual_kind_0_0)
+MR_def_extern_entry(__Compare___ml_backend__mlds__mlds_qual_kind_0_0)
+MR_def_extern_entry(__Unify___ml_backend__mlds__mlds_qualified_ctor_id_0_0)
+MR_def_extern_entry(__Compare___ml_backend__mlds__mlds_qualified_ctor_id_0_0)
+MR_def_extern_entry(__Unify___ml_backend__mlds__mlds_qualified_entity_name_0_0)
+MR_def_extern_entry(__Compare___ml_backend__mlds__mlds_qualified_entity_name_0_0)
+MR_def_extern_entry(__Unify___ml_backend__mlds__mlds_qualified_pred_label_0_0)
+MR_def_extern_entry(__Compare___ml_backend__mlds__mlds_qualified_pred_label_0_0)
+MR_def_extern_entry(__Unify___ml_backend__mlds__mlds_qualified_proc_label_0_0)
+MR_def_extern_entry(__Compare___ml_backend__mlds__mlds_qualified_proc_label_0_0)
+MR_def_extern_entry(__Unify___ml_backend__mlds__mlds_reset_trail_reason_0_0)
+MR_def_extern_entry(__Compare___ml_backend__mlds__mlds_reset_trail_reason_0_0)
+MR_def_extern_entry(__Unify___ml_backend__mlds__mlds_return_types_0_0)
+MR_def_extern_entry(__Compare___ml_backend__mlds__mlds_return_types_0_0)
+MR_def_extern_entry(__Unify___ml_backend__mlds__mlds_rval_0_0)
+MR_def_extern_entry(__Compare___ml_backend__mlds__mlds_rval_0_0)
+MR_def_extern_entry(__Unify___ml_backend__mlds__mlds_rval_const_0_0)
+MR_def_extern_entry(__Compare___ml_backend__mlds__mlds_rval_const_0_0)
+MR_def_extern_entry(__Unify___ml_backend__mlds__mlds_stmt_0_0)
+MR_def_extern_entry(__Compare___ml_backend__mlds__mlds_stmt_0_0)
+MR_def_extern_entry(__Unify___ml_backend__mlds__mlds_switch_case_0_0)
+MR_def_extern_entry(__Compare___ml_backend__mlds__mlds_switch_case_0_0)
+MR_def_extern_entry(__Unify___ml_backend__mlds__mlds_switch_cases_0_0)
+MR_def_extern_entry(__Compare___ml_backend__mlds__mlds_switch_cases_0_0)
+MR_def_extern_entry(__Unify___ml_backend__mlds__mlds_switch_default_0_0)
+MR_def_extern_entry(__Compare___ml_backend__mlds__mlds_switch_default_0_0)
+MR_def_extern_entry(__Unify___ml_backend__mlds__mlds_switch_range_0_0)
+MR_def_extern_entry(__Compare___ml_backend__mlds__mlds_switch_range_0_0)
+MR_def_extern_entry(__Unify___ml_backend__mlds__mlds_tag_0_0)
+MR_def_extern_entry(__Compare___ml_backend__mlds__mlds_tag_0_0)
+MR_def_extern_entry(__Unify___ml_backend__mlds__mlds_target_lang_0_0)
+MR_def_extern_entry(__Compare___ml_backend__mlds__mlds_target_lang_0_0)
+MR_def_extern_entry(__Unify___ml_backend__mlds__mlds_type_0_0)
+MR_def_extern_entry(__Index___ml_backend__mlds__mlds_type_0_0)
+MR_def_extern_entry(__Compare___ml_backend__mlds__mlds_type_0_0)
+MR_def_extern_entry(__Unify___ml_backend__mlds__mlds_unary_op_0_0)
+MR_def_extern_entry(__Compare___ml_backend__mlds__mlds_unary_op_0_0)
+MR_def_extern_entry(__Unify___ml_backend__mlds__mlds_var_0_0)
+MR_def_extern_entry(__Compare___ml_backend__mlds__mlds_var_0_0)
+MR_def_extern_entry(__Unify___ml_backend__mlds__mlds_var_name_0_0)
+MR_def_extern_entry(__Compare___ml_backend__mlds__mlds_var_name_0_0)
+MR_def_extern_entry(__Unify___ml_backend__mlds__outline_arg_0_0)
+MR_def_extern_entry(__Compare___ml_backend__mlds__outline_arg_0_0)
+MR_def_extern_entry(__Unify___ml_backend__mlds__per_instance_0_0)
+MR_def_extern_entry(__Compare___ml_backend__mlds__per_instance_0_0)
+MR_def_extern_entry(__Unify___ml_backend__mlds__statement_0_0)
+MR_def_extern_entry(__Compare___ml_backend__mlds__statement_0_0)
+MR_def_extern_entry(__Unify___ml_backend__mlds__target_code_attribute_0_0)
+MR_def_extern_entry(__Compare___ml_backend__mlds__target_code_attribute_0_0)
+MR_def_extern_entry(__Unify___ml_backend__mlds__target_code_attributes_0_0)
+MR_def_extern_entry(__Compare___ml_backend__mlds__target_code_attributes_0_0)
+MR_def_extern_entry(__Unify___ml_backend__mlds__target_code_component_0_0)
+MR_def_extern_entry(__Compare___ml_backend__mlds__target_code_component_0_0)
+MR_def_extern_entry(__Unify___ml_backend__mlds__trail_op_0_0)
+MR_def_extern_entry(__Compare___ml_backend__mlds__trail_op_0_0)
+MR_def_extern_entry(__Unify___ml_backend__mlds__virtuality_0_0)
+MR_def_extern_entry(__Compare___ml_backend__mlds__virtuality_0_0)
+MR_decl_static(fn__ml_backend__mlds__IntroducedFrom__func__mlds_get_arg_types__1903__1_1_0)
+MR_decl_static(ml_backend__mlds__IntroducedFrom__pred__access__2074__1_2_0)
+MR_decl_static(ml_backend__mlds__IntroducedFrom__pred__per_instance__2077__1_2_0)
+MR_decl_static(ml_backend__mlds__IntroducedFrom__pred__virtuality__2080__1_2_0)
+MR_decl_static(ml_backend__mlds__IntroducedFrom__pred__finality__2083__1_2_0)
+MR_decl_static(ml_backend__mlds__IntroducedFrom__pred__constness__2086__1_2_0)
+MR_decl_static(ml_backend__mlds__IntroducedFrom__pred__abstractness__2089__1_2_0)
+
+static const MR_UserClosureId
+mercury_data__closure_layout__fn__ml_backend__mlds__mlds_get_arg_types_1_0_1;
+extern const MR_TypeCtorInfo_Struct mercury_data_ml_backend__mlds__type_ctor_info_mlds_argument_0;
+extern const MR_TypeCtorInfo_Struct mercury_data_ml_backend__mlds__type_ctor_info_mlds_type_0;
+static const MR_UserClosureId
+mercury_data__closure_layout__fn__ml_backend__mlds__mlds_get_func_signature_1_0_1;
+static const struct mercury_type_0 mercury_common_0[2] =
+{
+{
+(MR_Word *) &mercury_data__closure_layout__fn__ml_backend__mlds__mlds_get_arg_types_1_0_1,
+(MR_Word *) (MR_Integer) 0,
+2,
+MR_CTOR0_ADDR(ml_backend__mlds, mlds_argument),
+MR_CTOR0_ADDR(ml_backend__mlds, mlds_type)
+},
+{
+(MR_Word *) &mercury_data__closure_layout__fn__ml_backend__mlds__mlds_get_func_signature_1_0_1,
+(MR_Word *) (MR_Integer) 0,
+2,
+MR_CTOR0_ADDR(ml_backend__mlds, mlds_argument),
+MR_CTOR0_ADDR(ml_backend__mlds, mlds_type)
+},
+};
+
+static const struct mercury_type_1 mercury_common_1[2] =
+{
+{
+MR_COMMON(0,0),
+MR_ENTRY_AP(fn__ml_backend__mlds__IntroducedFrom__func__mlds_get_arg_types__1903__1_1_0),
+0
+},
+{
+MR_COMMON(0,1),
+MR_ENTRY_AP(fn__ml_backend__mlds__IntroducedFrom__func__mlds_get_arg_types__1903__1_1_0),
+0
+},
+};
+
+static const struct mercury_type_3 mercury_common_3[1] =
+{
+{
+{
+MR_CTOR1_ADDR(ml_backend__mlds, mlds_fully_qualified_name),
+MR_CTOR0_ADDR(ml_backend__mlds, mlds_ctor_id)
+}
+},
+};
+
+static const struct mercury_type_2 mercury_vector_common_2_0[5] =
+{
+{
+0
+},
+{
+2
+},
+{
+1
+},
+{
+3
+},
+{
+4
+},
+};
+
+static const struct mercury_type_2 mercury_vector_common_2_1[5] =
+{
+{
+0
+},
+{
+2
+},
+{
+1
+},
+{
+3
+},
+{
+4
+},
+};
+
+static const MR_EnumFunctorDesc mercury_data_ml_backend__mlds__enum_functor_desc_virtuality_0_0 = {
+	"non_virtual",
+	0
+};
+
+static const MR_EnumFunctorDesc mercury_data_ml_backend__mlds__enum_functor_desc_virtuality_0_1 = {
+	"virtual",
+	1
+};
+
+const MR_EnumFunctorDescPtr mercury_data_ml_backend__mlds__enum_value_ordered_virtuality_0[] = {
+	&mercury_data_ml_backend__mlds__enum_functor_desc_virtuality_0_0,
+	&mercury_data_ml_backend__mlds__enum_functor_desc_virtuality_0_1
+};
+
+const MR_EnumFunctorDescPtr mercury_data_ml_backend__mlds__enum_name_ordered_virtuality_0[] = {
+	&mercury_data_ml_backend__mlds__enum_functor_desc_virtuality_0_0,
+	&mercury_data_ml_backend__mlds__enum_functor_desc_virtuality_0_1
+};
+
+const MR_Integer mercury_data_ml_backend__mlds__functor_number_map_virtuality_0[] = {
+	0,
+	1 };
+	
+const MR_TypeCtorInfo_Struct mercury_data_ml_backend__mlds__type_ctor_info_virtuality_0 = {
+	0,
+	13,
+	-1,
+	MR_TYPECTOR_REP_ENUM,
+	MR_MAYBE_STATIC_CODE(MR_ENTRY_AP(__Unify___ml_backend__mlds__virtuality_0_0)),
+	MR_MAYBE_STATIC_CODE(MR_ENTRY_AP(__Compare___ml_backend__mlds__virtuality_0_0)),
+	"ml_backend.mlds",
+	"virtuality",
+	{ (void *)mercury_data_ml_backend__mlds__enum_name_ordered_virtuality_0 },
+	{ (void *)mercury_data_ml_backend__mlds__enum_value_ordered_virtuality_0 },
+	2,
+	4,
+	mercury_data_ml_backend__mlds__functor_number_map_virtuality_0
+};
+extern const MR_TypeCtorInfo_Struct mercury_data_ml_backend__mlds__type_ctor_info_mlds_lval_0;
+
+const MR_PseudoTypeInfo mercury_data_ml_backend__mlds__field_types_trail_op_0_0[] = {
+	(MR_PseudoTypeInfo) &mercury_data_ml_backend__mlds__type_ctor_info_mlds_lval_0
+};
+
+static const MR_DuFunctorDesc mercury_data_ml_backend__mlds__du_functor_desc_trail_op_0_0 = {
+	"store_ticket",
+	1,
+	0,
+	MR_SECTAG_NONE,
+	1,
+	-1,
+	0,
+	(MR_PseudoTypeInfo *) mercury_data_ml_backend__mlds__field_types_trail_op_0_0,
+	NULL,
+	NULL
+};
+extern const MR_TypeCtorInfo_Struct mercury_data_ml_backend__mlds__type_ctor_info_mlds_rval_0;
+extern const MR_TypeCtorInfo_Struct mercury_data_ml_backend__mlds__type_ctor_info_mlds_reset_trail_reason_0;
+
+const MR_PseudoTypeInfo mercury_data_ml_backend__mlds__field_types_trail_op_0_1[] = {
+	(MR_PseudoTypeInfo) &mercury_data_ml_backend__mlds__type_ctor_info_mlds_rval_0,
+	(MR_PseudoTypeInfo) &mercury_data_ml_backend__mlds__type_ctor_info_mlds_reset_trail_reason_0
+};
+
+static const MR_DuFunctorDesc mercury_data_ml_backend__mlds__du_functor_desc_trail_op_0_1 = {
+	"reset_ticket",
+	2,
+	0,
+	MR_SECTAG_NONE,
+	2,
+	-1,
+	1,
+	(MR_PseudoTypeInfo *) mercury_data_ml_backend__mlds__field_types_trail_op_0_1,
+	NULL,
+	NULL
+};
+
+static const MR_DuFunctorDesc mercury_data_ml_backend__mlds__du_functor_desc_trail_op_0_2 = {
+	"discard_ticket",
+	0,
+	0,
+	MR_SECTAG_LOCAL,
+	0,
+	0,
+	2,
+	(MR_PseudoTypeInfo *) NULL,
+	NULL,
+	NULL
+};
+
+static const MR_DuFunctorDesc mercury_data_ml_backend__mlds__du_functor_desc_trail_op_0_3 = {
+	"prune_ticket",
+	0,
+	0,
+	MR_SECTAG_LOCAL,
+	0,
+	1,
+	3,
+	(MR_PseudoTypeInfo *) NULL,
+	NULL,
+	NULL
+};
+
+const MR_PseudoTypeInfo mercury_data_ml_backend__mlds__field_types_trail_op_0_4[] = {
+	(MR_PseudoTypeInfo) &mercury_data_ml_backend__mlds__type_ctor_info_mlds_lval_0
+};
+
+static const MR_DuFunctorDesc mercury_data_ml_backend__mlds__du_functor_desc_trail_op_0_4 = {
+	"mark_ticket_stack",
+	1,
+	0,
+	MR_SECTAG_REMOTE,
+	3,
+	0,
+	4,
+	(MR_PseudoTypeInfo *) mercury_data_ml_backend__mlds__field_types_trail_op_0_4,
+	NULL,
+	NULL
+};
+
+const MR_PseudoTypeInfo mercury_data_ml_backend__mlds__field_types_trail_op_0_5[] = {
+	(MR_PseudoTypeInfo) &mercury_data_ml_backend__mlds__type_ctor_info_mlds_rval_0
+};
+
+static const MR_DuFunctorDesc mercury_data_ml_backend__mlds__du_functor_desc_trail_op_0_5 = {
+	"prune_tickets_to",
+	1,
+	0,
+	MR_SECTAG_REMOTE,
+	3,
+	1,
+	5,
+	(MR_PseudoTypeInfo *) mercury_data_ml_backend__mlds__field_types_trail_op_0_5,
+	NULL,
+	NULL
+};
+
+const MR_DuFunctorDescPtr mercury_data_ml_backend__mlds__du_stag_ordered_trail_op_0_0[] = {
+	&mercury_data_ml_backend__mlds__du_functor_desc_trail_op_0_2,
+	&mercury_data_ml_backend__mlds__du_functor_desc_trail_op_0_3
+
+};
+
+const MR_DuFunctorDescPtr mercury_data_ml_backend__mlds__du_stag_ordered_trail_op_0_1[] = {
+	&mercury_data_ml_backend__mlds__du_functor_desc_trail_op_0_0
+
+};
+
+const MR_DuFunctorDescPtr mercury_data_ml_backend__mlds__du_stag_ordered_trail_op_0_2[] = {
+	&mercury_data_ml_backend__mlds__du_functor_desc_trail_op_0_1
+
+};
+
+const MR_DuFunctorDescPtr mercury_data_ml_backend__mlds__du_stag_ordered_trail_op_0_3[] = {
+	&mercury_data_ml_backend__mlds__du_functor_desc_trail_op_0_4,
+	&mercury_data_ml_backend__mlds__du_functor_desc_trail_op_0_5
+
+};
+
+const MR_DuPtagLayout mercury_data_ml_backend__mlds__du_ptag_ordered_trail_op_0[] = {
+	{ 2, MR_SECTAG_LOCAL,
+	mercury_data_ml_backend__mlds__du_stag_ordered_trail_op_0_0 },
+	{ 1, MR_SECTAG_NONE,
+	mercury_data_ml_backend__mlds__du_stag_ordered_trail_op_0_1 },
+	{ 1, MR_SECTAG_NONE,
+	mercury_data_ml_backend__mlds__du_stag_ordered_trail_op_0_2 },
+	{ 2, MR_SECTAG_REMOTE,
+	mercury_data_ml_backend__mlds__du_stag_ordered_trail_op_0_3 }
+
+};
+
+const MR_DuFunctorDescPtr mercury_data_ml_backend__mlds__du_name_ordered_trail_op_0[] = {
+	&mercury_data_ml_backend__mlds__du_functor_desc_trail_op_0_2,
+	&mercury_data_ml_backend__mlds__du_functor_desc_trail_op_0_4,
+	&mercury_data_ml_backend__mlds__du_functor_desc_trail_op_0_3,
+	&mercury_data_ml_backend__mlds__du_functor_desc_trail_op_0_5,
+	&mercury_data_ml_backend__mlds__du_functor_desc_trail_op_0_1,
+	&mercury_data_ml_backend__mlds__du_functor_desc_trail_op_0_0
+};
+
+const MR_Integer mercury_data_ml_backend__mlds__functor_number_map_trail_op_0[] = {
+	5,
+	4,
+	0,
+	2,
+	1,
+	3 };
+	
+const MR_TypeCtorInfo_Struct mercury_data_ml_backend__mlds__type_ctor_info_trail_op_0 = {
+	0,
+	13,
+	4,
+	MR_TYPECTOR_REP_DU,
+	MR_MAYBE_STATIC_CODE(MR_ENTRY_AP(__Unify___ml_backend__mlds__trail_op_0_0)),
+	MR_MAYBE_STATIC_CODE(MR_ENTRY_AP(__Compare___ml_backend__mlds__trail_op_0_0)),
+	"ml_backend.mlds",
+	"trail_op",
+	{ (void *)mercury_data_ml_backend__mlds__du_name_ordered_trail_op_0 },
+	{ (void *)mercury_data_ml_backend__mlds__du_ptag_ordered_trail_op_0 },
+	6,
+	4,
+	mercury_data_ml_backend__mlds__functor_number_map_trail_op_0
+};
+extern const MR_TypeCtorInfo_Struct mercury_data_builtin__type_ctor_info_string_0;
+extern const MR_TypeCtorInfo_Struct mercury_data_maybe__type_ctor_info_maybe_1;
+extern const MR_TypeCtorInfo_Struct mercury_data_term__type_ctor_info_context_0;
+extern const MR_TypeCtorInfo_Struct mercury_data_term__type_ctor_info_context_0;
+
+static const MR_FA_TypeInfo_Struct1 mercury_data_maybe__ti_maybe_1term__type_ctor_info_context_0 = {
+	&mercury_data_maybe__type_ctor_info_maybe_1,
+{	(MR_TypeInfo) &mercury_data_term__type_ctor_info_context_0
+}};
+extern const MR_TypeCtorInfo_Struct mercury_data_list__type_ctor_info_list_1;
+extern const MR_TypeCtorInfo_Struct mercury_data_ml_backend__mlds__type_ctor_info_target_code_attribute_0;
+
+static const MR_FA_TypeInfo_Struct1 mercury_data_list__ti_list_1ml_backend__mlds__type_ctor_info_target_code_attribute_0 = {
+	&mercury_data_list__type_ctor_info_list_1,
+{	(MR_TypeInfo) &mercury_data_ml_backend__mlds__type_ctor_info_target_code_attribute_0
+}};
+extern const MR_TypeCtorInfo_Struct mercury_data_builtin__type_ctor_info_string_0;
+
+const MR_PseudoTypeInfo mercury_data_ml_backend__mlds__field_types_target_code_component_0_0[] = {
+	(MR_PseudoTypeInfo) &mercury_data_builtin__type_ctor_info_string_0,
+	(MR_PseudoTypeInfo) &mercury_data_maybe__ti_maybe_1term__type_ctor_info_context_0,
+	(MR_PseudoTypeInfo) &mercury_data_list__ti_list_1ml_backend__mlds__type_ctor_info_target_code_attribute_0
+};
+
+static const MR_DuFunctorDesc mercury_data_ml_backend__mlds__du_functor_desc_target_code_component_0_0 = {
+	"user_target_code",
+	3,
+	0,
+	MR_SECTAG_NONE,
+	0,
+	-1,
+	0,
+	(MR_PseudoTypeInfo *) mercury_data_ml_backend__mlds__field_types_target_code_component_0_0,
+	NULL,
+	NULL
+};
+
+const MR_PseudoTypeInfo mercury_data_ml_backend__mlds__field_types_target_code_component_0_1[] = {
+	(MR_PseudoTypeInfo) &mercury_data_builtin__type_ctor_info_string_0,
+	(MR_PseudoTypeInfo) &mercury_data_list__ti_list_1ml_backend__mlds__type_ctor_info_target_code_attribute_0
+};
+
+static const MR_DuFunctorDesc mercury_data_ml_backend__mlds__du_functor_desc_target_code_component_0_1 = {
+	"raw_target_code",
+	2,
+	0,
+	MR_SECTAG_NONE,
+	1,
+	-1,
+	1,
+	(MR_PseudoTypeInfo *) mercury_data_ml_backend__mlds__field_types_target_code_component_0_1,
+	NULL,
+	NULL
+};
+
+const MR_PseudoTypeInfo mercury_data_ml_backend__mlds__field_types_target_code_component_0_2[] = {
+	(MR_PseudoTypeInfo) &mercury_data_ml_backend__mlds__type_ctor_info_mlds_rval_0
+};
+
+static const MR_DuFunctorDesc mercury_data_ml_backend__mlds__du_functor_desc_target_code_component_0_2 = {
+	"target_code_input",
+	1,
+	0,
+	MR_SECTAG_NONE,
+	2,
+	-1,
+	2,
+	(MR_PseudoTypeInfo *) mercury_data_ml_backend__mlds__field_types_target_code_component_0_2,
+	NULL,
+	NULL
+};
+
+const MR_PseudoTypeInfo mercury_data_ml_backend__mlds__field_types_target_code_component_0_3[] = {
+	(MR_PseudoTypeInfo) &mercury_data_ml_backend__mlds__type_ctor_info_mlds_lval_0
+};
+
+static const MR_DuFunctorDesc mercury_data_ml_backend__mlds__du_functor_desc_target_code_component_0_3 = {
+	"target_code_output",
+	1,
+	0,
+	MR_SECTAG_REMOTE,
+	3,
+	0,
+	3,
+	(MR_PseudoTypeInfo *) mercury_data_ml_backend__mlds__field_types_target_code_component_0_3,
+	NULL,
+	NULL
+};
+extern const MR_TypeCtorInfo_Struct mercury_data_ml_backend__mlds__type_ctor_info_mlds_entity_name_0;
+
+static const MR_FA_TypeInfo_Struct1 mercury_data_ml_backend__mlds__ti_mlds_fully_qualified_name_1ml_backend__mlds__type_ctor_info_mlds_entity_name_0 = {
+	&mercury_data_ml_backend__mlds__type_ctor_info_mlds_fully_qualified_name_1,
+{	(MR_TypeInfo) &mercury_data_ml_backend__mlds__type_ctor_info_mlds_entity_name_0
+}};
+
+const MR_PseudoTypeInfo mercury_data_ml_backend__mlds__field_types_target_code_component_0_4[] = {
+	(MR_PseudoTypeInfo) &mercury_data_ml_backend__mlds__ti_mlds_fully_qualified_name_1ml_backend__mlds__type_ctor_info_mlds_entity_name_0
+};
+
+static const MR_DuFunctorDesc mercury_data_ml_backend__mlds__du_functor_desc_target_code_component_0_4 = {
+	"name",
+	1,
+	0,
+	MR_SECTAG_REMOTE,
+	3,
+	1,
+	4,
+	(MR_PseudoTypeInfo *) mercury_data_ml_backend__mlds__field_types_target_code_component_0_4,
+	NULL,
+	NULL
+};
+
+const MR_DuFunctorDescPtr mercury_data_ml_backend__mlds__du_stag_ordered_target_code_component_0_0[] = {
+	&mercury_data_ml_backend__mlds__du_functor_desc_target_code_component_0_0
+
+};
+
+const MR_DuFunctorDescPtr mercury_data_ml_backend__mlds__du_stag_ordered_target_code_component_0_1[] = {
+	&mercury_data_ml_backend__mlds__du_functor_desc_target_code_component_0_1
+
+};
+
+const MR_DuFunctorDescPtr mercury_data_ml_backend__mlds__du_stag_ordered_target_code_component_0_2[] = {
+	&mercury_data_ml_backend__mlds__du_functor_desc_target_code_component_0_2
+
+};
+
+const MR_DuFunctorDescPtr mercury_data_ml_backend__mlds__du_stag_ordered_target_code_component_0_3[] = {
+	&mercury_data_ml_backend__mlds__du_functor_desc_target_code_component_0_3,
+	&mercury_data_ml_backend__mlds__du_functor_desc_target_code_component_0_4
+
+};
+
+const MR_DuPtagLayout mercury_data_ml_backend__mlds__du_ptag_ordered_target_code_component_0[] = {
+	{ 1, MR_SECTAG_NONE,
+	mercury_data_ml_backend__mlds__du_stag_ordered_target_code_component_0_0 },
+	{ 1, MR_SECTAG_NONE,
+	mercury_data_ml_backend__mlds__du_stag_ordered_target_code_component_0_1 },
+	{ 1, MR_SECTAG_NONE,
+	mercury_data_ml_backend__mlds__du_stag_ordered_target_code_component_0_2 },
+	{ 2, MR_SECTAG_REMOTE,
+	mercury_data_ml_backend__mlds__du_stag_ordered_target_code_component_0_3 }
+
+};
+
+const MR_DuFunctorDescPtr mercury_data_ml_backend__mlds__du_name_ordered_target_code_component_0[] = {
+	&mercury_data_ml_backend__mlds__du_functor_desc_target_code_component_0_4,
+	&mercury_data_ml_backend__mlds__du_functor_desc_target_code_component_0_1,
+	&mercury_data_ml_backend__mlds__du_functor_desc_target_code_component_0_2,
+	&mercury_data_ml_backend__mlds__du_functor_desc_target_code_component_0_3,
+	&mercury_data_ml_backend__mlds__du_functor_desc_target_code_component_0_0
+};
+
+const MR_Integer mercury_data_ml_backend__mlds__functor_number_map_target_code_component_0[] = {
+	4,
+	1,
+	2,
+	3,
+	0 };
+	
+const MR_TypeCtorInfo_Struct mercury_data_ml_backend__mlds__type_ctor_info_target_code_component_0 = {
+	0,
+	13,
+	4,
+	MR_TYPECTOR_REP_DU,
+	MR_MAYBE_STATIC_CODE(MR_ENTRY_AP(__Unify___ml_backend__mlds__target_code_component_0_0)),
+	MR_MAYBE_STATIC_CODE(MR_ENTRY_AP(__Compare___ml_backend__mlds__target_code_component_0_0)),
+	"ml_backend.mlds",
+	"target_code_component",
+	{ (void *)mercury_data_ml_backend__mlds__du_name_ordered_target_code_component_0 },
+	{ (void *)mercury_data_ml_backend__mlds__du_ptag_ordered_target_code_component_0 },
+	5,
+	4,
+	mercury_data_ml_backend__mlds__functor_number_map_target_code_component_0
+};
+
+const MR_TypeCtorInfo_Struct mercury_data_ml_backend__mlds__type_ctor_info_target_code_attributes_0 = {
+	0,
+	13,
+	-1,
+	MR_TYPECTOR_REP_EQUIV_GROUND,
+	MR_MAYBE_STATIC_CODE(MR_ENTRY_AP(__Unify___ml_backend__mlds__target_code_attributes_0_0)),
+	MR_MAYBE_STATIC_CODE(MR_ENTRY_AP(__Compare___ml_backend__mlds__target_code_attributes_0_0)),
+	"ml_backend.mlds",
+	"target_code_attributes",
+	{ 0 },
+	{ (void *)&mercury_data_list__ti_list_1ml_backend__mlds__type_ctor_info_target_code_attribute_0 },
+	-1,
+	0,
+	NULL
+};
+extern const MR_TypeCtorInfo_Struct mercury_data_builtin__type_ctor_info_int_0;
+extern const MR_TypeCtorInfo_Struct mercury_data_builtin__type_ctor_info_int_0;
+
+static const MR_NotagFunctorDesc mercury_data_ml_backend__mlds__notag_functor_desc_target_code_attribute_0 = {
+	"max_stack_size",
+	(MR_PseudoTypeInfo) &mercury_data_builtin__type_ctor_info_int_0,
+	NULL
+};
+
+const MR_Integer mercury_data_ml_backend__mlds__functor_number_map_target_code_attribute_0[] = {
+	0 };
+	
+const MR_TypeCtorInfo_Struct mercury_data_ml_backend__mlds__type_ctor_info_target_code_attribute_0 = {
+	0,
+	13,
+	-1,
+	MR_TYPECTOR_REP_NOTAG_GROUND,
+	MR_MAYBE_STATIC_CODE(MR_ENTRY_AP(__Unify___ml_backend__mlds__target_code_attribute_0_0)),
+	MR_MAYBE_STATIC_CODE(MR_ENTRY_AP(__Compare___ml_backend__mlds__target_code_attribute_0_0)),
+	"ml_backend.mlds",
+	"target_code_attribute",
+	{ (void *)&mercury_data_ml_backend__mlds__notag_functor_desc_target_code_attribute_0 },
+	{ (void *)&mercury_data_ml_backend__mlds__notag_functor_desc_target_code_attribute_0 },
+	1,
+	4,
+	mercury_data_ml_backend__mlds__functor_number_map_target_code_attribute_0
+};
+extern const MR_TypeCtorInfo_Struct mercury_data_ml_backend__mlds__type_ctor_info_mlds_stmt_0;
+extern const MR_TypeCtorInfo_Struct mercury_data_ml_backend__mlds__type_ctor_info_mlds_context_0;
+
+const MR_PseudoTypeInfo mercury_data_ml_backend__mlds__field_types_statement_0_0[] = {
+	(MR_PseudoTypeInfo) &mercury_data_ml_backend__mlds__type_ctor_info_mlds_stmt_0,
+	(MR_PseudoTypeInfo) &mercury_data_ml_backend__mlds__type_ctor_info_mlds_context_0
+};
+
+static const MR_DuFunctorDesc mercury_data_ml_backend__mlds__du_functor_desc_statement_0_0 = {
+	"statement",
+	2,
+	0,
+	MR_SECTAG_NONE,
+	0,
+	-1,
+	0,
+	(MR_PseudoTypeInfo *) mercury_data_ml_backend__mlds__field_types_statement_0_0,
+	NULL,
+	NULL
+};
+
+const MR_DuFunctorDescPtr mercury_data_ml_backend__mlds__du_stag_ordered_statement_0_0[] = {
+	&mercury_data_ml_backend__mlds__du_functor_desc_statement_0_0
+
+};
+
+const MR_DuPtagLayout mercury_data_ml_backend__mlds__du_ptag_ordered_statement_0[] = {
+	{ 1, MR_SECTAG_NONE,
+	mercury_data_ml_backend__mlds__du_stag_ordered_statement_0_0 }
+
+};
+
+const MR_DuFunctorDescPtr mercury_data_ml_backend__mlds__du_name_ordered_statement_0[] = {
+	&mercury_data_ml_backend__mlds__du_functor_desc_statement_0_0
+};
+
+const MR_Integer mercury_data_ml_backend__mlds__functor_number_map_statement_0[] = {
+	0 };
+	
+const MR_TypeCtorInfo_Struct mercury_data_ml_backend__mlds__type_ctor_info_statement_0 = {
+	0,
+	13,
+	1,
+	MR_TYPECTOR_REP_DU,
+	MR_MAYBE_STATIC_CODE(MR_ENTRY_AP(__Unify___ml_backend__mlds__statement_0_0)),
+	MR_MAYBE_STATIC_CODE(MR_ENTRY_AP(__Compare___ml_backend__mlds__statement_0_0)),
+	"ml_backend.mlds",
+	"statement",
+	{ (void *)mercury_data_ml_backend__mlds__du_name_ordered_statement_0 },
+	{ (void *)mercury_data_ml_backend__mlds__du_ptag_ordered_statement_0 },
+	1,
+	4,
+	mercury_data_ml_backend__mlds__functor_number_map_statement_0
+};
+
+static const MR_EnumFunctorDesc mercury_data_ml_backend__mlds__enum_functor_desc_per_instance_0_0 = {
+	"one_copy",
+	0
+};
+
+static const MR_EnumFunctorDesc mercury_data_ml_backend__mlds__enum_functor_desc_per_instance_0_1 = {
+	"per_instance",
+	1
+};
+
+const MR_EnumFunctorDescPtr mercury_data_ml_backend__mlds__enum_value_ordered_per_instance_0[] = {
+	&mercury_data_ml_backend__mlds__enum_functor_desc_per_instance_0_0,
+	&mercury_data_ml_backend__mlds__enum_functor_desc_per_instance_0_1
+};
+
+const MR_EnumFunctorDescPtr mercury_data_ml_backend__mlds__enum_name_ordered_per_instance_0[] = {
+	&mercury_data_ml_backend__mlds__enum_functor_desc_per_instance_0_0,
+	&mercury_data_ml_backend__mlds__enum_functor_desc_per_instance_0_1
+};
+
+const MR_Integer mercury_data_ml_backend__mlds__functor_number_map_per_instance_0[] = {
+	0,
+	1 };
+	
+const MR_TypeCtorInfo_Struct mercury_data_ml_backend__mlds__type_ctor_info_per_instance_0 = {
+	0,
+	13,
+	-1,
+	MR_TYPECTOR_REP_ENUM,
+	MR_MAYBE_STATIC_CODE(MR_ENTRY_AP(__Unify___ml_backend__mlds__per_instance_0_0)),
+	MR_MAYBE_STATIC_CODE(MR_ENTRY_AP(__Compare___ml_backend__mlds__per_instance_0_0)),
+	"ml_backend.mlds",
+	"per_instance",
+	{ (void *)mercury_data_ml_backend__mlds__enum_name_ordered_per_instance_0 },
+	{ (void *)mercury_data_ml_backend__mlds__enum_value_ordered_per_instance_0 },
+	2,
+	4,
+	mercury_data_ml_backend__mlds__functor_number_map_per_instance_0
+};
+extern const MR_TypeCtorInfo_Struct mercury_data_ml_backend__mlds__type_ctor_info_mlds_type_0;
+
+const MR_PseudoTypeInfo mercury_data_ml_backend__mlds__field_types_outline_arg_0_0[] = {
+	(MR_PseudoTypeInfo) &mercury_data_ml_backend__mlds__type_ctor_info_mlds_type_0,
+	(MR_PseudoTypeInfo) &mercury_data_builtin__type_ctor_info_string_0,
+	(MR_PseudoTypeInfo) &mercury_data_ml_backend__mlds__type_ctor_info_mlds_rval_0
+};
+
+static const MR_DuFunctorDesc mercury_data_ml_backend__mlds__du_functor_desc_outline_arg_0_0 = {
+	"in",
+	3,
+	0,
+	MR_SECTAG_NONE,
+	1,
+	-1,
+	0,
+	(MR_PseudoTypeInfo *) mercury_data_ml_backend__mlds__field_types_outline_arg_0_0,
+	NULL,
+	NULL
+};
+
+const MR_PseudoTypeInfo mercury_data_ml_backend__mlds__field_types_outline_arg_0_1[] = {
+	(MR_PseudoTypeInfo) &mercury_data_ml_backend__mlds__type_ctor_info_mlds_type_0,
+	(MR_PseudoTypeInfo) &mercury_data_builtin__type_ctor_info_string_0,
+	(MR_PseudoTypeInfo) &mercury_data_ml_backend__mlds__type_ctor_info_mlds_lval_0
+};
+
+static const MR_DuFunctorDesc mercury_data_ml_backend__mlds__du_functor_desc_outline_arg_0_1 = {
+	"out",
+	3,
+	0,
+	MR_SECTAG_NONE,
+	2,
+	-1,
+	1,
+	(MR_PseudoTypeInfo *) mercury_data_ml_backend__mlds__field_types_outline_arg_0_1,
+	NULL,
+	NULL
+};
+
+static const MR_DuFunctorDesc mercury_data_ml_backend__mlds__du_functor_desc_outline_arg_0_2 = {
+	"unused",
+	0,
+	0,
+	MR_SECTAG_LOCAL,
+	0,
+	0,
+	2,
+	(MR_PseudoTypeInfo *) NULL,
+	NULL,
+	NULL
+};
+
+const MR_DuFunctorDescPtr mercury_data_ml_backend__mlds__du_stag_ordered_outline_arg_0_0[] = {
+	&mercury_data_ml_backend__mlds__du_functor_desc_outline_arg_0_2
+
+};
+
+const MR_DuFunctorDescPtr mercury_data_ml_backend__mlds__du_stag_ordered_outline_arg_0_1[] = {
+	&mercury_data_ml_backend__mlds__du_functor_desc_outline_arg_0_0
+
+};
+
+const MR_DuFunctorDescPtr mercury_data_ml_backend__mlds__du_stag_ordered_outline_arg_0_2[] = {
+	&mercury_data_ml_backend__mlds__du_functor_desc_outline_arg_0_1
+
+};
+
+const MR_DuPtagLayout mercury_data_ml_backend__mlds__du_ptag_ordered_outline_arg_0[] = {
+	{ 1, MR_SECTAG_LOCAL,
+	mercury_data_ml_backend__mlds__du_stag_ordered_outline_arg_0_0 },
+	{ 1, MR_SECTAG_NONE,
+	mercury_data_ml_backend__mlds__du_stag_ordered_outline_arg_0_1 },
+	{ 1, MR_SECTAG_NONE,
+	mercury_data_ml_backend__mlds__du_stag_ordered_outline_arg_0_2 }
+
+};
+
+const MR_DuFunctorDescPtr mercury_data_ml_backend__mlds__du_name_ordered_outline_arg_0[] = {
+	&mercury_data_ml_backend__mlds__du_functor_desc_outline_arg_0_0,
+	&mercury_data_ml_backend__mlds__du_functor_desc_outline_arg_0_1,
+	&mercury_data_ml_backend__mlds__du_functor_desc_outline_arg_0_2
+};
+
+const MR_Integer mercury_data_ml_backend__mlds__functor_number_map_outline_arg_0[] = {
+	0,
+	1,
+	2 };
+	
+const MR_TypeCtorInfo_Struct mercury_data_ml_backend__mlds__type_ctor_info_outline_arg_0 = {
+	0,
+	13,
+	3,
+	MR_TYPECTOR_REP_DU,
+	MR_MAYBE_STATIC_CODE(MR_ENTRY_AP(__Unify___ml_backend__mlds__outline_arg_0_0)),
+	MR_MAYBE_STATIC_CODE(MR_ENTRY_AP(__Compare___ml_backend__mlds__outline_arg_0_0)),
+	"ml_backend.mlds",
+	"outline_arg",
+	{ (void *)mercury_data_ml_backend__mlds__du_name_ordered_outline_arg_0 },
+	{ (void *)mercury_data_ml_backend__mlds__du_ptag_ordered_outline_arg_0 },
+	3,
+	4,
+	mercury_data_ml_backend__mlds__functor_number_map_outline_arg_0
+};
+
+static const MR_FA_TypeInfo_Struct1 mercury_data_maybe__ti_maybe_1builtin__type_ctor_info_int_0 = {
+	&mercury_data_maybe__type_ctor_info_maybe_1,
+{	(MR_TypeInfo) &mercury_data_builtin__type_ctor_info_int_0
+}};
+
+const MR_PseudoTypeInfo mercury_data_ml_backend__mlds__field_types_mlds_var_name_0_0[] = {
+	(MR_PseudoTypeInfo) &mercury_data_builtin__type_ctor_info_string_0,
+	(MR_PseudoTypeInfo) &mercury_data_maybe__ti_maybe_1builtin__type_ctor_info_int_0
+};
+
+static const MR_DuFunctorDesc mercury_data_ml_backend__mlds__du_functor_desc_mlds_var_name_0_0 = {
+	"mlds_var_name",
+	2,
+	0,
+	MR_SECTAG_NONE,
+	0,
+	-1,
+	0,
+	(MR_PseudoTypeInfo *) mercury_data_ml_backend__mlds__field_types_mlds_var_name_0_0,
+	NULL,
+	NULL
+};
+
+const MR_DuFunctorDescPtr mercury_data_ml_backend__mlds__du_stag_ordered_mlds_var_name_0_0[] = {
+	&mercury_data_ml_backend__mlds__du_functor_desc_mlds_var_name_0_0
+
+};
+
+const MR_DuPtagLayout mercury_data_ml_backend__mlds__du_ptag_ordered_mlds_var_name_0[] = {
+	{ 1, MR_SECTAG_NONE,
+	mercury_data_ml_backend__mlds__du_stag_ordered_mlds_var_name_0_0 }
+
+};
+
+const MR_DuFunctorDescPtr mercury_data_ml_backend__mlds__du_name_ordered_mlds_var_name_0[] = {
+	&mercury_data_ml_backend__mlds__du_functor_desc_mlds_var_name_0_0
+};
+
+const MR_Integer mercury_data_ml_backend__mlds__functor_number_map_mlds_var_name_0[] = {
+	0 };
+	
+const MR_TypeCtorInfo_Struct mercury_data_ml_backend__mlds__type_ctor_info_mlds_var_name_0 = {
+	0,
+	13,
+	1,
+	MR_TYPECTOR_REP_DU,
+	MR_MAYBE_STATIC_CODE(MR_ENTRY_AP(__Unify___ml_backend__mlds__mlds_var_name_0_0)),
+	MR_MAYBE_STATIC_CODE(MR_ENTRY_AP(__Compare___ml_backend__mlds__mlds_var_name_0_0)),
+	"ml_backend.mlds",
+	"mlds_var_name",
+	{ (void *)mercury_data_ml_backend__mlds__du_name_ordered_mlds_var_name_0 },
+	{ (void *)mercury_data_ml_backend__mlds__du_ptag_ordered_mlds_var_name_0 },
+	1,
+	4,
+	mercury_data_ml_backend__mlds__functor_number_map_mlds_var_name_0
+};
+extern const MR_TypeCtorInfo_Struct mercury_data_ml_backend__mlds__type_ctor_info_mlds_var_name_0;
+
+static const MR_FA_TypeInfo_Struct1 mercury_data_ml_backend__mlds__ti_mlds_fully_qualified_name_1ml_backend__mlds__type_ctor_info_mlds_var_name_0 = {
+	&mercury_data_ml_backend__mlds__type_ctor_info_mlds_fully_qualified_name_1,
+{	(MR_TypeInfo) &mercury_data_ml_backend__mlds__type_ctor_info_mlds_var_name_0
+}};
+
+const MR_TypeCtorInfo_Struct mercury_data_ml_backend__mlds__type_ctor_info_mlds_var_0 = {
+	0,
+	13,
+	-1,
+	MR_TYPECTOR_REP_EQUIV_GROUND,
+	MR_MAYBE_STATIC_CODE(MR_ENTRY_AP(__Unify___ml_backend__mlds__mlds_var_0_0)),
+	MR_MAYBE_STATIC_CODE(MR_ENTRY_AP(__Compare___ml_backend__mlds__mlds_var_0_0)),
+	"ml_backend.mlds",
+	"mlds_var",
+	{ 0 },
+	{ (void *)&mercury_data_ml_backend__mlds__ti_mlds_fully_qualified_name_1ml_backend__mlds__type_ctor_info_mlds_var_name_0 },
+	-1,
+	0,
+	NULL
+};
+
+const MR_PseudoTypeInfo mercury_data_ml_backend__mlds__field_types_mlds_unary_op_0_0[] = {
+	(MR_PseudoTypeInfo) &mercury_data_ml_backend__mlds__type_ctor_info_mlds_type_0
+};
+
+static const MR_DuFunctorDesc mercury_data_ml_backend__mlds__du_functor_desc_mlds_unary_op_0_0 = {
+	"box",
+	1,
+	0,
+	MR_SECTAG_NONE,
+	0,
+	-1,
+	0,
+	(MR_PseudoTypeInfo *) mercury_data_ml_backend__mlds__field_types_mlds_unary_op_0_0,
+	NULL,
+	NULL
+};
+
+const MR_PseudoTypeInfo mercury_data_ml_backend__mlds__field_types_mlds_unary_op_0_1[] = {
+	(MR_PseudoTypeInfo) &mercury_data_ml_backend__mlds__type_ctor_info_mlds_type_0
+};
+
+static const MR_DuFunctorDesc mercury_data_ml_backend__mlds__du_functor_desc_mlds_unary_op_0_1 = {
+	"unbox",
+	1,
+	0,
+	MR_SECTAG_NONE,
+	1,
+	-1,
+	1,
+	(MR_PseudoTypeInfo *) mercury_data_ml_backend__mlds__field_types_mlds_unary_op_0_1,
+	NULL,
+	NULL
+};
+
+const MR_PseudoTypeInfo mercury_data_ml_backend__mlds__field_types_mlds_unary_op_0_2[] = {
+	(MR_PseudoTypeInfo) &mercury_data_ml_backend__mlds__type_ctor_info_mlds_type_0
+};
+
+static const MR_DuFunctorDesc mercury_data_ml_backend__mlds__du_functor_desc_mlds_unary_op_0_2 = {
+	"cast",
+	1,
+	0,
+	MR_SECTAG_NONE,
+	2,
+	-1,
+	2,
+	(MR_PseudoTypeInfo *) mercury_data_ml_backend__mlds__field_types_mlds_unary_op_0_2,
+	NULL,
+	NULL
+};
+extern const MR_TypeCtorInfo_Struct mercury_data_backend_libs__builtin_ops__type_ctor_info_unary_op_0;
+extern const MR_TypeCtorInfo_Struct mercury_data_backend_libs__builtin_ops__type_ctor_info_unary_op_0;
+
+const MR_PseudoTypeInfo mercury_data_ml_backend__mlds__field_types_mlds_unary_op_0_3[] = {
+	(MR_PseudoTypeInfo) &mercury_data_backend_libs__builtin_ops__type_ctor_info_unary_op_0
+};
+
+static const MR_DuFunctorDesc mercury_data_ml_backend__mlds__du_functor_desc_mlds_unary_op_0_3 = {
+	"std_unop",
+	1,
+	0,
+	MR_SECTAG_NONE,
+	3,
+	-1,
+	3,
+	(MR_PseudoTypeInfo *) mercury_data_ml_backend__mlds__field_types_mlds_unary_op_0_3,
+	NULL,
+	NULL
+};
+
+const MR_DuFunctorDescPtr mercury_data_ml_backend__mlds__du_stag_ordered_mlds_unary_op_0_0[] = {
+	&mercury_data_ml_backend__mlds__du_functor_desc_mlds_unary_op_0_0
+
+};
+
+const MR_DuFunctorDescPtr mercury_data_ml_backend__mlds__du_stag_ordered_mlds_unary_op_0_1[] = {
+	&mercury_data_ml_backend__mlds__du_functor_desc_mlds_unary_op_0_1
+
+};
+
+const MR_DuFunctorDescPtr mercury_data_ml_backend__mlds__du_stag_ordered_mlds_unary_op_0_2[] = {
+	&mercury_data_ml_backend__mlds__du_functor_desc_mlds_unary_op_0_2
+
+};
+
+const MR_DuFunctorDescPtr mercury_data_ml_backend__mlds__du_stag_ordered_mlds_unary_op_0_3[] = {
+	&mercury_data_ml_backend__mlds__du_functor_desc_mlds_unary_op_0_3
+
+};
+
+const MR_DuPtagLayout mercury_data_ml_backend__mlds__du_ptag_ordered_mlds_unary_op_0[] = {
+	{ 1, MR_SECTAG_NONE,
+	mercury_data_ml_backend__mlds__du_stag_ordered_mlds_unary_op_0_0 },
+	{ 1, MR_SECTAG_NONE,
+	mercury_data_ml_backend__mlds__du_stag_ordered_mlds_unary_op_0_1 },
+	{ 1, MR_SECTAG_NONE,
+	mercury_data_ml_backend__mlds__du_stag_ordered_mlds_unary_op_0_2 },
+	{ 1, MR_SECTAG_NONE,
+	mercury_data_ml_backend__mlds__du_stag_ordered_mlds_unary_op_0_3 }
+
+};
+
+const MR_DuFunctorDescPtr mercury_data_ml_backend__mlds__du_name_ordered_mlds_unary_op_0[] = {
+	&mercury_data_ml_backend__mlds__du_functor_desc_mlds_unary_op_0_0,
+	&mercury_data_ml_backend__mlds__du_functor_desc_mlds_unary_op_0_2,
+	&mercury_data_ml_backend__mlds__du_functor_desc_mlds_unary_op_0_3,
+	&mercury_data_ml_backend__mlds__du_functor_desc_mlds_unary_op_0_1
+};
+
+const MR_Integer mercury_data_ml_backend__mlds__functor_number_map_mlds_unary_op_0[] = {
+	0,
+	3,
+	1,
+	2 };
+	
+const MR_TypeCtorInfo_Struct mercury_data_ml_backend__mlds__type_ctor_info_mlds_unary_op_0 = {
+	0,
+	13,
+	4,
+	MR_TYPECTOR_REP_DU,
+	MR_MAYBE_STATIC_CODE(MR_ENTRY_AP(__Unify___ml_backend__mlds__mlds_unary_op_0_0)),
+	MR_MAYBE_STATIC_CODE(MR_ENTRY_AP(__Compare___ml_backend__mlds__mlds_unary_op_0_0)),
+	"ml_backend.mlds",
+	"mlds_unary_op",
+	{ (void *)mercury_data_ml_backend__mlds__du_name_ordered_mlds_unary_op_0 },
+	{ (void *)mercury_data_ml_backend__mlds__du_ptag_ordered_mlds_unary_op_0 },
+	4,
+	4,
+	mercury_data_ml_backend__mlds__functor_number_map_mlds_unary_op_0
+};
+extern const MR_TypeCtorInfo_Struct mercury_data_parse_tree__prog_data__type_ctor_info_mer_type_0;
+extern const MR_TypeCtorInfo_Struct mercury_data_parse_tree__prog_type__type_ctor_info_type_ctor_category_0;
+extern const MR_TypeCtorInfo_Struct mercury_data_backend_libs__foreign__type_ctor_info_exported_type_0;
+extern const MR_TypeCtorInfo_Struct mercury_data_parse_tree__prog_data__type_ctor_info_mer_type_0;
+extern const MR_TypeCtorInfo_Struct mercury_data_parse_tree__prog_type__type_ctor_info_type_ctor_category_0;
+extern const MR_TypeCtorInfo_Struct mercury_data_backend_libs__foreign__type_ctor_info_exported_type_0;
+
+const MR_PseudoTypeInfo mercury_data_ml_backend__mlds__field_types_mlds_type_0_0[] = {
+	(MR_PseudoTypeInfo) &mercury_data_parse_tree__prog_data__type_ctor_info_mer_type_0,
+	(MR_PseudoTypeInfo) &mercury_data_parse_tree__prog_type__type_ctor_info_type_ctor_category_0,
+	(MR_PseudoTypeInfo) &mercury_data_backend_libs__foreign__type_ctor_info_exported_type_0
+};
+
+static const MR_DuFunctorDesc mercury_data_ml_backend__mlds__du_functor_desc_mlds_type_0_0 = {
+	"mercury_type",
+	3,
+	0,
+	MR_SECTAG_NONE,
+	1,
+	-1,
+	0,
+	(MR_PseudoTypeInfo *) mercury_data_ml_backend__mlds__field_types_mlds_type_0_0,
+	NULL,
+	NULL
+};
+
+const MR_PseudoTypeInfo mercury_data_ml_backend__mlds__field_types_mlds_type_0_1[] = {
+	(MR_PseudoTypeInfo) &mercury_data_ml_backend__mlds__type_ctor_info_mlds_type_0
+};
+
+static const MR_DuFunctorDesc mercury_data_ml_backend__mlds__du_functor_desc_mlds_type_0_1 = {
+	"mlds_mercury_array_type",
+	1,
+	0,
+	MR_SECTAG_NONE,
+	2,
+	-1,
+	1,
+	(MR_PseudoTypeInfo *) mercury_data_ml_backend__mlds__field_types_mlds_type_0_1,
+	NULL,
+	NULL
+};
+
+static const MR_FA_TypeInfo_Struct1 mercury_data_list__ti_list_1ml_backend__mlds__type_ctor_info_mlds_type_0 = {
+	&mercury_data_list__type_ctor_info_list_1,
+{	(MR_TypeInfo) &mercury_data_ml_backend__mlds__type_ctor_info_mlds_type_0
+}};
+
+const MR_PseudoTypeInfo mercury_data_ml_backend__mlds__field_types_mlds_type_0_2[] = {
+	(MR_PseudoTypeInfo) &mercury_data_list__ti_list_1ml_backend__mlds__type_ctor_info_mlds_type_0
+};
+
+static const MR_DuFunctorDesc mercury_data_ml_backend__mlds__du_functor_desc_mlds_type_0_2 = {
+	"mlds_cont_type",
+	1,
+	0,
+	MR_SECTAG_REMOTE,
+	3,
+	0,
+	2,
+	(MR_PseudoTypeInfo *) mercury_data_ml_backend__mlds__field_types_mlds_type_0_2,
+	NULL,
+	NULL
+};
+
+static const MR_DuFunctorDesc mercury_data_ml_backend__mlds__du_functor_desc_mlds_type_0_3 = {
+	"mlds_commit_type",
+	0,
+	0,
+	MR_SECTAG_LOCAL,
+	0,
+	0,
+	3,
+	(MR_PseudoTypeInfo *) NULL,
+	NULL,
+	NULL
+};
+
+static const MR_DuFunctorDesc mercury_data_ml_backend__mlds__du_functor_desc_mlds_type_0_4 = {
+	"mlds_native_bool_type",
+	0,
+	0,
+	MR_SECTAG_LOCAL,
+	0,
+	1,
+	4,
+	(MR_PseudoTypeInfo *) NULL,
+	NULL,
+	NULL
+};
+
+static const MR_DuFunctorDesc mercury_data_ml_backend__mlds__du_functor_desc_mlds_type_0_5 = {
+	"mlds_native_int_type",
+	0,
+	0,
+	MR_SECTAG_LOCAL,
+	0,
+	2,
+	5,
+	(MR_PseudoTypeInfo *) NULL,
+	NULL,
+	NULL
+};
+
+static const MR_DuFunctorDesc mercury_data_ml_backend__mlds__du_functor_desc_mlds_type_0_6 = {
+	"mlds_native_float_type",
+	0,
+	0,
+	MR_SECTAG_LOCAL,
+	0,
+	3,
+	6,
+	(MR_PseudoTypeInfo *) NULL,
+	NULL,
+	NULL
+};
+
+static const MR_DuFunctorDesc mercury_data_ml_backend__mlds__du_functor_desc_mlds_type_0_7 = {
+	"mlds_native_char_type",
+	0,
+	0,
+	MR_SECTAG_LOCAL,
+	0,
+	4,
+	7,
+	(MR_PseudoTypeInfo *) NULL,
+	NULL,
+	NULL
+};
+extern const MR_TypeCtorInfo_Struct mercury_data_parse_tree__prog_data__type_ctor_info_foreign_language_type_0;
+extern const MR_TypeCtorInfo_Struct mercury_data_parse_tree__prog_data__type_ctor_info_foreign_language_type_0;
+
+const MR_PseudoTypeInfo mercury_data_ml_backend__mlds__field_types_mlds_type_0_8[] = {
+	(MR_PseudoTypeInfo) &mercury_data_parse_tree__prog_data__type_ctor_info_foreign_language_type_0
+};
+
+static const MR_DuFunctorDesc mercury_data_ml_backend__mlds__du_functor_desc_mlds_type_0_8 = {
+	"mlds_foreign_type",
+	1,
+	0,
+	MR_SECTAG_REMOTE,
+	3,
+	1,
+	8,
+	(MR_PseudoTypeInfo *) mercury_data_ml_backend__mlds__field_types_mlds_type_0_8,
+	NULL,
+	NULL
+};
+
+static const MR_FA_TypeInfo_Struct1 mercury_data_ml_backend__mlds__ti_mlds_fully_qualified_name_1builtin__type_ctor_info_string_0 = {
+	&mercury_data_ml_backend__mlds__type_ctor_info_mlds_fully_qualified_name_1,
+{	(MR_TypeInfo) &mercury_data_builtin__type_ctor_info_string_0
+}};
+extern const MR_TypeCtorInfo_Struct mercury_data_ml_backend__mlds__type_ctor_info_mlds_class_kind_0;
+
+const MR_PseudoTypeInfo mercury_data_ml_backend__mlds__field_types_mlds_type_0_9[] = {
+	(MR_PseudoTypeInfo) &mercury_data_ml_backend__mlds__ti_mlds_fully_qualified_name_1builtin__type_ctor_info_string_0,
+	(MR_PseudoTypeInfo) &mercury_data_builtin__type_ctor_info_int_0,
+	(MR_PseudoTypeInfo) &mercury_data_ml_backend__mlds__type_ctor_info_mlds_class_kind_0
+};
+
+static const MR_DuFunctorDesc mercury_data_ml_backend__mlds__du_functor_desc_mlds_type_0_9 = {
+	"mlds_class_type",
+	3,
+	0,
+	MR_SECTAG_REMOTE,
+	3,
+	2,
+	9,
+	(MR_PseudoTypeInfo *) mercury_data_ml_backend__mlds__field_types_mlds_type_0_9,
+	NULL,
+	NULL
+};
+
+const MR_PseudoTypeInfo mercury_data_ml_backend__mlds__field_types_mlds_type_0_10[] = {
+	(MR_PseudoTypeInfo) &mercury_data_ml_backend__mlds__type_ctor_info_mlds_type_0
+};
+
+static const MR_DuFunctorDesc mercury_data_ml_backend__mlds__du_functor_desc_mlds_type_0_10 = {
+	"mlds_array_type",
+	1,
+	0,
+	MR_SECTAG_REMOTE,
+	3,
+	3,
+	10,
+	(MR_PseudoTypeInfo *) mercury_data_ml_backend__mlds__field_types_mlds_type_0_10,
+	NULL,
+	NULL
+};
+
+const MR_PseudoTypeInfo mercury_data_ml_backend__mlds__field_types_mlds_type_0_11[] = {
+	(MR_PseudoTypeInfo) &mercury_data_ml_backend__mlds__type_ctor_info_mlds_type_0
+};
+
+static const MR_DuFunctorDesc mercury_data_ml_backend__mlds__du_functor_desc_mlds_type_0_11 = {
+	"mlds_ptr_type",
+	1,
+	0,
+	MR_SECTAG_REMOTE,
+	3,
+	4,
+	11,
+	(MR_PseudoTypeInfo *) mercury_data_ml_backend__mlds__field_types_mlds_type_0_11,
+	NULL,
+	NULL
+};
+extern const MR_TypeCtorInfo_Struct mercury_data_ml_backend__mlds__type_ctor_info_mlds_func_params_0;
+
+const MR_PseudoTypeInfo mercury_data_ml_backend__mlds__field_types_mlds_type_0_12[] = {
+	(MR_PseudoTypeInfo) &mercury_data_ml_backend__mlds__type_ctor_info_mlds_func_params_0
+};
+
+static const MR_DuFunctorDesc mercury_data_ml_backend__mlds__du_functor_desc_mlds_type_0_12 = {
+	"mlds_func_type",
+	1,
+	0,
+	MR_SECTAG_REMOTE,
+	3,
+	5,
+	12,
+	(MR_PseudoTypeInfo *) mercury_data_ml_backend__mlds__field_types_mlds_type_0_12,
+	NULL,
+	NULL
+};
+
+static const MR_DuFunctorDesc mercury_data_ml_backend__mlds__du_functor_desc_mlds_type_0_13 = {
+	"mlds_generic_type",
+	0,
+	0,
+	MR_SECTAG_LOCAL,
+	0,
+	5,
+	13,
+	(MR_PseudoTypeInfo *) NULL,
+	NULL,
+	NULL
+};
+
+static const MR_DuFunctorDesc mercury_data_ml_backend__mlds__du_functor_desc_mlds_type_0_14 = {
+	"mlds_generic_env_ptr_type",
+	0,
+	0,
+	MR_SECTAG_LOCAL,
+	0,
+	6,
+	14,
+	(MR_PseudoTypeInfo *) NULL,
+	NULL,
+	NULL
+};
+
+static const MR_DuFunctorDesc mercury_data_ml_backend__mlds__du_functor_desc_mlds_type_0_15 = {
+	"mlds_type_info_type",
+	0,
+	0,
+	MR_SECTAG_LOCAL,
+	0,
+	7,
+	15,
+	(MR_PseudoTypeInfo *) NULL,
+	NULL,
+	NULL
+};
+
+static const MR_DuFunctorDesc mercury_data_ml_backend__mlds__du_functor_desc_mlds_type_0_16 = {
+	"mlds_pseudo_type_info_type",
+	0,
+	0,
+	MR_SECTAG_LOCAL,
+	0,
+	8,
+	16,
+	(MR_PseudoTypeInfo *) NULL,
+	NULL,
+	NULL
+};
+extern const MR_TypeCtorInfo_Struct mercury_data_backend_libs__rtti__type_ctor_info_rtti_id_maybe_element_0;
+extern const MR_TypeCtorInfo_Struct mercury_data_backend_libs__rtti__type_ctor_info_rtti_id_maybe_element_0;
+
+const MR_PseudoTypeInfo mercury_data_ml_backend__mlds__field_types_mlds_type_0_17[] = {
+	(MR_PseudoTypeInfo) &mercury_data_backend_libs__rtti__type_ctor_info_rtti_id_maybe_element_0
+};
+
+static const MR_DuFunctorDesc mercury_data_ml_backend__mlds__du_functor_desc_mlds_type_0_17 = {
+	"mlds_rtti_type",
+	1,
+	0,
+	MR_SECTAG_REMOTE,
+	3,
+	6,
+	17,
+	(MR_PseudoTypeInfo *) mercury_data_ml_backend__mlds__field_types_mlds_type_0_17,
+	NULL,
+	NULL
+};
+extern const MR_TypeCtorInfo_Struct mercury_data_backend_libs__rtti__type_ctor_info_proc_tabling_struct_id_0;
+extern const MR_TypeCtorInfo_Struct mercury_data_backend_libs__rtti__type_ctor_info_proc_tabling_struct_id_0;
+
+const MR_PseudoTypeInfo mercury_data_ml_backend__mlds__field_types_mlds_type_0_18[] = {
+	(MR_PseudoTypeInfo) &mercury_data_backend_libs__rtti__type_ctor_info_proc_tabling_struct_id_0
+};
+
+static const MR_DuFunctorDesc mercury_data_ml_backend__mlds__du_functor_desc_mlds_type_0_18 = {
+	"mlds_tabling_type",
+	1,
+	0,
+	MR_SECTAG_REMOTE,
+	3,
+	7,
+	18,
+	(MR_PseudoTypeInfo *) mercury_data_ml_backend__mlds__field_types_mlds_type_0_18,
+	NULL,
+	NULL
+};
+
+static const MR_DuFunctorDesc mercury_data_ml_backend__mlds__du_functor_desc_mlds_type_0_19 = {
+	"mlds_unknown_type",
+	0,
+	0,
+	MR_SECTAG_LOCAL,
+	0,
+	9,
+	19,
+	(MR_PseudoTypeInfo *) NULL,
+	NULL,
+	NULL
+};
+
+const MR_DuFunctorDescPtr mercury_data_ml_backend__mlds__du_stag_ordered_mlds_type_0_0[] = {
+	&mercury_data_ml_backend__mlds__du_functor_desc_mlds_type_0_3,
+	&mercury_data_ml_backend__mlds__du_functor_desc_mlds_type_0_4,
+	&mercury_data_ml_backend__mlds__du_functor_desc_mlds_type_0_5,
+	&mercury_data_ml_backend__mlds__du_functor_desc_mlds_type_0_6,
+	&mercury_data_ml_backend__mlds__du_functor_desc_mlds_type_0_7,
+	&mercury_data_ml_backend__mlds__du_functor_desc_mlds_type_0_13,
+	&mercury_data_ml_backend__mlds__du_functor_desc_mlds_type_0_14,
+	&mercury_data_ml_backend__mlds__du_functor_desc_mlds_type_0_15,
+	&mercury_data_ml_backend__mlds__du_functor_desc_mlds_type_0_16,
+	&mercury_data_ml_backend__mlds__du_functor_desc_mlds_type_0_19
+
+};
+
+const MR_DuFunctorDescPtr mercury_data_ml_backend__mlds__du_stag_ordered_mlds_type_0_1[] = {
+	&mercury_data_ml_backend__mlds__du_functor_desc_mlds_type_0_0
+
+};
+
+const MR_DuFunctorDescPtr mercury_data_ml_backend__mlds__du_stag_ordered_mlds_type_0_2[] = {
+	&mercury_data_ml_backend__mlds__du_functor_desc_mlds_type_0_1
+
+};
+
+const MR_DuFunctorDescPtr mercury_data_ml_backend__mlds__du_stag_ordered_mlds_type_0_3[] = {
+	&mercury_data_ml_backend__mlds__du_functor_desc_mlds_type_0_2,
+	&mercury_data_ml_backend__mlds__du_functor_desc_mlds_type_0_8,
+	&mercury_data_ml_backend__mlds__du_functor_desc_mlds_type_0_9,
+	&mercury_data_ml_backend__mlds__du_functor_desc_mlds_type_0_10,
+	&mercury_data_ml_backend__mlds__du_functor_desc_mlds_type_0_11,
+	&mercury_data_ml_backend__mlds__du_functor_desc_mlds_type_0_12,
+	&mercury_data_ml_backend__mlds__du_functor_desc_mlds_type_0_17,
+	&mercury_data_ml_backend__mlds__du_functor_desc_mlds_type_0_18
+
+};
+
+const MR_DuPtagLayout mercury_data_ml_backend__mlds__du_ptag_ordered_mlds_type_0[] = {
+	{ 10, MR_SECTAG_LOCAL,
+	mercury_data_ml_backend__mlds__du_stag_ordered_mlds_type_0_0 },
+	{ 1, MR_SECTAG_NONE,
+	mercury_data_ml_backend__mlds__du_stag_ordered_mlds_type_0_1 },
+	{ 1, MR_SECTAG_NONE,
+	mercury_data_ml_backend__mlds__du_stag_ordered_mlds_type_0_2 },
+	{ 8, MR_SECTAG_REMOTE,
+	mercury_data_ml_backend__mlds__du_stag_ordered_mlds_type_0_3 }
+
+};
+
+const MR_DuFunctorDescPtr mercury_data_ml_backend__mlds__du_name_ordered_mlds_type_0[] = {
+	&mercury_data_ml_backend__mlds__du_functor_desc_mlds_type_0_0,
+	&mercury_data_ml_backend__mlds__du_functor_desc_mlds_type_0_10,
+	&mercury_data_ml_backend__mlds__du_functor_desc_mlds_type_0_9,
+	&mercury_data_ml_backend__mlds__du_functor_desc_mlds_type_0_3,
+	&mercury_data_ml_backend__mlds__du_functor_desc_mlds_type_0_2,
+	&mercury_data_ml_backend__mlds__du_functor_desc_mlds_type_0_8,
+	&mercury_data_ml_backend__mlds__du_functor_desc_mlds_type_0_12,
+	&mercury_data_ml_backend__mlds__du_functor_desc_mlds_type_0_14,
+	&mercury_data_ml_backend__mlds__du_functor_desc_mlds_type_0_13,
+	&mercury_data_ml_backend__mlds__du_functor_desc_mlds_type_0_1,
+	&mercury_data_ml_backend__mlds__du_functor_desc_mlds_type_0_4,
+	&mercury_data_ml_backend__mlds__du_functor_desc_mlds_type_0_7,
+	&mercury_data_ml_backend__mlds__du_functor_desc_mlds_type_0_6,
+	&mercury_data_ml_backend__mlds__du_functor_desc_mlds_type_0_5,
+	&mercury_data_ml_backend__mlds__du_functor_desc_mlds_type_0_16,
+	&mercury_data_ml_backend__mlds__du_functor_desc_mlds_type_0_11,
+	&mercury_data_ml_backend__mlds__du_functor_desc_mlds_type_0_17,
+	&mercury_data_ml_backend__mlds__du_functor_desc_mlds_type_0_18,
+	&mercury_data_ml_backend__mlds__du_functor_desc_mlds_type_0_15,
+	&mercury_data_ml_backend__mlds__du_functor_desc_mlds_type_0_19
+};
+
+const MR_Integer mercury_data_ml_backend__mlds__functor_number_map_mlds_type_0[] = {
+	0,
+	9,
+	4,
+	3,
+	10,
+	13,
+	12,
+	11,
+	5,
+	2,
+	1,
+	15,
+	6,
+	8,
+	7,
+	18,
+	14,
+	16,
+	17,
+	19 };
+	
+const MR_TypeCtorInfo_Struct mercury_data_ml_backend__mlds__type_ctor_info_mlds_type_0 = {
+	0,
+	13,
+	4,
+	MR_TYPECTOR_REP_DU,
+	MR_MAYBE_STATIC_CODE(MR_ENTRY_AP(__Unify___ml_backend__mlds__mlds_type_0_0)),
+	MR_MAYBE_STATIC_CODE(MR_ENTRY_AP(__Compare___ml_backend__mlds__mlds_type_0_0)),
+	"ml_backend.mlds",
+	"mlds_type",
+	{ (void *)mercury_data_ml_backend__mlds__du_name_ordered_mlds_type_0 },
+	{ (void *)mercury_data_ml_backend__mlds__du_ptag_ordered_mlds_type_0 },
+	20,
+	4,
+	mercury_data_ml_backend__mlds__functor_number_map_mlds_type_0
+};
+
+static const MR_EnumFunctorDesc mercury_data_ml_backend__mlds__enum_functor_desc_mlds_target_lang_0_0 = {
+	"ml_target_c",
+	0
+};
+
+static const MR_EnumFunctorDesc mercury_data_ml_backend__mlds__enum_functor_desc_mlds_target_lang_0_1 = {
+	"ml_target_gnu_c",
+	1
+};
+
+static const MR_EnumFunctorDesc mercury_data_ml_backend__mlds__enum_functor_desc_mlds_target_lang_0_2 = {
+	"ml_target_asm",
+	2
+};
+
+static const MR_EnumFunctorDesc mercury_data_ml_backend__mlds__enum_functor_desc_mlds_target_lang_0_3 = {
+	"ml_target_il",
+	3
+};
+
+static const MR_EnumFunctorDesc mercury_data_ml_backend__mlds__enum_functor_desc_mlds_target_lang_0_4 = {
+	"ml_target_java",
+	4
+};
+
+const MR_EnumFunctorDescPtr mercury_data_ml_backend__mlds__enum_value_ordered_mlds_target_lang_0[] = {
+	&mercury_data_ml_backend__mlds__enum_functor_desc_mlds_target_lang_0_0,
+	&mercury_data_ml_backend__mlds__enum_functor_desc_mlds_target_lang_0_1,
+	&mercury_data_ml_backend__mlds__enum_functor_desc_mlds_target_lang_0_2,
+	&mercury_data_ml_backend__mlds__enum_functor_desc_mlds_target_lang_0_3,
+	&mercury_data_ml_backend__mlds__enum_functor_desc_mlds_target_lang_0_4
+};
+
+const MR_EnumFunctorDescPtr mercury_data_ml_backend__mlds__enum_name_ordered_mlds_target_lang_0[] = {
+	&mercury_data_ml_backend__mlds__enum_functor_desc_mlds_target_lang_0_2,
+	&mercury_data_ml_backend__mlds__enum_functor_desc_mlds_target_lang_0_0,
+	&mercury_data_ml_backend__mlds__enum_functor_desc_mlds_target_lang_0_1,
+	&mercury_data_ml_backend__mlds__enum_functor_desc_mlds_target_lang_0_3,
+	&mercury_data_ml_backend__mlds__enum_functor_desc_mlds_target_lang_0_4
+};
+
+const MR_Integer mercury_data_ml_backend__mlds__functor_number_map_mlds_target_lang_0[] = {
+	1,
+	2,
+	0,
+	3,
+	4 };
+	
+const MR_TypeCtorInfo_Struct mercury_data_ml_backend__mlds__type_ctor_info_mlds_target_lang_0 = {
+	0,
+	13,
+	-1,
+	MR_TYPECTOR_REP_ENUM,
+	MR_MAYBE_STATIC_CODE(MR_ENTRY_AP(__Unify___ml_backend__mlds__mlds_target_lang_0_0)),
+	MR_MAYBE_STATIC_CODE(MR_ENTRY_AP(__Compare___ml_backend__mlds__mlds_target_lang_0_0)),
+	"ml_backend.mlds",
+	"mlds_target_lang",
+	{ (void *)mercury_data_ml_backend__mlds__enum_name_ordered_mlds_target_lang_0 },
+	{ (void *)mercury_data_ml_backend__mlds__enum_value_ordered_mlds_target_lang_0 },
+	5,
+	4,
+	mercury_data_ml_backend__mlds__functor_number_map_mlds_target_lang_0
+};
+
+const MR_TypeCtorInfo_Struct mercury_data_ml_backend__mlds__type_ctor_info_mlds_tag_0 = {
+	0,
+	13,
+	-1,
+	MR_TYPECTOR_REP_EQUIV_GROUND,
+	MR_MAYBE_STATIC_CODE(MR_ENTRY_AP(__Unify___ml_backend__mlds__mlds_tag_0_0)),
+	MR_MAYBE_STATIC_CODE(MR_ENTRY_AP(__Compare___ml_backend__mlds__mlds_tag_0_0)),
+	"ml_backend.mlds",
+	"mlds_tag",
+	{ 0 },
+	{ (void *)&mercury_data_builtin__type_ctor_info_int_0 },
+	-1,
+	0,
+	NULL
+};
+
+static const MR_DuFunctorDesc mercury_data_ml_backend__mlds__du_functor_desc_mlds_switch_range_0_0 = {
+	"range_unknown",
+	0,
+	0,
+	MR_SECTAG_LOCAL,
+	0,
+	0,
+	0,
+	(MR_PseudoTypeInfo *) NULL,
+	NULL,
+	NULL
+};
+
+const MR_PseudoTypeInfo mercury_data_ml_backend__mlds__field_types_mlds_switch_range_0_1[] = {
+	(MR_PseudoTypeInfo) &mercury_data_builtin__type_ctor_info_int_0,
+	(MR_PseudoTypeInfo) &mercury_data_builtin__type_ctor_info_int_0
+};
+
+const MR_ConstString mercury_data_ml_backend__mlds__field_names_mlds_switch_range_0_1[] = {
+	"range_min",
+	"range_max"
+};
+
+static const MR_DuFunctorDesc mercury_data_ml_backend__mlds__du_functor_desc_mlds_switch_range_0_1 = {
+	"range",
+	2,
+	0,
+	MR_SECTAG_NONE,
+	1,
+	-1,
+	1,
+	(MR_PseudoTypeInfo *) mercury_data_ml_backend__mlds__field_types_mlds_switch_range_0_1,
+	mercury_data_ml_backend__mlds__field_names_mlds_switch_range_0_1,
+	NULL
+};
+
+const MR_DuFunctorDescPtr mercury_data_ml_backend__mlds__du_stag_ordered_mlds_switch_range_0_0[] = {
+	&mercury_data_ml_backend__mlds__du_functor_desc_mlds_switch_range_0_0
+
+};
+
+const MR_DuFunctorDescPtr mercury_data_ml_backend__mlds__du_stag_ordered_mlds_switch_range_0_1[] = {
+	&mercury_data_ml_backend__mlds__du_functor_desc_mlds_switch_range_0_1
+
+};
+
+const MR_DuPtagLayout mercury_data_ml_backend__mlds__du_ptag_ordered_mlds_switch_range_0[] = {
+	{ 1, MR_SECTAG_LOCAL,
+	mercury_data_ml_backend__mlds__du_stag_ordered_mlds_switch_range_0_0 },
+	{ 1, MR_SECTAG_NONE,
+	mercury_data_ml_backend__mlds__du_stag_ordered_mlds_switch_range_0_1 }
+
+};
+
+const MR_DuFunctorDescPtr mercury_data_ml_backend__mlds__du_name_ordered_mlds_switch_range_0[] = {
+	&mercury_data_ml_backend__mlds__du_functor_desc_mlds_switch_range_0_1,
+	&mercury_data_ml_backend__mlds__du_functor_desc_mlds_switch_range_0_0
+};
+
+const MR_Integer mercury_data_ml_backend__mlds__functor_number_map_mlds_switch_range_0[] = {
+	1,
+	0 };
+	
+const MR_TypeCtorInfo_Struct mercury_data_ml_backend__mlds__type_ctor_info_mlds_switch_range_0 = {
+	0,
+	13,
+	2,
+	MR_TYPECTOR_REP_DU,
+	MR_MAYBE_STATIC_CODE(MR_ENTRY_AP(__Unify___ml_backend__mlds__mlds_switch_range_0_0)),
+	MR_MAYBE_STATIC_CODE(MR_ENTRY_AP(__Compare___ml_backend__mlds__mlds_switch_range_0_0)),
+	"ml_backend.mlds",
+	"mlds_switch_range",
+	{ (void *)mercury_data_ml_backend__mlds__du_name_ordered_mlds_switch_range_0 },
+	{ (void *)mercury_data_ml_backend__mlds__du_ptag_ordered_mlds_switch_range_0 },
+	2,
+	4,
+	mercury_data_ml_backend__mlds__functor_number_map_mlds_switch_range_0
+};
+
+static const MR_DuFunctorDesc mercury_data_ml_backend__mlds__du_functor_desc_mlds_switch_default_0_0 = {
+	"default_is_unreachable",
+	0,
+	0,
+	MR_SECTAG_LOCAL,
+	0,
+	0,
+	0,
+	(MR_PseudoTypeInfo *) NULL,
+	NULL,
+	NULL
+};
+
+static const MR_DuFunctorDesc mercury_data_ml_backend__mlds__du_functor_desc_mlds_switch_default_0_1 = {
+	"default_do_nothing",
+	0,
+	0,
+	MR_SECTAG_LOCAL,
+	0,
+	1,
+	1,
+	(MR_PseudoTypeInfo *) NULL,
+	NULL,
+	NULL
+};
+extern const MR_TypeCtorInfo_Struct mercury_data_ml_backend__mlds__type_ctor_info_statement_0;
+
+const MR_PseudoTypeInfo mercury_data_ml_backend__mlds__field_types_mlds_switch_default_0_2[] = {
+	(MR_PseudoTypeInfo) &mercury_data_ml_backend__mlds__type_ctor_info_statement_0
+};
+
+static const MR_DuFunctorDesc mercury_data_ml_backend__mlds__du_functor_desc_mlds_switch_default_0_2 = {
+	"default_case",
+	1,
+	0,
+	MR_SECTAG_NONE,
+	1,
+	-1,
+	2,
+	(MR_PseudoTypeInfo *) mercury_data_ml_backend__mlds__field_types_mlds_switch_default_0_2,
+	NULL,
+	NULL
+};
+
+const MR_DuFunctorDescPtr mercury_data_ml_backend__mlds__du_stag_ordered_mlds_switch_default_0_0[] = {
+	&mercury_data_ml_backend__mlds__du_functor_desc_mlds_switch_default_0_0,
+	&mercury_data_ml_backend__mlds__du_functor_desc_mlds_switch_default_0_1
+
+};
+
+const MR_DuFunctorDescPtr mercury_data_ml_backend__mlds__du_stag_ordered_mlds_switch_default_0_1[] = {
+	&mercury_data_ml_backend__mlds__du_functor_desc_mlds_switch_default_0_2
+
+};
+
+const MR_DuPtagLayout mercury_data_ml_backend__mlds__du_ptag_ordered_mlds_switch_default_0[] = {
+	{ 2, MR_SECTAG_LOCAL,
+	mercury_data_ml_backend__mlds__du_stag_ordered_mlds_switch_default_0_0 },
+	{ 1, MR_SECTAG_NONE,
+	mercury_data_ml_backend__mlds__du_stag_ordered_mlds_switch_default_0_1 }
+
+};
+
+const MR_DuFunctorDescPtr mercury_data_ml_backend__mlds__du_name_ordered_mlds_switch_default_0[] = {
+	&mercury_data_ml_backend__mlds__du_functor_desc_mlds_switch_default_0_2,
+	&mercury_data_ml_backend__mlds__du_functor_desc_mlds_switch_default_0_1,
+	&mercury_data_ml_backend__mlds__du_functor_desc_mlds_switch_default_0_0
+};
+
+const MR_Integer mercury_data_ml_backend__mlds__functor_number_map_mlds_switch_default_0[] = {
+	2,
+	1,
+	0 };
+	
+const MR_TypeCtorInfo_Struct mercury_data_ml_backend__mlds__type_ctor_info_mlds_switch_default_0 = {
+	0,
+	13,
+	2,
+	MR_TYPECTOR_REP_DU,
+	MR_MAYBE_STATIC_CODE(MR_ENTRY_AP(__Unify___ml_backend__mlds__mlds_switch_default_0_0)),
+	MR_MAYBE_STATIC_CODE(MR_ENTRY_AP(__Compare___ml_backend__mlds__mlds_switch_default_0_0)),
+	"ml_backend.mlds",
+	"mlds_switch_default",
+	{ (void *)mercury_data_ml_backend__mlds__du_name_ordered_mlds_switch_default_0 },
+	{ (void *)mercury_data_ml_backend__mlds__du_ptag_ordered_mlds_switch_default_0 },
+	3,
+	4,
+	mercury_data_ml_backend__mlds__functor_number_map_mlds_switch_default_0
+};
+extern const MR_TypeCtorInfo_Struct mercury_data_ml_backend__mlds__type_ctor_info_mlds_switch_case_0;
+
+static const MR_FA_TypeInfo_Struct1 mercury_data_list__ti_list_1ml_backend__mlds__type_ctor_info_mlds_switch_case_0 = {
+	&mercury_data_list__type_ctor_info_list_1,
+{	(MR_TypeInfo) &mercury_data_ml_backend__mlds__type_ctor_info_mlds_switch_case_0
+}};
+
+const MR_TypeCtorInfo_Struct mercury_data_ml_backend__mlds__type_ctor_info_mlds_switch_cases_0 = {
+	0,
+	13,
+	-1,
+	MR_TYPECTOR_REP_EQUIV_GROUND,
+	MR_MAYBE_STATIC_CODE(MR_ENTRY_AP(__Unify___ml_backend__mlds__mlds_switch_cases_0_0)),
+	MR_MAYBE_STATIC_CODE(MR_ENTRY_AP(__Compare___ml_backend__mlds__mlds_switch_cases_0_0)),
+	"ml_backend.mlds",
+	"mlds_switch_cases",
+	{ 0 },
+	{ (void *)&mercury_data_list__ti_list_1ml_backend__mlds__type_ctor_info_mlds_switch_case_0 },
+	-1,
+	0,
+	NULL
+};
+extern const MR_TypeCtorInfo_Struct mercury_data_ml_backend__mlds__type_ctor_info_mlds_case_match_cond_0;
+
+static const MR_FA_TypeInfo_Struct1 mercury_data_list__ti_list_1ml_backend__mlds__type_ctor_info_mlds_case_match_cond_0 = {
+	&mercury_data_list__type_ctor_info_list_1,
+{	(MR_TypeInfo) &mercury_data_ml_backend__mlds__type_ctor_info_mlds_case_match_cond_0
+}};
+
+const MR_PseudoTypeInfo mercury_data_ml_backend__mlds__field_types_mlds_switch_case_0_0[] = {
+	(MR_PseudoTypeInfo) &mercury_data_list__ti_list_1ml_backend__mlds__type_ctor_info_mlds_case_match_cond_0,
+	(MR_PseudoTypeInfo) &mercury_data_ml_backend__mlds__type_ctor_info_statement_0
+};
+
+static const MR_DuFunctorDesc mercury_data_ml_backend__mlds__du_functor_desc_mlds_switch_case_0_0 = {
+	"mlds_switch_case",
+	2,
+	0,
+	MR_SECTAG_NONE,
+	0,
+	-1,
+	0,
+	(MR_PseudoTypeInfo *) mercury_data_ml_backend__mlds__field_types_mlds_switch_case_0_0,
+	NULL,
+	NULL
+};
+
+const MR_DuFunctorDescPtr mercury_data_ml_backend__mlds__du_stag_ordered_mlds_switch_case_0_0[] = {
+	&mercury_data_ml_backend__mlds__du_functor_desc_mlds_switch_case_0_0
+
+};
+
+const MR_DuPtagLayout mercury_data_ml_backend__mlds__du_ptag_ordered_mlds_switch_case_0[] = {
+	{ 1, MR_SECTAG_NONE,
+	mercury_data_ml_backend__mlds__du_stag_ordered_mlds_switch_case_0_0 }
+
+};
+
+const MR_DuFunctorDescPtr mercury_data_ml_backend__mlds__du_name_ordered_mlds_switch_case_0[] = {
+	&mercury_data_ml_backend__mlds__du_functor_desc_mlds_switch_case_0_0
+};
+
+const MR_Integer mercury_data_ml_backend__mlds__functor_number_map_mlds_switch_case_0[] = {
+	0 };
+	
+const MR_TypeCtorInfo_Struct mercury_data_ml_backend__mlds__type_ctor_info_mlds_switch_case_0 = {
+	0,
+	13,
+	1,
+	MR_TYPECTOR_REP_DU,
+	MR_MAYBE_STATIC_CODE(MR_ENTRY_AP(__Unify___ml_backend__mlds__mlds_switch_case_0_0)),
+	MR_MAYBE_STATIC_CODE(MR_ENTRY_AP(__Compare___ml_backend__mlds__mlds_switch_case_0_0)),
+	"ml_backend.mlds",
+	"mlds_switch_case",
+	{ (void *)mercury_data_ml_backend__mlds__du_name_ordered_mlds_switch_case_0 },
+	{ (void *)mercury_data_ml_backend__mlds__du_ptag_ordered_mlds_switch_case_0 },
+	1,
+	4,
+	mercury_data_ml_backend__mlds__functor_number_map_mlds_switch_case_0
+};
+extern const MR_TypeCtorInfo_Struct mercury_data_ml_backend__mlds__type_ctor_info_mlds_defn_0;
+
+static const MR_FA_TypeInfo_Struct1 mercury_data_list__ti_list_1ml_backend__mlds__type_ctor_info_mlds_defn_0 = {
+	&mercury_data_list__type_ctor_info_list_1,
+{	(MR_TypeInfo) &mercury_data_ml_backend__mlds__type_ctor_info_mlds_defn_0
+}};
+
+static const MR_FA_TypeInfo_Struct1 mercury_data_list__ti_list_1ml_backend__mlds__type_ctor_info_statement_0 = {
+	&mercury_data_list__type_ctor_info_list_1,
+{	(MR_TypeInfo) &mercury_data_ml_backend__mlds__type_ctor_info_statement_0
+}};
+
+const MR_PseudoTypeInfo mercury_data_ml_backend__mlds__field_types_mlds_stmt_0_0[] = {
+	(MR_PseudoTypeInfo) &mercury_data_list__ti_list_1ml_backend__mlds__type_ctor_info_mlds_defn_0,
+	(MR_PseudoTypeInfo) &mercury_data_list__ti_list_1ml_backend__mlds__type_ctor_info_statement_0
+};
+
+static const MR_DuFunctorDesc mercury_data_ml_backend__mlds__du_functor_desc_mlds_stmt_0_0 = {
+	"ml_stmt_block",
+	2,
+	0,
+	MR_SECTAG_NONE,
+	0,
+	-1,
+	0,
+	(MR_PseudoTypeInfo *) mercury_data_ml_backend__mlds__field_types_mlds_stmt_0_0,
+	NULL,
+	NULL
+};
+extern const MR_TypeCtorInfo_Struct mercury_data_bool__type_ctor_info_bool_0;
+extern const MR_TypeCtorInfo_Struct mercury_data_bool__type_ctor_info_bool_0;
+
+const MR_PseudoTypeInfo mercury_data_ml_backend__mlds__field_types_mlds_stmt_0_1[] = {
+	(MR_PseudoTypeInfo) &mercury_data_ml_backend__mlds__type_ctor_info_mlds_rval_0,
+	(MR_PseudoTypeInfo) &mercury_data_ml_backend__mlds__type_ctor_info_statement_0,
+	(MR_PseudoTypeInfo) &mercury_data_bool__type_ctor_info_bool_0
+};
+
+static const MR_DuFunctorDesc mercury_data_ml_backend__mlds__du_functor_desc_mlds_stmt_0_1 = {
+	"ml_stmt_while",
+	3,
+	0,
+	MR_SECTAG_NONE,
+	1,
+	-1,
+	1,
+	(MR_PseudoTypeInfo *) mercury_data_ml_backend__mlds__field_types_mlds_stmt_0_1,
+	NULL,
+	NULL
+};
+
+static const MR_FA_TypeInfo_Struct1 mercury_data_maybe__ti_maybe_1ml_backend__mlds__type_ctor_info_statement_0 = {
+	&mercury_data_maybe__type_ctor_info_maybe_1,
+{	(MR_TypeInfo) &mercury_data_ml_backend__mlds__type_ctor_info_statement_0
+}};
+
+const MR_PseudoTypeInfo mercury_data_ml_backend__mlds__field_types_mlds_stmt_0_2[] = {
+	(MR_PseudoTypeInfo) &mercury_data_ml_backend__mlds__type_ctor_info_mlds_rval_0,
+	(MR_PseudoTypeInfo) &mercury_data_ml_backend__mlds__type_ctor_info_statement_0,
+	(MR_PseudoTypeInfo) &mercury_data_maybe__ti_maybe_1ml_backend__mlds__type_ctor_info_statement_0
+};
+
+static const MR_DuFunctorDesc mercury_data_ml_backend__mlds__du_functor_desc_mlds_stmt_0_2 = {
+	"ml_stmt_if_then_else",
+	3,
+	0,
+	MR_SECTAG_NONE,
+	2,
+	-1,
+	2,
+	(MR_PseudoTypeInfo *) mercury_data_ml_backend__mlds__field_types_mlds_stmt_0_2,
+	NULL,
+	NULL
+};
+extern const MR_TypeCtorInfo_Struct mercury_data_ml_backend__mlds__type_ctor_info_mlds_switch_range_0;
+extern const MR_TypeCtorInfo_Struct mercury_data_ml_backend__mlds__type_ctor_info_mlds_switch_default_0;
+
+const MR_PseudoTypeInfo mercury_data_ml_backend__mlds__field_types_mlds_stmt_0_3[] = {
+	(MR_PseudoTypeInfo) &mercury_data_ml_backend__mlds__type_ctor_info_mlds_type_0,
+	(MR_PseudoTypeInfo) &mercury_data_ml_backend__mlds__type_ctor_info_mlds_rval_0,
+	(MR_PseudoTypeInfo) &mercury_data_ml_backend__mlds__type_ctor_info_mlds_switch_range_0,
+	(MR_PseudoTypeInfo) &mercury_data_list__ti_list_1ml_backend__mlds__type_ctor_info_mlds_switch_case_0,
+	(MR_PseudoTypeInfo) &mercury_data_ml_backend__mlds__type_ctor_info_mlds_switch_default_0
+};
+
+static const MR_DuFunctorDesc mercury_data_ml_backend__mlds__du_functor_desc_mlds_stmt_0_3 = {
+	"ml_stmt_switch",
+	5,
+	0,
+	MR_SECTAG_REMOTE,
+	3,
+	0,
+	3,
+	(MR_PseudoTypeInfo *) mercury_data_ml_backend__mlds__field_types_mlds_stmt_0_3,
+	NULL,
+	NULL
+};
+
+const MR_PseudoTypeInfo mercury_data_ml_backend__mlds__field_types_mlds_stmt_0_4[] = {
+	(MR_PseudoTypeInfo) &mercury_data_builtin__type_ctor_info_string_0
+};
+
+static const MR_DuFunctorDesc mercury_data_ml_backend__mlds__du_functor_desc_mlds_stmt_0_4 = {
+	"ml_stmt_label",
+	1,
+	0,
+	MR_SECTAG_REMOTE,
+	3,
+	1,
+	4,
+	(MR_PseudoTypeInfo *) mercury_data_ml_backend__mlds__field_types_mlds_stmt_0_4,
+	NULL,
+	NULL
+};
+extern const MR_TypeCtorInfo_Struct mercury_data_ml_backend__mlds__type_ctor_info_mlds_goto_target_0;
+
+const MR_PseudoTypeInfo mercury_data_ml_backend__mlds__field_types_mlds_stmt_0_5[] = {
+	(MR_PseudoTypeInfo) &mercury_data_ml_backend__mlds__type_ctor_info_mlds_goto_target_0
+};
+
+static const MR_DuFunctorDesc mercury_data_ml_backend__mlds__du_functor_desc_mlds_stmt_0_5 = {
+	"ml_stmt_goto",
+	1,
+	0,
+	MR_SECTAG_REMOTE,
+	3,
+	2,
+	5,
+	(MR_PseudoTypeInfo *) mercury_data_ml_backend__mlds__field_types_mlds_stmt_0_5,
+	NULL,
+	NULL
+};
+
+static const MR_FA_TypeInfo_Struct1 mercury_data_list__ti_list_1builtin__type_ctor_info_string_0 = {
+	&mercury_data_list__type_ctor_info_list_1,
+{	(MR_TypeInfo) &mercury_data_builtin__type_ctor_info_string_0
+}};
+
+const MR_PseudoTypeInfo mercury_data_ml_backend__mlds__field_types_mlds_stmt_0_6[] = {
+	(MR_PseudoTypeInfo) &mercury_data_ml_backend__mlds__type_ctor_info_mlds_rval_0,
+	(MR_PseudoTypeInfo) &mercury_data_list__ti_list_1builtin__type_ctor_info_string_0
+};
+
+static const MR_DuFunctorDesc mercury_data_ml_backend__mlds__du_functor_desc_mlds_stmt_0_6 = {
+	"ml_stmt_computed_goto",
+	2,
+	0,
+	MR_SECTAG_REMOTE,
+	3,
+	3,
+	6,
+	(MR_PseudoTypeInfo *) mercury_data_ml_backend__mlds__field_types_mlds_stmt_0_6,
+	NULL,
+	NULL
+};
+
+static const MR_FA_TypeInfo_Struct1 mercury_data_maybe__ti_maybe_1ml_backend__mlds__type_ctor_info_mlds_rval_0 = {
+	&mercury_data_maybe__type_ctor_info_maybe_1,
+{	(MR_TypeInfo) &mercury_data_ml_backend__mlds__type_ctor_info_mlds_rval_0
+}};
+
+static const MR_FA_TypeInfo_Struct1 mercury_data_list__ti_list_1ml_backend__mlds__type_ctor_info_mlds_rval_0 = {
+	&mercury_data_list__type_ctor_info_list_1,
+{	(MR_TypeInfo) &mercury_data_ml_backend__mlds__type_ctor_info_mlds_rval_0
+}};
+
+static const MR_FA_TypeInfo_Struct1 mercury_data_list__ti_list_1ml_backend__mlds__type_ctor_info_mlds_lval_0 = {
+	&mercury_data_list__type_ctor_info_list_1,
+{	(MR_TypeInfo) &mercury_data_ml_backend__mlds__type_ctor_info_mlds_lval_0
+}};
+extern const MR_TypeCtorInfo_Struct mercury_data_ml_backend__mlds__type_ctor_info_mlds_func_signature_0;
+extern const MR_TypeCtorInfo_Struct mercury_data_ml_backend__mlds__type_ctor_info_ml_call_kind_0;
+
+const MR_PseudoTypeInfo mercury_data_ml_backend__mlds__field_types_mlds_stmt_0_7[] = {
+	(MR_PseudoTypeInfo) &mercury_data_ml_backend__mlds__type_ctor_info_mlds_func_signature_0,
+	(MR_PseudoTypeInfo) &mercury_data_ml_backend__mlds__type_ctor_info_mlds_rval_0,
+	(MR_PseudoTypeInfo) &mercury_data_maybe__ti_maybe_1ml_backend__mlds__type_ctor_info_mlds_rval_0,
+	(MR_PseudoTypeInfo) &mercury_data_list__ti_list_1ml_backend__mlds__type_ctor_info_mlds_rval_0,
+	(MR_PseudoTypeInfo) &mercury_data_list__ti_list_1ml_backend__mlds__type_ctor_info_mlds_lval_0,
+	(MR_PseudoTypeInfo) &mercury_data_ml_backend__mlds__type_ctor_info_ml_call_kind_0
+};
+
+static const MR_DuFunctorDesc mercury_data_ml_backend__mlds__du_functor_desc_mlds_stmt_0_7 = {
+	"ml_stmt_call",
+	6,
+	0,
+	MR_SECTAG_REMOTE,
+	3,
+	4,
+	7,
+	(MR_PseudoTypeInfo *) mercury_data_ml_backend__mlds__field_types_mlds_stmt_0_7,
+	NULL,
+	NULL
+};
+
+const MR_PseudoTypeInfo mercury_data_ml_backend__mlds__field_types_mlds_stmt_0_8[] = {
+	(MR_PseudoTypeInfo) &mercury_data_list__ti_list_1ml_backend__mlds__type_ctor_info_mlds_rval_0
+};
+
+static const MR_DuFunctorDesc mercury_data_ml_backend__mlds__du_functor_desc_mlds_stmt_0_8 = {
+	"ml_stmt_return",
+	1,
+	0,
+	MR_SECTAG_REMOTE,
+	3,
+	5,
+	8,
+	(MR_PseudoTypeInfo *) mercury_data_ml_backend__mlds__field_types_mlds_stmt_0_8,
+	NULL,
+	NULL
+};
+
+const MR_PseudoTypeInfo mercury_data_ml_backend__mlds__field_types_mlds_stmt_0_9[] = {
+	(MR_PseudoTypeInfo) &mercury_data_ml_backend__mlds__type_ctor_info_mlds_lval_0,
+	(MR_PseudoTypeInfo) &mercury_data_ml_backend__mlds__type_ctor_info_statement_0,
+	(MR_PseudoTypeInfo) &mercury_data_ml_backend__mlds__type_ctor_info_statement_0
+};
+
+static const MR_DuFunctorDesc mercury_data_ml_backend__mlds__du_functor_desc_mlds_stmt_0_9 = {
+	"ml_stmt_try_commit",
+	3,
+	0,
+	MR_SECTAG_REMOTE,
+	3,
+	6,
+	9,
+	(MR_PseudoTypeInfo *) mercury_data_ml_backend__mlds__field_types_mlds_stmt_0_9,
+	NULL,
+	NULL
+};
+
+const MR_PseudoTypeInfo mercury_data_ml_backend__mlds__field_types_mlds_stmt_0_10[] = {
+	(MR_PseudoTypeInfo) &mercury_data_ml_backend__mlds__type_ctor_info_mlds_rval_0
+};
+
+static const MR_DuFunctorDesc mercury_data_ml_backend__mlds__du_functor_desc_mlds_stmt_0_10 = {
+	"ml_stmt_do_commit",
+	1,
+	0,
+	MR_SECTAG_REMOTE,
+	3,
+	7,
+	10,
+	(MR_PseudoTypeInfo *) mercury_data_ml_backend__mlds__field_types_mlds_stmt_0_10,
+	NULL,
+	NULL
+};
+extern const MR_TypeCtorInfo_Struct mercury_data_ml_backend__mlds__type_ctor_info_mlds_atomic_statement_0;
+
+const MR_PseudoTypeInfo mercury_data_ml_backend__mlds__field_types_mlds_stmt_0_11[] = {
+	(MR_PseudoTypeInfo) &mercury_data_ml_backend__mlds__type_ctor_info_mlds_atomic_statement_0
+};
+
+static const MR_DuFunctorDesc mercury_data_ml_backend__mlds__du_functor_desc_mlds_stmt_0_11 = {
+	"ml_stmt_atomic",
+	1,
+	0,
+	MR_SECTAG_REMOTE,
+	3,
+	8,
+	11,
+	(MR_PseudoTypeInfo *) mercury_data_ml_backend__mlds__field_types_mlds_stmt_0_11,
+	NULL,
+	NULL
+};
+
+const MR_DuFunctorDescPtr mercury_data_ml_backend__mlds__du_stag_ordered_mlds_stmt_0_0[] = {
+	&mercury_data_ml_backend__mlds__du_functor_desc_mlds_stmt_0_0
+
+};
+
+const MR_DuFunctorDescPtr mercury_data_ml_backend__mlds__du_stag_ordered_mlds_stmt_0_1[] = {
+	&mercury_data_ml_backend__mlds__du_functor_desc_mlds_stmt_0_1
+
+};
+
+const MR_DuFunctorDescPtr mercury_data_ml_backend__mlds__du_stag_ordered_mlds_stmt_0_2[] = {
+	&mercury_data_ml_backend__mlds__du_functor_desc_mlds_stmt_0_2
+
+};
+
+const MR_DuFunctorDescPtr mercury_data_ml_backend__mlds__du_stag_ordered_mlds_stmt_0_3[] = {
+	&mercury_data_ml_backend__mlds__du_functor_desc_mlds_stmt_0_3,
+	&mercury_data_ml_backend__mlds__du_functor_desc_mlds_stmt_0_4,
+	&mercury_data_ml_backend__mlds__du_functor_desc_mlds_stmt_0_5,
+	&mercury_data_ml_backend__mlds__du_functor_desc_mlds_stmt_0_6,
+	&mercury_data_ml_backend__mlds__du_functor_desc_mlds_stmt_0_7,
+	&mercury_data_ml_backend__mlds__du_functor_desc_mlds_stmt_0_8,
+	&mercury_data_ml_backend__mlds__du_functor_desc_mlds_stmt_0_9,
+	&mercury_data_ml_backend__mlds__du_functor_desc_mlds_stmt_0_10,
+	&mercury_data_ml_backend__mlds__du_functor_desc_mlds_stmt_0_11
+
+};
+
+const MR_DuPtagLayout mercury_data_ml_backend__mlds__du_ptag_ordered_mlds_stmt_0[] = {
+	{ 1, MR_SECTAG_NONE,
+	mercury_data_ml_backend__mlds__du_stag_ordered_mlds_stmt_0_0 },
+	{ 1, MR_SECTAG_NONE,
+	mercury_data_ml_backend__mlds__du_stag_ordered_mlds_stmt_0_1 },
+	{ 1, MR_SECTAG_NONE,
+	mercury_data_ml_backend__mlds__du_stag_ordered_mlds_stmt_0_2 },
+	{ 9, MR_SECTAG_REMOTE,
+	mercury_data_ml_backend__mlds__du_stag_ordered_mlds_stmt_0_3 }
+
+};
+
+const MR_DuFunctorDescPtr mercury_data_ml_backend__mlds__du_name_ordered_mlds_stmt_0[] = {
+	&mercury_data_ml_backend__mlds__du_functor_desc_mlds_stmt_0_11,
+	&mercury_data_ml_backend__mlds__du_functor_desc_mlds_stmt_0_0,
+	&mercury_data_ml_backend__mlds__du_functor_desc_mlds_stmt_0_7,
+	&mercury_data_ml_backend__mlds__du_functor_desc_mlds_stmt_0_6,
+	&mercury_data_ml_backend__mlds__du_functor_desc_mlds_stmt_0_10,
+	&mercury_data_ml_backend__mlds__du_functor_desc_mlds_stmt_0_5,
+	&mercury_data_ml_backend__mlds__du_functor_desc_mlds_stmt_0_2,
+	&mercury_data_ml_backend__mlds__du_functor_desc_mlds_stmt_0_4,
+	&mercury_data_ml_backend__mlds__du_functor_desc_mlds_stmt_0_8,
+	&mercury_data_ml_backend__mlds__du_functor_desc_mlds_stmt_0_3,
+	&mercury_data_ml_backend__mlds__du_functor_desc_mlds_stmt_0_9,
+	&mercury_data_ml_backend__mlds__du_functor_desc_mlds_stmt_0_1
+};
+
+const MR_Integer mercury_data_ml_backend__mlds__functor_number_map_mlds_stmt_0[] = {
+	1,
+	11,
+	6,
+	9,
+	7,
+	5,
+	3,
+	2,
+	8,
+	10,
+	4,
+	0 };
+	
+const MR_TypeCtorInfo_Struct mercury_data_ml_backend__mlds__type_ctor_info_mlds_stmt_0 = {
+	0,
+	13,
+	4,
+	MR_TYPECTOR_REP_DU,
+	MR_MAYBE_STATIC_CODE(MR_ENTRY_AP(__Unify___ml_backend__mlds__mlds_stmt_0_0)),
+	MR_MAYBE_STATIC_CODE(MR_ENTRY_AP(__Compare___ml_backend__mlds__mlds_stmt_0_0)),
+	"ml_backend.mlds",
+	"mlds_stmt",
+	{ (void *)mercury_data_ml_backend__mlds__du_name_ordered_mlds_stmt_0 },
+	{ (void *)mercury_data_ml_backend__mlds__du_ptag_ordered_mlds_stmt_0 },
+	12,
+	4,
+	mercury_data_ml_backend__mlds__functor_number_map_mlds_stmt_0
+};
+
+static const MR_DuFunctorDesc mercury_data_ml_backend__mlds__du_functor_desc_mlds_rval_const_0_0 = {
+	"mlconst_true",
+	0,
+	0,
+	MR_SECTAG_LOCAL,
+	0,
+	0,
+	0,
+	(MR_PseudoTypeInfo *) NULL,
+	NULL,
+	NULL
+};
+
+static const MR_DuFunctorDesc mercury_data_ml_backend__mlds__du_functor_desc_mlds_rval_const_0_1 = {
+	"mlconst_false",
+	0,
+	0,
+	MR_SECTAG_LOCAL,
+	0,
+	1,
+	1,
+	(MR_PseudoTypeInfo *) NULL,
+	NULL,
+	NULL
+};
+
+const MR_PseudoTypeInfo mercury_data_ml_backend__mlds__field_types_mlds_rval_const_0_2[] = {
+	(MR_PseudoTypeInfo) &mercury_data_builtin__type_ctor_info_int_0
+};
+
+static const MR_DuFunctorDesc mercury_data_ml_backend__mlds__du_functor_desc_mlds_rval_const_0_2 = {
+	"mlconst_int",
+	1,
+	0,
+	MR_SECTAG_NONE,
+	1,
+	-1,
+	2,
+	(MR_PseudoTypeInfo *) mercury_data_ml_backend__mlds__field_types_mlds_rval_const_0_2,
+	NULL,
+	NULL
+};
+extern const MR_TypeCtorInfo_Struct mercury_data_libs__globals__type_ctor_info_foreign_language_0;
+extern const MR_TypeCtorInfo_Struct mercury_data_libs__globals__type_ctor_info_foreign_language_0;
+
+const MR_PseudoTypeInfo mercury_data_ml_backend__mlds__field_types_mlds_rval_const_0_3[] = {
+	(MR_PseudoTypeInfo) &mercury_data_libs__globals__type_ctor_info_foreign_language_0,
+	(MR_PseudoTypeInfo) &mercury_data_builtin__type_ctor_info_string_0,
+	(MR_PseudoTypeInfo) &mercury_data_ml_backend__mlds__type_ctor_info_mlds_type_0
+};
+
+static const MR_DuFunctorDesc mercury_data_ml_backend__mlds__du_functor_desc_mlds_rval_const_0_3 = {
+	"mlconst_foreign",
+	3,
+	0,
+	MR_SECTAG_NONE,
+	2,
+	-1,
+	3,
+	(MR_PseudoTypeInfo *) mercury_data_ml_backend__mlds__field_types_mlds_rval_const_0_3,
+	NULL,
+	NULL
+};
+extern const MR_TypeCtorInfo_Struct mercury_data_builtin__type_ctor_info_float_0;
+extern const MR_TypeCtorInfo_Struct mercury_data_builtin__type_ctor_info_float_0;
+
+const MR_PseudoTypeInfo mercury_data_ml_backend__mlds__field_types_mlds_rval_const_0_4[] = {
+	(MR_PseudoTypeInfo) &mercury_data_builtin__type_ctor_info_float_0
+};
+
+static const MR_DuFunctorDesc mercury_data_ml_backend__mlds__du_functor_desc_mlds_rval_const_0_4 = {
+	"mlconst_float",
+	1,
+	0,
+	MR_SECTAG_REMOTE,
+	3,
+	0,
+	4,
+	(MR_PseudoTypeInfo *) mercury_data_ml_backend__mlds__field_types_mlds_rval_const_0_4,
+	NULL,
+	NULL
+};
+
+const MR_PseudoTypeInfo mercury_data_ml_backend__mlds__field_types_mlds_rval_const_0_5[] = {
+	(MR_PseudoTypeInfo) &mercury_data_builtin__type_ctor_info_string_0
+};
+
+static const MR_DuFunctorDesc mercury_data_ml_backend__mlds__du_functor_desc_mlds_rval_const_0_5 = {
+	"mlconst_string",
+	1,
+	0,
+	MR_SECTAG_REMOTE,
+	3,
+	1,
+	5,
+	(MR_PseudoTypeInfo *) mercury_data_ml_backend__mlds__field_types_mlds_rval_const_0_5,
+	NULL,
+	NULL
+};
+
+const MR_PseudoTypeInfo mercury_data_ml_backend__mlds__field_types_mlds_rval_const_0_6[] = {
+	(MR_PseudoTypeInfo) &mercury_data_list__ti_list_1builtin__type_ctor_info_string_0
+};
+
+static const MR_DuFunctorDesc mercury_data_ml_backend__mlds__du_functor_desc_mlds_rval_const_0_6 = {
+	"mlconst_multi_string",
+	1,
+	0,
+	MR_SECTAG_REMOTE,
+	3,
+	2,
+	6,
+	(MR_PseudoTypeInfo *) mercury_data_ml_backend__mlds__field_types_mlds_rval_const_0_6,
+	NULL,
+	NULL
+};
+
+const MR_PseudoTypeInfo mercury_data_ml_backend__mlds__field_types_mlds_rval_const_0_7[] = {
+	(MR_PseudoTypeInfo) &mercury_data_builtin__type_ctor_info_string_0
+};
+
+static const MR_DuFunctorDesc mercury_data_ml_backend__mlds__du_functor_desc_mlds_rval_const_0_7 = {
+	"mlconst_named_const",
+	1,
+	0,
+	MR_SECTAG_REMOTE,
+	3,
+	3,
+	7,
+	(MR_PseudoTypeInfo *) mercury_data_ml_backend__mlds__field_types_mlds_rval_const_0_7,
+	NULL,
+	NULL
+};
+extern const MR_TypeCtorInfo_Struct mercury_data_ml_backend__mlds__type_ctor_info_mlds_code_addr_0;
+
+const MR_PseudoTypeInfo mercury_data_ml_backend__mlds__field_types_mlds_rval_const_0_8[] = {
+	(MR_PseudoTypeInfo) &mercury_data_ml_backend__mlds__type_ctor_info_mlds_code_addr_0
+};
+
+static const MR_DuFunctorDesc mercury_data_ml_backend__mlds__du_functor_desc_mlds_rval_const_0_8 = {
+	"mlconst_code_addr",
+	1,
+	0,
+	MR_SECTAG_REMOTE,
+	3,
+	4,
+	8,
+	(MR_PseudoTypeInfo *) mercury_data_ml_backend__mlds__field_types_mlds_rval_const_0_8,
+	NULL,
+	NULL
+};
+extern const MR_TypeCtorInfo_Struct mercury_data_ml_backend__mlds__type_ctor_info_mlds_data_addr_0;
+
+const MR_PseudoTypeInfo mercury_data_ml_backend__mlds__field_types_mlds_rval_const_0_9[] = {
+	(MR_PseudoTypeInfo) &mercury_data_ml_backend__mlds__type_ctor_info_mlds_data_addr_0
+};
+
+static const MR_DuFunctorDesc mercury_data_ml_backend__mlds__du_functor_desc_mlds_rval_const_0_9 = {
+	"mlconst_data_addr",
+	1,
+	0,
+	MR_SECTAG_REMOTE,
+	3,
+	5,
+	9,
+	(MR_PseudoTypeInfo *) mercury_data_ml_backend__mlds__field_types_mlds_rval_const_0_9,
+	NULL,
+	NULL
+};
+
+const MR_PseudoTypeInfo mercury_data_ml_backend__mlds__field_types_mlds_rval_const_0_10[] = {
+	(MR_PseudoTypeInfo) &mercury_data_ml_backend__mlds__type_ctor_info_mlds_type_0
+};
+
+static const MR_DuFunctorDesc mercury_data_ml_backend__mlds__du_functor_desc_mlds_rval_const_0_10 = {
+	"mlconst_null",
+	1,
+	0,
+	MR_SECTAG_REMOTE,
+	3,
+	6,
+	10,
+	(MR_PseudoTypeInfo *) mercury_data_ml_backend__mlds__field_types_mlds_rval_const_0_10,
+	NULL,
+	NULL
+};
+
+const MR_DuFunctorDescPtr mercury_data_ml_backend__mlds__du_stag_ordered_mlds_rval_const_0_0[] = {
+	&mercury_data_ml_backend__mlds__du_functor_desc_mlds_rval_const_0_0,
+	&mercury_data_ml_backend__mlds__du_functor_desc_mlds_rval_const_0_1
+
+};
+
+const MR_DuFunctorDescPtr mercury_data_ml_backend__mlds__du_stag_ordered_mlds_rval_const_0_1[] = {
+	&mercury_data_ml_backend__mlds__du_functor_desc_mlds_rval_const_0_2
+
+};
+
+const MR_DuFunctorDescPtr mercury_data_ml_backend__mlds__du_stag_ordered_mlds_rval_const_0_2[] = {
+	&mercury_data_ml_backend__mlds__du_functor_desc_mlds_rval_const_0_3
+
+};
+
+const MR_DuFunctorDescPtr mercury_data_ml_backend__mlds__du_stag_ordered_mlds_rval_const_0_3[] = {
+	&mercury_data_ml_backend__mlds__du_functor_desc_mlds_rval_const_0_4,
+	&mercury_data_ml_backend__mlds__du_functor_desc_mlds_rval_const_0_5,
+	&mercury_data_ml_backend__mlds__du_functor_desc_mlds_rval_const_0_6,
+	&mercury_data_ml_backend__mlds__du_functor_desc_mlds_rval_const_0_7,
+	&mercury_data_ml_backend__mlds__du_functor_desc_mlds_rval_const_0_8,
+	&mercury_data_ml_backend__mlds__du_functor_desc_mlds_rval_const_0_9,
+	&mercury_data_ml_backend__mlds__du_functor_desc_mlds_rval_const_0_10
+
+};
+
+const MR_DuPtagLayout mercury_data_ml_backend__mlds__du_ptag_ordered_mlds_rval_const_0[] = {
+	{ 2, MR_SECTAG_LOCAL,
+	mercury_data_ml_backend__mlds__du_stag_ordered_mlds_rval_const_0_0 },
+	{ 1, MR_SECTAG_NONE,
+	mercury_data_ml_backend__mlds__du_stag_ordered_mlds_rval_const_0_1 },
+	{ 1, MR_SECTAG_NONE,
+	mercury_data_ml_backend__mlds__du_stag_ordered_mlds_rval_const_0_2 },
+	{ 7, MR_SECTAG_REMOTE,
+	mercury_data_ml_backend__mlds__du_stag_ordered_mlds_rval_const_0_3 }
+
+};
+
+const MR_DuFunctorDescPtr mercury_data_ml_backend__mlds__du_name_ordered_mlds_rval_const_0[] = {
+	&mercury_data_ml_backend__mlds__du_functor_desc_mlds_rval_const_0_8,
+	&mercury_data_ml_backend__mlds__du_functor_desc_mlds_rval_const_0_9,
+	&mercury_data_ml_backend__mlds__du_functor_desc_mlds_rval_const_0_1,
+	&mercury_data_ml_backend__mlds__du_functor_desc_mlds_rval_const_0_4,
+	&mercury_data_ml_backend__mlds__du_functor_desc_mlds_rval_const_0_3,
+	&mercury_data_ml_backend__mlds__du_functor_desc_mlds_rval_const_0_2,
+	&mercury_data_ml_backend__mlds__du_functor_desc_mlds_rval_const_0_6,
+	&mercury_data_ml_backend__mlds__du_functor_desc_mlds_rval_const_0_7,
+	&mercury_data_ml_backend__mlds__du_functor_desc_mlds_rval_const_0_10,
+	&mercury_data_ml_backend__mlds__du_functor_desc_mlds_rval_const_0_5,
+	&mercury_data_ml_backend__mlds__du_functor_desc_mlds_rval_const_0_0
+};
+
+const MR_Integer mercury_data_ml_backend__mlds__functor_number_map_mlds_rval_const_0[] = {
+	10,
+	2,
+	5,
+	4,
+	3,
+	9,
+	6,
+	7,
+	0,
+	1,
+	8 };
+	
+const MR_TypeCtorInfo_Struct mercury_data_ml_backend__mlds__type_ctor_info_mlds_rval_const_0 = {
+	0,
+	13,
+	4,
+	MR_TYPECTOR_REP_DU,
+	MR_MAYBE_STATIC_CODE(MR_ENTRY_AP(__Unify___ml_backend__mlds__mlds_rval_const_0_0)),
+	MR_MAYBE_STATIC_CODE(MR_ENTRY_AP(__Compare___ml_backend__mlds__mlds_rval_const_0_0)),
+	"ml_backend.mlds",
+	"mlds_rval_const",
+	{ (void *)mercury_data_ml_backend__mlds__du_name_ordered_mlds_rval_const_0 },
+	{ (void *)mercury_data_ml_backend__mlds__du_ptag_ordered_mlds_rval_const_0 },
+	11,
+	4,
+	mercury_data_ml_backend__mlds__functor_number_map_mlds_rval_const_0
+};
+
+const MR_PseudoTypeInfo mercury_data_ml_backend__mlds__field_types_mlds_rval_0_0[] = {
+	(MR_PseudoTypeInfo) &mercury_data_ml_backend__mlds__type_ctor_info_mlds_lval_0
+};
+
+static const MR_DuFunctorDesc mercury_data_ml_backend__mlds__du_functor_desc_mlds_rval_0_0 = {
+	"lval",
+	1,
+	0,
+	MR_SECTAG_NONE,
+	0,
+	-1,
+	0,
+	(MR_PseudoTypeInfo *) mercury_data_ml_backend__mlds__field_types_mlds_rval_0_0,
+	NULL,
+	NULL
+};
+
+const MR_PseudoTypeInfo mercury_data_ml_backend__mlds__field_types_mlds_rval_0_1[] = {
+	(MR_PseudoTypeInfo) &mercury_data_builtin__type_ctor_info_int_0,
+	(MR_PseudoTypeInfo) &mercury_data_ml_backend__mlds__type_ctor_info_mlds_rval_0
+};
+
+static const MR_DuFunctorDesc mercury_data_ml_backend__mlds__du_functor_desc_mlds_rval_0_1 = {
+	"mkword",
+	2,
+	0,
+	MR_SECTAG_NONE,
+	1,
+	-1,
+	1,
+	(MR_PseudoTypeInfo *) mercury_data_ml_backend__mlds__field_types_mlds_rval_0_1,
+	NULL,
+	NULL
+};
+extern const MR_TypeCtorInfo_Struct mercury_data_ml_backend__mlds__type_ctor_info_mlds_rval_const_0;
+
+const MR_PseudoTypeInfo mercury_data_ml_backend__mlds__field_types_mlds_rval_0_2[] = {
+	(MR_PseudoTypeInfo) &mercury_data_ml_backend__mlds__type_ctor_info_mlds_rval_const_0
+};
+
+static const MR_DuFunctorDesc mercury_data_ml_backend__mlds__du_functor_desc_mlds_rval_0_2 = {
+	"const",
+	1,
+	0,
+	MR_SECTAG_NONE,
+	2,
+	-1,
+	2,
+	(MR_PseudoTypeInfo *) mercury_data_ml_backend__mlds__field_types_mlds_rval_0_2,
+	NULL,
+	NULL
+};
+extern const MR_TypeCtorInfo_Struct mercury_data_ml_backend__mlds__type_ctor_info_mlds_unary_op_0;
+
+const MR_PseudoTypeInfo mercury_data_ml_backend__mlds__field_types_mlds_rval_0_3[] = {
+	(MR_PseudoTypeInfo) &mercury_data_ml_backend__mlds__type_ctor_info_mlds_unary_op_0,
+	(MR_PseudoTypeInfo) &mercury_data_ml_backend__mlds__type_ctor_info_mlds_rval_0
+};
+
+static const MR_DuFunctorDesc mercury_data_ml_backend__mlds__du_functor_desc_mlds_rval_0_3 = {
+	"unop",
+	2,
+	0,
+	MR_SECTAG_REMOTE,
+	3,
+	0,
+	3,
+	(MR_PseudoTypeInfo *) mercury_data_ml_backend__mlds__field_types_mlds_rval_0_3,
+	NULL,
+	NULL
+};
+extern const MR_TypeCtorInfo_Struct mercury_data_backend_libs__builtin_ops__type_ctor_info_binary_op_0;
+extern const MR_TypeCtorInfo_Struct mercury_data_backend_libs__builtin_ops__type_ctor_info_binary_op_0;
+
+const MR_PseudoTypeInfo mercury_data_ml_backend__mlds__field_types_mlds_rval_0_4[] = {
+	(MR_PseudoTypeInfo) &mercury_data_backend_libs__builtin_ops__type_ctor_info_binary_op_0,
+	(MR_PseudoTypeInfo) &mercury_data_ml_backend__mlds__type_ctor_info_mlds_rval_0,
+	(MR_PseudoTypeInfo) &mercury_data_ml_backend__mlds__type_ctor_info_mlds_rval_0
+};
+
+static const MR_DuFunctorDesc mercury_data_ml_backend__mlds__du_functor_desc_mlds_rval_0_4 = {
+	"binop",
+	3,
+	0,
+	MR_SECTAG_REMOTE,
+	3,
+	1,
+	4,
+	(MR_PseudoTypeInfo *) mercury_data_ml_backend__mlds__field_types_mlds_rval_0_4,
+	NULL,
+	NULL
+};
+
+const MR_PseudoTypeInfo mercury_data_ml_backend__mlds__field_types_mlds_rval_0_5[] = {
+	(MR_PseudoTypeInfo) &mercury_data_ml_backend__mlds__type_ctor_info_mlds_lval_0
+};
+
+static const MR_DuFunctorDesc mercury_data_ml_backend__mlds__du_functor_desc_mlds_rval_0_5 = {
+	"mem_addr",
+	1,
+	0,
+	MR_SECTAG_REMOTE,
+	3,
+	2,
+	5,
+	(MR_PseudoTypeInfo *) mercury_data_ml_backend__mlds__field_types_mlds_rval_0_5,
+	NULL,
+	NULL
+};
+
+const MR_PseudoTypeInfo mercury_data_ml_backend__mlds__field_types_mlds_rval_0_6[] = {
+	(MR_PseudoTypeInfo) &mercury_data_ml_backend__mlds__type_ctor_info_mlds_type_0
+};
+
+static const MR_DuFunctorDesc mercury_data_ml_backend__mlds__du_functor_desc_mlds_rval_0_6 = {
+	"self",
+	1,
+	0,
+	MR_SECTAG_REMOTE,
+	3,
+	3,
+	6,
+	(MR_PseudoTypeInfo *) mercury_data_ml_backend__mlds__field_types_mlds_rval_0_6,
+	NULL,
+	NULL
+};
+
+const MR_DuFunctorDescPtr mercury_data_ml_backend__mlds__du_stag_ordered_mlds_rval_0_0[] = {
+	&mercury_data_ml_backend__mlds__du_functor_desc_mlds_rval_0_0
+
+};
+
+const MR_DuFunctorDescPtr mercury_data_ml_backend__mlds__du_stag_ordered_mlds_rval_0_1[] = {
+	&mercury_data_ml_backend__mlds__du_functor_desc_mlds_rval_0_1
+
+};
+
+const MR_DuFunctorDescPtr mercury_data_ml_backend__mlds__du_stag_ordered_mlds_rval_0_2[] = {
+	&mercury_data_ml_backend__mlds__du_functor_desc_mlds_rval_0_2
+
+};
+
+const MR_DuFunctorDescPtr mercury_data_ml_backend__mlds__du_stag_ordered_mlds_rval_0_3[] = {
+	&mercury_data_ml_backend__mlds__du_functor_desc_mlds_rval_0_3,
+	&mercury_data_ml_backend__mlds__du_functor_desc_mlds_rval_0_4,
+	&mercury_data_ml_backend__mlds__du_functor_desc_mlds_rval_0_5,
+	&mercury_data_ml_backend__mlds__du_functor_desc_mlds_rval_0_6
+
+};
+
+const MR_DuPtagLayout mercury_data_ml_backend__mlds__du_ptag_ordered_mlds_rval_0[] = {
+	{ 1, MR_SECTAG_NONE,
+	mercury_data_ml_backend__mlds__du_stag_ordered_mlds_rval_0_0 },
+	{ 1, MR_SECTAG_NONE,
+	mercury_data_ml_backend__mlds__du_stag_ordered_mlds_rval_0_1 },
+	{ 1, MR_SECTAG_NONE,
+	mercury_data_ml_backend__mlds__du_stag_ordered_mlds_rval_0_2 },
+	{ 4, MR_SECTAG_REMOTE,
+	mercury_data_ml_backend__mlds__du_stag_ordered_mlds_rval_0_3 }
+
+};
+
+const MR_DuFunctorDescPtr mercury_data_ml_backend__mlds__du_name_ordered_mlds_rval_0[] = {
+	&mercury_data_ml_backend__mlds__du_functor_desc_mlds_rval_0_4,
+	&mercury_data_ml_backend__mlds__du_functor_desc_mlds_rval_0_2,
+	&mercury_data_ml_backend__mlds__du_functor_desc_mlds_rval_0_0,
+	&mercury_data_ml_backend__mlds__du_functor_desc_mlds_rval_0_5,
+	&mercury_data_ml_backend__mlds__du_functor_desc_mlds_rval_0_1,
+	&mercury_data_ml_backend__mlds__du_functor_desc_mlds_rval_0_6,
+	&mercury_data_ml_backend__mlds__du_functor_desc_mlds_rval_0_3
+};
+
+const MR_Integer mercury_data_ml_backend__mlds__functor_number_map_mlds_rval_0[] = {
+	2,
+	4,
+	1,
+	6,
+	0,
+	3,
+	5 };
+	
+const MR_TypeCtorInfo_Struct mercury_data_ml_backend__mlds__type_ctor_info_mlds_rval_0 = {
+	0,
+	13,
+	4,
+	MR_TYPECTOR_REP_DU,
+	MR_MAYBE_STATIC_CODE(MR_ENTRY_AP(__Unify___ml_backend__mlds__mlds_rval_0_0)),
+	MR_MAYBE_STATIC_CODE(MR_ENTRY_AP(__Compare___ml_backend__mlds__mlds_rval_0_0)),
+	"ml_backend.mlds",
+	"mlds_rval",
+	{ (void *)mercury_data_ml_backend__mlds__du_name_ordered_mlds_rval_0 },
+	{ (void *)mercury_data_ml_backend__mlds__du_ptag_ordered_mlds_rval_0 },
+	7,
+	4,
+	mercury_data_ml_backend__mlds__functor_number_map_mlds_rval_0
+};
+
+const MR_TypeCtorInfo_Struct mercury_data_ml_backend__mlds__type_ctor_info_mlds_return_types_0 = {
+	0,
+	13,
+	-1,
+	MR_TYPECTOR_REP_EQUIV_GROUND,
+	MR_MAYBE_STATIC_CODE(MR_ENTRY_AP(__Unify___ml_backend__mlds__mlds_return_types_0_0)),
+	MR_MAYBE_STATIC_CODE(MR_ENTRY_AP(__Compare___ml_backend__mlds__mlds_return_types_0_0)),
+	"ml_backend.mlds",
+	"mlds_return_types",
+	{ 0 },
+	{ (void *)&mercury_data_list__ti_list_1ml_backend__mlds__type_ctor_info_mlds_type_0 },
+	-1,
+	0,
+	NULL
+};
+
+static const MR_EnumFunctorDesc mercury_data_ml_backend__mlds__enum_functor_desc_mlds_reset_trail_reason_0_0 = {
+	"undo",
+	0
+};
+
+static const MR_EnumFunctorDesc mercury_data_ml_backend__mlds__enum_functor_desc_mlds_reset_trail_reason_0_1 = {
+	"commit",
+	1
+};
+
+static const MR_EnumFunctorDesc mercury_data_ml_backend__mlds__enum_functor_desc_mlds_reset_trail_reason_0_2 = {
+	"solve",
+	2
+};
+
+static const MR_EnumFunctorDesc mercury_data_ml_backend__mlds__enum_functor_desc_mlds_reset_trail_reason_0_3 = {
+	"exception",
+	3
+};
+
+static const MR_EnumFunctorDesc mercury_data_ml_backend__mlds__enum_functor_desc_mlds_reset_trail_reason_0_4 = {
+	"gc",
+	4
+};
+
+const MR_EnumFunctorDescPtr mercury_data_ml_backend__mlds__enum_value_ordered_mlds_reset_trail_reason_0[] = {
+	&mercury_data_ml_backend__mlds__enum_functor_desc_mlds_reset_trail_reason_0_0,
+	&mercury_data_ml_backend__mlds__enum_functor_desc_mlds_reset_trail_reason_0_1,
+	&mercury_data_ml_backend__mlds__enum_functor_desc_mlds_reset_trail_reason_0_2,
+	&mercury_data_ml_backend__mlds__enum_functor_desc_mlds_reset_trail_reason_0_3,
+	&mercury_data_ml_backend__mlds__enum_functor_desc_mlds_reset_trail_reason_0_4
+};
+
+const MR_EnumFunctorDescPtr mercury_data_ml_backend__mlds__enum_name_ordered_mlds_reset_trail_reason_0[] = {
+	&mercury_data_ml_backend__mlds__enum_functor_desc_mlds_reset_trail_reason_0_1,
+	&mercury_data_ml_backend__mlds__enum_functor_desc_mlds_reset_trail_reason_0_3,
+	&mercury_data_ml_backend__mlds__enum_functor_desc_mlds_reset_trail_reason_0_4,
+	&mercury_data_ml_backend__mlds__enum_functor_desc_mlds_reset_trail_reason_0_2,
+	&mercury_data_ml_backend__mlds__enum_functor_desc_mlds_reset_trail_reason_0_0
+};
+
+const MR_Integer mercury_data_ml_backend__mlds__functor_number_map_mlds_reset_trail_reason_0[] = {
+	4,
+	0,
+	3,
+	1,
+	2 };
+	
+const MR_TypeCtorInfo_Struct mercury_data_ml_backend__mlds__type_ctor_info_mlds_reset_trail_reason_0 = {
+	0,
+	13,
+	-1,
+	MR_TYPECTOR_REP_ENUM,
+	MR_MAYBE_STATIC_CODE(MR_ENTRY_AP(__Unify___ml_backend__mlds__mlds_reset_trail_reason_0_0)),
+	MR_MAYBE_STATIC_CODE(MR_ENTRY_AP(__Compare___ml_backend__mlds__mlds_reset_trail_reason_0_0)),
+	"ml_backend.mlds",
+	"mlds_reset_trail_reason",
+	{ (void *)mercury_data_ml_backend__mlds__enum_name_ordered_mlds_reset_trail_reason_0 },
+	{ (void *)mercury_data_ml_backend__mlds__enum_value_ordered_mlds_reset_trail_reason_0 },
+	5,
+	4,
+	mercury_data_ml_backend__mlds__functor_number_map_mlds_reset_trail_reason_0
+};
+extern const MR_TypeCtorInfo_Struct mercury_data_ml_backend__mlds__type_ctor_info_mlds_proc_label_0;
+
+static const MR_FA_TypeInfo_Struct1 mercury_data_ml_backend__mlds__ti_mlds_fully_qualified_name_1ml_backend__mlds__type_ctor_info_mlds_proc_label_0 = {
+	&mercury_data_ml_backend__mlds__type_ctor_info_mlds_fully_qualified_name_1,
+{	(MR_TypeInfo) &mercury_data_ml_backend__mlds__type_ctor_info_mlds_proc_label_0
+}};
+
+const MR_TypeCtorInfo_Struct mercury_data_ml_backend__mlds__type_ctor_info_mlds_qualified_proc_label_0 = {
+	0,
+	13,
+	-1,
+	MR_TYPECTOR_REP_EQUIV_GROUND,
+	MR_MAYBE_STATIC_CODE(MR_ENTRY_AP(__Unify___ml_backend__mlds__mlds_qualified_proc_label_0_0)),
+	MR_MAYBE_STATIC_CODE(MR_ENTRY_AP(__Compare___ml_backend__mlds__mlds_qualified_proc_label_0_0)),
+	"ml_backend.mlds",
+	"mlds_qualified_proc_label",
+	{ 0 },
+	{ (void *)&mercury_data_ml_backend__mlds__ti_mlds_fully_qualified_name_1ml_backend__mlds__type_ctor_info_mlds_proc_label_0 },
+	-1,
+	0,
+	NULL
+};
+extern const MR_TypeCtorInfo_Struct mercury_data_ml_backend__mlds__type_ctor_info_mlds_pred_label_0;
+
+static const MR_FA_TypeInfo_Struct1 mercury_data_ml_backend__mlds__ti_mlds_fully_qualified_name_1ml_backend__mlds__type_ctor_info_mlds_pred_label_0 = {
+	&mercury_data_ml_backend__mlds__type_ctor_info_mlds_fully_qualified_name_1,
+{	(MR_TypeInfo) &mercury_data_ml_backend__mlds__type_ctor_info_mlds_pred_label_0
+}};
+
+const MR_TypeCtorInfo_Struct mercury_data_ml_backend__mlds__type_ctor_info_mlds_qualified_pred_label_0 = {
+	0,
+	13,
+	-1,
+	MR_TYPECTOR_REP_EQUIV_GROUND,
+	MR_MAYBE_STATIC_CODE(MR_ENTRY_AP(__Unify___ml_backend__mlds__mlds_qualified_pred_label_0_0)),
+	MR_MAYBE_STATIC_CODE(MR_ENTRY_AP(__Compare___ml_backend__mlds__mlds_qualified_pred_label_0_0)),
+	"ml_backend.mlds",
+	"mlds_qualified_pred_label",
+	{ 0 },
+	{ (void *)&mercury_data_ml_backend__mlds__ti_mlds_fully_qualified_name_1ml_backend__mlds__type_ctor_info_mlds_pred_label_0 },
+	-1,
+	0,
+	NULL
+};
+
+const MR_TypeCtorInfo_Struct mercury_data_ml_backend__mlds__type_ctor_info_mlds_qualified_entity_name_0 = {
+	0,
+	13,
+	-1,
+	MR_TYPECTOR_REP_EQUIV_GROUND,
+	MR_MAYBE_STATIC_CODE(MR_ENTRY_AP(__Unify___ml_backend__mlds__mlds_qualified_entity_name_0_0)),
+	MR_MAYBE_STATIC_CODE(MR_ENTRY_AP(__Compare___ml_backend__mlds__mlds_qualified_entity_name_0_0)),
+	"ml_backend.mlds",
+	"mlds_qualified_entity_name",
+	{ 0 },
+	{ (void *)&mercury_data_ml_backend__mlds__ti_mlds_fully_qualified_name_1ml_backend__mlds__type_ctor_info_mlds_entity_name_0 },
+	-1,
+	0,
+	NULL
+};
+extern const MR_TypeCtorInfo_Struct mercury_data_ml_backend__mlds__type_ctor_info_mlds_ctor_id_0;
+
+static const MR_FA_TypeInfo_Struct1 mercury_data_ml_backend__mlds__ti_mlds_fully_qualified_name_1ml_backend__mlds__type_ctor_info_mlds_ctor_id_0 = {
+	&mercury_data_ml_backend__mlds__type_ctor_info_mlds_fully_qualified_name_1,
+{	(MR_TypeInfo) &mercury_data_ml_backend__mlds__type_ctor_info_mlds_ctor_id_0
+}};
+
+const MR_TypeCtorInfo_Struct mercury_data_ml_backend__mlds__type_ctor_info_mlds_qualified_ctor_id_0 = {
+	0,
+	13,
+	-1,
+	MR_TYPECTOR_REP_EQUIV_GROUND,
+	MR_MAYBE_STATIC_CODE(MR_ENTRY_AP(__Unify___ml_backend__mlds__mlds_qualified_ctor_id_0_0)),
+	MR_MAYBE_STATIC_CODE(MR_ENTRY_AP(__Compare___ml_backend__mlds__mlds_qualified_ctor_id_0_0)),
+	"ml_backend.mlds",
+	"mlds_qualified_ctor_id",
+	{ 0 },
+	{ (void *)&mercury_data_ml_backend__mlds__ti_mlds_fully_qualified_name_1ml_backend__mlds__type_ctor_info_mlds_ctor_id_0 },
+	-1,
+	0,
+	NULL
+};
+
+static const MR_EnumFunctorDesc mercury_data_ml_backend__mlds__enum_functor_desc_mlds_qual_kind_0_0 = {
+	"module_qual",
+	0
+};
+
+static const MR_EnumFunctorDesc mercury_data_ml_backend__mlds__enum_functor_desc_mlds_qual_kind_0_1 = {
+	"type_qual",
+	1
+};
+
+const MR_EnumFunctorDescPtr mercury_data_ml_backend__mlds__enum_value_ordered_mlds_qual_kind_0[] = {
+	&mercury_data_ml_backend__mlds__enum_functor_desc_mlds_qual_kind_0_0,
+	&mercury_data_ml_backend__mlds__enum_functor_desc_mlds_qual_kind_0_1
+};
+
+const MR_EnumFunctorDescPtr mercury_data_ml_backend__mlds__enum_name_ordered_mlds_qual_kind_0[] = {
+	&mercury_data_ml_backend__mlds__enum_functor_desc_mlds_qual_kind_0_0,
+	&mercury_data_ml_backend__mlds__enum_functor_desc_mlds_qual_kind_0_1
+};
+
+const MR_Integer mercury_data_ml_backend__mlds__functor_number_map_mlds_qual_kind_0[] = {
+	0,
+	1 };
+	
+const MR_TypeCtorInfo_Struct mercury_data_ml_backend__mlds__type_ctor_info_mlds_qual_kind_0 = {
+	0,
+	13,
+	-1,
+	MR_TYPECTOR_REP_ENUM,
+	MR_MAYBE_STATIC_CODE(MR_ENTRY_AP(__Unify___ml_backend__mlds__mlds_qual_kind_0_0)),
+	MR_MAYBE_STATIC_CODE(MR_ENTRY_AP(__Compare___ml_backend__mlds__mlds_qual_kind_0_0)),
+	"ml_backend.mlds",
+	"mlds_qual_kind",
+	{ (void *)mercury_data_ml_backend__mlds__enum_name_ordered_mlds_qual_kind_0 },
+	{ (void *)mercury_data_ml_backend__mlds__enum_value_ordered_mlds_qual_kind_0 },
+	2,
+	4,
+	mercury_data_ml_backend__mlds__functor_number_map_mlds_qual_kind_0
+};
+
+const MR_PseudoTypeInfo mercury_data_ml_backend__mlds__field_types_mlds_proc_label_0_0[] = {
+	(MR_PseudoTypeInfo) &mercury_data_ml_backend__mlds__type_ctor_info_mlds_pred_label_0,
+	(MR_PseudoTypeInfo) &mercury_data_builtin__type_ctor_info_int_0
+};
+
+static const MR_DuFunctorDesc mercury_data_ml_backend__mlds__du_functor_desc_mlds_proc_label_0_0 = {
+	"mlds_proc_label",
+	2,
+	0,
+	MR_SECTAG_NONE,
+	0,
+	-1,
+	0,
+	(MR_PseudoTypeInfo *) mercury_data_ml_backend__mlds__field_types_mlds_proc_label_0_0,
+	NULL,
+	NULL
+};
+
+const MR_DuFunctorDescPtr mercury_data_ml_backend__mlds__du_stag_ordered_mlds_proc_label_0_0[] = {
+	&mercury_data_ml_backend__mlds__du_functor_desc_mlds_proc_label_0_0
+
+};
+
+const MR_DuPtagLayout mercury_data_ml_backend__mlds__du_ptag_ordered_mlds_proc_label_0[] = {
+	{ 1, MR_SECTAG_NONE,
+	mercury_data_ml_backend__mlds__du_stag_ordered_mlds_proc_label_0_0 }
+
+};
+
+const MR_DuFunctorDescPtr mercury_data_ml_backend__mlds__du_name_ordered_mlds_proc_label_0[] = {
+	&mercury_data_ml_backend__mlds__du_functor_desc_mlds_proc_label_0_0
+};
+
+const MR_Integer mercury_data_ml_backend__mlds__functor_number_map_mlds_proc_label_0[] = {
+	0 };
+	
+const MR_TypeCtorInfo_Struct mercury_data_ml_backend__mlds__type_ctor_info_mlds_proc_label_0 = {
+	0,
+	13,
+	1,
+	MR_TYPECTOR_REP_DU,
+	MR_MAYBE_STATIC_CODE(MR_ENTRY_AP(__Unify___ml_backend__mlds__mlds_proc_label_0_0)),
+	MR_MAYBE_STATIC_CODE(MR_ENTRY_AP(__Compare___ml_backend__mlds__mlds_proc_label_0_0)),
+	"ml_backend.mlds",
+	"mlds_proc_label",
+	{ (void *)mercury_data_ml_backend__mlds__du_name_ordered_mlds_proc_label_0 },
+	{ (void *)mercury_data_ml_backend__mlds__du_ptag_ordered_mlds_proc_label_0 },
+	1,
+	4,
+	mercury_data_ml_backend__mlds__functor_number_map_mlds_proc_label_0
+};
+extern const MR_TypeCtorInfo_Struct mercury_data_mdbcomp__prim_data__type_ctor_info_pred_or_func_0;
+extern const MR_TypeCtorInfo_Struct mercury_data_mdbcomp__prim_data__type_ctor_info_sym_name_0;
+extern const MR_TypeCtorInfo_Struct mercury_data_mdbcomp__prim_data__type_ctor_info_sym_name_0;
+
+static const MR_FA_TypeInfo_Struct1 mercury_data_maybe__ti_maybe_1mdbcomp__prim_data__type_ctor_info_sym_name_0 = {
+	&mercury_data_maybe__type_ctor_info_maybe_1,
+{	(MR_TypeInfo) &mercury_data_mdbcomp__prim_data__type_ctor_info_sym_name_0
+}};
+extern const MR_TypeCtorInfo_Struct mercury_data_hlds__code_model__type_ctor_info_code_model_0;
+extern const MR_TypeCtorInfo_Struct mercury_data_mdbcomp__prim_data__type_ctor_info_pred_or_func_0;
+extern const MR_TypeCtorInfo_Struct mercury_data_hlds__code_model__type_ctor_info_code_model_0;
+
+const MR_PseudoTypeInfo mercury_data_ml_backend__mlds__field_types_mlds_pred_label_0_0[] = {
+	(MR_PseudoTypeInfo) &mercury_data_mdbcomp__prim_data__type_ctor_info_pred_or_func_0,
+	(MR_PseudoTypeInfo) &mercury_data_maybe__ti_maybe_1mdbcomp__prim_data__type_ctor_info_sym_name_0,
+	(MR_PseudoTypeInfo) &mercury_data_builtin__type_ctor_info_string_0,
+	(MR_PseudoTypeInfo) &mercury_data_builtin__type_ctor_info_int_0,
+	(MR_PseudoTypeInfo) &mercury_data_hlds__code_model__type_ctor_info_code_model_0,
+	(MR_PseudoTypeInfo) &mercury_data_bool__type_ctor_info_bool_0
+};
+
+static const MR_DuFunctorDesc mercury_data_ml_backend__mlds__du_functor_desc_mlds_pred_label_0_0 = {
+	"mlds_user_pred_label",
+	6,
+	0,
+	MR_SECTAG_NONE,
+	0,
+	-1,
+	0,
+	(MR_PseudoTypeInfo *) mercury_data_ml_backend__mlds__field_types_mlds_pred_label_0_0,
+	NULL,
+	NULL
+};
+
+const MR_PseudoTypeInfo mercury_data_ml_backend__mlds__field_types_mlds_pred_label_0_1[] = {
+	(MR_PseudoTypeInfo) &mercury_data_builtin__type_ctor_info_string_0,
+	(MR_PseudoTypeInfo) &mercury_data_maybe__ti_maybe_1mdbcomp__prim_data__type_ctor_info_sym_name_0,
+	(MR_PseudoTypeInfo) &mercury_data_builtin__type_ctor_info_string_0,
+	(MR_PseudoTypeInfo) &mercury_data_builtin__type_ctor_info_int_0
+};
+
+static const MR_DuFunctorDesc mercury_data_ml_backend__mlds__du_functor_desc_mlds_pred_label_0_1 = {
+	"mlds_special_pred_label",
+	4,
+	0,
+	MR_SECTAG_NONE,
+	1,
+	-1,
+	1,
+	(MR_PseudoTypeInfo *) mercury_data_ml_backend__mlds__field_types_mlds_pred_label_0_1,
+	NULL,
+	NULL
+};
+
+const MR_DuFunctorDescPtr mercury_data_ml_backend__mlds__du_stag_ordered_mlds_pred_label_0_0[] = {
+	&mercury_data_ml_backend__mlds__du_functor_desc_mlds_pred_label_0_0
+
+};
+
+const MR_DuFunctorDescPtr mercury_data_ml_backend__mlds__du_stag_ordered_mlds_pred_label_0_1[] = {
+	&mercury_data_ml_backend__mlds__du_functor_desc_mlds_pred_label_0_1
+
+};
+
+const MR_DuPtagLayout mercury_data_ml_backend__mlds__du_ptag_ordered_mlds_pred_label_0[] = {
+	{ 1, MR_SECTAG_NONE,
+	mercury_data_ml_backend__mlds__du_stag_ordered_mlds_pred_label_0_0 },
+	{ 1, MR_SECTAG_NONE,
+	mercury_data_ml_backend__mlds__du_stag_ordered_mlds_pred_label_0_1 }
+
+};
+
+const MR_DuFunctorDescPtr mercury_data_ml_backend__mlds__du_name_ordered_mlds_pred_label_0[] = {
+	&mercury_data_ml_backend__mlds__du_functor_desc_mlds_pred_label_0_1,
+	&mercury_data_ml_backend__mlds__du_functor_desc_mlds_pred_label_0_0
+};
+
+const MR_Integer mercury_data_ml_backend__mlds__functor_number_map_mlds_pred_label_0[] = {
+	1,
+	0 };
+	
+const MR_TypeCtorInfo_Struct mercury_data_ml_backend__mlds__type_ctor_info_mlds_pred_label_0 = {
+	0,
+	13,
+	2,
+	MR_TYPECTOR_REP_DU,
+	MR_MAYBE_STATIC_CODE(MR_ENTRY_AP(__Unify___ml_backend__mlds__mlds_pred_label_0_0)),
+	MR_MAYBE_STATIC_CODE(MR_ENTRY_AP(__Compare___ml_backend__mlds__mlds_pred_label_0_0)),
+	"ml_backend.mlds",
+	"mlds_pred_label",
+	{ (void *)mercury_data_ml_backend__mlds__du_name_ordered_mlds_pred_label_0 },
+	{ (void *)mercury_data_ml_backend__mlds__du_ptag_ordered_mlds_pred_label_0 },
+	2,
+	4,
+	mercury_data_ml_backend__mlds__functor_number_map_mlds_pred_label_0
+};
+
+const MR_PseudoTypeInfo mercury_data_ml_backend__mlds__field_types_mlds_pragma_export_0_0[] = {
+	(MR_PseudoTypeInfo) &mercury_data_libs__globals__type_ctor_info_foreign_language_0,
+	(MR_PseudoTypeInfo) &mercury_data_builtin__type_ctor_info_string_0,
+	(MR_PseudoTypeInfo) &mercury_data_ml_backend__mlds__ti_mlds_fully_qualified_name_1ml_backend__mlds__type_ctor_info_mlds_entity_name_0,
+	(MR_PseudoTypeInfo) &mercury_data_ml_backend__mlds__type_ctor_info_mlds_func_params_0,
+	(MR_PseudoTypeInfo) &mercury_data_ml_backend__mlds__type_ctor_info_mlds_context_0
+};
+
+static const MR_DuFunctorDesc mercury_data_ml_backend__mlds__du_functor_desc_mlds_pragma_export_0_0 = {
+	"ml_pragma_export",
+	5,
+	0,
+	MR_SECTAG_NONE,
+	0,
+	-1,
+	0,
+	(MR_PseudoTypeInfo *) mercury_data_ml_backend__mlds__field_types_mlds_pragma_export_0_0,
+	NULL,
+	NULL
+};
+
+const MR_DuFunctorDescPtr mercury_data_ml_backend__mlds__du_stag_ordered_mlds_pragma_export_0_0[] = {
+	&mercury_data_ml_backend__mlds__du_functor_desc_mlds_pragma_export_0_0
+
+};
+
+const MR_DuPtagLayout mercury_data_ml_backend__mlds__du_ptag_ordered_mlds_pragma_export_0[] = {
+	{ 1, MR_SECTAG_NONE,
+	mercury_data_ml_backend__mlds__du_stag_ordered_mlds_pragma_export_0_0 }
+
+};
+
+const MR_DuFunctorDescPtr mercury_data_ml_backend__mlds__du_name_ordered_mlds_pragma_export_0[] = {
+	&mercury_data_ml_backend__mlds__du_functor_desc_mlds_pragma_export_0_0
+};
+
+const MR_Integer mercury_data_ml_backend__mlds__functor_number_map_mlds_pragma_export_0[] = {
+	0 };
+	
+const MR_TypeCtorInfo_Struct mercury_data_ml_backend__mlds__type_ctor_info_mlds_pragma_export_0 = {
+	0,
+	13,
+	1,
+	MR_TYPECTOR_REP_DU,
+	MR_MAYBE_STATIC_CODE(MR_ENTRY_AP(__Unify___ml_backend__mlds__mlds_pragma_export_0_0)),
+	MR_MAYBE_STATIC_CODE(MR_ENTRY_AP(__Compare___ml_backend__mlds__mlds_pragma_export_0_0)),
+	"ml_backend.mlds",
+	"mlds_pragma_export",
+	{ (void *)mercury_data_ml_backend__mlds__du_name_ordered_mlds_pragma_export_0 },
+	{ (void *)mercury_data_ml_backend__mlds__du_ptag_ordered_mlds_pragma_export_0 },
+	1,
+	4,
+	mercury_data_ml_backend__mlds__functor_number_map_mlds_pragma_export_0
+};
+extern const MR_TypeCtorInfo_Struct mercury_data_ml_backend__mlds__type_ctor_info_mlds_module_name_0;
+
+const MR_TypeCtorInfo_Struct mercury_data_ml_backend__mlds__type_ctor_info_mlds_package_name_0 = {
+	0,
+	13,
+	-1,
+	MR_TYPECTOR_REP_EQUIV_GROUND,
+	MR_MAYBE_STATIC_CODE(MR_ENTRY_AP(__Unify___ml_backend__mlds__mlds_package_name_0_0)),
+	MR_MAYBE_STATIC_CODE(MR_ENTRY_AP(__Compare___ml_backend__mlds__mlds_package_name_0_0)),
+	"ml_backend.mlds",
+	"mlds_package_name",
+	{ 0 },
+	{ (void *)&mercury_data_ml_backend__mlds__type_ctor_info_mlds_module_name_0 },
+	-1,
+	0,
+	NULL
+};
+
+const MR_PseudoTypeInfo mercury_data_ml_backend__mlds__field_types_mlds_module_name_0_0[] = {
+	(MR_PseudoTypeInfo) &mercury_data_mdbcomp__prim_data__type_ctor_info_sym_name_0,
+	(MR_PseudoTypeInfo) &mercury_data_mdbcomp__prim_data__type_ctor_info_sym_name_0
+};
+
+const MR_ConstString mercury_data_ml_backend__mlds__field_names_mlds_module_name_0_0[] = {
+	"package_name",
+	"module_name"
+};
+
+static const MR_DuFunctorDesc mercury_data_ml_backend__mlds__du_functor_desc_mlds_module_name_0_0 = {
+	"name",
+	2,
+	0,
+	MR_SECTAG_NONE,
+	0,
+	-1,
+	0,
+	(MR_PseudoTypeInfo *) mercury_data_ml_backend__mlds__field_types_mlds_module_name_0_0,
+	mercury_data_ml_backend__mlds__field_names_mlds_module_name_0_0,
+	NULL
+};
+
+const MR_DuFunctorDescPtr mercury_data_ml_backend__mlds__du_stag_ordered_mlds_module_name_0_0[] = {
+	&mercury_data_ml_backend__mlds__du_functor_desc_mlds_module_name_0_0
+
+};
+
+const MR_DuPtagLayout mercury_data_ml_backend__mlds__du_ptag_ordered_mlds_module_name_0[] = {
+	{ 1, MR_SECTAG_NONE,
+	mercury_data_ml_backend__mlds__du_stag_ordered_mlds_module_name_0_0 }
+
+};
+
+const MR_DuFunctorDescPtr mercury_data_ml_backend__mlds__du_name_ordered_mlds_module_name_0[] = {
+	&mercury_data_ml_backend__mlds__du_functor_desc_mlds_module_name_0_0
+};
+
+const MR_Integer mercury_data_ml_backend__mlds__functor_number_map_mlds_module_name_0[] = {
+	0 };
+	
+const MR_TypeCtorInfo_Struct mercury_data_ml_backend__mlds__type_ctor_info_mlds_module_name_0 = {
+	0,
+	13,
+	1,
+	MR_TYPECTOR_REP_DU,
+	MR_MAYBE_STATIC_CODE(MR_ENTRY_AP(__Unify___ml_backend__mlds__mlds_module_name_0_0)),
+	MR_MAYBE_STATIC_CODE(MR_ENTRY_AP(__Compare___ml_backend__mlds__mlds_module_name_0_0)),
+	"ml_backend.mlds",
+	"mlds_module_name",
+	{ (void *)mercury_data_ml_backend__mlds__du_name_ordered_mlds_module_name_0 },
+	{ (void *)mercury_data_ml_backend__mlds__du_ptag_ordered_mlds_module_name_0 },
+	1,
+	4,
+	mercury_data_ml_backend__mlds__functor_number_map_mlds_module_name_0
+};
+extern const MR_TypeCtorInfo_Struct mercury_data_ml_backend__mlds__type_ctor_info_mlds_field_id_0;
+
+const MR_PseudoTypeInfo mercury_data_ml_backend__mlds__field_types_mlds_lval_0_0[] = {
+	(MR_PseudoTypeInfo) &mercury_data_maybe__ti_maybe_1builtin__type_ctor_info_int_0,
+	(MR_PseudoTypeInfo) &mercury_data_ml_backend__mlds__type_ctor_info_mlds_rval_0,
+	(MR_PseudoTypeInfo) &mercury_data_ml_backend__mlds__type_ctor_info_mlds_field_id_0,
+	(MR_PseudoTypeInfo) &mercury_data_ml_backend__mlds__type_ctor_info_mlds_type_0,
+	(MR_PseudoTypeInfo) &mercury_data_ml_backend__mlds__type_ctor_info_mlds_type_0
+};
+
+const MR_ConstString mercury_data_ml_backend__mlds__field_names_mlds_lval_0_0[] = {
+	"field_tag",
+	"field_addr",
+	"field_field_id",
+	"field_type",
+	"field_ptr_type"
+};
+
+static const MR_DuFunctorDesc mercury_data_ml_backend__mlds__du_functor_desc_mlds_lval_0_0 = {
+	"field",
+	5,
+	0,
+	MR_SECTAG_NONE,
+	0,
+	-1,
+	0,
+	(MR_PseudoTypeInfo *) mercury_data_ml_backend__mlds__field_types_mlds_lval_0_0,
+	mercury_data_ml_backend__mlds__field_names_mlds_lval_0_0,
+	NULL
+};
+
+const MR_PseudoTypeInfo mercury_data_ml_backend__mlds__field_types_mlds_lval_0_1[] = {
+	(MR_PseudoTypeInfo) &mercury_data_ml_backend__mlds__type_ctor_info_mlds_rval_0,
+	(MR_PseudoTypeInfo) &mercury_data_ml_backend__mlds__type_ctor_info_mlds_type_0
+};
+
+static const MR_DuFunctorDesc mercury_data_ml_backend__mlds__du_functor_desc_mlds_lval_0_1 = {
+	"mem_ref",
+	2,
+	0,
+	MR_SECTAG_NONE,
+	1,
+	-1,
+	1,
+	(MR_PseudoTypeInfo *) mercury_data_ml_backend__mlds__field_types_mlds_lval_0_1,
+	NULL,
+	NULL
+};
+extern const MR_TypeCtorInfo_Struct mercury_data_ml_backend__mlds__type_ctor_info_global_var_ref_0;
+
+const MR_PseudoTypeInfo mercury_data_ml_backend__mlds__field_types_mlds_lval_0_2[] = {
+	(MR_PseudoTypeInfo) &mercury_data_ml_backend__mlds__type_ctor_info_global_var_ref_0
+};
+
+static const MR_DuFunctorDesc mercury_data_ml_backend__mlds__du_functor_desc_mlds_lval_0_2 = {
+	"global_var_ref",
+	1,
+	0,
+	MR_SECTAG_NONE,
+	2,
+	-1,
+	2,
+	(MR_PseudoTypeInfo *) mercury_data_ml_backend__mlds__field_types_mlds_lval_0_2,
+	NULL,
+	NULL
+};
+
+const MR_PseudoTypeInfo mercury_data_ml_backend__mlds__field_types_mlds_lval_0_3[] = {
+	(MR_PseudoTypeInfo) &mercury_data_ml_backend__mlds__ti_mlds_fully_qualified_name_1ml_backend__mlds__type_ctor_info_mlds_var_name_0,
+	(MR_PseudoTypeInfo) &mercury_data_ml_backend__mlds__type_ctor_info_mlds_type_0
+};
+
+static const MR_DuFunctorDesc mercury_data_ml_backend__mlds__du_functor_desc_mlds_lval_0_3 = {
+	"var",
+	2,
+	0,
+	MR_SECTAG_NONE,
+	3,
+	-1,
+	3,
+	(MR_PseudoTypeInfo *) mercury_data_ml_backend__mlds__field_types_mlds_lval_0_3,
+	NULL,
+	NULL
+};
+
+const MR_DuFunctorDescPtr mercury_data_ml_backend__mlds__du_stag_ordered_mlds_lval_0_0[] = {
+	&mercury_data_ml_backend__mlds__du_functor_desc_mlds_lval_0_0
+
+};
+
+const MR_DuFunctorDescPtr mercury_data_ml_backend__mlds__du_stag_ordered_mlds_lval_0_1[] = {
+	&mercury_data_ml_backend__mlds__du_functor_desc_mlds_lval_0_1
+
+};
+
+const MR_DuFunctorDescPtr mercury_data_ml_backend__mlds__du_stag_ordered_mlds_lval_0_2[] = {
+	&mercury_data_ml_backend__mlds__du_functor_desc_mlds_lval_0_2
+
+};
+
+const MR_DuFunctorDescPtr mercury_data_ml_backend__mlds__du_stag_ordered_mlds_lval_0_3[] = {
+	&mercury_data_ml_backend__mlds__du_functor_desc_mlds_lval_0_3
+
+};
+
+const MR_DuPtagLayout mercury_data_ml_backend__mlds__du_ptag_ordered_mlds_lval_0[] = {
+	{ 1, MR_SECTAG_NONE,
+	mercury_data_ml_backend__mlds__du_stag_ordered_mlds_lval_0_0 },
+	{ 1, MR_SECTAG_NONE,
+	mercury_data_ml_backend__mlds__du_stag_ordered_mlds_lval_0_1 },
+	{ 1, MR_SECTAG_NONE,
+	mercury_data_ml_backend__mlds__du_stag_ordered_mlds_lval_0_2 },
+	{ 1, MR_SECTAG_NONE,
+	mercury_data_ml_backend__mlds__du_stag_ordered_mlds_lval_0_3 }
+
+};
+
+const MR_DuFunctorDescPtr mercury_data_ml_backend__mlds__du_name_ordered_mlds_lval_0[] = {
+	&mercury_data_ml_backend__mlds__du_functor_desc_mlds_lval_0_0,
+	&mercury_data_ml_backend__mlds__du_functor_desc_mlds_lval_0_2,
+	&mercury_data_ml_backend__mlds__du_functor_desc_mlds_lval_0_1,
+	&mercury_data_ml_backend__mlds__du_functor_desc_mlds_lval_0_3
+};
+
+const MR_Integer mercury_data_ml_backend__mlds__functor_number_map_mlds_lval_0[] = {
+	0,
+	2,
+	1,
+	3 };
+	
+const MR_TypeCtorInfo_Struct mercury_data_ml_backend__mlds__type_ctor_info_mlds_lval_0 = {
+	0,
+	13,
+	4,
+	MR_TYPECTOR_REP_DU,
+	MR_MAYBE_STATIC_CODE(MR_ENTRY_AP(__Unify___ml_backend__mlds__mlds_lval_0_0)),
+	MR_MAYBE_STATIC_CODE(MR_ENTRY_AP(__Compare___ml_backend__mlds__mlds_lval_0_0)),
+	"ml_backend.mlds",
+	"mlds_lval",
+	{ (void *)mercury_data_ml_backend__mlds__du_name_ordered_mlds_lval_0 },
+	{ (void *)mercury_data_ml_backend__mlds__du_ptag_ordered_mlds_lval_0 },
+	4,
+	4,
+	mercury_data_ml_backend__mlds__functor_number_map_mlds_lval_0
+};
+
+const MR_TypeCtorInfo_Struct mercury_data_ml_backend__mlds__type_ctor_info_mlds_label_0 = {
+	0,
+	13,
+	-1,
+	MR_TYPECTOR_REP_EQUIV_GROUND,
+	MR_MAYBE_STATIC_CODE(MR_ENTRY_AP(__Unify___ml_backend__mlds__mlds_label_0_0)),
+	MR_MAYBE_STATIC_CODE(MR_ENTRY_AP(__Compare___ml_backend__mlds__mlds_label_0_0)),
+	"ml_backend.mlds",
+	"mlds_label",
+	{ 0 },
+	{ (void *)&mercury_data_builtin__type_ctor_info_string_0 },
+	-1,
+	0,
+	NULL
+};
+
+const MR_TypeCtorInfo_Struct mercury_data_ml_backend__mlds__type_ctor_info_mlds_interface_id_0 = {
+	0,
+	13,
+	-1,
+	MR_TYPECTOR_REP_EQUIV_GROUND,
+	MR_MAYBE_STATIC_CODE(MR_ENTRY_AP(__Unify___ml_backend__mlds__mlds_interface_id_0_0)),
+	MR_MAYBE_STATIC_CODE(MR_ENTRY_AP(__Compare___ml_backend__mlds__mlds_interface_id_0_0)),
+	"ml_backend.mlds",
+	"mlds_interface_id",
+	{ 0 },
+	{ (void *)&mercury_data_ml_backend__mlds__type_ctor_info_mlds_type_0 },
+	-1,
+	0,
+	NULL
+};
+
+const MR_PseudoTypeInfo mercury_data_ml_backend__mlds__field_types_mlds_initializer_0_0[] = {
+	(MR_PseudoTypeInfo) &mercury_data_ml_backend__mlds__type_ctor_info_mlds_rval_0
+};
+
+static const MR_DuFunctorDesc mercury_data_ml_backend__mlds__du_functor_desc_mlds_initializer_0_0 = {
+	"init_obj",
+	1,
+	0,
+	MR_SECTAG_NONE,
+	1,
+	-1,
+	0,
+	(MR_PseudoTypeInfo *) mercury_data_ml_backend__mlds__field_types_mlds_initializer_0_0,
+	NULL,
+	NULL
+};
+extern const MR_TypeCtorInfo_Struct mercury_data_ml_backend__mlds__type_ctor_info_mlds_initializer_0;
+
+static const MR_FA_TypeInfo_Struct1 mercury_data_list__ti_list_1ml_backend__mlds__type_ctor_info_mlds_initializer_0 = {
+	&mercury_data_list__type_ctor_info_list_1,
+{	(MR_TypeInfo) &mercury_data_ml_backend__mlds__type_ctor_info_mlds_initializer_0
+}};
+
+const MR_PseudoTypeInfo mercury_data_ml_backend__mlds__field_types_mlds_initializer_0_1[] = {
+	(MR_PseudoTypeInfo) &mercury_data_ml_backend__mlds__type_ctor_info_mlds_type_0,
+	(MR_PseudoTypeInfo) &mercury_data_list__ti_list_1ml_backend__mlds__type_ctor_info_mlds_initializer_0
+};
+
+static const MR_DuFunctorDesc mercury_data_ml_backend__mlds__du_functor_desc_mlds_initializer_0_1 = {
+	"init_struct",
+	2,
+	0,
+	MR_SECTAG_NONE,
+	2,
+	-1,
+	1,
+	(MR_PseudoTypeInfo *) mercury_data_ml_backend__mlds__field_types_mlds_initializer_0_1,
+	NULL,
+	NULL
+};
+
+const MR_PseudoTypeInfo mercury_data_ml_backend__mlds__field_types_mlds_initializer_0_2[] = {
+	(MR_PseudoTypeInfo) &mercury_data_list__ti_list_1ml_backend__mlds__type_ctor_info_mlds_initializer_0
+};
+
+static const MR_DuFunctorDesc mercury_data_ml_backend__mlds__du_functor_desc_mlds_initializer_0_2 = {
+	"init_array",
+	1,
+	0,
+	MR_SECTAG_NONE,
+	3,
+	-1,
+	2,
+	(MR_PseudoTypeInfo *) mercury_data_ml_backend__mlds__field_types_mlds_initializer_0_2,
+	NULL,
+	NULL
+};
+
+static const MR_DuFunctorDesc mercury_data_ml_backend__mlds__du_functor_desc_mlds_initializer_0_3 = {
+	"no_initializer",
+	0,
+	0,
+	MR_SECTAG_LOCAL,
+	0,
+	0,
+	3,
+	(MR_PseudoTypeInfo *) NULL,
+	NULL,
+	NULL
+};
+
+const MR_DuFunctorDescPtr mercury_data_ml_backend__mlds__du_stag_ordered_mlds_initializer_0_0[] = {
+	&mercury_data_ml_backend__mlds__du_functor_desc_mlds_initializer_0_3
+
+};
+
+const MR_DuFunctorDescPtr mercury_data_ml_backend__mlds__du_stag_ordered_mlds_initializer_0_1[] = {
+	&mercury_data_ml_backend__mlds__du_functor_desc_mlds_initializer_0_0
+
+};
+
+const MR_DuFunctorDescPtr mercury_data_ml_backend__mlds__du_stag_ordered_mlds_initializer_0_2[] = {
+	&mercury_data_ml_backend__mlds__du_functor_desc_mlds_initializer_0_1
+
+};
+
+const MR_DuFunctorDescPtr mercury_data_ml_backend__mlds__du_stag_ordered_mlds_initializer_0_3[] = {
+	&mercury_data_ml_backend__mlds__du_functor_desc_mlds_initializer_0_2
+
+};
+
+const MR_DuPtagLayout mercury_data_ml_backend__mlds__du_ptag_ordered_mlds_initializer_0[] = {
+	{ 1, MR_SECTAG_LOCAL,
+	mercury_data_ml_backend__mlds__du_stag_ordered_mlds_initializer_0_0 },
+	{ 1, MR_SECTAG_NONE,
+	mercury_data_ml_backend__mlds__du_stag_ordered_mlds_initializer_0_1 },
+	{ 1, MR_SECTAG_NONE,
+	mercury_data_ml_backend__mlds__du_stag_ordered_mlds_initializer_0_2 },
+	{ 1, MR_SECTAG_NONE,
+	mercury_data_ml_backend__mlds__du_stag_ordered_mlds_initializer_0_3 }
+
+};
+
+const MR_DuFunctorDescPtr mercury_data_ml_backend__mlds__du_name_ordered_mlds_initializer_0[] = {
+	&mercury_data_ml_backend__mlds__du_functor_desc_mlds_initializer_0_2,
+	&mercury_data_ml_backend__mlds__du_functor_desc_mlds_initializer_0_0,
+	&mercury_data_ml_backend__mlds__du_functor_desc_mlds_initializer_0_1,
+	&mercury_data_ml_backend__mlds__du_functor_desc_mlds_initializer_0_3
+};
+
+const MR_Integer mercury_data_ml_backend__mlds__functor_number_map_mlds_initializer_0[] = {
+	1,
+	2,
+	0,
+	3 };
+	
+const MR_TypeCtorInfo_Struct mercury_data_ml_backend__mlds__type_ctor_info_mlds_initializer_0 = {
+	0,
+	13,
+	4,
+	MR_TYPECTOR_REP_DU,
+	MR_MAYBE_STATIC_CODE(MR_ENTRY_AP(__Unify___ml_backend__mlds__mlds_initializer_0_0)),
+	MR_MAYBE_STATIC_CODE(MR_ENTRY_AP(__Compare___ml_backend__mlds__mlds_initializer_0_0)),
+	"ml_backend.mlds",
+	"mlds_initializer",
+	{ (void *)mercury_data_ml_backend__mlds__du_name_ordered_mlds_initializer_0 },
+	{ (void *)mercury_data_ml_backend__mlds__du_ptag_ordered_mlds_initializer_0 },
+	4,
+	4,
+	mercury_data_ml_backend__mlds__functor_number_map_mlds_initializer_0
+};
+extern const MR_TypeCtorInfo_Struct mercury_data_ml_backend__mlds__type_ctor_info_mlds_import_0;
+
+static const MR_FA_TypeInfo_Struct1 mercury_data_list__ti_list_1ml_backend__mlds__type_ctor_info_mlds_import_0 = {
+	&mercury_data_list__type_ctor_info_list_1,
+{	(MR_TypeInfo) &mercury_data_ml_backend__mlds__type_ctor_info_mlds_import_0
+}};
+
+const MR_TypeCtorInfo_Struct mercury_data_ml_backend__mlds__type_ctor_info_mlds_imports_0 = {
+	0,
+	13,
+	-1,
+	MR_TYPECTOR_REP_EQUIV_GROUND,
+	MR_MAYBE_STATIC_CODE(MR_ENTRY_AP(__Unify___ml_backend__mlds__mlds_imports_0_0)),
+	MR_MAYBE_STATIC_CODE(MR_ENTRY_AP(__Compare___ml_backend__mlds__mlds_imports_0_0)),
+	"ml_backend.mlds",
+	"mlds_imports",
+	{ 0 },
+	{ (void *)&mercury_data_list__ti_list_1ml_backend__mlds__type_ctor_info_mlds_import_0 },
+	-1,
+	0,
+	NULL
+};
+extern const MR_TypeCtorInfo_Struct mercury_data_ml_backend__mlds__type_ctor_info_mercury_mlds_import_type_0;
+
+const MR_PseudoTypeInfo mercury_data_ml_backend__mlds__field_types_mlds_import_0_0[] = {
+	(MR_PseudoTypeInfo) &mercury_data_ml_backend__mlds__type_ctor_info_mercury_mlds_import_type_0,
+	(MR_PseudoTypeInfo) &mercury_data_ml_backend__mlds__type_ctor_info_mlds_module_name_0
+};
+
+const MR_ConstString mercury_data_ml_backend__mlds__field_names_mlds_import_0_0[] = {
+	"mercury_mlds_import_type",
+	"import_name"
+};
+
+static const MR_DuFunctorDesc mercury_data_ml_backend__mlds__du_functor_desc_mlds_import_0_0 = {
+	"mercury_import",
+	2,
+	0,
+	MR_SECTAG_NONE,
+	0,
+	-1,
+	0,
+	(MR_PseudoTypeInfo *) mercury_data_ml_backend__mlds__field_types_mlds_import_0_0,
+	mercury_data_ml_backend__mlds__field_names_mlds_import_0_0,
+	NULL
+};
+extern const MR_TypeCtorInfo_Struct mercury_data_ml_backend__mlds__type_ctor_info_foreign_import_name_0;
+
+const MR_PseudoTypeInfo mercury_data_ml_backend__mlds__field_types_mlds_import_0_1[] = {
+	(MR_PseudoTypeInfo) &mercury_data_ml_backend__mlds__type_ctor_info_foreign_import_name_0
+};
+
+const MR_ConstString mercury_data_ml_backend__mlds__field_names_mlds_import_0_1[] = {
+	"foreign_import_name"
+};
+
+static const MR_DuFunctorDesc mercury_data_ml_backend__mlds__du_functor_desc_mlds_import_0_1 = {
+	"foreign_import",
+	1,
+	0,
+	MR_SECTAG_NONE,
+	1,
+	-1,
+	1,
+	(MR_PseudoTypeInfo *) mercury_data_ml_backend__mlds__field_types_mlds_import_0_1,
+	mercury_data_ml_backend__mlds__field_names_mlds_import_0_1,
+	NULL
+};
+
+const MR_DuFunctorDescPtr mercury_data_ml_backend__mlds__du_stag_ordered_mlds_import_0_0[] = {
+	&mercury_data_ml_backend__mlds__du_functor_desc_mlds_import_0_0
+
+};
+
+const MR_DuFunctorDescPtr mercury_data_ml_backend__mlds__du_stag_ordered_mlds_import_0_1[] = {
+	&mercury_data_ml_backend__mlds__du_functor_desc_mlds_import_0_1
+
+};
+
+const MR_DuPtagLayout mercury_data_ml_backend__mlds__du_ptag_ordered_mlds_import_0[] = {
+	{ 1, MR_SECTAG_NONE,
+	mercury_data_ml_backend__mlds__du_stag_ordered_mlds_import_0_0 },
+	{ 1, MR_SECTAG_NONE,
+	mercury_data_ml_backend__mlds__du_stag_ordered_mlds_import_0_1 }
+
+};
+
+const MR_DuFunctorDescPtr mercury_data_ml_backend__mlds__du_name_ordered_mlds_import_0[] = {
+	&mercury_data_ml_backend__mlds__du_functor_desc_mlds_import_0_1,
+	&mercury_data_ml_backend__mlds__du_functor_desc_mlds_import_0_0
+};
+
+const MR_Integer mercury_data_ml_backend__mlds__functor_number_map_mlds_import_0[] = {
+	1,
+	0 };
+	
+const MR_TypeCtorInfo_Struct mercury_data_ml_backend__mlds__type_ctor_info_mlds_import_0 = {
+	0,
+	13,
+	2,
+	MR_TYPECTOR_REP_DU,
+	MR_MAYBE_STATIC_CODE(MR_ENTRY_AP(__Unify___ml_backend__mlds__mlds_import_0_0)),
+	MR_MAYBE_STATIC_CODE(MR_ENTRY_AP(__Compare___ml_backend__mlds__mlds_import_0_0)),
+	"ml_backend.mlds",
+	"mlds_import",
+	{ (void *)mercury_data_ml_backend__mlds__du_name_ordered_mlds_import_0 },
+	{ (void *)mercury_data_ml_backend__mlds__du_ptag_ordered_mlds_import_0 },
+	2,
+	4,
+	mercury_data_ml_backend__mlds__functor_number_map_mlds_import_0
+};
+
+const MR_PseudoTypeInfo mercury_data_ml_backend__mlds__field_types_mlds_goto_target_0_0[] = {
+	(MR_PseudoTypeInfo) &mercury_data_builtin__type_ctor_info_string_0
+};
+
+static const MR_DuFunctorDesc mercury_data_ml_backend__mlds__du_functor_desc_mlds_goto_target_0_0 = {
+	"label",
+	1,
+	0,
+	MR_SECTAG_NONE,
+	1,
+	-1,
+	0,
+	(MR_PseudoTypeInfo *) mercury_data_ml_backend__mlds__field_types_mlds_goto_target_0_0,
+	NULL,
+	NULL
+};
+
+static const MR_DuFunctorDesc mercury_data_ml_backend__mlds__du_functor_desc_mlds_goto_target_0_1 = {
+	"break",
+	0,
+	0,
+	MR_SECTAG_LOCAL,
+	0,
+	0,
+	1,
+	(MR_PseudoTypeInfo *) NULL,
+	NULL,
+	NULL
+};
+
+static const MR_DuFunctorDesc mercury_data_ml_backend__mlds__du_functor_desc_mlds_goto_target_0_2 = {
+	"continue",
+	0,
+	0,
+	MR_SECTAG_LOCAL,
+	0,
+	1,
+	2,
+	(MR_PseudoTypeInfo *) NULL,
+	NULL,
+	NULL
+};
+
+const MR_DuFunctorDescPtr mercury_data_ml_backend__mlds__du_stag_ordered_mlds_goto_target_0_0[] = {
+	&mercury_data_ml_backend__mlds__du_functor_desc_mlds_goto_target_0_1,
+	&mercury_data_ml_backend__mlds__du_functor_desc_mlds_goto_target_0_2
+
+};
+
+const MR_DuFunctorDescPtr mercury_data_ml_backend__mlds__du_stag_ordered_mlds_goto_target_0_1[] = {
+	&mercury_data_ml_backend__mlds__du_functor_desc_mlds_goto_target_0_0
+
+};
+
+const MR_DuPtagLayout mercury_data_ml_backend__mlds__du_ptag_ordered_mlds_goto_target_0[] = {
+	{ 2, MR_SECTAG_LOCAL,
+	mercury_data_ml_backend__mlds__du_stag_ordered_mlds_goto_target_0_0 },
+	{ 1, MR_SECTAG_NONE,
+	mercury_data_ml_backend__mlds__du_stag_ordered_mlds_goto_target_0_1 }
+
+};
+
+const MR_DuFunctorDescPtr mercury_data_ml_backend__mlds__du_name_ordered_mlds_goto_target_0[] = {
+	&mercury_data_ml_backend__mlds__du_functor_desc_mlds_goto_target_0_1,
+	&mercury_data_ml_backend__mlds__du_functor_desc_mlds_goto_target_0_2,
+	&mercury_data_ml_backend__mlds__du_functor_desc_mlds_goto_target_0_0
+};
+
+const MR_Integer mercury_data_ml_backend__mlds__functor_number_map_mlds_goto_target_0[] = {
+	2,
+	0,
+	1 };
+	
+const MR_TypeCtorInfo_Struct mercury_data_ml_backend__mlds__type_ctor_info_mlds_goto_target_0 = {
+	0,
+	13,
+	2,
+	MR_TYPECTOR_REP_DU,
+	MR_MAYBE_STATIC_CODE(MR_ENTRY_AP(__Unify___ml_backend__mlds__mlds_goto_target_0_0)),
+	MR_MAYBE_STATIC_CODE(MR_ENTRY_AP(__Compare___ml_backend__mlds__mlds_goto_target_0_0)),
+	"ml_backend.mlds",
+	"mlds_goto_target",
+	{ (void *)mercury_data_ml_backend__mlds__du_name_ordered_mlds_goto_target_0 },
+	{ (void *)mercury_data_ml_backend__mlds__du_ptag_ordered_mlds_goto_target_0 },
+	3,
+	4,
+	mercury_data_ml_backend__mlds__functor_number_map_mlds_goto_target_0
+};
+
+const MR_PseudoTypeInfo mercury_data_ml_backend__mlds__field_types_mlds_gc_statement_0_0[] = {
+	(MR_PseudoTypeInfo) &mercury_data_ml_backend__mlds__type_ctor_info_statement_0
+};
+
+static const MR_DuFunctorDesc mercury_data_ml_backend__mlds__du_functor_desc_mlds_gc_statement_0_0 = {
+	"gc_trace_code",
+	1,
+	0,
+	MR_SECTAG_NONE,
+	1,
+	-1,
+	0,
+	(MR_PseudoTypeInfo *) mercury_data_ml_backend__mlds__field_types_mlds_gc_statement_0_0,
+	NULL,
+	NULL
+};
+
+const MR_PseudoTypeInfo mercury_data_ml_backend__mlds__field_types_mlds_gc_statement_0_1[] = {
+	(MR_PseudoTypeInfo) &mercury_data_ml_backend__mlds__type_ctor_info_statement_0
+};
+
+static const MR_DuFunctorDesc mercury_data_ml_backend__mlds__du_functor_desc_mlds_gc_statement_0_1 = {
+	"gc_initialiser",
+	1,
+	0,
+	MR_SECTAG_NONE,
+	2,
+	-1,
+	1,
+	(MR_PseudoTypeInfo *) mercury_data_ml_backend__mlds__field_types_mlds_gc_statement_0_1,
+	NULL,
+	NULL
+};
+
+static const MR_DuFunctorDesc mercury_data_ml_backend__mlds__du_functor_desc_mlds_gc_statement_0_2 = {
+	"gc_no_stmt",
+	0,
+	0,
+	MR_SECTAG_LOCAL,
+	0,
+	0,
+	2,
+	(MR_PseudoTypeInfo *) NULL,
+	NULL,
+	NULL
+};
+
+const MR_DuFunctorDescPtr mercury_data_ml_backend__mlds__du_stag_ordered_mlds_gc_statement_0_0[] = {
+	&mercury_data_ml_backend__mlds__du_functor_desc_mlds_gc_statement_0_2
+
+};
+
+const MR_DuFunctorDescPtr mercury_data_ml_backend__mlds__du_stag_ordered_mlds_gc_statement_0_1[] = {
+	&mercury_data_ml_backend__mlds__du_functor_desc_mlds_gc_statement_0_0
+
+};
+
+const MR_DuFunctorDescPtr mercury_data_ml_backend__mlds__du_stag_ordered_mlds_gc_statement_0_2[] = {
+	&mercury_data_ml_backend__mlds__du_functor_desc_mlds_gc_statement_0_1
+
+};
+
+const MR_DuPtagLayout mercury_data_ml_backend__mlds__du_ptag_ordered_mlds_gc_statement_0[] = {
+	{ 1, MR_SECTAG_LOCAL,
+	mercury_data_ml_backend__mlds__du_stag_ordered_mlds_gc_statement_0_0 },
+	{ 1, MR_SECTAG_NONE,
+	mercury_data_ml_backend__mlds__du_stag_ordered_mlds_gc_statement_0_1 },
+	{ 1, MR_SECTAG_NONE,
+	mercury_data_ml_backend__mlds__du_stag_ordered_mlds_gc_statement_0_2 }
+
+};
+
+const MR_DuFunctorDescPtr mercury_data_ml_backend__mlds__du_name_ordered_mlds_gc_statement_0[] = {
+	&mercury_data_ml_backend__mlds__du_functor_desc_mlds_gc_statement_0_1,
+	&mercury_data_ml_backend__mlds__du_functor_desc_mlds_gc_statement_0_2,
+	&mercury_data_ml_backend__mlds__du_functor_desc_mlds_gc_statement_0_0
+};
+
+const MR_Integer mercury_data_ml_backend__mlds__functor_number_map_mlds_gc_statement_0[] = {
+	2,
+	0,
+	1 };
+	
+const MR_TypeCtorInfo_Struct mercury_data_ml_backend__mlds__type_ctor_info_mlds_gc_statement_0 = {
+	0,
+	13,
+	3,
+	MR_TYPECTOR_REP_DU,
+	MR_MAYBE_STATIC_CODE(MR_ENTRY_AP(__Unify___ml_backend__mlds__mlds_gc_statement_0_0)),
+	MR_MAYBE_STATIC_CODE(MR_ENTRY_AP(__Compare___ml_backend__mlds__mlds_gc_statement_0_0)),
+	"ml_backend.mlds",
+	"mlds_gc_statement",
+	{ (void *)mercury_data_ml_backend__mlds__du_name_ordered_mlds_gc_statement_0 },
+	{ (void *)mercury_data_ml_backend__mlds__du_ptag_ordered_mlds_gc_statement_0 },
+	3,
+	4,
+	mercury_data_ml_backend__mlds__functor_number_map_mlds_gc_statement_0
+};
+
+const MR_PseudoTypeInfo mercury_data_ml_backend__mlds__field_types_mlds_function_body_0_0[] = {
+	(MR_PseudoTypeInfo) &mercury_data_ml_backend__mlds__type_ctor_info_statement_0
+};
+
+static const MR_DuFunctorDesc mercury_data_ml_backend__mlds__du_functor_desc_mlds_function_body_0_0 = {
+	"body_defined_here",
+	1,
+	0,
+	MR_SECTAG_NONE,
+	1,
+	-1,
+	0,
+	(MR_PseudoTypeInfo *) mercury_data_ml_backend__mlds__field_types_mlds_function_body_0_0,
+	NULL,
+	NULL
+};
+
+static const MR_DuFunctorDesc mercury_data_ml_backend__mlds__du_functor_desc_mlds_function_body_0_1 = {
+	"body_external",
+	0,
+	0,
+	MR_SECTAG_LOCAL,
+	0,
+	0,
+	1,
+	(MR_PseudoTypeInfo *) NULL,
+	NULL,
+	NULL
+};
+
+const MR_DuFunctorDescPtr mercury_data_ml_backend__mlds__du_stag_ordered_mlds_function_body_0_0[] = {
+	&mercury_data_ml_backend__mlds__du_functor_desc_mlds_function_body_0_1
+
+};
+
+const MR_DuFunctorDescPtr mercury_data_ml_backend__mlds__du_stag_ordered_mlds_function_body_0_1[] = {
+	&mercury_data_ml_backend__mlds__du_functor_desc_mlds_function_body_0_0
+
+};
+
+const MR_DuPtagLayout mercury_data_ml_backend__mlds__du_ptag_ordered_mlds_function_body_0[] = {
+	{ 1, MR_SECTAG_LOCAL,
+	mercury_data_ml_backend__mlds__du_stag_ordered_mlds_function_body_0_0 },
+	{ 1, MR_SECTAG_NONE,
+	mercury_data_ml_backend__mlds__du_stag_ordered_mlds_function_body_0_1 }
+
+};
+
+const MR_DuFunctorDescPtr mercury_data_ml_backend__mlds__du_name_ordered_mlds_function_body_0[] = {
+	&mercury_data_ml_backend__mlds__du_functor_desc_mlds_function_body_0_0,
+	&mercury_data_ml_backend__mlds__du_functor_desc_mlds_function_body_0_1
+};
+
+const MR_Integer mercury_data_ml_backend__mlds__functor_number_map_mlds_function_body_0[] = {
+	0,
+	1 };
+	
+const MR_TypeCtorInfo_Struct mercury_data_ml_backend__mlds__type_ctor_info_mlds_function_body_0 = {
+	0,
+	13,
+	2,
+	MR_TYPECTOR_REP_DU,
+	MR_MAYBE_STATIC_CODE(MR_ENTRY_AP(__Unify___ml_backend__mlds__mlds_function_body_0_0)),
+	MR_MAYBE_STATIC_CODE(MR_ENTRY_AP(__Compare___ml_backend__mlds__mlds_function_body_0_0)),
+	"ml_backend.mlds",
+	"mlds_function_body",
+	{ (void *)mercury_data_ml_backend__mlds__du_name_ordered_mlds_function_body_0 },
+	{ (void *)mercury_data_ml_backend__mlds__du_ptag_ordered_mlds_function_body_0 },
+	2,
+	4,
+	mercury_data_ml_backend__mlds__functor_number_map_mlds_function_body_0
+};
+
+const MR_PseudoTypeInfo mercury_data_ml_backend__mlds__field_types_mlds_func_signature_0_0[] = {
+	(MR_PseudoTypeInfo) &mercury_data_list__ti_list_1ml_backend__mlds__type_ctor_info_mlds_type_0,
+	(MR_PseudoTypeInfo) &mercury_data_list__ti_list_1ml_backend__mlds__type_ctor_info_mlds_type_0
+};
+
+static const MR_DuFunctorDesc mercury_data_ml_backend__mlds__du_functor_desc_mlds_func_signature_0_0 = {
+	"mlds_func_signature",
+	2,
+	0,
+	MR_SECTAG_NONE,
+	0,
+	-1,
+	0,
+	(MR_PseudoTypeInfo *) mercury_data_ml_backend__mlds__field_types_mlds_func_signature_0_0,
+	NULL,
+	NULL
+};
+
+const MR_DuFunctorDescPtr mercury_data_ml_backend__mlds__du_stag_ordered_mlds_func_signature_0_0[] = {
+	&mercury_data_ml_backend__mlds__du_functor_desc_mlds_func_signature_0_0
+
+};
+
+const MR_DuPtagLayout mercury_data_ml_backend__mlds__du_ptag_ordered_mlds_func_signature_0[] = {
+	{ 1, MR_SECTAG_NONE,
+	mercury_data_ml_backend__mlds__du_stag_ordered_mlds_func_signature_0_0 }
+
+};
+
+const MR_DuFunctorDescPtr mercury_data_ml_backend__mlds__du_name_ordered_mlds_func_signature_0[] = {
+	&mercury_data_ml_backend__mlds__du_functor_desc_mlds_func_signature_0_0
+};
+
+const MR_Integer mercury_data_ml_backend__mlds__functor_number_map_mlds_func_signature_0[] = {
+	0 };
+	
+const MR_TypeCtorInfo_Struct mercury_data_ml_backend__mlds__type_ctor_info_mlds_func_signature_0 = {
+	0,
+	13,
+	1,
+	MR_TYPECTOR_REP_DU,
+	MR_MAYBE_STATIC_CODE(MR_ENTRY_AP(__Unify___ml_backend__mlds__mlds_func_signature_0_0)),
+	MR_MAYBE_STATIC_CODE(MR_ENTRY_AP(__Compare___ml_backend__mlds__mlds_func_signature_0_0)),
+	"ml_backend.mlds",
+	"mlds_func_signature",
+	{ (void *)mercury_data_ml_backend__mlds__du_name_ordered_mlds_func_signature_0 },
+	{ (void *)mercury_data_ml_backend__mlds__du_ptag_ordered_mlds_func_signature_0 },
+	1,
+	4,
+	mercury_data_ml_backend__mlds__functor_number_map_mlds_func_signature_0
+};
+
+const MR_TypeCtorInfo_Struct mercury_data_ml_backend__mlds__type_ctor_info_mlds_func_sequence_num_0 = {
+	0,
+	13,
+	-1,
+	MR_TYPECTOR_REP_EQUIV_GROUND,
+	MR_MAYBE_STATIC_CODE(MR_ENTRY_AP(__Unify___ml_backend__mlds__mlds_func_sequence_num_0_0)),
+	MR_MAYBE_STATIC_CODE(MR_ENTRY_AP(__Compare___ml_backend__mlds__mlds_func_sequence_num_0_0)),
+	"ml_backend.mlds",
+	"mlds_func_sequence_num",
+	{ 0 },
+	{ (void *)&mercury_data_builtin__type_ctor_info_int_0 },
+	-1,
+	0,
+	NULL
+};
+extern const MR_TypeCtorInfo_Struct mercury_data_ml_backend__mlds__type_ctor_info_mlds_argument_0;
+
+static const MR_FA_TypeInfo_Struct1 mercury_data_list__ti_list_1ml_backend__mlds__type_ctor_info_mlds_argument_0 = {
+	&mercury_data_list__type_ctor_info_list_1,
+{	(MR_TypeInfo) &mercury_data_ml_backend__mlds__type_ctor_info_mlds_argument_0
+}};
+
+const MR_PseudoTypeInfo mercury_data_ml_backend__mlds__field_types_mlds_func_params_0_0[] = {
+	(MR_PseudoTypeInfo) &mercury_data_list__ti_list_1ml_backend__mlds__type_ctor_info_mlds_argument_0,
+	(MR_PseudoTypeInfo) &mercury_data_list__ti_list_1ml_backend__mlds__type_ctor_info_mlds_type_0
+};
+
+static const MR_DuFunctorDesc mercury_data_ml_backend__mlds__du_functor_desc_mlds_func_params_0_0 = {
+	"mlds_func_params",
+	2,
+	0,
+	MR_SECTAG_NONE,
+	0,
+	-1,
+	0,
+	(MR_PseudoTypeInfo *) mercury_data_ml_backend__mlds__field_types_mlds_func_params_0_0,
+	NULL,
+	NULL
+};
+
+const MR_DuFunctorDescPtr mercury_data_ml_backend__mlds__du_stag_ordered_mlds_func_params_0_0[] = {
+	&mercury_data_ml_backend__mlds__du_functor_desc_mlds_func_params_0_0
+
+};
+
+const MR_DuPtagLayout mercury_data_ml_backend__mlds__du_ptag_ordered_mlds_func_params_0[] = {
+	{ 1, MR_SECTAG_NONE,
+	mercury_data_ml_backend__mlds__du_stag_ordered_mlds_func_params_0_0 }
+
+};
+
+const MR_DuFunctorDescPtr mercury_data_ml_backend__mlds__du_name_ordered_mlds_func_params_0[] = {
+	&mercury_data_ml_backend__mlds__du_functor_desc_mlds_func_params_0_0
+};
+
+const MR_Integer mercury_data_ml_backend__mlds__functor_number_map_mlds_func_params_0[] = {
+	0 };
+	
+const MR_TypeCtorInfo_Struct mercury_data_ml_backend__mlds__type_ctor_info_mlds_func_params_0 = {
+	0,
+	13,
+	1,
+	MR_TYPECTOR_REP_DU,
+	MR_MAYBE_STATIC_CODE(MR_ENTRY_AP(__Unify___ml_backend__mlds__mlds_func_params_0_0)),
+	MR_MAYBE_STATIC_CODE(MR_ENTRY_AP(__Compare___ml_backend__mlds__mlds_func_params_0_0)),
+	"ml_backend.mlds",
+	"mlds_func_params",
+	{ (void *)mercury_data_ml_backend__mlds__du_name_ordered_mlds_func_params_0 },
+	{ (void *)mercury_data_ml_backend__mlds__du_ptag_ordered_mlds_func_params_0 },
+	1,
+	4,
+	mercury_data_ml_backend__mlds__functor_number_map_mlds_func_params_0
+};
+extern const MR_TypeCtorInfo_Struct mercury_data_ml_backend__mlds__type_ctor_info_mlds_qual_kind_0;
+
+const MR_PseudoTypeInfo mercury_data_ml_backend__mlds__field_types_mlds_fully_qualified_name_1_0[] = {
+	(MR_PseudoTypeInfo) &mercury_data_ml_backend__mlds__type_ctor_info_mlds_module_name_0,
+	(MR_PseudoTypeInfo) &mercury_data_ml_backend__mlds__type_ctor_info_mlds_qual_kind_0,
+	(MR_PseudoTypeInfo) 1
+};
+
+static const MR_DuFunctorDesc mercury_data_ml_backend__mlds__du_functor_desc_mlds_fully_qualified_name_1_0 = {
+	"qual",
+	3,
+	4,
+	MR_SECTAG_NONE,
+	0,
+	-1,
+	0,
+	(MR_PseudoTypeInfo *) mercury_data_ml_backend__mlds__field_types_mlds_fully_qualified_name_1_0,
+	NULL,
+	NULL
+};
+
+const MR_DuFunctorDescPtr mercury_data_ml_backend__mlds__du_stag_ordered_mlds_fully_qualified_name_1_0[] = {
+	&mercury_data_ml_backend__mlds__du_functor_desc_mlds_fully_qualified_name_1_0
+
+};
+
+const MR_DuPtagLayout mercury_data_ml_backend__mlds__du_ptag_ordered_mlds_fully_qualified_name_1[] = {
+	{ 1, MR_SECTAG_NONE,
+	mercury_data_ml_backend__mlds__du_stag_ordered_mlds_fully_qualified_name_1_0 }
+
+};
+
+const MR_DuFunctorDescPtr mercury_data_ml_backend__mlds__du_name_ordered_mlds_fully_qualified_name_1[] = {
+	&mercury_data_ml_backend__mlds__du_functor_desc_mlds_fully_qualified_name_1_0
+};
+
+const MR_Integer mercury_data_ml_backend__mlds__functor_number_map_mlds_fully_qualified_name_1[] = {
+	0 };
+	
+const MR_TypeCtorInfo_Struct mercury_data_ml_backend__mlds__type_ctor_info_mlds_fully_qualified_name_1 = {
+	1,
+	13,
+	1,
+	MR_TYPECTOR_REP_DU,
+	MR_MAYBE_STATIC_CODE(MR_ENTRY_AP(__Unify___ml_backend__mlds__mlds_fully_qualified_name_1_0)),
+	MR_MAYBE_STATIC_CODE(MR_ENTRY_AP(__Compare___ml_backend__mlds__mlds_fully_qualified_name_1_0)),
+	"ml_backend.mlds",
+	"mlds_fully_qualified_name",
+	{ (void *)mercury_data_ml_backend__mlds__du_name_ordered_mlds_fully_qualified_name_1 },
+	{ (void *)mercury_data_ml_backend__mlds__du_ptag_ordered_mlds_fully_qualified_name_1 },
+	1,
+	4,
+	mercury_data_ml_backend__mlds__functor_number_map_mlds_fully_qualified_name_1
+};
+extern const MR_TypeCtorInfo_Struct mercury_data_parse_tree__prog_foreign__type_ctor_info_foreign_decl_code_0;
+extern const MR_TypeCtorInfo_Struct mercury_data_parse_tree__prog_foreign__type_ctor_info_foreign_decl_code_0;
+
+static const MR_FA_TypeInfo_Struct1 mercury_data_list__ti_list_1parse_tree__prog_foreign__type_ctor_info_foreign_decl_code_0 = {
+	&mercury_data_list__type_ctor_info_list_1,
+{	(MR_TypeInfo) &mercury_data_parse_tree__prog_foreign__type_ctor_info_foreign_decl_code_0
+}};
+extern const MR_TypeCtorInfo_Struct mercury_data_parse_tree__prog_data__type_ctor_info_foreign_import_module_info_0;
+extern const MR_TypeCtorInfo_Struct mercury_data_parse_tree__prog_data__type_ctor_info_foreign_import_module_info_0;
+
+static const MR_FA_TypeInfo_Struct1 mercury_data_list__ti_list_1parse_tree__prog_data__type_ctor_info_foreign_import_module_info_0 = {
+	&mercury_data_list__type_ctor_info_list_1,
+{	(MR_TypeInfo) &mercury_data_parse_tree__prog_data__type_ctor_info_foreign_import_module_info_0
+}};
+extern const MR_TypeCtorInfo_Struct mercury_data_parse_tree__prog_foreign__type_ctor_info_user_foreign_code_0;
+extern const MR_TypeCtorInfo_Struct mercury_data_parse_tree__prog_foreign__type_ctor_info_user_foreign_code_0;
+
+static const MR_FA_TypeInfo_Struct1 mercury_data_list__ti_list_1parse_tree__prog_foreign__type_ctor_info_user_foreign_code_0 = {
+	&mercury_data_list__type_ctor_info_list_1,
+{	(MR_TypeInfo) &mercury_data_parse_tree__prog_foreign__type_ctor_info_user_foreign_code_0
+}};
+extern const MR_TypeCtorInfo_Struct mercury_data_ml_backend__mlds__type_ctor_info_mlds_pragma_export_0;
+
+static const MR_FA_TypeInfo_Struct1 mercury_data_list__ti_list_1ml_backend__mlds__type_ctor_info_mlds_pragma_export_0 = {
+	&mercury_data_list__type_ctor_info_list_1,
+{	(MR_TypeInfo) &mercury_data_ml_backend__mlds__type_ctor_info_mlds_pragma_export_0
+}};
+
+const MR_PseudoTypeInfo mercury_data_ml_backend__mlds__field_types_mlds_foreign_code_0_0[] = {
+	(MR_PseudoTypeInfo) &mercury_data_list__ti_list_1parse_tree__prog_foreign__type_ctor_info_foreign_decl_code_0,
+	(MR_PseudoTypeInfo) &mercury_data_list__ti_list_1parse_tree__prog_data__type_ctor_info_foreign_import_module_info_0,
+	(MR_PseudoTypeInfo) &mercury_data_list__ti_list_1parse_tree__prog_foreign__type_ctor_info_user_foreign_code_0,
+	(MR_PseudoTypeInfo) &mercury_data_list__ti_list_1ml_backend__mlds__type_ctor_info_mlds_pragma_export_0
+};
+
+static const MR_DuFunctorDesc mercury_data_ml_backend__mlds__du_functor_desc_mlds_foreign_code_0_0 = {
+	"mlds_foreign_code",
+	4,
+	0,
+	MR_SECTAG_NONE,
+	0,
+	-1,
+	0,
+	(MR_PseudoTypeInfo *) mercury_data_ml_backend__mlds__field_types_mlds_foreign_code_0_0,
+	NULL,
+	NULL
+};
+
+const MR_DuFunctorDescPtr mercury_data_ml_backend__mlds__du_stag_ordered_mlds_foreign_code_0_0[] = {
+	&mercury_data_ml_backend__mlds__du_functor_desc_mlds_foreign_code_0_0
+
+};
+
+const MR_DuPtagLayout mercury_data_ml_backend__mlds__du_ptag_ordered_mlds_foreign_code_0[] = {
+	{ 1, MR_SECTAG_NONE,
+	mercury_data_ml_backend__mlds__du_stag_ordered_mlds_foreign_code_0_0 }
+
+};
+
+const MR_DuFunctorDescPtr mercury_data_ml_backend__mlds__du_name_ordered_mlds_foreign_code_0[] = {
+	&mercury_data_ml_backend__mlds__du_functor_desc_mlds_foreign_code_0_0
+};
+
+const MR_Integer mercury_data_ml_backend__mlds__functor_number_map_mlds_foreign_code_0[] = {
+	0 };
+	
+const MR_TypeCtorInfo_Struct mercury_data_ml_backend__mlds__type_ctor_info_mlds_foreign_code_0 = {
+	0,
+	13,
+	1,
+	MR_TYPECTOR_REP_DU,
+	MR_MAYBE_STATIC_CODE(MR_ENTRY_AP(__Unify___ml_backend__mlds__mlds_foreign_code_0_0)),
+	MR_MAYBE_STATIC_CODE(MR_ENTRY_AP(__Compare___ml_backend__mlds__mlds_foreign_code_0_0)),
+	"ml_backend.mlds",
+	"mlds_foreign_code",
+	{ (void *)mercury_data_ml_backend__mlds__du_name_ordered_mlds_foreign_code_0 },
+	{ (void *)mercury_data_ml_backend__mlds__du_ptag_ordered_mlds_foreign_code_0 },
+	1,
+	4,
+	mercury_data_ml_backend__mlds__functor_number_map_mlds_foreign_code_0
+};
+
+const MR_TypeCtorInfo_Struct mercury_data_ml_backend__mlds__type_ctor_info_mlds_field_name_0 = {
+	0,
+	13,
+	-1,
+	MR_TYPECTOR_REP_EQUIV_GROUND,
+	MR_MAYBE_STATIC_CODE(MR_ENTRY_AP(__Unify___ml_backend__mlds__mlds_field_name_0_0)),
+	MR_MAYBE_STATIC_CODE(MR_ENTRY_AP(__Compare___ml_backend__mlds__mlds_field_name_0_0)),
+	"ml_backend.mlds",
+	"mlds_field_name",
+	{ 0 },
+	{ (void *)&mercury_data_builtin__type_ctor_info_string_0 },
+	-1,
+	0,
+	NULL
+};
+
+const MR_PseudoTypeInfo mercury_data_ml_backend__mlds__field_types_mlds_field_id_0_0[] = {
+	(MR_PseudoTypeInfo) &mercury_data_ml_backend__mlds__type_ctor_info_mlds_rval_0
+};
+
+static const MR_DuFunctorDesc mercury_data_ml_backend__mlds__du_functor_desc_mlds_field_id_0_0 = {
+	"offset",
+	1,
+	0,
+	MR_SECTAG_NONE,
+	0,
+	-1,
+	0,
+	(MR_PseudoTypeInfo *) mercury_data_ml_backend__mlds__field_types_mlds_field_id_0_0,
+	NULL,
+	NULL
+};
+
+const MR_PseudoTypeInfo mercury_data_ml_backend__mlds__field_types_mlds_field_id_0_1[] = {
+	(MR_PseudoTypeInfo) &mercury_data_ml_backend__mlds__ti_mlds_fully_qualified_name_1builtin__type_ctor_info_string_0,
+	(MR_PseudoTypeInfo) &mercury_data_ml_backend__mlds__type_ctor_info_mlds_type_0
+};
+
+static const MR_DuFunctorDesc mercury_data_ml_backend__mlds__du_functor_desc_mlds_field_id_0_1 = {
+	"named_field",
+	2,
+	0,
+	MR_SECTAG_NONE,
+	1,
+	-1,
+	1,
+	(MR_PseudoTypeInfo *) mercury_data_ml_backend__mlds__field_types_mlds_field_id_0_1,
+	NULL,
+	NULL
+};
+
+const MR_DuFunctorDescPtr mercury_data_ml_backend__mlds__du_stag_ordered_mlds_field_id_0_0[] = {
+	&mercury_data_ml_backend__mlds__du_functor_desc_mlds_field_id_0_0
+
+};
+
+const MR_DuFunctorDescPtr mercury_data_ml_backend__mlds__du_stag_ordered_mlds_field_id_0_1[] = {
+	&mercury_data_ml_backend__mlds__du_functor_desc_mlds_field_id_0_1
+
+};
+
+const MR_DuPtagLayout mercury_data_ml_backend__mlds__du_ptag_ordered_mlds_field_id_0[] = {
+	{ 1, MR_SECTAG_NONE,
+	mercury_data_ml_backend__mlds__du_stag_ordered_mlds_field_id_0_0 },
+	{ 1, MR_SECTAG_NONE,
+	mercury_data_ml_backend__mlds__du_stag_ordered_mlds_field_id_0_1 }
+
+};
+
+const MR_DuFunctorDescPtr mercury_data_ml_backend__mlds__du_name_ordered_mlds_field_id_0[] = {
+	&mercury_data_ml_backend__mlds__du_functor_desc_mlds_field_id_0_1,
+	&mercury_data_ml_backend__mlds__du_functor_desc_mlds_field_id_0_0
+};
+
+const MR_Integer mercury_data_ml_backend__mlds__functor_number_map_mlds_field_id_0[] = {
+	1,
+	0 };
+	
+const MR_TypeCtorInfo_Struct mercury_data_ml_backend__mlds__type_ctor_info_mlds_field_id_0 = {
+	0,
+	13,
+	2,
+	MR_TYPECTOR_REP_DU,
+	MR_MAYBE_STATIC_CODE(MR_ENTRY_AP(__Unify___ml_backend__mlds__mlds_field_id_0_0)),
+	MR_MAYBE_STATIC_CODE(MR_ENTRY_AP(__Compare___ml_backend__mlds__mlds_field_id_0_0)),
+	"ml_backend.mlds",
+	"mlds_field_id",
+	{ (void *)mercury_data_ml_backend__mlds__du_name_ordered_mlds_field_id_0 },
+	{ (void *)mercury_data_ml_backend__mlds__du_ptag_ordered_mlds_field_id_0 },
+	2,
+	4,
+	mercury_data_ml_backend__mlds__functor_number_map_mlds_field_id_0
+};
+extern const MR_TypeCtorInfo_Struct mercury_data_ml_backend__mlds__type_ctor_info_mlds_exported_enum_0;
+
+static const MR_FA_TypeInfo_Struct1 mercury_data_list__ti_list_1ml_backend__mlds__type_ctor_info_mlds_exported_enum_0 = {
+	&mercury_data_list__type_ctor_info_list_1,
+{	(MR_TypeInfo) &mercury_data_ml_backend__mlds__type_ctor_info_mlds_exported_enum_0
+}};
+
+const MR_TypeCtorInfo_Struct mercury_data_ml_backend__mlds__type_ctor_info_mlds_exported_enums_0 = {
+	0,
+	13,
+	-1,
+	MR_TYPECTOR_REP_EQUIV_GROUND,
+	MR_MAYBE_STATIC_CODE(MR_ENTRY_AP(__Unify___ml_backend__mlds__mlds_exported_enums_0_0)),
+	MR_MAYBE_STATIC_CODE(MR_ENTRY_AP(__Compare___ml_backend__mlds__mlds_exported_enums_0_0)),
+	"ml_backend.mlds",
+	"mlds_exported_enums",
+	{ 0 },
+	{ (void *)&mercury_data_list__ti_list_1ml_backend__mlds__type_ctor_info_mlds_exported_enum_0 },
+	-1,
+	0,
+	NULL
+};
+
+const MR_PseudoTypeInfo mercury_data_ml_backend__mlds__field_types_mlds_exported_enum_constant_0_0[] = {
+	(MR_PseudoTypeInfo) &mercury_data_builtin__type_ctor_info_string_0,
+	(MR_PseudoTypeInfo) &mercury_data_ml_backend__mlds__type_ctor_info_mlds_initializer_0
+};
+
+const MR_ConstString mercury_data_ml_backend__mlds__field_names_mlds_exported_enum_constant_0_0[] = {
+	"exported_enum_constant_name",
+	"exported_enum_constant_value"
+};
+
+static const MR_DuFunctorDesc mercury_data_ml_backend__mlds__du_functor_desc_mlds_exported_enum_constant_0_0 = {
+	"mlds_exported_enum_constant",
+	2,
+	0,
+	MR_SECTAG_NONE,
+	0,
+	-1,
+	0,
+	(MR_PseudoTypeInfo *) mercury_data_ml_backend__mlds__field_types_mlds_exported_enum_constant_0_0,
+	mercury_data_ml_backend__mlds__field_names_mlds_exported_enum_constant_0_0,
+	NULL
+};
+
+const MR_DuFunctorDescPtr mercury_data_ml_backend__mlds__du_stag_ordered_mlds_exported_enum_constant_0_0[] = {
+	&mercury_data_ml_backend__mlds__du_functor_desc_mlds_exported_enum_constant_0_0
+
+};
+
+const MR_DuPtagLayout mercury_data_ml_backend__mlds__du_ptag_ordered_mlds_exported_enum_constant_0[] = {
+	{ 1, MR_SECTAG_NONE,
+	mercury_data_ml_backend__mlds__du_stag_ordered_mlds_exported_enum_constant_0_0 }
+
+};
+
+const MR_DuFunctorDescPtr mercury_data_ml_backend__mlds__du_name_ordered_mlds_exported_enum_constant_0[] = {
+	&mercury_data_ml_backend__mlds__du_functor_desc_mlds_exported_enum_constant_0_0
+};
+
+const MR_Integer mercury_data_ml_backend__mlds__functor_number_map_mlds_exported_enum_constant_0[] = {
+	0 };
+	
+const MR_TypeCtorInfo_Struct mercury_data_ml_backend__mlds__type_ctor_info_mlds_exported_enum_constant_0 = {
+	0,
+	13,
+	1,
+	MR_TYPECTOR_REP_DU,
+	MR_MAYBE_STATIC_CODE(MR_ENTRY_AP(__Unify___ml_backend__mlds__mlds_exported_enum_constant_0_0)),
+	MR_MAYBE_STATIC_CODE(MR_ENTRY_AP(__Compare___ml_backend__mlds__mlds_exported_enum_constant_0_0)),
+	"ml_backend.mlds",
+	"mlds_exported_enum_constant",
+	{ (void *)mercury_data_ml_backend__mlds__du_name_ordered_mlds_exported_enum_constant_0 },
+	{ (void *)mercury_data_ml_backend__mlds__du_ptag_ordered_mlds_exported_enum_constant_0 },
+	1,
+	4,
+	mercury_data_ml_backend__mlds__functor_number_map_mlds_exported_enum_constant_0
+};
+extern const MR_TypeCtorInfo_Struct mercury_data_parse_tree__prog_data__type_ctor_info_type_ctor_0;
+extern const MR_TypeCtorInfo_Struct mercury_data_ml_backend__mlds__type_ctor_info_mlds_exported_enum_constant_0;
+
+static const MR_FA_TypeInfo_Struct1 mercury_data_list__ti_list_1ml_backend__mlds__type_ctor_info_mlds_exported_enum_constant_0 = {
+	&mercury_data_list__type_ctor_info_list_1,
+{	(MR_TypeInfo) &mercury_data_ml_backend__mlds__type_ctor_info_mlds_exported_enum_constant_0
+}};
+extern const MR_TypeCtorInfo_Struct mercury_data_parse_tree__prog_data__type_ctor_info_type_ctor_0;
+
+const MR_PseudoTypeInfo mercury_data_ml_backend__mlds__field_types_mlds_exported_enum_0_0[] = {
+	(MR_PseudoTypeInfo) &mercury_data_libs__globals__type_ctor_info_foreign_language_0,
+	(MR_PseudoTypeInfo) &mercury_data_term__type_ctor_info_context_0,
+	(MR_PseudoTypeInfo) &mercury_data_parse_tree__prog_data__type_ctor_info_type_ctor_0,
+	(MR_PseudoTypeInfo) &mercury_data_list__ti_list_1ml_backend__mlds__type_ctor_info_mlds_exported_enum_constant_0
+};
+
+const MR_ConstString mercury_data_ml_backend__mlds__field_names_mlds_exported_enum_0_0[] = {
+	"exported_enum_lang",
+	"exported_enum_context",
+	"exported_enum_type_ctor",
+	"exported_enum_constants"
+};
+
+static const MR_DuFunctorDesc mercury_data_ml_backend__mlds__du_functor_desc_mlds_exported_enum_0_0 = {
+	"mlds_exported_enum",
+	4,
+	0,
+	MR_SECTAG_NONE,
+	0,
+	-1,
+	0,
+	(MR_PseudoTypeInfo *) mercury_data_ml_backend__mlds__field_types_mlds_exported_enum_0_0,
+	mercury_data_ml_backend__mlds__field_names_mlds_exported_enum_0_0,
+	NULL
+};
+
+const MR_DuFunctorDescPtr mercury_data_ml_backend__mlds__du_stag_ordered_mlds_exported_enum_0_0[] = {
+	&mercury_data_ml_backend__mlds__du_functor_desc_mlds_exported_enum_0_0
+
+};
+
+const MR_DuPtagLayout mercury_data_ml_backend__mlds__du_ptag_ordered_mlds_exported_enum_0[] = {
+	{ 1, MR_SECTAG_NONE,
+	mercury_data_ml_backend__mlds__du_stag_ordered_mlds_exported_enum_0_0 }
+
+};
+
+const MR_DuFunctorDescPtr mercury_data_ml_backend__mlds__du_name_ordered_mlds_exported_enum_0[] = {
+	&mercury_data_ml_backend__mlds__du_functor_desc_mlds_exported_enum_0_0
+};
+
+const MR_Integer mercury_data_ml_backend__mlds__functor_number_map_mlds_exported_enum_0[] = {
+	0 };
+	
+const MR_TypeCtorInfo_Struct mercury_data_ml_backend__mlds__type_ctor_info_mlds_exported_enum_0 = {
+	0,
+	13,
+	1,
+	MR_TYPECTOR_REP_DU,
+	MR_MAYBE_STATIC_CODE(MR_ENTRY_AP(__Unify___ml_backend__mlds__mlds_exported_enum_0_0)),
+	MR_MAYBE_STATIC_CODE(MR_ENTRY_AP(__Compare___ml_backend__mlds__mlds_exported_enum_0_0)),
+	"ml_backend.mlds",
+	"mlds_exported_enum",
+	{ (void *)mercury_data_ml_backend__mlds__du_name_ordered_mlds_exported_enum_0 },
+	{ (void *)mercury_data_ml_backend__mlds__du_ptag_ordered_mlds_exported_enum_0 },
+	1,
+	4,
+	mercury_data_ml_backend__mlds__functor_number_map_mlds_exported_enum_0
+};
+
+static const MR_FA_TypeInfo_Struct1 mercury_data_maybe__ti_maybe_1ml_backend__mlds__type_ctor_info_mlds_type_0 = {
+	&mercury_data_maybe__type_ctor_info_maybe_1,
+{	(MR_TypeInfo) &mercury_data_ml_backend__mlds__type_ctor_info_mlds_type_0
+}};
+
+static const MR_FA_TypeInfo_Struct1 mercury_data_maybe__ti_maybe_1builtin__type_ctor_info_string_0 = {
+	&mercury_data_maybe__type_ctor_info_maybe_1,
+{	(MR_TypeInfo) &mercury_data_builtin__type_ctor_info_string_0
+}};
+
+const MR_PseudoTypeInfo mercury_data_ml_backend__mlds__field_types_mlds_exception_handler_0_0[] = {
+	(MR_PseudoTypeInfo) &mercury_data_maybe__ti_maybe_1ml_backend__mlds__type_ctor_info_mlds_type_0,
+	(MR_PseudoTypeInfo) &mercury_data_maybe__ti_maybe_1builtin__type_ctor_info_string_0
+};
+
+static const MR_DuFunctorDesc mercury_data_ml_backend__mlds__du_functor_desc_mlds_exception_handler_0_0 = {
+	"handler",
+	2,
+	0,
+	MR_SECTAG_NONE,
+	0,
+	-1,
+	0,
+	(MR_PseudoTypeInfo *) mercury_data_ml_backend__mlds__field_types_mlds_exception_handler_0_0,
+	NULL,
+	NULL
+};
+
+const MR_DuFunctorDescPtr mercury_data_ml_backend__mlds__du_stag_ordered_mlds_exception_handler_0_0[] = {
+	&mercury_data_ml_backend__mlds__du_functor_desc_mlds_exception_handler_0_0
+
+};
+
+const MR_DuPtagLayout mercury_data_ml_backend__mlds__du_ptag_ordered_mlds_exception_handler_0[] = {
+	{ 1, MR_SECTAG_NONE,
+	mercury_data_ml_backend__mlds__du_stag_ordered_mlds_exception_handler_0_0 }
+
+};
+
+const MR_DuFunctorDescPtr mercury_data_ml_backend__mlds__du_name_ordered_mlds_exception_handler_0[] = {
+	&mercury_data_ml_backend__mlds__du_functor_desc_mlds_exception_handler_0_0
+};
+
+const MR_Integer mercury_data_ml_backend__mlds__functor_number_map_mlds_exception_handler_0[] = {
+	0 };
+	
+const MR_TypeCtorInfo_Struct mercury_data_ml_backend__mlds__type_ctor_info_mlds_exception_handler_0 = {
+	0,
+	13,
+	1,
+	MR_TYPECTOR_REP_DU,
+	MR_MAYBE_STATIC_CODE(MR_ENTRY_AP(__Unify___ml_backend__mlds__mlds_exception_handler_0_0)),
+	MR_MAYBE_STATIC_CODE(MR_ENTRY_AP(__Compare___ml_backend__mlds__mlds_exception_handler_0_0)),
+	"ml_backend.mlds",
+	"mlds_exception_handler",
+	{ (void *)mercury_data_ml_backend__mlds__du_name_ordered_mlds_exception_handler_0 },
+	{ (void *)mercury_data_ml_backend__mlds__du_ptag_ordered_mlds_exception_handler_0 },
+	1,
+	4,
+	mercury_data_ml_backend__mlds__functor_number_map_mlds_exception_handler_0
+};
+
+const MR_PseudoTypeInfo mercury_data_ml_backend__mlds__field_types_mlds_entity_name_0_0[] = {
+	(MR_PseudoTypeInfo) &mercury_data_builtin__type_ctor_info_string_0,
+	(MR_PseudoTypeInfo) &mercury_data_builtin__type_ctor_info_int_0
+};
+
+static const MR_DuFunctorDesc mercury_data_ml_backend__mlds__du_functor_desc_mlds_entity_name_0_0 = {
+	"entity_type",
+	2,
+	0,
+	MR_SECTAG_NONE,
+	0,
+	-1,
+	0,
+	(MR_PseudoTypeInfo *) mercury_data_ml_backend__mlds__field_types_mlds_entity_name_0_0,
+	NULL,
+	NULL
+};
+extern const MR_TypeCtorInfo_Struct mercury_data_ml_backend__mlds__type_ctor_info_mlds_data_name_0;
+
+const MR_PseudoTypeInfo mercury_data_ml_backend__mlds__field_types_mlds_entity_name_0_1[] = {
+	(MR_PseudoTypeInfo) &mercury_data_ml_backend__mlds__type_ctor_info_mlds_data_name_0
+};
+
+static const MR_DuFunctorDesc mercury_data_ml_backend__mlds__du_functor_desc_mlds_entity_name_0_1 = {
+	"entity_data",
+	1,
+	0,
+	MR_SECTAG_NONE,
+	1,
+	-1,
+	1,
+	(MR_PseudoTypeInfo *) mercury_data_ml_backend__mlds__field_types_mlds_entity_name_0_1,
+	NULL,
+	NULL
+};
+
+const MR_PseudoTypeInfo mercury_data_ml_backend__mlds__field_types_mlds_entity_name_0_2[] = {
+	(MR_PseudoTypeInfo) &mercury_data_ml_backend__mlds__type_ctor_info_mlds_pred_label_0,
+	(MR_PseudoTypeInfo) &mercury_data_builtin__type_ctor_info_int_0,
+	(MR_PseudoTypeInfo) &mercury_data_maybe__ti_maybe_1builtin__type_ctor_info_int_0,
+	(MR_PseudoTypeInfo) &mercury_data_builtin__type_ctor_info_int_0
+};
+
+const MR_ConstString mercury_data_ml_backend__mlds__field_names_mlds_entity_name_0_2[] = {
+	"ef_pred_label",
+	"ef_proc_id",
+	"ef_maybe_func_seq",
+	"ef_pred_id"
+};
+
+static const MR_DuFunctorDesc mercury_data_ml_backend__mlds__du_functor_desc_mlds_entity_name_0_2 = {
+	"entity_function",
+	4,
+	0,
+	MR_SECTAG_NONE,
+	2,
+	-1,
+	2,
+	(MR_PseudoTypeInfo *) mercury_data_ml_backend__mlds__field_types_mlds_entity_name_0_2,
+	mercury_data_ml_backend__mlds__field_names_mlds_entity_name_0_2,
+	NULL
+};
+
+const MR_PseudoTypeInfo mercury_data_ml_backend__mlds__field_types_mlds_entity_name_0_3[] = {
+	(MR_PseudoTypeInfo) &mercury_data_builtin__type_ctor_info_string_0
+};
+
+static const MR_DuFunctorDesc mercury_data_ml_backend__mlds__du_functor_desc_mlds_entity_name_0_3 = {
+	"entity_export",
+	1,
+	0,
+	MR_SECTAG_NONE,
+	3,
+	-1,
+	3,
+	(MR_PseudoTypeInfo *) mercury_data_ml_backend__mlds__field_types_mlds_entity_name_0_3,
+	NULL,
+	NULL
+};
+
+const MR_DuFunctorDescPtr mercury_data_ml_backend__mlds__du_stag_ordered_mlds_entity_name_0_0[] = {
+	&mercury_data_ml_backend__mlds__du_functor_desc_mlds_entity_name_0_0
+
+};
+
+const MR_DuFunctorDescPtr mercury_data_ml_backend__mlds__du_stag_ordered_mlds_entity_name_0_1[] = {
+	&mercury_data_ml_backend__mlds__du_functor_desc_mlds_entity_name_0_1
+
+};
+
+const MR_DuFunctorDescPtr mercury_data_ml_backend__mlds__du_stag_ordered_mlds_entity_name_0_2[] = {
+	&mercury_data_ml_backend__mlds__du_functor_desc_mlds_entity_name_0_2
+
+};
+
+const MR_DuFunctorDescPtr mercury_data_ml_backend__mlds__du_stag_ordered_mlds_entity_name_0_3[] = {
+	&mercury_data_ml_backend__mlds__du_functor_desc_mlds_entity_name_0_3
+
+};
+
+const MR_DuPtagLayout mercury_data_ml_backend__mlds__du_ptag_ordered_mlds_entity_name_0[] = {
+	{ 1, MR_SECTAG_NONE,
+	mercury_data_ml_backend__mlds__du_stag_ordered_mlds_entity_name_0_0 },
+	{ 1, MR_SECTAG_NONE,
+	mercury_data_ml_backend__mlds__du_stag_ordered_mlds_entity_name_0_1 },
+	{ 1, MR_SECTAG_NONE,
+	mercury_data_ml_backend__mlds__du_stag_ordered_mlds_entity_name_0_2 },
+	{ 1, MR_SECTAG_NONE,
+	mercury_data_ml_backend__mlds__du_stag_ordered_mlds_entity_name_0_3 }
+
+};
+
+const MR_DuFunctorDescPtr mercury_data_ml_backend__mlds__du_name_ordered_mlds_entity_name_0[] = {
+	&mercury_data_ml_backend__mlds__du_functor_desc_mlds_entity_name_0_1,
+	&mercury_data_ml_backend__mlds__du_functor_desc_mlds_entity_name_0_3,
+	&mercury_data_ml_backend__mlds__du_functor_desc_mlds_entity_name_0_2,
+	&mercury_data_ml_backend__mlds__du_functor_desc_mlds_entity_name_0_0
+};
+
+const MR_Integer mercury_data_ml_backend__mlds__functor_number_map_mlds_entity_name_0[] = {
+	3,
+	0,
+	2,
+	1 };
+	
+const MR_TypeCtorInfo_Struct mercury_data_ml_backend__mlds__type_ctor_info_mlds_entity_name_0 = {
+	0,
+	13,
+	4,
+	MR_TYPECTOR_REP_DU,
+	MR_MAYBE_STATIC_CODE(MR_ENTRY_AP(__Unify___ml_backend__mlds__mlds_entity_name_0_0)),
+	MR_MAYBE_STATIC_CODE(MR_ENTRY_AP(__Compare___ml_backend__mlds__mlds_entity_name_0_0)),
+	"ml_backend.mlds",
+	"mlds_entity_name",
+	{ (void *)mercury_data_ml_backend__mlds__du_name_ordered_mlds_entity_name_0 },
+	{ (void *)mercury_data_ml_backend__mlds__du_ptag_ordered_mlds_entity_name_0 },
+	4,
+	4,
+	mercury_data_ml_backend__mlds__functor_number_map_mlds_entity_name_0
+};
+extern const MR_TypeCtorInfo_Struct mercury_data_ml_backend__mlds__type_ctor_info_mlds_gc_statement_0;
+
+const MR_PseudoTypeInfo mercury_data_ml_backend__mlds__field_types_mlds_entity_defn_0_0[] = {
+	(MR_PseudoTypeInfo) &mercury_data_ml_backend__mlds__type_ctor_info_mlds_type_0,
+	(MR_PseudoTypeInfo) &mercury_data_ml_backend__mlds__type_ctor_info_mlds_initializer_0,
+	(MR_PseudoTypeInfo) &mercury_data_ml_backend__mlds__type_ctor_info_mlds_gc_statement_0
+};
+
+static const MR_DuFunctorDesc mercury_data_ml_backend__mlds__du_functor_desc_mlds_entity_defn_0_0 = {
+	"mlds_data",
+	3,
+	0,
+	MR_SECTAG_NONE,
+	0,
+	-1,
+	0,
+	(MR_PseudoTypeInfo *) mercury_data_ml_backend__mlds__field_types_mlds_entity_defn_0_0,
+	NULL,
+	NULL
+};
+extern const MR_TypeCtorInfo_Struct mercury_data_hlds__hlds_pred__type_ctor_info_pred_proc_id_0;
+extern const MR_TypeCtorInfo_Struct mercury_data_hlds__hlds_pred__type_ctor_info_pred_proc_id_0;
+
+static const MR_FA_TypeInfo_Struct1 mercury_data_maybe__ti_maybe_1hlds__hlds_pred__type_ctor_info_pred_proc_id_0 = {
+	&mercury_data_maybe__type_ctor_info_maybe_1,
+{	(MR_TypeInfo) &mercury_data_hlds__hlds_pred__type_ctor_info_pred_proc_id_0
+}};
+extern const MR_TypeCtorInfo_Struct mercury_data_ml_backend__mlds__type_ctor_info_mlds_attribute_0;
+
+static const MR_FA_TypeInfo_Struct1 mercury_data_list__ti_list_1ml_backend__mlds__type_ctor_info_mlds_attribute_0 = {
+	&mercury_data_list__type_ctor_info_list_1,
+{	(MR_TypeInfo) &mercury_data_ml_backend__mlds__type_ctor_info_mlds_attribute_0
+}};
+extern const MR_TypeCtorInfo_Struct mercury_data_set_ordlist__type_ctor_info_set_ordlist_1;
+
+static const MR_FA_TypeInfo_Struct1 mercury_data_set_ordlist__ti_set_ordlist_1builtin__type_ctor_info_string_0 = {
+	&mercury_data_set_ordlist__type_ctor_info_set_ordlist_1,
+{	(MR_TypeInfo) &mercury_data_builtin__type_ctor_info_string_0
+}};
+extern const MR_TypeCtorInfo_Struct mercury_data_ml_backend__mlds__type_ctor_info_mlds_function_body_0;
+
+const MR_PseudoTypeInfo mercury_data_ml_backend__mlds__field_types_mlds_entity_defn_0_1[] = {
+	(MR_PseudoTypeInfo) &mercury_data_maybe__ti_maybe_1hlds__hlds_pred__type_ctor_info_pred_proc_id_0,
+	(MR_PseudoTypeInfo) &mercury_data_ml_backend__mlds__type_ctor_info_mlds_func_params_0,
+	(MR_PseudoTypeInfo) &mercury_data_ml_backend__mlds__type_ctor_info_mlds_function_body_0,
+	(MR_PseudoTypeInfo) &mercury_data_list__ti_list_1ml_backend__mlds__type_ctor_info_mlds_attribute_0,
+	(MR_PseudoTypeInfo) &mercury_data_set_ordlist__ti_set_ordlist_1builtin__type_ctor_info_string_0
+};
+
+static const MR_DuFunctorDesc mercury_data_ml_backend__mlds__du_functor_desc_mlds_entity_defn_0_1 = {
+	"mlds_function",
+	5,
+	0,
+	MR_SECTAG_NONE,
+	1,
+	-1,
+	1,
+	(MR_PseudoTypeInfo *) mercury_data_ml_backend__mlds__field_types_mlds_entity_defn_0_1,
+	NULL,
+	NULL
+};
+extern const MR_TypeCtorInfo_Struct mercury_data_ml_backend__mlds__type_ctor_info_mlds_class_defn_0;
+
+const MR_PseudoTypeInfo mercury_data_ml_backend__mlds__field_types_mlds_entity_defn_0_2[] = {
+	(MR_PseudoTypeInfo) &mercury_data_ml_backend__mlds__type_ctor_info_mlds_class_defn_0
+};
+
+static const MR_DuFunctorDesc mercury_data_ml_backend__mlds__du_functor_desc_mlds_entity_defn_0_2 = {
+	"mlds_class",
+	1,
+	0,
+	MR_SECTAG_NONE,
+	2,
+	-1,
+	2,
+	(MR_PseudoTypeInfo *) mercury_data_ml_backend__mlds__field_types_mlds_entity_defn_0_2,
+	NULL,
+	NULL
+};
+
+const MR_DuFunctorDescPtr mercury_data_ml_backend__mlds__du_stag_ordered_mlds_entity_defn_0_0[] = {
+	&mercury_data_ml_backend__mlds__du_functor_desc_mlds_entity_defn_0_0
+
+};
+
+const MR_DuFunctorDescPtr mercury_data_ml_backend__mlds__du_stag_ordered_mlds_entity_defn_0_1[] = {
+	&mercury_data_ml_backend__mlds__du_functor_desc_mlds_entity_defn_0_1
+
+};
+
+const MR_DuFunctorDescPtr mercury_data_ml_backend__mlds__du_stag_ordered_mlds_entity_defn_0_2[] = {
+	&mercury_data_ml_backend__mlds__du_functor_desc_mlds_entity_defn_0_2
+
+};
+
+const MR_DuPtagLayout mercury_data_ml_backend__mlds__du_ptag_ordered_mlds_entity_defn_0[] = {
+	{ 1, MR_SECTAG_NONE,
+	mercury_data_ml_backend__mlds__du_stag_ordered_mlds_entity_defn_0_0 },
+	{ 1, MR_SECTAG_NONE,
+	mercury_data_ml_backend__mlds__du_stag_ordered_mlds_entity_defn_0_1 },
+	{ 1, MR_SECTAG_NONE,
+	mercury_data_ml_backend__mlds__du_stag_ordered_mlds_entity_defn_0_2 }
+
+};
+
+const MR_DuFunctorDescPtr mercury_data_ml_backend__mlds__du_name_ordered_mlds_entity_defn_0[] = {
+	&mercury_data_ml_backend__mlds__du_functor_desc_mlds_entity_defn_0_2,
+	&mercury_data_ml_backend__mlds__du_functor_desc_mlds_entity_defn_0_0,
+	&mercury_data_ml_backend__mlds__du_functor_desc_mlds_entity_defn_0_1
+};
+
+const MR_Integer mercury_data_ml_backend__mlds__functor_number_map_mlds_entity_defn_0[] = {
+	1,
+	2,
+	0 };
+	
+const MR_TypeCtorInfo_Struct mercury_data_ml_backend__mlds__type_ctor_info_mlds_entity_defn_0 = {
+	0,
+	13,
+	3,
+	MR_TYPECTOR_REP_DU,
+	MR_MAYBE_STATIC_CODE(MR_ENTRY_AP(__Unify___ml_backend__mlds__mlds_entity_defn_0_0)),
+	MR_MAYBE_STATIC_CODE(MR_ENTRY_AP(__Compare___ml_backend__mlds__mlds_entity_defn_0_0)),
+	"ml_backend.mlds",
+	"mlds_entity_defn",
+	{ (void *)mercury_data_ml_backend__mlds__du_name_ordered_mlds_entity_defn_0 },
+	{ (void *)mercury_data_ml_backend__mlds__du_ptag_ordered_mlds_entity_defn_0 },
+	3,
+	4,
+	mercury_data_ml_backend__mlds__functor_number_map_mlds_entity_defn_0
+};
+extern const MR_TypeCtorInfo_Struct mercury_data_ml_backend__mlds__type_ctor_info_mlds_entity_defn_0;
+
+const MR_PseudoTypeInfo mercury_data_ml_backend__mlds__field_types_mlds_defn_0_0[] = {
+	(MR_PseudoTypeInfo) &mercury_data_ml_backend__mlds__type_ctor_info_mlds_entity_name_0,
+	(MR_PseudoTypeInfo) &mercury_data_ml_backend__mlds__type_ctor_info_mlds_context_0,
+	(MR_PseudoTypeInfo) &mercury_data_builtin__type_ctor_info_int_0,
+	(MR_PseudoTypeInfo) &mercury_data_ml_backend__mlds__type_ctor_info_mlds_entity_defn_0
+};
+
+const MR_ConstString mercury_data_ml_backend__mlds__field_names_mlds_defn_0_0[] = {
+	"mlds_entity_name",
+	"mlds_context",
+	"mlds_decl_flags",
+	"mlds_entity_defn"
+};
+
+static const MR_DuFunctorDesc mercury_data_ml_backend__mlds__du_functor_desc_mlds_defn_0_0 = {
+	"mlds_defn",
+	4,
+	0,
+	MR_SECTAG_NONE,
+	0,
+	-1,
+	0,
+	(MR_PseudoTypeInfo *) mercury_data_ml_backend__mlds__field_types_mlds_defn_0_0,
+	mercury_data_ml_backend__mlds__field_names_mlds_defn_0_0,
+	NULL
+};
+
+const MR_DuFunctorDescPtr mercury_data_ml_backend__mlds__du_stag_ordered_mlds_defn_0_0[] = {
+	&mercury_data_ml_backend__mlds__du_functor_desc_mlds_defn_0_0
+
+};
+
+const MR_DuPtagLayout mercury_data_ml_backend__mlds__du_ptag_ordered_mlds_defn_0[] = {
+	{ 1, MR_SECTAG_NONE,
+	mercury_data_ml_backend__mlds__du_stag_ordered_mlds_defn_0_0 }
+
+};
+
+const MR_DuFunctorDescPtr mercury_data_ml_backend__mlds__du_name_ordered_mlds_defn_0[] = {
+	&mercury_data_ml_backend__mlds__du_functor_desc_mlds_defn_0_0
+};
+
+const MR_Integer mercury_data_ml_backend__mlds__functor_number_map_mlds_defn_0[] = {
+	0 };
+	
+const MR_TypeCtorInfo_Struct mercury_data_ml_backend__mlds__type_ctor_info_mlds_defn_0 = {
+	0,
+	13,
+	1,
+	MR_TYPECTOR_REP_DU,
+	MR_MAYBE_STATIC_CODE(MR_ENTRY_AP(__Unify___ml_backend__mlds__mlds_defn_0_0)),
+	MR_MAYBE_STATIC_CODE(MR_ENTRY_AP(__Compare___ml_backend__mlds__mlds_defn_0_0)),
+	"ml_backend.mlds",
+	"mlds_defn",
+	{ (void *)mercury_data_ml_backend__mlds__du_name_ordered_mlds_defn_0 },
+	{ (void *)mercury_data_ml_backend__mlds__du_ptag_ordered_mlds_defn_0 },
+	1,
+	4,
+	mercury_data_ml_backend__mlds__functor_number_map_mlds_defn_0
+};
+
+const MR_TypeCtorInfo_Struct mercury_data_ml_backend__mlds__type_ctor_info_mlds_decl_flags_0 = {
+	0,
+	13,
+	-1,
+	MR_TYPECTOR_REP_EQUIV_GROUND,
+	MR_MAYBE_STATIC_CODE(MR_ENTRY_AP(__Unify___ml_backend__mlds__mlds_decl_flags_0_0)),
+	MR_MAYBE_STATIC_CODE(MR_ENTRY_AP(__Compare___ml_backend__mlds__mlds_decl_flags_0_0)),
+	"ml_backend.mlds",
+	"mlds_decl_flags",
+	{ 0 },
+	{ (void *)&mercury_data_builtin__type_ctor_info_int_0 },
+	-1,
+	0,
+	NULL
+};
+
+const MR_PseudoTypeInfo mercury_data_ml_backend__mlds__field_types_mlds_data_name_0_0[] = {
+	(MR_PseudoTypeInfo) &mercury_data_ml_backend__mlds__type_ctor_info_mlds_var_name_0
+};
+
+static const MR_DuFunctorDesc mercury_data_ml_backend__mlds__du_functor_desc_mlds_data_name_0_0 = {
+	"var",
+	1,
+	0,
+	MR_SECTAG_NONE,
+	1,
+	-1,
+	0,
+	(MR_PseudoTypeInfo *) mercury_data_ml_backend__mlds__field_types_mlds_data_name_0_0,
+	NULL,
+	NULL
+};
+
+const MR_PseudoTypeInfo mercury_data_ml_backend__mlds__field_types_mlds_data_name_0_1[] = {
+	(MR_PseudoTypeInfo) &mercury_data_builtin__type_ctor_info_int_0
+};
+
+static const MR_DuFunctorDesc mercury_data_ml_backend__mlds__du_functor_desc_mlds_data_name_0_1 = {
+	"mlds_common",
+	1,
+	0,
+	MR_SECTAG_NONE,
+	2,
+	-1,
+	1,
+	(MR_PseudoTypeInfo *) mercury_data_ml_backend__mlds__field_types_mlds_data_name_0_1,
+	NULL,
+	NULL
+};
+extern const MR_TypeCtorInfo_Struct mercury_data_backend_libs__rtti__type_ctor_info_rtti_id_0;
+extern const MR_TypeCtorInfo_Struct mercury_data_backend_libs__rtti__type_ctor_info_rtti_id_0;
+
+const MR_PseudoTypeInfo mercury_data_ml_backend__mlds__field_types_mlds_data_name_0_2[] = {
+	(MR_PseudoTypeInfo) &mercury_data_backend_libs__rtti__type_ctor_info_rtti_id_0
+};
+
+static const MR_DuFunctorDesc mercury_data_ml_backend__mlds__du_functor_desc_mlds_data_name_0_2 = {
+	"mlds_rtti",
+	1,
+	0,
+	MR_SECTAG_REMOTE,
+	3,
+	0,
+	2,
+	(MR_PseudoTypeInfo *) mercury_data_ml_backend__mlds__field_types_mlds_data_name_0_2,
+	NULL,
+	NULL
+};
+
+static const MR_DuFunctorDesc mercury_data_ml_backend__mlds__du_functor_desc_mlds_data_name_0_3 = {
+	"mlds_module_layout",
+	0,
+	0,
+	MR_SECTAG_LOCAL,
+	0,
+	0,
+	3,
+	(MR_PseudoTypeInfo *) NULL,
+	NULL,
+	NULL
+};
+
+const MR_PseudoTypeInfo mercury_data_ml_backend__mlds__field_types_mlds_data_name_0_4[] = {
+	(MR_PseudoTypeInfo) &mercury_data_ml_backend__mlds__type_ctor_info_mlds_proc_label_0
+};
+
+static const MR_DuFunctorDesc mercury_data_ml_backend__mlds__du_functor_desc_mlds_data_name_0_4 = {
+	"mlds_proc_layout",
+	1,
+	0,
+	MR_SECTAG_REMOTE,
+	3,
+	1,
+	4,
+	(MR_PseudoTypeInfo *) mercury_data_ml_backend__mlds__field_types_mlds_data_name_0_4,
+	NULL,
+	NULL
+};
+
+const MR_PseudoTypeInfo mercury_data_ml_backend__mlds__field_types_mlds_data_name_0_5[] = {
+	(MR_PseudoTypeInfo) &mercury_data_ml_backend__mlds__type_ctor_info_mlds_proc_label_0,
+	(MR_PseudoTypeInfo) &mercury_data_builtin__type_ctor_info_int_0
+};
+
+static const MR_DuFunctorDesc mercury_data_ml_backend__mlds__du_functor_desc_mlds_data_name_0_5 = {
+	"mlds_internal_layout",
+	2,
+	0,
+	MR_SECTAG_REMOTE,
+	3,
+	2,
+	5,
+	(MR_PseudoTypeInfo *) mercury_data_ml_backend__mlds__field_types_mlds_data_name_0_5,
+	NULL,
+	NULL
+};
+
+const MR_PseudoTypeInfo mercury_data_ml_backend__mlds__field_types_mlds_data_name_0_6[] = {
+	(MR_PseudoTypeInfo) &mercury_data_ml_backend__mlds__type_ctor_info_mlds_proc_label_0,
+	(MR_PseudoTypeInfo) &mercury_data_backend_libs__rtti__type_ctor_info_proc_tabling_struct_id_0
+};
+
+static const MR_DuFunctorDesc mercury_data_ml_backend__mlds__du_functor_desc_mlds_data_name_0_6 = {
+	"mlds_tabling_ref",
+	2,
+	0,
+	MR_SECTAG_REMOTE,
+	3,
+	3,
+	6,
+	(MR_PseudoTypeInfo *) mercury_data_ml_backend__mlds__field_types_mlds_data_name_0_6,
+	NULL,
+	NULL
+};
+
+const MR_DuFunctorDescPtr mercury_data_ml_backend__mlds__du_stag_ordered_mlds_data_name_0_0[] = {
+	&mercury_data_ml_backend__mlds__du_functor_desc_mlds_data_name_0_3
+
+};
+
+const MR_DuFunctorDescPtr mercury_data_ml_backend__mlds__du_stag_ordered_mlds_data_name_0_1[] = {
+	&mercury_data_ml_backend__mlds__du_functor_desc_mlds_data_name_0_0
+
+};
+
+const MR_DuFunctorDescPtr mercury_data_ml_backend__mlds__du_stag_ordered_mlds_data_name_0_2[] = {
+	&mercury_data_ml_backend__mlds__du_functor_desc_mlds_data_name_0_1
+
+};
+
+const MR_DuFunctorDescPtr mercury_data_ml_backend__mlds__du_stag_ordered_mlds_data_name_0_3[] = {
+	&mercury_data_ml_backend__mlds__du_functor_desc_mlds_data_name_0_2,
+	&mercury_data_ml_backend__mlds__du_functor_desc_mlds_data_name_0_4,
+	&mercury_data_ml_backend__mlds__du_functor_desc_mlds_data_name_0_5,
+	&mercury_data_ml_backend__mlds__du_functor_desc_mlds_data_name_0_6
+
+};
+
+const MR_DuPtagLayout mercury_data_ml_backend__mlds__du_ptag_ordered_mlds_data_name_0[] = {
+	{ 1, MR_SECTAG_LOCAL,
+	mercury_data_ml_backend__mlds__du_stag_ordered_mlds_data_name_0_0 },
+	{ 1, MR_SECTAG_NONE,
+	mercury_data_ml_backend__mlds__du_stag_ordered_mlds_data_name_0_1 },
+	{ 1, MR_SECTAG_NONE,
+	mercury_data_ml_backend__mlds__du_stag_ordered_mlds_data_name_0_2 },
+	{ 4, MR_SECTAG_REMOTE,
+	mercury_data_ml_backend__mlds__du_stag_ordered_mlds_data_name_0_3 }
+
+};
+
+const MR_DuFunctorDescPtr mercury_data_ml_backend__mlds__du_name_ordered_mlds_data_name_0[] = {
+	&mercury_data_ml_backend__mlds__du_functor_desc_mlds_data_name_0_1,
+	&mercury_data_ml_backend__mlds__du_functor_desc_mlds_data_name_0_5,
+	&mercury_data_ml_backend__mlds__du_functor_desc_mlds_data_name_0_3,
+	&mercury_data_ml_backend__mlds__du_functor_desc_mlds_data_name_0_4,
+	&mercury_data_ml_backend__mlds__du_functor_desc_mlds_data_name_0_2,
+	&mercury_data_ml_backend__mlds__du_functor_desc_mlds_data_name_0_6,
+	&mercury_data_ml_backend__mlds__du_functor_desc_mlds_data_name_0_0
+};
+
+const MR_Integer mercury_data_ml_backend__mlds__functor_number_map_mlds_data_name_0[] = {
+	6,
+	0,
+	4,
+	2,
+	3,
+	1,
+	5 };
+	
+const MR_TypeCtorInfo_Struct mercury_data_ml_backend__mlds__type_ctor_info_mlds_data_name_0 = {
+	0,
+	13,
+	4,
+	MR_TYPECTOR_REP_DU,
+	MR_MAYBE_STATIC_CODE(MR_ENTRY_AP(__Unify___ml_backend__mlds__mlds_data_name_0_0)),
+	MR_MAYBE_STATIC_CODE(MR_ENTRY_AP(__Compare___ml_backend__mlds__mlds_data_name_0_0)),
+	"ml_backend.mlds",
+	"mlds_data_name",
+	{ (void *)mercury_data_ml_backend__mlds__du_name_ordered_mlds_data_name_0 },
+	{ (void *)mercury_data_ml_backend__mlds__du_ptag_ordered_mlds_data_name_0 },
+	7,
+	4,
+	mercury_data_ml_backend__mlds__functor_number_map_mlds_data_name_0
+};
+
+const MR_PseudoTypeInfo mercury_data_ml_backend__mlds__field_types_mlds_data_addr_0_0[] = {
+	(MR_PseudoTypeInfo) &mercury_data_ml_backend__mlds__type_ctor_info_mlds_module_name_0,
+	(MR_PseudoTypeInfo) &mercury_data_ml_backend__mlds__type_ctor_info_mlds_data_name_0
+};
+
+static const MR_DuFunctorDesc mercury_data_ml_backend__mlds__du_functor_desc_mlds_data_addr_0_0 = {
+	"data_addr",
+	2,
+	0,
+	MR_SECTAG_NONE,
+	0,
+	-1,
+	0,
+	(MR_PseudoTypeInfo *) mercury_data_ml_backend__mlds__field_types_mlds_data_addr_0_0,
+	NULL,
+	NULL
+};
+
+const MR_DuFunctorDescPtr mercury_data_ml_backend__mlds__du_stag_ordered_mlds_data_addr_0_0[] = {
+	&mercury_data_ml_backend__mlds__du_functor_desc_mlds_data_addr_0_0
+
+};
+
+const MR_DuPtagLayout mercury_data_ml_backend__mlds__du_ptag_ordered_mlds_data_addr_0[] = {
+	{ 1, MR_SECTAG_NONE,
+	mercury_data_ml_backend__mlds__du_stag_ordered_mlds_data_addr_0_0 }
+
+};
+
+const MR_DuFunctorDescPtr mercury_data_ml_backend__mlds__du_name_ordered_mlds_data_addr_0[] = {
+	&mercury_data_ml_backend__mlds__du_functor_desc_mlds_data_addr_0_0
+};
+
+const MR_Integer mercury_data_ml_backend__mlds__functor_number_map_mlds_data_addr_0[] = {
+	0 };
+	
+const MR_TypeCtorInfo_Struct mercury_data_ml_backend__mlds__type_ctor_info_mlds_data_addr_0 = {
+	0,
+	13,
+	1,
+	MR_TYPECTOR_REP_DU,
+	MR_MAYBE_STATIC_CODE(MR_ENTRY_AP(__Unify___ml_backend__mlds__mlds_data_addr_0_0)),
+	MR_MAYBE_STATIC_CODE(MR_ENTRY_AP(__Compare___ml_backend__mlds__mlds_data_addr_0_0)),
+	"ml_backend.mlds",
+	"mlds_data_addr",
+	{ (void *)mercury_data_ml_backend__mlds__du_name_ordered_mlds_data_addr_0 },
+	{ (void *)mercury_data_ml_backend__mlds__du_ptag_ordered_mlds_data_addr_0 },
+	1,
+	4,
+	mercury_data_ml_backend__mlds__functor_number_map_mlds_data_addr_0
+};
+
+static const MR_FA_TypeInfo_Struct1 mercury_data_ml_backend__mlds__ti_mlds_fully_qualified_name_1ml_backend__mlds__type_ctor_info_mlds_data_name_0 = {
+	&mercury_data_ml_backend__mlds__type_ctor_info_mlds_fully_qualified_name_1,
+{	(MR_TypeInfo) &mercury_data_ml_backend__mlds__type_ctor_info_mlds_data_name_0
+}};
+
+const MR_TypeCtorInfo_Struct mercury_data_ml_backend__mlds__type_ctor_info_mlds_data_0 = {
+	0,
+	13,
+	-1,
+	MR_TYPECTOR_REP_EQUIV_GROUND,
+	MR_MAYBE_STATIC_CODE(MR_ENTRY_AP(__Unify___ml_backend__mlds__mlds_data_0_0)),
+	MR_MAYBE_STATIC_CODE(MR_ENTRY_AP(__Compare___ml_backend__mlds__mlds_data_0_0)),
+	"ml_backend.mlds",
+	"mlds_data",
+	{ 0 },
+	{ (void *)&mercury_data_ml_backend__mlds__ti_mlds_fully_qualified_name_1ml_backend__mlds__type_ctor_info_mlds_data_name_0 },
+	-1,
+	0,
+	NULL
+};
+
+const MR_PseudoTypeInfo mercury_data_ml_backend__mlds__field_types_mlds_ctor_id_0_0[] = {
+	(MR_PseudoTypeInfo) &mercury_data_builtin__type_ctor_info_string_0,
+	(MR_PseudoTypeInfo) &mercury_data_builtin__type_ctor_info_int_0
+};
+
+static const MR_DuFunctorDesc mercury_data_ml_backend__mlds__du_functor_desc_mlds_ctor_id_0_0 = {
+	"ctor_id",
+	2,
+	0,
+	MR_SECTAG_NONE,
+	0,
+	-1,
+	0,
+	(MR_PseudoTypeInfo *) mercury_data_ml_backend__mlds__field_types_mlds_ctor_id_0_0,
+	NULL,
+	NULL
+};
+
+const MR_DuFunctorDescPtr mercury_data_ml_backend__mlds__du_stag_ordered_mlds_ctor_id_0_0[] = {
+	&mercury_data_ml_backend__mlds__du_functor_desc_mlds_ctor_id_0_0
+
+};
+
+const MR_DuPtagLayout mercury_data_ml_backend__mlds__du_ptag_ordered_mlds_ctor_id_0[] = {
+	{ 1, MR_SECTAG_NONE,
+	mercury_data_ml_backend__mlds__du_stag_ordered_mlds_ctor_id_0_0 }
+
+};
+
+const MR_DuFunctorDescPtr mercury_data_ml_backend__mlds__du_name_ordered_mlds_ctor_id_0[] = {
+	&mercury_data_ml_backend__mlds__du_functor_desc_mlds_ctor_id_0_0
+};
+
+const MR_Integer mercury_data_ml_backend__mlds__functor_number_map_mlds_ctor_id_0[] = {
+	0 };
+	
+const MR_TypeCtorInfo_Struct mercury_data_ml_backend__mlds__type_ctor_info_mlds_ctor_id_0 = {
+	0,
+	13,
+	1,
+	MR_TYPECTOR_REP_DU,
+	MR_MAYBE_STATIC_CODE(MR_ENTRY_AP(__Unify___ml_backend__mlds__mlds_ctor_id_0_0)),
+	MR_MAYBE_STATIC_CODE(MR_ENTRY_AP(__Compare___ml_backend__mlds__mlds_ctor_id_0_0)),
+	"ml_backend.mlds",
+	"mlds_ctor_id",
+	{ (void *)mercury_data_ml_backend__mlds__du_name_ordered_mlds_ctor_id_0 },
+	{ (void *)mercury_data_ml_backend__mlds__du_ptag_ordered_mlds_ctor_id_0 },
+	1,
+	4,
+	mercury_data_ml_backend__mlds__functor_number_map_mlds_ctor_id_0
+};
+
+static const MR_NotagFunctorDesc mercury_data_ml_backend__mlds__notag_functor_desc_mlds_context_0 = {
+	"mlds_context",
+	(MR_PseudoTypeInfo) &mercury_data_term__type_ctor_info_context_0,
+	NULL
+};
+
+const MR_Integer mercury_data_ml_backend__mlds__functor_number_map_mlds_context_0[] = {
+	0 };
+	
+const MR_TypeCtorInfo_Struct mercury_data_ml_backend__mlds__type_ctor_info_mlds_context_0 = {
+	0,
+	13,
+	-1,
+	MR_TYPECTOR_REP_NOTAG_GROUND,
+	MR_MAYBE_STATIC_CODE(MR_ENTRY_AP(__Unify___ml_backend__mlds__mlds_context_0_0)),
+	MR_MAYBE_STATIC_CODE(MR_ENTRY_AP(__Compare___ml_backend__mlds__mlds_context_0_0)),
+	"ml_backend.mlds",
+	"mlds_context",
+	{ (void *)&mercury_data_ml_backend__mlds__notag_functor_desc_mlds_context_0 },
+	{ (void *)&mercury_data_ml_backend__mlds__notag_functor_desc_mlds_context_0 },
+	1,
+	4,
+	mercury_data_ml_backend__mlds__functor_number_map_mlds_context_0
+};
+
+const MR_PseudoTypeInfo mercury_data_ml_backend__mlds__field_types_mlds_code_addr_0_0[] = {
+	(MR_PseudoTypeInfo) &mercury_data_ml_backend__mlds__ti_mlds_fully_qualified_name_1ml_backend__mlds__type_ctor_info_mlds_proc_label_0,
+	(MR_PseudoTypeInfo) &mercury_data_ml_backend__mlds__type_ctor_info_mlds_func_signature_0
+};
+
+static const MR_DuFunctorDesc mercury_data_ml_backend__mlds__du_functor_desc_mlds_code_addr_0_0 = {
+	"code_addr_proc",
+	2,
+	0,
+	MR_SECTAG_NONE,
+	0,
+	-1,
+	0,
+	(MR_PseudoTypeInfo *) mercury_data_ml_backend__mlds__field_types_mlds_code_addr_0_0,
+	NULL,
+	NULL
+};
+
+const MR_PseudoTypeInfo mercury_data_ml_backend__mlds__field_types_mlds_code_addr_0_1[] = {
+	(MR_PseudoTypeInfo) &mercury_data_ml_backend__mlds__ti_mlds_fully_qualified_name_1ml_backend__mlds__type_ctor_info_mlds_proc_label_0,
+	(MR_PseudoTypeInfo) &mercury_data_builtin__type_ctor_info_int_0,
+	(MR_PseudoTypeInfo) &mercury_data_ml_backend__mlds__type_ctor_info_mlds_func_signature_0
+};
+
+static const MR_DuFunctorDesc mercury_data_ml_backend__mlds__du_functor_desc_mlds_code_addr_0_1 = {
+	"code_addr_internal",
+	3,
+	0,
+	MR_SECTAG_NONE,
+	1,
+	-1,
+	1,
+	(MR_PseudoTypeInfo *) mercury_data_ml_backend__mlds__field_types_mlds_code_addr_0_1,
+	NULL,
+	NULL
+};
+
+const MR_DuFunctorDescPtr mercury_data_ml_backend__mlds__du_stag_ordered_mlds_code_addr_0_0[] = {
+	&mercury_data_ml_backend__mlds__du_functor_desc_mlds_code_addr_0_0
+
+};
+
+const MR_DuFunctorDescPtr mercury_data_ml_backend__mlds__du_stag_ordered_mlds_code_addr_0_1[] = {
+	&mercury_data_ml_backend__mlds__du_functor_desc_mlds_code_addr_0_1
+
+};
+
+const MR_DuPtagLayout mercury_data_ml_backend__mlds__du_ptag_ordered_mlds_code_addr_0[] = {
+	{ 1, MR_SECTAG_NONE,
+	mercury_data_ml_backend__mlds__du_stag_ordered_mlds_code_addr_0_0 },
+	{ 1, MR_SECTAG_NONE,
+	mercury_data_ml_backend__mlds__du_stag_ordered_mlds_code_addr_0_1 }
+
+};
+
+const MR_DuFunctorDescPtr mercury_data_ml_backend__mlds__du_name_ordered_mlds_code_addr_0[] = {
+	&mercury_data_ml_backend__mlds__du_functor_desc_mlds_code_addr_0_1,
+	&mercury_data_ml_backend__mlds__du_functor_desc_mlds_code_addr_0_0
+};
+
+const MR_Integer mercury_data_ml_backend__mlds__functor_number_map_mlds_code_addr_0[] = {
+	1,
+	0 };
+	
+const MR_TypeCtorInfo_Struct mercury_data_ml_backend__mlds__type_ctor_info_mlds_code_addr_0 = {
+	0,
+	13,
+	2,
+	MR_TYPECTOR_REP_DU,
+	MR_MAYBE_STATIC_CODE(MR_ENTRY_AP(__Unify___ml_backend__mlds__mlds_code_addr_0_0)),
+	MR_MAYBE_STATIC_CODE(MR_ENTRY_AP(__Compare___ml_backend__mlds__mlds_code_addr_0_0)),
+	"ml_backend.mlds",
+	"mlds_code_addr",
+	{ (void *)mercury_data_ml_backend__mlds__du_name_ordered_mlds_code_addr_0 },
+	{ (void *)mercury_data_ml_backend__mlds__du_ptag_ordered_mlds_code_addr_0 },
+	2,
+	4,
+	mercury_data_ml_backend__mlds__functor_number_map_mlds_code_addr_0
+};
+
+const MR_TypeCtorInfo_Struct mercury_data_ml_backend__mlds__type_ctor_info_mlds_class_name_0 = {
+	0,
+	13,
+	-1,
+	MR_TYPECTOR_REP_EQUIV_GROUND,
+	MR_MAYBE_STATIC_CODE(MR_ENTRY_AP(__Unify___ml_backend__mlds__mlds_class_name_0_0)),
+	MR_MAYBE_STATIC_CODE(MR_ENTRY_AP(__Compare___ml_backend__mlds__mlds_class_name_0_0)),
+	"ml_backend.mlds",
+	"mlds_class_name",
+	{ 0 },
+	{ (void *)&mercury_data_builtin__type_ctor_info_string_0 },
+	-1,
+	0,
+	NULL
+};
+
+static const MR_EnumFunctorDesc mercury_data_ml_backend__mlds__enum_functor_desc_mlds_class_kind_0_0 = {
+	"mlds_class",
+	0
+};
+
+static const MR_EnumFunctorDesc mercury_data_ml_backend__mlds__enum_functor_desc_mlds_class_kind_0_1 = {
+	"mlds_package",
+	1
+};
+
+static const MR_EnumFunctorDesc mercury_data_ml_backend__mlds__enum_functor_desc_mlds_class_kind_0_2 = {
+	"mlds_interface",
+	2
+};
+
+static const MR_EnumFunctorDesc mercury_data_ml_backend__mlds__enum_functor_desc_mlds_class_kind_0_3 = {
+	"mlds_struct",
+	3
+};
+
+static const MR_EnumFunctorDesc mercury_data_ml_backend__mlds__enum_functor_desc_mlds_class_kind_0_4 = {
+	"mlds_enum",
+	4
+};
+
+const MR_EnumFunctorDescPtr mercury_data_ml_backend__mlds__enum_value_ordered_mlds_class_kind_0[] = {
+	&mercury_data_ml_backend__mlds__enum_functor_desc_mlds_class_kind_0_0,
+	&mercury_data_ml_backend__mlds__enum_functor_desc_mlds_class_kind_0_1,
+	&mercury_data_ml_backend__mlds__enum_functor_desc_mlds_class_kind_0_2,
+	&mercury_data_ml_backend__mlds__enum_functor_desc_mlds_class_kind_0_3,
+	&mercury_data_ml_backend__mlds__enum_functor_desc_mlds_class_kind_0_4
+};
+
+const MR_EnumFunctorDescPtr mercury_data_ml_backend__mlds__enum_name_ordered_mlds_class_kind_0[] = {
+	&mercury_data_ml_backend__mlds__enum_functor_desc_mlds_class_kind_0_0,
+	&mercury_data_ml_backend__mlds__enum_functor_desc_mlds_class_kind_0_4,
+	&mercury_data_ml_backend__mlds__enum_functor_desc_mlds_class_kind_0_2,
+	&mercury_data_ml_backend__mlds__enum_functor_desc_mlds_class_kind_0_1,
+	&mercury_data_ml_backend__mlds__enum_functor_desc_mlds_class_kind_0_3
+};
+
+const MR_Integer mercury_data_ml_backend__mlds__functor_number_map_mlds_class_kind_0[] = {
+	0,
+	3,
+	2,
+	4,
+	1 };
+	
+const MR_TypeCtorInfo_Struct mercury_data_ml_backend__mlds__type_ctor_info_mlds_class_kind_0 = {
+	0,
+	13,
+	-1,
+	MR_TYPECTOR_REP_ENUM,
+	MR_MAYBE_STATIC_CODE(MR_ENTRY_AP(__Unify___ml_backend__mlds__mlds_class_kind_0_0)),
+	MR_MAYBE_STATIC_CODE(MR_ENTRY_AP(__Compare___ml_backend__mlds__mlds_class_kind_0_0)),
+	"ml_backend.mlds",
+	"mlds_class_kind",
+	{ (void *)mercury_data_ml_backend__mlds__enum_name_ordered_mlds_class_kind_0 },
+	{ (void *)mercury_data_ml_backend__mlds__enum_value_ordered_mlds_class_kind_0 },
+	5,
+	4,
+	mercury_data_ml_backend__mlds__functor_number_map_mlds_class_kind_0
+};
+
+const MR_TypeCtorInfo_Struct mercury_data_ml_backend__mlds__type_ctor_info_mlds_class_id_0 = {
+	0,
+	13,
+	-1,
+	MR_TYPECTOR_REP_EQUIV_GROUND,
+	MR_MAYBE_STATIC_CODE(MR_ENTRY_AP(__Unify___ml_backend__mlds__mlds_class_id_0_0)),
+	MR_MAYBE_STATIC_CODE(MR_ENTRY_AP(__Compare___ml_backend__mlds__mlds_class_id_0_0)),
+	"ml_backend.mlds",
+	"mlds_class_id",
+	{ 0 },
+	{ (void *)&mercury_data_ml_backend__mlds__type_ctor_info_mlds_type_0 },
+	-1,
+	0,
+	NULL
+};
+
+const MR_PseudoTypeInfo mercury_data_ml_backend__mlds__field_types_mlds_class_defn_0_0[] = {
+	(MR_PseudoTypeInfo) &mercury_data_ml_backend__mlds__type_ctor_info_mlds_class_kind_0,
+	(MR_PseudoTypeInfo) &mercury_data_list__ti_list_1ml_backend__mlds__type_ctor_info_mlds_import_0,
+	(MR_PseudoTypeInfo) &mercury_data_list__ti_list_1ml_backend__mlds__type_ctor_info_mlds_type_0,
+	(MR_PseudoTypeInfo) &mercury_data_list__ti_list_1ml_backend__mlds__type_ctor_info_mlds_type_0,
+	(MR_PseudoTypeInfo) &mercury_data_list__ti_list_1ml_backend__mlds__type_ctor_info_mlds_defn_0,
+	(MR_PseudoTypeInfo) &mercury_data_list__ti_list_1ml_backend__mlds__type_ctor_info_mlds_defn_0
+};
+
+const MR_ConstString mercury_data_ml_backend__mlds__field_names_mlds_class_defn_0_0[] = {
+	"mcd_kind",
+	"mcd_imports",
+	"mcd_inherits",
+	"mcd_implements",
+	"mcd_ctors",
+	"mcd_members"
+};
+
+static const MR_DuFunctorDesc mercury_data_ml_backend__mlds__du_functor_desc_mlds_class_defn_0_0 = {
+	"mlds_class_defn",
+	6,
+	0,
+	MR_SECTAG_NONE,
+	0,
+	-1,
+	0,
+	(MR_PseudoTypeInfo *) mercury_data_ml_backend__mlds__field_types_mlds_class_defn_0_0,
+	mercury_data_ml_backend__mlds__field_names_mlds_class_defn_0_0,
+	NULL
+};
+
+const MR_DuFunctorDescPtr mercury_data_ml_backend__mlds__du_stag_ordered_mlds_class_defn_0_0[] = {
+	&mercury_data_ml_backend__mlds__du_functor_desc_mlds_class_defn_0_0
+
+};
+
+const MR_DuPtagLayout mercury_data_ml_backend__mlds__du_ptag_ordered_mlds_class_defn_0[] = {
+	{ 1, MR_SECTAG_NONE,
+	mercury_data_ml_backend__mlds__du_stag_ordered_mlds_class_defn_0_0 }
+
+};
+
+const MR_DuFunctorDescPtr mercury_data_ml_backend__mlds__du_name_ordered_mlds_class_defn_0[] = {
+	&mercury_data_ml_backend__mlds__du_functor_desc_mlds_class_defn_0_0
+};
+
+const MR_Integer mercury_data_ml_backend__mlds__functor_number_map_mlds_class_defn_0[] = {
+	0 };
+	
+const MR_TypeCtorInfo_Struct mercury_data_ml_backend__mlds__type_ctor_info_mlds_class_defn_0 = {
+	0,
+	13,
+	1,
+	MR_TYPECTOR_REP_DU,
+	MR_MAYBE_STATIC_CODE(MR_ENTRY_AP(__Unify___ml_backend__mlds__mlds_class_defn_0_0)),
+	MR_MAYBE_STATIC_CODE(MR_ENTRY_AP(__Compare___ml_backend__mlds__mlds_class_defn_0_0)),
+	"ml_backend.mlds",
+	"mlds_class_defn",
+	{ (void *)mercury_data_ml_backend__mlds__du_name_ordered_mlds_class_defn_0 },
+	{ (void *)mercury_data_ml_backend__mlds__du_ptag_ordered_mlds_class_defn_0 },
+	1,
+	4,
+	mercury_data_ml_backend__mlds__functor_number_map_mlds_class_defn_0
+};
+
+const MR_TypeCtorInfo_Struct mercury_data_ml_backend__mlds__type_ctor_info_mlds_class_0 = {
+	0,
+	13,
+	-1,
+	MR_TYPECTOR_REP_EQUIV_GROUND,
+	MR_MAYBE_STATIC_CODE(MR_ENTRY_AP(__Unify___ml_backend__mlds__mlds_class_0_0)),
+	MR_MAYBE_STATIC_CODE(MR_ENTRY_AP(__Compare___ml_backend__mlds__mlds_class_0_0)),
+	"ml_backend.mlds",
+	"mlds_class",
+	{ 0 },
+	{ (void *)&mercury_data_ml_backend__mlds__ti_mlds_fully_qualified_name_1builtin__type_ctor_info_string_0 },
+	-1,
+	0,
+	NULL
+};
+
+const MR_TypeCtorInfo_Struct mercury_data_ml_backend__mlds__type_ctor_info_mlds_case_match_conds_0 = {
+	0,
+	13,
+	-1,
+	MR_TYPECTOR_REP_EQUIV_GROUND,
+	MR_MAYBE_STATIC_CODE(MR_ENTRY_AP(__Unify___ml_backend__mlds__mlds_case_match_conds_0_0)),
+	MR_MAYBE_STATIC_CODE(MR_ENTRY_AP(__Compare___ml_backend__mlds__mlds_case_match_conds_0_0)),
+	"ml_backend.mlds",
+	"mlds_case_match_conds",
+	{ 0 },
+	{ (void *)&mercury_data_list__ti_list_1ml_backend__mlds__type_ctor_info_mlds_case_match_cond_0 },
+	-1,
+	0,
+	NULL
+};
+
+const MR_PseudoTypeInfo mercury_data_ml_backend__mlds__field_types_mlds_case_match_cond_0_0[] = {
+	(MR_PseudoTypeInfo) &mercury_data_ml_backend__mlds__type_ctor_info_mlds_rval_0
+};
+
+static const MR_DuFunctorDesc mercury_data_ml_backend__mlds__du_functor_desc_mlds_case_match_cond_0_0 = {
+	"match_value",
+	1,
+	0,
+	MR_SECTAG_NONE,
+	0,
+	-1,
+	0,
+	(MR_PseudoTypeInfo *) mercury_data_ml_backend__mlds__field_types_mlds_case_match_cond_0_0,
+	NULL,
+	NULL
+};
+
+const MR_PseudoTypeInfo mercury_data_ml_backend__mlds__field_types_mlds_case_match_cond_0_1[] = {
+	(MR_PseudoTypeInfo) &mercury_data_ml_backend__mlds__type_ctor_info_mlds_rval_0,
+	(MR_PseudoTypeInfo) &mercury_data_ml_backend__mlds__type_ctor_info_mlds_rval_0
+};
+
+static const MR_DuFunctorDesc mercury_data_ml_backend__mlds__du_functor_desc_mlds_case_match_cond_0_1 = {
+	"match_range",
+	2,
+	0,
+	MR_SECTAG_NONE,
+	1,
+	-1,
+	1,
+	(MR_PseudoTypeInfo *) mercury_data_ml_backend__mlds__field_types_mlds_case_match_cond_0_1,
+	NULL,
+	NULL
+};
+
+const MR_DuFunctorDescPtr mercury_data_ml_backend__mlds__du_stag_ordered_mlds_case_match_cond_0_0[] = {
+	&mercury_data_ml_backend__mlds__du_functor_desc_mlds_case_match_cond_0_0
+
+};
+
+const MR_DuFunctorDescPtr mercury_data_ml_backend__mlds__du_stag_ordered_mlds_case_match_cond_0_1[] = {
+	&mercury_data_ml_backend__mlds__du_functor_desc_mlds_case_match_cond_0_1
+
+};
+
+const MR_DuPtagLayout mercury_data_ml_backend__mlds__du_ptag_ordered_mlds_case_match_cond_0[] = {
+	{ 1, MR_SECTAG_NONE,
+	mercury_data_ml_backend__mlds__du_stag_ordered_mlds_case_match_cond_0_0 },
+	{ 1, MR_SECTAG_NONE,
+	mercury_data_ml_backend__mlds__du_stag_ordered_mlds_case_match_cond_0_1 }
+
+};
+
+const MR_DuFunctorDescPtr mercury_data_ml_backend__mlds__du_name_ordered_mlds_case_match_cond_0[] = {
+	&mercury_data_ml_backend__mlds__du_functor_desc_mlds_case_match_cond_0_1,
+	&mercury_data_ml_backend__mlds__du_functor_desc_mlds_case_match_cond_0_0
+};
+
+const MR_Integer mercury_data_ml_backend__mlds__functor_number_map_mlds_case_match_cond_0[] = {
+	1,
+	0 };
+	
+const MR_TypeCtorInfo_Struct mercury_data_ml_backend__mlds__type_ctor_info_mlds_case_match_cond_0 = {
+	0,
+	13,
+	2,
+	MR_TYPECTOR_REP_DU,
+	MR_MAYBE_STATIC_CODE(MR_ENTRY_AP(__Unify___ml_backend__mlds__mlds_case_match_cond_0_0)),
+	MR_MAYBE_STATIC_CODE(MR_ENTRY_AP(__Compare___ml_backend__mlds__mlds_case_match_cond_0_0)),
+	"ml_backend.mlds",
+	"mlds_case_match_cond",
+	{ (void *)mercury_data_ml_backend__mlds__du_name_ordered_mlds_case_match_cond_0 },
+	{ (void *)mercury_data_ml_backend__mlds__du_ptag_ordered_mlds_case_match_cond_0 },
+	2,
+	4,
+	mercury_data_ml_backend__mlds__functor_number_map_mlds_case_match_cond_0
+};
+
+static const MR_NotagFunctorDesc mercury_data_ml_backend__mlds__notag_functor_desc_mlds_attribute_0 = {
+	"custom",
+	(MR_PseudoTypeInfo) &mercury_data_ml_backend__mlds__type_ctor_info_mlds_type_0,
+	NULL
+};
+
+const MR_Integer mercury_data_ml_backend__mlds__functor_number_map_mlds_attribute_0[] = {
+	0 };
+	
+const MR_TypeCtorInfo_Struct mercury_data_ml_backend__mlds__type_ctor_info_mlds_attribute_0 = {
+	0,
+	13,
+	-1,
+	MR_TYPECTOR_REP_NOTAG_GROUND,
+	MR_MAYBE_STATIC_CODE(MR_ENTRY_AP(__Unify___ml_backend__mlds__mlds_attribute_0_0)),
+	MR_MAYBE_STATIC_CODE(MR_ENTRY_AP(__Compare___ml_backend__mlds__mlds_attribute_0_0)),
+	"ml_backend.mlds",
+	"mlds_attribute",
+	{ (void *)&mercury_data_ml_backend__mlds__notag_functor_desc_mlds_attribute_0 },
+	{ (void *)&mercury_data_ml_backend__mlds__notag_functor_desc_mlds_attribute_0 },
+	1,
+	4,
+	mercury_data_ml_backend__mlds__functor_number_map_mlds_attribute_0
+};
+
+const MR_PseudoTypeInfo mercury_data_ml_backend__mlds__field_types_mlds_atomic_statement_0_0[] = {
+	(MR_PseudoTypeInfo) &mercury_data_builtin__type_ctor_info_string_0
+};
+
+static const MR_DuFunctorDesc mercury_data_ml_backend__mlds__du_functor_desc_mlds_atomic_statement_0_0 = {
+	"comment",
+	1,
+	0,
+	MR_SECTAG_NONE,
+	1,
+	-1,
+	0,
+	(MR_PseudoTypeInfo *) mercury_data_ml_backend__mlds__field_types_mlds_atomic_statement_0_0,
+	NULL,
+	NULL
+};
+
+const MR_PseudoTypeInfo mercury_data_ml_backend__mlds__field_types_mlds_atomic_statement_0_1[] = {
+	(MR_PseudoTypeInfo) &mercury_data_ml_backend__mlds__type_ctor_info_mlds_lval_0,
+	(MR_PseudoTypeInfo) &mercury_data_ml_backend__mlds__type_ctor_info_mlds_rval_0
+};
+
+static const MR_DuFunctorDesc mercury_data_ml_backend__mlds__du_functor_desc_mlds_atomic_statement_0_1 = {
+	"assign",
+	2,
+	0,
+	MR_SECTAG_NONE,
+	2,
+	-1,
+	1,
+	(MR_PseudoTypeInfo *) mercury_data_ml_backend__mlds__field_types_mlds_atomic_statement_0_1,
+	NULL,
+	NULL
+};
+
+const MR_PseudoTypeInfo mercury_data_ml_backend__mlds__field_types_mlds_atomic_statement_0_2[] = {
+	(MR_PseudoTypeInfo) &mercury_data_ml_backend__mlds__type_ctor_info_mlds_lval_0,
+	(MR_PseudoTypeInfo) &mercury_data_ml_backend__mlds__type_ctor_info_mlds_rval_0
+};
+
+static const MR_DuFunctorDesc mercury_data_ml_backend__mlds__du_functor_desc_mlds_atomic_statement_0_2 = {
+	"assign_if_in_heap",
+	2,
+	0,
+	MR_SECTAG_REMOTE,
+	3,
+	0,
+	2,
+	(MR_PseudoTypeInfo *) mercury_data_ml_backend__mlds__field_types_mlds_atomic_statement_0_2,
+	NULL,
+	NULL
+};
+
+const MR_PseudoTypeInfo mercury_data_ml_backend__mlds__field_types_mlds_atomic_statement_0_3[] = {
+	(MR_PseudoTypeInfo) &mercury_data_ml_backend__mlds__type_ctor_info_mlds_rval_0
+};
+
+static const MR_DuFunctorDesc mercury_data_ml_backend__mlds__du_functor_desc_mlds_atomic_statement_0_3 = {
+	"delete_object",
+	1,
+	0,
+	MR_SECTAG_REMOTE,
+	3,
+	1,
+	3,
+	(MR_PseudoTypeInfo *) mercury_data_ml_backend__mlds__field_types_mlds_atomic_statement_0_3,
+	NULL,
+	NULL
+};
+
+static const MR_FA_TypeInfo_Struct1 mercury_data_maybe__ti_maybe_1ml_backend__mlds__ti_mlds_fully_qualified_name_1ml_backend__mlds__type_ctor_info_mlds_ctor_id_0 = {
+	&mercury_data_maybe__type_ctor_info_maybe_1,
+{	(MR_TypeInfo) &mercury_data_ml_backend__mlds__ti_mlds_fully_qualified_name_1ml_backend__mlds__type_ctor_info_mlds_ctor_id_0
+}};
+extern const MR_TypeCtorInfo_Struct mercury_data_hlds__hlds_data__type_ctor_info_may_use_atomic_alloc_0;
+extern const MR_TypeCtorInfo_Struct mercury_data_hlds__hlds_data__type_ctor_info_may_use_atomic_alloc_0;
+
+const MR_PseudoTypeInfo mercury_data_ml_backend__mlds__field_types_mlds_atomic_statement_0_4[] = {
+	(MR_PseudoTypeInfo) &mercury_data_ml_backend__mlds__type_ctor_info_mlds_lval_0,
+	(MR_PseudoTypeInfo) &mercury_data_maybe__ti_maybe_1builtin__type_ctor_info_int_0,
+	(MR_PseudoTypeInfo) &mercury_data_bool__type_ctor_info_bool_0,
+	(MR_PseudoTypeInfo) &mercury_data_ml_backend__mlds__type_ctor_info_mlds_type_0,
+	(MR_PseudoTypeInfo) &mercury_data_maybe__ti_maybe_1ml_backend__mlds__type_ctor_info_mlds_rval_0,
+	(MR_PseudoTypeInfo) &mercury_data_maybe__ti_maybe_1ml_backend__mlds__ti_mlds_fully_qualified_name_1ml_backend__mlds__type_ctor_info_mlds_ctor_id_0,
+	(MR_PseudoTypeInfo) &mercury_data_list__ti_list_1ml_backend__mlds__type_ctor_info_mlds_rval_0,
+	(MR_PseudoTypeInfo) &mercury_data_list__ti_list_1ml_backend__mlds__type_ctor_info_mlds_type_0,
+	(MR_PseudoTypeInfo) &mercury_data_hlds__hlds_data__type_ctor_info_may_use_atomic_alloc_0
+};
+
+static const MR_DuFunctorDesc mercury_data_ml_backend__mlds__du_functor_desc_mlds_atomic_statement_0_4 = {
+	"new_object",
+	9,
+	0,
+	MR_SECTAG_REMOTE,
+	3,
+	2,
+	4,
+	(MR_PseudoTypeInfo *) mercury_data_ml_backend__mlds__field_types_mlds_atomic_statement_0_4,
+	NULL,
+	NULL
+};
+
+static const MR_DuFunctorDesc mercury_data_ml_backend__mlds__du_functor_desc_mlds_atomic_statement_0_5 = {
+	"gc_check",
+	0,
+	0,
+	MR_SECTAG_LOCAL,
+	0,
+	0,
+	5,
+	(MR_PseudoTypeInfo *) NULL,
+	NULL,
+	NULL
+};
+
+const MR_PseudoTypeInfo mercury_data_ml_backend__mlds__field_types_mlds_atomic_statement_0_6[] = {
+	(MR_PseudoTypeInfo) &mercury_data_ml_backend__mlds__type_ctor_info_mlds_lval_0
+};
+
+static const MR_DuFunctorDesc mercury_data_ml_backend__mlds__du_functor_desc_mlds_atomic_statement_0_6 = {
+	"mark_hp",
+	1,
+	0,
+	MR_SECTAG_REMOTE,
+	3,
+	3,
+	6,
+	(MR_PseudoTypeInfo *) mercury_data_ml_backend__mlds__field_types_mlds_atomic_statement_0_6,
+	NULL,
+	NULL
+};
+
+const MR_PseudoTypeInfo mercury_data_ml_backend__mlds__field_types_mlds_atomic_statement_0_7[] = {
+	(MR_PseudoTypeInfo) &mercury_data_ml_backend__mlds__type_ctor_info_mlds_rval_0
+};
+
+static const MR_DuFunctorDesc mercury_data_ml_backend__mlds__du_functor_desc_mlds_atomic_statement_0_7 = {
+	"restore_hp",
+	1,
+	0,
+	MR_SECTAG_REMOTE,
+	3,
+	4,
+	7,
+	(MR_PseudoTypeInfo *) mercury_data_ml_backend__mlds__field_types_mlds_atomic_statement_0_7,
+	NULL,
+	NULL
+};
+extern const MR_TypeCtorInfo_Struct mercury_data_ml_backend__mlds__type_ctor_info_trail_op_0;
+
+const MR_PseudoTypeInfo mercury_data_ml_backend__mlds__field_types_mlds_atomic_statement_0_8[] = {
+	(MR_PseudoTypeInfo) &mercury_data_ml_backend__mlds__type_ctor_info_trail_op_0
+};
+
+static const MR_DuFunctorDesc mercury_data_ml_backend__mlds__du_functor_desc_mlds_atomic_statement_0_8 = {
+	"trail_op",
+	1,
+	0,
+	MR_SECTAG_REMOTE,
+	3,
+	5,
+	8,
+	(MR_PseudoTypeInfo *) mercury_data_ml_backend__mlds__field_types_mlds_atomic_statement_0_8,
+	NULL,
+	NULL
+};
+extern const MR_TypeCtorInfo_Struct mercury_data_ml_backend__mlds__type_ctor_info_target_code_component_0;
+
+static const MR_FA_TypeInfo_Struct1 mercury_data_list__ti_list_1ml_backend__mlds__type_ctor_info_target_code_component_0 = {
+	&mercury_data_list__type_ctor_info_list_1,
+{	(MR_TypeInfo) &mercury_data_ml_backend__mlds__type_ctor_info_target_code_component_0
+}};
+extern const MR_TypeCtorInfo_Struct mercury_data_ml_backend__mlds__type_ctor_info_mlds_target_lang_0;
+
+const MR_PseudoTypeInfo mercury_data_ml_backend__mlds__field_types_mlds_atomic_statement_0_9[] = {
+	(MR_PseudoTypeInfo) &mercury_data_ml_backend__mlds__type_ctor_info_mlds_target_lang_0,
+	(MR_PseudoTypeInfo) &mercury_data_list__ti_list_1ml_backend__mlds__type_ctor_info_target_code_component_0
+};
+
+static const MR_DuFunctorDesc mercury_data_ml_backend__mlds__du_functor_desc_mlds_atomic_statement_0_9 = {
+	"inline_target_code",
+	2,
+	0,
+	MR_SECTAG_REMOTE,
+	3,
+	6,
+	9,
+	(MR_PseudoTypeInfo *) mercury_data_ml_backend__mlds__field_types_mlds_atomic_statement_0_9,
+	NULL,
+	NULL
+};
+extern const MR_TypeCtorInfo_Struct mercury_data_ml_backend__mlds__type_ctor_info_outline_arg_0;
+
+static const MR_FA_TypeInfo_Struct1 mercury_data_list__ti_list_1ml_backend__mlds__type_ctor_info_outline_arg_0 = {
+	&mercury_data_list__type_ctor_info_list_1,
+{	(MR_TypeInfo) &mercury_data_ml_backend__mlds__type_ctor_info_outline_arg_0
+}};
+
+const MR_PseudoTypeInfo mercury_data_ml_backend__mlds__field_types_mlds_atomic_statement_0_10[] = {
+	(MR_PseudoTypeInfo) &mercury_data_libs__globals__type_ctor_info_foreign_language_0,
+	(MR_PseudoTypeInfo) &mercury_data_list__ti_list_1ml_backend__mlds__type_ctor_info_outline_arg_0,
+	(MR_PseudoTypeInfo) &mercury_data_list__ti_list_1ml_backend__mlds__type_ctor_info_mlds_lval_0,
+	(MR_PseudoTypeInfo) &mercury_data_builtin__type_ctor_info_string_0
+};
+
+static const MR_DuFunctorDesc mercury_data_ml_backend__mlds__du_functor_desc_mlds_atomic_statement_0_10 = {
+	"outline_foreign_proc",
+	4,
+	0,
+	MR_SECTAG_REMOTE,
+	3,
+	7,
+	10,
+	(MR_PseudoTypeInfo *) mercury_data_ml_backend__mlds__field_types_mlds_atomic_statement_0_10,
+	NULL,
+	NULL
+};
+
+const MR_DuFunctorDescPtr mercury_data_ml_backend__mlds__du_stag_ordered_mlds_atomic_statement_0_0[] = {
+	&mercury_data_ml_backend__mlds__du_functor_desc_mlds_atomic_statement_0_5
+
+};
+
+const MR_DuFunctorDescPtr mercury_data_ml_backend__mlds__du_stag_ordered_mlds_atomic_statement_0_1[] = {
+	&mercury_data_ml_backend__mlds__du_functor_desc_mlds_atomic_statement_0_0
+
+};
+
+const MR_DuFunctorDescPtr mercury_data_ml_backend__mlds__du_stag_ordered_mlds_atomic_statement_0_2[] = {
+	&mercury_data_ml_backend__mlds__du_functor_desc_mlds_atomic_statement_0_1
+
+};
+
+const MR_DuFunctorDescPtr mercury_data_ml_backend__mlds__du_stag_ordered_mlds_atomic_statement_0_3[] = {
+	&mercury_data_ml_backend__mlds__du_functor_desc_mlds_atomic_statement_0_2,
+	&mercury_data_ml_backend__mlds__du_functor_desc_mlds_atomic_statement_0_3,
+	&mercury_data_ml_backend__mlds__du_functor_desc_mlds_atomic_statement_0_4,
+	&mercury_data_ml_backend__mlds__du_functor_desc_mlds_atomic_statement_0_6,
+	&mercury_data_ml_backend__mlds__du_functor_desc_mlds_atomic_statement_0_7,
+	&mercury_data_ml_backend__mlds__du_functor_desc_mlds_atomic_statement_0_8,
+	&mercury_data_ml_backend__mlds__du_functor_desc_mlds_atomic_statement_0_9,
+	&mercury_data_ml_backend__mlds__du_functor_desc_mlds_atomic_statement_0_10
+
+};
+
+const MR_DuPtagLayout mercury_data_ml_backend__mlds__du_ptag_ordered_mlds_atomic_statement_0[] = {
+	{ 1, MR_SECTAG_LOCAL,
+	mercury_data_ml_backend__mlds__du_stag_ordered_mlds_atomic_statement_0_0 },
+	{ 1, MR_SECTAG_NONE,
+	mercury_data_ml_backend__mlds__du_stag_ordered_mlds_atomic_statement_0_1 },
+	{ 1, MR_SECTAG_NONE,
+	mercury_data_ml_backend__mlds__du_stag_ordered_mlds_atomic_statement_0_2 },
+	{ 8, MR_SECTAG_REMOTE,
+	mercury_data_ml_backend__mlds__du_stag_ordered_mlds_atomic_statement_0_3 }
+
+};
+
+const MR_DuFunctorDescPtr mercury_data_ml_backend__mlds__du_name_ordered_mlds_atomic_statement_0[] = {
+	&mercury_data_ml_backend__mlds__du_functor_desc_mlds_atomic_statement_0_1,
+	&mercury_data_ml_backend__mlds__du_functor_desc_mlds_atomic_statement_0_2,
+	&mercury_data_ml_backend__mlds__du_functor_desc_mlds_atomic_statement_0_0,
+	&mercury_data_ml_backend__mlds__du_functor_desc_mlds_atomic_statement_0_3,
+	&mercury_data_ml_backend__mlds__du_functor_desc_mlds_atomic_statement_0_5,
+	&mercury_data_ml_backend__mlds__du_functor_desc_mlds_atomic_statement_0_9,
+	&mercury_data_ml_backend__mlds__du_functor_desc_mlds_atomic_statement_0_6,
+	&mercury_data_ml_backend__mlds__du_functor_desc_mlds_atomic_statement_0_4,
+	&mercury_data_ml_backend__mlds__du_functor_desc_mlds_atomic_statement_0_10,
+	&mercury_data_ml_backend__mlds__du_functor_desc_mlds_atomic_statement_0_7,
+	&mercury_data_ml_backend__mlds__du_functor_desc_mlds_atomic_statement_0_8
+};
+
+const MR_Integer mercury_data_ml_backend__mlds__functor_number_map_mlds_atomic_statement_0[] = {
+	2,
+	0,
+	1,
+	3,
+	7,
+	4,
+	6,
+	9,
+	10,
+	5,
+	8 };
+	
+const MR_TypeCtorInfo_Struct mercury_data_ml_backend__mlds__type_ctor_info_mlds_atomic_statement_0 = {
+	0,
+	13,
+	4,
+	MR_TYPECTOR_REP_DU,
+	MR_MAYBE_STATIC_CODE(MR_ENTRY_AP(__Unify___ml_backend__mlds__mlds_atomic_statement_0_0)),
+	MR_MAYBE_STATIC_CODE(MR_ENTRY_AP(__Compare___ml_backend__mlds__mlds_atomic_statement_0_0)),
+	"ml_backend.mlds",
+	"mlds_atomic_statement",
+	{ (void *)mercury_data_ml_backend__mlds__du_name_ordered_mlds_atomic_statement_0 },
+	{ (void *)mercury_data_ml_backend__mlds__du_ptag_ordered_mlds_atomic_statement_0 },
+	11,
+	4,
+	mercury_data_ml_backend__mlds__functor_number_map_mlds_atomic_statement_0
+};
+
+const MR_TypeCtorInfo_Struct mercury_data_ml_backend__mlds__type_ctor_info_mlds_arguments_0 = {
+	0,
+	13,
+	-1,
+	MR_TYPECTOR_REP_EQUIV_GROUND,
+	MR_MAYBE_STATIC_CODE(MR_ENTRY_AP(__Unify___ml_backend__mlds__mlds_arguments_0_0)),
+	MR_MAYBE_STATIC_CODE(MR_ENTRY_AP(__Compare___ml_backend__mlds__mlds_arguments_0_0)),
+	"ml_backend.mlds",
+	"mlds_arguments",
+	{ 0 },
+	{ (void *)&mercury_data_list__ti_list_1ml_backend__mlds__type_ctor_info_mlds_argument_0 },
+	-1,
+	0,
+	NULL
+};
+
+const MR_PseudoTypeInfo mercury_data_ml_backend__mlds__field_types_mlds_argument_0_0[] = {
+	(MR_PseudoTypeInfo) &mercury_data_ml_backend__mlds__type_ctor_info_mlds_entity_name_0,
+	(MR_PseudoTypeInfo) &mercury_data_ml_backend__mlds__type_ctor_info_mlds_type_0,
+	(MR_PseudoTypeInfo) &mercury_data_ml_backend__mlds__type_ctor_info_mlds_gc_statement_0
+};
+
+static const MR_DuFunctorDesc mercury_data_ml_backend__mlds__du_functor_desc_mlds_argument_0_0 = {
+	"mlds_argument",
+	3,
+	0,
+	MR_SECTAG_NONE,
+	0,
+	-1,
+	0,
+	(MR_PseudoTypeInfo *) mercury_data_ml_backend__mlds__field_types_mlds_argument_0_0,
+	NULL,
+	NULL
+};
+
+const MR_DuFunctorDescPtr mercury_data_ml_backend__mlds__du_stag_ordered_mlds_argument_0_0[] = {
+	&mercury_data_ml_backend__mlds__du_functor_desc_mlds_argument_0_0
+
+};
+
+const MR_DuPtagLayout mercury_data_ml_backend__mlds__du_ptag_ordered_mlds_argument_0[] = {
+	{ 1, MR_SECTAG_NONE,
+	mercury_data_ml_backend__mlds__du_stag_ordered_mlds_argument_0_0 }
+
+};
+
+const MR_DuFunctorDescPtr mercury_data_ml_backend__mlds__du_name_ordered_mlds_argument_0[] = {
+	&mercury_data_ml_backend__mlds__du_functor_desc_mlds_argument_0_0
+};
+
+const MR_Integer mercury_data_ml_backend__mlds__functor_number_map_mlds_argument_0[] = {
+	0 };
+	
+const MR_TypeCtorInfo_Struct mercury_data_ml_backend__mlds__type_ctor_info_mlds_argument_0 = {
+	0,
+	13,
+	1,
+	MR_TYPECTOR_REP_DU,
+	MR_MAYBE_STATIC_CODE(MR_ENTRY_AP(__Unify___ml_backend__mlds__mlds_argument_0_0)),
+	MR_MAYBE_STATIC_CODE(MR_ENTRY_AP(__Compare___ml_backend__mlds__mlds_argument_0_0)),
+	"ml_backend.mlds",
+	"mlds_argument",
+	{ (void *)mercury_data_ml_backend__mlds__du_name_ordered_mlds_argument_0 },
+	{ (void *)mercury_data_ml_backend__mlds__du_ptag_ordered_mlds_argument_0 },
+	1,
+	4,
+	mercury_data_ml_backend__mlds__functor_number_map_mlds_argument_0
+};
+
+const MR_TypeCtorInfo_Struct mercury_data_ml_backend__mlds__type_ctor_info_mlds_arg_types_0 = {
+	0,
+	13,
+	-1,
+	MR_TYPECTOR_REP_EQUIV_GROUND,
+	MR_MAYBE_STATIC_CODE(MR_ENTRY_AP(__Unify___ml_backend__mlds__mlds_arg_types_0_0)),
+	MR_MAYBE_STATIC_CODE(MR_ENTRY_AP(__Compare___ml_backend__mlds__mlds_arg_types_0_0)),
+	"ml_backend.mlds",
+	"mlds_arg_types",
+	{ 0 },
+	{ (void *)&mercury_data_list__ti_list_1ml_backend__mlds__type_ctor_info_mlds_type_0 },
+	-1,
+	0,
+	NULL
+};
+extern const MR_TypeCtorInfo_Struct mercury_data_tree234__type_ctor_info_tree234_2;
+extern const MR_TypeCtorInfo_Struct mercury_data_ml_backend__mlds__type_ctor_info_mlds_foreign_code_0;
+
+static const MR_FA_TypeInfo_Struct2 mercury_data_tree234__ti_tree234_2libs__globals__type_ctor_info_foreign_language_0ml_backend__mlds__type_ctor_info_mlds_foreign_code_0 = {
+	&mercury_data_tree234__type_ctor_info_tree234_2,
+{	(MR_TypeInfo) &mercury_data_libs__globals__type_ctor_info_foreign_language_0,
+	(MR_TypeInfo) &mercury_data_ml_backend__mlds__type_ctor_info_mlds_foreign_code_0
+}};
+
+const MR_PseudoTypeInfo mercury_data_ml_backend__mlds__field_types_mlds_0_0[] = {
+	(MR_PseudoTypeInfo) &mercury_data_mdbcomp__prim_data__type_ctor_info_sym_name_0,
+	(MR_PseudoTypeInfo) &mercury_data_tree234__ti_tree234_2libs__globals__type_ctor_info_foreign_language_0ml_backend__mlds__type_ctor_info_mlds_foreign_code_0,
+	(MR_PseudoTypeInfo) &mercury_data_list__ti_list_1ml_backend__mlds__type_ctor_info_mlds_import_0,
+	(MR_PseudoTypeInfo) &mercury_data_list__ti_list_1ml_backend__mlds__type_ctor_info_mlds_defn_0,
+	(MR_PseudoTypeInfo) &mercury_data_list__ti_list_1builtin__type_ctor_info_string_0,
+	(MR_PseudoTypeInfo) &mercury_data_list__ti_list_1builtin__type_ctor_info_string_0,
+	(MR_PseudoTypeInfo) &mercury_data_list__ti_list_1ml_backend__mlds__type_ctor_info_mlds_exported_enum_0
+};
+
+const MR_ConstString mercury_data_ml_backend__mlds__field_names_mlds_0_0[] = {
+	"mlds_name",
+	"mlds_foreign_code_map",
+	"mlds_toplevel_imports",
+	"mlds_defns",
+	"mlds_init_preds",
+	"mlds_final_preds",
+	"mlds_exported_enums"
+};
+
+static const MR_DuFunctorDesc mercury_data_ml_backend__mlds__du_functor_desc_mlds_0_0 = {
+	"mlds",
+	7,
+	0,
+	MR_SECTAG_NONE,
+	0,
+	-1,
+	0,
+	(MR_PseudoTypeInfo *) mercury_data_ml_backend__mlds__field_types_mlds_0_0,
+	mercury_data_ml_backend__mlds__field_names_mlds_0_0,
+	NULL
+};
+
+const MR_DuFunctorDescPtr mercury_data_ml_backend__mlds__du_stag_ordered_mlds_0_0[] = {
+	&mercury_data_ml_backend__mlds__du_functor_desc_mlds_0_0
+
+};
+
+const MR_DuPtagLayout mercury_data_ml_backend__mlds__du_ptag_ordered_mlds_0[] = {
+	{ 1, MR_SECTAG_NONE,
+	mercury_data_ml_backend__mlds__du_stag_ordered_mlds_0_0 }
+
+};
+
+const MR_DuFunctorDescPtr mercury_data_ml_backend__mlds__du_name_ordered_mlds_0[] = {
+	&mercury_data_ml_backend__mlds__du_functor_desc_mlds_0_0
+};
+
+const MR_Integer mercury_data_ml_backend__mlds__functor_number_map_mlds_0[] = {
+	0 };
+	
+const MR_TypeCtorInfo_Struct mercury_data_ml_backend__mlds__type_ctor_info_mlds_0 = {
+	0,
+	13,
+	1,
+	MR_TYPECTOR_REP_DU,
+	MR_MAYBE_STATIC_CODE(MR_ENTRY_AP(__Unify___ml_backend__mlds__mlds_0_0)),
+	MR_MAYBE_STATIC_CODE(MR_ENTRY_AP(__Compare___ml_backend__mlds__mlds_0_0)),
+	"ml_backend.mlds",
+	"mlds",
+	{ (void *)mercury_data_ml_backend__mlds__du_name_ordered_mlds_0 },
+	{ (void *)mercury_data_ml_backend__mlds__du_ptag_ordered_mlds_0 },
+	1,
+	4,
+	mercury_data_ml_backend__mlds__functor_number_map_mlds_0
+};
+
+static const MR_EnumFunctorDesc mercury_data_ml_backend__mlds__enum_functor_desc_ml_call_kind_0_0 = {
+	"no_return_call",
+	0
+};
+
+static const MR_EnumFunctorDesc mercury_data_ml_backend__mlds__enum_functor_desc_ml_call_kind_0_1 = {
+	"tail_call",
+	1
+};
+
+static const MR_EnumFunctorDesc mercury_data_ml_backend__mlds__enum_functor_desc_ml_call_kind_0_2 = {
+	"ordinary_call",
+	2
+};
+
+const MR_EnumFunctorDescPtr mercury_data_ml_backend__mlds__enum_value_ordered_ml_call_kind_0[] = {
+	&mercury_data_ml_backend__mlds__enum_functor_desc_ml_call_kind_0_0,
+	&mercury_data_ml_backend__mlds__enum_functor_desc_ml_call_kind_0_1,
+	&mercury_data_ml_backend__mlds__enum_functor_desc_ml_call_kind_0_2
+};
+
+const MR_EnumFunctorDescPtr mercury_data_ml_backend__mlds__enum_name_ordered_ml_call_kind_0[] = {
+	&mercury_data_ml_backend__mlds__enum_functor_desc_ml_call_kind_0_0,
+	&mercury_data_ml_backend__mlds__enum_functor_desc_ml_call_kind_0_2,
+	&mercury_data_ml_backend__mlds__enum_functor_desc_ml_call_kind_0_1
+};
+
+const MR_Integer mercury_data_ml_backend__mlds__functor_number_map_ml_call_kind_0[] = {
+	0,
+	2,
+	1 };
+	
+const MR_TypeCtorInfo_Struct mercury_data_ml_backend__mlds__type_ctor_info_ml_call_kind_0 = {
+	0,
+	13,
+	-1,
+	MR_TYPECTOR_REP_ENUM,
+	MR_MAYBE_STATIC_CODE(MR_ENTRY_AP(__Unify___ml_backend__mlds__ml_call_kind_0_0)),
+	MR_MAYBE_STATIC_CODE(MR_ENTRY_AP(__Compare___ml_backend__mlds__ml_call_kind_0_0)),
+	"ml_backend.mlds",
+	"ml_call_kind",
+	{ (void *)mercury_data_ml_backend__mlds__enum_name_ordered_ml_call_kind_0 },
+	{ (void *)mercury_data_ml_backend__mlds__enum_value_ordered_ml_call_kind_0 },
+	3,
+	4,
+	mercury_data_ml_backend__mlds__functor_number_map_ml_call_kind_0
+};
+
+const MR_TypeCtorInfo_Struct mercury_data_ml_backend__mlds__type_ctor_info_mercury_module_name_0 = {
+	0,
+	13,
+	-1,
+	MR_TYPECTOR_REP_EQUIV_GROUND,
+	MR_MAYBE_STATIC_CODE(MR_ENTRY_AP(__Unify___ml_backend__mlds__mercury_module_name_0_0)),
+	MR_MAYBE_STATIC_CODE(MR_ENTRY_AP(__Compare___ml_backend__mlds__mercury_module_name_0_0)),
+	"ml_backend.mlds",
+	"mercury_module_name",
+	{ 0 },
+	{ (void *)&mercury_data_mdbcomp__prim_data__type_ctor_info_sym_name_0 },
+	-1,
+	0,
+	NULL
+};
+
+static const MR_EnumFunctorDesc mercury_data_ml_backend__mlds__enum_functor_desc_mercury_mlds_import_type_0_0 = {
+	"user_visible_interface",
+	0
+};
+
+static const MR_EnumFunctorDesc mercury_data_ml_backend__mlds__enum_functor_desc_mercury_mlds_import_type_0_1 = {
+	"compiler_visible_interface",
+	1
+};
+
+const MR_EnumFunctorDescPtr mercury_data_ml_backend__mlds__enum_value_ordered_mercury_mlds_import_type_0[] = {
+	&mercury_data_ml_backend__mlds__enum_functor_desc_mercury_mlds_import_type_0_0,
+	&mercury_data_ml_backend__mlds__enum_functor_desc_mercury_mlds_import_type_0_1
+};
+
+const MR_EnumFunctorDescPtr mercury_data_ml_backend__mlds__enum_name_ordered_mercury_mlds_import_type_0[] = {
+	&mercury_data_ml_backend__mlds__enum_functor_desc_mercury_mlds_import_type_0_1,
+	&mercury_data_ml_backend__mlds__enum_functor_desc_mercury_mlds_import_type_0_0
+};
+
+const MR_Integer mercury_data_ml_backend__mlds__functor_number_map_mercury_mlds_import_type_0[] = {
+	1,
+	0 };
+	
+const MR_TypeCtorInfo_Struct mercury_data_ml_backend__mlds__type_ctor_info_mercury_mlds_import_type_0 = {
+	0,
+	13,
+	-1,
+	MR_TYPECTOR_REP_ENUM,
+	MR_MAYBE_STATIC_CODE(MR_ENTRY_AP(__Unify___ml_backend__mlds__mercury_mlds_import_type_0_0)),
+	MR_MAYBE_STATIC_CODE(MR_ENTRY_AP(__Compare___ml_backend__mlds__mercury_mlds_import_type_0_0)),
+	"ml_backend.mlds",
+	"mercury_mlds_import_type",
+	{ (void *)mercury_data_ml_backend__mlds__enum_name_ordered_mercury_mlds_import_type_0 },
+	{ (void *)mercury_data_ml_backend__mlds__enum_value_ordered_mercury_mlds_import_type_0 },
+	2,
+	4,
+	mercury_data_ml_backend__mlds__functor_number_map_mercury_mlds_import_type_0
+};
+
+static const MR_NotagFunctorDesc mercury_data_ml_backend__mlds__notag_functor_desc_global_var_ref_0 = {
+	"env_var_ref",
+	(MR_PseudoTypeInfo) &mercury_data_builtin__type_ctor_info_string_0,
+	NULL
+};
+
+const MR_Integer mercury_data_ml_backend__mlds__functor_number_map_global_var_ref_0[] = {
+	0 };
+	
+const MR_TypeCtorInfo_Struct mercury_data_ml_backend__mlds__type_ctor_info_global_var_ref_0 = {
+	0,
+	13,
+	-1,
+	MR_TYPECTOR_REP_NOTAG_GROUND,
+	MR_MAYBE_STATIC_CODE(MR_ENTRY_AP(__Unify___ml_backend__mlds__global_var_ref_0_0)),
+	MR_MAYBE_STATIC_CODE(MR_ENTRY_AP(__Compare___ml_backend__mlds__global_var_ref_0_0)),
+	"ml_backend.mlds",
+	"global_var_ref",
+	{ (void *)&mercury_data_ml_backend__mlds__notag_functor_desc_global_var_ref_0 },
+	{ (void *)&mercury_data_ml_backend__mlds__notag_functor_desc_global_var_ref_0 },
+	1,
+	4,
+	mercury_data_ml_backend__mlds__functor_number_map_global_var_ref_0
+};
+
+static const MR_NotagFunctorDesc mercury_data_ml_backend__mlds__notag_functor_desc_foreign_import_name_0 = {
+	"il_assembly_name",
+	(MR_PseudoTypeInfo) &mercury_data_ml_backend__mlds__type_ctor_info_mlds_module_name_0,
+	NULL
+};
+
+const MR_Integer mercury_data_ml_backend__mlds__functor_number_map_foreign_import_name_0[] = {
+	0 };
+	
+const MR_TypeCtorInfo_Struct mercury_data_ml_backend__mlds__type_ctor_info_foreign_import_name_0 = {
+	0,
+	13,
+	-1,
+	MR_TYPECTOR_REP_NOTAG_GROUND,
+	MR_MAYBE_STATIC_CODE(MR_ENTRY_AP(__Unify___ml_backend__mlds__foreign_import_name_0_0)),
+	MR_MAYBE_STATIC_CODE(MR_ENTRY_AP(__Compare___ml_backend__mlds__foreign_import_name_0_0)),
+	"ml_backend.mlds",
+	"foreign_import_name",
+	{ (void *)&mercury_data_ml_backend__mlds__notag_functor_desc_foreign_import_name_0 },
+	{ (void *)&mercury_data_ml_backend__mlds__notag_functor_desc_foreign_import_name_0 },
+	1,
+	4,
+	mercury_data_ml_backend__mlds__functor_number_map_foreign_import_name_0
+};
+
+static const MR_EnumFunctorDesc mercury_data_ml_backend__mlds__enum_functor_desc_finality_0_0 = {
+	"overridable",
+	0
+};
+
+static const MR_EnumFunctorDesc mercury_data_ml_backend__mlds__enum_functor_desc_finality_0_1 = {
+	"final",
+	1
+};
+
+const MR_EnumFunctorDescPtr mercury_data_ml_backend__mlds__enum_value_ordered_finality_0[] = {
+	&mercury_data_ml_backend__mlds__enum_functor_desc_finality_0_0,
+	&mercury_data_ml_backend__mlds__enum_functor_desc_finality_0_1
+};
+
+const MR_EnumFunctorDescPtr mercury_data_ml_backend__mlds__enum_name_ordered_finality_0[] = {
+	&mercury_data_ml_backend__mlds__enum_functor_desc_finality_0_1,
+	&mercury_data_ml_backend__mlds__enum_functor_desc_finality_0_0
+};
+
+const MR_Integer mercury_data_ml_backend__mlds__functor_number_map_finality_0[] = {
+	1,
+	0 };
+	
+const MR_TypeCtorInfo_Struct mercury_data_ml_backend__mlds__type_ctor_info_finality_0 = {
+	0,
+	13,
+	-1,
+	MR_TYPECTOR_REP_ENUM,
+	MR_MAYBE_STATIC_CODE(MR_ENTRY_AP(__Unify___ml_backend__mlds__finality_0_0)),
+	MR_MAYBE_STATIC_CODE(MR_ENTRY_AP(__Compare___ml_backend__mlds__finality_0_0)),
+	"ml_backend.mlds",
+	"finality",
+	{ (void *)mercury_data_ml_backend__mlds__enum_name_ordered_finality_0 },
+	{ (void *)mercury_data_ml_backend__mlds__enum_value_ordered_finality_0 },
+	2,
+	4,
+	mercury_data_ml_backend__mlds__functor_number_map_finality_0
+};
+
+const MR_TypeCtorInfo_Struct mercury_data_ml_backend__mlds__type_ctor_info_ctor_name_0 = {
+	0,
+	13,
+	-1,
+	MR_TYPECTOR_REP_EQUIV_GROUND,
+	MR_MAYBE_STATIC_CODE(MR_ENTRY_AP(__Unify___ml_backend__mlds__ctor_name_0_0)),
+	MR_MAYBE_STATIC_CODE(MR_ENTRY_AP(__Compare___ml_backend__mlds__ctor_name_0_0)),
+	"ml_backend.mlds",
+	"ctor_name",
+	{ 0 },
+	{ (void *)&mercury_data_ml_backend__mlds__ti_mlds_fully_qualified_name_1ml_backend__mlds__type_ctor_info_mlds_ctor_id_0 },
+	-1,
+	0,
+	NULL
+};
+
+static const MR_EnumFunctorDesc mercury_data_ml_backend__mlds__enum_functor_desc_constness_0_0 = {
+	"modifiable",
+	0
+};
+
+static const MR_EnumFunctorDesc mercury_data_ml_backend__mlds__enum_functor_desc_constness_0_1 = {
+	"const",
+	1
+};
+
+const MR_EnumFunctorDescPtr mercury_data_ml_backend__mlds__enum_value_ordered_constness_0[] = {
+	&mercury_data_ml_backend__mlds__enum_functor_desc_constness_0_0,
+	&mercury_data_ml_backend__mlds__enum_functor_desc_constness_0_1
+};
+
+const MR_EnumFunctorDescPtr mercury_data_ml_backend__mlds__enum_name_ordered_constness_0[] = {
+	&mercury_data_ml_backend__mlds__enum_functor_desc_constness_0_1,
+	&mercury_data_ml_backend__mlds__enum_functor_desc_constness_0_0
+};
+
+const MR_Integer mercury_data_ml_backend__mlds__functor_number_map_constness_0[] = {
+	1,
+	0 };
+	
+const MR_TypeCtorInfo_Struct mercury_data_ml_backend__mlds__type_ctor_info_constness_0 = {
+	0,
+	13,
+	-1,
+	MR_TYPECTOR_REP_ENUM,
+	MR_MAYBE_STATIC_CODE(MR_ENTRY_AP(__Unify___ml_backend__mlds__constness_0_0)),
+	MR_MAYBE_STATIC_CODE(MR_ENTRY_AP(__Compare___ml_backend__mlds__constness_0_0)),
+	"ml_backend.mlds",
+	"constness",
+	{ (void *)mercury_data_ml_backend__mlds__enum_name_ordered_constness_0 },
+	{ (void *)mercury_data_ml_backend__mlds__enum_value_ordered_constness_0 },
+	2,
+	4,
+	mercury_data_ml_backend__mlds__functor_number_map_constness_0
+};
+
+static const MR_EnumFunctorDesc mercury_data_ml_backend__mlds__enum_functor_desc_access_0_0 = {
+	"acc_public",
+	0
+};
+
+static const MR_EnumFunctorDesc mercury_data_ml_backend__mlds__enum_functor_desc_access_0_1 = {
+	"acc_protected",
+	1
+};
+
+static const MR_EnumFunctorDesc mercury_data_ml_backend__mlds__enum_functor_desc_access_0_2 = {
+	"acc_private",
+	2
+};
+
+static const MR_EnumFunctorDesc mercury_data_ml_backend__mlds__enum_functor_desc_access_0_3 = {
+	"acc_default",
+	3
+};
+
+static const MR_EnumFunctorDesc mercury_data_ml_backend__mlds__enum_functor_desc_access_0_4 = {
+	"acc_local",
+	4
+};
+
+const MR_EnumFunctorDescPtr mercury_data_ml_backend__mlds__enum_value_ordered_access_0[] = {
+	&mercury_data_ml_backend__mlds__enum_functor_desc_access_0_0,
+	&mercury_data_ml_backend__mlds__enum_functor_desc_access_0_1,
+	&mercury_data_ml_backend__mlds__enum_functor_desc_access_0_2,
+	&mercury_data_ml_backend__mlds__enum_functor_desc_access_0_3,
+	&mercury_data_ml_backend__mlds__enum_functor_desc_access_0_4
+};
+
+const MR_EnumFunctorDescPtr mercury_data_ml_backend__mlds__enum_name_ordered_access_0[] = {
+	&mercury_data_ml_backend__mlds__enum_functor_desc_access_0_3,
+	&mercury_data_ml_backend__mlds__enum_functor_desc_access_0_4,
+	&mercury_data_ml_backend__mlds__enum_functor_desc_access_0_2,
+	&mercury_data_ml_backend__mlds__enum_functor_desc_access_0_1,
+	&mercury_data_ml_backend__mlds__enum_functor_desc_access_0_0
+};
+
+const MR_Integer mercury_data_ml_backend__mlds__functor_number_map_access_0[] = {
+	4,
+	3,
+	2,
+	0,
+	1 };
+	
+const MR_TypeCtorInfo_Struct mercury_data_ml_backend__mlds__type_ctor_info_access_0 = {
+	0,
+	13,
+	-1,
+	MR_TYPECTOR_REP_ENUM,
+	MR_MAYBE_STATIC_CODE(MR_ENTRY_AP(__Unify___ml_backend__mlds__access_0_0)),
+	MR_MAYBE_STATIC_CODE(MR_ENTRY_AP(__Compare___ml_backend__mlds__access_0_0)),
+	"ml_backend.mlds",
+	"access",
+	{ (void *)mercury_data_ml_backend__mlds__enum_name_ordered_access_0 },
+	{ (void *)mercury_data_ml_backend__mlds__enum_value_ordered_access_0 },
+	5,
+	4,
+	mercury_data_ml_backend__mlds__functor_number_map_access_0
+};
+
+static const MR_EnumFunctorDesc mercury_data_ml_backend__mlds__enum_functor_desc_abstractness_0_0 = {
+	"concrete",
+	0
+};
+
+static const MR_EnumFunctorDesc mercury_data_ml_backend__mlds__enum_functor_desc_abstractness_0_1 = {
+	"abstract",
+	1
+};
+
+const MR_EnumFunctorDescPtr mercury_data_ml_backend__mlds__enum_value_ordered_abstractness_0[] = {
+	&mercury_data_ml_backend__mlds__enum_functor_desc_abstractness_0_0,
+	&mercury_data_ml_backend__mlds__enum_functor_desc_abstractness_0_1
+};
+
+const MR_EnumFunctorDescPtr mercury_data_ml_backend__mlds__enum_name_ordered_abstractness_0[] = {
+	&mercury_data_ml_backend__mlds__enum_functor_desc_abstractness_0_1,
+	&mercury_data_ml_backend__mlds__enum_functor_desc_abstractness_0_0
+};
+
+const MR_Integer mercury_data_ml_backend__mlds__functor_number_map_abstractness_0[] = {
+	1,
+	0 };
+	
+const MR_TypeCtorInfo_Struct mercury_data_ml_backend__mlds__type_ctor_info_abstractness_0 = {
+	0,
+	13,
+	-1,
+	MR_TYPECTOR_REP_ENUM,
+	MR_MAYBE_STATIC_CODE(MR_ENTRY_AP(__Unify___ml_backend__mlds__abstractness_0_0)),
+	MR_MAYBE_STATIC_CODE(MR_ENTRY_AP(__Compare___ml_backend__mlds__abstractness_0_0)),
+	"ml_backend.mlds",
+	"abstractness",
+	{ (void *)mercury_data_ml_backend__mlds__enum_name_ordered_abstractness_0 },
+	{ (void *)mercury_data_ml_backend__mlds__enum_value_ordered_abstractness_0 },
+	2,
+	4,
+	mercury_data_ml_backend__mlds__functor_number_map_abstractness_0
+};
+
+static const MR_UserClosureId
+mercury_data__closure_layout__fn__ml_backend__mlds__mlds_get_arg_types_1_0_1 = {
+{
+MR_FUNCTION,
+"ml_backend.mlds",
+"ml_backend.mlds",
+"lambda_mlds_m_1903",
+2,
+0
+},
+"ml_backend.mlds",
+"mlds.m",
+1903,
+"d1;c3;"
+};
+
+static const MR_UserClosureId
+mercury_data__closure_layout__fn__ml_backend__mlds__mlds_get_func_signature_1_0_1 = {
+{
+MR_FUNCTION,
+"ml_backend.mlds",
+"ml_backend.mlds",
+"lambda_mlds_m_1903",
+2,
+0
+},
+"ml_backend.mlds",
+"mlds.m",
+1903,
+"d1;c3;"
+};
+
+
+MR_BEGIN_MODULE(ml_backend__mlds_module0)
+	MR_init_entry1(fn__ml_backend__mlds__mlds_get_module_name_1_0);
+MR_BEGIN_CODE
+
+#ifdef MR_maybe_local_thread_engine_base
+	#undef MR_maybe_local_thread_engine_base
+	#define MR_maybe_local_thread_engine_base MR_local_thread_engine_base
+#endif
+MR_define_entry(mercury__fn__ml_backend__mlds__mlds_get_module_name_1_0);
+	MR_MAYBE_INIT_LOCAL_THREAD_ENGINE_BASE
+	MR_r1 = MR_ctfield(0, MR_r1, 0);
+	MR_proceed();
+#ifdef MR_maybe_local_thread_engine_base
+	#undef MR_maybe_local_thread_engine_base
+	#define MR_maybe_local_thread_engine_base MR_thread_engine_base
+#endif
+MR_END_MODULE
+
+MR_decl_entry(parse_tree__file_names__mercury_std_library_module_name_1_0);
+MR_decl_entry(fn__mdbcomp__prim_data__add_outermost_qualifier_2_0);
+
+MR_BEGIN_MODULE(ml_backend__mlds_module1)
+	MR_init_entry1(fn__ml_backend__mlds__mercury_module_name_to_mlds_1_0);
+	MR_init_label3(fn__ml_backend__mlds__mercury_module_name_to_mlds_1_0,4,6,2)
+MR_BEGIN_CODE
+
+#ifdef MR_maybe_local_thread_engine_base
+	#undef MR_maybe_local_thread_engine_base
+	#define MR_maybe_local_thread_engine_base MR_local_thread_engine_base
+#endif
+MR_define_entry(mercury__fn__ml_backend__mlds__mercury_module_name_to_mlds_1_0);
+	MR_MAYBE_INIT_LOCAL_THREAD_ENGINE_BASE
+	MR_incr_sp(2);
+	MR_sv(2) = (MR_Word) MR_succip;
+	MR_sv(1) = MR_r1;
+	MR_np_call_localret_ent(parse_tree__file_names__mercury_std_library_module_name_1_0,
+		fn__ml_backend__mlds__mercury_module_name_to_mlds_1_0_i4);
+MR_def_label(fn__ml_backend__mlds__mercury_module_name_to_mlds_1_0,4)
+	MR_MAYBE_INIT_LOCAL_THREAD_ENGINE_BASE
+	if (!(MR_r1)) {
+		MR_GOTO_LAB(fn__ml_backend__mlds__mercury_module_name_to_mlds_1_0_i2);
+	}
+	MR_r1 = (MR_Word) MR_string_const("mercury", 7);
+	MR_r2 = MR_sv(1);
+	MR_np_call_localret_ent(fn__mdbcomp__prim_data__add_outermost_qualifier_2_0,
+		fn__ml_backend__mlds__mercury_module_name_to_mlds_1_0_i6);
+MR_def_label(fn__ml_backend__mlds__mercury_module_name_to_mlds_1_0,6)
+	MR_MAYBE_INIT_LOCAL_THREAD_ENGINE_BASE
+	{
+	MR_Word MR_tempr1, MR_tempr2;
+	MR_tag_alloc_heap(MR_tempr1, 0, (MR_Integer) 2);
+	MR_tempr2 = MR_r1;
+	MR_tfield(0, MR_tempr1, 0) = MR_tempr2;
+	MR_tfield(0, MR_tempr1, 1) = MR_tempr2;
+	MR_r1 = MR_tempr1;
+	MR_decr_sp_and_return(2);
+	}
+MR_def_label(fn__ml_backend__mlds__mercury_module_name_to_mlds_1_0,2)
+	MR_MAYBE_INIT_LOCAL_THREAD_ENGINE_BASE
+	{
+	MR_Word MR_tempr1, MR_tempr2;
+	MR_tempr1 = MR_sv(1);
+	MR_r1 = MR_tempr1;
+	MR_tag_alloc_heap(MR_tempr2, 0, (MR_Integer) 2);
+	MR_tfield(0, MR_tempr2, 0) = MR_tempr1;
+	MR_tfield(0, MR_tempr2, 1) = MR_tempr1;
+	MR_r1 = MR_tempr2;
+	MR_decr_sp_and_return(2);
+	}
+#ifdef MR_maybe_local_thread_engine_base
+	#undef MR_maybe_local_thread_engine_base
+	#define MR_maybe_local_thread_engine_base MR_thread_engine_base
+#endif
+MR_END_MODULE
+
+
+MR_BEGIN_MODULE(ml_backend__mlds_module2)
+	MR_init_entry1(fn__ml_backend__mlds__mercury_module_and_package_name_to_mlds_2_0);
+MR_BEGIN_CODE
+
+#ifdef MR_maybe_local_thread_engine_base
+	#undef MR_maybe_local_thread_engine_base
+	#define MR_maybe_local_thread_engine_base MR_local_thread_engine_base
+#endif
+MR_define_entry(mercury__fn__ml_backend__mlds__mercury_module_and_package_name_to_mlds_2_0);
+	MR_MAYBE_INIT_LOCAL_THREAD_ENGINE_BASE
+	{
+	MR_Word MR_tempr1;
+	MR_tag_alloc_heap(MR_tempr1, 0, (MR_Integer) 2);
+	MR_tfield(0, MR_tempr1, 0) = MR_r1;
+	MR_tfield(0, MR_tempr1, 1) = MR_r2;
+	MR_r1 = MR_tempr1;
+	MR_proceed();
+	}
+#ifdef MR_maybe_local_thread_engine_base
+	#undef MR_maybe_local_thread_engine_base
+	#define MR_maybe_local_thread_engine_base MR_thread_engine_base
+#endif
+MR_END_MODULE
+
+
+MR_BEGIN_MODULE(ml_backend__mlds_module3)
+	MR_init_entry1(fn__ml_backend__mlds__mlds_module_name_to_sym_name_1_0);
+MR_BEGIN_CODE
+
+#ifdef MR_maybe_local_thread_engine_base
+	#undef MR_maybe_local_thread_engine_base
+	#define MR_maybe_local_thread_engine_base MR_local_thread_engine_base
+#endif
+MR_define_entry(mercury__fn__ml_backend__mlds__mlds_module_name_to_sym_name_1_0);
+	MR_MAYBE_INIT_LOCAL_THREAD_ENGINE_BASE
+	MR_r1 = MR_ctfield(0, MR_r1, 1);
+	MR_proceed();
+#ifdef MR_maybe_local_thread_engine_base
+	#undef MR_maybe_local_thread_engine_base
+	#define MR_maybe_local_thread_engine_base MR_thread_engine_base
+#endif
+MR_END_MODULE
+
+
+MR_BEGIN_MODULE(ml_backend__mlds_module4)
+	MR_init_entry1(fn__ml_backend__mlds__mlds_module_name_to_package_name_1_0);
+MR_BEGIN_CODE
+
+#ifdef MR_maybe_local_thread_engine_base
+	#undef MR_maybe_local_thread_engine_base
+	#define MR_maybe_local_thread_engine_base MR_local_thread_engine_base
+#endif
+MR_define_entry(mercury__fn__ml_backend__mlds__mlds_module_name_to_package_name_1_0);
+	MR_MAYBE_INIT_LOCAL_THREAD_ENGINE_BASE
+	MR_r1 = MR_ctfield(0, MR_r1, 0);
+	MR_proceed();
+#ifdef MR_maybe_local_thread_engine_base
+	#undef MR_maybe_local_thread_engine_base
+	#define MR_maybe_local_thread_engine_base MR_thread_engine_base
+#endif
+MR_END_MODULE
+
+MR_decl_entry(mdbcomp__prim_data__strip_outermost_qualifier_3_0);
+
+MR_BEGIN_MODULE(ml_backend__mlds_module5)
+	MR_init_entry1(ml_backend__mlds__is_std_lib_module_2_0);
+	MR_init_label3(ml_backend__mlds__is_std_lib_module_2_0,2,4,1)
+MR_BEGIN_CODE
+
+#ifdef MR_maybe_local_thread_engine_base
+	#undef MR_maybe_local_thread_engine_base
+	#define MR_maybe_local_thread_engine_base MR_local_thread_engine_base
+#endif
+MR_define_entry(mercury__ml_backend__mlds__is_std_lib_module_2_0);
+	MR_MAYBE_INIT_LOCAL_THREAD_ENGINE_BASE
+	MR_incr_sp(2);
+	MR_sv(2) = (MR_Word) MR_succip;
+	MR_r1 = MR_ctfield(0, MR_r1, 1);
+	MR_np_call_localret_ent(mdbcomp__prim_data__strip_outermost_qualifier_3_0,
+		ml_backend__mlds__is_std_lib_module_2_0_i2);
+MR_def_label(ml_backend__mlds__is_std_lib_module_2_0,2)
+	MR_MAYBE_INIT_LOCAL_THREAD_ENGINE_BASE
+	if (!(MR_r1)) {
+		MR_GOTO_LAB(ml_backend__mlds__is_std_lib_module_2_0_i1);
+	}
+	if ((strcmp(MR_string_const("mercury", 7), (char *) (MR_Word *) MR_r2) != 0)) {
+		MR_GOTO_LAB(ml_backend__mlds__is_std_lib_module_2_0_i1);
+	}
+	{
+	MR_Word MR_tempr1;
+	MR_tempr1 = MR_r3;
+	MR_sv(1) = MR_tempr1;
+	MR_r1 = MR_tempr1;
+	}
+	MR_np_call_localret_ent(parse_tree__file_names__mercury_std_library_module_name_1_0,
+		ml_backend__mlds__is_std_lib_module_2_0_i4);
+MR_def_label(ml_backend__mlds__is_std_lib_module_2_0,4)
+	MR_MAYBE_INIT_LOCAL_THREAD_ENGINE_BASE
+	if (!(MR_r1)) {
+		MR_GOTO_LAB(ml_backend__mlds__is_std_lib_module_2_0_i1);
+	}
+	MR_r2 = MR_sv(1);
+	MR_succip_word = MR_sv(2);
+	MR_decr_sp(2);
+	MR_r1 = MR_TRUE;
+	MR_proceed();
+MR_def_label(ml_backend__mlds__is_std_lib_module_2_0,1)
+	MR_MAYBE_INIT_LOCAL_THREAD_ENGINE_BASE
+	MR_succip_word = MR_sv(2);
+	MR_decr_sp(2);
+	MR_r1 = MR_FALSE;
+	MR_proceed();
+#ifdef MR_maybe_local_thread_engine_base
+	#undef MR_maybe_local_thread_engine_base
+	#define MR_maybe_local_thread_engine_base MR_thread_engine_base
+#endif
+MR_END_MODULE
+
+MR_decl_entry(libs__globals__get_target_2_0);
+MR_decl_entry(fn__parse_tree__java_names__flip_initial_case_of_final_part_1_0);
+MR_decl_entry(string__format_3_0);
+
+MR_BEGIN_MODULE(ml_backend__mlds_module6)
+	MR_init_entry1(fn__ml_backend__mlds__mlds_append_class_qualifier_5_0);
+	MR_init_label4(fn__ml_backend__mlds__mlds_append_class_qualifier_5_0,3,6,2,16)
+MR_BEGIN_CODE
+
+#ifdef MR_maybe_local_thread_engine_base
+	#undef MR_maybe_local_thread_engine_base
+	#define MR_maybe_local_thread_engine_base MR_local_thread_engine_base
+#endif
+MR_define_entry(mercury__fn__ml_backend__mlds__mlds_append_class_qualifier_5_0);
+	MR_MAYBE_INIT_LOCAL_THREAD_ENGINE_BASE
+	MR_incr_sp(6);
+	MR_sv(6) = (MR_Word) MR_succip;
+	{
+	MR_Word MR_tempr1;
+	MR_tempr1 = MR_r1;
+	MR_sv(2) = MR_ctfield(0, MR_tempr1, 1);
+	MR_sv(1) = MR_ctfield(0, MR_tempr1, 0);
+	MR_sv(3) = MR_r2;
+	MR_sv(4) = MR_r4;
+	MR_sv(5) = MR_r5;
+	MR_r1 = MR_r3;
+	}
+	MR_np_call_localret_ent(libs__globals__get_target_2_0,
+		fn__ml_backend__mlds__mlds_append_class_qualifier_5_0_i3);
+MR_def_label(fn__ml_backend__mlds__mlds_append_class_qualifier_5_0,3)
+	MR_MAYBE_INIT_LOCAL_THREAD_ENGINE_BASE
+	if (MR_INT_NE(MR_r1,2)) {
+		MR_GOTO_LAB(fn__ml_backend__mlds__mlds_append_class_qualifier_5_0_i2);
+	}
+	if (MR_INT_NE(MR_sv(3),1)) {
+		MR_GOTO_LAB(fn__ml_backend__mlds__mlds_append_class_qualifier_5_0_i2);
+	}
+	MR_r1 = MR_sv(2);
+	MR_np_call_localret_ent(fn__parse_tree__java_names__flip_initial_case_of_final_part_1_0,
+		fn__ml_backend__mlds__mlds_append_class_qualifier_5_0_i6);
+MR_def_label(fn__ml_backend__mlds__mlds_append_class_qualifier_5_0,6)
+	MR_MAYBE_INIT_LOCAL_THREAD_ENGINE_BASE
+	{
+	MR_Word MR_tempr1, MR_tempr2, MR_tempr3, MR_tempr4;
+	MR_tag_alloc_heap(MR_tempr1, 2, (MR_Integer) 1);
+	MR_tfield(2, MR_tempr1, 0) = MR_sv(4);
+	MR_tag_alloc_heap(MR_tempr2, 1, (MR_Integer) 1);
+	MR_tfield(1, MR_tempr2, 0) = MR_sv(5);
+	MR_tag_alloc_heap(MR_tempr3, 1, (MR_Integer) 2);
+	MR_tfield(1, MR_tempr3, 0) = MR_tempr2;
+	MR_tfield(1, MR_tempr3, 1) = (MR_Word) MR_tbmkword(0, 0);
+	MR_tag_alloc_heap(MR_tempr4, 1, (MR_Integer) 2);
+	MR_r2 = MR_tempr4;
+	MR_tfield(1, MR_tempr4, 0) = MR_tempr1;
+	MR_tfield(1, MR_tempr4, 1) = MR_tempr3;
+	MR_sv(2) = MR_r1;
+	MR_r1 = (MR_Word) MR_string_const("%s_%d", 5);
+	}
+	MR_np_call_localret_ent(string__format_3_0,
+		fn__ml_backend__mlds__mlds_append_class_qualifier_5_0_i16);
+MR_def_label(fn__ml_backend__mlds__mlds_append_class_qualifier_5_0,2)
+	MR_MAYBE_INIT_LOCAL_THREAD_ENGINE_BASE
+	{
+	MR_Word MR_tempr1, MR_tempr2, MR_tempr3, MR_tempr4;
+	MR_tag_alloc_heap(MR_tempr1, 2, (MR_Integer) 1);
+	MR_tfield(2, MR_tempr1, 0) = MR_sv(4);
+	MR_tag_alloc_heap(MR_tempr2, 1, (MR_Integer) 1);
+	MR_tfield(1, MR_tempr2, 0) = MR_sv(5);
+	MR_tag_alloc_heap(MR_tempr3, 1, (MR_Integer) 2);
+	MR_tfield(1, MR_tempr3, 0) = MR_tempr2;
+	MR_tfield(1, MR_tempr3, 1) = (MR_Word) MR_tbmkword(0, 0);
+	MR_tag_alloc_heap(MR_tempr4, 1, (MR_Integer) 2);
+	MR_r2 = MR_tempr4;
+	MR_tfield(1, MR_tempr4, 0) = MR_tempr1;
+	MR_tfield(1, MR_tempr4, 1) = MR_tempr3;
+	MR_r1 = (MR_Word) MR_string_const("%s_%d", 5);
+	}
+	MR_np_call_localret_ent(string__format_3_0,
+		fn__ml_backend__mlds__mlds_append_class_qualifier_5_0_i16);
+MR_def_label(fn__ml_backend__mlds__mlds_append_class_qualifier_5_0,16)
+	MR_MAYBE_INIT_LOCAL_THREAD_ENGINE_BASE
+	{
+	MR_Word MR_tempr1, MR_tempr2;
+	MR_tag_alloc_heap(MR_tempr1, 1, (MR_Integer) 2);
+	MR_tfield(1, MR_tempr1, 0) = MR_sv(2);
+	MR_tfield(1, MR_tempr1, 1) = MR_r1;
+	MR_tag_alloc_heap(MR_tempr2, 0, (MR_Integer) 2);
+	MR_r1 = MR_tempr2;
+	MR_tfield(0, MR_tempr2, 0) = MR_sv(1);
+	MR_tfield(0, MR_tempr2, 1) = MR_tempr1;
+	MR_decr_sp_and_return(6);
+	}
+#ifdef MR_maybe_local_thread_engine_base
+	#undef MR_maybe_local_thread_engine_base
+	#define MR_maybe_local_thread_engine_base MR_thread_engine_base
+#endif
+MR_END_MODULE
+
+
+MR_BEGIN_MODULE(ml_backend__mlds_module7)
+	MR_init_entry1(fn__ml_backend__mlds__mlds_append_name_2_0);
+MR_BEGIN_CODE
+
+#ifdef MR_maybe_local_thread_engine_base
+	#undef MR_maybe_local_thread_engine_base
+	#define MR_maybe_local_thread_engine_base MR_local_thread_engine_base
+#endif
+MR_define_entry(mercury__fn__ml_backend__mlds__mlds_append_name_2_0);
+	MR_MAYBE_INIT_LOCAL_THREAD_ENGINE_BASE
+	{
+	MR_Word MR_tempr1, MR_tempr2, MR_tempr3;
+	MR_tag_alloc_heap(MR_tempr1, 1, (MR_Integer) 2);
+	MR_tempr3 = MR_r1;
+	MR_tfield(1, MR_tempr1, 0) = MR_ctfield(0, MR_tempr3, 1);
+	MR_tfield(1, MR_tempr1, 1) = MR_r2;
+	MR_tag_alloc_heap(MR_tempr2, 0, (MR_Integer) 2);
+	MR_tfield(0, MR_tempr2, 0) = MR_ctfield(0, MR_tempr3, 0);
+	MR_tfield(0, MR_tempr2, 1) = MR_tempr1;
+	MR_r1 = MR_tempr2;
+	MR_proceed();
+	}
+#ifdef MR_maybe_local_thread_engine_base
+	#undef MR_maybe_local_thread_engine_base
+	#define MR_maybe_local_thread_engine_base MR_thread_engine_base
+#endif
+MR_END_MODULE
+
+
+MR_BEGIN_MODULE(ml_backend__mlds_module8)
+	MR_init_entry1(fn__ml_backend__mlds__wrapper_class_name_0_0);
+MR_BEGIN_CODE
+
+#ifdef MR_maybe_local_thread_engine_base
+	#undef MR_maybe_local_thread_engine_base
+	#define MR_maybe_local_thread_engine_base MR_local_thread_engine_base
+#endif
+MR_define_entry(mercury__fn__ml_backend__mlds__wrapper_class_name_0_0);
+	MR_MAYBE_INIT_LOCAL_THREAD_ENGINE_BASE
+	MR_r1 = (MR_Word) MR_string_const("mercury_code", 12);
+	MR_proceed();
+#ifdef MR_maybe_local_thread_engine_base
+	#undef MR_maybe_local_thread_engine_base
+	#define MR_maybe_local_thread_engine_base MR_thread_engine_base
+#endif
+MR_END_MODULE
+
+
+MR_BEGIN_MODULE(ml_backend__mlds_module9)
+	MR_init_entry1(fn__ml_backend__mlds__mlds_append_wrapper_class_1_0);
+MR_BEGIN_CODE
+
+#ifdef MR_maybe_local_thread_engine_base
+	#undef MR_maybe_local_thread_engine_base
+	#define MR_maybe_local_thread_engine_base MR_local_thread_engine_base
+#endif
+MR_define_entry(mercury__fn__ml_backend__mlds__mlds_append_wrapper_class_1_0);
+	MR_MAYBE_INIT_LOCAL_THREAD_ENGINE_BASE
+	{
+	MR_Word MR_tempr1, MR_tempr2, MR_tempr3;
+	MR_tag_alloc_heap(MR_tempr1, 1, (MR_Integer) 2);
+	MR_tempr3 = MR_r1;
+	MR_tfield(1, MR_tempr1, 0) = MR_ctfield(0, MR_tempr3, 1);
+	MR_tfield(1, MR_tempr1, 1) = (MR_Word) MR_string_const("mercury_code", 12);
+	MR_tag_alloc_heap(MR_tempr2, 0, (MR_Integer) 2);
+	MR_tfield(0, MR_tempr2, 0) = MR_ctfield(0, MR_tempr3, 0);
+	MR_tfield(0, MR_tempr2, 1) = MR_tempr1;
+	MR_r1 = MR_tempr2;
+	MR_proceed();
+	}
+#ifdef MR_maybe_local_thread_engine_base
+	#undef MR_maybe_local_thread_engine_base
+	#define MR_maybe_local_thread_engine_base MR_thread_engine_base
+#endif
+MR_END_MODULE
+
+MR_decl_entry(fn__list__map_2_0);
+
+MR_BEGIN_MODULE(ml_backend__mlds_module10)
+	MR_init_entry1(fn__ml_backend__mlds__mlds_get_arg_types_1_0);
+MR_BEGIN_CODE
+
+#ifdef MR_maybe_local_thread_engine_base
+	#undef MR_maybe_local_thread_engine_base
+	#define MR_maybe_local_thread_engine_base MR_local_thread_engine_base
+#endif
+MR_define_entry(mercury__fn__ml_backend__mlds__mlds_get_arg_types_1_0);
+	MR_MAYBE_INIT_LOCAL_THREAD_ENGINE_BASE
+	{
+	MR_Word MR_tempr1;
+	MR_tempr1 = MR_r1;
+	MR_r1 = (MR_Word) MR_CTOR0_ADDR(ml_backend__mlds, mlds_argument);
+	MR_r2 = (MR_Word) MR_CTOR0_ADDR(ml_backend__mlds, mlds_type);
+	MR_r3 = (MR_Word) MR_TAG_COMMON(0,1,0);
+	MR_r4 = MR_tempr1;
+	MR_np_tailcall_ent(fn__list__map_2_0);
+	}
+#ifdef MR_maybe_local_thread_engine_base
+	#undef MR_maybe_local_thread_engine_base
+	#define MR_maybe_local_thread_engine_base MR_thread_engine_base
+#endif
+MR_END_MODULE
+
+
+MR_BEGIN_MODULE(ml_backend__mlds_module11)
+	MR_init_entry1(fn__ml_backend__mlds__mlds_get_func_signature_1_0);
+	MR_init_label1(fn__ml_backend__mlds__mlds_get_func_signature_1_0,3)
+MR_BEGIN_CODE
+
+#ifdef MR_maybe_local_thread_engine_base
+	#undef MR_maybe_local_thread_engine_base
+	#define MR_maybe_local_thread_engine_base MR_local_thread_engine_base
+#endif
+MR_define_entry(mercury__fn__ml_backend__mlds__mlds_get_func_signature_1_0);
+	MR_MAYBE_INIT_LOCAL_THREAD_ENGINE_BASE
+	MR_incr_sp(2);
+	MR_sv(2) = (MR_Word) MR_succip;
+	{
+	MR_Word MR_tempr1, MR_tempr2;
+	MR_tempr2 = MR_r1;
+	MR_sv(1) = MR_ctfield(0, MR_tempr2, 1);
+	MR_tempr1 = MR_tempr2;
+	MR_r1 = (MR_Word) MR_CTOR0_ADDR(ml_backend__mlds, mlds_argument);
+	MR_r2 = (MR_Word) MR_CTOR0_ADDR(ml_backend__mlds, mlds_type);
+	MR_r3 = (MR_Word) MR_TAG_COMMON(0,1,1);
+	MR_r4 = MR_ctfield(0, MR_tempr1, 0);
+	}
+	MR_np_call_localret_ent(fn__list__map_2_0,
+		fn__ml_backend__mlds__mlds_get_func_signature_1_0_i3);
+MR_def_label(fn__ml_backend__mlds__mlds_get_func_signature_1_0,3)
+	MR_MAYBE_INIT_LOCAL_THREAD_ENGINE_BASE
+	{
+	MR_Word MR_tempr1;
+	MR_tag_alloc_heap(MR_tempr1, 0, (MR_Integer) 2);
+	MR_tfield(0, MR_tempr1, 0) = MR_r1;
+	MR_tfield(0, MR_tempr1, 1) = MR_sv(1);
+	MR_r1 = MR_tempr1;
+	MR_decr_sp_and_return(2);
+	}
+#ifdef MR_maybe_local_thread_engine_base
+	#undef MR_maybe_local_thread_engine_base
+	#define MR_maybe_local_thread_engine_base MR_thread_engine_base
+#endif
+MR_END_MODULE
+
+MR_decl_entry(parse_tree__prog_type__type_to_ctor_and_args_3_0);
+MR_decl_entry(__Unify___list__list_1_0);
+MR_decl_entry(fn__mdbcomp__prim_data__mercury_private_builtin_module_0_0);
+MR_decl_entry(__Unify___mdbcomp__prim_data__sym_name_0_0);
+MR_decl_entry(hlds__hlds_module__module_info_get_type_table_2_0);
+extern const MR_TypeCtorInfo_Struct mercury_data_hlds__hlds_data__type_ctor_info_hlds_type_defn_0;
+MR_decl_entry(map__search_3_0);
+MR_decl_entry(hlds__hlds_data__get_type_defn_body_2_0);
+MR_decl_entry(hlds__hlds_module__module_info_get_globals_2_0);
+MR_decl_entry(libs__compiler_util__sorry_2_0);
+MR_decl_entry(libs__compiler_util__unexpected_2_0);
+MR_decl_entry(fn__check_hlds__type_util__classify_type_2_0);
+MR_decl_entry(fn__backend_libs__foreign__to_exported_type_2_0);
+
+MR_BEGIN_MODULE(ml_backend__mlds_module12)
+	MR_init_entry1(fn__ml_backend__mlds__mercury_type_to_mlds_type_2_0);
+	MR_init_label8(fn__ml_backend__mlds__mercury_type_to_mlds_type_2_0,3,6,13,2,16,19,22,23)
+	MR_init_label8(fn__ml_backend__mlds__mercury_type_to_mlds_type_2_0,27,15,30,32,33,35,37,38)
+	MR_init_label8(fn__ml_backend__mlds__mercury_type_to_mlds_type_2_0,40,42,46,48,52,54,56,60)
+	MR_init_label5(fn__ml_backend__mlds__mercury_type_to_mlds_type_2_0,62,66,29,68,69)
+MR_BEGIN_CODE
+
+#ifdef MR_maybe_local_thread_engine_base
+	#undef MR_maybe_local_thread_engine_base
+	#define MR_maybe_local_thread_engine_base MR_local_thread_engine_base
+#endif
+MR_define_entry(mercury__fn__ml_backend__mlds__mercury_type_to_mlds_type_2_0);
+	MR_MAYBE_INIT_LOCAL_THREAD_ENGINE_BASE
+	MR_incr_sp(7);
+	MR_sv(7) = (MR_Word) MR_succip;
+	MR_sv(1) = MR_r1;
+	{
+	MR_Word MR_tempr1;
+	MR_tempr1 = MR_r2;
+	MR_sv(2) = MR_tempr1;
+	MR_r1 = MR_tempr1;
+	}
+	MR_np_call_localret_ent(parse_tree__prog_type__type_to_ctor_and_args_3_0,
+		fn__ml_backend__mlds__mercury_type_to_mlds_type_2_0_i3);
+MR_def_label(fn__ml_backend__mlds__mercury_type_to_mlds_type_2_0,3)
+	MR_MAYBE_INIT_LOCAL_THREAD_ENGINE_BASE
+	if (!(MR_r1)) {
+		MR_GOTO_LAB(fn__ml_backend__mlds__mercury_type_to_mlds_type_2_0_i2);
+	}
+	if (MR_LTAGS_TEST(MR_r3,0,0)) {
+		MR_GOTO_LAB(fn__ml_backend__mlds__mercury_type_to_mlds_type_2_0_i2);
+	}
+	MR_sv(3) = MR_r2;
+	MR_sv(4) = MR_ctfield(1, MR_r3, 0);
+	MR_r1 = (MR_Word) MR_CTOR0_ADDR(parse_tree__prog_data, mer_type);
+	MR_r2 = (MR_Word) MR_tbmkword(0, 0);
+	MR_r3 = MR_ctfield(1, MR_r3, 1);
+	MR_np_call_localret_ent(__Unify___list__list_1_0,
+		fn__ml_backend__mlds__mercury_type_to_mlds_type_2_0_i6);
+MR_def_label(fn__ml_backend__mlds__mercury_type_to_mlds_type_2_0,6)
+	MR_MAYBE_INIT_LOCAL_THREAD_ENGINE_BASE
+	if (!(MR_r1)) {
+		MR_GOTO_LAB(fn__ml_backend__mlds__mercury_type_to_mlds_type_2_0_i2);
+	}
+	{
+	MR_Word MR_tempr1, MR_tempr2, MR_tempr3;
+	MR_tempr3 = MR_sv(3);
+	MR_tempr1 = MR_ctfield(0, MR_tempr3, 1);
+	if (MR_INT_NE(MR_tempr1,1)) {
+		MR_GOTO_LAB(fn__ml_backend__mlds__mercury_type_to_mlds_type_2_0_i2);
+	}
+	MR_tempr1 = MR_ctfield(0, MR_tempr3, 0);
+	if (MR_PTAG_TESTR(MR_tempr1,1)) {
+		MR_GOTO_LAB(fn__ml_backend__mlds__mercury_type_to_mlds_type_2_0_i2);
+	}
+	MR_tempr2 = MR_ctfield(1, MR_tempr1, 1);
+	if ((strcmp((char *) (MR_Word *) MR_tempr2, MR_string_const("array", 5)) != 0)) {
+		MR_GOTO_LAB(fn__ml_backend__mlds__mercury_type_to_mlds_type_2_0_i2);
+	}
+	MR_tempr2 = MR_ctfield(1, MR_tempr1, 0);
+	if (MR_PTAG_TESTR(MR_tempr2,0)) {
+		MR_GOTO_LAB(fn__ml_backend__mlds__mercury_type_to_mlds_type_2_0_i2);
+	}
+	MR_tempr1 = MR_ctfield(0, MR_tempr2, 0);
+	if ((strcmp((char *) (MR_Word *) MR_tempr1, MR_string_const("array", 5)) != 0)) {
+		MR_GOTO_LAB(fn__ml_backend__mlds__mercury_type_to_mlds_type_2_0_i2);
+	}
+	MR_r1 = MR_sv(1);
+	MR_r2 = MR_sv(4);
+	}
+	MR_np_localcall_lab(fn__ml_backend__mlds__mercury_type_to_mlds_type_2_0,
+		fn__ml_backend__mlds__mercury_type_to_mlds_type_2_0_i13);
+MR_def_label(fn__ml_backend__mlds__mercury_type_to_mlds_type_2_0,13)
+	MR_MAYBE_INIT_LOCAL_THREAD_ENGINE_BASE
+	{
+	MR_Word MR_tempr1;
+	MR_tag_alloc_heap(MR_tempr1, 2, (MR_Integer) 1);
+	MR_tfield(2, MR_tempr1, 0) = MR_r1;
+	MR_r1 = MR_tempr1;
+	MR_decr_sp_and_return(7);
+	}
+MR_def_label(fn__ml_backend__mlds__mercury_type_to_mlds_type_2_0,2)
+	MR_MAYBE_INIT_LOCAL_THREAD_ENGINE_BASE
+	MR_r1 = MR_sv(2);
+	MR_np_call_localret_ent(parse_tree__prog_type__type_to_ctor_and_args_3_0,
+		fn__ml_backend__mlds__mercury_type_to_mlds_type_2_0_i16);
+MR_def_label(fn__ml_backend__mlds__mercury_type_to_mlds_type_2_0,16)
+	MR_MAYBE_INIT_LOCAL_THREAD_ENGINE_BASE
+	if (!(MR_r1)) {
+		MR_GOTO_LAB(fn__ml_backend__mlds__mercury_type_to_mlds_type_2_0_i15);
+	}
+	if (MR_LTAGS_TEST(MR_r3,0,0)) {
+		MR_GOTO_LAB(fn__ml_backend__mlds__mercury_type_to_mlds_type_2_0_i15);
+	}
+	MR_sv(3) = MR_ctfield(1, MR_r3, 0);
+	MR_sv(4) = MR_r2;
+	MR_r1 = (MR_Word) MR_CTOR0_ADDR(parse_tree__prog_data, mer_type);
+	MR_r2 = (MR_Word) MR_tbmkword(0, 0);
+	MR_r3 = MR_ctfield(1, MR_r3, 1);
+	MR_np_call_localret_ent(__Unify___list__list_1_0,
+		fn__ml_backend__mlds__mercury_type_to_mlds_type_2_0_i19);
+MR_def_label(fn__ml_backend__mlds__mercury_type_to_mlds_type_2_0,19)
+	MR_MAYBE_INIT_LOCAL_THREAD_ENGINE_BASE
+	if (!(MR_r1)) {
+		MR_GOTO_LAB(fn__ml_backend__mlds__mercury_type_to_mlds_type_2_0_i15);
+	}
+	{
+	MR_Word MR_tempr1;
+	MR_tempr1 = MR_ctfield(0, MR_sv(4), 0);
+	if (MR_PTAG_TESTR(MR_tempr1,1)) {
+		MR_GOTO_LAB(fn__ml_backend__mlds__mercury_type_to_mlds_type_2_0_i15);
+	}
+	MR_sv(4) = MR_ctfield(0, MR_sv(4), 1);
+	MR_sv(5) = MR_ctfield(1, MR_tempr1, 0);
+	MR_sv(6) = MR_ctfield(1, MR_tempr1, 1);
+	}
+	MR_np_call_localret_ent(fn__mdbcomp__prim_data__mercury_private_builtin_module_0_0,
+		fn__ml_backend__mlds__mercury_type_to_mlds_type_2_0_i22);
+MR_def_label(fn__ml_backend__mlds__mercury_type_to_mlds_type_2_0,22)
+	MR_MAYBE_INIT_LOCAL_THREAD_ENGINE_BASE
+	{
+	MR_Word MR_tempr1;
+	MR_tempr1 = MR_r1;
+	MR_r1 = MR_sv(5);
+	MR_r2 = MR_tempr1;
+	}
+	MR_np_call_localret_ent(__Unify___mdbcomp__prim_data__sym_name_0_0,
+		fn__ml_backend__mlds__mercury_type_to_mlds_type_2_0_i23);
+MR_def_label(fn__ml_backend__mlds__mercury_type_to_mlds_type_2_0,23)
+	MR_MAYBE_INIT_LOCAL_THREAD_ENGINE_BASE
+	if (!(MR_r1)) {
+		MR_GOTO_LAB(fn__ml_backend__mlds__mercury_type_to_mlds_type_2_0_i15);
+	}
+	if ((strcmp((char *) (MR_Word *) MR_sv(6), MR_string_const("store_at_ref_type", 17)) != 0)) {
+		MR_GOTO_LAB(fn__ml_backend__mlds__mercury_type_to_mlds_type_2_0_i15);
+	}
+	if (MR_INT_NE(MR_sv(4),1)) {
+		MR_GOTO_LAB(fn__ml_backend__mlds__mercury_type_to_mlds_type_2_0_i15);
+	}
+	MR_r1 = MR_sv(1);
+	MR_r2 = MR_sv(3);
+	MR_np_localcall_lab(fn__ml_backend__mlds__mercury_type_to_mlds_type_2_0,
+		fn__ml_backend__mlds__mercury_type_to_mlds_type_2_0_i27);
+MR_def_label(fn__ml_backend__mlds__mercury_type_to_mlds_type_2_0,27)
+	MR_MAYBE_INIT_LOCAL_THREAD_ENGINE_BASE
+	{
+	MR_Word MR_tempr1;
+	MR_tag_alloc_heap(MR_tempr1, 3, (MR_Integer) 2);
+	MR_tfield(3, MR_tempr1, 0) = (MR_Integer) 4;
+	MR_tfield(3, MR_tempr1, 1) = MR_r1;
+	MR_r1 = MR_tempr1;
+	MR_decr_sp_and_return(7);
+	}
+MR_def_label(fn__ml_backend__mlds__mercury_type_to_mlds_type_2_0,15)
+	MR_MAYBE_INIT_LOCAL_THREAD_ENGINE_BASE
+	MR_r1 = MR_sv(2);
+	MR_np_call_localret_ent(parse_tree__prog_type__type_to_ctor_and_args_3_0,
+		fn__ml_backend__mlds__mercury_type_to_mlds_type_2_0_i30);
+MR_def_label(fn__ml_backend__mlds__mercury_type_to_mlds_type_2_0,30)
+	MR_MAYBE_INIT_LOCAL_THREAD_ENGINE_BASE
+	if (!(MR_r1)) {
+		MR_GOTO_LAB(fn__ml_backend__mlds__mercury_type_to_mlds_type_2_0_i29);
+	}
+	MR_sv(3) = MR_r2;
+	MR_r1 = MR_sv(1);
+	MR_np_call_localret_ent(hlds__hlds_module__module_info_get_type_table_2_0,
+		fn__ml_backend__mlds__mercury_type_to_mlds_type_2_0_i32);
+MR_def_label(fn__ml_backend__mlds__mercury_type_to_mlds_type_2_0,32)
+	MR_MAYBE_INIT_LOCAL_THREAD_ENGINE_BASE
+	{
+	MR_Word MR_tempr1;
+	MR_tempr1 = MR_r1;
+	MR_r1 = (MR_Word) MR_CTOR0_ADDR(parse_tree__prog_data, type_ctor);
+	MR_r2 = (MR_Word) MR_CTOR0_ADDR(hlds__hlds_data, hlds_type_defn);
+	MR_r3 = MR_tempr1;
+	MR_r4 = MR_sv(3);
+	}
+	MR_np_call_localret_ent(map__search_3_0,
+		fn__ml_backend__mlds__mercury_type_to_mlds_type_2_0_i33);
+MR_def_label(fn__ml_backend__mlds__mercury_type_to_mlds_type_2_0,33)
+	MR_MAYBE_INIT_LOCAL_THREAD_ENGINE_BASE
+	if (!(MR_r1)) {
+		MR_GOTO_LAB(fn__ml_backend__mlds__mercury_type_to_mlds_type_2_0_i29);
+	}
+	MR_r1 = MR_r2;
+	MR_np_call_localret_ent(hlds__hlds_data__get_type_defn_body_2_0,
+		fn__ml_backend__mlds__mercury_type_to_mlds_type_2_0_i35);
+MR_def_label(fn__ml_backend__mlds__mercury_type_to_mlds_type_2_0,35)
+	MR_MAYBE_INIT_LOCAL_THREAD_ENGINE_BASE
+	if (MR_PTAG_TESTR(MR_r1,2)) {
+		MR_GOTO_LAB(fn__ml_backend__mlds__mercury_type_to_mlds_type_2_0_i29);
+	}
+	{
+	MR_Word MR_tempr1, MR_tempr2;
+	MR_tempr1 = MR_sv(1);
+	MR_tempr2 = MR_ctfield(2, MR_r1, 0);
+	MR_sv(1) = MR_ctfield(0, MR_tempr2, 0);
+	MR_sv(2) = MR_ctfield(0, MR_tempr2, 1);
+	MR_sv(3) = MR_ctfield(0, MR_tempr2, 2);
+	MR_r1 = MR_tempr1;
+	}
+	MR_np_call_localret_ent(hlds__hlds_module__module_info_get_globals_2_0,
+		fn__ml_backend__mlds__mercury_type_to_mlds_type_2_0_i37);
+MR_def_label(fn__ml_backend__mlds__mercury_type_to_mlds_type_2_0,37)
+	MR_MAYBE_INIT_LOCAL_THREAD_ENGINE_BASE
+	MR_np_call_localret_ent(libs__globals__get_target_2_0,
+		fn__ml_backend__mlds__mercury_type_to_mlds_type_2_0_i38);
+MR_def_label(fn__ml_backend__mlds__mercury_type_to_mlds_type_2_0,38)
+	MR_MAYBE_INIT_LOCAL_THREAD_ENGINE_BASE
+	MR_COMPUTED_GOTO((MR_Unsigned) MR_r1,
+		MR_LABEL_AP(fn__ml_backend__mlds__mercury_type_to_mlds_type_2_0_i46) MR_AND
+		MR_LABEL_AP(fn__ml_backend__mlds__mercury_type_to_mlds_type_2_0_i54) MR_AND
+		MR_LABEL_AP(fn__ml_backend__mlds__mercury_type_to_mlds_type_2_0_i60) MR_AND
+		MR_LABEL_AP(fn__ml_backend__mlds__mercury_type_to_mlds_type_2_0_i40) MR_AND
+		MR_LABEL_AP(fn__ml_backend__mlds__mercury_type_to_mlds_type_2_0_i66) MR_AND
+		MR_LABEL_AP(fn__ml_backend__mlds__mercury_type_to_mlds_type_2_0_i52));
+MR_def_label(fn__ml_backend__mlds__mercury_type_to_mlds_type_2_0,40)
+	MR_MAYBE_INIT_LOCAL_THREAD_ENGINE_BASE
+	if (MR_LTAGS_TEST(MR_sv(2),0,0)) {
+		MR_GOTO_LAB(fn__ml_backend__mlds__mercury_type_to_mlds_type_2_0_i42);
+	}
+	{
+	MR_Word MR_tempr1, MR_tempr2;
+	MR_tag_alloc_heap(MR_tempr1, 1, (MR_Integer) 1);
+	MR_tfield(1, MR_tempr1, 0) = MR_ctfield(0, MR_ctfield(1, MR_sv(2), 0), 0);
+	MR_tag_alloc_heap(MR_tempr2, 3, (MR_Integer) 2);
+	MR_r1 = MR_tempr2;
+	MR_tfield(3, MR_tempr2, 0) = (MR_Integer) 1;
+	MR_tfield(3, MR_tempr2, 1) = MR_tempr1;
+	MR_decr_sp_and_return(7);
+	}
+MR_def_label(fn__ml_backend__mlds__mercury_type_to_mlds_type_2_0,42)
+	MR_MAYBE_INIT_LOCAL_THREAD_ENGINE_BASE
+	MR_r1 = (MR_Word) MR_string_const("mlds.m", 6);
+	MR_r2 = (MR_Word) MR_string_const("mercury_type_to_mlds_type: No C foreign type", 44);
+	MR_succip_word = MR_sv(7);
+	MR_decr_sp(7);
+	MR_np_tailcall_ent(libs__compiler_util__sorry_2_0);
+MR_def_label(fn__ml_backend__mlds__mercury_type_to_mlds_type_2_0,46)
+	MR_MAYBE_INIT_LOCAL_THREAD_ENGINE_BASE
+	if (MR_LTAGS_TEST(MR_sv(2),0,0)) {
+		MR_GOTO_LAB(fn__ml_backend__mlds__mercury_type_to_mlds_type_2_0_i48);
+	}
+	{
+	MR_Word MR_tempr1, MR_tempr2;
+	MR_tag_alloc_heap(MR_tempr1, 1, (MR_Integer) 1);
+	MR_tfield(1, MR_tempr1, 0) = MR_ctfield(0, MR_ctfield(1, MR_sv(2), 0), 0);
+	MR_tag_alloc_heap(MR_tempr2, 3, (MR_Integer) 2);
+	MR_r1 = MR_tempr2;
+	MR_tfield(3, MR_tempr2, 0) = (MR_Integer) 1;
+	MR_tfield(3, MR_tempr2, 1) = MR_tempr1;
+	MR_decr_sp_and_return(7);
+	}
+MR_def_label(fn__ml_backend__mlds__mercury_type_to_mlds_type_2_0,48)
+	MR_MAYBE_INIT_LOCAL_THREAD_ENGINE_BASE
+	MR_r1 = (MR_Word) MR_string_const("mlds.m", 6);
+	MR_r2 = (MR_Word) MR_string_const("mercury_type_to_mlds_type: No C foreign type", 44);
+	MR_succip_word = MR_sv(7);
+	MR_decr_sp(7);
+	MR_np_tailcall_ent(libs__compiler_util__unexpected_2_0);
+MR_def_label(fn__ml_backend__mlds__mercury_type_to_mlds_type_2_0,52)
+	MR_MAYBE_INIT_LOCAL_THREAD_ENGINE_BASE
+	MR_r1 = (MR_Word) MR_string_const("mlds.m", 6);
+	MR_r2 = (MR_Word) MR_string_const("mercury_type_to_mlds_type: target erlang", 40);
+	MR_succip_word = MR_sv(7);
+	MR_decr_sp(7);
+	MR_np_tailcall_ent(libs__compiler_util__unexpected_2_0);
+MR_def_label(fn__ml_backend__mlds__mercury_type_to_mlds_type_2_0,54)
+	MR_MAYBE_INIT_LOCAL_THREAD_ENGINE_BASE
+	if (MR_LTAGS_TEST(MR_sv(1),0,0)) {
+		MR_GOTO_LAB(fn__ml_backend__mlds__mercury_type_to_mlds_type_2_0_i56);
+	}
+	{
+	MR_Word MR_tempr1, MR_tempr2;
+	MR_tag_alloc_heap(MR_tempr1, 0, (MR_Integer) 1);
+	MR_tfield(0, MR_tempr1, 0) = MR_ctfield(0, MR_ctfield(1, MR_sv(1), 0), 0);
+	MR_tag_alloc_heap(MR_tempr2, 3, (MR_Integer) 2);
+	MR_r1 = MR_tempr2;
+	MR_tfield(3, MR_tempr2, 0) = (MR_Integer) 1;
+	MR_tfield(3, MR_tempr2, 1) = MR_tempr1;
+	MR_decr_sp_and_return(7);
+	}
+MR_def_label(fn__ml_backend__mlds__mercury_type_to_mlds_type_2_0,56)
+	MR_MAYBE_INIT_LOCAL_THREAD_ENGINE_BASE
+	MR_r1 = (MR_Word) MR_string_const("mlds.m", 6);
+	MR_r2 = (MR_Word) MR_string_const("mercury_type_to_mlds_type: No IL foreign type", 45);
+	MR_succip_word = MR_sv(7);
+	MR_decr_sp(7);
+	MR_np_tailcall_ent(libs__compiler_util__unexpected_2_0);
+MR_def_label(fn__ml_backend__mlds__mercury_type_to_mlds_type_2_0,60)
+	MR_MAYBE_INIT_LOCAL_THREAD_ENGINE_BASE
+	if (MR_LTAGS_TEST(MR_sv(3),0,0)) {
+		MR_GOTO_LAB(fn__ml_backend__mlds__mercury_type_to_mlds_type_2_0_i62);
+	}
+	{
+	MR_Word MR_tempr1, MR_tempr2;
+	MR_tag_alloc_heap(MR_tempr1, 2, (MR_Integer) 1);
+	MR_tfield(2, MR_tempr1, 0) = MR_ctfield(0, MR_ctfield(1, MR_sv(3), 0), 0);
+	MR_tag_alloc_heap(MR_tempr2, 3, (MR_Integer) 2);
+	MR_r1 = MR_tempr2;
+	MR_tfield(3, MR_tempr2, 0) = (MR_Integer) 1;
+	MR_tfield(3, MR_tempr2, 1) = MR_tempr1;
+	MR_decr_sp_and_return(7);
+	}
+MR_def_label(fn__ml_backend__mlds__mercury_type_to_mlds_type_2_0,62)
+	MR_MAYBE_INIT_LOCAL_THREAD_ENGINE_BASE
+	MR_r1 = (MR_Word) MR_string_const("mlds.m", 6);
+	MR_r2 = (MR_Word) MR_string_const("mercury_type_to_mlds_type: no Java foreign type", 47);
+	MR_succip_word = MR_sv(7);
+	MR_decr_sp(7);
+	MR_np_tailcall_ent(libs__compiler_util__unexpected_2_0);
+MR_def_label(fn__ml_backend__mlds__mercury_type_to_mlds_type_2_0,66)
+	MR_MAYBE_INIT_LOCAL_THREAD_ENGINE_BASE
+	MR_r1 = (MR_Word) MR_string_const("mlds.m", 6);
+	MR_r2 = (MR_Word) MR_string_const("target x86_64 with --high-level-code", 36);
+	MR_succip_word = MR_sv(7);
+	MR_decr_sp(7);
+	MR_np_tailcall_ent(libs__compiler_util__unexpected_2_0);
+MR_def_label(fn__ml_backend__mlds__mercury_type_to_mlds_type_2_0,29)
+	MR_MAYBE_INIT_LOCAL_THREAD_ENGINE_BASE
+	MR_r1 = MR_sv(1);
+	MR_r2 = MR_sv(2);
+	MR_np_call_localret_ent(fn__check_hlds__type_util__classify_type_2_0,
+		fn__ml_backend__mlds__mercury_type_to_mlds_type_2_0_i68);
+MR_def_label(fn__ml_backend__mlds__mercury_type_to_mlds_type_2_0,68)
+	MR_MAYBE_INIT_LOCAL_THREAD_ENGINE_BASE
+	{
+	MR_Word MR_tempr1;
+	MR_tempr1 = MR_sv(1);
+	MR_sv(1) = MR_r1;
+	MR_r1 = MR_tempr1;
+	MR_r2 = MR_sv(2);
+	}
+	MR_np_call_localret_ent(fn__backend_libs__foreign__to_exported_type_2_0,
+		fn__ml_backend__mlds__mercury_type_to_mlds_type_2_0_i69);
+MR_def_label(fn__ml_backend__mlds__mercury_type_to_mlds_type_2_0,69)
+	MR_MAYBE_INIT_LOCAL_THREAD_ENGINE_BASE
+	{
+	MR_Word MR_tempr1;
+	MR_tag_alloc_heap(MR_tempr1, 1, (MR_Integer) 3);
+	MR_tfield(1, MR_tempr1, 0) = MR_sv(2);
+	MR_tfield(1, MR_tempr1, 1) = MR_sv(1);
+	MR_tfield(1, MR_tempr1, 2) = MR_r1;
+	MR_r1 = MR_tempr1;
+	MR_decr_sp_and_return(7);
+	}
+#ifdef MR_maybe_local_thread_engine_base
+	#undef MR_maybe_local_thread_engine_base
+	#define MR_maybe_local_thread_engine_base MR_thread_engine_base
+#endif
+MR_END_MODULE
+
+
+MR_BEGIN_MODULE(ml_backend__mlds_module13)
+	MR_init_entry1(fn__ml_backend__mlds__access_1_0);
+	MR_init_label2(fn__ml_backend__mlds__access_1_0,3,2)
+MR_BEGIN_CODE
+
+#ifdef MR_maybe_local_thread_engine_base
+	#undef MR_maybe_local_thread_engine_base
+	#define MR_maybe_local_thread_engine_base MR_local_thread_engine_base
+#endif
+MR_define_entry(mercury__fn__ml_backend__mlds__access_1_0);
+	MR_MAYBE_INIT_LOCAL_THREAD_ENGINE_BASE
+	MR_incr_sp(1);
+	MR_sv(1) = (MR_Word) MR_succip;
+	MR_np_call_localret_ent(ml_backend__mlds__IntroducedFrom__pred__access__2074__1_2_0,
+		fn__ml_backend__mlds__access_1_0_i3);
+MR_def_label(fn__ml_backend__mlds__access_1_0,3)
+	MR_MAYBE_INIT_LOCAL_THREAD_ENGINE_BASE
+	if (!(MR_r1)) {
+		MR_GOTO_LAB(fn__ml_backend__mlds__access_1_0_i2);
+	}
+	MR_r1 = MR_r2;
+	MR_decr_sp_and_return(1);
+MR_def_label(fn__ml_backend__mlds__access_1_0,2)
+	MR_MAYBE_INIT_LOCAL_THREAD_ENGINE_BASE
+	MR_r1 = (MR_Word) MR_string_const("mlds.m", 6);
+	MR_r2 = (MR_Word) MR_string_const("promise_det failed", 18);
+	MR_succip_word = MR_sv(1);
+	MR_decr_sp(1);
+	MR_np_tailcall_ent(libs__compiler_util__unexpected_2_0);
+#ifdef MR_maybe_local_thread_engine_base
+	#undef MR_maybe_local_thread_engine_base
+	#define MR_maybe_local_thread_engine_base MR_thread_engine_base
+#endif
+MR_END_MODULE
+
+
+MR_BEGIN_MODULE(ml_backend__mlds_module14)
+	MR_init_entry1(fn__ml_backend__mlds__per_instance_1_0);
+	MR_init_label2(fn__ml_backend__mlds__per_instance_1_0,3,2)
+MR_BEGIN_CODE
+
+#ifdef MR_maybe_local_thread_engine_base
+	#undef MR_maybe_local_thread_engine_base
+	#define MR_maybe_local_thread_engine_base MR_local_thread_engine_base
+#endif
+MR_define_entry(mercury__fn__ml_backend__mlds__per_instance_1_0);
+	MR_MAYBE_INIT_LOCAL_THREAD_ENGINE_BASE
+	MR_incr_sp(1);
+	MR_sv(1) = (MR_Word) MR_succip;
+	MR_np_call_localret_ent(ml_backend__mlds__IntroducedFrom__pred__per_instance__2077__1_2_0,
+		fn__ml_backend__mlds__per_instance_1_0_i3);
+MR_def_label(fn__ml_backend__mlds__per_instance_1_0,3)
+	MR_MAYBE_INIT_LOCAL_THREAD_ENGINE_BASE
+	if (!(MR_r1)) {
+		MR_GOTO_LAB(fn__ml_backend__mlds__per_instance_1_0_i2);
+	}
+	MR_r1 = MR_r2;
+	MR_decr_sp_and_return(1);
+MR_def_label(fn__ml_backend__mlds__per_instance_1_0,2)
+	MR_MAYBE_INIT_LOCAL_THREAD_ENGINE_BASE
+	MR_r1 = (MR_Word) MR_string_const("mlds.m", 6);
+	MR_r2 = (MR_Word) MR_string_const("promise_det failed", 18);
+	MR_succip_word = MR_sv(1);
+	MR_decr_sp(1);
+	MR_np_tailcall_ent(libs__compiler_util__unexpected_2_0);
+#ifdef MR_maybe_local_thread_engine_base
+	#undef MR_maybe_local_thread_engine_base
+	#define MR_maybe_local_thread_engine_base MR_thread_engine_base
+#endif
+MR_END_MODULE
+
+
+MR_BEGIN_MODULE(ml_backend__mlds_module15)
+	MR_init_entry1(fn__ml_backend__mlds__virtuality_1_0);
+	MR_init_label2(fn__ml_backend__mlds__virtuality_1_0,3,2)
+MR_BEGIN_CODE
+
+#ifdef MR_maybe_local_thread_engine_base
+	#undef MR_maybe_local_thread_engine_base
+	#define MR_maybe_local_thread_engine_base MR_local_thread_engine_base
+#endif
+MR_define_entry(mercury__fn__ml_backend__mlds__virtuality_1_0);
+	MR_MAYBE_INIT_LOCAL_THREAD_ENGINE_BASE
+	MR_incr_sp(1);
+	MR_sv(1) = (MR_Word) MR_succip;
+	MR_np_call_localret_ent(ml_backend__mlds__IntroducedFrom__pred__virtuality__2080__1_2_0,
+		fn__ml_backend__mlds__virtuality_1_0_i3);
+MR_def_label(fn__ml_backend__mlds__virtuality_1_0,3)
+	MR_MAYBE_INIT_LOCAL_THREAD_ENGINE_BASE
+	if (!(MR_r1)) {
+		MR_GOTO_LAB(fn__ml_backend__mlds__virtuality_1_0_i2);
+	}
+	MR_r1 = MR_r2;
+	MR_decr_sp_and_return(1);
+MR_def_label(fn__ml_backend__mlds__virtuality_1_0,2)
+	MR_MAYBE_INIT_LOCAL_THREAD_ENGINE_BASE
+	MR_r1 = (MR_Word) MR_string_const("mlds.m", 6);
+	MR_r2 = (MR_Word) MR_string_const("promise_det failed", 18);
+	MR_succip_word = MR_sv(1);
+	MR_decr_sp(1);
+	MR_np_tailcall_ent(libs__compiler_util__unexpected_2_0);
+#ifdef MR_maybe_local_thread_engine_base
+	#undef MR_maybe_local_thread_engine_base
+	#define MR_maybe_local_thread_engine_base MR_thread_engine_base
+#endif
+MR_END_MODULE
+
+
+MR_BEGIN_MODULE(ml_backend__mlds_module16)
+	MR_init_entry1(fn__ml_backend__mlds__finality_1_0);
+	MR_init_label2(fn__ml_backend__mlds__finality_1_0,3,2)
+MR_BEGIN_CODE
+
+#ifdef MR_maybe_local_thread_engine_base
+	#undef MR_maybe_local_thread_engine_base
+	#define MR_maybe_local_thread_engine_base MR_local_thread_engine_base
+#endif
+MR_define_entry(mercury__fn__ml_backend__mlds__finality_1_0);
+	MR_MAYBE_INIT_LOCAL_THREAD_ENGINE_BASE
+	MR_incr_sp(1);
+	MR_sv(1) = (MR_Word) MR_succip;
+	MR_np_call_localret_ent(ml_backend__mlds__IntroducedFrom__pred__finality__2083__1_2_0,
+		fn__ml_backend__mlds__finality_1_0_i3);
+MR_def_label(fn__ml_backend__mlds__finality_1_0,3)
+	MR_MAYBE_INIT_LOCAL_THREAD_ENGINE_BASE
+	if (!(MR_r1)) {
+		MR_GOTO_LAB(fn__ml_backend__mlds__finality_1_0_i2);
+	}
+	MR_r1 = MR_r2;
+	MR_decr_sp_and_return(1);
+MR_def_label(fn__ml_backend__mlds__finality_1_0,2)
+	MR_MAYBE_INIT_LOCAL_THREAD_ENGINE_BASE
+	MR_r1 = (MR_Word) MR_string_const("mlds.m", 6);
+	MR_r2 = (MR_Word) MR_string_const("promise_det failed", 18);
+	MR_succip_word = MR_sv(1);
+	MR_decr_sp(1);
+	MR_np_tailcall_ent(libs__compiler_util__unexpected_2_0);
+#ifdef MR_maybe_local_thread_engine_base
+	#undef MR_maybe_local_thread_engine_base
+	#define MR_maybe_local_thread_engine_base MR_thread_engine_base
+#endif
+MR_END_MODULE
+
+
+MR_BEGIN_MODULE(ml_backend__mlds_module17)
+	MR_init_entry1(fn__ml_backend__mlds__constness_1_0);
+	MR_init_label2(fn__ml_backend__mlds__constness_1_0,3,2)
+MR_BEGIN_CODE
+
+#ifdef MR_maybe_local_thread_engine_base
+	#undef MR_maybe_local_thread_engine_base
+	#define MR_maybe_local_thread_engine_base MR_local_thread_engine_base
+#endif
+MR_define_entry(mercury__fn__ml_backend__mlds__constness_1_0);
+	MR_MAYBE_INIT_LOCAL_THREAD_ENGINE_BASE
+	MR_incr_sp(1);
+	MR_sv(1) = (MR_Word) MR_succip;
+	MR_np_call_localret_ent(ml_backend__mlds__IntroducedFrom__pred__constness__2086__1_2_0,
+		fn__ml_backend__mlds__constness_1_0_i3);
+MR_def_label(fn__ml_backend__mlds__constness_1_0,3)
+	MR_MAYBE_INIT_LOCAL_THREAD_ENGINE_BASE
+	if (!(MR_r1)) {
+		MR_GOTO_LAB(fn__ml_backend__mlds__constness_1_0_i2);
+	}
+	MR_r1 = MR_r2;
+	MR_decr_sp_and_return(1);
+MR_def_label(fn__ml_backend__mlds__constness_1_0,2)
+	MR_MAYBE_INIT_LOCAL_THREAD_ENGINE_BASE
+	MR_r1 = (MR_Word) MR_string_const("mlds.m", 6);
+	MR_r2 = (MR_Word) MR_string_const("promise_det failed", 18);
+	MR_succip_word = MR_sv(1);
+	MR_decr_sp(1);
+	MR_np_tailcall_ent(libs__compiler_util__unexpected_2_0);
+#ifdef MR_maybe_local_thread_engine_base
+	#undef MR_maybe_local_thread_engine_base
+	#define MR_maybe_local_thread_engine_base MR_thread_engine_base
+#endif
+MR_END_MODULE
+
+
+MR_BEGIN_MODULE(ml_backend__mlds_module18)
+	MR_init_entry1(fn__ml_backend__mlds__abstractness_1_0);
+	MR_init_label2(fn__ml_backend__mlds__abstractness_1_0,3,2)
+MR_BEGIN_CODE
+
+#ifdef MR_maybe_local_thread_engine_base
+	#undef MR_maybe_local_thread_engine_base
+	#define MR_maybe_local_thread_engine_base MR_local_thread_engine_base
+#endif
+MR_define_entry(mercury__fn__ml_backend__mlds__abstractness_1_0);
+	MR_MAYBE_INIT_LOCAL_THREAD_ENGINE_BASE
+	MR_incr_sp(1);
+	MR_sv(1) = (MR_Word) MR_succip;
+	MR_np_call_localret_ent(ml_backend__mlds__IntroducedFrom__pred__abstractness__2089__1_2_0,
+		fn__ml_backend__mlds__abstractness_1_0_i3);
+MR_def_label(fn__ml_backend__mlds__abstractness_1_0,3)
+	MR_MAYBE_INIT_LOCAL_THREAD_ENGINE_BASE
+	if (!(MR_r1)) {
+		MR_GOTO_LAB(fn__ml_backend__mlds__abstractness_1_0_i2);
+	}
+	MR_r1 = MR_r2;
+	MR_decr_sp_and_return(1);
+MR_def_label(fn__ml_backend__mlds__abstractness_1_0,2)
+	MR_MAYBE_INIT_LOCAL_THREAD_ENGINE_BASE
+	MR_r1 = (MR_Word) MR_string_const("mlds.m", 6);
+	MR_r2 = (MR_Word) MR_string_const("promise_det failed", 18);
+	MR_succip_word = MR_sv(1);
+	MR_decr_sp(1);
+	MR_np_tailcall_ent(libs__compiler_util__unexpected_2_0);
+#ifdef MR_maybe_local_thread_engine_base
+	#undef MR_maybe_local_thread_engine_base
+	#define MR_maybe_local_thread_engine_base MR_thread_engine_base
+#endif
+MR_END_MODULE
+
+
+MR_BEGIN_MODULE(ml_backend__mlds_module19)
+	MR_init_entry1(fn__ml_backend__mlds__set_access_2_0);
+	MR_init_label5(fn__ml_backend__mlds__set_access_2_0,3,4,5,6,7)
+MR_BEGIN_CODE
+
+#ifdef MR_maybe_local_thread_engine_base
+	#undef MR_maybe_local_thread_engine_base
+	#define MR_maybe_local_thread_engine_base MR_local_thread_engine_base
+#endif
+MR_define_entry(mercury__fn__ml_backend__mlds__set_access_2_0);
+	MR_MAYBE_INIT_LOCAL_THREAD_ENGINE_BASE
+	MR_COMPUTED_GOTO((MR_Unsigned) MR_r2,
+		MR_LABEL_AP(fn__ml_backend__mlds__set_access_2_0_i7) MR_AND
+		MR_LABEL_AP(fn__ml_backend__mlds__set_access_2_0_i6) MR_AND
+		MR_LABEL_AP(fn__ml_backend__mlds__set_access_2_0_i5) MR_AND
+		MR_LABEL_AP(fn__ml_backend__mlds__set_access_2_0_i3) MR_AND
+		MR_LABEL_AP(fn__ml_backend__mlds__set_access_2_0_i4));
+MR_def_label(fn__ml_backend__mlds__set_access_2_0,3)
+	MR_MAYBE_INIT_LOCAL_THREAD_ENGINE_BASE
+	MR_r1 = (((MR_Integer) MR_r1 & (MR_Integer) -8) | (MR_Integer) 3);
+	MR_proceed();
+MR_def_label(fn__ml_backend__mlds__set_access_2_0,4)
+	MR_MAYBE_INIT_LOCAL_THREAD_ENGINE_BASE
+	MR_r1 = (((MR_Integer) MR_r1 & (MR_Integer) -8) | (MR_Integer) 4);
+	MR_proceed();
+MR_def_label(fn__ml_backend__mlds__set_access_2_0,5)
+	MR_MAYBE_INIT_LOCAL_THREAD_ENGINE_BASE
+	MR_r1 = (((MR_Integer) MR_r1 & (MR_Integer) -8) | (MR_Integer) 1);
+	MR_proceed();
+MR_def_label(fn__ml_backend__mlds__set_access_2_0,6)
+	MR_MAYBE_INIT_LOCAL_THREAD_ENGINE_BASE
+	MR_r1 = (((MR_Integer) MR_r1 & (MR_Integer) -8) | (MR_Integer) 2);
+	MR_proceed();
+MR_def_label(fn__ml_backend__mlds__set_access_2_0,7)
+	MR_MAYBE_INIT_LOCAL_THREAD_ENGINE_BASE
+	MR_r1 = (((MR_Integer) MR_r1 & (MR_Integer) -8) | (MR_Integer) 0);
+	MR_proceed();
+#ifdef MR_maybe_local_thread_engine_base
+	#undef MR_maybe_local_thread_engine_base
+	#define MR_maybe_local_thread_engine_base MR_thread_engine_base
+#endif
+MR_END_MODULE
+
+
+MR_BEGIN_MODULE(ml_backend__mlds_module20)
+	MR_init_entry1(fn__ml_backend__mlds__set_per_instance_2_0);
+	MR_init_label1(fn__ml_backend__mlds__set_per_instance_2_0,3)
+MR_BEGIN_CODE
+
+#ifdef MR_maybe_local_thread_engine_base
+	#undef MR_maybe_local_thread_engine_base
+	#define MR_maybe_local_thread_engine_base MR_local_thread_engine_base
+#endif
+MR_define_entry(mercury__fn__ml_backend__mlds__set_per_instance_2_0);
+	MR_MAYBE_INIT_LOCAL_THREAD_ENGINE_BASE
+	if (MR_INT_NE(MR_r2,0)) {
+		MR_GOTO_LAB(fn__ml_backend__mlds__set_per_instance_2_0_i3);
+	}
+	MR_r1 = (((MR_Integer) MR_r1 & (MR_Integer) -9) | (MR_Integer) 0);
+	MR_proceed();
+MR_def_label(fn__ml_backend__mlds__set_per_instance_2_0,3)
+	MR_MAYBE_INIT_LOCAL_THREAD_ENGINE_BASE
+	MR_r1 = (((MR_Integer) MR_r1 & (MR_Integer) -9) | (MR_Integer) 8);
+	MR_proceed();
+#ifdef MR_maybe_local_thread_engine_base
+	#undef MR_maybe_local_thread_engine_base
+	#define MR_maybe_local_thread_engine_base MR_thread_engine_base
+#endif
+MR_END_MODULE
+
+
+MR_BEGIN_MODULE(ml_backend__mlds_module21)
+	MR_init_entry1(fn__ml_backend__mlds__set_virtuality_2_0);
+	MR_init_label1(fn__ml_backend__mlds__set_virtuality_2_0,3)
+MR_BEGIN_CODE
+
+#ifdef MR_maybe_local_thread_engine_base
+	#undef MR_maybe_local_thread_engine_base
+	#define MR_maybe_local_thread_engine_base MR_local_thread_engine_base
+#endif
+MR_define_entry(mercury__fn__ml_backend__mlds__set_virtuality_2_0);
+	MR_MAYBE_INIT_LOCAL_THREAD_ENGINE_BASE
+	if (MR_INT_NE(MR_r2,0)) {
+		MR_GOTO_LAB(fn__ml_backend__mlds__set_virtuality_2_0_i3);
+	}
+	MR_r1 = (((MR_Integer) MR_r1 & (MR_Integer) -17) | (MR_Integer) 0);
+	MR_proceed();
+MR_def_label(fn__ml_backend__mlds__set_virtuality_2_0,3)
+	MR_MAYBE_INIT_LOCAL_THREAD_ENGINE_BASE
+	MR_r1 = (((MR_Integer) MR_r1 & (MR_Integer) -17) | (MR_Integer) 16);
+	MR_proceed();
+#ifdef MR_maybe_local_thread_engine_base
+	#undef MR_maybe_local_thread_engine_base
+	#define MR_maybe_local_thread_engine_base MR_thread_engine_base
+#endif
+MR_END_MODULE
+
+
+MR_BEGIN_MODULE(ml_backend__mlds_module22)
+	MR_init_entry1(fn__ml_backend__mlds__set_finality_2_0);
+	MR_init_label1(fn__ml_backend__mlds__set_finality_2_0,3)
+MR_BEGIN_CODE
+
+#ifdef MR_maybe_local_thread_engine_base
+	#undef MR_maybe_local_thread_engine_base
+	#define MR_maybe_local_thread_engine_base MR_local_thread_engine_base
+#endif
+MR_define_entry(mercury__fn__ml_backend__mlds__set_finality_2_0);
+	MR_MAYBE_INIT_LOCAL_THREAD_ENGINE_BASE
+	if (MR_INT_NE(MR_r2,1)) {
+		MR_GOTO_LAB(fn__ml_backend__mlds__set_finality_2_0_i3);
+	}
+	MR_r1 = (((MR_Integer) MR_r1 & (MR_Integer) -33) | (MR_Integer) 32);
+	MR_proceed();
+MR_def_label(fn__ml_backend__mlds__set_finality_2_0,3)
+	MR_MAYBE_INIT_LOCAL_THREAD_ENGINE_BASE
+	MR_r1 = (((MR_Integer) MR_r1 & (MR_Integer) -33) | (MR_Integer) 0);
+	MR_proceed();
+#ifdef MR_maybe_local_thread_engine_base
+	#undef MR_maybe_local_thread_engine_base
+	#define MR_maybe_local_thread_engine_base MR_thread_engine_base
+#endif
+MR_END_MODULE
+
+
+MR_BEGIN_MODULE(ml_backend__mlds_module23)
+	MR_init_entry1(fn__ml_backend__mlds__set_constness_2_0);
+	MR_init_label1(fn__ml_backend__mlds__set_constness_2_0,3)
+MR_BEGIN_CODE
+
+#ifdef MR_maybe_local_thread_engine_base
+	#undef MR_maybe_local_thread_engine_base
+	#define MR_maybe_local_thread_engine_base MR_local_thread_engine_base
+#endif
+MR_define_entry(mercury__fn__ml_backend__mlds__set_constness_2_0);
+	MR_MAYBE_INIT_LOCAL_THREAD_ENGINE_BASE
+	if (MR_INT_NE(MR_r2,1)) {
+		MR_GOTO_LAB(fn__ml_backend__mlds__set_constness_2_0_i3);
+	}
+	MR_r1 = (((MR_Integer) MR_r1 & (MR_Integer) -65) | (MR_Integer) 64);
+	MR_proceed();
+MR_def_label(fn__ml_backend__mlds__set_constness_2_0,3)
+	MR_MAYBE_INIT_LOCAL_THREAD_ENGINE_BASE
+	MR_r1 = (((MR_Integer) MR_r1 & (MR_Integer) -65) | (MR_Integer) 0);
+	MR_proceed();
+#ifdef MR_maybe_local_thread_engine_base
+	#undef MR_maybe_local_thread_engine_base
+	#define MR_maybe_local_thread_engine_base MR_thread_engine_base
+#endif
+MR_END_MODULE
+
+
+MR_BEGIN_MODULE(ml_backend__mlds_module24)
+	MR_init_entry1(fn__ml_backend__mlds__set_abstractness_2_0);
+	MR_init_label1(fn__ml_backend__mlds__set_abstractness_2_0,3)
+MR_BEGIN_CODE
+
+#ifdef MR_maybe_local_thread_engine_base
+	#undef MR_maybe_local_thread_engine_base
+	#define MR_maybe_local_thread_engine_base MR_local_thread_engine_base
+#endif
+MR_define_entry(mercury__fn__ml_backend__mlds__set_abstractness_2_0);
+	MR_MAYBE_INIT_LOCAL_THREAD_ENGINE_BASE
+	if (MR_INT_NE(MR_r2,1)) {
+		MR_GOTO_LAB(fn__ml_backend__mlds__set_abstractness_2_0_i3);
+	}
+	MR_r1 = (((MR_Integer) MR_r1 & (MR_Integer) -129) | (MR_Integer) 0);
+	MR_proceed();
+MR_def_label(fn__ml_backend__mlds__set_abstractness_2_0,3)
+	MR_MAYBE_INIT_LOCAL_THREAD_ENGINE_BASE
+	MR_r1 = (((MR_Integer) MR_r1 & (MR_Integer) -129) | (MR_Integer) 128);
+	MR_proceed();
+#ifdef MR_maybe_local_thread_engine_base
+	#undef MR_maybe_local_thread_engine_base
+	#define MR_maybe_local_thread_engine_base MR_thread_engine_base
+#endif
+MR_END_MODULE
+
+
+MR_BEGIN_MODULE(ml_backend__mlds_module25)
+	MR_init_entry1(fn__ml_backend__mlds__init_decl_flags_6_0);
+	MR_init_label8(fn__ml_backend__mlds__init_decl_flags_6_0,4,3,6,5,8,7,10,9)
+	MR_init_label1(fn__ml_backend__mlds__init_decl_flags_6_0,12)
+MR_BEGIN_CODE
+
+#ifdef MR_maybe_local_thread_engine_base
+	#undef MR_maybe_local_thread_engine_base
+	#define MR_maybe_local_thread_engine_base MR_local_thread_engine_base
+#endif
+MR_define_entry(mercury__fn__ml_backend__mlds__init_decl_flags_6_0);
+	MR_MAYBE_INIT_LOCAL_THREAD_ENGINE_BASE
+	{
+	MR_Word MR_tempr1;
+	MR_tempr1 = MR_r1;
+	MR_r7 = (MR_Word) &MR_tfield(0, (MR_Word *) &mercury_vector_common_2_0, (MR_Integer) MR_tempr1);
+	MR_r8 = MR_tempr1;
+	MR_r1 = MR_r2;
+	MR_r2 = MR_r3;
+	MR_r3 = MR_r4;
+	MR_r4 = MR_r5;
+	MR_r5 = MR_r6;
+	MR_r6 = MR_ctfield(0, MR_r7, 0);
+	if (MR_INT_NE(MR_r1,0)) {
+		MR_GOTO_LAB(fn__ml_backend__mlds__init_decl_flags_6_0_i4);
+	}
+	MR_r1 = MR_r2;
+	MR_r2 = MR_r3;
+	MR_r3 = MR_r4;
+	MR_r4 = MR_r5;
+	MR_r5 = ((MR_Integer) MR_r6 | (MR_Integer) 0);
+	MR_GOTO_LAB(fn__ml_backend__mlds__init_decl_flags_6_0_i3);
+	}
+MR_def_label(fn__ml_backend__mlds__init_decl_flags_6_0,4)
+	MR_MAYBE_INIT_LOCAL_THREAD_ENGINE_BASE
+	MR_r1 = MR_r2;
+	MR_r2 = MR_r3;
+	MR_r3 = MR_r4;
+	MR_r4 = MR_r5;
+	MR_r5 = ((MR_Integer) MR_r6 | (MR_Integer) 8);
+MR_def_label(fn__ml_backend__mlds__init_decl_flags_6_0,3)
+	MR_MAYBE_INIT_LOCAL_THREAD_ENGINE_BASE
+	if (MR_INT_NE(MR_r1,0)) {
+		MR_GOTO_LAB(fn__ml_backend__mlds__init_decl_flags_6_0_i6);
+	}
+	MR_r1 = MR_r2;
+	MR_r2 = MR_r3;
+	MR_r3 = MR_r4;
+	MR_r4 = ((MR_Integer) MR_r5 | (MR_Integer) 0);
+	MR_GOTO_LAB(fn__ml_backend__mlds__init_decl_flags_6_0_i5);
+MR_def_label(fn__ml_backend__mlds__init_decl_flags_6_0,6)
+	MR_MAYBE_INIT_LOCAL_THREAD_ENGINE_BASE
+	MR_r1 = MR_r2;
+	MR_r2 = MR_r3;
+	MR_r3 = MR_r4;
+	MR_r4 = ((MR_Integer) MR_r5 | (MR_Integer) 16);
+MR_def_label(fn__ml_backend__mlds__init_decl_flags_6_0,5)
+	MR_MAYBE_INIT_LOCAL_THREAD_ENGINE_BASE
+	if (MR_INT_NE(MR_r1,1)) {
+		MR_GOTO_LAB(fn__ml_backend__mlds__init_decl_flags_6_0_i8);
+	}
+	MR_r1 = MR_r2;
+	MR_r2 = MR_r3;
+	MR_r3 = ((MR_Integer) MR_r4 | (MR_Integer) 32);
+	MR_GOTO_LAB(fn__ml_backend__mlds__init_decl_flags_6_0_i7);
+MR_def_label(fn__ml_backend__mlds__init_decl_flags_6_0,8)
+	MR_MAYBE_INIT_LOCAL_THREAD_ENGINE_BASE
+	MR_r1 = MR_r2;
+	MR_r2 = MR_r3;
+	MR_r3 = ((MR_Integer) MR_r4 | (MR_Integer) 0);
+MR_def_label(fn__ml_backend__mlds__init_decl_flags_6_0,7)
+	MR_MAYBE_INIT_LOCAL_THREAD_ENGINE_BASE
+	if (MR_INT_NE(MR_r1,1)) {
+		MR_GOTO_LAB(fn__ml_backend__mlds__init_decl_flags_6_0_i10);
+	}
+	MR_r1 = MR_r2;
+	MR_r2 = ((MR_Integer) MR_r3 | (MR_Integer) 64);
+	MR_GOTO_LAB(fn__ml_backend__mlds__init_decl_flags_6_0_i9);
+MR_def_label(fn__ml_backend__mlds__init_decl_flags_6_0,10)
+	MR_MAYBE_INIT_LOCAL_THREAD_ENGINE_BASE
+	MR_r1 = MR_r2;
+	MR_r2 = ((MR_Integer) MR_r3 | (MR_Integer) 0);
+MR_def_label(fn__ml_backend__mlds__init_decl_flags_6_0,9)
+	MR_MAYBE_INIT_LOCAL_THREAD_ENGINE_BASE
+	if (MR_INT_NE(MR_r1,1)) {
+		MR_GOTO_LAB(fn__ml_backend__mlds__init_decl_flags_6_0_i12);
+	}
+	MR_r1 = ((MR_Integer) MR_r2 | (MR_Integer) 0);
+	MR_proceed();
+MR_def_label(fn__ml_backend__mlds__init_decl_flags_6_0,12)
+	MR_MAYBE_INIT_LOCAL_THREAD_ENGINE_BASE
+	MR_r1 = ((MR_Integer) MR_r2 | (MR_Integer) 128);
+	MR_proceed();
+#ifdef MR_maybe_local_thread_engine_base
+	#undef MR_maybe_local_thread_engine_base
+	#define MR_maybe_local_thread_engine_base MR_thread_engine_base
+#endif
+MR_END_MODULE
+
+
+MR_BEGIN_MODULE(ml_backend__mlds_module26)
+	MR_init_entry1(fn__ml_backend__mlds__mlds_make_context_1_0);
+MR_BEGIN_CODE
+
+#ifdef MR_maybe_local_thread_engine_base
+	#undef MR_maybe_local_thread_engine_base
+	#define MR_maybe_local_thread_engine_base MR_local_thread_engine_base
+#endif
+MR_define_entry(mercury__fn__ml_backend__mlds__mlds_make_context_1_0);
+	MR_MAYBE_INIT_LOCAL_THREAD_ENGINE_BASE
+	MR_proceed();
+#ifdef MR_maybe_local_thread_engine_base
+	#undef MR_maybe_local_thread_engine_base
+	#define MR_maybe_local_thread_engine_base MR_thread_engine_base
+#endif
+MR_END_MODULE
+
+
+MR_BEGIN_MODULE(ml_backend__mlds_module27)
+	MR_init_entry1(fn__ml_backend__mlds__mlds_get_prog_context_1_0);
+MR_BEGIN_CODE
+
+#ifdef MR_maybe_local_thread_engine_base
+	#undef MR_maybe_local_thread_engine_base
+	#define MR_maybe_local_thread_engine_base MR_local_thread_engine_base
+#endif
+MR_define_entry(mercury__fn__ml_backend__mlds__mlds_get_prog_context_1_0);
+	MR_MAYBE_INIT_LOCAL_THREAD_ENGINE_BASE
+	MR_proceed();
+#ifdef MR_maybe_local_thread_engine_base
+	#undef MR_maybe_local_thread_engine_base
+	#define MR_maybe_local_thread_engine_base MR_thread_engine_base
+#endif
+MR_END_MODULE
+
+
+MR_BEGIN_MODULE(ml_backend__mlds_module28)
+	MR_init_entry1(fn__ml_backend__mlds__mlds_std_tabling_proc_label_1_0);
+	MR_init_label1(fn__ml_backend__mlds__mlds_std_tabling_proc_label_1_0,3)
+MR_BEGIN_CODE
+
+#ifdef MR_maybe_local_thread_engine_base
+	#undef MR_maybe_local_thread_engine_base
+	#define MR_maybe_local_thread_engine_base MR_local_thread_engine_base
+#endif
+MR_define_entry(mercury__fn__ml_backend__mlds__mlds_std_tabling_proc_label_1_0);
+	MR_MAYBE_INIT_LOCAL_THREAD_ENGINE_BASE
+	{
+	MR_Word MR_tempr1, MR_tempr2, MR_tempr3;
+	MR_tempr3 = MR_r1;
+	MR_tempr1 = MR_ctfield(0, MR_tempr3, 0);
+	if (MR_PTAG_TESTR(MR_tempr1,0)) {
+		MR_GOTO_LAB(fn__ml_backend__mlds__mlds_std_tabling_proc_label_1_0_i3);
+	}
+	MR_tag_alloc_heap(MR_tempr2, 0, (MR_Integer) 6);
+	MR_tfield(0, MR_tempr2, 0) = MR_ctfield(0, MR_tempr1, 0);
+	MR_tfield(0, MR_tempr2, 1) = MR_ctfield(0, MR_tempr1, 1);
+	MR_tfield(0, MR_tempr2, 2) = MR_ctfield(0, MR_tempr1, 2);
+	MR_tfield(0, MR_tempr2, 3) = MR_ctfield(0, MR_tempr1, 3);
+	MR_tfield(0, MR_tempr2, 4) = (MR_Integer) 0;
+	MR_tfield(0, MR_tempr2, 5) = (MR_Integer) 0;
+	MR_tag_alloc_heap(MR_tempr1, 0, (MR_Integer) 2);
+	MR_tfield(0, MR_tempr1, 0) = MR_tempr2;
+	MR_tfield(0, MR_tempr1, 1) = MR_ctfield(0, MR_tempr3, 1);
+	MR_r1 = MR_tempr1;
+	MR_proceed();
+	}
+MR_def_label(fn__ml_backend__mlds__mlds_std_tabling_proc_label_1_0,3)
+	MR_MAYBE_INIT_LOCAL_THREAD_ENGINE_BASE
+	MR_r1 = (MR_Word) MR_string_const("mlds.m", 6);
+	MR_r2 = (MR_Word) MR_string_const("mlds_std_tabling_proc_label: mlds_special_pred_label", 52);
+	MR_np_tailcall_ent(libs__compiler_util__unexpected_2_0);
+#ifdef MR_maybe_local_thread_engine_base
+	#undef MR_maybe_local_thread_engine_base
+	#define MR_maybe_local_thread_engine_base MR_thread_engine_base
+#endif
+MR_END_MODULE
+
+
+MR_BEGIN_MODULE(ml_backend__mlds_module29)
+	MR_init_entry1(__Unify___ml_backend__mlds__abstractness_0_0);
+MR_BEGIN_CODE
+
+#ifdef MR_maybe_local_thread_engine_base
+	#undef MR_maybe_local_thread_engine_base
+	#define MR_maybe_local_thread_engine_base MR_local_thread_engine_base
+#endif
+MR_define_entry(mercury____Unify___ml_backend__mlds__abstractness_0_0);
+	MR_MAYBE_INIT_LOCAL_THREAD_ENGINE_BASE
+	MR_r1 = (MR_r1 == MR_r2);
+	MR_proceed();
+#ifdef MR_maybe_local_thread_engine_base
+	#undef MR_maybe_local_thread_engine_base
+	#define MR_maybe_local_thread_engine_base MR_thread_engine_base
+#endif
+MR_END_MODULE
+
+MR_decl_entry(private_builtin__builtin_compare_int_3_0);
+
+MR_BEGIN_MODULE(ml_backend__mlds_module30)
+	MR_init_entry1(__Compare___ml_backend__mlds__abstractness_0_0);
+MR_BEGIN_CODE
+
+#ifdef MR_maybe_local_thread_engine_base
+	#undef MR_maybe_local_thread_engine_base
+	#define MR_maybe_local_thread_engine_base MR_local_thread_engine_base
+#endif
+MR_define_entry(mercury____Compare___ml_backend__mlds__abstractness_0_0);
+	MR_MAYBE_INIT_LOCAL_THREAD_ENGINE_BASE
+	MR_np_tailcall_ent(private_builtin__builtin_compare_int_3_0);
+#ifdef MR_maybe_local_thread_engine_base
+	#undef MR_maybe_local_thread_engine_base
+	#define MR_maybe_local_thread_engine_base MR_thread_engine_base
+#endif
+MR_END_MODULE
+
+
+MR_BEGIN_MODULE(ml_backend__mlds_module31)
+	MR_init_entry1(__Unify___ml_backend__mlds__access_0_0);
+MR_BEGIN_CODE
+
+#ifdef MR_maybe_local_thread_engine_base
+	#undef MR_maybe_local_thread_engine_base
+	#define MR_maybe_local_thread_engine_base MR_local_thread_engine_base
+#endif
+MR_define_entry(mercury____Unify___ml_backend__mlds__access_0_0);
+	MR_MAYBE_INIT_LOCAL_THREAD_ENGINE_BASE
+	MR_r1 = (MR_r1 == MR_r2);
+	MR_proceed();
+#ifdef MR_maybe_local_thread_engine_base
+	#undef MR_maybe_local_thread_engine_base
+	#define MR_maybe_local_thread_engine_base MR_thread_engine_base
+#endif
+MR_END_MODULE
+
+
+MR_BEGIN_MODULE(ml_backend__mlds_module32)
+	MR_init_entry1(__Compare___ml_backend__mlds__access_0_0);
+MR_BEGIN_CODE
+
+#ifdef MR_maybe_local_thread_engine_base
+	#undef MR_maybe_local_thread_engine_base
+	#define MR_maybe_local_thread_engine_base MR_local_thread_engine_base
+#endif
+MR_define_entry(mercury____Compare___ml_backend__mlds__access_0_0);
+	MR_MAYBE_INIT_LOCAL_THREAD_ENGINE_BASE
+	MR_np_tailcall_ent(private_builtin__builtin_compare_int_3_0);
+#ifdef MR_maybe_local_thread_engine_base
+	#undef MR_maybe_local_thread_engine_base
+	#define MR_maybe_local_thread_engine_base MR_thread_engine_base
+#endif
+MR_END_MODULE
+
+
+MR_BEGIN_MODULE(ml_backend__mlds_module33)
+	MR_init_entry1(__Unify___ml_backend__mlds__constness_0_0);
+MR_BEGIN_CODE
+
+#ifdef MR_maybe_local_thread_engine_base
+	#undef MR_maybe_local_thread_engine_base
+	#define MR_maybe_local_thread_engine_base MR_local_thread_engine_base
+#endif
+MR_define_entry(mercury____Unify___ml_backend__mlds__constness_0_0);
+	MR_MAYBE_INIT_LOCAL_THREAD_ENGINE_BASE
+	MR_r1 = (MR_r1 == MR_r2);
+	MR_proceed();
+#ifdef MR_maybe_local_thread_engine_base
+	#undef MR_maybe_local_thread_engine_base
+	#define MR_maybe_local_thread_engine_base MR_thread_engine_base
+#endif
+MR_END_MODULE
+
+
+MR_BEGIN_MODULE(ml_backend__mlds_module34)
+	MR_init_entry1(__Compare___ml_backend__mlds__constness_0_0);
+MR_BEGIN_CODE
+
+#ifdef MR_maybe_local_thread_engine_base
+	#undef MR_maybe_local_thread_engine_base
+	#define MR_maybe_local_thread_engine_base MR_local_thread_engine_base
+#endif
+MR_define_entry(mercury____Compare___ml_backend__mlds__constness_0_0);
+	MR_MAYBE_INIT_LOCAL_THREAD_ENGINE_BASE
+	MR_np_tailcall_ent(private_builtin__builtin_compare_int_3_0);
+#ifdef MR_maybe_local_thread_engine_base
+	#undef MR_maybe_local_thread_engine_base
+	#define MR_maybe_local_thread_engine_base MR_thread_engine_base
+#endif
+MR_END_MODULE
+
+
+MR_BEGIN_MODULE(ml_backend__mlds_module35)
+	MR_init_entry1(__Unify___ml_backend__mlds__ctor_name_0_0);
+MR_BEGIN_CODE
+
+#ifdef MR_maybe_local_thread_engine_base
+	#undef MR_maybe_local_thread_engine_base
+	#define MR_maybe_local_thread_engine_base MR_local_thread_engine_base
+#endif
+MR_define_entry(mercury____Unify___ml_backend__mlds__ctor_name_0_0);
+	MR_MAYBE_INIT_LOCAL_THREAD_ENGINE_BASE
+	{
+	MR_Word MR_tempr1, MR_tempr2;
+	MR_tempr1 = MR_r1;
+	MR_r1 = (MR_Word) MR_CTOR0_ADDR(ml_backend__mlds, mlds_ctor_id);
+	MR_tempr2 = MR_r2;
+	MR_r2 = MR_tempr1;
+	MR_r3 = MR_tempr2;
+	MR_np_tailcall_ent(__Unify___ml_backend__mlds__mlds_fully_qualified_name_1_0);
+	}
+#ifdef MR_maybe_local_thread_engine_base
+	#undef MR_maybe_local_thread_engine_base
+	#define MR_maybe_local_thread_engine_base MR_thread_engine_base
+#endif
+MR_END_MODULE
+
+
+MR_BEGIN_MODULE(ml_backend__mlds_module36)
+	MR_init_entry1(__Compare___ml_backend__mlds__ctor_name_0_0);
+MR_BEGIN_CODE
+
+#ifdef MR_maybe_local_thread_engine_base
+	#undef MR_maybe_local_thread_engine_base
+	#define MR_maybe_local_thread_engine_base MR_local_thread_engine_base
+#endif
+MR_define_entry(mercury____Compare___ml_backend__mlds__ctor_name_0_0);
+	MR_MAYBE_INIT_LOCAL_THREAD_ENGINE_BASE
+	{
+	MR_Word MR_tempr1, MR_tempr2;
+	MR_tempr1 = MR_r1;
+	MR_r1 = (MR_Word) MR_CTOR0_ADDR(ml_backend__mlds, mlds_ctor_id);
+	MR_tempr2 = MR_r2;
+	MR_r2 = MR_tempr1;
+	MR_r3 = MR_tempr2;
+	MR_np_tailcall_ent(__Compare___ml_backend__mlds__mlds_fully_qualified_name_1_0);
+	}
+#ifdef MR_maybe_local_thread_engine_base
+	#undef MR_maybe_local_thread_engine_base
+	#define MR_maybe_local_thread_engine_base MR_thread_engine_base
+#endif
+MR_END_MODULE
+
+
+MR_BEGIN_MODULE(ml_backend__mlds_module37)
+	MR_init_entry1(__Unify___ml_backend__mlds__finality_0_0);
+MR_BEGIN_CODE
+
+#ifdef MR_maybe_local_thread_engine_base
+	#undef MR_maybe_local_thread_engine_base
+	#define MR_maybe_local_thread_engine_base MR_local_thread_engine_base
+#endif
+MR_define_entry(mercury____Unify___ml_backend__mlds__finality_0_0);
+	MR_MAYBE_INIT_LOCAL_THREAD_ENGINE_BASE
+	MR_r1 = (MR_r1 == MR_r2);
+	MR_proceed();
+#ifdef MR_maybe_local_thread_engine_base
+	#undef MR_maybe_local_thread_engine_base
+	#define MR_maybe_local_thread_engine_base MR_thread_engine_base
+#endif
+MR_END_MODULE
+
+
+MR_BEGIN_MODULE(ml_backend__mlds_module38)
+	MR_init_entry1(__Compare___ml_backend__mlds__finality_0_0);
+MR_BEGIN_CODE
+
+#ifdef MR_maybe_local_thread_engine_base
+	#undef MR_maybe_local_thread_engine_base
+	#define MR_maybe_local_thread_engine_base MR_local_thread_engine_base
+#endif
+MR_define_entry(mercury____Compare___ml_backend__mlds__finality_0_0);
+	MR_MAYBE_INIT_LOCAL_THREAD_ENGINE_BASE
+	MR_np_tailcall_ent(private_builtin__builtin_compare_int_3_0);
+#ifdef MR_maybe_local_thread_engine_base
+	#undef MR_maybe_local_thread_engine_base
+	#define MR_maybe_local_thread_engine_base MR_thread_engine_base
+#endif
+MR_END_MODULE
+
+
+MR_BEGIN_MODULE(ml_backend__mlds_module39)
+	MR_init_entry1(__Unify___ml_backend__mlds__foreign_import_name_0_0);
+	MR_init_label1(__Unify___ml_backend__mlds__foreign_import_name_0_0,6)
+MR_BEGIN_CODE
+
+#ifdef MR_maybe_local_thread_engine_base
+	#undef MR_maybe_local_thread_engine_base
+	#define MR_maybe_local_thread_engine_base MR_local_thread_engine_base
+#endif
+MR_define_entry(mercury____Unify___ml_backend__mlds__foreign_import_name_0_0);
+	MR_MAYBE_INIT_LOCAL_THREAD_ENGINE_BASE
+	if ((MR_r1 == MR_r2)) {
+		MR_GOTO_LAB(__Unify___ml_backend__mlds__foreign_import_name_0_0_i6);
+	}
+	MR_incr_sp(3);
+	MR_sv(3) = (MR_Word) MR_succip;
+	MR_sv(1) = MR_r1;
+	MR_sv(2) = MR_r2;
+	MR_decr_sp(3);
+	MR_np_tailcall_ent(__Unify___ml_backend__mlds__mlds_module_name_0_0);
+MR_def_label(__Unify___ml_backend__mlds__foreign_import_name_0_0,6)
+	MR_MAYBE_INIT_LOCAL_THREAD_ENGINE_BASE
+	MR_r1 = MR_TRUE;
+	MR_proceed();
+#ifdef MR_maybe_local_thread_engine_base
+	#undef MR_maybe_local_thread_engine_base
+	#define MR_maybe_local_thread_engine_base MR_thread_engine_base
+#endif
+MR_END_MODULE
+
+
+MR_BEGIN_MODULE(ml_backend__mlds_module40)
+	MR_init_entry1(__Compare___ml_backend__mlds__foreign_import_name_0_0);
+	MR_init_label2(__Compare___ml_backend__mlds__foreign_import_name_0_0,3,2)
+MR_BEGIN_CODE
+
+#ifdef MR_maybe_local_thread_engine_base
+	#undef MR_maybe_local_thread_engine_base
+	#define MR_maybe_local_thread_engine_base MR_local_thread_engine_base
+#endif
+MR_define_entry(mercury____Compare___ml_backend__mlds__foreign_import_name_0_0);
+	MR_MAYBE_INIT_LOCAL_THREAD_ENGINE_BASE
+	if ((MR_r1 == MR_r2)) {
+		MR_GOTO_LAB(__Compare___ml_backend__mlds__foreign_import_name_0_0_i3);
+	}
+	MR_incr_sp(3);
+	MR_sv(3) = (MR_Word) MR_succip;
+	MR_sv(1) = MR_r1;
+	MR_sv(2) = MR_r2;
+	MR_GOTO_LAB(__Compare___ml_backend__mlds__foreign_import_name_0_0_i2);
+MR_def_label(__Compare___ml_backend__mlds__foreign_import_name_0_0,3)
+	MR_MAYBE_INIT_LOCAL_THREAD_ENGINE_BASE
+	MR_r1 = (MR_Integer) 0;
+	MR_proceed();
+MR_def_label(__Compare___ml_backend__mlds__foreign_import_name_0_0,2)
+	MR_MAYBE_INIT_LOCAL_THREAD_ENGINE_BASE
+	MR_r1 = MR_sv(1);
+	MR_r2 = MR_sv(2);
+	MR_succip_word = MR_sv(3);
+	MR_decr_sp(3);
+	MR_np_tailcall_ent(__Compare___ml_backend__mlds__mlds_module_name_0_0);
+#ifdef MR_maybe_local_thread_engine_base
+	#undef MR_maybe_local_thread_engine_base
+	#define MR_maybe_local_thread_engine_base MR_thread_engine_base
+#endif
+MR_END_MODULE
+
+
+MR_BEGIN_MODULE(ml_backend__mlds_module41)
+	MR_init_entry1(__Unify___ml_backend__mlds__global_var_ref_0_0);
+	MR_init_label1(__Unify___ml_backend__mlds__global_var_ref_0_0,4)
+MR_BEGIN_CODE
+
+#ifdef MR_maybe_local_thread_engine_base
+	#undef MR_maybe_local_thread_engine_base
+	#define MR_maybe_local_thread_engine_base MR_local_thread_engine_base
+#endif
+MR_define_entry(mercury____Unify___ml_backend__mlds__global_var_ref_0_0);
+	MR_MAYBE_INIT_LOCAL_THREAD_ENGINE_BASE
+	MR_incr_sp(2);
+	if ((MR_r1 == MR_r2)) {
+		MR_GOTO_LAB(__Unify___ml_backend__mlds__global_var_ref_0_0_i4);
+	}
+	MR_sv(1) = MR_r1;
+	MR_sv(2) = MR_r2;
+	MR_r1 = (strcmp((char *) (MR_Word *) MR_sv(1), (char *) (MR_Word *) MR_sv(2)) == 0);
+	MR_decr_sp(2);
+	MR_proceed();
+MR_def_label(__Unify___ml_backend__mlds__global_var_ref_0_0,4)
+	MR_MAYBE_INIT_LOCAL_THREAD_ENGINE_BASE
+	MR_decr_sp(2);
+	MR_r1 = MR_TRUE;
+	MR_proceed();
+#ifdef MR_maybe_local_thread_engine_base
+	#undef MR_maybe_local_thread_engine_base
+	#define MR_maybe_local_thread_engine_base MR_thread_engine_base
+#endif
+MR_END_MODULE
+
+MR_decl_entry(private_builtin__builtin_compare_string_3_0);
+
+MR_BEGIN_MODULE(ml_backend__mlds_module42)
+	MR_init_entry1(__Compare___ml_backend__mlds__global_var_ref_0_0);
+	MR_init_label2(__Compare___ml_backend__mlds__global_var_ref_0_0,3,2)
+MR_BEGIN_CODE
+
+#ifdef MR_maybe_local_thread_engine_base
+	#undef MR_maybe_local_thread_engine_base
+	#define MR_maybe_local_thread_engine_base MR_local_thread_engine_base
+#endif
+MR_define_entry(mercury____Compare___ml_backend__mlds__global_var_ref_0_0);
+	MR_MAYBE_INIT_LOCAL_THREAD_ENGINE_BASE
+	if ((MR_r1 == MR_r2)) {
+		MR_GOTO_LAB(__Compare___ml_backend__mlds__global_var_ref_0_0_i3);
+	}
+	MR_incr_sp(3);
+	MR_sv(3) = (MR_Word) MR_succip;
+	MR_sv(1) = MR_r1;
+	MR_sv(2) = MR_r2;
+	MR_GOTO_LAB(__Compare___ml_backend__mlds__global_var_ref_0_0_i2);
+MR_def_label(__Compare___ml_backend__mlds__global_var_ref_0_0,3)
+	MR_MAYBE_INIT_LOCAL_THREAD_ENGINE_BASE
+	MR_r1 = (MR_Integer) 0;
+	MR_proceed();
+MR_def_label(__Compare___ml_backend__mlds__global_var_ref_0_0,2)
+	MR_MAYBE_INIT_LOCAL_THREAD_ENGINE_BASE
+	MR_r1 = MR_sv(1);
+	MR_r2 = MR_sv(2);
+	MR_succip_word = MR_sv(3);
+	MR_decr_sp(3);
+	MR_np_tailcall_ent(private_builtin__builtin_compare_string_3_0);
+#ifdef MR_maybe_local_thread_engine_base
+	#undef MR_maybe_local_thread_engine_base
+	#define MR_maybe_local_thread_engine_base MR_thread_engine_base
+#endif
+MR_END_MODULE
+
+
+MR_BEGIN_MODULE(ml_backend__mlds_module43)
+	MR_init_entry1(__Unify___ml_backend__mlds__mercury_mlds_import_type_0_0);
+MR_BEGIN_CODE
+
+#ifdef MR_maybe_local_thread_engine_base
+	#undef MR_maybe_local_thread_engine_base
+	#define MR_maybe_local_thread_engine_base MR_local_thread_engine_base
+#endif
+MR_define_entry(mercury____Unify___ml_backend__mlds__mercury_mlds_import_type_0_0);
+	MR_MAYBE_INIT_LOCAL_THREAD_ENGINE_BASE
+	MR_r1 = (MR_r1 == MR_r2);
+	MR_proceed();
+#ifdef MR_maybe_local_thread_engine_base
+	#undef MR_maybe_local_thread_engine_base
+	#define MR_maybe_local_thread_engine_base MR_thread_engine_base
+#endif
+MR_END_MODULE
+
+
+MR_BEGIN_MODULE(ml_backend__mlds_module44)
+	MR_init_entry1(__Compare___ml_backend__mlds__mercury_mlds_import_type_0_0);
+MR_BEGIN_CODE
+
+#ifdef MR_maybe_local_thread_engine_base
+	#undef MR_maybe_local_thread_engine_base
+	#define MR_maybe_local_thread_engine_base MR_local_thread_engine_base
+#endif
+MR_define_entry(mercury____Compare___ml_backend__mlds__mercury_mlds_import_type_0_0);
+	MR_MAYBE_INIT_LOCAL_THREAD_ENGINE_BASE
+	MR_np_tailcall_ent(private_builtin__builtin_compare_int_3_0);
+#ifdef MR_maybe_local_thread_engine_base
+	#undef MR_maybe_local_thread_engine_base
+	#define MR_maybe_local_thread_engine_base MR_thread_engine_base
+#endif
+MR_END_MODULE
+
+
+MR_BEGIN_MODULE(ml_backend__mlds_module45)
+	MR_init_entry1(__Unify___ml_backend__mlds__mercury_module_name_0_0);
+MR_BEGIN_CODE
+
+#ifdef MR_maybe_local_thread_engine_base
+	#undef MR_maybe_local_thread_engine_base
+	#define MR_maybe_local_thread_engine_base MR_local_thread_engine_base
+#endif
+MR_define_entry(mercury____Unify___ml_backend__mlds__mercury_module_name_0_0);
+	MR_MAYBE_INIT_LOCAL_THREAD_ENGINE_BASE
+	MR_np_tailcall_ent(__Unify___mdbcomp__prim_data__sym_name_0_0);
+#ifdef MR_maybe_local_thread_engine_base
+	#undef MR_maybe_local_thread_engine_base
+	#define MR_maybe_local_thread_engine_base MR_thread_engine_base
+#endif
+MR_END_MODULE
+
+MR_decl_entry(__Compare___mdbcomp__prim_data__sym_name_0_0);
+
+MR_BEGIN_MODULE(ml_backend__mlds_module46)
+	MR_init_entry1(__Compare___ml_backend__mlds__mercury_module_name_0_0);
+MR_BEGIN_CODE
+
+#ifdef MR_maybe_local_thread_engine_base
+	#undef MR_maybe_local_thread_engine_base
+	#define MR_maybe_local_thread_engine_base MR_local_thread_engine_base
+#endif
+MR_define_entry(mercury____Compare___ml_backend__mlds__mercury_module_name_0_0);
+	MR_MAYBE_INIT_LOCAL_THREAD_ENGINE_BASE
+	MR_np_tailcall_ent(__Compare___mdbcomp__prim_data__sym_name_0_0);
+#ifdef MR_maybe_local_thread_engine_base
+	#undef MR_maybe_local_thread_engine_base
+	#define MR_maybe_local_thread_engine_base MR_thread_engine_base
+#endif
+MR_END_MODULE
+
+
+MR_BEGIN_MODULE(ml_backend__mlds_module47)
+	MR_init_entry1(__Unify___ml_backend__mlds__ml_call_kind_0_0);
+MR_BEGIN_CODE
+
+#ifdef MR_maybe_local_thread_engine_base
+	#undef MR_maybe_local_thread_engine_base
+	#define MR_maybe_local_thread_engine_base MR_local_thread_engine_base
+#endif
+MR_define_entry(mercury____Unify___ml_backend__mlds__ml_call_kind_0_0);
+	MR_MAYBE_INIT_LOCAL_THREAD_ENGINE_BASE
+	MR_r1 = (MR_r1 == MR_r2);
+	MR_proceed();
+#ifdef MR_maybe_local_thread_engine_base
+	#undef MR_maybe_local_thread_engine_base
+	#define MR_maybe_local_thread_engine_base MR_thread_engine_base
+#endif
+MR_END_MODULE
+
+
+MR_BEGIN_MODULE(ml_backend__mlds_module48)
+	MR_init_entry1(__Compare___ml_backend__mlds__ml_call_kind_0_0);
+MR_BEGIN_CODE
+
+#ifdef MR_maybe_local_thread_engine_base
+	#undef MR_maybe_local_thread_engine_base
+	#define MR_maybe_local_thread_engine_base MR_local_thread_engine_base
+#endif
+MR_define_entry(mercury____Compare___ml_backend__mlds__ml_call_kind_0_0);
+	MR_MAYBE_INIT_LOCAL_THREAD_ENGINE_BASE
+	MR_np_tailcall_ent(private_builtin__builtin_compare_int_3_0);
+#ifdef MR_maybe_local_thread_engine_base
+	#undef MR_maybe_local_thread_engine_base
+	#define MR_maybe_local_thread_engine_base MR_thread_engine_base
+#endif
+MR_END_MODULE
+
+MR_decl_entry(__Unify___tree234__tree234_2_0);
+extern const MR_TypeCtorInfo_Struct mercury_data_builtin__type_ctor_info_string_0;
+
+MR_BEGIN_MODULE(ml_backend__mlds_module49)
+	MR_init_entry1(__Unify___ml_backend__mlds__mlds_0_0);
+	MR_init_label8(__Unify___ml_backend__mlds__mlds_0_0,4,6,8,10,12,14,18,1)
+MR_BEGIN_CODE
+
+#ifdef MR_maybe_local_thread_engine_base
+	#undef MR_maybe_local_thread_engine_base
+	#define MR_maybe_local_thread_engine_base MR_local_thread_engine_base
+#endif
+MR_define_entry(mercury____Unify___ml_backend__mlds__mlds_0_0);
+	MR_MAYBE_INIT_LOCAL_THREAD_ENGINE_BASE
+	if ((MR_r1 == MR_r2)) {
+		MR_GOTO_LAB(__Unify___ml_backend__mlds__mlds_0_0_i18);
+	}
+	MR_incr_sp(13);
+	MR_sv(13) = (MR_Word) MR_succip;
+	MR_sv(1) = MR_r1;
+	MR_sv(2) = MR_r2;
+	{
+	MR_Word MR_tempr1, MR_tempr2;
+	MR_tempr1 = MR_sv(1);
+	MR_sv(1) = MR_ctfield(0, MR_tempr1, 1);
+	MR_tempr2 = MR_sv(2);
+	MR_sv(2) = MR_ctfield(0, MR_tempr1, 2);
+	MR_sv(3) = MR_ctfield(0, MR_tempr1, 3);
+	MR_sv(4) = MR_ctfield(0, MR_tempr1, 4);
+	MR_sv(5) = MR_ctfield(0, MR_tempr1, 5);
+	MR_sv(6) = MR_ctfield(0, MR_tempr1, 6);
+	MR_sv(7) = MR_ctfield(0, MR_tempr2, 1);
+	MR_sv(8) = MR_ctfield(0, MR_tempr2, 2);
+	MR_sv(9) = MR_ctfield(0, MR_tempr2, 3);
+	MR_sv(10) = MR_ctfield(0, MR_tempr2, 4);
+	MR_sv(11) = MR_ctfield(0, MR_tempr2, 5);
+	MR_sv(12) = MR_ctfield(0, MR_tempr2, 6);
+	MR_r1 = MR_ctfield(0, MR_tempr1, 0);
+	MR_r2 = MR_ctfield(0, MR_tempr2, 0);
+	}
+	MR_np_call_localret_ent(__Unify___mdbcomp__prim_data__sym_name_0_0,
+		__Unify___ml_backend__mlds__mlds_0_0_i4);
+MR_def_label(__Unify___ml_backend__mlds__mlds_0_0,4)
+	MR_MAYBE_INIT_LOCAL_THREAD_ENGINE_BASE
+	if (!(MR_r1)) {
+		MR_GOTO_LAB(__Unify___ml_backend__mlds__mlds_0_0_i1);
+	}
+	MR_r1 = (MR_Word) MR_CTOR0_ADDR(libs__globals, foreign_language);
+	MR_r2 = (MR_Word) MR_CTOR0_ADDR(ml_backend__mlds, mlds_foreign_code);
+	MR_r3 = MR_sv(1);
+	MR_r4 = MR_sv(7);
+	MR_np_call_localret_ent(__Unify___tree234__tree234_2_0,
+		__Unify___ml_backend__mlds__mlds_0_0_i6);
+MR_def_label(__Unify___ml_backend__mlds__mlds_0_0,6)
+	MR_MAYBE_INIT_LOCAL_THREAD_ENGINE_BASE
+	if (!(MR_r1)) {
+		MR_GOTO_LAB(__Unify___ml_backend__mlds__mlds_0_0_i1);
+	}
+	MR_r1 = (MR_Word) MR_CTOR0_ADDR(ml_backend__mlds, mlds_import);
+	MR_r2 = MR_sv(2);
+	MR_r3 = MR_sv(8);
+	MR_np_call_localret_ent(__Unify___list__list_1_0,
+		__Unify___ml_backend__mlds__mlds_0_0_i8);
+MR_def_label(__Unify___ml_backend__mlds__mlds_0_0,8)
+	MR_MAYBE_INIT_LOCAL_THREAD_ENGINE_BASE
+	if (!(MR_r1)) {
+		MR_GOTO_LAB(__Unify___ml_backend__mlds__mlds_0_0_i1);
+	}
+	MR_r1 = (MR_Word) MR_CTOR0_ADDR(ml_backend__mlds, mlds_defn);
+	MR_r2 = MR_sv(3);
+	MR_r3 = MR_sv(9);
+	MR_np_call_localret_ent(__Unify___list__list_1_0,
+		__Unify___ml_backend__mlds__mlds_0_0_i10);
+MR_def_label(__Unify___ml_backend__mlds__mlds_0_0,10)
+	MR_MAYBE_INIT_LOCAL_THREAD_ENGINE_BASE
+	if (!(MR_r1)) {
+		MR_GOTO_LAB(__Unify___ml_backend__mlds__mlds_0_0_i1);
+	}
+	MR_sv(1) = (MR_Word) MR_STRING_CTOR_ADDR;
+	MR_r1 = MR_sv(1);
+	MR_r2 = MR_sv(4);
+	MR_r3 = MR_sv(10);
+	MR_np_call_localret_ent(__Unify___list__list_1_0,
+		__Unify___ml_backend__mlds__mlds_0_0_i12);
+MR_def_label(__Unify___ml_backend__mlds__mlds_0_0,12)
+	MR_MAYBE_INIT_LOCAL_THREAD_ENGINE_BASE
+	if (!(MR_r1)) {
+		MR_GOTO_LAB(__Unify___ml_backend__mlds__mlds_0_0_i1);
+	}
+	MR_r1 = MR_sv(1);
+	MR_r2 = MR_sv(5);
+	MR_r3 = MR_sv(11);
+	MR_np_call_localret_ent(__Unify___list__list_1_0,
+		__Unify___ml_backend__mlds__mlds_0_0_i14);
+MR_def_label(__Unify___ml_backend__mlds__mlds_0_0,14)
+	MR_MAYBE_INIT_LOCAL_THREAD_ENGINE_BASE
+	if (!(MR_r1)) {
+		MR_GOTO_LAB(__Unify___ml_backend__mlds__mlds_0_0_i1);
+	}
+	MR_r1 = (MR_Word) MR_CTOR0_ADDR(ml_backend__mlds, mlds_exported_enum);
+	MR_r2 = MR_sv(6);
+	MR_r3 = MR_sv(12);
+	MR_succip_word = MR_sv(13);
+	MR_decr_sp(13);
+	MR_np_tailcall_ent(__Unify___list__list_1_0);
+MR_def_label(__Unify___ml_backend__mlds__mlds_0_0,18)
+	MR_MAYBE_INIT_LOCAL_THREAD_ENGINE_BASE
+	MR_r1 = MR_TRUE;
+	MR_proceed();
+MR_def_label(__Unify___ml_backend__mlds__mlds_0_0,1)
+	MR_MAYBE_INIT_LOCAL_THREAD_ENGINE_BASE
+	MR_r1 = MR_FALSE;
+	MR_decr_sp_and_return(13);
+#ifdef MR_maybe_local_thread_engine_base
+	#undef MR_maybe_local_thread_engine_base
+	#define MR_maybe_local_thread_engine_base MR_thread_engine_base
+#endif
+MR_END_MODULE
+
+MR_decl_entry(__Compare___tree234__tree234_2_0);
+MR_decl_entry(__Compare___list__list_1_0);
+
+MR_BEGIN_MODULE(ml_backend__mlds_module50)
+	MR_init_entry1(__Compare___ml_backend__mlds__mlds_0_0);
+	MR_init_label8(__Compare___ml_backend__mlds__mlds_0_0,3,2,5,9,13,17,21,25)
+	MR_init_label1(__Compare___ml_backend__mlds__mlds_0_0,61)
+MR_BEGIN_CODE
+
+#ifdef MR_maybe_local_thread_engine_base
+	#undef MR_maybe_local_thread_engine_base
+	#define MR_maybe_local_thread_engine_base MR_local_thread_engine_base
+#endif
+MR_define_entry(mercury____Compare___ml_backend__mlds__mlds_0_0);
+	MR_MAYBE_INIT_LOCAL_THREAD_ENGINE_BASE
+	if ((MR_r1 == MR_r2)) {
+		MR_GOTO_LAB(__Compare___ml_backend__mlds__mlds_0_0_i3);
+	}
+	MR_incr_sp(13);
+	MR_sv(13) = (MR_Word) MR_succip;
+	MR_sv(1) = MR_r1;
+	MR_sv(2) = MR_r2;
+	MR_GOTO_LAB(__Compare___ml_backend__mlds__mlds_0_0_i2);
+MR_def_label(__Compare___ml_backend__mlds__mlds_0_0,3)
+	MR_MAYBE_INIT_LOCAL_THREAD_ENGINE_BASE
+	MR_r1 = (MR_Integer) 0;
+	MR_proceed();
+MR_def_label(__Compare___ml_backend__mlds__mlds_0_0,2)
+	MR_MAYBE_INIT_LOCAL_THREAD_ENGINE_BASE
+	{
+	MR_Word MR_tempr1, MR_tempr2, MR_tempr3, MR_tempr4, MR_tempr5, MR_tempr6;
+	MR_tempr5 = MR_sv(2);
+	MR_sv(12) = MR_ctfield(0, MR_tempr5, 6);
+	MR_sv(11) = MR_ctfield(0, MR_tempr5, 5);
+	MR_sv(10) = MR_ctfield(0, MR_tempr5, 4);
+	MR_sv(9) = MR_ctfield(0, MR_tempr5, 3);
+	MR_sv(8) = MR_ctfield(0, MR_tempr5, 2);
+	MR_sv(7) = MR_ctfield(0, MR_tempr5, 1);
+	MR_tempr6 = MR_sv(1);
+	MR_sv(6) = MR_ctfield(0, MR_tempr6, 6);
+	MR_sv(5) = MR_ctfield(0, MR_tempr6, 5);
+	MR_sv(4) = MR_ctfield(0, MR_tempr6, 4);
+	MR_sv(3) = MR_ctfield(0, MR_tempr6, 3);
+	MR_tempr1 = MR_ctfield(0, MR_tempr6, 2);
+	MR_tempr2 = MR_ctfield(0, MR_tempr6, 1);
+	MR_tempr3 = MR_tempr6;
+	MR_sv(1) = MR_tempr2;
+	MR_tempr4 = MR_tempr5;
+	MR_sv(2) = MR_tempr1;
+	MR_r1 = MR_ctfield(0, MR_tempr3, 0);
+	MR_r2 = MR_ctfield(0, MR_tempr4, 0);
+	}
+	MR_np_call_localret_ent(__Compare___mdbcomp__prim_data__sym_name_0_0,
+		__Compare___ml_backend__mlds__mlds_0_0_i5);
+MR_def_label(__Compare___ml_backend__mlds__mlds_0_0,5)
+	MR_MAYBE_INIT_LOCAL_THREAD_ENGINE_BASE
+	if (MR_INT_NE(MR_r1,0)) {
+		MR_GOTO_LAB(__Compare___ml_backend__mlds__mlds_0_0_i61);
+	}
+	MR_r1 = (MR_Word) MR_CTOR0_ADDR(libs__globals, foreign_language);
+	MR_r2 = (MR_Word) MR_CTOR0_ADDR(ml_backend__mlds, mlds_foreign_code);
+	MR_r3 = MR_sv(1);
+	MR_r4 = MR_sv(7);
+	MR_np_call_localret_ent(__Compare___tree234__tree234_2_0,
+		__Compare___ml_backend__mlds__mlds_0_0_i9);
+MR_def_label(__Compare___ml_backend__mlds__mlds_0_0,9)
+	MR_MAYBE_INIT_LOCAL_THREAD_ENGINE_BASE
+	if (MR_INT_NE(MR_r1,0)) {
+		MR_GOTO_LAB(__Compare___ml_backend__mlds__mlds_0_0_i61);
+	}
+	MR_r1 = (MR_Word) MR_CTOR0_ADDR(ml_backend__mlds, mlds_import);
+	MR_r2 = MR_sv(2);
+	MR_r3 = MR_sv(8);
+	MR_np_call_localret_ent(__Compare___list__list_1_0,
+		__Compare___ml_backend__mlds__mlds_0_0_i13);
+MR_def_label(__Compare___ml_backend__mlds__mlds_0_0,13)
+	MR_MAYBE_INIT_LOCAL_THREAD_ENGINE_BASE
+	if (MR_INT_NE(MR_r1,0)) {
+		MR_GOTO_LAB(__Compare___ml_backend__mlds__mlds_0_0_i61);
+	}
+	MR_r1 = (MR_Word) MR_CTOR0_ADDR(ml_backend__mlds, mlds_defn);
+	MR_r2 = MR_sv(3);
+	MR_r3 = MR_sv(9);
+	MR_np_call_localret_ent(__Compare___list__list_1_0,
+		__Compare___ml_backend__mlds__mlds_0_0_i17);
+MR_def_label(__Compare___ml_backend__mlds__mlds_0_0,17)
+	MR_MAYBE_INIT_LOCAL_THREAD_ENGINE_BASE
+	if (MR_INT_NE(MR_r1,0)) {
+		MR_GOTO_LAB(__Compare___ml_backend__mlds__mlds_0_0_i61);
+	}
+	MR_r1 = (MR_Word) MR_STRING_CTOR_ADDR;
+	MR_r2 = MR_sv(4);
+	MR_r3 = MR_sv(10);
+	MR_np_call_localret_ent(__Compare___list__list_1_0,
+		__Compare___ml_backend__mlds__mlds_0_0_i21);
+MR_def_label(__Compare___ml_backend__mlds__mlds_0_0,21)
+	MR_MAYBE_INIT_LOCAL_THREAD_ENGINE_BASE
+	if (MR_INT_NE(MR_r1,0)) {
+		MR_GOTO_LAB(__Compare___ml_backend__mlds__mlds_0_0_i61);
+	}
+	MR_r1 = (MR_Word) MR_STRING_CTOR_ADDR;
+	MR_r2 = MR_sv(5);
+	MR_r3 = MR_sv(11);
+	MR_np_call_localret_ent(__Compare___list__list_1_0,
+		__Compare___ml_backend__mlds__mlds_0_0_i25);
+MR_def_label(__Compare___ml_backend__mlds__mlds_0_0,25)
+	MR_MAYBE_INIT_LOCAL_THREAD_ENGINE_BASE
+	if (MR_INT_NE(MR_r1,0)) {
+		MR_GOTO_LAB(__Compare___ml_backend__mlds__mlds_0_0_i61);
+	}
+	MR_r1 = (MR_Word) MR_CTOR0_ADDR(ml_backend__mlds, mlds_exported_enum);
+	MR_r2 = MR_sv(6);
+	MR_r3 = MR_sv(12);
+	MR_succip_word = MR_sv(13);
+	MR_decr_sp(13);
+	MR_np_tailcall_ent(__Compare___list__list_1_0);
+MR_def_label(__Compare___ml_backend__mlds__mlds_0_0,61)
+	MR_MAYBE_INIT_LOCAL_THREAD_ENGINE_BASE
+	MR_decr_sp_and_return(13);
+#ifdef MR_maybe_local_thread_engine_base
+	#undef MR_maybe_local_thread_engine_base
+	#define MR_maybe_local_thread_engine_base MR_thread_engine_base
+#endif
+MR_END_MODULE
+
+
+MR_BEGIN_MODULE(ml_backend__mlds_module51)
+	MR_init_entry1(__Unify___ml_backend__mlds__mlds_arg_types_0_0);
+MR_BEGIN_CODE
+
+#ifdef MR_maybe_local_thread_engine_base
+	#undef MR_maybe_local_thread_engine_base
+	#define MR_maybe_local_thread_engine_base MR_local_thread_engine_base
+#endif
+MR_define_entry(mercury____Unify___ml_backend__mlds__mlds_arg_types_0_0);
+	MR_MAYBE_INIT_LOCAL_THREAD_ENGINE_BASE
+	{
+	MR_Word MR_tempr1, MR_tempr2;
+	MR_tempr1 = MR_r1;
+	MR_r1 = (MR_Word) MR_CTOR0_ADDR(ml_backend__mlds, mlds_type);
+	MR_tempr2 = MR_r2;
+	MR_r2 = MR_tempr1;
+	MR_r3 = MR_tempr2;
+	MR_np_tailcall_ent(__Unify___list__list_1_0);
+	}
+#ifdef MR_maybe_local_thread_engine_base
+	#undef MR_maybe_local_thread_engine_base
+	#define MR_maybe_local_thread_engine_base MR_thread_engine_base
+#endif
+MR_END_MODULE
+
+
+MR_BEGIN_MODULE(ml_backend__mlds_module52)
+	MR_init_entry1(__Compare___ml_backend__mlds__mlds_arg_types_0_0);
+MR_BEGIN_CODE
+
+#ifdef MR_maybe_local_thread_engine_base
+	#undef MR_maybe_local_thread_engine_base
+	#define MR_maybe_local_thread_engine_base MR_local_thread_engine_base
+#endif
+MR_define_entry(mercury____Compare___ml_backend__mlds__mlds_arg_types_0_0);
+	MR_MAYBE_INIT_LOCAL_THREAD_ENGINE_BASE
+	{
+	MR_Word MR_tempr1, MR_tempr2;
+	MR_tempr1 = MR_r1;
+	MR_r1 = (MR_Word) MR_CTOR0_ADDR(ml_backend__mlds, mlds_type);
+	MR_tempr2 = MR_r2;
+	MR_r2 = MR_tempr1;
+	MR_r3 = MR_tempr2;
+	MR_np_tailcall_ent(__Compare___list__list_1_0);
+	}
+#ifdef MR_maybe_local_thread_engine_base
+	#undef MR_maybe_local_thread_engine_base
+	#define MR_maybe_local_thread_engine_base MR_thread_engine_base
+#endif
+MR_END_MODULE
+
+
+MR_BEGIN_MODULE(ml_backend__mlds_module53)
+	MR_init_entry1(__Unify___ml_backend__mlds__mlds_argument_0_0);
+	MR_init_label4(__Unify___ml_backend__mlds__mlds_argument_0_0,4,6,10,1)
+MR_BEGIN_CODE
+
+#ifdef MR_maybe_local_thread_engine_base
+	#undef MR_maybe_local_thread_engine_base
+	#define MR_maybe_local_thread_engine_base MR_local_thread_engine_base
+#endif
+MR_define_entry(mercury____Unify___ml_backend__mlds__mlds_argument_0_0);
+	MR_MAYBE_INIT_LOCAL_THREAD_ENGINE_BASE
+	if ((MR_r1 == MR_r2)) {
+		MR_GOTO_LAB(__Unify___ml_backend__mlds__mlds_argument_0_0_i10);
+	}
+	MR_incr_sp(5);
+	MR_sv(5) = (MR_Word) MR_succip;
+	MR_sv(1) = MR_r1;
+	MR_sv(2) = MR_r2;
+	{
+	MR_Word MR_tempr1, MR_tempr2;
+	MR_tempr1 = MR_sv(1);
+	MR_sv(1) = MR_ctfield(0, MR_tempr1, 1);
+	MR_tempr2 = MR_sv(2);
+	MR_sv(2) = MR_ctfield(0, MR_tempr1, 2);
+	MR_sv(3) = MR_ctfield(0, MR_tempr2, 1);
+	MR_sv(4) = MR_ctfield(0, MR_tempr2, 2);
+	MR_r1 = MR_ctfield(0, MR_tempr1, 0);
+	MR_r2 = MR_ctfield(0, MR_tempr2, 0);
+	}
+	MR_np_call_localret_ent(__Unify___ml_backend__mlds__mlds_entity_name_0_0,
+		__Unify___ml_backend__mlds__mlds_argument_0_0_i4);
+MR_def_label(__Unify___ml_backend__mlds__mlds_argument_0_0,4)
+	MR_MAYBE_INIT_LOCAL_THREAD_ENGINE_BASE
+	if (!(MR_r1)) {
+		MR_GOTO_LAB(__Unify___ml_backend__mlds__mlds_argument_0_0_i1);
+	}
+	MR_r1 = MR_sv(1);
+	MR_r2 = MR_sv(3);
+	MR_np_call_localret_ent(__Unify___ml_backend__mlds__mlds_type_0_0,
+		__Unify___ml_backend__mlds__mlds_argument_0_0_i6);
+MR_def_label(__Unify___ml_backend__mlds__mlds_argument_0_0,6)
+	MR_MAYBE_INIT_LOCAL_THREAD_ENGINE_BASE
+	if (!(MR_r1)) {
+		MR_GOTO_LAB(__Unify___ml_backend__mlds__mlds_argument_0_0_i1);
+	}
+	MR_r1 = MR_sv(2);
+	MR_r2 = MR_sv(4);
+	MR_succip_word = MR_sv(5);
+	MR_decr_sp(5);
+	MR_np_tailcall_ent(__Unify___ml_backend__mlds__mlds_gc_statement_0_0);
+MR_def_label(__Unify___ml_backend__mlds__mlds_argument_0_0,10)
+	MR_MAYBE_INIT_LOCAL_THREAD_ENGINE_BASE
+	MR_r1 = MR_TRUE;
+	MR_proceed();
+MR_def_label(__Unify___ml_backend__mlds__mlds_argument_0_0,1)
+	MR_MAYBE_INIT_LOCAL_THREAD_ENGINE_BASE
+	MR_r1 = MR_FALSE;
+	MR_decr_sp_and_return(5);
+#ifdef MR_maybe_local_thread_engine_base
+	#undef MR_maybe_local_thread_engine_base
+	#define MR_maybe_local_thread_engine_base MR_thread_engine_base
+#endif
+MR_END_MODULE
+
+
+MR_BEGIN_MODULE(ml_backend__mlds_module54)
+	MR_init_entry1(__Compare___ml_backend__mlds__mlds_argument_0_0);
+	MR_init_label5(__Compare___ml_backend__mlds__mlds_argument_0_0,3,2,5,9,29)
+MR_BEGIN_CODE
+
+#ifdef MR_maybe_local_thread_engine_base
+	#undef MR_maybe_local_thread_engine_base
+	#define MR_maybe_local_thread_engine_base MR_local_thread_engine_base
+#endif
+MR_define_entry(mercury____Compare___ml_backend__mlds__mlds_argument_0_0);
+	MR_MAYBE_INIT_LOCAL_THREAD_ENGINE_BASE
+	if ((MR_r1 == MR_r2)) {
+		MR_GOTO_LAB(__Compare___ml_backend__mlds__mlds_argument_0_0_i3);
+	}
+	MR_incr_sp(5);
+	MR_sv(5) = (MR_Word) MR_succip;
+	MR_sv(1) = MR_r1;
+	MR_sv(2) = MR_r2;
+	MR_GOTO_LAB(__Compare___ml_backend__mlds__mlds_argument_0_0_i2);
+MR_def_label(__Compare___ml_backend__mlds__mlds_argument_0_0,3)
+	MR_MAYBE_INIT_LOCAL_THREAD_ENGINE_BASE
+	MR_r1 = (MR_Integer) 0;
+	MR_proceed();
+MR_def_label(__Compare___ml_backend__mlds__mlds_argument_0_0,2)
+	MR_MAYBE_INIT_LOCAL_THREAD_ENGINE_BASE
+	{
+	MR_Word MR_tempr1, MR_tempr2, MR_tempr3, MR_tempr4, MR_tempr5, MR_tempr6;
+	MR_tempr5 = MR_sv(2);
+	MR_sv(4) = MR_ctfield(0, MR_tempr5, 2);
+	MR_sv(3) = MR_ctfield(0, MR_tempr5, 1);
+	MR_tempr6 = MR_sv(1);
+	MR_tempr1 = MR_ctfield(0, MR_tempr6, 2);
+	MR_tempr2 = MR_ctfield(0, MR_tempr6, 1);
+	MR_tempr3 = MR_tempr6;
+	MR_sv(1) = MR_tempr2;
+	MR_tempr4 = MR_tempr5;
+	MR_sv(2) = MR_tempr1;
+	MR_r1 = MR_ctfield(0, MR_tempr3, 0);
+	MR_r2 = MR_ctfield(0, MR_tempr4, 0);
+	}
+	MR_np_call_localret_ent(__Compare___ml_backend__mlds__mlds_entity_name_0_0,
+		__Compare___ml_backend__mlds__mlds_argument_0_0_i5);
+MR_def_label(__Compare___ml_backend__mlds__mlds_argument_0_0,5)
+	MR_MAYBE_INIT_LOCAL_THREAD_ENGINE_BASE
+	if (MR_INT_NE(MR_r1,0)) {
+		MR_GOTO_LAB(__Compare___ml_backend__mlds__mlds_argument_0_0_i29);
+	}
+	MR_r1 = MR_sv(1);
+	MR_r2 = MR_sv(3);
+	MR_np_call_localret_ent(__Compare___ml_backend__mlds__mlds_type_0_0,
+		__Compare___ml_backend__mlds__mlds_argument_0_0_i9);
+MR_def_label(__Compare___ml_backend__mlds__mlds_argument_0_0,9)
+	MR_MAYBE_INIT_LOCAL_THREAD_ENGINE_BASE
+	if (MR_INT_NE(MR_r1,0)) {
+		MR_GOTO_LAB(__Compare___ml_backend__mlds__mlds_argument_0_0_i29);
+	}
+	MR_r1 = MR_sv(2);
+	MR_r2 = MR_sv(4);
+	MR_succip_word = MR_sv(5);
+	MR_decr_sp(5);
+	MR_np_tailcall_ent(__Compare___ml_backend__mlds__mlds_gc_statement_0_0);
+MR_def_label(__Compare___ml_backend__mlds__mlds_argument_0_0,29)
+	MR_MAYBE_INIT_LOCAL_THREAD_ENGINE_BASE
+	MR_decr_sp_and_return(5);
+#ifdef MR_maybe_local_thread_engine_base
+	#undef MR_maybe_local_thread_engine_base
+	#define MR_maybe_local_thread_engine_base MR_thread_engine_base
+#endif
+MR_END_MODULE
+
+
+MR_BEGIN_MODULE(ml_backend__mlds_module55)
+	MR_init_entry1(__Unify___ml_backend__mlds__mlds_arguments_0_0);
+MR_BEGIN_CODE
+
+#ifdef MR_maybe_local_thread_engine_base
+	#undef MR_maybe_local_thread_engine_base
+	#define MR_maybe_local_thread_engine_base MR_local_thread_engine_base
+#endif
+MR_define_entry(mercury____Unify___ml_backend__mlds__mlds_arguments_0_0);
+	MR_MAYBE_INIT_LOCAL_THREAD_ENGINE_BASE
+	{
+	MR_Word MR_tempr1, MR_tempr2;
+	MR_tempr1 = MR_r1;
+	MR_r1 = (MR_Word) MR_CTOR0_ADDR(ml_backend__mlds, mlds_argument);
+	MR_tempr2 = MR_r2;
+	MR_r2 = MR_tempr1;
+	MR_r3 = MR_tempr2;
+	MR_np_tailcall_ent(__Unify___list__list_1_0);
+	}
+#ifdef MR_maybe_local_thread_engine_base
+	#undef MR_maybe_local_thread_engine_base
+	#define MR_maybe_local_thread_engine_base MR_thread_engine_base
+#endif
+MR_END_MODULE
+
+
+MR_BEGIN_MODULE(ml_backend__mlds_module56)
+	MR_init_entry1(__Compare___ml_backend__mlds__mlds_arguments_0_0);
+MR_BEGIN_CODE
+
+#ifdef MR_maybe_local_thread_engine_base
+	#undef MR_maybe_local_thread_engine_base
+	#define MR_maybe_local_thread_engine_base MR_local_thread_engine_base
+#endif
+MR_define_entry(mercury____Compare___ml_backend__mlds__mlds_arguments_0_0);
+	MR_MAYBE_INIT_LOCAL_THREAD_ENGINE_BASE
+	{
+	MR_Word MR_tempr1, MR_tempr2;
+	MR_tempr1 = MR_r1;
+	MR_r1 = (MR_Word) MR_CTOR0_ADDR(ml_backend__mlds, mlds_argument);
+	MR_tempr2 = MR_r2;
+	MR_r2 = MR_tempr1;
+	MR_r3 = MR_tempr2;
+	MR_np_tailcall_ent(__Compare___list__list_1_0);
+	}
+#ifdef MR_maybe_local_thread_engine_base
+	#undef MR_maybe_local_thread_engine_base
+	#define MR_maybe_local_thread_engine_base MR_thread_engine_base
+#endif
+MR_END_MODULE
+
+extern const MR_TypeCtorInfo_Struct mercury_data_builtin__type_ctor_info_int_0;
+MR_decl_entry(__Unify___maybe__maybe_1_0);
+
+MR_BEGIN_MODULE(ml_backend__mlds_module57)
+	MR_init_entry1(__Unify___ml_backend__mlds__mlds_atomic_statement_0_0);
+	MR_init_label8(__Unify___ml_backend__mlds__mlds_atomic_statement_0_0,23,17,5,7,66,11,13,19)
+	MR_init_label8(__Unify___ml_backend__mlds__mlds_atomic_statement_0_0,24,28,32,34,36,38,40,43)
+	MR_init_label8(__Unify___ml_backend__mlds__mlds_atomic_statement_0_0,45,47,49,51,53,55,59,67)
+	MR_init_label1(__Unify___ml_backend__mlds__mlds_atomic_statement_0_0,1)
+MR_BEGIN_CODE
+
+#ifdef MR_maybe_local_thread_engine_base
+	#undef MR_maybe_local_thread_engine_base
+	#define MR_maybe_local_thread_engine_base MR_local_thread_engine_base
+#endif
+MR_define_entry(mercury____Unify___ml_backend__mlds__mlds_atomic_statement_0_0);
+	MR_MAYBE_INIT_LOCAL_THREAD_ENGINE_BASE
+	if ((MR_r1 == MR_r2)) {
+		MR_GOTO_LAB(__Unify___ml_backend__mlds__mlds_atomic_statement_0_0_i67);
+	}
+	MR_incr_sp(17);
+	MR_sv(17) = (MR_Word) MR_succip;
+	MR_sv(1) = MR_r1;
+	MR_sv(2) = MR_r2;
+	MR_COMPUTED_GOTO((MR_Unsigned) MR_tag(MR_sv(1)),
+		MR_LABEL_AP(__Unify___ml_backend__mlds__mlds_atomic_statement_0_0_i23) MR_AND
+		MR_LABEL_AP(__Unify___ml_backend__mlds__mlds_atomic_statement_0_0_i17) MR_AND
+		MR_LABEL_AP(__Unify___ml_backend__mlds__mlds_atomic_statement_0_0_i5) MR_AND
+		MR_LABEL_AP(__Unify___ml_backend__mlds__mlds_atomic_statement_0_0_i66));
+MR_def_label(__Unify___ml_backend__mlds__mlds_atomic_statement_0_0,23)
+	MR_MAYBE_INIT_LOCAL_THREAD_ENGINE_BASE
+	MR_r1 = (MR_sv(2) == MR_sv(1));
+	MR_decr_sp_and_return(17);
+MR_def_label(__Unify___ml_backend__mlds__mlds_atomic_statement_0_0,17)
+	MR_MAYBE_INIT_LOCAL_THREAD_ENGINE_BASE
+	if (MR_PTAG_TESTR(MR_sv(2),1)) {
+		MR_GOTO_LAB(__Unify___ml_backend__mlds__mlds_atomic_statement_0_0_i1);
+	}
+	{
+	MR_Word MR_tempr1, MR_tempr2;
+	MR_tempr1 = MR_ctfield(1, MR_sv(1), 0);
+	MR_tempr2 = MR_ctfield(1, MR_sv(2), 0);
+	MR_r1 = (strcmp((char *) (MR_Word *) MR_tempr1, (char *) (MR_Word *) MR_tempr2) == 0);
+	MR_decr_sp_and_return(17);
+	}
+MR_def_label(__Unify___ml_backend__mlds__mlds_atomic_statement_0_0,5)
+	MR_MAYBE_INIT_LOCAL_THREAD_ENGINE_BASE
+	if (MR_PTAG_TESTR(MR_sv(2),2)) {
+		MR_GOTO_LAB(__Unify___ml_backend__mlds__mlds_atomic_statement_0_0_i1);
+	}
+	{
+	MR_Word MR_tempr1, MR_tempr2;
+	MR_tempr1 = MR_sv(1);
+	MR_sv(1) = MR_ctfield(2, MR_tempr1, 1);
+	MR_tempr2 = MR_sv(2);
+	MR_sv(2) = MR_ctfield(2, MR_tempr2, 1);
+	MR_r1 = MR_ctfield(2, MR_tempr1, 0);
+	MR_r2 = MR_ctfield(2, MR_tempr2, 0);
+	}
+	MR_np_call_localret_ent(__Unify___ml_backend__mlds__mlds_lval_0_0,
+		__Unify___ml_backend__mlds__mlds_atomic_statement_0_0_i7);
+MR_def_label(__Unify___ml_backend__mlds__mlds_atomic_statement_0_0,7)
+	MR_MAYBE_INIT_LOCAL_THREAD_ENGINE_BASE
+	if (!(MR_r1)) {
+		MR_GOTO_LAB(__Unify___ml_backend__mlds__mlds_atomic_statement_0_0_i1);
+	}
+	MR_r1 = MR_sv(1);
+	MR_r2 = MR_sv(2);
+	MR_succip_word = MR_sv(17);
+	MR_decr_sp(17);
+	MR_np_tailcall_ent(__Unify___ml_backend__mlds__mlds_rval_0_0);
+MR_def_label(__Unify___ml_backend__mlds__mlds_atomic_statement_0_0,66)
+	MR_MAYBE_INIT_LOCAL_THREAD_ENGINE_BASE
+	MR_COMPUTED_GOTO((MR_Unsigned) MR_ctfield(3, MR_sv(1), 0),
+		MR_LABEL_AP(__Unify___ml_backend__mlds__mlds_atomic_statement_0_0_i11) MR_AND
+		MR_LABEL_AP(__Unify___ml_backend__mlds__mlds_atomic_statement_0_0_i19) MR_AND
+		MR_LABEL_AP(__Unify___ml_backend__mlds__mlds_atomic_statement_0_0_i32) MR_AND
+		MR_LABEL_AP(__Unify___ml_backend__mlds__mlds_atomic_statement_0_0_i28) MR_AND
+		MR_LABEL_AP(__Unify___ml_backend__mlds__mlds_atomic_statement_0_0_i55) MR_AND
+		MR_LABEL_AP(__Unify___ml_backend__mlds__mlds_atomic_statement_0_0_i59) MR_AND
+		MR_LABEL_AP(__Unify___ml_backend__mlds__mlds_atomic_statement_0_0_i24) MR_AND
+		MR_LABEL_AP(__Unify___ml_backend__mlds__mlds_atomic_statement_0_0_i49));
+MR_def_label(__Unify___ml_backend__mlds__mlds_atomic_statement_0_0,11)
+	MR_MAYBE_INIT_LOCAL_THREAD_ENGINE_BASE
+	if (MR_RTAGS_TESTR(MR_sv(2),3,0)) {
+		MR_GOTO_LAB(__Unify___ml_backend__mlds__mlds_atomic_statement_0_0_i1);
+	}
+	{
+	MR_Word MR_tempr1, MR_tempr2;
+	MR_tempr1 = MR_sv(1);
+	MR_sv(1) = MR_ctfield(3, MR_tempr1, 2);
+	MR_tempr2 = MR_sv(2);
+	MR_sv(2) = MR_ctfield(3, MR_tempr2, 2);
+	MR_r1 = MR_ctfield(3, MR_tempr1, 1);
+	MR_r2 = MR_ctfield(3, MR_tempr2, 1);
+	}
+	MR_np_call_localret_ent(__Unify___ml_backend__mlds__mlds_lval_0_0,
+		__Unify___ml_backend__mlds__mlds_atomic_statement_0_0_i13);
+MR_def_label(__Unify___ml_backend__mlds__mlds_atomic_statement_0_0,13)
+	MR_MAYBE_INIT_LOCAL_THREAD_ENGINE_BASE
+	if (!(MR_r1)) {
+		MR_GOTO_LAB(__Unify___ml_backend__mlds__mlds_atomic_statement_0_0_i1);
+	}
+	MR_r1 = MR_sv(1);
+	MR_r2 = MR_sv(2);
+	MR_succip_word = MR_sv(17);
+	MR_decr_sp(17);
+	MR_np_tailcall_ent(__Unify___ml_backend__mlds__mlds_rval_0_0);
+MR_def_label(__Unify___ml_backend__mlds__mlds_atomic_statement_0_0,19)
+	MR_MAYBE_INIT_LOCAL_THREAD_ENGINE_BASE
+	if (MR_RTAGS_TESTR(MR_sv(2),3,1)) {
+		MR_GOTO_LAB(__Unify___ml_backend__mlds__mlds_atomic_statement_0_0_i1);
+	}
+	MR_r1 = MR_ctfield(3, MR_sv(1), 1);
+	MR_r2 = MR_ctfield(3, MR_sv(2), 1);
+	MR_succip_word = MR_sv(17);
+	MR_decr_sp(17);
+	MR_np_tailcall_ent(__Unify___ml_backend__mlds__mlds_rval_0_0);
+MR_def_label(__Unify___ml_backend__mlds__mlds_atomic_statement_0_0,24)
+	MR_MAYBE_INIT_LOCAL_THREAD_ENGINE_BASE
+	if (MR_RTAGS_TESTR(MR_sv(2),3,6)) {
+		MR_GOTO_LAB(__Unify___ml_backend__mlds__mlds_atomic_statement_0_0_i1);
+	}
+	{
+	MR_Word MR_tempr1, MR_tempr2, MR_tempr3, MR_tempr4;
+	MR_tempr3 = MR_sv(1);
+	MR_tempr1 = MR_ctfield(3, MR_tempr3, 1);
+	MR_tempr4 = MR_sv(2);
+	MR_tempr2 = MR_ctfield(3, MR_tempr4, 1);
+	if ((MR_tempr1 != MR_tempr2)) {
+		MR_GOTO_LAB(__Unify___ml_backend__mlds__mlds_atomic_statement_0_0_i1);
+	}
+	MR_r1 = (MR_Word) MR_CTOR0_ADDR(ml_backend__mlds, target_code_component);
+	MR_r2 = MR_ctfield(3, MR_tempr3, 2);
+	MR_r3 = MR_ctfield(3, MR_tempr4, 2);
+	MR_succip_word = MR_sv(17);
+	MR_decr_sp(17);
+	MR_np_tailcall_ent(__Unify___list__list_1_0);
+	}
+MR_def_label(__Unify___ml_backend__mlds__mlds_atomic_statement_0_0,28)
+	MR_MAYBE_INIT_LOCAL_THREAD_ENGINE_BASE
+	if (MR_RTAGS_TESTR(MR_sv(2),3,3)) {
+		MR_GOTO_LAB(__Unify___ml_backend__mlds__mlds_atomic_statement_0_0_i1);
+	}
+	MR_r1 = MR_ctfield(3, MR_sv(1), 1);
+	MR_r2 = MR_ctfield(3, MR_sv(2), 1);
+	MR_succip_word = MR_sv(17);
+	MR_decr_sp(17);
+	MR_np_tailcall_ent(__Unify___ml_backend__mlds__mlds_lval_0_0);
+MR_def_label(__Unify___ml_backend__mlds__mlds_atomic_statement_0_0,32)
+	MR_MAYBE_INIT_LOCAL_THREAD_ENGINE_BASE
+	if (MR_RTAGS_TESTR(MR_sv(2),3,2)) {
+		MR_GOTO_LAB(__Unify___ml_backend__mlds__mlds_atomic_statement_0_0_i1);
+	}
+	{
+	MR_Word MR_tempr1, MR_tempr2;
+	MR_tempr1 = MR_sv(1);
+	MR_sv(1) = MR_ctfield(3, MR_tempr1, 2);
+	MR_tempr2 = MR_sv(2);
+	MR_sv(2) = MR_ctfield(3, MR_tempr1, 3);
+	MR_sv(3) = MR_ctfield(3, MR_tempr1, 4);
+	MR_sv(4) = MR_ctfield(3, MR_tempr1, 5);
+	MR_sv(5) = MR_ctfield(3, MR_tempr1, 6);
+	MR_sv(6) = MR_ctfield(3, MR_tempr1, 7);
+	MR_sv(7) = MR_ctfield(3, MR_tempr1, 8);
+	MR_sv(8) = MR_ctfield(3, MR_tempr1, 9);
+	MR_sv(9) = MR_ctfield(3, MR_tempr2, 2);
+	MR_sv(10) = MR_ctfield(3, MR_tempr2, 3);
+	MR_sv(11) = MR_ctfield(3, MR_tempr2, 4);
+	MR_sv(12) = MR_ctfield(3, MR_tempr2, 5);
+	MR_sv(13) = MR_ctfield(3, MR_tempr2, 6);
+	MR_sv(14) = MR_ctfield(3, MR_tempr2, 7);
+	MR_sv(15) = MR_ctfield(3, MR_tempr2, 8);
+	MR_sv(16) = MR_ctfield(3, MR_tempr2, 9);
+	MR_r1 = MR_ctfield(3, MR_tempr1, 1);
+	MR_r2 = MR_ctfield(3, MR_tempr2, 1);
+	}
+	MR_np_call_localret_ent(__Unify___ml_backend__mlds__mlds_lval_0_0,
+		__Unify___ml_backend__mlds__mlds_atomic_statement_0_0_i34);
+MR_def_label(__Unify___ml_backend__mlds__mlds_atomic_statement_0_0,34)
+	MR_MAYBE_INIT_LOCAL_THREAD_ENGINE_BASE
+	if (!(MR_r1)) {
+		MR_GOTO_LAB(__Unify___ml_backend__mlds__mlds_atomic_statement_0_0_i1);
+	}
+	MR_r1 = (MR_Word) MR_INT_CTOR_ADDR;
+	MR_r2 = MR_sv(1);
+	MR_r3 = MR_sv(9);
+	MR_np_call_localret_ent(__Unify___maybe__maybe_1_0,
+		__Unify___ml_backend__mlds__mlds_atomic_statement_0_0_i36);
+MR_def_label(__Unify___ml_backend__mlds__mlds_atomic_statement_0_0,36)
+	MR_MAYBE_INIT_LOCAL_THREAD_ENGINE_BASE
+	if (!(MR_r1)) {
+		MR_GOTO_LAB(__Unify___ml_backend__mlds__mlds_atomic_statement_0_0_i1);
+	}
+	if ((MR_sv(2) != MR_sv(10))) {
+		MR_GOTO_LAB(__Unify___ml_backend__mlds__mlds_atomic_statement_0_0_i1);
+	}
+	MR_r1 = MR_sv(3);
+	MR_r2 = MR_sv(11);
+	MR_np_call_localret_ent(__Unify___ml_backend__mlds__mlds_type_0_0,
+		__Unify___ml_backend__mlds__mlds_atomic_statement_0_0_i38);
+MR_def_label(__Unify___ml_backend__mlds__mlds_atomic_statement_0_0,38)
+	MR_MAYBE_INIT_LOCAL_THREAD_ENGINE_BASE
+	if (!(MR_r1)) {
+		MR_GOTO_LAB(__Unify___ml_backend__mlds__mlds_atomic_statement_0_0_i1);
+	}
+	MR_r1 = (MR_Word) MR_CTOR0_ADDR(ml_backend__mlds, mlds_rval);
+	MR_r2 = MR_sv(4);
+	MR_r3 = MR_sv(12);
+	MR_np_call_localret_ent(__Unify___maybe__maybe_1_0,
+		__Unify___ml_backend__mlds__mlds_atomic_statement_0_0_i40);
+MR_def_label(__Unify___ml_backend__mlds__mlds_atomic_statement_0_0,40)
+	MR_MAYBE_INIT_LOCAL_THREAD_ENGINE_BASE
+	if (!(MR_r1)) {
+		MR_GOTO_LAB(__Unify___ml_backend__mlds__mlds_atomic_statement_0_0_i1);
+	}
+	MR_r1 = (MR_Word) MR_TAG_COMMON(0,3,0);
+	MR_r2 = MR_sv(5);
+	MR_r3 = MR_sv(13);
+	MR_np_call_localret_ent(__Unify___maybe__maybe_1_0,
+		__Unify___ml_backend__mlds__mlds_atomic_statement_0_0_i43);
+MR_def_label(__Unify___ml_backend__mlds__mlds_atomic_statement_0_0,43)
+	MR_MAYBE_INIT_LOCAL_THREAD_ENGINE_BASE
+	if (!(MR_r1)) {
+		MR_GOTO_LAB(__Unify___ml_backend__mlds__mlds_atomic_statement_0_0_i1);
+	}
+	MR_r1 = (MR_Word) MR_CTOR0_ADDR(ml_backend__mlds, mlds_rval);
+	MR_r2 = MR_sv(6);
+	MR_r3 = MR_sv(14);
+	MR_np_call_localret_ent(__Unify___list__list_1_0,
+		__Unify___ml_backend__mlds__mlds_atomic_statement_0_0_i45);
+MR_def_label(__Unify___ml_backend__mlds__mlds_atomic_statement_0_0,45)
+	MR_MAYBE_INIT_LOCAL_THREAD_ENGINE_BASE
+	if (!(MR_r1)) {
+		MR_GOTO_LAB(__Unify___ml_backend__mlds__mlds_atomic_statement_0_0_i1);
+	}
+	MR_r1 = (MR_Word) MR_CTOR0_ADDR(ml_backend__mlds, mlds_type);
+	MR_r2 = MR_sv(7);
+	MR_r3 = MR_sv(15);
+	MR_np_call_localret_ent(__Unify___list__list_1_0,
+		__Unify___ml_backend__mlds__mlds_atomic_statement_0_0_i47);
+MR_def_label(__Unify___ml_backend__mlds__mlds_atomic_statement_0_0,47)
+	MR_MAYBE_INIT_LOCAL_THREAD_ENGINE_BASE
+	if (!(MR_r1)) {
+		MR_GOTO_LAB(__Unify___ml_backend__mlds__mlds_atomic_statement_0_0_i1);
+	}
+	MR_r1 = (MR_sv(8) == MR_sv(16));
+	MR_decr_sp_and_return(17);
+MR_def_label(__Unify___ml_backend__mlds__mlds_atomic_statement_0_0,49)
+	MR_MAYBE_INIT_LOCAL_THREAD_ENGINE_BASE
+	if (MR_RTAGS_TESTR(MR_sv(2),3,7)) {
+		MR_GOTO_LAB(__Unify___ml_backend__mlds__mlds_atomic_statement_0_0_i1);
+	}
+	{
+	MR_Word MR_tempr1, MR_tempr2, MR_tempr3, MR_tempr4;
+	MR_tempr3 = MR_sv(1);
+	MR_tempr1 = MR_ctfield(3, MR_tempr3, 1);
+	MR_tempr4 = MR_sv(2);
+	MR_tempr2 = MR_ctfield(3, MR_tempr4, 1);
+	if ((MR_tempr1 != MR_tempr2)) {
+		MR_GOTO_LAB(__Unify___ml_backend__mlds__mlds_atomic_statement_0_0_i1);
+	}
+	MR_tempr1 = MR_tempr3;
+	MR_sv(1) = MR_ctfield(3, MR_tempr1, 3);
+	MR_tempr2 = MR_tempr4;
+	MR_sv(2) = MR_ctfield(3, MR_tempr1, 4);
+	MR_sv(3) = MR_ctfield(3, MR_tempr2, 3);
+	MR_sv(4) = MR_ctfield(3, MR_tempr2, 4);
+	MR_r1 = (MR_Word) MR_CTOR0_ADDR(ml_backend__mlds, outline_arg);
+	MR_r2 = MR_ctfield(3, MR_tempr1, 2);
+	MR_r3 = MR_ctfield(3, MR_tempr2, 2);
+	}
+	MR_np_call_localret_ent(__Unify___list__list_1_0,
+		__Unify___ml_backend__mlds__mlds_atomic_statement_0_0_i51);
+MR_def_label(__Unify___ml_backend__mlds__mlds_atomic_statement_0_0,51)
+	MR_MAYBE_INIT_LOCAL_THREAD_ENGINE_BASE
+	if (!(MR_r1)) {
+		MR_GOTO_LAB(__Unify___ml_backend__mlds__mlds_atomic_statement_0_0_i1);
+	}
+	MR_r1 = (MR_Word) MR_CTOR0_ADDR(ml_backend__mlds, mlds_lval);
+	MR_r2 = MR_sv(1);
+	MR_r3 = MR_sv(3);
+	MR_np_call_localret_ent(__Unify___list__list_1_0,
+		__Unify___ml_backend__mlds__mlds_atomic_statement_0_0_i53);
+MR_def_label(__Unify___ml_backend__mlds__mlds_atomic_statement_0_0,53)
+	MR_MAYBE_INIT_LOCAL_THREAD_ENGINE_BASE
+	if (!(MR_r1)) {
+		MR_GOTO_LAB(__Unify___ml_backend__mlds__mlds_atomic_statement_0_0_i1);
+	}
+	MR_r1 = (strcmp((char *) (MR_Word *) MR_sv(2), (char *) (MR_Word *) MR_sv(4)) == 0);
+	MR_decr_sp_and_return(17);
+MR_def_label(__Unify___ml_backend__mlds__mlds_atomic_statement_0_0,55)
+	MR_MAYBE_INIT_LOCAL_THREAD_ENGINE_BASE
+	if (MR_RTAGS_TESTR(MR_sv(2),3,4)) {
+		MR_GOTO_LAB(__Unify___ml_backend__mlds__mlds_atomic_statement_0_0_i1);
+	}
+	MR_r1 = MR_ctfield(3, MR_sv(1), 1);
+	MR_r2 = MR_ctfield(3, MR_sv(2), 1);
+	MR_succip_word = MR_sv(17);
+	MR_decr_sp(17);
+	MR_np_tailcall_ent(__Unify___ml_backend__mlds__mlds_rval_0_0);
+MR_def_label(__Unify___ml_backend__mlds__mlds_atomic_statement_0_0,59)
+	MR_MAYBE_INIT_LOCAL_THREAD_ENGINE_BASE
+	if (MR_RTAGS_TESTR(MR_sv(2),3,5)) {
+		MR_GOTO_LAB(__Unify___ml_backend__mlds__mlds_atomic_statement_0_0_i1);
+	}
+	MR_r1 = MR_ctfield(3, MR_sv(1), 1);
+	MR_r2 = MR_ctfield(3, MR_sv(2), 1);
+	MR_succip_word = MR_sv(17);
+	MR_decr_sp(17);
+	MR_np_tailcall_ent(__Unify___ml_backend__mlds__trail_op_0_0);
+MR_def_label(__Unify___ml_backend__mlds__mlds_atomic_statement_0_0,67)
+	MR_MAYBE_INIT_LOCAL_THREAD_ENGINE_BASE
+	MR_r1 = MR_TRUE;
+	MR_proceed();
+MR_def_label(__Unify___ml_backend__mlds__mlds_atomic_statement_0_0,1)
+	MR_MAYBE_INIT_LOCAL_THREAD_ENGINE_BASE
+	MR_r1 = MR_FALSE;
+	MR_decr_sp_and_return(17);
+#ifdef MR_maybe_local_thread_engine_base
+	#undef MR_maybe_local_thread_engine_base
+	#define MR_maybe_local_thread_engine_base MR_thread_engine_base
+#endif
+MR_END_MODULE
+
+MR_decl_entry(__Compare___maybe__maybe_1_0);
+
+MR_BEGIN_MODULE(ml_backend__mlds_module58)
+	MR_init_entry1(__Compare___ml_backend__mlds__mlds_atomic_statement_0_0);
+	MR_init_label8(__Compare___ml_backend__mlds__mlds_atomic_statement_0_0,87,93,103,51,55,5,7,9)
+	MR_init_label8(__Compare___ml_backend__mlds__mlds_atomic_statement_0_0,276,28,50,33,69,86,104,111)
+	MR_init_label8(__Compare___ml_backend__mlds__mlds_atomic_statement_0_0,113,127,135,145,203,154,156,160)
+	MR_init_label8(__Compare___ml_backend__mlds__mlds_atomic_statement_0_0,164,168,172,177,181,185,204,216)
+	MR_init_label8(__Compare___ml_backend__mlds__mlds_atomic_statement_0_0,220,224,237,248,255,265,266,267)
+	MR_init_label1(__Compare___ml_backend__mlds__mlds_atomic_statement_0_0,277)
+MR_BEGIN_CODE
+
+#ifdef MR_maybe_local_thread_engine_base
+	#undef MR_maybe_local_thread_engine_base
+	#define MR_maybe_local_thread_engine_base MR_local_thread_engine_base
+#endif
+MR_define_entry(mercury____Compare___ml_backend__mlds__mlds_atomic_statement_0_0);
+	MR_MAYBE_INIT_LOCAL_THREAD_ENGINE_BASE
+	MR_incr_sp(17);
+	MR_sv(17) = (MR_Word) MR_succip;
+	if ((MR_r1 == MR_r2)) {
+		MR_GOTO_LAB(__Compare___ml_backend__mlds__mlds_atomic_statement_0_0_i93);
+	}
+	MR_sv(1) = MR_r1;
+	MR_sv(2) = MR_r2;
+	MR_COMPUTED_GOTO((MR_Unsigned) MR_tag(MR_sv(1)),
+		MR_LABEL_AP(__Compare___ml_backend__mlds__mlds_atomic_statement_0_0_i87) MR_AND
+		MR_LABEL_AP(__Compare___ml_backend__mlds__mlds_atomic_statement_0_0_i51) MR_AND
+		MR_LABEL_AP(__Compare___ml_backend__mlds__mlds_atomic_statement_0_0_i5) MR_AND
+		MR_LABEL_AP(__Compare___ml_backend__mlds__mlds_atomic_statement_0_0_i276));
+MR_def_label(__Compare___ml_backend__mlds__mlds_atomic_statement_0_0,87)
+	MR_MAYBE_INIT_LOCAL_THREAD_ENGINE_BASE
+	MR_COMPUTED_GOTO((MR_Unsigned) MR_tag(MR_sv(2)),
+		MR_LABEL_AP(__Compare___ml_backend__mlds__mlds_atomic_statement_0_0_i93) MR_AND
+		MR_LABEL_AP(__Compare___ml_backend__mlds__mlds_atomic_statement_0_0_i266) MR_AND
+		MR_LABEL_AP(__Compare___ml_backend__mlds__mlds_atomic_statement_0_0_i266) MR_AND
+		MR_LABEL_AP(__Compare___ml_backend__mlds__mlds_atomic_statement_0_0_i103));
+MR_def_label(__Compare___ml_backend__mlds__mlds_atomic_statement_0_0,93)
+	MR_MAYBE_INIT_LOCAL_THREAD_ENGINE_BASE
+	MR_r1 = (MR_Integer) 0;
+	MR_decr_sp_and_return(17);
+MR_def_label(__Compare___ml_backend__mlds__mlds_atomic_statement_0_0,103)
+	MR_MAYBE_INIT_LOCAL_THREAD_ENGINE_BASE
+	MR_COMPUTED_GOTO((MR_Unsigned) MR_ctfield(3, MR_sv(2), 0),
+		MR_LABEL_AP(__Compare___ml_backend__mlds__mlds_atomic_statement_0_0_i266) MR_AND
+		MR_LABEL_AP(__Compare___ml_backend__mlds__mlds_atomic_statement_0_0_i266) MR_AND
+		MR_LABEL_AP(__Compare___ml_backend__mlds__mlds_atomic_statement_0_0_i266) MR_AND
+		MR_LABEL_AP(__Compare___ml_backend__mlds__mlds_atomic_statement_0_0_i265) MR_AND
+		MR_LABEL_AP(__Compare___ml_backend__mlds__mlds_atomic_statement_0_0_i265) MR_AND
+		MR_LABEL_AP(__Compare___ml_backend__mlds__mlds_atomic_statement_0_0_i265) MR_AND
+		MR_LABEL_AP(__Compare___ml_backend__mlds__mlds_atomic_statement_0_0_i265) MR_AND
+		MR_LABEL_AP(__Compare___ml_backend__mlds__mlds_atomic_statement_0_0_i265));
+MR_def_label(__Compare___ml_backend__mlds__mlds_atomic_statement_0_0,51)
+	MR_MAYBE_INIT_LOCAL_THREAD_ENGINE_BASE
+	if (MR_INT_EQ(MR_tag(MR_sv(2)),1)) {
+		MR_GOTO_LAB(__Compare___ml_backend__mlds__mlds_atomic_statement_0_0_i55);
+	}
+	MR_GOTO_LAB(__Compare___ml_backend__mlds__mlds_atomic_statement_0_0_i265);
+MR_def_label(__Compare___ml_backend__mlds__mlds_atomic_statement_0_0,55)
+	MR_MAYBE_INIT_LOCAL_THREAD_ENGINE_BASE
+	MR_r1 = MR_ctfield(1, MR_sv(1), 0);
+	MR_r2 = MR_ctfield(1, MR_sv(2), 0);
+	MR_succip_word = MR_sv(17);
+	MR_decr_sp(17);
+	MR_np_tailcall_ent(private_builtin__builtin_compare_string_3_0);
+MR_def_label(__Compare___ml_backend__mlds__mlds_atomic_statement_0_0,5)
+	MR_MAYBE_INIT_LOCAL_THREAD_ENGINE_BASE
+	MR_COMPUTED_GOTO((MR_Unsigned) MR_tag(MR_sv(2)),
+		MR_LABEL_AP(__Compare___ml_backend__mlds__mlds_atomic_statement_0_0_i265) MR_AND
+		MR_LABEL_AP(__Compare___ml_backend__mlds__mlds_atomic_statement_0_0_i266) MR_AND
+		MR_LABEL_AP(__Compare___ml_backend__mlds__mlds_atomic_statement_0_0_i7) MR_AND
+		MR_LABEL_AP(__Compare___ml_backend__mlds__mlds_atomic_statement_0_0_i265));
+MR_def_label(__Compare___ml_backend__mlds__mlds_atomic_statement_0_0,7)
+	MR_MAYBE_INIT_LOCAL_THREAD_ENGINE_BASE
+	{
+	MR_Word MR_tempr1, MR_tempr2, MR_tempr3, MR_tempr4, MR_tempr5, MR_tempr6;
+	MR_tempr5 = MR_sv(1);
+	MR_tempr1 = MR_ctfield(2, MR_tempr5, 1);
+	MR_tempr6 = MR_sv(2);
+	MR_tempr2 = MR_ctfield(2, MR_tempr6, 1);
+	MR_tempr3 = MR_tempr5;
+	MR_sv(1) = MR_tempr2;
+	MR_tempr4 = MR_tempr6;
+	MR_sv(2) = MR_tempr1;
+	MR_r1 = MR_ctfield(2, MR_tempr3, 0);
+	MR_r2 = MR_ctfield(2, MR_tempr4, 0);
+	}
+	MR_np_call_localret_ent(__Compare___ml_backend__mlds__mlds_lval_0_0,
+		__Compare___ml_backend__mlds__mlds_atomic_statement_0_0_i9);
+MR_def_label(__Compare___ml_backend__mlds__mlds_atomic_statement_0_0,9)
+	MR_MAYBE_INIT_LOCAL_THREAD_ENGINE_BASE
+	if (MR_INT_NE(MR_r1,0)) {
+		MR_GOTO_LAB(__Compare___ml_backend__mlds__mlds_atomic_statement_0_0_i277);
+	}
+	MR_r1 = MR_sv(2);
+	MR_r2 = MR_sv(1);
+	MR_succip_word = MR_sv(17);
+	MR_decr_sp(17);
+	MR_np_tailcall_ent(__Compare___ml_backend__mlds__mlds_rval_0_0);
+MR_def_label(__Compare___ml_backend__mlds__mlds_atomic_statement_0_0,276)
+	MR_MAYBE_INIT_LOCAL_THREAD_ENGINE_BASE
+	MR_COMPUTED_GOTO((MR_Unsigned) MR_ctfield(3, MR_sv(1), 0),
+		MR_LABEL_AP(__Compare___ml_backend__mlds__mlds_atomic_statement_0_0_i28) MR_AND
+		MR_LABEL_AP(__Compare___ml_backend__mlds__mlds_atomic_statement_0_0_i69) MR_AND
+		MR_LABEL_AP(__Compare___ml_backend__mlds__mlds_atomic_statement_0_0_i145) MR_AND
+		MR_LABEL_AP(__Compare___ml_backend__mlds__mlds_atomic_statement_0_0_i127) MR_AND
+		MR_LABEL_AP(__Compare___ml_backend__mlds__mlds_atomic_statement_0_0_i237) MR_AND
+		MR_LABEL_AP(__Compare___ml_backend__mlds__mlds_atomic_statement_0_0_i255) MR_AND
+		MR_LABEL_AP(__Compare___ml_backend__mlds__mlds_atomic_statement_0_0_i104) MR_AND
+		MR_LABEL_AP(__Compare___ml_backend__mlds__mlds_atomic_statement_0_0_i204));
+MR_def_label(__Compare___ml_backend__mlds__mlds_atomic_statement_0_0,28)
+	MR_MAYBE_INIT_LOCAL_THREAD_ENGINE_BASE
+	MR_COMPUTED_GOTO((MR_Unsigned) MR_tag(MR_sv(2)),
+		MR_LABEL_AP(__Compare___ml_backend__mlds__mlds_atomic_statement_0_0_i265) MR_AND
+		MR_LABEL_AP(__Compare___ml_backend__mlds__mlds_atomic_statement_0_0_i266) MR_AND
+		MR_LABEL_AP(__Compare___ml_backend__mlds__mlds_atomic_statement_0_0_i266) MR_AND
+		MR_LABEL_AP(__Compare___ml_backend__mlds__mlds_atomic_statement_0_0_i50));
+MR_def_label(__Compare___ml_backend__mlds__mlds_atomic_statement_0_0,50)
+	MR_MAYBE_INIT_LOCAL_THREAD_ENGINE_BASE
+	if (MR_INT_NE(MR_ctfield(3, MR_sv(2), 0),0)) {
+		MR_GOTO_LAB(__Compare___ml_backend__mlds__mlds_atomic_statement_0_0_i265);
+	}
+	{
+	MR_Word MR_tempr1, MR_tempr2, MR_tempr3, MR_tempr4, MR_tempr5, MR_tempr6;
+	MR_tempr5 = MR_sv(1);
+	MR_tempr1 = MR_ctfield(3, MR_tempr5, 2);
+	MR_tempr6 = MR_sv(2);
+	MR_tempr2 = MR_ctfield(3, MR_tempr6, 2);
+	MR_tempr3 = MR_tempr5;
+	MR_sv(1) = MR_tempr2;
+	MR_tempr4 = MR_tempr6;
+	MR_sv(2) = MR_tempr1;
+	MR_r1 = MR_ctfield(3, MR_tempr3, 1);
+	MR_r2 = MR_ctfield(3, MR_tempr4, 1);
+	}
+	MR_np_call_localret_ent(__Compare___ml_backend__mlds__mlds_lval_0_0,
+		__Compare___ml_backend__mlds__mlds_atomic_statement_0_0_i33);
+MR_def_label(__Compare___ml_backend__mlds__mlds_atomic_statement_0_0,33)
+	MR_MAYBE_INIT_LOCAL_THREAD_ENGINE_BASE
+	if (MR_INT_NE(MR_r1,0)) {
+		MR_GOTO_LAB(__Compare___ml_backend__mlds__mlds_atomic_statement_0_0_i277);
+	}
+	MR_r1 = MR_sv(2);
+	MR_r2 = MR_sv(1);
+	MR_succip_word = MR_sv(17);
+	MR_decr_sp(17);
+	MR_np_tailcall_ent(__Compare___ml_backend__mlds__mlds_rval_0_0);
+MR_def_label(__Compare___ml_backend__mlds__mlds_atomic_statement_0_0,69)
+	MR_MAYBE_INIT_LOCAL_THREAD_ENGINE_BASE
+	MR_COMPUTED_GOTO((MR_Unsigned) MR_tag(MR_sv(2)),
+		MR_LABEL_AP(__Compare___ml_backend__mlds__mlds_atomic_statement_0_0_i265) MR_AND
+		MR_LABEL_AP(__Compare___ml_backend__mlds__mlds_atomic_statement_0_0_i266) MR_AND
+		MR_LABEL_AP(__Compare___ml_backend__mlds__mlds_atomic_statement_0_0_i266) MR_AND
+		MR_LABEL_AP(__Compare___ml_backend__mlds__mlds_atomic_statement_0_0_i86));
+MR_def_label(__Compare___ml_backend__mlds__mlds_atomic_statement_0_0,86)
+	MR_MAYBE_INIT_LOCAL_THREAD_ENGINE_BASE
+	MR_COMPUTED_GOTO((MR_Unsigned) MR_ctfield(3, MR_sv(2), 0),
+		MR_LABEL_AP(__Compare___ml_backend__mlds__mlds_atomic_statement_0_0_i266) MR_AND
+		MR_LABEL_AP(__Compare___ml_backend__mlds__mlds_atomic_statement_0_0_i248) MR_AND
+		MR_LABEL_AP(__Compare___ml_backend__mlds__mlds_atomic_statement_0_0_i265) MR_AND
+		MR_LABEL_AP(__Compare___ml_backend__mlds__mlds_atomic_statement_0_0_i265) MR_AND
+		MR_LABEL_AP(__Compare___ml_backend__mlds__mlds_atomic_statement_0_0_i265) MR_AND
+		MR_LABEL_AP(__Compare___ml_backend__mlds__mlds_atomic_statement_0_0_i265) MR_AND
+		MR_LABEL_AP(__Compare___ml_backend__mlds__mlds_atomic_statement_0_0_i265) MR_AND
+		MR_LABEL_AP(__Compare___ml_backend__mlds__mlds_atomic_statement_0_0_i265));
+MR_def_label(__Compare___ml_backend__mlds__mlds_atomic_statement_0_0,104)
+	MR_MAYBE_INIT_LOCAL_THREAD_ENGINE_BASE
+	if (MR_INT_NE(MR_tag(MR_sv(2)),3)) {
+		MR_GOTO_LAB(__Compare___ml_backend__mlds__mlds_atomic_statement_0_0_i266);
+	}
+	MR_COMPUTED_GOTO((MR_Unsigned) MR_ctfield(3, MR_sv(2), 0),
+		MR_LABEL_AP(__Compare___ml_backend__mlds__mlds_atomic_statement_0_0_i266) MR_AND
+		MR_LABEL_AP(__Compare___ml_backend__mlds__mlds_atomic_statement_0_0_i266) MR_AND
+		MR_LABEL_AP(__Compare___ml_backend__mlds__mlds_atomic_statement_0_0_i266) MR_AND
+		MR_LABEL_AP(__Compare___ml_backend__mlds__mlds_atomic_statement_0_0_i266) MR_AND
+		MR_LABEL_AP(__Compare___ml_backend__mlds__mlds_atomic_statement_0_0_i266) MR_AND
+		MR_LABEL_AP(__Compare___ml_backend__mlds__mlds_atomic_statement_0_0_i266) MR_AND
+		MR_LABEL_AP(__Compare___ml_backend__mlds__mlds_atomic_statement_0_0_i111) MR_AND
+		MR_LABEL_AP(__Compare___ml_backend__mlds__mlds_atomic_statement_0_0_i265));
+MR_def_label(__Compare___ml_backend__mlds__mlds_atomic_statement_0_0,111)
+	MR_MAYBE_INIT_LOCAL_THREAD_ENGINE_BASE
+	{
+	MR_Word MR_tempr1, MR_tempr2, MR_tempr3, MR_tempr4, MR_tempr5, MR_tempr6;
+	MR_tempr5 = MR_sv(1);
+	MR_tempr1 = MR_ctfield(3, MR_tempr5, 2);
+	MR_tempr6 = MR_sv(2);
+	MR_tempr2 = MR_ctfield(3, MR_tempr6, 2);
+	MR_tempr3 = MR_tempr5;
+	MR_sv(1) = MR_tempr2;
+	MR_tempr4 = MR_tempr6;
+	MR_sv(2) = MR_tempr1;
+	MR_r1 = MR_ctfield(3, MR_tempr3, 1);
+	MR_r2 = MR_ctfield(3, MR_tempr4, 1);
+	}
+	MR_np_call_localret_ent(private_builtin__builtin_compare_int_3_0,
+		__Compare___ml_backend__mlds__mlds_atomic_statement_0_0_i113);
+MR_def_label(__Compare___ml_backend__mlds__mlds_atomic_statement_0_0,113)
+	MR_MAYBE_INIT_LOCAL_THREAD_ENGINE_BASE
+	if (MR_INT_NE(MR_r1,0)) {
+		MR_GOTO_LAB(__Compare___ml_backend__mlds__mlds_atomic_statement_0_0_i277);
+	}
+	MR_r1 = (MR_Word) MR_CTOR0_ADDR(ml_backend__mlds, target_code_component);
+	MR_r2 = MR_sv(2);
+	MR_r3 = MR_sv(1);
+	MR_succip_word = MR_sv(17);
+	MR_decr_sp(17);
+	MR_np_tailcall_ent(__Compare___list__list_1_0);
+MR_def_label(__Compare___ml_backend__mlds__mlds_atomic_statement_0_0,127)
+	MR_MAYBE_INIT_LOCAL_THREAD_ENGINE_BASE
+	if (MR_INT_NE(MR_tag(MR_sv(2)),3)) {
+		MR_GOTO_LAB(__Compare___ml_backend__mlds__mlds_atomic_statement_0_0_i266);
+	}
+	MR_COMPUTED_GOTO((MR_Unsigned) MR_ctfield(3, MR_sv(2), 0),
+		MR_LABEL_AP(__Compare___ml_backend__mlds__mlds_atomic_statement_0_0_i266) MR_AND
+		MR_LABEL_AP(__Compare___ml_backend__mlds__mlds_atomic_statement_0_0_i266) MR_AND
+		MR_LABEL_AP(__Compare___ml_backend__mlds__mlds_atomic_statement_0_0_i266) MR_AND
+		MR_LABEL_AP(__Compare___ml_backend__mlds__mlds_atomic_statement_0_0_i135) MR_AND
+		MR_LABEL_AP(__Compare___ml_backend__mlds__mlds_atomic_statement_0_0_i265) MR_AND
+		MR_LABEL_AP(__Compare___ml_backend__mlds__mlds_atomic_statement_0_0_i265) MR_AND
+		MR_LABEL_AP(__Compare___ml_backend__mlds__mlds_atomic_statement_0_0_i265) MR_AND
+		MR_LABEL_AP(__Compare___ml_backend__mlds__mlds_atomic_statement_0_0_i265));
+MR_def_label(__Compare___ml_backend__mlds__mlds_atomic_statement_0_0,135)
+	MR_MAYBE_INIT_LOCAL_THREAD_ENGINE_BASE
+	MR_r1 = MR_ctfield(3, MR_sv(1), 1);
+	MR_r2 = MR_ctfield(3, MR_sv(2), 1);
+	MR_succip_word = MR_sv(17);
+	MR_decr_sp(17);
+	MR_np_tailcall_ent(__Compare___ml_backend__mlds__mlds_lval_0_0);
+MR_def_label(__Compare___ml_backend__mlds__mlds_atomic_statement_0_0,145)
+	MR_MAYBE_INIT_LOCAL_THREAD_ENGINE_BASE
+	MR_COMPUTED_GOTO((MR_Unsigned) MR_tag(MR_sv(2)),
+		MR_LABEL_AP(__Compare___ml_backend__mlds__mlds_atomic_statement_0_0_i265) MR_AND
+		MR_LABEL_AP(__Compare___ml_backend__mlds__mlds_atomic_statement_0_0_i266) MR_AND
+		MR_LABEL_AP(__Compare___ml_backend__mlds__mlds_atomic_statement_0_0_i266) MR_AND
+		MR_LABEL_AP(__Compare___ml_backend__mlds__mlds_atomic_statement_0_0_i203));
+MR_def_label(__Compare___ml_backend__mlds__mlds_atomic_statement_0_0,203)
+	MR_MAYBE_INIT_LOCAL_THREAD_ENGINE_BASE
+	MR_COMPUTED_GOTO((MR_Unsigned) MR_ctfield(3, MR_sv(2), 0),
+		MR_LABEL_AP(__Compare___ml_backend__mlds__mlds_atomic_statement_0_0_i266) MR_AND
+		MR_LABEL_AP(__Compare___ml_backend__mlds__mlds_atomic_statement_0_0_i266) MR_AND
+		MR_LABEL_AP(__Compare___ml_backend__mlds__mlds_atomic_statement_0_0_i154) MR_AND
+		MR_LABEL_AP(__Compare___ml_backend__mlds__mlds_atomic_statement_0_0_i265) MR_AND
+		MR_LABEL_AP(__Compare___ml_backend__mlds__mlds_atomic_statement_0_0_i265) MR_AND
+		MR_LABEL_AP(__Compare___ml_backend__mlds__mlds_atomic_statement_0_0_i265) MR_AND
+		MR_LABEL_AP(__Compare___ml_backend__mlds__mlds_atomic_statement_0_0_i265) MR_AND
+		MR_LABEL_AP(__Compare___ml_backend__mlds__mlds_atomic_statement_0_0_i265));
+MR_def_label(__Compare___ml_backend__mlds__mlds_atomic_statement_0_0,154)
+	MR_MAYBE_INIT_LOCAL_THREAD_ENGINE_BASE
+	{
+	MR_Word MR_tempr1, MR_tempr2, MR_tempr3, MR_tempr4, MR_tempr5, MR_tempr6;
+	MR_tempr5 = MR_sv(1);
+	MR_sv(16) = MR_ctfield(3, MR_tempr5, 2);
+	MR_sv(15) = MR_ctfield(3, MR_tempr5, 3);
+	MR_sv(14) = MR_ctfield(3, MR_tempr5, 4);
+	MR_sv(13) = MR_ctfield(3, MR_tempr5, 5);
+	MR_sv(12) = MR_ctfield(3, MR_tempr5, 6);
+	MR_sv(11) = MR_ctfield(3, MR_tempr5, 7);
+	MR_sv(10) = MR_ctfield(3, MR_tempr5, 8);
+	MR_sv(9) = MR_ctfield(3, MR_tempr5, 9);
+	MR_tempr6 = MR_sv(2);
+	MR_sv(8) = MR_ctfield(3, MR_tempr6, 9);
+	MR_sv(7) = MR_ctfield(3, MR_tempr6, 8);
+	MR_sv(6) = MR_ctfield(3, MR_tempr6, 7);
+	MR_sv(5) = MR_ctfield(3, MR_tempr6, 6);
+	MR_sv(4) = MR_ctfield(3, MR_tempr6, 5);
+	MR_sv(3) = MR_ctfield(3, MR_tempr6, 4);
+	MR_tempr1 = MR_ctfield(3, MR_tempr6, 3);
+	MR_tempr2 = MR_ctfield(3, MR_tempr6, 2);
+	MR_tempr3 = MR_tempr5;
+	MR_sv(1) = MR_tempr2;
+	MR_tempr4 = MR_tempr6;
+	MR_sv(2) = MR_tempr1;
+	MR_r1 = MR_ctfield(3, MR_tempr3, 1);
+	MR_r2 = MR_ctfield(3, MR_tempr4, 1);
+	}
+	MR_np_call_localret_ent(__Compare___ml_backend__mlds__mlds_lval_0_0,
+		__Compare___ml_backend__mlds__mlds_atomic_statement_0_0_i156);
+MR_def_label(__Compare___ml_backend__mlds__mlds_atomic_statement_0_0,156)
+	MR_MAYBE_INIT_LOCAL_THREAD_ENGINE_BASE
+	if (MR_INT_NE(MR_r1,0)) {
+		MR_GOTO_LAB(__Compare___ml_backend__mlds__mlds_atomic_statement_0_0_i277);
+	}
+	MR_r1 = (MR_Word) MR_INT_CTOR_ADDR;
+	MR_r2 = MR_sv(16);
+	MR_r3 = MR_sv(1);
+	MR_np_call_localret_ent(__Compare___maybe__maybe_1_0,
+		__Compare___ml_backend__mlds__mlds_atomic_statement_0_0_i160);
+MR_def_label(__Compare___ml_backend__mlds__mlds_atomic_statement_0_0,160)
+	MR_MAYBE_INIT_LOCAL_THREAD_ENGINE_BASE
+	if (MR_INT_NE(MR_r1,0)) {
+		MR_GOTO_LAB(__Compare___ml_backend__mlds__mlds_atomic_statement_0_0_i277);
+	}
+	MR_r1 = MR_sv(15);
+	MR_r2 = MR_sv(2);
+	MR_np_call_localret_ent(private_builtin__builtin_compare_int_3_0,
+		__Compare___ml_backend__mlds__mlds_atomic_statement_0_0_i164);
+MR_def_label(__Compare___ml_backend__mlds__mlds_atomic_statement_0_0,164)
+	MR_MAYBE_INIT_LOCAL_THREAD_ENGINE_BASE
+	if (MR_INT_NE(MR_r1,0)) {
+		MR_GOTO_LAB(__Compare___ml_backend__mlds__mlds_atomic_statement_0_0_i277);
+	}
+	MR_r1 = MR_sv(14);
+	MR_r2 = MR_sv(3);
+	MR_np_call_localret_ent(__Compare___ml_backend__mlds__mlds_type_0_0,
+		__Compare___ml_backend__mlds__mlds_atomic_statement_0_0_i168);
+MR_def_label(__Compare___ml_backend__mlds__mlds_atomic_statement_0_0,168)
+	MR_MAYBE_INIT_LOCAL_THREAD_ENGINE_BASE
+	if (MR_INT_NE(MR_r1,0)) {
+		MR_GOTO_LAB(__Compare___ml_backend__mlds__mlds_atomic_statement_0_0_i277);
+	}
+	MR_r1 = (MR_Word) MR_CTOR0_ADDR(ml_backend__mlds, mlds_rval);
+	MR_r2 = MR_sv(13);
+	MR_r3 = MR_sv(4);
+	MR_np_call_localret_ent(__Compare___maybe__maybe_1_0,
+		__Compare___ml_backend__mlds__mlds_atomic_statement_0_0_i172);
+MR_def_label(__Compare___ml_backend__mlds__mlds_atomic_statement_0_0,172)
+	MR_MAYBE_INIT_LOCAL_THREAD_ENGINE_BASE
+	if (MR_INT_NE(MR_r1,0)) {
+		MR_GOTO_LAB(__Compare___ml_backend__mlds__mlds_atomic_statement_0_0_i277);
+	}
+	MR_r1 = (MR_Word) MR_TAG_COMMON(0,3,0);
+	MR_r2 = MR_sv(12);
+	MR_r3 = MR_sv(5);
+	MR_np_call_localret_ent(__Compare___maybe__maybe_1_0,
+		__Compare___ml_backend__mlds__mlds_atomic_statement_0_0_i177);
+MR_def_label(__Compare___ml_backend__mlds__mlds_atomic_statement_0_0,177)
+	MR_MAYBE_INIT_LOCAL_THREAD_ENGINE_BASE
+	if (MR_INT_NE(MR_r1,0)) {
+		MR_GOTO_LAB(__Compare___ml_backend__mlds__mlds_atomic_statement_0_0_i277);
+	}
+	MR_r1 = (MR_Word) MR_CTOR0_ADDR(ml_backend__mlds, mlds_rval);
+	MR_r2 = MR_sv(11);
+	MR_r3 = MR_sv(6);
+	MR_np_call_localret_ent(__Compare___list__list_1_0,
+		__Compare___ml_backend__mlds__mlds_atomic_statement_0_0_i181);
+MR_def_label(__Compare___ml_backend__mlds__mlds_atomic_statement_0_0,181)
+	MR_MAYBE_INIT_LOCAL_THREAD_ENGINE_BASE
+	if (MR_INT_NE(MR_r1,0)) {
+		MR_GOTO_LAB(__Compare___ml_backend__mlds__mlds_atomic_statement_0_0_i277);
+	}
+	MR_r1 = (MR_Word) MR_CTOR0_ADDR(ml_backend__mlds, mlds_type);
+	MR_r2 = MR_sv(10);
+	MR_r3 = MR_sv(7);
+	MR_np_call_localret_ent(__Compare___list__list_1_0,
+		__Compare___ml_backend__mlds__mlds_atomic_statement_0_0_i185);
+MR_def_label(__Compare___ml_backend__mlds__mlds_atomic_statement_0_0,185)
+	MR_MAYBE_INIT_LOCAL_THREAD_ENGINE_BASE
+	if (MR_INT_NE(MR_r1,0)) {
+		MR_GOTO_LAB(__Compare___ml_backend__mlds__mlds_atomic_statement_0_0_i277);
+	}
+	MR_r1 = MR_sv(9);
+	MR_r2 = MR_sv(8);
+	MR_succip_word = MR_sv(17);
+	MR_decr_sp(17);
+	MR_np_tailcall_ent(private_builtin__builtin_compare_int_3_0);
+MR_def_label(__Compare___ml_backend__mlds__mlds_atomic_statement_0_0,204)
+	MR_MAYBE_INIT_LOCAL_THREAD_ENGINE_BASE
+	if (MR_INT_NE(MR_tag(MR_sv(2)),3)) {
+		MR_GOTO_LAB(__Compare___ml_backend__mlds__mlds_atomic_statement_0_0_i266);
+	}
+	if (MR_INT_NE(MR_ctfield(3, MR_sv(2), 0),7)) {
+		MR_GOTO_LAB(__Compare___ml_backend__mlds__mlds_atomic_statement_0_0_i266);
+	}
+	{
+	MR_Word MR_tempr1, MR_tempr2, MR_tempr3, MR_tempr4, MR_tempr5, MR_tempr6;
+	MR_tempr5 = MR_sv(1);
+	MR_sv(6) = MR_ctfield(3, MR_tempr5, 2);
+	MR_sv(5) = MR_ctfield(3, MR_tempr5, 3);
+	MR_sv(4) = MR_ctfield(3, MR_tempr5, 4);
+	MR_tempr6 = MR_sv(2);
+	MR_sv(3) = MR_ctfield(3, MR_tempr6, 4);
+	MR_tempr1 = MR_ctfield(3, MR_tempr6, 3);
+	MR_tempr2 = MR_ctfield(3, MR_tempr6, 2);
+	MR_tempr3 = MR_tempr5;
+	MR_sv(1) = MR_tempr2;
+	MR_tempr4 = MR_tempr6;
+	MR_sv(2) = MR_tempr1;
+	MR_r1 = MR_ctfield(3, MR_tempr3, 1);
+	MR_r2 = MR_ctfield(3, MR_tempr4, 1);
+	}
+	MR_np_call_localret_ent(private_builtin__builtin_compare_int_3_0,
+		__Compare___ml_backend__mlds__mlds_atomic_statement_0_0_i216);
+MR_def_label(__Compare___ml_backend__mlds__mlds_atomic_statement_0_0,216)
+	MR_MAYBE_INIT_LOCAL_THREAD_ENGINE_BASE
+	if (MR_INT_NE(MR_r1,0)) {
+		MR_GOTO_LAB(__Compare___ml_backend__mlds__mlds_atomic_statement_0_0_i277);
+	}
+	MR_r1 = (MR_Word) MR_CTOR0_ADDR(ml_backend__mlds, outline_arg);
+	MR_r2 = MR_sv(6);
+	MR_r3 = MR_sv(1);
+	MR_np_call_localret_ent(__Compare___list__list_1_0,
+		__Compare___ml_backend__mlds__mlds_atomic_statement_0_0_i220);
+MR_def_label(__Compare___ml_backend__mlds__mlds_atomic_statement_0_0,220)
+	MR_MAYBE_INIT_LOCAL_THREAD_ENGINE_BASE
+	if (MR_INT_NE(MR_r1,0)) {
+		MR_GOTO_LAB(__Compare___ml_backend__mlds__mlds_atomic_statement_0_0_i277);
+	}
+	MR_r1 = (MR_Word) MR_CTOR0_ADDR(ml_backend__mlds, mlds_lval);
+	MR_r2 = MR_sv(5);
+	MR_r3 = MR_sv(2);
+	MR_np_call_localret_ent(__Compare___list__list_1_0,
+		__Compare___ml_backend__mlds__mlds_atomic_statement_0_0_i224);
+MR_def_label(__Compare___ml_backend__mlds__mlds_atomic_statement_0_0,224)
+	MR_MAYBE_INIT_LOCAL_THREAD_ENGINE_BASE
+	if (MR_INT_NE(MR_r1,0)) {
+		MR_GOTO_LAB(__Compare___ml_backend__mlds__mlds_atomic_statement_0_0_i277);
+	}
+	MR_r1 = MR_sv(4);
+	MR_r2 = MR_sv(3);
+	MR_succip_word = MR_sv(17);
+	MR_decr_sp(17);
+	MR_np_tailcall_ent(private_builtin__builtin_compare_string_3_0);
+MR_def_label(__Compare___ml_backend__mlds__mlds_atomic_statement_0_0,237)
+	MR_MAYBE_INIT_LOCAL_THREAD_ENGINE_BASE
+	if (MR_INT_NE(MR_tag(MR_sv(2)),3)) {
+		MR_GOTO_LAB(__Compare___ml_backend__mlds__mlds_atomic_statement_0_0_i266);
+	}
+	MR_COMPUTED_GOTO((MR_Unsigned) MR_ctfield(3, MR_sv(2), 0),
+		MR_LABEL_AP(__Compare___ml_backend__mlds__mlds_atomic_statement_0_0_i266) MR_AND
+		MR_LABEL_AP(__Compare___ml_backend__mlds__mlds_atomic_statement_0_0_i266) MR_AND
+		MR_LABEL_AP(__Compare___ml_backend__mlds__mlds_atomic_statement_0_0_i266) MR_AND
+		MR_LABEL_AP(__Compare___ml_backend__mlds__mlds_atomic_statement_0_0_i266) MR_AND
+		MR_LABEL_AP(__Compare___ml_backend__mlds__mlds_atomic_statement_0_0_i248) MR_AND
+		MR_LABEL_AP(__Compare___ml_backend__mlds__mlds_atomic_statement_0_0_i265) MR_AND
+		MR_LABEL_AP(__Compare___ml_backend__mlds__mlds_atomic_statement_0_0_i265) MR_AND
+		MR_LABEL_AP(__Compare___ml_backend__mlds__mlds_atomic_statement_0_0_i265));
+MR_def_label(__Compare___ml_backend__mlds__mlds_atomic_statement_0_0,248)
+	MR_MAYBE_INIT_LOCAL_THREAD_ENGINE_BASE
+	MR_r1 = MR_ctfield(3, MR_sv(1), 1);
+	MR_r2 = MR_ctfield(3, MR_sv(2), 1);
+	MR_succip_word = MR_sv(17);
+	MR_decr_sp(17);
+	MR_np_tailcall_ent(__Compare___ml_backend__mlds__mlds_rval_0_0);
+MR_def_label(__Compare___ml_backend__mlds__mlds_atomic_statement_0_0,255)
+	MR_MAYBE_INIT_LOCAL_THREAD_ENGINE_BASE
+	if (MR_INT_NE(MR_tag(MR_sv(2)),3)) {
+		MR_GOTO_LAB(__Compare___ml_backend__mlds__mlds_atomic_statement_0_0_i266);
+	}
+	MR_COMPUTED_GOTO((MR_Unsigned) MR_ctfield(3, MR_sv(2), 0),
+		MR_LABEL_AP(__Compare___ml_backend__mlds__mlds_atomic_statement_0_0_i266) MR_AND
+		MR_LABEL_AP(__Compare___ml_backend__mlds__mlds_atomic_statement_0_0_i266) MR_AND
+		MR_LABEL_AP(__Compare___ml_backend__mlds__mlds_atomic_statement_0_0_i266) MR_AND
+		MR_LABEL_AP(__Compare___ml_backend__mlds__mlds_atomic_statement_0_0_i266) MR_AND
+		MR_LABEL_AP(__Compare___ml_backend__mlds__mlds_atomic_statement_0_0_i266) MR_AND
+		MR_LABEL_AP(__Compare___ml_backend__mlds__mlds_atomic_statement_0_0_i267) MR_AND
+		MR_LABEL_AP(__Compare___ml_backend__mlds__mlds_atomic_statement_0_0_i265) MR_AND
+		MR_LABEL_AP(__Compare___ml_backend__mlds__mlds_atomic_statement_0_0_i265));
+MR_def_label(__Compare___ml_backend__mlds__mlds_atomic_statement_0_0,265)
+	MR_MAYBE_INIT_LOCAL_THREAD_ENGINE_BASE
+	MR_r1 = (MR_Integer) 1;
+	MR_decr_sp_and_return(17);
+MR_def_label(__Compare___ml_backend__mlds__mlds_atomic_statement_0_0,266)
+	MR_MAYBE_INIT_LOCAL_THREAD_ENGINE_BASE
+	MR_r1 = (MR_Integer) 2;
+	MR_decr_sp_and_return(17);
+MR_def_label(__Compare___ml_backend__mlds__mlds_atomic_statement_0_0,267)
+	MR_MAYBE_INIT_LOCAL_THREAD_ENGINE_BASE
+	MR_r1 = MR_ctfield(3, MR_sv(1), 1);
+	MR_r2 = MR_ctfield(3, MR_sv(2), 1);
+	MR_succip_word = MR_sv(17);
+	MR_decr_sp(17);
+	MR_np_tailcall_ent(__Compare___ml_backend__mlds__trail_op_0_0);
+MR_def_label(__Compare___ml_backend__mlds__mlds_atomic_statement_0_0,277)
+	MR_MAYBE_INIT_LOCAL_THREAD_ENGINE_BASE
+	MR_decr_sp_and_return(17);
+#ifdef MR_maybe_local_thread_engine_base
+	#undef MR_maybe_local_thread_engine_base
+	#define MR_maybe_local_thread_engine_base MR_thread_engine_base
+#endif
+MR_END_MODULE
+
+
+MR_BEGIN_MODULE(ml_backend__mlds_module59)
+	MR_init_entry1(__Unify___ml_backend__mlds__mlds_attribute_0_0);
+	MR_init_label1(__Unify___ml_backend__mlds__mlds_attribute_0_0,6)
+MR_BEGIN_CODE
+
+#ifdef MR_maybe_local_thread_engine_base
+	#undef MR_maybe_local_thread_engine_base
+	#define MR_maybe_local_thread_engine_base MR_local_thread_engine_base
+#endif
+MR_define_entry(mercury____Unify___ml_backend__mlds__mlds_attribute_0_0);
+	MR_MAYBE_INIT_LOCAL_THREAD_ENGINE_BASE
+	if ((MR_r1 == MR_r2)) {
+		MR_GOTO_LAB(__Unify___ml_backend__mlds__mlds_attribute_0_0_i6);
+	}
+	MR_incr_sp(3);
+	MR_sv(3) = (MR_Word) MR_succip;
+	MR_sv(1) = MR_r1;
+	MR_sv(2) = MR_r2;
+	MR_decr_sp(3);
+	MR_np_tailcall_ent(__Unify___ml_backend__mlds__mlds_type_0_0);
+MR_def_label(__Unify___ml_backend__mlds__mlds_attribute_0_0,6)
+	MR_MAYBE_INIT_LOCAL_THREAD_ENGINE_BASE
+	MR_r1 = MR_TRUE;
+	MR_proceed();
+#ifdef MR_maybe_local_thread_engine_base
+	#undef MR_maybe_local_thread_engine_base
+	#define MR_maybe_local_thread_engine_base MR_thread_engine_base
+#endif
+MR_END_MODULE
+
+
+MR_BEGIN_MODULE(ml_backend__mlds_module60)
+	MR_init_entry1(__Compare___ml_backend__mlds__mlds_attribute_0_0);
+	MR_init_label2(__Compare___ml_backend__mlds__mlds_attribute_0_0,3,2)
+MR_BEGIN_CODE
+
+#ifdef MR_maybe_local_thread_engine_base
+	#undef MR_maybe_local_thread_engine_base
+	#define MR_maybe_local_thread_engine_base MR_local_thread_engine_base
+#endif
+MR_define_entry(mercury____Compare___ml_backend__mlds__mlds_attribute_0_0);
+	MR_MAYBE_INIT_LOCAL_THREAD_ENGINE_BASE
+	if ((MR_r1 == MR_r2)) {
+		MR_GOTO_LAB(__Compare___ml_backend__mlds__mlds_attribute_0_0_i3);
+	}
+	MR_incr_sp(3);
+	MR_sv(3) = (MR_Word) MR_succip;
+	MR_sv(1) = MR_r1;
+	MR_sv(2) = MR_r2;
+	MR_GOTO_LAB(__Compare___ml_backend__mlds__mlds_attribute_0_0_i2);
+MR_def_label(__Compare___ml_backend__mlds__mlds_attribute_0_0,3)
+	MR_MAYBE_INIT_LOCAL_THREAD_ENGINE_BASE
+	MR_r1 = (MR_Integer) 0;
+	MR_proceed();
+MR_def_label(__Compare___ml_backend__mlds__mlds_attribute_0_0,2)
+	MR_MAYBE_INIT_LOCAL_THREAD_ENGINE_BASE
+	MR_r1 = MR_sv(1);
+	MR_r2 = MR_sv(2);
+	MR_succip_word = MR_sv(3);
+	MR_decr_sp(3);
+	MR_np_tailcall_ent(__Compare___ml_backend__mlds__mlds_type_0_0);
+#ifdef MR_maybe_local_thread_engine_base
+	#undef MR_maybe_local_thread_engine_base
+	#define MR_maybe_local_thread_engine_base MR_thread_engine_base
+#endif
+MR_END_MODULE
+
+
+MR_BEGIN_MODULE(ml_backend__mlds_module61)
+	MR_init_entry1(__Unify___ml_backend__mlds__mlds_case_match_cond_0_0);
+	MR_init_label4(__Unify___ml_backend__mlds__mlds_case_match_cond_0_0,7,19,5,1)
+MR_BEGIN_CODE
+
+#ifdef MR_maybe_local_thread_engine_base
+	#undef MR_maybe_local_thread_engine_base
+	#define MR_maybe_local_thread_engine_base MR_local_thread_engine_base
+#endif
+MR_define_entry(mercury____Unify___ml_backend__mlds__mlds_case_match_cond_0_0);
+	MR_MAYBE_INIT_LOCAL_THREAD_ENGINE_BASE
+	if ((MR_r1 == MR_r2)) {
+		MR_GOTO_LAB(__Unify___ml_backend__mlds__mlds_case_match_cond_0_0_i19);
+	}
+	MR_incr_sp(3);
+	MR_sv(3) = (MR_Word) MR_succip;
+	{
+	MR_Word MR_tempr1, MR_tempr2, MR_tempr3, MR_tempr4;
+	MR_tempr1 = MR_r1;
+	MR_sv(1) = MR_tempr1;
+	MR_tempr2 = MR_r2;
+	MR_sv(2) = MR_tempr2;
+	if (MR_PTAG_TESTR(MR_tempr1,1)) {
+		MR_GOTO_LAB(__Unify___ml_backend__mlds__mlds_case_match_cond_0_0_i5);
+	}
+	if (MR_PTAG_TESTR(MR_tempr2,1)) {
+		MR_GOTO_LAB(__Unify___ml_backend__mlds__mlds_case_match_cond_0_0_i1);
+	}
+	MR_tempr3 = MR_tempr1;
+	MR_sv(1) = MR_ctfield(1, MR_tempr3, 1);
+	MR_tempr4 = MR_tempr2;
+	MR_sv(2) = MR_ctfield(1, MR_tempr4, 1);
+	MR_r1 = MR_ctfield(1, MR_tempr3, 0);
+	MR_r2 = MR_ctfield(1, MR_tempr4, 0);
+	}
+	MR_np_call_localret_ent(__Unify___ml_backend__mlds__mlds_rval_0_0,
+		__Unify___ml_backend__mlds__mlds_case_match_cond_0_0_i7);
+MR_def_label(__Unify___ml_backend__mlds__mlds_case_match_cond_0_0,7)
+	MR_MAYBE_INIT_LOCAL_THREAD_ENGINE_BASE
+	if (!(MR_r1)) {
+		MR_GOTO_LAB(__Unify___ml_backend__mlds__mlds_case_match_cond_0_0_i1);
+	}
+	MR_r1 = MR_sv(1);
+	MR_r2 = MR_sv(2);
+	MR_succip_word = MR_sv(3);
+	MR_decr_sp(3);
+	MR_np_tailcall_ent(__Unify___ml_backend__mlds__mlds_rval_0_0);
+MR_def_label(__Unify___ml_backend__mlds__mlds_case_match_cond_0_0,19)
+	MR_MAYBE_INIT_LOCAL_THREAD_ENGINE_BASE
+	MR_r1 = MR_TRUE;
+	MR_proceed();
+MR_def_label(__Unify___ml_backend__mlds__mlds_case_match_cond_0_0,5)
+	MR_MAYBE_INIT_LOCAL_THREAD_ENGINE_BASE
+	if (MR_PTAG_TESTR(MR_sv(2),0)) {
+		MR_GOTO_LAB(__Unify___ml_backend__mlds__mlds_case_match_cond_0_0_i1);
+	}
+	MR_r1 = MR_ctfield(0, MR_sv(1), 0);
+	MR_r2 = MR_ctfield(0, MR_sv(2), 0);
+	MR_succip_word = MR_sv(3);
+	MR_decr_sp(3);
+	MR_np_tailcall_ent(__Unify___ml_backend__mlds__mlds_rval_0_0);
+MR_def_label(__Unify___ml_backend__mlds__mlds_case_match_cond_0_0,1)
+	MR_MAYBE_INIT_LOCAL_THREAD_ENGINE_BASE
+	MR_r1 = MR_FALSE;
+	MR_decr_sp_and_return(3);
+#ifdef MR_maybe_local_thread_engine_base
+	#undef MR_maybe_local_thread_engine_base
+	#define MR_maybe_local_thread_engine_base MR_thread_engine_base
+#endif
+MR_END_MODULE
+
+
+MR_BEGIN_MODULE(ml_backend__mlds_module62)
+	MR_init_entry1(__Compare___ml_backend__mlds__mlds_case_match_cond_0_0);
+	MR_init_label7(__Compare___ml_backend__mlds__mlds_case_match_cond_0_0,3,2,9,7,5,15,45)
+MR_BEGIN_CODE
+
+#ifdef MR_maybe_local_thread_engine_base
+	#undef MR_maybe_local_thread_engine_base
+	#define MR_maybe_local_thread_engine_base MR_local_thread_engine_base
+#endif
+MR_define_entry(mercury____Compare___ml_backend__mlds__mlds_case_match_cond_0_0);
+	MR_MAYBE_INIT_LOCAL_THREAD_ENGINE_BASE
+	if ((MR_r1 == MR_r2)) {
+		MR_GOTO_LAB(__Compare___ml_backend__mlds__mlds_case_match_cond_0_0_i3);
+	}
+	MR_incr_sp(3);
+	MR_sv(3) = (MR_Word) MR_succip;
+	MR_sv(1) = MR_r1;
+	MR_sv(2) = MR_r2;
+	MR_GOTO_LAB(__Compare___ml_backend__mlds__mlds_case_match_cond_0_0_i2);
+MR_def_label(__Compare___ml_backend__mlds__mlds_case_match_cond_0_0,3)
+	MR_MAYBE_INIT_LOCAL_THREAD_ENGINE_BASE
+	MR_r1 = (MR_Integer) 0;
+	MR_proceed();
+MR_def_label(__Compare___ml_backend__mlds__mlds_case_match_cond_0_0,2)
+	MR_MAYBE_INIT_LOCAL_THREAD_ENGINE_BASE
+	if (MR_PTAG_TESTR(MR_sv(1),1)) {
+		MR_GOTO_LAB(__Compare___ml_backend__mlds__mlds_case_match_cond_0_0_i5);
+	}
+	if (MR_PTAG_TESTR(MR_sv(2),1)) {
+		MR_GOTO_LAB(__Compare___ml_backend__mlds__mlds_case_match_cond_0_0_i7);
+	}
+	{
+	MR_Word MR_tempr1, MR_tempr2, MR_tempr3, MR_tempr4, MR_tempr5, MR_tempr6;
+	MR_tempr5 = MR_sv(1);
+	MR_tempr1 = MR_ctfield(1, MR_tempr5, 1);
+	MR_tempr6 = MR_sv(2);
+	MR_tempr2 = MR_ctfield(1, MR_tempr6, 1);
+	MR_tempr3 = MR_tempr5;
+	MR_sv(1) = MR_tempr2;
+	MR_tempr4 = MR_tempr6;
+	MR_sv(2) = MR_tempr1;
+	MR_r1 = MR_ctfield(1, MR_tempr3, 0);
+	MR_r2 = MR_ctfield(1, MR_tempr4, 0);
+	}
+	MR_np_call_localret_ent(__Compare___ml_backend__mlds__mlds_rval_0_0,
+		__Compare___ml_backend__mlds__mlds_case_match_cond_0_0_i9);
+MR_def_label(__Compare___ml_backend__mlds__mlds_case_match_cond_0_0,9)
+	MR_MAYBE_INIT_LOCAL_THREAD_ENGINE_BASE
+	if (MR_INT_NE(MR_r1,0)) {
+		MR_GOTO_LAB(__Compare___ml_backend__mlds__mlds_case_match_cond_0_0_i45);
+	}
+	MR_r1 = MR_sv(2);
+	MR_r2 = MR_sv(1);
+	MR_succip_word = MR_sv(3);
+	MR_decr_sp(3);
+	MR_np_tailcall_ent(__Compare___ml_backend__mlds__mlds_rval_0_0);
+MR_def_label(__Compare___ml_backend__mlds__mlds_case_match_cond_0_0,7)
+	MR_MAYBE_INIT_LOCAL_THREAD_ENGINE_BASE
+	MR_r1 = (MR_Integer) 2;
+	MR_decr_sp_and_return(3);
+MR_def_label(__Compare___ml_backend__mlds__mlds_case_match_cond_0_0,5)
+	MR_MAYBE_INIT_LOCAL_THREAD_ENGINE_BASE
+	if (MR_PTAG_TESTR(MR_sv(2),1)) {
+		MR_GOTO_LAB(__Compare___ml_backend__mlds__mlds_case_match_cond_0_0_i15);
+	}
+	MR_r1 = (MR_Integer) 1;
+	MR_decr_sp_and_return(3);
+MR_def_label(__Compare___ml_backend__mlds__mlds_case_match_cond_0_0,15)
+	MR_MAYBE_INIT_LOCAL_THREAD_ENGINE_BASE
+	MR_r1 = MR_ctfield(0, MR_sv(1), 0);
+	MR_r2 = MR_ctfield(0, MR_sv(2), 0);
+	MR_succip_word = MR_sv(3);
+	MR_decr_sp(3);
+	MR_np_tailcall_ent(__Compare___ml_backend__mlds__mlds_rval_0_0);
+MR_def_label(__Compare___ml_backend__mlds__mlds_case_match_cond_0_0,45)
+	MR_MAYBE_INIT_LOCAL_THREAD_ENGINE_BASE
+	MR_decr_sp_and_return(3);
+#ifdef MR_maybe_local_thread_engine_base
+	#undef MR_maybe_local_thread_engine_base
+	#define MR_maybe_local_thread_engine_base MR_thread_engine_base
+#endif
+MR_END_MODULE
+
+
+MR_BEGIN_MODULE(ml_backend__mlds_module63)
+	MR_init_entry1(__Unify___ml_backend__mlds__mlds_case_match_conds_0_0);
+MR_BEGIN_CODE
+
+#ifdef MR_maybe_local_thread_engine_base
+	#undef MR_maybe_local_thread_engine_base
+	#define MR_maybe_local_thread_engine_base MR_local_thread_engine_base
+#endif
+MR_define_entry(mercury____Unify___ml_backend__mlds__mlds_case_match_conds_0_0);
+	MR_MAYBE_INIT_LOCAL_THREAD_ENGINE_BASE
+	{
+	MR_Word MR_tempr1, MR_tempr2;
+	MR_tempr1 = MR_r1;
+	MR_r1 = (MR_Word) MR_CTOR0_ADDR(ml_backend__mlds, mlds_case_match_cond);
+	MR_tempr2 = MR_r2;
+	MR_r2 = MR_tempr1;
+	MR_r3 = MR_tempr2;
+	MR_np_tailcall_ent(__Unify___list__list_1_0);
+	}
+#ifdef MR_maybe_local_thread_engine_base
+	#undef MR_maybe_local_thread_engine_base
+	#define MR_maybe_local_thread_engine_base MR_thread_engine_base
+#endif
+MR_END_MODULE
+
+
+MR_BEGIN_MODULE(ml_backend__mlds_module64)
+	MR_init_entry1(__Compare___ml_backend__mlds__mlds_case_match_conds_0_0);
+MR_BEGIN_CODE
+
+#ifdef MR_maybe_local_thread_engine_base
+	#undef MR_maybe_local_thread_engine_base
+	#define MR_maybe_local_thread_engine_base MR_local_thread_engine_base
+#endif
+MR_define_entry(mercury____Compare___ml_backend__mlds__mlds_case_match_conds_0_0);
+	MR_MAYBE_INIT_LOCAL_THREAD_ENGINE_BASE
+	{
+	MR_Word MR_tempr1, MR_tempr2;
+	MR_tempr1 = MR_r1;
+	MR_r1 = (MR_Word) MR_CTOR0_ADDR(ml_backend__mlds, mlds_case_match_cond);
+	MR_tempr2 = MR_r2;
+	MR_r2 = MR_tempr1;
+	MR_r3 = MR_tempr2;
+	MR_np_tailcall_ent(__Compare___list__list_1_0);
+	}
+#ifdef MR_maybe_local_thread_engine_base
+	#undef MR_maybe_local_thread_engine_base
+	#define MR_maybe_local_thread_engine_base MR_thread_engine_base
+#endif
+MR_END_MODULE
+
+
+MR_BEGIN_MODULE(ml_backend__mlds_module65)
+	MR_init_entry1(__Unify___ml_backend__mlds__mlds_class_0_0);
+MR_BEGIN_CODE
+
+#ifdef MR_maybe_local_thread_engine_base
+	#undef MR_maybe_local_thread_engine_base
+	#define MR_maybe_local_thread_engine_base MR_local_thread_engine_base
+#endif
+MR_define_entry(mercury____Unify___ml_backend__mlds__mlds_class_0_0);
+	MR_MAYBE_INIT_LOCAL_THREAD_ENGINE_BASE
+	{
+	MR_Word MR_tempr1, MR_tempr2;
+	MR_tempr1 = MR_r1;
+	MR_r1 = (MR_Word) MR_STRING_CTOR_ADDR;
+	MR_tempr2 = MR_r2;
+	MR_r2 = MR_tempr1;
+	MR_r3 = MR_tempr2;
+	MR_np_tailcall_ent(__Unify___ml_backend__mlds__mlds_fully_qualified_name_1_0);
+	}
+#ifdef MR_maybe_local_thread_engine_base
+	#undef MR_maybe_local_thread_engine_base
+	#define MR_maybe_local_thread_engine_base MR_thread_engine_base
+#endif
+MR_END_MODULE
+
+
+MR_BEGIN_MODULE(ml_backend__mlds_module66)
+	MR_init_entry1(__Compare___ml_backend__mlds__mlds_class_0_0);
+MR_BEGIN_CODE
+
+#ifdef MR_maybe_local_thread_engine_base
+	#undef MR_maybe_local_thread_engine_base
+	#define MR_maybe_local_thread_engine_base MR_local_thread_engine_base
+#endif
+MR_define_entry(mercury____Compare___ml_backend__mlds__mlds_class_0_0);
+	MR_MAYBE_INIT_LOCAL_THREAD_ENGINE_BASE
+	{
+	MR_Word MR_tempr1, MR_tempr2;
+	MR_tempr1 = MR_r1;
+	MR_r1 = (MR_Word) MR_STRING_CTOR_ADDR;
+	MR_tempr2 = MR_r2;
+	MR_r2 = MR_tempr1;
+	MR_r3 = MR_tempr2;
+	MR_np_tailcall_ent(__Compare___ml_backend__mlds__mlds_fully_qualified_name_1_0);
+	}
+#ifdef MR_maybe_local_thread_engine_base
+	#undef MR_maybe_local_thread_engine_base
+	#define MR_maybe_local_thread_engine_base MR_thread_engine_base
+#endif
+MR_END_MODULE
+
+
+MR_BEGIN_MODULE(ml_backend__mlds_module67)
+	MR_init_entry1(__Unify___ml_backend__mlds__mlds_class_defn_0_0);
+	MR_init_label6(__Unify___ml_backend__mlds__mlds_class_defn_0_0,4,6,8,10,14,1)
+MR_BEGIN_CODE
+
+#ifdef MR_maybe_local_thread_engine_base
+	#undef MR_maybe_local_thread_engine_base
+	#define MR_maybe_local_thread_engine_base MR_local_thread_engine_base
+#endif
+MR_define_entry(mercury____Unify___ml_backend__mlds__mlds_class_defn_0_0);
+	MR_MAYBE_INIT_LOCAL_THREAD_ENGINE_BASE
+	if ((MR_r1 == MR_r2)) {
+		MR_GOTO_LAB(__Unify___ml_backend__mlds__mlds_class_defn_0_0_i14);
+	}
+	MR_incr_sp(9);
+	MR_sv(9) = (MR_Word) MR_succip;
+	{
+	MR_Word MR_tempr1, MR_tempr2, MR_tempr3, MR_tempr4;
+	MR_tempr1 = MR_r1;
+	MR_sv(1) = MR_tempr1;
+	MR_tempr2 = MR_r2;
+	MR_sv(2) = MR_tempr2;
+	MR_tempr3 = MR_ctfield(0, MR_tempr1, 0);
+	MR_tempr4 = MR_ctfield(0, MR_tempr2, 0);
+	if ((MR_tempr3 != MR_tempr4)) {
+		MR_GOTO_LAB(__Unify___ml_backend__mlds__mlds_class_defn_0_0_i1);
+	}
+	MR_tempr3 = MR_tempr1;
+	MR_sv(1) = MR_ctfield(0, MR_tempr3, 2);
+	MR_tempr4 = MR_tempr2;
+	MR_sv(2) = MR_ctfield(0, MR_tempr3, 3);
+	MR_sv(3) = MR_ctfield(0, MR_tempr3, 4);
+	MR_sv(4) = MR_ctfield(0, MR_tempr3, 5);
+	MR_sv(5) = MR_ctfield(0, MR_tempr4, 2);
+	MR_sv(6) = MR_ctfield(0, MR_tempr4, 3);
+	MR_sv(7) = MR_ctfield(0, MR_tempr4, 4);
+	MR_sv(8) = MR_ctfield(0, MR_tempr4, 5);
+	MR_r1 = (MR_Word) MR_CTOR0_ADDR(ml_backend__mlds, mlds_import);
+	MR_r2 = MR_ctfield(0, MR_tempr3, 1);
+	MR_r3 = MR_ctfield(0, MR_tempr4, 1);
+	}
+	MR_np_call_localret_ent(__Unify___list__list_1_0,
+		__Unify___ml_backend__mlds__mlds_class_defn_0_0_i4);
+MR_def_label(__Unify___ml_backend__mlds__mlds_class_defn_0_0,4)
+	MR_MAYBE_INIT_LOCAL_THREAD_ENGINE_BASE
+	if (!(MR_r1)) {
+		MR_GOTO_LAB(__Unify___ml_backend__mlds__mlds_class_defn_0_0_i1);
+	}
+	{
+	MR_Word MR_tempr1;
+	MR_tempr1 = MR_sv(1);
+	MR_sv(1) = (MR_Word) MR_CTOR0_ADDR(ml_backend__mlds, mlds_type);
+	MR_r1 = MR_sv(1);
+	MR_r2 = MR_tempr1;
+	MR_r3 = MR_sv(5);
+	}
+	MR_np_call_localret_ent(__Unify___list__list_1_0,
+		__Unify___ml_backend__mlds__mlds_class_defn_0_0_i6);
+MR_def_label(__Unify___ml_backend__mlds__mlds_class_defn_0_0,6)
+	MR_MAYBE_INIT_LOCAL_THREAD_ENGINE_BASE
+	if (!(MR_r1)) {
+		MR_GOTO_LAB(__Unify___ml_backend__mlds__mlds_class_defn_0_0_i1);
+	}
+	MR_r1 = MR_sv(1);
+	MR_r2 = MR_sv(2);
+	MR_r3 = MR_sv(6);
+	MR_np_call_localret_ent(__Unify___list__list_1_0,
+		__Unify___ml_backend__mlds__mlds_class_defn_0_0_i8);
+MR_def_label(__Unify___ml_backend__mlds__mlds_class_defn_0_0,8)
+	MR_MAYBE_INIT_LOCAL_THREAD_ENGINE_BASE
+	if (!(MR_r1)) {
+		MR_GOTO_LAB(__Unify___ml_backend__mlds__mlds_class_defn_0_0_i1);
+	}
+	MR_sv(1) = (MR_Word) MR_CTOR0_ADDR(ml_backend__mlds, mlds_defn);
+	MR_r1 = MR_sv(1);
+	MR_r2 = MR_sv(3);
+	MR_r3 = MR_sv(7);
+	MR_np_call_localret_ent(__Unify___list__list_1_0,
+		__Unify___ml_backend__mlds__mlds_class_defn_0_0_i10);
+MR_def_label(__Unify___ml_backend__mlds__mlds_class_defn_0_0,10)
+	MR_MAYBE_INIT_LOCAL_THREAD_ENGINE_BASE
+	if (!(MR_r1)) {
+		MR_GOTO_LAB(__Unify___ml_backend__mlds__mlds_class_defn_0_0_i1);
+	}
+	MR_r1 = MR_sv(1);
+	MR_r2 = MR_sv(4);
+	MR_r3 = MR_sv(8);
+	MR_succip_word = MR_sv(9);
+	MR_decr_sp(9);
+	MR_np_tailcall_ent(__Unify___list__list_1_0);
+MR_def_label(__Unify___ml_backend__mlds__mlds_class_defn_0_0,14)
+	MR_MAYBE_INIT_LOCAL_THREAD_ENGINE_BASE
+	MR_r1 = MR_TRUE;
+	MR_proceed();
+MR_def_label(__Unify___ml_backend__mlds__mlds_class_defn_0_0,1)
+	MR_MAYBE_INIT_LOCAL_THREAD_ENGINE_BASE
+	MR_r1 = MR_FALSE;
+	MR_decr_sp_and_return(9);
+#ifdef MR_maybe_local_thread_engine_base
+	#undef MR_maybe_local_thread_engine_base
+	#define MR_maybe_local_thread_engine_base MR_thread_engine_base
+#endif
+MR_END_MODULE
+
+
+MR_BEGIN_MODULE(ml_backend__mlds_module68)
+	MR_init_entry1(__Compare___ml_backend__mlds__mlds_class_defn_0_0);
+	MR_init_label8(__Compare___ml_backend__mlds__mlds_class_defn_0_0,3,2,5,9,13,17,21,53)
+MR_BEGIN_CODE
+
+#ifdef MR_maybe_local_thread_engine_base
+	#undef MR_maybe_local_thread_engine_base
+	#define MR_maybe_local_thread_engine_base MR_local_thread_engine_base
+#endif
+MR_define_entry(mercury____Compare___ml_backend__mlds__mlds_class_defn_0_0);
+	MR_MAYBE_INIT_LOCAL_THREAD_ENGINE_BASE
+	if ((MR_r1 == MR_r2)) {
+		MR_GOTO_LAB(__Compare___ml_backend__mlds__mlds_class_defn_0_0_i3);
+	}
+	MR_incr_sp(11);
+	MR_sv(11) = (MR_Word) MR_succip;
+	MR_sv(1) = MR_r1;
+	MR_sv(2) = MR_r2;
+	MR_GOTO_LAB(__Compare___ml_backend__mlds__mlds_class_defn_0_0_i2);
+MR_def_label(__Compare___ml_backend__mlds__mlds_class_defn_0_0,3)
+	MR_MAYBE_INIT_LOCAL_THREAD_ENGINE_BASE
+	MR_r1 = (MR_Integer) 0;
+	MR_proceed();
+MR_def_label(__Compare___ml_backend__mlds__mlds_class_defn_0_0,2)
+	MR_MAYBE_INIT_LOCAL_THREAD_ENGINE_BASE
+	{
+	MR_Word MR_tempr1, MR_tempr2, MR_tempr3, MR_tempr4, MR_tempr5, MR_tempr6;
+	MR_tempr5 = MR_sv(2);
+	MR_sv(10) = MR_ctfield(0, MR_tempr5, 5);
+	MR_sv(9) = MR_ctfield(0, MR_tempr5, 4);
+	MR_sv(8) = MR_ctfield(0, MR_tempr5, 3);
+	MR_sv(7) = MR_ctfield(0, MR_tempr5, 2);
+	MR_sv(6) = MR_ctfield(0, MR_tempr5, 1);
+	MR_tempr6 = MR_sv(1);
+	MR_sv(5) = MR_ctfield(0, MR_tempr6, 5);
+	MR_sv(4) = MR_ctfield(0, MR_tempr6, 4);
+	MR_sv(3) = MR_ctfield(0, MR_tempr6, 3);
+	MR_tempr1 = MR_ctfield(0, MR_tempr6, 2);
+	MR_tempr2 = MR_ctfield(0, MR_tempr6, 1);
+	MR_tempr3 = MR_tempr6;
+	MR_sv(1) = MR_tempr2;
+	MR_tempr4 = MR_tempr5;
+	MR_sv(2) = MR_tempr1;
+	MR_r1 = MR_ctfield(0, MR_tempr3, 0);
+	MR_r2 = MR_ctfield(0, MR_tempr4, 0);
+	}
+	MR_np_call_localret_ent(private_builtin__builtin_compare_int_3_0,
+		__Compare___ml_backend__mlds__mlds_class_defn_0_0_i5);
+MR_def_label(__Compare___ml_backend__mlds__mlds_class_defn_0_0,5)
+	MR_MAYBE_INIT_LOCAL_THREAD_ENGINE_BASE
+	if (MR_INT_NE(MR_r1,0)) {
+		MR_GOTO_LAB(__Compare___ml_backend__mlds__mlds_class_defn_0_0_i53);
+	}
+	MR_r1 = (MR_Word) MR_CTOR0_ADDR(ml_backend__mlds, mlds_import);
+	MR_r2 = MR_sv(1);
+	MR_r3 = MR_sv(6);
+	MR_np_call_localret_ent(__Compare___list__list_1_0,
+		__Compare___ml_backend__mlds__mlds_class_defn_0_0_i9);
+MR_def_label(__Compare___ml_backend__mlds__mlds_class_defn_0_0,9)
+	MR_MAYBE_INIT_LOCAL_THREAD_ENGINE_BASE
+	if (MR_INT_NE(MR_r1,0)) {
+		MR_GOTO_LAB(__Compare___ml_backend__mlds__mlds_class_defn_0_0_i53);
+	}
+	MR_r1 = (MR_Word) MR_CTOR0_ADDR(ml_backend__mlds, mlds_type);
+	MR_r2 = MR_sv(2);
+	MR_r3 = MR_sv(7);
+	MR_np_call_localret_ent(__Compare___list__list_1_0,
+		__Compare___ml_backend__mlds__mlds_class_defn_0_0_i13);
+MR_def_label(__Compare___ml_backend__mlds__mlds_class_defn_0_0,13)
+	MR_MAYBE_INIT_LOCAL_THREAD_ENGINE_BASE
+	if (MR_INT_NE(MR_r1,0)) {
+		MR_GOTO_LAB(__Compare___ml_backend__mlds__mlds_class_defn_0_0_i53);
+	}
+	MR_r1 = (MR_Word) MR_CTOR0_ADDR(ml_backend__mlds, mlds_type);
+	MR_r2 = MR_sv(3);
+	MR_r3 = MR_sv(8);
+	MR_np_call_localret_ent(__Compare___list__list_1_0,
+		__Compare___ml_backend__mlds__mlds_class_defn_0_0_i17);
+MR_def_label(__Compare___ml_backend__mlds__mlds_class_defn_0_0,17)
+	MR_MAYBE_INIT_LOCAL_THREAD_ENGINE_BASE
+	if (MR_INT_NE(MR_r1,0)) {
+		MR_GOTO_LAB(__Compare___ml_backend__mlds__mlds_class_defn_0_0_i53);
+	}
+	MR_r1 = (MR_Word) MR_CTOR0_ADDR(ml_backend__mlds, mlds_defn);
+	MR_r2 = MR_sv(4);
+	MR_r3 = MR_sv(9);
+	MR_np_call_localret_ent(__Compare___list__list_1_0,
+		__Compare___ml_backend__mlds__mlds_class_defn_0_0_i21);
+MR_def_label(__Compare___ml_backend__mlds__mlds_class_defn_0_0,21)
+	MR_MAYBE_INIT_LOCAL_THREAD_ENGINE_BASE
+	if (MR_INT_NE(MR_r1,0)) {
+		MR_GOTO_LAB(__Compare___ml_backend__mlds__mlds_class_defn_0_0_i53);
+	}
+	MR_r1 = (MR_Word) MR_CTOR0_ADDR(ml_backend__mlds, mlds_defn);
+	MR_r2 = MR_sv(5);
+	MR_r3 = MR_sv(10);
+	MR_succip_word = MR_sv(11);
+	MR_decr_sp(11);
+	MR_np_tailcall_ent(__Compare___list__list_1_0);
+MR_def_label(__Compare___ml_backend__mlds__mlds_class_defn_0_0,53)
+	MR_MAYBE_INIT_LOCAL_THREAD_ENGINE_BASE
+	MR_decr_sp_and_return(11);
+#ifdef MR_maybe_local_thread_engine_base
+	#undef MR_maybe_local_thread_engine_base
+	#define MR_maybe_local_thread_engine_base MR_thread_engine_base
+#endif
+MR_END_MODULE
+
+
+MR_BEGIN_MODULE(ml_backend__mlds_module69)
+	MR_init_entry1(__Unify___ml_backend__mlds__mlds_class_id_0_0);
+MR_BEGIN_CODE
+
+#ifdef MR_maybe_local_thread_engine_base
+	#undef MR_maybe_local_thread_engine_base
+	#define MR_maybe_local_thread_engine_base MR_local_thread_engine_base
+#endif
+MR_define_entry(mercury____Unify___ml_backend__mlds__mlds_class_id_0_0);
+	MR_MAYBE_INIT_LOCAL_THREAD_ENGINE_BASE
+	MR_np_tailcall_ent(__Unify___ml_backend__mlds__mlds_type_0_0);
+#ifdef MR_maybe_local_thread_engine_base
+	#undef MR_maybe_local_thread_engine_base
+	#define MR_maybe_local_thread_engine_base MR_thread_engine_base
+#endif
+MR_END_MODULE
+
+
+MR_BEGIN_MODULE(ml_backend__mlds_module70)
+	MR_init_entry1(__Compare___ml_backend__mlds__mlds_class_id_0_0);
+MR_BEGIN_CODE
+
+#ifdef MR_maybe_local_thread_engine_base
+	#undef MR_maybe_local_thread_engine_base
+	#define MR_maybe_local_thread_engine_base MR_local_thread_engine_base
+#endif
+MR_define_entry(mercury____Compare___ml_backend__mlds__mlds_class_id_0_0);
+	MR_MAYBE_INIT_LOCAL_THREAD_ENGINE_BASE
+	MR_np_tailcall_ent(__Compare___ml_backend__mlds__mlds_type_0_0);
+#ifdef MR_maybe_local_thread_engine_base
+	#undef MR_maybe_local_thread_engine_base
+	#define MR_maybe_local_thread_engine_base MR_thread_engine_base
+#endif
+MR_END_MODULE
+
+
+MR_BEGIN_MODULE(ml_backend__mlds_module71)
+	MR_init_entry1(__Unify___ml_backend__mlds__mlds_class_kind_0_0);
+MR_BEGIN_CODE
+
+#ifdef MR_maybe_local_thread_engine_base
+	#undef MR_maybe_local_thread_engine_base
+	#define MR_maybe_local_thread_engine_base MR_local_thread_engine_base
+#endif
+MR_define_entry(mercury____Unify___ml_backend__mlds__mlds_class_kind_0_0);
+	MR_MAYBE_INIT_LOCAL_THREAD_ENGINE_BASE
+	MR_r1 = (MR_r1 == MR_r2);
+	MR_proceed();
+#ifdef MR_maybe_local_thread_engine_base
+	#undef MR_maybe_local_thread_engine_base
+	#define MR_maybe_local_thread_engine_base MR_thread_engine_base
+#endif
+MR_END_MODULE
+
+
+MR_BEGIN_MODULE(ml_backend__mlds_module72)
+	MR_init_entry1(__Compare___ml_backend__mlds__mlds_class_kind_0_0);
+MR_BEGIN_CODE
+
+#ifdef MR_maybe_local_thread_engine_base
+	#undef MR_maybe_local_thread_engine_base
+	#define MR_maybe_local_thread_engine_base MR_local_thread_engine_base
+#endif
+MR_define_entry(mercury____Compare___ml_backend__mlds__mlds_class_kind_0_0);
+	MR_MAYBE_INIT_LOCAL_THREAD_ENGINE_BASE
+	MR_np_tailcall_ent(private_builtin__builtin_compare_int_3_0);
+#ifdef MR_maybe_local_thread_engine_base
+	#undef MR_maybe_local_thread_engine_base
+	#define MR_maybe_local_thread_engine_base MR_thread_engine_base
+#endif
+MR_END_MODULE
+
+
+MR_BEGIN_MODULE(ml_backend__mlds_module73)
+	MR_init_entry1(__Unify___ml_backend__mlds__mlds_class_name_0_0);
+MR_BEGIN_CODE
+
+#ifdef MR_maybe_local_thread_engine_base
+	#undef MR_maybe_local_thread_engine_base
+	#define MR_maybe_local_thread_engine_base MR_local_thread_engine_base
+#endif
+MR_define_entry(mercury____Unify___ml_backend__mlds__mlds_class_name_0_0);
+	MR_MAYBE_INIT_LOCAL_THREAD_ENGINE_BASE
+	MR_r1 = (strcmp((char *) (MR_Word *) MR_r1, (char *) (MR_Word *) MR_r2) == 0);
+	MR_proceed();
+#ifdef MR_maybe_local_thread_engine_base
+	#undef MR_maybe_local_thread_engine_base
+	#define MR_maybe_local_thread_engine_base MR_thread_engine_base
+#endif
+MR_END_MODULE
+
+
+MR_BEGIN_MODULE(ml_backend__mlds_module74)
+	MR_init_entry1(__Compare___ml_backend__mlds__mlds_class_name_0_0);
+MR_BEGIN_CODE
+
+#ifdef MR_maybe_local_thread_engine_base
+	#undef MR_maybe_local_thread_engine_base
+	#define MR_maybe_local_thread_engine_base MR_local_thread_engine_base
+#endif
+MR_define_entry(mercury____Compare___ml_backend__mlds__mlds_class_name_0_0);
+	MR_MAYBE_INIT_LOCAL_THREAD_ENGINE_BASE
+	MR_np_tailcall_ent(private_builtin__builtin_compare_string_3_0);
+#ifdef MR_maybe_local_thread_engine_base
+	#undef MR_maybe_local_thread_engine_base
+	#define MR_maybe_local_thread_engine_base MR_thread_engine_base
+#endif
+MR_END_MODULE
+
+
+MR_BEGIN_MODULE(ml_backend__mlds_module75)
+	MR_init_entry1(__Unify___ml_backend__mlds__mlds_code_addr_0_0);
+	MR_init_label5(__Unify___ml_backend__mlds__mlds_code_addr_0_0,7,22,5,12,1)
+MR_BEGIN_CODE
+
+#ifdef MR_maybe_local_thread_engine_base
+	#undef MR_maybe_local_thread_engine_base
+	#define MR_maybe_local_thread_engine_base MR_local_thread_engine_base
+#endif
+MR_define_entry(mercury____Unify___ml_backend__mlds__mlds_code_addr_0_0);
+	MR_MAYBE_INIT_LOCAL_THREAD_ENGINE_BASE
+	if ((MR_r1 == MR_r2)) {
+		MR_GOTO_LAB(__Unify___ml_backend__mlds__mlds_code_addr_0_0_i22);
+	}
+	MR_incr_sp(5);
+	MR_sv(5) = (MR_Word) MR_succip;
+	{
+	MR_Word MR_tempr1, MR_tempr2, MR_tempr3, MR_tempr4;
+	MR_tempr1 = MR_r1;
+	MR_sv(1) = MR_tempr1;
+	MR_tempr2 = MR_r2;
+	MR_sv(2) = MR_tempr2;
+	if (MR_PTAG_TESTR(MR_tempr1,1)) {
+		MR_GOTO_LAB(__Unify___ml_backend__mlds__mlds_code_addr_0_0_i5);
+	}
+	if (MR_PTAG_TESTR(MR_tempr2,1)) {
+		MR_GOTO_LAB(__Unify___ml_backend__mlds__mlds_code_addr_0_0_i1);
+	}
+	MR_tempr3 = MR_tempr1;
+	MR_sv(1) = MR_ctfield(1, MR_tempr3, 1);
+	MR_tempr4 = MR_tempr2;
+	MR_sv(2) = MR_ctfield(1, MR_tempr3, 2);
+	MR_sv(3) = MR_ctfield(1, MR_tempr4, 1);
+	MR_sv(4) = MR_ctfield(1, MR_tempr4, 2);
+	MR_r1 = (MR_Word) MR_CTOR0_ADDR(ml_backend__mlds, mlds_proc_label);
+	MR_r2 = MR_ctfield(1, MR_tempr3, 0);
+	MR_r3 = MR_ctfield(1, MR_tempr4, 0);
+	}
+	MR_np_call_localret_ent(__Unify___ml_backend__mlds__mlds_fully_qualified_name_1_0,
+		__Unify___ml_backend__mlds__mlds_code_addr_0_0_i7);
+MR_def_label(__Unify___ml_backend__mlds__mlds_code_addr_0_0,7)
+	MR_MAYBE_INIT_LOCAL_THREAD_ENGINE_BASE
+	if (!(MR_r1)) {
+		MR_GOTO_LAB(__Unify___ml_backend__mlds__mlds_code_addr_0_0_i1);
+	}
+	if ((MR_sv(1) != MR_sv(3))) {
+		MR_GOTO_LAB(__Unify___ml_backend__mlds__mlds_code_addr_0_0_i1);
+	}
+	MR_r1 = MR_sv(2);
+	MR_r2 = MR_sv(4);
+	MR_succip_word = MR_sv(5);
+	MR_decr_sp(5);
+	MR_np_tailcall_ent(__Unify___ml_backend__mlds__mlds_func_signature_0_0);
+MR_def_label(__Unify___ml_backend__mlds__mlds_code_addr_0_0,22)
+	MR_MAYBE_INIT_LOCAL_THREAD_ENGINE_BASE
+	MR_r1 = MR_TRUE;
+	MR_proceed();
+MR_def_label(__Unify___ml_backend__mlds__mlds_code_addr_0_0,5)
+	MR_MAYBE_INIT_LOCAL_THREAD_ENGINE_BASE
+	if (MR_PTAG_TESTR(MR_sv(2),0)) {
+		MR_GOTO_LAB(__Unify___ml_backend__mlds__mlds_code_addr_0_0_i1);
+	}
+	{
+	MR_Word MR_tempr1, MR_tempr2;
+	MR_tempr1 = MR_sv(1);
+	MR_sv(1) = MR_ctfield(0, MR_tempr1, 1);
+	MR_tempr2 = MR_sv(2);
+	MR_sv(2) = MR_ctfield(0, MR_tempr2, 1);
+	MR_r1 = (MR_Word) MR_CTOR0_ADDR(ml_backend__mlds, mlds_proc_label);
+	MR_r2 = MR_ctfield(0, MR_tempr1, 0);
+	MR_r3 = MR_ctfield(0, MR_tempr2, 0);
+	}
+	MR_np_call_localret_ent(__Unify___ml_backend__mlds__mlds_fully_qualified_name_1_0,
+		__Unify___ml_backend__mlds__mlds_code_addr_0_0_i12);
+MR_def_label(__Unify___ml_backend__mlds__mlds_code_addr_0_0,12)
+	MR_MAYBE_INIT_LOCAL_THREAD_ENGINE_BASE
+	if (!(MR_r1)) {
+		MR_GOTO_LAB(__Unify___ml_backend__mlds__mlds_code_addr_0_0_i1);
+	}
+	MR_r1 = MR_sv(1);
+	MR_r2 = MR_sv(2);
+	MR_succip_word = MR_sv(5);
+	MR_decr_sp(5);
+	MR_np_tailcall_ent(__Unify___ml_backend__mlds__mlds_func_signature_0_0);
+MR_def_label(__Unify___ml_backend__mlds__mlds_code_addr_0_0,1)
+	MR_MAYBE_INIT_LOCAL_THREAD_ENGINE_BASE
+	MR_r1 = MR_FALSE;
+	MR_decr_sp_and_return(5);
+#ifdef MR_maybe_local_thread_engine_base
+	#undef MR_maybe_local_thread_engine_base
+	#define MR_maybe_local_thread_engine_base MR_thread_engine_base
+#endif
+MR_END_MODULE
+
+
+MR_BEGIN_MODULE(ml_backend__mlds_module76)
+	MR_init_entry1(__Compare___ml_backend__mlds__mlds_code_addr_0_0);
+	MR_init_label8(__Compare___ml_backend__mlds__mlds_code_addr_0_0,3,2,9,13,7,5,20,22)
+	MR_init_label1(__Compare___ml_backend__mlds__mlds_code_addr_0_0,63)
+MR_BEGIN_CODE
+
+#ifdef MR_maybe_local_thread_engine_base
+	#undef MR_maybe_local_thread_engine_base
+	#define MR_maybe_local_thread_engine_base MR_local_thread_engine_base
+#endif
+MR_define_entry(mercury____Compare___ml_backend__mlds__mlds_code_addr_0_0);
+	MR_MAYBE_INIT_LOCAL_THREAD_ENGINE_BASE
+	if ((MR_r1 == MR_r2)) {
+		MR_GOTO_LAB(__Compare___ml_backend__mlds__mlds_code_addr_0_0_i3);
+	}
+	MR_incr_sp(5);
+	MR_sv(5) = (MR_Word) MR_succip;
+	MR_sv(1) = MR_r1;
+	MR_sv(2) = MR_r2;
+	MR_GOTO_LAB(__Compare___ml_backend__mlds__mlds_code_addr_0_0_i2);
+MR_def_label(__Compare___ml_backend__mlds__mlds_code_addr_0_0,3)
+	MR_MAYBE_INIT_LOCAL_THREAD_ENGINE_BASE
+	MR_r1 = (MR_Integer) 0;
+	MR_proceed();
+MR_def_label(__Compare___ml_backend__mlds__mlds_code_addr_0_0,2)
+	MR_MAYBE_INIT_LOCAL_THREAD_ENGINE_BASE
+	if (MR_PTAG_TESTR(MR_sv(1),1)) {
+		MR_GOTO_LAB(__Compare___ml_backend__mlds__mlds_code_addr_0_0_i5);
+	}
+	if (MR_PTAG_TESTR(MR_sv(2),1)) {
+		MR_GOTO_LAB(__Compare___ml_backend__mlds__mlds_code_addr_0_0_i7);
+	}
+	{
+	MR_Word MR_tempr1, MR_tempr2, MR_tempr3, MR_tempr4, MR_tempr5, MR_tempr6;
+	MR_tempr5 = MR_sv(1);
+	MR_sv(4) = MR_ctfield(1, MR_tempr5, 1);
+	MR_sv(3) = MR_ctfield(1, MR_tempr5, 2);
+	MR_tempr6 = MR_sv(2);
+	MR_tempr1 = MR_ctfield(1, MR_tempr6, 2);
+	MR_tempr2 = MR_ctfield(1, MR_tempr6, 1);
+	MR_tempr3 = MR_tempr5;
+	MR_sv(1) = MR_tempr2;
+	MR_tempr4 = MR_tempr6;
+	MR_sv(2) = MR_tempr1;
+	MR_r1 = (MR_Word) MR_CTOR0_ADDR(ml_backend__mlds, mlds_proc_label);
+	MR_r2 = MR_ctfield(1, MR_tempr3, 0);
+	MR_r3 = MR_ctfield(1, MR_tempr4, 0);
+	}
+	MR_np_call_localret_ent(__Compare___ml_backend__mlds__mlds_fully_qualified_name_1_0,
+		__Compare___ml_backend__mlds__mlds_code_addr_0_0_i9);
+MR_def_label(__Compare___ml_backend__mlds__mlds_code_addr_0_0,9)
+	MR_MAYBE_INIT_LOCAL_THREAD_ENGINE_BASE
+	if (MR_INT_NE(MR_r1,0)) {
+		MR_GOTO_LAB(__Compare___ml_backend__mlds__mlds_code_addr_0_0_i63);
+	}
+	MR_r1 = MR_sv(4);
+	MR_r2 = MR_sv(1);
+	MR_np_call_localret_ent(private_builtin__builtin_compare_int_3_0,
+		__Compare___ml_backend__mlds__mlds_code_addr_0_0_i13);
+MR_def_label(__Compare___ml_backend__mlds__mlds_code_addr_0_0,13)
+	MR_MAYBE_INIT_LOCAL_THREAD_ENGINE_BASE
+	if (MR_INT_NE(MR_r1,0)) {
+		MR_GOTO_LAB(__Compare___ml_backend__mlds__mlds_code_addr_0_0_i63);
+	}
+	MR_r1 = MR_sv(3);
+	MR_r2 = MR_sv(2);
+	MR_succip_word = MR_sv(5);
+	MR_decr_sp(5);
+	MR_np_tailcall_ent(__Compare___ml_backend__mlds__mlds_func_signature_0_0);
+MR_def_label(__Compare___ml_backend__mlds__mlds_code_addr_0_0,7)
+	MR_MAYBE_INIT_LOCAL_THREAD_ENGINE_BASE
+	MR_r1 = (MR_Integer) 2;
+	MR_decr_sp_and_return(5);
+MR_def_label(__Compare___ml_backend__mlds__mlds_code_addr_0_0,5)
+	MR_MAYBE_INIT_LOCAL_THREAD_ENGINE_BASE
+	if (MR_PTAG_TESTR(MR_sv(2),1)) {
+		MR_GOTO_LAB(__Compare___ml_backend__mlds__mlds_code_addr_0_0_i20);
+	}
+	MR_r1 = (MR_Integer) 1;
+	MR_decr_sp_and_return(5);
+MR_def_label(__Compare___ml_backend__mlds__mlds_code_addr_0_0,20)
+	MR_MAYBE_INIT_LOCAL_THREAD_ENGINE_BASE
+	{
+	MR_Word MR_tempr1, MR_tempr2, MR_tempr3, MR_tempr4, MR_tempr5, MR_tempr6;
+	MR_tempr5 = MR_sv(1);
+	MR_tempr1 = MR_ctfield(0, MR_tempr5, 1);
+	MR_tempr6 = MR_sv(2);
+	MR_tempr2 = MR_ctfield(0, MR_tempr6, 1);
+	MR_tempr3 = MR_tempr5;
+	MR_sv(1) = MR_tempr2;
+	MR_tempr4 = MR_tempr6;
+	MR_sv(2) = MR_tempr1;
+	MR_r1 = (MR_Word) MR_CTOR0_ADDR(ml_backend__mlds, mlds_proc_label);
+	MR_r2 = MR_ctfield(0, MR_tempr3, 0);
+	MR_r3 = MR_ctfield(0, MR_tempr4, 0);
+	}
+	MR_np_call_localret_ent(__Compare___ml_backend__mlds__mlds_fully_qualified_name_1_0,
+		__Compare___ml_backend__mlds__mlds_code_addr_0_0_i22);
+MR_def_label(__Compare___ml_backend__mlds__mlds_code_addr_0_0,22)
+	MR_MAYBE_INIT_LOCAL_THREAD_ENGINE_BASE
+	if (MR_INT_NE(MR_r1,0)) {
+		MR_GOTO_LAB(__Compare___ml_backend__mlds__mlds_code_addr_0_0_i63);
+	}
+	MR_r1 = MR_sv(2);
+	MR_r2 = MR_sv(1);
+	MR_succip_word = MR_sv(5);
+	MR_decr_sp(5);
+	MR_np_tailcall_ent(__Compare___ml_backend__mlds__mlds_func_signature_0_0);
+MR_def_label(__Compare___ml_backend__mlds__mlds_code_addr_0_0,63)
+	MR_MAYBE_INIT_LOCAL_THREAD_ENGINE_BASE
+	MR_decr_sp_and_return(5);
+#ifdef MR_maybe_local_thread_engine_base
+	#undef MR_maybe_local_thread_engine_base
+	#define MR_maybe_local_thread_engine_base MR_thread_engine_base
+#endif
+MR_END_MODULE
+
+MR_decl_entry(__Unify___term__context_0_0);
+
+MR_BEGIN_MODULE(ml_backend__mlds_module77)
+	MR_init_entry1(__Unify___ml_backend__mlds__mlds_context_0_0);
+	MR_init_label1(__Unify___ml_backend__mlds__mlds_context_0_0,6)
+MR_BEGIN_CODE
+
+#ifdef MR_maybe_local_thread_engine_base
+	#undef MR_maybe_local_thread_engine_base
+	#define MR_maybe_local_thread_engine_base MR_local_thread_engine_base
+#endif
+MR_define_entry(mercury____Unify___ml_backend__mlds__mlds_context_0_0);
+	MR_MAYBE_INIT_LOCAL_THREAD_ENGINE_BASE
+	if ((MR_r1 == MR_r2)) {
+		MR_GOTO_LAB(__Unify___ml_backend__mlds__mlds_context_0_0_i6);
+	}
+	MR_incr_sp(3);
+	MR_sv(3) = (MR_Word) MR_succip;
+	MR_sv(1) = MR_r1;
+	MR_sv(2) = MR_r2;
+	MR_decr_sp(3);
+	MR_np_tailcall_ent(__Unify___term__context_0_0);
+MR_def_label(__Unify___ml_backend__mlds__mlds_context_0_0,6)
+	MR_MAYBE_INIT_LOCAL_THREAD_ENGINE_BASE
+	MR_r1 = MR_TRUE;
+	MR_proceed();
+#ifdef MR_maybe_local_thread_engine_base
+	#undef MR_maybe_local_thread_engine_base
+	#define MR_maybe_local_thread_engine_base MR_thread_engine_base
+#endif
+MR_END_MODULE
+
+MR_decl_entry(__Compare___term__context_0_0);
+
+MR_BEGIN_MODULE(ml_backend__mlds_module78)
+	MR_init_entry1(__Compare___ml_backend__mlds__mlds_context_0_0);
+	MR_init_label2(__Compare___ml_backend__mlds__mlds_context_0_0,3,2)
+MR_BEGIN_CODE
+
+#ifdef MR_maybe_local_thread_engine_base
+	#undef MR_maybe_local_thread_engine_base
+	#define MR_maybe_local_thread_engine_base MR_local_thread_engine_base
+#endif
+MR_define_entry(mercury____Compare___ml_backend__mlds__mlds_context_0_0);
+	MR_MAYBE_INIT_LOCAL_THREAD_ENGINE_BASE
+	if ((MR_r1 == MR_r2)) {
+		MR_GOTO_LAB(__Compare___ml_backend__mlds__mlds_context_0_0_i3);
+	}
+	MR_incr_sp(3);
+	MR_sv(3) = (MR_Word) MR_succip;
+	MR_sv(1) = MR_r1;
+	MR_sv(2) = MR_r2;
+	MR_GOTO_LAB(__Compare___ml_backend__mlds__mlds_context_0_0_i2);
+MR_def_label(__Compare___ml_backend__mlds__mlds_context_0_0,3)
+	MR_MAYBE_INIT_LOCAL_THREAD_ENGINE_BASE
+	MR_r1 = (MR_Integer) 0;
+	MR_proceed();
+MR_def_label(__Compare___ml_backend__mlds__mlds_context_0_0,2)
+	MR_MAYBE_INIT_LOCAL_THREAD_ENGINE_BASE
+	MR_r1 = MR_sv(1);
+	MR_r2 = MR_sv(2);
+	MR_succip_word = MR_sv(3);
+	MR_decr_sp(3);
+	MR_np_tailcall_ent(__Compare___term__context_0_0);
+#ifdef MR_maybe_local_thread_engine_base
+	#undef MR_maybe_local_thread_engine_base
+	#define MR_maybe_local_thread_engine_base MR_thread_engine_base
+#endif
+MR_END_MODULE
+
+
+MR_BEGIN_MODULE(ml_backend__mlds_module79)
+	MR_init_entry1(__Unify___ml_backend__mlds__mlds_ctor_id_0_0);
+	MR_init_label2(__Unify___ml_backend__mlds__mlds_ctor_id_0_0,4,1)
+MR_BEGIN_CODE
+
+#ifdef MR_maybe_local_thread_engine_base
+	#undef MR_maybe_local_thread_engine_base
+	#define MR_maybe_local_thread_engine_base MR_local_thread_engine_base
+#endif
+MR_define_entry(mercury____Unify___ml_backend__mlds__mlds_ctor_id_0_0);
+	MR_MAYBE_INIT_LOCAL_THREAD_ENGINE_BASE
+	MR_incr_sp(2);
+	if ((MR_r1 == MR_r2)) {
+		MR_GOTO_LAB(__Unify___ml_backend__mlds__mlds_ctor_id_0_0_i4);
+	}
+	{
+	MR_Word MR_tempr1, MR_tempr2, MR_tempr3;
+	MR_tempr1 = MR_r1;
+	MR_sv(1) = MR_tempr1;
+	MR_tempr2 = MR_r2;
+	MR_sv(2) = MR_tempr2;
+	MR_r1 = MR_ctfield(0, MR_tempr1, 0);
+	MR_tempr3 = MR_ctfield(0, MR_tempr2, 0);
+	if ((strcmp((char *) (MR_Word *) MR_r1, (char *) (MR_Word *) MR_tempr3) != 0)) {
+		MR_GOTO_LAB(__Unify___ml_backend__mlds__mlds_ctor_id_0_0_i1);
+	}
+	MR_r1 = MR_ctfield(0, MR_tempr1, 1);
+	MR_tempr3 = MR_ctfield(0, MR_tempr2, 1);
+	MR_r1 = (MR_r1 == MR_tempr3);
+	MR_decr_sp(2);
+	MR_proceed();
+	}
+MR_def_label(__Unify___ml_backend__mlds__mlds_ctor_id_0_0,4)
+	MR_MAYBE_INIT_LOCAL_THREAD_ENGINE_BASE
+	MR_decr_sp(2);
+	MR_r1 = MR_TRUE;
+	MR_proceed();
+MR_def_label(__Unify___ml_backend__mlds__mlds_ctor_id_0_0,1)
+	MR_MAYBE_INIT_LOCAL_THREAD_ENGINE_BASE
+	MR_decr_sp(2);
+	MR_r1 = MR_FALSE;
+	MR_proceed();
+#ifdef MR_maybe_local_thread_engine_base
+	#undef MR_maybe_local_thread_engine_base
+	#define MR_maybe_local_thread_engine_base MR_thread_engine_base
+#endif
+MR_END_MODULE
+
+
+MR_BEGIN_MODULE(ml_backend__mlds_module80)
+	MR_init_entry1(__Compare___ml_backend__mlds__mlds_ctor_id_0_0);
+	MR_init_label4(__Compare___ml_backend__mlds__mlds_ctor_id_0_0,3,2,5,21)
+MR_BEGIN_CODE
+
+#ifdef MR_maybe_local_thread_engine_base
+	#undef MR_maybe_local_thread_engine_base
+	#define MR_maybe_local_thread_engine_base MR_local_thread_engine_base
+#endif
+MR_define_entry(mercury____Compare___ml_backend__mlds__mlds_ctor_id_0_0);
+	MR_MAYBE_INIT_LOCAL_THREAD_ENGINE_BASE
+	if ((MR_r1 == MR_r2)) {
+		MR_GOTO_LAB(__Compare___ml_backend__mlds__mlds_ctor_id_0_0_i3);
+	}
+	MR_incr_sp(3);
+	MR_sv(3) = (MR_Word) MR_succip;
+	MR_sv(1) = MR_r1;
+	MR_sv(2) = MR_r2;
+	MR_GOTO_LAB(__Compare___ml_backend__mlds__mlds_ctor_id_0_0_i2);
+MR_def_label(__Compare___ml_backend__mlds__mlds_ctor_id_0_0,3)
+	MR_MAYBE_INIT_LOCAL_THREAD_ENGINE_BASE
+	MR_r1 = (MR_Integer) 0;
+	MR_proceed();
+MR_def_label(__Compare___ml_backend__mlds__mlds_ctor_id_0_0,2)
+	MR_MAYBE_INIT_LOCAL_THREAD_ENGINE_BASE
+	{
+	MR_Word MR_tempr1, MR_tempr2, MR_tempr3, MR_tempr4, MR_tempr5, MR_tempr6;
+	MR_tempr5 = MR_sv(2);
+	MR_tempr1 = MR_ctfield(0, MR_tempr5, 1);
+	MR_tempr6 = MR_sv(1);
+	MR_tempr2 = MR_ctfield(0, MR_tempr6, 1);
+	MR_tempr3 = MR_tempr6;
+	MR_sv(1) = MR_tempr2;
+	MR_tempr4 = MR_tempr5;
+	MR_sv(2) = MR_tempr1;
+	MR_r1 = MR_ctfield(0, MR_tempr3, 0);
+	MR_r2 = MR_ctfield(0, MR_tempr4, 0);
+	}
+	MR_np_call_localret_ent(private_builtin__builtin_compare_string_3_0,
+		__Compare___ml_backend__mlds__mlds_ctor_id_0_0_i5);
+MR_def_label(__Compare___ml_backend__mlds__mlds_ctor_id_0_0,5)
+	MR_MAYBE_INIT_LOCAL_THREAD_ENGINE_BASE
+	if (MR_INT_NE(MR_r1,0)) {
+		MR_GOTO_LAB(__Compare___ml_backend__mlds__mlds_ctor_id_0_0_i21);
+	}
+	MR_r1 = MR_sv(1);
+	MR_r2 = MR_sv(2);
+	MR_succip_word = MR_sv(3);
+	MR_decr_sp(3);
+	MR_np_tailcall_ent(private_builtin__builtin_compare_int_3_0);
+MR_def_label(__Compare___ml_backend__mlds__mlds_ctor_id_0_0,21)
+	MR_MAYBE_INIT_LOCAL_THREAD_ENGINE_BASE
+	MR_decr_sp_and_return(3);
+#ifdef MR_maybe_local_thread_engine_base
+	#undef MR_maybe_local_thread_engine_base
+	#define MR_maybe_local_thread_engine_base MR_thread_engine_base
+#endif
+MR_END_MODULE
+
+
+MR_BEGIN_MODULE(ml_backend__mlds_module81)
+	MR_init_entry1(__Unify___ml_backend__mlds__mlds_data_0_0);
+MR_BEGIN_CODE
+
+#ifdef MR_maybe_local_thread_engine_base
+	#undef MR_maybe_local_thread_engine_base
+	#define MR_maybe_local_thread_engine_base MR_local_thread_engine_base
+#endif
+MR_define_entry(mercury____Unify___ml_backend__mlds__mlds_data_0_0);
+	MR_MAYBE_INIT_LOCAL_THREAD_ENGINE_BASE
+	{
+	MR_Word MR_tempr1, MR_tempr2;
+	MR_tempr1 = MR_r1;
+	MR_r1 = (MR_Word) MR_CTOR0_ADDR(ml_backend__mlds, mlds_data_name);
+	MR_tempr2 = MR_r2;
+	MR_r2 = MR_tempr1;
+	MR_r3 = MR_tempr2;
+	MR_np_tailcall_ent(__Unify___ml_backend__mlds__mlds_fully_qualified_name_1_0);
+	}
+#ifdef MR_maybe_local_thread_engine_base
+	#undef MR_maybe_local_thread_engine_base
+	#define MR_maybe_local_thread_engine_base MR_thread_engine_base
+#endif
+MR_END_MODULE
+
+
+MR_BEGIN_MODULE(ml_backend__mlds_module82)
+	MR_init_entry1(__Compare___ml_backend__mlds__mlds_data_0_0);
+MR_BEGIN_CODE
+
+#ifdef MR_maybe_local_thread_engine_base
+	#undef MR_maybe_local_thread_engine_base
+	#define MR_maybe_local_thread_engine_base MR_local_thread_engine_base
+#endif
+MR_define_entry(mercury____Compare___ml_backend__mlds__mlds_data_0_0);
+	MR_MAYBE_INIT_LOCAL_THREAD_ENGINE_BASE
+	{
+	MR_Word MR_tempr1, MR_tempr2;
+	MR_tempr1 = MR_r1;
+	MR_r1 = (MR_Word) MR_CTOR0_ADDR(ml_backend__mlds, mlds_data_name);
+	MR_tempr2 = MR_r2;
+	MR_r2 = MR_tempr1;
+	MR_r3 = MR_tempr2;
+	MR_np_tailcall_ent(__Compare___ml_backend__mlds__mlds_fully_qualified_name_1_0);
+	}
+#ifdef MR_maybe_local_thread_engine_base
+	#undef MR_maybe_local_thread_engine_base
+	#define MR_maybe_local_thread_engine_base MR_thread_engine_base
+#endif
+MR_END_MODULE
+
+
+MR_BEGIN_MODULE(ml_backend__mlds_module83)
+	MR_init_entry1(__Unify___ml_backend__mlds__mlds_data_addr_0_0);
+	MR_init_label3(__Unify___ml_backend__mlds__mlds_data_addr_0_0,4,8,1)
+MR_BEGIN_CODE
+
+#ifdef MR_maybe_local_thread_engine_base
+	#undef MR_maybe_local_thread_engine_base
+	#define MR_maybe_local_thread_engine_base MR_local_thread_engine_base
+#endif
+MR_define_entry(mercury____Unify___ml_backend__mlds__mlds_data_addr_0_0);
+	MR_MAYBE_INIT_LOCAL_THREAD_ENGINE_BASE
+	if ((MR_r1 == MR_r2)) {
+		MR_GOTO_LAB(__Unify___ml_backend__mlds__mlds_data_addr_0_0_i8);
+	}
+	MR_incr_sp(3);
+	MR_sv(3) = (MR_Word) MR_succip;
+	MR_sv(1) = MR_r1;
+	MR_sv(2) = MR_r2;
+	{
+	MR_Word MR_tempr1, MR_tempr2;
+	MR_tempr1 = MR_sv(1);
+	MR_sv(1) = MR_ctfield(0, MR_tempr1, 1);
+	MR_tempr2 = MR_sv(2);
+	MR_sv(2) = MR_ctfield(0, MR_tempr2, 1);
+	MR_r1 = MR_ctfield(0, MR_tempr1, 0);
+	MR_r2 = MR_ctfield(0, MR_tempr2, 0);
+	}
+	MR_np_call_localret_ent(__Unify___ml_backend__mlds__mlds_module_name_0_0,
+		__Unify___ml_backend__mlds__mlds_data_addr_0_0_i4);
+MR_def_label(__Unify___ml_backend__mlds__mlds_data_addr_0_0,4)
+	MR_MAYBE_INIT_LOCAL_THREAD_ENGINE_BASE
+	if (!(MR_r1)) {
+		MR_GOTO_LAB(__Unify___ml_backend__mlds__mlds_data_addr_0_0_i1);
+	}
+	MR_r1 = MR_sv(1);
+	MR_r2 = MR_sv(2);
+	MR_succip_word = MR_sv(3);
+	MR_decr_sp(3);
+	MR_np_tailcall_ent(__Unify___ml_backend__mlds__mlds_data_name_0_0);
+MR_def_label(__Unify___ml_backend__mlds__mlds_data_addr_0_0,8)
+	MR_MAYBE_INIT_LOCAL_THREAD_ENGINE_BASE
+	MR_r1 = MR_TRUE;
+	MR_proceed();
+MR_def_label(__Unify___ml_backend__mlds__mlds_data_addr_0_0,1)
+	MR_MAYBE_INIT_LOCAL_THREAD_ENGINE_BASE
+	MR_r1 = MR_FALSE;
+	MR_decr_sp_and_return(3);
+#ifdef MR_maybe_local_thread_engine_base
+	#undef MR_maybe_local_thread_engine_base
+	#define MR_maybe_local_thread_engine_base MR_thread_engine_base
+#endif
+MR_END_MODULE
+
+
+MR_BEGIN_MODULE(ml_backend__mlds_module84)
+	MR_init_entry1(__Compare___ml_backend__mlds__mlds_data_addr_0_0);
+	MR_init_label4(__Compare___ml_backend__mlds__mlds_data_addr_0_0,3,2,5,21)
+MR_BEGIN_CODE
+
+#ifdef MR_maybe_local_thread_engine_base
+	#undef MR_maybe_local_thread_engine_base
+	#define MR_maybe_local_thread_engine_base MR_local_thread_engine_base
+#endif
+MR_define_entry(mercury____Compare___ml_backend__mlds__mlds_data_addr_0_0);
+	MR_MAYBE_INIT_LOCAL_THREAD_ENGINE_BASE
+	if ((MR_r1 == MR_r2)) {
+		MR_GOTO_LAB(__Compare___ml_backend__mlds__mlds_data_addr_0_0_i3);
+	}
+	MR_incr_sp(3);
+	MR_sv(3) = (MR_Word) MR_succip;
+	MR_sv(1) = MR_r1;
+	MR_sv(2) = MR_r2;
+	MR_GOTO_LAB(__Compare___ml_backend__mlds__mlds_data_addr_0_0_i2);
+MR_def_label(__Compare___ml_backend__mlds__mlds_data_addr_0_0,3)
+	MR_MAYBE_INIT_LOCAL_THREAD_ENGINE_BASE
+	MR_r1 = (MR_Integer) 0;
+	MR_proceed();
+MR_def_label(__Compare___ml_backend__mlds__mlds_data_addr_0_0,2)
+	MR_MAYBE_INIT_LOCAL_THREAD_ENGINE_BASE
+	{
+	MR_Word MR_tempr1, MR_tempr2, MR_tempr3, MR_tempr4, MR_tempr5, MR_tempr6;
+	MR_tempr5 = MR_sv(2);
+	MR_tempr1 = MR_ctfield(0, MR_tempr5, 1);
+	MR_tempr6 = MR_sv(1);
+	MR_tempr2 = MR_ctfield(0, MR_tempr6, 1);
+	MR_tempr3 = MR_tempr6;
+	MR_sv(1) = MR_tempr2;
+	MR_tempr4 = MR_tempr5;
+	MR_sv(2) = MR_tempr1;
+	MR_r1 = MR_ctfield(0, MR_tempr3, 0);
+	MR_r2 = MR_ctfield(0, MR_tempr4, 0);
+	}
+	MR_np_call_localret_ent(__Compare___ml_backend__mlds__mlds_module_name_0_0,
+		__Compare___ml_backend__mlds__mlds_data_addr_0_0_i5);
+MR_def_label(__Compare___ml_backend__mlds__mlds_data_addr_0_0,5)
+	MR_MAYBE_INIT_LOCAL_THREAD_ENGINE_BASE
+	if (MR_INT_NE(MR_r1,0)) {
+		MR_GOTO_LAB(__Compare___ml_backend__mlds__mlds_data_addr_0_0_i21);
+	}
+	MR_r1 = MR_sv(1);
+	MR_r2 = MR_sv(2);
+	MR_succip_word = MR_sv(3);
+	MR_decr_sp(3);
+	MR_np_tailcall_ent(__Compare___ml_backend__mlds__mlds_data_name_0_0);
+MR_def_label(__Compare___ml_backend__mlds__mlds_data_addr_0_0,21)
+	MR_MAYBE_INIT_LOCAL_THREAD_ENGINE_BASE
+	MR_decr_sp_and_return(3);
+#ifdef MR_maybe_local_thread_engine_base
+	#undef MR_maybe_local_thread_engine_base
+	#define MR_maybe_local_thread_engine_base MR_thread_engine_base
+#endif
+MR_END_MODULE
+
+MR_decl_entry(__Unify___backend_libs__rtti__proc_tabling_struct_id_0_0);
+MR_decl_entry(__Unify___backend_libs__rtti__rtti_id_0_0);
+
+MR_BEGIN_MODULE(ml_backend__mlds_module85)
+	MR_init_entry1(__Unify___ml_backend__mlds__mlds_data_name_0_0);
+	MR_init_label8(__Unify___ml_backend__mlds__mlds_data_name_0_0,11,26,5,33,22,7,9,12)
+	MR_init_label3(__Unify___ml_backend__mlds__mlds_data_name_0_0,16,34,1)
+MR_BEGIN_CODE
+
+#ifdef MR_maybe_local_thread_engine_base
+	#undef MR_maybe_local_thread_engine_base
+	#define MR_maybe_local_thread_engine_base MR_local_thread_engine_base
+#endif
+MR_define_entry(mercury____Unify___ml_backend__mlds__mlds_data_name_0_0);
+	MR_MAYBE_INIT_LOCAL_THREAD_ENGINE_BASE
+	if ((MR_r1 == MR_r2)) {
+		MR_GOTO_LAB(__Unify___ml_backend__mlds__mlds_data_name_0_0_i34);
+	}
+	MR_incr_sp(3);
+	MR_sv(3) = (MR_Word) MR_succip;
+	MR_sv(1) = MR_r1;
+	MR_sv(2) = MR_r2;
+	MR_COMPUTED_GOTO((MR_Unsigned) MR_tag(MR_sv(1)),
+		MR_LABEL_AP(__Unify___ml_backend__mlds__mlds_data_name_0_0_i11) MR_AND
+		MR_LABEL_AP(__Unify___ml_backend__mlds__mlds_data_name_0_0_i26) MR_AND
+		MR_LABEL_AP(__Unify___ml_backend__mlds__mlds_data_name_0_0_i5) MR_AND
+		MR_LABEL_AP(__Unify___ml_backend__mlds__mlds_data_name_0_0_i33));
+MR_def_label(__Unify___ml_backend__mlds__mlds_data_name_0_0,11)
+	MR_MAYBE_INIT_LOCAL_THREAD_ENGINE_BASE
+	MR_r1 = (MR_sv(2) == MR_sv(1));
+	MR_decr_sp_and_return(3);
+MR_def_label(__Unify___ml_backend__mlds__mlds_data_name_0_0,26)
+	MR_MAYBE_INIT_LOCAL_THREAD_ENGINE_BASE
+	if (MR_PTAG_TESTR(MR_sv(2),1)) {
+		MR_GOTO_LAB(__Unify___ml_backend__mlds__mlds_data_name_0_0_i1);
+	}
+	MR_r1 = MR_ctfield(1, MR_sv(1), 0);
+	MR_r2 = MR_ctfield(1, MR_sv(2), 0);
+	MR_succip_word = MR_sv(3);
+	MR_decr_sp(3);
+	MR_np_tailcall_ent(__Unify___ml_backend__mlds__mlds_var_name_0_0);
+MR_def_label(__Unify___ml_backend__mlds__mlds_data_name_0_0,5)
+	MR_MAYBE_INIT_LOCAL_THREAD_ENGINE_BASE
+	if (MR_PTAG_TESTR(MR_sv(2),2)) {
+		MR_GOTO_LAB(__Unify___ml_backend__mlds__mlds_data_name_0_0_i1);
+	}
+	MR_r1 = MR_ctfield(2, MR_sv(1), 0);
+	{
+	MR_Word MR_tempr1;
+	MR_tempr1 = MR_ctfield(2, MR_sv(2), 0);
+	MR_r1 = (MR_r1 == MR_tempr1);
+	MR_decr_sp_and_return(3);
+	}
+MR_def_label(__Unify___ml_backend__mlds__mlds_data_name_0_0,33)
+	MR_MAYBE_INIT_LOCAL_THREAD_ENGINE_BASE
+	{
+	MR_Word MR_tempr1, MR_tempr2, MR_tempr3, MR_tempr4;
+	MR_tempr4 = MR_sv(1);
+	MR_tempr1 = MR_ctfield(3, MR_tempr4, 0);
+	MR_r2 = MR_tempr1;
+	if (MR_INT_EQ(MR_tempr1,0)) {
+		MR_GOTO_LAB(__Unify___ml_backend__mlds__mlds_data_name_0_0_i16);
+	}
+	if (MR_INT_EQ(MR_tempr1,1)) {
+		MR_GOTO_LAB(__Unify___ml_backend__mlds__mlds_data_name_0_0_i12);
+	}
+	if (MR_INT_EQ(MR_tempr1,2)) {
+		MR_GOTO_LAB(__Unify___ml_backend__mlds__mlds_data_name_0_0_i7);
+	}
+	if (MR_RTAGS_TESTR(MR_sv(2),3,3)) {
+		MR_GOTO_LAB(__Unify___ml_backend__mlds__mlds_data_name_0_0_i1);
+	}
+	MR_tempr2 = MR_tempr4;
+	MR_sv(1) = MR_ctfield(3, MR_tempr2, 2);
+	MR_tempr3 = MR_sv(2);
+	MR_sv(2) = MR_ctfield(3, MR_tempr3, 2);
+	MR_r1 = MR_ctfield(3, MR_tempr2, 1);
+	MR_r2 = MR_ctfield(3, MR_tempr3, 1);
+	}
+	MR_np_call_localret_ent(__Unify___ml_backend__mlds__mlds_proc_label_0_0,
+		__Unify___ml_backend__mlds__mlds_data_name_0_0_i22);
+MR_def_label(__Unify___ml_backend__mlds__mlds_data_name_0_0,22)
+	MR_MAYBE_INIT_LOCAL_THREAD_ENGINE_BASE
+	if (!(MR_r1)) {
+		MR_GOTO_LAB(__Unify___ml_backend__mlds__mlds_data_name_0_0_i1);
+	}
+	MR_r1 = MR_sv(1);
+	MR_r2 = MR_sv(2);
+	MR_succip_word = MR_sv(3);
+	MR_decr_sp(3);
+	MR_np_tailcall_ent(__Unify___backend_libs__rtti__proc_tabling_struct_id_0_0);
+MR_def_label(__Unify___ml_backend__mlds__mlds_data_name_0_0,7)
+	MR_MAYBE_INIT_LOCAL_THREAD_ENGINE_BASE
+	if (MR_RTAGS_TESTR(MR_sv(2),3,2)) {
+		MR_GOTO_LAB(__Unify___ml_backend__mlds__mlds_data_name_0_0_i1);
+	}
+	{
+	MR_Word MR_tempr1, MR_tempr2;
+	MR_tempr1 = MR_sv(1);
+	MR_sv(1) = MR_ctfield(3, MR_tempr1, 2);
+	MR_tempr2 = MR_sv(2);
+	MR_sv(2) = MR_ctfield(3, MR_tempr2, 2);
+	MR_r1 = MR_ctfield(3, MR_tempr1, 1);
+	MR_r2 = MR_ctfield(3, MR_tempr2, 1);
+	}
+	MR_np_call_localret_ent(__Unify___ml_backend__mlds__mlds_proc_label_0_0,
+		__Unify___ml_backend__mlds__mlds_data_name_0_0_i9);
+MR_def_label(__Unify___ml_backend__mlds__mlds_data_name_0_0,9)
+	MR_MAYBE_INIT_LOCAL_THREAD_ENGINE_BASE
+	if (!(MR_r1)) {
+		MR_GOTO_LAB(__Unify___ml_backend__mlds__mlds_data_name_0_0_i1);
+	}
+	MR_r1 = (MR_sv(1) == MR_sv(2));
+	MR_decr_sp_and_return(3);
+MR_def_label(__Unify___ml_backend__mlds__mlds_data_name_0_0,12)
+	MR_MAYBE_INIT_LOCAL_THREAD_ENGINE_BASE
+	if (MR_RTAGS_TESTR(MR_sv(2),3,1)) {
+		MR_GOTO_LAB(__Unify___ml_backend__mlds__mlds_data_name_0_0_i1);
+	}
+	MR_r1 = MR_ctfield(3, MR_sv(1), 1);
+	MR_r2 = MR_ctfield(3, MR_sv(2), 1);
+	MR_succip_word = MR_sv(3);
+	MR_decr_sp(3);
+	MR_np_tailcall_ent(__Unify___ml_backend__mlds__mlds_proc_label_0_0);
+MR_def_label(__Unify___ml_backend__mlds__mlds_data_name_0_0,16)
+	MR_MAYBE_INIT_LOCAL_THREAD_ENGINE_BASE
+	if (MR_RTAGS_TESTR(MR_sv(2),3,0)) {
+		MR_GOTO_LAB(__Unify___ml_backend__mlds__mlds_data_name_0_0_i1);
+	}
+	MR_r1 = MR_ctfield(3, MR_sv(1), 1);
+	MR_r2 = MR_ctfield(3, MR_sv(2), 1);
+	MR_succip_word = MR_sv(3);
+	MR_decr_sp(3);
+	MR_np_tailcall_ent(__Unify___backend_libs__rtti__rtti_id_0_0);
+MR_def_label(__Unify___ml_backend__mlds__mlds_data_name_0_0,34)
+	MR_MAYBE_INIT_LOCAL_THREAD_ENGINE_BASE
+	MR_r1 = MR_TRUE;
+	MR_proceed();
+MR_def_label(__Unify___ml_backend__mlds__mlds_data_name_0_0,1)
+	MR_MAYBE_INIT_LOCAL_THREAD_ENGINE_BASE
+	MR_r1 = MR_FALSE;
+	MR_decr_sp_and_return(3);
+#ifdef MR_maybe_local_thread_engine_base
+	#undef MR_maybe_local_thread_engine_base
+	#define MR_maybe_local_thread_engine_base MR_thread_engine_base
+#endif
+MR_END_MODULE
+
+MR_decl_entry(__Compare___backend_libs__rtti__proc_tabling_struct_id_0_0);
+MR_decl_entry(__Compare___backend_libs__rtti__rtti_id_0_0);
+
+MR_BEGIN_MODULE(ml_backend__mlds_module86)
+	MR_init_entry1(__Compare___ml_backend__mlds__mlds_data_name_0_0);
+	MR_init_label8(__Compare___ml_backend__mlds__mlds_data_name_0_0,38,42,50,98,106,111,5,7)
+	MR_init_label8(__Compare___ml_backend__mlds__mlds_data_name_0_0,18,115,88,19,22,24,51,56)
+	MR_init_label6(__Compare___ml_backend__mlds__mlds_data_name_0_0,65,67,78,143,71,116)
+MR_BEGIN_CODE
+
+#ifdef MR_maybe_local_thread_engine_base
+	#undef MR_maybe_local_thread_engine_base
+	#define MR_maybe_local_thread_engine_base MR_local_thread_engine_base
+#endif
+MR_define_entry(mercury____Compare___ml_backend__mlds__mlds_data_name_0_0);
+	MR_MAYBE_INIT_LOCAL_THREAD_ENGINE_BASE
+	MR_incr_sp(3);
+	MR_sv(3) = (MR_Word) MR_succip;
+	if ((MR_r1 == MR_r2)) {
+		MR_GOTO_LAB(__Compare___ml_backend__mlds__mlds_data_name_0_0_i42);
+	}
+	MR_sv(1) = MR_r1;
+	MR_sv(2) = MR_r2;
+	MR_COMPUTED_GOTO((MR_Unsigned) MR_tag(MR_sv(1)),
+		MR_LABEL_AP(__Compare___ml_backend__mlds__mlds_data_name_0_0_i38) MR_AND
+		MR_LABEL_AP(__Compare___ml_backend__mlds__mlds_data_name_0_0_i98) MR_AND
+		MR_LABEL_AP(__Compare___ml_backend__mlds__mlds_data_name_0_0_i5) MR_AND
+		MR_LABEL_AP(__Compare___ml_backend__mlds__mlds_data_name_0_0_i115));
+MR_def_label(__Compare___ml_backend__mlds__mlds_data_name_0_0,38)
+	MR_MAYBE_INIT_LOCAL_THREAD_ENGINE_BASE
+	MR_COMPUTED_GOTO((MR_Unsigned) MR_tag(MR_sv(2)),
+		MR_LABEL_AP(__Compare___ml_backend__mlds__mlds_data_name_0_0_i42) MR_AND
+		MR_LABEL_AP(__Compare___ml_backend__mlds__mlds_data_name_0_0_i67) MR_AND
+		MR_LABEL_AP(__Compare___ml_backend__mlds__mlds_data_name_0_0_i67) MR_AND
+		MR_LABEL_AP(__Compare___ml_backend__mlds__mlds_data_name_0_0_i50));
+MR_def_label(__Compare___ml_backend__mlds__mlds_data_name_0_0,42)
+	MR_MAYBE_INIT_LOCAL_THREAD_ENGINE_BASE
+	MR_r1 = (MR_Integer) 0;
+	MR_decr_sp_and_return(3);
+MR_def_label(__Compare___ml_backend__mlds__mlds_data_name_0_0,50)
+	MR_MAYBE_INIT_LOCAL_THREAD_ENGINE_BASE
+	{
+	MR_Word MR_tempr1;
+	MR_tempr1 = MR_ctfield(3, MR_sv(2), 0);
+	if (MR_INT_EQ(MR_tempr1,0)) {
+		MR_GOTO_LAB(__Compare___ml_backend__mlds__mlds_data_name_0_0_i67);
+	}
+	if (MR_INT_EQ(MR_tempr1,1)) {
+		MR_GOTO_LAB(__Compare___ml_backend__mlds__mlds_data_name_0_0_i143);
+	}
+	if (MR_INT_EQ(MR_tempr1,2)) {
+		MR_GOTO_LAB(__Compare___ml_backend__mlds__mlds_data_name_0_0_i143);
+	}
+	MR_r1 = (MR_Integer) 1;
+	MR_decr_sp_and_return(3);
+	}
+MR_def_label(__Compare___ml_backend__mlds__mlds_data_name_0_0,98)
+	MR_MAYBE_INIT_LOCAL_THREAD_ENGINE_BASE
+	MR_COMPUTED_GOTO((MR_Unsigned) MR_tag(MR_sv(2)),
+		MR_LABEL_AP(__Compare___ml_backend__mlds__mlds_data_name_0_0_i143) MR_AND
+		MR_LABEL_AP(__Compare___ml_backend__mlds__mlds_data_name_0_0_i106) MR_AND
+		MR_LABEL_AP(__Compare___ml_backend__mlds__mlds_data_name_0_0_i143) MR_AND
+		MR_LABEL_AP(__Compare___ml_backend__mlds__mlds_data_name_0_0_i111));
+MR_def_label(__Compare___ml_backend__mlds__mlds_data_name_0_0,106)
+	MR_MAYBE_INIT_LOCAL_THREAD_ENGINE_BASE
+	MR_r1 = MR_ctfield(1, MR_sv(1), 0);
+	MR_r2 = MR_ctfield(1, MR_sv(2), 0);
+	MR_succip_word = MR_sv(3);
+	MR_decr_sp(3);
+	MR_np_tailcall_ent(__Compare___ml_backend__mlds__mlds_var_name_0_0);
+MR_def_label(__Compare___ml_backend__mlds__mlds_data_name_0_0,111)
+	MR_MAYBE_INIT_LOCAL_THREAD_ENGINE_BASE
+	{
+	MR_Word MR_tempr1;
+	MR_tempr1 = MR_ctfield(3, MR_sv(2), 0);
+	if (MR_INT_EQ(MR_tempr1,0)) {
+		MR_GOTO_LAB(__Compare___ml_backend__mlds__mlds_data_name_0_0_i143);
+	}
+	if (MR_INT_EQ(MR_tempr1,1)) {
+		MR_GOTO_LAB(__Compare___ml_backend__mlds__mlds_data_name_0_0_i143);
+	}
+	if (MR_INT_EQ(MR_tempr1,2)) {
+		MR_GOTO_LAB(__Compare___ml_backend__mlds__mlds_data_name_0_0_i143);
+	}
+	MR_r1 = (MR_Integer) 1;
+	MR_decr_sp_and_return(3);
+	}
+MR_def_label(__Compare___ml_backend__mlds__mlds_data_name_0_0,5)
+	MR_MAYBE_INIT_LOCAL_THREAD_ENGINE_BASE
+	MR_COMPUTED_GOTO((MR_Unsigned) MR_tag(MR_sv(2)),
+		MR_LABEL_AP(__Compare___ml_backend__mlds__mlds_data_name_0_0_i143) MR_AND
+		MR_LABEL_AP(__Compare___ml_backend__mlds__mlds_data_name_0_0_i67) MR_AND
+		MR_LABEL_AP(__Compare___ml_backend__mlds__mlds_data_name_0_0_i7) MR_AND
+		MR_LABEL_AP(__Compare___ml_backend__mlds__mlds_data_name_0_0_i18));
+MR_def_label(__Compare___ml_backend__mlds__mlds_data_name_0_0,7)
+	MR_MAYBE_INIT_LOCAL_THREAD_ENGINE_BASE
+	MR_r1 = MR_ctfield(2, MR_sv(1), 0);
+	MR_r2 = MR_ctfield(2, MR_sv(2), 0);
+	MR_succip_word = MR_sv(3);
+	MR_decr_sp(3);
+	MR_np_tailcall_ent(private_builtin__builtin_compare_int_3_0);
+MR_def_label(__Compare___ml_backend__mlds__mlds_data_name_0_0,18)
+	MR_MAYBE_INIT_LOCAL_THREAD_ENGINE_BASE
+	{
+	MR_Word MR_tempr1;
+	MR_tempr1 = MR_ctfield(3, MR_sv(2), 0);
+	if (MR_INT_EQ(MR_tempr1,0)) {
+		MR_GOTO_LAB(__Compare___ml_backend__mlds__mlds_data_name_0_0_i143);
+	}
+	if (MR_INT_EQ(MR_tempr1,1)) {
+		MR_GOTO_LAB(__Compare___ml_backend__mlds__mlds_data_name_0_0_i143);
+	}
+	if (MR_INT_EQ(MR_tempr1,2)) {
+		MR_GOTO_LAB(__Compare___ml_backend__mlds__mlds_data_name_0_0_i143);
+	}
+	MR_r1 = (MR_Integer) 1;
+	MR_decr_sp_and_return(3);
+	}
+MR_def_label(__Compare___ml_backend__mlds__mlds_data_name_0_0,115)
+	MR_MAYBE_INIT_LOCAL_THREAD_ENGINE_BASE
+	{
+	MR_Word MR_tempr1, MR_tempr2, MR_tempr3, MR_tempr4, MR_tempr5, MR_tempr6;
+	MR_tempr5 = MR_sv(1);
+	MR_tempr1 = MR_ctfield(3, MR_tempr5, 0);
+	if (MR_INT_EQ(MR_tempr1,0)) {
+		MR_GOTO_LAB(__Compare___ml_backend__mlds__mlds_data_name_0_0_i65);
+	}
+	if (MR_INT_EQ(MR_tempr1,1)) {
+		MR_GOTO_LAB(__Compare___ml_backend__mlds__mlds_data_name_0_0_i51);
+	}
+	if (MR_INT_EQ(MR_tempr1,2)) {
+		MR_GOTO_LAB(__Compare___ml_backend__mlds__mlds_data_name_0_0_i19);
+	}
+	if (MR_INT_NE(MR_tag(MR_sv(2)),3)) {
+		MR_GOTO_LAB(__Compare___ml_backend__mlds__mlds_data_name_0_0_i67);
+	}
+	MR_tempr6 = MR_sv(2);
+	MR_tempr1 = MR_ctfield(3, MR_tempr6, 0);
+	if (MR_INT_EQ(MR_tempr1,0)) {
+		MR_GOTO_LAB(__Compare___ml_backend__mlds__mlds_data_name_0_0_i67);
+	}
+	if (MR_INT_EQ(MR_tempr1,1)) {
+		MR_GOTO_LAB(__Compare___ml_backend__mlds__mlds_data_name_0_0_i67);
+	}
+	if (MR_INT_EQ(MR_tempr1,2)) {
+		MR_GOTO_LAB(__Compare___ml_backend__mlds__mlds_data_name_0_0_i67);
+	}
+	MR_tempr2 = MR_ctfield(3, MR_tempr5, 2);
+	MR_tempr1 = MR_ctfield(3, MR_tempr6, 2);
+	MR_tempr3 = MR_tempr5;
+	MR_sv(1) = MR_tempr1;
+	MR_tempr4 = MR_tempr6;
+	MR_sv(2) = MR_tempr2;
+	MR_r1 = MR_ctfield(3, MR_tempr3, 1);
+	MR_r2 = MR_ctfield(3, MR_tempr4, 1);
+	}
+	MR_np_call_localret_ent(__Compare___ml_backend__mlds__mlds_proc_label_0_0,
+		__Compare___ml_backend__mlds__mlds_data_name_0_0_i88);
+MR_def_label(__Compare___ml_backend__mlds__mlds_data_name_0_0,88)
+	MR_MAYBE_INIT_LOCAL_THREAD_ENGINE_BASE
+	if (MR_INT_NE(MR_r1,0)) {
+		MR_GOTO_LAB(__Compare___ml_backend__mlds__mlds_data_name_0_0_i116);
+	}
+	MR_r1 = MR_sv(2);
+	MR_r2 = MR_sv(1);
+	MR_succip_word = MR_sv(3);
+	MR_decr_sp(3);
+	MR_np_tailcall_ent(__Compare___backend_libs__rtti__proc_tabling_struct_id_0_0);
+MR_def_label(__Compare___ml_backend__mlds__mlds_data_name_0_0,19)
+	MR_MAYBE_INIT_LOCAL_THREAD_ENGINE_BASE
+	if (MR_INT_NE(MR_tag(MR_sv(2)),3)) {
+		MR_GOTO_LAB(__Compare___ml_backend__mlds__mlds_data_name_0_0_i67);
+	}
+	{
+	MR_Word MR_tempr1;
+	MR_tempr1 = MR_ctfield(3, MR_sv(2), 0);
+	if (MR_INT_EQ(MR_tempr1,0)) {
+		MR_GOTO_LAB(__Compare___ml_backend__mlds__mlds_data_name_0_0_i67);
+	}
+	if (MR_INT_EQ(MR_tempr1,1)) {
+		MR_GOTO_LAB(__Compare___ml_backend__mlds__mlds_data_name_0_0_i67);
+	}
+	if (MR_INT_EQ(MR_tempr1,2)) {
+		MR_GOTO_LAB(__Compare___ml_backend__mlds__mlds_data_name_0_0_i22);
+	}
+	MR_r1 = (MR_Integer) 1;
+	MR_decr_sp_and_return(3);
+	}
+MR_def_label(__Compare___ml_backend__mlds__mlds_data_name_0_0,22)
+	MR_MAYBE_INIT_LOCAL_THREAD_ENGINE_BASE
+	{
+	MR_Word MR_tempr1, MR_tempr2, MR_tempr3, MR_tempr4, MR_tempr5, MR_tempr6;
+	MR_tempr5 = MR_sv(1);
+	MR_tempr1 = MR_ctfield(3, MR_tempr5, 2);
+	MR_tempr6 = MR_sv(2);
+	MR_tempr2 = MR_ctfield(3, MR_tempr6, 2);
+	MR_tempr3 = MR_tempr5;
+	MR_sv(1) = MR_tempr2;
+	MR_tempr4 = MR_tempr6;
+	MR_sv(2) = MR_tempr1;
+	MR_r1 = MR_ctfield(3, MR_tempr3, 1);
+	MR_r2 = MR_ctfield(3, MR_tempr4, 1);
+	}
+	MR_np_call_localret_ent(__Compare___ml_backend__mlds__mlds_proc_label_0_0,
+		__Compare___ml_backend__mlds__mlds_data_name_0_0_i24);
+MR_def_label(__Compare___ml_backend__mlds__mlds_data_name_0_0,24)
+	MR_MAYBE_INIT_LOCAL_THREAD_ENGINE_BASE
+	if (MR_INT_NE(MR_r1,0)) {
+		MR_GOTO_LAB(__Compare___ml_backend__mlds__mlds_data_name_0_0_i116);
+	}
+	MR_r1 = MR_sv(2);
+	MR_r2 = MR_sv(1);
+	MR_succip_word = MR_sv(3);
+	MR_decr_sp(3);
+	MR_np_tailcall_ent(private_builtin__builtin_compare_int_3_0);
+MR_def_label(__Compare___ml_backend__mlds__mlds_data_name_0_0,51)
+	MR_MAYBE_INIT_LOCAL_THREAD_ENGINE_BASE
+	if (MR_INT_NE(MR_tag(MR_sv(2)),3)) {
+		MR_GOTO_LAB(__Compare___ml_backend__mlds__mlds_data_name_0_0_i67);
+	}
+	{
+	MR_Word MR_tempr1;
+	MR_tempr1 = MR_ctfield(3, MR_sv(2), 0);
+	if (MR_INT_EQ(MR_tempr1,0)) {
+		MR_GOTO_LAB(__Compare___ml_backend__mlds__mlds_data_name_0_0_i67);
+	}
+	if (MR_INT_EQ(MR_tempr1,1)) {
+		MR_GOTO_LAB(__Compare___ml_backend__mlds__mlds_data_name_0_0_i56);
+	}
+	if (MR_INT_EQ(MR_tempr1,2)) {
+		MR_GOTO_LAB(__Compare___ml_backend__mlds__mlds_data_name_0_0_i143);
+	}
+	MR_r1 = (MR_Integer) 1;
+	MR_decr_sp_and_return(3);
+	}
+MR_def_label(__Compare___ml_backend__mlds__mlds_data_name_0_0,56)
+	MR_MAYBE_INIT_LOCAL_THREAD_ENGINE_BASE
+	MR_r1 = MR_ctfield(3, MR_sv(1), 1);
+	MR_r2 = MR_ctfield(3, MR_sv(2), 1);
+	MR_succip_word = MR_sv(3);
+	MR_decr_sp(3);
+	MR_np_tailcall_ent(__Compare___ml_backend__mlds__mlds_proc_label_0_0);
+MR_def_label(__Compare___ml_backend__mlds__mlds_data_name_0_0,65)
+	MR_MAYBE_INIT_LOCAL_THREAD_ENGINE_BASE
+	MR_COMPUTED_GOTO((MR_Unsigned) MR_tag(MR_sv(2)),
+		MR_LABEL_AP(__Compare___ml_backend__mlds__mlds_data_name_0_0_i143) MR_AND
+		MR_LABEL_AP(__Compare___ml_backend__mlds__mlds_data_name_0_0_i67) MR_AND
+		MR_LABEL_AP(__Compare___ml_backend__mlds__mlds_data_name_0_0_i67) MR_AND
+		MR_LABEL_AP(__Compare___ml_backend__mlds__mlds_data_name_0_0_i78));
+MR_def_label(__Compare___ml_backend__mlds__mlds_data_name_0_0,67)
+	MR_MAYBE_INIT_LOCAL_THREAD_ENGINE_BASE
+	MR_r1 = (MR_Integer) 2;
+	MR_decr_sp_and_return(3);
+MR_def_label(__Compare___ml_backend__mlds__mlds_data_name_0_0,78)
+	MR_MAYBE_INIT_LOCAL_THREAD_ENGINE_BASE
+	{
+	MR_Word MR_tempr1;
+	MR_tempr1 = MR_ctfield(3, MR_sv(2), 0);
+	if (MR_INT_EQ(MR_tempr1,0)) {
+		MR_GOTO_LAB(__Compare___ml_backend__mlds__mlds_data_name_0_0_i71);
+	}
+	}
+MR_def_label(__Compare___ml_backend__mlds__mlds_data_name_0_0,143)
+	MR_MAYBE_INIT_LOCAL_THREAD_ENGINE_BASE
+	MR_r1 = (MR_Integer) 1;
+	MR_decr_sp_and_return(3);
+MR_def_label(__Compare___ml_backend__mlds__mlds_data_name_0_0,71)
+	MR_MAYBE_INIT_LOCAL_THREAD_ENGINE_BASE
+	MR_r1 = MR_ctfield(3, MR_sv(1), 1);
+	MR_r2 = MR_ctfield(3, MR_sv(2), 1);
+	MR_succip_word = MR_sv(3);
+	MR_decr_sp(3);
+	MR_np_tailcall_ent(__Compare___backend_libs__rtti__rtti_id_0_0);
+MR_def_label(__Compare___ml_backend__mlds__mlds_data_name_0_0,116)
+	MR_MAYBE_INIT_LOCAL_THREAD_ENGINE_BASE
+	MR_decr_sp_and_return(3);
+#ifdef MR_maybe_local_thread_engine_base
+	#undef MR_maybe_local_thread_engine_base
+	#define MR_maybe_local_thread_engine_base MR_thread_engine_base
+#endif
+MR_END_MODULE
+
+
+MR_BEGIN_MODULE(ml_backend__mlds_module87)
+	MR_init_entry1(__Unify___ml_backend__mlds__mlds_decl_flags_0_0);
+MR_BEGIN_CODE
+
+#ifdef MR_maybe_local_thread_engine_base
+	#undef MR_maybe_local_thread_engine_base
+	#define MR_maybe_local_thread_engine_base MR_local_thread_engine_base
+#endif
+MR_define_entry(mercury____Unify___ml_backend__mlds__mlds_decl_flags_0_0);
+	MR_MAYBE_INIT_LOCAL_THREAD_ENGINE_BASE
+	MR_r1 = (MR_r1 == MR_r2);
+	MR_proceed();
+#ifdef MR_maybe_local_thread_engine_base
+	#undef MR_maybe_local_thread_engine_base
+	#define MR_maybe_local_thread_engine_base MR_thread_engine_base
+#endif
+MR_END_MODULE
+
+
+MR_BEGIN_MODULE(ml_backend__mlds_module88)
+	MR_init_entry1(__Compare___ml_backend__mlds__mlds_decl_flags_0_0);
+MR_BEGIN_CODE
+
+#ifdef MR_maybe_local_thread_engine_base
+	#undef MR_maybe_local_thread_engine_base
+	#define MR_maybe_local_thread_engine_base MR_local_thread_engine_base
+#endif
+MR_define_entry(mercury____Compare___ml_backend__mlds__mlds_decl_flags_0_0);
+	MR_MAYBE_INIT_LOCAL_THREAD_ENGINE_BASE
+	MR_np_tailcall_ent(private_builtin__builtin_compare_int_3_0);
+#ifdef MR_maybe_local_thread_engine_base
+	#undef MR_maybe_local_thread_engine_base
+	#define MR_maybe_local_thread_engine_base MR_thread_engine_base
+#endif
+MR_END_MODULE
+
+
+MR_BEGIN_MODULE(ml_backend__mlds_module89)
+	MR_init_entry1(__Unify___ml_backend__mlds__mlds_defn_0_0);
+	MR_init_label4(__Unify___ml_backend__mlds__mlds_defn_0_0,4,6,10,1)
+MR_BEGIN_CODE
+
+#ifdef MR_maybe_local_thread_engine_base
+	#undef MR_maybe_local_thread_engine_base
+	#define MR_maybe_local_thread_engine_base MR_local_thread_engine_base
+#endif
+MR_define_entry(mercury____Unify___ml_backend__mlds__mlds_defn_0_0);
+	MR_MAYBE_INIT_LOCAL_THREAD_ENGINE_BASE
+	if ((MR_r1 == MR_r2)) {
+		MR_GOTO_LAB(__Unify___ml_backend__mlds__mlds_defn_0_0_i10);
+	}
+	MR_incr_sp(7);
+	MR_sv(7) = (MR_Word) MR_succip;
+	MR_sv(1) = MR_r1;
+	MR_sv(2) = MR_r2;
+	{
+	MR_Word MR_tempr1, MR_tempr2;
+	MR_tempr1 = MR_sv(1);
+	MR_sv(1) = MR_ctfield(0, MR_tempr1, 1);
+	MR_tempr2 = MR_sv(2);
+	MR_sv(2) = MR_ctfield(0, MR_tempr1, 2);
+	MR_sv(3) = MR_ctfield(0, MR_tempr1, 3);
+	MR_sv(4) = MR_ctfield(0, MR_tempr2, 1);
+	MR_sv(5) = MR_ctfield(0, MR_tempr2, 2);
+	MR_sv(6) = MR_ctfield(0, MR_tempr2, 3);
+	MR_r1 = MR_ctfield(0, MR_tempr1, 0);
+	MR_r2 = MR_ctfield(0, MR_tempr2, 0);
+	}
+	MR_np_call_localret_ent(__Unify___ml_backend__mlds__mlds_entity_name_0_0,
+		__Unify___ml_backend__mlds__mlds_defn_0_0_i4);
+MR_def_label(__Unify___ml_backend__mlds__mlds_defn_0_0,4)
+	MR_MAYBE_INIT_LOCAL_THREAD_ENGINE_BASE
+	if (!(MR_r1)) {
+		MR_GOTO_LAB(__Unify___ml_backend__mlds__mlds_defn_0_0_i1);
+	}
+	MR_r1 = MR_sv(1);
+	MR_r2 = MR_sv(4);
+	MR_np_call_localret_ent(__Unify___ml_backend__mlds__mlds_context_0_0,
+		__Unify___ml_backend__mlds__mlds_defn_0_0_i6);
+MR_def_label(__Unify___ml_backend__mlds__mlds_defn_0_0,6)
+	MR_MAYBE_INIT_LOCAL_THREAD_ENGINE_BASE
+	if (!(MR_r1)) {
+		MR_GOTO_LAB(__Unify___ml_backend__mlds__mlds_defn_0_0_i1);
+	}
+	if ((MR_sv(2) != MR_sv(5))) {
+		MR_GOTO_LAB(__Unify___ml_backend__mlds__mlds_defn_0_0_i1);
+	}
+	MR_r1 = MR_sv(3);
+	MR_r2 = MR_sv(6);
+	MR_succip_word = MR_sv(7);
+	MR_decr_sp(7);
+	MR_np_tailcall_ent(__Unify___ml_backend__mlds__mlds_entity_defn_0_0);
+MR_def_label(__Unify___ml_backend__mlds__mlds_defn_0_0,10)
+	MR_MAYBE_INIT_LOCAL_THREAD_ENGINE_BASE
+	MR_r1 = MR_TRUE;
+	MR_proceed();
+MR_def_label(__Unify___ml_backend__mlds__mlds_defn_0_0,1)
+	MR_MAYBE_INIT_LOCAL_THREAD_ENGINE_BASE
+	MR_r1 = MR_FALSE;
+	MR_decr_sp_and_return(7);
+#ifdef MR_maybe_local_thread_engine_base
+	#undef MR_maybe_local_thread_engine_base
+	#define MR_maybe_local_thread_engine_base MR_thread_engine_base
+#endif
+MR_END_MODULE
+
+
+MR_BEGIN_MODULE(ml_backend__mlds_module90)
+	MR_init_entry1(__Compare___ml_backend__mlds__mlds_defn_0_0);
+	MR_init_label6(__Compare___ml_backend__mlds__mlds_defn_0_0,3,2,5,9,13,37)
+MR_BEGIN_CODE
+
+#ifdef MR_maybe_local_thread_engine_base
+	#undef MR_maybe_local_thread_engine_base
+	#define MR_maybe_local_thread_engine_base MR_local_thread_engine_base
+#endif
+MR_define_entry(mercury____Compare___ml_backend__mlds__mlds_defn_0_0);
+	MR_MAYBE_INIT_LOCAL_THREAD_ENGINE_BASE
+	if ((MR_r1 == MR_r2)) {
+		MR_GOTO_LAB(__Compare___ml_backend__mlds__mlds_defn_0_0_i3);
+	}
+	MR_incr_sp(7);
+	MR_sv(7) = (MR_Word) MR_succip;
+	MR_sv(1) = MR_r1;
+	MR_sv(2) = MR_r2;
+	MR_GOTO_LAB(__Compare___ml_backend__mlds__mlds_defn_0_0_i2);
+MR_def_label(__Compare___ml_backend__mlds__mlds_defn_0_0,3)
+	MR_MAYBE_INIT_LOCAL_THREAD_ENGINE_BASE
+	MR_r1 = (MR_Integer) 0;
+	MR_proceed();
+MR_def_label(__Compare___ml_backend__mlds__mlds_defn_0_0,2)
+	MR_MAYBE_INIT_LOCAL_THREAD_ENGINE_BASE
+	{
+	MR_Word MR_tempr1, MR_tempr2, MR_tempr3, MR_tempr4, MR_tempr5, MR_tempr6;
+	MR_tempr5 = MR_sv(2);
+	MR_sv(6) = MR_ctfield(0, MR_tempr5, 3);
+	MR_sv(5) = MR_ctfield(0, MR_tempr5, 2);
+	MR_sv(4) = MR_ctfield(0, MR_tempr5, 1);
+	MR_tempr6 = MR_sv(1);
+	MR_sv(3) = MR_ctfield(0, MR_tempr6, 3);
+	MR_tempr1 = MR_ctfield(0, MR_tempr6, 2);
+	MR_tempr2 = MR_ctfield(0, MR_tempr6, 1);
+	MR_tempr3 = MR_tempr6;
+	MR_sv(1) = MR_tempr2;
+	MR_tempr4 = MR_tempr5;
+	MR_sv(2) = MR_tempr1;
+	MR_r1 = MR_ctfield(0, MR_tempr3, 0);
+	MR_r2 = MR_ctfield(0, MR_tempr4, 0);
+	}
+	MR_np_call_localret_ent(__Compare___ml_backend__mlds__mlds_entity_name_0_0,
+		__Compare___ml_backend__mlds__mlds_defn_0_0_i5);
+MR_def_label(__Compare___ml_backend__mlds__mlds_defn_0_0,5)
+	MR_MAYBE_INIT_LOCAL_THREAD_ENGINE_BASE
+	if (MR_INT_NE(MR_r1,0)) {
+		MR_GOTO_LAB(__Compare___ml_backend__mlds__mlds_defn_0_0_i37);
+	}
+	MR_r1 = MR_sv(1);
+	MR_r2 = MR_sv(4);
+	MR_np_call_localret_ent(__Compare___ml_backend__mlds__mlds_context_0_0,
+		__Compare___ml_backend__mlds__mlds_defn_0_0_i9);
+MR_def_label(__Compare___ml_backend__mlds__mlds_defn_0_0,9)
+	MR_MAYBE_INIT_LOCAL_THREAD_ENGINE_BASE
+	if (MR_INT_NE(MR_r1,0)) {
+		MR_GOTO_LAB(__Compare___ml_backend__mlds__mlds_defn_0_0_i37);
+	}
+	MR_r1 = MR_sv(2);
+	MR_r2 = MR_sv(5);
+	MR_np_call_localret_ent(private_builtin__builtin_compare_int_3_0,
+		__Compare___ml_backend__mlds__mlds_defn_0_0_i13);
+MR_def_label(__Compare___ml_backend__mlds__mlds_defn_0_0,13)
+	MR_MAYBE_INIT_LOCAL_THREAD_ENGINE_BASE
+	if (MR_INT_NE(MR_r1,0)) {
+		MR_GOTO_LAB(__Compare___ml_backend__mlds__mlds_defn_0_0_i37);
+	}
+	MR_r1 = MR_sv(3);
+	MR_r2 = MR_sv(6);
+	MR_succip_word = MR_sv(7);
+	MR_decr_sp(7);
+	MR_np_tailcall_ent(__Compare___ml_backend__mlds__mlds_entity_defn_0_0);
+MR_def_label(__Compare___ml_backend__mlds__mlds_defn_0_0,37)
+	MR_MAYBE_INIT_LOCAL_THREAD_ENGINE_BASE
+	MR_decr_sp_and_return(7);
+#ifdef MR_maybe_local_thread_engine_base
+	#undef MR_maybe_local_thread_engine_base
+	#define MR_maybe_local_thread_engine_base MR_thread_engine_base
+#endif
+MR_END_MODULE
+
+MR_decl_entry(__Unify___set_ordlist__set_ordlist_1_0);
+
+MR_BEGIN_MODULE(ml_backend__mlds_module91)
+	MR_init_entry1(__Unify___ml_backend__mlds__mlds_entity_defn_0_0);
+	MR_init_label8(__Unify___ml_backend__mlds__mlds_entity_defn_0_0,11,13,5,17,19,21,23,25)
+	MR_init_label2(__Unify___ml_backend__mlds__mlds_entity_defn_0_0,31,1)
+MR_BEGIN_CODE
+
+#ifdef MR_maybe_local_thread_engine_base
+	#undef MR_maybe_local_thread_engine_base
+	#define MR_maybe_local_thread_engine_base MR_local_thread_engine_base
+#endif
+MR_define_entry(mercury____Unify___ml_backend__mlds__mlds_entity_defn_0_0);
+	MR_MAYBE_INIT_LOCAL_THREAD_ENGINE_BASE
+	if ((MR_r1 == MR_r2)) {
+		MR_GOTO_LAB(__Unify___ml_backend__mlds__mlds_entity_defn_0_0_i31);
+	}
+	MR_incr_sp(9);
+	MR_sv(9) = (MR_Word) MR_succip;
+	{
+	MR_Word MR_tempr1, MR_tempr2, MR_tempr3, MR_tempr4;
+	MR_tempr1 = MR_r1;
+	MR_sv(1) = MR_tempr1;
+	MR_tempr2 = MR_r2;
+	MR_sv(2) = MR_tempr2;
+	MR_tempr3 = MR_tag(MR_tempr1);
+	if ((MR_tempr3 == MR_mktag((MR_Integer) 1))) {
+		MR_GOTO_LAB(__Unify___ml_backend__mlds__mlds_entity_defn_0_0_i17);
+	}
+	if ((MR_tempr3 == MR_mktag((MR_Integer) 2))) {
+		MR_GOTO_LAB(__Unify___ml_backend__mlds__mlds_entity_defn_0_0_i5);
+	}
+	if (MR_PTAG_TESTR(MR_tempr2,0)) {
+		MR_GOTO_LAB(__Unify___ml_backend__mlds__mlds_entity_defn_0_0_i1);
+	}
+	MR_tempr3 = MR_tempr1;
+	MR_sv(1) = MR_ctfield(0, MR_tempr3, 1);
+	MR_tempr4 = MR_tempr2;
+	MR_sv(2) = MR_ctfield(0, MR_tempr3, 2);
+	MR_sv(3) = MR_ctfield(0, MR_tempr4, 1);
+	MR_sv(4) = MR_ctfield(0, MR_tempr4, 2);
+	MR_r1 = MR_ctfield(0, MR_tempr3, 0);
+	MR_r2 = MR_ctfield(0, MR_tempr4, 0);
+	}
+	MR_np_call_localret_ent(__Unify___ml_backend__mlds__mlds_type_0_0,
+		__Unify___ml_backend__mlds__mlds_entity_defn_0_0_i11);
+MR_def_label(__Unify___ml_backend__mlds__mlds_entity_defn_0_0,11)
+	MR_MAYBE_INIT_LOCAL_THREAD_ENGINE_BASE
+	if (!(MR_r1)) {
+		MR_GOTO_LAB(__Unify___ml_backend__mlds__mlds_entity_defn_0_0_i1);
+	}
+	MR_r1 = MR_sv(1);
+	MR_r2 = MR_sv(3);
+	MR_np_call_localret_ent(__Unify___ml_backend__mlds__mlds_initializer_0_0,
+		__Unify___ml_backend__mlds__mlds_entity_defn_0_0_i13);
+MR_def_label(__Unify___ml_backend__mlds__mlds_entity_defn_0_0,13)
+	MR_MAYBE_INIT_LOCAL_THREAD_ENGINE_BASE
+	if (!(MR_r1)) {
+		MR_GOTO_LAB(__Unify___ml_backend__mlds__mlds_entity_defn_0_0_i1);
+	}
+	MR_r1 = MR_sv(2);
+	MR_r2 = MR_sv(4);
+	MR_succip_word = MR_sv(9);
+	MR_decr_sp(9);
+	MR_np_tailcall_ent(__Unify___ml_backend__mlds__mlds_gc_statement_0_0);
+MR_def_label(__Unify___ml_backend__mlds__mlds_entity_defn_0_0,5)
+	MR_MAYBE_INIT_LOCAL_THREAD_ENGINE_BASE
+	if (MR_PTAG_TESTR(MR_sv(2),2)) {
+		MR_GOTO_LAB(__Unify___ml_backend__mlds__mlds_entity_defn_0_0_i1);
+	}
+	MR_r1 = MR_ctfield(2, MR_sv(1), 0);
+	MR_r2 = MR_ctfield(2, MR_sv(2), 0);
+	MR_succip_word = MR_sv(9);
+	MR_decr_sp(9);
+	MR_np_tailcall_ent(__Unify___ml_backend__mlds__mlds_class_defn_0_0);
+MR_def_label(__Unify___ml_backend__mlds__mlds_entity_defn_0_0,17)
+	MR_MAYBE_INIT_LOCAL_THREAD_ENGINE_BASE
+	if (MR_PTAG_TESTR(MR_sv(2),1)) {
+		MR_GOTO_LAB(__Unify___ml_backend__mlds__mlds_entity_defn_0_0_i1);
+	}
+	{
+	MR_Word MR_tempr1, MR_tempr2;
+	MR_tempr1 = MR_sv(1);
+	MR_sv(1) = MR_ctfield(1, MR_tempr1, 1);
+	MR_tempr2 = MR_sv(2);
+	MR_sv(2) = MR_ctfield(1, MR_tempr1, 2);
+	MR_sv(3) = MR_ctfield(1, MR_tempr1, 3);
+	MR_sv(4) = MR_ctfield(1, MR_tempr1, 4);
+	MR_sv(5) = MR_ctfield(1, MR_tempr2, 1);
+	MR_sv(6) = MR_ctfield(1, MR_tempr2, 2);
+	MR_sv(7) = MR_ctfield(1, MR_tempr2, 3);
+	MR_sv(8) = MR_ctfield(1, MR_tempr2, 4);
+	MR_r1 = (MR_Word) MR_CTOR0_ADDR(hlds__hlds_pred, pred_proc_id);
+	MR_r2 = MR_ctfield(1, MR_tempr1, 0);
+	MR_r3 = MR_ctfield(1, MR_tempr2, 0);
+	}
+	MR_np_call_localret_ent(__Unify___maybe__maybe_1_0,
+		__Unify___ml_backend__mlds__mlds_entity_defn_0_0_i19);
+MR_def_label(__Unify___ml_backend__mlds__mlds_entity_defn_0_0,19)
+	MR_MAYBE_INIT_LOCAL_THREAD_ENGINE_BASE
+	if (!(MR_r1)) {
+		MR_GOTO_LAB(__Unify___ml_backend__mlds__mlds_entity_defn_0_0_i1);
+	}
+	MR_r1 = MR_sv(1);
+	MR_r2 = MR_sv(5);
+	MR_np_call_localret_ent(__Unify___ml_backend__mlds__mlds_func_params_0_0,
+		__Unify___ml_backend__mlds__mlds_entity_defn_0_0_i21);
+MR_def_label(__Unify___ml_backend__mlds__mlds_entity_defn_0_0,21)
+	MR_MAYBE_INIT_LOCAL_THREAD_ENGINE_BASE
+	if (!(MR_r1)) {
+		MR_GOTO_LAB(__Unify___ml_backend__mlds__mlds_entity_defn_0_0_i1);
+	}
+	MR_r1 = MR_sv(2);
+	MR_r2 = MR_sv(6);
+	MR_np_call_localret_ent(__Unify___ml_backend__mlds__mlds_function_body_0_0,
+		__Unify___ml_backend__mlds__mlds_entity_defn_0_0_i23);
+MR_def_label(__Unify___ml_backend__mlds__mlds_entity_defn_0_0,23)
+	MR_MAYBE_INIT_LOCAL_THREAD_ENGINE_BASE
+	if (!(MR_r1)) {
+		MR_GOTO_LAB(__Unify___ml_backend__mlds__mlds_entity_defn_0_0_i1);
+	}
+	MR_r1 = (MR_Word) MR_CTOR0_ADDR(ml_backend__mlds, mlds_attribute);
+	MR_r2 = MR_sv(3);
+	MR_r3 = MR_sv(7);
+	MR_np_call_localret_ent(__Unify___list__list_1_0,
+		__Unify___ml_backend__mlds__mlds_entity_defn_0_0_i25);
+MR_def_label(__Unify___ml_backend__mlds__mlds_entity_defn_0_0,25)
+	MR_MAYBE_INIT_LOCAL_THREAD_ENGINE_BASE
+	if (!(MR_r1)) {
+		MR_GOTO_LAB(__Unify___ml_backend__mlds__mlds_entity_defn_0_0_i1);
+	}
+	MR_r1 = (MR_Word) MR_STRING_CTOR_ADDR;
+	MR_r2 = MR_sv(4);
+	MR_r3 = MR_sv(8);
+	MR_succip_word = MR_sv(9);
+	MR_decr_sp(9);
+	MR_np_tailcall_ent(__Unify___set_ordlist__set_ordlist_1_0);
+MR_def_label(__Unify___ml_backend__mlds__mlds_entity_defn_0_0,31)
+	MR_MAYBE_INIT_LOCAL_THREAD_ENGINE_BASE
+	MR_r1 = MR_TRUE;
+	MR_proceed();
+MR_def_label(__Unify___ml_backend__mlds__mlds_entity_defn_0_0,1)
+	MR_MAYBE_INIT_LOCAL_THREAD_ENGINE_BASE
+	MR_r1 = MR_FALSE;
+	MR_decr_sp_and_return(9);
+#ifdef MR_maybe_local_thread_engine_base
+	#undef MR_maybe_local_thread_engine_base
+	#define MR_maybe_local_thread_engine_base MR_thread_engine_base
+#endif
+MR_END_MODULE
+
+MR_decl_entry(__Compare___set_ordlist__set_ordlist_1_0);
+
+MR_BEGIN_MODULE(ml_backend__mlds_module92)
+	MR_init_entry1(__Compare___ml_backend__mlds__mlds_entity_defn_0_0);
+	MR_init_label8(__Compare___ml_backend__mlds__mlds_entity_defn_0_0,3,2,18,22,5,7,31,87)
+	MR_init_label7(__Compare___ml_backend__mlds__mlds_entity_defn_0_0,33,35,37,41,45,49,143)
+MR_BEGIN_CODE
+
+#ifdef MR_maybe_local_thread_engine_base
+	#undef MR_maybe_local_thread_engine_base
+	#define MR_maybe_local_thread_engine_base MR_local_thread_engine_base
+#endif
+MR_define_entry(mercury____Compare___ml_backend__mlds__mlds_entity_defn_0_0);
+	MR_MAYBE_INIT_LOCAL_THREAD_ENGINE_BASE
+	if ((MR_r1 == MR_r2)) {
+		MR_GOTO_LAB(__Compare___ml_backend__mlds__mlds_entity_defn_0_0_i3);
+	}
+	MR_incr_sp(9);
+	MR_sv(9) = (MR_Word) MR_succip;
+	MR_sv(1) = MR_r1;
+	MR_sv(2) = MR_r2;
+	MR_GOTO_LAB(__Compare___ml_backend__mlds__mlds_entity_defn_0_0_i2);
+MR_def_label(__Compare___ml_backend__mlds__mlds_entity_defn_0_0,3)
+	MR_MAYBE_INIT_LOCAL_THREAD_ENGINE_BASE
+	MR_r1 = (MR_Integer) 0;
+	MR_proceed();
+MR_def_label(__Compare___ml_backend__mlds__mlds_entity_defn_0_0,2)
+	MR_MAYBE_INIT_LOCAL_THREAD_ENGINE_BASE
+	{
+	MR_Word MR_tempr1, MR_tempr2, MR_tempr3, MR_tempr4, MR_tempr5, MR_tempr6;
+	MR_tempr5 = MR_sv(1);
+	MR_tempr1 = MR_tag(MR_tempr5);
+	if ((MR_tempr1 == MR_mktag((MR_Integer) 1))) {
+		MR_GOTO_LAB(__Compare___ml_backend__mlds__mlds_entity_defn_0_0_i31);
+	}
+	if ((MR_tempr1 == MR_mktag((MR_Integer) 2))) {
+		MR_GOTO_LAB(__Compare___ml_backend__mlds__mlds_entity_defn_0_0_i5);
+	}
+	MR_tempr6 = MR_sv(2);
+	MR_tempr1 = MR_tag(MR_tempr6);
+	if ((MR_tempr1 == MR_mktag((MR_Integer) 1))) {
+		MR_GOTO_LAB(__Compare___ml_backend__mlds__mlds_entity_defn_0_0_i33);
+	}
+	if ((MR_tempr1 == MR_mktag((MR_Integer) 2))) {
+		MR_GOTO_LAB(__Compare___ml_backend__mlds__mlds_entity_defn_0_0_i33);
+	}
+	MR_sv(4) = MR_ctfield(0, MR_tempr5, 1);
+	MR_sv(3) = MR_ctfield(0, MR_tempr5, 2);
+	MR_tempr1 = MR_ctfield(0, MR_tempr6, 2);
+	MR_tempr2 = MR_ctfield(0, MR_tempr6, 1);
+	MR_tempr3 = MR_tempr5;
+	MR_sv(1) = MR_tempr2;
+	MR_tempr4 = MR_tempr6;
+	MR_sv(2) = MR_tempr1;
+	MR_r1 = MR_ctfield(0, MR_tempr3, 0);
+	MR_r2 = MR_ctfield(0, MR_tempr4, 0);
+	}
+	MR_np_call_localret_ent(__Compare___ml_backend__mlds__mlds_type_0_0,
+		__Compare___ml_backend__mlds__mlds_entity_defn_0_0_i18);
+MR_def_label(__Compare___ml_backend__mlds__mlds_entity_defn_0_0,18)
+	MR_MAYBE_INIT_LOCAL_THREAD_ENGINE_BASE
+	if (MR_INT_NE(MR_r1,0)) {
+		MR_GOTO_LAB(__Compare___ml_backend__mlds__mlds_entity_defn_0_0_i143);
+	}
+	MR_r1 = MR_sv(4);
+	MR_r2 = MR_sv(1);
+	MR_np_call_localret_ent(__Compare___ml_backend__mlds__mlds_initializer_0_0,
+		__Compare___ml_backend__mlds__mlds_entity_defn_0_0_i22);
+MR_def_label(__Compare___ml_backend__mlds__mlds_entity_defn_0_0,22)
+	MR_MAYBE_INIT_LOCAL_THREAD_ENGINE_BASE
+	if (MR_INT_NE(MR_r1,0)) {
+		MR_GOTO_LAB(__Compare___ml_backend__mlds__mlds_entity_defn_0_0_i143);
+	}
+	MR_r1 = MR_sv(3);
+	MR_r2 = MR_sv(2);
+	MR_succip_word = MR_sv(9);
+	MR_decr_sp(9);
+	MR_np_tailcall_ent(__Compare___ml_backend__mlds__mlds_gc_statement_0_0);
+MR_def_label(__Compare___ml_backend__mlds__mlds_entity_defn_0_0,5)
+	MR_MAYBE_INIT_LOCAL_THREAD_ENGINE_BASE
+	{
+	MR_Word MR_tempr1;
+	MR_tempr1 = MR_tag(MR_sv(2));
+	if ((MR_tempr1 == MR_mktag((MR_Integer) 1))) {
+		MR_GOTO_LAB(__Compare___ml_backend__mlds__mlds_entity_defn_0_0_i87);
+	}
+	if ((MR_tempr1 == MR_mktag((MR_Integer) 2))) {
+		MR_GOTO_LAB(__Compare___ml_backend__mlds__mlds_entity_defn_0_0_i7);
+	}
+	MR_r1 = (MR_Integer) 2;
+	MR_decr_sp_and_return(9);
+	}
+MR_def_label(__Compare___ml_backend__mlds__mlds_entity_defn_0_0,7)
+	MR_MAYBE_INIT_LOCAL_THREAD_ENGINE_BASE
+	MR_r1 = MR_ctfield(2, MR_sv(1), 0);
+	MR_r2 = MR_ctfield(2, MR_sv(2), 0);
+	MR_succip_word = MR_sv(9);
+	MR_decr_sp(9);
+	MR_np_tailcall_ent(__Compare___ml_backend__mlds__mlds_class_defn_0_0);
+MR_def_label(__Compare___ml_backend__mlds__mlds_entity_defn_0_0,31)
+	MR_MAYBE_INIT_LOCAL_THREAD_ENGINE_BASE
+	{
+	MR_Word MR_tempr1;
+	MR_tempr1 = MR_tag(MR_sv(2));
+	if ((MR_tempr1 == MR_mktag((MR_Integer) 1))) {
+		MR_GOTO_LAB(__Compare___ml_backend__mlds__mlds_entity_defn_0_0_i35);
+	}
+	if ((MR_tempr1 == MR_mktag((MR_Integer) 2))) {
+		MR_GOTO_LAB(__Compare___ml_backend__mlds__mlds_entity_defn_0_0_i33);
+	}
+	}
+MR_def_label(__Compare___ml_backend__mlds__mlds_entity_defn_0_0,87)
+	MR_MAYBE_INIT_LOCAL_THREAD_ENGINE_BASE
+	MR_r1 = (MR_Integer) 2;
+	MR_decr_sp_and_return(9);
+MR_def_label(__Compare___ml_backend__mlds__mlds_entity_defn_0_0,33)
+	MR_MAYBE_INIT_LOCAL_THREAD_ENGINE_BASE
+	MR_r1 = (MR_Integer) 1;
+	MR_decr_sp_and_return(9);
+MR_def_label(__Compare___ml_backend__mlds__mlds_entity_defn_0_0,35)
+	MR_MAYBE_INIT_LOCAL_THREAD_ENGINE_BASE
+	{
+	MR_Word MR_tempr1, MR_tempr2, MR_tempr3, MR_tempr4, MR_tempr5, MR_tempr6;
+	MR_tempr5 = MR_sv(1);
+	MR_sv(8) = MR_ctfield(1, MR_tempr5, 1);
+	MR_sv(7) = MR_ctfield(1, MR_tempr5, 2);
+	MR_sv(6) = MR_ctfield(1, MR_tempr5, 3);
+	MR_sv(5) = MR_ctfield(1, MR_tempr5, 4);
+	MR_tempr6 = MR_sv(2);
+	MR_sv(4) = MR_ctfield(1, MR_tempr6, 4);
+	MR_sv(3) = MR_ctfield(1, MR_tempr6, 3);
+	MR_tempr1 = MR_ctfield(1, MR_tempr6, 2);
+	MR_tempr2 = MR_ctfield(1, MR_tempr6, 1);
+	MR_tempr3 = MR_tempr5;
+	MR_sv(1) = MR_tempr2;
+	MR_tempr4 = MR_tempr6;
+	MR_sv(2) = MR_tempr1;
+	MR_r1 = (MR_Word) MR_CTOR0_ADDR(hlds__hlds_pred, pred_proc_id);
+	MR_r2 = MR_ctfield(1, MR_tempr3, 0);
+	MR_r3 = MR_ctfield(1, MR_tempr4, 0);
+	}
+	MR_np_call_localret_ent(__Compare___maybe__maybe_1_0,
+		__Compare___ml_backend__mlds__mlds_entity_defn_0_0_i37);
+MR_def_label(__Compare___ml_backend__mlds__mlds_entity_defn_0_0,37)
+	MR_MAYBE_INIT_LOCAL_THREAD_ENGINE_BASE
+	if (MR_INT_NE(MR_r1,0)) {
+		MR_GOTO_LAB(__Compare___ml_backend__mlds__mlds_entity_defn_0_0_i143);
+	}
+	MR_r1 = MR_sv(8);
+	MR_r2 = MR_sv(1);
+	MR_np_call_localret_ent(__Compare___ml_backend__mlds__mlds_func_params_0_0,
+		__Compare___ml_backend__mlds__mlds_entity_defn_0_0_i41);
+MR_def_label(__Compare___ml_backend__mlds__mlds_entity_defn_0_0,41)
+	MR_MAYBE_INIT_LOCAL_THREAD_ENGINE_BASE
+	if (MR_INT_NE(MR_r1,0)) {
+		MR_GOTO_LAB(__Compare___ml_backend__mlds__mlds_entity_defn_0_0_i143);
+	}
+	MR_r1 = MR_sv(7);
+	MR_r2 = MR_sv(2);
+	MR_np_call_localret_ent(__Compare___ml_backend__mlds__mlds_function_body_0_0,
+		__Compare___ml_backend__mlds__mlds_entity_defn_0_0_i45);
+MR_def_label(__Compare___ml_backend__mlds__mlds_entity_defn_0_0,45)
+	MR_MAYBE_INIT_LOCAL_THREAD_ENGINE_BASE
+	if (MR_INT_NE(MR_r1,0)) {
+		MR_GOTO_LAB(__Compare___ml_backend__mlds__mlds_entity_defn_0_0_i143);
+	}
+	MR_r1 = (MR_Word) MR_CTOR0_ADDR(ml_backend__mlds, mlds_attribute);
+	MR_r2 = MR_sv(6);
+	MR_r3 = MR_sv(3);
+	MR_np_call_localret_ent(__Compare___list__list_1_0,
+		__Compare___ml_backend__mlds__mlds_entity_defn_0_0_i49);
+MR_def_label(__Compare___ml_backend__mlds__mlds_entity_defn_0_0,49)
+	MR_MAYBE_INIT_LOCAL_THREAD_ENGINE_BASE
+	if (MR_INT_NE(MR_r1,0)) {
+		MR_GOTO_LAB(__Compare___ml_backend__mlds__mlds_entity_defn_0_0_i143);
+	}
+	MR_r1 = (MR_Word) MR_STRING_CTOR_ADDR;
+	MR_r2 = MR_sv(5);
+	MR_r3 = MR_sv(4);
+	MR_succip_word = MR_sv(9);
+	MR_decr_sp(9);
+	MR_np_tailcall_ent(__Compare___set_ordlist__set_ordlist_1_0);
+MR_def_label(__Compare___ml_backend__mlds__mlds_entity_defn_0_0,143)
+	MR_MAYBE_INIT_LOCAL_THREAD_ENGINE_BASE
+	MR_decr_sp_and_return(9);
+#ifdef MR_maybe_local_thread_engine_base
+	#undef MR_maybe_local_thread_engine_base
+	#define MR_maybe_local_thread_engine_base MR_thread_engine_base
+#endif
+MR_END_MODULE
+
+
+MR_BEGIN_MODULE(ml_backend__mlds_module93)
+	MR_init_entry1(__Unify___ml_backend__mlds__mlds_entity_name_0_0);
+	MR_init_label8(__Unify___ml_backend__mlds__mlds_entity_name_0_0,17,5,11,13,15,9,23,1)
+MR_BEGIN_CODE
+
+#ifdef MR_maybe_local_thread_engine_base
+	#undef MR_maybe_local_thread_engine_base
+	#define MR_maybe_local_thread_engine_base MR_local_thread_engine_base
+#endif
+MR_define_entry(mercury____Unify___ml_backend__mlds__mlds_entity_name_0_0);
+	MR_MAYBE_INIT_LOCAL_THREAD_ENGINE_BASE
+	if ((MR_r1 == MR_r2)) {
+		MR_GOTO_LAB(__Unify___ml_backend__mlds__mlds_entity_name_0_0_i23);
+	}
+	MR_incr_sp(7);
+	MR_sv(7) = (MR_Word) MR_succip;
+	MR_sv(1) = MR_r1;
+	MR_sv(2) = MR_r2;
+	MR_COMPUTED_GOTO((MR_Unsigned) MR_tag(MR_sv(1)),
+		MR_LABEL_AP(__Unify___ml_backend__mlds__mlds_entity_name_0_0_i17) MR_AND
+		MR_LABEL_AP(__Unify___ml_backend__mlds__mlds_entity_name_0_0_i5) MR_AND
+		MR_LABEL_AP(__Unify___ml_backend__mlds__mlds_entity_name_0_0_i11) MR_AND
+		MR_LABEL_AP(__Unify___ml_backend__mlds__mlds_entity_name_0_0_i9));
+MR_def_label(__Unify___ml_backend__mlds__mlds_entity_name_0_0,17)
+	MR_MAYBE_INIT_LOCAL_THREAD_ENGINE_BASE
+	if (MR_PTAG_TESTR(MR_sv(2),0)) {
+		MR_GOTO_LAB(__Unify___ml_backend__mlds__mlds_entity_name_0_0_i1);
+	}
+	{
+	MR_Word MR_tempr1, MR_tempr2, MR_tempr3, MR_tempr4;
+	MR_tempr3 = MR_sv(1);
+	MR_tempr1 = MR_ctfield(0, MR_tempr3, 0);
+	MR_tempr4 = MR_sv(2);
+	MR_tempr2 = MR_ctfield(0, MR_tempr4, 0);
+	if ((strcmp((char *) (MR_Word *) MR_tempr1, (char *) (MR_Word *) MR_tempr2) != 0)) {
+		MR_GOTO_LAB(__Unify___ml_backend__mlds__mlds_entity_name_0_0_i1);
+	}
+	MR_tempr1 = MR_ctfield(0, MR_tempr3, 1);
+	MR_tempr2 = MR_ctfield(0, MR_tempr4, 1);
+	MR_r1 = (MR_tempr1 == MR_tempr2);
+	MR_decr_sp_and_return(7);
+	}
+MR_def_label(__Unify___ml_backend__mlds__mlds_entity_name_0_0,5)
+	MR_MAYBE_INIT_LOCAL_THREAD_ENGINE_BASE
+	if (MR_PTAG_TESTR(MR_sv(2),1)) {
+		MR_GOTO_LAB(__Unify___ml_backend__mlds__mlds_entity_name_0_0_i1);
+	}
+	MR_r1 = MR_ctfield(1, MR_sv(1), 0);
+	MR_r2 = MR_ctfield(1, MR_sv(2), 0);
+	MR_succip_word = MR_sv(7);
+	MR_decr_sp(7);
+	MR_np_tailcall_ent(__Unify___ml_backend__mlds__mlds_data_name_0_0);
+MR_def_label(__Unify___ml_backend__mlds__mlds_entity_name_0_0,11)
+	MR_MAYBE_INIT_LOCAL_THREAD_ENGINE_BASE
+	if (MR_PTAG_TESTR(MR_sv(2),2)) {
+		MR_GOTO_LAB(__Unify___ml_backend__mlds__mlds_entity_name_0_0_i1);
+	}
+	{
+	MR_Word MR_tempr1, MR_tempr2;
+	MR_tempr1 = MR_sv(1);
+	MR_sv(1) = MR_ctfield(2, MR_tempr1, 1);
+	MR_tempr2 = MR_sv(2);
+	MR_sv(2) = MR_ctfield(2, MR_tempr1, 2);
+	MR_sv(3) = MR_ctfield(2, MR_tempr1, 3);
+	MR_sv(4) = MR_ctfield(2, MR_tempr2, 1);
+	MR_sv(5) = MR_ctfield(2, MR_tempr2, 2);
+	MR_sv(6) = MR_ctfield(2, MR_tempr2, 3);
+	MR_r1 = MR_ctfield(2, MR_tempr1, 0);
+	MR_r2 = MR_ctfield(2, MR_tempr2, 0);
+	}
+	MR_np_call_localret_ent(__Unify___ml_backend__mlds__mlds_pred_label_0_0,
+		__Unify___ml_backend__mlds__mlds_entity_name_0_0_i13);
+MR_def_label(__Unify___ml_backend__mlds__mlds_entity_name_0_0,13)
+	MR_MAYBE_INIT_LOCAL_THREAD_ENGINE_BASE
+	if (!(MR_r1)) {
+		MR_GOTO_LAB(__Unify___ml_backend__mlds__mlds_entity_name_0_0_i1);
+	}
+	if ((MR_sv(1) != MR_sv(4))) {
+		MR_GOTO_LAB(__Unify___ml_backend__mlds__mlds_entity_name_0_0_i1);
+	}
+	MR_r1 = (MR_Word) MR_INT_CTOR_ADDR;
+	MR_r2 = MR_sv(2);
+	MR_r3 = MR_sv(5);
+	MR_np_call_localret_ent(__Unify___maybe__maybe_1_0,
+		__Unify___ml_backend__mlds__mlds_entity_name_0_0_i15);
+MR_def_label(__Unify___ml_backend__mlds__mlds_entity_name_0_0,15)
+	MR_MAYBE_INIT_LOCAL_THREAD_ENGINE_BASE
+	if (!(MR_r1)) {
+		MR_GOTO_LAB(__Unify___ml_backend__mlds__mlds_entity_name_0_0_i1);
+	}
+	MR_r1 = (MR_sv(3) == MR_sv(6));
+	MR_decr_sp_and_return(7);
+MR_def_label(__Unify___ml_backend__mlds__mlds_entity_name_0_0,9)
+	MR_MAYBE_INIT_LOCAL_THREAD_ENGINE_BASE
+	if (MR_PTAG_TESTR(MR_sv(2),3)) {
+		MR_GOTO_LAB(__Unify___ml_backend__mlds__mlds_entity_name_0_0_i1);
+	}
+	{
+	MR_Word MR_tempr1, MR_tempr2;
+	MR_tempr1 = MR_ctfield(3, MR_sv(1), 0);
+	MR_tempr2 = MR_ctfield(3, MR_sv(2), 0);
+	MR_r1 = (strcmp((char *) (MR_Word *) MR_tempr1, (char *) (MR_Word *) MR_tempr2) == 0);
+	MR_decr_sp_and_return(7);
+	}
+MR_def_label(__Unify___ml_backend__mlds__mlds_entity_name_0_0,23)
+	MR_MAYBE_INIT_LOCAL_THREAD_ENGINE_BASE
+	MR_r1 = MR_TRUE;
+	MR_proceed();
+MR_def_label(__Unify___ml_backend__mlds__mlds_entity_name_0_0,1)
+	MR_MAYBE_INIT_LOCAL_THREAD_ENGINE_BASE
+	MR_r1 = MR_FALSE;
+	MR_decr_sp_and_return(7);
+#ifdef MR_maybe_local_thread_engine_base
+	#undef MR_maybe_local_thread_engine_base
+	#define MR_maybe_local_thread_engine_base MR_thread_engine_base
+#endif
+MR_END_MODULE
+
+
+MR_BEGIN_MODULE(ml_backend__mlds_module94)
+	MR_init_entry1(__Compare___ml_backend__mlds__mlds_entity_name_0_0);
+	MR_init_label8(__Compare___ml_backend__mlds__mlds_entity_name_0_0,3,53,60,5,7,27,31,33)
+	MR_init_label7(__Compare___ml_backend__mlds__mlds_entity_name_0_0,37,41,30,16,21,19,118)
+MR_BEGIN_CODE
+
+#ifdef MR_maybe_local_thread_engine_base
+	#undef MR_maybe_local_thread_engine_base
+	#define MR_maybe_local_thread_engine_base MR_local_thread_engine_base
+#endif
+MR_define_entry(mercury____Compare___ml_backend__mlds__mlds_entity_name_0_0);
+	MR_MAYBE_INIT_LOCAL_THREAD_ENGINE_BASE
+	if ((MR_r1 == MR_r2)) {
+		MR_GOTO_LAB(__Compare___ml_backend__mlds__mlds_entity_name_0_0_i3);
+	}
+	MR_incr_sp(7);
+	MR_sv(7) = (MR_Word) MR_succip;
+	MR_sv(1) = MR_r1;
+	MR_sv(2) = MR_r2;
+	MR_COMPUTED_GOTO((MR_Unsigned) MR_tag(MR_sv(1)),
+		MR_LABEL_AP(__Compare___ml_backend__mlds__mlds_entity_name_0_0_i53) MR_AND
+		MR_LABEL_AP(__Compare___ml_backend__mlds__mlds_entity_name_0_0_i5) MR_AND
+		MR_LABEL_AP(__Compare___ml_backend__mlds__mlds_entity_name_0_0_i27) MR_AND
+		MR_LABEL_AP(__Compare___ml_backend__mlds__mlds_entity_name_0_0_i16));
+MR_def_label(__Compare___ml_backend__mlds__mlds_entity_name_0_0,3)
+	MR_MAYBE_INIT_LOCAL_THREAD_ENGINE_BASE
+	MR_r1 = (MR_Integer) 0;
+	MR_proceed();
+MR_def_label(__Compare___ml_backend__mlds__mlds_entity_name_0_0,53)
+	MR_MAYBE_INIT_LOCAL_THREAD_ENGINE_BASE
+	if (MR_INT_NE(MR_tag(MR_sv(2)),0)) {
+		MR_GOTO_LAB(__Compare___ml_backend__mlds__mlds_entity_name_0_0_i30);
+	}
+	{
+	MR_Word MR_tempr1, MR_tempr2, MR_tempr3, MR_tempr4, MR_tempr5, MR_tempr6;
+	MR_tempr5 = MR_sv(1);
+	MR_tempr1 = MR_ctfield(0, MR_tempr5, 1);
+	MR_tempr6 = MR_sv(2);
+	MR_tempr2 = MR_ctfield(0, MR_tempr6, 1);
+	MR_tempr3 = MR_tempr5;
+	MR_sv(1) = MR_tempr2;
+	MR_tempr4 = MR_tempr6;
+	MR_sv(2) = MR_tempr1;
+	MR_r1 = MR_ctfield(0, MR_tempr3, 0);
+	MR_r2 = MR_ctfield(0, MR_tempr4, 0);
+	}
+	MR_np_call_localret_ent(private_builtin__builtin_compare_string_3_0,
+		__Compare___ml_backend__mlds__mlds_entity_name_0_0_i60);
+MR_def_label(__Compare___ml_backend__mlds__mlds_entity_name_0_0,60)
+	MR_MAYBE_INIT_LOCAL_THREAD_ENGINE_BASE
+	if (MR_INT_NE(MR_r1,0)) {
+		MR_GOTO_LAB(__Compare___ml_backend__mlds__mlds_entity_name_0_0_i118);
+	}
+	MR_r1 = MR_sv(2);
+	MR_r2 = MR_sv(1);
+	MR_succip_word = MR_sv(7);
+	MR_decr_sp(7);
+	MR_np_tailcall_ent(private_builtin__builtin_compare_int_3_0);
+MR_def_label(__Compare___ml_backend__mlds__mlds_entity_name_0_0,5)
+	MR_MAYBE_INIT_LOCAL_THREAD_ENGINE_BASE
+	MR_COMPUTED_GOTO((MR_Unsigned) MR_tag(MR_sv(2)),
+		MR_LABEL_AP(__Compare___ml_backend__mlds__mlds_entity_name_0_0_i21) MR_AND
+		MR_LABEL_AP(__Compare___ml_backend__mlds__mlds_entity_name_0_0_i7) MR_AND
+		MR_LABEL_AP(__Compare___ml_backend__mlds__mlds_entity_name_0_0_i30) MR_AND
+		MR_LABEL_AP(__Compare___ml_backend__mlds__mlds_entity_name_0_0_i30));
+MR_def_label(__Compare___ml_backend__mlds__mlds_entity_name_0_0,7)
+	MR_MAYBE_INIT_LOCAL_THREAD_ENGINE_BASE
+	MR_r1 = MR_ctfield(1, MR_sv(1), 0);
+	MR_r2 = MR_ctfield(1, MR_sv(2), 0);
+	MR_succip_word = MR_sv(7);
+	MR_decr_sp(7);
+	MR_np_tailcall_ent(__Compare___ml_backend__mlds__mlds_data_name_0_0);
+MR_def_label(__Compare___ml_backend__mlds__mlds_entity_name_0_0,27)
+	MR_MAYBE_INIT_LOCAL_THREAD_ENGINE_BASE
+	MR_COMPUTED_GOTO((MR_Unsigned) MR_tag(MR_sv(2)),
+		MR_LABEL_AP(__Compare___ml_backend__mlds__mlds_entity_name_0_0_i21) MR_AND
+		MR_LABEL_AP(__Compare___ml_backend__mlds__mlds_entity_name_0_0_i21) MR_AND
+		MR_LABEL_AP(__Compare___ml_backend__mlds__mlds_entity_name_0_0_i31) MR_AND
+		MR_LABEL_AP(__Compare___ml_backend__mlds__mlds_entity_name_0_0_i30));
+MR_def_label(__Compare___ml_backend__mlds__mlds_entity_name_0_0,31)
+	MR_MAYBE_INIT_LOCAL_THREAD_ENGINE_BASE
+	{
+	MR_Word MR_tempr1, MR_tempr2, MR_tempr3, MR_tempr4, MR_tempr5, MR_tempr6;
+	MR_tempr5 = MR_sv(1);
+	MR_sv(6) = MR_ctfield(2, MR_tempr5, 1);
+	MR_sv(5) = MR_ctfield(2, MR_tempr5, 2);
+	MR_sv(4) = MR_ctfield(2, MR_tempr5, 3);
+	MR_tempr6 = MR_sv(2);
+	MR_sv(3) = MR_ctfield(2, MR_tempr6, 3);
+	MR_tempr1 = MR_ctfield(2, MR_tempr6, 2);
+	MR_tempr2 = MR_ctfield(2, MR_tempr6, 1);
+	MR_tempr3 = MR_tempr5;
+	MR_sv(1) = MR_tempr2;
+	MR_tempr4 = MR_tempr6;
+	MR_sv(2) = MR_tempr1;
+	MR_r1 = MR_ctfield(2, MR_tempr3, 0);
+	MR_r2 = MR_ctfield(2, MR_tempr4, 0);
+	}
+	MR_np_call_localret_ent(__Compare___ml_backend__mlds__mlds_pred_label_0_0,
+		__Compare___ml_backend__mlds__mlds_entity_name_0_0_i33);
+MR_def_label(__Compare___ml_backend__mlds__mlds_entity_name_0_0,33)
+	MR_MAYBE_INIT_LOCAL_THREAD_ENGINE_BASE
+	if (MR_INT_NE(MR_r1,0)) {
+		MR_GOTO_LAB(__Compare___ml_backend__mlds__mlds_entity_name_0_0_i118);
+	}
+	MR_r1 = MR_sv(6);
+	MR_r2 = MR_sv(1);
+	MR_np_call_localret_ent(private_builtin__builtin_compare_int_3_0,
+		__Compare___ml_backend__mlds__mlds_entity_name_0_0_i37);
+MR_def_label(__Compare___ml_backend__mlds__mlds_entity_name_0_0,37)
+	MR_MAYBE_INIT_LOCAL_THREAD_ENGINE_BASE
+	if (MR_INT_NE(MR_r1,0)) {
+		MR_GOTO_LAB(__Compare___ml_backend__mlds__mlds_entity_name_0_0_i118);
+	}
+	MR_r1 = (MR_Word) MR_INT_CTOR_ADDR;
+	MR_r2 = MR_sv(5);
+	MR_r3 = MR_sv(2);
+	MR_np_call_localret_ent(__Compare___maybe__maybe_1_0,
+		__Compare___ml_backend__mlds__mlds_entity_name_0_0_i41);
+MR_def_label(__Compare___ml_backend__mlds__mlds_entity_name_0_0,41)
+	MR_MAYBE_INIT_LOCAL_THREAD_ENGINE_BASE
+	if (MR_INT_NE(MR_r1,0)) {
+		MR_GOTO_LAB(__Compare___ml_backend__mlds__mlds_entity_name_0_0_i118);
+	}
+	MR_r1 = MR_sv(4);
+	MR_r2 = MR_sv(3);
+	MR_succip_word = MR_sv(7);
+	MR_decr_sp(7);
+	MR_np_tailcall_ent(private_builtin__builtin_compare_int_3_0);
+MR_def_label(__Compare___ml_backend__mlds__mlds_entity_name_0_0,30)
+	MR_MAYBE_INIT_LOCAL_THREAD_ENGINE_BASE
+	MR_r1 = (MR_Integer) 1;
+	MR_decr_sp_and_return(7);
+MR_def_label(__Compare___ml_backend__mlds__mlds_entity_name_0_0,16)
+	MR_MAYBE_INIT_LOCAL_THREAD_ENGINE_BASE
+	if (MR_INT_EQ(MR_tag(MR_sv(2)),3)) {
+		MR_GOTO_LAB(__Compare___ml_backend__mlds__mlds_entity_name_0_0_i19);
+	}
+MR_def_label(__Compare___ml_backend__mlds__mlds_entity_name_0_0,21)
+	MR_MAYBE_INIT_LOCAL_THREAD_ENGINE_BASE
+	MR_r1 = (MR_Integer) 2;
+	MR_decr_sp_and_return(7);
+MR_def_label(__Compare___ml_backend__mlds__mlds_entity_name_0_0,19)
+	MR_MAYBE_INIT_LOCAL_THREAD_ENGINE_BASE
+	MR_r1 = MR_ctfield(3, MR_sv(1), 0);
+	MR_r2 = MR_ctfield(3, MR_sv(2), 0);
+	MR_succip_word = MR_sv(7);
+	MR_decr_sp(7);
+	MR_np_tailcall_ent(private_builtin__builtin_compare_string_3_0);
+MR_def_label(__Compare___ml_backend__mlds__mlds_entity_name_0_0,118)
+	MR_MAYBE_INIT_LOCAL_THREAD_ENGINE_BASE
+	MR_decr_sp_and_return(7);
+#ifdef MR_maybe_local_thread_engine_base
+	#undef MR_maybe_local_thread_engine_base
+	#define MR_maybe_local_thread_engine_base MR_thread_engine_base
+#endif
+MR_END_MODULE
+
+
+MR_BEGIN_MODULE(ml_backend__mlds_module95)
+	MR_init_entry1(__Unify___ml_backend__mlds__mlds_exception_handler_0_0);
+	MR_init_label3(__Unify___ml_backend__mlds__mlds_exception_handler_0_0,4,8,1)
+MR_BEGIN_CODE
+
+#ifdef MR_maybe_local_thread_engine_base
+	#undef MR_maybe_local_thread_engine_base
+	#define MR_maybe_local_thread_engine_base MR_local_thread_engine_base
+#endif
+MR_define_entry(mercury____Unify___ml_backend__mlds__mlds_exception_handler_0_0);
+	MR_MAYBE_INIT_LOCAL_THREAD_ENGINE_BASE
+	if ((MR_r1 == MR_r2)) {
+		MR_GOTO_LAB(__Unify___ml_backend__mlds__mlds_exception_handler_0_0_i8);
+	}
+	MR_incr_sp(3);
+	MR_sv(3) = (MR_Word) MR_succip;
+	MR_sv(1) = MR_r1;
+	MR_sv(2) = MR_r2;
+	{
+	MR_Word MR_tempr1, MR_tempr2;
+	MR_tempr1 = MR_sv(1);
+	MR_sv(1) = MR_ctfield(0, MR_tempr1, 1);
+	MR_tempr2 = MR_sv(2);
+	MR_sv(2) = MR_ctfield(0, MR_tempr2, 1);
+	MR_r1 = (MR_Word) MR_CTOR0_ADDR(ml_backend__mlds, mlds_type);
+	MR_r2 = MR_ctfield(0, MR_tempr1, 0);
+	MR_r3 = MR_ctfield(0, MR_tempr2, 0);
+	}
+	MR_np_call_localret_ent(__Unify___maybe__maybe_1_0,
+		__Unify___ml_backend__mlds__mlds_exception_handler_0_0_i4);
+MR_def_label(__Unify___ml_backend__mlds__mlds_exception_handler_0_0,4)
+	MR_MAYBE_INIT_LOCAL_THREAD_ENGINE_BASE
+	if (!(MR_r1)) {
+		MR_GOTO_LAB(__Unify___ml_backend__mlds__mlds_exception_handler_0_0_i1);
+	}
+	MR_r1 = (MR_Word) MR_STRING_CTOR_ADDR;
+	MR_r2 = MR_sv(1);
+	MR_r3 = MR_sv(2);
+	MR_succip_word = MR_sv(3);
+	MR_decr_sp(3);
+	MR_np_tailcall_ent(__Unify___maybe__maybe_1_0);
+MR_def_label(__Unify___ml_backend__mlds__mlds_exception_handler_0_0,8)
+	MR_MAYBE_INIT_LOCAL_THREAD_ENGINE_BASE
+	MR_r1 = MR_TRUE;
+	MR_proceed();
+MR_def_label(__Unify___ml_backend__mlds__mlds_exception_handler_0_0,1)
+	MR_MAYBE_INIT_LOCAL_THREAD_ENGINE_BASE
+	MR_r1 = MR_FALSE;
+	MR_decr_sp_and_return(3);
+#ifdef MR_maybe_local_thread_engine_base
+	#undef MR_maybe_local_thread_engine_base
+	#define MR_maybe_local_thread_engine_base MR_thread_engine_base
+#endif
+MR_END_MODULE
+
+
+MR_BEGIN_MODULE(ml_backend__mlds_module96)
+	MR_init_entry1(__Compare___ml_backend__mlds__mlds_exception_handler_0_0);
+	MR_init_label4(__Compare___ml_backend__mlds__mlds_exception_handler_0_0,3,2,5,21)
+MR_BEGIN_CODE
+
+#ifdef MR_maybe_local_thread_engine_base
+	#undef MR_maybe_local_thread_engine_base
+	#define MR_maybe_local_thread_engine_base MR_local_thread_engine_base
+#endif
+MR_define_entry(mercury____Compare___ml_backend__mlds__mlds_exception_handler_0_0);
+	MR_MAYBE_INIT_LOCAL_THREAD_ENGINE_BASE
+	if ((MR_r1 == MR_r2)) {
+		MR_GOTO_LAB(__Compare___ml_backend__mlds__mlds_exception_handler_0_0_i3);
+	}
+	MR_incr_sp(3);
+	MR_sv(3) = (MR_Word) MR_succip;
+	MR_sv(1) = MR_r1;
+	MR_sv(2) = MR_r2;
+	MR_GOTO_LAB(__Compare___ml_backend__mlds__mlds_exception_handler_0_0_i2);
+MR_def_label(__Compare___ml_backend__mlds__mlds_exception_handler_0_0,3)
+	MR_MAYBE_INIT_LOCAL_THREAD_ENGINE_BASE
+	MR_r1 = (MR_Integer) 0;
+	MR_proceed();
+MR_def_label(__Compare___ml_backend__mlds__mlds_exception_handler_0_0,2)
+	MR_MAYBE_INIT_LOCAL_THREAD_ENGINE_BASE
+	{
+	MR_Word MR_tempr1, MR_tempr2, MR_tempr3, MR_tempr4, MR_tempr5, MR_tempr6;
+	MR_tempr5 = MR_sv(2);
+	MR_tempr1 = MR_ctfield(0, MR_tempr5, 1);
+	MR_tempr6 = MR_sv(1);
+	MR_tempr2 = MR_ctfield(0, MR_tempr6, 1);
+	MR_tempr3 = MR_tempr6;
+	MR_sv(1) = MR_tempr2;
+	MR_tempr4 = MR_tempr5;
+	MR_sv(2) = MR_tempr1;
+	MR_r1 = (MR_Word) MR_CTOR0_ADDR(ml_backend__mlds, mlds_type);
+	MR_r2 = MR_ctfield(0, MR_tempr3, 0);
+	MR_r3 = MR_ctfield(0, MR_tempr4, 0);
+	}
+	MR_np_call_localret_ent(__Compare___maybe__maybe_1_0,
+		__Compare___ml_backend__mlds__mlds_exception_handler_0_0_i5);
+MR_def_label(__Compare___ml_backend__mlds__mlds_exception_handler_0_0,5)
+	MR_MAYBE_INIT_LOCAL_THREAD_ENGINE_BASE
+	if (MR_INT_NE(MR_r1,0)) {
+		MR_GOTO_LAB(__Compare___ml_backend__mlds__mlds_exception_handler_0_0_i21);
+	}
+	MR_r1 = (MR_Word) MR_STRING_CTOR_ADDR;
+	MR_r2 = MR_sv(1);
+	MR_r3 = MR_sv(2);
+	MR_succip_word = MR_sv(3);
+	MR_decr_sp(3);
+	MR_np_tailcall_ent(__Compare___maybe__maybe_1_0);
+MR_def_label(__Compare___ml_backend__mlds__mlds_exception_handler_0_0,21)
+	MR_MAYBE_INIT_LOCAL_THREAD_ENGINE_BASE
+	MR_decr_sp_and_return(3);
+#ifdef MR_maybe_local_thread_engine_base
+	#undef MR_maybe_local_thread_engine_base
+	#define MR_maybe_local_thread_engine_base MR_thread_engine_base
+#endif
+MR_END_MODULE
+
+MR_decl_entry(__Unify___parse_tree__prog_data__type_ctor_0_0);
+
+MR_BEGIN_MODULE(ml_backend__mlds_module97)
+	MR_init_entry1(__Unify___ml_backend__mlds__mlds_exported_enum_0_0);
+	MR_init_label4(__Unify___ml_backend__mlds__mlds_exported_enum_0_0,4,6,10,1)
+MR_BEGIN_CODE
+
+#ifdef MR_maybe_local_thread_engine_base
+	#undef MR_maybe_local_thread_engine_base
+	#define MR_maybe_local_thread_engine_base MR_local_thread_engine_base
+#endif
+MR_define_entry(mercury____Unify___ml_backend__mlds__mlds_exported_enum_0_0);
+	MR_MAYBE_INIT_LOCAL_THREAD_ENGINE_BASE
+	if ((MR_r1 == MR_r2)) {
+		MR_GOTO_LAB(__Unify___ml_backend__mlds__mlds_exported_enum_0_0_i10);
+	}
+	MR_incr_sp(5);
+	MR_sv(5) = (MR_Word) MR_succip;
+	{
+	MR_Word MR_tempr1, MR_tempr2, MR_tempr3, MR_tempr4;
+	MR_tempr1 = MR_r1;
+	MR_sv(1) = MR_tempr1;
+	MR_tempr2 = MR_r2;
+	MR_sv(2) = MR_tempr2;
+	MR_tempr3 = MR_ctfield(0, MR_tempr1, 0);
+	MR_tempr4 = MR_ctfield(0, MR_tempr2, 0);
+	if ((MR_tempr3 != MR_tempr4)) {
+		MR_GOTO_LAB(__Unify___ml_backend__mlds__mlds_exported_enum_0_0_i1);
+	}
+	MR_tempr3 = MR_tempr1;
+	MR_sv(1) = MR_ctfield(0, MR_tempr3, 2);
+	MR_tempr4 = MR_tempr2;
+	MR_sv(2) = MR_ctfield(0, MR_tempr3, 3);
+	MR_sv(3) = MR_ctfield(0, MR_tempr4, 2);
+	MR_sv(4) = MR_ctfield(0, MR_tempr4, 3);
+	MR_r1 = MR_ctfield(0, MR_tempr3, 1);
+	MR_r2 = MR_ctfield(0, MR_tempr4, 1);
+	}
+	MR_np_call_localret_ent(__Unify___term__context_0_0,
+		__Unify___ml_backend__mlds__mlds_exported_enum_0_0_i4);
+MR_def_label(__Unify___ml_backend__mlds__mlds_exported_enum_0_0,4)
+	MR_MAYBE_INIT_LOCAL_THREAD_ENGINE_BASE
+	if (!(MR_r1)) {
+		MR_GOTO_LAB(__Unify___ml_backend__mlds__mlds_exported_enum_0_0_i1);
+	}
+	MR_r1 = MR_sv(1);
+	MR_r2 = MR_sv(3);
+	MR_np_call_localret_ent(__Unify___parse_tree__prog_data__type_ctor_0_0,
+		__Unify___ml_backend__mlds__mlds_exported_enum_0_0_i6);
+MR_def_label(__Unify___ml_backend__mlds__mlds_exported_enum_0_0,6)
+	MR_MAYBE_INIT_LOCAL_THREAD_ENGINE_BASE
+	if (!(MR_r1)) {
+		MR_GOTO_LAB(__Unify___ml_backend__mlds__mlds_exported_enum_0_0_i1);
+	}
+	MR_r1 = (MR_Word) MR_CTOR0_ADDR(ml_backend__mlds, mlds_exported_enum_constant);
+	MR_r2 = MR_sv(2);
+	MR_r3 = MR_sv(4);
+	MR_succip_word = MR_sv(5);
+	MR_decr_sp(5);
+	MR_np_tailcall_ent(__Unify___list__list_1_0);
+MR_def_label(__Unify___ml_backend__mlds__mlds_exported_enum_0_0,10)
+	MR_MAYBE_INIT_LOCAL_THREAD_ENGINE_BASE
+	MR_r1 = MR_TRUE;
+	MR_proceed();
+MR_def_label(__Unify___ml_backend__mlds__mlds_exported_enum_0_0,1)
+	MR_MAYBE_INIT_LOCAL_THREAD_ENGINE_BASE
+	MR_r1 = MR_FALSE;
+	MR_decr_sp_and_return(5);
+#ifdef MR_maybe_local_thread_engine_base
+	#undef MR_maybe_local_thread_engine_base
+	#define MR_maybe_local_thread_engine_base MR_thread_engine_base
+#endif
+MR_END_MODULE
+
+MR_decl_entry(__Compare___parse_tree__prog_data__type_ctor_0_0);
+
+MR_BEGIN_MODULE(ml_backend__mlds_module98)
+	MR_init_entry1(__Compare___ml_backend__mlds__mlds_exported_enum_0_0);
+	MR_init_label6(__Compare___ml_backend__mlds__mlds_exported_enum_0_0,3,2,5,9,13,37)
+MR_BEGIN_CODE
+
+#ifdef MR_maybe_local_thread_engine_base
+	#undef MR_maybe_local_thread_engine_base
+	#define MR_maybe_local_thread_engine_base MR_local_thread_engine_base
+#endif
+MR_define_entry(mercury____Compare___ml_backend__mlds__mlds_exported_enum_0_0);
+	MR_MAYBE_INIT_LOCAL_THREAD_ENGINE_BASE
+	if ((MR_r1 == MR_r2)) {
+		MR_GOTO_LAB(__Compare___ml_backend__mlds__mlds_exported_enum_0_0_i3);
+	}
+	MR_incr_sp(7);
+	MR_sv(7) = (MR_Word) MR_succip;
+	MR_sv(1) = MR_r1;
+	MR_sv(2) = MR_r2;
+	MR_GOTO_LAB(__Compare___ml_backend__mlds__mlds_exported_enum_0_0_i2);
+MR_def_label(__Compare___ml_backend__mlds__mlds_exported_enum_0_0,3)
+	MR_MAYBE_INIT_LOCAL_THREAD_ENGINE_BASE
+	MR_r1 = (MR_Integer) 0;
+	MR_proceed();
+MR_def_label(__Compare___ml_backend__mlds__mlds_exported_enum_0_0,2)
+	MR_MAYBE_INIT_LOCAL_THREAD_ENGINE_BASE
+	{
+	MR_Word MR_tempr1, MR_tempr2, MR_tempr3, MR_tempr4, MR_tempr5, MR_tempr6;
+	MR_tempr5 = MR_sv(2);
+	MR_sv(6) = MR_ctfield(0, MR_tempr5, 3);
+	MR_sv(5) = MR_ctfield(0, MR_tempr5, 2);
+	MR_sv(4) = MR_ctfield(0, MR_tempr5, 1);
+	MR_tempr6 = MR_sv(1);
+	MR_sv(3) = MR_ctfield(0, MR_tempr6, 3);
+	MR_tempr1 = MR_ctfield(0, MR_tempr6, 2);
+	MR_tempr2 = MR_ctfield(0, MR_tempr6, 1);
+	MR_tempr3 = MR_tempr6;
+	MR_sv(1) = MR_tempr2;
+	MR_tempr4 = MR_tempr5;
+	MR_sv(2) = MR_tempr1;
+	MR_r1 = MR_ctfield(0, MR_tempr3, 0);
+	MR_r2 = MR_ctfield(0, MR_tempr4, 0);
+	}
+	MR_np_call_localret_ent(private_builtin__builtin_compare_int_3_0,
+		__Compare___ml_backend__mlds__mlds_exported_enum_0_0_i5);
+MR_def_label(__Compare___ml_backend__mlds__mlds_exported_enum_0_0,5)
+	MR_MAYBE_INIT_LOCAL_THREAD_ENGINE_BASE
+	if (MR_INT_NE(MR_r1,0)) {
+		MR_GOTO_LAB(__Compare___ml_backend__mlds__mlds_exported_enum_0_0_i37);
+	}
+	MR_r1 = MR_sv(1);
+	MR_r2 = MR_sv(4);
+	MR_np_call_localret_ent(__Compare___term__context_0_0,
+		__Compare___ml_backend__mlds__mlds_exported_enum_0_0_i9);
+MR_def_label(__Compare___ml_backend__mlds__mlds_exported_enum_0_0,9)
+	MR_MAYBE_INIT_LOCAL_THREAD_ENGINE_BASE
+	if (MR_INT_NE(MR_r1,0)) {
+		MR_GOTO_LAB(__Compare___ml_backend__mlds__mlds_exported_enum_0_0_i37);
+	}
+	MR_r1 = MR_sv(2);
+	MR_r2 = MR_sv(5);
+	MR_np_call_localret_ent(__Compare___parse_tree__prog_data__type_ctor_0_0,
+		__Compare___ml_backend__mlds__mlds_exported_enum_0_0_i13);
+MR_def_label(__Compare___ml_backend__mlds__mlds_exported_enum_0_0,13)
+	MR_MAYBE_INIT_LOCAL_THREAD_ENGINE_BASE
+	if (MR_INT_NE(MR_r1,0)) {
+		MR_GOTO_LAB(__Compare___ml_backend__mlds__mlds_exported_enum_0_0_i37);
+	}
+	MR_r1 = (MR_Word) MR_CTOR0_ADDR(ml_backend__mlds, mlds_exported_enum_constant);
+	MR_r2 = MR_sv(3);
+	MR_r3 = MR_sv(6);
+	MR_succip_word = MR_sv(7);
+	MR_decr_sp(7);
+	MR_np_tailcall_ent(__Compare___list__list_1_0);
+MR_def_label(__Compare___ml_backend__mlds__mlds_exported_enum_0_0,37)
+	MR_MAYBE_INIT_LOCAL_THREAD_ENGINE_BASE
+	MR_decr_sp_and_return(7);
+#ifdef MR_maybe_local_thread_engine_base
+	#undef MR_maybe_local_thread_engine_base
+	#define MR_maybe_local_thread_engine_base MR_thread_engine_base
+#endif
+MR_END_MODULE
+
+
+MR_BEGIN_MODULE(ml_backend__mlds_module99)
+	MR_init_entry1(__Unify___ml_backend__mlds__mlds_exported_enum_constant_0_0);
+	MR_init_label2(__Unify___ml_backend__mlds__mlds_exported_enum_constant_0_0,6,1)
+MR_BEGIN_CODE
+
+#ifdef MR_maybe_local_thread_engine_base
+	#undef MR_maybe_local_thread_engine_base
+	#define MR_maybe_local_thread_engine_base MR_local_thread_engine_base
+#endif
+MR_define_entry(mercury____Unify___ml_backend__mlds__mlds_exported_enum_constant_0_0);
+	MR_MAYBE_INIT_LOCAL_THREAD_ENGINE_BASE
+	if ((MR_r1 == MR_r2)) {
+		MR_GOTO_LAB(__Unify___ml_backend__mlds__mlds_exported_enum_constant_0_0_i6);
+	}
+	MR_incr_sp(3);
+	MR_sv(3) = (MR_Word) MR_succip;
+	{
+	MR_Word MR_tempr1, MR_tempr2, MR_tempr3, MR_tempr4;
+	MR_tempr1 = MR_r1;
+	MR_sv(1) = MR_tempr1;
+	MR_tempr2 = MR_r2;
+	MR_sv(2) = MR_tempr2;
+	MR_tempr3 = MR_ctfield(0, MR_tempr1, 0);
+	MR_tempr4 = MR_ctfield(0, MR_tempr2, 0);
+	if ((strcmp((char *) (MR_Word *) MR_tempr3, (char *) (MR_Word *) MR_tempr4) != 0)) {
+		MR_GOTO_LAB(__Unify___ml_backend__mlds__mlds_exported_enum_constant_0_0_i1);
+	}
+	MR_r1 = MR_ctfield(0, MR_tempr1, 1);
+	MR_r2 = MR_ctfield(0, MR_tempr2, 1);
+	MR_decr_sp(3);
+	MR_np_tailcall_ent(__Unify___ml_backend__mlds__mlds_initializer_0_0);
+	}
+MR_def_label(__Unify___ml_backend__mlds__mlds_exported_enum_constant_0_0,6)
+	MR_MAYBE_INIT_LOCAL_THREAD_ENGINE_BASE
+	MR_r1 = MR_TRUE;
+	MR_proceed();
+MR_def_label(__Unify___ml_backend__mlds__mlds_exported_enum_constant_0_0,1)
+	MR_MAYBE_INIT_LOCAL_THREAD_ENGINE_BASE
+	MR_r1 = MR_FALSE;
+	MR_decr_sp_and_return(3);
+#ifdef MR_maybe_local_thread_engine_base
+	#undef MR_maybe_local_thread_engine_base
+	#define MR_maybe_local_thread_engine_base MR_thread_engine_base
+#endif
+MR_END_MODULE
+
+
+MR_BEGIN_MODULE(ml_backend__mlds_module100)
+	MR_init_entry1(__Compare___ml_backend__mlds__mlds_exported_enum_constant_0_0);
+	MR_init_label4(__Compare___ml_backend__mlds__mlds_exported_enum_constant_0_0,3,2,5,21)
+MR_BEGIN_CODE
+
+#ifdef MR_maybe_local_thread_engine_base
+	#undef MR_maybe_local_thread_engine_base
+	#define MR_maybe_local_thread_engine_base MR_local_thread_engine_base
+#endif
+MR_define_entry(mercury____Compare___ml_backend__mlds__mlds_exported_enum_constant_0_0);
+	MR_MAYBE_INIT_LOCAL_THREAD_ENGINE_BASE
+	if ((MR_r1 == MR_r2)) {
+		MR_GOTO_LAB(__Compare___ml_backend__mlds__mlds_exported_enum_constant_0_0_i3);
+	}
+	MR_incr_sp(3);
+	MR_sv(3) = (MR_Word) MR_succip;
+	MR_sv(1) = MR_r1;
+	MR_sv(2) = MR_r2;
+	MR_GOTO_LAB(__Compare___ml_backend__mlds__mlds_exported_enum_constant_0_0_i2);
+MR_def_label(__Compare___ml_backend__mlds__mlds_exported_enum_constant_0_0,3)
+	MR_MAYBE_INIT_LOCAL_THREAD_ENGINE_BASE
+	MR_r1 = (MR_Integer) 0;
+	MR_proceed();
+MR_def_label(__Compare___ml_backend__mlds__mlds_exported_enum_constant_0_0,2)
+	MR_MAYBE_INIT_LOCAL_THREAD_ENGINE_BASE
+	{
+	MR_Word MR_tempr1, MR_tempr2, MR_tempr3, MR_tempr4, MR_tempr5, MR_tempr6;
+	MR_tempr5 = MR_sv(2);
+	MR_tempr1 = MR_ctfield(0, MR_tempr5, 1);
+	MR_tempr6 = MR_sv(1);
+	MR_tempr2 = MR_ctfield(0, MR_tempr6, 1);
+	MR_tempr3 = MR_tempr6;
+	MR_sv(1) = MR_tempr2;
+	MR_tempr4 = MR_tempr5;
+	MR_sv(2) = MR_tempr1;
+	MR_r1 = MR_ctfield(0, MR_tempr3, 0);
+	MR_r2 = MR_ctfield(0, MR_tempr4, 0);
+	}
+	MR_np_call_localret_ent(private_builtin__builtin_compare_string_3_0,
+		__Compare___ml_backend__mlds__mlds_exported_enum_constant_0_0_i5);
+MR_def_label(__Compare___ml_backend__mlds__mlds_exported_enum_constant_0_0,5)
+	MR_MAYBE_INIT_LOCAL_THREAD_ENGINE_BASE
+	if (MR_INT_NE(MR_r1,0)) {
+		MR_GOTO_LAB(__Compare___ml_backend__mlds__mlds_exported_enum_constant_0_0_i21);
+	}
+	MR_r1 = MR_sv(1);
+	MR_r2 = MR_sv(2);
+	MR_succip_word = MR_sv(3);
+	MR_decr_sp(3);
+	MR_np_tailcall_ent(__Compare___ml_backend__mlds__mlds_initializer_0_0);
+MR_def_label(__Compare___ml_backend__mlds__mlds_exported_enum_constant_0_0,21)
+	MR_MAYBE_INIT_LOCAL_THREAD_ENGINE_BASE
+	MR_decr_sp_and_return(3);
+#ifdef MR_maybe_local_thread_engine_base
+	#undef MR_maybe_local_thread_engine_base
+	#define MR_maybe_local_thread_engine_base MR_thread_engine_base
+#endif
+MR_END_MODULE
+
+
+MR_BEGIN_MODULE(ml_backend__mlds_module101)
+	MR_init_entry1(__Unify___ml_backend__mlds__mlds_exported_enums_0_0);
+MR_BEGIN_CODE
+
+#ifdef MR_maybe_local_thread_engine_base
+	#undef MR_maybe_local_thread_engine_base
+	#define MR_maybe_local_thread_engine_base MR_local_thread_engine_base
+#endif
+MR_define_entry(mercury____Unify___ml_backend__mlds__mlds_exported_enums_0_0);
+	MR_MAYBE_INIT_LOCAL_THREAD_ENGINE_BASE
+	{
+	MR_Word MR_tempr1, MR_tempr2;
+	MR_tempr1 = MR_r1;
+	MR_r1 = (MR_Word) MR_CTOR0_ADDR(ml_backend__mlds, mlds_exported_enum);
+	MR_tempr2 = MR_r2;
+	MR_r2 = MR_tempr1;
+	MR_r3 = MR_tempr2;
+	MR_np_tailcall_ent(__Unify___list__list_1_0);
+	}
+#ifdef MR_maybe_local_thread_engine_base
+	#undef MR_maybe_local_thread_engine_base
+	#define MR_maybe_local_thread_engine_base MR_thread_engine_base
+#endif
+MR_END_MODULE
+
+
+MR_BEGIN_MODULE(ml_backend__mlds_module102)
+	MR_init_entry1(__Compare___ml_backend__mlds__mlds_exported_enums_0_0);
+MR_BEGIN_CODE
+
+#ifdef MR_maybe_local_thread_engine_base
+	#undef MR_maybe_local_thread_engine_base
+	#define MR_maybe_local_thread_engine_base MR_local_thread_engine_base
+#endif
+MR_define_entry(mercury____Compare___ml_backend__mlds__mlds_exported_enums_0_0);
+	MR_MAYBE_INIT_LOCAL_THREAD_ENGINE_BASE
+	{
+	MR_Word MR_tempr1, MR_tempr2;
+	MR_tempr1 = MR_r1;
+	MR_r1 = (MR_Word) MR_CTOR0_ADDR(ml_backend__mlds, mlds_exported_enum);
+	MR_tempr2 = MR_r2;
+	MR_r2 = MR_tempr1;
+	MR_r3 = MR_tempr2;
+	MR_np_tailcall_ent(__Compare___list__list_1_0);
+	}
+#ifdef MR_maybe_local_thread_engine_base
+	#undef MR_maybe_local_thread_engine_base
+	#define MR_maybe_local_thread_engine_base MR_thread_engine_base
+#endif
+MR_END_MODULE
+
+
+MR_BEGIN_MODULE(ml_backend__mlds_module103)
+	MR_init_entry1(__Unify___ml_backend__mlds__mlds_field_id_0_0);
+	MR_init_label4(__Unify___ml_backend__mlds__mlds_field_id_0_0,7,19,5,1)
+MR_BEGIN_CODE
+
+#ifdef MR_maybe_local_thread_engine_base
+	#undef MR_maybe_local_thread_engine_base
+	#define MR_maybe_local_thread_engine_base MR_local_thread_engine_base
+#endif
+MR_define_entry(mercury____Unify___ml_backend__mlds__mlds_field_id_0_0);
+	MR_MAYBE_INIT_LOCAL_THREAD_ENGINE_BASE
+	if ((MR_r1 == MR_r2)) {
+		MR_GOTO_LAB(__Unify___ml_backend__mlds__mlds_field_id_0_0_i19);
+	}
+	MR_incr_sp(3);
+	MR_sv(3) = (MR_Word) MR_succip;
+	{
+	MR_Word MR_tempr1, MR_tempr2, MR_tempr3, MR_tempr4;
+	MR_tempr1 = MR_r1;
+	MR_sv(1) = MR_tempr1;
+	MR_tempr2 = MR_r2;
+	MR_sv(2) = MR_tempr2;
+	if (MR_PTAG_TESTR(MR_tempr1,1)) {
+		MR_GOTO_LAB(__Unify___ml_backend__mlds__mlds_field_id_0_0_i5);
+	}
+	if (MR_PTAG_TESTR(MR_tempr2,1)) {
+		MR_GOTO_LAB(__Unify___ml_backend__mlds__mlds_field_id_0_0_i1);
+	}
+	MR_tempr3 = MR_tempr1;
+	MR_sv(1) = MR_ctfield(1, MR_tempr3, 1);
+	MR_tempr4 = MR_tempr2;
+	MR_sv(2) = MR_ctfield(1, MR_tempr4, 1);
+	MR_r1 = (MR_Word) MR_STRING_CTOR_ADDR;
+	MR_r2 = MR_ctfield(1, MR_tempr3, 0);
+	MR_r3 = MR_ctfield(1, MR_tempr4, 0);
+	}
+	MR_np_call_localret_ent(__Unify___ml_backend__mlds__mlds_fully_qualified_name_1_0,
+		__Unify___ml_backend__mlds__mlds_field_id_0_0_i7);
+MR_def_label(__Unify___ml_backend__mlds__mlds_field_id_0_0,7)
+	MR_MAYBE_INIT_LOCAL_THREAD_ENGINE_BASE
+	if (!(MR_r1)) {
+		MR_GOTO_LAB(__Unify___ml_backend__mlds__mlds_field_id_0_0_i1);
+	}
+	MR_r1 = MR_sv(1);
+	MR_r2 = MR_sv(2);
+	MR_succip_word = MR_sv(3);
+	MR_decr_sp(3);
+	MR_np_tailcall_ent(__Unify___ml_backend__mlds__mlds_type_0_0);
+MR_def_label(__Unify___ml_backend__mlds__mlds_field_id_0_0,19)
+	MR_MAYBE_INIT_LOCAL_THREAD_ENGINE_BASE
+	MR_r1 = MR_TRUE;
+	MR_proceed();
+MR_def_label(__Unify___ml_backend__mlds__mlds_field_id_0_0,5)
+	MR_MAYBE_INIT_LOCAL_THREAD_ENGINE_BASE
+	if (MR_PTAG_TESTR(MR_sv(2),0)) {
+		MR_GOTO_LAB(__Unify___ml_backend__mlds__mlds_field_id_0_0_i1);
+	}
+	MR_r1 = MR_ctfield(0, MR_sv(1), 0);
+	MR_r2 = MR_ctfield(0, MR_sv(2), 0);
+	MR_succip_word = MR_sv(3);
+	MR_decr_sp(3);
+	MR_np_tailcall_ent(__Unify___ml_backend__mlds__mlds_rval_0_0);
+MR_def_label(__Unify___ml_backend__mlds__mlds_field_id_0_0,1)
+	MR_MAYBE_INIT_LOCAL_THREAD_ENGINE_BASE
+	MR_r1 = MR_FALSE;
+	MR_decr_sp_and_return(3);
+#ifdef MR_maybe_local_thread_engine_base
+	#undef MR_maybe_local_thread_engine_base
+	#define MR_maybe_local_thread_engine_base MR_thread_engine_base
+#endif
+MR_END_MODULE
+
+
+MR_BEGIN_MODULE(ml_backend__mlds_module104)
+	MR_init_entry1(__Compare___ml_backend__mlds__mlds_field_id_0_0);
+	MR_init_label7(__Compare___ml_backend__mlds__mlds_field_id_0_0,3,2,9,7,5,15,45)
+MR_BEGIN_CODE
+
+#ifdef MR_maybe_local_thread_engine_base
+	#undef MR_maybe_local_thread_engine_base
+	#define MR_maybe_local_thread_engine_base MR_local_thread_engine_base
+#endif
+MR_define_entry(mercury____Compare___ml_backend__mlds__mlds_field_id_0_0);
+	MR_MAYBE_INIT_LOCAL_THREAD_ENGINE_BASE
+	if ((MR_r1 == MR_r2)) {
+		MR_GOTO_LAB(__Compare___ml_backend__mlds__mlds_field_id_0_0_i3);
+	}
+	MR_incr_sp(3);
+	MR_sv(3) = (MR_Word) MR_succip;
+	MR_sv(1) = MR_r1;
+	MR_sv(2) = MR_r2;
+	MR_GOTO_LAB(__Compare___ml_backend__mlds__mlds_field_id_0_0_i2);
+MR_def_label(__Compare___ml_backend__mlds__mlds_field_id_0_0,3)
+	MR_MAYBE_INIT_LOCAL_THREAD_ENGINE_BASE
+	MR_r1 = (MR_Integer) 0;
+	MR_proceed();
+MR_def_label(__Compare___ml_backend__mlds__mlds_field_id_0_0,2)
+	MR_MAYBE_INIT_LOCAL_THREAD_ENGINE_BASE
+	if (MR_PTAG_TESTR(MR_sv(1),1)) {
+		MR_GOTO_LAB(__Compare___ml_backend__mlds__mlds_field_id_0_0_i5);
+	}
+	if (MR_PTAG_TESTR(MR_sv(2),1)) {
+		MR_GOTO_LAB(__Compare___ml_backend__mlds__mlds_field_id_0_0_i7);
+	}
+	{
+	MR_Word MR_tempr1, MR_tempr2, MR_tempr3, MR_tempr4, MR_tempr5, MR_tempr6;
+	MR_tempr5 = MR_sv(1);
+	MR_tempr1 = MR_ctfield(1, MR_tempr5, 1);
+	MR_tempr6 = MR_sv(2);
+	MR_tempr2 = MR_ctfield(1, MR_tempr6, 1);
+	MR_tempr3 = MR_tempr5;
+	MR_sv(1) = MR_tempr2;
+	MR_tempr4 = MR_tempr6;
+	MR_sv(2) = MR_tempr1;
+	MR_r1 = (MR_Word) MR_STRING_CTOR_ADDR;
+	MR_r2 = MR_ctfield(1, MR_tempr3, 0);
+	MR_r3 = MR_ctfield(1, MR_tempr4, 0);
+	}
+	MR_np_call_localret_ent(__Compare___ml_backend__mlds__mlds_fully_qualified_name_1_0,
+		__Compare___ml_backend__mlds__mlds_field_id_0_0_i9);
+MR_def_label(__Compare___ml_backend__mlds__mlds_field_id_0_0,9)
+	MR_MAYBE_INIT_LOCAL_THREAD_ENGINE_BASE
+	if (MR_INT_NE(MR_r1,0)) {
+		MR_GOTO_LAB(__Compare___ml_backend__mlds__mlds_field_id_0_0_i45);
+	}
+	MR_r1 = MR_sv(2);
+	MR_r2 = MR_sv(1);
+	MR_succip_word = MR_sv(3);
+	MR_decr_sp(3);
+	MR_np_tailcall_ent(__Compare___ml_backend__mlds__mlds_type_0_0);
+MR_def_label(__Compare___ml_backend__mlds__mlds_field_id_0_0,7)
+	MR_MAYBE_INIT_LOCAL_THREAD_ENGINE_BASE
+	MR_r1 = (MR_Integer) 2;
+	MR_decr_sp_and_return(3);
+MR_def_label(__Compare___ml_backend__mlds__mlds_field_id_0_0,5)
+	MR_MAYBE_INIT_LOCAL_THREAD_ENGINE_BASE
+	if (MR_PTAG_TESTR(MR_sv(2),1)) {
+		MR_GOTO_LAB(__Compare___ml_backend__mlds__mlds_field_id_0_0_i15);
+	}
+	MR_r1 = (MR_Integer) 1;
+	MR_decr_sp_and_return(3);
+MR_def_label(__Compare___ml_backend__mlds__mlds_field_id_0_0,15)
+	MR_MAYBE_INIT_LOCAL_THREAD_ENGINE_BASE
+	MR_r1 = MR_ctfield(0, MR_sv(1), 0);
+	MR_r2 = MR_ctfield(0, MR_sv(2), 0);
+	MR_succip_word = MR_sv(3);
+	MR_decr_sp(3);
+	MR_np_tailcall_ent(__Compare___ml_backend__mlds__mlds_rval_0_0);
+MR_def_label(__Compare___ml_backend__mlds__mlds_field_id_0_0,45)
+	MR_MAYBE_INIT_LOCAL_THREAD_ENGINE_BASE
+	MR_decr_sp_and_return(3);
+#ifdef MR_maybe_local_thread_engine_base
+	#undef MR_maybe_local_thread_engine_base
+	#define MR_maybe_local_thread_engine_base MR_thread_engine_base
+#endif
+MR_END_MODULE
+
+
+MR_BEGIN_MODULE(ml_backend__mlds_module105)
+	MR_init_entry1(__Unify___ml_backend__mlds__mlds_field_name_0_0);
+MR_BEGIN_CODE
+
+#ifdef MR_maybe_local_thread_engine_base
+	#undef MR_maybe_local_thread_engine_base
+	#define MR_maybe_local_thread_engine_base MR_local_thread_engine_base
+#endif
+MR_define_entry(mercury____Unify___ml_backend__mlds__mlds_field_name_0_0);
+	MR_MAYBE_INIT_LOCAL_THREAD_ENGINE_BASE
+	MR_r1 = (strcmp((char *) (MR_Word *) MR_r1, (char *) (MR_Word *) MR_r2) == 0);
+	MR_proceed();
+#ifdef MR_maybe_local_thread_engine_base
+	#undef MR_maybe_local_thread_engine_base
+	#define MR_maybe_local_thread_engine_base MR_thread_engine_base
+#endif
+MR_END_MODULE
+
+
+MR_BEGIN_MODULE(ml_backend__mlds_module106)
+	MR_init_entry1(__Compare___ml_backend__mlds__mlds_field_name_0_0);
+MR_BEGIN_CODE
+
+#ifdef MR_maybe_local_thread_engine_base
+	#undef MR_maybe_local_thread_engine_base
+	#define MR_maybe_local_thread_engine_base MR_local_thread_engine_base
+#endif
+MR_define_entry(mercury____Compare___ml_backend__mlds__mlds_field_name_0_0);
+	MR_MAYBE_INIT_LOCAL_THREAD_ENGINE_BASE
+	MR_np_tailcall_ent(private_builtin__builtin_compare_string_3_0);
+#ifdef MR_maybe_local_thread_engine_base
+	#undef MR_maybe_local_thread_engine_base
+	#define MR_maybe_local_thread_engine_base MR_thread_engine_base
+#endif
+MR_END_MODULE
+
+
+MR_BEGIN_MODULE(ml_backend__mlds_module107)
+	MR_init_entry1(__Unify___ml_backend__mlds__mlds_foreign_code_0_0);
+	MR_init_label5(__Unify___ml_backend__mlds__mlds_foreign_code_0_0,4,6,8,12,1)
+MR_BEGIN_CODE
+
+#ifdef MR_maybe_local_thread_engine_base
+	#undef MR_maybe_local_thread_engine_base
+	#define MR_maybe_local_thread_engine_base MR_local_thread_engine_base
+#endif
+MR_define_entry(mercury____Unify___ml_backend__mlds__mlds_foreign_code_0_0);
+	MR_MAYBE_INIT_LOCAL_THREAD_ENGINE_BASE
+	if ((MR_r1 == MR_r2)) {
+		MR_GOTO_LAB(__Unify___ml_backend__mlds__mlds_foreign_code_0_0_i12);
+	}
+	MR_incr_sp(7);
+	MR_sv(7) = (MR_Word) MR_succip;
+	MR_sv(1) = MR_r1;
+	MR_sv(2) = MR_r2;
+	{
+	MR_Word MR_tempr1, MR_tempr2;
+	MR_tempr1 = MR_sv(1);
+	MR_sv(1) = MR_ctfield(0, MR_tempr1, 1);
+	MR_tempr2 = MR_sv(2);
+	MR_sv(2) = MR_ctfield(0, MR_tempr1, 2);
+	MR_sv(3) = MR_ctfield(0, MR_tempr1, 3);
+	MR_sv(4) = MR_ctfield(0, MR_tempr2, 1);
+	MR_sv(5) = MR_ctfield(0, MR_tempr2, 2);
+	MR_sv(6) = MR_ctfield(0, MR_tempr2, 3);
+	MR_r1 = (MR_Word) MR_CTOR0_ADDR(parse_tree__prog_foreign, foreign_decl_code);
+	MR_r2 = MR_ctfield(0, MR_tempr1, 0);
+	MR_r3 = MR_ctfield(0, MR_tempr2, 0);
+	}
+	MR_np_call_localret_ent(__Unify___list__list_1_0,
+		__Unify___ml_backend__mlds__mlds_foreign_code_0_0_i4);
+MR_def_label(__Unify___ml_backend__mlds__mlds_foreign_code_0_0,4)
+	MR_MAYBE_INIT_LOCAL_THREAD_ENGINE_BASE
+	if (!(MR_r1)) {
+		MR_GOTO_LAB(__Unify___ml_backend__mlds__mlds_foreign_code_0_0_i1);
+	}
+	MR_r1 = (MR_Word) MR_CTOR0_ADDR(parse_tree__prog_data, foreign_import_module_info);
+	MR_r2 = MR_sv(1);
+	MR_r3 = MR_sv(4);
+	MR_np_call_localret_ent(__Unify___list__list_1_0,
+		__Unify___ml_backend__mlds__mlds_foreign_code_0_0_i6);
+MR_def_label(__Unify___ml_backend__mlds__mlds_foreign_code_0_0,6)
+	MR_MAYBE_INIT_LOCAL_THREAD_ENGINE_BASE
+	if (!(MR_r1)) {
+		MR_GOTO_LAB(__Unify___ml_backend__mlds__mlds_foreign_code_0_0_i1);
+	}
+	MR_r1 = (MR_Word) MR_CTOR0_ADDR(parse_tree__prog_foreign, user_foreign_code);
+	MR_r2 = MR_sv(2);
+	MR_r3 = MR_sv(5);
+	MR_np_call_localret_ent(__Unify___list__list_1_0,
+		__Unify___ml_backend__mlds__mlds_foreign_code_0_0_i8);
+MR_def_label(__Unify___ml_backend__mlds__mlds_foreign_code_0_0,8)
+	MR_MAYBE_INIT_LOCAL_THREAD_ENGINE_BASE
+	if (!(MR_r1)) {
+		MR_GOTO_LAB(__Unify___ml_backend__mlds__mlds_foreign_code_0_0_i1);
+	}
+	MR_r1 = (MR_Word) MR_CTOR0_ADDR(ml_backend__mlds, mlds_pragma_export);
+	MR_r2 = MR_sv(3);
+	MR_r3 = MR_sv(6);
+	MR_succip_word = MR_sv(7);
+	MR_decr_sp(7);
+	MR_np_tailcall_ent(__Unify___list__list_1_0);
+MR_def_label(__Unify___ml_backend__mlds__mlds_foreign_code_0_0,12)
+	MR_MAYBE_INIT_LOCAL_THREAD_ENGINE_BASE
+	MR_r1 = MR_TRUE;
+	MR_proceed();
+MR_def_label(__Unify___ml_backend__mlds__mlds_foreign_code_0_0,1)
+	MR_MAYBE_INIT_LOCAL_THREAD_ENGINE_BASE
+	MR_r1 = MR_FALSE;
+	MR_decr_sp_and_return(7);
+#ifdef MR_maybe_local_thread_engine_base
+	#undef MR_maybe_local_thread_engine_base
+	#define MR_maybe_local_thread_engine_base MR_thread_engine_base
+#endif
+MR_END_MODULE
+
+
+MR_BEGIN_MODULE(ml_backend__mlds_module108)
+	MR_init_entry1(__Compare___ml_backend__mlds__mlds_foreign_code_0_0);
+	MR_init_label6(__Compare___ml_backend__mlds__mlds_foreign_code_0_0,3,2,5,9,13,37)
+MR_BEGIN_CODE
+
+#ifdef MR_maybe_local_thread_engine_base
+	#undef MR_maybe_local_thread_engine_base
+	#define MR_maybe_local_thread_engine_base MR_local_thread_engine_base
+#endif
+MR_define_entry(mercury____Compare___ml_backend__mlds__mlds_foreign_code_0_0);
+	MR_MAYBE_INIT_LOCAL_THREAD_ENGINE_BASE
+	if ((MR_r1 == MR_r2)) {
+		MR_GOTO_LAB(__Compare___ml_backend__mlds__mlds_foreign_code_0_0_i3);
+	}
+	MR_incr_sp(7);
+	MR_sv(7) = (MR_Word) MR_succip;
+	MR_sv(1) = MR_r1;
+	MR_sv(2) = MR_r2;
+	MR_GOTO_LAB(__Compare___ml_backend__mlds__mlds_foreign_code_0_0_i2);
+MR_def_label(__Compare___ml_backend__mlds__mlds_foreign_code_0_0,3)
+	MR_MAYBE_INIT_LOCAL_THREAD_ENGINE_BASE
+	MR_r1 = (MR_Integer) 0;
+	MR_proceed();
+MR_def_label(__Compare___ml_backend__mlds__mlds_foreign_code_0_0,2)
+	MR_MAYBE_INIT_LOCAL_THREAD_ENGINE_BASE
+	{
+	MR_Word MR_tempr1, MR_tempr2, MR_tempr3, MR_tempr4, MR_tempr5, MR_tempr6;
+	MR_tempr5 = MR_sv(2);
+	MR_sv(6) = MR_ctfield(0, MR_tempr5, 3);
+	MR_sv(5) = MR_ctfield(0, MR_tempr5, 2);
+	MR_sv(4) = MR_ctfield(0, MR_tempr5, 1);
+	MR_tempr6 = MR_sv(1);
+	MR_sv(3) = MR_ctfield(0, MR_tempr6, 3);
+	MR_tempr1 = MR_ctfield(0, MR_tempr6, 2);
+	MR_tempr2 = MR_ctfield(0, MR_tempr6, 1);
+	MR_tempr3 = MR_tempr6;
+	MR_sv(1) = MR_tempr2;
+	MR_tempr4 = MR_tempr5;
+	MR_sv(2) = MR_tempr1;
+	MR_r1 = (MR_Word) MR_CTOR0_ADDR(parse_tree__prog_foreign, foreign_decl_code);
+	MR_r2 = MR_ctfield(0, MR_tempr3, 0);
+	MR_r3 = MR_ctfield(0, MR_tempr4, 0);
+	}
+	MR_np_call_localret_ent(__Compare___list__list_1_0,
+		__Compare___ml_backend__mlds__mlds_foreign_code_0_0_i5);
+MR_def_label(__Compare___ml_backend__mlds__mlds_foreign_code_0_0,5)
+	MR_MAYBE_INIT_LOCAL_THREAD_ENGINE_BASE
+	if (MR_INT_NE(MR_r1,0)) {
+		MR_GOTO_LAB(__Compare___ml_backend__mlds__mlds_foreign_code_0_0_i37);
+	}
+	MR_r1 = (MR_Word) MR_CTOR0_ADDR(parse_tree__prog_data, foreign_import_module_info);
+	MR_r2 = MR_sv(1);
+	MR_r3 = MR_sv(4);
+	MR_np_call_localret_ent(__Compare___list__list_1_0,
+		__Compare___ml_backend__mlds__mlds_foreign_code_0_0_i9);
+MR_def_label(__Compare___ml_backend__mlds__mlds_foreign_code_0_0,9)
+	MR_MAYBE_INIT_LOCAL_THREAD_ENGINE_BASE
+	if (MR_INT_NE(MR_r1,0)) {
+		MR_GOTO_LAB(__Compare___ml_backend__mlds__mlds_foreign_code_0_0_i37);
+	}
+	MR_r1 = (MR_Word) MR_CTOR0_ADDR(parse_tree__prog_foreign, user_foreign_code);
+	MR_r2 = MR_sv(2);
+	MR_r3 = MR_sv(5);
+	MR_np_call_localret_ent(__Compare___list__list_1_0,
+		__Compare___ml_backend__mlds__mlds_foreign_code_0_0_i13);
+MR_def_label(__Compare___ml_backend__mlds__mlds_foreign_code_0_0,13)
+	MR_MAYBE_INIT_LOCAL_THREAD_ENGINE_BASE
+	if (MR_INT_NE(MR_r1,0)) {
+		MR_GOTO_LAB(__Compare___ml_backend__mlds__mlds_foreign_code_0_0_i37);
+	}
+	MR_r1 = (MR_Word) MR_CTOR0_ADDR(ml_backend__mlds, mlds_pragma_export);
+	MR_r2 = MR_sv(3);
+	MR_r3 = MR_sv(6);
+	MR_succip_word = MR_sv(7);
+	MR_decr_sp(7);
+	MR_np_tailcall_ent(__Compare___list__list_1_0);
+MR_def_label(__Compare___ml_backend__mlds__mlds_foreign_code_0_0,37)
+	MR_MAYBE_INIT_LOCAL_THREAD_ENGINE_BASE
+	MR_decr_sp_and_return(7);
+#ifdef MR_maybe_local_thread_engine_base
+	#undef MR_maybe_local_thread_engine_base
+	#define MR_maybe_local_thread_engine_base MR_thread_engine_base
+#endif
+MR_END_MODULE
+
+MR_decl_entry(builtin__unify_2_0);
+
+MR_BEGIN_MODULE(ml_backend__mlds_module109)
+	MR_init_entry1(__Unify___ml_backend__mlds__mlds_fully_qualified_name_1_0);
+	MR_init_label3(__Unify___ml_backend__mlds__mlds_fully_qualified_name_1_0,4,8,1)
+MR_BEGIN_CODE
+
+#ifdef MR_maybe_local_thread_engine_base
+	#undef MR_maybe_local_thread_engine_base
+	#define MR_maybe_local_thread_engine_base MR_local_thread_engine_base
+#endif
+MR_define_entry(mercury____Unify___ml_backend__mlds__mlds_fully_qualified_name_1_0);
+	MR_MAYBE_INIT_LOCAL_THREAD_ENGINE_BASE
+	if ((MR_r2 == MR_r3)) {
+		MR_GOTO_LAB(__Unify___ml_backend__mlds__mlds_fully_qualified_name_1_0_i8);
+	}
+	MR_incr_sp(6);
+	MR_sv(6) = (MR_Word) MR_succip;
+	MR_sv(1) = MR_r2;
+	MR_sv(2) = MR_r3;
+	MR_sv(5) = MR_r1;
+	{
+	MR_Word MR_tempr1, MR_tempr2;
+	MR_tempr1 = MR_sv(1);
+	MR_sv(1) = MR_ctfield(0, MR_tempr1, 1);
+	MR_tempr2 = MR_sv(2);
+	MR_sv(2) = MR_ctfield(0, MR_tempr1, 2);
+	MR_sv(3) = MR_ctfield(0, MR_tempr2, 1);
+	MR_sv(4) = MR_ctfield(0, MR_tempr2, 2);
+	MR_r1 = MR_ctfield(0, MR_tempr1, 0);
+	MR_r2 = MR_ctfield(0, MR_tempr2, 0);
+	}
+	MR_np_call_localret_ent(__Unify___ml_backend__mlds__mlds_module_name_0_0,
+		__Unify___ml_backend__mlds__mlds_fully_qualified_name_1_0_i4);
+MR_def_label(__Unify___ml_backend__mlds__mlds_fully_qualified_name_1_0,4)
+	MR_MAYBE_INIT_LOCAL_THREAD_ENGINE_BASE
+	if (!(MR_r1)) {
+		MR_GOTO_LAB(__Unify___ml_backend__mlds__mlds_fully_qualified_name_1_0_i1);
+	}
+	if ((MR_sv(1) != MR_sv(3))) {
+		MR_GOTO_LAB(__Unify___ml_backend__mlds__mlds_fully_qualified_name_1_0_i1);
+	}
+	MR_r1 = MR_sv(5);
+	MR_r2 = MR_sv(2);
+	MR_r3 = MR_sv(4);
+	MR_succip_word = MR_sv(6);
+	MR_decr_sp(6);
+	MR_np_tailcall_ent(builtin__unify_2_0);
+MR_def_label(__Unify___ml_backend__mlds__mlds_fully_qualified_name_1_0,8)
+	MR_MAYBE_INIT_LOCAL_THREAD_ENGINE_BASE
+	MR_r1 = MR_TRUE;
+	MR_proceed();
+MR_def_label(__Unify___ml_backend__mlds__mlds_fully_qualified_name_1_0,1)
+	MR_MAYBE_INIT_LOCAL_THREAD_ENGINE_BASE
+	MR_r1 = MR_FALSE;
+	MR_decr_sp_and_return(6);
+#ifdef MR_maybe_local_thread_engine_base
+	#undef MR_maybe_local_thread_engine_base
+	#define MR_maybe_local_thread_engine_base MR_thread_engine_base
+#endif
+MR_END_MODULE
+
+MR_decl_entry(builtin__compare_3_0);
+
+MR_BEGIN_MODULE(ml_backend__mlds_module110)
+	MR_init_entry1(__Compare___ml_backend__mlds__mlds_fully_qualified_name_1_0);
+	MR_init_label5(__Compare___ml_backend__mlds__mlds_fully_qualified_name_1_0,3,2,5,9,29)
+MR_BEGIN_CODE
+
+#ifdef MR_maybe_local_thread_engine_base
+	#undef MR_maybe_local_thread_engine_base
+	#define MR_maybe_local_thread_engine_base MR_local_thread_engine_base
+#endif
+MR_define_entry(mercury____Compare___ml_backend__mlds__mlds_fully_qualified_name_1_0);
+	MR_MAYBE_INIT_LOCAL_THREAD_ENGINE_BASE
+	if ((MR_r2 == MR_r3)) {
+		MR_GOTO_LAB(__Compare___ml_backend__mlds__mlds_fully_qualified_name_1_0_i3);
+	}
+	MR_incr_sp(6);
+	MR_sv(6) = (MR_Word) MR_succip;
+	MR_sv(1) = MR_r2;
+	MR_sv(2) = MR_r3;
+	MR_sv(5) = MR_r1;
+	MR_GOTO_LAB(__Compare___ml_backend__mlds__mlds_fully_qualified_name_1_0_i2);
+MR_def_label(__Compare___ml_backend__mlds__mlds_fully_qualified_name_1_0,3)
+	MR_MAYBE_INIT_LOCAL_THREAD_ENGINE_BASE
+	MR_r1 = (MR_Integer) 0;
+	MR_proceed();
+MR_def_label(__Compare___ml_backend__mlds__mlds_fully_qualified_name_1_0,2)
+	MR_MAYBE_INIT_LOCAL_THREAD_ENGINE_BASE
+	{
+	MR_Word MR_tempr1, MR_tempr2, MR_tempr3, MR_tempr4, MR_tempr5, MR_tempr6;
+	MR_tempr5 = MR_sv(2);
+	MR_sv(4) = MR_ctfield(0, MR_tempr5, 2);
+	MR_sv(3) = MR_ctfield(0, MR_tempr5, 1);
+	MR_tempr6 = MR_sv(1);
+	MR_tempr1 = MR_ctfield(0, MR_tempr6, 2);
+	MR_tempr2 = MR_ctfield(0, MR_tempr6, 1);
+	MR_tempr3 = MR_tempr6;
+	MR_sv(1) = MR_tempr2;
+	MR_tempr4 = MR_tempr5;
+	MR_sv(2) = MR_tempr1;
+	MR_r1 = MR_ctfield(0, MR_tempr3, 0);
+	MR_r2 = MR_ctfield(0, MR_tempr4, 0);
+	}
+	MR_np_call_localret_ent(__Compare___ml_backend__mlds__mlds_module_name_0_0,
+		__Compare___ml_backend__mlds__mlds_fully_qualified_name_1_0_i5);
+MR_def_label(__Compare___ml_backend__mlds__mlds_fully_qualified_name_1_0,5)
+	MR_MAYBE_INIT_LOCAL_THREAD_ENGINE_BASE
+	if (MR_INT_NE(MR_r1,0)) {
+		MR_GOTO_LAB(__Compare___ml_backend__mlds__mlds_fully_qualified_name_1_0_i29);
+	}
+	MR_r1 = MR_sv(1);
+	MR_r2 = MR_sv(3);
+	MR_np_call_localret_ent(private_builtin__builtin_compare_int_3_0,
+		__Compare___ml_backend__mlds__mlds_fully_qualified_name_1_0_i9);
+MR_def_label(__Compare___ml_backend__mlds__mlds_fully_qualified_name_1_0,9)
+	MR_MAYBE_INIT_LOCAL_THREAD_ENGINE_BASE
+	if (MR_INT_NE(MR_r1,0)) {
+		MR_GOTO_LAB(__Compare___ml_backend__mlds__mlds_fully_qualified_name_1_0_i29);
+	}
+	MR_r1 = MR_sv(5);
+	MR_r2 = MR_sv(2);
+	MR_r3 = MR_sv(4);
+	MR_succip_word = MR_sv(6);
+	MR_decr_sp(6);
+	MR_np_tailcall_ent(builtin__compare_3_0);
+MR_def_label(__Compare___ml_backend__mlds__mlds_fully_qualified_name_1_0,29)
+	MR_MAYBE_INIT_LOCAL_THREAD_ENGINE_BASE
+	MR_decr_sp_and_return(6);
+#ifdef MR_maybe_local_thread_engine_base
+	#undef MR_maybe_local_thread_engine_base
+	#define MR_maybe_local_thread_engine_base MR_thread_engine_base
+#endif
+MR_END_MODULE
+
+
+MR_BEGIN_MODULE(ml_backend__mlds_module111)
+	MR_init_entry1(__Unify___ml_backend__mlds__mlds_func_params_0_0);
+	MR_init_label3(__Unify___ml_backend__mlds__mlds_func_params_0_0,4,8,1)
+MR_BEGIN_CODE
+
+#ifdef MR_maybe_local_thread_engine_base
+	#undef MR_maybe_local_thread_engine_base
+	#define MR_maybe_local_thread_engine_base MR_local_thread_engine_base
+#endif
+MR_define_entry(mercury____Unify___ml_backend__mlds__mlds_func_params_0_0);
+	MR_MAYBE_INIT_LOCAL_THREAD_ENGINE_BASE
+	if ((MR_r1 == MR_r2)) {
+		MR_GOTO_LAB(__Unify___ml_backend__mlds__mlds_func_params_0_0_i8);
+	}
+	MR_incr_sp(3);
+	MR_sv(3) = (MR_Word) MR_succip;
+	MR_sv(1) = MR_r1;
+	MR_sv(2) = MR_r2;
+	{
+	MR_Word MR_tempr1, MR_tempr2;
+	MR_tempr1 = MR_sv(1);
+	MR_sv(1) = MR_ctfield(0, MR_tempr1, 1);
+	MR_tempr2 = MR_sv(2);
+	MR_sv(2) = MR_ctfield(0, MR_tempr2, 1);
+	MR_r1 = (MR_Word) MR_CTOR0_ADDR(ml_backend__mlds, mlds_argument);
+	MR_r2 = MR_ctfield(0, MR_tempr1, 0);
+	MR_r3 = MR_ctfield(0, MR_tempr2, 0);
+	}
+	MR_np_call_localret_ent(__Unify___list__list_1_0,
+		__Unify___ml_backend__mlds__mlds_func_params_0_0_i4);
+MR_def_label(__Unify___ml_backend__mlds__mlds_func_params_0_0,4)
+	MR_MAYBE_INIT_LOCAL_THREAD_ENGINE_BASE
+	if (!(MR_r1)) {
+		MR_GOTO_LAB(__Unify___ml_backend__mlds__mlds_func_params_0_0_i1);
+	}
+	MR_r1 = (MR_Word) MR_CTOR0_ADDR(ml_backend__mlds, mlds_type);
+	MR_r2 = MR_sv(1);
+	MR_r3 = MR_sv(2);
+	MR_succip_word = MR_sv(3);
+	MR_decr_sp(3);
+	MR_np_tailcall_ent(__Unify___list__list_1_0);
+MR_def_label(__Unify___ml_backend__mlds__mlds_func_params_0_0,8)
+	MR_MAYBE_INIT_LOCAL_THREAD_ENGINE_BASE
+	MR_r1 = MR_TRUE;
+	MR_proceed();
+MR_def_label(__Unify___ml_backend__mlds__mlds_func_params_0_0,1)
+	MR_MAYBE_INIT_LOCAL_THREAD_ENGINE_BASE
+	MR_r1 = MR_FALSE;
+	MR_decr_sp_and_return(3);
+#ifdef MR_maybe_local_thread_engine_base
+	#undef MR_maybe_local_thread_engine_base
+	#define MR_maybe_local_thread_engine_base MR_thread_engine_base
+#endif
+MR_END_MODULE
+
+
+MR_BEGIN_MODULE(ml_backend__mlds_module112)
+	MR_init_entry1(__Compare___ml_backend__mlds__mlds_func_params_0_0);
+	MR_init_label4(__Compare___ml_backend__mlds__mlds_func_params_0_0,3,2,5,21)
+MR_BEGIN_CODE
+
+#ifdef MR_maybe_local_thread_engine_base
+	#undef MR_maybe_local_thread_engine_base
+	#define MR_maybe_local_thread_engine_base MR_local_thread_engine_base
+#endif
+MR_define_entry(mercury____Compare___ml_backend__mlds__mlds_func_params_0_0);
+	MR_MAYBE_INIT_LOCAL_THREAD_ENGINE_BASE
+	if ((MR_r1 == MR_r2)) {
+		MR_GOTO_LAB(__Compare___ml_backend__mlds__mlds_func_params_0_0_i3);
+	}
+	MR_incr_sp(3);
+	MR_sv(3) = (MR_Word) MR_succip;
+	MR_sv(1) = MR_r1;
+	MR_sv(2) = MR_r2;
+	MR_GOTO_LAB(__Compare___ml_backend__mlds__mlds_func_params_0_0_i2);
+MR_def_label(__Compare___ml_backend__mlds__mlds_func_params_0_0,3)
+	MR_MAYBE_INIT_LOCAL_THREAD_ENGINE_BASE
+	MR_r1 = (MR_Integer) 0;
+	MR_proceed();
+MR_def_label(__Compare___ml_backend__mlds__mlds_func_params_0_0,2)
+	MR_MAYBE_INIT_LOCAL_THREAD_ENGINE_BASE
+	{
+	MR_Word MR_tempr1, MR_tempr2, MR_tempr3, MR_tempr4, MR_tempr5, MR_tempr6;
+	MR_tempr5 = MR_sv(2);
+	MR_tempr1 = MR_ctfield(0, MR_tempr5, 1);
+	MR_tempr6 = MR_sv(1);
+	MR_tempr2 = MR_ctfield(0, MR_tempr6, 1);
+	MR_tempr3 = MR_tempr6;
+	MR_sv(1) = MR_tempr2;
+	MR_tempr4 = MR_tempr5;
+	MR_sv(2) = MR_tempr1;
+	MR_r1 = (MR_Word) MR_CTOR0_ADDR(ml_backend__mlds, mlds_argument);
+	MR_r2 = MR_ctfield(0, MR_tempr3, 0);
+	MR_r3 = MR_ctfield(0, MR_tempr4, 0);
+	}
+	MR_np_call_localret_ent(__Compare___list__list_1_0,
+		__Compare___ml_backend__mlds__mlds_func_params_0_0_i5);
+MR_def_label(__Compare___ml_backend__mlds__mlds_func_params_0_0,5)
+	MR_MAYBE_INIT_LOCAL_THREAD_ENGINE_BASE
+	if (MR_INT_NE(MR_r1,0)) {
+		MR_GOTO_LAB(__Compare___ml_backend__mlds__mlds_func_params_0_0_i21);
+	}
+	MR_r1 = (MR_Word) MR_CTOR0_ADDR(ml_backend__mlds, mlds_type);
+	MR_r2 = MR_sv(1);
+	MR_r3 = MR_sv(2);
+	MR_succip_word = MR_sv(3);
+	MR_decr_sp(3);
+	MR_np_tailcall_ent(__Compare___list__list_1_0);
+MR_def_label(__Compare___ml_backend__mlds__mlds_func_params_0_0,21)
+	MR_MAYBE_INIT_LOCAL_THREAD_ENGINE_BASE
+	MR_decr_sp_and_return(3);
+#ifdef MR_maybe_local_thread_engine_base
+	#undef MR_maybe_local_thread_engine_base
+	#define MR_maybe_local_thread_engine_base MR_thread_engine_base
+#endif
+MR_END_MODULE
+
+
+MR_BEGIN_MODULE(ml_backend__mlds_module113)
+	MR_init_entry1(__Unify___ml_backend__mlds__mlds_func_sequence_num_0_0);
+MR_BEGIN_CODE
+
+#ifdef MR_maybe_local_thread_engine_base
+	#undef MR_maybe_local_thread_engine_base
+	#define MR_maybe_local_thread_engine_base MR_local_thread_engine_base
+#endif
+MR_define_entry(mercury____Unify___ml_backend__mlds__mlds_func_sequence_num_0_0);
+	MR_MAYBE_INIT_LOCAL_THREAD_ENGINE_BASE
+	MR_r1 = (MR_r1 == MR_r2);
+	MR_proceed();
+#ifdef MR_maybe_local_thread_engine_base
+	#undef MR_maybe_local_thread_engine_base
+	#define MR_maybe_local_thread_engine_base MR_thread_engine_base
+#endif
+MR_END_MODULE
+
+
+MR_BEGIN_MODULE(ml_backend__mlds_module114)
+	MR_init_entry1(__Compare___ml_backend__mlds__mlds_func_sequence_num_0_0);
+MR_BEGIN_CODE
+
+#ifdef MR_maybe_local_thread_engine_base
+	#undef MR_maybe_local_thread_engine_base
+	#define MR_maybe_local_thread_engine_base MR_local_thread_engine_base
+#endif
+MR_define_entry(mercury____Compare___ml_backend__mlds__mlds_func_sequence_num_0_0);
+	MR_MAYBE_INIT_LOCAL_THREAD_ENGINE_BASE
+	MR_np_tailcall_ent(private_builtin__builtin_compare_int_3_0);
+#ifdef MR_maybe_local_thread_engine_base
+	#undef MR_maybe_local_thread_engine_base
+	#define MR_maybe_local_thread_engine_base MR_thread_engine_base
+#endif
+MR_END_MODULE
+
+
+MR_BEGIN_MODULE(ml_backend__mlds_module115)
+	MR_init_entry1(__Unify___ml_backend__mlds__mlds_func_signature_0_0);
+	MR_init_label3(__Unify___ml_backend__mlds__mlds_func_signature_0_0,4,8,1)
+MR_BEGIN_CODE
+
+#ifdef MR_maybe_local_thread_engine_base
+	#undef MR_maybe_local_thread_engine_base
+	#define MR_maybe_local_thread_engine_base MR_local_thread_engine_base
+#endif
+MR_define_entry(mercury____Unify___ml_backend__mlds__mlds_func_signature_0_0);
+	MR_MAYBE_INIT_LOCAL_THREAD_ENGINE_BASE
+	if ((MR_r1 == MR_r2)) {
+		MR_GOTO_LAB(__Unify___ml_backend__mlds__mlds_func_signature_0_0_i8);
+	}
+	MR_incr_sp(4);
+	MR_sv(4) = (MR_Word) MR_succip;
+	MR_sv(1) = MR_r1;
+	MR_sv(2) = MR_r2;
+	{
+	MR_Word MR_tempr1, MR_tempr2;
+	MR_tempr1 = MR_sv(1);
+	MR_sv(1) = MR_ctfield(0, MR_tempr1, 1);
+	MR_tempr2 = MR_sv(2);
+	MR_sv(2) = MR_ctfield(0, MR_tempr2, 1);
+	MR_sv(3) = (MR_Word) MR_CTOR0_ADDR(ml_backend__mlds, mlds_type);
+	MR_r1 = MR_sv(3);
+	MR_r2 = MR_ctfield(0, MR_tempr1, 0);
+	MR_r3 = MR_ctfield(0, MR_tempr2, 0);
+	}
+	MR_np_call_localret_ent(__Unify___list__list_1_0,
+		__Unify___ml_backend__mlds__mlds_func_signature_0_0_i4);
+MR_def_label(__Unify___ml_backend__mlds__mlds_func_signature_0_0,4)
+	MR_MAYBE_INIT_LOCAL_THREAD_ENGINE_BASE
+	if (!(MR_r1)) {
+		MR_GOTO_LAB(__Unify___ml_backend__mlds__mlds_func_signature_0_0_i1);
+	}
+	MR_r1 = MR_sv(3);
+	MR_r2 = MR_sv(1);
+	MR_r3 = MR_sv(2);
+	MR_succip_word = MR_sv(4);
+	MR_decr_sp(4);
+	MR_np_tailcall_ent(__Unify___list__list_1_0);
+MR_def_label(__Unify___ml_backend__mlds__mlds_func_signature_0_0,8)
+	MR_MAYBE_INIT_LOCAL_THREAD_ENGINE_BASE
+	MR_r1 = MR_TRUE;
+	MR_proceed();
+MR_def_label(__Unify___ml_backend__mlds__mlds_func_signature_0_0,1)
+	MR_MAYBE_INIT_LOCAL_THREAD_ENGINE_BASE
+	MR_r1 = MR_FALSE;
+	MR_decr_sp_and_return(4);
+#ifdef MR_maybe_local_thread_engine_base
+	#undef MR_maybe_local_thread_engine_base
+	#define MR_maybe_local_thread_engine_base MR_thread_engine_base
+#endif
+MR_END_MODULE
+
+
+MR_BEGIN_MODULE(ml_backend__mlds_module116)
+	MR_init_entry1(__Compare___ml_backend__mlds__mlds_func_signature_0_0);
+	MR_init_label4(__Compare___ml_backend__mlds__mlds_func_signature_0_0,3,2,5,21)
+MR_BEGIN_CODE
+
+#ifdef MR_maybe_local_thread_engine_base
+	#undef MR_maybe_local_thread_engine_base
+	#define MR_maybe_local_thread_engine_base MR_local_thread_engine_base
+#endif
+MR_define_entry(mercury____Compare___ml_backend__mlds__mlds_func_signature_0_0);
+	MR_MAYBE_INIT_LOCAL_THREAD_ENGINE_BASE
+	if ((MR_r1 == MR_r2)) {
+		MR_GOTO_LAB(__Compare___ml_backend__mlds__mlds_func_signature_0_0_i3);
+	}
+	MR_incr_sp(3);
+	MR_sv(3) = (MR_Word) MR_succip;
+	MR_sv(1) = MR_r1;
+	MR_sv(2) = MR_r2;
+	MR_GOTO_LAB(__Compare___ml_backend__mlds__mlds_func_signature_0_0_i2);
+MR_def_label(__Compare___ml_backend__mlds__mlds_func_signature_0_0,3)
+	MR_MAYBE_INIT_LOCAL_THREAD_ENGINE_BASE
+	MR_r1 = (MR_Integer) 0;
+	MR_proceed();
+MR_def_label(__Compare___ml_backend__mlds__mlds_func_signature_0_0,2)
+	MR_MAYBE_INIT_LOCAL_THREAD_ENGINE_BASE
+	{
+	MR_Word MR_tempr1, MR_tempr2, MR_tempr3, MR_tempr4, MR_tempr5, MR_tempr6;
+	MR_tempr5 = MR_sv(2);
+	MR_tempr1 = MR_ctfield(0, MR_tempr5, 1);
+	MR_tempr6 = MR_sv(1);
+	MR_tempr2 = MR_ctfield(0, MR_tempr6, 1);
+	MR_tempr3 = MR_tempr6;
+	MR_sv(1) = MR_tempr2;
+	MR_tempr4 = MR_tempr5;
+	MR_sv(2) = MR_tempr1;
+	MR_r1 = (MR_Word) MR_CTOR0_ADDR(ml_backend__mlds, mlds_type);
+	MR_r2 = MR_ctfield(0, MR_tempr3, 0);
+	MR_r3 = MR_ctfield(0, MR_tempr4, 0);
+	}
+	MR_np_call_localret_ent(__Compare___list__list_1_0,
+		__Compare___ml_backend__mlds__mlds_func_signature_0_0_i5);
+MR_def_label(__Compare___ml_backend__mlds__mlds_func_signature_0_0,5)
+	MR_MAYBE_INIT_LOCAL_THREAD_ENGINE_BASE
+	if (MR_INT_NE(MR_r1,0)) {
+		MR_GOTO_LAB(__Compare___ml_backend__mlds__mlds_func_signature_0_0_i21);
+	}
+	MR_r1 = (MR_Word) MR_CTOR0_ADDR(ml_backend__mlds, mlds_type);
+	MR_r2 = MR_sv(1);
+	MR_r3 = MR_sv(2);
+	MR_succip_word = MR_sv(3);
+	MR_decr_sp(3);
+	MR_np_tailcall_ent(__Compare___list__list_1_0);
+MR_def_label(__Compare___ml_backend__mlds__mlds_func_signature_0_0,21)
+	MR_MAYBE_INIT_LOCAL_THREAD_ENGINE_BASE
+	MR_decr_sp_and_return(3);
+#ifdef MR_maybe_local_thread_engine_base
+	#undef MR_maybe_local_thread_engine_base
+	#define MR_maybe_local_thread_engine_base MR_thread_engine_base
+#endif
+MR_END_MODULE
+
+
+MR_BEGIN_MODULE(ml_backend__mlds_module117)
+	MR_init_entry1(__Unify___ml_backend__mlds__mlds_function_body_0_0);
+	MR_init_label3(__Unify___ml_backend__mlds__mlds_function_body_0_0,12,5,1)
+MR_BEGIN_CODE
+
+#ifdef MR_maybe_local_thread_engine_base
+	#undef MR_maybe_local_thread_engine_base
+	#define MR_maybe_local_thread_engine_base MR_local_thread_engine_base
+#endif
+MR_define_entry(mercury____Unify___ml_backend__mlds__mlds_function_body_0_0);
+	MR_MAYBE_INIT_LOCAL_THREAD_ENGINE_BASE
+	if ((MR_r1 == MR_r2)) {
+		MR_GOTO_LAB(__Unify___ml_backend__mlds__mlds_function_body_0_0_i12);
+	}
+	MR_incr_sp(3);
+	MR_sv(3) = (MR_Word) MR_succip;
+	{
+	MR_Word MR_tempr1;
+	MR_tempr1 = MR_r1;
+	MR_sv(1) = MR_tempr1;
+	MR_sv(2) = MR_r2;
+	if (MR_LTAGS_TESTR(MR_tempr1,0,0)) {
+		MR_GOTO_LAB(__Unify___ml_backend__mlds__mlds_function_body_0_0_i5);
+	}
+	MR_r1 = (MR_sv(2) == MR_tempr1);
+	MR_decr_sp(3);
+	MR_proceed();
+	}
+MR_def_label(__Unify___ml_backend__mlds__mlds_function_body_0_0,12)
+	MR_MAYBE_INIT_LOCAL_THREAD_ENGINE_BASE
+	MR_r1 = MR_TRUE;
+	MR_proceed();
+MR_def_label(__Unify___ml_backend__mlds__mlds_function_body_0_0,5)
+	MR_MAYBE_INIT_LOCAL_THREAD_ENGINE_BASE
+	if (MR_LTAGS_TEST(MR_sv(2),0,0)) {
+		MR_GOTO_LAB(__Unify___ml_backend__mlds__mlds_function_body_0_0_i1);
+	}
+	MR_r1 = MR_ctfield(1, MR_sv(1), 0);
+	MR_r2 = MR_ctfield(1, MR_sv(2), 0);
+	MR_succip_word = MR_sv(3);
+	MR_decr_sp(3);
+	MR_np_tailcall_ent(__Unify___ml_backend__mlds__statement_0_0);
+MR_def_label(__Unify___ml_backend__mlds__mlds_function_body_0_0,1)
+	MR_MAYBE_INIT_LOCAL_THREAD_ENGINE_BASE
+	MR_r1 = MR_FALSE;
+	MR_decr_sp_and_return(3);
+#ifdef MR_maybe_local_thread_engine_base
+	#undef MR_maybe_local_thread_engine_base
+	#define MR_maybe_local_thread_engine_base MR_thread_engine_base
+#endif
+MR_END_MODULE
+
+
+MR_BEGIN_MODULE(ml_backend__mlds_module118)
+	MR_init_entry1(__Compare___ml_backend__mlds__mlds_function_body_0_0);
+	MR_init_label4(__Compare___ml_backend__mlds__mlds_function_body_0_0,18,7,5,9)
+MR_BEGIN_CODE
+
+#ifdef MR_maybe_local_thread_engine_base
+	#undef MR_maybe_local_thread_engine_base
+	#define MR_maybe_local_thread_engine_base MR_local_thread_engine_base
+#endif
+MR_define_entry(mercury____Compare___ml_backend__mlds__mlds_function_body_0_0);
+	MR_MAYBE_INIT_LOCAL_THREAD_ENGINE_BASE
+	MR_incr_sp(3);
+	MR_sv(3) = (MR_Word) MR_succip;
+	if ((MR_r1 == MR_r2)) {
+		MR_GOTO_LAB(__Compare___ml_backend__mlds__mlds_function_body_0_0_i18);
+	}
+	MR_sv(1) = MR_r1;
+	MR_sv(2) = MR_r2;
+	if (MR_LTAGS_TESTR(MR_sv(1),0,0)) {
+		MR_GOTO_LAB(__Compare___ml_backend__mlds__mlds_function_body_0_0_i5);
+	}
+	if (MR_LTAGS_TESTR(MR_sv(2),0,0)) {
+		MR_GOTO_LAB(__Compare___ml_backend__mlds__mlds_function_body_0_0_i7);
+	}
+MR_def_label(__Compare___ml_backend__mlds__mlds_function_body_0_0,18)
+	MR_MAYBE_INIT_LOCAL_THREAD_ENGINE_BASE
+	MR_r1 = (MR_Integer) 0;
+	MR_decr_sp_and_return(3);
+MR_def_label(__Compare___ml_backend__mlds__mlds_function_body_0_0,7)
+	MR_MAYBE_INIT_LOCAL_THREAD_ENGINE_BASE
+	MR_r1 = (MR_Integer) 2;
+	MR_decr_sp_and_return(3);
+MR_def_label(__Compare___ml_backend__mlds__mlds_function_body_0_0,5)
+	MR_MAYBE_INIT_LOCAL_THREAD_ENGINE_BASE
+	if (MR_LTAGS_TESTR(MR_sv(2),0,0)) {
+		MR_GOTO_LAB(__Compare___ml_backend__mlds__mlds_function_body_0_0_i9);
+	}
+	MR_r1 = (MR_Integer) 1;
+	MR_decr_sp_and_return(3);
+MR_def_label(__Compare___ml_backend__mlds__mlds_function_body_0_0,9)
+	MR_MAYBE_INIT_LOCAL_THREAD_ENGINE_BASE
+	MR_r1 = MR_ctfield(1, MR_sv(1), 0);
+	MR_r2 = MR_ctfield(1, MR_sv(2), 0);
+	MR_succip_word = MR_sv(3);
+	MR_decr_sp(3);
+	MR_np_tailcall_ent(__Compare___ml_backend__mlds__statement_0_0);
+#ifdef MR_maybe_local_thread_engine_base
+	#undef MR_maybe_local_thread_engine_base
+	#define MR_maybe_local_thread_engine_base MR_thread_engine_base
+#endif
+MR_END_MODULE
+
+
+MR_BEGIN_MODULE(ml_backend__mlds_module119)
+	MR_init_entry1(__Unify___ml_backend__mlds__mlds_gc_statement_0_0);
+	MR_init_label4(__Unify___ml_backend__mlds__mlds_gc_statement_0_0,5,10,16,1)
+MR_BEGIN_CODE
+
+#ifdef MR_maybe_local_thread_engine_base
+	#undef MR_maybe_local_thread_engine_base
+	#define MR_maybe_local_thread_engine_base MR_local_thread_engine_base
+#endif
+MR_define_entry(mercury____Unify___ml_backend__mlds__mlds_gc_statement_0_0);
+	MR_MAYBE_INIT_LOCAL_THREAD_ENGINE_BASE
+	if ((MR_r1 == MR_r2)) {
+		MR_GOTO_LAB(__Unify___ml_backend__mlds__mlds_gc_statement_0_0_i16);
+	}
+	MR_incr_sp(3);
+	MR_sv(3) = (MR_Word) MR_succip;
+	{
+	MR_Word MR_tempr1, MR_tempr2;
+	MR_tempr1 = MR_r1;
+	MR_sv(1) = MR_tempr1;
+	MR_sv(2) = MR_r2;
+	MR_tempr2 = MR_tag(MR_tempr1);
+	if ((MR_tempr2 == MR_mktag((MR_Integer) 1))) {
+		MR_GOTO_LAB(__Unify___ml_backend__mlds__mlds_gc_statement_0_0_i10);
+	}
+	if ((MR_tempr2 == MR_mktag((MR_Integer) 2))) {
+		MR_GOTO_LAB(__Unify___ml_backend__mlds__mlds_gc_statement_0_0_i5);
+	}
+	MR_r1 = (MR_sv(2) == MR_tempr1);
+	MR_decr_sp(3);
+	MR_proceed();
+	}
+MR_def_label(__Unify___ml_backend__mlds__mlds_gc_statement_0_0,5)
+	MR_MAYBE_INIT_LOCAL_THREAD_ENGINE_BASE
+	if (MR_PTAG_TESTR(MR_sv(2),2)) {
+		MR_GOTO_LAB(__Unify___ml_backend__mlds__mlds_gc_statement_0_0_i1);
+	}
+	MR_r1 = MR_ctfield(2, MR_sv(1), 0);
+	MR_r2 = MR_ctfield(2, MR_sv(2), 0);
+	MR_succip_word = MR_sv(3);
+	MR_decr_sp(3);
+	MR_np_tailcall_ent(__Unify___ml_backend__mlds__statement_0_0);
+MR_def_label(__Unify___ml_backend__mlds__mlds_gc_statement_0_0,10)
+	MR_MAYBE_INIT_LOCAL_THREAD_ENGINE_BASE
+	if (MR_PTAG_TESTR(MR_sv(2),1)) {
+		MR_GOTO_LAB(__Unify___ml_backend__mlds__mlds_gc_statement_0_0_i1);
+	}
+	MR_r1 = MR_ctfield(1, MR_sv(1), 0);
+	MR_r2 = MR_ctfield(1, MR_sv(2), 0);
+	MR_succip_word = MR_sv(3);
+	MR_decr_sp(3);
+	MR_np_tailcall_ent(__Unify___ml_backend__mlds__statement_0_0);
+MR_def_label(__Unify___ml_backend__mlds__mlds_gc_statement_0_0,16)
+	MR_MAYBE_INIT_LOCAL_THREAD_ENGINE_BASE
+	MR_r1 = MR_TRUE;
+	MR_proceed();
+MR_def_label(__Unify___ml_backend__mlds__mlds_gc_statement_0_0,1)
+	MR_MAYBE_INIT_LOCAL_THREAD_ENGINE_BASE
+	MR_r1 = MR_FALSE;
+	MR_decr_sp_and_return(3);
+#ifdef MR_maybe_local_thread_engine_base
+	#undef MR_maybe_local_thread_engine_base
+	#define MR_maybe_local_thread_engine_base MR_thread_engine_base
+#endif
+MR_END_MODULE
+
+
+MR_BEGIN_MODULE(ml_backend__mlds_module120)
+	MR_init_entry1(__Compare___ml_backend__mlds__mlds_gc_statement_0_0);
+	MR_init_label5(__Compare___ml_backend__mlds__mlds_gc_statement_0_0,44,5,10,20,24)
+MR_BEGIN_CODE
+
+#ifdef MR_maybe_local_thread_engine_base
+	#undef MR_maybe_local_thread_engine_base
+	#define MR_maybe_local_thread_engine_base MR_local_thread_engine_base
+#endif
+MR_define_entry(mercury____Compare___ml_backend__mlds__mlds_gc_statement_0_0);
+	MR_MAYBE_INIT_LOCAL_THREAD_ENGINE_BASE
+	MR_incr_sp(3);
+	MR_sv(3) = (MR_Word) MR_succip;
+	if ((MR_r1 == MR_r2)) {
+		MR_GOTO_LAB(__Compare___ml_backend__mlds__mlds_gc_statement_0_0_i44);
+	}
+	MR_sv(1) = MR_r1;
+	MR_sv(2) = MR_r2;
+	{
+	MR_Word MR_tempr1;
+	MR_tempr1 = MR_tag(MR_sv(1));
+	if ((MR_tempr1 == MR_mktag((MR_Integer) 1))) {
+		MR_GOTO_LAB(__Compare___ml_backend__mlds__mlds_gc_statement_0_0_i20);
+	}
+	if ((MR_tempr1 == MR_mktag((MR_Integer) 2))) {
+		MR_GOTO_LAB(__Compare___ml_backend__mlds__mlds_gc_statement_0_0_i5);
+	}
+	MR_tempr1 = MR_tag(MR_sv(2));
+	if ((MR_tempr1 == MR_mktag((MR_Integer) 1))) {
+		MR_GOTO_LAB(__Compare___ml_backend__mlds__mlds_gc_statement_0_0_i10);
+	}
+	if ((MR_tempr1 == MR_mktag((MR_Integer) 2))) {
+		MR_GOTO_LAB(__Compare___ml_backend__mlds__mlds_gc_statement_0_0_i10);
+	}
+	}
+MR_def_label(__Compare___ml_backend__mlds__mlds_gc_statement_0_0,44)
+	MR_MAYBE_INIT_LOCAL_THREAD_ENGINE_BASE
+	MR_r1 = (MR_Integer) 0;
+	MR_decr_sp_and_return(3);
+MR_def_label(__Compare___ml_backend__mlds__mlds_gc_statement_0_0,5)
+	MR_MAYBE_INIT_LOCAL_THREAD_ENGINE_BASE
+	{
+	MR_Word MR_tempr1;
+	MR_tempr1 = MR_tag(MR_sv(2));
+	if ((MR_tempr1 == MR_mktag((MR_Integer) 1))) {
+		MR_GOTO_LAB(__Compare___ml_backend__mlds__mlds_gc_statement_0_0_i10);
+	}
+	if ((MR_tempr1 == MR_mktag((MR_Integer) 2))) {
+		MR_GOTO_LAB(__Compare___ml_backend__mlds__mlds_gc_statement_0_0_i24);
+	}
+	MR_r1 = (MR_Integer) 1;
+	MR_decr_sp_and_return(3);
+	}
+MR_def_label(__Compare___ml_backend__mlds__mlds_gc_statement_0_0,10)
+	MR_MAYBE_INIT_LOCAL_THREAD_ENGINE_BASE
+	MR_r1 = (MR_Integer) 2;
+	MR_decr_sp_and_return(3);
+MR_def_label(__Compare___ml_backend__mlds__mlds_gc_statement_0_0,20)
+	MR_MAYBE_INIT_LOCAL_THREAD_ENGINE_BASE
+	{
+	MR_Word MR_tempr1;
+	MR_tempr1 = MR_tag(MR_sv(2));
+	if ((MR_tempr1 == MR_mktag((MR_Integer) 1))) {
+		MR_GOTO_LAB(__Compare___ml_backend__mlds__mlds_gc_statement_0_0_i24);
+	}
+	MR_r1 = (MR_Integer) 1;
+	MR_decr_sp_and_return(3);
+	}
+MR_def_label(__Compare___ml_backend__mlds__mlds_gc_statement_0_0,24)
+	MR_MAYBE_INIT_LOCAL_THREAD_ENGINE_BASE
+	MR_r1 = MR_const_mask_field(MR_sv(1), 0);
+	MR_r2 = MR_const_mask_field(MR_sv(2), 0);
+	MR_succip_word = MR_sv(3);
+	MR_decr_sp(3);
+	MR_np_tailcall_ent(__Compare___ml_backend__mlds__statement_0_0);
+#ifdef MR_maybe_local_thread_engine_base
+	#undef MR_maybe_local_thread_engine_base
+	#define MR_maybe_local_thread_engine_base MR_thread_engine_base
+#endif
+MR_END_MODULE
+
+
+MR_BEGIN_MODULE(ml_backend__mlds_module121)
+	MR_init_entry1(__Unify___ml_backend__mlds__mlds_goto_target_0_0);
+	MR_init_label3(__Unify___ml_backend__mlds__mlds_goto_target_0_0,7,11,1)
+MR_BEGIN_CODE
+
+#ifdef MR_maybe_local_thread_engine_base
+	#undef MR_maybe_local_thread_engine_base
+	#define MR_maybe_local_thread_engine_base MR_local_thread_engine_base
+#endif
+MR_define_entry(mercury____Unify___ml_backend__mlds__mlds_goto_target_0_0);
+	MR_MAYBE_INIT_LOCAL_THREAD_ENGINE_BASE
+	MR_incr_sp(2);
+	if ((MR_r1 == MR_r2)) {
+		MR_GOTO_LAB(__Unify___ml_backend__mlds__mlds_goto_target_0_0_i11);
+	}
+	{
+	MR_Word MR_tempr1;
+	MR_tempr1 = MR_r1;
+	MR_sv(1) = MR_tempr1;
+	MR_sv(2) = MR_r2;
+	MR_r1 = MR_tag(MR_tempr1);
+	if ((MR_r1 != MR_mktag((MR_Integer) 0))) {
+		MR_GOTO_LAB(__Unify___ml_backend__mlds__mlds_goto_target_0_0_i7);
+	}
+	MR_r1 = (MR_sv(2) == MR_tempr1);
+	MR_decr_sp(2);
+	MR_proceed();
+	}
+MR_def_label(__Unify___ml_backend__mlds__mlds_goto_target_0_0,7)
+	MR_MAYBE_INIT_LOCAL_THREAD_ENGINE_BASE
+	if (MR_PTAG_TESTR(MR_sv(2),1)) {
+		MR_GOTO_LAB(__Unify___ml_backend__mlds__mlds_goto_target_0_0_i1);
+	}
+	MR_r1 = MR_ctfield(1, MR_sv(1), 0);
+	{
+	MR_Word MR_tempr1;
+	MR_tempr1 = MR_ctfield(1, MR_sv(2), 0);
+	MR_r1 = (strcmp((char *) (MR_Word *) MR_r1, (char *) (MR_Word *) MR_tempr1) == 0);
+	MR_decr_sp(2);
+	MR_proceed();
+	}
+MR_def_label(__Unify___ml_backend__mlds__mlds_goto_target_0_0,11)
+	MR_MAYBE_INIT_LOCAL_THREAD_ENGINE_BASE
+	MR_decr_sp(2);
+	MR_r1 = MR_TRUE;
+	MR_proceed();
+MR_def_label(__Unify___ml_backend__mlds__mlds_goto_target_0_0,1)
+	MR_MAYBE_INIT_LOCAL_THREAD_ENGINE_BASE
+	MR_decr_sp(2);
+	MR_r1 = MR_FALSE;
+	MR_proceed();
+#ifdef MR_maybe_local_thread_engine_base
+	#undef MR_maybe_local_thread_engine_base
+	#define MR_maybe_local_thread_engine_base MR_thread_engine_base
+#endif
+MR_END_MODULE
+
+
+MR_BEGIN_MODULE(ml_backend__mlds_module122)
+	MR_init_entry1(__Compare___ml_backend__mlds__mlds_goto_target_0_0);
+	MR_init_label6(__Compare___ml_backend__mlds__mlds_goto_target_0_0,34,12,44,19,38,23)
+MR_BEGIN_CODE
+
+#ifdef MR_maybe_local_thread_engine_base
+	#undef MR_maybe_local_thread_engine_base
+	#define MR_maybe_local_thread_engine_base MR_local_thread_engine_base
+#endif
+MR_define_entry(mercury____Compare___ml_backend__mlds__mlds_goto_target_0_0);
+	MR_MAYBE_INIT_LOCAL_THREAD_ENGINE_BASE
+	MR_incr_sp(3);
+	MR_sv(3) = (MR_Word) MR_succip;
+	if ((MR_r1 == MR_r2)) {
+		MR_GOTO_LAB(__Compare___ml_backend__mlds__mlds_goto_target_0_0_i34);
+	}
+	{
+	MR_Word MR_tempr1, MR_tempr2, MR_tempr3;
+	MR_tempr1 = MR_r1;
+	MR_sv(1) = MR_tempr1;
+	MR_tempr2 = MR_r2;
+	MR_sv(2) = MR_tempr2;
+	MR_tempr3 = MR_tag(MR_tempr1);
+	if ((MR_tempr3 != MR_mktag((MR_Integer) 0))) {
+		MR_GOTO_LAB(__Compare___ml_backend__mlds__mlds_goto_target_0_0_i19);
+	}
+	if (MR_INT_NE(MR_unmkbody(MR_tempr1),0)) {
+		MR_GOTO_LAB(__Compare___ml_backend__mlds__mlds_goto_target_0_0_i12);
+	}
+	MR_tempr3 = MR_tag(MR_tempr2);
+	if ((MR_tempr3 != MR_mktag((MR_Integer) 0))) {
+		MR_GOTO_LAB(__Compare___ml_backend__mlds__mlds_goto_target_0_0_i44);
+	}
+	if (MR_INT_NE(MR_unmkbody(MR_tempr2),0)) {
+		MR_GOTO_LAB(__Compare___ml_backend__mlds__mlds_goto_target_0_0_i38);
+	}
+	}
+MR_def_label(__Compare___ml_backend__mlds__mlds_goto_target_0_0,34)
+	MR_MAYBE_INIT_LOCAL_THREAD_ENGINE_BASE
+	MR_r1 = (MR_Integer) 0;
+	MR_decr_sp_and_return(3);
+MR_def_label(__Compare___ml_backend__mlds__mlds_goto_target_0_0,12)
+	MR_MAYBE_INIT_LOCAL_THREAD_ENGINE_BASE
+	{
+	MR_Word MR_tempr1, MR_tempr2;
+	MR_tempr2 = MR_sv(2);
+	MR_tempr1 = MR_tag(MR_tempr2);
+	if ((MR_tempr1 != MR_mktag((MR_Integer) 0))) {
+		MR_GOTO_LAB(__Compare___ml_backend__mlds__mlds_goto_target_0_0_i44);
+	}
+	if (MR_INT_NE(MR_unmkbody(MR_tempr2),0)) {
+		MR_GOTO_LAB(__Compare___ml_backend__mlds__mlds_goto_target_0_0_i34);
+	}
+	}
+MR_def_label(__Compare___ml_backend__mlds__mlds_goto_target_0_0,44)
+	MR_MAYBE_INIT_LOCAL_THREAD_ENGINE_BASE
+	MR_r1 = (MR_Integer) 2;
+	MR_decr_sp_and_return(3);
+MR_def_label(__Compare___ml_backend__mlds__mlds_goto_target_0_0,19)
+	MR_MAYBE_INIT_LOCAL_THREAD_ENGINE_BASE
+	{
+	MR_Word MR_tempr1;
+	MR_tempr1 = MR_tag(MR_sv(2));
+	if ((MR_tempr1 != MR_mktag((MR_Integer) 0))) {
+		MR_GOTO_LAB(__Compare___ml_backend__mlds__mlds_goto_target_0_0_i23);
+	}
+	}
+MR_def_label(__Compare___ml_backend__mlds__mlds_goto_target_0_0,38)
+	MR_MAYBE_INIT_LOCAL_THREAD_ENGINE_BASE
+	MR_r1 = (MR_Integer) 1;
+	MR_decr_sp_and_return(3);
+MR_def_label(__Compare___ml_backend__mlds__mlds_goto_target_0_0,23)
+	MR_MAYBE_INIT_LOCAL_THREAD_ENGINE_BASE
+	MR_r1 = MR_ctfield(1, MR_sv(1), 0);
+	MR_r2 = MR_ctfield(1, MR_sv(2), 0);
+	MR_succip_word = MR_sv(3);
+	MR_decr_sp(3);
+	MR_np_tailcall_ent(private_builtin__builtin_compare_string_3_0);
+#ifdef MR_maybe_local_thread_engine_base
+	#undef MR_maybe_local_thread_engine_base
+	#define MR_maybe_local_thread_engine_base MR_thread_engine_base
+#endif
+MR_END_MODULE
+
+
+MR_BEGIN_MODULE(ml_backend__mlds_module123)
+	MR_init_entry1(__Unify___ml_backend__mlds__mlds_import_0_0);
+	MR_init_label3(__Unify___ml_backend__mlds__mlds_import_0_0,20,5,1)
+MR_BEGIN_CODE
+
+#ifdef MR_maybe_local_thread_engine_base
+	#undef MR_maybe_local_thread_engine_base
+	#define MR_maybe_local_thread_engine_base MR_local_thread_engine_base
+#endif
+MR_define_entry(mercury____Unify___ml_backend__mlds__mlds_import_0_0);
+	MR_MAYBE_INIT_LOCAL_THREAD_ENGINE_BASE
+	MR_incr_sp(3);
+	MR_sv(3) = (MR_Word) MR_succip;
+	if ((MR_r1 == MR_r2)) {
+		MR_GOTO_LAB(__Unify___ml_backend__mlds__mlds_import_0_0_i20);
+	}
+	{
+	MR_Word MR_tempr1, MR_tempr2, MR_tempr3, MR_tempr4;
+	MR_tempr1 = MR_r1;
+	MR_sv(1) = MR_tempr1;
+	MR_tempr2 = MR_r2;
+	MR_sv(2) = MR_tempr2;
+	if (MR_PTAG_TESTR(MR_tempr1,1)) {
+		MR_GOTO_LAB(__Unify___ml_backend__mlds__mlds_import_0_0_i5);
+	}
+	if (MR_PTAG_TESTR(MR_tempr2,1)) {
+		MR_GOTO_LAB(__Unify___ml_backend__mlds__mlds_import_0_0_i1);
+	}
+	MR_tempr3 = MR_ctfield(1, MR_tempr2, 0);
+	MR_r1 = MR_tempr3;
+	MR_tempr4 = MR_ctfield(1, MR_tempr1, 0);
+	MR_r2 = MR_tempr4;
+	if ((MR_tempr4 == MR_tempr3)) {
+		MR_GOTO_LAB(__Unify___ml_backend__mlds__mlds_import_0_0_i20);
+	}
+	MR_sv(1) = MR_tempr4;
+	MR_sv(2) = MR_tempr3;
+	MR_r1 = MR_sv(1);
+	MR_r2 = MR_sv(2);
+	MR_decr_sp(3);
+	MR_np_tailcall_ent(__Unify___ml_backend__mlds__mlds_module_name_0_0);
+	}
+MR_def_label(__Unify___ml_backend__mlds__mlds_import_0_0,20)
+	MR_MAYBE_INIT_LOCAL_THREAD_ENGINE_BASE
+	MR_succip_word = MR_sv(3);
+	MR_decr_sp(3);
+	MR_r1 = MR_TRUE;
+	MR_proceed();
+MR_def_label(__Unify___ml_backend__mlds__mlds_import_0_0,5)
+	MR_MAYBE_INIT_LOCAL_THREAD_ENGINE_BASE
+	if (MR_PTAG_TESTR(MR_sv(2),0)) {
+		MR_GOTO_LAB(__Unify___ml_backend__mlds__mlds_import_0_0_i1);
+	}
+	{
+	MR_Word MR_tempr1, MR_tempr2, MR_tempr3, MR_tempr4;
+	MR_tempr3 = MR_sv(1);
+	MR_tempr1 = MR_ctfield(0, MR_tempr3, 0);
+	MR_tempr4 = MR_sv(2);
+	MR_tempr2 = MR_ctfield(0, MR_tempr4, 0);
+	if ((MR_tempr1 != MR_tempr2)) {
+		MR_GOTO_LAB(__Unify___ml_backend__mlds__mlds_import_0_0_i1);
+	}
+	MR_r1 = MR_ctfield(0, MR_tempr3, 1);
+	MR_r2 = MR_ctfield(0, MR_tempr4, 1);
+	MR_succip_word = MR_sv(3);
+	MR_decr_sp(3);
+	MR_np_tailcall_ent(__Unify___ml_backend__mlds__mlds_module_name_0_0);
+	}
+MR_def_label(__Unify___ml_backend__mlds__mlds_import_0_0,1)
+	MR_MAYBE_INIT_LOCAL_THREAD_ENGINE_BASE
+	MR_succip_word = MR_sv(3);
+	MR_decr_sp(3);
+	MR_r1 = MR_FALSE;
+	MR_proceed();
+#ifdef MR_maybe_local_thread_engine_base
+	#undef MR_maybe_local_thread_engine_base
+	#define MR_maybe_local_thread_engine_base MR_thread_engine_base
+#endif
+MR_END_MODULE
+
+
+MR_BEGIN_MODULE(ml_backend__mlds_module124)
+	MR_init_entry1(__Compare___ml_backend__mlds__mlds_import_0_0);
+	MR_init_label7(__Compare___ml_backend__mlds__mlds_import_0_0,3,2,7,5,10,12,45)
+MR_BEGIN_CODE
+
+#ifdef MR_maybe_local_thread_engine_base
+	#undef MR_maybe_local_thread_engine_base
+	#define MR_maybe_local_thread_engine_base MR_local_thread_engine_base
+#endif
+MR_define_entry(mercury____Compare___ml_backend__mlds__mlds_import_0_0);
+	MR_MAYBE_INIT_LOCAL_THREAD_ENGINE_BASE
+	if ((MR_r1 == MR_r2)) {
+		MR_GOTO_LAB(__Compare___ml_backend__mlds__mlds_import_0_0_i3);
+	}
+	MR_incr_sp(3);
+	MR_sv(3) = (MR_Word) MR_succip;
+	MR_sv(1) = MR_r1;
+	MR_sv(2) = MR_r2;
+	MR_GOTO_LAB(__Compare___ml_backend__mlds__mlds_import_0_0_i2);
+MR_def_label(__Compare___ml_backend__mlds__mlds_import_0_0,3)
+	MR_MAYBE_INIT_LOCAL_THREAD_ENGINE_BASE
+	MR_r1 = (MR_Integer) 0;
+	MR_proceed();
+MR_def_label(__Compare___ml_backend__mlds__mlds_import_0_0,2)
+	MR_MAYBE_INIT_LOCAL_THREAD_ENGINE_BASE
+	if (MR_PTAG_TESTR(MR_sv(1),1)) {
+		MR_GOTO_LAB(__Compare___ml_backend__mlds__mlds_import_0_0_i5);
+	}
+	if (MR_PTAG_TESTR(MR_sv(2),1)) {
+		MR_GOTO_LAB(__Compare___ml_backend__mlds__mlds_import_0_0_i7);
+	}
+	MR_r1 = MR_ctfield(1, MR_sv(1), 0);
+	MR_r2 = MR_ctfield(1, MR_sv(2), 0);
+	MR_succip_word = MR_sv(3);
+	MR_decr_sp(3);
+	MR_np_tailcall_ent(__Compare___ml_backend__mlds__foreign_import_name_0_0);
+MR_def_label(__Compare___ml_backend__mlds__mlds_import_0_0,7)
+	MR_MAYBE_INIT_LOCAL_THREAD_ENGINE_BASE
+	MR_r1 = (MR_Integer) 2;
+	MR_decr_sp_and_return(3);
+MR_def_label(__Compare___ml_backend__mlds__mlds_import_0_0,5)
+	MR_MAYBE_INIT_LOCAL_THREAD_ENGINE_BASE
+	if (MR_PTAG_TESTR(MR_sv(2),1)) {
+		MR_GOTO_LAB(__Compare___ml_backend__mlds__mlds_import_0_0_i10);
+	}
+	MR_r1 = (MR_Integer) 1;
+	MR_decr_sp_and_return(3);
+MR_def_label(__Compare___ml_backend__mlds__mlds_import_0_0,10)
+	MR_MAYBE_INIT_LOCAL_THREAD_ENGINE_BASE
+	{
+	MR_Word MR_tempr1, MR_tempr2, MR_tempr3, MR_tempr4, MR_tempr5, MR_tempr6;
+	MR_tempr5 = MR_sv(1);
+	MR_tempr1 = MR_ctfield(0, MR_tempr5, 1);
+	MR_tempr6 = MR_sv(2);
+	MR_tempr2 = MR_ctfield(0, MR_tempr6, 1);
+	MR_tempr3 = MR_tempr5;
+	MR_sv(1) = MR_tempr2;
+	MR_tempr4 = MR_tempr6;
+	MR_sv(2) = MR_tempr1;
+	MR_r1 = MR_ctfield(0, MR_tempr3, 0);
+	MR_r2 = MR_ctfield(0, MR_tempr4, 0);
+	}
+	MR_np_call_localret_ent(private_builtin__builtin_compare_int_3_0,
+		__Compare___ml_backend__mlds__mlds_import_0_0_i12);
+MR_def_label(__Compare___ml_backend__mlds__mlds_import_0_0,12)
+	MR_MAYBE_INIT_LOCAL_THREAD_ENGINE_BASE
+	if (MR_INT_NE(MR_r1,0)) {
+		MR_GOTO_LAB(__Compare___ml_backend__mlds__mlds_import_0_0_i45);
+	}
+	MR_r1 = MR_sv(2);
+	MR_r2 = MR_sv(1);
+	MR_succip_word = MR_sv(3);
+	MR_decr_sp(3);
+	MR_np_tailcall_ent(__Compare___ml_backend__mlds__mlds_module_name_0_0);
+MR_def_label(__Compare___ml_backend__mlds__mlds_import_0_0,45)
+	MR_MAYBE_INIT_LOCAL_THREAD_ENGINE_BASE
+	MR_decr_sp_and_return(3);
+#ifdef MR_maybe_local_thread_engine_base
+	#undef MR_maybe_local_thread_engine_base
+	#define MR_maybe_local_thread_engine_base MR_thread_engine_base
+#endif
+MR_END_MODULE
+
+
+MR_BEGIN_MODULE(ml_backend__mlds_module125)
+	MR_init_entry1(__Unify___ml_backend__mlds__mlds_imports_0_0);
+MR_BEGIN_CODE
+
+#ifdef MR_maybe_local_thread_engine_base
+	#undef MR_maybe_local_thread_engine_base
+	#define MR_maybe_local_thread_engine_base MR_local_thread_engine_base
+#endif
+MR_define_entry(mercury____Unify___ml_backend__mlds__mlds_imports_0_0);
+	MR_MAYBE_INIT_LOCAL_THREAD_ENGINE_BASE
+	{
+	MR_Word MR_tempr1, MR_tempr2;
+	MR_tempr1 = MR_r1;
+	MR_r1 = (MR_Word) MR_CTOR0_ADDR(ml_backend__mlds, mlds_import);
+	MR_tempr2 = MR_r2;
+	MR_r2 = MR_tempr1;
+	MR_r3 = MR_tempr2;
+	MR_np_tailcall_ent(__Unify___list__list_1_0);
+	}
+#ifdef MR_maybe_local_thread_engine_base
+	#undef MR_maybe_local_thread_engine_base
+	#define MR_maybe_local_thread_engine_base MR_thread_engine_base
+#endif
+MR_END_MODULE
+
+
+MR_BEGIN_MODULE(ml_backend__mlds_module126)
+	MR_init_entry1(__Compare___ml_backend__mlds__mlds_imports_0_0);
+MR_BEGIN_CODE
+
+#ifdef MR_maybe_local_thread_engine_base
+	#undef MR_maybe_local_thread_engine_base
+	#define MR_maybe_local_thread_engine_base MR_local_thread_engine_base
+#endif
+MR_define_entry(mercury____Compare___ml_backend__mlds__mlds_imports_0_0);
+	MR_MAYBE_INIT_LOCAL_THREAD_ENGINE_BASE
+	{
+	MR_Word MR_tempr1, MR_tempr2;
+	MR_tempr1 = MR_r1;
+	MR_r1 = (MR_Word) MR_CTOR0_ADDR(ml_backend__mlds, mlds_import);
+	MR_tempr2 = MR_r2;
+	MR_r2 = MR_tempr1;
+	MR_r3 = MR_tempr2;
+	MR_np_tailcall_ent(__Compare___list__list_1_0);
+	}
+#ifdef MR_maybe_local_thread_engine_base
+	#undef MR_maybe_local_thread_engine_base
+	#define MR_maybe_local_thread_engine_base MR_thread_engine_base
+#endif
+MR_END_MODULE
+
+
+MR_BEGIN_MODULE(ml_backend__mlds_module127)
+	MR_init_entry1(__Unify___ml_backend__mlds__mlds_initializer_0_0);
+	MR_init_label7(__Unify___ml_backend__mlds__mlds_initializer_0_0,19,9,13,15,5,24,1)
+MR_BEGIN_CODE
+
+#ifdef MR_maybe_local_thread_engine_base
+	#undef MR_maybe_local_thread_engine_base
+	#define MR_maybe_local_thread_engine_base MR_local_thread_engine_base
+#endif
+MR_define_entry(mercury____Unify___ml_backend__mlds__mlds_initializer_0_0);
+	MR_MAYBE_INIT_LOCAL_THREAD_ENGINE_BASE
+	if ((MR_r1 == MR_r2)) {
+		MR_GOTO_LAB(__Unify___ml_backend__mlds__mlds_initializer_0_0_i24);
+	}
+	MR_incr_sp(3);
+	MR_sv(3) = (MR_Word) MR_succip;
+	MR_sv(1) = MR_r1;
+	MR_sv(2) = MR_r2;
+	MR_COMPUTED_GOTO((MR_Unsigned) MR_tag(MR_sv(1)),
+		MR_LABEL_AP(__Unify___ml_backend__mlds__mlds_initializer_0_0_i19) MR_AND
+		MR_LABEL_AP(__Unify___ml_backend__mlds__mlds_initializer_0_0_i9) MR_AND
+		MR_LABEL_AP(__Unify___ml_backend__mlds__mlds_initializer_0_0_i13) MR_AND
+		MR_LABEL_AP(__Unify___ml_backend__mlds__mlds_initializer_0_0_i5));
+MR_def_label(__Unify___ml_backend__mlds__mlds_initializer_0_0,19)
+	MR_MAYBE_INIT_LOCAL_THREAD_ENGINE_BASE
+	MR_r1 = (MR_sv(2) == MR_sv(1));
+	MR_decr_sp_and_return(3);
+MR_def_label(__Unify___ml_backend__mlds__mlds_initializer_0_0,9)
+	MR_MAYBE_INIT_LOCAL_THREAD_ENGINE_BASE
+	if (MR_PTAG_TESTR(MR_sv(2),1)) {
+		MR_GOTO_LAB(__Unify___ml_backend__mlds__mlds_initializer_0_0_i1);
+	}
+	MR_r1 = MR_ctfield(1, MR_sv(1), 0);
+	MR_r2 = MR_ctfield(1, MR_sv(2), 0);
+	MR_succip_word = MR_sv(3);
+	MR_decr_sp(3);
+	MR_np_tailcall_ent(__Unify___ml_backend__mlds__mlds_rval_0_0);
+MR_def_label(__Unify___ml_backend__mlds__mlds_initializer_0_0,13)
+	MR_MAYBE_INIT_LOCAL_THREAD_ENGINE_BASE
+	if (MR_PTAG_TESTR(MR_sv(2),2)) {
+		MR_GOTO_LAB(__Unify___ml_backend__mlds__mlds_initializer_0_0_i1);
+	}
+	{
+	MR_Word MR_tempr1, MR_tempr2;
+	MR_tempr1 = MR_sv(1);
+	MR_sv(1) = MR_ctfield(2, MR_tempr1, 1);
+	MR_tempr2 = MR_sv(2);
+	MR_sv(2) = MR_ctfield(2, MR_tempr2, 1);
+	MR_r1 = MR_ctfield(2, MR_tempr1, 0);
+	MR_r2 = MR_ctfield(2, MR_tempr2, 0);
+	}
+	MR_np_call_localret_ent(__Unify___ml_backend__mlds__mlds_type_0_0,
+		__Unify___ml_backend__mlds__mlds_initializer_0_0_i15);
+MR_def_label(__Unify___ml_backend__mlds__mlds_initializer_0_0,15)
+	MR_MAYBE_INIT_LOCAL_THREAD_ENGINE_BASE
+	if (!(MR_r1)) {
+		MR_GOTO_LAB(__Unify___ml_backend__mlds__mlds_initializer_0_0_i1);
+	}
+	MR_r1 = (MR_Word) MR_CTOR0_ADDR(ml_backend__mlds, mlds_initializer);
+	MR_r2 = MR_sv(1);
+	MR_r3 = MR_sv(2);
+	MR_succip_word = MR_sv(3);
+	MR_decr_sp(3);
+	MR_np_tailcall_ent(__Unify___list__list_1_0);
+MR_def_label(__Unify___ml_backend__mlds__mlds_initializer_0_0,5)
+	MR_MAYBE_INIT_LOCAL_THREAD_ENGINE_BASE
+	if (MR_PTAG_TESTR(MR_sv(2),3)) {
+		MR_GOTO_LAB(__Unify___ml_backend__mlds__mlds_initializer_0_0_i1);
+	}
+	MR_r1 = (MR_Word) MR_CTOR0_ADDR(ml_backend__mlds, mlds_initializer);
+	MR_r2 = MR_ctfield(3, MR_sv(1), 0);
+	MR_r3 = MR_ctfield(3, MR_sv(2), 0);
+	MR_succip_word = MR_sv(3);
+	MR_decr_sp(3);
+	MR_np_tailcall_ent(__Unify___list__list_1_0);
+MR_def_label(__Unify___ml_backend__mlds__mlds_initializer_0_0,24)
+	MR_MAYBE_INIT_LOCAL_THREAD_ENGINE_BASE
+	MR_r1 = MR_TRUE;
+	MR_proceed();
+MR_def_label(__Unify___ml_backend__mlds__mlds_initializer_0_0,1)
+	MR_MAYBE_INIT_LOCAL_THREAD_ENGINE_BASE
+	MR_r1 = MR_FALSE;
+	MR_decr_sp_and_return(3);
+#ifdef MR_maybe_local_thread_engine_base
+	#undef MR_maybe_local_thread_engine_base
+	#define MR_maybe_local_thread_engine_base MR_thread_engine_base
+#endif
+MR_END_MODULE
+
+
+MR_BEGIN_MODULE(ml_backend__mlds_module128)
+	MR_init_entry1(__Compare___ml_backend__mlds__mlds_initializer_0_0);
+	MR_init_label8(__Compare___ml_backend__mlds__mlds_initializer_0_0,43,48,16,27,31,33,5,11)
+	MR_init_label3(__Compare___ml_backend__mlds__mlds_initializer_0_0,10,7,57)
+MR_BEGIN_CODE
+
+#ifdef MR_maybe_local_thread_engine_base
+	#undef MR_maybe_local_thread_engine_base
+	#define MR_maybe_local_thread_engine_base MR_local_thread_engine_base
+#endif
+MR_define_entry(mercury____Compare___ml_backend__mlds__mlds_initializer_0_0);
+	MR_MAYBE_INIT_LOCAL_THREAD_ENGINE_BASE
+	MR_incr_sp(3);
+	MR_sv(3) = (MR_Word) MR_succip;
+	if ((MR_r1 == MR_r2)) {
+		MR_GOTO_LAB(__Compare___ml_backend__mlds__mlds_initializer_0_0_i48);
+	}
+	MR_sv(1) = MR_r1;
+	MR_sv(2) = MR_r2;
+	MR_COMPUTED_GOTO((MR_Unsigned) MR_tag(MR_sv(1)),
+		MR_LABEL_AP(__Compare___ml_backend__mlds__mlds_initializer_0_0_i43) MR_AND
+		MR_LABEL_AP(__Compare___ml_backend__mlds__mlds_initializer_0_0_i16) MR_AND
+		MR_LABEL_AP(__Compare___ml_backend__mlds__mlds_initializer_0_0_i27) MR_AND
+		MR_LABEL_AP(__Compare___ml_backend__mlds__mlds_initializer_0_0_i5));
+MR_def_label(__Compare___ml_backend__mlds__mlds_initializer_0_0,43)
+	MR_MAYBE_INIT_LOCAL_THREAD_ENGINE_BASE
+	if (MR_INT_NE(MR_tag(MR_sv(2)),0)) {
+		MR_GOTO_LAB(__Compare___ml_backend__mlds__mlds_initializer_0_0_i10);
+	}
+MR_def_label(__Compare___ml_backend__mlds__mlds_initializer_0_0,48)
+	MR_MAYBE_INIT_LOCAL_THREAD_ENGINE_BASE
+	MR_r1 = (MR_Integer) 0;
+	MR_decr_sp_and_return(3);
+MR_def_label(__Compare___ml_backend__mlds__mlds_initializer_0_0,16)
+	MR_MAYBE_INIT_LOCAL_THREAD_ENGINE_BASE
+	if (MR_INT_NE(MR_tag(MR_sv(2)),1)) {
+		MR_GOTO_LAB(__Compare___ml_backend__mlds__mlds_initializer_0_0_i11);
+	}
+	MR_r1 = MR_ctfield(1, MR_sv(1), 0);
+	MR_r2 = MR_ctfield(1, MR_sv(2), 0);
+	MR_succip_word = MR_sv(3);
+	MR_decr_sp(3);
+	MR_np_tailcall_ent(__Compare___ml_backend__mlds__mlds_rval_0_0);
+MR_def_label(__Compare___ml_backend__mlds__mlds_initializer_0_0,27)
+	MR_MAYBE_INIT_LOCAL_THREAD_ENGINE_BASE
+	MR_COMPUTED_GOTO((MR_Unsigned) MR_tag(MR_sv(2)),
+		MR_LABEL_AP(__Compare___ml_backend__mlds__mlds_initializer_0_0_i11) MR_AND
+		MR_LABEL_AP(__Compare___ml_backend__mlds__mlds_initializer_0_0_i10) MR_AND
+		MR_LABEL_AP(__Compare___ml_backend__mlds__mlds_initializer_0_0_i31) MR_AND
+		MR_LABEL_AP(__Compare___ml_backend__mlds__mlds_initializer_0_0_i11));
+MR_def_label(__Compare___ml_backend__mlds__mlds_initializer_0_0,31)
+	MR_MAYBE_INIT_LOCAL_THREAD_ENGINE_BASE
+	{
+	MR_Word MR_tempr1, MR_tempr2, MR_tempr3, MR_tempr4, MR_tempr5, MR_tempr6;
+	MR_tempr5 = MR_sv(1);
+	MR_tempr1 = MR_ctfield(2, MR_tempr5, 1);
+	MR_tempr6 = MR_sv(2);
+	MR_tempr2 = MR_ctfield(2, MR_tempr6, 1);
+	MR_tempr3 = MR_tempr5;
+	MR_sv(1) = MR_tempr2;
+	MR_tempr4 = MR_tempr6;
+	MR_sv(2) = MR_tempr1;
+	MR_r1 = MR_ctfield(2, MR_tempr3, 0);
+	MR_r2 = MR_ctfield(2, MR_tempr4, 0);
+	}
+	MR_np_call_localret_ent(__Compare___ml_backend__mlds__mlds_type_0_0,
+		__Compare___ml_backend__mlds__mlds_initializer_0_0_i33);
+MR_def_label(__Compare___ml_backend__mlds__mlds_initializer_0_0,33)
+	MR_MAYBE_INIT_LOCAL_THREAD_ENGINE_BASE
+	if (MR_INT_NE(MR_r1,0)) {
+		MR_GOTO_LAB(__Compare___ml_backend__mlds__mlds_initializer_0_0_i57);
+	}
+	MR_r1 = (MR_Word) MR_CTOR0_ADDR(ml_backend__mlds, mlds_initializer);
+	MR_r2 = MR_sv(2);
+	MR_r3 = MR_sv(1);
+	MR_succip_word = MR_sv(3);
+	MR_decr_sp(3);
+	MR_np_tailcall_ent(__Compare___list__list_1_0);
+MR_def_label(__Compare___ml_backend__mlds__mlds_initializer_0_0,5)
+	MR_MAYBE_INIT_LOCAL_THREAD_ENGINE_BASE
+	MR_COMPUTED_GOTO((MR_Unsigned) MR_tag(MR_sv(2)),
+		MR_LABEL_AP(__Compare___ml_backend__mlds__mlds_initializer_0_0_i11) MR_AND
+		MR_LABEL_AP(__Compare___ml_backend__mlds__mlds_initializer_0_0_i10) MR_AND
+		MR_LABEL_AP(__Compare___ml_backend__mlds__mlds_initializer_0_0_i10) MR_AND
+		MR_LABEL_AP(__Compare___ml_backend__mlds__mlds_initializer_0_0_i7));
+MR_def_label(__Compare___ml_backend__mlds__mlds_initializer_0_0,11)
+	MR_MAYBE_INIT_LOCAL_THREAD_ENGINE_BASE
+	MR_r1 = (MR_Integer) 1;
+	MR_decr_sp_and_return(3);
+MR_def_label(__Compare___ml_backend__mlds__mlds_initializer_0_0,10)
+	MR_MAYBE_INIT_LOCAL_THREAD_ENGINE_BASE
+	MR_r1 = (MR_Integer) 2;
+	MR_decr_sp_and_return(3);
+MR_def_label(__Compare___ml_backend__mlds__mlds_initializer_0_0,7)
+	MR_MAYBE_INIT_LOCAL_THREAD_ENGINE_BASE
+	MR_r1 = (MR_Word) MR_CTOR0_ADDR(ml_backend__mlds, mlds_initializer);
+	MR_r2 = MR_ctfield(3, MR_sv(1), 0);
+	MR_r3 = MR_ctfield(3, MR_sv(2), 0);
+	MR_succip_word = MR_sv(3);
+	MR_decr_sp(3);
+	MR_np_tailcall_ent(__Compare___list__list_1_0);
+MR_def_label(__Compare___ml_backend__mlds__mlds_initializer_0_0,57)
+	MR_MAYBE_INIT_LOCAL_THREAD_ENGINE_BASE
+	MR_decr_sp_and_return(3);
+#ifdef MR_maybe_local_thread_engine_base
+	#undef MR_maybe_local_thread_engine_base
+	#define MR_maybe_local_thread_engine_base MR_thread_engine_base
+#endif
+MR_END_MODULE
+
+
+MR_BEGIN_MODULE(ml_backend__mlds_module129)
+	MR_init_entry1(__Unify___ml_backend__mlds__mlds_interface_id_0_0);
+MR_BEGIN_CODE
+
+#ifdef MR_maybe_local_thread_engine_base
+	#undef MR_maybe_local_thread_engine_base
+	#define MR_maybe_local_thread_engine_base MR_local_thread_engine_base
+#endif
+MR_define_entry(mercury____Unify___ml_backend__mlds__mlds_interface_id_0_0);
+	MR_MAYBE_INIT_LOCAL_THREAD_ENGINE_BASE
+	MR_np_tailcall_ent(__Unify___ml_backend__mlds__mlds_type_0_0);
+#ifdef MR_maybe_local_thread_engine_base
+	#undef MR_maybe_local_thread_engine_base
+	#define MR_maybe_local_thread_engine_base MR_thread_engine_base
+#endif
+MR_END_MODULE
+
+
+MR_BEGIN_MODULE(ml_backend__mlds_module130)
+	MR_init_entry1(__Compare___ml_backend__mlds__mlds_interface_id_0_0);
+MR_BEGIN_CODE
+
+#ifdef MR_maybe_local_thread_engine_base
+	#undef MR_maybe_local_thread_engine_base
+	#define MR_maybe_local_thread_engine_base MR_local_thread_engine_base
+#endif
+MR_define_entry(mercury____Compare___ml_backend__mlds__mlds_interface_id_0_0);
+	MR_MAYBE_INIT_LOCAL_THREAD_ENGINE_BASE
+	MR_np_tailcall_ent(__Compare___ml_backend__mlds__mlds_type_0_0);
+#ifdef MR_maybe_local_thread_engine_base
+	#undef MR_maybe_local_thread_engine_base
+	#define MR_maybe_local_thread_engine_base MR_thread_engine_base
+#endif
+MR_END_MODULE
+
+
+MR_BEGIN_MODULE(ml_backend__mlds_module131)
+	MR_init_entry1(__Unify___ml_backend__mlds__mlds_label_0_0);
+MR_BEGIN_CODE
+
+#ifdef MR_maybe_local_thread_engine_base
+	#undef MR_maybe_local_thread_engine_base
+	#define MR_maybe_local_thread_engine_base MR_local_thread_engine_base
+#endif
+MR_define_entry(mercury____Unify___ml_backend__mlds__mlds_label_0_0);
+	MR_MAYBE_INIT_LOCAL_THREAD_ENGINE_BASE
+	MR_r1 = (strcmp((char *) (MR_Word *) MR_r1, (char *) (MR_Word *) MR_r2) == 0);
+	MR_proceed();
+#ifdef MR_maybe_local_thread_engine_base
+	#undef MR_maybe_local_thread_engine_base
+	#define MR_maybe_local_thread_engine_base MR_thread_engine_base
+#endif
+MR_END_MODULE
+
+
+MR_BEGIN_MODULE(ml_backend__mlds_module132)
+	MR_init_entry1(__Compare___ml_backend__mlds__mlds_label_0_0);
+MR_BEGIN_CODE
+
+#ifdef MR_maybe_local_thread_engine_base
+	#undef MR_maybe_local_thread_engine_base
+	#define MR_maybe_local_thread_engine_base MR_local_thread_engine_base
+#endif
+MR_define_entry(mercury____Compare___ml_backend__mlds__mlds_label_0_0);
+	MR_MAYBE_INIT_LOCAL_THREAD_ENGINE_BASE
+	MR_np_tailcall_ent(private_builtin__builtin_compare_string_3_0);
+#ifdef MR_maybe_local_thread_engine_base
+	#undef MR_maybe_local_thread_engine_base
+	#define MR_maybe_local_thread_engine_base MR_thread_engine_base
+#endif
+MR_END_MODULE
+
+
+MR_BEGIN_MODULE(ml_backend__mlds_module133)
+	MR_init_entry1(__Unify___ml_backend__mlds__mlds_lval_0_0);
+	MR_init_label8(__Unify___ml_backend__mlds__mlds_lval_0_0,5,7,9,11,13,22,24,17)
+	MR_init_label4(__Unify___ml_backend__mlds__mlds_lval_0_0,28,30,38,1)
+MR_BEGIN_CODE
+
+#ifdef MR_maybe_local_thread_engine_base
+	#undef MR_maybe_local_thread_engine_base
+	#define MR_maybe_local_thread_engine_base MR_local_thread_engine_base
+#endif
+MR_define_entry(mercury____Unify___ml_backend__mlds__mlds_lval_0_0);
+	MR_MAYBE_INIT_LOCAL_THREAD_ENGINE_BASE
+	MR_incr_sp(9);
+	MR_sv(9) = (MR_Word) MR_succip;
+	if ((MR_r1 == MR_r2)) {
+		MR_GOTO_LAB(__Unify___ml_backend__mlds__mlds_lval_0_0_i38);
+	}
+	MR_sv(1) = MR_r1;
+	MR_sv(2) = MR_r2;
+	MR_COMPUTED_GOTO((MR_Unsigned) MR_tag(MR_sv(1)),
+		MR_LABEL_AP(__Unify___ml_backend__mlds__mlds_lval_0_0_i5) MR_AND
+		MR_LABEL_AP(__Unify___ml_backend__mlds__mlds_lval_0_0_i22) MR_AND
+		MR_LABEL_AP(__Unify___ml_backend__mlds__mlds_lval_0_0_i17) MR_AND
+		MR_LABEL_AP(__Unify___ml_backend__mlds__mlds_lval_0_0_i28));
+MR_def_label(__Unify___ml_backend__mlds__mlds_lval_0_0,5)
+	MR_MAYBE_INIT_LOCAL_THREAD_ENGINE_BASE
+	if (MR_PTAG_TESTR(MR_sv(2),0)) {
+		MR_GOTO_LAB(__Unify___ml_backend__mlds__mlds_lval_0_0_i1);
+	}
+	{
+	MR_Word MR_tempr1, MR_tempr2;
+	MR_tempr1 = MR_sv(1);
+	MR_sv(1) = MR_ctfield(0, MR_tempr1, 1);
+	MR_tempr2 = MR_sv(2);
+	MR_sv(2) = MR_ctfield(0, MR_tempr1, 2);
+	MR_sv(3) = MR_ctfield(0, MR_tempr1, 3);
+	MR_sv(4) = MR_ctfield(0, MR_tempr1, 4);
+	MR_sv(5) = MR_ctfield(0, MR_tempr2, 1);
+	MR_sv(6) = MR_ctfield(0, MR_tempr2, 2);
+	MR_sv(7) = MR_ctfield(0, MR_tempr2, 3);
+	MR_sv(8) = MR_ctfield(0, MR_tempr2, 4);
+	MR_r1 = (MR_Word) MR_INT_CTOR_ADDR;
+	MR_r2 = MR_ctfield(0, MR_tempr1, 0);
+	MR_r3 = MR_ctfield(0, MR_tempr2, 0);
+	}
+	MR_np_call_localret_ent(__Unify___maybe__maybe_1_0,
+		__Unify___ml_backend__mlds__mlds_lval_0_0_i7);
+MR_def_label(__Unify___ml_backend__mlds__mlds_lval_0_0,7)
+	MR_MAYBE_INIT_LOCAL_THREAD_ENGINE_BASE
+	if (!(MR_r1)) {
+		MR_GOTO_LAB(__Unify___ml_backend__mlds__mlds_lval_0_0_i1);
+	}
+	MR_r1 = MR_sv(1);
+	MR_r2 = MR_sv(5);
+	MR_np_call_localret_ent(__Unify___ml_backend__mlds__mlds_rval_0_0,
+		__Unify___ml_backend__mlds__mlds_lval_0_0_i9);
+MR_def_label(__Unify___ml_backend__mlds__mlds_lval_0_0,9)
+	MR_MAYBE_INIT_LOCAL_THREAD_ENGINE_BASE
+	if (!(MR_r1)) {
+		MR_GOTO_LAB(__Unify___ml_backend__mlds__mlds_lval_0_0_i1);
+	}
+	MR_r1 = MR_sv(2);
+	MR_r2 = MR_sv(6);
+	MR_np_call_localret_ent(__Unify___ml_backend__mlds__mlds_field_id_0_0,
+		__Unify___ml_backend__mlds__mlds_lval_0_0_i11);
+MR_def_label(__Unify___ml_backend__mlds__mlds_lval_0_0,11)
+	MR_MAYBE_INIT_LOCAL_THREAD_ENGINE_BASE
+	if (!(MR_r1)) {
+		MR_GOTO_LAB(__Unify___ml_backend__mlds__mlds_lval_0_0_i1);
+	}
+	MR_r1 = MR_sv(3);
+	MR_r2 = MR_sv(7);
+	MR_np_call_localret_ent(__Unify___ml_backend__mlds__mlds_type_0_0,
+		__Unify___ml_backend__mlds__mlds_lval_0_0_i13);
+MR_def_label(__Unify___ml_backend__mlds__mlds_lval_0_0,13)
+	MR_MAYBE_INIT_LOCAL_THREAD_ENGINE_BASE
+	if (!(MR_r1)) {
+		MR_GOTO_LAB(__Unify___ml_backend__mlds__mlds_lval_0_0_i1);
+	}
+	MR_r1 = MR_sv(4);
+	MR_r2 = MR_sv(8);
+	MR_succip_word = MR_sv(9);
+	MR_decr_sp(9);
+	MR_np_tailcall_ent(__Unify___ml_backend__mlds__mlds_type_0_0);
+MR_def_label(__Unify___ml_backend__mlds__mlds_lval_0_0,22)
+	MR_MAYBE_INIT_LOCAL_THREAD_ENGINE_BASE
+	if (MR_PTAG_TESTR(MR_sv(2),1)) {
+		MR_GOTO_LAB(__Unify___ml_backend__mlds__mlds_lval_0_0_i1);
+	}
+	{
+	MR_Word MR_tempr1, MR_tempr2;
+	MR_tempr1 = MR_sv(1);
+	MR_sv(1) = MR_ctfield(1, MR_tempr1, 1);
+	MR_tempr2 = MR_sv(2);
+	MR_sv(2) = MR_ctfield(1, MR_tempr2, 1);
+	MR_r1 = MR_ctfield(1, MR_tempr1, 0);
+	MR_r2 = MR_ctfield(1, MR_tempr2, 0);
+	}
+	MR_np_call_localret_ent(__Unify___ml_backend__mlds__mlds_rval_0_0,
+		__Unify___ml_backend__mlds__mlds_lval_0_0_i24);
+MR_def_label(__Unify___ml_backend__mlds__mlds_lval_0_0,24)
+	MR_MAYBE_INIT_LOCAL_THREAD_ENGINE_BASE
+	if (!(MR_r1)) {
+		MR_GOTO_LAB(__Unify___ml_backend__mlds__mlds_lval_0_0_i1);
+	}
+	MR_r1 = MR_sv(1);
+	MR_r2 = MR_sv(2);
+	MR_succip_word = MR_sv(9);
+	MR_decr_sp(9);
+	MR_np_tailcall_ent(__Unify___ml_backend__mlds__mlds_type_0_0);
+MR_def_label(__Unify___ml_backend__mlds__mlds_lval_0_0,17)
+	MR_MAYBE_INIT_LOCAL_THREAD_ENGINE_BASE
+	if (MR_PTAG_TESTR(MR_sv(2),2)) {
+		MR_GOTO_LAB(__Unify___ml_backend__mlds__mlds_lval_0_0_i1);
+	}
+	{
+	MR_Word MR_tempr1, MR_tempr2;
+	MR_tempr1 = MR_ctfield(2, MR_sv(2), 0);
+	MR_tempr2 = MR_ctfield(2, MR_sv(1), 0);
+	if ((MR_tempr2 == MR_tempr1)) {
+		MR_GOTO_LAB(__Unify___ml_backend__mlds__mlds_lval_0_0_i38);
+	}
+	MR_sv(1) = MR_tempr2;
+	MR_sv(2) = MR_tempr1;
+	MR_r1 = (strcmp((char *) (MR_Word *) MR_sv(1), (char *) (MR_Word *) MR_sv(2)) == 0);
+	MR_decr_sp_and_return(9);
+	}
+MR_def_label(__Unify___ml_backend__mlds__mlds_lval_0_0,28)
+	MR_MAYBE_INIT_LOCAL_THREAD_ENGINE_BASE
+	if (MR_PTAG_TESTR(MR_sv(2),3)) {
+		MR_GOTO_LAB(__Unify___ml_backend__mlds__mlds_lval_0_0_i1);
+	}
+	{
+	MR_Word MR_tempr1, MR_tempr2;
+	MR_tempr1 = MR_sv(1);
+	MR_sv(1) = MR_ctfield(3, MR_tempr1, 1);
+	MR_tempr2 = MR_sv(2);
+	MR_sv(2) = MR_ctfield(3, MR_tempr2, 1);
+	MR_r1 = (MR_Word) MR_CTOR0_ADDR(ml_backend__mlds, mlds_var_name);
+	MR_r2 = MR_ctfield(3, MR_tempr1, 0);
+	MR_r3 = MR_ctfield(3, MR_tempr2, 0);
+	}
+	MR_np_call_localret_ent(__Unify___ml_backend__mlds__mlds_fully_qualified_name_1_0,
+		__Unify___ml_backend__mlds__mlds_lval_0_0_i30);
+MR_def_label(__Unify___ml_backend__mlds__mlds_lval_0_0,30)
+	MR_MAYBE_INIT_LOCAL_THREAD_ENGINE_BASE
+	if (!(MR_r1)) {
+		MR_GOTO_LAB(__Unify___ml_backend__mlds__mlds_lval_0_0_i1);
+	}
+	MR_r1 = MR_sv(1);
+	MR_r2 = MR_sv(2);
+	MR_succip_word = MR_sv(9);
+	MR_decr_sp(9);
+	MR_np_tailcall_ent(__Unify___ml_backend__mlds__mlds_type_0_0);
+MR_def_label(__Unify___ml_backend__mlds__mlds_lval_0_0,38)
+	MR_MAYBE_INIT_LOCAL_THREAD_ENGINE_BASE
+	MR_succip_word = MR_sv(9);
+	MR_decr_sp(9);
+	MR_r1 = MR_TRUE;
+	MR_proceed();
+MR_def_label(__Unify___ml_backend__mlds__mlds_lval_0_0,1)
+	MR_MAYBE_INIT_LOCAL_THREAD_ENGINE_BASE
+	MR_succip_word = MR_sv(9);
+	MR_decr_sp(9);
+	MR_r1 = MR_FALSE;
+	MR_proceed();
+#ifdef MR_maybe_local_thread_engine_base
+	#undef MR_maybe_local_thread_engine_base
+	#define MR_maybe_local_thread_engine_base MR_thread_engine_base
+#endif
+MR_END_MODULE
+
+
+MR_BEGIN_MODULE(ml_backend__mlds_module134)
+	MR_init_entry1(__Compare___ml_backend__mlds__mlds_lval_0_0);
+	MR_init_label8(__Compare___ml_backend__mlds__mlds_lval_0_0,3,5,9,13,17,21,47,51)
+	MR_init_label8(__Compare___ml_backend__mlds__mlds_lval_0_0,53,36,39,42,63,66,68,70)
+	MR_init_label1(__Compare___ml_backend__mlds__mlds_lval_0_0,140)
+MR_BEGIN_CODE
+
+#ifdef MR_maybe_local_thread_engine_base
+	#undef MR_maybe_local_thread_engine_base
+	#define MR_maybe_local_thread_engine_base MR_local_thread_engine_base
+#endif
+MR_define_entry(mercury____Compare___ml_backend__mlds__mlds_lval_0_0);
+	MR_MAYBE_INIT_LOCAL_THREAD_ENGINE_BASE
+	if ((MR_r1 == MR_r2)) {
+		MR_GOTO_LAB(__Compare___ml_backend__mlds__mlds_lval_0_0_i3);
+	}
+	MR_incr_sp(9);
+	MR_sv(9) = (MR_Word) MR_succip;
+	MR_sv(1) = MR_r1;
+	MR_sv(2) = MR_r2;
+	MR_COMPUTED_GOTO((MR_Unsigned) MR_tag(MR_sv(1)),
+		MR_LABEL_AP(__Compare___ml_backend__mlds__mlds_lval_0_0_i5) MR_AND
+		MR_LABEL_AP(__Compare___ml_backend__mlds__mlds_lval_0_0_i47) MR_AND
+		MR_LABEL_AP(__Compare___ml_backend__mlds__mlds_lval_0_0_i36) MR_AND
+		MR_LABEL_AP(__Compare___ml_backend__mlds__mlds_lval_0_0_i63));
+MR_def_label(__Compare___ml_backend__mlds__mlds_lval_0_0,3)
+	MR_MAYBE_INIT_LOCAL_THREAD_ENGINE_BASE
+	MR_r1 = (MR_Integer) 0;
+	MR_proceed();
+MR_def_label(__Compare___ml_backend__mlds__mlds_lval_0_0,5)
+	MR_MAYBE_INIT_LOCAL_THREAD_ENGINE_BASE
+	if (MR_INT_NE(MR_tag(MR_sv(2)),0)) {
+		MR_GOTO_LAB(__Compare___ml_backend__mlds__mlds_lval_0_0_i42);
+	}
+	{
+	MR_Word MR_tempr1, MR_tempr2, MR_tempr3, MR_tempr4, MR_tempr5, MR_tempr6;
+	MR_tempr5 = MR_sv(1);
+	MR_sv(8) = MR_ctfield(0, MR_tempr5, 1);
+	MR_sv(7) = MR_ctfield(0, MR_tempr5, 2);
+	MR_sv(6) = MR_ctfield(0, MR_tempr5, 3);
+	MR_sv(5) = MR_ctfield(0, MR_tempr5, 4);
+	MR_tempr6 = MR_sv(2);
+	MR_sv(4) = MR_ctfield(0, MR_tempr6, 4);
+	MR_sv(3) = MR_ctfield(0, MR_tempr6, 3);
+	MR_tempr1 = MR_ctfield(0, MR_tempr6, 2);
+	MR_tempr2 = MR_ctfield(0, MR_tempr6, 1);
+	MR_tempr3 = MR_tempr5;
+	MR_sv(1) = MR_tempr2;
+	MR_tempr4 = MR_tempr6;
+	MR_sv(2) = MR_tempr1;
+	MR_r1 = (MR_Word) MR_INT_CTOR_ADDR;
+	MR_r2 = MR_ctfield(0, MR_tempr3, 0);
+	MR_r3 = MR_ctfield(0, MR_tempr4, 0);
+	}
+	MR_np_call_localret_ent(__Compare___maybe__maybe_1_0,
+		__Compare___ml_backend__mlds__mlds_lval_0_0_i9);
+MR_def_label(__Compare___ml_backend__mlds__mlds_lval_0_0,9)
+	MR_MAYBE_INIT_LOCAL_THREAD_ENGINE_BASE
+	if (MR_INT_NE(MR_r1,0)) {
+		MR_GOTO_LAB(__Compare___ml_backend__mlds__mlds_lval_0_0_i140);
+	}
+	MR_r1 = MR_sv(8);
+	MR_r2 = MR_sv(1);
+	MR_np_call_localret_ent(__Compare___ml_backend__mlds__mlds_rval_0_0,
+		__Compare___ml_backend__mlds__mlds_lval_0_0_i13);
+MR_def_label(__Compare___ml_backend__mlds__mlds_lval_0_0,13)
+	MR_MAYBE_INIT_LOCAL_THREAD_ENGINE_BASE
+	if (MR_INT_NE(MR_r1,0)) {
+		MR_GOTO_LAB(__Compare___ml_backend__mlds__mlds_lval_0_0_i140);
+	}
+	MR_r1 = MR_sv(7);
+	MR_r2 = MR_sv(2);
+	MR_np_call_localret_ent(__Compare___ml_backend__mlds__mlds_field_id_0_0,
+		__Compare___ml_backend__mlds__mlds_lval_0_0_i17);
+MR_def_label(__Compare___ml_backend__mlds__mlds_lval_0_0,17)
+	MR_MAYBE_INIT_LOCAL_THREAD_ENGINE_BASE
+	if (MR_INT_NE(MR_r1,0)) {
+		MR_GOTO_LAB(__Compare___ml_backend__mlds__mlds_lval_0_0_i140);
+	}
+	MR_r1 = MR_sv(6);
+	MR_r2 = MR_sv(3);
+	MR_np_call_localret_ent(__Compare___ml_backend__mlds__mlds_type_0_0,
+		__Compare___ml_backend__mlds__mlds_lval_0_0_i21);
+MR_def_label(__Compare___ml_backend__mlds__mlds_lval_0_0,21)
+	MR_MAYBE_INIT_LOCAL_THREAD_ENGINE_BASE
+	if (MR_INT_NE(MR_r1,0)) {
+		MR_GOTO_LAB(__Compare___ml_backend__mlds__mlds_lval_0_0_i140);
+	}
+	MR_r1 = MR_sv(5);
+	MR_r2 = MR_sv(4);
+	MR_succip_word = MR_sv(9);
+	MR_decr_sp(9);
+	MR_np_tailcall_ent(__Compare___ml_backend__mlds__mlds_type_0_0);
+MR_def_label(__Compare___ml_backend__mlds__mlds_lval_0_0,47)
+	MR_MAYBE_INIT_LOCAL_THREAD_ENGINE_BASE
+	MR_COMPUTED_GOTO((MR_Unsigned) MR_tag(MR_sv(2)),
+		MR_LABEL_AP(__Compare___ml_backend__mlds__mlds_lval_0_0_i66) MR_AND
+		MR_LABEL_AP(__Compare___ml_backend__mlds__mlds_lval_0_0_i51) MR_AND
+		MR_LABEL_AP(__Compare___ml_backend__mlds__mlds_lval_0_0_i42) MR_AND
+		MR_LABEL_AP(__Compare___ml_backend__mlds__mlds_lval_0_0_i42));
+MR_def_label(__Compare___ml_backend__mlds__mlds_lval_0_0,51)
+	MR_MAYBE_INIT_LOCAL_THREAD_ENGINE_BASE
+	{
+	MR_Word MR_tempr1, MR_tempr2, MR_tempr3, MR_tempr4, MR_tempr5, MR_tempr6;
+	MR_tempr5 = MR_sv(1);
+	MR_tempr1 = MR_ctfield(1, MR_tempr5, 1);
+	MR_tempr6 = MR_sv(2);
+	MR_tempr2 = MR_ctfield(1, MR_tempr6, 1);
+	MR_tempr3 = MR_tempr5;
+	MR_sv(1) = MR_tempr2;
+	MR_tempr4 = MR_tempr6;
+	MR_sv(2) = MR_tempr1;
+	MR_r1 = MR_ctfield(1, MR_tempr3, 0);
+	MR_r2 = MR_ctfield(1, MR_tempr4, 0);
+	}
+	MR_np_call_localret_ent(__Compare___ml_backend__mlds__mlds_rval_0_0,
+		__Compare___ml_backend__mlds__mlds_lval_0_0_i53);
+MR_def_label(__Compare___ml_backend__mlds__mlds_lval_0_0,53)
+	MR_MAYBE_INIT_LOCAL_THREAD_ENGINE_BASE
+	if (MR_INT_NE(MR_r1,0)) {
+		MR_GOTO_LAB(__Compare___ml_backend__mlds__mlds_lval_0_0_i140);
+	}
+	MR_r1 = MR_sv(2);
+	MR_r2 = MR_sv(1);
+	MR_succip_word = MR_sv(9);
+	MR_decr_sp(9);
+	MR_np_tailcall_ent(__Compare___ml_backend__mlds__mlds_type_0_0);
+MR_def_label(__Compare___ml_backend__mlds__mlds_lval_0_0,36)
+	MR_MAYBE_INIT_LOCAL_THREAD_ENGINE_BASE
+	MR_COMPUTED_GOTO((MR_Unsigned) MR_tag(MR_sv(2)),
+		MR_LABEL_AP(__Compare___ml_backend__mlds__mlds_lval_0_0_i66) MR_AND
+		MR_LABEL_AP(__Compare___ml_backend__mlds__mlds_lval_0_0_i66) MR_AND
+		MR_LABEL_AP(__Compare___ml_backend__mlds__mlds_lval_0_0_i39) MR_AND
+		MR_LABEL_AP(__Compare___ml_backend__mlds__mlds_lval_0_0_i42));
+MR_def_label(__Compare___ml_backend__mlds__mlds_lval_0_0,39)
+	MR_MAYBE_INIT_LOCAL_THREAD_ENGINE_BASE
+	MR_r1 = MR_ctfield(2, MR_sv(1), 0);
+	MR_r2 = MR_ctfield(2, MR_sv(2), 0);
+	MR_succip_word = MR_sv(9);
+	MR_decr_sp(9);
+	MR_np_tailcall_ent(private_builtin__builtin_compare_string_3_0);
+MR_def_label(__Compare___ml_backend__mlds__mlds_lval_0_0,42)
+	MR_MAYBE_INIT_LOCAL_THREAD_ENGINE_BASE
+	MR_r1 = (MR_Integer) 1;
+	MR_decr_sp_and_return(9);
+MR_def_label(__Compare___ml_backend__mlds__mlds_lval_0_0,63)
+	MR_MAYBE_INIT_LOCAL_THREAD_ENGINE_BASE
+	if (MR_INT_EQ(MR_tag(MR_sv(2)),3)) {
+		MR_GOTO_LAB(__Compare___ml_backend__mlds__mlds_lval_0_0_i68);
+	}
+MR_def_label(__Compare___ml_backend__mlds__mlds_lval_0_0,66)
+	MR_MAYBE_INIT_LOCAL_THREAD_ENGINE_BASE
+	MR_r1 = (MR_Integer) 2;
+	MR_decr_sp_and_return(9);
+MR_def_label(__Compare___ml_backend__mlds__mlds_lval_0_0,68)
+	MR_MAYBE_INIT_LOCAL_THREAD_ENGINE_BASE
+	{
+	MR_Word MR_tempr1, MR_tempr2, MR_tempr3, MR_tempr4, MR_tempr5, MR_tempr6;
+	MR_tempr5 = MR_sv(1);
+	MR_tempr1 = MR_ctfield(3, MR_tempr5, 1);
+	MR_tempr6 = MR_sv(2);
+	MR_tempr2 = MR_ctfield(3, MR_tempr6, 1);
+	MR_tempr3 = MR_tempr5;
+	MR_sv(1) = MR_tempr2;
+	MR_tempr4 = MR_tempr6;
+	MR_sv(2) = MR_tempr1;
+	MR_r1 = (MR_Word) MR_CTOR0_ADDR(ml_backend__mlds, mlds_var_name);
+	MR_r2 = MR_ctfield(3, MR_tempr3, 0);
+	MR_r3 = MR_ctfield(3, MR_tempr4, 0);
+	}
+	MR_np_call_localret_ent(__Compare___ml_backend__mlds__mlds_fully_qualified_name_1_0,
+		__Compare___ml_backend__mlds__mlds_lval_0_0_i70);
+MR_def_label(__Compare___ml_backend__mlds__mlds_lval_0_0,70)
+	MR_MAYBE_INIT_LOCAL_THREAD_ENGINE_BASE
+	if (MR_INT_NE(MR_r1,0)) {
+		MR_GOTO_LAB(__Compare___ml_backend__mlds__mlds_lval_0_0_i140);
+	}
+	MR_r1 = MR_sv(2);
+	MR_r2 = MR_sv(1);
+	MR_succip_word = MR_sv(9);
+	MR_decr_sp(9);
+	MR_np_tailcall_ent(__Compare___ml_backend__mlds__mlds_type_0_0);
+MR_def_label(__Compare___ml_backend__mlds__mlds_lval_0_0,140)
+	MR_MAYBE_INIT_LOCAL_THREAD_ENGINE_BASE
+	MR_decr_sp_and_return(9);
+#ifdef MR_maybe_local_thread_engine_base
+	#undef MR_maybe_local_thread_engine_base
+	#define MR_maybe_local_thread_engine_base MR_thread_engine_base
+#endif
+MR_END_MODULE
+
+
+MR_BEGIN_MODULE(ml_backend__mlds_module135)
+	MR_init_entry1(__Unify___ml_backend__mlds__mlds_module_name_0_0);
+	MR_init_label3(__Unify___ml_backend__mlds__mlds_module_name_0_0,4,8,1)
+MR_BEGIN_CODE
+
+#ifdef MR_maybe_local_thread_engine_base
+	#undef MR_maybe_local_thread_engine_base
+	#define MR_maybe_local_thread_engine_base MR_local_thread_engine_base
+#endif
+MR_define_entry(mercury____Unify___ml_backend__mlds__mlds_module_name_0_0);
+	MR_MAYBE_INIT_LOCAL_THREAD_ENGINE_BASE
+	if ((MR_r1 == MR_r2)) {
+		MR_GOTO_LAB(__Unify___ml_backend__mlds__mlds_module_name_0_0_i8);
+	}
+	MR_incr_sp(3);
+	MR_sv(3) = (MR_Word) MR_succip;
+	MR_sv(1) = MR_r1;
+	MR_sv(2) = MR_r2;
+	{
+	MR_Word MR_tempr1, MR_tempr2;
+	MR_tempr1 = MR_sv(1);
+	MR_sv(1) = MR_ctfield(0, MR_tempr1, 1);
+	MR_tempr2 = MR_sv(2);
+	MR_sv(2) = MR_ctfield(0, MR_tempr2, 1);
+	MR_r1 = MR_ctfield(0, MR_tempr1, 0);
+	MR_r2 = MR_ctfield(0, MR_tempr2, 0);
+	}
+	MR_np_call_localret_ent(__Unify___mdbcomp__prim_data__sym_name_0_0,
+		__Unify___ml_backend__mlds__mlds_module_name_0_0_i4);
+MR_def_label(__Unify___ml_backend__mlds__mlds_module_name_0_0,4)
+	MR_MAYBE_INIT_LOCAL_THREAD_ENGINE_BASE
+	if (!(MR_r1)) {
+		MR_GOTO_LAB(__Unify___ml_backend__mlds__mlds_module_name_0_0_i1);
+	}
+	MR_r1 = MR_sv(1);
+	MR_r2 = MR_sv(2);
+	MR_succip_word = MR_sv(3);
+	MR_decr_sp(3);
+	MR_np_tailcall_ent(__Unify___mdbcomp__prim_data__sym_name_0_0);
+MR_def_label(__Unify___ml_backend__mlds__mlds_module_name_0_0,8)
+	MR_MAYBE_INIT_LOCAL_THREAD_ENGINE_BASE
+	MR_r1 = MR_TRUE;
+	MR_proceed();
+MR_def_label(__Unify___ml_backend__mlds__mlds_module_name_0_0,1)
+	MR_MAYBE_INIT_LOCAL_THREAD_ENGINE_BASE
+	MR_r1 = MR_FALSE;
+	MR_decr_sp_and_return(3);
+#ifdef MR_maybe_local_thread_engine_base
+	#undef MR_maybe_local_thread_engine_base
+	#define MR_maybe_local_thread_engine_base MR_thread_engine_base
+#endif
+MR_END_MODULE
+
+
+MR_BEGIN_MODULE(ml_backend__mlds_module136)
+	MR_init_entry1(__Compare___ml_backend__mlds__mlds_module_name_0_0);
+	MR_init_label4(__Compare___ml_backend__mlds__mlds_module_name_0_0,3,2,5,21)
+MR_BEGIN_CODE
+
+#ifdef MR_maybe_local_thread_engine_base
+	#undef MR_maybe_local_thread_engine_base
+	#define MR_maybe_local_thread_engine_base MR_local_thread_engine_base
+#endif
+MR_define_entry(mercury____Compare___ml_backend__mlds__mlds_module_name_0_0);
+	MR_MAYBE_INIT_LOCAL_THREAD_ENGINE_BASE
+	if ((MR_r1 == MR_r2)) {
+		MR_GOTO_LAB(__Compare___ml_backend__mlds__mlds_module_name_0_0_i3);
+	}
+	MR_incr_sp(3);
+	MR_sv(3) = (MR_Word) MR_succip;
+	MR_sv(1) = MR_r1;
+	MR_sv(2) = MR_r2;
+	MR_GOTO_LAB(__Compare___ml_backend__mlds__mlds_module_name_0_0_i2);
+MR_def_label(__Compare___ml_backend__mlds__mlds_module_name_0_0,3)
+	MR_MAYBE_INIT_LOCAL_THREAD_ENGINE_BASE
+	MR_r1 = (MR_Integer) 0;
+	MR_proceed();
+MR_def_label(__Compare___ml_backend__mlds__mlds_module_name_0_0,2)
+	MR_MAYBE_INIT_LOCAL_THREAD_ENGINE_BASE
+	{
+	MR_Word MR_tempr1, MR_tempr2, MR_tempr3, MR_tempr4, MR_tempr5, MR_tempr6;
+	MR_tempr5 = MR_sv(2);
+	MR_tempr1 = MR_ctfield(0, MR_tempr5, 1);
+	MR_tempr6 = MR_sv(1);
+	MR_tempr2 = MR_ctfield(0, MR_tempr6, 1);
+	MR_tempr3 = MR_tempr6;
+	MR_sv(1) = MR_tempr2;
+	MR_tempr4 = MR_tempr5;
+	MR_sv(2) = MR_tempr1;
+	MR_r1 = MR_ctfield(0, MR_tempr3, 0);
+	MR_r2 = MR_ctfield(0, MR_tempr4, 0);
+	}
+	MR_np_call_localret_ent(__Compare___mdbcomp__prim_data__sym_name_0_0,
+		__Compare___ml_backend__mlds__mlds_module_name_0_0_i5);
+MR_def_label(__Compare___ml_backend__mlds__mlds_module_name_0_0,5)
+	MR_MAYBE_INIT_LOCAL_THREAD_ENGINE_BASE
+	if (MR_INT_NE(MR_r1,0)) {
+		MR_GOTO_LAB(__Compare___ml_backend__mlds__mlds_module_name_0_0_i21);
+	}
+	MR_r1 = MR_sv(1);
+	MR_r2 = MR_sv(2);
+	MR_succip_word = MR_sv(3);
+	MR_decr_sp(3);
+	MR_np_tailcall_ent(__Compare___mdbcomp__prim_data__sym_name_0_0);
+MR_def_label(__Compare___ml_backend__mlds__mlds_module_name_0_0,21)
+	MR_MAYBE_INIT_LOCAL_THREAD_ENGINE_BASE
+	MR_decr_sp_and_return(3);
+#ifdef MR_maybe_local_thread_engine_base
+	#undef MR_maybe_local_thread_engine_base
+	#define MR_maybe_local_thread_engine_base MR_thread_engine_base
+#endif
+MR_END_MODULE
+
+
+MR_BEGIN_MODULE(ml_backend__mlds_module137)
+	MR_init_entry1(__Unify___ml_backend__mlds__mlds_package_name_0_0);
+MR_BEGIN_CODE
+
+#ifdef MR_maybe_local_thread_engine_base
+	#undef MR_maybe_local_thread_engine_base
+	#define MR_maybe_local_thread_engine_base MR_local_thread_engine_base
+#endif
+MR_define_entry(mercury____Unify___ml_backend__mlds__mlds_package_name_0_0);
+	MR_MAYBE_INIT_LOCAL_THREAD_ENGINE_BASE
+	MR_np_tailcall_ent(__Unify___ml_backend__mlds__mlds_module_name_0_0);
+#ifdef MR_maybe_local_thread_engine_base
+	#undef MR_maybe_local_thread_engine_base
+	#define MR_maybe_local_thread_engine_base MR_thread_engine_base
+#endif
+MR_END_MODULE
+
+
+MR_BEGIN_MODULE(ml_backend__mlds_module138)
+	MR_init_entry1(__Compare___ml_backend__mlds__mlds_package_name_0_0);
+MR_BEGIN_CODE
+
+#ifdef MR_maybe_local_thread_engine_base
+	#undef MR_maybe_local_thread_engine_base
+	#define MR_maybe_local_thread_engine_base MR_local_thread_engine_base
+#endif
+MR_define_entry(mercury____Compare___ml_backend__mlds__mlds_package_name_0_0);
+	MR_MAYBE_INIT_LOCAL_THREAD_ENGINE_BASE
+	MR_np_tailcall_ent(__Compare___ml_backend__mlds__mlds_module_name_0_0);
+#ifdef MR_maybe_local_thread_engine_base
+	#undef MR_maybe_local_thread_engine_base
+	#define MR_maybe_local_thread_engine_base MR_thread_engine_base
+#endif
+MR_END_MODULE
+
+
+MR_BEGIN_MODULE(ml_backend__mlds_module139)
+	MR_init_entry1(__Unify___ml_backend__mlds__mlds_pragma_export_0_0);
+	MR_init_label4(__Unify___ml_backend__mlds__mlds_pragma_export_0_0,4,6,10,1)
+MR_BEGIN_CODE
+
+#ifdef MR_maybe_local_thread_engine_base
+	#undef MR_maybe_local_thread_engine_base
+	#define MR_maybe_local_thread_engine_base MR_local_thread_engine_base
+#endif
+MR_define_entry(mercury____Unify___ml_backend__mlds__mlds_pragma_export_0_0);
+	MR_MAYBE_INIT_LOCAL_THREAD_ENGINE_BASE
+	if ((MR_r1 == MR_r2)) {
+		MR_GOTO_LAB(__Unify___ml_backend__mlds__mlds_pragma_export_0_0_i10);
+	}
+	MR_incr_sp(5);
+	MR_sv(5) = (MR_Word) MR_succip;
+	{
+	MR_Word MR_tempr1, MR_tempr2, MR_tempr3, MR_tempr4;
+	MR_tempr1 = MR_r1;
+	MR_sv(1) = MR_tempr1;
+	MR_tempr2 = MR_r2;
+	MR_sv(2) = MR_tempr2;
+	MR_tempr3 = MR_ctfield(0, MR_tempr1, 0);
+	MR_tempr4 = MR_ctfield(0, MR_tempr2, 0);
+	if ((MR_tempr3 != MR_tempr4)) {
+		MR_GOTO_LAB(__Unify___ml_backend__mlds__mlds_pragma_export_0_0_i1);
+	}
+	MR_tempr3 = MR_ctfield(0, MR_tempr1, 1);
+	MR_tempr4 = MR_ctfield(0, MR_tempr2, 1);
+	if ((strcmp((char *) (MR_Word *) MR_tempr3, (char *) (MR_Word *) MR_tempr4) != 0)) {
+		MR_GOTO_LAB(__Unify___ml_backend__mlds__mlds_pragma_export_0_0_i1);
+	}
+	MR_tempr3 = MR_tempr1;
+	MR_sv(1) = MR_ctfield(0, MR_tempr3, 3);
+	MR_tempr4 = MR_tempr2;
+	MR_sv(2) = MR_ctfield(0, MR_tempr3, 4);
+	MR_sv(3) = MR_ctfield(0, MR_tempr4, 3);
+	MR_sv(4) = MR_ctfield(0, MR_tempr4, 4);
+	MR_r1 = (MR_Word) MR_CTOR0_ADDR(ml_backend__mlds, mlds_entity_name);
+	MR_r2 = MR_ctfield(0, MR_tempr3, 2);
+	MR_r3 = MR_ctfield(0, MR_tempr4, 2);
+	}
+	MR_np_call_localret_ent(__Unify___ml_backend__mlds__mlds_fully_qualified_name_1_0,
+		__Unify___ml_backend__mlds__mlds_pragma_export_0_0_i4);
+MR_def_label(__Unify___ml_backend__mlds__mlds_pragma_export_0_0,4)
+	MR_MAYBE_INIT_LOCAL_THREAD_ENGINE_BASE
+	if (!(MR_r1)) {
+		MR_GOTO_LAB(__Unify___ml_backend__mlds__mlds_pragma_export_0_0_i1);
+	}
+	MR_r1 = MR_sv(1);
+	MR_r2 = MR_sv(3);
+	MR_np_call_localret_ent(__Unify___ml_backend__mlds__mlds_func_params_0_0,
+		__Unify___ml_backend__mlds__mlds_pragma_export_0_0_i6);
+MR_def_label(__Unify___ml_backend__mlds__mlds_pragma_export_0_0,6)
+	MR_MAYBE_INIT_LOCAL_THREAD_ENGINE_BASE
+	if (!(MR_r1)) {
+		MR_GOTO_LAB(__Unify___ml_backend__mlds__mlds_pragma_export_0_0_i1);
+	}
+	MR_r1 = MR_sv(2);
+	MR_r2 = MR_sv(4);
+	MR_succip_word = MR_sv(5);
+	MR_decr_sp(5);
+	MR_np_tailcall_ent(__Unify___ml_backend__mlds__mlds_context_0_0);
+MR_def_label(__Unify___ml_backend__mlds__mlds_pragma_export_0_0,10)
+	MR_MAYBE_INIT_LOCAL_THREAD_ENGINE_BASE
+	MR_r1 = MR_TRUE;
+	MR_proceed();
+MR_def_label(__Unify___ml_backend__mlds__mlds_pragma_export_0_0,1)
+	MR_MAYBE_INIT_LOCAL_THREAD_ENGINE_BASE
+	MR_r1 = MR_FALSE;
+	MR_decr_sp_and_return(5);
+#ifdef MR_maybe_local_thread_engine_base
+	#undef MR_maybe_local_thread_engine_base
+	#define MR_maybe_local_thread_engine_base MR_thread_engine_base
+#endif
+MR_END_MODULE
+
+
+MR_BEGIN_MODULE(ml_backend__mlds_module140)
+	MR_init_entry1(__Compare___ml_backend__mlds__mlds_pragma_export_0_0);
+	MR_init_label7(__Compare___ml_backend__mlds__mlds_pragma_export_0_0,3,2,5,9,13,17,45)
+MR_BEGIN_CODE
+
+#ifdef MR_maybe_local_thread_engine_base
+	#undef MR_maybe_local_thread_engine_base
+	#define MR_maybe_local_thread_engine_base MR_local_thread_engine_base
+#endif
+MR_define_entry(mercury____Compare___ml_backend__mlds__mlds_pragma_export_0_0);
+	MR_MAYBE_INIT_LOCAL_THREAD_ENGINE_BASE
+	if ((MR_r1 == MR_r2)) {
+		MR_GOTO_LAB(__Compare___ml_backend__mlds__mlds_pragma_export_0_0_i3);
+	}
+	MR_incr_sp(9);
+	MR_sv(9) = (MR_Word) MR_succip;
+	MR_sv(1) = MR_r1;
+	MR_sv(2) = MR_r2;
+	MR_GOTO_LAB(__Compare___ml_backend__mlds__mlds_pragma_export_0_0_i2);
+MR_def_label(__Compare___ml_backend__mlds__mlds_pragma_export_0_0,3)
+	MR_MAYBE_INIT_LOCAL_THREAD_ENGINE_BASE
+	MR_r1 = (MR_Integer) 0;
+	MR_proceed();
+MR_def_label(__Compare___ml_backend__mlds__mlds_pragma_export_0_0,2)
+	MR_MAYBE_INIT_LOCAL_THREAD_ENGINE_BASE
+	{
+	MR_Word MR_tempr1, MR_tempr2, MR_tempr3, MR_tempr4, MR_tempr5, MR_tempr6;
+	MR_tempr5 = MR_sv(2);
+	MR_sv(8) = MR_ctfield(0, MR_tempr5, 4);
+	MR_sv(7) = MR_ctfield(0, MR_tempr5, 3);
+	MR_sv(6) = MR_ctfield(0, MR_tempr5, 2);
+	MR_sv(5) = MR_ctfield(0, MR_tempr5, 1);
+	MR_tempr6 = MR_sv(1);
+	MR_sv(4) = MR_ctfield(0, MR_tempr6, 4);
+	MR_sv(3) = MR_ctfield(0, MR_tempr6, 3);
+	MR_tempr1 = MR_ctfield(0, MR_tempr6, 2);
+	MR_tempr2 = MR_ctfield(0, MR_tempr6, 1);
+	MR_tempr3 = MR_tempr6;
+	MR_sv(1) = MR_tempr2;
+	MR_tempr4 = MR_tempr5;
+	MR_sv(2) = MR_tempr1;
+	MR_r1 = MR_ctfield(0, MR_tempr3, 0);
+	MR_r2 = MR_ctfield(0, MR_tempr4, 0);
+	}
+	MR_np_call_localret_ent(private_builtin__builtin_compare_int_3_0,
+		__Compare___ml_backend__mlds__mlds_pragma_export_0_0_i5);
+MR_def_label(__Compare___ml_backend__mlds__mlds_pragma_export_0_0,5)
+	MR_MAYBE_INIT_LOCAL_THREAD_ENGINE_BASE
+	if (MR_INT_NE(MR_r1,0)) {
+		MR_GOTO_LAB(__Compare___ml_backend__mlds__mlds_pragma_export_0_0_i45);
+	}
+	MR_r1 = MR_sv(1);
+	MR_r2 = MR_sv(5);
+	MR_np_call_localret_ent(private_builtin__builtin_compare_string_3_0,
+		__Compare___ml_backend__mlds__mlds_pragma_export_0_0_i9);
+MR_def_label(__Compare___ml_backend__mlds__mlds_pragma_export_0_0,9)
+	MR_MAYBE_INIT_LOCAL_THREAD_ENGINE_BASE
+	if (MR_INT_NE(MR_r1,0)) {
+		MR_GOTO_LAB(__Compare___ml_backend__mlds__mlds_pragma_export_0_0_i45);
+	}
+	MR_r1 = (MR_Word) MR_CTOR0_ADDR(ml_backend__mlds, mlds_entity_name);
+	MR_r2 = MR_sv(2);
+	MR_r3 = MR_sv(6);
+	MR_np_call_localret_ent(__Compare___ml_backend__mlds__mlds_fully_qualified_name_1_0,
+		__Compare___ml_backend__mlds__mlds_pragma_export_0_0_i13);
+MR_def_label(__Compare___ml_backend__mlds__mlds_pragma_export_0_0,13)
+	MR_MAYBE_INIT_LOCAL_THREAD_ENGINE_BASE
+	if (MR_INT_NE(MR_r1,0)) {
+		MR_GOTO_LAB(__Compare___ml_backend__mlds__mlds_pragma_export_0_0_i45);
+	}
+	MR_r1 = MR_sv(3);
+	MR_r2 = MR_sv(7);
+	MR_np_call_localret_ent(__Compare___ml_backend__mlds__mlds_func_params_0_0,
+		__Compare___ml_backend__mlds__mlds_pragma_export_0_0_i17);
+MR_def_label(__Compare___ml_backend__mlds__mlds_pragma_export_0_0,17)
+	MR_MAYBE_INIT_LOCAL_THREAD_ENGINE_BASE
+	if (MR_INT_NE(MR_r1,0)) {
+		MR_GOTO_LAB(__Compare___ml_backend__mlds__mlds_pragma_export_0_0_i45);
+	}
+	MR_r1 = MR_sv(4);
+	MR_r2 = MR_sv(8);
+	MR_succip_word = MR_sv(9);
+	MR_decr_sp(9);
+	MR_np_tailcall_ent(__Compare___ml_backend__mlds__mlds_context_0_0);
+MR_def_label(__Compare___ml_backend__mlds__mlds_pragma_export_0_0,45)
+	MR_MAYBE_INIT_LOCAL_THREAD_ENGINE_BASE
+	MR_decr_sp_and_return(9);
+#ifdef MR_maybe_local_thread_engine_base
+	#undef MR_maybe_local_thread_engine_base
+	#define MR_maybe_local_thread_engine_base MR_thread_engine_base
+#endif
+MR_END_MODULE
+
+
+MR_BEGIN_MODULE(ml_backend__mlds_module141)
+	MR_init_entry1(__Unify___ml_backend__mlds__mlds_pred_label_0_0);
+	MR_init_label5(__Unify___ml_backend__mlds__mlds_pred_label_0_0,7,19,5,10,1)
+MR_BEGIN_CODE
+
+#ifdef MR_maybe_local_thread_engine_base
+	#undef MR_maybe_local_thread_engine_base
+	#define MR_maybe_local_thread_engine_base MR_local_thread_engine_base
+#endif
+MR_define_entry(mercury____Unify___ml_backend__mlds__mlds_pred_label_0_0);
+	MR_MAYBE_INIT_LOCAL_THREAD_ENGINE_BASE
+	if ((MR_r1 == MR_r2)) {
+		MR_GOTO_LAB(__Unify___ml_backend__mlds__mlds_pred_label_0_0_i19);
+	}
+	MR_incr_sp(9);
+	MR_sv(9) = (MR_Word) MR_succip;
+	{
+	MR_Word MR_tempr1, MR_tempr2, MR_tempr3, MR_tempr4;
+	MR_tempr1 = MR_r1;
+	MR_sv(1) = MR_tempr1;
+	MR_tempr2 = MR_r2;
+	MR_sv(2) = MR_tempr2;
+	if (MR_PTAG_TESTR(MR_tempr1,1)) {
+		MR_GOTO_LAB(__Unify___ml_backend__mlds__mlds_pred_label_0_0_i5);
+	}
+	if (MR_PTAG_TESTR(MR_tempr2,1)) {
+		MR_GOTO_LAB(__Unify___ml_backend__mlds__mlds_pred_label_0_0_i1);
+	}
+	MR_tempr3 = MR_ctfield(1, MR_tempr1, 0);
+	MR_tempr4 = MR_ctfield(1, MR_tempr2, 0);
+	if ((strcmp((char *) (MR_Word *) MR_tempr3, (char *) (MR_Word *) MR_tempr4) != 0)) {
+		MR_GOTO_LAB(__Unify___ml_backend__mlds__mlds_pred_label_0_0_i1);
+	}
+	MR_tempr3 = MR_tempr1;
+	MR_sv(1) = MR_ctfield(1, MR_tempr3, 2);
+	MR_tempr4 = MR_tempr2;
+	MR_sv(2) = MR_ctfield(1, MR_tempr3, 3);
+	MR_sv(3) = MR_ctfield(1, MR_tempr4, 2);
+	MR_sv(4) = MR_ctfield(1, MR_tempr4, 3);
+	MR_r1 = (MR_Word) MR_CTOR0_ADDR(mdbcomp__prim_data, sym_name);
+	MR_r2 = MR_ctfield(1, MR_tempr3, 1);
+	MR_r3 = MR_ctfield(1, MR_tempr4, 1);
+	}
+	MR_np_call_localret_ent(__Unify___maybe__maybe_1_0,
+		__Unify___ml_backend__mlds__mlds_pred_label_0_0_i7);
+MR_def_label(__Unify___ml_backend__mlds__mlds_pred_label_0_0,7)
+	MR_MAYBE_INIT_LOCAL_THREAD_ENGINE_BASE
+	if (!(MR_r1)) {
+		MR_GOTO_LAB(__Unify___ml_backend__mlds__mlds_pred_label_0_0_i1);
+	}
+	if ((strcmp((char *) (MR_Word *) MR_sv(1), (char *) (MR_Word *) MR_sv(3)) != 0)) {
+		MR_GOTO_LAB(__Unify___ml_backend__mlds__mlds_pred_label_0_0_i1);
+	}
+	MR_r1 = (MR_sv(2) == MR_sv(4));
+	MR_decr_sp_and_return(9);
+MR_def_label(__Unify___ml_backend__mlds__mlds_pred_label_0_0,19)
+	MR_MAYBE_INIT_LOCAL_THREAD_ENGINE_BASE
+	MR_r1 = MR_TRUE;
+	MR_proceed();
+MR_def_label(__Unify___ml_backend__mlds__mlds_pred_label_0_0,5)
+	MR_MAYBE_INIT_LOCAL_THREAD_ENGINE_BASE
+	if (MR_PTAG_TESTR(MR_sv(2),0)) {
+		MR_GOTO_LAB(__Unify___ml_backend__mlds__mlds_pred_label_0_0_i1);
+	}
+	{
+	MR_Word MR_tempr1, MR_tempr2, MR_tempr3, MR_tempr4;
+	MR_tempr3 = MR_sv(1);
+	MR_tempr1 = MR_ctfield(0, MR_tempr3, 0);
+	MR_tempr4 = MR_sv(2);
+	MR_tempr2 = MR_ctfield(0, MR_tempr4, 0);
+	if ((MR_tempr1 != MR_tempr2)) {
+		MR_GOTO_LAB(__Unify___ml_backend__mlds__mlds_pred_label_0_0_i1);
+	}
+	MR_tempr1 = MR_tempr3;
+	MR_sv(1) = MR_ctfield(0, MR_tempr1, 2);
+	MR_tempr2 = MR_tempr4;
+	MR_sv(2) = MR_ctfield(0, MR_tempr1, 3);
+	MR_sv(3) = MR_ctfield(0, MR_tempr1, 4);
+	MR_sv(4) = MR_ctfield(0, MR_tempr1, 5);
+	MR_sv(5) = MR_ctfield(0, MR_tempr2, 2);
+	MR_sv(6) = MR_ctfield(0, MR_tempr2, 3);
+	MR_sv(7) = MR_ctfield(0, MR_tempr2, 4);
+	MR_sv(8) = MR_ctfield(0, MR_tempr2, 5);
+	MR_r1 = (MR_Word) MR_CTOR0_ADDR(mdbcomp__prim_data, sym_name);
+	MR_r2 = MR_ctfield(0, MR_tempr1, 1);
+	MR_r3 = MR_ctfield(0, MR_tempr2, 1);
+	}
+	MR_np_call_localret_ent(__Unify___maybe__maybe_1_0,
+		__Unify___ml_backend__mlds__mlds_pred_label_0_0_i10);
+MR_def_label(__Unify___ml_backend__mlds__mlds_pred_label_0_0,10)
+	MR_MAYBE_INIT_LOCAL_THREAD_ENGINE_BASE
+	if (!(MR_r1)) {
+		MR_GOTO_LAB(__Unify___ml_backend__mlds__mlds_pred_label_0_0_i1);
+	}
+	if ((strcmp((char *) (MR_Word *) MR_sv(1), (char *) (MR_Word *) MR_sv(5)) != 0)) {
+		MR_GOTO_LAB(__Unify___ml_backend__mlds__mlds_pred_label_0_0_i1);
+	}
+	if ((MR_sv(2) != MR_sv(6))) {
+		MR_GOTO_LAB(__Unify___ml_backend__mlds__mlds_pred_label_0_0_i1);
+	}
+	if ((MR_sv(3) != MR_sv(7))) {
+		MR_GOTO_LAB(__Unify___ml_backend__mlds__mlds_pred_label_0_0_i1);
+	}
+	MR_r1 = (MR_sv(4) == MR_sv(8));
+	MR_decr_sp_and_return(9);
+MR_def_label(__Unify___ml_backend__mlds__mlds_pred_label_0_0,1)
+	MR_MAYBE_INIT_LOCAL_THREAD_ENGINE_BASE
+	MR_r1 = MR_FALSE;
+	MR_decr_sp_and_return(9);
+#ifdef MR_maybe_local_thread_engine_base
+	#undef MR_maybe_local_thread_engine_base
+	#define MR_maybe_local_thread_engine_base MR_thread_engine_base
+#endif
+MR_END_MODULE
+
+
+MR_BEGIN_MODULE(ml_backend__mlds_module142)
+	MR_init_entry1(__Compare___ml_backend__mlds__mlds_pred_label_0_0);
+	MR_init_label8(__Compare___ml_backend__mlds__mlds_pred_label_0_0,3,2,9,13,17,7,5,25)
+	MR_init_label6(__Compare___ml_backend__mlds__mlds_pred_label_0_0,27,31,35,39,43,108)
+MR_BEGIN_CODE
+
+#ifdef MR_maybe_local_thread_engine_base
+	#undef MR_maybe_local_thread_engine_base
+	#define MR_maybe_local_thread_engine_base MR_local_thread_engine_base
+#endif
+MR_define_entry(mercury____Compare___ml_backend__mlds__mlds_pred_label_0_0);
+	MR_MAYBE_INIT_LOCAL_THREAD_ENGINE_BASE
+	if ((MR_r1 == MR_r2)) {
+		MR_GOTO_LAB(__Compare___ml_backend__mlds__mlds_pred_label_0_0_i3);
+	}
+	MR_incr_sp(11);
+	MR_sv(11) = (MR_Word) MR_succip;
+	MR_sv(1) = MR_r1;
+	MR_sv(2) = MR_r2;
+	MR_GOTO_LAB(__Compare___ml_backend__mlds__mlds_pred_label_0_0_i2);
+MR_def_label(__Compare___ml_backend__mlds__mlds_pred_label_0_0,3)
+	MR_MAYBE_INIT_LOCAL_THREAD_ENGINE_BASE
+	MR_r1 = (MR_Integer) 0;
+	MR_proceed();
+MR_def_label(__Compare___ml_backend__mlds__mlds_pred_label_0_0,2)
+	MR_MAYBE_INIT_LOCAL_THREAD_ENGINE_BASE
+	if (MR_PTAG_TESTR(MR_sv(1),1)) {
+		MR_GOTO_LAB(__Compare___ml_backend__mlds__mlds_pred_label_0_0_i5);
+	}
+	if (MR_PTAG_TESTR(MR_sv(2),1)) {
+		MR_GOTO_LAB(__Compare___ml_backend__mlds__mlds_pred_label_0_0_i7);
+	}
+	{
+	MR_Word MR_tempr1, MR_tempr2, MR_tempr3, MR_tempr4, MR_tempr5, MR_tempr6;
+	MR_tempr5 = MR_sv(1);
+	MR_sv(6) = MR_ctfield(1, MR_tempr5, 1);
+	MR_sv(5) = MR_ctfield(1, MR_tempr5, 2);
+	MR_sv(4) = MR_ctfield(1, MR_tempr5, 3);
+	MR_tempr6 = MR_sv(2);
+	MR_sv(3) = MR_ctfield(1, MR_tempr6, 3);
+	MR_tempr1 = MR_ctfield(1, MR_tempr6, 2);
+	MR_tempr2 = MR_ctfield(1, MR_tempr6, 1);
+	MR_tempr3 = MR_tempr5;
+	MR_sv(1) = MR_tempr2;
+	MR_tempr4 = MR_tempr6;
+	MR_sv(2) = MR_tempr1;
+	MR_r1 = MR_ctfield(1, MR_tempr3, 0);
+	MR_r2 = MR_ctfield(1, MR_tempr4, 0);
+	}
+	MR_np_call_localret_ent(private_builtin__builtin_compare_string_3_0,
+		__Compare___ml_backend__mlds__mlds_pred_label_0_0_i9);
+MR_def_label(__Compare___ml_backend__mlds__mlds_pred_label_0_0,9)
+	MR_MAYBE_INIT_LOCAL_THREAD_ENGINE_BASE
+	if (MR_INT_NE(MR_r1,0)) {
+		MR_GOTO_LAB(__Compare___ml_backend__mlds__mlds_pred_label_0_0_i108);
+	}
+	MR_r1 = (MR_Word) MR_CTOR0_ADDR(mdbcomp__prim_data, sym_name);
+	MR_r2 = MR_sv(6);
+	MR_r3 = MR_sv(1);
+	MR_np_call_localret_ent(__Compare___maybe__maybe_1_0,
+		__Compare___ml_backend__mlds__mlds_pred_label_0_0_i13);
+MR_def_label(__Compare___ml_backend__mlds__mlds_pred_label_0_0,13)
+	MR_MAYBE_INIT_LOCAL_THREAD_ENGINE_BASE
+	if (MR_INT_NE(MR_r1,0)) {
+		MR_GOTO_LAB(__Compare___ml_backend__mlds__mlds_pred_label_0_0_i108);
+	}
+	MR_r1 = MR_sv(5);
+	MR_r2 = MR_sv(2);
+	MR_np_call_localret_ent(private_builtin__builtin_compare_string_3_0,
+		__Compare___ml_backend__mlds__mlds_pred_label_0_0_i17);
+MR_def_label(__Compare___ml_backend__mlds__mlds_pred_label_0_0,17)
+	MR_MAYBE_INIT_LOCAL_THREAD_ENGINE_BASE
+	if (MR_INT_NE(MR_r1,0)) {
+		MR_GOTO_LAB(__Compare___ml_backend__mlds__mlds_pred_label_0_0_i108);
+	}
+	MR_r1 = MR_sv(4);
+	MR_r2 = MR_sv(3);
+	MR_succip_word = MR_sv(11);
+	MR_decr_sp(11);
+	MR_np_tailcall_ent(private_builtin__builtin_compare_int_3_0);
+MR_def_label(__Compare___ml_backend__mlds__mlds_pred_label_0_0,7)
+	MR_MAYBE_INIT_LOCAL_THREAD_ENGINE_BASE
+	MR_r1 = (MR_Integer) 2;
+	MR_decr_sp_and_return(11);
+MR_def_label(__Compare___ml_backend__mlds__mlds_pred_label_0_0,5)
+	MR_MAYBE_INIT_LOCAL_THREAD_ENGINE_BASE
+	if (MR_PTAG_TESTR(MR_sv(2),1)) {
+		MR_GOTO_LAB(__Compare___ml_backend__mlds__mlds_pred_label_0_0_i25);
+	}
+	MR_r1 = (MR_Integer) 1;
+	MR_decr_sp_and_return(11);
+MR_def_label(__Compare___ml_backend__mlds__mlds_pred_label_0_0,25)
+	MR_MAYBE_INIT_LOCAL_THREAD_ENGINE_BASE
+	{
+	MR_Word MR_tempr1, MR_tempr2, MR_tempr3, MR_tempr4, MR_tempr5, MR_tempr6;
+	MR_tempr5 = MR_sv(1);
+	MR_sv(10) = MR_ctfield(0, MR_tempr5, 1);
+	MR_sv(9) = MR_ctfield(0, MR_tempr5, 2);
+	MR_sv(8) = MR_ctfield(0, MR_tempr5, 3);
+	MR_sv(7) = MR_ctfield(0, MR_tempr5, 4);
+	MR_sv(6) = MR_ctfield(0, MR_tempr5, 5);
+	MR_tempr6 = MR_sv(2);
+	MR_sv(5) = MR_ctfield(0, MR_tempr6, 5);
+	MR_sv(4) = MR_ctfield(0, MR_tempr6, 4);
+	MR_sv(3) = MR_ctfield(0, MR_tempr6, 3);
+	MR_tempr1 = MR_ctfield(0, MR_tempr6, 2);
+	MR_tempr2 = MR_ctfield(0, MR_tempr6, 1);
+	MR_tempr3 = MR_tempr5;
+	MR_sv(1) = MR_tempr2;
+	MR_tempr4 = MR_tempr6;
+	MR_sv(2) = MR_tempr1;
+	MR_r1 = MR_ctfield(0, MR_tempr3, 0);
+	MR_r2 = MR_ctfield(0, MR_tempr4, 0);
+	}
+	MR_np_call_localret_ent(private_builtin__builtin_compare_int_3_0,
+		__Compare___ml_backend__mlds__mlds_pred_label_0_0_i27);
+MR_def_label(__Compare___ml_backend__mlds__mlds_pred_label_0_0,27)
+	MR_MAYBE_INIT_LOCAL_THREAD_ENGINE_BASE
+	if (MR_INT_NE(MR_r1,0)) {
+		MR_GOTO_LAB(__Compare___ml_backend__mlds__mlds_pred_label_0_0_i108);
+	}
+	MR_r1 = (MR_Word) MR_CTOR0_ADDR(mdbcomp__prim_data, sym_name);
+	MR_r2 = MR_sv(10);
+	MR_r3 = MR_sv(1);
+	MR_np_call_localret_ent(__Compare___maybe__maybe_1_0,
+		__Compare___ml_backend__mlds__mlds_pred_label_0_0_i31);
+MR_def_label(__Compare___ml_backend__mlds__mlds_pred_label_0_0,31)
+	MR_MAYBE_INIT_LOCAL_THREAD_ENGINE_BASE
+	if (MR_INT_NE(MR_r1,0)) {
+		MR_GOTO_LAB(__Compare___ml_backend__mlds__mlds_pred_label_0_0_i108);
+	}
+	MR_r1 = MR_sv(9);
+	MR_r2 = MR_sv(2);
+	MR_np_call_localret_ent(private_builtin__builtin_compare_string_3_0,
+		__Compare___ml_backend__mlds__mlds_pred_label_0_0_i35);
+MR_def_label(__Compare___ml_backend__mlds__mlds_pred_label_0_0,35)
+	MR_MAYBE_INIT_LOCAL_THREAD_ENGINE_BASE
+	if (MR_INT_NE(MR_r1,0)) {
+		MR_GOTO_LAB(__Compare___ml_backend__mlds__mlds_pred_label_0_0_i108);
+	}
+	MR_r1 = MR_sv(8);
+	MR_r2 = MR_sv(3);
+	MR_np_call_localret_ent(private_builtin__builtin_compare_int_3_0,
+		__Compare___ml_backend__mlds__mlds_pred_label_0_0_i39);
+MR_def_label(__Compare___ml_backend__mlds__mlds_pred_label_0_0,39)
+	MR_MAYBE_INIT_LOCAL_THREAD_ENGINE_BASE
+	if (MR_INT_NE(MR_r1,0)) {
+		MR_GOTO_LAB(__Compare___ml_backend__mlds__mlds_pred_label_0_0_i108);
+	}
+	MR_r1 = MR_sv(7);
+	MR_r2 = MR_sv(4);
+	MR_np_call_localret_ent(private_builtin__builtin_compare_int_3_0,
+		__Compare___ml_backend__mlds__mlds_pred_label_0_0_i43);
+MR_def_label(__Compare___ml_backend__mlds__mlds_pred_label_0_0,43)
+	MR_MAYBE_INIT_LOCAL_THREAD_ENGINE_BASE
+	if (MR_INT_NE(MR_r1,0)) {
+		MR_GOTO_LAB(__Compare___ml_backend__mlds__mlds_pred_label_0_0_i108);
+	}
+	MR_r1 = MR_sv(6);
+	MR_r2 = MR_sv(5);
+	MR_succip_word = MR_sv(11);
+	MR_decr_sp(11);
+	MR_np_tailcall_ent(private_builtin__builtin_compare_int_3_0);
+MR_def_label(__Compare___ml_backend__mlds__mlds_pred_label_0_0,108)
+	MR_MAYBE_INIT_LOCAL_THREAD_ENGINE_BASE
+	MR_decr_sp_and_return(11);
+#ifdef MR_maybe_local_thread_engine_base
+	#undef MR_maybe_local_thread_engine_base
+	#define MR_maybe_local_thread_engine_base MR_thread_engine_base
+#endif
+MR_END_MODULE
+
+
+MR_BEGIN_MODULE(ml_backend__mlds_module143)
+	MR_init_entry1(__Unify___ml_backend__mlds__mlds_proc_label_0_0);
+	MR_init_label3(__Unify___ml_backend__mlds__mlds_proc_label_0_0,4,6,1)
+MR_BEGIN_CODE
+
+#ifdef MR_maybe_local_thread_engine_base
+	#undef MR_maybe_local_thread_engine_base
+	#define MR_maybe_local_thread_engine_base MR_local_thread_engine_base
+#endif
+MR_define_entry(mercury____Unify___ml_backend__mlds__mlds_proc_label_0_0);
+	MR_MAYBE_INIT_LOCAL_THREAD_ENGINE_BASE
+	if ((MR_r1 == MR_r2)) {
+		MR_GOTO_LAB(__Unify___ml_backend__mlds__mlds_proc_label_0_0_i6);
+	}
+	MR_incr_sp(3);
+	MR_sv(3) = (MR_Word) MR_succip;
+	MR_sv(1) = MR_r1;
+	MR_sv(2) = MR_r2;
+	{
+	MR_Word MR_tempr1, MR_tempr2;
+	MR_tempr1 = MR_sv(1);
+	MR_sv(1) = MR_ctfield(0, MR_tempr1, 1);
+	MR_tempr2 = MR_sv(2);
+	MR_sv(2) = MR_ctfield(0, MR_tempr2, 1);
+	MR_r1 = MR_ctfield(0, MR_tempr1, 0);
+	MR_r2 = MR_ctfield(0, MR_tempr2, 0);
+	}
+	MR_np_call_localret_ent(__Unify___ml_backend__mlds__mlds_pred_label_0_0,
+		__Unify___ml_backend__mlds__mlds_proc_label_0_0_i4);
+MR_def_label(__Unify___ml_backend__mlds__mlds_proc_label_0_0,4)
+	MR_MAYBE_INIT_LOCAL_THREAD_ENGINE_BASE
+	if (!(MR_r1)) {
+		MR_GOTO_LAB(__Unify___ml_backend__mlds__mlds_proc_label_0_0_i1);
+	}
+	MR_r1 = (MR_sv(1) == MR_sv(2));
+	MR_decr_sp_and_return(3);
+MR_def_label(__Unify___ml_backend__mlds__mlds_proc_label_0_0,6)
+	MR_MAYBE_INIT_LOCAL_THREAD_ENGINE_BASE
+	MR_r1 = MR_TRUE;
+	MR_proceed();
+MR_def_label(__Unify___ml_backend__mlds__mlds_proc_label_0_0,1)
+	MR_MAYBE_INIT_LOCAL_THREAD_ENGINE_BASE
+	MR_r1 = MR_FALSE;
+	MR_decr_sp_and_return(3);
+#ifdef MR_maybe_local_thread_engine_base
+	#undef MR_maybe_local_thread_engine_base
+	#define MR_maybe_local_thread_engine_base MR_thread_engine_base
+#endif
+MR_END_MODULE
+
+
+MR_BEGIN_MODULE(ml_backend__mlds_module144)
+	MR_init_entry1(__Compare___ml_backend__mlds__mlds_proc_label_0_0);
+	MR_init_label4(__Compare___ml_backend__mlds__mlds_proc_label_0_0,3,2,5,21)
+MR_BEGIN_CODE
+
+#ifdef MR_maybe_local_thread_engine_base
+	#undef MR_maybe_local_thread_engine_base
+	#define MR_maybe_local_thread_engine_base MR_local_thread_engine_base
+#endif
+MR_define_entry(mercury____Compare___ml_backend__mlds__mlds_proc_label_0_0);
+	MR_MAYBE_INIT_LOCAL_THREAD_ENGINE_BASE
+	if ((MR_r1 == MR_r2)) {
+		MR_GOTO_LAB(__Compare___ml_backend__mlds__mlds_proc_label_0_0_i3);
+	}
+	MR_incr_sp(3);
+	MR_sv(3) = (MR_Word) MR_succip;
+	MR_sv(1) = MR_r1;
+	MR_sv(2) = MR_r2;
+	MR_GOTO_LAB(__Compare___ml_backend__mlds__mlds_proc_label_0_0_i2);
+MR_def_label(__Compare___ml_backend__mlds__mlds_proc_label_0_0,3)
+	MR_MAYBE_INIT_LOCAL_THREAD_ENGINE_BASE
+	MR_r1 = (MR_Integer) 0;
+	MR_proceed();
+MR_def_label(__Compare___ml_backend__mlds__mlds_proc_label_0_0,2)
+	MR_MAYBE_INIT_LOCAL_THREAD_ENGINE_BASE
+	{
+	MR_Word MR_tempr1, MR_tempr2, MR_tempr3, MR_tempr4, MR_tempr5, MR_tempr6;
+	MR_tempr5 = MR_sv(2);
+	MR_tempr1 = MR_ctfield(0, MR_tempr5, 1);
+	MR_tempr6 = MR_sv(1);
+	MR_tempr2 = MR_ctfield(0, MR_tempr6, 1);
+	MR_tempr3 = MR_tempr6;
+	MR_sv(1) = MR_tempr2;
+	MR_tempr4 = MR_tempr5;
+	MR_sv(2) = MR_tempr1;
+	MR_r1 = MR_ctfield(0, MR_tempr3, 0);
+	MR_r2 = MR_ctfield(0, MR_tempr4, 0);
+	}
+	MR_np_call_localret_ent(__Compare___ml_backend__mlds__mlds_pred_label_0_0,
+		__Compare___ml_backend__mlds__mlds_proc_label_0_0_i5);
+MR_def_label(__Compare___ml_backend__mlds__mlds_proc_label_0_0,5)
+	MR_MAYBE_INIT_LOCAL_THREAD_ENGINE_BASE
+	if (MR_INT_NE(MR_r1,0)) {
+		MR_GOTO_LAB(__Compare___ml_backend__mlds__mlds_proc_label_0_0_i21);
+	}
+	MR_r1 = MR_sv(1);
+	MR_r2 = MR_sv(2);
+	MR_succip_word = MR_sv(3);
+	MR_decr_sp(3);
+	MR_np_tailcall_ent(private_builtin__builtin_compare_int_3_0);
+MR_def_label(__Compare___ml_backend__mlds__mlds_proc_label_0_0,21)
+	MR_MAYBE_INIT_LOCAL_THREAD_ENGINE_BASE
+	MR_decr_sp_and_return(3);
+#ifdef MR_maybe_local_thread_engine_base
+	#undef MR_maybe_local_thread_engine_base
+	#define MR_maybe_local_thread_engine_base MR_thread_engine_base
+#endif
+MR_END_MODULE
+
+
+MR_BEGIN_MODULE(ml_backend__mlds_module145)
+	MR_init_entry1(__Unify___ml_backend__mlds__mlds_qual_kind_0_0);
+MR_BEGIN_CODE
+
+#ifdef MR_maybe_local_thread_engine_base
+	#undef MR_maybe_local_thread_engine_base
+	#define MR_maybe_local_thread_engine_base MR_local_thread_engine_base
+#endif
+MR_define_entry(mercury____Unify___ml_backend__mlds__mlds_qual_kind_0_0);
+	MR_MAYBE_INIT_LOCAL_THREAD_ENGINE_BASE
+	MR_r1 = (MR_r1 == MR_r2);
+	MR_proceed();
+#ifdef MR_maybe_local_thread_engine_base
+	#undef MR_maybe_local_thread_engine_base
+	#define MR_maybe_local_thread_engine_base MR_thread_engine_base
+#endif
+MR_END_MODULE
+
+
+MR_BEGIN_MODULE(ml_backend__mlds_module146)
+	MR_init_entry1(__Compare___ml_backend__mlds__mlds_qual_kind_0_0);
+MR_BEGIN_CODE
+
+#ifdef MR_maybe_local_thread_engine_base
+	#undef MR_maybe_local_thread_engine_base
+	#define MR_maybe_local_thread_engine_base MR_local_thread_engine_base
+#endif
+MR_define_entry(mercury____Compare___ml_backend__mlds__mlds_qual_kind_0_0);
+	MR_MAYBE_INIT_LOCAL_THREAD_ENGINE_BASE
+	MR_np_tailcall_ent(private_builtin__builtin_compare_int_3_0);
+#ifdef MR_maybe_local_thread_engine_base
+	#undef MR_maybe_local_thread_engine_base
+	#define MR_maybe_local_thread_engine_base MR_thread_engine_base
+#endif
+MR_END_MODULE
+
+
+MR_BEGIN_MODULE(ml_backend__mlds_module147)
+	MR_init_entry1(__Unify___ml_backend__mlds__mlds_qualified_ctor_id_0_0);
+MR_BEGIN_CODE
+
+#ifdef MR_maybe_local_thread_engine_base
+	#undef MR_maybe_local_thread_engine_base
+	#define MR_maybe_local_thread_engine_base MR_local_thread_engine_base
+#endif
+MR_define_entry(mercury____Unify___ml_backend__mlds__mlds_qualified_ctor_id_0_0);
+	MR_MAYBE_INIT_LOCAL_THREAD_ENGINE_BASE
+	{
+	MR_Word MR_tempr1, MR_tempr2;
+	MR_tempr1 = MR_r1;
+	MR_r1 = (MR_Word) MR_CTOR0_ADDR(ml_backend__mlds, mlds_ctor_id);
+	MR_tempr2 = MR_r2;
+	MR_r2 = MR_tempr1;
+	MR_r3 = MR_tempr2;
+	MR_np_tailcall_ent(__Unify___ml_backend__mlds__mlds_fully_qualified_name_1_0);
+	}
+#ifdef MR_maybe_local_thread_engine_base
+	#undef MR_maybe_local_thread_engine_base
+	#define MR_maybe_local_thread_engine_base MR_thread_engine_base
+#endif
+MR_END_MODULE
+
+
+MR_BEGIN_MODULE(ml_backend__mlds_module148)
+	MR_init_entry1(__Compare___ml_backend__mlds__mlds_qualified_ctor_id_0_0);
+MR_BEGIN_CODE
+
+#ifdef MR_maybe_local_thread_engine_base
+	#undef MR_maybe_local_thread_engine_base
+	#define MR_maybe_local_thread_engine_base MR_local_thread_engine_base
+#endif
+MR_define_entry(mercury____Compare___ml_backend__mlds__mlds_qualified_ctor_id_0_0);
+	MR_MAYBE_INIT_LOCAL_THREAD_ENGINE_BASE
+	{
+	MR_Word MR_tempr1, MR_tempr2;
+	MR_tempr1 = MR_r1;
+	MR_r1 = (MR_Word) MR_CTOR0_ADDR(ml_backend__mlds, mlds_ctor_id);
+	MR_tempr2 = MR_r2;
+	MR_r2 = MR_tempr1;
+	MR_r3 = MR_tempr2;
+	MR_np_tailcall_ent(__Compare___ml_backend__mlds__mlds_fully_qualified_name_1_0);
+	}
+#ifdef MR_maybe_local_thread_engine_base
+	#undef MR_maybe_local_thread_engine_base
+	#define MR_maybe_local_thread_engine_base MR_thread_engine_base
+#endif
+MR_END_MODULE
+
+
+MR_BEGIN_MODULE(ml_backend__mlds_module149)
+	MR_init_entry1(__Unify___ml_backend__mlds__mlds_qualified_entity_name_0_0);
+MR_BEGIN_CODE
+
+#ifdef MR_maybe_local_thread_engine_base
+	#undef MR_maybe_local_thread_engine_base
+	#define MR_maybe_local_thread_engine_base MR_local_thread_engine_base
+#endif
+MR_define_entry(mercury____Unify___ml_backend__mlds__mlds_qualified_entity_name_0_0);
+	MR_MAYBE_INIT_LOCAL_THREAD_ENGINE_BASE
+	{
+	MR_Word MR_tempr1, MR_tempr2;
+	MR_tempr1 = MR_r1;
+	MR_r1 = (MR_Word) MR_CTOR0_ADDR(ml_backend__mlds, mlds_entity_name);
+	MR_tempr2 = MR_r2;
+	MR_r2 = MR_tempr1;
+	MR_r3 = MR_tempr2;
+	MR_np_tailcall_ent(__Unify___ml_backend__mlds__mlds_fully_qualified_name_1_0);
+	}
+#ifdef MR_maybe_local_thread_engine_base
+	#undef MR_maybe_local_thread_engine_base
+	#define MR_maybe_local_thread_engine_base MR_thread_engine_base
+#endif
+MR_END_MODULE
+
+
+MR_BEGIN_MODULE(ml_backend__mlds_module150)
+	MR_init_entry1(__Compare___ml_backend__mlds__mlds_qualified_entity_name_0_0);
+MR_BEGIN_CODE
+
+#ifdef MR_maybe_local_thread_engine_base
+	#undef MR_maybe_local_thread_engine_base
+	#define MR_maybe_local_thread_engine_base MR_local_thread_engine_base
+#endif
+MR_define_entry(mercury____Compare___ml_backend__mlds__mlds_qualified_entity_name_0_0);
+	MR_MAYBE_INIT_LOCAL_THREAD_ENGINE_BASE
+	{
+	MR_Word MR_tempr1, MR_tempr2;
+	MR_tempr1 = MR_r1;
+	MR_r1 = (MR_Word) MR_CTOR0_ADDR(ml_backend__mlds, mlds_entity_name);
+	MR_tempr2 = MR_r2;
+	MR_r2 = MR_tempr1;
+	MR_r3 = MR_tempr2;
+	MR_np_tailcall_ent(__Compare___ml_backend__mlds__mlds_fully_qualified_name_1_0);
+	}
+#ifdef MR_maybe_local_thread_engine_base
+	#undef MR_maybe_local_thread_engine_base
+	#define MR_maybe_local_thread_engine_base MR_thread_engine_base
+#endif
+MR_END_MODULE
+
+
+MR_BEGIN_MODULE(ml_backend__mlds_module151)
+	MR_init_entry1(__Unify___ml_backend__mlds__mlds_qualified_pred_label_0_0);
+MR_BEGIN_CODE
+
+#ifdef MR_maybe_local_thread_engine_base
+	#undef MR_maybe_local_thread_engine_base
+	#define MR_maybe_local_thread_engine_base MR_local_thread_engine_base
+#endif
+MR_define_entry(mercury____Unify___ml_backend__mlds__mlds_qualified_pred_label_0_0);
+	MR_MAYBE_INIT_LOCAL_THREAD_ENGINE_BASE
+	{
+	MR_Word MR_tempr1, MR_tempr2;
+	MR_tempr1 = MR_r1;
+	MR_r1 = (MR_Word) MR_CTOR0_ADDR(ml_backend__mlds, mlds_pred_label);
+	MR_tempr2 = MR_r2;
+	MR_r2 = MR_tempr1;
+	MR_r3 = MR_tempr2;
+	MR_np_tailcall_ent(__Unify___ml_backend__mlds__mlds_fully_qualified_name_1_0);
+	}
+#ifdef MR_maybe_local_thread_engine_base
+	#undef MR_maybe_local_thread_engine_base
+	#define MR_maybe_local_thread_engine_base MR_thread_engine_base
+#endif
+MR_END_MODULE
+
+
+MR_BEGIN_MODULE(ml_backend__mlds_module152)
+	MR_init_entry1(__Compare___ml_backend__mlds__mlds_qualified_pred_label_0_0);
+MR_BEGIN_CODE
+
+#ifdef MR_maybe_local_thread_engine_base
+	#undef MR_maybe_local_thread_engine_base
+	#define MR_maybe_local_thread_engine_base MR_local_thread_engine_base
+#endif
+MR_define_entry(mercury____Compare___ml_backend__mlds__mlds_qualified_pred_label_0_0);
+	MR_MAYBE_INIT_LOCAL_THREAD_ENGINE_BASE
+	{
+	MR_Word MR_tempr1, MR_tempr2;
+	MR_tempr1 = MR_r1;
+	MR_r1 = (MR_Word) MR_CTOR0_ADDR(ml_backend__mlds, mlds_pred_label);
+	MR_tempr2 = MR_r2;
+	MR_r2 = MR_tempr1;
+	MR_r3 = MR_tempr2;
+	MR_np_tailcall_ent(__Compare___ml_backend__mlds__mlds_fully_qualified_name_1_0);
+	}
+#ifdef MR_maybe_local_thread_engine_base
+	#undef MR_maybe_local_thread_engine_base
+	#define MR_maybe_local_thread_engine_base MR_thread_engine_base
+#endif
+MR_END_MODULE
+
+
+MR_BEGIN_MODULE(ml_backend__mlds_module153)
+	MR_init_entry1(__Unify___ml_backend__mlds__mlds_qualified_proc_label_0_0);
+MR_BEGIN_CODE
+
+#ifdef MR_maybe_local_thread_engine_base
+	#undef MR_maybe_local_thread_engine_base
+	#define MR_maybe_local_thread_engine_base MR_local_thread_engine_base
+#endif
+MR_define_entry(mercury____Unify___ml_backend__mlds__mlds_qualified_proc_label_0_0);
+	MR_MAYBE_INIT_LOCAL_THREAD_ENGINE_BASE
+	{
+	MR_Word MR_tempr1, MR_tempr2;
+	MR_tempr1 = MR_r1;
+	MR_r1 = (MR_Word) MR_CTOR0_ADDR(ml_backend__mlds, mlds_proc_label);
+	MR_tempr2 = MR_r2;
+	MR_r2 = MR_tempr1;
+	MR_r3 = MR_tempr2;
+	MR_np_tailcall_ent(__Unify___ml_backend__mlds__mlds_fully_qualified_name_1_0);
+	}
+#ifdef MR_maybe_local_thread_engine_base
+	#undef MR_maybe_local_thread_engine_base
+	#define MR_maybe_local_thread_engine_base MR_thread_engine_base
+#endif
+MR_END_MODULE
+
+
+MR_BEGIN_MODULE(ml_backend__mlds_module154)
+	MR_init_entry1(__Compare___ml_backend__mlds__mlds_qualified_proc_label_0_0);
+MR_BEGIN_CODE
+
+#ifdef MR_maybe_local_thread_engine_base
+	#undef MR_maybe_local_thread_engine_base
+	#define MR_maybe_local_thread_engine_base MR_local_thread_engine_base
+#endif
+MR_define_entry(mercury____Compare___ml_backend__mlds__mlds_qualified_proc_label_0_0);
+	MR_MAYBE_INIT_LOCAL_THREAD_ENGINE_BASE
+	{
+	MR_Word MR_tempr1, MR_tempr2;
+	MR_tempr1 = MR_r1;
+	MR_r1 = (MR_Word) MR_CTOR0_ADDR(ml_backend__mlds, mlds_proc_label);
+	MR_tempr2 = MR_r2;
+	MR_r2 = MR_tempr1;
+	MR_r3 = MR_tempr2;
+	MR_np_tailcall_ent(__Compare___ml_backend__mlds__mlds_fully_qualified_name_1_0);
+	}
+#ifdef MR_maybe_local_thread_engine_base
+	#undef MR_maybe_local_thread_engine_base
+	#define MR_maybe_local_thread_engine_base MR_thread_engine_base
+#endif
+MR_END_MODULE
+
+
+MR_BEGIN_MODULE(ml_backend__mlds_module155)
+	MR_init_entry1(__Unify___ml_backend__mlds__mlds_reset_trail_reason_0_0);
+MR_BEGIN_CODE
+
+#ifdef MR_maybe_local_thread_engine_base
+	#undef MR_maybe_local_thread_engine_base
+	#define MR_maybe_local_thread_engine_base MR_local_thread_engine_base
+#endif
+MR_define_entry(mercury____Unify___ml_backend__mlds__mlds_reset_trail_reason_0_0);
+	MR_MAYBE_INIT_LOCAL_THREAD_ENGINE_BASE
+	MR_r1 = (MR_r1 == MR_r2);
+	MR_proceed();
+#ifdef MR_maybe_local_thread_engine_base
+	#undef MR_maybe_local_thread_engine_base
+	#define MR_maybe_local_thread_engine_base MR_thread_engine_base
+#endif
+MR_END_MODULE
+
+
+MR_BEGIN_MODULE(ml_backend__mlds_module156)
+	MR_init_entry1(__Compare___ml_backend__mlds__mlds_reset_trail_reason_0_0);
+MR_BEGIN_CODE
+
+#ifdef MR_maybe_local_thread_engine_base
+	#undef MR_maybe_local_thread_engine_base
+	#define MR_maybe_local_thread_engine_base MR_local_thread_engine_base
+#endif
+MR_define_entry(mercury____Compare___ml_backend__mlds__mlds_reset_trail_reason_0_0);
+	MR_MAYBE_INIT_LOCAL_THREAD_ENGINE_BASE
+	MR_np_tailcall_ent(private_builtin__builtin_compare_int_3_0);
+#ifdef MR_maybe_local_thread_engine_base
+	#undef MR_maybe_local_thread_engine_base
+	#define MR_maybe_local_thread_engine_base MR_thread_engine_base
+#endif
+MR_END_MODULE
+
+
+MR_BEGIN_MODULE(ml_backend__mlds_module157)
+	MR_init_entry1(__Unify___ml_backend__mlds__mlds_return_types_0_0);
+MR_BEGIN_CODE
+
+#ifdef MR_maybe_local_thread_engine_base
+	#undef MR_maybe_local_thread_engine_base
+	#define MR_maybe_local_thread_engine_base MR_local_thread_engine_base
+#endif
+MR_define_entry(mercury____Unify___ml_backend__mlds__mlds_return_types_0_0);
+	MR_MAYBE_INIT_LOCAL_THREAD_ENGINE_BASE
+	{
+	MR_Word MR_tempr1, MR_tempr2;
+	MR_tempr1 = MR_r1;
+	MR_r1 = (MR_Word) MR_CTOR0_ADDR(ml_backend__mlds, mlds_type);
+	MR_tempr2 = MR_r2;
+	MR_r2 = MR_tempr1;
+	MR_r3 = MR_tempr2;
+	MR_np_tailcall_ent(__Unify___list__list_1_0);
+	}
+#ifdef MR_maybe_local_thread_engine_base
+	#undef MR_maybe_local_thread_engine_base
+	#define MR_maybe_local_thread_engine_base MR_thread_engine_base
+#endif
+MR_END_MODULE
+
+
+MR_BEGIN_MODULE(ml_backend__mlds_module158)
+	MR_init_entry1(__Compare___ml_backend__mlds__mlds_return_types_0_0);
+MR_BEGIN_CODE
+
+#ifdef MR_maybe_local_thread_engine_base
+	#undef MR_maybe_local_thread_engine_base
+	#define MR_maybe_local_thread_engine_base MR_local_thread_engine_base
+#endif
+MR_define_entry(mercury____Compare___ml_backend__mlds__mlds_return_types_0_0);
+	MR_MAYBE_INIT_LOCAL_THREAD_ENGINE_BASE
+	{
+	MR_Word MR_tempr1, MR_tempr2;
+	MR_tempr1 = MR_r1;
+	MR_r1 = (MR_Word) MR_CTOR0_ADDR(ml_backend__mlds, mlds_type);
+	MR_tempr2 = MR_r2;
+	MR_r2 = MR_tempr1;
+	MR_r3 = MR_tempr2;
+	MR_np_tailcall_ent(__Compare___list__list_1_0);
+	}
+#ifdef MR_maybe_local_thread_engine_base
+	#undef MR_maybe_local_thread_engine_base
+	#define MR_maybe_local_thread_engine_base MR_thread_engine_base
+#endif
+MR_END_MODULE
+
+MR_decl_entry(__Unify___backend_libs__builtin_ops__binary_op_0_0);
+
+MR_BEGIN_MODULE(ml_backend__mlds_module159)
+	MR_init_entry1(__Unify___ml_backend__mlds__mlds_rval_0_0);
+	MR_init_label8(__Unify___ml_backend__mlds__mlds_rval_0_0,111,17,25,13,42,5,7,9)
+	MR_init_label5(__Unify___ml_backend__mlds__mlds_rval_0_0,21,33,35,43,1)
+MR_BEGIN_CODE
+
+#ifdef MR_maybe_local_thread_engine_base
+	#undef MR_maybe_local_thread_engine_base
+	#define MR_maybe_local_thread_engine_base MR_local_thread_engine_base
+#endif
+MR_define_entry(mercury____Unify___ml_backend__mlds__mlds_rval_0_0);
+	MR_MAYBE_INIT_LOCAL_THREAD_ENGINE_BASE
+	MR_incr_sp(5);
+	MR_sv(5) = (MR_Word) MR_succip;
+MR_def_label(__Unify___ml_backend__mlds__mlds_rval_0_0,111)
+	MR_MAYBE_INIT_LOCAL_THREAD_ENGINE_BASE
+	if ((MR_r1 == MR_r2)) {
+		MR_GOTO_LAB(__Unify___ml_backend__mlds__mlds_rval_0_0_i43);
+	}
+	MR_sv(1) = MR_r1;
+	MR_sv(2) = MR_r2;
+	MR_COMPUTED_GOTO((MR_Unsigned) MR_tag(MR_sv(1)),
+		MR_LABEL_AP(__Unify___ml_backend__mlds__mlds_rval_0_0_i17) MR_AND
+		MR_LABEL_AP(__Unify___ml_backend__mlds__mlds_rval_0_0_i25) MR_AND
+		MR_LABEL_AP(__Unify___ml_backend__mlds__mlds_rval_0_0_i13) MR_AND
+		MR_LABEL_AP(__Unify___ml_backend__mlds__mlds_rval_0_0_i42));
+MR_def_label(__Unify___ml_backend__mlds__mlds_rval_0_0,17)
+	MR_MAYBE_INIT_LOCAL_THREAD_ENGINE_BASE
+	if (MR_PTAG_TESTR(MR_sv(2),0)) {
+		MR_GOTO_LAB(__Unify___ml_backend__mlds__mlds_rval_0_0_i1);
+	}
+	MR_r1 = MR_ctfield(0, MR_sv(1), 0);
+	MR_r2 = MR_ctfield(0, MR_sv(2), 0);
+	MR_succip_word = MR_sv(5);
+	MR_decr_sp(5);
+	MR_np_tailcall_ent(__Unify___ml_backend__mlds__mlds_lval_0_0);
+MR_def_label(__Unify___ml_backend__mlds__mlds_rval_0_0,25)
+	MR_MAYBE_INIT_LOCAL_THREAD_ENGINE_BASE
+	if (MR_PTAG_TESTR(MR_sv(2),1)) {
+		MR_GOTO_LAB(__Unify___ml_backend__mlds__mlds_rval_0_0_i1);
+	}
+	{
+	MR_Word MR_tempr1, MR_tempr2, MR_tempr3, MR_tempr4;
+	MR_tempr3 = MR_sv(1);
+	MR_tempr1 = MR_ctfield(1, MR_tempr3, 0);
+	MR_tempr4 = MR_sv(2);
+	MR_tempr2 = MR_ctfield(1, MR_tempr4, 0);
+	if ((MR_tempr1 != MR_tempr2)) {
+		MR_GOTO_LAB(__Unify___ml_backend__mlds__mlds_rval_0_0_i1);
+	}
+	MR_r1 = MR_ctfield(1, MR_tempr3, 1);
+	MR_r2 = MR_ctfield(1, MR_tempr4, 1);
+	MR_succip_word = MR_sv(5);
+	MR_GOTO_LAB(__Unify___ml_backend__mlds__mlds_rval_0_0_i111);
+	}
+MR_def_label(__Unify___ml_backend__mlds__mlds_rval_0_0,13)
+	MR_MAYBE_INIT_LOCAL_THREAD_ENGINE_BASE
+	if (MR_PTAG_TESTR(MR_sv(2),2)) {
+		MR_GOTO_LAB(__Unify___ml_backend__mlds__mlds_rval_0_0_i1);
+	}
+	MR_r1 = MR_ctfield(2, MR_sv(1), 0);
+	MR_r2 = MR_ctfield(2, MR_sv(2), 0);
+	MR_succip_word = MR_sv(5);
+	MR_decr_sp(5);
+	MR_np_tailcall_ent(__Unify___ml_backend__mlds__mlds_rval_const_0_0);
+MR_def_label(__Unify___ml_backend__mlds__mlds_rval_0_0,42)
+	MR_MAYBE_INIT_LOCAL_THREAD_ENGINE_BASE
+	{
+	MR_Word MR_tempr1, MR_tempr2;
+	MR_tempr2 = MR_sv(1);
+	MR_tempr1 = MR_ctfield(3, MR_tempr2, 0);
+	if (MR_INT_EQ(MR_tempr1,0)) {
+		MR_GOTO_LAB(__Unify___ml_backend__mlds__mlds_rval_0_0_i33);
+	}
+	if (MR_INT_EQ(MR_tempr1,1)) {
+		MR_GOTO_LAB(__Unify___ml_backend__mlds__mlds_rval_0_0_i5);
+	}
+	if (MR_INT_EQ(MR_tempr1,2)) {
+		MR_GOTO_LAB(__Unify___ml_backend__mlds__mlds_rval_0_0_i21);
+	}
+	if (MR_RTAGS_TESTR(MR_sv(2),3,3)) {
+		MR_GOTO_LAB(__Unify___ml_backend__mlds__mlds_rval_0_0_i1);
+	}
+	MR_r1 = MR_ctfield(3, MR_tempr2, 1);
+	MR_r2 = MR_ctfield(3, MR_sv(2), 1);
+	MR_succip_word = MR_sv(5);
+	MR_decr_sp(5);
+	MR_np_tailcall_ent(__Unify___ml_backend__mlds__mlds_type_0_0);
+	}
+MR_def_label(__Unify___ml_backend__mlds__mlds_rval_0_0,5)
+	MR_MAYBE_INIT_LOCAL_THREAD_ENGINE_BASE
+	if (MR_RTAGS_TESTR(MR_sv(2),3,1)) {
+		MR_GOTO_LAB(__Unify___ml_backend__mlds__mlds_rval_0_0_i1);
+	}
+	{
+	MR_Word MR_tempr1, MR_tempr2;
+	MR_tempr1 = MR_sv(1);
+	MR_sv(1) = MR_ctfield(3, MR_tempr1, 2);
+	MR_tempr2 = MR_sv(2);
+	MR_sv(2) = MR_ctfield(3, MR_tempr1, 3);
+	MR_sv(3) = MR_ctfield(3, MR_tempr2, 2);
+	MR_sv(4) = MR_ctfield(3, MR_tempr2, 3);
+	MR_r1 = MR_ctfield(3, MR_tempr1, 1);
+	MR_r2 = MR_ctfield(3, MR_tempr2, 1);
+	}
+	MR_np_call_localret_ent(__Unify___backend_libs__builtin_ops__binary_op_0_0,
+		__Unify___ml_backend__mlds__mlds_rval_0_0_i7);
+MR_def_label(__Unify___ml_backend__mlds__mlds_rval_0_0,7)
+	MR_MAYBE_INIT_LOCAL_THREAD_ENGINE_BASE
+	if (!(MR_r1)) {
+		MR_GOTO_LAB(__Unify___ml_backend__mlds__mlds_rval_0_0_i1);
+	}
+	MR_r1 = MR_sv(1);
+	MR_r2 = MR_sv(3);
+	MR_np_localcall_lab(__Unify___ml_backend__mlds__mlds_rval_0_0,
+		__Unify___ml_backend__mlds__mlds_rval_0_0_i9);
+MR_def_label(__Unify___ml_backend__mlds__mlds_rval_0_0,9)
+	MR_MAYBE_INIT_LOCAL_THREAD_ENGINE_BASE
+	if (!(MR_r1)) {
+		MR_GOTO_LAB(__Unify___ml_backend__mlds__mlds_rval_0_0_i1);
+	}
+	MR_r1 = MR_sv(2);
+	MR_r2 = MR_sv(4);
+	MR_succip_word = MR_sv(5);
+	MR_GOTO_LAB(__Unify___ml_backend__mlds__mlds_rval_0_0_i111);
+MR_def_label(__Unify___ml_backend__mlds__mlds_rval_0_0,21)
+	MR_MAYBE_INIT_LOCAL_THREAD_ENGINE_BASE
+	if (MR_RTAGS_TESTR(MR_sv(2),3,2)) {
+		MR_GOTO_LAB(__Unify___ml_backend__mlds__mlds_rval_0_0_i1);
+	}
+	MR_r1 = MR_ctfield(3, MR_sv(1), 1);
+	MR_r2 = MR_ctfield(3, MR_sv(2), 1);
+	MR_succip_word = MR_sv(5);
+	MR_decr_sp(5);
+	MR_np_tailcall_ent(__Unify___ml_backend__mlds__mlds_lval_0_0);
+MR_def_label(__Unify___ml_backend__mlds__mlds_rval_0_0,33)
+	MR_MAYBE_INIT_LOCAL_THREAD_ENGINE_BASE
+	if (MR_RTAGS_TESTR(MR_sv(2),3,0)) {
+		MR_GOTO_LAB(__Unify___ml_backend__mlds__mlds_rval_0_0_i1);
+	}
+	{
+	MR_Word MR_tempr1, MR_tempr2;
+	MR_tempr1 = MR_sv(1);
+	MR_sv(1) = MR_ctfield(3, MR_tempr1, 2);
+	MR_tempr2 = MR_sv(2);
+	MR_sv(2) = MR_ctfield(3, MR_tempr2, 2);
+	MR_r1 = MR_ctfield(3, MR_tempr1, 1);
+	MR_r2 = MR_ctfield(3, MR_tempr2, 1);
+	}
+	MR_np_call_localret_ent(__Unify___ml_backend__mlds__mlds_unary_op_0_0,
+		__Unify___ml_backend__mlds__mlds_rval_0_0_i35);
+MR_def_label(__Unify___ml_backend__mlds__mlds_rval_0_0,35)
+	MR_MAYBE_INIT_LOCAL_THREAD_ENGINE_BASE
+	if (!(MR_r1)) {
+		MR_GOTO_LAB(__Unify___ml_backend__mlds__mlds_rval_0_0_i1);
+	}
+	MR_r1 = MR_sv(1);
+	MR_r2 = MR_sv(2);
+	MR_succip_word = MR_sv(5);
+	MR_GOTO_LAB(__Unify___ml_backend__mlds__mlds_rval_0_0_i111);
+MR_def_label(__Unify___ml_backend__mlds__mlds_rval_0_0,43)
+	MR_MAYBE_INIT_LOCAL_THREAD_ENGINE_BASE
+	MR_r1 = MR_TRUE;
+	MR_decr_sp_and_return(5);
+MR_def_label(__Unify___ml_backend__mlds__mlds_rval_0_0,1)
+	MR_MAYBE_INIT_LOCAL_THREAD_ENGINE_BASE
+	MR_r1 = MR_FALSE;
+	MR_decr_sp_and_return(5);
+#ifdef MR_maybe_local_thread_engine_base
+	#undef MR_maybe_local_thread_engine_base
+	#define MR_maybe_local_thread_engine_base MR_thread_engine_base
+#endif
+MR_END_MODULE
+
+MR_decl_entry(__Compare___backend_libs__builtin_ops__binary_op_0_0);
+
+MR_BEGIN_MODULE(ml_backend__mlds_module160)
+	MR_init_entry1(__Compare___ml_backend__mlds__mlds_rval_0_0);
+	MR_init_label8(__Compare___ml_backend__mlds__mlds_rval_0_0,275,3,43,47,56,71,77,79)
+	MR_init_label8(__Compare___ml_backend__mlds__mlds_rval_0_0,89,29,32,42,126,5,7,9)
+	MR_init_label8(__Compare___ml_backend__mlds__mlds_rval_0_0,13,57,62,104,107,122,155,112)
+	MR_init_label2(__Compare___ml_backend__mlds__mlds_rval_0_0,114,291)
+MR_BEGIN_CODE
+
+#ifdef MR_maybe_local_thread_engine_base
+	#undef MR_maybe_local_thread_engine_base
+	#define MR_maybe_local_thread_engine_base MR_local_thread_engine_base
+#endif
+MR_define_entry(mercury____Compare___ml_backend__mlds__mlds_rval_0_0);
+	MR_MAYBE_INIT_LOCAL_THREAD_ENGINE_BASE
+	MR_incr_sp(5);
+	MR_sv(5) = (MR_Word) MR_succip;
+MR_def_label(__Compare___ml_backend__mlds__mlds_rval_0_0,275)
+	MR_MAYBE_INIT_LOCAL_THREAD_ENGINE_BASE
+	if ((MR_r1 == MR_r2)) {
+		MR_GOTO_LAB(__Compare___ml_backend__mlds__mlds_rval_0_0_i3);
+	}
+	MR_sv(1) = MR_r1;
+	MR_sv(2) = MR_r2;
+	MR_COMPUTED_GOTO((MR_Unsigned) MR_tag(MR_sv(1)),
+		MR_LABEL_AP(__Compare___ml_backend__mlds__mlds_rval_0_0_i43) MR_AND
+		MR_LABEL_AP(__Compare___ml_backend__mlds__mlds_rval_0_0_i71) MR_AND
+		MR_LABEL_AP(__Compare___ml_backend__mlds__mlds_rval_0_0_i29) MR_AND
+		MR_LABEL_AP(__Compare___ml_backend__mlds__mlds_rval_0_0_i126));
+MR_def_label(__Compare___ml_backend__mlds__mlds_rval_0_0,3)
+	MR_MAYBE_INIT_LOCAL_THREAD_ENGINE_BASE
+	MR_r1 = (MR_Integer) 0;
+	MR_decr_sp_and_return(5);
+MR_def_label(__Compare___ml_backend__mlds__mlds_rval_0_0,43)
+	MR_MAYBE_INIT_LOCAL_THREAD_ENGINE_BASE
+	MR_COMPUTED_GOTO((MR_Unsigned) MR_tag(MR_sv(2)),
+		MR_LABEL_AP(__Compare___ml_backend__mlds__mlds_rval_0_0_i47) MR_AND
+		MR_LABEL_AP(__Compare___ml_backend__mlds__mlds_rval_0_0_i155) MR_AND
+		MR_LABEL_AP(__Compare___ml_backend__mlds__mlds_rval_0_0_i155) MR_AND
+		MR_LABEL_AP(__Compare___ml_backend__mlds__mlds_rval_0_0_i56));
+MR_def_label(__Compare___ml_backend__mlds__mlds_rval_0_0,47)
+	MR_MAYBE_INIT_LOCAL_THREAD_ENGINE_BASE
+	MR_r1 = MR_ctfield(0, MR_sv(1), 0);
+	MR_r2 = MR_ctfield(0, MR_sv(2), 0);
+	MR_succip_word = MR_sv(5);
+	MR_decr_sp(5);
+	MR_np_tailcall_ent(__Compare___ml_backend__mlds__mlds_lval_0_0);
+MR_def_label(__Compare___ml_backend__mlds__mlds_rval_0_0,56)
+	MR_MAYBE_INIT_LOCAL_THREAD_ENGINE_BASE
+	{
+	MR_Word MR_tempr1;
+	MR_tempr1 = MR_ctfield(3, MR_sv(2), 0);
+	if (MR_INT_EQ(MR_tempr1,0)) {
+		MR_GOTO_LAB(__Compare___ml_backend__mlds__mlds_rval_0_0_i155);
+	}
+	if (MR_INT_EQ(MR_tempr1,1)) {
+		MR_GOTO_LAB(__Compare___ml_backend__mlds__mlds_rval_0_0_i155);
+	}
+	if (MR_INT_EQ(MR_tempr1,2)) {
+		MR_GOTO_LAB(__Compare___ml_backend__mlds__mlds_rval_0_0_i155);
+	}
+	MR_r1 = (MR_Integer) 1;
+	MR_decr_sp_and_return(5);
+	}
+MR_def_label(__Compare___ml_backend__mlds__mlds_rval_0_0,71)
+	MR_MAYBE_INIT_LOCAL_THREAD_ENGINE_BASE
+	MR_COMPUTED_GOTO((MR_Unsigned) MR_tag(MR_sv(2)),
+		MR_LABEL_AP(__Compare___ml_backend__mlds__mlds_rval_0_0_i107) MR_AND
+		MR_LABEL_AP(__Compare___ml_backend__mlds__mlds_rval_0_0_i77) MR_AND
+		MR_LABEL_AP(__Compare___ml_backend__mlds__mlds_rval_0_0_i155) MR_AND
+		MR_LABEL_AP(__Compare___ml_backend__mlds__mlds_rval_0_0_i89));
+MR_def_label(__Compare___ml_backend__mlds__mlds_rval_0_0,77)
+	MR_MAYBE_INIT_LOCAL_THREAD_ENGINE_BASE
+	{
+	MR_Word MR_tempr1, MR_tempr2, MR_tempr3, MR_tempr4, MR_tempr5, MR_tempr6;
+	MR_tempr5 = MR_sv(1);
+	MR_tempr1 = MR_ctfield(1, MR_tempr5, 1);
+	MR_tempr6 = MR_sv(2);
+	MR_tempr2 = MR_ctfield(1, MR_tempr6, 1);
+	MR_tempr3 = MR_tempr5;
+	MR_sv(1) = MR_tempr2;
+	MR_tempr4 = MR_tempr6;
+	MR_sv(2) = MR_tempr1;
+	MR_r1 = MR_ctfield(1, MR_tempr3, 0);
+	MR_r2 = MR_ctfield(1, MR_tempr4, 0);
+	}
+	MR_np_call_localret_ent(private_builtin__builtin_compare_int_3_0,
+		__Compare___ml_backend__mlds__mlds_rval_0_0_i79);
+MR_def_label(__Compare___ml_backend__mlds__mlds_rval_0_0,79)
+	MR_MAYBE_INIT_LOCAL_THREAD_ENGINE_BASE
+	if (MR_INT_NE(MR_r1,0)) {
+		MR_GOTO_LAB(__Compare___ml_backend__mlds__mlds_rval_0_0_i291);
+	}
+	MR_r1 = MR_sv(2);
+	MR_r2 = MR_sv(1);
+	MR_succip_word = MR_sv(5);
+	MR_GOTO_LAB(__Compare___ml_backend__mlds__mlds_rval_0_0_i275);
+MR_def_label(__Compare___ml_backend__mlds__mlds_rval_0_0,89)
+	MR_MAYBE_INIT_LOCAL_THREAD_ENGINE_BASE
+	{
+	MR_Word MR_tempr1;
+	MR_tempr1 = MR_ctfield(3, MR_sv(2), 0);
+	if (MR_INT_EQ(MR_tempr1,0)) {
+		MR_GOTO_LAB(__Compare___ml_backend__mlds__mlds_rval_0_0_i155);
+	}
+	if (MR_INT_EQ(MR_tempr1,1)) {
+		MR_GOTO_LAB(__Compare___ml_backend__mlds__mlds_rval_0_0_i155);
+	}
+	if (MR_INT_EQ(MR_tempr1,2)) {
+		MR_GOTO_LAB(__Compare___ml_backend__mlds__mlds_rval_0_0_i155);
+	}
+	MR_r1 = (MR_Integer) 1;
+	MR_decr_sp_and_return(5);
+	}
+MR_def_label(__Compare___ml_backend__mlds__mlds_rval_0_0,29)
+	MR_MAYBE_INIT_LOCAL_THREAD_ENGINE_BASE
+	MR_COMPUTED_GOTO((MR_Unsigned) MR_tag(MR_sv(2)),
+		MR_LABEL_AP(__Compare___ml_backend__mlds__mlds_rval_0_0_i107) MR_AND
+		MR_LABEL_AP(__Compare___ml_backend__mlds__mlds_rval_0_0_i107) MR_AND
+		MR_LABEL_AP(__Compare___ml_backend__mlds__mlds_rval_0_0_i32) MR_AND
+		MR_LABEL_AP(__Compare___ml_backend__mlds__mlds_rval_0_0_i42));
+MR_def_label(__Compare___ml_backend__mlds__mlds_rval_0_0,32)
+	MR_MAYBE_INIT_LOCAL_THREAD_ENGINE_BASE
+	MR_r1 = MR_ctfield(2, MR_sv(1), 0);
+	MR_r2 = MR_ctfield(2, MR_sv(2), 0);
+	MR_succip_word = MR_sv(5);
+	MR_decr_sp(5);
+	MR_np_tailcall_ent(__Compare___ml_backend__mlds__mlds_rval_const_0_0);
+MR_def_label(__Compare___ml_backend__mlds__mlds_rval_0_0,42)
+	MR_MAYBE_INIT_LOCAL_THREAD_ENGINE_BASE
+	{
+	MR_Word MR_tempr1;
+	MR_tempr1 = MR_ctfield(3, MR_sv(2), 0);
+	if (MR_INT_EQ(MR_tempr1,0)) {
+		MR_GOTO_LAB(__Compare___ml_backend__mlds__mlds_rval_0_0_i155);
+	}
+	if (MR_INT_EQ(MR_tempr1,1)) {
+		MR_GOTO_LAB(__Compare___ml_backend__mlds__mlds_rval_0_0_i155);
+	}
+	if (MR_INT_EQ(MR_tempr1,2)) {
+		MR_GOTO_LAB(__Compare___ml_backend__mlds__mlds_rval_0_0_i155);
+	}
+	MR_r1 = (MR_Integer) 1;
+	MR_decr_sp_and_return(5);
+	}
+MR_def_label(__Compare___ml_backend__mlds__mlds_rval_0_0,126)
+	MR_MAYBE_INIT_LOCAL_THREAD_ENGINE_BASE
+	{
+	MR_Word MR_tempr1, MR_tempr2, MR_tempr3;
+	MR_tempr2 = MR_sv(1);
+	MR_tempr1 = MR_ctfield(3, MR_tempr2, 0);
+	if (MR_INT_EQ(MR_tempr1,0)) {
+		MR_GOTO_LAB(__Compare___ml_backend__mlds__mlds_rval_0_0_i104);
+	}
+	if (MR_INT_EQ(MR_tempr1,1)) {
+		MR_GOTO_LAB(__Compare___ml_backend__mlds__mlds_rval_0_0_i5);
+	}
+	if (MR_INT_EQ(MR_tempr1,2)) {
+		MR_GOTO_LAB(__Compare___ml_backend__mlds__mlds_rval_0_0_i57);
+	}
+	if (MR_INT_NE(MR_tag(MR_sv(2)),3)) {
+		MR_GOTO_LAB(__Compare___ml_backend__mlds__mlds_rval_0_0_i107);
+	}
+	MR_tempr3 = MR_sv(2);
+	MR_tempr1 = MR_ctfield(3, MR_tempr3, 0);
+	if (MR_INT_EQ(MR_tempr1,0)) {
+		MR_GOTO_LAB(__Compare___ml_backend__mlds__mlds_rval_0_0_i107);
+	}
+	if (MR_INT_EQ(MR_tempr1,1)) {
+		MR_GOTO_LAB(__Compare___ml_backend__mlds__mlds_rval_0_0_i107);
+	}
+	if (MR_INT_EQ(MR_tempr1,2)) {
+		MR_GOTO_LAB(__Compare___ml_backend__mlds__mlds_rval_0_0_i107);
+	}
+	MR_r1 = MR_ctfield(3, MR_tempr2, 1);
+	MR_r2 = MR_ctfield(3, MR_tempr3, 1);
+	MR_succip_word = MR_sv(5);
+	MR_decr_sp(5);
+	MR_np_tailcall_ent(__Compare___ml_backend__mlds__mlds_type_0_0);
+	}
+MR_def_label(__Compare___ml_backend__mlds__mlds_rval_0_0,5)
+	MR_MAYBE_INIT_LOCAL_THREAD_ENGINE_BASE
+	if (MR_INT_NE(MR_tag(MR_sv(2)),3)) {
+		MR_GOTO_LAB(__Compare___ml_backend__mlds__mlds_rval_0_0_i107);
+	}
+	{
+	MR_Word MR_tempr1;
+	MR_tempr1 = MR_ctfield(3, MR_sv(2), 0);
+	if (MR_INT_EQ(MR_tempr1,0)) {
+		MR_GOTO_LAB(__Compare___ml_backend__mlds__mlds_rval_0_0_i107);
+	}
+	if (MR_INT_EQ(MR_tempr1,1)) {
+		MR_GOTO_LAB(__Compare___ml_backend__mlds__mlds_rval_0_0_i7);
+	}
+	if (MR_INT_EQ(MR_tempr1,2)) {
+		MR_GOTO_LAB(__Compare___ml_backend__mlds__mlds_rval_0_0_i155);
+	}
+	MR_r1 = (MR_Integer) 1;
+	MR_decr_sp_and_return(5);
+	}
+MR_def_label(__Compare___ml_backend__mlds__mlds_rval_0_0,7)
+	MR_MAYBE_INIT_LOCAL_THREAD_ENGINE_BASE
+	{
+	MR_Word MR_tempr1, MR_tempr2, MR_tempr3, MR_tempr4, MR_tempr5, MR_tempr6;
+	MR_tempr5 = MR_sv(1);
+	MR_sv(4) = MR_ctfield(3, MR_tempr5, 2);
+	MR_sv(3) = MR_ctfield(3, MR_tempr5, 3);
+	MR_tempr6 = MR_sv(2);
+	MR_tempr1 = MR_ctfield(3, MR_tempr6, 3);
+	MR_tempr2 = MR_ctfield(3, MR_tempr6, 2);
+	MR_tempr3 = MR_tempr5;
+	MR_sv(1) = MR_tempr2;
+	MR_tempr4 = MR_tempr6;
+	MR_sv(2) = MR_tempr1;
+	MR_r1 = MR_ctfield(3, MR_tempr3, 1);
+	MR_r2 = MR_ctfield(3, MR_tempr4, 1);
+	}
+	MR_np_call_localret_ent(__Compare___backend_libs__builtin_ops__binary_op_0_0,
+		__Compare___ml_backend__mlds__mlds_rval_0_0_i9);
+MR_def_label(__Compare___ml_backend__mlds__mlds_rval_0_0,9)
+	MR_MAYBE_INIT_LOCAL_THREAD_ENGINE_BASE
+	if (MR_INT_NE(MR_r1,0)) {
+		MR_GOTO_LAB(__Compare___ml_backend__mlds__mlds_rval_0_0_i291);
+	}
+	MR_r1 = MR_sv(4);
+	MR_r2 = MR_sv(1);
+	MR_np_localcall_lab(__Compare___ml_backend__mlds__mlds_rval_0_0,
+		__Compare___ml_backend__mlds__mlds_rval_0_0_i13);
+MR_def_label(__Compare___ml_backend__mlds__mlds_rval_0_0,13)
+	MR_MAYBE_INIT_LOCAL_THREAD_ENGINE_BASE
+	if (MR_INT_NE(MR_r1,0)) {
+		MR_GOTO_LAB(__Compare___ml_backend__mlds__mlds_rval_0_0_i291);
+	}
+	MR_r1 = MR_sv(3);
+	MR_r2 = MR_sv(2);
+	MR_succip_word = MR_sv(5);
+	MR_GOTO_LAB(__Compare___ml_backend__mlds__mlds_rval_0_0_i275);
+MR_def_label(__Compare___ml_backend__mlds__mlds_rval_0_0,57)
+	MR_MAYBE_INIT_LOCAL_THREAD_ENGINE_BASE
+	if (MR_INT_NE(MR_tag(MR_sv(2)),3)) {
+		MR_GOTO_LAB(__Compare___ml_backend__mlds__mlds_rval_0_0_i107);
+	}
+	{
+	MR_Word MR_tempr1;
+	MR_tempr1 = MR_ctfield(3, MR_sv(2), 0);
+	if (MR_INT_EQ(MR_tempr1,0)) {
+		MR_GOTO_LAB(__Compare___ml_backend__mlds__mlds_rval_0_0_i107);
+	}
+	if (MR_INT_EQ(MR_tempr1,1)) {
+		MR_GOTO_LAB(__Compare___ml_backend__mlds__mlds_rval_0_0_i107);
+	}
+	if (MR_INT_EQ(MR_tempr1,2)) {
+		MR_GOTO_LAB(__Compare___ml_backend__mlds__mlds_rval_0_0_i62);
+	}
+	MR_r1 = (MR_Integer) 1;
+	MR_decr_sp_and_return(5);
+	}
+MR_def_label(__Compare___ml_backend__mlds__mlds_rval_0_0,62)
+	MR_MAYBE_INIT_LOCAL_THREAD_ENGINE_BASE
+	MR_r1 = MR_ctfield(3, MR_sv(1), 1);
+	MR_r2 = MR_ctfield(3, MR_sv(2), 1);
+	MR_succip_word = MR_sv(5);
+	MR_decr_sp(5);
+	MR_np_tailcall_ent(__Compare___ml_backend__mlds__mlds_lval_0_0);
+MR_def_label(__Compare___ml_backend__mlds__mlds_rval_0_0,104)
+	MR_MAYBE_INIT_LOCAL_THREAD_ENGINE_BASE
+	if (MR_INT_EQ(MR_tag(MR_sv(2)),3)) {
+		MR_GOTO_LAB(__Compare___ml_backend__mlds__mlds_rval_0_0_i122);
+	}
+MR_def_label(__Compare___ml_backend__mlds__mlds_rval_0_0,107)
+	MR_MAYBE_INIT_LOCAL_THREAD_ENGINE_BASE
+	MR_r1 = (MR_Integer) 2;
+	MR_decr_sp_and_return(5);
+MR_def_label(__Compare___ml_backend__mlds__mlds_rval_0_0,122)
+	MR_MAYBE_INIT_LOCAL_THREAD_ENGINE_BASE
+	{
+	MR_Word MR_tempr1;
+	MR_tempr1 = MR_ctfield(3, MR_sv(2), 0);
+	if (MR_INT_EQ(MR_tempr1,0)) {
+		MR_GOTO_LAB(__Compare___ml_backend__mlds__mlds_rval_0_0_i112);
+	}
+	}
+MR_def_label(__Compare___ml_backend__mlds__mlds_rval_0_0,155)
+	MR_MAYBE_INIT_LOCAL_THREAD_ENGINE_BASE
+	MR_r1 = (MR_Integer) 1;
+	MR_decr_sp_and_return(5);
+MR_def_label(__Compare___ml_backend__mlds__mlds_rval_0_0,112)
+	MR_MAYBE_INIT_LOCAL_THREAD_ENGINE_BASE
+	{
+	MR_Word MR_tempr1, MR_tempr2, MR_tempr3, MR_tempr4, MR_tempr5, MR_tempr6;
+	MR_tempr5 = MR_sv(1);
+	MR_tempr1 = MR_ctfield(3, MR_tempr5, 2);
+	MR_tempr6 = MR_sv(2);
+	MR_tempr2 = MR_ctfield(3, MR_tempr6, 2);
+	MR_tempr3 = MR_tempr5;
+	MR_sv(1) = MR_tempr2;
+	MR_tempr4 = MR_tempr6;
+	MR_sv(2) = MR_tempr1;
+	MR_r1 = MR_ctfield(3, MR_tempr3, 1);
+	MR_r2 = MR_ctfield(3, MR_tempr4, 1);
+	}
+	MR_np_call_localret_ent(__Compare___ml_backend__mlds__mlds_unary_op_0_0,
+		__Compare___ml_backend__mlds__mlds_rval_0_0_i114);
+MR_def_label(__Compare___ml_backend__mlds__mlds_rval_0_0,114)
+	MR_MAYBE_INIT_LOCAL_THREAD_ENGINE_BASE
+	if (MR_INT_NE(MR_r1,0)) {
+		MR_GOTO_LAB(__Compare___ml_backend__mlds__mlds_rval_0_0_i291);
+	}
+	MR_r1 = MR_sv(2);
+	MR_r2 = MR_sv(1);
+	MR_succip_word = MR_sv(5);
+	MR_GOTO_LAB(__Compare___ml_backend__mlds__mlds_rval_0_0_i275);
+MR_def_label(__Compare___ml_backend__mlds__mlds_rval_0_0,291)
+	MR_MAYBE_INIT_LOCAL_THREAD_ENGINE_BASE
+	MR_decr_sp_and_return(5);
+#ifdef MR_maybe_local_thread_engine_base
+	#undef MR_maybe_local_thread_engine_base
+	#define MR_maybe_local_thread_engine_base MR_thread_engine_base
+#endif
+MR_END_MODULE
+
+
+MR_BEGIN_MODULE(ml_backend__mlds_module161)
+	MR_init_entry1(__Unify___ml_backend__mlds__mlds_rval_const_0_0);
+	MR_init_label8(__Unify___ml_backend__mlds__mlds_rval_const_0_0,35,20,16,39,5,9,14,22)
+	MR_init_label5(__Unify___ml_backend__mlds__mlds_rval_const_0_0,26,28,32,40,1)
+MR_BEGIN_CODE
+
+#ifdef MR_maybe_local_thread_engine_base
+	#undef MR_maybe_local_thread_engine_base
+	#define MR_maybe_local_thread_engine_base MR_local_thread_engine_base
+#endif
+MR_define_entry(mercury____Unify___ml_backend__mlds__mlds_rval_const_0_0);
+	MR_MAYBE_INIT_LOCAL_THREAD_ENGINE_BASE
+	if ((MR_r1 == MR_r2)) {
+		MR_GOTO_LAB(__Unify___ml_backend__mlds__mlds_rval_const_0_0_i40);
+	}
+	MR_incr_sp(3);
+	MR_sv(3) = (MR_Word) MR_succip;
+	MR_sv(1) = MR_r1;
+	MR_sv(2) = MR_r2;
+	MR_COMPUTED_GOTO((MR_Unsigned) MR_tag(MR_sv(1)),
+		MR_LABEL_AP(__Unify___ml_backend__mlds__mlds_rval_const_0_0_i35) MR_AND
+		MR_LABEL_AP(__Unify___ml_backend__mlds__mlds_rval_const_0_0_i20) MR_AND
+		MR_LABEL_AP(__Unify___ml_backend__mlds__mlds_rval_const_0_0_i16) MR_AND
+		MR_LABEL_AP(__Unify___ml_backend__mlds__mlds_rval_const_0_0_i39));
+MR_def_label(__Unify___ml_backend__mlds__mlds_rval_const_0_0,35)
+	MR_MAYBE_INIT_LOCAL_THREAD_ENGINE_BASE
+	MR_r1 = (MR_sv(2) == MR_sv(1));
+	MR_decr_sp_and_return(3);
+MR_def_label(__Unify___ml_backend__mlds__mlds_rval_const_0_0,20)
+	MR_MAYBE_INIT_LOCAL_THREAD_ENGINE_BASE
+	if (MR_PTAG_TESTR(MR_sv(2),1)) {
+		MR_GOTO_LAB(__Unify___ml_backend__mlds__mlds_rval_const_0_0_i1);
+	}
+	{
+	MR_Word MR_tempr1, MR_tempr2;
+	MR_tempr1 = MR_ctfield(1, MR_sv(1), 0);
+	MR_tempr2 = MR_ctfield(1, MR_sv(2), 0);
+	MR_r1 = (MR_tempr1 == MR_tempr2);
+	MR_decr_sp_and_return(3);
+	}
+MR_def_label(__Unify___ml_backend__mlds__mlds_rval_const_0_0,16)
+	MR_MAYBE_INIT_LOCAL_THREAD_ENGINE_BASE
+	if (MR_PTAG_TESTR(MR_sv(2),2)) {
+		MR_GOTO_LAB(__Unify___ml_backend__mlds__mlds_rval_const_0_0_i1);
+	}
+	{
+	MR_Word MR_tempr1, MR_tempr2, MR_tempr3, MR_tempr4;
+	MR_tempr3 = MR_sv(1);
+	MR_tempr1 = MR_ctfield(2, MR_tempr3, 0);
+	MR_tempr4 = MR_sv(2);
+	MR_tempr2 = MR_ctfield(2, MR_tempr4, 0);
+	if ((MR_tempr1 != MR_tempr2)) {
+		MR_GOTO_LAB(__Unify___ml_backend__mlds__mlds_rval_const_0_0_i1);
+	}
+	MR_tempr1 = MR_ctfield(2, MR_tempr3, 1);
+	MR_tempr2 = MR_ctfield(2, MR_tempr4, 1);
+	if ((strcmp((char *) (MR_Word *) MR_tempr1, (char *) (MR_Word *) MR_tempr2) != 0)) {
+		MR_GOTO_LAB(__Unify___ml_backend__mlds__mlds_rval_const_0_0_i1);
+	}
+	MR_r1 = MR_ctfield(2, MR_tempr3, 2);
+	MR_r2 = MR_ctfield(2, MR_tempr4, 2);
+	MR_succip_word = MR_sv(3);
+	MR_decr_sp(3);
+	MR_np_tailcall_ent(__Unify___ml_backend__mlds__mlds_type_0_0);
+	}
+MR_def_label(__Unify___ml_backend__mlds__mlds_rval_const_0_0,39)
+	MR_MAYBE_INIT_LOCAL_THREAD_ENGINE_BASE
+	MR_COMPUTED_GOTO((MR_Unsigned) MR_ctfield(3, MR_sv(1), 0),
+		MR_LABEL_AP(__Unify___ml_backend__mlds__mlds_rval_const_0_0_i14) MR_AND
+		MR_LABEL_AP(__Unify___ml_backend__mlds__mlds_rval_const_0_0_i32) MR_AND
+		MR_LABEL_AP(__Unify___ml_backend__mlds__mlds_rval_const_0_0_i22) MR_AND
+		MR_LABEL_AP(__Unify___ml_backend__mlds__mlds_rval_const_0_0_i26) MR_AND
+		MR_LABEL_AP(__Unify___ml_backend__mlds__mlds_rval_const_0_0_i5) MR_AND
+		MR_LABEL_AP(__Unify___ml_backend__mlds__mlds_rval_const_0_0_i9) MR_AND
+		MR_LABEL_AP(__Unify___ml_backend__mlds__mlds_rval_const_0_0_i28));
+MR_def_label(__Unify___ml_backend__mlds__mlds_rval_const_0_0,5)
+	MR_MAYBE_INIT_LOCAL_THREAD_ENGINE_BASE
+	if (MR_RTAGS_TESTR(MR_sv(2),3,4)) {
+		MR_GOTO_LAB(__Unify___ml_backend__mlds__mlds_rval_const_0_0_i1);
+	}
+	MR_r1 = MR_ctfield(3, MR_sv(1), 1);
+	MR_r2 = MR_ctfield(3, MR_sv(2), 1);
+	MR_succip_word = MR_sv(3);
+	MR_decr_sp(3);
+	MR_np_tailcall_ent(__Unify___ml_backend__mlds__mlds_code_addr_0_0);
+MR_def_label(__Unify___ml_backend__mlds__mlds_rval_const_0_0,9)
+	MR_MAYBE_INIT_LOCAL_THREAD_ENGINE_BASE
+	if (MR_RTAGS_TESTR(MR_sv(2),3,5)) {
+		MR_GOTO_LAB(__Unify___ml_backend__mlds__mlds_rval_const_0_0_i1);
+	}
+	MR_r1 = MR_ctfield(3, MR_sv(1), 1);
+	MR_r2 = MR_ctfield(3, MR_sv(2), 1);
+	MR_succip_word = MR_sv(3);
+	MR_decr_sp(3);
+	MR_np_tailcall_ent(__Unify___ml_backend__mlds__mlds_data_addr_0_0);
+MR_def_label(__Unify___ml_backend__mlds__mlds_rval_const_0_0,14)
+	MR_MAYBE_INIT_LOCAL_THREAD_ENGINE_BASE
+	if (MR_RTAGS_TESTR(MR_sv(2),3,0)) {
+		MR_GOTO_LAB(__Unify___ml_backend__mlds__mlds_rval_const_0_0_i1);
+	}
+	{
+	MR_Word MR_tempr1, MR_tempr2;
+	MR_tempr1 = MR_ctfield(3, MR_sv(1), 1);
+	MR_tempr2 = MR_ctfield(3, MR_sv(2), 1);
+	MR_r1 = (MR_word_to_float(MR_tempr1) == MR_word_to_float(MR_tempr2));
+	MR_decr_sp_and_return(3);
+	}
+MR_def_label(__Unify___ml_backend__mlds__mlds_rval_const_0_0,22)
+	MR_MAYBE_INIT_LOCAL_THREAD_ENGINE_BASE
+	if (MR_RTAGS_TESTR(MR_sv(2),3,2)) {
+		MR_GOTO_LAB(__Unify___ml_backend__mlds__mlds_rval_const_0_0_i1);
+	}
+	MR_r1 = (MR_Word) MR_STRING_CTOR_ADDR;
+	MR_r2 = MR_ctfield(3, MR_sv(1), 1);
+	MR_r3 = MR_ctfield(3, MR_sv(2), 1);
+	MR_succip_word = MR_sv(3);
+	MR_decr_sp(3);
+	MR_np_tailcall_ent(__Unify___list__list_1_0);
+MR_def_label(__Unify___ml_backend__mlds__mlds_rval_const_0_0,26)
+	MR_MAYBE_INIT_LOCAL_THREAD_ENGINE_BASE
+	if (MR_RTAGS_TESTR(MR_sv(2),3,3)) {
+		MR_GOTO_LAB(__Unify___ml_backend__mlds__mlds_rval_const_0_0_i1);
+	}
+	{
+	MR_Word MR_tempr1, MR_tempr2;
+	MR_tempr1 = MR_ctfield(3, MR_sv(1), 1);
+	MR_tempr2 = MR_ctfield(3, MR_sv(2), 1);
+	MR_r1 = (strcmp((char *) (MR_Word *) MR_tempr1, (char *) (MR_Word *) MR_tempr2) == 0);
+	MR_decr_sp_and_return(3);
+	}
+MR_def_label(__Unify___ml_backend__mlds__mlds_rval_const_0_0,28)
+	MR_MAYBE_INIT_LOCAL_THREAD_ENGINE_BASE
+	if (MR_RTAGS_TESTR(MR_sv(2),3,6)) {
+		MR_GOTO_LAB(__Unify___ml_backend__mlds__mlds_rval_const_0_0_i1);
+	}
+	MR_r1 = MR_ctfield(3, MR_sv(1), 1);
+	MR_r2 = MR_ctfield(3, MR_sv(2), 1);
+	MR_succip_word = MR_sv(3);
+	MR_decr_sp(3);
+	MR_np_tailcall_ent(__Unify___ml_backend__mlds__mlds_type_0_0);
+MR_def_label(__Unify___ml_backend__mlds__mlds_rval_const_0_0,32)
+	MR_MAYBE_INIT_LOCAL_THREAD_ENGINE_BASE
+	if (MR_RTAGS_TESTR(MR_sv(2),3,1)) {
+		MR_GOTO_LAB(__Unify___ml_backend__mlds__mlds_rval_const_0_0_i1);
+	}
+	{
+	MR_Word MR_tempr1, MR_tempr2;
+	MR_tempr1 = MR_ctfield(3, MR_sv(1), 1);
+	MR_tempr2 = MR_ctfield(3, MR_sv(2), 1);
+	MR_r1 = (strcmp((char *) (MR_Word *) MR_tempr1, (char *) (MR_Word *) MR_tempr2) == 0);
+	MR_decr_sp_and_return(3);
+	}
+MR_def_label(__Unify___ml_backend__mlds__mlds_rval_const_0_0,40)
+	MR_MAYBE_INIT_LOCAL_THREAD_ENGINE_BASE
+	MR_r1 = MR_TRUE;
+	MR_proceed();
+MR_def_label(__Unify___ml_backend__mlds__mlds_rval_const_0_0,1)
+	MR_MAYBE_INIT_LOCAL_THREAD_ENGINE_BASE
+	MR_r1 = MR_FALSE;
+	MR_decr_sp_and_return(3);
+#ifdef MR_maybe_local_thread_engine_base
+	#undef MR_maybe_local_thread_engine_base
+	#define MR_maybe_local_thread_engine_base MR_thread_engine_base
+#endif
+MR_END_MODULE
+
+MR_decl_entry(private_builtin__builtin_compare_float_3_0);
+
+MR_BEGIN_MODULE(ml_backend__mlds_module162)
+	MR_init_entry1(__Compare___ml_backend__mlds__mlds_rval_const_0_0);
+	MR_init_label8(__Compare___ml_backend__mlds__mlds_rval_const_0_0,222,217,230,43,56,109,123,116)
+	MR_init_label8(__Compare___ml_backend__mlds__mlds_rval_const_0_0,80,104,86,88,92,108,226,5)
+	MR_init_label8(__Compare___ml_backend__mlds__mlds_rval_const_0_0,19,23,7,24,38,42,27,61)
+	MR_init_label8(__Compare___ml_backend__mlds__mlds_rval_const_0_0,75,79,128,142,146,136,147,161)
+	MR_init_label8(__Compare___ml_backend__mlds__mlds_rval_const_0_0,311,165,166,184,185,195,196,227)
+MR_BEGIN_CODE
+
+#ifdef MR_maybe_local_thread_engine_base
+	#undef MR_maybe_local_thread_engine_base
+	#define MR_maybe_local_thread_engine_base MR_local_thread_engine_base
+#endif
+MR_define_entry(mercury____Compare___ml_backend__mlds__mlds_rval_const_0_0);
+	MR_MAYBE_INIT_LOCAL_THREAD_ENGINE_BASE
+	MR_incr_sp(5);
+	MR_sv(5) = (MR_Word) MR_succip;
+	if ((MR_r1 == MR_r2)) {
+		MR_GOTO_LAB(__Compare___ml_backend__mlds__mlds_rval_const_0_0_i230);
+	}
+	MR_sv(1) = MR_r1;
+	MR_sv(2) = MR_r2;
+	MR_COMPUTED_GOTO((MR_Unsigned) MR_tag(MR_sv(1)),
+		MR_LABEL_AP(__Compare___ml_backend__mlds__mlds_rval_const_0_0_i222) MR_AND
+		MR_LABEL_AP(__Compare___ml_backend__mlds__mlds_rval_const_0_0_i109) MR_AND
+		MR_LABEL_AP(__Compare___ml_backend__mlds__mlds_rval_const_0_0_i80) MR_AND
+		MR_LABEL_AP(__Compare___ml_backend__mlds__mlds_rval_const_0_0_i226));
+MR_def_label(__Compare___ml_backend__mlds__mlds_rval_const_0_0,222)
+	MR_MAYBE_INIT_LOCAL_THREAD_ENGINE_BASE
+	if (MR_INT_NE(MR_unmkbody(MR_sv(1)),0)) {
+		MR_GOTO_LAB(__Compare___ml_backend__mlds__mlds_rval_const_0_0_i43);
+	}
+	MR_COMPUTED_GOTO((MR_Unsigned) MR_tag(MR_sv(2)),
+		MR_LABEL_AP(__Compare___ml_backend__mlds__mlds_rval_const_0_0_i217) MR_AND
+		MR_LABEL_AP(__Compare___ml_backend__mlds__mlds_rval_const_0_0_i195) MR_AND
+		MR_LABEL_AP(__Compare___ml_backend__mlds__mlds_rval_const_0_0_i195) MR_AND
+		MR_LABEL_AP(__Compare___ml_backend__mlds__mlds_rval_const_0_0_i108));
+MR_def_label(__Compare___ml_backend__mlds__mlds_rval_const_0_0,217)
+	MR_MAYBE_INIT_LOCAL_THREAD_ENGINE_BASE
+	if (MR_INT_NE(MR_unmkbody(MR_sv(2)),0)) {
+		MR_GOTO_LAB(__Compare___ml_backend__mlds__mlds_rval_const_0_0_i195);
+	}
+MR_def_label(__Compare___ml_backend__mlds__mlds_rval_const_0_0,230)
+	MR_MAYBE_INIT_LOCAL_THREAD_ENGINE_BASE
+	MR_r1 = (MR_Integer) 0;
+	MR_decr_sp_and_return(5);
+MR_def_label(__Compare___ml_backend__mlds__mlds_rval_const_0_0,43)
+	MR_MAYBE_INIT_LOCAL_THREAD_ENGINE_BASE
+	MR_COMPUTED_GOTO((MR_Unsigned) MR_tag(MR_sv(2)),
+		MR_LABEL_AP(__Compare___ml_backend__mlds__mlds_rval_const_0_0_i56) MR_AND
+		MR_LABEL_AP(__Compare___ml_backend__mlds__mlds_rval_const_0_0_i195) MR_AND
+		MR_LABEL_AP(__Compare___ml_backend__mlds__mlds_rval_const_0_0_i195) MR_AND
+		MR_LABEL_AP(__Compare___ml_backend__mlds__mlds_rval_const_0_0_i108));
+MR_def_label(__Compare___ml_backend__mlds__mlds_rval_const_0_0,56)
+	MR_MAYBE_INIT_LOCAL_THREAD_ENGINE_BASE
+	if (MR_INT_NE(MR_unmkbody(MR_sv(2)),0)) {
+		MR_GOTO_LAB(__Compare___ml_backend__mlds__mlds_rval_const_0_0_i230);
+	}
+	MR_r1 = (MR_Integer) 2;
+	MR_decr_sp_and_return(5);
+MR_def_label(__Compare___ml_backend__mlds__mlds_rval_const_0_0,109)
+	MR_MAYBE_INIT_LOCAL_THREAD_ENGINE_BASE
+	MR_COMPUTED_GOTO((MR_Unsigned) MR_tag(MR_sv(2)),
+		MR_LABEL_AP(__Compare___ml_backend__mlds__mlds_rval_const_0_0_i123) MR_AND
+		MR_LABEL_AP(__Compare___ml_backend__mlds__mlds_rval_const_0_0_i116) MR_AND
+		MR_LABEL_AP(__Compare___ml_backend__mlds__mlds_rval_const_0_0_i195) MR_AND
+		MR_LABEL_AP(__Compare___ml_backend__mlds__mlds_rval_const_0_0_i108));
+MR_def_label(__Compare___ml_backend__mlds__mlds_rval_const_0_0,123)
+	MR_MAYBE_INIT_LOCAL_THREAD_ENGINE_BASE
+	if (MR_INT_NE(MR_unmkbody(MR_sv(2)),0)) {
+		MR_GOTO_LAB(__Compare___ml_backend__mlds__mlds_rval_const_0_0_i311);
+	}
+	MR_r1 = (MR_Integer) 2;
+	MR_decr_sp_and_return(5);
+MR_def_label(__Compare___ml_backend__mlds__mlds_rval_const_0_0,116)
+	MR_MAYBE_INIT_LOCAL_THREAD_ENGINE_BASE
+	MR_r1 = MR_ctfield(1, MR_sv(1), 0);
+	MR_r2 = MR_ctfield(1, MR_sv(2), 0);
+	MR_succip_word = MR_sv(5);
+	MR_decr_sp(5);
+	MR_np_tailcall_ent(private_builtin__builtin_compare_int_3_0);
+MR_def_label(__Compare___ml_backend__mlds__mlds_rval_const_0_0,80)
+	MR_MAYBE_INIT_LOCAL_THREAD_ENGINE_BASE
+	MR_COMPUTED_GOTO((MR_Unsigned) MR_tag(MR_sv(2)),
+		MR_LABEL_AP(__Compare___ml_backend__mlds__mlds_rval_const_0_0_i104) MR_AND
+		MR_LABEL_AP(__Compare___ml_backend__mlds__mlds_rval_const_0_0_i311) MR_AND
+		MR_LABEL_AP(__Compare___ml_backend__mlds__mlds_rval_const_0_0_i86) MR_AND
+		MR_LABEL_AP(__Compare___ml_backend__mlds__mlds_rval_const_0_0_i108));
+MR_def_label(__Compare___ml_backend__mlds__mlds_rval_const_0_0,104)
+	MR_MAYBE_INIT_LOCAL_THREAD_ENGINE_BASE
+	if (MR_INT_NE(MR_unmkbody(MR_sv(2)),0)) {
+		MR_GOTO_LAB(__Compare___ml_backend__mlds__mlds_rval_const_0_0_i311);
+	}
+	MR_r1 = (MR_Integer) 2;
+	MR_decr_sp_and_return(5);
+MR_def_label(__Compare___ml_backend__mlds__mlds_rval_const_0_0,86)
+	MR_MAYBE_INIT_LOCAL_THREAD_ENGINE_BASE
+	{
+	MR_Word MR_tempr1, MR_tempr2, MR_tempr3, MR_tempr4, MR_tempr5, MR_tempr6;
+	MR_tempr5 = MR_sv(1);
+	MR_sv(4) = MR_ctfield(2, MR_tempr5, 1);
+	MR_sv(3) = MR_ctfield(2, MR_tempr5, 2);
+	MR_tempr6 = MR_sv(2);
+	MR_tempr1 = MR_ctfield(2, MR_tempr6, 2);
+	MR_tempr2 = MR_ctfield(2, MR_tempr6, 1);
+	MR_tempr3 = MR_tempr5;
+	MR_sv(1) = MR_tempr2;
+	MR_tempr4 = MR_tempr6;
+	MR_sv(2) = MR_tempr1;
+	MR_r1 = MR_ctfield(2, MR_tempr3, 0);
+	MR_r2 = MR_ctfield(2, MR_tempr4, 0);
+	}
+	MR_np_call_localret_ent(private_builtin__builtin_compare_int_3_0,
+		__Compare___ml_backend__mlds__mlds_rval_const_0_0_i88);
+MR_def_label(__Compare___ml_backend__mlds__mlds_rval_const_0_0,88)
+	MR_MAYBE_INIT_LOCAL_THREAD_ENGINE_BASE
+	if (MR_INT_NE(MR_r1,0)) {
+		MR_GOTO_LAB(__Compare___ml_backend__mlds__mlds_rval_const_0_0_i227);
+	}
+	MR_r1 = MR_sv(4);
+	MR_r2 = MR_sv(1);
+	MR_np_call_localret_ent(private_builtin__builtin_compare_string_3_0,
+		__Compare___ml_backend__mlds__mlds_rval_const_0_0_i92);
+MR_def_label(__Compare___ml_backend__mlds__mlds_rval_const_0_0,92)
+	MR_MAYBE_INIT_LOCAL_THREAD_ENGINE_BASE
+	if (MR_INT_NE(MR_r1,0)) {
+		MR_GOTO_LAB(__Compare___ml_backend__mlds__mlds_rval_const_0_0_i227);
+	}
+	MR_r1 = MR_sv(3);
+	MR_r2 = MR_sv(2);
+	MR_succip_word = MR_sv(5);
+	MR_decr_sp(5);
+	MR_np_tailcall_ent(__Compare___ml_backend__mlds__mlds_type_0_0);
+MR_def_label(__Compare___ml_backend__mlds__mlds_rval_const_0_0,108)
+	MR_MAYBE_INIT_LOCAL_THREAD_ENGINE_BASE
+	MR_GOTO_LAB(__Compare___ml_backend__mlds__mlds_rval_const_0_0_i195);
+MR_def_label(__Compare___ml_backend__mlds__mlds_rval_const_0_0,226)
+	MR_MAYBE_INIT_LOCAL_THREAD_ENGINE_BASE
+	MR_COMPUTED_GOTO((MR_Unsigned) MR_ctfield(3, MR_sv(1), 0),
+		MR_LABEL_AP(__Compare___ml_backend__mlds__mlds_rval_const_0_0_i61) MR_AND
+		MR_LABEL_AP(__Compare___ml_backend__mlds__mlds_rval_const_0_0_i185) MR_AND
+		MR_LABEL_AP(__Compare___ml_backend__mlds__mlds_rval_const_0_0_i128) MR_AND
+		MR_LABEL_AP(__Compare___ml_backend__mlds__mlds_rval_const_0_0_i147) MR_AND
+		MR_LABEL_AP(__Compare___ml_backend__mlds__mlds_rval_const_0_0_i5) MR_AND
+		MR_LABEL_AP(__Compare___ml_backend__mlds__mlds_rval_const_0_0_i24) MR_AND
+		MR_LABEL_AP(__Compare___ml_backend__mlds__mlds_rval_const_0_0_i166));
+MR_def_label(__Compare___ml_backend__mlds__mlds_rval_const_0_0,5)
+	MR_MAYBE_INIT_LOCAL_THREAD_ENGINE_BASE
+	MR_COMPUTED_GOTO((MR_Unsigned) MR_tag(MR_sv(2)),
+		MR_LABEL_AP(__Compare___ml_backend__mlds__mlds_rval_const_0_0_i19) MR_AND
+		MR_LABEL_AP(__Compare___ml_backend__mlds__mlds_rval_const_0_0_i311) MR_AND
+		MR_LABEL_AP(__Compare___ml_backend__mlds__mlds_rval_const_0_0_i311) MR_AND
+		MR_LABEL_AP(__Compare___ml_backend__mlds__mlds_rval_const_0_0_i23));
+MR_def_label(__Compare___ml_backend__mlds__mlds_rval_const_0_0,19)
+	MR_MAYBE_INIT_LOCAL_THREAD_ENGINE_BASE
+	if (MR_INT_NE(MR_unmkbody(MR_sv(2)),0)) {
+		MR_GOTO_LAB(__Compare___ml_backend__mlds__mlds_rval_const_0_0_i311);
+	}
+	MR_r1 = (MR_Integer) 2;
+	MR_decr_sp_and_return(5);
+MR_def_label(__Compare___ml_backend__mlds__mlds_rval_const_0_0,23)
+	MR_MAYBE_INIT_LOCAL_THREAD_ENGINE_BASE
+	MR_COMPUTED_GOTO((MR_Unsigned) MR_ctfield(3, MR_sv(2), 0),
+		MR_LABEL_AP(__Compare___ml_backend__mlds__mlds_rval_const_0_0_i311) MR_AND
+		MR_LABEL_AP(__Compare___ml_backend__mlds__mlds_rval_const_0_0_i311) MR_AND
+		MR_LABEL_AP(__Compare___ml_backend__mlds__mlds_rval_const_0_0_i311) MR_AND
+		MR_LABEL_AP(__Compare___ml_backend__mlds__mlds_rval_const_0_0_i311) MR_AND
+		MR_LABEL_AP(__Compare___ml_backend__mlds__mlds_rval_const_0_0_i7) MR_AND
+		MR_LABEL_AP(__Compare___ml_backend__mlds__mlds_rval_const_0_0_i195) MR_AND
+		MR_LABEL_AP(__Compare___ml_backend__mlds__mlds_rval_const_0_0_i195));
+MR_def_label(__Compare___ml_backend__mlds__mlds_rval_const_0_0,7)
+	MR_MAYBE_INIT_LOCAL_THREAD_ENGINE_BASE
+	MR_r1 = MR_ctfield(3, MR_sv(1), 1);
+	MR_r2 = MR_ctfield(3, MR_sv(2), 1);
+	MR_succip_word = MR_sv(5);
+	MR_decr_sp(5);
+	MR_np_tailcall_ent(__Compare___ml_backend__mlds__mlds_code_addr_0_0);
+MR_def_label(__Compare___ml_backend__mlds__mlds_rval_const_0_0,24)
+	MR_MAYBE_INIT_LOCAL_THREAD_ENGINE_BASE
+	MR_COMPUTED_GOTO((MR_Unsigned) MR_tag(MR_sv(2)),
+		MR_LABEL_AP(__Compare___ml_backend__mlds__mlds_rval_const_0_0_i38) MR_AND
+		MR_LABEL_AP(__Compare___ml_backend__mlds__mlds_rval_const_0_0_i311) MR_AND
+		MR_LABEL_AP(__Compare___ml_backend__mlds__mlds_rval_const_0_0_i311) MR_AND
+		MR_LABEL_AP(__Compare___ml_backend__mlds__mlds_rval_const_0_0_i42));
+MR_def_label(__Compare___ml_backend__mlds__mlds_rval_const_0_0,38)
+	MR_MAYBE_INIT_LOCAL_THREAD_ENGINE_BASE
+	if (MR_INT_NE(MR_unmkbody(MR_sv(2)),0)) {
+		MR_GOTO_LAB(__Compare___ml_backend__mlds__mlds_rval_const_0_0_i311);
+	}
+	MR_r1 = (MR_Integer) 2;
+	MR_decr_sp_and_return(5);
+MR_def_label(__Compare___ml_backend__mlds__mlds_rval_const_0_0,42)
+	MR_MAYBE_INIT_LOCAL_THREAD_ENGINE_BASE
+	MR_COMPUTED_GOTO((MR_Unsigned) MR_ctfield(3, MR_sv(2), 0),
+		MR_LABEL_AP(__Compare___ml_backend__mlds__mlds_rval_const_0_0_i311) MR_AND
+		MR_LABEL_AP(__Compare___ml_backend__mlds__mlds_rval_const_0_0_i311) MR_AND
+		MR_LABEL_AP(__Compare___ml_backend__mlds__mlds_rval_const_0_0_i311) MR_AND
+		MR_LABEL_AP(__Compare___ml_backend__mlds__mlds_rval_const_0_0_i311) MR_AND
+		MR_LABEL_AP(__Compare___ml_backend__mlds__mlds_rval_const_0_0_i311) MR_AND
+		MR_LABEL_AP(__Compare___ml_backend__mlds__mlds_rval_const_0_0_i27) MR_AND
+		MR_LABEL_AP(__Compare___ml_backend__mlds__mlds_rval_const_0_0_i195));
+MR_def_label(__Compare___ml_backend__mlds__mlds_rval_const_0_0,27)
+	MR_MAYBE_INIT_LOCAL_THREAD_ENGINE_BASE
+	MR_r1 = MR_ctfield(3, MR_sv(1), 1);
+	MR_r2 = MR_ctfield(3, MR_sv(2), 1);
+	MR_succip_word = MR_sv(5);
+	MR_decr_sp(5);
+	MR_np_tailcall_ent(__Compare___ml_backend__mlds__mlds_data_addr_0_0);
+MR_def_label(__Compare___ml_backend__mlds__mlds_rval_const_0_0,61)
+	MR_MAYBE_INIT_LOCAL_THREAD_ENGINE_BASE
+	MR_COMPUTED_GOTO((MR_Unsigned) MR_tag(MR_sv(2)),
+		MR_LABEL_AP(__Compare___ml_backend__mlds__mlds_rval_const_0_0_i75) MR_AND
+		MR_LABEL_AP(__Compare___ml_backend__mlds__mlds_rval_const_0_0_i311) MR_AND
+		MR_LABEL_AP(__Compare___ml_backend__mlds__mlds_rval_const_0_0_i311) MR_AND
+		MR_LABEL_AP(__Compare___ml_backend__mlds__mlds_rval_const_0_0_i79));
+MR_def_label(__Compare___ml_backend__mlds__mlds_rval_const_0_0,75)
+	MR_MAYBE_INIT_LOCAL_THREAD_ENGINE_BASE
+	if (MR_INT_NE(MR_unmkbody(MR_sv(2)),0)) {
+		MR_GOTO_LAB(__Compare___ml_backend__mlds__mlds_rval_const_0_0_i311);
+	}
+	MR_r1 = (MR_Integer) 2;
+	MR_decr_sp_and_return(5);
+MR_def_label(__Compare___ml_backend__mlds__mlds_rval_const_0_0,79)
+	MR_MAYBE_INIT_LOCAL_THREAD_ENGINE_BASE
+	if (MR_INT_NE(MR_ctfield(3, MR_sv(2), 0),0)) {
+		MR_GOTO_LAB(__Compare___ml_backend__mlds__mlds_rval_const_0_0_i195);
+	}
+	MR_r1 = MR_ctfield(3, MR_sv(1), 1);
+	MR_r2 = MR_ctfield(3, MR_sv(2), 1);
+	MR_succip_word = MR_sv(5);
+	MR_decr_sp(5);
+	MR_np_tailcall_ent(private_builtin__builtin_compare_float_3_0);
+MR_def_label(__Compare___ml_backend__mlds__mlds_rval_const_0_0,128)
+	MR_MAYBE_INIT_LOCAL_THREAD_ENGINE_BASE
+	MR_COMPUTED_GOTO((MR_Unsigned) MR_tag(MR_sv(2)),
+		MR_LABEL_AP(__Compare___ml_backend__mlds__mlds_rval_const_0_0_i142) MR_AND
+		MR_LABEL_AP(__Compare___ml_backend__mlds__mlds_rval_const_0_0_i311) MR_AND
+		MR_LABEL_AP(__Compare___ml_backend__mlds__mlds_rval_const_0_0_i311) MR_AND
+		MR_LABEL_AP(__Compare___ml_backend__mlds__mlds_rval_const_0_0_i146));
+MR_def_label(__Compare___ml_backend__mlds__mlds_rval_const_0_0,142)
+	MR_MAYBE_INIT_LOCAL_THREAD_ENGINE_BASE
+	if (MR_INT_NE(MR_unmkbody(MR_sv(2)),0)) {
+		MR_GOTO_LAB(__Compare___ml_backend__mlds__mlds_rval_const_0_0_i311);
+	}
+	MR_r1 = (MR_Integer) 2;
+	MR_decr_sp_and_return(5);
+MR_def_label(__Compare___ml_backend__mlds__mlds_rval_const_0_0,146)
+	MR_MAYBE_INIT_LOCAL_THREAD_ENGINE_BASE
+	MR_COMPUTED_GOTO((MR_Unsigned) MR_ctfield(3, MR_sv(2), 0),
+		MR_LABEL_AP(__Compare___ml_backend__mlds__mlds_rval_const_0_0_i311) MR_AND
+		MR_LABEL_AP(__Compare___ml_backend__mlds__mlds_rval_const_0_0_i311) MR_AND
+		MR_LABEL_AP(__Compare___ml_backend__mlds__mlds_rval_const_0_0_i136) MR_AND
+		MR_LABEL_AP(__Compare___ml_backend__mlds__mlds_rval_const_0_0_i195) MR_AND
+		MR_LABEL_AP(__Compare___ml_backend__mlds__mlds_rval_const_0_0_i195) MR_AND
+		MR_LABEL_AP(__Compare___ml_backend__mlds__mlds_rval_const_0_0_i195) MR_AND
+		MR_LABEL_AP(__Compare___ml_backend__mlds__mlds_rval_const_0_0_i195));
+MR_def_label(__Compare___ml_backend__mlds__mlds_rval_const_0_0,136)
+	MR_MAYBE_INIT_LOCAL_THREAD_ENGINE_BASE
+	MR_r1 = (MR_Word) MR_STRING_CTOR_ADDR;
+	MR_r2 = MR_ctfield(3, MR_sv(1), 1);
+	MR_r3 = MR_ctfield(3, MR_sv(2), 1);
+	MR_succip_word = MR_sv(5);
+	MR_decr_sp(5);
+	MR_np_tailcall_ent(__Compare___list__list_1_0);
+MR_def_label(__Compare___ml_backend__mlds__mlds_rval_const_0_0,147)
+	MR_MAYBE_INIT_LOCAL_THREAD_ENGINE_BASE
+	MR_COMPUTED_GOTO((MR_Unsigned) MR_tag(MR_sv(2)),
+		MR_LABEL_AP(__Compare___ml_backend__mlds__mlds_rval_const_0_0_i161) MR_AND
+		MR_LABEL_AP(__Compare___ml_backend__mlds__mlds_rval_const_0_0_i311) MR_AND
+		MR_LABEL_AP(__Compare___ml_backend__mlds__mlds_rval_const_0_0_i311) MR_AND
+		MR_LABEL_AP(__Compare___ml_backend__mlds__mlds_rval_const_0_0_i165));
+MR_def_label(__Compare___ml_backend__mlds__mlds_rval_const_0_0,161)
+	MR_MAYBE_INIT_LOCAL_THREAD_ENGINE_BASE
+	if (MR_INT_NE(MR_unmkbody(MR_sv(2)),0)) {
+		MR_GOTO_LAB(__Compare___ml_backend__mlds__mlds_rval_const_0_0_i311);
+	}
+MR_def_label(__Compare___ml_backend__mlds__mlds_rval_const_0_0,311)
+	MR_MAYBE_INIT_LOCAL_THREAD_ENGINE_BASE
+	MR_r1 = (MR_Integer) 2;
+	MR_decr_sp_and_return(5);
+MR_def_label(__Compare___ml_backend__mlds__mlds_rval_const_0_0,165)
+	MR_MAYBE_INIT_LOCAL_THREAD_ENGINE_BASE
+	MR_COMPUTED_GOTO((MR_Unsigned) MR_ctfield(3, MR_sv(2), 0),
+		MR_LABEL_AP(__Compare___ml_backend__mlds__mlds_rval_const_0_0_i311) MR_AND
+		MR_LABEL_AP(__Compare___ml_backend__mlds__mlds_rval_const_0_0_i311) MR_AND
+		MR_LABEL_AP(__Compare___ml_backend__mlds__mlds_rval_const_0_0_i311) MR_AND
+		MR_LABEL_AP(__Compare___ml_backend__mlds__mlds_rval_const_0_0_i196) MR_AND
+		MR_LABEL_AP(__Compare___ml_backend__mlds__mlds_rval_const_0_0_i195) MR_AND
+		MR_LABEL_AP(__Compare___ml_backend__mlds__mlds_rval_const_0_0_i195) MR_AND
+		MR_LABEL_AP(__Compare___ml_backend__mlds__mlds_rval_const_0_0_i195));
+MR_def_label(__Compare___ml_backend__mlds__mlds_rval_const_0_0,166)
+	MR_MAYBE_INIT_LOCAL_THREAD_ENGINE_BASE
+	if (MR_INT_EQ(MR_tag(MR_sv(2)),3)) {
+		MR_GOTO_LAB(__Compare___ml_backend__mlds__mlds_rval_const_0_0_i184);
+	}
+	MR_GOTO_LAB(__Compare___ml_backend__mlds__mlds_rval_const_0_0_i311);
+MR_def_label(__Compare___ml_backend__mlds__mlds_rval_const_0_0,184)
+	MR_MAYBE_INIT_LOCAL_THREAD_ENGINE_BASE
+	if (MR_INT_NE(MR_ctfield(3, MR_sv(2), 0),6)) {
+		MR_GOTO_LAB(__Compare___ml_backend__mlds__mlds_rval_const_0_0_i311);
+	}
+	MR_r1 = MR_ctfield(3, MR_sv(1), 1);
+	MR_r2 = MR_ctfield(3, MR_sv(2), 1);
+	MR_succip_word = MR_sv(5);
+	MR_decr_sp(5);
+	MR_np_tailcall_ent(__Compare___ml_backend__mlds__mlds_type_0_0);
+MR_def_label(__Compare___ml_backend__mlds__mlds_rval_const_0_0,185)
+	MR_MAYBE_INIT_LOCAL_THREAD_ENGINE_BASE
+	if (MR_INT_NE(MR_tag(MR_sv(2)),3)) {
+		MR_GOTO_LAB(__Compare___ml_backend__mlds__mlds_rval_const_0_0_i311);
+	}
+	MR_COMPUTED_GOTO((MR_Unsigned) MR_ctfield(3, MR_sv(2), 0),
+		MR_LABEL_AP(__Compare___ml_backend__mlds__mlds_rval_const_0_0_i311) MR_AND
+		MR_LABEL_AP(__Compare___ml_backend__mlds__mlds_rval_const_0_0_i196) MR_AND
+		MR_LABEL_AP(__Compare___ml_backend__mlds__mlds_rval_const_0_0_i195) MR_AND
+		MR_LABEL_AP(__Compare___ml_backend__mlds__mlds_rval_const_0_0_i195) MR_AND
+		MR_LABEL_AP(__Compare___ml_backend__mlds__mlds_rval_const_0_0_i195) MR_AND
+		MR_LABEL_AP(__Compare___ml_backend__mlds__mlds_rval_const_0_0_i195) MR_AND
+		MR_LABEL_AP(__Compare___ml_backend__mlds__mlds_rval_const_0_0_i195));
+MR_def_label(__Compare___ml_backend__mlds__mlds_rval_const_0_0,195)
+	MR_MAYBE_INIT_LOCAL_THREAD_ENGINE_BASE
+	MR_r1 = (MR_Integer) 1;
+	MR_decr_sp_and_return(5);
+MR_def_label(__Compare___ml_backend__mlds__mlds_rval_const_0_0,196)
+	MR_MAYBE_INIT_LOCAL_THREAD_ENGINE_BASE
+	MR_r1 = MR_ctfield(3, MR_sv(1), 1);
+	MR_r2 = MR_ctfield(3, MR_sv(2), 1);
+	MR_succip_word = MR_sv(5);
+	MR_decr_sp(5);
+	MR_np_tailcall_ent(private_builtin__builtin_compare_string_3_0);
+MR_def_label(__Compare___ml_backend__mlds__mlds_rval_const_0_0,227)
+	MR_MAYBE_INIT_LOCAL_THREAD_ENGINE_BASE
+	MR_decr_sp_and_return(5);
+#ifdef MR_maybe_local_thread_engine_base
+	#undef MR_maybe_local_thread_engine_base
+	#define MR_maybe_local_thread_engine_base MR_thread_engine_base
+#endif
+MR_END_MODULE
+
+
+MR_BEGIN_MODULE(ml_backend__mlds_module163)
+	MR_init_entry1(__Unify___ml_backend__mlds__mlds_stmt_0_0);
+	MR_init_label8(__Unify___ml_backend__mlds__mlds_stmt_0_0,9,11,75,77,79,41,43,45)
+	MR_init_label8(__Unify___ml_backend__mlds__mlds_stmt_0_0,84,5,15,17,19,21,23,25)
+	MR_init_label8(__Unify___ml_backend__mlds__mlds_stmt_0_0,27,29,33,37,49,51,55,57)
+	MR_init_label8(__Unify___ml_backend__mlds__mlds_stmt_0_0,59,61,63,67,69,71,85,1)
+MR_BEGIN_CODE
+
+#ifdef MR_maybe_local_thread_engine_base
+	#undef MR_maybe_local_thread_engine_base
+	#define MR_maybe_local_thread_engine_base MR_local_thread_engine_base
+#endif
+MR_define_entry(mercury____Unify___ml_backend__mlds__mlds_stmt_0_0);
+	MR_MAYBE_INIT_LOCAL_THREAD_ENGINE_BASE
+	if ((MR_r1 == MR_r2)) {
+		MR_GOTO_LAB(__Unify___ml_backend__mlds__mlds_stmt_0_0_i85);
+	}
+	MR_incr_sp(11);
+	MR_sv(11) = (MR_Word) MR_succip;
+	MR_sv(1) = MR_r1;
+	MR_sv(2) = MR_r2;
+	MR_COMPUTED_GOTO((MR_Unsigned) MR_tag(MR_sv(1)),
+		MR_LABEL_AP(__Unify___ml_backend__mlds__mlds_stmt_0_0_i9) MR_AND
+		MR_LABEL_AP(__Unify___ml_backend__mlds__mlds_stmt_0_0_i75) MR_AND
+		MR_LABEL_AP(__Unify___ml_backend__mlds__mlds_stmt_0_0_i41) MR_AND
+		MR_LABEL_AP(__Unify___ml_backend__mlds__mlds_stmt_0_0_i84));
+MR_def_label(__Unify___ml_backend__mlds__mlds_stmt_0_0,9)
+	MR_MAYBE_INIT_LOCAL_THREAD_ENGINE_BASE
+	if (MR_PTAG_TESTR(MR_sv(2),0)) {
+		MR_GOTO_LAB(__Unify___ml_backend__mlds__mlds_stmt_0_0_i1);
+	}
+	{
+	MR_Word MR_tempr1, MR_tempr2;
+	MR_tempr1 = MR_sv(1);
+	MR_sv(1) = MR_ctfield(0, MR_tempr1, 1);
+	MR_tempr2 = MR_sv(2);
+	MR_sv(2) = MR_ctfield(0, MR_tempr2, 1);
+	MR_r1 = (MR_Word) MR_CTOR0_ADDR(ml_backend__mlds, mlds_defn);
+	MR_r2 = MR_ctfield(0, MR_tempr1, 0);
+	MR_r3 = MR_ctfield(0, MR_tempr2, 0);
+	}
+	MR_np_call_localret_ent(__Unify___list__list_1_0,
+		__Unify___ml_backend__mlds__mlds_stmt_0_0_i11);
+MR_def_label(__Unify___ml_backend__mlds__mlds_stmt_0_0,11)
+	MR_MAYBE_INIT_LOCAL_THREAD_ENGINE_BASE
+	if (!(MR_r1)) {
+		MR_GOTO_LAB(__Unify___ml_backend__mlds__mlds_stmt_0_0_i1);
+	}
+	MR_r1 = (MR_Word) MR_CTOR0_ADDR(ml_backend__mlds, statement);
+	MR_r2 = MR_sv(1);
+	MR_r3 = MR_sv(2);
+	MR_succip_word = MR_sv(11);
+	MR_decr_sp(11);
+	MR_np_tailcall_ent(__Unify___list__list_1_0);
+MR_def_label(__Unify___ml_backend__mlds__mlds_stmt_0_0,75)
+	MR_MAYBE_INIT_LOCAL_THREAD_ENGINE_BASE
+	if (MR_PTAG_TESTR(MR_sv(2),1)) {
+		MR_GOTO_LAB(__Unify___ml_backend__mlds__mlds_stmt_0_0_i1);
+	}
+	{
+	MR_Word MR_tempr1, MR_tempr2;
+	MR_tempr1 = MR_sv(1);
+	MR_sv(1) = MR_ctfield(1, MR_tempr1, 1);
+	MR_tempr2 = MR_sv(2);
+	MR_sv(2) = MR_ctfield(1, MR_tempr1, 2);
+	MR_sv(3) = MR_ctfield(1, MR_tempr2, 1);
+	MR_sv(4) = MR_ctfield(1, MR_tempr2, 2);
+	MR_r1 = MR_ctfield(1, MR_tempr1, 0);
+	MR_r2 = MR_ctfield(1, MR_tempr2, 0);
+	}
+	MR_np_call_localret_ent(__Unify___ml_backend__mlds__mlds_rval_0_0,
+		__Unify___ml_backend__mlds__mlds_stmt_0_0_i77);
+MR_def_label(__Unify___ml_backend__mlds__mlds_stmt_0_0,77)
+	MR_MAYBE_INIT_LOCAL_THREAD_ENGINE_BASE
+	if (!(MR_r1)) {
+		MR_GOTO_LAB(__Unify___ml_backend__mlds__mlds_stmt_0_0_i1);
+	}
+	MR_r1 = MR_sv(1);
+	MR_r2 = MR_sv(3);
+	MR_np_call_localret_ent(__Unify___ml_backend__mlds__statement_0_0,
+		__Unify___ml_backend__mlds__mlds_stmt_0_0_i79);
+MR_def_label(__Unify___ml_backend__mlds__mlds_stmt_0_0,79)
+	MR_MAYBE_INIT_LOCAL_THREAD_ENGINE_BASE
+	if (!(MR_r1)) {
+		MR_GOTO_LAB(__Unify___ml_backend__mlds__mlds_stmt_0_0_i1);
+	}
+	MR_r1 = (MR_sv(2) == MR_sv(4));
+	MR_decr_sp_and_return(11);
+MR_def_label(__Unify___ml_backend__mlds__mlds_stmt_0_0,41)
+	MR_MAYBE_INIT_LOCAL_THREAD_ENGINE_BASE
+	if (MR_PTAG_TESTR(MR_sv(2),2)) {
+		MR_GOTO_LAB(__Unify___ml_backend__mlds__mlds_stmt_0_0_i1);
+	}
+	{
+	MR_Word MR_tempr1, MR_tempr2;
+	MR_tempr1 = MR_sv(1);
+	MR_sv(1) = MR_ctfield(2, MR_tempr1, 1);
+	MR_tempr2 = MR_sv(2);
+	MR_sv(2) = MR_ctfield(2, MR_tempr1, 2);
+	MR_sv(3) = MR_ctfield(2, MR_tempr2, 1);
+	MR_sv(4) = MR_ctfield(2, MR_tempr2, 2);
+	MR_r1 = MR_ctfield(2, MR_tempr1, 0);
+	MR_r2 = MR_ctfield(2, MR_tempr2, 0);
+	}
+	MR_np_call_localret_ent(__Unify___ml_backend__mlds__mlds_rval_0_0,
+		__Unify___ml_backend__mlds__mlds_stmt_0_0_i43);
+MR_def_label(__Unify___ml_backend__mlds__mlds_stmt_0_0,43)
+	MR_MAYBE_INIT_LOCAL_THREAD_ENGINE_BASE
+	if (!(MR_r1)) {
+		MR_GOTO_LAB(__Unify___ml_backend__mlds__mlds_stmt_0_0_i1);
+	}
+	MR_r1 = MR_sv(1);
+	MR_r2 = MR_sv(3);
+	MR_np_call_localret_ent(__Unify___ml_backend__mlds__statement_0_0,
+		__Unify___ml_backend__mlds__mlds_stmt_0_0_i45);
+MR_def_label(__Unify___ml_backend__mlds__mlds_stmt_0_0,45)
+	MR_MAYBE_INIT_LOCAL_THREAD_ENGINE_BASE
+	if (!(MR_r1)) {
+		MR_GOTO_LAB(__Unify___ml_backend__mlds__mlds_stmt_0_0_i1);
+	}
+	MR_r1 = (MR_Word) MR_CTOR0_ADDR(ml_backend__mlds, statement);
+	MR_r2 = MR_sv(2);
+	MR_r3 = MR_sv(4);
+	MR_succip_word = MR_sv(11);
+	MR_decr_sp(11);
+	MR_np_tailcall_ent(__Unify___maybe__maybe_1_0);
+MR_def_label(__Unify___ml_backend__mlds__mlds_stmt_0_0,84)
+	MR_MAYBE_INIT_LOCAL_THREAD_ENGINE_BASE
+	MR_COMPUTED_GOTO((MR_Unsigned) MR_ctfield(3, MR_sv(1), 0),
+		MR_LABEL_AP(__Unify___ml_backend__mlds__mlds_stmt_0_0_i55) MR_AND
+		MR_LABEL_AP(__Unify___ml_backend__mlds__mlds_stmt_0_0_i49) MR_AND
+		MR_LABEL_AP(__Unify___ml_backend__mlds__mlds_stmt_0_0_i37) MR_AND
+		MR_LABEL_AP(__Unify___ml_backend__mlds__mlds_stmt_0_0_i27) MR_AND
+		MR_LABEL_AP(__Unify___ml_backend__mlds__mlds_stmt_0_0_i15) MR_AND
+		MR_LABEL_AP(__Unify___ml_backend__mlds__mlds_stmt_0_0_i51) MR_AND
+		MR_LABEL_AP(__Unify___ml_backend__mlds__mlds_stmt_0_0_i67) MR_AND
+		MR_LABEL_AP(__Unify___ml_backend__mlds__mlds_stmt_0_0_i33) MR_AND
+		MR_LABEL_AP(__Unify___ml_backend__mlds__mlds_stmt_0_0_i5));
+MR_def_label(__Unify___ml_backend__mlds__mlds_stmt_0_0,5)
+	MR_MAYBE_INIT_LOCAL_THREAD_ENGINE_BASE
+	if (MR_RTAGS_TESTR(MR_sv(2),3,8)) {
+		MR_GOTO_LAB(__Unify___ml_backend__mlds__mlds_stmt_0_0_i1);
+	}
+	MR_r1 = MR_ctfield(3, MR_sv(1), 1);
+	MR_r2 = MR_ctfield(3, MR_sv(2), 1);
+	MR_succip_word = MR_sv(11);
+	MR_decr_sp(11);
+	MR_np_tailcall_ent(__Unify___ml_backend__mlds__mlds_atomic_statement_0_0);
+MR_def_label(__Unify___ml_backend__mlds__mlds_stmt_0_0,15)
+	MR_MAYBE_INIT_LOCAL_THREAD_ENGINE_BASE
+	if (MR_RTAGS_TESTR(MR_sv(2),3,4)) {
+		MR_GOTO_LAB(__Unify___ml_backend__mlds__mlds_stmt_0_0_i1);
+	}
+	{
+	MR_Word MR_tempr1, MR_tempr2;
+	MR_tempr1 = MR_sv(1);
+	MR_sv(1) = MR_ctfield(3, MR_tempr1, 2);
+	MR_tempr2 = MR_sv(2);
+	MR_sv(2) = MR_ctfield(3, MR_tempr1, 3);
+	MR_sv(3) = MR_ctfield(3, MR_tempr1, 4);
+	MR_sv(4) = MR_ctfield(3, MR_tempr1, 5);
+	MR_sv(5) = MR_ctfield(3, MR_tempr1, 6);
+	MR_sv(6) = MR_ctfield(3, MR_tempr2, 2);
+	MR_sv(7) = MR_ctfield(3, MR_tempr2, 3);
+	MR_sv(8) = MR_ctfield(3, MR_tempr2, 4);
+	MR_sv(9) = MR_ctfield(3, MR_tempr2, 5);
+	MR_sv(10) = MR_ctfield(3, MR_tempr2, 6);
+	MR_r1 = MR_ctfield(3, MR_tempr1, 1);
+	MR_r2 = MR_ctfield(3, MR_tempr2, 1);
+	}
+	MR_np_call_localret_ent(__Unify___ml_backend__mlds__mlds_func_signature_0_0,
+		__Unify___ml_backend__mlds__mlds_stmt_0_0_i17);
+MR_def_label(__Unify___ml_backend__mlds__mlds_stmt_0_0,17)
+	MR_MAYBE_INIT_LOCAL_THREAD_ENGINE_BASE
+	if (!(MR_r1)) {
+		MR_GOTO_LAB(__Unify___ml_backend__mlds__mlds_stmt_0_0_i1);
+	}
+	MR_r1 = MR_sv(1);
+	MR_r2 = MR_sv(6);
+	MR_np_call_localret_ent(__Unify___ml_backend__mlds__mlds_rval_0_0,
+		__Unify___ml_backend__mlds__mlds_stmt_0_0_i19);
+MR_def_label(__Unify___ml_backend__mlds__mlds_stmt_0_0,19)
+	MR_MAYBE_INIT_LOCAL_THREAD_ENGINE_BASE
+	if (!(MR_r1)) {
+		MR_GOTO_LAB(__Unify___ml_backend__mlds__mlds_stmt_0_0_i1);
+	}
+	MR_r1 = (MR_Word) MR_CTOR0_ADDR(ml_backend__mlds, mlds_rval);
+	MR_r2 = MR_sv(2);
+	MR_r3 = MR_sv(7);
+	MR_np_call_localret_ent(__Unify___maybe__maybe_1_0,
+		__Unify___ml_backend__mlds__mlds_stmt_0_0_i21);
+MR_def_label(__Unify___ml_backend__mlds__mlds_stmt_0_0,21)
+	MR_MAYBE_INIT_LOCAL_THREAD_ENGINE_BASE
+	if (!(MR_r1)) {
+		MR_GOTO_LAB(__Unify___ml_backend__mlds__mlds_stmt_0_0_i1);
+	}
+	MR_r1 = (MR_Word) MR_CTOR0_ADDR(ml_backend__mlds, mlds_rval);
+	MR_r2 = MR_sv(3);
+	MR_r3 = MR_sv(8);
+	MR_np_call_localret_ent(__Unify___list__list_1_0,
+		__Unify___ml_backend__mlds__mlds_stmt_0_0_i23);
+MR_def_label(__Unify___ml_backend__mlds__mlds_stmt_0_0,23)
+	MR_MAYBE_INIT_LOCAL_THREAD_ENGINE_BASE
+	if (!(MR_r1)) {
+		MR_GOTO_LAB(__Unify___ml_backend__mlds__mlds_stmt_0_0_i1);
+	}
+	MR_r1 = (MR_Word) MR_CTOR0_ADDR(ml_backend__mlds, mlds_lval);
+	MR_r2 = MR_sv(4);
+	MR_r3 = MR_sv(9);
+	MR_np_call_localret_ent(__Unify___list__list_1_0,
+		__Unify___ml_backend__mlds__mlds_stmt_0_0_i25);
+MR_def_label(__Unify___ml_backend__mlds__mlds_stmt_0_0,25)
+	MR_MAYBE_INIT_LOCAL_THREAD_ENGINE_BASE
+	if (!(MR_r1)) {
+		MR_GOTO_LAB(__Unify___ml_backend__mlds__mlds_stmt_0_0_i1);
+	}
+	MR_r1 = (MR_sv(5) == MR_sv(10));
+	MR_decr_sp_and_return(11);
+MR_def_label(__Unify___ml_backend__mlds__mlds_stmt_0_0,27)
+	MR_MAYBE_INIT_LOCAL_THREAD_ENGINE_BASE
+	if (MR_RTAGS_TESTR(MR_sv(2),3,3)) {
+		MR_GOTO_LAB(__Unify___ml_backend__mlds__mlds_stmt_0_0_i1);
+	}
+	{
+	MR_Word MR_tempr1, MR_tempr2;
+	MR_tempr1 = MR_sv(1);
+	MR_sv(1) = MR_ctfield(3, MR_tempr1, 2);
+	MR_tempr2 = MR_sv(2);
+	MR_sv(2) = MR_ctfield(3, MR_tempr2, 2);
+	MR_r1 = MR_ctfield(3, MR_tempr1, 1);
+	MR_r2 = MR_ctfield(3, MR_tempr2, 1);
+	}
+	MR_np_call_localret_ent(__Unify___ml_backend__mlds__mlds_rval_0_0,
+		__Unify___ml_backend__mlds__mlds_stmt_0_0_i29);
+MR_def_label(__Unify___ml_backend__mlds__mlds_stmt_0_0,29)
+	MR_MAYBE_INIT_LOCAL_THREAD_ENGINE_BASE
+	if (!(MR_r1)) {
+		MR_GOTO_LAB(__Unify___ml_backend__mlds__mlds_stmt_0_0_i1);
+	}
+	MR_r1 = (MR_Word) MR_STRING_CTOR_ADDR;
+	MR_r2 = MR_sv(1);
+	MR_r3 = MR_sv(2);
+	MR_succip_word = MR_sv(11);
+	MR_decr_sp(11);
+	MR_np_tailcall_ent(__Unify___list__list_1_0);
+MR_def_label(__Unify___ml_backend__mlds__mlds_stmt_0_0,33)
+	MR_MAYBE_INIT_LOCAL_THREAD_ENGINE_BASE
+	if (MR_RTAGS_TESTR(MR_sv(2),3,7)) {
+		MR_GOTO_LAB(__Unify___ml_backend__mlds__mlds_stmt_0_0_i1);
+	}
+	MR_r1 = MR_ctfield(3, MR_sv(1), 1);
+	MR_r2 = MR_ctfield(3, MR_sv(2), 1);
+	MR_succip_word = MR_sv(11);
+	MR_decr_sp(11);
+	MR_np_tailcall_ent(__Unify___ml_backend__mlds__mlds_rval_0_0);
+MR_def_label(__Unify___ml_backend__mlds__mlds_stmt_0_0,37)
+	MR_MAYBE_INIT_LOCAL_THREAD_ENGINE_BASE
+	if (MR_RTAGS_TESTR(MR_sv(2),3,2)) {
+		MR_GOTO_LAB(__Unify___ml_backend__mlds__mlds_stmt_0_0_i1);
+	}
+	MR_r1 = MR_ctfield(3, MR_sv(1), 1);
+	MR_r2 = MR_ctfield(3, MR_sv(2), 1);
+	MR_succip_word = MR_sv(11);
+	MR_decr_sp(11);
+	MR_np_tailcall_ent(__Unify___ml_backend__mlds__mlds_goto_target_0_0);
+MR_def_label(__Unify___ml_backend__mlds__mlds_stmt_0_0,49)
+	MR_MAYBE_INIT_LOCAL_THREAD_ENGINE_BASE
+	if (MR_RTAGS_TESTR(MR_sv(2),3,1)) {
+		MR_GOTO_LAB(__Unify___ml_backend__mlds__mlds_stmt_0_0_i1);
+	}
+	{
+	MR_Word MR_tempr1, MR_tempr2;
+	MR_tempr1 = MR_ctfield(3, MR_sv(1), 1);
+	MR_tempr2 = MR_ctfield(3, MR_sv(2), 1);
+	MR_r1 = (strcmp((char *) (MR_Word *) MR_tempr1, (char *) (MR_Word *) MR_tempr2) == 0);
+	MR_decr_sp_and_return(11);
+	}
+MR_def_label(__Unify___ml_backend__mlds__mlds_stmt_0_0,51)
+	MR_MAYBE_INIT_LOCAL_THREAD_ENGINE_BASE
+	if (MR_RTAGS_TESTR(MR_sv(2),3,5)) {
+		MR_GOTO_LAB(__Unify___ml_backend__mlds__mlds_stmt_0_0_i1);
+	}
+	MR_r1 = (MR_Word) MR_CTOR0_ADDR(ml_backend__mlds, mlds_rval);
+	MR_r2 = MR_ctfield(3, MR_sv(1), 1);
+	MR_r3 = MR_ctfield(3, MR_sv(2), 1);
+	MR_succip_word = MR_sv(11);
+	MR_decr_sp(11);
+	MR_np_tailcall_ent(__Unify___list__list_1_0);
+MR_def_label(__Unify___ml_backend__mlds__mlds_stmt_0_0,55)
+	MR_MAYBE_INIT_LOCAL_THREAD_ENGINE_BASE
+	if (MR_RTAGS_TESTR(MR_sv(2),3,0)) {
+		MR_GOTO_LAB(__Unify___ml_backend__mlds__mlds_stmt_0_0_i1);
+	}
+	{
+	MR_Word MR_tempr1, MR_tempr2;
+	MR_tempr1 = MR_sv(1);
+	MR_sv(1) = MR_ctfield(3, MR_tempr1, 2);
+	MR_tempr2 = MR_sv(2);
+	MR_sv(2) = MR_ctfield(3, MR_tempr1, 3);
+	MR_sv(3) = MR_ctfield(3, MR_tempr1, 4);
+	MR_sv(4) = MR_ctfield(3, MR_tempr1, 5);
+	MR_sv(5) = MR_ctfield(3, MR_tempr2, 2);
+	MR_sv(6) = MR_ctfield(3, MR_tempr2, 3);
+	MR_sv(7) = MR_ctfield(3, MR_tempr2, 4);
+	MR_sv(8) = MR_ctfield(3, MR_tempr2, 5);
+	MR_r1 = MR_ctfield(3, MR_tempr1, 1);
+	MR_r2 = MR_ctfield(3, MR_tempr2, 1);
+	}
+	MR_np_call_localret_ent(__Unify___ml_backend__mlds__mlds_type_0_0,
+		__Unify___ml_backend__mlds__mlds_stmt_0_0_i57);
+MR_def_label(__Unify___ml_backend__mlds__mlds_stmt_0_0,57)
+	MR_MAYBE_INIT_LOCAL_THREAD_ENGINE_BASE
+	if (!(MR_r1)) {
+		MR_GOTO_LAB(__Unify___ml_backend__mlds__mlds_stmt_0_0_i1);
+	}
+	MR_r1 = MR_sv(1);
+	MR_r2 = MR_sv(5);
+	MR_np_call_localret_ent(__Unify___ml_backend__mlds__mlds_rval_0_0,
+		__Unify___ml_backend__mlds__mlds_stmt_0_0_i59);
+MR_def_label(__Unify___ml_backend__mlds__mlds_stmt_0_0,59)
+	MR_MAYBE_INIT_LOCAL_THREAD_ENGINE_BASE
+	if (!(MR_r1)) {
+		MR_GOTO_LAB(__Unify___ml_backend__mlds__mlds_stmt_0_0_i1);
+	}
+	MR_r1 = MR_sv(2);
+	MR_r2 = MR_sv(6);
+	MR_np_call_localret_ent(__Unify___ml_backend__mlds__mlds_switch_range_0_0,
+		__Unify___ml_backend__mlds__mlds_stmt_0_0_i61);
+MR_def_label(__Unify___ml_backend__mlds__mlds_stmt_0_0,61)
+	MR_MAYBE_INIT_LOCAL_THREAD_ENGINE_BASE
+	if (!(MR_r1)) {
+		MR_GOTO_LAB(__Unify___ml_backend__mlds__mlds_stmt_0_0_i1);
+	}
+	MR_r1 = (MR_Word) MR_CTOR0_ADDR(ml_backend__mlds, mlds_switch_case);
+	MR_r2 = MR_sv(3);
+	MR_r3 = MR_sv(7);
+	MR_np_call_localret_ent(__Unify___list__list_1_0,
+		__Unify___ml_backend__mlds__mlds_stmt_0_0_i63);
+MR_def_label(__Unify___ml_backend__mlds__mlds_stmt_0_0,63)
+	MR_MAYBE_INIT_LOCAL_THREAD_ENGINE_BASE
+	if (!(MR_r1)) {
+		MR_GOTO_LAB(__Unify___ml_backend__mlds__mlds_stmt_0_0_i1);
+	}
+	MR_r1 = MR_sv(4);
+	MR_r2 = MR_sv(8);
+	MR_succip_word = MR_sv(11);
+	MR_decr_sp(11);
+	MR_np_tailcall_ent(__Unify___ml_backend__mlds__mlds_switch_default_0_0);
+MR_def_label(__Unify___ml_backend__mlds__mlds_stmt_0_0,67)
+	MR_MAYBE_INIT_LOCAL_THREAD_ENGINE_BASE
+	if (MR_RTAGS_TESTR(MR_sv(2),3,6)) {
+		MR_GOTO_LAB(__Unify___ml_backend__mlds__mlds_stmt_0_0_i1);
+	}
+	{
+	MR_Word MR_tempr1, MR_tempr2;
+	MR_tempr1 = MR_sv(1);
+	MR_sv(1) = MR_ctfield(3, MR_tempr1, 2);
+	MR_tempr2 = MR_sv(2);
+	MR_sv(2) = MR_ctfield(3, MR_tempr1, 3);
+	MR_sv(3) = MR_ctfield(3, MR_tempr2, 2);
+	MR_sv(4) = MR_ctfield(3, MR_tempr2, 3);
+	MR_r1 = MR_ctfield(3, MR_tempr1, 1);
+	MR_r2 = MR_ctfield(3, MR_tempr2, 1);
+	}
+	MR_np_call_localret_ent(__Unify___ml_backend__mlds__mlds_lval_0_0,
+		__Unify___ml_backend__mlds__mlds_stmt_0_0_i69);
+MR_def_label(__Unify___ml_backend__mlds__mlds_stmt_0_0,69)
+	MR_MAYBE_INIT_LOCAL_THREAD_ENGINE_BASE
+	if (!(MR_r1)) {
+		MR_GOTO_LAB(__Unify___ml_backend__mlds__mlds_stmt_0_0_i1);
+	}
+	MR_r1 = MR_sv(1);
+	MR_r2 = MR_sv(3);
+	MR_np_call_localret_ent(__Unify___ml_backend__mlds__statement_0_0,
+		__Unify___ml_backend__mlds__mlds_stmt_0_0_i71);
+MR_def_label(__Unify___ml_backend__mlds__mlds_stmt_0_0,71)
+	MR_MAYBE_INIT_LOCAL_THREAD_ENGINE_BASE
+	if (!(MR_r1)) {
+		MR_GOTO_LAB(__Unify___ml_backend__mlds__mlds_stmt_0_0_i1);
+	}
+	MR_r1 = MR_sv(2);
+	MR_r2 = MR_sv(4);
+	MR_succip_word = MR_sv(11);
+	MR_decr_sp(11);
+	MR_np_tailcall_ent(__Unify___ml_backend__mlds__statement_0_0);
+MR_def_label(__Unify___ml_backend__mlds__mlds_stmt_0_0,85)
+	MR_MAYBE_INIT_LOCAL_THREAD_ENGINE_BASE
+	MR_r1 = MR_TRUE;
+	MR_proceed();
+MR_def_label(__Unify___ml_backend__mlds__mlds_stmt_0_0,1)
+	MR_MAYBE_INIT_LOCAL_THREAD_ENGINE_BASE
+	MR_r1 = MR_FALSE;
+	MR_decr_sp_and_return(11);
+#ifdef MR_maybe_local_thread_engine_base
+	#undef MR_maybe_local_thread_engine_base
+	#define MR_maybe_local_thread_engine_base MR_thread_engine_base
+#endif
+MR_END_MODULE
+
+
+MR_BEGIN_MODULE(ml_backend__mlds_module164)
+	MR_init_entry1(__Compare___ml_backend__mlds__mlds_stmt_0_0);
+	MR_init_label8(__Compare___ml_backend__mlds__mlds_stmt_0_0,3,24,29,289,302,304,308,154)
+	MR_init_label8(__Compare___ml_backend__mlds__mlds_stmt_0_0,162,164,168,321,5,48,52,54)
+	MR_init_label8(__Compare___ml_backend__mlds__mlds_stmt_0_0,58,62,66,70,92,97,99,116)
+	MR_init_label8(__Compare___ml_backend__mlds__mlds_stmt_0_0,122,135,142,183,192,202,212,221)
+	MR_init_label8(__Compare___ml_backend__mlds__mlds_stmt_0_0,234,238,242,246,260,266,271,272)
+	MR_init_label3(__Compare___ml_backend__mlds__mlds_stmt_0_0,274,278,509)
+MR_BEGIN_CODE
+
+#ifdef MR_maybe_local_thread_engine_base
+	#undef MR_maybe_local_thread_engine_base
+	#define MR_maybe_local_thread_engine_base MR_local_thread_engine_base
+#endif
+MR_define_entry(mercury____Compare___ml_backend__mlds__mlds_stmt_0_0);
+	MR_MAYBE_INIT_LOCAL_THREAD_ENGINE_BASE
+	if ((MR_r1 == MR_r2)) {
+		MR_GOTO_LAB(__Compare___ml_backend__mlds__mlds_stmt_0_0_i3);
+	}
+	MR_incr_sp(11);
+	MR_sv(11) = (MR_Word) MR_succip;
+	MR_sv(1) = MR_r1;
+	MR_sv(2) = MR_r2;
+	MR_COMPUTED_GOTO((MR_Unsigned) MR_tag(MR_sv(1)),
+		MR_LABEL_AP(__Compare___ml_backend__mlds__mlds_stmt_0_0_i24) MR_AND
+		MR_LABEL_AP(__Compare___ml_backend__mlds__mlds_stmt_0_0_i289) MR_AND
+		MR_LABEL_AP(__Compare___ml_backend__mlds__mlds_stmt_0_0_i154) MR_AND
+		MR_LABEL_AP(__Compare___ml_backend__mlds__mlds_stmt_0_0_i321));
+MR_def_label(__Compare___ml_backend__mlds__mlds_stmt_0_0,3)
+	MR_MAYBE_INIT_LOCAL_THREAD_ENGINE_BASE
+	MR_r1 = (MR_Integer) 0;
+	MR_proceed();
+MR_def_label(__Compare___ml_backend__mlds__mlds_stmt_0_0,24)
+	MR_MAYBE_INIT_LOCAL_THREAD_ENGINE_BASE
+	if (MR_INT_NE(MR_tag(MR_sv(2)),0)) {
+		MR_GOTO_LAB(__Compare___ml_backend__mlds__mlds_stmt_0_0_i266);
+	}
+	{
+	MR_Word MR_tempr1, MR_tempr2, MR_tempr3, MR_tempr4, MR_tempr5, MR_tempr6;
+	MR_tempr5 = MR_sv(1);
+	MR_tempr1 = MR_ctfield(0, MR_tempr5, 1);
+	MR_tempr6 = MR_sv(2);
+	MR_tempr2 = MR_ctfield(0, MR_tempr6, 1);
+	MR_tempr3 = MR_tempr5;
+	MR_sv(1) = MR_tempr2;
+	MR_tempr4 = MR_tempr6;
+	MR_sv(2) = MR_tempr1;
+	MR_r1 = (MR_Word) MR_CTOR0_ADDR(ml_backend__mlds, mlds_defn);
+	MR_r2 = MR_ctfield(0, MR_tempr3, 0);
+	MR_r3 = MR_ctfield(0, MR_tempr4, 0);
+	}
+	MR_np_call_localret_ent(__Compare___list__list_1_0,
+		__Compare___ml_backend__mlds__mlds_stmt_0_0_i29);
+MR_def_label(__Compare___ml_backend__mlds__mlds_stmt_0_0,29)
+	MR_MAYBE_INIT_LOCAL_THREAD_ENGINE_BASE
+	if (MR_INT_NE(MR_r1,0)) {
+		MR_GOTO_LAB(__Compare___ml_backend__mlds__mlds_stmt_0_0_i509);
+	}
+	MR_r1 = (MR_Word) MR_CTOR0_ADDR(ml_backend__mlds, statement);
+	MR_r2 = MR_sv(2);
+	MR_r3 = MR_sv(1);
+	MR_succip_word = MR_sv(11);
+	MR_decr_sp(11);
+	MR_np_tailcall_ent(__Compare___list__list_1_0);
+MR_def_label(__Compare___ml_backend__mlds__mlds_stmt_0_0,289)
+	MR_MAYBE_INIT_LOCAL_THREAD_ENGINE_BASE
+	MR_COMPUTED_GOTO((MR_Unsigned) MR_tag(MR_sv(2)),
+		MR_LABEL_AP(__Compare___ml_backend__mlds__mlds_stmt_0_0_i271) MR_AND
+		MR_LABEL_AP(__Compare___ml_backend__mlds__mlds_stmt_0_0_i302) MR_AND
+		MR_LABEL_AP(__Compare___ml_backend__mlds__mlds_stmt_0_0_i266) MR_AND
+		MR_LABEL_AP(__Compare___ml_backend__mlds__mlds_stmt_0_0_i266));
+MR_def_label(__Compare___ml_backend__mlds__mlds_stmt_0_0,302)
+	MR_MAYBE_INIT_LOCAL_THREAD_ENGINE_BASE
+	{
+	MR_Word MR_tempr1, MR_tempr2, MR_tempr3, MR_tempr4, MR_tempr5, MR_tempr6;
+	MR_tempr5 = MR_sv(1);
+	MR_sv(4) = MR_ctfield(1, MR_tempr5, 1);
+	MR_sv(3) = MR_ctfield(1, MR_tempr5, 2);
+	MR_tempr6 = MR_sv(2);
+	MR_tempr1 = MR_ctfield(1, MR_tempr6, 2);
+	MR_tempr2 = MR_ctfield(1, MR_tempr6, 1);
+	MR_tempr3 = MR_tempr5;
+	MR_sv(1) = MR_tempr2;
+	MR_tempr4 = MR_tempr6;
+	MR_sv(2) = MR_tempr1;
+	MR_r1 = MR_ctfield(1, MR_tempr3, 0);
+	MR_r2 = MR_ctfield(1, MR_tempr4, 0);
+	}
+	MR_np_call_localret_ent(__Compare___ml_backend__mlds__mlds_rval_0_0,
+		__Compare___ml_backend__mlds__mlds_stmt_0_0_i304);
+MR_def_label(__Compare___ml_backend__mlds__mlds_stmt_0_0,304)
+	MR_MAYBE_INIT_LOCAL_THREAD_ENGINE_BASE
+	if (MR_INT_NE(MR_r1,0)) {
+		MR_GOTO_LAB(__Compare___ml_backend__mlds__mlds_stmt_0_0_i509);
+	}
+	MR_r1 = MR_sv(4);
+	MR_r2 = MR_sv(1);
+	MR_np_call_localret_ent(__Compare___ml_backend__mlds__statement_0_0,
+		__Compare___ml_backend__mlds__mlds_stmt_0_0_i308);
+MR_def_label(__Compare___ml_backend__mlds__mlds_stmt_0_0,308)
+	MR_MAYBE_INIT_LOCAL_THREAD_ENGINE_BASE
+	if (MR_INT_NE(MR_r1,0)) {
+		MR_GOTO_LAB(__Compare___ml_backend__mlds__mlds_stmt_0_0_i509);
+	}
+	MR_r1 = MR_sv(3);
+	MR_r2 = MR_sv(2);
+	MR_succip_word = MR_sv(11);
+	MR_decr_sp(11);
+	MR_np_tailcall_ent(private_builtin__builtin_compare_int_3_0);
+MR_def_label(__Compare___ml_backend__mlds__mlds_stmt_0_0,154)
+	MR_MAYBE_INIT_LOCAL_THREAD_ENGINE_BASE
+	MR_COMPUTED_GOTO((MR_Unsigned) MR_tag(MR_sv(2)),
+		MR_LABEL_AP(__Compare___ml_backend__mlds__mlds_stmt_0_0_i271) MR_AND
+		MR_LABEL_AP(__Compare___ml_backend__mlds__mlds_stmt_0_0_i271) MR_AND
+		MR_LABEL_AP(__Compare___ml_backend__mlds__mlds_stmt_0_0_i162) MR_AND
+		MR_LABEL_AP(__Compare___ml_backend__mlds__mlds_stmt_0_0_i266));
+MR_def_label(__Compare___ml_backend__mlds__mlds_stmt_0_0,162)
+	MR_MAYBE_INIT_LOCAL_THREAD_ENGINE_BASE
+	{
+	MR_Word MR_tempr1, MR_tempr2, MR_tempr3, MR_tempr4, MR_tempr5, MR_tempr6;
+	MR_tempr5 = MR_sv(1);
+	MR_sv(4) = MR_ctfield(2, MR_tempr5, 1);
+	MR_sv(3) = MR_ctfield(2, MR_tempr5, 2);
+	MR_tempr6 = MR_sv(2);
+	MR_tempr1 = MR_ctfield(2, MR_tempr6, 2);
+	MR_tempr2 = MR_ctfield(2, MR_tempr6, 1);
+	MR_tempr3 = MR_tempr5;
+	MR_sv(1) = MR_tempr2;
+	MR_tempr4 = MR_tempr6;
+	MR_sv(2) = MR_tempr1;
+	MR_r1 = MR_ctfield(2, MR_tempr3, 0);
+	MR_r2 = MR_ctfield(2, MR_tempr4, 0);
+	}
+	MR_np_call_localret_ent(__Compare___ml_backend__mlds__mlds_rval_0_0,
+		__Compare___ml_backend__mlds__mlds_stmt_0_0_i164);
+MR_def_label(__Compare___ml_backend__mlds__mlds_stmt_0_0,164)
+	MR_MAYBE_INIT_LOCAL_THREAD_ENGINE_BASE
+	if (MR_INT_NE(MR_r1,0)) {
+		MR_GOTO_LAB(__Compare___ml_backend__mlds__mlds_stmt_0_0_i509);
+	}
+	MR_r1 = MR_sv(4);
+	MR_r2 = MR_sv(1);
+	MR_np_call_localret_ent(__Compare___ml_backend__mlds__statement_0_0,
+		__Compare___ml_backend__mlds__mlds_stmt_0_0_i168);
+MR_def_label(__Compare___ml_backend__mlds__mlds_stmt_0_0,168)
+	MR_MAYBE_INIT_LOCAL_THREAD_ENGINE_BASE
+	if (MR_INT_NE(MR_r1,0)) {
+		MR_GOTO_LAB(__Compare___ml_backend__mlds__mlds_stmt_0_0_i509);
+	}
+	MR_r1 = (MR_Word) MR_CTOR0_ADDR(ml_backend__mlds, statement);
+	MR_r2 = MR_sv(3);
+	MR_r3 = MR_sv(2);
+	MR_succip_word = MR_sv(11);
+	MR_decr_sp(11);
+	MR_np_tailcall_ent(__Compare___maybe__maybe_1_0);
+MR_def_label(__Compare___ml_backend__mlds__mlds_stmt_0_0,321)
+	MR_MAYBE_INIT_LOCAL_THREAD_ENGINE_BASE
+	MR_COMPUTED_GOTO((MR_Unsigned) MR_ctfield(3, MR_sv(1), 0),
+		MR_LABEL_AP(__Compare___ml_backend__mlds__mlds_stmt_0_0_i221) MR_AND
+		MR_LABEL_AP(__Compare___ml_backend__mlds__mlds_stmt_0_0_i183) MR_AND
+		MR_LABEL_AP(__Compare___ml_backend__mlds__mlds_stmt_0_0_i135) MR_AND
+		MR_LABEL_AP(__Compare___ml_backend__mlds__mlds_stmt_0_0_i92) MR_AND
+		MR_LABEL_AP(__Compare___ml_backend__mlds__mlds_stmt_0_0_i48) MR_AND
+		MR_LABEL_AP(__Compare___ml_backend__mlds__mlds_stmt_0_0_i202) MR_AND
+		MR_LABEL_AP(__Compare___ml_backend__mlds__mlds_stmt_0_0_i260) MR_AND
+		MR_LABEL_AP(__Compare___ml_backend__mlds__mlds_stmt_0_0_i116) MR_AND
+		MR_LABEL_AP(__Compare___ml_backend__mlds__mlds_stmt_0_0_i5));
+MR_def_label(__Compare___ml_backend__mlds__mlds_stmt_0_0,5)
+	MR_MAYBE_INIT_LOCAL_THREAD_ENGINE_BASE
+	if (MR_INT_NE(MR_tag(MR_sv(2)),3)) {
+		MR_GOTO_LAB(__Compare___ml_backend__mlds__mlds_stmt_0_0_i271);
+	}
+	if (MR_INT_NE(MR_ctfield(3, MR_sv(2), 0),8)) {
+		MR_GOTO_LAB(__Compare___ml_backend__mlds__mlds_stmt_0_0_i271);
+	}
+	MR_r1 = MR_ctfield(3, MR_sv(1), 1);
+	MR_r2 = MR_ctfield(3, MR_sv(2), 1);
+	MR_succip_word = MR_sv(11);
+	MR_decr_sp(11);
+	MR_np_tailcall_ent(__Compare___ml_backend__mlds__mlds_atomic_statement_0_0);
+MR_def_label(__Compare___ml_backend__mlds__mlds_stmt_0_0,48)
+	MR_MAYBE_INIT_LOCAL_THREAD_ENGINE_BASE
+	if (MR_INT_NE(MR_tag(MR_sv(2)),3)) {
+		MR_GOTO_LAB(__Compare___ml_backend__mlds__mlds_stmt_0_0_i271);
+	}
+	MR_COMPUTED_GOTO((MR_Unsigned) MR_ctfield(3, MR_sv(2), 0),
+		MR_LABEL_AP(__Compare___ml_backend__mlds__mlds_stmt_0_0_i271) MR_AND
+		MR_LABEL_AP(__Compare___ml_backend__mlds__mlds_stmt_0_0_i271) MR_AND
+		MR_LABEL_AP(__Compare___ml_backend__mlds__mlds_stmt_0_0_i271) MR_AND
+		MR_LABEL_AP(__Compare___ml_backend__mlds__mlds_stmt_0_0_i271) MR_AND
+		MR_LABEL_AP(__Compare___ml_backend__mlds__mlds_stmt_0_0_i52) MR_AND
+		MR_LABEL_AP(__Compare___ml_backend__mlds__mlds_stmt_0_0_i266) MR_AND
+		MR_LABEL_AP(__Compare___ml_backend__mlds__mlds_stmt_0_0_i266) MR_AND
+		MR_LABEL_AP(__Compare___ml_backend__mlds__mlds_stmt_0_0_i266) MR_AND
+		MR_LABEL_AP(__Compare___ml_backend__mlds__mlds_stmt_0_0_i266));
+MR_def_label(__Compare___ml_backend__mlds__mlds_stmt_0_0,52)
+	MR_MAYBE_INIT_LOCAL_THREAD_ENGINE_BASE
+	{
+	MR_Word MR_tempr1, MR_tempr2, MR_tempr3, MR_tempr4, MR_tempr5, MR_tempr6;
+	MR_tempr5 = MR_sv(1);
+	MR_sv(10) = MR_ctfield(3, MR_tempr5, 2);
+	MR_sv(9) = MR_ctfield(3, MR_tempr5, 3);
+	MR_sv(8) = MR_ctfield(3, MR_tempr5, 4);
+	MR_sv(7) = MR_ctfield(3, MR_tempr5, 5);
+	MR_sv(6) = MR_ctfield(3, MR_tempr5, 6);
+	MR_tempr6 = MR_sv(2);
+	MR_sv(5) = MR_ctfield(3, MR_tempr6, 6);
+	MR_sv(4) = MR_ctfield(3, MR_tempr6, 5);
+	MR_sv(3) = MR_ctfield(3, MR_tempr6, 4);
+	MR_tempr1 = MR_ctfield(3, MR_tempr6, 3);
+	MR_tempr2 = MR_ctfield(3, MR_tempr6, 2);
+	MR_tempr3 = MR_tempr5;
+	MR_sv(1) = MR_tempr2;
+	MR_tempr4 = MR_tempr6;
+	MR_sv(2) = MR_tempr1;
+	MR_r1 = MR_ctfield(3, MR_tempr3, 1);
+	MR_r2 = MR_ctfield(3, MR_tempr4, 1);
+	}
+	MR_np_call_localret_ent(__Compare___ml_backend__mlds__mlds_func_signature_0_0,
+		__Compare___ml_backend__mlds__mlds_stmt_0_0_i54);
+MR_def_label(__Compare___ml_backend__mlds__mlds_stmt_0_0,54)
+	MR_MAYBE_INIT_LOCAL_THREAD_ENGINE_BASE
+	if (MR_INT_NE(MR_r1,0)) {
+		MR_GOTO_LAB(__Compare___ml_backend__mlds__mlds_stmt_0_0_i509);
+	}
+	MR_r1 = MR_sv(10);
+	MR_r2 = MR_sv(1);
+	MR_np_call_localret_ent(__Compare___ml_backend__mlds__mlds_rval_0_0,
+		__Compare___ml_backend__mlds__mlds_stmt_0_0_i58);
+MR_def_label(__Compare___ml_backend__mlds__mlds_stmt_0_0,58)
+	MR_MAYBE_INIT_LOCAL_THREAD_ENGINE_BASE
+	if (MR_INT_NE(MR_r1,0)) {
+		MR_GOTO_LAB(__Compare___ml_backend__mlds__mlds_stmt_0_0_i509);
+	}
+	MR_r1 = (MR_Word) MR_CTOR0_ADDR(ml_backend__mlds, mlds_rval);
+	MR_r2 = MR_sv(9);
+	MR_r3 = MR_sv(2);
+	MR_np_call_localret_ent(__Compare___maybe__maybe_1_0,
+		__Compare___ml_backend__mlds__mlds_stmt_0_0_i62);
+MR_def_label(__Compare___ml_backend__mlds__mlds_stmt_0_0,62)
+	MR_MAYBE_INIT_LOCAL_THREAD_ENGINE_BASE
+	if (MR_INT_NE(MR_r1,0)) {
+		MR_GOTO_LAB(__Compare___ml_backend__mlds__mlds_stmt_0_0_i509);
+	}
+	MR_r1 = (MR_Word) MR_CTOR0_ADDR(ml_backend__mlds, mlds_rval);
+	MR_r2 = MR_sv(8);
+	MR_r3 = MR_sv(3);
+	MR_np_call_localret_ent(__Compare___list__list_1_0,
+		__Compare___ml_backend__mlds__mlds_stmt_0_0_i66);
+MR_def_label(__Compare___ml_backend__mlds__mlds_stmt_0_0,66)
+	MR_MAYBE_INIT_LOCAL_THREAD_ENGINE_BASE
+	if (MR_INT_NE(MR_r1,0)) {
+		MR_GOTO_LAB(__Compare___ml_backend__mlds__mlds_stmt_0_0_i509);
+	}
+	MR_r1 = (MR_Word) MR_CTOR0_ADDR(ml_backend__mlds, mlds_lval);
+	MR_r2 = MR_sv(7);
+	MR_r3 = MR_sv(4);
+	MR_np_call_localret_ent(__Compare___list__list_1_0,
+		__Compare___ml_backend__mlds__mlds_stmt_0_0_i70);
+MR_def_label(__Compare___ml_backend__mlds__mlds_stmt_0_0,70)
+	MR_MAYBE_INIT_LOCAL_THREAD_ENGINE_BASE
+	if (MR_INT_NE(MR_r1,0)) {
+		MR_GOTO_LAB(__Compare___ml_backend__mlds__mlds_stmt_0_0_i509);
+	}
+	MR_r1 = MR_sv(6);
+	MR_r2 = MR_sv(5);
+	MR_succip_word = MR_sv(11);
+	MR_decr_sp(11);
+	MR_np_tailcall_ent(private_builtin__builtin_compare_int_3_0);
+MR_def_label(__Compare___ml_backend__mlds__mlds_stmt_0_0,92)
+	MR_MAYBE_INIT_LOCAL_THREAD_ENGINE_BASE
+	if (MR_INT_NE(MR_tag(MR_sv(2)),3)) {
+		MR_GOTO_LAB(__Compare___ml_backend__mlds__mlds_stmt_0_0_i271);
+	}
+	MR_COMPUTED_GOTO((MR_Unsigned) MR_ctfield(3, MR_sv(2), 0),
+		MR_LABEL_AP(__Compare___ml_backend__mlds__mlds_stmt_0_0_i271) MR_AND
+		MR_LABEL_AP(__Compare___ml_backend__mlds__mlds_stmt_0_0_i271) MR_AND
+		MR_LABEL_AP(__Compare___ml_backend__mlds__mlds_stmt_0_0_i271) MR_AND
+		MR_LABEL_AP(__Compare___ml_backend__mlds__mlds_stmt_0_0_i97) MR_AND
+		MR_LABEL_AP(__Compare___ml_backend__mlds__mlds_stmt_0_0_i266) MR_AND
+		MR_LABEL_AP(__Compare___ml_backend__mlds__mlds_stmt_0_0_i266) MR_AND
+		MR_LABEL_AP(__Compare___ml_backend__mlds__mlds_stmt_0_0_i266) MR_AND
+		MR_LABEL_AP(__Compare___ml_backend__mlds__mlds_stmt_0_0_i266) MR_AND
+		MR_LABEL_AP(__Compare___ml_backend__mlds__mlds_stmt_0_0_i266));
+MR_def_label(__Compare___ml_backend__mlds__mlds_stmt_0_0,97)
+	MR_MAYBE_INIT_LOCAL_THREAD_ENGINE_BASE
+	{
+	MR_Word MR_tempr1, MR_tempr2, MR_tempr3, MR_tempr4, MR_tempr5, MR_tempr6;
+	MR_tempr5 = MR_sv(1);
+	MR_tempr1 = MR_ctfield(3, MR_tempr5, 2);
+	MR_tempr6 = MR_sv(2);
+	MR_tempr2 = MR_ctfield(3, MR_tempr6, 2);
+	MR_tempr3 = MR_tempr5;
+	MR_sv(1) = MR_tempr2;
+	MR_tempr4 = MR_tempr6;
+	MR_sv(2) = MR_tempr1;
+	MR_r1 = MR_ctfield(3, MR_tempr3, 1);
+	MR_r2 = MR_ctfield(3, MR_tempr4, 1);
+	}
+	MR_np_call_localret_ent(__Compare___ml_backend__mlds__mlds_rval_0_0,
+		__Compare___ml_backend__mlds__mlds_stmt_0_0_i99);
+MR_def_label(__Compare___ml_backend__mlds__mlds_stmt_0_0,99)
+	MR_MAYBE_INIT_LOCAL_THREAD_ENGINE_BASE
+	if (MR_INT_NE(MR_r1,0)) {
+		MR_GOTO_LAB(__Compare___ml_backend__mlds__mlds_stmt_0_0_i509);
+	}
+	MR_r1 = (MR_Word) MR_STRING_CTOR_ADDR;
+	MR_r2 = MR_sv(2);
+	MR_r3 = MR_sv(1);
+	MR_succip_word = MR_sv(11);
+	MR_decr_sp(11);
+	MR_np_tailcall_ent(__Compare___list__list_1_0);
+MR_def_label(__Compare___ml_backend__mlds__mlds_stmt_0_0,116)
+	MR_MAYBE_INIT_LOCAL_THREAD_ENGINE_BASE
+	if (MR_INT_NE(MR_tag(MR_sv(2)),3)) {
+		MR_GOTO_LAB(__Compare___ml_backend__mlds__mlds_stmt_0_0_i271);
+	}
+	MR_COMPUTED_GOTO((MR_Unsigned) MR_ctfield(3, MR_sv(2), 0),
+		MR_LABEL_AP(__Compare___ml_backend__mlds__mlds_stmt_0_0_i271) MR_AND
+		MR_LABEL_AP(__Compare___ml_backend__mlds__mlds_stmt_0_0_i271) MR_AND
+		MR_LABEL_AP(__Compare___ml_backend__mlds__mlds_stmt_0_0_i271) MR_AND
+		MR_LABEL_AP(__Compare___ml_backend__mlds__mlds_stmt_0_0_i271) MR_AND
+		MR_LABEL_AP(__Compare___ml_backend__mlds__mlds_stmt_0_0_i271) MR_AND
+		MR_LABEL_AP(__Compare___ml_backend__mlds__mlds_stmt_0_0_i271) MR_AND
+		MR_LABEL_AP(__Compare___ml_backend__mlds__mlds_stmt_0_0_i271) MR_AND
+		MR_LABEL_AP(__Compare___ml_backend__mlds__mlds_stmt_0_0_i122) MR_AND
+		MR_LABEL_AP(__Compare___ml_backend__mlds__mlds_stmt_0_0_i266));
+MR_def_label(__Compare___ml_backend__mlds__mlds_stmt_0_0,122)
+	MR_MAYBE_INIT_LOCAL_THREAD_ENGINE_BASE
+	MR_r1 = MR_ctfield(3, MR_sv(1), 1);
+	MR_r2 = MR_ctfield(3, MR_sv(2), 1);
+	MR_succip_word = MR_sv(11);
+	MR_decr_sp(11);
+	MR_np_tailcall_ent(__Compare___ml_backend__mlds__mlds_rval_0_0);
+MR_def_label(__Compare___ml_backend__mlds__mlds_stmt_0_0,135)
+	MR_MAYBE_INIT_LOCAL_THREAD_ENGINE_BASE
+	if (MR_INT_NE(MR_tag(MR_sv(2)),3)) {
+		MR_GOTO_LAB(__Compare___ml_backend__mlds__mlds_stmt_0_0_i271);
+	}
+	MR_COMPUTED_GOTO((MR_Unsigned) MR_ctfield(3, MR_sv(2), 0),
+		MR_LABEL_AP(__Compare___ml_backend__mlds__mlds_stmt_0_0_i271) MR_AND
+		MR_LABEL_AP(__Compare___ml_backend__mlds__mlds_stmt_0_0_i271) MR_AND
+		MR_LABEL_AP(__Compare___ml_backend__mlds__mlds_stmt_0_0_i142) MR_AND
+		MR_LABEL_AP(__Compare___ml_backend__mlds__mlds_stmt_0_0_i266) MR_AND
+		MR_LABEL_AP(__Compare___ml_backend__mlds__mlds_stmt_0_0_i266) MR_AND
+		MR_LABEL_AP(__Compare___ml_backend__mlds__mlds_stmt_0_0_i266) MR_AND
+		MR_LABEL_AP(__Compare___ml_backend__mlds__mlds_stmt_0_0_i266) MR_AND
+		MR_LABEL_AP(__Compare___ml_backend__mlds__mlds_stmt_0_0_i266) MR_AND
+		MR_LABEL_AP(__Compare___ml_backend__mlds__mlds_stmt_0_0_i266));
+MR_def_label(__Compare___ml_backend__mlds__mlds_stmt_0_0,142)
+	MR_MAYBE_INIT_LOCAL_THREAD_ENGINE_BASE
+	MR_r1 = MR_ctfield(3, MR_sv(1), 1);
+	MR_r2 = MR_ctfield(3, MR_sv(2), 1);
+	MR_succip_word = MR_sv(11);
+	MR_decr_sp(11);
+	MR_np_tailcall_ent(__Compare___ml_backend__mlds__mlds_goto_target_0_0);
+MR_def_label(__Compare___ml_backend__mlds__mlds_stmt_0_0,183)
+	MR_MAYBE_INIT_LOCAL_THREAD_ENGINE_BASE
+	if (MR_INT_NE(MR_tag(MR_sv(2)),3)) {
+		MR_GOTO_LAB(__Compare___ml_backend__mlds__mlds_stmt_0_0_i271);
+	}
+	MR_COMPUTED_GOTO((MR_Unsigned) MR_ctfield(3, MR_sv(2), 0),
+		MR_LABEL_AP(__Compare___ml_backend__mlds__mlds_stmt_0_0_i271) MR_AND
+		MR_LABEL_AP(__Compare___ml_backend__mlds__mlds_stmt_0_0_i192) MR_AND
+		MR_LABEL_AP(__Compare___ml_backend__mlds__mlds_stmt_0_0_i266) MR_AND
+		MR_LABEL_AP(__Compare___ml_backend__mlds__mlds_stmt_0_0_i266) MR_AND
+		MR_LABEL_AP(__Compare___ml_backend__mlds__mlds_stmt_0_0_i266) MR_AND
+		MR_LABEL_AP(__Compare___ml_backend__mlds__mlds_stmt_0_0_i266) MR_AND
+		MR_LABEL_AP(__Compare___ml_backend__mlds__mlds_stmt_0_0_i266) MR_AND
+		MR_LABEL_AP(__Compare___ml_backend__mlds__mlds_stmt_0_0_i266) MR_AND
+		MR_LABEL_AP(__Compare___ml_backend__mlds__mlds_stmt_0_0_i266));
+MR_def_label(__Compare___ml_backend__mlds__mlds_stmt_0_0,192)
+	MR_MAYBE_INIT_LOCAL_THREAD_ENGINE_BASE
+	MR_r1 = MR_ctfield(3, MR_sv(1), 1);
+	MR_r2 = MR_ctfield(3, MR_sv(2), 1);
+	MR_succip_word = MR_sv(11);
+	MR_decr_sp(11);
+	MR_np_tailcall_ent(private_builtin__builtin_compare_string_3_0);
+MR_def_label(__Compare___ml_backend__mlds__mlds_stmt_0_0,202)
+	MR_MAYBE_INIT_LOCAL_THREAD_ENGINE_BASE
+	if (MR_INT_NE(MR_tag(MR_sv(2)),3)) {
+		MR_GOTO_LAB(__Compare___ml_backend__mlds__mlds_stmt_0_0_i271);
+	}
+	MR_COMPUTED_GOTO((MR_Unsigned) MR_ctfield(3, MR_sv(2), 0),
+		MR_LABEL_AP(__Compare___ml_backend__mlds__mlds_stmt_0_0_i271) MR_AND
+		MR_LABEL_AP(__Compare___ml_backend__mlds__mlds_stmt_0_0_i271) MR_AND
+		MR_LABEL_AP(__Compare___ml_backend__mlds__mlds_stmt_0_0_i271) MR_AND
+		MR_LABEL_AP(__Compare___ml_backend__mlds__mlds_stmt_0_0_i271) MR_AND
+		MR_LABEL_AP(__Compare___ml_backend__mlds__mlds_stmt_0_0_i271) MR_AND
+		MR_LABEL_AP(__Compare___ml_backend__mlds__mlds_stmt_0_0_i212) MR_AND
+		MR_LABEL_AP(__Compare___ml_backend__mlds__mlds_stmt_0_0_i266) MR_AND
+		MR_LABEL_AP(__Compare___ml_backend__mlds__mlds_stmt_0_0_i266) MR_AND
+		MR_LABEL_AP(__Compare___ml_backend__mlds__mlds_stmt_0_0_i266));
+MR_def_label(__Compare___ml_backend__mlds__mlds_stmt_0_0,212)
+	MR_MAYBE_INIT_LOCAL_THREAD_ENGINE_BASE
+	MR_r1 = (MR_Word) MR_CTOR0_ADDR(ml_backend__mlds, mlds_rval);
+	MR_r2 = MR_ctfield(3, MR_sv(1), 1);
+	MR_r3 = MR_ctfield(3, MR_sv(2), 1);
+	MR_succip_word = MR_sv(11);
+	MR_decr_sp(11);
+	MR_np_tailcall_ent(__Compare___list__list_1_0);
+MR_def_label(__Compare___ml_backend__mlds__mlds_stmt_0_0,221)
+	MR_MAYBE_INIT_LOCAL_THREAD_ENGINE_BASE
+	if (MR_INT_NE(MR_tag(MR_sv(2)),3)) {
+		MR_GOTO_LAB(__Compare___ml_backend__mlds__mlds_stmt_0_0_i271);
+	}
+	if (MR_INT_NE(MR_ctfield(3, MR_sv(2), 0),0)) {
+		MR_GOTO_LAB(__Compare___ml_backend__mlds__mlds_stmt_0_0_i266);
+	}
+	{
+	MR_Word MR_tempr1, MR_tempr2, MR_tempr3, MR_tempr4, MR_tempr5, MR_tempr6;
+	MR_tempr5 = MR_sv(1);
+	MR_sv(8) = MR_ctfield(3, MR_tempr5, 2);
+	MR_sv(7) = MR_ctfield(3, MR_tempr5, 3);
+	MR_sv(6) = MR_ctfield(3, MR_tempr5, 4);
+	MR_sv(5) = MR_ctfield(3, MR_tempr5, 5);
+	MR_tempr6 = MR_sv(2);
+	MR_sv(4) = MR_ctfield(3, MR_tempr6, 5);
+	MR_sv(3) = MR_ctfield(3, MR_tempr6, 4);
+	MR_tempr1 = MR_ctfield(3, MR_tempr6, 3);
+	MR_tempr2 = MR_ctfield(3, MR_tempr6, 2);
+	MR_tempr3 = MR_tempr5;
+	MR_sv(1) = MR_tempr2;
+	MR_tempr4 = MR_tempr6;
+	MR_sv(2) = MR_tempr1;
+	MR_r1 = MR_ctfield(3, MR_tempr3, 1);
+	MR_r2 = MR_ctfield(3, MR_tempr4, 1);
+	}
+	MR_np_call_localret_ent(__Compare___ml_backend__mlds__mlds_type_0_0,
+		__Compare___ml_backend__mlds__mlds_stmt_0_0_i234);
+MR_def_label(__Compare___ml_backend__mlds__mlds_stmt_0_0,234)
+	MR_MAYBE_INIT_LOCAL_THREAD_ENGINE_BASE
+	if (MR_INT_NE(MR_r1,0)) {
+		MR_GOTO_LAB(__Compare___ml_backend__mlds__mlds_stmt_0_0_i509);
+	}
+	MR_r1 = MR_sv(8);
+	MR_r2 = MR_sv(1);
+	MR_np_call_localret_ent(__Compare___ml_backend__mlds__mlds_rval_0_0,
+		__Compare___ml_backend__mlds__mlds_stmt_0_0_i238);
+MR_def_label(__Compare___ml_backend__mlds__mlds_stmt_0_0,238)
+	MR_MAYBE_INIT_LOCAL_THREAD_ENGINE_BASE
+	if (MR_INT_NE(MR_r1,0)) {
+		MR_GOTO_LAB(__Compare___ml_backend__mlds__mlds_stmt_0_0_i509);
+	}
+	MR_r1 = MR_sv(7);
+	MR_r2 = MR_sv(2);
+	MR_np_call_localret_ent(__Compare___ml_backend__mlds__mlds_switch_range_0_0,
+		__Compare___ml_backend__mlds__mlds_stmt_0_0_i242);
+MR_def_label(__Compare___ml_backend__mlds__mlds_stmt_0_0,242)
+	MR_MAYBE_INIT_LOCAL_THREAD_ENGINE_BASE
+	if (MR_INT_NE(MR_r1,0)) {
+		MR_GOTO_LAB(__Compare___ml_backend__mlds__mlds_stmt_0_0_i509);
+	}
+	MR_r1 = (MR_Word) MR_CTOR0_ADDR(ml_backend__mlds, mlds_switch_case);
+	MR_r2 = MR_sv(6);
+	MR_r3 = MR_sv(3);
+	MR_np_call_localret_ent(__Compare___list__list_1_0,
+		__Compare___ml_backend__mlds__mlds_stmt_0_0_i246);
+MR_def_label(__Compare___ml_backend__mlds__mlds_stmt_0_0,246)
+	MR_MAYBE_INIT_LOCAL_THREAD_ENGINE_BASE
+	if (MR_INT_NE(MR_r1,0)) {
+		MR_GOTO_LAB(__Compare___ml_backend__mlds__mlds_stmt_0_0_i509);
+	}
+	MR_r1 = MR_sv(5);
+	MR_r2 = MR_sv(4);
+	MR_succip_word = MR_sv(11);
+	MR_decr_sp(11);
+	MR_np_tailcall_ent(__Compare___ml_backend__mlds__mlds_switch_default_0_0);
+MR_def_label(__Compare___ml_backend__mlds__mlds_stmt_0_0,260)
+	MR_MAYBE_INIT_LOCAL_THREAD_ENGINE_BASE
+	if (MR_INT_NE(MR_tag(MR_sv(2)),3)) {
+		MR_GOTO_LAB(__Compare___ml_backend__mlds__mlds_stmt_0_0_i271);
+	}
+	MR_COMPUTED_GOTO((MR_Unsigned) MR_ctfield(3, MR_sv(2), 0),
+		MR_LABEL_AP(__Compare___ml_backend__mlds__mlds_stmt_0_0_i271) MR_AND
+		MR_LABEL_AP(__Compare___ml_backend__mlds__mlds_stmt_0_0_i271) MR_AND
+		MR_LABEL_AP(__Compare___ml_backend__mlds__mlds_stmt_0_0_i271) MR_AND
+		MR_LABEL_AP(__Compare___ml_backend__mlds__mlds_stmt_0_0_i271) MR_AND
+		MR_LABEL_AP(__Compare___ml_backend__mlds__mlds_stmt_0_0_i271) MR_AND
+		MR_LABEL_AP(__Compare___ml_backend__mlds__mlds_stmt_0_0_i271) MR_AND
+		MR_LABEL_AP(__Compare___ml_backend__mlds__mlds_stmt_0_0_i272) MR_AND
+		MR_LABEL_AP(__Compare___ml_backend__mlds__mlds_stmt_0_0_i266) MR_AND
+		MR_LABEL_AP(__Compare___ml_backend__mlds__mlds_stmt_0_0_i266));
+MR_def_label(__Compare___ml_backend__mlds__mlds_stmt_0_0,266)
+	MR_MAYBE_INIT_LOCAL_THREAD_ENGINE_BASE
+	MR_r1 = (MR_Integer) 1;
+	MR_decr_sp_and_return(11);
+MR_def_label(__Compare___ml_backend__mlds__mlds_stmt_0_0,271)
+	MR_MAYBE_INIT_LOCAL_THREAD_ENGINE_BASE
+	MR_r1 = (MR_Integer) 2;
+	MR_decr_sp_and_return(11);
+MR_def_label(__Compare___ml_backend__mlds__mlds_stmt_0_0,272)
+	MR_MAYBE_INIT_LOCAL_THREAD_ENGINE_BASE
+	{
+	MR_Word MR_tempr1, MR_tempr2, MR_tempr3, MR_tempr4, MR_tempr5, MR_tempr6;
+	MR_tempr5 = MR_sv(1);
+	MR_sv(4) = MR_ctfield(3, MR_tempr5, 2);
+	MR_sv(3) = MR_ctfield(3, MR_tempr5, 3);
+	MR_tempr6 = MR_sv(2);
+	MR_tempr1 = MR_ctfield(3, MR_tempr6, 3);
+	MR_tempr2 = MR_ctfield(3, MR_tempr6, 2);
+	MR_tempr3 = MR_tempr5;
+	MR_sv(1) = MR_tempr2;
+	MR_tempr4 = MR_tempr6;
+	MR_sv(2) = MR_tempr1;
+	MR_r1 = MR_ctfield(3, MR_tempr3, 1);
+	MR_r2 = MR_ctfield(3, MR_tempr4, 1);
+	}
+	MR_np_call_localret_ent(__Compare___ml_backend__mlds__mlds_lval_0_0,
+		__Compare___ml_backend__mlds__mlds_stmt_0_0_i274);
+MR_def_label(__Compare___ml_backend__mlds__mlds_stmt_0_0,274)
+	MR_MAYBE_INIT_LOCAL_THREAD_ENGINE_BASE
+	if (MR_INT_NE(MR_r1,0)) {
+		MR_GOTO_LAB(__Compare___ml_backend__mlds__mlds_stmt_0_0_i509);
+	}
+	MR_r1 = MR_sv(4);
+	MR_r2 = MR_sv(1);
+	MR_np_call_localret_ent(__Compare___ml_backend__mlds__statement_0_0,
+		__Compare___ml_backend__mlds__mlds_stmt_0_0_i278);
+MR_def_label(__Compare___ml_backend__mlds__mlds_stmt_0_0,278)
+	MR_MAYBE_INIT_LOCAL_THREAD_ENGINE_BASE
+	if (MR_INT_NE(MR_r1,0)) {
+		MR_GOTO_LAB(__Compare___ml_backend__mlds__mlds_stmt_0_0_i509);
+	}
+	MR_r1 = MR_sv(3);
+	MR_r2 = MR_sv(2);
+	MR_succip_word = MR_sv(11);
+	MR_decr_sp(11);
+	MR_np_tailcall_ent(__Compare___ml_backend__mlds__statement_0_0);
+MR_def_label(__Compare___ml_backend__mlds__mlds_stmt_0_0,509)
+	MR_MAYBE_INIT_LOCAL_THREAD_ENGINE_BASE
+	MR_decr_sp_and_return(11);
+#ifdef MR_maybe_local_thread_engine_base
+	#undef MR_maybe_local_thread_engine_base
+	#define MR_maybe_local_thread_engine_base MR_thread_engine_base
+#endif
+MR_END_MODULE
+
+
+MR_BEGIN_MODULE(ml_backend__mlds_module165)
+	MR_init_entry1(__Unify___ml_backend__mlds__mlds_switch_case_0_0);
+	MR_init_label3(__Unify___ml_backend__mlds__mlds_switch_case_0_0,4,8,1)
+MR_BEGIN_CODE
+
+#ifdef MR_maybe_local_thread_engine_base
+	#undef MR_maybe_local_thread_engine_base
+	#define MR_maybe_local_thread_engine_base MR_local_thread_engine_base
+#endif
+MR_define_entry(mercury____Unify___ml_backend__mlds__mlds_switch_case_0_0);
+	MR_MAYBE_INIT_LOCAL_THREAD_ENGINE_BASE
+	if ((MR_r1 == MR_r2)) {
+		MR_GOTO_LAB(__Unify___ml_backend__mlds__mlds_switch_case_0_0_i8);
+	}
+	MR_incr_sp(3);
+	MR_sv(3) = (MR_Word) MR_succip;
+	MR_sv(1) = MR_r1;
+	MR_sv(2) = MR_r2;
+	{
+	MR_Word MR_tempr1, MR_tempr2;
+	MR_tempr1 = MR_sv(1);
+	MR_sv(1) = MR_ctfield(0, MR_tempr1, 1);
+	MR_tempr2 = MR_sv(2);
+	MR_sv(2) = MR_ctfield(0, MR_tempr2, 1);
+	MR_r1 = (MR_Word) MR_CTOR0_ADDR(ml_backend__mlds, mlds_case_match_cond);
+	MR_r2 = MR_ctfield(0, MR_tempr1, 0);
+	MR_r3 = MR_ctfield(0, MR_tempr2, 0);
+	}
+	MR_np_call_localret_ent(__Unify___list__list_1_0,
+		__Unify___ml_backend__mlds__mlds_switch_case_0_0_i4);
+MR_def_label(__Unify___ml_backend__mlds__mlds_switch_case_0_0,4)
+	MR_MAYBE_INIT_LOCAL_THREAD_ENGINE_BASE
+	if (!(MR_r1)) {
+		MR_GOTO_LAB(__Unify___ml_backend__mlds__mlds_switch_case_0_0_i1);
+	}
+	MR_r1 = MR_sv(1);
+	MR_r2 = MR_sv(2);
+	MR_succip_word = MR_sv(3);
+	MR_decr_sp(3);
+	MR_np_tailcall_ent(__Unify___ml_backend__mlds__statement_0_0);
+MR_def_label(__Unify___ml_backend__mlds__mlds_switch_case_0_0,8)
+	MR_MAYBE_INIT_LOCAL_THREAD_ENGINE_BASE
+	MR_r1 = MR_TRUE;
+	MR_proceed();
+MR_def_label(__Unify___ml_backend__mlds__mlds_switch_case_0_0,1)
+	MR_MAYBE_INIT_LOCAL_THREAD_ENGINE_BASE
+	MR_r1 = MR_FALSE;
+	MR_decr_sp_and_return(3);
+#ifdef MR_maybe_local_thread_engine_base
+	#undef MR_maybe_local_thread_engine_base
+	#define MR_maybe_local_thread_engine_base MR_thread_engine_base
+#endif
+MR_END_MODULE
+
+
+MR_BEGIN_MODULE(ml_backend__mlds_module166)
+	MR_init_entry1(__Compare___ml_backend__mlds__mlds_switch_case_0_0);
+	MR_init_label4(__Compare___ml_backend__mlds__mlds_switch_case_0_0,3,2,5,21)
+MR_BEGIN_CODE
+
+#ifdef MR_maybe_local_thread_engine_base
+	#undef MR_maybe_local_thread_engine_base
+	#define MR_maybe_local_thread_engine_base MR_local_thread_engine_base
+#endif
+MR_define_entry(mercury____Compare___ml_backend__mlds__mlds_switch_case_0_0);
+	MR_MAYBE_INIT_LOCAL_THREAD_ENGINE_BASE
+	if ((MR_r1 == MR_r2)) {
+		MR_GOTO_LAB(__Compare___ml_backend__mlds__mlds_switch_case_0_0_i3);
+	}
+	MR_incr_sp(3);
+	MR_sv(3) = (MR_Word) MR_succip;
+	MR_sv(1) = MR_r1;
+	MR_sv(2) = MR_r2;
+	MR_GOTO_LAB(__Compare___ml_backend__mlds__mlds_switch_case_0_0_i2);
+MR_def_label(__Compare___ml_backend__mlds__mlds_switch_case_0_0,3)
+	MR_MAYBE_INIT_LOCAL_THREAD_ENGINE_BASE
+	MR_r1 = (MR_Integer) 0;
+	MR_proceed();
+MR_def_label(__Compare___ml_backend__mlds__mlds_switch_case_0_0,2)
+	MR_MAYBE_INIT_LOCAL_THREAD_ENGINE_BASE
+	{
+	MR_Word MR_tempr1, MR_tempr2, MR_tempr3, MR_tempr4, MR_tempr5, MR_tempr6;
+	MR_tempr5 = MR_sv(2);
+	MR_tempr1 = MR_ctfield(0, MR_tempr5, 1);
+	MR_tempr6 = MR_sv(1);
+	MR_tempr2 = MR_ctfield(0, MR_tempr6, 1);
+	MR_tempr3 = MR_tempr6;
+	MR_sv(1) = MR_tempr2;
+	MR_tempr4 = MR_tempr5;
+	MR_sv(2) = MR_tempr1;
+	MR_r1 = (MR_Word) MR_CTOR0_ADDR(ml_backend__mlds, mlds_case_match_cond);
+	MR_r2 = MR_ctfield(0, MR_tempr3, 0);
+	MR_r3 = MR_ctfield(0, MR_tempr4, 0);
+	}
+	MR_np_call_localret_ent(__Compare___list__list_1_0,
+		__Compare___ml_backend__mlds__mlds_switch_case_0_0_i5);
+MR_def_label(__Compare___ml_backend__mlds__mlds_switch_case_0_0,5)
+	MR_MAYBE_INIT_LOCAL_THREAD_ENGINE_BASE
+	if (MR_INT_NE(MR_r1,0)) {
+		MR_GOTO_LAB(__Compare___ml_backend__mlds__mlds_switch_case_0_0_i21);
+	}
+	MR_r1 = MR_sv(1);
+	MR_r2 = MR_sv(2);
+	MR_succip_word = MR_sv(3);
+	MR_decr_sp(3);
+	MR_np_tailcall_ent(__Compare___ml_backend__mlds__statement_0_0);
+MR_def_label(__Compare___ml_backend__mlds__mlds_switch_case_0_0,21)
+	MR_MAYBE_INIT_LOCAL_THREAD_ENGINE_BASE
+	MR_decr_sp_and_return(3);
+#ifdef MR_maybe_local_thread_engine_base
+	#undef MR_maybe_local_thread_engine_base
+	#define MR_maybe_local_thread_engine_base MR_thread_engine_base
+#endif
+MR_END_MODULE
+
+
+MR_BEGIN_MODULE(ml_backend__mlds_module167)
+	MR_init_entry1(__Unify___ml_backend__mlds__mlds_switch_cases_0_0);
+MR_BEGIN_CODE
+
+#ifdef MR_maybe_local_thread_engine_base
+	#undef MR_maybe_local_thread_engine_base
+	#define MR_maybe_local_thread_engine_base MR_local_thread_engine_base
+#endif
+MR_define_entry(mercury____Unify___ml_backend__mlds__mlds_switch_cases_0_0);
+	MR_MAYBE_INIT_LOCAL_THREAD_ENGINE_BASE
+	{
+	MR_Word MR_tempr1, MR_tempr2;
+	MR_tempr1 = MR_r1;
+	MR_r1 = (MR_Word) MR_CTOR0_ADDR(ml_backend__mlds, mlds_switch_case);
+	MR_tempr2 = MR_r2;
+	MR_r2 = MR_tempr1;
+	MR_r3 = MR_tempr2;
+	MR_np_tailcall_ent(__Unify___list__list_1_0);
+	}
+#ifdef MR_maybe_local_thread_engine_base
+	#undef MR_maybe_local_thread_engine_base
+	#define MR_maybe_local_thread_engine_base MR_thread_engine_base
+#endif
+MR_END_MODULE
+
+
+MR_BEGIN_MODULE(ml_backend__mlds_module168)
+	MR_init_entry1(__Compare___ml_backend__mlds__mlds_switch_cases_0_0);
+MR_BEGIN_CODE
+
+#ifdef MR_maybe_local_thread_engine_base
+	#undef MR_maybe_local_thread_engine_base
+	#define MR_maybe_local_thread_engine_base MR_local_thread_engine_base
+#endif
+MR_define_entry(mercury____Compare___ml_backend__mlds__mlds_switch_cases_0_0);
+	MR_MAYBE_INIT_LOCAL_THREAD_ENGINE_BASE
+	{
+	MR_Word MR_tempr1, MR_tempr2;
+	MR_tempr1 = MR_r1;
+	MR_r1 = (MR_Word) MR_CTOR0_ADDR(ml_backend__mlds, mlds_switch_case);
+	MR_tempr2 = MR_r2;
+	MR_r2 = MR_tempr1;
+	MR_r3 = MR_tempr2;
+	MR_np_tailcall_ent(__Compare___list__list_1_0);
+	}
+#ifdef MR_maybe_local_thread_engine_base
+	#undef MR_maybe_local_thread_engine_base
+	#define MR_maybe_local_thread_engine_base MR_thread_engine_base
+#endif
+MR_END_MODULE
+
+
+MR_BEGIN_MODULE(ml_backend__mlds_module169)
+	MR_init_entry1(__Unify___ml_backend__mlds__mlds_switch_default_0_0);
+	MR_init_label3(__Unify___ml_backend__mlds__mlds_switch_default_0_0,5,13,1)
+MR_BEGIN_CODE
+
+#ifdef MR_maybe_local_thread_engine_base
+	#undef MR_maybe_local_thread_engine_base
+	#define MR_maybe_local_thread_engine_base MR_local_thread_engine_base
+#endif
+MR_define_entry(mercury____Unify___ml_backend__mlds__mlds_switch_default_0_0);
+	MR_MAYBE_INIT_LOCAL_THREAD_ENGINE_BASE
+	if ((MR_r1 == MR_r2)) {
+		MR_GOTO_LAB(__Unify___ml_backend__mlds__mlds_switch_default_0_0_i13);
+	}
+	MR_incr_sp(3);
+	MR_sv(3) = (MR_Word) MR_succip;
+	{
+	MR_Word MR_tempr1, MR_tempr2;
+	MR_tempr1 = MR_r1;
+	MR_sv(1) = MR_tempr1;
+	MR_sv(2) = MR_r2;
+	MR_tempr2 = MR_tag(MR_tempr1);
+	if ((MR_tempr2 != MR_mktag((MR_Integer) 0))) {
+		MR_GOTO_LAB(__Unify___ml_backend__mlds__mlds_switch_default_0_0_i5);
+	}
+	MR_r1 = (MR_sv(2) == MR_tempr1);
+	MR_decr_sp(3);
+	MR_proceed();
+	}
+MR_def_label(__Unify___ml_backend__mlds__mlds_switch_default_0_0,5)
+	MR_MAYBE_INIT_LOCAL_THREAD_ENGINE_BASE
+	if (MR_PTAG_TESTR(MR_sv(2),1)) {
+		MR_GOTO_LAB(__Unify___ml_backend__mlds__mlds_switch_default_0_0_i1);
+	}
+	MR_r1 = MR_ctfield(1, MR_sv(1), 0);
+	MR_r2 = MR_ctfield(1, MR_sv(2), 0);
+	MR_succip_word = MR_sv(3);
+	MR_decr_sp(3);
+	MR_np_tailcall_ent(__Unify___ml_backend__mlds__statement_0_0);
+MR_def_label(__Unify___ml_backend__mlds__mlds_switch_default_0_0,13)
+	MR_MAYBE_INIT_LOCAL_THREAD_ENGINE_BASE
+	MR_r1 = MR_TRUE;
+	MR_proceed();
+MR_def_label(__Unify___ml_backend__mlds__mlds_switch_default_0_0,1)
+	MR_MAYBE_INIT_LOCAL_THREAD_ENGINE_BASE
+	MR_r1 = MR_FALSE;
+	MR_decr_sp_and_return(3);
+#ifdef MR_maybe_local_thread_engine_base
+	#undef MR_maybe_local_thread_engine_base
+	#define MR_maybe_local_thread_engine_base MR_thread_engine_base
+#endif
+MR_END_MODULE
+
+
+MR_BEGIN_MODULE(ml_backend__mlds_module170)
+	MR_init_entry1(__Compare___ml_backend__mlds__mlds_switch_default_0_0);
+	MR_init_label5(__Compare___ml_backend__mlds__mlds_switch_default_0_0,34,13,15,5,7)
+MR_BEGIN_CODE
+
+#ifdef MR_maybe_local_thread_engine_base
+	#undef MR_maybe_local_thread_engine_base
+	#define MR_maybe_local_thread_engine_base MR_local_thread_engine_base
+#endif
+MR_define_entry(mercury____Compare___ml_backend__mlds__mlds_switch_default_0_0);
+	MR_MAYBE_INIT_LOCAL_THREAD_ENGINE_BASE
+	MR_incr_sp(3);
+	MR_sv(3) = (MR_Word) MR_succip;
+	if ((MR_r1 == MR_r2)) {
+		MR_GOTO_LAB(__Compare___ml_backend__mlds__mlds_switch_default_0_0_i34);
+	}
+	{
+	MR_Word MR_tempr1, MR_tempr2, MR_tempr3;
+	MR_tempr1 = MR_r1;
+	MR_sv(1) = MR_tempr1;
+	MR_tempr2 = MR_r2;
+	MR_sv(2) = MR_tempr2;
+	MR_tempr3 = MR_tag(MR_tempr1);
+	if ((MR_tempr3 != MR_mktag((MR_Integer) 0))) {
+		MR_GOTO_LAB(__Compare___ml_backend__mlds__mlds_switch_default_0_0_i5);
+	}
+	if (MR_INT_NE(MR_unmkbody(MR_tempr1),0)) {
+		MR_GOTO_LAB(__Compare___ml_backend__mlds__mlds_switch_default_0_0_i13);
+	}
+	MR_tempr3 = MR_tag(MR_tempr2);
+	if ((MR_tempr3 != MR_mktag((MR_Integer) 0))) {
+		MR_GOTO_LAB(__Compare___ml_backend__mlds__mlds_switch_default_0_0_i15);
+	}
+	if (MR_INT_NE(MR_unmkbody(MR_tempr2),0)) {
+		MR_GOTO_LAB(__Compare___ml_backend__mlds__mlds_switch_default_0_0_i15);
+	}
+	}
+MR_def_label(__Compare___ml_backend__mlds__mlds_switch_default_0_0,34)
+	MR_MAYBE_INIT_LOCAL_THREAD_ENGINE_BASE
+	MR_r1 = (MR_Integer) 0;
+	MR_decr_sp_and_return(3);
+MR_def_label(__Compare___ml_backend__mlds__mlds_switch_default_0_0,13)
+	MR_MAYBE_INIT_LOCAL_THREAD_ENGINE_BASE
+	{
+	MR_Word MR_tempr1, MR_tempr2;
+	MR_tempr2 = MR_sv(2);
+	MR_tempr1 = MR_tag(MR_tempr2);
+	if ((MR_tempr1 != MR_mktag((MR_Integer) 0))) {
+		MR_GOTO_LAB(__Compare___ml_backend__mlds__mlds_switch_default_0_0_i15);
+	}
+	if (MR_INT_NE(MR_unmkbody(MR_tempr2),0)) {
+		MR_GOTO_LAB(__Compare___ml_backend__mlds__mlds_switch_default_0_0_i34);
+	}
+	MR_r1 = (MR_Integer) 2;
+	MR_decr_sp_and_return(3);
+	}
+MR_def_label(__Compare___ml_backend__mlds__mlds_switch_default_0_0,15)
+	MR_MAYBE_INIT_LOCAL_THREAD_ENGINE_BASE
+	MR_r1 = (MR_Integer) 1;
+	MR_decr_sp_and_return(3);
+MR_def_label(__Compare___ml_backend__mlds__mlds_switch_default_0_0,5)
+	MR_MAYBE_INIT_LOCAL_THREAD_ENGINE_BASE
+	{
+	MR_Word MR_tempr1;
+	MR_tempr1 = MR_tag(MR_sv(2));
+	if ((MR_tempr1 != MR_mktag((MR_Integer) 0))) {
+		MR_GOTO_LAB(__Compare___ml_backend__mlds__mlds_switch_default_0_0_i7);
+	}
+	MR_r1 = (MR_Integer) 2;
+	MR_decr_sp_and_return(3);
+	}
+MR_def_label(__Compare___ml_backend__mlds__mlds_switch_default_0_0,7)
+	MR_MAYBE_INIT_LOCAL_THREAD_ENGINE_BASE
+	MR_r1 = MR_ctfield(1, MR_sv(1), 0);
+	MR_r2 = MR_ctfield(1, MR_sv(2), 0);
+	MR_succip_word = MR_sv(3);
+	MR_decr_sp(3);
+	MR_np_tailcall_ent(__Compare___ml_backend__mlds__statement_0_0);
+#ifdef MR_maybe_local_thread_engine_base
+	#undef MR_maybe_local_thread_engine_base
+	#define MR_maybe_local_thread_engine_base MR_thread_engine_base
+#endif
+MR_END_MODULE
+
+
+MR_BEGIN_MODULE(ml_backend__mlds_module171)
+	MR_init_entry1(__Unify___ml_backend__mlds__mlds_switch_range_0_0);
+	MR_init_label3(__Unify___ml_backend__mlds__mlds_switch_range_0_0,10,5,1)
+MR_BEGIN_CODE
+
+#ifdef MR_maybe_local_thread_engine_base
+	#undef MR_maybe_local_thread_engine_base
+	#define MR_maybe_local_thread_engine_base MR_local_thread_engine_base
+#endif
+MR_define_entry(mercury____Unify___ml_backend__mlds__mlds_switch_range_0_0);
+	MR_MAYBE_INIT_LOCAL_THREAD_ENGINE_BASE
+	MR_incr_sp(2);
+	if ((MR_r1 == MR_r2)) {
+		MR_GOTO_LAB(__Unify___ml_backend__mlds__mlds_switch_range_0_0_i10);
+	}
+	{
+	MR_Word MR_tempr1;
+	MR_tempr1 = MR_r1;
+	MR_sv(1) = MR_tempr1;
+	MR_sv(2) = MR_r2;
+	if (MR_LTAGS_TESTR(MR_tempr1,0,0)) {
+		MR_GOTO_LAB(__Unify___ml_backend__mlds__mlds_switch_range_0_0_i5);
+	}
+	MR_r1 = (MR_sv(2) == MR_tempr1);
+	MR_decr_sp(2);
+	MR_proceed();
+	}
+MR_def_label(__Unify___ml_backend__mlds__mlds_switch_range_0_0,10)
+	MR_MAYBE_INIT_LOCAL_THREAD_ENGINE_BASE
+	MR_decr_sp(2);
+	MR_r1 = MR_TRUE;
+	MR_proceed();
+MR_def_label(__Unify___ml_backend__mlds__mlds_switch_range_0_0,5)
+	MR_MAYBE_INIT_LOCAL_THREAD_ENGINE_BASE
+	if (MR_LTAGS_TEST(MR_sv(2),0,0)) {
+		MR_GOTO_LAB(__Unify___ml_backend__mlds__mlds_switch_range_0_0_i1);
+	}
+	{
+	MR_Word MR_tempr1, MR_tempr2, MR_tempr3;
+	MR_tempr2 = MR_sv(1);
+	MR_r1 = MR_ctfield(1, MR_tempr2, 0);
+	MR_tempr3 = MR_sv(2);
+	MR_tempr1 = MR_ctfield(1, MR_tempr3, 0);
+	if ((MR_r1 != MR_tempr1)) {
+		MR_GOTO_LAB(__Unify___ml_backend__mlds__mlds_switch_range_0_0_i1);
+	}
+	MR_r1 = MR_ctfield(1, MR_tempr2, 1);
+	MR_tempr1 = MR_ctfield(1, MR_tempr3, 1);
+	MR_r1 = (MR_r1 == MR_tempr1);
+	MR_decr_sp(2);
+	MR_proceed();
+	}
+MR_def_label(__Unify___ml_backend__mlds__mlds_switch_range_0_0,1)
+	MR_MAYBE_INIT_LOCAL_THREAD_ENGINE_BASE
+	MR_decr_sp(2);
+	MR_r1 = MR_FALSE;
+	MR_proceed();
+#ifdef MR_maybe_local_thread_engine_base
+	#undef MR_maybe_local_thread_engine_base
+	#define MR_maybe_local_thread_engine_base MR_thread_engine_base
+#endif
+MR_END_MODULE
+
+
+MR_BEGIN_MODULE(ml_backend__mlds_module172)
+	MR_init_entry1(__Compare___ml_backend__mlds__mlds_switch_range_0_0);
+	MR_init_label6(__Compare___ml_backend__mlds__mlds_switch_range_0_0,24,7,5,9,11,16)
+MR_BEGIN_CODE
+
+#ifdef MR_maybe_local_thread_engine_base
+	#undef MR_maybe_local_thread_engine_base
+	#define MR_maybe_local_thread_engine_base MR_local_thread_engine_base
+#endif
+MR_define_entry(mercury____Compare___ml_backend__mlds__mlds_switch_range_0_0);
+	MR_MAYBE_INIT_LOCAL_THREAD_ENGINE_BASE
+	MR_incr_sp(3);
+	MR_sv(3) = (MR_Word) MR_succip;
+	if ((MR_r1 == MR_r2)) {
+		MR_GOTO_LAB(__Compare___ml_backend__mlds__mlds_switch_range_0_0_i24);
+	}
+	MR_sv(1) = MR_r1;
+	MR_sv(2) = MR_r2;
+	if (MR_LTAGS_TESTR(MR_sv(1),0,0)) {
+		MR_GOTO_LAB(__Compare___ml_backend__mlds__mlds_switch_range_0_0_i5);
+	}
+	if (MR_LTAGS_TESTR(MR_sv(2),0,0)) {
+		MR_GOTO_LAB(__Compare___ml_backend__mlds__mlds_switch_range_0_0_i7);
+	}
+MR_def_label(__Compare___ml_backend__mlds__mlds_switch_range_0_0,24)
+	MR_MAYBE_INIT_LOCAL_THREAD_ENGINE_BASE
+	MR_r1 = (MR_Integer) 0;
+	MR_decr_sp_and_return(3);
+MR_def_label(__Compare___ml_backend__mlds__mlds_switch_range_0_0,7)
+	MR_MAYBE_INIT_LOCAL_THREAD_ENGINE_BASE
+	MR_r1 = (MR_Integer) 1;
+	MR_decr_sp_and_return(3);
+MR_def_label(__Compare___ml_backend__mlds__mlds_switch_range_0_0,5)
+	MR_MAYBE_INIT_LOCAL_THREAD_ENGINE_BASE
+	if (MR_LTAGS_TESTR(MR_sv(2),0,0)) {
+		MR_GOTO_LAB(__Compare___ml_backend__mlds__mlds_switch_range_0_0_i9);
+	}
+	MR_r1 = (MR_Integer) 2;
+	MR_decr_sp_and_return(3);
+MR_def_label(__Compare___ml_backend__mlds__mlds_switch_range_0_0,9)
+	MR_MAYBE_INIT_LOCAL_THREAD_ENGINE_BASE
+	{
+	MR_Word MR_tempr1, MR_tempr2, MR_tempr3, MR_tempr4, MR_tempr5, MR_tempr6;
+	MR_tempr5 = MR_sv(1);
+	MR_tempr1 = MR_ctfield(1, MR_tempr5, 1);
+	MR_tempr6 = MR_sv(2);
+	MR_tempr2 = MR_ctfield(1, MR_tempr6, 1);
+	MR_tempr3 = MR_tempr5;
+	MR_sv(1) = MR_tempr2;
+	MR_tempr4 = MR_tempr6;
+	MR_sv(2) = MR_tempr1;
+	MR_r1 = MR_ctfield(1, MR_tempr3, 0);
+	MR_r2 = MR_ctfield(1, MR_tempr4, 0);
+	}
+	MR_np_call_localret_ent(private_builtin__builtin_compare_int_3_0,
+		__Compare___ml_backend__mlds__mlds_switch_range_0_0_i11);
+MR_def_label(__Compare___ml_backend__mlds__mlds_switch_range_0_0,11)
+	MR_MAYBE_INIT_LOCAL_THREAD_ENGINE_BASE
+	if (MR_INT_NE(MR_r1,0)) {
+		MR_GOTO_LAB(__Compare___ml_backend__mlds__mlds_switch_range_0_0_i16);
+	}
+	MR_r1 = MR_sv(2);
+	MR_r2 = MR_sv(1);
+	MR_succip_word = MR_sv(3);
+	MR_decr_sp(3);
+	MR_np_tailcall_ent(private_builtin__builtin_compare_int_3_0);
+MR_def_label(__Compare___ml_backend__mlds__mlds_switch_range_0_0,16)
+	MR_MAYBE_INIT_LOCAL_THREAD_ENGINE_BASE
+	MR_decr_sp_and_return(3);
+#ifdef MR_maybe_local_thread_engine_base
+	#undef MR_maybe_local_thread_engine_base
+	#define MR_maybe_local_thread_engine_base MR_thread_engine_base
+#endif
+MR_END_MODULE
+
+
+MR_BEGIN_MODULE(ml_backend__mlds_module173)
+	MR_init_entry1(__Unify___ml_backend__mlds__mlds_tag_0_0);
+MR_BEGIN_CODE
+
+#ifdef MR_maybe_local_thread_engine_base
+	#undef MR_maybe_local_thread_engine_base
+	#define MR_maybe_local_thread_engine_base MR_local_thread_engine_base
+#endif
+MR_define_entry(mercury____Unify___ml_backend__mlds__mlds_tag_0_0);
+	MR_MAYBE_INIT_LOCAL_THREAD_ENGINE_BASE
+	MR_r1 = (MR_r1 == MR_r2);
+	MR_proceed();
+#ifdef MR_maybe_local_thread_engine_base
+	#undef MR_maybe_local_thread_engine_base
+	#define MR_maybe_local_thread_engine_base MR_thread_engine_base
+#endif
+MR_END_MODULE
+
+
+MR_BEGIN_MODULE(ml_backend__mlds_module174)
+	MR_init_entry1(__Compare___ml_backend__mlds__mlds_tag_0_0);
+MR_BEGIN_CODE
+
+#ifdef MR_maybe_local_thread_engine_base
+	#undef MR_maybe_local_thread_engine_base
+	#define MR_maybe_local_thread_engine_base MR_local_thread_engine_base
+#endif
+MR_define_entry(mercury____Compare___ml_backend__mlds__mlds_tag_0_0);
+	MR_MAYBE_INIT_LOCAL_THREAD_ENGINE_BASE
+	MR_np_tailcall_ent(private_builtin__builtin_compare_int_3_0);
+#ifdef MR_maybe_local_thread_engine_base
+	#undef MR_maybe_local_thread_engine_base
+	#define MR_maybe_local_thread_engine_base MR_thread_engine_base
+#endif
+MR_END_MODULE
+
+
+MR_BEGIN_MODULE(ml_backend__mlds_module175)
+	MR_init_entry1(__Unify___ml_backend__mlds__mlds_target_lang_0_0);
+MR_BEGIN_CODE
+
+#ifdef MR_maybe_local_thread_engine_base
+	#undef MR_maybe_local_thread_engine_base
+	#define MR_maybe_local_thread_engine_base MR_local_thread_engine_base
+#endif
+MR_define_entry(mercury____Unify___ml_backend__mlds__mlds_target_lang_0_0);
+	MR_MAYBE_INIT_LOCAL_THREAD_ENGINE_BASE
+	MR_r1 = (MR_r1 == MR_r2);
+	MR_proceed();
+#ifdef MR_maybe_local_thread_engine_base
+	#undef MR_maybe_local_thread_engine_base
+	#define MR_maybe_local_thread_engine_base MR_thread_engine_base
+#endif
+MR_END_MODULE
+
+
+MR_BEGIN_MODULE(ml_backend__mlds_module176)
+	MR_init_entry1(__Compare___ml_backend__mlds__mlds_target_lang_0_0);
+MR_BEGIN_CODE
+
+#ifdef MR_maybe_local_thread_engine_base
+	#undef MR_maybe_local_thread_engine_base
+	#define MR_maybe_local_thread_engine_base MR_local_thread_engine_base
+#endif
+MR_define_entry(mercury____Compare___ml_backend__mlds__mlds_target_lang_0_0);
+	MR_MAYBE_INIT_LOCAL_THREAD_ENGINE_BASE
+	MR_np_tailcall_ent(private_builtin__builtin_compare_int_3_0);
+#ifdef MR_maybe_local_thread_engine_base
+	#undef MR_maybe_local_thread_engine_base
+	#define MR_maybe_local_thread_engine_base MR_thread_engine_base
+#endif
+MR_END_MODULE
+
+MR_decl_entry(__Unify___parse_tree__prog_data__mer_type_0_0);
+MR_decl_entry(__Unify___parse_tree__prog_type__type_ctor_category_0_0);
+MR_decl_entry(__Unify___backend_libs__foreign__exported_type_0_0);
+MR_decl_entry(__Unify___parse_tree__prog_data__foreign_language_type_0_0);
+MR_decl_entry(__Unify___backend_libs__rtti__rtti_id_maybe_element_0_0);
+
+MR_BEGIN_MODULE(ml_backend__mlds_module177)
+	MR_init_entry1(__Unify___ml_backend__mlds__mlds_type_0_0);
+	MR_init_label8(__Unify___ml_backend__mlds__mlds_type_0_0,174,5,7,9,36,62,13,17)
+	MR_init_label8(__Unify___ml_backend__mlds__mlds_type_0_0,19,22,26,30,45,49,53,58)
+	MR_init_label2(__Unify___ml_backend__mlds__mlds_type_0_0,63,1)
+MR_BEGIN_CODE
+
+#ifdef MR_maybe_local_thread_engine_base
+	#undef MR_maybe_local_thread_engine_base
+	#define MR_maybe_local_thread_engine_base MR_local_thread_engine_base
+#endif
+MR_define_entry(mercury____Unify___ml_backend__mlds__mlds_type_0_0);
+	MR_MAYBE_INIT_LOCAL_THREAD_ENGINE_BASE
+	MR_incr_sp(5);
+	MR_sv(5) = (MR_Word) MR_succip;
+MR_def_label(__Unify___ml_backend__mlds__mlds_type_0_0,174)
+	MR_MAYBE_INIT_LOCAL_THREAD_ENGINE_BASE
+	if ((MR_r1 == MR_r2)) {
+		MR_GOTO_LAB(__Unify___ml_backend__mlds__mlds_type_0_0_i63);
+	}
+	MR_sv(1) = MR_r1;
+	MR_sv(2) = MR_r2;
+	MR_COMPUTED_GOTO((MR_Unsigned) MR_tag(MR_sv(1)),
+		MR_LABEL_AP(__Unify___ml_backend__mlds__mlds_type_0_0_i58) MR_AND
+		MR_LABEL_AP(__Unify___ml_backend__mlds__mlds_type_0_0_i5) MR_AND
+		MR_LABEL_AP(__Unify___ml_backend__mlds__mlds_type_0_0_i36) MR_AND
+		MR_LABEL_AP(__Unify___ml_backend__mlds__mlds_type_0_0_i62));
+MR_def_label(__Unify___ml_backend__mlds__mlds_type_0_0,5)
+	MR_MAYBE_INIT_LOCAL_THREAD_ENGINE_BASE
+	if (MR_PTAG_TESTR(MR_sv(2),1)) {
+		MR_GOTO_LAB(__Unify___ml_backend__mlds__mlds_type_0_0_i1);
+	}
+	{
+	MR_Word MR_tempr1, MR_tempr2;
+	MR_tempr1 = MR_sv(1);
+	MR_sv(1) = MR_ctfield(1, MR_tempr1, 1);
+	MR_tempr2 = MR_sv(2);
+	MR_sv(2) = MR_ctfield(1, MR_tempr1, 2);
+	MR_sv(3) = MR_ctfield(1, MR_tempr2, 1);
+	MR_sv(4) = MR_ctfield(1, MR_tempr2, 2);
+	MR_r1 = MR_ctfield(1, MR_tempr1, 0);
+	MR_r2 = MR_ctfield(1, MR_tempr2, 0);
+	}
+	MR_np_call_localret_ent(__Unify___parse_tree__prog_data__mer_type_0_0,
+		__Unify___ml_backend__mlds__mlds_type_0_0_i7);
+MR_def_label(__Unify___ml_backend__mlds__mlds_type_0_0,7)
+	MR_MAYBE_INIT_LOCAL_THREAD_ENGINE_BASE
+	if (!(MR_r1)) {
+		MR_GOTO_LAB(__Unify___ml_backend__mlds__mlds_type_0_0_i1);
+	}
+	MR_r1 = MR_sv(1);
+	MR_r2 = MR_sv(3);
+	MR_np_call_localret_ent(__Unify___parse_tree__prog_type__type_ctor_category_0_0,
+		__Unify___ml_backend__mlds__mlds_type_0_0_i9);
+MR_def_label(__Unify___ml_backend__mlds__mlds_type_0_0,9)
+	MR_MAYBE_INIT_LOCAL_THREAD_ENGINE_BASE
+	if (!(MR_r1)) {
+		MR_GOTO_LAB(__Unify___ml_backend__mlds__mlds_type_0_0_i1);
+	}
+	MR_r1 = MR_sv(2);
+	MR_r2 = MR_sv(4);
+	MR_succip_word = MR_sv(5);
+	MR_decr_sp(5);
+	MR_np_tailcall_ent(__Unify___backend_libs__foreign__exported_type_0_0);
+MR_def_label(__Unify___ml_backend__mlds__mlds_type_0_0,36)
+	MR_MAYBE_INIT_LOCAL_THREAD_ENGINE_BASE
+	if (MR_PTAG_TESTR(MR_sv(2),2)) {
+		MR_GOTO_LAB(__Unify___ml_backend__mlds__mlds_type_0_0_i1);
+	}
+	MR_r1 = MR_ctfield(2, MR_sv(1), 0);
+	MR_r2 = MR_ctfield(2, MR_sv(2), 0);
+	MR_succip_word = MR_sv(5);
+	MR_GOTO_LAB(__Unify___ml_backend__mlds__mlds_type_0_0_i174);
+MR_def_label(__Unify___ml_backend__mlds__mlds_type_0_0,62)
+	MR_MAYBE_INIT_LOCAL_THREAD_ENGINE_BASE
+	MR_COMPUTED_GOTO((MR_Unsigned) MR_ctfield(3, MR_sv(1), 0),
+		MR_LABEL_AP(__Unify___ml_backend__mlds__mlds_type_0_0_i22) MR_AND
+		MR_LABEL_AP(__Unify___ml_backend__mlds__mlds_type_0_0_i26) MR_AND
+		MR_LABEL_AP(__Unify___ml_backend__mlds__mlds_type_0_0_i17) MR_AND
+		MR_LABEL_AP(__Unify___ml_backend__mlds__mlds_type_0_0_i13) MR_AND
+		MR_LABEL_AP(__Unify___ml_backend__mlds__mlds_type_0_0_i45) MR_AND
+		MR_LABEL_AP(__Unify___ml_backend__mlds__mlds_type_0_0_i30) MR_AND
+		MR_LABEL_AP(__Unify___ml_backend__mlds__mlds_type_0_0_i49) MR_AND
+		MR_LABEL_AP(__Unify___ml_backend__mlds__mlds_type_0_0_i53));
+MR_def_label(__Unify___ml_backend__mlds__mlds_type_0_0,13)
+	MR_MAYBE_INIT_LOCAL_THREAD_ENGINE_BASE
+	if (MR_RTAGS_TESTR(MR_sv(2),3,3)) {
+		MR_GOTO_LAB(__Unify___ml_backend__mlds__mlds_type_0_0_i1);
+	}
+	MR_r1 = MR_ctfield(3, MR_sv(1), 1);
+	MR_r2 = MR_ctfield(3, MR_sv(2), 1);
+	MR_succip_word = MR_sv(5);
+	MR_GOTO_LAB(__Unify___ml_backend__mlds__mlds_type_0_0_i174);
+MR_def_label(__Unify___ml_backend__mlds__mlds_type_0_0,17)
+	MR_MAYBE_INIT_LOCAL_THREAD_ENGINE_BASE
+	if (MR_RTAGS_TESTR(MR_sv(2),3,2)) {
+		MR_GOTO_LAB(__Unify___ml_backend__mlds__mlds_type_0_0_i1);
+	}
+	{
+	MR_Word MR_tempr1, MR_tempr2;
+	MR_tempr1 = MR_sv(1);
+	MR_sv(1) = MR_ctfield(3, MR_tempr1, 2);
+	MR_tempr2 = MR_sv(2);
+	MR_sv(2) = MR_ctfield(3, MR_tempr1, 3);
+	MR_sv(3) = MR_ctfield(3, MR_tempr2, 2);
+	MR_sv(4) = MR_ctfield(3, MR_tempr2, 3);
+	MR_r1 = (MR_Word) MR_STRING_CTOR_ADDR;
+	MR_r2 = MR_ctfield(3, MR_tempr1, 1);
+	MR_r3 = MR_ctfield(3, MR_tempr2, 1);
+	}
+	MR_np_call_localret_ent(__Unify___ml_backend__mlds__mlds_fully_qualified_name_1_0,
+		__Unify___ml_backend__mlds__mlds_type_0_0_i19);
+MR_def_label(__Unify___ml_backend__mlds__mlds_type_0_0,19)
+	MR_MAYBE_INIT_LOCAL_THREAD_ENGINE_BASE
+	if (!(MR_r1)) {
+		MR_GOTO_LAB(__Unify___ml_backend__mlds__mlds_type_0_0_i1);
+	}
+	if ((MR_sv(1) != MR_sv(3))) {
+		MR_GOTO_LAB(__Unify___ml_backend__mlds__mlds_type_0_0_i1);
+	}
+	MR_r1 = (MR_sv(2) == MR_sv(4));
+	MR_decr_sp_and_return(5);
+MR_def_label(__Unify___ml_backend__mlds__mlds_type_0_0,22)
+	MR_MAYBE_INIT_LOCAL_THREAD_ENGINE_BASE
+	if (MR_RTAGS_TESTR(MR_sv(2),3,0)) {
+		MR_GOTO_LAB(__Unify___ml_backend__mlds__mlds_type_0_0_i1);
+	}
+	MR_r1 = (MR_Word) MR_CTOR0_ADDR(ml_backend__mlds, mlds_type);
+	MR_r2 = MR_ctfield(3, MR_sv(1), 1);
+	MR_r3 = MR_ctfield(3, MR_sv(2), 1);
+	MR_succip_word = MR_sv(5);
+	MR_decr_sp(5);
+	MR_np_tailcall_ent(__Unify___list__list_1_0);
+MR_def_label(__Unify___ml_backend__mlds__mlds_type_0_0,26)
+	MR_MAYBE_INIT_LOCAL_THREAD_ENGINE_BASE
+	if (MR_RTAGS_TESTR(MR_sv(2),3,1)) {
+		MR_GOTO_LAB(__Unify___ml_backend__mlds__mlds_type_0_0_i1);
+	}
+	MR_r1 = MR_ctfield(3, MR_sv(1), 1);
+	MR_r2 = MR_ctfield(3, MR_sv(2), 1);
+	MR_succip_word = MR_sv(5);
+	MR_decr_sp(5);
+	MR_np_tailcall_ent(__Unify___parse_tree__prog_data__foreign_language_type_0_0);
+MR_def_label(__Unify___ml_backend__mlds__mlds_type_0_0,30)
+	MR_MAYBE_INIT_LOCAL_THREAD_ENGINE_BASE
+	if (MR_RTAGS_TESTR(MR_sv(2),3,5)) {
+		MR_GOTO_LAB(__Unify___ml_backend__mlds__mlds_type_0_0_i1);
+	}
+	MR_r1 = MR_ctfield(3, MR_sv(1), 1);
+	MR_r2 = MR_ctfield(3, MR_sv(2), 1);
+	MR_succip_word = MR_sv(5);
+	MR_decr_sp(5);
+	MR_np_tailcall_ent(__Unify___ml_backend__mlds__mlds_func_params_0_0);
+MR_def_label(__Unify___ml_backend__mlds__mlds_type_0_0,45)
+	MR_MAYBE_INIT_LOCAL_THREAD_ENGINE_BASE
+	if (MR_RTAGS_TESTR(MR_sv(2),3,4)) {
+		MR_GOTO_LAB(__Unify___ml_backend__mlds__mlds_type_0_0_i1);
+	}
+	MR_r1 = MR_ctfield(3, MR_sv(1), 1);
+	MR_r2 = MR_ctfield(3, MR_sv(2), 1);
+	MR_succip_word = MR_sv(5);
+	MR_GOTO_LAB(__Unify___ml_backend__mlds__mlds_type_0_0_i174);
+MR_def_label(__Unify___ml_backend__mlds__mlds_type_0_0,49)
+	MR_MAYBE_INIT_LOCAL_THREAD_ENGINE_BASE
+	if (MR_RTAGS_TESTR(MR_sv(2),3,6)) {
+		MR_GOTO_LAB(__Unify___ml_backend__mlds__mlds_type_0_0_i1);
+	}
+	MR_r1 = MR_ctfield(3, MR_sv(1), 1);
+	MR_r2 = MR_ctfield(3, MR_sv(2), 1);
+	MR_succip_word = MR_sv(5);
+	MR_decr_sp(5);
+	MR_np_tailcall_ent(__Unify___backend_libs__rtti__rtti_id_maybe_element_0_0);
+MR_def_label(__Unify___ml_backend__mlds__mlds_type_0_0,53)
+	MR_MAYBE_INIT_LOCAL_THREAD_ENGINE_BASE
+	if (MR_RTAGS_TESTR(MR_sv(2),3,7)) {
+		MR_GOTO_LAB(__Unify___ml_backend__mlds__mlds_type_0_0_i1);
+	}
+	MR_r1 = MR_ctfield(3, MR_sv(1), 1);
+	MR_r2 = MR_ctfield(3, MR_sv(2), 1);
+	MR_succip_word = MR_sv(5);
+	MR_decr_sp(5);
+	MR_np_tailcall_ent(__Unify___backend_libs__rtti__proc_tabling_struct_id_0_0);
+MR_def_label(__Unify___ml_backend__mlds__mlds_type_0_0,58)
+	MR_MAYBE_INIT_LOCAL_THREAD_ENGINE_BASE
+	MR_r1 = (MR_sv(2) == MR_sv(1));
+	MR_decr_sp_and_return(5);
+MR_def_label(__Unify___ml_backend__mlds__mlds_type_0_0,63)
+	MR_MAYBE_INIT_LOCAL_THREAD_ENGINE_BASE
+	MR_r1 = MR_TRUE;
+	MR_decr_sp_and_return(5);
+MR_def_label(__Unify___ml_backend__mlds__mlds_type_0_0,1)
+	MR_MAYBE_INIT_LOCAL_THREAD_ENGINE_BASE
+	MR_r1 = MR_FALSE;
+	MR_decr_sp_and_return(5);
+#ifdef MR_maybe_local_thread_engine_base
+	#undef MR_maybe_local_thread_engine_base
+	#define MR_maybe_local_thread_engine_base MR_thread_engine_base
+#endif
+MR_END_MODULE
+
+
+MR_BEGIN_MODULE(ml_backend__mlds_module178)
+	MR_init_entry1(__Index___ml_backend__mlds__mlds_type_0_0);
+	MR_init_label8(__Index___ml_backend__mlds__mlds_type_0_0,23,3,12,26,4,5,6,7)
+	MR_init_label8(__Index___ml_backend__mlds__mlds_type_0_0,8,9,10,11,13,14,15,16)
+	MR_init_label6(__Index___ml_backend__mlds__mlds_type_0_0,17,18,19,20,21,22)
+MR_BEGIN_CODE
+
+#ifdef MR_maybe_local_thread_engine_base
+	#undef MR_maybe_local_thread_engine_base
+	#define MR_maybe_local_thread_engine_base MR_local_thread_engine_base
+#endif
+MR_define_entry(mercury____Index___ml_backend__mlds__mlds_type_0_0);
+	MR_MAYBE_INIT_LOCAL_THREAD_ENGINE_BASE
+	MR_COMPUTED_GOTO((MR_Unsigned) MR_tag(MR_r1),
+		MR_LABEL_AP(__Index___ml_backend__mlds__mlds_type_0_0_i23) MR_AND
+		MR_LABEL_AP(__Index___ml_backend__mlds__mlds_type_0_0_i3) MR_AND
+		MR_LABEL_AP(__Index___ml_backend__mlds__mlds_type_0_0_i12) MR_AND
+		MR_LABEL_AP(__Index___ml_backend__mlds__mlds_type_0_0_i26));
+MR_def_label(__Index___ml_backend__mlds__mlds_type_0_0,23)
+	MR_MAYBE_INIT_LOCAL_THREAD_ENGINE_BASE
+	MR_COMPUTED_GOTO((MR_Unsigned) MR_unmkbody(MR_r1),
+		MR_LABEL_AP(__Index___ml_backend__mlds__mlds_type_0_0_i6) MR_AND
+		MR_LABEL_AP(__Index___ml_backend__mlds__mlds_type_0_0_i13) MR_AND
+		MR_LABEL_AP(__Index___ml_backend__mlds__mlds_type_0_0_i16) MR_AND
+		MR_LABEL_AP(__Index___ml_backend__mlds__mlds_type_0_0_i15) MR_AND
+		MR_LABEL_AP(__Index___ml_backend__mlds__mlds_type_0_0_i14) MR_AND
+		MR_LABEL_AP(__Index___ml_backend__mlds__mlds_type_0_0_i11) MR_AND
+		MR_LABEL_AP(__Index___ml_backend__mlds__mlds_type_0_0_i10) MR_AND
+		MR_LABEL_AP(__Index___ml_backend__mlds__mlds_type_0_0_i21) MR_AND
+		MR_LABEL_AP(__Index___ml_backend__mlds__mlds_type_0_0_i17) MR_AND
+		MR_LABEL_AP(__Index___ml_backend__mlds__mlds_type_0_0_i22));
+MR_def_label(__Index___ml_backend__mlds__mlds_type_0_0,3)
+	MR_MAYBE_INIT_LOCAL_THREAD_ENGINE_BASE
+	MR_r1 = (MR_Integer) 0;
+	MR_proceed();
+MR_def_label(__Index___ml_backend__mlds__mlds_type_0_0,12)
+	MR_MAYBE_INIT_LOCAL_THREAD_ENGINE_BASE
+	MR_r1 = (MR_Integer) 1;
+	MR_proceed();
+MR_def_label(__Index___ml_backend__mlds__mlds_type_0_0,26)
+	MR_MAYBE_INIT_LOCAL_THREAD_ENGINE_BASE
+	MR_COMPUTED_GOTO((MR_Unsigned) MR_ctfield(3, MR_r1, 0),
+		MR_LABEL_AP(__Index___ml_backend__mlds__mlds_type_0_0_i7) MR_AND
+		MR_LABEL_AP(__Index___ml_backend__mlds__mlds_type_0_0_i8) MR_AND
+		MR_LABEL_AP(__Index___ml_backend__mlds__mlds_type_0_0_i5) MR_AND
+		MR_LABEL_AP(__Index___ml_backend__mlds__mlds_type_0_0_i4) MR_AND
+		MR_LABEL_AP(__Index___ml_backend__mlds__mlds_type_0_0_i18) MR_AND
+		MR_LABEL_AP(__Index___ml_backend__mlds__mlds_type_0_0_i9) MR_AND
+		MR_LABEL_AP(__Index___ml_backend__mlds__mlds_type_0_0_i19) MR_AND
+		MR_LABEL_AP(__Index___ml_backend__mlds__mlds_type_0_0_i20));
+MR_def_label(__Index___ml_backend__mlds__mlds_type_0_0,4)
+	MR_MAYBE_INIT_LOCAL_THREAD_ENGINE_BASE
+	MR_r1 = (MR_Integer) 10;
+	MR_proceed();
+MR_def_label(__Index___ml_backend__mlds__mlds_type_0_0,5)
+	MR_MAYBE_INIT_LOCAL_THREAD_ENGINE_BASE
+	MR_r1 = (MR_Integer) 9;
+	MR_proceed();
+MR_def_label(__Index___ml_backend__mlds__mlds_type_0_0,6)
+	MR_MAYBE_INIT_LOCAL_THREAD_ENGINE_BASE
+	MR_r1 = (MR_Integer) 3;
+	MR_proceed();
+MR_def_label(__Index___ml_backend__mlds__mlds_type_0_0,7)
+	MR_MAYBE_INIT_LOCAL_THREAD_ENGINE_BASE
+	MR_r1 = (MR_Integer) 2;
+	MR_proceed();
+MR_def_label(__Index___ml_backend__mlds__mlds_type_0_0,8)
+	MR_MAYBE_INIT_LOCAL_THREAD_ENGINE_BASE
+	MR_r1 = (MR_Integer) 8;
+	MR_proceed();
+MR_def_label(__Index___ml_backend__mlds__mlds_type_0_0,9)
+	MR_MAYBE_INIT_LOCAL_THREAD_ENGINE_BASE
+	MR_r1 = (MR_Integer) 12;
+	MR_proceed();
+MR_def_label(__Index___ml_backend__mlds__mlds_type_0_0,10)
+	MR_MAYBE_INIT_LOCAL_THREAD_ENGINE_BASE
+	MR_r1 = (MR_Integer) 14;
+	MR_proceed();
+MR_def_label(__Index___ml_backend__mlds__mlds_type_0_0,11)
+	MR_MAYBE_INIT_LOCAL_THREAD_ENGINE_BASE
+	MR_r1 = (MR_Integer) 13;
+	MR_proceed();
+MR_def_label(__Index___ml_backend__mlds__mlds_type_0_0,13)
+	MR_MAYBE_INIT_LOCAL_THREAD_ENGINE_BASE
+	MR_r1 = (MR_Integer) 4;
+	MR_proceed();
+MR_def_label(__Index___ml_backend__mlds__mlds_type_0_0,14)
+	MR_MAYBE_INIT_LOCAL_THREAD_ENGINE_BASE
+	MR_r1 = (MR_Integer) 7;
+	MR_proceed();
+MR_def_label(__Index___ml_backend__mlds__mlds_type_0_0,15)
+	MR_MAYBE_INIT_LOCAL_THREAD_ENGINE_BASE
+	MR_r1 = (MR_Integer) 6;
+	MR_proceed();
+MR_def_label(__Index___ml_backend__mlds__mlds_type_0_0,16)
+	MR_MAYBE_INIT_LOCAL_THREAD_ENGINE_BASE
+	MR_r1 = (MR_Integer) 5;
+	MR_proceed();
+MR_def_label(__Index___ml_backend__mlds__mlds_type_0_0,17)
+	MR_MAYBE_INIT_LOCAL_THREAD_ENGINE_BASE
+	MR_r1 = (MR_Integer) 16;
+	MR_proceed();
+MR_def_label(__Index___ml_backend__mlds__mlds_type_0_0,18)
+	MR_MAYBE_INIT_LOCAL_THREAD_ENGINE_BASE
+	MR_r1 = (MR_Integer) 11;
+	MR_proceed();
+MR_def_label(__Index___ml_backend__mlds__mlds_type_0_0,19)
+	MR_MAYBE_INIT_LOCAL_THREAD_ENGINE_BASE
+	MR_r1 = (MR_Integer) 17;
+	MR_proceed();
+MR_def_label(__Index___ml_backend__mlds__mlds_type_0_0,20)
+	MR_MAYBE_INIT_LOCAL_THREAD_ENGINE_BASE
+	MR_r1 = (MR_Integer) 18;
+	MR_proceed();
+MR_def_label(__Index___ml_backend__mlds__mlds_type_0_0,21)
+	MR_MAYBE_INIT_LOCAL_THREAD_ENGINE_BASE
+	MR_r1 = (MR_Integer) 15;
+	MR_proceed();
+MR_def_label(__Index___ml_backend__mlds__mlds_type_0_0,22)
+	MR_MAYBE_INIT_LOCAL_THREAD_ENGINE_BASE
+	MR_r1 = (MR_Integer) 19;
+	MR_proceed();
+#ifdef MR_maybe_local_thread_engine_base
+	#undef MR_maybe_local_thread_engine_base
+	#define MR_maybe_local_thread_engine_base MR_thread_engine_base
+#endif
+MR_END_MODULE
+
+MR_decl_entry(__Compare___parse_tree__prog_data__mer_type_0_0);
+MR_decl_entry(__Compare___parse_tree__prog_type__type_ctor_category_0_0);
+MR_decl_entry(__Compare___backend_libs__foreign__exported_type_0_0);
+MR_decl_entry(__Compare___parse_tree__prog_data__foreign_language_type_0_0);
+MR_decl_entry(__Compare___backend_libs__rtti__rtti_id_maybe_element_0_0);
+MR_decl_entry(private_builtin__compare_error_0_0);
+
+MR_BEGIN_MODULE(ml_backend__mlds_module179)
+	MR_init_entry1(__Compare___ml_backend__mlds__mlds_type_0_0);
+	MR_init_label8(__Compare___ml_backend__mlds__mlds_type_0_0,184,4,5,6,7,10,13,17)
+	MR_init_label8(__Compare___ml_backend__mlds__mlds_type_0_0,51,73,23,26,29,33,40,43)
+	MR_init_label7(__Compare___ml_backend__mlds__mlds_type_0_0,46,59,62,65,69,198,199)
+MR_BEGIN_CODE
+
+#ifdef MR_maybe_local_thread_engine_base
+	#undef MR_maybe_local_thread_engine_base
+	#define MR_maybe_local_thread_engine_base MR_local_thread_engine_base
+#endif
+MR_define_entry(mercury____Compare___ml_backend__mlds__mlds_type_0_0);
+	MR_MAYBE_INIT_LOCAL_THREAD_ENGINE_BASE
+	MR_incr_sp(5);
+	MR_sv(5) = (MR_Word) MR_succip;
+MR_def_label(__Compare___ml_backend__mlds__mlds_type_0_0,184)
+	MR_MAYBE_INIT_LOCAL_THREAD_ENGINE_BASE
+	if ((MR_r1 == MR_r2)) {
+		MR_GOTO_LAB(__Compare___ml_backend__mlds__mlds_type_0_0_i69);
+	}
+	MR_sv(1) = MR_r1;
+	MR_sv(2) = MR_r2;
+	MR_np_call_localret_ent(__Index___ml_backend__mlds__mlds_type_0_0,
+		__Compare___ml_backend__mlds__mlds_type_0_0_i4);
+MR_def_label(__Compare___ml_backend__mlds__mlds_type_0_0,4)
+	MR_MAYBE_INIT_LOCAL_THREAD_ENGINE_BASE
+	MR_sv(3) = MR_r1;
+	MR_r1 = MR_sv(2);
+	MR_np_call_localret_ent(__Index___ml_backend__mlds__mlds_type_0_0,
+		__Compare___ml_backend__mlds__mlds_type_0_0_i5);
+MR_def_label(__Compare___ml_backend__mlds__mlds_type_0_0,5)
+	MR_MAYBE_INIT_LOCAL_THREAD_ENGINE_BASE
+	if (((MR_Integer) MR_sv(3) >= (MR_Integer) MR_r1)) {
+		MR_GOTO_LAB(__Compare___ml_backend__mlds__mlds_type_0_0_i6);
+	}
+	MR_r1 = (MR_Integer) 1;
+	MR_decr_sp_and_return(5);
+MR_def_label(__Compare___ml_backend__mlds__mlds_type_0_0,6)
+	MR_MAYBE_INIT_LOCAL_THREAD_ENGINE_BASE
+	if (((MR_Integer) MR_sv(3) <= (MR_Integer) MR_r1)) {
+		MR_GOTO_LAB(__Compare___ml_backend__mlds__mlds_type_0_0_i7);
+	}
+	MR_r1 = (MR_Integer) 2;
+	MR_decr_sp_and_return(5);
+MR_def_label(__Compare___ml_backend__mlds__mlds_type_0_0,7)
+	MR_MAYBE_INIT_LOCAL_THREAD_ENGINE_BASE
+	MR_COMPUTED_GOTO((MR_Unsigned) MR_tag(MR_sv(1)),
+		MR_LABEL_AP(__Compare___ml_backend__mlds__mlds_type_0_0_i69) MR_AND
+		MR_LABEL_AP(__Compare___ml_backend__mlds__mlds_type_0_0_i10) MR_AND
+		MR_LABEL_AP(__Compare___ml_backend__mlds__mlds_type_0_0_i51) MR_AND
+		MR_LABEL_AP(__Compare___ml_backend__mlds__mlds_type_0_0_i73));
+MR_def_label(__Compare___ml_backend__mlds__mlds_type_0_0,10)
+	MR_MAYBE_INIT_LOCAL_THREAD_ENGINE_BASE
+	if (MR_PTAG_TESTR(MR_sv(2),1)) {
+		MR_GOTO_LAB(__Compare___ml_backend__mlds__mlds_type_0_0_i198);
+	}
+	{
+	MR_Word MR_tempr1, MR_tempr2, MR_tempr3, MR_tempr4, MR_tempr5, MR_tempr6;
+	MR_tempr5 = MR_sv(2);
+	MR_sv(4) = MR_ctfield(1, MR_tempr5, 2);
+	MR_sv(3) = MR_ctfield(1, MR_tempr5, 1);
+	MR_tempr6 = MR_sv(1);
+	MR_tempr1 = MR_ctfield(1, MR_tempr6, 2);
+	MR_tempr2 = MR_ctfield(1, MR_tempr6, 1);
+	MR_tempr3 = MR_tempr6;
+	MR_sv(1) = MR_tempr2;
+	MR_tempr4 = MR_tempr5;
+	MR_sv(2) = MR_tempr1;
+	MR_r1 = MR_ctfield(1, MR_tempr3, 0);
+	MR_r2 = MR_ctfield(1, MR_tempr4, 0);
+	}
+	MR_np_call_localret_ent(__Compare___parse_tree__prog_data__mer_type_0_0,
+		__Compare___ml_backend__mlds__mlds_type_0_0_i13);
+MR_def_label(__Compare___ml_backend__mlds__mlds_type_0_0,13)
+	MR_MAYBE_INIT_LOCAL_THREAD_ENGINE_BASE
+	if (MR_INT_NE(MR_r1,0)) {
+		MR_GOTO_LAB(__Compare___ml_backend__mlds__mlds_type_0_0_i199);
+	}
+	MR_r1 = MR_sv(1);
+	MR_r2 = MR_sv(3);
+	MR_np_call_localret_ent(__Compare___parse_tree__prog_type__type_ctor_category_0_0,
+		__Compare___ml_backend__mlds__mlds_type_0_0_i17);
+MR_def_label(__Compare___ml_backend__mlds__mlds_type_0_0,17)
+	MR_MAYBE_INIT_LOCAL_THREAD_ENGINE_BASE
+	if (MR_INT_NE(MR_r1,0)) {
+		MR_GOTO_LAB(__Compare___ml_backend__mlds__mlds_type_0_0_i199);
+	}
+	MR_r1 = MR_sv(2);
+	MR_r2 = MR_sv(4);
+	MR_succip_word = MR_sv(5);
+	MR_decr_sp(5);
+	MR_np_tailcall_ent(__Compare___backend_libs__foreign__exported_type_0_0);
+MR_def_label(__Compare___ml_backend__mlds__mlds_type_0_0,51)
+	MR_MAYBE_INIT_LOCAL_THREAD_ENGINE_BASE
+	if (MR_PTAG_TESTR(MR_sv(2),2)) {
+		MR_GOTO_LAB(__Compare___ml_backend__mlds__mlds_type_0_0_i198);
+	}
+	MR_r1 = MR_ctfield(2, MR_sv(1), 0);
+	MR_r2 = MR_ctfield(2, MR_sv(2), 0);
+	MR_succip_word = MR_sv(5);
+	MR_GOTO_LAB(__Compare___ml_backend__mlds__mlds_type_0_0_i184);
+MR_def_label(__Compare___ml_backend__mlds__mlds_type_0_0,73)
+	MR_MAYBE_INIT_LOCAL_THREAD_ENGINE_BASE
+	MR_COMPUTED_GOTO((MR_Unsigned) MR_ctfield(3, MR_sv(1), 0),
+		MR_LABEL_AP(__Compare___ml_backend__mlds__mlds_type_0_0_i40) MR_AND
+		MR_LABEL_AP(__Compare___ml_backend__mlds__mlds_type_0_0_i43) MR_AND
+		MR_LABEL_AP(__Compare___ml_backend__mlds__mlds_type_0_0_i26) MR_AND
+		MR_LABEL_AP(__Compare___ml_backend__mlds__mlds_type_0_0_i23) MR_AND
+		MR_LABEL_AP(__Compare___ml_backend__mlds__mlds_type_0_0_i59) MR_AND
+		MR_LABEL_AP(__Compare___ml_backend__mlds__mlds_type_0_0_i46) MR_AND
+		MR_LABEL_AP(__Compare___ml_backend__mlds__mlds_type_0_0_i62) MR_AND
+		MR_LABEL_AP(__Compare___ml_backend__mlds__mlds_type_0_0_i65));
+MR_def_label(__Compare___ml_backend__mlds__mlds_type_0_0,23)
+	MR_MAYBE_INIT_LOCAL_THREAD_ENGINE_BASE
+	if (MR_RTAGS_TESTR(MR_sv(2),3,3)) {
+		MR_GOTO_LAB(__Compare___ml_backend__mlds__mlds_type_0_0_i198);
+	}
+	MR_r1 = MR_ctfield(3, MR_sv(1), 1);
+	MR_r2 = MR_ctfield(3, MR_sv(2), 1);
+	MR_succip_word = MR_sv(5);
+	MR_GOTO_LAB(__Compare___ml_backend__mlds__mlds_type_0_0_i184);
+MR_def_label(__Compare___ml_backend__mlds__mlds_type_0_0,26)
+	MR_MAYBE_INIT_LOCAL_THREAD_ENGINE_BASE
+	if (MR_RTAGS_TESTR(MR_sv(2),3,2)) {
+		MR_GOTO_LAB(__Compare___ml_backend__mlds__mlds_type_0_0_i198);
+	}
+	{
+	MR_Word MR_tempr1, MR_tempr2, MR_tempr3, MR_tempr4, MR_tempr5, MR_tempr6;
+	MR_tempr5 = MR_sv(2);
+	MR_sv(4) = MR_ctfield(3, MR_tempr5, 3);
+	MR_sv(3) = MR_ctfield(3, MR_tempr5, 2);
+	MR_tempr6 = MR_sv(1);
+	MR_tempr1 = MR_ctfield(3, MR_tempr6, 3);
+	MR_tempr2 = MR_ctfield(3, MR_tempr6, 2);
+	MR_tempr3 = MR_tempr6;
+	MR_sv(1) = MR_tempr2;
+	MR_tempr4 = MR_tempr5;
+	MR_sv(2) = MR_tempr1;
+	MR_r1 = (MR_Word) MR_STRING_CTOR_ADDR;
+	MR_r2 = MR_ctfield(3, MR_tempr3, 1);
+	MR_r3 = MR_ctfield(3, MR_tempr4, 1);
+	}
+	MR_np_call_localret_ent(__Compare___ml_backend__mlds__mlds_fully_qualified_name_1_0,
+		__Compare___ml_backend__mlds__mlds_type_0_0_i29);
+MR_def_label(__Compare___ml_backend__mlds__mlds_type_0_0,29)
+	MR_MAYBE_INIT_LOCAL_THREAD_ENGINE_BASE
+	if (MR_INT_NE(MR_r1,0)) {
+		MR_GOTO_LAB(__Compare___ml_backend__mlds__mlds_type_0_0_i199);
+	}
+	MR_r1 = MR_sv(1);
+	MR_r2 = MR_sv(3);
+	MR_np_call_localret_ent(private_builtin__builtin_compare_int_3_0,
+		__Compare___ml_backend__mlds__mlds_type_0_0_i33);
+MR_def_label(__Compare___ml_backend__mlds__mlds_type_0_0,33)
+	MR_MAYBE_INIT_LOCAL_THREAD_ENGINE_BASE
+	if (MR_INT_NE(MR_r1,0)) {
+		MR_GOTO_LAB(__Compare___ml_backend__mlds__mlds_type_0_0_i199);
+	}
+	MR_r1 = MR_sv(2);
+	MR_r2 = MR_sv(4);
+	MR_succip_word = MR_sv(5);
+	MR_decr_sp(5);
+	MR_np_tailcall_ent(private_builtin__builtin_compare_int_3_0);
+MR_def_label(__Compare___ml_backend__mlds__mlds_type_0_0,40)
+	MR_MAYBE_INIT_LOCAL_THREAD_ENGINE_BASE
+	if (MR_RTAGS_TESTR(MR_sv(2),3,0)) {
+		MR_GOTO_LAB(__Compare___ml_backend__mlds__mlds_type_0_0_i198);
+	}
+	MR_r1 = (MR_Word) MR_CTOR0_ADDR(ml_backend__mlds, mlds_type);
+	MR_r2 = MR_ctfield(3, MR_sv(1), 1);
+	MR_r3 = MR_ctfield(3, MR_sv(2), 1);
+	MR_succip_word = MR_sv(5);
+	MR_decr_sp(5);
+	MR_np_tailcall_ent(__Compare___list__list_1_0);
+MR_def_label(__Compare___ml_backend__mlds__mlds_type_0_0,43)
+	MR_MAYBE_INIT_LOCAL_THREAD_ENGINE_BASE
+	if (MR_RTAGS_TESTR(MR_sv(2),3,1)) {
+		MR_GOTO_LAB(__Compare___ml_backend__mlds__mlds_type_0_0_i198);
+	}
+	MR_r1 = MR_ctfield(3, MR_sv(1), 1);
+	MR_r2 = MR_ctfield(3, MR_sv(2), 1);
+	MR_succip_word = MR_sv(5);
+	MR_decr_sp(5);
+	MR_np_tailcall_ent(__Compare___parse_tree__prog_data__foreign_language_type_0_0);
+MR_def_label(__Compare___ml_backend__mlds__mlds_type_0_0,46)
+	MR_MAYBE_INIT_LOCAL_THREAD_ENGINE_BASE
+	if (MR_RTAGS_TESTR(MR_sv(2),3,5)) {
+		MR_GOTO_LAB(__Compare___ml_backend__mlds__mlds_type_0_0_i198);
+	}
+	MR_r1 = MR_ctfield(3, MR_sv(1), 1);
+	MR_r2 = MR_ctfield(3, MR_sv(2), 1);
+	MR_succip_word = MR_sv(5);
+	MR_decr_sp(5);
+	MR_np_tailcall_ent(__Compare___ml_backend__mlds__mlds_func_params_0_0);
+MR_def_label(__Compare___ml_backend__mlds__mlds_type_0_0,59)
+	MR_MAYBE_INIT_LOCAL_THREAD_ENGINE_BASE
+	if (MR_RTAGS_TESTR(MR_sv(2),3,4)) {
+		MR_GOTO_LAB(__Compare___ml_backend__mlds__mlds_type_0_0_i198);
+	}
+	MR_r1 = MR_ctfield(3, MR_sv(1), 1);
+	MR_r2 = MR_ctfield(3, MR_sv(2), 1);
+	MR_succip_word = MR_sv(5);
+	MR_GOTO_LAB(__Compare___ml_backend__mlds__mlds_type_0_0_i184);
+MR_def_label(__Compare___ml_backend__mlds__mlds_type_0_0,62)
+	MR_MAYBE_INIT_LOCAL_THREAD_ENGINE_BASE
+	if (MR_RTAGS_TESTR(MR_sv(2),3,6)) {
+		MR_GOTO_LAB(__Compare___ml_backend__mlds__mlds_type_0_0_i198);
+	}
+	MR_r1 = MR_ctfield(3, MR_sv(1), 1);
+	MR_r2 = MR_ctfield(3, MR_sv(2), 1);
+	MR_succip_word = MR_sv(5);
+	MR_decr_sp(5);
+	MR_np_tailcall_ent(__Compare___backend_libs__rtti__rtti_id_maybe_element_0_0);
+MR_def_label(__Compare___ml_backend__mlds__mlds_type_0_0,65)
+	MR_MAYBE_INIT_LOCAL_THREAD_ENGINE_BASE
+	if (MR_RTAGS_TESTR(MR_sv(2),3,7)) {
+		MR_GOTO_LAB(__Compare___ml_backend__mlds__mlds_type_0_0_i198);
+	}
+	MR_r1 = MR_ctfield(3, MR_sv(1), 1);
+	MR_r2 = MR_ctfield(3, MR_sv(2), 1);
+	MR_succip_word = MR_sv(5);
+	MR_decr_sp(5);
+	MR_np_tailcall_ent(__Compare___backend_libs__rtti__proc_tabling_struct_id_0_0);
+MR_def_label(__Compare___ml_backend__mlds__mlds_type_0_0,69)
+	MR_MAYBE_INIT_LOCAL_THREAD_ENGINE_BASE
+	MR_r1 = (MR_Integer) 0;
+	MR_decr_sp_and_return(5);
+MR_def_label(__Compare___ml_backend__mlds__mlds_type_0_0,198)
+	MR_MAYBE_INIT_LOCAL_THREAD_ENGINE_BASE
+	MR_succip_word = MR_sv(5);
+	MR_decr_sp(5);
+	MR_np_tailcall_ent(private_builtin__compare_error_0_0);
+MR_def_label(__Compare___ml_backend__mlds__mlds_type_0_0,199)
+	MR_MAYBE_INIT_LOCAL_THREAD_ENGINE_BASE
+	MR_decr_sp_and_return(5);
+#ifdef MR_maybe_local_thread_engine_base
+	#undef MR_maybe_local_thread_engine_base
+	#define MR_maybe_local_thread_engine_base MR_thread_engine_base
+#endif
+MR_END_MODULE
+
+
+MR_BEGIN_MODULE(ml_backend__mlds_module180)
+	MR_init_entry1(__Unify___ml_backend__mlds__mlds_unary_op_0_0);
+	MR_init_label6(__Unify___ml_backend__mlds__mlds_unary_op_0_0,5,15,9,13,23,1)
+MR_BEGIN_CODE
+
+#ifdef MR_maybe_local_thread_engine_base
+	#undef MR_maybe_local_thread_engine_base
+	#define MR_maybe_local_thread_engine_base MR_local_thread_engine_base
+#endif
+MR_define_entry(mercury____Unify___ml_backend__mlds__mlds_unary_op_0_0);
+	MR_MAYBE_INIT_LOCAL_THREAD_ENGINE_BASE
+	if ((MR_r1 == MR_r2)) {
+		MR_GOTO_LAB(__Unify___ml_backend__mlds__mlds_unary_op_0_0_i23);
+	}
+	MR_incr_sp(3);
+	MR_sv(3) = (MR_Word) MR_succip;
+	MR_sv(1) = MR_r1;
+	MR_sv(2) = MR_r2;
+	MR_COMPUTED_GOTO((MR_Unsigned) MR_tag(MR_sv(1)),
+		MR_LABEL_AP(__Unify___ml_backend__mlds__mlds_unary_op_0_0_i5) MR_AND
+		MR_LABEL_AP(__Unify___ml_backend__mlds__mlds_unary_op_0_0_i15) MR_AND
+		MR_LABEL_AP(__Unify___ml_backend__mlds__mlds_unary_op_0_0_i9) MR_AND
+		MR_LABEL_AP(__Unify___ml_backend__mlds__mlds_unary_op_0_0_i13));
+MR_def_label(__Unify___ml_backend__mlds__mlds_unary_op_0_0,5)
+	MR_MAYBE_INIT_LOCAL_THREAD_ENGINE_BASE
+	if (MR_PTAG_TESTR(MR_sv(2),0)) {
+		MR_GOTO_LAB(__Unify___ml_backend__mlds__mlds_unary_op_0_0_i1);
+	}
+	MR_r1 = MR_ctfield(0, MR_sv(1), 0);
+	MR_r2 = MR_ctfield(0, MR_sv(2), 0);
+	MR_succip_word = MR_sv(3);
+	MR_decr_sp(3);
+	MR_np_tailcall_ent(__Unify___ml_backend__mlds__mlds_type_0_0);
+MR_def_label(__Unify___ml_backend__mlds__mlds_unary_op_0_0,15)
+	MR_MAYBE_INIT_LOCAL_THREAD_ENGINE_BASE
+	if (MR_PTAG_TESTR(MR_sv(2),1)) {
+		MR_GOTO_LAB(__Unify___ml_backend__mlds__mlds_unary_op_0_0_i1);
+	}
+	MR_r1 = MR_ctfield(1, MR_sv(1), 0);
+	MR_r2 = MR_ctfield(1, MR_sv(2), 0);
+	MR_succip_word = MR_sv(3);
+	MR_decr_sp(3);
+	MR_np_tailcall_ent(__Unify___ml_backend__mlds__mlds_type_0_0);
+MR_def_label(__Unify___ml_backend__mlds__mlds_unary_op_0_0,9)
+	MR_MAYBE_INIT_LOCAL_THREAD_ENGINE_BASE
+	if (MR_PTAG_TESTR(MR_sv(2),2)) {
+		MR_GOTO_LAB(__Unify___ml_backend__mlds__mlds_unary_op_0_0_i1);
+	}
+	MR_r1 = MR_ctfield(2, MR_sv(1), 0);
+	MR_r2 = MR_ctfield(2, MR_sv(2), 0);
+	MR_succip_word = MR_sv(3);
+	MR_decr_sp(3);
+	MR_np_tailcall_ent(__Unify___ml_backend__mlds__mlds_type_0_0);
+MR_def_label(__Unify___ml_backend__mlds__mlds_unary_op_0_0,13)
+	MR_MAYBE_INIT_LOCAL_THREAD_ENGINE_BASE
+	if (MR_PTAG_TESTR(MR_sv(2),3)) {
+		MR_GOTO_LAB(__Unify___ml_backend__mlds__mlds_unary_op_0_0_i1);
+	}
+	{
+	MR_Word MR_tempr1, MR_tempr2;
+	MR_tempr1 = MR_ctfield(3, MR_sv(1), 0);
+	MR_tempr2 = MR_ctfield(3, MR_sv(2), 0);
+	MR_r1 = (MR_tempr1 == MR_tempr2);
+	MR_decr_sp_and_return(3);
+	}
+MR_def_label(__Unify___ml_backend__mlds__mlds_unary_op_0_0,23)
+	MR_MAYBE_INIT_LOCAL_THREAD_ENGINE_BASE
+	MR_r1 = MR_TRUE;
+	MR_proceed();
+MR_def_label(__Unify___ml_backend__mlds__mlds_unary_op_0_0,1)
+	MR_MAYBE_INIT_LOCAL_THREAD_ENGINE_BASE
+	MR_r1 = MR_FALSE;
+	MR_decr_sp_and_return(3);
+#ifdef MR_maybe_local_thread_engine_base
+	#undef MR_maybe_local_thread_engine_base
+	#define MR_maybe_local_thread_engine_base MR_thread_engine_base
+#endif
+MR_END_MODULE
+
+
+MR_BEGIN_MODULE(ml_backend__mlds_module181)
+	MR_init_entry1(__Compare___ml_backend__mlds__mlds_unary_op_0_0);
+	MR_init_label8(__Compare___ml_backend__mlds__mlds_unary_op_0_0,3,5,38,16,19,21,27,30)
+	MR_init_label1(__Compare___ml_backend__mlds__mlds_unary_op_0_0,31)
+MR_BEGIN_CODE
+
+#ifdef MR_maybe_local_thread_engine_base
+	#undef MR_maybe_local_thread_engine_base
+	#define MR_maybe_local_thread_engine_base MR_local_thread_engine_base
+#endif
+MR_define_entry(mercury____Compare___ml_backend__mlds__mlds_unary_op_0_0);
+	MR_MAYBE_INIT_LOCAL_THREAD_ENGINE_BASE
+	if ((MR_r1 == MR_r2)) {
+		MR_GOTO_LAB(__Compare___ml_backend__mlds__mlds_unary_op_0_0_i3);
+	}
+	MR_incr_sp(3);
+	MR_sv(3) = (MR_Word) MR_succip;
+	MR_sv(1) = MR_r1;
+	MR_sv(2) = MR_r2;
+	MR_COMPUTED_GOTO((MR_Unsigned) MR_tag(MR_sv(1)),
+		MR_LABEL_AP(__Compare___ml_backend__mlds__mlds_unary_op_0_0_i5) MR_AND
+		MR_LABEL_AP(__Compare___ml_backend__mlds__mlds_unary_op_0_0_i38) MR_AND
+		MR_LABEL_AP(__Compare___ml_backend__mlds__mlds_unary_op_0_0_i16) MR_AND
+		MR_LABEL_AP(__Compare___ml_backend__mlds__mlds_unary_op_0_0_i27));
+MR_def_label(__Compare___ml_backend__mlds__mlds_unary_op_0_0,3)
+	MR_MAYBE_INIT_LOCAL_THREAD_ENGINE_BASE
+	MR_r1 = (MR_Integer) 0;
+	MR_proceed();
+MR_def_label(__Compare___ml_backend__mlds__mlds_unary_op_0_0,5)
+	MR_MAYBE_INIT_LOCAL_THREAD_ENGINE_BASE
+	if (MR_INT_EQ(MR_tag(MR_sv(2)),0)) {
+		MR_GOTO_LAB(__Compare___ml_backend__mlds__mlds_unary_op_0_0_i19);
+	}
+	MR_GOTO_LAB(__Compare___ml_backend__mlds__mlds_unary_op_0_0_i21);
+MR_def_label(__Compare___ml_backend__mlds__mlds_unary_op_0_0,38)
+	MR_MAYBE_INIT_LOCAL_THREAD_ENGINE_BASE
+	MR_COMPUTED_GOTO((MR_Unsigned) MR_tag(MR_sv(2)),
+		MR_LABEL_AP(__Compare___ml_backend__mlds__mlds_unary_op_0_0_i30) MR_AND
+		MR_LABEL_AP(__Compare___ml_backend__mlds__mlds_unary_op_0_0_i19) MR_AND
+		MR_LABEL_AP(__Compare___ml_backend__mlds__mlds_unary_op_0_0_i21) MR_AND
+		MR_LABEL_AP(__Compare___ml_backend__mlds__mlds_unary_op_0_0_i21));
+MR_def_label(__Compare___ml_backend__mlds__mlds_unary_op_0_0,16)
+	MR_MAYBE_INIT_LOCAL_THREAD_ENGINE_BASE
+	MR_COMPUTED_GOTO((MR_Unsigned) MR_tag(MR_sv(2)),
+		MR_LABEL_AP(__Compare___ml_backend__mlds__mlds_unary_op_0_0_i30) MR_AND
+		MR_LABEL_AP(__Compare___ml_backend__mlds__mlds_unary_op_0_0_i30) MR_AND
+		MR_LABEL_AP(__Compare___ml_backend__mlds__mlds_unary_op_0_0_i19) MR_AND
+		MR_LABEL_AP(__Compare___ml_backend__mlds__mlds_unary_op_0_0_i21));
+MR_def_label(__Compare___ml_backend__mlds__mlds_unary_op_0_0,19)
+	MR_MAYBE_INIT_LOCAL_THREAD_ENGINE_BASE
+	MR_r1 = MR_const_mask_field(MR_sv(1), 0);
+	MR_r2 = MR_const_mask_field(MR_sv(2), 0);
+	MR_succip_word = MR_sv(3);
+	MR_decr_sp(3);
+	MR_np_tailcall_ent(__Compare___ml_backend__mlds__mlds_type_0_0);
+MR_def_label(__Compare___ml_backend__mlds__mlds_unary_op_0_0,21)
+	MR_MAYBE_INIT_LOCAL_THREAD_ENGINE_BASE
+	MR_r1 = (MR_Integer) 1;
+	MR_decr_sp_and_return(3);
+MR_def_label(__Compare___ml_backend__mlds__mlds_unary_op_0_0,27)
+	MR_MAYBE_INIT_LOCAL_THREAD_ENGINE_BASE
+	if (MR_INT_EQ(MR_tag(MR_sv(2)),3)) {
+		MR_GOTO_LAB(__Compare___ml_backend__mlds__mlds_unary_op_0_0_i31);
+	}
+MR_def_label(__Compare___ml_backend__mlds__mlds_unary_op_0_0,30)
+	MR_MAYBE_INIT_LOCAL_THREAD_ENGINE_BASE
+	MR_r1 = (MR_Integer) 2;
+	MR_decr_sp_and_return(3);
+MR_def_label(__Compare___ml_backend__mlds__mlds_unary_op_0_0,31)
+	MR_MAYBE_INIT_LOCAL_THREAD_ENGINE_BASE
+	MR_r1 = MR_ctfield(3, MR_sv(1), 0);
+	MR_r2 = MR_ctfield(3, MR_sv(2), 0);
+	MR_succip_word = MR_sv(3);
+	MR_decr_sp(3);
+	MR_np_tailcall_ent(private_builtin__builtin_compare_int_3_0);
+#ifdef MR_maybe_local_thread_engine_base
+	#undef MR_maybe_local_thread_engine_base
+	#define MR_maybe_local_thread_engine_base MR_thread_engine_base
+#endif
+MR_END_MODULE
+
+
+MR_BEGIN_MODULE(ml_backend__mlds_module182)
+	MR_init_entry1(__Unify___ml_backend__mlds__mlds_var_0_0);
+MR_BEGIN_CODE
+
+#ifdef MR_maybe_local_thread_engine_base
+	#undef MR_maybe_local_thread_engine_base
+	#define MR_maybe_local_thread_engine_base MR_local_thread_engine_base
+#endif
+MR_define_entry(mercury____Unify___ml_backend__mlds__mlds_var_0_0);
+	MR_MAYBE_INIT_LOCAL_THREAD_ENGINE_BASE
+	{
+	MR_Word MR_tempr1, MR_tempr2;
+	MR_tempr1 = MR_r1;
+	MR_r1 = (MR_Word) MR_CTOR0_ADDR(ml_backend__mlds, mlds_var_name);
+	MR_tempr2 = MR_r2;
+	MR_r2 = MR_tempr1;
+	MR_r3 = MR_tempr2;
+	MR_np_tailcall_ent(__Unify___ml_backend__mlds__mlds_fully_qualified_name_1_0);
+	}
+#ifdef MR_maybe_local_thread_engine_base
+	#undef MR_maybe_local_thread_engine_base
+	#define MR_maybe_local_thread_engine_base MR_thread_engine_base
+#endif
+MR_END_MODULE
+
+
+MR_BEGIN_MODULE(ml_backend__mlds_module183)
+	MR_init_entry1(__Compare___ml_backend__mlds__mlds_var_0_0);
+MR_BEGIN_CODE
+
+#ifdef MR_maybe_local_thread_engine_base
+	#undef MR_maybe_local_thread_engine_base
+	#define MR_maybe_local_thread_engine_base MR_local_thread_engine_base
+#endif
+MR_define_entry(mercury____Compare___ml_backend__mlds__mlds_var_0_0);
+	MR_MAYBE_INIT_LOCAL_THREAD_ENGINE_BASE
+	{
+	MR_Word MR_tempr1, MR_tempr2;
+	MR_tempr1 = MR_r1;
+	MR_r1 = (MR_Word) MR_CTOR0_ADDR(ml_backend__mlds, mlds_var_name);
+	MR_tempr2 = MR_r2;
+	MR_r2 = MR_tempr1;
+	MR_r3 = MR_tempr2;
+	MR_np_tailcall_ent(__Compare___ml_backend__mlds__mlds_fully_qualified_name_1_0);
+	}
+#ifdef MR_maybe_local_thread_engine_base
+	#undef MR_maybe_local_thread_engine_base
+	#define MR_maybe_local_thread_engine_base MR_thread_engine_base
+#endif
+MR_END_MODULE
+
+
+MR_BEGIN_MODULE(ml_backend__mlds_module184)
+	MR_init_entry1(__Unify___ml_backend__mlds__mlds_var_name_0_0);
+	MR_init_label2(__Unify___ml_backend__mlds__mlds_var_name_0_0,6,1)
+MR_BEGIN_CODE
+
+#ifdef MR_maybe_local_thread_engine_base
+	#undef MR_maybe_local_thread_engine_base
+	#define MR_maybe_local_thread_engine_base MR_local_thread_engine_base
+#endif
+MR_define_entry(mercury____Unify___ml_backend__mlds__mlds_var_name_0_0);
+	MR_MAYBE_INIT_LOCAL_THREAD_ENGINE_BASE
+	if ((MR_r1 == MR_r2)) {
+		MR_GOTO_LAB(__Unify___ml_backend__mlds__mlds_var_name_0_0_i6);
+	}
+	MR_incr_sp(3);
+	MR_sv(3) = (MR_Word) MR_succip;
+	{
+	MR_Word MR_tempr1, MR_tempr2, MR_tempr3, MR_tempr4;
+	MR_tempr1 = MR_r1;
+	MR_sv(1) = MR_tempr1;
+	MR_tempr2 = MR_r2;
+	MR_sv(2) = MR_tempr2;
+	MR_tempr3 = MR_ctfield(0, MR_tempr1, 0);
+	MR_tempr4 = MR_ctfield(0, MR_tempr2, 0);
+	if ((strcmp((char *) (MR_Word *) MR_tempr3, (char *) (MR_Word *) MR_tempr4) != 0)) {
+		MR_GOTO_LAB(__Unify___ml_backend__mlds__mlds_var_name_0_0_i1);
+	}
+	MR_r1 = (MR_Word) MR_INT_CTOR_ADDR;
+	MR_r2 = MR_ctfield(0, MR_tempr1, 1);
+	MR_r3 = MR_ctfield(0, MR_tempr2, 1);
+	MR_decr_sp(3);
+	MR_np_tailcall_ent(__Unify___maybe__maybe_1_0);
+	}
+MR_def_label(__Unify___ml_backend__mlds__mlds_var_name_0_0,6)
+	MR_MAYBE_INIT_LOCAL_THREAD_ENGINE_BASE
+	MR_r1 = MR_TRUE;
+	MR_proceed();
+MR_def_label(__Unify___ml_backend__mlds__mlds_var_name_0_0,1)
+	MR_MAYBE_INIT_LOCAL_THREAD_ENGINE_BASE
+	MR_r1 = MR_FALSE;
+	MR_decr_sp_and_return(3);
+#ifdef MR_maybe_local_thread_engine_base
+	#undef MR_maybe_local_thread_engine_base
+	#define MR_maybe_local_thread_engine_base MR_thread_engine_base
+#endif
+MR_END_MODULE
+
+
+MR_BEGIN_MODULE(ml_backend__mlds_module185)
+	MR_init_entry1(__Compare___ml_backend__mlds__mlds_var_name_0_0);
+	MR_init_label4(__Compare___ml_backend__mlds__mlds_var_name_0_0,3,2,5,21)
+MR_BEGIN_CODE
+
+#ifdef MR_maybe_local_thread_engine_base
+	#undef MR_maybe_local_thread_engine_base
+	#define MR_maybe_local_thread_engine_base MR_local_thread_engine_base
+#endif
+MR_define_entry(mercury____Compare___ml_backend__mlds__mlds_var_name_0_0);
+	MR_MAYBE_INIT_LOCAL_THREAD_ENGINE_BASE
+	if ((MR_r1 == MR_r2)) {
+		MR_GOTO_LAB(__Compare___ml_backend__mlds__mlds_var_name_0_0_i3);
+	}
+	MR_incr_sp(3);
+	MR_sv(3) = (MR_Word) MR_succip;
+	MR_sv(1) = MR_r1;
+	MR_sv(2) = MR_r2;
+	MR_GOTO_LAB(__Compare___ml_backend__mlds__mlds_var_name_0_0_i2);
+MR_def_label(__Compare___ml_backend__mlds__mlds_var_name_0_0,3)
+	MR_MAYBE_INIT_LOCAL_THREAD_ENGINE_BASE
+	MR_r1 = (MR_Integer) 0;
+	MR_proceed();
+MR_def_label(__Compare___ml_backend__mlds__mlds_var_name_0_0,2)
+	MR_MAYBE_INIT_LOCAL_THREAD_ENGINE_BASE
+	{
+	MR_Word MR_tempr1, MR_tempr2, MR_tempr3, MR_tempr4, MR_tempr5, MR_tempr6;
+	MR_tempr5 = MR_sv(2);
+	MR_tempr1 = MR_ctfield(0, MR_tempr5, 1);
+	MR_tempr6 = MR_sv(1);
+	MR_tempr2 = MR_ctfield(0, MR_tempr6, 1);
+	MR_tempr3 = MR_tempr6;
+	MR_sv(1) = MR_tempr2;
+	MR_tempr4 = MR_tempr5;
+	MR_sv(2) = MR_tempr1;
+	MR_r1 = MR_ctfield(0, MR_tempr3, 0);
+	MR_r2 = MR_ctfield(0, MR_tempr4, 0);
+	}
+	MR_np_call_localret_ent(private_builtin__builtin_compare_string_3_0,
+		__Compare___ml_backend__mlds__mlds_var_name_0_0_i5);
+MR_def_label(__Compare___ml_backend__mlds__mlds_var_name_0_0,5)
+	MR_MAYBE_INIT_LOCAL_THREAD_ENGINE_BASE
+	if (MR_INT_NE(MR_r1,0)) {
+		MR_GOTO_LAB(__Compare___ml_backend__mlds__mlds_var_name_0_0_i21);
+	}
+	MR_r1 = (MR_Word) MR_INT_CTOR_ADDR;
+	MR_r2 = MR_sv(1);
+	MR_r3 = MR_sv(2);
+	MR_succip_word = MR_sv(3);
+	MR_decr_sp(3);
+	MR_np_tailcall_ent(__Compare___maybe__maybe_1_0);
+MR_def_label(__Compare___ml_backend__mlds__mlds_var_name_0_0,21)
+	MR_MAYBE_INIT_LOCAL_THREAD_ENGINE_BASE
+	MR_decr_sp_and_return(3);
+#ifdef MR_maybe_local_thread_engine_base
+	#undef MR_maybe_local_thread_engine_base
+	#define MR_maybe_local_thread_engine_base MR_thread_engine_base
+#endif
+MR_END_MODULE
+
+
+MR_BEGIN_MODULE(ml_backend__mlds_module186)
+	MR_init_entry1(__Unify___ml_backend__mlds__outline_arg_0_0);
+	MR_init_label6(__Unify___ml_backend__mlds__outline_arg_0_0,11,13,5,7,20,1)
+MR_BEGIN_CODE
+
+#ifdef MR_maybe_local_thread_engine_base
+	#undef MR_maybe_local_thread_engine_base
+	#define MR_maybe_local_thread_engine_base MR_local_thread_engine_base
+#endif
+MR_define_entry(mercury____Unify___ml_backend__mlds__outline_arg_0_0);
+	MR_MAYBE_INIT_LOCAL_THREAD_ENGINE_BASE
+	if ((MR_r1 == MR_r2)) {
+		MR_GOTO_LAB(__Unify___ml_backend__mlds__outline_arg_0_0_i20);
+	}
+	MR_incr_sp(5);
+	MR_sv(5) = (MR_Word) MR_succip;
+	{
+	MR_Word MR_tempr1, MR_tempr2;
+	MR_tempr1 = MR_r1;
+	MR_sv(1) = MR_tempr1;
+	MR_sv(2) = MR_r2;
+	MR_tempr2 = MR_tag(MR_tempr1);
+	if ((MR_tempr2 == MR_mktag((MR_Integer) 1))) {
+		MR_GOTO_LAB(__Unify___ml_backend__mlds__outline_arg_0_0_i5);
+	}
+	if ((MR_tempr2 == MR_mktag((MR_Integer) 2))) {
+		MR_GOTO_LAB(__Unify___ml_backend__mlds__outline_arg_0_0_i11);
+	}
+	MR_r1 = (MR_sv(2) == MR_tempr1);
+	MR_decr_sp(5);
+	MR_proceed();
+	}
+MR_def_label(__Unify___ml_backend__mlds__outline_arg_0_0,11)
+	MR_MAYBE_INIT_LOCAL_THREAD_ENGINE_BASE
+	if (MR_PTAG_TESTR(MR_sv(2),2)) {
+		MR_GOTO_LAB(__Unify___ml_backend__mlds__outline_arg_0_0_i1);
+	}
+	{
+	MR_Word MR_tempr1, MR_tempr2;
+	MR_tempr1 = MR_sv(1);
+	MR_sv(1) = MR_ctfield(2, MR_tempr1, 1);
+	MR_tempr2 = MR_sv(2);
+	MR_sv(2) = MR_ctfield(2, MR_tempr1, 2);
+	MR_sv(3) = MR_ctfield(2, MR_tempr2, 1);
+	MR_sv(4) = MR_ctfield(2, MR_tempr2, 2);
+	MR_r1 = MR_ctfield(2, MR_tempr1, 0);
+	MR_r2 = MR_ctfield(2, MR_tempr2, 0);
+	}
+	MR_np_call_localret_ent(__Unify___ml_backend__mlds__mlds_type_0_0,
+		__Unify___ml_backend__mlds__outline_arg_0_0_i13);
+MR_def_label(__Unify___ml_backend__mlds__outline_arg_0_0,13)
+	MR_MAYBE_INIT_LOCAL_THREAD_ENGINE_BASE
+	if (!(MR_r1)) {
+		MR_GOTO_LAB(__Unify___ml_backend__mlds__outline_arg_0_0_i1);
+	}
+	if ((strcmp((char *) (MR_Word *) MR_sv(1), (char *) (MR_Word *) MR_sv(3)) != 0)) {
+		MR_GOTO_LAB(__Unify___ml_backend__mlds__outline_arg_0_0_i1);
+	}
+	MR_r1 = MR_sv(2);
+	MR_r2 = MR_sv(4);
+	MR_succip_word = MR_sv(5);
+	MR_decr_sp(5);
+	MR_np_tailcall_ent(__Unify___ml_backend__mlds__mlds_lval_0_0);
+MR_def_label(__Unify___ml_backend__mlds__outline_arg_0_0,5)
+	MR_MAYBE_INIT_LOCAL_THREAD_ENGINE_BASE
+	if (MR_PTAG_TESTR(MR_sv(2),1)) {
+		MR_GOTO_LAB(__Unify___ml_backend__mlds__outline_arg_0_0_i1);
+	}
+	{
+	MR_Word MR_tempr1, MR_tempr2;
+	MR_tempr1 = MR_sv(1);
+	MR_sv(1) = MR_ctfield(1, MR_tempr1, 1);
+	MR_tempr2 = MR_sv(2);
+	MR_sv(2) = MR_ctfield(1, MR_tempr1, 2);
+	MR_sv(3) = MR_ctfield(1, MR_tempr2, 1);
+	MR_sv(4) = MR_ctfield(1, MR_tempr2, 2);
+	MR_r1 = MR_ctfield(1, MR_tempr1, 0);
+	MR_r2 = MR_ctfield(1, MR_tempr2, 0);
+	}
+	MR_np_call_localret_ent(__Unify___ml_backend__mlds__mlds_type_0_0,
+		__Unify___ml_backend__mlds__outline_arg_0_0_i7);
+MR_def_label(__Unify___ml_backend__mlds__outline_arg_0_0,7)
+	MR_MAYBE_INIT_LOCAL_THREAD_ENGINE_BASE
+	if (!(MR_r1)) {
+		MR_GOTO_LAB(__Unify___ml_backend__mlds__outline_arg_0_0_i1);
+	}
+	if ((strcmp((char *) (MR_Word *) MR_sv(1), (char *) (MR_Word *) MR_sv(3)) != 0)) {
+		MR_GOTO_LAB(__Unify___ml_backend__mlds__outline_arg_0_0_i1);
+	}
+	MR_r1 = MR_sv(2);
+	MR_r2 = MR_sv(4);
+	MR_succip_word = MR_sv(5);
+	MR_decr_sp(5);
+	MR_np_tailcall_ent(__Unify___ml_backend__mlds__mlds_rval_0_0);
+MR_def_label(__Unify___ml_backend__mlds__outline_arg_0_0,20)
+	MR_MAYBE_INIT_LOCAL_THREAD_ENGINE_BASE
+	MR_r1 = MR_TRUE;
+	MR_proceed();
+MR_def_label(__Unify___ml_backend__mlds__outline_arg_0_0,1)
+	MR_MAYBE_INIT_LOCAL_THREAD_ENGINE_BASE
+	MR_r1 = MR_FALSE;
+	MR_decr_sp_and_return(5);
+#ifdef MR_maybe_local_thread_engine_base
+	#undef MR_maybe_local_thread_engine_base
+	#define MR_maybe_local_thread_engine_base MR_thread_engine_base
+#endif
+MR_END_MODULE
+
+
+MR_BEGIN_MODULE(ml_backend__mlds_module187)
+	MR_init_entry1(__Compare___ml_backend__mlds__outline_arg_0_0);
+	MR_init_label8(__Compare___ml_backend__mlds__outline_arg_0_0,68,23,26,28,32,25,5,7)
+	MR_init_label3(__Compare___ml_backend__mlds__outline_arg_0_0,9,13,50)
+MR_BEGIN_CODE
+
+#ifdef MR_maybe_local_thread_engine_base
+	#undef MR_maybe_local_thread_engine_base
+	#define MR_maybe_local_thread_engine_base MR_local_thread_engine_base
+#endif
+MR_define_entry(mercury____Compare___ml_backend__mlds__outline_arg_0_0);
+	MR_MAYBE_INIT_LOCAL_THREAD_ENGINE_BASE
+	MR_incr_sp(5);
+	MR_sv(5) = (MR_Word) MR_succip;
+	if ((MR_r1 == MR_r2)) {
+		MR_GOTO_LAB(__Compare___ml_backend__mlds__outline_arg_0_0_i68);
+	}
+	MR_sv(1) = MR_r1;
+	MR_sv(2) = MR_r2;
+	{
+	MR_Word MR_tempr1;
+	MR_tempr1 = MR_tag(MR_sv(1));
+	if ((MR_tempr1 == MR_mktag((MR_Integer) 1))) {
+		MR_GOTO_LAB(__Compare___ml_backend__mlds__outline_arg_0_0_i5);
+	}
+	if ((MR_tempr1 == MR_mktag((MR_Integer) 2))) {
+		MR_GOTO_LAB(__Compare___ml_backend__mlds__outline_arg_0_0_i23);
+	}
+	MR_tempr1 = MR_tag(MR_sv(2));
+	if ((MR_tempr1 == MR_mktag((MR_Integer) 1))) {
+		MR_GOTO_LAB(__Compare___ml_backend__mlds__outline_arg_0_0_i25);
+	}
+	if ((MR_tempr1 == MR_mktag((MR_Integer) 2))) {
+		MR_GOTO_LAB(__Compare___ml_backend__mlds__outline_arg_0_0_i25);
+	}
+	}
+MR_def_label(__Compare___ml_backend__mlds__outline_arg_0_0,68)
+	MR_MAYBE_INIT_LOCAL_THREAD_ENGINE_BASE
+	MR_r1 = (MR_Integer) 0;
+	MR_decr_sp_and_return(5);
+MR_def_label(__Compare___ml_backend__mlds__outline_arg_0_0,23)
+	MR_MAYBE_INIT_LOCAL_THREAD_ENGINE_BASE
+	{
+	MR_Word MR_tempr1;
+	MR_tempr1 = MR_tag(MR_sv(2));
+	if ((MR_tempr1 == MR_mktag((MR_Integer) 1))) {
+		MR_GOTO_LAB(__Compare___ml_backend__mlds__outline_arg_0_0_i25);
+	}
+	if ((MR_tempr1 == MR_mktag((MR_Integer) 2))) {
+		MR_GOTO_LAB(__Compare___ml_backend__mlds__outline_arg_0_0_i26);
+	}
+	MR_r1 = (MR_Integer) 1;
+	MR_decr_sp_and_return(5);
+	}
+MR_def_label(__Compare___ml_backend__mlds__outline_arg_0_0,26)
+	MR_MAYBE_INIT_LOCAL_THREAD_ENGINE_BASE
+	{
+	MR_Word MR_tempr1, MR_tempr2, MR_tempr3, MR_tempr4, MR_tempr5, MR_tempr6;
+	MR_tempr5 = MR_sv(1);
+	MR_sv(4) = MR_ctfield(2, MR_tempr5, 1);
+	MR_sv(3) = MR_ctfield(2, MR_tempr5, 2);
+	MR_tempr6 = MR_sv(2);
+	MR_tempr1 = MR_ctfield(2, MR_tempr6, 2);
+	MR_tempr2 = MR_ctfield(2, MR_tempr6, 1);
+	MR_tempr3 = MR_tempr5;
+	MR_sv(1) = MR_tempr2;
+	MR_tempr4 = MR_tempr6;
+	MR_sv(2) = MR_tempr1;
+	MR_r1 = MR_ctfield(2, MR_tempr3, 0);
+	MR_r2 = MR_ctfield(2, MR_tempr4, 0);
+	}
+	MR_np_call_localret_ent(__Compare___ml_backend__mlds__mlds_type_0_0,
+		__Compare___ml_backend__mlds__outline_arg_0_0_i28);
+MR_def_label(__Compare___ml_backend__mlds__outline_arg_0_0,28)
+	MR_MAYBE_INIT_LOCAL_THREAD_ENGINE_BASE
+	if (MR_INT_NE(MR_r1,0)) {
+		MR_GOTO_LAB(__Compare___ml_backend__mlds__outline_arg_0_0_i50);
+	}
+	MR_r1 = MR_sv(4);
+	MR_r2 = MR_sv(1);
+	MR_np_call_localret_ent(private_builtin__builtin_compare_string_3_0,
+		__Compare___ml_backend__mlds__outline_arg_0_0_i32);
+MR_def_label(__Compare___ml_backend__mlds__outline_arg_0_0,32)
+	MR_MAYBE_INIT_LOCAL_THREAD_ENGINE_BASE
+	if (MR_INT_NE(MR_r1,0)) {
+		MR_GOTO_LAB(__Compare___ml_backend__mlds__outline_arg_0_0_i50);
+	}
+	MR_r1 = MR_sv(3);
+	MR_r2 = MR_sv(2);
+	MR_succip_word = MR_sv(5);
+	MR_decr_sp(5);
+	MR_np_tailcall_ent(__Compare___ml_backend__mlds__mlds_lval_0_0);
+MR_def_label(__Compare___ml_backend__mlds__outline_arg_0_0,25)
+	MR_MAYBE_INIT_LOCAL_THREAD_ENGINE_BASE
+	MR_r1 = (MR_Integer) 2;
+	MR_decr_sp_and_return(5);
+MR_def_label(__Compare___ml_backend__mlds__outline_arg_0_0,5)
+	MR_MAYBE_INIT_LOCAL_THREAD_ENGINE_BASE
+	{
+	MR_Word MR_tempr1;
+	MR_tempr1 = MR_tag(MR_sv(2));
+	if ((MR_tempr1 == MR_mktag((MR_Integer) 1))) {
+		MR_GOTO_LAB(__Compare___ml_backend__mlds__outline_arg_0_0_i7);
+	}
+	MR_r1 = (MR_Integer) 1;
+	MR_decr_sp_and_return(5);
+	}
+MR_def_label(__Compare___ml_backend__mlds__outline_arg_0_0,7)
+	MR_MAYBE_INIT_LOCAL_THREAD_ENGINE_BASE
+	{
+	MR_Word MR_tempr1, MR_tempr2, MR_tempr3, MR_tempr4, MR_tempr5, MR_tempr6;
+	MR_tempr5 = MR_sv(1);
+	MR_sv(4) = MR_ctfield(1, MR_tempr5, 1);
+	MR_sv(3) = MR_ctfield(1, MR_tempr5, 2);
+	MR_tempr6 = MR_sv(2);
+	MR_tempr1 = MR_ctfield(1, MR_tempr6, 2);
+	MR_tempr2 = MR_ctfield(1, MR_tempr6, 1);
+	MR_tempr3 = MR_tempr5;
+	MR_sv(1) = MR_tempr2;
+	MR_tempr4 = MR_tempr6;
+	MR_sv(2) = MR_tempr1;
+	MR_r1 = MR_ctfield(1, MR_tempr3, 0);
+	MR_r2 = MR_ctfield(1, MR_tempr4, 0);
+	}
+	MR_np_call_localret_ent(__Compare___ml_backend__mlds__mlds_type_0_0,
+		__Compare___ml_backend__mlds__outline_arg_0_0_i9);
+MR_def_label(__Compare___ml_backend__mlds__outline_arg_0_0,9)
+	MR_MAYBE_INIT_LOCAL_THREAD_ENGINE_BASE
+	if (MR_INT_NE(MR_r1,0)) {
+		MR_GOTO_LAB(__Compare___ml_backend__mlds__outline_arg_0_0_i50);
+	}
+	MR_r1 = MR_sv(4);
+	MR_r2 = MR_sv(1);
+	MR_np_call_localret_ent(private_builtin__builtin_compare_string_3_0,
+		__Compare___ml_backend__mlds__outline_arg_0_0_i13);
+MR_def_label(__Compare___ml_backend__mlds__outline_arg_0_0,13)
+	MR_MAYBE_INIT_LOCAL_THREAD_ENGINE_BASE
+	if (MR_INT_NE(MR_r1,0)) {
+		MR_GOTO_LAB(__Compare___ml_backend__mlds__outline_arg_0_0_i50);
+	}
+	MR_r1 = MR_sv(3);
+	MR_r2 = MR_sv(2);
+	MR_succip_word = MR_sv(5);
+	MR_decr_sp(5);
+	MR_np_tailcall_ent(__Compare___ml_backend__mlds__mlds_rval_0_0);
+MR_def_label(__Compare___ml_backend__mlds__outline_arg_0_0,50)
+	MR_MAYBE_INIT_LOCAL_THREAD_ENGINE_BASE
+	MR_decr_sp_and_return(5);
+#ifdef MR_maybe_local_thread_engine_base
+	#undef MR_maybe_local_thread_engine_base
+	#define MR_maybe_local_thread_engine_base MR_thread_engine_base
+#endif
+MR_END_MODULE
+
+
+MR_BEGIN_MODULE(ml_backend__mlds_module188)
+	MR_init_entry1(__Unify___ml_backend__mlds__per_instance_0_0);
+MR_BEGIN_CODE
+
+#ifdef MR_maybe_local_thread_engine_base
+	#undef MR_maybe_local_thread_engine_base
+	#define MR_maybe_local_thread_engine_base MR_local_thread_engine_base
+#endif
+MR_define_entry(mercury____Unify___ml_backend__mlds__per_instance_0_0);
+	MR_MAYBE_INIT_LOCAL_THREAD_ENGINE_BASE
+	MR_r1 = (MR_r1 == MR_r2);
+	MR_proceed();
+#ifdef MR_maybe_local_thread_engine_base
+	#undef MR_maybe_local_thread_engine_base
+	#define MR_maybe_local_thread_engine_base MR_thread_engine_base
+#endif
+MR_END_MODULE
+
+
+MR_BEGIN_MODULE(ml_backend__mlds_module189)
+	MR_init_entry1(__Compare___ml_backend__mlds__per_instance_0_0);
+MR_BEGIN_CODE
+
+#ifdef MR_maybe_local_thread_engine_base
+	#undef MR_maybe_local_thread_engine_base
+	#define MR_maybe_local_thread_engine_base MR_local_thread_engine_base
+#endif
+MR_define_entry(mercury____Compare___ml_backend__mlds__per_instance_0_0);
+	MR_MAYBE_INIT_LOCAL_THREAD_ENGINE_BASE
+	MR_np_tailcall_ent(private_builtin__builtin_compare_int_3_0);
+#ifdef MR_maybe_local_thread_engine_base
+	#undef MR_maybe_local_thread_engine_base
+	#define MR_maybe_local_thread_engine_base MR_thread_engine_base
+#endif
+MR_END_MODULE
+
+
+MR_BEGIN_MODULE(ml_backend__mlds_module190)
+	MR_init_entry1(__Unify___ml_backend__mlds__statement_0_0);
+	MR_init_label3(__Unify___ml_backend__mlds__statement_0_0,4,8,1)
+MR_BEGIN_CODE
+
+#ifdef MR_maybe_local_thread_engine_base
+	#undef MR_maybe_local_thread_engine_base
+	#define MR_maybe_local_thread_engine_base MR_local_thread_engine_base
+#endif
+MR_define_entry(mercury____Unify___ml_backend__mlds__statement_0_0);
+	MR_MAYBE_INIT_LOCAL_THREAD_ENGINE_BASE
+	if ((MR_r1 == MR_r2)) {
+		MR_GOTO_LAB(__Unify___ml_backend__mlds__statement_0_0_i8);
+	}
+	MR_incr_sp(3);
+	MR_sv(3) = (MR_Word) MR_succip;
+	MR_sv(1) = MR_r1;
+	MR_sv(2) = MR_r2;
+	{
+	MR_Word MR_tempr1, MR_tempr2;
+	MR_tempr1 = MR_sv(1);
+	MR_sv(1) = MR_ctfield(0, MR_tempr1, 1);
+	MR_tempr2 = MR_sv(2);
+	MR_sv(2) = MR_ctfield(0, MR_tempr2, 1);
+	MR_r1 = MR_ctfield(0, MR_tempr1, 0);
+	MR_r2 = MR_ctfield(0, MR_tempr2, 0);
+	}
+	MR_np_call_localret_ent(__Unify___ml_backend__mlds__mlds_stmt_0_0,
+		__Unify___ml_backend__mlds__statement_0_0_i4);
+MR_def_label(__Unify___ml_backend__mlds__statement_0_0,4)
+	MR_MAYBE_INIT_LOCAL_THREAD_ENGINE_BASE
+	if (!(MR_r1)) {
+		MR_GOTO_LAB(__Unify___ml_backend__mlds__statement_0_0_i1);
+	}
+	MR_r1 = MR_sv(1);
+	MR_r2 = MR_sv(2);
+	MR_succip_word = MR_sv(3);
+	MR_decr_sp(3);
+	MR_np_tailcall_ent(__Unify___ml_backend__mlds__mlds_context_0_0);
+MR_def_label(__Unify___ml_backend__mlds__statement_0_0,8)
+	MR_MAYBE_INIT_LOCAL_THREAD_ENGINE_BASE
+	MR_r1 = MR_TRUE;
+	MR_proceed();
+MR_def_label(__Unify___ml_backend__mlds__statement_0_0,1)
+	MR_MAYBE_INIT_LOCAL_THREAD_ENGINE_BASE
+	MR_r1 = MR_FALSE;
+	MR_decr_sp_and_return(3);
+#ifdef MR_maybe_local_thread_engine_base
+	#undef MR_maybe_local_thread_engine_base
+	#define MR_maybe_local_thread_engine_base MR_thread_engine_base
+#endif
+MR_END_MODULE
+
+
+MR_BEGIN_MODULE(ml_backend__mlds_module191)
+	MR_init_entry1(__Compare___ml_backend__mlds__statement_0_0);
+	MR_init_label4(__Compare___ml_backend__mlds__statement_0_0,3,2,5,21)
+MR_BEGIN_CODE
+
+#ifdef MR_maybe_local_thread_engine_base
+	#undef MR_maybe_local_thread_engine_base
+	#define MR_maybe_local_thread_engine_base MR_local_thread_engine_base
+#endif
+MR_define_entry(mercury____Compare___ml_backend__mlds__statement_0_0);
+	MR_MAYBE_INIT_LOCAL_THREAD_ENGINE_BASE
+	if ((MR_r1 == MR_r2)) {
+		MR_GOTO_LAB(__Compare___ml_backend__mlds__statement_0_0_i3);
+	}
+	MR_incr_sp(3);
+	MR_sv(3) = (MR_Word) MR_succip;
+	MR_sv(1) = MR_r1;
+	MR_sv(2) = MR_r2;
+	MR_GOTO_LAB(__Compare___ml_backend__mlds__statement_0_0_i2);
+MR_def_label(__Compare___ml_backend__mlds__statement_0_0,3)
+	MR_MAYBE_INIT_LOCAL_THREAD_ENGINE_BASE
+	MR_r1 = (MR_Integer) 0;
+	MR_proceed();
+MR_def_label(__Compare___ml_backend__mlds__statement_0_0,2)
+	MR_MAYBE_INIT_LOCAL_THREAD_ENGINE_BASE
+	{
+	MR_Word MR_tempr1, MR_tempr2, MR_tempr3, MR_tempr4, MR_tempr5, MR_tempr6;
+	MR_tempr5 = MR_sv(2);
+	MR_tempr1 = MR_ctfield(0, MR_tempr5, 1);
+	MR_tempr6 = MR_sv(1);
+	MR_tempr2 = MR_ctfield(0, MR_tempr6, 1);
+	MR_tempr3 = MR_tempr6;
+	MR_sv(1) = MR_tempr2;
+	MR_tempr4 = MR_tempr5;
+	MR_sv(2) = MR_tempr1;
+	MR_r1 = MR_ctfield(0, MR_tempr3, 0);
+	MR_r2 = MR_ctfield(0, MR_tempr4, 0);
+	}
+	MR_np_call_localret_ent(__Compare___ml_backend__mlds__mlds_stmt_0_0,
+		__Compare___ml_backend__mlds__statement_0_0_i5);
+MR_def_label(__Compare___ml_backend__mlds__statement_0_0,5)
+	MR_MAYBE_INIT_LOCAL_THREAD_ENGINE_BASE
+	if (MR_INT_NE(MR_r1,0)) {
+		MR_GOTO_LAB(__Compare___ml_backend__mlds__statement_0_0_i21);
+	}
+	MR_r1 = MR_sv(1);
+	MR_r2 = MR_sv(2);
+	MR_succip_word = MR_sv(3);
+	MR_decr_sp(3);
+	MR_np_tailcall_ent(__Compare___ml_backend__mlds__mlds_context_0_0);
+MR_def_label(__Compare___ml_backend__mlds__statement_0_0,21)
+	MR_MAYBE_INIT_LOCAL_THREAD_ENGINE_BASE
+	MR_decr_sp_and_return(3);
+#ifdef MR_maybe_local_thread_engine_base
+	#undef MR_maybe_local_thread_engine_base
+	#define MR_maybe_local_thread_engine_base MR_thread_engine_base
+#endif
+MR_END_MODULE
+
+
+MR_BEGIN_MODULE(ml_backend__mlds_module192)
+	MR_init_entry1(__Unify___ml_backend__mlds__target_code_attribute_0_0);
+	MR_init_label1(__Unify___ml_backend__mlds__target_code_attribute_0_0,4)
+MR_BEGIN_CODE
+
+#ifdef MR_maybe_local_thread_engine_base
+	#undef MR_maybe_local_thread_engine_base
+	#define MR_maybe_local_thread_engine_base MR_local_thread_engine_base
+#endif
+MR_define_entry(mercury____Unify___ml_backend__mlds__target_code_attribute_0_0);
+	MR_MAYBE_INIT_LOCAL_THREAD_ENGINE_BASE
+	MR_incr_sp(2);
+	if ((MR_r1 == MR_r2)) {
+		MR_GOTO_LAB(__Unify___ml_backend__mlds__target_code_attribute_0_0_i4);
+	}
+	MR_sv(1) = MR_r1;
+	MR_sv(2) = MR_r2;
+	MR_r1 = (MR_sv(1) == MR_sv(2));
+	MR_decr_sp(2);
+	MR_proceed();
+MR_def_label(__Unify___ml_backend__mlds__target_code_attribute_0_0,4)
+	MR_MAYBE_INIT_LOCAL_THREAD_ENGINE_BASE
+	MR_decr_sp(2);
+	MR_r1 = MR_TRUE;
+	MR_proceed();
+#ifdef MR_maybe_local_thread_engine_base
+	#undef MR_maybe_local_thread_engine_base
+	#define MR_maybe_local_thread_engine_base MR_thread_engine_base
+#endif
+MR_END_MODULE
+
+
+MR_BEGIN_MODULE(ml_backend__mlds_module193)
+	MR_init_entry1(__Compare___ml_backend__mlds__target_code_attribute_0_0);
+	MR_init_label2(__Compare___ml_backend__mlds__target_code_attribute_0_0,3,2)
+MR_BEGIN_CODE
+
+#ifdef MR_maybe_local_thread_engine_base
+	#undef MR_maybe_local_thread_engine_base
+	#define MR_maybe_local_thread_engine_base MR_local_thread_engine_base
+#endif
+MR_define_entry(mercury____Compare___ml_backend__mlds__target_code_attribute_0_0);
+	MR_MAYBE_INIT_LOCAL_THREAD_ENGINE_BASE
+	if ((MR_r1 == MR_r2)) {
+		MR_GOTO_LAB(__Compare___ml_backend__mlds__target_code_attribute_0_0_i3);
+	}
+	MR_incr_sp(3);
+	MR_sv(3) = (MR_Word) MR_succip;
+	MR_sv(1) = MR_r1;
+	MR_sv(2) = MR_r2;
+	MR_GOTO_LAB(__Compare___ml_backend__mlds__target_code_attribute_0_0_i2);
+MR_def_label(__Compare___ml_backend__mlds__target_code_attribute_0_0,3)
+	MR_MAYBE_INIT_LOCAL_THREAD_ENGINE_BASE
+	MR_r1 = (MR_Integer) 0;
+	MR_proceed();
+MR_def_label(__Compare___ml_backend__mlds__target_code_attribute_0_0,2)
+	MR_MAYBE_INIT_LOCAL_THREAD_ENGINE_BASE
+	MR_r1 = MR_sv(1);
+	MR_r2 = MR_sv(2);
+	MR_succip_word = MR_sv(3);
+	MR_decr_sp(3);
+	MR_np_tailcall_ent(private_builtin__builtin_compare_int_3_0);
+#ifdef MR_maybe_local_thread_engine_base
+	#undef MR_maybe_local_thread_engine_base
+	#define MR_maybe_local_thread_engine_base MR_thread_engine_base
+#endif
+MR_END_MODULE
+
+
+MR_BEGIN_MODULE(ml_backend__mlds_module194)
+	MR_init_entry1(__Unify___ml_backend__mlds__target_code_attributes_0_0);
+MR_BEGIN_CODE
+
+#ifdef MR_maybe_local_thread_engine_base
+	#undef MR_maybe_local_thread_engine_base
+	#define MR_maybe_local_thread_engine_base MR_local_thread_engine_base
+#endif
+MR_define_entry(mercury____Unify___ml_backend__mlds__target_code_attributes_0_0);
+	MR_MAYBE_INIT_LOCAL_THREAD_ENGINE_BASE
+	{
+	MR_Word MR_tempr1, MR_tempr2;
+	MR_tempr1 = MR_r1;
+	MR_r1 = (MR_Word) MR_CTOR0_ADDR(ml_backend__mlds, target_code_attribute);
+	MR_tempr2 = MR_r2;
+	MR_r2 = MR_tempr1;
+	MR_r3 = MR_tempr2;
+	MR_np_tailcall_ent(__Unify___list__list_1_0);
+	}
+#ifdef MR_maybe_local_thread_engine_base
+	#undef MR_maybe_local_thread_engine_base
+	#define MR_maybe_local_thread_engine_base MR_thread_engine_base
+#endif
+MR_END_MODULE
+
+
+MR_BEGIN_MODULE(ml_backend__mlds_module195)
+	MR_init_entry1(__Compare___ml_backend__mlds__target_code_attributes_0_0);
+MR_BEGIN_CODE
+
+#ifdef MR_maybe_local_thread_engine_base
+	#undef MR_maybe_local_thread_engine_base
+	#define MR_maybe_local_thread_engine_base MR_local_thread_engine_base
+#endif
+MR_define_entry(mercury____Compare___ml_backend__mlds__target_code_attributes_0_0);
+	MR_MAYBE_INIT_LOCAL_THREAD_ENGINE_BASE
+	{
+	MR_Word MR_tempr1, MR_tempr2;
+	MR_tempr1 = MR_r1;
+	MR_r1 = (MR_Word) MR_CTOR0_ADDR(ml_backend__mlds, target_code_attribute);
+	MR_tempr2 = MR_r2;
+	MR_r2 = MR_tempr1;
+	MR_r3 = MR_tempr2;
+	MR_np_tailcall_ent(__Compare___list__list_1_0);
+	}
+#ifdef MR_maybe_local_thread_engine_base
+	#undef MR_maybe_local_thread_engine_base
+	#define MR_maybe_local_thread_engine_base MR_thread_engine_base
+#endif
+MR_END_MODULE
+
+
+MR_BEGIN_MODULE(ml_backend__mlds_module196)
+	MR_init_entry1(__Unify___ml_backend__mlds__target_code_component_0_0);
+	MR_init_label8(__Unify___ml_backend__mlds__target_code_component_0_0,21,23,9,13,30,5,32,1)
+MR_BEGIN_CODE
+
+#ifdef MR_maybe_local_thread_engine_base
+	#undef MR_maybe_local_thread_engine_base
+	#define MR_maybe_local_thread_engine_base MR_local_thread_engine_base
+#endif
+MR_define_entry(mercury____Unify___ml_backend__mlds__target_code_component_0_0);
+	MR_MAYBE_INIT_LOCAL_THREAD_ENGINE_BASE
+	if ((MR_r1 == MR_r2)) {
+		MR_GOTO_LAB(__Unify___ml_backend__mlds__target_code_component_0_0_i32);
+	}
+	MR_incr_sp(3);
+	MR_sv(3) = (MR_Word) MR_succip;
+	MR_sv(1) = MR_r1;
+	MR_sv(2) = MR_r2;
+	MR_COMPUTED_GOTO((MR_Unsigned) MR_tag(MR_sv(1)),
+		MR_LABEL_AP(__Unify___ml_backend__mlds__target_code_component_0_0_i21) MR_AND
+		MR_LABEL_AP(__Unify___ml_backend__mlds__target_code_component_0_0_i9) MR_AND
+		MR_LABEL_AP(__Unify___ml_backend__mlds__target_code_component_0_0_i13) MR_AND
+		MR_LABEL_AP(__Unify___ml_backend__mlds__target_code_component_0_0_i30));
+MR_def_label(__Unify___ml_backend__mlds__target_code_component_0_0,21)
+	MR_MAYBE_INIT_LOCAL_THREAD_ENGINE_BASE
+	if (MR_PTAG_TESTR(MR_sv(2),0)) {
+		MR_GOTO_LAB(__Unify___ml_backend__mlds__target_code_component_0_0_i1);
+	}
+	{
+	MR_Word MR_tempr1, MR_tempr2, MR_tempr3, MR_tempr4;
+	MR_tempr3 = MR_sv(1);
+	MR_tempr1 = MR_ctfield(0, MR_tempr3, 0);
+	MR_tempr4 = MR_sv(2);
+	MR_tempr2 = MR_ctfield(0, MR_tempr4, 0);
+	if ((strcmp((char *) (MR_Word *) MR_tempr1, (char *) (MR_Word *) MR_tempr2) != 0)) {
+		MR_GOTO_LAB(__Unify___ml_backend__mlds__target_code_component_0_0_i1);
+	}
+	MR_tempr1 = MR_tempr3;
+	MR_sv(1) = MR_ctfield(0, MR_tempr1, 2);
+	MR_tempr2 = MR_tempr4;
+	MR_sv(2) = MR_ctfield(0, MR_tempr2, 2);
+	MR_r1 = (MR_Word) MR_CTOR0_ADDR(term, context);
+	MR_r2 = MR_ctfield(0, MR_tempr1, 1);
+	MR_r3 = MR_ctfield(0, MR_tempr2, 1);
+	}
+	MR_np_call_localret_ent(__Unify___maybe__maybe_1_0,
+		__Unify___ml_backend__mlds__target_code_component_0_0_i23);
+MR_def_label(__Unify___ml_backend__mlds__target_code_component_0_0,23)
+	MR_MAYBE_INIT_LOCAL_THREAD_ENGINE_BASE
+	if (!(MR_r1)) {
+		MR_GOTO_LAB(__Unify___ml_backend__mlds__target_code_component_0_0_i1);
+	}
+	MR_r1 = (MR_Word) MR_CTOR0_ADDR(ml_backend__mlds, target_code_attribute);
+	MR_r2 = MR_sv(1);
+	MR_r3 = MR_sv(2);
+	MR_succip_word = MR_sv(3);
+	MR_decr_sp(3);
+	MR_np_tailcall_ent(__Unify___list__list_1_0);
+MR_def_label(__Unify___ml_backend__mlds__target_code_component_0_0,9)
+	MR_MAYBE_INIT_LOCAL_THREAD_ENGINE_BASE
+	if (MR_PTAG_TESTR(MR_sv(2),1)) {
+		MR_GOTO_LAB(__Unify___ml_backend__mlds__target_code_component_0_0_i1);
+	}
+	{
+	MR_Word MR_tempr1, MR_tempr2, MR_tempr3, MR_tempr4;
+	MR_tempr3 = MR_sv(1);
+	MR_tempr1 = MR_ctfield(1, MR_tempr3, 0);
+	MR_tempr4 = MR_sv(2);
+	MR_tempr2 = MR_ctfield(1, MR_tempr4, 0);
+	if ((strcmp((char *) (MR_Word *) MR_tempr1, (char *) (MR_Word *) MR_tempr2) != 0)) {
+		MR_GOTO_LAB(__Unify___ml_backend__mlds__target_code_component_0_0_i1);
+	}
+	MR_r1 = (MR_Word) MR_CTOR0_ADDR(ml_backend__mlds, target_code_attribute);
+	MR_r2 = MR_ctfield(1, MR_tempr3, 1);
+	MR_r3 = MR_ctfield(1, MR_tempr4, 1);
+	MR_succip_word = MR_sv(3);
+	MR_decr_sp(3);
+	MR_np_tailcall_ent(__Unify___list__list_1_0);
+	}
+MR_def_label(__Unify___ml_backend__mlds__target_code_component_0_0,13)
+	MR_MAYBE_INIT_LOCAL_THREAD_ENGINE_BASE
+	if (MR_PTAG_TESTR(MR_sv(2),2)) {
+		MR_GOTO_LAB(__Unify___ml_backend__mlds__target_code_component_0_0_i1);
+	}
+	MR_r1 = MR_ctfield(2, MR_sv(1), 0);
+	MR_r2 = MR_ctfield(2, MR_sv(2), 0);
+	MR_succip_word = MR_sv(3);
+	MR_decr_sp(3);
+	MR_np_tailcall_ent(__Unify___ml_backend__mlds__mlds_rval_0_0);
+MR_def_label(__Unify___ml_backend__mlds__target_code_component_0_0,30)
+	MR_MAYBE_INIT_LOCAL_THREAD_ENGINE_BASE
+	if (MR_INT_NE(MR_ctfield(3, MR_sv(1), 0),0)) {
+		MR_GOTO_LAB(__Unify___ml_backend__mlds__target_code_component_0_0_i5);
+	}
+	if (MR_RTAGS_TESTR(MR_sv(2),3,0)) {
+		MR_GOTO_LAB(__Unify___ml_backend__mlds__target_code_component_0_0_i1);
+	}
+	MR_r1 = MR_ctfield(3, MR_sv(1), 1);
+	MR_r2 = MR_ctfield(3, MR_sv(2), 1);
+	MR_succip_word = MR_sv(3);
+	MR_decr_sp(3);
+	MR_np_tailcall_ent(__Unify___ml_backend__mlds__mlds_lval_0_0);
+MR_def_label(__Unify___ml_backend__mlds__target_code_component_0_0,5)
+	MR_MAYBE_INIT_LOCAL_THREAD_ENGINE_BASE
+	if (MR_RTAGS_TESTR(MR_sv(2),3,1)) {
+		MR_GOTO_LAB(__Unify___ml_backend__mlds__target_code_component_0_0_i1);
+	}
+	MR_r1 = (MR_Word) MR_CTOR0_ADDR(ml_backend__mlds, mlds_entity_name);
+	MR_r2 = MR_ctfield(3, MR_sv(1), 1);
+	MR_r3 = MR_ctfield(3, MR_sv(2), 1);
+	MR_succip_word = MR_sv(3);
+	MR_decr_sp(3);
+	MR_np_tailcall_ent(__Unify___ml_backend__mlds__mlds_fully_qualified_name_1_0);
+MR_def_label(__Unify___ml_backend__mlds__target_code_component_0_0,32)
+	MR_MAYBE_INIT_LOCAL_THREAD_ENGINE_BASE
+	MR_r1 = MR_TRUE;
+	MR_proceed();
+MR_def_label(__Unify___ml_backend__mlds__target_code_component_0_0,1)
+	MR_MAYBE_INIT_LOCAL_THREAD_ENGINE_BASE
+	MR_r1 = MR_FALSE;
+	MR_decr_sp_and_return(3);
+#ifdef MR_maybe_local_thread_engine_base
+	#undef MR_maybe_local_thread_engine_base
+	#define MR_maybe_local_thread_engine_base MR_thread_engine_base
+#endif
+MR_END_MODULE
+
+
+MR_BEGIN_MODULE(ml_backend__mlds_module197)
+	MR_init_entry1(__Compare___ml_backend__mlds__target_code_component_0_0);
+	MR_init_label8(__Compare___ml_backend__mlds__target_code_component_0_0,3,62,68,70,74,83,18,21)
+	MR_init_label8(__Compare___ml_backend__mlds__target_code_component_0_0,23,126,36,40,88,5,100,7)
+	MR_init_label1(__Compare___ml_backend__mlds__target_code_component_0_0,160)
+MR_BEGIN_CODE
+
+#ifdef MR_maybe_local_thread_engine_base
+	#undef MR_maybe_local_thread_engine_base
+	#define MR_maybe_local_thread_engine_base MR_local_thread_engine_base
+#endif
+MR_define_entry(mercury____Compare___ml_backend__mlds__target_code_component_0_0);
+	MR_MAYBE_INIT_LOCAL_THREAD_ENGINE_BASE
+	if ((MR_r1 == MR_r2)) {
+		MR_GOTO_LAB(__Compare___ml_backend__mlds__target_code_component_0_0_i3);
+	}
+	MR_incr_sp(5);
+	MR_sv(5) = (MR_Word) MR_succip;
+	MR_sv(1) = MR_r1;
+	MR_sv(2) = MR_r2;
+	MR_COMPUTED_GOTO((MR_Unsigned) MR_tag(MR_sv(1)),
+		MR_LABEL_AP(__Compare___ml_backend__mlds__target_code_component_0_0_i62) MR_AND
+		MR_LABEL_AP(__Compare___ml_backend__mlds__target_code_component_0_0_i18) MR_AND
+		MR_LABEL_AP(__Compare___ml_backend__mlds__target_code_component_0_0_i36) MR_AND
+		MR_LABEL_AP(__Compare___ml_backend__mlds__target_code_component_0_0_i88));
+MR_def_label(__Compare___ml_backend__mlds__target_code_component_0_0,3)
+	MR_MAYBE_INIT_LOCAL_THREAD_ENGINE_BASE
+	MR_r1 = (MR_Integer) 0;
+	MR_proceed();
+MR_def_label(__Compare___ml_backend__mlds__target_code_component_0_0,62)
+	MR_MAYBE_INIT_LOCAL_THREAD_ENGINE_BASE
+	MR_COMPUTED_GOTO((MR_Unsigned) MR_tag(MR_sv(2)),
+		MR_LABEL_AP(__Compare___ml_backend__mlds__target_code_component_0_0_i68) MR_AND
+		MR_LABEL_AP(__Compare___ml_backend__mlds__target_code_component_0_0_i126) MR_AND
+		MR_LABEL_AP(__Compare___ml_backend__mlds__target_code_component_0_0_i126) MR_AND
+		MR_LABEL_AP(__Compare___ml_backend__mlds__target_code_component_0_0_i83));
+MR_def_label(__Compare___ml_backend__mlds__target_code_component_0_0,68)
+	MR_MAYBE_INIT_LOCAL_THREAD_ENGINE_BASE
+	{
+	MR_Word MR_tempr1, MR_tempr2, MR_tempr3, MR_tempr4, MR_tempr5, MR_tempr6;
+	MR_tempr5 = MR_sv(1);
+	MR_sv(4) = MR_ctfield(0, MR_tempr5, 1);
+	MR_sv(3) = MR_ctfield(0, MR_tempr5, 2);
+	MR_tempr6 = MR_sv(2);
+	MR_tempr1 = MR_ctfield(0, MR_tempr6, 2);
+	MR_tempr2 = MR_ctfield(0, MR_tempr6, 1);
+	MR_tempr3 = MR_tempr5;
+	MR_sv(1) = MR_tempr2;
+	MR_tempr4 = MR_tempr6;
+	MR_sv(2) = MR_tempr1;
+	MR_r1 = MR_ctfield(0, MR_tempr3, 0);
+	MR_r2 = MR_ctfield(0, MR_tempr4, 0);
+	}
+	MR_np_call_localret_ent(private_builtin__builtin_compare_string_3_0,
+		__Compare___ml_backend__mlds__target_code_component_0_0_i70);
+MR_def_label(__Compare___ml_backend__mlds__target_code_component_0_0,70)
+	MR_MAYBE_INIT_LOCAL_THREAD_ENGINE_BASE
+	if (MR_INT_NE(MR_r1,0)) {
+		MR_GOTO_LAB(__Compare___ml_backend__mlds__target_code_component_0_0_i160);
+	}
+	MR_r1 = (MR_Word) MR_CTOR0_ADDR(term, context);
+	MR_r2 = MR_sv(4);
+	MR_r3 = MR_sv(1);
+	MR_np_call_localret_ent(__Compare___maybe__maybe_1_0,
+		__Compare___ml_backend__mlds__target_code_component_0_0_i74);
+MR_def_label(__Compare___ml_backend__mlds__target_code_component_0_0,74)
+	MR_MAYBE_INIT_LOCAL_THREAD_ENGINE_BASE
+	if (MR_INT_NE(MR_r1,0)) {
+		MR_GOTO_LAB(__Compare___ml_backend__mlds__target_code_component_0_0_i160);
+	}
+	MR_r1 = (MR_Word) MR_CTOR0_ADDR(ml_backend__mlds, target_code_attribute);
+	MR_r2 = MR_sv(3);
+	MR_r3 = MR_sv(2);
+	MR_succip_word = MR_sv(5);
+	MR_decr_sp(5);
+	MR_np_tailcall_ent(__Compare___list__list_1_0);
+MR_def_label(__Compare___ml_backend__mlds__target_code_component_0_0,83)
+	MR_MAYBE_INIT_LOCAL_THREAD_ENGINE_BASE
+	if (MR_INT_NE(MR_ctfield(3, MR_sv(2), 0),0)) {
+		MR_GOTO_LAB(__Compare___ml_backend__mlds__target_code_component_0_0_i126);
+	}
+	MR_r1 = (MR_Integer) 1;
+	MR_decr_sp_and_return(5);
+MR_def_label(__Compare___ml_backend__mlds__target_code_component_0_0,18)
+	MR_MAYBE_INIT_LOCAL_THREAD_ENGINE_BASE
+	MR_COMPUTED_GOTO((MR_Unsigned) MR_tag(MR_sv(2)),
+		MR_LABEL_AP(__Compare___ml_backend__mlds__target_code_component_0_0_i100) MR_AND
+		MR_LABEL_AP(__Compare___ml_backend__mlds__target_code_component_0_0_i21) MR_AND
+		MR_LABEL_AP(__Compare___ml_backend__mlds__target_code_component_0_0_i126) MR_AND
+		MR_LABEL_AP(__Compare___ml_backend__mlds__target_code_component_0_0_i126));
+MR_def_label(__Compare___ml_backend__mlds__target_code_component_0_0,21)
+	MR_MAYBE_INIT_LOCAL_THREAD_ENGINE_BASE
+	{
+	MR_Word MR_tempr1, MR_tempr2, MR_tempr3, MR_tempr4, MR_tempr5, MR_tempr6;
+	MR_tempr5 = MR_sv(1);
+	MR_tempr1 = MR_ctfield(1, MR_tempr5, 1);
+	MR_tempr6 = MR_sv(2);
+	MR_tempr2 = MR_ctfield(1, MR_tempr6, 1);
+	MR_tempr3 = MR_tempr5;
+	MR_sv(1) = MR_tempr2;
+	MR_tempr4 = MR_tempr6;
+	MR_sv(2) = MR_tempr1;
+	MR_r1 = MR_ctfield(1, MR_tempr3, 0);
+	MR_r2 = MR_ctfield(1, MR_tempr4, 0);
+	}
+	MR_np_call_localret_ent(private_builtin__builtin_compare_string_3_0,
+		__Compare___ml_backend__mlds__target_code_component_0_0_i23);
+MR_def_label(__Compare___ml_backend__mlds__target_code_component_0_0,23)
+	MR_MAYBE_INIT_LOCAL_THREAD_ENGINE_BASE
+	if (MR_INT_NE(MR_r1,0)) {
+		MR_GOTO_LAB(__Compare___ml_backend__mlds__target_code_component_0_0_i160);
+	}
+	MR_r1 = (MR_Word) MR_CTOR0_ADDR(ml_backend__mlds, target_code_attribute);
+	MR_r2 = MR_sv(2);
+	MR_r3 = MR_sv(1);
+	MR_succip_word = MR_sv(5);
+	MR_decr_sp(5);
+	MR_np_tailcall_ent(__Compare___list__list_1_0);
+MR_def_label(__Compare___ml_backend__mlds__target_code_component_0_0,126)
+	MR_MAYBE_INIT_LOCAL_THREAD_ENGINE_BASE
+	MR_r1 = (MR_Integer) 1;
+	MR_decr_sp_and_return(5);
+MR_def_label(__Compare___ml_backend__mlds__target_code_component_0_0,36)
+	MR_MAYBE_INIT_LOCAL_THREAD_ENGINE_BASE
+	MR_COMPUTED_GOTO((MR_Unsigned) MR_tag(MR_sv(2)),
+		MR_LABEL_AP(__Compare___ml_backend__mlds__target_code_component_0_0_i100) MR_AND
+		MR_LABEL_AP(__Compare___ml_backend__mlds__target_code_component_0_0_i100) MR_AND
+		MR_LABEL_AP(__Compare___ml_backend__mlds__target_code_component_0_0_i40) MR_AND
+		MR_LABEL_AP(__Compare___ml_backend__mlds__target_code_component_0_0_i126));
+MR_def_label(__Compare___ml_backend__mlds__target_code_component_0_0,40)
+	MR_MAYBE_INIT_LOCAL_THREAD_ENGINE_BASE
+	MR_r1 = MR_ctfield(2, MR_sv(1), 0);
+	MR_r2 = MR_ctfield(2, MR_sv(2), 0);
+	MR_succip_word = MR_sv(5);
+	MR_decr_sp(5);
+	MR_np_tailcall_ent(__Compare___ml_backend__mlds__mlds_rval_0_0);
+MR_def_label(__Compare___ml_backend__mlds__target_code_component_0_0,88)
+	MR_MAYBE_INIT_LOCAL_THREAD_ENGINE_BASE
+	if (MR_INT_NE(MR_ctfield(3, MR_sv(1), 0),0)) {
+		MR_GOTO_LAB(__Compare___ml_backend__mlds__target_code_component_0_0_i5);
+	}
+	if (MR_INT_NE(MR_tag(MR_sv(2)),3)) {
+		MR_GOTO_LAB(__Compare___ml_backend__mlds__target_code_component_0_0_i100);
+	}
+	if (MR_INT_NE(MR_ctfield(3, MR_sv(2), 0),0)) {
+		MR_GOTO_LAB(__Compare___ml_backend__mlds__target_code_component_0_0_i126);
+	}
+	MR_r1 = MR_ctfield(3, MR_sv(1), 1);
+	MR_r2 = MR_ctfield(3, MR_sv(2), 1);
+	MR_succip_word = MR_sv(5);
+	MR_decr_sp(5);
+	MR_np_tailcall_ent(__Compare___ml_backend__mlds__mlds_lval_0_0);
+MR_def_label(__Compare___ml_backend__mlds__target_code_component_0_0,5)
+	MR_MAYBE_INIT_LOCAL_THREAD_ENGINE_BASE
+	if (MR_INT_NE(MR_tag(MR_sv(2)),3)) {
+		MR_GOTO_LAB(__Compare___ml_backend__mlds__target_code_component_0_0_i100);
+	}
+	if (MR_INT_NE(MR_ctfield(3, MR_sv(2), 0),0)) {
+		MR_GOTO_LAB(__Compare___ml_backend__mlds__target_code_component_0_0_i7);
+	}
+MR_def_label(__Compare___ml_backend__mlds__target_code_component_0_0,100)
+	MR_MAYBE_INIT_LOCAL_THREAD_ENGINE_BASE
+	MR_r1 = (MR_Integer) 2;
+	MR_decr_sp_and_return(5);
+MR_def_label(__Compare___ml_backend__mlds__target_code_component_0_0,7)
+	MR_MAYBE_INIT_LOCAL_THREAD_ENGINE_BASE
+	MR_r1 = (MR_Word) MR_CTOR0_ADDR(ml_backend__mlds, mlds_entity_name);
+	MR_r2 = MR_ctfield(3, MR_sv(1), 1);
+	MR_r3 = MR_ctfield(3, MR_sv(2), 1);
+	MR_succip_word = MR_sv(5);
+	MR_decr_sp(5);
+	MR_np_tailcall_ent(__Compare___ml_backend__mlds__mlds_fully_qualified_name_1_0);
+MR_def_label(__Compare___ml_backend__mlds__target_code_component_0_0,160)
+	MR_MAYBE_INIT_LOCAL_THREAD_ENGINE_BASE
+	MR_decr_sp_and_return(5);
+#ifdef MR_maybe_local_thread_engine_base
+	#undef MR_maybe_local_thread_engine_base
+	#define MR_maybe_local_thread_engine_base MR_thread_engine_base
+#endif
+MR_END_MODULE
+
+
+MR_BEGIN_MODULE(ml_backend__mlds_module198)
+	MR_init_entry1(__Unify___ml_backend__mlds__trail_op_0_0);
+	MR_init_label8(__Unify___ml_backend__mlds__trail_op_0_0,23,19,15,17,27,11,29,1)
+MR_BEGIN_CODE
+
+#ifdef MR_maybe_local_thread_engine_base
+	#undef MR_maybe_local_thread_engine_base
+	#define MR_maybe_local_thread_engine_base MR_local_thread_engine_base
+#endif
+MR_define_entry(mercury____Unify___ml_backend__mlds__trail_op_0_0);
+	MR_MAYBE_INIT_LOCAL_THREAD_ENGINE_BASE
+	if ((MR_r1 == MR_r2)) {
+		MR_GOTO_LAB(__Unify___ml_backend__mlds__trail_op_0_0_i29);
+	}
+	MR_incr_sp(3);
+	MR_sv(3) = (MR_Word) MR_succip;
+	MR_sv(1) = MR_r1;
+	MR_sv(2) = MR_r2;
+	MR_COMPUTED_GOTO((MR_Unsigned) MR_tag(MR_sv(1)),
+		MR_LABEL_AP(__Unify___ml_backend__mlds__trail_op_0_0_i23) MR_AND
+		MR_LABEL_AP(__Unify___ml_backend__mlds__trail_op_0_0_i19) MR_AND
+		MR_LABEL_AP(__Unify___ml_backend__mlds__trail_op_0_0_i15) MR_AND
+		MR_LABEL_AP(__Unify___ml_backend__mlds__trail_op_0_0_i27));
+MR_def_label(__Unify___ml_backend__mlds__trail_op_0_0,23)
+	MR_MAYBE_INIT_LOCAL_THREAD_ENGINE_BASE
+	MR_r1 = (MR_sv(2) == MR_sv(1));
+	MR_decr_sp_and_return(3);
+MR_def_label(__Unify___ml_backend__mlds__trail_op_0_0,19)
+	MR_MAYBE_INIT_LOCAL_THREAD_ENGINE_BASE
+	if (MR_PTAG_TESTR(MR_sv(2),1)) {
+		MR_GOTO_LAB(__Unify___ml_backend__mlds__trail_op_0_0_i1);
+	}
+	MR_r1 = MR_ctfield(1, MR_sv(1), 0);
+	MR_r2 = MR_ctfield(1, MR_sv(2), 0);
+	MR_succip_word = MR_sv(3);
+	MR_decr_sp(3);
+	MR_np_tailcall_ent(__Unify___ml_backend__mlds__mlds_lval_0_0);
+MR_def_label(__Unify___ml_backend__mlds__trail_op_0_0,15)
+	MR_MAYBE_INIT_LOCAL_THREAD_ENGINE_BASE
+	if (MR_PTAG_TESTR(MR_sv(2),2)) {
+		MR_GOTO_LAB(__Unify___ml_backend__mlds__trail_op_0_0_i1);
+	}
+	{
+	MR_Word MR_tempr1, MR_tempr2;
+	MR_tempr1 = MR_sv(1);
+	MR_sv(1) = MR_ctfield(2, MR_tempr1, 1);
+	MR_tempr2 = MR_sv(2);
+	MR_sv(2) = MR_ctfield(2, MR_tempr2, 1);
+	MR_r1 = MR_ctfield(2, MR_tempr1, 0);
+	MR_r2 = MR_ctfield(2, MR_tempr2, 0);
+	}
+	MR_np_call_localret_ent(__Unify___ml_backend__mlds__mlds_rval_0_0,
+		__Unify___ml_backend__mlds__trail_op_0_0_i17);
+MR_def_label(__Unify___ml_backend__mlds__trail_op_0_0,17)
+	MR_MAYBE_INIT_LOCAL_THREAD_ENGINE_BASE
+	if (!(MR_r1)) {
+		MR_GOTO_LAB(__Unify___ml_backend__mlds__trail_op_0_0_i1);
+	}
+	MR_r1 = (MR_sv(1) == MR_sv(2));
+	MR_decr_sp_and_return(3);
+MR_def_label(__Unify___ml_backend__mlds__trail_op_0_0,27)
+	MR_MAYBE_INIT_LOCAL_THREAD_ENGINE_BASE
+	if (MR_INT_NE(MR_ctfield(3, MR_sv(1), 0),0)) {
+		MR_GOTO_LAB(__Unify___ml_backend__mlds__trail_op_0_0_i11);
+	}
+	if (MR_RTAGS_TESTR(MR_sv(2),3,0)) {
+		MR_GOTO_LAB(__Unify___ml_backend__mlds__trail_op_0_0_i1);
+	}
+	MR_r1 = MR_ctfield(3, MR_sv(1), 1);
+	MR_r2 = MR_ctfield(3, MR_sv(2), 1);
+	MR_succip_word = MR_sv(3);
+	MR_decr_sp(3);
+	MR_np_tailcall_ent(__Unify___ml_backend__mlds__mlds_lval_0_0);
+MR_def_label(__Unify___ml_backend__mlds__trail_op_0_0,11)
+	MR_MAYBE_INIT_LOCAL_THREAD_ENGINE_BASE
+	if (MR_RTAGS_TESTR(MR_sv(2),3,1)) {
+		MR_GOTO_LAB(__Unify___ml_backend__mlds__trail_op_0_0_i1);
+	}
+	MR_r1 = MR_ctfield(3, MR_sv(1), 1);
+	MR_r2 = MR_ctfield(3, MR_sv(2), 1);
+	MR_succip_word = MR_sv(3);
+	MR_decr_sp(3);
+	MR_np_tailcall_ent(__Unify___ml_backend__mlds__mlds_rval_0_0);
+MR_def_label(__Unify___ml_backend__mlds__trail_op_0_0,29)
+	MR_MAYBE_INIT_LOCAL_THREAD_ENGINE_BASE
+	MR_r1 = MR_TRUE;
+	MR_proceed();
+MR_def_label(__Unify___ml_backend__mlds__trail_op_0_0,1)
+	MR_MAYBE_INIT_LOCAL_THREAD_ENGINE_BASE
+	MR_r1 = MR_FALSE;
+	MR_decr_sp_and_return(3);
+#ifdef MR_maybe_local_thread_engine_base
+	#undef MR_maybe_local_thread_engine_base
+	#define MR_maybe_local_thread_engine_base MR_thread_engine_base
+#endif
+MR_END_MODULE
+
+
+MR_BEGIN_MODULE(ml_backend__mlds_module199)
+	MR_init_entry1(__Compare___ml_backend__mlds__trail_op_0_0);
+	MR_init_label8(__Compare___ml_backend__mlds__trail_op_0_0,98,13,107,17,34,42,46,83)
+	MR_init_label8(__Compare___ml_backend__mlds__trail_op_0_0,92,90,96,63,77,154,69,71)
+	MR_init_label8(__Compare___ml_backend__mlds__trail_op_0_0,102,28,32,48,57,61,120,53)
+	MR_init_label1(__Compare___ml_backend__mlds__trail_op_0_0,104)
+MR_BEGIN_CODE
+
+#ifdef MR_maybe_local_thread_engine_base
+	#undef MR_maybe_local_thread_engine_base
+	#define MR_maybe_local_thread_engine_base MR_local_thread_engine_base
+#endif
+MR_define_entry(mercury____Compare___ml_backend__mlds__trail_op_0_0);
+	MR_MAYBE_INIT_LOCAL_THREAD_ENGINE_BASE
+	MR_incr_sp(3);
+	MR_sv(3) = (MR_Word) MR_succip;
+	if ((MR_r1 == MR_r2)) {
+		MR_GOTO_LAB(__Compare___ml_backend__mlds__trail_op_0_0_i107);
+	}
+	MR_sv(1) = MR_r1;
+	MR_sv(2) = MR_r2;
+	MR_COMPUTED_GOTO((MR_Unsigned) MR_tag(MR_sv(1)),
+		MR_LABEL_AP(__Compare___ml_backend__mlds__trail_op_0_0_i98) MR_AND
+		MR_LABEL_AP(__Compare___ml_backend__mlds__trail_op_0_0_i83) MR_AND
+		MR_LABEL_AP(__Compare___ml_backend__mlds__trail_op_0_0_i63) MR_AND
+		MR_LABEL_AP(__Compare___ml_backend__mlds__trail_op_0_0_i102));
+MR_def_label(__Compare___ml_backend__mlds__trail_op_0_0,98)
+	MR_MAYBE_INIT_LOCAL_THREAD_ENGINE_BASE
+	if (MR_INT_NE(MR_unmkbody(MR_sv(1)),0)) {
+		MR_GOTO_LAB(__Compare___ml_backend__mlds__trail_op_0_0_i34);
+	}
+	MR_COMPUTED_GOTO((MR_Unsigned) MR_tag(MR_sv(2)),
+		MR_LABEL_AP(__Compare___ml_backend__mlds__trail_op_0_0_i13) MR_AND
+		MR_LABEL_AP(__Compare___ml_backend__mlds__trail_op_0_0_i120) MR_AND
+		MR_LABEL_AP(__Compare___ml_backend__mlds__trail_op_0_0_i120) MR_AND
+		MR_LABEL_AP(__Compare___ml_backend__mlds__trail_op_0_0_i17));
+MR_def_label(__Compare___ml_backend__mlds__trail_op_0_0,13)
+	MR_MAYBE_INIT_LOCAL_THREAD_ENGINE_BASE
+	if (MR_INT_NE(MR_unmkbody(MR_sv(2)),0)) {
+		MR_GOTO_LAB(__Compare___ml_backend__mlds__trail_op_0_0_i154);
+	}
+MR_def_label(__Compare___ml_backend__mlds__trail_op_0_0,107)
+	MR_MAYBE_INIT_LOCAL_THREAD_ENGINE_BASE
+	MR_r1 = (MR_Integer) 0;
+	MR_decr_sp_and_return(3);
+MR_def_label(__Compare___ml_backend__mlds__trail_op_0_0,17)
+	MR_MAYBE_INIT_LOCAL_THREAD_ENGINE_BASE
+	if (MR_INT_NE(MR_ctfield(3, MR_sv(2), 0),0)) {
+		MR_GOTO_LAB(__Compare___ml_backend__mlds__trail_op_0_0_i154);
+	}
+	MR_r1 = (MR_Integer) 1;
+	MR_decr_sp_and_return(3);
+MR_def_label(__Compare___ml_backend__mlds__trail_op_0_0,34)
+	MR_MAYBE_INIT_LOCAL_THREAD_ENGINE_BASE
+	MR_COMPUTED_GOTO((MR_Unsigned) MR_tag(MR_sv(2)),
+		MR_LABEL_AP(__Compare___ml_backend__mlds__trail_op_0_0_i42) MR_AND
+		MR_LABEL_AP(__Compare___ml_backend__mlds__trail_op_0_0_i120) MR_AND
+		MR_LABEL_AP(__Compare___ml_backend__mlds__trail_op_0_0_i120) MR_AND
+		MR_LABEL_AP(__Compare___ml_backend__mlds__trail_op_0_0_i46));
+MR_def_label(__Compare___ml_backend__mlds__trail_op_0_0,42)
+	MR_MAYBE_INIT_LOCAL_THREAD_ENGINE_BASE
+	if (MR_INT_NE(MR_unmkbody(MR_sv(2)),0)) {
+		MR_GOTO_LAB(__Compare___ml_backend__mlds__trail_op_0_0_i107);
+	}
+	MR_r1 = (MR_Integer) 2;
+	MR_decr_sp_and_return(3);
+MR_def_label(__Compare___ml_backend__mlds__trail_op_0_0,46)
+	MR_MAYBE_INIT_LOCAL_THREAD_ENGINE_BASE
+	if (MR_INT_NE(MR_ctfield(3, MR_sv(2), 0),0)) {
+		MR_GOTO_LAB(__Compare___ml_backend__mlds__trail_op_0_0_i154);
+	}
+	MR_r1 = (MR_Integer) 1;
+	MR_decr_sp_and_return(3);
+MR_def_label(__Compare___ml_backend__mlds__trail_op_0_0,83)
+	MR_MAYBE_INIT_LOCAL_THREAD_ENGINE_BASE
+	MR_COMPUTED_GOTO((MR_Unsigned) MR_tag(MR_sv(2)),
+		MR_LABEL_AP(__Compare___ml_backend__mlds__trail_op_0_0_i92) MR_AND
+		MR_LABEL_AP(__Compare___ml_backend__mlds__trail_op_0_0_i90) MR_AND
+		MR_LABEL_AP(__Compare___ml_backend__mlds__trail_op_0_0_i154) MR_AND
+		MR_LABEL_AP(__Compare___ml_backend__mlds__trail_op_0_0_i96));
+MR_def_label(__Compare___ml_backend__mlds__trail_op_0_0,92)
+	MR_MAYBE_INIT_LOCAL_THREAD_ENGINE_BASE
+	if (MR_INT_NE(MR_unmkbody(MR_sv(2)),0)) {
+		MR_GOTO_LAB(__Compare___ml_backend__mlds__trail_op_0_0_i154);
+	}
+	MR_r1 = (MR_Integer) 1;
+	MR_decr_sp_and_return(3);
+MR_def_label(__Compare___ml_backend__mlds__trail_op_0_0,90)
+	MR_MAYBE_INIT_LOCAL_THREAD_ENGINE_BASE
+	MR_r1 = MR_ctfield(1, MR_sv(1), 0);
+	MR_r2 = MR_ctfield(1, MR_sv(2), 0);
+	MR_succip_word = MR_sv(3);
+	MR_decr_sp(3);
+	MR_np_tailcall_ent(__Compare___ml_backend__mlds__mlds_lval_0_0);
+MR_def_label(__Compare___ml_backend__mlds__trail_op_0_0,96)
+	MR_MAYBE_INIT_LOCAL_THREAD_ENGINE_BASE
+	if (MR_INT_NE(MR_ctfield(3, MR_sv(2), 0),0)) {
+		MR_GOTO_LAB(__Compare___ml_backend__mlds__trail_op_0_0_i154);
+	}
+	MR_r1 = (MR_Integer) 1;
+	MR_decr_sp_and_return(3);
+MR_def_label(__Compare___ml_backend__mlds__trail_op_0_0,63)
+	MR_MAYBE_INIT_LOCAL_THREAD_ENGINE_BASE
+	MR_COMPUTED_GOTO((MR_Unsigned) MR_tag(MR_sv(2)),
+		MR_LABEL_AP(__Compare___ml_backend__mlds__trail_op_0_0_i77) MR_AND
+		MR_LABEL_AP(__Compare___ml_backend__mlds__trail_op_0_0_i120) MR_AND
+		MR_LABEL_AP(__Compare___ml_backend__mlds__trail_op_0_0_i69) MR_AND
+		MR_LABEL_AP(__Compare___ml_backend__mlds__trail_op_0_0_i154));
+MR_def_label(__Compare___ml_backend__mlds__trail_op_0_0,77)
+	MR_MAYBE_INIT_LOCAL_THREAD_ENGINE_BASE
+MR_def_label(__Compare___ml_backend__mlds__trail_op_0_0,154)
+	MR_MAYBE_INIT_LOCAL_THREAD_ENGINE_BASE
+	MR_r1 = (MR_Integer) 1;
+	MR_decr_sp_and_return(3);
+MR_def_label(__Compare___ml_backend__mlds__trail_op_0_0,69)
+	MR_MAYBE_INIT_LOCAL_THREAD_ENGINE_BASE
+	{
+	MR_Word MR_tempr1, MR_tempr2, MR_tempr3, MR_tempr4, MR_tempr5, MR_tempr6;
+	MR_tempr5 = MR_sv(1);
+	MR_tempr1 = MR_ctfield(2, MR_tempr5, 1);
+	MR_tempr6 = MR_sv(2);
+	MR_tempr2 = MR_ctfield(2, MR_tempr6, 1);
+	MR_tempr3 = MR_tempr5;
+	MR_sv(1) = MR_tempr2;
+	MR_tempr4 = MR_tempr6;
+	MR_sv(2) = MR_tempr1;
+	MR_r1 = MR_ctfield(2, MR_tempr3, 0);
+	MR_r2 = MR_ctfield(2, MR_tempr4, 0);
+	}
+	MR_np_call_localret_ent(__Compare___ml_backend__mlds__mlds_rval_0_0,
+		__Compare___ml_backend__mlds__trail_op_0_0_i71);
+MR_def_label(__Compare___ml_backend__mlds__trail_op_0_0,71)
+	MR_MAYBE_INIT_LOCAL_THREAD_ENGINE_BASE
+	if (MR_INT_NE(MR_r1,0)) {
+		MR_GOTO_LAB(__Compare___ml_backend__mlds__trail_op_0_0_i104);
+	}
+	MR_r1 = MR_sv(2);
+	MR_r2 = MR_sv(1);
+	MR_succip_word = MR_sv(3);
+	MR_decr_sp(3);
+	MR_np_tailcall_ent(private_builtin__builtin_compare_int_3_0);
+MR_def_label(__Compare___ml_backend__mlds__trail_op_0_0,102)
+	MR_MAYBE_INIT_LOCAL_THREAD_ENGINE_BASE
+	if (MR_INT_NE(MR_ctfield(3, MR_sv(1), 0),0)) {
+		MR_GOTO_LAB(__Compare___ml_backend__mlds__trail_op_0_0_i48);
+	}
+	MR_COMPUTED_GOTO((MR_Unsigned) MR_tag(MR_sv(2)),
+		MR_LABEL_AP(__Compare___ml_backend__mlds__trail_op_0_0_i28) MR_AND
+		MR_LABEL_AP(__Compare___ml_backend__mlds__trail_op_0_0_i120) MR_AND
+		MR_LABEL_AP(__Compare___ml_backend__mlds__trail_op_0_0_i120) MR_AND
+		MR_LABEL_AP(__Compare___ml_backend__mlds__trail_op_0_0_i32));
+MR_def_label(__Compare___ml_backend__mlds__trail_op_0_0,28)
+	MR_MAYBE_INIT_LOCAL_THREAD_ENGINE_BASE
+	if (MR_INT_NE(MR_unmkbody(MR_sv(2)),0)) {
+		MR_GOTO_LAB(__Compare___ml_backend__mlds__trail_op_0_0_i120);
+	}
+	MR_r1 = (MR_Integer) 2;
+	MR_decr_sp_and_return(3);
+MR_def_label(__Compare___ml_backend__mlds__trail_op_0_0,32)
+	MR_MAYBE_INIT_LOCAL_THREAD_ENGINE_BASE
+	if (MR_INT_NE(MR_ctfield(3, MR_sv(2), 0),0)) {
+		MR_GOTO_LAB(__Compare___ml_backend__mlds__trail_op_0_0_i154);
+	}
+	MR_r1 = MR_ctfield(3, MR_sv(1), 1);
+	MR_r2 = MR_ctfield(3, MR_sv(2), 1);
+	MR_succip_word = MR_sv(3);
+	MR_decr_sp(3);
+	MR_np_tailcall_ent(__Compare___ml_backend__mlds__mlds_lval_0_0);
+MR_def_label(__Compare___ml_backend__mlds__trail_op_0_0,48)
+	MR_MAYBE_INIT_LOCAL_THREAD_ENGINE_BASE
+	MR_COMPUTED_GOTO((MR_Unsigned) MR_tag(MR_sv(2)),
+		MR_LABEL_AP(__Compare___ml_backend__mlds__trail_op_0_0_i57) MR_AND
+		MR_LABEL_AP(__Compare___ml_backend__mlds__trail_op_0_0_i120) MR_AND
+		MR_LABEL_AP(__Compare___ml_backend__mlds__trail_op_0_0_i120) MR_AND
+		MR_LABEL_AP(__Compare___ml_backend__mlds__trail_op_0_0_i61));
+MR_def_label(__Compare___ml_backend__mlds__trail_op_0_0,57)
+	MR_MAYBE_INIT_LOCAL_THREAD_ENGINE_BASE
+	if (MR_INT_NE(MR_unmkbody(MR_sv(2)),0)) {
+		MR_GOTO_LAB(__Compare___ml_backend__mlds__trail_op_0_0_i120);
+	}
+	MR_r1 = (MR_Integer) 2;
+	MR_decr_sp_and_return(3);
+MR_def_label(__Compare___ml_backend__mlds__trail_op_0_0,61)
+	MR_MAYBE_INIT_LOCAL_THREAD_ENGINE_BASE
+	if (MR_INT_NE(MR_ctfield(3, MR_sv(2), 0),0)) {
+		MR_GOTO_LAB(__Compare___ml_backend__mlds__trail_op_0_0_i53);
+	}
+MR_def_label(__Compare___ml_backend__mlds__trail_op_0_0,120)
+	MR_MAYBE_INIT_LOCAL_THREAD_ENGINE_BASE
+	MR_r1 = (MR_Integer) 2;
+	MR_decr_sp_and_return(3);
+MR_def_label(__Compare___ml_backend__mlds__trail_op_0_0,53)
+	MR_MAYBE_INIT_LOCAL_THREAD_ENGINE_BASE
+	MR_r1 = MR_ctfield(3, MR_sv(1), 1);
+	MR_r2 = MR_ctfield(3, MR_sv(2), 1);
+	MR_succip_word = MR_sv(3);
+	MR_decr_sp(3);
+	MR_np_tailcall_ent(__Compare___ml_backend__mlds__mlds_rval_0_0);
+MR_def_label(__Compare___ml_backend__mlds__trail_op_0_0,104)
+	MR_MAYBE_INIT_LOCAL_THREAD_ENGINE_BASE
+	MR_decr_sp_and_return(3);
+#ifdef MR_maybe_local_thread_engine_base
+	#undef MR_maybe_local_thread_engine_base
+	#define MR_maybe_local_thread_engine_base MR_thread_engine_base
+#endif
+MR_END_MODULE
+
+
+MR_BEGIN_MODULE(ml_backend__mlds_module200)
+	MR_init_entry1(__Unify___ml_backend__mlds__virtuality_0_0);
+MR_BEGIN_CODE
+
+#ifdef MR_maybe_local_thread_engine_base
+	#undef MR_maybe_local_thread_engine_base
+	#define MR_maybe_local_thread_engine_base MR_local_thread_engine_base
+#endif
+MR_define_entry(mercury____Unify___ml_backend__mlds__virtuality_0_0);
+	MR_MAYBE_INIT_LOCAL_THREAD_ENGINE_BASE
+	MR_r1 = (MR_r1 == MR_r2);
+	MR_proceed();
+#ifdef MR_maybe_local_thread_engine_base
+	#undef MR_maybe_local_thread_engine_base
+	#define MR_maybe_local_thread_engine_base MR_thread_engine_base
+#endif
+MR_END_MODULE
+
+
+MR_BEGIN_MODULE(ml_backend__mlds_module201)
+	MR_init_entry1(__Compare___ml_backend__mlds__virtuality_0_0);
+MR_BEGIN_CODE
+
+#ifdef MR_maybe_local_thread_engine_base
+	#undef MR_maybe_local_thread_engine_base
+	#define MR_maybe_local_thread_engine_base MR_local_thread_engine_base
+#endif
+MR_define_entry(mercury____Compare___ml_backend__mlds__virtuality_0_0);
+	MR_MAYBE_INIT_LOCAL_THREAD_ENGINE_BASE
+	MR_np_tailcall_ent(private_builtin__builtin_compare_int_3_0);
+#ifdef MR_maybe_local_thread_engine_base
+	#undef MR_maybe_local_thread_engine_base
+	#define MR_maybe_local_thread_engine_base MR_thread_engine_base
+#endif
+MR_END_MODULE
+
+
+MR_BEGIN_MODULE(ml_backend__mlds_module202)
+	MR_init_entry1(fn__ml_backend__mlds__IntroducedFrom__func__mlds_get_arg_types__1903__1_1_0);
+MR_BEGIN_CODE
+
+#ifdef MR_maybe_local_thread_engine_base
+	#undef MR_maybe_local_thread_engine_base
+	#define MR_maybe_local_thread_engine_base MR_local_thread_engine_base
+#endif
+MR_def_static(fn__ml_backend__mlds__IntroducedFrom__func__mlds_get_arg_types__1903__1_1_0)
+	MR_MAYBE_INIT_LOCAL_THREAD_ENGINE_BASE
+	MR_r1 = MR_ctfield(0, MR_r1, 1);
+	MR_proceed();
+#ifdef MR_maybe_local_thread_engine_base
+	#undef MR_maybe_local_thread_engine_base
+	#define MR_maybe_local_thread_engine_base MR_thread_engine_base
+#endif
+MR_END_MODULE
+
+
+MR_BEGIN_MODULE(ml_backend__mlds_module203)
+	MR_init_entry1(ml_backend__mlds__IntroducedFrom__pred__access__2074__1_2_0);
+	MR_init_label1(ml_backend__mlds__IntroducedFrom__pred__access__2074__1_2_0,1)
+MR_BEGIN_CODE
+
+#ifdef MR_maybe_local_thread_engine_base
+	#undef MR_maybe_local_thread_engine_base
+	#define MR_maybe_local_thread_engine_base MR_local_thread_engine_base
+#endif
+MR_def_static(ml_backend__mlds__IntroducedFrom__pred__access__2074__1_2_0)
+	MR_MAYBE_INIT_LOCAL_THREAD_ENGINE_BASE
+	{
+	MR_Word MR_tempr1, MR_tempr2;
+	MR_tempr1 = ((MR_Integer) MR_r1 & (MR_Integer) 7);
+	if (!(((MR_Unsigned) MR_tempr1 <= 4))) {
+		MR_GOTO_LAB(ml_backend__mlds__IntroducedFrom__pred__access__2074__1_2_0_i1);
+	}
+	MR_tempr2 = (MR_Word) &MR_tfield(0, (MR_Word *) &mercury_vector_common_2_1, (MR_Integer) MR_tempr1);
+	MR_r2 = MR_ctfield(0, MR_tempr2, 0);
+	MR_r1 = MR_TRUE;
+	MR_proceed();
+	}
+MR_def_label(ml_backend__mlds__IntroducedFrom__pred__access__2074__1_2_0,1)
+	MR_MAYBE_INIT_LOCAL_THREAD_ENGINE_BASE
+	MR_r1 = MR_FALSE;
+	MR_proceed();
+#ifdef MR_maybe_local_thread_engine_base
+	#undef MR_maybe_local_thread_engine_base
+	#define MR_maybe_local_thread_engine_base MR_thread_engine_base
+#endif
+MR_END_MODULE
+
+
+MR_BEGIN_MODULE(ml_backend__mlds_module204)
+	MR_init_entry1(ml_backend__mlds__IntroducedFrom__pred__per_instance__2077__1_2_0);
+	MR_init_label2(ml_backend__mlds__IntroducedFrom__pred__per_instance__2077__1_2_0,3,1)
+MR_BEGIN_CODE
+
+#ifdef MR_maybe_local_thread_engine_base
+	#undef MR_maybe_local_thread_engine_base
+	#define MR_maybe_local_thread_engine_base MR_local_thread_engine_base
+#endif
+MR_def_static(ml_backend__mlds__IntroducedFrom__pred__per_instance__2077__1_2_0)
+	MR_MAYBE_INIT_LOCAL_THREAD_ENGINE_BASE
+	MR_r3 = ((MR_Integer) MR_r1 & (MR_Integer) 8);
+	if (MR_INT_NE(MR_r3,0)) {
+		MR_GOTO_LAB(ml_backend__mlds__IntroducedFrom__pred__per_instance__2077__1_2_0_i3);
+	}
+	MR_r2 = (MR_Integer) 0;
+	MR_r1 = MR_TRUE;
+	MR_proceed();
+MR_def_label(ml_backend__mlds__IntroducedFrom__pred__per_instance__2077__1_2_0,3)
+	MR_MAYBE_INIT_LOCAL_THREAD_ENGINE_BASE
+	if (MR_INT_NE(MR_r3,8)) {
+		MR_GOTO_LAB(ml_backend__mlds__IntroducedFrom__pred__per_instance__2077__1_2_0_i1);
+	}
+	MR_r2 = (MR_Integer) 1;
+	MR_r1 = MR_TRUE;
+	MR_proceed();
+MR_def_label(ml_backend__mlds__IntroducedFrom__pred__per_instance__2077__1_2_0,1)
+	MR_MAYBE_INIT_LOCAL_THREAD_ENGINE_BASE
+	MR_r1 = MR_FALSE;
+	MR_proceed();
+#ifdef MR_maybe_local_thread_engine_base
+	#undef MR_maybe_local_thread_engine_base
+	#define MR_maybe_local_thread_engine_base MR_thread_engine_base
+#endif
+MR_END_MODULE
+
+
+MR_BEGIN_MODULE(ml_backend__mlds_module205)
+	MR_init_entry1(ml_backend__mlds__IntroducedFrom__pred__virtuality__2080__1_2_0);
+	MR_init_label2(ml_backend__mlds__IntroducedFrom__pred__virtuality__2080__1_2_0,3,1)
+MR_BEGIN_CODE
+
+#ifdef MR_maybe_local_thread_engine_base
+	#undef MR_maybe_local_thread_engine_base
+	#define MR_maybe_local_thread_engine_base MR_local_thread_engine_base
+#endif
+MR_def_static(ml_backend__mlds__IntroducedFrom__pred__virtuality__2080__1_2_0)
+	MR_MAYBE_INIT_LOCAL_THREAD_ENGINE_BASE
+	MR_r3 = ((MR_Integer) MR_r1 & (MR_Integer) 16);
+	if (MR_INT_NE(MR_r3,0)) {
+		MR_GOTO_LAB(ml_backend__mlds__IntroducedFrom__pred__virtuality__2080__1_2_0_i3);
+	}
+	MR_r2 = (MR_Integer) 0;
+	MR_r1 = MR_TRUE;
+	MR_proceed();
+MR_def_label(ml_backend__mlds__IntroducedFrom__pred__virtuality__2080__1_2_0,3)
+	MR_MAYBE_INIT_LOCAL_THREAD_ENGINE_BASE
+	if (MR_INT_NE(MR_r3,16)) {
+		MR_GOTO_LAB(ml_backend__mlds__IntroducedFrom__pred__virtuality__2080__1_2_0_i1);
+	}
+	MR_r2 = (MR_Integer) 1;
+	MR_r1 = MR_TRUE;
+	MR_proceed();
+MR_def_label(ml_backend__mlds__IntroducedFrom__pred__virtuality__2080__1_2_0,1)
+	MR_MAYBE_INIT_LOCAL_THREAD_ENGINE_BASE
+	MR_r1 = MR_FALSE;
+	MR_proceed();
+#ifdef MR_maybe_local_thread_engine_base
+	#undef MR_maybe_local_thread_engine_base
+	#define MR_maybe_local_thread_engine_base MR_thread_engine_base
+#endif
+MR_END_MODULE
+
+
+MR_BEGIN_MODULE(ml_backend__mlds_module206)
+	MR_init_entry1(ml_backend__mlds__IntroducedFrom__pred__finality__2083__1_2_0);
+	MR_init_label2(ml_backend__mlds__IntroducedFrom__pred__finality__2083__1_2_0,3,1)
+MR_BEGIN_CODE
+
+#ifdef MR_maybe_local_thread_engine_base
+	#undef MR_maybe_local_thread_engine_base
+	#define MR_maybe_local_thread_engine_base MR_local_thread_engine_base
+#endif
+MR_def_static(ml_backend__mlds__IntroducedFrom__pred__finality__2083__1_2_0)
+	MR_MAYBE_INIT_LOCAL_THREAD_ENGINE_BASE
+	MR_r3 = ((MR_Integer) MR_r1 & (MR_Integer) 32);
+	if (MR_INT_NE(MR_r3,0)) {
+		MR_GOTO_LAB(ml_backend__mlds__IntroducedFrom__pred__finality__2083__1_2_0_i3);
+	}
+	MR_r2 = (MR_Integer) 0;
+	MR_r1 = MR_TRUE;
+	MR_proceed();
+MR_def_label(ml_backend__mlds__IntroducedFrom__pred__finality__2083__1_2_0,3)
+	MR_MAYBE_INIT_LOCAL_THREAD_ENGINE_BASE
+	if (MR_INT_NE(MR_r3,32)) {
+		MR_GOTO_LAB(ml_backend__mlds__IntroducedFrom__pred__finality__2083__1_2_0_i1);
+	}
+	MR_r2 = (MR_Integer) 1;
+	MR_r1 = MR_TRUE;
+	MR_proceed();
+MR_def_label(ml_backend__mlds__IntroducedFrom__pred__finality__2083__1_2_0,1)
+	MR_MAYBE_INIT_LOCAL_THREAD_ENGINE_BASE
+	MR_r1 = MR_FALSE;
+	MR_proceed();
+#ifdef MR_maybe_local_thread_engine_base
+	#undef MR_maybe_local_thread_engine_base
+	#define MR_maybe_local_thread_engine_base MR_thread_engine_base
+#endif
+MR_END_MODULE
+
+
+MR_BEGIN_MODULE(ml_backend__mlds_module207)
+	MR_init_entry1(ml_backend__mlds__IntroducedFrom__pred__constness__2086__1_2_0);
+	MR_init_label2(ml_backend__mlds__IntroducedFrom__pred__constness__2086__1_2_0,3,1)
+MR_BEGIN_CODE
+
+#ifdef MR_maybe_local_thread_engine_base
+	#undef MR_maybe_local_thread_engine_base
+	#define MR_maybe_local_thread_engine_base MR_local_thread_engine_base
+#endif
+MR_def_static(ml_backend__mlds__IntroducedFrom__pred__constness__2086__1_2_0)
+	MR_MAYBE_INIT_LOCAL_THREAD_ENGINE_BASE
+	MR_r3 = ((MR_Integer) MR_r1 & (MR_Integer) 64);
+	if (MR_INT_NE(MR_r3,0)) {
+		MR_GOTO_LAB(ml_backend__mlds__IntroducedFrom__pred__constness__2086__1_2_0_i3);
+	}
+	MR_r2 = (MR_Integer) 0;
+	MR_r1 = MR_TRUE;
+	MR_proceed();
+MR_def_label(ml_backend__mlds__IntroducedFrom__pred__constness__2086__1_2_0,3)
+	MR_MAYBE_INIT_LOCAL_THREAD_ENGINE_BASE
+	if (MR_INT_NE(MR_r3,64)) {
+		MR_GOTO_LAB(ml_backend__mlds__IntroducedFrom__pred__constness__2086__1_2_0_i1);
+	}
+	MR_r2 = (MR_Integer) 1;
+	MR_r1 = MR_TRUE;
+	MR_proceed();
+MR_def_label(ml_backend__mlds__IntroducedFrom__pred__constness__2086__1_2_0,1)
+	MR_MAYBE_INIT_LOCAL_THREAD_ENGINE_BASE
+	MR_r1 = MR_FALSE;
+	MR_proceed();
+#ifdef MR_maybe_local_thread_engine_base
+	#undef MR_maybe_local_thread_engine_base
+	#define MR_maybe_local_thread_engine_base MR_thread_engine_base
+#endif
+MR_END_MODULE
+
+
+MR_BEGIN_MODULE(ml_backend__mlds_module208)
+	MR_init_entry1(ml_backend__mlds__IntroducedFrom__pred__abstractness__2089__1_2_0);
+	MR_init_label2(ml_backend__mlds__IntroducedFrom__pred__abstractness__2089__1_2_0,3,1)
+MR_BEGIN_CODE
+
+#ifdef MR_maybe_local_thread_engine_base
+	#undef MR_maybe_local_thread_engine_base
+	#define MR_maybe_local_thread_engine_base MR_local_thread_engine_base
+#endif
+MR_def_static(ml_backend__mlds__IntroducedFrom__pred__abstractness__2089__1_2_0)
+	MR_MAYBE_INIT_LOCAL_THREAD_ENGINE_BASE
+	MR_r3 = ((MR_Integer) MR_r1 & (MR_Integer) 128);
+	if (MR_INT_NE(MR_r3,0)) {
+		MR_GOTO_LAB(ml_backend__mlds__IntroducedFrom__pred__abstractness__2089__1_2_0_i3);
+	}
+	MR_r2 = (MR_Integer) 1;
+	MR_r1 = MR_TRUE;
+	MR_proceed();
+MR_def_label(ml_backend__mlds__IntroducedFrom__pred__abstractness__2089__1_2_0,3)
+	MR_MAYBE_INIT_LOCAL_THREAD_ENGINE_BASE
+	if (MR_INT_NE(MR_r3,128)) {
+		MR_GOTO_LAB(ml_backend__mlds__IntroducedFrom__pred__abstractness__2089__1_2_0_i1);
+	}
+	MR_r2 = (MR_Integer) 0;
+	MR_r1 = MR_TRUE;
+	MR_proceed();
+MR_def_label(ml_backend__mlds__IntroducedFrom__pred__abstractness__2089__1_2_0,1)
+	MR_MAYBE_INIT_LOCAL_THREAD_ENGINE_BASE
+	MR_r1 = MR_FALSE;
+	MR_proceed();
+#ifdef MR_maybe_local_thread_engine_base
+	#undef MR_maybe_local_thread_engine_base
+	#define MR_maybe_local_thread_engine_base MR_thread_engine_base
+#endif
+MR_END_MODULE
+
+static void mercury__ml_backend__mlds_maybe_bunch_0(void)
+{
+	ml_backend__mlds_module0();
+	ml_backend__mlds_module1();
+	ml_backend__mlds_module2();
+	ml_backend__mlds_module3();
+	ml_backend__mlds_module4();
+	ml_backend__mlds_module5();
+	ml_backend__mlds_module6();
+	ml_backend__mlds_module7();
+	ml_backend__mlds_module8();
+	ml_backend__mlds_module9();
+	ml_backend__mlds_module10();
+	ml_backend__mlds_module11();
+	ml_backend__mlds_module12();
+	ml_backend__mlds_module13();
+	ml_backend__mlds_module14();
+	ml_backend__mlds_module15();
+	ml_backend__mlds_module16();
+	ml_backend__mlds_module17();
+	ml_backend__mlds_module18();
+	ml_backend__mlds_module19();
+	ml_backend__mlds_module20();
+	ml_backend__mlds_module21();
+	ml_backend__mlds_module22();
+	ml_backend__mlds_module23();
+	ml_backend__mlds_module24();
+	ml_backend__mlds_module25();
+	ml_backend__mlds_module26();
+	ml_backend__mlds_module27();
+	ml_backend__mlds_module28();
+	ml_backend__mlds_module29();
+	ml_backend__mlds_module30();
+	ml_backend__mlds_module31();
+	ml_backend__mlds_module32();
+	ml_backend__mlds_module33();
+	ml_backend__mlds_module34();
+	ml_backend__mlds_module35();
+	ml_backend__mlds_module36();
+	ml_backend__mlds_module37();
+	ml_backend__mlds_module38();
+	ml_backend__mlds_module39();
+}
+
+static void mercury__ml_backend__mlds_maybe_bunch_1(void)
+{
+	ml_backend__mlds_module40();
+	ml_backend__mlds_module41();
+	ml_backend__mlds_module42();
+	ml_backend__mlds_module43();
+	ml_backend__mlds_module44();
+	ml_backend__mlds_module45();
+	ml_backend__mlds_module46();
+	ml_backend__mlds_module47();
+	ml_backend__mlds_module48();
+	ml_backend__mlds_module49();
+	ml_backend__mlds_module50();
+	ml_backend__mlds_module51();
+	ml_backend__mlds_module52();
+	ml_backend__mlds_module53();
+	ml_backend__mlds_module54();
+	ml_backend__mlds_module55();
+	ml_backend__mlds_module56();
+	ml_backend__mlds_module57();
+	ml_backend__mlds_module58();
+	ml_backend__mlds_module59();
+	ml_backend__mlds_module60();
+	ml_backend__mlds_module61();
+	ml_backend__mlds_module62();
+	ml_backend__mlds_module63();
+	ml_backend__mlds_module64();
+	ml_backend__mlds_module65();
+	ml_backend__mlds_module66();
+	ml_backend__mlds_module67();
+	ml_backend__mlds_module68();
+	ml_backend__mlds_module69();
+	ml_backend__mlds_module70();
+	ml_backend__mlds_module71();
+	ml_backend__mlds_module72();
+	ml_backend__mlds_module73();
+	ml_backend__mlds_module74();
+	ml_backend__mlds_module75();
+	ml_backend__mlds_module76();
+	ml_backend__mlds_module77();
+	ml_backend__mlds_module78();
+	ml_backend__mlds_module79();
+}
+
+static void mercury__ml_backend__mlds_maybe_bunch_2(void)
+{
+	ml_backend__mlds_module80();
+	ml_backend__mlds_module81();
+	ml_backend__mlds_module82();
+	ml_backend__mlds_module83();
+	ml_backend__mlds_module84();
+	ml_backend__mlds_module85();
+	ml_backend__mlds_module86();
+	ml_backend__mlds_module87();
+	ml_backend__mlds_module88();
+	ml_backend__mlds_module89();
+	ml_backend__mlds_module90();
+	ml_backend__mlds_module91();
+	ml_backend__mlds_module92();
+	ml_backend__mlds_module93();
+	ml_backend__mlds_module94();
+	ml_backend__mlds_module95();
+	ml_backend__mlds_module96();
+	ml_backend__mlds_module97();
+	ml_backend__mlds_module98();
+	ml_backend__mlds_module99();
+	ml_backend__mlds_module100();
+	ml_backend__mlds_module101();
+	ml_backend__mlds_module102();
+	ml_backend__mlds_module103();
+	ml_backend__mlds_module104();
+	ml_backend__mlds_module105();
+	ml_backend__mlds_module106();
+	ml_backend__mlds_module107();
+	ml_backend__mlds_module108();
+	ml_backend__mlds_module109();
+	ml_backend__mlds_module110();
+	ml_backend__mlds_module111();
+	ml_backend__mlds_module112();
+	ml_backend__mlds_module113();
+	ml_backend__mlds_module114();
+	ml_backend__mlds_module115();
+	ml_backend__mlds_module116();
+	ml_backend__mlds_module117();
+	ml_backend__mlds_module118();
+	ml_backend__mlds_module119();
+}
+
+static void mercury__ml_backend__mlds_maybe_bunch_3(void)
+{
+	ml_backend__mlds_module120();
+	ml_backend__mlds_module121();
+	ml_backend__mlds_module122();
+	ml_backend__mlds_module123();
+	ml_backend__mlds_module124();
+	ml_backend__mlds_module125();
+	ml_backend__mlds_module126();
+	ml_backend__mlds_module127();
+	ml_backend__mlds_module128();
+	ml_backend__mlds_module129();
+	ml_backend__mlds_module130();
+	ml_backend__mlds_module131();
+	ml_backend__mlds_module132();
+	ml_backend__mlds_module133();
+	ml_backend__mlds_module134();
+	ml_backend__mlds_module135();
+	ml_backend__mlds_module136();
+	ml_backend__mlds_module137();
+	ml_backend__mlds_module138();
+	ml_backend__mlds_module139();
+	ml_backend__mlds_module140();
+	ml_backend__mlds_module141();
+	ml_backend__mlds_module142();
+	ml_backend__mlds_module143();
+	ml_backend__mlds_module144();
+	ml_backend__mlds_module145();
+	ml_backend__mlds_module146();
+	ml_backend__mlds_module147();
+	ml_backend__mlds_module148();
+	ml_backend__mlds_module149();
+	ml_backend__mlds_module150();
+	ml_backend__mlds_module151();
+	ml_backend__mlds_module152();
+	ml_backend__mlds_module153();
+	ml_backend__mlds_module154();
+	ml_backend__mlds_module155();
+	ml_backend__mlds_module156();
+	ml_backend__mlds_module157();
+	ml_backend__mlds_module158();
+	ml_backend__mlds_module159();
+}
+
+static void mercury__ml_backend__mlds_maybe_bunch_4(void)
+{
+	ml_backend__mlds_module160();
+	ml_backend__mlds_module161();
+	ml_backend__mlds_module162();
+	ml_backend__mlds_module163();
+	ml_backend__mlds_module164();
+	ml_backend__mlds_module165();
+	ml_backend__mlds_module166();
+	ml_backend__mlds_module167();
+	ml_backend__mlds_module168();
+	ml_backend__mlds_module169();
+	ml_backend__mlds_module170();
+	ml_backend__mlds_module171();
+	ml_backend__mlds_module172();
+	ml_backend__mlds_module173();
+	ml_backend__mlds_module174();
+	ml_backend__mlds_module175();
+	ml_backend__mlds_module176();
+	ml_backend__mlds_module177();
+	ml_backend__mlds_module178();
+	ml_backend__mlds_module179();
+	ml_backend__mlds_module180();
+	ml_backend__mlds_module181();
+	ml_backend__mlds_module182();
+	ml_backend__mlds_module183();
+	ml_backend__mlds_module184();
+	ml_backend__mlds_module185();
+	ml_backend__mlds_module186();
+	ml_backend__mlds_module187();
+	ml_backend__mlds_module188();
+	ml_backend__mlds_module189();
+	ml_backend__mlds_module190();
+	ml_backend__mlds_module191();
+	ml_backend__mlds_module192();
+	ml_backend__mlds_module193();
+	ml_backend__mlds_module194();
+	ml_backend__mlds_module195();
+	ml_backend__mlds_module196();
+	ml_backend__mlds_module197();
+	ml_backend__mlds_module198();
+	ml_backend__mlds_module199();
+}
+
+static void mercury__ml_backend__mlds_maybe_bunch_5(void)
+{
+	ml_backend__mlds_module200();
+	ml_backend__mlds_module201();
+	ml_backend__mlds_module202();
+	ml_backend__mlds_module203();
+	ml_backend__mlds_module204();
+	ml_backend__mlds_module205();
+	ml_backend__mlds_module206();
+	ml_backend__mlds_module207();
+	ml_backend__mlds_module208();
+}
+
+/* suppress gcc -Wmissing-decls warnings */
+void mercury__ml_backend__mlds__init(void);
+void mercury__ml_backend__mlds__init_type_tables(void);
+void mercury__ml_backend__mlds__init_debugger(void);
+#ifdef MR_DEEP_PROFILING
+void mercury__ml_backend__mlds__write_out_proc_statics(FILE *deep_fp, FILE *procrep_fp);
+#endif
+#ifdef MR_RECORD_TERM_SIZES
+void mercury__ml_backend__mlds__init_complexity_procs(void);
+#endif
+
+void mercury__ml_backend__mlds__init(void)
+{
+	static MR_bool done = MR_FALSE;
+	if (done) {
+		return;
+	}
+	done = MR_TRUE;
+	mercury__ml_backend__mlds_maybe_bunch_0();
+	mercury__ml_backend__mlds_maybe_bunch_1();
+	mercury__ml_backend__mlds_maybe_bunch_2();
+	mercury__ml_backend__mlds_maybe_bunch_3();
+	mercury__ml_backend__mlds_maybe_bunch_4();
+	mercury__ml_backend__mlds_maybe_bunch_5();
+	MR_INIT_TYPE_CTOR_INFO(
+		mercury_data_ml_backend__mlds__type_ctor_info_virtuality_0,
+		ml_backend__mlds__virtuality_0_0);
+	MR_INIT_TYPE_CTOR_INFO(
+		mercury_data_ml_backend__mlds__type_ctor_info_trail_op_0,
+		ml_backend__mlds__trail_op_0_0);
+	MR_INIT_TYPE_CTOR_INFO(
+		mercury_data_ml_backend__mlds__type_ctor_info_target_code_component_0,
+		ml_backend__mlds__target_code_component_0_0);
+	MR_INIT_TYPE_CTOR_INFO(
+		mercury_data_ml_backend__mlds__type_ctor_info_target_code_attributes_0,
+		ml_backend__mlds__target_code_attributes_0_0);
+	MR_INIT_TYPE_CTOR_INFO(
+		mercury_data_ml_backend__mlds__type_ctor_info_target_code_attribute_0,
+		ml_backend__mlds__target_code_attribute_0_0);
+	MR_INIT_TYPE_CTOR_INFO(
+		mercury_data_ml_backend__mlds__type_ctor_info_statement_0,
+		ml_backend__mlds__statement_0_0);
+	MR_INIT_TYPE_CTOR_INFO(
+		mercury_data_ml_backend__mlds__type_ctor_info_per_instance_0,
+		ml_backend__mlds__per_instance_0_0);
+	MR_INIT_TYPE_CTOR_INFO(
+		mercury_data_ml_backend__mlds__type_ctor_info_outline_arg_0,
+		ml_backend__mlds__outline_arg_0_0);
+	MR_INIT_TYPE_CTOR_INFO(
+		mercury_data_ml_backend__mlds__type_ctor_info_mlds_var_name_0,
+		ml_backend__mlds__mlds_var_name_0_0);
+	MR_INIT_TYPE_CTOR_INFO(
+		mercury_data_ml_backend__mlds__type_ctor_info_mlds_var_0,
+		ml_backend__mlds__mlds_var_0_0);
+	MR_INIT_TYPE_CTOR_INFO(
+		mercury_data_ml_backend__mlds__type_ctor_info_mlds_unary_op_0,
+		ml_backend__mlds__mlds_unary_op_0_0);
+	MR_INIT_TYPE_CTOR_INFO(
+		mercury_data_ml_backend__mlds__type_ctor_info_mlds_type_0,
+		ml_backend__mlds__mlds_type_0_0);
+	MR_INIT_TYPE_CTOR_INFO(
+		mercury_data_ml_backend__mlds__type_ctor_info_mlds_target_lang_0,
+		ml_backend__mlds__mlds_target_lang_0_0);
+	MR_INIT_TYPE_CTOR_INFO(
+		mercury_data_ml_backend__mlds__type_ctor_info_mlds_tag_0,
+		ml_backend__mlds__mlds_tag_0_0);
+	MR_INIT_TYPE_CTOR_INFO(
+		mercury_data_ml_backend__mlds__type_ctor_info_mlds_switch_range_0,
+		ml_backend__mlds__mlds_switch_range_0_0);
+	MR_INIT_TYPE_CTOR_INFO(
+		mercury_data_ml_backend__mlds__type_ctor_info_mlds_switch_default_0,
+		ml_backend__mlds__mlds_switch_default_0_0);
+	MR_INIT_TYPE_CTOR_INFO(
+		mercury_data_ml_backend__mlds__type_ctor_info_mlds_switch_cases_0,
+		ml_backend__mlds__mlds_switch_cases_0_0);
+	MR_INIT_TYPE_CTOR_INFO(
+		mercury_data_ml_backend__mlds__type_ctor_info_mlds_switch_case_0,
+		ml_backend__mlds__mlds_switch_case_0_0);
+	MR_INIT_TYPE_CTOR_INFO(
+		mercury_data_ml_backend__mlds__type_ctor_info_mlds_stmt_0,
+		ml_backend__mlds__mlds_stmt_0_0);
+	MR_INIT_TYPE_CTOR_INFO(
+		mercury_data_ml_backend__mlds__type_ctor_info_mlds_rval_const_0,
+		ml_backend__mlds__mlds_rval_const_0_0);
+	MR_INIT_TYPE_CTOR_INFO(
+		mercury_data_ml_backend__mlds__type_ctor_info_mlds_rval_0,
+		ml_backend__mlds__mlds_rval_0_0);
+	MR_INIT_TYPE_CTOR_INFO(
+		mercury_data_ml_backend__mlds__type_ctor_info_mlds_return_types_0,
+		ml_backend__mlds__mlds_return_types_0_0);
+	MR_INIT_TYPE_CTOR_INFO(
+		mercury_data_ml_backend__mlds__type_ctor_info_mlds_reset_trail_reason_0,
+		ml_backend__mlds__mlds_reset_trail_reason_0_0);
+	MR_INIT_TYPE_CTOR_INFO(
+		mercury_data_ml_backend__mlds__type_ctor_info_mlds_qualified_proc_label_0,
+		ml_backend__mlds__mlds_qualified_proc_label_0_0);
+	MR_INIT_TYPE_CTOR_INFO(
+		mercury_data_ml_backend__mlds__type_ctor_info_mlds_qualified_pred_label_0,
+		ml_backend__mlds__mlds_qualified_pred_label_0_0);
+	MR_INIT_TYPE_CTOR_INFO(
+		mercury_data_ml_backend__mlds__type_ctor_info_mlds_qualified_entity_name_0,
+		ml_backend__mlds__mlds_qualified_entity_name_0_0);
+	MR_INIT_TYPE_CTOR_INFO(
+		mercury_data_ml_backend__mlds__type_ctor_info_mlds_qualified_ctor_id_0,
+		ml_backend__mlds__mlds_qualified_ctor_id_0_0);
+	MR_INIT_TYPE_CTOR_INFO(
+		mercury_data_ml_backend__mlds__type_ctor_info_mlds_qual_kind_0,
+		ml_backend__mlds__mlds_qual_kind_0_0);
+	MR_INIT_TYPE_CTOR_INFO(
+		mercury_data_ml_backend__mlds__type_ctor_info_mlds_proc_label_0,
+		ml_backend__mlds__mlds_proc_label_0_0);
+	MR_INIT_TYPE_CTOR_INFO(
+		mercury_data_ml_backend__mlds__type_ctor_info_mlds_pred_label_0,
+		ml_backend__mlds__mlds_pred_label_0_0);
+	MR_INIT_TYPE_CTOR_INFO(
+		mercury_data_ml_backend__mlds__type_ctor_info_mlds_pragma_export_0,
+		ml_backend__mlds__mlds_pragma_export_0_0);
+	MR_INIT_TYPE_CTOR_INFO(
+		mercury_data_ml_backend__mlds__type_ctor_info_mlds_package_name_0,
+		ml_backend__mlds__mlds_package_name_0_0);
+	MR_INIT_TYPE_CTOR_INFO(
+		mercury_data_ml_backend__mlds__type_ctor_info_mlds_module_name_0,
+		ml_backend__mlds__mlds_module_name_0_0);
+	MR_INIT_TYPE_CTOR_INFO(
+		mercury_data_ml_backend__mlds__type_ctor_info_mlds_lval_0,
+		ml_backend__mlds__mlds_lval_0_0);
+	MR_INIT_TYPE_CTOR_INFO(
+		mercury_data_ml_backend__mlds__type_ctor_info_mlds_label_0,
+		ml_backend__mlds__mlds_label_0_0);
+	MR_INIT_TYPE_CTOR_INFO(
+		mercury_data_ml_backend__mlds__type_ctor_info_mlds_interface_id_0,
+		ml_backend__mlds__mlds_interface_id_0_0);
+	MR_INIT_TYPE_CTOR_INFO(
+		mercury_data_ml_backend__mlds__type_ctor_info_mlds_initializer_0,
+		ml_backend__mlds__mlds_initializer_0_0);
+	MR_INIT_TYPE_CTOR_INFO(
+		mercury_data_ml_backend__mlds__type_ctor_info_mlds_imports_0,
+		ml_backend__mlds__mlds_imports_0_0);
+	MR_INIT_TYPE_CTOR_INFO(
+		mercury_data_ml_backend__mlds__type_ctor_info_mlds_import_0,
+		ml_backend__mlds__mlds_import_0_0);
+	MR_INIT_TYPE_CTOR_INFO(
+		mercury_data_ml_backend__mlds__type_ctor_info_mlds_goto_target_0,
+		ml_backend__mlds__mlds_goto_target_0_0);
+	MR_INIT_TYPE_CTOR_INFO(
+		mercury_data_ml_backend__mlds__type_ctor_info_mlds_gc_statement_0,
+		ml_backend__mlds__mlds_gc_statement_0_0);
+	MR_INIT_TYPE_CTOR_INFO(
+		mercury_data_ml_backend__mlds__type_ctor_info_mlds_function_body_0,
+		ml_backend__mlds__mlds_function_body_0_0);
+	MR_INIT_TYPE_CTOR_INFO(
+		mercury_data_ml_backend__mlds__type_ctor_info_mlds_func_signature_0,
+		ml_backend__mlds__mlds_func_signature_0_0);
+	MR_INIT_TYPE_CTOR_INFO(
+		mercury_data_ml_backend__mlds__type_ctor_info_mlds_func_sequence_num_0,
+		ml_backend__mlds__mlds_func_sequence_num_0_0);
+	MR_INIT_TYPE_CTOR_INFO(
+		mercury_data_ml_backend__mlds__type_ctor_info_mlds_func_params_0,
+		ml_backend__mlds__mlds_func_params_0_0);
+	MR_INIT_TYPE_CTOR_INFO(
+		mercury_data_ml_backend__mlds__type_ctor_info_mlds_fully_qualified_name_1,
+		ml_backend__mlds__mlds_fully_qualified_name_1_0);
+	MR_INIT_TYPE_CTOR_INFO(
+		mercury_data_ml_backend__mlds__type_ctor_info_mlds_foreign_code_0,
+		ml_backend__mlds__mlds_foreign_code_0_0);
+	MR_INIT_TYPE_CTOR_INFO(
+		mercury_data_ml_backend__mlds__type_ctor_info_mlds_field_name_0,
+		ml_backend__mlds__mlds_field_name_0_0);
+	MR_INIT_TYPE_CTOR_INFO(
+		mercury_data_ml_backend__mlds__type_ctor_info_mlds_field_id_0,
+		ml_backend__mlds__mlds_field_id_0_0);
+	MR_INIT_TYPE_CTOR_INFO(
+		mercury_data_ml_backend__mlds__type_ctor_info_mlds_exported_enums_0,
+		ml_backend__mlds__mlds_exported_enums_0_0);
+	MR_INIT_TYPE_CTOR_INFO(
+		mercury_data_ml_backend__mlds__type_ctor_info_mlds_exported_enum_constant_0,
+		ml_backend__mlds__mlds_exported_enum_constant_0_0);
+	MR_INIT_TYPE_CTOR_INFO(
+		mercury_data_ml_backend__mlds__type_ctor_info_mlds_exported_enum_0,
+		ml_backend__mlds__mlds_exported_enum_0_0);
+	MR_INIT_TYPE_CTOR_INFO(
+		mercury_data_ml_backend__mlds__type_ctor_info_mlds_exception_handler_0,
+		ml_backend__mlds__mlds_exception_handler_0_0);
+	MR_INIT_TYPE_CTOR_INFO(
+		mercury_data_ml_backend__mlds__type_ctor_info_mlds_entity_name_0,
+		ml_backend__mlds__mlds_entity_name_0_0);
+	MR_INIT_TYPE_CTOR_INFO(
+		mercury_data_ml_backend__mlds__type_ctor_info_mlds_entity_defn_0,
+		ml_backend__mlds__mlds_entity_defn_0_0);
+	MR_INIT_TYPE_CTOR_INFO(
+		mercury_data_ml_backend__mlds__type_ctor_info_mlds_defn_0,
+		ml_backend__mlds__mlds_defn_0_0);
+	MR_INIT_TYPE_CTOR_INFO(
+		mercury_data_ml_backend__mlds__type_ctor_info_mlds_decl_flags_0,
+		ml_backend__mlds__mlds_decl_flags_0_0);
+	MR_INIT_TYPE_CTOR_INFO(
+		mercury_data_ml_backend__mlds__type_ctor_info_mlds_data_name_0,
+		ml_backend__mlds__mlds_data_name_0_0);
+	MR_INIT_TYPE_CTOR_INFO(
+		mercury_data_ml_backend__mlds__type_ctor_info_mlds_data_addr_0,
+		ml_backend__mlds__mlds_data_addr_0_0);
+	MR_INIT_TYPE_CTOR_INFO(
+		mercury_data_ml_backend__mlds__type_ctor_info_mlds_data_0,
+		ml_backend__mlds__mlds_data_0_0);
+	MR_INIT_TYPE_CTOR_INFO(
+		mercury_data_ml_backend__mlds__type_ctor_info_mlds_ctor_id_0,
+		ml_backend__mlds__mlds_ctor_id_0_0);
+	MR_INIT_TYPE_CTOR_INFO(
+		mercury_data_ml_backend__mlds__type_ctor_info_mlds_context_0,
+		ml_backend__mlds__mlds_context_0_0);
+	MR_INIT_TYPE_CTOR_INFO(
+		mercury_data_ml_backend__mlds__type_ctor_info_mlds_code_addr_0,
+		ml_backend__mlds__mlds_code_addr_0_0);
+	MR_INIT_TYPE_CTOR_INFO(
+		mercury_data_ml_backend__mlds__type_ctor_info_mlds_class_name_0,
+		ml_backend__mlds__mlds_class_name_0_0);
+	MR_INIT_TYPE_CTOR_INFO(
+		mercury_data_ml_backend__mlds__type_ctor_info_mlds_class_kind_0,
+		ml_backend__mlds__mlds_class_kind_0_0);
+	MR_INIT_TYPE_CTOR_INFO(
+		mercury_data_ml_backend__mlds__type_ctor_info_mlds_class_id_0,
+		ml_backend__mlds__mlds_class_id_0_0);
+	MR_INIT_TYPE_CTOR_INFO(
+		mercury_data_ml_backend__mlds__type_ctor_info_mlds_class_defn_0,
+		ml_backend__mlds__mlds_class_defn_0_0);
+	MR_INIT_TYPE_CTOR_INFO(
+		mercury_data_ml_backend__mlds__type_ctor_info_mlds_class_0,
+		ml_backend__mlds__mlds_class_0_0);
+	MR_INIT_TYPE_CTOR_INFO(
+		mercury_data_ml_backend__mlds__type_ctor_info_mlds_case_match_conds_0,
+		ml_backend__mlds__mlds_case_match_conds_0_0);
+	MR_INIT_TYPE_CTOR_INFO(
+		mercury_data_ml_backend__mlds__type_ctor_info_mlds_case_match_cond_0,
+		ml_backend__mlds__mlds_case_match_cond_0_0);
+	MR_INIT_TYPE_CTOR_INFO(
+		mercury_data_ml_backend__mlds__type_ctor_info_mlds_attribute_0,
+		ml_backend__mlds__mlds_attribute_0_0);
+	MR_INIT_TYPE_CTOR_INFO(
+		mercury_data_ml_backend__mlds__type_ctor_info_mlds_atomic_statement_0,
+		ml_backend__mlds__mlds_atomic_statement_0_0);
+	MR_INIT_TYPE_CTOR_INFO(
+		mercury_data_ml_backend__mlds__type_ctor_info_mlds_arguments_0,
+		ml_backend__mlds__mlds_arguments_0_0);
+	MR_INIT_TYPE_CTOR_INFO(
+		mercury_data_ml_backend__mlds__type_ctor_info_mlds_argument_0,
+		ml_backend__mlds__mlds_argument_0_0);
+	MR_INIT_TYPE_CTOR_INFO(
+		mercury_data_ml_backend__mlds__type_ctor_info_mlds_arg_types_0,
+		ml_backend__mlds__mlds_arg_types_0_0);
+	MR_INIT_TYPE_CTOR_INFO(
+		mercury_data_ml_backend__mlds__type_ctor_info_mlds_0,
+		ml_backend__mlds__mlds_0_0);
+	MR_INIT_TYPE_CTOR_INFO(
+		mercury_data_ml_backend__mlds__type_ctor_info_ml_call_kind_0,
+		ml_backend__mlds__ml_call_kind_0_0);
+	MR_INIT_TYPE_CTOR_INFO(
+		mercury_data_ml_backend__mlds__type_ctor_info_mercury_module_name_0,
+		ml_backend__mlds__mercury_module_name_0_0);
+	MR_INIT_TYPE_CTOR_INFO(
+		mercury_data_ml_backend__mlds__type_ctor_info_mercury_mlds_import_type_0,
+		ml_backend__mlds__mercury_mlds_import_type_0_0);
+	MR_INIT_TYPE_CTOR_INFO(
+		mercury_data_ml_backend__mlds__type_ctor_info_global_var_ref_0,
+		ml_backend__mlds__global_var_ref_0_0);
+	MR_INIT_TYPE_CTOR_INFO(
+		mercury_data_ml_backend__mlds__type_ctor_info_foreign_import_name_0,
+		ml_backend__mlds__foreign_import_name_0_0);
+	MR_INIT_TYPE_CTOR_INFO(
+		mercury_data_ml_backend__mlds__type_ctor_info_finality_0,
+		ml_backend__mlds__finality_0_0);
+	MR_INIT_TYPE_CTOR_INFO(
+		mercury_data_ml_backend__mlds__type_ctor_info_ctor_name_0,
+		ml_backend__mlds__ctor_name_0_0);
+	MR_INIT_TYPE_CTOR_INFO(
+		mercury_data_ml_backend__mlds__type_ctor_info_constness_0,
+		ml_backend__mlds__constness_0_0);
+	MR_INIT_TYPE_CTOR_INFO(
+		mercury_data_ml_backend__mlds__type_ctor_info_access_0,
+		ml_backend__mlds__access_0_0);
+	MR_INIT_TYPE_CTOR_INFO(
+		mercury_data_ml_backend__mlds__type_ctor_info_abstractness_0,
+		ml_backend__mlds__abstractness_0_0);
+	mercury__ml_backend__mlds__init_debugger();
+}
+
+void mercury__ml_backend__mlds__init_type_tables(void)
+{
+	static MR_bool done = MR_FALSE;
+	if (done) {
+		return;
+	}
+	done = MR_TRUE;
+	{
+		MR_register_type_ctor_info(
+		&mercury_data_ml_backend__mlds__type_ctor_info_virtuality_0);
+	}
+	{
+		MR_register_type_ctor_info(
+		&mercury_data_ml_backend__mlds__type_ctor_info_trail_op_0);
+	}
+	{
+		MR_register_type_ctor_info(
+		&mercury_data_ml_backend__mlds__type_ctor_info_target_code_component_0);
+	}
+	{
+		MR_register_type_ctor_info(
+		&mercury_data_ml_backend__mlds__type_ctor_info_target_code_attributes_0);
+	}
+	{
+		MR_register_type_ctor_info(
+		&mercury_data_ml_backend__mlds__type_ctor_info_target_code_attribute_0);
+	}
+	{
+		MR_register_type_ctor_info(
+		&mercury_data_ml_backend__mlds__type_ctor_info_statement_0);
+	}
+	{
+		MR_register_type_ctor_info(
+		&mercury_data_ml_backend__mlds__type_ctor_info_per_instance_0);
+	}
+	{
+		MR_register_type_ctor_info(
+		&mercury_data_ml_backend__mlds__type_ctor_info_outline_arg_0);
+	}
+	{
+		MR_register_type_ctor_info(
+		&mercury_data_ml_backend__mlds__type_ctor_info_mlds_var_name_0);
+	}
+	{
+		MR_register_type_ctor_info(
+		&mercury_data_ml_backend__mlds__type_ctor_info_mlds_var_0);
+	}
+	{
+		MR_register_type_ctor_info(
+		&mercury_data_ml_backend__mlds__type_ctor_info_mlds_unary_op_0);
+	}
+	{
+		MR_register_type_ctor_info(
+		&mercury_data_ml_backend__mlds__type_ctor_info_mlds_type_0);
+	}
+	{
+		MR_register_type_ctor_info(
+		&mercury_data_ml_backend__mlds__type_ctor_info_mlds_target_lang_0);
+	}
+	{
+		MR_register_type_ctor_info(
+		&mercury_data_ml_backend__mlds__type_ctor_info_mlds_tag_0);
+	}
+	{
+		MR_register_type_ctor_info(
+		&mercury_data_ml_backend__mlds__type_ctor_info_mlds_switch_range_0);
+	}
+	{
+		MR_register_type_ctor_info(
+		&mercury_data_ml_backend__mlds__type_ctor_info_mlds_switch_default_0);
+	}
+	{
+		MR_register_type_ctor_info(
+		&mercury_data_ml_backend__mlds__type_ctor_info_mlds_switch_cases_0);
+	}
+	{
+		MR_register_type_ctor_info(
+		&mercury_data_ml_backend__mlds__type_ctor_info_mlds_switch_case_0);
+	}
+	{
+		MR_register_type_ctor_info(
+		&mercury_data_ml_backend__mlds__type_ctor_info_mlds_stmt_0);
+	}
+	{
+		MR_register_type_ctor_info(
+		&mercury_data_ml_backend__mlds__type_ctor_info_mlds_rval_const_0);
+	}
+	{
+		MR_register_type_ctor_info(
+		&mercury_data_ml_backend__mlds__type_ctor_info_mlds_rval_0);
+	}
+	{
+		MR_register_type_ctor_info(
+		&mercury_data_ml_backend__mlds__type_ctor_info_mlds_return_types_0);
+	}
+	{
+		MR_register_type_ctor_info(
+		&mercury_data_ml_backend__mlds__type_ctor_info_mlds_reset_trail_reason_0);
+	}
+	{
+		MR_register_type_ctor_info(
+		&mercury_data_ml_backend__mlds__type_ctor_info_mlds_qualified_proc_label_0);
+	}
+	{
+		MR_register_type_ctor_info(
+		&mercury_data_ml_backend__mlds__type_ctor_info_mlds_qualified_pred_label_0);
+	}
+	{
+		MR_register_type_ctor_info(
+		&mercury_data_ml_backend__mlds__type_ctor_info_mlds_qualified_entity_name_0);
+	}
+	{
+		MR_register_type_ctor_info(
+		&mercury_data_ml_backend__mlds__type_ctor_info_mlds_qualified_ctor_id_0);
+	}
+	{
+		MR_register_type_ctor_info(
+		&mercury_data_ml_backend__mlds__type_ctor_info_mlds_qual_kind_0);
+	}
+	{
+		MR_register_type_ctor_info(
+		&mercury_data_ml_backend__mlds__type_ctor_info_mlds_proc_label_0);
+	}
+	{
+		MR_register_type_ctor_info(
+		&mercury_data_ml_backend__mlds__type_ctor_info_mlds_pred_label_0);
+	}
+	{
+		MR_register_type_ctor_info(
+		&mercury_data_ml_backend__mlds__type_ctor_info_mlds_pragma_export_0);
+	}
+	{
+		MR_register_type_ctor_info(
+		&mercury_data_ml_backend__mlds__type_ctor_info_mlds_package_name_0);
+	}
+	{
+		MR_register_type_ctor_info(
+		&mercury_data_ml_backend__mlds__type_ctor_info_mlds_module_name_0);
+	}
+	{
+		MR_register_type_ctor_info(
+		&mercury_data_ml_backend__mlds__type_ctor_info_mlds_lval_0);
+	}
+	{
+		MR_register_type_ctor_info(
+		&mercury_data_ml_backend__mlds__type_ctor_info_mlds_label_0);
+	}
+	{
+		MR_register_type_ctor_info(
+		&mercury_data_ml_backend__mlds__type_ctor_info_mlds_interface_id_0);
+	}
+	{
+		MR_register_type_ctor_info(
+		&mercury_data_ml_backend__mlds__type_ctor_info_mlds_initializer_0);
+	}
+	{
+		MR_register_type_ctor_info(
+		&mercury_data_ml_backend__mlds__type_ctor_info_mlds_imports_0);
+	}
+	{
+		MR_register_type_ctor_info(
+		&mercury_data_ml_backend__mlds__type_ctor_info_mlds_import_0);
+	}
+	{
+		MR_register_type_ctor_info(
+		&mercury_data_ml_backend__mlds__type_ctor_info_mlds_goto_target_0);
+	}
+	{
+		MR_register_type_ctor_info(
+		&mercury_data_ml_backend__mlds__type_ctor_info_mlds_gc_statement_0);
+	}
+	{
+		MR_register_type_ctor_info(
+		&mercury_data_ml_backend__mlds__type_ctor_info_mlds_function_body_0);
+	}
+	{
+		MR_register_type_ctor_info(
+		&mercury_data_ml_backend__mlds__type_ctor_info_mlds_func_signature_0);
+	}
+	{
+		MR_register_type_ctor_info(
+		&mercury_data_ml_backend__mlds__type_ctor_info_mlds_func_sequence_num_0);
+	}
+	{
+		MR_register_type_ctor_info(
+		&mercury_data_ml_backend__mlds__type_ctor_info_mlds_func_params_0);
+	}
+	{
+		MR_register_type_ctor_info(
+		&mercury_data_ml_backend__mlds__type_ctor_info_mlds_fully_qualified_name_1);
+	}
+	{
+		MR_register_type_ctor_info(
+		&mercury_data_ml_backend__mlds__type_ctor_info_mlds_foreign_code_0);
+	}
+	{
+		MR_register_type_ctor_info(
+		&mercury_data_ml_backend__mlds__type_ctor_info_mlds_field_name_0);
+	}
+	{
+		MR_register_type_ctor_info(
+		&mercury_data_ml_backend__mlds__type_ctor_info_mlds_field_id_0);
+	}
+	{
+		MR_register_type_ctor_info(
+		&mercury_data_ml_backend__mlds__type_ctor_info_mlds_exported_enums_0);
+	}
+	{
+		MR_register_type_ctor_info(
+		&mercury_data_ml_backend__mlds__type_ctor_info_mlds_exported_enum_constant_0);
+	}
+	{
+		MR_register_type_ctor_info(
+		&mercury_data_ml_backend__mlds__type_ctor_info_mlds_exported_enum_0);
+	}
+	{
+		MR_register_type_ctor_info(
+		&mercury_data_ml_backend__mlds__type_ctor_info_mlds_exception_handler_0);
+	}
+	{
+		MR_register_type_ctor_info(
+		&mercury_data_ml_backend__mlds__type_ctor_info_mlds_entity_name_0);
+	}
+	{
+		MR_register_type_ctor_info(
+		&mercury_data_ml_backend__mlds__type_ctor_info_mlds_entity_defn_0);
+	}
+	{
+		MR_register_type_ctor_info(
+		&mercury_data_ml_backend__mlds__type_ctor_info_mlds_defn_0);
+	}
+	{
+		MR_register_type_ctor_info(
+		&mercury_data_ml_backend__mlds__type_ctor_info_mlds_decl_flags_0);
+	}
+	{
+		MR_register_type_ctor_info(
+		&mercury_data_ml_backend__mlds__type_ctor_info_mlds_data_name_0);
+	}
+	{
+		MR_register_type_ctor_info(
+		&mercury_data_ml_backend__mlds__type_ctor_info_mlds_data_addr_0);
+	}
+	{
+		MR_register_type_ctor_info(
+		&mercury_data_ml_backend__mlds__type_ctor_info_mlds_data_0);
+	}
+	{
+		MR_register_type_ctor_info(
+		&mercury_data_ml_backend__mlds__type_ctor_info_mlds_ctor_id_0);
+	}
+	{
+		MR_register_type_ctor_info(
+		&mercury_data_ml_backend__mlds__type_ctor_info_mlds_context_0);
+	}
+	{
+		MR_register_type_ctor_info(
+		&mercury_data_ml_backend__mlds__type_ctor_info_mlds_code_addr_0);
+	}
+	{
+		MR_register_type_ctor_info(
+		&mercury_data_ml_backend__mlds__type_ctor_info_mlds_class_name_0);
+	}
+	{
+		MR_register_type_ctor_info(
+		&mercury_data_ml_backend__mlds__type_ctor_info_mlds_class_kind_0);
+	}
+	{
+		MR_register_type_ctor_info(
+		&mercury_data_ml_backend__mlds__type_ctor_info_mlds_class_id_0);
+	}
+	{
+		MR_register_type_ctor_info(
+		&mercury_data_ml_backend__mlds__type_ctor_info_mlds_class_defn_0);
+	}
+	{
+		MR_register_type_ctor_info(
+		&mercury_data_ml_backend__mlds__type_ctor_info_mlds_class_0);
+	}
+	{
+		MR_register_type_ctor_info(
+		&mercury_data_ml_backend__mlds__type_ctor_info_mlds_case_match_conds_0);
+	}
+	{
+		MR_register_type_ctor_info(
+		&mercury_data_ml_backend__mlds__type_ctor_info_mlds_case_match_cond_0);
+	}
+	{
+		MR_register_type_ctor_info(
+		&mercury_data_ml_backend__mlds__type_ctor_info_mlds_attribute_0);
+	}
+	{
+		MR_register_type_ctor_info(
+		&mercury_data_ml_backend__mlds__type_ctor_info_mlds_atomic_statement_0);
+	}
+	{
+		MR_register_type_ctor_info(
+		&mercury_data_ml_backend__mlds__type_ctor_info_mlds_arguments_0);
+	}
+	{
+		MR_register_type_ctor_info(
+		&mercury_data_ml_backend__mlds__type_ctor_info_mlds_argument_0);
+	}
+	{
+		MR_register_type_ctor_info(
+		&mercury_data_ml_backend__mlds__type_ctor_info_mlds_arg_types_0);
+	}
+	{
+		MR_register_type_ctor_info(
+		&mercury_data_ml_backend__mlds__type_ctor_info_mlds_0);
+	}
+	{
+		MR_register_type_ctor_info(
+		&mercury_data_ml_backend__mlds__type_ctor_info_ml_call_kind_0);
+	}
+	{
+		MR_register_type_ctor_info(
+		&mercury_data_ml_backend__mlds__type_ctor_info_mercury_module_name_0);
+	}
+	{
+		MR_register_type_ctor_info(
+		&mercury_data_ml_backend__mlds__type_ctor_info_mercury_mlds_import_type_0);
+	}
+	{
+		MR_register_type_ctor_info(
+		&mercury_data_ml_backend__mlds__type_ctor_info_global_var_ref_0);
+	}
+	{
+		MR_register_type_ctor_info(
+		&mercury_data_ml_backend__mlds__type_ctor_info_foreign_import_name_0);
+	}
+	{
+		MR_register_type_ctor_info(
+		&mercury_data_ml_backend__mlds__type_ctor_info_finality_0);
+	}
+	{
+		MR_register_type_ctor_info(
+		&mercury_data_ml_backend__mlds__type_ctor_info_ctor_name_0);
+	}
+	{
+		MR_register_type_ctor_info(
+		&mercury_data_ml_backend__mlds__type_ctor_info_constness_0);
+	}
+	{
+		MR_register_type_ctor_info(
+		&mercury_data_ml_backend__mlds__type_ctor_info_access_0);
+	}
+	{
+		MR_register_type_ctor_info(
+		&mercury_data_ml_backend__mlds__type_ctor_info_abstractness_0);
+	}
+}
+
+
+void mercury__ml_backend__mlds__init_debugger(void)
+{
+	static MR_bool done = MR_FALSE;
+	if (done) {
+		return;
+	}
+	done = MR_TRUE;
+}
+
+#ifdef MR_DEEP_PROFILING
+
+void mercury__ml_backend__mlds__write_out_proc_statics(FILE *deep_fp, FILE *procrep_fp)
+{
+	MR_write_out_module_proc_reps_start(procrep_fp, &mercury_data__module_common_layout__ml_backend__mlds);
+	MR_write_out_module_proc_reps_end(procrep_fp);
+}
+
+#endif
+
+#ifdef MR_RECORD_TERM_SIZES
+
+void mercury__ml_backend__mlds__init_complexity_procs(void)
+{
+}
+
+#endif
+
+/* ensure everything is compiled with the same grade */
+static const void *const MR_grade = &MR_GRADE_VAR;

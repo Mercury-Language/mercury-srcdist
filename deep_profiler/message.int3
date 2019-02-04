@@ -1,0 +1,6 @@
+:- module message.
+:- interface.
+:- type message.
+:- type message_level.
+:- type message_type.
+:- type program_location.
