@@ -1,0 +1,16 @@
+:- module (ml_backend.ml_unify_gen_construct).
+:- interface.
+:- import_module bool.
+:- import_module hlds.
+:- import_module list.
+:- import_module maybe.
+:- import_module parse_tree.
+:- import_module (hlds.hlds_data).
+:- import_module (hlds.hlds_goal).
+:- import_module (hlds.hlds_module).
+:- import_module (ml_backend.ml_gen_info).
+:- import_module (ml_backend.ml_global_data).
+:- import_module (ml_backend.mlds).
+:- import_module (parse_tree.prog_data).
+:- type mlds_rval_type_and_width
+    --->    rval_type_and_width(ml_backend.mlds.mlds_rval, ml_backend.mlds.mlds_type, parse_tree.prog_data.arg_pos_width, maybe.maybe(ml_backend.ml_gen_info.packed_arg_var)).

@@ -1,0 +1,13 @@
+:- module ((check_hlds.simplify).simplify_goal).
+:- interface.
+:- import_module hlds.
+:- import_module (hlds.hlds_goal).
+:- import_module (hlds.instmap).
+:- import_module ((check_hlds.simplify).common).
+:- import_module ((check_hlds.simplify).simplify_info).
+:- pred simplify_goal(hlds.hlds_goal.hlds_goal, hlds.hlds_goal.hlds_goal, check_hlds.simplify.simplify_info.simplify_nested_context, hlds.instmap.instmap, check_hlds.simplify.common.common_info, check_hlds.simplify.common.common_info, check_hlds.simplify.simplify_info.simplify_info, check_hlds.simplify.simplify_info.simplify_info).
+:- mode simplify_goal((builtin.in), (builtin.out), (builtin.in), (builtin.in), (builtin.in), (builtin.out), (builtin.in), (builtin.out)) is det.
+:- pred simplify_goal_expr(hlds.hlds_goal.hlds_goal_expr, hlds.hlds_goal.hlds_goal_expr, hlds.hlds_goal.hlds_goal_info, hlds.hlds_goal.hlds_goal_info, check_hlds.simplify.simplify_info.simplify_nested_context, hlds.instmap.instmap, check_hlds.simplify.common.common_info, check_hlds.simplify.common.common_info, check_hlds.simplify.simplify_info.simplify_info, check_hlds.simplify.simplify_info.simplify_info).
+:- mode simplify_goal_expr((builtin.in), (builtin.out), (builtin.in), (builtin.out), (builtin.in), (builtin.in), (builtin.in), (builtin.out), (builtin.in), (builtin.out)) is det.
+:- pred simplify_maybe_wrap_goal(hlds.hlds_goal.hlds_goal_info, hlds.hlds_goal.hlds_goal_info, hlds.hlds_goal.hlds_goal_expr, hlds.hlds_goal.hlds_goal_expr, hlds.hlds_goal.hlds_goal_info, check_hlds.simplify.simplify_info.simplify_info, check_hlds.simplify.simplify_info.simplify_info).
+:- mode simplify_maybe_wrap_goal((builtin.in), (builtin.in), (builtin.in), (builtin.out), (builtin.out), (builtin.in), (builtin.out)) is det.

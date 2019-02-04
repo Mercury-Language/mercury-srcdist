@@ -1,0 +1,10 @@
+echo on
+register --quiet
+context none
+table_io allow
+table_io start
+break unitize
+continue
+finish -a
+retry -f
+continue -S
