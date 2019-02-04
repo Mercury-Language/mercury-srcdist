@@ -1,0 +1,21 @@
+:- module (ll_backend.global_data).
+:- interface.
+:- import_module bool.
+:- import_module list.
+:- import_module map.
+:- import_module mdbcomp.
+:- import_module parse_tree.
+:- import_module set_tree234.
+:- import_module (hlds.hlds_pred).
+:- import_module (ll_backend.continuation_info).
+:- import_module (ll_backend.layout).
+:- import_module (ll_backend.llds).
+:- import_module (mdbcomp.sym_name).
+:- import_module (parse_tree.prog_data).
+:- type global_data.
+:- type global_data_remapping.
+:- type num_words
+    --->    one_word 
+    ;       two_words .
+:- type static_cell_info.
+:- type static_cell_remap_info.

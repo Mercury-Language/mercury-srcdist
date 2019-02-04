@@ -1,0 +1,5 @@
+:- module (parse_tree.parse_error).
+:- interface.
+:- type read_module_error
+	where	type_is_abstract_enum(4).
+:- type read_module_errors.

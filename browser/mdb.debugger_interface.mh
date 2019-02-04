@@ -1,0 +1,45 @@
+/*
+** Automatically generated from `debugger_interface.m'
+** by the Mercury compiler,
+** version rotd-=2018-12-28
+** configured for x86_64-pc-linux-gnu.
+** Do not edit.
+*/
+#ifndef MDB__DEBUGGER_INTERFACE_MH
+#define MDB__DEBUGGER_INTERFACE_MH
+
+#ifdef __cplusplus
+extern "C" {
+#endif
+
+#ifdef MR_HIGHLEVEL_CODE
+#include "mercury.h"
+#else
+  #ifndef MERCURY_HDR_EXCLUDE_IMP_H
+  #include "mercury_imp.h"
+  #endif
+#endif
+#ifdef MR_DEEP_PROFILING
+#include "mercury_deep_profiling.h"
+#endif
+
+void ML_DI_output_current_slots_user(MR_Integer, MR_Integer, MR_Integer, MR_Word, MR_Word, MR_String, MR_String, MR_String, MR_Integer, MR_Integer, MR_Integer, MR_String, MR_Integer, MR_Word);
+void ML_DI_output_current_slots_comp(MR_Integer, MR_Integer, MR_Integer, MR_Word, MR_String, MR_String, MR_String, MR_String, MR_Integer, MR_Integer, MR_Integer, MR_String, MR_Integer, MR_Word);
+void ML_DI_output_current_vars(MR_Word, MR_Word, MR_Word);
+void ML_DI_output_current_nth_var(MR_Word, MR_Word);
+void ML_DI_output_current_live_var_names(MR_Word, MR_Word, MR_Word);
+MR_Integer ML_DI_get_var_number(MR_Word);
+MR_bool ML_DI_found_match_user(MR_Integer, MR_Integer, MR_Integer, MR_Word, MR_Word, MR_String, MR_String, MR_String, MR_Integer, MR_Integer, MR_Integer, MR_Word, MR_String, MR_Word);
+MR_bool ML_DI_found_match_comp(MR_Integer, MR_Integer, MR_Integer, MR_Word, MR_String, MR_String, MR_String, MR_String, MR_Integer, MR_Integer, MR_Integer, MR_Word, MR_String, MR_Word);
+void ML_DI_read_request_from_socket(MR_Word, MR_Word *, MR_Integer *);
+void ML_DI_get_list_modules_to_import(MR_Word, MR_Integer *, MR_Word *);
+void ML_DI_get_mmc_options(MR_Word, MR_String *);
+void ML_DI_get_object_file_name(MR_Word, MR_String *);
+void ML_DI_init_mercury_string(MR_String *);
+void ML_DI_get_variable_name(MR_Word, MR_String *);
+
+#ifdef __cplusplus
+}
+#endif
+
+#endif /* MDB__DEBUGGER_INTERFACE_MH */
