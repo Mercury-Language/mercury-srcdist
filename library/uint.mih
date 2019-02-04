@@ -1,0 +1,262 @@
+/*
+** Automatically generated from `uint.m'
+** by the Mercury compiler,
+** version 2018-05-12
+** configured for x86_64-pc-linux-gnu.
+** Do not edit.
+**
+** The autoconfigured grade settings governing
+** the generation of this C file were
+**
+** TAG_BITS=2
+** UNBOXED_FLOAT=no
+** UNBOXED_INT64S=no
+** PREGENERATED_DIST=yes
+** HIGHLEVEL_CODE=yes
+**
+** END_OF_C_GRADE_INFO
+*/
+
+
+// :- module uint.
+// :- interface.
+
+#ifndef MR_HEADER_GUARD_uint
+#define MR_HEADER_GUARD_uint
+
+#ifdef __cplusplus
+extern "C" {
+#endif
+
+#include "mercury.h"
+
+
+#ifndef UINT_DECL_GUARD
+#define UINT_DECL_GUARD
+
+    #include <limits.h>
+
+    #define ML_BITS_PER_UINT     (sizeof(MR_Unsigned) * CHAR_BIT)
+
+#endif
+
+
+
+
+MR_bool MR_CALL 
+mercury__uint__f_less_than_2_p_0(
+  MR_Unsigned param_1,
+  MR_Unsigned param_2);
+
+MR_bool MR_CALL 
+mercury__uint__f_less_or_equal_2_p_0(
+  MR_Unsigned param_1,
+  MR_Unsigned param_2);
+
+MR_bool MR_CALL 
+mercury__uint__f_greater_than_2_p_0(
+  MR_Unsigned param_1,
+  MR_Unsigned param_2);
+
+MR_bool MR_CALL 
+mercury__uint__f_greater_or_equal_2_p_0(
+  MR_Unsigned param_1,
+  MR_Unsigned param_2);
+
+MR_bool MR_CALL 
+mercury__uint__even_1_p_0(
+  MR_Unsigned param_1);
+
+MR_bool MR_CALL 
+mercury__uint__from_int_2_p_0(
+  MR_Integer param_1,
+  MR_Unsigned * param_2);
+
+MR_bool MR_CALL 
+mercury__uint__odd_1_p_0(
+  MR_Unsigned param_1);
+
+MR_Unsigned MR_CALL 
+mercury__uint__f_times_2_f_0(
+  MR_Unsigned param_1,
+  MR_Unsigned param_2);
+
+MR_Unsigned MR_CALL 
+mercury__uint__f_plus_2_f_0(
+  MR_Unsigned param_1,
+  MR_Unsigned param_2);
+
+void MR_CALL 
+mercury__uint__f_plus_2_f_1(
+  MR_Unsigned * param_1,
+  MR_Unsigned param_2,
+  MR_Unsigned param_3);
+
+void MR_CALL 
+mercury__uint__f_plus_2_f_2(
+  MR_Unsigned param_1,
+  MR_Unsigned * param_2,
+  MR_Unsigned param_3);
+
+MR_Unsigned MR_CALL 
+mercury__uint__f_minus_2_f_0(
+  MR_Unsigned param_1,
+  MR_Unsigned param_2);
+
+void MR_CALL 
+mercury__uint__f_minus_2_f_1(
+  MR_Unsigned * param_1,
+  MR_Unsigned param_2,
+  MR_Unsigned param_3);
+
+void MR_CALL 
+mercury__uint__f_minus_2_f_2(
+  MR_Unsigned param_1,
+  MR_Unsigned * param_2,
+  MR_Unsigned param_3);
+
+MR_Unsigned MR_CALL 
+mercury__uint__f_slash_2_f_0(
+  MR_Unsigned param_1,
+  MR_Unsigned param_2);
+
+MR_Unsigned MR_CALL 
+mercury__uint__f_47_47_2_f_0(
+  MR_Unsigned param_1,
+  MR_Unsigned param_2);
+
+MR_Unsigned MR_CALL 
+mercury__uint__f_47_92_2_f_0(
+  MR_Unsigned param_1,
+  MR_Unsigned param_2);
+
+MR_Unsigned MR_CALL 
+mercury__uint__f_60_60_2_f_0(
+  MR_Unsigned param_1,
+  MR_Integer param_2);
+
+MR_Unsigned MR_CALL 
+mercury__uint__f_62_62_2_f_0(
+  MR_Unsigned param_1,
+  MR_Integer param_2);
+
+MR_Unsigned MR_CALL 
+mercury__uint__f_92_1_f_0(
+  MR_Unsigned param_1);
+
+MR_Unsigned MR_CALL 
+mercury__uint__f_92_47_2_f_0(
+  MR_Unsigned param_1,
+  MR_Unsigned param_2);
+
+MR_Integer MR_CALL 
+mercury__uint__bits_per_uint_0_f_0(void);
+
+MR_Unsigned MR_CALL 
+mercury__uint__cast_from_int_1_f_0(
+  MR_Integer param_1);
+
+MR_Integer MR_CALL 
+mercury__uint__cast_to_int_1_f_0(
+  MR_Unsigned param_1);
+
+MR_Unsigned MR_CALL 
+mercury__uint__det_from_int_1_f_0(
+  MR_Integer param_1);
+
+MR_Unsigned MR_CALL 
+mercury__uint__div_2_f_0(
+  MR_Unsigned param_1,
+  MR_Unsigned param_2);
+
+MR_Unsigned MR_CALL 
+mercury__uint__max_2_f_0(
+  MR_Unsigned param_1,
+  MR_Unsigned param_2);
+
+MR_Unsigned MR_CALL 
+mercury__uint__max_uint_0_f_0(void);
+
+MR_Unsigned MR_CALL 
+mercury__uint__min_2_f_0(
+  MR_Unsigned param_1,
+  MR_Unsigned param_2);
+
+MR_Unsigned MR_CALL 
+mercury__uint__minus_2_f_0(
+  MR_Unsigned param_1,
+  MR_Unsigned param_2);
+
+MR_Unsigned MR_CALL 
+mercury__uint__mod_2_f_0(
+  MR_Unsigned param_1,
+  MR_Unsigned param_2);
+
+MR_Unsigned MR_CALL 
+mercury__uint__plus_2_f_0(
+  MR_Unsigned param_1,
+  MR_Unsigned param_2);
+
+MR_Unsigned MR_CALL 
+mercury__uint__rem_2_f_0(
+  MR_Unsigned param_1,
+  MR_Unsigned param_2);
+
+MR_Unsigned MR_CALL 
+mercury__uint__times_2_f_0(
+  MR_Unsigned param_1,
+  MR_Unsigned param_2);
+
+MR_Word MR_CALL 
+mercury__uint__uint_to_doc_1_f_0(
+  MR_Unsigned param_1);
+
+MR_Unsigned MR_CALL 
+mercury__uint__unchecked_left_shift_2_f_0(
+  MR_Unsigned param_1,
+  MR_Integer param_2);
+
+MR_Unsigned MR_CALL 
+mercury__uint__unchecked_quotient_2_f_0(
+  MR_Unsigned param_1,
+  MR_Unsigned param_2);
+
+MR_Unsigned MR_CALL 
+mercury__uint__unchecked_rem_2_f_0(
+  MR_Unsigned param_1,
+  MR_Unsigned param_2);
+
+MR_Unsigned MR_CALL 
+mercury__uint__unchecked_right_shift_2_f_0(
+  MR_Unsigned param_1,
+  MR_Integer param_2);
+
+MR_Unsigned MR_CALL 
+mercury__uint__xor_2_f_0(
+  MR_Unsigned param_1,
+  MR_Unsigned param_2);
+
+void MR_CALL 
+mercury__uint__xor_2_f_1(
+  MR_Unsigned param_1,
+  MR_Unsigned * param_2,
+  MR_Unsigned param_3);
+
+void MR_CALL 
+mercury__uint__xor_2_f_2(
+  MR_Unsigned * param_1,
+  MR_Unsigned param_2,
+  MR_Unsigned param_3);
+
+void mercury__uint__init(void);
+void mercury__uint__init_type_tables(void);
+void mercury__uint__init_debugger(void);
+const char *mercury__uint__grade_check(void);
+
+#ifdef __cplusplus
+}
+#endif
+
+#endif // MR_HEADER_GUARD_uint
+
+// :- end_interface uint.
