@@ -1,0 +1,6 @@
+:- module int.
+:- interface.
+:- import_module array.
+:- import_module enum.
+:- import_module pretty_printer.
+:- instance (enum.enum(int)).

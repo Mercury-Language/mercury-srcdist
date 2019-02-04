@@ -1,0 +1,9 @@
+:- module region_builtin.
+
+:- pragma termination_info(region_builtin.create_region((builtin.out)), infinite, cannot_loop).
+:- pragma termination_info(region_builtin.print_rbmm_profiling_info((builtin.di), (builtin.uo)), infinite, cannot_loop).
+:- pragma termination_info(region_builtin.remove_region((builtin.in)), finite(0, [no]), cannot_loop).
+
+:- pragma exceptions(predicate, (region_builtin.create_region), 1, 0, will_not_throw).
+:- pragma exceptions(predicate, (region_builtin.print_rbmm_profiling_info), 2, 0, will_not_throw).
+:- pragma exceptions(predicate, (region_builtin.remove_region), 1, 0, will_not_throw).
