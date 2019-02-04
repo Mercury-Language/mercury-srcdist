@@ -1,0 +1,4 @@
+:- module (check_hlds.mode_debug).
+:- interface.
+:- type port
+	where	type_is_abstract_enum(2).
