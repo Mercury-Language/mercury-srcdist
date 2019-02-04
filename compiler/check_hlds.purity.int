@@ -1,0 +1,15 @@
+:- module (check_hlds.purity).
+:- interface.
+:- import_module bool.
+:- import_module hlds.
+:- import_module list.
+:- import_module parse_tree.
+:- import_module (hlds.hlds_module).
+:- import_module (hlds.hlds_pred).
+:- import_module (parse_tree.error_util).
+:- import_module (parse_tree.prog_data).
+:- func impure_unification_expr_error(parse_tree.prog_data.prog_context, parse_tree.prog_data.purity) = parse_tree.error_util.error_spec.
+:- pred puritycheck_module(bool.bool, bool.bool, hlds.hlds_module.module_info, hlds.hlds_module.module_info, list.list(parse_tree.error_util.error_spec), list.list(parse_tree.error_util.error_spec)).
+:- mode puritycheck_module((builtin.in), (builtin.out), (builtin.in), (builtin.out), (builtin.in), (builtin.out)) is det.
+:- pred repuritycheck_proc(hlds.hlds_module.module_info, hlds.hlds_pred.pred_proc_id, hlds.hlds_pred.pred_info, hlds.hlds_pred.pred_info).
+:- mode repuritycheck_proc((builtin.in), (builtin.in), (builtin.in), (builtin.out)) is det.

@@ -1,0 +1,8 @@
+:- module (ll_backend.trace_gen).
+:- interface.
+:- type external_event_info.
+:- type external_trace_port.
+:- type negation_end_port.
+:- type nondet_foreign_proc_trace_port.
+:- type trace_info.
+:- type trace_slot_info.

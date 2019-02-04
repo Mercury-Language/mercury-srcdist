@@ -1,0 +1,7 @@
+:- module (mdb.dl).
+:- interface.
+:- type dl_result.
+:- type handle.
+:- type link_mode.
+:- type scope.
+:- type dl_result(T).

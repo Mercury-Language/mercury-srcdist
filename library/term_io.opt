@@ -1,0 +1,176 @@
+:- module term_io.
+:- use_module bool, builtin, char, int, io, lexer, list, ops, parser, private_builtin, stream, string, term, varset, (stream.string_writer).
+:- pred term_io.write_variable_2(Ops_1, term.var(T_2), varset.varset(T_2), varset.varset(T_2), int, int, io.state, io.state) <= (ops.op_table(Ops_1)).
+:- mode term_io.write_variable_2((builtin.in), (builtin.in), (builtin.in), (builtin.out), (builtin.in), (builtin.out), (builtin.di), (builtin.uo)) is det.
+:- pred term_io.write_term_2(Ops_1, term.term(T_2), varset.varset(T_2), varset.varset(T_2), int, int, io.state, io.state) <= (ops.op_table(Ops_1)).
+:- mode term_io.write_term_2((builtin.in), (builtin.in), (builtin.in), (builtin.out), (builtin.in), (builtin.out), (builtin.di), (builtin.uo)) is det.
+:- pred term_io.write_constant(term.const, term_io.adjacent_to_graphic_token, io.state, io.state).
+:- mode term_io.write_constant((builtin.in), (builtin.in), (builtin.di), (builtin.uo)) is det.
+:- func term_io.format_constant_agt(term.const, term_io.adjacent_to_graphic_token) = string.
+:- mode term_io.format_constant_agt((builtin.in), (builtin.in)) = (builtin.out) is det.
+:- func term_io.add_escaped_char(character, list.list(string)) = list.list(string).
+:- mode term_io.add_escaped_char((builtin.in), (builtin.in)) = (builtin.out) is det.
+term_io.read_term(Result_4, STATE_VARIABLE_IO_0_7, STATE_VARIABLE_IO_8) :-
+    io.get_op_table(Ops_6, STATE_VARIABLE_IO_0_7, STATE_VARIABLE_IO_1_9),
+    term_io.read_term_with_op_table(Ops_6, Result_4, STATE_VARIABLE_IO_1_9, STATE_VARIABLE_IO_2_10),
+    STATE_VARIABLE_IO_8 = STATE_VARIABLE_IO_2_10.
+term_io.read_term_with_op_table(Ops_5, Result_6, STATE_VARIABLE_IO_0_8, STATE_VARIABLE_IO_9) :-
+    parser.read_term_with_op_table(Ops_5, Result_6, STATE_VARIABLE_IO_0_8, STATE_VARIABLE_IO_1_10),
+    STATE_VARIABLE_IO_9 = STATE_VARIABLE_IO_1_10.
+term_io.write_term(VarSet_5, Term_6, STATE_VARIABLE_IO_0_9, STATE_VARIABLE_IO_10) :-
+    io.get_op_table(Ops_8, STATE_VARIABLE_IO_0_9, STATE_VARIABLE_IO_1_11),
+    term_io.write_term_with_op_table(Ops_8, VarSet_5, Term_6, STATE_VARIABLE_IO_1_11, STATE_VARIABLE_IO_2_12),
+    STATE_VARIABLE_IO_10 = STATE_VARIABLE_IO_2_12.
+term_io.write_term_with_op_table(Ops_6, VarSet_7, Term_8, STATE_VARIABLE_IO_0_12, STATE_VARIABLE_IO_13) :-
+    V_15 = 0 : int,
+    term_io.write_term_2(Ops_6, Term_8, VarSet_7, V_10, V_15, V_11, STATE_VARIABLE_IO_0_12, STATE_VARIABLE_IO_1_14),
+    STATE_VARIABLE_IO_13 = STATE_VARIABLE_IO_1_14.
+term_io.write_term_nl(VarSet_5, Term_6, STATE_VARIABLE_IO_0_9, STATE_VARIABLE_IO_10) :-
+    io.get_op_table(Ops_8, STATE_VARIABLE_IO_0_9, STATE_VARIABLE_IO_1_11),
+    term_io.write_term_nl_with_op_table(Ops_8, VarSet_5, Term_6, STATE_VARIABLE_IO_1_11, STATE_VARIABLE_IO_2_12),
+    STATE_VARIABLE_IO_10 = STATE_VARIABLE_IO_2_12.
+term_io.write_term_nl_with_op_table(Ops_6, VarSet_7, Term_8, STATE_VARIABLE_IO_0_10, STATE_VARIABLE_IO_11) :-
+    term_io.write_term_with_op_table(Ops_6, VarSet_7, Term_8, STATE_VARIABLE_IO_0_10, STATE_VARIABLE_IO_1_12),
+    V_14 = ".\n" : string,
+    io.write_string(V_14, STATE_VARIABLE_IO_1_12, STATE_VARIABLE_IO_2_13),
+    STATE_VARIABLE_IO_11 = STATE_VARIABLE_IO_2_13.
+term_io.write_constant(Const_4, STATE_VARIABLE_IO_0_6, STATE_VARIABLE_IO_7) :-
+    V_9 = term_io.not_adjacent_to_graphic_token : term_io.adjacent_to_graphic_token,
+    term_io.write_constant(Const_4, V_9, STATE_VARIABLE_IO_0_6, STATE_VARIABLE_IO_1_8),
+    STATE_VARIABLE_IO_7 = STATE_VARIABLE_IO_1_8.
+term_io.format_constant(Const_3) = HeadVar__2_2 :-
+    HeadVar__2_2 = term_io.format_constant_agt(Const_3, V_4),
+    V_4 = term_io.not_adjacent_to_graphic_token : term_io.adjacent_to_graphic_token.
+term_io.write_variable(Variable_5, VarSet_6, STATE_VARIABLE_IO_0_9, STATE_VARIABLE_IO_10) :-
+    io.get_op_table(Ops_8, STATE_VARIABLE_IO_0_9, STATE_VARIABLE_IO_1_11),
+    term_io.write_variable_with_op_table(Ops_8, Variable_5, VarSet_6, STATE_VARIABLE_IO_1_11, STATE_VARIABLE_IO_2_12),
+    STATE_VARIABLE_IO_10 = STATE_VARIABLE_IO_2_12.
+term_io.write_variable_with_op_table(Ops_6, Variable_7, VarSet_8, STATE_VARIABLE_IO_0_12, STATE_VARIABLE_IO_13) :-
+    V_15 = 0 : int,
+    term_io.write_variable_2(Ops_6, Variable_7, VarSet_8, V_10, V_15, V_11, STATE_VARIABLE_IO_0_12, STATE_VARIABLE_IO_1_14),
+    STATE_VARIABLE_IO_13 = STATE_VARIABLE_IO_1_14.
+term_io.quote_string(S_4, STATE_VARIABLE_IO_0_7, STATE_VARIABLE_IO_8) :-
+    io.output_stream(Stream_6, STATE_VARIABLE_IO_0_7, STATE_VARIABLE_IO_1_9),
+    term_io.quote_string(Stream_6, S_4, STATE_VARIABLE_IO_1_9, STATE_VARIABLE_IO_2_10),
+    STATE_VARIABLE_IO_8 = STATE_VARIABLE_IO_2_10.
+term_io.quote_atom(S_4, STATE_VARIABLE_IO_0_6, STATE_VARIABLE_IO_7) :-
+    V_9 = term_io.not_adjacent_to_graphic_token : term_io.adjacent_to_graphic_token,
+    term_io.quote_atom_agt(S_4, V_9, STATE_VARIABLE_IO_0_6, STATE_VARIABLE_IO_1_8),
+    STATE_VARIABLE_IO_7 = STATE_VARIABLE_IO_1_8.
+term_io.quote_atom(Stream_5, S_6, STATE_VARIABLE_State_0_8, STATE_VARIABLE_State_9) :-
+    V_11 = term_io.not_adjacent_to_graphic_token : term_io.adjacent_to_graphic_token,
+    term_io.quote_atom_agt(Stream_5, S_6, V_11, STATE_VARIABLE_State_0_8, STATE_VARIABLE_State_1_10),
+    STATE_VARIABLE_State_9 = STATE_VARIABLE_State_1_10.
+term_io.quoted_atom(S_3) = HeadVar__2_2 :-
+    HeadVar__2_2 = term_io.quoted_atom_agt(S_3, V_4),
+    V_4 = term_io.not_adjacent_to_graphic_token : term_io.adjacent_to_graphic_token.
+term_io.quote_char(C_4, STATE_VARIABLE_IO_0_6, STATE_VARIABLE_IO_7) :-
+    V_9 = term_io.quoted_char(C_4),
+    io.write_string(V_9, STATE_VARIABLE_IO_0_6, STATE_VARIABLE_IO_1_8),
+    STATE_VARIABLE_IO_7 = STATE_VARIABLE_IO_1_8.
+term_io.quote_char(Stream_5, C_6, STATE_VARIABLE_State_0_8, STATE_VARIABLE_State_9) :-
+    V_11 = term_io.quoted_char(C_6),
+    stream.put(Stream_5, V_11, STATE_VARIABLE_State_0_8, STATE_VARIABLE_State_1_10),
+    STATE_VARIABLE_State_9 = STATE_VARIABLE_State_1_10.
+term_io.write_escaped_char(Char_4, STATE_VARIABLE_IO_0_7, STATE_VARIABLE_IO_8) :-
+    io.output_stream(Stream_6, STATE_VARIABLE_IO_0_7, STATE_VARIABLE_IO_1_9),
+    term_io.write_escaped_char(Stream_6, Char_4, STATE_VARIABLE_IO_1_9, STATE_VARIABLE_IO_2_10),
+    STATE_VARIABLE_IO_8 = STATE_VARIABLE_IO_2_10.
+term_io.escaped_char(Char_3) = String_4 :-
+    term_io.string_is_escaped_char(Char_3, String_4).
+term_io.write_escaped_string(String_4, STATE_VARIABLE_IO_0_7, STATE_VARIABLE_IO_8) :-
+    io.output_stream(Stream_6, STATE_VARIABLE_IO_0_7, STATE_VARIABLE_IO_1_9),
+    term_io.write_escaped_string(Stream_6, String_4, STATE_VARIABLE_IO_1_9, STATE_VARIABLE_IO_2_10),
+    STATE_VARIABLE_IO_8 = STATE_VARIABLE_IO_2_10.
+term_io.write_escaped_string(Stream_5, String_6, STATE_VARIABLE_State_0_8, STATE_VARIABLE_State_9) :-
+    V_11 = term_io.write_escaped_char(Stream_5) : pred(character, State_2, State_2),
+    string.foldl(V_11, String_6, STATE_VARIABLE_State_0_8, STATE_VARIABLE_State_1_10),
+    STATE_VARIABLE_State_9 = STATE_VARIABLE_State_1_10.
+term_io.escaped_string(String_3) = HeadVar__2_2 :-
+    HeadVar__2_2 = string.append_list(V_4),
+    V_4 = list.reverse(V_5),
+    V_5 = string.foldl(V_6, String_3, V_7),
+    V_6 = term_io.add_escaped_char : (func(character, list.list(string)) = list.list(string)),
+    V_7 = list.[] : list.list(string).
+term_io.quote_atom_agt(S_5, NextToGraphicToken_6, STATE_VARIABLE_IO_0_9, STATE_VARIABLE_IO_10) :-
+    io.output_stream(Stream_8, STATE_VARIABLE_IO_0_9, STATE_VARIABLE_IO_1_11),
+    term_io.quote_atom_agt(Stream_8, S_5, NextToGraphicToken_6, STATE_VARIABLE_IO_1_11, STATE_VARIABLE_IO_2_12),
+    STATE_VARIABLE_IO_10 = STATE_VARIABLE_IO_2_12.
+:- pragma exceptions(predicate, (term_io.read_term), 3, 0, may_throw(user_exception)).
+:- pragma exceptions(predicate, (term_io.read_term_with_op_table), 4, 0, may_throw(user_exception)).
+:- pragma exceptions(predicate, (term_io.write_term), 4, 0, may_throw(user_exception)).
+:- pragma exceptions(predicate, (term_io.write_term_with_op_table), 5, 0, may_throw(user_exception)).
+:- pragma exceptions(predicate, (term_io.write_term_nl), 4, 0, may_throw(user_exception)).
+:- pragma exceptions(predicate, (term_io.write_term_nl_with_op_table), 5, 0, may_throw(user_exception)).
+:- pragma exceptions(predicate, (term_io.write_constant), 3, 0, may_throw(user_exception)).
+:- pragma exceptions(function, (term_io.format_constant), 2, 0, may_throw(user_exception)).
+:- pragma exceptions(predicate, (term_io.write_variable), 4, 0, may_throw(user_exception)).
+:- pragma exceptions(predicate, (term_io.write_variable_with_op_table), 5, 0, may_throw(user_exception)).
+:- pragma exceptions(predicate, (term_io.quote_string), 3, 0, may_throw(user_exception)).
+:- pragma exceptions(predicate, (term_io.quote_string), 4, 0, may_throw(user_exception)).
+:- pragma exceptions(function, (term_io.quoted_string), 2, 0, may_throw(user_exception)).
+:- pragma exceptions(predicate, (term_io.quote_atom), 3, 0, may_throw(user_exception)).
+:- pragma exceptions(predicate, (term_io.quote_atom), 4, 0, may_throw(user_exception)).
+:- pragma exceptions(function, (term_io.quoted_atom), 2, 0, may_throw(user_exception)).
+:- pragma exceptions(predicate, (term_io.quote_char), 3, 0, may_throw(user_exception)).
+:- pragma exceptions(predicate, (term_io.quote_char), 4, 0, may_throw(user_exception)).
+:- pragma exceptions(function, (term_io.quoted_char), 2, 0, may_throw(user_exception)).
+:- pragma exceptions(predicate, (term_io.write_escaped_char), 3, 0, may_throw(user_exception)).
+:- pragma exceptions(predicate, (term_io.write_escaped_char), 4, 0, may_throw(user_exception)).
+:- pragma exceptions(function, (term_io.escaped_char), 2, 0, may_throw(user_exception)).
+:- pragma exceptions(predicate, (term_io.string_is_escaped_char), 2, 0, may_throw(user_exception)).
+:- pragma exceptions(predicate, (term_io.string_is_escaped_char), 2, 1, may_throw(user_exception)).
+:- pragma exceptions(predicate, (term_io.write_escaped_string), 3, 0, may_throw(user_exception)).
+:- pragma exceptions(predicate, (term_io.write_escaped_string), 4, 0, may_throw(user_exception)).
+:- pragma exceptions(function, (term_io.escaped_string), 2, 0, may_throw(user_exception)).
+:- pragma exceptions(function, (term_io.mercury_escape_char), 2, 0, may_throw(user_exception)).
+:- pragma exceptions(predicate, (term_io.is_mercury_punctuation_char), 1, 0, will_not_throw).
+:- pragma exceptions(predicate, (term_io.encode_escaped_char), 2, 0, may_throw(user_exception)).
+:- pragma exceptions(predicate, (term_io.encode_escaped_char), 2, 1, may_throw(user_exception)).
+:- pragma exceptions(predicate, (term_io.quote_atom_agt), 4, 0, may_throw(user_exception)).
+:- pragma exceptions(predicate, (term_io.quote_atom_agt), 5, 0, may_throw(user_exception)).
+:- pragma exceptions(function, (term_io.quoted_atom_agt), 3, 0, may_throw(user_exception)).
+:- pragma exceptions(predicate, (term_io.write_variable_2), 8, 0, may_throw(user_exception)).
+:- pragma exceptions(predicate, (term_io.write_term_2), 8, 0, may_throw(user_exception)).
+:- pragma exceptions(predicate, (term_io.write_constant), 4, 0, may_throw(user_exception)).
+:- pragma exceptions(function, (term_io.format_constant_agt), 3, 0, may_throw(user_exception)).
+:- pragma exceptions(function, (term_io.add_escaped_char), 3, 0, may_throw(user_exception)).
+:- pragma termination_info(term_io.read_term((builtin.out), (builtin.di), (builtin.uo)), infinite, can_loop).
+:- pragma termination_info(term_io.read_term_with_op_table((builtin.in), (builtin.out), (builtin.di), (builtin.uo)), infinite, can_loop).
+:- pragma termination_info(term_io.write_term((builtin.in), (builtin.in), (builtin.di), (builtin.uo)), infinite, can_loop).
+:- pragma termination_info(term_io.write_term_with_op_table((builtin.in), (builtin.in), (builtin.in), (builtin.di), (builtin.uo)), infinite, can_loop).
+:- pragma termination_info(term_io.write_term_nl((builtin.in), (builtin.in), (builtin.di), (builtin.uo)), infinite, can_loop).
+:- pragma termination_info(term_io.write_term_nl_with_op_table((builtin.in), (builtin.in), (builtin.in), (builtin.di), (builtin.uo)), infinite, can_loop).
+:- pragma termination_info(term_io.write_constant((builtin.in), (builtin.di), (builtin.uo)), infinite, can_loop).
+:- pragma termination_info(term_io.format_constant((builtin.in)) = (builtin.out), infinite, can_loop).
+:- pragma termination_info(term_io.write_variable((builtin.in), (builtin.in), (builtin.di), (builtin.uo)), infinite, can_loop).
+:- pragma termination_info(term_io.write_variable_with_op_table((builtin.in), (builtin.in), (builtin.in), (builtin.di), (builtin.uo)), infinite, can_loop).
+:- pragma termination_info(term_io.quote_string((builtin.in), (builtin.di), (builtin.uo)), infinite, can_loop).
+:- pragma termination_info(term_io.quote_string((builtin.in), (builtin.in), (builtin.di), (builtin.uo)), infinite, can_loop).
+:- pragma termination_info(term_io.quoted_string((builtin.in)) = (builtin.out), infinite, can_loop).
+:- pragma termination_info(term_io.quote_atom((builtin.in), (builtin.di), (builtin.uo)), infinite, can_loop).
+:- pragma termination_info(term_io.quote_atom((builtin.in), (builtin.in), (builtin.di), (builtin.uo)), infinite, can_loop).
+:- pragma termination_info(term_io.quoted_atom((builtin.in)) = (builtin.out), infinite, can_loop).
+:- pragma termination_info(term_io.quote_char((builtin.in), (builtin.di), (builtin.uo)), infinite, can_loop).
+:- pragma termination_info(term_io.quote_char((builtin.in), (builtin.in), (builtin.di), (builtin.uo)), infinite, can_loop).
+:- pragma termination_info(term_io.quoted_char((builtin.in)) = (builtin.out), infinite, can_loop).
+:- pragma termination_info(term_io.write_escaped_char((builtin.in), (builtin.di), (builtin.uo)), infinite, can_loop).
+:- pragma termination_info(term_io.write_escaped_char((builtin.in), (builtin.in), (builtin.di), (builtin.uo)), infinite, can_loop).
+:- pragma termination_info(term_io.escaped_char((builtin.in)) = (builtin.out), infinite, can_loop).
+:- pragma termination_info(term_io.string_is_escaped_char((builtin.in), (builtin.out)), infinite, can_loop).
+:- pragma termination_info(term_io.string_is_escaped_char((builtin.out), (builtin.in)), infinite, can_loop).
+:- pragma termination_info(term_io.write_escaped_string((builtin.in), (builtin.di), (builtin.uo)), infinite, can_loop).
+:- pragma termination_info(term_io.write_escaped_string((builtin.in), (builtin.in), (builtin.di), (builtin.uo)), infinite, can_loop).
+:- pragma termination_info(term_io.escaped_string((builtin.in)) = (builtin.out), infinite, can_loop).
+:- pragma termination_info(term_io.mercury_escape_char((builtin.in)) = (builtin.out), infinite, can_loop).
+:- pragma termination_info(term_io.is_mercury_punctuation_char((builtin.in)), finite(0, [no]), cannot_loop).
+:- pragma termination_info(term_io.encode_escaped_char((builtin.in), (builtin.out)), infinite, can_loop).
+:- pragma termination_info(term_io.encode_escaped_char((builtin.out), (builtin.in)), infinite, can_loop).
+:- pragma termination_info(term_io.quote_atom_agt((builtin.in), (builtin.in), (builtin.di), (builtin.uo)), infinite, can_loop).
+:- pragma termination_info(term_io.quote_atom_agt((builtin.in), (builtin.in), (builtin.in), (builtin.di), (builtin.uo)), infinite, can_loop).
+:- pragma termination_info(term_io.quoted_atom_agt((builtin.in), (builtin.in)) = (builtin.out), infinite, can_loop).
+:- pragma termination_info(term_io.write_variable_2((builtin.in), (builtin.in), (builtin.in), (builtin.out), (builtin.in), (builtin.out), (builtin.di), (builtin.uo)), infinite, can_loop).
+:- pragma termination_info(term_io.write_term_2((builtin.in), (builtin.in), (builtin.in), (builtin.out), (builtin.in), (builtin.out), (builtin.di), (builtin.uo)), infinite, can_loop).
+:- pragma termination_info(term_io.write_constant((builtin.in), (builtin.in), (builtin.di), (builtin.uo)), infinite, can_loop).
+:- pragma termination_info(term_io.format_constant_agt((builtin.in), (builtin.in)) = (builtin.out), infinite, can_loop).
+:- pragma termination_info(term_io.add_escaped_char((builtin.in), (builtin.in)) = (builtin.out), infinite, can_loop).

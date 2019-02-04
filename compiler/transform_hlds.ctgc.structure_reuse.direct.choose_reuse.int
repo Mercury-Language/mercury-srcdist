@@ -1,0 +1,5 @@
+:- module ((((transform_hlds.ctgc).structure_reuse).direct).choose_reuse).
+:- interface.
+:- import_module (hlds.hlds_goal).
+:- pred determine_reuse(transform_hlds.ctgc.structure_reuse.direct.reuse_strategy, hlds.hlds_module.module_info, hlds.hlds_pred.proc_info, transform_hlds.ctgc.structure_reuse.direct.dead_cell_table, hlds.hlds_goal.hlds_goal, hlds.hlds_goal.hlds_goal, transform_hlds.ctgc.structure_reuse.domain.reuse_as, io.io, io.io).
+:- mode determine_reuse((builtin.in), (builtin.in), (builtin.in), (builtin.in), (builtin.in), (builtin.out), (builtin.out), (builtin.di), (builtin.uo)) is det.

@@ -1,0 +1,99 @@
+:- module (hlds.hlds_out).
+:- interface.
+:- import_module bool.
+:- import_module io.
+:- import_module list.
+:- import_module term.
+:- import_module (hlds.hlds_args).
+:- import_module (hlds.hlds_clauses).
+:- import_module (hlds.hlds_data).
+:- import_module (hlds.hlds_goal).
+:- import_module (hlds.hlds_module).
+:- import_module (hlds.hlds_pred).
+:- import_module (hlds.instmap).
+:- import_module (mdbcomp.prim_data).
+:- import_module (parse_tree.error_util).
+:- import_module (parse_tree.prog_data).
+:- type is_first
+	--->	is_first 
+	;	is_not_first .
+:- type is_last
+	--->	is_last 
+	;	is_not_last .
+:- type maybe_vartypes
+	--->	varset_vartypes(parse_tree.prog_data.tvarset, parse_tree.prog_data.vartypes)
+	;	no_varset_vartypes .
+:- func call_arg_id_to_string(hlds.hlds_pred.call_id, int, hlds.hlds_pred.pred_markers) = string.
+:- func call_id_to_string(hlds.hlds_pred.call_id) = string.
+:- func can_fail_to_string(parse_tree.prog_data.can_fail) = string.
+:- func case_comment(string, string, list.list(string)) = string.
+:- func cons_id_and_arity_to_string(parse_tree.prog_data.cons_id) = string.
+:- func determinism_to_string(parse_tree.prog_data.determinism) = string.
+:- func functor_cons_id_to_string(parse_tree.prog_data.cons_id, list.list(parse_tree.prog_data.prog_var), parse_tree.prog_data.prog_varset, hlds.hlds_module.module_info, bool.bool) = string.
+:- func functor_to_string(term.const, list.list(parse_tree.prog_data.prog_var), parse_tree.prog_data.prog_varset, bool.bool) = string.
+:- func import_status_to_string(hlds.hlds_pred.import_status) = string.
+:- func inst_to_term(parse_tree.prog_data.mer_inst) = parse_tree.prog_data.prog_term.
+:- pred marker_name(hlds.hlds_pred.marker, string).
+:- mode marker_name((builtin.in), (builtin.out)) is det.
+:- func mercury_expanded_inst_to_string(parse_tree.prog_data.mer_inst, parse_tree.prog_data.inst_varset, hlds.hlds_module.module_info) = string.
+:- pred mercury_output_expanded_inst(parse_tree.prog_data.mer_inst, parse_tree.prog_data.inst_varset, hlds.hlds_module.module_info, io.io, io.io).
+:- mode mercury_output_expanded_inst((builtin.in), (builtin.in), (builtin.in), (builtin.di), (builtin.uo)) is det.
+:- pred mercury_output_uni_mode(hlds.hlds_goal.uni_mode, parse_tree.prog_data.inst_varset, io.io, io.io).
+:- mode mercury_output_uni_mode((builtin.in), (builtin.in), (builtin.di), (builtin.uo)) is det.
+:- pred mercury_output_uni_mode_list(list.list(hlds.hlds_goal.uni_mode), parse_tree.prog_data.inst_varset, io.io, io.io).
+:- mode mercury_output_uni_mode_list((builtin.in), (builtin.in), (builtin.di), (builtin.uo)) is det.
+:- func mercury_uni_mode_list_to_string(list.list(hlds.hlds_goal.uni_mode), parse_tree.prog_data.inst_varset) = string.
+:- func mercury_uni_mode_to_string(hlds.hlds_goal.uni_mode, parse_tree.prog_data.inst_varset) = string.
+:- func mode_to_term(parse_tree.prog_data.mer_mode) = parse_tree.prog_data.prog_term.
+:- func pred_id_to_string(hlds.hlds_module.module_info, hlds.hlds_pred.pred_id) = string.
+:- func pred_proc_id_pair_to_string(hlds.hlds_module.module_info, hlds.hlds_pred.pred_id, hlds.hlds_pred.proc_id) = string.
+:- func pred_proc_id_to_string(hlds.hlds_module.module_info, hlds.hlds_pred.pred_proc_id) = string.
+:- pred project_cons_name_and_tag(hlds.hlds_data.tagged_cons_id, string, hlds.hlds_data.cons_tag).
+:- mode project_cons_name_and_tag((builtin.in), (builtin.out), (builtin.out)) is det.
+:- func type_ctor_to_string(parse_tree.prog_data.type_ctor) = string.
+:- pred unify_context_first_to_pieces(hlds.hlds_out.is_first, hlds.hlds_out.is_first, hlds.hlds_goal.unify_context, list.list(parse_tree.error_util.format_component), list.list(parse_tree.error_util.format_component)).
+:- mode unify_context_first_to_pieces((builtin.in), (builtin.out), (builtin.in), (builtin.in), (builtin.out)) is det.
+:- pred unify_context_to_pieces(hlds.hlds_goal.unify_context, list.list(parse_tree.error_util.format_component), list.list(parse_tree.error_util.format_component)).
+:- mode unify_context_to_pieces((builtin.in), (builtin.in), (builtin.out)) is det.
+:- func unify_rhs_to_string(hlds.hlds_goal.unify_rhs, hlds.hlds_module.module_info, parse_tree.prog_data.prog_varset, bool.bool) = string.
+:- func var_modes_to_string(list.list(parse_tree.prog_data.prog_var), list.list(parse_tree.prog_data.mer_mode), parse_tree.prog_data.prog_varset, parse_tree.prog_data.inst_varset, bool.bool) = string.
+:- pred write_class_id(parse_tree.prog_data.class_id, io.io, io.io).
+:- mode write_class_id((builtin.in), (builtin.di), (builtin.uo)) is det.
+:- pred write_clause(int, hlds.hlds_module.module_info, hlds.hlds_pred.pred_id, parse_tree.prog_data.prog_varset, bool.bool, list.list(parse_tree.prog_data.prog_term), mdbcomp.prim_data.pred_or_func, hlds.hlds_clauses.clause, bool.bool, hlds.hlds_out.maybe_vartypes, io.io, io.io).
+:- mode write_clause((builtin.in), (builtin.in), (builtin.in), (builtin.in), (builtin.in), (builtin.in), (builtin.in), (builtin.in), (builtin.in), (builtin.in), (builtin.di), (builtin.uo)) is det.
+:- pred write_clauses(int, hlds.hlds_module.module_info, hlds.hlds_pred.pred_id, parse_tree.prog_data.prog_varset, bool.bool, hlds.hlds_args.proc_arg_vector(parse_tree.prog_data.prog_var), mdbcomp.prim_data.pred_or_func, list.list(hlds.hlds_clauses.clause), hlds.hlds_out.maybe_vartypes, io.io, io.io).
+:- mode write_clauses((builtin.in), (builtin.in), (builtin.in), (builtin.in), (builtin.in), (builtin.in), (builtin.in), (builtin.in), (builtin.in), (builtin.di), (builtin.uo)) is det.
+:- pred write_cons_id_and_arity(parse_tree.prog_data.cons_id, io.io, io.io).
+:- mode write_cons_id_and_arity((builtin.in), (builtin.di), (builtin.uo)) is det.
+:- pred write_eval_method(parse_tree.prog_data.eval_method, io.io, io.io).
+:- mode write_eval_method((builtin.in), (builtin.di), (builtin.uo)) is det.
+:- pred write_functor(term.const, list.list(parse_tree.prog_data.prog_var), parse_tree.prog_data.prog_varset, bool.bool, io.io, io.io).
+:- mode write_functor((builtin.in), (builtin.in), (builtin.in), (builtin.in), (builtin.di), (builtin.uo)) is det.
+:- pred write_functor_cons_id(parse_tree.prog_data.cons_id, list.list(parse_tree.prog_data.prog_var), parse_tree.prog_data.prog_varset, hlds.hlds_module.module_info, bool.bool, io.io, io.io).
+:- mode write_functor_cons_id((builtin.in), (builtin.in), (builtin.in), (builtin.in), (builtin.in), (builtin.di), (builtin.uo)) is det.
+:- pred write_goal(hlds.hlds_goal.hlds_goal, hlds.hlds_module.module_info, parse_tree.prog_data.prog_varset, bool.bool, int, string, io.io, io.io).
+:- mode write_goal((builtin.in), (builtin.in), (builtin.in), (builtin.in), (builtin.in), (builtin.in), (builtin.di), (builtin.uo)) is det.
+:- pred write_goal_list(list.list(hlds.hlds_goal.hlds_goal), hlds.hlds_module.module_info, parse_tree.prog_data.prog_varset, bool.bool, int, string, hlds.hlds_out.maybe_vartypes, io.io, io.io).
+:- mode write_goal_list((builtin.in), (builtin.in), (builtin.in), (builtin.in), (builtin.in), (builtin.in), (builtin.in), (builtin.di), (builtin.uo)) is det.
+:- pred write_hlds(int, hlds.hlds_module.module_info, io.io, io.io).
+:- mode write_hlds((builtin.in), (builtin.in), (builtin.di), (builtin.uo)) is det.
+:- pred write_instmap(hlds.instmap.instmap, parse_tree.prog_data.prog_varset, bool.bool, int, io.io, io.io).
+:- mode write_instmap((builtin.in), (builtin.in), (builtin.in), (builtin.in), (builtin.di), (builtin.uo)) is det.
+:- pred write_marker(hlds.hlds_pred.marker, io.io, io.io).
+:- mode write_marker((builtin.in), (builtin.di), (builtin.uo)) is det.
+:- pred write_pred_id(hlds.hlds_module.module_info, hlds.hlds_pred.pred_id, io.io, io.io).
+:- mode write_pred_id((builtin.in), (builtin.in), (builtin.di), (builtin.uo)) is det.
+:- pred write_pred_proc_id(hlds.hlds_module.module_info, hlds.hlds_pred.pred_proc_id, io.io, io.io).
+:- mode write_pred_proc_id((builtin.in), (builtin.in), (builtin.di), (builtin.uo)) is det.
+:- pred write_pred_proc_id_pair(hlds.hlds_module.module_info, hlds.hlds_pred.pred_id, hlds.hlds_pred.proc_id, io.io, io.io).
+:- mode write_pred_proc_id_pair((builtin.in), (builtin.in), (builtin.in), (builtin.di), (builtin.uo)) is det.
+:- pred write_proc(int, bool.bool, hlds.hlds_module.module_info, hlds.hlds_pred.pred_id, hlds.hlds_pred.proc_id, hlds.hlds_pred.import_status, hlds.hlds_pred.proc_info, io.io, io.io).
+:- mode write_proc((builtin.in), (builtin.in), (builtin.in), (builtin.in), (builtin.in), (builtin.in), (builtin.in), (builtin.di), (builtin.uo)) is det.
+:- pred write_promise(parse_tree.prog_data.promise_type, int, hlds.hlds_module.module_info, hlds.hlds_pred.pred_id, parse_tree.prog_data.prog_varset, bool.bool, list.list(parse_tree.prog_data.prog_var), mdbcomp.prim_data.pred_or_func, hlds.hlds_clauses.clause, hlds.hlds_out.maybe_vartypes, io.io, io.io).
+:- mode write_promise((builtin.in), (builtin.in), (builtin.in), (builtin.in), (builtin.in), (builtin.in), (builtin.in), (builtin.in), (builtin.in), (builtin.in), (builtin.di), (builtin.uo)) is det.
+:- pred write_type_ctor(parse_tree.prog_data.type_ctor, io.io, io.io).
+:- mode write_type_ctor((builtin.in), (builtin.di), (builtin.uo)) is det.
+:- pred write_unify_rhs(hlds.hlds_goal.unify_rhs, hlds.hlds_module.module_info, parse_tree.prog_data.prog_varset, parse_tree.prog_data.inst_varset, bool.bool, int, io.io, io.io).
+:- mode write_unify_rhs((builtin.in), (builtin.in), (builtin.in), (builtin.in), (builtin.in), (builtin.in), (builtin.di), (builtin.uo)) is det.
+:- pred write_var_modes(list.list(parse_tree.prog_data.prog_var), list.list(parse_tree.prog_data.mer_mode), parse_tree.prog_data.prog_varset, parse_tree.prog_data.inst_varset, bool.bool, io.io, io.io).
+:- mode write_var_modes((builtin.in), (builtin.in), (builtin.in), (builtin.in), (builtin.in), (builtin.di), (builtin.uo)) is det.

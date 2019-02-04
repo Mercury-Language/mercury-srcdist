@@ -1,0 +1,322 @@
+:- module (hlds.hlds_module).
+:- interface.
+:- import_module analysis.
+:- import_module bool.
+:- import_module digraph.
+:- import_module list.
+:- import_module map.
+:- import_module maybe.
+:- import_module multi_map.
+:- import_module pair.
+:- import_module recompilation.
+:- import_module set.
+:- import_module (check_hlds.unify_proc).
+:- import_module (hlds.hlds_data).
+:- import_module (hlds.hlds_pred).
+:- import_module (hlds.pred_table).
+:- import_module (hlds.special_pred).
+:- import_module (libs.globals).
+:- import_module (mdbcomp.prim_data).
+:- import_module (parse_tree.module_qual).
+:- import_module (parse_tree.prog_data).
+:- import_module (parse_tree.prog_foreign).
+:- import_module (parse_tree.prog_item).
+:- type complexity_arg_info
+	--->	complexity_arg_info(((hlds.hlds_module).complexity_arg_name) :: maybe.maybe(string), ((hlds.hlds_module).complexity_arg_kind) :: hlds.hlds_module.complexity_arg_kind).
+:- type complexity_arg_kind
+	--->	complexity_input_variable_size 
+	;	complexity_input_fixed_size 
+	;	complexity_output .
+:- type complexity_proc_info
+	--->	complexity_proc_info(((hlds.hlds_module).complexity_proc_num) :: int, ((hlds.hlds_module).complexity_proc_name) :: string, ((hlds.hlds_module).complexity_proc_args) :: list.list(hlds.hlds_module.complexity_arg_info)).
+:- type complexity_proc_map == map.map(string, int).
+:- type dependency_graph == hlds.hlds_module.dependency_graph(hlds.hlds_pred.pred_proc_id).
+:- type dependency_graph_key == digraph.digraph_key(hlds.hlds_pred.pred_proc_id).
+:- type dependency_info == hlds.hlds_module.dependency_info(hlds.hlds_pred.pred_proc_id).
+:- type dependency_ordering == hlds.hlds_module.dependency_ordering(hlds.hlds_pred.pred_proc_id).
+:- type exception_info == map.map(hlds.hlds_pred.pred_proc_id, hlds.hlds_module.proc_exception_info).
+:- type exported_enum_info
+	--->	exported_enum_info(libs.globals.foreign_language, parse_tree.prog_data.prog_context, parse_tree.prog_data.type_ctor, map.map(mdbcomp.prim_data.sym_name, string)).
+:- type foreign_code_info
+	--->	foreign_code_info(parse_tree.prog_foreign.foreign_decl_info, parse_tree.prog_foreign.foreign_body_info).
+:- type mm_tabling_info == map.map(hlds.hlds_pred.pred_proc_id, hlds.hlds_module.proc_mm_tabling_info).
+:- type module_info.
+:- type pragma_exported_proc
+	--->	pragma_exported_proc(libs.globals.foreign_language, hlds.hlds_pred.pred_id, hlds.hlds_pred.proc_id, string, parse_tree.prog_data.prog_context).
+:- type proc_exception_info
+	--->	proc_exception_info(((hlds.hlds_module).proc_exception_status) :: parse_tree.prog_data.exception_status, ((hlds.hlds_module).proc_maybe_excep_analysis_status) :: maybe.maybe(analysis.analysis_status)).
+:- type proc_mm_tabling_info
+	--->	proc_mm_tabling_info(((hlds.hlds_module).proc_mm_status) :: parse_tree.prog_data.mm_tabling_status, ((hlds.hlds_module).proc_mm_analysis_status) :: maybe.maybe(analysis.analysis_status)).
+:- type proc_trailing_info
+	--->	proc_trailing_info(((hlds.hlds_module).proc_trailing_status) :: parse_tree.prog_data.trailing_status, ((hlds.hlds_module).proc_maybe_trail_analysis_status) :: maybe.maybe(analysis.analysis_status)).
+:- type table_struct_info
+	--->	table_struct_info(((hlds.hlds_module).table_struct_proc) :: hlds.hlds_pred.proc_table_struct_info, ((hlds.hlds_module).table_struct_attrs) :: parse_tree.prog_data.table_attributes).
+:- type table_struct_map == map.map(hlds.hlds_pred.pred_proc_id, hlds.hlds_module.table_struct_info).
+:- type trailing_info == map.map(hlds.hlds_pred.pred_proc_id, hlds.hlds_module.proc_trailing_info).
+:- type type_ctor_gen_info
+	--->	type_ctor_gen_info(parse_tree.prog_data.type_ctor, mdbcomp.prim_data.module_name, string, int, hlds.hlds_pred.import_status, hlds.hlds_data.hlds_type_defn, hlds.hlds_pred.pred_proc_id, hlds.hlds_pred.pred_proc_id).
+:- type type_spec_info
+	--->	type_spec_info(((hlds.hlds_module).user_req_procs) :: set.set(hlds.hlds_pred.pred_proc_id), ((hlds.hlds_module).must_process_preds) :: set.set(hlds.hlds_pred.pred_id), ((hlds.hlds_module).user_to_process_map) :: multi_map.multi_map(hlds.hlds_pred.pred_id, hlds.hlds_pred.pred_id), ((hlds.hlds_module).pragma_map) :: multi_map.multi_map(hlds.hlds_pred.pred_id, parse_tree.prog_item.pragma_type)).
+:- type unused_arg_info == map.map(hlds.hlds_pred.pred_proc_id, list.list(int)).
+:- type dependency_graph(T) == digraph.digraph(T).
+:- type dependency_info(T).
+:- type dependency_ordering(T) == list.list(list.list(T)).
+:- pred hlds_dependency_info_get_dependency_graph(hlds.hlds_module.dependency_info(T), hlds.hlds_module.dependency_graph(T)).
+:- mode hlds_dependency_info_get_dependency_graph((builtin.in), (builtin.out)) is det.
+:- pred hlds_dependency_info_get_dependency_ordering(hlds.hlds_module.dependency_info(T), hlds.hlds_module.dependency_ordering(T)).
+:- mode hlds_dependency_info_get_dependency_ordering((builtin.in), (builtin.out)) is det.
+:- pred hlds_dependency_info_init(hlds.hlds_module.dependency_info(T)).
+:- mode hlds_dependency_info_init((builtin.out)) is det.
+:- pred hlds_dependency_info_set_dependency_graph(hlds.hlds_module.dependency_graph(T), hlds.hlds_module.dependency_info(T), hlds.hlds_module.dependency_info(T)).
+:- mode hlds_dependency_info_set_dependency_graph((builtin.in), (builtin.in), (builtin.out)) is det.
+:- pred hlds_dependency_info_set_dependency_ordering(hlds.hlds_module.dependency_ordering(T), hlds.hlds_module.dependency_info(T), hlds.hlds_module.dependency_info(T)).
+:- mode hlds_dependency_info_set_dependency_ordering((builtin.in), (builtin.in), (builtin.out)) is det.
+:- pred module_add_fact_table_file(string, hlds.hlds_module.module_info, hlds.hlds_module.module_info).
+:- mode module_add_fact_table_file((builtin.in), (builtin.in), (builtin.out)) is det.
+:- pred module_add_foreign_body_code(libs.globals.foreign_language, string, parse_tree.prog_data.prog_context, hlds.hlds_module.module_info, hlds.hlds_module.module_info).
+:- mode module_add_foreign_body_code((builtin.in), (builtin.in), (builtin.in), (builtin.in), (builtin.out)) is det.
+:- pred module_add_foreign_decl(libs.globals.foreign_language, parse_tree.prog_data.foreign_decl_is_local, string, parse_tree.prog_data.prog_context, hlds.hlds_module.module_info, hlds.hlds_module.module_info).
+:- mode module_add_foreign_decl((builtin.in), (builtin.in), (builtin.in), (builtin.in), (builtin.in), (builtin.out)) is det.
+:- pred module_add_foreign_import_module(libs.globals.foreign_language, mdbcomp.prim_data.module_name, parse_tree.prog_data.prog_context, hlds.hlds_module.module_info, hlds.hlds_module.module_info).
+:- mode module_add_foreign_import_module((builtin.in), (builtin.in), (builtin.in), (builtin.in), (builtin.out)) is det.
+:- pred module_add_imported_module_specifiers(hlds.hlds_pred.import_status, list.list(parse_tree.prog_data.module_specifier), hlds.hlds_module.module_info, hlds.hlds_module.module_info).
+:- mode module_add_imported_module_specifiers((builtin.in), (builtin.in), (builtin.in), (builtin.out)) is det.
+:- pred module_add_indirectly_imported_module_specifiers(list.list(parse_tree.prog_data.module_specifier), hlds.hlds_module.module_info, hlds.hlds_module.module_info).
+:- mode module_add_indirectly_imported_module_specifiers((builtin.in), (builtin.in), (builtin.out)) is det.
+:- pred module_get_fact_table_files(hlds.hlds_module.module_info, list.list(string)).
+:- mode module_get_fact_table_files((builtin.in), (builtin.out)) is det.
+:- pred module_info_add_parents_to_used_modules(list.list(mdbcomp.prim_data.module_name), hlds.hlds_module.module_info, hlds.hlds_module.module_info).
+:- mode module_info_add_parents_to_used_modules((builtin.in), (builtin.in), (builtin.out)) is det.
+:- pred module_info_clobber_dependency_info(hlds.hlds_module.module_info, hlds.hlds_module.module_info).
+:- mode module_info_clobber_dependency_info((builtin.in), (builtin.out)) is det.
+:- pred module_info_dependency_info(hlds.hlds_module.module_info, hlds.hlds_module.dependency_info).
+:- mode module_info_dependency_info((builtin.in), (builtin.out)) is det.
+:- pred module_info_get_all_deps(hlds.hlds_module.module_info, set.set(mdbcomp.prim_data.module_name)).
+:- mode module_info_get_all_deps((builtin.in), (builtin.out)) is det.
+:- pred module_info_get_analysis_info(hlds.hlds_module.module_info, analysis.analysis_info).
+:- mode module_info_get_analysis_info((builtin.in), (builtin.out)) is det.
+:- pred module_info_get_assertion_table(hlds.hlds_module.module_info, hlds.hlds_data.assertion_table).
+:- mode module_info_get_assertion_table((builtin.in), (builtin.out)) is det.
+:- pred module_info_get_class_table(hlds.hlds_module.module_info, hlds.hlds_data.class_table).
+:- mode module_info_get_class_table((builtin.in), (builtin.out)) is det.
+:- pred module_info_get_complexity_proc_infos(hlds.hlds_module.module_info, list.list(hlds.hlds_module.complexity_proc_info)).
+:- mode module_info_get_complexity_proc_infos((builtin.in), (builtin.out)) is det.
+:- pred module_info_get_cons_table(hlds.hlds_module.module_info, hlds.hlds_data.cons_table).
+:- mode module_info_get_cons_table((builtin.in), (builtin.out)) is det.
+:- pred module_info_get_contains_foreign_type(hlds.hlds_module.module_info, bool.bool).
+:- mode module_info_get_contains_foreign_type((builtin.in), (builtin.out)) is det.
+:- pred module_info_get_contains_par_conj(hlds.hlds_module.module_info, bool.bool).
+:- mode module_info_get_contains_par_conj((builtin.in), (builtin.out)) is det.
+:- pred module_info_get_contains_user_event(hlds.hlds_module.module_info, bool.bool).
+:- mode module_info_get_contains_user_event((builtin.in), (builtin.out)) is det.
+:- pred module_info_get_ctor_field_table(hlds.hlds_module.module_info, hlds.hlds_data.ctor_field_table).
+:- mode module_info_get_ctor_field_table((builtin.in), (builtin.out)) is det.
+:- pred module_info_get_event_set(hlds.hlds_module.module_info, parse_tree.prog_data.event_set).
+:- mode module_info_get_event_set((builtin.in), (builtin.out)) is det.
+:- pred module_info_get_exception_info(hlds.hlds_module.module_info, hlds.hlds_module.exception_info).
+:- mode module_info_get_exception_info((builtin.in), (builtin.out)) is det.
+:- pred module_info_get_exclusive_table(hlds.hlds_module.module_info, hlds.hlds_data.exclusive_table).
+:- mode module_info_get_exclusive_table((builtin.in), (builtin.out)) is det.
+:- pred module_info_get_exported_enums(hlds.hlds_module.module_info, list.list(hlds.hlds_module.exported_enum_info)).
+:- mode module_info_get_exported_enums((builtin.in), (builtin.out)) is det.
+:- pred module_info_get_foreign_body_code(hlds.hlds_module.module_info, parse_tree.prog_foreign.foreign_body_info).
+:- mode module_info_get_foreign_body_code((builtin.in), (builtin.out)) is det.
+:- pred module_info_get_foreign_decl(hlds.hlds_module.module_info, parse_tree.prog_foreign.foreign_decl_info).
+:- mode module_info_get_foreign_decl((builtin.in), (builtin.out)) is det.
+:- pred module_info_get_foreign_import_module(hlds.hlds_module.module_info, parse_tree.prog_data.foreign_import_module_info_list).
+:- mode module_info_get_foreign_import_module((builtin.in), (builtin.out)) is det.
+:- pred module_info_get_globals(hlds.hlds_module.module_info, libs.globals.globals).
+:- mode module_info_get_globals((builtin.in), (builtin.out)) is det.
+:- pred module_info_get_imported_module_specifiers(hlds.hlds_module.module_info, set.set(parse_tree.prog_data.module_specifier)).
+:- mode module_info_get_imported_module_specifiers((builtin.in), (builtin.out)) is det.
+:- pred module_info_get_indirectly_imported_module_specifiers(hlds.hlds_module.module_info, set.set(parse_tree.prog_data.module_specifier)).
+:- mode module_info_get_indirectly_imported_module_specifiers((builtin.in), (builtin.out)) is det.
+:- pred module_info_get_inst_table(hlds.hlds_module.module_info, hlds.hlds_data.inst_table).
+:- mode module_info_get_inst_table((builtin.in), (builtin.out)) is det.
+:- pred module_info_get_instance_table(hlds.hlds_module.module_info, hlds.hlds_data.instance_table).
+:- mode module_info_get_instance_table((builtin.in), (builtin.out)) is det.
+:- pred module_info_get_interface_module_specifiers(hlds.hlds_module.module_info, set.set(mdbcomp.prim_data.module_name)).
+:- mode module_info_get_interface_module_specifiers((builtin.in), (builtin.out)) is det.
+:- pred module_info_get_maybe_complexity_proc_map(hlds.hlds_module.module_info, maybe.maybe(pair.pair(int, hlds.hlds_module.complexity_proc_map))).
+:- mode module_info_get_maybe_complexity_proc_map((builtin.in), (builtin.out)) is det.
+:- pred module_info_get_maybe_dependency_info(hlds.hlds_module.module_info, maybe.maybe(hlds.hlds_module.dependency_info)).
+:- mode module_info_get_maybe_dependency_info((builtin.in), (builtin.out)) is det.
+:- pred module_info_get_maybe_recompilation_info(hlds.hlds_module.module_info, maybe.maybe(recompilation.recompilation_info)).
+:- mode module_info_get_maybe_recompilation_info((builtin.in), (builtin.out)) is det.
+:- pred module_info_get_mm_tabling_info(hlds.hlds_module.module_info, hlds.hlds_module.mm_tabling_info).
+:- mode module_info_get_mm_tabling_info((builtin.in), (builtin.out)) is det.
+:- pred module_info_get_mode_table(hlds.hlds_module.module_info, hlds.hlds_data.mode_table).
+:- mode module_info_get_mode_table((builtin.in), (builtin.out)) is det.
+:- pred module_info_get_name(hlds.hlds_module.module_info, mdbcomp.prim_data.module_name).
+:- mode module_info_get_name((builtin.in), (builtin.out)) is det.
+:- pred module_info_get_no_tag_types(hlds.hlds_module.module_info, hlds.hlds_data.no_tag_type_table).
+:- mode module_info_get_no_tag_types((builtin.in), (builtin.out)) is det.
+:- pred module_info_get_num_errors(hlds.hlds_module.module_info, int).
+:- mode module_info_get_num_errors((builtin.in), (builtin.out)) is det.
+:- pred module_info_get_partial_qualifier_info(hlds.hlds_module.module_info, parse_tree.module_qual.partial_qualifier_info).
+:- mode module_info_get_partial_qualifier_info((builtin.in), (builtin.out)) is det.
+:- pred module_info_get_pragma_exported_procs(hlds.hlds_module.module_info, list.list(hlds.hlds_module.pragma_exported_proc)).
+:- mode module_info_get_pragma_exported_procs((builtin.in), (builtin.out)) is det.
+:- pred module_info_get_predicate_table(hlds.hlds_module.module_info, hlds.pred_table.predicate_table).
+:- mode module_info_get_predicate_table((builtin.in), (builtin.out)) is det.
+:- pred module_info_get_proc_requests(hlds.hlds_module.module_info, check_hlds.unify_proc.proc_requests).
+:- mode module_info_get_proc_requests((builtin.in), (builtin.out)) is det.
+:- pred module_info_get_special_pred_map(hlds.hlds_module.module_info, hlds.special_pred.special_pred_map).
+:- mode module_info_get_special_pred_map((builtin.in), (builtin.out)) is det.
+:- pred module_info_get_stratified_preds(hlds.hlds_module.module_info, set.set(hlds.hlds_pred.pred_id)).
+:- mode module_info_get_stratified_preds((builtin.in), (builtin.out)) is det.
+:- pred module_info_get_structure_reuse_preds(hlds.hlds_module.module_info, set.set(hlds.hlds_pred.pred_id)).
+:- mode module_info_get_structure_reuse_preds((builtin.in), (builtin.out)) is det.
+:- pred module_info_get_table_struct_map(hlds.hlds_module.module_info, hlds.hlds_module.table_struct_map).
+:- mode module_info_get_table_struct_map((builtin.in), (builtin.out)) is det.
+:- pred module_info_get_trailing_info(hlds.hlds_module.module_info, hlds.hlds_module.trailing_info).
+:- mode module_info_get_trailing_info((builtin.in), (builtin.out)) is det.
+:- pred module_info_get_type_ctor_gen_infos(hlds.hlds_module.module_info, list.list(hlds.hlds_module.type_ctor_gen_info)).
+:- mode module_info_get_type_ctor_gen_infos((builtin.in), (builtin.out)) is det.
+:- pred module_info_get_type_spec_info(hlds.hlds_module.module_info, hlds.hlds_module.type_spec_info).
+:- mode module_info_get_type_spec_info((builtin.in), (builtin.out)) is det.
+:- pred module_info_get_type_table(hlds.hlds_module.module_info, hlds.hlds_data.type_table).
+:- mode module_info_get_type_table((builtin.in), (builtin.out)) is det.
+:- pred module_info_get_unused_arg_info(hlds.hlds_module.module_info, hlds.hlds_module.unused_arg_info).
+:- mode module_info_get_unused_arg_info((builtin.in), (builtin.out)) is det.
+:- pred module_info_get_used_modules(hlds.hlds_module.module_info, parse_tree.prog_data.used_modules).
+:- mode module_info_get_used_modules((builtin.in), (builtin.out)) is det.
+:- pred module_info_incr_errors(hlds.hlds_module.module_info, hlds.hlds_module.module_info).
+:- mode module_info_incr_errors((builtin.in), (builtin.out)) is det.
+:- pred module_info_incr_num_errors(int, hlds.hlds_module.module_info, hlds.hlds_module.module_info).
+:- mode module_info_incr_num_errors((builtin.in), (builtin.in), (builtin.out)) is det.
+:- pred module_info_init(mdbcomp.prim_data.module_name, list.list(parse_tree.prog_item.item), libs.globals.globals, parse_tree.module_qual.partial_qualifier_info, maybe.maybe(recompilation.recompilation_info), hlds.hlds_module.module_info).
+:- mode module_info_init((builtin.in), (builtin.in), (builtin.in), (builtin.in), (builtin.in), (builtin.out)) is det.
+:- pred module_info_new_user_final_pred(mdbcomp.prim_data.sym_name, parse_tree.prog_data.arity, string, hlds.hlds_module.module_info, hlds.hlds_module.module_info).
+:- mode module_info_new_user_final_pred((builtin.in), (builtin.in), (builtin.out), (builtin.in), (builtin.out)) is det.
+:- pred module_info_new_user_init_pred(mdbcomp.prim_data.sym_name, parse_tree.prog_data.arity, string, hlds.hlds_module.module_info, hlds.hlds_module.module_info).
+:- mode module_info_new_user_init_pred((builtin.in), (builtin.in), (builtin.out), (builtin.in), (builtin.out)) is det.
+:- pred module_info_next_atomic_count(parse_tree.prog_data.prog_context, int, hlds.hlds_module.module_info, hlds.hlds_module.module_info).
+:- mode module_info_next_atomic_count((builtin.in), (builtin.out), (builtin.in), (builtin.out)) is det.
+:- pred module_info_next_lambda_count(parse_tree.prog_data.prog_context, int, hlds.hlds_module.module_info, hlds.hlds_module.module_info).
+:- mode module_info_next_lambda_count((builtin.in), (builtin.out), (builtin.in), (builtin.out)) is det.
+:- pred module_info_next_model_non_pragma_count(int, hlds.hlds_module.module_info, hlds.hlds_module.module_info).
+:- mode module_info_next_model_non_pragma_count((builtin.out), (builtin.in), (builtin.out)) is det.
+:- pred module_info_optimize(hlds.hlds_module.module_info, hlds.hlds_module.module_info).
+:- mode module_info_optimize((builtin.in), (builtin.out)) is det.
+:- pred module_info_pred_info(hlds.hlds_module.module_info, hlds.hlds_pred.pred_id, hlds.hlds_pred.pred_info).
+:- mode module_info_pred_info((builtin.in), (builtin.in), (builtin.out)) is det.
+:- pred module_info_pred_proc_info(hlds.hlds_module.module_info, hlds.hlds_pred.pred_id, hlds.hlds_pred.proc_id, hlds.hlds_pred.pred_info, hlds.hlds_pred.proc_info).
+:- mode module_info_pred_proc_info((builtin.in), (builtin.in), (builtin.in), (builtin.out), (builtin.out)) is det.
+:- pred module_info_pred_proc_info(hlds.hlds_module.module_info, hlds.hlds_pred.pred_proc_id, hlds.hlds_pred.pred_info, hlds.hlds_pred.proc_info).
+:- mode module_info_pred_proc_info((builtin.in), (builtin.in), (builtin.out), (builtin.out)) is det.
+:- pred module_info_predids(list.list(hlds.hlds_pred.pred_id), hlds.hlds_module.module_info, hlds.hlds_module.module_info).
+:- mode module_info_predids((builtin.out), (builtin.in), (builtin.out)) is det.
+:- pred module_info_preds(hlds.hlds_module.module_info, hlds.pred_table.pred_table).
+:- mode module_info_preds((builtin.in), (builtin.out)) is det.
+:- pred module_info_proc_info(hlds.hlds_module.module_info, hlds.hlds_pred.pred_proc_id, hlds.hlds_pred.proc_info).
+:- mode module_info_proc_info((builtin.in), (builtin.in), (builtin.out)) is det.
+:- pred module_info_proc_info(hlds.hlds_module.module_info, hlds.hlds_pred.pred_id, hlds.hlds_pred.proc_id, hlds.hlds_pred.proc_info).
+:- mode module_info_proc_info((builtin.in), (builtin.in), (builtin.in), (builtin.out)) is det.
+:- pred module_info_remove_predicate(hlds.hlds_pred.pred_id, hlds.hlds_module.module_info, hlds.hlds_module.module_info).
+:- mode module_info_remove_predicate((builtin.in), (builtin.in), (builtin.out)) is det.
+:- pred module_info_remove_predid(hlds.hlds_pred.pred_id, hlds.hlds_module.module_info, hlds.hlds_module.module_info).
+:- mode module_info_remove_predid((builtin.in), (builtin.in), (builtin.out)) is det.
+:- pred module_info_set_analysis_info(analysis.analysis_info, hlds.hlds_module.module_info, hlds.hlds_module.module_info).
+:- mode module_info_set_analysis_info((builtin.in), (builtin.in), (builtin.out)) is det.
+:- pred module_info_set_assertion_table(hlds.hlds_data.assertion_table, hlds.hlds_module.module_info, hlds.hlds_module.module_info).
+:- mode module_info_set_assertion_table((builtin.in), (builtin.in), (builtin.out)) is det.
+:- pred module_info_set_class_table(hlds.hlds_data.class_table, hlds.hlds_module.module_info, hlds.hlds_module.module_info).
+:- mode module_info_set_class_table((builtin.in), (builtin.in), (builtin.out)) is det.
+:- pred module_info_set_complexity_proc_infos(list.list(hlds.hlds_module.complexity_proc_info), hlds.hlds_module.module_info, hlds.hlds_module.module_info).
+:- mode module_info_set_complexity_proc_infos((builtin.in), (builtin.in), (builtin.out)) is det.
+:- pred module_info_set_cons_table(hlds.hlds_data.cons_table, hlds.hlds_module.module_info, hlds.hlds_module.module_info).
+:- mode module_info_set_cons_table((builtin.in), (builtin.in), (builtin.out)) is det.
+:- pred module_info_set_contains_foreign_type(hlds.hlds_module.module_info, hlds.hlds_module.module_info).
+:- mode module_info_set_contains_foreign_type((builtin.in), (builtin.out)) is det.
+:- pred module_info_set_contains_par_conj(hlds.hlds_module.module_info, hlds.hlds_module.module_info).
+:- mode module_info_set_contains_par_conj((builtin.in), (builtin.out)) is det.
+:- pred module_info_set_contains_user_event(hlds.hlds_module.module_info, hlds.hlds_module.module_info).
+:- mode module_info_set_contains_user_event((builtin.in), (builtin.out)) is det.
+:- pred module_info_set_ctor_field_table(hlds.hlds_data.ctor_field_table, hlds.hlds_module.module_info, hlds.hlds_module.module_info).
+:- mode module_info_set_ctor_field_table((builtin.in), (builtin.in), (builtin.out)) is det.
+:- pred module_info_set_dependency_info(hlds.hlds_module.dependency_info, hlds.hlds_module.module_info, hlds.hlds_module.module_info).
+:- mode module_info_set_dependency_info((builtin.in), (builtin.in), (builtin.out)) is det.
+:- pred module_info_set_event_set(parse_tree.prog_data.event_set, hlds.hlds_module.module_info, hlds.hlds_module.module_info).
+:- mode module_info_set_event_set((builtin.in), (builtin.in), (builtin.out)) is det.
+:- pred module_info_set_exception_info(hlds.hlds_module.exception_info, hlds.hlds_module.module_info, hlds.hlds_module.module_info).
+:- mode module_info_set_exception_info((builtin.in), (builtin.in), (builtin.out)) is det.
+:- pred module_info_set_exclusive_table(hlds.hlds_data.exclusive_table, hlds.hlds_module.module_info, hlds.hlds_module.module_info).
+:- mode module_info_set_exclusive_table((builtin.in), (builtin.in), (builtin.out)) is det.
+:- pred module_info_set_exported_enums(list.list(hlds.hlds_module.exported_enum_info), hlds.hlds_module.module_info, hlds.hlds_module.module_info).
+:- mode module_info_set_exported_enums((builtin.in), (builtin.in), (builtin.out)) is det.
+:- pred module_info_set_foreign_body_code(parse_tree.prog_foreign.foreign_body_info, hlds.hlds_module.module_info, hlds.hlds_module.module_info).
+:- mode module_info_set_foreign_body_code((builtin.in), (builtin.in), (builtin.out)) is det.
+:- pred module_info_set_foreign_decl(parse_tree.prog_foreign.foreign_decl_info, hlds.hlds_module.module_info, hlds.hlds_module.module_info).
+:- mode module_info_set_foreign_decl((builtin.in), (builtin.in), (builtin.out)) is det.
+:- pred module_info_set_foreign_import_module(parse_tree.prog_data.foreign_import_module_info_list, hlds.hlds_module.module_info, hlds.hlds_module.module_info).
+:- mode module_info_set_foreign_import_module((builtin.in), (builtin.in), (builtin.out)) is det.
+:- pred module_info_set_globals(libs.globals.globals, hlds.hlds_module.module_info, hlds.hlds_module.module_info).
+:- mode module_info_set_globals((builtin.in), (builtin.in), (builtin.out)) is det.
+:- pred module_info_set_inst_table(hlds.hlds_data.inst_table, hlds.hlds_module.module_info, hlds.hlds_module.module_info).
+:- mode module_info_set_inst_table((builtin.in), (builtin.in), (builtin.out)) is det.
+:- pred module_info_set_instance_table(hlds.hlds_data.instance_table, hlds.hlds_module.module_info, hlds.hlds_module.module_info).
+:- mode module_info_set_instance_table((builtin.in), (builtin.in), (builtin.out)) is det.
+:- pred module_info_set_maybe_complexity_proc_map(maybe.maybe(pair.pair(int, hlds.hlds_module.complexity_proc_map)), hlds.hlds_module.module_info, hlds.hlds_module.module_info).
+:- mode module_info_set_maybe_complexity_proc_map((builtin.in), (builtin.in), (builtin.out)) is det.
+:- pred module_info_set_maybe_recompilation_info(maybe.maybe(recompilation.recompilation_info), hlds.hlds_module.module_info, hlds.hlds_module.module_info).
+:- mode module_info_set_maybe_recompilation_info((builtin.in), (builtin.in), (builtin.out)) is det.
+:- pred module_info_set_mm_tabling_info(hlds.hlds_module.mm_tabling_info, hlds.hlds_module.module_info, hlds.hlds_module.module_info).
+:- mode module_info_set_mm_tabling_info((builtin.in), (builtin.in), (builtin.out)) is det.
+:- pred module_info_set_mode_table(hlds.hlds_data.mode_table, hlds.hlds_module.module_info, hlds.hlds_module.module_info).
+:- mode module_info_set_mode_table((builtin.in), (builtin.in), (builtin.out)) is det.
+:- pred module_info_set_no_tag_types(hlds.hlds_data.no_tag_type_table, hlds.hlds_module.module_info, hlds.hlds_module.module_info).
+:- mode module_info_set_no_tag_types((builtin.in), (builtin.in), (builtin.out)) is det.
+:- pred module_info_set_num_errors(int, hlds.hlds_module.module_info, hlds.hlds_module.module_info).
+:- mode module_info_set_num_errors((builtin.in), (builtin.in), (builtin.out)) is det.
+:- pred module_info_set_partial_qualifier_info(parse_tree.module_qual.partial_qualifier_info, hlds.hlds_module.module_info, hlds.hlds_module.module_info).
+:- mode module_info_set_partial_qualifier_info((builtin.in), (builtin.in), (builtin.out)) is det.
+:- pred module_info_set_pragma_exported_procs(list.list(hlds.hlds_module.pragma_exported_proc), hlds.hlds_module.module_info, hlds.hlds_module.module_info).
+:- mode module_info_set_pragma_exported_procs((builtin.in), (builtin.in), (builtin.out)) is det.
+:- pred module_info_set_pred_info(hlds.hlds_pred.pred_id, hlds.hlds_pred.pred_info, hlds.hlds_module.module_info, hlds.hlds_module.module_info).
+:- mode module_info_set_pred_info((builtin.in), (builtin.in), (builtin.in), (builtin.out)) is det.
+:- pred module_info_set_pred_proc_info(hlds.hlds_pred.pred_id, hlds.hlds_pred.proc_id, hlds.hlds_pred.pred_info, hlds.hlds_pred.proc_info, hlds.hlds_module.module_info, hlds.hlds_module.module_info).
+:- mode module_info_set_pred_proc_info((builtin.in), (builtin.in), (builtin.in), (builtin.in), (builtin.in), (builtin.out)) is det.
+:- pred module_info_set_pred_proc_info(hlds.hlds_pred.pred_proc_id, hlds.hlds_pred.pred_info, hlds.hlds_pred.proc_info, hlds.hlds_module.module_info, hlds.hlds_module.module_info).
+:- mode module_info_set_pred_proc_info((builtin.in), (builtin.in), (builtin.in), (builtin.in), (builtin.out)) is det.
+:- pred module_info_set_predicate_table(hlds.pred_table.predicate_table, hlds.hlds_module.module_info, hlds.hlds_module.module_info).
+:- mode module_info_set_predicate_table((builtin.in), (builtin.in), (builtin.out)) is det.
+:- pred module_info_set_preds(hlds.pred_table.pred_table, hlds.hlds_module.module_info, hlds.hlds_module.module_info).
+:- mode module_info_set_preds((builtin.in), (builtin.in), (builtin.out)) is det.
+:- pred module_info_set_proc_requests(check_hlds.unify_proc.proc_requests, hlds.hlds_module.module_info, hlds.hlds_module.module_info).
+:- mode module_info_set_proc_requests((builtin.in), (builtin.in), (builtin.out)) is det.
+:- pred module_info_set_special_pred_map(hlds.special_pred.special_pred_map, hlds.hlds_module.module_info, hlds.hlds_module.module_info).
+:- mode module_info_set_special_pred_map((builtin.in), (builtin.in), (builtin.out)) is det.
+:- pred module_info_set_stratified_preds(set.set(hlds.hlds_pred.pred_id), hlds.hlds_module.module_info, hlds.hlds_module.module_info).
+:- mode module_info_set_stratified_preds((builtin.in), (builtin.in), (builtin.out)) is det.
+:- pred module_info_set_structure_reuse_preds(set.set(hlds.hlds_pred.pred_id), hlds.hlds_module.module_info, hlds.hlds_module.module_info).
+:- mode module_info_set_structure_reuse_preds((builtin.in), (builtin.in), (builtin.out)) is det.
+:- pred module_info_set_table_struct_map(hlds.hlds_module.table_struct_map, hlds.hlds_module.module_info, hlds.hlds_module.module_info).
+:- mode module_info_set_table_struct_map((builtin.in), (builtin.in), (builtin.out)) is det.
+:- pred module_info_set_trailing_info(hlds.hlds_module.trailing_info, hlds.hlds_module.module_info, hlds.hlds_module.module_info).
+:- mode module_info_set_trailing_info((builtin.in), (builtin.in), (builtin.out)) is det.
+:- pred module_info_set_type_ctor_gen_infos(list.list(hlds.hlds_module.type_ctor_gen_info), hlds.hlds_module.module_info, hlds.hlds_module.module_info).
+:- mode module_info_set_type_ctor_gen_infos((builtin.in), (builtin.in), (builtin.out)) is det.
+:- pred module_info_set_type_spec_info(hlds.hlds_module.type_spec_info, hlds.hlds_module.module_info, hlds.hlds_module.module_info).
+:- mode module_info_set_type_spec_info((builtin.in), (builtin.in), (builtin.out)) is det.
+:- pred module_info_set_type_table(hlds.hlds_data.type_table, hlds.hlds_module.module_info, hlds.hlds_module.module_info).
+:- mode module_info_set_type_table((builtin.in), (builtin.in), (builtin.out)) is det.
+:- pred module_info_set_unused_arg_info(hlds.hlds_module.unused_arg_info, hlds.hlds_module.module_info, hlds.hlds_module.module_info).
+:- mode module_info_set_unused_arg_info((builtin.in), (builtin.in), (builtin.out)) is det.
+:- pred module_info_set_used_modules(parse_tree.prog_data.used_modules, hlds.hlds_module.module_info, hlds.hlds_module.module_info).
+:- mode module_info_set_used_modules((builtin.in), (builtin.in), (builtin.out)) is det.
+:- pred module_info_user_final_pred_c_names(hlds.hlds_module.module_info, list.list(string)).
+:- mode module_info_user_final_pred_c_names((builtin.in), (builtin.out)) is det.
+:- pred module_info_user_final_pred_procs(hlds.hlds_module.module_info, list.list(hlds.hlds_pred.pred_proc_id)).
+:- mode module_info_user_final_pred_procs((builtin.in), (builtin.out)) is det.
+:- pred module_info_user_init_pred_c_names(hlds.hlds_module.module_info, list.list(string)).
+:- mode module_info_user_init_pred_c_names((builtin.in), (builtin.out)) is det.
+:- pred module_info_user_init_pred_procs(hlds.hlds_module.module_info, list.list(hlds.hlds_pred.pred_proc_id)).
+:- mode module_info_user_init_pred_procs((builtin.in), (builtin.out)) is det.
+:- func predicate_arity(hlds.hlds_module.module_info, hlds.hlds_pred.pred_id) = parse_tree.prog_data.arity.
+:- pred predicate_id(hlds.hlds_module.module_info, hlds.hlds_pred.pred_id, mdbcomp.prim_data.module_name, string, parse_tree.prog_data.arity).
+:- mode predicate_id((builtin.in), (builtin.in), (builtin.out), (builtin.out), (builtin.out)) is det.
+:- func predicate_module(hlds.hlds_module.module_info, hlds.hlds_pred.pred_id) = mdbcomp.prim_data.module_name.
+:- func predicate_name(hlds.hlds_module.module_info, hlds.hlds_pred.pred_id) = string.
+:- pred visible_module(mdbcomp.prim_data.module_name, hlds.hlds_module.module_info).
+:- mode visible_module((builtin.out), (builtin.in)) is multi.

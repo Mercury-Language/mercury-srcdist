@@ -1,0 +1,20 @@
+:- module coverage.
+:- interface.
+:- import_module map.
+:- import_module mdbcomp.
+:- import_module measurements.
+:- import_module profile.
+:- import_module report.
+:- import_module (mdbcomp.program_representation).
+:- type coverage_info
+	--->	coverage_unknown 
+	;	coverage_known_same(int)
+	;	coverage_known(int, int)
+	;	coverage_known_before(int)
+	;	coverage_known_after(int).
+:- pred get_coverage_before(coverage.coverage_info, int).
+:- mode get_coverage_before((builtin.in), (builtin.out)) is semidet.
+:- pred get_coverage_before_and_after(coverage.coverage_info, int, int).
+:- mode get_coverage_before_and_after((builtin.in), (builtin.out), (builtin.out)) is semidet.
+:- pred procrep_annotate_with_coverage(measurements.own_prof_info, map.map(mdbcomp.program_representation.goal_path, report.call_site_perf), map.map(mdbcomp.program_representation.goal_path, profile.coverage_point), map.map(mdbcomp.program_representation.goal_path, profile.coverage_point), mdbcomp.program_representation.proc_rep, mdbcomp.program_representation.proc_rep(coverage.coverage_info)).
+:- mode procrep_annotate_with_coverage((builtin.in), (builtin.in), (builtin.in), (builtin.in), (builtin.in), (builtin.out)) is det.

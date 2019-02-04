@@ -1,0 +1,59 @@
+:- module (backend_libs.switch_util).
+:- interface.
+:- import_module assoc_list.
+:- import_module hlds.
+:- import_module list.
+:- import_module map.
+:- import_module pair.
+:- import_module parse_tree.
+:- import_module set.
+:- import_module (backend_libs.rtti).
+:- import_module (hlds.hlds_data).
+:- import_module (hlds.hlds_goal).
+:- import_module (hlds.hlds_module).
+:- import_module (parse_tree.prog_data).
+:- import_module (parse_tree.prog_type).
+:- type case_num_ptags_map == map.map(int, set.set(int)).
+:- type maybe_int_switch_info
+	--->	int_switch(((backend_libs.switch_util).lower_limit) :: int, ((backend_libs.switch_util).upper_limit) :: int, ((backend_libs.switch_util).num_values) :: int)
+	;	not_int_switch .
+:- type ptag_count_map == map.map(hlds.hlds_data.tag_bits, pair.pair(backend_libs.rtti.sectag_locn, int)).
+:- type switch_category
+	--->	atomic_switch 
+	;	string_switch 
+	;	tag_switch 
+	;	other_switch .
+:- type ptag_case(CaseRep)
+	--->	ptag_case(backend_libs.rtti.sectag_locn, backend_libs.switch_util.stag_goal_map(CaseRep)).
+:- type ptag_case_entry(CaseRep)
+	--->	ptag_case_entry(hlds.hlds_data.tag_bits, backend_libs.switch_util.ptag_case(CaseRep)).
+:- type ptag_case_group_entry(CaseRep)
+	--->	ptag_case_group_entry(hlds.hlds_data.tag_bits, list.list(hlds.hlds_data.tag_bits), backend_libs.switch_util.ptag_case(CaseRep)).
+:- type ptag_case_group_list(CaseRep) == list.list(backend_libs.switch_util.ptag_case_group_entry(CaseRep)).
+:- type ptag_case_list(CaseRep) == list.list(backend_libs.switch_util.ptag_case_entry(CaseRep)).
+:- type ptag_case_map(CaseRep) == map.map(hlds.hlds_data.tag_bits, backend_libs.switch_util.ptag_case(CaseRep)).
+:- type stag_goal_list(CaseRep) == assoc_list.assoc_list(int, CaseRep).
+:- type stag_goal_map(CaseRep) == map.map(int, CaseRep).
+:- type string_hash_slot(CaseRep)
+	--->	string_hash_slot(int, string, CaseRep).
+:- pred calc_string_hash_slots(assoc_list.assoc_list(int, assoc_list.assoc_list(string, CaseRep)), map.map(int, assoc_list.assoc_list(string, CaseRep)), map.map(int, backend_libs.switch_util.string_hash_slot(CaseRep))).
+:- mode calc_string_hash_slots((builtin.in), (builtin.in), (builtin.out)) is det.
+:- func estimate_switch_tag_test_cost(hlds.hlds_data.cons_tag) = int.
+:- pred get_ptag_counts(parse_tree.prog_data.mer_type, hlds.hlds_module.module_info, int, backend_libs.switch_util.ptag_count_map).
+:- mode get_ptag_counts((builtin.in), (builtin.in), (builtin.out), (builtin.out)) is det.
+:- pred group_cases_by_ptag(list.list(hlds.hlds_goal.tagged_case), pred(hlds.hlds_goal.tagged_case, CaseRep, StateA, StateA, StateB, StateB, StateC, StateC), StateA, StateA, StateB, StateB, StateC, StateC, backend_libs.switch_util.case_num_ptags_map, backend_libs.switch_util.ptag_case_map(CaseRep)).
+:- mode group_cases_by_ptag((builtin.in), builtin.in((pred((builtin.in), (builtin.out), (builtin.in), (builtin.out), (builtin.in), (builtin.out), (builtin.in), (builtin.out)) is det)), (builtin.in), (builtin.out), (builtin.in), (builtin.out), (builtin.in), (builtin.out), (builtin.out), (builtin.out)) is det.
+:- pred num_cons_ids_in_tagged_cases(list.list(hlds.hlds_goal.tagged_case), int, int).
+:- mode num_cons_ids_in_tagged_cases((builtin.in), (builtin.out), (builtin.out)) is det.
+:- pred order_ptags_by_count(backend_libs.switch_util.ptag_count_map, backend_libs.switch_util.ptag_case_map(CaseRep), backend_libs.switch_util.ptag_case_group_list(CaseRep)).
+:- mode order_ptags_by_count((builtin.in), (builtin.in), (builtin.out)) is det.
+:- pred order_ptags_by_value(int, int, backend_libs.switch_util.ptag_case_map(CaseRep), backend_libs.switch_util.ptag_case_list(CaseRep)).
+:- mode order_ptags_by_value((builtin.in), (builtin.in), (builtin.in), (builtin.out)) is det.
+:- pred string_hash_cases(list.list(hlds.hlds_goal.tagged_case), int, pred(hlds.hlds_goal.tagged_case, CaseRep, StateA, StateA, StateB, StateB, StateC, StateC), StateA, StateA, StateB, StateB, StateC, StateC, map.map(int, assoc_list.assoc_list(string, CaseRep))).
+:- mode string_hash_cases((builtin.in), (builtin.in), builtin.in((pred((builtin.in), (builtin.out), (builtin.in), (builtin.out), (builtin.in), (builtin.out), (builtin.in), (builtin.out)) is det)), (builtin.in), (builtin.out), (builtin.in), (builtin.out), (builtin.in), (builtin.out), (builtin.out)) is det.
+:- func switch_density(int, int) = int.
+:- pred tag_cases(hlds.hlds_module.module_info, parse_tree.prog_data.mer_type, list.list(hlds.hlds_goal.case), list.list(hlds.hlds_goal.tagged_case), backend_libs.switch_util.maybe_int_switch_info).
+:- mode tag_cases((builtin.in), (builtin.in), (builtin.in), (builtin.out), (builtin.out)) is det.
+:- func type_ctor_cat_to_switch_cat(parse_tree.prog_type.type_ctor_category) = backend_libs.switch_util.switch_category.
+:- pred type_range(hlds.hlds_module.module_info, parse_tree.prog_type.type_ctor_category, parse_tree.prog_data.mer_type, int, int, int).
+:- mode type_range((builtin.in), (builtin.in), (builtin.in), (builtin.out), (builtin.out), (builtin.out)) is semidet.

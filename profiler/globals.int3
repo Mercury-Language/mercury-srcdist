@@ -1,0 +1,4 @@
+:- module globals.
+:- interface.
+:- type globals.
+:- type what_to_profile.

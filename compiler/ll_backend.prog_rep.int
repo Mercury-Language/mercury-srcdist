@@ -1,0 +1,16 @@
+:- module (ll_backend.prog_rep).
+:- interface.
+:- import_module list.
+:- import_module map.
+:- import_module pair.
+:- import_module (hlds.hlds_goal).
+:- import_module (hlds.hlds_module).
+:- import_module (hlds.instmap).
+:- import_module (ll_backend.stack_layout).
+:- import_module (parse_tree.prog_data).
+:- type include_variable_table
+	--->	include_variable_table 
+	;	do_not_include_variable_table .
+:- type var_num_map == map.map(parse_tree.prog_data.prog_var, pair.pair(int, string)).
+:- pred represent_proc_as_bytecodes(list.list(parse_tree.prog_data.prog_var), hlds.hlds_goal.hlds_goal, hlds.instmap.instmap, parse_tree.prog_data.vartypes, ll_backend.prog_rep.var_num_map, hlds.hlds_module.module_info, ll_backend.prog_rep.include_variable_table, parse_tree.prog_data.determinism, ll_backend.stack_layout.stack_layout_info, ll_backend.stack_layout.stack_layout_info, list.list(int)).
+:- mode represent_proc_as_bytecodes((builtin.in), (builtin.in), (builtin.in), (builtin.in), (builtin.in), (builtin.in), (builtin.in), (builtin.in), (builtin.in), (builtin.out), (builtin.out)) is det.

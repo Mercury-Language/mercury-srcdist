@@ -1,0 +1,160 @@
+:- module (ml_backend.ilasm).
+:- interface.
+:- import_module bool.
+:- import_module integer.
+:- import_module io.
+:- import_module list.
+:- import_module maybe.
+:- import_module term.
+:- import_module (ml_backend.ilds).
+:- type assembly_decl
+	--->	version(int, int, int, int)
+	;	hash(list.list(ml_backend.ilasm.int8))
+	;	public_key_token(list.list(ml_backend.ilasm.int8))
+	;	custom(ml_backend.ilasm.custom_decl).
+:- type byte == ml_backend.ilasm.int8.
+:- type classattr
+	--->	abstract 
+	;	ansi 
+	;	auto 
+	;	autochar 
+	;	beforefieldinit 
+	;	explicit 
+	;	interface 
+	;	nestedassembly 
+	;	nestedfamandassem 
+	;	nestedfamily 
+	;	nestedfamorassem 
+	;	nestedprivate 
+	;	nestedpublic 
+	;	private 
+	;	public 
+	;	rtspecialname 
+	;	sealed 
+	;	sequential 
+	;	serializable 
+	;	specialname 
+	;	unicode .
+:- type custom_decl
+	--->	custom_decl(ml_backend.ilasm.custom_type, maybe.maybe(ml_backend.ilasm.custom_type), ml_backend.ilasm.qstring_or_bytes).
+:- type custom_type
+	--->	type(ml_backend.ilds.il_type)
+	;	methodref(ml_backend.ilds.methodref).
+:- type data_body
+	--->	itemlist(list.list(ml_backend.ilasm.data_item))
+	;	item(ml_backend.ilasm.data_item).
+:- type data_item
+	--->	float32(ml_backend.ilasm.float32)
+	;	float64(ml_backend.ilasm.float64)
+	;	int64(ml_backend.ilasm.int64)
+	;	int32(ml_backend.ilasm.int32)
+	;	int16(ml_backend.ilasm.int16)
+	;	int8(ml_backend.ilasm.int8)
+	;	char_ptr(string)
+	;	&(ml_backend.ilds.id)
+	;	bytearray(list.list(ml_backend.ilasm.byte)).
+:- type extends
+	--->	extends(ml_backend.ilds.class_name)
+	;	extends_nothing .
+:- type field_init
+	--->	data_item(ml_backend.ilasm.data_item)
+	;	wchar_ptr(string)
+	;	binary_float32(ml_backend.ilasm.int32)
+	;	binary_float64(ml_backend.ilasm.int64).
+:- type field_initializer
+	--->	none 
+	;	at(ml_backend.ilds.id)
+	;	equals(ml_backend.ilasm.field_init).
+:- type fieldattr
+	--->	assembly 
+	;	famandassem 
+	;	family 
+	;	famorassem 
+	;	initonly 
+	;	literal 
+	;	notserialized 
+	;	pinvokeimpl 
+	;	private 
+	;	privatescope 
+	;	public 
+	;	static 
+	;	volatile .
+:- type float32
+	--->	float32(float).
+:- type float64
+	--->	float64(float).
+:- type implattr
+	--->	il 
+	;	implemented 
+	;	internalcall 
+	;	managed 
+	;	native 
+	;	ole 
+	;	optil 
+	;	runtime 
+	;	unmanaged .
+:- type implements
+	--->	implements(list.list(ml_backend.ilds.class_name)).
+:- type int16
+	--->	int16(int).
+:- type int32
+	--->	int32(int).
+:- type int64
+	--->	int64(integer.integer).
+:- type int8
+	--->	int8(int).
+:- type methattr
+	--->	abstract 
+	;	assembly 
+	;	famandassem 
+	;	family 
+	;	famorassem 
+	;	final 
+	;	hidebysig 
+	;	newslot 
+	;	private 
+	;	privatescope 
+	;	public 
+	;	rtspecialname 
+	;	specialname 
+	;	static 
+	;	synchronized 
+	;	virtual 
+	;	pinvokeimpl .
+:- type method_body_decl
+	--->	emitbyte(ml_backend.ilasm.int32)
+	;	maxstack(ml_backend.ilasm.int32)
+	;	entrypoint 
+	;	zeroinit 
+	;	custom(ml_backend.ilasm.custom_decl)
+	;	instrs(list.list(ml_backend.ilds.instr))
+	;	label(string).
+:- type method_defn == list.list(ml_backend.ilasm.method_body_decl).
+:- type methodhead
+	--->	methodhead(list.list(ml_backend.ilasm.methattr), ml_backend.ilds.member_name, ml_backend.ilds.signature, list.list(ml_backend.ilasm.implattr)).
+:- type qstring_or_bytes
+	--->	qstring(string)
+	;	bytes(list.list(ml_backend.ilasm.int8))
+	;	no_initalizer .
+:- type class_member
+	--->	method(ml_backend.ilasm.methodhead, ml_backend.ilasm.method_defn)
+	;	field(list.list(ml_backend.ilasm.fieldattr), ml_backend.ilds.il_type, ml_backend.ilds.id, maybe.maybe(ml_backend.ilasm.int32), ml_backend.ilasm.field_initializer)
+	;	property(ml_backend.ilds.il_type, ml_backend.ilds.id, maybe.maybe(ml_backend.ilasm.methodhead), maybe.maybe(ml_backend.ilasm.methodhead))
+	;	nested_class(list.list(ml_backend.ilasm.classattr), ml_backend.ilds.id, ml_backend.ilasm.extends, ml_backend.ilasm.implements, list.list(ml_backend.ilasm.class_member))
+	;	custom(ml_backend.ilasm.custom_decl)
+	;	comment_term(term.term)
+	;	comment(string)
+	;	some [T] (comment_thing(T)).
+:- type decl
+	--->	class(list.list(ml_backend.ilasm.classattr), ml_backend.ilds.id, ml_backend.ilasm.extends, ml_backend.ilasm.implements, list.list(ml_backend.ilasm.class_member))
+	;	namespace(ml_backend.ilds.namespace_qual_name, list.list(ml_backend.ilasm.decl))
+	;	method(ml_backend.ilasm.methodhead, ml_backend.ilasm.method_defn)
+	;	data(bool.bool, maybe.maybe(ml_backend.ilds.id), ml_backend.ilasm.data_body)
+	;	file(ml_backend.ilds.id)
+	;	extern_module(ml_backend.ilds.id)
+	;	extern_assembly(ml_backend.ilds.id, list.list(ml_backend.ilasm.assembly_decl))
+	;	assembly(ml_backend.ilds.id)
+	;	custom(ml_backend.ilasm.custom_decl)
+	;	comment_term(term.term)
+	;	some [T] (comment_thing(T))
+	;	comment(string).

@@ -1,0 +1,5 @@
+:- module (check_hlds.modes).
+:- interface.
+:- type after_goals.
+:- type extra_goals.
+:- type modes_safe_to_continue.

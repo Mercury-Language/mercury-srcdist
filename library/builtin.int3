@@ -1,0 +1,37 @@
+:- module builtin.
+:- interface.
+:- type c_pointer.
+:- type comparison_result.
+:- type compare(T).
+:- type comparison_func(T).
+:- type comparison_pred(T).
+:- type unify(T).
+:- inst (compare) == (pred((builtin.uo), (builtin.in), (builtin.in)) is det).
+:- inst (comparison_func) == builtin.comparison_func(ground).
+:- inst (comparison_pred) == builtin.comparison_pred(ground).
+:- inst (dead) == clobbered.
+:- inst (mostly_dead) == mostly_clobbered.
+:- inst (new) == free.
+:- inst (old) == any.
+:- inst (unify) == (pred((builtin.in), (builtin.in)) is semidet).
+:- inst (comparison_func(I)) == (func(builtin.in(I), builtin.in(I)) = (builtin.out) is det).
+:- inst (comparison_pred(I)) == (pred(builtin.in(I), builtin.in(I), (builtin.out)) is det).
+:- mode (di) == (unique >> clobbered).
+:- mode (ia) == (any >> any).
+:- mode (in) == (ground >> ground).
+:- mode (input) == (ground >> ground).
+:- mode (mdi) == (mostly_unique >> mostly_clobbered).
+:- mode (mui) == (mostly_unique >> mostly_unique).
+:- mode (muo) == (free >> mostly_unique).
+:- mode (no) == ((builtin.new) >> (builtin.old)).
+:- mode (oa) == (free >> any).
+:- mode (oo) == ((builtin.old) >> (builtin.old)).
+:- mode (out) == (free >> ground).
+:- mode (output) == (free >> ground).
+:- mode (ui) == (unique >> unique).
+:- mode (unused) == (free >> free).
+:- mode (uo) == (free >> unique).
+:- mode (di(Inst)) == (Inst >> clobbered).
+:- mode (in(Inst)) == (Inst >> Inst).
+:- mode (mdi(Inst)) == (Inst >> mostly_clobbered).
+:- mode (out(Inst)) == (free >> Inst).

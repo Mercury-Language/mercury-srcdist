@@ -1,0 +1,11 @@
+:- module relation.
+:- interface.
+:- import_module assoc_list.
+:- import_module enum.
+:- import_module list.
+:- import_module set.
+:- import_module sparse_bitset.
+:- type relation_key.
+:- type relation_key_set.
+:- type relation(T).
+:- instance (enum(relation.relation_key)).

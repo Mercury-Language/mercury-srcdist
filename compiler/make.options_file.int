@@ -1,0 +1,29 @@
+:- module (make.options_file).
+:- interface.
+:- import_module io.
+:- import_module list.
+:- import_module maybe.
+:- import_module (mdbcomp.prim_data).
+:- type options_variables.
+:- pred lookup_default_options(make.options_file.options_variables, maybe.maybe(list.list(string)), io.io, io.io).
+:- mode lookup_default_options((builtin.in), (builtin.out), (builtin.di), (builtin.uo)) is det.
+:- pred lookup_main_target(make.options_file.options_variables, maybe.maybe(list.list(string)), io.io, io.io).
+:- mode lookup_main_target((builtin.in), (builtin.out), (builtin.di), (builtin.uo)) is det.
+:- pred lookup_mmc_module_options(make.options_file.options_variables, mdbcomp.prim_data.module_name, maybe.maybe(list.list(string)), io.io, io.io).
+:- mode lookup_mmc_module_options((builtin.in), (builtin.in), (builtin.out), (builtin.di), (builtin.uo)) is det.
+:- pred lookup_mmc_options(make.options_file.options_variables, maybe.maybe(list.list(string)), io.io, io.io).
+:- mode lookup_mmc_options((builtin.in), (builtin.out), (builtin.di), (builtin.uo)) is det.
+:- func options_variables_init = make.options_file.options_variables.
+:- pred read_args_file(libs.file_util.file_name, maybe.maybe(list.list(string)), io.io, io.io).
+:- mode read_args_file((builtin.in), (builtin.out), (builtin.di), (builtin.uo)) is det.
+:- pred read_options_file(libs.file_util.file_name, make.options_file.options_variables, maybe.maybe(make.options_file.options_variables), io.io, io.io).
+:- mode read_options_file((builtin.in), (builtin.in), (builtin.out), (builtin.di), (builtin.uo)) is det.
+:- pred read_options_files(make.options_file.options_variables, maybe.maybe(make.options_file.options_variables), io.io, io.io).
+:- mode read_options_files((builtin.in), (builtin.out), (builtin.di), (builtin.uo)) is det.
+:- implementation.
+:- import_module map.
+:- type found_options_file_error
+	--->	found_options_file_error .
+:- type options_variable == string.
+:- type options_variable_value.
+:- type options_variables == map.map(make.options_file.options_variable, make.options_file.options_variable_value).

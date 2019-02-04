@@ -1,0 +1,31 @@
+:- module old_html_format.
+:- interface.
+:- import_module bool.
+:- import_module list.
+:- import_module measurements.
+:- import_module profile.
+:- import_module query.
+:- import_module top_procs.
+:- import_module unit.
+:- type header_wrap_func == (func(string, query.order_criteria) = string).
+:- type id_fields
+	--->	source_proc 
+	;	rank_module 
+	;	rank_proc 
+	;	proc .
+:- type one_id
+	--->	one_id .
+:- type one_id_line == top_procs.line_group(old_html_format.one_id, unit.unit).
+:- type one_id_line_group == top_procs.line_group(old_html_format.one_id, old_html_format.one_id_sub_lines).
+:- type one_id_sub_lines == old_html_format.sub_lines(old_html_format.one_id).
+:- type one_two_id_line_group == top_procs.line_group(old_html_format.one_id, old_html_format.two_id_sub_lines).
+:- type totals_disposition
+	--->	totals_meaningful 
+	;	totals_not_meaningful .
+:- type two_id
+	--->	two_id .
+:- type two_id_line == top_procs.line_group(old_html_format.two_id, unit.unit).
+:- type two_id_line_group == top_procs.line_group(old_html_format.two_id, old_html_format.two_id_sub_lines).
+:- type two_id_sub_lines == old_html_format.sub_lines(old_html_format.two_id).
+:- type sub_lines(T)
+	--->	sub_lines((old_html_format.sub_line_type) :: T, (old_html_format.sub_line_list) :: list.list(top_procs.line_group(T, unit.unit))).

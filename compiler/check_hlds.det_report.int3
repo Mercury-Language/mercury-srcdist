@@ -1,0 +1,9 @@
+:- module (check_hlds.det_report).
+:- interface.
+:- type cc_unify_context.
+:- type det_comparison.
+:- type failing_context.
+:- type failing_goal.
+:- type options_to_restore.
+:- type seen_call_id.
+:- type switch_context.

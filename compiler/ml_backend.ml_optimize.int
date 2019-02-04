@@ -1,0 +1,6 @@
+:- module (ml_backend.ml_optimize).
+:- interface.
+:- import_module io.
+:- import_module (ml_backend.mlds).
+:- pred mlds_optimize(ml_backend.mlds.mlds, ml_backend.mlds.mlds, io.io, io.io).
+:- mode mlds_optimize((builtin.in), (builtin.out), (builtin.di), (builtin.uo)) is det.

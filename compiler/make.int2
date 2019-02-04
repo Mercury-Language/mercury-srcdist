@@ -1,0 +1,21 @@
+:- module make.
+:- interface.
+:- include_module (make.options_file).
+:- include_module (make.util).
+:- import_module io.
+:- import_module list.
+:- import_module mdbcomp.
+:- import_module parse_tree.
+:- import_module (libs.file_util).
+:- import_module (make.options_file).
+:- import_module (mdbcomp.prim_data).
+:- import_module (parse_tree.module_imports).
+:- type make_info.
+:- type rebuild_module_deps
+	--->	do_rebuild_module_deps 
+	;	do_not_rebuild_module_deps .
+:- implementation.
+:- include_module (make.dependencies).
+:- include_module (make.module_dep_file).
+:- include_module (make.module_target).
+:- include_module (make.program_target).

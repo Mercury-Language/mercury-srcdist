@@ -1,0 +1,10 @@
+:- module (ml_backend.ml_global_data).
+:- interface.
+:- import_module list.
+:- import_module map.
+:- import_module (backend_libs.rtti).
+:- import_module (ml_backend.mlds).
+:- type ml_global_data.
+:- type ml_rtti_rval_type_map == map.map(backend_libs.rtti.rtti_id, ml_backend.ml_global_data.ml_rval_and_type).
+:- type ml_rval_and_type
+	--->	ml_rval_and_type(ml_backend.mlds.mlds_rval, ml_backend.mlds.mlds_type).

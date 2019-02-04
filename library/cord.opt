@@ -1,0 +1,251 @@
+:- module cord.
+:- use_module builtin, int, list, private_builtin, require.
+:- type cord.cord(T)
+	--->	nil 
+	;	leaf(T)
+	;	leaves(list.list(T))
+	;	branch(cord.cord(T), cord.cord(T)).
+:- func cord.list_2(cord.cord(T_1), list.list(T_1)) = list.list(T_1).
+:- mode cord.list_2((builtin.in), (builtin.in)) = (builtin.out) is det.
+:- func cord.rev_list_2(cord.cord(T_1), list.list(T_1)) = list.list(T_1).
+:- mode cord.rev_list_2((builtin.in), (builtin.in)) = (builtin.out) is det.
+cord.list(C_3) = HeadVar__2_2 :-
+    HeadVar__2_2 = cord.list_2(C_3, V_4),
+    V_4 = list.[] : list.list(T_1).
+cord.rev_list(C_3) = HeadVar__2_2 :-
+    HeadVar__2_2 = cord.rev_list_2(C_3, V_4),
+    V_4 = list.[] : list.list(T_1).
+cord.empty = cord.nil.
+cord.is_empty(cord.nil).
+cord.singleton(X_3) = cord.leaf(X_3).
+cord.cord_list_to_cord(list.[]) = cord.nil.
+cord.cord_list_to_cord(list.[HeadCord_3 | TailCords_4]) = HeadVar__2_2 :-
+    HeadVar__2_2 = cord.(HeadCord_3 ++ V_5),
+    V_5 = cord.cord_list_to_cord(TailCords_4).
+cord.length(C_3) = HeadVar__2_2 :-
+    HeadVar__2_2 = cord.foldl(V_6, C_3, V_7),
+    V_6 = (func(V_10::(builtin.in), V_9::(builtin.in)) = (V_8::(builtin.out)) is det :-
+      some [] (
+        V_10 = V_12,
+        V_9 = N_14,
+        V_8 = int.(N_14 + V_11),
+        V_11 = 1 : int
+      )
+    ) : (func(T_1, int) = int),
+    V_7 = 0 : int.
+cord.map(V_4, cord.nil) = cord.nil.
+cord.map(F_5, cord.leaf(X_6)) = cord.leaf(V_7) :-
+    V_7 = apply(F_5, X_6).
+cord.map(F_8, cord.leaves(Xs_9)) = cord.leaves(V_10) :-
+    V_10 = list.map(F_8, Xs_9).
+cord.map(F_11, cord.branch(CA_12, CB_13)) = cord.branch(V_14, V_15) :-
+    V_14 = cord.map(F_11, CA_12),
+    V_15 = cord.map(F_11, CB_13).
+cord.map_pred(P_4, STATE_VARIABLE_Cord_0_14, STATE_VARIABLE_Cord_15) :-
+    ( % disjunction
+      STATE_VARIABLE_Cord_0_14 = cord.nil : cord.cord(T_1),
+      STATE_VARIABLE_Cord_1_16 = cord.nil : cord.cord(U_2)
+    ;
+      STATE_VARIABLE_Cord_0_14 = cord.leaf(X_6) : cord.cord(T_1),
+      call(P_4, X_6, PX_7),
+      STATE_VARIABLE_Cord_1_16 = cord.leaf(PX_7) : cord.cord(U_2)
+    ;
+      STATE_VARIABLE_Cord_0_14 = cord.leaves(Xs_8) : cord.cord(T_1),
+      list.map(P_4, Xs_8, PXs_9),
+      STATE_VARIABLE_Cord_1_16 = cord.leaves(PXs_9) : cord.cord(U_2)
+    ;
+      STATE_VARIABLE_Cord_0_14 = cord.branch(CA_10, CB_11) : cord.cord(T_1),
+      cord.map_pred(P_4, CA_10, PCA_12),
+      cord.map_pred(P_4, CB_11, PCB_13),
+      STATE_VARIABLE_Cord_1_16 = cord.branch(PCA_12, PCB_13) : cord.cord(U_2)
+    ),
+    STATE_VARIABLE_Cord_15 = STATE_VARIABLE_Cord_1_16.
+cord.filter(_P_4, cord.nil, cord.nil).
+cord.filter(P_5, cord.leaf(X_6), Trues_7) :-
+    (if
+      call(P_5, X_6)
+    then
+      Trues_7 = cord.leaf(X_6) : cord.cord(T_1)
+    else
+      Trues_7 = cord.nil : cord.cord(T_1)
+    ).
+cord.filter(P_8, cord.leaves(Xs_9), Trues_10) :-
+    list.filter(P_8, Xs_9, TrueList_11),
+    ( % disjunction
+      TrueList_11 = list.[] : list.list(T_1),
+      Trues_10 = cord.nil : cord.cord(T_1)
+    ;
+      TrueList_11 = list.[V_12 | V_13] : list.list(T_1),
+      Trues_10 = cord.leaves(TrueList_11) : cord.cord(T_1)
+    ).
+cord.filter(P_14, cord.branch(CA_15, CB_16), Trues_17) :-
+    cord.filter(P_14, CA_15, CATrues_18),
+    cord.filter(P_14, CB_16, CBTrues_19),
+    Trues_17 = cord.(CATrues_18 ++ CBTrues_19).
+cord.filter(_P_5, cord.nil, cord.nil, cord.nil).
+cord.filter(P_6, cord.leaf(X_7), Trues_8, Falses_9) :-
+    (if
+      call(P_6, X_7)
+    then
+      Trues_8 = cord.leaf(X_7) : cord.cord(T_1),
+      Falses_9 = cord.nil : cord.cord(T_1)
+    else
+      Trues_8 = cord.nil : cord.cord(T_1),
+      Falses_9 = cord.leaf(X_7) : cord.cord(T_1)
+    ).
+cord.filter(P_10, cord.leaves(Xs_11), Trues_12, Falses_13) :-
+    list.filter(P_10, Xs_11, TrueList_14, FalseList_15),
+    ( % disjunction
+      TrueList_14 = list.[] : list.list(T_1),
+      Trues_12 = cord.nil : cord.cord(T_1)
+    ;
+      TrueList_14 = list.[V_16 | V_17] : list.list(T_1),
+      Trues_12 = cord.leaves(TrueList_14) : cord.cord(T_1)
+    ),
+    ( % disjunction
+      FalseList_15 = list.[] : list.list(T_1),
+      Falses_13 = cord.nil : cord.cord(T_1)
+    ;
+      FalseList_15 = list.[V_18 | V_19] : list.list(T_1),
+      Falses_13 = cord.leaves(FalseList_15) : cord.cord(T_1)
+    ).
+cord.filter(P_20, cord.branch(CA_21, CB_22), Trues_23, Falses_24) :-
+    cord.filter(P_20, CA_21, CATrues_25, CAFalses_26),
+    cord.filter(P_20, CB_22, CBTrues_27, CBFalses_28),
+    Trues_23 = cord.(CATrues_25 ++ CBTrues_27),
+    Falses_24 = cord.(CAFalses_26 ++ CBFalses_28).
+cord.foldl(V_5, cord.nil, A_6) = A_6.
+cord.foldl(F_7, cord.leaf(X_8), A_9) = HeadVar__4_4 :-
+    HeadVar__4_4 = apply(F_7, X_8, A_9).
+cord.foldl(F_10, cord.leaves(Xs_11), A_12) = HeadVar__4_4 :-
+    HeadVar__4_4 = list.foldl(F_10, Xs_11, A_12).
+cord.foldl(F_13, cord.branch(CA_14, CB_15), A_16) = HeadVar__4_4 :-
+    HeadVar__4_4 = cord.foldl(F_13, CB_15, V_17),
+    V_17 = cord.foldl(F_13, CA_14, A_16).
+cord.foldl_pred(_P_5, cord.nil, STATE_VARIABLE_A_0_7, STATE_VARIABLE_A_8) :-
+    STATE_VARIABLE_A_8 = STATE_VARIABLE_A_0_7.
+cord.foldl_pred(P_10, cord.leaf(X_11), STATE_VARIABLE_A_0_13, STATE_VARIABLE_A_14) :-
+    call(P_10, X_11, STATE_VARIABLE_A_0_13, STATE_VARIABLE_A_1_15),
+    STATE_VARIABLE_A_14 = STATE_VARIABLE_A_1_15.
+cord.foldl_pred(P_17, cord.leaves(Xs_18), STATE_VARIABLE_A_0_20, STATE_VARIABLE_A_21) :-
+    list.foldl(P_17, Xs_18, STATE_VARIABLE_A_0_20, STATE_VARIABLE_A_1_22),
+    STATE_VARIABLE_A_21 = STATE_VARIABLE_A_1_22.
+cord.foldl_pred(P_24, cord.branch(XA_25, XB_26), STATE_VARIABLE_A_0_28, STATE_VARIABLE_A_29) :-
+    cord.foldl_pred(P_24, XA_25, STATE_VARIABLE_A_0_28, STATE_VARIABLE_A_1_30),
+    cord.foldl_pred(P_24, XB_26, STATE_VARIABLE_A_1_30, STATE_VARIABLE_A_2_31),
+    STATE_VARIABLE_A_29 = STATE_VARIABLE_A_2_31.
+cord.foldr(V_5, cord.nil, A_6) = A_6.
+cord.foldr(F_7, cord.leaf(X_8), A_9) = HeadVar__4_4 :-
+    HeadVar__4_4 = apply(F_7, X_8, A_9).
+cord.foldr(F_10, cord.leaves(Xs_11), A_12) = HeadVar__4_4 :-
+    HeadVar__4_4 = list.foldr(F_10, Xs_11, A_12).
+cord.foldr(F_13, cord.branch(CA_14, CB_15), A_16) = HeadVar__4_4 :-
+    HeadVar__4_4 = cord.foldr(F_13, CA_14, V_17),
+    V_17 = cord.foldr(F_13, CB_15, A_16).
+cord.foldr_pred(_P_5, cord.nil, STATE_VARIABLE_A_0_7, STATE_VARIABLE_A_8) :-
+    STATE_VARIABLE_A_8 = STATE_VARIABLE_A_0_7.
+cord.foldr_pred(P_10, cord.leaf(X_11), STATE_VARIABLE_A_0_13, STATE_VARIABLE_A_14) :-
+    call(P_10, X_11, STATE_VARIABLE_A_0_13, STATE_VARIABLE_A_1_15),
+    STATE_VARIABLE_A_14 = STATE_VARIABLE_A_1_15.
+cord.foldr_pred(P_17, cord.leaves(Xs_18), STATE_VARIABLE_A_0_20, STATE_VARIABLE_A_21) :-
+    list.foldr(P_17, Xs_18, STATE_VARIABLE_A_0_20, STATE_VARIABLE_A_1_22),
+    STATE_VARIABLE_A_21 = STATE_VARIABLE_A_1_22.
+cord.foldr_pred(P_24, cord.branch(XA_25, XB_26), STATE_VARIABLE_A_0_28, STATE_VARIABLE_A_29) :-
+    cord.foldr_pred(P_24, XB_26, STATE_VARIABLE_A_0_28, STATE_VARIABLE_A_1_30),
+    cord.foldr_pred(P_24, XA_25, STATE_VARIABLE_A_1_30, STATE_VARIABLE_A_2_31),
+    STATE_VARIABLE_A_29 = STATE_VARIABLE_A_2_31.
+cord.map_foldl(_P_6, cord.nil, cord.nil, STATE_VARIABLE_A_0_8, STATE_VARIABLE_A_9) :-
+    STATE_VARIABLE_A_9 = STATE_VARIABLE_A_0_8.
+cord.map_foldl(P_11, cord.leaf(X_12), cord.leaf(Y_13), STATE_VARIABLE_A_0_15, STATE_VARIABLE_A_16) :-
+    call(P_11, X_12, Y_13, STATE_VARIABLE_A_0_15, STATE_VARIABLE_A_1_17),
+    STATE_VARIABLE_A_16 = STATE_VARIABLE_A_1_17.
+cord.map_foldl(P_19, cord.leaves(Xs_20), cord.leaves(Ys_21), STATE_VARIABLE_A_0_23, STATE_VARIABLE_A_24) :-
+    list.map_foldl(P_19, Xs_20, Ys_21, STATE_VARIABLE_A_0_23, STATE_VARIABLE_A_1_25),
+    STATE_VARIABLE_A_24 = STATE_VARIABLE_A_1_25.
+cord.map_foldl(P_27, cord.branch(XA_28, XB_29), cord.branch(YA_30, YB_31), STATE_VARIABLE_A_0_33, STATE_VARIABLE_A_34) :-
+    cord.map_foldl(P_27, XA_28, YA_30, STATE_VARIABLE_A_0_33, STATE_VARIABLE_A_1_35),
+    cord.map_foldl(P_27, XB_29, YB_31, STATE_VARIABLE_A_1_35, STATE_VARIABLE_A_2_36),
+    STATE_VARIABLE_A_34 = STATE_VARIABLE_A_2_36.
+cord.map_foldl2(_P_8, cord.nil, cord.nil, STATE_VARIABLE_A_0_11, STATE_VARIABLE_A_12, STATE_VARIABLE_B_0_13, STATE_VARIABLE_B_14) :-
+    STATE_VARIABLE_B_14 = STATE_VARIABLE_B_0_13,
+    STATE_VARIABLE_A_12 = STATE_VARIABLE_A_0_11.
+cord.map_foldl2(P_17, cord.leaf(X_18), cord.leaf(Y_19), STATE_VARIABLE_A_0_22, STATE_VARIABLE_A_23, STATE_VARIABLE_B_0_24, STATE_VARIABLE_B_25) :-
+    call(P_17, X_18, Y_19, STATE_VARIABLE_A_0_22, STATE_VARIABLE_A_1_26, STATE_VARIABLE_B_0_24, STATE_VARIABLE_B_1_27),
+    STATE_VARIABLE_B_25 = STATE_VARIABLE_B_1_27,
+    STATE_VARIABLE_A_23 = STATE_VARIABLE_A_1_26.
+cord.map_foldl2(P_30, cord.leaves(Xs_31), cord.leaves(Ys_32), STATE_VARIABLE_A_0_35, STATE_VARIABLE_A_36, STATE_VARIABLE_B_0_37, STATE_VARIABLE_B_38) :-
+    list.map_foldl2(P_30, Xs_31, Ys_32, STATE_VARIABLE_A_0_35, STATE_VARIABLE_A_1_39, STATE_VARIABLE_B_0_37, STATE_VARIABLE_B_1_40),
+    STATE_VARIABLE_B_38 = STATE_VARIABLE_B_1_40,
+    STATE_VARIABLE_A_36 = STATE_VARIABLE_A_1_39.
+cord.map_foldl2(P_43, cord.branch(XA_44, XB_45), cord.branch(YA_46, YB_47), STATE_VARIABLE_A_0_50, STATE_VARIABLE_A_51, STATE_VARIABLE_B_0_52, STATE_VARIABLE_B_53) :-
+    cord.map_foldl2(P_43, XA_44, YA_46, STATE_VARIABLE_A_0_50, STATE_VARIABLE_A_1_54, STATE_VARIABLE_B_0_52, STATE_VARIABLE_B_1_55),
+    cord.map_foldl2(P_43, XB_45, YB_47, STATE_VARIABLE_A_1_54, STATE_VARIABLE_A_2_56, STATE_VARIABLE_B_1_55, STATE_VARIABLE_B_2_57),
+    STATE_VARIABLE_B_53 = STATE_VARIABLE_B_2_57,
+    STATE_VARIABLE_A_51 = STATE_VARIABLE_A_2_56.
+cord.equal(CA_3, CB_4) :-
+    V_5 = cord.list(CA_3),
+    V_5 = cord.list(CB_4).
+:- pragma exceptions(function, (cord.list), 2, 0, may_throw(user_exception)).
+:- pragma exceptions(function, (cord.rev_list), 2, 0, may_throw(user_exception)).
+:- pragma exceptions(function, (cord.empty), 1, 0, will_not_throw).
+:- pragma exceptions(predicate, (cord.is_empty), 1, 0, will_not_throw).
+:- pragma exceptions(function, (cord.singleton), 2, 0, will_not_throw).
+:- pragma exceptions(function, (cord.from_list), 2, 0, will_not_throw).
+:- pragma exceptions(function, (cord.cons), 3, 0, will_not_throw).
+:- pragma exceptions(function, (cord.snoc), 3, 0, will_not_throw).
+:- pragma exceptions(function, (cord.(++)), 3, 0, will_not_throw).
+:- pragma exceptions(function, (cord.cord_list_to_cord), 2, 0, will_not_throw).
+:- pragma exceptions(function, (cord.cord_list_to_list), 2, 0, may_throw(user_exception)).
+:- pragma exceptions(predicate, (cord.head_tail), 3, 0, will_not_throw).
+:- pragma exceptions(predicate, (cord.split_last), 3, 0, may_throw(user_exception)).
+:- pragma exceptions(predicate, (cord.get_first), 2, 0, will_not_throw).
+:- pragma exceptions(predicate, (cord.get_last), 2, 0, may_throw(user_exception)).
+:- pragma exceptions(function, (cord.length), 2, 0, may_throw(user_exception)).
+:- pragma exceptions(predicate, (cord.member), 2, 0, may_throw(user_exception)).
+:- pragma exceptions(function, (cord.map), 3, 0, may_throw(user_exception)).
+:- pragma exceptions(predicate, (cord.map_pred), 3, 0, may_throw(user_exception)).
+:- pragma exceptions(predicate, (cord.filter), 3, 0, may_throw(user_exception)).
+:- pragma exceptions(predicate, (cord.filter), 4, 0, may_throw(user_exception)).
+:- pragma exceptions(function, (cord.foldl), 4, 0, may_throw(user_exception)).
+:- pragma exceptions(predicate, (cord.foldl_pred), 4, 0, may_throw(user_exception)).
+:- pragma exceptions(predicate, (cord.foldl_pred), 4, 1, may_throw(user_exception)).
+:- pragma exceptions(function, (cord.foldr), 4, 0, may_throw(user_exception)).
+:- pragma exceptions(predicate, (cord.foldr_pred), 4, 0, may_throw(user_exception)).
+:- pragma exceptions(predicate, (cord.map_foldl), 5, 0, may_throw(user_exception)).
+:- pragma exceptions(predicate, (cord.map_foldl2), 7, 0, may_throw(user_exception)).
+:- pragma exceptions(predicate, (cord.map_foldl3), 9, 0, may_throw(user_exception)).
+:- pragma exceptions(predicate, (cord.equal), 2, 0, may_throw(user_exception)).
+:- pragma exceptions(function, (cord.list_2), 3, 0, may_throw(user_exception)).
+:- pragma exceptions(function, (cord.rev_list_2), 3, 0, may_throw(user_exception)).
+:- pragma termination_info(cord.list((builtin.in)) = (builtin.out), infinite, can_loop).
+:- pragma termination_info(cord.rev_list((builtin.in)) = (builtin.out), infinite, can_loop).
+:- pragma termination_info((cord.empty) = (builtin.out), finite(0, [no, no]), cannot_loop).
+:- pragma termination_info(cord.is_empty((builtin.in)), finite(0, [no, no]), cannot_loop).
+:- pragma termination_info(cord.singleton((builtin.in)) = (builtin.out), finite(1, [no, yes, no]), cannot_loop).
+:- pragma termination_info(cord.from_list((builtin.in)) = (builtin.out), finite(1, [no, yes, no]), cannot_loop).
+:- pragma termination_info(cord.cons((builtin.in), (builtin.in)) = (builtin.out), finite(3, [no, yes, yes, no]), cannot_loop).
+:- pragma termination_info(cord.snoc((builtin.in), (builtin.in)) = (builtin.out), finite(3, [no, yes, yes, no]), cannot_loop).
+:- pragma termination_info(cord.'++'((builtin.in), (builtin.in)) = (builtin.out), finite(2, [no, yes, yes, no]), cannot_loop).
+:- pragma termination_info(cord.cord_list_to_cord((builtin.in)) = (builtin.out), finite(0, [no, yes, no]), cannot_loop).
+:- pragma termination_info(cord.cord_list_to_list((builtin.in)) = (builtin.out), infinite, can_loop).
+:- pragma termination_info(cord.head_tail((builtin.in), (builtin.out), (builtin.out)), finite(-1, [no, yes, no, no]), cannot_loop).
+:- pragma termination_info(cord.split_last((builtin.in), (builtin.out), (builtin.out)), infinite, can_loop).
+:- pragma termination_info(cord.get_first((builtin.in), (builtin.out)), finite(-1, [no, yes, no]), cannot_loop).
+:- pragma termination_info(cord.get_last((builtin.in), (builtin.out)), infinite, can_loop).
+:- pragma termination_info(cord.length((builtin.in)) = (builtin.out), infinite, can_loop).
+:- pragma termination_info(cord.member((builtin.out), (builtin.in)), infinite, can_loop).
+:- pragma termination_info(cord.map((builtin.in), (builtin.in)) = (builtin.out), infinite, can_loop).
+:- pragma termination_info(cord.map_pred(builtin.in((pred((builtin.in), (builtin.out)) is det)), (builtin.in), (builtin.out)), infinite, can_loop).
+:- pragma termination_info(cord.filter(builtin.in((pred((builtin.in)) is semidet)), (builtin.in), (builtin.out)), infinite, can_loop).
+:- pragma termination_info(cord.filter(builtin.in((pred((builtin.in)) is semidet)), (builtin.in), (builtin.out), (builtin.out)), infinite, can_loop).
+:- pragma termination_info(cord.foldl((builtin.in), (builtin.in), (builtin.in)) = (builtin.out), infinite, can_loop).
+:- pragma termination_info(cord.foldl_pred(builtin.in((pred((builtin.in), (builtin.in), (builtin.out)) is det)), (builtin.in), (builtin.in), (builtin.out)), infinite, can_loop).
+:- pragma termination_info(cord.foldl_pred(builtin.in((pred((builtin.in), (builtin.di), (builtin.uo)) is det)), (builtin.in), (builtin.di), (builtin.uo)), infinite, can_loop).
+:- pragma termination_info(cord.foldr((builtin.in), (builtin.in), (builtin.in)) = (builtin.out), infinite, can_loop).
+:- pragma termination_info(cord.foldr_pred(builtin.in((pred((builtin.in), (builtin.in), (builtin.out)) is det)), (builtin.in), (builtin.in), (builtin.out)), infinite, can_loop).
+:- pragma termination_info(cord.map_foldl(builtin.in((pred((builtin.in), (builtin.out), (builtin.in), (builtin.out)) is det)), (builtin.in), (builtin.out), (builtin.in), (builtin.out)), infinite, can_loop).
+:- pragma termination_info(cord.map_foldl2(builtin.in((pred((builtin.in), (builtin.out), (builtin.in), (builtin.out), (builtin.in), (builtin.out)) is det)), (builtin.in), (builtin.out), (builtin.in), (builtin.out), (builtin.in), (builtin.out)), infinite, can_loop).
+:- pragma termination_info(cord.map_foldl3(builtin.in((pred((builtin.in), (builtin.out), (builtin.in), (builtin.out), (builtin.in), (builtin.out), (builtin.in), (builtin.out)) is det)), (builtin.in), (builtin.out), (builtin.in), (builtin.out), (builtin.in), (builtin.out), (builtin.in), (builtin.out)), infinite, can_loop).
+:- pragma termination_info(cord.equal((builtin.in), (builtin.in)), finite(0, [no, no, no]), can_loop).
+:- pragma termination_info(cord.list_2((builtin.in), (builtin.in)) = (builtin.out), infinite, can_loop).
+:- pragma termination_info(cord.rev_list_2((builtin.in), (builtin.in)) = (builtin.out), infinite, can_loop).

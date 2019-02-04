@@ -1,0 +1,10 @@
+:- module graph.
+:- interface.
+:- import_module list.
+:- import_module set.
+:- import_module unit.
+:- type arc == graph.arc(unit.unit).
+:- type arc(A).
+:- type graph(N) == graph.graph(N, unit.unit).
+:- type node(N).
+:- type graph(N, A).

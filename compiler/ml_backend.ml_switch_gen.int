@@ -1,0 +1,21 @@
+:- module (ml_backend.ml_switch_gen).
+:- interface.
+:- import_module list.
+:- import_module (hlds.code_model).
+:- import_module (hlds.hlds_goal).
+:- import_module (libs.globals).
+:- import_module (ml_backend.ml_code_util).
+:- import_module (ml_backend.mlds).
+:- import_module (parse_tree.prog_data).
+:- pred ml_gen_switch(parse_tree.prog_data.prog_var, parse_tree.prog_data.can_fail, list.list(hlds.hlds_goal.case), hlds.code_model.code_model, parse_tree.prog_data.prog_context, list.list(ml_backend.mlds.mlds_defn), list.list(ml_backend.mlds.statement), ml_backend.ml_code_util.ml_gen_info, ml_backend.ml_code_util.ml_gen_info).
+:- mode ml_gen_switch((builtin.in), (builtin.in), (builtin.in), (builtin.in), (builtin.in), (builtin.out), (builtin.out), (builtin.in), (builtin.out)) is det.
+:- pred ml_switch_generate_default(parse_tree.prog_data.can_fail, hlds.code_model.code_model, parse_tree.prog_data.prog_context, ml_backend.mlds.mlds_switch_default, ml_backend.ml_code_util.ml_gen_info, ml_backend.ml_code_util.ml_gen_info).
+:- mode ml_switch_generate_default((builtin.in), (builtin.in), (builtin.in), (builtin.out), (builtin.in), (builtin.out)) is det.
+:- pred target_supports_computed_goto(libs.globals.globals).
+:- mode target_supports_computed_goto((builtin.in)) is semidet.
+:- pred target_supports_goto(libs.globals.globals).
+:- mode target_supports_goto((builtin.in)) is semidet.
+:- pred target_supports_int_switch(libs.globals.globals).
+:- mode target_supports_int_switch((builtin.in)) is semidet.
+:- pred target_supports_string_switch(libs.globals.globals).
+:- mode target_supports_string_switch((builtin.in)) is semidet.

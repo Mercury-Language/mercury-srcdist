@@ -1,0 +1,13 @@
+module(1, "rtti_access.m",
+	(mdbcomp.rtti_access),
+	{mdbcomp},
+	{builtin, list, maybe, (mdbcomp.prim_data), (mdbcomp.program_representation), (mdbcomp.trace_counts), private_builtin},
+	{builtin, list, maybe, (mdbcomp.prim_data), (mdbcomp.program_representation), (mdbcomp.trace_counts), char, int, require, string, private_builtin},
+	{},
+	{},
+	{},
+	{"C"},
+	{"C" - (mdbcomp.rtti_access), "Java" - (mdbcomp.rtti_access), "Erlang" - (mdbcomp.rtti_access), "C" - (mdbcomp.rtti_access)},
+	no_foreign_export,
+	no_main
+).

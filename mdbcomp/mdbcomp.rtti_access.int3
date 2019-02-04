@@ -1,0 +1,18 @@
+:- module (mdbcomp.rtti_access).
+:- pragma foreign_import_module("C", (mdbcomp.rtti_access)).
+:- pragma foreign_import_module("Java", (mdbcomp.rtti_access)).
+:- interface.
+:- import_module list.
+:- import_module maybe.
+:- import_module (mdbcomp.prim_data).
+:- import_module (mdbcomp.program_representation).
+:- import_module (mdbcomp.trace_counts).
+:- type bytecode.
+:- type bytecode_bytes.
+:- pragma foreign_type(c, bytecode_bytes, "const MR_uint_least8_t *", [can_pass_as_mercury_type, stable]).
+:- pragma foreign_type(java, bytecode_bytes, "java.lang.Object").
+:- type label_layout.
+:- type module_common_layout.
+:- type proc_layout.
+:- type string_table.
+:- type string_table_chars.

@@ -1,0 +1,18 @@
+:- module (ll_backend.layout).
+:- interface.
+:- type deep_excp_slots.
+:- type event_set_layout_data.
+:- type file_layout_data.
+:- type label_layout_details.
+:- type label_var_info.
+:- type label_vars.
+:- type layout_data.
+:- type layout_name.
+:- type maybe_proc_id_and_more.
+:- type proc_layout_exec_trace.
+:- type proc_layout_kind.
+:- type proc_layout_proc_static.
+:- type proc_layout_stack_traversal.
+:- type proc_layout_user_or_uci.
+:- type string_with_0s.
+:- type user_event_data.
