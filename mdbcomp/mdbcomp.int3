@@ -1,0 +1,9 @@
+:- module mdbcomp.
+:- interface.
+:- include_module (mdbcomp.feedback).
+:- include_module (mdbcomp.goal_path).
+:- include_module (mdbcomp.prim_data).
+:- include_module (mdbcomp.program_representation).
+:- include_module (mdbcomp.rtti_access).
+:- include_module (mdbcomp.slice_and_dice).
+:- include_module (mdbcomp.trace_counts).

@@ -1,0 +1,30 @@
+:- module svset.
+:- use_module builtin, list, private_builtin, set, term.
+svset.insert(X_4, STATE_VARIABLE_Set_0_6, STATE_VARIABLE_Set_7) :-
+    set.insert(X_4, STATE_VARIABLE_Set_0_6, STATE_VARIABLE_Set_7).
+svset.insert_list(X_4, STATE_VARIABLE_Set_0_6, STATE_VARIABLE_Set_7) :-
+    set.insert_list(X_4, STATE_VARIABLE_Set_0_6, STATE_VARIABLE_Set_7).
+svset.delete(X_4, STATE_VARIABLE_Set_0_6, STATE_VARIABLE_Set_7) :-
+    set.delete(X_4, STATE_VARIABLE_Set_0_6, STATE_VARIABLE_Set_7).
+svset.delete_list(X_4, STATE_VARIABLE_Set_0_6, STATE_VARIABLE_Set_7) :-
+    set.delete_list(X_4, STATE_VARIABLE_Set_0_6, STATE_VARIABLE_Set_7).
+svset.remove(X_4, STATE_VARIABLE_Set_0_6, STATE_VARIABLE_Set_7) :-
+    set.remove(X_4, STATE_VARIABLE_Set_0_6, STATE_VARIABLE_Set_7).
+svset.remove_list(X_4, STATE_VARIABLE_Set_0_6, STATE_VARIABLE_Set_7) :-
+    set.remove_list(X_4, STATE_VARIABLE_Set_0_6, STATE_VARIABLE_Set_7).
+svset.remove_least(X_4, STATE_VARIABLE_Set_0_6, STATE_VARIABLE_Set_7) :-
+    set.remove_least(X_4, STATE_VARIABLE_Set_0_6, STATE_VARIABLE_Set_7).
+:- pragma exceptions(predicate, (svset.insert), 3, 0, may_throw(user_exception)).
+:- pragma exceptions(predicate, (svset.insert_list), 3, 0, may_throw(user_exception)).
+:- pragma exceptions(predicate, (svset.delete), 3, 0, may_throw(user_exception)).
+:- pragma exceptions(predicate, (svset.delete_list), 3, 0, may_throw(user_exception)).
+:- pragma exceptions(predicate, (svset.remove), 3, 0, may_throw(user_exception)).
+:- pragma exceptions(predicate, (svset.remove_list), 3, 0, may_throw(user_exception)).
+:- pragma exceptions(predicate, (svset.remove_least), 3, 0, may_throw(user_exception)).
+:- pragma termination_info(svset.insert((builtin.in), (builtin.in), (builtin.out)), infinite, can_loop).
+:- pragma termination_info(svset.insert_list((builtin.in), (builtin.in), (builtin.out)), infinite, can_loop).
+:- pragma termination_info(svset.delete((builtin.in), (builtin.in), (builtin.out)), infinite, can_loop).
+:- pragma termination_info(svset.delete_list((builtin.in), (builtin.in), (builtin.out)), infinite, can_loop).
+:- pragma termination_info(svset.remove((builtin.in), (builtin.in), (builtin.out)), infinite, can_loop).
+:- pragma termination_info(svset.remove_list((builtin.in), (builtin.in), (builtin.out)), infinite, can_loop).
+:- pragma termination_info(svset.remove_least((builtin.out), (builtin.in), (builtin.out)), infinite, can_loop).

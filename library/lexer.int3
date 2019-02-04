@@ -1,0 +1,6 @@
+:- module lexer.
+:- interface.
+:- type offset.
+:- type token.
+:- type token_context.
+:- type token_list.

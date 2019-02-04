@@ -1,0 +1,4 @@
+:- module branch_and_bound.
+:- interface.
+:- type bnb_profile.
+:- type bnb_state(T).

@@ -1,0 +1,287 @@
+:- module (ll_backend.x86_64_instrs).
+:- interface.
+:- import_module counter.
+:- import_module list.
+:- import_module maybe.
+:- import_module set.
+:- import_module (hlds.code_model).
+:- import_module (hlds.hlds_pred).
+:- import_module (ll_backend.llds).
+:- import_module (mdbcomp.prim_data).
+:- type base_address
+	--->	base_reg(((ll_backend.x86_64_instrs).base_offset) :: int, ((ll_backend.x86_64_instrs).base_reg) :: ll_backend.x86_64_instrs.x86_64_reg)
+	;	base_expr(((ll_backend.x86_64_instrs).base_expr) :: string).
+:- type condition
+	--->	o 
+	;	no 
+	;	b 
+	;	c 
+	;	nae 
+	;	nb 
+	;	nc 
+	;	ae 
+	;	z 
+	;	e 
+	;	nz 
+	;	ne 
+	;	be 
+	;	na 
+	;	nbe 
+	;	a 
+	;	s 
+	;	ns 
+	;	p 
+	;	pe 
+	;	np 
+	;	po 
+	;	l 
+	;	nge 
+	;	nl 
+	;	ge 
+	;	le 
+	;	ng 
+	;	nle 
+	;	g .
+:- type direction
+	--->	f 
+	;	r .
+:- type flags_reg
+	--->	rflags(int).
+:- type imm_operand
+	--->	imm8(ll_backend.x86_64_instrs.int8)
+	;	imm16(ll_backend.x86_64_instrs.int16)
+	;	imm32(ll_backend.x86_64_instrs.int32).
+:- type instr_ptr
+	--->	rip_constant(((ll_backend.x86_64_instrs).rip_byte_offset) :: ll_backend.x86_64_instrs.int32)
+	;	rip_expr(((ll_backend.x86_64_instrs).rip_expr) :: string).
+:- type int16
+	--->	int16(int).
+:- type int32
+	--->	int32(int).
+:- type int8
+	--->	int8(int).
+:- type label_name == string.
+:- type offset == int.
+:- type operand
+	--->	operand_reg(ll_backend.x86_64_instrs.x86_64_reg)
+	;	operand_imm(ll_backend.x86_64_instrs.imm_operand)
+	;	operand_mem_ref(ll_backend.x86_64_instrs.x86_64_mem_ref)
+	;	operand_rel_offset(ll_backend.x86_64_instrs.rel_offset)
+	;	operand_label(string).
+:- type pseudo_op
+	--->	abort 
+	;	align(((ll_backend.x86_64_instrs).align_bits) :: int, ((ll_backend.x86_64_instrs).align_fill_value) :: maybe.maybe(int), ((ll_backend.x86_64_instrs).align_skip_bytes) :: maybe.maybe(int))
+	;	ascii(((ll_backend.x86_64_instrs).ascii_literals) :: list.list(string))
+	;	asciiz(((ll_backend.x86_64_instrs).asciiz_literals) :: list.list(string))
+	;	balign(((ll_backend.x86_64_instrs).balign_bits) :: int, ((ll_backend.x86_64_instrs).balign_fill_value) :: maybe.maybe(int), ((ll_backend.x86_64_instrs).balign_skip_bytes) :: maybe.maybe(int))
+	;	byte(((ll_backend.x86_64_instrs).byte_exprs) :: list.list(string))
+	;	comm(((ll_backend.x86_64_instrs).comm_symbol) :: string, ((ll_backend.x86_64_instrs).comm_length) :: int, ((ll_backend.x86_64_instrs).comm_align) :: maybe.maybe(int))
+	;	data(((ll_backend.x86_64_instrs).data_subsection) :: maybe.maybe(int))
+	;	desc(((ll_backend.x86_64_instrs).desc_symbol) :: string, ((ll_backend.x86_64_instrs).desc_abs_expr) :: string)
+	;	def(((ll_backend.x86_64_instrs).def_name) :: string)
+	;	dim 
+	;	double(((ll_backend.x86_64_instrs).double_nums) :: list.list(float))
+	;	eject 
+	;	x86_64_pseudo_else 
+	;	elseif 
+	;	end 
+	;	endef 
+	;	endfunc 
+	;	endif 
+	;	endm 
+	;	equ(((ll_backend.x86_64_instrs).equ_symbol) :: string, ((ll_backend.x86_64_instrs).equ_expr) :: string)
+	;	equiv(((ll_backend.x86_64_instrs).equiv_symbol) :: string, ((ll_backend.x86_64_instrs).equiv_expr) :: string)
+	;	err 
+	;	exitm 
+	;	extern 
+	;	fail_(((ll_backend.x86_64_instrs).fail_expr) :: string)
+	;	file(((ll_backend.x86_64_instrs).file_name) :: string)
+	;	fill(((ll_backend.x86_64_instrs).fill_repeat) :: int, ((ll_backend.x86_64_instrs).fill_size) :: maybe.maybe(int), ((ll_backend.x86_64_instrs).fill_value) :: maybe.maybe(int))
+	;	float(((ll_backend.x86_64_instrs).float_nums) :: list.list(float))
+	;	func_(((ll_backend.x86_64_instrs).func_name) :: string, ((ll_backend.x86_64_instrs).func_label) :: string)
+	;	global(((ll_backend.x86_64_instrs).global_symbol) :: string)
+	;	globl(((ll_backend.x86_64_instrs).globl_symbol) :: string)
+	;	hidden(((ll_backend.x86_64_instrs).hidden_name) :: string)
+	;	hword(((ll_backend.x86_64_instrs).hword_exprs) :: list.list(string))
+	;	ident 
+	;	x86_64_pseudo_if(((ll_backend.x86_64_instrs).if_expr) :: string)
+	;	ifdef(((ll_backend.x86_64_instrs).ifdef_symbol) :: string)
+	;	ifc(((ll_backend.x86_64_instrs).ifc_string1) :: string, ((ll_backend.x86_64_instrs).ifc_string2) :: string)
+	;	ifeq(((ll_backend.x86_64_instrs).ifeq_expr) :: string)
+	;	ifge(((ll_backend.x86_64_instrs).ifge_expr) :: string)
+	;	ifgt(((ll_backend.x86_64_instrs).ifgt_expr) :: string)
+	;	ifle(((ll_backend.x86_64_instrs).ifle_expr) :: string)
+	;	iflt(((ll_backend.x86_64_instrs).iflt_expr) :: string)
+	;	ifnc(((ll_backend.x86_64_instrs).ifnc_string1) :: string, ((ll_backend.x86_64_instrs).ifnc_string2) :: string)
+	;	ifndef(((ll_backend.x86_64_instrs).ifndef_symbol) :: string)
+	;	ifnotdef(((ll_backend.x86_64_instrs).ifnotdef_symbol) :: string)
+	;	ifne(((ll_backend.x86_64_instrs).ifne_expr) :: string)
+	;	ifnes(((ll_backend.x86_64_instrs).ifnes_string1) :: string, ((ll_backend.x86_64_instrs).ifnes_string2) :: string)
+	;	include(((ll_backend.x86_64_instrs).include_file) :: string)
+	;	int(((ll_backend.x86_64_instrs).int_exprs) :: list.list(string))
+	;	internal(((ll_backend.x86_64_instrs).internal_name) :: string)
+	;	lcomm(((ll_backend.x86_64_instrs).lcomm_symbol) :: string, ((ll_backend.x86_64_instrs).lcomm_length) :: int)
+	;	line(((ll_backend.x86_64_instrs).line_number) :: int)
+	;	list 
+	;	long(((ll_backend.x86_64_instrs).long_exprs) :: list.list(string))
+	;	macro 
+	;	nolist 
+	;	p2align(((ll_backend.x86_64_instrs).p2align_pow_bit) :: int, ((ll_backend.x86_64_instrs).p2align_fill_value) :: maybe.maybe(int), ((ll_backend.x86_64_instrs).p2align_skip_bytes) :: maybe.maybe(int))
+	;	popsection 
+	;	previous 
+	;	print(string)
+	;	protected(((ll_backend.x86_64_instrs).protected_name) :: string)
+	;	psize(((ll_backend.x86_64_instrs).psize_lines) :: int, ((ll_backend.x86_64_instrs).psize_cols) :: maybe.maybe(int))
+	;	purgem(((ll_backend.x86_64_instrs).purgem_name) :: string)
+	;	pushsection(((ll_backend.x86_64_instrs).pushsection_name) :: string, ((ll_backend.x86_64_instrs).pushsection_subsect) :: int)
+	;	quad(((ll_backend.x86_64_instrs).quad_bignums) :: list.list(string))
+	;	rept(((ll_backend.x86_64_instrs).rept_count) :: int)
+	;	sbttl(((ll_backend.x86_64_instrs).sbttl_subheading) :: string)
+	;	scl(((ll_backend.x86_64_instrs).scl_class) :: string)
+	;	section(((ll_backend.x86_64_instrs).section_name) :: string, ((ll_backend.x86_64_instrs).section_flags) :: maybe.maybe(list.list(ll_backend.x86_64_instrs.pseudo_section_flag)), ((ll_backend.x86_64_instrs).section_type) :: maybe.maybe(ll_backend.x86_64_instrs.pseudo_section_type), ((ll_backend.x86_64_instrs).section_entsize) :: maybe.maybe(int))
+	;	set(((ll_backend.x86_64_instrs).set_symbol) :: string, ((ll_backend.x86_64_instrs).set_expression) :: string)
+	;	short(((ll_backend.x86_64_instrs).short_exprs) :: list.list(string))
+	;	single(((ll_backend.x86_64_instrs).single_nums) :: list.list(float))
+	;	size(((ll_backend.x86_64_instrs).size_name) :: string, ((ll_backend.x86_64_instrs).size_exprs) :: string)
+	;	skip(((ll_backend.x86_64_instrs).skip_size) :: int, ((ll_backend.x86_64_instrs).skip_value) :: maybe.maybe(int))
+	;	sleb128(((ll_backend.x86_64_instrs).sleb128_exprs) :: list.list(string))
+	;	space(((ll_backend.x86_64_instrs).space_size) :: int, ((ll_backend.x86_64_instrs).space_fill) :: maybe.maybe(int))
+	;	string(((ll_backend.x86_64_instrs).string_str) :: list.list(string))
+	;	struct(((ll_backend.x86_64_instrs).struct_expr) :: string)
+	;	subsection(((ll_backend.x86_64_instrs).subsection_name) :: string)
+	;	symver(((ll_backend.x86_64_instrs).symver_name) :: string, ((ll_backend.x86_64_instrs).symver_alias) :: string)
+	;	tag(((ll_backend.x86_64_instrs).tag_struct_name) :: string)
+	;	text(((ll_backend.x86_64_instrs).text_subsection) :: maybe.maybe(int))
+	;	title(((ll_backend.x86_64_instrs).title_heading) :: string)
+	;	x86_64_pseudo_type(((ll_backend.x86_64_instrs).type_name) :: string, ((ll_backend.x86_64_instrs).type_desc) :: ll_backend.x86_64_instrs.pseudo_section_type_desc)
+	;	uleb128(((ll_backend.x86_64_instrs).uleb128_exprs) :: list.list(string))
+	;	val(((ll_backend.x86_64_instrs).val_addr) :: string)
+	;	version(((ll_backend.x86_64_instrs).version_note) :: string)
+	;	weak(((ll_backend.x86_64_instrs).weak_names) :: list.list(string))
+	;	word(((ll_backend.x86_64_instrs).word_exprs) :: list.list(string)).
+:- type pseudo_section_flag
+	--->	a 
+	;	w 
+	;	x 
+	;	m 
+	;	s .
+:- type pseudo_section_type
+	--->	progbits 
+	;	nobits .
+:- type pseudo_section_type_desc
+	--->	function 
+	;	object .
+:- type rel_offset
+	--->	ro8(ll_backend.x86_64_instrs.int8)
+	;	ro16(ll_backend.x86_64_instrs.int16)
+	;	ro32(ll_backend.x86_64_instrs.int32).
+:- type rmrol
+	--->	rmrol_reg(ll_backend.x86_64_instrs.x86_64_reg)
+	;	rmrol_mem_ref(ll_backend.x86_64_instrs.x86_64_mem_ref)
+	;	rmrol_rel_offset(ll_backend.x86_64_instrs.rel_offset)
+	;	rmrol_label(((ll_backend.x86_64_instrs).rmrol_label_name) :: string).
+:- type uint16
+	--->	uint16(int).
+:- type uint32
+	--->	uint32(int).
+:- type uint8
+	--->	uint8(int).
+:- type x86_64_inst
+	--->	adc(((ll_backend.x86_64_instrs).adc_src) :: ll_backend.x86_64_instrs.operand, ((ll_backend.x86_64_instrs).adc_dst) :: ll_backend.x86_64_instrs.operand)
+	;	add(((ll_backend.x86_64_instrs).add_src) :: ll_backend.x86_64_instrs.operand, ((ll_backend.x86_64_instrs).add_dst) :: ll_backend.x86_64_instrs.operand)
+	;	and(((ll_backend.x86_64_instrs).and_src) :: ll_backend.x86_64_instrs.operand, ((ll_backend.x86_64_instrs).and_dst) :: ll_backend.x86_64_instrs.operand)
+	;	bs(((ll_backend.x86_64_instrs).bs_src) :: ll_backend.x86_64_instrs.operand, ((ll_backend.x86_64_instrs).bs_dst) :: ll_backend.x86_64_instrs.operand, ((ll_backend.x86_64_instrs).bs_cond) :: ll_backend.x86_64_instrs.direction)
+	;	bswap(((ll_backend.x86_64_instrs).bswap_reg) :: ll_backend.x86_64_instrs.operand)
+	;	bt(((ll_backend.x86_64_instrs).bt_src) :: ll_backend.x86_64_instrs.operand, ((ll_backend.x86_64_instrs).bt_idx) :: ll_backend.x86_64_instrs.operand)
+	;	btc(((ll_backend.x86_64_instrs).btc_src) :: ll_backend.x86_64_instrs.operand, ((ll_backend.x86_64_instrs).btc_idx) :: ll_backend.x86_64_instrs.operand)
+	;	btr(((ll_backend.x86_64_instrs).btr_src) :: ll_backend.x86_64_instrs.operand, ((ll_backend.x86_64_instrs).btr_idx) :: ll_backend.x86_64_instrs.operand)
+	;	bts(((ll_backend.x86_64_instrs).bts_src) :: ll_backend.x86_64_instrs.operand, ((ll_backend.x86_64_instrs).bts_idx) :: ll_backend.x86_64_instrs.operand)
+	;	call(((ll_backend.x86_64_instrs).call_target) :: ll_backend.x86_64_instrs.operand)
+	;	cbw 
+	;	cwde 
+	;	cdqe 
+	;	cwd 
+	;	cdq 
+	;	cqo 
+	;	clc 
+	;	cld 
+	;	cmc 
+	;	cmov(((ll_backend.x86_64_instrs).cmov_src) :: ll_backend.x86_64_instrs.operand, ((ll_backend.x86_64_instrs).cmov_dest) :: ll_backend.x86_64_instrs.operand, ((ll_backend.x86_64_instrs).cmov_cmp_op) :: ll_backend.x86_64_instrs.condition)
+	;	cmp(((ll_backend.x86_64_instrs).cmp_src) :: ll_backend.x86_64_instrs.operand, ((ll_backend.x86_64_instrs).cmp_dest) :: ll_backend.x86_64_instrs.operand)
+	;	cmpxchg(((ll_backend.x86_64_instrs).cmpxchg_src) :: ll_backend.x86_64_instrs.operand, ((ll_backend.x86_64_instrs).cmpxchg_dest) :: ll_backend.x86_64_instrs.operand)
+	;	cmpxchg8b(((ll_backend.x86_64_instrs).cmpxchg8b_mem) :: ll_backend.x86_64_instrs.operand)
+	;	dec(((ll_backend.x86_64_instrs).dec_op) :: ll_backend.x86_64_instrs.operand)
+	;	div(((ll_backend.x86_64_instrs).div_op) :: ll_backend.x86_64_instrs.operand)
+	;	enter(((ll_backend.x86_64_instrs).enter_stack_size) :: ll_backend.x86_64_instrs.uint16, ((ll_backend.x86_64_instrs).enter_nesting_level) :: ll_backend.x86_64_instrs.uint8)
+	;	idiv(((ll_backend.x86_64_instrs).idiv_op) :: ll_backend.x86_64_instrs.operand)
+	;	imul(((ll_backend.x86_64_instrs).imul_src) :: ll_backend.x86_64_instrs.operand, ((ll_backend.x86_64_instrs).imul_dest) :: maybe.maybe(ll_backend.x86_64_instrs.operand), ((ll_backend.x86_64_instrs).imul_multiplicand) :: maybe.maybe(ll_backend.x86_64_instrs.operand))
+	;	inc(((ll_backend.x86_64_instrs).inc_op) :: ll_backend.x86_64_instrs.operand)
+	;	j(((ll_backend.x86_64_instrs).j_target) :: ll_backend.x86_64_instrs.operand, ((ll_backend.x86_64_instrs).j_condition) :: ll_backend.x86_64_instrs.condition)
+	;	jrcxz(((ll_backend.x86_64_instrs).jrcxz_8bit_off) :: ll_backend.x86_64_instrs.operand)
+	;	jmp(((ll_backend.x86_64_instrs).jmp_op) :: ll_backend.x86_64_instrs.operand)
+	;	lea(((ll_backend.x86_64_instrs).lea_src) :: ll_backend.x86_64_instrs.operand, ((ll_backend.x86_64_instrs).lea_dest) :: ll_backend.x86_64_instrs.operand)
+	;	leave 
+	;	loop(((ll_backend.x86_64_instrs).loop_rel_8bit) :: ll_backend.x86_64_instrs.operand)
+	;	loope(((ll_backend.x86_64_instrs).loope_rel_8bit) :: ll_backend.x86_64_instrs.operand)
+	;	loopne(((ll_backend.x86_64_instrs).loopne_rel_8bit) :: ll_backend.x86_64_instrs.operand)
+	;	loopnz(((ll_backend.x86_64_instrs).loopnz_rel_8bit) :: ll_backend.x86_64_instrs.operand)
+	;	loopz(((ll_backend.x86_64_instrs).loopz_rel_8bit) :: ll_backend.x86_64_instrs.operand)
+	;	mov(((ll_backend.x86_64_instrs).mov_src) :: ll_backend.x86_64_instrs.operand, ((ll_backend.x86_64_instrs).mov_dest) :: ll_backend.x86_64_instrs.operand)
+	;	mul(((ll_backend.x86_64_instrs).mul_op) :: ll_backend.x86_64_instrs.operand)
+	;	neg(((ll_backend.x86_64_instrs).neg_op) :: ll_backend.x86_64_instrs.operand)
+	;	nop 
+	;	x86_64_instr_not(((ll_backend.x86_64_instrs).not_op) :: ll_backend.x86_64_instrs.operand)
+	;	or(((ll_backend.x86_64_instrs).or_src) :: ll_backend.x86_64_instrs.operand, ((ll_backend.x86_64_instrs).or_dest) :: ll_backend.x86_64_instrs.operand)
+	;	pop(((ll_backend.x86_64_instrs).pop_op) :: ll_backend.x86_64_instrs.operand)
+	;	popfq 
+	;	push(((ll_backend.x86_64_instrs).push_op) :: ll_backend.x86_64_instrs.operand)
+	;	pushfq 
+	;	rc(((ll_backend.x86_64_instrs).rc_amount) :: ll_backend.x86_64_instrs.operand, ((ll_backend.x86_64_instrs).rc_dest) :: ll_backend.x86_64_instrs.operand, ((ll_backend.x86_64_instrs).rc_cond) :: string)
+	;	ret(((ll_backend.x86_64_instrs).ret_op) :: maybe.maybe(ll_backend.x86_64_instrs.uint16))
+	;	ro(((ll_backend.x86_64_instrs).ro_amount) :: ll_backend.x86_64_instrs.operand, ((ll_backend.x86_64_instrs).ro_dest) :: ll_backend.x86_64_instrs.operand, ((ll_backend.x86_64_instrs).ro_dir) :: string)
+	;	sal(((ll_backend.x86_64_instrs).sal_amount) :: ll_backend.x86_64_instrs.operand, ((ll_backend.x86_64_instrs).sal_dest) :: ll_backend.x86_64_instrs.operand)
+	;	shl(((ll_backend.x86_64_instrs).shl_amount) :: ll_backend.x86_64_instrs.operand, ((ll_backend.x86_64_instrs).shl_dest) :: ll_backend.x86_64_instrs.operand)
+	;	sar(((ll_backend.x86_64_instrs).sar_amount) :: ll_backend.x86_64_instrs.operand, ((ll_backend.x86_64_instrs).sar_dest) :: ll_backend.x86_64_instrs.operand)
+	;	sbb(((ll_backend.x86_64_instrs).sbb_src) :: ll_backend.x86_64_instrs.operand, ((ll_backend.x86_64_instrs).sbb_dest) :: ll_backend.x86_64_instrs.operand)
+	;	set(((ll_backend.x86_64_instrs).set_dest) :: ll_backend.x86_64_instrs.operand, ((ll_backend.x86_64_instrs).set_cond) :: ll_backend.x86_64_instrs.condition)
+	;	shld(((ll_backend.x86_64_instrs).shld_amount) :: ll_backend.x86_64_instrs.operand, ((ll_backend.x86_64_instrs).shld_dest1) :: ll_backend.x86_64_instrs.operand, ((ll_backend.x86_64_instrs).shld_dest2) :: ll_backend.x86_64_instrs.operand)
+	;	shr(((ll_backend.x86_64_instrs).shr_amount) :: ll_backend.x86_64_instrs.operand, ((ll_backend.x86_64_instrs).shr_dest) :: ll_backend.x86_64_instrs.operand)
+	;	shrd(((ll_backend.x86_64_instrs).shrd_amount) :: ll_backend.x86_64_instrs.operand, ((ll_backend.x86_64_instrs).shrd_dest1) :: ll_backend.x86_64_instrs.operand, ((ll_backend.x86_64_instrs).shrd_dest2) :: ll_backend.x86_64_instrs.operand)
+	;	stc 
+	;	std 
+	;	sub(((ll_backend.x86_64_instrs).sub_src) :: ll_backend.x86_64_instrs.operand, ((ll_backend.x86_64_instrs).sub_dest) :: ll_backend.x86_64_instrs.operand)
+	;	test(((ll_backend.x86_64_instrs).test_src1) :: ll_backend.x86_64_instrs.operand, ((ll_backend.x86_64_instrs).test_src2) :: ll_backend.x86_64_instrs.operand)
+	;	xadd(((ll_backend.x86_64_instrs).xadd_src) :: ll_backend.x86_64_instrs.operand, ((ll_backend.x86_64_instrs).xadd_dest) :: ll_backend.x86_64_instrs.operand)
+	;	xchg(((ll_backend.x86_64_instrs).xchg_src1) :: ll_backend.x86_64_instrs.operand, ((ll_backend.x86_64_instrs).xchg_src2) :: ll_backend.x86_64_instrs.operand)
+	;	xor(((ll_backend.x86_64_instrs).xor_src) :: ll_backend.x86_64_instrs.operand, ((ll_backend.x86_64_instrs).xor_dest) :: ll_backend.x86_64_instrs.operand).
+:- type x86_64_instr
+	--->	x86_64_comment(string)
+	;	x86_64_label(ll_backend.x86_64_instrs.label_name)
+	;	x86_64_directive(ll_backend.x86_64_instrs.pseudo_op)
+	;	x86_64_instr(ll_backend.x86_64_instrs.x86_64_inst).
+:- type x86_64_instruction
+	--->	x86_64_instr(((ll_backend.x86_64_instrs).x86_64_inst) :: list.list(ll_backend.x86_64_instrs.x86_64_instr), ((ll_backend.x86_64_instrs).x86_64_inst_comment) :: string).
+:- type x86_64_mem_ref
+	--->	mem_abs(((ll_backend.x86_64_instrs).mem_abs_address) :: ll_backend.x86_64_instrs.base_address)
+	;	mem_rip(((ll_backend.x86_64_instrs).instr_rel_address) :: ll_backend.x86_64_instrs.instr_ptr).
+:- type x86_64_module
+	--->	x86_64_module(((ll_backend.x86_64_instrs).x86_64_modulename) :: mdbcomp.prim_data.module_name, ((ll_backend.x86_64_instrs).x86_64_procs) :: list.list(list.list(ll_backend.x86_64_instrs.x86_64_procedure))).
+:- type x86_64_procedure
+	--->	x86_64_procedure(((ll_backend.x86_64_instrs).x86_64_name) :: string, ((ll_backend.x86_64_instrs).x86_64_arity) :: int, ((ll_backend.x86_64_instrs).x86_64_id) :: hlds.hlds_pred.pred_proc_id, ((ll_backend.x86_64_instrs).x86_64_code_model) :: hlds.code_model.code_model, ((ll_backend.x86_64_instrs).x86_64_code) :: list.list(ll_backend.x86_64_instrs.x86_64_instruction), ((ll_backend.x86_64_instrs).x86_64_proc_label) :: mdbcomp.prim_data.proc_label, ((ll_backend.x86_64_instrs).x86_64_label_nums) :: counter.counter, ((ll_backend.x86_64_instrs).x86_64_may_alter_rtti) :: ll_backend.llds.may_alter_rtti, ((ll_backend.x86_64_instrs).x86_64_c_global_vars) :: set.set(string)).
+:- type x86_64_reg
+	--->	rax 
+	;	rbx 
+	;	rcx 
+	;	rdx 
+	;	rbp 
+	;	rsi 
+	;	rdi 
+	;	rsp 
+	;	r8 
+	;	r9 
+	;	r10 
+	;	r11 
+	;	r12 
+	;	r13 
+	;	r14 
+	;	r15 .

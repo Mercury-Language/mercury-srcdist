@@ -1,0 +1,4 @@
+:- module (transform_hlds.dependency_graph).
+:- interface.
+:- type include_imported
+	where	type_is_abstract_enum(1).

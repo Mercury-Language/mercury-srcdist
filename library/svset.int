@@ -1,0 +1,28 @@
+:- module svset.
+:- interface.
+:- import_module list.
+:- import_module set.
+:- import_module term.
+:- pragma type_spec((svset.insert)/3, (T = term.var(V_2)), (svset.'TypeSpecOf__pred_or_func__insert__[T = var(V_2)]')).
+:- pragma type_spec((svset.insert_list)/3, (T = term.var(V_2)), (svset.'TypeSpecOf__pred_or_func__insert_list__[T = var(V_2)]')).
+:- pragma obsolete((svset.delete)/3).
+:- pragma obsolete((svset.delete_list)/3).
+:- pragma obsolete((svset.insert)/3).
+:- pragma obsolete((svset.insert_list)/3).
+:- pragma obsolete((svset.remove)/3).
+:- pragma obsolete((svset.remove_least)/3).
+:- pragma obsolete((svset.remove_list)/3).
+:- pred delete(T, set.set(T), set.set(T)).
+:- mode delete((builtin.in), (builtin.in), (builtin.out)) is det.
+:- pred delete_list(list.list(T), set.set(T), set.set(T)).
+:- mode delete_list((builtin.in), (builtin.in), (builtin.out)) is det.
+:- pred insert(T, set.set(T), set.set(T)).
+:- mode insert((builtin.in), (builtin.in), (builtin.out)) is det.
+:- pred insert_list(list.list(T), set.set(T), set.set(T)).
+:- mode insert_list((builtin.in), (builtin.in), (builtin.out)) is det.
+:- pred remove(T, set.set(T), set.set(T)).
+:- mode remove((builtin.in), (builtin.in), (builtin.out)) is semidet.
+:- pred remove_least(T, set.set(T), set.set(T)).
+:- mode remove_least((builtin.out), (builtin.in), (builtin.out)) is semidet.
+:- pred remove_list(list.list(T), set.set(T), set.set(T)).
+:- mode remove_list((builtin.in), (builtin.in), (builtin.out)) is semidet.

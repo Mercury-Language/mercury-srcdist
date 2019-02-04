@@ -1,0 +1,26 @@
+:- module svarray.
+:- use_module array, builtin, private_builtin.
+svarray.set(Index_5, Value_6, STATE_VARIABLE_Array_0_8, STATE_VARIABLE_Array_9) :-
+    array.set(Index_5, Value_6, STATE_VARIABLE_Array_0_8, STATE_VARIABLE_Array_9).
+svarray.semidet_set(Index_5, Value_6, STATE_VARIABLE_Array_0_8, STATE_VARIABLE_Array_9) :-
+    array.semidet_set(Index_5, Value_6, STATE_VARIABLE_Array_0_8, STATE_VARIABLE_Array_9).
+svarray.slow_set(Index_5, Value_6, STATE_VARIABLE_Array_0_8, STATE_VARIABLE_Array_9) :-
+    array.slow_set(Index_5, Value_6, STATE_VARIABLE_Array_0_8, STATE_VARIABLE_Array_9).
+svarray.semidet_slow_set(Index_5, Value_6, STATE_VARIABLE_Array_0_8, STATE_VARIABLE_Array_9) :-
+    array.semidet_slow_set(Index_5, Value_6, STATE_VARIABLE_Array_0_8, STATE_VARIABLE_Array_9).
+svarray.resize(Size_5, Init_6, STATE_VARIABLE_Array_0_8, STATE_VARIABLE_Array_9) :-
+    array.resize(Size_5, Init_6, STATE_VARIABLE_Array_0_8, STATE_VARIABLE_Array_9).
+svarray.shrink(Size_4, STATE_VARIABLE_Array_0_6, STATE_VARIABLE_Array_7) :-
+    array.shrink(Size_4, STATE_VARIABLE_Array_0_6, STATE_VARIABLE_Array_7).
+:- pragma exceptions(predicate, (svarray.set), 4, 0, may_throw(user_exception)).
+:- pragma exceptions(predicate, (svarray.semidet_set), 4, 0, may_throw(user_exception)).
+:- pragma exceptions(predicate, (svarray.slow_set), 4, 0, may_throw(user_exception)).
+:- pragma exceptions(predicate, (svarray.semidet_slow_set), 4, 0, may_throw(user_exception)).
+:- pragma exceptions(predicate, (svarray.resize), 4, 0, may_throw(user_exception)).
+:- pragma exceptions(predicate, (svarray.shrink), 3, 0, may_throw(user_exception)).
+:- pragma termination_info(svarray.set((builtin.in), (builtin.in), (array.array_di), (array.array_uo)), infinite, can_loop).
+:- pragma termination_info(svarray.semidet_set((builtin.in), (builtin.in), (array.array_di), (array.array_uo)), infinite, can_loop).
+:- pragma termination_info(svarray.slow_set((builtin.in), (builtin.in), (builtin.in), (array.array_uo)), infinite, can_loop).
+:- pragma termination_info(svarray.semidet_slow_set((builtin.in), (builtin.in), (builtin.in), (array.array_uo)), infinite, can_loop).
+:- pragma termination_info(svarray.resize((builtin.in), (builtin.in), (array.array_di), (array.array_uo)), infinite, can_loop).
+:- pragma termination_info(svarray.shrink((builtin.in), (array.array_di), (array.array_uo)), infinite, can_loop).

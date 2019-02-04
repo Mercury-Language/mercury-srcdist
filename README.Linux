@@ -1,0 +1,8 @@
+This file documents the Linux/x86 and Linux/x86_64 ports.
+For the Linux/PowerPC port, see README.Linux-PPC.
+For the Linux/Apha port, see README.Linux-Alpha.
+(Ports to Linux on other architectures have not yet
+been attempted, but should not be difficult.)
+
+Linux systems that produce executables in a.out format are not supported by
+the Mercury compiler.

@@ -1,0 +1,13 @@
+module(1, "svvarset.m",
+	svvarset,
+	{},
+	{builtin, list, maybe, set, term, varset, private_builtin},
+	{builtin, list, maybe, set, term, varset, private_builtin},
+	{},
+	{},
+	{},
+	{},
+	{},
+	no_foreign_export,
+	no_main
+).

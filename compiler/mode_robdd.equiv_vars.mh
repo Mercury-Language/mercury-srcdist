@@ -1,0 +1,34 @@
+/*
+** Automatically generated from `mode_robdd.equiv_vars.m'
+** by the Mercury compiler,
+** version rotd-2011-08-23, configured for x86_64-unknown-linux-gnu.
+** Do not edit.
+*/
+#ifndef MODE_ROBDD__EQUIV_VARS_MH
+#define MODE_ROBDD__EQUIV_VARS_MH
+
+#ifdef __cplusplus
+extern "C" {
+#endif
+
+#ifdef MR_HIGHLEVEL_CODE
+#include "mercury.h"
+#else
+  #ifndef MERCURY_HDR_EXCLUDE_IMP_H
+  #include "mercury_imp.h"
+  #endif
+#endif
+#ifdef MR_DEEP_PROFILING
+#include "mercury_deep_profiling.h"
+#endif
+
+#ifndef MODE_ROBDD__EQUIV_VARS_DECL_GUARD
+#define MODE_ROBDD__EQUIV_VARS_DECL_GUARD
+
+#endif
+
+#ifdef __cplusplus
+}
+#endif
+
+#endif /* MODE_ROBDD__EQUIV_VARS_MH */

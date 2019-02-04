@@ -1,0 +1,11 @@
+:- module (transform_hlds.termination).
+:- interface.
+:- import_module io.
+:- import_module list.
+:- import_module (hlds.hlds_module).
+:- import_module (hlds.hlds_pred).
+:- import_module (parse_tree.error_util).
+:- pred analyse_termination_in_module(hlds.hlds_module.module_info, hlds.hlds_module.module_info, list.list(parse_tree.error_util.error_spec), io.io, io.io).
+:- mode analyse_termination_in_module((builtin.in), (builtin.out), (builtin.out), (builtin.di), (builtin.uo)) is det.
+:- pred write_pred_termination_info(hlds.hlds_module.module_info, hlds.hlds_pred.pred_id, io.io, io.io).
+:- mode write_pred_termination_info((builtin.in), (builtin.in), (builtin.di), (builtin.uo)) is det.

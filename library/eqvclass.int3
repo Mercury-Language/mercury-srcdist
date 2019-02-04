@@ -1,0 +1,4 @@
+:- module eqvclass.
+:- interface.
+:- type partition_id.
+:- type eqvclass(T).
