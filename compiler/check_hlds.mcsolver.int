@@ -1,0 +1,36 @@
+:- module (check_hlds.mcsolver).
+:- interface.
+:- import_module bool.
+:- import_module list.
+:- import_module pair.
+:- import_module (check_hlds.abstract_mode_constraints).
+:- type mcvar == check_hlds.abstract_mode_constraints.mc_var.
+:- type mcvars == list.list(check_hlds.mcsolver.mcvar).
+:- type prep_cstrts.
+:- type solver_cstrts.
+:- pred assign(check_hlds.mcsolver.mcvar, bool.bool, check_hlds.mcsolver.prep_cstrts, check_hlds.mcsolver.prep_cstrts).
+:- mode assign((builtin.in), (builtin.in), (builtin.in), (builtin.out)) is det.
+:- pred at_most_one(check_hlds.mcsolver.mcvars, check_hlds.mcsolver.prep_cstrts, check_hlds.mcsolver.prep_cstrts).
+:- mode at_most_one((builtin.in), (builtin.in), (builtin.out)) is det.
+:- pred different(check_hlds.mcsolver.mcvar, check_hlds.mcsolver.mcvar, check_hlds.mcsolver.prep_cstrts, check_hlds.mcsolver.prep_cstrts).
+:- mode different((builtin.in), (builtin.in), (builtin.in), (builtin.out)) is det.
+:- pred disjunction_of_assignments(list.list(list.list(pair.pair(check_hlds.mcsolver.mcvar, bool.bool))), check_hlds.mcsolver.prep_cstrts, check_hlds.mcsolver.prep_cstrts).
+:- mode disjunction_of_assignments((builtin.in), (builtin.in), (builtin.out)) is det.
+:- pred equivalent(list.list(check_hlds.mcsolver.mcvar), check_hlds.mcsolver.prep_cstrts, check_hlds.mcsolver.prep_cstrts).
+:- mode equivalent((builtin.in), (builtin.in), (builtin.out)) is det.
+:- pred equivalent(check_hlds.mcsolver.mcvar, check_hlds.mcsolver.mcvar, check_hlds.mcsolver.prep_cstrts, check_hlds.mcsolver.prep_cstrts).
+:- mode equivalent((builtin.in), (builtin.in), (builtin.in), (builtin.out)) is det.
+:- pred equivalent_to_disjunction(check_hlds.mcsolver.mcvar, check_hlds.mcsolver.mcvars, check_hlds.mcsolver.prep_cstrts, check_hlds.mcsolver.prep_cstrts).
+:- mode equivalent_to_disjunction((builtin.in), (builtin.in), (builtin.in), (builtin.out)) is det.
+:- pred exactly_one(check_hlds.mcsolver.mcvars, check_hlds.mcsolver.prep_cstrts, check_hlds.mcsolver.prep_cstrts).
+:- mode exactly_one((builtin.in), (builtin.in), (builtin.out)) is det.
+:- pred implies(check_hlds.mcsolver.mcvar, check_hlds.mcsolver.mcvar, check_hlds.mcsolver.prep_cstrts, check_hlds.mcsolver.prep_cstrts).
+:- mode implies((builtin.in), (builtin.in), (builtin.in), (builtin.out)) is det.
+:- func make_solver_cstrts(check_hlds.mcsolver.prep_cstrts) = check_hlds.mcsolver.solver_cstrts.
+:- func new_prep_cstrts = check_hlds.mcsolver.prep_cstrts.
+:- pred not_both(check_hlds.mcsolver.mcvar, check_hlds.mcsolver.mcvar, check_hlds.mcsolver.prep_cstrts, check_hlds.mcsolver.prep_cstrts).
+:- mode not_both((builtin.in), (builtin.in), (builtin.in), (builtin.out)) is det.
+:- pred prepare_abstract_constraints(list.list(check_hlds.abstract_mode_constraints.mc_constraint), check_hlds.mcsolver.prep_cstrts, check_hlds.mcsolver.prep_cstrts).
+:- mode prepare_abstract_constraints((builtin.in), (builtin.in), (builtin.out)) is det.
+:- pred solve(check_hlds.mcsolver.solver_cstrts, check_hlds.abstract_mode_constraints.mc_bindings).
+:- mode solve((builtin.in), (builtin.out)) is nondet.
