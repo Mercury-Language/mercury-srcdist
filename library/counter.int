@@ -1,0 +1,8 @@
+:- module counter.
+:- interface.
+:- type counter.
+:- pred allocate(int, counter.counter, counter.counter).
+:- mode allocate((builtin.out), (builtin.in), (builtin.out)) is det.
+:- pred init(int, counter.counter).
+:- mode init((builtin.in), (builtin.out)) is det.
+:- func init(int) = counter.counter.

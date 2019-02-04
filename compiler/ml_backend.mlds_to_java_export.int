@@ -1,0 +1,11 @@
+:- module (ml_backend.mlds_to_java_export).
+:- interface.
+:- import_module io.
+:- import_module list.
+:- import_module (ml_backend.mlds).
+:- import_module (ml_backend.mlds_to_java_util).
+:- import_module (ml_backend.mlds_to_target_util).
+:- pred output_exported_enums_for_java(ml_backend.mlds_to_java_util.java_out_info, ml_backend.mlds_to_target_util.indent, list.list(ml_backend.mlds.mlds_exported_enum), io.io, io.io).
+:- mode output_exported_enums_for_java((builtin.in), (builtin.in), (builtin.in), (builtin.di), (builtin.uo)) is det.
+:- pred output_exports_for_java(ml_backend.mlds_to_java_util.java_out_info, ml_backend.mlds_to_target_util.indent, list.list(ml_backend.mlds.mlds_pragma_export), io.io, io.io).
+:- mode output_exports_for_java((builtin.in), (builtin.in), (builtin.in), (builtin.di), (builtin.uo)) is det.
