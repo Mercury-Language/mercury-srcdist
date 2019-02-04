@@ -1,0 +1,9 @@
+:- module bag.
+:- interface.
+:- import_module assoc_list.
+:- import_module list.
+:- import_module set.
+:- type bag(T).
+:- implementation.
+:- import_module map.
+:- type bag(T) == (map.map(T, int)).

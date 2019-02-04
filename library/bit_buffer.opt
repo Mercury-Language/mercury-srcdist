@@ -1,0 +1,154 @@
+:- module bit_buffer.
+:- use_module bitmap, bool, builtin, exception, int, list, private_builtin, stream.
+:- type (bit_buffer.bit_buffer(Stream, State, Error))
+	--->	bit_buffer((bit_buffer.mer_bitmap) :: (bitmap.bitmap), (bit_buffer.mer_pos) :: int, (bit_buffer.mer_size) :: int, (bit_buffer.mer_use_stream) :: (bool.bool), (bit_buffer.mer_stream) :: Stream, (bit_buffer.mer_state) :: State, (bit_buffer.mer_filled_bitmaps) :: (list.list((bitmap.bitmap))), (bit_buffer.mer_read_status) :: (stream.res(Error))).
+:- pragma foreign_type(c, (bit_buffer.bit_buffer(Stream, State, Error)), "ML_BitBufferPtr", [can_pass_as_mercury_type]).
+:- type (bit_buffer.bit_buffer(Stream, State)) == (bit_buffer.bit_buffer(Stream, State, {})).
+:- mode ((bit_buffer.bit_buffer_di)) == (builtin.in).
+:- mode ((bit_buffer.bit_buffer_ui)) == (builtin.in).
+:- mode ((bit_buffer.bit_buffer_uo)) == (builtin.out).
+:- instance (stream.input((bit_buffer.error_stream), (bit_buffer.error_state))) where [
+
+].
+:- pragma foreign_import_module("C", bitmap).
+:- pragma foreign_import_module("Java", bitmap).
+:- pragma foreign_import_module("IL", bitmap).
+:- pragma foreign_import_module("Erlang", bitmap).
+:- pragma foreign_import_module("C", bitmap).
+:- pragma foreign_import_module("Java", bitmap).
+:- pragma foreign_import_module("IL", bitmap).
+:- pragma foreign_import_module("Erlang", bitmap).
+:- pragma foreign_import_module("C", io).
+:- pragma foreign_import_module("Java", io).
+:- pragma foreign_import_module("IL", io).
+:- pragma foreign_import_module("Erlang", io).
+:- pragma foreign_import_module("C", io).
+:- pragma foreign_import_module("Java", io).
+:- pragma foreign_import_module("IL", io).
+:- pragma foreign_import_module("Erlang", io).
+:- pragma foreign_import_module("C", string).
+:- pragma foreign_import_module("C", time).
+:- pragma foreign_import_module("Java", time).
+:- pragma foreign_import_module("IL", time).
+:- pragma foreign_import_module("Erlang", time).
+:- pragma foreign_import_module("C", time).
+:- pragma foreign_import_module("Java", time).
+:- pragma foreign_import_module("IL", time).
+:- pragma foreign_import_module("Erlang", time).
+:- pragma foreign_import_module("Java", store).
+:- pragma foreign_import_module("Erlang", store).
+:- pragma foreign_import_module("Java", store).
+:- pragma foreign_import_module("Erlang", store).
+:- pragma foreign_import_module("C", array).
+:- pragma foreign_import_module("Java", array).
+:- pragma foreign_import_module("IL", array).
+:- pragma foreign_import_module("Erlang", array).
+:- pragma foreign_import_module("C", array).
+:- pragma foreign_import_module("Java", array).
+:- pragma foreign_import_module("IL", array).
+:- pragma foreign_import_module("Erlang", array).
+:- func bit_buffer.new_buffer_2((bitmap.bitmap), int, int, (bool.bool), Stream, State, (stream.res(Error))) = (bit_buffer.bit_buffer(Stream, State, Error)).
+:- mode bit_buffer.new_buffer_2((builtin.in), (builtin.in), (builtin.in), (builtin.in), (builtin.in), (builtin.in), (builtin.in)) = (builtin.out) is det.
+:- func bit_buffer.bitmap((bit_buffer.bit_buffer(V_1, V_2, V_3))) = (bitmap.bitmap).
+:- mode bit_buffer.bitmap((bit_buffer.bit_buffer_ui)) = (bitmap.bitmap_uo) is det.
+:- func bit_buffer.pos((bit_buffer.bit_buffer(V_1, V_2, V_3))) = int.
+:- mode bit_buffer.pos((bit_buffer.bit_buffer_ui)) = (builtin.out) is det.
+:- func bit_buffer.size((bit_buffer.bit_buffer(V_1, V_2, V_3))) = int.
+:- mode bit_buffer.size((bit_buffer.bit_buffer_ui)) = (builtin.out) is det.
+:- func bit_buffer.use_stream((bit_buffer.bit_buffer(V_1, V_2, V_3))) = (bool.bool).
+:- mode bit_buffer.use_stream((bit_buffer.bit_buffer_ui)) = (builtin.out) is det.
+:- func bit_buffer.stream((bit_buffer.bit_buffer(Stream, V_2, V_3))) = Stream.
+:- mode bit_buffer.stream((bit_buffer.bit_buffer_ui)) = (builtin.out) is det.
+:- func bit_buffer.state((bit_buffer.bit_buffer(V_1, State, V_3))) = State.
+:- mode bit_buffer.state((bit_buffer.bit_buffer_ui)) = (builtin.uo) is det.
+:- func bit_buffer.filled_bitmaps((bit_buffer.bit_buffer(V_1, V_2, V_3))) = (list.list((bitmap.bitmap))).
+:- mode bit_buffer.filled_bitmaps((bit_buffer.bit_buffer_ui)) = (builtin.out) is det.
+:- func bit_buffer.read_status((bit_buffer.bit_buffer(V_1, V_2, Error))) = (stream.res(Error)).
+:- mode bit_buffer.read_status((bit_buffer.bit_buffer_ui)) = (builtin.out) is det.
+:- pred bit_buffer.set_all((bitmap.bitmap), int, int, State, (list.list((bitmap.bitmap))), (bit_buffer.bit_buffer(Stream, State, Error)), (bit_buffer.bit_buffer(Stream, State, Error))).
+:- mode bit_buffer.set_all((bitmap.bitmap_di), (builtin.in), (builtin.in), (builtin.di), (builtin.in), (bit_buffer.bit_buffer_di), (bit_buffer.bit_buffer_uo)) is det.
+:- pred bit_buffer.set_bitmap((bitmap.bitmap), int, (bit_buffer.bit_buffer(Stream, State, Error)), (bit_buffer.bit_buffer(Stream, State, Error))).
+:- mode bit_buffer.set_bitmap((bitmap.bitmap_di), (builtin.in), (bit_buffer.bit_buffer_di), (bit_buffer.bit_buffer_uo)) is det.
+:- pred bit_buffer.set_state(State, (bit_buffer.bit_buffer(Stream, State, Error)), (bit_buffer.bit_buffer(Stream, State, Error))).
+:- mode bit_buffer.set_state((builtin.di), (bit_buffer.bit_buffer_di), (bit_buffer.bit_buffer_uo)) is det.
+:- pred bit_buffer.set_use_stream((bool.bool), (bit_buffer.bit_buffer(Stream, State, Error)), (bit_buffer.bit_buffer(Stream, State, Error))).
+:- mode bit_buffer.set_use_stream((builtin.in), (bit_buffer.bit_buffer_di), (bit_buffer.bit_buffer_uo)) is det.
+:- pred bit_buffer.set_read_status((stream.res(Error)), (bit_buffer.bit_buffer(Stream, State, Error)), (bit_buffer.bit_buffer(Stream, State, Error))).
+:- mode bit_buffer.set_read_status((builtin.in), (bit_buffer.bit_buffer_di), (bit_buffer.bit_buffer_uo)) is det.
+:- pragma foreign_proc("C", bit_buffer.new_buffer_2(BM :: (builtin.in), Pos :: (builtin.in), Size :: (builtin.in), UseStream :: (builtin.in), Stream :: (builtin.in), State :: (builtin.in), ReadStatus :: (builtin.in)) = (Buffer :: (builtin.out)), [will_not_call_mercury, not_thread_safe, not_tabled_for_io, promise_pure, may_modify_trail], "{
+    Buffer = MR_GC_NEW(ML_BitBuffer);
+    Buffer->ML_bit_buffer_bitmap = BM;
+    Buffer->ML_bit_buffer_pos = Pos;
+    Buffer->ML_bit_buffer_size = Size;
+    Buffer->ML_bit_buffer_use_stream = UseStream;
+    Buffer->ML_bit_buffer_stream = Stream;
+    Buffer->ML_bit_buffer_state = State;
+    Buffer->ML_bit_buffer_filled_bitmaps = MR_list_empty();
+    Buffer->ML_bit_buffer_read_status = ReadStatus;
+}").
+:- pragma foreign_proc("C", bit_buffer.bitmap(Buffer :: (bit_buffer.bit_buffer_ui)) = (BM :: (bitmap.bitmap_uo)), [will_not_call_mercury, not_thread_safe, not_tabled_for_io, promise_pure, may_modify_trail], "BM = Buffer->ML_bit_buffer_bitmap;").
+:- pragma foreign_proc("C", bit_buffer.pos(Buffer :: (bit_buffer.bit_buffer_ui)) = (Pos :: (builtin.out)), [will_not_call_mercury, not_thread_safe, not_tabled_for_io, promise_pure, may_modify_trail], "Pos = Buffer->ML_bit_buffer_pos;").
+:- pragma foreign_proc("C", bit_buffer.size(Buffer :: (bit_buffer.bit_buffer_ui)) = (Size :: (builtin.out)), [will_not_call_mercury, not_thread_safe, not_tabled_for_io, promise_pure, may_modify_trail], "Size = Buffer->ML_bit_buffer_size;").
+:- pragma foreign_proc("C", bit_buffer.use_stream(Buffer :: (bit_buffer.bit_buffer_ui)) = (UseStream :: (builtin.out)), [will_not_call_mercury, not_thread_safe, not_tabled_for_io, promise_pure, may_modify_trail], "UseStream = Buffer->ML_bit_buffer_use_stream;").
+:- pragma foreign_proc("C", bit_buffer.stream(Buffer :: (bit_buffer.bit_buffer_ui)) = (Stream :: (builtin.out)), [will_not_call_mercury, not_thread_safe, not_tabled_for_io, promise_pure, may_modify_trail], "Stream = Buffer->ML_bit_buffer_stream;").
+:- pragma foreign_proc("C", bit_buffer.state(Buffer :: (bit_buffer.bit_buffer_ui)) = (State :: (builtin.uo)), [will_not_call_mercury, not_thread_safe, not_tabled_for_io, promise_pure, may_modify_trail], "State = Buffer->ML_bit_buffer_state;").
+:- pragma foreign_proc("C", bit_buffer.filled_bitmaps(Buffer :: (bit_buffer.bit_buffer_ui)) = (FilledBMs :: (builtin.out)), [will_not_call_mercury, not_thread_safe, not_tabled_for_io, promise_pure, may_modify_trail], "FilledBMs = Buffer->ML_bit_buffer_filled_bitmaps;").
+:- pragma foreign_proc("C", bit_buffer.read_status(Buffer :: (bit_buffer.bit_buffer_ui)) = (ReadStatus :: (builtin.out)), [will_not_call_mercury, not_thread_safe, not_tabled_for_io, promise_pure, may_modify_trail], "ReadStatus = Buffer->ML_bit_buffer_read_status;").
+:- pragma foreign_proc("C", bit_buffer.set_all(BM :: (bitmap.bitmap_di), Pos :: (builtin.in), Size :: (builtin.in), State :: (builtin.di), FilledBMs :: (builtin.in), Buffer0 :: (bit_buffer.bit_buffer_di), Buffer :: (bit_buffer.bit_buffer_uo)), [will_not_call_mercury, not_thread_safe, not_tabled_for_io, promise_pure, may_modify_trail], "
+    Buffer = Buffer0;
+    Buffer->ML_bit_buffer_bitmap = BM;
+    Buffer->ML_bit_buffer_pos = Pos;
+    Buffer->ML_bit_buffer_size = Size;
+    Buffer->ML_bit_buffer_state = State;
+    Buffer->ML_bit_buffer_filled_bitmaps = FilledBMs;
+").
+:- pragma foreign_proc("C", bit_buffer.set_bitmap(BM :: (bitmap.bitmap_di), Pos :: (builtin.in), Buffer0 :: (bit_buffer.bit_buffer_di), Buffer :: (bit_buffer.bit_buffer_uo)), [will_not_call_mercury, not_thread_safe, not_tabled_for_io, promise_pure, may_modify_trail], "
+    Buffer = Buffer0;
+    Buffer->ML_bit_buffer_bitmap = BM;
+    Buffer->ML_bit_buffer_pos = Pos;
+").
+:- pragma foreign_proc("C", bit_buffer.set_state(State :: (builtin.di), Buffer0 :: (bit_buffer.bit_buffer_di), Buffer :: (bit_buffer.bit_buffer_uo)), [will_not_call_mercury, not_thread_safe, not_tabled_for_io, promise_pure, may_modify_trail], "
+    Buffer = Buffer0;
+    Buffer->ML_bit_buffer_state = State;
+").
+:- pragma foreign_proc("C", bit_buffer.set_use_stream(UseStream :: (builtin.in), Buffer0 :: (bit_buffer.bit_buffer_di), Buffer :: (bit_buffer.bit_buffer_uo)), [will_not_call_mercury, not_thread_safe, not_tabled_for_io, promise_pure, may_modify_trail], "
+    Buffer = Buffer0;
+    Buffer->ML_bit_buffer_use_stream = UseStream;
+").
+:- pragma foreign_proc("C", bit_buffer.set_read_status(ReadStatus :: (builtin.in), Buffer0 :: (bit_buffer.bit_buffer_di), Buffer :: (bit_buffer.bit_buffer_uo)), [will_not_call_mercury, not_thread_safe, not_tabled_for_io, promise_pure, may_modify_trail], "
+    Buffer = Buffer0;
+    Buffer->ML_bit_buffer_read_status = ReadStatus;
+").
+:- pragma exceptions(function, (bit_buffer.new_buffer_2), 8, 0, will_not_throw).
+:- pragma exceptions(function, (bit_buffer.bitmap), 2, 0, will_not_throw).
+:- pragma exceptions(function, (bit_buffer.pos), 2, 0, will_not_throw).
+:- pragma exceptions(function, (bit_buffer.size), 2, 0, will_not_throw).
+:- pragma exceptions(function, (bit_buffer.use_stream), 2, 0, will_not_throw).
+:- pragma exceptions(function, (bit_buffer.stream), 2, 0, will_not_throw).
+:- pragma exceptions(function, (bit_buffer.state), 2, 0, will_not_throw).
+:- pragma exceptions(function, (bit_buffer.filled_bitmaps), 2, 0, will_not_throw).
+:- pragma exceptions(function, (bit_buffer.read_status), 2, 0, will_not_throw).
+:- pragma exceptions(predicate, (bit_buffer.set_all), 7, 0, will_not_throw).
+:- pragma exceptions(predicate, (bit_buffer.set_bitmap), 4, 0, will_not_throw).
+:- pragma exceptions(predicate, (bit_buffer.set_state), 3, 0, will_not_throw).
+:- pragma exceptions(predicate, (bit_buffer.set_use_stream), 3, 0, will_not_throw).
+:- pragma exceptions(predicate, (bit_buffer.set_read_status), 3, 0, will_not_throw).
+:- pragma termination_info(bit_buffer.new_buffer_2((builtin.in), (builtin.in), (builtin.in), (builtin.in), (builtin.in), (builtin.in), (builtin.in)) = (builtin.out), infinite, cannot_loop).
+:- pragma termination_info(bit_buffer.bitmap((bit_buffer.bit_buffer_ui)) = (bitmap.bitmap_uo), infinite, cannot_loop).
+:- pragma termination_info(bit_buffer.pos((bit_buffer.bit_buffer_ui)) = (builtin.out), infinite, cannot_loop).
+:- pragma termination_info(bit_buffer.size((bit_buffer.bit_buffer_ui)) = (builtin.out), infinite, cannot_loop).
+:- pragma termination_info(bit_buffer.use_stream((bit_buffer.bit_buffer_ui)) = (builtin.out), infinite, cannot_loop).
+:- pragma termination_info(bit_buffer.stream((bit_buffer.bit_buffer_ui)) = (builtin.out), infinite, cannot_loop).
+:- pragma termination_info(bit_buffer.state((bit_buffer.bit_buffer_ui)) = (builtin.uo), infinite, cannot_loop).
+:- pragma termination_info(bit_buffer.filled_bitmaps((bit_buffer.bit_buffer_ui)) = (builtin.out), infinite, cannot_loop).
+:- pragma termination_info(bit_buffer.read_status((bit_buffer.bit_buffer_ui)) = (builtin.out), infinite, cannot_loop).
+:- pragma termination_info(bit_buffer.set_all((bitmap.bitmap_di), (builtin.in), (builtin.in), (builtin.di), (builtin.in), (bit_buffer.bit_buffer_di), (bit_buffer.bit_buffer_uo)), infinite, cannot_loop).
+:- pragma termination_info(bit_buffer.set_bitmap((bitmap.bitmap_di), (builtin.in), (bit_buffer.bit_buffer_di), (bit_buffer.bit_buffer_uo)), infinite, cannot_loop).
+:- pragma termination_info(bit_buffer.set_state((builtin.di), (bit_buffer.bit_buffer_di), (bit_buffer.bit_buffer_uo)), infinite, cannot_loop).
+:- pragma termination_info(bit_buffer.set_use_stream((builtin.in), (bit_buffer.bit_buffer_di), (bit_buffer.bit_buffer_uo)), infinite, cannot_loop).
+:- pragma termination_info(bit_buffer.set_read_status((builtin.in), (bit_buffer.bit_buffer_di), (bit_buffer.bit_buffer_uo)), infinite, cannot_loop).
+:- pragma termination_info(bit_buffer.'ClassMethod_for_stream__bulk_reader____bit_buffer__error_stream__arity0__int__arity0__bitmap__bitmap__arity0__bit_buffer__error_state__arity0__bit_buffer__error_stream_error__arity0______stream__bulk_get_9'((builtin.in), (builtin.in), (builtin.in), (stream.bulk_get_di), (stream.bulk_get_uo), (builtin.out), (builtin.out), (builtin.di), (builtin.uo)), finite(1, [no, no, no, yes, no, no, no, yes, no]), cannot_loop).
+:- pragma termination_info(bit_buffer.'ClassMethod_for_stream__error____bit_buffer__error_stream_error__arity0______stream__error_message_1'((builtin.in)) = (builtin.out), finite(0, [no, no]), cannot_loop).
+:- pragma termination_info(bit_buffer.'ClassMethod_for_stream__output____bit_buffer__error_stream__arity0__bit_buffer__error_state__arity0______stream__flush_3'((builtin.in), (builtin.di), (builtin.uo)), infinite, can_loop).
+:- pragma termination_info(bit_buffer.'ClassMethod_for_stream__stream____bit_buffer__error_stream__arity0__bit_buffer__error_state__arity0______stream__name_4'((builtin.in), (builtin.out), (builtin.di), (builtin.uo)), finite(0, [no, no, yes, no]), cannot_loop).
+:- pragma termination_info(bit_buffer.'ClassMethod_for_stream__writer____bit_buffer__error_stream__arity0__bitmap__slice__arity0__bit_buffer__error_state__arity0______stream__put_4'((builtin.in), (builtin.in), (builtin.di), (builtin.uo)), infinite, can_loop).

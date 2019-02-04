@@ -1,0 +1,10 @@
+:- module (libs.process_util).
+:- interface.
+:- import_module bool.
+:- import_module io.
+:- type io_pred.
+:- type build0(Info).
+:- type post_signal_cleanup(Info).
+:- inst (build0) == (pred(out, in, out, di, uo) is det).
+:- inst (io_pred) == (pred(out, di, uo) is det).
+:- inst (post_signal_cleanup) == (pred(in, out, di, uo) is det).

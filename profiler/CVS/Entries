@@ -1,0 +1,23 @@
+/.cvsignore/1.15/Fri Jun 15 12:41:47 2007//
+/.mgnuc_copts/1.1/Fri May 20 06:15:16 2005//
+/.mgnuc_opts/1.1/Mon Sep 19 08:07:05 2005//
+/.nocopyright/1.4/Mon Sep 19 08:07:05 2005//
+/Mercury.options/1.1/Sat Jun 22 19:16:05 2002//
+/Mmakefile/1.28/Fri Jul 20 01:22:05 2007//
+/PROF_FLAGS.in/1.2/Thu Jan 12 07:07:31 2006//
+/atsort_callgraph.m/1.7/Fri Nov 10 03:26:26 2006//
+/call_graph.m/1.14/Fri Dec  1 15:04:39 2006//
+/demangle.m/1.25/Fri Dec  1 15:04:39 2006//
+/demangle_test.m/1.5/Fri Nov 10 03:26:27 2006//
+/generate_output.m/1.25/Fri Dec  1 15:04:39 2006//
+/globals.m/1.14/Fri Nov 10 03:26:27 2006//
+/mercury_profile.m/1.36/Wed Jan  3 02:37:31 2007//
+/options.m/1.22/Fri Dec  1 15:04:39 2006//
+/output.m/1.27/Wed May 23 10:09:24 2007//
+/output_prof_info.m/1.10/Fri Dec  1 15:04:39 2006//
+/process_file.m/1.23/Fri Nov 10 03:26:27 2006//
+/prof_debug.m/1.12/Fri Dec  1 15:04:39 2006//
+/prof_info.m/1.16/Fri Dec  1 15:04:40 2006//
+/propagate.m/1.17/Fri Nov 10 03:26:28 2006//
+/read.m/1.16/Fri Dec  1 15:04:40 2006//
+D

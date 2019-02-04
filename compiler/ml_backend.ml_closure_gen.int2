@@ -1,0 +1,12 @@
+:- module (ml_backend.ml_closure_gen).
+:- interface.
+:- import_module list.
+:- import_module (hlds.hlds_goal).
+:- import_module (hlds.hlds_pred).
+:- import_module (ml_backend.ml_code_util).
+:- import_module (ml_backend.mlds).
+:- import_module (parse_tree.prog_data).
+:- type closure_kind
+	--->	higher_order_proc_closure 
+	;	typeclass_info_closure 
+	;	special_pred .

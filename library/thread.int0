@@ -1,0 +1,16 @@
+:- module thread.
+:- interface.
+:- pragma foreign_import_module("C", thread).
+:- pragma foreign_import_module("C#", thread).
+:- pragma foreign_import_module("IL", thread).
+:- import_module io.
+:- include_module (thread.channel).
+:- include_module (thread.mvar).
+:- include_module (thread.semaphore).
+:- pred can_spawn is semidet.
+:- pred spawn(pred((io.io), (io.io)), (io.io), (io.io)).
+:- mode spawn(builtin.in((pred((builtin.di), (builtin.uo)) is cc_multi)), (builtin.di), (builtin.uo)) is cc_multi.
+:- pred yield((io.io), (io.io)).
+:- mode yield((builtin.di), (builtin.uo)) is det.
+:- pred call_back_to_mercury(pred((io.io), (io.io)), (io.io), (io.io)).
+:- mode call_back_to_mercury((pred((builtin.di), (builtin.uo)) is cc_multi), (builtin.di), (builtin.uo)) is cc_multi.

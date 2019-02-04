@@ -1,0 +1,9 @@
+:- module (ll_backend.use_local_vars).
+:- interface.
+:- import_module bool.
+:- import_module counter.
+:- import_module list.
+:- import_module (ll_backend.llds).
+:- import_module (mdbcomp.prim_data).
+:- pred use_local_vars_proc((list.list(((ll_backend.llds).instruction))), (list.list(((ll_backend.llds).instruction))), int, int, (bool.bool), ((mdbcomp.prim_data).proc_label), (counter.counter), (counter.counter)).
+:- mode use_local_vars_proc((builtin.in), (builtin.out), (builtin.in), (builtin.in), (builtin.in), (builtin.in), (builtin.in), (builtin.out)) is det.

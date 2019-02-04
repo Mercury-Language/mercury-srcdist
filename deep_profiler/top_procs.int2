@@ -1,0 +1,9 @@
+:- module top_procs.
+:- interface.
+:- import_module interface.
+:- import_module list.
+:- import_module maybe.
+:- import_module measurements.
+:- import_module profile.
+:- type line_group(FL, LL)
+	--->	line_group((top_procs.group_filename) :: string, (top_procs.group_linenumber) :: int, (top_procs.group_name) :: string, (top_procs.group_own) :: (measurements.own_prof_info), (top_procs.group_desc) :: (measurements.inherit_prof_info), (top_procs.group_first_line_id) :: string, (top_procs.group_later_lines) :: LL).

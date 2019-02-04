@@ -1,0 +1,10 @@
+:- module (erl_backend.erl_rtti).
+:- interface.
+:- import_module list.
+:- import_module (backend_libs.erlang_rtti).
+:- import_module (backend_libs.rtti).
+:- import_module (erl_backend.elds).
+:- import_module (hlds.hlds_module).
+:- func erlang_rtti_data(((hlds.hlds_module).module_info), ((backend_libs.rtti).rtti_data)) = ((backend_libs.erlang_rtti).erlang_rtti_data).
+:- pred rtti_data_list_to_elds(((hlds.hlds_module).module_info), (list.list(((backend_libs.erlang_rtti).erlang_rtti_data))), (list.list(((erl_backend.elds).elds_rtti_defn)))).
+:- mode rtti_data_list_to_elds((builtin.in), (builtin.in), (builtin.out)) is det.

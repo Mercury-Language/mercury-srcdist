@@ -1,0 +1,18 @@
+:- module (parse_tree.prog_io_typeclass).
+:- interface.
+:- import_module list.
+:- import_module term.
+:- import_module varset.
+:- import_module (mdbcomp.prim_data).
+:- import_module (parse_tree.prog_data).
+:- import_module (parse_tree.prog_io_util).
+:- import_module (parse_tree.prog_item).
+:- type maybe_class_and_inst_constraints == ((parse_tree.prog_io_util).maybe2((list.list(((parse_tree.prog_data).prog_constraint))), ((parse_tree.prog_data).inst_var_sub))).
+:- pred parse_class_and_inst_constraints(((mdbcomp.prim_data).module_name), (term.term), ((parse_tree.prog_io_typeclass).maybe_class_and_inst_constraints)).
+:- mode parse_class_and_inst_constraints((builtin.in), (builtin.in), (builtin.out)) is det.
+:- pred parse_class_constraints(((mdbcomp.prim_data).module_name), (term.term), ((parse_tree.prog_io_util).maybe1((list.list(((parse_tree.prog_data).prog_constraint)))))).
+:- mode parse_class_constraints((builtin.in), (builtin.in), (builtin.out)) is det.
+:- pred parse_instance(((mdbcomp.prim_data).module_name), (varset.varset), (list.list((term.term))), ((parse_tree.prog_io_util).maybe1(((parse_tree.prog_item).item)))).
+:- mode parse_instance((builtin.in), (builtin.in), (builtin.in), (builtin.out)) is semidet.
+:- pred parse_typeclass(((mdbcomp.prim_data).module_name), (varset.varset), (list.list((term.term))), ((parse_tree.prog_io_util).maybe1(((parse_tree.prog_item).item)))).
+:- mode parse_typeclass((builtin.in), (builtin.in), (builtin.in), (builtin.out)) is semidet.

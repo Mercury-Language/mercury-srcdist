@@ -1,0 +1,17 @@
+:- module ((transform_hlds.ctgc).selector).
+:- interface.
+:- import_module list.
+:- import_module (hlds.hlds_module).
+:- import_module (parse_tree.prog_data).
+:- pred normalize_selector_with_type_information(((hlds.hlds_module).module_info), ((parse_tree.prog_data).mer_type), ((parse_tree.prog_data).selector), ((parse_tree.prog_data).selector)).
+:- mode normalize_selector_with_type_information((builtin.in), (builtin.in), (builtin.in), (builtin.out)) is det.
+:- pred selector_apply_widening(((hlds.hlds_module).module_info), ((parse_tree.prog_data).mer_type), ((parse_tree.prog_data).selector), ((parse_tree.prog_data).selector)).
+:- mode selector_apply_widening((builtin.in), (builtin.in), (builtin.in), (builtin.out)) is det.
+:- func selector_init(((parse_tree.prog_data).cons_id), int) = ((parse_tree.prog_data).selector).
+:- func selector_init_from_list((list.list(((parse_tree.prog_data).mer_type)))) = ((parse_tree.prog_data).selector).
+:- pred selector_termshift(((parse_tree.prog_data).selector), ((parse_tree.prog_data).selector), ((parse_tree.prog_data).selector)).
+:- mode selector_termshift((builtin.in), (builtin.in), (builtin.out)) is det.
+:- pred subsumed_by(((hlds.hlds_module).module_info), ((parse_tree.prog_data).selector), ((parse_tree.prog_data).selector), ((parse_tree.prog_data).mer_type), ((parse_tree.prog_data).selector)).
+:- mode subsumed_by((builtin.in), (builtin.in), (builtin.in), (builtin.in), (builtin.out)) is semidet.
+:- func top_selector = ((parse_tree.prog_data).selector).
+:- func type_of_node(((hlds.hlds_module).module_info), ((parse_tree.prog_data).mer_type), ((parse_tree.prog_data).selector)) = ((parse_tree.prog_data).mer_type).

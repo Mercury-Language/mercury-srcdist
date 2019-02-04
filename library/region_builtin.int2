@@ -1,0 +1,5 @@
+:- module region_builtin.
+:- interface.
+:- type region.
+:- implementation.
+:- type region == (builtin.c_pointer).

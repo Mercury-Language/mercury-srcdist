@@ -1,0 +1,17 @@
+:- module (check_hlds.mode_ordering).
+:- interface.
+:- import_module hlds.
+:- import_module io.
+:- import_module list.
+:- import_module map.
+:- import_module (check_hlds.mode_constraint_robdd).
+:- import_module (hlds.hlds_module).
+:- import_module (hlds.hlds_pred).
+:- import_module (hlds.inst_graph).
+:- type pred_constraint_info
+	--->	pci(((check_hlds.mode_constraint_robdd).mode_constraint), ((check_hlds.mode_constraint_robdd).mode_constraint_info)).
+:- type pred_constraint_map == (map.map(((hlds.hlds_pred).pred_id), ((check_hlds.mode_ordering).pred_constraint_info))).
+:- pred mode_ordering(((check_hlds.mode_ordering).pred_constraint_map), (list.list((list.list(((hlds.hlds_pred).pred_id))))), ((hlds.hlds_module).module_info), ((hlds.hlds_module).module_info), (io.io), (io.io)).
+:- mode mode_ordering((builtin.in), (builtin.in), (builtin.in), (builtin.out), (builtin.di), (builtin.uo)) is det.
+:- pred proc(((hlds.inst_graph).inst_graph), ((check_hlds.mode_constraint_robdd).mode_constraint), ((check_hlds.mode_constraint_robdd).mode_constraint_info), ((hlds.hlds_module).module_info), ((check_hlds.mode_ordering).pred_constraint_map), ((hlds.hlds_pred).proc_info), ((hlds.hlds_pred).proc_info)).
+:- mode proc((builtin.in), (builtin.in), (builtin.in), (builtin.in), (builtin.in), (builtin.in), (builtin.out)) is det.

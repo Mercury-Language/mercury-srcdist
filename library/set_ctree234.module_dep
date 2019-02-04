@@ -1,0 +1,13 @@
+module(1, "set_ctree234.m",
+	set_ctree234,
+	{},
+	{builtin, bool, list, private_builtin},
+	{builtin, bool, list, int, require, string, term, private_builtin},
+	{},
+	{},
+	{},
+	{},
+	{},
+	no_foreign_export,
+	no_main
+).

@@ -1,0 +1,43 @@
+:- module version_hash_table.
+:- interface.
+:- import_module assoc_list.
+:- import_module char.
+:- type hash_pred(K) == pred(K, int, int).
+:- type version_hash_table(K, V).
+:- inst (hash_pred) == (pred((builtin.in), (builtin.out), (builtin.out)) is det).
+:- pred char_double_hash `with_type` ((version_hash_table.hash_pred((char.char)))).
+:- mode char_double_hash `with_inst` ((version_hash_table.hash_pred)).
+:- func delete((version_hash_table.version_hash_table(K, V)), K) = (version_hash_table.version_hash_table(K, V)).
+:- pred delete(K, (version_hash_table.version_hash_table(K, V)), (version_hash_table.version_hash_table(K, V))).
+:- mode delete((builtin.in), (builtin.in), (builtin.out)) is det.
+:- func det_insert((version_hash_table.version_hash_table(K, V)), K, V) = (version_hash_table.version_hash_table(K, V)).
+:- pred det_insert(K, V, (version_hash_table.version_hash_table(K, V)), (version_hash_table.version_hash_table(K, V))).
+:- mode det_insert((builtin.in), (builtin.in), (builtin.in), (builtin.out)) is det.
+:- func det_update((version_hash_table.version_hash_table(K, V)), K, V) = (version_hash_table.version_hash_table(K, V)).
+:- pred det_update(K, V, (version_hash_table.version_hash_table(K, V)), (version_hash_table.version_hash_table(K, V))).
+:- mode det_update((builtin.in), (builtin.in), (builtin.in), (builtin.out)) is det.
+:- func elem(K, (version_hash_table.version_hash_table(K, V))) = V.
+:- func 'elem :='(K, (version_hash_table.version_hash_table(K, V)), V) = (version_hash_table.version_hash_table(K, V)).
+:- pred float_double_hash `with_type` ((version_hash_table.hash_pred(float))).
+:- mode float_double_hash `with_inst` ((version_hash_table.hash_pred)).
+:- func fold((func(K, V, T) = T), (version_hash_table.version_hash_table(K, V)), T) = T.
+:- pred generic_double_hash `with_type` ((version_hash_table.hash_pred(T))).
+:- mode generic_double_hash `with_inst` ((version_hash_table.hash_pred)).
+:- pred int_double_hash `with_type` ((version_hash_table.hash_pred(int))).
+:- mode int_double_hash `with_inst` ((version_hash_table.hash_pred)).
+:- func lookup((version_hash_table.version_hash_table(K, V)), K) = V.
+:- func new((version_hash_table.hash_pred(K)), int, float) = (version_hash_table.version_hash_table(K, V)).
+:- mode new(builtin.in((version_hash_table.hash_pred)), (builtin.in), (builtin.in)) = (builtin.out) is det.
+:- func new_default((version_hash_table.hash_pred(K))) = (version_hash_table.version_hash_table(K, V)).
+:- mode new_default(builtin.in((version_hash_table.hash_pred))) = (builtin.out) is det.
+:- func num_buckets((version_hash_table.version_hash_table(K, V))) = int.
+:- func num_occupants((version_hash_table.version_hash_table(K, V))) = int.
+:- func search((version_hash_table.version_hash_table(K, V)), K) = V is semidet.
+:- pred search((version_hash_table.version_hash_table(K, V)), K, V).
+:- mode search((builtin.in), (builtin.in), (builtin.out)) is semidet.
+:- func set((version_hash_table.version_hash_table(K, V)), K, V) = (version_hash_table.version_hash_table(K, V)).
+:- pred set(K, V, (version_hash_table.version_hash_table(K, V)), (version_hash_table.version_hash_table(K, V))).
+:- mode set((builtin.in), (builtin.in), (builtin.in), (builtin.out)) is det.
+:- pred string_double_hash `with_type` ((version_hash_table.hash_pred(string))).
+:- mode string_double_hash `with_inst` ((version_hash_table.hash_pred)).
+:- func to_assoc_list((version_hash_table.version_hash_table(K, V))) = (assoc_list.assoc_list(K, V)).

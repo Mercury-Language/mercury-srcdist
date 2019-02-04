@@ -1,0 +1,713 @@
+This is mercury_library.info, produced by makeinfo version 4.7 from
+library.texi_pp.
+
+INFO-DIR-SECTION The Mercury Programming Language
+START-INFO-DIR-ENTRY
+* Mercury Library: (mercury_library).  The Mercury Library Reference Manual.
+END-INFO-DIR-ENTRY
+
+   This file documents the Mercury standard library, version
+rotd-2007-08-16.
+
+   Copyright (C) 1995-1997,1999-2007 The University of Melbourne.
+
+   Permission is granted to make and distribute verbatim copies of this
+manual provided the copyright notice and this permission notice are
+preserved on all copies.
+
+   Permission is granted to copy and distribute modified versions of
+this manual under the conditions for verbatim copying, provided also
+that the entire resulting derived work is distributed under the terms
+of a permission notice identical to this one.
+
+   Permission is granted to copy and distribute translations of this
+manual into another language, under the above conditions for modified
+versions.
+
+
+File: mercury_library.info,  Node: version_array2d,  Next: version_array,  Prev: varset,  Up: Top
+
+97 version_array2d
+******************
+
+     %--------------------------------------------------%
+     % Copyright (C) 2004-2006 The University of Melbourne.
+     % This file may only be copied under the terms of the GNU Library General
+     % Public License - see the file COPYING.LIB in the Mercury distribution.
+     % vim: ft=mercury ts=4 sw=4 et wm=0 tw=0
+     %--------------------------------------------------%
+     %
+     % File: version_array2d.m.
+     % Author: Ralph Becket <rafe@cs.mu.oz.au>.
+     % Stability: medium-low.
+     %
+     % Two-dimensional rectangular (i.e. not ragged) version arrays.
+     %
+     % See the header comments in version_types.m for more details about version
+     % structures.
+     %
+     %--------------------------------------------------%
+     %--------------------------------------------------%
+
+     :- module version_array2d.
+     :- interface.
+
+     :- import_module list.
+
+     %--------------------------------------------------%
+
+         % A version_array2d is a two-dimensional version array stored in row-major
+         % order (that is, the elements of the first row in left-to-right order,
+         % followed by the elements of the second row and so forth.)
+         %
+     :- type version_array2d(T).
+
+         % version_array2d([[X11, ..., X1N], ..., [XM1, ..., XMN]]) constructs a 2d
+         % version array of size M * N, with the special case that
+         % bounds(version_array2d([]), 0, 0).
+         %
+         % An exception is thrown if the sublists are not all the same length.
+         %
+     :- func version_array2d(list(list(T))) = version_array2d(T).
+
+         % new(M, N, X) = version_array2d([[X11, ..., X1N], ..., [XM1, ..., XMN]])
+         % where each XIJ = X.
+         %
+         % An exception is thrown if M < 0 or N < 0.
+         %
+     :- func new(int, int, T) = version_array2d(T).
+
+         % A synonym for new/3.
+         %
+     :- func init(int, int, T) = version_array2d(T).
+
+         % version_array2d([[X11, ..., X1N], ..., [XM1, ..., XMN]]) ^ elem(I, J) = X
+         % where X is the J+1th element of the I+1th row (i.e. indices start from
+         % zero.)
+         %
+         % An exception is thrown unless 0 =< I < M, 0 =< J < N.
+         %
+     :- func version_array2d(T) ^ elem(int, int) = T.
+
+         % ( VA2D0 ^ elem(I, J) := X ) = VA2D
+         % where VA2D ^ elem(II, JJ) = X                    if I = II, J = JJ
+         % and   VA2D ^ elem(II, JJ) = VA2D0 ^ elem(II, JJ) otherwise.
+         %
+         % An exception is thrown unless 0 =< I < M, 0 =< J < N.
+         %
+         % A predicate version is also provided.
+         %
+     :- func ( version_array2d(T) ^ elem(int, int) := T  ) = version_array2d(T).
+     :- pred set(int::in, int::in, T::in, version_array2d(T)::in,
+                 version_array2d(T)::out) is det.
+
+         % bounds(version_array2d([[X11, ..., X1N], ..., [XM1, ..., XMN]), M, N)
+         %
+     :- pred bounds(version_array2d(T)::in, int::out, int::out) is det.
+
+         % in_bounds(version_array2d([[X11, ..., X1N], ..., [XM1, ..., XMN]), I, J)
+         % succeeds iff 0 =< I < M, 0 =< J < N.
+         %
+     :- pred in_bounds(version_array2d(T)::in, int::in, int::in) is semidet.
+
+         % lists(version_array2d([[X11, ..., X1N], ..., [XM1, ..., XMN])) =
+         %     [[X11, ..., X1N], ..., [XM1, ..., XMN]]
+         %
+     :- func lists(version_array2d(T)) = list(list(T)).
+
+         % copy(VA2D) returns a copy of VA2D with O(1) access times.
+         %
+     :- func copy(version_array2d(T)) = version_array2d(T).
+
+         % resize(VA2D, M, N, X) returns a copy of VA2D resized to M * N.
+         % Items with coordinates in common are copied from VA2D; other
+         % items are initialised to X.
+         %
+         % An exception is thrown if M < 0 or N < 0.
+         %
+     :- func resize(version_array2d(T), int, int, T) = version_array2d(T).
+
+         % unsafe_rewind(VA2D) returns a new 2d version array with O(1) access
+         % times, at the cost of rendering VA2D and its descendants undefined.
+         % Only call this function if you are absolutely certain there are no
+         % remaining live references to VA2D or any descendent of VA2D.
+         %
+     :- func unsafe_rewind(version_array2d(T)) = version_array2d(T).
+
+     %--------------------------------------------------%
+     %--------------------------------------------------%
+
+
+File: mercury_library.info,  Node: version_array,  Next: version_bitmap,  Prev: version_array2d,  Up: Top
+
+98 version_array
+****************
+
+     %--------------------------------------------------%
+     % vim: ts=4 sw=4 et tw=0 wm=0 ft=mercury
+     %--------------------------------------------------%
+     % Copyright (C) 2004-2007 The University of Melbourne.
+     % This file may only be copied under the terms of the GNU Library General
+     % Public License - see the file COPYING.LIB in the Mercury distribution.
+     % vim: ft=mercury ts=4 sw=4 et wm=0 tw=0
+     %--------------------------------------------------%
+     %
+     % File: version_array.m.
+     % Author: Ralph Becket <rafe@cs.mu.oz.au>.
+     % Stability: low.
+     %
+     % (See the header comments in version_types.m for an explanation of version
+     % types.)
+     %
+     % This module implements version arrays.  A version array provides O(1)
+     % access and update for the "latest" version of the array.  "Older"
+     % versions of the array incur an O(k) penalty on accesses where k is
+     % the number of updates that have been made since.
+     %
+     % The advantage of version arrays is that in the common, singly threaded,
+     % case, they are almost as fast as unique arrays, but can be treated as
+     % ordinary ground values rather than unique values.
+     %
+     % Version arrays are zero based.
+     %
+     % XXX This implementation is not yet guaranteed to work with the agc (accurate
+     % garbage collection) grades.  Specifically, MR_deep_copy and MR_agc_deep_copy
+     % currently do not recognise version arrays.
+     %
+     %--------------------------------------------------%
+     %--------------------------------------------------%
+
+     :- module version_array.
+     :- interface.
+
+     :- import_module list.
+
+     :- type version_array(T).
+
+         % empty_array returns the empty array.
+         %
+     :- func empty = version_array(T).
+
+         % new(N, X) returns an array of size N with each item initialised
+         % to X.
+         %
+     :- func new(int, T) = version_array(T).
+
+         % A synonym for new/2.
+         %
+     :- func init(int, T) = version_array(T).
+
+         % version_array(Xs) returns an array constructed from the items in the list
+         % Xs.
+         %
+     :- func version_array(list(T)) = version_array(T).
+
+         % A synonym for the above.
+         %
+     :- func from_list(list(T)) = version_array(T).
+
+         % A ^ elem(I) = X iff the Ith member of A is X (the first item has
+         % index 0).
+         %
+     :- func version_array(T) ^ elem(int) = T.
+
+         % lookup(A, I) = A ^ elem(I).
+         %
+     :- func lookup(version_array(T), int) = T.
+
+         % (A ^ elem(I) := X) is a copy of array A with item I updated to be
+         % X.  An exception is thrown if I is out of bounds.  set/4 is an
+         % equivalent predicate.
+         %
+     :- func (version_array(T) ^ elem(int) := T) = version_array(T).
+
+     :- pred set(int::in, T::in, version_array(T)::in, version_array(T)::out)
+         is det.
+
+         % size(A) = N if A contains N items (i.e. the valid indices for A
+         % range from 0 to N - 1).
+         %
+     :- func size(version_array(T)) = int.
+
+         % max(Z) = size(A) - 1.
+         %
+     :- func max(version_array(T)) = int.
+
+         % resize(A, N, X) returns a new array whose items from
+         % 0..min(size(A), N - 1) are taken from A and whose items
+         % from min(size(A), N - 1)..(N - 1) (if any) are initialised
+         % to X.  A predicate version is also provided.
+         %
+     :- func resize(version_array(T), int, T) = version_array(T).
+     :- pred resize(int::in, T::in, version_array(T)::in, version_array(T)::out)
+         is det.
+
+         % list(A) = Xs where Xs is the list of items in A
+         % (i.e. A = version_array(Xs)).
+         %
+     :- func list(version_array(T)) = list(T).
+
+         % A synonym for the above.
+         %
+     :- func to_list(version_array(T)) = list(T).
+
+         % foldl(F, A, X) is equivalent to list.foldl(F, list(A), Xs).
+         %
+     :- func foldl(func(T1, T2) = T2, version_array(T1), T2) = T2.
+
+         % foldr(F, A, X) is equivalent to list.foldr(F, list(A), Xs).
+         %
+     :- func foldr(func(T1, T2) = T2, version_array(T1), T2) = T2.
+
+         % copy(A) is a copy of array A.  Access to the copy is O(1).
+         %
+     :- func copy(version_array(T)) = version_array(T).
+
+         % unsafe_rewind(A) produces a version of A for which all accesses are
+         % O(1).  Invoking this predicate renders A and all later versions undefined
+         % that were derived by performing individual updates.  Only use this when
+         % you are absolutely certain there are no live references to A or later
+         % versions of A.  (A predicate version is also provided.)
+         %
+     :- func unsafe_rewind(version_array(T)) = version_array(T).
+     :- pred unsafe_rewind(version_array(T)::in, version_array(T)::out) is det.
+
+     %--------------------------------------------------%
+     %--------------------------------------------------%
+
+     % The first implementation of version arrays used nb_references.
+     % This incurred three memory allocations for every update. This version
+     % works at a lower level, but only performs one allocation per update.
+
+     %--------------------------------------------------%
+
+
+File: mercury_library.info,  Node: version_bitmap,  Next: version_hash_table,  Prev: version_array,  Up: Top
+
+99 version_bitmap
+*****************
+
+     %--------------------------------------------------%
+     % Copyright (C) 2004-2007 The University of Melbourne
+     % This file may only be copied under the terms of the GNU Library General
+     % Public License - see the file COPYING.LIB in the Mercury distribution.
+     % vim: ft=mercury ts=4 sw=4 et wm=0 tw=0
+     %--------------------------------------------------%
+     %
+     % File: version_bitmap.m.
+     % Author: Ralph Becket <rafe@cs.mu.oz.au>.
+     % Stability: low.
+     %
+     % (See the header comments in version_types.m for an explanation of version
+     % types.)
+     %
+     % Version bitmaps: an implementation of bitmaps using version arrays.
+     %
+     % The advantage of version bitmaps is that in the common, singly threaded,
+     % case, they are almost as fast as unique bitmaps, but can be treated as
+     % ordinary ground values rather than unique values.
+     %
+     %--------------------------------------------------%
+     %--------------------------------------------------%
+
+     :- module version_bitmap.
+     :- interface.
+
+     :- import_module bool.
+
+     %--------------------------------------------------%
+
+     :- type version_bitmap.
+
+         % new(N, B) creates a version_bitmap of size N (indexed 0 .. N-1)
+         % setting each bit if B = yes and clearing each bit if B = no.
+         % An exception is thrown if N is negative.
+         %
+     :- func new(int, bool) = version_bitmap.
+
+         % Returns the number of bits in a version_bitmap.
+         %
+     :- func num_bits(version_bitmap) = int.
+
+         % set(BM, I), clear(BM, I) and flip(BM, I) set, clear and flip
+         % bit I in BM respectively.  An exception is thrown if I is out
+         % of range.  Predicate versions are also provided.
+         %
+     :- func set(version_bitmap, int) = version_bitmap.
+     :- pred set(int::in, version_bitmap::in, version_bitmap::out) is det.
+
+     :- func clear(version_bitmap, int) = version_bitmap.
+     :- pred clear(int::in, version_bitmap::in, version_bitmap::out) is det.
+
+     :- func flip(version_bitmap, int) = version_bitmap.
+     :- pred flip(int::in, version_bitmap::in, version_bitmap::out) is det.
+
+         % is_set(BM, I) and is_clear(BM, I) succeed iff bit I in BM
+         % is set or clear respectively.
+         %
+     :- pred is_set(version_bitmap::in, int::in) is semidet.
+     :- pred is_clear(version_bitmap::in, int::in) is semidet.
+
+         % Get the given bit.
+         %
+     :- func version_bitmap ^ bit(int) = bool.
+
+         % Set the given bit.
+         %
+     :- func (version_bitmap ^ bit(int) := bool) = version_bitmap.
+
+         % Create a new copy of a version_bitmap.
+         %
+     :- func copy(version_bitmap) = version_bitmap.
+
+         % Set operations; the second argument is altered in all cases.
+         %
+     :- func complement(version_bitmap) = version_bitmap.
+
+     :- func union(version_bitmap, version_bitmap) = version_bitmap.
+
+     :- func intersect(version_bitmap, version_bitmap) = version_bitmap.
+
+     :- func difference(version_bitmap, version_bitmap) = version_bitmap.
+
+     :- func xor(version_bitmap, version_bitmap) = version_bitmap.
+
+         % resize(BM, N, B) resizes version_bitmap BM to have N bits; if N is
+         % smaller than the current number of bits in BM then the excess
+         % are discarded.  If N is larger than the current number of bits
+         % in BM then the new bits are set if B = yes and cleared if
+         % B = no.
+         %
+     :- func resize(version_bitmap, int, bool) = version_bitmap.
+
+         % Version of the above suitable for use with state variables.
+         %
+     :- pred resize(int::in, bool::in, version_bitmap::in, version_bitmap::out)
+                 is det.
+
+         % unsafe_rewind(B) produces a version of B for which all accesses are
+         % O(1).  Invoking this predicate renders B and all later versions undefined
+         % that were derived by performing individual updates.  Only use this when
+         % you are absolutely certain there are no live references to B or later
+         % versions of B.
+         %
+     :- func unsafe_rewind(version_bitmap) = version_bitmap.
+
+         % A version of the above suitable for use with state variables.
+         %
+     :- pred unsafe_rewind(version_bitmap::in, version_bitmap::out) is det.
+
+     %--------------------------------------------------%
+     %--------------------------------------------------%
+
+
+File: mercury_library.info,  Node: version_hash_table,  Next: version_store,  Prev: version_bitmap,  Up: Top
+
+100 version_hash_table
+**********************
+
+     %--------------------------------------------------%
+     % Copyright (C) 2004-2006 The University of Melbourne.
+     % This file may only be copied under the terms of the GNU Library General
+     % Public License - see the file COPYING.LIB in the Mercury distribution.
+     % vim: ft=mercury ts=4 sw=4 et wm=0 tw=0
+     %--------------------------------------------------%
+     %
+     % File: version_hash_table.m.
+     % Main author: rafe.
+     % Stability: low.
+     %
+     % (See the header comments in version_types.m for an explanation of version
+     % types.)
+     %
+     % Version hash tables.  The "latest" version of the hash table
+     % provides roughly the same performance as the unique hash table
+     % implementation.  "Older" versions of the hash table are still
+     % accessible, but will incurr a growing performance penalty as
+     % more updates are made to the hash table.
+     %
+     %--------------------------------------------------%
+     %--------------------------------------------------%
+
+     :- module version_hash_table.
+     :- interface.
+
+     :- import_module assoc_list.
+     :- import_module char.
+
+     %--------------------------------------------------%
+
+     :- type version_hash_table(K, V).
+
+     :- type hash_pred(K) == ( pred(K,  int, int)        ).
+     :- inst hash_pred    == ( pred(in, out, out) is det ).
+
+         % new(HashFunc, N, MaxOccupancy)
+         % constructs a new hash table with initial size 2 ^ N that is
+         % doubled whenever MaxOccupancy is achieved; elements are
+         % indexed using HashFunc.
+         %
+         % HashFunc must compute two *independent* hashes for a given
+         % key - that is, one hash should not be a function of the other.
+         % Otherwise poor performance will result.
+         %
+         % N must be greater than 1.
+         % MaxOccupancy must be in (0.0, 1.0).
+         %
+         % XXX Values too close to the limits may cause bad things
+         % to happen.
+         %
+     :- func new(hash_pred(K)::in(hash_pred), int::in, float::in) =
+                 (version_hash_table(K, V)::out) is det.
+
+         % new_default(HashFn) constructs a hash table with default size and
+         % occupancy arguments.
+         %
+     :- func new_default(hash_pred(K)::in(hash_pred)) =
+                 (version_hash_table(K, V)::out) is det.
+
+         % Retrieve the hash_pred associated with a hash table.
+         %
+     % :- func hash_pred(version_hash_table(K, V)) = hash_pred(K).
+
+         % Default hash_preds for ints and strings and everything (buwahahaha!)
+         %
+     :- pred int_double_hash     `with_type` hash_pred(int)    `with_inst` hash_pred.
+     :- pred string_double_hash  `with_type` hash_pred(string) `with_inst` hash_pred.
+     :- pred char_double_hash    `with_type` hash_pred(char)   `with_inst` hash_pred.
+     :- pred float_double_hash   `with_type` hash_pred(float)  `with_inst` hash_pred.
+     :- pred generic_double_hash `with_type` hash_pred(T)      `with_inst` hash_pred.
+
+         % Returns the number of buckets in a hash table.
+         %
+     :- func num_buckets(version_hash_table(K, V)) = int.
+
+         % Returns the number of occupants in a hash table.
+         %
+     :- func num_occupants(version_hash_table(K, V)) = int.
+
+         % Insert key-value binding into a hash table; if one is
+         % already there then the previous value is overwritten.
+         % A predicate version is also provided.
+         %
+     :- func set(version_hash_table(K, V), K, V) = version_hash_table(K, V).
+     :- pred set(K::in, V::in,
+                 version_hash_table(K, V)::in, version_hash_table(K, V)::out)
+                     is det.
+
+         % Field update for hash tables.
+         % HT ^ elem(K) := V  is equivalent to  set(HT, K, V).
+         %
+     :- func 'elem :='(K, version_hash_table(K, V), V) = version_hash_table(K, V).
+
+         % Insert a key-value binding into a hash table.  An
+         % exception is thrown if a binding for the key is already
+         % present.  A predicate version is also provided.
+         %
+     :- func det_insert(version_hash_table(K, V), K, V) = version_hash_table(K, V).
+     :- pred det_insert(K::in, V::in,
+                 version_hash_table(K, V)::in, version_hash_table(K, V)::out)
+                     is det.
+
+         % Change a key-value binding in a hash table.  An
+         % exception is thrown if a binding for the key does not
+         % already exist.  A predicate version is also provided.
+         %
+         %
+     :- func det_update(version_hash_table(K, V), K, V) = version_hash_table(K, V).
+     :- pred det_update(K::in, V::in,
+                 version_hash_table(K, V)::in, version_hash_table(K, V)::out)
+                     is det.
+
+         % Delete the entry for the given key, leaving the hash table
+         % unchanged if there is no such entry.  A predicate version is also
+         % provided.
+         %
+     :- func delete(version_hash_table(K, V), K) = version_hash_table(K, V).
+     :- pred delete(K::in, version_hash_table(K, V)::in,
+                 version_hash_table(K, V)::out) is det.
+
+         % Lookup the value associated with the given key.  An exception
+         % is raised if there is no entry for the key.
+         %
+     :- func lookup(version_hash_table(K, V), K) = V.
+
+         % Field access for hash tables.
+         % HT ^ elem(K)  is equivalent to  lookup(HT, K).
+         %
+     :- func version_hash_table(K, V) ^ elem(K) = V.
+
+         % Like lookup, but just fails if there is no entry for the key.
+         %
+     :- func search(version_hash_table(K, V), K) = V is semidet.
+     :- pred search(version_hash_table(K, V)::in, K::in, V::out) is semidet.
+
+         % Convert a hash table into an association list.
+         %
+     :- func to_assoc_list(version_hash_table(K, V)) = assoc_list(K, V).
+
+         % Fold a function over the key-value bindings in a hash table.
+         %
+     :- func fold(func(K, V, T) = T, version_hash_table(K, V), T) = T.
+
+     %--------------------------------------------------%
+     %--------------------------------------------------%
+
+
+File: mercury_library.info,  Node: version_store,  Next: version_types,  Prev: version_hash_table,  Up: Top
+
+101 version_store
+*****************
+
+     %--------------------------------------------------%
+     % Copyright (C) 2004-2006 The University of Melbourne.
+     % This file may only be copied under the terms of the GNU Library General
+     % Public License - see the file COPYING.LIB in the Mercury distribution.
+     % vim: ft=mercury ts=4 sw=4 et wm=0 tw=0
+     %--------------------------------------------------%
+     %
+     % File: version_store.m.
+     % Author: Ralph Becket <rafe@cs.mu.oz.au>
+     % Stability: low.
+     %
+     % (See the header comments in version_types.m for an explanation of version
+     % types.)
+     %
+     % A version_store is similar to, albeit slightly slower than, an ordinary
+     % store, but does not depend upon uniqueness.
+     %
+     % Note that, unlike ordinary stores, liveness of data is via the version store
+     % rather than the mutvars.  This means that dead data (i.e.  whose mutvar is
+     % out of scope) in a version_store may not be garbage collected.
+     %
+     %--------------------------------------------------%
+     %--------------------------------------------------%
+
+     :- module version_store.
+     :- interface.
+
+     %--------------------------------------------------%
+
+     :- type version_store(S).
+
+     :- type mutvar(T, S).
+
+         % Construct a new version store.  This is distinguished from other
+         % version stores by its existentially quantified type.  This means
+         % the compiler can automatically detect any attempt to use a
+         % mutvar with the wrong version store.
+         %
+     :- some [S] func new = version_store(S).
+
+         % new_mutvar(X, Mutvar, VS0, VS) adds a new mutvar with value reference X
+         % to the version store.
+         %
+     :- pred new_mutvar(T::in, mutvar(T, S)::out,
+                 version_store(S)::in, version_store(S)::out) is det.
+
+         % new_cyclic_mutvar(F, Mutvar, VS0, VS) adds a new mutvar with value
+         % reference F(Mutvar) to the version store.  This can be used to
+         % construct cyclic terms.
+         %
+     :- pred new_cyclic_mutvar((func(mutvar(T, S)) = T)::in, mutvar(T, S)::out,
+                 version_store(S)::in, version_store(S)::out) is det.
+
+         % copy_mutvar(Mutvar, NewMutvar, VS0, VS) constructs NewMutvar
+         % with the same value reference as Mutvar.
+         %
+     :- pred copy_mutvar(mutvar(T, S)::in, mutvar(T, S)::out,
+                 version_store(S)::in, version_store(S)::out) is det.
+
+         % VS ^ elem(Mutvar) returns the element referenced by Mutvar in
+         % the version store.
+         %
+     :- func version_store(S) ^ elem(mutvar(T, S)) = T.
+
+         % lookup(VS, Mutvar) = VS ^ elem(Mutvar).
+         %
+         % A predicate version is also provided.
+         %
+     :- func lookup(version_store(S), mutvar(T, S)) = T.
+     :- pred get_mutvar(mutvar(T, S)::in, T::out, version_store(S)::in,
+                 version_store(S)::out) is det.
+
+         % ( VS ^ elem(Mutvar) := X ) updates the version store so that
+         % Mutvar now refers to value X.
+         %
+     :- func ( version_store(S) ^ elem(mutvar(T, S)) := T ) = version_store(S).
+
+         % set(VS, Mutvar, X) = ( VS ^ elem(Mutvar) := X ).
+         %
+         % A predicate version is also provided.
+         %
+     :- func set(version_store(S), mutvar(T, S), T) = version_store(S).
+     :- pred set_mutvar(mutvar(T, S)::in, T::in, version_store(S)::in,
+                 version_store(S)::out) is det.
+
+         % unsafe_rewind(VS) produces a version of VS for which all accesses are
+         % O(1).  Invoking this predicate renders undefined VS and all later
+         % versions undefined that were derived by performing individual updates.
+         % Only use this when you are absolutely certain there are no live
+         % references to VS or later versions of VS.
+         %
+         % A predicate version is also provided.
+         %
+     :- func unsafe_rewind(version_store(T)) = version_store(T).
+     :- pred unsafe_rewind(version_store(T)::in, version_store(T)::out) is det.
+
+     %--------------------------------------------------%
+     %--------------------------------------------------%
+
+
+File: mercury_library.info,  Node: version_types,  Prev: version_store,  Up: Top
+
+102 version_types
+*****************
+
+     %--------------------------------------------------%
+     % Copyright (C) 2004-2005 The University of Melbourne.
+     % This file may only be copied under the terms of the GNU Library General
+     % Public License - see the file COPYING.LIB in the Mercury distribution.
+     % vim: ft=mercury ts=4 sw=4 et wm=0 tw=0
+     %--------------------------------------------------%
+     % version_types.m
+     % Ralph Becket <rafe@cs.mu.oz.au>
+     % Fri Jul  9 15:31:16 EST 2004
+     %
+     % (This module only provides documentation describing general properties
+     % of version types.)
+     %
+     % Version types are efficient pure implementations of typically imperative
+     % structures, subject to the following caveat: efficient access is only
+     % guaranteed for the "latest" version of a given structure.  An older version
+     % incurs an access cost proportional to the number of its descendants.
+     %
+     % For example, if A0 is a version array, and A1 is created by updating A0,
+     % and A2 is created by updating A1, ..., and An is created by updating An-1,
+     % then accesses to An cost O(1) (assuming no further versions of the array
+     % have been created from An), but accesses to A0 cost O(n).
+     %
+     % Most of these data structures come with impure, unsafe means to "rewind"
+     % to an earlier version, restoring that version's O(1) access times, but
+     % leaving later versions undefined (i.e. only do this if you are discarding
+     % all later versions of the structure.)
+     %
+     % The motivation for using version types is that they are ordinary ground
+     % structures and do not depend upon uniqueness, while in many circumstances
+     % offering similar levels of performance.
+     %
+     %--------------------------------------------------%
+
+     :- module version_types.
+
+     :- interface.
+
+         % This is just to stop the compiler complaining about this module
+         % not defining anything.
+         %
+     :- type prevent_warning_about_empty_interface ---> dummy.
+
+     %--------------------------------------------------%
+     %--------------------------------------------------%
+
+

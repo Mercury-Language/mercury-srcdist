@@ -1,0 +1,11 @@
+:- module rtree.
+:- interface.
+:- import_module list.
+:- type box.
+:- type box3d.
+:- type interval.
+:- type rtree(K, V).
+:- typeclass region(K).
+:- instance (rtree.region((rtree.box))).
+:- instance (rtree.region((rtree.box3d))).
+:- instance (rtree.region((rtree.interval))).

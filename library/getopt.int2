@@ -1,0 +1,39 @@
+:- module getopt.
+:- interface.
+:- import_module bool.
+:- import_module char.
+:- import_module list.
+:- import_module map.
+:- import_module maybe.
+:- import_module set.
+:- type option_data
+	--->	bool((bool.bool))
+	;	int(int)
+	;	string(string)
+	;	maybe_int((maybe.maybe(int)))
+	;	maybe_string((maybe.maybe(string)))
+	;	accumulating((list.list(string)))
+	;	special 
+	;	bool_special 
+	;	int_special 
+	;	string_special 
+	;	maybe_string_special .
+:- type special_data
+	--->	none 
+	;	bool((bool.bool))
+	;	int(int)
+	;	string(string)
+	;	maybe_string((maybe.maybe(string))).
+:- type maybe_option_table(OptionType)
+	--->	ok((getopt.option_table(OptionType)))
+	;	error(string).
+:- type option_ops(OptionType)
+	--->	option_ops(pred((char.char), OptionType), pred(string, OptionType), pred(OptionType, (getopt.option_data)))
+	;	option_ops(pred((char.char), OptionType), pred(string, OptionType), pred(OptionType, (getopt.option_data)), pred(OptionType, (getopt.special_data), (getopt.option_table(OptionType)), (getopt.maybe_option_table(OptionType))))
+	;	option_ops_multi(pred((char.char), OptionType), pred(string, OptionType), pred(OptionType, (getopt.option_data)))
+	;	option_ops_multi(pred((char.char), OptionType), pred(string, OptionType), pred(OptionType, (getopt.option_data)), pred(OptionType, (getopt.special_data), (getopt.option_table(OptionType)), (getopt.maybe_option_table(OptionType)))).
+:- type option_ops_track(OptionType)
+	--->	option_ops_track(pred((char.char), OptionType), pred(string, OptionType), pred(OptionType, (getopt.special_data), (getopt.option_table(OptionType)), (getopt.maybe_option_table(OptionType)), (set.set(OptionType)))).
+:- type option_table(OptionType) == (map.map(OptionType, (getopt.option_data))).
+:- inst (option_ops) == bound(option_ops((pred((builtin.in), (builtin.out)) is semidet), (pred((builtin.in), (builtin.out)) is semidet), (pred((builtin.out), (builtin.out)) is nondet)) ; option_ops((pred((builtin.in), (builtin.out)) is semidet), (pred((builtin.in), (builtin.out)) is semidet), (pred((builtin.out), (builtin.out)) is nondet), (pred((builtin.in), (builtin.in), (builtin.in), (builtin.out)) is semidet)) ; option_ops_multi((pred((builtin.in), (builtin.out)) is semidet), (pred((builtin.in), (builtin.out)) is semidet), (pred((builtin.out), (builtin.out)) is multi)) ; option_ops_multi((pred((builtin.in), (builtin.out)) is semidet), (pred((builtin.in), (builtin.out)) is semidet), (pred((builtin.out), (builtin.out)) is multi), (pred((builtin.in), (builtin.in), (builtin.in), (builtin.out)) is semidet))).
+:- inst (option_ops_track) == bound(option_ops_track((pred((builtin.in), (builtin.out)) is semidet), (pred((builtin.in), (builtin.out)) is semidet), (pred((builtin.in), (builtin.in), (builtin.in), (builtin.out), (builtin.out)) is semidet))).

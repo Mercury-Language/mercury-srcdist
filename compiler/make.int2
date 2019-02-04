@@ -1,0 +1,10 @@
+:- module make.
+:- interface.
+:- include_module (make.options_file).
+:- include_module (make.util).
+:- type make_info.
+:- implementation.
+:- include_module (make.dependencies).
+:- include_module (make.module_dep_file).
+:- include_module (make.module_target).
+:- include_module (make.program_target).

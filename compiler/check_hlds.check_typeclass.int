@@ -1,0 +1,10 @@
+:- module (check_hlds.check_typeclass).
+:- interface.
+:- import_module hlds.
+:- import_module list.
+:- import_module parse_tree.
+:- import_module (hlds.hlds_module).
+:- import_module (hlds.make_hlds).
+:- import_module (parse_tree.error_util).
+:- pred check_typeclasses(((hlds.hlds_module).module_info), ((hlds.hlds_module).module_info), ((hlds.make_hlds).make_hlds_qual_info), ((hlds.make_hlds).make_hlds_qual_info), (list.list(((parse_tree.error_util).error_spec))), (list.list(((parse_tree.error_util).error_spec)))).
+:- mode check_typeclasses((builtin.in), (builtin.out), (builtin.in), (builtin.out), (builtin.in), (builtin.out)) is det.

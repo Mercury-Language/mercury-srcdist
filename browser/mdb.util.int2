@@ -1,0 +1,9 @@
+:- module (mdb.util).
+:- interface.
+:- import_module bool.
+:- import_module io.
+:- import_module list.
+:- import_module (mdbcomp.prim_data).
+:- type line_number == int.
+:- type unbound
+	--->	'_' .

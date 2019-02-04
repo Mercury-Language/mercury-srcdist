@@ -1,0 +1,21 @@
+:- module cord.
+:- interface.
+:- import_module list.
+:- type cord(T).
+:- func ++((cord.cord(T)), (cord.cord(T))) = (cord.cord(T)).
+:- func cons(T, (cord.cord(T))) = (cord.cord(T)).
+:- func empty = (cord.cord(T)).
+:- pred equal((cord.cord(T)), (cord.cord(T))).
+:- mode equal((builtin.in), (builtin.in)) is semidet.
+:- func foldl((func(T, U) = U), (cord.cord(T)), U) = U.
+:- func foldr((func(T, U) = U), (cord.cord(T)), U) = U.
+:- func from_list((list.list(T))) = (cord.cord(T)).
+:- pred head_tail((cord.cord(T)), T, (cord.cord(T))).
+:- mode head_tail((builtin.in), (builtin.out), (builtin.out)) is semidet.
+:- func length((cord.cord(T))) = int.
+:- func list((cord.cord(T))) = (list.list(T)).
+:- func map(((func T) = U), (cord.cord(T))) = (cord.cord(U)).
+:- pred member(T, (cord.cord(T))).
+:- mode member((builtin.out), (builtin.in)) is nondet.
+:- func singleton(T) = (cord.cord(T)).
+:- func snoc((cord.cord(T)), T) = (cord.cord(T)).

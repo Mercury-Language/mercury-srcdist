@@ -1,0 +1,4 @@
+:- module options.
+:- interface.
+:- type option.
+:- type option_table.

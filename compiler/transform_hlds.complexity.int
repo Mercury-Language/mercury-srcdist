@@ -1,0 +1,13 @@
+:- module (transform_hlds.complexity).
+:- interface.
+:- import_module io.
+:- import_module maybe.
+:- import_module pair.
+:- import_module (hlds.hlds_module).
+:- import_module (hlds.hlds_pred).
+:- func complexity_proc_name(((hlds.hlds_module).module_info), ((hlds.hlds_pred).pred_id), ((hlds.hlds_pred).proc_id)) = string.
+:- func is_in_complexity_proc_map(((hlds.hlds_module).complexity_proc_map), ((hlds.hlds_module).module_info), ((hlds.hlds_pred).pred_id), ((hlds.hlds_pred).proc_id)) = (maybe.maybe(int)).
+:- pred process_proc_msg(int, ((hlds.hlds_module).complexity_proc_map), ((hlds.hlds_pred).pred_id), ((hlds.hlds_pred).proc_id), ((hlds.hlds_pred).proc_info), ((hlds.hlds_pred).proc_info), ((hlds.hlds_module).module_info), ((hlds.hlds_module).module_info), (io.io), (io.io)).
+:- mode process_proc_msg((builtin.in), (builtin.in), (builtin.in), (builtin.in), (builtin.in), (builtin.out), (builtin.in), (builtin.out), (builtin.di), (builtin.uo)) is det.
+:- pred read_spec_file(string, (maybe.maybe_error((pair.pair(int, ((hlds.hlds_module).complexity_proc_map))))), (io.io), (io.io)).
+:- mode read_spec_file((builtin.in), (builtin.out), (builtin.di), (builtin.uo)) is det.

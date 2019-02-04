@@ -1,0 +1,9 @@
+:- module (ll_backend.livemap).
+:- interface.
+:- import_module list.
+:- import_module map.
+:- import_module maybe.
+:- import_module set.
+:- import_module (ll_backend.llds).
+:- type livemap == (map.map(((ll_backend.llds).label), ((ll_backend.livemap).lvalset))).
+:- type lvalset == (set.set(((ll_backend.llds).lval))).

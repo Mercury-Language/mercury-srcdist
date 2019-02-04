@@ -1,0 +1,15 @@
+:- module (transform_hlds.smm_common).
+:- interface.
+:- import_module hlds.
+:- import_module io.
+:- import_module list.
+:- import_module mdbcomp.
+:- import_module parse_tree.
+:- import_module term.
+:- import_module (hlds.hlds_goal).
+:- import_module (hlds.hlds_module).
+:- import_module (hlds.hlds_pred).
+:- import_module (mdbcomp.program_representation).
+:- import_module (parse_tree.prog_data).
+:- type program_point
+	--->	pp(((transform_hlds.smm_common).pp_context) :: (term.context), ((transform_hlds.smm_common).pp_path) :: ((mdbcomp.program_representation).goal_path)).

@@ -1,0 +1,4 @@
+:- module (mdbcomp.rtti_access).
+:- interface.
+:- type label_layout.
+:- type proc_layout.

@@ -1,0 +1,15 @@
+:- module (ll_backend.dense_switch).
+:- interface.
+:- import_module (backend_libs.switch_util).
+:- import_module (hlds.code_model).
+:- import_module (hlds.hlds_goal).
+:- import_module (ll_backend.code_info).
+:- import_module (ll_backend.llds).
+:- import_module (parse_tree.prog_data).
+:- import_module (parse_tree.prog_type).
+:- pred cases_list_is_dense_switch(((ll_backend.code_info).code_info), ((parse_tree.prog_data).prog_var), ((backend_libs.switch_util).cases_list), ((parse_tree.prog_data).can_fail), int, int, int, ((parse_tree.prog_data).can_fail)).
+:- mode cases_list_is_dense_switch((builtin.in), (builtin.in), (builtin.in), (builtin.in), (builtin.in), (builtin.out), (builtin.out), (builtin.out)) is semidet.
+:- pred generate_dense_switch(((backend_libs.switch_util).cases_list), int, int, ((parse_tree.prog_data).prog_var), ((hlds.code_model).code_model), ((parse_tree.prog_data).can_fail), ((hlds.hlds_goal).hlds_goal_info), ((ll_backend.llds).label), ((ll_backend.code_info).branch_end), ((ll_backend.code_info).branch_end), ((ll_backend.llds).code_tree), ((ll_backend.code_info).code_info), ((ll_backend.code_info).code_info)).
+:- mode generate_dense_switch((builtin.in), (builtin.in), (builtin.in), (builtin.in), (builtin.in), (builtin.in), (builtin.in), (builtin.in), (builtin.in), (builtin.out), (builtin.out), (builtin.in), (builtin.out)) is det.
+:- pred type_range(((ll_backend.code_info).code_info), ((parse_tree.prog_type).type_category), ((parse_tree.prog_data).mer_type), int).
+:- mode type_range((builtin.in), (builtin.in), (builtin.in), (builtin.out)) is semidet.
