@@ -1,0 +1,50 @@
+:- module svbag.
+:- interface.
+:- import_module bag.
+:- import_module list.
+:- import_module set.
+:- import_module term.
+:- pragma type_spec((svbag.det_remove_set)/3, (T = term.var(V_2)), (svbag.'TypeSpecOf__pred_or_func__det_remove_set__[T = var(V_2)]')).
+:- pragma type_spec((svbag.insert_set)/3, (T = term.var(V_2)), (svbag.'TypeSpecOf__pred_or_func__insert_set__[T = var(V_2)]')).
+:- pragma obsolete((svbag.delete)/3).
+:- pragma obsolete((svbag.delete_all)/3).
+:- pragma obsolete((svbag.det_remove)/3).
+:- pragma obsolete((svbag.det_remove_list)/3).
+:- pragma obsolete((svbag.det_remove_set)/3).
+:- pragma obsolete((svbag.insert)/3).
+:- pragma obsolete((svbag.insert_list)/3).
+:- pragma obsolete((svbag.insert_set)/3).
+:- pragma obsolete((svbag.remove)/3).
+:- pragma obsolete((svbag.remove_all)/3).
+:- pragma obsolete((svbag.remove_list)/3).
+:- pragma obsolete((svbag.remove_set)/3).
+:- pragma obsolete((svbag.remove_smallest)/3).
+:- pragma obsolete((svbag.subtract)/3).
+:- pred delete(T, bag.bag(T), bag.bag(T)).
+:- mode delete((builtin.in), (builtin.in), (builtin.out)) is det.
+:- pred delete_all(T, bag.bag(T), bag.bag(T)).
+:- mode delete_all((builtin.in), (builtin.in), (builtin.out)) is det.
+:- pred det_remove(T, bag.bag(T), bag.bag(T)).
+:- mode det_remove((builtin.in), (builtin.in), (builtin.out)) is det.
+:- pred det_remove_list(list.list(T), bag.bag(T), bag.bag(T)).
+:- mode det_remove_list((builtin.in), (builtin.in), (builtin.out)) is det.
+:- pred det_remove_set(set.set(T), bag.bag(T), bag.bag(T)).
+:- mode det_remove_set((builtin.in), (builtin.in), (builtin.out)) is det.
+:- pred insert(T, bag.bag(T), bag.bag(T)).
+:- mode insert((builtin.in), (builtin.in), (builtin.out)) is det.
+:- pred insert_list(list.list(T), bag.bag(T), bag.bag(T)).
+:- mode insert_list((builtin.in), (builtin.in), (builtin.out)) is det.
+:- pred insert_set(set.set(T), bag.bag(T), bag.bag(T)).
+:- mode insert_set((builtin.in), (builtin.in), (builtin.out)) is det.
+:- pred remove(T, bag.bag(T), bag.bag(T)).
+:- mode remove((builtin.in), (builtin.in), (builtin.out)) is semidet.
+:- pred remove_all(T, bag.bag(T), bag.bag(T)).
+:- mode remove_all((builtin.in), (builtin.in), (builtin.out)) is semidet.
+:- pred remove_list(list.list(T), bag.bag(T), bag.bag(T)).
+:- mode remove_list((builtin.in), (builtin.in), (builtin.out)) is semidet.
+:- pred remove_set(set.set(T), bag.bag(T), bag.bag(T)).
+:- mode remove_set((builtin.in), (builtin.in), (builtin.out)) is semidet.
+:- pred remove_smallest(T, bag.bag(T), bag.bag(T)).
+:- mode remove_smallest((builtin.out), (builtin.in), (builtin.out)) is semidet.
+:- pred subtract(bag.bag(T), bag.bag(T), bag.bag(T)).
+:- mode subtract((builtin.in), (builtin.in), (builtin.out)) is det.

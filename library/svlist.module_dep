@@ -1,0 +1,13 @@
+module(1, "svlist.m",
+	svlist,
+	{},
+	{builtin, list, private_builtin},
+	{builtin, list, private_builtin},
+	{},
+	{},
+	{},
+	{},
+	{},
+	no_foreign_export,
+	no_main
+).

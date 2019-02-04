@@ -1,0 +1,87 @@
+:- module (ll_backend.var_locn).
+:- interface.
+:- import_module assoc_list.
+:- import_module bool.
+:- import_module list.
+:- import_module map.
+:- import_module maybe.
+:- import_module set.
+:- import_module (hlds.hlds_data).
+:- import_module (hlds.hlds_goal).
+:- import_module (hlds.hlds_llds).
+:- import_module (hlds.hlds_module).
+:- import_module (ll_backend.global_data).
+:- import_module (ll_backend.llds).
+:- import_module (parse_tree.prog_data).
+:- import_module (parse_tree.set_of_var).
+:- type var_locn_info.
+:- pred init_var_locn_state(assoc_list.assoc_list(parse_tree.prog_data.prog_var, ll_backend.llds.lval), parse_tree.set_of_var.set_of_progvar, parse_tree.prog_data.prog_varset, parse_tree.prog_data.vartypes, hlds.hlds_llds.stack_slots, hlds.hlds_llds.abs_follow_vars, ll_backend.var_locn.var_locn_info).
+:- mode init_var_locn_state((builtin.in), (builtin.in), (builtin.in), (builtin.in), (builtin.in), (builtin.in), (builtin.out)) is det.
+:- pred reinit_var_locn_state(assoc_list.assoc_list(parse_tree.prog_data.prog_var, ll_backend.llds.lval), ll_backend.var_locn.var_locn_info, ll_backend.var_locn.var_locn_info).
+:- mode reinit_var_locn_state((builtin.in), (builtin.in), (builtin.out)) is det.
+:- pred var_locn_acquire_reg(ll_backend.llds.lval, ll_backend.var_locn.var_locn_info, ll_backend.var_locn.var_locn_info).
+:- mode var_locn_acquire_reg((builtin.out), (builtin.in), (builtin.out)) is det.
+:- pred var_locn_acquire_reg_prefer_given(int, ll_backend.llds.lval, ll_backend.var_locn.var_locn_info, ll_backend.var_locn.var_locn_info).
+:- mode var_locn_acquire_reg_prefer_given((builtin.in), (builtin.out), (builtin.in), (builtin.out)) is det.
+:- pred var_locn_acquire_reg_require_given(ll_backend.llds.lval, ll_backend.var_locn.var_locn_info, ll_backend.var_locn.var_locn_info).
+:- mode var_locn_acquire_reg_require_given((builtin.in), (builtin.in), (builtin.out)) is det.
+:- pred var_locn_acquire_reg_start_at_given(int, ll_backend.llds.lval, ll_backend.var_locn.var_locn_info, ll_backend.var_locn.var_locn_info).
+:- mode var_locn_acquire_reg_start_at_given((builtin.in), (builtin.out), (builtin.in), (builtin.out)) is det.
+:- pred var_locn_assign_cell_to_var(hlds.hlds_module.module_info, ll_backend.llds.exprn_opts, parse_tree.prog_data.prog_var, bool.bool, ll_backend.llds.tag, list.list(ll_backend.llds.cell_arg), hlds.hlds_goal.how_to_construct, maybe.maybe(hlds.hlds_goal.term_size_value), maybe.maybe(ll_backend.llds.alloc_site_id), hlds.hlds_data.may_use_atomic_alloc, ll_backend.llds.label, ll_backend.llds.llds_code, ll_backend.global_data.static_cell_info, ll_backend.global_data.static_cell_info, ll_backend.var_locn.var_locn_info, ll_backend.var_locn.var_locn_info).
+:- mode var_locn_assign_cell_to_var((builtin.in), (builtin.in), (builtin.in), (builtin.in), (builtin.in), (builtin.in), (builtin.in), (builtin.in), (builtin.in), (builtin.in), (builtin.in), (builtin.out), (builtin.in), (builtin.out), (builtin.in), (builtin.out)) is det.
+:- pred var_locn_assign_const_to_var(ll_backend.llds.exprn_opts, parse_tree.prog_data.prog_var, ll_backend.llds.rval, ll_backend.var_locn.var_locn_info, ll_backend.var_locn.var_locn_info).
+:- mode var_locn_assign_const_to_var((builtin.in), (builtin.in), (builtin.in), (builtin.in), (builtin.out)) is det.
+:- pred var_locn_assign_expr_to_var(parse_tree.prog_data.prog_var, ll_backend.llds.rval, ll_backend.llds.llds_code, ll_backend.var_locn.var_locn_info, ll_backend.var_locn.var_locn_info).
+:- mode var_locn_assign_expr_to_var((builtin.in), (builtin.in), (builtin.out), (builtin.in), (builtin.out)) is det.
+:- pred var_locn_assign_field_lval_expr_to_var(parse_tree.prog_data.prog_var, parse_tree.prog_data.prog_var, ll_backend.llds.rval, ll_backend.llds.llds_code, ll_backend.var_locn.var_locn_info, ll_backend.var_locn.var_locn_info).
+:- mode var_locn_assign_field_lval_expr_to_var((builtin.in), (builtin.in), (builtin.in), (builtin.out), (builtin.in), (builtin.out)) is det.
+:- pred var_locn_assign_lval_to_var(hlds.hlds_module.module_info, parse_tree.prog_data.prog_var, ll_backend.llds.lval, ll_backend.global_data.static_cell_info, ll_backend.llds.llds_code, ll_backend.var_locn.var_locn_info, ll_backend.var_locn.var_locn_info).
+:- mode var_locn_assign_lval_to_var((builtin.in), (builtin.in), (builtin.in), (builtin.in), (builtin.out), (builtin.in), (builtin.out)) is det.
+:- pred var_locn_assign_var_to_var(parse_tree.prog_data.prog_var, parse_tree.prog_data.prog_var, ll_backend.var_locn.var_locn_info, ll_backend.var_locn.var_locn_info).
+:- mode var_locn_assign_var_to_var((builtin.in), (builtin.in), (builtin.in), (builtin.out)) is det.
+:- pred var_locn_check_and_set_magic_var_location(parse_tree.prog_data.prog_var, ll_backend.llds.lval, ll_backend.var_locn.var_locn_info, ll_backend.var_locn.var_locn_info).
+:- mode var_locn_check_and_set_magic_var_location((builtin.in), (builtin.in), (builtin.in), (builtin.out)) is det.
+:- pred var_locn_clear_r1(hlds.hlds_module.module_info, ll_backend.llds.llds_code, ll_backend.var_locn.var_locn_info, ll_backend.var_locn.var_locn_info).
+:- mode var_locn_clear_r1((builtin.in), (builtin.out), (builtin.in), (builtin.out)) is det.
+:- pred var_locn_clobber_all_regs(bool.bool, ll_backend.var_locn.var_locn_info, ll_backend.var_locn.var_locn_info).
+:- mode var_locn_clobber_all_regs((builtin.in), (builtin.in), (builtin.out)) is det.
+:- pred var_locn_clobber_regs(list.list(ll_backend.llds.lval), ll_backend.var_locn.var_locn_info, ll_backend.var_locn.var_locn_info).
+:- mode var_locn_clobber_regs((builtin.in), (builtin.in), (builtin.out)) is det.
+:- pred var_locn_get_follow_var_map(ll_backend.var_locn.var_locn_info, hlds.hlds_llds.abs_follow_vars_map).
+:- mode var_locn_get_follow_var_map((builtin.in), (builtin.out)) is det.
+:- pred var_locn_get_next_non_reserved(ll_backend.var_locn.var_locn_info, int).
+:- mode var_locn_get_next_non_reserved((builtin.in), (builtin.out)) is det.
+:- pred var_locn_get_stack_slots(ll_backend.var_locn.var_locn_info, hlds.hlds_llds.stack_slots).
+:- mode var_locn_get_stack_slots((builtin.in), (builtin.out)) is det.
+:- pred var_locn_get_var_locations(ll_backend.var_locn.var_locn_info, map.map(parse_tree.prog_data.prog_var, set.set(ll_backend.llds.lval))).
+:- mode var_locn_get_var_locations((builtin.in), (builtin.out)) is det.
+:- pred var_locn_lock_regs(int, assoc_list.assoc_list(parse_tree.prog_data.prog_var, ll_backend.llds.lval), ll_backend.var_locn.var_locn_info, ll_backend.var_locn.var_locn_info).
+:- mode var_locn_lock_regs((builtin.in), (builtin.in), (builtin.in), (builtin.out)) is det.
+:- pred var_locn_lval_in_use(ll_backend.var_locn.var_locn_info, ll_backend.llds.lval).
+:- mode var_locn_lval_in_use((builtin.in), (builtin.in)) is semidet.
+:- pred var_locn_materialize_vars_in_lval(hlds.hlds_module.module_info, ll_backend.llds.lval, ll_backend.llds.lval, ll_backend.llds.llds_code, ll_backend.var_locn.var_locn_info, ll_backend.var_locn.var_locn_info).
+:- mode var_locn_materialize_vars_in_lval((builtin.in), (builtin.in), (builtin.out), (builtin.out), (builtin.in), (builtin.out)) is det.
+:- pred var_locn_max_reg_in_use(ll_backend.var_locn.var_locn_info, int).
+:- mode var_locn_max_reg_in_use((builtin.in), (builtin.out)) is det.
+:- pred var_locn_place_var(hlds.hlds_module.module_info, parse_tree.prog_data.prog_var, ll_backend.llds.lval, ll_backend.llds.llds_code, ll_backend.var_locn.var_locn_info, ll_backend.var_locn.var_locn_info).
+:- mode var_locn_place_var((builtin.in), (builtin.in), (builtin.in), (builtin.out), (builtin.in), (builtin.out)) is det.
+:- pred var_locn_place_vars(hlds.hlds_module.module_info, assoc_list.assoc_list(parse_tree.prog_data.prog_var, ll_backend.llds.lval), ll_backend.llds.llds_code, ll_backend.var_locn.var_locn_info, ll_backend.var_locn.var_locn_info).
+:- mode var_locn_place_vars((builtin.in), (builtin.in), (builtin.out), (builtin.in), (builtin.out)) is det.
+:- pred var_locn_produce_var(hlds.hlds_module.module_info, parse_tree.prog_data.prog_var, ll_backend.llds.rval, ll_backend.llds.llds_code, ll_backend.var_locn.var_locn_info, ll_backend.var_locn.var_locn_info).
+:- mode var_locn_produce_var((builtin.in), (builtin.in), (builtin.out), (builtin.out), (builtin.in), (builtin.out)) is det.
+:- pred var_locn_produce_var_in_reg(hlds.hlds_module.module_info, parse_tree.prog_data.prog_var, ll_backend.llds.lval, ll_backend.llds.llds_code, ll_backend.var_locn.var_locn_info, ll_backend.var_locn.var_locn_info).
+:- mode var_locn_produce_var_in_reg((builtin.in), (builtin.in), (builtin.out), (builtin.out), (builtin.in), (builtin.out)) is det.
+:- pred var_locn_produce_var_in_reg_or_stack(hlds.hlds_module.module_info, parse_tree.prog_data.prog_var, ll_backend.llds.lval, ll_backend.llds.llds_code, ll_backend.var_locn.var_locn_info, ll_backend.var_locn.var_locn_info).
+:- mode var_locn_produce_var_in_reg_or_stack((builtin.in), (builtin.in), (builtin.out), (builtin.out), (builtin.in), (builtin.out)) is det.
+:- pred var_locn_release_reg(ll_backend.llds.lval, ll_backend.var_locn.var_locn_info, ll_backend.var_locn.var_locn_info).
+:- mode var_locn_release_reg((builtin.in), (builtin.in), (builtin.out)) is det.
+:- pred var_locn_save_cell_fields(hlds.hlds_module.module_info, parse_tree.prog_data.prog_var, ll_backend.llds.lval, ll_backend.llds.llds_code, list.list(ll_backend.llds.lval), ll_backend.var_locn.var_locn_info, ll_backend.var_locn.var_locn_info).
+:- mode var_locn_save_cell_fields((builtin.in), (builtin.in), (builtin.in), (builtin.out), (builtin.out), (builtin.in), (builtin.out)) is det.
+:- pred var_locn_set_follow_vars(hlds.hlds_llds.abs_follow_vars, ll_backend.var_locn.var_locn_info, ll_backend.var_locn.var_locn_info).
+:- mode var_locn_set_follow_vars((builtin.in), (builtin.in), (builtin.out)) is det.
+:- pred var_locn_set_magic_var_location(parse_tree.prog_data.prog_var, ll_backend.llds.lval, ll_backend.var_locn.var_locn_info, ll_backend.var_locn.var_locn_info).
+:- mode var_locn_set_magic_var_location((builtin.in), (builtin.in), (builtin.in), (builtin.out)) is det.
+:- pred var_locn_unlock_regs(ll_backend.var_locn.var_locn_info, ll_backend.var_locn.var_locn_info).
+:- mode var_locn_unlock_regs((builtin.in), (builtin.out)) is det.
+:- pred var_locn_var_becomes_dead(parse_tree.prog_data.prog_var, bool.bool, ll_backend.var_locn.var_locn_info, ll_backend.var_locn.var_locn_info).
+:- mode var_locn_var_becomes_dead((builtin.in), (builtin.in), (builtin.in), (builtin.out)) is det.

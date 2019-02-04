@@ -1,0 +1,15 @@
+:- module (mdbcomp.feedback).
+:- interface.
+:- include_module ((mdbcomp.feedback).automatic_parallelism).
+:- import_module assoc_list.
+:- import_module io.
+:- import_module list.
+:- import_module (mdbcomp.program_representation).
+:- import_module ((mdbcomp.feedback).automatic_parallelism).
+:- type feedback_data.
+:- type feedback_info.
+:- type feedback_read_error.
+:- type feedback_write_result.
+:- type feedback_read_result(T).
+:- inst (feedback_data_query) == bound(feedback_data_calls_above_threshold_sorted(free, free, free) ; feedback_data_candidate_parallel_conjunctions(free, free)).
+:- mode (feedback_data_query) == (((mdbcomp.feedback).feedback_data_query) >> ground).

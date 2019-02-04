@@ -1,0 +1,7 @@
+:- module svpqueue.
+:- interface.
+:- import_module pqueue.
+:- pred insert(K, V, pqueue.pqueue(K, V), pqueue.pqueue(K, V)).
+:- mode insert((builtin.in), (builtin.in), (builtin.in), (builtin.out)) is det.
+:- pred remove(K, V, pqueue.pqueue(K, V), pqueue.pqueue(K, V)).
+:- mode remove((builtin.out), (builtin.out), (builtin.in), (builtin.out)) is semidet.

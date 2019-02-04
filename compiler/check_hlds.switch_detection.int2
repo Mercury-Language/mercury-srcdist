@@ -1,0 +1,15 @@
+:- module (check_hlds.switch_detection).
+:- interface.
+:- import_module hlds.
+:- import_module list.
+:- import_module parse_tree.
+:- import_module (hlds.hlds_goal).
+:- import_module (hlds.hlds_module).
+:- import_module (hlds.hlds_pred).
+:- import_module (parse_tree.prog_data).
+:- type found_deconstruct
+	--->	did_find_deconstruct 
+	;	did_not_find_deconstruct .
+:- type switch_detect_info.
+:- type process_unify(Result, Info) == pred(parse_tree.prog_data.prog_var, hlds.hlds_goal.hlds_goal, list.list(hlds.hlds_goal.hlds_goal), Result, Result, Info, Info).
+:- inst (process_unify) == (pred((builtin.in), (builtin.in), (builtin.out), (builtin.in), (builtin.out), (builtin.in), (builtin.out)) is det).
