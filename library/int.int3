@@ -1,0 +1,5 @@
+:- module int.
+:- interface.
+:- import_module array.
+:- import_module enum.
+:- instance (enum(int)).

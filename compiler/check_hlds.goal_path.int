@@ -1,0 +1,15 @@
+:- module (check_hlds.goal_path).
+:- interface.
+:- import_module bool.
+:- import_module hlds.
+:- import_module parse_tree.
+:- import_module (hlds.hlds_goal).
+:- import_module (hlds.hlds_module).
+:- import_module (hlds.hlds_pred).
+:- import_module (parse_tree.prog_data).
+:- pred fill_goal_path_slots(((hlds.hlds_module).module_info), ((hlds.hlds_pred).proc_info), ((hlds.hlds_pred).proc_info)).
+:- mode fill_goal_path_slots((builtin.in), (builtin.in), (builtin.out)) is det.
+:- pred fill_goal_path_slots_in_clauses(((hlds.hlds_module).module_info), (bool.bool), ((hlds.hlds_pred).pred_info), ((hlds.hlds_pred).pred_info)).
+:- mode fill_goal_path_slots_in_clauses((builtin.in), (builtin.in), (builtin.in), (builtin.out)) is det.
+:- pred fill_goal_path_slots_in_goal(((hlds.hlds_goal).hlds_goal), ((parse_tree.prog_data).vartypes), ((hlds.hlds_module).module_info), ((hlds.hlds_goal).hlds_goal)).
+:- mode fill_goal_path_slots_in_goal((builtin.in), (builtin.in), (builtin.in), (builtin.out)) is det.

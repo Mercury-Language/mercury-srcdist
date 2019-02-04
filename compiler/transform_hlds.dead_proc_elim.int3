@@ -1,0 +1,5 @@
+:- module (transform_hlds.dead_proc_elim).
+:- interface.
+:- type dead_proc_pass.
+:- type entity.
+:- type needed_map.

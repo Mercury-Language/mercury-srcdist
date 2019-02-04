@@ -1,0 +1,87 @@
+:- module table_builtin.
+:- interface.
+:- import_module io.
+:- import_module list.
+:- import_module maybe.
+:- type loop_status
+	--->	loop_inactive 
+	;	loop_active .
+:- type memo_det_status
+	--->	memo_det_inactive 
+	;	memo_det_active 
+	;	memo_det_succeeded .
+:- type memo_non_record.
+:- type memo_non_status
+	--->	memo_non_inactive 
+	;	memo_non_active 
+	;	memo_non_incomplete 
+	;	memo_non_complete .
+:- type memo_semi_status
+	--->	memo_semi_inactive 
+	;	memo_semi_active 
+	;	memo_semi_succeeded 
+	;	memo_semi_failed .
+:- type ml_answer_block.
+:- type ml_consumer.
+:- type ml_generator.
+:- type ml_proc_table_info.
+:- type ml_subgoal.
+:- type ml_trie_node.
+:- type mm_status
+	--->	mm_inactive 
+	;	mm_active 
+	;	mm_complete .
+:- type proc_table_statistics
+	--->	proc_table_statistics((table_builtin.call_table_stats) :: (table_builtin.table_stats_pair), (table_builtin.maybe_answer_table_stats) :: (maybe.maybe((table_builtin.table_stats_pair)))).
+:- type table_stats
+	--->	table_stats((table_builtin.num_lookups) :: int, (table_builtin.num_lookups_not_duplicate) :: int, (table_builtin.step_statistics) :: (list.list((table_builtin.table_step_stats)))).
+:- type table_stats_pair
+	--->	table_stats_pair((table_builtin.overall_stats) :: (table_builtin.table_stats), (table_builtin.stats_since_last) :: (table_builtin.table_stats)).
+:- type table_step_kind
+	--->	table_step_dummy 
+	;	table_step_int 
+	;	table_step_char 
+	;	table_step_string 
+	;	table_step_float 
+	;	table_step_enum 
+	;	table_step_user 
+	;	table_step_user_fast_loose 
+	;	table_step_poly 
+	;	table_step_poly_fast_loose 
+	;	table_step_typeinfo 
+	;	table_step_typeclassinfo 
+	;	table_step_promise_implied .
+:- type table_step_stats
+	--->	table_step_stats((table_builtin.table_step_kind) :: (table_builtin.table_step_kind), (table_builtin.step_num_allocs) :: int, (table_builtin.step_num_inserts) :: int, (table_builtin.step_num_lookups) :: int, (table_builtin.step_num_insert_probes) :: int, (table_builtin.step_num_lookup_probes) :: int, (table_builtin.step_num_resizes) :: int, (table_builtin.step_num_resizes_old_entries) :: int, (table_builtin.step_num_resizes_new_entries) :: int).
+:- implementation.
+:- type memo_non_record
+	--->	memo_non_record((builtin.c_pointer)).
+:- pragma foreign_type(c, memo_non_record, "MR_MemoNonRecordPtr", [can_pass_as_mercury_type]).
+:- type ml_answer_block
+	--->	ml_answer_block((builtin.c_pointer)).
+:- pragma foreign_type(il, ml_answer_block, "class [mscorlib]System.Object").
+:- pragma foreign_type(c, ml_answer_block, "MR_AnswerBlock", [can_pass_as_mercury_type]).
+:- type ml_consumer
+	--->	ml_consumer((builtin.c_pointer)).
+:- pragma foreign_type(il, ml_consumer, "class [mscorlib]System.Object").
+:- pragma foreign_type(c, ml_consumer, "MR_ConsumerPtr", [can_pass_as_mercury_type]).
+:- type ml_generator
+	--->	ml_generator((builtin.c_pointer)).
+:- pragma foreign_type(il, ml_generator, "class [mscorlib]System.Object").
+:- pragma foreign_type(c, ml_generator, "MR_GeneratorPtr", [can_pass_as_mercury_type]).
+:- type ml_proc_table_info
+	--->	ml_proc_table_info((builtin.c_pointer)).
+:- pragma foreign_type(il, ml_proc_table_info, "class [mscorlib]System.Object").
+:- pragma foreign_type(c, ml_proc_table_info, "MR_ProcTableInfoPtr", [can_pass_as_mercury_type]).
+:- type ml_subgoal
+	--->	ml_subgoal((builtin.c_pointer)).
+:- pragma foreign_type(il, ml_subgoal, "class [mscorlib]System.Object").
+:- pragma foreign_type(c, ml_subgoal, "MR_SubgoalPtr", [can_pass_as_mercury_type]).
+:- type ml_trie_node
+	--->	ml_trie_node((builtin.c_pointer)).
+:- pragma foreign_type(il, ml_trie_node, "class [mscorlib]System.Object").
+:- pragma foreign_type(c, ml_trie_node, "MR_TrieNode", [can_pass_as_mercury_type]).
+:- pragma foreign_import_module("C", table_builtin).
+:- pragma foreign_import_module("IL", table_builtin).
+:- pragma foreign_import_module("C", table_builtin).
+:- pragma foreign_import_module("IL", table_builtin).

@@ -1,0 +1,483 @@
+:- module injection.
+:- use_module assoc_list, builtin, list, map, pair, private_builtin, require, string, svmap.
+:- type (injection.injection(K, V))
+	--->	injection((tree234.tree234(K, V)), (tree234.tree234(V, K))).
+:- pred injection.set_2(K_1, V_2, (tree234.tree234(K_1, V_2)), (tree234.tree234(K_1, V_2)), (tree234.tree234(V_2, K_1)), (tree234.tree234(V_2, K_1))).
+:- mode injection.set_2((builtin.in), (builtin.in), (builtin.in), (builtin.out), (builtin.in), (builtin.out)) is semidet.
+:- pred injection.det_set_2(K_1, V_2, (tree234.tree234(K_1, V_2)), (tree234.tree234(K_1, V_2)), (tree234.tree234(V_2, K_1)), (tree234.tree234(V_2, K_1))).
+:- mode injection.det_set_2((builtin.in), (builtin.in), (builtin.in), (builtin.out), (builtin.in), (builtin.out)) is det.
+:- func injection.insert_transformed_key_f((func(V_1, K_2) = L_3), K_2, V_1, (tree234.tree234(L_3, V_1))) = (tree234.tree234(L_3, V_1)).
+:- mode injection.insert_transformed_key_f((builtin.in), (builtin.in), (builtin.in), (builtin.in)) = (builtin.out) is det.
+:- pred injection.insert_transformed_key_p(pred(V_1, K_2, L_3), K_2, V_1, (tree234.tree234(L_3, V_1)), (tree234.tree234(L_3, V_1))).
+:- mode injection.insert_transformed_key_p(builtin.in((pred((builtin.in), (builtin.in), (builtin.out)) is det)), (builtin.in), (builtin.in), (builtin.in), (builtin.out)) is det.
+:- func injection.maybe_set_transformed_key(pred(V_1, K_2, L_3), K_2, V_1, (tree234.tree234(L_3, V_1))) = (tree234.tree234(L_3, V_1)).
+:- mode injection.maybe_set_transformed_key(builtin.in((pred((builtin.in), (builtin.in), (builtin.out)) is semidet)), (builtin.in), (builtin.in), (builtin.in)) = (builtin.out) is det.
+:- pred injection.maybe_transform_key(pred(V_1, K_2, L_3), (pair.pair(V_1, K_2)), (pair.pair(V_1, L_3))).
+:- mode injection.maybe_transform_key(builtin.in((pred((builtin.in), (builtin.in), (builtin.out)) is semidet)), (builtin.in), (builtin.out)) is semidet.
+:- func injection.insert_transformed_value_f((func(K_1, V_2) = W_3), V_2, K_1, (tree234.tree234(W_3, K_1))) = (tree234.tree234(W_3, K_1)).
+:- mode injection.insert_transformed_value_f((builtin.in), (builtin.in), (builtin.in), (builtin.in)) = (builtin.out) is det.
+injection.init = (injection.injection(F_2, R_3)) :-
+    map.init(F_2),
+    map.init(R_3).
+injection.init(HeadVar__1_1) :-
+    HeadVar__1_1 = injection.init.
+injection.is_empty((injection.injection(F_2, V_3))) :-
+    map.is_empty(F_2).
+injection.forward_search((injection.injection(F_4, V_5)), K_6) = HeadVar__3_3 :-
+    HeadVar__3_3 = map.search(F_4, K_6).
+injection.forward_search(I_4, K_5, HeadVar__3_3) :-
+    HeadVar__3_3 = injection.forward_search(I_4, K_5).
+injection.reverse_search((injection.injection(V_4, R_5)), V_6) = HeadVar__3_3 :-
+    HeadVar__3_3 = map.search(R_5, V_6).
+injection.reverse_search(I_4, HeadVar__2_2, V_5) :-
+    HeadVar__2_2 = injection.reverse_search(I_4, V_5).
+injection.lookup((injection.injection(F_4, V_5)), K_6) = HeadVar__3_3 :-
+    HeadVar__3_3 = map.lookup(F_4, K_6).
+injection.lookup(I_4, K_5, HeadVar__3_3) :-
+    HeadVar__3_3 = injection.lookup(I_4, K_5).
+injection.reverse_lookup((injection.injection(V_4, R_5)), V_6) = HeadVar__3_3 :-
+    HeadVar__3_3 = map.lookup(R_5, V_6).
+injection.reverse_lookup(I_4, HeadVar__2_2, V_5) :-
+    HeadVar__2_2 = injection.reverse_lookup(I_4, V_5).
+injection.keys((injection.injection(F_3, V_4))) = HeadVar__2_2 :-
+    HeadVar__2_2 = map.keys(F_3).
+injection.keys(I_3, HeadVar__2_2) :-
+    HeadVar__2_2 = injection.keys(I_3).
+injection.values((injection.injection(V_3, R_4))) = HeadVar__2_2 :-
+    HeadVar__2_2 = map.keys(R_4).
+injection.values(I_3, HeadVar__2_2) :-
+    HeadVar__2_2 = injection.values(I_3).
+injection.contains_key((injection.injection(F_3, V_4)), K_5) :-
+    map.contains(F_3, K_5).
+injection.contains_value((injection.injection(V_3, R_4)), V_5) :-
+    map.contains(R_4, V_5).
+injection.insert((injection.injection(STATE_VARIABLE_F_0_9, STATE_VARIABLE_R_0_10)), K_7, V_8) = (injection.injection(STATE_VARIABLE_F_11, STATE_VARIABLE_R_12)) :-
+    svmap.insert(K_7, V_8, STATE_VARIABLE_F_0_9, STATE_VARIABLE_F_1_13),
+    svmap.insert(V_8, K_7, STATE_VARIABLE_R_0_10, STATE_VARIABLE_R_1_14),
+    STATE_VARIABLE_R_12 = STATE_VARIABLE_R_1_14,
+    STATE_VARIABLE_F_11 = STATE_VARIABLE_F_1_13.
+injection.insert(I_5, K_6, V_7, HeadVar__4_4) :-
+    HeadVar__4_4 = injection.insert(I_5, K_6, V_7).
+injection.det_insert((injection.injection(STATE_VARIABLE_F_0_9, STATE_VARIABLE_R_0_10)), K_7, V_8) = (injection.injection(STATE_VARIABLE_F_11, STATE_VARIABLE_R_12)) :-
+    svmap.det_insert(K_7, V_8, STATE_VARIABLE_F_0_9, STATE_VARIABLE_F_1_13),
+    svmap.det_insert(V_8, K_7, STATE_VARIABLE_R_0_10, STATE_VARIABLE_R_1_14),
+    STATE_VARIABLE_R_12 = STATE_VARIABLE_R_1_14,
+    STATE_VARIABLE_F_11 = STATE_VARIABLE_F_1_13.
+injection.det_insert(I_5, K_6, V_7, HeadVar__4_4) :-
+    HeadVar__4_4 = injection.det_insert(I_5, K_6, V_7).
+injection.update((injection.injection(STATE_VARIABLE_F_0_9, STATE_VARIABLE_R_0_10)), K_7, V_8) = (injection.injection(STATE_VARIABLE_F_11, STATE_VARIABLE_R_12)) :-
+    svmap.update(K_7, V_8, STATE_VARIABLE_F_0_9, STATE_VARIABLE_F_1_13),
+    svmap.insert(V_8, K_7, STATE_VARIABLE_R_0_10, STATE_VARIABLE_R_1_14),
+    STATE_VARIABLE_R_12 = STATE_VARIABLE_R_1_14,
+    STATE_VARIABLE_F_11 = STATE_VARIABLE_F_1_13.
+injection.update(I_5, K_6, V_7, HeadVar__4_4) :-
+    HeadVar__4_4 = injection.update(I_5, K_6, V_7).
+injection.det_update((injection.injection(STATE_VARIABLE_F_0_9, STATE_VARIABLE_R_0_10)), K_7, V_8) = (injection.injection(STATE_VARIABLE_F_11, STATE_VARIABLE_R_12)) :-
+    svmap.det_update(K_7, V_8, STATE_VARIABLE_F_0_9, STATE_VARIABLE_F_1_13),
+    svmap.det_insert(V_8, K_7, STATE_VARIABLE_R_0_10, STATE_VARIABLE_R_1_14),
+    STATE_VARIABLE_R_12 = STATE_VARIABLE_R_1_14,
+    STATE_VARIABLE_F_11 = STATE_VARIABLE_F_1_13.
+injection.det_update(I_5, K_6, V_7, HeadVar__4_4) :-
+    HeadVar__4_4 = injection.det_update(I_5, K_6, V_7).
+injection.set((injection.injection(STATE_VARIABLE_F_0_9, STATE_VARIABLE_R_0_10)), K_7, V_8) = (injection.injection(STATE_VARIABLE_F_11, STATE_VARIABLE_R_12)) :-
+    injection.set_2(K_7, V_8, STATE_VARIABLE_F_0_9, STATE_VARIABLE_F_1_13, STATE_VARIABLE_R_0_10, STATE_VARIABLE_R_1_14),
+    STATE_VARIABLE_R_12 = STATE_VARIABLE_R_1_14,
+    STATE_VARIABLE_F_11 = STATE_VARIABLE_F_1_13.
+injection.set(I_5, K_6, V_7, HeadVar__4_4) :-
+    HeadVar__4_4 = injection.set(I_5, K_6, V_7).
+injection.det_set((injection.injection(STATE_VARIABLE_F_0_9, STATE_VARIABLE_R_0_10)), K_7, V_8) = (injection.injection(STATE_VARIABLE_F_11, STATE_VARIABLE_R_12)) :-
+    injection.det_set_2(K_7, V_8, STATE_VARIABLE_F_0_9, STATE_VARIABLE_F_1_13, STATE_VARIABLE_R_0_10, STATE_VARIABLE_R_1_14),
+    STATE_VARIABLE_R_12 = STATE_VARIABLE_R_1_14,
+    STATE_VARIABLE_F_11 = STATE_VARIABLE_F_1_13.
+injection.det_set(I_5, K_6, V_7, HeadVar__4_4) :-
+    HeadVar__4_4 = injection.det_set(I_5, K_6, V_7).
+injection.insert_from_assoc_list(A_4, (injection.injection(F0_5, R0_6))) = (injection.injection(F_7, R_8)) :-
+    P_9 = (pred(V_21::(builtin.in), V_20::(builtin.in), V_19::(builtin.out), V_18::(builtin.in), V_17::(builtin.out)) is semidet :-
+      some [] (
+        V_21 = KV_26,
+        V_20 = STATE_VARIABLE_F_0_27,
+        V_18 = STATE_VARIABLE_R_0_29,
+        KV_26 = pair.(K_11 - V_12) : (pair.pair(K_1, V_2)),
+        svmap.insert(K_11, V_12, STATE_VARIABLE_F_0_27, STATE_VARIABLE_F_1_22),
+        svmap.insert(V_12, K_11, STATE_VARIABLE_R_0_29, STATE_VARIABLE_R_1_23),
+        V_19 = STATE_VARIABLE_F_28,
+        V_17 = STATE_VARIABLE_R_30,
+        STATE_VARIABLE_R_30 = STATE_VARIABLE_R_1_23,
+        STATE_VARIABLE_F_28 = STATE_VARIABLE_F_1_22
+      )
+    ) : pred((pair.pair(K_1, V_2)), (tree234.tree234(K_1, V_2)), (tree234.tree234(K_1, V_2)), (tree234.tree234(V_2, K_1)), (tree234.tree234(V_2, K_1))),
+    list.foldl2(P_9, A_4, F0_5, F_7, R0_6, R_8).
+injection.insert_from_assoc_list(A_4, I_5, HeadVar__3_3) :-
+    HeadVar__3_3 = injection.insert_from_assoc_list(A_4, I_5).
+injection.det_insert_from_assoc_list(A_4, (injection.injection(F0_5, R0_6))) = (injection.injection(F_7, R_8)) :-
+    P_9 = (pred(V_21::(builtin.in), V_20::(builtin.in), V_19::(builtin.out), V_18::(builtin.in), V_17::(builtin.out)) is det :-
+      some [] (
+        V_21 = KV_26,
+        V_20 = STATE_VARIABLE_F_0_27,
+        V_18 = STATE_VARIABLE_R_0_29,
+        KV_26 = pair.(K_11 - V_12) : (pair.pair(K_1, V_2)),
+        svmap.det_insert(K_11, V_12, STATE_VARIABLE_F_0_27, STATE_VARIABLE_F_1_22),
+        svmap.det_insert(V_12, K_11, STATE_VARIABLE_R_0_29, STATE_VARIABLE_R_1_23),
+        V_19 = STATE_VARIABLE_F_28,
+        V_17 = STATE_VARIABLE_R_30,
+        STATE_VARIABLE_R_30 = STATE_VARIABLE_R_1_23,
+        STATE_VARIABLE_F_28 = STATE_VARIABLE_F_1_22
+      )
+    ) : pred((pair.pair(K_1, V_2)), (tree234.tree234(K_1, V_2)), (tree234.tree234(K_1, V_2)), (tree234.tree234(V_2, K_1)), (tree234.tree234(V_2, K_1))),
+    list.foldl2(P_9, A_4, F0_5, F_7, R0_6, R_8).
+injection.det_insert_from_assoc_list(A_4, I_5, HeadVar__3_3) :-
+    HeadVar__3_3 = injection.det_insert_from_assoc_list(A_4, I_5).
+injection.set_from_assoc_list(A_4, (injection.injection(F0_5, R0_6))) = (injection.injection(F_7, R_8)) :-
+    P_9 = (pred(V_21::(builtin.in), V_20::(builtin.in), V_19::(builtin.out), V_18::(builtin.in), V_17::(builtin.out)) is semidet :-
+      some [] (
+        V_21 = KV_26,
+        V_20 = STATE_VARIABLE_F_0_27,
+        V_18 = STATE_VARIABLE_R_0_29,
+        KV_26 = pair.(K_11 - V_12) : (pair.pair(K_1, V_2)),
+        injection.set_2(K_11, V_12, STATE_VARIABLE_F_0_27, STATE_VARIABLE_F_1_22, STATE_VARIABLE_R_0_29, STATE_VARIABLE_R_1_23),
+        V_19 = STATE_VARIABLE_F_28,
+        V_17 = STATE_VARIABLE_R_30,
+        STATE_VARIABLE_R_30 = STATE_VARIABLE_R_1_23,
+        STATE_VARIABLE_F_28 = STATE_VARIABLE_F_1_22
+      )
+    ) : pred((pair.pair(K_1, V_2)), (tree234.tree234(K_1, V_2)), (tree234.tree234(K_1, V_2)), (tree234.tree234(V_2, K_1)), (tree234.tree234(V_2, K_1))),
+    list.foldl2(P_9, A_4, F0_5, F_7, R0_6, R_8).
+injection.set_from_assoc_list(A_4, I_5, HeadVar__3_3) :-
+    HeadVar__3_3 = injection.set_from_assoc_list(A_4, I_5).
+injection.det_set_from_assoc_list(A_4, (injection.injection(F0_5, R0_6))) = (injection.injection(F_7, R_8)) :-
+    P_9 = (pred(V_21::(builtin.in), V_20::(builtin.in), V_19::(builtin.out), V_18::(builtin.in), V_17::(builtin.out)) is det :-
+      some [] (
+        V_21 = KV_26,
+        V_20 = STATE_VARIABLE_F_0_27,
+        V_18 = STATE_VARIABLE_R_0_29,
+        KV_26 = pair.(K_11 - V_12) : (pair.pair(K_1, V_2)),
+        injection.det_set_2(K_11, V_12, STATE_VARIABLE_F_0_27, STATE_VARIABLE_F_1_22, STATE_VARIABLE_R_0_29, STATE_VARIABLE_R_1_23),
+        V_19 = STATE_VARIABLE_F_28,
+        V_17 = STATE_VARIABLE_R_30,
+        STATE_VARIABLE_R_30 = STATE_VARIABLE_R_1_23,
+        STATE_VARIABLE_F_28 = STATE_VARIABLE_F_1_22
+      )
+    ) : pred((pair.pair(K_1, V_2)), (tree234.tree234(K_1, V_2)), (tree234.tree234(K_1, V_2)), (tree234.tree234(V_2, K_1)), (tree234.tree234(V_2, K_1))),
+    list.foldl2(P_9, A_4, F0_5, F_7, R0_6, R_8).
+injection.det_set_from_assoc_list(A_4, I_5, HeadVar__3_3) :-
+    HeadVar__3_3 = injection.det_set_from_assoc_list(A_4, I_5).
+injection.insert_from_corresponding_lists(As_5, Bs_6, (injection.injection(F0_7, R0_8))) = (injection.injection(F_9, R_10)) :-
+    P_11 = (pred(V_23::(builtin.in), V_22::(builtin.in), V_21::(builtin.in), V_20::(builtin.out), V_19::(builtin.in), V_18::(builtin.out)) is semidet :-
+      some [] (
+        V_23 = K_28,
+        V_22 = V_29,
+        V_21 = STATE_VARIABLE_F_0_30,
+        V_19 = STATE_VARIABLE_R_0_32,
+        svmap.insert(K_28, V_29, STATE_VARIABLE_F_0_30, STATE_VARIABLE_F_1_24),
+        svmap.insert(V_29, K_28, STATE_VARIABLE_R_0_32, STATE_VARIABLE_R_1_25),
+        V_20 = STATE_VARIABLE_F_31,
+        V_18 = STATE_VARIABLE_R_33,
+        STATE_VARIABLE_R_33 = STATE_VARIABLE_R_1_25,
+        STATE_VARIABLE_F_31 = STATE_VARIABLE_F_1_24
+      )
+    ) : pred(K_1, V_2, (tree234.tree234(K_1, V_2)), (tree234.tree234(K_1, V_2)), (tree234.tree234(V_2, K_1)), (tree234.tree234(V_2, K_1))),
+    list.foldl2_corresponding(P_11, As_5, Bs_6, F0_7, F_9, R0_8, R_10).
+injection.insert_from_corresponding_lists(As_5, Bs_6, I_7, HeadVar__4_4) :-
+    HeadVar__4_4 = injection.insert_from_corresponding_lists(As_5, Bs_6, I_7).
+injection.det_insert_from_corresponding_lists(As_5, Bs_6, (injection.injection(F0_7, R0_8))) = (injection.injection(F_9, R_10)) :-
+    P_11 = (pred(V_23::(builtin.in), V_22::(builtin.in), V_21::(builtin.in), V_20::(builtin.out), V_19::(builtin.in), V_18::(builtin.out)) is det :-
+      some [] (
+        V_23 = K_28,
+        V_22 = V_29,
+        V_21 = STATE_VARIABLE_F_0_30,
+        V_19 = STATE_VARIABLE_R_0_32,
+        svmap.det_insert(K_28, V_29, STATE_VARIABLE_F_0_30, STATE_VARIABLE_F_1_24),
+        svmap.det_insert(V_29, K_28, STATE_VARIABLE_R_0_32, STATE_VARIABLE_R_1_25),
+        V_20 = STATE_VARIABLE_F_31,
+        V_18 = STATE_VARIABLE_R_33,
+        STATE_VARIABLE_R_33 = STATE_VARIABLE_R_1_25,
+        STATE_VARIABLE_F_31 = STATE_VARIABLE_F_1_24
+      )
+    ) : pred(K_1, V_2, (tree234.tree234(K_1, V_2)), (tree234.tree234(K_1, V_2)), (tree234.tree234(V_2, K_1)), (tree234.tree234(V_2, K_1))),
+    list.foldl2_corresponding(P_11, As_5, Bs_6, F0_7, F_9, R0_8, R_10).
+injection.det_insert_from_corresponding_lists(As_5, Bs_6, I_7, HeadVar__4_4) :-
+    HeadVar__4_4 = injection.det_insert_from_corresponding_lists(As_5, Bs_6, I_7).
+injection.set_from_corresponding_lists(As_5, Bs_6, (injection.injection(STATE_VARIABLE_F_0_9, STATE_VARIABLE_R_0_10))) = (injection.injection(STATE_VARIABLE_F_11, STATE_VARIABLE_R_12)) :-
+    V_15 = injection.set_2 : pred(K_1, V_2, (tree234.tree234(K_1, V_2)), (tree234.tree234(K_1, V_2)), (tree234.tree234(V_2, K_1)), (tree234.tree234(V_2, K_1))),
+    list.foldl2_corresponding(V_15, As_5, Bs_6, STATE_VARIABLE_F_0_9, STATE_VARIABLE_F_1_13, STATE_VARIABLE_R_0_10, STATE_VARIABLE_R_1_14),
+    STATE_VARIABLE_R_12 = STATE_VARIABLE_R_1_14,
+    STATE_VARIABLE_F_11 = STATE_VARIABLE_F_1_13.
+injection.set_from_corresponding_lists(As_5, Bs_6, I_7, HeadVar__4_4) :-
+    HeadVar__4_4 = injection.set_from_corresponding_lists(As_5, Bs_6, I_7).
+injection.det_set_from_corresponding_lists(As_5, Bs_6, (injection.injection(STATE_VARIABLE_F_0_9, STATE_VARIABLE_R_0_10))) = (injection.injection(STATE_VARIABLE_F_11, STATE_VARIABLE_R_12)) :-
+    V_15 = injection.det_set_2 : pred(K_1, V_2, (tree234.tree234(K_1, V_2)), (tree234.tree234(K_1, V_2)), (tree234.tree234(V_2, K_1)), (tree234.tree234(V_2, K_1))),
+    list.foldl2_corresponding(V_15, As_5, Bs_6, STATE_VARIABLE_F_0_9, STATE_VARIABLE_F_1_13, STATE_VARIABLE_R_0_10, STATE_VARIABLE_R_1_14),
+    STATE_VARIABLE_R_12 = STATE_VARIABLE_R_1_14,
+    STATE_VARIABLE_F_11 = STATE_VARIABLE_F_1_13.
+injection.det_set_from_corresponding_lists(As_5, Bs_6, I_7, HeadVar__4_4) :-
+    HeadVar__4_4 = injection.det_set_from_corresponding_lists(As_5, Bs_6, I_7).
+injection.delete_key(K_4, I_5, HeadVar__3_3) :-
+    HeadVar__3_3 = injection.delete_key(I_5, K_4).
+injection.delete_value(V_4, I_5, HeadVar__3_3) :-
+    HeadVar__3_3 = injection.delete_value(I_5, V_4).
+injection.delete_keys(I0_4, Ks_5) = I_6 :-
+    injection.delete_keys(Ks_5, I0_4, I_6).
+injection.delete_keys(Ks_4, STATE_VARIABLE_I_0_6, STATE_VARIABLE_I_7) :-
+    V_9 = injection.delete_key : pred(K_1, (injection.injection(K_1, V_2)), (injection.injection(K_1, V_2))),
+    list.foldl(V_9, Ks_4, STATE_VARIABLE_I_0_6, STATE_VARIABLE_I_1_8),
+    STATE_VARIABLE_I_7 = STATE_VARIABLE_I_1_8.
+injection.delete_values(I0_4, Vs_5) = I_6 :-
+    injection.delete_values(Vs_5, I0_4, I_6).
+injection.delete_values(Vs_4, STATE_VARIABLE_I_0_6, STATE_VARIABLE_I_7) :-
+    V_9 = injection.delete_value : pred(V_1, (injection.injection(K_2, V_1)), (injection.injection(K_2, V_1))),
+    list.foldl(V_9, Vs_4, STATE_VARIABLE_I_0_6, STATE_VARIABLE_I_1_8),
+    STATE_VARIABLE_I_7 = STATE_VARIABLE_I_1_8.
+injection.merge((injection.injection(FA_4, RA_5)), (injection.injection(FB_6, RB_7))) = (injection.injection(F_8, R_9)) :-
+    map.merge(FA_4, FB_6, F_8),
+    map.merge(RA_5, RB_7, R_9).
+injection.merge(A_4, B_5, HeadVar__3_3) :-
+    HeadVar__3_3 = injection.merge(A_4, B_5).
+injection.overlay((injection.injection(FA_4, RA_5)), (injection.injection(FB_6, RB_7))) = (injection.injection(F_8, R_9)) :-
+    map.overlay(FA_4, FB_6, F_8),
+    map.merge(RA_5, RB_7, R_9).
+injection.overlay(A_4, B_5, HeadVar__3_3) :-
+    HeadVar__3_3 = injection.overlay(A_4, B_5).
+injection.apply_forward_map_to_list((injection.injection(F_4, V_5)), Ks_6) = HeadVar__3_3 :-
+    HeadVar__3_3 = map.apply_to_list(Ks_6, F_4).
+injection.apply_forward_map_to_list(I_4, Ks_5, HeadVar__3_3) :-
+    HeadVar__3_3 = injection.apply_forward_map_to_list(I_4, Ks_5).
+injection.apply_reverse_map_to_list((injection.injection(V_4, R_5)), Vs_6) = HeadVar__3_3 :-
+    HeadVar__3_3 = map.apply_to_list(Vs_6, R_5).
+injection.apply_reverse_map_to_list(I_4, Vs_5, HeadVar__3_3) :-
+    HeadVar__3_3 = injection.apply_reverse_map_to_list(I_4, Vs_5).
+injection.map_keys(Func_4, (injection.injection(F0_5, R0_6))) = (injection.injection(F_7, R_8)) :-
+    F_7 = map.foldl(V_9, F0_5, V_10),
+    V_9 = injection.insert_transformed_key_f(Func_4) : (func(K_2, V_1, (tree234.tree234(L_3, V_1))) = (tree234.tree234(L_3, V_1))),
+    V_10 = map.init,
+    R_8 = map.map_values(Func_4, R0_6).
+injection.map_keys(Pred_4, (injection.injection(STATE_VARIABLE_F_0_7, STATE_VARIABLE_R_0_8)), (injection.injection(STATE_VARIABLE_F_9, STATE_VARIABLE_R_10))) :-
+    V_13 = injection.insert_transformed_key_p(Pred_4) : pred(K_2, V_1, (tree234.tree234(L_3, V_1)), (tree234.tree234(L_3, V_1))),
+    V_14 = map.init,
+    map.foldl(V_13, STATE_VARIABLE_F_0_7, V_14, STATE_VARIABLE_F_1_11),
+    map.map_values(Pred_4, STATE_VARIABLE_R_0_8, STATE_VARIABLE_R_1_12),
+    STATE_VARIABLE_R_10 = STATE_VARIABLE_R_1_12,
+    STATE_VARIABLE_F_9 = STATE_VARIABLE_F_1_11.
+injection.filter_map_keys(Pred_4, (injection.injection(F0_5, R0_6)), (injection.injection(F_7, R_8))) :-
+    F_7 = map.foldl(V_11, F0_5, V_12),
+    V_11 = injection.maybe_set_transformed_key(Pred_4) : (func(K_2, V_1, (tree234.tree234(L_3, V_1))) = (tree234.tree234(L_3, V_1))),
+    V_12 = map.init,
+    map.to_assoc_list(R0_6, AL0_9),
+    V_13 = injection.maybe_transform_key(Pred_4) : pred((pair.pair(V_1, K_2)), (pair.pair(V_1, L_3))),
+    list.filter_map(V_13, AL0_9, AL_10),
+    map.from_assoc_list(AL_10, R_8).
+injection.map_values(Func_4, (injection.injection(F0_5, R0_6))) = (injection.injection(F_7, R_8)) :-
+    F_7 = map.map_values(Func_4, F0_5),
+    R_8 = map.foldl(V_9, R0_6, V_10),
+    V_9 = injection.insert_transformed_value_f(Func_4) : (func(V_2, K_1, (tree234.tree234(W_3, K_1))) = (tree234.tree234(W_3, K_1))),
+    V_10 = map.init.
+injection.map_values(Pred_4, I0_5, I_6) :-
+    Func_7 = (func(V_13::(builtin.in), V_12::(builtin.in)) = (V_11::(builtin.out)) is det :-
+      some [] (
+        V_13 = K_14,
+        V_12 = V_15,
+        call(Pred_4, K_14, V_15, W_10),
+        V_11 = W_10
+      )
+    ) : (func(K_1, V_2) = W_3),
+    I_6 = injection.map_values(Func_7, I0_5).
+injection.forward_map((injection.injection(F_3, V_4))) = F_3.
+injection.forward_map((injection.injection(F_3, V_4)), F_3).
+injection.reverse_map((injection.injection(V_3, R_4))) = R_4.
+injection.reverse_map((injection.injection(V_3, R_4)), R_4).
+injection.insert_transformed_key_f(Func_6, K_7, V_8, STATE_VARIABLE_Map_0_10) = STATE_VARIABLE_Map_11 :-
+    V_13 = apply(Func_6, V_8, K_7),
+    svmap.set(V_13, V_8, STATE_VARIABLE_Map_0_10, STATE_VARIABLE_Map_1_12),
+    STATE_VARIABLE_Map_11 = STATE_VARIABLE_Map_1_12.
+injection.insert_transformed_key_p(Pred_6, K_7, V_8, STATE_VARIABLE_Map_0_11, STATE_VARIABLE_Map_12) :-
+    call(Pred_6, V_8, K_7, L_10),
+    svmap.set(L_10, V_8, STATE_VARIABLE_Map_0_11, STATE_VARIABLE_Map_1_13),
+    STATE_VARIABLE_Map_12 = STATE_VARIABLE_Map_1_13.
+injection.maybe_set_transformed_key(Pred_6, K_7, V_8, STATE_VARIABLE_Map_0_11) = STATE_VARIABLE_Map_12 :-
+    (if
+      call(Pred_6, V_8, K_7, L_10)
+    then
+      svmap.set(L_10, V_8, STATE_VARIABLE_Map_0_11, STATE_VARIABLE_Map_1_13)
+    else
+      STATE_VARIABLE_Map_1_13 = STATE_VARIABLE_Map_0_11
+    ),
+    STATE_VARIABLE_Map_12 = STATE_VARIABLE_Map_1_13.
+injection.maybe_transform_key(Pred_4, (pair.(V_5 - K_6)), (pair.(V_5 - L_7))) :-
+    call(Pred_4, V_5, K_6, L_7).
+injection.insert_transformed_value_f(Func_6, V_7, K_8, STATE_VARIABLE_Map_0_11) = STATE_VARIABLE_Map_12 :-
+    W_10 = apply(Func_6, K_8, V_7),
+    (if
+      svmap.insert(W_10, K_8, STATE_VARIABLE_Map_0_11, STATE_VARIABLE_Map_1_13)
+    then
+      STATE_VARIABLE_Map_4_18 = STATE_VARIABLE_Map_1_13
+    else
+      (if
+        map.lookup(STATE_VARIABLE_Map_0_11, W_10, K_8)
+      then
+        true
+      else
+        V_15 = string.(V_16 ++ V_17),
+        V_16 = "injection.map_values: " : string,
+        V_17 = "merged two values with different keys" : string,
+        require.error(V_15)
+      ),
+      STATE_VARIABLE_Map_4_18 = STATE_VARIABLE_Map_0_11
+    ),
+    STATE_VARIABLE_Map_12 = STATE_VARIABLE_Map_4_18.
+:- pragma exceptions(function, (injection.init), 1, 0, may_throw(user_exception)).
+:- pragma exceptions(predicate, (injection.init), 1, 0, may_throw(user_exception)).
+:- pragma exceptions(predicate, (injection.is_empty), 1, 0, may_throw(user_exception)).
+:- pragma exceptions(function, (injection.forward_search), 3, 0, may_throw(user_exception)).
+:- pragma exceptions(predicate, (injection.forward_search), 3, 0, may_throw(user_exception)).
+:- pragma exceptions(function, (injection.reverse_search), 3, 0, may_throw(user_exception)).
+:- pragma exceptions(predicate, (injection.reverse_search), 3, 0, may_throw(user_exception)).
+:- pragma exceptions(predicate, (injection.search), 3, 0, may_throw(user_exception)).
+:- pragma exceptions(predicate, (injection.search), 3, 1, may_throw(user_exception)).
+:- pragma exceptions(function, (injection.lookup), 3, 0, may_throw(user_exception)).
+:- pragma exceptions(predicate, (injection.lookup), 3, 0, may_throw(user_exception)).
+:- pragma exceptions(function, (injection.reverse_lookup), 3, 0, may_throw(user_exception)).
+:- pragma exceptions(predicate, (injection.reverse_lookup), 3, 0, may_throw(user_exception)).
+:- pragma exceptions(function, (injection.keys), 2, 0, may_throw(user_exception)).
+:- pragma exceptions(predicate, (injection.keys), 2, 0, may_throw(user_exception)).
+:- pragma exceptions(function, (injection.values), 2, 0, may_throw(user_exception)).
+:- pragma exceptions(predicate, (injection.values), 2, 0, may_throw(user_exception)).
+:- pragma exceptions(predicate, (injection.contains_key), 2, 0, may_throw(user_exception)).
+:- pragma exceptions(predicate, (injection.contains_value), 2, 0, may_throw(user_exception)).
+:- pragma exceptions(function, (injection.insert), 4, 0, may_throw(user_exception)).
+:- pragma exceptions(predicate, (injection.insert), 4, 0, may_throw(user_exception)).
+:- pragma exceptions(function, (injection.det_insert), 4, 0, may_throw(user_exception)).
+:- pragma exceptions(predicate, (injection.det_insert), 4, 0, may_throw(user_exception)).
+:- pragma exceptions(function, (injection.update), 4, 0, may_throw(user_exception)).
+:- pragma exceptions(predicate, (injection.update), 4, 0, may_throw(user_exception)).
+:- pragma exceptions(function, (injection.det_update), 4, 0, may_throw(user_exception)).
+:- pragma exceptions(predicate, (injection.det_update), 4, 0, may_throw(user_exception)).
+:- pragma exceptions(function, (injection.set), 4, 0, may_throw(user_exception)).
+:- pragma exceptions(predicate, (injection.set), 4, 0, may_throw(user_exception)).
+:- pragma exceptions(function, (injection.det_set), 4, 0, may_throw(user_exception)).
+:- pragma exceptions(predicate, (injection.det_set), 4, 0, may_throw(user_exception)).
+:- pragma exceptions(function, (injection.insert_from_assoc_list), 3, 0, may_throw(user_exception)).
+:- pragma exceptions(predicate, (injection.insert_from_assoc_list), 3, 0, may_throw(user_exception)).
+:- pragma exceptions(function, (injection.det_insert_from_assoc_list), 3, 0, may_throw(user_exception)).
+:- pragma exceptions(predicate, (injection.det_insert_from_assoc_list), 3, 0, may_throw(user_exception)).
+:- pragma exceptions(function, (injection.set_from_assoc_list), 3, 0, may_throw(user_exception)).
+:- pragma exceptions(predicate, (injection.set_from_assoc_list), 3, 0, may_throw(user_exception)).
+:- pragma exceptions(function, (injection.det_set_from_assoc_list), 3, 0, may_throw(user_exception)).
+:- pragma exceptions(predicate, (injection.det_set_from_assoc_list), 3, 0, may_throw(user_exception)).
+:- pragma exceptions(function, (injection.insert_from_corresponding_lists), 4, 0, may_throw(user_exception)).
+:- pragma exceptions(predicate, (injection.insert_from_corresponding_lists), 4, 0, may_throw(user_exception)).
+:- pragma exceptions(function, (injection.det_insert_from_corresponding_lists), 4, 0, may_throw(user_exception)).
+:- pragma exceptions(predicate, (injection.det_insert_from_corresponding_lists), 4, 0, may_throw(user_exception)).
+:- pragma exceptions(function, (injection.set_from_corresponding_lists), 4, 0, may_throw(user_exception)).
+:- pragma exceptions(predicate, (injection.set_from_corresponding_lists), 4, 0, may_throw(user_exception)).
+:- pragma exceptions(function, (injection.det_set_from_corresponding_lists), 4, 0, may_throw(user_exception)).
+:- pragma exceptions(predicate, (injection.det_set_from_corresponding_lists), 4, 0, may_throw(user_exception)).
+:- pragma exceptions(function, (injection.delete_key), 3, 0, may_throw(user_exception)).
+:- pragma exceptions(predicate, (injection.delete_key), 3, 0, may_throw(user_exception)).
+:- pragma exceptions(function, (injection.delete_value), 3, 0, may_throw(user_exception)).
+:- pragma exceptions(predicate, (injection.delete_value), 3, 0, may_throw(user_exception)).
+:- pragma exceptions(function, (injection.delete_keys), 3, 0, may_throw(user_exception)).
+:- pragma exceptions(predicate, (injection.delete_keys), 3, 0, may_throw(user_exception)).
+:- pragma exceptions(function, (injection.delete_values), 3, 0, may_throw(user_exception)).
+:- pragma exceptions(predicate, (injection.delete_values), 3, 0, may_throw(user_exception)).
+:- pragma exceptions(function, (injection.merge), 3, 0, may_throw(user_exception)).
+:- pragma exceptions(predicate, (injection.merge), 3, 0, may_throw(user_exception)).
+:- pragma exceptions(function, (injection.overlay), 3, 0, may_throw(user_exception)).
+:- pragma exceptions(predicate, (injection.overlay), 3, 0, may_throw(user_exception)).
+:- pragma exceptions(function, (injection.apply_forward_map_to_list), 3, 0, may_throw(user_exception)).
+:- pragma exceptions(predicate, (injection.apply_forward_map_to_list), 3, 0, may_throw(user_exception)).
+:- pragma exceptions(function, (injection.apply_reverse_map_to_list), 3, 0, may_throw(user_exception)).
+:- pragma exceptions(predicate, (injection.apply_reverse_map_to_list), 3, 0, may_throw(user_exception)).
+:- pragma exceptions(function, (injection.map_keys), 3, 0, may_throw(user_exception)).
+:- pragma exceptions(predicate, (injection.map_keys), 3, 0, may_throw(user_exception)).
+:- pragma exceptions(predicate, (injection.filter_map_keys), 3, 0, may_throw(user_exception)).
+:- pragma exceptions(function, (injection.map_values), 3, 0, may_throw(user_exception)).
+:- pragma exceptions(predicate, (injection.map_values), 3, 0, may_throw(user_exception)).
+:- pragma exceptions(function, (injection.forward_map), 2, 0, will_not_throw).
+:- pragma exceptions(predicate, (injection.forward_map), 2, 0, will_not_throw).
+:- pragma exceptions(function, (injection.reverse_map), 2, 0, will_not_throw).
+:- pragma exceptions(predicate, (injection.reverse_map), 2, 0, will_not_throw).
+:- pragma exceptions(predicate, (injection.set_2), 6, 0, may_throw(user_exception)).
+:- pragma exceptions(predicate, (injection.det_set_2), 6, 0, may_throw(user_exception)).
+:- pragma exceptions(function, (injection.insert_transformed_key_f), 5, 0, may_throw(user_exception)).
+:- pragma exceptions(predicate, (injection.insert_transformed_key_p), 5, 0, may_throw(user_exception)).
+:- pragma exceptions(function, (injection.maybe_set_transformed_key), 5, 0, may_throw(user_exception)).
+:- pragma exceptions(predicate, (injection.maybe_transform_key), 3, 0, may_throw(user_exception)).
+:- pragma exceptions(function, (injection.insert_transformed_value_f), 5, 0, may_throw(user_exception)).
+:- pragma termination_info((injection.init) = (builtin.out), infinite, can_loop).
+:- pragma termination_info(injection.init((builtin.out)), infinite, can_loop).
+:- pragma termination_info(injection.is_empty((builtin.in)), finite(0, [no, no, no]), can_loop).
+:- pragma termination_info(injection.forward_search((builtin.in), (builtin.in)) = (builtin.out), infinite, can_loop).
+:- pragma termination_info(injection.forward_search((builtin.in), (builtin.in), (builtin.out)), infinite, can_loop).
+:- pragma termination_info(injection.reverse_search((builtin.in), (builtin.in)) = (builtin.out), infinite, can_loop).
+:- pragma termination_info(injection.reverse_search((builtin.in), (builtin.out), (builtin.in)), infinite, can_loop).
+:- pragma termination_info(injection.search((builtin.in), (builtin.in), (builtin.out)), infinite, can_loop).
+:- pragma termination_info(injection.search((builtin.in), (builtin.out), (builtin.in)), infinite, can_loop).
+:- pragma termination_info(injection.lookup((builtin.in), (builtin.in)) = (builtin.out), infinite, can_loop).
+:- pragma termination_info(injection.lookup((builtin.in), (builtin.in), (builtin.out)), infinite, can_loop).
+:- pragma termination_info(injection.reverse_lookup((builtin.in), (builtin.in)) = (builtin.out), infinite, can_loop).
+:- pragma termination_info(injection.reverse_lookup((builtin.in), (builtin.out), (builtin.in)), infinite, can_loop).
+:- pragma termination_info(injection.keys((builtin.in)) = (builtin.out), infinite, can_loop).
+:- pragma termination_info(injection.keys((builtin.in), (builtin.out)), infinite, can_loop).
+:- pragma termination_info(injection.values((builtin.in)) = (builtin.out), infinite, can_loop).
+:- pragma termination_info(injection.values((builtin.in), (builtin.out)), infinite, can_loop).
+:- pragma termination_info(injection.contains_key((builtin.in), (builtin.in)), finite(0, [no, no, no, no]), can_loop).
+:- pragma termination_info(injection.contains_value((builtin.in), (builtin.in)), finite(0, [no, no, no, no]), can_loop).
+:- pragma termination_info(injection.insert((builtin.in), (builtin.in), (builtin.in)) = (builtin.out), infinite, can_loop).
+:- pragma termination_info(injection.insert((builtin.in), (builtin.in), (builtin.in), (builtin.out)), infinite, can_loop).
+:- pragma termination_info(injection.det_insert((builtin.in), (builtin.in), (builtin.in)) = (builtin.out), infinite, can_loop).
+:- pragma termination_info(injection.det_insert((builtin.in), (builtin.in), (builtin.in), (builtin.out)), infinite, can_loop).
+:- pragma termination_info(injection.update((builtin.in), (builtin.in), (builtin.in)) = (builtin.out), infinite, can_loop).
+:- pragma termination_info(injection.update((builtin.in), (builtin.in), (builtin.in), (builtin.out)), infinite, can_loop).
+:- pragma termination_info(injection.det_update((builtin.in), (builtin.in), (builtin.in)) = (builtin.out), infinite, can_loop).
+:- pragma termination_info(injection.det_update((builtin.in), (builtin.in), (builtin.in), (builtin.out)), infinite, can_loop).
+:- pragma termination_info(injection.set((builtin.in), (builtin.in), (builtin.in)) = (builtin.out), infinite, can_loop).
+:- pragma termination_info(injection.set((builtin.in), (builtin.in), (builtin.in), (builtin.out)), infinite, can_loop).
+:- pragma termination_info(injection.det_set((builtin.in), (builtin.in), (builtin.in)) = (builtin.out), infinite, can_loop).
+:- pragma termination_info(injection.det_set((builtin.in), (builtin.in), (builtin.in), (builtin.out)), infinite, can_loop).
+:- pragma termination_info(injection.insert_from_assoc_list((builtin.in), (builtin.in)) = (builtin.out), infinite, can_loop).
+:- pragma termination_info(injection.insert_from_assoc_list((builtin.in), (builtin.in), (builtin.out)), infinite, can_loop).
+:- pragma termination_info(injection.det_insert_from_assoc_list((builtin.in), (builtin.in)) = (builtin.out), infinite, can_loop).
+:- pragma termination_info(injection.det_insert_from_assoc_list((builtin.in), (builtin.in), (builtin.out)), infinite, can_loop).
+:- pragma termination_info(injection.set_from_assoc_list((builtin.in), (builtin.in)) = (builtin.out), infinite, can_loop).
+:- pragma termination_info(injection.set_from_assoc_list((builtin.in), (builtin.in), (builtin.out)), infinite, can_loop).
+:- pragma termination_info(injection.det_set_from_assoc_list((builtin.in), (builtin.in)) = (builtin.out), infinite, can_loop).
+:- pragma termination_info(injection.det_set_from_assoc_list((builtin.in), (builtin.in), (builtin.out)), infinite, can_loop).
+:- pragma termination_info(injection.insert_from_corresponding_lists((builtin.in), (builtin.in), (builtin.in)) = (builtin.out), infinite, can_loop).
+:- pragma termination_info(injection.insert_from_corresponding_lists((builtin.in), (builtin.in), (builtin.in), (builtin.out)), infinite, can_loop).
+:- pragma termination_info(injection.det_insert_from_corresponding_lists((builtin.in), (builtin.in), (builtin.in)) = (builtin.out), infinite, can_loop).
+:- pragma termination_info(injection.det_insert_from_corresponding_lists((builtin.in), (builtin.in), (builtin.in), (builtin.out)), infinite, can_loop).
+:- pragma termination_info(injection.set_from_corresponding_lists((builtin.in), (builtin.in), (builtin.in)) = (builtin.out), infinite, can_loop).
+:- pragma termination_info(injection.set_from_corresponding_lists((builtin.in), (builtin.in), (builtin.in), (builtin.out)), infinite, can_loop).
+:- pragma termination_info(injection.det_set_from_corresponding_lists((builtin.in), (builtin.in), (builtin.in)) = (builtin.out), infinite, can_loop).
+:- pragma termination_info(injection.det_set_from_corresponding_lists((builtin.in), (builtin.in), (builtin.in), (builtin.out)), infinite, can_loop).
+:- pragma termination_info(injection.delete_key((builtin.in), (builtin.in)) = (builtin.out), infinite, can_loop).
+:- pragma termination_info(injection.delete_key((builtin.in), (builtin.in), (builtin.out)), infinite, can_loop).
+:- pragma termination_info(injection.delete_value((builtin.in), (builtin.in)) = (builtin.out), infinite, can_loop).
+:- pragma termination_info(injection.delete_value((builtin.in), (builtin.in), (builtin.out)), infinite, can_loop).
+:- pragma termination_info(injection.delete_keys((builtin.in), (builtin.in)) = (builtin.out), infinite, can_loop).
+:- pragma termination_info(injection.delete_keys((builtin.in), (builtin.in), (builtin.out)), infinite, can_loop).
+:- pragma termination_info(injection.delete_values((builtin.in), (builtin.in)) = (builtin.out), infinite, can_loop).
+:- pragma termination_info(injection.delete_values((builtin.in), (builtin.in), (builtin.out)), infinite, can_loop).
+:- pragma termination_info(injection.merge((builtin.in), (builtin.in)) = (builtin.out), infinite, can_loop).
+:- pragma termination_info(injection.merge((builtin.in), (builtin.in), (builtin.out)), infinite, can_loop).
+:- pragma termination_info(injection.overlay((builtin.in), (builtin.in)) = (builtin.out), infinite, can_loop).
+:- pragma termination_info(injection.overlay((builtin.in), (builtin.in), (builtin.out)), infinite, can_loop).
+:- pragma termination_info(injection.apply_forward_map_to_list((builtin.in), (builtin.in)) = (builtin.out), infinite, can_loop).
+:- pragma termination_info(injection.apply_forward_map_to_list((builtin.in), (builtin.in), (builtin.out)), infinite, can_loop).
+:- pragma termination_info(injection.apply_reverse_map_to_list((builtin.in), (builtin.in)) = (builtin.out), infinite, can_loop).
+:- pragma termination_info(injection.apply_reverse_map_to_list((builtin.in), (builtin.in), (builtin.out)), infinite, can_loop).
+:- pragma termination_info(injection.map_keys((builtin.in), (builtin.in)) = (builtin.out), infinite, can_loop).
+:- pragma termination_info(injection.map_keys(builtin.in((pred((builtin.in), (builtin.in), (builtin.out)) is det)), (builtin.in), (builtin.out)), infinite, can_loop).
+:- pragma termination_info(injection.filter_map_keys(builtin.in((pred((builtin.in), (builtin.in), (builtin.out)) is semidet)), (builtin.in), (builtin.out)), infinite, can_loop).
+:- pragma termination_info(injection.map_values((builtin.in), (builtin.in)) = (builtin.out), infinite, can_loop).
+:- pragma termination_info(injection.map_values(builtin.in((pred((builtin.in), (builtin.in), (builtin.out)) is det)), (builtin.in), (builtin.out)), infinite, can_loop).
+:- pragma termination_info(injection.forward_map((builtin.in)) = (builtin.out), finite(-2, [no, no, yes, no]), cannot_loop).
+:- pragma termination_info(injection.forward_map((builtin.in), (builtin.out)), finite(-2, [no, no, yes, no]), cannot_loop).
+:- pragma termination_info(injection.reverse_map((builtin.in)) = (builtin.out), finite(-2, [no, no, yes, no]), cannot_loop).
+:- pragma termination_info(injection.reverse_map((builtin.in), (builtin.out)), finite(-2, [no, no, yes, no]), cannot_loop).
+:- pragma termination_info(injection.set_2((builtin.in), (builtin.in), (builtin.in), (builtin.out), (builtin.in), (builtin.out)), infinite, can_loop).
+:- pragma termination_info(injection.det_set_2((builtin.in), (builtin.in), (builtin.in), (builtin.out), (builtin.in), (builtin.out)), infinite, can_loop).
+:- pragma termination_info(injection.insert_transformed_key_f((builtin.in), (builtin.in), (builtin.in), (builtin.in)) = (builtin.out), infinite, can_loop).
+:- pragma termination_info(injection.insert_transformed_key_p(builtin.in((pred((builtin.in), (builtin.in), (builtin.out)) is det)), (builtin.in), (builtin.in), (builtin.in), (builtin.out)), infinite, can_loop).
+:- pragma termination_info(injection.maybe_set_transformed_key(builtin.in((pred((builtin.in), (builtin.in), (builtin.out)) is semidet)), (builtin.in), (builtin.in), (builtin.in)) = (builtin.out), infinite, can_loop).
+:- pragma termination_info(injection.maybe_transform_key(builtin.in((pred((builtin.in), (builtin.in), (builtin.out)) is semidet)), (builtin.in), (builtin.out)), infinite, can_loop).
+:- pragma termination_info(injection.insert_transformed_value_f((builtin.in), (builtin.in), (builtin.in), (builtin.in)) = (builtin.out), infinite, can_loop).

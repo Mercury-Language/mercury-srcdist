@@ -1,0 +1,108 @@
+:- module cord.
+:- use_module builtin, int, list, private_builtin.
+:- type (cord.cord(T))
+	--->	nil 
+	;	leaf(T)
+	;	leaves((list.list(T)))
+	;	branch((cord.cord(T)), (cord.cord(T))).
+:- func cord.list_2((cord.cord(T_1)), (list.list(T_1))) = (list.list(T_1)).
+:- mode cord.list_2((builtin.in), (builtin.in)) = (builtin.out) is det.
+cord.list(C_3) = HeadVar__2_2 :-
+    HeadVar__2_2 = cord.list_2(C_3, V_4),
+    V_4 = list.[] : (list.list(T_1)).
+cord.empty = (cord.nil).
+cord.singleton(X_3) = (cord.leaf(X_3)).
+cord.from_list(Xs_3) = HeadVar__2_2 :-
+    (if
+      Xs_3 = list.[] : (list.list(T_1))
+    then
+      HeadVar__2_2 = cord.nil : (cord.cord(T_1))
+    else
+      HeadVar__2_2 = cord.leaves(Xs_3) : (cord.cord(T_1))
+    ).
+cord.cons(X_4, C_5) = HeadVar__3_3 :-
+    (if
+      C_5 = cord.nil : (cord.cord(T_1))
+    then
+      HeadVar__3_3 = cord.leaf(X_4) : (cord.cord(T_1))
+    else
+      HeadVar__3_3 = cord.branch(V_6, C_5) : (cord.cord(T_1)),
+      V_6 = cord.leaf(X_4) : (cord.cord(T_1))
+    ).
+cord.snoc(C_4, X_5) = HeadVar__3_3 :-
+    (if
+      C_4 = cord.nil : (cord.cord(T_1))
+    then
+      HeadVar__3_3 = cord.leaf(X_5) : (cord.cord(T_1))
+    else
+      HeadVar__3_3 = cord.branch(C_4, V_6) : (cord.cord(T_1)),
+      V_6 = cord.leaf(X_5) : (cord.cord(T_1))
+    ).
+cord.length(C_3) = HeadVar__2_2 :-
+    HeadVar__2_2 = cord.foldl(V_6, C_3, V_7),
+    V_6 = (func(V_10::(builtin.in), V_9::(builtin.in)) = (V_8::(builtin.out)) is det :-
+      some [] (
+        V_10 = V_12,
+        V_9 = N_14,
+        V_8 = int.(N_14 + V_11),
+        V_11 = 1 : int
+      )
+    ) : (func(T_1, int) = int),
+    V_7 = 0 : int.
+cord.map(V_4, (cord.nil)) = (cord.nil).
+cord.map(F_5, (cord.leaf(X_6))) = (cord.leaf(V_7)) :-
+    V_7 = apply(F_5, X_6).
+cord.map(F_8, (cord.leaves(Xs_9))) = (cord.leaves(V_10)) :-
+    V_10 = list.map(F_8, Xs_9).
+cord.map(F_11, (cord.branch(CA_12, CB_13))) = (cord.branch(V_14, V_15)) :-
+    V_14 = cord.map(F_11, CA_12),
+    V_15 = cord.map(F_11, CB_13).
+cord.foldl(V_5, (cord.nil), A_6) = A_6.
+cord.foldl(F_7, (cord.leaf(X_8)), A_9) = HeadVar__4_4 :-
+    HeadVar__4_4 = apply(F_7, X_8, A_9).
+cord.foldl(F_10, (cord.leaves(Xs_11)), A_12) = HeadVar__4_4 :-
+    HeadVar__4_4 = list.foldl(F_10, Xs_11, A_12).
+cord.foldl(F_13, (cord.branch(CA_14, CB_15)), A_16) = HeadVar__4_4 :-
+    HeadVar__4_4 = cord.foldl(F_13, CB_15, V_17),
+    V_17 = cord.foldl(F_13, CA_14, A_16).
+cord.foldr(V_5, (cord.nil), A_6) = A_6.
+cord.foldr(F_7, (cord.leaf(X_8)), A_9) = HeadVar__4_4 :-
+    HeadVar__4_4 = apply(F_7, X_8, A_9).
+cord.foldr(F_10, (cord.leaves(Xs_11)), A_12) = HeadVar__4_4 :-
+    HeadVar__4_4 = list.foldr(F_10, Xs_11, A_12).
+cord.foldr(F_13, (cord.branch(CA_14, CB_15)), A_16) = HeadVar__4_4 :-
+    HeadVar__4_4 = cord.foldr(F_13, CA_14, V_17),
+    V_17 = cord.foldr(F_13, CB_15, A_16).
+cord.equal(CA_3, CB_4) :-
+    V_5 = cord.list(CA_3),
+    V_5 = cord.list(CB_4).
+:- pragma exceptions(function, (cord.list), 2, 0, may_throw(user_exception)).
+:- pragma exceptions(function, (cord.empty), 1, 0, will_not_throw).
+:- pragma exceptions(function, (cord.singleton), 2, 0, will_not_throw).
+:- pragma exceptions(function, (cord.from_list), 2, 0, will_not_throw).
+:- pragma exceptions(function, (cord.cons), 3, 0, will_not_throw).
+:- pragma exceptions(function, (cord.snoc), 3, 0, will_not_throw).
+:- pragma exceptions(function, (cord.(++)), 3, 0, will_not_throw).
+:- pragma exceptions(predicate, (cord.head_tail), 3, 0, will_not_throw).
+:- pragma exceptions(function, (cord.length), 2, 0, may_throw(user_exception)).
+:- pragma exceptions(predicate, (cord.member), 2, 0, may_throw(user_exception)).
+:- pragma exceptions(function, (cord.map), 3, 0, may_throw(user_exception)).
+:- pragma exceptions(function, (cord.foldl), 4, 0, may_throw(user_exception)).
+:- pragma exceptions(function, (cord.foldr), 4, 0, may_throw(user_exception)).
+:- pragma exceptions(predicate, (cord.equal), 2, 0, may_throw(user_exception)).
+:- pragma exceptions(function, (cord.list_2), 3, 0, may_throw(user_exception)).
+:- pragma termination_info(cord.list((builtin.in)) = (builtin.out), infinite, can_loop).
+:- pragma termination_info((cord.empty) = (builtin.out), finite(0, [no, no]), cannot_loop).
+:- pragma termination_info(cord.singleton((builtin.in)) = (builtin.out), finite(1, [no, yes, no]), cannot_loop).
+:- pragma termination_info(cord.from_list((builtin.in)) = (builtin.out), finite(1, [no, yes, no]), cannot_loop).
+:- pragma termination_info(cord.cons((builtin.in), (builtin.in)) = (builtin.out), finite(3, [no, yes, yes, no]), cannot_loop).
+:- pragma termination_info(cord.snoc((builtin.in), (builtin.in)) = (builtin.out), finite(3, [no, yes, yes, no]), cannot_loop).
+:- pragma termination_info(cord.'++'((builtin.in), (builtin.in)) = (builtin.out), finite(2, [no, yes, yes, no]), cannot_loop).
+:- pragma termination_info(cord.head_tail((builtin.in), (builtin.out), (builtin.out)), finite(-1, [no, yes, no, no]), cannot_loop).
+:- pragma termination_info(cord.length((builtin.in)) = (builtin.out), infinite, can_loop).
+:- pragma termination_info(cord.member((builtin.out), (builtin.in)), infinite, can_loop).
+:- pragma termination_info(cord.map((builtin.in), (builtin.in)) = (builtin.out), infinite, can_loop).
+:- pragma termination_info(cord.foldl((builtin.in), (builtin.in), (builtin.in)) = (builtin.out), infinite, can_loop).
+:- pragma termination_info(cord.foldr((builtin.in), (builtin.in), (builtin.in)) = (builtin.out), infinite, can_loop).
+:- pragma termination_info(cord.equal((builtin.in), (builtin.in)), finite(0, [no, no, no]), can_loop).
+:- pragma termination_info(cord.list_2((builtin.in), (builtin.in)) = (builtin.out), infinite, can_loop).

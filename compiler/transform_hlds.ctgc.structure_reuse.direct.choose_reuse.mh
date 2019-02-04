@@ -1,0 +1,34 @@
+/*
+** Automatically generated from `structure_reuse.direct.choose_reuse.m'
+** by the Mercury compiler,
+** version rotd-2007-06-30, configured for i686-pc-linux-gnu.
+** Do not edit.
+*/
+#ifndef TRANSFORM_HLDS__CTGC__STRUCTURE_REUSE__DIRECT__CHOOSE_REUSE_MH
+#define TRANSFORM_HLDS__CTGC__STRUCTURE_REUSE__DIRECT__CHOOSE_REUSE_MH
+
+#ifdef __cplusplus
+extern "C" {
+#endif
+
+#ifdef MR_HIGHLEVEL_CODE
+#include "mercury.h"
+#else
+  #ifndef MERCURY_HDR_EXCLUDE_IMP_H
+  #include "mercury_imp.h"
+  #endif
+#endif
+#ifdef MR_DEEP_PROFILING
+#include "mercury_deep_profiling.h"
+#endif
+
+#ifndef TRANSFORM_HLDS__CTGC__STRUCTURE_REUSE__DIRECT__CHOOSE_REUSE_DECL_GUARD
+#define TRANSFORM_HLDS__CTGC__STRUCTURE_REUSE__DIRECT__CHOOSE_REUSE_DECL_GUARD
+
+#endif
+
+#ifdef __cplusplus
+}
+#endif
+
+#endif /* TRANSFORM_HLDS__CTGC__STRUCTURE_REUSE__DIRECT__CHOOSE_REUSE_MH */

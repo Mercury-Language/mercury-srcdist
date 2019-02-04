@@ -1,0 +1,32 @@
+:- module lexer.
+:- use_module builtin, char, int, io, list, private_builtin, require, string.
+:- type (lexer.unicode_encoding)
+	--->	utf8 
+	;	utf16 .
+:- type (lexer.string_token_context) == int.
+:- pred lexer.get_token_list_2((lexer.token), int, (lexer.token_list), (io.state), (io.state)).
+:- mode lexer.get_token_list_2((builtin.in), (builtin.in), (builtin.out), (builtin.di), (builtin.uo)) is det.
+:- pred lexer.get_token((lexer.token), int, (io.state), (io.state)).
+:- mode lexer.get_token((builtin.out), (builtin.out), (builtin.di), (builtin.uo)) is det.
+lexer.get_token_list(Tokens_4, STATE_VARIABLE_IO_0_8, STATE_VARIABLE_IO_9) :-
+    lexer.get_token(Token_6, Context_7, STATE_VARIABLE_IO_0_8, STATE_VARIABLE_IO_1_10),
+    lexer.get_token_list_2(Token_6, Context_7, Tokens_4, STATE_VARIABLE_IO_1_10, STATE_VARIABLE_IO_2_11),
+    STATE_VARIABLE_IO_9 = STATE_VARIABLE_IO_2_11.
+lexer.string_get_token_list(String_5, Tokens_6, STATE_VARIABLE_Posn_0_9, STATE_VARIABLE_Posn_10) :-
+    string.length(String_5, Len_8),
+    lexer.string_get_token_list_max(String_5, Len_8, Tokens_6, STATE_VARIABLE_Posn_0_9, STATE_VARIABLE_Posn_1_11),
+    STATE_VARIABLE_Posn_10 = STATE_VARIABLE_Posn_1_11.
+:- pragma exceptions(predicate, (lexer.get_token_list), 3, 0, may_throw(user_exception)).
+:- pragma exceptions(predicate, (lexer.string_get_token_list_max), 5, 0, may_throw(user_exception)).
+:- pragma exceptions(predicate, (lexer.string_get_token_list), 4, 0, may_throw(user_exception)).
+:- pragma exceptions(predicate, (lexer.token_to_string), 2, 0, may_throw(user_exception)).
+:- pragma exceptions(predicate, (lexer.graphic_token_char), 1, 0, will_not_throw).
+:- pragma exceptions(predicate, (lexer.get_token_list_2), 5, 0, may_throw(user_exception)).
+:- pragma exceptions(predicate, (lexer.get_token), 4, 0, may_throw(user_exception)).
+:- pragma termination_info(lexer.get_token_list((builtin.out), (builtin.di), (builtin.uo)), infinite, can_loop).
+:- pragma termination_info(lexer.string_get_token_list_max((builtin.in), (builtin.in), (builtin.out), (builtin.in), (builtin.out)), infinite, can_loop).
+:- pragma termination_info(lexer.string_get_token_list((builtin.in), (builtin.out), (builtin.in), (builtin.out)), infinite, can_loop).
+:- pragma termination_info(lexer.token_to_string((builtin.in), (builtin.out)), infinite, can_loop).
+:- pragma termination_info(lexer.graphic_token_char((builtin.in)), finite(0, [no]), cannot_loop).
+:- pragma termination_info(lexer.get_token_list_2((builtin.in), (builtin.in), (builtin.out), (builtin.di), (builtin.uo)), infinite, can_loop).
+:- pragma termination_info(lexer.get_token((builtin.out), (builtin.out), (builtin.di), (builtin.uo)), infinite, can_loop).

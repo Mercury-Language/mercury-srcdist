@@ -1,0 +1,68 @@
+:- module (backend_libs.compile_target_code).
+:- interface.
+:- import_module bool.
+:- import_module io.
+:- import_module libs.
+:- import_module list.
+:- import_module maybe.
+:- import_module mdbcomp.
+:- import_module parse_tree.
+:- import_module (libs.globals).
+:- import_module (mdbcomp.prim_data).
+:- import_module (parse_tree.modules).
+:- import_module (parse_tree.prog_io).
+:- type linked_target_type
+	--->	executable 
+	;	static_library 
+	;	shared_library 
+	;	java_archive 
+	;	erlang_archive .
+:- type pic
+	--->	pic 
+	;	link_with_pic 
+	;	non_pic .
+:- pred assemble((io.output_stream), ((backend_libs.compile_target_code).pic), ((mdbcomp.prim_data).module_name), (bool.bool), (io.io), (io.io)).
+:- mode assemble((builtin.in), (builtin.in), (builtin.in), (builtin.out), (builtin.di), (builtin.uo)) is det.
+:- pred compile_c_file((io.output_stream), ((backend_libs.compile_target_code).pic), string, string, (bool.bool), (io.io), (io.io)).
+:- mode compile_c_file((builtin.in), (builtin.in), (builtin.in), (builtin.in), (builtin.out), (builtin.di), (builtin.uo)) is det.
+:- pred compile_c_file((io.output_stream), ((backend_libs.compile_target_code).pic), ((mdbcomp.prim_data).module_name), (bool.bool), (io.io), (io.io)).
+:- mode compile_c_file((builtin.in), (builtin.in), (builtin.in), (builtin.out), (builtin.di), (builtin.uo)) is det.
+:- pred compile_csharp_file((io.output_stream), ((parse_tree.modules).module_imports), ((parse_tree.prog_io).file_name), ((parse_tree.prog_io).file_name), (bool.bool), (io.io), (io.io)).
+:- mode compile_csharp_file((builtin.in), (builtin.in), (builtin.in), (builtin.in), (builtin.out), (builtin.di), (builtin.uo)) is det.
+:- pred compile_erlang_file((io.output_stream), ((parse_tree.prog_io).file_name), (bool.bool), (io.io), (io.io)).
+:- mode compile_erlang_file((builtin.in), (builtin.in), (builtin.out), (builtin.di), (builtin.uo)) is det.
+:- pred compile_java_file((io.output_stream), string, (bool.bool), (io.io), (io.io)).
+:- mode compile_java_file((builtin.in), (builtin.in), (builtin.out), (builtin.di), (builtin.uo)) is det.
+:- pred compile_managed_cplusplus_file((io.output_stream), ((parse_tree.prog_io).file_name), ((parse_tree.prog_io).file_name), (bool.bool), (io.io), (io.io)).
+:- mode compile_managed_cplusplus_file((builtin.in), (builtin.in), (builtin.in), (builtin.out), (builtin.di), (builtin.uo)) is det.
+:- pred get_object_code_type(((backend_libs.compile_target_code).linked_target_type), ((backend_libs.compile_target_code).pic), (io.io), (io.io)).
+:- mode get_object_code_type((builtin.in), (builtin.out), (builtin.di), (builtin.uo)) is det.
+:- pred il_assemble((io.output_stream), ((mdbcomp.prim_data).module_name), ((parse_tree.modules).has_main), (bool.bool), (io.io), (io.io)).
+:- mode il_assemble((builtin.in), (builtin.in), (builtin.in), (builtin.out), (builtin.di), (builtin.uo)) is det.
+:- pred il_assemble((io.output_stream), ((parse_tree.prog_io).file_name), ((parse_tree.prog_io).file_name), ((parse_tree.modules).has_main), (bool.bool), (io.io), (io.io)).
+:- mode il_assemble((builtin.in), (builtin.in), (builtin.in), (builtin.in), (builtin.out), (builtin.di), (builtin.uo)) is det.
+:- pred link((io.output_stream), ((backend_libs.compile_target_code).linked_target_type), ((mdbcomp.prim_data).module_name), (list.list(string)), (bool.bool), (io.io), (io.io)).
+:- mode link((builtin.in), (builtin.in), (builtin.in), (builtin.in), (builtin.out), (builtin.di), (builtin.uo)) is det.
+:- pred link_module_list((list.list(string)), (list.list(string)), (bool.bool), (io.io), (io.io)).
+:- mode link_module_list((builtin.in), (builtin.in), (builtin.out), (builtin.di), (builtin.uo)) is det.
+:- pred make_all_module_command(string, ((mdbcomp.prim_data).module_name), (list.list(((mdbcomp.prim_data).module_name))), string, (io.io), (io.io)).
+:- mode make_all_module_command((builtin.in), (builtin.in), (builtin.in), (builtin.out), (builtin.di), (builtin.uo)) is det.
+:- pred make_erlang_library_init_file((io.output_stream), ((mdbcomp.prim_data).module_name), (list.list(((mdbcomp.prim_data).module_name))), (bool.bool), (io.io), (io.io)).
+:- mode make_erlang_library_init_file((builtin.in), (builtin.in), (builtin.in), (builtin.out), (builtin.di), (builtin.uo)) is det.
+:- pred make_erlang_program_init_file((io.output_stream), ((mdbcomp.prim_data).module_name), (list.list(((mdbcomp.prim_data).module_name))), (maybe.maybe(((parse_tree.prog_io).file_name))), (io.io), (io.io)).
+:- mode make_erlang_program_init_file((builtin.in), (builtin.in), (builtin.in), (builtin.out), (builtin.di), (builtin.uo)) is det.
+:- pred make_init_obj_file((io.output_stream), ((mdbcomp.prim_data).module_name), (list.list(((mdbcomp.prim_data).module_name))), (maybe.maybe(((parse_tree.prog_io).file_name))), (io.io), (io.io)).
+:- mode make_init_obj_file((builtin.in), (builtin.in), (builtin.in), (builtin.out), (builtin.di), (builtin.uo)) is det.
+:- pred make_library_init_file((io.output_stream), ((mdbcomp.prim_data).module_name), (list.list(((mdbcomp.prim_data).module_name))), (bool.bool), (io.io), (io.io)).
+:- mode make_library_init_file((builtin.in), (builtin.in), (builtin.in), (builtin.out), (builtin.di), (builtin.uo)) is det.
+:- pred make_standalone_interface(string, (io.io), (io.io)).
+:- mode make_standalone_interface((builtin.in), (builtin.di), (builtin.uo)) is det.
+:- pred maybe_pic_object_file_extension(((libs.globals).globals), ((backend_libs.compile_target_code).pic), string).
+:- mode maybe_pic_object_file_extension((builtin.in), (builtin.in), (builtin.out)) is det.
+:- mode maybe_pic_object_file_extension((builtin.in), (builtin.out), (builtin.in)) is semidet.
+:- pred maybe_pic_object_file_extension(((backend_libs.compile_target_code).pic), string, (io.io), (io.io)).
+:- mode maybe_pic_object_file_extension((builtin.in), (builtin.out), (builtin.di), (builtin.uo)) is det.
+:- pred post_link_make_symlink_or_copy((io.output_stream), ((backend_libs.compile_target_code).linked_target_type), ((mdbcomp.prim_data).module_name), (bool.bool), (bool.bool), (io.io), (io.io)).
+:- mode post_link_make_symlink_or_copy((builtin.in), (builtin.in), (builtin.in), (builtin.out), (builtin.out), (builtin.di), (builtin.uo)) is det.
+:- pred shared_libraries_supported((bool.bool), (io.io), (io.io)).
+:- mode shared_libraries_supported((builtin.out), (builtin.di), (builtin.uo)) is det.

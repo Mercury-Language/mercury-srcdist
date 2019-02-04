@@ -1,0 +1,7 @@
+:- module query.
+:- interface.
+:- import_module interface.
+:- import_module io.
+:- import_module profile.
+:- pred try_exec((interface.cmd), (interface.preferences), (profile.deep), string, (io.io), (io.io)).
+:- mode try_exec((builtin.in), (builtin.in), (builtin.in), (builtin.out), (builtin.di), (builtin.uo)) is cc_multi.

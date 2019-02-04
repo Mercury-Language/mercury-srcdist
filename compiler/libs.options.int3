@@ -1,0 +1,5 @@
+:- module (libs.options).
+:- interface.
+:- type maybe_option_table.
+:- type option.
+:- type option_table.

@@ -1,0 +1,14 @@
+:- module (ll_backend.continuation_info).
+:- interface.
+:- type closure_arg_info.
+:- type closure_layout_info.
+:- type internal_layout_info.
+:- type layout_label_info.
+:- type layout_var_info.
+:- type proc_label_layout_info.
+:- type proc_layout_info.
+:- type return_layout_info.
+:- type slot_contents.
+:- type trace_port_layout_info.
+:- type user_attribute.
+:- type user_event_info.

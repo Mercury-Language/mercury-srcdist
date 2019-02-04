@@ -1,0 +1,13 @@
+module(1, "benchmarking.m",
+	benchmarking,
+	{},
+	{builtin, io, maybe, private_builtin},
+	{builtin, io, maybe, int, string, private_builtin},
+	{},
+	{},
+	{},
+	{"C"},
+	{"C" - benchmarking, "Java" - benchmarking, "C" - benchmarking},
+	no_foreign_export,
+	no_main
+).

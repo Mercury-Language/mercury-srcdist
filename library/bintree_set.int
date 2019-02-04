@@ -1,0 +1,88 @@
+:- module bintree_set.
+:- interface.
+:- import_module list.
+:- type bintree_set(_T).
+:- pragma obsolete((bintree_set.contains)/2).
+:- pragma obsolete((bintree_set.delete)/2).
+:- pragma obsolete((bintree_set.delete)/3).
+:- pragma obsolete((bintree_set.delete_list)/2).
+:- pragma obsolete((bintree_set.delete_list)/3).
+:- pragma obsolete((bintree_set.equal)/2).
+:- pragma obsolete((bintree_set.init)/0).
+:- pragma obsolete((bintree_set.init)/1).
+:- pragma obsolete((bintree_set.insert)/2).
+:- pragma obsolete((bintree_set.insert)/3).
+:- pragma obsolete((bintree_set.insert_list)/2).
+:- pragma obsolete((bintree_set.insert_list)/3).
+:- pragma obsolete((bintree_set.intersect)/2).
+:- pragma obsolete((bintree_set.intersect)/3).
+:- pragma obsolete((bintree_set.is_member)/2).
+:- pragma obsolete((bintree_set.list_to_set)/1).
+:- pragma obsolete((bintree_set.list_to_set)/2).
+:- pragma obsolete((bintree_set.member)/2).
+:- pragma obsolete((bintree_set.remove)/3).
+:- pragma obsolete((bintree_set.remove_list)/3).
+:- pragma obsolete((bintree_set.singleton_set)/2).
+:- pragma obsolete((bintree_set.sorted_list_to_set)/1).
+:- pragma obsolete((bintree_set.sorted_list_to_set)/2).
+:- pragma obsolete((bintree_set.subset)/2).
+:- pragma obsolete((bintree_set.superset)/2).
+:- pragma obsolete((bintree_set.to_sorted_list)/1).
+:- pragma obsolete((bintree_set.to_sorted_list)/2).
+:- pragma obsolete((bintree_set.union)/2).
+:- pragma obsolete((bintree_set.union)/3).
+:- pred contains((bintree_set.bintree_set(T)), T).
+:- mode contains((builtin.in), (builtin.in)) is semidet.
+:- pred delete((bintree_set.bintree_set(T)), T, (bintree_set.bintree_set(T))).
+:- mode delete((builtin.in), (builtin.in), (builtin.out)) is det.
+:- func delete((bintree_set.bintree_set(T)), T) = (bintree_set.bintree_set(T)).
+:- pred delete_list((bintree_set.bintree_set(T)), (list.list(T)), (bintree_set.bintree_set(T))).
+:- mode delete_list((builtin.in), (builtin.in), (builtin.out)) is det.
+:- func delete_list((bintree_set.bintree_set(T)), (list.list(T))) = (bintree_set.bintree_set(T)).
+:- pred equal((bintree_set.bintree_set(T)), (bintree_set.bintree_set(T))).
+:- mode equal((builtin.in), (builtin.in)) is semidet.
+:- pred init((bintree_set.bintree_set(T))).
+:- mode init((builtin.uo)) is det.
+:- func init = (bintree_set.bintree_set(T)).
+:- pred insert((bintree_set.bintree_set(T)), T, (bintree_set.bintree_set(T))).
+:- mode insert((builtin.di), (builtin.di), (builtin.uo)) is det.
+:- mode insert((builtin.in), (builtin.in), (builtin.out)) is det.
+:- func insert((bintree_set.bintree_set(T)), T) = (bintree_set.bintree_set(T)).
+:- pred insert_list((bintree_set.bintree_set(T)), (list.list(T)), (bintree_set.bintree_set(T))).
+:- mode insert_list((builtin.di), (builtin.di), (builtin.uo)) is det.
+:- mode insert_list((builtin.in), (builtin.in), (builtin.out)) is det.
+:- func insert_list((bintree_set.bintree_set(T)), (list.list(T))) = (bintree_set.bintree_set(T)).
+:- pred intersect((bintree_set.bintree_set(T)), (bintree_set.bintree_set(T)), (bintree_set.bintree_set(T))).
+:- mode intersect((builtin.in), (builtin.in), (builtin.out)) is det.
+:- func intersect((bintree_set.bintree_set(T)), (bintree_set.bintree_set(T))) = (bintree_set.bintree_set(T)).
+:- pred is_member(T, (bintree_set.bintree_set(T))).
+:- mode is_member((builtin.in), (builtin.in)) is semidet.
+:- pred list_to_set((list.list(T)), (bintree_set.bintree_set(T))).
+:- mode list_to_set((builtin.in), (builtin.out)) is det.
+:- func list_to_set((list.list(T))) = (bintree_set.bintree_set(T)).
+:- pred member(T, (bintree_set.bintree_set(T))).
+:- mode member((builtin.in), (builtin.in)) is semidet.
+:- mode member((builtin.out), (builtin.in)) is nondet.
+:- pred remove((bintree_set.bintree_set(T)), T, (bintree_set.bintree_set(T))).
+:- mode remove((builtin.in), (builtin.in), (builtin.out)) is semidet.
+:- pred remove_list((bintree_set.bintree_set(T)), (list.list(T)), (bintree_set.bintree_set(T))).
+:- mode remove_list((builtin.in), (builtin.in), (builtin.out)) is semidet.
+:- pred singleton_set((bintree_set.bintree_set(T)), T).
+:- mode singleton_set((builtin.out), (builtin.in)) is det.
+:- pred sorted_list_to_set((list.list(T)), (bintree_set.bintree_set(T))).
+:- mode sorted_list_to_set((builtin.in), (builtin.out)) is det.
+:- func sorted_list_to_set((list.list(T))) = (bintree_set.bintree_set(T)).
+:- pred subset((bintree_set.bintree_set(T)), (bintree_set.bintree_set(T))).
+:- mode subset((builtin.in), (builtin.in)) is semidet.
+:- pred superset((bintree_set.bintree_set(T)), (bintree_set.bintree_set(T))).
+:- mode superset((builtin.in), (builtin.in)) is semidet.
+:- pred to_sorted_list((bintree_set.bintree_set(T)), (list.list(T))).
+:- mode to_sorted_list((builtin.in), (builtin.out)) is det.
+:- func to_sorted_list((bintree_set.bintree_set(T))) = (list.list(T)).
+:- pred union((bintree_set.bintree_set(T)), (bintree_set.bintree_set(T)), (bintree_set.bintree_set(T))).
+:- mode union((builtin.in), (builtin.in), (builtin.out)) is det.
+:- func union((bintree_set.bintree_set(T)), (bintree_set.bintree_set(T))) = (bintree_set.bintree_set(T)).
+:- implementation.
+:- import_module bintree.
+:- import_module unit.
+:- type bintree_set(T) == (bintree.bintree(T, (unit.unit))).

@@ -1,0 +1,7 @@
+:- module (ll_backend.stack_alloc).
+:- interface.
+:- import_module io.
+:- import_module (hlds.hlds_module).
+:- import_module (hlds.hlds_pred).
+:- pred allocate_stack_slots_in_proc(((hlds.hlds_pred).pred_id), ((hlds.hlds_pred).proc_id), ((hlds.hlds_module).module_info), ((hlds.hlds_pred).proc_info), ((hlds.hlds_pred).proc_info), (io.io), (io.io)).
+:- mode allocate_stack_slots_in_proc((builtin.in), (builtin.in), (builtin.in), (builtin.in), (builtin.out), (builtin.di), (builtin.uo)) is det.

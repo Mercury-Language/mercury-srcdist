@@ -1,0 +1,4 @@
+:- module (hlds.goal_util).
+:- interface.
+:- type is_leaf.
+:- type prog_var_renaming.

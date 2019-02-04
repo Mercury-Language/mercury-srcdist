@@ -1,0 +1,13 @@
+module(1, "char.m",
+	char,
+	{},
+	{builtin, enum, private_builtin},
+	{builtin, enum, require, private_builtin},
+	{},
+	{},
+	{},
+	{"C"},
+	{"C" - char, "C#" - char, "Java" - char, "Erlang" - char, "C" - char},
+	no_foreign_export,
+	no_main
+).

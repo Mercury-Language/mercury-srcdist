@@ -1,0 +1,131 @@
+This is mercury_user_guide.info, produced by makeinfo version 4.7 from
+user_guide.texi_pp.
+
+INFO-DIR-SECTION The Mercury Programming Language
+START-INFO-DIR-ENTRY
+* Mercury User's Guide: (mercury_user_guide).  The Mercury User's Guide.
+END-INFO-DIR-ENTRY
+
+   This file documents the Mercury implementation, version
+rotd-2007-06-30.
+
+   Copyright (C) 1995-2007 The University of Melbourne.
+
+   Permission is granted to make and distribute verbatim copies of this
+manual provided the copyright notice and this permission notice are
+preserved on all copies.
+
+   Permission is granted to copy and distribute modified versions of
+this manual under the conditions for verbatim copying, provided also
+that the entire resulting derived work is distributed under the terms
+of a permission notice identical to this one.
+
+   Permission is granted to copy and distribute translations of this
+manual into another language, under the above conditions for modified
+versions.
+
+
+Indirect:
+mercury_user_guide.info-1: 961
+mercury_user_guide.info-2: 299328
+
+Tag Table:
+(Indirect)
+Node: Top961
+Node: Introduction2176
+Node: Filenames2817
+Node: Using mmc6655
+Node: Running11810
+Node: Using Mmake13268
+Ref: Using Mmake-Footnote-129411
+Node: Libraries29523
+Node: Writing libraries30080
+Node: Building with mmc --make31199
+Node: Building and installing libraries with mmc --make31552
+Node: Using installed libraries with mmc --make33182
+Node: Using non-installed libraries with mmc --make34172
+Node: Building with Mmake35567
+Node: Building libraries with Mmake35874
+Node: Installing libraries with Mmake39889
+Node: Using libraries with Mmake41898
+Node: Libraries and the Java grade43485
+Node: Debugging44416
+Node: Quick overview44855
+Node: GNU Emacs interface48231
+Node: Tracing of Mercury programs52900
+Node: Preparing a program for debugging60229
+Node: Tracing optimized code67385
+Node: Mercury debugger invocation68185
+Node: Mercury debugger concepts71890
+Node: User defined events80846
+Node: I/O tabling85198
+Node: Debugger commands88417
+Node: Interactive query commands90081
+Node: Forward movement commands93250
+Node: Backward movement commands99635
+Node: Browsing commands101940
+Node: Breakpoint commands114986
+Node: I/O tabling commands131164
+Node: Parameter commands131644
+Node: Help commands143217
+Node: Declarative debugging mdb commands144506
+Node: Experimental commands148425
+Node: Miscellaneous commands154648
+Node: Developer commands156374
+Node: Declarative debugging165293
+Node: Declarative debugging overview166076
+Node: Declarative debugging concepts166796
+Node: Oracle questions169327
+Node: Declarative debugging commands172577
+Node: Diagnoses179197
+Node: Search Modes182633
+Node: Improving the search185343
+Node: Trace counts190906
+Node: Generating trace counts191693
+Node: Combining trace counts193513
+Node: Slicing195004
+Node: Dicing198082
+Node: Coverage testing202572
+Node: Profiling204368
+Node: Profiling introduction205186
+Node: Building profiled applications206293
+Node: Creating profiles208203
+Node: Using mprof for time profiling210972
+Node: Using mprof for memory profiling219833
+Node: Using mdprof221172
+Node: Profiling and shared libraries222029
+Node: Invocation223060
+Node: Invocation overview223765
+Node: Warning options224772
+Node: Verbosity options229718
+Node: Output options232556
+Node: Auxiliary output options237345
+Node: Language semantics options243834
+Node: Termination analysis options245445
+Node: Compilation model options248042
+Node: Grades and grade components249463
+Node: Target options253363
+Node: LLDS back-end compilation model options254987
+Node: MLDS back-end compilation model options256533
+Node: Optional features compilation model options257220
+Node: Developer compilation model options261344
+Node: Code generation options263677
+Node: Code generation target options266490
+Node: Optimization options267910
+Node: Overall optimization options268414
+Node: High-level (HLDS -> HLDS) optimization options271897
+Node: MLDS backend (MLDS -> MLDS) optimization options279209
+Node: Medium-level (HLDS -> LLDS) optimization options280352
+Node: Low-level (LLDS -> LLDS) optimization options282782
+Node: Output-level (LLDS -> C) optimization options284572
+Node: Build system options285850
+Node: Miscellaneous options290564
+Node: Target code compilation options291632
+Node: Link options294386
+Node: Environment299328
+Node: C compilers309695
+Node: Foreign language interface311081
+Node: Stand-alone Interfaces312760
+Node: Index316428
+
+End Tag Table

@@ -1,0 +1,37 @@
+:- module array.
+:- interface.
+:- import_module list.
+:- import_module maybe.
+:- import_module random.
+:- type index_out_of_bounds
+	--->	index_out_of_bounds(string).
+:- type array(T).
+:- inst (array) == array.array(ground).
+:- inst (mostly_uniq_array) == array.mostly_uniq_array(ground).
+:- inst (uniq_array) == array.uniq_array(ground).
+:- inst (array(I)) == ground.
+:- inst (mostly_uniq_array(I)) == array.array(I).
+:- inst (uniq_array(I)) == array.array(I).
+:- mode (array_di) == builtin.di((array.uniq_array)).
+:- mode (array_mdi) == builtin.mdi((array.mostly_uniq_array)).
+:- mode (array_mui) == builtin.in((array.mostly_uniq_array)).
+:- mode (array_muo) == builtin.out((array.mostly_uniq_array)).
+:- mode (array_ui) == builtin.in((array.uniq_array)).
+:- mode (array_uo) == builtin.out((array.uniq_array)).
+:- implementation.
+:- pragma foreign_type(il, array(T), "class [mscorlib]System.Array")
+	where	type_is_abstract_noncanonical.
+:- pragma foreign_type(c, array(T), "MR_ArrayPtr")
+	where	type_is_abstract_noncanonical.
+:- pragma foreign_type(java, array(T), "/* Array */ java.lang.Object")
+	where	type_is_abstract_noncanonical.
+:- pragma foreign_type(erlang, array(T), "")
+	where	type_is_abstract_noncanonical.
+:- pragma foreign_import_module("C", array).
+:- pragma foreign_import_module("Java", array).
+:- pragma foreign_import_module("IL", array).
+:- pragma foreign_import_module("Erlang", array).
+:- pragma foreign_import_module("C", array).
+:- pragma foreign_import_module("Java", array).
+:- pragma foreign_import_module("IL", array).
+:- pragma foreign_import_module("Erlang", array).

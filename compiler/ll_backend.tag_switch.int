@@ -1,0 +1,11 @@
+:- module (ll_backend.tag_switch).
+:- interface.
+:- import_module list.
+:- import_module (backend_libs.switch_util).
+:- import_module (hlds.code_model).
+:- import_module (hlds.hlds_goal).
+:- import_module (ll_backend.code_info).
+:- import_module (ll_backend.llds).
+:- import_module (parse_tree.prog_data).
+:- pred generate_tag_switch((list.list(((backend_libs.switch_util).extended_case))), ((parse_tree.prog_data).prog_var), ((hlds.code_model).code_model), ((parse_tree.prog_data).can_fail), ((hlds.hlds_goal).hlds_goal_info), ((ll_backend.llds).label), ((ll_backend.code_info).branch_end), ((ll_backend.code_info).branch_end), ((ll_backend.llds).code_tree), ((ll_backend.code_info).code_info), ((ll_backend.code_info).code_info)).
+:- mode generate_tag_switch((builtin.in), (builtin.in), (builtin.in), (builtin.in), (builtin.in), (builtin.in), (builtin.in), (builtin.out), (builtin.out), (builtin.in), (builtin.out)) is det.

@@ -1,0 +1,12 @@
+:- module (ll_backend.live_vars).
+:- interface.
+:- import_module bool.
+:- import_module set.
+:- import_module (hlds.hlds_goal).
+:- import_module (hlds.hlds_llds).
+:- import_module (hlds.hlds_module).
+:- import_module (hlds.hlds_pred).
+:- import_module (parse_tree.prog_data).
+:- type alloc_data
+	--->	alloc_data(((ll_backend.live_vars).module_info) :: ((hlds.hlds_module).module_info), ((ll_backend.live_vars).proc_info) :: ((hlds.hlds_pred).proc_info), ((ll_backend.live_vars).typeinfo_liveness) :: (bool.bool), ((ll_backend.live_vars).opt_no_return_calls) :: (bool.bool)).
+:- typeclass stack_alloc_info(T).

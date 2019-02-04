@@ -1,0 +1,34 @@
+/*
+** Automatically generated from `prog_io_dcg.m'
+** by the Mercury compiler,
+** version rotd-2007-06-30, configured for i686-pc-linux-gnu.
+** Do not edit.
+*/
+#ifndef PARSE_TREE__PROG_IO_DCG_MH
+#define PARSE_TREE__PROG_IO_DCG_MH
+
+#ifdef __cplusplus
+extern "C" {
+#endif
+
+#ifdef MR_HIGHLEVEL_CODE
+#include "mercury.h"
+#else
+  #ifndef MERCURY_HDR_EXCLUDE_IMP_H
+  #include "mercury_imp.h"
+  #endif
+#endif
+#ifdef MR_DEEP_PROFILING
+#include "mercury_deep_profiling.h"
+#endif
+
+#ifndef PARSE_TREE__PROG_IO_DCG_DECL_GUARD
+#define PARSE_TREE__PROG_IO_DCG_DECL_GUARD
+
+#endif
+
+#ifdef __cplusplus
+}
+#endif
+
+#endif /* PARSE_TREE__PROG_IO_DCG_MH */

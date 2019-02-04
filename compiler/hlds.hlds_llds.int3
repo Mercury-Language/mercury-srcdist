@@ -1,0 +1,14 @@
+:- module (hlds.hlds_llds).
+:- interface.
+:- type abs_follow_vars.
+:- type abs_follow_vars_map.
+:- type abs_locn.
+:- type abs_store_map.
+:- type llds_code_gen_details.
+:- type need_across_call.
+:- type need_in_par_conj.
+:- type need_in_resume.
+:- type resume_locs.
+:- type resume_point.
+:- type stack_slot.
+:- type stack_slots.

@@ -1,0 +1,13 @@
+:- module (ll_backend.proc_gen).
+:- interface.
+:- import_module io.
+:- import_module list.
+:- import_module (hlds.hlds_module).
+:- import_module (hlds.hlds_pred).
+:- import_module (ll_backend.global_data).
+:- import_module (ll_backend.llds).
+:- pred generate_module_code(((hlds.hlds_module).module_info), ((hlds.hlds_module).module_info), ((ll_backend.global_data).global_data), ((ll_backend.global_data).global_data), (list.list(((ll_backend.llds).c_procedure))), (io.io), (io.io)).
+:- mode generate_module_code((builtin.in), (builtin.out), (builtin.in), (builtin.out), (builtin.out), (builtin.di), (builtin.uo)) is det.
+:- pred generate_proc_code(((hlds.hlds_pred).pred_info), ((hlds.hlds_pred).proc_info), ((hlds.hlds_pred).proc_id), ((hlds.hlds_pred).pred_id), ((hlds.hlds_module).module_info), ((ll_backend.global_data).global_data), ((ll_backend.global_data).global_data), ((ll_backend.llds).c_procedure)).
+:- mode generate_proc_code((builtin.in), (builtin.in), (builtin.in), (builtin.in), (builtin.in), (builtin.in), (builtin.out), (builtin.out)) is det.
+:- func push_msg(((hlds.hlds_module).module_info), ((hlds.hlds_pred).pred_id), ((hlds.hlds_pred).proc_id)) = string.

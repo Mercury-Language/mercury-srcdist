@@ -1,0 +1,510 @@
+:- module robdd.
+:- use_module assoc_list, bool, builtin, hash_table, int, io, list, map, multi_map, pair, private_builtin, require, set_bbbtree, set_unordlist, sparse_bitset, string, term.
+:- type (robdd.var_cache(T)) == (tree234.tree234((term.var(T)), (bool.bool))).
+:- type (robdd.robdd_cache(T)) == (tree234.tree234((robdd.robdd(T)), (robdd.robdd(T)))).
+:- type (robdd.robdd(T))
+	--->	robdd(int).
+:- type (robdd.leader_to_eqvclass(T))
+	--->	leader_to_eqvclass((tree234.tree234((term.var(T)), (sparse_bitset.sparse_bitset((term.var(T))))))).
+:- type (robdd.implication_result(T))
+	--->	implication_result((robdd.entailment_result((robdd.imp_res_2(T)))), (robdd.entailment_result((robdd.imp_res_2(T)))), (robdd.entailment_result((robdd.imp_res_2(T)))), (robdd.entailment_result((robdd.imp_res_2(T))))).
+:- type (robdd.imp_res_2(T))
+	--->	imps((tree234.tree234((term.var(T)), (robdd.entailment_result((sparse_bitset.sparse_bitset((term.var(T))))))))).
+:- type (robdd.imp_res(T)) == (robdd.entailment_result((robdd.imp_res_2(T)))).
+:- typeclass robdd.intersectable(T) where [
+	func intersection(T, T) = T
+].
+:- instance (robdd.intersectable((sparse_bitset.sparse_bitset(T)))) where [
+	func((robdd.intersection)/2) is (sparse_bitset.intersect)
+].
+:- instance (robdd.intersectable((robdd.entailment_result(T)))) <= (robdd.intersectable(T)).
+:- instance (robdd.intersectable((robdd.leader_to_eqvclass(T)))).
+:- instance (robdd.intersectable((robdd.imp_res_2(T)))).
+:- func robdd.equivalent_vars_2((robdd.robdd(T_1))) = (robdd.entailment_result((robdd.leader_to_eqvclass(T_1)))).
+:- mode robdd.equivalent_vars_2((builtin.in)) = (builtin.out) is det.
+:- func robdd.rev_map((robdd.entailment_result((robdd.leader_to_eqvclass(T_1))))) = (robdd.entailment_result((robdd.equiv_vars(T_1)))).
+:- mode robdd.rev_map((builtin.in)) = (builtin.out) is det.
+:- func robdd.implications_2((robdd.robdd(T_1))) = (robdd.implication_result(T_1)).
+:- mode robdd.implications_2((builtin.in)) = (builtin.out) is det.
+:- func robdd.implication_result_to_imp_vars((robdd.implication_result(T_1))) = (robdd.imp_vars(T_1)).
+:- mode robdd.implication_result_to_imp_vars((builtin.in)) = (builtin.out) is det.
+:- pred robdd.remove_implications_2((robdd.imp_vars(T_1)), (sparse_bitset.sparse_bitset((term.var(T_1)))), (sparse_bitset.sparse_bitset((term.var(T_1)))), (robdd.robdd(T_1)), (robdd.robdd(T_1)), (tree234.tree234((robdd.robdd(T_1)), (robdd.robdd(T_1)))), (tree234.tree234((robdd.robdd(T_1)), (robdd.robdd(T_1))))).
+:- mode robdd.remove_implications_2((builtin.in), (builtin.in), (builtin.in), (builtin.in), (builtin.out), (builtin.in), (builtin.out)) is det.
+:- func robdd.value((robdd.robdd(T))) = (term.var(T)).
+:- mode robdd.value((builtin.in)) = (builtin.out) is det.
+:- pragma no_inline((robdd.value)/1).
+:- func robdd.tr((robdd.robdd(T))) = (robdd.robdd(T)).
+:- mode robdd.tr((builtin.in)) = (builtin.out) is det.
+:- pragma no_inline((robdd.tr)/1).
+:- func robdd.fa((robdd.robdd(T))) = (robdd.robdd(T)).
+:- mode robdd.fa((builtin.in)) = (builtin.out) is det.
+:- pragma no_inline((robdd.fa)/1).
+:- func robdd.make_node((term.var(T)), (robdd.robdd(T)), (robdd.robdd(T))) = (robdd.robdd(T)).
+:- mode robdd.make_node((builtin.in), (builtin.in), (builtin.in)) = (builtin.out) is det.
+:- pragma no_inline((robdd.make_node)/3).
+:- func robdd.at_most_one_of_2((sparse_bitset.sparse_bitset((term.var(T_1)))), (robdd.robdd(T_1)), (robdd.robdd(T_1))) = (robdd.robdd(T_1)).
+:- mode robdd.at_most_one_of_2((builtin.in), (builtin.in), (builtin.in)) = (builtin.out) is det.
+:- pred robdd.restrict_true_false_vars_2((sparse_bitset.sparse_bitset((term.var(T_1)))), (sparse_bitset.sparse_bitset((term.var(T_1)))), (robdd.robdd(T_1)), (robdd.robdd(T_1)), (tree234.tree234((robdd.robdd(T_1)), (robdd.robdd(T_1)))), (tree234.tree234((robdd.robdd(T_1)), (robdd.robdd(T_1))))).
+:- mode robdd.restrict_true_false_vars_2((builtin.in), (builtin.in), (builtin.in), (builtin.out), (builtin.in), (builtin.out)) is det.
+:- pred robdd.filter_2((pred (term.var(T_1))), (pred (term.var(T_1))), (robdd.robdd(T_1)), (robdd.robdd(T_1)), (tree234.tree234((term.var(T_1)), (bool.bool))), (tree234.tree234((term.var(T_1)), (bool.bool))), (tree234.tree234((robdd.robdd(T_1)), (robdd.robdd(T_1)))), (tree234.tree234((robdd.robdd(T_1)), (robdd.robdd(T_1))))).
+:- mode robdd.filter_2((pred((builtin.in)) is semidet), (pred((builtin.in)) is semidet), (builtin.in), (builtin.out), (builtin.in), (builtin.out), (builtin.in), (builtin.out)) is det.
+:- func robdd.make_equiv_2((list.list((pair.pair((term.var(T_1)), (term.var(T_1)))))), (sparse_bitset.sparse_bitset((term.var(T_1))))) = (robdd.robdd(T_1)).
+:- mode robdd.make_equiv_2((builtin.in), (builtin.in)) = (builtin.out) is det.
+:- pred robdd.add_equivalences_2((list.list((pair.pair((term.var(T_1)), (term.var(T_1)))))), (sparse_bitset.sparse_bitset((term.var(T_1)))), (robdd.robdd(T_1)), (robdd.robdd(T_1)), (tree234.tree234((robdd.robdd(T_1)), (robdd.robdd(T_1)))), (tree234.tree234((robdd.robdd(T_1)), (robdd.robdd(T_1))))).
+:- mode robdd.add_equivalences_2((builtin.in), (builtin.in), (builtin.in), (builtin.out), (builtin.in), (builtin.out)) is det.
+:- pred robdd.vars_are_constrained_2((robdd.robdd(T_1)), (list.list((term.var(T_1))))).
+:- mode robdd.vars_are_constrained_2((builtin.in), (builtin.in)) is semidet.
+:- pred robdd.robdd_to_dot_2((robdd.robdd(T_1)), pred((term.var(T_1)), (io.state), (io.state)), (set_bbbtree.set_bbbtree((robdd.robdd(T_1)))), (set_bbbtree.set_bbbtree((robdd.robdd(T_1)))), (tree234.tree234((term.var(T_1)), (list.list((robdd.robdd(T_1)))))), (tree234.tree234((term.var(T_1)), (list.list((robdd.robdd(T_1)))))), (io.state), (io.state)).
+:- mode robdd.robdd_to_dot_2((builtin.in), builtin.in((robdd.write_var)), (builtin.in), (builtin.out), (builtin.in), (builtin.out), (builtin.di), (builtin.uo)) is det.
+:- pred robdd.write_node((robdd.robdd(T_1)), pred((term.var(T_1)), (io.state), (io.state)), (io.state), (io.state)).
+:- mode robdd.write_node((builtin.in), builtin.in((robdd.write_var)), (builtin.di), (builtin.uo)) is det.
+:- func robdd.node_name((robdd.robdd(T_1))) = string.
+:- mode robdd.node_name((builtin.in)) = (builtin.out) is det.
+:- func robdd.terminal_name((robdd.robdd(T_1))) = string.
+:- mode robdd.terminal_name((builtin.in)) = (builtin.out) is det.
+:- pred robdd.write_edge((robdd.robdd(T_1)), (robdd.robdd(T_1)), (bool.bool), (io.state), (io.state)).
+:- mode robdd.write_edge((builtin.in), (builtin.in), (builtin.in), (builtin.di), (builtin.uo)) is det.
+:- pred robdd.labelling_2((list.list((term.var(T_1)))), (robdd.robdd(T_1)), (sparse_bitset.sparse_bitset((term.var(T_1)))), (sparse_bitset.sparse_bitset((term.var(T_1)))), (sparse_bitset.sparse_bitset((term.var(T_1)))), (sparse_bitset.sparse_bitset((term.var(T_1))))).
+:- mode robdd.labelling_2((builtin.in), (builtin.in), (builtin.in), (builtin.out), (builtin.in), (builtin.out)) is nondet.
+robdd.empty_vars_set = HeadVar__1_1 :-
+    HeadVar__1_1 = sparse_bitset.init.
+robdd.(F_4 =:= G_5) = HeadVar__3_3 :-
+    HeadVar__3_3 = robdd.ite(F_4, G_5, V_6),
+    V_6 = robdd.(~ G_5).
+robdd.(F_4 =\= G_5) = HeadVar__3_3 :-
+    HeadVar__3_3 = robdd.ite(F_4, V_6, G_5),
+    V_6 = robdd.(~ G_5).
+robdd.(~ F_3) = HeadVar__2_2 :-
+    HeadVar__2_2 = robdd.ite(F_3, V_4, V_5),
+    V_4 = robdd.zero,
+    V_5 = robdd.one.
+robdd.not_var(V_3) = HeadVar__2_2 :-
+    HeadVar__2_2 = robdd.make_node(V_3, V_4, V_5),
+    V_4 = robdd.zero,
+    V_5 = robdd.one.
+robdd.conj_vars(Vars_3) = HeadVar__2_2 :-
+    HeadVar__2_2 = sparse_bitset.foldr(V_6, Vars_3, V_7),
+    V_6 = (func(V_10::(builtin.in), V_9::(builtin.in)) = (V_8::(builtin.out)) is det :-
+      some [] (
+        V_10 = V_12,
+        V_9 = R_13,
+        V_8 = robdd.make_node(V_12, R_13, V_11),
+        V_11 = robdd.zero
+      )
+    ) : (func((term.var(T_1)), (robdd.robdd(T_1))) = (robdd.robdd(T_1))),
+    V_7 = robdd.one.
+robdd.conj_not_vars(Vars_3) = HeadVar__2_2 :-
+    HeadVar__2_2 = sparse_bitset.foldr(V_6, Vars_3, V_7),
+    V_6 = (func(V_10::(builtin.in), V_9::(builtin.in)) = (V_8::(builtin.out)) is det :-
+      some [] (
+        V_10 = V_12,
+        V_9 = R_13,
+        V_8 = robdd.make_node(V_12, V_11, R_13),
+        V_11 = robdd.zero
+      )
+    ) : (func((term.var(T_1)), (robdd.robdd(T_1))) = (robdd.robdd(T_1))),
+    V_7 = robdd.one.
+robdd.disj_vars(Vars_3) = HeadVar__2_2 :-
+    HeadVar__2_2 = sparse_bitset.foldr(V_6, Vars_3, V_7),
+    V_6 = (func(V_10::(builtin.in), V_9::(builtin.in)) = (V_8::(builtin.out)) is det :-
+      some [] (
+        V_10 = V_12,
+        V_9 = R_13,
+        V_8 = robdd.make_node(V_12, V_11, R_13),
+        V_11 = robdd.one
+      )
+    ) : (func((term.var(T_1)), (robdd.robdd(T_1))) = (robdd.robdd(T_1))),
+    V_7 = robdd.zero.
+robdd.at_most_one_of(Vars_3) = HeadVar__2_2 :-
+    HeadVar__2_2 = robdd.at_most_one_of_2(Vars_3, V_4, V_5),
+    V_4 = robdd.one,
+    V_5 = robdd.one.
+robdd.equivalent_vars(R_3) = HeadVar__2_2 :-
+    HeadVar__2_2 = robdd.rev_map(V_4),
+    V_4 = robdd.equivalent_vars_2(R_3).
+robdd.extract_implications(R_3) = HeadVar__2_2 :-
+    HeadVar__2_2 = robdd.implication_result_to_imp_vars(V_4),
+    V_4 = robdd.implications_2(R_3).
+robdd.restrict_filter(P_4, F0_5) = HeadVar__3_3 :-
+    HeadVar__3_3 = robdd.restrict_filter(P_4, V_7, F0_5),
+    V_7 = (pred(V_8::(builtin.in)) is semidet :-
+      some [] (
+        V_8 = V_9
+      )
+    ) : (pred (term.var(T_1))).
+robdd.restrict_filter(P_5, D_6, F0_7) = F_8 :-
+    V_11 = map.init,
+    V_12 = map.init,
+    robdd.filter_2(P_5, D_6, F0_7, F_8, V_11, V_9, V_12, V_10).
+robdd.restrict_true_false_vars(TrueVars_5, FalseVars_6, R0_7) = R_8 :-
+    V_10 = map.init,
+    robdd.restrict_true_false_vars_2(TrueVars_5, FalseVars_6, R0_7, R_8, V_10, V_9).
+robdd.make_equiv((robdd.equiv_vars(LeaderMap_3))) = HeadVar__2_2 :-
+    HeadVar__2_2 = robdd.make_equiv_2(V_4, V_5),
+    V_4 = map.to_sorted_assoc_list(LeaderMap_3),
+    V_5 = sparse_bitset.init.
+robdd.add_equivalences((robdd.equiv_vars(LeaderMap_4)), R0_5) = R_6 :-
+    V_8 = map.to_sorted_assoc_list(LeaderMap_4),
+    V_9 = sparse_bitset.init,
+    V_10 = map.init,
+    robdd.add_equivalences_2(V_8, V_9, R0_5, R_6, V_10, V_7).
+robdd.remove_implications(ImpRes_4, R0_5) = R_6 :-
+    V_8 = sparse_bitset.init,
+    V_9 = sparse_bitset.init,
+    V_10 = map.init,
+    robdd.remove_implications_2(ImpRes_4, V_8, V_9, R0_5, R_6, V_10, V_7).
+robdd.robdd_to_dot(Robdd_6, WV_7, Filename_8, DCG_0_12, DCG_7_19) :-
+    io.tell(Filename_8, Result_9, DCG_0_12, DCG_1_13),
+    ( % disjunction
+      Result_9 = io.ok : (io.res),
+      robdd.robdd_to_dot(Robdd_6, WV_7, DCG_1_13, DCG_2_14),
+      io.told(DCG_2_14, DCG_7_19)
+    ;
+      Result_9 = io.error(Err_10) : (io.res),
+      io.stderr_stream(StdErr_11, DCG_1_13, DCG_4_16),
+      io.nl(StdErr_11, DCG_4_16, DCG_5_17),
+      V_20 = io.error_message(Err_10),
+      io.write_string(StdErr_11, V_20, DCG_5_17, DCG_6_18),
+      io.nl(StdErr_11, DCG_6_18, DCG_7_19)
+    ).
+robdd.robdd_to_dot(Robdd_5, WV_6, DCG_0_13, DCG_4_17) :-
+    V_18 = "digraph G{\n    center=true;\n    size=\"7,11\";\n    ordering=out;\n    node [shape=record,height=.1];\n    concentrate=true;\n" : string,
+    io.write_string(V_18, DCG_0_13, DCG_1_14),
+    multi_map.init(Ranks0_7),
+    V_19 = set_bbbtree.init,
+    robdd.robdd_to_dot_2(Robdd_5, WV_6, V_19, V_8, Ranks0_7, Ranks_9, DCG_1_14, DCG_2_15),
+    V_20 = (pred(V_28::(builtin.in), V_27::(builtin.in), V_26::(builtin.di), V_25::(builtin.uo)) is det :-
+      some [] (
+        V_28 = V_43,
+        V_27 = Nodes_48,
+        V_26 = DCG_0_49,
+        V_29 = "{rank = same; " : string,
+        io.write_string(V_29, DCG_0_49, DCG_1_22),
+        V_30 = (pred(V_35::(builtin.in), V_34::(builtin.di), V_33::(builtin.uo)) is det :-
+          some [] (
+            V_35 = Node_44,
+            V_34 = DCG_0_45,
+            V_36 = "%s; " : string,
+            V_37 = list.[V_38 | V_39] : (list.list((string.poly_type))),
+            V_38 = string.s(V_40) : (string.poly_type),
+            V_40 = robdd.node_name(Node_44),
+            V_39 = list.[] : (list.list((string.poly_type))),
+            io.format(V_36, V_37, DCG_0_45, DCG_1_46),
+            V_33 = DCG_1_46
+          )
+        ) : pred((robdd.robdd(T_1)), (io.state), (io.state)),
+        list.foldl(V_30, Nodes_48, DCG_1_22, DCG_2_23),
+        V_41 = "}\n" : string,
+        io.write_string(V_41, DCG_2_23, DCG_3_50),
+        V_25 = DCG_3_50
+      )
+    ) : pred((term.var(T_1)), (list.list((robdd.robdd(T_1)))), (io.state), (io.state)),
+    map.foldl(V_20, Ranks_9, DCG_2_15, DCG_3_16),
+    V_42 = "}\n" : string,
+    io.write_string(V_42, DCG_3_16, DCG_4_17).
+robdd.rename_vars(Subst_4, F_5) = HeadVar__3_3 :-
+    (if
+      robdd.is_terminal(F_5)
+    then
+      HeadVar__3_3 = F_5
+    else
+      HeadVar__3_3 = robdd.ite(V_6, V_7, V_8),
+      V_6 = robdd.var(V_9),
+      V_9 = apply(Subst_4, V_10),
+      V_10 = robdd.value(F_5),
+      V_7 = robdd.rename_vars(Subst_4, V_11),
+      V_11 = robdd.tr(F_5),
+      V_8 = robdd.rename_vars(Subst_4, V_12),
+      V_12 = robdd.fa(F_5)
+    ).
+robdd.size(F_4, Nodes_5, Depth_6) :-
+    robdd.size(F_4, Nodes_5, Depth_6, V_7).
+robdd.vars_are_constrained(F_3, Vs_4) :-
+    V_5 = sparse_bitset.to_sorted_list(Vs_4),
+    robdd.vars_are_constrained_2(F_3, V_5).
+robdd.labelling(Vars_5, R_6, TrueVars_7, FalseVars_8) :-
+    V_9 = sparse_bitset.to_sorted_list(Vars_5),
+    V_10 = robdd.empty_vars_set,
+    V_11 = robdd.empty_vars_set,
+    robdd.labelling_2(V_9, R_6, V_10, TrueVars_7, V_11, FalseVars_8).
+robdd.at_most_one_of_2(Vars_5, OneOf0_6, NoneOf0_7) = R_8 :-
+    V_15 = (pred(V_21::(builtin.in), V_20::(builtin.in), V_19::(builtin.out), V_18::(builtin.in), V_17::(builtin.out)) is det :-
+      some [] (
+        V_21 = V_24,
+        V_20 = One0_25,
+        V_18 = None0_27,
+        None_28 = robdd.make_node(V_24, V_22, None0_27),
+        V_22 = robdd.zero,
+        One_26 = robdd.make_node(V_24, None0_27, One0_25),
+        V_19 = One_26,
+        V_17 = None_28
+      )
+    ) : pred((term.var(T_1)), (robdd.robdd(T_1)), (robdd.robdd(T_1)), (robdd.robdd(T_1)), (robdd.robdd(T_1))),
+    V_16 = list.reverse(V_23),
+    V_23 = sparse_bitset.to_sorted_list(Vars_5),
+    list.foldl2(V_15, V_16, OneOf0_6, R_8, NoneOf0_7, V_14).
+robdd.filter_2(P_9, D_10, F0_11, F_12, SeenVars0_13, SeenVars_14, SeenNodes0_15, SeenNodes_16) :-
+    (if
+      robdd.is_terminal(F0_11)
+    then
+      F_12 = F0_11,
+      SeenVars_14 = SeenVars0_13,
+      SeenNodes_16 = SeenNodes0_15
+    else
+      (if
+        \+ (
+          V_26 = robdd.value(F0_11),
+          call(D_10, V_26)
+        )
+      then
+        F_12 = F0_11,
+        SeenVars_14 = SeenVars0_13,
+        SeenNodes_16 = SeenNodes0_15
+      else
+        (if
+          map.search(SeenNodes0_15, F0_11, F1_17)
+        then
+          F_12 = F1_17,
+          SeenVars_14 = SeenVars0_13,
+          SeenNodes_16 = SeenNodes0_15
+        else
+          V_27 = robdd.tr(F0_11),
+          robdd.filter_2(P_9, D_10, V_27, Ftrue_18, SeenVars0_13, SeenVars1_19, SeenNodes0_15, SeenNodes1_20),
+          V_28 = robdd.fa(F0_11),
+          robdd.filter_2(P_9, D_10, V_28, Ffalse_21, SeenVars1_19, SeenVars2_22, SeenNodes1_20, SeenNodes2_23),
+          V_24 = robdd.value(F0_11),
+          (if
+            map.search(SeenVars0_13, V_24, SeenF_25)
+          then
+            SeenVars_14 = SeenVars2_22,
+            ( % disjunction
+              SeenF_25 = bool.yes : (bool.bool),
+              F_12 = robdd.make_node(V_24, Ftrue_18, Ffalse_21)
+            ;
+              SeenF_25 = bool.no : (bool.bool),
+              F_12 = robdd.(Ftrue_18 + Ffalse_21)
+            )
+          else
+            (if
+              call(P_9, V_24)
+            then
+              F_12 = robdd.make_node(V_24, Ftrue_18, Ffalse_21),
+              V_29 = bool.yes : (bool.bool),
+              map.det_insert(SeenVars2_22, V_24, V_29, SeenVars_14)
+            else
+              F_12 = robdd.(Ftrue_18 + Ffalse_21),
+              V_30 = bool.no : (bool.bool),
+              map.det_insert(SeenVars2_22, V_24, V_30, SeenVars_14)
+            )
+          ),
+          map.det_insert(SeenNodes2_23, F0_11, F_12, SeenNodes_16)
+        )
+      )
+    ).
+robdd.robdd_to_dot_2(Robdd_9, WV_10, Seen0_11, Seen_12, Ranks0_13, Ranks_14, DCG_0_19, DCG_5_24) :-
+    (if
+      robdd.is_terminal(Robdd_9)
+    then
+      Seen_12 = Seen0_11,
+      Ranks_14 = Ranks0_13,
+      DCG_5_24 = DCG_0_19
+    else
+      (if
+        set_bbbtree.member(Robdd_9, Seen0_11)
+      then
+        Seen_12 = Seen0_11,
+        Ranks_14 = Ranks0_13,
+        DCG_5_24 = DCG_0_19
+      else
+        V_25 = robdd.tr(Robdd_9),
+        robdd.robdd_to_dot_2(V_25, WV_10, Seen0_11, Seen1_15, Ranks0_13, Ranks1_16, DCG_0_19, DCG_1_20),
+        V_26 = robdd.fa(Robdd_9),
+        robdd.robdd_to_dot_2(V_26, WV_10, Seen1_15, Seen2_17, Ranks1_16, Ranks2_18, DCG_1_20, DCG_2_21),
+        robdd.write_node(Robdd_9, WV_10, DCG_2_21, DCG_3_22),
+        V_27 = robdd.tr(Robdd_9),
+        V_28 = bool.yes : (bool.bool),
+        robdd.write_edge(Robdd_9, V_27, V_28, DCG_3_22, DCG_4_23),
+        V_29 = robdd.fa(Robdd_9),
+        V_30 = bool.no : (bool.bool),
+        robdd.write_edge(Robdd_9, V_29, V_30, DCG_4_23, DCG_5_24),
+        Seen_12 = set_bbbtree.insert(Seen2_17, Robdd_9),
+        V_31 = robdd.value(Robdd_9),
+        multi_map.set(Ranks2_18, V_31, Robdd_9, Ranks_14)
+      )
+    ).
+robdd.write_node(R_5, WV_6, DCG_0_7, DCG_4_11) :-
+    V_12 = "%s [label=\"<f0> %s|<f1> " : string,
+    V_13 = list.[V_14 | V_15] : (list.list((string.poly_type))),
+    V_14 = string.s(V_16) : (string.poly_type),
+    V_16 = robdd.node_name(R_5),
+    V_15 = list.[V_17 | V_18] : (list.list((string.poly_type))),
+    V_17 = string.s(V_19) : (string.poly_type),
+    V_19 = robdd.terminal_name(V_20),
+    V_20 = robdd.tr(R_5),
+    V_18 = list.[] : (list.list((string.poly_type))),
+    io.format(V_12, V_13, DCG_0_7, DCG_1_8),
+    V_21 = robdd.value(R_5),
+    call(WV_6, V_21, DCG_1_8, DCG_2_9),
+    V_22 = "|<f2> %s" : string,
+    V_23 = list.[V_24 | V_25] : (list.list((string.poly_type))),
+    V_24 = string.s(V_26) : (string.poly_type),
+    V_26 = robdd.terminal_name(V_27),
+    V_27 = robdd.fa(R_5),
+    V_25 = list.[] : (list.list((string.poly_type))),
+    io.format(V_22, V_23, DCG_2_9, DCG_3_10),
+    V_28 = "\"];\n" : string,
+    io.write_string(V_28, DCG_3_10, DCG_4_11).
+:- pragma exceptions(function, (robdd.empty_vars_set), 1, 0, may_throw(user_exception)).
+:- pragma exceptions(function, (robdd.one), 1, 0, will_not_throw).
+:- pragma exceptions(function, (robdd.zero), 1, 0, will_not_throw).
+:- pragma exceptions(function, (robdd.ite), 4, 0, will_not_throw).
+:- pragma exceptions(function, (robdd.(*)), 3, 0, may_throw(type_exception)).
+:- pragma exceptions(function, (robdd.(+)), 3, 0, will_not_throw).
+:- pragma exceptions(function, (robdd.(=<)), 3, 0, will_not_throw).
+:- pragma exceptions(function, (robdd.(=:=)), 3, 0, will_not_throw).
+:- pragma exceptions(function, (robdd.(=\=)), 3, 0, will_not_throw).
+:- pragma exceptions(function, (robdd.(~)), 2, 0, will_not_throw).
+:- pragma exceptions(function, (robdd.var), 2, 0, will_not_throw).
+:- pragma exceptions(function, (robdd.not_var), 2, 0, will_not_throw).
+:- pragma exceptions(function, (robdd.ite_var), 4, 0, will_not_throw).
+:- pragma exceptions(function, (robdd.eq_vars), 3, 0, conditional).
+:- pragma exceptions(function, (robdd.neq_vars), 3, 0, conditional).
+:- pragma exceptions(function, (robdd.imp_vars), 3, 0, conditional).
+:- pragma exceptions(function, (robdd.conj_vars), 2, 0, may_throw(user_exception)).
+:- pragma exceptions(function, (robdd.conj_not_vars), 2, 0, may_throw(user_exception)).
+:- pragma exceptions(function, (robdd.disj_vars), 2, 0, may_throw(user_exception)).
+:- pragma exceptions(function, (robdd.at_most_one_of), 2, 0, may_throw(user_exception)).
+:- pragma exceptions(function, (robdd.var_restrict_true), 3, 0, may_throw(type_exception)).
+:- pragma exceptions(function, (robdd.var_restrict_false), 3, 0, may_throw(type_exception)).
+:- pragma exceptions(predicate, (robdd.entails), 2, 0, will_not_throw).
+:- pragma exceptions(predicate, (robdd.var_entailed), 2, 0, will_not_throw).
+:- pragma exceptions(function, (robdd.vars_entailed), 2, 0, may_throw(user_exception)).
+:- pragma exceptions(function, (robdd.vars_disentailed), 2, 0, may_throw(user_exception)).
+:- pragma exceptions(predicate, (robdd.definite_vars), 3, 0, may_throw(user_exception)).
+:- pragma exceptions(function, (robdd.equivalent_vars), 2, 0, may_throw(user_exception)).
+:- pragma exceptions(function, (robdd.extract_implications), 2, 0, may_throw(user_exception)).
+:- pragma exceptions(function, (robdd.restrict), 3, 0, will_not_throw).
+:- pragma exceptions(function, (robdd.restrict_threshold), 3, 0, will_not_throw).
+:- pragma exceptions(function, (robdd.restrict_filter), 3, 0, may_throw(user_exception)).
+:- pragma exceptions(function, (robdd.restrict_filter), 4, 0, may_throw(user_exception)).
+:- pragma exceptions(function, (robdd.restrict_true_false_vars), 4, 0, may_throw(user_exception)).
+:- pragma exceptions(function, (robdd.squeeze_equiv), 3, 0, may_throw(user_exception)).
+:- pragma exceptions(function, (robdd.make_equiv), 2, 0, may_throw(user_exception)).
+:- pragma exceptions(function, (robdd.add_equivalences), 3, 0, may_throw(user_exception)).
+:- pragma exceptions(function, (robdd.add_implications), 3, 0, may_throw(user_exception)).
+:- pragma exceptions(function, (robdd.remove_implications), 3, 0, may_throw(user_exception)).
+:- pragma exceptions(function, (robdd.dnf), 2, 0, may_throw(user_exception)).
+:- pragma exceptions(predicate, (robdd.print_robdd), 3, 0, may_throw(user_exception)).
+:- pragma exceptions(predicate, (robdd.robdd_to_dot), 5, 0, may_throw(user_exception)).
+:- pragma exceptions(predicate, (robdd.robdd_to_dot), 4, 0, may_throw(user_exception)).
+:- pragma exceptions(function, (robdd.rename_vars), 3, 0, may_throw(user_exception)).
+:- pragma exceptions(predicate, (robdd.is_terminal), 1, 0, will_not_throw).
+:- pragma exceptions(predicate, (robdd.size), 3, 0, may_throw(user_exception)).
+:- pragma exceptions(predicate, (robdd.size), 4, 0, may_throw(user_exception)).
+:- pragma exceptions(predicate, (robdd.var_is_constrained), 2, 0, may_throw(type_exception)).
+:- pragma exceptions(predicate, (robdd.vars_are_constrained), 2, 0, may_throw(user_exception)).
+:- pragma exceptions(predicate, (robdd.labelling), 4, 0, may_throw(user_exception)).
+:- pragma exceptions(predicate, (robdd.minimal_model), 4, 0, may_throw(user_exception)).
+:- pragma exceptions(predicate, (robdd.clear_caches), 2, 0, will_not_throw).
+:- pragma exceptions(predicate, (robdd.clear_caches), 0, 0, will_not_throw).
+:- pragma exceptions(function, (robdd.equivalent_vars_2), 2, 0, may_throw(user_exception)).
+:- pragma exceptions(function, (robdd.rev_map), 2, 0, may_throw(user_exception)).
+:- pragma exceptions(function, (robdd.implications_2), 2, 0, may_throw(user_exception)).
+:- pragma exceptions(function, (robdd.implication_result_to_imp_vars), 2, 0, may_throw(user_exception)).
+:- pragma exceptions(predicate, (robdd.remove_implications_2), 7, 0, may_throw(user_exception)).
+:- pragma exceptions(function, (robdd.intersection), 3, 0, may_throw(user_exception)).
+:- pragma exceptions(function, (robdd.value), 2, 0, will_not_throw).
+:- pragma exceptions(function, (robdd.tr), 2, 0, will_not_throw).
+:- pragma exceptions(function, (robdd.fa), 2, 0, will_not_throw).
+:- pragma exceptions(function, (robdd.make_node), 4, 0, will_not_throw).
+:- pragma exceptions(function, (robdd.at_most_one_of_2), 4, 0, may_throw(user_exception)).
+:- pragma exceptions(predicate, (robdd.restrict_true_false_vars_2), 6, 0, may_throw(user_exception)).
+:- pragma exceptions(predicate, (robdd.filter_2), 8, 0, may_throw(user_exception)).
+:- pragma exceptions(function, (robdd.make_equiv_2), 3, 0, may_throw(user_exception)).
+:- pragma exceptions(predicate, (robdd.add_equivalences_2), 6, 0, may_throw(user_exception)).
+:- pragma exceptions(predicate, (robdd.vars_are_constrained_2), 2, 0, may_throw(type_exception)).
+:- pragma exceptions(predicate, (robdd.robdd_to_dot_2), 8, 0, may_throw(user_exception)).
+:- pragma exceptions(predicate, (robdd.write_node), 4, 0, may_throw(user_exception)).
+:- pragma exceptions(function, (robdd.node_name), 2, 0, may_throw(user_exception)).
+:- pragma exceptions(function, (robdd.terminal_name), 2, 0, may_throw(type_exception)).
+:- pragma exceptions(predicate, (robdd.write_edge), 5, 0, may_throw(user_exception)).
+:- pragma exceptions(predicate, (robdd.labelling_2), 6, 0, may_throw(user_exception)).
+:- pragma termination_info((robdd.empty_vars_set) = (builtin.out), infinite, can_loop).
+:- pragma termination_info((robdd.one) = (builtin.out), infinite, cannot_loop).
+:- pragma termination_info((robdd.zero) = (builtin.out), infinite, cannot_loop).
+:- pragma termination_info(robdd.ite((builtin.in), (builtin.in), (builtin.in)) = (builtin.out), infinite, cannot_loop).
+:- pragma termination_info(robdd.'*'((builtin.in), (builtin.in)) = (builtin.out), infinite, cannot_loop).
+:- pragma termination_info(robdd.'+'((builtin.in), (builtin.in)) = (builtin.out), infinite, cannot_loop).
+:- pragma termination_info(robdd.'=<'((builtin.in), (builtin.in)) = (builtin.out), infinite, cannot_loop).
+:- pragma termination_info(robdd.'=:='((builtin.in), (builtin.in)) = (builtin.out), infinite, cannot_loop).
+:- pragma termination_info(robdd.'=\\='((builtin.in), (builtin.in)) = (builtin.out), infinite, cannot_loop).
+:- pragma termination_info(robdd.'~'((builtin.in)) = (builtin.out), infinite, cannot_loop).
+:- pragma termination_info(robdd.var((builtin.in)) = (builtin.out), infinite, cannot_loop).
+:- pragma termination_info(robdd.not_var((builtin.in)) = (builtin.out), infinite, cannot_loop).
+:- pragma termination_info(robdd.ite_var((builtin.in), (builtin.in), (builtin.in)) = (builtin.out), infinite, cannot_loop).
+:- pragma termination_info(robdd.eq_vars((builtin.in), (builtin.in)) = (builtin.out), infinite, cannot_loop).
+:- pragma termination_info(robdd.neq_vars((builtin.in), (builtin.in)) = (builtin.out), infinite, cannot_loop).
+:- pragma termination_info(robdd.imp_vars((builtin.in), (builtin.in)) = (builtin.out), infinite, cannot_loop).
+:- pragma termination_info(robdd.conj_vars((builtin.in)) = (builtin.out), infinite, can_loop).
+:- pragma termination_info(robdd.conj_not_vars((builtin.in)) = (builtin.out), infinite, can_loop).
+:- pragma termination_info(robdd.disj_vars((builtin.in)) = (builtin.out), infinite, can_loop).
+:- pragma termination_info(robdd.at_most_one_of((builtin.in)) = (builtin.out), infinite, can_loop).
+:- pragma termination_info(robdd.var_restrict_true((builtin.in), (builtin.in)) = (builtin.out), infinite, can_loop).
+:- pragma termination_info(robdd.var_restrict_false((builtin.in), (builtin.in)) = (builtin.out), infinite, can_loop).
+:- pragma termination_info(robdd.entails((builtin.in), (builtin.in)), finite(0, [no, no, no]), cannot_loop).
+:- pragma termination_info(robdd.var_entailed((builtin.in), (builtin.in)), finite(0, [no, no, no]), cannot_loop).
+:- pragma termination_info(robdd.vars_entailed((builtin.in)) = (builtin.out), infinite, can_loop).
+:- pragma termination_info(robdd.vars_disentailed((builtin.in)) = (builtin.out), infinite, can_loop).
+:- pragma termination_info(robdd.definite_vars((builtin.in), (builtin.out), (builtin.out)), infinite, can_loop).
+:- pragma termination_info(robdd.equivalent_vars((builtin.in)) = (builtin.out), infinite, can_loop).
+:- pragma termination_info(robdd.extract_implications((builtin.in)) = (builtin.out), infinite, can_loop).
+:- pragma termination_info(robdd.restrict((builtin.in), (builtin.in)) = (builtin.out), infinite, cannot_loop).
+:- pragma termination_info(robdd.restrict_threshold((builtin.in), (builtin.in)) = (builtin.out), infinite, cannot_loop).
+:- pragma termination_info(robdd.restrict_filter((pred((builtin.in)) is semidet), (builtin.in)) = (builtin.out), infinite, can_loop).
+:- pragma termination_info(robdd.restrict_filter((pred((builtin.in)) is semidet), (pred((builtin.in)) is semidet), (builtin.in)) = (builtin.out), infinite, can_loop).
+:- pragma termination_info(robdd.restrict_true_false_vars((builtin.in), (builtin.in), (builtin.in)) = (builtin.out), infinite, can_loop).
+:- pragma termination_info(robdd.squeeze_equiv((builtin.in), (builtin.in)) = (builtin.out), infinite, can_loop).
+:- pragma termination_info(robdd.make_equiv((builtin.in)) = (builtin.out), infinite, can_loop).
+:- pragma termination_info(robdd.add_equivalences((builtin.in), (builtin.in)) = (builtin.out), infinite, can_loop).
+:- pragma termination_info(robdd.add_implications((builtin.in), (builtin.in)) = (builtin.out), infinite, can_loop).
+:- pragma termination_info(robdd.remove_implications((builtin.in), (builtin.in)) = (builtin.out), infinite, can_loop).
+:- pragma termination_info(robdd.dnf((builtin.in)) = (builtin.out), infinite, can_loop).
+:- pragma termination_info(robdd.print_robdd((builtin.in), (builtin.di), (builtin.uo)), infinite, can_loop).
+:- pragma termination_info(robdd.robdd_to_dot((builtin.in), builtin.in((robdd.write_var)), (builtin.in), (builtin.di), (builtin.uo)), infinite, can_loop).
+:- pragma termination_info(robdd.robdd_to_dot((builtin.in), builtin.in((robdd.write_var)), (builtin.di), (builtin.uo)), infinite, can_loop).
+:- pragma termination_info(robdd.rename_vars((builtin.in), (builtin.in)) = (builtin.out), infinite, can_loop).
+:- pragma termination_info(robdd.is_terminal((builtin.in)), finite(0, [no, no]), cannot_loop).
+:- pragma termination_info(robdd.size((builtin.in), (builtin.out), (builtin.out)), infinite, can_loop).
+:- pragma termination_info(robdd.size((builtin.in), (builtin.out), (builtin.out), (builtin.out)), infinite, can_loop).
+:- pragma termination_info(robdd.var_is_constrained((builtin.in), (builtin.in)), finite(0, [no, no, no]), can_loop).
+:- pragma termination_info(robdd.vars_are_constrained((builtin.in), (builtin.in)), finite(0, [no, no, no]), can_loop).
+:- pragma termination_info(robdd.labelling((builtin.in), (builtin.in), (builtin.out), (builtin.out)), infinite, can_loop).
+:- pragma termination_info(robdd.minimal_model((builtin.in), (builtin.in), (builtin.out), (builtin.out)), infinite, can_loop).
+:- pragma termination_info(robdd.clear_caches((builtin.di), (builtin.uo)), finite(0, [yes, no]), cannot_loop).
+:- pragma termination_info((robdd.clear_caches), finite(0, []), cannot_loop).
+:- pragma termination_info(robdd.equivalent_vars_2((builtin.in)) = (builtin.out), infinite, can_loop).
+:- pragma termination_info(robdd.rev_map((builtin.in)) = (builtin.out), infinite, can_loop).
+:- pragma termination_info(robdd.implications_2((builtin.in)) = (builtin.out), infinite, can_loop).
+:- pragma termination_info(robdd.implication_result_to_imp_vars((builtin.in)) = (builtin.out), infinite, can_loop).
+:- pragma termination_info(robdd.remove_implications_2((builtin.in), (builtin.in), (builtin.in), (builtin.in), (builtin.out), (builtin.in), (builtin.out)), infinite, can_loop).
+:- pragma termination_info(robdd.intersection((builtin.in), (builtin.in)) = (builtin.out), infinite, can_loop).
+:- pragma termination_info(robdd.value((builtin.in)) = (builtin.out), infinite, cannot_loop).
+:- pragma termination_info(robdd.tr((builtin.in)) = (builtin.out), infinite, cannot_loop).
+:- pragma termination_info(robdd.fa((builtin.in)) = (builtin.out), infinite, cannot_loop).
+:- pragma termination_info(robdd.make_node((builtin.in), (builtin.in), (builtin.in)) = (builtin.out), infinite, cannot_loop).
+:- pragma termination_info(robdd.at_most_one_of_2((builtin.in), (builtin.in), (builtin.in)) = (builtin.out), infinite, can_loop).
+:- pragma termination_info(robdd.restrict_true_false_vars_2((builtin.in), (builtin.in), (builtin.in), (builtin.out), (builtin.in), (builtin.out)), infinite, can_loop).
+:- pragma termination_info(robdd.filter_2((pred((builtin.in)) is semidet), (pred((builtin.in)) is semidet), (builtin.in), (builtin.out), (builtin.in), (builtin.out), (builtin.in), (builtin.out)), infinite, can_loop).
+:- pragma termination_info(robdd.make_equiv_2((builtin.in), (builtin.in)) = (builtin.out), infinite, can_loop).
+:- pragma termination_info(robdd.add_equivalences_2((builtin.in), (builtin.in), (builtin.in), (builtin.out), (builtin.in), (builtin.out)), infinite, can_loop).
+:- pragma termination_info(robdd.vars_are_constrained_2((builtin.in), (builtin.in)), finite(0, [no, no, no]), can_loop).
+:- pragma termination_info(robdd.robdd_to_dot_2((builtin.in), builtin.in((robdd.write_var)), (builtin.in), (builtin.out), (builtin.in), (builtin.out), (builtin.di), (builtin.uo)), infinite, can_loop).
+:- pragma termination_info(robdd.write_node((builtin.in), builtin.in((robdd.write_var)), (builtin.di), (builtin.uo)), infinite, can_loop).
+:- pragma termination_info(robdd.node_name((builtin.in)) = (builtin.out), infinite, can_loop).
+:- pragma termination_info(robdd.terminal_name((builtin.in)) = (builtin.out), finite(0, [no, no, no]), cannot_loop).
+:- pragma termination_info(robdd.write_edge((builtin.in), (builtin.in), (builtin.in), (builtin.di), (builtin.uo)), infinite, can_loop).
+:- pragma termination_info(robdd.labelling_2((builtin.in), (builtin.in), (builtin.in), (builtin.out), (builtin.in), (builtin.out)), infinite, can_loop).
+:- pragma termination_info(robdd.'ClassMethod_for_robdd__intersectable____robdd__imp_res_2__arity1______robdd__intersection_2'((builtin.in), (builtin.in)) = (builtin.out), infinite, can_loop).
+:- pragma termination_info(robdd.'ClassMethod_for_robdd__intersectable____robdd__leader_to_eqvclass__arity1______robdd__intersection_2'((builtin.in), (builtin.in)) = (builtin.out), infinite, can_loop).
+:- pragma termination_info(robdd.'ClassMethod_for_robdd__intersectable____robdd__entailment_result__arity1______robdd__intersection_2'((builtin.in), (builtin.in)) = (builtin.out), infinite, can_loop).
+:- pragma termination_info(robdd.'ClassMethod_for_robdd__intersectable____sparse_bitset__sparse_bitset__arity1______robdd__intersection_2'((builtin.in), (builtin.in)) = (builtin.out), infinite, can_loop).

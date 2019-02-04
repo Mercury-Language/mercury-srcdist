@@ -1,0 +1,3 @@
+:- module bintree.
+:- interface.
+:- type bintree(K, V).

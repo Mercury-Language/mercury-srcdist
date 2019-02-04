@@ -1,0 +1,5 @@
+:- module ((transform_hlds.rbmm).region_instruction).
+:- interface.
+:- type annotation_proc.
+:- type annotation_table.
+:- type before_after.

@@ -1,0 +1,2102 @@
+This is mercury_user_guide.info, produced by makeinfo version 4.7 from
+user_guide.texi_pp.
+
+INFO-DIR-SECTION The Mercury Programming Language
+START-INFO-DIR-ENTRY
+* Mercury User's Guide: (mercury_user_guide).  The Mercury User's Guide.
+END-INFO-DIR-ENTRY
+
+   This file documents the Mercury implementation, version
+rotd-2007-06-30.
+
+   Copyright (C) 1995-2007 The University of Melbourne.
+
+   Permission is granted to make and distribute verbatim copies of this
+manual provided the copyright notice and this permission notice are
+preserved on all copies.
+
+   Permission is granted to copy and distribute modified versions of
+this manual under the conditions for verbatim copying, provided also
+that the entire resulting derived work is distributed under the terms
+of a permission notice identical to this one.
+
+   Permission is granted to copy and distribute translations of this
+manual into another language, under the above conditions for modified
+versions.
+
+
+File: mercury_user_guide.info,  Node: Environment,  Next: C compilers,  Prev: Invocation,  Up: Top
+
+10 Environment variables
+************************
+
+The shell scripts in the Mercury compilation environment will use the
+following environment variables if they are set.  There should be
+little need to use these, because the default values will generally
+work fine.
+
+`MERCURY_DEFAULT_GRADE'
+     The default grade to use if no `--grade' option is specified.
+
+
+`MERCURY_STDLIB_DIR'
+     The directory containing the installed Mercury standard library.
+     `--mercury-stdlib-dir' options passed to the `mmc', `ml', `mgnuc'
+     and `c2init' scripts override the setting of the
+     MERCURY_STDLIB_DIR environment variable.
+
+
+`MERCURY_NONSHARED_LIB_DIR'
+     For IRIX 5, this environment variable can be used to specify a
+     directory containing a version of libgcc.a which has been compiled
+     with `-mno-abicalls'.  See the file `README.IRIX-5' in the Mercury
+     source distribution.
+
+
+`MERCURY_OPTIONS'
+     A list of options for the Mercury runtime that gets linked into
+     every Mercury program.  Options may also be set at compile time by
+     passing `--runtime-flags' options to `ml' and `c2init'.  The
+     Mercury runtime accepts the following options.
+
+
+    `-C SIZE'
+          Tells the runtime system to optimize the locations of the
+          starts of the various data areas for a primary data cache of
+          SIZE kilobytes.  The optimization consists of arranging the
+          starts of the areas to differ as much as possible modulo this
+          size.
+
+
+    `-D DEBUGGER'
+          Enables execution tracing of the program, via the internal
+          debugger if DEBUGGER is `i' and via the external debugger if
+          DEBUGGER is `e'.  (The mdb script works by including `-Di' in
+          MERCURY_OPTIONS.)  The external debugger is not yet available.
+
+
+    `-p'
+          Disables profiling.  This only has an effect if the
+          executable was built in a profiling grade.
+
+
+    `-P NUM'
+          Tells the runtime system to use NUM threads if the program
+          was built in a parallel grade.
+
+
+    `-T TIME-METHOD'
+          If the executable was compiled in a grade that includes time
+          profiling, this option specifies what time is counted in the
+          profile.  TIME-METHOD must have one of the following values:
+
+
+         ``r''
+               Profile real (elapsed) time (using ITIMER_REAL).
+
+         ``p''
+               Profile user time plus system time (using ITIMER_PROF).
+               This is the default.
+
+         ``v''
+               Profile user time (using ITIMER_VIRTUAL).
+
+
+          Currently, the `-Tp' and `-Tv' options don't work on Windows,
+          so on Windows you must explicitly specify `-Tr'.
+
+
+    `--heap-size SIZE'
+          Sets the size of the heap to SIZE kilobytes.
+
+
+    `--heap-size-kwords SIZE'
+          Sets the size of the heap to SIZE kilobytes multiplied by the
+          word size in bytes.
+
+
+    `--detstack-size SIZE'
+          Sets the size of the det stack to SIZE kilobytes.
+
+
+    `--detstack-size-kwords SIZE'
+          Sets the size of the det stack to SIZE kilobytes multiplied
+          by the word size in bytes.
+
+
+    `--nondetstack-size SIZE'
+          Sets the size of the nondet stack to SIZE kilobytes.
+
+
+    `--nondetstack-size-kwords SIZE'
+          Sets the size of the nondet stack to SIZE kilobytes
+          multiplied by the word size in bytes.
+
+
+    `--small-detstack-size SIZE'
+          Sets the size of the det stack used for executing parallel
+          conjunctions to SIZE kilobytes.  The regular det stack size
+          must be equal or greater.
+
+
+    `--small-detstack-size-kwords SIZE'
+          Sets the size of the det stack used for executing parallel
+          conjunctions to SIZE kilobytes multiplied by the word size in
+          bytes.  The regular det stack size must be equal or greater.
+
+
+    `--small-nondetstack-size SIZE'
+          Sets the size of the nondet stack for executing parallel
+          computations to SIZE kilobytes.  The regular nondet stack
+          size must be equal or greater.
+
+
+    `--small-nondetstack-size-kwords SIZE'
+          Sets the size of the nondet stack for executing parallel
+          computations to SIZE kilobytes multiplied by the word size in
+          bytes.  The regular nondet stack size must be equal or
+          greater.
+
+
+    `--solutions-heap-size SIZE'
+          Sets the size of the solutions heap to SIZE kilobytes.
+
+
+    `--solutions-heap-size-kwords SIZE'
+          Sets the size of the solutions heap to SIZE kilobytes
+          multiplied by the word size in bytes.
+
+
+    `--trail-size SIZE'
+          Sets the size of the trail to SIZE kilobytes.
+
+
+    `--trail-size-kwords SIZE'
+          Sets the size of the trail to SIZE kilobytes multiplied by
+          the word size in bytes.
+
+
+    `--genstack-size SIZE'
+          Sets the size of the generator stack to SIZE kilobytes.
+
+
+    `--genstack-size-kwords SIZE'
+          Sets the size of the generator stack to SIZE kilobytes
+          multiplied by the word size in bytes.
+
+
+    `--cutstack-size SIZE'
+          Sets the size of the cut stack to SIZE kilobytes.
+
+
+    `--cutstack-size-kwords SIZE'
+          Sets the size of the cut stack to SIZE kilobytes multiplied
+          by the word size in bytes.
+
+
+    `--pnegstack-size SIZE'
+          Sets the size of the pneg stack to SIZE kilobytes.
+
+
+    `--pnegstack-size-kwords SIZE'
+          Sets the size of the pneg stack to SIZE kilobytes multiplied
+          by the word size in bytes.
+
+
+    `-i FILENAME'
+    `--mdb-in FILENAME'
+          Read debugger input from the file or device specified by
+          FILENAME, rather than from standard input.
+
+
+    `-o FILENAME'
+    `--mdb-out FILENAME'
+          Print debugger output to the file or device specified by
+          FILENAME, rather than to standard output.
+
+
+    `-e FILENAME'
+    `--mdb-err FILENAME'
+          Print debugger error messages to the file or device specified
+          by FILENAME, rather than to standard error.
+
+
+    `-m FILENAME'
+    `--mdb-tty FILENAME'
+          Redirect all three debugger I/O streams -- input, output, and
+          error messages -- to the file or device specified by FILENAME.
+
+
+    `--debug-threads'
+          Output information to the standard error stream about the
+          locking and unlocking occurring in each module which has been
+          compiled with the C macro symbol `MR_DEBUG_THREADS' defined.
+
+
+    `--tabling-statistics'
+          Prints statistics about tabling when the program terminates.
+
+
+    `--mem-usage-report'
+          Print a report about the memory usage of the program when the
+          program terminates.  The report is printed to a new file
+          named `.mem_usage_reportN' for the lowest value of N (up to
+          99) which doesn't overwrite an existing file.
+
+
+    `--trace-count'
+          When the program terminates, generate a trace counts file
+          listing all the debugger events the program executed, if the
+          program actually executed any debugger events.  If
+          MERCURY_OPTIONS includes the
+          -trace-count-output-file=FILENAME option, then the trace
+          counts are put into the file FILENAME.  If MERCURY_OPTIONS
+          includes the -trace-count-summary-file=BASENAME option, then
+          the trace counts are put either in the file BASENAME (if it
+          does not exist), or in BASENAME.N for the lowest value of the
+          integer N which doesn't overwrite an existing file.  (There
+          is a limit on the value of N; see the option
+          -trace-count-summary-max below.)  If neither option is
+          specified, then the output will be written to a file with the
+          prefix `.mercury_trace_counts' and a unique suffix.
+          Specifying both options is an error.
+
+
+    `--coverage-test'
+          Act as the -trace-count option, except include _all_ debugger
+          events in the output, even the ones that were not executed.
+
+
+    `--trace-count-if-exec=PROG'
+          Act as the -trace-count option, but only if the executable is
+          named PROG.  This is to allow the collection of trace count
+          information from only one Mercury program even if several
+          Mercury programs are executed with the same setting of
+          MERCURY_OPTIONS.
+
+
+    `--coverage-test-if-exec=PROG'
+          Act as the -coverage-test option, but only if the executable
+          is named PROG.  This is to allow the collection of coverage
+          test information from only one Mercury program even if
+          several Mercury programs are executed with the same setting
+          of MERCURY_OPTIONS.
+
+
+    `--trace-count-output-file=FILENAME'
+          Documented alongside the -trace-count option.
+
+
+    `--trace-count-summary-file=BASENAME'
+          Documented alongside the -trace-count option.
+
+
+    `--trace-count-summary-max=N'
+          If MERCURY_OPTIONS includes both the -trace-count option (or
+          one of the other options that imply -trace-count) and the
+          -trace-count-summary-file=BASENAME option, then the generated
+          program will put the generated trace counts either in
+          BASENAME (if it does not exist), or in BASENAME.N for the
+          lowest value of the integer N which doesn't overwrite an
+          existing file.  The -trace-count-summary-max option specifies
+          the maximum value of this N.  When this maximum is reached,
+          the program will invoke the `mtc_union' program to summarize
+          BASENAME, BASENAME.1, ... BASENAME.N into a single file
+          BASENAME, and delete the rest.  By imposing a limit on the
+          total number (and hence indirectly on the total size) of
+          these trace count files, this mechanism allows the gathering
+          of trace count information from a large number of program
+          runs.  The default maximum value of N is 20.
+
+
+
+`MERCURY_COMPILER'
+     Filename of the Mercury Compiler.
+
+
+`MERCURY_MKINIT'
+     Filename of the program to create the `*_init.c' file.
+
+
+`MERCURY_DEBUGGER_INIT'
+     Name of a file that contains startup commands for the Mercury
+     debugger.  This file should contain documentation for the debugger
+     command set, and possibly a set of default aliases.
+
+
+
+File: mercury_user_guide.info,  Node: C compilers,  Next: Foreign language interface,  Prev: Environment,  Up: Top
+
+11 Using a different C compiler
+*******************************
+
+The Mercury compiler takes special advantage of certain extensions
+provided by GNU C to generate much more efficient code.  We therefore
+recommend that you use GNU C for compiling Mercury programs.  However,
+if for some reason you wish to use another compiler, it is possible to
+do so.  Here's what you need to do.
+
+   * Create a new configuration for the Mercury system using the
+     `mercury_config' script, specifying the different C compiler, e.g.
+     `mercury_config --output-prefix=/usr/local/mercury-cc
+     --with-cc=cc'.
+
+   * Add the `bin' directory of the new configuration to the beginning
+     of your PATH.
+
+   * You must use a grade beginning with `none', `hlc' or `hl' (e.g.
+     `hlc.gc').  You can specify the grade in one of three ways: by
+     setting the `MERCURY_DEFAULT_GRADE' environment variable, by
+     adding a line `GRADE=...' to your `Mmake' file, or by using the
+     `--grade' option to `mmc'.  (You will also need to install those
+     grades of the Mercury library, if you have not already done so.)
+
+   * If your compiler is particularly strict in enforcing ANSI
+     compliance, you may also need to compile the Mercury code with
+     `--no-static-ground-terms'.
+
+
+
+File: mercury_user_guide.info,  Node: Foreign language interface,  Next: Stand-alone Interfaces,  Prev: C compilers,  Up: Top
+
+12 Foreign language interface
+*****************************
+
+The Mercury foreign language interfaces allows pragma foreign_proc to
+specify multiple implementations (in different foreign programming
+languages) for a procedure.
+
+   If the compiler generates code for a procedure using a back-end for
+which there are multiple applicable foreign languages, it will choose
+the foreign language to use for each procedure according to a builtin
+ordering.
+
+   If the language specified in a foreign_proc is not available for a
+particular backend, it will be ignored.
+
+   If there are no suitable foreign_proc clauses for a particular
+procedure but there are Mercury clauses, they will be used instead.
+
+`C'
+     This is the default foreign language on all backends which compile
+     to C or assembler.  Only available on backends that compile to C
+     or assembler.
+
+`C#'
+     Only available on backends that compile to IL.  This is the second
+     preferred foreign language for IL code generation.
+
+`IL'
+     IL is the intermediate language of the .NET Common Language
+     Runtime (sometimes also known as CIL or MSIL).  Only available on
+     backends that compile to IL.  This is the preferred foreign
+     language for IL code generation.
+
+`Managed C++'
+     Microsoft Managed Extensions for C++ is a language based on C++
+     that provide support for writing .NET components, by adding extra
+     keywords and syntax.  Only available on backends that compile to
+     IL.  This is the third preferred foreign language for IL code
+     generation.
+
+
+
+File: mercury_user_guide.info,  Node: Stand-alone Interfaces,  Next: Index,  Prev: Foreign language interface,  Up: Top
+
+13 Stand-alone Interfaces
+*************************
+
+Programs written in a language other than Mercury should not make calls
+to foreign exported Mercury procedures unless the Mercury runtime has
+been initialised.  (In the case where the Mercury runtime has not been
+intialised the behaviour of these calls is undefined.)  Such programs
+must also ensure that any module specific initialisation is performed
+before calling foreign exported procedures in Mercury modules.
+Likewise, module specific finalisation may need to be performed after
+all calls to Mercury procedures have been made.
+
+   A stand-alone interface provides a mechanism by which non-Mercury
+programs may initialise (and shut down) the Mercury runtime plus a
+specified set of Mercury libraries.
+
+   A stand-alone interface is created by invoking the compiler with the
+`--generate-standalone-interface' option.  The set of Mercury libraries
+to be included in the stand-alone interface is given via one of the
+usual mechanisms for specifying what libraries to link against, e.g.
+the `--ml' and `--mld' options.  (See *note Libraries:: for further
+details).  The Mercury standard library is always included in this set.
+
+   In C grades the `--generate-standalone-interface' option causes the
+compiler to generate an object file that should be linked into the
+executable.  This object file contains two functions: `mercury_init()'
+and `mercury_terminate()'.  The compiler also generates a C header file
+that contains the prototypes of these functions.  (This header file may
+be included in C++ programs.)  The roles of the two functions are
+described below.
+
+* `mercury_init()'
+     Prototype:
+          void mercury_init(int ARGC, char **ARGV, void *STACKBOTTOM);
+
+     Initialise the Mercury runtime, standard library and any other
+     Mercury libraries that were specified when the stand-alone
+     interface was generated.  ARGC and ARGV are the argument count and
+     argument vector, as would be passed to the function `main()' in a
+     C program.  STACKBOTTOM is the address of the base of the stack.
+     In grades that use conservative garbage collection this is used to
+     tell the collector where to begin tracing.  This function must be
+     called before any Mercury procedures and must only be called once.
+     It is recommended that the value of STACKBOTTOM be set by passing
+     the address of a local variable in the `main()' function of a
+     program, for example:
+              int main(int argc, char **argv) {
+                  void *dummy;
+                  mercury_init(argc, argv, &dummy);
+                  ...
+              }
+     Note that the address of the stack base should be word aligned as
+     some garbage collectors rely upon this.  (This is why the type of
+     the dummy variable in the above example is `void *'.)
+
+
+* `mercury_terminate()'
+     Prototype:
+          int mercury_terminate(void);
+
+     Shut down the Mercury runtime.  The value returned by this
+     function is Mercury's exit status (as set by the predicate
+     io.set_exit_status/3).  This function will also invoke any
+     finalisers contained in the set of libraries for which the
+     stand-alone interface was generated.
+
+   The basename of the object and header file are provided as the
+argument of `--generate-standalone-interface' option.
+
+   Stand-alone interfaces are not currently supported for target
+languages other than C.  For an example of using a stand-alone
+interface see the `samples/c_interface/standalone_c' directory in the
+Mercury distribution.
+
+
+File: mercury_user_guide.info,  Node: Index,  Prev: Stand-alone Interfaces,  Up: Top
+
+Index
+*****
+
+ [index ]
+* Menu:
+
+* --allow-stubs:                         Language semantics options.
+                                                              (line  23)
+* --analyse-exceptions:                  High-level (HLDS -> HLDS) optimization options.
+                                                              (line 186)
+* --analyse-mm-tabling:                  High-level (HLDS -> HLDS) optimization options.
+                                                              (line 197)
+* --analyse-trail-usage:                 High-level (HLDS -> HLDS) optimization options.
+                                                              (line 191)
+* --analysis-repeat:                     Overall optimization options.
+                                                              (line  79)
+* --asm-labels <1>:                      LLDS back-end compilation model options.
+                                                              (line  23)
+* --asm-labels:                          Grades and grade components.
+                                                              (line  57)
+* --assume-gmake:                        Auxiliary output options.
+                                                              (line  14)
+* --auto-comments:                       Auxiliary output options.
+                                                              (line  47)
+* --benchmark-modes:                     Auxiliary output options.
+                                                              (line 152)
+* --benchmark-modes-repeat NUM:          Auxiliary output options.
+                                                              (line 157)
+* --binary-switch-size:                  Medium-level (HLDS -> LLDS) optimization options.
+                                                              (line  59)
+* --c-debug:                             Target code compilation options.
+                                                              (line  11)
+* --c-include-dir:                       Target code compilation options.
+                                                              (line  24)
+* --c-include-directory:                 Target code compilation options.
+                                                              (line  24)
+* --cc <1>:                              C compilers.         (line   6)
+* --cc:                                  Target code compilation options.
+                                                              (line  18)
+* --cflag:                               Target code compilation options.
+                                                              (line  60)
+* --cflags:                              Target code compilation options.
+                                                              (line  60)
+* --check-term:                          Termination analysis options.
+                                                              (line  23)
+* --check-termination:                   Termination analysis options.
+                                                              (line  23)
+* --checked-nondet-tailcalls:            Low-level (LLDS -> LLDS) optimization options.
+                                                              (line  33)
+* --chk-term:                            Termination analysis options.
+                                                              (line  23)
+* --common-data:                         Low-level (LLDS -> LLDS) optimization options.
+                                                              (line  10)
+* --common-struct:                       High-level (HLDS -> HLDS) optimization options.
+                                                              (line  52)
+* --compare-specialization N:            Code generation options.
+                                                              (line  50)
+* --compile-only:                        Output options.      (line 125)
+* --compile-to-c:                        Target options.      (line  39)
+* --config-file:                         Build system options.
+                                                              (line 100)
+* --constraint-propagation:              High-level (HLDS -> HLDS) optimization options.
+                                                              (line  55)
+* --control-granularity:                 High-level (HLDS -> HLDS) optimization options.
+                                                              (line 203)
+* --convert-to-mercury:                  Output options.      (line  97)
+* --coverage-test:                       Environment.         (line 239)
+* --coverage-test-if-exec=PROG:          Environment.         (line 252)
+* --cutstack-size:                       Environment.         (line 162)
+* --cutstack-size-kwords:                Environment.         (line 166)
+* --debug <1>:                           Optional features compilation model options.
+                                                              (line   8)
+* --debug:                               Quick overview.      (line  15)
+* --debug-det:                           Verbosity options.   (line  75)
+* --debug-determinism:                   Verbosity options.   (line  75)
+* --debug-intermodule-analysis:          Verbosity options.   (line 109)
+* --debug-liveness:                      Verbosity options.   (line 100)
+* --debug-make:                          Verbosity options.   (line 105)
+* --debug-modes:                         Verbosity options.   (line  61)
+* --debug-modes-pred-id:                 Verbosity options.   (line  69)
+* --debug-modes-verbose:                 Verbosity options.   (line  65)
+* --debug-opt:                           Verbosity options.   (line  79)
+* --debug-opt-pred-id:                   Verbosity options.   (line  83)
+* --debug-opt-pred-name:                 Verbosity options.   (line  89)
+* --debug-pd:                            Verbosity options.   (line  95)
+* --debug-threads (runtime option):      Environment.         (line 204)
+* --debug-types:                         Verbosity options.   (line  56)
+* --decl-debug:                          Optional features compilation model options.
+                                                              (line  15)
+* --deep-profiling <1>:                  Optional features compilation model options.
+                                                              (line  37)
+* --deep-profiling:                      Grades and grade components.
+                                                              (line  57)
+* --deforestation:                       High-level (HLDS -> HLDS) optimization options.
+                                                              (line 161)
+* --deforestation-depth-limit:           High-level (HLDS -> HLDS) optimization options.
+                                                              (line 168)
+* --deforestation-size-threshold:        High-level (HLDS -> HLDS) optimization options.
+                                                              (line 180)
+* --deforestation-vars-threshold:        High-level (HLDS -> HLDS) optimization options.
+                                                              (line 174)
+* --delay-constructs:                    High-level (HLDS -> HLDS) optimization options.
+                                                              (line 151)
+* --delay-death:                         Auxiliary output options.
+                                                              (line  31)
+* --demangle:                            Using mprof for time profiling.
+                                                              (line   9)
+* --dense-switch-req-density:            Medium-level (HLDS -> LLDS) optimization options.
+                                                              (line  22)
+* --dense-switch-size:                   Medium-level (HLDS -> LLDS) optimization options.
+                                                              (line  27)
+* --detstack-size:                       Running.             (line  17)
+* --detstack-size (runtime option):      Environment.         (line  92)
+* --detstack-size-kwords (runtime option): Environment.       (line  96)
+* --distance-granularity:                High-level (HLDS -> HLDS) optimization options.
+                                                              (line 213)
+* --dotnet-library-version:              Target options.      (line  25)
+* --dump-hlds:                           Auxiliary output options.
+                                                              (line  73)
+* --dump-hlds-file-suffix:               Auxiliary output options.
+                                                              (line 116)
+* --dump-hlds-options:                   Auxiliary output options.
+                                                              (line  83)
+* --dump-hlds-pred-id:                   Auxiliary output options.
+                                                              (line 104)
+* --dump-hlds-pred-name:                 Auxiliary output options.
+                                                              (line 110)
+* --dump-mlds:                           Auxiliary output options.
+                                                              (line 121)
+* --eliminate-local-variables:           MLDS backend (MLDS -> MLDS) optimization options.
+                                                              (line  22)
+* --enable-term:                         Termination analysis options.
+                                                              (line  12)
+* --enable-termination:                  Termination analysis options.
+                                                              (line  12)
+* --errorcheck-only:                     Output options.      (line 113)
+* --excess-assign:                       High-level (HLDS -> HLDS) optimization options.
+                                                              (line 142)
+* --experimental-complexity:             Optional features compilation model options.
+                                                              (line  51)
+* --extra-init-command:                  Build system options.
+                                                              (line  29)
+* --extra-initialization-functions:      Link options.        (line 151)
+* --extra-inits:                         Link options.        (line 151)
+* --fact-table-hash-percent-full:        Code generation options.
+                                                              (line  73)
+* --fact-table-max-array-size SIZE:      Code generation options.
+                                                              (line  65)
+* --feedback-file:                       Miscellaneous options.
+                                                              (line  33)
+* --filenames-from-stdin:                Miscellaneous options.
+                                                              (line  14)
+* --find-all-recompilation-reasons:      Verbosity options.   (line  43)
+* --flags:                               Build system options.
+                                                              (line  88)
+* --flags-file:                          Build system options.
+                                                              (line  88)
+* --follow-code:                         High-level (HLDS -> HLDS) optimization options.
+                                                              (line  66)
+* --fully-strict:                        Language semantics options.
+                                                              (line  19)
+* --garbage-collection:                  Optional features compilation model options.
+                                                              (line  59)
+* --gc <1>:                              Optional features compilation model options.
+                                                              (line  59)
+* --gc:                                  Grades and grade components.
+                                                              (line  57)
+* --gcc-global-registers <1>:            LLDS back-end compilation model options.
+                                                              (line   9)
+* --gcc-global-registers:                Grades and grade components.
+                                                              (line  57)
+* --gcc-non-local-gotos:                 LLDS back-end compilation model options.
+                                                              (line  16)
+* --gcc-nonlocal-gotos:                  Grades and grade components.
+                                                              (line  57)
+* --generate-bytecode:                   Auxiliary output options.
+                                                              (line  43)
+* --generate-dependencies:               Output options.      (line  23)
+* --generate-dependency-file:            Output options.      (line  29)
+* --generate-mmc-deps:                   Output options.      (line  46)
+* --generate-mmc-make-module-dependencies: Output options.    (line  46)
+* --generate-module-order:               Output options.      (line  33)
+* --generate-source-file-mapping:        Output options.      (line  13)
+* --generate-standalone-interface BASENAME: Output options.   (line  39)
+* --generate-trail-ops-inline:           MLDS backend (MLDS -> MLDS) optimization options.
+                                                              (line  26)
+* --genstack-size:                       Environment.         (line 153)
+* --genstack-size-kwords:                Environment.         (line 157)
+* --grade:                               Grades and grade components.
+                                                              (line   8)
+* --halt-at-syntax-error:                Warning options.     (line  19)
+* --halt-at-warn:                        Warning options.     (line  12)
+* --have-delay-slot:                     Code generation target options.
+                                                              (line  16)
+* --heap-size (runtime option):          Environment.         (line  83)
+* --heap-size-kwords (runtime option):   Environment.         (line  87)
+* --help <1>:                            Miscellaneous options.
+                                                              (line  10)
+* --help:                                Invocation.          (line   8)
+* --high-level-code <1>:                 MLDS back-end compilation model options.
+                                                              (line   7)
+* --high-level-code <2>:                 Grades and grade components.
+                                                              (line  57)
+* --high-level-code:                     Using mprof for time profiling.
+                                                              (line   9)
+* --high-level-data:                     MLDS back-end compilation model options.
+                                                              (line  12)
+* --higher-order-arg-limit:              High-level (HLDS -> HLDS) optimization options.
+                                                              (line 119)
+* --higher-order-size-limit:             High-level (HLDS -> HLDS) optimization options.
+                                                              (line 112)
+* --il:                                  Grades and grade components.
+                                                              (line  57)
+* --il-only:                             Target options.      (line  19)
+* --implicit-parallelism:                High-level (HLDS -> HLDS) optimization options.
+                                                              (line 218)
+* --imports-graph:                       Auxiliary output options.
+                                                              (line  66)
+* --infer-all:                           Language semantics options.
+                                                              (line  30)
+* --infer-det:                           Language semantics options.
+                                                              (line  45)
+* --infer-determinism:                   Language semantics options.
+                                                              (line  45)
+* --infer-modes:                         Language semantics options.
+                                                              (line  39)
+* --infer-types:                         Language semantics options.
+                                                              (line  34)
+* --inhibit-accumulator-warnings:        Warning options.     (line  25)
+* --inhibit-warnings:                    Warning options.     (line   8)
+* --init-file <1>:                       Link options.        (line 105)
+* --init-file:                           Using non-installed libraries with mmc --make.
+                                                              (line   6)
+* --init-file-directory:                 Link options.        (line 100)
+* --inline-alloc:                        Target code compilation options.
+                                                              (line  51)
+* --inline-compound-threshold:           High-level (HLDS -> HLDS) optimization options.
+                                                              (line  25)
+* --inline-simple:                       High-level (HLDS -> HLDS) optimization options.
+                                                              (line  13)
+* --inline-simple-threshold:             High-level (HLDS -> HLDS) optimization options.
+                                                              (line  30)
+* --inline-single-use:                   High-level (HLDS -> HLDS) optimization options.
+                                                              (line  22)
+* --inline-vars-threshold:               High-level (HLDS -> HLDS) optimization options.
+                                                              (line  40)
+* --inlining:                            High-level (HLDS -> HLDS) optimization options.
+                                                              (line  10)
+* --install-command:                     Build system options.
+                                                              (line  56)
+* --install-command-dir-command:         Build system options.
+                                                              (line  63)
+* --install-prefix:                      Build system options.
+                                                              (line  52)
+* --intermod-directory:                  Build system options.
+                                                              (line 124)
+* --intermod-inline-simple-threshold:    High-level (HLDS -> HLDS) optimization options.
+                                                              (line  33)
+* --intermod-opt:                        Overall optimization options.
+                                                              (line  44)
+* --intermod-unused-args:                High-level (HLDS -> HLDS) optimization options.
+                                                              (line  75)
+* --intermodule-analysis:                Overall optimization options.
+                                                              (line  74)
+* --intermodule-optimization <1>:        Overall optimization options.
+                                                              (line  44)
+* --intermodule-optimization <2>:        Using libraries with Mmake.
+                                                              (line  16)
+* --intermodule-optimization:            Building libraries with Mmake.
+                                                              (line  61)
+* --introduce-accumulators:              High-level (HLDS -> HLDS) optimization options.
+                                                              (line 128)
+* --java:                                Grades and grade components.
+                                                              (line  57)
+* --java-classpath:                      Target code compilation options.
+                                                              (line  83)
+* --java-compiler:                       Target code compilation options.
+                                                              (line  68)
+* --java-flag:                           Target code compilation options.
+                                                              (line  77)
+* --java-flags:                          Target code compilation options.
+                                                              (line  77)
+* --java-interpreter:                    Target code compilation options.
+                                                              (line  72)
+* --java-object-file-extension:          Target code compilation options.
+                                                              (line  87)
+* --java-only:                           Target options.      (line  45)
+* --javac:                               Target code compilation options.
+                                                              (line  68)
+* --jobs:                                Build system options.
+                                                              (line  44)
+* --keep-going:                          Build system options.
+                                                              (line  37)
+* --ld-flag:                             Link options.        (line  18)
+* --ld-flags:                            Link options.        (line  18)
+* --ld-libflag:                          Link options.        (line  27)
+* --ld-libflags:                         Link options.        (line  27)
+* --lib-linkage:                         Build system options.
+                                                              (line  81)
+* --libgrade:                            Build system options.
+                                                              (line  70)
+* --library:                             Link options.        (line  54)
+* --library-directory:                   Link options.        (line  35)
+* --line-numbers:                        Auxiliary output options.
+                                                              (line  56)
+* --link-executable-command:             Link options.        (line 158)
+* --link-object <1>:                     Link options.        (line  58)
+* --link-object:                         Using non-installed libraries with mmc --make.
+                                                              (line   6)
+* --link-shared-lib-command:             Link options.        (line 163)
+* --linkage:                             Link options.        (line 114)
+* --llds-optimize <1>:                   Low-level (LLDS -> LLDS) optimization options.
+                                                              (line  13)
+* --llds-optimize:                       Auxiliary output options.
+                                                              (line  51)
+* --local-constraint-propagation:        High-level (HLDS -> HLDS) optimization options.
+                                                              (line  60)
+* --lookup-switch-req-density:           Medium-level (HLDS -> LLDS) optimization options.
+                                                              (line  32)
+* --lookup-switch-size:                  Medium-level (HLDS -> LLDS) optimization options.
+                                                              (line  38)
+* --loop-invariants:                     High-level (HLDS -> HLDS) optimization options.
+                                                              (line  45)
+* --low-level-debug:                     Code generation options.
+                                                              (line   7)
+* --make <1>:                            Build system options.
+                                                              (line   8)
+* --make <2>:                            Output options.      (line  46)
+* --make <3>:                            Verbosity options.   (line  23)
+* --make <4>:                            Warning options.     (line 114)
+* --make:                                Using Mmake.         (line 326)
+* --make-int <1>:                        Output options.      (line  54)
+* --make-int <2>:                        Using mmc.           (line  59)
+* --make-int:                            Filenames.           (line  27)
+* --make-interface <1>:                  Output options.      (line  54)
+* --make-interface:                      Filenames.           (line  27)
+* --make-opt-int <1>:                    Output options.      (line  72)
+* --make-opt-int:                        Using mmc.           (line  64)
+* --make-optimization-interface <1>:     Output options.      (line  72)
+* --make-optimization-interface:         Filenames.           (line  27)
+* --make-priv-int <1>:                   Output options.      (line  66)
+* --make-priv-int:                       Using mmc.           (line  59)
+* --make-priv-interface:                 Filenames.           (line  27)
+* --make-private-interface <1>:          Output options.      (line  66)
+* --make-private-interface:              Filenames.           (line  27)
+* --make-short-int <1>:                  Output options.      (line  60)
+* --make-short-int <2>:                  Using mmc.           (line  59)
+* --make-short-int:                      Filenames.           (line  27)
+* --make-short-interface <1>:            Output options.      (line  60)
+* --make-short-interface:                Filenames.           (line  27)
+* --make-trans-opt <1>:                  Output options.      (line  78)
+* --make-trans-opt:                      Using mmc.           (line  70)
+* --make-trans-opt-int:                  Filenames.           (line  27)
+* --make-transitive-optimization-interface <1>: Output options.
+                                                              (line  78)
+* --make-transitive-optimization-interface: Filenames.        (line  27)
+* --make-xml-documentation:              Output options.      (line  89)
+* --max-jump-table-size N:               Code generation options.
+                                                              (line  41)
+* --maybe-thread-safe:                   Optional features compilation model options.
+                                                              (line  79)
+* --mdb-err (runtime option):            Environment.         (line 193)
+* --mdb-in (runtime option):             Environment.         (line 181)
+* --mdb-in-window (mdb option):          Mercury debugger invocation.
+                                                              (line  62)
+* --mdb-out (runtime option):            Environment.         (line 188)
+* --mdb-tty (runtime option):            Environment.         (line 199)
+* --mem-usage-report:                    Environment.         (line 214)
+* --memory-profiling <1>:                Optional features compilation model options.
+                                                              (line  29)
+* --memory-profiling:                    Grades and grade components.
+                                                              (line  57)
+* --mercury-config-dir:                  Build system options.
+                                                              (line 114)
+* --mercury-configuration-directory:     Build system options.
+                                                              (line 114)
+* --mercury-library <1>:                 Link options.        (line  82)
+* --mercury-library:                     Using installed libraries with mmc --make.
+                                                              (line   6)
+* --mercury-library-directory <1>:       Link options.        (line  73)
+* --mercury-library-directory:           Using installed libraries with mmc --make.
+                                                              (line   6)
+* --mercury-linkage:                     Link options.        (line 119)
+* --mercury-standard-library-directory:  Link options.        (line  88)
+* --mercury-stdlib-dir:                  Link options.        (line  88)
+* --middle-rec:                          Medium-level (HLDS -> LLDS) optimization options.
+                                                              (line  69)
+* --ml <1>:                              Link options.        (line  82)
+* --ml:                                  Using installed libraries with mmc --make.
+                                                              (line   6)
+* --mld <1>:                             Link options.        (line  73)
+* --mld:                                 Using installed libraries with mmc --make.
+                                                              (line   6)
+* --mlds-optimize:                       MLDS backend (MLDS -> MLDS) optimization options.
+                                                              (line   9)
+* --mode-constraints:                    Auxiliary output options.
+                                                              (line 137)
+* --no-:                                 Invocation overview. (line  22)
+* --no-allow-undefined:                  Link options.        (line 138)
+* --no-ansi-c:                           Target code compilation options.
+                                                              (line  45)
+* --no-asm-labels <1>:                   LLDS back-end compilation model options.
+                                                              (line  23)
+* --no-asm-labels:                       Grades and grade components.
+                                                              (line  57)
+* --no-assume-gmake:                     Auxiliary output options.
+                                                              (line  14)
+* --no-c-optimize:                       Target code compilation options.
+                                                              (line  41)
+* --no-common-data:                      Low-level (LLDS -> LLDS) optimization options.
+                                                              (line  10)
+* --no-common-struct:                    High-level (HLDS -> HLDS) optimization options.
+                                                              (line  52)
+* --no-delay-death:                      Auxiliary output options.
+                                                              (line  31)
+* --no-demangle <1>:                     Link options.        (line 129)
+* --no-demangle:                         Using mprof for time profiling.
+                                                              (line   9)
+* --no-eliminate-local-variables:        MLDS backend (MLDS -> MLDS) optimization options.
+                                                              (line  22)
+* --no-emit-c-loops:                     Output-level (LLDS -> C) optimization options.
+                                                              (line  10)
+* --no-follow-code:                      High-level (HLDS -> HLDS) optimization options.
+                                                              (line  66)
+* --no-gcc-global-registers <1>:         LLDS back-end compilation model options.
+                                                              (line   9)
+* --no-gcc-global-registers:             Grades and grade components.
+                                                              (line  57)
+* --no-gcc-non-local-gotos:              LLDS back-end compilation model options.
+                                                              (line  16)
+* --no-gcc-nonlocal-gotos:               Grades and grade components.
+                                                              (line  57)
+* --no-generate-trail-ops-inline:        MLDS backend (MLDS -> MLDS) optimization options.
+                                                              (line  26)
+* --no-high-level-code:                  Grades and grade components.
+                                                              (line  57)
+* --no-infer-det:                        Language semantics options.
+                                                              (line  45)
+* --no-infer-determinism:                Language semantics options.
+                                                              (line  45)
+* --no-inline-builtins:                  High-level (HLDS -> HLDS) optimization options.
+                                                              (line  17)
+* --no-inline-simple:                    High-level (HLDS -> HLDS) optimization options.
+                                                              (line  13)
+* --no-inline-single-use:                High-level (HLDS -> HLDS) optimization options.
+                                                              (line  22)
+* --no-inlining:                         High-level (HLDS -> HLDS) optimization options.
+                                                              (line  10)
+* --no-libgrade:                         Build system options.
+                                                              (line  75)
+* --no-line-numbers:                     Auxiliary output options.
+                                                              (line  56)
+* --no-llds-optimize <1>:                Low-level (LLDS -> LLDS) optimization options.
+                                                              (line  13)
+* --no-llds-optimize:                    Auxiliary output options.
+                                                              (line  51)
+* --no-local-thread-engine-base:         Output-level (LLDS -> C) optimization options.
+                                                              (line  28)
+* --no-main:                             Link options.        (line 133)
+* --no-mercury-standard-library-directory: Link options.      (line  95)
+* --no-mercury-stdlib-dir:               Link options.        (line  95)
+* --no-middle-rec:                       Medium-level (HLDS -> LLDS) optimization options.
+                                                              (line  69)
+* --no-mlds-optimize:                    MLDS backend (MLDS -> MLDS) optimization options.
+                                                              (line   9)
+* --no-optimize-delay-slot:              Low-level (LLDS -> LLDS) optimization options.
+                                                              (line  60)
+* --no-optimize-frames:                  Low-level (LLDS -> LLDS) optimization options.
+                                                              (line  56)
+* --no-optimize-fulljumps:               Low-level (LLDS -> LLDS) optimization options.
+                                                              (line  25)
+* --no-optimize-initializations:         MLDS backend (MLDS -> MLDS) optimization options.
+                                                              (line  17)
+* --no-optimize-jumps:                   Low-level (LLDS -> LLDS) optimization options.
+                                                              (line  21)
+* --no-optimize-labels:                  Low-level (LLDS -> LLDS) optimization options.
+                                                              (line  44)
+* --no-optimize-peep:                    Low-level (LLDS -> LLDS) optimization options.
+                                                              (line  17)
+* --no-optimize-tailcalls:               MLDS backend (MLDS -> MLDS) optimization options.
+                                                              (line  13)
+* --no-read-opt-files-transitively:      Overall optimization options.
+                                                              (line  60)
+* --no-reclaim-heap-on-failure:          Code generation options.
+                                                              (line  37)
+* --no-reclaim-heap-on-nondet-failure:   Code generation options.
+                                                              (line  29)
+* --no-reclaim-heap-on-semidet-failure:  Code generation options.
+                                                              (line  33)
+* --no-reorder-conj:                     Language semantics options.
+                                                              (line  10)
+* --no-reorder-disj:                     Language semantics options.
+                                                              (line  15)
+* --no-should-pretest-equality:          Code generation options.
+                                                              (line  59)
+* --no-simple-neg:                       Medium-level (HLDS -> LLDS) optimization options.
+                                                              (line  73)
+* --no-smart-indexing:                   Medium-level (HLDS -> LLDS) optimization options.
+                                                              (line  17)
+* --no-static-ground-terms:              Medium-level (HLDS -> LLDS) optimization options.
+                                                              (line  10)
+* --no-strip:                            Link options.        (line 125)
+* --no-support-ms-clr:                   Target options.      (line  30)
+* --no-trad-passes <1>:                  Code generation options.
+                                                              (line  22)
+* --no-trad-passes:                      Verbosity options.   (line  51)
+* --no-type-layout:                      Developer compilation model options.
+                                                              (line  50)
+* --no-use-atomic-cells:                 Medium-level (HLDS -> LLDS) optimization options.
+                                                              (line  64)
+* --no-use-readline:                     Link options.        (line 142)
+* --no-verbose-make:                     Verbosity options.   (line  23)
+* --no-warn-det-decls-too-lax:           Warning options.     (line  42)
+* --no-warn-inferred-erroneous:          Warning options.     (line  47)
+* --no-warn-insts-without-matching-type: Warning options.     (line  52)
+* --no-warn-known-bad-format-calls:      Warning options.     (line 157)
+* --no-warn-missing-det-decls:           Warning options.     (line  34)
+* --no-warn-missing-module-name:         Warning options.     (line 100)
+* --no-warn-non-term-special-preds:      Warning options.     (line 149)
+* --no-warn-nothing-exported:            Warning options.     (line  61)
+* --no-warn-obsolete:                    Warning options.     (line 169)
+* --no-warn-simple-code:                 Warning options.     (line  90)
+* --no-warn-singleton-variables:         Warning options.     (line  30)
+* --no-warn-smart-recompilation:         Warning options.     (line 110)
+* --no-warn-stubs:                       Warning options.     (line 134)
+* --no-warn-table-with-inline:           Warning options.     (line 144)
+* --no-warn-target-code:                 Warning options.     (line 124)
+* --no-warn-undefined-options-variables: Warning options.     (line 114)
+* --no-warn-unused-imports:              Warning options.     (line  57)
+* --no-warn-up-to-date:                  Warning options.     (line 129)
+* --no-warn-wrong-module-name:           Warning options.     (line 105)
+* --nondetstack-size:                    Running.             (line  17)
+* --nondetstack-size (runtime option):   Environment.         (line 101)
+* --nondetstack-size-kwords (runtime option): Environment.    (line 105)
+* --num-real-f-regs:                     Code generation target options.
+                                                              (line  26)
+* --num-real-f-temps:                    Code generation target options.
+                                                              (line  37)
+* --num-real-r-regs:                     Code generation target options.
+                                                              (line  21)
+* --num-real-r-temps:                    Code generation target options.
+                                                              (line  31)
+* --num-tag-bits:                        Developer compilation model options.
+                                                              (line  19)
+* --opt-level:                           Overall optimization options.
+                                                              (line   9)
+* --opt-space:                           Overall optimization options.
+                                                              (line  38)
+* --optimization-level:                  Overall optimization options.
+                                                              (line   9)
+* --optimize-constant-propagation:       High-level (HLDS -> HLDS) optimization options.
+                                                              (line 124)
+* --optimize-constructor-last-call:      High-level (HLDS -> HLDS) optimization options.
+                                                              (line 133)
+* --optimize-dead-procs:                 High-level (HLDS -> HLDS) optimization options.
+                                                              (line 138)
+* --optimize-delay-slot:                 Low-level (LLDS -> LLDS) optimization options.
+                                                              (line  60)
+* --optimize-duplicate-calls:            High-level (HLDS -> HLDS) optimization options.
+                                                              (line 146)
+* --optimize-dups:                       Low-level (LLDS -> LLDS) optimization options.
+                                                              (line  48)
+* --optimize-frames:                     Low-level (LLDS -> LLDS) optimization options.
+                                                              (line  56)
+* --optimize-fulljumps:                  Low-level (LLDS -> LLDS) optimization options.
+                                                              (line  25)
+* --optimize-higher-order:               High-level (HLDS -> HLDS) optimization options.
+                                                              (line  95)
+* --optimize-initializations:            MLDS backend (MLDS -> MLDS) optimization options.
+                                                              (line  17)
+* --optimize-jumps:                      Low-level (LLDS -> LLDS) optimization options.
+                                                              (line  21)
+* --optimize-labels:                     Low-level (LLDS -> LLDS) optimization options.
+                                                              (line  44)
+* --optimize-peep:                       Low-level (LLDS -> LLDS) optimization options.
+                                                              (line  17)
+* --optimize-proc-dups:                  Low-level (LLDS -> LLDS) optimization options.
+                                                              (line  52)
+* --optimize-reassign:                   Low-level (LLDS -> LLDS) optimization options.
+                                                              (line  64)
+* --optimize-repeat:                     Low-level (LLDS -> LLDS) optimization options.
+                                                              (line  69)
+* --optimize-saved-vars:                 High-level (HLDS -> HLDS) optimization options.
+                                                              (line 156)
+* --optimize-space:                      Overall optimization options.
+                                                              (line  38)
+* --optimize-tailcalls:                  MLDS backend (MLDS -> MLDS) optimization options.
+                                                              (line  13)
+* --optimize-unused-args:                High-level (HLDS -> HLDS) optimization options.
+                                                              (line  70)
+* --options-file:                        Build system options.
+                                                              (line  93)
+* --options-search-directory:            Build system options.
+                                                              (line 108)
+* --output-cc:                           Output options.      (line 149)
+* --output-compile-error-lines:          Verbosity options.   (line  28)
+* --output-file:                         Link options.        (line   9)
+* --output-grade-string:                 Output options.      (line 130)
+* --output-libgrades:                    Output options.      (line 144)
+* --output-link-command:                 Output options.      (line 135)
+* --output-shared-lib-link-command:      Output options.      (line 139)
+* --parallelism-target:                  High-level (HLDS -> HLDS) optimization options.
+                                                              (line 208)
+* --pessimize-tailcalls:                 Low-level (LLDS -> LLDS) optimization options.
+                                                              (line  29)
+* --pic:                                 Code generation options.
+                                                              (line  16)
+* --pic-reg:                             LLDS back-end compilation model options.
+                                                              (line  29)
+* --pnegstack-size:                      Environment.         (line 171)
+* --pnegstack-size-kwords:               Environment.         (line 175)
+* --pre-link-command:                    Build system options.
+                                                              (line  21)
+* --pretty-print:                        Output options.      (line  97)
+* --procs-per-c-function:                Output-level (LLDS -> C) optimization options.
+                                                              (line  19)
+* --profile-optimized:                   Auxiliary output options.
+                                                              (line  28)
+* --profiling <1>:                       Optional features compilation model options.
+                                                              (line  22)
+* --profiling:                           Grades and grade components.
+                                                              (line  57)
+* --program-in-window (mdb option):      Mercury debugger invocation.
+                                                              (line  67)
+* --rebuild:                             Build system options.
+                                                              (line  16)
+* --reclaim-heap-on-failure:             Code generation options.
+                                                              (line  37)
+* --reclaim-heap-on-nondet-failure:      Code generation options.
+                                                              (line  29)
+* --reclaim-heap-on-semidet-failure:     Code generation options.
+                                                              (line  33)
+* --record-term-sizes-as-cells <1>:      Optional features compilation model options.
+                                                              (line  47)
+* --record-term-sizes-as-cells:          Grades and grade components.
+                                                              (line  57)
+* --record-term-sizes-as-words <1>:      Optional features compilation model options.
+                                                              (line  43)
+* --record-term-sizes-as-words:          Grades and grade components.
+                                                              (line  57)
+* --reorder-conj:                        Language semantics options.
+                                                              (line  10)
+* --reorder-disj:                        Language semantics options.
+                                                              (line  15)
+* --reserve-tag:                         Developer compilation model options.
+                                                              (line  43)
+* --reserved-addresses:                  Developer compilation model options.
+                                                              (line  26)
+* --runtime-flags:                       Link options.        (line 146)
+* --runtime-library-directory:           Link options.        (line  41)
+* --search-directory:                    Build system options.
+                                                              (line 119)
+* --search-lib-files-dir <1>:            Link options.        (line  63)
+* --search-lib-files-dir:                Using non-installed libraries with mmc --make.
+                                                              (line   6)
+* --search-library-files-directory:      Link options.        (line  63)
+* --shlib-linker-install-name-path:      Link options.        (line  46)
+* --should-pretest-equality:             Code generation options.
+                                                              (line  59)
+* --show-dependency-graph:               Auxiliary output options.
+                                                              (line  62)
+* --simple-mode-constraints:             Auxiliary output options.
+                                                              (line 144)
+* --simple-neg:                          Medium-level (HLDS -> LLDS) optimization options.
+                                                              (line  73)
+* --single-prec-float:                   Optional features compilation model options.
+                                                              (line  88)
+* --small-detstack-size (runtime option): Environment.        (line 110)
+* --small-detstack-size-kwords (runtime option): Environment. (line 116)
+* --small-nondetstack-size (runtime option): Environment.     (line 122)
+* --small-nondetstack-size-kwords (runtime option): Environment.
+                                                              (line 128)
+* --smart-indexing:                      Medium-level (HLDS -> LLDS) optimization options.
+                                                              (line  17)
+* --smart-recompilation <1>:             Auxiliary output options.
+                                                              (line   7)
+* --smart-recompilation:                 Filenames.           (line  49)
+* --solutions-heap-size (runtime option): Environment.        (line 135)
+* --solutions-heap-size-kwords (runtime option): Environment. (line 139)
+* --stack-trace-higher-order:            Auxiliary output options.
+                                                              (line  38)
+* --static-ground-terms:                 Medium-level (HLDS -> LLDS) optimization options.
+                                                              (line  10)
+* --statistics:                          Verbosity options.   (line  49)
+* --string-switch-size:                  Medium-level (HLDS -> LLDS) optimization options.
+                                                              (line  44)
+* --support-rotor-clr:                   Target options.      (line  34)
+* --tabling-statistics:                  Environment.         (line 210)
+* --tag-switch-size:                     Medium-level (HLDS -> LLDS) optimization options.
+                                                              (line  49)
+* --tags:                                Developer compilation model options.
+                                                              (line  13)
+* --target:                              Grades and grade components.
+                                                              (line  57)
+* --target-code-only:                    Output options.      (line 118)
+* --target-debug:                        Target code compilation options.
+                                                              (line  11)
+* --term-err-limit:                      Termination analysis options.
+                                                              (line  59)
+* --term-path-limit:                     Termination analysis options.
+                                                              (line  64)
+* --term-single-arg LIMIT:               Termination analysis options.
+                                                              (line  42)
+* --termination-error-limit:             Termination analysis options.
+                                                              (line  59)
+* --termination-norm:                    Termination analysis options.
+                                                              (line  49)
+* --termination-path-limit:              Termination analysis options.
+                                                              (line  64)
+* --termination-single-argument-analysis: Termination analysis options.
+                                                              (line  42)
+* --time-profiling:                      Optional features compilation model options.
+                                                              (line  22)
+* --trace-count:                         Environment.         (line 221)
+* --trace-count-if-exec=PROG:            Environment.         (line 244)
+* --trace-count-output-file=FILENAME:    Environment.         (line 260)
+* --trace-count-summary-file=BASENAME:   Environment.         (line 264)
+* --trace-count-summary-max=N:           Environment.         (line 268)
+* --trace-init-file:                     Link options.        (line 109)
+* --trace-level LEVEL:                   Auxiliary output options.
+                                                              (line  20)
+* --trace-optimized:                     Auxiliary output options.
+                                                              (line  25)
+* --trad-passes <1>:                     Code generation options.
+                                                              (line  22)
+* --trad-passes:                         Verbosity options.   (line  51)
+* --trail-size:                          Environment.         (line 144)
+* --trail-size-kwords:                   Environment.         (line 148)
+* --trans-intermod-opt <1>:              Overall optimization options.
+                                                              (line  50)
+* --trans-intermod-opt:                  Building libraries with Mmake.
+                                                              (line  65)
+* --transitive-intermodule-optimization <1>: Overall optimization options.
+                                                              (line  50)
+* --transitive-intermodule-optimization: Using mmc.           (line  67)
+* --try-switch-size:                     Medium-level (HLDS -> LLDS) optimization options.
+                                                              (line  54)
+* --tty (mdb option):                    Mercury debugger invocation.
+                                                              (line  53)
+* --type-inference-iteration-limit:      Language semantics options.
+                                                              (line  50)
+* --type-layout:                         Developer compilation model options.
+                                                              (line  50)
+* --type-specialization:                 High-level (HLDS -> HLDS) optimization options.
+                                                              (line 100)
+* --typecheck-only:                      Output options.      (line 104)
+* --unneeded-code:                       High-level (HLDS -> HLDS) optimization options.
+                                                              (line  81)
+* --unneeded-code-copy-limit:            High-level (HLDS -> HLDS) optimization options.
+                                                              (line  87)
+* --use-atomic-cells:                    Medium-level (HLDS -> LLDS) optimization options.
+                                                              (line  64)
+* --use-grade-subdirs:                   Build system options.
+                                                              (line 139)
+* --use-local-vars:                      Low-level (LLDS -> LLDS) optimization options.
+                                                              (line  39)
+* --use-macro-for-redo-fail:             Output-level (LLDS -> C) optimization options.
+                                                              (line  14)
+* --use-opt-files:                       Overall optimization options.
+                                                              (line  64)
+* --use-search-directories-for-intermod: Build system options.
+                                                              (line 129)
+* --use-subdirs <1>:                     Build system options.
+                                                              (line 134)
+* --use-subdirs:                         Filenames.           (line  14)
+* --use-trail:                           Optional features compilation model options.
+                                                              (line  73)
+* --use-trans-opt-files:                 Overall optimization options.
+                                                              (line  69)
+* --user-guided-type-specialization:     High-level (HLDS -> HLDS) optimization options.
+                                                              (line 105)
+* --verb-check-term:                     Termination analysis options.
+                                                              (line  36)
+* --verb-chk-term:                       Termination analysis options.
+                                                              (line  36)
+* --verbose:                             Verbosity options.   (line   8)
+* --verbose-check-termination:           Termination analysis options.
+                                                              (line  36)
+* --verbose-commands:                    Verbosity options.   (line  33)
+* --verbose-dump-mlds:                   Auxiliary output options.
+                                                              (line 131)
+* --verbose-error-messages:              Verbosity options.   (line  18)
+* --verbose-recompilation:               Verbosity options.   (line  38)
+* --very-verbose:                        Verbosity options.   (line  13)
+* --warn-dead-procs:                     Warning options.     (line 140)
+* --warn-det-decls-too-lax:              Warning options.     (line  42)
+* --warn-duplicate-calls:                Warning options.     (line  95)
+* --warn-inferred-erroneous:             Warning options.     (line  47)
+* --warn-insts-without-matching-type:    Warning options.     (line  52)
+* --warn-interface-imports:              Warning options.     (line  70)
+* --warn-missing-det-decls:              Warning options.     (line  34)
+* --warn-missing-module-name:            Warning options.     (line 100)
+* --warn-missing-opt-files:              Warning options.     (line  75)
+* --warn-missing-trans-opt-files:        Warning options.     (line  79)
+* --warn-non-stratification:             Warning options.     (line  83)
+* --warn-non-tail-recursion:             Warning options.     (line 119)
+* --warn-nothing-exported:               Warning options.     (line  61)
+* --warn-simple-code:                    Warning options.     (line  90)
+* --warn-singleton-variables:            Warning options.     (line  30)
+* --warn-smart-recompilation:            Warning options.     (line 110)
+* --warn-stubs:                          Warning options.     (line 134)
+* --warn-unknown-format-calls:           Warning options.     (line 163)
+* --warn-unused-args:                    Warning options.     (line  66)
+* --warn-unused-imports:                 Warning options.     (line  57)
+* --warn-up-to-date:                     Warning options.     (line 129)
+* --warn-wrong-module-name:              Warning options.     (line 105)
+* --window (mdb option):                 Mercury debugger invocation.
+                                                              (line  62)
+* --window-command (mdb option):         Mercury debugger invocation.
+                                                              (line  75)
+* -?:                                    Miscellaneous options.
+                                                              (line  10)
+* -c:                                    Output options.      (line 125)
+* -C:                                    Output options.      (line 118)
+* -c:                                    Using mmc.           (line  82)
+* -C (runtime option):                   Environment.         (line  37)
+* -d:                                    Auxiliary output options.
+                                                              (line  73)
+* -D (runtime option):                   Environment.         (line  45)
+* -e:                                    Output options.      (line 113)
+* -E:                                    Verbosity options.   (line  18)
+* -e (runtime option):                   Environment.         (line 193)
+* -fpic:                                 LLDS back-end compilation model options.
+                                                              (line  29)
+* -h:                                    Miscellaneous options.
+                                                              (line  10)
+* -H:                                    MLDS back-end compilation model options.
+                                                              (line   7)
+* -I:                                    Build system options.
+                                                              (line 119)
+* -i:                                    Output options.      (line  54)
+* -i (runtime option):                   Environment.         (line 181)
+* -j <n>:                                Build system options.
+                                                              (line  44)
+* -k:                                    Build system options.
+                                                              (line  37)
+* -l:                                    Link options.        (line  54)
+* -L:                                    Link options.        (line  35)
+* -m:                                    Build system options.
+                                                              (line   8)
+* -M:                                    Output options.      (line  23)
+* -m (runtime option):                   Environment.         (line 199)
+* -N:                                    Verbosity options.   (line  61)
+* -n-:                                   Auxiliary output options.
+                                                              (line  56)
+* -o:                                    Link options.        (line   9)
+* -O:                                    Overall optimization options.
+                                                              (line   9)
+* -o:                                    Using mmc.           (line  79)
+* -o (runtime option):                   Environment.         (line 188)
+* -P:                                    Output options.      (line  97)
+* -P (runtime option):                   Environment.         (line  57)
+* -p (runtime option):                   Environment.         (line  52)
+* -R:                                    Link options.        (line  41)
+* -r:                                    Build system options.
+                                                              (line  16)
+* -s:                                    Grades and grade components.
+                                                              (line   8)
+* -S:                                    Verbosity options.   (line  49)
+* -T:                                    Verbosity options.   (line  56)
+* -T (runtime option):                   Environment.         (line  62)
+* -V:                                    Verbosity options.   (line  13)
+* -v:                                    Verbosity options.   (line   8)
+* -w:                                    Warning options.     (line   8)
+* .agc (grade modifier):                 Grades and grade components.
+                                                              (line  14)
+* .debug (grade modifier):               Grades and grade components.
+                                                              (line  14)
+* .decldebug (grade modifier):           Grades and grade components.
+                                                              (line  14)
+* .gc (grade modifier):                  Grades and grade components.
+                                                              (line  14)
+* .mdbrc:                                Mercury debugger invocation.
+                                                              (line  41)
+* .memprof (grade modifier):             Grades and grade components.
+                                                              (line  14)
+* .mps (grade modifier):                 Grades and grade components.
+                                                              (line  14)
+* .par (grade modifier):                 Grades and grade components.
+                                                              (line  14)
+* .prof (grade modifier):                Grades and grade components.
+                                                              (line  14)
+* .profdeep (grade modifier):            Grades and grade components.
+                                                              (line  14)
+* .rt (grade modifier):                  Grades and grade components.
+                                                              (line  14)
+* .spf (grade modifier):                 Grades and grade components.
+                                                              (line  14)
+* .tr (grade modifier):                  Grades and grade components.
+                                                              (line  14)
+* /debug:                                Target code compilation options.
+                                                              (line  11)
+* ABI (Application Binary Interface):    Compilation model options.
+                                                              (line   6)
+* Accumulator introduction:              High-level (HLDS -> HLDS) optimization options.
+                                                              (line 128)
+* Accurate garbage collection:           Optional features compilation model options.
+                                                              (line  59)
+* Addresses, reserved:                   Developer compilation model options.
+                                                              (line  26)
+* agc (grade modifier):                  Grades and grade components.
+                                                              (line  14)
+* alias (mdb command):                   Parameter commands.  (line 282)
+* all_class_decls (mdb command):         Developer commands.  (line 167)
+* all_procedures (mdb command):          Developer commands.  (line 178)
+* all_regs (mdb command):                Developer commands.  (line  69)
+* all_type_ctors (mdb command):          Developer commands.  (line 141)
+* Allocation profiling <1>:              Optional features compilation model options.
+                                                              (line  29)
+* Allocation profiling <2>:              Using mprof for memory profiling.
+                                                              (line   6)
+* Allocation profiling <3>:              Creating profiles.   (line   6)
+* Allocation profiling <4>:              Building profiled applications.
+                                                              (line   6)
+* Allocation profiling:                  Profiling.           (line   6)
+* ambiguity (mdb command):               Developer commands.  (line 193)
+* Application Binary Interface (ABI):    Compilation model options.
+                                                              (line   6)
+* AR:                                    Building libraries with Mmake.
+                                                              (line  44)
+* ARFLAGS:                               Building libraries with Mmake.
+                                                              (line  44)
+* asm_fast (compilation grade):          Grades and grade components.
+                                                              (line  14)
+* asm_jump (compilation grade):          Grades and grade components.
+                                                              (line  14)
+* Automatic garbage collection:          Optional features compilation model options.
+                                                              (line  59)
+* Backtrackable destructive update:      Optional features compilation model options.
+                                                              (line  73)
+* Boehm (et al) conservative garbage collector: Optional features compilation model options.
+                                                              (line  59)
+* break (mdb command):                   Breakpoint commands. (line   9)
+* break points:                          Mercury debugger concepts.
+                                                              (line  10)
+* break_print (mdb command):             Breakpoint commands. (line 263)
+* Breakpoints:                           Breakpoint commands. (line   7)
+* browse (mdb command):                  Browsing commands.   (line  61)
+* Building profiled applications:        Building profiled applications.
+                                                              (line   6)
+* Building programs:                     Using Mmake.         (line   6)
+* C compiler:                            Target code compilation options.
+                                                              (line  18)
+* C compiler options:                    Target code compilation options.
+                                                              (line  60)
+* C compilers:                           C compilers.         (line   6)
+* C debugging:                           Target code compilation options.
+                                                              (line  32)
+* c2init:                                Using mmc.           (line  92)
+* C2INITARGS:                            Using Mmake.         (line 239)
+* C2INITFLAGS:                           Using Mmake.         (line 230)
+* call (trace event):                    Tracing of Mercury programs.
+                                                              (line  12)
+* Call graph profile:                    Using mprof for time profiling.
+                                                              (line  19)
+* cc_query (mdb command):                Interactive query commands.
+                                                              (line   9)
+* CFLAGS:                                Using Mmake.         (line 173)
+* class_decl (mdb command):              Developer commands.  (line 155)
+* classpath:                             Target code compilation options.
+                                                              (line  83)
+* Clauses, procedures without:           Language semantics options.
+                                                              (line  23)
+* clear_histogram (mdb command):         Experimental commands.
+                                                              (line  21)
+* Code generation options:               Code generation options.
+                                                              (line   6)
+* Compilation grades:                    Compilation model options.
+                                                              (line   6)
+* Compilation model options:             Compilation model options.
+                                                              (line   6)
+* Compilation models:                    Compilation model options.
+                                                              (line   6)
+* Compilation speed:                     Overall optimization options.
+                                                              (line   9)
+* cond (trace event):                    Tracing of Mercury programs.
+                                                              (line  70)
+* condition (mdb command):               Breakpoint commands. (line 204)
+* Conservative garbage collection:       Optional features compilation model options.
+                                                              (line  59)
+* Constraint solving:                    Optional features compilation model options.
+                                                              (line  73)
+* consumer (mdb command):                Developer commands.  (line  31)
+* context (mdb command):                 Parameter commands.  (line  95)
+* continue (mdb command):                Forward movement commands.
+                                                              (line 146)
+* control-C:                             Mercury debugger concepts.
+                                                              (line  63)
+* Creating profiles:                     Creating profiles.   (line   6)
+* Cross-compiling <1>:                   Code generation target options.
+                                                              (line   6)
+* Cross-compiling:                       Developer compilation model options.
+                                                              (line   6)
+* Cross-module optimization:             Overall optimization options.
+                                                              (line   9)
+* Cross-module optimization, transitive: Overall optimization options.
+                                                              (line  50)
+* current (mdb command):                 Browsing commands.   (line 190)
+* Cut stack size:                        Environment.         (line 162)
+* cut_stack (mdb command):               Developer commands.  (line  39)
+* Data representation <1>:               Developer compilation model options.
+                                                              (line  13)
+* Data representation:                   Optional features compilation model options.
+                                                              (line  88)
+* Dead function elimination:             High-level (HLDS -> HLDS) optimization options.
+                                                              (line 138)
+* Dead predicate elimination:            High-level (HLDS -> HLDS) optimization options.
+                                                              (line 138)
+* Dead procedure elimination:            High-level (HLDS -> HLDS) optimization options.
+                                                              (line 138)
+* debug (grade modifier):                Grades and grade components.
+                                                              (line  14)
+* debug_vars (mdb command):              Developer commands.  (line  72)
+* debugger break points:                 Mercury debugger concepts.
+                                                              (line  10)
+* debugger interrupt:                    Mercury debugger concepts.
+                                                              (line  63)
+* debugger print level:                  Mercury debugger concepts.
+                                                              (line  68)
+* debugger procedure specification:      Mercury debugger concepts.
+                                                              (line 148)
+* debugger trace events:                 Tracing of Mercury programs.
+                                                              (line  12)
+* debugger trace level:                  Preparing a program for debugging.
+                                                              (line  44)
+* Debugging <1>:                         Optional features compilation model options.
+                                                              (line   8)
+* Debugging:                             Debugging.           (line   6)
+* Debugging the generated C code:        Target code compilation options.
+                                                              (line  32)
+* Debugging Threads:                     Environment.         (line 204)
+* decldebug (grade modifier):            Grades and grade components.
+                                                              (line  14)
+* Deep profiling <1>:                    Optional features compilation model options.
+                                                              (line  37)
+* Deep profiling <2>:                    Using mdprof.        (line   6)
+* Deep profiling <3>:                    Creating profiles.   (line   6)
+* Deep profiling <4>:                    Building profiled applications.
+                                                              (line   6)
+* Deep profiling:                        Profiling.           (line   6)
+* deep tracing:                          Preparing a program for debugging.
+                                                              (line  44)
+* delete (mdb command):                  Breakpoint commands. (line 311)
+* dependencies:                          Output options.      (line  23)
+* depth (mdb command):                   Parameter commands.  (line 241)
+* Destructive update, backtrackable:     Optional features compilation model options.
+                                                              (line  73)
+* Determinism inference:                 Language semantics options.
+                                                              (line  45)
+* dice (mdb command):                    Experimental commands.
+                                                              (line  25)
+* diff (mdb command):                    Browsing commands.   (line 250)
+* Directories <1>:                       Environment.         (line   6)
+* Directories <2>:                       Target code compilation options.
+                                                              (line  24)
+* Directories:                           Build system options.
+                                                              (line 119)
+* Directories for libraries:             Link options.        (line  35)
+* disable (mdb command):                 Breakpoint commands. (line 289)
+* disj (trace event):                    Tracing of Mercury programs.
+                                                              (line  70)
+* document (mdb command):                Help commands.       (line  17)
+* document_category (mdb command):       Help commands.       (line   9)
+* down (mdb command):                    Browsing commands.   (line 159)
+* dump (mdb command):                    Browsing commands.   (line 261)
+* Duplicate call optimization:           High-level (HLDS -> HLDS) optimization options.
+                                                              (line 146)
+* echo (mdb command):                    Parameter commands.  (line  86)
+* Efficiency:                            Profiling introduction.
+                                                              (line   6)
+* else (trace event):                    Tracing of Mercury programs.
+                                                              (line  70)
+* Emacs:                                 GNU Emacs interface. (line   6)
+* enable (mdb command):                  Breakpoint commands. (line 304)
+* Environment variables:                 Environment.         (line   6)
+* exception (mdb command):               Forward movement commands.
+                                                              (line  70)
+* exit (trace event):                    Tracing of Mercury programs.
+                                                              (line  12)
+* EXTRA_C2INITARGS:                      Using Mmake.         (line 239)
+* EXTRA_C2INITFLAGS:                     Using Mmake.         (line 230)
+* EXTRA_CFLAGS:                          Using Mmake.         (line 173)
+* EXTRA_GRADEFLAGS:                      Using Mmake.         (line 157)
+* EXTRA_JAVACFLAGS:                      Using Mmake.         (line 176)
+* EXTRA_LD_LIBFLAGS:                     Using Mmake.         (line 215)
+* EXTRA_LDFLAGS:                         Using Mmake.         (line 210)
+* EXTRA_LIB_DIRS <1>:                    Using libraries with Mmake.
+                                                              (line  15)
+* EXTRA_LIB_DIRS:                        Using Mmake.         (line 254)
+* EXTRA_LIBRARIES <1>:                   Using libraries with Mmake.
+                                                              (line  15)
+* EXTRA_LIBRARIES:                       Using Mmake.         (line 245)
+* EXTRA_MC_MAKE_FLAGS:                   Using Mmake.         (line 361)
+* EXTRA_MCFLAGS:                         Using Mmake.         (line 162)
+* EXTRA_MGNUCFLAGS:                      Using Mmake.         (line 170)
+* EXTRA_MLFLAGS:                         Using Mmake.         (line 205)
+* EXTRA_MLLIBS:                          Using Mmake.         (line 221)
+* EXTRA_MLOBJS:                          Using Mmake.         (line 226)
+* EXTRA_MS_CLFLAGS:                      Using Mmake.         (line 179)
+* Fact tables:                           Code generation options.
+                                                              (line  65)
+* fail (trace event):                    Tracing of Mercury programs.
+                                                              (line  12)
+* fail_trace_counts (mdb command):       Parameter commands.  (line 170)
+* fast (compilation grade):              Grades and grade components.
+                                                              (line  14)
+* File extensions <1>:                   Target code compilation options.
+                                                              (line  87)
+* File extensions:                       Filenames.           (line   6)
+* File names:                            Build system options.
+                                                              (line 134)
+* file names:                            Parameter commands.  (line  95)
+* File names:                            Filenames.           (line   6)
+* finish (mdb command):                  Forward movement commands.
+                                                              (line  55)
+* flag (mdb command):                    Developer commands.  (line  15)
+* Flat profile:                          Using mprof for time profiling.
+                                                              (line  26)
+* format (mdb command):                  Parameter commands.  (line 230)
+* format_param (mdb command):            Parameter commands.  (line 241)
+* forward (mdb command):                 Forward movement commands.
+                                                              (line 107)
+* Garbage collection:                    Optional features compilation model options.
+                                                              (line  59)
+* Garbage collection, profiling:         Using mprof for time profiling.
+                                                              (line  52)
+* gc (grade modifier):                   Grades and grade components.
+                                                              (line  14)
+* gen_stack (mdb command):               Developer commands.  (line  35)
+* Generator stack size:                  Environment.         (line 153)
+* GNU C:                                 C compilers.         (line   6)
+* GNU Emacs:                             GNU Emacs interface. (line   6)
+* goal path:                             Tracing of Mercury programs.
+                                                              (line 111)
+* goal_path (mdb command):               Parameter commands.  (line  59)
+* goto (mdb command):                    Forward movement commands.
+                                                              (line  27)
+* GRADEFLAGS <1>:                        Compilation model options.
+                                                              (line  18)
+* GRADEFLAGS:                            Using Mmake.         (line 157)
+* Grades <1>:                            Build system options.
+                                                              (line 139)
+* Grades:                                Compilation model options.
+                                                              (line   6)
+* Grades and grade components:           Grades and grade components.
+                                                              (line   6)
+* Heap overflow:                         Running.             (line  27)
+* Heap profiling <1>:                    Optional features compilation model options.
+                                                              (line  29)
+* Heap profiling <2>:                    Using mprof for memory profiling.
+                                                              (line   6)
+* Heap profiling <3>:                    Creating profiles.   (line   6)
+* Heap profiling <4>:                    Building profiled applications.
+                                                              (line   6)
+* Heap profiling:                        Profiling.           (line   6)
+* Heap size:                             Running.             (line  27)
+* held variables (in mdb):               Mercury debugger concepts.
+                                                              (line 117)
+* held_vars (mdb command):               Browsing commands.   (line  13)
+* help (mdb command):                    Help commands.       (line  25)
+* Help option:                           Miscellaneous options.
+                                                              (line  10)
+* Higher-order specialization:           High-level (HLDS -> HLDS) optimization options.
+                                                              (line  95)
+* histogram_all (mdb command):           Experimental commands.
+                                                              (line   9)
+* histogram_exp (mdb command):           Experimental commands.
+                                                              (line  15)
+* hl (compilation grade):                Grades and grade components.
+                                                              (line  14)
+* hlc (compilation grade):               Grades and grade components.
+                                                              (line  14)
+* HLDS <1>:                              Medium-level (HLDS -> LLDS) optimization options.
+                                                              (line   6)
+* HLDS:                                  High-level (HLDS -> HLDS) optimization options.
+                                                              (line   6)
+* hold (mdb command):                    Browsing commands.   (line 243)
+* ignore (mdb command):                  Breakpoint commands. (line 239)
+* il (compilation grade):                Grades and grade components.
+                                                              (line  14)
+* Include directories:                   Target code compilation options.
+                                                              (line  24)
+* Inference:                             Language semantics options.
+                                                              (line  30)
+* Inference of determinism:              Language semantics options.
+                                                              (line  45)
+* Inference of modes:                    Language semantics options.
+                                                              (line  39)
+* Inference of types:                    Language semantics options.
+                                                              (line  34)
+* Inlining <1>:                          High-level (HLDS -> HLDS) optimization options.
+                                                              (line  10)
+* Inlining:                              Overall optimization options.
+                                                              (line  44)
+* INSTALL <1>:                           Installing libraries with Mmake.
+                                                              (line  37)
+* INSTALL:                               Using Mmake.         (line 107)
+* INSTALL_MKDIR <1>:                     Installing libraries with Mmake.
+                                                              (line  41)
+* INSTALL_MKDIR:                         Using Mmake.         (line 107)
+* INSTALL_PREFIX <1>:                    Installing libraries with Mmake.
+                                                              (line  17)
+* INSTALL_PREFIX:                        Using Mmake.         (line 259)
+* Intermodule optimization:              Overall optimization options.
+                                                              (line   9)
+* Intermodule optimization, transitive:  Overall optimization options.
+                                                              (line  50)
+* interrupt, in debugger:                Mercury debugger concepts.
+                                                              (line  63)
+* io_query (mdb command):                Interactive query commands.
+                                                              (line   9)
+* jar files:                             Libraries and the Java grade.
+                                                              (line   6)
+* java (compilation grade):              Grades and grade components.
+                                                              (line  14)
+* Java compiler:                         Target code compilation options.
+                                                              (line  68)
+* Java compiler options:                 Target code compilation options.
+                                                              (line  77)
+* Java interpreter:                      Target code compilation options.
+                                                              (line  72)
+* Java libraries:                        Libraries and the Java grade.
+                                                              (line   6)
+* JAVACFLAGS:                            Using Mmake.         (line 176)
+* jump (compilation grade):              Grades and grade components.
+                                                              (line  14)
+* Language semantics options:            Language semantics options.
+                                                              (line   6)
+* Last call optimization:                High-level (HLDS -> HLDS) optimization options.
+                                                              (line 128)
+* LD_BIND_NOW:                           Profiling and shared libraries.
+                                                              (line   6)
+* LD_LIBFLAGS:                           Using Mmake.         (line 215)
+* LDFLAGS:                               Using Mmake.         (line 210)
+* level (mdb command):                   Browsing commands.   (line 174)
+* LIB_LINKAGES:                          Using Mmake.         (line 107)
+* LIBGRADES <1>:                         Installing libraries with Mmake.
+                                                              (line  17)
+* LIBGRADES:                             Using Mmake.         (line 107)
+* Libraries:                             Libraries.           (line   6)
+* Libraries, linking with <1>:           Link options.        (line  54)
+* Libraries, linking with <2>:           Using libraries with Mmake.
+                                                              (line   6)
+* Libraries, linking with <3>:           Using non-installed libraries with mmc --make.
+                                                              (line   6)
+* Libraries, linking with:               Using installed libraries with mmc --make.
+                                                              (line   6)
+* line numbers:                          Parameter commands.  (line  95)
+* lines (mdb command):                   Parameter commands.  (line 241)
+* Link errors:                           Compilation model options.
+                                                              (line   6)
+* Link options:                          Link options.        (line   6)
+* LINKAGE:                               Using Mmake.         (line 193)
+* Linker options:                        Link options.        (line   6)
+* list (mdb command):                    Browsing commands.   (line 291)
+* list_context_lines (mdb command):      Parameter commands.  (line 145)
+* list_path (mdb command):               Parameter commands.  (line 153)
+* LLDS <1>:                              Low-level (LLDS -> LLDS) optimization options.
+                                                              (line   6)
+* LLDS:                                  Medium-level (HLDS -> LLDS) optimization options.
+                                                              (line   6)
+* LLDS back-end compilation model options: LLDS back-end compilation model options.
+                                                              (line   6)
+* Mac OS X, Darwin, Install name:        Link options.        (line  46)
+* MAIN_TARGET:                           Using Mmake.         (line 150)
+* make --- see Mmake:                    Using Mmake.         (line   6)
+* max_io_actions (mdb command):          Parameter commands.  (line 194)
+* maxdepth (mdb command):                Forward movement commands.
+                                                              (line 133)
+* MC:                                    Using Mmake.         (line 154)
+* MC_BUILD_FILES:                        Using Mmake.         (line 356)
+* MC_MAKE_FLAGS:                         Using Mmake.         (line 361)
+* MCFLAGS <1>:                           Compilation model options.
+                                                              (line  18)
+* MCFLAGS:                               Using Mmake.         (line 162)
+* mdb <1>:                               Quick overview.      (line  20)
+* mdb:                                   Debugging.           (line   6)
+* mdbrc:                                 Mercury debugger invocation.
+                                                              (line  41)
+* mdprof <1>:                            Using mdprof.        (line   6)
+* mdprof <2>:                            Creating profiles.   (line   6)
+* mdprof <3>:                            Building profiled applications.
+                                                              (line   6)
+* mdprof:                                Profiling.           (line   6)
+* Measuring performance:                 Profiling introduction.
+                                                              (line   6)
+* Memory Pool System conservative garbage collector: Optional features compilation model options.
+                                                              (line  59)
+* Memory profiling <1>:                  Optional features compilation model options.
+                                                              (line  29)
+* Memory profiling <2>:                  Using mprof for memory profiling.
+                                                              (line   6)
+* Memory profiling <3>:                  Creating profiles.   (line   6)
+* Memory profiling <4>:                  Building profiled applications.
+                                                              (line   6)
+* Memory profiling:                      Profiling.           (line   6)
+* memprof (grade modifier):              Grades and grade components.
+                                                              (line  14)
+* Mercury subdirectory:                  Build system options.
+                                                              (line 134)
+* Mercury.options <1>:                   Build system options.
+                                                              (line  93)
+* Mercury.options:                       Using Mmake.         (line 334)
+* MERCURY_COMPILER:                      Environment.         (line 287)
+* MERCURY_DEBUGGER_INIT <1>:             Environment.         (line 295)
+* MERCURY_DEBUGGER_INIT:                 Mercury debugger invocation.
+                                                              (line  31)
+* MERCURY_DEFAULT_GRADE <1>:             C compilers.         (line  23)
+* MERCURY_DEFAULT_GRADE <2>:             Environment.         (line  12)
+* MERCURY_DEFAULT_GRADE:                 Grades and grade components.
+                                                              (line  45)
+* MERCURY_LINKAGE:                       Using Mmake.         (line 198)
+* MERCURY_MAIN_MODULES:                  Using Mmake.         (line 350)
+* MERCURY_MKINIT:                        Environment.         (line 291)
+* MERCURY_NONSHARED_LIB_DIR:             Environment.         (line  23)
+* MERCURY_OPTIONS <1>:                   Environment.         (line  30)
+* MERCURY_OPTIONS:                       Running.             (line   9)
+* MERCURY_STDLIB_DIR:                    Environment.         (line  16)
+* MGNUC:                                 Using Mmake.         (line 167)
+* mgnuc:                                 Using mmc.           (line  92)
+* MGNUCFLAGS <1>:                        Compilation model options.
+                                                              (line  18)
+* MGNUCFLAGS:                            Using Mmake.         (line 170)
+* mindepth (mdb command):                Forward movement commands.
+                                                              (line 120)
+* ML <1>:                                Building libraries with Mmake.
+                                                              (line  44)
+* ML:                                    Using Mmake.         (line 190)
+* ml:                                    Using mmc.           (line 103)
+* MLDS:                                  MLDS backend (MLDS -> MLDS) optimization options.
+                                                              (line   6)
+* MLDS back-end compilation model options: MLDS back-end compilation model options.
+                                                              (line   6)
+* MLFLAGS <1>:                           Compilation model options.
+                                                              (line  18)
+* MLFLAGS <2>:                           Building libraries with Mmake.
+                                                              (line  44)
+* MLFLAGS:                               Using Mmake.         (line 205)
+* MLLIBS <1>:                            Building libraries with Mmake.
+                                                              (line  44)
+* MLLIBS:                                Using Mmake.         (line 221)
+* MLOBJS <1>:                            Building libraries with Mmake.
+                                                              (line  44)
+* MLOBJS:                                Using Mmake.         (line 226)
+* MLPICOBJS:                             Building libraries with Mmake.
+                                                              (line  44)
+* mm_stacks (mdb command):               Developer commands.  (line  48)
+* mmake:                                 Using Mmake.         (line   6)
+* Mmake variables:                       Using Mmake.         (line 144)
+* mmc:                                   Using mmc.           (line   7)
+* mmc_options (mdb command):             Parameter commands.  (line   9)
+* Mode inference:                        Language semantics options.
+                                                              (line  54)
+* modules (mdb command):                 Breakpoint commands. (line 322)
+* mprof <1>:                             Profiling and shared libraries.
+                                                              (line   6)
+* mprof <2>:                             Using mprof for memory profiling.
+                                                              (line   6)
+* mprof <3>:                             Using mprof for time profiling.
+                                                              (line   6)
+* mprof <4>:                             Creating profiles.   (line   6)
+* mprof <5>:                             Building profiled applications.
+                                                              (line   6)
+* mprof:                                 Profiling.           (line   6)
+* MPS conservative garbage collector:    Optional features compilation model options.
+                                                              (line  59)
+* MS_CL_NOASM:                           Using Mmake.         (line 183)
+* MS_CLFLAGS:                            Using Mmake.         (line 179)
+* neg_enter (trace event):               Tracing of Mercury programs.
+                                                              (line  70)
+* neg_fail (trace event):                Tracing of Mercury programs.
+                                                              (line  70)
+* neg_success (trace event):             Tracing of Mercury programs.
+                                                              (line  70)
+* next (mdb command):                    Forward movement commands.
+                                                              (line  40)
+* No clauses, procedures with:           Language semantics options.
+                                                              (line  23)
+* nondet_stack (mdb command):            Developer commands.  (line  53)
+* none (compilation grade):              Grades and grade components.
+                                                              (line  14)
+* Object files, linking with:            Link options.        (line  58)
+* Objects, reserved:                     Developer compilation model options.
+                                                              (line  33)
+* Optimization <1>:                      Language semantics options.
+                                                              (line   6)
+* Optimization:                          Profiling introduction.
+                                                              (line   6)
+* Optimization levels:                   Overall optimization options.
+                                                              (line   9)
+* Optimization options:                  Optimization options.
+                                                              (line   6)
+* Optimizing code size:                  Overall optimization options.
+                                                              (line  38)
+* Optimizing space:                      Overall optimization options.
+                                                              (line  38)
+* Optional features compilation model options: Optional features compilation model options.
+                                                              (line   6)
+* Options files <1>:                     Build system options.
+                                                              (line  93)
+* Options files:                         Using Mmake.         (line 334)
+* Order of execution:                    Language semantics options.
+                                                              (line   6)
+* par (grade modifier):                  Grades and grade components.
+                                                              (line  14)
+* pass_trace_counts (mdb command):       Parameter commands.  (line 182)
+* path:                                  Tracing of Mercury programs.
+                                                              (line 111)
+* paths in terms:                        Mercury debugger concepts.
+                                                              (line 100)
+* PIC (position independent code) <1>:   Code generation options.
+                                                              (line  16)
+* PIC (position independent code) <2>:   LLDS back-end compilation model options.
+                                                              (line  29)
+* PIC (position independent code):       Building libraries with Mmake.
+                                                              (line   6)
+* Pneg stack size:                       Environment.         (line 171)
+* pneg_stack (mdb command):              Developer commands.  (line  43)
+* pop_list_dir (mdb command):            Parameter commands.  (line 166)
+* Position independent code <1>:         Code generation options.
+                                                              (line  16)
+* Position independent code <2>:         LLDS back-end compilation model options.
+                                                              (line  29)
+* Position independent code:             Building libraries with Mmake.
+                                                              (line   6)
+* pragma fact_table:                     Code generation options.
+                                                              (line  65)
+* print (mdb command):                   Browsing commands.   (line  17)
+* print level:                           Mercury debugger concepts.
+                                                              (line  68)
+* print_optionals (mdb command):         Developer commands.  (line  94)
+* printlevel (mdb command):              Parameter commands.  (line  16)
+* procedure specification (in mdb):      Mercury debugger concepts.
+                                                              (line 148)
+* procedures (mdb command):              Breakpoint commands. (line 326)
+* Procedures with no clauses:            Language semantics options.
+                                                              (line  23)
+* prof (grade modifier):                 Grades and grade components.
+                                                              (line  14)
+* profdeep (grade modifier):             Grades and grade components.
+                                                              (line  14)
+* Profiling <1>:                         Optional features compilation model options.
+                                                              (line  22)
+* Profiling <2>:                         Creating profiles.   (line   6)
+* Profiling <3>:                         Profiling introduction.
+                                                              (line   6)
+* Profiling:                             Profiling.           (line   6)
+* Profiling and shared libraries:        Profiling and shared libraries.
+                                                              (line   6)
+* Profiling interrupts:                  Using mprof for time profiling.
+                                                              (line  35)
+* Profiling memory allocation <1>:       Using mprof for memory profiling.
+                                                              (line   6)
+* Profiling memory allocation:           Profiling.           (line   6)
+* push_list_dir (mdb command):           Parameter commands.  (line 162)
+* query (mdb command):                   Interactive query commands.
+                                                              (line   9)
+* quit (mdb command):                    Miscellaneous commands.
+                                                              (line  32)
+* RANLIB:                                Building libraries with Mmake.
+                                                              (line  44)
+* RANLIBFLAGS:                           Building libraries with Mmake.
+                                                              (line  44)
+* Recompiling:                           Using Mmake.         (line   6)
+* redo (trace event):                    Tracing of Mercury programs.
+                                                              (line  12)
+* reg (compilation grade):               Grades and grade components.
+                                                              (line  14)
+* register (mdb command):                Breakpoint commands. (line 329)
+* Reordering:                            Language semantics options.
+                                                              (line   6)
+* Reserved addresses:                    Developer compilation model options.
+                                                              (line  26)
+* Reserved objects:                      Developer compilation model options.
+                                                              (line  33)
+* retry (mdb command):                   Backward movement commands.
+                                                              (line   9)
+* return (mdb command):                  Forward movement commands.
+                                                              (line  83)
+* rt (grade modifier):                   Grades and grade components.
+                                                              (line  14)
+* save (mdb command):                    Miscellaneous commands.
+                                                              (line  22)
+* scope (mdb command):                   Parameter commands.  (line  68)
+* scroll (mdb command):                  Parameter commands.  (line  28)
+* Search path <1>:                       Environment.         (line   6)
+* Search path:                           Build system options.
+                                                              (line 119)
+* Search path for libraries:             Link options.        (line  35)
+* Semantics options:                     Language semantics options.
+                                                              (line   6)
+* shallow tracing:                       Preparing a program for debugging.
+                                                              (line  44)
+* Shared libraries <1>:                  LLDS back-end compilation model options.
+                                                              (line  29)
+* Shared libraries:                      Building libraries with Mmake.
+                                                              (line   6)
+* Shared libraries and profiling:        Profiling and shared libraries.
+                                                              (line   6)
+* Shared objects:                        Building libraries with Mmake.
+                                                              (line   6)
+* size (mdb command):                    Parameter commands.  (line 241)
+* source (mdb command):                  Miscellaneous commands.
+                                                              (line   9)
+* Specialization of higher-order calls:  High-level (HLDS -> HLDS) optimization options.
+                                                              (line  95)
+* spf (grade modifier):                  Grades and grade components.
+                                                              (line  14)
+* spy points:                            Mercury debugger concepts.
+                                                              (line  10)
+* stack (mdb command):                   Browsing commands.   (line 121)
+* Stack overflow:                        Running.             (line  21)
+* Stack size:                            Running.             (line  21)
+* stack_default_limit (mdb command):     Parameter commands.  (line  54)
+* stack_regs (mdb command):              Developer commands.  (line  65)
+* Static libraries:                      Building libraries with Mmake.
+                                                              (line   6)
+* stats (mdb command):                   Developer commands.  (line  76)
+* step (mdb command):                    Forward movement commands.
+                                                              (line   9)
+* strict debugger commands:              Mercury debugger concepts.
+                                                              (line  54)
+* Stubs:                                 Language semantics options.
+                                                              (line  23)
+* Subdirectories:                        Build system options.
+                                                              (line 134)
+* subgoal (mdb command):                 Developer commands.  (line  27)
+* switch (trace event):                  Tracing of Mercury programs.
+                                                              (line  70)
+* table (mdb command):                   Developer commands.  (line 115)
+* table_io (mdb command):                I/O tabling commands.
+                                                              (line   9)
+* Tags:                                  Developer compilation model options.
+                                                              (line  13)
+* Tail recursion optimization:           High-level (HLDS -> HLDS) optimization options.
+                                                              (line 128)
+* Target code compilation options:       Target code compilation options.
+                                                              (line   6)
+* Target options <1>:                    Code generation target options.
+                                                              (line   6)
+* Target options:                        Target options.      (line   6)
+* term navigation:                       Mercury debugger concepts.
+                                                              (line 100)
+* Termination analysis:                  Overall optimization options.
+                                                              (line  50)
+* Termination analysis options:          Termination analysis options.
+                                                              (line   6)
+* then (trace event):                    Tracing of Mercury programs.
+                                                              (line  70)
+* Threads, Debugging:                    Environment.         (line 204)
+* Time profiling <1>:                    Optional features compilation model options.
+                                                              (line  22)
+* Time profiling <2>:                    Using mprof for time profiling.
+                                                              (line   6)
+* Time profiling <3>:                    Creating profiles.   (line   6)
+* Time profiling <4>:                    Building profiled applications.
+                                                              (line   6)
+* Time profiling:                        Profiling.           (line   6)
+* tr (grade modifier):                   Grades and grade components.
+                                                              (line  14)
+* trace events:                          Tracing of Mercury programs.
+                                                              (line  12)
+* trace level:                           Preparing a program for debugging.
+                                                              (line  44)
+* Tracing <1>:                           Tracing of Mercury programs.
+                                                              (line   6)
+* Tracing:                               Debugging.           (line   6)
+* track (mdb command):                   Backward movement commands.
+                                                              (line  39)
+* Trail size:                            Environment.         (line 144)
+* Trailing:                              Optional features compilation model options.
+                                                              (line  73)
+* Transitive intermodule optimization:   Overall optimization options.
+                                                              (line  50)
+* trust (mdb command):                   Declarative debugging mdb commands.
+                                                              (line  58)
+* trusted (mdb command):                 Declarative debugging mdb commands.
+                                                              (line  74)
+* Type inference:                        Language semantics options.
+                                                              (line  50)
+* Type specialization:                   High-level (HLDS -> HLDS) optimization options.
+                                                              (line 100)
+* Type specialization, user guided:      High-level (HLDS -> HLDS) optimization options.
+                                                              (line 105)
+* type_ctor (mdb command):               Developer commands.  (line 127)
+* typecheck-ambiguity-error-limit:       Miscellaneous options.
+                                                              (line  26)
+* typecheck-ambiguity-warn-limit:        Miscellaneous options.
+                                                              (line  21)
+* unalias (mdb command):                 Parameter commands.  (line 296)
+* Undefined symbol:                      Compilation model options.
+                                                              (line   6)
+* unhide_events (mdb command):           Developer commands.  (line 105)
+* untrust (mdb command):                 Declarative debugging mdb commands.
+                                                              (line  78)
+* Unused arguments:                      High-level (HLDS -> HLDS) optimization options.
+                                                              (line  70)
+* Unused outputs:                        High-level (HLDS -> HLDS) optimization options.
+                                                              (line  81)
+* Unused procedure elimination:          High-level (HLDS -> HLDS) optimization options.
+                                                              (line 138)
+* up (mdb command):                      Browsing commands.   (line 141)
+* user defined event attributes (in mdb): Mercury debugger concepts.
+                                                              (line 139)
+* user defined events (in mdb):          Mercury debugger concepts.
+                                                              (line 127)
+* user_event_context (mdb command):      Parameter commands.  (line 126)
+* Using a different C compiler:          C compilers.         (line   6)
+* var_details (mdb command):             Developer commands.  (line  11)
+* Variables, environment:                Environment.         (line   6)
+* Variables, Mmake:                      Using Mmake.         (line 144)
+* vars (mdb command):                    Browsing commands.   (line   9)
+* Verbosity options:                     Verbosity options.   (line   6)
+* view (mdb command):                    Browsing commands.   (line 196)
+* Warning options:                       Warning options.     (line   6)
+* width (mdb command):                   Parameter commands.  (line 241)
+* xml_browser_cmd (mdb command):         Parameter commands.  (line 202)
+* xml_tmp_filename (mdb command):        Parameter commands.  (line 221)
+
+

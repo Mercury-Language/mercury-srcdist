@@ -1,0 +1,10 @@
+:- module (check_hlds.unused_imports).
+:- interface.
+:- import_module hlds.
+:- import_module io.
+:- import_module list.
+:- import_module parse_tree.
+:- import_module (hlds.hlds_module).
+:- import_module (parse_tree.error_util).
+:- pred unused_imports(((hlds.hlds_module).module_info), (list.list(((parse_tree.error_util).error_spec))), (io.io), (io.io)).
+:- mode unused_imports((builtin.in), (builtin.out), (builtin.di), (builtin.uo)) is det.

@@ -1,0 +1,21 @@
+:- module (analysis.file).
+:- interface.
+:- pred empty_request_file((analysis.analysis_info), (analysis.module_id), (io.state), (io.state)).
+:- mode empty_request_file((builtin.in), (builtin.in), (builtin.di), (builtin.uo)) is det.
+:- pred read_module_analysis_requests((analysis.analysis_info), (analysis.module_id), (analysis.module_analysis_map((analysis.analysis_request))), (io.state), (io.state)).
+:- mode read_module_analysis_requests((builtin.in), (builtin.in), (builtin.out), (builtin.di), (builtin.uo)) is det.
+:- pred read_module_analysis_results((analysis.analysis_info), (analysis.module_id), (analysis.analysis_status), (analysis.module_analysis_map((analysis.analysis_result))), (analysis.module_extra_info_map), (io.io), (io.io)).
+:- mode read_module_analysis_results((builtin.in), (builtin.in), (builtin.out), (builtin.out), (builtin.out), (builtin.di), (builtin.uo)) is det.
+:- pred read_module_imdg((analysis.analysis_info), (analysis.module_id), (analysis.module_analysis_map((analysis.imdg_arc))), (io.io), (io.io)).
+:- mode read_module_imdg((builtin.in), (builtin.in), (builtin.out), (builtin.di), (builtin.uo)) is det.
+:- pred read_module_overall_status(Compiler, (analysis.module_id), (maybe.maybe((analysis.analysis_status))), (io.io), (io.io)) <= (analysis.compiler(Compiler)).
+:- mode read_module_overall_status((builtin.in), (builtin.in), (builtin.out), (builtin.di), (builtin.uo)) is det.
+:- pred write_module_analysis_requests((analysis.analysis_info), (analysis.module_id), (analysis.module_analysis_map((analysis.analysis_request))), (io.state), (io.state)).
+:- mode write_module_analysis_requests((builtin.in), (builtin.in), (builtin.in), (builtin.di), (builtin.uo)) is det.
+:- pred write_module_analysis_results((analysis.analysis_info), (analysis.module_id), (analysis.analysis_status), (analysis.module_analysis_map((analysis.analysis_result))), (analysis.module_extra_info_map), (io.io), (io.io)).
+:- mode write_module_analysis_results((builtin.in), (builtin.in), (builtin.in), (builtin.in), (builtin.in), (builtin.di), (builtin.uo)) is det.
+:- pred write_module_imdg((analysis.analysis_info), (analysis.module_id), (analysis.module_analysis_map((analysis.imdg_arc))), (io.io), (io.io)).
+:- mode write_module_imdg((builtin.in), (builtin.in), (builtin.in), (builtin.di), (builtin.uo)) is det.
+:- implementation.
+:- type invalid_analysis_file
+	--->	invalid_analysis_file .

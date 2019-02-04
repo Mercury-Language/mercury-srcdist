@@ -1,0 +1,8 @@
+:- module (mdb.parse).
+:- interface.
+:- type command.
+:- type external_request.
+:- type format_option.
+:- type format_param_cmd.
+:- type path.
+:- type setting_option.
