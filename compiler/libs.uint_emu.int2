@@ -1,0 +1,5 @@
+:- module (libs.uint_emu).
+:- interface.
+:- import_module (libs.globals).
+:- type bits_per_uint
+    --->    bits_per_uint(int).

@@ -1,0 +1,33 @@
+:- module (hlds.make_hlds).
+:- interface.
+:- import_module libs.
+:- import_module list.
+:- import_module maybe.
+:- import_module mdbcomp.
+:- import_module parse_tree.
+:- import_module term.
+:- import_module (hlds.hlds_clauses).
+:- import_module (hlds.hlds_data).
+:- import_module (hlds.hlds_module).
+:- import_module (hlds.hlds_pred).
+:- import_module (hlds.status).
+:- import_module (libs.globals).
+:- import_module (mdbcomp.prim_data).
+:- import_module (parse_tree.equiv_type).
+:- import_module (parse_tree.error_util).
+:- import_module (parse_tree.module_qual).
+:- import_module (parse_tree.prog_data).
+:- import_module (parse_tree.prog_data_used_modules).
+:- import_module (parse_tree.prog_item).
+:- type found_invalid_inst_or_mode
+	where	type_is_abstract_enum(1).
+:- type found_invalid_type
+	where	type_is_abstract_enum(1).
+:- type ims_item(T).
+:- type ims_list(T).
+:- type make_hlds_qual_info.
+:- type sec_info.
+:- type sec_item(T).
+:- type sec_list(T).
+:- inst (ims_item(I)) for (hlds.make_hlds).ims_item/1 == bound(ims_item(ground, I)).
+:- inst (sec_item(I)) for (hlds.make_hlds).sec_item/1 == bound(sec_item(ground, I)).

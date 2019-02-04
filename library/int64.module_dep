@@ -1,0 +1,13 @@
+module(1, "int64.m",
+	int64,
+	{},
+	{builtin, private_builtin},
+	{builtin, private_builtin},
+	{},
+	{},
+	{},
+	{},
+	{},
+	no_foreign_export,
+	no_main
+).
