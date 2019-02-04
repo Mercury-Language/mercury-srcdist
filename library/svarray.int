@@ -1,0 +1,21 @@
+:- module svarray.
+:- interface.
+:- import_module array.
+:- pragma obsolete((svarray.resize)/4).
+:- pragma obsolete((svarray.semidet_set)/4).
+:- pragma obsolete((svarray.semidet_slow_set)/4).
+:- pragma obsolete((svarray.set)/4).
+:- pragma obsolete((svarray.shrink)/3).
+:- pragma obsolete((svarray.slow_set)/4).
+:- pred resize(int, T, array.array(T), array.array(T)).
+:- mode resize((builtin.in), (builtin.in), (array.array_di), (array.array_uo)) is det.
+:- pred semidet_set(int, T, array.array(T), array.array(T)).
+:- mode semidet_set((builtin.in), (builtin.in), (array.array_di), (array.array_uo)) is semidet.
+:- pred semidet_slow_set(int, T, array.array(T), array.array(T)).
+:- mode semidet_slow_set((builtin.in), (builtin.in), (builtin.in), (array.array_uo)) is semidet.
+:- pred set(int, T, array.array(T), array.array(T)).
+:- mode set((builtin.in), (builtin.in), (array.array_di), (array.array_uo)) is det.
+:- pred shrink(int, array.array(T), array.array(T)).
+:- mode shrink((builtin.in), (array.array_di), (array.array_uo)) is det.
+:- pred slow_set(int, T, array.array(T), array.array(T)).
+:- mode slow_set((builtin.in), (builtin.in), (builtin.in), (array.array_uo)) is det.

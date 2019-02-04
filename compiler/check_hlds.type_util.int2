@@ -1,0 +1,15 @@
+:- module (check_hlds.type_util).
+:- interface.
+:- import_module hlds.
+:- import_module list.
+:- import_module maybe.
+:- import_module mdbcomp.
+:- import_module parse_tree.
+:- import_module (hlds.hlds_data).
+:- import_module (hlds.hlds_module).
+:- import_module (mdbcomp.prim_data).
+:- import_module (parse_tree.prog_data).
+:- import_module (parse_tree.prog_type).
+:- type is_dummy_type
+	--->	is_dummy_type 
+	;	is_not_dummy_type .

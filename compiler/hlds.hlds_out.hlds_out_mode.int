@@ -1,0 +1,27 @@
+:- module ((hlds.hlds_out).hlds_out_mode).
+:- interface.
+:- import_module assoc_list.
+:- import_module bool.
+:- import_module io.
+:- import_module list.
+:- import_module term.
+:- import_module (hlds.hlds_goal).
+:- import_module (hlds.hlds_module).
+:- import_module (hlds.instmap).
+:- import_module (parse_tree.prog_data).
+:- func inst_to_term(parse_tree.prog_data.mer_inst) = parse_tree.prog_data.prog_term.
+:- func mercury_expanded_inst_to_string(parse_tree.prog_data.mer_inst, parse_tree.prog_data.inst_varset, hlds.hlds_module.module_info) = string.
+:- pred mercury_output_expanded_inst(parse_tree.prog_data.mer_inst, parse_tree.prog_data.inst_varset, hlds.hlds_module.module_info, io.io, io.io).
+:- mode mercury_output_expanded_inst((builtin.in), (builtin.in), (builtin.in), (builtin.di), (builtin.uo)) is det.
+:- pred mercury_output_uni_mode(hlds.hlds_goal.uni_mode, parse_tree.prog_data.inst_varset, io.io, io.io).
+:- mode mercury_output_uni_mode((builtin.in), (builtin.in), (builtin.di), (builtin.uo)) is det.
+:- pred mercury_output_uni_mode_list(list.list(hlds.hlds_goal.uni_mode), parse_tree.prog_data.inst_varset, io.io, io.io).
+:- mode mercury_output_uni_mode_list((builtin.in), (builtin.in), (builtin.di), (builtin.uo)) is det.
+:- func mercury_uni_mode_list_to_string(list.list(hlds.hlds_goal.uni_mode), parse_tree.prog_data.inst_varset) = string.
+:- func mercury_uni_mode_to_string(hlds.hlds_goal.uni_mode, parse_tree.prog_data.inst_varset) = string.
+:- func mode_to_term(parse_tree.prog_data.mer_mode) = parse_tree.prog_data.prog_term.
+:- func mode_to_term_with_context(term.context, parse_tree.prog_data.mer_mode) = parse_tree.prog_data.prog_term.
+:- pred write_instmap(hlds.instmap.instmap, parse_tree.prog_data.prog_varset, bool.bool, int, io.io, io.io).
+:- mode write_instmap((builtin.in), (builtin.in), (builtin.in), (builtin.in), (builtin.di), (builtin.uo)) is det.
+:- pred write_var_inst_list(assoc_list.assoc_list(parse_tree.prog_data.prog_var, parse_tree.prog_data.mer_inst), parse_tree.prog_data.prog_varset, bool.bool, int, io.io, io.io).
+:- mode write_var_inst_list((builtin.in), (builtin.in), (builtin.in), (builtin.in), (builtin.di), (builtin.uo)) is det.

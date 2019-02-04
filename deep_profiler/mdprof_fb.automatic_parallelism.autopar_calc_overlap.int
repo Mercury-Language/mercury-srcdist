@@ -1,0 +1,5 @@
+:- module ((mdprof_fb.automatic_parallelism).autopar_calc_overlap).
+:- interface.
+:- import_module ((mdprof_fb.automatic_parallelism).autopar_types).
+:- pred calculate_parallel_cost(mdprof_fb.automatic_parallelism.autopar_types.parallelisation_cost_data, mdprof_fb.automatic_parallelism.autopar_types.incomplete_parallelisation, mdprof_fb.automatic_parallelism.autopar_types.incomplete_parallelisation).
+:- mode calculate_parallel_cost((builtin.out), (builtin.in), (builtin.out)) is det.

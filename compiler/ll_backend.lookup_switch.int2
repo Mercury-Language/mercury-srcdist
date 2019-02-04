@@ -1,0 +1,20 @@
+:- module (ll_backend.lookup_switch).
+:- interface.
+:- import_module list.
+:- import_module map.
+:- import_module (backend_libs.switch_util).
+:- import_module (hlds.hlds_data).
+:- import_module (hlds.hlds_goal).
+:- import_module (hlds.hlds_llds).
+:- import_module (ll_backend.code_info).
+:- import_module (ll_backend.llds).
+:- import_module (parse_tree.prog_data).
+:- import_module (parse_tree.set_of_var).
+:- type case_kind
+	--->	kind_zero_solns 
+	;	kind_one_soln 
+	;	kind_several_solns .
+:- type lookup_switch_info(Key)
+	--->	lookup_switch_info(((ll_backend.lookup_switch).lsi_cases) :: backend_libs.switch_util.case_consts(Key, ll_backend.llds.rval), ((ll_backend.lookup_switch).lsi_variables) :: list.list(parse_tree.prog_data.prog_var), ((ll_backend.lookup_switch).lsi_field_types) :: list.list(ll_backend.llds.llds_type), ((ll_backend.lookup_switch).lsi_liveness) :: parse_tree.set_of_var.set_of_progvar).
+:- type record_switch_lookup(Key) == pred(backend_libs.switch_util.soln_consts(ll_backend.llds.rval), hlds.hlds_data.tagged_cons_id, map.map(Key, backend_libs.switch_util.soln_consts(ll_backend.llds.rval)), map.map(Key, backend_libs.switch_util.soln_consts(ll_backend.llds.rval))).
+:- inst (record_switch_lookup) == (pred((builtin.in), (builtin.in), (builtin.in), (builtin.out)) is det).

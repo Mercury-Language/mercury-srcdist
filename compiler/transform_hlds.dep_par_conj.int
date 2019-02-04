@@ -1,0 +1,11 @@
+:- module (transform_hlds.dep_par_conj).
+:- interface.
+:- import_module list.
+:- import_module set.
+:- import_module (hlds.hlds_goal).
+:- import_module (hlds.hlds_module).
+:- import_module (hlds.instmap).
+:- import_module (parse_tree.prog_data).
+:- func find_shared_variables(hlds.hlds_module.module_info, hlds.instmap.instmap, list.list(hlds.hlds_goal.hlds_goal)) = set.set(parse_tree.prog_data.prog_var).
+:- pred impl_dep_par_conjs_in_module(hlds.hlds_module.module_info, hlds.hlds_module.module_info).
+:- mode impl_dep_par_conjs_in_module((builtin.in), (builtin.out)) is det.
