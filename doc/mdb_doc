@@ -1,0 +1,2355 @@
+document_category 100 concepts
+concepts   - The concepts on which the Mercury debugger is based.
+             The concepts for which documentation is available are
+             `break_points', `strict_commands', `print_level',
+             `default_print_level', `current_environment', `held_variables'
+             `procedure_specification' and `decl_debug'.
+
+end
+document_category 150 queries
+queries    - Commands for invoking goals interactively.
+             The commands for queries are
+             `query', `cc_query', and `io_query'.
+
+end
+document_category 200 forward
+forward    - Commands that move execution forward.
+             The forward commands are `step', `goto', `next', `finish',
+             `exception', `return', `user, `forward',
+	     `mindepth', `maxdepth' and `continue'.
+
+end
+document_category 300 backward
+backward   - Commands that move execution backward.
+             The backward commands are `retry' and `track'.
+
+end
+document_category 400 browsing
+browsing   - Commands that let users explore the state of the computation.
+             The browsing commands are `vars', `held_vars', `print', `browse',
+             `stack', `up', `down', `level', `current', `view', `hold',
+             `diff', `dump', `grep', `list' and `open'.
+
+end
+document_category 500 breakpoint
+breakpoint - Commands that let users set and control breakpoints.
+             The breakpoint commands are `break', `break_print', `condition',
+	     `disable', `enable', `delete', `modules', `procedures' and
+	     `register'.
+
+end
+document_category 600 io_tabling
+io_tabling - Commands that let users control the tabling of I/O actions.
+             The only such command is `table_io'.
+
+end
+document_category 700 parameter
+parameter  - Commands that let users access debugger parameters.
+             The parameter commands are `mmc_options', `printlevel', `scroll',
+             `stack_default_limit', `goal_paths' `scope', `echo', 
+             `context', `user_event_context', `list_context_lines',
+	     `list_path', `push_list_dir', `pop_list_dir', `fail_trace_counts',
+	     `pass_trace_counts', `max_io_actions', `xml_browser_cmd',
+	     `xml_tmp_filename', `format', `format_param', `alias'
+	     and `unalias'.
+
+end
+document_category 800 help
+help       - Commands that let users access and control the help system.
+             The help commands are `document_category', `document' and `help'.
+             For help on the `help' command, type `help help help'.
+
+end
+document_category 850 mdb_dd
+mdb_dd     - mdb commands related to declarative debugging.  These are `dd', 
+             `trust', `trusted' and `untrust'.
+
+end
+document_category 860 decl
+decl       - Commands available from within the declarative debugger.  These 
+             are `yes', `no', `inadmissible', `trust', `skip', `browse',
+             `print', `set', `help', `info', `ask', `mark', `pd' and `quit'.
+
+end
+document_category 900 misc
+misc       - Commands that are of interest to most users but do not fit into
+             other categories. The misc commands are `source', `save', `shell'
+             and `quit'.
+
+end
+document_category 1000 exp
+exp        - Commands that let users collect and inspect experimental
+             data about the behavior of the program. The exp commands are
+             `histogram_all', `histogram_exp', and `clear_histogram'.
+
+end
+document_category 1100 developer
+developer  - Commands that are intended to be of use only to developers
+             of the Mercury implementation. The developer commands are
+             `flag', `subgoal', `consumer', `gen_stack', `cut_stack,
+             `pneg_stack', `mm_stacks', `nondet_stack', `stack_regs',
+             `all_regs', `debug_vars', `stats', `print_optionals',
+             `unhide_events', `table', `type_ctor', `class_decl',
+             `all_type_ctors', `all_class_decls', `all_procedures' and
+             `ambiguity'.
+
+end
+document concepts 100 break_points
+break_points
+     The user may associate a break point with some events that occur
+     inside a procedure; the invocation condition of the break point
+     says which events these are.  The four possible invocation
+     conditions (also called scopes) are:
+
+        * the call event,
+
+        * all interface events,
+
+        * all events, and
+
+        * the event at a specific point in the procedure.
+
+     The effect of a break point depends on the state of the break
+     point.
+
+        * If the state of the break point is `stop', execution will
+          stop and user interaction will start at any event within the
+          procedure that matches the invocation conditions, unless the
+          current debugger command has specifically disabled this
+          behaviour (see the concept `strict commands' below).
+
+        * If the state of the break point is `print', the debugger will
+          print any event within the procedure that matches the
+          invocation conditions, unless the current debugger command
+          has specifically disabled this behaviour (see the concept
+          `print level' below).
+
+     Neither of these will happen if the break point is disabled.
+
+     Every break point has a print list.  Every time execution stops at
+     an event that matches the breakpoint, mdb implicitly executes a
+     print command for each element in the breakpoint's print list.  A
+     print list element can be the word `goal', which causes the goal
+     to the printed as if by `print goal'; it can be the word `*',
+     which causes all the variables to the printed as if by `print *';
+     or it can be the name or number of a variable, possibly followed
+     (without white space) by term path, which causes the specified
+     variable or part thereof to the printed as if the element were
+     given as an argument to the `print' command.
+
+end
+document concepts 200 strict_commands
+strict_commands
+     When a debugger command steps over some events without user
+     interaction at those events, the _strictness_ of the command
+     controls whether the debugger will stop execution and resume user
+     interaction at events to which a break point with state `stop'
+     applies.  By default, the debugger will stop at such events.
+     However, if the debugger is executing a strict command, it will
+     not stop at an event just because a break point in the stop state
+     applies to it.
+
+     If the debugger receives an interrupt (e.g. if the user presses
+     control-C), it will stop at the next event regardless of what
+     command it is executing at the time.
+
+end
+document concepts 300 print_level
+print_level
+     When a debugger command steps over some events without user
+     interaction at those events, the _print level_ controls under what
+     circumstances the stepped over events will be printed.
+
+        * When the print level is `none', none of the stepped over
+          events will be printed.
+
+        * When the print level is `all', all the stepped over events
+          will be printed.
+
+        * When the print level is `some', the debugger will print the
+          event only if a break point applies to the event.
+
+     Regardless of the print level, the debugger will print any event
+     that causes execution to stop and user interaction to start.
+
+end
+document concepts 400 default_print_level
+default_print_level
+     The debugger maintains a default print level.  The initial value
+     of this variable is `some', but this value can be overridden by
+     the user.
+
+end
+document concepts 500 current_environment
+current_environment
+     Whenever execution stops at an event, the current environment is
+     reset to refer to the stack frame of the call specified by the
+     event.  However, the `up', `down' and `level' commands can set the
+     current environment to refer to one of the ancestors of the
+     current call.  This will then be the current environment until
+     another of these commands changes the environment yet again or
+     execution continues to another event.
+
+end
+document concepts 600 paths_in_terms
+paths_in_terms
+     When browsing or printing a term, you can use "^`n'" to refer to
+     the Nth subterm of that term.  If the term's type has named fields,
+     you can use "^`fname'" to refer to the subterm of the field named
+     `fname'.  You can use several of subterm specifications in a row
+     to refer to subterms deep within the original term.  For example,
+     when applied to a list, "^2" refers to the tail of the list (the
+     second argument of the list constructor), "^2^2" refers to the
+     tail of the tail of the list, and "^2^2^1" refers to the head of
+     the tail of the tail, i.e. to the third element of the list.  You
+     can think of terms as Unix directories, with constants (function
+     symbols of arity zero) being plain files and function symbols of
+     arity greater than zero being directories themselves.  Each
+     subterm specification such as "^2" goes one level down in the
+     hierarchy.  The exception is the subterm specification "^..",
+     which goes one level up, to the parent of the current directory.
+
+end
+document concepts 700 held_variables
+held_variables
+     Normally, the only variables from the program accessible in the
+     debugger are the variables in the current environment at the
+     current program point.  However, the user can _hold_ variables,
+     causing their values -or selected parts of their values- to stay
+     available for the rest of the debugger session.  All the commands
+     that accept variable names also accept the names of held variables;
+     users can ask for a held variable by prefixing the name of the
+     held variable with a dollar sign.
+
+end
+document concepts 800 user_defined_events
+user_defined_events
+     Besides the built-in set of events, the Mercury debugger also
+     supports events defined by the user.  Each event appears in the
+     source code of the Mercury program as a call prefixed by the
+     keyword `event', with each argument of the call giving the value
+     of an event _attribute_.  Users can specify the set of user
+     defined events that can appear in a program, and the names, types
+     and order of the attributes of each kind of user defined event, by
+     giving the name of an event set specification file to the compiler
+     when compiling that program.  For more details, see *note User
+     defined events::.
+
+end
+document concepts 900 user_defined_event_attributes
+user_defined_event_attributes
+     Normally, the only variables from the program accessible in the
+     debugger are the variables in the current environment at the
+     current program point.  However, if the current event is a user
+     defined event, then the attributes of that event are also
+     available.  All the commands that accept variable names also
+     accept the names of attributes; users can ask for an attribute by
+     prefixing the name of the attribute with an exclamation point.
+
+end
+document concepts 1000 procedure_specification
+procedure_specification
+     Some debugger commands, e.g. `break', require a parameter that
+     specifies a procedure.  The procedure may or may not be a
+     compiler-generated unify, compare, index or init procedure of a
+     type constructor.  If it is, the procedure specification has the
+     following components in the following order:
+        * An optional prefix of the form `unif*', `comp*', `indx*' or
+          `init*', that specifies whether the procedure belongs to a
+          unify, compare, index or init predicate.
+
+        * An optional prefix of the form `MODULE.' or `MODULE__' that
+          specifies the name of the module that defines the predicate
+          or function to which the procedure belongs.
+
+        * The name of the type constructor.
+
+        * An optional suffix of the form `/ARITY' that specifies the
+          arity of the type constructor.
+
+        * An optional suffix of the form `-MODENUM' that specifies the
+          mode number of the procedure within the predicate or function
+          to which the procedure belongs.
+     For other procedures, the procedure specification has the
+     following components in the following order:
+        * An optional prefix of the form `pred*' or `func*' that
+          specifies whether the procedure belongs to a predicate or a
+          function.
+
+        * An optional prefix of the form `MODULE:', `MODULE.' or
+          `MODULE__' that specifies the name of the module that defines
+          the predicate or function to which the procedure belongs.
+
+        * The name of the predicate or function to which the procedure
+          belongs.
+
+        * An optional suffix of the form `/ARITY' that specifies the
+          arity of the predicate or function to which the procedure
+          belongs.
+
+        * An optional suffix of the form `-MODENUM' that specifies the
+          mode number of the procedure within the predicate or function
+          to which the procedure belongs.
+
+end
+document concepts 10 decl_debug
+     The declarative debugger tries to find a bug in your program by asking
+     questions about the correctness of calls executed in your program.
+     
+     Because pure Mercury code does not have any side effects, the
+     declarative debugger can make inferences such as "if a call produces
+     incorrect output from correct input, then there must be a bug in the
+     code executed by one of the descendents of the call".
+     
+     The declarative debugger is therefore able to automate much of the
+     `detective work' that must be done manually when using the procedural
+     debugger.
+     
+     The following commands are available from within the declarative 
+     debugger: `actions', `browse', `depth', `format', `help', 
+     `inadmissible', `info', `lines', `mark', `mode', `no', `params', `pd', 
+     `print', `quit', `size', `skip', `track', `trust', `undo', `width' and 
+     `yes'.
+end
+document decl 100 yes
+yes
+     Answer `yes' to the current question.
+
+end
+document decl 200 no
+no
+     Answer `no' to the current question.
+
+end
+document decl 300 inadmissible
+inadmissible
+     Answer that the call is inadmissible.
+
+end
+document decl 400 trust
+trust
+     Answer that the predicate or function the question is about does
+     not contain any bugs.  However predicates or functions called by
+     this predicate/function may contain bugs.  The debugger will not
+     ask you further questions about the predicate or function in the
+     current question.
+
+trust module
+     Answer that the module the current question relates to does not
+     contain any bugs.  No more questions about any predicates or
+     functions from this module will be asked.
+
+end
+document decl 500 skip
+skip
+     Skip this question and ask a different one if possible.
+
+end
+document decl 600 undo
+undo
+     Undo the most recent answer or mode change.
+
+end
+document decl 700 mode
+mode [ top-down | divide-and-query | binary ]
+     Change the current search mode.  The search modes may be
+     abbreviated to `td', `dq' and `b' respectively.
+
+end
+document decl 800 browse
+browse [--xml] [N]
+     Start the interactive term browser and browse the Nth argument
+     before answering.  If the argument number is omitted then browse
+     the whole call as if it were a data term.  While browsing a
+     `track' command may be issued to find the point at which the
+     current subterm was bound (see *note Improving the search::).  To
+     return to the declarative debugger question issue a `quit' command
+     from within the interactive term browser.  For more information on
+     the use of the interactive term browser see the `browse' command
+     in *note Browsing commands:: or type `help' from within the
+     interactive query browser.
+
+     Giving the `--xml' or `-x' option causes the term to be displayed
+     in an XML browser.
+
+browse io [--xml] N
+     Browse the Nth IO action.
+
+end
+document decl 900 print
+print [N]
+     Print the Nth argument of the current question.  If no argument is
+     given then display the current question.
+
+print io N
+     Print the Nth IO action.
+
+print io N-M
+     Print the Nth to Mth IO actions (inclusive).
+
+print io limits
+     Print the values for which `print N' makes sense.
+
+print io
+     Print some I/O actions, starting just after the last action
+     printed (if there was one) or at the first available action (if
+     there was not).
+
+end
+document decl 1000 format
+format FORMAT
+     Set the default format to FORMAT, which should be one of `flat',
+     `verbose' and `pretty'.
+
+end
+document decl 1100 depth
+depth NUM
+     Set the maximum depth to which terms are printed to NUM.
+
+depth io NUM
+     Set the maximum depth to which I/O actions are printed to NUM.
+     I/O actions are printed using the browser's `print *' command so
+     the `depth io' command updates the configuration parameters for the
+     browser's `print *' command.
+
+end
+document decl 1200 size
+size NUM
+     Set the maximum number of function symbols to be printed in terms
+     to NUM.
+
+size io NUM
+     Set the maximum number of function symbols to be printed in I/O
+     actions to NUM.  I/O actions are printed using the browser's
+     `print *' command so the `size io' command updates the
+     configuration parameters for the browser's `print *' command.
+
+end
+document decl 1300 width
+width NUM
+     Set the number of columns in which terms are to be printed to NUM.
+
+width io NUM
+     Set the number of columns in which I/O actions are to be printed
+     to NUM.  I/O actions are printed using the browser's `print *'
+     command so the `width io' command updates the configuration
+     parameters for the browser's `print *' command.
+
+end
+document decl 1400 lines
+lines NUM
+     Set the maximum number of lines in terms to be printed to NUM.
+
+lines io NUM
+     Set the maximum number of lines in I/O actions to be printed to
+     NUM.  I/O actions are printed using the browser's `print *'
+     command so the `lines io' command updates the configuration
+     parameters for the browser's `print *' command.
+
+end
+document decl 1500 actions
+actions NUM
+     Set the maximum number of I/O actions to be printed in questions
+     to NUM.
+
+end
+document decl 1600 params
+params
+     Print the current values of browser parameters.
+
+end
+document decl 1700 track
+track [-a] [TERM-PATH]
+     The `track' command can only be given from within the interactive
+     term browser and tells the declarative debugger to find the point
+     at which the current subterm was bound.  If no argument is given
+     the current subterm is taken to be incorrect.  If a TERM-PATH is
+     given then the subterm at TERM-PATH relative to the current
+     subterm will be considered incorrect.  The declarative debugger
+     will ask about the call that bound the given subterm next.  To
+     find out the location of the unification that bound the subterm,
+     issue an `info' command when asked about the call that bound the
+     subterm.  The declarative debugger can use one of two algorithms
+     to find the point at which the subterm was bound.  The first
+     algorithm uses some heuristics to find the subterm more quickly
+     than the second algorithm.  It is possible, though unlikely, for
+     the first algorithm to find the wrong call.  The first algorithm
+     is the default.  To tell the declarative debugger to use the
+     second, more accurate but slower algorithm, give the `-a' or
+     `--accurate' option to the `track' command.
+
+end
+document decl 1800 mark
+mark [-a] [TERM-PATH]
+     The `mark' command has the same effect as the `track' command
+     except that it also asserts that the atom is inadmissible or
+     erroneous, depending on whether the subterm is input or output
+     respectively.
+
+end
+document decl 1900 pd
+pd
+     Commence procedural debugging from the current point.  This
+     command is notionally the inverse of the `dd' command in the
+     procedural debugger.  The session can be resumed with a `dd
+     --resume' command.
+
+end
+document decl 2000 quit
+quit
+     End the declarative debugging session and return to the event at
+     which the `dd' command was given.  The session can be resumed with
+     a `dd --resume' command.
+
+end
+document decl 2100 info
+info
+     List the filename and line number of the predicate the current
+     question is about as well as the filename and line number where
+     the predicate was called (if this information is available).  Also
+     print some information about the state of the bug search, such as
+     the current search mode, how many events are yet to be eliminated
+     and the reason for asking the current question.
+
+end
+document decl 2200 help
+help [COMMAND]
+     Summarize the list of available commands or give help on a specific
+     command.
+
+end
+document queries 100 query
+query MODULE1 MODULE2 ...
+    See help for `cc_query'.
+end
+document queries 200 cc_query
+cc_query MODULE1 MODULE2 ...
+    See help for `io_query'.
+end
+document queries 300 io_query
+io_query MODULE1 MODULE2 ...
+     These commands allow you to type in queries (goals) interactively
+     in the debugger.  When you use one of these commands, the debugger
+     will respond with a query prompt (`?-' or `run <--'), at which you
+     can type in a goal; the debugger will then compile and execute the
+     goal and display the answer(s).  You can return from the query
+     prompt to the `mdb>' prompt by typing the end-of-file indicator
+     (typically control-D or control-Z), or by typing `quit.'.
+
+     The module names MODULE1, MODULE2, ... specify which modules will
+     be imported.  Note that you can also add new modules to the list
+     of imports directly at the query prompt, by using a command of the
+     form `[MODULE]', e.g. `[int]'.  You need to import all the modules
+     that define symbols used in your query.  Queries can only use
+     symbols that are exported from a module; entities which are
+     declared in a module's implementation section only cannot be used.
+
+     The three variants differ in what kind of goals they allow.  For
+     goals which perform I/O, you need to use `io_query'; this lets you
+     type in the goal using DCG syntax.  For goals which don't do I/O,
+     but which have determinism `cc_nondet' or `cc_multi', you need to
+     use `cc_query'; this finds only one solution to the specified goal.
+     For all other goals, you can use plain `query', which finds all
+     the solutions to the goal.
+
+     For `query' and `cc_query', the debugger will print out all the
+     variables in the goal using `io.write'.  The goal must bind all of
+     its variables to ground terms, otherwise you will get a mode error.
+
+     The current implementation works by compiling the queries
+     on-the-fly and then dynamically linking them into the program
+     being debugged.  Thus it may take a little while for your query to
+     be executed.  Each query will be written to a file named
+     `mdb_query.m' in the current directory, so make sure you don't
+     name your source file `mdb_query.m'.  Note that dynamic linking
+     may not be supported on some systems; if you are using a system
+     for which dynamic linking is not supported, you will get an error
+     message when you try to run these commands.
+
+     You may also need to build your program using shared libraries for
+     interactive queries to work.  With Linux on the Intel x86
+     architecture, the default is for executables to be statically
+     linked, which means that dynamic linking won't work, and hence
+     interactive queries won't work either (the error message is rather
+     obscure: the dynamic linker complains about the symbol
+     `__data_start' being undefined).  To build with shared libraries,
+     you can use `MGNUCFLAGS=--pic-reg' and `MLFLAGS=--shared' in your
+     Mmakefile.  See the `README.Linux' file in the Mercury
+     distribution for more details.
+
+end
+document forward 100 step
+step [-NSans] [NUM]
+     Steps forward NUM events.  If this command is given at event CUR,
+     continues execution until event CUR + NUM. The default value of
+     NUM is 1.
+
+     The options `-n' or `--none', `-s' or `--some', `-a' or `--all'
+     specify the print level to use for the duration of the command,
+     while the options `-S' or `--strict' and `-N' or `--nostrict'
+     specify the strictness of the command.
+
+     By default, this command is not strict, and it uses the default
+     print level.
+
+     A command line containing only a number NUM is interpreted as if
+     it were `step NUM'.
+
+     An empty command line is interpreted as `step 1'.
+
+end
+document forward 200 goto
+goto [-NSans] NUM
+     Continues execution until the program reaches event number NUM.
+     If the current event number is larger than NUM, it reports an
+     error.
+
+     The options `-n' or `--none', `-s' or `--some', `-a' or `--all'
+     specify the print level to use for the duration of the command,
+     while the options `-S' or `--strict' and `-N' or `--nostrict'
+     specify the strictness of the command.
+
+     By default, this command is strict, and it uses the default print
+     level.
+
+end
+document forward 300 next
+next [-NSans] [NUM]
+     Continues execution until it reaches the next event of the NUM'th
+     ancestor of the call to which the current event refers.  The
+     default value of NUM is zero, which means skipping to the next
+     event of the current call.  Reports an error if execution is
+     already at the end of the specified call.
+
+     The options `-n' or `--none', `-s' or `--some', `-a' or `--all'
+     specify the print level to use for the duration of the command,
+     while the options `-S' or `--strict' and `-N' or `--nostrict'
+     specify the strictness of the command.
+
+     By default, this command is strict, and it uses the default print
+     level.
+
+end
+document forward 400 finish
+finish [-NSans] [NUM]
+     Continues execution until it reaches a final (EXIT, FAIL or EXCP)
+     port of the NUM'th ancestor of the call to which the current event
+     refers.  The default value of NUM is zero, which means skipping to
+     the end of the current call.  Reports an error if execution is
+     already at the desired port.
+
+     The options `-n' or `--none', `-s' or `--some', `-a' or `--all'
+     specify the print level to use for the duration of the command,
+     while the options `-S' or `--strict' and `-N' or `--nostrict'
+     specify the strictness of the command.
+
+     By default, this command is strict, and it uses the default print
+     level.
+
+end
+document forward 500 exception
+exception [-NSans]
+     Continues the program until execution reaches an exception event.
+     Reports an error if the current event is already an exception
+     event.
+
+     The options `-n' or `--none', `-s' or `--some', `-a' or `--all'
+     specify the print level to use for the duration of the command,
+     while the options `-S' or `--strict' and `-N' or `--nostrict'
+     specify the strictness of the command.
+
+     By default, this command is strict, and it uses the default print
+     level.
+
+end
+document forward 600 return
+return [-NSans]
+     Continues the program until the program finished returning, i.e.
+     until it reaches a port other than EXIT.  Reports an error if the
+     current event already refers to such a port.
+
+     The options `-n' or `--none', `-s' or `--some', `-a' or `--all'
+     specify the print level to use for the duration of the command,
+     while the options `-S' or `--strict' and `-N' or `--nostrict'
+     specify the strictness of the command.
+
+     By default, this command is strict, and it uses the default print
+     level.
+
+end
+document forward 700 user
+user [-NSans]
+     Continues the program until the next user defined event.
+
+     The options `-n' or `--none', `-s' or `--some', `-a' or `--all'
+     specify the print level to use for the duration of the command,
+     while the options `-S' or `--strict' and `-N' or `--nostrict'
+     specify the strictness of the command.
+
+     By default, this command is strict, and it uses the default print
+     level.
+
+end
+document forward 800 forward
+forward [-NSans]
+     Continues the program until the program resumes forward execution,
+     i.e. until it reaches a port other than REDO or FAIL.  Reports an
+     error if the current event already refers to such a port.
+
+     The options `-n' or `--none', `-s' or `--some', `-a' or `--all'
+     specify the print level to use for the duration of the command,
+     while the options `-S' or `--strict' and `-N' or `--nostrict'
+     specify the strictness of the command.
+
+     By default, this command is strict, and it uses the default print
+     level.
+
+end
+document forward 900 mindepth
+mindepth [-NSans] DEPTH
+     Continues the program until the program reaches an event whose
+     depth is at least DEPTH.  Reports an error if the current event
+     already refers to such a port.
+
+     The options `-n' or `--none', `-s' or `--some', `-a' or `--all'
+     specify the print level to use for the duration of the command,
+     while the options `-S' or `--strict' and `-N' or `--nostrict'
+     specify the strictness of the command.
+
+     By default, this command is strict, and it uses the default print
+     level.
+
+end
+document forward 1000 maxdepth
+maxdepth [-NSans] DEPTH
+     Continues the program until the program reaches an event whose
+     depth is at most DEPTH.  Reports an error if the current event
+     already refers to such a port.
+
+     The options `-n' or `--none', `-s' or `--some', `-a' or `--all'
+     specify the print level to use for the duration of the command,
+     while the options `-S' or `--strict' and `-N' or `--nostrict'
+     specify the strictness of the command.
+
+     By default, this command is strict, and it uses the default print
+     level.
+
+end
+document forward 1100 continue
+continue [-NSans]
+     Continues execution until it reaches the end of the program.
+
+     The options `-n' or `--none', `-s' or `--some', `-a' or `--all'
+     specify the print level to use for the duration of the command,
+     while the options `-S' or `--strict' and `-N' or `--nostrict'
+     specify the strictness of the command.
+
+     By default, this command is not strict. The print level used by
+     the command by default depends on the final strictness level: if
+     the command is strict, it is `none', otherwise it is `some'.
+
+end
+document backward 100 retry
+retry [-fio] [NUM]
+     If the optional number is not given, restarts execution at the
+     call port of the call corresponding to the current event.  If the
+     optional number is given, restarts execution at the call port of
+     the call corresponding to the NUM'th ancestor of the call to which
+     the current event belongs.  For example, if NUM is 1, it restarts
+     the parent of the current call.
+
+     The command will report an error unless the values of all the
+     input arguments of the selected call are available at the return
+     site at which control would reenter the selected call.  (The
+     compiler will keep the values of the input arguments of traced
+     predicates as long as possible, but it cannot keep them beyond the
+     point where they are destructively updated.)  The exception is
+     values of type `io.state'; the debugger can perform a retry if the
+     only missing value is of type `io.state' (there can be only one
+     io.state at any given time).
+
+     Retries over I/O actions are guaranteed to be safe only if the
+     events at which the retry starts and ends are both within the I/O
+     tabled region of the program's execution.  If the retry is not
+     guaranteed to be safe, the debugger will normally ask the user if
+     they really want to do this.  The option `-f' or `--force'
+     suppresses the question, telling the debugger that retrying over
+     I/O is OK; the option `-o' or `--only-if-safe' suppresses the
+     question, telling the debugger that retrying over I/O is not OK;
+     the option `-i' or `--interactive' restores the question if a
+     previous option suppressed it.
+
+end
+document backward 200 track
+track NUM [TERMPATH]
+     Goto the EXIT event of the procedure in which the subterm in
+     argument NUM at term path TERMPATH was bound, and display
+     information about where the term was bound.
+
+     Note that this command just invokes a script that is equivalent to
+     running the following sequence of commands:
+          	dd
+          	browse NUM
+          	cd TERMPATH
+          	track
+          	info
+          	pd
+
+end
+document browsing 100 vars
+vars
+     Prints the names of all the known variables in the current
+     environment, together with an ordinal number for each variable.
+
+end
+document browsing 200 held_vars
+held_vars
+     Prints the names of all the held variables.
+
+end
+document browsing 300 print
+print [-fpv] NAME[TERMPATH]
+print [-fpv] NUM[TERMPATH]
+     Prints the value of the variable in the current environment with
+     the given name, or with the given ordinal number.  If the name or
+     number is followed by a term path such as "^2", then only the
+     specified subterm of the given variable is printed.  This is a
+     non-interactive version of the `browse' command (see below).
+     Various settings which affect the way that terms are printed out
+     (including e.g. the maximum term depth) can be set using the
+     `format_param' command.
+
+     The options `-f' or `--flat', `-p' or `--pretty', and `-v' or
+     `--verbose' specify the format to use for printing.
+
+print [-fpv] *
+     Prints the values of all the known variables in the current
+     environment.
+
+     The options `-f' or `--flat', `-p' or `--pretty', and `-v' or
+     `--verbose' specify the format to use for printing.
+
+print [-fpv]
+
+print [-fpv] goal
+     Prints the goal of the current call in its present state of
+     instantiation.
+
+     The options `-f' or `--flat', `-p' or `--pretty', and `-v' or
+     `--verbose' specify the format to use for printing.
+
+print [-fpv] exception
+     Prints the value of the exception at an EXCP port.  Reports an
+     error if the current event does not refer to such a port.
+
+     The options `-f' or `--flat', `-p' or `--pretty', and `-v' or
+     `--verbose' specify the format to use for printing.
+
+print [-fpv] action NUM
+     Prints a representation of the NUM'th I/O action executed by the
+     program.
+
+     The options `-f' or `--flat', `-p' or `--pretty', and `-v' or
+     `--verbose' specify the format to use for printing.
+
+end
+document browsing 400 browse
+browse [-fpvx] NAME[TERMPATH]
+browse [-fpvx] NUM[TERMPATH]
+     Invokes an interactive term browser to browse the value of the
+     variable in the current environment with the given ordinal number
+     or with the given name.  If the name or number is followed by a
+     term path such as "^2", then only the specified subterm of the
+     given variable is given to the browser.
+
+     The interactive term browser allows you to selectively examine
+     particular subterms.  The depth and size of printed terms may be
+     controlled.  The displayed terms may also be clipped to fit within
+     a single screen.
+
+     The options `-f' or `--flat', `-p' or `--pretty', and `-v' or
+     `--verbose' specify the format to use for browsing.  The `-x' or
+     `--xml' option tells mdb to dump the value of the variable to an
+     XML file and then invoke an XML browser on the file.  The XML
+     filename as well as the command to invoke the XML browser can be
+     set using the `set' command.  See the documentation for `set' for
+     more details.
+
+     For further documentation on the interactive term browser, invoke
+     the `browse' command from within `mdb' and then type `help' at the
+     `browser>' prompt.
+
+browse [-fpvx]
+browse [-fpvx] goal
+     Invokes the interactive term browser to browse the goal of the
+     current call in its present state of instantiation.
+
+     The options `-f' or `--flat', `-p' or `--pretty', and `-v' or
+     `--verbose' specify the format to use for browsing.  The `-x' or
+     `--xml' option tells mdb to dump the goal to an XML file and then
+     invoke an XML browser on the file.  The XML filename as well as the
+     command to invoke the XML browser can be set using the `set'
+     command.  See the documentation for `set' for more details.
+
+browse [-fpvx] exception
+     Invokes the interactive term browser to browse the value of the
+     exception at an EXCP port.  Reports an error if the current event
+     does not refer to such a port.
+
+     The options `-f' or `--flat', `-p' or `--pretty', and `-v' or
+     `--verbose' specify the format to use for browsing.  The `-x' or
+     `--xml' option tells mdb to dump the exception to an XML file and
+     then invoke an XML browser on the file.  The XML filename as well
+     as the command to invoke the XML browser can be set using the `set'
+     command.  See the documentation for `set' for more details.
+
+browse [-fpvx] action NUM
+     Invokes an interactive term browser to browse a representation of
+     the NUM'th I/O action executed by the program.
+
+     The options `-f' or `--flat', `-p' or `--pretty', and `-v' or
+     `--verbose' specify the format to use for browsing.  The `-x' or
+     `--xml' option tells mdb to dump the io action representation to
+     an XML file and then invoke an XML browser on the file.  The XML
+     filename as well as the command to invoke the XML browser can be
+     set using the `set' command.  See the documentation for `set' for
+     more details.
+
+end
+document browsing 500 stack
+stack [-d] [-fNUMFRAMES] [NUMLINES]
+     Prints the names of the ancestors of the call specified by the
+     current event.  If two or more ancestor calls are for the same
+     procedure, the procedure identification will be printed once with
+     the appropriate multiplicity annotation.
+
+     The option `-d' or `--detailed' specifies that for each ancestor
+     call, the call's event number, sequence number and depth should
+     also be printed if the call is to a procedure that is being
+     execution traced.
+
+     If the `-f' option, if present, specifies that only the topmost
+     NUMFRAMES stack frames should be printed.
+
+     The optional number NUMLINES, if present, specifies that only the
+     topmost NUMLINES lines should be printed.
+
+     This command will report an error if there is no stack trace
+     information available about any ancestor.
+
+end
+document browsing 600 up
+up [-d] [NUM]
+     Sets the current environment to the stack frame of the NUM'th
+     level ancestor of the current environment (the immediate caller is
+     the first-level ancestor).
+
+     If NUM is not specified, the default value is one.
+
+     This command will report an error if the current environment
+     doesn't have the required number of ancestors, or if there is no
+     execution trace information about the requested ancestor, or if
+     there is no stack trace information about any of the ancestors
+     between the current environment and the requested ancestor.
+
+     The option `-d' or `--detailed' specifies that for each ancestor
+     call, the call's event number, sequence number and depth should
+     also be printed if the call is to a procedure that is being
+     execution traced.
+
+end
+document browsing 700 down
+down [-d] [NUM]
+     Sets the current environment to the stack frame of the NUM'th
+     level descendant of the current environment (the procedure called
+     by the current environment is the first-level descendant).
+
+     If NUM is not specified, the default value is one.
+
+     This command will report an error if there is no execution trace
+     information about the requested descendant.
+
+     The option `-d' or `--detailed' specifies that for each ancestor
+     call, the call's event number, sequence number and depth should
+     also be printed if the call is to a procedure that is being
+     execution traced.
+
+end
+document browsing 800 level
+level [-d] [NUM]
+     Sets the current environment to the stack frame of the NUM'th
+     level ancestor of the call to which the current event belongs.
+     The zero'th ancestor is the call of the event itself.
+
+     This command will report an error if the current environment
+     doesn't have the required number of ancestors, or if there is no
+     execution trace information about the requested ancestor, or if
+     there is no stack trace information about any of the ancestors
+     between the current environment and the requested ancestor.
+
+     The option `-d' or `--detailed' specifies that for each ancestor
+     call, the call's event number, sequence number and depth should
+     also be printed if the call is to a procedure that is being
+     execution traced.
+
+end
+document browsing 900 current
+current
+     Prints the current event.  This is useful if the details of the
+     event, which were printed when control arrived at the event, have
+     since scrolled off the screen.
+
+end
+document browsing 1000 view
+view [-vf2] [-w WINDOW-CMD] [-s SERVER-CMD] [-n SERVER-NAME] [-t TIMEOUT]
+view -c [-v] [-s SERVER-CMD] [-n SERVER-NAME]
+     Opens a new window displaying the source code, at the location of
+     the current event.  As mdb stops at new events, the window is
+     updated to track through the source code.  This requires X11 and a
+     version of `vim' compiled with the client/server option enabled.
+
+     The debugger only updates one window at a time.  If you try to
+     open a new source window when there is already one open, this
+     command aborts with an error message.
+
+     The variant with `-c' (or `--close') does not open a new window
+     but instead attempts to close a currently open source window.  The
+     attempt may fail if, for example, the user has modified the source
+     file without saving.
+
+     The option `-v' (or `--verbose') prints the underlying system
+     calls before running them, and prints any output the calls
+     produced.  This is useful to find out what is wrong if the server
+     does not start.
+
+     The option `-f' (or `--force') stops the command from aborting if
+     there is already a window open.  Instead it attempts to close that
+     window first.
+
+     The option `-2' (or `--split-screen') starts the vim server with
+     two windows, which allows both the callee as well as the caller to
+     be displayed at interface events.  The lower window shows what
+     would normally be seen if the split-screen option was not used,
+     which at interface events is the caller.  At these events, the
+     upper window shows the callee definition.  At internal events, the
+     lower window shows the associated source, and the view in the
+     upper window (which is not interesting at these events) remains
+     unchanged.
+
+     The option `-w' (or `--window-command') specifies the command to
+     open a new window.  The default is `xterm -e'.
+
+     The option `-s' (or `--server-command') specifies the command to
+     start the server.  The default is `vim'.
+
+     The option `-n' (or `--server-name') specifies the name of an
+     existing server.  Instead of starting up a new server, mdb will
+     attempt to connect to the existing one.
+
+     The option `-t' (or `--timeout') specifies the maximum number of
+     seconds to wait for the server to start.
+
+end
+document browsing 1100 hold
+hold NAME[TERMPATH] [HELDNAME]
+     Holds on to the variable NAME of the current event, or the part of
+     the specified by TERMPATH, even after execution leaves the current
+     event.  The held value will stay accessible via the name $HELDNAME.
+     If HELDNAME is not specified, it defaults to NAME.  There must not
+     already be a held variable named HELDNAME.
+
+end
+document browsing 1200 diff
+diff [-s START] [-m MAX] NAME1[TERMPATH1] NAME2[TERMPATH2]
+     Prints a list of some of the term paths at which the (specified
+     parts of) the specified terms differ.  Normally this command
+     prints the term paths of the first 20 differences.
+
+     The option `-s' (or `--start'), if present, specifies how many of
+     the initial differences to skip.
+
+     The option `-m' (or `--max'), if present, specifies how many
+     differences to print.
+
+end
+document browsing 1300 dump
+dump [-x] goal FILENAME
+     Writes the goal of the current call in its present state of
+     instantiation to the specified file.  The option `-x' (or `--xml')
+     causes the output to be in XML.
+
+dump [-x] exception FILENAME
+     Writes the value of the exception at an EXCP port to the specified
+     file.  Reports an error if the current event does not refer to
+     such a port.  The option `-x' (or `--xml') causes the output to be
+     in XML.
+
+dump [-x] NAME FILENAME
+dump [-x] NUM FILENAME
+     Writes the value of the variable in the current environment with
+     the given ordinal number or with the given name to the specified
+     file. The option `-x' (or `--xml') causes the output to be in XML.
+
+end
+document browsing 1400 open
+open TERM
+     Save TERM to a temporary file and open the file in an editor.  The
+     environment variable EDITOR is consulted to determine what editor
+     to use.  If this environment variable is not set then `vi' is used.
+     TERM may be any term that can be saved to a file with the
+     `save_to_file' command.
+
+end
+document browsing 1500 grep
+grep PATTERN TERM
+     Save the given term to a temporary file and perform a grep on the
+     file using PATTERN.  TERM may be any term that can be saved to a
+     file with the `save_to_file' command.  The unix `grep' command
+     must be available from the shell for this command to work.
+
+end
+document browsing 1600 list
+list [NUM]
+     Lists the source code text for the current environment, including
+     NUM preceding and following lines.  If NUM is not provided then
+     the default of two is used.
+
+end
+document breakpoint 100 break
+break [-PS] [-EIGNORE-COUNT] [-IIGNORE-COUNT] [-n] [-pPRINT-SPEC]* FILENAME:LINENUMBER
+     Puts a break point on the specified line of the specified source
+     file, if there is an event or a call at that position.  If the
+     filename is omitted, it defaults to the filename from the context
+     of the current event.
+
+     The options `-P' or `--print', and `-S' or `--stop' specify the
+     action to be taken at the break point.
+
+     The options `-EIGNORE-COUNT' and `--ignore-entry IGNORE-COUNT'
+     tell the debugger to ignore the breakpoint until after
+     IGNORE-COUNT occurrences of a call event that matches the
+     breakpoint.  The options `-IIGNORE-COUNT' and `--ignore-interface
+     IGNORE-COUNT' tell the debugger to ignore the breakpoint until
+     after IGNORE-COUNT occurrences of interface events that match the
+     breakpoint.
+
+     Each occurrence of the options `-pPRINTSPEC' and `--print-list
+     PRINTSPEC' tells the debugger to include the specified entity in
+     the breakpoint's print list.
+
+     Normally, if a variable with the given name or number doesn't exist
+     when execution reaches the breakpoint, mdb will issue a warning.
+     The option `-n' or `--no-warn', if present, suppresses this
+     warning.  This can be useful if e.g. the name is the name of an
+     output variable, which of course won't be present at call events.
+
+     By default, the action of the break point is `stop', the ignore
+     count is zero, and the print list is empty.
+
+break [-AOPSaei] [-EIGNORE-COUNT] [-IIGNORE-COUNT] [-n] [-pPRINT-SPEC]* PROC-SPEC
+     Puts a break point on the specified procedure.
+
+     The options `-A' or `--select-all', and `-O' or `--select-one'
+     select the action to be taken if the specification matches more
+     than one procedure.  If you have specified option `-A' or
+     `--select-all', mdb will put a breakpoint on all matched
+     procedures, whereas if you have specified option `-O' or
+     `--select-one', mdb will report an error.  By default, mdb will
+     ask you whether you want to put a breakpoint on all matched
+     procedures or just one, and if so, which one.
+
+     The options `-P' or `--print', and `-S' or `--stop' specify the
+     action to be taken at the break point.
+
+     The options `-a' or `--all', `-e' or `--entry', and `-i' or
+     `--interface' specify the invocation conditions of the break point.
+     If none of these options are specified, the default is the one
+     indicated by the current scope (see the `scope' command below).
+     The initial scope is `interface'.
+
+     The options `-EIGNORE-COUNT' and `--ignore-entry IGNORE-COUNT'
+     tell the debugger to ignore the breakpoint until after
+     IGNORE-COUNT occurrences of a call event that matches the
+     breakpoint.  The options `-IIGNORE-COUNT' and `--ignore-interface
+     IGNORE-COUNT' tell the debugger to ignore the breakpoint until
+     after IGNORE-COUNT occurrences of interface events that match the
+     breakpoint.
+
+     Each occurrence of the options `-pPRINTSPEC' and `--print-list
+     PRINTSPEC' tells the debugger to include the specified entity in
+     the breakpoint's print list.
+
+     Normally, if a variable with the given name or number doesn't exist
+     when execution reaches the breakpoint, mdb will issue a warning.
+     The option `-n' or `--no-warn', if present, suppresses this
+     warning.  This can be useful if e.g. the name is the name of an
+     output variable, which of course won't be present at call events.
+
+     By default, the action of the break point is `stop', its
+     invocation condition is `interface', the ignore count is zero, and
+     the print list is empty.
+
+break [-OPS] [-EIGNORE-COUNT] [-IIGNORE-COUNT] [-n] [-pPRINT-SPEC]* PROC-SPEC PORTNAME
+     Puts a break point on one or more events of the specified type in
+     the specified procedure.  Port names should be specified as they
+     are printed at events, e.g. `CALL', `EXIT', `DISJ', `SWTC', etc.
+
+     The option `-O' or `--select-one' selects the action to be taken
+     if the specification matches more than one procedure.  If you have
+     specified option `-O' or `--select-one', mdb will report an error;
+     otherwise, mdb will ask you which of the matched procedures you
+     want to select.
+
+     If there is only one event of the given type in the specified
+     procedure, mdb will put the breakpoint on it; otherwise, it will
+     ask you whether you want to put a breakpoint on all matched events
+     or just one, and if so, which one.
+
+     The options `-P' or `--print', and `-S' or `--stop' specify the
+     action to be taken at the break point.
+
+     The options `-EIGNORE-COUNT' and `--ignore-entry IGNORE-COUNT'
+     tell the debugger to ignore the breakpoint until after
+     IGNORE-COUNT occurrences of a call event that matches the
+     breakpoint.  The options `-IIGNORE-COUNT' and `--ignore-interface
+     IGNORE-COUNT' tell the debugger to ignore the breakpoint until
+     after IGNORE-COUNT occurrences of interface events that match the
+     breakpoint.
+
+     Each occurrence of the options `-pPRINTSPEC' and `--print-list
+     PRINTSPEC' tells the debugger to include the specified entity in
+     the breakpoint's print list.
+
+     Normally, if a variable with the given name or number doesn't exist
+     when execution reaches the breakpoint, mdb will issue a warning.
+     The option `-n' or `--no-warn', if present, suppresses this
+     warning.  This can be useful if e.g. the name is the name of an
+     output variable, which of course won't be present at call events.
+
+     By default, the action of the break point is `stop', the ignore
+     count is zero, and the print list is empty.
+
+break [-PS] [-EIGNORE-COUNT] [-IIGNORE-COUNT] [-n] [-pPRINT-SPEC]* here
+     Puts a break point on the procedure referred to by the current
+     event, with the invocation condition being the event at the
+     current location in the procedure body.
+
+     The options `-P' or `--print', and `-S' or `--stop' specify the
+     action to be taken at the break point.
+
+     The options `-EIGNORE-COUNT' and `--ignore-entry IGNORE-COUNT'
+     tell the debugger to ignore the breakpoint until after
+     IGNORE-COUNT occurrences of a call event that matches the
+     breakpoint.  The options `-IIGNORE-COUNT' and `--ignore-interface
+     IGNORE-COUNT' tell the debugger to ignore the breakpoint until
+     after IGNORE-COUNT occurrences of interface events that match the
+     breakpoint.
+
+     Each occurrence of the options `-pPRINTSPEC' and `--print-list
+     PRINTSPEC' tells the debugger to include the specified entity in
+     the breakpoint's print list.
+
+     Normally, if a variable with the given name or number doesn't exist
+     when execution reaches the breakpoint, mdb will issue a warning.
+     The option `-n' or `--no-warn', if present, suppresses this
+     warning.  This can be useful if e.g. the name is the name of an
+     output variable, which of course won't be present at call events.
+
+     By default, the action of the break point is `stop', the ignore
+     count is zero, and the print list is empty.
+
+break [-PS] [-XIGNORE-COUNT] [-n] [-pPRINT-SPEC]* user_event [USER-EVENT-SET] USER-EVENT-NAME
+     Puts a break point on all user events named USER-EVENT-NAME, or,
+     if USER-EVENT-SET is specified as well, on the user event named
+     USER-EVENT-NAME in that event set.
+
+     The options `-P' or `--print', and `-S' or `--stop' specify the
+     action to be taken at the break point.
+
+     The options `-XIGNORE-COUNT' and `--ignore IGNORE-COUNT' tell the
+     debugger to ignore the breakpoint until after IGNORE-COUNT
+     occurrences of an event that matches the breakpoint.
+
+     Each occurrence of the options `-pPRINTSPEC' and `--print-list
+     PRINTSPEC' tells the debugger to include the specified entity in
+     the breakpoint's print list.
+
+     Normally, if a variable with the given name or number doesn't exist
+     when execution reaches the breakpoint, mdb will issue a warning.
+     The option `-n' or `--no-warn', if present, suppresses this
+     warning.  This can be useful if e.g. the name is the name of an
+     output variable, which of course won't be present at call events.
+
+     By default, the action of the break point is `stop', the ignore
+     count is zero, and the print list is empty.
+
+break [-PS] [-XIGNORE-COUNT] [-n] [-pPRINT-SPEC]* user_event_set [USER-EVENT-SET]
+     Puts a break point either on all user events in all event sets,
+     or, if USER-EVENT-SET is specified, on all user events in the
+     event set of the given name.
+
+     The options `-P' or `--print', and `-S' or `--stop' specify the
+     action to be taken at the break point.
+
+     The options `-XIGNORE-COUNT' and `--ignore IGNORE-COUNT' tell the
+     debugger to ignore the breakpoint until after IGNORE-COUNT
+     occurrences of an event that matches the breakpoint.
+
+     Each occurrence of the options `-pPRINTSPEC' and `--print-list
+     PRINTSPEC' tells the debugger to include the specified entity in
+     the breakpoint's print list.
+
+     Normally, if a variable with the given name or number doesn't exist
+     when execution reaches the breakpoint, mdb will issue a warning.
+     The option `-n' or `--no-warn', if present, suppresses this
+     warning.  This can be useful if e.g. the name is the name of an
+     output variable, which of course won't be present at call events.
+
+     By default, the action of the break point is `stop', the ignore
+     count is zero, and the print list is empty.
+
+break info
+     Lists the details, status and print lists of all break points.
+
+end
+document breakpoint 200 condition
+condition [-bBREAK-NUM] [-p] [-v] VARNAME[PATHSPEC] OP TERM
+     Attaches a condition to the most recent breakpoint, or, if the
+     `-b' or `--break-num' is given, to the breakpoint whose number is
+     given as the argument.  Execution won't stop at the breakpoint if
+     the condition is false.
+
+     The condition is a match between a variable live at the breakpoint,
+     or a part thereof, and TERM.  It is ok for TERM to contain spaces.
+     The term from the program to be matched is specified by VARNAME;
+     if it is followed by PATHSPEC (without a space), it specifies that
+     the match is to be against the specified part of VARNAME.
+
+     There are two kinds of values allowed for OP.  If OP is `=' or
+     `==', the condition is true if the term specified by VARNAME (and
+     PATHSPEC, if present) matches TERM.  If OP is `!=' or `\\=', the
+     condition is true if the term specified by VARNAME (and PATHSPEC,
+     if present) doesn't match TERM.  TERM may contain integers and
+     strings (as long as the strings don't contain double quotes), but
+     floats and characters aren't supported (yet), and neither is any
+     special syntax for operators.  Operators can be specified in
+     prefix form by quoting them with escaped single quotes, as in
+     `\'+\'(1, 2)'.  Lists can be specified using the usual syntax.
+     TERM also may not contain variables, with one exception: any
+     occurrence of `_' in TERM matches any term.
+
+     If execution reaches a breakpoint and the condition cannot be
+     evaluated, execution will normally stop at that breakpoint with a
+     message to that effect.  If the `-p' or `--dont-require-path'
+     option is given, execution won't stop at breakpoints at which the
+     specified part of the specified variable doesn't exist.  If the
+     `-v' or `--dont-require-var' option is given, execution won't stop
+     at breakpoints at which the specified variable itself doesn't
+     exist.  The `-v' or `--dont-require-var' option is implicitly
+     assumed if the specified breakpoint is on all user events.
+
+end
+document breakpoint 300 ignore
+ignore [-EIGNORE-COUNT] [-IIGNORE-COUNT] NUM
+     The options `-EIGNORE-COUNT' and `--ignore-entry IGNORE-COUNT'
+     tell the debugger to ignore the breakpoint until after
+     IGNORE-COUNT occurrences of a call event that matches the
+     breakpoint with the specified number.  The options `-IIGNORE-COUNT'
+     and `--ignore-interface IGNORE-COUNT' tell the debugger to ignore
+     the breakpoint until after IGNORE-COUNT occurrences of interface
+     events that match the breakpoint with the specified number.  If
+     neither option is given, the default is to ignore one call event
+     that matches the breakpoint with the specified number.  Reports an
+     error if there is no break point with the specified number.
+
+ignore [-EIGNORE-COUNT] [-IIGNORE-COUNT]
+     The options `-EIGNORE-COUNT' and `--ignore-entry IGNORE-COUNT'
+     tell the debugger to ignore the breakpoint until after
+     IGNORE-COUNT occurrences of a call event that matches the most
+     recently added breakpoint.  The options `-IIGNORE-COUNT' and
+     `--ignore-interface IGNORE-COUNT' tell the debugger to ignore the
+     breakpoint until after IGNORE-COUNT occurrences of interface events
+     that match the most recently added breakpoint.  If neither option
+     is given, the default is to ignore one call event that matches the
+     most recently added breakpoint.  Reports an error if the most
+     recently added breakpoint has since been deleted.
+
+end
+document breakpoint 400 break_print
+break_print [-fpv] [-e] [-n] [-b NUM] PRINT-SPEC*
+     Adds the specified print list elements (there may be more than one)
+     to the print list of the breakpoint numbered NUM (if the `-b' or
+     `--break-num' option is given), or to the print list of the most
+     recent breakpoint (if it is not given).
+
+     Normally, if a variable with the given name or number doesn't exist
+     when execution reaches the breakpoint, mdb will issue a warning.
+     The option `-n' or `--no-warn', if present, suppresses this
+     warning.  This can be useful if e.g. the name is the name of an
+     output variable, which of course won't be present at call events.
+
+     Normally, the specified elements will be added at the start of the
+     breakpoint's print list.  The option `-e' or `--end', if present,
+     causes them to be added at the end.
+
+     By default, the specified elements will be printed with format
+     "flat".  The options `-f' or `--flat', `-p' or `--pretty', and
+     `-v' or `--verbose', if given, explicitly specify the format to
+     use.
+
+break_print [-b NUM] none
+     Clears the print list of the breakpoint numbered NUM (if the `-b'
+     or `--break-num' option is given), or the print list of the most
+     recent breakpoint (if it is not given).
+
+end
+document breakpoint 500 disable
+disable NUM
+     Disables the break point with the given number.  Reports an error
+     if there is no break point with that number.
+
+disable *
+     Disables all break points.
+
+disable
+     Disables the most recently added breakpoint.  Reports an error if
+     the most recently added breakpoint has since been deleted.
+
+end
+document breakpoint 600 enable
+enable NUM
+     Enables the break point with the given number.  Reports an error
+     if there is no break point with that number.
+
+enable *
+     Enables all break points.
+
+enable
+     Enables the most recently added breakpoint.  Reports an error if
+     the most recently added breakpoint has since been deleted.
+
+end
+document breakpoint 700 delete
+delete NUM
+     Deletes the break point with the given number.  Reports an error
+     if there is no break point with that number.
+
+delete *
+     Deletes all break points.
+
+delete
+     Deletes the most recently added breakpoint.  Reports an error if
+     the most recently added breakpoint has already been deleted.
+
+end
+document breakpoint 800 modules
+modules
+     Lists all the debuggable modules (i.e. modules that have debugging
+     information).
+
+end
+document breakpoint 900 procedures
+procedures MODULE
+     Lists all the procedures in the debuggable module MODULE.
+
+end
+document breakpoint 1000 register
+register [-q]
+     Registers all debuggable modules with the debugger.  Has no effect
+     if this registration has already been done.  The debugger will
+     perform this registration when creating breakpoints and when
+     listing debuggable modules and/or procedures.  The command will
+     print a message to this effect unless the `-q' or `--quiet' option
+     is given.
+
+end
+document io_tabling 100 table_io
+table_io
+     Reports which phase of I/O tabling we are in at the moment.
+
+table_io start
+     Tells the debugger to start tabling I/O actions.
+
+table_io stop
+     Tells the debugger to stop tabling I/O actions.
+
+table_io stats
+     Reports statistics about I/O tabling.
+
+end
+document parameter 100 mmc_options
+mmc_options OPTION1 OPTION2 ...
+     This command sets the options that will be passed to `mmc' to
+     compile your query when you use one of the query commands:
+     `query', `cc_query', or `io_query'.  For example, if a query
+     results in a compile error, it may sometimes be helpful to use
+     `mmc_options --verbose-error-messages'.
+
+end
+document parameter 200 printlevel
+printlevel none
+     Sets the default print level to `none'.
+
+printlevel some
+     Sets the default print level to `some'.
+
+printlevel all
+     Sets the default print level to `all'.
+
+printlevel
+     Reports the current default print level.
+
+end
+document parameter 300 scroll
+scroll on
+     Turns on user control over the scrolling of sequences of event
+     reports.  This means that every screenful of event reports will be
+     followed by a `--more--' prompt.  You may type an empty line,
+     which allows the debugger to continue to print the next screenful
+     of event reports.  By typing a line that starts with `a', `s' or
+     `n', you can override the print level of the current command,
+     setting it to `all', `some' or `none' respectively.  By typing a
+     line that starts with `q', you can abort the current debugger
+     command and get back control at the next event.
+
+scroll off
+     Turns off user control over the scrolling of sequences of event
+     reports.
+
+scroll SIZE
+     Sets the scroll window size to SIZE, which tells scroll control to
+     stop and print a `--more--' prompt after every SIZE - 1 events.
+     The default value of SIZE is the value of the `LINES' environment
+     variable, which should correspond to the number of lines available
+     on the terminal.
+
+scroll
+     Reports whether user scroll control is enabled and what the window
+     size is.
+
+end
+document parameter 400 stack_default_limit
+stack_default_limit SIZE
+     Set the default number of lines printed by the `stack' and
+     `nondet_stack' commands to SIZE.  If SIZE is zero, the limit is
+     disabled.
+
+end
+document parameter 500 goal_paths
+goal_paths on
+     Turns on printing of goal paths at events.
+
+goal_paths off
+     Turns off printing of goal paths at events.
+
+goal_paths
+     Reports whether goal paths are printed at events.
+
+end
+document parameter 600 scope
+scope all
+     Sets the default scope of new breakpoints to "all", i.e. by
+     default, new breakpoints on procedures will stop at all events in
+     the procedure.
+
+scope interface
+     Sets the default scope of new breakpoints to "interface", i.e. by
+     default, new breakpoints on procedures will stop at all interface
+     events in the procedure.
+
+scope entry
+     Sets the default scope of new breakpoints to "entry", i.e. by
+     default, new breakpoints on procedures will stop only at events
+     representing calls to the procedure.
+
+scope
+     Reports the current default scope of new breakpoints.
+
+end
+document parameter 700 echo
+echo on
+     Turns on the echoing of commands.
+
+echo off
+     Turns off the echoing of commands.
+
+echo
+     Reports whether commands are being echoed or not.
+
+end
+document parameter 800 context
+context none
+     When reporting events or ancestor levels, does not print contexts
+     (filename/line number pairs).
+
+context before
+     When reporting events or ancestor levels, prints contexts
+     (filename/line number pairs) before the identification of the
+     event or call to which they refer, on the same line.  With long
+     fully qualified predicate and function names, this may make the
+     line wrap around.
+
+context after
+     When reporting events or ancestor levels, prints contexts
+     (filename/line number pairs) after the identification of the event
+     or call to which they refer, on the same line.  With long fully
+     qualified predicate and function names, this may make the line
+     wrap around.
+
+context prevline
+     When reporting events or ancestor levels, prints contexts
+     (filename/line number pairs) on a separate line before the
+     identification of the event or call to which they refer.
+
+context nextline
+     When reporting events or ancestor levels, prints contexts
+     (filename/line number pairs) on a separate line after the
+     identification of the event or call to which they refer.
+
+context
+     Reports where contexts are being printed.
+
+end
+document parameter 900 user_event_context
+user_event_context none
+     When reporting user-defined events, does not print either
+     filename/line number pairs or procedure ids.
+
+user_event_context file
+     When reporting user-defined events, prints only filename/line
+     number pairs, not procedure ids.
+
+user_event_context proc
+     When reporting user-defined events, prints only procedure ids, not
+     filename/line number pairs.
+
+user_event_context full
+     When reporting user-defined events, prints both filename/line
+     number pairs and procedure ids.
+
+user_event_context
+     Reports what parts of the context are being printed at user events.
+
+end
+document parameter 1000 list_context_lines
+list_context_lines NUM
+     Sets the number of lines to be printed by the `list' command
+     printed before and after the target context.
+
+list_context_lines
+     Prints the number of lines to be printed by the `list' command
+     printed before and after the target context.
+
+end
+document parameter 1100 list_path
+list_path DIR1 DIR2 ...
+     The `list' command searches a list of directories when looking for
+     a source code file.  The `list_path' command sets the search path
+     to the given list of directories.
+
+list_path
+     When invoked without arguments, the `list_path' command prints the
+     search path consulted by the `list' command.
+
+end
+document parameter 1200 push_list_dir
+push_list_dir DIR1 DIR2 ...
+     Pushes the given directories on to the search path consulted by
+     the `list' command.
+
+end
+document parameter 1300 pop_list_dir
+pop_list_dir
+     Pops the leftmost (most recently pushed) directory from the search
+     path consulted by the `list' command.
+
+end
+document parameter 1400 fail_trace_counts
+fail_trace_counts FILENAME
+     The declarative debugger can exploit information about the failing
+     and passing test cases to ask better questions.  This command
+     tells the `dice' command that FILENAME contains execution trace
+     counts from failing test cases.  The `dice' command will use this
+     file unless this is overridden with its `--fail-trace-counts'
+     option.
+
+fail_trace_counts
+     Prints the name of the file containing execution trace counts from
+     failing test cases, if this has already been set.
+
+end
+document parameter 1500 pass_trace_counts
+pass_trace_counts FILENAME
+     The declarative debugger can exploit information about the failing
+     and passing test cases to ask better questions.  This command
+     tells the `dice' command that FILENAME contains execution trace
+     counts from passing test cases.  The `dice' command will use this
+     file unless this is overridden with its `--pass-trace-counts'
+     option.
+
+pass_trace_counts
+     Prints the name of the file containing execution trace counts from
+     passing test cases, if this has already been set.
+
+end
+document parameter 1600 max_io_actions
+max_io_actions NUM
+     Set the maximum number of I/O actions to print in questions from
+     the declarative debugger to NUM.
+
+max_io_actions
+     Prints the maximum number of I/O actions to print in questions
+     from the declarative debugger.
+
+end
+document parameter 1700 xml_browser_cmd
+xml_browser_cmd COMMAND
+     Set the shell command used to launch an XML browser to COMMAND.
+     If you want a stylesheet to be applied to the XML before the
+     browser is invoked, then you should do that in this command using
+     the appropriate program (such as xsltproc, which comes with libxslt
+     and is available from http://xmlsoft.org/XSLT/).  By default if
+     xsltproc and mozilla (or firefox) are available, xsltproc is
+     invoked to apply the xul_tree.xsl stylesheet in
+     extras/xml_stylesheets, then mozilla is invoked on the resulting
+     XUL file.
+
+     You can use the apostrophe character (') to quote the command
+     string, for example "xml_browser_cmd 'firefox
+     file:///tmp/mdbtmp.xml'".
+
+xml_browser_cmd
+     Prints the shell command used to launch an XML browser, if this
+     has been set.
+
+end
+document parameter 1800 xml_tmp_filename
+xml_tmp_filename FILENAME
+     Tells the debugger to dump XML into the named file before invoking
+     the XML browser.  The command named as the argument of
+     `xml_browser_cmd' will usually refer to this file.
+
+xml_tmp_filename
+     Prints the temporary filename used for XML browsing, if this has
+     been set.
+
+end
+document parameter 1900 format
+format [-APB] FORMAT
+     Sets the default format of the browser to FORMAT, which should be
+     one of `flat', `pretty' and `verbose'.
+
+     The browser maintains separate configuration parameters for the
+     three commands `print *', `print VAR', and `browse VAR'.  A
+     `format' command applies to all three, unless it specifies one or
+     more of the options `-A' or `--print-all', `-P' or `--print', and
+     `-B' or `--browse', in which case it will set only the selected
+     command's default format.
+
+end
+document parameter 2000 format_param
+format_param [-APBfpv] PARAM VALUE
+     Sets one of the parameters of the browser to the given value.  The
+     parameter PARAM must be one of `depth', `size', `width' and
+     `lines'.
+
+        * `depth' is the maximum depth to which subterms will be
+          displayed.  Subterms at the depth limit may be abbreviated as
+          functor/arity, or (in lists) may be replaced by an ellipsis
+          (`...').  The principal functor of any term has depth zero.
+          For subterms which are not lists, the depth of any argument
+          of the functor is one greater than the depth of the functor.
+          For subterms which are lists, the depth of each element of
+          the list is one greater than the depth of the list.
+
+        * `size' is the suggested maximum number of functors to display.
+          Beyond this limit, subterms may be abbreviated as
+          functor/arity, or (in lists) may be replaced by an ellipsis
+          (`...').  For the purposes of this parameter, the size of a
+          list is one greater than the sum of the sizes of the elements
+          in the list.
+
+        * `width' is the width of the screen in characters.
+
+        * `lines' is the preferred maximum number of lines of one term
+          to display.
+
+     The browser maintains separate configuration parameters for the
+     three commands `print *', `print VAR', and `browse VAR'.  A
+     `format_param' command applies to all three, unless it specifies
+     one or more of the options `-A' or `--print-all', `-P' or
+     `--print', and `-B' or `--browse', in which case it will set only
+     the selected command's parameters.
+
+     The browser also maintains separate configuration parameters for
+     the different output formats: flat, pretty and verbose.  A
+     `format_param' command applies to all of these, unless it
+     specifies one or more of the options `-f' or `--flat', `-p' or
+     `--pretty', and `-v' or `--verbose', in which case it will set
+     only the selected format's parameter.
+
+end
+document parameter 2100 alias
+alias NAME COMMAND [COMMAND-PARAMETER ...]
+     Introduces NAME as an alias for the given command with the given
+     parameters.  Whenever a command line has NAME as its first word,
+     the debugger will substitute the given command and parameters for
+     this word before executing the command line.
+
+     If NAME is the upper-case word `EMPTY', the debugger will
+     substitute the given command and parameters whenever the user
+     types in an empty command line.
+
+     If NAME is the upper-case word `NUMBER', the debugger will insert
+     the given command and parameters before the command line whenever
+     the user types in a command line that consists of a single number.
+
+end
+document parameter 2200 unalias
+unalias NAME
+     Removes any existing alias for NAME.
+
+end
+document help 100 document_category
+document_category SLOT CATEGORY
+     Create a new category of help items, named CATEGORY.  The summary
+     text for the category is given by the lines following this command,
+     up to but not including a line containing only the lower-case word
+     `end'.  The list of category summaries printed in response to the
+     command `help' is ordered on the integer SLOT numbers of the
+     categories involved.
+
+end
+document help 200 document
+document CATEGORY SLOT ITEM
+     Create a new help item named ITEM in the help category CATEGORY.
+     The text for the help item is given by the lines following this
+     command, up to but not including a line containing only the
+     lower-case word `end'.  The list of items printed in response to
+     the command `help CATEGORY' is ordered on the integer SLOT numbers
+     of the items involved.
+
+end
+document help 300 help
+help CATEGORY ITEM
+     Prints help text about the item ITEM in category CATEGORY.
+
+help WORD
+     Prints help text about WORD, which may be the name of a help
+     category or a help item.
+
+help
+     Prints summary information about all the available help categories.
+
+end
+document mdb_dd 100 dd
+dd [-r] [-R] [-nNODES] [-sSEARCH-MODE] [-pPASSFILE] [-fFAILFILE]
+     Starts declarative debugging using the current event as the
+     initial symptom.
+
+     When searching for bugs the declarative debugger needs to keep
+     portions of the execution trace in memory.  If it requires a new
+     portion of the trace then it needs to rerun the program.  The
+     `-nNODES' or `--nodes NODES' option tells the declarative debugger
+     how much of the execution trace to gather when it reruns the
+     program.  A higher value for NODES requires more memory, but
+     improves the performance of the declarative debugger for long
+     running programs since it will not have to rerun the program as
+     often.
+
+     The `-sSEARCH-MODE' or `--search-mode SEARCH-MODE' option tells
+     the declarative debugger which search mode to use.  Valid search
+     modes are `top_down' (or `td'), `divide_and_query' (or `dq') and
+     `suspicion_divide_and_query' (or `sdq').  `top_down' is the
+     default when this option is not given.
+
+     Use the `-r' or `--resume' option to continue your previous
+     declarative debugging session.  If the `--resume' option is given
+     and there were no previous declarative debugging sessions then the
+     option will be ignored.  A `dd --resume' command can be issued at
+     any event.  The `--search-mode' option may be used with the
+     `--resume' option to change the search mode of a previously
+     started declarative debugging session.
+
+     Use the `-R' or `--reset-knowledge-base' option to reset the
+     declarative debugger's knowledge base.  The declarative debugger
+     will forget any previous answers that have been supplied.  It will
+     ask previous questions again if it needs to.  This option does not
+     affect what predicates or modules are trusted.
+
+     The arguments supplied to the `--pass-trace-counts' (or `-p') and
+     `--fail-trace-counts' (or `-f') options are either trace count
+     files or files containing a list of trace count files.  The
+     supplied trace counts are used to assign a suspicion to each event
+     based on which parts of program were executed in the failing test
+     case(s), but not the passing test case(s).  This is used to guide
+     the declarative debugger when the suspicion-divide-and-query
+     search mode is used.  If the suspicion-divide-and-query search
+     mode is specified then either both the `-p' and `-f' options must
+     be given, or the `fail_trace_counts' and `pass_trace_counts'
+     configuration parameters must be set (using the `set' command).
+
+end
+document mdb_dd 200 trust
+trust MODULE-NAME|PROC-SPEC
+     Tells the declarative debugger to trust the given module,
+     predicate or function.
+
+     Individual predicates or functions can be trusted by just giving
+     the predicate or function name.  If there is more than one
+     predicate or function with the given name then a list of
+     alternatives will be shown.
+
+     The entire Mercury standard library is trusted by default and can
+     be untrusted in the usual manner using the `untrust' command.  To
+     restore trusted status to the Mercury standard library issue the
+     command `trust standard library' or just `trust std lib'.
+
+     See also `trusted' and `untrust'.
+
+end
+document mdb_dd 300 trusted
+trusted
+     Lists all the trusted modules, predicates and functions.  See also
+     `trust' and `untrust'.
+
+end
+document mdb_dd 400 untrust
+untrust NUM
+     Removes the object from the list of trusted objects.  NUM should
+     correspond with the number shown in the list produced by issuing a
+     `trusted' command.  See also `trust' and `trusted'.
+
+end
+document misc 100 source
+source [-i] FILENAME [ARGS]
+     Executes the commands in the file named FILENAME.  Optionally a
+     list of at most nine arguments can be given.  Occurrences of the
+     strings "$1" to "$9" in the sourced file will be replaced by the
+     corresponding arguments given in the source command before the
+     commands in the sourced file are executed.
+
+     Lines that start with a hash (#) character are ignored.  Hash
+     characters can be used to place comments in your mdb scripts.
+
+     The option `-i' or `--ignore-errors' tells `mdb' not to complain
+     if the named file does not exist or is not readable.
+
+end
+document misc 200 save
+save FILENAME
+     Saves the persistent state of the debugger (aliases, print level,
+     scroll controls, set of breakpoints, browser parameters, set of
+     objects trusted by the declarative debugger, etc) to the specified
+     file.  The state is saved in the form of mdb commands, so that
+     sourcing the file will recreate the saved state.  Note that this
+     command does not save transient state, such as the current event.
+     There is also a small part of the persistent state (breakpoints
+     established with a `break here' command) that cannot be saved.
+
+end
+document misc 300 quit
+quit [-y]
+     Quits the debugger and aborts the execution of the program.  If
+     the option `-y' is not present, asks for confirmation first.  Any
+     answer starting with `y', or end-of-file, is considered
+     confirmation.
+
+     End-of-file on the debugger's input is considered a quit command.
+
+end
+document exp 100 histogram_all
+histogram_all FILENAME
+     Prints (to file FILENAME) a histogram that counts all events at
+     various depths since the start of the program.  This histogram is
+     available only in some experimental versions of the Mercury
+     runtime system.
+
+end
+document exp 200 histogram_exp
+histogram_exp FILENAME
+     Prints (to file FILENAME) a histogram that counts all events at
+     various depths since the start of the program or since the
+     histogram was last cleared.  This histogram is available only in
+     some experimental versions of the Mercury runtime system.
+
+end
+document exp 300 clear_histogram
+clear_histogram
+     Clears the histogram printed by `histogram_exp', i.e. sets the
+     counts for all depths to zero.
+
+end
+document exp 400 dice
+dice [-pFILENAME] [-fFILENAME] [-nNUM] [-s[pPfFsS]+] [-o FILENAME] [-m MODULE]
+     Display a program dice on the screen.
+
+     A dice is a comparison between some successful test runs of the
+     program and a failing test run.  Before using the `dice' command
+     one or more passing execution summaries and one failing execution
+     summary need to be generated.  This can be done by compiling the
+     program with deep tracing enabled (either by compiling in a .debug
+     or .decldebug grade or with the `--trace deep' or `--trace rep'
+     compiler options) and then running the program under mtc.  This
+     will generate a file with the prefix `.mercury_trace_counts' and a
+     unique suffix, that contains a summary of the program's execution
+     This summary is called a slice.  Copy the generated slice to a new
+     file for each test case, to end up with a failing slice, say
+     `fail', and some passing slices, say `pass1', `pass2', `pass3',
+     etc.  Union the passing slices with a command such as `mtc_union
+     -p passes pass1 pass2 pass3'.
+
+     The `dice' command can use these files to display a table of
+     statistics comparing the passing test runs to the failing run.
+     Here is an example of a dice displayed in an mdb session:
+
+          mdb> dice -f fail -p passes -s S -n 4
+          Procedure        Path/Port  File:Line Pass (3) Fail Suspicion
+          pred s.mrg/3-0   <s2;c2;e;> s.m:74       0 (0)    1      1.00
+          pred s.mrg/3-0   <s2;c2;t;> s.m:67      10 (3)    4      0.29
+          pred s.mrg/3-0   CALL       s.m:64      18 (3)    7      0.28
+          pred s.mrg/3-0   EXIT       s.m:64      18 (3)    7      0.28
+
+     This example tells us that the `else' in `s.m' on line 74 was
+     executed once in the failing test run, but never in the passing
+     test runs, so this would be a good place to start looking for a
+     bug.
+
+     Each row in the table contains statistics about the execution of a
+     separate goal in the program.  Six columns are displayed:
+
+        * `Procedure': The procedure in which the goal appears.
+
+        * `Path/Port': The goal path and/or port of the goal.  For
+          atomic goals, statistics about the CALL event and the
+          corresponding EXIT, FAIL or EXCP event are displayed on
+          separate rows.  For other types of goals the goal path is
+          displayed, except for NEGE, NEGS and NEGF events where the
+          goal path and port are displayed.
+
+        * `File:Line': The file name and line number of the goal.  This
+          can be used to set a breakpoint on the goal.
+
+        * `Pass (total passing test runs)': The total number of times
+          the goal was executed in all the passing test runs.  This is
+          followed by a number in parentheses which indicates the
+          number of test runs the goal was executed in.  The heading of
+          this column also has a number in parentheses which is the
+          total number of passing test cases.  In the example above we
+          can see that 3 passing tests were run.
+
+        * `Fail': The number of times the goal was executed in the
+          failing test run.
+
+        * `Suspicion': A number between 0 and 1 which gives an
+          indication of how likely a particular goal is to be buggy.
+          The is calculated as Suspicion = F / (P + F) where F is the
+          number of times the goal was executed in the failing test run
+          and P is the number of times the goal was executed in passing
+          test runs.
+
+     The name of the file containing the failing slice can be specified
+     with the `-f' or `--fail-trace-counts' option or with a separate
+     `set fail_trace_count FILENAME' command.
+
+     The name of the file containing the union of the passing slices
+     can be given with the `-p' or `--pass-trace-counts' option.
+     Alternatively a separate `set pass_trace_counts FILENAME' command
+     can be given.  See *note Trace counts:: for more information about
+     trace counts.
+
+     The table can be sorted on the Pass, Fail or Suspicion columns, or
+     a combination of these.  This can be done with the `-s' or `--sort'
+     option.  The argument of this option is a string made up of any
+     combination of the letters `pPfFsS'.  The letters in the string
+     indicate how the table should be sorted:
+
+        * `p': Pass ascending
+
+        * `P': Pass descending
+
+        * `f': Fail ascending
+
+        * `F': Fail descending
+
+        * `s': Suspicion ascending
+
+        * `S': Suspicion descending
+
+     For example the string "SF" means sort the table by suspicion,
+     descending, and if any two suspicions are the same, then by number
+     of executions in the failing test case, descending.
+
+     The option `-n' or `--top' can be used to limit the number lines
+     displayed.  Only the top NUM lines, with respect to the ordering
+     specified by the `-s' option, will be displayed.  By default the
+     table is limited to 50 lines.
+
+     If the `-o' or `--output-to-file' option is given then the output
+     will be written to the specified file instead of being displayed
+     on the screen.  Note that the file will be overwritten without
+     warning if it already exists.
+
+     The `-m' or `--module' option limits the output to the given module
+     and its submodules, if any.
+
+end
+document developer 100 var_details
+var_details
+     Prints all the information the debugger has about all the
+     variables at the current program point.
+
+end
+document developer 200 flag
+flag
+     Prints the values of all the runtime low-level debugging flags.
+
+flag FLAGNAME
+     Prints the value of the specified runtime low-level debugging flag.
+
+flag FLAGNAME on
+     Sets the specified runtime low-level debugging flag to true.
+
+flag FLAGNAME off
+     Sets the specified runtime low-level debugging flag to false.
+
+end
+document developer 300 subgoal
+subgoal N
+     In minimal model grades, prints the details of the specified
+     subgoal.  In other grades, it reports an error.
+
+end
+document developer 400 consumer
+consumer N
+     In minimal model grades, prints the details of the specified
+     consumer.  In other grades, it reports an error.
+
+end
+document developer 500 gen_stack
+gen_stack
+     In minimal model grades, prints the contents of the frames on the
+     generator stack.  In other grades, it reports an error.
+
+end
+document developer 600 cut_stack
+cut_stack
+     In minimal model grades, prints the contents of the frames on the
+     cut stack.  In other grades, it reports an error.
+
+end
+document developer 700 pneg_stack
+pneg_stack
+     In minimal model grades, prints the contents of the frames on the
+     possible negated context stack.  In other grades, it reports an
+     error.
+
+end
+document developer 800 mm_stacks
+mm_stacks
+     In minimal model grades, prints the contents of the frames on the
+     generator stack, the cut stack and the possible negated context
+     stack.  In other grades, it reports an error.
+
+end
+document developer 900 nondet_stack
+nondet_stack [-d] [-fNUMFRAMES] [NUMLINES]
+     Prints the contents of the frames on the nondet stack.  By
+     default, it prints only the fixed slots in each nondet stack frame,
+     but if the `-d' or `--detailed' option is given, it will also
+     print the names and values of the live variables in them.
+
+     The `-f' option, if present, specifies that only the topmost
+     NUMFRAMES stack frames should be printed.
+
+     The optional number NUMLINES, if present, specifies that only the
+     topmost NUMLINES lines should be printed.
+
+end
+document developer 1000 stack_regs
+stack_regs
+     Prints the contents of the virtual machine registers that point to
+     the det and nondet stacks.
+
+end
+document developer 1100 all_regs
+all_regs
+     Prints the contents of all the virtual machine registers.
+
+end
+document developer 1200 debug_vars
+debug_vars
+     Prints the values of the variables used by the debugger to record
+     event numbers, call sequence numbers and call depths.
+
+end
+document developer 1300 stats
+stats [-f FILENAME] SUBJECT
+     Prints statistics about the given subject to standard output,
+     unless the `-f' or `--filename' option is given, in which case it
+     prints the statistic to FILENAME.
+
+     SUBJECT can be `procs', which asks for statistics about proc
+     layout structures in the program.
+
+     SUBJECT can be `labels', which asks for statistics about label
+     layout structures in the program.
+
+     SUBJECT can be `var_names', which asks for statistics about the
+     space occupied by variable names in the layout structures in the
+     program.
+
+     SUBJECT can be `io_tabling', which asks for statistics about the
+     number of times each predicate appears in the I/O action table.
+
+end
+document developer 1400 print_optionals
+print_optionals
+     Reports whether optionally-printed values such as typeinfos that
+     are usually of interest only to implementors are being printed or
+     not.
+
+print_optionals on
+     Tells the debugger to print optionally-printed values.
+
+print_optionals off
+     Tells the debugger not to print optionally-printed values.
+
+end
+document developer 1500 unhide_events
+unhide_events
+     Reports whether events that are normally hidden (that are usually
+     of interest only to implementors) are being exposed or not.
+
+unhide_events on
+     Tells the debugger to expose events that are normally hidden.
+
+unhide_events off
+     Tells the debugger to hide events that are normally hidden.
+
+end
+document developer 1600 table
+table PROC [NUM1 ...]
+     Tells the debugger to print the call table of the named procedure,
+     together with the saved answer (if any) for each call.  Reports an
+     error if the named procedure isn't tabled.
+
+     For now, this command is supported only for procedures whose
+     arguments are all either integers, floats or strings.
+
+     If the user specifies one or more integers on the command line,
+     the output is restricted to the entries in the call table in which
+     the Nth argument is equal to the Nth number on the command line.
+
+end
+document developer 1700 type_ctor
+type_ctor [-fr] MODULENAME TYPECTORNAME ARITY
+     Tests whether there is a type constructor defined in the given
+     module, with the given name, and with the given arity.  If there
+     isn't, it prints a message to that effect.  If there is, it echoes
+     the identity of the type constructor.
+
+     If the option `-r' or `--print-rep' option is given, it also
+     prints the name of the type representation scheme used by the type
+     constructor (known as its `type_ctor_rep' in the implementation).
+
+     If the option `-f' or `--print-functors' option is given, it also
+     prints the names and arities of function symbols defined by type
+     constructor.
+
+end
+document developer 1800 all_type_ctors
+all_type_ctors [-fr] [MODULENAME]
+     If the user specifies a module name, lists all the type
+     constructors defined in the given module.  If the user doesn't
+     specify a module name, lists all the type constructors defined in
+     the whole program.
+
+     If the option `-r' or `--print-rep' option is given, it also
+     prints the name of the type representation scheme of each type
+     constructor (known as its `type_ctor_rep' in the implementation).
+
+     If the option `-f' or `--print-functors' option is given, it also
+     prints the names and arities of function symbols defined by each
+     type constructor.
+
+end
+document developer 1900 class_decl
+class_decl [-im] MODULENAME TYPECLASSNAME ARITY
+     Tests whether there is a type class defined in the given module,
+     with the given name, and with the given arity.  If there isn't, it
+     prints a message to that effect.  If there is, it echoes the
+     identity of the type class.
+
+     If the option `-m' or `--print-methods' option is given, it also
+     lists all the methods of the type class.
+
+     If the option `-i' or `--print-instance' option is given, it also
+     lists all the instances of the type class.
+
+end
+document developer 2000 all_class_decls
+all_class_decls [-im] [MODULENAME]
+     If the user specifies a module name, lists all the type classes
+     defined in the given module.  If the user doesn't specify a module
+     name, lists all the type classes defined in the whole program.
+
+     If the option `-m' or `--print-methods' option is given, it also
+     lists all the methods of each type class.
+
+     If the option `-i' or `--print-instance' option is given, it also
+     lists all the instances of each type class.
+
+end
+document developer 2100 all_procedures
+all_procedures [-su] [-m MODULENAME] FILENAME
+     In the absence of the `-m' or `--module' option, puts a list of
+     all the debuggable procedures in the program into the named file.
+     In the presence of the `-m' or `--module' option, puts a list of
+     all the debuggable procedures in the names module into the named
+     file.
+
+     If the `-s' or `--separate' option is given, the various
+     components of procedure names are separated by spaces.
+
+     If the `-u' or `--uci' option is given, the list will include the
+     procedures of compiler generated unify, compare, index and
+     initialization predicates.  Normally, the list includes the
+     procedures of only user defined predicates.
+
+end
+document developer 2200 ambiguity
+ambiguity [-o FILENAME] [-ptf] [MODULENAME ...]
+     Print ambiguous procedure, type constructor and/or function symbol
+     names.  A procedure name is ambiguous if a predicate or function
+     is defined with that name in more than one module or with more
+     than one arity.  A type constructor name is ambiguous if a type
+     constructor is defined with that name in more than one module or
+     with more than one arity.  A function symbol name is ambiguous if
+     a function symbol is defined with that name in more than one
+     module or with more than one arity.
+
+     If any module names are given, then only those modules are
+     consulted, (any ambiguities involving predicates, functions and
+     type constructors in non-listed modules are ignored).  The module
+     names have to be fully qualified, if a module CHILD is a submodule
+     of module PARENT, the module name list must include PARENT.CHILD;
+     listing just CHILD won't work, since that is not a fully qualified
+     module name.
+
+     If the `-o' or `--outputfile' option is given, the output goes to
+     the file named as the argument of the option; otherwise, it goes
+     to standard output.
+
+     If one or more of the `-p', `-t', `-f' options or their long
+     equivalents, `--types', or `--functors', this command prints
+     ambiguities only for the indicated kinds of constructs.  The
+     default is to print all ambiguities.
+
+end
+document developer 2300 trail_details
+trail_details
+     Prints out low-level details of the state of the trail.  In other
+     grades, it reports an error.
+
+end

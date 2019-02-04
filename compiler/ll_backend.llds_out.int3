@@ -1,0 +1,6 @@
+:- module (ll_backend.llds_out).
+:- interface.
+:- type decl_id.
+:- type decl_set.
+:- type linkage.
+:- type llds_out_info.

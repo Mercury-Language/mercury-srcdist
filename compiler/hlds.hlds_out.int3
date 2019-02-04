@@ -1,0 +1,6 @@
+:- module (hlds.hlds_out).
+:- interface.
+:- type hlds_out_info.
+:- type is_first.
+:- type is_last.
+:- type maybe_vartypes.

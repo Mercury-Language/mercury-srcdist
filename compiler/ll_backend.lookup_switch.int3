@@ -1,0 +1,3 @@
+:- module (ll_backend.lookup_switch).
+:- interface.
+:- type lookup_switch_info.

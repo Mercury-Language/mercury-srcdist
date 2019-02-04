@@ -1,0 +1,32 @@
+:- module (ll_backend.llds_out).
+:- interface.
+:- import_module bool.
+:- import_module io.
+:- import_module list.
+:- import_module map.
+:- import_module (hlds.hlds_llds).
+:- import_module (libs.globals).
+:- import_module (libs.trace_params).
+:- import_module (ll_backend.layout).
+:- import_module (ll_backend.llds).
+:- import_module (mdbcomp.prim_data).
+:- import_module (parse_tree.prog_data).
+:- type decl_id
+	--->	decl_common_type(ll_backend.llds.type_num)
+	;	decl_scalar_common_array(ll_backend.llds.type_num)
+	;	decl_float_label(string)
+	;	decl_code_addr(ll_backend.llds.code_addr)
+	;	decl_data_addr(ll_backend.llds.data_addr)
+	;	decl_foreign_proc_struct(string)
+	;	decl_c_global_var(ll_backend.llds.c_global_var_ref)
+	;	decl_type_info_like_struct(int)
+	;	decl_typeclass_constraint_struct(int).
+:- type decl_set.
+:- type linkage
+	--->	extern 
+	;	static .
+:- type llds_out_info
+	--->	llds_out_info(((ll_backend.llds_out).lout_mangled_module_name) :: string, ((ll_backend.llds_out).lout_internal_label_to_layout) :: map.map(ll_backend.llds.label, ll_backend.layout.layout_slot_name), ((ll_backend.llds_out).lout_entry_label_to_layout) :: map.map(ll_backend.llds.label, ll_backend.llds.data_addr), ((ll_backend.llds_out).lout_auto_comments) :: bool.bool, ((ll_backend.llds_out).lout_line_numbers) :: bool.bool, ((ll_backend.llds_out).lout_emit_c_loops) :: bool.bool, ((ll_backend.llds_out).lout_generate_bytecode) :: bool.bool, ((ll_backend.llds_out).lout_local_thread_engine_base) :: bool.bool, ((ll_backend.llds_out).lout_profile_calls) :: bool.bool, ((ll_backend.llds_out).lout_profile_time) :: bool.bool, ((ll_backend.llds_out).lout_profile_memory) :: bool.bool, ((ll_backend.llds_out).lout_profile_deep) :: bool.bool, ((ll_backend.llds_out).lout_unboxed_float) :: bool.bool, ((ll_backend.llds_out).lout_static_ground_floats) :: bool.bool, ((ll_backend.llds_out).lout_use_macro_for_redo_fail) :: bool.bool, ((ll_backend.llds_out).lout_trace_level) :: libs.trace_params.trace_level, ((ll_backend.llds_out).lout_globals) :: libs.globals.globals).
+:- implementation.
+:- import_module set_tree234.
+:- type decl_set == set_tree234.set_tree234(ll_backend.llds_out.decl_id).

@@ -1,0 +1,27 @@
+:- module (ll_backend.stack_layout).
+:- interface.
+:- import_module assoc_list.
+:- import_module list.
+:- import_module map.
+:- import_module maybe.
+:- import_module (hlds.hlds_module).
+:- import_module (hlds.hlds_pred).
+:- import_module (ll_backend.continuation_info).
+:- import_module (ll_backend.global_data).
+:- import_module (ll_backend.layout).
+:- import_module (ll_backend.llds).
+:- import_module (mdbcomp.prim_data).
+:- import_module (parse_tree.prog_data).
+:- type stack_layout_info.
+:- pred construct_closure_layout(mdbcomp.prim_data.proc_label, int, ll_backend.continuation_info.closure_layout_info, mdbcomp.prim_data.proc_label, mdbcomp.prim_data.module_name, string, int, hlds.hlds_pred.pred_origin, string, ll_backend.global_data.static_cell_info, ll_backend.global_data.static_cell_info, assoc_list.assoc_list(ll_backend.llds.rval, ll_backend.llds.llds_type), ll_backend.layout.layout_data).
+:- mode construct_closure_layout((builtin.in), (builtin.in), (builtin.in), (builtin.in), (builtin.in), (builtin.in), (builtin.in), (builtin.in), (builtin.in), (builtin.in), (builtin.out), (builtin.out), (builtin.out)) is det.
+:- pred convert_table_arg_info(hlds.hlds_pred.table_arg_infos, int, ll_backend.llds.rval, ll_backend.llds.rval, ll_backend.global_data.static_cell_info, ll_backend.global_data.static_cell_info).
+:- mode convert_table_arg_info((builtin.in), (builtin.out), (builtin.out), (builtin.out), (builtin.in), (builtin.out)) is det.
+:- pred generate_llds_layout_data(hlds.hlds_module.module_info, ll_backend.global_data.global_data, ll_backend.global_data.global_data, list.list(maybe.maybe(int)), list.list(ll_backend.layout.user_event_data), list.list(ll_backend.layout.label_layout_vars), list.list(ll_backend.layout.label_layout_no_vars), map.map(ll_backend.llds.label, ll_backend.layout.layout_slot_name), map.map(ll_backend.llds.label, ll_backend.llds.data_addr), list.list(ll_backend.layout.layout_data), list.list(ll_backend.layout.layout_data), list.list(ll_backend.layout.layout_data)).
+:- mode generate_llds_layout_data((builtin.in), (builtin.in), (builtin.out), (builtin.out), (builtin.out), (builtin.out), (builtin.out), (builtin.out), (builtin.out), (builtin.out), (builtin.out), (builtin.out)) is det.
+:- pred lookup_string_in_table(string, int, ll_backend.stack_layout.stack_layout_info, ll_backend.stack_layout.stack_layout_info).
+:- mode lookup_string_in_table((builtin.in), (builtin.out), (builtin.in), (builtin.out)) is det.
+:- pred represent_determinism_rval(parse_tree.prog_data.determinism, ll_backend.llds.rval).
+:- mode represent_determinism_rval((builtin.in), (builtin.out)) is det.
+:- pred represent_locn_as_int(ll_backend.llds.layout_locn, int).
+:- mode represent_locn_as_int((builtin.in), (builtin.out)) is det.

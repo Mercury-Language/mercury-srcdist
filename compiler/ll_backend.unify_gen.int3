@@ -1,0 +1,3 @@
+:- module (ll_backend.unify_gen).
+:- interface.
+:- type test_sense.

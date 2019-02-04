@@ -1,0 +1,8 @@
+:- module table_statistics.
+:- interface.
+:- type proc_table_statistics.
+:- type table_stats.
+:- type table_stats_curr_prev.
+:- type table_step_kind.
+:- type table_step_stat_details.
+:- type table_step_stats.

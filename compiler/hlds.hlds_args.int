@@ -1,0 +1,77 @@
+:- module (hlds.hlds_args).
+:- interface.
+:- import_module list.
+:- import_module map.
+:- import_module maybe.
+:- import_module set.
+:- import_module (mdbcomp.prim_data).
+:- type poly_arg_vector(T).
+:- type proc_arg_vector(T).
+:- pred apply_renaming_to_proc_arg_vector(map.map(T, T), hlds.hlds_args.proc_arg_vector(T), hlds.hlds_args.proc_arg_vector(T)).
+:- mode apply_renaming_to_proc_arg_vector((builtin.in), (builtin.in), (builtin.out)) is det.
+:- func poly_arg_vector_init = hlds.hlds_args.poly_arg_vector(T).
+:- pred poly_arg_vector_set_exist_type_infos(list.list(T), hlds.hlds_args.poly_arg_vector(T), hlds.hlds_args.poly_arg_vector(T)).
+:- mode poly_arg_vector_set_exist_type_infos((builtin.in), (builtin.in), (builtin.out)) is det.
+:- pred poly_arg_vector_set_exist_typeclass_infos(list.list(T), hlds.hlds_args.poly_arg_vector(T), hlds.hlds_args.poly_arg_vector(T)).
+:- mode poly_arg_vector_set_exist_typeclass_infos((builtin.in), (builtin.in), (builtin.out)) is det.
+:- pred poly_arg_vector_set_instance_type_infos(list.list(T), hlds.hlds_args.poly_arg_vector(T), hlds.hlds_args.poly_arg_vector(T)).
+:- mode poly_arg_vector_set_instance_type_infos((builtin.in), (builtin.in), (builtin.out)) is det.
+:- pred poly_arg_vector_set_instance_typeclass_infos(list.list(T), hlds.hlds_args.poly_arg_vector(T), hlds.hlds_args.poly_arg_vector(T)).
+:- mode poly_arg_vector_set_instance_typeclass_infos((builtin.in), (builtin.in), (builtin.out)) is det.
+:- pred poly_arg_vector_set_univ_type_infos(list.list(T), hlds.hlds_args.poly_arg_vector(T), hlds.hlds_args.poly_arg_vector(T)).
+:- mode poly_arg_vector_set_univ_type_infos((builtin.in), (builtin.in), (builtin.out)) is det.
+:- pred poly_arg_vector_set_univ_typeclass_infos(list.list(T), hlds.hlds_args.poly_arg_vector(T), hlds.hlds_args.poly_arg_vector(T)).
+:- mode poly_arg_vector_set_univ_typeclass_infos((builtin.in), (builtin.in), (builtin.out)) is det.
+:- func poly_arg_vector_to_list(hlds.hlds_args.poly_arg_vector(T)) = list.list(T).
+:- pred proc_arg_vector_all_true((pred T), hlds.hlds_args.proc_arg_vector(T)).
+:- mode proc_arg_vector_all_true(builtin.in((pred((builtin.in)) is semidet)), (builtin.in)) is semidet.
+:- pred proc_arg_vector_foldl2_corresponding3(pred(A, B, C, D, D, E, E), hlds.hlds_args.proc_arg_vector(A), hlds.hlds_args.proc_arg_vector(B), hlds.hlds_args.proc_arg_vector(C), D, D, E, E).
+:- mode proc_arg_vector_foldl2_corresponding3(builtin.in((pred((builtin.in), (builtin.in), (builtin.in), (builtin.in), (builtin.out), (builtin.in), (builtin.out)) is det)), (builtin.in), (builtin.in), (builtin.in), (builtin.in), (builtin.out), (builtin.in), (builtin.out)) is det.
+:- pred proc_arg_vector_foldl3_corresponding(pred(A, B, C, C, D, D, E, E), hlds.hlds_args.proc_arg_vector(A), hlds.hlds_args.proc_arg_vector(B), C, C, D, D, E, E).
+:- mode proc_arg_vector_foldl3_corresponding(builtin.in((pred((builtin.in), (builtin.in), (builtin.in), (builtin.out), (builtin.in), (builtin.out), (builtin.in), (builtin.out)) is det)), (builtin.in), (builtin.in), (builtin.in), (builtin.out), (builtin.in), (builtin.out), (builtin.in), (builtin.out)) is det.
+:- pred proc_arg_vector_foldl3_corresponding3(pred(A, B, C, D, D, E, E, F, F), hlds.hlds_args.proc_arg_vector(A), hlds.hlds_args.proc_arg_vector(B), hlds.hlds_args.proc_arg_vector(C), D, D, E, E, F, F).
+:- mode proc_arg_vector_foldl3_corresponding3(builtin.in((pred((builtin.in), (builtin.in), (builtin.in), (builtin.in), (builtin.out), (builtin.in), (builtin.out), (builtin.in), (builtin.out)) is det)), (builtin.in), (builtin.in), (builtin.in), (builtin.in), (builtin.out), (builtin.in), (builtin.out), (builtin.in), (builtin.out)) is det.
+:- pred proc_arg_vector_foldl4_corresponding3(pred(A, B, C, D, D, E, E, F, F, G, G), hlds.hlds_args.proc_arg_vector(A), hlds.hlds_args.proc_arg_vector(B), hlds.hlds_args.proc_arg_vector(C), D, D, E, E, F, F, G, G).
+:- mode proc_arg_vector_foldl4_corresponding3(builtin.in((pred((builtin.in), (builtin.in), (builtin.in), (builtin.in), (builtin.out), (builtin.in), (builtin.out), (builtin.in), (builtin.out), (builtin.in), (builtin.out)) is det)), (builtin.in), (builtin.in), (builtin.in), (builtin.in), (builtin.out), (builtin.in), (builtin.out), (builtin.in), (builtin.out), (builtin.in), (builtin.out)) is det.
+:- func proc_arg_vector_get_exist_type_infos(hlds.hlds_args.proc_arg_vector(T)) = list.list(T).
+:- func proc_arg_vector_get_exist_typeclass_infos(hlds.hlds_args.proc_arg_vector(T)) = list.list(T).
+:- func proc_arg_vector_get_instance_type_infos(hlds.hlds_args.proc_arg_vector(T)) = list.list(T).
+:- func proc_arg_vector_get_instance_typeclass_infos(hlds.hlds_args.proc_arg_vector(T)) = list.list(T).
+:- func proc_arg_vector_get_maybe_ret_value(hlds.hlds_args.proc_arg_vector(T)) = maybe.maybe(T).
+:- func proc_arg_vector_get_univ_type_infos(hlds.hlds_args.proc_arg_vector(T)) = list.list(T).
+:- func proc_arg_vector_get_univ_typeclass_infos(hlds.hlds_args.proc_arg_vector(T)) = list.list(T).
+:- func proc_arg_vector_get_user_args(hlds.hlds_args.proc_arg_vector(T)) = list.list(T).
+:- func proc_arg_vector_init(mdbcomp.prim_data.pred_or_func, list.list(T)) = hlds.hlds_args.proc_arg_vector(T).
+:- func proc_arg_vector_map(((func T) = U), hlds.hlds_args.proc_arg_vector(T)) = hlds.hlds_args.proc_arg_vector(U).
+:- pred proc_arg_vector_map(pred(T, U), hlds.hlds_args.proc_arg_vector(T), hlds.hlds_args.proc_arg_vector(U)).
+:- mode proc_arg_vector_map(builtin.in((pred((builtin.in), (builtin.out)) is det)), (builtin.in), (builtin.out)) is det.
+:- pred proc_arg_vector_map_corresponding(pred(T, U, V), hlds.hlds_args.proc_arg_vector(T), hlds.hlds_args.proc_arg_vector(U), hlds.hlds_args.proc_arg_vector(V)).
+:- mode proc_arg_vector_map_corresponding(builtin.in((pred((builtin.in), (builtin.in), (builtin.out)) is det)), (builtin.in), (builtin.in), (builtin.out)) is det.
+:- pred proc_arg_vector_map_corresponding_foldl2(pred(A, B, C, D, D, E, E), hlds.hlds_args.proc_arg_vector(A), hlds.hlds_args.proc_arg_vector(B), hlds.hlds_args.proc_arg_vector(C), D, D, E, E).
+:- mode proc_arg_vector_map_corresponding_foldl2(builtin.in((pred((builtin.in), (builtin.in), (builtin.out), (builtin.in), (builtin.out), (builtin.in), (builtin.out)) is det)), (builtin.in), (builtin.in), (builtin.out), (builtin.in), (builtin.out), (builtin.in), (builtin.out)) is det.
+:- pred proc_arg_vector_member(hlds.hlds_args.proc_arg_vector(T), T).
+:- mode proc_arg_vector_member((builtin.in), (builtin.in)) is semidet.
+:- pred proc_arg_vector_partition_poly_args(hlds.hlds_args.proc_arg_vector(T), list.list(T), list.list(T)).
+:- mode proc_arg_vector_partition_poly_args((builtin.in), (builtin.out), (builtin.out)) is det.
+:- pred proc_arg_vector_set_exist_type_infos(list.list(T), hlds.hlds_args.proc_arg_vector(T), hlds.hlds_args.proc_arg_vector(T)).
+:- mode proc_arg_vector_set_exist_type_infos((builtin.in), (builtin.in), (builtin.out)) is det.
+:- pred proc_arg_vector_set_exist_typeclass_infos(list.list(T), hlds.hlds_args.proc_arg_vector(T), hlds.hlds_args.proc_arg_vector(T)).
+:- mode proc_arg_vector_set_exist_typeclass_infos((builtin.in), (builtin.in), (builtin.out)) is det.
+:- pred proc_arg_vector_set_instance_type_infos(list.list(T), hlds.hlds_args.proc_arg_vector(T), hlds.hlds_args.proc_arg_vector(T)).
+:- mode proc_arg_vector_set_instance_type_infos((builtin.in), (builtin.in), (builtin.out)) is det.
+:- pred proc_arg_vector_set_instance_typeclass_infos(list.list(T), hlds.hlds_args.proc_arg_vector(T), hlds.hlds_args.proc_arg_vector(T)).
+:- mode proc_arg_vector_set_instance_typeclass_infos((builtin.in), (builtin.in), (builtin.out)) is det.
+:- pred proc_arg_vector_set_maybe_ret_value(maybe.maybe(T), hlds.hlds_args.proc_arg_vector(T), hlds.hlds_args.proc_arg_vector(T)).
+:- mode proc_arg_vector_set_maybe_ret_value((builtin.in), (builtin.in), (builtin.out)) is det.
+:- pred proc_arg_vector_set_univ_type_infos(list.list(T), hlds.hlds_args.proc_arg_vector(T), hlds.hlds_args.proc_arg_vector(T)).
+:- mode proc_arg_vector_set_univ_type_infos((builtin.in), (builtin.in), (builtin.out)) is det.
+:- pred proc_arg_vector_set_univ_typeclass_infos(list.list(T), hlds.hlds_args.proc_arg_vector(T), hlds.hlds_args.proc_arg_vector(T)).
+:- mode proc_arg_vector_set_univ_typeclass_infos((builtin.in), (builtin.in), (builtin.out)) is det.
+:- pred proc_arg_vector_set_user_args(list.list(T), hlds.hlds_args.proc_arg_vector(T), hlds.hlds_args.proc_arg_vector(T)).
+:- mode proc_arg_vector_set_user_args((builtin.in), (builtin.in), (builtin.out)) is det.
+:- pred proc_arg_vector_to_func_args(hlds.hlds_args.proc_arg_vector(T), list.list(T), T).
+:- mode proc_arg_vector_to_func_args((builtin.in), (builtin.out), (builtin.out)) is det.
+:- func proc_arg_vector_to_list(hlds.hlds_args.proc_arg_vector(T)) = list.list(T).
+:- func proc_arg_vector_to_set(hlds.hlds_args.proc_arg_vector(T)) = set.set(T).
+:- implementation.
+:- type poly_arg_vector(T) == hlds.hlds_args.proc_arg_vector(T).

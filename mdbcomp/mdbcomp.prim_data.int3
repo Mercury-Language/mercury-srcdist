@@ -1,0 +1,8 @@
+:- module (mdbcomp.prim_data).
+:- interface.
+:- type module_name.
+:- type pred_or_func.
+:- type proc_label.
+:- type special_pred_id.
+:- type sym_name.
+:- type trace_port.

@@ -1,0 +1,37 @@
+:- module ssdb.
+:- interface.
+:- import_module list.
+:- type list_var_value == list.list(ssdb.var_value).
+:- type pos == int.
+:- type ssdb_event_type
+	--->	ssdb_call 
+	;	ssdb_exit 
+	;	ssdb_fail 
+	;	ssdb_call_nondet 
+	;	ssdb_exit_nondet 
+	;	ssdb_redo_nondet 
+	;	ssdb_fail_nondet .
+:- type ssdb_proc_id
+	--->	ssdb_proc_id((ssdb.module_name) :: string, (ssdb.proc_name) :: string).
+:- type ssdb_retry
+	--->	do_retry 
+	;	do_not_retry .
+:- type var_name == string.
+:- type var_value
+	--->	unbound_head_var(ssdb.var_name, ssdb.pos)
+	;	some [T] (bound_head_var(ssdb.var_name, ssdb.pos, T))
+	;	some [T] (bound_other_var(ssdb.var_name, T)).
+:- impure pred handle_event_call(ssdb.ssdb_proc_id, ssdb.list_var_value).
+:- mode handle_event_call((builtin.in), (builtin.in)) is det.
+:- impure pred handle_event_call_nondet(ssdb.ssdb_proc_id, ssdb.list_var_value).
+:- mode handle_event_call_nondet((builtin.in), (builtin.in)) is det.
+:- impure pred handle_event_exit(ssdb.ssdb_proc_id, ssdb.list_var_value, ssdb.ssdb_retry).
+:- mode handle_event_exit((builtin.in), (builtin.in), (builtin.out)) is det.
+:- impure pred handle_event_exit_nondet(ssdb.ssdb_proc_id, ssdb.list_var_value).
+:- mode handle_event_exit_nondet((builtin.in), (builtin.in)) is det.
+:- impure pred handle_event_fail(ssdb.ssdb_proc_id, ssdb.list_var_value, ssdb.ssdb_retry).
+:- mode handle_event_fail((builtin.in), (builtin.in), (builtin.out)) is det.
+:- impure pred handle_event_fail_nondet(ssdb.ssdb_proc_id, ssdb.list_var_value, ssdb.ssdb_retry).
+:- mode handle_event_fail_nondet((builtin.in), (builtin.in), (builtin.out)) is det.
+:- impure pred handle_event_redo_nondet(ssdb.ssdb_proc_id, ssdb.list_var_value).
+:- mode handle_event_redo_nondet((builtin.in), (builtin.in)) is det.

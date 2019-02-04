@@ -1,0 +1,6 @@
+:- module (parse_tree.java_names).
+:- interface.
+:- import_module (mdbcomp.prim_data).
+:- type java_qual_kind
+	--->	module_qual 
+	;	type_qual .

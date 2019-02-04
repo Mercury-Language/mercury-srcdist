@@ -1,0 +1,4 @@
+:- module (erl_backend.erl_code_util).
+:- interface.
+:- type erl_gen_info.
+:- type opt_dummy_args.

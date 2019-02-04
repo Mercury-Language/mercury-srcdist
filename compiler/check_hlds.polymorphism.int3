@@ -1,0 +1,5 @@
+:- module (check_hlds.polymorphism).
+:- interface.
+:- type poly_info.
+:- type type_info_kind.
+:- type typeclass_info_manipulator.

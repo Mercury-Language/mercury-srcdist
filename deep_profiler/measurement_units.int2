@@ -1,0 +1,10 @@
+:- module measurement_units.
+:- interface.
+:- import_module int.
+:- import_module string.
+:- type memory.
+:- type memory_units
+	--->	units_words 
+	;	units_bytes .
+:- type percent.
+:- type time.

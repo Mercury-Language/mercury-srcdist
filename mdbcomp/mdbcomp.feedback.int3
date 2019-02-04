@@ -1,0 +1,22 @@
+:- module (mdbcomp.feedback).
+:- interface.
+:- import_module assoc_list.
+:- import_module int.
+:- import_module io.
+:- import_module list.
+:- import_module maybe.
+:- import_module pair.
+:- import_module set.
+:- import_module string.
+:- import_module (mdbcomp.program_representation).
+:- type candidate_par_conjunct.
+:- type candidate_par_conjunction.
+:- type conjuncts_are_dependant.
+:- type feedback_data.
+:- type feedback_info.
+:- type feedback_read_error.
+:- type feedback_write_result.
+:- type stat_measure.
+:- type feedback_read_result(T).
+:- inst (feedback_data_query) == bound(feedback_data_calls_above_threshold_sorted(free, free, free) ; feedback_data_candidate_parallel_conjunctions(free, free, free, free)).
+:- mode (feedback_data_query) == (((mdbcomp.feedback).feedback_data_query) >> ground).

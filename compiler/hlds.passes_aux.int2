@@ -1,0 +1,28 @@
+:- module (hlds.passes_aux).
+:- interface.
+:- import_module io.
+:- import_module list.
+:- import_module maybe.
+:- import_module univ.
+:- import_module (hlds.hlds_module).
+:- import_module (hlds.hlds_pred).
+:- import_module (mdbcomp.prim_data).
+:- import_module (parse_tree.error_util).
+:- import_module (parse_tree.prog_data).
+:- type dump_info
+	--->	no_prev_dump 
+	;	prev_dumped_hlds(string, hlds.hlds_module.module_info).
+:- type pred_error_task == pred(hlds.hlds_pred.pred_id, hlds.hlds_module.module_info, hlds.hlds_module.module_info, hlds.hlds_pred.pred_info, hlds.hlds_pred.pred_info, list.list(parse_tree.error_util.error_spec), list.list(parse_tree.error_util.error_spec)).
+:- type task
+	--->	update_proc(pred(hlds.hlds_module.module_info, hlds.hlds_pred.proc_info, hlds.hlds_pred.proc_info))
+	;	update_proc_predid(pred(hlds.hlds_pred.pred_id, hlds.hlds_module.module_info, hlds.hlds_pred.proc_info, hlds.hlds_pred.proc_info))
+	;	update_proc_predprocid(pred(hlds.hlds_pred.pred_id, hlds.hlds_pred.proc_id, hlds.hlds_module.module_info, hlds.hlds_pred.pred_info, hlds.hlds_pred.proc_info, hlds.hlds_pred.proc_info))
+	;	update_proc_io(pred(hlds.hlds_pred.pred_id, hlds.hlds_pred.proc_id, hlds.hlds_module.module_info, hlds.hlds_pred.proc_info, hlds.hlds_pred.proc_info, io.io, io.io))
+	;	update_proc_error(pred(hlds.hlds_pred.pred_id, hlds.hlds_pred.proc_id, hlds.hlds_module.module_info, hlds.hlds_module.module_info, hlds.hlds_pred.proc_info, hlds.hlds_pred.proc_info, int, int, io.io, io.io))
+	;	update_pred_error(hlds.passes_aux.pred_error_task)
+	;	update_module(pred(hlds.hlds_pred.pred_id, hlds.hlds_pred.proc_id, hlds.hlds_pred.pred_info, hlds.hlds_pred.proc_info, hlds.hlds_pred.proc_info, hlds.hlds_module.module_info, hlds.hlds_module.module_info))
+	;	update_module_io(pred(hlds.hlds_pred.pred_id, hlds.hlds_pred.proc_id, hlds.hlds_pred.proc_info, hlds.hlds_pred.proc_info, hlds.hlds_module.module_info, hlds.hlds_module.module_info, io.io, io.io))
+	;	update_module_cookie(pred(hlds.hlds_pred.pred_id, hlds.hlds_pred.proc_id, hlds.hlds_pred.proc_info, hlds.hlds_pred.proc_info, univ.univ, univ.univ, hlds.hlds_module.module_info, hlds.hlds_module.module_info), univ.univ).
+:- inst (pred_error_task) == (pred((builtin.in), (builtin.in), (builtin.out), (builtin.in), (builtin.out), (builtin.in), (builtin.out)) is det).
+:- inst (task) == bound(update_module((pred((builtin.in), (builtin.in), (builtin.in), (builtin.in), (builtin.out), (builtin.in), (builtin.out)) is det)) ; update_module_cookie((pred((builtin.in), (builtin.in), (builtin.in), (builtin.out), (builtin.in), (builtin.out), (builtin.in), (builtin.out)) is det), ground) ; update_module_io((pred((builtin.in), (builtin.in), (builtin.in), (builtin.out), (builtin.in), (builtin.out), (builtin.di), (builtin.uo)) is det)) ; update_pred_error((pred((builtin.in), (builtin.in), (builtin.out), (builtin.in), (builtin.out), (builtin.in), (builtin.out)) is det)) ; update_proc((pred((builtin.in), (builtin.in), (builtin.out)) is det)) ; update_proc_error((pred((builtin.in), (builtin.in), (builtin.in), (builtin.out), (builtin.in), (builtin.out), (builtin.out), (builtin.out), (builtin.di), (builtin.uo)) is det)) ; update_proc_io((pred((builtin.in), (builtin.in), (builtin.in), (builtin.in), (builtin.out), (builtin.di), (builtin.uo)) is det)) ; update_proc_predid((pred((builtin.in), (builtin.in), (builtin.in), (builtin.out)) is det)) ; update_proc_predprocid((pred((builtin.in), (builtin.in), (builtin.in), (builtin.in), (builtin.in), (builtin.out)) is det))).
+:- mode (task) == (((hlds.passes_aux).task) >> ((hlds.passes_aux).task)).

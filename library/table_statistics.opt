@@ -1,0 +1,5 @@
+:- module table_statistics.
+:- pragma exceptions(function, (table_statistics.table_stats_difference), 3, 0, may_throw(user_exception)).
+:- pragma exceptions(predicate, (table_statistics.write_table_stats), 3, 0, may_throw(user_exception)).
+:- pragma termination_info(table_statistics.table_stats_difference((builtin.in), (builtin.in)) = (builtin.out), infinite, can_loop).
+:- pragma termination_info(table_statistics.write_table_stats((builtin.in), (builtin.di), (builtin.uo)), infinite, can_loop).

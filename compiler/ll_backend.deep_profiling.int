@@ -1,0 +1,5 @@
+:- module (ll_backend.deep_profiling).
+:- interface.
+:- import_module (hlds.hlds_module).
+:- pred apply_deep_profiling_transform(hlds.hlds_module.module_info, hlds.hlds_module.module_info).
+:- mode apply_deep_profiling_transform((builtin.in), (builtin.out)) is det.

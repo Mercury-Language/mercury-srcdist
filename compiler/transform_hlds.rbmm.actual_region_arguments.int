@@ -1,0 +1,17 @@
+:- module ((transform_hlds.rbmm).actual_region_arguments).
+:- interface.
+:- import_module hlds.
+:- import_module list.
+:- import_module map.
+:- import_module (hlds.hlds_module).
+:- import_module (hlds.hlds_pred).
+:- import_module (transform_hlds.smm_common).
+:- import_module ((transform_hlds.rbmm).points_to_graph).
+:- import_module ((transform_hlds.rbmm).points_to_info).
+:- import_module ((transform_hlds.rbmm).region_liveness_info).
+:- type actual_region_args
+	--->	actual_region_args(list.list(transform_hlds.rbmm.points_to_graph.rptg_node), list.list(transform_hlds.rbmm.points_to_graph.rptg_node), list.list(transform_hlds.rbmm.points_to_graph.rptg_node)).
+:- type pp_actual_region_args_table == map.map(transform_hlds.smm_common.program_point, transform_hlds.rbmm.actual_region_arguments.actual_region_args).
+:- type proc_pp_actual_region_args_table == map.map(hlds.hlds_pred.pred_proc_id, transform_hlds.rbmm.actual_region_arguments.pp_actual_region_args_table).
+:- pred record_actual_region_arguments(hlds.hlds_module.module_info, transform_hlds.rbmm.points_to_info.rpta_info_table, transform_hlds.rbmm.region_liveness_info.proc_region_set_table, transform_hlds.rbmm.region_liveness_info.proc_region_set_table, transform_hlds.rbmm.region_liveness_info.proc_region_set_table, transform_hlds.rbmm.actual_region_arguments.proc_pp_actual_region_args_table).
+:- mode record_actual_region_arguments((builtin.in), (builtin.in), (builtin.in), (builtin.in), (builtin.in), (builtin.out)) is det.

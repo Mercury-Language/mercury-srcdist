@@ -1,0 +1,41 @@
+/*
+** Automatically generated from `make.util.m'
+** by the Mercury compiler,
+** version rotd-2009-10-23, configured for i686-pc-linux-gnu.
+** Do not edit.
+*/
+#ifndef MAKE__UTIL_MH
+#define MAKE__UTIL_MH
+
+#ifdef __cplusplus
+extern "C" {
+#endif
+
+#ifdef MR_HIGHLEVEL_CODE
+#include "mercury.h"
+#else
+  #ifndef MERCURY_HDR_EXCLUDE_IMP_H
+  #include "mercury_imp.h"
+  #endif
+#endif
+#ifdef MR_DEEP_PROFILING
+#include "mercury_deep_profiling.h"
+#endif
+
+#ifndef MAKE__UTIL_DECL_GUARD
+#define MAKE__UTIL_DECL_GUARD
+#line 551 "make.util.m"
+
+typedef struct MC_JobCtl MC_JobCtl;
+
+#line 32 "make.util.mh.tmp"
+
+#endif
+MR_Word MC_make_no_job_ctl(void);
+MR_Word MC_make_yes_job_ctl(MC_JobCtl *);
+
+#ifdef __cplusplus
+}
+#endif
+
+#endif /* MAKE__UTIL_MH */
