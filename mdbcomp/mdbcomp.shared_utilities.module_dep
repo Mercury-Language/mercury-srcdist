@@ -1,0 +1,13 @@
+module(1, "shared_utilities.m",
+	(mdbcomp.shared_utilities),
+	{mdbcomp},
+	{builtin, io, private_builtin},
+	{builtin, io, private_builtin},
+	{},
+	{},
+	{},
+	{"C"},
+	{"C" - (mdbcomp.shared_utilities)},
+	no_foreign_export,
+	no_main
+).

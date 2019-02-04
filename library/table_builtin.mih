@@ -1,0 +1,828 @@
+/*
+** Automatically generated from `table_builtin.m'
+** by the Mercury compiler,
+** version rotd-2018-02-04
+** configured for x86_64-pc-linux-gnu.
+** Do not edit.
+**
+** The autoconfigured grade settings governing
+** the generation of this C file were
+**
+** TAG_BITS=2
+** UNBOXED_FLOAT=no
+** PREGENERATED_DIST=yes
+** HIGHLEVEL_CODE=yes
+**
+** END_OF_C_GRADE_INFO
+*/
+
+
+// :- module table_builtin.
+// :- interface.
+
+#ifndef MR_HEADER_GUARD_table_builtin
+#define MR_HEADER_GUARD_table_builtin
+
+#ifdef __cplusplus
+extern "C" {
+#endif
+
+#include "mercury.h"
+
+
+#ifndef TABLE_BUILTIN_DECL_GUARD
+#define TABLE_BUILTIN_DECL_GUARD
+
+    #include "mercury_tabling.h"      /* for MR_copy_table_steps */
+    #include "mercury_trace_base.h"   /* for MR_io_tabling_* */
+
+
+
+#include "mercury_misc.h"         /* for MR_fatal_error(); */
+#include "mercury_type_info.h"    /* for MR_TypeCtorInfo_Struct; */
+#include "mercury_tabling.h"      /* for MR_TrieNode, etc. */
+
+MR_DECLARE_TYPE_CTOR_INFO_STRUCT(MR_TYPE_CTOR_INFO_NAME(io, state, 0));
+
+
+#endif
+
+
+
+
+extern const MR_TypeCtorInfo_Struct mercury__table_builtin__table_builtin__type_ctor_info_loop_status_0;
+
+extern const MR_TypeCtorInfo_Struct mercury__table_builtin__table_builtin__type_ctor_info_memo_det_status_0;
+
+extern const MR_TypeCtorInfo_Struct mercury__table_builtin__table_builtin__type_ctor_info_memo_non_record_0;
+
+extern const MR_TypeCtorInfo_Struct mercury__table_builtin__table_builtin__type_ctor_info_memo_non_status_0;
+
+extern const MR_TypeCtorInfo_Struct mercury__table_builtin__table_builtin__type_ctor_info_memo_semi_status_0;
+
+extern const MR_TypeCtorInfo_Struct mercury__table_builtin__table_builtin__type_ctor_info_ml_answer_block_0;
+
+extern const MR_TypeCtorInfo_Struct mercury__table_builtin__table_builtin__type_ctor_info_ml_answer_list_0;
+
+extern const MR_TypeCtorInfo_Struct mercury__table_builtin__table_builtin__type_ctor_info_ml_consumer_0;
+
+extern const MR_TypeCtorInfo_Struct mercury__table_builtin__table_builtin__type_ctor_info_ml_generator_0;
+
+extern const MR_TypeCtorInfo_Struct mercury__table_builtin__table_builtin__type_ctor_info_ml_proc_table_info_0;
+
+extern const MR_TypeCtorInfo_Struct mercury__table_builtin__table_builtin__type_ctor_info_ml_subgoal_0;
+
+extern const MR_TypeCtorInfo_Struct mercury__table_builtin__table_builtin__type_ctor_info_ml_trie_node_0;
+
+extern const MR_TypeCtorInfo_Struct mercury__table_builtin__table_builtin__type_ctor_info_mm_status_0;
+
+void MR_CALL 
+mercury__table_builtin__f_85_110_117_115_101_100_65_114_103_115_95_95_112_114_101_100_95_95_116_97_98_108_101_95_109_101_109_111_95_103_101_116_95_97_110_115_119_101_114_95_98_108_111_99_107_95_115_104_111_114_116_99_117_116_95_95_91_49_93_95_48_1_p_0(void);
+
+void MR_CALL 
+mercury__table_builtin__f_85_110_117_115_101_100_65_114_103_115_95_95_112_114_101_100_95_95_116_97_98_108_101_95_109_101_109_111_95_110_111_110_95_114_101_116_117_114_110_95_97_108_108_95_115_104_111_114_116_99_117_116_95_95_91_49_93_95_48_1_p_0(void);
+
+void MR_CALL 
+mercury__table_builtin__f_85_110_117_115_101_100_65_114_103_115_95_95_112_114_101_100_95_95_116_97_98_108_101_95_109_109_95_114_101_116_117_114_110_95_97_108_108_95_115_104_111_114_116_99_117_116_95_95_91_49_93_95_48_1_p_0(void);
+
+void MR_CALL 
+mercury__table_builtin__f_85_110_117_115_101_100_65_114_103_115_95_95_112_114_101_100_95_95_116_97_98_108_101_95_109_109_111_115_95_114_101_115_116_111_114_101_95_97_110_115_119_101_114_115_95_95_91_49_93_95_48_1_p_0(void);
+
+void MR_CALL 
+mercury__table_builtin__table_error_1_p_0(
+  MR_String param_1);
+
+void MR_CALL 
+mercury__table_builtin__table_io_copy_io_state_2_p_0(void);
+
+MR_bool MR_CALL 
+mercury__table_builtin__table_io_has_occurred_1_p_0(
+  MR_Box param_1);
+
+MR_bool MR_CALL 
+mercury__table_builtin__table_io_in_range_3_p_0(
+  MR_Box * param_1,
+  MR_Integer * param_2,
+  MR_Integer * param_3);
+
+void MR_CALL 
+mercury__table_builtin__table_io_left_bracket_unitized_goal_1_p_0(
+  MR_Integer * param_1);
+
+void MR_CALL 
+mercury__table_builtin__table_io_right_bracket_unitized_goal_1_p_0(
+  MR_Integer param_1);
+
+void MR_CALL 
+mercury__table_builtin__table_lookup_insert_char_3_p_0(
+  MR_Box param_1,
+  MR_Char param_2,
+  MR_Box * param_3);
+
+void MR_CALL 
+mercury__table_builtin__table_lookup_insert_enum_4_p_0(
+  MR_Box param_1,
+  MR_Integer param_2,
+  MR_Box param_3,
+  MR_Box * param_4);
+
+void MR_CALL 
+mercury__table_builtin__table_lookup_insert_float_3_p_0(
+  MR_Box param_1,
+  MR_Float param_2,
+  MR_Box * param_3);
+
+void MR_CALL 
+mercury__table_builtin__table_lookup_insert_foreign_enum_3_p_0(
+  MR_Word param_1,
+  MR_Box param_2,
+  MR_Box param_3,
+  MR_Box * param_4);
+
+void MR_CALL 
+mercury__table_builtin__table_lookup_insert_gen_3_p_0(
+  MR_Word param_1,
+  MR_Box param_2,
+  MR_Box param_3,
+  MR_Box * param_4);
+
+void MR_CALL 
+mercury__table_builtin__table_lookup_insert_gen_addr_3_p_0(
+  MR_Word param_1,
+  MR_Box param_2,
+  MR_Box param_3,
+  MR_Box * param_4);
+
+void MR_CALL 
+mercury__table_builtin__table_lookup_insert_gen_poly_3_p_0(
+  MR_Word param_1,
+  MR_Box param_2,
+  MR_Box param_3,
+  MR_Box * param_4);
+
+void MR_CALL 
+mercury__table_builtin__table_lookup_insert_gen_poly_addr_3_p_0(
+  MR_Word param_1,
+  MR_Box param_2,
+  MR_Box param_3,
+  MR_Box * param_4);
+
+void MR_CALL 
+mercury__table_builtin__table_lookup_insert_int_3_p_0(
+  MR_Box param_1,
+  MR_Integer param_2,
+  MR_Box * param_3);
+
+void MR_CALL 
+mercury__table_builtin__table_lookup_insert_int16_3_p_0(
+  MR_Box param_1,
+  int16_t param_2,
+  MR_Box * param_3);
+
+void MR_CALL 
+mercury__table_builtin__table_lookup_insert_int32_3_p_0(
+  MR_Box param_1,
+  int32_t param_2,
+  MR_Box * param_3);
+
+void MR_CALL 
+mercury__table_builtin__table_lookup_insert_int64_3_p_0(
+  MR_Box param_1,
+  int64_t param_2,
+  MR_Box * param_3);
+
+void MR_CALL 
+mercury__table_builtin__table_lookup_insert_int8_3_p_0(
+  MR_Box param_1,
+  int8_t param_2,
+  MR_Box * param_3);
+
+void MR_CALL 
+mercury__table_builtin__table_lookup_insert_start_int_4_p_0(
+  MR_Box param_1,
+  MR_Integer param_2,
+  MR_Integer param_3,
+  MR_Box * param_4);
+
+void MR_CALL 
+mercury__table_builtin__table_lookup_insert_string_3_p_0(
+  MR_Box param_1,
+  MR_String param_2,
+  MR_Box * param_3);
+
+void MR_CALL 
+mercury__table_builtin__table_lookup_insert_typeclassinfo_3_p_0(
+  MR_Box param_1,
+  MR_Word param_2,
+  MR_Box * param_3);
+
+void MR_CALL 
+mercury__table_builtin__table_lookup_insert_typeinfo_3_p_0(
+  MR_Box param_1,
+  MR_Word param_2,
+  MR_Box * param_3);
+
+void MR_CALL 
+mercury__table_builtin__table_lookup_insert_uint_3_p_0(
+  MR_Box param_1,
+  MR_Unsigned param_2,
+  MR_Box * param_3);
+
+void MR_CALL 
+mercury__table_builtin__table_lookup_insert_uint16_3_p_0(
+  MR_Box param_1,
+  uint16_t param_2,
+  MR_Box * param_3);
+
+void MR_CALL 
+mercury__table_builtin__table_lookup_insert_uint32_3_p_0(
+  MR_Box param_1,
+  uint32_t param_2,
+  MR_Box * param_3);
+
+void MR_CALL 
+mercury__table_builtin__table_lookup_insert_uint64_3_p_0(
+  MR_Box param_1,
+  uint64_t param_2,
+  MR_Box * param_3);
+
+void MR_CALL 
+mercury__table_builtin__table_lookup_insert_uint8_3_p_0(
+  MR_Box param_1,
+  uint8_t param_2,
+  MR_Box * param_3);
+
+MR_bool MR_CALL 
+mercury__table_builtin__table_loop_mark_as_active_and_fail_1_p_0(
+  MR_Box param_1);
+
+void MR_CALL 
+mercury__table_builtin__table_loop_mark_as_inactive_1_p_0(
+  MR_Box param_1);
+
+MR_bool MR_CALL 
+mercury__table_builtin__table_loop_mark_as_inactive_and_fail_1_p_0(
+  MR_Box param_1);
+
+void MR_CALL 
+mercury__table_builtin__table_loop_setup_2_p_0(
+  MR_Box param_1,
+  MR_Word * param_2);
+
+void MR_CALL 
+mercury__table_builtin__table_loop_setup_shortcut_3_p_0(
+  MR_Box param_1,
+  MR_Box * param_2,
+  MR_Word * param_3);
+
+void MR_CALL 
+mercury__table_builtin__table_memo_create_answer_block_3_p_0(
+  MR_Box param_1,
+  MR_Integer param_2,
+  MR_Box * param_3);
+
+void MR_CALL 
+mercury__table_builtin__table_memo_det_setup_2_p_0(
+  MR_Box param_1,
+  MR_Word * param_2);
+
+void MR_CALL 
+mercury__table_builtin__table_memo_det_setup_shortcut_3_p_0(
+  MR_Box param_1,
+  MR_Box * param_2,
+  MR_Word * param_3);
+
+void MR_CALL 
+mercury__table_builtin__table_memo_fill_answer_block_shortcut_1_p_0(
+  MR_Box param_1);
+
+void MR_CALL 
+mercury__table_builtin__table_memo_get_answer_block_2_p_0(
+  MR_Box param_1,
+  MR_Box * param_2);
+
+void MR_CALL 
+mercury__table_builtin__table_memo_get_answer_block_shortcut_1_p_0(
+  MR_Box param_1);
+
+MR_bool MR_CALL 
+mercury__table_builtin__table_memo_mark_as_active_and_fail_1_p_0(
+  MR_Box param_1);
+
+MR_bool MR_CALL 
+mercury__table_builtin__table_memo_mark_as_complete_and_fail_1_p_0(
+  MR_Box param_1);
+
+MR_bool MR_CALL 
+mercury__table_builtin__table_memo_mark_as_failed_1_p_0(
+  MR_Box param_1);
+
+void MR_CALL 
+mercury__table_builtin__table_memo_mark_as_incomplete_1_p_0(
+  MR_Box param_1);
+
+void MR_CALL 
+mercury__table_builtin__table_memo_mark_as_succeeded_1_p_0(
+  MR_Box param_1);
+
+MR_bool MR_CALL 
+mercury__table_builtin__table_memo_non_answer_is_not_duplicate_1_p_0(
+  MR_Box param_1);
+
+MR_bool MR_CALL 
+mercury__table_builtin__table_memo_non_answer_is_not_duplicate_shortcut_1_p_0(
+  MR_Box param_1);
+
+void MR_CALL 
+mercury__table_builtin__table_memo_non_create_answer_block_shortcut_1_p_0(
+  MR_Box param_1);
+
+void MR_CALL 
+mercury__table_builtin__table_memo_non_get_answer_table_2_p_0(
+  MR_Box param_1,
+  MR_Box * param_2);
+
+void MR_CALL 
+mercury__table_builtin__table_memo_non_return_all_shortcut_1_p_0(
+  MR_Box param_1);
+
+void MR_CALL 
+mercury__table_builtin__table_memo_non_setup_3_p_0(
+  MR_Box param_1,
+  MR_Box * param_2,
+  MR_Word * param_3);
+
+void MR_CALL 
+mercury__table_builtin__table_memo_return_all_answers_multi_2_p_0(
+  MR_Box param_1,
+  MR_Box * param_2,
+  MR_Cont param_3,
+  void * param_4);
+
+void MR_CALL 
+mercury__table_builtin__table_memo_return_all_answers_nondet_2_p_0(
+  MR_Box param_1,
+  MR_Box * param_2,
+  MR_Cont param_3,
+  void * param_4);
+
+void MR_CALL 
+mercury__table_builtin__table_memo_semi_setup_2_p_0(
+  MR_Box param_1,
+  MR_Word * param_2);
+
+void MR_CALL 
+mercury__table_builtin__table_memo_semi_setup_shortcut_3_p_0(
+  MR_Box param_1,
+  MR_Box * param_2,
+  MR_Word * param_3);
+
+MR_bool MR_CALL 
+mercury__table_builtin__table_mm_answer_is_not_duplicate_1_p_0(
+  MR_Box param_1);
+
+MR_bool MR_CALL 
+mercury__table_builtin__table_mm_answer_is_not_duplicate_shortcut_1_p_0(
+  MR_Box param_1);
+
+void MR_CALL 
+mercury__table_builtin__table_mm_completion_1_p_0(
+  MR_Box param_1);
+
+void MR_CALL 
+mercury__table_builtin__table_mm_create_answer_block_3_p_0(
+  MR_Box param_1,
+  MR_Integer param_2,
+  MR_Box * param_3);
+
+void MR_CALL 
+mercury__table_builtin__table_mm_fill_answer_block_shortcut_1_p_0(
+  MR_Box param_1);
+
+void MR_CALL 
+mercury__table_builtin__table_mm_get_answer_table_2_p_0(
+  MR_Box param_1,
+  MR_Box * param_2);
+
+void MR_CALL 
+mercury__table_builtin__table_mm_return_all_multi_2_p_0(
+  MR_Box param_1,
+  MR_Box * param_2,
+  MR_Cont param_3,
+  void * param_4);
+
+void MR_CALL 
+mercury__table_builtin__table_mm_return_all_nondet_2_p_0(
+  MR_Box param_1,
+  MR_Box * param_2,
+  MR_Cont param_3,
+  void * param_4);
+
+void MR_CALL 
+mercury__table_builtin__table_mm_return_all_shortcut_1_p_0(
+  MR_Box param_1);
+
+void MR_CALL 
+mercury__table_builtin__table_mm_setup_3_p_0(
+  MR_Box param_1,
+  MR_Box * param_2,
+  MR_Word * param_3);
+
+void MR_CALL 
+mercury__table_builtin__table_mm_suspend_consumer_2_p_0(
+  MR_Box param_1,
+  MR_Box * param_2,
+  MR_Cont param_3,
+  void * param_4);
+
+MR_bool MR_CALL 
+mercury__table_builtin__table_mmos_answer_is_not_duplicate_1_p_0(
+  MR_Box param_1);
+
+MR_bool MR_CALL 
+mercury__table_builtin__table_mmos_answer_is_not_duplicate_shortcut_1_p_0(
+  MR_Box param_1);
+
+MR_bool MR_CALL 
+mercury__table_builtin__table_mmos_completion_1_p_0(
+  MR_Box param_1);
+
+void MR_CALL 
+mercury__table_builtin__table_mmos_consume_next_answer_multi_2_p_0(
+  MR_Box param_1,
+  MR_Box * param_2,
+  MR_Cont param_3,
+  void * param_4);
+
+void MR_CALL 
+mercury__table_builtin__table_mmos_consume_next_answer_nondet_2_p_0(
+  MR_Box param_1,
+  MR_Box * param_2,
+  MR_Cont param_3,
+  void * param_4);
+
+void MR_CALL 
+mercury__table_builtin__table_mmos_create_answer_block_3_p_0(
+  MR_Box param_1,
+  MR_Integer param_2,
+  MR_Box * param_3);
+
+void MR_CALL 
+mercury__table_builtin__table_mmos_pickup_inputs_1_p_0(
+  MR_Box * param_1);
+
+void MR_CALL 
+mercury__table_builtin__table_mmos_restore_answers_1_p_0(
+  MR_Box param_1);
+
+void MR_CALL 
+mercury__table_builtin__table_mmos_return_answer_2_p_0(
+  MR_Box param_1,
+  MR_Box param_2);
+
+void MR_CALL 
+mercury__table_builtin__table_mmos_save_inputs_0_p_0(void);
+
+void MR_CALL 
+mercury__table_builtin__table_mmos_setup_consumer_3_p_0(
+  MR_Box param_1,
+  MR_Word param_2,
+  MR_Box * param_3);
+
+void MR_CALL 
+mercury__table_builtin__table_report_statistics_0_p_0(void);
+
+void MR_CALL 
+mercury__table_builtin__table_restore_any_answer_3_p_0(
+  MR_Box param_1,
+  MR_Integer param_2,
+  MR_Box * param_3);
+
+void MR_CALL 
+mercury__table_builtin__table_restore_char_answer_3_p_0(
+  MR_Box param_1,
+  MR_Integer param_2,
+  MR_Char * param_3);
+
+void MR_CALL 
+mercury__table_builtin__table_restore_float_answer_3_p_0(
+  MR_Box param_1,
+  MR_Integer param_2,
+  MR_Float * param_3);
+
+void MR_CALL 
+mercury__table_builtin__table_restore_int16_answer_3_p_0(
+  MR_Box param_1,
+  MR_Integer param_2,
+  int16_t * param_3);
+
+void MR_CALL 
+mercury__table_builtin__table_restore_int32_answer_3_p_0(
+  MR_Box param_1,
+  MR_Integer param_2,
+  int32_t * param_3);
+
+void MR_CALL 
+mercury__table_builtin__table_restore_int64_answer_3_p_0(
+  MR_Box param_1,
+  MR_Integer param_2,
+  int64_t * param_3);
+
+void MR_CALL 
+mercury__table_builtin__table_restore_int8_answer_3_p_0(
+  MR_Box param_1,
+  MR_Integer param_2,
+  int8_t * param_3);
+
+void MR_CALL 
+mercury__table_builtin__table_restore_int_answer_3_p_0(
+  MR_Box param_1,
+  MR_Integer param_2,
+  MR_Integer * param_3);
+
+void MR_CALL 
+mercury__table_builtin__table_restore_io_state_answer_3_p_0(
+  MR_Box param_1,
+  MR_Integer param_2);
+
+void MR_CALL 
+mercury__table_builtin__table_restore_string_answer_3_p_0(
+  MR_Box param_1,
+  MR_Integer param_2,
+  MR_String * param_3);
+
+void MR_CALL 
+mercury__table_builtin__table_restore_uint16_answer_3_p_0(
+  MR_Box param_1,
+  MR_Integer param_2,
+  uint16_t * param_3);
+
+void MR_CALL 
+mercury__table_builtin__table_restore_uint32_answer_3_p_0(
+  MR_Box param_1,
+  MR_Integer param_2,
+  uint32_t * param_3);
+
+void MR_CALL 
+mercury__table_builtin__table_restore_uint64_answer_3_p_0(
+  MR_Box param_1,
+  MR_Integer param_2,
+  uint64_t * param_3);
+
+void MR_CALL 
+mercury__table_builtin__table_restore_uint8_answer_3_p_0(
+  MR_Box param_1,
+  MR_Integer param_2,
+  uint8_t * param_3);
+
+void MR_CALL 
+mercury__table_builtin__table_restore_uint_answer_3_p_0(
+  MR_Box param_1,
+  MR_Integer param_2,
+  MR_Unsigned * param_3);
+
+void MR_CALL 
+mercury__table_builtin__table_save_any_answer_3_p_0(
+  MR_Word param_1,
+  MR_Box param_2,
+  MR_Integer param_3,
+  MR_Box param_4);
+
+void MR_CALL 
+mercury__table_builtin__table_save_char_answer_3_p_0(
+  MR_Box param_1,
+  MR_Integer param_2,
+  MR_Char param_3);
+
+void MR_CALL 
+mercury__table_builtin__table_save_float_answer_3_p_0(
+  MR_Box param_1,
+  MR_Integer param_2,
+  MR_Float param_3);
+
+void MR_CALL 
+mercury__table_builtin__table_save_int16_answer_3_p_0(
+  MR_Box param_1,
+  MR_Integer param_2,
+  int16_t param_3);
+
+void MR_CALL 
+mercury__table_builtin__table_save_int32_answer_3_p_0(
+  MR_Box param_1,
+  MR_Integer param_2,
+  int32_t param_3);
+
+void MR_CALL 
+mercury__table_builtin__table_save_int64_answer_3_p_0(
+  MR_Box param_1,
+  MR_Integer param_2,
+  int64_t param_3);
+
+void MR_CALL 
+mercury__table_builtin__table_save_int8_answer_3_p_0(
+  MR_Box param_1,
+  MR_Integer param_2,
+  int8_t param_3);
+
+void MR_CALL 
+mercury__table_builtin__table_save_int_answer_3_p_0(
+  MR_Box param_1,
+  MR_Integer param_2,
+  MR_Integer param_3);
+
+void MR_CALL 
+mercury__table_builtin__table_save_io_state_answer_3_p_0(
+  MR_Box param_1,
+  MR_Integer param_2);
+
+void MR_CALL 
+mercury__table_builtin__table_save_string_answer_3_p_0(
+  MR_Box param_1,
+  MR_Integer param_2,
+  MR_String param_3);
+
+void MR_CALL 
+mercury__table_builtin__table_save_uint16_answer_3_p_0(
+  MR_Box param_1,
+  MR_Integer param_2,
+  uint16_t param_3);
+
+void MR_CALL 
+mercury__table_builtin__table_save_uint32_answer_3_p_0(
+  MR_Box param_1,
+  MR_Integer param_2,
+  uint32_t param_3);
+
+void MR_CALL 
+mercury__table_builtin__table_save_uint64_answer_3_p_0(
+  MR_Box param_1,
+  MR_Integer param_2,
+  uint64_t param_3);
+
+void MR_CALL 
+mercury__table_builtin__table_save_uint8_answer_3_p_0(
+  MR_Box param_1,
+  MR_Integer param_2,
+  uint8_t param_3);
+
+void MR_CALL 
+mercury__table_builtin__table_save_uint_answer_3_p_0(
+  MR_Box param_1,
+  MR_Integer param_2,
+  MR_Unsigned param_3);
+
+void MR_CALL 
+mercury__table_builtin____Compare____loop_status_0_0(
+  MR_Word * param_1,
+  MR_Word param_2,
+  MR_Word param_3);
+
+void MR_CALL 
+mercury__table_builtin____Compare____memo_det_status_0_0(
+  MR_Word * param_1,
+  MR_Word param_2,
+  MR_Word param_3);
+
+void MR_CALL 
+mercury__table_builtin____Compare____memo_non_record_0_0(
+  MR_Word * param_1,
+  MR_Box param_2,
+  MR_Box param_3);
+
+void MR_CALL 
+mercury__table_builtin____Compare____memo_non_status_0_0(
+  MR_Word * param_1,
+  MR_Word param_2,
+  MR_Word param_3);
+
+void MR_CALL 
+mercury__table_builtin____Compare____memo_semi_status_0_0(
+  MR_Word * param_1,
+  MR_Word param_2,
+  MR_Word param_3);
+
+void MR_CALL 
+mercury__table_builtin____Compare____ml_answer_block_0_0(
+  MR_Word * param_1,
+  MR_Box param_2,
+  MR_Box param_3);
+
+void MR_CALL 
+mercury__table_builtin____Compare____ml_answer_list_0_0(
+  MR_Word * param_1,
+  MR_Box param_2,
+  MR_Box param_3);
+
+void MR_CALL 
+mercury__table_builtin____Compare____ml_consumer_0_0(
+  MR_Word * param_1,
+  MR_Box param_2,
+  MR_Box param_3);
+
+void MR_CALL 
+mercury__table_builtin____Compare____ml_generator_0_0(
+  MR_Word * param_1,
+  MR_Box param_2,
+  MR_Box param_3);
+
+void MR_CALL 
+mercury__table_builtin____Compare____ml_proc_table_info_0_0(
+  MR_Word * param_1,
+  MR_Box param_2,
+  MR_Box param_3);
+
+void MR_CALL 
+mercury__table_builtin____Compare____ml_subgoal_0_0(
+  MR_Word * param_1,
+  MR_Box param_2,
+  MR_Box param_3);
+
+void MR_CALL 
+mercury__table_builtin____Compare____ml_trie_node_0_0(
+  MR_Word * param_1,
+  MR_Box param_2,
+  MR_Box param_3);
+
+void MR_CALL 
+mercury__table_builtin____Compare____mm_status_0_0(
+  MR_Word * param_1,
+  MR_Word param_2,
+  MR_Word param_3);
+
+MR_bool MR_CALL 
+mercury__table_builtin____Unify____loop_status_0_0(
+  MR_Word param_1,
+  MR_Word param_2);
+
+MR_bool MR_CALL 
+mercury__table_builtin____Unify____memo_det_status_0_0(
+  MR_Word param_1,
+  MR_Word param_2);
+
+MR_bool MR_CALL 
+mercury__table_builtin____Unify____memo_non_record_0_0(
+  MR_Box param_1,
+  MR_Box param_2);
+
+MR_bool MR_CALL 
+mercury__table_builtin____Unify____memo_non_status_0_0(
+  MR_Word param_1,
+  MR_Word param_2);
+
+MR_bool MR_CALL 
+mercury__table_builtin____Unify____memo_semi_status_0_0(
+  MR_Word param_1,
+  MR_Word param_2);
+
+MR_bool MR_CALL 
+mercury__table_builtin____Unify____ml_answer_block_0_0(
+  MR_Box param_1,
+  MR_Box param_2);
+
+MR_bool MR_CALL 
+mercury__table_builtin____Unify____ml_answer_list_0_0(
+  MR_Box param_1,
+  MR_Box param_2);
+
+MR_bool MR_CALL 
+mercury__table_builtin____Unify____ml_consumer_0_0(
+  MR_Box param_1,
+  MR_Box param_2);
+
+MR_bool MR_CALL 
+mercury__table_builtin____Unify____ml_generator_0_0(
+  MR_Box param_1,
+  MR_Box param_2);
+
+MR_bool MR_CALL 
+mercury__table_builtin____Unify____ml_proc_table_info_0_0(
+  MR_Box param_1,
+  MR_Box param_2);
+
+MR_bool MR_CALL 
+mercury__table_builtin____Unify____ml_subgoal_0_0(
+  MR_Box param_1,
+  MR_Box param_2);
+
+MR_bool MR_CALL 
+mercury__table_builtin____Unify____ml_trie_node_0_0(
+  MR_Box param_1,
+  MR_Box param_2);
+
+MR_bool MR_CALL 
+mercury__table_builtin____Unify____mm_status_0_0(
+  MR_Word param_1,
+  MR_Word param_2);
+
+void mercury__table_builtin__init(void);
+void mercury__table_builtin__init_type_tables(void);
+void mercury__table_builtin__init_debugger(void);
+const char *mercury__table_builtin__grade_check(void);
+
+#ifdef __cplusplus
+}
+#endif
+
+#endif // MR_HEADER_GUARD_table_builtin
+
+// :- end_interface table_builtin.
