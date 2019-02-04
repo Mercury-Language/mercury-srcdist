@@ -1,0 +1,18 @@
+:- module (parse_tree.parse_class).
+:- interface.
+:- import_module list.
+:- import_module term.
+:- import_module varset.
+:- import_module (mdbcomp.sym_name).
+:- import_module (parse_tree.maybe_error).
+:- import_module (parse_tree.parse_types).
+:- import_module (parse_tree.prog_data).
+:- type maybe_class_and_inst_constraints == parse_tree.maybe_error.maybe2(list.list(parse_tree.prog_data.prog_constraint), parse_tree.prog_data.inst_var_sub).
+:- pred parse_class_and_inst_constraints(mdbcomp.sym_name.module_name, varset.varset, term.term, parse_tree.parse_class.maybe_class_and_inst_constraints).
+:- mode parse_class_and_inst_constraints((builtin.in), (builtin.in), (builtin.in), (builtin.out)) is det.
+:- pred parse_class_constraints(mdbcomp.sym_name.module_name, varset.varset, term.term, parse_tree.maybe_error.maybe1(list.list(parse_tree.prog_data.prog_constraint))).
+:- mode parse_class_constraints((builtin.in), (builtin.in), (builtin.in), (builtin.out)) is det.
+:- pred parse_instance_item(mdbcomp.sym_name.module_name, varset.varset, list.list(term.term), parse_tree.prog_data.prog_context, int, parse_tree.maybe_error.maybe1(parse_tree.parse_types.item_or_marker)).
+:- mode parse_instance_item((builtin.in), (builtin.in), (builtin.in), (builtin.in), (builtin.in), (builtin.out)) is det.
+:- pred parse_typeclass_item(mdbcomp.sym_name.module_name, varset.varset, list.list(term.term), parse_tree.prog_data.prog_context, int, parse_tree.maybe_error.maybe1(parse_tree.parse_types.item_or_marker)).
+:- mode parse_typeclass_item((builtin.in), (builtin.in), (builtin.in), (builtin.in), (builtin.in), (builtin.out)) is det.
