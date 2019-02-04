@@ -1,0 +1,23 @@
+:- module (ll_backend.unify_gen_deconstruct).
+:- interface.
+:- import_module assoc_list.
+:- import_module hlds.
+:- import_module list.
+:- import_module parse_tree.
+:- import_module (hlds.hlds_data).
+:- import_module (hlds.hlds_goal).
+:- import_module (ll_backend.code_info).
+:- import_module (ll_backend.code_loc_dep).
+:- import_module (ll_backend.llds).
+:- import_module (parse_tree.prog_data).
+:- type field_and_arg_var
+    --->    field_and_arg_var(ll_backend.unify_gen_deconstruct.uni_val, parse_tree.prog_data.prog_var, parse_tree.prog_data.mer_type).
+:- type uni_field
+    --->    uni_field(hlds.hlds_data.ptag, ll_backend.llds.rval, int, parse_tree.prog_data.arg_pos_width).
+:- type uni_val
+    --->    uv_var(parse_tree.prog_data.prog_var)
+    ;       uv_field(ll_backend.unify_gen_deconstruct.uni_field).
+:- inst (field_and_arg_var) for (ll_backend.unify_gen_deconstruct).field_and_arg_var/0 == bound(field_and_arg_var(((ll_backend.unify_gen_deconstruct).uni_val_field), ground, ground)).
+:- inst (uni_val_field) for (ll_backend.unify_gen_deconstruct).uni_val/0 == bound(uv_field(ground)).
+:- inst (uni_val_var) for (ll_backend.unify_gen_deconstruct).uni_val/0 == bound(uv_var(ground)).
+:- inst (var_and_arg_var) for (ll_backend.unify_gen_deconstruct).field_and_arg_var/0 == bound(field_and_arg_var(((ll_backend.unify_gen_deconstruct).uni_val_var), ground, ground)).

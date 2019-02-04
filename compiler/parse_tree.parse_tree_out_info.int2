@@ -1,0 +1,26 @@
+:- module (parse_tree.parse_tree_out_info).
+:- interface.
+:- import_module char.
+:- import_module io.
+:- import_module libs.
+:- import_module list.
+:- import_module mdbcomp.
+:- import_module string.
+:- import_module term.
+:- import_module (libs.globals).
+:- import_module (mdbcomp.sym_name).
+:- import_module (parse_tree.prog_data).
+:- import_module (parse_tree.prog_data_pragma).
+:- type maybe_output_line_numbers
+    --->    dont_output_line_numbers 
+    ;       do_output_line_numbers .
+:- type maybe_qualified_item_names
+    --->    unqualified_item_names 
+    ;       qualified_item_names .
+:- type merc_out_info.
+:- type output_lang
+    --->    output_mercury 
+    ;       output_debug .
+:- typeclass output(U).
+:- instance ((parse_tree.parse_tree_out_info).output(io.state)).
+:- instance ((parse_tree.parse_tree_out_info).output(string)).

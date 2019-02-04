@@ -1,0 +1,30 @@
+:- module (ll_backend.unify_gen_util).
+:- interface.
+:- import_module assoc_list.
+:- import_module hlds.
+:- import_module list.
+:- import_module parse_tree.
+:- import_module (hlds.hlds_data).
+:- import_module (hlds.hlds_goal).
+:- import_module (hlds.hlds_module).
+:- import_module (ll_backend.llds).
+:- import_module (parse_tree.prog_data).
+:- type assign_dir
+    --->    assign_left 
+    ;       assign_right 
+    ;       assign_unused .
+:- pred cast_away_any_sign_extend_bits(parse_tree.prog_data.fill_kind, ll_backend.llds.rval, ll_backend.llds.rval).
+:- mode cast_away_any_sign_extend_bits((builtin.in), (builtin.in), (builtin.out)) is det.
+:- pred compute_assign_direction(hlds.hlds_module.module_info, hlds.hlds_goal.unify_mode, parse_tree.prog_data.mer_type, ll_backend.unify_gen_util.assign_dir).
+:- mode compute_assign_direction((builtin.in), (builtin.in), (builtin.in), (builtin.out)) is det.
+:- pred get_cons_arg_widths(hlds.hlds_module.module_info, parse_tree.prog_data.cons_id, list.list(T), assoc_list.assoc_list(T, parse_tree.prog_data.arg_pos_width)).
+:- mode get_cons_arg_widths((builtin.in), (builtin.in), (builtin.in), (builtin.out)) is det.
+:- pred int_tag_to_const_and_int_type(hlds.hlds_data.int_tag, ll_backend.llds.rval_const, parse_tree.prog_data.int_type).
+:- mode int_tag_to_const_and_int_type((builtin.in), (builtin.out), (builtin.out)) is det.
+:- func left_shift_rval(ll_backend.llds.rval, parse_tree.prog_data.arg_shift, parse_tree.prog_data.fill_kind) = ll_backend.llds.rval.
+:- pred maybe_cast_masked_off_rval(parse_tree.prog_data.fill_kind, ll_backend.llds.rval, ll_backend.llds.rval).
+:- mode maybe_cast_masked_off_rval((builtin.in), (builtin.in), (builtin.out)) is det.
+:- pred or_packed_rvals(list.list(ll_backend.llds.rval), ll_backend.llds.rval).
+:- mode or_packed_rvals((builtin.in), (builtin.out)) is det.
+:- func or_two_rvals(ll_backend.llds.rval, ll_backend.llds.rval) = ll_backend.llds.rval.
+:- func right_shift_rval(ll_backend.llds.rval, parse_tree.prog_data.arg_shift) = ll_backend.llds.rval.

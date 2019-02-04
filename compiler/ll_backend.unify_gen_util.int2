@@ -1,0 +1,15 @@
+:- module (ll_backend.unify_gen_util).
+:- interface.
+:- import_module assoc_list.
+:- import_module hlds.
+:- import_module list.
+:- import_module parse_tree.
+:- import_module (hlds.hlds_data).
+:- import_module (hlds.hlds_goal).
+:- import_module (hlds.hlds_module).
+:- import_module (ll_backend.llds).
+:- import_module (parse_tree.prog_data).
+:- type assign_dir
+    --->    assign_left 
+    ;       assign_right 
+    ;       assign_unused .

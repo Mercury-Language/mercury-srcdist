@@ -1,0 +1,24 @@
+:- module random.
+:- interface.
+:- import_module list.
+:- type supply.
+:- pred init(int, random.supply).
+:- mode init((builtin.in), (builtin.uo)) is det.
+:- pred permutation(list.list(T), list.list(T), random.supply, random.supply).
+:- mode permutation((builtin.in), (builtin.out), (builtin.in), (builtin.out)) is det.
+:- mode permutation((builtin.in), (builtin.out), (builtin.mdi), (builtin.muo)) is det.
+:- pred randcount(int, random.supply, random.supply).
+:- mode randcount((builtin.out), (builtin.in), (builtin.out)) is det.
+:- mode randcount((builtin.out), (builtin.mdi), (builtin.muo)) is det.
+:- pred randmax(int, random.supply, random.supply).
+:- mode randmax((builtin.out), (builtin.in), (builtin.out)) is det.
+:- mode randmax((builtin.out), (builtin.mdi), (builtin.muo)) is det.
+:- pred random(int, random.supply, random.supply).
+:- mode random((builtin.out), (builtin.in), (builtin.out)) is det.
+:- mode random((builtin.out), (builtin.mdi), (builtin.muo)) is det.
+:- pred random(int, int, int, random.supply, random.supply).
+:- mode random((builtin.in), (builtin.in), (builtin.out), (builtin.in), (builtin.out)) is det.
+:- mode random((builtin.in), (builtin.in), (builtin.out), (builtin.mdi), (builtin.muo)) is det.
+:- pred test(int, int, list.list(int), int).
+:- mode test((builtin.in), (builtin.in), (builtin.out), (builtin.out)) is det.
+:- pragma obsolete((random.test)/4).

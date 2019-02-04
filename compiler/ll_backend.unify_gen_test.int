@@ -1,0 +1,19 @@
+:- module (ll_backend.unify_gen_test).
+:- interface.
+:- import_module hlds.
+:- import_module list.
+:- import_module parse_tree.
+:- import_module (hlds.hlds_data).
+:- import_module (ll_backend.code_info).
+:- import_module (ll_backend.code_loc_dep).
+:- import_module (ll_backend.llds).
+:- import_module (parse_tree.prog_data).
+:- type test_sense
+    --->    branch_on_success 
+    ;       branch_on_failure .
+:- pred generate_raw_tag_test_case(ll_backend.llds.rval, parse_tree.prog_data.mer_type, string, hlds.hlds_data.tagged_cons_id, list.list(hlds.hlds_data.tagged_cons_id), hlds.hlds_data.maybe_cheaper_tag_test, ll_backend.unify_gen_test.test_sense, ll_backend.llds.label, ll_backend.llds.llds_code, ll_backend.code_info.code_info, ll_backend.code_info.code_info).
+:- mode generate_raw_tag_test_case((builtin.in), (builtin.in), (builtin.in), (builtin.in), (builtin.in), (builtin.in), (builtin.in), (builtin.out), (builtin.out), (builtin.in), (builtin.out)) is det.
+:- pred generate_simple_test_unification(parse_tree.prog_data.prog_var, parse_tree.prog_data.prog_var, ll_backend.llds.llds_code, ll_backend.code_info.code_info, ll_backend.code_info.code_info, ll_backend.code_loc_dep.code_loc_dep, ll_backend.code_loc_dep.code_loc_dep).
+:- mode generate_simple_test_unification((builtin.in), (builtin.in), (builtin.out), (builtin.in), (builtin.out), (builtin.in), (builtin.out)) is det.
+:- pred generate_tag_test(parse_tree.prog_data.prog_var, parse_tree.prog_data.cons_id, hlds.hlds_data.maybe_cheaper_tag_test, ll_backend.unify_gen_test.test_sense, ll_backend.llds.label, ll_backend.llds.llds_code, ll_backend.code_info.code_info, ll_backend.code_info.code_info, ll_backend.code_loc_dep.code_loc_dep, ll_backend.code_loc_dep.code_loc_dep).
+:- mode generate_tag_test((builtin.in), (builtin.in), (builtin.in), (builtin.in), (builtin.out), (builtin.out), (builtin.in), (builtin.out), (builtin.in), (builtin.out)) is det.
