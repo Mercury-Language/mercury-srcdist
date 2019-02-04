@@ -1,0 +1,4 @@
+:- module ((hlds.make_hlds).goal_expr_to_goal).
+:- interface.
+:- type loc_kind
+	where	type_is_abstract_enum(1).

@@ -1,0 +1,12 @@
+:- module (hlds.hlds_clauses).
+:- interface.
+:- type clause.
+:- type clause_applicable_modes.
+:- type clause_item_number_region.
+:- type clause_item_number_type
+	where	type_is_abstract_enum(1).
+:- type clause_item_number_types
+	where	type_is_abstract_enum(1).
+:- type clause_item_numbers.
+:- type clauses_info.
+:- type clauses_rep.
