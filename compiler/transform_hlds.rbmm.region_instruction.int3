@@ -1,0 +1,8 @@
+:- module ((transform_hlds.rbmm).region_instruction).
+:- interface.
+:- type instrs_before_after.
+:- type region_instr.
+:- type region_instr_proc.
+:- type region_instr_table.
+:- type region_instr_type
+	where	type_is_abstract_enum(2).
