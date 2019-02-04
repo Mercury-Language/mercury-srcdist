@@ -1,0 +1,19 @@
+:- module (parse_tree.prog_data_event).
+:- interface.
+:- import_module assoc_list.
+:- import_module list.
+:- import_module map.
+:- import_module maybe.
+:- import_module pair.
+:- import_module (parse_tree.prog_data).
+:- type event_attr_synth_call
+    --->    event_attr_synth_call(((parse_tree.prog_data_event).synth_func_attr_name_num) :: pair.pair(string, int), ((parse_tree.prog_data_event).synth_arg_attr_name_nums) :: assoc_list.assoc_list(string, int), ((parse_tree.prog_data_event).synth_eval_order) :: list.list(int)).
+:- type event_attribute
+    --->    event_attribute(((parse_tree.prog_data_event).attr_num) :: int, ((parse_tree.prog_data_event).attr_name) :: string, ((parse_tree.prog_data_event).attr_type) :: parse_tree.prog_data.mer_type, ((parse_tree.prog_data_event).attr_mode) :: parse_tree.prog_data.mer_mode, ((parse_tree.prog_data_event).attr_maybe_synth_call) :: maybe.maybe(parse_tree.prog_data_event.event_attr_synth_call)).
+:- type event_set
+    --->    event_set(((parse_tree.prog_data_event).event_set_name) :: string, ((parse_tree.prog_data_event).event_set_spec_map) :: parse_tree.prog_data_event.event_spec_map).
+:- type event_set_data
+    --->    event_set_data(((parse_tree.prog_data_event).event_set_data_name) :: string, ((parse_tree.prog_data_event).event_set_data_description) :: string, ((parse_tree.prog_data_event).event_set_data_specs) :: list.list(parse_tree.prog_data_event.event_spec), ((parse_tree.prog_data_event).event_set_data_max_num_attr) :: int).
+:- type event_spec
+    --->    event_spec(((parse_tree.prog_data_event).event_spec_num) :: int, ((parse_tree.prog_data_event).event_spec_name) :: string, ((parse_tree.prog_data_event).event_spec_linenum) :: int, ((parse_tree.prog_data_event).event_spec_attrs) :: list.list(parse_tree.prog_data_event.event_attribute), ((parse_tree.prog_data_event).event_spec_synth_order) :: list.list(int)).
+:- type event_spec_map == map.map(string, parse_tree.prog_data_event.event_spec).
