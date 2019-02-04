@@ -1,0 +1,31 @@
+:- module array2d.
+
+:- pragma termination_info(array2d.array2d((builtin.in)) = (array2d.array2d_uo), infinite, can_loop).
+:- pragma termination_info(array2d.bounds((builtin.in), (builtin.out), (builtin.out)), finite(-3, [no, yes, no, no]), cannot_loop).
+:- pragma termination_info(array2d.elem((builtin.in), (builtin.in), (builtin.in)) = (builtin.out), infinite, cannot_loop).
+:- pragma termination_info(array2d.'elem :='((builtin.in), (builtin.in), (array2d.array2d_di), (builtin.in)) = (array2d.array2d_uo), infinite, cannot_loop).
+:- pragma termination_info(array2d.fill((builtin.in), (array2d.array2d_di), (array2d.array2d_uo)), infinite, can_loop).
+:- pragma termination_info(array2d.from_lists((builtin.in)) = (array2d.array2d_uo), infinite, can_loop).
+:- pragma termination_info(array2d.in_bounds((builtin.in), (builtin.in), (builtin.in)), finite(0, [no, no, no, no]), cannot_loop).
+:- pragma termination_info(array2d.init((builtin.in), (builtin.in), (builtin.in)) = (array2d.array2d_uo), infinite, cannot_loop).
+:- pragma termination_info(array2d.is_empty((builtin.in)), finite(0, [no, no]), cannot_loop).
+:- pragma termination_info(array2d.lists((builtin.in)) = (builtin.out), infinite, can_loop).
+:- pragma termination_info(array2d.set((builtin.in), (builtin.in), (builtin.in), (array2d.array2d_di), (array2d.array2d_uo)), infinite, cannot_loop).
+:- pragma termination_info(array2d.unsafe_elem((builtin.in), (builtin.in), (builtin.in)) = (builtin.out), infinite, cannot_loop).
+:- pragma termination_info(array2d.'unsafe_elem :='((builtin.in), (builtin.in), (array2d.array2d_di), (builtin.in)) = (array2d.array2d_uo), infinite, cannot_loop).
+:- pragma termination_info(array2d.unsafe_set((builtin.in), (builtin.in), (builtin.in), (array2d.array2d_di), (array2d.array2d_uo)), infinite, cannot_loop).
+
+:- pragma exceptions(function, (array2d.array2d), 2, 0, may_throw(user_exception)).
+:- pragma exceptions(predicate, (array2d.bounds), 3, 0, will_not_throw).
+:- pragma exceptions(function, (array2d.elem), 4, 0, may_throw(user_exception)).
+:- pragma exceptions(function, (array2d.'elem :='), 5, 0, may_throw(user_exception)).
+:- pragma exceptions(predicate, (array2d.fill), 3, 0, will_not_throw).
+:- pragma exceptions(function, (array2d.from_lists), 2, 0, may_throw(user_exception)).
+:- pragma exceptions(predicate, (array2d.in_bounds), 3, 0, will_not_throw).
+:- pragma exceptions(function, (array2d.init), 4, 0, may_throw(user_exception)).
+:- pragma exceptions(predicate, (array2d.is_empty), 1, 0, will_not_throw).
+:- pragma exceptions(function, (array2d.lists), 2, 0, may_throw(user_exception)).
+:- pragma exceptions(predicate, (array2d.set), 5, 0, may_throw(user_exception)).
+:- pragma exceptions(function, (array2d.unsafe_elem), 4, 0, will_not_throw).
+:- pragma exceptions(function, (array2d.'unsafe_elem :='), 5, 0, will_not_throw).
+:- pragma exceptions(predicate, (array2d.unsafe_set), 5, 0, will_not_throw).

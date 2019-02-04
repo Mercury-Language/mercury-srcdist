@@ -1,0 +1,37 @@
+:- module random.
+
+:- pragma termination_info(random.init((builtin.in), (builtin.uo)), infinite, cannot_loop).
+:- pragma termination_info(random.params((builtin.out), (builtin.out), (builtin.out)), finite(0, [no, no, no]), cannot_loop).
+:- pragma termination_info(random.perform_sampling((builtin.in), (array.array_di), (builtin.in), (builtin.out), (builtin.in), (builtin.out)), infinite, can_loop).
+:- pragma termination_info(random.perform_sampling((builtin.in), (array.array_di), (builtin.in), (builtin.out), (builtin.mdi), (builtin.muo)), infinite, can_loop).
+:- pragma termination_info(random.permutation((builtin.in), (builtin.out), (builtin.in), (builtin.out)), infinite, can_loop).
+:- pragma termination_info(random.permutation((builtin.in), (builtin.out), (builtin.mdi), (builtin.muo)), infinite, can_loop).
+:- pragma termination_info(random.randcount((builtin.out), (builtin.in), (builtin.out)), finite(0, [no, yes, no]), cannot_loop).
+:- pragma termination_info(random.randcount((builtin.out), (builtin.mdi), (builtin.muo)), finite(0, [no, yes, no]), cannot_loop).
+:- pragma termination_info(random.randmax((builtin.out), (builtin.in), (builtin.out)), finite(0, [no, yes, no]), cannot_loop).
+:- pragma termination_info(random.randmax((builtin.out), (builtin.mdi), (builtin.muo)), finite(0, [no, yes, no]), cannot_loop).
+:- pragma termination_info(random.random((builtin.out), (builtin.in), (builtin.out)), infinite, can_loop).
+:- pragma termination_info(random.random((builtin.out), (builtin.mdi), (builtin.muo)), infinite, can_loop).
+:- pragma termination_info(random.random((builtin.in), (builtin.in), (builtin.out), (builtin.in), (builtin.out)), infinite, can_loop).
+:- pragma termination_info(random.random((builtin.in), (builtin.in), (builtin.out), (builtin.mdi), (builtin.muo)), infinite, can_loop).
+:- pragma termination_info(random.test((builtin.in), (builtin.in), (builtin.out), (builtin.out)), infinite, can_loop).
+:- pragma termination_info(random.test_2((builtin.in), (builtin.out), (builtin.in), (builtin.out)), infinite, can_loop).
+:- pragma termination_info(random.test_2((builtin.in), (builtin.out), (builtin.mdi), (builtin.muo)), infinite, can_loop).
+
+:- pragma exceptions(predicate, (random.init), 2, 0, will_not_throw).
+:- pragma exceptions(predicate, (random.params), 3, 0, will_not_throw).
+:- pragma exceptions(predicate, (random.perform_sampling), 6, 0, may_throw(user_exception)).
+:- pragma exceptions(predicate, (random.perform_sampling), 6, 1, may_throw(user_exception)).
+:- pragma exceptions(predicate, (random.permutation), 4, 0, may_throw(user_exception)).
+:- pragma exceptions(predicate, (random.permutation), 4, 1, may_throw(user_exception)).
+:- pragma exceptions(predicate, (random.randcount), 3, 0, will_not_throw).
+:- pragma exceptions(predicate, (random.randcount), 3, 1, will_not_throw).
+:- pragma exceptions(predicate, (random.randmax), 3, 0, will_not_throw).
+:- pragma exceptions(predicate, (random.randmax), 3, 1, will_not_throw).
+:- pragma exceptions(predicate, (random.random), 3, 0, may_throw(user_exception)).
+:- pragma exceptions(predicate, (random.random), 3, 1, may_throw(user_exception)).
+:- pragma exceptions(predicate, (random.random), 5, 0, may_throw(user_exception)).
+:- pragma exceptions(predicate, (random.random), 5, 1, may_throw(user_exception)).
+:- pragma exceptions(predicate, (random.test), 4, 0, may_throw(user_exception)).
+:- pragma exceptions(predicate, (random.test_2), 4, 0, may_throw(user_exception)).
+:- pragma exceptions(predicate, (random.test_2), 4, 1, may_throw(user_exception)).
