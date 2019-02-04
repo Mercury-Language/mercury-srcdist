@@ -1,0 +1,4 @@
+:- module (((transform_hlds.ctgc).structure_reuse).direct).
+:- implementation.
+:- include_module ((((transform_hlds.ctgc).structure_reuse).direct).choose_reuse).
+:- include_module ((((transform_hlds.ctgc).structure_reuse).direct).detect_garbage).
