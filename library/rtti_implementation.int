@@ -1,0 +1,41 @@
+:- module rtti_implementation.
+:- interface.
+:- import_module deconstruct.
+:- import_module list.
+:- import_module univ.
+:- use_module type_desc.
+:- type type_ctor_info.
+:- type type_info.
+:- pred compare_type_infos((builtin.comparison_result), (rtti_implementation.type_info), (rtti_implementation.type_info)).
+:- mode compare_type_infos((builtin.out), (builtin.in), (builtin.in)) is det.
+:- pred deconstruct(T, (deconstruct.noncanon_handling), string, int, (list.list((univ.univ)))).
+:- mode deconstruct((builtin.in), builtin.in((deconstruct.do_not_allow)), (builtin.out), (builtin.out), (builtin.out)) is det.
+:- mode deconstruct((builtin.in), builtin.in((deconstruct.canonicalize)), (builtin.out), (builtin.out), (builtin.out)) is det.
+:- mode deconstruct((builtin.in), builtin.in((deconstruct.include_details_cc)), (builtin.out), (builtin.out), (builtin.out)) is cc_multi.
+:- mode deconstruct((builtin.in), (builtin.in), (builtin.out), (builtin.out), (builtin.out)) is cc_multi.
+:- pred generic_compare((builtin.comparison_result), T, T).
+:- mode generic_compare((builtin.out), (builtin.in), (builtin.in)) is det.
+:- pred generic_unify(T, T).
+:- mode generic_unify((builtin.in), (builtin.in)) is semidet.
+:- pred get_functor((type_desc.type_desc), int, string, int, (list.list((type_desc.type_desc)))).
+:- mode get_functor((builtin.in), (builtin.in), (builtin.out), (builtin.out), (builtin.out)) is semidet.
+:- pred get_functor_with_names((type_desc.type_desc), int, string, int, (list.list((type_desc.type_desc))), (list.list(string))).
+:- mode get_functor_with_names((builtin.in), (builtin.in), (builtin.out), (builtin.out), (builtin.out), (builtin.out)) is semidet.
+:- func get_type_info(T) = (rtti_implementation.type_info).
+:- mode get_type_info((builtin.unused)) = (builtin.out) is det.
+:- func num_functors((type_desc.type_desc)) = int is semidet.
+:- pred type_ctor_and_args((rtti_implementation.type_info), (rtti_implementation.type_ctor_info), (list.list((rtti_implementation.type_info)))).
+:- mode type_ctor_and_args((builtin.in), (builtin.out), (builtin.out)) is det.
+:- pred type_ctor_name_and_arity((rtti_implementation.type_ctor_info), string, string, int).
+:- mode type_ctor_name_and_arity((builtin.in), (builtin.out), (builtin.out), (builtin.out)) is det.
+:- func unsafe_cast(T1) = T2.
+:- mode unsafe_cast((builtin.in)) = (builtin.out) is det.
+:- implementation.
+:- type type_ctor_info
+	--->	type_ctor_info((builtin.c_pointer)).
+:- pragma foreign_type(java, type_ctor_info, "mercury.runtime.TypeCtorInfo_Struct").
+:- type type_info
+	--->	type_info((builtin.c_pointer)).
+:- pragma foreign_type(java, type_info, "mercury.runtime.TypeInfo_Struct").
+:- pragma foreign_import_module("Java", rtti_implementation).
+:- pragma foreign_import_module("Java", rtti_implementation).

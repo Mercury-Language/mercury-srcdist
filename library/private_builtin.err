@@ -1,0 +1,6 @@
+private_builtin.m:096: In `builtin_compound_eq'(in, in):
+private_builtin.m:096:   warning: determinism declaration could be tighter.
+private_builtin.m:096:   Declared `semidet', inferred `det'.
+private_builtin.m:097: In `builtin_compound_lt'(in, in):
+private_builtin.m:097:   warning: determinism declaration could be tighter.
+private_builtin.m:097:   Declared `semidet', inferred `det'.

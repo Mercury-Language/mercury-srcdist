@@ -1,0 +1,11 @@
+:- module (transform_hlds.intermod).
+:- interface.
+:- import_module bool.
+:- import_module io.
+:- import_module (hlds.hlds_module).
+:- import_module (parse_tree.modules).
+:- import_module (parse_tree.prog_io).
+:- import_module (parse_tree.prog_item).
+:- type opt_file_type
+	--->	opt_file 
+	;	trans_opt_file .

@@ -1,0 +1,4 @@
+:- module ((transform_hlds.rbmm).actual_region_arguments).
+:- interface.
+:- type pp_pair_region_list_table.
+:- type proc_pp_pair_region_list_table.

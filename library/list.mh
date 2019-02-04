@@ -1,0 +1,36 @@
+/*
+** Automatically generated from `list.m'
+** by the Mercury compiler,
+** version rotd-2007-07-12, configured for i686-pc-linux-gnu.
+** Do not edit.
+*/
+#ifndef LIST_MH
+#define LIST_MH
+
+#ifdef __cplusplus
+extern "C" {
+#endif
+
+#ifdef MR_HIGHLEVEL_CODE
+#include "mercury.h"
+#else
+  #ifndef MERCURY_HDR_EXCLUDE_IMP_H
+  #include "mercury_imp.h"
+  #endif
+#endif
+#ifdef MR_DEEP_PROFILING
+#include "mercury_deep_profiling.h"
+#endif
+
+#ifndef LIST_DECL_GUARD
+#define LIST_DECL_GUARD
+
+#endif
+MR_Word ML_cons(MR_Word, MR_Word, MR_Word);
+MR_Word ML_empty_list(MR_Word);
+
+#ifdef __cplusplus
+}
+#endif
+
+#endif /* LIST_MH */

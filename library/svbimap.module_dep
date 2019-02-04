@@ -1,0 +1,13 @@
+module(1, "svbimap.m",
+	svbimap,
+	{},
+	{builtin, bimap, private_builtin},
+	{builtin, bimap, private_builtin},
+	{},
+	{},
+	{},
+	{},
+	{},
+	no_foreign_export,
+	no_main
+).

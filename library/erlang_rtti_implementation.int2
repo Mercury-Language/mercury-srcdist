@@ -1,0 +1,36 @@
+:- module erlang_rtti_implementation.
+:- interface.
+:- import_module deconstruct.
+:- import_module list.
+:- import_module univ.
+:- type type_ctor_info.
+:- type type_ctor_info_evaled.
+:- type type_info.
+:- implementation.
+:- type erlang_atom
+	--->	erlang_atom .
+:- type erlang_atom.
+:- pragma foreign_type(erlang, erlang_atom, "").
+:- type pseudo_type_info
+	--->	pseudo_type_info .
+:- type pseudo_type_info.
+:- pragma foreign_type(erlang, pseudo_type_info, "").
+:- type pseudo_type_info_thunk
+	--->	pseudo_type_info_thunk .
+:- type pseudo_type_info_thunk.
+:- pragma foreign_type(erlang, pseudo_type_info_thunk, "").
+:- type type_ctor_info
+	--->	type_ctor_info .
+:- pragma foreign_type(erlang, type_ctor_info, "").
+:- type type_ctor_info_evaled
+	--->	type_ctor_info_evaled .
+:- pragma foreign_type(erlang, type_ctor_info_evaled, "").
+:- type type_info
+	--->	type_info .
+:- pragma foreign_type(erlang, type_info, "").
+:- type type_info_thunk
+	--->	type_info_thunk .
+:- type type_info_thunk.
+:- pragma foreign_type(erlang, type_info_thunk, "").
+:- pragma foreign_import_module("Erlang", erlang_rtti_implementation).
+:- pragma foreign_import_module("Erlang", erlang_rtti_implementation).

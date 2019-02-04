@@ -1,0 +1,82 @@
+/*
+** Automatically generated from `version_array.m'
+** by the Mercury compiler,
+** version rotd-2007-07-12, configured for i686-pc-linux-gnu.
+** Do not edit.
+*/
+#ifndef VERSION_ARRAY_MH
+#define VERSION_ARRAY_MH
+
+#ifdef __cplusplus
+extern "C" {
+#endif
+
+#ifdef MR_HIGHLEVEL_CODE
+#include "mercury.h"
+#else
+  #ifndef MERCURY_HDR_EXCLUDE_IMP_H
+  #include "mercury_imp.h"
+  #endif
+#endif
+#ifdef MR_DEEP_PROFILING
+#include "mercury_deep_profiling.h"
+#endif
+
+#ifndef VERSION_ARRAY_DECL_GUARD
+#define VERSION_ARRAY_DECL_GUARD
+#line 386 "version_array.m"
+
+    /*
+    ** If index is -1 then value is undefined and rest is the latest
+    ** array value.
+    **
+    ** Otherwise value is the overwritten value at index and rest is
+    ** a pointer to the next version in the chain.
+    */
+
+typedef struct ML_va    *ML_va_ptr;
+
+struct ML_va {
+    MR_Integer          index;  /* -1 for latest, >= 0 for older */
+    MR_Word             value;  /* Valid if index >= 0           */
+    union {
+        MR_ArrayPtr     array;  /* Valid if index == -1          */
+        ML_va_ptr       next;   /* Valid if index >= 0           */
+    } rest;
+};
+
+    /*
+    ** Returns the number of items in a version array.
+    */
+extern MR_Integer   ML_va_size(ML_va_ptr);
+
+    /*
+    ** If I is in range then ML_va_get(VA, I, &X) sets X to the Ith item
+    ** in VA (counting from zero) and returns MR_TRUE.  Otherwise it
+    ** returns MR_FALSE.
+    */
+extern int          ML_va_get(ML_va_ptr, MR_Integer, MR_Word *);
+
+    /*
+    ** If I is in range then ML_va_set(VA0, I, X, VA) sets VA to be VA0
+    ** updated with the Ith item as X (counting from zero) and
+    ** returns MR_TRUE.  Otherwise it returns MR_FALSE.
+    */
+extern int          ML_va_set(ML_va_ptr, MR_Integer, MR_Word, ML_va_ptr *);
+
+    /*
+    ** `Rewinds' a version array, invalidating all extant successors
+    ** including the argument.
+    */
+extern ML_va_ptr    ML_va_rewind(ML_va_ptr);
+
+
+#line 75 "version_array.mh.tmp"
+
+#endif
+
+#ifdef __cplusplus
+}
+#endif
+
+#endif /* VERSION_ARRAY_MH */

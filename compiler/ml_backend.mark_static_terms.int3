@@ -1,0 +1,1 @@
+:- module (ml_backend.mark_static_terms).

@@ -1,0 +1,5 @@
+:- module (parse_tree.prog_type).
+:- interface.
+:- type ctor_defn.
+:- type polymorphism_cell.
+:- type type_category.

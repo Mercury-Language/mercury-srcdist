@@ -1,0 +1,89 @@
+:- module (mdbcomp.program_representation).
+:- interface.
+:- import_module bool.
+:- import_module char.
+:- import_module list.
+:- import_module maybe.
+:- import_module type_desc.
+:- import_module (mdbcomp.prim_data).
+:- type arg_pos
+	--->	user_head_var(int)
+	;	any_head_var(int)
+	;	any_head_var_from_back(int).
+:- type atomic_goal_id
+	--->	atomic_goal_id(string, string, int).
+:- type atomic_goal_rep
+	--->	unify_construct_rep(((mdbcomp.program_representation).var_rep), ((mdbcomp.program_representation).cons_id_rep), (list.list(((mdbcomp.program_representation).var_rep))))
+	;	unify_deconstruct_rep(((mdbcomp.program_representation).var_rep), ((mdbcomp.program_representation).cons_id_rep), (list.list(((mdbcomp.program_representation).var_rep))))
+	;	partial_deconstruct_rep(((mdbcomp.program_representation).var_rep), ((mdbcomp.program_representation).cons_id_rep), (list.list((maybe.maybe(((mdbcomp.program_representation).var_rep))))))
+	;	partial_construct_rep(((mdbcomp.program_representation).var_rep), ((mdbcomp.program_representation).cons_id_rep), (list.list((maybe.maybe(((mdbcomp.program_representation).var_rep))))))
+	;	unify_assign_rep(((mdbcomp.program_representation).var_rep), ((mdbcomp.program_representation).var_rep))
+	;	cast_rep(((mdbcomp.program_representation).var_rep), ((mdbcomp.program_representation).var_rep))
+	;	unify_simple_test_rep(((mdbcomp.program_representation).var_rep), ((mdbcomp.program_representation).var_rep))
+	;	pragma_foreign_code_rep((list.list(((mdbcomp.program_representation).var_rep))))
+	;	higher_order_call_rep(((mdbcomp.program_representation).var_rep), (list.list(((mdbcomp.program_representation).var_rep))))
+	;	method_call_rep(((mdbcomp.program_representation).var_rep), int, (list.list(((mdbcomp.program_representation).var_rep))))
+	;	plain_call_rep(string, string, (list.list(((mdbcomp.program_representation).var_rep))))
+	;	builtin_call_rep(string, string, (list.list(((mdbcomp.program_representation).var_rep))))
+	;	event_call_rep(string, (list.list(((mdbcomp.program_representation).var_rep)))).
+:- type bytecode_goal_type
+	--->	goal_conj 
+	;	goal_disj 
+	;	goal_switch 
+	;	goal_ite 
+	;	goal_neg 
+	;	goal_scope 
+	;	goal_construct 
+	;	goal_deconstruct 
+	;	goal_partial_construct 
+	;	goal_partial_deconstruct 
+	;	goal_assign 
+	;	goal_cast 
+	;	goal_simple_test 
+	;	goal_foreign 
+	;	goal_ho_call 
+	;	goal_method_call 
+	;	goal_plain_call 
+	;	goal_builtin_call 
+	;	goal_event_call .
+:- type cons_id_rep == string.
+:- type detism_rep
+	--->	det_rep 
+	;	semidet_rep 
+	;	nondet_rep 
+	;	multidet_rep 
+	;	cc_nondet_rep 
+	;	cc_multidet_rep 
+	;	erroneous_rep 
+	;	failure_rep .
+:- type goal_path == (list.list(((mdbcomp.program_representation).goal_path_step))).
+:- type goal_path_step
+	--->	step_conj(int)
+	;	step_disj(int)
+	;	step_switch(int, (maybe.maybe(int)))
+	;	step_ite_cond 
+	;	step_ite_then 
+	;	step_ite_else 
+	;	step_neg 
+	;	step_scope(((mdbcomp.program_representation).maybe_cut))
+	;	step_first 
+	;	step_later .
+:- type goal_path_string == string.
+:- type goal_rep
+	--->	conj_rep((list.list(((mdbcomp.program_representation).goal_rep))))
+	;	disj_rep((list.list(((mdbcomp.program_representation).goal_rep))))
+	;	switch_rep((list.list(((mdbcomp.program_representation).goal_rep))))
+	;	ite_rep(((mdbcomp.program_representation).goal_rep), ((mdbcomp.program_representation).goal_rep), ((mdbcomp.program_representation).goal_rep))
+	;	negation_rep(((mdbcomp.program_representation).goal_rep))
+	;	scope_rep(((mdbcomp.program_representation).goal_rep), ((mdbcomp.program_representation).maybe_cut))
+	;	atomic_goal_rep(((mdbcomp.program_representation).detism_rep), string, int, (list.list(((mdbcomp.program_representation).var_rep))), ((mdbcomp.program_representation).atomic_goal_rep)).
+:- type maybe_cut
+	--->	scope_is_cut 
+	;	scope_is_no_cut .
+:- type proc_rep
+	--->	proc_rep((list.list(((mdbcomp.program_representation).var_rep))), ((mdbcomp.program_representation).goal_rep)).
+:- type term_path == (list.list(int)).
+:- type var_num_rep
+	--->	byte 
+	;	short .
+:- type var_rep == int.

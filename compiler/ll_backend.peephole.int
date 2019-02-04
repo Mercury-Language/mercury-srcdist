@@ -1,0 +1,13 @@
+:- module (ll_backend.peephole).
+:- interface.
+:- import_module bool.
+:- import_module list.
+:- import_module (libs.globals).
+:- import_module (ll_backend.llds).
+:- pred combine_decr_sp((list.list(((ll_backend.llds).instruction))), (list.list(((ll_backend.llds).instruction)))).
+:- mode combine_decr_sp((builtin.in), (builtin.out)) is det.
+:- pred peephole_optimize(((libs.globals).gc_method), (list.list(((ll_backend.llds).instruction))), (list.list(((ll_backend.llds).instruction))), (bool.bool)).
+:- mode peephole_optimize((builtin.in), (builtin.in), (builtin.out), (builtin.out)) is det.
+:- implementation.
+:- type pattern
+	--->	incr_sp .

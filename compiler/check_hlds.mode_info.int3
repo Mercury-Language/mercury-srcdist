@@ -1,0 +1,11 @@
+:- module (check_hlds.mode_info).
+:- interface.
+:- type call_context.
+:- type debug_flags.
+:- type how_to_check_goal.
+:- type locked_vars.
+:- type may_change_called_proc.
+:- type mode_context.
+:- type mode_info.
+:- type side.
+:- type var_lock_reason.

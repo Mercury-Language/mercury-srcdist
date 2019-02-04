@@ -1,0 +1,7 @@
+:- module (backend_libs.c_util).
+:- interface.
+:- import_module char.
+:- import_module io.
+:- import_module list.
+:- import_module (backend_libs.builtin_ops).
+:- type multi_string == (list.list(string)).

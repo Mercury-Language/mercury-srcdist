@@ -1,0 +1,244 @@
+:- module type_desc.
+:- use_module bool, builtin, list, private_builtin, require, rtti_implementation, string.
+:- type (type_desc.type_desc).
+:- type (type_desc.type_ctor_desc).
+:- type (type_desc.pseudo_type_desc).
+:- pragma foreign_import_module("C", type_desc).
+:- pragma foreign_import_module("C#", type_desc).
+:- pragma foreign_import_module("Java", type_desc).
+:- pragma foreign_import_module("IL", type_desc).
+:- pragma foreign_import_module("Erlang", type_desc).
+:- pragma foreign_import_module("Java", rtti_implementation).
+:- pragma foreign_import_module("Java", rtti_implementation).
+:- pragma foreign_import_module("C", io).
+:- pragma foreign_import_module("Java", io).
+:- pragma foreign_import_module("IL", io).
+:- pragma foreign_import_module("Erlang", io).
+:- pragma foreign_import_module("C", io).
+:- pragma foreign_import_module("Java", io).
+:- pragma foreign_import_module("IL", io).
+:- pragma foreign_import_module("Erlang", io).
+:- pragma foreign_import_module("C", string).
+:- pragma foreign_import_module("C", bitmap).
+:- pragma foreign_import_module("Java", bitmap).
+:- pragma foreign_import_module("IL", bitmap).
+:- pragma foreign_import_module("Erlang", bitmap).
+:- pragma foreign_import_module("C", bitmap).
+:- pragma foreign_import_module("Java", bitmap).
+:- pragma foreign_import_module("IL", bitmap).
+:- pragma foreign_import_module("Erlang", bitmap).
+:- pragma foreign_import_module("C", time).
+:- pragma foreign_import_module("Java", time).
+:- pragma foreign_import_module("IL", time).
+:- pragma foreign_import_module("Erlang", time).
+:- pragma foreign_import_module("C", time).
+:- pragma foreign_import_module("Java", time).
+:- pragma foreign_import_module("IL", time).
+:- pragma foreign_import_module("Erlang", time).
+type_desc.pseudo_type_desc_is_ground(PseudoTypeDesc_2) :-
+    type_desc.pseudo_type_ctor_and_args(PseudoTypeDesc_2, _TypeCtor_3, ArgPseudos_4),
+    V_5 = type_desc.pseudo_type_desc_is_ground : (pred (type_desc.pseudo_type_desc)),
+    list.all_true(V_5, ArgPseudos_4).
+:- pragma foreign_proc("C", type_desc.type_desc_to_pseudo_type_desc(TypeDesc :: (builtin.in)) = (PseudoTypeDesc :: (builtin.out)), [will_not_call_mercury, thread_safe, not_tabled_for_io, promise_pure, will_not_modify_trail], "
+    PseudoTypeDesc = TypeDesc;
+").
+:- pragma foreign_proc("C", type_desc.type_of(_Value :: (builtin.unused)) = (TypeInfo :: (builtin.out)), [will_not_call_mercury, thread_safe, not_tabled_for_io, promise_pure, will_not_modify_trail], "{
+    TypeInfo = TypeInfo_for_T;
+
+    /*
+    ** We used to collapse equivalences for efficiency here, but that\'s not
+    ** always desirable, due to the reverse mode of make_type/2, and efficiency
+    ** of type_infos probably isn\'t very important anyway.
+    */
+#if 0
+    MR_save_transient_registers();
+    TypeInfo = (MR_Word) MR_collapse_equivalences(
+        (MR_TypeInfo) TypeInfo_for_T);
+    MR_restore_transient_registers();
+#endif
+
+}").
+:- pragma foreign_proc("C", type_desc.has_type(_Arg :: (builtin.unused), TypeInfo :: (builtin.in)), [will_not_call_mercury, thread_safe, not_tabled_for_io, promise_pure, may_modify_trail], "
+    TypeInfo_for_T = TypeInfo;
+").
+:- pragma foreign_proc("C", type_desc.type_ctor_and_args(TypeDesc :: (builtin.in), TypeCtorDesc :: (builtin.out), ArgTypes :: (builtin.out)), [will_not_call_mercury, thread_safe, not_tabled_for_io, promise_pure, will_not_modify_trail], "{
+    MR_TypeCtorDesc type_ctor_desc;
+    MR_TypeInfo     type_info;
+
+    MR_save_transient_registers();
+
+    type_info = (MR_TypeInfo) TypeDesc;
+    MR_type_ctor_and_args(type_info, MR_TRUE, &type_ctor_desc, &ArgTypes);
+    TypeCtorDesc = (MR_Word) type_ctor_desc;
+
+    MR_restore_transient_registers();
+}").
+:- pragma foreign_proc("C", type_desc.pseudo_type_ctor_and_args(PseudoTypeDesc :: (builtin.in), TypeCtorDesc :: (builtin.out), ArgPseudoTypeInfos :: (builtin.out)), [will_not_call_mercury, thread_safe, not_tabled_for_io, promise_pure, will_not_modify_trail], "{
+    MR_TypeCtorDesc     type_ctor_desc;
+    MR_PseudoTypeInfo   pseudo_type_info;
+    MR_bool             success;
+
+    pseudo_type_info = (MR_PseudoTypeInfo) PseudoTypeDesc;
+    MR_save_transient_registers();
+    success = MR_pseudo_type_ctor_and_args(pseudo_type_info, MR_TRUE,
+        &type_ctor_desc, &ArgPseudoTypeInfos);
+    TypeCtorDesc = (MR_Word) type_ctor_desc;
+    MR_restore_transient_registers();
+    SUCCESS_INDICATOR = success;
+}").
+:- pragma foreign_proc("C", type_desc.type_ctor(TypeInfo :: (builtin.in)) = (TypeCtor :: (builtin.out)), [will_not_call_mercury, thread_safe, not_tabled_for_io, promise_pure, will_not_modify_trail], "{
+    MR_TypeCtorInfo type_ctor_info;
+    MR_TypeInfo     type_info;
+
+    MR_save_transient_registers();
+    type_info = MR_collapse_equivalences((MR_TypeInfo) TypeInfo);
+    MR_restore_transient_registers();
+
+    type_ctor_info = MR_TYPEINFO_GET_TYPE_CTOR_INFO(type_info);
+
+    TypeCtor = (MR_Word) MR_make_type_ctor_desc(type_info, type_ctor_info);
+}").
+:- pragma foreign_proc("C", type_desc.pseudo_type_ctor(PseudoTypeInfo :: (builtin.in)) = (TypeCtor :: (builtin.out)), [will_not_call_mercury, thread_safe, not_tabled_for_io, promise_pure, will_not_modify_trail], "{
+    MR_TypeCtorInfo     type_ctor_info;
+    MR_PseudoTypeInfo   pseudo_type_info;
+
+    MR_save_transient_registers();
+    pseudo_type_info = MR_collapse_equivalences_pseudo(
+        (MR_PseudoTypeInfo) PseudoTypeInfo);
+    MR_restore_transient_registers();
+
+    if (MR_PSEUDO_TYPEINFO_IS_VARIABLE(pseudo_type_info)) {
+        SUCCESS_INDICATOR = MR_FALSE;
+    } else {
+        type_ctor_info = MR_PSEUDO_TYPEINFO_GET_TYPE_CTOR_INFO(
+            pseudo_type_info);
+        TypeCtor = (MR_Word) MR_make_type_ctor_desc_pseudo(pseudo_type_info,
+            type_ctor_info);
+        SUCCESS_INDICATOR = MR_TRUE;
+    }
+}").
+type_desc.type_args(Type_3) = ArgTypes_4 :-
+    type_desc.type_ctor_and_args(Type_3, _TypeCtor_5, ArgTypes_4).
+type_desc.pseudo_type_args(PseudoType_3) = ArgPseudoTypes_4 :-
+    type_desc.pseudo_type_ctor_and_args(PseudoType_3, _TypeCtor_5, ArgPseudoTypes_4).
+type_desc.type_ctor_name(TypeCtor_3) = Name_4 :-
+    type_desc.type_ctor_name_and_arity(TypeCtor_3, _ModuleName_5, Name_4, _Arity_6).
+type_desc.type_ctor_module_name(TypeCtor_3) = ModuleName_4 :-
+    type_desc.type_ctor_name_and_arity(TypeCtor_3, ModuleName_4, _Name_5, _Arity_6).
+type_desc.type_ctor_arity(TypeCtor_3) = Arity_4 :-
+    type_desc.type_ctor_name_and_arity(TypeCtor_3, _ModuleName_5, _Name_6, Arity_4).
+:- pragma foreign_proc("C", type_desc.type_ctor_name_and_arity(TypeCtorDesc :: (builtin.in), TypeCtorModuleName :: (builtin.out), TypeCtorName :: (builtin.out), TypeCtorArity :: (builtin.out)), [will_not_call_mercury, thread_safe, not_tabled_for_io, promise_pure, will_not_modify_trail], "{
+    MR_TypeCtorDesc type_ctor_desc;
+
+    type_ctor_desc = (MR_TypeCtorDesc) TypeCtorDesc;
+
+    if (MR_TYPECTOR_DESC_IS_VARIABLE_ARITY(type_ctor_desc)) {
+        TypeCtorModuleName = (MR_String) (MR_Word)
+            MR_TYPECTOR_DESC_GET_VA_MODULE_NAME(type_ctor_desc);
+        TypeCtorName = (MR_String) (MR_Word)
+            MR_TYPECTOR_DESC_GET_VA_NAME(type_ctor_desc);
+        TypeCtorArity = MR_TYPECTOR_DESC_GET_VA_ARITY(type_ctor_desc);
+    } else {
+        MR_TypeCtorInfo type_ctor_info;
+
+        type_ctor_info =
+            MR_TYPECTOR_DESC_GET_FIXED_ARITY_TYPE_CTOR_INFO(type_ctor_desc);
+
+        /*
+        ** We cast away the const-ness of the module and type names,
+        ** because MR_String is defined as char *, not const char *.
+        */
+
+        TypeCtorModuleName = (MR_String) (MR_Integer)
+            MR_type_ctor_module_name(type_ctor_info);
+        TypeCtorName = (MR_String) (MR_Integer)
+            MR_type_ctor_name(type_ctor_info);
+        TypeCtorArity = type_ctor_info->MR_type_ctor_arity;
+    }
+}").
+:- pragma promise_pure((type_desc.make_type)/2).
+:- pragma foreign_proc("C", type_desc.make_type(TypeCtorDesc :: (builtin.out), ArgTypes :: (builtin.out)) = (TypeDesc :: (builtin.in)), [will_not_call_mercury, thread_safe, not_tabled_for_io, will_not_modify_trail], "{
+    MR_TypeCtorDesc type_ctor_desc;
+    MR_TypeInfo     type_info;
+
+    MR_save_transient_registers();
+
+    type_info = (MR_TypeInfo) TypeDesc;
+    MR_type_ctor_and_args(type_info, MR_FALSE, &type_ctor_desc, &ArgTypes);
+    TypeCtorDesc = (MR_Word) type_ctor_desc;
+
+    MR_restore_transient_registers();
+}").
+:- pragma foreign_proc("C", type_desc.make_type(TypeCtorDesc :: (builtin.in), ArgTypes :: (builtin.in)) = (TypeDesc :: (builtin.out)), [will_not_call_mercury, thread_safe, not_tabled_for_io, will_not_modify_trail], "{
+    MR_TypeCtorDesc type_ctor_desc;
+    MR_TypeCtorInfo type_ctor_info;
+    MR_Word     arg_type;
+    int     list_length;
+    int     arity;
+
+    type_ctor_desc = (MR_TypeCtorDesc) TypeCtorDesc;
+
+    if (MR_TYPECTOR_DESC_IS_VARIABLE_ARITY(type_ctor_desc)) {
+        arity = MR_TYPECTOR_DESC_GET_VA_ARITY(type_ctor_desc);
+    } else {
+        type_ctor_info =
+            MR_TYPECTOR_DESC_GET_FIXED_ARITY_TYPE_CTOR_INFO(type_ctor_desc);
+        arity = type_ctor_info->MR_type_ctor_arity;
+    }
+
+    arg_type = ArgTypes;
+    for (list_length = 0; ! MR_list_is_empty(arg_type); list_length++) {
+        arg_type = MR_list_tail(arg_type);
+    }
+
+    if (list_length != arity) {
+        SUCCESS_INDICATOR = MR_FALSE;
+    } else {
+        MR_save_transient_registers();
+        TypeDesc = (MR_Word) MR_make_type(arity, type_ctor_desc, ArgTypes);
+        MR_restore_transient_registers();
+        SUCCESS_INDICATOR = MR_TRUE;
+    }
+}").
+:- pragma exceptions(predicate, (type_desc.pseudo_type_desc_is_ground), 1, 0, may_throw(user_exception)).
+:- pragma exceptions(function, (type_desc.pseudo_type_desc_to_rep), 2, 0, may_throw(user_exception)).
+:- pragma exceptions(function, (type_desc.type_desc_to_pseudo_type_desc), 2, 0, will_not_throw).
+:- pragma exceptions(function, (type_desc.ground_pseudo_type_desc_to_type_desc), 2, 0, may_throw(user_exception)).
+:- pragma exceptions(function, (type_desc.ground_pseudo_type_desc_to_type_desc_det), 2, 0, may_throw(user_exception)).
+:- pragma exceptions(function, (type_desc.type_of), 2, 0, will_not_throw).
+:- pragma exceptions(predicate, (type_desc.has_type), 2, 0, will_not_throw).
+:- pragma exceptions(function, (type_desc.type_name), 2, 0, may_throw(user_exception)).
+:- pragma exceptions(predicate, (type_desc.type_ctor_and_args), 3, 0, will_not_throw).
+:- pragma exceptions(predicate, (type_desc.pseudo_type_ctor_and_args), 3, 0, will_not_throw).
+:- pragma exceptions(function, (type_desc.type_ctor), 2, 0, will_not_throw).
+:- pragma exceptions(function, (type_desc.pseudo_type_ctor), 2, 0, will_not_throw).
+:- pragma exceptions(function, (type_desc.type_args), 2, 0, will_not_throw).
+:- pragma exceptions(function, (type_desc.pseudo_type_args), 2, 0, will_not_throw).
+:- pragma exceptions(function, (type_desc.type_ctor_name), 2, 0, will_not_throw).
+:- pragma exceptions(function, (type_desc.type_ctor_module_name), 2, 0, will_not_throw).
+:- pragma exceptions(function, (type_desc.type_ctor_arity), 2, 0, will_not_throw).
+:- pragma exceptions(predicate, (type_desc.type_ctor_name_and_arity), 4, 0, will_not_throw).
+:- pragma exceptions(function, (type_desc.make_type), 3, 0, will_not_throw).
+:- pragma exceptions(function, (type_desc.make_type), 3, 1, will_not_throw).
+:- pragma exceptions(function, (type_desc.det_make_type), 3, 0, may_throw(user_exception)).
+:- pragma termination_info(type_desc.pseudo_type_desc_is_ground((builtin.in)), infinite, can_loop).
+:- pragma termination_info(type_desc.pseudo_type_desc_to_rep((builtin.in)) = (builtin.out), infinite, can_loop).
+:- pragma termination_info(type_desc.type_desc_to_pseudo_type_desc((builtin.in)) = (builtin.out), infinite, cannot_loop).
+:- pragma termination_info(type_desc.ground_pseudo_type_desc_to_type_desc((builtin.in)) = (builtin.out), infinite, can_loop).
+:- pragma termination_info(type_desc.ground_pseudo_type_desc_to_type_desc_det((builtin.in)) = (builtin.out), infinite, can_loop).
+:- pragma termination_info(type_desc.type_of((builtin.unused)) = (builtin.out), infinite, cannot_loop).
+:- pragma termination_info(type_desc.has_type((builtin.unused), (builtin.in)), infinite, cannot_loop).
+:- pragma termination_info(type_desc.type_name((builtin.in)) = (builtin.out), infinite, can_loop).
+:- pragma termination_info(type_desc.type_ctor_and_args((builtin.in), (builtin.out), (builtin.out)), infinite, cannot_loop).
+:- pragma termination_info(type_desc.pseudo_type_ctor_and_args((builtin.in), (builtin.out), (builtin.out)), infinite, cannot_loop).
+:- pragma termination_info(type_desc.type_ctor((builtin.in)) = (builtin.out), infinite, cannot_loop).
+:- pragma termination_info(type_desc.pseudo_type_ctor((builtin.in)) = (builtin.out), infinite, cannot_loop).
+:- pragma termination_info(type_desc.type_args((builtin.in)) = (builtin.out), infinite, cannot_loop).
+:- pragma termination_info(type_desc.pseudo_type_args((builtin.in)) = (builtin.out), infinite, cannot_loop).
+:- pragma termination_info(type_desc.type_ctor_name((builtin.in)) = (builtin.out), infinite, cannot_loop).
+:- pragma termination_info(type_desc.type_ctor_module_name((builtin.in)) = (builtin.out), infinite, cannot_loop).
+:- pragma termination_info(type_desc.type_ctor_arity((builtin.in)) = (builtin.out), infinite, cannot_loop).
+:- pragma termination_info(type_desc.type_ctor_name_and_arity((builtin.in), (builtin.out), (builtin.out), (builtin.out)), infinite, cannot_loop).
+:- pragma termination_info(type_desc.make_type((builtin.in), (builtin.in)) = (builtin.out), infinite, cannot_loop).
+:- pragma termination_info(type_desc.make_type((builtin.out), (builtin.out)) = (builtin.in), infinite, cannot_loop).
+:- pragma termination_info(type_desc.det_make_type((builtin.in), (builtin.in)) = (builtin.out), infinite, can_loop).

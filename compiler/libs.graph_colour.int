@@ -1,0 +1,5 @@
+:- module (libs.graph_colour).
+:- interface.
+:- import_module set.
+:- pred group_elements((set.set((set.set(T)))), (set.set((set.set(T))))).
+:- mode group_elements((builtin.in), (builtin.out)) is det.

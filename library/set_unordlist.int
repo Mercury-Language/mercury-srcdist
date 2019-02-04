@@ -1,0 +1,83 @@
+:- module set_unordlist.
+:- interface.
+:- import_module bool.
+:- import_module list.
+:- type set_unordlist(_T).
+:- pred contains((set_unordlist.set_unordlist(T)), T).
+:- mode contains((builtin.in), (builtin.in)) is semidet.
+:- pred delete((set_unordlist.set_unordlist(T)), T, (set_unordlist.set_unordlist(T))).
+:- mode delete((builtin.di), (builtin.in), (builtin.uo)) is det.
+:- mode delete((builtin.in), (builtin.in), (builtin.out)) is det.
+:- func delete((set_unordlist.set_unordlist(T)), T) = (set_unordlist.set_unordlist(T)).
+:- pred delete_list((set_unordlist.set_unordlist(T)), (list.list(T)), (set_unordlist.set_unordlist(T))).
+:- mode delete_list((builtin.in), (builtin.in), (builtin.out)) is det.
+:- func delete_list((set_unordlist.set_unordlist(T)), (list.list(T))) = (set_unordlist.set_unordlist(T)).
+:- pred difference((set_unordlist.set_unordlist(T)), (set_unordlist.set_unordlist(T)), (set_unordlist.set_unordlist(T))).
+:- mode difference((builtin.in), (builtin.in), (builtin.out)) is det.
+:- func difference((set_unordlist.set_unordlist(T)), (set_unordlist.set_unordlist(T))) = (set_unordlist.set_unordlist(T)).
+:- pred divide((pred T1), (set_unordlist.set_unordlist(T1)), (set_unordlist.set_unordlist(T1)), (set_unordlist.set_unordlist(T1))).
+:- mode divide((pred((builtin.in)) is semidet), (builtin.in), (builtin.out), (builtin.out)) is det.
+:- pred empty((set_unordlist.set_unordlist(_T))).
+:- mode empty((builtin.in)) is semidet.
+:- pred equal((set_unordlist.set_unordlist(T)), (set_unordlist.set_unordlist(T))).
+:- mode equal((builtin.in), (builtin.in)) is semidet.
+:- func filter_map(((func T1) = T2), (set_unordlist.set_unordlist(T1))) = (set_unordlist.set_unordlist(T2)).
+:- mode filter_map((func((builtin.in)) = (builtin.out) is semidet), (builtin.in)) = (builtin.out) is det.
+:- func fold((func(T1, T2) = T2), (set_unordlist.set_unordlist(T1)), T2) = T2.
+:- func from_list((list.list(T))) = (set_unordlist.set_unordlist(T)).
+:- func from_sorted_list((list.list(T))) = (set_unordlist.set_unordlist(T)).
+:- pred init((set_unordlist.set_unordlist(_T))).
+:- mode init((builtin.uo)) is det.
+:- func init = (set_unordlist.set_unordlist(T)).
+:- pred insert((set_unordlist.set_unordlist(T)), T, (set_unordlist.set_unordlist(T))).
+:- mode insert((builtin.di), (builtin.di), (builtin.uo)) is det.
+:- mode insert((builtin.in), (builtin.in), (builtin.out)) is det.
+:- func insert((set_unordlist.set_unordlist(T)), T) = (set_unordlist.set_unordlist(T)).
+:- pred insert_list((set_unordlist.set_unordlist(T)), (list.list(T)), (set_unordlist.set_unordlist(T))).
+:- mode insert_list((builtin.in), (builtin.in), (builtin.out)) is det.
+:- func insert_list((set_unordlist.set_unordlist(T)), (list.list(T))) = (set_unordlist.set_unordlist(T)).
+:- pred intersect((set_unordlist.set_unordlist(T)), (set_unordlist.set_unordlist(T)), (set_unordlist.set_unordlist(T))).
+:- mode intersect((builtin.in), (builtin.in), (builtin.out)) is det.
+:- func intersect((set_unordlist.set_unordlist(T)), (set_unordlist.set_unordlist(T))) = (set_unordlist.set_unordlist(T)).
+:- func intersect_list((list.list((set_unordlist.set_unordlist(T))))) = (set_unordlist.set_unordlist(T)).
+:- pred is_member(T, (set_unordlist.set_unordlist(T)), (bool.bool)).
+:- mode is_member((builtin.in), (builtin.in), (builtin.out)) is det.
+:- pred list_to_set((list.list(T)), (set_unordlist.set_unordlist(T))).
+:- mode list_to_set((builtin.in), (builtin.out)) is det.
+:- func list_to_set((list.list(T))) = (set_unordlist.set_unordlist(T)).
+:- func make_singleton_set(T) = (set_unordlist.set_unordlist(T)).
+:- func map(((func T1) = T2), (set_unordlist.set_unordlist(T1))) = (set_unordlist.set_unordlist(T2)).
+:- pred member(T, (set_unordlist.set_unordlist(T))).
+:- mode member((builtin.in), (builtin.in)) is semidet.
+:- mode member((builtin.out), (builtin.in)) is nondet.
+:- pred power_intersect((set_unordlist.set_unordlist((set_unordlist.set_unordlist(T)))), (set_unordlist.set_unordlist(T))).
+:- mode power_intersect((builtin.in), (builtin.out)) is det.
+:- func power_intersect((set_unordlist.set_unordlist((set_unordlist.set_unordlist(T))))) = (set_unordlist.set_unordlist(T)).
+:- pred power_union((set_unordlist.set_unordlist((set_unordlist.set_unordlist(T)))), (set_unordlist.set_unordlist(T))).
+:- mode power_union((builtin.in), (builtin.out)) is det.
+:- func power_union((set_unordlist.set_unordlist((set_unordlist.set_unordlist(T))))) = (set_unordlist.set_unordlist(T)).
+:- pred remove((set_unordlist.set_unordlist(T)), T, (set_unordlist.set_unordlist(T))).
+:- mode remove((builtin.in), (builtin.in), (builtin.out)) is semidet.
+:- pred remove_least((set_unordlist.set_unordlist(T)), T, (set_unordlist.set_unordlist(T))).
+:- mode remove_least((builtin.in), (builtin.out), (builtin.out)) is semidet.
+:- pred remove_list((set_unordlist.set_unordlist(T)), (list.list(T)), (set_unordlist.set_unordlist(T))).
+:- mode remove_list((builtin.in), (builtin.in), (builtin.out)) is semidet.
+:- pred singleton_set((set_unordlist.set_unordlist(T)), T).
+:- mode singleton_set((builtin.in), (builtin.out)) is semidet.
+:- mode singleton_set((builtin.out), (builtin.in)) is det.
+:- pred sorted_list_to_set((list.list(T)), (set_unordlist.set_unordlist(T))).
+:- mode sorted_list_to_set((builtin.in), (builtin.out)) is det.
+:- func sorted_list_to_set((list.list(T))) = (set_unordlist.set_unordlist(T)).
+:- pred subset((set_unordlist.set_unordlist(T)), (set_unordlist.set_unordlist(T))).
+:- mode subset((builtin.in), (builtin.in)) is semidet.
+:- pred superset((set_unordlist.set_unordlist(T)), (set_unordlist.set_unordlist(T))).
+:- mode superset((builtin.in), (builtin.in)) is semidet.
+:- pred to_sorted_list((set_unordlist.set_unordlist(T)), (list.list(T))).
+:- mode to_sorted_list((builtin.in), (builtin.out)) is det.
+:- func to_sorted_list((set_unordlist.set_unordlist(T))) = (list.list(T)).
+:- pred union((set_unordlist.set_unordlist(T)), (set_unordlist.set_unordlist(T)), (set_unordlist.set_unordlist(T))).
+:- mode union((builtin.in), (builtin.in), (builtin.out)) is det.
+:- func union((set_unordlist.set_unordlist(T)), (set_unordlist.set_unordlist(T))) = (set_unordlist.set_unordlist(T)).
+:- func union_list((list.list((set_unordlist.set_unordlist(T))))) = (set_unordlist.set_unordlist(T)).
+:- implementation.
+:- type set_unordlist(T) == (list.list(T)).

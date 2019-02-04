@@ -1,0 +1,9 @@
+:- module dump.
+:- interface.
+:- import_module io.
+:- import_module list.
+:- import_module profile.
+:- pred dump_deep((profile.deep), (list.list(string)), (io.io), (io.io)).
+:- mode dump_deep((builtin.in), (builtin.in), (builtin.di), (builtin.uo)) is det.
+:- pred dump_initial_deep((profile.initial_deep), (list.list(string)), (io.io), (io.io)).
+:- mode dump_initial_deep((builtin.in), (builtin.in), (builtin.di), (builtin.uo)) is det.

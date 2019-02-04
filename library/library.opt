@@ -1,0 +1,89 @@
+:- module library.
+:- use_module array, array2d, assoc_list, bag, benchmarking, bimap, bintree, bintree_set, bit_buffer, bitmap, bool, bt_array, builtin, char, construct, cord, counter, deconstruct, dir, enum, eqvclass, erlang_builtin, erlang_rtti_implementation, exception, float, gc, getopt, getopt_io, graph, group, hash_table, injection, int, integer, io, lexer, list, map, math, maybe, multi_map, mutvar, ops, pair, par_builtin, parser, pprint, pqueue, private_builtin, profiling_builtin, prolog, queue, random, rational, rbtree, region_builtin, relation, require, robdd, rtree, rtti_implementation, set, set_bbbtree, set_ctree234, set_ordlist, set_tree234, set_unordlist, solutions, sparse_bitset, stack, std_util, store, stream, string, svarray, svbag, svbimap, sveqvclass, svmap, svmulti_map, svqueue, svrelation, svset, svvarset, table_builtin, term, term_io, term_size_prof_builtin, term_to_xml, thread, time, tree234, tree_bitset, type_desc, unit, univ, varset, version_array, version_array2d, version_bitmap, version_hash_table, version_store, version_types, (bit_buffer.read), (bit_buffer.write), (stream.string_writer), (string.builder).
+:- pragma foreign_import_module("C", library).
+:- pragma foreign_import_module("C#", library).
+:- pragma foreign_import_module("Java", library).
+:- pragma foreign_import_module("C", array).
+:- pragma foreign_import_module("Java", array).
+:- pragma foreign_import_module("IL", array).
+:- pragma foreign_import_module("Erlang", array).
+:- pragma foreign_import_module("C", array).
+:- pragma foreign_import_module("Java", array).
+:- pragma foreign_import_module("IL", array).
+:- pragma foreign_import_module("Erlang", array).
+:- pragma foreign_import_module("Java", benchmarking).
+:- pragma foreign_import_module("Java", benchmarking).
+:- pragma foreign_import_module("C", bitmap).
+:- pragma foreign_import_module("Java", bitmap).
+:- pragma foreign_import_module("IL", bitmap).
+:- pragma foreign_import_module("Erlang", bitmap).
+:- pragma foreign_import_module("C", bitmap).
+:- pragma foreign_import_module("Java", bitmap).
+:- pragma foreign_import_module("IL", bitmap).
+:- pragma foreign_import_module("Erlang", bitmap).
+:- pragma foreign_import_module("C", bit_buffer).
+:- pragma foreign_import_module("C", bit_buffer).
+:- pragma foreign_import_module("C", dir).
+:- pragma foreign_import_module("Java", dir).
+:- pragma foreign_import_module("IL", dir).
+:- pragma foreign_import_module("C", dir).
+:- pragma foreign_import_module("Java", dir).
+:- pragma foreign_import_module("IL", dir).
+:- pragma foreign_import_module("C", io).
+:- pragma foreign_import_module("Java", io).
+:- pragma foreign_import_module("IL", io).
+:- pragma foreign_import_module("Erlang", io).
+:- pragma foreign_import_module("C", io).
+:- pragma foreign_import_module("Java", io).
+:- pragma foreign_import_module("IL", io).
+:- pragma foreign_import_module("Erlang", io).
+:- pragma foreign_import_module("C", string).
+:- pragma foreign_import_module("Java", store).
+:- pragma foreign_import_module("Erlang", store).
+:- pragma foreign_import_module("Java", store).
+:- pragma foreign_import_module("Erlang", store).
+:- pragma foreign_import_module("C", time).
+:- pragma foreign_import_module("Java", time).
+:- pragma foreign_import_module("IL", time).
+:- pragma foreign_import_module("Erlang", time).
+:- pragma foreign_import_module("C", time).
+:- pragma foreign_import_module("Java", time).
+:- pragma foreign_import_module("IL", time).
+:- pragma foreign_import_module("Erlang", time).
+:- pragma foreign_import_module("C", version_array).
+:- pragma foreign_import_module("C", version_array).
+:- pragma foreign_import_module("Erlang", erlang_rtti_implementation).
+:- pragma foreign_import_module("Erlang", erlang_rtti_implementation).
+:- pragma foreign_import_module("Java", mutvar).
+:- pragma foreign_import_module("Erlang", mutvar).
+:- pragma foreign_import_module("Java", mutvar).
+:- pragma foreign_import_module("Erlang", mutvar).
+:- pragma foreign_import_module("C", par_builtin).
+:- pragma foreign_import_module("IL", par_builtin).
+:- pragma foreign_import_module("Erlang", par_builtin).
+:- pragma foreign_import_module("C", par_builtin).
+:- pragma foreign_import_module("IL", par_builtin).
+:- pragma foreign_import_module("Erlang", par_builtin).
+:- pragma foreign_import_module("C", profiling_builtin).
+:- pragma foreign_import_module("IL", profiling_builtin).
+:- pragma foreign_import_module("C", profiling_builtin).
+:- pragma foreign_import_module("IL", profiling_builtin).
+:- pragma foreign_import_module("Java", rtti_implementation).
+:- pragma foreign_import_module("Java", rtti_implementation).
+:- pragma foreign_import_module("C", table_builtin).
+:- pragma foreign_import_module("IL", table_builtin).
+:- pragma foreign_import_module("C", table_builtin).
+:- pragma foreign_import_module("IL", table_builtin).
+:- pragma foreign_proc("C", library.version(Version :: (builtin.out)), [will_not_call_mercury, not_thread_safe, not_tabled_for_io, promise_pure, will_not_modify_trail], "
+    MR_ConstString version_string =
+        MR_VERSION \", configured for \" MR_FULLARCH;
+    /*
+    ** Cast away const needed here, because Mercury declares Version
+    ** with type MR_String rather than MR_ConstString.
+    */
+    Version = (MR_String) (MR_Word) version_string;
+").
+:- pragma exceptions(predicate, (library.version), 1, 0, will_not_throw).
+:- pragma exceptions(predicate, (library.mercury_std_library_module), 1, 0, will_not_throw).
+:- pragma termination_info(library.version((builtin.out)), infinite, cannot_loop).
+:- pragma termination_info(library.mercury_std_library_module((builtin.in)), finite(0, [no]), cannot_loop).

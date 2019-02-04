@@ -1,0 +1,15 @@
+:- module html_format.
+:- interface.
+:- type header_wrap_func.
+:- type id_fields.
+:- type one_id.
+:- type one_id_line.
+:- type one_id_line_group.
+:- type one_id_sub_lines.
+:- type one_two_id_line_group.
+:- type totals_disposition.
+:- type two_id.
+:- type two_id_line.
+:- type two_id_line_group.
+:- type two_id_sub_lines.
+:- type sub_lines(T).

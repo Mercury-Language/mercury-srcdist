@@ -1,0 +1,19 @@
+:- module table_builtin.
+:- interface.
+:- type loop_status.
+:- type memo_det_status.
+:- type memo_non_record.
+:- type memo_non_status.
+:- type memo_semi_status.
+:- type ml_answer_block.
+:- type ml_consumer.
+:- type ml_generator.
+:- type ml_proc_table_info.
+:- type ml_subgoal.
+:- type ml_trie_node.
+:- type mm_status.
+:- type proc_table_statistics.
+:- type table_stats.
+:- type table_stats_pair.
+:- type table_step_kind.
+:- type table_step_stats.

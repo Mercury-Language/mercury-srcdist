@@ -1,0 +1,6 @@
+:- module (ml_backend.mlds_to_managed).
+:- interface.
+:- import_module io.
+:- import_module (libs.globals).
+:- import_module (ml_backend.mlds).
+:- inst (managed_lang) == bound(lang_csharp ; lang_managed_cplusplus).

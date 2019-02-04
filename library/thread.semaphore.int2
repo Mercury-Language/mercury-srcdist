@@ -1,0 +1,15 @@
+:- module (thread.semaphore).
+:- interface.
+:- import_module bool.
+:- import_module io.
+:- type semaphore.
+:- implementation.
+:- pragma foreign_type(il, semaphore, "class [mercury]mercury.thread.semaphore__csharp_code.mercury_code.ML_Semaphore").
+:- pragma foreign_type(c, semaphore, "ML_Semaphore *").
+:- pragma foreign_type(erlang, semaphore, "").
+:- pragma foreign_import_module("C", (thread.semaphore)).
+:- pragma foreign_import_module("IL", (thread.semaphore)).
+:- pragma foreign_import_module("Erlang", (thread.semaphore)).
+:- pragma foreign_import_module("C", (thread.semaphore)).
+:- pragma foreign_import_module("IL", (thread.semaphore)).
+:- pragma foreign_import_module("Erlang", (thread.semaphore)).

@@ -1,0 +1,9 @@
+:- module conf.
+:- interface.
+:- import_module io.
+:- func getpid = int.
+:- func make_pipe_cmd(string) = string.
+:- pred script_name(string, (io.io), (io.io)).
+:- mode script_name((builtin.out), (builtin.di), (builtin.uo)) is det.
+:- pred server_name_port(string, (io.io), (io.io)).
+:- mode server_name_port((builtin.out), (builtin.di), (builtin.uo)) is det.

@@ -1,0 +1,19 @@
+:- module (ll_backend.x86_64_regs).
+:- interface.
+:- import_module assoc_list.
+:- import_module (ll_backend.llds).
+:- import_module (ll_backend.x86_64_instrs).
+:- type reg_locn
+	--->	actual(((ll_backend.x86_64_instrs).x86_64_reg))
+	;	virtual(int).
+:- type reg_map.
+:- pred default_x86_64_reg_mapping((assoc_list.assoc_list(((ll_backend.llds).lval), ((ll_backend.x86_64_regs).reg_locn)))).
+:- mode default_x86_64_reg_mapping((builtin.out)) is det.
+:- func get_scratch_reg = ((ll_backend.x86_64_instrs).x86_64_reg).
+:- func reg_map_get_scratch_reg(((ll_backend.x86_64_regs).reg_map)) = ((ll_backend.x86_64_instrs).x86_64_reg).
+:- func reg_map_init((assoc_list.assoc_list(((ll_backend.llds).lval), ((ll_backend.x86_64_regs).reg_locn)))) = ((ll_backend.x86_64_regs).reg_map).
+:- func reg_map_lookup_reg_locn(((ll_backend.x86_64_regs).reg_map), ((ll_backend.llds).lval)) = ((ll_backend.x86_64_regs).reg_locn).
+:- pred reg_map_remove_scratch_reg(((ll_backend.x86_64_regs).reg_map), ((ll_backend.x86_64_regs).reg_map)).
+:- mode reg_map_remove_scratch_reg((builtin.in), (builtin.out)) is det.
+:- pred reg_map_reset_scratch_reg_info(((ll_backend.x86_64_regs).reg_map), ((ll_backend.x86_64_regs).reg_map)).
+:- mode reg_map_reset_scratch_reg_info((builtin.in), (builtin.out)) is det.

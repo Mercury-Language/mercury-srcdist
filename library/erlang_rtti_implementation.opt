@@ -1,0 +1,206 @@
+:- module erlang_rtti_implementation.
+:- use_module array, builtin, deconstruct, int, list, maybe, private_builtin, require, string, term_io, type_desc, univ.
+:- type (erlang_rtti_implementation.type_info_thunk)
+	--->	type_info_thunk .
+:- pragma foreign_type(erlang, (erlang_rtti_implementation.type_info_thunk), "").
+:- type (erlang_rtti_implementation.type_info)
+	--->	type_info .
+:- pragma foreign_type(erlang, (erlang_rtti_implementation.type_info), "").
+:- type (erlang_rtti_implementation.type_ctor_info_evaled)
+	--->	type_ctor_info_evaled .
+:- pragma foreign_type(erlang, (erlang_rtti_implementation.type_ctor_info_evaled), "").
+:- type (erlang_rtti_implementation.type_ctor_info)
+	--->	type_ctor_info .
+:- pragma foreign_type(erlang, (erlang_rtti_implementation.type_ctor_info), "").
+:- type (erlang_rtti_implementation.ti_info(T)) == (maybe.maybe({(erlang_rtti_implementation.type_info), (maybe.maybe({(erlang_rtti_implementation.erlang_du_functor), T}))})).
+:- type (erlang_rtti_implementation.tc_type) == (erlang_rtti_implementation.maybe_pseudo_type_info).
+:- type (erlang_rtti_implementation.tc_name)
+	--->	tc_name((erlang_rtti_implementation.tcn_module) :: (erlang_rtti_implementation.sym_name), (erlang_rtti_implementation.tcn_name) :: string, (erlang_rtti_implementation.tcn_arity) :: int).
+:- type (erlang_rtti_implementation.tc_constraint)
+	--->	tc_constraint((erlang_rtti_implementation.tcc_class_name) :: (erlang_rtti_implementation.tc_name), (erlang_rtti_implementation.tcc_types) :: (list.list((erlang_rtti_implementation.maybe_pseudo_type_info)))).
+:- type (erlang_rtti_implementation.sym_name)
+	--->	unqualified(string)
+	;	qualified((erlang_rtti_implementation.sym_name), string).
+:- type (erlang_rtti_implementation.pti_info(T)) == (maybe.maybe({(erlang_rtti_implementation.erlang_du_functor), T})).
+:- type (erlang_rtti_implementation.pseudo_type_info_thunk)
+	--->	pseudo_type_info_thunk .
+:- pragma foreign_type(erlang, (erlang_rtti_implementation.pseudo_type_info_thunk), "").
+:- type (erlang_rtti_implementation.pseudo_type_info)
+	--->	pseudo_type_info .
+:- pragma foreign_type(erlang, (erlang_rtti_implementation.pseudo_type_info), "").
+:- type (erlang_rtti_implementation.module_name) == (erlang_rtti_implementation.sym_name).
+:- type (erlang_rtti_implementation.maybe_pseudo_type_info)
+	--->	pseudo((erlang_rtti_implementation.pseudo_type_info_thunk))
+	;	plain((erlang_rtti_implementation.type_info_thunk)).
+:- type (erlang_rtti_implementation.exist_typeinfo_locn)
+	--->	plain_typeinfo(int)
+	;	typeinfo_in_tci(int, int).
+:- type (erlang_rtti_implementation.exist_info)
+	--->	exist_info((erlang_rtti_implementation.exist_num_plain_typeinfos) :: int, (erlang_rtti_implementation.exist_num_typeinfos_in_tcis) :: int, (erlang_rtti_implementation.exist_typeclass_constraints) :: (list.list((erlang_rtti_implementation.tc_constraint))), (erlang_rtti_implementation.exist_typeinfo_locns) :: (list.list((erlang_rtti_implementation.exist_typeinfo_locn)))).
+:- type (erlang_rtti_implementation.evaluated_pseudo_type_info_thunk)
+	--->	universal_type_info(int)
+	;	existential_type_info(int)
+	;	pseudo_type_info((erlang_rtti_implementation.pseudo_type_info)).
+:- type (erlang_rtti_implementation.erlang_type_ctor_rep)
+	--->	etcr_du 
+	;	etcr_dummy 
+	;	etcr_list 
+	;	etcr_array 
+	;	etcr_eqv 
+	;	etcr_int 
+	;	etcr_float 
+	;	etcr_char 
+	;	etcr_string 
+	;	etcr_void 
+	;	etcr_stable_c_pointer 
+	;	etcr_c_pointer 
+	;	etcr_pred 
+	;	etcr_func 
+	;	etcr_tuple 
+	;	etcr_ref 
+	;	etcr_type_desc 
+	;	etcr_pseudo_type_desc 
+	;	etcr_type_ctor_desc 
+	;	etcr_type_info 
+	;	etcr_type_ctor_info 
+	;	etcr_typeclass_info 
+	;	etcr_base_typeclass_info 
+	;	etcr_foreign 
+	;	etcr_hp 
+	;	etcr_subgoal 
+	;	etcr_ticket .
+:- type (erlang_rtti_implementation.erlang_du_functor)
+	--->	erlang_du_functor((erlang_rtti_implementation.edu_name) :: string, (erlang_rtti_implementation.edu_orig_arity) :: int, (erlang_rtti_implementation.edu_ordinal) :: int, (erlang_rtti_implementation.edu_rep) :: (erlang_rtti_implementation.erlang_atom), (erlang_rtti_implementation.edu_arg_infos) :: (list.list((erlang_rtti_implementation.du_arg_info))), (erlang_rtti_implementation.edu_exist_info) :: (maybe.maybe((erlang_rtti_implementation.exist_info)))).
+:- type (erlang_rtti_implementation.erlang_atom)
+	--->	erlang_atom .
+:- pragma foreign_type(erlang, (erlang_rtti_implementation.erlang_atom), "").
+:- type (erlang_rtti_implementation.du_arg_info)
+	--->	du_arg_info((erlang_rtti_implementation.du_arg_name) :: (maybe.maybe(string)), (erlang_rtti_implementation.du_arg_type) :: (erlang_rtti_implementation.maybe_pseudo_type_info)).
+:- pragma foreign_import_module("Erlang", erlang_rtti_implementation).
+:- pragma foreign_import_module("C", array).
+:- pragma foreign_import_module("Java", array).
+:- pragma foreign_import_module("IL", array).
+:- pragma foreign_import_module("Erlang", array).
+:- pragma foreign_import_module("C", array).
+:- pragma foreign_import_module("Java", array).
+:- pragma foreign_import_module("IL", array).
+:- pragma foreign_import_module("Erlang", array).
+:- pragma foreign_import_module("C", io).
+:- pragma foreign_import_module("Java", io).
+:- pragma foreign_import_module("IL", io).
+:- pragma foreign_import_module("Erlang", io).
+:- pragma foreign_import_module("C", io).
+:- pragma foreign_import_module("Java", io).
+:- pragma foreign_import_module("IL", io).
+:- pragma foreign_import_module("Erlang", io).
+:- pragma foreign_import_module("C", string).
+:- pragma foreign_import_module("C", bitmap).
+:- pragma foreign_import_module("Java", bitmap).
+:- pragma foreign_import_module("IL", bitmap).
+:- pragma foreign_import_module("Erlang", bitmap).
+:- pragma foreign_import_module("C", bitmap).
+:- pragma foreign_import_module("Java", bitmap).
+:- pragma foreign_import_module("IL", bitmap).
+:- pragma foreign_import_module("Erlang", bitmap).
+:- pragma foreign_import_module("C", time).
+:- pragma foreign_import_module("Java", time).
+:- pragma foreign_import_module("IL", time).
+:- pragma foreign_import_module("Erlang", time).
+:- pragma foreign_import_module("C", time).
+:- pragma foreign_import_module("Java", time).
+:- pragma foreign_import_module("IL", time).
+:- pragma foreign_import_module("Erlang", time).
+:- pred erlang_rtti_implementation.deconstruct_2(T_1, (erlang_rtti_implementation.type_info), (erlang_rtti_implementation.type_ctor_info_evaled), (erlang_rtti_implementation.erlang_type_ctor_rep), (deconstruct.noncanon_handling), string, int, (list.list((univ.univ)))).
+:- mode erlang_rtti_implementation.deconstruct_2((builtin.in), (builtin.in), (builtin.in), (builtin.in), builtin.in((deconstruct.do_not_allow)), (builtin.out), (builtin.out), (builtin.out)) is det.
+:- mode erlang_rtti_implementation.deconstruct_2((builtin.in), (builtin.in), (builtin.in), (builtin.in), builtin.in((deconstruct.canonicalize)), (builtin.out), (builtin.out), (builtin.out)) is det.
+:- mode erlang_rtti_implementation.deconstruct_2((builtin.in), (builtin.in), (builtin.in), (builtin.in), builtin.in((deconstruct.include_details_cc)), (builtin.out), (builtin.out), (builtin.out)) is cc_multi.
+:- mode erlang_rtti_implementation.deconstruct_2((builtin.in), (builtin.in), (builtin.in), (builtin.in), (builtin.in), (builtin.out), (builtin.out), (builtin.out)) is cc_multi.
+:- func erlang_rtti_implementation.type_info(T) = (erlang_rtti_implementation.type_info).
+:- mode erlang_rtti_implementation.type_info((builtin.unused)) = (builtin.out) is det.
+:- func erlang_rtti_implementation.type_ctor_info_evaled((erlang_rtti_implementation.type_info)) = (erlang_rtti_implementation.type_ctor_info_evaled).
+:- mode erlang_rtti_implementation.type_ctor_info_evaled((builtin.in)) = (builtin.out) is det.
+:- func erlang_rtti_implementation.type_ctor_rep((erlang_rtti_implementation.type_ctor_info_evaled)) = (erlang_rtti_implementation.erlang_type_ctor_rep).
+:- mode erlang_rtti_implementation.type_ctor_rep((builtin.in)) = (builtin.out) is det.
+:- func erlang_rtti_implementation.type_ctor_module_name((erlang_rtti_implementation.type_ctor_info_evaled)) = string.
+:- mode erlang_rtti_implementation.type_ctor_module_name((builtin.in)) = (builtin.out) is det.
+:- func erlang_rtti_implementation.type_ctor_type_name((erlang_rtti_implementation.type_ctor_info_evaled)) = string.
+:- mode erlang_rtti_implementation.type_ctor_type_name((builtin.in)) = (builtin.out) is det.
+:- func erlang_rtti_implementation.type_ctor_arity((erlang_rtti_implementation.type_ctor_info_evaled)) = int.
+:- mode erlang_rtti_implementation.type_ctor_arity((builtin.in)) = (builtin.out) is det.
+:- pred erlang_rtti_implementation.det_unimplemented(string).
+:- mode erlang_rtti_implementation.det_unimplemented((builtin.in)) is det.
+erlang_rtti_implementation.get_type_info(T_3) = HeadVar__2_2 :-
+    HeadVar__2_2 = erlang_rtti_implementation.type_info(T_3).
+erlang_rtti_implementation.compare_type_infos(Res_4, V_5, V_6) :-
+    Res_4 = builtin.(=) : (builtin.comparison_result),
+    V_7 = "compare_type_infos/3" : string,
+    erlang_rtti_implementation.det_unimplemented(V_7).
+erlang_rtti_implementation.type_ctor_name_and_arity(TypeCtorInfo_5, ModuleName_6, Name_7, Arity_8) :-
+    ModuleName_6 = erlang_rtti_implementation.type_ctor_module_name(TypeCtorInfo_5),
+    Name_7 = erlang_rtti_implementation.type_ctor_type_name(TypeCtorInfo_5),
+    Arity_8 = erlang_rtti_implementation.type_ctor_arity(TypeCtorInfo_5).
+erlang_rtti_implementation.deconstruct(Term_6, NonCanon_7, Functor_8, Arity_9, Arguments_10) :-
+    TypeInfo_11 = erlang_rtti_implementation.type_info(Term_6),
+    TypeCtorInfo_12 = erlang_rtti_implementation.type_ctor_info_evaled(TypeInfo_11),
+    TypeCtorRep_13 = erlang_rtti_implementation.type_ctor_rep(TypeCtorInfo_12),
+    erlang_rtti_implementation.deconstruct_2(Term_6, TypeInfo_11, TypeCtorInfo_12, TypeCtorRep_13, NonCanon_7, Functor_8, Arity_9, Arguments_10).
+erlang_rtti_implementation.type_info(V_3) = (erlang_rtti_implementation.type_info) :-
+    V_4 = "type_info" : string,
+    erlang_rtti_implementation.det_unimplemented(V_4).
+erlang_rtti_implementation.type_ctor_info_evaled(V_3) = (erlang_rtti_implementation.type_ctor_info_evaled) :-
+    V_4 = "type_ctor_info_evaled" : string,
+    erlang_rtti_implementation.det_unimplemented(V_4).
+erlang_rtti_implementation.type_ctor_rep(V_3) = V_4 :-
+    V_5 = "type_ctor_rep" : string,
+    private_builtin.sorry(V_5).
+erlang_rtti_implementation.type_ctor_module_name(V_3) = "dummy value" :-
+    V_4 = "type_ctor_module_name" : string,
+    erlang_rtti_implementation.det_unimplemented(V_4).
+erlang_rtti_implementation.type_ctor_type_name(V_3) = "dummy value" :-
+    V_4 = "type_ctor_type_name" : string,
+    erlang_rtti_implementation.det_unimplemented(V_4).
+erlang_rtti_implementation.type_ctor_arity(V_3) = 0 :-
+    V_4 = "type_ctor_arity" : string,
+    erlang_rtti_implementation.det_unimplemented(V_4).
+:- pragma exceptions(function, (erlang_rtti_implementation.get_type_info), 2, 0, may_throw(user_exception)).
+:- pragma exceptions(predicate, (erlang_rtti_implementation.generic_unify), 2, 0, may_throw(user_exception)).
+:- pragma exceptions(predicate, (erlang_rtti_implementation.generic_compare), 3, 0, may_throw(user_exception)).
+:- pragma exceptions(predicate, (erlang_rtti_implementation.compare_type_infos), 3, 0, may_throw(user_exception)).
+:- pragma exceptions(predicate, (erlang_rtti_implementation.type_ctor_and_args), 3, 0, may_throw(user_exception)).
+:- pragma exceptions(predicate, (erlang_rtti_implementation.type_ctor_name_and_arity), 4, 0, may_throw(user_exception)).
+:- pragma exceptions(predicate, (erlang_rtti_implementation.deconstruct), 5, 0, may_throw(user_exception)).
+:- pragma exceptions(predicate, (erlang_rtti_implementation.deconstruct), 5, 1, may_throw(user_exception)).
+:- pragma exceptions(predicate, (erlang_rtti_implementation.deconstruct), 5, 2, may_throw(user_exception)).
+:- pragma exceptions(predicate, (erlang_rtti_implementation.deconstruct), 5, 3, may_throw(user_exception)).
+:- pragma exceptions(predicate, (erlang_rtti_implementation.deconstruct_2), 8, 0, may_throw(user_exception)).
+:- pragma exceptions(predicate, (erlang_rtti_implementation.deconstruct_2), 8, 1, may_throw(user_exception)).
+:- pragma exceptions(predicate, (erlang_rtti_implementation.deconstruct_2), 8, 2, may_throw(user_exception)).
+:- pragma exceptions(predicate, (erlang_rtti_implementation.deconstruct_2), 8, 3, may_throw(user_exception)).
+:- pragma exceptions(function, (erlang_rtti_implementation.type_info), 2, 0, may_throw(user_exception)).
+:- pragma exceptions(function, (erlang_rtti_implementation.type_ctor_info_evaled), 2, 0, may_throw(user_exception)).
+:- pragma exceptions(function, (erlang_rtti_implementation.type_ctor_rep), 2, 0, may_throw(user_exception)).
+:- pragma exceptions(function, (erlang_rtti_implementation.type_ctor_module_name), 2, 0, may_throw(user_exception)).
+:- pragma exceptions(function, (erlang_rtti_implementation.type_ctor_type_name), 2, 0, may_throw(user_exception)).
+:- pragma exceptions(function, (erlang_rtti_implementation.type_ctor_arity), 2, 0, may_throw(user_exception)).
+:- pragma exceptions(predicate, (erlang_rtti_implementation.det_unimplemented), 1, 0, may_throw(user_exception)).
+:- pragma termination_info(erlang_rtti_implementation.get_type_info((builtin.unused)) = (builtin.out), finite(0, [no, no, no]), can_loop).
+:- pragma termination_info(erlang_rtti_implementation.generic_unify((builtin.in), (builtin.in)), finite(0, [no, no, no]), can_loop).
+:- pragma termination_info(erlang_rtti_implementation.generic_compare((builtin.out), (builtin.in), (builtin.in)), finite(0, [no, no, no, no]), can_loop).
+:- pragma termination_info(erlang_rtti_implementation.compare_type_infos((builtin.out), (builtin.in), (builtin.in)), finite(0, [no, no, no]), can_loop).
+:- pragma termination_info(erlang_rtti_implementation.type_ctor_and_args((builtin.in), (builtin.out), (builtin.out)), infinite, can_loop).
+:- pragma termination_info(erlang_rtti_implementation.type_ctor_name_and_arity((builtin.in), (builtin.out), (builtin.out), (builtin.out)), finite(0, [no, no, no, no]), can_loop).
+:- pragma termination_info(erlang_rtti_implementation.deconstruct((builtin.in), builtin.in((deconstruct.do_not_allow)), (builtin.out), (builtin.out), (builtin.out)), infinite, can_loop).
+:- pragma termination_info(erlang_rtti_implementation.deconstruct((builtin.in), builtin.in((deconstruct.canonicalize)), (builtin.out), (builtin.out), (builtin.out)), infinite, can_loop).
+:- pragma termination_info(erlang_rtti_implementation.deconstruct((builtin.in), builtin.in((deconstruct.include_details_cc)), (builtin.out), (builtin.out), (builtin.out)), infinite, can_loop).
+:- pragma termination_info(erlang_rtti_implementation.deconstruct((builtin.in), (builtin.in), (builtin.out), (builtin.out), (builtin.out)), infinite, can_loop).
+:- pragma termination_info(erlang_rtti_implementation.deconstruct_2((builtin.in), (builtin.in), (builtin.in), (builtin.in), builtin.in((deconstruct.do_not_allow)), (builtin.out), (builtin.out), (builtin.out)), infinite, can_loop).
+:- pragma termination_info(erlang_rtti_implementation.deconstruct_2((builtin.in), (builtin.in), (builtin.in), (builtin.in), builtin.in((deconstruct.canonicalize)), (builtin.out), (builtin.out), (builtin.out)), infinite, can_loop).
+:- pragma termination_info(erlang_rtti_implementation.deconstruct_2((builtin.in), (builtin.in), (builtin.in), (builtin.in), builtin.in((deconstruct.include_details_cc)), (builtin.out), (builtin.out), (builtin.out)), infinite, can_loop).
+:- pragma termination_info(erlang_rtti_implementation.deconstruct_2((builtin.in), (builtin.in), (builtin.in), (builtin.in), (builtin.in), (builtin.out), (builtin.out), (builtin.out)), infinite, can_loop).
+:- pragma termination_info(erlang_rtti_implementation.type_info((builtin.unused)) = (builtin.out), finite(0, [no, no, no]), can_loop).
+:- pragma termination_info(erlang_rtti_implementation.type_ctor_info_evaled((builtin.in)) = (builtin.out), finite(0, [no, no]), can_loop).
+:- pragma termination_info(erlang_rtti_implementation.type_ctor_rep((builtin.in)) = (builtin.out), infinite, can_loop).
+:- pragma termination_info(erlang_rtti_implementation.type_ctor_module_name((builtin.in)) = (builtin.out), finite(0, [no, no]), can_loop).
+:- pragma termination_info(erlang_rtti_implementation.type_ctor_type_name((builtin.in)) = (builtin.out), finite(0, [no, no]), can_loop).
+:- pragma termination_info(erlang_rtti_implementation.type_ctor_arity((builtin.in)) = (builtin.out), finite(0, [no, no]), can_loop).
+:- pragma termination_info(erlang_rtti_implementation.det_unimplemented((builtin.in)), finite(0, [no]), can_loop).

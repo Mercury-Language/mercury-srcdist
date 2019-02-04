@@ -1,0 +1,13 @@
+:- module (check_hlds.abstract_mode_constraints).
+:- interface.
+:- type constraint_and_annotation.
+:- type constraint_annotation.
+:- type constraint_formula.
+:- type constraint_formulae.
+:- type mc_bindings.
+:- type mc_type.
+:- type mc_var.
+:- type mc_varset.
+:- type pred_p_c_constraints.
+:- type var_constraint.
+:- type var_constraint(T).

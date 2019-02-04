@@ -1,0 +1,13 @@
+module(1, "lexer.m",
+	lexer,
+	{},
+	{builtin, char, io, private_builtin},
+	{builtin, char, io, int, list, require, string, private_builtin},
+	{},
+	{},
+	{},
+	{"C"},
+	{"C" - lexer, "C#" - lexer, "Java" - lexer, "Erlang" - lexer, "C" - lexer},
+	no_foreign_export,
+	no_main
+).

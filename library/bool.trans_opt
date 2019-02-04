@@ -1,0 +1,27 @@
+:- module bool.
+:- pragma termination_info(bool.or((builtin.in), (builtin.in)) = (builtin.out), finite(0, [no, yes, no]), cannot_loop).
+:- pragma termination_info(bool.or((builtin.in), (builtin.in), (builtin.out)), finite(0, [no, yes, no]), cannot_loop).
+:- pragma termination_info(bool.or_list((builtin.in)) = (builtin.out), finite(0, [no, no]), cannot_loop).
+:- pragma termination_info(bool.or_list((builtin.in), (builtin.out)), finite(0, [no, no]), cannot_loop).
+:- pragma termination_info(bool.and((builtin.in), (builtin.in)) = (builtin.out), finite(0, [no, yes, no]), cannot_loop).
+:- pragma termination_info(bool.and((builtin.in), (builtin.in), (builtin.out)), finite(0, [no, yes, no]), cannot_loop).
+:- pragma termination_info(bool.and_list((builtin.in)) = (builtin.out), finite(0, [no, no]), cannot_loop).
+:- pragma termination_info(bool.and_list((builtin.in), (builtin.out)), finite(0, [no, no]), cannot_loop).
+:- pragma termination_info(bool.not((builtin.in)) = (builtin.out), finite(0, [no, no]), cannot_loop).
+:- pragma termination_info(bool.not((builtin.in), (builtin.out)), finite(0, [no, no]), cannot_loop).
+:- pragma termination_info(bool.xor((builtin.in), (builtin.in)) = (builtin.out), finite(0, [no, no, no]), cannot_loop).
+:- pragma termination_info(bool.pred_to_bool(((pred) is semidet)) = (builtin.out), infinite, can_loop).
+:- pragma termination_info(bool.'ClassMethod_for_enum__enum____bool__bool__arity0______enum__to_int_1'((builtin.in)) = (builtin.out), finite(0, [no, no]), cannot_loop).
+:- pragma termination_info(bool.'ClassMethod_for_enum__enum____bool__bool__arity0______enum__from_int_1'((builtin.in)) = (builtin.out), finite(0, [no, no]), cannot_loop).
+:- pragma exceptions(function, (bool.(or)), 3, 0, will_not_throw).
+:- pragma exceptions(predicate, (bool.(or)), 3, 0, will_not_throw).
+:- pragma exceptions(function, (bool.or_list), 2, 0, will_not_throw).
+:- pragma exceptions(predicate, (bool.or_list), 2, 0, will_not_throw).
+:- pragma exceptions(function, (bool.(and)), 3, 0, will_not_throw).
+:- pragma exceptions(predicate, (bool.(and)), 3, 0, will_not_throw).
+:- pragma exceptions(function, (bool.and_list), 2, 0, will_not_throw).
+:- pragma exceptions(predicate, (bool.and_list), 2, 0, will_not_throw).
+:- pragma exceptions(function, (bool.(not)), 2, 0, will_not_throw).
+:- pragma exceptions(predicate, (bool.(not)), 2, 0, will_not_throw).
+:- pragma exceptions(function, (bool.xor), 3, 0, will_not_throw).
+:- pragma exceptions(function, (bool.pred_to_bool), 2, 0, may_throw(user_exception)).

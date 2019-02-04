@@ -1,0 +1,9 @@
+:- module time.
+:- interface.
+:- type clock_t.
+:- type dst.
+:- type time_error.
+:- type time_t.
+:- type time_t_rep.
+:- type tm.
+:- type tms.

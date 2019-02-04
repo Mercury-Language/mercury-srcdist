@@ -1,0 +1,8 @@
+:- module (top_level.mercury_compile).
+:- interface.
+:- import_module io.
+:- import_module list.
+:- pred main((list.list(string)), (io.io), (io.io)).
+:- mode main((builtin.in), (builtin.di), (builtin.uo)) is det.
+:- pred real_main((io.io), (io.io)).
+:- mode real_main((builtin.di), (builtin.uo)) is det.

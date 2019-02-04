@@ -1,0 +1,8 @@
+:- module set_ordlist.
+:- interface.
+:- import_module bool.
+:- import_module list.
+:- import_module term.
+:- type set_ordlist(_T).
+:- implementation.
+:- type set_ordlist(T) == (list.list(T)).

@@ -1,0 +1,5 @@
+:- module char.
+:- interface.
+:- import_module enum.
+:- type char.
+:- instance (enum(character)).

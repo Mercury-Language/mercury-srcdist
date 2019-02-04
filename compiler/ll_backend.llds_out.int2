@@ -1,0 +1,30 @@
+:- module (ll_backend.llds_out).
+:- interface.
+:- import_module bool.
+:- import_module io.
+:- import_module list.
+:- import_module map.
+:- import_module (backend_libs.builtin_ops).
+:- import_module (hlds.hlds_llds).
+:- import_module (hlds.hlds_module).
+:- import_module (libs.globals).
+:- import_module (ll_backend.llds).
+:- import_module (mdbcomp.prim_data).
+:- import_module (parse_tree.prog_data).
+:- type decl_id
+	--->	decl_common_type(((ll_backend.llds).type_num))
+	;	decl_scalar_common_array(((ll_backend.llds).type_num))
+	;	decl_float_label(string)
+	;	decl_code_addr(((ll_backend.llds).code_addr))
+	;	decl_data_addr(((ll_backend.llds).data_addr))
+	;	decl_foreign_proc_struct(string)
+	;	decl_c_global_var(((ll_backend.llds).c_global_var_ref))
+	;	decl_type_info_like_struct(int)
+	;	decl_typeclass_constraint_struct(int).
+:- type decl_set.
+:- type linkage
+	--->	extern 
+	;	static .
+:- implementation.
+:- import_module set_tree234.
+:- type decl_set == (set_tree234.set_tree234(((ll_backend.llds_out).decl_id))).

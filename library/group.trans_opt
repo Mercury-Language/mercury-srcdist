@@ -1,0 +1,45 @@
+:- module group.
+:- pragma termination_info(group.init((builtin.out)), finite(4, [no, no]), cannot_loop).
+:- pragma termination_info((group.init) = (builtin.out), finite(4, [no, no]), cannot_loop).
+:- pragma termination_info(group.insert((builtin.in), (builtin.in), (builtin.out)), infinite, can_loop).
+:- pragma termination_info(group.insert((builtin.in), (builtin.in)) = (builtin.out), infinite, can_loop).
+:- pragma termination_info(group.group((builtin.in), (builtin.in), (builtin.out)), finite(-7, [no, yes, no, no]), can_loop).
+:- pragma termination_info(group.group((builtin.in), (builtin.in)) = (builtin.out), finite(-7, [no, yes, no, no]), can_loop).
+:- pragma termination_info(group.to_set((builtin.in), (builtin.out)), finite(-3, [no, yes, no]), can_loop).
+:- pragma termination_info(group.to_set((builtin.in)) = (builtin.out), finite(-3, [no, yes, no]), can_loop).
+:- pragma termination_info(group.sets_and_keys((builtin.in), (builtin.out)), infinite, can_loop).
+:- pragma termination_info(group.sets_and_keys((builtin.in)) = (builtin.out), infinite, can_loop).
+:- pragma termination_info(group.group_key((builtin.in), (builtin.in), (builtin.out)), finite(-7, [no, yes, no, no]), can_loop).
+:- pragma termination_info(group.group_key((builtin.in), (builtin.in)) = (builtin.out), finite(-7, [no, yes, no, no]), can_loop).
+:- pragma termination_info(group.key_group((builtin.in), (builtin.in), (builtin.out)), finite(-7, [no, yes, no, no]), can_loop).
+:- pragma termination_info(group.key_group((builtin.in), (builtin.in)) = (builtin.out), finite(-7, [no, yes, no, no]), can_loop).
+:- pragma termination_info(group.remove_group((builtin.in), (builtin.in), (builtin.out), (builtin.out)), infinite, can_loop).
+:- pragma termination_info(group.same_group((builtin.in), (builtin.in), (builtin.in)), finite(0, [no, no, no, no]), can_loop).
+:- pragma termination_info(group.largest_group_key((builtin.in), (builtin.out)), infinite, can_loop).
+:- pragma termination_info(group.largest_group_key((builtin.in)) = (builtin.out), infinite, can_loop).
+:- pragma termination_info(group.group_keys((builtin.in), (builtin.out)), finite(-3, [no, yes, no]), cannot_loop).
+:- pragma termination_info(group.group_keys((builtin.in)) = (builtin.out), finite(-3, [no, yes, no]), cannot_loop).
+:- pragma termination_info(group.insert_elements((builtin.in), (builtin.in), (builtin.in), (builtin.out)), infinite, can_loop).
+:- pragma termination_info(group.largest_group_key_2((builtin.in), (builtin.in), (builtin.in), (builtin.out)), finite(0, [no, yes, no, yes, no]), cannot_loop).
+:- pragma exceptions(predicate, (group.init), 1, 0, will_not_throw).
+:- pragma exceptions(function, (group.init), 1, 0, will_not_throw).
+:- pragma exceptions(predicate, (group.insert), 3, 0, may_throw(type_exception)).
+:- pragma exceptions(function, (group.insert), 3, 0, may_throw(type_exception)).
+:- pragma exceptions(predicate, (group.group), 3, 0, may_throw(user_exception)).
+:- pragma exceptions(function, (group.group), 3, 0, may_throw(user_exception)).
+:- pragma exceptions(predicate, (group.to_set), 2, 0, may_throw(user_exception)).
+:- pragma exceptions(function, (group.to_set), 2, 0, may_throw(user_exception)).
+:- pragma exceptions(predicate, (group.sets_and_keys), 2, 0, will_not_throw).
+:- pragma exceptions(function, (group.sets_and_keys), 2, 0, will_not_throw).
+:- pragma exceptions(predicate, (group.group_key), 3, 0, may_throw(user_exception)).
+:- pragma exceptions(function, (group.group_key), 3, 0, may_throw(user_exception)).
+:- pragma exceptions(predicate, (group.key_group), 3, 0, may_throw(user_exception)).
+:- pragma exceptions(function, (group.key_group), 3, 0, may_throw(user_exception)).
+:- pragma exceptions(predicate, (group.remove_group), 4, 0, may_throw(user_exception)).
+:- pragma exceptions(predicate, (group.same_group), 3, 0, may_throw(user_exception)).
+:- pragma exceptions(predicate, (group.largest_group_key), 2, 0, will_not_throw).
+:- pragma exceptions(function, (group.largest_group_key), 2, 0, will_not_throw).
+:- pragma exceptions(predicate, (group.group_keys), 2, 0, will_not_throw).
+:- pragma exceptions(function, (group.group_keys), 2, 0, will_not_throw).
+:- pragma exceptions(predicate, (group.insert_elements), 4, 0, may_throw(type_exception)).
+:- pragma exceptions(predicate, (group.largest_group_key_2), 4, 0, will_not_throw).

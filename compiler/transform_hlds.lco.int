@@ -1,0 +1,5 @@
+:- module (transform_hlds.lco).
+:- interface.
+:- import_module (hlds.hlds_module).
+:- pred lco_modulo_constructors(((hlds.hlds_module).module_info), ((hlds.hlds_module).module_info)).
+:- mode lco_modulo_constructors((builtin.in), (builtin.out)) is det.

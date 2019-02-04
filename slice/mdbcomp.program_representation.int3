@@ -1,0 +1,17 @@
+:- module (mdbcomp.program_representation).
+:- interface.
+:- type arg_pos.
+:- type atomic_goal_id.
+:- type atomic_goal_rep.
+:- type bytecode_goal_type.
+:- type cons_id_rep.
+:- type detism_rep.
+:- type goal_path.
+:- type goal_path_step.
+:- type goal_path_string.
+:- type goal_rep.
+:- type maybe_cut.
+:- type proc_rep.
+:- type term_path.
+:- type var_num_rep.
+:- type var_rep.

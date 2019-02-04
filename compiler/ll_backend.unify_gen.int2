@@ -1,0 +1,10 @@
+:- module (ll_backend.unify_gen).
+:- interface.
+:- import_module (hlds.code_model).
+:- import_module (hlds.hlds_goal).
+:- import_module (ll_backend.code_info).
+:- import_module (ll_backend.llds).
+:- import_module (parse_tree.prog_data).
+:- type test_sense
+	--->	branch_on_success 
+	;	branch_on_failure .

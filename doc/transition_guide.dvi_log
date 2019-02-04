@@ -1,0 +1,28 @@
+This is e-TeXk, Version 3.14159-2.1 (Web2C 7.4.5)
+ file:line:error style messages enabled.
+entering extended mode
+
+(/home/mercury/public/test_mercury/test_dirs/jupiter/build.latest.gcc/mercury/d
+oc/transition_guide.texi_pp (./texinfo.tex
+Loading texinfo [version 1999-09-25.10]: Basics, pdf, fonts, page headings,
+tables, conditionals, indexing, sectioning, toc, environments, defuns, macros,
+cross references, (/usr/share/texmf/tex/generic/dvips/epsf.tex) localization,
+and turning on texinfo input format.) [1] [2] [-1] Chapter 1 Chapter 2
+Chapter 3 [1] [2] Chapter 4 [3] Chapter 5 [4] Chapter 6 Chapter 7 [5]
+Chapter 8 [6] [7] )
+Output written on transition_guide.dvi (10 pages, 21968 bytes).
+Transcript written on transition_guide.log.
+This is e-TeXk, Version 3.14159-2.1 (Web2C 7.4.5)
+ file:line:error style messages enabled.
+entering extended mode
+
+(/home/mercury/public/test_mercury/test_dirs/jupiter/build.latest.gcc/mercury/d
+oc/transition_guide.texi_pp (./texinfo.tex
+Loading texinfo [version 1999-09-25.10]: Basics, pdf, fonts, page headings,
+tables, conditionals, indexing, sectioning, toc, environments, defuns, macros,
+cross references, (/usr/share/texmf/tex/generic/dvips/epsf.tex) localization,
+and turning on texinfo input format.) (./transition_guide.aux) [1] [2]
+(./transition_guide.toc) [-1] Chapter 1 Chapter 2 Chapter 3 [1] [2] Chapter 4
+[3] Chapter 5 [4] Chapter 6 Chapter 7 [5] Chapter 8 [6] [7] )
+Output written on transition_guide.dvi (10 pages, 23808 bytes).
+Transcript written on transition_guide.log.

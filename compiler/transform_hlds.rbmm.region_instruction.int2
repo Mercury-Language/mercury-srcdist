@@ -1,0 +1,15 @@
+:- module ((transform_hlds.rbmm).region_instruction).
+:- interface.
+:- import_module hlds.
+:- import_module list.
+:- import_module map.
+:- import_module string.
+:- import_module (hlds.hlds_module).
+:- import_module (hlds.hlds_pred).
+:- import_module (transform_hlds.smm_common).
+:- import_module ((transform_hlds.rbmm).points_to_info).
+:- import_module ((transform_hlds.rbmm).region_liveness_info).
+:- type annotation_proc == (map.map(((transform_hlds.smm_common).program_point), (((transform_hlds.rbmm).region_instruction).before_after))).
+:- type annotation_table == (map.map(((hlds.hlds_pred).pred_proc_id), (((transform_hlds.rbmm).region_instruction).annotation_proc))).
+:- type before_after
+	--->	before_after((list.list(string)), (list.list(string))).

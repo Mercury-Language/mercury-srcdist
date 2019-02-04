@@ -1,0 +1,7 @@
+:- module (erl_backend.erl_code_gen).
+:- interface.
+:- import_module io.
+:- import_module (erl_backend.elds).
+:- import_module (hlds.hlds_module).
+:- pred erl_code_gen(((hlds.hlds_module).module_info), ((erl_backend.elds).elds), (io.io), (io.io)).
+:- mode erl_code_gen((builtin.in), (builtin.out), (builtin.di), (builtin.uo)) is det.

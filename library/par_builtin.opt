@@ -1,0 +1,129 @@
+:- module par_builtin.
+:- use_module builtin, private_builtin.
+:- type (par_builtin.future(T)).
+:- pragma foreign_type(il, (par_builtin.future(T)), "class [mscorlib]System.Object").
+:- pragma foreign_type(c, (par_builtin.future(T)), "MR_Future *", [can_pass_as_mercury_type]).
+:- pragma foreign_type(erlang, (par_builtin.future(T)), "").
+:- pragma foreign_import_module("C", par_builtin).
+:- pragma foreign_import_module("IL", par_builtin).
+:- pragma foreign_import_module("Erlang", par_builtin).
+:- pragma foreign_import_module("C", io).
+:- pragma foreign_import_module("Java", io).
+:- pragma foreign_import_module("IL", io).
+:- pragma foreign_import_module("Erlang", io).
+:- pragma foreign_import_module("C", io).
+:- pragma foreign_import_module("Java", io).
+:- pragma foreign_import_module("IL", io).
+:- pragma foreign_import_module("Erlang", io).
+:- pragma foreign_import_module("C", string).
+:- pragma foreign_import_module("C", bitmap).
+:- pragma foreign_import_module("Java", bitmap).
+:- pragma foreign_import_module("IL", bitmap).
+:- pragma foreign_import_module("Erlang", bitmap).
+:- pragma foreign_import_module("C", bitmap).
+:- pragma foreign_import_module("Java", bitmap).
+:- pragma foreign_import_module("IL", bitmap).
+:- pragma foreign_import_module("Erlang", bitmap).
+:- pragma foreign_import_module("C", time).
+:- pragma foreign_import_module("Java", time).
+:- pragma foreign_import_module("IL", time).
+:- pragma foreign_import_module("Erlang", time).
+:- pragma foreign_import_module("C", time).
+:- pragma foreign_import_module("Java", time).
+:- pragma foreign_import_module("IL", time).
+:- pragma foreign_import_module("Erlang", time).
+:- pragma foreign_proc("C", par_builtin.new_future(Future :: (builtin.uo)), [will_not_call_mercury, thread_safe, not_tabled_for_io, promise_pure, will_not_modify_trail], "
+#if (!defined MR_HIGHLEVEL_CODE) && (defined MR_THREAD_SAFE)
+
+    MR_Word fut_addr;
+
+    MR_incr_hp(fut_addr, MR_round_up(sizeof(MR_Future), sizeof(MR_Word)));
+    Future = (MR_Future *) fut_addr;
+
+    pthread_mutex_init(&(Future->lock), MR_MUTEX_ATTR);
+
+    /*
+    ** The mutex needs to be destroyed when the future is garbage collected.
+    ** For efficiency we might want to ignore this altogether, e.g. on Linux
+    ** pthread_mutex_destroy() only checks that the mutex is unlocked.
+    */
+  #ifdef MR_CONSERVATIVE_GC
+    GC_REGISTER_FINALIZER(Future, MR_finalize_future, NULL, NULL, NULL);
+  #endif
+
+    Future->signalled = MR_FALSE;
+    Future->suspended = NULL;
+    Future->value = 0;
+
+#else
+
+    MR_fatal_error(\"internal error: par_builtin should only be used by \"
+        \"lowlevel parallel grades\");
+
+#endif
+").
+:- pragma foreign_proc("C", par_builtin.wait(Future :: (builtin.in), Value :: (builtin.out)), [will_not_call_mercury, thread_safe, not_tabled_for_io, promise_pure, will_not_modify_trail], "
+#if (!defined MR_HIGHLEVEL_CODE) && (defined MR_THREAD_SAFE)
+
+    MR_LOCK(&(Future->lock), \"future.wait\");
+
+    if (Future->signalled) {
+        Value = Future->value;
+        MR_UNLOCK(&(Future->lock), \"future.wait\");
+    } else {
+        MR_Context *ctxt;
+
+        /*
+        ** The address of the future can be lost when we resume so save it on
+        ** top of the stack.
+        */
+        MR_incr_sp(1);
+        MR_sv(1) = (MR_Word) Future;
+
+        /*
+        ** Save this context and put it on the list of suspended contexts for
+        ** this future.
+        */
+        ctxt = MR_ENGINE(MR_eng_this_context);
+        MR_save_context(ctxt);
+
+        ctxt->MR_ctxt_resume = MR_ENTRY(mercury__par_builtin__wait_resume);
+        ctxt->MR_ctxt_next = Future->suspended;
+        Future->suspended = ctxt;
+
+        MR_UNLOCK(&(Future->lock), \"future.wait\");
+
+        MR_ENGINE(MR_eng_this_context) = NULL;
+        MR_runnext();
+    }
+
+#else
+
+    MR_fatal_error(\"internal error: par_builtin.wait\");
+    Value = -1;
+
+#endif
+").
+:- pragma foreign_proc("C", par_builtin.get(Future :: (builtin.in), Value :: (builtin.out)), [will_not_call_mercury, thread_safe, not_tabled_for_io, promise_pure, will_not_modify_trail], "
+#if (!defined MR_HIGHLEVEL_CODE) && (defined MR_THREAD_SAFE)
+
+    assert(Future->signalled);
+    Value = Future->value;
+
+#else
+
+    MR_fatal_error(\"internal error: par_builtin.get\");
+    Value = -1;
+
+#endif
+").
+:- pragma exceptions(predicate, (par_builtin.new_future), 1, 0, will_not_throw).
+:- pragma exceptions(predicate, (par_builtin.wait), 2, 0, will_not_throw).
+:- pragma exceptions(predicate, (par_builtin.get), 2, 0, will_not_throw).
+:- pragma exceptions(predicate, (par_builtin.signal), 2, 0, will_not_throw).
+:- pragma exceptions(predicate, (par_builtin.evaluate_parallelism_condition), 0, 0, will_not_throw).
+:- pragma termination_info(par_builtin.new_future((builtin.uo)), infinite, cannot_loop).
+:- pragma termination_info(par_builtin.wait((builtin.in), (builtin.out)), infinite, cannot_loop).
+:- pragma termination_info(par_builtin.get((builtin.in), (builtin.out)), infinite, cannot_loop).
+:- pragma termination_info(par_builtin.signal((builtin.in), (builtin.in)), finite(0, [no, no]), cannot_loop).
+:- pragma termination_info((par_builtin.evaluate_parallelism_condition), finite(0, []), cannot_loop).
