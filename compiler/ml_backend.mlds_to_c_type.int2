@@ -1,0 +1,8 @@
+:- module (ml_backend.mlds_to_c_type).
+:- interface.
+:- import_module io.
+:- import_module list.
+:- import_module (ml_backend.mlds).
+:- import_module (ml_backend.mlds_to_c_util).
+:- type output_type == pred(ml_backend.mlds_to_c_util.mlds_to_c_opts, ml_backend.mlds.mlds_type, io.io, io.io).
+:- inst (output_type) == (pred((builtin.in), (builtin.in), (builtin.di), (builtin.uo)) is det).
