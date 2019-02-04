@@ -1,0 +1,21 @@
+Plus Infinity:
+                  %e: infinity
+                  %f: infinity
+                  %g: infinity
+                  %E: INFINITY
+                  %F: INFINITY
+                  %G: INFINITY
+Minus Infinity:
+                  %e: -infinity
+                  %f: -infinity
+                  %g: -infinity
+                  %E: -INFINITY
+                  %F: -INFINITY
+                  %G: -INFINITY
+Not a number:
+                  %e: nan
+                  %f: nan
+                  %g: nan
+                  %E: NAN
+                  %F: NAN
+                  %G: NAN

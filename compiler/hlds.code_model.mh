@@ -1,0 +1,31 @@
+/*
+** Automatically generated from `code_model.m'
+** by the Mercury compiler,
+** version rotd-2018-03-13
+** configured for x86_64-pc-linux-gnu.
+** Do not edit.
+*/
+#ifndef HLDS__CODE_MODEL_MH
+#define HLDS__CODE_MODEL_MH
+
+#ifdef __cplusplus
+extern "C" {
+#endif
+
+#ifdef MR_HIGHLEVEL_CODE
+#include "mercury.h"
+#else
+  #ifndef MERCURY_HDR_EXCLUDE_IMP_H
+  #include "mercury_imp.h"
+  #endif
+#endif
+#ifdef MR_DEEP_PROFILING
+#include "mercury_deep_profiling.h"
+#endif
+
+
+#ifdef __cplusplus
+}
+#endif
+
+#endif /* HLDS__CODE_MODEL_MH */
