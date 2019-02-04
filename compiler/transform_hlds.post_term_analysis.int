@@ -1,0 +1,9 @@
+:- module (transform_hlds.post_term_analysis).
+:- interface.
+:- import_module hlds.
+:- import_module list.
+:- import_module parse_tree.
+:- import_module (hlds.hlds_module).
+:- import_module (parse_tree.error_util).
+:- pred run_post_term_analysis(hlds.hlds_module.module_info, list.list(parse_tree.error_util.error_spec)).
+:- mode run_post_term_analysis((builtin.in), (builtin.out)) is det.
