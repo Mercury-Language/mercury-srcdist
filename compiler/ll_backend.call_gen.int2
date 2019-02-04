@@ -1,0 +1,18 @@
+:- module (ll_backend.call_gen).
+:- interface.
+:- import_module assoc_list.
+:- import_module hlds.
+:- import_module libs.
+:- import_module list.
+:- import_module parse_tree.
+:- import_module (hlds.code_model).
+:- import_module (hlds.hlds_goal).
+:- import_module (hlds.hlds_pred).
+:- import_module (libs.globals).
+:- import_module (ll_backend.code_info).
+:- import_module (ll_backend.code_loc_dep).
+:- import_module (ll_backend.llds).
+:- import_module (parse_tree.prog_data).
+:- type known_call_variant
+    --->    ho_call_known_num 
+    ;       ho_call_unknown .

@@ -1,0 +1,38 @@
+:- module (ml_backend.mlds_to_cs_name).
+:- interface.
+:- import_module io.
+:- import_module mdbcomp.
+:- import_module parse_tree.
+:- import_module (mdbcomp.sym_name).
+:- import_module (ml_backend.mlds).
+:- import_module (ml_backend.mlds_to_cs_util).
+:- import_module (parse_tree.prog_data).
+:- pred global_var_name_to_string_for_csharp(ml_backend.mlds.mlds_global_var_name, string).
+:- mode global_var_name_to_string_for_csharp((builtin.in), (builtin.out)) is det.
+:- pred local_var_name_to_string_for_csharp(ml_backend.mlds.mlds_local_var_name, string).
+:- mode local_var_name_to_string_for_csharp((builtin.in), (builtin.out)) is det.
+:- pred mlds_output_proc_label(string, ml_backend.mlds.mlds_proc_label, io.io, io.io).
+:- mode mlds_output_proc_label((builtin.in), (builtin.in), (builtin.di), (builtin.uo)) is det.
+:- pred output_class_name_arity_for_csharp(ml_backend.mlds.mlds_class_name, parse_tree.prog_data.arity, io.io, io.io).
+:- mode output_class_name_arity_for_csharp((builtin.in), (builtin.in), (builtin.di), (builtin.uo)) is det.
+:- pred output_field_var_name_for_csharp(ml_backend.mlds.mlds_field_var_name, io.io, io.io).
+:- mode output_field_var_name_for_csharp((builtin.in), (builtin.di), (builtin.uo)) is det.
+:- pred output_function_name_for_csharp(ml_backend.mlds.mlds_function_name, io.io, io.io).
+:- mode output_function_name_for_csharp((builtin.in), (builtin.di), (builtin.uo)) is det.
+:- pred output_global_var_name_for_csharp(ml_backend.mlds.mlds_global_var_name, io.io, io.io).
+:- mode output_global_var_name_for_csharp((builtin.in), (builtin.di), (builtin.uo)) is det.
+:- pred output_local_var_name_for_csharp(ml_backend.mlds.mlds_local_var_name, io.io, io.io).
+:- mode output_local_var_name_for_csharp((builtin.in), (builtin.di), (builtin.uo)) is det.
+:- pred output_maybe_qualified_function_name_for_csharp(ml_backend.mlds_to_cs_util.csharp_out_info, ml_backend.mlds.qual_function_name, io.io, io.io).
+:- mode output_maybe_qualified_function_name_for_csharp((builtin.in), (builtin.in), (builtin.di), (builtin.uo)) is det.
+:- pred output_maybe_qualified_global_var_name_for_csharp(ml_backend.mlds_to_cs_util.csharp_out_info, ml_backend.mlds.qual_global_var_name, io.io, io.io).
+:- mode output_maybe_qualified_global_var_name_for_csharp((builtin.in), (builtin.in), (builtin.di), (builtin.uo)) is det.
+:- pred output_qual_name_prefix_cs(ml_backend.mlds.mlds_module_name, ml_backend.mlds.mlds_qual_kind, io.io, io.io).
+:- mode output_qual_name_prefix_cs((builtin.in), (builtin.in), (builtin.di), (builtin.uo)) is det.
+:- pred output_unqual_class_name_for_csharp(ml_backend.mlds.mlds_class_name, parse_tree.prog_data.arity, io.io, io.io).
+:- mode output_unqual_class_name_for_csharp((builtin.in), (builtin.in), (builtin.di), (builtin.uo)) is det.
+:- pred qual_class_name_to_string_for_csharp(ml_backend.mlds.qual_class_name, parse_tree.prog_data.arity, string).
+:- mode qual_class_name_to_string_for_csharp((builtin.in), (builtin.in), (builtin.out)) is det.
+:- func strip_mercury_and_mangle_sym_name_for_csharp(mdbcomp.sym_name.sym_name) = string.
+:- pred write_identifier_string_for_csharp(string, io.io, io.io).
+:- mode write_identifier_string_for_csharp((builtin.in), (builtin.di), (builtin.uo)) is det.
