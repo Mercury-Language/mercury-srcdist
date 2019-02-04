@@ -1,0 +1,13 @@
+module(1, "term_rep.m",
+	(mdb.term_rep),
+	{mdb},
+	{builtin, mdbcomp, univ, (mdbcomp.program_representation), private_builtin},
+	{builtin, mdbcomp, univ, (mdbcomp.program_representation), construct, deconstruct, exception, int, list, maybe, type_desc, (mdb.declarative_debugger), private_builtin},
+	{},
+	{},
+	{},
+	{},
+	{},
+	no_foreign_export,
+	no_main
+).

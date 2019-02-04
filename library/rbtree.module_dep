@@ -1,0 +1,13 @@
+module(1, "rbtree.m",
+	rbtree,
+	{},
+	{builtin, assoc_list, list, private_builtin},
+	{builtin, assoc_list, list, bool, int, maybe, pair, require, private_builtin},
+	{},
+	{},
+	{},
+	{},
+	{},
+	no_foreign_export,
+	no_main
+).

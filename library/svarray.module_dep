@@ -1,0 +1,13 @@
+module(1, "svarray.m",
+	svarray,
+	{},
+	{builtin, array, private_builtin},
+	{builtin, array, private_builtin},
+	{},
+	{},
+	{},
+	{},
+	{},
+	no_foreign_export,
+	no_main
+).
