@@ -1,0 +1,5 @@
+:- module (parse_tree.set_of_var).
+:- interface.
+:- type set_of_progvar.
+:- type set_of_tvar.
+:- type set_of_var(T).
