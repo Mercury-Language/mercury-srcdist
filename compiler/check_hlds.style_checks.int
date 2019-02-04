@@ -1,0 +1,15 @@
+:- module (check_hlds.style_checks).
+:- interface.
+:- import_module hlds.
+:- import_module io.
+:- import_module list.
+:- import_module parse_tree.
+:- import_module (hlds.hlds_clauses).
+:- import_module (hlds.hlds_module).
+:- import_module (parse_tree.error_util).
+:- type style_warnings_task
+    --->    non_contiguous_decls_only 
+    ;       inconsistent_pred_order_only(hlds.hlds_clauses.clause_item_number_types)
+    ;       non_contiguous_decls_and_inconsistent_pred_order(hlds.hlds_clauses.clause_item_number_types).
+:- pred generate_style_warnings(hlds.hlds_module.module_info, check_hlds.style_checks.style_warnings_task, list.list(parse_tree.error_util.error_spec), io.io, io.io).
+:- mode generate_style_warnings((builtin.in), (builtin.in), (builtin.out), (builtin.di), (builtin.uo)) is det.
