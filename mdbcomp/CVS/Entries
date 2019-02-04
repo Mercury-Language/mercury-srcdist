@@ -1,0 +1,17 @@
+/.cvsignore/1.5/Fri Jun 15 12:41:47 2007//
+/.mgnuc_copts/1.1/Fri May 20 06:15:14 2005//
+/.mgnuc_opts/1.1/Mon Sep 19 08:07:02 2005//
+/.nocopyright/1.4/Mon Sep 19 08:07:02 2005//
+/MDBCOMP_FLAGS.in/1.5/Tue Oct 20 04:07:25 2009//
+/Mercury.options/1.2/Fri Dec  1 15:04:38 2006//
+/Mmakefile/1.16/Tue Oct 20 04:07:25 2009//
+/RESERVED_MACRO_NAMES/1.1/Wed Nov 15 04:13:36 2006//
+/feedback.m/1.6/Thu Mar 12 03:33:42 2009//
+/mdbcomp.m/1.7/Wed Jul 23 23:20:34 2008//
+/mer_mdbcomp.m/1.1/Fri Jan 28 07:11:52 2005//
+/prim_data.m/1.36/Thu Sep  3 23:57:50 2009//
+/program_representation.m/1.48/Thu Jun 11 08:28:31 2009//
+/rtti_access.m/1.14/Wed Oct 21 04:30:18 2009//
+/slice_and_dice.m/1.16/Mon Nov 12 03:52:48 2007//
+/trace_counts.m/1.24/Tue Nov 25 07:46:54 2008//
+D

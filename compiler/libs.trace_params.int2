@@ -1,0 +1,14 @@
+:- module (libs.trace_params).
+:- interface.
+:- import_module bool.
+:- import_module hlds.
+:- import_module maybe.
+:- import_module (hlds.hlds_module).
+:- import_module (hlds.hlds_pred).
+:- import_module (mdbcomp.prim_data).
+:- type trace_level.
+:- type trace_suppress_items.
+:- implementation.
+:- import_module set.
+:- type trace_suppress_item.
+:- type trace_suppress_items == set.set(libs.trace_params.trace_suppress_item).

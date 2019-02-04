@@ -1,0 +1,21 @@
+:- module options.
+:- interface.
+:- import_module bool.
+:- import_module getopt.
+:- import_module io.
+:- type option
+	--->	verbose 
+	;	very_verbose 
+	;	dynamic_cg 
+	;	call_graph 
+	;	profile 
+	;	profile_time 
+	;	profile_memory_words 
+	;	profile_memory_cells 
+	;	demangle 
+	;	countfile 
+	;	pairfile 
+	;	declfile 
+	;	libraryfile 
+	;	help .
+:- type option_table == getopt.option_table(options.option).

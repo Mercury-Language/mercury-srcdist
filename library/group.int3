@@ -1,0 +1,4 @@
+:- module group.
+:- interface.
+:- type key.
+:- type group(T).

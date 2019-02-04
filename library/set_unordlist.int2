@@ -1,0 +1,7 @@
+:- module set_unordlist.
+:- interface.
+:- import_module bool.
+:- import_module list.
+:- type set_unordlist(_T).
+:- implementation.
+:- type set_unordlist(T) == list.list(T).

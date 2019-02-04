@@ -1,0 +1,156 @@
+:- module solutions.
+:- use_module bool, builtin, list, mutvar, private_builtin, set.
+:- type solutions.trail_ptr
+	--->	trail_ptr(builtin.c_pointer).
+:- type solutions.heap_ptr == private_builtin.heap_pointer.
+:- pred solutions.builtin_solutions((pred T_1), list.list(T_1)).
+:- mode solutions.builtin_solutions((pred((builtin.out)) is multi), (builtin.out)) is det.
+:- mode solutions.builtin_solutions((pred((builtin.out)) is nondet), (builtin.out)) is det.
+:- pred solutions.builtin_aggregate((pred T_1), pred(T_1, U_2, U_2), U_2, U_2).
+:- mode solutions.builtin_aggregate((pred((builtin.out)) is multi), (pred((builtin.in), (builtin.in), (builtin.out)) is det), (builtin.in), (builtin.out)) is det.
+:- mode solutions.builtin_aggregate((pred((builtin.out)) is multi), (pred((builtin.in), (builtin.di), (builtin.uo)) is det), (builtin.di), (builtin.uo)) is det.
+:- mode solutions.builtin_aggregate((pred((builtin.out)) is multi), (pred((builtin.in), (builtin.in), (builtin.out)) is cc_multi), (builtin.in), (builtin.out)) is det.
+:- mode solutions.builtin_aggregate((pred((builtin.out)) is multi), (pred((builtin.in), (builtin.di), (builtin.uo)) is cc_multi), (builtin.di), (builtin.uo)) is det.
+:- mode solutions.builtin_aggregate((pred((builtin.muo)) is multi), (pred((builtin.mdi), (builtin.di), (builtin.uo)) is det), (builtin.di), (builtin.uo)) is det.
+:- mode solutions.builtin_aggregate((pred((builtin.out)) is nondet), (pred((builtin.in), (builtin.di), (builtin.uo)) is det), (builtin.di), (builtin.uo)) is det.
+:- mode solutions.builtin_aggregate((pred((builtin.out)) is nondet), (pred((builtin.in), (builtin.di), (builtin.uo)) is cc_multi), (builtin.di), (builtin.uo)) is det.
+:- mode solutions.builtin_aggregate((pred((builtin.out)) is nondet), (pred((builtin.in), (builtin.in), (builtin.out)) is det), (builtin.in), (builtin.out)) is det.
+:- mode solutions.builtin_aggregate((pred((builtin.out)) is nondet), (pred((builtin.in), (builtin.in), (builtin.out)) is cc_multi), (builtin.in), (builtin.out)) is det.
+:- mode solutions.builtin_aggregate((pred((builtin.muo)) is nondet), (pred((builtin.mdi), (builtin.di), (builtin.uo)) is det), (builtin.di), (builtin.uo)) is det.
+:- pragma promise_pure((solutions.builtin_aggregate)/4).
+solutions.solutions(Pred_3, List_4) :-
+    solutions.builtin_solutions(Pred_3, UnsortedList_5),
+    list.sort_and_remove_dups(UnsortedList_5, List_4).
+solutions.solutions(P_3) = S_4 :-
+    solutions.solutions(P_3, S_4).
+solutions.solutions_set(P_3) = S_4 :-
+    solutions.solutions_set(P_3, S_4).
+solutions.solutions_set(Pred_3, Set_4) :-
+    solutions.builtin_solutions(Pred_3, List_5),
+    set.list_to_set(List_5, Set_4).
+solutions.unsorted_solutions(Pred_3, List_4) :-
+    solutions.builtin_solutions(Pred_3, UnsortedList_5),
+    builtin.cc_multi_equal(UnsortedList_5, List_4).
+solutions.aggregate(P_5, F_6, Acc0_7) = Acc_8 :-
+    V_12 = (pred(V_15::(builtin.in), V_14::(builtin.in), V_13::(builtin.out)) is det :-
+      some [] (
+        V_15 = X_16,
+        V_14 = A0_17,
+        A_18 = apply(F_6, X_16, A0_17),
+        V_13 = A_18
+      )
+    ) : pred(T_1, U_2, U_2),
+    solutions.aggregate(P_5, V_12, Acc0_7, Acc_8).
+solutions.aggregate(Generator_5, Accumulator_6, STATE_VARIABLE_Acc_0_9, STATE_VARIABLE_Acc_10) :-
+    solutions.solutions(Generator_5, Solutions_8),
+    list.foldl(Accumulator_6, Solutions_8, STATE_VARIABLE_Acc_0_9, STATE_VARIABLE_Acc_1_11),
+    STATE_VARIABLE_Acc_10 = STATE_VARIABLE_Acc_1_11.
+solutions.aggregate2(Generator_7, Accumulator_8, STATE_VARIABLE_Acc1_0_12, STATE_VARIABLE_Acc1_13, STATE_VARIABLE_Acc2_0_14, STATE_VARIABLE_Acc2_15) :-
+    solutions.solutions(Generator_7, Solutions_11),
+    list.foldl2(Accumulator_8, Solutions_11, STATE_VARIABLE_Acc1_0_12, STATE_VARIABLE_Acc1_1_16, STATE_VARIABLE_Acc2_0_14, STATE_VARIABLE_Acc2_1_17),
+    STATE_VARIABLE_Acc2_15 = STATE_VARIABLE_Acc2_1_17,
+    STATE_VARIABLE_Acc1_13 = STATE_VARIABLE_Acc1_1_16.
+solutions.unsorted_aggregate(Generator_5, Accumulator_6, STATE_VARIABLE_Acc_0_8, STATE_VARIABLE_Acc_9) :-
+    solutions.builtin_aggregate(Generator_5, Accumulator_6, STATE_VARIABLE_Acc_0_8, STATE_VARIABLE_Acc_1_10),
+    builtin.cc_multi_equal(STATE_VARIABLE_Acc_1_10, STATE_VARIABLE_Acc_2_11),
+    STATE_VARIABLE_Acc_9 = STATE_VARIABLE_Acc_2_11.
+solutions.builtin_solutions(Generator_3, UnsortedList_4) :-
+    V_5 = list.cons : pred(T_1, list.list(T_1), list.list(T_1)),
+    V_6 = list.[] : list.list(T_1),
+    solutions.builtin_aggregate(Generator_3, V_5, V_6, UnsortedList_4).
+:- pragma exceptions(predicate, (solutions.solutions), 2, 0, may_throw(user_exception)).
+:- pragma exceptions(predicate, (solutions.solutions), 2, 1, may_throw(user_exception)).
+:- pragma exceptions(function, (solutions.solutions), 2, 0, may_throw(user_exception)).
+:- pragma exceptions(function, (solutions.solutions), 2, 1, may_throw(user_exception)).
+:- pragma exceptions(function, (solutions.solutions_set), 2, 0, may_throw(user_exception)).
+:- pragma exceptions(function, (solutions.solutions_set), 2, 1, may_throw(user_exception)).
+:- pragma exceptions(predicate, (solutions.solutions_set), 2, 0, may_throw(user_exception)).
+:- pragma exceptions(predicate, (solutions.solutions_set), 2, 1, may_throw(user_exception)).
+:- pragma exceptions(predicate, (solutions.unsorted_solutions), 2, 0, may_throw(user_exception)).
+:- pragma exceptions(predicate, (solutions.unsorted_solutions), 2, 1, may_throw(user_exception)).
+:- pragma exceptions(function, (solutions.aggregate), 4, 0, may_throw(user_exception)).
+:- pragma exceptions(function, (solutions.aggregate), 4, 1, may_throw(user_exception)).
+:- pragma exceptions(predicate, (solutions.aggregate), 4, 0, may_throw(user_exception)).
+:- pragma exceptions(predicate, (solutions.aggregate), 4, 1, may_throw(user_exception)).
+:- pragma exceptions(predicate, (solutions.aggregate), 4, 2, may_throw(user_exception)).
+:- pragma exceptions(predicate, (solutions.aggregate), 4, 3, may_throw(user_exception)).
+:- pragma exceptions(predicate, (solutions.aggregate2), 6, 0, may_throw(user_exception)).
+:- pragma exceptions(predicate, (solutions.aggregate2), 6, 1, may_throw(user_exception)).
+:- pragma exceptions(predicate, (solutions.aggregate2), 6, 2, may_throw(user_exception)).
+:- pragma exceptions(predicate, (solutions.aggregate2), 6, 3, may_throw(user_exception)).
+:- pragma exceptions(predicate, (solutions.unsorted_aggregate), 4, 0, may_throw(user_exception)).
+:- pragma exceptions(predicate, (solutions.unsorted_aggregate), 4, 1, may_throw(user_exception)).
+:- pragma exceptions(predicate, (solutions.unsorted_aggregate), 4, 2, may_throw(user_exception)).
+:- pragma exceptions(predicate, (solutions.unsorted_aggregate), 4, 3, may_throw(user_exception)).
+:- pragma exceptions(predicate, (solutions.unsorted_aggregate), 4, 4, may_throw(user_exception)).
+:- pragma exceptions(predicate, (solutions.unsorted_aggregate), 4, 5, may_throw(user_exception)).
+:- pragma exceptions(predicate, (solutions.unsorted_aggregate), 4, 6, may_throw(user_exception)).
+:- pragma exceptions(predicate, (solutions.unsorted_aggregate), 4, 7, may_throw(user_exception)).
+:- pragma exceptions(predicate, (solutions.unsorted_aggregate), 4, 8, may_throw(user_exception)).
+:- pragma exceptions(predicate, (solutions.unsorted_aggregate), 4, 9, may_throw(user_exception)).
+:- pragma exceptions(predicate, (solutions.do_while), 4, 0, may_throw(user_exception)).
+:- pragma exceptions(predicate, (solutions.do_while), 4, 1, may_throw(user_exception)).
+:- pragma exceptions(predicate, (solutions.do_while), 4, 2, may_throw(user_exception)).
+:- pragma exceptions(predicate, (solutions.do_while), 4, 3, may_throw(user_exception)).
+:- pragma exceptions(predicate, (solutions.do_while), 4, 4, may_throw(user_exception)).
+:- pragma exceptions(predicate, (solutions.do_while), 4, 5, may_throw(user_exception)).
+:- pragma exceptions(predicate, (solutions.builtin_solutions), 2, 0, may_throw(user_exception)).
+:- pragma exceptions(predicate, (solutions.builtin_solutions), 2, 1, may_throw(user_exception)).
+:- pragma exceptions(predicate, (solutions.builtin_aggregate), 4, 0, may_throw(user_exception)).
+:- pragma exceptions(predicate, (solutions.builtin_aggregate), 4, 1, may_throw(user_exception)).
+:- pragma exceptions(predicate, (solutions.builtin_aggregate), 4, 2, may_throw(user_exception)).
+:- pragma exceptions(predicate, (solutions.builtin_aggregate), 4, 3, may_throw(user_exception)).
+:- pragma exceptions(predicate, (solutions.builtin_aggregate), 4, 4, may_throw(user_exception)).
+:- pragma exceptions(predicate, (solutions.builtin_aggregate), 4, 5, may_throw(user_exception)).
+:- pragma exceptions(predicate, (solutions.builtin_aggregate), 4, 6, may_throw(user_exception)).
+:- pragma exceptions(predicate, (solutions.builtin_aggregate), 4, 7, may_throw(user_exception)).
+:- pragma exceptions(predicate, (solutions.builtin_aggregate), 4, 8, may_throw(user_exception)).
+:- pragma exceptions(predicate, (solutions.builtin_aggregate), 4, 9, may_throw(user_exception)).
+:- pragma termination_info(solutions.solutions((pred((builtin.out)) is multi), builtin.out((list.non_empty_list))), infinite, can_loop).
+:- pragma termination_info(solutions.solutions((pred((builtin.out)) is nondet), (builtin.out)), infinite, can_loop).
+:- pragma termination_info(solutions.solutions((pred((builtin.out)) is multi)) = builtin.out((list.non_empty_list)), infinite, can_loop).
+:- pragma termination_info(solutions.solutions((pred((builtin.out)) is nondet)) = (builtin.out), infinite, can_loop).
+:- pragma termination_info(solutions.solutions_set((pred((builtin.out)) is multi)) = (builtin.out), infinite, can_loop).
+:- pragma termination_info(solutions.solutions_set((pred((builtin.out)) is nondet)) = (builtin.out), infinite, can_loop).
+:- pragma termination_info(solutions.solutions_set((pred((builtin.out)) is multi), (builtin.out)), infinite, can_loop).
+:- pragma termination_info(solutions.solutions_set((pred((builtin.out)) is nondet), (builtin.out)), infinite, can_loop).
+:- pragma termination_info(solutions.unsorted_solutions((pred((builtin.out)) is multi), builtin.out((list.non_empty_list))), infinite, can_loop).
+:- pragma termination_info(solutions.unsorted_solutions((pred((builtin.out)) is nondet), (builtin.out)), infinite, can_loop).
+:- pragma termination_info(solutions.aggregate((pred((builtin.out)) is multi), (func((builtin.in), (builtin.in)) = (builtin.out) is det), (builtin.in)) = (builtin.out), infinite, can_loop).
+:- pragma termination_info(solutions.aggregate((pred((builtin.out)) is nondet), (func((builtin.in), (builtin.in)) = (builtin.out) is det), (builtin.in)) = (builtin.out), infinite, can_loop).
+:- pragma termination_info(solutions.aggregate((pred((builtin.out)) is multi), (pred((builtin.in), (builtin.in), (builtin.out)) is det), (builtin.in), (builtin.out)), infinite, can_loop).
+:- pragma termination_info(solutions.aggregate((pred((builtin.out)) is multi), (pred((builtin.in), (builtin.di), (builtin.uo)) is det), (builtin.di), (builtin.uo)), infinite, can_loop).
+:- pragma termination_info(solutions.aggregate((pred((builtin.out)) is nondet), (pred((builtin.in), (builtin.di), (builtin.uo)) is det), (builtin.di), (builtin.uo)), infinite, can_loop).
+:- pragma termination_info(solutions.aggregate((pred((builtin.out)) is nondet), (pred((builtin.in), (builtin.in), (builtin.out)) is det), (builtin.in), (builtin.out)), infinite, can_loop).
+:- pragma termination_info(solutions.aggregate2((pred((builtin.out)) is multi), (pred((builtin.in), (builtin.in), (builtin.out), (builtin.in), (builtin.out)) is det), (builtin.in), (builtin.out), (builtin.in), (builtin.out)), infinite, can_loop).
+:- pragma termination_info(solutions.aggregate2((pred((builtin.out)) is multi), (pred((builtin.in), (builtin.in), (builtin.out), (builtin.di), (builtin.uo)) is det), (builtin.in), (builtin.out), (builtin.di), (builtin.uo)), infinite, can_loop).
+:- pragma termination_info(solutions.aggregate2((pred((builtin.out)) is nondet), (pred((builtin.in), (builtin.in), (builtin.out), (builtin.di), (builtin.uo)) is det), (builtin.in), (builtin.out), (builtin.di), (builtin.uo)), infinite, can_loop).
+:- pragma termination_info(solutions.aggregate2((pred((builtin.out)) is nondet), (pred((builtin.in), (builtin.in), (builtin.out), (builtin.in), (builtin.out)) is det), (builtin.in), (builtin.out), (builtin.in), (builtin.out)), infinite, can_loop).
+:- pragma termination_info(solutions.unsorted_aggregate((pred((builtin.out)) is multi), (pred((builtin.in), (builtin.in), (builtin.out)) is det), (builtin.in), (builtin.out)), infinite, can_loop).
+:- pragma termination_info(solutions.unsorted_aggregate((pred((builtin.out)) is multi), (pred((builtin.in), (builtin.in), (builtin.out)) is cc_multi), (builtin.in), (builtin.out)), infinite, can_loop).
+:- pragma termination_info(solutions.unsorted_aggregate((pred((builtin.out)) is multi), (pred((builtin.in), (builtin.di), (builtin.uo)) is det), (builtin.di), (builtin.uo)), infinite, can_loop).
+:- pragma termination_info(solutions.unsorted_aggregate((pred((builtin.out)) is multi), (pred((builtin.in), (builtin.di), (builtin.uo)) is cc_multi), (builtin.di), (builtin.uo)), infinite, can_loop).
+:- pragma termination_info(solutions.unsorted_aggregate((pred((builtin.muo)) is multi), (pred((builtin.mdi), (builtin.di), (builtin.uo)) is det), (builtin.di), (builtin.uo)), infinite, can_loop).
+:- pragma termination_info(solutions.unsorted_aggregate((pred((builtin.out)) is nondet), (pred((builtin.in), (builtin.di), (builtin.uo)) is det), (builtin.di), (builtin.uo)), infinite, can_loop).
+:- pragma termination_info(solutions.unsorted_aggregate((pred((builtin.out)) is nondet), (pred((builtin.in), (builtin.di), (builtin.uo)) is cc_multi), (builtin.di), (builtin.uo)), infinite, can_loop).
+:- pragma termination_info(solutions.unsorted_aggregate((pred((builtin.out)) is nondet), (pred((builtin.in), (builtin.in), (builtin.out)) is det), (builtin.in), (builtin.out)), infinite, can_loop).
+:- pragma termination_info(solutions.unsorted_aggregate((pred((builtin.out)) is nondet), (pred((builtin.in), (builtin.in), (builtin.out)) is cc_multi), (builtin.in), (builtin.out)), infinite, can_loop).
+:- pragma termination_info(solutions.unsorted_aggregate((pred((builtin.muo)) is nondet), (pred((builtin.mdi), (builtin.di), (builtin.uo)) is det), (builtin.di), (builtin.uo)), infinite, can_loop).
+:- pragma termination_info(solutions.do_while((pred((builtin.out)) is multi), (pred((builtin.in), (builtin.out), (builtin.in), (builtin.out)) is det), (builtin.in), (builtin.out)), infinite, can_loop).
+:- pragma termination_info(solutions.do_while((pred((builtin.out)) is multi), (pred((builtin.in), (builtin.out), (builtin.di), (builtin.uo)) is det), (builtin.di), (builtin.uo)), infinite, can_loop).
+:- pragma termination_info(solutions.do_while((pred((builtin.out)) is multi), (pred((builtin.in), (builtin.out), (builtin.di), (builtin.uo)) is cc_multi), (builtin.di), (builtin.uo)), infinite, can_loop).
+:- pragma termination_info(solutions.do_while((pred((builtin.out)) is nondet), (pred((builtin.in), (builtin.out), (builtin.in), (builtin.out)) is det), (builtin.in), (builtin.out)), infinite, can_loop).
+:- pragma termination_info(solutions.do_while((pred((builtin.out)) is nondet), (pred((builtin.in), (builtin.out), (builtin.di), (builtin.uo)) is det), (builtin.di), (builtin.uo)), infinite, can_loop).
+:- pragma termination_info(solutions.do_while((pred((builtin.out)) is nondet), (pred((builtin.in), (builtin.out), (builtin.di), (builtin.uo)) is cc_multi), (builtin.di), (builtin.uo)), infinite, can_loop).
+:- pragma termination_info(solutions.builtin_solutions((pred((builtin.out)) is multi), (builtin.out)), infinite, can_loop).
+:- pragma termination_info(solutions.builtin_solutions((pred((builtin.out)) is nondet), (builtin.out)), infinite, can_loop).
+:- pragma termination_info(solutions.builtin_aggregate((pred((builtin.out)) is multi), (pred((builtin.in), (builtin.in), (builtin.out)) is det), (builtin.in), (builtin.out)), infinite, can_loop).
+:- pragma termination_info(solutions.builtin_aggregate((pred((builtin.out)) is multi), (pred((builtin.in), (builtin.di), (builtin.uo)) is det), (builtin.di), (builtin.uo)), infinite, can_loop).
+:- pragma termination_info(solutions.builtin_aggregate((pred((builtin.out)) is multi), (pred((builtin.in), (builtin.in), (builtin.out)) is cc_multi), (builtin.in), (builtin.out)), infinite, can_loop).
+:- pragma termination_info(solutions.builtin_aggregate((pred((builtin.out)) is multi), (pred((builtin.in), (builtin.di), (builtin.uo)) is cc_multi), (builtin.di), (builtin.uo)), infinite, can_loop).
+:- pragma termination_info(solutions.builtin_aggregate((pred((builtin.muo)) is multi), (pred((builtin.mdi), (builtin.di), (builtin.uo)) is det), (builtin.di), (builtin.uo)), infinite, can_loop).
+:- pragma termination_info(solutions.builtin_aggregate((pred((builtin.out)) is nondet), (pred((builtin.in), (builtin.di), (builtin.uo)) is det), (builtin.di), (builtin.uo)), infinite, can_loop).
+:- pragma termination_info(solutions.builtin_aggregate((pred((builtin.out)) is nondet), (pred((builtin.in), (builtin.di), (builtin.uo)) is cc_multi), (builtin.di), (builtin.uo)), infinite, can_loop).
+:- pragma termination_info(solutions.builtin_aggregate((pred((builtin.out)) is nondet), (pred((builtin.in), (builtin.in), (builtin.out)) is det), (builtin.in), (builtin.out)), infinite, can_loop).
+:- pragma termination_info(solutions.builtin_aggregate((pred((builtin.out)) is nondet), (pred((builtin.in), (builtin.in), (builtin.out)) is cc_multi), (builtin.in), (builtin.out)), infinite, can_loop).
+:- pragma termination_info(solutions.builtin_aggregate((pred((builtin.muo)) is nondet), (pred((builtin.mdi), (builtin.di), (builtin.uo)) is det), (builtin.di), (builtin.uo)), infinite, can_loop).

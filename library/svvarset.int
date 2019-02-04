@@ -1,0 +1,29 @@
+:- module svvarset.
+:- interface.
+:- import_module list.
+:- import_module maybe.
+:- import_module set.
+:- import_module term.
+:- import_module varset.
+:- pred bind_var(term.var(T), term.term(T), varset.varset(T), varset.varset(T)).
+:- mode bind_var((builtin.in), (builtin.in), (builtin.in), (builtin.out)) is det.
+:- pred bind_vars(term.substitution(T), varset.varset(T), varset.varset(T)).
+:- mode bind_vars((builtin.in), (builtin.in), (builtin.out)) is det.
+:- pred delete_var(term.var(T), varset.varset(T), varset.varset(T)).
+:- mode delete_var((builtin.in), (builtin.in), (builtin.out)) is det.
+:- pred delete_vars(list.list(term.var(T)), varset.varset(T), varset.varset(T)).
+:- mode delete_vars((builtin.in), (builtin.in), (builtin.out)) is det.
+:- pred name_var(term.var(T), string, varset.varset(T), varset.varset(T)).
+:- mode name_var((builtin.in), (builtin.in), (builtin.in), (builtin.out)) is det.
+:- pred new_maybe_named_var(maybe.maybe(string), term.var(T), varset.varset(T), varset.varset(T)).
+:- mode new_maybe_named_var((builtin.in), (builtin.out), (builtin.in), (builtin.out)) is det.
+:- pred new_named_var(string, term.var(T), varset.varset(T), varset.varset(T)).
+:- mode new_named_var((builtin.in), (builtin.out), (builtin.in), (builtin.out)) is det.
+:- pred new_uniquely_named_var(string, term.var(T), varset.varset(T), varset.varset(T)).
+:- mode new_uniquely_named_var((builtin.in), (builtin.out), (builtin.in), (builtin.out)) is det.
+:- pred new_var(term.var(T), varset.varset(T), varset.varset(T)).
+:- mode new_var((builtin.out), (builtin.in), (builtin.out)) is det.
+:- pred new_vars(int, list.list(term.var(T)), varset.varset(T), varset.varset(T)).
+:- mode new_vars((builtin.in), (builtin.out), (builtin.in), (builtin.out)) is det.
+:- pred select(set.set(term.var(T)), varset.varset(T), varset.varset(T)).
+:- mode select((builtin.in), (builtin.in), (builtin.out)) is det.

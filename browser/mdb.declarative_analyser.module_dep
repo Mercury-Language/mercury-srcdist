@@ -1,0 +1,13 @@
+module(1, "declarative_analyser.m",
+	(mdb.declarative_analyser),
+	{mdb},
+	{builtin, io, maybe, (mdb.declarative_debugger), (mdb.declarative_edt), (mdb.declarative_oracle), (mdb.declarative_user), private_builtin},
+	{builtin, io, maybe, (mdb.declarative_debugger), (mdb.declarative_edt), (mdb.declarative_oracle), (mdb.declarative_user), array, bool, exception, float, int, list, map, math, pair, string, unit, (mdb.browser_info), (mdb.declarative_edt), (mdb.declarative_execution), (mdbcomp.prim_data), (mdbcomp.program_representation), (mdbcomp.rtti_access), private_builtin},
+	{},
+	{},
+	{},
+	{},
+	{},
+	no_foreign_export,
+	no_main
+).

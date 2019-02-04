@@ -1,0 +1,7 @@
+:- module (transform_hlds.unneeded_code).
+:- interface.
+:- import_module io.
+:- import_module (hlds.hlds_module).
+:- import_module (hlds.hlds_pred).
+:- pred unneeded_process_proc_msg(hlds.hlds_pred.pred_id, hlds.hlds_pred.proc_id, hlds.hlds_pred.proc_info, hlds.hlds_pred.proc_info, hlds.hlds_module.module_info, hlds.hlds_module.module_info, io.io, io.io).
+:- mode unneeded_process_proc_msg((builtin.in), (builtin.in), (builtin.in), (builtin.out), (builtin.in), (builtin.out), (builtin.di), (builtin.uo)) is det.

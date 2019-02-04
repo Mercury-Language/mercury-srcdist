@@ -1,0 +1,23 @@
+:- module ssdb.
+:- interface.
+:- import_module list.
+:- type list_var_value == list.list(ssdb.var_value).
+:- type pos == int.
+:- type ssdb_event_type
+	--->	ssdb_call 
+	;	ssdb_exit 
+	;	ssdb_fail 
+	;	ssdb_call_nondet 
+	;	ssdb_exit_nondet 
+	;	ssdb_redo_nondet 
+	;	ssdb_fail_nondet .
+:- type ssdb_proc_id
+	--->	ssdb_proc_id((ssdb.module_name) :: string, (ssdb.proc_name) :: string).
+:- type ssdb_retry
+	--->	do_retry 
+	;	do_not_retry .
+:- type var_name == string.
+:- type var_value
+	--->	unbound_head_var(ssdb.var_name, ssdb.pos)
+	;	some [T] (bound_head_var(ssdb.var_name, ssdb.pos, T))
+	;	some [T] (bound_other_var(ssdb.var_name, T)).

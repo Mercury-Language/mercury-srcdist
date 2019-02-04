@@ -1,0 +1,34 @@
+/*
+** Automatically generated from `add_clause.m'
+** by the Mercury compiler,
+** version rotd-2009-11-10, configured for i686-pc-linux-gnu.
+** Do not edit.
+*/
+#ifndef HLDS__MAKE_HLDS__ADD_CLAUSE_MH
+#define HLDS__MAKE_HLDS__ADD_CLAUSE_MH
+
+#ifdef __cplusplus
+extern "C" {
+#endif
+
+#ifdef MR_HIGHLEVEL_CODE
+#include "mercury.h"
+#else
+  #ifndef MERCURY_HDR_EXCLUDE_IMP_H
+  #include "mercury_imp.h"
+  #endif
+#endif
+#ifdef MR_DEEP_PROFILING
+#include "mercury_deep_profiling.h"
+#endif
+
+#ifndef HLDS__MAKE_HLDS__ADD_CLAUSE_DECL_GUARD
+#define HLDS__MAKE_HLDS__ADD_CLAUSE_DECL_GUARD
+
+#endif
+
+#ifdef __cplusplus
+}
+#endif
+
+#endif /* HLDS__MAKE_HLDS__ADD_CLAUSE_MH */

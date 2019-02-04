@@ -1,0 +1,13 @@
+module(1, "declarative_user.m",
+	(mdb.declarative_user),
+	{mdb},
+	{builtin, bool, io, (mdb.browser_info), (mdb.declarative_debugger), (mdb.help), private_builtin},
+	{builtin, bool, io, (mdb.browser_info), (mdb.declarative_debugger), (mdb.help), char, deconstruct, exception, getopt, int, list, maybe, string, svmap, univ, (mdb.browse), (mdb.browser_term), (mdb.declarative_execution), (mdb.declarative_tree), (mdb.io_action), (mdb.parse), (mdb.term_rep), (mdb.util), (mdbcomp.prim_data), (mdbcomp.program_representation), (mdbcomp.rtti_access), private_builtin},
+	{},
+	{},
+	{},
+	{},
+	{},
+	no_foreign_export,
+	no_main
+).

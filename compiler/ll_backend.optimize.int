@@ -1,0 +1,11 @@
+:- module (ll_backend.optimize).
+:- interface.
+:- import_module io.
+:- import_module list.
+:- import_module (libs.globals).
+:- import_module (ll_backend.global_data).
+:- import_module (ll_backend.llds).
+:- pred optimize_proc(libs.globals.globals, ll_backend.global_data.global_data, ll_backend.llds.c_procedure, ll_backend.llds.c_procedure, io.io, io.io).
+:- mode optimize_proc((builtin.in), (builtin.in), (builtin.in), (builtin.out), (builtin.di), (builtin.uo)) is det.
+:- pred optimize_procs(libs.globals.globals, ll_backend.global_data.global_data, list.list(ll_backend.llds.c_procedure), list.list(ll_backend.llds.c_procedure), io.io, io.io).
+:- mode optimize_procs((builtin.in), (builtin.in), (builtin.in), (builtin.out), (builtin.di), (builtin.uo)) is det.

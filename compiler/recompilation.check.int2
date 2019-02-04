@@ -1,0 +1,15 @@
+:- module (recompilation.check).
+:- interface.
+:- import_module io.
+:- import_module list.
+:- import_module (libs.file_util).
+:- import_module (libs.globals).
+:- import_module (mdbcomp.prim_data).
+:- import_module (parse_tree.read_modules).
+:- type find_target_file_names == pred(mdbcomp.prim_data.module_name, list.list(libs.file_util.file_name), io.io, io.io).
+:- type find_timestamp_file_names == pred(mdbcomp.prim_data.module_name, list.list(libs.file_util.file_name), io.io, io.io).
+:- type modules_to_recompile
+	--->	all_modules 
+	;	some_modules(list.list(mdbcomp.prim_data.module_name)).
+:- inst (find_target_file_names) == (pred((builtin.in), (builtin.out), (builtin.di), (builtin.uo)) is det).
+:- inst (find_timestamp_file_names) == (pred((builtin.in), (builtin.out), (builtin.di), (builtin.uo)) is det).

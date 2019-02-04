@@ -1,0 +1,7 @@
+:- module version_bitmap.
+:- interface.
+:- import_module bool.
+:- type version_bitmap.
+:- implementation.
+:- import_module version_array.
+:- type version_bitmap == version_array.version_array(int).

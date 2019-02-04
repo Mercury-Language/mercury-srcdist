@@ -1,0 +1,23 @@
+:- module (parse_tree.prog_foreign).
+:- interface.
+:- import_module bool.
+:- import_module list.
+:- import_module term.
+:- import_module (libs.globals).
+:- import_module (mdbcomp.prim_data).
+:- import_module (parse_tree.prog_data).
+:- type foreign_body_code
+	--->	foreign_body_code(((parse_tree.prog_foreign).fbody_lang) :: libs.globals.foreign_language, ((parse_tree.prog_foreign).fbody_code) :: string, ((parse_tree.prog_foreign).fbody_context) :: parse_tree.prog_data.prog_context).
+:- type foreign_body_info == list.list(parse_tree.prog_foreign.foreign_body_code).
+:- type foreign_decl_code
+	--->	foreign_decl_code(((parse_tree.prog_foreign).fdecl_lang) :: libs.globals.foreign_language, ((parse_tree.prog_foreign).fdecl_is_local) :: parse_tree.prog_data.foreign_decl_is_local, ((parse_tree.prog_foreign).fdecl_code) :: string, ((parse_tree.prog_foreign).fdecl_context) :: parse_tree.prog_data.prog_context).
+:- type foreign_decl_info == list.list(parse_tree.prog_foreign.foreign_decl_code).
+:- type foreign_export == string.
+:- type foreign_export_decl
+	--->	foreign_export_decl(((parse_tree.prog_foreign).fexp_decl_lang) :: libs.globals.foreign_language, ((parse_tree.prog_foreign).fexp_decl_ret_type) :: string, ((parse_tree.prog_foreign).fexp_decl_func_name) :: string, ((parse_tree.prog_foreign).fexp_decl_arg_decls) :: string).
+:- type foreign_export_decls
+	--->	foreign_export_decls(((parse_tree.prog_foreign).fexp_decls_info) :: parse_tree.prog_foreign.foreign_decl_info, ((parse_tree.prog_foreign).fexp_decls_list) :: list.list(parse_tree.prog_foreign.foreign_export_decl)).
+:- type foreign_export_defns == list.list(parse_tree.prog_foreign.foreign_export).
+:- type user_foreign_code
+	--->	user_foreign_code(libs.globals.foreign_language, string, term.context).
+:- inst (lang_gen_ext_file) == bound(lang_c ; lang_csharp).
