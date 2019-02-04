@@ -1,0 +1,23 @@
+:- module (ml_backend.ml_string_switch).
+:- interface.
+:- import_module hlds.
+:- import_module list.
+:- import_module parse_tree.
+:- import_module (hlds.code_model).
+:- import_module (hlds.hlds_goal).
+:- import_module (ml_backend.ml_gen_info).
+:- import_module (ml_backend.ml_lookup_switch).
+:- import_module (ml_backend.mlds).
+:- import_module (parse_tree.prog_data).
+:- pred ml_generate_string_binary_jump_switch(ml_backend.mlds.mlds_rval, list.list(hlds.hlds_goal.tagged_case), hlds.code_model.code_model, parse_tree.prog_data.can_fail, ml_backend.ml_gen_info.packed_args_map, parse_tree.prog_data.prog_context, list.list(ml_backend.mlds.mlds_local_var_defn), list.list(ml_backend.mlds.mlds_stmt), ml_backend.ml_gen_info.ml_gen_info, ml_backend.ml_gen_info.ml_gen_info).
+:- mode ml_generate_string_binary_jump_switch((builtin.in), (builtin.in), (builtin.in), (builtin.in), (builtin.in), (builtin.in), (builtin.out), (builtin.out), (builtin.in), (builtin.out)) is det.
+:- pred ml_generate_string_binary_lookup_switch(ml_backend.mlds.mlds_rval, list.list(hlds.hlds_goal.tagged_case), ml_backend.ml_lookup_switch.ml_lookup_switch_info, hlds.code_model.code_model, parse_tree.prog_data.can_fail, parse_tree.prog_data.prog_context, list.list(ml_backend.mlds.mlds_local_var_defn), list.list(ml_backend.mlds.mlds_stmt), ml_backend.ml_gen_info.ml_gen_info, ml_backend.ml_gen_info.ml_gen_info).
+:- mode ml_generate_string_binary_lookup_switch((builtin.in), (builtin.in), (builtin.in), (builtin.in), (builtin.in), (builtin.in), (builtin.out), (builtin.out), (builtin.in), (builtin.out)) is det.
+:- pred ml_generate_string_hash_jump_switch(ml_backend.mlds.mlds_rval, list.list(hlds.hlds_goal.tagged_case), hlds.code_model.code_model, parse_tree.prog_data.can_fail, ml_backend.ml_gen_info.packed_args_map, parse_tree.prog_data.prog_context, list.list(ml_backend.mlds.mlds_local_var_defn), list.list(ml_backend.mlds.mlds_stmt), ml_backend.ml_gen_info.ml_gen_info, ml_backend.ml_gen_info.ml_gen_info).
+:- mode ml_generate_string_hash_jump_switch((builtin.in), (builtin.in), (builtin.in), (builtin.in), (builtin.in), (builtin.in), (builtin.out), (builtin.out), (builtin.in), (builtin.out)) is det.
+:- pred ml_generate_string_hash_lookup_switch(ml_backend.mlds.mlds_rval, list.list(hlds.hlds_goal.tagged_case), ml_backend.ml_lookup_switch.ml_lookup_switch_info, hlds.code_model.code_model, parse_tree.prog_data.can_fail, parse_tree.prog_data.prog_context, list.list(ml_backend.mlds.mlds_local_var_defn), list.list(ml_backend.mlds.mlds_stmt), ml_backend.ml_gen_info.ml_gen_info, ml_backend.ml_gen_info.ml_gen_info).
+:- mode ml_generate_string_hash_lookup_switch((builtin.in), (builtin.in), (builtin.in), (builtin.in), (builtin.in), (builtin.in), (builtin.out), (builtin.out), (builtin.in), (builtin.out)) is det.
+:- pred ml_generate_string_trie_jump_switch(ml_backend.mlds.mlds_rval, list.list(hlds.hlds_goal.tagged_case), hlds.code_model.code_model, parse_tree.prog_data.can_fail, ml_backend.ml_gen_info.packed_args_map, parse_tree.prog_data.prog_context, list.list(ml_backend.mlds.mlds_stmt), ml_backend.ml_gen_info.ml_gen_info, ml_backend.ml_gen_info.ml_gen_info).
+:- mode ml_generate_string_trie_jump_switch((builtin.in), (builtin.in), (builtin.in), (builtin.in), (builtin.in), (builtin.in), (builtin.out), (builtin.in), (builtin.out)) is det.
+:- pred ml_generate_string_trie_lookup_switch(ml_backend.mlds.mlds_rval, list.list(hlds.hlds_goal.tagged_case), ml_backend.ml_lookup_switch.ml_lookup_switch_info, hlds.code_model.code_model, parse_tree.prog_data.can_fail, parse_tree.prog_data.prog_context, list.list(ml_backend.mlds.mlds_stmt), ml_backend.ml_gen_info.ml_gen_info, ml_backend.ml_gen_info.ml_gen_info).
+:- mode ml_generate_string_trie_lookup_switch((builtin.in), (builtin.in), (builtin.in), (builtin.in), (builtin.in), (builtin.in), (builtin.out), (builtin.in), (builtin.out)) is det.

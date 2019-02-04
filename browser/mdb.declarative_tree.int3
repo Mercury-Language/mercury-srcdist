@@ -1,0 +1,9 @@
+:- module (mdb.declarative_tree).
+:- interface.
+:- import_module mdbcomp.
+:- import_module (mdb.declarative_edt).
+:- import_module (mdb.declarative_execution).
+:- import_module (mdbcomp.program_representation).
+:- type edt_node(R).
+:- type wrap(S).
+:- instance (mercury_edt(mdb.declarative_tree.wrap(S), mdb.declarative_tree.edt_node(R))) <= (annotated_trace(S, R)).

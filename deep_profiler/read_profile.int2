@@ -1,0 +1,5 @@
+:- module read_profile.
+:- interface.
+:- import_module io.
+:- import_module maybe.
+:- import_module profile.
