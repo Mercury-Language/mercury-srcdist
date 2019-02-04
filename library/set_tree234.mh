@@ -1,0 +1,34 @@
+/*
+** Automatically generated from `set_tree234.m'
+** by the Mercury compiler,
+** version rotd-2012-08-08, configured for x86_64-unknown-linux-gnu.
+** Do not edit.
+*/
+#ifndef SET_TREE234_MH
+#define SET_TREE234_MH
+
+#ifdef __cplusplus
+extern "C" {
+#endif
+
+#ifdef MR_HIGHLEVEL_CODE
+#include "mercury.h"
+#else
+  #ifndef MERCURY_HDR_EXCLUDE_IMP_H
+  #include "mercury_imp.h"
+  #endif
+#endif
+#ifdef MR_DEEP_PROFILING
+#include "mercury_deep_profiling.h"
+#endif
+
+#ifndef SET_TREE234_DECL_GUARD
+#define SET_TREE234_DECL_GUARD
+
+#endif
+
+#ifdef __cplusplus
+}
+#endif
+
+#endif /* SET_TREE234_MH */

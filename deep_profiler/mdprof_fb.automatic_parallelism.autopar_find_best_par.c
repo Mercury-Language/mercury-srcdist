@@ -1,0 +1,4498 @@
+/*
+** Automatically generated from `autopar_find_best_par.m'
+** by the Mercury compiler,
+** version rotd-2012-08-08, configured for x86_64-unknown-linux-gnu.
+** Do not edit.
+**
+** The autoconfigured grade settings governing
+** the generation of this C file were
+**
+** TAG_BITS=2
+** UNBOXED_FLOAT=no
+** HIGHLEVEL_CODE=no
+**
+** END_OF_C_GRADE_INFO
+*/
+
+/*
+INIT mercury__mdprof_fb__automatic_parallelism__autopar_find_best_par__init
+ENDINIT
+*/
+
+#define MR_ALLOW_RESET
+#include "mercury_imp.h"
+#line 250 "../library/array.int"
+#include "array.mh"
+
+#line 28 "mdprof_fb.automatic_parallelism.autopar_find_best_par.c"
+#line 526 "../library/io.int"
+#include "io.mh"
+
+#line 32 "mdprof_fb.automatic_parallelism.autopar_find_best_par.c"
+#line 536 "../library/io.int"
+#include "time.mh"
+
+#line 36 "mdprof_fb.automatic_parallelism.autopar_find_best_par.c"
+#line 537 "../library/io.int"
+#include "string.mh"
+
+#line 40 "mdprof_fb.automatic_parallelism.autopar_find_best_par.c"
+#line 202 "mdbcomp.program_representation.int"
+#include "mdbcomp.program_representation.mh"
+
+#line 44 "mdprof_fb.automatic_parallelism.autopar_find_best_par.c"
+#line 31 "../library/bitmap.int2"
+#include "bitmap.mh"
+
+#line 48 "mdprof_fb.automatic_parallelism.autopar_find_best_par.c"
+#line 39 "mdbcomp.rtti_access.int2"
+#include "mdbcomp.rtti_access.mh"
+
+#line 52 "mdprof_fb.automatic_parallelism.autopar_find_best_par.c"
+#line 53 "mdprof_fb.automatic_parallelism.autopar_find_best_par.c"
+#include "mdprof_fb.automatic_parallelism.autopar_find_best_par.mh"
+
+#line 56 "mdprof_fb.automatic_parallelism.autopar_find_best_par.c"
+#line 57 "mdprof_fb.automatic_parallelism.autopar_find_best_par.c"
+#ifndef MDPROF_FB__AUTOMATIC_PARALLELISM__AUTOPAR_FIND_BEST_PAR_DECL_GUARD
+#define MDPROF_FB__AUTOMATIC_PARALLELISM__AUTOPAR_FIND_BEST_PAR_DECL_GUARD
+
+#line 61 "mdprof_fb.automatic_parallelism.autopar_find_best_par.c"
+#line 62 "mdprof_fb.automatic_parallelism.autopar_find_best_par.c"
+
+#endif
+#line 65 "mdprof_fb.automatic_parallelism.autopar_find_best_par.c"
+
+#ifdef _MSC_VER
+#define MR_STATIC_LINKAGE extern
+#else
+#define MR_STATIC_LINKAGE static
+#endif
+
+
+#ifdef MR_MSVC
+#pragma pack(push, MR_BYTES_PER_WORD)
+#endif
+struct mercury_type_0 {
+	MR_Word * f1[2];
+};
+#ifdef MR_MSVC
+#pragma pack(pop)
+#endif
+MR_STATIC_LINKAGE const struct mercury_type_0 mercury_common_0[];
+
+
+#ifdef MR_MSVC
+#pragma pack(push, MR_BYTES_PER_WORD)
+#endif
+struct mercury_type_1 {
+	MR_Word * f1[3];
+};
+#ifdef MR_MSVC
+#pragma pack(pop)
+#endif
+MR_STATIC_LINKAGE const struct mercury_type_1 mercury_common_1[];
+
+
+#ifdef MR_MSVC
+#pragma pack(push, MR_BYTES_PER_WORD)
+#endif
+struct mercury_type_2 {
+	MR_Integer f1[6];
+};
+#ifdef MR_MSVC
+#pragma pack(pop)
+#endif
+MR_STATIC_LINKAGE const struct mercury_type_2 mercury_common_2[];
+
+
+#ifdef MR_MSVC
+#pragma pack(push, MR_BYTES_PER_WORD)
+#endif
+struct mercury_type_3 {
+	MR_Word * f1[2];
+	MR_Integer f2;
+	MR_Word * f3[5];
+};
+#ifdef MR_MSVC
+#pragma pack(pop)
+#endif
+MR_STATIC_LINKAGE const struct mercury_type_3 mercury_common_3[];
+
+
+#ifdef MR_MSVC
+#pragma pack(push, MR_BYTES_PER_WORD)
+#endif
+struct mercury_type_4 {
+	MR_Word * f1[2];
+	MR_Integer f2;
+	MR_Word * f3[4];
+};
+#ifdef MR_MSVC
+#pragma pack(pop)
+#endif
+MR_STATIC_LINKAGE const struct mercury_type_4 mercury_common_4[];
+
+
+#ifdef MR_MSVC
+#pragma pack(push, MR_BYTES_PER_WORD)
+#endif
+struct mercury_type_5 {
+	MR_Word * f1;
+};
+#ifdef MR_MSVC
+#pragma pack(pop)
+#endif
+MR_STATIC_LINKAGE const struct mercury_type_5 mercury_common_5[];
+
+
+#ifdef MR_MSVC
+#pragma pack(push, MR_BYTES_PER_WORD)
+#endif
+struct mercury_type_6 {
+	MR_Integer f1;
+};
+#ifdef MR_MSVC
+#pragma pack(pop)
+#endif
+MR_STATIC_LINKAGE const struct mercury_type_6 mercury_common_6[];
+
+extern const MR_TypeCtorInfo_Struct
+	mercury_data_mdprof_fb__automatic_parallelism__autopar_find_best_par__type_ctor_info_best_par_algorithm_simple_0,
+	mercury_data_mdprof_fb__automatic_parallelism__autopar_find_best_par__type_ctor_info_best_solutions_1,
+	mercury_data_mdprof_fb__automatic_parallelism__autopar_find_best_par__type_ctor_info_bnb_profile_0,
+	mercury_data_mdprof_fb__automatic_parallelism__autopar_find_best_par__type_ctor_info_full_parallelisation_0,
+	mercury_data_mdprof_fb__automatic_parallelism__autopar_find_best_par__type_ctor_info_goal_classification_0,
+	mercury_data_mdprof_fb__automatic_parallelism__autopar_find_best_par__type_ctor_info_goal_group_1,
+	mercury_data_mdprof_fb__automatic_parallelism__autopar_find_best_par__type_ctor_info_goals_for_parallelisation_0,
+	mercury_data_mdprof_fb__automatic_parallelism__autopar_find_best_par__type_ctor_info_is_good_enough_0;
+MR_decl_label3(mdprof_fb__automatic_parallelism__autopar_find_best_par__IntroducedFrom__pred__build_dependency_graph__286__1_5_0, 3,5,2)
+MR_decl_label5(f_109_100_112_114_111_102_95_102_98_95_95_97_117_116_111_109_97_116_105_99_95_112_97_114_97_108_108_101_108_105_115_109_95_95_97_117_116_111_112_97_114_95_102_105_110_100_95_98_101_115_116_95_112_97_114_95_95_85_110_117_115_101_100_65_114_103_115_95_95_112_114_101_100_95_95_102_105_110_100_95_98_101_115_116_95_112_97_114_97_108_108_101_108_105_115_97_116_105_111_110_95_99_111_109_112_108_101_116_101_95_98_110_98_95_95_91_50_93_95_48_5_0, 27,3,7,5,12)
+MR_decl_label1(f_109_100_112_114_111_102_95_102_98_95_95_97_117_116_111_109_97_116_105_99_95_112_97_114_97_108_108_101_108_105_115_109_95_95_97_117_116_111_112_97_114_95_102_105_110_100_95_98_101_115_116_95_112_97_114_95_95_85_110_117_115_101_100_65_114_103_115_95_95_112_114_101_100_95_95_103_103_95_103_101_116_95_100_101_116_97_105_108_115_95_95_91_49_93_95_48_4_0, 3)
+MR_decl_label10(f_109_100_112_114_111_102_95_102_98_95_95_97_117_116_111_109_97_116_105_99_95_112_97_114_97_108_108_101_108_105_115_109_95_95_97_117_116_111_112_97_114_95_102_105_110_100_95_98_101_115_116_95_112_97_114_95_95_85_110_117_115_101_100_65_114_103_115_95_95_112_114_101_100_95_95_103_111_97_108_95_97_99_99_117_109_117_108_97_116_101_95_100_101_116_105_115_109_95_95_91_49_93_95_48_4_0, 2,3,4,5,23,9,7,6,12,11)
+MR_decl_label7(f_109_100_112_114_111_102_95_102_98_95_95_97_117_116_111_109_97_116_105_99_95_112_97_114_97_108_108_101_108_105_115_109_95_95_97_117_116_111_112_97_114_95_102_105_110_100_95_98_101_115_116_95_112_97_114_95_95_85_110_117_115_101_100_65_114_103_115_95_95_112_114_101_100_95_95_103_111_97_108_95_97_99_99_117_109_117_108_97_116_101_95_100_101_116_105_115_109_95_95_91_49_93_95_48_4_0, 14,13,17,18,16,19,15)
+MR_decl_label6(mdprof_fb__automatic_parallelism__autopar_find_best_par__build_dependency_graph_6_0, 18,3,4,6,7,9)
+MR_decl_label7(mdprof_fb__automatic_parallelism__autopar_find_best_par__finalise_parallelisation_2_0, 2,3,5,4,7,8,9)
+MR_decl_label8(mdprof_fb__automatic_parallelism__autopar_find_best_par__find_best_parallelisation_6_0, 2,17,4,6,7,13,15,16)
+MR_decl_label5(mdprof_fb__automatic_parallelism__autopar_find_best_par__foldl_sub_array__ho1_6_0, 26,3,4,6,2)
+MR_decl_label4(mdprof_fb__automatic_parallelism__autopar_find_best_par__foldl_sub_array__ho2_6_0, 14,3,4,2)
+MR_decl_label8(mdprof_fb__automatic_parallelism__autopar_find_best_par__generate_parallelisations_4_0, 2,8,7,6,4,3,12,14)
+MR_decl_label10(mdprof_fb__automatic_parallelism__autopar_find_best_par__generate_parallelisations_loop_8_0, 102,5,4,3,9,11,14,16,18,19)
+MR_decl_label10(mdprof_fb__automatic_parallelism__autopar_find_best_par__generate_parallelisations_loop_8_0, 15,26,28,30,31,29,32,34,23,24)
+MR_decl_label2(mdprof_fb__automatic_parallelism__autopar_find_best_par__generate_parallelisations_loop_8_0, 36,38)
+MR_decl_label6(mdprof_fb__automatic_parallelism__autopar_find_best_par__incomplete_parallelisation_is_good_enough_7_0, 2,5,8,10,11,3)
+MR_decl_label4(mdprof_fb__automatic_parallelism__autopar_find_best_par__maybe_update_best_complete_parallelisation_5_0, 2,4,8,12)
+MR_decl_label6(mdprof_fb__automatic_parallelism__autopar_find_best_par__par_conj_overlap_is_dependent_2_0, 38,4,8,7,6,12)
+MR_decl_label10(mdprof_fb__automatic_parallelism__autopar_find_best_par__preprocess_conjunction_5_0, 2,3,4,5,6,8,12,9,10,15)
+MR_decl_label7(mdprof_fb__automatic_parallelism__autopar_find_best_par__preprocess_conjunction_5_0, 16,19,20,21,22,18,26)
+MR_decl_label2(mdprof_fb__automatic_parallelism__autopar_find_best_par__should_expand_search_2_0, 3,1)
+MR_decl_label3(mdprof_fb__automatic_parallelism__autopar_find_best_par__test_dependence_2_0, 2,3,1)
+MR_decl_label8(mdprof_fb__automatic_parallelism__autopar_find_best_par__update_incomplete_parallelisation_cost_4_0, 2,4,5,10,9,12,13,3)
+MR_decl_label4(fn__mdprof_fb__automatic_parallelism__autopar_find_best_par__incomplete_parallelisation_cost_1_0, 3,2,5,6)
+MR_decl_label3(__Unify___mdprof_fb__automatic_parallelism__autopar_find_best_par__best_par_algorithm_simple_0_0, 12,5,1)
+MR_decl_label4(__Unify___mdprof_fb__automatic_parallelism__autopar_find_best_par__best_solutions_1_0, 12,5,7,1)
+MR_decl_label2(__Unify___mdprof_fb__automatic_parallelism__autopar_find_best_par__bnb_profile_0_0, 4,1)
+MR_decl_label6(__Unify___mdprof_fb__automatic_parallelism__autopar_find_best_par__full_parallelisation_0_0, 4,6,8,10,14,1)
+MR_decl_label3(__Unify___mdprof_fb__automatic_parallelism__autopar_find_best_par__goal_group_1_0, 18,5,1)
+MR_decl_label6(__Unify___mdprof_fb__automatic_parallelism__autopar_find_best_par__goals_for_parallelisation_0_0, 4,6,8,10,12,1)
+MR_decl_label4(__Compare___mdprof_fb__automatic_parallelism__autopar_find_best_par__best_par_algorithm_simple_0_0, 18,7,5,9)
+MR_decl_label6(__Compare___mdprof_fb__automatic_parallelism__autopar_find_best_par__best_solutions_1_0, 24,7,5,9,11,16)
+MR_decl_label8(__Compare___mdprof_fb__automatic_parallelism__autopar_find_best_par__bnb_profile_0_0, 3,2,5,9,13,17,21,53)
+MR_decl_label7(__Compare___mdprof_fb__automatic_parallelism__autopar_find_best_par__full_parallelisation_0_0, 3,2,5,9,13,17,60)
+MR_decl_label9(__Compare___mdprof_fb__automatic_parallelism__autopar_find_best_par__goal_group_1_0, 3,2,9,13,7,5,20,22,63)
+MR_decl_label9(__Compare___mdprof_fb__automatic_parallelism__autopar_find_best_par__goals_for_parallelisation_0_0, 3,2,5,9,13,17,21,25,82)
+MR_decl_static(mdprof_fb__automatic_parallelism__autopar_find_best_par__build_dependency_graph_6_0)
+MR_decl_static(mdprof_fb__automatic_parallelism__autopar_find_best_par__preprocess_conjunction_5_0)
+MR_decl_static(mdprof_fb__automatic_parallelism__autopar_find_best_par__par_conj_overlap_is_dependent_2_0)
+MR_decl_static(mdprof_fb__automatic_parallelism__autopar_find_best_par__finalise_parallelisation_2_0)
+MR_def_extern_entry(mdprof_fb__automatic_parallelism__autopar_find_best_par__find_best_parallelisation_6_0)
+MR_decl_static(mdprof_fb__automatic_parallelism__autopar_find_best_par__should_expand_search_2_0)
+MR_decl_static(fn__mdprof_fb__automatic_parallelism__autopar_find_best_par__incomplete_parallelisation_cost_1_0)
+MR_decl_static(mdprof_fb__automatic_parallelism__autopar_find_best_par__maybe_update_best_complete_parallelisation_5_0)
+MR_decl_static(mdprof_fb__automatic_parallelism__autopar_find_best_par__test_dependence_2_0)
+MR_decl_static(mdprof_fb__automatic_parallelism__autopar_find_best_par__incomplete_parallelisation_is_good_enough_7_0)
+MR_decl_static(mdprof_fb__automatic_parallelism__autopar_find_best_par__update_incomplete_parallelisation_cost_4_0)
+MR_decl_static(mdprof_fb__automatic_parallelism__autopar_find_best_par__generate_parallelisations_loop_8_0)
+MR_decl_static(mdprof_fb__automatic_parallelism__autopar_find_best_par__start_building_parallelisation_2_0)
+MR_decl_static(mdprof_fb__automatic_parallelism__autopar_find_best_par__generate_parallelisations_4_0)
+MR_decl_static(__Unify___mdprof_fb__automatic_parallelism__autopar_find_best_par__best_par_algorithm_simple_0_0)
+MR_decl_static(__Compare___mdprof_fb__automatic_parallelism__autopar_find_best_par__best_par_algorithm_simple_0_0)
+MR_decl_static(__Unify___mdprof_fb__automatic_parallelism__autopar_find_best_par__best_solutions_1_0)
+MR_decl_static(__Compare___mdprof_fb__automatic_parallelism__autopar_find_best_par__best_solutions_1_0)
+MR_decl_static(__Unify___mdprof_fb__automatic_parallelism__autopar_find_best_par__bnb_profile_0_0)
+MR_decl_static(__Compare___mdprof_fb__automatic_parallelism__autopar_find_best_par__bnb_profile_0_0)
+MR_def_extern_entry(__Unify___mdprof_fb__automatic_parallelism__autopar_find_best_par__full_parallelisation_0_0)
+MR_def_extern_entry(__Compare___mdprof_fb__automatic_parallelism__autopar_find_best_par__full_parallelisation_0_0)
+MR_decl_static(__Unify___mdprof_fb__automatic_parallelism__autopar_find_best_par__goal_classification_0_0)
+MR_decl_static(__Compare___mdprof_fb__automatic_parallelism__autopar_find_best_par__goal_classification_0_0)
+MR_decl_static(__Unify___mdprof_fb__automatic_parallelism__autopar_find_best_par__goal_group_1_0)
+MR_decl_static(__Compare___mdprof_fb__automatic_parallelism__autopar_find_best_par__goal_group_1_0)
+MR_decl_static(__Unify___mdprof_fb__automatic_parallelism__autopar_find_best_par__goals_for_parallelisation_0_0)
+MR_decl_static(__Compare___mdprof_fb__automatic_parallelism__autopar_find_best_par__goals_for_parallelisation_0_0)
+MR_decl_static(__Unify___mdprof_fb__automatic_parallelism__autopar_find_best_par__is_good_enough_0_0)
+MR_decl_static(__Compare___mdprof_fb__automatic_parallelism__autopar_find_best_par__is_good_enough_0_0)
+MR_decl_static(mdprof_fb__automatic_parallelism__autopar_find_best_par__IntroducedFrom__pred__build_dependency_graph__286__1_5_0)
+MR_decl_static(mdprof_fb__automatic_parallelism__autopar_find_best_par__IntroducedFrom__pred__build_dependency_graph__296__1_4_0)
+MR_decl_static(mdprof_fb__automatic_parallelism__autopar_find_best_par__foldl_sub_array__ho1_6_0)
+MR_decl_static(mdprof_fb__automatic_parallelism__autopar_find_best_par__foldl_sub_array__ho2_6_0)
+MR_decl_static(f_109_100_112_114_111_102_95_102_98_95_95_97_117_116_111_109_97_116_105_99_95_112_97_114_97_108_108_101_108_105_115_109_95_95_97_117_116_111_112_97_114_95_102_105_110_100_95_98_101_115_116_95_112_97_114_95_95_85_110_117_115_101_100_65_114_103_115_95_95_112_114_101_100_95_95_103_103_95_103_101_116_95_100_101_116_97_105_108_115_95_95_91_49_93_95_48_4_0)
+MR_decl_static(f_109_100_112_114_111_102_95_102_98_95_95_97_117_116_111_109_97_116_105_99_95_112_97_114_97_108_108_101_108_105_115_109_95_95_97_117_116_111_112_97_114_95_102_105_110_100_95_98_101_115_116_95_112_97_114_95_95_85_110_117_115_101_100_65_114_103_115_95_95_112_114_101_100_95_95_103_111_97_108_95_97_99_99_117_109_117_108_97_116_101_95_100_101_116_105_115_109_95_95_91_49_93_95_48_4_0)
+MR_decl_static(f_109_100_112_114_111_102_95_102_98_95_95_97_117_116_111_109_97_116_105_99_95_112_97_114_97_108_108_101_108_105_115_109_95_95_97_117_116_111_112_97_114_95_102_105_110_100_95_98_101_115_116_95_112_97_114_95_95_85_110_117_115_101_100_65_114_103_115_95_95_112_114_101_100_95_95_102_105_110_100_95_98_101_115_116_95_112_97_114_97_108_108_101_108_105_115_97_116_105_111_110_95_99_111_109_112_108_101_116_101_95_98_110_98_95_95_91_50_93_95_48_5_0)
+
+extern const MR_TypeCtorInfo_Struct mercury_data_mdbcomp__program_representation__type_ctor_info_goal_rep_1;
+extern const MR_TypeCtorInfo_Struct mercury_data_mdprof_fb__automatic_parallelism__autopar_types__type_ctor_info_pard_goal_detail_annotation_0;
+extern const MR_TypeCtorInfo_Struct mercury_data_list__type_ctor_info_list_1;
+extern const MR_TypeCtorInfo_Struct mercury_data_digraph__type_ctor_info_digraph_1;
+extern const MR_TypeCtorInfo_Struct mercury_data_builtin__type_ctor_info_int_0;
+extern const MR_TypeCtorInfo_Struct mercury_data_mdprof_fb__automatic_parallelism__autopar_types__type_ctor_info_incomplete_parallelisation_0;
+extern const MR_TypeCtorInfo_Struct mercury_data_maybe__type_ctor_info_maybe_1;
+extern const MR_TypeCtorInfo_Struct mercury_data_mdbcomp__feedback__automatic_parallelism__type_ctor_info_seq_conj_1;
+extern const MR_TypeCtorInfo_Struct mercury_data_array__type_ctor_info_array_1;
+extern const MR_TypeCtorInfo_Struct mercury_data_digraph__type_ctor_info_digraph_key_1;
+extern const MR_TypeCtorInfo_Struct mercury_data_builtin__type_ctor_info_int_0;
+extern const MR_TypeCtorInfo_Struct mercury_data_list__type_ctor_info_list_1;
+extern const MR_TypeCtorInfo_Struct mercury_data_mdprof_fb__automatic_parallelism__autopar_types__type_ctor_info_incomplete_parallelisation_0;
+static const struct mercury_type_0 mercury_common_0[14] =
+{
+{
+{
+MR_CTOR1_ADDR(mdbcomp__program_representation, goal_rep),
+MR_CTOR0_ADDR(mdprof_fb__automatic_parallelism__autopar_types, pard_goal_detail_annotation)
+}
+},
+{
+{
+MR_CTOR1_ADDR(mdprof_fb__automatic_parallelism__autopar_find_best_par, goal_group),
+MR_CTOR0_ADDR(mdprof_fb__automatic_parallelism__autopar_find_best_par, goal_classification)
+}
+},
+{
+{
+MR_LIST_CTOR_ADDR,
+MR_TAG_COMMON(0,0,1)
+}
+},
+{
+{
+MR_CTOR1_ADDR(digraph, digraph),
+MR_INT_CTOR_ADDR
+}
+},
+{
+{
+MR_LIST_CTOR_ADDR,
+MR_CTOR0_ADDR(mdprof_fb__automatic_parallelism__autopar_types, incomplete_parallelisation)
+}
+},
+{
+{
+MR_CTOR1_ADDR(maybe, maybe),
+MR_INT_CTOR_ADDR
+}
+},
+{
+{
+MR_LIST_CTOR_ADDR,
+MR_TAG_COMMON(0,0,0)
+}
+},
+{
+{
+MR_CTOR1_ADDR(mdbcomp__feedback__automatic_parallelism, seq_conj),
+MR_TAG_COMMON(0,0,0)
+}
+},
+{
+{
+MR_LIST_CTOR_ADDR,
+MR_TAG_COMMON(0,0,7)
+}
+},
+{
+{
+MR_CTOR1_ADDR(array, array),
+MR_TAG_COMMON(0,0,0)
+}
+},
+{
+{
+MR_LIST_CTOR_ADDR,
+MR_INT_CTOR_ADDR
+}
+},
+{
+{
+MR_CTOR1_ADDR(digraph, digraph_key),
+MR_INT_CTOR_ADDR
+}
+},
+{
+{
+MR_CTOR1_ADDR(digraph, digraph),
+MR_INT_CTOR_ADDR
+}
+},
+{
+{
+MR_LIST_CTOR_ADDR,
+MR_CTOR0_ADDR(mdprof_fb__automatic_parallelism__autopar_types, incomplete_parallelisation)
+}
+},
+};
+
+extern const MR_TypeCtorInfo_Struct mercury_data_tree234__type_ctor_info_tree234_2;
+extern const MR_TypeCtorInfo_Struct mercury_data_pair__type_ctor_info_pair_2;
+extern const MR_TypeCtorInfo_Struct mercury_data_mdprof_fb__automatic_parallelism__autopar_find_best_par__type_ctor_info_bnb_profile_0;
+static const struct mercury_type_1 mercury_common_1[4] =
+{
+{
+{
+MR_CTOR_ADDR(tree234, tree234, 2),
+MR_INT_CTOR_ADDR,
+MR_INT_CTOR_ADDR
+}
+},
+{
+{
+MR_CTOR_ADDR(pair, pair, 2),
+MR_TAG_COMMON(0,0,4),
+MR_CTOR0_ADDR(mdprof_fb__automatic_parallelism__autopar_find_best_par, bnb_profile)
+}
+},
+{
+{
+MR_CTOR_ADDR(tree234, tree234, 2),
+MR_INT_CTOR_ADDR,
+MR_INT_CTOR_ADDR
+}
+},
+{
+{
+MR_CTOR_ADDR(pair, pair, 2),
+MR_COMMON(0,13),
+MR_CTOR0_ADDR(mdprof_fb__automatic_parallelism__autopar_find_best_par, bnb_profile)
+}
+},
+};
+
+static const struct mercury_type_2 mercury_common_2[1] =
+{
+{
+{
+0,
+0,
+0,
+0,
+0,
+0
+}
+},
+};
+
+static const MR_UserClosureId
+mercury_data__closure_layout__mdprof_fb__automatic_parallelism__autopar_find_best_par__build_dependency_graph_6_0_1;
+extern const MR_TypeCtorInfo_Struct mercury_data_builtin__type_ctor_info_int_0;
+static const struct mercury_type_3 mercury_common_3[1] =
+{
+{
+{
+(MR_Word *) &mercury_data__closure_layout__mdprof_fb__automatic_parallelism__autopar_find_best_par__build_dependency_graph_6_0_1,
+(MR_Word *) (MR_Integer) 0
+},
+5,
+{
+MR_COMMON(1,2),
+MR_COMMON(0,11),
+MR_INT_CTOR_ADDR,
+MR_COMMON(0,12),
+MR_COMMON(0,12)
+}
+},
+};
+
+static const MR_UserClosureId
+mercury_data__closure_layout__mdprof_fb__automatic_parallelism__autopar_find_best_par__build_dependency_graph_6_0_2;
+static const MR_UserClosureId
+mercury_data__closure_layout__f_109_100_112_114_111_102_95_102_98_95_95_97_117_116_111_109_97_116_105_99_95_112_97_114_97_108_108_101_108_105_115_109_95_95_97_117_116_111_112_97_114_95_102_105_110_100_95_98_101_115_116_95_112_97_114_95_95_85_110_117_115_101_100_65_114_103_115_95_95_112_114_101_100_95_95_102_105_110_100_95_98_101_115_116_95_112_97_114_97_108_108_101_108_105_115_97_116_105_111_110_95_99_111_109_112_108_101_116_101_95_98_110_98_95_95_91_50_93_95_48_5_0_1;
+extern const MR_TypeCtorInfo_Struct mercury_data_mdprof_fb__automatic_parallelism__autopar_types__type_ctor_info_implicit_parallelism_info_0;
+extern const MR_TypeCtorInfo_Struct mercury_data_mdprof_fb__automatic_parallelism__autopar_find_best_par__type_ctor_info_best_par_algorithm_simple_0;
+extern const MR_TypeCtorInfo_Struct mercury_data_mdprof_fb__automatic_parallelism__autopar_find_best_par__type_ctor_info_goals_for_parallelisation_0;
+static const struct mercury_type_4 mercury_common_4[2] =
+{
+{
+{
+(MR_Word *) &mercury_data__closure_layout__mdprof_fb__automatic_parallelism__autopar_find_best_par__build_dependency_graph_6_0_2,
+(MR_Word *) (MR_Integer) 0
+},
+4,
+{
+MR_INT_CTOR_ADDR,
+MR_INT_CTOR_ADDR,
+MR_COMMON(1,2),
+MR_COMMON(1,2)
+}
+},
+{
+{
+(MR_Word *) &mercury_data__closure_layout__f_109_100_112_114_111_102_95_102_98_95_95_97_117_116_111_109_97_116_105_99_95_112_97_114_97_108_108_101_108_105_115_109_95_95_97_117_116_111_112_97_114_95_102_105_110_100_95_98_101_115_116_95_112_97_114_95_95_85_110_117_115_101_100_65_114_103_115_95_95_112_114_101_100_95_95_102_105_110_100_95_98_101_115_116_95_112_97_114_97_108_108_101_108_105_115_97_116_105_111_110_95_99_111_109_112_108_101_116_101_95_98_110_98_95_95_91_50_93_95_48_5_0_1,
+(MR_Word *) (MR_Integer) 0
+},
+4,
+{
+MR_CTOR0_ADDR(mdprof_fb__automatic_parallelism__autopar_types, implicit_parallelism_info),
+MR_CTOR0_ADDR(mdprof_fb__automatic_parallelism__autopar_find_best_par, best_par_algorithm_simple),
+MR_CTOR0_ADDR(mdprof_fb__automatic_parallelism__autopar_find_best_par, goals_for_parallelisation),
+MR_COMMON(1,3)
+}
+},
+};
+
+static const struct mercury_type_5 mercury_common_5[1] =
+{
+{
+MR_tbmkword(0, 0)
+},
+};
+
+static const struct mercury_type_6 mercury_common_6[1] =
+{
+{
+2
+},
+};
+
+static const MR_FA_TypeInfo_Struct1 mercury_data_maybe__ti_maybe_1builtin__type_ctor_info_int_0 = {
+	&mercury_data_maybe__type_ctor_info_maybe_1,
+{	(MR_TypeInfo) &mercury_data_builtin__type_ctor_info_int_0
+}};
+
+const MR_PseudoTypeInfo mercury_data_mdprof_fb__automatic_parallelism__autopar_find_best_par__field_types_best_par_algorithm_simple_0_0[] = {
+	(MR_PseudoTypeInfo) &mercury_data_maybe__ti_maybe_1builtin__type_ctor_info_int_0
+};
+
+static const MR_DuFunctorDesc mercury_data_mdprof_fb__automatic_parallelism__autopar_find_best_par__du_functor_desc_best_par_algorithm_simple_0_0 = {
+	"bpas_complete",
+	1,
+	0,
+	MR_SECTAG_NONE,
+	1,
+	-1,
+	0,
+	(MR_PseudoTypeInfo *) mercury_data_mdprof_fb__automatic_parallelism__autopar_find_best_par__field_types_best_par_algorithm_simple_0_0,
+	NULL,
+	NULL,
+	NULL
+};
+
+static const MR_DuFunctorDesc mercury_data_mdprof_fb__automatic_parallelism__autopar_find_best_par__du_functor_desc_best_par_algorithm_simple_0_1 = {
+	"bpas_greedy",
+	0,
+	0,
+	MR_SECTAG_LOCAL,
+	0,
+	0,
+	1,
+	(MR_PseudoTypeInfo *) NULL,
+	NULL,
+	NULL,
+	NULL
+};
+
+const MR_DuFunctorDescPtr mercury_data_mdprof_fb__automatic_parallelism__autopar_find_best_par__du_stag_ordered_best_par_algorithm_simple_0_0[] = {
+	&mercury_data_mdprof_fb__automatic_parallelism__autopar_find_best_par__du_functor_desc_best_par_algorithm_simple_0_1
+
+};
+
+const MR_DuFunctorDescPtr mercury_data_mdprof_fb__automatic_parallelism__autopar_find_best_par__du_stag_ordered_best_par_algorithm_simple_0_1[] = {
+	&mercury_data_mdprof_fb__automatic_parallelism__autopar_find_best_par__du_functor_desc_best_par_algorithm_simple_0_0
+
+};
+
+const MR_DuPtagLayout mercury_data_mdprof_fb__automatic_parallelism__autopar_find_best_par__du_ptag_ordered_best_par_algorithm_simple_0[] = {
+	{ 1, MR_SECTAG_LOCAL,
+	mercury_data_mdprof_fb__automatic_parallelism__autopar_find_best_par__du_stag_ordered_best_par_algorithm_simple_0_0 },
+	{ 1, MR_SECTAG_NONE,
+	mercury_data_mdprof_fb__automatic_parallelism__autopar_find_best_par__du_stag_ordered_best_par_algorithm_simple_0_1 }
+
+};
+
+const MR_DuFunctorDescPtr mercury_data_mdprof_fb__automatic_parallelism__autopar_find_best_par__du_name_ordered_best_par_algorithm_simple_0[] = {
+	&mercury_data_mdprof_fb__automatic_parallelism__autopar_find_best_par__du_functor_desc_best_par_algorithm_simple_0_0,
+	&mercury_data_mdprof_fb__automatic_parallelism__autopar_find_best_par__du_functor_desc_best_par_algorithm_simple_0_1
+};
+
+const MR_Integer mercury_data_mdprof_fb__automatic_parallelism__autopar_find_best_par__functor_number_map_best_par_algorithm_simple_0[] = {
+	0,
+	1 };
+	
+const MR_TypeCtorInfo_Struct mercury_data_mdprof_fb__automatic_parallelism__autopar_find_best_par__type_ctor_info_best_par_algorithm_simple_0 = {
+	0,
+	15,
+	2,
+	MR_TYPECTOR_REP_DU,
+	MR_MAYBE_STATIC_CODE(MR_ENTRY_AP(__Unify___mdprof_fb__automatic_parallelism__autopar_find_best_par__best_par_algorithm_simple_0_0)),
+	MR_MAYBE_STATIC_CODE(MR_ENTRY_AP(__Compare___mdprof_fb__automatic_parallelism__autopar_find_best_par__best_par_algorithm_simple_0_0)),
+	"mdprof_fb.automatic_parallelism.autopar_find_best_par",
+	"best_par_algorithm_simple",
+	{ (void *)mercury_data_mdprof_fb__automatic_parallelism__autopar_find_best_par__du_name_ordered_best_par_algorithm_simple_0 },
+	{ (void *)mercury_data_mdprof_fb__automatic_parallelism__autopar_find_best_par__du_ptag_ordered_best_par_algorithm_simple_0 },
+	2,
+	4,
+	mercury_data_mdprof_fb__automatic_parallelism__autopar_find_best_par__functor_number_map_best_par_algorithm_simple_0
+};
+
+static const MR_DuFunctorDesc mercury_data_mdprof_fb__automatic_parallelism__autopar_find_best_par__du_functor_desc_best_solutions_1_0 = {
+	"no_best_solutions",
+	0,
+	0,
+	MR_SECTAG_LOCAL,
+	0,
+	0,
+	0,
+	(MR_PseudoTypeInfo *) NULL,
+	NULL,
+	NULL,
+	NULL
+};
+
+static const MR_FA_PseudoTypeInfo_Struct1 mercury_data_list__pti_list_1__pseudo_1 = {
+	&mercury_data_list__type_ctor_info_list_1,
+{	(MR_PseudoTypeInfo) 1
+}};
+extern const MR_TypeCtorInfo_Struct mercury_data_builtin__type_ctor_info_float_0;
+extern const MR_TypeCtorInfo_Struct mercury_data_builtin__type_ctor_info_float_0;
+
+const MR_PseudoTypeInfo mercury_data_mdprof_fb__automatic_parallelism__autopar_find_best_par__field_types_best_solutions_1_1[] = {
+	(MR_PseudoTypeInfo) &mercury_data_list__pti_list_1__pseudo_1,
+	(MR_PseudoTypeInfo) &mercury_data_builtin__type_ctor_info_float_0
+};
+
+const MR_ConstString mercury_data_mdprof_fb__automatic_parallelism__autopar_find_best_par__field_names_best_solutions_1_1[] = {
+	"bs_solutions",
+	"bs_objective_value"
+};
+
+const MR_DuArgLocn mercury_data_mdprof_fb__automatic_parallelism__autopar_find_best_par__field_locns_best_solutions_1_1[] = {
+	{ 0, 0, 0 },
+	{ 1, 0, -1 },
+};
+
+static const MR_DuFunctorDesc mercury_data_mdprof_fb__automatic_parallelism__autopar_find_best_par__du_functor_desc_best_solutions_1_1 = {
+	"best_solutions",
+	2,
+	1,
+	MR_SECTAG_NONE,
+	1,
+	-1,
+	1,
+	(MR_PseudoTypeInfo *) mercury_data_mdprof_fb__automatic_parallelism__autopar_find_best_par__field_types_best_solutions_1_1,
+	mercury_data_mdprof_fb__automatic_parallelism__autopar_find_best_par__field_names_best_solutions_1_1,
+	mercury_data_mdprof_fb__automatic_parallelism__autopar_find_best_par__field_locns_best_solutions_1_1,
+	NULL
+};
+
+const MR_DuFunctorDescPtr mercury_data_mdprof_fb__automatic_parallelism__autopar_find_best_par__du_stag_ordered_best_solutions_1_0[] = {
+	&mercury_data_mdprof_fb__automatic_parallelism__autopar_find_best_par__du_functor_desc_best_solutions_1_0
+
+};
+
+const MR_DuFunctorDescPtr mercury_data_mdprof_fb__automatic_parallelism__autopar_find_best_par__du_stag_ordered_best_solutions_1_1[] = {
+	&mercury_data_mdprof_fb__automatic_parallelism__autopar_find_best_par__du_functor_desc_best_solutions_1_1
+
+};
+
+const MR_DuPtagLayout mercury_data_mdprof_fb__automatic_parallelism__autopar_find_best_par__du_ptag_ordered_best_solutions_1[] = {
+	{ 1, MR_SECTAG_LOCAL,
+	mercury_data_mdprof_fb__automatic_parallelism__autopar_find_best_par__du_stag_ordered_best_solutions_1_0 },
+	{ 1, MR_SECTAG_NONE,
+	mercury_data_mdprof_fb__automatic_parallelism__autopar_find_best_par__du_stag_ordered_best_solutions_1_1 }
+
+};
+
+const MR_DuFunctorDescPtr mercury_data_mdprof_fb__automatic_parallelism__autopar_find_best_par__du_name_ordered_best_solutions_1[] = {
+	&mercury_data_mdprof_fb__automatic_parallelism__autopar_find_best_par__du_functor_desc_best_solutions_1_1,
+	&mercury_data_mdprof_fb__automatic_parallelism__autopar_find_best_par__du_functor_desc_best_solutions_1_0
+};
+
+const MR_Integer mercury_data_mdprof_fb__automatic_parallelism__autopar_find_best_par__functor_number_map_best_solutions_1[] = {
+	1,
+	0 };
+	
+const MR_TypeCtorInfo_Struct mercury_data_mdprof_fb__automatic_parallelism__autopar_find_best_par__type_ctor_info_best_solutions_1 = {
+	1,
+	15,
+	2,
+	MR_TYPECTOR_REP_DU,
+	MR_MAYBE_STATIC_CODE(MR_ENTRY_AP(__Unify___mdprof_fb__automatic_parallelism__autopar_find_best_par__best_solutions_1_0)),
+	MR_MAYBE_STATIC_CODE(MR_ENTRY_AP(__Compare___mdprof_fb__automatic_parallelism__autopar_find_best_par__best_solutions_1_0)),
+	"mdprof_fb.automatic_parallelism.autopar_find_best_par",
+	"best_solutions",
+	{ (void *)mercury_data_mdprof_fb__automatic_parallelism__autopar_find_best_par__du_name_ordered_best_solutions_1 },
+	{ (void *)mercury_data_mdprof_fb__automatic_parallelism__autopar_find_best_par__du_ptag_ordered_best_solutions_1 },
+	2,
+	4,
+	mercury_data_mdprof_fb__automatic_parallelism__autopar_find_best_par__functor_number_map_best_solutions_1
+};
+
+const MR_PseudoTypeInfo mercury_data_mdprof_fb__automatic_parallelism__autopar_find_best_par__field_types_bnb_profile_0_0[] = {
+	(MR_PseudoTypeInfo) &mercury_data_builtin__type_ctor_info_int_0,
+	(MR_PseudoTypeInfo) &mercury_data_builtin__type_ctor_info_int_0,
+	(MR_PseudoTypeInfo) &mercury_data_builtin__type_ctor_info_int_0,
+	(MR_PseudoTypeInfo) &mercury_data_builtin__type_ctor_info_int_0,
+	(MR_PseudoTypeInfo) &mercury_data_builtin__type_ctor_info_int_0,
+	(MR_PseudoTypeInfo) &mercury_data_builtin__type_ctor_info_int_0
+};
+
+const MR_ConstString mercury_data_mdprof_fb__automatic_parallelism__autopar_find_best_par__field_names_bnb_profile_0_0[] = {
+	"bnbp_incomplete_good_enough",
+	"bnbp_incomplete_not_good_enough",
+	"bnbp_complete_best_solution",
+	"bnbp_complete_equal_solution",
+	"bnbp_complete_worse_solution",
+	"bnbp_complete_non_solution"
+};
+
+static const MR_DuFunctorDesc mercury_data_mdprof_fb__automatic_parallelism__autopar_find_best_par__du_functor_desc_bnb_profile_0_0 = {
+	"bnb_profile",
+	6,
+	0,
+	MR_SECTAG_NONE,
+	0,
+	-1,
+	0,
+	(MR_PseudoTypeInfo *) mercury_data_mdprof_fb__automatic_parallelism__autopar_find_best_par__field_types_bnb_profile_0_0,
+	mercury_data_mdprof_fb__automatic_parallelism__autopar_find_best_par__field_names_bnb_profile_0_0,
+	NULL,
+	NULL
+};
+
+const MR_DuFunctorDescPtr mercury_data_mdprof_fb__automatic_parallelism__autopar_find_best_par__du_stag_ordered_bnb_profile_0_0[] = {
+	&mercury_data_mdprof_fb__automatic_parallelism__autopar_find_best_par__du_functor_desc_bnb_profile_0_0
+
+};
+
+const MR_DuPtagLayout mercury_data_mdprof_fb__automatic_parallelism__autopar_find_best_par__du_ptag_ordered_bnb_profile_0[] = {
+	{ 1, MR_SECTAG_NONE,
+	mercury_data_mdprof_fb__automatic_parallelism__autopar_find_best_par__du_stag_ordered_bnb_profile_0_0 }
+
+};
+
+const MR_DuFunctorDescPtr mercury_data_mdprof_fb__automatic_parallelism__autopar_find_best_par__du_name_ordered_bnb_profile_0[] = {
+	&mercury_data_mdprof_fb__automatic_parallelism__autopar_find_best_par__du_functor_desc_bnb_profile_0_0
+};
+
+const MR_Integer mercury_data_mdprof_fb__automatic_parallelism__autopar_find_best_par__functor_number_map_bnb_profile_0[] = {
+	0 };
+	
+const MR_TypeCtorInfo_Struct mercury_data_mdprof_fb__automatic_parallelism__autopar_find_best_par__type_ctor_info_bnb_profile_0 = {
+	0,
+	15,
+	1,
+	MR_TYPECTOR_REP_DU,
+	MR_MAYBE_STATIC_CODE(MR_ENTRY_AP(__Unify___mdprof_fb__automatic_parallelism__autopar_find_best_par__bnb_profile_0_0)),
+	MR_MAYBE_STATIC_CODE(MR_ENTRY_AP(__Compare___mdprof_fb__automatic_parallelism__autopar_find_best_par__bnb_profile_0_0)),
+	"mdprof_fb.automatic_parallelism.autopar_find_best_par",
+	"bnb_profile",
+	{ (void *)mercury_data_mdprof_fb__automatic_parallelism__autopar_find_best_par__du_name_ordered_bnb_profile_0 },
+	{ (void *)mercury_data_mdprof_fb__automatic_parallelism__autopar_find_best_par__du_ptag_ordered_bnb_profile_0 },
+	1,
+	4,
+	mercury_data_mdprof_fb__automatic_parallelism__autopar_find_best_par__functor_number_map_bnb_profile_0
+};
+extern const MR_TypeCtorInfo_Struct mercury_data_mdprof_fb__automatic_parallelism__autopar_types__type_ctor_info_pard_goal_detail_annotation_0;
+
+static const MR_FA_TypeInfo_Struct1 mercury_data_mdbcomp__program_representation__ti_goal_rep_1mdprof_fb__automatic_parallelism__autopar_types__type_ctor_info_pard_goal_detail_annotation_0 = {
+	&mercury_data_mdbcomp__program_representation__type_ctor_info_goal_rep_1,
+{	(MR_TypeInfo) &mercury_data_mdprof_fb__automatic_parallelism__autopar_types__type_ctor_info_pard_goal_detail_annotation_0
+}};
+
+static const MR_FA_TypeInfo_Struct1 mercury_data_list__ti_list_1mdbcomp__program_representation__ti_goal_rep_1mdprof_fb__automatic_parallelism__autopar_types__type_ctor_info_pard_goal_detail_annotation_0 = {
+	&mercury_data_list__type_ctor_info_list_1,
+{	(MR_TypeInfo) &mercury_data_mdbcomp__program_representation__ti_goal_rep_1mdprof_fb__automatic_parallelism__autopar_types__type_ctor_info_pard_goal_detail_annotation_0
+}};
+
+static const MR_FA_TypeInfo_Struct1 mercury_data_mdbcomp__feedback__automatic_parallelism__ti_seq_conj_1mdbcomp__program_representation__ti_goal_rep_1mdprof_fb__automatic_parallelism__autopar_types__type_ctor_info_pard_goal_detail_annotation_0 = {
+	&mercury_data_mdbcomp__feedback__automatic_parallelism__type_ctor_info_seq_conj_1,
+{	(MR_TypeInfo) &mercury_data_mdbcomp__program_representation__ti_goal_rep_1mdprof_fb__automatic_parallelism__autopar_types__type_ctor_info_pard_goal_detail_annotation_0
+}};
+
+static const MR_FA_TypeInfo_Struct1 mercury_data_list__ti_list_1mdbcomp__feedback__automatic_parallelism__ti_seq_conj_1mdbcomp__program_representation__ti_goal_rep_1mdprof_fb__automatic_parallelism__autopar_types__type_ctor_info_pard_goal_detail_annotation_0 = {
+	&mercury_data_list__type_ctor_info_list_1,
+{	(MR_TypeInfo) &mercury_data_mdbcomp__feedback__automatic_parallelism__ti_seq_conj_1mdbcomp__program_representation__ti_goal_rep_1mdprof_fb__automatic_parallelism__autopar_types__type_ctor_info_pard_goal_detail_annotation_0
+}};
+extern const MR_TypeCtorInfo_Struct mercury_data_mdbcomp__feedback__automatic_parallelism__type_ctor_info_conjuncts_are_dependent_0;
+extern const MR_TypeCtorInfo_Struct mercury_data_mdbcomp__feedback__automatic_parallelism__type_ctor_info_parallel_exec_metrics_0;
+extern const MR_TypeCtorInfo_Struct mercury_data_mdbcomp__feedback__automatic_parallelism__type_ctor_info_conjuncts_are_dependent_0;
+extern const MR_TypeCtorInfo_Struct mercury_data_mdbcomp__feedback__automatic_parallelism__type_ctor_info_parallel_exec_metrics_0;
+
+const MR_PseudoTypeInfo mercury_data_mdprof_fb__automatic_parallelism__autopar_find_best_par__field_types_full_parallelisation_0_0[] = {
+	(MR_PseudoTypeInfo) &mercury_data_list__ti_list_1mdbcomp__program_representation__ti_goal_rep_1mdprof_fb__automatic_parallelism__autopar_types__type_ctor_info_pard_goal_detail_annotation_0,
+	(MR_PseudoTypeInfo) &mercury_data_list__ti_list_1mdbcomp__feedback__automatic_parallelism__ti_seq_conj_1mdbcomp__program_representation__ti_goal_rep_1mdprof_fb__automatic_parallelism__autopar_types__type_ctor_info_pard_goal_detail_annotation_0,
+	(MR_PseudoTypeInfo) &mercury_data_list__ti_list_1mdbcomp__program_representation__ti_goal_rep_1mdprof_fb__automatic_parallelism__autopar_types__type_ctor_info_pard_goal_detail_annotation_0,
+	(MR_PseudoTypeInfo) &mercury_data_mdbcomp__feedback__automatic_parallelism__type_ctor_info_conjuncts_are_dependent_0,
+	(MR_PseudoTypeInfo) &mercury_data_mdbcomp__feedback__automatic_parallelism__type_ctor_info_parallel_exec_metrics_0
+};
+
+const MR_ConstString mercury_data_mdprof_fb__automatic_parallelism__autopar_find_best_par__field_names_full_parallelisation_0_0[] = {
+	"fp_goals_before",
+	"fp_par_conjs",
+	"fp_goals_after",
+	"fp_is_dependent",
+	"fp_par_exec_metrics"
+};
+
+static const MR_DuFunctorDesc mercury_data_mdprof_fb__automatic_parallelism__autopar_find_best_par__du_functor_desc_full_parallelisation_0_0 = {
+	"fp_parallel_execution",
+	5,
+	0,
+	MR_SECTAG_NONE,
+	0,
+	-1,
+	0,
+	(MR_PseudoTypeInfo *) mercury_data_mdprof_fb__automatic_parallelism__autopar_find_best_par__field_types_full_parallelisation_0_0,
+	mercury_data_mdprof_fb__automatic_parallelism__autopar_find_best_par__field_names_full_parallelisation_0_0,
+	NULL,
+	NULL
+};
+
+const MR_DuFunctorDescPtr mercury_data_mdprof_fb__automatic_parallelism__autopar_find_best_par__du_stag_ordered_full_parallelisation_0_0[] = {
+	&mercury_data_mdprof_fb__automatic_parallelism__autopar_find_best_par__du_functor_desc_full_parallelisation_0_0
+
+};
+
+const MR_DuPtagLayout mercury_data_mdprof_fb__automatic_parallelism__autopar_find_best_par__du_ptag_ordered_full_parallelisation_0[] = {
+	{ 1, MR_SECTAG_NONE,
+	mercury_data_mdprof_fb__automatic_parallelism__autopar_find_best_par__du_stag_ordered_full_parallelisation_0_0 }
+
+};
+
+const MR_DuFunctorDescPtr mercury_data_mdprof_fb__automatic_parallelism__autopar_find_best_par__du_name_ordered_full_parallelisation_0[] = {
+	&mercury_data_mdprof_fb__automatic_parallelism__autopar_find_best_par__du_functor_desc_full_parallelisation_0_0
+};
+
+const MR_Integer mercury_data_mdprof_fb__automatic_parallelism__autopar_find_best_par__functor_number_map_full_parallelisation_0[] = {
+	0 };
+	
+const MR_TypeCtorInfo_Struct mercury_data_mdprof_fb__automatic_parallelism__autopar_find_best_par__type_ctor_info_full_parallelisation_0 = {
+	0,
+	15,
+	1,
+	MR_TYPECTOR_REP_DU,
+	MR_MAYBE_STATIC_CODE(MR_ENTRY_AP(__Unify___mdprof_fb__automatic_parallelism__autopar_find_best_par__full_parallelisation_0_0)),
+	MR_MAYBE_STATIC_CODE(MR_ENTRY_AP(__Compare___mdprof_fb__automatic_parallelism__autopar_find_best_par__full_parallelisation_0_0)),
+	"mdprof_fb.automatic_parallelism.autopar_find_best_par",
+	"full_parallelisation",
+	{ (void *)mercury_data_mdprof_fb__automatic_parallelism__autopar_find_best_par__du_name_ordered_full_parallelisation_0 },
+	{ (void *)mercury_data_mdprof_fb__automatic_parallelism__autopar_find_best_par__du_ptag_ordered_full_parallelisation_0 },
+	1,
+	4,
+	mercury_data_mdprof_fb__automatic_parallelism__autopar_find_best_par__functor_number_map_full_parallelisation_0
+};
+
+static const MR_EnumFunctorDesc mercury_data_mdprof_fb__automatic_parallelism__autopar_find_best_par__enum_functor_desc_goal_classification_0_0 = {
+	"gc_cheap_goals",
+	0
+};
+
+static const MR_EnumFunctorDesc mercury_data_mdprof_fb__automatic_parallelism__autopar_find_best_par__enum_functor_desc_goal_classification_0_1 = {
+	"gc_costly_goals",
+	1
+};
+
+const MR_EnumFunctorDescPtr mercury_data_mdprof_fb__automatic_parallelism__autopar_find_best_par__enum_value_ordered_goal_classification_0[] = {
+	&mercury_data_mdprof_fb__automatic_parallelism__autopar_find_best_par__enum_functor_desc_goal_classification_0_0,
+	&mercury_data_mdprof_fb__automatic_parallelism__autopar_find_best_par__enum_functor_desc_goal_classification_0_1
+};
+
+const MR_EnumFunctorDescPtr mercury_data_mdprof_fb__automatic_parallelism__autopar_find_best_par__enum_name_ordered_goal_classification_0[] = {
+	&mercury_data_mdprof_fb__automatic_parallelism__autopar_find_best_par__enum_functor_desc_goal_classification_0_0,
+	&mercury_data_mdprof_fb__automatic_parallelism__autopar_find_best_par__enum_functor_desc_goal_classification_0_1
+};
+
+const MR_Integer mercury_data_mdprof_fb__automatic_parallelism__autopar_find_best_par__functor_number_map_goal_classification_0[] = {
+	0,
+	1 };
+	
+const MR_TypeCtorInfo_Struct mercury_data_mdprof_fb__automatic_parallelism__autopar_find_best_par__type_ctor_info_goal_classification_0 = {
+	0,
+	15,
+	-1,
+	MR_TYPECTOR_REP_ENUM,
+	MR_MAYBE_STATIC_CODE(MR_ENTRY_AP(__Unify___mdprof_fb__automatic_parallelism__autopar_find_best_par__goal_classification_0_0)),
+	MR_MAYBE_STATIC_CODE(MR_ENTRY_AP(__Compare___mdprof_fb__automatic_parallelism__autopar_find_best_par__goal_classification_0_0)),
+	"mdprof_fb.automatic_parallelism.autopar_find_best_par",
+	"goal_classification",
+	{ (void *)mercury_data_mdprof_fb__automatic_parallelism__autopar_find_best_par__enum_name_ordered_goal_classification_0 },
+	{ (void *)mercury_data_mdprof_fb__automatic_parallelism__autopar_find_best_par__enum_value_ordered_goal_classification_0 },
+	2,
+	4,
+	mercury_data_mdprof_fb__automatic_parallelism__autopar_find_best_par__functor_number_map_goal_classification_0
+};
+
+const MR_PseudoTypeInfo mercury_data_mdprof_fb__automatic_parallelism__autopar_find_best_par__field_types_goal_group_1_0[] = {
+	(MR_PseudoTypeInfo) &mercury_data_builtin__type_ctor_info_int_0,
+	(MR_PseudoTypeInfo) 1
+};
+
+const MR_ConstString mercury_data_mdprof_fb__automatic_parallelism__autopar_find_best_par__field_names_goal_group_1_0[] = {
+	"ggs_index",
+	"ggs_abstract"
+};
+
+static const MR_DuFunctorDesc mercury_data_mdprof_fb__automatic_parallelism__autopar_find_best_par__du_functor_desc_goal_group_1_0 = {
+	"gg_single",
+	2,
+	2,
+	MR_SECTAG_NONE,
+	0,
+	-1,
+	0,
+	(MR_PseudoTypeInfo *) mercury_data_mdprof_fb__automatic_parallelism__autopar_find_best_par__field_types_goal_group_1_0,
+	mercury_data_mdprof_fb__automatic_parallelism__autopar_find_best_par__field_names_goal_group_1_0,
+	NULL,
+	NULL
+};
+
+const MR_PseudoTypeInfo mercury_data_mdprof_fb__automatic_parallelism__autopar_find_best_par__field_types_goal_group_1_1[] = {
+	(MR_PseudoTypeInfo) &mercury_data_builtin__type_ctor_info_int_0,
+	(MR_PseudoTypeInfo) &mercury_data_builtin__type_ctor_info_int_0,
+	(MR_PseudoTypeInfo) 1
+};
+
+const MR_ConstString mercury_data_mdprof_fb__automatic_parallelism__autopar_find_best_par__field_names_goal_group_1_1[] = {
+	"ggm_index",
+	"ggm_count",
+	"ggm_abstract"
+};
+
+static const MR_DuFunctorDesc mercury_data_mdprof_fb__automatic_parallelism__autopar_find_best_par__du_functor_desc_goal_group_1_1 = {
+	"gg_multiple",
+	3,
+	4,
+	MR_SECTAG_NONE,
+	1,
+	-1,
+	1,
+	(MR_PseudoTypeInfo *) mercury_data_mdprof_fb__automatic_parallelism__autopar_find_best_par__field_types_goal_group_1_1,
+	mercury_data_mdprof_fb__automatic_parallelism__autopar_find_best_par__field_names_goal_group_1_1,
+	NULL,
+	NULL
+};
+
+const MR_DuFunctorDescPtr mercury_data_mdprof_fb__automatic_parallelism__autopar_find_best_par__du_stag_ordered_goal_group_1_0[] = {
+	&mercury_data_mdprof_fb__automatic_parallelism__autopar_find_best_par__du_functor_desc_goal_group_1_0
+
+};
+
+const MR_DuFunctorDescPtr mercury_data_mdprof_fb__automatic_parallelism__autopar_find_best_par__du_stag_ordered_goal_group_1_1[] = {
+	&mercury_data_mdprof_fb__automatic_parallelism__autopar_find_best_par__du_functor_desc_goal_group_1_1
+
+};
+
+const MR_DuPtagLayout mercury_data_mdprof_fb__automatic_parallelism__autopar_find_best_par__du_ptag_ordered_goal_group_1[] = {
+	{ 1, MR_SECTAG_NONE,
+	mercury_data_mdprof_fb__automatic_parallelism__autopar_find_best_par__du_stag_ordered_goal_group_1_0 },
+	{ 1, MR_SECTAG_NONE,
+	mercury_data_mdprof_fb__automatic_parallelism__autopar_find_best_par__du_stag_ordered_goal_group_1_1 }
+
+};
+
+const MR_DuFunctorDescPtr mercury_data_mdprof_fb__automatic_parallelism__autopar_find_best_par__du_name_ordered_goal_group_1[] = {
+	&mercury_data_mdprof_fb__automatic_parallelism__autopar_find_best_par__du_functor_desc_goal_group_1_1,
+	&mercury_data_mdprof_fb__automatic_parallelism__autopar_find_best_par__du_functor_desc_goal_group_1_0
+};
+
+const MR_Integer mercury_data_mdprof_fb__automatic_parallelism__autopar_find_best_par__functor_number_map_goal_group_1[] = {
+	1,
+	0 };
+	
+const MR_TypeCtorInfo_Struct mercury_data_mdprof_fb__automatic_parallelism__autopar_find_best_par__type_ctor_info_goal_group_1 = {
+	1,
+	15,
+	2,
+	MR_TYPECTOR_REP_DU,
+	MR_MAYBE_STATIC_CODE(MR_ENTRY_AP(__Unify___mdprof_fb__automatic_parallelism__autopar_find_best_par__goal_group_1_0)),
+	MR_MAYBE_STATIC_CODE(MR_ENTRY_AP(__Compare___mdprof_fb__automatic_parallelism__autopar_find_best_par__goal_group_1_0)),
+	"mdprof_fb.automatic_parallelism.autopar_find_best_par",
+	"goal_group",
+	{ (void *)mercury_data_mdprof_fb__automatic_parallelism__autopar_find_best_par__du_name_ordered_goal_group_1 },
+	{ (void *)mercury_data_mdprof_fb__automatic_parallelism__autopar_find_best_par__du_ptag_ordered_goal_group_1 },
+	2,
+	4,
+	mercury_data_mdprof_fb__automatic_parallelism__autopar_find_best_par__functor_number_map_goal_group_1
+};
+
+static const MR_FA_TypeInfo_Struct1 mercury_data_array__ti_array_1mdbcomp__program_representation__ti_goal_rep_1mdprof_fb__automatic_parallelism__autopar_types__type_ctor_info_pard_goal_detail_annotation_0 = {
+	&mercury_data_array__type_ctor_info_array_1,
+{	(MR_TypeInfo) &mercury_data_mdbcomp__program_representation__ti_goal_rep_1mdprof_fb__automatic_parallelism__autopar_types__type_ctor_info_pard_goal_detail_annotation_0
+}};
+extern const MR_TypeCtorInfo_Struct mercury_data_mdprof_fb__automatic_parallelism__autopar_find_best_par__type_ctor_info_goal_classification_0;
+
+static const MR_FA_TypeInfo_Struct1 mercury_data_mdprof_fb__automatic_parallelism__autopar_find_best_par__ti_goal_group_1mdprof_fb__automatic_parallelism__autopar_find_best_par__type_ctor_info_goal_classification_0 = {
+	&mercury_data_mdprof_fb__automatic_parallelism__autopar_find_best_par__type_ctor_info_goal_group_1,
+{	(MR_TypeInfo) &mercury_data_mdprof_fb__automatic_parallelism__autopar_find_best_par__type_ctor_info_goal_classification_0
+}};
+
+static const MR_FA_TypeInfo_Struct1 mercury_data_list__ti_list_1mdprof_fb__automatic_parallelism__autopar_find_best_par__ti_goal_group_1mdprof_fb__automatic_parallelism__autopar_find_best_par__type_ctor_info_goal_classification_0 = {
+	&mercury_data_list__type_ctor_info_list_1,
+{	(MR_TypeInfo) &mercury_data_mdprof_fb__automatic_parallelism__autopar_find_best_par__ti_goal_group_1mdprof_fb__automatic_parallelism__autopar_find_best_par__type_ctor_info_goal_classification_0
+}};
+extern const MR_TypeCtorInfo_Struct mercury_data_mdprof_fb__automatic_parallelism__autopar_types__type_ctor_info_dependency_graphs_0;
+
+static const MR_FA_TypeInfo_Struct1 mercury_data_list__ti_list_1builtin__type_ctor_info_int_0 = {
+	&mercury_data_list__type_ctor_info_list_1,
+{	(MR_TypeInfo) &mercury_data_builtin__type_ctor_info_int_0
+}};
+extern const MR_TypeCtorInfo_Struct mercury_data_mdprof_fb__automatic_parallelism__autopar_types__type_ctor_info_dependency_graphs_0;
+
+const MR_PseudoTypeInfo mercury_data_mdprof_fb__automatic_parallelism__autopar_find_best_par__field_types_goals_for_parallelisation_0_0[] = {
+	(MR_PseudoTypeInfo) &mercury_data_array__ti_array_1mdbcomp__program_representation__ti_goal_rep_1mdprof_fb__automatic_parallelism__autopar_types__type_ctor_info_pard_goal_detail_annotation_0,
+	(MR_PseudoTypeInfo) &mercury_data_builtin__type_ctor_info_int_0,
+	(MR_PseudoTypeInfo) &mercury_data_builtin__type_ctor_info_int_0,
+	(MR_PseudoTypeInfo) &mercury_data_list__ti_list_1mdprof_fb__automatic_parallelism__autopar_find_best_par__ti_goal_group_1mdprof_fb__automatic_parallelism__autopar_find_best_par__type_ctor_info_goal_classification_0,
+	(MR_PseudoTypeInfo) &mercury_data_mdprof_fb__automatic_parallelism__autopar_types__type_ctor_info_dependency_graphs_0,
+	(MR_PseudoTypeInfo) &mercury_data_list__ti_list_1builtin__type_ctor_info_int_0,
+	(MR_PseudoTypeInfo) &mercury_data_builtin__type_ctor_info_int_0
+};
+
+const MR_ConstString mercury_data_mdprof_fb__automatic_parallelism__autopar_find_best_par__field_names_goals_for_parallelisation_0_0[] = {
+	"gfp_goals",
+	"gfp_first_costly_goal",
+	"gfp_last_costly_goal",
+	"gfp_groups",
+	"gfp_dependency_graphs",
+	"gfp_costly_goal_indexes",
+	"gfp_num_calls"
+};
+
+static const MR_DuFunctorDesc mercury_data_mdprof_fb__automatic_parallelism__autopar_find_best_par__du_functor_desc_goals_for_parallelisation_0_0 = {
+	"goals_for_parallelisation",
+	7,
+	0,
+	MR_SECTAG_NONE,
+	0,
+	-1,
+	0,
+	(MR_PseudoTypeInfo *) mercury_data_mdprof_fb__automatic_parallelism__autopar_find_best_par__field_types_goals_for_parallelisation_0_0,
+	mercury_data_mdprof_fb__automatic_parallelism__autopar_find_best_par__field_names_goals_for_parallelisation_0_0,
+	NULL,
+	NULL
+};
+
+const MR_DuFunctorDescPtr mercury_data_mdprof_fb__automatic_parallelism__autopar_find_best_par__du_stag_ordered_goals_for_parallelisation_0_0[] = {
+	&mercury_data_mdprof_fb__automatic_parallelism__autopar_find_best_par__du_functor_desc_goals_for_parallelisation_0_0
+
+};
+
+const MR_DuPtagLayout mercury_data_mdprof_fb__automatic_parallelism__autopar_find_best_par__du_ptag_ordered_goals_for_parallelisation_0[] = {
+	{ 1, MR_SECTAG_NONE,
+	mercury_data_mdprof_fb__automatic_parallelism__autopar_find_best_par__du_stag_ordered_goals_for_parallelisation_0_0 }
+
+};
+
+const MR_DuFunctorDescPtr mercury_data_mdprof_fb__automatic_parallelism__autopar_find_best_par__du_name_ordered_goals_for_parallelisation_0[] = {
+	&mercury_data_mdprof_fb__automatic_parallelism__autopar_find_best_par__du_functor_desc_goals_for_parallelisation_0_0
+};
+
+const MR_Integer mercury_data_mdprof_fb__automatic_parallelism__autopar_find_best_par__functor_number_map_goals_for_parallelisation_0[] = {
+	0 };
+	
+const MR_TypeCtorInfo_Struct mercury_data_mdprof_fb__automatic_parallelism__autopar_find_best_par__type_ctor_info_goals_for_parallelisation_0 = {
+	0,
+	15,
+	1,
+	MR_TYPECTOR_REP_DU,
+	MR_MAYBE_STATIC_CODE(MR_ENTRY_AP(__Unify___mdprof_fb__automatic_parallelism__autopar_find_best_par__goals_for_parallelisation_0_0)),
+	MR_MAYBE_STATIC_CODE(MR_ENTRY_AP(__Compare___mdprof_fb__automatic_parallelism__autopar_find_best_par__goals_for_parallelisation_0_0)),
+	"mdprof_fb.automatic_parallelism.autopar_find_best_par",
+	"goals_for_parallelisation",
+	{ (void *)mercury_data_mdprof_fb__automatic_parallelism__autopar_find_best_par__du_name_ordered_goals_for_parallelisation_0 },
+	{ (void *)mercury_data_mdprof_fb__automatic_parallelism__autopar_find_best_par__du_ptag_ordered_goals_for_parallelisation_0 },
+	1,
+	4,
+	mercury_data_mdprof_fb__automatic_parallelism__autopar_find_best_par__functor_number_map_goals_for_parallelisation_0
+};
+
+static const MR_EnumFunctorDesc mercury_data_mdprof_fb__automatic_parallelism__autopar_find_best_par__enum_functor_desc_is_good_enough_0_0 = {
+	"is_not_good_enough",
+	0
+};
+
+static const MR_EnumFunctorDesc mercury_data_mdprof_fb__automatic_parallelism__autopar_find_best_par__enum_functor_desc_is_good_enough_0_1 = {
+	"is_good_enough",
+	1
+};
+
+const MR_EnumFunctorDescPtr mercury_data_mdprof_fb__automatic_parallelism__autopar_find_best_par__enum_value_ordered_is_good_enough_0[] = {
+	&mercury_data_mdprof_fb__automatic_parallelism__autopar_find_best_par__enum_functor_desc_is_good_enough_0_0,
+	&mercury_data_mdprof_fb__automatic_parallelism__autopar_find_best_par__enum_functor_desc_is_good_enough_0_1
+};
+
+const MR_EnumFunctorDescPtr mercury_data_mdprof_fb__automatic_parallelism__autopar_find_best_par__enum_name_ordered_is_good_enough_0[] = {
+	&mercury_data_mdprof_fb__automatic_parallelism__autopar_find_best_par__enum_functor_desc_is_good_enough_0_1,
+	&mercury_data_mdprof_fb__automatic_parallelism__autopar_find_best_par__enum_functor_desc_is_good_enough_0_0
+};
+
+const MR_Integer mercury_data_mdprof_fb__automatic_parallelism__autopar_find_best_par__functor_number_map_is_good_enough_0[] = {
+	1,
+	0 };
+	
+const MR_TypeCtorInfo_Struct mercury_data_mdprof_fb__automatic_parallelism__autopar_find_best_par__type_ctor_info_is_good_enough_0 = {
+	0,
+	15,
+	-1,
+	MR_TYPECTOR_REP_ENUM,
+	MR_MAYBE_STATIC_CODE(MR_ENTRY_AP(__Unify___mdprof_fb__automatic_parallelism__autopar_find_best_par__is_good_enough_0_0)),
+	MR_MAYBE_STATIC_CODE(MR_ENTRY_AP(__Compare___mdprof_fb__automatic_parallelism__autopar_find_best_par__is_good_enough_0_0)),
+	"mdprof_fb.automatic_parallelism.autopar_find_best_par",
+	"is_good_enough",
+	{ (void *)mercury_data_mdprof_fb__automatic_parallelism__autopar_find_best_par__enum_name_ordered_is_good_enough_0 },
+	{ (void *)mercury_data_mdprof_fb__automatic_parallelism__autopar_find_best_par__enum_value_ordered_is_good_enough_0 },
+	2,
+	4,
+	mercury_data_mdprof_fb__automatic_parallelism__autopar_find_best_par__functor_number_map_is_good_enough_0
+};
+
+
+static const MR_UserClosureId
+mercury_data__closure_layout__f_109_100_112_114_111_102_95_102_98_95_95_97_117_116_111_109_97_116_105_99_95_112_97_114_97_108_108_101_108_105_115_109_95_95_97_117_116_111_112_97_114_95_102_105_110_100_95_98_101_115_116_95_112_97_114_95_95_85_110_117_115_101_100_65_114_103_115_95_95_112_114_101_100_95_95_102_105_110_100_95_98_101_115_116_95_112_97_114_97_108_108_101_108_105_115_97_116_105_111_110_95_99_111_109_112_108_101_116_101_95_98_110_98_95_95_91_50_93_95_48_5_0_1 = {
+{
+MR_PREDICATE,
+"mdprof_fb.automatic_parallelism.autopar_find_best_par",
+"mdprof_fb.automatic_parallelism.autopar_find_best_par",
+"generate_parallelisations",
+4,
+0
+},
+"mdprof_fb.automatic_parallelism.autopar_find_best_par",
+"autopar_find_best_par.m",
+407,
+"37"
+};
+
+static const MR_UserClosureId
+mercury_data__closure_layout__mdprof_fb__automatic_parallelism__autopar_find_best_par__build_dependency_graph_6_0_2 = {
+{
+MR_PREDICATE,
+"mdprof_fb.automatic_parallelism.autopar_find_best_par",
+"mdprof_fb.automatic_parallelism.autopar_find_best_par",
+"lambda_autopar_find_best_par_m_296",
+4,
+0
+},
+"mdprof_fb.automatic_parallelism.autopar_find_best_par",
+"autopar_find_best_par.m",
+296,
+"36"
+};
+
+static const MR_UserClosureId
+mercury_data__closure_layout__mdprof_fb__automatic_parallelism__autopar_find_best_par__build_dependency_graph_6_0_1 = {
+{
+MR_PREDICATE,
+"mdprof_fb.automatic_parallelism.autopar_find_best_par",
+"mdprof_fb.automatic_parallelism.autopar_find_best_par",
+"lambda_autopar_find_best_par_m_286",
+5,
+0
+},
+"mdprof_fb.automatic_parallelism.autopar_find_best_par",
+"autopar_find_best_par.m",
+281,
+"21"
+};
+
+
+MR_decl_entry(digraph__add_vertex_4_0);
+MR_decl_entry(fn__set__to_sorted_list_1_0);
+MR_decl_entry(list__foldl_4_0);
+MR_decl_entry(set__fold_4_0);
+
+MR_BEGIN_MODULE(mdprof_fb__automatic_parallelism__autopar_find_best_par_module0)
+	MR_init_entry1(mdprof_fb__automatic_parallelism__autopar_find_best_par__build_dependency_graph_6_0);
+	MR_INIT_PROC_LAYOUT_ADDR(mercury__mdprof_fb__automatic_parallelism__autopar_find_best_par__build_dependency_graph_6_0);
+	MR_init_label6(mdprof_fb__automatic_parallelism__autopar_find_best_par__build_dependency_graph_6_0,18,3,4,6,7,9)
+MR_BEGIN_CODE
+
+/*-------------------------------------------------------------------------*/
+/* code for 'build_dependency_graph'/6 mode 0 */
+#ifdef MR_maybe_local_thread_engine_base
+	#undef MR_maybe_local_thread_engine_base
+	#define MR_maybe_local_thread_engine_base MR_local_thread_engine_base
+#endif
+MR_def_static(mdprof_fb__automatic_parallelism__autopar_find_best_par__build_dependency_graph_6_0)
+	MR_MAYBE_INIT_LOCAL_THREAD_ENGINE_BASE
+	MR_incr_sp(8);
+	MR_sv(8) = (MR_Word) MR_succip;
+MR_def_label(mdprof_fb__automatic_parallelism__autopar_find_best_par__build_dependency_graph_6_0,18)
+	MR_MAYBE_INIT_LOCAL_THREAD_ENGINE_BASE
+	if (MR_LTAGS_TESTR(MR_r1,0,0)) {
+		MR_GOTO_LAB(mdprof_fb__automatic_parallelism__autopar_find_best_par__build_dependency_graph_6_0_i3);
+	}
+	MR_r1 = MR_r3;
+	MR_r2 = MR_r4;
+	MR_decr_sp_and_return(8);
+MR_def_label(mdprof_fb__automatic_parallelism__autopar_find_best_par__build_dependency_graph_6_0,3)
+	MR_MAYBE_INIT_LOCAL_THREAD_ENGINE_BASE
+	MR_sv(1) = MR_r2;
+	MR_sv(6) = MR_r3;
+	MR_sv(2) = MR_tfield(1, MR_r1, 1);
+	MR_sv(3) = MR_tfield(0, MR_tfield(0, MR_tfield(1, MR_r1, 0), 2), 1);
+	MR_sv(4) = MR_tfield(0, MR_sv(3), 2);
+	MR_sv(7) = (MR_Word) MR_INT_CTOR_ADDR;
+	MR_r1 = MR_sv(7);
+	MR_r3 = MR_r4;
+	MR_np_call_localret_ent(digraph__add_vertex_4_0,
+		mdprof_fb__automatic_parallelism__autopar_find_best_par__build_dependency_graph_6_0_i4);
+MR_def_label(mdprof_fb__automatic_parallelism__autopar_find_best_par__build_dependency_graph_6_0,4)
+	MR_MAYBE_INIT_LOCAL_THREAD_ENGINE_BASE
+	{
+	MR_Word MR_tempr1, MR_tempr2;
+	MR_tag_alloc_heap(MR_tempr1, 0, (MR_Integer) 5);
+	MR_tfield(0, MR_tempr1, 0) = (MR_Word) MR_COMMON(3,0);
+	MR_tfield(0, MR_tempr1, 1) = (MR_Word) MR_ENTRY_AP(mdprof_fb__automatic_parallelism__autopar_find_best_par__IntroducedFrom__pred__build_dependency_graph__286__1_5_0);
+	MR_tfield(0, MR_tempr1, 2) = (MR_Integer) 2;
+	MR_tfield(0, MR_tempr1, 3) = MR_sv(6);
+	MR_tfield(0, MR_tempr1, 4) = MR_r1;
+	MR_tempr2 = MR_sv(4);
+	MR_sv(4) = MR_tempr1;
+	MR_sv(5) = MR_r2;
+	MR_r1 = MR_sv(7);
+	MR_r2 = MR_tempr2;
+	}
+	MR_np_call_localret_ent(fn__set__to_sorted_list_1_0,
+		mdprof_fb__automatic_parallelism__autopar_find_best_par__build_dependency_graph_6_0_i6);
+MR_def_label(mdprof_fb__automatic_parallelism__autopar_find_best_par__build_dependency_graph_6_0,6)
+	MR_MAYBE_INIT_LOCAL_THREAD_ENGINE_BASE
+	{
+	MR_Word MR_tempr1;
+	MR_tempr1 = MR_r1;
+	MR_r1 = MR_sv(7);
+	MR_r2 = (MR_Word) MR_TAG_COMMON(0,0,3);
+	MR_r3 = MR_sv(4);
+	MR_r4 = MR_tempr1;
+	MR_r5 = MR_sv(5);
+	}
+	MR_np_call_localret_ent(list__foldl_4_0,
+		mdprof_fb__automatic_parallelism__autopar_find_best_par__build_dependency_graph_6_0_i7);
+MR_def_label(mdprof_fb__automatic_parallelism__autopar_find_best_par__build_dependency_graph_6_0,7)
+	MR_MAYBE_INIT_LOCAL_THREAD_ENGINE_BASE
+	{
+	MR_Word MR_tempr1;
+	MR_tag_alloc_heap(MR_tempr1, 0, (MR_Integer) 4);
+	MR_r3 = MR_tempr1;
+	MR_tfield(0, MR_tempr1, 0) = (MR_Word) MR_COMMON(4,0);
+	MR_tfield(0, MR_tempr1, 1) = (MR_Word) MR_ENTRY_AP(mdprof_fb__automatic_parallelism__autopar_find_best_par__IntroducedFrom__pred__build_dependency_graph__296__1_4_0);
+	MR_tfield(0, MR_tempr1, 2) = (MR_Integer) 1;
+	MR_tfield(0, MR_tempr1, 3) = MR_sv(1);
+	MR_sv(6) = MR_r1;
+	MR_r1 = MR_sv(7);
+	MR_r2 = (MR_Word) MR_TAG_COMMON(0,1,0);
+	MR_r4 = MR_tfield(0, MR_sv(3), 3);
+	MR_r5 = MR_tfield(0, MR_sv(4), 3);
+	}
+	MR_np_call_localret_ent(set__fold_4_0,
+		mdprof_fb__automatic_parallelism__autopar_find_best_par__build_dependency_graph_6_0_i9);
+MR_def_label(mdprof_fb__automatic_parallelism__autopar_find_best_par__build_dependency_graph_6_0,9)
+	MR_MAYBE_INIT_LOCAL_THREAD_ENGINE_BASE
+	{
+	MR_Word MR_tempr1;
+	MR_tempr1 = MR_r1;
+	MR_r1 = MR_sv(2);
+	MR_r2 = ((MR_Integer) MR_sv(1) + (MR_Integer) 1);
+	MR_r3 = MR_tempr1;
+	MR_r4 = MR_sv(6);
+	MR_succip_word = MR_sv(8);
+	MR_GOTO_LAB(mdprof_fb__automatic_parallelism__autopar_find_best_par__build_dependency_graph_6_0_i18);
+	}
+#ifdef MR_maybe_local_thread_engine_base
+	#undef MR_maybe_local_thread_engine_base
+	#define MR_maybe_local_thread_engine_base MR_thread_engine_base
+#endif
+MR_END_MODULE
+
+MR_decl_entry(fn__array__from_list_1_0);
+MR_decl_entry(fn__digraph__init_0_0);
+MR_decl_entry(fn__map__init_0_0);
+MR_decl_entry(fn__digraph__tc_1_0);
+MR_decl_entry(mdprof_fb__automatic_parallelism__autopar_types__identify_costly_goals_3_0);
+MR_decl_entry(list__last_2_0);
+MR_decl_entry(require__unexpected_3_0);
+MR_decl_entry(list__reverse_2_0);
+MR_decl_entry(fn__array__lookup_2_0);
+MR_decl_entry(fn__measurements__goal_cost_get_calls_1_0);
+MR_decl_entry(message__append_message_4_0);
+
+MR_BEGIN_MODULE(mdprof_fb__automatic_parallelism__autopar_find_best_par_module1)
+	MR_init_entry1(mdprof_fb__automatic_parallelism__autopar_find_best_par__preprocess_conjunction_5_0);
+	MR_INIT_PROC_LAYOUT_ADDR(mercury__mdprof_fb__automatic_parallelism__autopar_find_best_par__preprocess_conjunction_5_0);
+	MR_init_label10(mdprof_fb__automatic_parallelism__autopar_find_best_par__preprocess_conjunction_5_0,2,3,4,5,6,8,12,9,10,15)
+	MR_init_label7(mdprof_fb__automatic_parallelism__autopar_find_best_par__preprocess_conjunction_5_0,16,19,20,21,22,18,26)
+MR_BEGIN_CODE
+
+/*-------------------------------------------------------------------------*/
+/* code for 'preprocess_conjunction'/5 mode 0 */
+#ifdef MR_maybe_local_thread_engine_base
+	#undef MR_maybe_local_thread_engine_base
+	#define MR_maybe_local_thread_engine_base MR_local_thread_engine_base
+#endif
+MR_def_static(mdprof_fb__automatic_parallelism__autopar_find_best_par__preprocess_conjunction_5_0)
+	MR_MAYBE_INIT_LOCAL_THREAD_ENGINE_BASE
+	MR_incr_sp(9);
+	MR_sv(9) = (MR_Word) MR_succip;
+	MR_sv(2) = MR_r1;
+	MR_sv(5) = MR_r2;
+	MR_sv(6) = MR_r3;
+	MR_sv(7) = (MR_Word) MR_TAG_COMMON(0,0,0);
+	MR_r1 = MR_sv(7);
+	MR_r2 = MR_sv(2);
+	MR_np_call_localret_ent(fn__array__from_list_1_0,
+		mdprof_fb__automatic_parallelism__autopar_find_best_par__preprocess_conjunction_5_0_i2);
+MR_def_label(mdprof_fb__automatic_parallelism__autopar_find_best_par__preprocess_conjunction_5_0,2)
+	MR_MAYBE_INIT_LOCAL_THREAD_ENGINE_BASE
+	MR_sv(1) = MR_r1;
+	MR_sv(3) = (MR_Word) MR_INT_CTOR_ADDR;
+	MR_r1 = MR_sv(3);
+	MR_np_call_localret_ent(fn__digraph__init_0_0,
+		mdprof_fb__automatic_parallelism__autopar_find_best_par__preprocess_conjunction_5_0_i3);
+MR_def_label(mdprof_fb__automatic_parallelism__autopar_find_best_par__preprocess_conjunction_5_0,3)
+	MR_MAYBE_INIT_LOCAL_THREAD_ENGINE_BASE
+	MR_sv(8) = MR_r1;
+	MR_r1 = MR_sv(3);
+	MR_r2 = MR_r1;
+	MR_np_call_localret_ent(fn__map__init_0_0,
+		mdprof_fb__automatic_parallelism__autopar_find_best_par__preprocess_conjunction_5_0_i4);
+MR_def_label(mdprof_fb__automatic_parallelism__autopar_find_best_par__preprocess_conjunction_5_0,4)
+	MR_MAYBE_INIT_LOCAL_THREAD_ENGINE_BASE
+	{
+	MR_Word MR_tempr1;
+	MR_tempr1 = MR_r1;
+	MR_r1 = MR_sv(2);
+	MR_r2 = (MR_Integer) 1;
+	MR_r3 = MR_tempr1;
+	MR_r4 = MR_sv(8);
+	}
+	MR_np_call_localret_ent(mdprof_fb__automatic_parallelism__autopar_find_best_par__build_dependency_graph_6_0,
+		mdprof_fb__automatic_parallelism__autopar_find_best_par__preprocess_conjunction_5_0_i5);
+MR_def_label(mdprof_fb__automatic_parallelism__autopar_find_best_par__preprocess_conjunction_5_0,5)
+	MR_MAYBE_INIT_LOCAL_THREAD_ENGINE_BASE
+	MR_sv(8) = MR_r2;
+	MR_r1 = MR_sv(3);
+	MR_np_call_localret_ent(fn__digraph__tc_1_0,
+		mdprof_fb__automatic_parallelism__autopar_find_best_par__preprocess_conjunction_5_0_i6);
+MR_def_label(mdprof_fb__automatic_parallelism__autopar_find_best_par__preprocess_conjunction_5_0,6)
+	MR_MAYBE_INIT_LOCAL_THREAD_ENGINE_BASE
+	{
+	MR_Word MR_tempr1, MR_tempr2;
+	MR_tag_alloc_heap(MR_tempr1, 0, (MR_Integer) 2);
+	MR_tfield(0, MR_tempr1, 0) = MR_sv(8);
+	MR_tfield(0, MR_tempr1, 1) = MR_r1;
+	MR_tempr2 = MR_sv(2);
+	MR_sv(2) = MR_tempr1;
+	MR_r1 = MR_tempr2;
+	MR_r2 = (MR_Integer) 0;
+	}
+	MR_np_call_localret_ent(mdprof_fb__automatic_parallelism__autopar_types__identify_costly_goals_3_0,
+		mdprof_fb__automatic_parallelism__autopar_find_best_par__preprocess_conjunction_5_0_i8);
+MR_def_label(mdprof_fb__automatic_parallelism__autopar_find_best_par__preprocess_conjunction_5_0,8)
+	MR_MAYBE_INIT_LOCAL_THREAD_ENGINE_BASE
+	if (MR_LTAGS_TEST(MR_r1,0,0)) {
+		MR_GOTO_LAB(mdprof_fb__automatic_parallelism__autopar_find_best_par__preprocess_conjunction_5_0_i10);
+	}
+	MR_sv(8) = MR_r1;
+	MR_sv(3) = MR_tfield(1, MR_r1, 0);
+	MR_r1 = (MR_Word) MR_INT_CTOR_ADDR;
+	MR_r2 = MR_tfield(1, MR_sv(8), 1);
+	MR_np_call_localret_ent(list__last_2_0,
+		mdprof_fb__automatic_parallelism__autopar_find_best_par__preprocess_conjunction_5_0_i12);
+MR_def_label(mdprof_fb__automatic_parallelism__autopar_find_best_par__preprocess_conjunction_5_0,12)
+	MR_MAYBE_INIT_LOCAL_THREAD_ENGINE_BASE
+	if (!(MR_r1)) {
+		MR_GOTO_LAB(mdprof_fb__automatic_parallelism__autopar_find_best_par__preprocess_conjunction_5_0_i9);
+	}
+	MR_r1 = MR_sv(1);
+	MR_r5 = MR_r2;
+	MR_r2 = MR_sv(3);
+	MR_r3 = MR_r5;
+	MR_r4 = (MR_Integer) 0;
+	MR_GOTO_LAB(mdprof_fb__automatic_parallelism__autopar_find_best_par__preprocess_conjunction_5_0_i15);
+MR_def_label(mdprof_fb__automatic_parallelism__autopar_find_best_par__preprocess_conjunction_5_0,9)
+	MR_MAYBE_INIT_LOCAL_THREAD_ENGINE_BASE
+	MR_r1 = MR_sv(8);
+MR_def_label(mdprof_fb__automatic_parallelism__autopar_find_best_par__preprocess_conjunction_5_0,10)
+	MR_MAYBE_INIT_LOCAL_THREAD_ENGINE_BASE
+	MR_sv(8) = MR_r1;
+	MR_r1 = (MR_Word) MR_string_const("mdprof_fb.automatic_parallelism.autopar_find_best_par", 53);
+	MR_r2 = (MR_Word) MR_string_const("predicate \140mdprof_fb.automatic_parallelism.autopar_find_best_par.preprocess_conjunction\'/5", 90);
+	MR_r3 = (MR_Word) MR_string_const("too few costly goals", 20);
+	MR_np_call_localret_ent(require__unexpected_3_0,
+		mdprof_fb__automatic_parallelism__autopar_find_best_par__preprocess_conjunction_5_0_i15);
+MR_def_label(mdprof_fb__automatic_parallelism__autopar_find_best_par__preprocess_conjunction_5_0,15)
+	MR_MAYBE_INIT_LOCAL_THREAD_ENGINE_BASE
+	MR_sv(1) = MR_r1;
+	MR_sv(3) = MR_r2;
+	MR_sv(4) = MR_r3;
+	MR_np_call_localret_ent(mdprof_fb__automatic_parallelism__autopar_find_best_par__foldl_sub_array__ho2_6_0,
+		mdprof_fb__automatic_parallelism__autopar_find_best_par__preprocess_conjunction_5_0_i16);
+MR_def_label(mdprof_fb__automatic_parallelism__autopar_find_best_par__preprocess_conjunction_5_0,16)
+	MR_MAYBE_INIT_LOCAL_THREAD_ENGINE_BASE
+	if (!((((MR_Integer) MR_r1 == (MR_Integer) 5) || ((MR_Integer) MR_r1 == (MR_Integer) 0)))) {
+		MR_GOTO_LAB(mdprof_fb__automatic_parallelism__autopar_find_best_par__preprocess_conjunction_5_0_i18);
+	}
+	MR_r1 = MR_sv(1);
+	MR_r2 = MR_sv(3);
+	MR_r3 = MR_sv(4);
+	MR_r4 = (MR_Word) MR_tbmkword(0, 0);
+	MR_np_call_localret_ent(mdprof_fb__automatic_parallelism__autopar_find_best_par__foldl_sub_array__ho1_6_0,
+		mdprof_fb__automatic_parallelism__autopar_find_best_par__preprocess_conjunction_5_0_i19);
+MR_def_label(mdprof_fb__automatic_parallelism__autopar_find_best_par__preprocess_conjunction_5_0,19)
+	MR_MAYBE_INIT_LOCAL_THREAD_ENGINE_BASE
+	{
+	MR_Word MR_tempr1;
+	MR_tempr1 = MR_r1;
+	MR_r1 = (MR_Word) MR_TAG_COMMON(0,0,1);
+	MR_r2 = MR_tempr1;
+	}
+	MR_np_call_localret_ent(list__reverse_2_0,
+		mdprof_fb__automatic_parallelism__autopar_find_best_par__preprocess_conjunction_5_0_i20);
+MR_def_label(mdprof_fb__automatic_parallelism__autopar_find_best_par__preprocess_conjunction_5_0,20)
+	MR_MAYBE_INIT_LOCAL_THREAD_ENGINE_BASE
+	MR_sv(5) = MR_r1;
+	MR_r1 = MR_sv(7);
+	MR_r2 = MR_sv(1);
+	MR_r3 = MR_sv(3);
+	MR_np_call_localret_ent(fn__array__lookup_2_0,
+		mdprof_fb__automatic_parallelism__autopar_find_best_par__preprocess_conjunction_5_0_i21);
+MR_def_label(mdprof_fb__automatic_parallelism__autopar_find_best_par__preprocess_conjunction_5_0,21)
+	MR_MAYBE_INIT_LOCAL_THREAD_ENGINE_BASE
+	MR_r1 = MR_tfield(0, MR_tfield(0, MR_r1, 2), 4);
+	MR_np_call_localret_ent(fn__measurements__goal_cost_get_calls_1_0,
+		mdprof_fb__automatic_parallelism__autopar_find_best_par__preprocess_conjunction_5_0_i22);
+MR_def_label(mdprof_fb__automatic_parallelism__autopar_find_best_par__preprocess_conjunction_5_0,22)
+	MR_MAYBE_INIT_LOCAL_THREAD_ENGINE_BASE
+	{
+	MR_Word MR_tempr1;
+	MR_tag_alloc_heap(MR_tempr1, 0, (MR_Integer) 7);
+	MR_tfield(0, MR_tempr1, 0) = MR_sv(1);
+	MR_tfield(0, MR_tempr1, 1) = MR_sv(3);
+	MR_tfield(0, MR_tempr1, 2) = MR_sv(4);
+	MR_tfield(0, MR_tempr1, 3) = MR_sv(5);
+	MR_tfield(0, MR_tempr1, 4) = MR_sv(2);
+	MR_tfield(0, MR_tempr1, 5) = MR_sv(8);
+	MR_tfield(0, MR_tempr1, 6) = MR_r1;
+	MR_tag_alloc_heap(MR_r1, 1, (MR_Integer) 1);
+	MR_tfield(1, MR_r1, 0) = MR_tempr1;
+	MR_r2 = MR_sv(6);
+	MR_decr_sp_and_return(9);
+	}
+MR_def_label(mdprof_fb__automatic_parallelism__autopar_find_best_par__preprocess_conjunction_5_0,18)
+	MR_MAYBE_INIT_LOCAL_THREAD_ENGINE_BASE
+	MR_tag_alloc_heap(MR_r2, 3, (MR_Integer) 2);
+	MR_tfield(3, MR_r2, 0) = (MR_Integer) 3;
+	MR_tfield(3, MR_r2, 1) = MR_r1;
+	MR_r1 = MR_sv(5);
+	MR_r3 = MR_sv(6);
+	MR_np_call_localret_ent(message__append_message_4_0,
+		mdprof_fb__automatic_parallelism__autopar_find_best_par__preprocess_conjunction_5_0_i26);
+MR_def_label(mdprof_fb__automatic_parallelism__autopar_find_best_par__preprocess_conjunction_5_0,26)
+	MR_MAYBE_INIT_LOCAL_THREAD_ENGINE_BASE
+	{
+	MR_Word MR_tempr1;
+	MR_tempr1 = MR_r1;
+	MR_r1 = (MR_Word) MR_tbmkword(0, 0);
+	MR_r2 = MR_tempr1;
+	MR_decr_sp_and_return(9);
+	}
+#ifdef MR_maybe_local_thread_engine_base
+	#undef MR_maybe_local_thread_engine_base
+	#define MR_maybe_local_thread_engine_base MR_thread_engine_base
+#endif
+MR_END_MODULE
+
+MR_decl_entry(set__empty_1_0);
+MR_decl_entry(fn__set__union_2_0);
+
+MR_BEGIN_MODULE(mdprof_fb__automatic_parallelism__autopar_find_best_par_module2)
+	MR_init_entry1(mdprof_fb__automatic_parallelism__autopar_find_best_par__par_conj_overlap_is_dependent_2_0);
+	MR_INIT_PROC_LAYOUT_ADDR(mercury__mdprof_fb__automatic_parallelism__autopar_find_best_par__par_conj_overlap_is_dependent_2_0);
+	MR_init_label6(mdprof_fb__automatic_parallelism__autopar_find_best_par__par_conj_overlap_is_dependent_2_0,38,4,8,7,6,12)
+MR_BEGIN_CODE
+
+/*-------------------------------------------------------------------------*/
+/* code for 'par_conj_overlap_is_dependent'/2 mode 0 */
+#ifdef MR_maybe_local_thread_engine_base
+	#undef MR_maybe_local_thread_engine_base
+	#define MR_maybe_local_thread_engine_base MR_local_thread_engine_base
+#endif
+MR_def_static(mdprof_fb__automatic_parallelism__autopar_find_best_par__par_conj_overlap_is_dependent_2_0)
+	MR_MAYBE_INIT_LOCAL_THREAD_ENGINE_BASE
+	if (MR_LTAGS_TESTR(MR_r1,0,0)) {
+		MR_GOTO_LAB(mdprof_fb__automatic_parallelism__autopar_find_best_par__par_conj_overlap_is_dependent_2_0_i38);
+	}
+	MR_r1 = (MR_Word) MR_tbmkword(0, 0);
+	MR_proceed();
+MR_def_label(mdprof_fb__automatic_parallelism__autopar_find_best_par__par_conj_overlap_is_dependent_2_0,38)
+	MR_MAYBE_INIT_LOCAL_THREAD_ENGINE_BASE
+	MR_incr_sp(2);
+	MR_sv(2) = (MR_Word) MR_succip;
+	MR_sv(1) = MR_tfield(1, MR_r1, 2);
+	MR_r1 = MR_tfield(1, MR_r1, 0);
+	MR_np_localcall_lab(mdprof_fb__automatic_parallelism__autopar_find_best_par__par_conj_overlap_is_dependent_2_0,
+		mdprof_fb__automatic_parallelism__autopar_find_best_par__par_conj_overlap_is_dependent_2_0_i4);
+MR_def_label(mdprof_fb__automatic_parallelism__autopar_find_best_par__par_conj_overlap_is_dependent_2_0,4)
+	MR_MAYBE_INIT_LOCAL_THREAD_ENGINE_BASE
+	if (MR_LTAGS_TESTR(MR_r1,0,0)) {
+		MR_GOTO_LAB(mdprof_fb__automatic_parallelism__autopar_find_best_par__par_conj_overlap_is_dependent_2_0_i6);
+	}
+	MR_r1 = (MR_Word) MR_INT_CTOR_ADDR;
+	MR_r2 = MR_sv(1);
+	MR_np_call_localret_ent(set__empty_1_0,
+		mdprof_fb__automatic_parallelism__autopar_find_best_par__par_conj_overlap_is_dependent_2_0_i8);
+MR_def_label(mdprof_fb__automatic_parallelism__autopar_find_best_par__par_conj_overlap_is_dependent_2_0,8)
+	MR_MAYBE_INIT_LOCAL_THREAD_ENGINE_BASE
+	if (!(MR_r1)) {
+		MR_GOTO_LAB(mdprof_fb__automatic_parallelism__autopar_find_best_par__par_conj_overlap_is_dependent_2_0_i7);
+	}
+	MR_r1 = (MR_Word) MR_tbmkword(0, 0);
+	MR_decr_sp_and_return(2);
+MR_def_label(mdprof_fb__automatic_parallelism__autopar_find_best_par__par_conj_overlap_is_dependent_2_0,7)
+	MR_MAYBE_INIT_LOCAL_THREAD_ENGINE_BASE
+	MR_tag_alloc_heap(MR_r1, 1, (MR_Integer) 1);
+	MR_tfield(1, MR_r1, 0) = MR_sv(1);
+	MR_decr_sp_and_return(2);
+MR_def_label(mdprof_fb__automatic_parallelism__autopar_find_best_par__par_conj_overlap_is_dependent_2_0,6)
+	MR_MAYBE_INIT_LOCAL_THREAD_ENGINE_BASE
+	{
+	MR_Word MR_tempr1;
+	MR_tempr1 = MR_r1;
+	MR_r1 = (MR_Word) MR_INT_CTOR_ADDR;
+	MR_r2 = MR_sv(1);
+	MR_r3 = MR_tfield(1, MR_tempr1, 0);
+	}
+	MR_np_call_localret_ent(fn__set__union_2_0,
+		mdprof_fb__automatic_parallelism__autopar_find_best_par__par_conj_overlap_is_dependent_2_0_i12);
+MR_def_label(mdprof_fb__automatic_parallelism__autopar_find_best_par__par_conj_overlap_is_dependent_2_0,12)
+	MR_MAYBE_INIT_LOCAL_THREAD_ENGINE_BASE
+	MR_tag_alloc_heap(MR_r2, 1, (MR_Integer) 1);
+	MR_tfield(1, MR_r2, 0) = MR_r1;
+	MR_r1 = MR_r2;
+	MR_decr_sp_and_return(2);
+#ifdef MR_maybe_local_thread_engine_base
+	#undef MR_maybe_local_thread_engine_base
+	#define MR_maybe_local_thread_engine_base MR_thread_engine_base
+#endif
+MR_END_MODULE
+
+MR_decl_entry(fn__mdprof_fb__automatic_parallelism__autopar_types__ip_get_goals_before_1_0);
+MR_decl_entry(fn__mdprof_fb__automatic_parallelism__autopar_types__ip_get_goals_after_1_0);
+MR_decl_entry(fn__measurements__finalise_parallel_exec_metrics_1_0);
+MR_decl_entry(fn__mdprof_fb__automatic_parallelism__autopar_types__ip_get_par_conjs_1_0);
+
+MR_BEGIN_MODULE(mdprof_fb__automatic_parallelism__autopar_find_best_par_module3)
+	MR_init_entry1(mdprof_fb__automatic_parallelism__autopar_find_best_par__finalise_parallelisation_2_0);
+	MR_INIT_PROC_LAYOUT_ADDR(mercury__mdprof_fb__automatic_parallelism__autopar_find_best_par__finalise_parallelisation_2_0);
+	MR_init_label7(mdprof_fb__automatic_parallelism__autopar_find_best_par__finalise_parallelisation_2_0,2,3,5,4,7,8,9)
+MR_BEGIN_CODE
+
+/*-------------------------------------------------------------------------*/
+/* code for 'finalise_parallelisation'/2 mode 0 */
+#ifdef MR_maybe_local_thread_engine_base
+	#undef MR_maybe_local_thread_engine_base
+	#define MR_maybe_local_thread_engine_base MR_local_thread_engine_base
+#endif
+MR_def_static(mdprof_fb__automatic_parallelism__autopar_find_best_par__finalise_parallelisation_2_0)
+	MR_MAYBE_INIT_LOCAL_THREAD_ENGINE_BASE
+	MR_incr_sp(5);
+	MR_sv(5) = (MR_Word) MR_succip;
+	MR_sv(4) = MR_r1;
+	MR_np_call_localret_ent(fn__mdprof_fb__automatic_parallelism__autopar_types__ip_get_goals_before_1_0,
+		mdprof_fb__automatic_parallelism__autopar_find_best_par__finalise_parallelisation_2_0_i2);
+MR_def_label(mdprof_fb__automatic_parallelism__autopar_find_best_par__finalise_parallelisation_2_0,2)
+	MR_MAYBE_INIT_LOCAL_THREAD_ENGINE_BASE
+	MR_sv(1) = MR_r1;
+	MR_r1 = MR_sv(4);
+	MR_np_call_localret_ent(fn__mdprof_fb__automatic_parallelism__autopar_types__ip_get_goals_after_1_0,
+		mdprof_fb__automatic_parallelism__autopar_find_best_par__finalise_parallelisation_2_0_i3);
+MR_def_label(mdprof_fb__automatic_parallelism__autopar_find_best_par__finalise_parallelisation_2_0,3)
+	MR_MAYBE_INIT_LOCAL_THREAD_ENGINE_BASE
+	{
+	MR_Word MR_tempr1;
+	MR_tempr1 = MR_tfield(0, MR_sv(4), 9);
+	if (MR_LTAGS_TEST(MR_tempr1,0,0)) {
+		MR_GOTO_LAB(mdprof_fb__automatic_parallelism__autopar_find_best_par__finalise_parallelisation_2_0_i5);
+	}
+	MR_sv(2) = MR_r1;
+	MR_r2 = MR_tfield(1, MR_tempr1, 0);
+	MR_sv(3) = MR_tfield(0, MR_r2, 1);
+	MR_r1 = MR_tfield(0, MR_r2, 2);
+	}
+	MR_np_call_localret_ent(fn__measurements__finalise_parallel_exec_metrics_1_0,
+		mdprof_fb__automatic_parallelism__autopar_find_best_par__finalise_parallelisation_2_0_i7);
+MR_def_label(mdprof_fb__automatic_parallelism__autopar_find_best_par__finalise_parallelisation_2_0,5)
+	MR_MAYBE_INIT_LOCAL_THREAD_ENGINE_BASE
+	MR_sv(2) = MR_r1;
+	MR_r1 = (MR_Word) MR_string_const("mdprof_fb.automatic_parallelism.autopar_find_best_par", 53);
+	MR_r2 = (MR_Word) MR_string_const("predicate \140mdprof_fb.automatic_parallelism.autopar_find_best_par.finalise_parallelisation\'/2", 92);
+	MR_r3 = (MR_Word) MR_string_const("parallelisation has no cost data", 32);
+	MR_np_call_localret_ent(require__unexpected_3_0,
+		mdprof_fb__automatic_parallelism__autopar_find_best_par__finalise_parallelisation_2_0_i4);
+MR_def_label(mdprof_fb__automatic_parallelism__autopar_find_best_par__finalise_parallelisation_2_0,4)
+	MR_MAYBE_INIT_LOCAL_THREAD_ENGINE_BASE
+	MR_np_call_localret_ent(fn__measurements__finalise_parallel_exec_metrics_1_0,
+		mdprof_fb__automatic_parallelism__autopar_find_best_par__finalise_parallelisation_2_0_i7);
+MR_def_label(mdprof_fb__automatic_parallelism__autopar_find_best_par__finalise_parallelisation_2_0,7)
+	MR_MAYBE_INIT_LOCAL_THREAD_ENGINE_BASE
+	MR_r2 = MR_sv(3);
+	MR_sv(3) = MR_r1;
+	MR_r1 = MR_r2;
+	MR_np_call_localret_ent(mdprof_fb__automatic_parallelism__autopar_find_best_par__par_conj_overlap_is_dependent_2_0,
+		mdprof_fb__automatic_parallelism__autopar_find_best_par__finalise_parallelisation_2_0_i8);
+MR_def_label(mdprof_fb__automatic_parallelism__autopar_find_best_par__finalise_parallelisation_2_0,8)
+	MR_MAYBE_INIT_LOCAL_THREAD_ENGINE_BASE
+	MR_r2 = MR_sv(4);
+	MR_sv(4) = MR_r1;
+	MR_r1 = MR_r2;
+	MR_np_call_localret_ent(fn__mdprof_fb__automatic_parallelism__autopar_types__ip_get_par_conjs_1_0,
+		mdprof_fb__automatic_parallelism__autopar_find_best_par__finalise_parallelisation_2_0_i9);
+MR_def_label(mdprof_fb__automatic_parallelism__autopar_find_best_par__finalise_parallelisation_2_0,9)
+	MR_MAYBE_INIT_LOCAL_THREAD_ENGINE_BASE
+	MR_tag_alloc_heap(MR_r2, 0, (MR_Integer) 5);
+	MR_tfield(0, MR_r2, 0) = MR_sv(1);
+	MR_tfield(0, MR_r2, 1) = MR_r1;
+	MR_tfield(0, MR_r2, 2) = MR_sv(2);
+	MR_tfield(0, MR_r2, 3) = MR_sv(4);
+	MR_tfield(0, MR_r2, 4) = MR_sv(3);
+	MR_r1 = MR_r2;
+	MR_decr_sp_and_return(5);
+#ifdef MR_maybe_local_thread_engine_base
+	#undef MR_maybe_local_thread_engine_base
+	#define MR_maybe_local_thread_engine_base MR_thread_engine_base
+#endif
+MR_END_MODULE
+
+MR_decl_entry(fn__list__length_1_0);
+
+MR_BEGIN_MODULE(mdprof_fb__automatic_parallelism__autopar_find_best_par_module4)
+	MR_init_entry1(mdprof_fb__automatic_parallelism__autopar_find_best_par__find_best_parallelisation_6_0);
+	MR_INIT_PROC_LAYOUT_ADDR(mercury__mdprof_fb__automatic_parallelism__autopar_find_best_par__find_best_parallelisation_6_0);
+	MR_init_label8(mdprof_fb__automatic_parallelism__autopar_find_best_par__find_best_parallelisation_6_0,2,17,4,6,7,13,15,16)
+MR_BEGIN_CODE
+
+/*-------------------------------------------------------------------------*/
+/* code for 'find_best_parallelisation'/6 mode 0 */
+#ifdef MR_maybe_local_thread_engine_base
+	#undef MR_maybe_local_thread_engine_base
+	#define MR_maybe_local_thread_engine_base MR_local_thread_engine_base
+#endif
+MR_define_entry(mercury__mdprof_fb__automatic_parallelism__autopar_find_best_par__find_best_parallelisation_6_0);
+	MR_MAYBE_INIT_LOCAL_THREAD_ENGINE_BASE
+	MR_incr_sp(5);
+	MR_sv(5) = (MR_Word) MR_succip;
+	MR_sv(4) = MR_r1;
+	MR_sv(2) = MR_r2;
+	{
+	MR_Word MR_tempr1;
+	MR_tempr1 = MR_r3;
+	MR_sv(1) = MR_tempr1;
+	MR_sv(3) = MR_r4;
+	MR_r1 = (MR_Word) MR_TAG_COMMON(0,0,0);
+	MR_r2 = MR_tempr1;
+	}
+	MR_np_call_localret_ent(fn__list__length_1_0,
+		mdprof_fb__automatic_parallelism__autopar_find_best_par__find_best_parallelisation_6_0_i2);
+MR_def_label(mdprof_fb__automatic_parallelism__autopar_find_best_par__find_best_parallelisation_6_0,2)
+	MR_MAYBE_INIT_LOCAL_THREAD_ENGINE_BASE
+	MR_r4 = MR_tfield(0, MR_tfield(0, MR_sv(4), 2), 14);
+	if (MR_LTAGS_TESTR(MR_r4,0,0)) {
+		MR_GOTO_LAB(mdprof_fb__automatic_parallelism__autopar_find_best_par__find_best_parallelisation_6_0_i4);
+	}
+MR_def_label(mdprof_fb__automatic_parallelism__autopar_find_best_par__find_best_parallelisation_6_0,17)
+	MR_MAYBE_INIT_LOCAL_THREAD_ENGINE_BASE
+	MR_r2 = MR_sv(2);
+	MR_r1 = MR_sv(1);
+	MR_sv(2) = (MR_Word) MR_TAG_COMMON(1,5,0);
+	MR_r3 = MR_sv(3);
+	MR_np_call_localret_ent(mdprof_fb__automatic_parallelism__autopar_find_best_par__preprocess_conjunction_5_0,
+		mdprof_fb__automatic_parallelism__autopar_find_best_par__find_best_parallelisation_6_0_i13);
+MR_def_label(mdprof_fb__automatic_parallelism__autopar_find_best_par__find_best_parallelisation_6_0,4)
+	MR_MAYBE_INIT_LOCAL_THREAD_ENGINE_BASE
+	if (MR_LTAGS_TESTR(MR_r4,0,1)) {
+		MR_GOTO_LAB(mdprof_fb__automatic_parallelism__autopar_find_best_par__find_best_parallelisation_6_0_i6);
+	}
+	MR_r2 = MR_sv(2);
+	MR_r1 = MR_sv(1);
+	MR_sv(2) = (MR_Word) MR_tbmkword(0, 0);
+	MR_r3 = MR_sv(3);
+	MR_np_call_localret_ent(mdprof_fb__automatic_parallelism__autopar_find_best_par__preprocess_conjunction_5_0,
+		mdprof_fb__automatic_parallelism__autopar_find_best_par__find_best_parallelisation_6_0_i13);
+MR_def_label(mdprof_fb__automatic_parallelism__autopar_find_best_par__find_best_parallelisation_6_0,6)
+	MR_MAYBE_INIT_LOCAL_THREAD_ENGINE_BASE
+	if (MR_PTAG_TESTR(MR_r4,1)) {
+		MR_GOTO_LAB(mdprof_fb__automatic_parallelism__autopar_find_best_par__find_best_parallelisation_6_0_i7);
+	}
+	{
+	MR_Word MR_tempr1, MR_tempr2;
+	MR_tag_alloc_heap(MR_tempr1, 1, (MR_Integer) 1);
+	MR_tfield(1, MR_tempr1, 0) = MR_tfield(1, MR_r4, 0);
+	MR_tag_alloc_heap(MR_tempr2, 1, (MR_Integer) 1);
+	MR_tfield(1, MR_tempr2, 0) = MR_tempr1;
+	MR_r2 = MR_sv(2);
+	MR_r1 = MR_sv(1);
+	MR_sv(2) = MR_tempr2;
+	MR_r3 = MR_sv(3);
+	}
+	MR_np_call_localret_ent(mdprof_fb__automatic_parallelism__autopar_find_best_par__preprocess_conjunction_5_0,
+		mdprof_fb__automatic_parallelism__autopar_find_best_par__find_best_parallelisation_6_0_i13);
+MR_def_label(mdprof_fb__automatic_parallelism__autopar_find_best_par__find_best_parallelisation_6_0,7)
+	MR_MAYBE_INIT_LOCAL_THREAD_ENGINE_BASE
+	{
+	MR_Word MR_tempr1;
+	MR_tempr1 = MR_tfield(2, MR_r4, 0);
+	if (((MR_Integer) MR_tempr1 >= (MR_Integer) MR_r1)) {
+		MR_GOTO_LAB(mdprof_fb__automatic_parallelism__autopar_find_best_par__find_best_parallelisation_6_0_i17);
+	}
+	MR_r2 = MR_sv(2);
+	MR_r1 = MR_sv(1);
+	MR_sv(2) = (MR_Word) MR_tbmkword(0, 0);
+	MR_r3 = MR_sv(3);
+	}
+	MR_np_call_localret_ent(mdprof_fb__automatic_parallelism__autopar_find_best_par__preprocess_conjunction_5_0,
+		mdprof_fb__automatic_parallelism__autopar_find_best_par__find_best_parallelisation_6_0_i13);
+MR_def_label(mdprof_fb__automatic_parallelism__autopar_find_best_par__find_best_parallelisation_6_0,13)
+	MR_MAYBE_INIT_LOCAL_THREAD_ENGINE_BASE
+	if (MR_LTAGS_TESTR(MR_r1,0,0)) {
+		MR_GOTO_LAB(mdprof_fb__automatic_parallelism__autopar_find_best_par__find_best_parallelisation_6_0_i15);
+	}
+	MR_r1 = (MR_Word) MR_tbmkword(0, 0);
+	MR_decr_sp_and_return(5);
+MR_def_label(mdprof_fb__automatic_parallelism__autopar_find_best_par__find_best_parallelisation_6_0,15)
+	MR_MAYBE_INIT_LOCAL_THREAD_ENGINE_BASE
+	{
+	MR_Word MR_tempr1, MR_tempr2;
+	MR_tempr1 = MR_sv(4);
+	MR_sv(4) = MR_r2;
+	MR_tempr2 = MR_r1;
+	MR_r1 = MR_tempr1;
+	MR_r2 = MR_sv(2);
+	MR_r3 = MR_tfield(1, MR_tempr2, 0);
+	}
+	MR_np_call_localret_ent(f_109_100_112_114_111_102_95_102_98_95_95_97_117_116_111_109_97_116_105_99_95_112_97_114_97_108_108_101_108_105_115_109_95_95_97_117_116_111_112_97_114_95_102_105_110_100_95_98_101_115_116_95_112_97_114_95_95_85_110_117_115_101_100_65_114_103_115_95_95_112_114_101_100_95_95_102_105_110_100_95_98_101_115_116_95_112_97_114_97_108_108_101_108_105_115_97_116_105_111_110_95_99_111_109_112_108_101_116_101_95_98_110_98_95_95_91_50_93_95_48_5_0,
+		mdprof_fb__automatic_parallelism__autopar_find_best_par__find_best_parallelisation_6_0_i16);
+MR_def_label(mdprof_fb__automatic_parallelism__autopar_find_best_par__find_best_parallelisation_6_0,16)
+	MR_MAYBE_INIT_LOCAL_THREAD_ENGINE_BASE
+	MR_r2 = MR_sv(4);
+	MR_decr_sp_and_return(5);
+#ifdef MR_maybe_local_thread_engine_base
+	#undef MR_maybe_local_thread_engine_base
+	#define MR_maybe_local_thread_engine_base MR_thread_engine_base
+#endif
+MR_END_MODULE
+
+
+MR_BEGIN_MODULE(mdprof_fb__automatic_parallelism__autopar_find_best_par_module5)
+	MR_init_entry1(mdprof_fb__automatic_parallelism__autopar_find_best_par__should_expand_search_2_0);
+	MR_INIT_PROC_LAYOUT_ADDR(mercury__mdprof_fb__automatic_parallelism__autopar_find_best_par__should_expand_search_2_0);
+	MR_init_label2(mdprof_fb__automatic_parallelism__autopar_find_best_par__should_expand_search_2_0,3,1)
+MR_BEGIN_CODE
+
+/*-------------------------------------------------------------------------*/
+/* code for 'should_expand_search'/2 mode 0 */
+#ifdef MR_maybe_local_thread_engine_base
+	#undef MR_maybe_local_thread_engine_base
+	#define MR_maybe_local_thread_engine_base MR_local_thread_engine_base
+#endif
+MR_def_static(mdprof_fb__automatic_parallelism__autopar_find_best_par__should_expand_search_2_0)
+	MR_MAYBE_INIT_LOCAL_THREAD_ENGINE_BASE
+	if (MR_LTAGS_TEST(MR_r1,0,0)) {
+		MR_GOTO_LAB(mdprof_fb__automatic_parallelism__autopar_find_best_par__should_expand_search_2_0_i1);
+	}
+	{
+	MR_Word MR_tempr1;
+	MR_tempr1 = MR_tfield(1, MR_r1, 0);
+	if (MR_LTAGS_TEST(MR_tempr1,0,0)) {
+		MR_GOTO_LAB(mdprof_fb__automatic_parallelism__autopar_find_best_par__should_expand_search_2_0_i3);
+	}
+	MR_r1 = ((MR_Integer) MR_tfield(0, MR_r2, 1) + (MR_Integer) MR_tfield(0, MR_r2, 0));
+	MR_r2 = MR_tfield(1, MR_tempr1, 0);
+	MR_r1 = ((MR_Integer) MR_r1 < (MR_Integer) MR_r2);
+	MR_proceed();
+	}
+MR_def_label(mdprof_fb__automatic_parallelism__autopar_find_best_par__should_expand_search_2_0,3)
+	MR_MAYBE_INIT_LOCAL_THREAD_ENGINE_BASE
+	MR_r1 = MR_TRUE;
+	MR_proceed();
+MR_def_label(mdprof_fb__automatic_parallelism__autopar_find_best_par__should_expand_search_2_0,1)
+	MR_MAYBE_INIT_LOCAL_THREAD_ENGINE_BASE
+	MR_r1 = MR_FALSE;
+	MR_proceed();
+#ifdef MR_maybe_local_thread_engine_base
+	#undef MR_maybe_local_thread_engine_base
+	#define MR_maybe_local_thread_engine_base MR_thread_engine_base
+#endif
+MR_END_MODULE
+
+MR_decl_entry(fn__mdbcomp__feedback__automatic_parallelism__parallel_exec_metrics_get_overheads_1_0);
+static const MR_Float mercury_float_const_2pt0000000000000000 = 2.0000000000000000;
+
+MR_BEGIN_MODULE(mdprof_fb__automatic_parallelism__autopar_find_best_par_module6)
+	MR_init_entry1(fn__mdprof_fb__automatic_parallelism__autopar_find_best_par__incomplete_parallelisation_cost_1_0);
+	MR_INIT_PROC_LAYOUT_ADDR(mercury__fn__mdprof_fb__automatic_parallelism__autopar_find_best_par__incomplete_parallelisation_cost_1_0);
+	MR_init_label4(fn__mdprof_fb__automatic_parallelism__autopar_find_best_par__incomplete_parallelisation_cost_1_0,3,2,5,6)
+MR_BEGIN_CODE
+
+/*-------------------------------------------------------------------------*/
+/* code for 'incomplete_parallelisation_cost'/2 mode 0 */
+#ifdef MR_maybe_local_thread_engine_base
+	#undef MR_maybe_local_thread_engine_base
+	#define MR_maybe_local_thread_engine_base MR_local_thread_engine_base
+#endif
+MR_def_static(fn__mdprof_fb__automatic_parallelism__autopar_find_best_par__incomplete_parallelisation_cost_1_0)
+	MR_MAYBE_INIT_LOCAL_THREAD_ENGINE_BASE
+	MR_incr_sp(3);
+	MR_sv(3) = (MR_Word) MR_succip;
+	{
+	MR_Word MR_tempr1;
+	MR_tempr1 = MR_tfield(0, MR_r1, 9);
+	if (MR_LTAGS_TEST(MR_tempr1,0,0)) {
+		MR_GOTO_LAB(fn__mdprof_fb__automatic_parallelism__autopar_find_best_par__incomplete_parallelisation_cost_1_0_i3);
+	}
+	MR_r1 = MR_tfield(0, MR_tfield(1, MR_tempr1, 0), 2);
+	}
+	MR_np_call_localret_ent(fn__measurements__finalise_parallel_exec_metrics_1_0,
+		fn__mdprof_fb__automatic_parallelism__autopar_find_best_par__incomplete_parallelisation_cost_1_0_i5);
+MR_def_label(fn__mdprof_fb__automatic_parallelism__autopar_find_best_par__incomplete_parallelisation_cost_1_0,3)
+	MR_MAYBE_INIT_LOCAL_THREAD_ENGINE_BASE
+	MR_r1 = (MR_Word) MR_string_const("mdprof_fb.automatic_parallelism.autopar_find_best_par", 53);
+	MR_r2 = (MR_Word) MR_string_const("function \140mdprof_fb.automatic_parallelism.autopar_find_best_par.incomplete_parallelisation_cost\'/1", 98);
+	MR_r3 = (MR_Word) MR_string_const("incomplete parallelisation has no cost data", 43);
+	MR_np_call_localret_ent(require__unexpected_3_0,
+		fn__mdprof_fb__automatic_parallelism__autopar_find_best_par__incomplete_parallelisation_cost_1_0_i2);
+MR_def_label(fn__mdprof_fb__automatic_parallelism__autopar_find_best_par__incomplete_parallelisation_cost_1_0,2)
+	MR_MAYBE_INIT_LOCAL_THREAD_ENGINE_BASE
+	MR_np_call_localret_ent(fn__measurements__finalise_parallel_exec_metrics_1_0,
+		fn__mdprof_fb__automatic_parallelism__autopar_find_best_par__incomplete_parallelisation_cost_1_0_i5);
+MR_def_label(fn__mdprof_fb__automatic_parallelism__autopar_find_best_par__incomplete_parallelisation_cost_1_0,5)
+	MR_MAYBE_INIT_LOCAL_THREAD_ENGINE_BASE
+	* (MR_Float *) &MR_sv(2) = MR_float_from_dword_ptr(&MR_tfield(0, MR_r1, 3));
+	MR_np_call_localret_ent(fn__mdbcomp__feedback__automatic_parallelism__parallel_exec_metrics_get_overheads_1_0,
+		fn__mdprof_fb__automatic_parallelism__autopar_find_best_par__incomplete_parallelisation_cost_1_0_i6);
+MR_def_label(fn__mdprof_fb__automatic_parallelism__autopar_find_best_par__incomplete_parallelisation_cost_1_0,6)
+	MR_MAYBE_INIT_LOCAL_THREAD_ENGINE_BASE
+	MR_f(1) = (MR_float_from_dword_ptr(&MR_sv(2)) + (MR_f(1) * (MR_Float) 2.0000000000000000));
+	MR_decr_sp_and_return(3);
+#ifdef MR_maybe_local_thread_engine_base
+	#undef MR_maybe_local_thread_engine_base
+	#define MR_maybe_local_thread_engine_base MR_thread_engine_base
+#endif
+MR_END_MODULE
+
+
+MR_BEGIN_MODULE(mdprof_fb__automatic_parallelism__autopar_find_best_par_module7)
+	MR_init_entry1(mdprof_fb__automatic_parallelism__autopar_find_best_par__maybe_update_best_complete_parallelisation_5_0);
+	MR_INIT_PROC_LAYOUT_ADDR(mercury__mdprof_fb__automatic_parallelism__autopar_find_best_par__maybe_update_best_complete_parallelisation_5_0);
+	MR_init_label4(mdprof_fb__automatic_parallelism__autopar_find_best_par__maybe_update_best_complete_parallelisation_5_0,2,4,8,12)
+MR_BEGIN_CODE
+
+/*-------------------------------------------------------------------------*/
+/* code for 'maybe_update_best_complete_parallelisation'/5 mode 0 */
+#ifdef MR_maybe_local_thread_engine_base
+	#undef MR_maybe_local_thread_engine_base
+	#define MR_maybe_local_thread_engine_base MR_local_thread_engine_base
+#endif
+MR_def_static(mdprof_fb__automatic_parallelism__autopar_find_best_par__maybe_update_best_complete_parallelisation_5_0)
+	MR_MAYBE_INIT_LOCAL_THREAD_ENGINE_BASE
+	MR_incr_sp(4);
+	MR_sv(4) = (MR_Word) MR_succip;
+	MR_sv(1) = MR_r1;
+	MR_sv(2) = MR_r2;
+	MR_sv(3) = MR_r3;
+	MR_np_call_localret_ent(fn__mdprof_fb__automatic_parallelism__autopar_find_best_par__incomplete_parallelisation_cost_1_0,
+		mdprof_fb__automatic_parallelism__autopar_find_best_par__maybe_update_best_complete_parallelisation_5_0_i2);
+MR_def_label(mdprof_fb__automatic_parallelism__autopar_find_best_par__maybe_update_best_complete_parallelisation_5_0,2)
+	MR_MAYBE_INIT_LOCAL_THREAD_ENGINE_BASE
+	if (MR_LTAGS_TESTR(MR_sv(2),0,0)) {
+		MR_GOTO_LAB(mdprof_fb__automatic_parallelism__autopar_find_best_par__maybe_update_best_complete_parallelisation_5_0_i4);
+	}
+	{
+	MR_Word MR_tempr1, MR_tempr2, MR_tempr3;
+	MR_Float MR_tempf1, MR_tempf2;
+	MR_tag_alloc_heap(MR_tempr1, 1, (MR_Integer) 2);
+	MR_tfield(1, MR_tempr1, 0) = MR_sv(1);
+	MR_tfield(1, MR_tempr1, 1) = (MR_Word) MR_tbmkword(0, 0);
+	MR_tag_alloc_heap(MR_r1, 1, (MR_Integer) 3);
+	MR_tfield(1, MR_r1, 0) = MR_tempr1;
+	MR_tempf2 = MR_f(1);
+	* (MR_Float *) &(MR_tfield(1, MR_r1, 1)) = MR_tempf2;
+	MR_tag_alloc_heap(MR_r2, 0, (MR_Integer) 6);
+	MR_tempr3 = MR_sv(3);
+	MR_tfield(0, MR_r2, 0) = MR_tfield(0, MR_tempr3, 0);
+	MR_tfield(0, MR_r2, 1) = MR_tfield(0, MR_tempr3, 1);
+	MR_tfield(0, MR_r2, 2) = ((MR_Integer) MR_tfield(0, MR_tempr3, 2) + (MR_Integer) 1);
+	MR_tfield(0, MR_r2, 3) = MR_tfield(0, MR_tempr3, 3);
+	MR_tfield(0, MR_r2, 4) = MR_tfield(0, MR_tempr3, 4);
+	MR_tfield(0, MR_r2, 5) = MR_tfield(0, MR_tempr3, 5);
+	MR_decr_sp_and_return(4);
+	}
+MR_def_label(mdprof_fb__automatic_parallelism__autopar_find_best_par__maybe_update_best_complete_parallelisation_5_0,4)
+	MR_MAYBE_INIT_LOCAL_THREAD_ENGINE_BASE
+	{
+	MR_Word MR_tempr1, MR_tempr2, MR_tempr3;
+	MR_Float MR_tempf1, MR_tempf2, MR_tempf3, MR_tempf4;
+	MR_tempr2 = MR_sv(3);
+	MR_r3 = MR_tfield(0, MR_tempr2, 3);
+	MR_r4 = MR_tfield(0, MR_tempr2, 4);
+	MR_tempr3 = MR_sv(2);
+	MR_f(2) = MR_float_from_dword_ptr(&MR_tfield(1, MR_tempr3, 1));
+	MR_r5 = MR_tfield(1, MR_tempr3, 0);
+	if ((MR_f(1) >= MR_f(2))) {
+		MR_GOTO_LAB(mdprof_fb__automatic_parallelism__autopar_find_best_par__maybe_update_best_complete_parallelisation_5_0_i8);
+	}
+	MR_tag_alloc_heap(MR_tempr1, 1, (MR_Integer) 2);
+	MR_tfield(1, MR_tempr1, 0) = MR_sv(1);
+	MR_tfield(1, MR_tempr1, 1) = (MR_Word) MR_tbmkword(0, 0);
+	MR_tag_alloc_heap(MR_r1, 1, (MR_Integer) 3);
+	MR_tfield(1, MR_r1, 0) = MR_tempr1;
+	MR_tempf4 = MR_f(1);
+	* (MR_Float *) &(MR_tfield(1, MR_r1, 1)) = MR_tempf4;
+	MR_tag_alloc_heap(MR_r2, 0, (MR_Integer) 6);
+	MR_tfield(0, MR_r2, 0) = MR_tfield(0, MR_tempr2, 0);
+	MR_tfield(0, MR_r2, 1) = MR_tfield(0, MR_tempr2, 1);
+	MR_tfield(0, MR_r2, 2) = ((MR_Integer) MR_tfield(0, MR_tempr2, 2) + (MR_Integer) 1);
+	MR_tfield(0, MR_r2, 3) = MR_tfield(0, MR_tempr2, 3);
+	MR_tfield(0, MR_r2, 4) = MR_tfield(0, MR_tempr2, 4);
+	MR_tfield(0, MR_r2, 5) = MR_tfield(0, MR_tempr2, 5);
+	MR_decr_sp_and_return(4);
+	}
+MR_def_label(mdprof_fb__automatic_parallelism__autopar_find_best_par__maybe_update_best_complete_parallelisation_5_0,8)
+	MR_MAYBE_INIT_LOCAL_THREAD_ENGINE_BASE
+	if ((MR_f(1) != MR_f(2))) {
+		MR_GOTO_LAB(mdprof_fb__automatic_parallelism__autopar_find_best_par__maybe_update_best_complete_parallelisation_5_0_i12);
+	}
+	{
+	MR_Word MR_tempr1, MR_tempr2, MR_tempr3;
+	MR_Float MR_tempf1, MR_tempf2;
+	MR_tag_alloc_heap(MR_tempr1, 1, (MR_Integer) 2);
+	MR_tfield(1, MR_tempr1, 0) = MR_sv(1);
+	MR_tfield(1, MR_tempr1, 1) = MR_r5;
+	MR_tag_alloc_heap(MR_r1, 1, (MR_Integer) 3);
+	MR_tfield(1, MR_r1, 0) = MR_tempr1;
+	MR_tempf2 = MR_f(2);
+	* (MR_Float *) &(MR_tfield(1, MR_r1, 1)) = MR_tempf2;
+	MR_tag_alloc_heap(MR_r2, 0, (MR_Integer) 6);
+	MR_tempr3 = MR_sv(3);
+	MR_tfield(0, MR_r2, 0) = MR_tfield(0, MR_tempr3, 0);
+	MR_tfield(0, MR_r2, 1) = MR_tfield(0, MR_tempr3, 1);
+	MR_tfield(0, MR_r2, 2) = MR_tfield(0, MR_tempr3, 2);
+	MR_tfield(0, MR_r2, 3) = ((MR_Integer) MR_r3 + (MR_Integer) 1);
+	MR_tfield(0, MR_r2, 4) = MR_tfield(0, MR_tempr3, 4);
+	MR_tfield(0, MR_r2, 5) = MR_tfield(0, MR_tempr3, 5);
+	MR_decr_sp_and_return(4);
+	}
+MR_def_label(mdprof_fb__automatic_parallelism__autopar_find_best_par__maybe_update_best_complete_parallelisation_5_0,12)
+	MR_MAYBE_INIT_LOCAL_THREAD_ENGINE_BASE
+	MR_tag_alloc_heap(MR_r2, 0, (MR_Integer) 6);
+	{
+	MR_Word MR_tempr1;
+	MR_tempr1 = MR_sv(3);
+	MR_tfield(0, MR_r2, 0) = MR_tfield(0, MR_tempr1, 0);
+	MR_tfield(0, MR_r2, 1) = MR_tfield(0, MR_tempr1, 1);
+	MR_tfield(0, MR_r2, 2) = MR_tfield(0, MR_tempr1, 2);
+	MR_tfield(0, MR_r2, 3) = MR_tfield(0, MR_tempr1, 3);
+	MR_tfield(0, MR_r2, 4) = ((MR_Integer) MR_r4 + (MR_Integer) 1);
+	MR_tfield(0, MR_r2, 5) = MR_tfield(0, MR_tempr1, 5);
+	MR_r1 = MR_sv(2);
+	MR_decr_sp_and_return(4);
+	}
+#ifdef MR_maybe_local_thread_engine_base
+	#undef MR_maybe_local_thread_engine_base
+	#define MR_maybe_local_thread_engine_base MR_thread_engine_base
+#endif
+MR_END_MODULE
+
+
+MR_BEGIN_MODULE(mdprof_fb__automatic_parallelism__autopar_find_best_par_module8)
+	MR_init_entry1(mdprof_fb__automatic_parallelism__autopar_find_best_par__test_dependence_2_0);
+	MR_INIT_PROC_LAYOUT_ADDR(mercury__mdprof_fb__automatic_parallelism__autopar_find_best_par__test_dependence_2_0);
+	MR_init_label3(mdprof_fb__automatic_parallelism__autopar_find_best_par__test_dependence_2_0,2,3,1)
+MR_BEGIN_CODE
+
+/*-------------------------------------------------------------------------*/
+/* code for 'test_dependence'/2 mode 0 */
+#ifdef MR_maybe_local_thread_engine_base
+	#undef MR_maybe_local_thread_engine_base
+	#define MR_maybe_local_thread_engine_base MR_local_thread_engine_base
+#endif
+MR_def_static(mdprof_fb__automatic_parallelism__autopar_find_best_par__test_dependence_2_0)
+	MR_MAYBE_INIT_LOCAL_THREAD_ENGINE_BASE
+	MR_incr_sp(2);
+	MR_sv(2) = (MR_Word) MR_succip;
+	MR_sv(1) = MR_tfield(0, MR_tfield(0, MR_r1, 2), 13);
+	MR_r1 = MR_tfield(0, MR_r2, 1);
+	MR_np_call_localret_ent(mdprof_fb__automatic_parallelism__autopar_find_best_par__par_conj_overlap_is_dependent_2_0,
+		mdprof_fb__automatic_parallelism__autopar_find_best_par__test_dependence_2_0_i2);
+MR_def_label(mdprof_fb__automatic_parallelism__autopar_find_best_par__test_dependence_2_0,2)
+	MR_MAYBE_INIT_LOCAL_THREAD_ENGINE_BASE
+	if (MR_LTAGS_TESTR(MR_sv(1),0,0)) {
+		MR_GOTO_LAB(mdprof_fb__automatic_parallelism__autopar_find_best_par__test_dependence_2_0_i3);
+	}
+	if (MR_LTAGS_TESTR(MR_r1,0,0)) {
+		MR_GOTO_LAB(mdprof_fb__automatic_parallelism__autopar_find_best_par__test_dependence_2_0_i1);
+	}
+MR_def_label(mdprof_fb__automatic_parallelism__autopar_find_best_par__test_dependence_2_0,3)
+	MR_MAYBE_INIT_LOCAL_THREAD_ENGINE_BASE
+	MR_succip_word = MR_sv(2);
+	MR_decr_sp(2);
+	MR_r1 = MR_TRUE;
+	MR_proceed();
+MR_def_label(mdprof_fb__automatic_parallelism__autopar_find_best_par__test_dependence_2_0,1)
+	MR_MAYBE_INIT_LOCAL_THREAD_ENGINE_BASE
+	MR_succip_word = MR_sv(2);
+	MR_decr_sp(2);
+	MR_r1 = MR_FALSE;
+	MR_proceed();
+#ifdef MR_maybe_local_thread_engine_base
+	#undef MR_maybe_local_thread_engine_base
+	#define MR_maybe_local_thread_engine_base MR_thread_engine_base
+#endif
+MR_END_MODULE
+
+MR_decl_entry(mdprof_fb__automatic_parallelism__autopar_calc_overlap__calculate_parallel_cost_4_0);
+
+MR_BEGIN_MODULE(mdprof_fb__automatic_parallelism__autopar_find_best_par_module9)
+	MR_init_entry1(mdprof_fb__automatic_parallelism__autopar_find_best_par__incomplete_parallelisation_is_good_enough_7_0);
+	MR_INIT_PROC_LAYOUT_ADDR(mercury__mdprof_fb__automatic_parallelism__autopar_find_best_par__incomplete_parallelisation_is_good_enough_7_0);
+	MR_init_label6(mdprof_fb__automatic_parallelism__autopar_find_best_par__incomplete_parallelisation_is_good_enough_7_0,2,5,8,10,11,3)
+MR_BEGIN_CODE
+
+/*-------------------------------------------------------------------------*/
+/* code for 'incomplete_parallelisation_is_good_enough'/7 mode 0 */
+#ifdef MR_maybe_local_thread_engine_base
+	#undef MR_maybe_local_thread_engine_base
+	#define MR_maybe_local_thread_engine_base MR_local_thread_engine_base
+#endif
+MR_def_static(mdprof_fb__automatic_parallelism__autopar_find_best_par__incomplete_parallelisation_is_good_enough_7_0)
+	MR_MAYBE_INIT_LOCAL_THREAD_ENGINE_BASE
+	MR_incr_sp(7);
+	MR_sv(7) = (MR_Word) MR_succip;
+	MR_sv(2) = MR_r1;
+	MR_sv(1) = MR_r2;
+	MR_sv(6) = MR_r4;
+	MR_r2 = MR_r3;
+	MR_np_call_localret_ent(mdprof_fb__automatic_parallelism__autopar_calc_overlap__calculate_parallel_cost_4_0,
+		mdprof_fb__automatic_parallelism__autopar_find_best_par__incomplete_parallelisation_is_good_enough_7_0_i2);
+MR_def_label(mdprof_fb__automatic_parallelism__autopar_find_best_par__incomplete_parallelisation_is_good_enough_7_0,2)
+	MR_MAYBE_INIT_LOCAL_THREAD_ENGINE_BASE
+	MR_sv(5) = MR_r1;
+	MR_r1 = MR_sv(2);
+	MR_np_call_localret_ent(mdprof_fb__automatic_parallelism__autopar_find_best_par__test_dependence_2_0,
+		mdprof_fb__automatic_parallelism__autopar_find_best_par__incomplete_parallelisation_is_good_enough_7_0_i5);
+MR_def_label(mdprof_fb__automatic_parallelism__autopar_find_best_par__incomplete_parallelisation_is_good_enough_7_0,5)
+	MR_MAYBE_INIT_LOCAL_THREAD_ENGINE_BASE
+	if (!(MR_r1)) {
+		MR_GOTO_LAB(mdprof_fb__automatic_parallelism__autopar_find_best_par__incomplete_parallelisation_is_good_enough_7_0_i3);
+	}
+	if (MR_LTAGS_TESTR(MR_sv(1),0,0)) {
+		MR_GOTO_LAB(mdprof_fb__automatic_parallelism__autopar_find_best_par__incomplete_parallelisation_is_good_enough_7_0_i8);
+	}
+	MR_tag_alloc_heap(MR_r2, 0, (MR_Integer) 6);
+	{
+	MR_Word MR_tempr1;
+	MR_tempr1 = MR_sv(6);
+	MR_tfield(0, MR_r2, 0) = ((MR_Integer) MR_tfield(0, MR_tempr1, 0) + (MR_Integer) 1);
+	MR_tfield(0, MR_r2, 1) = MR_tfield(0, MR_tempr1, 1);
+	MR_tfield(0, MR_r2, 2) = MR_tfield(0, MR_tempr1, 2);
+	MR_tfield(0, MR_r2, 3) = MR_tfield(0, MR_tempr1, 3);
+	MR_tfield(0, MR_r2, 4) = MR_tfield(0, MR_tempr1, 4);
+	MR_tfield(0, MR_r2, 5) = MR_tfield(0, MR_tempr1, 5);
+	MR_r3 = (MR_Integer) 1;
+	MR_r1 = MR_sv(5);
+	MR_decr_sp_and_return(7);
+	}
+MR_def_label(mdprof_fb__automatic_parallelism__autopar_find_best_par__incomplete_parallelisation_is_good_enough_7_0,8)
+	MR_MAYBE_INIT_LOCAL_THREAD_ENGINE_BASE
+	{
+	MR_Word MR_tempr1;
+	MR_tempr1 = MR_sv(1);
+	* (MR_Float *) &MR_sv(4) = MR_float_from_dword_ptr(&MR_tfield(1, MR_tempr1, 1));
+	MR_r1 = MR_sv(5);
+	}
+	MR_np_call_localret_ent(fn__mdprof_fb__automatic_parallelism__autopar_find_best_par__incomplete_parallelisation_cost_1_0,
+		mdprof_fb__automatic_parallelism__autopar_find_best_par__incomplete_parallelisation_is_good_enough_7_0_i10);
+MR_def_label(mdprof_fb__automatic_parallelism__autopar_find_best_par__incomplete_parallelisation_is_good_enough_7_0,10)
+	MR_MAYBE_INIT_LOCAL_THREAD_ENGINE_BASE
+	{
+	MR_Word MR_tempr1;
+	MR_tempr1 = MR_sv(6);
+	MR_r4 = MR_tfield(0, MR_tempr1, 0);
+	if ((MR_f(1) <= MR_float_from_dword_ptr(&MR_sv(4)))) {
+		MR_GOTO_LAB(mdprof_fb__automatic_parallelism__autopar_find_best_par__incomplete_parallelisation_is_good_enough_7_0_i11);
+	}
+	MR_tag_alloc_heap(MR_r2, 0, (MR_Integer) 6);
+	MR_tfield(0, MR_r2, 0) = MR_tfield(0, MR_tempr1, 0);
+	MR_tfield(0, MR_r2, 1) = ((MR_Integer) MR_tfield(0, MR_tempr1, 1) + (MR_Integer) 1);
+	MR_tfield(0, MR_r2, 2) = MR_tfield(0, MR_tempr1, 2);
+	MR_tfield(0, MR_r2, 3) = MR_tfield(0, MR_tempr1, 3);
+	MR_tfield(0, MR_r2, 4) = MR_tfield(0, MR_tempr1, 4);
+	MR_tfield(0, MR_r2, 5) = MR_tfield(0, MR_tempr1, 5);
+	MR_r3 = (MR_Integer) 0;
+	MR_r1 = MR_sv(5);
+	MR_decr_sp_and_return(7);
+	}
+MR_def_label(mdprof_fb__automatic_parallelism__autopar_find_best_par__incomplete_parallelisation_is_good_enough_7_0,11)
+	MR_MAYBE_INIT_LOCAL_THREAD_ENGINE_BASE
+	MR_tag_alloc_heap(MR_r2, 0, (MR_Integer) 6);
+	MR_tfield(0, MR_r2, 0) = ((MR_Integer) MR_r4 + (MR_Integer) 1);
+	{
+	MR_Word MR_tempr1;
+	MR_tempr1 = MR_sv(6);
+	MR_tfield(0, MR_r2, 1) = MR_tfield(0, MR_tempr1, 1);
+	MR_tfield(0, MR_r2, 2) = MR_tfield(0, MR_tempr1, 2);
+	MR_tfield(0, MR_r2, 3) = MR_tfield(0, MR_tempr1, 3);
+	MR_tfield(0, MR_r2, 4) = MR_tfield(0, MR_tempr1, 4);
+	MR_tfield(0, MR_r2, 5) = MR_tfield(0, MR_tempr1, 5);
+	MR_r3 = (MR_Integer) 1;
+	MR_r1 = MR_sv(5);
+	MR_decr_sp_and_return(7);
+	}
+MR_def_label(mdprof_fb__automatic_parallelism__autopar_find_best_par__incomplete_parallelisation_is_good_enough_7_0,3)
+	MR_MAYBE_INIT_LOCAL_THREAD_ENGINE_BASE
+	MR_r1 = MR_sv(5);
+	MR_tag_alloc_heap(MR_r2, 0, (MR_Integer) 6);
+	{
+	MR_Word MR_tempr1;
+	MR_tempr1 = MR_sv(6);
+	MR_tfield(0, MR_r2, 0) = MR_tfield(0, MR_tempr1, 0);
+	MR_tfield(0, MR_r2, 1) = ((MR_Integer) MR_tfield(0, MR_tempr1, 1) + (MR_Integer) 1);
+	MR_tfield(0, MR_r2, 2) = MR_tfield(0, MR_tempr1, 2);
+	MR_tfield(0, MR_r2, 3) = MR_tfield(0, MR_tempr1, 3);
+	MR_tfield(0, MR_r2, 4) = MR_tfield(0, MR_tempr1, 4);
+	MR_tfield(0, MR_r2, 5) = MR_tfield(0, MR_tempr1, 5);
+	MR_r3 = (MR_Integer) 0;
+	MR_decr_sp_and_return(7);
+	}
+#ifdef MR_maybe_local_thread_engine_base
+	#undef MR_maybe_local_thread_engine_base
+	#define MR_maybe_local_thread_engine_base MR_thread_engine_base
+#endif
+MR_END_MODULE
+
+
+MR_BEGIN_MODULE(mdprof_fb__automatic_parallelism__autopar_find_best_par_module10)
+	MR_init_entry1(mdprof_fb__automatic_parallelism__autopar_find_best_par__update_incomplete_parallelisation_cost_4_0);
+	MR_INIT_PROC_LAYOUT_ADDR(mercury__mdprof_fb__automatic_parallelism__autopar_find_best_par__update_incomplete_parallelisation_cost_4_0);
+	MR_init_label8(mdprof_fb__automatic_parallelism__autopar_find_best_par__update_incomplete_parallelisation_cost_4_0,2,4,5,10,9,12,13,3)
+MR_BEGIN_CODE
+
+/*-------------------------------------------------------------------------*/
+/* code for 'update_incomplete_parallelisation_cost'/4 mode 0 */
+#ifdef MR_maybe_local_thread_engine_base
+	#undef MR_maybe_local_thread_engine_base
+	#define MR_maybe_local_thread_engine_base MR_local_thread_engine_base
+#endif
+MR_def_static(mdprof_fb__automatic_parallelism__autopar_find_best_par__update_incomplete_parallelisation_cost_4_0)
+	MR_MAYBE_INIT_LOCAL_THREAD_ENGINE_BASE
+	MR_incr_sp(5);
+	MR_sv(5) = (MR_Word) MR_succip;
+	MR_sv(1) = MR_r1;
+	MR_np_call_localret_ent(mdprof_fb__automatic_parallelism__autopar_calc_overlap__calculate_parallel_cost_4_0,
+		mdprof_fb__automatic_parallelism__autopar_find_best_par__update_incomplete_parallelisation_cost_4_0_i2);
+MR_def_label(mdprof_fb__automatic_parallelism__autopar_find_best_par__update_incomplete_parallelisation_cost_4_0,2)
+	MR_MAYBE_INIT_LOCAL_THREAD_ENGINE_BASE
+	{
+	MR_Word MR_tempr1;
+	MR_tempr1 = MR_sv(1);
+	MR_sv(1) = MR_r1;
+	MR_sv(2) = MR_tfield(0, MR_tfield(0, MR_tempr1, 2), 13);
+	MR_r1 = MR_tfield(0, MR_r2, 1);
+	}
+	MR_np_call_localret_ent(mdprof_fb__automatic_parallelism__autopar_find_best_par__par_conj_overlap_is_dependent_2_0,
+		mdprof_fb__automatic_parallelism__autopar_find_best_par__update_incomplete_parallelisation_cost_4_0_i4);
+MR_def_label(mdprof_fb__automatic_parallelism__autopar_find_best_par__update_incomplete_parallelisation_cost_4_0,4)
+	MR_MAYBE_INIT_LOCAL_THREAD_ENGINE_BASE
+	if (MR_LTAGS_TESTR(MR_sv(2),0,0)) {
+		MR_GOTO_LAB(mdprof_fb__automatic_parallelism__autopar_find_best_par__update_incomplete_parallelisation_cost_4_0_i5);
+	}
+	if (MR_LTAGS_TESTR(MR_r1,0,0)) {
+		MR_GOTO_LAB(mdprof_fb__automatic_parallelism__autopar_find_best_par__update_incomplete_parallelisation_cost_4_0_i3);
+	}
+MR_def_label(mdprof_fb__automatic_parallelism__autopar_find_best_par__update_incomplete_parallelisation_cost_4_0,5)
+	MR_MAYBE_INIT_LOCAL_THREAD_ENGINE_BASE
+	{
+	MR_Word MR_tempr1;
+	MR_tempr1 = MR_tfield(0, MR_sv(1), 9);
+	if (MR_LTAGS_TEST(MR_tempr1,0,0)) {
+		MR_GOTO_LAB(mdprof_fb__automatic_parallelism__autopar_find_best_par__update_incomplete_parallelisation_cost_4_0_i10);
+	}
+	MR_r1 = MR_tfield(0, MR_tfield(1, MR_tempr1, 0), 2);
+	}
+	MR_np_call_localret_ent(fn__measurements__finalise_parallel_exec_metrics_1_0,
+		mdprof_fb__automatic_parallelism__autopar_find_best_par__update_incomplete_parallelisation_cost_4_0_i12);
+MR_def_label(mdprof_fb__automatic_parallelism__autopar_find_best_par__update_incomplete_parallelisation_cost_4_0,10)
+	MR_MAYBE_INIT_LOCAL_THREAD_ENGINE_BASE
+	MR_r1 = (MR_Word) MR_string_const("mdprof_fb.automatic_parallelism.autopar_find_best_par", 53);
+	MR_r2 = (MR_Word) MR_string_const("function \140mdprof_fb.automatic_parallelism.autopar_find_best_par.incomplete_parallelisation_cost\'/1", 98);
+	MR_r3 = (MR_Word) MR_string_const("incomplete parallelisation has no cost data", 43);
+	MR_np_call_localret_ent(require__unexpected_3_0,
+		mdprof_fb__automatic_parallelism__autopar_find_best_par__update_incomplete_parallelisation_cost_4_0_i9);
+MR_def_label(mdprof_fb__automatic_parallelism__autopar_find_best_par__update_incomplete_parallelisation_cost_4_0,9)
+	MR_MAYBE_INIT_LOCAL_THREAD_ENGINE_BASE
+	MR_np_call_localret_ent(fn__measurements__finalise_parallel_exec_metrics_1_0,
+		mdprof_fb__automatic_parallelism__autopar_find_best_par__update_incomplete_parallelisation_cost_4_0_i12);
+MR_def_label(mdprof_fb__automatic_parallelism__autopar_find_best_par__update_incomplete_parallelisation_cost_4_0,12)
+	MR_MAYBE_INIT_LOCAL_THREAD_ENGINE_BASE
+	* (MR_Float *) &MR_sv(4) = MR_float_from_dword_ptr(&MR_tfield(0, MR_r1, 3));
+	MR_np_call_localret_ent(fn__mdbcomp__feedback__automatic_parallelism__parallel_exec_metrics_get_overheads_1_0,
+		mdprof_fb__automatic_parallelism__autopar_find_best_par__update_incomplete_parallelisation_cost_4_0_i13);
+MR_def_label(mdprof_fb__automatic_parallelism__autopar_find_best_par__update_incomplete_parallelisation_cost_4_0,13)
+	MR_MAYBE_INIT_LOCAL_THREAD_ENGINE_BASE
+	MR_tag_alloc_heap(MR_r2, 1, (MR_Integer) 1);
+	MR_tfield(1, MR_r2, 0) = MR_float_to_word((MR_float_from_dword_ptr(&MR_sv(4)) + (MR_f(1) * (MR_Float) 2.0000000000000000)));
+	MR_r1 = MR_sv(1);
+	MR_decr_sp_and_return(5);
+MR_def_label(mdprof_fb__automatic_parallelism__autopar_find_best_par__update_incomplete_parallelisation_cost_4_0,3)
+	MR_MAYBE_INIT_LOCAL_THREAD_ENGINE_BASE
+	MR_r2 = (MR_Word) MR_tbmkword(0, 0);
+	MR_r1 = MR_sv(1);
+	MR_decr_sp_and_return(5);
+#ifdef MR_maybe_local_thread_engine_base
+	#undef MR_maybe_local_thread_engine_base
+	#define MR_maybe_local_thread_engine_base MR_thread_engine_base
+#endif
+MR_END_MODULE
+
+MR_decl_entry(fn__mdprof_fb__automatic_parallelism__autopar_types__ip_get_num_parallel_conjuncts_1_0);
+
+MR_BEGIN_MODULE(mdprof_fb__automatic_parallelism__autopar_find_best_par_module11)
+	MR_init_entry1(mdprof_fb__automatic_parallelism__autopar_find_best_par__generate_parallelisations_loop_8_0);
+	MR_INIT_PROC_LAYOUT_ADDR(mercury__mdprof_fb__automatic_parallelism__autopar_find_best_par__generate_parallelisations_loop_8_0);
+	MR_init_label10(mdprof_fb__automatic_parallelism__autopar_find_best_par__generate_parallelisations_loop_8_0,102,5,4,3,9,11,14,16,18,19)
+	MR_init_label10(mdprof_fb__automatic_parallelism__autopar_find_best_par__generate_parallelisations_loop_8_0,15,26,28,30,31,29,32,34,23,24)
+	MR_init_label2(mdprof_fb__automatic_parallelism__autopar_find_best_par__generate_parallelisations_loop_8_0,36,38)
+MR_BEGIN_CODE
+
+/*-------------------------------------------------------------------------*/
+/* code for 'generate_parallelisations_loop'/8 mode 0 */
+#ifdef MR_maybe_local_thread_engine_base
+	#undef MR_maybe_local_thread_engine_base
+	#define MR_maybe_local_thread_engine_base MR_local_thread_engine_base
+#endif
+MR_def_static(mdprof_fb__automatic_parallelism__autopar_find_best_par__generate_parallelisations_loop_8_0)
+	MR_MAYBE_INIT_LOCAL_THREAD_ENGINE_BASE
+	MR_incr_sp(9);
+	MR_sv(9) = (MR_Word) MR_succip;
+MR_def_label(mdprof_fb__automatic_parallelism__autopar_find_best_par__generate_parallelisations_loop_8_0,102)
+	MR_MAYBE_INIT_LOCAL_THREAD_ENGINE_BASE
+	if (MR_LTAGS_TESTR(MR_r3,0,0)) {
+		MR_GOTO_LAB(mdprof_fb__automatic_parallelism__autopar_find_best_par__generate_parallelisations_loop_8_0_i3);
+	}
+	{
+	MR_Word MR_tempr1;
+	MR_tempr1 = MR_r4;
+	MR_sv(7) = MR_tempr1;
+	MR_sv(3) = MR_r5;
+	MR_sv(4) = MR_r6;
+	MR_r1 = MR_tempr1;
+	}
+	MR_np_call_localret_ent(fn__mdprof_fb__automatic_parallelism__autopar_types__ip_get_num_parallel_conjuncts_1_0,
+		mdprof_fb__automatic_parallelism__autopar_find_best_par__generate_parallelisations_loop_8_0_i5);
+MR_def_label(mdprof_fb__automatic_parallelism__autopar_find_best_par__generate_parallelisations_loop_8_0,5)
+	MR_MAYBE_INIT_LOCAL_THREAD_ENGINE_BASE
+	if (MR_INT_LT(MR_r1,2)) {
+		MR_GOTO_LAB(mdprof_fb__automatic_parallelism__autopar_find_best_par__generate_parallelisations_loop_8_0_i4);
+	}
+	MR_r1 = MR_sv(7);
+	MR_r2 = MR_sv(3);
+	MR_r3 = MR_sv(4);
+	MR_succip_word = MR_sv(9);
+	MR_decr_sp(9);
+	MR_np_tailcall_ent(mdprof_fb__automatic_parallelism__autopar_find_best_par__maybe_update_best_complete_parallelisation_5_0);
+MR_def_label(mdprof_fb__automatic_parallelism__autopar_find_best_par__generate_parallelisations_loop_8_0,4)
+	MR_MAYBE_INIT_LOCAL_THREAD_ENGINE_BASE
+	MR_tag_alloc_heap(MR_r2, 0, (MR_Integer) 6);
+	{
+	MR_Word MR_tempr1;
+	MR_tempr1 = MR_sv(4);
+	MR_tfield(0, MR_r2, 0) = MR_tfield(0, MR_tempr1, 0);
+	MR_tfield(0, MR_r2, 1) = MR_tfield(0, MR_tempr1, 1);
+	MR_tfield(0, MR_r2, 2) = MR_tfield(0, MR_tempr1, 2);
+	MR_tfield(0, MR_r2, 3) = MR_tfield(0, MR_tempr1, 3);
+	MR_tfield(0, MR_r2, 4) = MR_tfield(0, MR_tempr1, 4);
+	MR_tfield(0, MR_r2, 5) = ((MR_Integer) MR_tfield(0, MR_tempr1, 5) + (MR_Integer) 1);
+	MR_r1 = MR_sv(3);
+	MR_decr_sp_and_return(9);
+	}
+MR_def_label(mdprof_fb__automatic_parallelism__autopar_find_best_par__generate_parallelisations_loop_8_0,3)
+	MR_MAYBE_INIT_LOCAL_THREAD_ENGINE_BASE
+	MR_sv(1) = MR_r1;
+	MR_sv(2) = MR_r2;
+	{
+	MR_Word MR_tempr1, MR_tempr2;
+	MR_tempr1 = MR_r4;
+	MR_sv(7) = MR_tempr1;
+	MR_sv(3) = MR_r5;
+	MR_sv(4) = MR_r6;
+	MR_tempr2 = MR_r3;
+	MR_sv(5) = MR_tfield(1, MR_tempr2, 1);
+	MR_sv(8) = MR_tfield(0, MR_tempr1, 3);
+	MR_r1 = MR_tfield(1, MR_tempr2, 0);
+	}
+	MR_np_call_localret_ent(f_109_100_112_114_111_102_95_102_98_95_95_97_117_116_111_109_97_116_105_99_95_112_97_114_97_108_108_101_108_105_115_109_95_95_97_117_116_111_112_97_114_95_102_105_110_100_95_98_101_115_116_95_112_97_114_95_95_85_110_117_115_101_100_65_114_103_115_95_95_112_114_101_100_95_95_103_103_95_103_101_116_95_100_101_116_97_105_108_115_95_95_91_49_93_95_48_4_0,
+		mdprof_fb__automatic_parallelism__autopar_find_best_par__generate_parallelisations_loop_8_0_i9);
+MR_def_label(mdprof_fb__automatic_parallelism__autopar_find_best_par__generate_parallelisations_loop_8_0,9)
+	MR_MAYBE_INIT_LOCAL_THREAD_ENGINE_BASE
+	{
+	MR_Word MR_tempr1, MR_tempr2;
+	MR_tag_alloc_heap(MR_tempr1, 0, (MR_Integer) 10);
+	MR_tempr2 = MR_sv(7);
+	MR_tfield(0, MR_tempr1, 0) = MR_tfield(0, MR_tempr2, 0);
+	MR_tfield(0, MR_tempr1, 1) = MR_tfield(0, MR_tempr2, 1);
+	MR_tfield(0, MR_tempr1, 2) = MR_tfield(0, MR_tempr2, 2);
+	MR_tfield(0, MR_tempr1, 3) = ((MR_Integer) MR_sv(8) + (MR_Integer) MR_r2);
+	MR_tfield(0, MR_tempr1, 4) = MR_tfield(0, MR_tempr2, 4);
+	MR_tfield(0, MR_tempr1, 5) = MR_tfield(0, MR_tempr2, 5);
+	MR_tfield(0, MR_tempr1, 6) = MR_tfield(0, MR_tempr2, 6);
+	MR_tfield(0, MR_tempr1, 7) = MR_tfield(0, MR_tempr2, 7);
+	MR_tfield(0, MR_tempr1, 8) = MR_tfield(0, MR_tempr2, 8);
+	MR_tfield(0, MR_tempr1, 9) = MR_tfield(0, MR_tempr2, 9);
+	MR_sv(6) = MR_tfield(0, MR_tempr1, 3);
+	MR_r1 = MR_sv(1);
+	MR_r2 = MR_tempr1;
+	}
+	MR_np_call_localret_ent(mdprof_fb__automatic_parallelism__autopar_find_best_par__update_incomplete_parallelisation_cost_4_0,
+		mdprof_fb__automatic_parallelism__autopar_find_best_par__generate_parallelisations_loop_8_0_i11);
+MR_def_label(mdprof_fb__automatic_parallelism__autopar_find_best_par__generate_parallelisations_loop_8_0,11)
+	MR_MAYBE_INIT_LOCAL_THREAD_ENGINE_BASE
+	{
+	MR_Word MR_tempr1, MR_tempr2, MR_tempr3;
+	MR_tag_alloc_heap(MR_tempr1, 1, (MR_Integer) 2);
+	MR_tfield(1, MR_tempr1, 0) = MR_sv(8);
+	MR_tempr3 = MR_sv(7);
+	MR_tfield(1, MR_tempr1, 1) = MR_tfield(0, MR_tempr3, 4);
+	MR_tag_alloc_heap(MR_tempr2, 0, (MR_Integer) 10);
+	MR_tfield(0, MR_tempr2, 0) = MR_tfield(0, MR_tempr3, 0);
+	MR_tfield(0, MR_tempr2, 1) = MR_tfield(0, MR_tempr3, 1);
+	MR_tfield(0, MR_tempr2, 2) = MR_tfield(0, MR_tempr3, 2);
+	MR_tfield(0, MR_tempr2, 3) = MR_sv(6);
+	MR_tfield(0, MR_tempr2, 4) = MR_tempr1;
+	MR_tfield(0, MR_tempr2, 5) = MR_tfield(0, MR_tempr3, 5);
+	MR_tfield(0, MR_tempr2, 6) = MR_tfield(0, MR_tempr3, 6);
+	MR_tfield(0, MR_tempr2, 7) = MR_tfield(0, MR_tempr3, 7);
+	MR_tfield(0, MR_tempr2, 8) = MR_tfield(0, MR_tempr3, 8);
+	MR_tfield(0, MR_tempr2, 9) = MR_tfield(0, MR_tempr3, 9);
+	MR_sv(7) = MR_r2;
+	MR_sv(8) = MR_r1;
+	MR_r1 = MR_sv(1);
+	MR_r2 = MR_tempr2;
+	}
+	MR_np_call_localret_ent(mdprof_fb__automatic_parallelism__autopar_find_best_par__update_incomplete_parallelisation_cost_4_0,
+		mdprof_fb__automatic_parallelism__autopar_find_best_par__generate_parallelisations_loop_8_0_i14);
+MR_def_label(mdprof_fb__automatic_parallelism__autopar_find_best_par__generate_parallelisations_loop_8_0,14)
+	MR_MAYBE_INIT_LOCAL_THREAD_ENGINE_BASE
+	if (MR_LTAGS_TESTR(MR_sv(7),0,0)) {
+		MR_GOTO_LAB(mdprof_fb__automatic_parallelism__autopar_find_best_par__generate_parallelisations_loop_8_0_i16);
+	}
+	MR_sv(7) = MR_r1;
+	MR_r1 = MR_sv(2);
+	MR_r2 = MR_sv(4);
+	MR_r3 = (MR_Word) MR_tbmkword(0, 0);
+	MR_GOTO_LAB(mdprof_fb__automatic_parallelism__autopar_find_best_par__generate_parallelisations_loop_8_0_i15);
+MR_def_label(mdprof_fb__automatic_parallelism__autopar_find_best_par__generate_parallelisations_loop_8_0,16)
+	MR_MAYBE_INIT_LOCAL_THREAD_ENGINE_BASE
+	if (MR_LTAGS_TESTR(MR_r2,0,0)) {
+		MR_GOTO_LAB(mdprof_fb__automatic_parallelism__autopar_find_best_par__generate_parallelisations_loop_8_0_i18);
+	}
+	MR_r1 = MR_sv(2);
+	MR_r2 = MR_sv(4);
+	MR_sv(7) = MR_sv(8);
+	MR_r3 = (MR_Word) MR_tbmkword(0, 0);
+	MR_GOTO_LAB(mdprof_fb__automatic_parallelism__autopar_find_best_par__generate_parallelisations_loop_8_0_i15);
+MR_def_label(mdprof_fb__automatic_parallelism__autopar_find_best_par__generate_parallelisations_loop_8_0,18)
+	MR_MAYBE_INIT_LOCAL_THREAD_ENGINE_BASE
+	MR_f(1) = MR_word_to_float(MR_tfield(1, MR_r2, 0));
+	MR_f(2) = MR_word_to_float(MR_tfield(1, MR_sv(7), 0));
+	if ((MR_f(1) <= MR_f(2))) {
+		MR_GOTO_LAB(mdprof_fb__automatic_parallelism__autopar_find_best_par__generate_parallelisations_loop_8_0_i19);
+	}
+	MR_tag_alloc_heap(MR_r3, 1, (MR_Integer) 1);
+	MR_tfield(1, MR_r3, 0) = MR_r1;
+	MR_r1 = MR_sv(2);
+	MR_r2 = MR_sv(4);
+	MR_sv(7) = MR_sv(8);
+	MR_GOTO_LAB(mdprof_fb__automatic_parallelism__autopar_find_best_par__generate_parallelisations_loop_8_0_i15);
+MR_def_label(mdprof_fb__automatic_parallelism__autopar_find_best_par__generate_parallelisations_loop_8_0,19)
+	MR_MAYBE_INIT_LOCAL_THREAD_ENGINE_BASE
+	MR_tag_alloc_heap(MR_r3, 1, (MR_Integer) 1);
+	MR_tfield(1, MR_r3, 0) = MR_sv(8);
+	MR_sv(7) = MR_r1;
+	MR_r1 = MR_sv(2);
+	MR_r2 = MR_sv(4);
+MR_def_label(mdprof_fb__automatic_parallelism__autopar_find_best_par__generate_parallelisations_loop_8_0,15)
+	MR_MAYBE_INIT_LOCAL_THREAD_ENGINE_BASE
+	if (MR_LTAGS_TEST(MR_r3,0,0)) {
+		MR_GOTO_LAB(mdprof_fb__automatic_parallelism__autopar_find_best_par__generate_parallelisations_loop_8_0_i24);
+	}
+	MR_sv(2) = MR_r1;
+	MR_sv(4) = MR_r2;
+	MR_sv(8) = MR_tfield(1, MR_r3, 0);
+	MR_np_call_localret_ent(mdprof_fb__automatic_parallelism__autopar_find_best_par__should_expand_search_2_0,
+		mdprof_fb__automatic_parallelism__autopar_find_best_par__generate_parallelisations_loop_8_0_i26);
+MR_def_label(mdprof_fb__automatic_parallelism__autopar_find_best_par__generate_parallelisations_loop_8_0,26)
+	MR_MAYBE_INIT_LOCAL_THREAD_ENGINE_BASE
+	if (!(MR_r1)) {
+		MR_GOTO_LAB(mdprof_fb__automatic_parallelism__autopar_find_best_par__generate_parallelisations_loop_8_0_i23);
+	}
+	MR_r1 = MR_sv(1);
+	MR_r2 = MR_sv(3);
+	MR_r3 = MR_sv(7);
+	MR_r4 = MR_sv(4);
+	MR_np_call_localret_ent(mdprof_fb__automatic_parallelism__autopar_find_best_par__incomplete_parallelisation_is_good_enough_7_0,
+		mdprof_fb__automatic_parallelism__autopar_find_best_par__generate_parallelisations_loop_8_0_i28);
+MR_def_label(mdprof_fb__automatic_parallelism__autopar_find_best_par__generate_parallelisations_loop_8_0,28)
+	MR_MAYBE_INIT_LOCAL_THREAD_ENGINE_BASE
+	if (MR_INT_NE(MR_r3,0)) {
+		MR_GOTO_LAB(mdprof_fb__automatic_parallelism__autopar_find_best_par__generate_parallelisations_loop_8_0_i30);
+	}
+	MR_r1 = MR_sv(1);
+	MR_r3 = MR_sv(8);
+	MR_r5 = MR_r2;
+	MR_r2 = MR_sv(3);
+	MR_r4 = MR_r5;
+	MR_GOTO_LAB(mdprof_fb__automatic_parallelism__autopar_find_best_par__generate_parallelisations_loop_8_0_i29);
+MR_def_label(mdprof_fb__automatic_parallelism__autopar_find_best_par__generate_parallelisations_loop_8_0,30)
+	MR_MAYBE_INIT_LOCAL_THREAD_ENGINE_BASE
+	{
+	MR_Word MR_tempr1, MR_tempr2;
+	MR_tempr1 = MR_r1;
+	MR_r1 = MR_sv(1);
+	MR_tempr2 = MR_r2;
+	MR_r2 = MR_sv(2);
+	MR_r3 = MR_sv(5);
+	MR_r4 = MR_tempr1;
+	MR_r5 = MR_sv(3);
+	MR_r6 = MR_tempr2;
+	}
+	MR_np_localcall_lab(mdprof_fb__automatic_parallelism__autopar_find_best_par__generate_parallelisations_loop_8_0,
+		mdprof_fb__automatic_parallelism__autopar_find_best_par__generate_parallelisations_loop_8_0_i31);
+MR_def_label(mdprof_fb__automatic_parallelism__autopar_find_best_par__generate_parallelisations_loop_8_0,31)
+	MR_MAYBE_INIT_LOCAL_THREAD_ENGINE_BASE
+	{
+	MR_Word MR_tempr1, MR_tempr2;
+	MR_tempr1 = MR_r1;
+	MR_r1 = MR_sv(1);
+	MR_r3 = MR_sv(8);
+	MR_tempr2 = MR_r2;
+	MR_r2 = MR_tempr1;
+	MR_r4 = MR_tempr2;
+	}
+MR_def_label(mdprof_fb__automatic_parallelism__autopar_find_best_par__generate_parallelisations_loop_8_0,29)
+	MR_MAYBE_INIT_LOCAL_THREAD_ENGINE_BASE
+	MR_sv(1) = MR_r1;
+	MR_sv(7) = MR_r2;
+	MR_np_call_localret_ent(mdprof_fb__automatic_parallelism__autopar_find_best_par__incomplete_parallelisation_is_good_enough_7_0,
+		mdprof_fb__automatic_parallelism__autopar_find_best_par__generate_parallelisations_loop_8_0_i32);
+MR_def_label(mdprof_fb__automatic_parallelism__autopar_find_best_par__generate_parallelisations_loop_8_0,32)
+	MR_MAYBE_INIT_LOCAL_THREAD_ENGINE_BASE
+	if (MR_INT_NE(MR_r3,0)) {
+		MR_GOTO_LAB(mdprof_fb__automatic_parallelism__autopar_find_best_par__generate_parallelisations_loop_8_0_i34);
+	}
+	MR_r1 = MR_sv(7);
+	MR_decr_sp_and_return(9);
+MR_def_label(mdprof_fb__automatic_parallelism__autopar_find_best_par__generate_parallelisations_loop_8_0,34)
+	MR_MAYBE_INIT_LOCAL_THREAD_ENGINE_BASE
+	{
+	MR_Word MR_tempr1, MR_tempr2;
+	MR_tempr1 = MR_r1;
+	MR_r1 = MR_sv(1);
+	MR_tempr2 = MR_r2;
+	MR_r2 = MR_sv(2);
+	MR_r3 = MR_sv(5);
+	MR_r4 = MR_tempr1;
+	MR_r5 = MR_sv(7);
+	MR_r6 = MR_tempr2;
+	MR_succip_word = MR_sv(9);
+	MR_GOTO_LAB(mdprof_fb__automatic_parallelism__autopar_find_best_par__generate_parallelisations_loop_8_0_i102);
+	}
+MR_def_label(mdprof_fb__automatic_parallelism__autopar_find_best_par__generate_parallelisations_loop_8_0,23)
+	MR_MAYBE_INIT_LOCAL_THREAD_ENGINE_BASE
+	MR_r1 = MR_sv(2);
+	MR_r2 = MR_sv(4);
+MR_def_label(mdprof_fb__automatic_parallelism__autopar_find_best_par__generate_parallelisations_loop_8_0,24)
+	MR_MAYBE_INIT_LOCAL_THREAD_ENGINE_BASE
+	MR_sv(2) = MR_r1;
+	MR_r1 = MR_sv(1);
+	{
+	MR_Word MR_tempr1;
+	MR_tempr1 = MR_r2;
+	MR_r2 = MR_sv(3);
+	MR_r3 = MR_sv(7);
+	MR_r4 = MR_tempr1;
+	}
+	MR_np_call_localret_ent(mdprof_fb__automatic_parallelism__autopar_find_best_par__incomplete_parallelisation_is_good_enough_7_0,
+		mdprof_fb__automatic_parallelism__autopar_find_best_par__generate_parallelisations_loop_8_0_i36);
+MR_def_label(mdprof_fb__automatic_parallelism__autopar_find_best_par__generate_parallelisations_loop_8_0,36)
+	MR_MAYBE_INIT_LOCAL_THREAD_ENGINE_BASE
+	if (MR_INT_NE(MR_r3,0)) {
+		MR_GOTO_LAB(mdprof_fb__automatic_parallelism__autopar_find_best_par__generate_parallelisations_loop_8_0_i38);
+	}
+	MR_r1 = MR_sv(3);
+	MR_decr_sp_and_return(9);
+MR_def_label(mdprof_fb__automatic_parallelism__autopar_find_best_par__generate_parallelisations_loop_8_0,38)
+	MR_MAYBE_INIT_LOCAL_THREAD_ENGINE_BASE
+	{
+	MR_Word MR_tempr1, MR_tempr2;
+	MR_tempr1 = MR_r1;
+	MR_r1 = MR_sv(1);
+	MR_tempr2 = MR_r2;
+	MR_r2 = MR_sv(2);
+	MR_r3 = MR_sv(5);
+	MR_r4 = MR_tempr1;
+	MR_r5 = MR_sv(3);
+	MR_r6 = MR_tempr2;
+	MR_succip_word = MR_sv(9);
+	MR_GOTO_LAB(mdprof_fb__automatic_parallelism__autopar_find_best_par__generate_parallelisations_loop_8_0_i102);
+	}
+#ifdef MR_maybe_local_thread_engine_base
+	#undef MR_maybe_local_thread_engine_base
+	#define MR_maybe_local_thread_engine_base MR_thread_engine_base
+#endif
+MR_END_MODULE
+
+
+MR_BEGIN_MODULE(mdprof_fb__automatic_parallelism__autopar_find_best_par_module12)
+	MR_init_entry1(mdprof_fb__automatic_parallelism__autopar_find_best_par__start_building_parallelisation_2_0);
+	MR_INIT_PROC_LAYOUT_ADDR(mercury__mdprof_fb__automatic_parallelism__autopar_find_best_par__start_building_parallelisation_2_0);
+MR_BEGIN_CODE
+
+/*-------------------------------------------------------------------------*/
+/* code for 'start_building_parallelisation'/2 mode 0 */
+#ifdef MR_maybe_local_thread_engine_base
+	#undef MR_maybe_local_thread_engine_base
+	#define MR_maybe_local_thread_engine_base MR_local_thread_engine_base
+#endif
+MR_def_static(mdprof_fb__automatic_parallelism__autopar_find_best_par__start_building_parallelisation_2_0)
+	MR_MAYBE_INIT_LOCAL_THREAD_ENGINE_BASE
+	MR_tag_alloc_heap(MR_r2, 0, (MR_Integer) 10);
+	MR_tfield(0, MR_r2, 0) = MR_tfield(0, MR_r1, 0);
+	MR_tfield(0, MR_r2, 1) = MR_tfield(0, MR_r1, 1);
+	MR_tfield(0, MR_r2, 2) = MR_tfield(0, MR_r1, 2);
+	MR_tfield(0, MR_r2, 3) = MR_tfield(0, MR_r2, 1);
+	MR_tfield(0, MR_r2, 4) = (MR_Word) MR_tbmkword(0, 0);
+	MR_tfield(0, MR_r2, 5) = MR_tfield(0, MR_r1, 6);
+	MR_tfield(0, MR_r2, 6) = MR_tfield(0, MR_r1, 4);
+	MR_tfield(0, MR_r2, 7) = (MR_Word) MR_tbmkword(0, 0);
+	MR_tfield(0, MR_r2, 8) = (MR_Word) MR_tbmkword(0, 0);
+	MR_tfield(0, MR_r2, 9) = (MR_Word) MR_tbmkword(0, 0);
+	MR_r1 = MR_r2;
+	MR_proceed();
+#ifdef MR_maybe_local_thread_engine_base
+	#undef MR_maybe_local_thread_engine_base
+	#define MR_maybe_local_thread_engine_base MR_thread_engine_base
+#endif
+MR_END_MODULE
+
+
+MR_BEGIN_MODULE(mdprof_fb__automatic_parallelism__autopar_find_best_par_module13)
+	MR_init_entry1(mdprof_fb__automatic_parallelism__autopar_find_best_par__generate_parallelisations_4_0);
+	MR_INIT_PROC_LAYOUT_ADDR(mercury__mdprof_fb__automatic_parallelism__autopar_find_best_par__generate_parallelisations_4_0);
+	MR_init_label8(mdprof_fb__automatic_parallelism__autopar_find_best_par__generate_parallelisations_4_0,2,8,7,6,4,3,12,14)
+MR_BEGIN_CODE
+
+/*-------------------------------------------------------------------------*/
+/* code for 'generate_parallelisations'/4 mode 0 */
+#ifdef MR_maybe_local_thread_engine_base
+	#undef MR_maybe_local_thread_engine_base
+	#define MR_maybe_local_thread_engine_base MR_local_thread_engine_base
+#endif
+MR_def_static(mdprof_fb__automatic_parallelism__autopar_find_best_par__generate_parallelisations_4_0)
+	MR_MAYBE_INIT_LOCAL_THREAD_ENGINE_BASE
+	MR_incr_sp(4);
+	MR_sv(4) = (MR_Word) MR_succip;
+	MR_sv(1) = MR_r1;
+	MR_sv(2) = MR_r2;
+	{
+	MR_Word MR_tempr1;
+	MR_tempr1 = MR_r3;
+	MR_sv(3) = MR_tempr1;
+	MR_r1 = MR_tempr1;
+	}
+	MR_np_call_localret_ent(mdprof_fb__automatic_parallelism__autopar_find_best_par__start_building_parallelisation_2_0,
+		mdprof_fb__automatic_parallelism__autopar_find_best_par__generate_parallelisations_4_0_i2);
+MR_def_label(mdprof_fb__automatic_parallelism__autopar_find_best_par__generate_parallelisations_4_0,2)
+	MR_MAYBE_INIT_LOCAL_THREAD_ENGINE_BASE
+	{
+	MR_Word MR_tempr1, MR_tempr2, MR_tempr3;
+	MR_tempr1 = MR_tfield(0, MR_sv(3), 3);
+	MR_r4 = MR_tempr1;
+	if (MR_LTAGS_TEST(MR_tempr1,0,0)) {
+		MR_GOTO_LAB(mdprof_fb__automatic_parallelism__autopar_find_best_par__generate_parallelisations_4_0_i4);
+	}
+	MR_tempr2 = MR_tfield(1, MR_tempr1, 1);
+	MR_r5 = MR_tempr2;
+	if (MR_LTAGS_TEST(MR_tempr2,0,0)) {
+		MR_GOTO_LAB(mdprof_fb__automatic_parallelism__autopar_find_best_par__generate_parallelisations_4_0_i6);
+	}
+	MR_tempr3 = MR_tfield(1, MR_tempr1, 0);
+	MR_r6 = MR_tempr3;
+	if (MR_PTAG_TESTR(MR_tempr3,1)) {
+		MR_GOTO_LAB(mdprof_fb__automatic_parallelism__autopar_find_best_par__generate_parallelisations_4_0_i8);
+	}
+	MR_r7 = MR_r1;
+	MR_r1 = MR_sv(1);
+	MR_r2 = MR_sv(2);
+	MR_r4 = MR_r7;
+	MR_r8 = MR_tempr2;
+	MR_r5 = (((MR_Integer) MR_tfield(1, MR_tempr3, 0) + (MR_Integer) MR_tfield(1, MR_tempr3, 1)) - (MR_Integer) 1);
+	MR_r3 = MR_r8;
+	MR_GOTO_LAB(mdprof_fb__automatic_parallelism__autopar_find_best_par__generate_parallelisations_4_0_i7);
+	}
+MR_def_label(mdprof_fb__automatic_parallelism__autopar_find_best_par__generate_parallelisations_4_0,8)
+	MR_MAYBE_INIT_LOCAL_THREAD_ENGINE_BASE
+	{
+	MR_Word MR_tempr1, MR_tempr2;
+	MR_tempr1 = MR_r1;
+	MR_r1 = MR_sv(1);
+	MR_r2 = MR_sv(2);
+	MR_r4 = MR_tempr1;
+	MR_tempr2 = MR_r5;
+	MR_r5 = (((MR_Integer) MR_tfield(0, MR_r6, 0) + (MR_Integer) 1) - (MR_Integer) 1);
+	MR_r3 = MR_tempr2;
+	}
+MR_def_label(mdprof_fb__automatic_parallelism__autopar_find_best_par__generate_parallelisations_4_0,7)
+	MR_MAYBE_INIT_LOCAL_THREAD_ENGINE_BASE
+	{
+	MR_Word MR_tempr1, MR_tempr2;
+	MR_tag_alloc_heap(MR_tempr1, 0, (MR_Integer) 10);
+	MR_r6 = MR_tempr1;
+	MR_tempr2 = MR_r4;
+	MR_tfield(0, MR_tempr1, 0) = MR_tfield(0, MR_tempr2, 0);
+	MR_tfield(0, MR_tempr1, 1) = MR_tfield(0, MR_tempr2, 1);
+	MR_tfield(0, MR_tempr1, 2) = MR_tfield(0, MR_tempr2, 2);
+	MR_tfield(0, MR_tempr1, 3) = MR_r5;
+	MR_tfield(0, MR_tempr1, 4) = MR_tfield(0, MR_tempr2, 4);
+	MR_tfield(0, MR_tempr1, 5) = MR_tfield(0, MR_tempr2, 5);
+	MR_tfield(0, MR_tempr1, 6) = MR_tfield(0, MR_tempr2, 6);
+	MR_tfield(0, MR_tempr1, 7) = MR_tfield(0, MR_tempr2, 7);
+	MR_tfield(0, MR_tempr1, 8) = MR_tfield(0, MR_tempr2, 8);
+	MR_tfield(0, MR_tempr1, 9) = MR_tfield(0, MR_tempr2, 9);
+	MR_r4 = MR_tempr1;
+	MR_r5 = (MR_Word) MR_tbmkword(0, 0);
+	MR_r6 = (MR_Word) MR_TAG_COMMON(0,2,0);
+	}
+	MR_np_call_localret_ent(mdprof_fb__automatic_parallelism__autopar_find_best_par__generate_parallelisations_loop_8_0,
+		mdprof_fb__automatic_parallelism__autopar_find_best_par__generate_parallelisations_4_0_i12);
+MR_def_label(mdprof_fb__automatic_parallelism__autopar_find_best_par__generate_parallelisations_4_0,6)
+	MR_MAYBE_INIT_LOCAL_THREAD_ENGINE_BASE
+	MR_r1 = (MR_Word) MR_string_const("mdprof_fb.automatic_parallelism.autopar_find_best_par", 53);
+	MR_r2 = (MR_Word) MR_string_const("predicate \140mdprof_fb.automatic_parallelism.autopar_find_best_par.generate_parallelisations\'/4", 93);
+	MR_r3 = (MR_Word) MR_string_const("only one goal group", 19);
+	MR_np_call_localret_ent(require__unexpected_3_0,
+		mdprof_fb__automatic_parallelism__autopar_find_best_par__generate_parallelisations_4_0_i3);
+MR_def_label(mdprof_fb__automatic_parallelism__autopar_find_best_par__generate_parallelisations_4_0,4)
+	MR_MAYBE_INIT_LOCAL_THREAD_ENGINE_BASE
+	MR_r1 = (MR_Word) MR_string_const("mdprof_fb.automatic_parallelism.autopar_find_best_par", 53);
+	MR_r2 = (MR_Word) MR_string_const("predicate \140mdprof_fb.automatic_parallelism.autopar_find_best_par.generate_parallelisations\'/4", 93);
+	MR_r3 = (MR_Word) MR_string_const("no goal groups", 14);
+	MR_np_call_localret_ent(require__unexpected_3_0,
+		mdprof_fb__automatic_parallelism__autopar_find_best_par__generate_parallelisations_4_0_i3);
+MR_def_label(mdprof_fb__automatic_parallelism__autopar_find_best_par__generate_parallelisations_4_0,3)
+	MR_MAYBE_INIT_LOCAL_THREAD_ENGINE_BASE
+	MR_np_call_localret_ent(mdprof_fb__automatic_parallelism__autopar_find_best_par__generate_parallelisations_loop_8_0,
+		mdprof_fb__automatic_parallelism__autopar_find_best_par__generate_parallelisations_4_0_i12);
+MR_def_label(mdprof_fb__automatic_parallelism__autopar_find_best_par__generate_parallelisations_4_0,12)
+	MR_MAYBE_INIT_LOCAL_THREAD_ENGINE_BASE
+	if (MR_LTAGS_TESTR(MR_r1,0,0)) {
+		MR_GOTO_LAB(mdprof_fb__automatic_parallelism__autopar_find_best_par__generate_parallelisations_4_0_i14);
+	}
+	MR_tag_alloc_heap(MR_r1, 0, (MR_Integer) 2);
+	MR_tfield(0, MR_r1, 0) = (MR_Word) MR_tbmkword(0, 0);
+	MR_tfield(0, MR_r1, 1) = MR_r2;
+	MR_decr_sp_and_return(4);
+MR_def_label(mdprof_fb__automatic_parallelism__autopar_find_best_par__generate_parallelisations_4_0,14)
+	MR_MAYBE_INIT_LOCAL_THREAD_ENGINE_BASE
+	{
+	MR_Word MR_tempr1;
+	MR_tag_alloc_heap(MR_tempr1, 0, (MR_Integer) 2);
+	MR_tfield(0, MR_tempr1, 0) = MR_tfield(1, MR_r1, 0);
+	MR_tfield(0, MR_tempr1, 1) = MR_r2;
+	MR_r1 = MR_tempr1;
+	MR_decr_sp_and_return(4);
+	}
+#ifdef MR_maybe_local_thread_engine_base
+	#undef MR_maybe_local_thread_engine_base
+	#define MR_maybe_local_thread_engine_base MR_thread_engine_base
+#endif
+MR_END_MODULE
+
+MR_decl_entry(builtin__unify_2_0);
+
+MR_BEGIN_MODULE(mdprof_fb__automatic_parallelism__autopar_find_best_par_module14)
+	MR_init_entry1(__Unify___mdprof_fb__automatic_parallelism__autopar_find_best_par__best_par_algorithm_simple_0_0);
+	MR_INIT_PROC_LAYOUT_ADDR(mercury____Unify___mdprof_fb__automatic_parallelism__autopar_find_best_par__best_par_algorithm_simple_0_0);
+	MR_init_label3(__Unify___mdprof_fb__automatic_parallelism__autopar_find_best_par__best_par_algorithm_simple_0_0,12,5,1)
+MR_BEGIN_CODE
+
+/*-------------------------------------------------------------------------*/
+/* code for '__Unify__'/2 mode 0 */
+#ifdef MR_maybe_local_thread_engine_base
+	#undef MR_maybe_local_thread_engine_base
+	#define MR_maybe_local_thread_engine_base MR_local_thread_engine_base
+#endif
+MR_def_static(__Unify___mdprof_fb__automatic_parallelism__autopar_find_best_par__best_par_algorithm_simple_0_0)
+	MR_MAYBE_INIT_LOCAL_THREAD_ENGINE_BASE
+	if ((MR_r1 == MR_r2)) {
+		MR_GOTO_LAB(__Unify___mdprof_fb__automatic_parallelism__autopar_find_best_par__best_par_algorithm_simple_0_0_i12);
+	}
+	MR_incr_sp(3);
+	MR_sv(3) = (MR_Word) MR_succip;
+	{
+	MR_Word MR_tempr1;
+	MR_tempr1 = MR_r1;
+	MR_sv(1) = MR_tempr1;
+	MR_sv(2) = MR_r2;
+	if (MR_LTAGS_TESTR(MR_tempr1,0,0)) {
+		MR_GOTO_LAB(__Unify___mdprof_fb__automatic_parallelism__autopar_find_best_par__best_par_algorithm_simple_0_0_i5);
+	}
+	MR_r1 = (MR_sv(2) == MR_tempr1);
+	MR_decr_sp(3);
+	MR_proceed();
+	}
+MR_def_label(__Unify___mdprof_fb__automatic_parallelism__autopar_find_best_par__best_par_algorithm_simple_0_0,12)
+	MR_MAYBE_INIT_LOCAL_THREAD_ENGINE_BASE
+	MR_r1 = MR_TRUE;
+	MR_proceed();
+MR_def_label(__Unify___mdprof_fb__automatic_parallelism__autopar_find_best_par__best_par_algorithm_simple_0_0,5)
+	MR_MAYBE_INIT_LOCAL_THREAD_ENGINE_BASE
+	if (MR_LTAGS_TEST(MR_sv(2),0,0)) {
+		MR_GOTO_LAB(__Unify___mdprof_fb__automatic_parallelism__autopar_find_best_par__best_par_algorithm_simple_0_0_i1);
+	}
+	MR_r1 = (MR_Word) MR_TAG_COMMON(0,0,5);
+	MR_r2 = MR_tfield(1, MR_sv(1), 0);
+	MR_r3 = MR_tfield(1, MR_sv(2), 0);
+	MR_succip_word = MR_sv(3);
+	MR_decr_sp(3);
+	MR_np_tailcall_ent(builtin__unify_2_0);
+MR_def_label(__Unify___mdprof_fb__automatic_parallelism__autopar_find_best_par__best_par_algorithm_simple_0_0,1)
+	MR_MAYBE_INIT_LOCAL_THREAD_ENGINE_BASE
+	MR_r1 = MR_FALSE;
+	MR_decr_sp_and_return(3);
+#ifdef MR_maybe_local_thread_engine_base
+	#undef MR_maybe_local_thread_engine_base
+	#define MR_maybe_local_thread_engine_base MR_thread_engine_base
+#endif
+MR_END_MODULE
+
+MR_decl_entry(builtin__compare_3_0);
+
+MR_BEGIN_MODULE(mdprof_fb__automatic_parallelism__autopar_find_best_par_module15)
+	MR_init_entry1(__Compare___mdprof_fb__automatic_parallelism__autopar_find_best_par__best_par_algorithm_simple_0_0);
+	MR_INIT_PROC_LAYOUT_ADDR(mercury____Compare___mdprof_fb__automatic_parallelism__autopar_find_best_par__best_par_algorithm_simple_0_0);
+	MR_init_label4(__Compare___mdprof_fb__automatic_parallelism__autopar_find_best_par__best_par_algorithm_simple_0_0,18,7,5,9)
+MR_BEGIN_CODE
+
+/*-------------------------------------------------------------------------*/
+/* code for '__Compare__'/3 mode 0 */
+#ifdef MR_maybe_local_thread_engine_base
+	#undef MR_maybe_local_thread_engine_base
+	#define MR_maybe_local_thread_engine_base MR_local_thread_engine_base
+#endif
+MR_def_static(__Compare___mdprof_fb__automatic_parallelism__autopar_find_best_par__best_par_algorithm_simple_0_0)
+	MR_MAYBE_INIT_LOCAL_THREAD_ENGINE_BASE
+	MR_incr_sp(3);
+	MR_sv(3) = (MR_Word) MR_succip;
+	if ((MR_r1 == MR_r2)) {
+		MR_GOTO_LAB(__Compare___mdprof_fb__automatic_parallelism__autopar_find_best_par__best_par_algorithm_simple_0_0_i18);
+	}
+	MR_sv(1) = MR_r1;
+	MR_sv(2) = MR_r2;
+	if (MR_LTAGS_TESTR(MR_sv(1),0,0)) {
+		MR_GOTO_LAB(__Compare___mdprof_fb__automatic_parallelism__autopar_find_best_par__best_par_algorithm_simple_0_0_i5);
+	}
+	if (MR_LTAGS_TESTR(MR_sv(2),0,0)) {
+		MR_GOTO_LAB(__Compare___mdprof_fb__automatic_parallelism__autopar_find_best_par__best_par_algorithm_simple_0_0_i7);
+	}
+MR_def_label(__Compare___mdprof_fb__automatic_parallelism__autopar_find_best_par__best_par_algorithm_simple_0_0,18)
+	MR_MAYBE_INIT_LOCAL_THREAD_ENGINE_BASE
+	MR_r1 = (MR_Integer) 0;
+	MR_decr_sp_and_return(3);
+MR_def_label(__Compare___mdprof_fb__automatic_parallelism__autopar_find_best_par__best_par_algorithm_simple_0_0,7)
+	MR_MAYBE_INIT_LOCAL_THREAD_ENGINE_BASE
+	MR_r1 = (MR_Integer) 2;
+	MR_decr_sp_and_return(3);
+MR_def_label(__Compare___mdprof_fb__automatic_parallelism__autopar_find_best_par__best_par_algorithm_simple_0_0,5)
+	MR_MAYBE_INIT_LOCAL_THREAD_ENGINE_BASE
+	if (MR_LTAGS_TESTR(MR_sv(2),0,0)) {
+		MR_GOTO_LAB(__Compare___mdprof_fb__automatic_parallelism__autopar_find_best_par__best_par_algorithm_simple_0_0_i9);
+	}
+	MR_r1 = (MR_Integer) 1;
+	MR_decr_sp_and_return(3);
+MR_def_label(__Compare___mdprof_fb__automatic_parallelism__autopar_find_best_par__best_par_algorithm_simple_0_0,9)
+	MR_MAYBE_INIT_LOCAL_THREAD_ENGINE_BASE
+	MR_r1 = (MR_Word) MR_TAG_COMMON(0,0,5);
+	MR_r2 = MR_tfield(1, MR_sv(1), 0);
+	MR_r3 = MR_tfield(1, MR_sv(2), 0);
+	MR_succip_word = MR_sv(3);
+	MR_decr_sp(3);
+	MR_np_tailcall_ent(builtin__compare_3_0);
+#ifdef MR_maybe_local_thread_engine_base
+	#undef MR_maybe_local_thread_engine_base
+	#define MR_maybe_local_thread_engine_base MR_thread_engine_base
+#endif
+MR_END_MODULE
+
+MR_decl_entry(__Unify___list__list_1_0);
+
+MR_BEGIN_MODULE(mdprof_fb__automatic_parallelism__autopar_find_best_par_module16)
+	MR_init_entry1(__Unify___mdprof_fb__automatic_parallelism__autopar_find_best_par__best_solutions_1_0);
+	MR_INIT_PROC_LAYOUT_ADDR(mercury____Unify___mdprof_fb__automatic_parallelism__autopar_find_best_par__best_solutions_1_0);
+	MR_init_label4(__Unify___mdprof_fb__automatic_parallelism__autopar_find_best_par__best_solutions_1_0,12,5,7,1)
+MR_BEGIN_CODE
+
+/*-------------------------------------------------------------------------*/
+/* code for '__Unify__'/2 mode 0 */
+#ifdef MR_maybe_local_thread_engine_base
+	#undef MR_maybe_local_thread_engine_base
+	#define MR_maybe_local_thread_engine_base MR_local_thread_engine_base
+#endif
+MR_def_static(__Unify___mdprof_fb__automatic_parallelism__autopar_find_best_par__best_solutions_1_0)
+	MR_MAYBE_INIT_LOCAL_THREAD_ENGINE_BASE
+	if ((MR_r2 == MR_r3)) {
+		MR_GOTO_LAB(__Unify___mdprof_fb__automatic_parallelism__autopar_find_best_par__best_solutions_1_0_i12);
+	}
+	MR_incr_sp(8);
+	MR_sv(8) = (MR_Word) MR_succip;
+	{
+	MR_Word MR_tempr1;
+	MR_tempr1 = MR_r2;
+	MR_sv(1) = MR_tempr1;
+	MR_sv(4) = MR_r3;
+	MR_sv(7) = MR_r1;
+	if (MR_LTAGS_TESTR(MR_tempr1,0,0)) {
+		MR_GOTO_LAB(__Unify___mdprof_fb__automatic_parallelism__autopar_find_best_par__best_solutions_1_0_i5);
+	}
+	MR_r1 = (MR_sv(4) == MR_tempr1);
+	MR_decr_sp(8);
+	MR_proceed();
+	}
+MR_def_label(__Unify___mdprof_fb__automatic_parallelism__autopar_find_best_par__best_solutions_1_0,12)
+	MR_MAYBE_INIT_LOCAL_THREAD_ENGINE_BASE
+	MR_r1 = MR_TRUE;
+	MR_proceed();
+MR_def_label(__Unify___mdprof_fb__automatic_parallelism__autopar_find_best_par__best_solutions_1_0,5)
+	MR_MAYBE_INIT_LOCAL_THREAD_ENGINE_BASE
+	if (MR_LTAGS_TEST(MR_sv(4),0,0)) {
+		MR_GOTO_LAB(__Unify___mdprof_fb__automatic_parallelism__autopar_find_best_par__best_solutions_1_0_i1);
+	}
+	{
+	MR_Word MR_tempr1, MR_tempr2;
+	MR_tempr1 = MR_sv(1);
+	* (MR_Float *) &MR_sv(3) = MR_float_from_dword_ptr(&MR_tfield(1, MR_tempr1, 1));
+	MR_tempr2 = MR_sv(4);
+	* (MR_Float *) &MR_sv(6) = MR_float_from_dword_ptr(&MR_tfield(1, MR_tempr2, 1));
+	MR_r1 = MR_sv(7);
+	MR_r2 = MR_tfield(1, MR_tempr1, 0);
+	MR_r3 = MR_tfield(1, MR_tempr2, 0);
+	}
+	MR_np_call_localret_ent(__Unify___list__list_1_0,
+		__Unify___mdprof_fb__automatic_parallelism__autopar_find_best_par__best_solutions_1_0_i7);
+MR_def_label(__Unify___mdprof_fb__automatic_parallelism__autopar_find_best_par__best_solutions_1_0,7)
+	MR_MAYBE_INIT_LOCAL_THREAD_ENGINE_BASE
+	if (!(MR_r1)) {
+		MR_GOTO_LAB(__Unify___mdprof_fb__automatic_parallelism__autopar_find_best_par__best_solutions_1_0_i1);
+	}
+	MR_r1 = (MR_float_from_dword_ptr(&MR_sv(3)) == MR_float_from_dword_ptr(&MR_sv(6)));
+	MR_decr_sp_and_return(8);
+MR_def_label(__Unify___mdprof_fb__automatic_parallelism__autopar_find_best_par__best_solutions_1_0,1)
+	MR_MAYBE_INIT_LOCAL_THREAD_ENGINE_BASE
+	MR_r1 = MR_FALSE;
+	MR_decr_sp_and_return(8);
+#ifdef MR_maybe_local_thread_engine_base
+	#undef MR_maybe_local_thread_engine_base
+	#define MR_maybe_local_thread_engine_base MR_thread_engine_base
+#endif
+MR_END_MODULE
+
+MR_decl_entry(__Compare___list__list_1_0);
+MR_decl_entry(private_builtin__builtin_compare_float_3_0);
+
+MR_BEGIN_MODULE(mdprof_fb__automatic_parallelism__autopar_find_best_par_module17)
+	MR_init_entry1(__Compare___mdprof_fb__automatic_parallelism__autopar_find_best_par__best_solutions_1_0);
+	MR_INIT_PROC_LAYOUT_ADDR(mercury____Compare___mdprof_fb__automatic_parallelism__autopar_find_best_par__best_solutions_1_0);
+	MR_init_label6(__Compare___mdprof_fb__automatic_parallelism__autopar_find_best_par__best_solutions_1_0,24,7,5,9,11,16)
+MR_BEGIN_CODE
+
+/*-------------------------------------------------------------------------*/
+/* code for '__Compare__'/3 mode 0 */
+#ifdef MR_maybe_local_thread_engine_base
+	#undef MR_maybe_local_thread_engine_base
+	#define MR_maybe_local_thread_engine_base MR_local_thread_engine_base
+#endif
+MR_def_static(__Compare___mdprof_fb__automatic_parallelism__autopar_find_best_par__best_solutions_1_0)
+	MR_MAYBE_INIT_LOCAL_THREAD_ENGINE_BASE
+	MR_incr_sp(8);
+	MR_sv(8) = (MR_Word) MR_succip;
+	if ((MR_r2 == MR_r3)) {
+		MR_GOTO_LAB(__Compare___mdprof_fb__automatic_parallelism__autopar_find_best_par__best_solutions_1_0_i24);
+	}
+	MR_sv(1) = MR_r2;
+	MR_sv(5) = MR_r3;
+	MR_sv(4) = MR_r1;
+	if (MR_LTAGS_TESTR(MR_sv(1),0,0)) {
+		MR_GOTO_LAB(__Compare___mdprof_fb__automatic_parallelism__autopar_find_best_par__best_solutions_1_0_i5);
+	}
+	if (MR_LTAGS_TESTR(MR_sv(5),0,0)) {
+		MR_GOTO_LAB(__Compare___mdprof_fb__automatic_parallelism__autopar_find_best_par__best_solutions_1_0_i7);
+	}
+MR_def_label(__Compare___mdprof_fb__automatic_parallelism__autopar_find_best_par__best_solutions_1_0,24)
+	MR_MAYBE_INIT_LOCAL_THREAD_ENGINE_BASE
+	MR_r1 = (MR_Integer) 0;
+	MR_decr_sp_and_return(8);
+MR_def_label(__Compare___mdprof_fb__automatic_parallelism__autopar_find_best_par__best_solutions_1_0,7)
+	MR_MAYBE_INIT_LOCAL_THREAD_ENGINE_BASE
+	MR_r1 = (MR_Integer) 1;
+	MR_decr_sp_and_return(8);
+MR_def_label(__Compare___mdprof_fb__automatic_parallelism__autopar_find_best_par__best_solutions_1_0,5)
+	MR_MAYBE_INIT_LOCAL_THREAD_ENGINE_BASE
+	if (MR_LTAGS_TESTR(MR_sv(5),0,0)) {
+		MR_GOTO_LAB(__Compare___mdprof_fb__automatic_parallelism__autopar_find_best_par__best_solutions_1_0_i9);
+	}
+	MR_r1 = (MR_Integer) 2;
+	MR_decr_sp_and_return(8);
+MR_def_label(__Compare___mdprof_fb__automatic_parallelism__autopar_find_best_par__best_solutions_1_0,9)
+	MR_MAYBE_INIT_LOCAL_THREAD_ENGINE_BASE
+	{
+	MR_Word MR_tempr1, MR_tempr2;
+	MR_tempr1 = MR_sv(1);
+	* (MR_Float *) &MR_sv(7) = MR_float_from_dword_ptr(&MR_tfield(1, MR_tempr1, 1));
+	MR_tempr2 = MR_sv(5);
+	* (MR_Float *) &MR_sv(3) = MR_float_from_dword_ptr(&MR_tfield(1, MR_tempr2, 1));
+	MR_r1 = MR_sv(4);
+	MR_r2 = MR_tfield(1, MR_tempr1, 0);
+	MR_r3 = MR_tfield(1, MR_tempr2, 0);
+	}
+	MR_np_call_localret_ent(__Compare___list__list_1_0,
+		__Compare___mdprof_fb__automatic_parallelism__autopar_find_best_par__best_solutions_1_0_i11);
+MR_def_label(__Compare___mdprof_fb__automatic_parallelism__autopar_find_best_par__best_solutions_1_0,11)
+	MR_MAYBE_INIT_LOCAL_THREAD_ENGINE_BASE
+	if (MR_INT_NE(MR_r1,0)) {
+		MR_GOTO_LAB(__Compare___mdprof_fb__automatic_parallelism__autopar_find_best_par__best_solutions_1_0_i16);
+	}
+	MR_f(1) = MR_float_from_dword_ptr(&MR_sv(7));
+	MR_f(2) = MR_float_from_dword_ptr(&MR_sv(3));
+	MR_succip_word = MR_sv(8);
+	MR_decr_sp(8);
+	MR_np_tailcall_ent(private_builtin__builtin_compare_float_3_0);
+MR_def_label(__Compare___mdprof_fb__automatic_parallelism__autopar_find_best_par__best_solutions_1_0,16)
+	MR_MAYBE_INIT_LOCAL_THREAD_ENGINE_BASE
+	MR_decr_sp_and_return(8);
+#ifdef MR_maybe_local_thread_engine_base
+	#undef MR_maybe_local_thread_engine_base
+	#define MR_maybe_local_thread_engine_base MR_thread_engine_base
+#endif
+MR_END_MODULE
+
+
+MR_BEGIN_MODULE(mdprof_fb__automatic_parallelism__autopar_find_best_par_module18)
+	MR_init_entry1(__Unify___mdprof_fb__automatic_parallelism__autopar_find_best_par__bnb_profile_0_0);
+	MR_INIT_PROC_LAYOUT_ADDR(mercury____Unify___mdprof_fb__automatic_parallelism__autopar_find_best_par__bnb_profile_0_0);
+	MR_init_label2(__Unify___mdprof_fb__automatic_parallelism__autopar_find_best_par__bnb_profile_0_0,4,1)
+MR_BEGIN_CODE
+
+/*-------------------------------------------------------------------------*/
+/* code for '__Unify__'/2 mode 0 */
+#ifdef MR_maybe_local_thread_engine_base
+	#undef MR_maybe_local_thread_engine_base
+	#define MR_maybe_local_thread_engine_base MR_local_thread_engine_base
+#endif
+MR_def_static(__Unify___mdprof_fb__automatic_parallelism__autopar_find_best_par__bnb_profile_0_0)
+	MR_MAYBE_INIT_LOCAL_THREAD_ENGINE_BASE
+	MR_incr_sp(2);
+	if ((MR_r1 == MR_r2)) {
+		MR_GOTO_LAB(__Unify___mdprof_fb__automatic_parallelism__autopar_find_best_par__bnb_profile_0_0_i4);
+	}
+	{
+	MR_Word MR_tempr1, MR_tempr2;
+	MR_tempr1 = MR_r1;
+	MR_sv(1) = MR_tempr1;
+	MR_tempr2 = MR_r2;
+	MR_sv(2) = MR_tempr2;
+	MR_r1 = MR_tfield(0, MR_tempr1, 0);
+	MR_r2 = MR_tfield(0, MR_tempr2, 0);
+	if ((MR_r1 != MR_r2)) {
+		MR_GOTO_LAB(__Unify___mdprof_fb__automatic_parallelism__autopar_find_best_par__bnb_profile_0_0_i1);
+	}
+	MR_r1 = MR_tfield(0, MR_tempr1, 1);
+	MR_r2 = MR_tfield(0, MR_tempr2, 1);
+	if ((MR_r1 != MR_r2)) {
+		MR_GOTO_LAB(__Unify___mdprof_fb__automatic_parallelism__autopar_find_best_par__bnb_profile_0_0_i1);
+	}
+	MR_r1 = MR_tfield(0, MR_tempr1, 2);
+	MR_r2 = MR_tfield(0, MR_tempr2, 2);
+	if ((MR_r1 != MR_r2)) {
+		MR_GOTO_LAB(__Unify___mdprof_fb__automatic_parallelism__autopar_find_best_par__bnb_profile_0_0_i1);
+	}
+	MR_r1 = MR_tfield(0, MR_tempr1, 3);
+	MR_r2 = MR_tfield(0, MR_tempr2, 3);
+	if ((MR_r1 != MR_r2)) {
+		MR_GOTO_LAB(__Unify___mdprof_fb__automatic_parallelism__autopar_find_best_par__bnb_profile_0_0_i1);
+	}
+	MR_r1 = MR_tfield(0, MR_tempr1, 4);
+	MR_r2 = MR_tfield(0, MR_tempr2, 4);
+	if ((MR_r1 != MR_r2)) {
+		MR_GOTO_LAB(__Unify___mdprof_fb__automatic_parallelism__autopar_find_best_par__bnb_profile_0_0_i1);
+	}
+	MR_r1 = MR_tfield(0, MR_tempr1, 5);
+	MR_r2 = MR_tfield(0, MR_tempr2, 5);
+	MR_r1 = (MR_r1 == MR_r2);
+	MR_decr_sp(2);
+	MR_proceed();
+	}
+MR_def_label(__Unify___mdprof_fb__automatic_parallelism__autopar_find_best_par__bnb_profile_0_0,4)
+	MR_MAYBE_INIT_LOCAL_THREAD_ENGINE_BASE
+	MR_decr_sp(2);
+	MR_r1 = MR_TRUE;
+	MR_proceed();
+MR_def_label(__Unify___mdprof_fb__automatic_parallelism__autopar_find_best_par__bnb_profile_0_0,1)
+	MR_MAYBE_INIT_LOCAL_THREAD_ENGINE_BASE
+	MR_decr_sp(2);
+	MR_r1 = MR_FALSE;
+	MR_proceed();
+#ifdef MR_maybe_local_thread_engine_base
+	#undef MR_maybe_local_thread_engine_base
+	#define MR_maybe_local_thread_engine_base MR_thread_engine_base
+#endif
+MR_END_MODULE
+
+MR_decl_entry(private_builtin__builtin_compare_int_3_0);
+
+MR_BEGIN_MODULE(mdprof_fb__automatic_parallelism__autopar_find_best_par_module19)
+	MR_init_entry1(__Compare___mdprof_fb__automatic_parallelism__autopar_find_best_par__bnb_profile_0_0);
+	MR_INIT_PROC_LAYOUT_ADDR(mercury____Compare___mdprof_fb__automatic_parallelism__autopar_find_best_par__bnb_profile_0_0);
+	MR_init_label8(__Compare___mdprof_fb__automatic_parallelism__autopar_find_best_par__bnb_profile_0_0,3,2,5,9,13,17,21,53)
+MR_BEGIN_CODE
+
+/*-------------------------------------------------------------------------*/
+/* code for '__Compare__'/3 mode 0 */
+#ifdef MR_maybe_local_thread_engine_base
+	#undef MR_maybe_local_thread_engine_base
+	#define MR_maybe_local_thread_engine_base MR_local_thread_engine_base
+#endif
+MR_def_static(__Compare___mdprof_fb__automatic_parallelism__autopar_find_best_par__bnb_profile_0_0)
+	MR_MAYBE_INIT_LOCAL_THREAD_ENGINE_BASE
+	if ((MR_r1 == MR_r2)) {
+		MR_GOTO_LAB(__Compare___mdprof_fb__automatic_parallelism__autopar_find_best_par__bnb_profile_0_0_i3);
+	}
+	MR_incr_sp(11);
+	MR_sv(11) = (MR_Word) MR_succip;
+	MR_sv(1) = MR_r1;
+	MR_sv(2) = MR_r2;
+	MR_GOTO_LAB(__Compare___mdprof_fb__automatic_parallelism__autopar_find_best_par__bnb_profile_0_0_i2);
+MR_def_label(__Compare___mdprof_fb__automatic_parallelism__autopar_find_best_par__bnb_profile_0_0,3)
+	MR_MAYBE_INIT_LOCAL_THREAD_ENGINE_BASE
+	MR_r1 = (MR_Integer) 0;
+	MR_proceed();
+MR_def_label(__Compare___mdprof_fb__automatic_parallelism__autopar_find_best_par__bnb_profile_0_0,2)
+	MR_MAYBE_INIT_LOCAL_THREAD_ENGINE_BASE
+	{
+	MR_Word MR_tempr1, MR_tempr2, MR_tempr3, MR_tempr4, MR_tempr5, MR_tempr6;
+	MR_tempr5 = MR_sv(2);
+	MR_sv(10) = MR_tfield(0, MR_tempr5, 5);
+	MR_sv(9) = MR_tfield(0, MR_tempr5, 4);
+	MR_sv(8) = MR_tfield(0, MR_tempr5, 3);
+	MR_sv(7) = MR_tfield(0, MR_tempr5, 2);
+	MR_sv(6) = MR_tfield(0, MR_tempr5, 1);
+	MR_tempr6 = MR_sv(1);
+	MR_sv(5) = MR_tfield(0, MR_tempr6, 5);
+	MR_sv(4) = MR_tfield(0, MR_tempr6, 4);
+	MR_sv(3) = MR_tfield(0, MR_tempr6, 3);
+	MR_tempr1 = MR_tfield(0, MR_tempr6, 2);
+	MR_tempr2 = MR_tfield(0, MR_tempr6, 1);
+	MR_tempr3 = MR_tempr6;
+	MR_sv(1) = MR_tempr2;
+	MR_tempr4 = MR_tempr5;
+	MR_sv(2) = MR_tempr1;
+	MR_r1 = MR_tfield(0, MR_tempr3, 0);
+	MR_r2 = MR_tfield(0, MR_tempr4, 0);
+	}
+	MR_np_call_localret_ent(private_builtin__builtin_compare_int_3_0,
+		__Compare___mdprof_fb__automatic_parallelism__autopar_find_best_par__bnb_profile_0_0_i5);
+MR_def_label(__Compare___mdprof_fb__automatic_parallelism__autopar_find_best_par__bnb_profile_0_0,5)
+	MR_MAYBE_INIT_LOCAL_THREAD_ENGINE_BASE
+	if (MR_INT_NE(MR_r1,0)) {
+		MR_GOTO_LAB(__Compare___mdprof_fb__automatic_parallelism__autopar_find_best_par__bnb_profile_0_0_i53);
+	}
+	MR_r1 = MR_sv(1);
+	MR_r2 = MR_sv(6);
+	MR_np_call_localret_ent(private_builtin__builtin_compare_int_3_0,
+		__Compare___mdprof_fb__automatic_parallelism__autopar_find_best_par__bnb_profile_0_0_i9);
+MR_def_label(__Compare___mdprof_fb__automatic_parallelism__autopar_find_best_par__bnb_profile_0_0,9)
+	MR_MAYBE_INIT_LOCAL_THREAD_ENGINE_BASE
+	if (MR_INT_NE(MR_r1,0)) {
+		MR_GOTO_LAB(__Compare___mdprof_fb__automatic_parallelism__autopar_find_best_par__bnb_profile_0_0_i53);
+	}
+	MR_r1 = MR_sv(2);
+	MR_r2 = MR_sv(7);
+	MR_np_call_localret_ent(private_builtin__builtin_compare_int_3_0,
+		__Compare___mdprof_fb__automatic_parallelism__autopar_find_best_par__bnb_profile_0_0_i13);
+MR_def_label(__Compare___mdprof_fb__automatic_parallelism__autopar_find_best_par__bnb_profile_0_0,13)
+	MR_MAYBE_INIT_LOCAL_THREAD_ENGINE_BASE
+	if (MR_INT_NE(MR_r1,0)) {
+		MR_GOTO_LAB(__Compare___mdprof_fb__automatic_parallelism__autopar_find_best_par__bnb_profile_0_0_i53);
+	}
+	MR_r1 = MR_sv(3);
+	MR_r2 = MR_sv(8);
+	MR_np_call_localret_ent(private_builtin__builtin_compare_int_3_0,
+		__Compare___mdprof_fb__automatic_parallelism__autopar_find_best_par__bnb_profile_0_0_i17);
+MR_def_label(__Compare___mdprof_fb__automatic_parallelism__autopar_find_best_par__bnb_profile_0_0,17)
+	MR_MAYBE_INIT_LOCAL_THREAD_ENGINE_BASE
+	if (MR_INT_NE(MR_r1,0)) {
+		MR_GOTO_LAB(__Compare___mdprof_fb__automatic_parallelism__autopar_find_best_par__bnb_profile_0_0_i53);
+	}
+	MR_r1 = MR_sv(4);
+	MR_r2 = MR_sv(9);
+	MR_np_call_localret_ent(private_builtin__builtin_compare_int_3_0,
+		__Compare___mdprof_fb__automatic_parallelism__autopar_find_best_par__bnb_profile_0_0_i21);
+MR_def_label(__Compare___mdprof_fb__automatic_parallelism__autopar_find_best_par__bnb_profile_0_0,21)
+	MR_MAYBE_INIT_LOCAL_THREAD_ENGINE_BASE
+	if (MR_INT_NE(MR_r1,0)) {
+		MR_GOTO_LAB(__Compare___mdprof_fb__automatic_parallelism__autopar_find_best_par__bnb_profile_0_0_i53);
+	}
+	MR_r1 = MR_sv(5);
+	MR_r2 = MR_sv(10);
+	MR_succip_word = MR_sv(11);
+	MR_decr_sp(11);
+	MR_np_tailcall_ent(private_builtin__builtin_compare_int_3_0);
+MR_def_label(__Compare___mdprof_fb__automatic_parallelism__autopar_find_best_par__bnb_profile_0_0,53)
+	MR_MAYBE_INIT_LOCAL_THREAD_ENGINE_BASE
+	MR_decr_sp_and_return(11);
+#ifdef MR_maybe_local_thread_engine_base
+	#undef MR_maybe_local_thread_engine_base
+	#define MR_maybe_local_thread_engine_base MR_thread_engine_base
+#endif
+MR_END_MODULE
+
+MR_decl_entry(__Unify___mdbcomp__feedback__automatic_parallelism__conjuncts_are_dependent_0_0);
+MR_decl_entry(__Unify___mdbcomp__feedback__automatic_parallelism__parallel_exec_metrics_0_0);
+
+MR_BEGIN_MODULE(mdprof_fb__automatic_parallelism__autopar_find_best_par_module20)
+	MR_init_entry1(__Unify___mdprof_fb__automatic_parallelism__autopar_find_best_par__full_parallelisation_0_0);
+	MR_INIT_PROC_LAYOUT_ADDR(mercury____Unify___mdprof_fb__automatic_parallelism__autopar_find_best_par__full_parallelisation_0_0);
+	MR_init_label6(__Unify___mdprof_fb__automatic_parallelism__autopar_find_best_par__full_parallelisation_0_0,4,6,8,10,14,1)
+MR_BEGIN_CODE
+
+/*-------------------------------------------------------------------------*/
+/* code for '__Unify__'/2 mode 0 */
+#ifdef MR_maybe_local_thread_engine_base
+	#undef MR_maybe_local_thread_engine_base
+	#define MR_maybe_local_thread_engine_base MR_local_thread_engine_base
+#endif
+MR_define_entry(mercury____Unify___mdprof_fb__automatic_parallelism__autopar_find_best_par__full_parallelisation_0_0);
+	MR_MAYBE_INIT_LOCAL_THREAD_ENGINE_BASE
+	if ((MR_r1 == MR_r2)) {
+		MR_GOTO_LAB(__Unify___mdprof_fb__automatic_parallelism__autopar_find_best_par__full_parallelisation_0_0_i14);
+	}
+	MR_incr_sp(9);
+	MR_sv(9) = (MR_Word) MR_succip;
+	MR_sv(1) = MR_r1;
+	MR_sv(2) = MR_r2;
+	{
+	MR_Word MR_tempr1, MR_tempr2;
+	MR_tempr1 = MR_sv(1);
+	MR_sv(1) = MR_tfield(0, MR_tempr1, 1);
+	MR_tempr2 = MR_sv(2);
+	MR_sv(2) = MR_tfield(0, MR_tempr1, 2);
+	MR_sv(3) = MR_tfield(0, MR_tempr1, 3);
+	MR_sv(4) = MR_tfield(0, MR_tempr1, 4);
+	MR_sv(5) = MR_tfield(0, MR_tempr2, 1);
+	MR_sv(6) = MR_tfield(0, MR_tempr2, 2);
+	MR_sv(7) = MR_tfield(0, MR_tempr2, 3);
+	MR_sv(8) = MR_tfield(0, MR_tempr2, 4);
+	MR_r1 = (MR_Word) MR_TAG_COMMON(0,0,6);
+	MR_r2 = MR_tfield(0, MR_tempr1, 0);
+	MR_r3 = MR_tfield(0, MR_tempr2, 0);
+	}
+	MR_np_call_localret_ent(builtin__unify_2_0,
+		__Unify___mdprof_fb__automatic_parallelism__autopar_find_best_par__full_parallelisation_0_0_i4);
+MR_def_label(__Unify___mdprof_fb__automatic_parallelism__autopar_find_best_par__full_parallelisation_0_0,4)
+	MR_MAYBE_INIT_LOCAL_THREAD_ENGINE_BASE
+	if (!(MR_r1)) {
+		MR_GOTO_LAB(__Unify___mdprof_fb__automatic_parallelism__autopar_find_best_par__full_parallelisation_0_0_i1);
+	}
+	MR_r1 = (MR_Word) MR_TAG_COMMON(0,0,8);
+	MR_r2 = MR_sv(1);
+	MR_r3 = MR_sv(5);
+	MR_np_call_localret_ent(builtin__unify_2_0,
+		__Unify___mdprof_fb__automatic_parallelism__autopar_find_best_par__full_parallelisation_0_0_i6);
+MR_def_label(__Unify___mdprof_fb__automatic_parallelism__autopar_find_best_par__full_parallelisation_0_0,6)
+	MR_MAYBE_INIT_LOCAL_THREAD_ENGINE_BASE
+	if (!(MR_r1)) {
+		MR_GOTO_LAB(__Unify___mdprof_fb__automatic_parallelism__autopar_find_best_par__full_parallelisation_0_0_i1);
+	}
+	MR_r1 = (MR_Word) MR_TAG_COMMON(0,0,6);
+	MR_r2 = MR_sv(2);
+	MR_r3 = MR_sv(6);
+	MR_np_call_localret_ent(builtin__unify_2_0,
+		__Unify___mdprof_fb__automatic_parallelism__autopar_find_best_par__full_parallelisation_0_0_i8);
+MR_def_label(__Unify___mdprof_fb__automatic_parallelism__autopar_find_best_par__full_parallelisation_0_0,8)
+	MR_MAYBE_INIT_LOCAL_THREAD_ENGINE_BASE
+	if (!(MR_r1)) {
+		MR_GOTO_LAB(__Unify___mdprof_fb__automatic_parallelism__autopar_find_best_par__full_parallelisation_0_0_i1);
+	}
+	MR_r1 = MR_sv(3);
+	MR_r2 = MR_sv(7);
+	MR_np_call_localret_ent(__Unify___mdbcomp__feedback__automatic_parallelism__conjuncts_are_dependent_0_0,
+		__Unify___mdprof_fb__automatic_parallelism__autopar_find_best_par__full_parallelisation_0_0_i10);
+MR_def_label(__Unify___mdprof_fb__automatic_parallelism__autopar_find_best_par__full_parallelisation_0_0,10)
+	MR_MAYBE_INIT_LOCAL_THREAD_ENGINE_BASE
+	if (!(MR_r1)) {
+		MR_GOTO_LAB(__Unify___mdprof_fb__automatic_parallelism__autopar_find_best_par__full_parallelisation_0_0_i1);
+	}
+	MR_r1 = MR_sv(4);
+	MR_r2 = MR_sv(8);
+	MR_succip_word = MR_sv(9);
+	MR_decr_sp(9);
+	MR_np_tailcall_ent(__Unify___mdbcomp__feedback__automatic_parallelism__parallel_exec_metrics_0_0);
+MR_def_label(__Unify___mdprof_fb__automatic_parallelism__autopar_find_best_par__full_parallelisation_0_0,14)
+	MR_MAYBE_INIT_LOCAL_THREAD_ENGINE_BASE
+	MR_r1 = MR_TRUE;
+	MR_proceed();
+MR_def_label(__Unify___mdprof_fb__automatic_parallelism__autopar_find_best_par__full_parallelisation_0_0,1)
+	MR_MAYBE_INIT_LOCAL_THREAD_ENGINE_BASE
+	MR_r1 = MR_FALSE;
+	MR_decr_sp_and_return(9);
+#ifdef MR_maybe_local_thread_engine_base
+	#undef MR_maybe_local_thread_engine_base
+	#define MR_maybe_local_thread_engine_base MR_thread_engine_base
+#endif
+MR_END_MODULE
+
+MR_decl_entry(__Compare___mdbcomp__feedback__automatic_parallelism__conjuncts_are_dependent_0_0);
+MR_decl_entry(__Compare___mdbcomp__feedback__automatic_parallelism__parallel_exec_metrics_0_0);
+
+MR_BEGIN_MODULE(mdprof_fb__automatic_parallelism__autopar_find_best_par_module21)
+	MR_init_entry1(__Compare___mdprof_fb__automatic_parallelism__autopar_find_best_par__full_parallelisation_0_0);
+	MR_INIT_PROC_LAYOUT_ADDR(mercury____Compare___mdprof_fb__automatic_parallelism__autopar_find_best_par__full_parallelisation_0_0);
+	MR_init_label7(__Compare___mdprof_fb__automatic_parallelism__autopar_find_best_par__full_parallelisation_0_0,3,2,5,9,13,17,60)
+MR_BEGIN_CODE
+
+/*-------------------------------------------------------------------------*/
+/* code for '__Compare__'/3 mode 0 */
+#ifdef MR_maybe_local_thread_engine_base
+	#undef MR_maybe_local_thread_engine_base
+	#define MR_maybe_local_thread_engine_base MR_local_thread_engine_base
+#endif
+MR_define_entry(mercury____Compare___mdprof_fb__automatic_parallelism__autopar_find_best_par__full_parallelisation_0_0);
+	MR_MAYBE_INIT_LOCAL_THREAD_ENGINE_BASE
+	if ((MR_r1 == MR_r2)) {
+		MR_GOTO_LAB(__Compare___mdprof_fb__automatic_parallelism__autopar_find_best_par__full_parallelisation_0_0_i3);
+	}
+	MR_incr_sp(9);
+	MR_sv(9) = (MR_Word) MR_succip;
+	MR_sv(1) = MR_r1;
+	MR_sv(2) = MR_r2;
+	MR_GOTO_LAB(__Compare___mdprof_fb__automatic_parallelism__autopar_find_best_par__full_parallelisation_0_0_i2);
+MR_def_label(__Compare___mdprof_fb__automatic_parallelism__autopar_find_best_par__full_parallelisation_0_0,3)
+	MR_MAYBE_INIT_LOCAL_THREAD_ENGINE_BASE
+	MR_r1 = (MR_Integer) 0;
+	MR_proceed();
+MR_def_label(__Compare___mdprof_fb__automatic_parallelism__autopar_find_best_par__full_parallelisation_0_0,2)
+	MR_MAYBE_INIT_LOCAL_THREAD_ENGINE_BASE
+	{
+	MR_Word MR_tempr1, MR_tempr2, MR_tempr3, MR_tempr4, MR_tempr5, MR_tempr6;
+	MR_tempr5 = MR_sv(2);
+	MR_sv(8) = MR_tfield(0, MR_tempr5, 4);
+	MR_sv(7) = MR_tfield(0, MR_tempr5, 3);
+	MR_sv(6) = MR_tfield(0, MR_tempr5, 2);
+	MR_sv(5) = MR_tfield(0, MR_tempr5, 1);
+	MR_tempr6 = MR_sv(1);
+	MR_sv(4) = MR_tfield(0, MR_tempr6, 4);
+	MR_sv(3) = MR_tfield(0, MR_tempr6, 3);
+	MR_tempr1 = MR_tfield(0, MR_tempr6, 2);
+	MR_tempr2 = MR_tfield(0, MR_tempr6, 1);
+	MR_tempr3 = MR_tempr6;
+	MR_sv(1) = MR_tempr2;
+	MR_tempr4 = MR_tempr5;
+	MR_sv(2) = MR_tempr1;
+	MR_r1 = (MR_Word) MR_TAG_COMMON(0,0,6);
+	MR_r2 = MR_tfield(0, MR_tempr3, 0);
+	MR_r3 = MR_tfield(0, MR_tempr4, 0);
+	}
+	MR_np_call_localret_ent(builtin__compare_3_0,
+		__Compare___mdprof_fb__automatic_parallelism__autopar_find_best_par__full_parallelisation_0_0_i5);
+MR_def_label(__Compare___mdprof_fb__automatic_parallelism__autopar_find_best_par__full_parallelisation_0_0,5)
+	MR_MAYBE_INIT_LOCAL_THREAD_ENGINE_BASE
+	if (MR_INT_NE(MR_r1,0)) {
+		MR_GOTO_LAB(__Compare___mdprof_fb__automatic_parallelism__autopar_find_best_par__full_parallelisation_0_0_i60);
+	}
+	MR_r1 = (MR_Word) MR_TAG_COMMON(0,0,8);
+	MR_r2 = MR_sv(1);
+	MR_r3 = MR_sv(5);
+	MR_np_call_localret_ent(builtin__compare_3_0,
+		__Compare___mdprof_fb__automatic_parallelism__autopar_find_best_par__full_parallelisation_0_0_i9);
+MR_def_label(__Compare___mdprof_fb__automatic_parallelism__autopar_find_best_par__full_parallelisation_0_0,9)
+	MR_MAYBE_INIT_LOCAL_THREAD_ENGINE_BASE
+	if (MR_INT_NE(MR_r1,0)) {
+		MR_GOTO_LAB(__Compare___mdprof_fb__automatic_parallelism__autopar_find_best_par__full_parallelisation_0_0_i60);
+	}
+	MR_r1 = (MR_Word) MR_TAG_COMMON(0,0,6);
+	MR_r2 = MR_sv(2);
+	MR_r3 = MR_sv(6);
+	MR_np_call_localret_ent(builtin__compare_3_0,
+		__Compare___mdprof_fb__automatic_parallelism__autopar_find_best_par__full_parallelisation_0_0_i13);
+MR_def_label(__Compare___mdprof_fb__automatic_parallelism__autopar_find_best_par__full_parallelisation_0_0,13)
+	MR_MAYBE_INIT_LOCAL_THREAD_ENGINE_BASE
+	if (MR_INT_NE(MR_r1,0)) {
+		MR_GOTO_LAB(__Compare___mdprof_fb__automatic_parallelism__autopar_find_best_par__full_parallelisation_0_0_i60);
+	}
+	MR_r1 = MR_sv(3);
+	MR_r2 = MR_sv(7);
+	MR_np_call_localret_ent(__Compare___mdbcomp__feedback__automatic_parallelism__conjuncts_are_dependent_0_0,
+		__Compare___mdprof_fb__automatic_parallelism__autopar_find_best_par__full_parallelisation_0_0_i17);
+MR_def_label(__Compare___mdprof_fb__automatic_parallelism__autopar_find_best_par__full_parallelisation_0_0,17)
+	MR_MAYBE_INIT_LOCAL_THREAD_ENGINE_BASE
+	if (MR_INT_NE(MR_r1,0)) {
+		MR_GOTO_LAB(__Compare___mdprof_fb__automatic_parallelism__autopar_find_best_par__full_parallelisation_0_0_i60);
+	}
+	MR_r1 = MR_sv(4);
+	MR_r2 = MR_sv(8);
+	MR_succip_word = MR_sv(9);
+	MR_decr_sp(9);
+	MR_np_tailcall_ent(__Compare___mdbcomp__feedback__automatic_parallelism__parallel_exec_metrics_0_0);
+MR_def_label(__Compare___mdprof_fb__automatic_parallelism__autopar_find_best_par__full_parallelisation_0_0,60)
+	MR_MAYBE_INIT_LOCAL_THREAD_ENGINE_BASE
+	MR_decr_sp_and_return(9);
+#ifdef MR_maybe_local_thread_engine_base
+	#undef MR_maybe_local_thread_engine_base
+	#define MR_maybe_local_thread_engine_base MR_thread_engine_base
+#endif
+MR_END_MODULE
+
+
+MR_BEGIN_MODULE(mdprof_fb__automatic_parallelism__autopar_find_best_par_module22)
+	MR_init_entry1(__Unify___mdprof_fb__automatic_parallelism__autopar_find_best_par__goal_classification_0_0);
+	MR_INIT_PROC_LAYOUT_ADDR(mercury____Unify___mdprof_fb__automatic_parallelism__autopar_find_best_par__goal_classification_0_0);
+MR_BEGIN_CODE
+
+/*-------------------------------------------------------------------------*/
+/* code for '__Unify__'/2 mode 0 */
+#ifdef MR_maybe_local_thread_engine_base
+	#undef MR_maybe_local_thread_engine_base
+	#define MR_maybe_local_thread_engine_base MR_local_thread_engine_base
+#endif
+MR_def_static(__Unify___mdprof_fb__automatic_parallelism__autopar_find_best_par__goal_classification_0_0)
+	MR_MAYBE_INIT_LOCAL_THREAD_ENGINE_BASE
+	MR_r1 = (MR_r1 == MR_r2);
+	MR_proceed();
+#ifdef MR_maybe_local_thread_engine_base
+	#undef MR_maybe_local_thread_engine_base
+	#define MR_maybe_local_thread_engine_base MR_thread_engine_base
+#endif
+MR_END_MODULE
+
+
+MR_BEGIN_MODULE(mdprof_fb__automatic_parallelism__autopar_find_best_par_module23)
+	MR_init_entry1(__Compare___mdprof_fb__automatic_parallelism__autopar_find_best_par__goal_classification_0_0);
+	MR_INIT_PROC_LAYOUT_ADDR(mercury____Compare___mdprof_fb__automatic_parallelism__autopar_find_best_par__goal_classification_0_0);
+MR_BEGIN_CODE
+
+/*-------------------------------------------------------------------------*/
+/* code for '__Compare__'/3 mode 0 */
+#ifdef MR_maybe_local_thread_engine_base
+	#undef MR_maybe_local_thread_engine_base
+	#define MR_maybe_local_thread_engine_base MR_local_thread_engine_base
+#endif
+MR_def_static(__Compare___mdprof_fb__automatic_parallelism__autopar_find_best_par__goal_classification_0_0)
+	MR_MAYBE_INIT_LOCAL_THREAD_ENGINE_BASE
+	MR_np_tailcall_ent(private_builtin__builtin_compare_int_3_0);
+#ifdef MR_maybe_local_thread_engine_base
+	#undef MR_maybe_local_thread_engine_base
+	#define MR_maybe_local_thread_engine_base MR_thread_engine_base
+#endif
+MR_END_MODULE
+
+
+MR_BEGIN_MODULE(mdprof_fb__automatic_parallelism__autopar_find_best_par_module24)
+	MR_init_entry1(__Unify___mdprof_fb__automatic_parallelism__autopar_find_best_par__goal_group_1_0);
+	MR_INIT_PROC_LAYOUT_ADDR(mercury____Unify___mdprof_fb__automatic_parallelism__autopar_find_best_par__goal_group_1_0);
+	MR_init_label3(__Unify___mdprof_fb__automatic_parallelism__autopar_find_best_par__goal_group_1_0,18,5,1)
+MR_BEGIN_CODE
+
+/*-------------------------------------------------------------------------*/
+/* code for '__Unify__'/2 mode 0 */
+#ifdef MR_maybe_local_thread_engine_base
+	#undef MR_maybe_local_thread_engine_base
+	#define MR_maybe_local_thread_engine_base MR_local_thread_engine_base
+#endif
+MR_def_static(__Unify___mdprof_fb__automatic_parallelism__autopar_find_best_par__goal_group_1_0)
+	MR_MAYBE_INIT_LOCAL_THREAD_ENGINE_BASE
+	if ((MR_r2 == MR_r3)) {
+		MR_GOTO_LAB(__Unify___mdprof_fb__automatic_parallelism__autopar_find_best_par__goal_group_1_0_i18);
+	}
+	MR_incr_sp(4);
+	MR_sv(4) = (MR_Word) MR_succip;
+	{
+	MR_Word MR_tempr1, MR_tempr2, MR_tempr3, MR_tempr4;
+	MR_tempr1 = MR_r2;
+	MR_sv(1) = MR_tempr1;
+	MR_tempr2 = MR_r3;
+	MR_sv(2) = MR_tempr2;
+	MR_sv(3) = MR_r1;
+	if (MR_PTAG_TESTR(MR_tempr1,1)) {
+		MR_GOTO_LAB(__Unify___mdprof_fb__automatic_parallelism__autopar_find_best_par__goal_group_1_0_i5);
+	}
+	if (MR_PTAG_TESTR(MR_tempr2,1)) {
+		MR_GOTO_LAB(__Unify___mdprof_fb__automatic_parallelism__autopar_find_best_par__goal_group_1_0_i1);
+	}
+	MR_tempr3 = MR_tfield(1, MR_tempr1, 0);
+	MR_tempr4 = MR_tfield(1, MR_tempr2, 0);
+	if ((MR_tempr3 != MR_tempr4)) {
+		MR_GOTO_LAB(__Unify___mdprof_fb__automatic_parallelism__autopar_find_best_par__goal_group_1_0_i1);
+	}
+	MR_tempr3 = MR_tfield(1, MR_tempr1, 1);
+	MR_tempr4 = MR_tfield(1, MR_tempr2, 1);
+	if ((MR_tempr3 != MR_tempr4)) {
+		MR_GOTO_LAB(__Unify___mdprof_fb__automatic_parallelism__autopar_find_best_par__goal_group_1_0_i1);
+	}
+	MR_r2 = MR_tfield(1, MR_tempr1, 2);
+	MR_r3 = MR_tfield(1, MR_tempr2, 2);
+	MR_decr_sp(4);
+	MR_np_tailcall_ent(builtin__unify_2_0);
+	}
+MR_def_label(__Unify___mdprof_fb__automatic_parallelism__autopar_find_best_par__goal_group_1_0,18)
+	MR_MAYBE_INIT_LOCAL_THREAD_ENGINE_BASE
+	MR_r1 = MR_TRUE;
+	MR_proceed();
+MR_def_label(__Unify___mdprof_fb__automatic_parallelism__autopar_find_best_par__goal_group_1_0,5)
+	MR_MAYBE_INIT_LOCAL_THREAD_ENGINE_BASE
+	if (MR_PTAG_TESTR(MR_sv(2),0)) {
+		MR_GOTO_LAB(__Unify___mdprof_fb__automatic_parallelism__autopar_find_best_par__goal_group_1_0_i1);
+	}
+	{
+	MR_Word MR_tempr1, MR_tempr2, MR_tempr3, MR_tempr4;
+	MR_tempr3 = MR_sv(1);
+	MR_tempr1 = MR_tfield(0, MR_tempr3, 0);
+	MR_tempr4 = MR_sv(2);
+	MR_tempr2 = MR_tfield(0, MR_tempr4, 0);
+	if ((MR_tempr1 != MR_tempr2)) {
+		MR_GOTO_LAB(__Unify___mdprof_fb__automatic_parallelism__autopar_find_best_par__goal_group_1_0_i1);
+	}
+	MR_r1 = MR_sv(3);
+	MR_r2 = MR_tfield(0, MR_tempr3, 1);
+	MR_r3 = MR_tfield(0, MR_tempr4, 1);
+	MR_succip_word = MR_sv(4);
+	MR_decr_sp(4);
+	MR_np_tailcall_ent(builtin__unify_2_0);
+	}
+MR_def_label(__Unify___mdprof_fb__automatic_parallelism__autopar_find_best_par__goal_group_1_0,1)
+	MR_MAYBE_INIT_LOCAL_THREAD_ENGINE_BASE
+	MR_r1 = MR_FALSE;
+	MR_decr_sp_and_return(4);
+#ifdef MR_maybe_local_thread_engine_base
+	#undef MR_maybe_local_thread_engine_base
+	#define MR_maybe_local_thread_engine_base MR_thread_engine_base
+#endif
+MR_END_MODULE
+
+
+MR_BEGIN_MODULE(mdprof_fb__automatic_parallelism__autopar_find_best_par_module25)
+	MR_init_entry1(__Compare___mdprof_fb__automatic_parallelism__autopar_find_best_par__goal_group_1_0);
+	MR_INIT_PROC_LAYOUT_ADDR(mercury____Compare___mdprof_fb__automatic_parallelism__autopar_find_best_par__goal_group_1_0);
+	MR_init_label9(__Compare___mdprof_fb__automatic_parallelism__autopar_find_best_par__goal_group_1_0,3,2,9,13,7,5,20,22,63)
+MR_BEGIN_CODE
+
+/*-------------------------------------------------------------------------*/
+/* code for '__Compare__'/3 mode 0 */
+#ifdef MR_maybe_local_thread_engine_base
+	#undef MR_maybe_local_thread_engine_base
+	#define MR_maybe_local_thread_engine_base MR_local_thread_engine_base
+#endif
+MR_def_static(__Compare___mdprof_fb__automatic_parallelism__autopar_find_best_par__goal_group_1_0)
+	MR_MAYBE_INIT_LOCAL_THREAD_ENGINE_BASE
+	if ((MR_r2 == MR_r3)) {
+		MR_GOTO_LAB(__Compare___mdprof_fb__automatic_parallelism__autopar_find_best_par__goal_group_1_0_i3);
+	}
+	MR_incr_sp(6);
+	MR_sv(6) = (MR_Word) MR_succip;
+	MR_sv(1) = MR_r2;
+	MR_sv(5) = MR_r3;
+	MR_sv(2) = MR_r1;
+	MR_GOTO_LAB(__Compare___mdprof_fb__automatic_parallelism__autopar_find_best_par__goal_group_1_0_i2);
+MR_def_label(__Compare___mdprof_fb__automatic_parallelism__autopar_find_best_par__goal_group_1_0,3)
+	MR_MAYBE_INIT_LOCAL_THREAD_ENGINE_BASE
+	MR_r1 = (MR_Integer) 0;
+	MR_proceed();
+MR_def_label(__Compare___mdprof_fb__automatic_parallelism__autopar_find_best_par__goal_group_1_0,2)
+	MR_MAYBE_INIT_LOCAL_THREAD_ENGINE_BASE
+	if (MR_PTAG_TESTR(MR_sv(1),1)) {
+		MR_GOTO_LAB(__Compare___mdprof_fb__automatic_parallelism__autopar_find_best_par__goal_group_1_0_i5);
+	}
+	if (MR_PTAG_TESTR(MR_sv(5),1)) {
+		MR_GOTO_LAB(__Compare___mdprof_fb__automatic_parallelism__autopar_find_best_par__goal_group_1_0_i7);
+	}
+	{
+	MR_Word MR_tempr1, MR_tempr2, MR_tempr3, MR_tempr4, MR_tempr5, MR_tempr6;
+	MR_tempr5 = MR_sv(1);
+	MR_sv(4) = MR_tfield(1, MR_tempr5, 1);
+	MR_sv(3) = MR_tfield(1, MR_tempr5, 2);
+	MR_tempr6 = MR_sv(5);
+	MR_tempr1 = MR_tfield(1, MR_tempr6, 2);
+	MR_tempr2 = MR_tfield(1, MR_tempr6, 1);
+	MR_tempr3 = MR_tempr5;
+	MR_sv(1) = MR_tempr2;
+	MR_tempr4 = MR_tempr6;
+	MR_sv(5) = MR_tempr1;
+	MR_r1 = MR_tfield(1, MR_tempr3, 0);
+	MR_r2 = MR_tfield(1, MR_tempr4, 0);
+	}
+	MR_np_call_localret_ent(private_builtin__builtin_compare_int_3_0,
+		__Compare___mdprof_fb__automatic_parallelism__autopar_find_best_par__goal_group_1_0_i9);
+MR_def_label(__Compare___mdprof_fb__automatic_parallelism__autopar_find_best_par__goal_group_1_0,9)
+	MR_MAYBE_INIT_LOCAL_THREAD_ENGINE_BASE
+	if (MR_INT_NE(MR_r1,0)) {
+		MR_GOTO_LAB(__Compare___mdprof_fb__automatic_parallelism__autopar_find_best_par__goal_group_1_0_i63);
+	}
+	MR_r1 = MR_sv(4);
+	MR_r2 = MR_sv(1);
+	MR_np_call_localret_ent(private_builtin__builtin_compare_int_3_0,
+		__Compare___mdprof_fb__automatic_parallelism__autopar_find_best_par__goal_group_1_0_i13);
+MR_def_label(__Compare___mdprof_fb__automatic_parallelism__autopar_find_best_par__goal_group_1_0,13)
+	MR_MAYBE_INIT_LOCAL_THREAD_ENGINE_BASE
+	if (MR_INT_NE(MR_r1,0)) {
+		MR_GOTO_LAB(__Compare___mdprof_fb__automatic_parallelism__autopar_find_best_par__goal_group_1_0_i63);
+	}
+	MR_r1 = MR_sv(2);
+	MR_r2 = MR_sv(3);
+	MR_r3 = MR_sv(5);
+	MR_succip_word = MR_sv(6);
+	MR_decr_sp(6);
+	MR_np_tailcall_ent(builtin__compare_3_0);
+MR_def_label(__Compare___mdprof_fb__automatic_parallelism__autopar_find_best_par__goal_group_1_0,7)
+	MR_MAYBE_INIT_LOCAL_THREAD_ENGINE_BASE
+	MR_r1 = (MR_Integer) 2;
+	MR_decr_sp_and_return(6);
+MR_def_label(__Compare___mdprof_fb__automatic_parallelism__autopar_find_best_par__goal_group_1_0,5)
+	MR_MAYBE_INIT_LOCAL_THREAD_ENGINE_BASE
+	if (MR_PTAG_TESTR(MR_sv(5),1)) {
+		MR_GOTO_LAB(__Compare___mdprof_fb__automatic_parallelism__autopar_find_best_par__goal_group_1_0_i20);
+	}
+	MR_r1 = (MR_Integer) 1;
+	MR_decr_sp_and_return(6);
+MR_def_label(__Compare___mdprof_fb__automatic_parallelism__autopar_find_best_par__goal_group_1_0,20)
+	MR_MAYBE_INIT_LOCAL_THREAD_ENGINE_BASE
+	{
+	MR_Word MR_tempr1, MR_tempr2, MR_tempr3, MR_tempr4, MR_tempr5, MR_tempr6;
+	MR_tempr5 = MR_sv(1);
+	MR_tempr1 = MR_tfield(0, MR_tempr5, 1);
+	MR_tempr6 = MR_sv(5);
+	MR_tempr2 = MR_tfield(0, MR_tempr6, 1);
+	MR_tempr3 = MR_tempr5;
+	MR_sv(1) = MR_tempr2;
+	MR_tempr4 = MR_tempr6;
+	MR_sv(5) = MR_tempr1;
+	MR_r1 = MR_tfield(0, MR_tempr3, 0);
+	MR_r2 = MR_tfield(0, MR_tempr4, 0);
+	}
+	MR_np_call_localret_ent(private_builtin__builtin_compare_int_3_0,
+		__Compare___mdprof_fb__automatic_parallelism__autopar_find_best_par__goal_group_1_0_i22);
+MR_def_label(__Compare___mdprof_fb__automatic_parallelism__autopar_find_best_par__goal_group_1_0,22)
+	MR_MAYBE_INIT_LOCAL_THREAD_ENGINE_BASE
+	if (MR_INT_NE(MR_r1,0)) {
+		MR_GOTO_LAB(__Compare___mdprof_fb__automatic_parallelism__autopar_find_best_par__goal_group_1_0_i63);
+	}
+	MR_r1 = MR_sv(2);
+	MR_r2 = MR_sv(5);
+	MR_r3 = MR_sv(1);
+	MR_succip_word = MR_sv(6);
+	MR_decr_sp(6);
+	MR_np_tailcall_ent(builtin__compare_3_0);
+MR_def_label(__Compare___mdprof_fb__automatic_parallelism__autopar_find_best_par__goal_group_1_0,63)
+	MR_MAYBE_INIT_LOCAL_THREAD_ENGINE_BASE
+	MR_decr_sp_and_return(6);
+#ifdef MR_maybe_local_thread_engine_base
+	#undef MR_maybe_local_thread_engine_base
+	#define MR_maybe_local_thread_engine_base MR_thread_engine_base
+#endif
+MR_END_MODULE
+
+MR_decl_entry(__Unify___array__array_1_0);
+MR_decl_entry(__Unify___mdprof_fb__automatic_parallelism__autopar_types__dependency_graphs_0_0);
+
+MR_BEGIN_MODULE(mdprof_fb__automatic_parallelism__autopar_find_best_par_module26)
+	MR_init_entry1(__Unify___mdprof_fb__automatic_parallelism__autopar_find_best_par__goals_for_parallelisation_0_0);
+	MR_INIT_PROC_LAYOUT_ADDR(mercury____Unify___mdprof_fb__automatic_parallelism__autopar_find_best_par__goals_for_parallelisation_0_0);
+	MR_init_label6(__Unify___mdprof_fb__automatic_parallelism__autopar_find_best_par__goals_for_parallelisation_0_0,4,6,8,10,12,1)
+MR_BEGIN_CODE
+
+/*-------------------------------------------------------------------------*/
+/* code for '__Unify__'/2 mode 0 */
+#ifdef MR_maybe_local_thread_engine_base
+	#undef MR_maybe_local_thread_engine_base
+	#define MR_maybe_local_thread_engine_base MR_local_thread_engine_base
+#endif
+MR_def_static(__Unify___mdprof_fb__automatic_parallelism__autopar_find_best_par__goals_for_parallelisation_0_0)
+	MR_MAYBE_INIT_LOCAL_THREAD_ENGINE_BASE
+	if ((MR_r1 == MR_r2)) {
+		MR_GOTO_LAB(__Unify___mdprof_fb__automatic_parallelism__autopar_find_best_par__goals_for_parallelisation_0_0_i12);
+	}
+	MR_incr_sp(13);
+	MR_sv(13) = (MR_Word) MR_succip;
+	MR_sv(1) = MR_r1;
+	MR_sv(2) = MR_r2;
+	{
+	MR_Word MR_tempr1, MR_tempr2;
+	MR_tempr1 = MR_sv(1);
+	MR_sv(1) = MR_tfield(0, MR_tempr1, 1);
+	MR_tempr2 = MR_sv(2);
+	MR_sv(2) = MR_tfield(0, MR_tempr1, 2);
+	MR_sv(3) = MR_tfield(0, MR_tempr1, 3);
+	MR_sv(4) = MR_tfield(0, MR_tempr1, 4);
+	MR_sv(5) = MR_tfield(0, MR_tempr1, 5);
+	MR_sv(6) = MR_tfield(0, MR_tempr1, 6);
+	MR_sv(7) = MR_tfield(0, MR_tempr2, 1);
+	MR_sv(8) = MR_tfield(0, MR_tempr2, 2);
+	MR_sv(9) = MR_tfield(0, MR_tempr2, 3);
+	MR_sv(10) = MR_tfield(0, MR_tempr2, 4);
+	MR_sv(11) = MR_tfield(0, MR_tempr2, 5);
+	MR_sv(12) = MR_tfield(0, MR_tempr2, 6);
+	MR_r1 = (MR_Word) MR_TAG_COMMON(0,0,0);
+	MR_r2 = MR_tfield(0, MR_tempr1, 0);
+	MR_r3 = MR_tfield(0, MR_tempr2, 0);
+	}
+	MR_np_call_localret_ent(__Unify___array__array_1_0,
+		__Unify___mdprof_fb__automatic_parallelism__autopar_find_best_par__goals_for_parallelisation_0_0_i4);
+MR_def_label(__Unify___mdprof_fb__automatic_parallelism__autopar_find_best_par__goals_for_parallelisation_0_0,4)
+	MR_MAYBE_INIT_LOCAL_THREAD_ENGINE_BASE
+	if (!(MR_r1)) {
+		MR_GOTO_LAB(__Unify___mdprof_fb__automatic_parallelism__autopar_find_best_par__goals_for_parallelisation_0_0_i1);
+	}
+	if ((MR_sv(1) != MR_sv(7))) {
+		MR_GOTO_LAB(__Unify___mdprof_fb__automatic_parallelism__autopar_find_best_par__goals_for_parallelisation_0_0_i1);
+	}
+	if ((MR_sv(2) != MR_sv(8))) {
+		MR_GOTO_LAB(__Unify___mdprof_fb__automatic_parallelism__autopar_find_best_par__goals_for_parallelisation_0_0_i1);
+	}
+	MR_r1 = (MR_Word) MR_TAG_COMMON(0,0,2);
+	MR_r2 = MR_sv(3);
+	MR_r3 = MR_sv(9);
+	MR_np_call_localret_ent(builtin__unify_2_0,
+		__Unify___mdprof_fb__automatic_parallelism__autopar_find_best_par__goals_for_parallelisation_0_0_i6);
+MR_def_label(__Unify___mdprof_fb__automatic_parallelism__autopar_find_best_par__goals_for_parallelisation_0_0,6)
+	MR_MAYBE_INIT_LOCAL_THREAD_ENGINE_BASE
+	if (!(MR_r1)) {
+		MR_GOTO_LAB(__Unify___mdprof_fb__automatic_parallelism__autopar_find_best_par__goals_for_parallelisation_0_0_i1);
+	}
+	MR_r1 = MR_sv(4);
+	MR_r2 = MR_sv(10);
+	MR_np_call_localret_ent(__Unify___mdprof_fb__automatic_parallelism__autopar_types__dependency_graphs_0_0,
+		__Unify___mdprof_fb__automatic_parallelism__autopar_find_best_par__goals_for_parallelisation_0_0_i8);
+MR_def_label(__Unify___mdprof_fb__automatic_parallelism__autopar_find_best_par__goals_for_parallelisation_0_0,8)
+	MR_MAYBE_INIT_LOCAL_THREAD_ENGINE_BASE
+	if (!(MR_r1)) {
+		MR_GOTO_LAB(__Unify___mdprof_fb__automatic_parallelism__autopar_find_best_par__goals_for_parallelisation_0_0_i1);
+	}
+	MR_r1 = (MR_Word) MR_TAG_COMMON(0,0,10);
+	MR_r2 = MR_sv(5);
+	MR_r3 = MR_sv(11);
+	MR_np_call_localret_ent(builtin__unify_2_0,
+		__Unify___mdprof_fb__automatic_parallelism__autopar_find_best_par__goals_for_parallelisation_0_0_i10);
+MR_def_label(__Unify___mdprof_fb__automatic_parallelism__autopar_find_best_par__goals_for_parallelisation_0_0,10)
+	MR_MAYBE_INIT_LOCAL_THREAD_ENGINE_BASE
+	if (!(MR_r1)) {
+		MR_GOTO_LAB(__Unify___mdprof_fb__automatic_parallelism__autopar_find_best_par__goals_for_parallelisation_0_0_i1);
+	}
+	MR_r1 = (MR_sv(6) == MR_sv(12));
+	MR_decr_sp_and_return(13);
+MR_def_label(__Unify___mdprof_fb__automatic_parallelism__autopar_find_best_par__goals_for_parallelisation_0_0,12)
+	MR_MAYBE_INIT_LOCAL_THREAD_ENGINE_BASE
+	MR_r1 = MR_TRUE;
+	MR_proceed();
+MR_def_label(__Unify___mdprof_fb__automatic_parallelism__autopar_find_best_par__goals_for_parallelisation_0_0,1)
+	MR_MAYBE_INIT_LOCAL_THREAD_ENGINE_BASE
+	MR_r1 = MR_FALSE;
+	MR_decr_sp_and_return(13);
+#ifdef MR_maybe_local_thread_engine_base
+	#undef MR_maybe_local_thread_engine_base
+	#define MR_maybe_local_thread_engine_base MR_thread_engine_base
+#endif
+MR_END_MODULE
+
+MR_decl_entry(__Compare___mdprof_fb__automatic_parallelism__autopar_types__dependency_graphs_0_0);
+
+MR_BEGIN_MODULE(mdprof_fb__automatic_parallelism__autopar_find_best_par_module27)
+	MR_init_entry1(__Compare___mdprof_fb__automatic_parallelism__autopar_find_best_par__goals_for_parallelisation_0_0);
+	MR_INIT_PROC_LAYOUT_ADDR(mercury____Compare___mdprof_fb__automatic_parallelism__autopar_find_best_par__goals_for_parallelisation_0_0);
+	MR_init_label9(__Compare___mdprof_fb__automatic_parallelism__autopar_find_best_par__goals_for_parallelisation_0_0,3,2,5,9,13,17,21,25,82)
+MR_BEGIN_CODE
+
+/*-------------------------------------------------------------------------*/
+/* code for '__Compare__'/3 mode 0 */
+#ifdef MR_maybe_local_thread_engine_base
+	#undef MR_maybe_local_thread_engine_base
+	#define MR_maybe_local_thread_engine_base MR_local_thread_engine_base
+#endif
+MR_def_static(__Compare___mdprof_fb__automatic_parallelism__autopar_find_best_par__goals_for_parallelisation_0_0)
+	MR_MAYBE_INIT_LOCAL_THREAD_ENGINE_BASE
+	if ((MR_r1 == MR_r2)) {
+		MR_GOTO_LAB(__Compare___mdprof_fb__automatic_parallelism__autopar_find_best_par__goals_for_parallelisation_0_0_i3);
+	}
+	MR_incr_sp(13);
+	MR_sv(13) = (MR_Word) MR_succip;
+	MR_sv(1) = MR_r1;
+	MR_sv(2) = MR_r2;
+	MR_GOTO_LAB(__Compare___mdprof_fb__automatic_parallelism__autopar_find_best_par__goals_for_parallelisation_0_0_i2);
+MR_def_label(__Compare___mdprof_fb__automatic_parallelism__autopar_find_best_par__goals_for_parallelisation_0_0,3)
+	MR_MAYBE_INIT_LOCAL_THREAD_ENGINE_BASE
+	MR_r1 = (MR_Integer) 0;
+	MR_proceed();
+MR_def_label(__Compare___mdprof_fb__automatic_parallelism__autopar_find_best_par__goals_for_parallelisation_0_0,2)
+	MR_MAYBE_INIT_LOCAL_THREAD_ENGINE_BASE
+	{
+	MR_Word MR_tempr1, MR_tempr2, MR_tempr3, MR_tempr4, MR_tempr5, MR_tempr6;
+	MR_tempr5 = MR_sv(2);
+	MR_sv(12) = MR_tfield(0, MR_tempr5, 6);
+	MR_sv(11) = MR_tfield(0, MR_tempr5, 5);
+	MR_sv(10) = MR_tfield(0, MR_tempr5, 4);
+	MR_sv(9) = MR_tfield(0, MR_tempr5, 3);
+	MR_sv(8) = MR_tfield(0, MR_tempr5, 2);
+	MR_sv(7) = MR_tfield(0, MR_tempr5, 1);
+	MR_tempr6 = MR_sv(1);
+	MR_sv(6) = MR_tfield(0, MR_tempr6, 6);
+	MR_sv(5) = MR_tfield(0, MR_tempr6, 5);
+	MR_sv(4) = MR_tfield(0, MR_tempr6, 4);
+	MR_sv(3) = MR_tfield(0, MR_tempr6, 3);
+	MR_tempr1 = MR_tfield(0, MR_tempr6, 2);
+	MR_tempr2 = MR_tfield(0, MR_tempr6, 1);
+	MR_tempr3 = MR_tempr6;
+	MR_sv(1) = MR_tempr2;
+	MR_tempr4 = MR_tempr5;
+	MR_sv(2) = MR_tempr1;
+	MR_r1 = (MR_Word) MR_TAG_COMMON(0,0,9);
+	MR_r2 = MR_tfield(0, MR_tempr3, 0);
+	MR_r3 = MR_tfield(0, MR_tempr4, 0);
+	}
+	MR_np_call_localret_ent(builtin__compare_3_0,
+		__Compare___mdprof_fb__automatic_parallelism__autopar_find_best_par__goals_for_parallelisation_0_0_i5);
+MR_def_label(__Compare___mdprof_fb__automatic_parallelism__autopar_find_best_par__goals_for_parallelisation_0_0,5)
+	MR_MAYBE_INIT_LOCAL_THREAD_ENGINE_BASE
+	if (MR_INT_NE(MR_r1,0)) {
+		MR_GOTO_LAB(__Compare___mdprof_fb__automatic_parallelism__autopar_find_best_par__goals_for_parallelisation_0_0_i82);
+	}
+	MR_r1 = MR_sv(1);
+	MR_r2 = MR_sv(7);
+	MR_np_call_localret_ent(private_builtin__builtin_compare_int_3_0,
+		__Compare___mdprof_fb__automatic_parallelism__autopar_find_best_par__goals_for_parallelisation_0_0_i9);
+MR_def_label(__Compare___mdprof_fb__automatic_parallelism__autopar_find_best_par__goals_for_parallelisation_0_0,9)
+	MR_MAYBE_INIT_LOCAL_THREAD_ENGINE_BASE
+	if (MR_INT_NE(MR_r1,0)) {
+		MR_GOTO_LAB(__Compare___mdprof_fb__automatic_parallelism__autopar_find_best_par__goals_for_parallelisation_0_0_i82);
+	}
+	MR_r1 = MR_sv(2);
+	MR_r2 = MR_sv(8);
+	MR_np_call_localret_ent(private_builtin__builtin_compare_int_3_0,
+		__Compare___mdprof_fb__automatic_parallelism__autopar_find_best_par__goals_for_parallelisation_0_0_i13);
+MR_def_label(__Compare___mdprof_fb__automatic_parallelism__autopar_find_best_par__goals_for_parallelisation_0_0,13)
+	MR_MAYBE_INIT_LOCAL_THREAD_ENGINE_BASE
+	if (MR_INT_NE(MR_r1,0)) {
+		MR_GOTO_LAB(__Compare___mdprof_fb__automatic_parallelism__autopar_find_best_par__goals_for_parallelisation_0_0_i82);
+	}
+	MR_r1 = (MR_Word) MR_TAG_COMMON(0,0,2);
+	MR_r2 = MR_sv(3);
+	MR_r3 = MR_sv(9);
+	MR_np_call_localret_ent(builtin__compare_3_0,
+		__Compare___mdprof_fb__automatic_parallelism__autopar_find_best_par__goals_for_parallelisation_0_0_i17);
+MR_def_label(__Compare___mdprof_fb__automatic_parallelism__autopar_find_best_par__goals_for_parallelisation_0_0,17)
+	MR_MAYBE_INIT_LOCAL_THREAD_ENGINE_BASE
+	if (MR_INT_NE(MR_r1,0)) {
+		MR_GOTO_LAB(__Compare___mdprof_fb__automatic_parallelism__autopar_find_best_par__goals_for_parallelisation_0_0_i82);
+	}
+	MR_r1 = MR_sv(4);
+	MR_r2 = MR_sv(10);
+	MR_np_call_localret_ent(__Compare___mdprof_fb__automatic_parallelism__autopar_types__dependency_graphs_0_0,
+		__Compare___mdprof_fb__automatic_parallelism__autopar_find_best_par__goals_for_parallelisation_0_0_i21);
+MR_def_label(__Compare___mdprof_fb__automatic_parallelism__autopar_find_best_par__goals_for_parallelisation_0_0,21)
+	MR_MAYBE_INIT_LOCAL_THREAD_ENGINE_BASE
+	if (MR_INT_NE(MR_r1,0)) {
+		MR_GOTO_LAB(__Compare___mdprof_fb__automatic_parallelism__autopar_find_best_par__goals_for_parallelisation_0_0_i82);
+	}
+	MR_r1 = (MR_Word) MR_TAG_COMMON(0,0,10);
+	MR_r2 = MR_sv(5);
+	MR_r3 = MR_sv(11);
+	MR_np_call_localret_ent(builtin__compare_3_0,
+		__Compare___mdprof_fb__automatic_parallelism__autopar_find_best_par__goals_for_parallelisation_0_0_i25);
+MR_def_label(__Compare___mdprof_fb__automatic_parallelism__autopar_find_best_par__goals_for_parallelisation_0_0,25)
+	MR_MAYBE_INIT_LOCAL_THREAD_ENGINE_BASE
+	if (MR_INT_NE(MR_r1,0)) {
+		MR_GOTO_LAB(__Compare___mdprof_fb__automatic_parallelism__autopar_find_best_par__goals_for_parallelisation_0_0_i82);
+	}
+	MR_r1 = MR_sv(6);
+	MR_r2 = MR_sv(12);
+	MR_succip_word = MR_sv(13);
+	MR_decr_sp(13);
+	MR_np_tailcall_ent(private_builtin__builtin_compare_int_3_0);
+MR_def_label(__Compare___mdprof_fb__automatic_parallelism__autopar_find_best_par__goals_for_parallelisation_0_0,82)
+	MR_MAYBE_INIT_LOCAL_THREAD_ENGINE_BASE
+	MR_decr_sp_and_return(13);
+#ifdef MR_maybe_local_thread_engine_base
+	#undef MR_maybe_local_thread_engine_base
+	#define MR_maybe_local_thread_engine_base MR_thread_engine_base
+#endif
+MR_END_MODULE
+
+
+MR_BEGIN_MODULE(mdprof_fb__automatic_parallelism__autopar_find_best_par_module28)
+	MR_init_entry1(__Unify___mdprof_fb__automatic_parallelism__autopar_find_best_par__is_good_enough_0_0);
+	MR_INIT_PROC_LAYOUT_ADDR(mercury____Unify___mdprof_fb__automatic_parallelism__autopar_find_best_par__is_good_enough_0_0);
+MR_BEGIN_CODE
+
+/*-------------------------------------------------------------------------*/
+/* code for '__Unify__'/2 mode 0 */
+#ifdef MR_maybe_local_thread_engine_base
+	#undef MR_maybe_local_thread_engine_base
+	#define MR_maybe_local_thread_engine_base MR_local_thread_engine_base
+#endif
+MR_def_static(__Unify___mdprof_fb__automatic_parallelism__autopar_find_best_par__is_good_enough_0_0)
+	MR_MAYBE_INIT_LOCAL_THREAD_ENGINE_BASE
+	MR_r1 = (MR_r1 == MR_r2);
+	MR_proceed();
+#ifdef MR_maybe_local_thread_engine_base
+	#undef MR_maybe_local_thread_engine_base
+	#define MR_maybe_local_thread_engine_base MR_thread_engine_base
+#endif
+MR_END_MODULE
+
+
+MR_BEGIN_MODULE(mdprof_fb__automatic_parallelism__autopar_find_best_par_module29)
+	MR_init_entry1(__Compare___mdprof_fb__automatic_parallelism__autopar_find_best_par__is_good_enough_0_0);
+	MR_INIT_PROC_LAYOUT_ADDR(mercury____Compare___mdprof_fb__automatic_parallelism__autopar_find_best_par__is_good_enough_0_0);
+MR_BEGIN_CODE
+
+/*-------------------------------------------------------------------------*/
+/* code for '__Compare__'/3 mode 0 */
+#ifdef MR_maybe_local_thread_engine_base
+	#undef MR_maybe_local_thread_engine_base
+	#define MR_maybe_local_thread_engine_base MR_local_thread_engine_base
+#endif
+MR_def_static(__Compare___mdprof_fb__automatic_parallelism__autopar_find_best_par__is_good_enough_0_0)
+	MR_MAYBE_INIT_LOCAL_THREAD_ENGINE_BASE
+	MR_np_tailcall_ent(private_builtin__builtin_compare_int_3_0);
+#ifdef MR_maybe_local_thread_engine_base
+	#undef MR_maybe_local_thread_engine_base
+	#define MR_maybe_local_thread_engine_base MR_thread_engine_base
+#endif
+MR_END_MODULE
+
+MR_decl_entry(f_109_97_112_95_95_84_121_112_101_83_112_101_99_79_102_95_95_112_114_101_100_95_111_114_95_102_117_110_99_95_95_115_101_97_114_99_104_95_95_91_75_32_61_32_105_110_116_93_95_48_95_49_3_0);
+MR_decl_entry(digraph__lookup_key_3_0);
+MR_decl_entry(digraph__add_edge_4_0);
+
+MR_BEGIN_MODULE(mdprof_fb__automatic_parallelism__autopar_find_best_par_module30)
+	MR_init_entry1(mdprof_fb__automatic_parallelism__autopar_find_best_par__IntroducedFrom__pred__build_dependency_graph__286__1_5_0);
+	MR_INIT_PROC_LAYOUT_ADDR(mercury__mdprof_fb__automatic_parallelism__autopar_find_best_par__IntroducedFrom__pred__build_dependency_graph__286__1_5_0);
+	MR_init_label3(mdprof_fb__automatic_parallelism__autopar_find_best_par__IntroducedFrom__pred__build_dependency_graph__286__1_5_0,3,5,2)
+MR_BEGIN_CODE
+
+/*-------------------------------------------------------------------------*/
+/* code for 'IntroducedFrom__pred__build_dependency_graph__286__1'/5 mode 0 */
+#ifdef MR_maybe_local_thread_engine_base
+	#undef MR_maybe_local_thread_engine_base
+	#define MR_maybe_local_thread_engine_base MR_local_thread_engine_base
+#endif
+MR_def_static(mdprof_fb__automatic_parallelism__autopar_find_best_par__IntroducedFrom__pred__build_dependency_graph__286__1_5_0)
+	MR_MAYBE_INIT_LOCAL_THREAD_ENGINE_BASE
+	MR_incr_sp(4);
+	MR_sv(4) = (MR_Word) MR_succip;
+	MR_sv(1) = MR_r2;
+	MR_sv(2) = MR_r4;
+	{
+	MR_Word MR_tempr1;
+	MR_tempr1 = MR_r1;
+	MR_r1 = (MR_Word) MR_INT_CTOR_ADDR;
+	MR_r2 = MR_tempr1;
+	}
+	MR_np_call_localret_ent(f_109_97_112_95_95_84_121_112_101_83_112_101_99_79_102_95_95_112_114_101_100_95_111_114_95_102_117_110_99_95_95_115_101_97_114_99_104_95_95_91_75_32_61_32_105_110_116_93_95_48_95_49_3_0,
+		mdprof_fb__automatic_parallelism__autopar_find_best_par__IntroducedFrom__pred__build_dependency_graph__286__1_5_0_i3);
+MR_def_label(mdprof_fb__automatic_parallelism__autopar_find_best_par__IntroducedFrom__pred__build_dependency_graph__286__1_5_0,3)
+	MR_MAYBE_INIT_LOCAL_THREAD_ENGINE_BASE
+	if (!(MR_r1)) {
+		MR_GOTO_LAB(mdprof_fb__automatic_parallelism__autopar_find_best_par__IntroducedFrom__pred__build_dependency_graph__286__1_5_0_i2);
+	}
+	MR_sv(3) = (MR_Word) MR_INT_CTOR_ADDR;
+	MR_r1 = MR_sv(3);
+	{
+	MR_Word MR_tempr1;
+	MR_tempr1 = MR_r2;
+	MR_r2 = MR_sv(2);
+	MR_r3 = MR_tempr1;
+	}
+	MR_np_call_localret_ent(digraph__lookup_key_3_0,
+		mdprof_fb__automatic_parallelism__autopar_find_best_par__IntroducedFrom__pred__build_dependency_graph__286__1_5_0_i5);
+MR_def_label(mdprof_fb__automatic_parallelism__autopar_find_best_par__IntroducedFrom__pred__build_dependency_graph__286__1_5_0,5)
+	MR_MAYBE_INIT_LOCAL_THREAD_ENGINE_BASE
+	{
+	MR_Word MR_tempr1;
+	MR_tempr1 = MR_r1;
+	MR_r1 = MR_sv(3);
+	MR_r2 = MR_tempr1;
+	MR_r3 = MR_sv(1);
+	MR_r4 = MR_sv(2);
+	MR_succip_word = MR_sv(4);
+	MR_decr_sp(4);
+	MR_np_tailcall_ent(digraph__add_edge_4_0);
+	}
+MR_def_label(mdprof_fb__automatic_parallelism__autopar_find_best_par__IntroducedFrom__pred__build_dependency_graph__286__1_5_0,2)
+	MR_MAYBE_INIT_LOCAL_THREAD_ENGINE_BASE
+	MR_r1 = MR_sv(2);
+	MR_decr_sp_and_return(4);
+#ifdef MR_maybe_local_thread_engine_base
+	#undef MR_maybe_local_thread_engine_base
+	#define MR_maybe_local_thread_engine_base MR_thread_engine_base
+#endif
+MR_END_MODULE
+
+MR_decl_entry(f_109_97_112_95_95_84_121_112_101_83_112_101_99_79_102_95_95_112_114_101_100_95_95_100_101_116_95_105_110_115_101_114_116_95_95_91_75_32_61_32_105_110_116_93_95_48_95_49_4_0);
+
+MR_BEGIN_MODULE(mdprof_fb__automatic_parallelism__autopar_find_best_par_module31)
+	MR_init_entry1(mdprof_fb__automatic_parallelism__autopar_find_best_par__IntroducedFrom__pred__build_dependency_graph__296__1_4_0);
+	MR_INIT_PROC_LAYOUT_ADDR(mercury__mdprof_fb__automatic_parallelism__autopar_find_best_par__IntroducedFrom__pred__build_dependency_graph__296__1_4_0);
+MR_BEGIN_CODE
+
+/*-------------------------------------------------------------------------*/
+/* code for 'IntroducedFrom__pred__build_dependency_graph__296__1'/4 mode 0 */
+#ifdef MR_maybe_local_thread_engine_base
+	#undef MR_maybe_local_thread_engine_base
+	#define MR_maybe_local_thread_engine_base MR_local_thread_engine_base
+#endif
+MR_def_static(mdprof_fb__automatic_parallelism__autopar_find_best_par__IntroducedFrom__pred__build_dependency_graph__296__1_4_0)
+	MR_MAYBE_INIT_LOCAL_THREAD_ENGINE_BASE
+	{
+	MR_Word MR_tempr1, MR_tempr2;
+	MR_tempr1 = MR_r1;
+	MR_r1 = (MR_Word) MR_INT_CTOR_ADDR;
+	MR_tempr2 = MR_r3;
+	MR_r3 = MR_tempr1;
+	MR_r4 = MR_tempr2;
+	MR_np_tailcall_ent(f_109_97_112_95_95_84_121_112_101_83_112_101_99_79_102_95_95_112_114_101_100_95_95_100_101_116_95_105_110_115_101_114_116_95_95_91_75_32_61_32_105_110_116_93_95_48_95_49_4_0);
+	}
+#ifdef MR_maybe_local_thread_engine_base
+	#undef MR_maybe_local_thread_engine_base
+	#define MR_maybe_local_thread_engine_base MR_thread_engine_base
+#endif
+MR_END_MODULE
+
+MR_decl_entry(array__lookup_3_0);
+MR_decl_entry(mdprof_fb__automatic_parallelism__autopar_types__identify_costly_goal_2_0);
+
+MR_BEGIN_MODULE(mdprof_fb__automatic_parallelism__autopar_find_best_par_module32)
+	MR_init_entry1(mdprof_fb__automatic_parallelism__autopar_find_best_par__foldl_sub_array__ho1_6_0);
+	MR_INIT_PROC_LAYOUT_ADDR(mercury__mdprof_fb__automatic_parallelism__autopar_find_best_par__foldl_sub_array__ho1_6_0);
+	MR_init_label5(mdprof_fb__automatic_parallelism__autopar_find_best_par__foldl_sub_array__ho1_6_0,26,3,4,6,2)
+MR_BEGIN_CODE
+
+/*-------------------------------------------------------------------------*/
+/* code for 'foldl_sub_array__ho1'/6 mode 0 */
+#ifdef MR_maybe_local_thread_engine_base
+	#undef MR_maybe_local_thread_engine_base
+	#define MR_maybe_local_thread_engine_base MR_local_thread_engine_base
+#endif
+MR_def_static(mdprof_fb__automatic_parallelism__autopar_find_best_par__foldl_sub_array__ho1_6_0)
+	MR_MAYBE_INIT_LOCAL_THREAD_ENGINE_BASE
+	MR_incr_sp(5);
+	MR_sv(5) = (MR_Word) MR_succip;
+MR_def_label(mdprof_fb__automatic_parallelism__autopar_find_best_par__foldl_sub_array__ho1_6_0,26)
+	MR_MAYBE_INIT_LOCAL_THREAD_ENGINE_BASE
+	if (((MR_Integer) MR_r2 > (MR_Integer) MR_r3)) {
+		MR_GOTO_LAB(mdprof_fb__automatic_parallelism__autopar_find_best_par__foldl_sub_array__ho1_6_0_i2);
+	}
+	MR_sv(1) = MR_r1;
+	MR_sv(2) = MR_r2;
+	MR_sv(3) = MR_r3;
+	MR_sv(4) = MR_r4;
+	MR_r1 = (MR_Word) MR_TAG_COMMON(0,0,0);
+	MR_r2 = MR_sv(1);
+	MR_r3 = MR_sv(2);
+	MR_np_call_localret_ent(array__lookup_3_0,
+		mdprof_fb__automatic_parallelism__autopar_find_best_par__foldl_sub_array__ho1_6_0_i3);
+MR_def_label(mdprof_fb__automatic_parallelism__autopar_find_best_par__foldl_sub_array__ho1_6_0,3)
+	MR_MAYBE_INIT_LOCAL_THREAD_ENGINE_BASE
+	MR_r1 = MR_tfield(0, MR_r1, 2);
+	MR_np_call_localret_ent(mdprof_fb__automatic_parallelism__autopar_types__identify_costly_goal_2_0,
+		mdprof_fb__automatic_parallelism__autopar_find_best_par__foldl_sub_array__ho1_6_0_i4);
+MR_def_label(mdprof_fb__automatic_parallelism__autopar_find_best_par__foldl_sub_array__ho1_6_0,4)
+	MR_MAYBE_INIT_LOCAL_THREAD_ENGINE_BASE
+	if (MR_INT_NE(MR_r1,1)) {
+		MR_GOTO_LAB(mdprof_fb__automatic_parallelism__autopar_find_best_par__foldl_sub_array__ho1_6_0_i6);
+	}
+	{
+	MR_Word MR_tempr1, MR_tempr2, MR_tempr3;
+	MR_tag_alloc_heap(MR_tempr1, 0, (MR_Integer) 2);
+	MR_tempr3 = MR_sv(2);
+	MR_tfield(0, MR_tempr1, 0) = MR_tempr3;
+	MR_tfield(0, MR_tempr1, 1) = (MR_Integer) 1;
+	MR_tag_alloc_heap(MR_tempr2, 1, (MR_Integer) 2);
+	MR_r4 = MR_tempr2;
+	MR_tfield(1, MR_tempr2, 0) = MR_tempr1;
+	MR_tfield(1, MR_tempr2, 1) = MR_sv(4);
+	MR_r1 = MR_sv(1);
+	MR_r3 = MR_sv(3);
+	MR_r2 = ((MR_Integer) MR_tempr3 + (MR_Integer) 1);
+	MR_succip_word = MR_sv(5);
+	MR_GOTO_LAB(mdprof_fb__automatic_parallelism__autopar_find_best_par__foldl_sub_array__ho1_6_0_i26);
+	}
+MR_def_label(mdprof_fb__automatic_parallelism__autopar_find_best_par__foldl_sub_array__ho1_6_0,6)
+	MR_MAYBE_INIT_LOCAL_THREAD_ENGINE_BASE
+	{
+	MR_Word MR_tempr1, MR_tempr2, MR_tempr3;
+	MR_tag_alloc_heap(MR_tempr1, 0, (MR_Integer) 2);
+	MR_tempr3 = MR_sv(2);
+	MR_tfield(0, MR_tempr1, 0) = MR_tempr3;
+	MR_tfield(0, MR_tempr1, 1) = (MR_Integer) 0;
+	MR_tag_alloc_heap(MR_tempr2, 1, (MR_Integer) 2);
+	MR_r4 = MR_tempr2;
+	MR_tfield(1, MR_tempr2, 0) = MR_tempr1;
+	MR_tfield(1, MR_tempr2, 1) = MR_sv(4);
+	MR_r1 = MR_sv(1);
+	MR_r3 = MR_sv(3);
+	MR_r2 = ((MR_Integer) MR_tempr3 + (MR_Integer) 1);
+	MR_succip_word = MR_sv(5);
+	MR_GOTO_LAB(mdprof_fb__automatic_parallelism__autopar_find_best_par__foldl_sub_array__ho1_6_0_i26);
+	}
+MR_def_label(mdprof_fb__automatic_parallelism__autopar_find_best_par__foldl_sub_array__ho1_6_0,2)
+	MR_MAYBE_INIT_LOCAL_THREAD_ENGINE_BASE
+	MR_r1 = MR_r4;
+	MR_decr_sp_and_return(5);
+#ifdef MR_maybe_local_thread_engine_base
+	#undef MR_maybe_local_thread_engine_base
+	#define MR_maybe_local_thread_engine_base MR_thread_engine_base
+#endif
+MR_END_MODULE
+
+
+MR_BEGIN_MODULE(mdprof_fb__automatic_parallelism__autopar_find_best_par_module33)
+	MR_init_entry1(mdprof_fb__automatic_parallelism__autopar_find_best_par__foldl_sub_array__ho2_6_0);
+	MR_INIT_PROC_LAYOUT_ADDR(mercury__mdprof_fb__automatic_parallelism__autopar_find_best_par__foldl_sub_array__ho2_6_0);
+	MR_init_label4(mdprof_fb__automatic_parallelism__autopar_find_best_par__foldl_sub_array__ho2_6_0,14,3,4,2)
+MR_BEGIN_CODE
+
+/*-------------------------------------------------------------------------*/
+/* code for 'foldl_sub_array__ho2'/6 mode 0 */
+#ifdef MR_maybe_local_thread_engine_base
+	#undef MR_maybe_local_thread_engine_base
+	#define MR_maybe_local_thread_engine_base MR_local_thread_engine_base
+#endif
+MR_def_static(mdprof_fb__automatic_parallelism__autopar_find_best_par__foldl_sub_array__ho2_6_0)
+	MR_MAYBE_INIT_LOCAL_THREAD_ENGINE_BASE
+	MR_incr_sp(5);
+	MR_sv(5) = (MR_Word) MR_succip;
+MR_def_label(mdprof_fb__automatic_parallelism__autopar_find_best_par__foldl_sub_array__ho2_6_0,14)
+	MR_MAYBE_INIT_LOCAL_THREAD_ENGINE_BASE
+	if (((MR_Integer) MR_r2 > (MR_Integer) MR_r3)) {
+		MR_GOTO_LAB(mdprof_fb__automatic_parallelism__autopar_find_best_par__foldl_sub_array__ho2_6_0_i2);
+	}
+	MR_sv(1) = MR_r1;
+	MR_sv(2) = MR_r2;
+	MR_sv(3) = MR_r3;
+	MR_sv(4) = MR_r4;
+	MR_r1 = (MR_Word) MR_TAG_COMMON(0,0,0);
+	MR_r2 = MR_sv(1);
+	MR_r3 = MR_sv(2);
+	MR_np_call_localret_ent(array__lookup_3_0,
+		mdprof_fb__automatic_parallelism__autopar_find_best_par__foldl_sub_array__ho2_6_0_i3);
+MR_def_label(mdprof_fb__automatic_parallelism__autopar_find_best_par__foldl_sub_array__ho2_6_0,3)
+	MR_MAYBE_INIT_LOCAL_THREAD_ENGINE_BASE
+	MR_r2 = MR_sv(4);
+	MR_np_call_localret_ent(f_109_100_112_114_111_102_95_102_98_95_95_97_117_116_111_109_97_116_105_99_95_112_97_114_97_108_108_101_108_105_115_109_95_95_97_117_116_111_112_97_114_95_102_105_110_100_95_98_101_115_116_95_112_97_114_95_95_85_110_117_115_101_100_65_114_103_115_95_95_112_114_101_100_95_95_103_111_97_108_95_97_99_99_117_109_117_108_97_116_101_95_100_101_116_105_115_109_95_95_91_49_93_95_48_4_0,
+		mdprof_fb__automatic_parallelism__autopar_find_best_par__foldl_sub_array__ho2_6_0_i4);
+MR_def_label(mdprof_fb__automatic_parallelism__autopar_find_best_par__foldl_sub_array__ho2_6_0,4)
+	MR_MAYBE_INIT_LOCAL_THREAD_ENGINE_BASE
+	{
+	MR_Word MR_tempr1;
+	MR_tempr1 = MR_r1;
+	MR_r1 = MR_sv(1);
+	MR_r2 = ((MR_Integer) MR_sv(2) + (MR_Integer) 1);
+	MR_r3 = MR_sv(3);
+	MR_r4 = MR_tempr1;
+	MR_succip_word = MR_sv(5);
+	MR_GOTO_LAB(mdprof_fb__automatic_parallelism__autopar_find_best_par__foldl_sub_array__ho2_6_0_i14);
+	}
+MR_def_label(mdprof_fb__automatic_parallelism__autopar_find_best_par__foldl_sub_array__ho2_6_0,2)
+	MR_MAYBE_INIT_LOCAL_THREAD_ENGINE_BASE
+	MR_r1 = MR_r4;
+	MR_decr_sp_and_return(5);
+#ifdef MR_maybe_local_thread_engine_base
+	#undef MR_maybe_local_thread_engine_base
+	#define MR_maybe_local_thread_engine_base MR_thread_engine_base
+#endif
+MR_END_MODULE
+
+
+MR_BEGIN_MODULE(mdprof_fb__automatic_parallelism__autopar_find_best_par_module34)
+	MR_init_entry1(f_109_100_112_114_111_102_95_102_98_95_95_97_117_116_111_109_97_116_105_99_95_112_97_114_97_108_108_101_108_105_115_109_95_95_97_117_116_111_112_97_114_95_102_105_110_100_95_98_101_115_116_95_112_97_114_95_95_85_110_117_115_101_100_65_114_103_115_95_95_112_114_101_100_95_95_103_103_95_103_101_116_95_100_101_116_97_105_108_115_95_95_91_49_93_95_48_4_0);
+	MR_INIT_PROC_LAYOUT_ADDR(mercury__f_109_100_112_114_111_102_95_102_98_95_95_97_117_116_111_109_97_116_105_99_95_112_97_114_97_108_108_101_108_105_115_109_95_95_97_117_116_111_112_97_114_95_102_105_110_100_95_98_101_115_116_95_112_97_114_95_95_85_110_117_115_101_100_65_114_103_115_95_95_112_114_101_100_95_95_103_103_95_103_101_116_95_100_101_116_97_105_108_115_95_95_91_49_93_95_48_4_0);
+	MR_init_label1(f_109_100_112_114_111_102_95_102_98_95_95_97_117_116_111_109_97_116_105_99_95_112_97_114_97_108_108_101_108_105_115_109_95_95_97_117_116_111_112_97_114_95_102_105_110_100_95_98_101_115_116_95_112_97_114_95_95_85_110_117_115_101_100_65_114_103_115_95_95_112_114_101_100_95_95_103_103_95_103_101_116_95_100_101_116_97_105_108_115_95_95_91_49_93_95_48_4_0,3)
+MR_BEGIN_CODE
+
+/*-------------------------------------------------------------------------*/
+/* code for 'UnusedArgs__pred__gg_get_details__[1]_0'/4 mode 0 */
+#ifdef MR_maybe_local_thread_engine_base
+	#undef MR_maybe_local_thread_engine_base
+	#define MR_maybe_local_thread_engine_base MR_local_thread_engine_base
+#endif
+MR_def_static(f_109_100_112_114_111_102_95_102_98_95_95_97_117_116_111_109_97_116_105_99_95_112_97_114_97_108_108_101_108_105_115_109_95_95_97_117_116_111_112_97_114_95_102_105_110_100_95_98_101_115_116_95_112_97_114_95_95_85_110_117_115_101_100_65_114_103_115_95_95_112_114_101_100_95_95_103_103_95_103_101_116_95_100_101_116_97_105_108_115_95_95_91_49_93_95_48_4_0)
+	MR_MAYBE_INIT_LOCAL_THREAD_ENGINE_BASE
+	if (MR_PTAG_TESTR(MR_r1,1)) {
+		MR_GOTO_LAB(f_109_100_112_114_111_102_95_102_98_95_95_97_117_116_111_109_97_116_105_99_95_112_97_114_97_108_108_101_108_105_115_109_95_95_97_117_116_111_112_97_114_95_102_105_110_100_95_98_101_115_116_95_112_97_114_95_95_85_110_117_115_101_100_65_114_103_115_95_95_112_114_101_100_95_95_103_103_95_103_101_116_95_100_101_116_97_105_108_115_95_95_91_49_93_95_48_4_0_i3);
+	}
+	{
+	MR_Word MR_tempr1;
+	MR_tempr1 = MR_r1;
+	MR_r1 = MR_tfield(1, MR_r1, 0);
+	MR_r2 = MR_tfield(1, MR_tempr1, 1);
+	MR_r3 = MR_tfield(1, MR_tempr1, 2);
+	MR_proceed();
+	}
+MR_def_label(f_109_100_112_114_111_102_95_102_98_95_95_97_117_116_111_109_97_116_105_99_95_112_97_114_97_108_108_101_108_105_115_109_95_95_97_117_116_111_112_97_114_95_102_105_110_100_95_98_101_115_116_95_112_97_114_95_95_85_110_117_115_101_100_65_114_103_115_95_95_112_114_101_100_95_95_103_103_95_103_101_116_95_100_101_116_97_105_108_115_95_95_91_49_93_95_48_4_0,3)
+	MR_MAYBE_INIT_LOCAL_THREAD_ENGINE_BASE
+	{
+	MR_Word MR_tempr1;
+	MR_tempr1 = MR_r1;
+	MR_r1 = MR_tfield(0, MR_r1, 0);
+	MR_r2 = (MR_Integer) 1;
+	MR_r3 = MR_tfield(0, MR_tempr1, 1);
+	MR_proceed();
+	}
+#ifdef MR_maybe_local_thread_engine_base
+	#undef MR_maybe_local_thread_engine_base
+	#define MR_maybe_local_thread_engine_base MR_thread_engine_base
+#endif
+MR_END_MODULE
+
+MR_decl_entry(mdbcomp__program_representation__detism_components_3_0);
+MR_decl_entry(mdbcomp__program_representation__detism_committed_choice_2_0);
+MR_decl_entry(mdbcomp__program_representation__detism_components_3_1);
+MR_declare_entry(MR_do_redo);
+
+MR_BEGIN_MODULE(mdprof_fb__automatic_parallelism__autopar_find_best_par_module35)
+	MR_init_entry1(f_109_100_112_114_111_102_95_102_98_95_95_97_117_116_111_109_97_116_105_99_95_112_97_114_97_108_108_101_108_105_115_109_95_95_97_117_116_111_112_97_114_95_102_105_110_100_95_98_101_115_116_95_112_97_114_95_95_85_110_117_115_101_100_65_114_103_115_95_95_112_114_101_100_95_95_103_111_97_108_95_97_99_99_117_109_117_108_97_116_101_95_100_101_116_105_115_109_95_95_91_49_93_95_48_4_0);
+	MR_INIT_PROC_LAYOUT_ADDR(mercury__f_109_100_112_114_111_102_95_102_98_95_95_97_117_116_111_109_97_116_105_99_95_112_97_114_97_108_108_101_108_105_115_109_95_95_97_117_116_111_112_97_114_95_102_105_110_100_95_98_101_115_116_95_112_97_114_95_95_85_110_117_115_101_100_65_114_103_115_95_95_112_114_101_100_95_95_103_111_97_108_95_97_99_99_117_109_117_108_97_116_101_95_100_101_116_105_115_109_95_95_91_49_93_95_48_4_0);
+	MR_init_label10(f_109_100_112_114_111_102_95_102_98_95_95_97_117_116_111_109_97_116_105_99_95_112_97_114_97_108_108_101_108_105_115_109_95_95_97_117_116_111_112_97_114_95_102_105_110_100_95_98_101_115_116_95_112_97_114_95_95_85_110_117_115_101_100_65_114_103_115_95_95_112_114_101_100_95_95_103_111_97_108_95_97_99_99_117_109_117_108_97_116_101_95_100_101_116_105_115_109_95_95_91_49_93_95_48_4_0,2,3,4,5,23,9,7,6,12,11)
+	MR_init_label7(f_109_100_112_114_111_102_95_102_98_95_95_97_117_116_111_109_97_116_105_99_95_112_97_114_97_108_108_101_108_105_115_109_95_95_97_117_116_111_112_97_114_95_102_105_110_100_95_98_101_115_116_95_112_97_114_95_95_85_110_117_115_101_100_65_114_103_115_95_95_112_114_101_100_95_95_103_111_97_108_95_97_99_99_117_109_117_108_97_116_101_95_100_101_116_105_115_109_95_95_91_49_93_95_48_4_0,14,13,17,18,16,19,15)
+MR_BEGIN_CODE
+
+/*-------------------------------------------------------------------------*/
+/* code for 'UnusedArgs__pred__goal_accumulate_detism__[1]_0'/4 mode 0 */
+#ifdef MR_maybe_local_thread_engine_base
+	#undef MR_maybe_local_thread_engine_base
+	#define MR_maybe_local_thread_engine_base MR_local_thread_engine_base
+#endif
+MR_def_static(f_109_100_112_114_111_102_95_102_98_95_95_97_117_116_111_109_97_116_105_99_95_112_97_114_97_108_108_101_108_105_115_109_95_95_97_117_116_111_112_97_114_95_102_105_110_100_95_98_101_115_116_95_112_97_114_95_95_85_110_117_115_101_100_65_114_103_115_95_95_112_114_101_100_95_95_103_111_97_108_95_97_99_99_117_109_117_108_97_116_101_95_100_101_116_105_115_109_95_95_91_49_93_95_48_4_0)
+	MR_MAYBE_INIT_LOCAL_THREAD_ENGINE_BASE
+	MR_incr_sp(9);
+	MR_sv(9) = (MR_Word) MR_succip;
+	MR_sv(4) = MR_r1;
+	MR_sv(5) = MR_r2;
+	MR_r1 = MR_r2;
+	MR_np_call_localret_ent(mdbcomp__program_representation__detism_components_3_0,
+		f_109_100_112_114_111_102_95_102_98_95_95_97_117_116_111_109_97_116_105_99_95_112_97_114_97_108_108_101_108_105_115_109_95_95_97_117_116_111_112_97_114_95_102_105_110_100_95_98_101_115_116_95_112_97_114_95_95_85_110_117_115_101_100_65_114_103_115_95_95_112_114_101_100_95_95_103_111_97_108_95_97_99_99_117_109_117_108_97_116_101_95_100_101_116_105_115_109_95_95_91_49_93_95_48_4_0_i2);
+MR_def_label(f_109_100_112_114_111_102_95_102_98_95_95_97_117_116_111_109_97_116_105_99_95_112_97_114_97_108_108_101_108_105_115_109_95_95_97_117_116_111_112_97_114_95_102_105_110_100_95_98_101_115_116_95_112_97_114_95_95_85_110_117_115_101_100_65_114_103_115_95_95_112_114_101_100_95_95_103_111_97_108_95_97_99_99_117_109_117_108_97_116_101_95_100_101_116_105_115_109_95_95_91_49_93_95_48_4_0,2)
+	MR_MAYBE_INIT_LOCAL_THREAD_ENGINE_BASE
+	{
+	MR_Word MR_tempr1;
+	MR_tempr1 = MR_sv(5);
+	MR_sv(5) = MR_r1;
+	MR_sv(1) = MR_r2;
+	MR_r1 = MR_tempr1;
+	}
+	MR_np_call_localret_ent(mdbcomp__program_representation__detism_committed_choice_2_0,
+		f_109_100_112_114_111_102_95_102_98_95_95_97_117_116_111_109_97_116_105_99_95_112_97_114_97_108_108_101_108_105_115_109_95_95_97_117_116_111_112_97_114_95_102_105_110_100_95_98_101_115_116_95_112_97_114_95_95_85_110_117_115_101_100_65_114_103_115_95_95_112_114_101_100_95_95_103_111_97_108_95_97_99_99_117_109_117_108_97_116_101_95_100_101_116_105_115_109_95_95_91_49_93_95_48_4_0_i3);
+MR_def_label(f_109_100_112_114_111_102_95_102_98_95_95_97_117_116_111_109_97_116_105_99_95_112_97_114_97_108_108_101_108_105_115_109_95_95_97_117_116_111_112_97_114_95_102_105_110_100_95_98_101_115_116_95_112_97_114_95_95_85_110_117_115_101_100_65_114_103_115_95_95_112_114_101_100_95_95_103_111_97_108_95_97_99_99_117_109_117_108_97_116_101_95_100_101_116_105_115_109_95_95_91_49_93_95_48_4_0,3)
+	MR_MAYBE_INIT_LOCAL_THREAD_ENGINE_BASE
+	MR_sv(4) = MR_tfield(0, MR_sv(4), 1);
+	MR_sv(2) = MR_r1;
+	MR_r1 = MR_sv(4);
+	MR_np_call_localret_ent(mdbcomp__program_representation__detism_components_3_0,
+		f_109_100_112_114_111_102_95_102_98_95_95_97_117_116_111_109_97_116_105_99_95_112_97_114_97_108_108_101_108_105_115_109_95_95_97_117_116_111_112_97_114_95_102_105_110_100_95_98_101_115_116_95_112_97_114_95_95_85_110_117_115_101_100_65_114_103_115_95_95_112_114_101_100_95_95_103_111_97_108_95_97_99_99_117_109_117_108_97_116_101_95_100_101_116_105_115_109_95_95_91_49_93_95_48_4_0_i4);
+MR_def_label(f_109_100_112_114_111_102_95_102_98_95_95_97_117_116_111_109_97_116_105_99_95_112_97_114_97_108_108_101_108_105_115_109_95_95_97_117_116_111_112_97_114_95_102_105_110_100_95_98_101_115_116_95_112_97_114_95_95_85_110_117_115_101_100_65_114_103_115_95_95_112_114_101_100_95_95_103_111_97_108_95_97_99_99_117_109_117_108_97_116_101_95_100_101_116_105_115_109_95_95_91_49_93_95_48_4_0,4)
+	MR_MAYBE_INIT_LOCAL_THREAD_ENGINE_BASE
+	{
+	MR_Word MR_tempr1;
+	MR_tempr1 = MR_sv(4);
+	MR_sv(4) = MR_r1;
+	MR_sv(3) = MR_r2;
+	MR_r1 = MR_tempr1;
+	}
+	MR_np_call_localret_ent(mdbcomp__program_representation__detism_committed_choice_2_0,
+		f_109_100_112_114_111_102_95_102_98_95_95_97_117_116_111_109_97_116_105_99_95_112_97_114_97_108_108_101_108_105_115_109_95_95_97_117_116_111_112_97_114_95_102_105_110_100_95_98_101_115_116_95_112_97_114_95_95_85_110_117_115_101_100_65_114_103_115_95_95_112_114_101_100_95_95_103_111_97_108_95_97_99_99_117_109_117_108_97_116_101_95_100_101_116_105_115_109_95_95_91_49_93_95_48_4_0_i5);
+MR_def_label(f_109_100_112_114_111_102_95_102_98_95_95_97_117_116_111_109_97_116_105_99_95_112_97_114_97_108_108_101_108_105_115_109_95_95_97_117_116_111_112_97_114_95_102_105_110_100_95_98_101_115_116_95_112_97_114_95_95_85_110_117_115_101_100_65_114_103_115_95_95_112_114_101_100_95_95_103_111_97_108_95_97_99_99_117_109_117_108_97_116_101_95_100_101_116_105_115_109_95_95_91_49_93_95_48_4_0,5)
+	MR_MAYBE_INIT_LOCAL_THREAD_ENGINE_BASE
+	if (MR_INT_NE(MR_sv(4),2)) {
+		MR_GOTO_LAB(f_109_100_112_114_111_102_95_102_98_95_95_97_117_116_111_109_97_116_105_99_95_112_97_114_97_108_108_101_108_105_115_109_95_95_97_117_116_111_112_97_114_95_102_105_110_100_95_98_101_115_116_95_112_97_114_95_95_85_110_117_115_101_100_65_114_103_115_95_95_112_114_101_100_95_95_103_111_97_108_95_97_99_99_117_109_117_108_97_116_101_95_100_101_116_105_115_109_95_95_91_49_93_95_48_4_0_i7);
+	}
+	if (MR_INT_NE(MR_sv(5),0)) {
+		MR_GOTO_LAB(f_109_100_112_114_111_102_95_102_98_95_95_97_117_116_111_109_97_116_105_99_95_112_97_114_97_108_108_101_108_105_115_109_95_95_97_117_116_111_112_97_114_95_102_105_110_100_95_98_101_115_116_95_112_97_114_95_95_85_110_117_115_101_100_65_114_103_115_95_95_112_114_101_100_95_95_103_111_97_108_95_97_99_99_117_109_117_108_97_116_101_95_100_101_116_105_115_109_95_95_91_49_93_95_48_4_0_i9);
+	}
+MR_def_label(f_109_100_112_114_111_102_95_102_98_95_95_97_117_116_111_109_97_116_105_99_95_112_97_114_97_108_108_101_108_105_115_109_95_95_97_117_116_111_112_97_114_95_102_105_110_100_95_98_101_115_116_95_112_97_114_95_95_85_110_117_115_101_100_65_114_103_115_95_95_112_114_101_100_95_95_103_111_97_108_95_97_99_99_117_109_117_108_97_116_101_95_100_101_116_105_115_109_95_95_91_49_93_95_48_4_0,23)
+	MR_MAYBE_INIT_LOCAL_THREAD_ENGINE_BASE
+	MR_r2 = MR_r1;
+	MR_r1 = (MR_Integer) 0;
+	MR_GOTO_LAB(f_109_100_112_114_111_102_95_102_98_95_95_97_117_116_111_109_97_116_105_99_95_112_97_114_97_108_108_101_108_105_115_109_95_95_97_117_116_111_112_97_114_95_102_105_110_100_95_98_101_115_116_95_112_97_114_95_95_85_110_117_115_101_100_65_114_103_115_95_95_112_114_101_100_95_95_103_111_97_108_95_97_99_99_117_109_117_108_97_116_101_95_100_101_116_105_115_109_95_95_91_49_93_95_48_4_0_i6);
+MR_def_label(f_109_100_112_114_111_102_95_102_98_95_95_97_117_116_111_109_97_116_105_99_95_112_97_114_97_108_108_101_108_105_115_109_95_95_97_117_116_111_112_97_114_95_102_105_110_100_95_98_101_115_116_95_112_97_114_95_95_85_110_117_115_101_100_65_114_103_115_95_95_112_114_101_100_95_95_103_111_97_108_95_97_99_99_117_109_117_108_97_116_101_95_100_101_116_105_115_109_95_95_91_49_93_95_48_4_0,9)
+	MR_MAYBE_INIT_LOCAL_THREAD_ENGINE_BASE
+	MR_r2 = MR_r1;
+	MR_r1 = MR_sv(4);
+	MR_GOTO_LAB(f_109_100_112_114_111_102_95_102_98_95_95_97_117_116_111_109_97_116_105_99_95_112_97_114_97_108_108_101_108_105_115_109_95_95_97_117_116_111_112_97_114_95_102_105_110_100_95_98_101_115_116_95_112_97_114_95_95_85_110_117_115_101_100_65_114_103_115_95_95_112_114_101_100_95_95_103_111_97_108_95_97_99_99_117_109_117_108_97_116_101_95_100_101_116_105_115_109_95_95_91_49_93_95_48_4_0_i6);
+MR_def_label(f_109_100_112_114_111_102_95_102_98_95_95_97_117_116_111_109_97_116_105_99_95_112_97_114_97_108_108_101_108_105_115_109_95_95_97_117_116_111_112_97_114_95_102_105_110_100_95_98_101_115_116_95_112_97_114_95_95_85_110_117_115_101_100_65_114_103_115_95_95_112_114_101_100_95_95_103_111_97_108_95_97_99_99_117_109_117_108_97_116_101_95_100_101_116_105_115_109_95_95_91_49_93_95_48_4_0,7)
+	MR_MAYBE_INIT_LOCAL_THREAD_ENGINE_BASE
+	if (MR_INT_NE(MR_sv(4),1)) {
+		MR_GOTO_LAB(f_109_100_112_114_111_102_95_102_98_95_95_97_117_116_111_109_97_116_105_99_95_112_97_114_97_108_108_101_108_105_115_109_95_95_97_117_116_111_112_97_114_95_102_105_110_100_95_98_101_115_116_95_112_97_114_95_95_85_110_117_115_101_100_65_114_103_115_95_95_112_114_101_100_95_95_103_111_97_108_95_97_99_99_117_109_117_108_97_116_101_95_100_101_116_105_115_109_95_95_91_49_93_95_48_4_0_i23);
+	}
+	MR_r2 = MR_r1;
+	MR_r1 = MR_sv(5);
+MR_def_label(f_109_100_112_114_111_102_95_102_98_95_95_97_117_116_111_109_97_116_105_99_95_112_97_114_97_108_108_101_108_105_115_109_95_95_97_117_116_111_112_97_114_95_102_105_110_100_95_98_101_115_116_95_112_97_114_95_95_85_110_117_115_101_100_65_114_103_115_95_95_112_114_101_100_95_95_103_111_97_108_95_97_99_99_117_109_117_108_97_116_101_95_100_101_116_105_115_109_95_95_91_49_93_95_48_4_0,6)
+	MR_MAYBE_INIT_LOCAL_THREAD_ENGINE_BASE
+	if (MR_INT_NE(MR_sv(3),0)) {
+		MR_GOTO_LAB(f_109_100_112_114_111_102_95_102_98_95_95_97_117_116_111_109_97_116_105_99_95_112_97_114_97_108_108_101_108_105_115_109_95_95_97_117_116_111_112_97_114_95_102_105_110_100_95_98_101_115_116_95_112_97_114_95_95_85_110_117_115_101_100_65_114_103_115_95_95_112_114_101_100_95_95_103_111_97_108_95_97_99_99_117_109_117_108_97_116_101_95_100_101_116_105_115_109_95_95_91_49_93_95_48_4_0_i12);
+	}
+	MR_r3 = MR_r2;
+	MR_r2 = (MR_Integer) 0;
+	MR_GOTO_LAB(f_109_100_112_114_111_102_95_102_98_95_95_97_117_116_111_109_97_116_105_99_95_112_97_114_97_108_108_101_108_105_115_109_95_95_97_117_116_111_112_97_114_95_102_105_110_100_95_98_101_115_116_95_112_97_114_95_95_85_110_117_115_101_100_65_114_103_115_95_95_112_114_101_100_95_95_103_111_97_108_95_97_99_99_117_109_117_108_97_116_101_95_100_101_116_105_115_109_95_95_91_49_93_95_48_4_0_i11);
+MR_def_label(f_109_100_112_114_111_102_95_102_98_95_95_97_117_116_111_109_97_116_105_99_95_112_97_114_97_108_108_101_108_105_115_109_95_95_97_117_116_111_112_97_114_95_102_105_110_100_95_98_101_115_116_95_112_97_114_95_95_85_110_117_115_101_100_65_114_103_115_95_95_112_114_101_100_95_95_103_111_97_108_95_97_99_99_117_109_117_108_97_116_101_95_100_101_116_105_115_109_95_95_91_49_93_95_48_4_0,12)
+	MR_MAYBE_INIT_LOCAL_THREAD_ENGINE_BASE
+	MR_r3 = MR_r2;
+	MR_r2 = MR_sv(1);
+MR_def_label(f_109_100_112_114_111_102_95_102_98_95_95_97_117_116_111_109_97_116_105_99_95_112_97_114_97_108_108_101_108_105_115_109_95_95_97_117_116_111_112_97_114_95_102_105_110_100_95_98_101_115_116_95_112_97_114_95_95_85_110_117_115_101_100_65_114_103_115_95_95_112_114_101_100_95_95_103_111_97_108_95_97_99_99_117_109_117_108_97_116_101_95_100_101_116_105_115_109_95_95_91_49_93_95_48_4_0,11)
+	MR_MAYBE_INIT_LOCAL_THREAD_ENGINE_BASE
+	if (MR_INT_NE(MR_r3,0)) {
+		MR_GOTO_LAB(f_109_100_112_114_111_102_95_102_98_95_95_97_117_116_111_109_97_116_105_99_95_112_97_114_97_108_108_101_108_105_115_109_95_95_97_117_116_111_112_97_114_95_102_105_110_100_95_98_101_115_116_95_112_97_114_95_95_85_110_117_115_101_100_65_114_103_115_95_95_112_114_101_100_95_95_103_111_97_108_95_97_99_99_117_109_117_108_97_116_101_95_100_101_116_105_115_109_95_95_91_49_93_95_48_4_0_i14);
+	}
+	MR_sv(4) = MR_sv(2);
+	MR_GOTO_LAB(f_109_100_112_114_111_102_95_102_98_95_95_97_117_116_111_109_97_116_105_99_95_112_97_114_97_108_108_101_108_105_115_109_95_95_97_117_116_111_112_97_114_95_102_105_110_100_95_98_101_115_116_95_112_97_114_95_95_85_110_117_115_101_100_65_114_103_115_95_95_112_114_101_100_95_95_103_111_97_108_95_97_99_99_117_109_117_108_97_116_101_95_100_101_116_105_115_109_95_95_91_49_93_95_48_4_0_i13);
+MR_def_label(f_109_100_112_114_111_102_95_102_98_95_95_97_117_116_111_109_97_116_105_99_95_112_97_114_97_108_108_101_108_105_115_109_95_95_97_117_116_111_112_97_114_95_102_105_110_100_95_98_101_115_116_95_112_97_114_95_95_85_110_117_115_101_100_65_114_103_115_95_95_112_114_101_100_95_95_103_111_97_108_95_97_99_99_117_109_117_108_97_116_101_95_100_101_116_105_115_109_95_95_91_49_93_95_48_4_0,14)
+	MR_MAYBE_INIT_LOCAL_THREAD_ENGINE_BASE
+	MR_sv(4) = (MR_Integer) 1;
+MR_def_label(f_109_100_112_114_111_102_95_102_98_95_95_97_117_116_111_109_97_116_105_99_95_112_97_114_97_108_108_101_108_105_115_109_95_95_97_117_116_111_112_97_114_95_102_105_110_100_95_98_101_115_116_95_112_97_114_95_95_85_110_117_115_101_100_65_114_103_115_95_95_112_114_101_100_95_95_103_111_97_108_95_97_99_99_117_109_117_108_97_116_101_95_100_101_116_105_115_109_95_95_91_49_93_95_48_4_0,13)
+	MR_MAYBE_INIT_LOCAL_THREAD_ENGINE_BASE
+	MR_sv(6) = (MR_Word) MR_redoip_slot(MR_maxfr);
+	MR_sv(7) = (MR_Word) MR_redofr_slot(MR_maxfr);
+	MR_save_maxfr(MR_sv(8));
+	MR_redofr_slot_word(MR_maxfr) = (MR_Word) MR_curfr;
+	MR_redoip_slot_word(MR_maxfr) = (MR_Word) MR_LABEL_AP(f_109_100_112_114_111_102_95_102_98_95_95_97_117_116_111_109_97_116_105_99_95_112_97_114_97_108_108_101_108_105_115_109_95_95_97_117_116_111_112_97_114_95_102_105_110_100_95_98_101_115_116_95_112_97_114_95_95_85_110_117_115_101_100_65_114_103_115_95_95_112_114_101_100_95_95_103_111_97_108_95_97_99_99_117_109_117_108_97_116_101_95_100_101_116_105_115_109_95_95_91_49_93_95_48_4_0_i16);
+	MR_np_call_localret_ent(mdbcomp__program_representation__detism_components_3_1,
+		f_109_100_112_114_111_102_95_102_98_95_95_97_117_116_111_109_97_116_105_99_95_112_97_114_97_108_108_101_108_105_115_109_95_95_97_117_116_111_112_97_114_95_102_105_110_100_95_98_101_115_116_95_112_97_114_95_95_85_110_117_115_101_100_65_114_103_115_95_95_112_114_101_100_95_95_103_111_97_108_95_97_99_99_117_109_117_108_97_116_101_95_100_101_116_105_115_109_95_95_91_49_93_95_48_4_0_i17);
+MR_def_label(f_109_100_112_114_111_102_95_102_98_95_95_97_117_116_111_109_97_116_105_99_95_112_97_114_97_108_108_101_108_105_115_109_95_95_97_117_116_111_112_97_114_95_102_105_110_100_95_98_101_115_116_95_112_97_114_95_95_85_110_117_115_101_100_65_114_103_115_95_95_112_114_101_100_95_95_103_111_97_108_95_97_99_99_117_109_117_108_97_116_101_95_100_101_116_105_115_109_95_95_91_49_93_95_48_4_0,17)
+	MR_MAYBE_INIT_LOCAL_THREAD_ENGINE_BASE
+	MR_sv(5) = MR_r1;
+	MR_np_call_localret_ent(mdbcomp__program_representation__detism_committed_choice_2_0,
+		f_109_100_112_114_111_102_95_102_98_95_95_97_117_116_111_109_97_116_105_99_95_112_97_114_97_108_108_101_108_105_115_109_95_95_97_117_116_111_112_97_114_95_102_105_110_100_95_98_101_115_116_95_112_97_114_95_95_85_110_117_115_101_100_65_114_103_115_95_95_112_114_101_100_95_95_103_111_97_108_95_97_99_99_117_109_117_108_97_116_101_95_100_101_116_105_115_109_95_95_91_49_93_95_48_4_0_i18);
+MR_def_label(f_109_100_112_114_111_102_95_102_98_95_95_97_117_116_111_109_97_116_105_99_95_112_97_114_97_108_108_101_108_105_115_109_95_95_97_117_116_111_112_97_114_95_102_105_110_100_95_98_101_115_116_95_112_97_114_95_95_85_110_117_115_101_100_65_114_103_115_95_95_112_114_101_100_95_95_103_111_97_108_95_97_99_99_117_109_117_108_97_116_101_95_100_101_116_105_115_109_95_95_91_49_93_95_48_4_0,18)
+	MR_MAYBE_INIT_LOCAL_THREAD_ENGINE_BASE
+	if ((MR_sv(4) != MR_r1)) {
+		MR_GOTO(MR_ENTRY(MR_do_redo));
+	}
+	MR_restore_maxfr(MR_sv(8));
+	MR_redoip_slot_word(MR_maxfr) = MR_sv(6);
+	MR_redofr_slot_word(MR_maxfr) = MR_sv(7);
+	MR_GOTO_LAB(f_109_100_112_114_111_102_95_102_98_95_95_97_117_116_111_109_97_116_105_99_95_112_97_114_97_108_108_101_108_105_115_109_95_95_97_117_116_111_112_97_114_95_102_105_110_100_95_98_101_115_116_95_112_97_114_95_95_85_110_117_115_101_100_65_114_103_115_95_95_112_114_101_100_95_95_103_111_97_108_95_97_99_99_117_109_117_108_97_116_101_95_100_101_116_105_115_109_95_95_91_49_93_95_48_4_0_i19);
+MR_def_label(f_109_100_112_114_111_102_95_102_98_95_95_97_117_116_111_109_97_116_105_99_95_112_97_114_97_108_108_101_108_105_115_109_95_95_97_117_116_111_112_97_114_95_102_105_110_100_95_98_101_115_116_95_112_97_114_95_95_85_110_117_115_101_100_65_114_103_115_95_95_112_114_101_100_95_95_103_111_97_108_95_97_99_99_117_109_117_108_97_116_101_95_100_101_116_105_115_109_95_95_91_49_93_95_48_4_0,16)
+	MR_MAYBE_INIT_LOCAL_THREAD_ENGINE_BASE
+	MR_redoip_slot_word(MR_maxfr) = MR_sv(6);
+	MR_redofr_slot_word(MR_maxfr) = MR_sv(7);
+	MR_GOTO_LAB(f_109_100_112_114_111_102_95_102_98_95_95_97_117_116_111_109_97_116_105_99_95_112_97_114_97_108_108_101_108_105_115_109_95_95_97_117_116_111_112_97_114_95_102_105_110_100_95_98_101_115_116_95_112_97_114_95_95_85_110_117_115_101_100_65_114_103_115_95_95_112_114_101_100_95_95_103_111_97_108_95_97_99_99_117_109_117_108_97_116_101_95_100_101_116_105_115_109_95_95_91_49_93_95_48_4_0_i15);
+MR_def_label(f_109_100_112_114_111_102_95_102_98_95_95_97_117_116_111_109_97_116_105_99_95_112_97_114_97_108_108_101_108_105_115_109_95_95_97_117_116_111_112_97_114_95_102_105_110_100_95_98_101_115_116_95_112_97_114_95_95_85_110_117_115_101_100_65_114_103_115_95_95_112_114_101_100_95_95_103_111_97_108_95_97_99_99_117_109_117_108_97_116_101_95_100_101_116_105_115_109_95_95_91_49_93_95_48_4_0,19)
+	MR_MAYBE_INIT_LOCAL_THREAD_ENGINE_BASE
+	MR_r1 = MR_sv(5);
+	MR_decr_sp_and_return(9);
+MR_def_label(f_109_100_112_114_111_102_95_102_98_95_95_97_117_116_111_109_97_116_105_99_95_112_97_114_97_108_108_101_108_105_115_109_95_95_97_117_116_111_112_97_114_95_102_105_110_100_95_98_101_115_116_95_112_97_114_95_95_85_110_117_115_101_100_65_114_103_115_95_95_112_114_101_100_95_95_103_111_97_108_95_97_99_99_117_109_117_108_97_116_101_95_100_101_116_105_115_109_95_95_91_49_93_95_48_4_0,15)
+	MR_MAYBE_INIT_LOCAL_THREAD_ENGINE_BASE
+	MR_r1 = (MR_Word) MR_string_const("mdprof_fb.automatic_parallelism.autopar_find_best_par", 53);
+	MR_r2 = (MR_Word) MR_string_const("predicate \140mdprof_fb.automatic_parallelism.autopar_find_best_par.goal_accumulate_detism\'/4", 90);
+	MR_r3 = (MR_Word) MR_string_const("cannot compute detism from components.", 38);
+	MR_succip_word = MR_sv(9);
+	MR_decr_sp(9);
+	MR_np_tailcall_ent(require__unexpected_3_0);
+#ifdef MR_maybe_local_thread_engine_base
+	#undef MR_maybe_local_thread_engine_base
+	#define MR_maybe_local_thread_engine_base MR_thread_engine_base
+#endif
+MR_END_MODULE
+
+MR_decl_entry(benchmarking__benchmark_det_5_0);
+
+MR_BEGIN_MODULE(mdprof_fb__automatic_parallelism__autopar_find_best_par_module36)
+	MR_init_entry1(f_109_100_112_114_111_102_95_102_98_95_95_97_117_116_111_109_97_116_105_99_95_112_97_114_97_108_108_101_108_105_115_109_95_95_97_117_116_111_112_97_114_95_102_105_110_100_95_98_101_115_116_95_112_97_114_95_95_85_110_117_115_101_100_65_114_103_115_95_95_112_114_101_100_95_95_102_105_110_100_95_98_101_115_116_95_112_97_114_97_108_108_101_108_105_115_97_116_105_111_110_95_99_111_109_112_108_101_116_101_95_98_110_98_95_95_91_50_93_95_48_5_0);
+	MR_INIT_PROC_LAYOUT_ADDR(mercury__f_109_100_112_114_111_102_95_102_98_95_95_97_117_116_111_109_97_116_105_99_95_112_97_114_97_108_108_101_108_105_115_109_95_95_97_117_116_111_112_97_114_95_102_105_110_100_95_98_101_115_116_95_112_97_114_95_95_85_110_117_115_101_100_65_114_103_115_95_95_112_114_101_100_95_95_102_105_110_100_95_98_101_115_116_95_112_97_114_97_108_108_101_108_105_115_97_116_105_111_110_95_99_111_109_112_108_101_116_101_95_98_110_98_95_95_91_50_93_95_48_5_0);
+	MR_init_label5(f_109_100_112_114_111_102_95_102_98_95_95_97_117_116_111_109_97_116_105_99_95_112_97_114_97_108_108_101_108_105_115_109_95_95_97_117_116_111_112_97_114_95_102_105_110_100_95_98_101_115_116_95_112_97_114_95_95_85_110_117_115_101_100_65_114_103_115_95_95_112_114_101_100_95_95_102_105_110_100_95_98_101_115_116_95_112_97_114_97_108_108_101_108_105_115_97_116_105_111_110_95_99_111_109_112_108_101_116_101_95_98_110_98_95_95_91_50_93_95_48_5_0,27,3,7,5,12)
+MR_BEGIN_CODE
+
+/*-------------------------------------------------------------------------*/
+/* code for 'UnusedArgs__pred__find_best_parallelisation_complete_bnb__[2]_0'/5 mode 0 */
+#ifdef MR_maybe_local_thread_engine_base
+	#undef MR_maybe_local_thread_engine_base
+	#define MR_maybe_local_thread_engine_base MR_local_thread_engine_base
+#endif
+MR_def_static(f_109_100_112_114_111_102_95_102_98_95_95_97_117_116_111_109_97_116_105_99_95_112_97_114_97_108_108_101_108_105_115_109_95_95_97_117_116_111_112_97_114_95_102_105_110_100_95_98_101_115_116_95_112_97_114_95_95_85_110_117_115_101_100_65_114_103_115_95_95_112_114_101_100_95_95_102_105_110_100_95_98_101_115_116_95_112_97_114_97_108_108_101_108_105_115_97_116_105_111_110_95_99_111_109_112_108_101_116_101_95_98_110_98_95_95_91_50_93_95_48_5_0)
+	MR_MAYBE_INIT_LOCAL_THREAD_ENGINE_BASE
+	MR_incr_sp(4);
+	MR_sv(4) = (MR_Word) MR_succip;
+MR_def_label(f_109_100_112_114_111_102_95_102_98_95_95_97_117_116_111_109_97_116_105_99_95_112_97_114_97_108_108_101_108_105_115_109_95_95_97_117_116_111_112_97_114_95_102_105_110_100_95_98_101_115_116_95_112_97_114_95_95_85_110_117_115_101_100_65_114_103_115_95_95_112_114_101_100_95_95_102_105_110_100_95_98_101_115_116_95_112_97_114_97_108_108_101_108_105_115_97_116_105_111_110_95_99_111_109_112_108_101_116_101_95_98_110_98_95_95_91_50_93_95_48_5_0,27)
+	MR_MAYBE_INIT_LOCAL_THREAD_ENGINE_BASE
+	{
+	MR_Word MR_tempr1;
+	MR_tag_alloc_heap(MR_tempr1, 0, (MR_Integer) 5);
+	MR_tfield(0, MR_tempr1, 0) = (MR_Word) MR_COMMON(4,1);
+	MR_tfield(0, MR_tempr1, 1) = (MR_Word) MR_ENTRY_AP(mdprof_fb__automatic_parallelism__autopar_find_best_par__generate_parallelisations_4_0);
+	MR_tfield(0, MR_tempr1, 2) = (MR_Integer) 2;
+	MR_tfield(0, MR_tempr1, 3) = MR_r1;
+	MR_tfield(0, MR_tempr1, 4) = MR_r2;
+	MR_sv(1) = MR_r1;
+	MR_sv(2) = MR_r2;
+	MR_sv(3) = MR_r3;
+	MR_r1 = (MR_Word) MR_CTOR0_ADDR(mdprof_fb__automatic_parallelism__autopar_find_best_par, goals_for_parallelisation);
+	MR_r2 = (MR_Word) MR_TAG_COMMON(0,1,1);
+	MR_r3 = MR_tempr1;
+	MR_r4 = MR_sv(3);
+	MR_r5 = (MR_Integer) 1;
+	}
+	MR_np_call_localret_ent(benchmarking__benchmark_det_5_0,
+		f_109_100_112_114_111_102_95_102_98_95_95_97_117_116_111_109_97_116_105_99_95_112_97_114_97_108_108_101_108_105_115_109_95_95_97_117_116_111_112_97_114_95_102_105_110_100_95_98_101_115_116_95_112_97_114_95_95_85_110_117_115_101_100_65_114_103_115_95_95_112_114_101_100_95_95_102_105_110_100_95_98_101_115_116_95_112_97_114_97_108_108_101_108_105_115_97_116_105_111_110_95_99_111_109_112_108_101_116_101_95_98_110_98_95_95_91_50_93_95_48_5_0_i3);
+MR_def_label(f_109_100_112_114_111_102_95_102_98_95_95_97_117_116_111_109_97_116_105_99_95_112_97_114_97_108_108_101_108_105_115_109_95_95_97_117_116_111_112_97_114_95_102_105_110_100_95_98_101_115_116_95_112_97_114_95_95_85_110_117_115_101_100_65_114_103_115_95_95_112_114_101_100_95_95_102_105_110_100_95_98_101_115_116_95_112_97_114_97_108_108_101_108_105_115_97_116_105_111_110_95_99_111_109_112_108_101_116_101_95_98_110_98_95_95_91_50_93_95_48_5_0,3)
+	MR_MAYBE_INIT_LOCAL_THREAD_ENGINE_BASE
+	MR_r4 = MR_tfield(0, MR_r1, 0);
+	if (MR_LTAGS_TESTR(MR_r4,0,0)) {
+		MR_GOTO_LAB(f_109_100_112_114_111_102_95_102_98_95_95_97_117_116_111_109_97_116_105_99_95_112_97_114_97_108_108_101_108_105_115_109_95_95_97_117_116_111_112_97_114_95_102_105_110_100_95_98_101_115_116_95_112_97_114_95_95_85_110_117_115_101_100_65_114_103_115_95_95_112_114_101_100_95_95_102_105_110_100_95_98_101_115_116_95_112_97_114_97_108_108_101_108_105_115_97_116_105_111_110_95_99_111_109_112_108_101_116_101_95_98_110_98_95_95_91_50_93_95_48_5_0_i5);
+	}
+	MR_r5 = MR_tfield(0, MR_sv(1), 2);
+	{
+	MR_Word MR_tempr1;
+	MR_tempr1 = MR_tfield(0, MR_r5, 13);
+	if (MR_LTAGS_TEST(MR_tempr1,0,0)) {
+		MR_GOTO_LAB(f_109_100_112_114_111_102_95_102_98_95_95_97_117_116_111_109_97_116_105_99_95_112_97_114_97_108_108_101_108_105_115_109_95_95_97_117_116_111_112_97_114_95_102_105_110_100_95_98_101_115_116_95_112_97_114_95_95_85_110_117_115_101_100_65_114_103_115_95_95_112_114_101_100_95_95_102_105_110_100_95_98_101_115_116_95_112_97_114_97_108_108_101_108_105_115_97_116_105_111_110_95_99_111_109_112_108_101_116_101_95_98_110_98_95_95_91_50_93_95_48_5_0_i7);
+	}
+	MR_r1 = (MR_Word) MR_tbmkword(0, 0);
+	MR_decr_sp_and_return(4);
+	}
+MR_def_label(f_109_100_112_114_111_102_95_102_98_95_95_97_117_116_111_109_97_116_105_99_95_112_97_114_97_108_108_101_108_105_115_109_95_95_97_117_116_111_112_97_114_95_102_105_110_100_95_98_101_115_116_95_112_97_114_95_95_85_110_117_115_101_100_65_114_103_115_95_95_112_114_101_100_95_95_102_105_110_100_95_98_101_115_116_95_112_97_114_97_108_108_101_108_105_115_97_116_105_111_110_95_99_111_109_112_108_101_116_101_95_98_110_98_95_95_91_50_93_95_48_5_0,7)
+	MR_MAYBE_INIT_LOCAL_THREAD_ENGINE_BASE
+	{
+	MR_Word MR_tempr1, MR_tempr2, MR_tempr3;
+	MR_tag_alloc_heap(MR_tempr1, 0, (MR_Integer) 15);
+	MR_tempr2 = MR_r5;
+	* (MR_Float *) &(MR_tfield(0, MR_tempr1, 0)) = MR_float_from_dword_ptr(&MR_tfield(0, MR_tempr2, 0));
+	MR_tfield(0, MR_tempr1, 2) = MR_tfield(0, MR_tempr2, 2);
+	MR_tfield(0, MR_tempr1, 3) = MR_tfield(0, MR_tempr2, 3);
+	MR_tfield(0, MR_tempr1, 4) = MR_tfield(0, MR_tempr2, 4);
+	MR_tfield(0, MR_tempr1, 5) = MR_tfield(0, MR_tempr2, 5);
+	MR_tfield(0, MR_tempr1, 6) = MR_tfield(0, MR_tempr2, 6);
+	MR_tfield(0, MR_tempr1, 7) = MR_tfield(0, MR_tempr2, 7);
+	MR_tfield(0, MR_tempr1, 8) = MR_tfield(0, MR_tempr2, 8);
+	MR_tfield(0, MR_tempr1, 9) = MR_tfield(0, MR_tempr2, 9);
+	MR_tfield(0, MR_tempr1, 10) = MR_tfield(0, MR_tempr2, 10);
+	* (MR_Float *) &(MR_tfield(0, MR_tempr1, 11)) = MR_float_from_dword_ptr(&MR_tfield(0, MR_tempr2, 11));
+	MR_tfield(0, MR_tempr1, 13) = (MR_Word) MR_TAG_COMMON(1,6,0);
+	MR_tfield(0, MR_tempr1, 14) = MR_tfield(0, MR_tempr2, 14);
+	MR_tag_alloc_heap(MR_r1, 0, (MR_Integer) 12);
+	MR_tempr3 = MR_sv(1);
+	MR_tfield(0, MR_r1, 0) = MR_tfield(0, MR_tempr3, 0);
+	MR_tfield(0, MR_r1, 1) = MR_tfield(0, MR_tempr3, 1);
+	MR_tfield(0, MR_r1, 2) = MR_tempr1;
+	MR_tfield(0, MR_r1, 3) = MR_tfield(0, MR_tempr3, 3);
+	MR_tfield(0, MR_r1, 4) = MR_tfield(0, MR_tempr3, 4);
+	MR_tfield(0, MR_r1, 5) = MR_tfield(0, MR_tempr3, 5);
+	MR_tfield(0, MR_r1, 6) = MR_tfield(0, MR_tempr3, 6);
+	MR_tfield(0, MR_r1, 7) = MR_tfield(0, MR_tempr3, 7);
+	MR_tfield(0, MR_r1, 8) = MR_tfield(0, MR_tempr3, 8);
+	MR_tfield(0, MR_r1, 9) = MR_tfield(0, MR_tempr3, 9);
+	MR_tfield(0, MR_r1, 10) = MR_tfield(0, MR_tempr3, 10);
+	MR_tfield(0, MR_r1, 11) = MR_tfield(0, MR_tempr3, 11);
+	MR_r2 = MR_sv(2);
+	MR_r3 = MR_sv(3);
+	MR_succip_word = MR_sv(4);
+	MR_GOTO_LAB(f_109_100_112_114_111_102_95_102_98_95_95_97_117_116_111_109_97_116_105_99_95_112_97_114_97_108_108_101_108_105_115_109_95_95_97_117_116_111_112_97_114_95_102_105_110_100_95_98_101_115_116_95_112_97_114_95_95_85_110_117_115_101_100_65_114_103_115_95_95_112_114_101_100_95_95_102_105_110_100_95_98_101_115_116_95_112_97_114_97_108_108_101_108_105_115_97_116_105_111_110_95_99_111_109_112_108_101_116_101_95_98_110_98_95_95_91_50_93_95_48_5_0_i27);
+	}
+MR_def_label(f_109_100_112_114_111_102_95_102_98_95_95_97_117_116_111_109_97_116_105_99_95_112_97_114_97_108_108_101_108_105_115_109_95_95_97_117_116_111_112_97_114_95_102_105_110_100_95_98_101_115_116_95_112_97_114_95_95_85_110_117_115_101_100_65_114_103_115_95_95_112_114_101_100_95_95_102_105_110_100_95_98_101_115_116_95_112_97_114_97_108_108_101_108_105_115_97_116_105_111_110_95_99_111_109_112_108_101_116_101_95_98_110_98_95_95_91_50_93_95_48_5_0,5)
+	MR_MAYBE_INIT_LOCAL_THREAD_ENGINE_BASE
+	MR_r1 = MR_tfield(1, MR_r4, 0);
+	MR_np_call_localret_ent(mdprof_fb__automatic_parallelism__autopar_find_best_par__finalise_parallelisation_2_0,
+		f_109_100_112_114_111_102_95_102_98_95_95_97_117_116_111_109_97_116_105_99_95_112_97_114_97_108_108_101_108_105_115_109_95_95_97_117_116_111_112_97_114_95_102_105_110_100_95_98_101_115_116_95_112_97_114_95_95_85_110_117_115_101_100_65_114_103_115_95_95_112_114_101_100_95_95_102_105_110_100_95_98_101_115_116_95_112_97_114_97_108_108_101_108_105_115_97_116_105_111_110_95_99_111_109_112_108_101_116_101_95_98_110_98_95_95_91_50_93_95_48_5_0_i12);
+MR_def_label(f_109_100_112_114_111_102_95_102_98_95_95_97_117_116_111_109_97_116_105_99_95_112_97_114_97_108_108_101_108_105_115_109_95_95_97_117_116_111_112_97_114_95_102_105_110_100_95_98_101_115_116_95_112_97_114_95_95_85_110_117_115_101_100_65_114_103_115_95_95_112_114_101_100_95_95_102_105_110_100_95_98_101_115_116_95_112_97_114_97_108_108_101_108_105_115_97_116_105_111_110_95_99_111_109_112_108_101_116_101_95_98_110_98_95_95_91_50_93_95_48_5_0,12)
+	MR_MAYBE_INIT_LOCAL_THREAD_ENGINE_BASE
+	{
+	MR_Word MR_tempr1;
+	MR_tag_alloc_heap(MR_tempr1, 1, (MR_Integer) 1);
+	MR_tfield(1, MR_tempr1, 0) = MR_r1;
+	MR_r1 = MR_tempr1;
+	MR_decr_sp_and_return(4);
+	}
+#ifdef MR_maybe_local_thread_engine_base
+	#undef MR_maybe_local_thread_engine_base
+	#define MR_maybe_local_thread_engine_base MR_thread_engine_base
+#endif
+MR_END_MODULE
+
+static void mercury__mdprof_fb__automatic_parallelism__autopar_find_best_par_maybe_bunch_0(void)
+{
+	mdprof_fb__automatic_parallelism__autopar_find_best_par_module0();
+	mdprof_fb__automatic_parallelism__autopar_find_best_par_module1();
+	mdprof_fb__automatic_parallelism__autopar_find_best_par_module2();
+	mdprof_fb__automatic_parallelism__autopar_find_best_par_module3();
+	mdprof_fb__automatic_parallelism__autopar_find_best_par_module4();
+	mdprof_fb__automatic_parallelism__autopar_find_best_par_module5();
+	mdprof_fb__automatic_parallelism__autopar_find_best_par_module6();
+	mdprof_fb__automatic_parallelism__autopar_find_best_par_module7();
+	mdprof_fb__automatic_parallelism__autopar_find_best_par_module8();
+	mdprof_fb__automatic_parallelism__autopar_find_best_par_module9();
+	mdprof_fb__automatic_parallelism__autopar_find_best_par_module10();
+	mdprof_fb__automatic_parallelism__autopar_find_best_par_module11();
+	mdprof_fb__automatic_parallelism__autopar_find_best_par_module12();
+	mdprof_fb__automatic_parallelism__autopar_find_best_par_module13();
+	mdprof_fb__automatic_parallelism__autopar_find_best_par_module14();
+	mdprof_fb__automatic_parallelism__autopar_find_best_par_module15();
+	mdprof_fb__automatic_parallelism__autopar_find_best_par_module16();
+	mdprof_fb__automatic_parallelism__autopar_find_best_par_module17();
+	mdprof_fb__automatic_parallelism__autopar_find_best_par_module18();
+	mdprof_fb__automatic_parallelism__autopar_find_best_par_module19();
+	mdprof_fb__automatic_parallelism__autopar_find_best_par_module20();
+	mdprof_fb__automatic_parallelism__autopar_find_best_par_module21();
+	mdprof_fb__automatic_parallelism__autopar_find_best_par_module22();
+	mdprof_fb__automatic_parallelism__autopar_find_best_par_module23();
+	mdprof_fb__automatic_parallelism__autopar_find_best_par_module24();
+	mdprof_fb__automatic_parallelism__autopar_find_best_par_module25();
+	mdprof_fb__automatic_parallelism__autopar_find_best_par_module26();
+	mdprof_fb__automatic_parallelism__autopar_find_best_par_module27();
+	mdprof_fb__automatic_parallelism__autopar_find_best_par_module28();
+	mdprof_fb__automatic_parallelism__autopar_find_best_par_module29();
+	mdprof_fb__automatic_parallelism__autopar_find_best_par_module30();
+	mdprof_fb__automatic_parallelism__autopar_find_best_par_module31();
+	mdprof_fb__automatic_parallelism__autopar_find_best_par_module32();
+	mdprof_fb__automatic_parallelism__autopar_find_best_par_module33();
+	mdprof_fb__automatic_parallelism__autopar_find_best_par_module34();
+	mdprof_fb__automatic_parallelism__autopar_find_best_par_module35();
+	mdprof_fb__automatic_parallelism__autopar_find_best_par_module36();
+}
+
+/* suppress gcc -Wmissing-decls warnings */
+void mercury__mdprof_fb__automatic_parallelism__autopar_find_best_par__init(void);
+void mercury__mdprof_fb__automatic_parallelism__autopar_find_best_par__init_type_tables(void);
+void mercury__mdprof_fb__automatic_parallelism__autopar_find_best_par__init_debugger(void);
+#ifdef MR_DEEP_PROFILING
+void mercury__mdprof_fb__automatic_parallelism__autopar_find_best_par__write_out_proc_statics(FILE *deep_fp, FILE *procrep_fp);
+#endif
+#ifdef MR_RECORD_TERM_SIZES
+void mercury__mdprof_fb__automatic_parallelism__autopar_find_best_par__init_complexity_procs(void);
+#endif
+#ifdef MR_THREADSCOPE
+void mercury__mdprof_fb__automatic_parallelism__autopar_find_best_par__init_threadscope_string_table(void);
+#endif
+
+void mercury__mdprof_fb__automatic_parallelism__autopar_find_best_par__init(void)
+{
+	static MR_bool done = MR_FALSE;
+	if (done) {
+		return;
+	}
+	done = MR_TRUE;
+	mercury__mdprof_fb__automatic_parallelism__autopar_find_best_par_maybe_bunch_0();
+	MR_INIT_TYPE_CTOR_INFO(
+		mercury_data_mdprof_fb__automatic_parallelism__autopar_find_best_par__type_ctor_info_best_par_algorithm_simple_0,
+		mdprof_fb__automatic_parallelism__autopar_find_best_par__best_par_algorithm_simple_0_0);
+	MR_INIT_TYPE_CTOR_INFO(
+		mercury_data_mdprof_fb__automatic_parallelism__autopar_find_best_par__type_ctor_info_best_solutions_1,
+		mdprof_fb__automatic_parallelism__autopar_find_best_par__best_solutions_1_0);
+	MR_INIT_TYPE_CTOR_INFO(
+		mercury_data_mdprof_fb__automatic_parallelism__autopar_find_best_par__type_ctor_info_bnb_profile_0,
+		mdprof_fb__automatic_parallelism__autopar_find_best_par__bnb_profile_0_0);
+	MR_INIT_TYPE_CTOR_INFO(
+		mercury_data_mdprof_fb__automatic_parallelism__autopar_find_best_par__type_ctor_info_full_parallelisation_0,
+		mdprof_fb__automatic_parallelism__autopar_find_best_par__full_parallelisation_0_0);
+	MR_INIT_TYPE_CTOR_INFO(
+		mercury_data_mdprof_fb__automatic_parallelism__autopar_find_best_par__type_ctor_info_goal_classification_0,
+		mdprof_fb__automatic_parallelism__autopar_find_best_par__goal_classification_0_0);
+	MR_INIT_TYPE_CTOR_INFO(
+		mercury_data_mdprof_fb__automatic_parallelism__autopar_find_best_par__type_ctor_info_goal_group_1,
+		mdprof_fb__automatic_parallelism__autopar_find_best_par__goal_group_1_0);
+	MR_INIT_TYPE_CTOR_INFO(
+		mercury_data_mdprof_fb__automatic_parallelism__autopar_find_best_par__type_ctor_info_goals_for_parallelisation_0,
+		mdprof_fb__automatic_parallelism__autopar_find_best_par__goals_for_parallelisation_0_0);
+	MR_INIT_TYPE_CTOR_INFO(
+		mercury_data_mdprof_fb__automatic_parallelism__autopar_find_best_par__type_ctor_info_is_good_enough_0,
+		mdprof_fb__automatic_parallelism__autopar_find_best_par__is_good_enough_0_0);
+	mercury__mdprof_fb__automatic_parallelism__autopar_find_best_par__init_debugger();
+}
+
+void mercury__mdprof_fb__automatic_parallelism__autopar_find_best_par__init_type_tables(void)
+{
+	static MR_bool done = MR_FALSE;
+	if (done) {
+		return;
+	}
+	done = MR_TRUE;
+	{
+		MR_register_type_ctor_info(
+		&mercury_data_mdprof_fb__automatic_parallelism__autopar_find_best_par__type_ctor_info_best_par_algorithm_simple_0);
+	}
+	{
+		MR_register_type_ctor_info(
+		&mercury_data_mdprof_fb__automatic_parallelism__autopar_find_best_par__type_ctor_info_best_solutions_1);
+	}
+	{
+		MR_register_type_ctor_info(
+		&mercury_data_mdprof_fb__automatic_parallelism__autopar_find_best_par__type_ctor_info_bnb_profile_0);
+	}
+	{
+		MR_register_type_ctor_info(
+		&mercury_data_mdprof_fb__automatic_parallelism__autopar_find_best_par__type_ctor_info_full_parallelisation_0);
+	}
+	{
+		MR_register_type_ctor_info(
+		&mercury_data_mdprof_fb__automatic_parallelism__autopar_find_best_par__type_ctor_info_goal_classification_0);
+	}
+	{
+		MR_register_type_ctor_info(
+		&mercury_data_mdprof_fb__automatic_parallelism__autopar_find_best_par__type_ctor_info_goal_group_1);
+	}
+	{
+		MR_register_type_ctor_info(
+		&mercury_data_mdprof_fb__automatic_parallelism__autopar_find_best_par__type_ctor_info_goals_for_parallelisation_0);
+	}
+	{
+		MR_register_type_ctor_info(
+		&mercury_data_mdprof_fb__automatic_parallelism__autopar_find_best_par__type_ctor_info_is_good_enough_0);
+	}
+}
+
+
+void mercury__mdprof_fb__automatic_parallelism__autopar_find_best_par__init_debugger(void)
+{
+	static MR_bool done = MR_FALSE;
+	if (done) {
+		return;
+	}
+	done = MR_TRUE;
+}
+
+#ifdef MR_DEEP_PROFILING
+
+void mercury__mdprof_fb__automatic_parallelism__autopar_find_best_par__write_out_proc_statics(FILE *deep_fp, FILE *procrep_fp)
+{
+	MR_write_out_module_proc_reps_start(procrep_fp, &mercury_data__module_common_layout__mdprof_fb__automatic_parallelism__autopar_find_best_par);
+	MR_write_out_module_proc_reps_end(procrep_fp);
+}
+
+#endif
+
+#ifdef MR_RECORD_TERM_SIZES
+
+void mercury__mdprof_fb__automatic_parallelism__autopar_find_best_par__init_complexity_procs(void)
+{
+}
+
+#endif
+
+#ifdef MR_THREADSCOPE
+
+void mercury__mdprof_fb__automatic_parallelism__autopar_find_best_par__init_threadscope_string_table(void)
+{
+}
+
+#endif
+
+/* ensure everything is compiled with the same grade */
+static const void *const MR_grade = &MR_GRADE_VAR;

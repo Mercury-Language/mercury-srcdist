@@ -1,0 +1,16 @@
+mdprof_fb.automatic_parallelism.autopar_annotate	autopar_annotate.m
+mdprof_fb.automatic_parallelism.autopar_calc_overlap	autopar_calc_overlap.m
+mdprof_fb.automatic_parallelism.autopar_costs	autopar_costs.m
+mdprof_fb.automatic_parallelism.autopar_find_best_par	autopar_find_best_par.m
+mdprof_fb.automatic_parallelism.autopar_reports	autopar_reports.m
+mdprof_fb.automatic_parallelism.autopar_search_callgraph	autopar_search_callgraph.m
+mdprof_fb.automatic_parallelism.autopar_search_goals	autopar_search_goals.m
+mdprof_fb.automatic_parallelism.autopar_types	autopar_types.m
+mdbcomp.feedback.automatic_parallelism	feedback.automatic_parallelism.m
+mdbcomp.feedback	feedback.m
+mdbcomp.prim_data	prim_data.m
+mdbcomp.program_representation	program_representation.m
+mdbcomp.rtti_access	rtti_access.m
+mdbcomp.shared_utilities	shared_utilities.m
+mdbcomp.slice_and_dice	slice_and_dice.m
+mdbcomp.trace_counts	trace_counts.m

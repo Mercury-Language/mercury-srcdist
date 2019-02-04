@@ -1,0 +1,9 @@
+:- module svpqueue.
+:- interface.
+:- import_module pqueue.
+:- pragma obsolete((svpqueue.insert)/4).
+:- pragma obsolete((svpqueue.remove)/4).
+:- pred insert(K, V, pqueue.pqueue(K, V), pqueue.pqueue(K, V)).
+:- mode insert((builtin.in), (builtin.in), (builtin.in), (builtin.out)) is det.
+:- pred remove(K, V, pqueue.pqueue(K, V), pqueue.pqueue(K, V)).
+:- mode remove((builtin.out), (builtin.out), (builtin.in), (builtin.out)) is semidet.

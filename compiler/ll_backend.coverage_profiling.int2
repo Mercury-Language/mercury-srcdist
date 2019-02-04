@@ -1,0 +1,3 @@
+:- module (ll_backend.coverage_profiling).
+:- interface.
+:- type proc_coverage_info.

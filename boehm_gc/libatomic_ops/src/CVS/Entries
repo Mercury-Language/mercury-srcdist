@@ -1,0 +1,14 @@
+/.cvsignore/1.1/Fri Jul 30 13:30:24 2010//
+/.nocopyright/1.2/Mon Jul 16 18:09:41 2012//
+/Makefile.am/1.4/Sun Jul 29 10:17:33 2012//
+/Makefile.in/1.3/Mon Jul 16 16:16:21 2012//
+/Makefile.msft/1.1.1.1/Tue Feb 23 06:28:40 2010//
+/atomic_ops.c/1.3/Mon Jul 16 16:16:21 2012//
+/atomic_ops.h/1.3/Mon Jul 16 16:16:21 2012//
+/atomic_ops_malloc.c/1.3/Mon Jul 16 16:16:21 2012//
+/atomic_ops_malloc.h/1.3/Mon Jul 16 16:16:21 2012//
+/atomic_ops_stack.c/1.3/Mon Jul 16 16:16:21 2012//
+/atomic_ops_stack.h/1.1.1.1/Tue Feb 23 06:28:40 2010//
+/atomic_ops_sysdeps.S/1.1.1.1/Tue Feb 23 06:28:40 2010//
+/config.h.in/1.3/Mon Jul 16 16:16:21 2012//
+D/atomic_ops////

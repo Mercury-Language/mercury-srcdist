@@ -1,0 +1,45 @@
+/*
+** Automatically generated from `mdprof_cgi.m'
+** by the Mercury compiler,
+** version rotd-2012-08-08, configured for x86_64-unknown-linux-gnu.
+** Do not edit.
+*/
+#ifndef MDPROF_CGI_MH
+#define MDPROF_CGI_MH
+
+#ifdef __cplusplus
+extern "C" {
+#endif
+
+#ifdef MR_HIGHLEVEL_CODE
+#include "mercury.h"
+#else
+  #ifndef MERCURY_HDR_EXCLUDE_IMP_H
+  #include "mercury_imp.h"
+  #endif
+#endif
+#ifdef MR_DEEP_PROFILING
+#include "mercury_deep_profiling.h"
+#endif
+
+#ifndef MDPROF_CGI_DECL_GUARD
+#define MDPROF_CGI_DECL_GUARD
+#line 700 "mdprof_cgi.m"
+
+#ifdef  MR_DEEP_PROFILER_ENABLED
+  #include <sys/types.h>
+  #include <sys/stat.h>
+  #include <stdio.h>
+  #include <stdlib.h>
+  #include <unistd.h>
+#endif
+
+#line 38 "mdprof_cgi.mh.tmp"
+
+#endif
+
+#ifdef __cplusplus
+}
+#endif
+
+#endif /* MDPROF_CGI_MH */

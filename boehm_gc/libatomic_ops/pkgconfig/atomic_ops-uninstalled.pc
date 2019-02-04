@@ -1,0 +1,10 @@
+prefix=/home/mercury/public/test_mercury/test_dirs/carlton/build.latest.gcc/mercury/boehm_gc/libatomic_ops-install
+exec_prefix=${prefix}
+top_builddir=/home/mercury/public/test_mercury/test_dirs/carlton/build.latest.gcc/mercury/boehm_gc/libatomic_ops
+top_srcdir=/home/mercury/public/test_mercury/test_dirs/carlton/build.latest.gcc/mercury/boehm_gc/libatomic_ops
+
+Name: The atomic_ops library (uninstalled)
+Description: Atomic memory update operations
+Version: 7.2
+Libs: ${top_builddir}/src/libatomic_ops.la
+Cflags: -I${top_builddir}/src -I${top_srcdir}/src

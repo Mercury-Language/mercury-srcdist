@@ -1,0 +1,175 @@
+
+
+mdbcomp.shared_utilities.optdate mdbcomp.shared_utilities.trans_opt_date shared_utilities.err mdbcomp.shared_utilities.c_date mdbcomp.shared_utilities.s_date mdbcomp.shared_utilities.pic_s_date mdbcomp.shared_utilities.il_date mdbcomp.shared_utilities.java_date : shared_utilities.m \
+	mdbcomp.int0 \
+	builtin.int \
+	io.int \
+	private_builtin.int \
+	assoc_list.int2 \
+	bitmap.int2 \
+	bool.int2 \
+	char.int2 \
+	construct.int2 \
+	deconstruct.int2 \
+	enum.int2 \
+	list.int2 \
+	map.int2 \
+	maybe.int2 \
+	ops.int2 \
+	pair.int2 \
+	pretty_printer.int2 \
+	rtti_implementation.int2 \
+	set.int2 \
+	set_ordlist.int2 \
+	stream.int2 \
+	string.int2 \
+	term.int2 \
+	time.int2 \
+	tree234.int2 \
+	type_desc.int2 \
+	univ.int2
+
+ifeq ($(TARGET_ASM),yes)
+mdbcomp.shared_utilities.mh mdbcomp.shared_utilities.mih : mdbcomp.shared_utilities.s
+else
+mdbcomp.shared_utilities.mh mdbcomp.shared_utilities.mih : mdbcomp.shared_utilities.c
+endif
+
+ifeq ($(TARGET_ASM),yes)
+mdbcomp.shared_utilities.module_dep : mdbcomp.shared_utilities.s
+else
+ ifeq ($(findstring il,$(GRADE)),il)
+mdbcomp.shared_utilities.module_dep : mdbcomp.shared_utilities.il
+ else
+  ifeq ($(findstring java,$(GRADE)),java)
+mdbcomp.shared_utilities.module_dep : jmercury/mdbcomp__shared_utilities.java
+  else
+mdbcomp.shared_utilities.module_dep : mdbcomp.shared_utilities.c
+  endif
+ endif
+endif
+
+mdbcomp.shared_utilities.date mdbcomp.shared_utilities.date0 \
+	mdbcomp.date : shared_utilities.m \
+	mdbcomp.int0 \
+	builtin.int3 \
+	io.int3 \
+	private_builtin.int3 \
+	assoc_list.int3 \
+	bitmap.int3 \
+	bool.int3 \
+	char.int3 \
+	construct.int3 \
+	deconstruct.int3 \
+	enum.int3 \
+	list.int3 \
+	map.int3 \
+	maybe.int3 \
+	ops.int3 \
+	pair.int3 \
+	pretty_printer.int3 \
+	rtti_implementation.int3 \
+	set.int3 \
+	set_ordlist.int3 \
+	stream.int3 \
+	string.int3 \
+	term.int3 \
+	time.int3 \
+	tree234.int3 \
+	type_desc.int3 \
+	univ.int3
+
+mdbcomp.shared_utilities.date0 \
+	mdbcomp.date0 : shared_utilities.m \
+	builtin.int3 \
+	io.int3 \
+	private_builtin.int3 \
+	assoc_list.int3 \
+	bitmap.int3 \
+	bool.int3 \
+	char.int3 \
+	construct.int3 \
+	deconstruct.int3 \
+	enum.int3 \
+	list.int3 \
+	map.int3 \
+	maybe.int3 \
+	ops.int3 \
+	pair.int3 \
+	pretty_printer.int3 \
+	rtti_implementation.int3 \
+	set.int3 \
+	set_ordlist.int3 \
+	stream.int3 \
+	string.int3 \
+	term.int3 \
+	time.int3 \
+	tree234.int3 \
+	type_desc.int3 \
+	univ.int3
+
+
+
+mdbcomp.shared_utilities.$O :  \
+	time.mh \
+	time.mh \
+	bitmap.mh \
+	bitmap.mh \
+	string.mh \
+	time.mh \
+	io.mh \
+	io.mh \
+	mdbcomp.mh \
+	mdbcomp.shared_utilities.mh
+
+
+
+mdbcomp.shared_utilities.pic_o :  \
+	time.mh \
+	time.mh \
+	bitmap.mh \
+	bitmap.mh \
+	string.mh \
+	time.mh \
+	io.mh \
+	io.mh \
+	mdbcomp.mh \
+	mdbcomp.shared_utilities.mh
+
+
+mdbcomp.shared_utilities.int0 : mdbcomp.shared_utilities.date0
+	@:
+mdbcomp.shared_utilities.int : mdbcomp.shared_utilities.date
+	@:
+mdbcomp.shared_utilities.int2 : mdbcomp.shared_utilities.date
+	@:
+mdbcomp.shared_utilities.int3 : mdbcomp.shared_utilities.date3
+	@:
+mdbcomp.shared_utilities.opt : mdbcomp.shared_utilities.optdate
+	@:
+mdbcomp.shared_utilities.trans_opt : mdbcomp.shared_utilities.trans_opt_date
+	@:
+
+mdbcomp.shared_utilities.date0 : shared_utilities.m
+	$(MCPI) $(ALL_GRADEFLAGS) $(ALL_MCPIFLAGS) shared_utilities.m
+mdbcomp.shared_utilities.date : shared_utilities.m
+	$(MCI) $(ALL_GRADEFLAGS) $(ALL_MCIFLAGS) shared_utilities.m
+mdbcomp.shared_utilities.date3 : shared_utilities.m
+	$(MCSI) $(ALL_GRADEFLAGS) $(ALL_MCSIFLAGS) shared_utilities.m
+mdbcomp.shared_utilities.optdate : shared_utilities.m
+	$(MCOI) $(ALL_GRADEFLAGS) $(ALL_MCOIFLAGS) shared_utilities.m
+mdbcomp.shared_utilities.trans_opt_date : shared_utilities.m
+	$(MCTOI) $(ALL_GRADEFLAGS) $(ALL_MCTOIFLAGS) shared_utilities.m
+mdbcomp.shared_utilities.c_date : shared_utilities.m
+	$(MCG) $(ALL_GRADEFLAGS) $(ALL_MCGFLAGS) shared_utilities.m $(ERR_REDIRECT)
+ifeq ($(TARGET_ASM),yes)
+mdbcomp.shared_utilities.s_date : shared_utilities.m
+	$(MCG) $(ALL_GRADEFLAGS) $(ALL_MCGFLAGS) --target-code-only shared_utilities.m $(ERR_REDIRECT)
+mdbcomp.shared_utilities.pic_s_date : shared_utilities.m
+	$(MCG) $(ALL_GRADEFLAGS) $(ALL_MCGFLAGS) --target-code-only --pic \
+		--cflags "$(GCCFLAGS_FOR_PIC)" shared_utilities.m $(ERR_REDIRECT)
+endif # TARGET_ASM
+mdbcomp.shared_utilities.il_date : shared_utilities.m
+	$(MCG) $(ALL_GRADEFLAGS) $(ALL_MCGFLAGS) --il-only shared_utilities.m $(ERR_REDIRECT)
+mdbcomp.shared_utilities.java_date : shared_utilities.m
+	$(MCG) $(ALL_GRADEFLAGS) $(ALL_MCGFLAGS) --java-only shared_utilities.m $(ERR_REDIRECT)

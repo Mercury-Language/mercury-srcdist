@@ -1,0 +1,6 @@
+:- module (ll_backend.layout_out).
+:- interface.
+:- type being_defined
+	where	type_is_abstract_enum(1).
+:- type use_layout_macro
+	where	type_is_abstract_enum(1).
