@@ -1,0 +1,100 @@
+register --quiet
+context none
+echo on
+break -E3 resume.l
+c
+delete *
+f
+dd -d 3 -n 7
+pd
+dd -d 3 -n 7 --resume
+y
+pd
+break wrapper
+c
+retry
+dd -d 3 -n 7 -r
+q
+dd -d 3 -n 7 -r
+pd
+print
+c
+retry
+break resume.m:38
+c
+delete *
+break -E3 resume.l
+c
+delete *
+f
+dd -d 3 -n 7
+pd
+break wrapper
+c
+retry
+dd -d 3 -n 7 -r
+y
+y
+n
+y
+c
+retry
+break resume.m:39
+c
+delete *
+break -E3 resume.l
+c
+f
+dd -d 3 -n 7
+pd
+delete *
+break wrapper
+c
+dd -d 3 -n 7 -r
+y
+pd
+break resume.m:40
+c
+delete *
+f
+dd -d 2 -n 7
+pd
+dd -d 3 -n 7 -r
+n
+n
+n
+n
+n
+y
+break resume.m:41
+c
+f
+dd -d 2 -n 7
+pd
+delete *
+break wrapper
+c
+retry
+dd -d 3 -n 7 -r
+n
+n
+n
+n
+n
+y
+break resume.m:42
+c
+f
+dd -d 2 -n 7
+pd
+delete *
+break wrapper
+c
+dd -d 3 -n 7 -r -s divide_and_query
+n
+q
+dd -d 3 -n 7 -r
+q
+dd -d 3 -n 7 -rs top_down
+q
+quit -y

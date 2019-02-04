@@ -1,0 +1,4 @@
+:- module (libs.polyhedron).
+:- interface.
+:- type polyhedra.
+:- type polyhedron.
