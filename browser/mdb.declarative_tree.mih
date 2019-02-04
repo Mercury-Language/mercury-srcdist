@@ -1,0 +1,129 @@
+/*
+** Automatically generated from `declarative_tree.m'
+** by the Mercury compiler,
+** version rotd-2018-02-16
+** configured for x86_64-pc-linux-gnu.
+** Do not edit.
+**
+** The autoconfigured grade settings governing
+** the generation of this C file were
+**
+** TAG_BITS=2
+** UNBOXED_FLOAT=no
+** UNBOXED_INT64S=no
+** PREGENERATED_DIST=yes
+** HIGHLEVEL_CODE=yes
+**
+** END_OF_C_GRADE_INFO
+*/
+
+
+// :- module mdb.declarative_tree.
+// :- interface.
+
+#ifndef MR_HEADER_GUARD_mdb__declarative_tree
+#define MR_HEADER_GUARD_mdb__declarative_tree
+
+#ifdef __cplusplus
+extern "C" {
+#endif
+
+#include "mercury.h"
+
+
+#ifndef MDB__DECLARATIVE_TREE_DECL_GUARD
+#define MDB__DECLARATIVE_TREE_DECL_GUARD
+#include "mdb.mih"
+
+#endif
+
+
+
+
+extern const MR_TypeCtorInfo_Struct mdb__declarative_tree__mdb__declarative_tree__type_ctor_info_annotated_primitive_1;
+
+extern const MR_TypeCtorInfo_Struct mdb__declarative_tree__mdb__declarative_tree__type_ctor_info_contour_type_0;
+
+extern const MR_TypeCtorInfo_Struct mdb__declarative_tree__mdb__declarative_tree__type_ctor_info_dependency_chain_start_1;
+
+extern const MR_TypeCtorInfo_Struct mdb__declarative_tree__mdb__declarative_tree__type_ctor_info_edt_node_1;
+
+extern const MR_TypeCtorInfo_Struct mdb__declarative_tree__mdb__declarative_tree__type_ctor_info_goal_and_path_0;
+
+extern const MR_TypeCtorInfo_Struct mdb__declarative_tree__mdb__declarative_tree__type_ctor_info_goal_and_path_list_0;
+
+extern const MR_TypeCtorInfo_Struct mdb__declarative_tree__mdb__declarative_tree__type_ctor_info_plain_call_info_0;
+
+extern const MR_TypeCtorInfo_Struct mdb__declarative_tree__mdb__declarative_tree__type_ctor_info_primitive_list_and_var_1;
+
+extern const MR_TypeCtorInfo_Struct mdb__declarative_tree__mdb__declarative_tree__type_ctor_info_start_loc_1;
+
+extern const MR_TypeCtorInfo_Struct mdb__declarative_tree__mdb__declarative_tree__type_ctor_info_wrap_1;
+
+extern const MR_BaseTypeclassInfo base_typeclass_info_mdb__declarative_edt__mercury_edt__arity2__mdb__declarative_tree__wrap__arity1__mdb__declarative_tree__edt_node__arity1__[20];
+
+MR_bool MR_CALL 
+mdb__declarative_tree__f_85_110_117_115_101_100_65_114_103_115_95_95_112_114_101_100_95_95_116_114_97_99_101_95_97_116_111_109_95_115_117_98_116_101_114_109_95_105_115_95_103_114_111_117_110_100_95_95_91_51_93_95_48_3_p_0(
+  MR_Word param_1,
+  MR_Word param_2);
+
+void MR_CALL 
+mdb__declarative_tree__edt_subtree_details_5_p_0(
+  MR_Word param_1,
+  MR_Box param_2,
+  MR_Word param_3,
+  MR_Integer * param_4,
+  MR_Integer * param_5,
+  MR_Box * param_6);
+
+MR_bool MR_CALL 
+mdb__declarative_tree__trace_atom_subterm_is_ground_3_p_0(
+  MR_Word param_1,
+  MR_Word param_2,
+  MR_Word param_3);
+
+MR_bool MR_CALL 
+mdb__declarative_tree__trace_implicit_tree_info_3_p_0(
+  MR_Word param_1,
+  MR_Word param_2,
+  MR_Word param_3,
+  MR_Word * param_4);
+
+void MR_CALL 
+mdb__declarative_tree____Compare____edt_node_1_0(
+  MR_Word param_1,
+  MR_Word * param_2,
+  MR_Word param_3,
+  MR_Word param_4);
+
+void MR_CALL 
+mdb__declarative_tree____Compare____wrap_1_0(
+  MR_Word param_1,
+  MR_Word * param_2,
+  MR_Word param_3,
+  MR_Word param_4);
+
+MR_bool MR_CALL 
+mdb__declarative_tree____Unify____edt_node_1_0(
+  MR_Word param_1,
+  MR_Word param_2,
+  MR_Word param_3);
+
+MR_bool MR_CALL 
+mdb__declarative_tree____Unify____wrap_1_0(
+  MR_Word param_1,
+  MR_Word param_2,
+  MR_Word param_3);
+
+void mercury__mdb__declarative_tree__init(void);
+void mercury__mdb__declarative_tree__init_type_tables(void);
+void mercury__mdb__declarative_tree__init_debugger(void);
+const char *mercury__mdb__declarative_tree__grade_check(void);
+
+#ifdef __cplusplus
+}
+#endif
+
+#endif // MR_HEADER_GUARD_mdb.declarative_tree
+
+// :- end_interface mdb.declarative_tree.

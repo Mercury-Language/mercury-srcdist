@@ -1,0 +1,14 @@
+:- module ((parse_tree.module_qual).id_set).
+:- interface.
+:- type class_id_set.
+:- type id_set.
+:- type id_type
+	where	type_is_abstract_enum(2).
+:- type inst_id_set.
+:- type mode_id_set.
+:- type module_id_set.
+:- type module_permissions.
+:- type mq_id.
+:- type perm_in_imp.
+:- type perm_in_int.
+:- type type_id_set.

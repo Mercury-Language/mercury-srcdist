@@ -1,0 +1,115 @@
+:- module pprint.
+
+:- pragma termination_info(pprint.'++'((builtin.in), (builtin.in)) = (builtin.out), infinite, can_loop).
+:- pragma termination_info(pprint.'</>'((builtin.in), (builtin.in)) = (builtin.out), infinite, can_loop).
+:- pragma termination_info(pprint.'<>'((builtin.in), (builtin.in)) = (builtin.out), finite(2, [yes, yes, no]), cannot_loop).
+:- pragma termination_info(pprint.'ClassMethod_for_pprint__doc____character__arity0______pprint__doc_2'((builtin.in), (builtin.in)) = (builtin.out), infinite, can_loop).
+:- pragma termination_info(pprint.'ClassMethod_for_pprint__doc____float__arity0______pprint__doc_2'((builtin.in), (builtin.in)) = (builtin.out), infinite, can_loop).
+:- pragma termination_info(pprint.'ClassMethod_for_pprint__doc____int16__arity0______pprint__doc_2'((builtin.in), (builtin.in)) = (builtin.out), infinite, cannot_loop).
+:- pragma termination_info(pprint.'ClassMethod_for_pprint__doc____int32__arity0______pprint__doc_2'((builtin.in), (builtin.in)) = (builtin.out), infinite, cannot_loop).
+:- pragma termination_info(pprint.'ClassMethod_for_pprint__doc____int64__arity0______pprint__doc_2'((builtin.in), (builtin.in)) = (builtin.out), infinite, cannot_loop).
+:- pragma termination_info(pprint.'ClassMethod_for_pprint__doc____int8__arity0______pprint__doc_2'((builtin.in), (builtin.in)) = (builtin.out), infinite, cannot_loop).
+:- pragma termination_info(pprint.'ClassMethod_for_pprint__doc____int__arity0______pprint__doc_2'((builtin.in), (builtin.in)) = (builtin.out), infinite, can_loop).
+:- pragma termination_info(pprint.'ClassMethod_for_pprint__doc____pprint__doc__arity0______pprint__doc_2'((builtin.in), (builtin.in)) = (builtin.out), finite(0, [no, yes, no]), cannot_loop).
+:- pragma termination_info(pprint.'ClassMethod_for_pprint__doc____string__arity0______pprint__doc_2'((builtin.in), (builtin.in)) = (builtin.out), finite(1, [no, yes, no]), cannot_loop).
+:- pragma termination_info(pprint.'ClassMethod_for_pprint__doc____uint16__arity0______pprint__doc_2'((builtin.in), (builtin.in)) = (builtin.out), infinite, cannot_loop).
+:- pragma termination_info(pprint.'ClassMethod_for_pprint__doc____uint32__arity0______pprint__doc_2'((builtin.in), (builtin.in)) = (builtin.out), infinite, cannot_loop).
+:- pragma termination_info(pprint.'ClassMethod_for_pprint__doc____uint64__arity0______pprint__doc_2'((builtin.in), (builtin.in)) = (builtin.out), infinite, cannot_loop).
+:- pragma termination_info(pprint.'ClassMethod_for_pprint__doc____uint8__arity0______pprint__doc_2'((builtin.in), (builtin.in)) = (builtin.out), infinite, cannot_loop).
+:- pragma termination_info(pprint.'ClassMethod_for_pprint__doc____uint__arity0______pprint__doc_2'((builtin.in), (builtin.in)) = (builtin.out), infinite, cannot_loop).
+:- pragma termination_info(pprint.braces((builtin.in)) = (builtin.out), infinite, can_loop).
+:- pragma termination_info(pprint.bracketed((builtin.in), (builtin.in), (builtin.in)) = (builtin.out), infinite, can_loop).
+:- pragma termination_info(pprint.brackets((builtin.in)) = (builtin.out), infinite, can_loop).
+:- pragma termination_info((pprint.colon) = (builtin.out), finite(1, [no]), cannot_loop).
+:- pragma termination_info((pprint.colon_line) = (builtin.out), infinite, can_loop).
+:- pragma termination_info((pprint.colon_space) = (builtin.out), finite(1, [no]), cannot_loop).
+:- pragma termination_info((pprint.colon_space_line) = (builtin.out), infinite, can_loop).
+:- pragma termination_info((pprint.comma) = (builtin.out), finite(1, [no]), cannot_loop).
+:- pragma termination_info((pprint.comma_line) = (builtin.out), infinite, can_loop).
+:- pragma termination_info((pprint.comma_space) = (builtin.out), finite(1, [no]), cannot_loop).
+:- pragma termination_info((pprint.comma_space_line) = (builtin.out), infinite, can_loop).
+:- pragma termination_info(pprint.doc((builtin.in)) = (builtin.out), infinite, can_loop).
+:- pragma termination_info(pprint.doc((builtin.in), (builtin.in)) = (builtin.out), infinite, can_loop).
+:- pragma termination_info((pprint.ellipsis) = (builtin.out), finite(1, [no]), cannot_loop).
+:- pragma termination_info(pprint.group((builtin.in)) = (builtin.out), infinite, can_loop).
+:- pragma termination_info(pprint.label((builtin.in), (builtin.in)) = (builtin.out), infinite, can_loop).
+:- pragma termination_info(pprint.layout_best((pred((builtin.in), (builtin.di), (builtin.uo)) is det), (builtin.in), (builtin.in), (builtin.di), (builtin.uo)), infinite, can_loop).
+:- pragma termination_info(pprint.layout_best((pred((builtin.in), (builtin.in), (builtin.out)) is det), (builtin.in), (builtin.in), (builtin.in), (builtin.out)), infinite, can_loop).
+:- pragma termination_info(pprint.lb((pred((builtin.in), (builtin.di), (builtin.uo)) is det), (builtin.in), (builtin.in), (builtin.out), (builtin.in), (builtin.in), (builtin.di), (builtin.uo)), infinite, can_loop).
+:- pragma termination_info(pprint.lb((pred((builtin.in), (builtin.in), (builtin.out)) is det), (builtin.in), (builtin.in), (builtin.out), (builtin.in), (builtin.in), (builtin.in), (builtin.out)), infinite, can_loop).
+:- pragma termination_info((pprint.line) = (builtin.out), finite(0, [no]), cannot_loop).
+:- pragma termination_info(pprint.nest((builtin.in), (builtin.in)) = (builtin.out), infinite, can_loop).
+:- pragma termination_info((pprint.nil) = (builtin.out), finite(0, [no]), cannot_loop).
+:- pragma termination_info(pprint.packed((builtin.in), (builtin.in)) = (builtin.out), infinite, can_loop).
+:- pragma termination_info(pprint.packed((builtin.in), (builtin.in), (builtin.in)) = (builtin.out), infinite, can_loop).
+:- pragma termination_info(pprint.packed_cs((builtin.in)) = (builtin.out), infinite, can_loop).
+:- pragma termination_info(pprint.packed_cs((builtin.in), (builtin.in)) = (builtin.out), infinite, can_loop).
+:- pragma termination_info(pprint.packed_cs_to_depth((builtin.in), (builtin.in)) = (builtin.out), infinite, can_loop).
+:- pragma termination_info(pprint.packed_cs_univ_args((builtin.in), (builtin.in)) = (builtin.out), infinite, can_loop).
+:- pragma termination_info(pprint.parentheses((builtin.in)) = (builtin.out), infinite, can_loop).
+:- pragma termination_info(pprint.poly((builtin.in)) = (builtin.out), infinite, can_loop).
+:- pragma termination_info((pprint.semic) = (builtin.out), finite(1, [no]), cannot_loop).
+:- pragma termination_info((pprint.semic_line) = (builtin.out), infinite, can_loop).
+:- pragma termination_info((pprint.semic_space) = (builtin.out), finite(1, [no]), cannot_loop).
+:- pragma termination_info((pprint.semic_space_line) = (builtin.out), infinite, can_loop).
+:- pragma termination_info(pprint.separated((builtin.in), (builtin.in), (builtin.in)) = (builtin.out), infinite, can_loop).
+:- pragma termination_info((pprint.space) = (builtin.out), finite(1, [no]), cannot_loop).
+:- pragma termination_info((pprint.space_line) = (builtin.out), infinite, can_loop).
+:- pragma termination_info(pprint.text((builtin.in)) = (builtin.out), finite(1, [yes, no]), cannot_loop).
+:- pragma termination_info(pprint.to_doc((builtin.in)) = (builtin.out), infinite, can_loop).
+:- pragma termination_info(pprint.to_doc((builtin.in), (builtin.in)) = (builtin.out), infinite, can_loop).
+:- pragma termination_info(pprint.to_doc((builtin.in), (builtin.in), (builtin.in)) = (builtin.out), infinite, can_loop).
+:- pragma termination_info(pprint.to_string((builtin.in), (builtin.in)) = (builtin.out), infinite, can_loop).
+:- pragma termination_info(pprint.word_wrapped((builtin.in)) = (builtin.out), infinite, can_loop).
+:- pragma termination_info(pprint.write((builtin.in), (builtin.in), (builtin.di), (builtin.uo)), infinite, can_loop).
+:- pragma termination_info(pprint.write((builtin.in), (builtin.in), (builtin.in), (builtin.di), (builtin.uo)), infinite, can_loop).
+
+:- pragma exceptions(function, (pprint.(++)), 3, 0, may_throw(user_exception)).
+:- pragma exceptions(function, (pprint.'</>'), 3, 0, may_throw(user_exception)).
+:- pragma exceptions(function, (pprint.'<>'), 3, 0, will_not_throw).
+:- pragma exceptions(function, (pprint.braces), 2, 0, may_throw(user_exception)).
+:- pragma exceptions(function, (pprint.bracketed), 4, 0, may_throw(user_exception)).
+:- pragma exceptions(function, (pprint.brackets), 2, 0, may_throw(user_exception)).
+:- pragma exceptions(function, (pprint.colon), 1, 0, will_not_throw).
+:- pragma exceptions(function, (pprint.colon_line), 1, 0, may_throw(user_exception)).
+:- pragma exceptions(function, (pprint.colon_space), 1, 0, will_not_throw).
+:- pragma exceptions(function, (pprint.colon_space_line), 1, 0, may_throw(user_exception)).
+:- pragma exceptions(function, (pprint.comma), 1, 0, will_not_throw).
+:- pragma exceptions(function, (pprint.comma_line), 1, 0, may_throw(user_exception)).
+:- pragma exceptions(function, (pprint.comma_space), 1, 0, will_not_throw).
+:- pragma exceptions(function, (pprint.comma_space_line), 1, 0, may_throw(user_exception)).
+:- pragma exceptions(function, (pprint.doc), 2, 0, may_throw(user_exception)).
+:- pragma exceptions(function, (pprint.doc), 3, 0, may_throw(user_exception)).
+:- pragma exceptions(function, (pprint.ellipsis), 1, 0, will_not_throw).
+:- pragma exceptions(function, (pprint.group), 2, 0, may_throw(user_exception)).
+:- pragma exceptions(function, (pprint.label), 3, 0, may_throw(user_exception)).
+:- pragma exceptions(predicate, (pprint.layout_best), 5, 0, may_throw(user_exception)).
+:- pragma exceptions(predicate, (pprint.layout_best), 5, 1, may_throw(user_exception)).
+:- pragma exceptions(predicate, (pprint.lb), 8, 0, may_throw(user_exception)).
+:- pragma exceptions(predicate, (pprint.lb), 8, 1, may_throw(user_exception)).
+:- pragma exceptions(function, (pprint.line), 1, 0, will_not_throw).
+:- pragma exceptions(function, (pprint.nest), 3, 0, may_throw(user_exception)).
+:- pragma exceptions(function, (pprint.nil), 1, 0, will_not_throw).
+:- pragma exceptions(function, (pprint.packed), 3, 0, may_throw(user_exception)).
+:- pragma exceptions(function, (pprint.packed), 4, 0, may_throw(user_exception)).
+:- pragma exceptions(function, (pprint.packed_cs), 2, 0, may_throw(user_exception)).
+:- pragma exceptions(function, (pprint.packed_cs), 3, 0, may_throw(user_exception)).
+:- pragma exceptions(function, (pprint.packed_cs_to_depth), 3, 0, may_throw(user_exception)).
+:- pragma exceptions(function, (pprint.packed_cs_univ_args), 3, 0, may_throw(user_exception)).
+:- pragma exceptions(function, (pprint.parentheses), 2, 0, may_throw(user_exception)).
+:- pragma exceptions(function, (pprint.poly), 2, 0, may_throw(user_exception)).
+:- pragma exceptions(function, (pprint.semic), 1, 0, will_not_throw).
+:- pragma exceptions(function, (pprint.semic_line), 1, 0, may_throw(user_exception)).
+:- pragma exceptions(function, (pprint.semic_space), 1, 0, will_not_throw).
+:- pragma exceptions(function, (pprint.semic_space_line), 1, 0, may_throw(user_exception)).
+:- pragma exceptions(function, (pprint.separated), 4, 0, may_throw(user_exception)).
+:- pragma exceptions(function, (pprint.space), 1, 0, will_not_throw).
+:- pragma exceptions(function, (pprint.space_line), 1, 0, may_throw(user_exception)).
+:- pragma exceptions(function, (pprint.text), 2, 0, will_not_throw).
+:- pragma exceptions(function, (pprint.to_doc), 2, 0, may_throw(user_exception)).
+:- pragma exceptions(function, (pprint.to_doc), 3, 0, may_throw(user_exception)).
+:- pragma exceptions(function, (pprint.to_doc), 4, 0, may_throw(user_exception)).
+:- pragma exceptions(function, (pprint.to_string), 3, 0, may_throw(user_exception)).
+:- pragma exceptions(function, (pprint.word_wrapped), 2, 0, may_throw(user_exception)).
+:- pragma exceptions(predicate, (pprint.write), 4, 0, may_throw(user_exception)).
+:- pragma exceptions(predicate, (pprint.write), 5, 0, may_throw(user_exception)).
