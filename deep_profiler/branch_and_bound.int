@@ -1,0 +1,18 @@
+:- module branch_and_bound.
+:- interface.
+:- import_module set.
+:- type bnb_profile
+	--->	bnb_profile((branch_and_bound.bnbp_tests_succeeded) :: int, (branch_and_bound.bnbp_tests_failed) :: int, (branch_and_bound.bnbp_new_best_solution) :: int, (branch_and_bound.bnbp_new_equal_solution) :: int, (branch_and_bound.bnbp_not_best_solution) :: int, (branch_and_bound.bnbp_open_branches) :: int, (branch_and_bound.bnbp_closed_branches) :: int, (branch_and_bound.bnbp_time_msecs) :: int).
+:- type bnb_state(T).
+:- impure pred add_alternative(branch_and_bound.bnb_state(T)).
+:- mode add_alternative((builtin.in)) is det.
+:- pred branch_and_bound((impure pred(branch_and_bound.bnb_state(T), T)), ((func T) = float), set.set(T), branch_and_bound.bnb_profile).
+:- mode branch_and_bound((pred((builtin.in), (builtin.out)) is nondet), (func((builtin.in)) = (builtin.out) is det), (builtin.out), (builtin.out)) is det.
+:- impure pred close_alternative(branch_and_bound.bnb_state(T)).
+:- mode close_alternative((builtin.in)) is det.
+:- semipure pred num_alternatives(branch_and_bound.bnb_state(T), int, int).
+:- mode num_alternatives((builtin.in), (builtin.out), (builtin.out)) is det.
+:- pred score_solution(branch_and_bound.bnb_state(T), T, float).
+:- mode score_solution((builtin.in), (builtin.in), (builtin.out)) is det.
+:- semipure pred test_incomplete_solution(branch_and_bound.bnb_state(T), T).
+:- mode test_incomplete_solution((builtin.in), (builtin.in)) is semidet.

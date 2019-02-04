@@ -1,0 +1,61 @@
+:- module (parse_tree.module_cmds).
+:- interface.
+:- import_module bool.
+:- import_module io.
+:- import_module list.
+:- import_module maybe.
+:- import_module (libs.file_util).
+:- import_module (libs.globals).
+:- import_module (mdbcomp.prim_data).
+:- type command_verbosity
+	--->	cmd_verbose 
+	;	cmd_verbose_commands .
+:- type quote_char
+	--->	forward 
+	;	double .
+:- type update_interface_result
+	--->	interface_new_or_changed 
+	;	interface_unchanged 
+	;	interface_error .
+:- pred copy_file(libs.globals.globals, libs.file_util.file_name, libs.file_util.file_name, io.res, io.io, io.io).
+:- mode copy_file((builtin.in), (builtin.in), (builtin.in), (builtin.out), (builtin.di), (builtin.uo)) is det.
+:- pred create_erlang_shell_script(libs.globals.globals, mdbcomp.prim_data.module_name, bool.bool, io.io, io.io).
+:- mode create_erlang_shell_script((builtin.in), (builtin.in), (builtin.out), (builtin.di), (builtin.uo)) is det.
+:- pred create_java_shell_script(libs.globals.globals, mdbcomp.prim_data.module_name, bool.bool, io.io, io.io).
+:- mode create_java_shell_script((builtin.in), (builtin.in), (builtin.out), (builtin.di), (builtin.uo)) is det.
+:- pred create_launcher_batch_file(libs.globals.globals, mdbcomp.prim_data.module_name, pred(io.output_stream, io.io, io.io), bool.bool, io.io, io.io).
+:- mode create_launcher_batch_file((builtin.in), (builtin.in), builtin.in((pred((builtin.in), (builtin.di), (builtin.uo)) is det)), (builtin.out), (builtin.di), (builtin.uo)) is det.
+:- pred create_launcher_shell_script(libs.globals.globals, mdbcomp.prim_data.module_name, pred(io.output_stream, io.io, io.io), bool.bool, io.io, io.io).
+:- mode create_launcher_shell_script((builtin.in), (builtin.in), builtin.in((pred((builtin.in), (builtin.di), (builtin.uo)) is det)), (builtin.out), (builtin.di), (builtin.uo)) is det.
+:- pred get_env_classpath(string, io.io, io.io).
+:- mode get_env_classpath((builtin.out), (builtin.di), (builtin.uo)) is det.
+:- pred get_mercury_std_libs_for_java(libs.globals.globals, list.list(string)).
+:- mode get_mercury_std_libs_for_java((builtin.in), (builtin.out)) is det.
+:- pred invoke_system_command(libs.globals.globals, io.output_stream, parse_tree.module_cmds.command_verbosity, string, bool.bool, io.io, io.io).
+:- mode invoke_system_command((builtin.in), (builtin.in), (builtin.in), (builtin.in), (builtin.out), (builtin.di), (builtin.uo)) is det.
+:- pred invoke_system_command_maybe_filter_output(libs.globals.globals, io.output_stream, parse_tree.module_cmds.command_verbosity, string, maybe.maybe(string), bool.bool, io.io, io.io).
+:- mode invoke_system_command_maybe_filter_output((builtin.in), (builtin.in), (builtin.in), (builtin.in), (builtin.in), (builtin.out), (builtin.di), (builtin.uo)) is det.
+:- pred list_class_files_for_jar(libs.globals.globals, list.list(string), string, list.list(string), io.io, io.io).
+:- mode list_class_files_for_jar((builtin.in), (builtin.in), (builtin.out), (builtin.out), (builtin.di), (builtin.uo)) is det.
+:- pred list_class_files_for_jar_mmake(libs.globals.globals, string, string).
+:- mode list_class_files_for_jar_mmake((builtin.in), (builtin.in), (builtin.out)) is det.
+:- pred make_command_string(string, parse_tree.module_cmds.quote_char, string).
+:- mode make_command_string((builtin.in), (builtin.in), (builtin.out)) is det.
+:- pred make_symlink_or_copy_dir(libs.globals.globals, libs.file_util.file_name, libs.file_util.file_name, bool.bool, io.io, io.io).
+:- mode make_symlink_or_copy_dir((builtin.in), (builtin.in), (builtin.in), (builtin.out), (builtin.di), (builtin.uo)) is det.
+:- pred make_symlink_or_copy_file(libs.globals.globals, libs.file_util.file_name, libs.file_util.file_name, bool.bool, io.io, io.io).
+:- mode make_symlink_or_copy_file((builtin.in), (builtin.in), (builtin.in), (builtin.out), (builtin.di), (builtin.uo)) is det.
+:- pred maybe_make_symlink(libs.globals.globals, libs.file_util.file_name, libs.file_util.file_name, bool.bool, io.io, io.io).
+:- mode maybe_make_symlink((builtin.in), (builtin.in), (builtin.in), (builtin.out), (builtin.di), (builtin.uo)) is det.
+:- pred maybe_set_exit_status(bool.bool, io.io, io.io).
+:- mode maybe_set_exit_status((builtin.in), (builtin.di), (builtin.uo)) is det.
+:- pred touch_datestamp(libs.globals.globals, libs.file_util.file_name, io.io, io.io).
+:- mode touch_datestamp((builtin.in), (builtin.in), (builtin.di), (builtin.uo)) is det.
+:- pred touch_interface_datestamp(libs.globals.globals, mdbcomp.prim_data.module_name, string, io.io, io.io).
+:- mode touch_interface_datestamp((builtin.in), (builtin.in), (builtin.in), (builtin.di), (builtin.uo)) is det.
+:- pred update_interface(libs.globals.globals, libs.file_util.file_name, io.io, io.io).
+:- mode update_interface((builtin.in), (builtin.in), (builtin.di), (builtin.uo)) is det.
+:- pred update_interface_return_changed(libs.globals.globals, libs.file_util.file_name, parse_tree.module_cmds.update_interface_result, io.io, io.io).
+:- mode update_interface_return_changed((builtin.in), (builtin.in), (builtin.out), (builtin.di), (builtin.uo)) is det.
+:- pred update_interface_return_succeeded(libs.globals.globals, libs.file_util.file_name, bool.bool, io.io, io.io).
+:- mode update_interface_return_succeeded((builtin.in), (builtin.in), (builtin.out), (builtin.di), (builtin.uo)) is det.

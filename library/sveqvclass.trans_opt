@@ -1,0 +1,11 @@
+:- module sveqvclass.
+:- pragma termination_info(sveqvclass.ensure_element((builtin.in), (builtin.in), (builtin.out)), infinite, can_loop).
+:- pragma termination_info(sveqvclass.new_element((builtin.in), (builtin.in), (builtin.out)), infinite, can_loop).
+:- pragma termination_info(sveqvclass.ensure_equivalence((builtin.in), (builtin.in), (builtin.in), (builtin.out)), infinite, can_loop).
+:- pragma termination_info(sveqvclass.new_equivalence((builtin.in), (builtin.in), (builtin.in), (builtin.out)), infinite, can_loop).
+:- pragma termination_info(sveqvclass.remove_equivalent_elements((builtin.in), (builtin.in), (builtin.out)), infinite, can_loop).
+:- pragma exceptions(predicate, (sveqvclass.ensure_element), 3, 0, may_throw(user_exception)).
+:- pragma exceptions(predicate, (sveqvclass.new_element), 3, 0, may_throw(user_exception)).
+:- pragma exceptions(predicate, (sveqvclass.ensure_equivalence), 4, 0, may_throw(user_exception)).
+:- pragma exceptions(predicate, (sveqvclass.new_equivalence), 4, 0, may_throw(user_exception)).
+:- pragma exceptions(predicate, (sveqvclass.remove_equivalent_elements), 3, 0, may_throw(user_exception)).

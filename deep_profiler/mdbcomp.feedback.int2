@@ -1,0 +1,29 @@
+:- module (mdbcomp.feedback).
+:- interface.
+:- include_module ((mdbcomp.feedback).automatic_parallelism).
+:- import_module assoc_list.
+:- import_module io.
+:- import_module list.
+:- import_module (mdbcomp.program_representation).
+:- import_module ((mdbcomp.feedback).automatic_parallelism).
+:- type feedback_data
+	--->	feedback_data_calls_above_threshold_sorted(((mdbcomp.feedback).threshold) :: int, ((mdbcomp.feedback).stat_measure) :: mdbcomp.feedback.automatic_parallelism.stat_measure, ((mdbcomp.feedback).calls) :: list.list(mdbcomp.program_representation.call_site))
+	;	feedback_data_candidate_parallel_conjunctions(((mdbcomp.feedback).parameters) :: mdbcomp.feedback.automatic_parallelism.candidate_par_conjunctions_params, ((mdbcomp.feedback).conjunctions) :: assoc_list.assoc_list(mdbcomp.program_representation.string_proc_label, mdbcomp.feedback.automatic_parallelism.candidate_par_conjunctions_proc)).
+:- type feedback_info.
+:- type feedback_read_error
+	--->	open_error(io.error)
+	;	read_error(io.error)
+	;	parse_error(((mdbcomp.feedback).fre_pe_message) :: string, ((mdbcomp.feedback).fre_pe_line_no) :: int)
+	;	unexpected_eof 
+	;	incorrect_version(string)
+	;	incorrect_first_line 
+	;	incorrect_program_name(((mdbcomp.feedback).fre_ipn_expected) :: string, ((mdbcomp.feedback).fre_ipn_got) :: string).
+:- type feedback_write_result
+	--->	ok 
+	;	open_error(io.error)
+	;	write_error(io.error).
+:- type feedback_read_result(T)
+	--->	ok(T)
+	;	error(mdbcomp.feedback.feedback_read_error).
+:- inst (feedback_data_query) == bound(feedback_data_calls_above_threshold_sorted(free, free, free) ; feedback_data_candidate_parallel_conjunctions(free, free)).
+:- mode (feedback_data_query) == (((mdbcomp.feedback).feedback_data_query) >> ground).

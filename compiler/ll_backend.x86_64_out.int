@@ -1,0 +1,9 @@
+:- module (ll_backend.x86_64_out).
+:- interface.
+:- import_module io.
+:- import_module stream.
+:- import_module (ll_backend.x86_64_instrs).
+:- pred operand_to_string(ll_backend.x86_64_instrs.operand, string).
+:- mode operand_to_string((builtin.in), (builtin.out)) is det.
+:- pred output_x86_64_instruction(Stream, ll_backend.x86_64_instrs.x86_64_instruction, io.io, io.io) <= (stream.writer(Stream, string, io.io)).
+:- mode output_x86_64_instruction((builtin.in), (builtin.in), (builtin.di), (builtin.uo)) is det.

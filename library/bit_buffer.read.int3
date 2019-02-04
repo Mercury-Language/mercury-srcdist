@@ -1,0 +1,10 @@
+:- module (bit_buffer.read).
+:- interface.
+:- import_module io.
+:- type io_read_buffer.
+:- type read_buffer.
+:- type read_buffer(Stream, State, Error).
+:- inst (uniq_read_buffer) == ground.
+:- mode (read_buffer_di) == in(((bit_buffer.read).uniq_read_buffer)).
+:- mode (read_buffer_ui) == in(((bit_buffer.read).uniq_read_buffer)).
+:- mode (read_buffer_uo) == out(((bit_buffer.read).uniq_read_buffer)).

@@ -1,0 +1,95 @@
+:- module (mdbcomp.prim_data).
+:- interface.
+:- import_module list.
+:- type module_name == mdbcomp.prim_data.sym_name.
+:- type pred_or_func
+	--->	pf_predicate 
+	;	pf_function .
+:- type proc_label
+	--->	ordinary_proc_label(((mdbcomp.prim_data).ord_defining_module) :: mdbcomp.prim_data.module_name, ((mdbcomp.prim_data).ord_p_or_f) :: mdbcomp.prim_data.pred_or_func, ((mdbcomp.prim_data).ord_declaring_module) :: mdbcomp.prim_data.module_name, ((mdbcomp.prim_data).ord_pred_name) :: string, ((mdbcomp.prim_data).ord_arity) :: int, ((mdbcomp.prim_data).ord_mode_number) :: int)
+	;	special_proc_label(((mdbcomp.prim_data).spec_defining_module) :: mdbcomp.prim_data.module_name, ((mdbcomp.prim_data).spec_spec_id) :: mdbcomp.prim_data.special_pred_id, ((mdbcomp.prim_data).spec_type_module) :: mdbcomp.prim_data.module_name, ((mdbcomp.prim_data).spec_type_name) :: string, ((mdbcomp.prim_data).spec_type_arity) :: int, ((mdbcomp.prim_data).spec_mode_number) :: int).
+:- type special_pred_id
+	--->	spec_pred_unify 
+	;	spec_pred_index 
+	;	spec_pred_compare 
+	;	spec_pred_init .
+:- type sym_name
+	--->	unqualified(string)
+	;	qualified(mdbcomp.prim_data.sym_name, string).
+:- type trace_port
+	--->	port_call 
+	;	port_exit 
+	;	port_redo 
+	;	port_fail 
+	;	port_tailrec_call 
+	;	port_exception 
+	;	port_ite_cond 
+	;	port_ite_then 
+	;	port_ite_else 
+	;	port_neg_enter 
+	;	port_neg_success 
+	;	port_neg_failure 
+	;	port_disj_first 
+	;	port_disj_later 
+	;	port_switch 
+	;	port_nondet_foreign_proc_first 
+	;	port_nondet_foreign_proc_later 
+	;	port_user .
+:- func add_outermost_qualifier(string, mdbcomp.prim_data.sym_name) = mdbcomp.prim_data.sym_name.
+:- pred add_sym_name_suffix(mdbcomp.prim_data.sym_name, string, mdbcomp.prim_data.sym_name).
+:- mode add_sym_name_suffix((builtin.in), (builtin.in), (builtin.out)) is det.
+:- func all_builtin_modules = list.list(mdbcomp.prim_data.sym_name).
+:- pred any_mercury_builtin_module(mdbcomp.prim_data.sym_name).
+:- mode any_mercury_builtin_module((builtin.in)) is semidet.
+:- func get_ancestors(mdbcomp.prim_data.module_name) = list.list(mdbcomp.prim_data.module_name).
+:- func get_special_pred_id_arity(mdbcomp.prim_data.special_pred_id) = int.
+:- func get_special_pred_id_generic_name(mdbcomp.prim_data.special_pred_id) = string.
+:- func get_special_pred_id_target_name(mdbcomp.prim_data.special_pred_id) = string.
+:- pred is_std_lib_module_name(mdbcomp.prim_data.sym_name, string).
+:- mode is_std_lib_module_name((builtin.in), (builtin.out)) is semidet.
+:- pred is_submodule(mdbcomp.prim_data.module_name, mdbcomp.prim_data.module_name).
+:- mode is_submodule((builtin.in), (builtin.in)) is semidet.
+:- pred match_sym_name(mdbcomp.prim_data.sym_name, mdbcomp.prim_data.sym_name).
+:- mode match_sym_name((builtin.in), (builtin.in)) is semidet.
+:- func mercury_exception_module = mdbcomp.prim_data.sym_name.
+:- func mercury_io_module = mdbcomp.prim_data.sym_name.
+:- func mercury_list_module = mdbcomp.prim_data.sym_name.
+:- func mercury_par_builtin_module = mdbcomp.prim_data.sym_name.
+:- func mercury_private_builtin_module = mdbcomp.prim_data.sym_name.
+:- func mercury_profiling_builtin_module = mdbcomp.prim_data.sym_name.
+:- func mercury_public_builtin_module = mdbcomp.prim_data.sym_name.
+:- func mercury_region_builtin_module = mdbcomp.prim_data.sym_name.
+:- func mercury_rtti_implementation_builtin_module = mdbcomp.prim_data.sym_name.
+:- func mercury_ssdb_builtin_module = mdbcomp.prim_data.sym_name.
+:- func mercury_std_lib_module_name(mdbcomp.prim_data.sym_name) = mdbcomp.prim_data.sym_name.
+:- func mercury_stm_builtin_module = mdbcomp.prim_data.sym_name.
+:- func mercury_string_module = mdbcomp.prim_data.sym_name.
+:- func mercury_table_builtin_module = mdbcomp.prim_data.sym_name.
+:- func mercury_table_statistics_module = mdbcomp.prim_data.sym_name.
+:- func mercury_term_size_prof_builtin_module = mdbcomp.prim_data.sym_name.
+:- func mercury_univ_module = mdbcomp.prim_data.sym_name.
+:- pred non_traced_mercury_builtin_module(mdbcomp.prim_data.sym_name).
+:- mode non_traced_mercury_builtin_module((builtin.in)) is semidet.
+:- func outermost_qualifier(mdbcomp.prim_data.sym_name) = string.
+:- pred remove_sym_name_prefix(mdbcomp.prim_data.sym_name, string, mdbcomp.prim_data.sym_name).
+:- mode remove_sym_name_prefix((builtin.in), (builtin.in), (builtin.out)) is semidet.
+:- mode remove_sym_name_prefix((builtin.out), (builtin.in), (builtin.in)) is det.
+:- pred remove_sym_name_suffix(mdbcomp.prim_data.sym_name, string, mdbcomp.prim_data.sym_name).
+:- mode remove_sym_name_suffix((builtin.in), (builtin.in), (builtin.out)) is semidet.
+:- pred special_pred_name_arity(mdbcomp.prim_data.special_pred_id, string, string, int).
+:- mode special_pred_name_arity((builtin.in), (builtin.out), (builtin.out), (builtin.out)) is det.
+:- mode special_pred_name_arity((builtin.out), (builtin.in), (builtin.out), (builtin.out)) is semidet.
+:- mode special_pred_name_arity((builtin.out), (builtin.out), (builtin.in), (builtin.out)) is semidet.
+:- func string_to_sym_name(string) = mdbcomp.prim_data.sym_name.
+:- func string_to_sym_name_sep(string, string) = mdbcomp.prim_data.sym_name.
+:- pred strip_outermost_qualifier(mdbcomp.prim_data.sym_name, string, mdbcomp.prim_data.sym_name).
+:- mode strip_outermost_qualifier((builtin.in), (builtin.out), (builtin.out)) is semidet.
+:- pred sym_name_get_module_name(mdbcomp.prim_data.sym_name, mdbcomp.prim_data.module_name).
+:- mode sym_name_get_module_name((builtin.in), (builtin.out)) is semidet.
+:- pred sym_name_get_module_name_default(mdbcomp.prim_data.sym_name, mdbcomp.prim_data.module_name, mdbcomp.prim_data.module_name).
+:- mode sym_name_get_module_name_default((builtin.in), (builtin.in), (builtin.out)) is det.
+:- func sym_name_to_list(mdbcomp.prim_data.sym_name) = list.list(string).
+:- func sym_name_to_string(mdbcomp.prim_data.sym_name) = string.
+:- func sym_name_to_string_sep(mdbcomp.prim_data.sym_name, string) = string.
+:- func transform_sym_base_name(((func string) = string), mdbcomp.prim_data.sym_name) = mdbcomp.prim_data.sym_name.
+:- func unqualify_name(mdbcomp.prim_data.sym_name) = string.
