@@ -1,0 +1,14 @@
+:- module (make.util).
+:- interface.
+:- import_module (libs.globals).
+:- type build(T).
+:- type build(T, Info).
+:- type build(T, Info1, Info2).
+:- type build2(T, U).
+:- type foldl2_pred_with_status(T, Info, IO).
+:- type foldl3_pred_with_status(T, Acc, Info, IO).
+:- type stdout_lock.
+:- inst (build) == (pred(in, in, out, in, out, di, uo) is det).
+:- inst (build2) == (pred(in, in, in, out, in, out, di, uo) is det).
+:- inst (foldl2_pred_with_status) == (pred(in, in, out, in, out, di, uo) is det).
+:- inst (foldl3_pred_with_status) == (pred(in, in, out, in, out, in, out, di, uo) is det).
