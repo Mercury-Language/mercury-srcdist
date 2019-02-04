@@ -1,0 +1,21 @@
+:- module (check_hlds.mode_errors).
+:- interface.
+:- type delayed_goal.
+:- type final_inst_error
+	where	type_is_abstract_enum(2).
+:- type include_detism_on_modes
+	where	type_is_abstract_enum(1).
+:- type merge_context
+	where	type_is_abstract_enum(2).
+:- type merge_error.
+:- type merge_errors.
+:- type mode_error.
+:- type mode_error_info.
+:- type mode_error_unify_rhs.
+:- type mode_warning.
+:- type mode_warning_info.
+:- type negated_context_desc
+	where	type_is_abstract_enum(1).
+:- type pred_var_multimode_pred_error.
+:- type schedule_culprit.
+:- type var_multimode_pred_error.

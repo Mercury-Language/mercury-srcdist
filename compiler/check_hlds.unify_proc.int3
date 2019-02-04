@@ -1,0 +1,3 @@
+:- module (check_hlds.unify_proc).
+:- interface.
+:- type spec_pred_defn_info.

@@ -1,0 +1,18 @@
+:- module version_array2d.
+:- interface.
+:- import_module list.
+:- type version_array2d(T).
+:- pred bounds(version_array2d.version_array2d(T), int, int).
+:- mode bounds((builtin.in), (builtin.out), (builtin.out)) is det.
+:- func copy(version_array2d.version_array2d(T)) = version_array2d.version_array2d(T).
+:- func elem(int, int, version_array2d.version_array2d(T)) = T.
+:- func 'elem :='(int, int, version_array2d.version_array2d(T), T) = version_array2d.version_array2d(T).
+:- pred in_bounds(version_array2d.version_array2d(T), int, int).
+:- mode in_bounds((builtin.in), (builtin.in), (builtin.in)) is semidet.
+:- func init(int, int, T) = version_array2d.version_array2d(T).
+:- func lists(version_array2d.version_array2d(T)) = list.list(list.list(T)).
+:- func resize(version_array2d.version_array2d(T), int, int, T) = version_array2d.version_array2d(T).
+:- pred set(int, int, T, version_array2d.version_array2d(T), version_array2d.version_array2d(T)).
+:- mode set((builtin.in), (builtin.in), (builtin.in), (builtin.in), (builtin.out)) is det.
+:- func unsafe_rewind(version_array2d.version_array2d(T)) = version_array2d.version_array2d(T).
+:- func version_array2d(list.list(list.list(T))) = version_array2d.version_array2d(T).

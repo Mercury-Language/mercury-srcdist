@@ -1,0 +1,176 @@
+/*
+** Automatically generated from `pickle.m'
+** by the Mercury compiler,
+** version rotd-2018-09-16
+** configured for x86_64-pc-linux-gnu.
+** Do not edit.
+**
+** The autoconfigured grade settings governing
+** the generation of this C file were
+**
+** TAG_BITS=2
+** UNBOXED_FLOAT=no
+** UNBOXED_INT64S=no
+** PREGENERATED_DIST=yes
+** HIGHLEVEL_CODE=yes
+**
+** END_OF_C_GRADE_INFO
+*/
+
+
+// :- module libs.pickle.
+// :- interface.
+
+#ifndef MR_HEADER_GUARD_libs__pickle
+#define MR_HEADER_GUARD_libs__pickle
+
+#ifdef __cplusplus
+extern "C" {
+#endif
+
+#include "mercury.h"
+
+
+#ifndef LIBS__PICKLE_DECL_GUARD
+#define LIBS__PICKLE_DECL_GUARD
+#include "libs.mih"
+
+#endif
+
+
+
+
+extern const MR_TypeCtorInfo_Struct libs__pickle__libs__pickle__type_ctor_info_get_byte_out_of_range_0;
+
+extern const MR_TypeCtorInfo_Struct libs__pickle__libs__pickle__type_ctor_info_pickler_pred_0;
+
+extern const MR_TypeCtorInfo_Struct libs__pickle__libs__pickle__type_ctor_info_picklers_0;
+
+extern const MR_TypeCtorInfo_Struct libs__pickle__libs__pickle__type_ctor_info_unpickle_handle_0;
+
+extern const MR_TypeCtorInfo_Struct libs__pickle__libs__pickle__type_ctor_info_unpickle_state_0;
+
+extern const MR_TypeCtorInfo_Struct libs__pickle__libs__pickle__type_ctor_info_unpickler_pred_0;
+
+extern const MR_TypeCtorInfo_Struct libs__pickle__libs__pickle__type_ctor_info_unpicklers_0;
+
+void MR_CALL 
+libs__pickle__pickle_4_p_0(
+  MR_Word param_1,
+  MR_Word param_2,
+  MR_Box param_3);
+
+void MR_CALL 
+libs__pickle__register_pickler_4_p_0(
+  MR_Word param_1,
+  MR_Word param_2,
+  MR_Word param_3,
+  MR_Word * param_4);
+
+void MR_CALL 
+libs__pickle__register_unpickler_4_p_0(
+  MR_Word param_1,
+  MR_Word param_2,
+  MR_Word param_3,
+  MR_Word * param_4);
+
+void MR_CALL 
+libs__pickle__unpickle_5_p_0(
+  MR_Word param_1,
+  MR_Word param_2,
+  MR_Box param_3,
+  MR_Box * param_4,
+  MR_Integer param_5,
+  MR_Integer * param_6);
+
+void MR_CALL 
+libs__pickle__unpickle_from_file_5_p_0(
+  MR_Word param_1,
+  MR_Word param_2,
+  MR_String param_3,
+  MR_Word * param_4);
+
+MR_Word MR_CALL 
+libs__pickle__init_picklers_0_f_0(void);
+
+MR_Word MR_CALL 
+libs__pickle__init_unpicklers_0_f_0(void);
+
+void MR_CALL 
+libs__pickle____Compare____pickler_pred_0_0(
+  MR_Word * param_1,
+  MR_Word param_2,
+  MR_Word param_3);
+
+void MR_CALL 
+libs__pickle____Compare____picklers_0_0(
+  MR_Word * param_1,
+  MR_Word param_2,
+  MR_Word param_3);
+
+void MR_CALL 
+libs__pickle____Compare____unpickle_handle_0_0(
+  MR_Word * param_1,
+  MR_Box param_2,
+  MR_Box param_3);
+
+void MR_CALL 
+libs__pickle____Compare____unpickle_state_0_0(
+  MR_Word * param_1,
+  MR_Integer param_2,
+  MR_Integer param_3);
+
+void MR_CALL 
+libs__pickle____Compare____unpickler_pred_0_0(
+  MR_Word * param_1,
+  MR_Word param_2,
+  MR_Word param_3);
+
+void MR_CALL 
+libs__pickle____Compare____unpicklers_0_0(
+  MR_Word * param_1,
+  MR_Word param_2,
+  MR_Word param_3);
+
+MR_bool MR_CALL 
+libs__pickle____Unify____pickler_pred_0_0(
+  MR_Word param_1,
+  MR_Word param_2);
+
+MR_bool MR_CALL 
+libs__pickle____Unify____picklers_0_0(
+  MR_Word param_1,
+  MR_Word param_2);
+
+MR_bool MR_CALL 
+libs__pickle____Unify____unpickle_handle_0_0(
+  MR_Box param_1,
+  MR_Box param_2);
+
+MR_bool MR_CALL 
+libs__pickle____Unify____unpickle_state_0_0(
+  MR_Integer param_1,
+  MR_Integer param_2);
+
+MR_bool MR_CALL 
+libs__pickle____Unify____unpickler_pred_0_0(
+  MR_Word param_1,
+  MR_Word param_2);
+
+MR_bool MR_CALL 
+libs__pickle____Unify____unpicklers_0_0(
+  MR_Word param_1,
+  MR_Word param_2);
+
+void mercury__libs__pickle__init(void);
+void mercury__libs__pickle__init_type_tables(void);
+void mercury__libs__pickle__init_debugger(void);
+const char *mercury__libs__pickle__grade_check(void);
+
+#ifdef __cplusplus
+}
+#endif
+
+#endif // MR_HEADER_GUARD_libs.pickle
+
+// :- end_interface libs.pickle.
