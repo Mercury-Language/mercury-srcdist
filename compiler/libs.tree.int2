@@ -1,0 +1,9 @@
+:- module (libs.tree).
+:- interface.
+:- import_module bool.
+:- import_module list.
+:- type tree(T)
+	--->	empty 
+	;	node(T)
+	;	tree(((libs.tree).tree(T)), ((libs.tree).tree(T)))
+	;	tree_list((list.list(((libs.tree).tree(T))))).

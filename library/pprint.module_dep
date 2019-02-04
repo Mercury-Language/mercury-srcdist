@@ -1,0 +1,13 @@
+module(1, "pprint.m",
+	pprint,
+	{},
+	{builtin, char, io, list, stream, string, univ, private_builtin},
+	{builtin, char, io, list, stream, string, univ, array, deconstruct, enum, int, map, ops, pair, robdd, sparse_bitset, term, type_desc, private_builtin},
+	{},
+	{},
+	{},
+	{},
+	{},
+	no_foreign_export,
+	no_main
+).

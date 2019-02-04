@@ -1,0 +1,15 @@
+:- module (hlds.code_model).
+:- interface.
+:- import_module (hlds.hlds_goal).
+:- import_module (hlds.hlds_pred).
+:- import_module (parse_tree.prog_data).
+:- type code_model
+	--->	model_det 
+	;	model_semi 
+	;	model_non .
+:- pred determinism_to_code_model(((parse_tree.prog_data).determinism), ((hlds.code_model).code_model)).
+:- mode determinism_to_code_model((builtin.in), (builtin.out)) is det.
+:- mode determinism_to_code_model((builtin.out), (builtin.in)) is multi.
+:- func goal_info_get_code_model(((hlds.hlds_goal).hlds_goal_info)) = ((hlds.code_model).code_model).
+:- func proc_info_interface_code_model(((hlds.hlds_pred).proc_info)) = ((hlds.code_model).code_model).
+:- func represent_determinism(((parse_tree.prog_data).determinism)) = int.

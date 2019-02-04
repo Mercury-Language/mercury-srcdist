@@ -1,0 +1,21 @@
+:- module (parse_tree.prog_io).
+:- interface.
+:- import_module bool.
+:- import_module io.
+:- import_module list.
+:- import_module maybe.
+:- import_module term.
+:- import_module varset.
+:- import_module (libs.timestamp).
+:- import_module (mdbcomp.prim_data).
+:- import_module (parse_tree.prog_data).
+:- import_module (parse_tree.prog_io_util).
+:- import_module (parse_tree.prog_item).
+:- type dir_name == string.
+:- type file_name == string.
+:- type module_error
+	--->	no_module_errors 
+	;	some_module_errors 
+	;	fatal_module_errors .
+:- type open_file(FileInfo) == pred((maybe.maybe_error(FileInfo)), (io.io), (io.io)).
+:- inst (open_file) == (pred((builtin.out), (builtin.di), (builtin.uo)) is det).

@@ -1,0 +1,14 @@
+:- module (mdb.name_mangle).
+:- interface.
+:- type arity == int.
+:- type is_pred_or_func
+	--->	predicate 
+	;	function .
+:- type mercury_proc
+	--->	mercury_proc(((mdb.name_mangle).is_pred_or_func), ((mdb.name_mangle).module_name), ((mdb.name_mangle).pred_name), ((mdb.name_mangle).arity), ((mdb.name_mangle).mode_num)).
+:- type mode_num == int.
+:- type module_name == ((mdb.name_mangle).sym_name).
+:- type pred_name == string.
+:- type sym_name
+	--->	qualified(((mdb.name_mangle).sym_name), string)
+	;	unqualified(string).

@@ -1,0 +1,83 @@
+:- module thread.
+:- use_module builtin, io, private_builtin.
+:- pragma foreign_import_module("C", io).
+:- pragma foreign_import_module("Java", io).
+:- pragma foreign_import_module("IL", io).
+:- pragma foreign_import_module("Erlang", io).
+:- pragma foreign_import_module("C", io).
+:- pragma foreign_import_module("Java", io).
+:- pragma foreign_import_module("IL", io).
+:- pragma foreign_import_module("Erlang", io).
+:- pragma foreign_import_module("C", string).
+:- pragma foreign_import_module("C", bitmap).
+:- pragma foreign_import_module("Java", bitmap).
+:- pragma foreign_import_module("IL", bitmap).
+:- pragma foreign_import_module("Erlang", bitmap).
+:- pragma foreign_import_module("C", bitmap).
+:- pragma foreign_import_module("Java", bitmap).
+:- pragma foreign_import_module("IL", bitmap).
+:- pragma foreign_import_module("Erlang", bitmap).
+:- pragma foreign_import_module("C", time).
+:- pragma foreign_import_module("Java", time).
+:- pragma foreign_import_module("IL", time).
+:- pragma foreign_import_module("Erlang", time).
+:- pragma foreign_import_module("C", time).
+:- pragma foreign_import_module("Java", time).
+:- pragma foreign_import_module("IL", time).
+:- pragma foreign_import_module("Erlang", time).
+:- pred thread.call_back_to_mercury(pred((io.state), (io.state)), (io.state), (io.state)).
+:- mode thread.call_back_to_mercury((pred((builtin.di), (builtin.uo)) is cc_multi), (builtin.di), (builtin.uo)) is cc_multi.
+:- pragma foreign_proc("C", thread.can_spawn, [will_not_call_mercury, not_thread_safe, not_tabled_for_io, promise_pure, may_modify_trail], "
+#if !defined(MR_HIGHLEVEL_CODE)
+    SUCCESS_INDICATOR = MR_TRUE;
+#else
+    #if defined(MR_THREAD_SAFE)
+        SUCCESS_INDICATOR = MR_TRUE;
+    #else
+        SUCCESS_INDICATOR = MR_FALSE;
+    #endif
+#endif
+").
+:- pragma foreign_proc("C", thread.spawn(Goal :: builtin.in((pred((builtin.di), (builtin.uo)) is cc_multi)), IO0 :: (builtin.di), IO :: (builtin.uo)), [will_not_call_mercury, thread_safe, not_tabled_for_io, promise_pure, may_modify_trail], "
+#if !defined(MR_HIGHLEVEL_CODE)
+    MR_Context  *ctxt;
+
+    MR_LOCK(&MR_thread_barrier_lock, \"thread.spawn\");
+    MR_thread_barrier_count++;
+    MR_UNLOCK(&MR_thread_barrier_lock, \"thread.spawn\");
+
+    ctxt = MR_create_context(\"spawn\", MR_CONTEXT_SIZE_REGULAR, NULL);
+    ctxt->MR_ctxt_resume = MR_ENTRY(mercury__thread__spawn_begin_thread);
+    
+    /*
+    ** Store the closure on the top of the new context\'s stack.
+    */
+    
+    *(ctxt->MR_ctxt_sp) = Goal;
+    ctxt->MR_ctxt_next = NULL;
+    ctxt->MR_ctxt_thread_local_mutables =
+        MR_clone_thread_local_mutables(MR_THREAD_LOCAL_MUTABLES);
+    MR_schedule_context(ctxt);
+
+#else /* MR_HIGHLEVEL_CODE */
+
+#if defined(MR_THREAD_SAFE)
+    ML_create_thread(Goal);
+#else
+    MR_fatal_error(\"spawn/3 requires a .par grade in high-level C grades.\");
+#endif
+
+#endif /* MR_HIGHLEVEL_CODE */
+    IO = IO0;
+").
+thread.call_back_to_mercury(Goal_4, STATE_VARIABLE_IO_0_6, STATE_VARIABLE_IO_7) :-
+    call(Goal_4, STATE_VARIABLE_IO_0_6, STATE_VARIABLE_IO_1_8),
+    STATE_VARIABLE_IO_7 = STATE_VARIABLE_IO_1_8.
+:- pragma exceptions(predicate, (thread.can_spawn), 0, 0, will_not_throw).
+:- pragma exceptions(predicate, (thread.spawn), 3, 0, will_not_throw).
+:- pragma exceptions(predicate, (thread.yield), 2, 0, will_not_throw).
+:- pragma exceptions(predicate, (thread.call_back_to_mercury), 3, 0, may_throw(user_exception)).
+:- pragma termination_info((thread.can_spawn), finite(0, []), cannot_loop).
+:- pragma termination_info(thread.spawn(builtin.in((pred((builtin.di), (builtin.uo)) is cc_multi)), (builtin.di), (builtin.uo)), infinite, cannot_loop).
+:- pragma termination_info(thread.yield((builtin.di), (builtin.uo)), infinite, cannot_loop).
+:- pragma termination_info(thread.call_back_to_mercury((pred((builtin.di), (builtin.uo)) is cc_multi), (builtin.di), (builtin.uo)), infinite, can_loop).

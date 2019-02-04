@@ -1,0 +1,1730 @@
+/*
+** Automatically generated from `process_util.m'
+** by the Mercury compiler,
+** version rotd-2007-09-21, configured for i686-pc-linux-gnu.
+** Do not edit.
+**
+** The autoconfigured grade settings governing
+** the generation of this C file were
+**
+** TAG_BITS=2
+** UNBOXED_FLOAT=no
+**
+** END_OF_C_GRADE_INFO
+*/
+
+/*
+INIT mercury__libs__process_util__init
+ENDINIT
+*/
+
+#define MR_ALLOW_RESET
+#include "mercury_imp.h"
+#line 24 "libs.process_util.c"
+#include "libs.process_util.mh"
+
+#line 27 "libs.process_util.c"
+#line 530 "../library/io.int"
+#include "io.mh"
+
+#line 31 "libs.process_util.c"
+#line 538 "../library/io.int"
+#include "string.mh"
+
+#line 35 "libs.process_util.c"
+#line 29 "../library/bitmap.int2"
+#include "bitmap.mh"
+
+#line 39 "libs.process_util.c"
+#line 28 "../library/time.int2"
+#include "time.mh"
+
+#line 43 "libs.process_util.c"
+#line 87 "../library/table_builtin.int2"
+#include "table_builtin.mh"
+
+#line 47 "libs.process_util.c"
+#line 33 "../mdbcomp/mdbcomp.rtti_access.int2"
+#include "mdbcomp.rtti_access.mh"
+
+#line 51 "libs.process_util.c"
+#line 52 "libs.process_util.c"
+#ifndef LIBS__PROCESS_UTIL_DECL_GUARD
+#define LIBS__PROCESS_UTIL_DECL_GUARD
+
+#line 56 "libs.process_util.c"
+#line 145 "process_util.m"
+
+#ifdef MR_HAVE_UNISTD_H
+  #include <unistd.h>
+#endif
+
+#ifdef MR_HAVE_SYS_TYPES_H
+  #include <sys/types.h>
+#endif
+
+#ifdef MR_HAVE_SYS_WAIT_H
+  #include <sys/wait.h>
+#endif
+
+#include <errno.h>
+
+#include "mercury_signal.h"
+#include "mercury_types.h"
+#include "mercury_heap.h"
+#include "mercury_misc.h"
+
+#if defined(MR_HAVE_FORK) && defined(MR_HAVE_WAIT) && defined(MR_HAVE_KILL)
+  #define MC_CAN_FORK 1
+#endif
+
+#define MC_SETUP_SIGNAL_HANDLER(sig, handler)         MR_setup_signal(sig, (MR_Code *) handler, MR_FALSE,             "mercury_compile: cannot install signal handler");
+
+    /* Have we received a signal. */
+extern volatile sig_atomic_t MC_signalled;
+
+    /*
+    ** Which signal did we receive.
+    ** XXX This assumes a signal number will fit into a sig_atomic_t.
+    */
+extern volatile sig_atomic_t MC_signal_received;
+
+void MC_mercury_compile_signal_handler(int sig);
+
+#line 95 "libs.process_util.c"
+#line 280 "process_util.m"
+#include <signal.h>
+#line 98 "libs.process_util.c"
+#line 99 "libs.process_util.c"
+
+#endif
+#line 102 "libs.process_util.c"
+
+#ifdef _MSC_VER
+#define MR_STATIC_LINKAGE extern
+#else
+#define MR_STATIC_LINKAGE static
+#endif
+
+extern const MR_TypeCtorInfo_Struct
+	mercury_data_libs__process_util__type_ctor_info_signal_action_0,
+	mercury_data_libs__process_util__type_ctor_info_post_signal_cleanup_1,
+	mercury_data_libs__process_util__type_ctor_info_pid_0,
+	mercury_data_libs__process_util__type_ctor_info_io_pred_0,
+	mercury_data_libs__process_util__type_ctor_info_build0_1;
+MR_decl_label8(libs__process_util__build_with_check_for_interrupt_7_0, 2,5,14,7,8,9,11,12)
+MR_decl_label2(libs__process_util__call_child_process_io_pred_4_0, 2,3)
+MR_decl_label4(libs__process_util__call_in_forked_process_with_backup_5_0, 23,6,8,3)
+MR_decl_label1(libs__process_util__can_fork_0_0, 1)
+MR_decl_label1(libs__process_util__start_in_forked_process_4_0, 2)
+MR_decl_label1(libs__process_util__wait_any_4_0, 2)
+MR_def_extern_entry(libs__process_util__raise_signal_3_0)
+MR_decl_static(libs__process_util__setup_signal_handlers_3_0)
+MR_decl_static(libs__process_util__restore_signal_handlers_3_0)
+MR_decl_static(libs__process_util__check_for_signal_4_0)
+MR_def_extern_entry(libs__process_util__build_with_check_for_interrupt_7_0)
+MR_def_extern_entry(libs__process_util__can_fork_0_0)
+MR_decl_static(libs__process_util__start_in_forked_process_2_4_0)
+MR_def_extern_entry(libs__process_util__start_in_forked_process_4_0)
+MR_decl_static(libs__process_util__do_wait_5_0)
+MR_def_extern_entry(libs__process_util__call_in_forked_process_with_backup_5_0)
+MR_def_extern_entry(libs__process_util__call_in_forked_process_4_0)
+MR_def_extern_entry(libs__process_util__wait_any_4_0)
+MR_decl_static(fn__libs__process_util__sig_dfl_0_0)
+MR_decl_static(libs__process_util__call_child_process_io_pred_4_0)
+MR_def_extern_entry(__Unify___libs__process_util__build0_1_0)
+MR_def_extern_entry(__Compare___libs__process_util__build0_1_0)
+MR_def_extern_entry(__Unify___libs__process_util__io_pred_0_0)
+MR_def_extern_entry(__Compare___libs__process_util__io_pred_0_0)
+MR_def_extern_entry(__Unify___libs__process_util__pid_0_0)
+MR_def_extern_entry(__Compare___libs__process_util__pid_0_0)
+MR_def_extern_entry(__Unify___libs__process_util__post_signal_cleanup_1_0)
+MR_def_extern_entry(__Compare___libs__process_util__post_signal_cleanup_1_0)
+MR_decl_static(__Unify___libs__process_util__signal_action_0_0)
+MR_decl_static(__Compare___libs__process_util__signal_action_0_0)
+
+const MR_TypeCtorInfo_Struct mercury_data_libs__process_util__type_ctor_info_signal_action_0 = {
+	0,
+	13,
+	-1,
+	MR_TYPECTOR_REP_FOREIGN,
+	MR_MAYBE_STATIC_CODE(MR_ENTRY_AP(__Unify___libs__process_util__signal_action_0_0)),
+	MR_MAYBE_STATIC_CODE(MR_ENTRY_AP(__Compare___libs__process_util__signal_action_0_0)),
+	"libs.process_util",
+	"signal_action",
+	{ 0 },
+	{ 0 },
+	-1,
+	0,
+	NULL
+};
+extern const MR_TypeCtorInfo_Struct mercury_data_builtin__type_ctor_info_pred_0;
+extern const MR_TypeCtorInfo_Struct mercury_data_io__type_ctor_info_state_0;
+extern const MR_TypeCtorInfo_Struct mercury_data_io__type_ctor_info_state_0;
+
+static const MR_VA_PseudoTypeInfo_Struct4 mercury_data___vpti_pred_4__pseudo_1__pseudo_1__plain_io__type_ctor_info_state_0__plain_io__type_ctor_info_state_0 = {
+	&mercury_data_builtin__type_ctor_info_pred_0,
+	4,
+{	(MR_PseudoTypeInfo) 1,
+	(MR_PseudoTypeInfo) 1,
+	(MR_PseudoTypeInfo) &mercury_data_io__type_ctor_info_state_0,
+	(MR_PseudoTypeInfo) &mercury_data_io__type_ctor_info_state_0
+}};
+
+const MR_TypeCtorInfo_Struct mercury_data_libs__process_util__type_ctor_info_post_signal_cleanup_1 = {
+	1,
+	13,
+	-1,
+	MR_TYPECTOR_REP_EQUIV,
+	MR_MAYBE_STATIC_CODE(MR_ENTRY_AP(__Unify___libs__process_util__post_signal_cleanup_1_0)),
+	MR_MAYBE_STATIC_CODE(MR_ENTRY_AP(__Compare___libs__process_util__post_signal_cleanup_1_0)),
+	"libs.process_util",
+	"post_signal_cleanup",
+	{ 0 },
+	{ (void *)&mercury_data___vpti_pred_4__pseudo_1__pseudo_1__plain_io__type_ctor_info_state_0__plain_io__type_ctor_info_state_0 },
+	-1,
+	0,
+	NULL
+};
+extern const MR_TypeCtorInfo_Struct mercury_data_builtin__type_ctor_info_int_0;
+extern const MR_TypeCtorInfo_Struct mercury_data_builtin__type_ctor_info_int_0;
+
+const MR_TypeCtorInfo_Struct mercury_data_libs__process_util__type_ctor_info_pid_0 = {
+	0,
+	13,
+	-1,
+	MR_TYPECTOR_REP_EQUIV_GROUND,
+	MR_MAYBE_STATIC_CODE(MR_ENTRY_AP(__Unify___libs__process_util__pid_0_0)),
+	MR_MAYBE_STATIC_CODE(MR_ENTRY_AP(__Compare___libs__process_util__pid_0_0)),
+	"libs.process_util",
+	"pid",
+	{ 0 },
+	{ (void *)&mercury_data_builtin__type_ctor_info_int_0 },
+	-1,
+	0,
+	NULL
+};
+extern const MR_TypeCtorInfo_Struct mercury_data_bool__type_ctor_info_bool_0;
+extern const MR_TypeCtorInfo_Struct mercury_data_bool__type_ctor_info_bool_0;
+
+static const MR_VA_TypeInfo_Struct3 mercury_data___vti_pred_3bool__type_ctor_info_bool_0io__type_ctor_info_state_0io__type_ctor_info_state_0 = {
+	&mercury_data_builtin__type_ctor_info_pred_0,
+	3,
+{	(MR_TypeInfo) &mercury_data_bool__type_ctor_info_bool_0,
+	(MR_TypeInfo) &mercury_data_io__type_ctor_info_state_0,
+	(MR_TypeInfo) &mercury_data_io__type_ctor_info_state_0
+}};
+
+const MR_TypeCtorInfo_Struct mercury_data_libs__process_util__type_ctor_info_io_pred_0 = {
+	0,
+	13,
+	-1,
+	MR_TYPECTOR_REP_EQUIV_GROUND,
+	MR_MAYBE_STATIC_CODE(MR_ENTRY_AP(__Unify___libs__process_util__io_pred_0_0)),
+	MR_MAYBE_STATIC_CODE(MR_ENTRY_AP(__Compare___libs__process_util__io_pred_0_0)),
+	"libs.process_util",
+	"io_pred",
+	{ 0 },
+	{ (void *)&mercury_data___vti_pred_3bool__type_ctor_info_bool_0io__type_ctor_info_state_0io__type_ctor_info_state_0 },
+	-1,
+	0,
+	NULL
+};
+
+static const MR_VA_PseudoTypeInfo_Struct5 mercury_data___vpti_pred_5__plain_bool__type_ctor_info_bool_0__pseudo_1__pseudo_1__plain_io__type_ctor_info_state_0__plain_io__type_ctor_info_state_0 = {
+	&mercury_data_builtin__type_ctor_info_pred_0,
+	5,
+{	(MR_PseudoTypeInfo) &mercury_data_bool__type_ctor_info_bool_0,
+	(MR_PseudoTypeInfo) 1,
+	(MR_PseudoTypeInfo) 1,
+	(MR_PseudoTypeInfo) &mercury_data_io__type_ctor_info_state_0,
+	(MR_PseudoTypeInfo) &mercury_data_io__type_ctor_info_state_0
+}};
+
+const MR_TypeCtorInfo_Struct mercury_data_libs__process_util__type_ctor_info_build0_1 = {
+	1,
+	13,
+	-1,
+	MR_TYPECTOR_REP_EQUIV,
+	MR_MAYBE_STATIC_CODE(MR_ENTRY_AP(__Unify___libs__process_util__build0_1_0)),
+	MR_MAYBE_STATIC_CODE(MR_ENTRY_AP(__Compare___libs__process_util__build0_1_0)),
+	"libs.process_util",
+	"build0",
+	{ 0 },
+	{ (void *)&mercury_data___vpti_pred_5__plain_bool__type_ctor_info_bool_0__pseudo_1__pseudo_1__plain_io__type_ctor_info_state_0__plain_io__type_ctor_info_state_0 },
+	-1,
+	0,
+	NULL
+};
+
+
+MR_BEGIN_MODULE(libs__process_util_module0)
+	MR_init_entry1(libs__process_util__raise_signal_3_0);
+MR_BEGIN_CODE
+
+#ifdef MR_maybe_local_thread_engine_base
+	#undef MR_maybe_local_thread_engine_base
+	#define MR_maybe_local_thread_engine_base MR_local_thread_engine_base
+#endif
+MR_define_entry(mercury__libs__process_util__raise_signal_3_0);
+	MR_MAYBE_INIT_LOCAL_THREAD_ENGINE_BASE
+	{
+	MR_Integer	Signal;
+	MR_Word	IO0;
+	MR_Word	IO;
+#define	MR_PROC_LABEL	mercury__libs__process_util__raise_signal_3_0
+	Signal = MR_r1;
+	MR_OBTAIN_GLOBAL_LOCK("raise_signal");
+{
+#line 289 "process_util.m"
+
+    IO = IO0;
+    raise(Signal);
+;}
+#line 285 "libs.process_util.c"
+	MR_RELEASE_GLOBAL_LOCK("raise_signal");
+#undef	MR_PROC_LABEL
+	}
+	MR_proceed();
+#ifdef MR_maybe_local_thread_engine_base
+	#undef MR_maybe_local_thread_engine_base
+	#define MR_maybe_local_thread_engine_base MR_thread_engine_base
+#endif
+MR_END_MODULE
+
+
+MR_BEGIN_MODULE(libs__process_util_module1)
+	MR_init_entry1(libs__process_util__setup_signal_handlers_3_0);
+MR_BEGIN_CODE
+
+#ifdef MR_maybe_local_thread_engine_base
+	#undef MR_maybe_local_thread_engine_base
+	#define MR_maybe_local_thread_engine_base MR_local_thread_engine_base
+#endif
+MR_def_static(libs__process_util__setup_signal_handlers_3_0)
+	MR_MAYBE_INIT_LOCAL_THREAD_ENGINE_BASE
+	{
+	MR_signal_action	SigintHandler;
+	MR_Word	IO0;
+	MR_Word	IO;
+#define	MR_PROC_LABEL	mercury__libs__process_util__setup_signal_handlers_3_0
+	MR_OBTAIN_GLOBAL_LOCK("setup_signal_handlers");
+{
+#line 206 "process_util.m"
+{
+    IO = IO0;
+    MC_signalled = MR_FALSE;
+
+    /*
+    ** mdb sets up a SIGINT handler, so we should restore
+    ** it after we're done.
+    */
+    MR_get_signal_action(SIGINT, &SigintHandler,
+        "error getting SIGINT handler");
+    MC_SETUP_SIGNAL_HANDLER(SIGINT, MC_mercury_compile_signal_handler);
+    MC_SETUP_SIGNAL_HANDLER(SIGTERM, MC_mercury_compile_signal_handler);
+#ifdef SIGHUP
+    MC_SETUP_SIGNAL_HANDLER(SIGHUP, MC_mercury_compile_signal_handler);
+#endif
+#ifdef SIGQUIT
+    MC_SETUP_SIGNAL_HANDLER(SIGQUIT, MC_mercury_compile_signal_handler);
+#endif
+};}
+#line 334 "libs.process_util.c"
+	MR_RELEASE_GLOBAL_LOCK("setup_signal_handlers");
+	MR_MAYBE_BOX_FOREIGN_TYPE(MR_signal_action, SigintHandler, MR_r1);
+#undef	MR_PROC_LABEL
+	}
+	MR_proceed();
+#ifdef MR_maybe_local_thread_engine_base
+	#undef MR_maybe_local_thread_engine_base
+	#define MR_maybe_local_thread_engine_base MR_thread_engine_base
+#endif
+MR_END_MODULE
+
+
+MR_BEGIN_MODULE(libs__process_util_module2)
+	MR_init_entry1(libs__process_util__restore_signal_handlers_3_0);
+MR_BEGIN_CODE
+
+#ifdef MR_maybe_local_thread_engine_base
+	#undef MR_maybe_local_thread_engine_base
+	#define MR_maybe_local_thread_engine_base MR_local_thread_engine_base
+#endif
+MR_def_static(libs__process_util__restore_signal_handlers_3_0)
+	MR_MAYBE_INIT_LOCAL_THREAD_ENGINE_BASE
+	{
+	MR_signal_action	SigintHandler;
+	MR_Word	IO0;
+	MR_Word	IO;
+#define	MR_PROC_LABEL	mercury__libs__process_util__restore_signal_handlers_3_0
+	MR_MAYBE_UNBOX_FOREIGN_TYPE(MR_signal_action, MR_r1, SigintHandler);
+	MR_OBTAIN_GLOBAL_LOCK("restore_signal_handlers");
+{
+#line 233 "process_util.m"
+{
+    IO = IO0;
+    MR_set_signal_action(SIGINT, &SigintHandler,
+        "error resetting SIGINT handler");
+    MC_SETUP_SIGNAL_HANDLER(SIGTERM, SIG_DFL);
+#ifdef SIGHUP
+    MC_SETUP_SIGNAL_HANDLER(SIGHUP, SIG_DFL);
+#endif
+#ifdef SIGQUIT
+    MC_SETUP_SIGNAL_HANDLER(SIGQUIT, SIG_DFL);
+#endif
+};}
+#line 378 "libs.process_util.c"
+	MR_RELEASE_GLOBAL_LOCK("restore_signal_handlers");
+#undef	MR_PROC_LABEL
+	}
+	MR_proceed();
+#ifdef MR_maybe_local_thread_engine_base
+	#undef MR_maybe_local_thread_engine_base
+	#define MR_maybe_local_thread_engine_base MR_thread_engine_base
+#endif
+MR_END_MODULE
+
+
+MR_BEGIN_MODULE(libs__process_util_module3)
+	MR_init_entry1(libs__process_util__check_for_signal_4_0);
+MR_BEGIN_CODE
+
+#ifdef MR_maybe_local_thread_engine_base
+	#undef MR_maybe_local_thread_engine_base
+	#define MR_maybe_local_thread_engine_base MR_local_thread_engine_base
+#endif
+MR_def_static(libs__process_util__check_for_signal_4_0)
+	MR_MAYBE_INIT_LOCAL_THREAD_ENGINE_BASE
+	{
+	MR_Integer	Signalled;
+	MR_Integer	Signal;
+	MR_Word	IO0;
+	MR_Word	IO;
+#define	MR_PROC_LABEL	mercury__libs__process_util__check_for_signal_4_0
+	MR_OBTAIN_GLOBAL_LOCK("check_for_signal");
+{
+#line 272 "process_util.m"
+
+    IO = IO0;
+    Signalled = (MC_signalled ? 1 : 0);
+    Signal = MC_signal_received;
+;}
+#line 414 "libs.process_util.c"
+	MR_RELEASE_GLOBAL_LOCK("check_for_signal");
+	MR_r1 = Signalled;
+	MR_r2 = Signal;
+#undef	MR_PROC_LABEL
+	}
+	MR_proceed();
+#ifdef MR_maybe_local_thread_engine_base
+	#undef MR_maybe_local_thread_engine_base
+	#define MR_maybe_local_thread_engine_base MR_thread_engine_base
+#endif
+MR_END_MODULE
+
+MR_declare_entry(mercury__do_call_closure_2);
+MR_decl_entry(libs__globals__io_lookup_bool_option_4_0);
+MR_decl_entry(io__write_string_3_0);
+MR_decl_entry(io__write_int_3_0);
+
+MR_BEGIN_MODULE(libs__process_util_module4)
+	MR_init_entry1(libs__process_util__build_with_check_for_interrupt_7_0);
+	MR_init_label8(libs__process_util__build_with_check_for_interrupt_7_0,2,5,14,7,8,9,11,12)
+MR_BEGIN_CODE
+
+#ifdef MR_maybe_local_thread_engine_base
+	#undef MR_maybe_local_thread_engine_base
+	#define MR_maybe_local_thread_engine_base MR_local_thread_engine_base
+#endif
+MR_define_entry(mercury__libs__process_util__build_with_check_for_interrupt_7_0);
+	MR_MAYBE_INIT_LOCAL_THREAD_ENGINE_BASE
+	MR_incr_sp(4);
+	MR_sv(4) = (MR_Word) MR_succip;
+	{
+	MR_Word MR_tempr1, MR_tempr2;
+	{
+	MR_signal_action	SigintHandler;
+	MR_Word	IO0;
+	MR_Word	IO;
+#define	MR_PROC_LABEL	mercury__libs__process_util__build_with_check_for_interrupt_7_0
+	MR_OBTAIN_GLOBAL_LOCK("setup_signal_handlers");
+{
+#line 206 "process_util.m"
+{
+    IO = IO0;
+    MC_signalled = MR_FALSE;
+
+    /*
+    ** mdb sets up a SIGINT handler, so we should restore
+    ** it after we're done.
+    */
+    MR_get_signal_action(SIGINT, &SigintHandler,
+        "error getting SIGINT handler");
+    MC_SETUP_SIGNAL_HANDLER(SIGINT, MC_mercury_compile_signal_handler);
+    MC_SETUP_SIGNAL_HANDLER(SIGTERM, MC_mercury_compile_signal_handler);
+#ifdef SIGHUP
+    MC_SETUP_SIGNAL_HANDLER(SIGHUP, MC_mercury_compile_signal_handler);
+#endif
+#ifdef SIGQUIT
+    MC_SETUP_SIGNAL_HANDLER(SIGQUIT, MC_mercury_compile_signal_handler);
+#endif
+};}
+#line 474 "libs.process_util.c"
+	MR_RELEASE_GLOBAL_LOCK("setup_signal_handlers");
+	MR_MAYBE_BOX_FOREIGN_TYPE(MR_signal_action, SigintHandler, MR_tempr1);
+#undef	MR_PROC_LABEL
+	}
+	MR_sv(1) = MR_r3;
+	MR_sv(2) = MR_tempr1;
+	MR_r1 = MR_r2;
+	MR_r2 = MR_r4;
+	}
+	MR_set_prof_ho_caller_proc(MR_ENTRY_AP(libs__process_util__build_with_check_for_interrupt_7_0));
+	MR_noprof_call_localret(MR_ENTRY(mercury__do_call_closure_2),
+		mercury__libs__process_util__build_with_check_for_interrupt_7_0_i2);
+MR_def_label(libs__process_util__build_with_check_for_interrupt_7_0,2)
+	MR_MAYBE_INIT_LOCAL_THREAD_ENGINE_BASE
+	{
+	MR_signal_action	SigintHandler;
+	MR_Word	IO0;
+	MR_Word	IO;
+#define	MR_PROC_LABEL	mercury__libs__process_util__build_with_check_for_interrupt_7_0
+	MR_MAYBE_UNBOX_FOREIGN_TYPE(MR_signal_action, MR_sv(2), SigintHandler);
+	MR_OBTAIN_GLOBAL_LOCK("restore_signal_handlers");
+{
+#line 233 "process_util.m"
+{
+    IO = IO0;
+    MR_set_signal_action(SIGINT, &SigintHandler,
+        "error resetting SIGINT handler");
+    MC_SETUP_SIGNAL_HANDLER(SIGTERM, SIG_DFL);
+#ifdef SIGHUP
+    MC_SETUP_SIGNAL_HANDLER(SIGHUP, SIG_DFL);
+#endif
+#ifdef SIGQUIT
+    MC_SETUP_SIGNAL_HANDLER(SIGQUIT, SIG_DFL);
+#endif
+};}
+#line 510 "libs.process_util.c"
+	MR_RELEASE_GLOBAL_LOCK("restore_signal_handlers");
+#undef	MR_PROC_LABEL
+	}
+	{
+	MR_Integer	Signalled;
+	MR_Integer	Signal;
+	MR_Word	IO0;
+	MR_Word	IO;
+#define	MR_PROC_LABEL	mercury__libs__process_util__build_with_check_for_interrupt_7_0
+	MR_OBTAIN_GLOBAL_LOCK("check_for_signal");
+{
+#line 272 "process_util.m"
+
+    IO = IO0;
+    Signalled = (MC_signalled ? 1 : 0);
+    Signal = MC_signal_received;
+;}
+#line 528 "libs.process_util.c"
+	MR_RELEASE_GLOBAL_LOCK("check_for_signal");
+	MR_r3 = Signalled;
+	MR_r4 = Signal;
+#undef	MR_PROC_LABEL
+	}
+	if (MR_INT_NE(MR_r3,1)) {
+		MR_GOTO_LAB(libs__process_util__build_with_check_for_interrupt_7_0_i12);
+	}
+	MR_sv(2) = MR_r4;
+	MR_sv(3) = MR_r2;
+	MR_r1 = (MR_Integer) 39;
+	MR_np_call_localret_ent(libs__globals__io_lookup_bool_option_4_0,
+		libs__process_util__build_with_check_for_interrupt_7_0_i5);
+MR_def_label(libs__process_util__build_with_check_for_interrupt_7_0,5)
+	MR_MAYBE_INIT_LOCAL_THREAD_ENGINE_BASE
+	if (MR_INT_NE(MR_r1,0)) {
+		MR_GOTO_LAB(libs__process_util__build_with_check_for_interrupt_7_0_i7);
+	}
+MR_def_label(libs__process_util__build_with_check_for_interrupt_7_0,14)
+	MR_MAYBE_INIT_LOCAL_THREAD_ENGINE_BASE
+	MR_r1 = MR_sv(1);
+	MR_r2 = MR_sv(3);
+	MR_set_prof_ho_caller_proc(MR_ENTRY_AP(libs__process_util__build_with_check_for_interrupt_7_0));
+	MR_noprof_call_localret(MR_ENTRY(mercury__do_call_closure_2),
+		mercury__libs__process_util__build_with_check_for_interrupt_7_0_i11);
+MR_def_label(libs__process_util__build_with_check_for_interrupt_7_0,7)
+	MR_MAYBE_INIT_LOCAL_THREAD_ENGINE_BASE
+	MR_r1 = (MR_Word) MR_string_const("** Received signal ", 19);
+	MR_np_call_localret_ent(io__write_string_3_0,
+		libs__process_util__build_with_check_for_interrupt_7_0_i8);
+MR_def_label(libs__process_util__build_with_check_for_interrupt_7_0,8)
+	MR_MAYBE_INIT_LOCAL_THREAD_ENGINE_BASE
+	MR_r1 = MR_sv(2);
+	MR_np_call_localret_ent(io__write_int_3_0,
+		libs__process_util__build_with_check_for_interrupt_7_0_i9);
+MR_def_label(libs__process_util__build_with_check_for_interrupt_7_0,9)
+	MR_MAYBE_INIT_LOCAL_THREAD_ENGINE_BASE
+	MR_r1 = (MR_Word) MR_string_const(", cleaning up.\n", 15);
+	MR_np_call_localret_ent(io__write_string_3_0,
+		libs__process_util__build_with_check_for_interrupt_7_0_i14);
+MR_def_label(libs__process_util__build_with_check_for_interrupt_7_0,11)
+	MR_MAYBE_INIT_LOCAL_THREAD_ENGINE_BASE
+	{
+	MR_Integer	Signal;
+	MR_Word	IO0;
+	MR_Word	IO;
+#define	MR_PROC_LABEL	mercury__libs__process_util__build_with_check_for_interrupt_7_0
+	Signal = MR_sv(2);
+	MR_OBTAIN_GLOBAL_LOCK("raise_signal");
+{
+#line 289 "process_util.m"
+
+    IO = IO0;
+    raise(Signal);
+;}
+#line 584 "libs.process_util.c"
+	MR_RELEASE_GLOBAL_LOCK("raise_signal");
+#undef	MR_PROC_LABEL
+	}
+	MR_r2 = MR_r1;
+	MR_r1 = (MR_Integer) 0;
+MR_def_label(libs__process_util__build_with_check_for_interrupt_7_0,12)
+	MR_MAYBE_INIT_LOCAL_THREAD_ENGINE_BASE
+	MR_decr_sp_and_return(4);
+#ifdef MR_maybe_local_thread_engine_base
+	#undef MR_maybe_local_thread_engine_base
+	#define MR_maybe_local_thread_engine_base MR_thread_engine_base
+#endif
+MR_END_MODULE
+
+
+MR_BEGIN_MODULE(libs__process_util_module5)
+	MR_init_entry1(libs__process_util__can_fork_0_0);
+	MR_init_label1(libs__process_util__can_fork_0_0,1)
+MR_BEGIN_CODE
+
+#ifdef MR_maybe_local_thread_engine_base
+	#undef MR_maybe_local_thread_engine_base
+	#define MR_maybe_local_thread_engine_base MR_local_thread_engine_base
+#endif
+MR_define_entry(mercury__libs__process_util__can_fork_0_0);
+	MR_MAYBE_INIT_LOCAL_THREAD_ENGINE_BASE
+	{
+#define	MR_PROC_LABEL	mercury__libs__process_util__can_fork_0_0
+	MR_bool MercurySuccessIndicator;
+#undef SUCCESS_INDICATOR
+#define SUCCESS_INDICATOR MercurySuccessIndicator
+{
+#line 320 "process_util.m"
+
+    /*
+    ** call_in_forked_process_2 is not `thread_safe' so will hold a mutex
+    ** that the child process will want.  At the same time the parent process
+    ** waits for the child to exit, so we have a deadlock.
+    **
+    ** Also, in pthreads, a forked process does not inherit the threads of
+    ** the original process so it is not at all clear whether we could use
+    ** fork() when running in a parallel grade.
+    */
+#if (defined MC_CAN_FORK) && (!defined MR_THREAD_SAFE)
+    SUCCESS_INDICATOR = MR_TRUE;
+#else
+    SUCCESS_INDICATOR = MR_FALSE;
+#endif
+;}
+#line 634 "libs.process_util.c"
+if (!MercurySuccessIndicator) MR_GOTO_LAB(libs__process_util__can_fork_0_0_i1);
+#undef SUCCESS_INDICATOR
+#define SUCCESS_INDICATOR MR_r1
+#undef	MR_PROC_LABEL
+	}
+	MR_r1 = MR_TRUE;
+	MR_proceed();
+MR_def_label(libs__process_util__can_fork_0_0,1)
+	MR_MAYBE_INIT_LOCAL_THREAD_ENGINE_BASE
+	MR_r1 = MR_FALSE;
+	MR_proceed();
+#ifdef MR_maybe_local_thread_engine_base
+	#undef MR_maybe_local_thread_engine_base
+	#define MR_maybe_local_thread_engine_base MR_thread_engine_base
+#endif
+MR_END_MODULE
+
+
+MR_BEGIN_MODULE(libs__process_util_module6)
+	MR_init_entry1(libs__process_util__start_in_forked_process_2_4_0);
+MR_BEGIN_CODE
+
+#ifdef MR_maybe_local_thread_engine_base
+	#undef MR_maybe_local_thread_engine_base
+	#define MR_maybe_local_thread_engine_base MR_local_thread_engine_base
+#endif
+MR_def_static(libs__process_util__start_in_forked_process_2_4_0)
+	MR_MAYBE_INIT_LOCAL_THREAD_ENGINE_BASE
+	MR_incr_sp(1);
+	MR_sv(1) = (MR_Word) MR_succip;
+	{
+	MR_Word	Pred;
+	MR_Integer	Pid;
+	MR_Word	IO0;
+	MR_Word	IO;
+#define	MR_PROC_LABEL	mercury__libs__process_util__start_in_forked_process_2_4_0
+	Pred = MR_r1;
+	MR_save_registers();
+	MR_OBTAIN_GLOBAL_LOCK("start_in_forked_process_2");
+{
+#line 355 "process_util.m"
+
+#ifdef MC_CAN_FORK
+
+    IO = IO0;
+
+    Pid = fork();
+    if (Pid == -1) {                        /* error */
+        MR_perror("error in fork()");
+    } else if (Pid == 0) {                  /* child */
+        MR_Integer exit_status;
+
+        MC_call_child_process_io_pred(Pred, &exit_status);
+        exit(exit_status);
+    } else {                                /* parent */
+    }
+
+#else /* ! MC_CAN_FORK */
+    IO = IO0;
+    Pid = 0;
+#endif /* ! MC_CAN_FORK */
+;}
+#line 697 "libs.process_util.c"
+	MR_RELEASE_GLOBAL_LOCK("start_in_forked_process_2");
+#ifndef MR_CONSERVATIVE_GC
+	MR_restore_registers();
+#endif
+	MR_r1 = Pid;
+#undef	MR_PROC_LABEL
+	}
+	MR_decr_sp_and_return(1);
+#ifdef MR_maybe_local_thread_engine_base
+	#undef MR_maybe_local_thread_engine_base
+	#define MR_maybe_local_thread_engine_base MR_thread_engine_base
+#endif
+MR_END_MODULE
+
+
+MR_BEGIN_MODULE(libs__process_util_module7)
+	MR_init_entry1(libs__process_util__start_in_forked_process_4_0);
+	MR_init_label1(libs__process_util__start_in_forked_process_4_0,2)
+MR_BEGIN_CODE
+
+#ifdef MR_maybe_local_thread_engine_base
+	#undef MR_maybe_local_thread_engine_base
+	#define MR_maybe_local_thread_engine_base MR_local_thread_engine_base
+#endif
+MR_define_entry(mercury__libs__process_util__start_in_forked_process_4_0);
+	MR_MAYBE_INIT_LOCAL_THREAD_ENGINE_BASE
+	MR_incr_sp(1);
+	MR_sv(1) = (MR_Word) MR_succip;
+	{
+	MR_Word	Pred;
+	MR_Integer	Pid;
+	MR_Word	IO0;
+	MR_Word	IO;
+#define	MR_PROC_LABEL	mercury__libs__process_util__start_in_forked_process_4_0
+	Pred = MR_r1;
+	MR_save_registers();
+	MR_OBTAIN_GLOBAL_LOCK("start_in_forked_process_2");
+{
+#line 355 "process_util.m"
+
+#ifdef MC_CAN_FORK
+
+    IO = IO0;
+
+    Pid = fork();
+    if (Pid == -1) {                        /* error */
+        MR_perror("error in fork()");
+    } else if (Pid == 0) {                  /* child */
+        MR_Integer exit_status;
+
+        MC_call_child_process_io_pred(Pred, &exit_status);
+        exit(exit_status);
+    } else {                                /* parent */
+    }
+
+#else /* ! MC_CAN_FORK */
+    IO = IO0;
+    Pid = 0;
+#endif /* ! MC_CAN_FORK */
+;}
+#line 758 "libs.process_util.c"
+	MR_RELEASE_GLOBAL_LOCK("start_in_forked_process_2");
+#ifndef MR_CONSERVATIVE_GC
+	MR_restore_registers();
+#endif
+	MR_r3 = Pid;
+#undef	MR_PROC_LABEL
+	}
+	if (MR_INT_NE(MR_r3,0)) {
+		MR_GOTO_LAB(libs__process_util__start_in_forked_process_4_0_i2);
+	}
+	MR_r1 = (MR_Word) MR_tbmkword(0, 0);
+	MR_decr_sp_and_return(1);
+MR_def_label(libs__process_util__start_in_forked_process_4_0,2)
+	MR_MAYBE_INIT_LOCAL_THREAD_ENGINE_BASE
+	MR_tag_alloc_heap(MR_r1, 1, (MR_Integer) 1);
+	MR_tfield(1, MR_r1, 0) = MR_r3;
+	MR_decr_sp_and_return(1);
+#ifdef MR_maybe_local_thread_engine_base
+	#undef MR_maybe_local_thread_engine_base
+	#define MR_maybe_local_thread_engine_base MR_thread_engine_base
+#endif
+MR_END_MODULE
+
+
+MR_BEGIN_MODULE(libs__process_util_module8)
+	MR_init_entry1(libs__process_util__do_wait_5_0);
+MR_BEGIN_CODE
+
+#ifdef MR_maybe_local_thread_engine_base
+	#undef MR_maybe_local_thread_engine_base
+	#define MR_maybe_local_thread_engine_base MR_local_thread_engine_base
+#endif
+MR_def_static(libs__process_util__do_wait_5_0)
+	MR_MAYBE_INIT_LOCAL_THREAD_ENGINE_BASE
+	{
+	MR_Integer	Pid;
+	MR_Integer	WaitedPid;
+	MR_Integer	Status;
+	MR_Word	IO0;
+	MR_Word	IO;
+#define	MR_PROC_LABEL	mercury__libs__process_util__do_wait_5_0
+	Pid = MR_r1;
+	MR_OBTAIN_GLOBAL_LOCK("do_wait");
+{
+#line 400 "process_util.m"
+
+#ifdef MC_CAN_FORK
+    {
+        int     child_status;
+        pid_t   wait_status;
+
+        /*
+        ** Make sure the wait() is interrupted by the signals
+        ** which cause us to exit.
+        */
+        MR_signal_should_restart(SIGINT, MR_FALSE);
+        MR_signal_should_restart(SIGTERM, MR_FALSE);
+#ifdef SIGHUP
+        MR_signal_should_restart(SIGHUP, MR_FALSE);
+#endif
+#ifdef SIGQUIT
+        MR_signal_should_restart(SIGQUIT, MR_FALSE);
+#endif
+
+        while (1) {
+            wait_status = wait(&child_status);
+            if (Pid == -1 || wait_status == Pid) {
+                WaitedPid = wait_status;
+                Status = child_status;
+                break;
+            } else if (wait_status == -1) {
+                if (MR_is_eintr(errno)) {
+                    if (MC_signalled) {
+                        /*
+                        ** A normally fatal signal has been received,
+                        ** so kill the child immediately.
+                        ** Use SIGTERM, not MC_signal_received,
+                        ** because the child may be inside a call
+                        ** to system() which would cause SIGINT
+                        ** to be ignored on some systems (e.g. Linux).
+                        */
+                        if (Pid != -1) {
+                            kill(Pid, SIGTERM);
+                        }
+                        break;
+                    }
+                } else {
+                    /*
+                    ** This should never happen.
+                    */
+                    MR_perror("error in wait(): ");
+                    Status = 1;
+                    break;
+                }
+            }
+        }
+
+        /*
+        ** Restore the system call signal behaviour.
+        */
+        MR_signal_should_restart(SIGINT, MR_TRUE);
+        MR_signal_should_restart(SIGTERM, MR_TRUE);
+#ifdef SIGHUP
+        MR_signal_should_restart(SIGHUP, MR_TRUE);
+#endif
+#ifdef SIGQUIT
+        MR_signal_should_restart(SIGQUIT, MR_TRUE);
+#endif
+    }
+
+#else /* ! MC_CAN_FORK */
+    MR_perror("cannot wait() when fork() is unavailable: ");
+    IO = IO0;
+    Status = 1;
+#endif /* ! MC_CAN_FORK */
+;}
+#line 875 "libs.process_util.c"
+	MR_RELEASE_GLOBAL_LOCK("do_wait");
+	MR_r1 = WaitedPid;
+	MR_r2 = Status;
+#undef	MR_PROC_LABEL
+	}
+	MR_proceed();
+#ifdef MR_maybe_local_thread_engine_base
+	#undef MR_maybe_local_thread_engine_base
+	#define MR_maybe_local_thread_engine_base MR_thread_engine_base
+#endif
+MR_END_MODULE
+
+MR_decl_entry(fn__io__handle_system_command_exit_status_1_0);
+MR_declare_entry(mercury__do_call_closure_1);
+
+MR_BEGIN_MODULE(libs__process_util_module9)
+	MR_init_entry1(libs__process_util__call_in_forked_process_with_backup_5_0);
+	MR_init_label4(libs__process_util__call_in_forked_process_with_backup_5_0,23,6,8,3)
+MR_BEGIN_CODE
+
+#ifdef MR_maybe_local_thread_engine_base
+	#undef MR_maybe_local_thread_engine_base
+	#define MR_maybe_local_thread_engine_base MR_local_thread_engine_base
+#endif
+MR_define_entry(mercury__libs__process_util__call_in_forked_process_with_backup_5_0);
+	MR_MAYBE_INIT_LOCAL_THREAD_ENGINE_BASE
+	{
+#define	MR_PROC_LABEL	mercury__libs__process_util__call_in_forked_process_with_backup_5_0
+	MR_bool MercurySuccessIndicator;
+#undef SUCCESS_INDICATOR
+#define SUCCESS_INDICATOR MercurySuccessIndicator
+{
+#line 320 "process_util.m"
+
+    /*
+    ** call_in_forked_process_2 is not `thread_safe' so will hold a mutex
+    ** that the child process will want.  At the same time the parent process
+    ** waits for the child to exit, so we have a deadlock.
+    **
+    ** Also, in pthreads, a forked process does not inherit the threads of
+    ** the original process so it is not at all clear whether we could use
+    ** fork() when running in a parallel grade.
+    */
+#if (defined MC_CAN_FORK) && (!defined MR_THREAD_SAFE)
+    SUCCESS_INDICATOR = MR_TRUE;
+#else
+    SUCCESS_INDICATOR = MR_FALSE;
+#endif
+;}
+#line 925 "libs.process_util.c"
+if (!MercurySuccessIndicator) MR_GOTO_LAB(libs__process_util__call_in_forked_process_with_backup_5_0_i3);
+#undef SUCCESS_INDICATOR
+#define SUCCESS_INDICATOR MR_r1
+#undef	MR_PROC_LABEL
+	}
+	MR_incr_sp(2);
+	MR_sv(2) = (MR_Word) MR_succip;
+	{
+	MR_Word	Pred;
+	MR_Integer	Pid;
+	MR_Word	IO0;
+	MR_Word	IO;
+#define	MR_PROC_LABEL	mercury__libs__process_util__call_in_forked_process_with_backup_5_0
+	Pred = MR_r1;
+	MR_save_registers();
+	MR_OBTAIN_GLOBAL_LOCK("start_in_forked_process_2");
+{
+#line 355 "process_util.m"
+
+#ifdef MC_CAN_FORK
+
+    IO = IO0;
+
+    Pid = fork();
+    if (Pid == -1) {                        /* error */
+        MR_perror("error in fork()");
+    } else if (Pid == 0) {                  /* child */
+        MR_Integer exit_status;
+
+        MC_call_child_process_io_pred(Pred, &exit_status);
+        exit(exit_status);
+    } else {                                /* parent */
+    }
+
+#else /* ! MC_CAN_FORK */
+    IO = IO0;
+    Pid = 0;
+#endif /* ! MC_CAN_FORK */
+;}
+#line 965 "libs.process_util.c"
+	MR_RELEASE_GLOBAL_LOCK("start_in_forked_process_2");
+#ifndef MR_CONSERVATIVE_GC
+	MR_restore_registers();
+#endif
+	MR_r3 = Pid;
+#undef	MR_PROC_LABEL
+	}
+	if (MR_INT_NE(MR_r3,0)) {
+		MR_GOTO_LAB(libs__process_util__call_in_forked_process_with_backup_5_0_i6);
+	}
+MR_def_label(libs__process_util__call_in_forked_process_with_backup_5_0,23)
+	MR_MAYBE_INIT_LOCAL_THREAD_ENGINE_BASE
+	MR_r1 = (MR_Integer) 0;
+	MR_decr_sp_and_return(2);
+MR_def_label(libs__process_util__call_in_forked_process_with_backup_5_0,6)
+	MR_MAYBE_INIT_LOCAL_THREAD_ENGINE_BASE
+	{
+	MR_Word MR_tempr1;
+	{
+	MR_Integer	Pid;
+	MR_Integer	WaitedPid;
+	MR_Integer	Status;
+	MR_Word	IO0;
+	MR_Word	IO;
+#define	MR_PROC_LABEL	mercury__libs__process_util__call_in_forked_process_with_backup_5_0
+	Pid = MR_r3;
+	MR_OBTAIN_GLOBAL_LOCK("do_wait");
+{
+#line 400 "process_util.m"
+
+#ifdef MC_CAN_FORK
+    {
+        int     child_status;
+        pid_t   wait_status;
+
+        /*
+        ** Make sure the wait() is interrupted by the signals
+        ** which cause us to exit.
+        */
+        MR_signal_should_restart(SIGINT, MR_FALSE);
+        MR_signal_should_restart(SIGTERM, MR_FALSE);
+#ifdef SIGHUP
+        MR_signal_should_restart(SIGHUP, MR_FALSE);
+#endif
+#ifdef SIGQUIT
+        MR_signal_should_restart(SIGQUIT, MR_FALSE);
+#endif
+
+        while (1) {
+            wait_status = wait(&child_status);
+            if (Pid == -1 || wait_status == Pid) {
+                WaitedPid = wait_status;
+                Status = child_status;
+                break;
+            } else if (wait_status == -1) {
+                if (MR_is_eintr(errno)) {
+                    if (MC_signalled) {
+                        /*
+                        ** A normally fatal signal has been received,
+                        ** so kill the child immediately.
+                        ** Use SIGTERM, not MC_signal_received,
+                        ** because the child may be inside a call
+                        ** to system() which would cause SIGINT
+                        ** to be ignored on some systems (e.g. Linux).
+                        */
+                        if (Pid != -1) {
+                            kill(Pid, SIGTERM);
+                        }
+                        break;
+                    }
+                } else {
+                    /*
+                    ** This should never happen.
+                    */
+                    MR_perror("error in wait(): ");
+                    Status = 1;
+                    break;
+                }
+            }
+        }
+
+        /*
+        ** Restore the system call signal behaviour.
+        */
+        MR_signal_should_restart(SIGINT, MR_TRUE);
+        MR_signal_should_restart(SIGTERM, MR_TRUE);
+#ifdef SIGHUP
+        MR_signal_should_restart(SIGHUP, MR_TRUE);
+#endif
+#ifdef SIGQUIT
+        MR_signal_should_restart(SIGQUIT, MR_TRUE);
+#endif
+    }
+
+#else /* ! MC_CAN_FORK */
+    MR_perror("cannot wait() when fork() is unavailable: ");
+    IO = IO0;
+    Status = 1;
+#endif /* ! MC_CAN_FORK */
+;}
+#line 1066 "libs.process_util.c"
+	MR_RELEASE_GLOBAL_LOCK("do_wait");
+	MR_r1 = Status;
+#undef	MR_PROC_LABEL
+	}
+	}
+	MR_np_call_localret_ent(fn__io__handle_system_command_exit_status_1_0,
+		libs__process_util__call_in_forked_process_with_backup_5_0_i8);
+MR_def_label(libs__process_util__call_in_forked_process_with_backup_5_0,8)
+	MR_MAYBE_INIT_LOCAL_THREAD_ENGINE_BASE
+	if (MR_PTAG_TESTR(MR_r1,0)) {
+		MR_GOTO_LAB(libs__process_util__call_in_forked_process_with_backup_5_0_i23);
+	}
+	{
+	MR_Word MR_tempr1;
+	MR_tempr1 = MR_ctfield(0, MR_r1, 0);
+	MR_r3 = MR_tempr1;
+	if (MR_PTAG_TESTR(MR_tempr1,0)) {
+		MR_GOTO_LAB(libs__process_util__call_in_forked_process_with_backup_5_0_i23);
+	}
+	MR_r4 = MR_ctfield(0, MR_tempr1, 0);
+	if (MR_INT_NE(MR_r4,0)) {
+		MR_GOTO_LAB(libs__process_util__call_in_forked_process_with_backup_5_0_i23);
+	}
+	MR_r1 = (MR_Integer) 1;
+	MR_decr_sp_and_return(2);
+	}
+MR_def_label(libs__process_util__call_in_forked_process_with_backup_5_0,3)
+	MR_MAYBE_INIT_LOCAL_THREAD_ENGINE_BASE
+	MR_r1 = MR_r2;
+	MR_set_prof_ho_caller_proc(MR_ENTRY_AP(libs__process_util__call_in_forked_process_with_backup_5_0));
+	MR_np_tailcall_ent(do_call_closure_1);
+#ifdef MR_maybe_local_thread_engine_base
+	#undef MR_maybe_local_thread_engine_base
+	#define MR_maybe_local_thread_engine_base MR_thread_engine_base
+#endif
+MR_END_MODULE
+
+
+MR_BEGIN_MODULE(libs__process_util_module10)
+	MR_init_entry1(libs__process_util__call_in_forked_process_4_0);
+MR_BEGIN_CODE
+
+#ifdef MR_maybe_local_thread_engine_base
+	#undef MR_maybe_local_thread_engine_base
+	#define MR_maybe_local_thread_engine_base MR_local_thread_engine_base
+#endif
+MR_define_entry(mercury__libs__process_util__call_in_forked_process_4_0);
+	MR_MAYBE_INIT_LOCAL_THREAD_ENGINE_BASE
+	MR_r2 = MR_r1;
+	MR_np_tailcall_ent(libs__process_util__call_in_forked_process_with_backup_5_0);
+#ifdef MR_maybe_local_thread_engine_base
+	#undef MR_maybe_local_thread_engine_base
+	#define MR_maybe_local_thread_engine_base MR_thread_engine_base
+#endif
+MR_END_MODULE
+
+
+MR_BEGIN_MODULE(libs__process_util_module11)
+	MR_init_entry1(libs__process_util__wait_any_4_0);
+	MR_init_label1(libs__process_util__wait_any_4_0,2)
+MR_BEGIN_CODE
+
+#ifdef MR_maybe_local_thread_engine_base
+	#undef MR_maybe_local_thread_engine_base
+	#define MR_maybe_local_thread_engine_base MR_local_thread_engine_base
+#endif
+MR_define_entry(mercury__libs__process_util__wait_any_4_0);
+	MR_MAYBE_INIT_LOCAL_THREAD_ENGINE_BASE
+	MR_incr_sp(2);
+	MR_sv(2) = (MR_Word) MR_succip;
+	{
+	MR_Word MR_tempr1, MR_tempr2;
+	{
+	MR_Integer	Pid;
+	MR_Integer	WaitedPid;
+	MR_Integer	Status;
+	MR_Word	IO0;
+	MR_Word	IO;
+#define	MR_PROC_LABEL	mercury__libs__process_util__wait_any_4_0
+	Pid = (MR_Integer) -1;
+	MR_OBTAIN_GLOBAL_LOCK("do_wait");
+{
+#line 400 "process_util.m"
+
+#ifdef MC_CAN_FORK
+    {
+        int     child_status;
+        pid_t   wait_status;
+
+        /*
+        ** Make sure the wait() is interrupted by the signals
+        ** which cause us to exit.
+        */
+        MR_signal_should_restart(SIGINT, MR_FALSE);
+        MR_signal_should_restart(SIGTERM, MR_FALSE);
+#ifdef SIGHUP
+        MR_signal_should_restart(SIGHUP, MR_FALSE);
+#endif
+#ifdef SIGQUIT
+        MR_signal_should_restart(SIGQUIT, MR_FALSE);
+#endif
+
+        while (1) {
+            wait_status = wait(&child_status);
+            if (Pid == -1 || wait_status == Pid) {
+                WaitedPid = wait_status;
+                Status = child_status;
+                break;
+            } else if (wait_status == -1) {
+                if (MR_is_eintr(errno)) {
+                    if (MC_signalled) {
+                        /*
+                        ** A normally fatal signal has been received,
+                        ** so kill the child immediately.
+                        ** Use SIGTERM, not MC_signal_received,
+                        ** because the child may be inside a call
+                        ** to system() which would cause SIGINT
+                        ** to be ignored on some systems (e.g. Linux).
+                        */
+                        if (Pid != -1) {
+                            kill(Pid, SIGTERM);
+                        }
+                        break;
+                    }
+                } else {
+                    /*
+                    ** This should never happen.
+                    */
+                    MR_perror("error in wait(): ");
+                    Status = 1;
+                    break;
+                }
+            }
+        }
+
+        /*
+        ** Restore the system call signal behaviour.
+        */
+        MR_signal_should_restart(SIGINT, MR_TRUE);
+        MR_signal_should_restart(SIGTERM, MR_TRUE);
+#ifdef SIGHUP
+        MR_signal_should_restart(SIGHUP, MR_TRUE);
+#endif
+#ifdef SIGQUIT
+        MR_signal_should_restart(SIGQUIT, MR_TRUE);
+#endif
+    }
+
+#else /* ! MC_CAN_FORK */
+    MR_perror("cannot wait() when fork() is unavailable: ");
+    IO = IO0;
+    Status = 1;
+#endif /* ! MC_CAN_FORK */
+;}
+#line 1221 "libs.process_util.c"
+	MR_RELEASE_GLOBAL_LOCK("do_wait");
+	MR_tempr1 = WaitedPid;
+	MR_r1 = Status;
+#undef	MR_PROC_LABEL
+	}
+	MR_sv(1) = MR_tempr1;
+	}
+	MR_np_call_localret_ent(fn__io__handle_system_command_exit_status_1_0,
+		libs__process_util__wait_any_4_0_i2);
+MR_def_label(libs__process_util__wait_any_4_0,2)
+	MR_MAYBE_INIT_LOCAL_THREAD_ENGINE_BASE
+	{
+	MR_Word MR_tempr1;
+	MR_tempr1 = MR_r1;
+	MR_r1 = MR_sv(1);
+	MR_r2 = MR_tempr1;
+	MR_decr_sp_and_return(2);
+	}
+#ifdef MR_maybe_local_thread_engine_base
+	#undef MR_maybe_local_thread_engine_base
+	#define MR_maybe_local_thread_engine_base MR_thread_engine_base
+#endif
+MR_END_MODULE
+
+
+MR_BEGIN_MODULE(libs__process_util_module12)
+	MR_init_entry1(fn__libs__process_util__sig_dfl_0_0);
+MR_BEGIN_CODE
+
+#ifdef MR_maybe_local_thread_engine_base
+	#undef MR_maybe_local_thread_engine_base
+	#define MR_maybe_local_thread_engine_base MR_local_thread_engine_base
+#endif
+MR_def_static(fn__libs__process_util__sig_dfl_0_0)
+	MR_MAYBE_INIT_LOCAL_THREAD_ENGINE_BASE
+	{
+	MR_signal_action	Result;
+#define	MR_PROC_LABEL	mercury__fn__libs__process_util__sig_dfl_0_0
+	MR_OBTAIN_GLOBAL_LOCK("sig_dfl");
+{
+#line 261 "process_util.m"
+
+    MR_init_signal_action(&Result, SIG_DFL, MR_FALSE, MR_TRUE);
+;}
+#line 1266 "libs.process_util.c"
+	MR_RELEASE_GLOBAL_LOCK("sig_dfl");
+	MR_MAYBE_BOX_FOREIGN_TYPE(MR_signal_action, Result, MR_r1);
+#undef	MR_PROC_LABEL
+	}
+	MR_proceed();
+#ifdef MR_maybe_local_thread_engine_base
+	#undef MR_maybe_local_thread_engine_base
+	#define MR_maybe_local_thread_engine_base MR_thread_engine_base
+#endif
+MR_END_MODULE
+
+
+MR_BEGIN_MODULE(libs__process_util_module13)
+	MR_init_entry1(libs__process_util__call_child_process_io_pred_4_0);
+	MR_init_label2(libs__process_util__call_child_process_io_pred_4_0,2,3)
+MR_BEGIN_CODE
+
+#ifdef MR_maybe_local_thread_engine_base
+	#undef MR_maybe_local_thread_engine_base
+	#define MR_maybe_local_thread_engine_base MR_local_thread_engine_base
+#endif
+MR_def_static(libs__process_util__call_child_process_io_pred_4_0)
+	MR_MAYBE_INIT_LOCAL_THREAD_ENGINE_BASE
+	MR_incr_sp(1);
+	MR_sv(1) = (MR_Word) MR_succip;
+	{
+	MR_Word MR_tempr1;
+	{
+	MR_signal_action	Result;
+#define	MR_PROC_LABEL	mercury__libs__process_util__call_child_process_io_pred_4_0
+	MR_OBTAIN_GLOBAL_LOCK("sig_dfl");
+{
+#line 261 "process_util.m"
+
+    MR_init_signal_action(&Result, SIG_DFL, MR_FALSE, MR_TRUE);
+;}
+#line 1303 "libs.process_util.c"
+	MR_RELEASE_GLOBAL_LOCK("sig_dfl");
+	MR_MAYBE_BOX_FOREIGN_TYPE(MR_signal_action, Result, MR_tempr1);
+#undef	MR_PROC_LABEL
+	}
+	{
+	MR_signal_action	SigintHandler;
+	MR_Word	IO0;
+	MR_Word	IO;
+#define	MR_PROC_LABEL	mercury__libs__process_util__call_child_process_io_pred_4_0
+	MR_MAYBE_UNBOX_FOREIGN_TYPE(MR_signal_action, MR_tempr1, SigintHandler);
+	MR_OBTAIN_GLOBAL_LOCK("restore_signal_handlers");
+{
+#line 233 "process_util.m"
+{
+    IO = IO0;
+    MR_set_signal_action(SIGINT, &SigintHandler,
+        "error resetting SIGINT handler");
+    MC_SETUP_SIGNAL_HANDLER(SIGTERM, SIG_DFL);
+#ifdef SIGHUP
+    MC_SETUP_SIGNAL_HANDLER(SIGHUP, SIG_DFL);
+#endif
+#ifdef SIGQUIT
+    MC_SETUP_SIGNAL_HANDLER(SIGQUIT, SIG_DFL);
+#endif
+};}
+#line 1329 "libs.process_util.c"
+	MR_RELEASE_GLOBAL_LOCK("restore_signal_handlers");
+#undef	MR_PROC_LABEL
+	}
+	}
+	MR_set_prof_ho_caller_proc(MR_ENTRY_AP(libs__process_util__call_child_process_io_pred_4_0));
+	MR_noprof_call_localret(MR_ENTRY(mercury__do_call_closure_1),
+		mercury__libs__process_util__call_child_process_io_pred_4_0_i2);
+MR_def_label(libs__process_util__call_child_process_io_pred_4_0,2)
+	MR_MAYBE_INIT_LOCAL_THREAD_ENGINE_BASE
+	if (MR_INT_NE(MR_r1,1)) {
+		MR_GOTO_LAB(libs__process_util__call_child_process_io_pred_4_0_i3);
+	}
+	MR_r1 = (MR_Integer) 0;
+	MR_decr_sp_and_return(1);
+MR_def_label(libs__process_util__call_child_process_io_pred_4_0,3)
+	MR_MAYBE_INIT_LOCAL_THREAD_ENGINE_BASE
+	MR_r1 = (MR_Integer) 1;
+	MR_decr_sp_and_return(1);
+#ifdef MR_maybe_local_thread_engine_base
+	#undef MR_maybe_local_thread_engine_base
+	#define MR_maybe_local_thread_engine_base MR_thread_engine_base
+#endif
+MR_END_MODULE
+
+MR_decl_entry(private_builtin__builtin_unify_pred_2_0);
+
+MR_BEGIN_MODULE(libs__process_util_module14)
+	MR_init_entry1(__Unify___libs__process_util__build0_1_0);
+MR_BEGIN_CODE
+
+#ifdef MR_maybe_local_thread_engine_base
+	#undef MR_maybe_local_thread_engine_base
+	#define MR_maybe_local_thread_engine_base MR_local_thread_engine_base
+#endif
+MR_define_entry(mercury____Unify___libs__process_util__build0_1_0);
+	MR_MAYBE_INIT_LOCAL_THREAD_ENGINE_BASE
+	MR_r1 = MR_r2;
+	MR_r2 = MR_r3;
+	MR_np_tailcall_ent(private_builtin__builtin_unify_pred_2_0);
+#ifdef MR_maybe_local_thread_engine_base
+	#undef MR_maybe_local_thread_engine_base
+	#define MR_maybe_local_thread_engine_base MR_thread_engine_base
+#endif
+MR_END_MODULE
+
+MR_decl_entry(private_builtin__builtin_compare_pred_3_0);
+
+MR_BEGIN_MODULE(libs__process_util_module15)
+	MR_init_entry1(__Compare___libs__process_util__build0_1_0);
+MR_BEGIN_CODE
+
+#ifdef MR_maybe_local_thread_engine_base
+	#undef MR_maybe_local_thread_engine_base
+	#define MR_maybe_local_thread_engine_base MR_local_thread_engine_base
+#endif
+MR_define_entry(mercury____Compare___libs__process_util__build0_1_0);
+	MR_MAYBE_INIT_LOCAL_THREAD_ENGINE_BASE
+	MR_r1 = MR_r2;
+	MR_r2 = MR_r3;
+	MR_np_tailcall_ent(private_builtin__builtin_compare_pred_3_0);
+#ifdef MR_maybe_local_thread_engine_base
+	#undef MR_maybe_local_thread_engine_base
+	#define MR_maybe_local_thread_engine_base MR_thread_engine_base
+#endif
+MR_END_MODULE
+
+
+MR_BEGIN_MODULE(libs__process_util_module16)
+	MR_init_entry1(__Unify___libs__process_util__io_pred_0_0);
+MR_BEGIN_CODE
+
+#ifdef MR_maybe_local_thread_engine_base
+	#undef MR_maybe_local_thread_engine_base
+	#define MR_maybe_local_thread_engine_base MR_local_thread_engine_base
+#endif
+MR_define_entry(mercury____Unify___libs__process_util__io_pred_0_0);
+	MR_MAYBE_INIT_LOCAL_THREAD_ENGINE_BASE
+	MR_np_tailcall_ent(private_builtin__builtin_unify_pred_2_0);
+#ifdef MR_maybe_local_thread_engine_base
+	#undef MR_maybe_local_thread_engine_base
+	#define MR_maybe_local_thread_engine_base MR_thread_engine_base
+#endif
+MR_END_MODULE
+
+
+MR_BEGIN_MODULE(libs__process_util_module17)
+	MR_init_entry1(__Compare___libs__process_util__io_pred_0_0);
+MR_BEGIN_CODE
+
+#ifdef MR_maybe_local_thread_engine_base
+	#undef MR_maybe_local_thread_engine_base
+	#define MR_maybe_local_thread_engine_base MR_local_thread_engine_base
+#endif
+MR_define_entry(mercury____Compare___libs__process_util__io_pred_0_0);
+	MR_MAYBE_INIT_LOCAL_THREAD_ENGINE_BASE
+	MR_np_tailcall_ent(private_builtin__builtin_compare_pred_3_0);
+#ifdef MR_maybe_local_thread_engine_base
+	#undef MR_maybe_local_thread_engine_base
+	#define MR_maybe_local_thread_engine_base MR_thread_engine_base
+#endif
+MR_END_MODULE
+
+
+MR_BEGIN_MODULE(libs__process_util_module18)
+	MR_init_entry1(__Unify___libs__process_util__pid_0_0);
+MR_BEGIN_CODE
+
+#ifdef MR_maybe_local_thread_engine_base
+	#undef MR_maybe_local_thread_engine_base
+	#define MR_maybe_local_thread_engine_base MR_local_thread_engine_base
+#endif
+MR_define_entry(mercury____Unify___libs__process_util__pid_0_0);
+	MR_MAYBE_INIT_LOCAL_THREAD_ENGINE_BASE
+	MR_r1 = (MR_r1 == MR_r2);
+	MR_proceed();
+#ifdef MR_maybe_local_thread_engine_base
+	#undef MR_maybe_local_thread_engine_base
+	#define MR_maybe_local_thread_engine_base MR_thread_engine_base
+#endif
+MR_END_MODULE
+
+MR_decl_entry(private_builtin__builtin_compare_int_3_0);
+
+MR_BEGIN_MODULE(libs__process_util_module19)
+	MR_init_entry1(__Compare___libs__process_util__pid_0_0);
+MR_BEGIN_CODE
+
+#ifdef MR_maybe_local_thread_engine_base
+	#undef MR_maybe_local_thread_engine_base
+	#define MR_maybe_local_thread_engine_base MR_local_thread_engine_base
+#endif
+MR_define_entry(mercury____Compare___libs__process_util__pid_0_0);
+	MR_MAYBE_INIT_LOCAL_THREAD_ENGINE_BASE
+	MR_np_tailcall_ent(private_builtin__builtin_compare_int_3_0);
+#ifdef MR_maybe_local_thread_engine_base
+	#undef MR_maybe_local_thread_engine_base
+	#define MR_maybe_local_thread_engine_base MR_thread_engine_base
+#endif
+MR_END_MODULE
+
+
+MR_BEGIN_MODULE(libs__process_util_module20)
+	MR_init_entry1(__Unify___libs__process_util__post_signal_cleanup_1_0);
+MR_BEGIN_CODE
+
+#ifdef MR_maybe_local_thread_engine_base
+	#undef MR_maybe_local_thread_engine_base
+	#define MR_maybe_local_thread_engine_base MR_local_thread_engine_base
+#endif
+MR_define_entry(mercury____Unify___libs__process_util__post_signal_cleanup_1_0);
+	MR_MAYBE_INIT_LOCAL_THREAD_ENGINE_BASE
+	MR_r1 = MR_r2;
+	MR_r2 = MR_r3;
+	MR_np_tailcall_ent(private_builtin__builtin_unify_pred_2_0);
+#ifdef MR_maybe_local_thread_engine_base
+	#undef MR_maybe_local_thread_engine_base
+	#define MR_maybe_local_thread_engine_base MR_thread_engine_base
+#endif
+MR_END_MODULE
+
+
+MR_BEGIN_MODULE(libs__process_util_module21)
+	MR_init_entry1(__Compare___libs__process_util__post_signal_cleanup_1_0);
+MR_BEGIN_CODE
+
+#ifdef MR_maybe_local_thread_engine_base
+	#undef MR_maybe_local_thread_engine_base
+	#define MR_maybe_local_thread_engine_base MR_local_thread_engine_base
+#endif
+MR_define_entry(mercury____Compare___libs__process_util__post_signal_cleanup_1_0);
+	MR_MAYBE_INIT_LOCAL_THREAD_ENGINE_BASE
+	MR_r1 = MR_r2;
+	MR_r2 = MR_r3;
+	MR_np_tailcall_ent(private_builtin__builtin_compare_pred_3_0);
+#ifdef MR_maybe_local_thread_engine_base
+	#undef MR_maybe_local_thread_engine_base
+	#define MR_maybe_local_thread_engine_base MR_thread_engine_base
+#endif
+MR_END_MODULE
+
+MR_decl_entry(__Unify___builtin__c_pointer_0_0);
+
+MR_BEGIN_MODULE(libs__process_util_module22)
+	MR_init_entry1(__Unify___libs__process_util__signal_action_0_0);
+MR_BEGIN_CODE
+
+#ifdef MR_maybe_local_thread_engine_base
+	#undef MR_maybe_local_thread_engine_base
+	#define MR_maybe_local_thread_engine_base MR_local_thread_engine_base
+#endif
+MR_def_static(__Unify___libs__process_util__signal_action_0_0)
+	MR_MAYBE_INIT_LOCAL_THREAD_ENGINE_BASE
+	MR_np_tailcall_ent(__Unify___builtin__c_pointer_0_0);
+#ifdef MR_maybe_local_thread_engine_base
+	#undef MR_maybe_local_thread_engine_base
+	#define MR_maybe_local_thread_engine_base MR_thread_engine_base
+#endif
+MR_END_MODULE
+
+MR_decl_entry(__Compare___builtin__c_pointer_0_0);
+
+MR_BEGIN_MODULE(libs__process_util_module23)
+	MR_init_entry1(__Compare___libs__process_util__signal_action_0_0);
+MR_BEGIN_CODE
+
+#ifdef MR_maybe_local_thread_engine_base
+	#undef MR_maybe_local_thread_engine_base
+	#define MR_maybe_local_thread_engine_base MR_local_thread_engine_base
+#endif
+MR_def_static(__Compare___libs__process_util__signal_action_0_0)
+	MR_MAYBE_INIT_LOCAL_THREAD_ENGINE_BASE
+	MR_np_tailcall_ent(__Compare___builtin__c_pointer_0_0);
+#ifdef MR_maybe_local_thread_engine_base
+	#undef MR_maybe_local_thread_engine_base
+	#define MR_maybe_local_thread_engine_base MR_thread_engine_base
+#endif
+MR_END_MODULE
+#line 186 "process_util.m"
+
+volatile sig_atomic_t MC_signalled = MR_FALSE;
+volatile sig_atomic_t MC_signal_received = 0;
+
+void
+MC_mercury_compile_signal_handler(int sig)
+{
+    MC_signalled = MR_TRUE;
+    MC_signal_received = sig;
+}
+
+#line 1559 "libs.process_util.c"
+
+MR_declare_static(mercury__libs__process_util__call_child_process_io_pred_4_0);
+
+void
+MC_call_child_process_io_pred(MR_Word Mercury__argument1, MR_Integer * Mercury__argument2);
+
+void
+MC_call_child_process_io_pred(MR_Word Mercury__argument1, MR_Integer * Mercury__argument2)
+{
+#if MR_NUM_REAL_REGS > 0
+	MR_Word c_regs[MR_NUM_REAL_REGS];
+#endif
+#if MR_THREAD_SAFE
+	MR_bool must_finalize_engine;
+#endif
+#if MR_DEEP_PROFILING
+	MR_CallSiteDynList **saved_cur_callback;
+	MR_CallSiteDynamic *saved_cur_csd;
+#endif
+
+	MR_save_regs_to_mem(c_regs);
+#if MR_THREAD_SAFE
+	must_finalize_engine = MR_init_thread(MR_use_now);
+#endif
+#if MR_DEEP_PROFILING
+	saved_cur_callback = MR_current_callback_site;
+	saved_cur_csd = MR_current_call_site_dynamic;
+	MR_setup_callback(MR_ENTRY(mercury__libs__process_util__call_child_process_io_pred_4_0));
+#endif
+	MR_restore_registers();
+	MR_r1 = Mercury__argument1;
+	MR_save_transient_registers();
+	(void) MR_call_engine(MR_ENTRY(mercury__libs__process_util__call_child_process_io_pred_4_0), MR_FALSE);
+	MR_restore_transient_registers();
+#if MR_DEEP_PROFILING
+	MR_current_call_site_dynamic = saved_cur_csd;
+	MR_current_callback_site = saved_cur_callback;
+#endif
+	*Mercury__argument2 = MR_r1;
+#if MR_THREAD_SAFE
+	if (must_finalize_engine) {
+		 MR_finalize_thread_engine();
+	}
+#endif
+	MR_restore_regs_from_mem(c_regs);
+}
+
+
+static void mercury__libs__process_util_maybe_bunch_0(void)
+{
+	libs__process_util_module0();
+	libs__process_util_module1();
+	libs__process_util_module2();
+	libs__process_util_module3();
+	libs__process_util_module4();
+	libs__process_util_module5();
+	libs__process_util_module6();
+	libs__process_util_module7();
+	libs__process_util_module8();
+	libs__process_util_module9();
+	libs__process_util_module10();
+	libs__process_util_module11();
+	libs__process_util_module12();
+	libs__process_util_module13();
+	libs__process_util_module14();
+	libs__process_util_module15();
+	libs__process_util_module16();
+	libs__process_util_module17();
+	libs__process_util_module18();
+	libs__process_util_module19();
+	libs__process_util_module20();
+	libs__process_util_module21();
+	libs__process_util_module22();
+	libs__process_util_module23();
+}
+
+/* suppress gcc -Wmissing-decls warnings */
+void mercury__libs__process_util__init(void);
+void mercury__libs__process_util__init_type_tables(void);
+void mercury__libs__process_util__init_debugger(void);
+#ifdef MR_DEEP_PROFILING
+void mercury__libs__process_util__write_out_proc_statics(FILE *deep_fp, FILE *procrep_fp);
+#endif
+#ifdef MR_RECORD_TERM_SIZES
+void mercury__libs__process_util__init_complexity_procs(void);
+#endif
+
+void mercury__libs__process_util__init(void)
+{
+	static MR_bool done = MR_FALSE;
+	if (done) {
+		return;
+	}
+	done = MR_TRUE;
+	mercury__libs__process_util_maybe_bunch_0();
+	MR_INIT_TYPE_CTOR_INFO(
+		mercury_data_libs__process_util__type_ctor_info_signal_action_0,
+		libs__process_util__signal_action_0_0);
+	MR_INIT_TYPE_CTOR_INFO(
+		mercury_data_libs__process_util__type_ctor_info_post_signal_cleanup_1,
+		libs__process_util__post_signal_cleanup_1_0);
+	MR_INIT_TYPE_CTOR_INFO(
+		mercury_data_libs__process_util__type_ctor_info_pid_0,
+		libs__process_util__pid_0_0);
+	MR_INIT_TYPE_CTOR_INFO(
+		mercury_data_libs__process_util__type_ctor_info_io_pred_0,
+		libs__process_util__io_pred_0_0);
+	MR_INIT_TYPE_CTOR_INFO(
+		mercury_data_libs__process_util__type_ctor_info_build0_1,
+		libs__process_util__build0_1_0);
+	mercury__libs__process_util__init_debugger();
+}
+
+void mercury__libs__process_util__init_type_tables(void)
+{
+	static MR_bool done = MR_FALSE;
+	if (done) {
+		return;
+	}
+	done = MR_TRUE;
+	{
+		MR_register_type_ctor_info(
+		&mercury_data_libs__process_util__type_ctor_info_signal_action_0);
+	}
+	{
+		MR_register_type_ctor_info(
+		&mercury_data_libs__process_util__type_ctor_info_post_signal_cleanup_1);
+	}
+	{
+		MR_register_type_ctor_info(
+		&mercury_data_libs__process_util__type_ctor_info_pid_0);
+	}
+	{
+		MR_register_type_ctor_info(
+		&mercury_data_libs__process_util__type_ctor_info_io_pred_0);
+	}
+	{
+		MR_register_type_ctor_info(
+		&mercury_data_libs__process_util__type_ctor_info_build0_1);
+	}
+}
+
+
+void mercury__libs__process_util__init_debugger(void)
+{
+	static MR_bool done = MR_FALSE;
+	if (done) {
+		return;
+	}
+	done = MR_TRUE;
+}
+
+#ifdef MR_DEEP_PROFILING
+
+void mercury__libs__process_util__write_out_proc_statics(FILE *deep_fp, FILE *procrep_fp)
+{
+	MR_write_out_module_proc_reps_start(procrep_fp, &mercury_data__module_common_layout__libs__process_util);
+	MR_write_out_module_proc_reps_end(procrep_fp);
+}
+
+#endif
+
+#ifdef MR_RECORD_TERM_SIZES
+
+void mercury__libs__process_util__init_complexity_procs(void)
+{
+}
+
+#endif
+
+/* ensure everything is compiled with the same grade */
+static const void *const MR_grade = &MR_GRADE_VAR;

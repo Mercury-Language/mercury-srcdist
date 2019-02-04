@@ -1,0 +1,36 @@
+:- module (parse_tree.modules).
+:- interface.
+:- import_module assoc_list.
+:- import_module bool.
+:- import_module digraph.
+:- import_module io.
+:- import_module list.
+:- import_module map.
+:- import_module maybe.
+:- import_module pair.
+:- import_module set.
+:- import_module (libs.globals).
+:- import_module (libs.timestamp).
+:- import_module (mdbcomp.prim_data).
+:- import_module (parse_tree.error_util).
+:- import_module (parse_tree.prog_data).
+:- import_module (parse_tree.prog_io).
+:- import_module (parse_tree.prog_item).
+:- type contains_foreign_code
+	--->	contains_foreign_code((set.set(((libs.globals).foreign_language))))
+	;	no_foreign_code 
+	;	unknown .
+:- type contains_foreign_export
+	--->	contains_foreign_export 
+	;	no_foreign_export .
+:- type lookup_module_imports == ((func ((mdbcomp.prim_data).module_name)) = ((parse_tree.modules).module_imports)).
+:- type module_imports
+	--->	module_imports(((parse_tree.modules).source_file_name) :: ((parse_tree.prog_io).file_name), ((parse_tree.modules).source_file_module_name) :: ((mdbcomp.prim_data).module_name), ((parse_tree.modules).module_name) :: ((mdbcomp.prim_data).module_name), ((parse_tree.modules).parent_deps) :: (list.list(((mdbcomp.prim_data).module_name))), ((parse_tree.modules).int_deps) :: (list.list(((mdbcomp.prim_data).module_name))), ((parse_tree.modules).impl_deps) :: (list.list(((mdbcomp.prim_data).module_name))), ((parse_tree.modules).indirect_deps) :: (list.list(((mdbcomp.prim_data).module_name))), ((parse_tree.modules).children) :: (list.list(((mdbcomp.prim_data).module_name))), ((parse_tree.modules).public_children) :: (list.list(((mdbcomp.prim_data).module_name))), ((parse_tree.modules).nested_children) :: (list.list(((mdbcomp.prim_data).module_name))), ((parse_tree.modules).fact_table_deps) :: (list.list(string)), ((parse_tree.modules).has_foreign_code) :: ((parse_tree.modules).contains_foreign_code), ((parse_tree.modules).foreign_import_modules) :: ((parse_tree.prog_data).foreign_import_module_info_list), ((parse_tree.modules).contains_foreign_export) :: ((parse_tree.modules).contains_foreign_export), ((parse_tree.modules).items) :: ((parse_tree.prog_item).item_list), ((parse_tree.modules).error) :: ((parse_tree.prog_io).module_error), ((parse_tree.modules).maybe_timestamps) :: (maybe.maybe(((parse_tree.modules).module_timestamps))), ((parse_tree.modules).has_main) :: ((parse_tree.prog_data).has_main), ((parse_tree.modules).module_dir) :: ((parse_tree.prog_io).dir_name)).
+:- type module_list == (assoc_list.assoc_list(((mdbcomp.prim_data).module_name), ((parse_tree.prog_item).item_list))).
+:- type module_timestamp
+	--->	module_timestamp(((parse_tree.modules).suffix) :: string, ((parse_tree.modules).timestamp) :: ((libs.timestamp).timestamp), ((parse_tree.modules).need_qualifier) :: ((parse_tree.prog_data).need_qualifier)).
+:- type module_timestamps == (map.map(((mdbcomp.prim_data).module_name), ((parse_tree.modules).module_timestamp))).
+:- type read_module
+	--->	read_module(((parse_tree.modules).module_timestamp), ((parse_tree.prog_item).item_list), ((parse_tree.prog_io).module_error), ((parse_tree.prog_io).file_name)).
+:- type read_modules == (map.map((pair.pair(((mdbcomp.prim_data).module_name), string)), ((parse_tree.modules).read_module))).
+:- mode (lookup_module_imports) == builtin.in((func((builtin.in)) = (builtin.out) is det)).

@@ -1,0 +1,64 @@
+/*
+** Automatically generated from `thread.m'
+** by the Mercury compiler,
+** version rotd-2007-09-21, configured for i686-pc-linux-gnu.
+** Do not edit.
+*/
+#ifndef THREAD_MH
+#define THREAD_MH
+
+#ifdef __cplusplus
+extern "C" {
+#endif
+
+#ifdef MR_HIGHLEVEL_CODE
+#include "mercury.h"
+#else
+  #ifndef MERCURY_HDR_EXCLUDE_IMP_H
+  #include "mercury_imp.h"
+  #endif
+#endif
+#ifdef MR_DEEP_PROFILING
+#include "mercury_deep_profiling.h"
+#endif
+
+#ifndef THREAD_DECL_GUARD
+#define THREAD_DECL_GUARD
+#line 149 "thread.m"
+
+/*
+INIT mercury_sys_init_thread_modules
+*/
+
+#ifndef MR_HIGHLEVEL_CODE
+    MR_define_extern_entry(mercury__thread__spawn_begin_thread);
+    MR_declare_label(mercury__thread__spawn_end_thread);
+    MR_define_extern_entry(mercury__thread__yield_resume);
+#endif
+
+#line 40 "thread.mh.tmp"
+#line 245 "thread.m"
+
+#if defined(MR_HIGHLEVEL_CODE) && defined(MR_THREAD_SAFE)
+  #include  <pthread.h>
+
+  int ML_create_thread(MR_Word goal);
+  void *ML_thread_wrapper(void *arg);
+
+  typedef struct ML_ThreadWrapperArgs ML_ThreadWrapperArgs;
+  struct ML_ThreadWrapperArgs {
+        MR_Word             goal;
+        MR_ThreadLocalMuts  *thread_local_mutables;
+  };
+#endif /* MR_HIGHLEVEL_CODE && MR_THREAD_SAFE */
+
+#line 56 "thread.mh.tmp"
+
+#endif
+void ML_call_back_to_mercury_cc_multi(MR_Word);
+
+#ifdef __cplusplus
+}
+#endif
+
+#endif /* THREAD_MH */

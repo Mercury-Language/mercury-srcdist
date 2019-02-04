@@ -1,0 +1,8 @@
+:- module (((transform_hlds.ctgc).structure_reuse).indirect).
+:- interface.
+:- import_module io.
+:- import_module (hlds.hlds_module).
+:- import_module (((transform_hlds.ctgc).structure_reuse).domain).
+:- import_module (((transform_hlds.ctgc).structure_sharing).domain).
+:- pred indirect_reuse_pass(((((transform_hlds.ctgc).structure_sharing).domain).sharing_as_table), ((hlds.hlds_module).module_info), ((hlds.hlds_module).module_info), ((((transform_hlds.ctgc).structure_reuse).domain).reuse_as_table), ((((transform_hlds.ctgc).structure_reuse).domain).reuse_as_table), (io.io), (io.io)).
+:- mode indirect_reuse_pass((builtin.in), (builtin.in), (builtin.out), (builtin.in), (builtin.out), (builtin.di), (builtin.uo)) is det.

@@ -1,0 +1,3 @@
+:- module (hlds.goal_util).
+:- interface.
+:- type is_leaf.

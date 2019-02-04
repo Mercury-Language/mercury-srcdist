@@ -1,0 +1,35 @@
+:- module (parse_tree.prog_item).
+:- interface.
+:- import_module assoc_list.
+:- import_module bool.
+:- import_module list.
+:- import_module maybe.
+:- import_module pair.
+:- import_module recompilation.
+:- import_module set.
+:- import_module term.
+:- import_module (libs.globals).
+:- import_module (libs.options).
+:- import_module (mdbcomp.prim_data).
+:- import_module (parse_tree.prog_data).
+:- type class_method.
+:- type class_methods.
+:- type compilation_unit.
+:- type foreign_name.
+:- type goal.
+:- type goal_expr.
+:- type goals.
+:- type item.
+:- type item_and_context.
+:- type item_compiler_origin.
+:- type item_list.
+:- type item_origin.
+:- type item_warning.
+:- type message_list.
+:- type module_defn.
+:- type mutable_thread_local.
+:- type mutable_trailed.
+:- type mutable_var_attributes.
+:- type pragma_type.
+:- inst (item_mutable) == bound(item_mutable(ground, ground, ground, ground, ground, ground)).
+:- inst (pragma_type_spec) == bound(pragma_type_spec(ground, ground, ground, ground, ground, ground, ground, ground)).

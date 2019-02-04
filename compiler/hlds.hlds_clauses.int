@@ -1,0 +1,62 @@
+:- module (hlds.hlds_clauses).
+:- interface.
+:- import_module bool.
+:- import_module list.
+:- import_module (hlds.hlds_args).
+:- import_module (hlds.hlds_goal).
+:- import_module (hlds.hlds_pred).
+:- import_module (hlds.hlds_rtti).
+:- import_module (mdbcomp.prim_data).
+:- import_module (parse_tree.prog_data).
+:- type clause
+	--->	clause(((hlds.hlds_clauses).applicable_procs) :: (list.list(((hlds.hlds_pred).proc_id))), ((hlds.hlds_clauses).clause_body) :: ((hlds.hlds_goal).hlds_goal), ((hlds.hlds_clauses).clause_lang) :: ((hlds.hlds_pred).implementation_language), ((hlds.hlds_clauses).clause_context) :: ((parse_tree.prog_data).prog_context)).
+:- type clauses_info
+	--->	clauses_info(((hlds.hlds_clauses).clauses_varset) :: ((parse_tree.prog_data).prog_varset), ((hlds.hlds_clauses).clauses_explicit_vartypes) :: ((parse_tree.prog_data).vartypes), ((hlds.hlds_clauses).clauses_tvar_name_map) :: ((parse_tree.prog_data).tvar_name_map), ((hlds.hlds_clauses).clauses_vartypes) :: ((parse_tree.prog_data).vartypes), ((hlds.hlds_clauses).clauses_headvars) :: ((hlds.hlds_args).proc_arg_vector(((parse_tree.prog_data).prog_var))), ((hlds.hlds_clauses).clauses_rep) :: ((hlds.hlds_clauses).clauses_rep), ((hlds.hlds_clauses).clauses_rtti_varmaps) :: ((hlds.hlds_rtti).rtti_varmaps), ((hlds.hlds_clauses).have_foreign_clauses) :: (bool.bool)).
+:- type clauses_rep.
+:- pred add_clause(((hlds.hlds_clauses).clause), ((hlds.hlds_clauses).clauses_rep), ((hlds.hlds_clauses).clauses_rep)).
+:- mode add_clause((builtin.in), (builtin.in), (builtin.out)) is det.
+:- func clause_list_is_empty(((hlds.hlds_clauses).clauses_rep)) = (bool.bool).
+:- pred clauses_info_clauses((list.list(((hlds.hlds_clauses).clause))), ((hlds.hlds_clauses).clauses_info), ((hlds.hlds_clauses).clauses_info)).
+:- mode clauses_info_clauses((builtin.out), (builtin.in), (builtin.out)) is det.
+:- pred clauses_info_clauses_only(((hlds.hlds_clauses).clauses_info), (list.list(((hlds.hlds_clauses).clause)))).
+:- mode clauses_info_clauses_only((builtin.in), (builtin.out)) is det.
+:- pred clauses_info_get_clauses_rep(((hlds.hlds_clauses).clauses_info), ((hlds.hlds_clauses).clauses_rep)).
+:- mode clauses_info_get_clauses_rep((builtin.in), (builtin.out)) is det.
+:- pred clauses_info_get_explicit_vartypes(((hlds.hlds_clauses).clauses_info), ((parse_tree.prog_data).vartypes)).
+:- mode clauses_info_get_explicit_vartypes((builtin.in), (builtin.out)) is det.
+:- pred clauses_info_get_headvar_list(((hlds.hlds_clauses).clauses_info), (list.list(((parse_tree.prog_data).prog_var)))).
+:- mode clauses_info_get_headvar_list((builtin.in), (builtin.out)) is det.
+:- pred clauses_info_get_headvars(((hlds.hlds_clauses).clauses_info), ((hlds.hlds_args).proc_arg_vector(((parse_tree.prog_data).prog_var)))).
+:- mode clauses_info_get_headvars((builtin.in), (builtin.out)) is det.
+:- pred clauses_info_get_rtti_varmaps(((hlds.hlds_clauses).clauses_info), ((hlds.hlds_rtti).rtti_varmaps)).
+:- mode clauses_info_get_rtti_varmaps((builtin.in), (builtin.out)) is det.
+:- pred clauses_info_get_varset(((hlds.hlds_clauses).clauses_info), ((parse_tree.prog_data).prog_varset)).
+:- mode clauses_info_get_varset((builtin.in), (builtin.out)) is det.
+:- pred clauses_info_get_vartypes(((hlds.hlds_clauses).clauses_info), ((parse_tree.prog_data).vartypes)).
+:- mode clauses_info_get_vartypes((builtin.in), (builtin.out)) is det.
+:- pred clauses_info_init(((mdbcomp.prim_data).pred_or_func), int, ((hlds.hlds_clauses).clauses_info)).
+:- mode clauses_info_init((builtin.in), (builtin.in), (builtin.out)) is det.
+:- pred clauses_info_init_for_assertion(((parse_tree.prog_data).prog_vars), ((hlds.hlds_clauses).clauses_info)).
+:- mode clauses_info_init_for_assertion((builtin.in), (builtin.out)) is det.
+:- pred clauses_info_set_clauses((list.list(((hlds.hlds_clauses).clause))), ((hlds.hlds_clauses).clauses_info), ((hlds.hlds_clauses).clauses_info)).
+:- mode clauses_info_set_clauses((builtin.in), (builtin.in), (builtin.out)) is det.
+:- pred clauses_info_set_clauses_rep(((hlds.hlds_clauses).clauses_rep), ((hlds.hlds_clauses).clauses_info), ((hlds.hlds_clauses).clauses_info)).
+:- mode clauses_info_set_clauses_rep((builtin.in), (builtin.in), (builtin.out)) is det.
+:- pred clauses_info_set_explicit_vartypes(((parse_tree.prog_data).vartypes), ((hlds.hlds_clauses).clauses_info), ((hlds.hlds_clauses).clauses_info)).
+:- mode clauses_info_set_explicit_vartypes((builtin.in), (builtin.in), (builtin.out)) is det.
+:- pred clauses_info_set_headvars(((hlds.hlds_args).proc_arg_vector(((parse_tree.prog_data).prog_var))), ((hlds.hlds_clauses).clauses_info), ((hlds.hlds_clauses).clauses_info)).
+:- mode clauses_info_set_headvars((builtin.in), (builtin.in), (builtin.out)) is det.
+:- pred clauses_info_set_rtti_varmaps(((hlds.hlds_rtti).rtti_varmaps), ((hlds.hlds_clauses).clauses_info), ((hlds.hlds_clauses).clauses_info)).
+:- mode clauses_info_set_rtti_varmaps((builtin.in), (builtin.in), (builtin.out)) is det.
+:- pred clauses_info_set_varset(((parse_tree.prog_data).prog_varset), ((hlds.hlds_clauses).clauses_info), ((hlds.hlds_clauses).clauses_info)).
+:- mode clauses_info_set_varset((builtin.in), (builtin.in), (builtin.out)) is det.
+:- pred clauses_info_set_vartypes(((parse_tree.prog_data).vartypes), ((hlds.hlds_clauses).clauses_info), ((hlds.hlds_clauses).clauses_info)).
+:- mode clauses_info_set_vartypes((builtin.in), (builtin.in), (builtin.out)) is det.
+:- pred get_clause_list(((hlds.hlds_clauses).clauses_rep), (list.list(((hlds.hlds_clauses).clause)))).
+:- mode get_clause_list((builtin.in), (builtin.out)) is det.
+:- pred get_clause_list_any_order(((hlds.hlds_clauses).clauses_rep), (list.list(((hlds.hlds_clauses).clause)))).
+:- mode get_clause_list_any_order((builtin.in), (builtin.out)) is det.
+:- func init_clauses_rep = ((hlds.hlds_clauses).clauses_rep).
+:- func num_clauses_in_clauses_rep(((hlds.hlds_clauses).clauses_rep)) = int.
+:- pred set_clause_list((list.list(((hlds.hlds_clauses).clause))), ((hlds.hlds_clauses).clauses_rep)).
+:- mode set_clause_list((builtin.in), (builtin.out)) is det.

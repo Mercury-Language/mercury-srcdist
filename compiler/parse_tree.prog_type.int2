@@ -1,0 +1,33 @@
+:- module (parse_tree.prog_type).
+:- interface.
+:- import_module bool.
+:- import_module list.
+:- import_module map.
+:- import_module maybe.
+:- import_module set.
+:- import_module term.
+:- import_module (libs.globals).
+:- import_module (mdbcomp.prim_data).
+:- import_module (parse_tree.prog_data).
+:- type ctor_defn
+	--->	ctor_defn(((parse_tree.prog_type).ctor_tvars) :: ((parse_tree.prog_data).tvarset), ((parse_tree.prog_type).ctor_existq_tvars) :: ((parse_tree.prog_data).existq_tvars), ((parse_tree.prog_type).ctor_tvar_kinds) :: ((parse_tree.prog_data).tvar_kind_map), ((parse_tree.prog_type).ctor_constraints) :: (list.list(((parse_tree.prog_data).prog_constraint))), ((parse_tree.prog_type).ctor_arg_types) :: (list.list(((parse_tree.prog_data).mer_type))), ((parse_tree.prog_type).ctor_result_type) :: ((parse_tree.prog_data).mer_type)).
+:- type polymorphism_cell
+	--->	type_info_cell(((parse_tree.prog_data).type_ctor))
+	;	typeclass_info_cell .
+:- type type_category
+	--->	type_cat_int 
+	;	type_cat_char 
+	;	type_cat_string 
+	;	type_cat_float 
+	;	type_cat_higher_order 
+	;	type_cat_tuple 
+	;	type_cat_enum 
+	;	type_cat_foreign_enum 
+	;	type_cat_dummy 
+	;	type_cat_variable 
+	;	type_cat_type_info 
+	;	type_cat_type_ctor_info 
+	;	type_cat_typeclass_info 
+	;	type_cat_base_typeclass_info 
+	;	type_cat_void 
+	;	type_cat_user_ctor .

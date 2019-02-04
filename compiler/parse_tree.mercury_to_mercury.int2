@@ -1,0 +1,26 @@
+:- module (parse_tree.mercury_to_mercury).
+:- interface.
+:- import_module bool.
+:- import_module char.
+:- import_module io.
+:- import_module list.
+:- import_module maybe.
+:- import_module term.
+:- import_module varset.
+:- import_module (libs.globals).
+:- import_module (mdbcomp.prim_data).
+:- import_module (parse_tree.prog_data).
+:- import_module (parse_tree.prog_item).
+:- type needs_brackets
+	--->	needs_brackets 
+	;	does_not_need_brackets .
+:- type needs_quotes
+	--->	next_to_graphic_token 
+	;	not_next_to_graphic_token .
+:- type simple_inst_info
+	--->	simple_inst_info(((parse_tree.mercury_to_mercury).sii_varset) :: ((parse_tree.prog_data).inst_varset)).
+:- typeclass inst_info(InstInfo).
+:- typeclass output(U).
+:- instance ((parse_tree.mercury_to_mercury).inst_info(((parse_tree.mercury_to_mercury).simple_inst_info))).
+:- instance ((parse_tree.mercury_to_mercury).output((io.state))).
+:- instance ((parse_tree.mercury_to_mercury).output(string)).

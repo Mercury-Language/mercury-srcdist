@@ -1,0 +1,10 @@
+:- module (transform_hlds.size_prof).
+:- interface.
+:- import_module io.
+:- import_module (hlds.hlds_module).
+:- import_module (hlds.hlds_pred).
+:- type construct_transform
+	--->	term_words 
+	;	term_cells .
+:- pred process_proc_msg(((transform_hlds.size_prof).construct_transform), ((hlds.hlds_pred).pred_id), ((hlds.hlds_pred).proc_id), ((hlds.hlds_pred).proc_info), ((hlds.hlds_pred).proc_info), ((hlds.hlds_module).module_info), ((hlds.hlds_module).module_info), (io.io), (io.io)).
+:- mode process_proc_msg((builtin.in), (builtin.in), (builtin.in), (builtin.in), (builtin.out), (builtin.in), (builtin.out), (builtin.di), (builtin.uo)) is det.

@@ -1,0 +1,44 @@
+/*
+** Automatically generated from `globals.m'
+** by the Mercury compiler,
+** version rotd-2007-09-21, configured for i686-pc-linux-gnu.
+** Do not edit.
+*/
+#ifndef LIBS__GLOBALS_MH
+#define LIBS__GLOBALS_MH
+
+#ifdef __cplusplus
+extern "C" {
+#endif
+
+#ifdef MR_HIGHLEVEL_CODE
+#include "mercury.h"
+#else
+  #ifndef MERCURY_HDR_EXCLUDE_IMP_H
+  #include "mercury_imp.h"
+  #endif
+#endif
+#ifdef MR_DEEP_PROFILING
+#include "mercury_deep_profiling.h"
+#endif
+
+#ifndef LIBS__GLOBALS_DECL_GUARD
+#define LIBS__GLOBALS_DECL_GUARD
+#line 366 "globals.m"
+extern MR_Unsigned libs__globals__mutable_variable_globals;
+
+#line 31 "libs.globals.mh.tmp"
+#line 372 "globals.m"
+extern MR_Unsigned libs__globals__mutable_variable_extra_error_info;
+
+#line 35 "libs.globals.mh.tmp"
+
+#endif
+void libs__globals__user_init_pred_1(void);
+void libs__globals__user_init_pred_0(void);
+
+#ifdef __cplusplus
+}
+#endif
+
+#endif /* LIBS__GLOBALS_MH */

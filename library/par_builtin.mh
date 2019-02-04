@@ -1,0 +1,76 @@
+/*
+** Automatically generated from `par_builtin.m'
+** by the Mercury compiler,
+** version rotd-2007-09-21, configured for i686-pc-linux-gnu.
+** Do not edit.
+*/
+#ifndef PAR_BUILTIN_MH
+#define PAR_BUILTIN_MH
+
+#ifdef __cplusplus
+extern "C" {
+#endif
+
+#ifdef MR_HIGHLEVEL_CODE
+#include "mercury.h"
+#else
+  #ifndef MERCURY_HDR_EXCLUDE_IMP_H
+  #include "mercury_imp.h"
+  #endif
+#endif
+#ifdef MR_DEEP_PROFILING
+#include "mercury_deep_profiling.h"
+#endif
+
+#ifndef PAR_BUILTIN_DECL_GUARD
+#define PAR_BUILTIN_DECL_GUARD
+#line 66 "par_builtin.m"
+
+    #include "mercury_context.h"
+    #include "mercury_thread.h"
+
+    typedef struct MR_Future MR_Future;
+
+#ifdef MR_THREAD_SAFE
+    struct MR_Future {
+        MercuryLock lock;
+            /* lock preventing concurrent accesses */
+        int signalled;
+            /* whether this future has been signalled yet */
+        MR_Context *suspended;
+            /* linked list of all the contexts blocked on this future */
+        MR_Word value;
+    };
+#else /* !MR_THREAD_SAFE */
+    struct MR_Future {
+        char dummy; /* ANSI C doesn't allow empty structs */
+    };
+#endif /* !MR_THREAD_SAFE */
+
+#line 51 "par_builtin.mh.tmp"
+#line 132 "par_builtin.m"
+
+#ifdef MR_CONSERVATIVE_GC
+    void MR_finalize_future(void *obj, void *cd);
+#endif
+
+#line 58 "par_builtin.mh.tmp"
+#line 201 "par_builtin.m"
+
+/*
+INIT mercury_sys_init_par_builtin_modules
+*/
+
+#if (!defined MR_HIGHLEVEL_CODE) && (defined MR_THREAD_SAFE)
+    MR_define_extern_entry(mercury__par_builtin__wait_resume);
+#endif
+
+#line 69 "par_builtin.mh.tmp"
+
+#endif
+
+#ifdef __cplusplus
+}
+#endif
+
+#endif /* PAR_BUILTIN_MH */

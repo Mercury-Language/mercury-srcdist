@@ -1,0 +1,19 @@
+:- module (ml_backend.ml_code_gen).
+:- interface.
+:- import_module io.
+:- import_module (hlds.code_model).
+:- import_module (hlds.hlds_goal).
+:- import_module (hlds.hlds_module).
+:- import_module (ml_backend.ml_code_util).
+:- import_module (ml_backend.mlds).
+:- import_module (parse_tree.prog_data).
+:- pred ml_code_gen(((hlds.hlds_module).module_info), ((ml_backend.mlds).mlds), (io.io), (io.io)).
+:- mode ml_code_gen((builtin.in), (builtin.out), (builtin.di), (builtin.uo)) is det.
+:- pred ml_gen_goal(((hlds.code_model).code_model), ((hlds.hlds_goal).hlds_goal), ((ml_backend.mlds).statement), ((ml_backend.ml_code_util).ml_gen_info), ((ml_backend.ml_code_util).ml_gen_info)).
+:- mode ml_gen_goal((builtin.in), (builtin.in), (builtin.out), (builtin.in), (builtin.out)) is det.
+:- pred ml_gen_goal(((hlds.code_model).code_model), ((hlds.hlds_goal).hlds_goal), ((ml_backend.mlds).mlds_defns), ((ml_backend.mlds).statements), ((ml_backend.ml_code_util).ml_gen_info), ((ml_backend.ml_code_util).ml_gen_info)).
+:- mode ml_gen_goal((builtin.in), (builtin.in), (builtin.out), (builtin.out), (builtin.in), (builtin.out)) is det.
+:- pred ml_gen_local_var_decls(((parse_tree.prog_data).prog_varset), ((parse_tree.prog_data).vartypes), ((parse_tree.prog_data).prog_context), ((parse_tree.prog_data).prog_vars), ((ml_backend.mlds).mlds_defns), ((ml_backend.ml_code_util).ml_gen_info), ((ml_backend.ml_code_util).ml_gen_info)).
+:- mode ml_gen_local_var_decls((builtin.in), (builtin.in), (builtin.in), (builtin.in), (builtin.out), (builtin.in), (builtin.out)) is det.
+:- pred ml_gen_wrap_goal(((hlds.code_model).code_model), ((hlds.code_model).code_model), ((parse_tree.prog_data).prog_context), ((ml_backend.mlds).statements), ((ml_backend.mlds).statements), ((ml_backend.ml_code_util).ml_gen_info), ((ml_backend.ml_code_util).ml_gen_info)).
+:- mode ml_gen_wrap_goal((builtin.in), (builtin.in), (builtin.in), (builtin.in), (builtin.out), (builtin.in), (builtin.out)) is det.

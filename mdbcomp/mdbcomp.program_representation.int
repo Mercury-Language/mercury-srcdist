@@ -1,0 +1,145 @@
+:- module (mdbcomp.program_representation).
+:- interface.
+:- import_module bool.
+:- import_module char.
+:- import_module io.
+:- import_module list.
+:- import_module maybe.
+:- import_module type_desc.
+:- import_module (mdbcomp.prim_data).
+:- import_module (mdbcomp.rtti_access).
+:- type arg_pos
+	--->	user_head_var(int)
+	;	any_head_var(int)
+	;	any_head_var_from_back(int).
+:- type atomic_goal_id
+	--->	atomic_goal_id(string, string, int).
+:- type atomic_goal_rep
+	--->	unify_construct_rep(((mdbcomp.program_representation).var_rep), ((mdbcomp.program_representation).cons_id_rep), (list.list(((mdbcomp.program_representation).var_rep))))
+	;	unify_deconstruct_rep(((mdbcomp.program_representation).var_rep), ((mdbcomp.program_representation).cons_id_rep), (list.list(((mdbcomp.program_representation).var_rep))))
+	;	partial_deconstruct_rep(((mdbcomp.program_representation).var_rep), ((mdbcomp.program_representation).cons_id_rep), (list.list((maybe.maybe(((mdbcomp.program_representation).var_rep))))))
+	;	partial_construct_rep(((mdbcomp.program_representation).var_rep), ((mdbcomp.program_representation).cons_id_rep), (list.list((maybe.maybe(((mdbcomp.program_representation).var_rep))))))
+	;	unify_assign_rep(((mdbcomp.program_representation).var_rep), ((mdbcomp.program_representation).var_rep))
+	;	cast_rep(((mdbcomp.program_representation).var_rep), ((mdbcomp.program_representation).var_rep))
+	;	unify_simple_test_rep(((mdbcomp.program_representation).var_rep), ((mdbcomp.program_representation).var_rep))
+	;	pragma_foreign_code_rep((list.list(((mdbcomp.program_representation).var_rep))))
+	;	higher_order_call_rep(((mdbcomp.program_representation).var_rep), (list.list(((mdbcomp.program_representation).var_rep))))
+	;	method_call_rep(((mdbcomp.program_representation).var_rep), int, (list.list(((mdbcomp.program_representation).var_rep))))
+	;	plain_call_rep(string, string, (list.list(((mdbcomp.program_representation).var_rep))))
+	;	builtin_call_rep(string, string, (list.list(((mdbcomp.program_representation).var_rep))))
+	;	event_call_rep(string, (list.list(((mdbcomp.program_representation).var_rep)))).
+:- type bytecode_goal_type
+	--->	goal_conj 
+	;	goal_disj 
+	;	goal_switch 
+	;	goal_ite 
+	;	goal_neg 
+	;	goal_scope 
+	;	goal_construct 
+	;	goal_deconstruct 
+	;	goal_partial_construct 
+	;	goal_partial_deconstruct 
+	;	goal_assign 
+	;	goal_cast 
+	;	goal_simple_test 
+	;	goal_foreign 
+	;	goal_ho_call 
+	;	goal_method_call 
+	;	goal_plain_call 
+	;	goal_builtin_call 
+	;	goal_event_call .
+:- type case_rep
+	--->	case_rep(((mdbcomp.program_representation).cons_id_rep), int, ((mdbcomp.program_representation).goal_rep)).
+:- type cons_id_rep == string.
+:- type detism_rep
+	--->	det_rep 
+	;	semidet_rep 
+	;	nondet_rep 
+	;	multidet_rep 
+	;	cc_nondet_rep 
+	;	cc_multidet_rep 
+	;	erroneous_rep 
+	;	failure_rep .
+:- type goal_path == (list.list(((mdbcomp.program_representation).goal_path_step))).
+:- type goal_path_step
+	--->	step_conj(int)
+	;	step_disj(int)
+	;	step_switch(int, (maybe.maybe(int)))
+	;	step_ite_cond 
+	;	step_ite_then 
+	;	step_ite_else 
+	;	step_neg 
+	;	step_scope(((mdbcomp.program_representation).maybe_cut))
+	;	step_first 
+	;	step_later .
+:- type goal_path_string == string.
+:- type goal_rep
+	--->	conj_rep((list.list(((mdbcomp.program_representation).goal_rep))))
+	;	disj_rep((list.list(((mdbcomp.program_representation).goal_rep))))
+	;	switch_rep(((mdbcomp.program_representation).var_rep), (list.list(((mdbcomp.program_representation).case_rep))))
+	;	ite_rep(((mdbcomp.program_representation).goal_rep), ((mdbcomp.program_representation).goal_rep), ((mdbcomp.program_representation).goal_rep))
+	;	negation_rep(((mdbcomp.program_representation).goal_rep))
+	;	scope_rep(((mdbcomp.program_representation).goal_rep), ((mdbcomp.program_representation).maybe_cut))
+	;	atomic_goal_rep(((mdbcomp.program_representation).detism_rep), string, int, (list.list(((mdbcomp.program_representation).var_rep))), ((mdbcomp.program_representation).atomic_goal_rep)).
+:- type maybe_cut
+	--->	scope_is_cut 
+	;	scope_is_no_cut .
+:- type module_rep
+	--->	module_rep(((mdbcomp.program_representation).mr_name) :: string, ((mdbcomp.program_representation).mr_string_table) :: ((mdbcomp.rtti_access).string_table), ((mdbcomp.program_representation).mr_procs) :: (list.list(((mdbcomp.program_representation).proc_rep)))).
+:- type proc_defn_rep
+	--->	proc_defn_rep((list.list(((mdbcomp.program_representation).var_rep))), ((mdbcomp.program_representation).goal_rep)).
+:- type proc_rep
+	--->	proc_rep(((mdbcomp.program_representation).pr_id) :: ((mdbcomp.program_representation).string_proc_label), ((mdbcomp.program_representation).pr_defn) :: ((mdbcomp.program_representation).proc_defn_rep)).
+:- type proclabel_kind_token
+	--->	proclabel_user_predicate 
+	;	proclabel_user_function 
+	;	proclabel_special .
+:- type prog_rep
+	--->	prog_rep((list.list(((mdbcomp.program_representation).module_rep)))).
+:- type string_proc_label
+	--->	str_ordinary_proc_label(((mdbcomp.program_representation).s_ord_pred_or_func) :: ((mdbcomp.prim_data).pred_or_func), ((mdbcomp.program_representation).s_ord_decl_module) :: string, ((mdbcomp.program_representation).s_ord_def_module) :: string, ((mdbcomp.program_representation).s_ord_name) :: string, ((mdbcomp.program_representation).s_ord_arity) :: int, ((mdbcomp.program_representation).s_ord_mode) :: int)
+	;	str_special_proc_label(((mdbcomp.program_representation).s_spec_type_name) :: string, ((mdbcomp.program_representation).s_spec_type_module) :: string, ((mdbcomp.program_representation).s_spec_def_module) :: string, ((mdbcomp.program_representation).s_spec_pred_name) :: string, ((mdbcomp.program_representation).s_spec_arity) :: int, ((mdbcomp.program_representation).s_spec_mode) :: int).
+:- type term_path == (list.list(int)).
+:- type var_num_rep
+	--->	byte 
+	;	short .
+:- type var_rep == int.
+:- func atomic_goal_generates_event_like_call(((mdbcomp.program_representation).atomic_goal_rep)) = (maybe.maybe((list.list(((mdbcomp.program_representation).var_rep))))).
+:- func atomic_goal_identifiable(((mdbcomp.program_representation).atomic_goal_rep)) = (maybe.maybe(((mdbcomp.program_representation).atomic_goal_id))).
+:- pred byte_to_goal_type(int, ((mdbcomp.program_representation).bytecode_goal_type)).
+:- mode byte_to_goal_type((builtin.in), (builtin.out)) is semidet.
+:- pred call_does_not_generate_events(string, string, int).
+:- mode call_does_not_generate_events((builtin.in), (builtin.in), (builtin.in)) is semidet.
+:- pred determinism_representation(((mdbcomp.program_representation).detism_rep), int).
+:- mode determinism_representation((builtin.in), (builtin.out)) is det.
+:- mode determinism_representation((builtin.out), (builtin.in)) is semidet.
+:- func detism_rep(((mdbcomp.program_representation).detism_rep)) = int.
+:- func goal_generates_internal_event(((mdbcomp.program_representation).goal_rep)) = (bool.bool).
+:- func goal_path_to_string(((mdbcomp.program_representation).goal_path)) = string.
+:- func goal_rep_type = (type_desc.type_desc).
+:- func goal_type_to_byte(((mdbcomp.program_representation).bytecode_goal_type)) = int.
+:- pred is_path_separator((char.char)).
+:- mode is_path_separator((builtin.in)) is semidet.
+:- pred is_proclabel_kind(int, ((mdbcomp.program_representation).proclabel_kind_token)).
+:- mode is_proclabel_kind((builtin.in), (builtin.out)) is semidet.
+:- pred no_type_info_builtin(((mdbcomp.prim_data).module_name), string, int).
+:- mode no_type_info_builtin((builtin.in), (builtin.in), (builtin.in)) is semidet.
+:- pred path_from_string(string, ((mdbcomp.program_representation).goal_path)).
+:- mode path_from_string((builtin.in), (builtin.out)) is semidet.
+:- pred path_from_string_det(string, ((mdbcomp.program_representation).goal_path)).
+:- mode path_from_string_det((builtin.in), (builtin.out)) is det.
+:- pred path_step_from_string(string, ((mdbcomp.program_representation).goal_path_step)).
+:- mode path_step_from_string((builtin.in), (builtin.out)) is semidet.
+:- func proc_defn_rep_type = (type_desc.type_desc).
+:- pred read_prog_rep_file(string, (io.res(((mdbcomp.program_representation).prog_rep))), (io.io), (io.io)).
+:- mode read_prog_rep_file((builtin.in), (builtin.out), (builtin.di), (builtin.uo)) is det.
+:- func string_from_path(((mdbcomp.program_representation).goal_path)) = string.
+:- pred trace_read_proc_defn_rep(((mdbcomp.rtti_access).bytecode_bytes), ((mdbcomp.rtti_access).label_layout), ((mdbcomp.program_representation).proc_defn_rep)).
+:- mode trace_read_proc_defn_rep((builtin.in), (builtin.in), (builtin.out)) is semidet.
+:- pred var_num_rep_byte(((mdbcomp.program_representation).var_num_rep), int).
+:- mode var_num_rep_byte((builtin.in), (builtin.out)) is det.
+:- mode var_num_rep_byte((builtin.out), (builtin.in)) is semidet.
+:- implementation.
+:- pragma foreign_import_module("C", (mdbcomp.program_representation)).
+:- pragma foreign_import_module("C", (mdbcomp.program_representation)).
+:- pragma foreign_enum("C", ((mdbcomp.program_representation).proclabel_kind_token)/0, [proclabel_user_predicate - "MR_proclabel_user_predicate",proclabel_user_function - "MR_proclabel_user_function",proclabel_special - "MR_proclabel_special"]).

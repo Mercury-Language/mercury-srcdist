@@ -1,0 +1,143 @@
+:- module table_builtin.
+:- pragma termination_info(table_builtin.table_loop_setup((builtin.in), (builtin.out)), infinite, cannot_loop).
+:- pragma termination_info(table_builtin.table_loop_setup_shortcut((builtin.in), (builtin.out), (builtin.out)), infinite, cannot_loop).
+:- pragma termination_info(table_builtin.table_loop_mark_as_inactive((builtin.in)), finite(0, [no]), cannot_loop).
+:- pragma termination_info(table_builtin.table_loop_mark_as_inactive_and_fail((builtin.in)), infinite, cannot_loop).
+:- pragma termination_info(table_builtin.table_loop_mark_as_active_and_fail((builtin.in)), infinite, cannot_loop).
+:- pragma termination_info(table_builtin.table_memo_det_setup((builtin.in), (builtin.out)), infinite, cannot_loop).
+:- pragma termination_info(table_builtin.table_memo_det_setup_shortcut((builtin.in), (builtin.out), (builtin.out)), infinite, cannot_loop).
+:- pragma termination_info(table_builtin.table_memo_semi_setup((builtin.in), (builtin.out)), infinite, cannot_loop).
+:- pragma termination_info(table_builtin.table_memo_semi_setup_shortcut((builtin.in), (builtin.out), (builtin.out)), infinite, cannot_loop).
+:- pragma termination_info(table_builtin.table_memo_non_setup((builtin.in), (builtin.out), (builtin.out)), infinite, cannot_loop).
+:- pragma termination_info(table_builtin.table_memo_mark_as_failed((builtin.in)), infinite, cannot_loop).
+:- pragma termination_info(table_builtin.table_memo_mark_as_succeeded((builtin.in)), finite(0, [no]), cannot_loop).
+:- pragma termination_info(table_builtin.table_memo_mark_as_incomplete((builtin.in)), finite(0, [no]), cannot_loop).
+:- pragma termination_info(table_builtin.table_memo_mark_as_active_and_fail((builtin.in)), infinite, cannot_loop).
+:- pragma termination_info(table_builtin.table_memo_mark_as_complete_and_fail((builtin.in)), infinite, cannot_loop).
+:- pragma termination_info(table_builtin.table_memo_create_answer_block((builtin.in), (builtin.in), (builtin.out)), infinite, cannot_loop).
+:- pragma termination_info(table_builtin.table_memo_fill_answer_block_shortcut((builtin.in)), finite(0, [no]), cannot_loop).
+:- pragma termination_info(table_builtin.table_memo_get_answer_block((builtin.in), (builtin.out)), infinite, cannot_loop).
+:- pragma termination_info(table_builtin.table_memo_get_answer_block_shortcut((builtin.in)), finite(0, [no]), cannot_loop).
+:- pragma termination_info(table_builtin.table_memo_non_get_answer_table((builtin.in), (builtin.out)), infinite, cannot_loop).
+:- pragma termination_info(table_builtin.table_memo_non_answer_is_not_duplicate((builtin.in)), finite(0, [no]), cannot_loop).
+:- pragma termination_info(table_builtin.table_memo_non_answer_is_not_duplicate_shortcut((builtin.in)), finite(0, [no]), cannot_loop).
+:- pragma termination_info(table_builtin.table_memo_non_create_answer_block_shortcut((builtin.in)), finite(0, [no]), cannot_loop).
+:- pragma termination_info(table_builtin.table_memo_non_return_all_shortcut((builtin.in)), finite(0, [no]), cannot_loop).
+:- pragma termination_info(table_builtin.table_io_in_range((builtin.out), (builtin.out), (builtin.out)), infinite, cannot_loop).
+:- pragma termination_info(table_builtin.table_io_has_occurred((builtin.in)), finite(0, [no]), cannot_loop).
+:- pragma termination_info(table_builtin.table_io_copy_io_state((builtin.di), (builtin.uo)), finite(0, [yes, no]), cannot_loop).
+:- pragma termination_info(table_builtin.table_io_left_bracket_unitized_goal((builtin.out)), infinite, cannot_loop).
+:- pragma termination_info(table_builtin.table_io_right_bracket_unitized_goal((builtin.in)), finite(0, [no]), cannot_loop).
+:- pragma termination_info(table_builtin.table_mm_setup((builtin.in), (builtin.out), (builtin.out)), infinite, cannot_loop).
+:- pragma termination_info(table_builtin.table_mm_get_answer_table((builtin.in), (builtin.out)), infinite, cannot_loop).
+:- pragma termination_info(table_builtin.table_mm_answer_is_not_duplicate((builtin.in)), finite(0, [no]), cannot_loop).
+:- pragma termination_info(table_builtin.table_mm_answer_is_not_duplicate_shortcut((builtin.in)), finite(0, [no]), cannot_loop).
+:- pragma termination_info(table_builtin.table_mm_create_answer_block((builtin.in), (builtin.in), (builtin.out)), infinite, cannot_loop).
+:- pragma termination_info(table_builtin.table_mm_fill_answer_block_shortcut((builtin.in)), finite(0, [no]), cannot_loop).
+:- pragma termination_info(table_builtin.table_mm_return_all_shortcut((builtin.in)), finite(0, [no]), cannot_loop).
+:- pragma termination_info((table_builtin.table_mmos_save_inputs), finite(0, []), cannot_loop).
+:- pragma termination_info(table_builtin.table_mmos_setup_consumer((builtin.in), (builtin.in), (builtin.out)), infinite, cannot_loop).
+:- pragma termination_info(table_builtin.table_mmos_answer_is_not_duplicate((builtin.in)), finite(0, [no]), cannot_loop).
+:- pragma termination_info(table_builtin.table_mmos_answer_is_not_duplicate_shortcut((builtin.in)), finite(0, [no]), cannot_loop).
+:- pragma termination_info(table_builtin.table_mmos_restore_answers((builtin.in)), finite(0, [no]), cannot_loop).
+:- pragma termination_info(table_builtin.table_mmos_pickup_inputs((builtin.out)), infinite, cannot_loop).
+:- pragma termination_info(table_builtin.table_mmos_create_answer_block((builtin.in), (builtin.in), (builtin.out)), infinite, cannot_loop).
+:- pragma termination_info(table_builtin.table_mmos_return_answer((builtin.in), (builtin.in)), finite(0, [no, no]), cannot_loop).
+:- pragma termination_info(table_builtin.table_mmos_completion((builtin.in)), infinite, cannot_loop).
+:- pragma termination_info(table_builtin.table_lookup_insert_int((builtin.in), (builtin.in), (builtin.out)), infinite, cannot_loop).
+:- pragma termination_info(table_builtin.table_lookup_insert_start_int((builtin.in), (builtin.in), (builtin.in), (builtin.out)), infinite, cannot_loop).
+:- pragma termination_info(table_builtin.table_lookup_insert_char((builtin.in), (builtin.in), (builtin.out)), infinite, cannot_loop).
+:- pragma termination_info(table_builtin.table_lookup_insert_string((builtin.in), (builtin.in), (builtin.out)), infinite, cannot_loop).
+:- pragma termination_info(table_builtin.table_lookup_insert_float((builtin.in), (builtin.in), (builtin.out)), infinite, cannot_loop).
+:- pragma termination_info(table_builtin.table_lookup_insert_enum((builtin.in), (builtin.in), (builtin.in), (builtin.out)), infinite, cannot_loop).
+:- pragma termination_info(table_builtin.table_lookup_insert_gen((builtin.in), (builtin.in), (builtin.out)), infinite, cannot_loop).
+:- pragma termination_info(table_builtin.table_lookup_insert_gen_addr((builtin.in), (builtin.in), (builtin.out)), infinite, cannot_loop).
+:- pragma termination_info(table_builtin.table_lookup_insert_gen_poly((builtin.in), (builtin.in), (builtin.out)), infinite, cannot_loop).
+:- pragma termination_info(table_builtin.table_lookup_insert_gen_poly_addr((builtin.in), (builtin.in), (builtin.out)), infinite, cannot_loop).
+:- pragma termination_info(table_builtin.table_lookup_insert_typeinfo((builtin.in), (builtin.in), (builtin.out)), infinite, cannot_loop).
+:- pragma termination_info(table_builtin.table_lookup_insert_typeclassinfo((builtin.in), (builtin.in), (builtin.out)), infinite, cannot_loop).
+:- pragma termination_info(table_builtin.table_save_int_answer((builtin.in), (builtin.in), (builtin.in)), finite(0, [no, no, no]), cannot_loop).
+:- pragma termination_info(table_builtin.table_save_char_answer((builtin.in), (builtin.in), (builtin.in)), finite(0, [no, no, no]), cannot_loop).
+:- pragma termination_info(table_builtin.table_save_string_answer((builtin.in), (builtin.in), (builtin.in)), finite(0, [no, no, no]), cannot_loop).
+:- pragma termination_info(table_builtin.table_save_float_answer((builtin.in), (builtin.in), (builtin.in)), finite(0, [no, no, no]), cannot_loop).
+:- pragma termination_info(table_builtin.table_save_io_state_answer((builtin.in), (builtin.in), (builtin.ui)), finite(0, [no, no, no]), cannot_loop).
+:- pragma termination_info(table_builtin.table_save_any_answer((builtin.in), (builtin.in), (builtin.in)), finite(0, [no, no, no, no]), cannot_loop).
+:- pragma termination_info(table_builtin.table_restore_int_answer((builtin.in), (builtin.in), (builtin.out)), infinite, cannot_loop).
+:- pragma termination_info(table_builtin.table_restore_char_answer((builtin.in), (builtin.in), (builtin.out)), infinite, cannot_loop).
+:- pragma termination_info(table_builtin.table_restore_string_answer((builtin.in), (builtin.in), (builtin.out)), infinite, cannot_loop).
+:- pragma termination_info(table_builtin.table_restore_float_answer((builtin.in), (builtin.in), (builtin.out)), infinite, cannot_loop).
+:- pragma termination_info(table_builtin.table_restore_io_state_answer((builtin.in), (builtin.in), (builtin.uo)), infinite, cannot_loop).
+:- pragma termination_info(table_builtin.table_restore_any_answer((builtin.in), (builtin.in), (builtin.out)), infinite, cannot_loop).
+:- pragma termination_info(table_builtin.table_error((builtin.in)), infinite, cannot_loop).
+:- pragma termination_info((table_builtin.table_report_statistics), finite(0, []), cannot_loop).
+:- pragma exceptions(predicate, (table_builtin.table_loop_setup), 2, 0, will_not_throw).
+:- pragma exceptions(predicate, (table_builtin.table_loop_setup_shortcut), 3, 0, will_not_throw).
+:- pragma exceptions(predicate, (table_builtin.table_loop_mark_as_inactive), 1, 0, will_not_throw).
+:- pragma exceptions(predicate, (table_builtin.table_loop_mark_as_inactive_and_fail), 1, 0, will_not_throw).
+:- pragma exceptions(predicate, (table_builtin.table_loop_mark_as_active_and_fail), 1, 0, will_not_throw).
+:- pragma exceptions(predicate, (table_builtin.table_memo_det_setup), 2, 0, will_not_throw).
+:- pragma exceptions(predicate, (table_builtin.table_memo_det_setup_shortcut), 3, 0, will_not_throw).
+:- pragma exceptions(predicate, (table_builtin.table_memo_semi_setup), 2, 0, will_not_throw).
+:- pragma exceptions(predicate, (table_builtin.table_memo_semi_setup_shortcut), 3, 0, will_not_throw).
+:- pragma exceptions(predicate, (table_builtin.table_memo_non_setup), 3, 0, will_not_throw).
+:- pragma exceptions(predicate, (table_builtin.table_memo_mark_as_failed), 1, 0, will_not_throw).
+:- pragma exceptions(predicate, (table_builtin.table_memo_mark_as_succeeded), 1, 0, will_not_throw).
+:- pragma exceptions(predicate, (table_builtin.table_memo_mark_as_incomplete), 1, 0, will_not_throw).
+:- pragma exceptions(predicate, (table_builtin.table_memo_mark_as_active_and_fail), 1, 0, will_not_throw).
+:- pragma exceptions(predicate, (table_builtin.table_memo_mark_as_complete_and_fail), 1, 0, will_not_throw).
+:- pragma exceptions(predicate, (table_builtin.table_memo_create_answer_block), 3, 0, will_not_throw).
+:- pragma exceptions(predicate, (table_builtin.table_memo_fill_answer_block_shortcut), 1, 0, will_not_throw).
+:- pragma exceptions(predicate, (table_builtin.table_memo_get_answer_block), 2, 0, will_not_throw).
+:- pragma exceptions(predicate, (table_builtin.table_memo_get_answer_block_shortcut), 1, 0, will_not_throw).
+:- pragma exceptions(predicate, (table_builtin.table_memo_non_get_answer_table), 2, 0, will_not_throw).
+:- pragma exceptions(predicate, (table_builtin.table_memo_non_answer_is_not_duplicate), 1, 0, will_not_throw).
+:- pragma exceptions(predicate, (table_builtin.table_memo_non_answer_is_not_duplicate_shortcut), 1, 0, will_not_throw).
+:- pragma exceptions(predicate, (table_builtin.table_memo_non_create_answer_block_shortcut), 1, 0, will_not_throw).
+:- pragma exceptions(predicate, (table_builtin.table_memo_non_return_all_shortcut), 1, 0, will_not_throw).
+:- pragma exceptions(predicate, (table_builtin.table_io_in_range), 3, 0, will_not_throw).
+:- pragma exceptions(predicate, (table_builtin.table_io_has_occurred), 1, 0, will_not_throw).
+:- pragma exceptions(predicate, (table_builtin.table_io_copy_io_state), 2, 0, will_not_throw).
+:- pragma exceptions(predicate, (table_builtin.table_io_left_bracket_unitized_goal), 1, 0, will_not_throw).
+:- pragma exceptions(predicate, (table_builtin.table_io_right_bracket_unitized_goal), 1, 0, will_not_throw).
+:- pragma exceptions(predicate, (table_builtin.table_mm_setup), 3, 0, will_not_throw).
+:- pragma exceptions(predicate, (table_builtin.table_mm_get_answer_table), 2, 0, will_not_throw).
+:- pragma exceptions(predicate, (table_builtin.table_mm_answer_is_not_duplicate), 1, 0, will_not_throw).
+:- pragma exceptions(predicate, (table_builtin.table_mm_answer_is_not_duplicate_shortcut), 1, 0, will_not_throw).
+:- pragma exceptions(predicate, (table_builtin.table_mm_create_answer_block), 3, 0, will_not_throw).
+:- pragma exceptions(predicate, (table_builtin.table_mm_fill_answer_block_shortcut), 1, 0, will_not_throw).
+:- pragma exceptions(predicate, (table_builtin.table_mm_return_all_shortcut), 1, 0, will_not_throw).
+:- pragma exceptions(predicate, (table_builtin.table_mmos_save_inputs), 0, 0, will_not_throw).
+:- pragma exceptions(predicate, (table_builtin.table_mmos_setup_consumer), 3, 0, will_not_throw).
+:- pragma exceptions(predicate, (table_builtin.table_mmos_answer_is_not_duplicate), 1, 0, will_not_throw).
+:- pragma exceptions(predicate, (table_builtin.table_mmos_answer_is_not_duplicate_shortcut), 1, 0, will_not_throw).
+:- pragma exceptions(predicate, (table_builtin.table_mmos_restore_answers), 1, 0, will_not_throw).
+:- pragma exceptions(predicate, (table_builtin.table_mmos_pickup_inputs), 1, 0, will_not_throw).
+:- pragma exceptions(predicate, (table_builtin.table_mmos_create_answer_block), 3, 0, will_not_throw).
+:- pragma exceptions(predicate, (table_builtin.table_mmos_return_answer), 2, 0, will_not_throw).
+:- pragma exceptions(predicate, (table_builtin.table_mmos_completion), 1, 0, will_not_throw).
+:- pragma exceptions(predicate, (table_builtin.table_lookup_insert_int), 3, 0, will_not_throw).
+:- pragma exceptions(predicate, (table_builtin.table_lookup_insert_start_int), 4, 0, will_not_throw).
+:- pragma exceptions(predicate, (table_builtin.table_lookup_insert_char), 3, 0, will_not_throw).
+:- pragma exceptions(predicate, (table_builtin.table_lookup_insert_string), 3, 0, will_not_throw).
+:- pragma exceptions(predicate, (table_builtin.table_lookup_insert_float), 3, 0, will_not_throw).
+:- pragma exceptions(predicate, (table_builtin.table_lookup_insert_enum), 4, 0, will_not_throw).
+:- pragma exceptions(predicate, (table_builtin.table_lookup_insert_gen), 3, 0, will_not_throw).
+:- pragma exceptions(predicate, (table_builtin.table_lookup_insert_gen_addr), 3, 0, will_not_throw).
+:- pragma exceptions(predicate, (table_builtin.table_lookup_insert_gen_poly), 3, 0, will_not_throw).
+:- pragma exceptions(predicate, (table_builtin.table_lookup_insert_gen_poly_addr), 3, 0, will_not_throw).
+:- pragma exceptions(predicate, (table_builtin.table_lookup_insert_typeinfo), 3, 0, will_not_throw).
+:- pragma exceptions(predicate, (table_builtin.table_lookup_insert_typeclassinfo), 3, 0, will_not_throw).
+:- pragma exceptions(predicate, (table_builtin.table_save_int_answer), 3, 0, will_not_throw).
+:- pragma exceptions(predicate, (table_builtin.table_save_char_answer), 3, 0, will_not_throw).
+:- pragma exceptions(predicate, (table_builtin.table_save_string_answer), 3, 0, will_not_throw).
+:- pragma exceptions(predicate, (table_builtin.table_save_float_answer), 3, 0, will_not_throw).
+:- pragma exceptions(predicate, (table_builtin.table_save_io_state_answer), 3, 0, will_not_throw).
+:- pragma exceptions(predicate, (table_builtin.table_save_any_answer), 3, 0, will_not_throw).
+:- pragma exceptions(predicate, (table_builtin.table_restore_int_answer), 3, 0, will_not_throw).
+:- pragma exceptions(predicate, (table_builtin.table_restore_char_answer), 3, 0, will_not_throw).
+:- pragma exceptions(predicate, (table_builtin.table_restore_string_answer), 3, 0, will_not_throw).
+:- pragma exceptions(predicate, (table_builtin.table_restore_float_answer), 3, 0, will_not_throw).
+:- pragma exceptions(predicate, (table_builtin.table_restore_io_state_answer), 3, 0, will_not_throw).
+:- pragma exceptions(predicate, (table_builtin.table_restore_any_answer), 3, 0, will_not_throw).
+:- pragma exceptions(predicate, (table_builtin.table_error), 1, 0, may_throw(user_exception)).
+:- pragma exceptions(predicate, (table_builtin.table_report_statistics), 0, 0, will_not_throw).

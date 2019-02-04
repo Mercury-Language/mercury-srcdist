@@ -1,0 +1,16 @@
+:- module term_io.
+:- interface.
+:- import_module char.
+:- import_module io.
+:- import_module ops.
+:- import_module stream.
+:- import_module term.
+:- import_module varset.
+:- type adjacent_to_graphic_token
+	--->	maybe_adjacent_to_graphic_token 
+	;	not_adjacent_to_graphic_token .
+:- type read_term == (term_io.read_term((term.generic))).
+:- type read_term(T)
+	--->	eof 
+	;	error(string, int)
+	;	term((varset.varset(T)), (term.term(T))).

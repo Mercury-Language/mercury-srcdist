@@ -1,0 +1,18 @@
+:- module (check_hlds.typecheck_errors).
+:- interface.
+:- import_module hlds.
+:- import_module list.
+:- import_module mdbcomp.
+:- import_module parse_tree.
+:- import_module (check_hlds.typecheck_info).
+:- import_module (hlds.hlds_data).
+:- import_module (hlds.hlds_module).
+:- import_module (hlds.hlds_pred).
+:- import_module (mdbcomp.prim_data).
+:- import_module (parse_tree.error_util).
+:- import_module (parse_tree.prog_data).
+:- type cons_error
+	--->	foreign_type_constructor(((parse_tree.prog_data).type_ctor), ((hlds.hlds_data).hlds_type_defn))
+	;	abstract_imported_type 
+	;	invalid_field_update(((parse_tree.prog_data).ctor_field_name), ((hlds.hlds_data).hlds_ctor_field_defn), ((parse_tree.prog_data).tvarset), (list.list(((parse_tree.prog_data).tvar))))
+	;	new_on_non_existential_type(((parse_tree.prog_data).type_ctor)).

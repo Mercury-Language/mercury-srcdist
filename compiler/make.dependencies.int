@@ -1,0 +1,36 @@
+:- module (make.dependencies).
+:- interface.
+:- type cached_direct_imports.
+:- type cached_transitive_dependencies.
+:- type dependencies_result
+	--->	deps_up_to_date 
+	;	deps_out_of_date 
+	;	deps_error .
+:- type dependency_file
+	--->	dep_target((make.target_file))
+	;	dep_file(((parse_tree.prog_io).file_name), (maybe.maybe(((libs.options).option)))).
+:- type find_module_deps(T) == pred(((mdbcomp.prim_data).module_name), (bool.bool), (set.set(T)), (make.make_info), (make.make_info), (io.io), (io.io)).
+:- inst (find_module_deps) == (pred((builtin.in), (builtin.out), (builtin.out), (builtin.in), (builtin.out), (builtin.di), (builtin.uo)) is det).
+:- pred check_dependencies(((parse_tree.prog_io).file_name), (maybe.maybe_error(((libs.timestamp).timestamp))), (bool.bool), (list.list(((make.dependencies).dependency_file))), ((make.dependencies).dependencies_result), (make.make_info), (make.make_info), (io.io), (io.io)).
+:- mode check_dependencies((builtin.in), (builtin.in), (builtin.in), (builtin.in), (builtin.out), (builtin.in), (builtin.out), (builtin.di), (builtin.uo)) is det.
+:- pred check_dependency_timestamps(((parse_tree.prog_io).file_name), (maybe.maybe_error(((libs.timestamp).timestamp))), (bool.bool), (list.list(File)), pred(File, (io.io), (io.io)), (list.list((maybe.maybe_error(((libs.timestamp).timestamp))))), ((make.dependencies).dependencies_result), (io.io), (io.io)).
+:- mode check_dependency_timestamps((builtin.in), (builtin.in), (builtin.in), (builtin.in), (pred((builtin.in), (builtin.di), (builtin.uo)) is det), (builtin.in), (builtin.out), (builtin.di), (builtin.uo)) is det.
+:- pred dependency_status(((make.dependencies).dependency_file), (make.dependency_status), (make.make_info), (make.make_info), (io.io), (io.io)).
+:- mode dependency_status((builtin.in), (builtin.out), (builtin.in), (builtin.out), (builtin.di), (builtin.uo)) is det.
+:- pred find_reachable_local_modules(((mdbcomp.prim_data).module_name), (bool.bool), (set.set(((mdbcomp.prim_data).module_name))), (make.make_info), (make.make_info), (io.io), (io.io)).
+:- mode find_reachable_local_modules((builtin.in), (builtin.out), (builtin.out), (builtin.in), (builtin.out), (builtin.di), (builtin.uo)) is det.
+:- func init_cached_direct_imports = ((make.dependencies).cached_direct_imports).
+:- func init_cached_transitive_dependencies = ((make.dependencies).cached_transitive_dependencies).
+:- pred make_local_module_id_options(((mdbcomp.prim_data).module_name), (bool.bool), (list.list(string)), (make.make_info), (make.make_info), (io.io), (io.io)).
+:- mode make_local_module_id_options((builtin.in), (builtin.out), (builtin.out), (builtin.in), (builtin.out), (builtin.di), (builtin.uo)) is det.
+:- func target_dependencies(((libs.globals).globals), (make.module_target_type)) = ((make.dependencies).find_module_deps(((make.dependencies).dependency_file))).
+:- mode target_dependencies((builtin.in), (builtin.in)) = builtin.out(((make.dependencies).find_module_deps)) is det.
+:- pred union_deps(((make.dependencies).find_module_deps(T)), ((mdbcomp.prim_data).module_name), (bool.bool), (set.set(T)), (set.set(T)), (make.make_info), (make.make_info), (io.io), (io.io)).
+:- mode union_deps(builtin.in(((make.dependencies).find_module_deps)), (builtin.in), (builtin.out), (builtin.in), (builtin.out), (builtin.in), (builtin.out), (builtin.di), (builtin.uo)) is det.
+:- implementation.
+:- type cached_direct_imports == (map.map(((mdbcomp.prim_data).module_name), ((make.dependencies).module_deps_result))).
+:- type cached_transitive_dependencies == (map.map(((make.dependencies).transitive_dependencies_root), ((make.dependencies).transitive_deps_result))).
+:- type module_deps_result == ((make.dependencies).deps_result(((mdbcomp.prim_data).module_name))).
+:- type transitive_dependencies_root.
+:- type transitive_deps_result == (pair.pair((bool.bool), (set.set(((mdbcomp.prim_data).module_name))))).
+:- type deps_result(T) == (pair.pair((bool.bool), (set.set(T)))).

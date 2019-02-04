@@ -1,0 +1,11 @@
+:- module (backend_libs.matching).
+:- interface.
+:- import_module bool.
+:- import_module list.
+:- import_module parse_tree.
+:- import_module set.
+:- import_module (parse_tree.prog_data).
+:- type benefit_node.
+:- type cost_node.
+:- type matching_params
+	--->	matching_params(((backend_libs.matching).cell_var_store_cost) :: int, ((backend_libs.matching).cell_var_load_cost) :: int, ((backend_libs.matching).field_var_store_cost) :: int, ((backend_libs.matching).field_var_load_cost) :: int, ((backend_libs.matching).one_path_op_ratio) :: int, ((backend_libs.matching).one_path_node_ratio) :: int, ((backend_libs.matching).include_all_candidates) :: (bool.bool)).

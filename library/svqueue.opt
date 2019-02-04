@@ -1,0 +1,30 @@
+:- module svqueue.
+:- use_module builtin, list, private_builtin, queue.
+svqueue.put(Elem_4, Queue0_5, Queue_6) :-
+    queue.put(Queue0_5, Elem_4, Queue_6).
+svqueue.put_list(List_4, Queue0_5, Queue_6) :-
+    queue.put_list(Queue0_5, List_4, Queue_6).
+svqueue.get(Elem_4, Queue0_5, Queue_6) :-
+    queue.get(Queue0_5, Elem_4, Queue_6).
+svqueue.delete_all(Elem_4, Queue0_5, Queue_6) :-
+    queue.delete_all(Queue0_5, Elem_4, Queue_6).
+svqueue.put_on_front(Elem_4, Queue0_5, Queue_6) :-
+    queue.put_on_front(Queue0_5, Elem_4, Queue_6).
+svqueue.put_list_on_front(Elems_4, Queue0_5, Queue_6) :-
+    queue.put_list_on_front(Queue0_5, Elems_4, Queue_6).
+svqueue.get_from_back(Elem_4, Queue0_5, Queue_6) :-
+    queue.get_from_back(Queue0_5, Elem_4, Queue_6).
+:- pragma exceptions(predicate, (svqueue.put), 3, 0, may_throw(user_exception)).
+:- pragma exceptions(predicate, (svqueue.put_list), 3, 0, may_throw(user_exception)).
+:- pragma exceptions(predicate, (svqueue.get), 3, 0, may_throw(user_exception)).
+:- pragma exceptions(predicate, (svqueue.delete_all), 3, 0, may_throw(user_exception)).
+:- pragma exceptions(predicate, (svqueue.put_on_front), 3, 0, may_throw(user_exception)).
+:- pragma exceptions(predicate, (svqueue.put_list_on_front), 3, 0, may_throw(user_exception)).
+:- pragma exceptions(predicate, (svqueue.get_from_back), 3, 0, may_throw(user_exception)).
+:- pragma termination_info(svqueue.put((builtin.in), (builtin.in), (builtin.out)), infinite, can_loop).
+:- pragma termination_info(svqueue.put_list((builtin.in), (builtin.in), (builtin.out)), infinite, can_loop).
+:- pragma termination_info(svqueue.get((builtin.out), (builtin.in), (builtin.out)), infinite, can_loop).
+:- pragma termination_info(svqueue.delete_all((builtin.in), (builtin.in), (builtin.out)), infinite, can_loop).
+:- pragma termination_info(svqueue.put_on_front((builtin.in), (builtin.in), (builtin.out)), infinite, can_loop).
+:- pragma termination_info(svqueue.put_list_on_front((builtin.in), (builtin.in), (builtin.out)), infinite, can_loop).
+:- pragma termination_info(svqueue.get_from_back((builtin.out), (builtin.in), (builtin.out)), infinite, can_loop).

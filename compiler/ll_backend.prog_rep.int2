@@ -1,0 +1,11 @@
+:- module (ll_backend.prog_rep).
+:- interface.
+:- import_module list.
+:- import_module map.
+:- import_module pair.
+:- import_module (hlds.hlds_goal).
+:- import_module (hlds.hlds_module).
+:- import_module (hlds.instmap).
+:- import_module (ll_backend.stack_layout).
+:- import_module (parse_tree.prog_data).
+:- type var_num_map == (map.map(((parse_tree.prog_data).prog_var), (pair.pair(int, string)))).

@@ -1,0 +1,234 @@
+:- module gcc.
+:- interface.
+:- import_module bool.
+:- import_module io.
+:- type arg_list.
+:- type expr.
+:- type field_decl.
+:- type field_decls.
+:- type field_name == string.
+:- type func_asm_name == string.
+:- type func_decl.
+:- type func_name == string.
+:- type init_elem.
+:- type init_list.
+:- type label.
+:- type label_name == string.
+:- type loop.
+:- type op.
+:- type param_decl == (gcc.var_decl).
+:- type param_decls.
+:- type param_name == string.
+:- type param_types.
+:- type struct_name == string.
+:- type tree.
+:- type tree_code.
+:- type (type).
+:- type type_decl.
+:- type var_decl.
+:- type var_name == string.
+:- type frontend_callback(T) == pred(T, (io.state), (io.state)).
+:- inst (frontend_callback) == (pred((builtin.out), (builtin.di), (builtin.uo)) is det).
+:- func alloc_func_decl = (gcc.func_decl).
+:- pred array_elem_initializer(int, (gcc.init_elem), (io.state), (io.state)).
+:- mode array_elem_initializer((builtin.in), (builtin.out), (builtin.di), (builtin.uo)) is det.
+:- func array_ref = (gcc.op).
+:- func bit_and_expr = (gcc.op).
+:- func bit_ior_expr = (gcc.op).
+:- func bit_not_expr = (gcc.op).
+:- func bit_xor_expr = (gcc.op).
+:- func boolean_type_node = (gcc.(type)).
+:- func box_float_func_decl = (gcc.func_decl).
+:- pred build_addr_expr((gcc.expr), (gcc.expr), (io.state), (io.state)).
+:- mode build_addr_expr((builtin.in), (builtin.out), (builtin.di), (builtin.uo)) is det.
+:- pred build_array_type((gcc.(type)), int, (gcc.(type)), (io.state), (io.state)).
+:- mode build_array_type((builtin.in), (builtin.in), (builtin.out), (builtin.di), (builtin.uo)) is det.
+:- pred build_binop((gcc.op), (gcc.(type)), (gcc.expr), (gcc.expr), (gcc.expr), (io.state), (io.state)).
+:- mode build_binop((builtin.in), (builtin.in), (builtin.in), (builtin.in), (builtin.out), (builtin.di), (builtin.uo)) is det.
+:- pred build_call_expr((gcc.expr), (gcc.arg_list), (bool.bool), (gcc.expr), (io.state), (io.state)).
+:- mode build_call_expr((builtin.in), (builtin.in), (builtin.in), (builtin.out), (builtin.di), (builtin.uo)) is det.
+:- pred build_component_ref((gcc.expr), (gcc.field_decl), (gcc.expr), (io.state), (io.state)).
+:- mode build_component_ref((builtin.in), (builtin.in), (builtin.out), (builtin.di), (builtin.uo)) is det.
+:- pred build_extern_var_decl((gcc.var_name), (gcc.(type)), (gcc.var_decl), (io.state), (io.state)).
+:- mode build_extern_var_decl((builtin.in), (builtin.in), (builtin.out), (builtin.di), (builtin.uo)) is det.
+:- pred build_field_decl((gcc.field_name), (gcc.(type)), (gcc.field_decl), (io.state), (io.state)).
+:- mode build_field_decl((builtin.in), (builtin.in), (builtin.out), (builtin.di), (builtin.uo)) is det.
+:- pred build_float(float, (gcc.expr), (io.state), (io.state)).
+:- mode build_float((builtin.in), (builtin.out), (builtin.di), (builtin.uo)) is det.
+:- pred build_func_addr_expr((gcc.func_decl), (gcc.expr), (io.state), (io.state)).
+:- mode build_func_addr_expr((builtin.in), (builtin.out), (builtin.di), (builtin.uo)) is det.
+:- pred build_function_decl((gcc.func_name), (gcc.func_asm_name), (gcc.(type)), (gcc.param_types), (gcc.param_decls), (gcc.func_decl), (io.state), (io.state)).
+:- mode build_function_decl((builtin.in), (builtin.in), (builtin.in), (builtin.in), (builtin.in), (builtin.out), (builtin.di), (builtin.uo)) is det.
+:- pred build_function_type((gcc.(type)), (gcc.param_types), (gcc.(type)), (io.state), (io.state)).
+:- mode build_function_type((builtin.in), (builtin.in), (builtin.out), (builtin.di), (builtin.uo)) is det.
+:- pred build_initializer_expr((gcc.init_list), (gcc.(type)), (gcc.expr), (io.state), (io.state)).
+:- mode build_initializer_expr((builtin.in), (builtin.in), (builtin.out), (builtin.di), (builtin.uo)) is det.
+:- pred build_int(int, (gcc.expr), (io.state), (io.state)).
+:- mode build_int((builtin.in), (builtin.out), (builtin.di), (builtin.uo)) is det.
+:- pred build_label((gcc.label_name), (gcc.label), (io.state), (io.state)).
+:- mode build_label((builtin.in), (builtin.out), (builtin.di), (builtin.uo)) is det.
+:- pred build_local_var_decl((gcc.var_name), (gcc.(type)), (gcc.var_decl), (io.state), (io.state)).
+:- mode build_local_var_decl((builtin.in), (builtin.in), (builtin.out), (builtin.di), (builtin.uo)) is det.
+:- pred build_null_pointer((gcc.expr), (io.state), (io.state)).
+:- mode build_null_pointer((builtin.out), (builtin.di), (builtin.uo)) is det.
+:- pred build_param_decl((gcc.param_name), (gcc.(type)), (gcc.param_decl), (io.state), (io.state)).
+:- mode build_param_decl((builtin.in), (builtin.in), (builtin.out), (builtin.di), (builtin.uo)) is det.
+:- pred build_pointer_deref((gcc.expr), (gcc.expr), (io.state), (io.state)).
+:- mode build_pointer_deref((builtin.in), (builtin.out), (builtin.di), (builtin.uo)) is det.
+:- pred build_pointer_type((gcc.(type)), (gcc.(type)), (io.state), (io.state)).
+:- mode build_pointer_type((builtin.in), (builtin.out), (builtin.di), (builtin.uo)) is det.
+:- pred build_range_type((gcc.(type)), int, int, (gcc.(type)), (io.state), (io.state)).
+:- mode build_range_type((builtin.in), (builtin.in), (builtin.in), (builtin.out), (builtin.di), (builtin.uo)) is det.
+:- pred build_static_var_decl((gcc.var_name), (gcc.(type)), (gcc.expr), (gcc.var_decl), (io.state), (io.state)).
+:- mode build_static_var_decl((builtin.in), (builtin.in), (builtin.in), (builtin.out), (builtin.di), (builtin.uo)) is det.
+:- pred build_string(string, (gcc.expr), (io.state), (io.state)).
+:- mode build_string((builtin.in), (builtin.out), (builtin.di), (builtin.uo)) is det.
+:- pred build_string(int, string, (gcc.expr), (io.state), (io.state)).
+:- mode build_string((builtin.in), (builtin.in), (builtin.out), (builtin.di), (builtin.uo)) is det.
+:- pred build_struct_type_decl((gcc.struct_name), (gcc.field_decls), (gcc.type_decl), (io.state), (io.state)).
+:- mode build_struct_type_decl((builtin.in), (builtin.in), (builtin.out), (builtin.di), (builtin.uo)) is det.
+:- pred build_unnamed_label((gcc.label), (io.state), (io.state)).
+:- mode build_unnamed_label((builtin.out), (builtin.di), (builtin.uo)) is det.
+:- pred build_unop((gcc.op), (gcc.(type)), (gcc.expr), (gcc.expr), (io.state), (io.state)).
+:- mode build_unop((builtin.in), (builtin.in), (builtin.in), (builtin.out), (builtin.di), (builtin.uo)) is det.
+:- func char_type_node = (gcc.(type)).
+:- pred cons_arg_list((gcc.expr), (gcc.arg_list), (gcc.arg_list), (io.state), (io.state)).
+:- mode cons_arg_list((builtin.in), (builtin.in), (builtin.out), (builtin.di), (builtin.uo)) is det.
+:- pred cons_field_list((gcc.field_decl), (gcc.field_decls), (gcc.field_decls), (io.state), (io.state)).
+:- mode cons_field_list((builtin.in), (builtin.in), (builtin.out), (builtin.di), (builtin.uo)) is det.
+:- pred cons_init_list((gcc.init_elem), (gcc.expr), (gcc.init_list), (gcc.init_list), (io.state), (io.state)).
+:- mode cons_init_list((builtin.in), (builtin.in), (builtin.in), (builtin.out), (builtin.di), (builtin.uo)) is det.
+:- func cons_param_decls((gcc.param_decl), (gcc.param_decls)) = (gcc.param_decls).
+:- func cons_param_types((gcc.(type)), (gcc.param_types)) = (gcc.param_types).
+:- pred convert_type((gcc.expr), (gcc.(type)), (gcc.expr), (io.state), (io.state)).
+:- mode convert_type((builtin.in), (builtin.in), (builtin.out), (builtin.di), (builtin.uo)) is det.
+:- func declared_type((gcc.type_decl)) = (gcc.(type)).
+:- func double_type_node = (gcc.(type)).
+:- pred empty_arg_list((gcc.arg_list), (io.state), (io.state)).
+:- mode empty_arg_list((builtin.out), (builtin.di), (builtin.uo)) is det.
+:- pred empty_field_list((gcc.field_decls), (io.state), (io.state)).
+:- mode empty_field_list((builtin.out), (builtin.di), (builtin.uo)) is det.
+:- pred empty_init_list((gcc.init_list), (io.state), (io.state)).
+:- mode empty_init_list((builtin.out), (builtin.di), (builtin.uo)) is det.
+:- func empty_param_decls = (gcc.param_decls).
+:- func empty_param_types = (gcc.param_types).
+:- pred end_block((io.state), (io.state)).
+:- mode end_block((builtin.di), (builtin.uo)) is det.
+:- pred end_function((io.state), (io.state)).
+:- mode end_function((builtin.di), (builtin.uo)) is det.
+:- func eq_expr = (gcc.op).
+:- pred expr_type((gcc.expr), (gcc.(type)), (io.state), (io.state)).
+:- mode expr_type((builtin.in), (builtin.out), (builtin.di), (builtin.uo)) is det.
+:- pred field_type((gcc.field_decl), (gcc.(type)), (io.state), (io.state)).
+:- mode field_type((builtin.in), (builtin.out), (builtin.di), (builtin.uo)) is det.
+:- pred finish_static_var_decl((gcc.var_decl), (io.state), (io.state)).
+:- mode finish_static_var_decl((builtin.in), (builtin.di), (builtin.uo)) is det.
+:- func ge_expr = (gcc.op).
+:- pred gen_assign((gcc.expr), (gcc.expr), (io.state), (io.state)).
+:- mode gen_assign((builtin.in), (builtin.in), (builtin.di), (builtin.uo)) is det.
+:- pred gen_break((io.state), (io.state)).
+:- mode gen_break((builtin.di), (builtin.uo)) is det.
+:- pred gen_case_label((gcc.expr), (gcc.label), (io.state), (io.state)).
+:- mode gen_case_label((builtin.in), (builtin.in), (builtin.di), (builtin.uo)) is det.
+:- pred gen_default_case_label((gcc.label), (io.state), (io.state)).
+:- mode gen_default_case_label((builtin.in), (builtin.di), (builtin.uo)) is det.
+:- pred gen_end_cond((io.state), (io.state)).
+:- mode gen_end_cond((builtin.di), (builtin.uo)) is det.
+:- pred gen_end_loop((io.state), (io.state)).
+:- mode gen_end_loop((builtin.di), (builtin.uo)) is det.
+:- pred gen_end_switch((gcc.expr), (io.state), (io.state)).
+:- mode gen_end_switch((builtin.in), (builtin.di), (builtin.uo)) is det.
+:- pred gen_exit_loop_if_false((gcc.loop), (gcc.expr), (io.state), (io.state)).
+:- mode gen_exit_loop_if_false((builtin.in), (builtin.in), (builtin.di), (builtin.uo)) is det.
+:- pred gen_expr_stmt((gcc.expr), (io.state), (io.state)).
+:- mode gen_expr_stmt((builtin.in), (builtin.di), (builtin.uo)) is det.
+:- pred gen_goto((gcc.label), (io.state), (io.state)).
+:- mode gen_goto((builtin.in), (builtin.di), (builtin.uo)) is det.
+:- pred gen_label((gcc.label), (io.state), (io.state)).
+:- mode gen_label((builtin.in), (builtin.di), (builtin.uo)) is det.
+:- pred gen_line_note(string, int, (io.state), (io.state)).
+:- mode gen_line_note((builtin.in), (builtin.in), (builtin.di), (builtin.uo)) is det.
+:- pred gen_return((gcc.expr), (io.state), (io.state)).
+:- mode gen_return((builtin.in), (builtin.di), (builtin.uo)) is det.
+:- pred gen_start_cond((gcc.expr), (io.state), (io.state)).
+:- mode gen_start_cond((builtin.in), (builtin.di), (builtin.uo)) is det.
+:- pred gen_start_else((io.state), (io.state)).
+:- mode gen_start_else((builtin.di), (builtin.uo)) is det.
+:- pred gen_start_loop((gcc.loop), (io.state), (io.state)).
+:- mode gen_start_loop((builtin.out), (builtin.di), (builtin.uo)) is det.
+:- pred gen_start_switch((gcc.expr), (gcc.(type)), (io.state), (io.state)).
+:- mode gen_start_switch((builtin.in), (builtin.in), (builtin.di), (builtin.uo)) is det.
+:- pred get_array_elem_type((gcc.(type)), (gcc.(type)), (io.state), (io.state)).
+:- mode get_array_elem_type((builtin.in), (builtin.out), (builtin.di), (builtin.uo)) is det.
+:- pred get_struct_field_decls((gcc.(type)), (gcc.field_decls), (io.state), (io.state)).
+:- mode get_struct_field_decls((builtin.in), (builtin.out), (builtin.di), (builtin.uo)) is det.
+:- func gt_expr = (gcc.op).
+:- func hash_string_func_decl = (gcc.func_decl).
+:- func int16_type_node = (gcc.(type)).
+:- func int32_type_node = (gcc.(type)).
+:- func int64_type_node = (gcc.(type)).
+:- func int8_type_node = (gcc.(type)).
+:- func integer_type_node = (gcc.(type)).
+:- func intptr_type_node = (gcc.(type)).
+:- func jmpbuf_type_node = (gcc.(type)).
+:- func le_expr = (gcc.op).
+:- func longjmp_func_decl = (gcc.func_decl).
+:- func lshift_expr = (gcc.op).
+:- func lt_expr = (gcc.op).
+:- func minus_expr = (gcc.op).
+:- func mult_expr = (gcc.op).
+:- func ne_expr = (gcc.op).
+:- pred next_field_decl((gcc.field_decls), (gcc.field_decl), (gcc.field_decls), (io.state), (io.state)).
+:- mode next_field_decl((builtin.in), (builtin.out), (builtin.out), (builtin.di), (builtin.uo)) is det.
+:- func plus_expr = (gcc.op).
+:- pred pop_gc_context((io.state), (io.state)).
+:- mode pop_gc_context((builtin.di), (builtin.uo)) is det.
+:- func ptr_type_node = (gcc.(type)).
+:- pred push_gc_context((io.state), (io.state)).
+:- mode push_gc_context((builtin.di), (builtin.uo)) is det.
+:- func rdiv_expr = (gcc.op).
+:- func rshift_expr = (gcc.op).
+:- pred run_backend(string, int, (gcc.frontend_callback(T)), T, (io.state), (io.state)).
+:- mode run_backend((builtin.in), (builtin.out), builtin.in((gcc.frontend_callback)), (builtin.out), (builtin.di), (builtin.uo)) is det.
+:- pred set_context(string, int, (io.state), (io.state)).
+:- mode set_context((builtin.in), (builtin.in), (builtin.di), (builtin.uo)) is det.
+:- pred set_func_decl_public((gcc.func_decl), (io.state), (io.state)).
+:- mode set_func_decl_public((builtin.in), (builtin.di), (builtin.uo)) is det.
+:- pred set_var_decl_asm_name((gcc.var_decl), (gcc.var_name), (io.state), (io.state)).
+:- mode set_var_decl_asm_name((builtin.in), (builtin.in), (builtin.di), (builtin.uo)) is det.
+:- pred set_var_decl_public((gcc.var_decl), (io.state), (io.state)).
+:- mode set_var_decl_public((builtin.in), (builtin.di), (builtin.uo)) is det.
+:- pred set_var_decl_readonly((gcc.var_decl), (io.state), (io.state)).
+:- mode set_var_decl_readonly((builtin.in), (builtin.di), (builtin.uo)) is det.
+:- func setjmp_func_decl = (gcc.func_decl).
+:- pred start_block((io.state), (io.state)).
+:- mode start_block((builtin.di), (builtin.uo)) is det.
+:- pred start_function((gcc.func_decl), (io.state), (io.state)).
+:- mode start_function((builtin.in), (builtin.di), (builtin.uo)) is det.
+:- func strcmp_func_decl = (gcc.func_decl).
+:- func string_type_node = (gcc.(type)).
+:- pred struct_field_initializer((gcc.field_decl), (gcc.init_elem), (io.state), (io.state)).
+:- mode struct_field_initializer((builtin.in), (builtin.out), (builtin.di), (builtin.uo)) is det.
+:- func trunc_div_expr = (gcc.op).
+:- func trunc_mod_expr = (gcc.op).
+:- func truth_andif_expr = (gcc.op).
+:- func truth_not_expr = (gcc.op).
+:- func truth_orif_expr = (gcc.op).
+:- func var_expr((gcc.var_decl)) = (gcc.expr).
+:- func void_type_node = (gcc.(type)).
+:- implementation.
+:- type arg_list == (gcc.tree).
+:- type expr == (gcc.tree).
+:- type field_decl == (gcc.tree).
+:- type field_decls == (gcc.tree).
+:- type func_decl == (gcc.(type)).
+:- type init_elem == (gcc.tree).
+:- type init_list == (gcc.tree).
+:- type label == (gcc.tree).
+:- type op == (gcc.tree_code).
+:- type param_decls == (gcc.tree).
+:- type param_types == (gcc.tree).
+:- type tree_code == int.
+:- type (type) == (gcc.tree).
+:- type type_decl == (gcc.tree).
+:- type var_decl == (gcc.tree).

@@ -1,0 +1,9 @@
+:- module (ll_backend.liveness).
+:- interface.
+:- import_module io.
+:- import_module set.
+:- import_module (hlds.hlds_module).
+:- import_module (hlds.hlds_pred).
+:- import_module (parse_tree.prog_data).
+:- implementation.
+:- typeclass debug_liveness_io(T).

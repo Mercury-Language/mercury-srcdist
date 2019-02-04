@@ -1,0 +1,8 @@
+:- module (transform_hlds.size_prof).
+:- interface.
+:- import_module io.
+:- import_module (hlds.hlds_module).
+:- import_module (hlds.hlds_pred).
+:- type construct_transform
+	--->	term_words 
+	;	term_cells .

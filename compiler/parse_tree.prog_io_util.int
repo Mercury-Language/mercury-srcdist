@@ -1,0 +1,96 @@
+:- module (parse_tree.prog_io_util).
+:- interface.
+:- import_module assoc_list.
+:- import_module list.
+:- import_module map.
+:- import_module maybe.
+:- import_module pair.
+:- import_module term.
+:- import_module (mdbcomp.prim_data).
+:- import_module (parse_tree.prog_data).
+:- import_module (parse_tree.prog_item).
+:- type allow_constrained_inst_var
+	--->	allow_constrained_inst_var 
+	;	no_allow_constrained_inst_var .
+:- type maybe_functor == ((parse_tree.prog_io_util).maybe_functor((term.generic))).
+:- type maybe_item_and_context == ((parse_tree.prog_io_util).maybe2(((parse_tree.prog_item).item), ((parse_tree.prog_data).prog_context))).
+:- type var2pvar == (map.map((term.var), ((parse_tree.prog_data).prog_var))).
+:- type var2tvar == (map.map((term.var), ((parse_tree.prog_data).tvar))).
+:- type maybe_functor(T) == ((parse_tree.prog_io_util).maybe2(((mdbcomp.prim_data).sym_name), (list.list((term.term(T)))))).
+:- type maybe_pred_or_func(T) == ((parse_tree.prog_io_util).maybe2(((mdbcomp.prim_data).sym_name), (pair.pair((list.list(T)), (maybe.maybe(T)))))).
+:- type parser(T) == pred((term.term), ((parse_tree.prog_io_util).maybe1(T))).
+:- type maybe1(T1) == ((parse_tree.prog_io_util).maybe1(T1, (term.generic))).
+:- type maybe2(T1, T2) == ((parse_tree.prog_io_util).maybe2(T1, T2, (term.generic))).
+:- type maybe1(T1, U)
+	--->	error1((assoc_list.assoc_list(string, (term.term(U)))))
+	;	ok1(T1).
+:- type maybe3(T1, T2, T3) == ((parse_tree.prog_io_util).maybe3(T1, T2, T3, (term.generic))).
+:- type maybe2(T1, T2, U)
+	--->	error2((assoc_list.assoc_list(string, (term.term(U)))))
+	;	ok2(T1, T2).
+:- type maybe4(T1, T2, T3, T4) == ((parse_tree.prog_io_util).maybe4(T1, T2, T3, T4, (term.generic))).
+:- type maybe3(T1, T2, T3, U)
+	--->	error3((assoc_list.assoc_list(string, (term.term(U)))))
+	;	ok3(T1, T2, T3).
+:- type maybe4(T1, T2, T3, T4, U)
+	--->	error4((assoc_list.assoc_list(string, (term.term(U)))))
+	;	ok4(T1, T2, T3, T4).
+:- mode (parser) == (pred((builtin.in), (builtin.out)) is det).
+:- pred add_context(((parse_tree.prog_io_util).maybe1(((parse_tree.prog_item).item))), ((parse_tree.prog_data).prog_context), ((parse_tree.prog_io_util).maybe_item_and_context)).
+:- mode add_context((builtin.in), (builtin.in), (builtin.out)) is det.
+:- pred conjunction_to_list((term.term(T)), (list.list((term.term(T))))).
+:- mode conjunction_to_list((builtin.in), (builtin.out)) is det.
+:- pred convert_inst(((parse_tree.prog_io_util).allow_constrained_inst_var), (term.term), ((parse_tree.prog_data).mer_inst)).
+:- mode convert_inst((builtin.in), (builtin.in), (builtin.out)) is semidet.
+:- pred convert_inst_list(((parse_tree.prog_io_util).allow_constrained_inst_var), (list.list((term.term))), (list.list(((parse_tree.prog_data).mer_inst)))).
+:- mode convert_inst_list((builtin.in), (builtin.in), (builtin.out)) is semidet.
+:- pred convert_mode(((parse_tree.prog_io_util).allow_constrained_inst_var), (term.term), ((parse_tree.prog_data).mer_mode)).
+:- mode convert_mode((builtin.in), (builtin.in), (builtin.out)) is semidet.
+:- pred convert_mode_list(((parse_tree.prog_io_util).allow_constrained_inst_var), (list.list((term.term))), (list.list(((parse_tree.prog_data).mer_mode)))).
+:- mode convert_mode_list((builtin.in), (builtin.in), (builtin.out)) is semidet.
+:- pred disjunction_to_list((term.term(T)), (list.list((term.term(T))))).
+:- mode disjunction_to_list((builtin.in), (builtin.out)) is det.
+:- func get_any_errors1(((parse_tree.prog_io_util).maybe1(T1, U))) = (assoc_list.assoc_list(string, (term.term(U)))).
+:- func get_any_errors2(((parse_tree.prog_io_util).maybe2(T1, T2, U))) = (assoc_list.assoc_list(string, (term.term(U)))).
+:- func get_any_errors3(((parse_tree.prog_io_util).maybe3(T1, T2, T3, U))) = (assoc_list.assoc_list(string, (term.term(U)))).
+:- func get_any_errors4(((parse_tree.prog_io_util).maybe4(T1, T2, T3, T4, U))) = (assoc_list.assoc_list(string, (term.term(U)))).
+:- pred list_term_to_term_list((term.term), (list.list((term.term)))).
+:- mode list_term_to_term_list((builtin.in), (builtin.out)) is semidet.
+:- pred list_to_conjunction(((parse_tree.prog_data).prog_context), (term.term(T)), (list.list((term.term(T)))), (term.term(T))).
+:- mode list_to_conjunction((builtin.in), (builtin.in), (builtin.in), (builtin.out)) is det.
+:- pred map_parser(((parse_tree.prog_io_util).parser(T)), (list.list((term.term))), ((parse_tree.prog_io_util).maybe1((list.list(T))))).
+:- mode map_parser(((parse_tree.prog_io_util).parser), (builtin.in), (builtin.out)) is det.
+:- pred parse_list(((parse_tree.prog_io_util).parser(T)), (term.term), ((parse_tree.prog_io_util).maybe1((list.list(T))))).
+:- mode parse_list(((parse_tree.prog_io_util).parser), (builtin.in), (builtin.out)) is det.
+:- pred parse_list_of_vars((term.term(T)), (list.list((term.var(T))))).
+:- mode parse_list_of_vars((builtin.in), (builtin.out)) is semidet.
+:- pred parse_name_and_arity(((mdbcomp.prim_data).module_name), (term.term(_T)), ((mdbcomp.prim_data).sym_name), ((parse_tree.prog_data).arity)).
+:- mode parse_name_and_arity((builtin.in), (builtin.in), (builtin.out), (builtin.out)) is semidet.
+:- pred parse_name_and_arity((term.term(_T)), ((mdbcomp.prim_data).sym_name), ((parse_tree.prog_data).arity)).
+:- mode parse_name_and_arity((builtin.in), (builtin.out), (builtin.out)) is semidet.
+:- pred parse_pred_or_func_and_args((maybe.maybe(((mdbcomp.prim_data).module_name))), (term.term(_T)), (term.term(_T)), string, ((parse_tree.prog_io_util).maybe_pred_or_func((term.term(_T))))).
+:- mode parse_pred_or_func_and_args((builtin.in), (builtin.in), (builtin.in), (builtin.in), (builtin.out)) is det.
+:- pred parse_pred_or_func_and_args((term.term(_T)), ((mdbcomp.prim_data).pred_or_func), ((mdbcomp.prim_data).sym_name), (list.list((term.term(_T))))).
+:- mode parse_pred_or_func_and_args((builtin.in), (builtin.out), (builtin.out), (builtin.out)) is semidet.
+:- pred parse_pred_or_func_name_and_arity(((mdbcomp.prim_data).module_name), (term.term(_T)), ((mdbcomp.prim_data).pred_or_func), ((mdbcomp.prim_data).sym_name), ((parse_tree.prog_data).arity)).
+:- mode parse_pred_or_func_name_and_arity((builtin.in), (builtin.in), (builtin.out), (builtin.out), (builtin.out)) is semidet.
+:- pred parse_pred_or_func_name_and_arity((term.term(_T)), ((mdbcomp.prim_data).pred_or_func), ((mdbcomp.prim_data).sym_name), ((parse_tree.prog_data).arity)).
+:- mode parse_pred_or_func_name_and_arity((builtin.in), (builtin.out), (builtin.out), (builtin.out)) is semidet.
+:- pred parse_purity_annotation((term.term(T)), ((parse_tree.prog_data).purity), (term.term(T))).
+:- mode parse_purity_annotation((builtin.in), (builtin.out), (builtin.out)) is det.
+:- pred parse_quantifier_vars((term.term(T)), ((parse_tree.prog_io_util).maybe2((list.list((term.var(T)))), (list.list((term.var(T)))), T))).
+:- mode parse_quantifier_vars((builtin.in), (builtin.out)) is det.
+:- pred parse_type((term.term), ((parse_tree.prog_io_util).maybe1(((parse_tree.prog_data).mer_type)))).
+:- mode parse_type((builtin.in), (builtin.out)) is det.
+:- pred parse_types((list.list((term.term))), ((parse_tree.prog_io_util).maybe1((list.list(((parse_tree.prog_data).mer_type)))))).
+:- mode parse_types((builtin.in), (builtin.out)) is det.
+:- pred parse_vars((term.term(T)), ((parse_tree.prog_io_util).maybe1((list.list((term.var(T)))), T))).
+:- mode parse_vars((builtin.in), (builtin.out)) is det.
+:- pred parse_vars_and_state_vars((term.term(T)), ((parse_tree.prog_io_util).maybe3((list.list((term.var(T)))), (list.list((term.var(T)))), (list.list((term.var(T)))), T))).
+:- mode parse_vars_and_state_vars((builtin.in), (builtin.out)) is det.
+:- pred standard_det(string, ((parse_tree.prog_data).determinism)).
+:- mode standard_det((builtin.in), (builtin.out)) is semidet.
+:- pred sum_to_list((term.term(T)), (list.list((term.term(T))))).
+:- mode sum_to_list((builtin.in), (builtin.out)) is det.
+:- pred unparse_type(((parse_tree.prog_data).mer_type), (term.term)).
+:- mode unparse_type((builtin.in), (builtin.out)) is det.

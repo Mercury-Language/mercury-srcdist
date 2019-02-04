@@ -1,0 +1,29 @@
+:- module (backend_libs.name_mangle).
+:- interface.
+:- import_module bool.
+:- import_module io.
+:- import_module mdbcomp.
+:- import_module (backend_libs.rtti).
+:- import_module (mdbcomp.prim_data).
+:- func make_base_typeclass_info_name(((backend_libs.rtti).tc_name), string) = string.
+:- func mercury_common_type_prefix = string.
+:- func mercury_data_prefix = string.
+:- func mercury_label_prefix = string.
+:- func mercury_scalar_common_array_prefix = string.
+:- func mercury_var_prefix = string.
+:- func mercury_vector_common_array_prefix = string.
+:- pred name_doesnt_need_mangling(string).
+:- mode name_doesnt_need_mangling((builtin.in)) is semidet.
+:- pred output_base_typeclass_info_name(((backend_libs.rtti).tc_name), string, (io.io), (io.io)).
+:- mode output_base_typeclass_info_name((builtin.in), (builtin.in), (builtin.di), (builtin.uo)) is det.
+:- pred output_init_name(((mdbcomp.prim_data).module_name), (io.io), (io.io)).
+:- mode output_init_name((builtin.in), (builtin.di), (builtin.uo)) is det.
+:- pred output_proc_label(((mdbcomp.prim_data).proc_label), (io.io), (io.io)).
+:- mode output_proc_label((builtin.in), (builtin.di), (builtin.uo)) is det.
+:- pred output_proc_label_maybe_prefix(((mdbcomp.prim_data).proc_label), (bool.bool), (io.io), (io.io)).
+:- mode output_proc_label_maybe_prefix((builtin.in), (builtin.in), (builtin.di), (builtin.uo)) is det.
+:- pred output_proc_label_no_prefix(((mdbcomp.prim_data).proc_label), (io.io), (io.io)).
+:- mode output_proc_label_no_prefix((builtin.in), (builtin.di), (builtin.uo)) is det.
+:- func proc_label_to_c_string(((mdbcomp.prim_data).proc_label), (bool.bool)) = string.
+:- pred sym_name_doesnt_need_mangling(((mdbcomp.prim_data).sym_name)).
+:- mode sym_name_doesnt_need_mangling((builtin.in)) is semidet.

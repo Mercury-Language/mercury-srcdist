@@ -1,0 +1,19 @@
+:- module (transform_hlds.term_util).
+:- interface.
+:- import_module bag.
+:- import_module bool.
+:- import_module list.
+:- import_module map.
+:- import_module maybe.
+:- import_module unit.
+:- import_module (hlds.hlds_goal).
+:- import_module (hlds.hlds_module).
+:- import_module (hlds.hlds_pred).
+:- import_module (parse_tree.prog_data).
+:- import_module (transform_hlds.term_errors).
+:- import_module (transform_hlds.term_norm).
+:- type arg_size_info == ((parse_tree.prog_data).generic_arg_size_info(((transform_hlds.term_errors).termination_error_contexts))).
+:- type pass_info
+	--->	pass_info(((transform_hlds.term_norm).functor_info), int, int).
+:- type termination_info == ((parse_tree.prog_data).generic_termination_info((unit.unit), ((transform_hlds.term_errors).termination_error_contexts))).
+:- type used_args == (map.map(((hlds.hlds_pred).pred_proc_id), (list.list((bool.bool))))).

@@ -1,0 +1,28 @@
+:- module (parse_tree.modules).
+:- interface.
+:- import_module assoc_list.
+:- import_module bool.
+:- import_module digraph.
+:- import_module io.
+:- import_module list.
+:- import_module map.
+:- import_module maybe.
+:- import_module pair.
+:- import_module set.
+:- import_module (libs.globals).
+:- import_module (libs.timestamp).
+:- import_module (mdbcomp.prim_data).
+:- import_module (parse_tree.error_util).
+:- import_module (parse_tree.prog_data).
+:- import_module (parse_tree.prog_io).
+:- import_module (parse_tree.prog_item).
+:- type contains_foreign_code.
+:- type contains_foreign_export.
+:- type lookup_module_imports.
+:- type module_imports.
+:- type module_list.
+:- type module_timestamp.
+:- type module_timestamps.
+:- type read_module.
+:- type read_modules.
+:- mode (lookup_module_imports) == in((func(in) = out is det)).

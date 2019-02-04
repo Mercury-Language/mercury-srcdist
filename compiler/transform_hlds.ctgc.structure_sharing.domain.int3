@@ -1,0 +1,4 @@
+:- module (((transform_hlds.ctgc).structure_sharing).domain).
+:- interface.
+:- type sharing_as.
+:- type sharing_as_table.

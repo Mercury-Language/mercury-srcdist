@@ -1,0 +1,14 @@
+:- module svbimap.
+:- use_module bimap, builtin, private_builtin.
+svbimap.insert(K_5, V_6, Bimap0_7, Bimap_8) :-
+    bimap.insert(Bimap0_7, K_5, V_6, Bimap_8).
+svbimap.det_insert(K_5, V_6, Bimap0_7, Bimap_8) :-
+    bimap.det_insert(Bimap0_7, K_5, V_6, Bimap_8).
+svbimap.set(K_5, V_6, Bimap0_7, Bimap_8) :-
+    bimap.set(Bimap0_7, K_5, V_6, Bimap_8).
+:- pragma exceptions(predicate, (svbimap.insert), 4, 0, may_throw(user_exception)).
+:- pragma exceptions(predicate, (svbimap.det_insert), 4, 0, may_throw(user_exception)).
+:- pragma exceptions(predicate, (svbimap.set), 4, 0, may_throw(user_exception)).
+:- pragma termination_info(svbimap.insert((builtin.in), (builtin.in), (builtin.in), (builtin.out)), infinite, can_loop).
+:- pragma termination_info(svbimap.det_insert((builtin.in), (builtin.in), (builtin.in), (builtin.out)), infinite, can_loop).
+:- pragma termination_info(svbimap.set((builtin.in), (builtin.in), (builtin.in), (builtin.out)), infinite, can_loop).

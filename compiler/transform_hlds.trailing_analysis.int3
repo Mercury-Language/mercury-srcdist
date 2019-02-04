@@ -1,0 +1,11 @@
+:- module (transform_hlds.trailing_analysis).
+:- interface.
+:- import_module analysis.
+:- import_module io.
+:- import_module (hlds.hlds_module).
+:- import_module (hlds.hlds_pred).
+:- type trailing_analysis_answer.
+:- instance (analysis(any_call, ((transform_hlds.trailing_analysis).trailing_analysis_answer))).
+:- instance (answer_pattern(((transform_hlds.trailing_analysis).trailing_analysis_answer))).
+:- instance (partial_order(((transform_hlds.trailing_analysis).trailing_analysis_answer))).
+:- instance (to_string(((transform_hlds.trailing_analysis).trailing_analysis_answer))).

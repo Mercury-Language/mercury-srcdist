@@ -1,0 +1,158 @@
+:- module (parse_tree.prog_type).
+:- interface.
+:- import_module bool.
+:- import_module list.
+:- import_module map.
+:- import_module maybe.
+:- import_module set.
+:- import_module term.
+:- import_module (libs.globals).
+:- import_module (mdbcomp.prim_data).
+:- import_module (parse_tree.prog_data).
+:- type ctor_defn
+	--->	ctor_defn(((parse_tree.prog_type).ctor_tvars) :: ((parse_tree.prog_data).tvarset), ((parse_tree.prog_type).ctor_existq_tvars) :: ((parse_tree.prog_data).existq_tvars), ((parse_tree.prog_type).ctor_tvar_kinds) :: ((parse_tree.prog_data).tvar_kind_map), ((parse_tree.prog_type).ctor_constraints) :: (list.list(((parse_tree.prog_data).prog_constraint))), ((parse_tree.prog_type).ctor_arg_types) :: (list.list(((parse_tree.prog_data).mer_type))), ((parse_tree.prog_type).ctor_result_type) :: ((parse_tree.prog_data).mer_type)).
+:- type polymorphism_cell
+	--->	type_info_cell(((parse_tree.prog_data).type_ctor))
+	;	typeclass_info_cell .
+:- type type_category
+	--->	type_cat_int 
+	;	type_cat_char 
+	;	type_cat_string 
+	;	type_cat_float 
+	;	type_cat_higher_order 
+	;	type_cat_tuple 
+	;	type_cat_enum 
+	;	type_cat_foreign_enum 
+	;	type_cat_dummy 
+	;	type_cat_variable 
+	;	type_cat_type_info 
+	;	type_cat_type_ctor_info 
+	;	type_cat_typeclass_info 
+	;	type_cat_base_typeclass_info 
+	;	type_cat_void 
+	;	type_cat_user_ctor .
+:- pred apply_partial_map_to_list((map.map(T, T)), (list.list(T)), (list.list(T))).
+:- mode apply_partial_map_to_list((builtin.in), (builtin.in), (builtin.out)) is det.
+:- pred arg_type_list_subsumes(((parse_tree.prog_data).tvarset), (list.list(((parse_tree.prog_data).mer_type))), ((parse_tree.prog_data).tvarset), ((parse_tree.prog_data).tvar_kind_map), ((parse_tree.prog_data).existq_tvars), (list.list(((parse_tree.prog_data).mer_type)))).
+:- mode arg_type_list_subsumes((builtin.in), (builtin.in), (builtin.in), (builtin.in), (builtin.in), (builtin.in)) is semidet.
+:- func builtin_type_ctors_with_no_hlds_type_defn = (list.list(((parse_tree.prog_data).type_ctor))).
+:- func c_pointer_type = ((parse_tree.prog_data).mer_type).
+:- func cell_cons_id(((parse_tree.prog_type).polymorphism_cell)) = ((parse_tree.prog_data).cons_id).
+:- func cell_inst_cons_id(((parse_tree.prog_type).polymorphism_cell), int) = ((parse_tree.prog_data).cons_id).
+:- func char_type = ((parse_tree.prog_data).mer_type).
+:- func comparison_result_type = ((parse_tree.prog_data).mer_type).
+:- pred constraint_get_tvars(((parse_tree.prog_data).prog_constraint), (list.list(((parse_tree.prog_data).tvar)))).
+:- mode constraint_get_tvars((builtin.in), (builtin.out)) is det.
+:- pred constraint_list_get_tvars((list.list(((parse_tree.prog_data).prog_constraint))), (list.list(((parse_tree.prog_data).tvar)))).
+:- mode constraint_list_get_tvars((builtin.in), (builtin.out)) is det.
+:- pred construct_higher_order_func_type(((parse_tree.prog_data).purity), ((parse_tree.prog_data).lambda_eval_method), (list.list(((parse_tree.prog_data).mer_type))), ((parse_tree.prog_data).mer_type), ((parse_tree.prog_data).mer_type)).
+:- mode construct_higher_order_func_type((builtin.in), (builtin.in), (builtin.in), (builtin.in), (builtin.out)) is det.
+:- pred construct_higher_order_pred_type(((parse_tree.prog_data).purity), ((parse_tree.prog_data).lambda_eval_method), (list.list(((parse_tree.prog_data).mer_type))), ((parse_tree.prog_data).mer_type)).
+:- mode construct_higher_order_pred_type((builtin.in), (builtin.in), (builtin.in), (builtin.out)) is det.
+:- pred construct_higher_order_type(((parse_tree.prog_data).purity), ((mdbcomp.prim_data).pred_or_func), ((parse_tree.prog_data).lambda_eval_method), (list.list(((parse_tree.prog_data).mer_type))), ((parse_tree.prog_data).mer_type)).
+:- mode construct_higher_order_type((builtin.in), (builtin.in), (builtin.in), (builtin.in), (builtin.out)) is det.
+:- pred construct_type(((parse_tree.prog_data).type_ctor), (list.list(((parse_tree.prog_data).mer_type))), ((parse_tree.prog_data).mer_type)).
+:- mode construct_type((builtin.in), (builtin.in), (builtin.out)) is det.
+:- pred constructor_list_represents_dummy_argument_type((list.list(((parse_tree.prog_data).constructor))), (maybe.maybe(((parse_tree.prog_data).unify_compare)))).
+:- mode constructor_list_represents_dummy_argument_type((builtin.in), (builtin.in)) is semidet.
+:- func float_type = ((parse_tree.prog_data).mer_type).
+:- pred get_unconstrained_tvars((list.list(((parse_tree.prog_data).tvar))), (list.list(((parse_tree.prog_data).prog_constraint))), (list.list(((parse_tree.prog_data).tvar)))).
+:- mode get_unconstrained_tvars((builtin.in), (builtin.in), (builtin.out)) is det.
+:- func heap_pointer_type = ((parse_tree.prog_data).mer_type).
+:- func int_type = ((parse_tree.prog_data).mer_type).
+:- func io_state_type = ((parse_tree.prog_data).mer_type).
+:- pred is_builtin_dummy_argument_type(((parse_tree.prog_data).type_ctor)).
+:- mode is_builtin_dummy_argument_type((builtin.in)) is semidet.
+:- pred is_introduced_type_info_type(((parse_tree.prog_data).mer_type)).
+:- mode is_introduced_type_info_type((builtin.in)) is semidet.
+:- func is_introduced_type_info_type_category(((parse_tree.prog_type).type_category)) = (bool.bool).
+:- pred is_introduced_type_info_type_ctor(((parse_tree.prog_data).type_ctor)).
+:- mode is_introduced_type_info_type_ctor((builtin.in)) is semidet.
+:- pred is_region_var(((parse_tree.prog_data).vartypes), ((parse_tree.prog_data).prog_var)).
+:- mode is_region_var((builtin.in), (builtin.in)) is semidet.
+:- pred make_type_ctor((term.const), int, ((parse_tree.prog_data).type_ctor)).
+:- mode make_type_ctor((builtin.in), (builtin.in), (builtin.out)) is semidet.
+:- pred prog_constraints_get_tvars(((parse_tree.prog_data).prog_constraints), (list.list(((parse_tree.prog_data).tvar)))).
+:- mode prog_constraints_get_tvars((builtin.in), (builtin.out)) is det.
+:- func put_typeinfo_vars_first((list.list(((parse_tree.prog_data).prog_var))), ((parse_tree.prog_data).vartypes)) = (list.list(((parse_tree.prog_data).prog_var))).
+:- pred qualify_cons_id(((parse_tree.prog_data).mer_type), (list.list(((parse_tree.prog_data).prog_var))), ((parse_tree.prog_data).cons_id), ((parse_tree.prog_data).cons_id), ((parse_tree.prog_data).cons_id)).
+:- mode qualify_cons_id((builtin.in), (builtin.in), (builtin.in), (builtin.out), (builtin.out)) is det.
+:- func region_type = ((parse_tree.prog_data).mer_type).
+:- pred remove_new_prefix(((mdbcomp.prim_data).sym_name), ((mdbcomp.prim_data).sym_name)).
+:- mode remove_new_prefix((builtin.in), (builtin.out)) is semidet.
+:- mode remove_new_prefix((builtin.out), (builtin.in)) is det.
+:- func remove_typeinfo_vars(((parse_tree.prog_data).vartypes), (list.list(((parse_tree.prog_data).prog_var)))) = (list.list(((parse_tree.prog_data).prog_var))).
+:- func remove_typeinfo_vars_from_set(((parse_tree.prog_data).vartypes), (set.set(((parse_tree.prog_data).prog_var)))) = (set.set(((parse_tree.prog_data).prog_var))).
+:- func sample_type_info_type = ((parse_tree.prog_data).mer_type).
+:- func sample_typeclass_info_type = ((parse_tree.prog_data).mer_type).
+:- func string_type = ((parse_tree.prog_data).mer_type).
+:- pred strip_builtin_qualifiers_from_type(((parse_tree.prog_data).mer_type), ((parse_tree.prog_data).mer_type)).
+:- mode strip_builtin_qualifiers_from_type((builtin.in), (builtin.out)) is det.
+:- pred strip_builtin_qualifiers_from_type_list((list.list(((parse_tree.prog_data).mer_type))), (list.list(((parse_tree.prog_data).mer_type)))).
+:- mode strip_builtin_qualifiers_from_type_list((builtin.in), (builtin.out)) is det.
+:- func strip_kind_annotation(((parse_tree.prog_data).mer_type)) = ((parse_tree.prog_data).mer_type).
+:- pred subst_type_is_ground(((parse_tree.prog_data).mer_type), ((parse_tree.prog_data).tsubst)).
+:- mode subst_type_is_ground((builtin.in), (builtin.in)) is semidet.
+:- pred subst_type_is_nonground(((parse_tree.prog_data).mer_type), ((parse_tree.prog_data).tsubst)).
+:- mode subst_type_is_nonground((builtin.in), (builtin.in)) is semidet.
+:- pred type_constructors_are_no_tag_type((list.list(((parse_tree.prog_data).constructor))), ((mdbcomp.prim_data).sym_name), ((parse_tree.prog_data).mer_type), (maybe.maybe(string))).
+:- mode type_constructors_are_no_tag_type((builtin.in), (builtin.out), (builtin.out), (builtin.out)) is semidet.
+:- pred type_constructors_are_type_info((list.list(((parse_tree.prog_data).constructor)))).
+:- mode type_constructors_are_type_info((builtin.in)) is semidet.
+:- pred type_contains_var(((parse_tree.prog_data).mer_type), ((parse_tree.prog_data).tvar)).
+:- mode type_contains_var((builtin.in), (builtin.out)) is nondet.
+:- func type_ctor_info_type = ((parse_tree.prog_data).mer_type).
+:- pred type_ctor_is_array(((parse_tree.prog_data).type_ctor)).
+:- mode type_ctor_is_array((builtin.in)) is semidet.
+:- pred type_ctor_is_bitmap(((parse_tree.prog_data).type_ctor)).
+:- mode type_ctor_is_bitmap((builtin.in)) is semidet.
+:- pred type_ctor_is_higher_order(((parse_tree.prog_data).type_ctor), ((parse_tree.prog_data).purity), ((mdbcomp.prim_data).pred_or_func), ((parse_tree.prog_data).lambda_eval_method)).
+:- mode type_ctor_is_higher_order((builtin.in), (builtin.out), (builtin.out), (builtin.out)) is semidet.
+:- pred type_ctor_is_tuple(((parse_tree.prog_data).type_ctor)).
+:- mode type_ctor_is_tuple((builtin.in)) is semidet.
+:- pred type_has_variable_arity_ctor(((parse_tree.prog_data).mer_type), ((parse_tree.prog_data).type_ctor), (list.list(((parse_tree.prog_data).mer_type)))).
+:- mode type_has_variable_arity_ctor((builtin.in), (builtin.out), (builtin.out)) is semidet.
+:- func type_info_type = ((parse_tree.prog_data).mer_type).
+:- pred type_is_ground(((parse_tree.prog_data).mer_type)).
+:- mode type_is_ground((builtin.in)) is semidet.
+:- pred type_is_higher_order(((parse_tree.prog_data).mer_type)).
+:- mode type_is_higher_order((builtin.in)) is semidet.
+:- pred type_is_higher_order_details(((parse_tree.prog_data).mer_type), ((parse_tree.prog_data).purity), ((mdbcomp.prim_data).pred_or_func), ((parse_tree.prog_data).lambda_eval_method), (list.list(((parse_tree.prog_data).mer_type)))).
+:- mode type_is_higher_order_details((builtin.in), (builtin.out), (builtin.out), (builtin.out), (builtin.out)) is semidet.
+:- pred type_is_io_state(((parse_tree.prog_data).mer_type)).
+:- mode type_is_io_state((builtin.in)) is semidet.
+:- pred type_is_nonground(((parse_tree.prog_data).mer_type)).
+:- mode type_is_nonground((builtin.in)) is semidet.
+:- pred type_is_nonvar(((parse_tree.prog_data).mer_type)).
+:- mode type_is_nonvar((builtin.in)) is semidet.
+:- pred type_is_tuple(((parse_tree.prog_data).mer_type), (list.list(((parse_tree.prog_data).mer_type)))).
+:- mode type_is_tuple((builtin.in), (builtin.out)) is semidet.
+:- pred type_is_var(((parse_tree.prog_data).mer_type)).
+:- mode type_is_var((builtin.in)) is semidet.
+:- pred type_list_contains_var((list.list(((parse_tree.prog_data).mer_type))), ((parse_tree.prog_data).tvar)).
+:- mode type_list_contains_var((builtin.in), (builtin.out)) is nondet.
+:- pred type_list_subsumes((list.list(((parse_tree.prog_data).mer_type))), (list.list(((parse_tree.prog_data).mer_type))), ((parse_tree.prog_data).tsubst)).
+:- mode type_list_subsumes((builtin.in), (builtin.in), (builtin.out)) is semidet.
+:- pred type_list_subsumes_det((list.list(((parse_tree.prog_data).mer_type))), (list.list(((parse_tree.prog_data).mer_type))), ((parse_tree.prog_data).tsubst)).
+:- mode type_list_subsumes_det((builtin.in), (builtin.in), (builtin.out)) is det.
+:- pred type_list_to_var_list((list.list(((parse_tree.prog_data).mer_type))), (list.list(((parse_tree.prog_data).tvar)))).
+:- mode type_list_to_var_list((builtin.in), (builtin.out)) is semidet.
+:- pred type_to_ctor_and_args(((parse_tree.prog_data).mer_type), ((parse_tree.prog_data).type_ctor), (list.list(((parse_tree.prog_data).mer_type)))).
+:- mode type_to_ctor_and_args((builtin.in), (builtin.out), (builtin.out)) is semidet.
+:- pred type_to_ctor_and_args_det(((parse_tree.prog_data).mer_type), ((parse_tree.prog_data).type_ctor), (list.list(((parse_tree.prog_data).mer_type)))).
+:- mode type_to_ctor_and_args_det((builtin.in), (builtin.out), (builtin.out)) is det.
+:- pred type_to_ctor_det(((parse_tree.prog_data).mer_type), ((parse_tree.prog_data).type_ctor)).
+:- mode type_to_ctor_det((builtin.in), (builtin.out)) is det.
+:- pred type_unify(((parse_tree.prog_data).mer_type), ((parse_tree.prog_data).mer_type), (list.list(((parse_tree.prog_data).tvar))), ((parse_tree.prog_data).tsubst), ((parse_tree.prog_data).tsubst)).
+:- mode type_unify((builtin.in), (builtin.in), (builtin.in), (builtin.in), (builtin.out)) is semidet.
+:- pred type_unify_list((list.list(((parse_tree.prog_data).mer_type))), (list.list(((parse_tree.prog_data).mer_type))), (list.list(((parse_tree.prog_data).tvar))), ((parse_tree.prog_data).tsubst), ((parse_tree.prog_data).tsubst)).
+:- mode type_unify_list((builtin.in), (builtin.in), (builtin.in), (builtin.in), (builtin.out)) is semidet.
+:- pred type_vars(((parse_tree.prog_data).mer_type), (list.list(((parse_tree.prog_data).tvar)))).
+:- mode type_vars((builtin.in), (builtin.out)) is det.
+:- pred type_vars_list((list.list(((parse_tree.prog_data).mer_type))), (list.list(((parse_tree.prog_data).tvar)))).
+:- mode type_vars_list((builtin.in), (builtin.out)) is det.
+:- pred type_with_constructors_should_be_no_tag(((libs.globals).globals), ((parse_tree.prog_data).type_ctor), (bool.bool), (list.list(((parse_tree.prog_data).constructor))), (maybe.maybe(((parse_tree.prog_data).unify_compare))), ((mdbcomp.prim_data).sym_name), ((parse_tree.prog_data).mer_type), (maybe.maybe(string))).
+:- mode type_with_constructors_should_be_no_tag((builtin.in), (builtin.in), (builtin.in), (builtin.in), (builtin.in), (builtin.out), (builtin.out), (builtin.out)) is semidet.
+:- pred var_list_to_type_list(((parse_tree.prog_data).tvar_kind_map), (list.list(((parse_tree.prog_data).tvar))), (list.list(((parse_tree.prog_data).mer_type)))).
+:- mode var_list_to_type_list((builtin.in), (builtin.in), (builtin.out)) is det.
+:- func void_type = ((parse_tree.prog_data).mer_type).
