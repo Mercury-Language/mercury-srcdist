@@ -1,0 +1,18 @@
+:- module (ll_backend.string_switch).
+:- interface.
+:- import_module list.
+:- import_module (hlds.code_model).
+:- import_module (hlds.hlds_goal).
+:- import_module (hlds.hlds_llds).
+:- import_module (ll_backend.code_info).
+:- import_module (ll_backend.llds).
+:- import_module (ll_backend.lookup_switch).
+:- import_module (parse_tree.prog_data).
+:- pred generate_string_binary_lookup_switch(ll_backend.llds.rval, ll_backend.lookup_switch.lookup_switch_info(string), parse_tree.prog_data.can_fail, ll_backend.llds.label, hlds.hlds_llds.abs_store_map, ll_backend.code_info.branch_end, ll_backend.code_info.branch_end, ll_backend.llds.llds_code, ll_backend.code_info.code_info, ll_backend.code_info.code_info).
+:- mode generate_string_binary_lookup_switch((builtin.in), (builtin.in), (builtin.in), (builtin.in), (builtin.in), (builtin.in), (builtin.out), (builtin.out), (builtin.in), (builtin.out)) is det.
+:- pred generate_string_binary_switch(list.list(hlds.hlds_goal.tagged_case), ll_backend.llds.rval, string, hlds.code_model.code_model, parse_tree.prog_data.can_fail, hlds.hlds_goal.hlds_goal_info, ll_backend.llds.label, ll_backend.code_info.branch_end, ll_backend.llds.llds_code, ll_backend.code_info.code_info, ll_backend.code_info.code_info).
+:- mode generate_string_binary_switch((builtin.in), (builtin.in), (builtin.in), (builtin.in), (builtin.in), (builtin.in), (builtin.in), (builtin.out), (builtin.out), (builtin.in), (builtin.out)) is det.
+:- pred generate_string_hash_lookup_switch(ll_backend.llds.rval, ll_backend.lookup_switch.lookup_switch_info(string), parse_tree.prog_data.can_fail, ll_backend.llds.label, hlds.hlds_llds.abs_store_map, ll_backend.code_info.branch_end, ll_backend.code_info.branch_end, ll_backend.llds.llds_code, ll_backend.code_info.code_info, ll_backend.code_info.code_info).
+:- mode generate_string_hash_lookup_switch((builtin.in), (builtin.in), (builtin.in), (builtin.in), (builtin.in), (builtin.in), (builtin.out), (builtin.out), (builtin.in), (builtin.out)) is det.
+:- pred generate_string_hash_switch(list.list(hlds.hlds_goal.tagged_case), ll_backend.llds.rval, string, hlds.code_model.code_model, parse_tree.prog_data.can_fail, hlds.hlds_goal.hlds_goal_info, ll_backend.llds.label, ll_backend.code_info.branch_end, ll_backend.llds.llds_code, ll_backend.code_info.code_info, ll_backend.code_info.code_info).
+:- mode generate_string_hash_switch((builtin.in), (builtin.in), (builtin.in), (builtin.in), (builtin.in), (builtin.in), (builtin.in), (builtin.out), (builtin.out), (builtin.in), (builtin.out)) is det.

@@ -1,0 +1,67 @@
+:- module dir.
+:- interface.
+:- import_module bool.
+:- import_module io.
+:- import_module list.
+:- type foldl_pred(T) == pred(string, string, io.file_type, bool.bool, T, T, io.io, io.io).
+:- inst (foldl_pred) == (pred((builtin.in), (builtin.in), (builtin.in), (builtin.out), (builtin.in), (builtin.out), (builtin.di), (builtin.uo)) is det).
+:- pragma obsolete((dir.basename_det)/1).
+:- func /(string, string) = string.
+:- func basename(string) = string is semidet.
+:- pred basename(string, string).
+:- mode basename((builtin.in), (builtin.out)) is semidet.
+:- func basename_det(string) = string.
+:- pred current_directory(io.res(string), io.io, io.io).
+:- mode current_directory((builtin.out), (builtin.di), (builtin.uo)) is det.
+:- func det_basename(string) = string.
+:- func directory_separator = character.
+:- pred directory_separator(character).
+:- mode directory_separator((builtin.out)) is det.
+:- func dirname(string) = string.
+:- pred dirname(string, string).
+:- mode dirname((builtin.in), (builtin.out)) is det.
+:- func expand_braces(string) = list.list(string).
+:- pred foldl2(dir.foldl_pred(T), string, T, io.maybe_partial_res(T), io.io, io.io).
+:- mode foldl2(builtin.in((dir.foldl_pred)), (builtin.in), (builtin.in), (builtin.out), (builtin.di), (builtin.uo)) is det.
+:- pred is_directory_separator(character).
+:- mode is_directory_separator((builtin.in)) is semidet.
+:- mode is_directory_separator((builtin.out)) is multi.
+:- pred make_directory(string, io.res, io.io, io.io).
+:- mode make_directory((builtin.in), (builtin.out), (builtin.di), (builtin.uo)) is det.
+:- func make_path_name(string, string) = string.
+:- pred make_single_directory(string, io.res, io.io, io.io).
+:- mode make_single_directory((builtin.in), (builtin.out), (builtin.di), (builtin.uo)) is det.
+:- func parent_directory = string.
+:- pred parent_directory(string).
+:- mode parent_directory((builtin.out)) is det.
+:- pred path_name_is_absolute(string).
+:- mode path_name_is_absolute((builtin.in)) is semidet.
+:- pred path_name_is_root_directory(string).
+:- mode path_name_is_root_directory((builtin.in)) is semidet.
+:- pred recursive_foldl2(dir.foldl_pred(T), string, bool.bool, T, io.maybe_partial_res(T), io.io, io.io).
+:- mode recursive_foldl2(builtin.in((dir.foldl_pred)), (builtin.in), (builtin.in), (builtin.in), (builtin.out), (builtin.di), (builtin.uo)) is det.
+:- func relative_path_name_from_components(list.list(string)) = string.
+:- pred split_name(string, string, string).
+:- mode split_name((builtin.in), (builtin.out), (builtin.out)) is semidet.
+:- func this_directory = string.
+:- pred this_directory(string).
+:- mode this_directory((builtin.out)) is det.
+:- pred use_windows_paths is semidet.
+:- implementation.
+:- type stream
+	--->	stream .
+:- pragma foreign_type(il, stream, "class [mscorlib]System.Collections.IEnumerator").
+:- pragma foreign_type(c, stream, "ML_DIR_STREAM").
+:- pragma foreign_type(java, stream, "java.util.Iterator").
+:- pragma foreign_type(csharp, stream, "System.Collections.IEnumerator").
+:- pragma foreign_type(erlang, stream, "").
+:- pragma foreign_import_module("C", dir).
+:- pragma foreign_import_module("C#", dir).
+:- pragma foreign_import_module("Java", dir).
+:- pragma foreign_import_module("IL", dir).
+:- pragma foreign_import_module("Erlang", dir).
+:- pragma foreign_import_module("C", dir).
+:- pragma foreign_import_module("C#", dir).
+:- pragma foreign_import_module("Java", dir).
+:- pragma foreign_import_module("IL", dir).
+:- pragma foreign_import_module("Erlang", dir).

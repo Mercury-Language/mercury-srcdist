@@ -1,0 +1,20 @@
+:- module (ll_backend.prog_rep).
+:- interface.
+:- import_module list.
+:- import_module map.
+:- import_module pair.
+:- import_module (hlds.hlds_goal).
+:- import_module (hlds.hlds_module).
+:- import_module (hlds.instmap).
+:- import_module (ll_backend.stack_layout).
+:- import_module (mdbcomp.program_representation).
+:- import_module (parse_tree.prog_data).
+:- type flatten_par_conjs
+	--->	flatten_par_conjs 
+	;	expect_no_par_conjs .
+:- type include_variable_table
+	--->	include_variable_table 
+	;	do_not_include_variable_table .
+:- type prog_rep_info
+	--->	prog_rep_info(((ll_backend.prog_rep).pri_filename) :: string, ((ll_backend.prog_rep).pri_vartypes) :: parse_tree.prog_data.vartypes, ((ll_backend.prog_rep).pri_var_num_map) :: ll_backend.prog_rep.var_num_map, ((ll_backend.prog_rep).pri_var_num_rep) :: mdbcomp.program_representation.var_num_rep, ((ll_backend.prog_rep).pri_module_info) :: hlds.hlds_module.module_info, ((ll_backend.prog_rep).pri_flatten_par_conjs) :: ll_backend.prog_rep.flatten_par_conjs).
+:- type var_num_map == map.map(parse_tree.prog_data.prog_var, pair.pair(int, string)).

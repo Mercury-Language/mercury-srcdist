@@ -1,0 +1,27 @@
+:- module (check_hlds.delay_info).
+:- interface.
+:- import_module hlds.
+:- import_module list.
+:- import_module parse_tree.
+:- import_module (check_hlds.mode_errors).
+:- import_module (hlds.hlds_goal).
+:- import_module (parse_tree.prog_data).
+:- type delay_info.
+:- pred delay_info_bind_all_vars(check_hlds.delay_info.delay_info, check_hlds.delay_info.delay_info).
+:- mode delay_info_bind_all_vars((builtin.in), (builtin.out)) is det.
+:- pred delay_info_bind_var(parse_tree.prog_data.prog_var, check_hlds.delay_info.delay_info, check_hlds.delay_info.delay_info).
+:- mode delay_info_bind_var((builtin.in), (builtin.in), (builtin.out)) is det.
+:- pred delay_info_bind_var_list(list.list(parse_tree.prog_data.prog_var), check_hlds.delay_info.delay_info, check_hlds.delay_info.delay_info).
+:- mode delay_info_bind_var_list((builtin.in), (builtin.in), (builtin.out)) is det.
+:- pred delay_info_check_invariant(check_hlds.delay_info.delay_info).
+:- mode delay_info_check_invariant((builtin.in)) is det.
+:- pred delay_info_delay_goal(check_hlds.mode_errors.mode_error_info, hlds.hlds_goal.hlds_goal, check_hlds.delay_info.delay_info, check_hlds.delay_info.delay_info).
+:- mode delay_info_delay_goal((builtin.in), (builtin.in), (builtin.in), (builtin.out)) is det.
+:- pred delay_info_enter_conj(check_hlds.delay_info.delay_info, check_hlds.delay_info.delay_info).
+:- mode delay_info_enter_conj((builtin.in), (builtin.out)) is det.
+:- pred delay_info_init(check_hlds.delay_info.delay_info).
+:- mode delay_info_init((builtin.out)) is det.
+:- pred delay_info_leave_conj(check_hlds.delay_info.delay_info, list.list(check_hlds.mode_errors.delayed_goal), check_hlds.delay_info.delay_info).
+:- mode delay_info_leave_conj((builtin.in), (builtin.out), (builtin.out)) is det.
+:- pred delay_info_wakeup_goals(list.list(hlds.hlds_goal.hlds_goal), check_hlds.delay_info.delay_info, check_hlds.delay_info.delay_info).
+:- mode delay_info_wakeup_goals((builtin.out), (builtin.in), (builtin.out)) is det.

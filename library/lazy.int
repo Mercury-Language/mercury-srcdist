@@ -1,0 +1,12 @@
+:- module lazy.
+:- interface.
+:- type lazy(T).
+:- pred compare_values(builtin.comparison_result, lazy.lazy(T), lazy.lazy(T)).
+:- mode compare_values((builtin.uo), (builtin.in), (builtin.in)) is det.
+:- func delay(((func) = T)) = lazy.lazy(T).
+:- pred equal_values(lazy.lazy(T), lazy.lazy(T)).
+:- mode equal_values((builtin.in), (builtin.in)) is semidet.
+:- func force(lazy.lazy(T)) = T.
+:- pred read_if_val(lazy.lazy(T), T).
+:- mode read_if_val((builtin.in), (builtin.out)) is semidet.
+:- func val(T) = lazy.lazy(T).

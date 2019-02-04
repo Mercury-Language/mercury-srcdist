@@ -1,0 +1,16 @@
+:- module (transform_hlds.pd_cost).
+:- interface.
+:- import_module (hlds.hlds_goal).
+:- func cost_of_builtin_call = int.
+:- func cost_of_call = int.
+:- func cost_of_eliminate_switch = int.
+:- func cost_of_fold = int.
+:- func cost_of_heap_assign = int.
+:- func cost_of_heap_incr = int.
+:- func cost_of_higher_order_call = int.
+:- func cost_of_recursive_fold = int.
+:- func cost_of_reg_assign = int.
+:- func cost_of_simple_test = int.
+:- func cost_of_stack_flush = int.
+:- pred goal_cost(hlds.hlds_goal.hlds_goal, int).
+:- mode goal_cost((builtin.in), (builtin.out)) is det.
