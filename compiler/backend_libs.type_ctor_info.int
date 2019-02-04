@@ -1,0 +1,11 @@
+:- module (backend_libs.type_ctor_info).
+:- interface.
+:- import_module hlds.
+:- import_module list.
+:- import_module (backend_libs.rtti).
+:- import_module (hlds.hlds_module).
+:- func compute_contains_var_bit_vector(list.list(backend_libs.rtti.rtti_maybe_pseudo_type_info_or_self)) = int.
+:- pred generate_hlds(hlds.hlds_module.module_info, hlds.hlds_module.module_info).
+:- mode generate_hlds((builtin.in), (builtin.out)) is det.
+:- pred generate_rtti(hlds.hlds_module.module_info, list.list(backend_libs.rtti.rtti_data)).
+:- mode generate_rtti((builtin.in), (builtin.out)) is det.

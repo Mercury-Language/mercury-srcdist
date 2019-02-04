@@ -1,0 +1,13 @@
+:- module (libs.pickle).
+:- interface.
+:- import_module io.
+:- import_module type_desc.
+:- import_module univ.
+:- type pickler_pred.
+:- type picklers.
+:- type unpickle_handle.
+:- type unpickle_state.
+:- type unpickler_pred.
+:- type unpicklers.
+:- inst (pickler_pred) == (pred(in, in, di, uo) is det).
+:- inst (unpickler_pred) == (pred(in, in, in, out, di, uo) is det).
