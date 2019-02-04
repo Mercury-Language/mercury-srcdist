@@ -1,0 +1,58 @@
+:- module svbag.
+:- use_module bag, builtin, list, private_builtin, set, term.
+svbag.insert(Item_4, STATE_VARIABLE_Bag_0_6, STATE_VARIABLE_Bag_7) :-
+    bag.insert(Item_4, STATE_VARIABLE_Bag_0_6, STATE_VARIABLE_Bag_7).
+svbag.insert_list(List_4, STATE_VARIABLE_Bag_0_6, STATE_VARIABLE_Bag_7) :-
+    bag.insert_list(List_4, STATE_VARIABLE_Bag_0_6, STATE_VARIABLE_Bag_7).
+svbag.insert_set(Set_4, STATE_VARIABLE_Bag_0_6, STATE_VARIABLE_Bag_7) :-
+    bag.insert_set(Set_4, STATE_VARIABLE_Bag_0_6, STATE_VARIABLE_Bag_7).
+svbag.remove(Item_4, STATE_VARIABLE_Bag_0_6, STATE_VARIABLE_Bag_7) :-
+    bag.remove(Item_4, STATE_VARIABLE_Bag_0_6, STATE_VARIABLE_Bag_7).
+svbag.det_remove(Item_4, STATE_VARIABLE_Bag_0_6, STATE_VARIABLE_Bag_7) :-
+    bag.det_remove(Item_4, STATE_VARIABLE_Bag_0_6, STATE_VARIABLE_Bag_7).
+svbag.remove_list(List_4, STATE_VARIABLE_Bag_0_6, STATE_VARIABLE_Bag_7) :-
+    bag.remove_list(List_4, STATE_VARIABLE_Bag_0_6, STATE_VARIABLE_Bag_7).
+svbag.det_remove_list(List_4, STATE_VARIABLE_Bag_0_6, STATE_VARIABLE_Bag_7) :-
+    bag.det_remove_list(List_4, STATE_VARIABLE_Bag_0_6, STATE_VARIABLE_Bag_7).
+svbag.remove_set(Set_4, STATE_VARIABLE_Bag_0_6, STATE_VARIABLE_Bag_7) :-
+    bag.remove_set(Set_4, STATE_VARIABLE_Bag_0_6, STATE_VARIABLE_Bag_7).
+svbag.det_remove_set(Set_4, STATE_VARIABLE_Bag_0_6, STATE_VARIABLE_Bag_7) :-
+    bag.det_remove_set(Set_4, STATE_VARIABLE_Bag_0_6, STATE_VARIABLE_Bag_7).
+svbag.delete(Item_4, STATE_VARIABLE_Bag_0_6, STATE_VARIABLE_Bag_7) :-
+    bag.delete(Item_4, STATE_VARIABLE_Bag_0_6, STATE_VARIABLE_Bag_7).
+svbag.remove_all(Item_4, STATE_VARIABLE_Bag_0_6, STATE_VARIABLE_Bag_7) :-
+    bag.remove_all(Item_4, STATE_VARIABLE_Bag_0_6, STATE_VARIABLE_Bag_7).
+svbag.delete_all(Item_4, STATE_VARIABLE_Bag_0_6, STATE_VARIABLE_Bag_7) :-
+    bag.delete_all(Item_4, STATE_VARIABLE_Bag_0_6, STATE_VARIABLE_Bag_7).
+svbag.subtract(SubBag_4, STATE_VARIABLE_Bag_0_6, STATE_VARIABLE_Bag_7) :-
+    bag.subtract(SubBag_4, STATE_VARIABLE_Bag_0_6, STATE_VARIABLE_Bag_7).
+svbag.remove_smallest(Item_4, STATE_VARIABLE_Bag_0_6, STATE_VARIABLE_Bag_7) :-
+    bag.remove_smallest(Item_4, STATE_VARIABLE_Bag_0_6, STATE_VARIABLE_Bag_7).
+:- pragma exceptions(predicate, (svbag.insert), 3, 0, may_throw(user_exception)).
+:- pragma exceptions(predicate, (svbag.insert_list), 3, 0, may_throw(user_exception)).
+:- pragma exceptions(predicate, (svbag.insert_set), 3, 0, may_throw(user_exception)).
+:- pragma exceptions(predicate, (svbag.remove), 3, 0, may_throw(user_exception)).
+:- pragma exceptions(predicate, (svbag.det_remove), 3, 0, may_throw(user_exception)).
+:- pragma exceptions(predicate, (svbag.remove_list), 3, 0, may_throw(user_exception)).
+:- pragma exceptions(predicate, (svbag.det_remove_list), 3, 0, may_throw(user_exception)).
+:- pragma exceptions(predicate, (svbag.remove_set), 3, 0, may_throw(user_exception)).
+:- pragma exceptions(predicate, (svbag.det_remove_set), 3, 0, may_throw(user_exception)).
+:- pragma exceptions(predicate, (svbag.delete), 3, 0, may_throw(user_exception)).
+:- pragma exceptions(predicate, (svbag.remove_all), 3, 0, may_throw(user_exception)).
+:- pragma exceptions(predicate, (svbag.delete_all), 3, 0, may_throw(user_exception)).
+:- pragma exceptions(predicate, (svbag.subtract), 3, 0, may_throw(user_exception)).
+:- pragma exceptions(predicate, (svbag.remove_smallest), 3, 0, may_throw(user_exception)).
+:- pragma termination_info(svbag.insert((builtin.in), (builtin.in), (builtin.out)), infinite, can_loop).
+:- pragma termination_info(svbag.insert_list((builtin.in), (builtin.in), (builtin.out)), infinite, can_loop).
+:- pragma termination_info(svbag.insert_set((builtin.in), (builtin.in), (builtin.out)), infinite, can_loop).
+:- pragma termination_info(svbag.remove((builtin.in), (builtin.in), (builtin.out)), infinite, can_loop).
+:- pragma termination_info(svbag.det_remove((builtin.in), (builtin.in), (builtin.out)), infinite, can_loop).
+:- pragma termination_info(svbag.remove_list((builtin.in), (builtin.in), (builtin.out)), infinite, can_loop).
+:- pragma termination_info(svbag.det_remove_list((builtin.in), (builtin.in), (builtin.out)), infinite, can_loop).
+:- pragma termination_info(svbag.remove_set((builtin.in), (builtin.in), (builtin.out)), infinite, can_loop).
+:- pragma termination_info(svbag.det_remove_set((builtin.in), (builtin.in), (builtin.out)), infinite, can_loop).
+:- pragma termination_info(svbag.delete((builtin.in), (builtin.in), (builtin.out)), infinite, can_loop).
+:- pragma termination_info(svbag.remove_all((builtin.in), (builtin.in), (builtin.out)), infinite, can_loop).
+:- pragma termination_info(svbag.delete_all((builtin.in), (builtin.in), (builtin.out)), infinite, can_loop).
+:- pragma termination_info(svbag.subtract((builtin.in), (builtin.in), (builtin.out)), infinite, can_loop).
+:- pragma termination_info(svbag.remove_smallest((builtin.out), (builtin.in), (builtin.out)), infinite, can_loop).

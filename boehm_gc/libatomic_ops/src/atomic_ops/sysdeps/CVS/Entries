@@ -1,0 +1,34 @@
+/.cvsignore/1.1/Fri Jul 30 13:30:24 2010//
+/Makefile.am/1.1.1.1/Tue Feb 23 06:28:40 2010//
+/Makefile.in/1.1.1.1/Tue Feb 23 06:28:41 2010//
+/README/1.1.1.1/Tue Feb 23 06:28:40 2010//
+/acquire_release_volatile.h/1.1.1.1/Tue Feb 23 06:28:40 2010//
+/aligned_atomic_load_store.h/1.1.1.1/Tue Feb 23 06:28:41 2010//
+/all_acquire_release_volatile.h/1.1.1.1/Tue Feb 23 06:28:40 2010//
+/all_aligned_atomic_load_store.h/1.1.1.1/Tue Feb 23 06:28:41 2010//
+/all_atomic_load_store.h/1.1.1.1/Tue Feb 23 06:28:40 2010//
+/ao_t_is_int.h/1.1.1.1/Tue Feb 23 06:28:41 2010//
+/atomic_load_store.h/1.1.1.1/Tue Feb 23 06:28:40 2010//
+/char_acquire_release_volatile.h/1.1.1.1/Tue Feb 23 06:28:41 2010//
+/char_atomic_load_store.h/1.1.1.1/Tue Feb 23 06:28:40 2010//
+/emul_cas.h/1.1.1.1/Tue Feb 23 06:28:41 2010//
+/generic_pthread.h/1.1.1.1/Tue Feb 23 06:28:40 2010//
+/int_acquire_release_volatile.h/1.1.1.1/Tue Feb 23 06:28:41 2010//
+/int_aligned_atomic_load_store.h/1.1.1.1/Tue Feb 23 06:28:40 2010//
+/int_atomic_load_store.h/1.1.1.1/Tue Feb 23 06:28:40 2010//
+/ordered.h/1.1.1.1/Tue Feb 23 06:28:40 2010//
+/ordered_except_wr.h/1.1.1.1/Tue Feb 23 06:28:40 2010//
+/read_ordered.h/1.1.1.1/Tue Feb 23 06:28:40 2010//
+/short_acquire_release_volatile.h/1.1.1.1/Tue Feb 23 06:28:40 2010//
+/short_aligned_atomic_load_store.h/1.1.1.1/Tue Feb 23 06:28:41 2010//
+/short_atomic_load_store.h/1.1.1.1/Tue Feb 23 06:28:41 2010//
+/standard_ao_double_t.h/1.1.1.1/Tue Feb 23 06:28:40 2010//
+/test_and_set_t_is_ao_t.h/1.1.1.1/Tue Feb 23 06:28:40 2010//
+/test_and_set_t_is_char.h/1.1.1.1/Tue Feb 23 06:28:40 2010//
+D/armcc////
+D/gcc////
+D/hpc////
+D/ibmc////
+D/icc////
+D/msftc////
+D/sunc////

@@ -1,0 +1,21 @@
+:- module (libs.globals).
+:- interface.
+:- type c_compiler_type.
+:- type clang_version.
+:- type compilation_target
+	where	type_is_abstract_enum(3).
+:- type env_type
+	where	type_is_abstract_enum(2).
+:- type foreign_language
+	where	type_is_abstract_enum(3).
+:- type gc_method
+	where	type_is_abstract_enum(3).
+:- type globals.
+:- type il_version_number.
+:- type may_be_thread_safe.
+:- type reuse_strategy.
+:- type source_file_map.
+:- type tags_method
+	where	type_is_abstract_enum(2).
+:- type termination_norm
+	where	type_is_abstract_enum(2).

@@ -1,0 +1,49 @@
+/*
+** Automatically generated from `private_builtin.m'
+** by the Mercury compiler,
+** version rotd-2011-09-23, configured for x86_64-unknown-linux-gnu.
+** Do not edit.
+*/
+#ifndef PRIVATE_BUILTIN_MH
+#define PRIVATE_BUILTIN_MH
+
+#ifdef __cplusplus
+extern "C" {
+#endif
+
+#ifdef MR_HIGHLEVEL_CODE
+#include "mercury.h"
+#else
+  #ifndef MERCURY_HDR_EXCLUDE_IMP_H
+  #include "mercury_imp.h"
+  #endif
+#endif
+#ifdef MR_DEEP_PROFILING
+#include "mercury_deep_profiling.h"
+#endif
+
+#ifndef PRIVATE_BUILTIN_DECL_GUARD
+#define PRIVATE_BUILTIN_DECL_GUARD
+#line 1250 "private_builtin.m"
+
+    #include "mercury_heap.h" /* for MR_free_heap() */
+
+#line 32 "private_builtin.mh.tmp"
+#line 1434 "private_builtin.m"
+
+
+#include "mercury_builtin_types.h"
+
+MR_DECLARE_TYPE_CTOR_INFO_STRUCT(MR_TYPE_CTOR_INFO_NAME(list, list, 1));
+MR_DECLARE_TYPE_CTOR_INFO_STRUCT(MR_TYPE_CTOR_INFO_NAME(univ, univ, 0));
+
+
+#line 42 "private_builtin.mh.tmp"
+
+#endif
+
+#ifdef __cplusplus
+}
+#endif
+
+#endif /* PRIVATE_BUILTIN_MH */
