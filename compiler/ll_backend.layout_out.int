@@ -1,0 +1,51 @@
+:- module (ll_backend.layout_out).
+:- interface.
+:- import_module bool.
+:- import_module io.
+:- import_module list.
+:- import_module maybe.
+:- import_module mdbcomp.
+:- import_module (hlds.hlds_pred).
+:- import_module (ll_backend.layout).
+:- import_module (ll_backend.llds).
+:- import_module (ll_backend.llds_out).
+:- import_module (mdbcomp.prim_data).
+:- import_module (mdbcomp.program_representation).
+:- import_module ((ll_backend.llds_out).llds_out_util).
+:- type being_defined
+    --->    not_being_defined 
+    ;       being_defined .
+:- type use_layout_macro
+    --->    do_not_use_layout_macro 
+    ;       use_layout_macro .
+:- func layout_name_would_include_code_addr(ll_backend.layout.layout_name) = bool.bool.
+:- pred output_closure_layout_data_defn(ll_backend.llds_out.llds_out_util.llds_out_info, ll_backend.layout.closure_proc_id_data, ll_backend.llds_out.llds_out_util.decl_set, ll_backend.llds_out.llds_out_util.decl_set, io.io, io.io).
+:- mode output_closure_layout_data_defn((builtin.in), (builtin.in), (builtin.in), (builtin.out), (builtin.di), (builtin.uo)) is det.
+:- pred output_layout_array_decls(ll_backend.llds_out.llds_out_util.llds_out_info, list.list(ll_backend.llds.rval), list.list(int), list.list(int), list.list(int), list.list(maybe.maybe(int)), list.list(ll_backend.layout.user_event_data), list.list(ll_backend.layout.label_layout_no_vars), list.list(ll_backend.layout.label_layout_short_vars), list.list(ll_backend.layout.label_layout_long_vars), list.list(hlds.hlds_pred.call_site_static_data), list.list(mdbcomp.program_representation.coverage_point_info), list.list(ll_backend.layout.proc_layout_proc_static), list.list(int), list.list(int), list.list(int), list.list(ll_backend.layout.table_io_entry_data), list.list(ll_backend.layout.layout_slot_name), list.list(ll_backend.layout.proc_layout_exec_trace), list.list(ll_backend.layout.alloc_site_info), io.io, io.io).
+:- mode output_layout_array_decls((builtin.in), (builtin.in), (builtin.in), (builtin.in), (builtin.in), (builtin.in), (builtin.in), (builtin.in), (builtin.in), (builtin.in), (builtin.in), (builtin.in), (builtin.in), (builtin.in), (builtin.in), (builtin.in), (builtin.in), (builtin.in), (builtin.in), (builtin.in), (builtin.di), (builtin.uo)) is det.
+:- pred output_layout_array_defns(ll_backend.llds_out.llds_out_util.llds_out_info, list.list(ll_backend.llds.rval), list.list(int), list.list(int), list.list(int), list.list(maybe.maybe(int)), list.list(ll_backend.layout.user_event_data), list.list(ll_backend.layout.label_layout_no_vars), list.list(ll_backend.layout.label_layout_short_vars), list.list(ll_backend.layout.label_layout_long_vars), list.list(hlds.hlds_pred.call_site_static_data), list.list(mdbcomp.program_representation.coverage_point_info), list.list(ll_backend.layout.proc_layout_proc_static), list.list(int), list.list(int), list.list(int), list.list(ll_backend.layout.table_io_entry_data), list.list(ll_backend.layout.layout_slot_name), list.list(ll_backend.layout.proc_layout_exec_trace), list.list(string), list.list(ll_backend.layout.alloc_site_info), ll_backend.llds_out.llds_out_util.decl_set, ll_backend.llds_out.llds_out_util.decl_set, io.io, io.io).
+:- mode output_layout_array_defns((builtin.in), (builtin.in), (builtin.in), (builtin.in), (builtin.in), (builtin.in), (builtin.in), (builtin.in), (builtin.in), (builtin.in), (builtin.in), (builtin.in), (builtin.in), (builtin.in), (builtin.in), (builtin.in), (builtin.in), (builtin.in), (builtin.in), (builtin.in), (builtin.in), (builtin.in), (builtin.out), (builtin.di), (builtin.uo)) is det.
+:- pred output_layout_array_name(ll_backend.layout_out.use_layout_macro, string, ll_backend.layout.layout_array_name, io.io, io.io).
+:- mode output_layout_array_name((builtin.in), (builtin.in), (builtin.in), (builtin.di), (builtin.uo)) is det.
+:- pred output_layout_array_name_storage_type_name(string, ll_backend.layout.layout_array_name, ll_backend.layout_out.being_defined, io.io, io.io).
+:- mode output_layout_array_name_storage_type_name((builtin.in), (builtin.in), (builtin.in), (builtin.di), (builtin.uo)) is det.
+:- pred output_layout_name(ll_backend.layout.layout_name, io.io, io.io).
+:- mode output_layout_name((builtin.in), (builtin.di), (builtin.uo)) is det.
+:- pred output_layout_name_decl(ll_backend.layout.layout_name, io.io, io.io).
+:- mode output_layout_name_decl((builtin.in), (builtin.di), (builtin.uo)) is det.
+:- pred output_layout_name_storage_type_name(ll_backend.layout.layout_name, ll_backend.layout_out.being_defined, io.io, io.io).
+:- mode output_layout_name_storage_type_name((builtin.in), (builtin.in), (builtin.di), (builtin.uo)) is det.
+:- pred output_layout_slot_addr(ll_backend.layout_out.use_layout_macro, string, ll_backend.layout.layout_slot_name, io.io, io.io).
+:- mode output_layout_slot_addr((builtin.in), (builtin.in), (builtin.in), (builtin.di), (builtin.uo)) is det.
+:- pred output_layout_slot_id(ll_backend.layout_out.use_layout_macro, string, ll_backend.layout.layout_slot_name, io.io, io.io).
+:- mode output_layout_slot_id((builtin.in), (builtin.in), (builtin.in), (builtin.di), (builtin.uo)) is det.
+:- pred output_maybe_layout_name_decl(ll_backend.layout.layout_name, ll_backend.llds_out.llds_out_util.decl_set, ll_backend.llds_out.llds_out_util.decl_set, io.io, io.io).
+:- mode output_maybe_layout_name_decl((builtin.in), (builtin.in), (builtin.out), (builtin.di), (builtin.uo)) is det.
+:- pred output_module_layout_data_defn(ll_backend.llds_out.llds_out_util.llds_out_info, ll_backend.layout.module_layout_data, ll_backend.llds_out.llds_out_util.decl_set, ll_backend.llds_out.llds_out_util.decl_set, io.io, io.io).
+:- mode output_module_layout_data_defn((builtin.in), (builtin.in), (builtin.in), (builtin.out), (builtin.di), (builtin.uo)) is det.
+:- pred output_pred_or_func(mdbcomp.prim_data.pred_or_func, io.io, io.io).
+:- mode output_pred_or_func((builtin.in), (builtin.di), (builtin.uo)) is det.
+:- pred output_proc_layout_data_defn(ll_backend.llds_out.llds_out_util.llds_out_info, ll_backend.layout.proc_layout_data, ll_backend.llds_out.llds_out_util.decl_set, ll_backend.llds_out.llds_out_util.decl_set, io.io, io.io).
+:- mode output_proc_layout_data_defn((builtin.in), (builtin.in), (builtin.in), (builtin.out), (builtin.di), (builtin.uo)) is det.
+:- func proc_label_user_or_uci(mdbcomp.prim_data.proc_label) = ll_backend.layout.proc_layout_user_or_uci.
+:- func trace_port_to_string(mdbcomp.prim_data.trace_port) = string.
