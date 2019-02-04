@@ -1,0 +1,37 @@
+/*
+** Automatically generated from `builtin.m'
+** by the Mercury compiler,
+** version rotd-2011-07-19, configured for x86_64-unknown-linux-gnu.
+** Do not edit.
+*/
+#ifndef BUILTIN_MH
+#define BUILTIN_MH
+
+#ifdef __cplusplus
+extern "C" {
+#endif
+
+#ifdef MR_HIGHLEVEL_CODE
+#include "mercury.h"
+#else
+  #ifndef MERCURY_HDR_EXCLUDE_IMP_H
+  #include "mercury_imp.h"
+  #endif
+#endif
+#ifdef MR_DEEP_PROFILING
+#include "mercury_deep_profiling.h"
+#endif
+
+#ifndef BUILTIN_DECL_GUARD
+#define BUILTIN_DECL_GUARD
+#line 557 "builtin.m"
+#include "mercury_type_info.h"
+#line 30 "builtin.mh.tmp"
+
+#endif
+
+#ifdef __cplusplus
+}
+#endif
+
+#endif /* BUILTIN_MH */

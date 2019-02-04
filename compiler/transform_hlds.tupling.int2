@@ -1,0 +1,7 @@
+:- module (transform_hlds.tupling).
+:- interface.
+:- import_module io.
+:- import_module (hlds.hlds_module).
+:- implementation.
+:- type opt_tuple_alloc
+	--->	opt_tuple_alloc .

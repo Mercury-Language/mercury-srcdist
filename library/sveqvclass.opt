@@ -1,0 +1,22 @@
+:- module sveqvclass.
+:- use_module builtin, eqvclass, private_builtin.
+sveqvclass.ensure_element(Element_4, STATE_VARIABLE_EqvClass_0_6, STATE_VARIABLE_EqvClass_7) :-
+    eqvclass.ensure_element(Element_4, STATE_VARIABLE_EqvClass_0_6, STATE_VARIABLE_EqvClass_7).
+sveqvclass.new_element(Element_4, STATE_VARIABLE_EqvClass_0_6, STATE_VARIABLE_EqvClass_7) :-
+    eqvclass.new_element(Element_4, STATE_VARIABLE_EqvClass_0_6, STATE_VARIABLE_EqvClass_7).
+sveqvclass.ensure_equivalence(Element1_5, Element2_6, STATE_VARIABLE_EqvClass_0_8, STATE_VARIABLE_EqvClass_9) :-
+    eqvclass.ensure_equivalence(Element1_5, Element2_6, STATE_VARIABLE_EqvClass_0_8, STATE_VARIABLE_EqvClass_9).
+sveqvclass.new_equivalence(Element1_5, Element2_6, STATE_VARIABLE_EqvClass_0_8, STATE_VARIABLE_EqvClass_9) :-
+    eqvclass.new_equivalence(Element1_5, Element2_6, STATE_VARIABLE_EqvClass_0_8, STATE_VARIABLE_EqvClass_9).
+sveqvclass.remove_equivalent_elements(X_4, STATE_VARIABLE_EqvClass_0_6, STATE_VARIABLE_EqvClass_7) :-
+    STATE_VARIABLE_EqvClass_7 = eqvclass.remove_equivalent_elements(STATE_VARIABLE_EqvClass_0_6, X_4).
+:- pragma exceptions(predicate, (sveqvclass.ensure_element), 3, 0, may_throw(user_exception)).
+:- pragma exceptions(predicate, (sveqvclass.new_element), 3, 0, may_throw(user_exception)).
+:- pragma exceptions(predicate, (sveqvclass.ensure_equivalence), 4, 0, may_throw(user_exception)).
+:- pragma exceptions(predicate, (sveqvclass.new_equivalence), 4, 0, may_throw(user_exception)).
+:- pragma exceptions(predicate, (sveqvclass.remove_equivalent_elements), 3, 0, may_throw(user_exception)).
+:- pragma termination_info(sveqvclass.ensure_element((builtin.in), (builtin.in), (builtin.out)), infinite, can_loop).
+:- pragma termination_info(sveqvclass.new_element((builtin.in), (builtin.in), (builtin.out)), infinite, can_loop).
+:- pragma termination_info(sveqvclass.ensure_equivalence((builtin.in), (builtin.in), (builtin.in), (builtin.out)), infinite, can_loop).
+:- pragma termination_info(sveqvclass.new_equivalence((builtin.in), (builtin.in), (builtin.in), (builtin.out)), infinite, can_loop).
+:- pragma termination_info(sveqvclass.remove_equivalent_elements((builtin.in), (builtin.in), (builtin.out)), infinite, can_loop).

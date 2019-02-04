@@ -1,0 +1,5 @@
+:- module gc.
+:- pragma exceptions(predicate, (gc.garbage_collect), 2, 0, may_throw(user_exception)).
+:- pragma exceptions(predicate, (gc.garbage_collect), 0, 0, may_throw(user_exception)).
+:- pragma termination_info(gc.garbage_collect((builtin.di), (builtin.uo)), finite(0, [yes, no]), cannot_loop).
+:- pragma termination_info((gc.garbage_collect), finite(0, []), cannot_loop).

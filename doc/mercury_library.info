@@ -1,0 +1,145 @@
+This is mercury_library.info, produced by makeinfo version 4.11 from
+library.texi_pp.
+
+INFO-DIR-SECTION The Mercury Programming Language
+START-INFO-DIR-ENTRY
+* Mercury Library: (mercury_library).  The Mercury Library Reference Manual.
+END-INFO-DIR-ENTRY
+
+   This file documents the Mercury standard library, version
+rotd-2011-07-19.
+
+   Copyright (C) 1995-1997,1999-2011 The University of Melbourne.
+
+   Permission is granted to make and distribute verbatim copies of this
+manual provided the copyright notice and this permission notice are
+preserved on all copies.
+
+   Permission is granted to copy and distribute modified versions of
+this manual under the conditions for verbatim copying, provided also
+that the entire resulting derived work is distributed under the terms
+of a permission notice identical to this one.
+
+   Permission is granted to copy and distribute translations of this
+manual into another language, under the above conditions for modified
+versions.
+
+
+Indirect:
+mercury_library.info-1: 972
+mercury_library.info-2: 293077
+mercury_library.info-3: 588450
+mercury_library.info-4: 882920
+
+Tag Table:
+(Indirect)
+Node: Top972
+Node: array2d4386
+Node: array9788
+Node: assoc_list36369
+Node: bag44645
+Node: benchmarking55020
+Node: bimap62164
+Node: bit_buffer76751
+Node: bit_buffer.read79169
+Node: bit_buffer.write86694
+Node: bitmap92722
+Node: bool109103
+Node: bt_array111773
+Node: builtin120133
+Node: calendar135707
+Node: char147531
+Node: construct155707
+Node: cord161334
+Node: counter170047
+Node: deconstruct171945
+Node: digraph185211
+Node: dir200272
+Node: enum210959
+Node: eqvclass212229
+Node: erlang_builtin219215
+Node: exception220642
+Node: float229370
+Node: gc237119
+Node: getopt_io238568
+Node: getopt252238
+Node: graph265494
+Node: group265749
+Node: hash_table266008
+Node: injection275234
+Node: integer289473
+Node: int293077
+Node: io306887
+Node: lazy371924
+Node: lexer376328
+Node: library381033
+Node: list382015
+Node: map462051
+Node: math492456
+Node: maybe500042
+Node: multi_map505826
+Node: ops516810
+Node: pair522798
+Node: parser524265
+Node: parsing_utils529712
+Node: pprint544165
+Node: pqueue558531
+Node: pretty_printer561851
+Node: prolog572528
+Node: queue575578
+Node: random580838
+Node: rational586218
+Node: rbtree588450
+Node: relation598516
+Node: require598782
+Node: rtree604136
+Node: set_bbbtree612109
+Node: set_ctree234630232
+Node: set647736
+Node: set_ordlist665249
+Node: set_tree234682542
+Node: set_unordlist698998
+Node: solutions716188
+Node: sparse_bitset725722
+Node: stack740463
+Node: std_util744188
+Node: store747081
+Node: stream756988
+Node: stream.string_writer771341
+Node: string.builder777829
+Node: string780163
+Node: svarray833971
+Node: svbag837709
+Node: svbimap842912
+Node: sveqvclass844558
+Node: svlist847452
+Node: svmap850809
+Node: svmulti_map856359
+Node: svpqueue861011
+Node: svqueue862746
+Node: svrelation866250
+Node: svset866521
+Node: svstack870185
+Node: svvarset872476
+Node: table_statistics876395
+Node: term_io882920
+Node: term890285
+Node: term_to_xml908057
+Node: thread.channel929732
+Node: thread932232
+Node: thread.mvar934536
+Node: thread.semaphore936748
+Node: time939594
+Node: tree234947479
+Node: tree_bitset966548
+Node: type_desc981558
+Node: unit991395
+Node: univ992505
+Node: varset995427
+Node: version_array2d1006481
+Node: version_array1011169
+Node: version_bitmap1021484
+Node: version_hash_table1026385
+Node: version_store1034845
+
+End Tag Table

@@ -1,0 +1,20 @@
+:- module robdd.
+:- interface.
+:- import_module io.
+:- import_module list.
+:- import_module map.
+:- import_module sparse_bitset.
+:- import_module term.
+:- type robdd.
+:- type entailment_result(T).
+:- type equiv_vars(T).
+:- type equivalent_result(T).
+:- type imp_map(T).
+:- type imp_vars(T).
+:- type leader_map(T).
+:- type literal(T).
+:- type robdd(T).
+:- type vars(T).
+:- type vars_entailed_result(T).
+:- type write_var(T).
+:- inst (write_var) == (pred(in, di, uo) is det).

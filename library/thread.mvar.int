@@ -1,0 +1,13 @@
+:- module (thread.mvar).
+:- interface.
+:- import_module io.
+:- import_module maybe.
+:- type mvar(T).
+:- pred init(thread.mvar.mvar(T), io.io, io.io).
+:- mode init((builtin.out), (builtin.di), (builtin.uo)) is det.
+:- pred put(thread.mvar.mvar(T), T, io.io, io.io).
+:- mode put((builtin.in), (builtin.in), (builtin.di), (builtin.uo)) is det.
+:- pred take(thread.mvar.mvar(T), T, io.io, io.io).
+:- mode take((builtin.in), (builtin.out), (builtin.di), (builtin.uo)) is det.
+:- pred try_take(thread.mvar.mvar(T), maybe.maybe(T), io.io, io.io).
+:- mode try_take((builtin.in), (builtin.out), (builtin.di), (builtin.uo)) is det.
