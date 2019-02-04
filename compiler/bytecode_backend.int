@@ -1,0 +1,4 @@
+:- module bytecode_backend.
+:- interface.
+:- include_module (bytecode_backend.bytecode).
+:- include_module (bytecode_backend.bytecode_gen).

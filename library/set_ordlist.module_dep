@@ -1,0 +1,13 @@
+module(1, "set_ordlist.m",
+	set_ordlist,
+	{},
+	{bool, builtin, list, private_builtin, term},
+	{bool, builtin, cord, list, private_builtin, term},
+	{},
+	{},
+	{},
+	{},
+	{},
+	no_foreign_export,
+	no_main
+).
