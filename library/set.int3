@@ -1,0 +1,4 @@
+:- module set.
+:- interface.
+:- type set(T).
+:- type set(T).

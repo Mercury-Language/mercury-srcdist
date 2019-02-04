@@ -1,0 +1,23 @@
+:- module (hlds.quantification).
+:- interface.
+:- import_module list.
+:- import_module parse_tree.
+:- import_module (hlds.hlds_goal).
+:- import_module (hlds.hlds_pred).
+:- import_module (hlds.hlds_rtti).
+:- import_module (hlds.vartypes).
+:- import_module (parse_tree.prog_data).
+:- import_module (parse_tree.set_of_var).
+:- type nonlocals_to_recompute
+    --->    ordinary_nonlocals_maybe_lambda 
+    ;       ordinary_nonlocals_no_lambda 
+    ;       code_gen_nonlocals_no_lambda .
+:- type quant_warning
+    --->    warn_overlap(list.list(parse_tree.prog_data.prog_var), parse_tree.prog_data.prog_context).
+:- func free_goal_vars(hlds.hlds_goal.hlds_goal) = parse_tree.set_of_var.set_of_progvar.
+:- pred implicitly_quantify_clause_body_general(hlds.quantification.nonlocals_to_recompute, list.list(parse_tree.prog_data.prog_var), list.list(hlds.quantification.quant_warning), hlds.hlds_goal.hlds_goal, hlds.hlds_goal.hlds_goal, parse_tree.prog_data.prog_varset, parse_tree.prog_data.prog_varset, hlds.vartypes.vartypes, hlds.vartypes.vartypes, hlds.hlds_rtti.rtti_varmaps, hlds.hlds_rtti.rtti_varmaps).
+:- mode implicitly_quantify_clause_body_general((builtin.in), (builtin.in), (builtin.out), (builtin.in), (builtin.out), (builtin.in), (builtin.out), (builtin.in), (builtin.out), (builtin.in), (builtin.out)) is det.
+:- pred implicitly_quantify_goal_general(hlds.quantification.nonlocals_to_recompute, parse_tree.set_of_var.set_of_progvar, list.list(hlds.quantification.quant_warning), hlds.hlds_goal.hlds_goal, hlds.hlds_goal.hlds_goal, parse_tree.prog_data.prog_varset, parse_tree.prog_data.prog_varset, hlds.vartypes.vartypes, hlds.vartypes.vartypes, hlds.hlds_rtti.rtti_varmaps, hlds.hlds_rtti.rtti_varmaps).
+:- mode implicitly_quantify_goal_general((builtin.in), (builtin.in), (builtin.out), (builtin.in), (builtin.out), (builtin.in), (builtin.out), (builtin.in), (builtin.out), (builtin.in), (builtin.out)) is det.
+:- pred requantify_proc_general(hlds.quantification.nonlocals_to_recompute, hlds.hlds_pred.proc_info, hlds.hlds_pred.proc_info).
+:- mode requantify_proc_general((builtin.in), (builtin.in), (builtin.out)) is det.

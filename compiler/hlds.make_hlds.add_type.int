@@ -1,0 +1,11 @@
+:- module ((hlds.make_hlds).add_type).
+:- interface.
+:- import_module list.
+:- import_module (hlds.hlds_data).
+:- import_module (hlds.hlds_module).
+:- import_module (parse_tree.error_util).
+:- import_module (parse_tree.prog_data).
+:- pred add_du_ctors_check_foreign_type_for_cur_backend(parse_tree.prog_data.type_ctor, hlds.hlds_data.hlds_type_defn, hlds.make_hlds.found_invalid_type, hlds.make_hlds.found_invalid_type, hlds.hlds_module.module_info, hlds.hlds_module.module_info, list.list(parse_tree.error_util.error_spec), list.list(parse_tree.error_util.error_spec)).
+:- mode add_du_ctors_check_foreign_type_for_cur_backend((builtin.in), (builtin.in), (builtin.in), (builtin.out), (builtin.in), (builtin.out), (builtin.in), (builtin.out)) is det.
+:- pred module_add_type_defn(hlds.status.type_status, parse_tree.prog_data.need_qualifier, parse_tree.prog_item.item_type_defn_info, hlds.hlds_module.module_info, hlds.hlds_module.module_info, hlds.make_hlds.found_invalid_type, hlds.make_hlds.found_invalid_type, list.list(parse_tree.error_util.error_spec), list.list(parse_tree.error_util.error_spec)).
+:- mode module_add_type_defn((builtin.in), (builtin.in), (builtin.in), (builtin.in), (builtin.out), (builtin.in), (builtin.out), (builtin.in), (builtin.out)) is det.
