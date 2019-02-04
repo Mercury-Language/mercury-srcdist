@@ -1,0 +1,18 @@
+:- module create_report.
+:- interface.
+:- import_module maybe.
+:- import_module profile.
+:- import_module query.
+:- import_module report.
+:- pred create_clique_report(profile.deep, profile.clique_ptr, maybe.maybe_error(report.clique_report)).
+:- mode create_clique_report((builtin.in), (builtin.in), (builtin.out)) is det.
+:- pred create_proc_report(profile.deep, profile.proc_static_ptr, maybe.maybe_error(report.proc_report)).
+:- mode create_proc_report((builtin.in), (builtin.in), (builtin.out)) is det.
+:- pred create_proc_var_use_dump_report(profile.deep, profile.proc_static_ptr, maybe.maybe_error(report.proc_var_use_dump_info)).
+:- mode create_proc_var_use_dump_report((builtin.in), (builtin.in), (builtin.out)) is det.
+:- pred create_procrep_coverage_report(profile.deep, profile.proc_static_ptr, maybe.maybe_error(report.procrep_coverage_info)).
+:- mode create_procrep_coverage_report((builtin.in), (builtin.in), (builtin.out)) is det.
+:- pred create_report(query.cmd, profile.deep, report.deep_report).
+:- mode create_report((builtin.in), (builtin.in), (builtin.out)) is det.
+:- pred create_top_procs_report(profile.deep, query.display_limit, query.cost_kind, query.include_descendants, query.measurement_scope, maybe.maybe_error(report.top_procs_report)).
+:- mode create_top_procs_report((builtin.in), (builtin.in), (builtin.in), (builtin.in), (builtin.in), (builtin.out)) is det.

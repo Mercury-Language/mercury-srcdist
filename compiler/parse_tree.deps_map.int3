@@ -1,0 +1,6 @@
+:- module (parse_tree.deps_map).
+:- interface.
+:- type deps.
+:- type deps_map.
+:- type have_processed.
+:- type submodule_kind.

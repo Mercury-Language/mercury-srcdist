@@ -1,0 +1,57 @@
+:- module measurements.
+:- interface.
+:- import_module list.
+:- type cs_cost_csq.
+:- type inherit_prof_info.
+:- type is_active
+	--->	is_active 
+	;	is_not_active .
+:- type own_prof_info.
+:- type proc_cost_csq.
+:- func add_inherit_to_inherit(measurements.inherit_prof_info, measurements.inherit_prof_info) = measurements.inherit_prof_info.
+:- func add_inherit_to_own(measurements.inherit_prof_info, measurements.own_prof_info) = measurements.own_prof_info.
+:- func add_own_to_inherit(measurements.own_prof_info, measurements.inherit_prof_info) = measurements.inherit_prof_info.
+:- func add_own_to_own(measurements.own_prof_info, measurements.own_prof_info) = measurements.own_prof_info.
+:- func allocs(measurements.own_prof_info) = int.
+:- func build_cs_cost_csq(int, float) = measurements.cs_cost_csq.
+:- func build_cs_cost_csq_percall(float, float) = measurements.cs_cost_csq.
+:- func build_proc_cost_csq(int, int, int) = measurements.proc_cost_csq.
+:- func calls(measurements.own_prof_info) = int.
+:- func callseqs(measurements.own_prof_info) = int.
+:- func compress_profile(int, int, int, int, int, int, int, int) = measurements.own_prof_info.
+:- func compress_profile(measurements.own_prof_info) = measurements.own_prof_info.
+:- func compute_is_active(measurements.own_prof_info) = measurements.is_active.
+:- func cs_cost_get_calls(measurements.cs_cost_csq) = float.
+:- func cs_cost_get_percall(measurements.cs_cost_csq) = float.
+:- func cs_cost_get_total(measurements.cs_cost_csq) = float.
+:- func cs_cost_per_proc_call(measurements.cs_cost_csq, measurements.proc_cost_csq) = measurements.cs_cost_csq.
+:- pred cs_cost_to_proc_cost(measurements.cs_cost_csq, int, measurements.proc_cost_csq).
+:- mode cs_cost_to_proc_cost((builtin.in), (builtin.in), (builtin.out)) is det.
+:- pred decompress_profile(measurements.own_prof_info, int, int, int, int, int, int, int, int, int).
+:- mode decompress_profile((builtin.in), (builtin.out), (builtin.out), (builtin.out), (builtin.out), (builtin.out), (builtin.out), (builtin.out), (builtin.out), (builtin.out)) is det.
+:- func excps(measurements.own_prof_info) = int.
+:- func exits(measurements.own_prof_info) = int.
+:- func fails(measurements.own_prof_info) = int.
+:- func inherit_allocs(measurements.inherit_prof_info) = int.
+:- func inherit_callseqs(measurements.inherit_prof_info) = int.
+:- func inherit_quanta(measurements.inherit_prof_info) = int.
+:- func inherit_words(measurements.inherit_prof_info) = int.
+:- pred is_zero_inherit_prof_info(measurements.inherit_prof_info).
+:- mode is_zero_inherit_prof_info((builtin.in)) is semidet.
+:- pred is_zero_own_prof_info(measurements.own_prof_info).
+:- mode is_zero_own_prof_info((builtin.in)) is semidet.
+:- func own_to_string(measurements.own_prof_info) = string.
+:- func proc_cost_get_calls_nonrec(measurements.proc_cost_csq) = int.
+:- func proc_cost_get_calls_rec(measurements.proc_cost_csq) = int.
+:- func proc_cost_get_calls_total(measurements.proc_cost_csq) = int.
+:- func proc_cost_get_total(measurements.proc_cost_csq) = float.
+:- func quanta(measurements.own_prof_info) = int.
+:- func redos(measurements.own_prof_info) = int.
+:- func subtract_inherit_from_inherit(measurements.inherit_prof_info, measurements.inherit_prof_info) = measurements.inherit_prof_info.
+:- func subtract_own_from_inherit(measurements.own_prof_info, measurements.inherit_prof_info) = measurements.inherit_prof_info.
+:- func sum_inherit_infos(list.list(measurements.inherit_prof_info)) = measurements.inherit_prof_info.
+:- func sum_own_infos(list.list(measurements.own_prof_info)) = measurements.own_prof_info.
+:- func words(measurements.own_prof_info) = int.
+:- func zero_cs_cost = measurements.cs_cost_csq.
+:- func zero_inherit_prof_info = measurements.inherit_prof_info.
+:- func zero_own_prof_info = measurements.own_prof_info.

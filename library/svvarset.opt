@@ -1,0 +1,46 @@
+:- module svvarset.
+:- use_module builtin, list, maybe, private_builtin, set, term, varset.
+svvarset.new_var(Var_4, Varset0_5, Varset_6) :-
+    varset.new_var(Varset0_5, Var_4, Varset_6).
+svvarset.new_named_var(Name_5, Var_6, Varset0_7, Varset_8) :-
+    varset.new_named_var(Varset0_7, Name_5, Var_6, Varset_8).
+svvarset.new_maybe_named_var(MaybeName_5, Var_6, Varset0_7, Varset_8) :-
+    varset.new_maybe_named_var(Varset0_7, MaybeName_5, Var_6, Varset_8).
+svvarset.new_uniquely_named_var(Name_5, Var_6, Varset0_7, Varset_8) :-
+    varset.new_uniquely_named_var(Varset0_7, Name_5, Var_6, Varset_8).
+svvarset.new_vars(NumVars_5, NewVars_6, Varset0_7, Varset_8) :-
+    varset.new_vars(Varset0_7, NumVars_5, NewVars_6, Varset_8).
+svvarset.delete_var(Var_4, Varset0_5, Varset_6) :-
+    varset.delete_var(Varset0_5, Var_4, Varset_6).
+svvarset.delete_vars(Vars_4, Varset0_5, Varset_6) :-
+    varset.delete_vars(Varset0_5, Vars_4, Varset_6).
+svvarset.name_var(Id_5, Name_6, Varset0_7, Varset_8) :-
+    varset.name_var(Varset0_7, Id_5, Name_6, Varset_8).
+svvarset.bind_var(Id_5, Val_6, Varset0_7, Varset_8) :-
+    varset.bind_var(Varset0_7, Id_5, Val_6, Varset_8).
+svvarset.bind_vars(Subst_4, Varset0_5, Varset_6) :-
+    varset.bind_vars(Varset0_5, Subst_4, Varset_6).
+svvarset.select(Vars_4, Varset0_5, Varset_6) :-
+    varset.select(Varset0_5, Vars_4, Varset_6).
+:- pragma exceptions(predicate, (svvarset.new_var), 3, 0, may_throw(user_exception)).
+:- pragma exceptions(predicate, (svvarset.new_named_var), 4, 0, may_throw(user_exception)).
+:- pragma exceptions(predicate, (svvarset.new_maybe_named_var), 4, 0, may_throw(user_exception)).
+:- pragma exceptions(predicate, (svvarset.new_uniquely_named_var), 4, 0, may_throw(user_exception)).
+:- pragma exceptions(predicate, (svvarset.new_vars), 4, 0, may_throw(user_exception)).
+:- pragma exceptions(predicate, (svvarset.delete_var), 3, 0, may_throw(user_exception)).
+:- pragma exceptions(predicate, (svvarset.delete_vars), 3, 0, may_throw(user_exception)).
+:- pragma exceptions(predicate, (svvarset.name_var), 4, 0, may_throw(user_exception)).
+:- pragma exceptions(predicate, (svvarset.bind_var), 4, 0, may_throw(user_exception)).
+:- pragma exceptions(predicate, (svvarset.bind_vars), 3, 0, may_throw(user_exception)).
+:- pragma exceptions(predicate, (svvarset.select), 3, 0, may_throw(user_exception)).
+:- pragma termination_info(svvarset.new_var((builtin.out), (builtin.in), (builtin.out)), infinite, can_loop).
+:- pragma termination_info(svvarset.new_named_var((builtin.in), (builtin.out), (builtin.in), (builtin.out)), infinite, can_loop).
+:- pragma termination_info(svvarset.new_maybe_named_var((builtin.in), (builtin.out), (builtin.in), (builtin.out)), infinite, can_loop).
+:- pragma termination_info(svvarset.new_uniquely_named_var((builtin.in), (builtin.out), (builtin.in), (builtin.out)), infinite, can_loop).
+:- pragma termination_info(svvarset.new_vars((builtin.in), (builtin.out), (builtin.in), (builtin.out)), infinite, can_loop).
+:- pragma termination_info(svvarset.delete_var((builtin.in), (builtin.in), (builtin.out)), infinite, can_loop).
+:- pragma termination_info(svvarset.delete_vars((builtin.in), (builtin.in), (builtin.out)), infinite, can_loop).
+:- pragma termination_info(svvarset.name_var((builtin.in), (builtin.in), (builtin.in), (builtin.out)), infinite, can_loop).
+:- pragma termination_info(svvarset.bind_var((builtin.in), (builtin.in), (builtin.in), (builtin.out)), infinite, can_loop).
+:- pragma termination_info(svvarset.bind_vars((builtin.in), (builtin.in), (builtin.out)), infinite, can_loop).
+:- pragma termination_info(svvarset.select((builtin.in), (builtin.in), (builtin.out)), infinite, can_loop).

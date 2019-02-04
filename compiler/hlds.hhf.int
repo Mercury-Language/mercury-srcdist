@@ -1,0 +1,12 @@
+:- module (hlds.hhf).
+:- interface.
+:- import_module bool.
+:- import_module io.
+:- import_module (hlds.hlds_clauses).
+:- import_module (hlds.hlds_module).
+:- import_module (hlds.hlds_pred).
+:- import_module (hlds.inst_graph).
+:- pred process_clauses_info(bool.bool, hlds.hlds_module.module_info, hlds.hlds_clauses.clauses_info, hlds.hlds_clauses.clauses_info, hlds.inst_graph.inst_graph).
+:- mode process_clauses_info((builtin.in), (builtin.in), (builtin.in), (builtin.out), (builtin.out)) is det.
+:- pred process_pred(bool.bool, hlds.hlds_pred.pred_id, hlds.hlds_module.module_info, hlds.hlds_module.module_info, io.io, io.io).
+:- mode process_pred((builtin.in), (builtin.in), (builtin.in), (builtin.out), (builtin.di), (builtin.uo)) is det.

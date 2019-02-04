@@ -1,0 +1,109 @@
+:- module stm_builtin.
+:- use_module builtin, exception, io, private_builtin, univ.
+:- type stm_builtin.stm_var(T)
+	--->	tvar(builtin.c_pointer).
+:- pragma foreign_type(c, stm_builtin.stm_var(T), "MR_STM_Var *", [stable, can_pass_as_mercury_type]).
+:- type stm_builtin.stm
+	--->	stm(builtin.c_pointer).
+:- pragma foreign_type(c, stm_builtin.stm, "MR_STM_TransLog *", [can_pass_as_mercury_type]).
+:- pragma foreign_import_module("C", stm_builtin).
+:- pragma foreign_import_module("C", io).
+:- pragma foreign_import_module("Java", io).
+:- pragma foreign_import_module("IL", io).
+:- pragma foreign_import_module("Erlang", io).
+:- pragma foreign_import_module("C", io).
+:- pragma foreign_import_module("Java", io).
+:- pragma foreign_import_module("IL", io).
+:- pragma foreign_import_module("Erlang", io).
+:- pragma foreign_import_module("C", string).
+:- pragma foreign_import_module("C", bitmap).
+:- pragma foreign_import_module("Java", bitmap).
+:- pragma foreign_import_module("IL", bitmap).
+:- pragma foreign_import_module("Erlang", bitmap).
+:- pragma foreign_import_module("C", bitmap).
+:- pragma foreign_import_module("Java", bitmap).
+:- pragma foreign_import_module("IL", bitmap).
+:- pragma foreign_import_module("Erlang", bitmap).
+:- pragma foreign_import_module("C", time).
+:- pragma foreign_import_module("Java", time).
+:- pragma foreign_import_module("IL", time).
+:- pragma foreign_import_module("Erlang", time).
+:- pragma foreign_import_module("C", time).
+:- pragma foreign_import_module("Java", time).
+:- pragma foreign_import_module("IL", time).
+:- pragma foreign_import_module("Erlang", time).
+:- pragma foreign_import_module("Java", rtti_implementation).
+:- pragma foreign_import_module("Java", rtti_implementation).
+:- pragma foreign_import_module("Java", store).
+:- pragma foreign_import_module("Erlang", store).
+:- pragma foreign_import_module("Java", store).
+:- pragma foreign_import_module("Erlang", store).
+:- pragma foreign_proc("C", stm_builtin.new_stm_var(T :: (builtin.in), TVar :: (builtin.out), IO0 :: (builtin.di), IO :: (builtin.uo)), [will_not_call_mercury, thread_safe, not_tabled_for_io, promise_pure, may_modify_trail], "
+    MR_STM_new_stm_var(T, TVar);
+    IO = IO0;
+").
+:- pragma foreign_proc("C", stm_builtin.new_stm_var_atomic(T :: (builtin.in), TVar :: (builtin.out), STM0 :: (builtin.di), STM :: (builtin.uo)), [will_not_call_mercury, thread_safe, not_tabled_for_io, promise_pure, may_modify_trail], "
+    MR_STM_new_stm_var(T, TVar);
+    STM = STM0;
+").
+:- pragma foreign_proc("C", stm_builtin.write_stm_var(TVar :: (builtin.in), Value :: (builtin.in), STM0 :: (builtin.di), STM :: (builtin.uo)), [will_not_call_mercury, thread_safe, not_tabled_for_io, promise_pure, may_modify_trail], "
+    MR_STM_write_var(TVar, Value, STM0);
+    STM = STM0;
+").
+:- pragma foreign_proc("C", stm_builtin.read_stm_var(TVar :: (builtin.in), Value :: (builtin.out), STM0 :: (builtin.di), STM :: (builtin.uo)), [will_not_call_mercury, thread_safe, not_tabled_for_io, promise_pure, may_modify_trail], "
+    Value = MR_STM_read_var(TVar, STM0);
+    STM = STM0;
+").
+stm_builtin.retry(V_2) :-
+    V_3 = stm_builtin.rollback_retry : stm_builtin.rollback_exception,
+    exception.throw(V_3).
+:- pragma foreign_proc("C", stm_builtin.stm_from_outer_to_inner(IO :: (builtin.di), STM :: (builtin.uo)), [will_not_call_mercury, thread_safe, not_tabled_for_io, promise_pure, may_modify_trail], "
+    STM = NULL;
+    MR_final_io_state(IO);
+").
+:- pragma foreign_proc("C", stm_builtin.stm_from_inner_to_outer(STM0 :: (builtin.di), IO :: (builtin.uo)), [will_not_call_mercury, thread_safe, not_tabled_for_io, promise_pure, may_modify_trail], "
+    STM0 = NULL;
+    IO = MR_initial_io_state();
+").
+:- pragma foreign_proc("C", stm_builtin.unsafe_write_stm_var(TVar :: (builtin.in), Value :: (builtin.in), STM0 :: (builtin.di), STM :: (builtin.uo)), [will_not_call_mercury, thread_safe, not_tabled_for_io, promise_pure, may_modify_trail], "
+    MR_STM_unsafe_write_var(TVar, Value);
+    STM = STM0;
+").
+:- pragma exceptions(predicate, (stm_builtin.new_stm_var), 4, 0, will_not_throw).
+:- pragma exceptions(predicate, (stm_builtin.new_stm_var_atomic), 4, 0, will_not_throw).
+:- pragma exceptions(predicate, (stm_builtin.write_stm_var), 4, 0, will_not_throw).
+:- pragma exceptions(predicate, (stm_builtin.read_stm_var), 4, 0, will_not_throw).
+:- pragma exceptions(predicate, (stm_builtin.retry), 1, 0, may_throw(user_exception)).
+:- pragma exceptions(predicate, (stm_builtin.atomic_transaction), 4, 0, may_throw(user_exception)).
+:- pragma exceptions(predicate, (stm_builtin.(or_else)), 5, 0, may_throw(user_exception)).
+:- pragma exceptions(predicate, (stm_builtin.stm_create_transaction_log), 1, 0, will_not_throw).
+:- pragma exceptions(predicate, (stm_builtin.stm_discard_transaction_log), 1, 0, will_not_throw).
+:- pragma exceptions(predicate, (stm_builtin.stm_create_nested_transaction_log), 2, 0, will_not_throw).
+:- pragma exceptions(predicate, (stm_builtin.stm_lock), 0, 0, will_not_throw).
+:- pragma exceptions(predicate, (stm_builtin.stm_unlock), 0, 0, will_not_throw).
+:- pragma exceptions(predicate, (stm_builtin.stm_validate), 2, 0, will_not_throw).
+:- pragma exceptions(predicate, (stm_builtin.stm_commit), 1, 0, will_not_throw).
+:- pragma exceptions(predicate, (stm_builtin.stm_block), 1, 0, will_not_throw).
+:- pragma exceptions(predicate, (stm_builtin.stm_from_outer_to_inner), 2, 0, will_not_throw).
+:- pragma exceptions(predicate, (stm_builtin.stm_from_inner_to_outer), 2, 0, will_not_throw).
+:- pragma exceptions(predicate, (stm_builtin.unsafe_write_stm_var), 4, 0, will_not_throw).
+:- pragma exceptions(predicate, (stm_builtin.stm_merge_nested_logs), 3, 0, will_not_throw).
+:- pragma termination_info(stm_builtin.new_stm_var((builtin.in), (builtin.out), (builtin.di), (builtin.uo)), infinite, cannot_loop).
+:- pragma termination_info(stm_builtin.new_stm_var_atomic((builtin.in), (builtin.out), (builtin.di), (builtin.uo)), infinite, cannot_loop).
+:- pragma termination_info(stm_builtin.write_stm_var((builtin.in), (builtin.in), (builtin.di), (builtin.uo)), infinite, cannot_loop).
+:- pragma termination_info(stm_builtin.read_stm_var((builtin.in), (builtin.out), (builtin.di), (builtin.uo)), infinite, cannot_loop).
+:- pragma termination_info(stm_builtin.retry((builtin.ui)), infinite, can_loop).
+:- pragma termination_info(stm_builtin.atomic_transaction(builtin.in((pred((builtin.out), (builtin.di), (builtin.uo)) is det)), (builtin.out), (builtin.di), (builtin.uo)), infinite, can_loop).
+:- pragma termination_info(stm_builtin.or_else(builtin.in((pred((builtin.out), (builtin.di), (builtin.uo)) is det)), builtin.in((pred((builtin.out), (builtin.di), (builtin.uo)) is det)), (builtin.out), (builtin.di), (builtin.uo)), infinite, can_loop).
+:- pragma termination_info(stm_builtin.stm_create_transaction_log((builtin.uo)), infinite, cannot_loop).
+:- pragma termination_info(stm_builtin.stm_discard_transaction_log((builtin.di)), finite(0, [no]), cannot_loop).
+:- pragma termination_info(stm_builtin.stm_create_nested_transaction_log((builtin.ui), (builtin.uo)), infinite, cannot_loop).
+:- pragma termination_info((stm_builtin.stm_lock), finite(0, []), cannot_loop).
+:- pragma termination_info((stm_builtin.stm_unlock), finite(0, []), cannot_loop).
+:- pragma termination_info(stm_builtin.stm_validate((builtin.ui), (builtin.out)), infinite, cannot_loop).
+:- pragma termination_info(stm_builtin.stm_commit((builtin.ui)), finite(0, [no]), cannot_loop).
+:- pragma termination_info(stm_builtin.stm_block((builtin.ui)), finite(0, [no]), cannot_loop).
+:- pragma termination_info(stm_builtin.stm_from_outer_to_inner((builtin.di), (builtin.uo)), infinite, cannot_loop).
+:- pragma termination_info(stm_builtin.stm_from_inner_to_outer((builtin.di), (builtin.uo)), infinite, cannot_loop).
+:- pragma termination_info(stm_builtin.unsafe_write_stm_var((builtin.in), (builtin.in), (builtin.di), (builtin.uo)), infinite, cannot_loop).
+:- pragma termination_info(stm_builtin.stm_merge_nested_logs((builtin.di), (builtin.di), (builtin.uo)), infinite, cannot_loop).

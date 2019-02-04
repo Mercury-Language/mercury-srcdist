@@ -1,0 +1,5 @@
+:- module thread.
+:- interface.
+:- include_module (thread.channel).
+:- include_module (thread.mvar).
+:- include_module (thread.semaphore).

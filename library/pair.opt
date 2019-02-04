@@ -1,0 +1,19 @@
+:- module pair.
+:- use_module builtin, private_builtin.
+pair.fst(pair.(X_3 - _Y_4)) = X_3.
+pair.fst(P_3, X_4) :-
+    X_4 = pair.fst(P_3).
+pair.snd(pair.(_X_3 - Y_4)) = Y_4.
+pair.snd(P_3, X_4) :-
+    X_4 = pair.snd(P_3).
+pair.pair(X_4, Y_5) = pair.(X_4 - Y_5).
+:- pragma exceptions(function, (pair.fst), 2, 0, will_not_throw).
+:- pragma exceptions(predicate, (pair.fst), 2, 0, will_not_throw).
+:- pragma exceptions(function, (pair.snd), 2, 0, will_not_throw).
+:- pragma exceptions(predicate, (pair.snd), 2, 0, will_not_throw).
+:- pragma exceptions(function, (pair.pair), 3, 0, will_not_throw).
+:- pragma termination_info(pair.fst((builtin.in)) = (builtin.out), finite(-2, [no, no, yes, no]), cannot_loop).
+:- pragma termination_info(pair.fst((builtin.in), (builtin.out)), finite(-2, [no, no, yes, no]), cannot_loop).
+:- pragma termination_info(pair.snd((builtin.in)) = (builtin.out), finite(-2, [no, no, yes, no]), cannot_loop).
+:- pragma termination_info(pair.snd((builtin.in), (builtin.out)), finite(-2, [no, no, yes, no]), cannot_loop).
+:- pragma termination_info(pair.pair((builtin.in), (builtin.in)) = (builtin.out), finite(2, [no, no, yes, yes, no]), cannot_loop).

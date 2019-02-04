@@ -1,0 +1,13 @@
+module(1, "bintree.m",
+	bintree,
+	{},
+	{builtin, assoc_list, list, private_builtin},
+	{builtin, assoc_list, list, int, pair, require, string, private_builtin},
+	{},
+	{},
+	{},
+	{},
+	{},
+	no_foreign_export,
+	no_main
+).

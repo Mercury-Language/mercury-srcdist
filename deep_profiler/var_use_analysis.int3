@@ -1,0 +1,5 @@
+:- module var_use_analysis.
+:- interface.
+:- type cost_until_var_use.
+:- type var_use_info.
+:- type var_use_type.

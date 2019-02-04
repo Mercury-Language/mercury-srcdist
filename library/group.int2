@@ -1,0 +1,9 @@
+:- module group.
+:- interface.
+:- import_module assoc_list.
+:- import_module list.
+:- import_module set.
+:- type key.
+:- type group(T).
+:- implementation.
+:- type key == int.

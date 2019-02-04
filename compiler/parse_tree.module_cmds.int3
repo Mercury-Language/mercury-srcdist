@@ -1,0 +1,5 @@
+:- module (parse_tree.module_cmds).
+:- interface.
+:- type command_verbosity.
+:- type quote_char.
+:- type update_interface_result.

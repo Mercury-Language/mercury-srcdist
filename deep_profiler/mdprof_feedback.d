@@ -1,0 +1,227 @@
+
+
+mdprof_feedback.optdate mdprof_feedback.trans_opt_date mdprof_feedback.err mdprof_feedback.c_date mdprof_feedback.s_date mdprof_feedback.pic_s_date mdprof_feedback.il_date mdprof_feedback.java_date : mdprof_feedback.m \
+	bool.int \
+	builtin.int \
+	char.int \
+	conf.int \
+	cord.int \
+	float.int \
+	getopt.int \
+	int.int \
+	io.int \
+	library.int \
+	list.int \
+	maybe.int \
+	mdbcomp.int \
+	mdprof_fb.int \
+	message.int \
+	private_builtin.int \
+	profile.int \
+	require.int \
+	startup.int \
+	string.int \
+	svmap.int \
+	mdbcomp.feedback.int \
+	mdprof_fb.automatic_parallelism.int \
+	array.int2 \
+	assoc_list.int2 \
+	bitmap.int2 \
+	construct.int2 \
+	deconstruct.int2 \
+	dump.int2 \
+	enum.int2 \
+	exclude.int2 \
+	map.int2 \
+	measurements.int2 \
+	ops.int2 \
+	pair.int2 \
+	pretty_printer.int2 \
+	random.int2 \
+	rtti_implementation.int2 \
+	set.int2 \
+	set_ordlist.int2 \
+	stream.int2 \
+	term.int2 \
+	time.int2 \
+	tree234.int2 \
+	type_desc.int2 \
+	unit.int2 \
+	univ.int2 \
+	mdbcomp.prim_data.int2 \
+	mdbcomp.program_representation.int2 \
+	mdbcomp.rtti_access.int2 \
+	mdbcomp.trace_counts.int2
+
+ifeq ($(TARGET_ASM),yes)
+mdprof_feedback.mh mdprof_feedback.mih : mdprof_feedback.s
+else
+mdprof_feedback.mh mdprof_feedback.mih : mdprof_feedback.c
+endif
+
+ifeq ($(TARGET_ASM),yes)
+mdprof_feedback.module_dep : mdprof_feedback.s
+else
+ ifeq ($(findstring il,$(GRADE)),il)
+mdprof_feedback.module_dep : mdprof_feedback.il
+  ifeq ($(findstring java,$(GRADE)),java)
+mdprof_feedback.module_dep : jmercury/mdprof_feedback.java
+  else
+mdprof_feedback.module_dep : mdprof_feedback.c
+  endif
+ endif
+endif
+
+mdprof_feedback.date mdprof_feedback.date0 : mdprof_feedback.m \
+	bool.int3 \
+	builtin.int3 \
+	char.int3 \
+	conf.int3 \
+	cord.int3 \
+	float.int3 \
+	getopt.int3 \
+	int.int3 \
+	io.int3 \
+	library.int3 \
+	list.int3 \
+	maybe.int3 \
+	mdbcomp.int3 \
+	mdprof_fb.int3 \
+	message.int3 \
+	private_builtin.int3 \
+	profile.int3 \
+	require.int3 \
+	startup.int3 \
+	string.int3 \
+	svmap.int3 \
+	mdbcomp.feedback.int3 \
+	mdprof_fb.automatic_parallelism.int3 \
+	array.int3 \
+	assoc_list.int3 \
+	bitmap.int3 \
+	construct.int3 \
+	deconstruct.int3 \
+	dump.int3 \
+	enum.int3 \
+	exclude.int3 \
+	map.int3 \
+	measurements.int3 \
+	ops.int3 \
+	pair.int3 \
+	pretty_printer.int3 \
+	random.int3 \
+	rtti_implementation.int3 \
+	set.int3 \
+	set_ordlist.int3 \
+	stream.int3 \
+	term.int3 \
+	time.int3 \
+	tree234.int3 \
+	type_desc.int3 \
+	unit.int3 \
+	univ.int3 \
+	mdbcomp.prim_data.int3 \
+	mdbcomp.program_representation.int3 \
+	mdbcomp.rtti_access.int3 \
+	mdbcomp.trace_counts.int3
+
+mdprof_feedback.date0 : mdprof_feedback.m \
+	bool.int3 \
+	builtin.int3 \
+	char.int3 \
+	conf.int3 \
+	cord.int3 \
+	float.int3 \
+	getopt.int3 \
+	int.int3 \
+	io.int3 \
+	library.int3 \
+	list.int3 \
+	maybe.int3 \
+	mdbcomp.int3 \
+	mdprof_fb.int3 \
+	message.int3 \
+	private_builtin.int3 \
+	profile.int3 \
+	require.int3 \
+	startup.int3 \
+	string.int3 \
+	svmap.int3 \
+	mdbcomp.feedback.int3 \
+	mdprof_fb.automatic_parallelism.int3 \
+	array.int3 \
+	assoc_list.int3 \
+	bitmap.int3 \
+	construct.int3 \
+	deconstruct.int3 \
+	dump.int3 \
+	enum.int3 \
+	exclude.int3 \
+	map.int3 \
+	measurements.int3 \
+	ops.int3 \
+	pair.int3 \
+	pretty_printer.int3 \
+	random.int3 \
+	rtti_implementation.int3 \
+	set.int3 \
+	set_ordlist.int3 \
+	stream.int3 \
+	term.int3 \
+	time.int3 \
+	tree234.int3 \
+	type_desc.int3 \
+	unit.int3 \
+	univ.int3 \
+	mdbcomp.prim_data.int3 \
+	mdbcomp.program_representation.int3 \
+	mdbcomp.rtti_access.int3 \
+	mdbcomp.trace_counts.int3
+
+
+
+mdprof_feedback.$O :  \
+	mdbcomp.rtti_access.mh \
+	mdbcomp.rtti_access.mh \
+	array.mh \
+	array.mh \
+	time.mh \
+	time.mh \
+	bitmap.mh \
+	bitmap.mh \
+	profile.mh \
+	profile.mh \
+	string.mh \
+	io.mh \
+	io.mh
+
+
+
+mdprof_feedback.pic_o :  \
+	mdbcomp.rtti_access.mh \
+	mdbcomp.rtti_access.mh \
+	array.mh \
+	array.mh \
+	time.mh \
+	time.mh \
+	bitmap.mh \
+	bitmap.mh \
+	profile.mh \
+	profile.mh \
+	string.mh \
+	io.mh \
+	io.mh
+
+
+mdprof_feedback.int0 : mdprof_feedback.date0
+	@:
+mdprof_feedback.int : mdprof_feedback.date
+	@:
+mdprof_feedback.int2 : mdprof_feedback.date
+	@:
+mdprof_feedback.int3 : mdprof_feedback.date3
+	@:
+mdprof_feedback.opt : mdprof_feedback.optdate
+	@:
+mdprof_feedback.trans_opt : mdprof_feedback.trans_opt_date
+	@:

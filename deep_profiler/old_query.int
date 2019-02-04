@@ -1,0 +1,7 @@
+:- module old_query.
+:- interface.
+:- import_module io.
+:- import_module profile.
+:- import_module query.
+:- pred old_exec(query.cmd, query.preferences, profile.deep, string, io.io, io.io).
+:- mode old_exec((builtin.in), (builtin.in), (builtin.in), (builtin.out), (builtin.di), (builtin.uo)) is det.

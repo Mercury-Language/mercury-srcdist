@@ -1,0 +1,15 @@
+:- module (((transform_hlds.ctgc).structure_sharing).domain).
+:- interface.
+:- import_module analysis.
+:- import_module bool.
+:- import_module list.
+:- import_module map.
+:- import_module set.
+:- import_module (hlds.hlds_goal).
+:- import_module (hlds.hlds_module).
+:- import_module (hlds.hlds_pred).
+:- import_module (parse_tree.prog_data).
+:- type sharing_as.
+:- type sharing_as_and_status
+	--->	sharing_as_and_status(transform_hlds.ctgc.structure_sharing.domain.sharing_as, analysis.analysis_status).
+:- type sharing_as_table == map.map(hlds.hlds_pred.pred_proc_id, transform_hlds.ctgc.structure_sharing.domain.sharing_as_and_status).

@@ -1,0 +1,94 @@
+:- module set_bbbtree.
+:- interface.
+:- import_module bool.
+:- import_module list.
+:- type set_bbbtree(T).
+:- pred contains(set_bbbtree.set_bbbtree(T), T).
+:- mode contains((builtin.in), (builtin.in)) is semidet.
+:- pred delete(set_bbbtree.set_bbbtree(T), T, set_bbbtree.set_bbbtree(T)).
+:- mode delete((builtin.di), (builtin.in), (builtin.uo)) is det.
+:- mode delete((builtin.in), (builtin.in), (builtin.out)) is det.
+:- func delete(set_bbbtree.set_bbbtree(T), T) = set_bbbtree.set_bbbtree(T).
+:- pred delete_list(set_bbbtree.set_bbbtree(T), list.list(T), set_bbbtree.set_bbbtree(T)).
+:- mode delete_list((builtin.in), (builtin.in), (builtin.out)) is det.
+:- func delete_list(set_bbbtree.set_bbbtree(T), list.list(T)) = set_bbbtree.set_bbbtree(T).
+:- pred difference(set_bbbtree.set_bbbtree(T), set_bbbtree.set_bbbtree(T), set_bbbtree.set_bbbtree(T)).
+:- mode difference((builtin.in), (builtin.in), (builtin.out)) is det.
+:- func difference(set_bbbtree.set_bbbtree(T), set_bbbtree.set_bbbtree(T)) = set_bbbtree.set_bbbtree(T).
+:- pred empty(set_bbbtree.set_bbbtree(T)).
+:- mode empty((builtin.in)) is semidet.
+:- pred equal(set_bbbtree.set_bbbtree(T), set_bbbtree.set_bbbtree(T)).
+:- mode equal((builtin.in), (builtin.in)) is semidet.
+:- func filter_map(((func T1) = T2), set_bbbtree.set_bbbtree(T1)) = set_bbbtree.set_bbbtree(T2).
+:- mode filter_map((func((builtin.in)) = (builtin.out) is semidet), (builtin.in)) = (builtin.out) is det.
+:- func fold((func(T1, T2) = T2), set_bbbtree.set_bbbtree(T1), T2) = T2.
+:- func from_list(list.list(T)) = set_bbbtree.set_bbbtree(T).
+:- func from_sorted_list(list.list(T)) = set_bbbtree.set_bbbtree(T).
+:- pred init(set_bbbtree.set_bbbtree(T)).
+:- mode init((builtin.uo)) is det.
+:- func init = set_bbbtree.set_bbbtree(T).
+:- pred insert(set_bbbtree.set_bbbtree(T), T, set_bbbtree.set_bbbtree(T)).
+:- mode insert((builtin.di), (builtin.di), (builtin.uo)) is det.
+:- mode insert((builtin.in), (builtin.in), (builtin.out)) is det.
+:- func insert(set_bbbtree.set_bbbtree(T), T) = set_bbbtree.set_bbbtree(T).
+:- pred insert_list(set_bbbtree.set_bbbtree(T), list.list(T), set_bbbtree.set_bbbtree(T)).
+:- mode insert_list((builtin.in), (builtin.in), (builtin.out)) is det.
+:- func insert_list(set_bbbtree.set_bbbtree(T), list.list(T)) = set_bbbtree.set_bbbtree(T).
+:- pred intersect(set_bbbtree.set_bbbtree(T), set_bbbtree.set_bbbtree(T), set_bbbtree.set_bbbtree(T)).
+:- mode intersect((builtin.in), (builtin.in), (builtin.out)) is det.
+:- func intersect(set_bbbtree.set_bbbtree(T), set_bbbtree.set_bbbtree(T)) = set_bbbtree.set_bbbtree(T).
+:- func intersect_list(list.list(set_bbbtree.set_bbbtree(T))) = set_bbbtree.set_bbbtree(T).
+:- pred is_member(T, set_bbbtree.set_bbbtree(T), bool.bool).
+:- mode is_member((builtin.in), (builtin.in), (builtin.out)) is det.
+:- pred largest(set_bbbtree.set_bbbtree(T), T).
+:- mode largest((builtin.in), (builtin.out)) is semidet.
+:- mode largest((builtin.in), (builtin.in)) is semidet.
+:- pred least(set_bbbtree.set_bbbtree(T), T).
+:- mode least((builtin.in), (builtin.out)) is semidet.
+:- mode least((builtin.in), (builtin.in)) is semidet.
+:- pred list_to_set(list.list(T), set_bbbtree.set_bbbtree(T)).
+:- mode list_to_set((builtin.in), (builtin.out)) is det.
+:- func list_to_set(list.list(T)) = set_bbbtree.set_bbbtree(T).
+:- func make_singleton_set(T) = set_bbbtree.set_bbbtree(T).
+:- func map(((func T1) = T2), set_bbbtree.set_bbbtree(T1)) = set_bbbtree.set_bbbtree(T2).
+:- pred member(T, set_bbbtree.set_bbbtree(T)).
+:- mode member((builtin.in), (builtin.in)) is semidet.
+:- mode member((builtin.out), (builtin.in)) is nondet.
+:- pred power_intersect(set_bbbtree.set_bbbtree(set_bbbtree.set_bbbtree(T)), set_bbbtree.set_bbbtree(T)).
+:- mode power_intersect((builtin.in), (builtin.out)) is det.
+:- func power_intersect(set_bbbtree.set_bbbtree(set_bbbtree.set_bbbtree(T))) = set_bbbtree.set_bbbtree(T).
+:- pred power_union(set_bbbtree.set_bbbtree(set_bbbtree.set_bbbtree(T)), set_bbbtree.set_bbbtree(T)).
+:- mode power_union((builtin.in), (builtin.out)) is det.
+:- func power_union(set_bbbtree.set_bbbtree(set_bbbtree.set_bbbtree(T))) = set_bbbtree.set_bbbtree(T).
+:- pred remove(set_bbbtree.set_bbbtree(T), T, set_bbbtree.set_bbbtree(T)).
+:- mode remove((builtin.in), (builtin.in), (builtin.out)) is semidet.
+:- pred remove_largest(set_bbbtree.set_bbbtree(T), T, set_bbbtree.set_bbbtree(T)).
+:- mode remove_largest((builtin.in), (builtin.out), (builtin.out)) is semidet.
+:- pred remove_least(set_bbbtree.set_bbbtree(T), T, set_bbbtree.set_bbbtree(T)).
+:- mode remove_least((builtin.in), (builtin.out), (builtin.out)) is semidet.
+:- pred remove_list(set_bbbtree.set_bbbtree(T), list.list(T), set_bbbtree.set_bbbtree(T)).
+:- mode remove_list((builtin.in), (builtin.in), (builtin.out)) is semidet.
+:- pred singleton_set(set_bbbtree.set_bbbtree(T), T).
+:- mode singleton_set((builtin.uo), (builtin.di)) is det.
+:- mode singleton_set((builtin.in), (builtin.out)) is semidet.
+:- mode singleton_set((builtin.in), (builtin.in)) is semidet.
+:- mode singleton_set((builtin.out), (builtin.in)) is det.
+:- pred size(set_bbbtree.set_bbbtree(T), int).
+:- mode size((builtin.in), (builtin.out)) is det.
+:- pred sorted_list_to_set(list.list(T), set_bbbtree.set_bbbtree(T)).
+:- mode sorted_list_to_set((builtin.in), (builtin.out)) is det.
+:- func sorted_list_to_set(list.list(T)) = set_bbbtree.set_bbbtree(T).
+:- pred sorted_list_to_set_len(list.list(T), set_bbbtree.set_bbbtree(T), int).
+:- mode sorted_list_to_set_len((builtin.in), (builtin.out), (builtin.in)) is det.
+:- pred subset(set_bbbtree.set_bbbtree(T), set_bbbtree.set_bbbtree(T)).
+:- mode subset((builtin.in), (builtin.in)) is semidet.
+:- pred superset(set_bbbtree.set_bbbtree(T), set_bbbtree.set_bbbtree(T)).
+:- mode superset((builtin.in), (builtin.in)) is semidet.
+:- pred to_sorted_list(set_bbbtree.set_bbbtree(T), list.list(T)).
+:- mode to_sorted_list((builtin.di), (builtin.uo)) is det.
+:- mode to_sorted_list((builtin.in), (builtin.out)) is det.
+:- func to_sorted_list(set_bbbtree.set_bbbtree(T)) = list.list(T).
+:- pred union(set_bbbtree.set_bbbtree(T), set_bbbtree.set_bbbtree(T), set_bbbtree.set_bbbtree(T)).
+:- mode union((builtin.in), (builtin.in), (builtin.out)) is det.
+:- func union(set_bbbtree.set_bbbtree(T), set_bbbtree.set_bbbtree(T)) = set_bbbtree.set_bbbtree(T).
+:- func union_list(list.list(set_bbbtree.set_bbbtree(T))) = set_bbbtree.set_bbbtree(T).

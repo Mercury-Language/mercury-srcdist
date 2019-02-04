@@ -1,0 +1,83 @@
+:- module bintree.
+:- pragma termination_info(bintree.init((builtin.uo)), finite(0, [no, no, no]), cannot_loop).
+:- pragma termination_info(bintree.insert((builtin.in), (builtin.in), (builtin.in), (builtin.out)), finite(4, [no, no, yes, yes, yes, no]), cannot_loop).
+:- pragma termination_info(bintree.update((builtin.in), (builtin.in), (builtin.in), (builtin.out)), finite(0, [no, no, yes, no, yes, no]), cannot_loop).
+:- pragma termination_info(bintree.set((builtin.di), (builtin.di), (builtin.di), (builtin.uo)), finite(4, [no, no, yes, yes, yes, no]), cannot_loop).
+:- pragma termination_info(bintree.set((builtin.in), (builtin.in), (builtin.in), (builtin.out)), finite(4, [no, no, yes, yes, yes, no]), cannot_loop).
+:- pragma termination_info(bintree.set((builtin.in), (builtin.in), (builtin.in)) = (builtin.out), finite(4, [no, no, yes, yes, yes, no]), cannot_loop).
+:- pragma termination_info(bintree.search((builtin.in), (builtin.in), (builtin.in)), finite(0, [no, no, no, no, no]), cannot_loop).
+:- pragma termination_info(bintree.search((builtin.in), (builtin.in), (builtin.out)), finite(-4, [no, no, yes, no, no]), cannot_loop).
+:- pragma termination_info(bintree.lookup((builtin.in), (builtin.in), (builtin.out)), finite(-4, [no, no, yes, no, no]), can_loop).
+:- pragma termination_info(bintree.lookup((builtin.in), (builtin.in)) = (builtin.out), finite(-4, [no, no, yes, no, no]), can_loop).
+:- pragma termination_info(bintree.lower_bound_search((builtin.in), (builtin.in), (builtin.out), (builtin.out)), finite(-4, [no, no, yes, no, no, no]), cannot_loop).
+:- pragma termination_info(bintree.lower_bound_lookup((builtin.in), (builtin.in), (builtin.out), (builtin.out)), finite(-4, [no, no, yes, no, no, no]), can_loop).
+:- pragma termination_info(bintree.upper_bound_search((builtin.in), (builtin.in), (builtin.out), (builtin.out)), finite(-4, [no, no, yes, no, no, no]), cannot_loop).
+:- pragma termination_info(bintree.upper_bound_lookup((builtin.in), (builtin.in), (builtin.out), (builtin.out)), finite(-4, [no, no, yes, no, no, no]), can_loop).
+:- pragma termination_info(bintree.delete((builtin.in), (builtin.in), (builtin.out)), finite(0, [no, no, yes, no, no]), cannot_loop).
+:- pragma termination_info(bintree.delete((builtin.in), (builtin.in)) = (builtin.out), finite(0, [no, no, yes, no, no]), cannot_loop).
+:- pragma termination_info(bintree.remove((builtin.in), (builtin.in), (builtin.out), (builtin.out)), finite(-4, [no, no, yes, no, no, no]), cannot_loop).
+:- pragma termination_info(bintree.keys((builtin.in), (builtin.out)), finite(0, [no, no, yes, no]), cannot_loop).
+:- pragma termination_info(bintree.keys((builtin.in)) = (builtin.out), finite(0, [no, no, yes, no]), cannot_loop).
+:- pragma termination_info(bintree.values((builtin.in), (builtin.out)), finite(0, [no, no, yes, no]), cannot_loop).
+:- pragma termination_info(bintree.values((builtin.in)) = (builtin.out), finite(0, [no, no, yes, no]), cannot_loop).
+:- pragma termination_info(bintree.from_list((builtin.in), (builtin.out)), finite(0, [no, no, yes, no]), can_loop).
+:- pragma termination_info(bintree.from_list((builtin.in)) = (builtin.out), finite(0, [no, no, yes, no]), can_loop).
+:- pragma termination_info(bintree.from_sorted_list((builtin.in), (builtin.out)), finite(0, [no, no, yes, no]), can_loop).
+:- pragma termination_info(bintree.from_sorted_list((builtin.in)) = (builtin.out), finite(0, [no, no, yes, no]), can_loop).
+:- pragma termination_info(bintree.from_corresponding_lists((builtin.in), (builtin.in), (builtin.out)), finite(0, [no, no, yes, yes, no]), can_loop).
+:- pragma termination_info(bintree.from_corresponding_lists((builtin.in), (builtin.in)) = (builtin.out), finite(0, [no, no, yes, yes, no]), can_loop).
+:- pragma termination_info(bintree.to_list((builtin.in), (builtin.out)), finite(0, [no, no, yes, no]), can_loop).
+:- pragma termination_info(bintree.to_list((builtin.in)) = (builtin.out), finite(0, [no, no, yes, no]), can_loop).
+:- pragma termination_info(bintree.count((builtin.in), (builtin.out)), finite(0, [no, no, no, no]), cannot_loop).
+:- pragma termination_info(bintree.count((builtin.in)) = (builtin.out), finite(0, [no, no, no, no]), cannot_loop).
+:- pragma termination_info(bintree.depth((builtin.in), (builtin.out)), finite(0, [no, no, no, no]), cannot_loop).
+:- pragma termination_info(bintree.depth((builtin.in)) = (builtin.out), finite(0, [no, no, no, no]), cannot_loop).
+:- pragma termination_info(bintree.branching_factor((builtin.in), (builtin.out), (builtin.out)), finite(0, [no, no, no, no, no]), cannot_loop).
+:- pragma termination_info(bintree.balance((builtin.in), (builtin.out)), finite(0, [no, no, yes, no]), can_loop).
+:- pragma termination_info(bintree.balance((builtin.in)) = (builtin.out), finite(0, [no, no, yes, no]), can_loop).
+:- pragma termination_info(bintree.from_list_2((builtin.in), (builtin.in), (builtin.out)), finite(0, [no, no, yes, yes, no]), can_loop).
+:- pragma termination_info(bintree.from_sorted_list_2((builtin.in), (builtin.in), (builtin.out), (builtin.out)), finite(0, [no, no, no, yes, no, no]), can_loop).
+:- pragma termination_info(bintree.to_list_2((builtin.in), (builtin.in), (builtin.out)), finite(0, [no, no, yes, yes, no]), can_loop).
+:- pragma termination_info(bintree.keys_2((builtin.in), (builtin.in), (builtin.out)), finite(0, [no, no, yes, yes, no]), cannot_loop).
+:- pragma termination_info(bintree.values_2((builtin.in), (builtin.in), (builtin.out)), finite(0, [no, no, yes, yes, no]), cannot_loop).
+:- pragma exceptions(predicate, (bintree.init), 1, 0, will_not_throw).
+:- pragma exceptions(predicate, (bintree.insert), 4, 0, may_throw(type_exception)).
+:- pragma exceptions(predicate, (bintree.update), 4, 0, may_throw(type_exception)).
+:- pragma exceptions(predicate, (bintree.set), 4, 0, may_throw(type_exception)).
+:- pragma exceptions(predicate, (bintree.set), 4, 1, may_throw(type_exception)).
+:- pragma exceptions(function, (bintree.set), 4, 0, may_throw(type_exception)).
+:- pragma exceptions(predicate, (bintree.search), 3, 0, may_throw(type_exception)).
+:- pragma exceptions(predicate, (bintree.search), 3, 1, may_throw(type_exception)).
+:- pragma exceptions(predicate, (bintree.lookup), 3, 0, may_throw(user_exception)).
+:- pragma exceptions(function, (bintree.lookup), 3, 0, may_throw(user_exception)).
+:- pragma exceptions(predicate, (bintree.lower_bound_search), 4, 0, may_throw(type_exception)).
+:- pragma exceptions(predicate, (bintree.lower_bound_lookup), 4, 0, may_throw(user_exception)).
+:- pragma exceptions(predicate, (bintree.upper_bound_search), 4, 0, may_throw(type_exception)).
+:- pragma exceptions(predicate, (bintree.upper_bound_lookup), 4, 0, may_throw(user_exception)).
+:- pragma exceptions(predicate, (bintree.delete), 3, 0, may_throw(user_exception)).
+:- pragma exceptions(function, (bintree.delete), 3, 0, may_throw(user_exception)).
+:- pragma exceptions(predicate, (bintree.remove), 4, 0, may_throw(user_exception)).
+:- pragma exceptions(predicate, (bintree.keys), 2, 0, will_not_throw).
+:- pragma exceptions(function, (bintree.keys), 2, 0, will_not_throw).
+:- pragma exceptions(predicate, (bintree.values), 2, 0, will_not_throw).
+:- pragma exceptions(function, (bintree.values), 2, 0, will_not_throw).
+:- pragma exceptions(predicate, (bintree.from_list), 2, 0, may_throw(user_exception)).
+:- pragma exceptions(function, (bintree.from_list), 2, 0, may_throw(user_exception)).
+:- pragma exceptions(predicate, (bintree.from_sorted_list), 2, 0, may_throw(user_exception)).
+:- pragma exceptions(function, (bintree.from_sorted_list), 2, 0, may_throw(user_exception)).
+:- pragma exceptions(predicate, (bintree.from_corresponding_lists), 3, 0, may_throw(user_exception)).
+:- pragma exceptions(function, (bintree.from_corresponding_lists), 3, 0, may_throw(user_exception)).
+:- pragma exceptions(predicate, (bintree.to_list), 2, 0, will_not_throw).
+:- pragma exceptions(function, (bintree.to_list), 2, 0, will_not_throw).
+:- pragma exceptions(predicate, (bintree.count), 2, 0, will_not_throw).
+:- pragma exceptions(function, (bintree.count), 2, 0, will_not_throw).
+:- pragma exceptions(predicate, (bintree.depth), 2, 0, will_not_throw).
+:- pragma exceptions(function, (bintree.depth), 2, 0, will_not_throw).
+:- pragma exceptions(predicate, (bintree.branching_factor), 3, 0, will_not_throw).
+:- pragma exceptions(predicate, (bintree.balance), 2, 0, may_throw(user_exception)).
+:- pragma exceptions(function, (bintree.balance), 2, 0, may_throw(user_exception)).
+:- pragma exceptions(predicate, (bintree.from_list_2), 3, 0, may_throw(user_exception)).
+:- pragma exceptions(predicate, (bintree.from_sorted_list_2), 4, 0, may_throw(user_exception)).
+:- pragma exceptions(predicate, (bintree.to_list_2), 3, 0, will_not_throw).
+:- pragma exceptions(predicate, (bintree.keys_2), 3, 0, will_not_throw).
+:- pragma exceptions(predicate, (bintree.values_2), 3, 0, will_not_throw).

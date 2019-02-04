@@ -1,0 +1,13 @@
+:- module (mdprof_fb.automatic_parallelism).
+:- interface.
+:- import_module cord.
+:- import_module float.
+:- import_module int.
+:- import_module mdbcomp.
+:- import_module message.
+:- import_module profile.
+:- import_module (mdbcomp.feedback).
+:- type calls_above_threshold_sorted_opts
+	--->	calls_above_threshold_sorted_opts(((mdprof_fb.automatic_parallelism).cats_measure) :: mdbcomp.feedback.stat_measure, ((mdprof_fb.automatic_parallelism).cats_threshold) :: int).
+:- type candidate_parallel_conjunctions_opts
+	--->	candidate_parallel_conjunctions_opts(((mdprof_fb.automatic_parallelism).cpc_desired_parallelism) :: float, ((mdprof_fb.automatic_parallelism).cpc_sparking_cost) :: int, ((mdprof_fb.automatic_parallelism).cpc_locking_cost) :: int, ((mdprof_fb.automatic_parallelism).cpc_clique_threshold) :: int, ((mdprof_fb.automatic_parallelism).cpc_call_site_threshold) :: int).

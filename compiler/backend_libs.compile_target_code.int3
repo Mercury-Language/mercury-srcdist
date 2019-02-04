@@ -1,0 +1,4 @@
+:- module (backend_libs.compile_target_code).
+:- interface.
+:- type linked_target_type.
+:- type pic.
