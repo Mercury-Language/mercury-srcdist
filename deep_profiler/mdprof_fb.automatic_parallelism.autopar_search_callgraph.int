@@ -1,0 +1,10 @@
+:- module ((mdprof_fb.automatic_parallelism).autopar_search_callgraph).
+:- interface.
+:- import_module cord.
+:- import_module mdbcomp.
+:- import_module message.
+:- import_module profile.
+:- import_module (mdbcomp.feedback).
+:- import_module ((mdbcomp.feedback).automatic_parallelism).
+:- pred candidate_parallel_conjunctions(mdbcomp.feedback.automatic_parallelism.candidate_par_conjunctions_params, profile.deep, cord.cord(message.message), mdbcomp.feedback.feedback_info, mdbcomp.feedback.feedback_info).
+:- mode candidate_parallel_conjunctions((builtin.in), (builtin.in), (builtin.out), (builtin.in), (builtin.out)) is det.

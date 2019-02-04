@@ -1,0 +1,11 @@
+:- module (((transform_hlds.ctgc).structure_reuse).domain).
+:- interface.
+:- type no_clobber_args.
+:- type ppid_no_clobbers.
+:- type reuse_as.
+:- type reuse_as_and_status.
+:- type reuse_as_table.
+:- type reuse_condition.
+:- type reuse_conditions.
+:- type reuse_not_possible_reason.
+:- type reuse_satisfied_result.
