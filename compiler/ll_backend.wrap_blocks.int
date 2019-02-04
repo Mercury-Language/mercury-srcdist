@@ -1,0 +1,6 @@
+:- module (ll_backend.wrap_blocks).
+:- interface.
+:- import_module list.
+:- import_module (ll_backend.llds).
+:- pred wrap_blocks(list.list(ll_backend.llds.instruction), list.list(ll_backend.llds.instruction)).
+:- mode wrap_blocks((builtin.in), (builtin.out)) is det.
