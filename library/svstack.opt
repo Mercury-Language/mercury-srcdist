@@ -1,0 +1,18 @@
+:- module svstack.
+:- use_module builtin, list, private_builtin, stack.
+svstack.push(E_4, STATE_VARIABLE_S_0_6, STATE_VARIABLE_S_7) :-
+    stack.push(STATE_VARIABLE_S_0_6, E_4, STATE_VARIABLE_S_7).
+svstack.push_list(Es_4, STATE_VARIABLE_S_0_6, STATE_VARIABLE_S_7) :-
+    stack.push_list(STATE_VARIABLE_S_0_6, Es_4, STATE_VARIABLE_S_7).
+svstack.pop(E_4, STATE_VARIABLE_S_0_6, STATE_VARIABLE_S_7) :-
+    stack.pop(STATE_VARIABLE_S_0_6, E_4, STATE_VARIABLE_S_7).
+svstack.det_pop(E_4, STATE_VARIABLE_S_0_6, STATE_VARIABLE_S_7) :-
+    stack.det_pop(STATE_VARIABLE_S_0_6, E_4, STATE_VARIABLE_S_7).
+:- pragma exceptions(predicate, (svstack.push), 3, 0, may_throw(user_exception)).
+:- pragma exceptions(predicate, (svstack.push_list), 3, 0, may_throw(user_exception)).
+:- pragma exceptions(predicate, (svstack.pop), 3, 0, may_throw(user_exception)).
+:- pragma exceptions(predicate, (svstack.det_pop), 3, 0, may_throw(user_exception)).
+:- pragma termination_info(svstack.push((builtin.in), (builtin.in), (builtin.out)), infinite, can_loop).
+:- pragma termination_info(svstack.push_list((builtin.in), (builtin.in), (builtin.out)), infinite, can_loop).
+:- pragma termination_info(svstack.pop((builtin.out), (builtin.in), (builtin.out)), infinite, can_loop).
+:- pragma termination_info(svstack.det_pop((builtin.out), (builtin.in), (builtin.out)), infinite, can_loop).

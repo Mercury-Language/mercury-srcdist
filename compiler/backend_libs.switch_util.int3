@@ -1,0 +1,19 @@
+:- module (backend_libs.switch_util).
+:- interface.
+:- type case_num_ptags_map.
+:- type maybe_int_switch_info.
+:- type need_bit_vec_check.
+:- type need_range_check.
+:- type ptag_count_map.
+:- type switch_category.
+:- type ptag_case(CaseRep).
+:- type ptag_case_entry(CaseRep).
+:- type ptag_case_group_entry(CaseRep).
+:- type ptag_case_group_list(CaseRep).
+:- type ptag_case_list(CaseRep).
+:- type ptag_case_map(CaseRep).
+:- type stag_goal_list(CaseRep).
+:- type stag_goal_map(CaseRep).
+:- type string_hash_slot(CaseRep).
+:- type soln_consts(Rval).
+:- type case_consts(Key, Rval).

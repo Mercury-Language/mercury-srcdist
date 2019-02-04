@@ -1,0 +1,11 @@
+:- module ((ll_backend.llds_out).llds_out_instr).
+:- interface.
+:- import_module io.
+:- import_module list.
+:- import_module pair.
+:- import_module set_tree234.
+:- import_module (ll_backend.llds).
+:- import_module ((ll_backend.llds_out).llds_out_util).
+:- type after_layout_label
+	--->	not_after_layout_label 
+	;	after_layout_label .

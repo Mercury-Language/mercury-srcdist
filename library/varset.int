@@ -1,0 +1,92 @@
+:- module varset.
+:- interface.
+:- import_module assoc_list.
+:- import_module list.
+:- import_module map.
+:- import_module maybe.
+:- import_module set.
+:- import_module term.
+:- type varset == varset.varset(term.generic).
+:- type varset(T).
+:- func bind_var(varset.varset(T), term.var(T), term.term(T)) = varset.varset(T).
+:- pred bind_var(term.var(T), term.term(T), varset.varset(T), varset.varset(T)).
+:- mode bind_var((builtin.in), (builtin.in), (builtin.in), (builtin.out)) is det.
+:- func bind_vars(varset.varset(T), term.substitution(T)) = varset.varset(T).
+:- pred bind_vars(term.substitution(T), varset.varset(T), varset.varset(T)).
+:- mode bind_vars((builtin.in), (builtin.in), (builtin.out)) is det.
+:- func coerce(varset.varset(T)) = varset.varset(U).
+:- pred coerce(varset.varset(T), varset.varset(U)).
+:- mode coerce((builtin.in), (builtin.out)) is det.
+:- func create_name_var_map(varset.varset(T)) = map.map(string, term.var(T)).
+:- pred create_name_var_map(varset.varset(T), map.map(string, term.var(T))).
+:- mode create_name_var_map((builtin.in), (builtin.out)) is det.
+:- func delete_var(varset.varset(T), term.var(T)) = varset.varset(T).
+:- pred delete_var(term.var(T), varset.varset(T), varset.varset(T)).
+:- mode delete_var((builtin.in), (builtin.in), (builtin.out)) is det.
+:- func delete_vars(varset.varset(T), list.list(term.var(T))) = varset.varset(T).
+:- pred delete_vars(list.list(term.var(T)), varset.varset(T), varset.varset(T)).
+:- mode delete_vars((builtin.in), (builtin.in), (builtin.out)) is det.
+:- func ensure_unique_names(list.list(term.var(T)), string, varset.varset(T)) = varset.varset(T).
+:- pred ensure_unique_names(list.list(term.var(T)), string, varset.varset(T), varset.varset(T)).
+:- mode ensure_unique_names((builtin.in), (builtin.in), (builtin.in), (builtin.out)) is det.
+:- func get_bindings(varset.varset(T)) = term.substitution(T).
+:- pred get_bindings(varset.varset(T), term.substitution(T)).
+:- mode get_bindings((builtin.in), (builtin.out)) is det.
+:- func init = varset.varset(T).
+:- pred init(varset.varset(T)).
+:- mode init((builtin.out)) is det.
+:- pred is_empty(varset.varset(T)).
+:- mode is_empty((builtin.in)) is semidet.
+:- func lookup_name(varset.varset(T), term.var(T)) = string.
+:- pred lookup_name(varset.varset(T), term.var(T), string).
+:- mode lookup_name((builtin.in), (builtin.in), (builtin.out)) is det.
+:- func lookup_name(varset.varset(T), term.var(T), string) = string.
+:- pred lookup_name(varset.varset(T), term.var(T), string, string).
+:- mode lookup_name((builtin.in), (builtin.in), (builtin.in), (builtin.out)) is det.
+:- func lookup_vars(varset.varset(T)) = term.substitution(T).
+:- pred lookup_vars(varset.varset(T), term.substitution(T)).
+:- mode lookup_vars((builtin.in), (builtin.out)) is det.
+:- func max_var(varset.varset(T)) = term.var(T).
+:- pred merge(varset.varset(T), varset.varset(T), list.list(term.term(T)), varset.varset(T), list.list(term.term(T))).
+:- mode merge((builtin.in), (builtin.in), (builtin.in), (builtin.out), (builtin.out)) is det.
+:- pred merge_renaming(varset.varset(T), varset.varset(T), varset.varset(T), map.map(term.var(T), term.var(T))).
+:- mode merge_renaming((builtin.in), (builtin.in), (builtin.out), (builtin.out)) is det.
+:- pred merge_renaming_without_names(varset.varset(T), varset.varset(T), varset.varset(T), map.map(term.var(T), term.var(T))).
+:- mode merge_renaming_without_names((builtin.in), (builtin.in), (builtin.out), (builtin.out)) is det.
+:- pred merge_subst(varset.varset(T), varset.varset(T), varset.varset(T), term.substitution(T)).
+:- mode merge_subst((builtin.in), (builtin.in), (builtin.out), (builtin.out)) is det.
+:- pred merge_subst_without_names(varset.varset(T), varset.varset(T), varset.varset(T), term.substitution(T)).
+:- mode merge_subst_without_names((builtin.in), (builtin.in), (builtin.out), (builtin.out)) is det.
+:- pred merge_without_names(varset.varset(T), varset.varset(T), list.list(term.term(T)), varset.varset(T), list.list(term.term(T))).
+:- mode merge_without_names((builtin.in), (builtin.in), (builtin.in), (builtin.out), (builtin.out)) is det.
+:- func name_var(varset.varset(T), term.var(T), string) = varset.varset(T).
+:- pred name_var(term.var(T), string, varset.varset(T), varset.varset(T)).
+:- mode name_var((builtin.in), (builtin.in), (builtin.in), (builtin.out)) is det.
+:- pred new_maybe_named_var(maybe.maybe(string), term.var(T), varset.varset(T), varset.varset(T)).
+:- mode new_maybe_named_var((builtin.in), (builtin.out), (builtin.in), (builtin.out)) is det.
+:- pred new_named_var(string, term.var(T), varset.varset(T), varset.varset(T)).
+:- mode new_named_var((builtin.in), (builtin.out), (builtin.in), (builtin.out)) is det.
+:- pred new_uniquely_named_var(string, term.var(T), varset.varset(T), varset.varset(T)).
+:- mode new_uniquely_named_var((builtin.in), (builtin.out), (builtin.in), (builtin.out)) is det.
+:- pred new_var(term.var(T), varset.varset(T), varset.varset(T)).
+:- mode new_var((builtin.out), (builtin.in), (builtin.out)) is det.
+:- pred new_vars(int, list.list(term.var(T)), varset.varset(T), varset.varset(T)).
+:- mode new_vars((builtin.in), (builtin.out), (builtin.in), (builtin.out)) is det.
+:- pred search_name(varset.varset(T), term.var(T), string).
+:- mode search_name((builtin.in), (builtin.in), (builtin.out)) is semidet.
+:- pred search_var(varset.varset(T), term.var(T), term.term(T)).
+:- mode search_var((builtin.in), (builtin.in), (builtin.out)) is semidet.
+:- func select(varset.varset(T), set.set(term.var(T))) = varset.varset(T).
+:- pred select(set.set(term.var(T)), varset.varset(T), varset.varset(T)).
+:- mode select((builtin.in), (builtin.in), (builtin.out)) is det.
+:- func set_bindings(varset.varset(T), term.substitution(T)) = varset.varset(T).
+:- pred set_bindings(varset.varset(T), term.substitution(T), varset.varset(T)).
+:- mode set_bindings((builtin.in), (builtin.in), (builtin.out)) is det.
+:- pred squash(varset.varset(T), list.list(term.var(T)), varset.varset(T), map.map(term.var(T), term.var(T))).
+:- mode squash((builtin.in), (builtin.in), (builtin.out), (builtin.out)) is det.
+:- func var_name_list(varset.varset(T)) = assoc_list.assoc_list(term.var(T), string).
+:- pred var_name_list(varset.varset(T), assoc_list.assoc_list(term.var(T), string)).
+:- mode var_name_list((builtin.in), (builtin.out)) is det.
+:- func vars(varset.varset(T)) = list.list(term.var(T)).
+:- pred vars(varset.varset(T), list.list(term.var(T))).
+:- mode vars((builtin.in), (builtin.out)) is det.

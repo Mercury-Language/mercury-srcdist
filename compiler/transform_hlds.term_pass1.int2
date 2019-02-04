@@ -1,0 +1,12 @@
+:- module (transform_hlds.term_pass1).
+:- interface.
+:- import_module io.
+:- import_module list.
+:- import_module pair.
+:- import_module (hlds.hlds_module).
+:- import_module (hlds.hlds_pred).
+:- import_module (transform_hlds.term_errors).
+:- import_module (transform_hlds.term_util).
+:- type arg_size_result
+	--->	arg_size_ok(list.list(pair.pair(hlds.hlds_pred.pred_proc_id, int)), transform_hlds.term_util.used_args)
+	;	arg_size_error(list.list(transform_hlds.term_errors.termination_error_context)).

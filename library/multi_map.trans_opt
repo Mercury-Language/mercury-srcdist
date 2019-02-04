@@ -1,0 +1,127 @@
+:- module multi_map.
+:- pragma termination_info((multi_map.init) = (builtin.out), finite(0, [no, no, no]), cannot_loop).
+:- pragma termination_info(multi_map.init((builtin.uo)), finite(0, [no, no, no]), cannot_loop).
+:- pragma termination_info(multi_map.is_empty((builtin.in)), finite(0, [no, no, no]), cannot_loop).
+:- pragma termination_info(multi_map.contains((builtin.in), (builtin.in)), finite(0, [no, no, no, no]), cannot_loop).
+:- pragma termination_info(multi_map.member((builtin.in), (builtin.out), (builtin.out)), finite(-6, [no, no, yes, no, no]), cannot_loop).
+:- pragma termination_info(multi_map.search((builtin.in), (builtin.in), (builtin.out)), finite(-4, [no, no, yes, no, no]), cannot_loop).
+:- pragma termination_info(multi_map.nondet_search((builtin.in), (builtin.in), (builtin.out)), finite(-6, [no, no, yes, no, no]), cannot_loop).
+:- pragma termination_info(multi_map.lookup((builtin.in), (builtin.in)) = (builtin.out), finite(-4, [no, no, yes, no, no]), can_loop).
+:- pragma termination_info(multi_map.lookup((builtin.in), (builtin.in), (builtin.out)), finite(-4, [no, no, yes, no, no]), can_loop).
+:- pragma termination_info(multi_map.nondet_lookup((builtin.in), (builtin.in), (builtin.out)), finite(-6, [no, no, yes, no, no]), cannot_loop).
+:- pragma termination_info(multi_map.inverse_search((builtin.in), (builtin.in), (builtin.out)), finite(-4, [no, no, yes, no, no]), cannot_loop).
+:- pragma termination_info(multi_map.insert((builtin.in), (builtin.in), (builtin.in), (builtin.out)), infinite, cannot_loop).
+:- pragma termination_info(multi_map.det_insert((builtin.in), (builtin.in), (builtin.in)) = (builtin.out), infinite, can_loop).
+:- pragma termination_info(multi_map.det_insert((builtin.in), (builtin.in), (builtin.in), (builtin.out)), infinite, can_loop).
+:- pragma termination_info(multi_map.update((builtin.in), (builtin.in), (builtin.in), (builtin.out)), infinite, cannot_loop).
+:- pragma termination_info(multi_map.det_update((builtin.in), (builtin.in), (builtin.in)) = (builtin.out), finite(2, [no, no, yes, no, yes, no]), can_loop).
+:- pragma termination_info(multi_map.det_update((builtin.in), (builtin.in), (builtin.in), (builtin.out)), finite(2, [no, no, no, yes, yes, no]), can_loop).
+:- pragma termination_info(multi_map.det_replace((builtin.in), (builtin.in), (builtin.in)) = (builtin.out), finite(0, [no, no, yes, no, yes, no]), can_loop).
+:- pragma termination_info(multi_map.det_replace((builtin.in), (builtin.in), (builtin.in), (builtin.out)), finite(0, [no, no, no, yes, yes, no]), can_loop).
+:- pragma termination_info(multi_map.set((builtin.in), (builtin.in), (builtin.in)) = (builtin.out), infinite, can_loop).
+:- pragma termination_info(multi_map.set((builtin.in), (builtin.in), (builtin.in), (builtin.out)), infinite, can_loop).
+:- pragma termination_info(multi_map.add((builtin.in), (builtin.in), (builtin.in)) = (builtin.out), infinite, can_loop).
+:- pragma termination_info(multi_map.add((builtin.in), (builtin.in), (builtin.in), (builtin.out)), infinite, can_loop).
+:- pragma termination_info(multi_map.keys((builtin.in)) = (builtin.out), finite(0, [no, no, yes, no]), cannot_loop).
+:- pragma termination_info(multi_map.keys((builtin.in), (builtin.out)), finite(0, [no, no, yes, no]), cannot_loop).
+:- pragma termination_info(multi_map.values((builtin.in)) = (builtin.out), finite(0, [no, no, yes, no]), cannot_loop).
+:- pragma termination_info(multi_map.values((builtin.in), (builtin.out)), finite(0, [no, no, yes, no]), cannot_loop).
+:- pragma termination_info(multi_map.to_flat_assoc_list((builtin.in)) = (builtin.out), infinite, can_loop).
+:- pragma termination_info(multi_map.to_flat_assoc_list((builtin.in), (builtin.out)), infinite, can_loop).
+:- pragma termination_info(multi_map.from_flat_assoc_list((builtin.in)) = (builtin.out), infinite, can_loop).
+:- pragma termination_info(multi_map.from_flat_assoc_list((builtin.in), (builtin.out)), infinite, can_loop).
+:- pragma termination_info(multi_map.to_assoc_list((builtin.in)) = (builtin.out), infinite, can_loop).
+:- pragma termination_info(multi_map.to_assoc_list((builtin.in), (builtin.out)), infinite, can_loop).
+:- pragma termination_info(multi_map.from_assoc_list((builtin.in)) = (builtin.out), infinite, can_loop).
+:- pragma termination_info(multi_map.from_assoc_list((builtin.in), (builtin.out)), infinite, can_loop).
+:- pragma termination_info(multi_map.from_sorted_assoc_list((builtin.in)) = (builtin.out), infinite, can_loop).
+:- pragma termination_info(multi_map.from_sorted_assoc_list((builtin.in), (builtin.out)), infinite, can_loop).
+:- pragma termination_info(multi_map.delete((builtin.in), (builtin.in)) = (builtin.out), infinite, cannot_loop).
+:- pragma termination_info(multi_map.delete((builtin.in), (builtin.in), (builtin.out)), infinite, cannot_loop).
+:- pragma termination_info(multi_map.delete((builtin.in), (builtin.in), (builtin.in)) = (builtin.out), infinite, cannot_loop).
+:- pragma termination_info(multi_map.delete((builtin.in), (builtin.in), (builtin.in), (builtin.out)), infinite, cannot_loop).
+:- pragma termination_info(multi_map.remove((builtin.in), (builtin.out), (builtin.in), (builtin.out)), infinite, cannot_loop).
+:- pragma termination_info(multi_map.det_remove((builtin.in), (builtin.out), (builtin.in), (builtin.out)), infinite, can_loop).
+:- pragma termination_info(multi_map.count((builtin.in)) = (builtin.out), finite(0, [no, no, no, no]), cannot_loop).
+:- pragma termination_info(multi_map.count((builtin.in), (builtin.out)), finite(0, [no, no, no, no]), cannot_loop).
+:- pragma termination_info(multi_map.all_count((builtin.in)) = (builtin.out), finite(0, [no, no, no, no]), cannot_loop).
+:- pragma termination_info(multi_map.all_count((builtin.in), (builtin.out)), finite(0, [no, no, no, no]), cannot_loop).
+:- pragma termination_info(multi_map.from_corresponding_lists((builtin.in), (builtin.in)) = (builtin.out), infinite, can_loop).
+:- pragma termination_info(multi_map.from_corresponding_lists((builtin.in), (builtin.in), (builtin.out)), infinite, can_loop).
+:- pragma termination_info(multi_map.from_corresponding_list_lists((builtin.in), (builtin.in)) = (builtin.out), infinite, can_loop).
+:- pragma termination_info(multi_map.from_corresponding_list_lists((builtin.in), (builtin.in), (builtin.out)), infinite, can_loop).
+:- pragma termination_info(multi_map.merge((builtin.in), (builtin.in)) = (builtin.out), infinite, can_loop).
+:- pragma termination_info(multi_map.merge((builtin.in), (builtin.in), (builtin.out)), infinite, can_loop).
+:- pragma termination_info(multi_map.select((builtin.in), (builtin.in)) = (builtin.out), infinite, can_loop).
+:- pragma termination_info(multi_map.select((builtin.in), (builtin.in), (builtin.out)), infinite, can_loop).
+:- pragma termination_info(multi_map.apply_to_list((builtin.in), (builtin.in)) = (builtin.out), infinite, can_loop).
+:- pragma termination_info(multi_map.apply_to_list((builtin.in), (builtin.in), (builtin.out)), infinite, can_loop).
+:- pragma termination_info(multi_map.optimize((builtin.in)) = (builtin.out), finite(0, [no, no, yes, no]), cannot_loop).
+:- pragma termination_info(multi_map.optimize((builtin.in), (builtin.out)), finite(0, [no, no, yes, no]), cannot_loop).
+:- pragma termination_info(multi_map.remove_smallest((builtin.out), (builtin.out), (builtin.in), (builtin.out)), infinite, cannot_loop).
+:- pragma termination_info(multi_map.count_list((builtin.in), (builtin.in), (builtin.out)), finite(0, [no, no, yes, no]), cannot_loop).
+:- pragma termination_info(multi_map.from_corresponding_lists_2((builtin.in), (builtin.in), (builtin.in), (builtin.out)), infinite, can_loop).
+:- pragma termination_info(multi_map.assoc_list_merge((builtin.in), (builtin.in), (builtin.out)), finite(0, [no, no, yes, yes, no]), cannot_loop).
+:- pragma exceptions(function, (multi_map.init), 1, 0, will_not_throw).
+:- pragma exceptions(predicate, (multi_map.init), 1, 0, will_not_throw).
+:- pragma exceptions(predicate, (multi_map.is_empty), 1, 0, will_not_throw).
+:- pragma exceptions(predicate, (multi_map.contains), 2, 0, may_throw(type_exception)).
+:- pragma exceptions(predicate, (multi_map.member), 3, 0, will_not_throw).
+:- pragma exceptions(predicate, (multi_map.search), 3, 0, may_throw(type_exception)).
+:- pragma exceptions(predicate, (multi_map.nondet_search), 3, 0, may_throw(type_exception)).
+:- pragma exceptions(function, (multi_map.lookup), 3, 0, may_throw(user_exception)).
+:- pragma exceptions(predicate, (multi_map.lookup), 3, 0, may_throw(user_exception)).
+:- pragma exceptions(predicate, (multi_map.nondet_lookup), 3, 0, may_throw(type_exception)).
+:- pragma exceptions(predicate, (multi_map.inverse_search), 3, 0, conditional).
+:- pragma exceptions(predicate, (multi_map.insert), 4, 0, may_throw(type_exception)).
+:- pragma exceptions(function, (multi_map.det_insert), 4, 0, may_throw(user_exception)).
+:- pragma exceptions(predicate, (multi_map.det_insert), 4, 0, may_throw(user_exception)).
+:- pragma exceptions(predicate, (multi_map.update), 4, 0, may_throw(type_exception)).
+:- pragma exceptions(function, (multi_map.det_update), 4, 0, may_throw(user_exception)).
+:- pragma exceptions(predicate, (multi_map.det_update), 4, 0, may_throw(user_exception)).
+:- pragma exceptions(function, (multi_map.det_replace), 4, 0, may_throw(user_exception)).
+:- pragma exceptions(predicate, (multi_map.det_replace), 4, 0, may_throw(user_exception)).
+:- pragma exceptions(function, (multi_map.set), 4, 0, may_throw(user_exception)).
+:- pragma exceptions(predicate, (multi_map.set), 4, 0, may_throw(user_exception)).
+:- pragma exceptions(function, (multi_map.add), 4, 0, may_throw(user_exception)).
+:- pragma exceptions(predicate, (multi_map.add), 4, 0, may_throw(user_exception)).
+:- pragma exceptions(function, (multi_map.keys), 2, 0, will_not_throw).
+:- pragma exceptions(predicate, (multi_map.keys), 2, 0, will_not_throw).
+:- pragma exceptions(function, (multi_map.values), 2, 0, will_not_throw).
+:- pragma exceptions(predicate, (multi_map.values), 2, 0, will_not_throw).
+:- pragma exceptions(function, (multi_map.to_flat_assoc_list), 2, 0, may_throw(user_exception)).
+:- pragma exceptions(predicate, (multi_map.to_flat_assoc_list), 2, 0, may_throw(user_exception)).
+:- pragma exceptions(function, (multi_map.from_flat_assoc_list), 2, 0, may_throw(user_exception)).
+:- pragma exceptions(predicate, (multi_map.from_flat_assoc_list), 2, 0, may_throw(user_exception)).
+:- pragma exceptions(function, (multi_map.to_assoc_list), 2, 0, will_not_throw).
+:- pragma exceptions(predicate, (multi_map.to_assoc_list), 2, 0, will_not_throw).
+:- pragma exceptions(function, (multi_map.from_assoc_list), 2, 0, may_throw(type_exception)).
+:- pragma exceptions(predicate, (multi_map.from_assoc_list), 2, 0, may_throw(type_exception)).
+:- pragma exceptions(function, (multi_map.from_sorted_assoc_list), 2, 0, may_throw(user_exception)).
+:- pragma exceptions(predicate, (multi_map.from_sorted_assoc_list), 2, 0, may_throw(user_exception)).
+:- pragma exceptions(function, (multi_map.delete), 3, 0, may_throw(user_exception)).
+:- pragma exceptions(predicate, (multi_map.delete), 3, 0, may_throw(user_exception)).
+:- pragma exceptions(function, (multi_map.delete), 4, 0, may_throw(user_exception)).
+:- pragma exceptions(predicate, (multi_map.delete), 4, 0, may_throw(user_exception)).
+:- pragma exceptions(predicate, (multi_map.remove), 4, 0, may_throw(user_exception)).
+:- pragma exceptions(predicate, (multi_map.det_remove), 4, 0, may_throw(user_exception)).
+:- pragma exceptions(function, (multi_map.count), 2, 0, will_not_throw).
+:- pragma exceptions(predicate, (multi_map.count), 2, 0, will_not_throw).
+:- pragma exceptions(function, (multi_map.all_count), 2, 0, will_not_throw).
+:- pragma exceptions(predicate, (multi_map.all_count), 2, 0, will_not_throw).
+:- pragma exceptions(function, (multi_map.from_corresponding_lists), 3, 0, may_throw(user_exception)).
+:- pragma exceptions(predicate, (multi_map.from_corresponding_lists), 3, 0, may_throw(user_exception)).
+:- pragma exceptions(function, (multi_map.from_corresponding_list_lists), 3, 0, may_throw(user_exception)).
+:- pragma exceptions(predicate, (multi_map.from_corresponding_list_lists), 3, 0, may_throw(user_exception)).
+:- pragma exceptions(function, (multi_map.merge), 3, 0, may_throw(user_exception)).
+:- pragma exceptions(predicate, (multi_map.merge), 3, 0, may_throw(user_exception)).
+:- pragma exceptions(function, (multi_map.select), 3, 0, may_throw(type_exception)).
+:- pragma exceptions(predicate, (multi_map.select), 3, 0, may_throw(type_exception)).
+:- pragma exceptions(function, (multi_map.apply_to_list), 3, 0, may_throw(user_exception)).
+:- pragma exceptions(predicate, (multi_map.apply_to_list), 3, 0, may_throw(user_exception)).
+:- pragma exceptions(function, (multi_map.optimize), 2, 0, will_not_throw).
+:- pragma exceptions(predicate, (multi_map.optimize), 2, 0, will_not_throw).
+:- pragma exceptions(predicate, (multi_map.remove_smallest), 4, 0, may_throw(user_exception)).
+:- pragma exceptions(predicate, (multi_map.count_list), 3, 0, will_not_throw).
+:- pragma exceptions(predicate, (multi_map.from_corresponding_lists_2), 4, 0, may_throw(user_exception)).
+:- pragma exceptions(predicate, (multi_map.assoc_list_merge), 3, 0, conditional).

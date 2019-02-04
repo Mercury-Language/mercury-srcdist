@@ -1,0 +1,9 @@
+:- module (ll_backend.disj_gen).
+:- interface.
+:- import_module list.
+:- import_module (hlds.code_model).
+:- import_module (hlds.hlds_goal).
+:- import_module (ll_backend.code_info).
+:- import_module (ll_backend.llds).
+:- pred generate_disj(hlds.code_model.code_model, list.list(hlds.hlds_goal.hlds_goal), hlds.hlds_goal.hlds_goal_info, ll_backend.llds.llds_code, ll_backend.code_info.code_info, ll_backend.code_info.code_info).
+:- mode generate_disj((builtin.in), (builtin.in), (builtin.in), (builtin.out), (builtin.in), (builtin.out)) is det.
