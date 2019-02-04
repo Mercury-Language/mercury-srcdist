@@ -1,0 +1,7 @@
+:- module var_use_analysis.
+:- interface.
+:- type intermodule_var_use.
+:- type var_use_info.
+:- type var_use_options.
+:- type var_use_type
+	where	type_is_abstract_enum(2).
