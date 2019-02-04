@@ -1,0 +1,14 @@
+:- module (mdb.interactive_query).
+:- interface.
+:- import_module io.
+:- import_module list.
+:- type imports == list.list(string).
+:- type options == string.
+:- type query_type
+	--->	normal_query 
+	;	cc_query 
+	;	io_query .
+:- pred query(mdb.interactive_query.query_type, mdb.interactive_query.imports, mdb.interactive_query.options, io.input_stream, io.output_stream, io.io, io.io).
+:- mode query((builtin.in), (builtin.in), (builtin.in), (builtin.in), (builtin.in), (builtin.di), (builtin.uo)) is det.
+:- pred query_external(mdb.interactive_query.query_type, mdb.interactive_query.imports, mdb.interactive_query.options, io.input_stream, io.output_stream, io.io, io.io).
+:- mode query_external((builtin.in), (builtin.in), (builtin.in), (builtin.in), (builtin.in), (builtin.di), (builtin.uo)) is det.

@@ -1,0 +1,3 @@
+:- module ((mdprof_fb.automatic_parallelism).autopar_find_best_par).
+:- interface.
+:- type best_parallelisation.

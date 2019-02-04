@@ -1,0 +1,28 @@
+:- module (parse_tree.prog_mutable).
+:- interface.
+:- import_module (mdbcomp.prim_data).
+:- import_module (parse_tree.prog_data).
+:- import_module (parse_tree.prog_item).
+:- func constant_get_pred_decl(mdbcomp.prim_data.module_name, string, parse_tree.prog_data.mer_type, parse_tree.prog_data.mer_inst, parse_tree.prog_data.prog_context) = parse_tree.prog_item.item.
+:- func constant_set_pred_decl(mdbcomp.prim_data.module_name, string, parse_tree.prog_data.mer_type, parse_tree.prog_data.mer_inst, parse_tree.prog_data.prog_context) = parse_tree.prog_item.item.
+:- func io_get_pred_decl(mdbcomp.prim_data.module_name, string, parse_tree.prog_data.mer_type, parse_tree.prog_data.mer_inst, parse_tree.prog_data.prog_context) = parse_tree.prog_item.item.
+:- func io_set_pred_decl(mdbcomp.prim_data.module_name, string, parse_tree.prog_data.mer_type, parse_tree.prog_data.mer_inst, parse_tree.prog_data.prog_context) = parse_tree.prog_item.item.
+:- func lock_pred_decl(mdbcomp.prim_data.module_name, string, parse_tree.prog_data.prog_context) = parse_tree.prog_item.item.
+:- func mutable_c_var_name(mdbcomp.prim_data.module_name, string) = string.
+:- func mutable_get_pred_sym_name(mdbcomp.prim_data.sym_name, string) = mdbcomp.prim_data.sym_name.
+:- func mutable_init_pred_decl(mdbcomp.prim_data.module_name, string, parse_tree.prog_data.prog_context) = parse_tree.prog_item.item.
+:- func mutable_init_pred_sym_name(mdbcomp.prim_data.module_name, string) = mdbcomp.prim_data.sym_name.
+:- func mutable_lock_pred_sym_name(mdbcomp.prim_data.sym_name, string) = mdbcomp.prim_data.sym_name.
+:- func mutable_mutex_var_name(string) = string.
+:- func mutable_pre_init_pred_decl(mdbcomp.prim_data.module_name, string, parse_tree.prog_data.prog_context) = parse_tree.prog_item.item.
+:- func mutable_pre_init_pred_sym_name(mdbcomp.prim_data.module_name, string) = mdbcomp.prim_data.sym_name.
+:- func mutable_secret_set_pred_sym_name(mdbcomp.prim_data.module_name, string) = mdbcomp.prim_data.sym_name.
+:- func mutable_set_pred_sym_name(mdbcomp.prim_data.sym_name, string) = mdbcomp.prim_data.sym_name.
+:- func mutable_unlock_pred_sym_name(mdbcomp.prim_data.sym_name, string) = mdbcomp.prim_data.sym_name.
+:- func mutable_unsafe_get_pred_sym_name(mdbcomp.prim_data.sym_name, string) = mdbcomp.prim_data.sym_name.
+:- func mutable_unsafe_set_pred_sym_name(mdbcomp.prim_data.sym_name, string) = mdbcomp.prim_data.sym_name.
+:- func std_get_pred_decl(mdbcomp.prim_data.module_name, string, parse_tree.prog_data.mer_type, parse_tree.prog_data.mer_inst, parse_tree.prog_data.prog_context) = parse_tree.prog_item.item.
+:- func std_set_pred_decl(mdbcomp.prim_data.module_name, string, parse_tree.prog_data.mer_type, parse_tree.prog_data.mer_inst, parse_tree.prog_data.prog_context) = parse_tree.prog_item.item.
+:- func unlock_pred_decl(mdbcomp.prim_data.module_name, string, parse_tree.prog_data.prog_context) = parse_tree.prog_item.item.
+:- func unsafe_get_pred_decl(mdbcomp.prim_data.module_name, string, parse_tree.prog_data.mer_type, parse_tree.prog_data.mer_inst, parse_tree.prog_data.prog_context) = parse_tree.prog_item.item.
+:- func unsafe_set_pred_decl(mdbcomp.prim_data.module_name, string, parse_tree.prog_data.mer_type, parse_tree.prog_data.mer_inst, parse_tree.prog_data.prog_context) = parse_tree.prog_item.item.

@@ -1,0 +1,13 @@
+module(1, "sveqvclass.m",
+	sveqvclass,
+	{},
+	{builtin, eqvclass, private_builtin},
+	{builtin, eqvclass, private_builtin},
+	{},
+	{},
+	{},
+	{},
+	{},
+	no_foreign_export,
+	no_main
+).

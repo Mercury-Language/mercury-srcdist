@@ -1,0 +1,8582 @@
+/*
+** Automatically generated from `structure_reuse.direct.choose_reuse.m'
+** by the Mercury compiler,
+** version rotd-2011-12-05, configured for x86_64-unknown-linux-gnu.
+** Do not edit.
+**
+** The autoconfigured grade settings governing
+** the generation of this C file were
+**
+** TAG_BITS=2
+** UNBOXED_FLOAT=no
+** HIGHLEVEL_CODE=no
+**
+** END_OF_C_GRADE_INFO
+*/
+
+/*
+INIT mercury__transform_hlds__ctgc__structure_reuse__direct__choose_reuse__init
+ENDINIT
+*/
+
+#define MR_ALLOW_RESET
+#include "mercury_imp.h"
+#line 526 "../library/io.int"
+#include "io.mh"
+
+#line 28 "transform_hlds.ctgc.structure_reuse.direct.choose_reuse.c"
+#line 536 "../library/io.int"
+#include "time.mh"
+
+#line 32 "transform_hlds.ctgc.structure_reuse.direct.choose_reuse.c"
+#line 537 "../library/io.int"
+#include "string.mh"
+
+#line 36 "transform_hlds.ctgc.structure_reuse.direct.choose_reuse.c"
+#line 31 "../library/bitmap.int2"
+#include "bitmap.mh"
+
+#line 40 "transform_hlds.ctgc.structure_reuse.direct.choose_reuse.c"
+#line 33 "../library/array.int2"
+#include "array.mh"
+
+#line 44 "transform_hlds.ctgc.structure_reuse.direct.choose_reuse.c"
+#line 39 "../mdbcomp/mdbcomp.rtti_access.int2"
+#include "mdbcomp.rtti_access.mh"
+
+#line 48 "transform_hlds.ctgc.structure_reuse.direct.choose_reuse.c"
+#line 49 "transform_hlds.ctgc.structure_reuse.direct.choose_reuse.c"
+#include "transform_hlds.ctgc.structure_reuse.direct.choose_reuse.mh"
+
+#line 52 "transform_hlds.ctgc.structure_reuse.direct.choose_reuse.c"
+#line 53 "transform_hlds.ctgc.structure_reuse.direct.choose_reuse.c"
+#ifndef TRANSFORM_HLDS__CTGC__STRUCTURE_REUSE__DIRECT__CHOOSE_REUSE_DECL_GUARD
+#define TRANSFORM_HLDS__CTGC__STRUCTURE_REUSE__DIRECT__CHOOSE_REUSE_DECL_GUARD
+
+#line 57 "transform_hlds.ctgc.structure_reuse.direct.choose_reuse.c"
+#line 58 "transform_hlds.ctgc.structure_reuse.direct.choose_reuse.c"
+
+#endif
+#line 61 "transform_hlds.ctgc.structure_reuse.direct.choose_reuse.c"
+
+#ifdef _MSC_VER
+#define MR_STATIC_LINKAGE extern
+#else
+#define MR_STATIC_LINKAGE static
+#endif
+
+struct mercury_type_0 {
+	MR_Word * f1;
+	MR_Word * f2;
+	MR_Integer f3;
+	MR_Word * f4;
+	MR_Word * f5;
+};
+MR_STATIC_LINKAGE const struct mercury_type_0 mercury_common_0[];
+
+struct mercury_type_1 {
+	MR_Word * f1;
+	MR_Code * f2;
+	MR_Integer f3;
+};
+MR_STATIC_LINKAGE const struct mercury_type_1 mercury_common_1[];
+
+struct mercury_type_2 {
+	MR_Word * f1[2];
+	MR_Integer f2;
+	MR_Word * f3[5];
+};
+MR_STATIC_LINKAGE const struct mercury_type_2 mercury_common_2[];
+
+struct mercury_type_3 {
+	MR_Word * f1[3];
+};
+MR_STATIC_LINKAGE const struct mercury_type_3 mercury_common_3[];
+
+struct mercury_type_4 {
+	MR_Word * f1[2];
+	MR_Integer f2;
+	MR_Word * f3[3];
+};
+MR_STATIC_LINKAGE const struct mercury_type_4 mercury_common_4[];
+
+struct mercury_type_5 {
+	MR_Word * f1[2];
+};
+MR_STATIC_LINKAGE const struct mercury_type_5 mercury_common_5[];
+
+struct mercury_type_6 {
+	MR_Word * f1[2];
+	MR_Integer f2;
+	MR_Word * f3[4];
+};
+MR_STATIC_LINKAGE const struct mercury_type_6 mercury_common_6[];
+
+struct mercury_type_7 {
+	MR_Word * f1;
+};
+MR_STATIC_LINKAGE const struct mercury_type_7 mercury_common_7[];
+
+struct mercury_type_8 {
+	MR_Word * f1;
+	MR_Word * f2;
+	MR_Integer f3;
+	MR_Word * f4;
+};
+MR_STATIC_LINKAGE const struct mercury_type_8 mercury_common_8[];
+
+struct mercury_type_9 {
+	MR_Word * f1;
+	MR_Code * f2;
+	MR_Integer f3;
+	MR_String f4;
+};
+MR_STATIC_LINKAGE const struct mercury_type_9 mercury_common_9[];
+
+struct mercury_type_10 {
+	MR_Word * f1[2];
+	MR_Integer f2;
+	MR_Word * f3[6];
+};
+MR_STATIC_LINKAGE const struct mercury_type_10 mercury_common_10[];
+
+struct mercury_type_11 {
+	MR_Integer f1;
+	MR_Word * f2;
+};
+MR_STATIC_LINKAGE const struct mercury_type_11 mercury_common_11[];
+
+extern const MR_TypeCtorInfo_Struct
+	mercury_data_transform_hlds__ctgc__structure_reuse__direct__choose_reuse__type_ctor_info_background_info_0,
+	mercury_data_transform_hlds__ctgc__structure_reuse__direct__choose_reuse__type_ctor_info_construction_spec_0,
+	mercury_data_transform_hlds__ctgc__structure_reuse__direct__choose_reuse__type_ctor_info_deconstruction_spec_0,
+	mercury_data_transform_hlds__ctgc__structure_reuse__direct__choose_reuse__type_ctor_info_match_0,
+	mercury_data_transform_hlds__ctgc__structure_reuse__direct__choose_reuse__type_ctor_info_match_table_0,
+	mercury_data_transform_hlds__ctgc__structure_reuse__direct__choose_reuse__type_ctor_info_reuse_type_0;
+MR_decl_label1(transform_hlds__ctgc__structure_reuse__direct__choose_reuse__IntroducedFrom__pred__average_match__430__1_3_0, 2)
+MR_decl_label10(transform_hlds__ctgc__structure_reuse__direct__choose_reuse__annotate_reuse_for_unification_5_0, 2,4,8,10,12,14,15,18,16,23)
+MR_decl_label8(transform_hlds__ctgc__structure_reuse__direct__choose_reuse__annotate_reuse_for_unification_5_0, 22,28,30,5,38,35,54,43)
+MR_decl_label1(transform_hlds__ctgc__structure_reuse__direct__choose_reuse__annotate_reuses_in_case_4_0, 2)
+MR_decl_label10(transform_hlds__ctgc__structure_reuse__direct__choose_reuse__annotate_reuses_in_goal_4_0, 67,3,6,4,11,9,14,16,17,18)
+MR_decl_label9(transform_hlds__ctgc__structure_reuse__direct__choose_reuse__annotate_reuses_in_goal_4_0, 15,21,22,24,23,29,27,33,32)
+MR_decl_label5(transform_hlds__ctgc__structure_reuse__direct__choose_reuse__average_match_2_0, 4,6,7,8,3)
+MR_decl_label10(transform_hlds__ctgc__structure_reuse__direct__choose_reuse__check_for_cell_caching_2_3_0, 129,3,6,4,11,9,14,16,17,18)
+MR_decl_label10(transform_hlds__ctgc__structure_reuse__direct__choose_reuse__check_for_cell_caching_2_3_0, 15,21,22,24,23,29,27,36,37,41)
+MR_decl_label4(transform_hlds__ctgc__structure_reuse__direct__choose_reuse__check_for_cell_caching_2_3_0, 45,33,34,32)
+MR_decl_label1(transform_hlds__ctgc__structure_reuse__direct__choose_reuse__check_for_cell_caching_in_case_3_0, 2)
+MR_decl_label10(transform_hlds__ctgc__structure_reuse__direct__choose_reuse__choose_reuse_in_goal_7_0, 55,2,3,5,6,8,7,10,12,14)
+MR_decl_label10(transform_hlds__ctgc__structure_reuse__direct__choose_reuse__choose_reuse_in_goal_7_0, 13,18,19,20,21,22,23,24,26,25)
+MR_decl_label1(transform_hlds__ctgc__structure_reuse__direct__choose_reuse__choose_reuse_in_goal_7_0, 59)
+MR_decl_label1(transform_hlds__ctgc__structure_reuse__direct__choose_reuse__compute_match_table_4_0, 3)
+MR_decl_label1(transform_hlds__ctgc__structure_reuse__direct__choose_reuse__compute_match_table_goal_list_5_0, 3)
+MR_decl_label8(transform_hlds__ctgc__structure_reuse__direct__choose_reuse__compute_match_table_in_disjunction_6_0, 6,8,10,13,15,17,20,9)
+MR_decl_label10(transform_hlds__ctgc__structure_reuse__direct__choose_reuse__compute_match_table_with_continuation_6_0, 129,3,6,5,8,11,15,17,18,19)
+MR_decl_label10(transform_hlds__ctgc__structure_reuse__direct__choose_reuse__compute_match_table_with_continuation_6_0, 20,23,13,29,78,32,34,38,36,44)
+MR_decl_label8(transform_hlds__ctgc__structure_reuse__direct__choose_reuse__compute_match_table_with_continuation_6_0, 47,49,50,52,53,55,46,41)
+MR_decl_label10(transform_hlds__ctgc__structure_reuse__direct__choose_reuse__compute_reuse_type_6_0, 4,2,7,9,12,13,14,17,18,20)
+MR_decl_label10(transform_hlds__ctgc__structure_reuse__direct__choose_reuse__compute_reuse_type_6_0, 22,23,26,28,31,21,35,37,39,40)
+MR_decl_label4(transform_hlds__ctgc__structure_reuse__direct__choose_reuse__compute_reuse_type_6_0, 41,43,44,1)
+MR_decl_label5(transform_hlds__ctgc__structure_reuse__direct__choose_reuse__cons_has_normal_fields_2_0, 4,9,8,3,2)
+MR_decl_label3(transform_hlds__ctgc__structure_reuse__direct__choose_reuse__deconstruction_specs_2_4_0, 3,6,7)
+MR_decl_label10(transform_hlds__ctgc__structure_reuse__direct__choose_reuse__determine_reuse_6_0, 2,3,4,6,7,8,21,10,11,12)
+MR_decl_label4(transform_hlds__ctgc__structure_reuse__direct__choose_reuse__determine_reuse_6_0, 15,13,18,19)
+MR_decl_label10(transform_hlds__ctgc__structure_reuse__direct__choose_reuse__dump_full_table_3_0, 4,2,11,12,13,14,15,17,19,20)
+MR_decl_label3(transform_hlds__ctgc__structure_reuse__direct__choose_reuse__dump_full_table_3_0, 21,22,23)
+MR_decl_label10(transform_hlds__ctgc__structure_reuse__direct__choose_reuse__dump_match_4_0, 2,3,6,7,11,9,8,14,15,16)
+MR_decl_label6(transform_hlds__ctgc__structure_reuse__direct__choose_reuse__dump_match_4_0, 17,23,25,26,27,28)
+MR_decl_label9(transform_hlds__ctgc__structure_reuse__direct__choose_reuse__dump_match_details_3_0, 3,6,7,4,10,11,12,13,20)
+MR_decl_label1(transform_hlds__ctgc__structure_reuse__direct__choose_reuse__empty_reuse_description_1_0, 1)
+MR_decl_label5(transform_hlds__ctgc__structure_reuse__direct__choose_reuse__find_best_match_in_conjunction_4_0, 3,5,8,10,9)
+MR_decl_label7(transform_hlds__ctgc__structure_reuse__direct__choose_reuse__find_match_in_disjunction_4_0, 32,5,8,10,11,12,7)
+MR_decl_label10(transform_hlds__ctgc__structure_reuse__direct__choose_reuse__find_match_in_goal_2_4_0, 141,3,4,6,8,12,13,9,17,18)
+MR_decl_label10(transform_hlds__ctgc__structure_reuse__direct__choose_reuse__find_match_in_goal_2_4_0, 19,23,21,27,31,32,34,35,37,29)
+MR_decl_label4(transform_hlds__ctgc__structure_reuse__direct__choose_reuse__find_match_in_goal_2_4_0, 28,40,41,25)
+MR_decl_label5(transform_hlds__ctgc__structure_reuse__direct__choose_reuse__has_secondary_tag_5_0, 4,5,8,10,2)
+MR_decl_label3(transform_hlds__ctgc__structure_reuse__direct__choose_reuse__match_find_deconstruction_spec_3_0, 3,5,1)
+MR_decl_label10(transform_hlds__ctgc__structure_reuse__direct__choose_reuse__maybe_dump_match_table_5_0, 4,5,6,7,8,9,10,11,12,13)
+MR_decl_label3(transform_hlds__ctgc__structure_reuse__direct__choose_reuse__maybe_dump_match_table_5_0, 14,15,24)
+MR_decl_label9(transform_hlds__ctgc__structure_reuse__direct__choose_reuse__process_common_var_5_0, 7,10,12,15,17,16,21,22,1)
+MR_decl_label4(transform_hlds__ctgc__structure_reuse__direct__choose_reuse__process_possible_common_dead_vars_4_0, 32,8,10,12)
+MR_decl_label7(transform_hlds__ctgc__structure_reuse__direct__choose_reuse__reverse_compare_matches_value_degree_3_0, 6,7,3,8,13,14,10)
+MR_decl_label6(transform_hlds__ctgc__structure_reuse__direct__choose_reuse__verify_match_7_0, 4,8,11,12,13,2)
+MR_decl_label10(fn__transform_hlds__ctgc__structure_reuse__direct__choose_reuse__already_correct_fields_4_0, 5,10,3,21,20,22,18,25,26,27)
+MR_decl_label1(fn__transform_hlds__ctgc__structure_reuse__direct__choose_reuse__already_correct_fields_4_0, 28)
+MR_decl_label4(fn__transform_hlds__ctgc__structure_reuse__direct__choose_reuse__common_var_with_list_2_0, 4,5,6,7)
+MR_decl_label6(fn__transform_hlds__ctgc__structure_reuse__direct__choose_reuse__equals_2_0, 3,18,42,8,11,9)
+MR_decl_label10(fn__transform_hlds__ctgc__structure_reuse__direct__choose_reuse__glb_reuse_types_2_2_0, 2,4,5,6,7,3,9,10,12,13)
+MR_decl_label1(fn__transform_hlds__ctgc__structure_reuse__direct__choose_reuse__glb_reuse_types_2_2_0, 14)
+MR_decl_label2(fn__transform_hlds__ctgc__structure_reuse__direct__choose_reuse__match_get_condition_2_0, 3,5)
+MR_decl_label4(fn__transform_hlds__ctgc__structure_reuse__direct__choose_reuse__match_get_dead_var_1_0, 4,5,9,7)
+MR_decl_label1(fn__transform_hlds__ctgc__structure_reuse__direct__choose_reuse__needs_update_and_2_0, 10)
+MR_decl_label5(__Unify___transform_hlds__ctgc__structure_reuse__direct__choose_reuse__background_info_0_0, 4,6,8,13,1)
+MR_decl_label3(__Unify___transform_hlds__ctgc__structure_reuse__direct__choose_reuse__construction_spec_0_0, 4,8,1)
+MR_decl_label6(__Unify___transform_hlds__ctgc__structure_reuse__direct__choose_reuse__deconstruction_spec_0_0, 5,7,9,11,15,1)
+MR_decl_label4(__Unify___transform_hlds__ctgc__structure_reuse__direct__choose_reuse__match_0_0, 4,6,8,1)
+MR_decl_label3(__Unify___transform_hlds__ctgc__structure_reuse__direct__choose_reuse__reuse_type_0_0, 4,6,1)
+MR_decl_label6(__Compare___transform_hlds__ctgc__structure_reuse__direct__choose_reuse__background_info_0_0, 3,2,5,9,13,50)
+MR_decl_label4(__Compare___transform_hlds__ctgc__structure_reuse__direct__choose_reuse__construction_spec_0_0, 3,2,5,21)
+MR_decl_label7(__Compare___transform_hlds__ctgc__structure_reuse__direct__choose_reuse__deconstruction_spec_0_0, 3,2,5,9,13,18,61)
+MR_decl_label6(__Compare___transform_hlds__ctgc__structure_reuse__direct__choose_reuse__match_0_0, 3,2,5,9,13,37)
+MR_decl_label5(__Compare___transform_hlds__ctgc__structure_reuse__direct__choose_reuse__reuse_type_0_0, 3,2,5,9,29)
+MR_decl_static(fn__transform_hlds__ctgc__structure_reuse__direct__choose_reuse__match_get_condition_2_0)
+MR_decl_static(transform_hlds__ctgc__structure_reuse__direct__choose_reuse__remove_deconstructions_from_dead_cell_table_3_0)
+MR_decl_static(fn__transform_hlds__ctgc__structure_reuse__direct__choose_reuse__deconstruction_spec_init_5_0)
+MR_decl_static(fn__transform_hlds__ctgc__structure_reuse__direct__choose_reuse__match_init_1_0)
+MR_decl_static(transform_hlds__ctgc__structure_reuse__direct__choose_reuse__process_possible_common_dead_vars_4_0)
+MR_decl_static(transform_hlds__ctgc__structure_reuse__direct__choose_reuse__compute_match_table_in_disjunction_6_0)
+MR_decl_static(transform_hlds__ctgc__structure_reuse__direct__choose_reuse__find_best_match_in_conjunction_4_0)
+MR_decl_static(transform_hlds__ctgc__structure_reuse__direct__choose_reuse__compute_match_table_goal_list_5_0)
+MR_decl_static(transform_hlds__ctgc__structure_reuse__direct__choose_reuse__compute_match_table_with_continuation_6_0)
+MR_decl_static(transform_hlds__ctgc__structure_reuse__direct__choose_reuse__compute_match_table_4_0)
+MR_decl_static(fn__transform_hlds__ctgc__structure_reuse__direct__choose_reuse__match_get_dead_var_1_0)
+MR_decl_static(transform_hlds__ctgc__structure_reuse__direct__choose_reuse__match_find_deconstruction_spec_3_0)
+MR_decl_static(transform_hlds__ctgc__structure_reuse__direct__choose_reuse__annotate_reuse_for_unification_5_0)
+MR_decl_static(transform_hlds__ctgc__structure_reuse__direct__choose_reuse__annotate_reuses_in_goal_4_0)
+MR_decl_static(transform_hlds__ctgc__structure_reuse__direct__choose_reuse__dump_match_details_3_0)
+MR_decl_static(transform_hlds__ctgc__structure_reuse__direct__choose_reuse__dump_match_4_0)
+MR_decl_static(transform_hlds__ctgc__structure_reuse__direct__choose_reuse__dump_full_table_3_0)
+MR_decl_static(transform_hlds__ctgc__structure_reuse__direct__choose_reuse__maybe_dump_match_table_5_0)
+MR_decl_static(transform_hlds__ctgc__structure_reuse__direct__choose_reuse__choose_reuse_in_goal_7_0)
+MR_decl_static(transform_hlds__ctgc__structure_reuse__direct__choose_reuse__check_for_cell_caching_2_3_0)
+MR_def_extern_entry(transform_hlds__ctgc__structure_reuse__direct__choose_reuse__determine_reuse_6_0)
+MR_decl_static(transform_hlds__ctgc__structure_reuse__direct__choose_reuse__reverse_compare_matches_value_degree_3_0)
+MR_decl_static(transform_hlds__ctgc__structure_reuse__direct__choose_reuse__reverse_compare_matches_value_3_0)
+MR_decl_static(transform_hlds__ctgc__structure_reuse__direct__choose_reuse__average_match_2_0)
+MR_decl_static(transform_hlds__ctgc__structure_reuse__direct__choose_reuse__remove_deconstruction_from_dead_cell_table_3_0)
+MR_decl_static(fn__transform_hlds__ctgc__structure_reuse__direct__choose_reuse__common_var_with_list_2_0)
+MR_decl_static(transform_hlds__ctgc__structure_reuse__direct__choose_reuse__process_common_var_5_0)
+MR_decl_static(transform_hlds__ctgc__structure_reuse__direct__choose_reuse__deconstruction_specs_2_4_0)
+MR_decl_static(fn__transform_hlds__ctgc__structure_reuse__direct__choose_reuse__match_get_decon_specs_1_0)
+MR_decl_static(transform_hlds__ctgc__structure_reuse__direct__choose_reuse__find_match_in_disjunction_4_0)
+MR_decl_static(transform_hlds__ctgc__structure_reuse__direct__choose_reuse__empty_reuse_description_1_0)
+MR_decl_static(transform_hlds__ctgc__structure_reuse__direct__choose_reuse__verify_match_7_0)
+MR_decl_static(transform_hlds__ctgc__structure_reuse__direct__choose_reuse__find_match_in_goal_2_4_0)
+MR_decl_static(transform_hlds__ctgc__structure_reuse__direct__choose_reuse__find_match_in_goal_4_0)
+MR_decl_static(fn__transform_hlds__ctgc__structure_reuse__direct__choose_reuse__add_degree_2_0)
+MR_decl_static(transform_hlds__ctgc__structure_reuse__direct__choose_reuse__cons_has_normal_fields_2_0)
+MR_decl_static(transform_hlds__ctgc__structure_reuse__direct__choose_reuse__has_secondary_tag_5_0)
+MR_decl_static(fn__transform_hlds__ctgc__structure_reuse__direct__choose_reuse__equals_2_0)
+MR_decl_static(fn__transform_hlds__ctgc__structure_reuse__direct__choose_reuse__already_correct_fields_4_0)
+MR_decl_static(transform_hlds__ctgc__structure_reuse__direct__choose_reuse__compute_reuse_type_6_0)
+MR_decl_static(fn__transform_hlds__ctgc__structure_reuse__direct__choose_reuse__glb_reuse_types_2_2_0)
+MR_decl_static(fn__transform_hlds__ctgc__structure_reuse__direct__choose_reuse__needs_update_and_2_0)
+MR_decl_static(transform_hlds__ctgc__structure_reuse__direct__choose_reuse__annotate_reuses_in_case_4_0)
+MR_decl_static(transform_hlds__ctgc__structure_reuse__direct__choose_reuse__deconstruction_spec_with_program_point_2_0)
+MR_decl_static(transform_hlds__ctgc__structure_reuse__direct__choose_reuse__construction_spec_with_program_point_2_0)
+MR_decl_static(transform_hlds__ctgc__structure_reuse__direct__choose_reuse__check_for_cell_caching_in_case_3_0)
+MR_decl_static(__Unify___transform_hlds__ctgc__structure_reuse__direct__choose_reuse__background_info_0_0)
+MR_decl_static(__Compare___transform_hlds__ctgc__structure_reuse__direct__choose_reuse__background_info_0_0)
+MR_decl_static(__Unify___transform_hlds__ctgc__structure_reuse__direct__choose_reuse__construction_spec_0_0)
+MR_decl_static(__Compare___transform_hlds__ctgc__structure_reuse__direct__choose_reuse__construction_spec_0_0)
+MR_decl_static(__Unify___transform_hlds__ctgc__structure_reuse__direct__choose_reuse__deconstruction_spec_0_0)
+MR_decl_static(__Compare___transform_hlds__ctgc__structure_reuse__direct__choose_reuse__deconstruction_spec_0_0)
+MR_decl_static(__Unify___transform_hlds__ctgc__structure_reuse__direct__choose_reuse__match_0_0)
+MR_decl_static(__Compare___transform_hlds__ctgc__structure_reuse__direct__choose_reuse__match_0_0)
+MR_decl_static(__Unify___transform_hlds__ctgc__structure_reuse__direct__choose_reuse__match_table_0_0)
+MR_decl_static(__Compare___transform_hlds__ctgc__structure_reuse__direct__choose_reuse__match_table_0_0)
+MR_decl_static(__Unify___transform_hlds__ctgc__structure_reuse__direct__choose_reuse__reuse_type_0_0)
+MR_decl_static(__Compare___transform_hlds__ctgc__structure_reuse__direct__choose_reuse__reuse_type_0_0)
+MR_decl_static(fn__transform_hlds__ctgc__structure_reuse__direct__choose_reuse__IntroducedFrom__func__match_get_dead_var__286__1_1_0)
+MR_decl_static(fn__transform_hlds__ctgc__structure_reuse__direct__choose_reuse__IntroducedFrom__func__match_get_dead_cons_ids__308__1_1_0)
+MR_decl_static(fn__transform_hlds__ctgc__structure_reuse__direct__choose_reuse__IntroducedFrom__func__match_get_condition__316__1_1_0)
+MR_decl_static(transform_hlds__ctgc__structure_reuse__direct__choose_reuse__IntroducedFrom__pred__average_match__430__1_3_0)
+MR_decl_static(transform_hlds__ctgc__structure_reuse__direct__choose_reuse__IntroducedFrom__pred__compute_match_table_with_continuation__645__1_3_0)
+MR_decl_static(fn__transform_hlds__ctgc__structure_reuse__direct__choose_reuse__IntroducedFrom__func__compute_match_table_with_continuation__615__1_1_0)
+MR_decl_static(transform_hlds__ctgc__structure_reuse__direct__choose_reuse__IntroducedFrom__pred__compute_match_table_in_disjunction__673__1_3_0)
+MR_decl_static(transform_hlds__ctgc__structure_reuse__direct__choose_reuse__IntroducedFrom__pred__compute_match_table_in_disjunction__681__1_3_0)
+MR_decl_static(fn__transform_hlds__ctgc__structure_reuse__direct__choose_reuse__IntroducedFrom__func__find_match_in_goal_2__851__1_1_0)
+MR_decl_static(fn__transform_hlds__ctgc__structure_reuse__direct__choose_reuse__IntroducedFrom__func__dump_match_details__1376__1_1_0)
+
+static const MR_UserClosureId
+mercury_data__closure_layout__fn__transform_hlds__ctgc__structure_reuse__direct__choose_reuse__match_get_condition_2_0_1;
+extern const MR_TypeCtorInfo_Struct mercury_data_transform_hlds__ctgc__structure_reuse__direct__choose_reuse__type_ctor_info_deconstruction_spec_0;
+extern const MR_TypeCtorInfo_Struct mercury_data_transform_hlds__ctgc__structure_reuse__domain__type_ctor_info_reuse_as_0;
+static const MR_UserClosureId
+mercury_data__closure_layout__transform_hlds__ctgc__structure_reuse__direct__choose_reuse__compute_match_table_with_continuation_6_0_2;
+extern const MR_TypeCtorInfo_Struct mercury_data_hlds__hlds_goal__type_ctor_info_case_0;
+extern const MR_TypeCtorInfo_Struct mercury_data_hlds__hlds_goal__type_ctor_info_hlds_goal_0;
+static const MR_UserClosureId
+mercury_data__closure_layout__fn__transform_hlds__ctgc__structure_reuse__direct__choose_reuse__match_get_dead_var_1_0_1;
+static const MR_UserClosureId
+mercury_data__closure_layout__transform_hlds__ctgc__structure_reuse__direct__choose_reuse__match_find_deconstruction_spec_3_0_1;
+extern const MR_TypeCtorInfo_Struct mercury_data_transform_hlds__smm_common__type_ctor_info_program_point_0;
+static const MR_UserClosureId
+mercury_data__closure_layout__transform_hlds__ctgc__structure_reuse__direct__choose_reuse__annotate_reuse_for_unification_5_0_1;
+extern const MR_TypeCtorInfo_Struct mercury_data_transform_hlds__ctgc__structure_reuse__direct__choose_reuse__type_ctor_info_construction_spec_0;
+static const MR_UserClosureId
+mercury_data__closure_layout__transform_hlds__ctgc__structure_reuse__direct__choose_reuse__annotate_reuse_for_unification_5_0_2;
+extern const MR_TypeCtorInfo_Struct mercury_data_parse_tree__prog_data__type_ctor_info_cons_id_0;
+static const MR_UserClosureId
+mercury_data__closure_layout__transform_hlds__ctgc__structure_reuse__direct__choose_reuse__dump_match_details_3_0_1;
+static const MR_UserClosureId
+mercury_data__closure_layout__transform_hlds__ctgc__structure_reuse__direct__choose_reuse__dump_match_4_0_1;
+static const MR_UserClosureId
+mercury_data__closure_layout__transform_hlds__ctgc__structure_reuse__direct__choose_reuse__deconstruction_specs_2_4_0_1;
+extern const MR_TypeCtorInfo_Struct mercury_data_transform_hlds__ctgc__structure_reuse__direct__choose_reuse__type_ctor_info_match_0;
+static const MR_UserClosureId
+mercury_data__closure_layout__transform_hlds__ctgc__structure_reuse__direct__choose_reuse__find_match_in_goal_2_4_0_1;
+static const struct mercury_type_0 mercury_common_0[10] =
+{
+{
+(MR_Word *) &mercury_data__closure_layout__fn__transform_hlds__ctgc__structure_reuse__direct__choose_reuse__match_get_condition_2_0_1,
+(MR_Word *) (MR_Integer) 0,
+2,
+MR_CTOR0_ADDR(transform_hlds__ctgc__structure_reuse__direct__choose_reuse, deconstruction_spec),
+MR_CTOR0_ADDR(transform_hlds__ctgc__structure_reuse__domain, reuse_as)
+},
+{
+(MR_Word *) &mercury_data__closure_layout__transform_hlds__ctgc__structure_reuse__direct__choose_reuse__compute_match_table_with_continuation_6_0_2,
+(MR_Word *) (MR_Integer) 0,
+2,
+MR_CTOR0_ADDR(hlds__hlds_goal, case),
+MR_CTOR0_ADDR(hlds__hlds_goal, hlds_goal)
+},
+{
+(MR_Word *) &mercury_data__closure_layout__fn__transform_hlds__ctgc__structure_reuse__direct__choose_reuse__match_get_dead_var_1_0_1,
+(MR_Word *) (MR_Integer) 0,
+2,
+MR_CTOR0_ADDR(transform_hlds__ctgc__structure_reuse__direct__choose_reuse, deconstruction_spec),
+MR_COMMON(5,8)
+},
+{
+(MR_Word *) &mercury_data__closure_layout__transform_hlds__ctgc__structure_reuse__direct__choose_reuse__match_find_deconstruction_spec_3_0_1,
+(MR_Word *) (MR_Integer) 0,
+2,
+MR_CTOR0_ADDR(transform_hlds__smm_common, program_point),
+MR_CTOR0_ADDR(transform_hlds__ctgc__structure_reuse__direct__choose_reuse, deconstruction_spec)
+},
+{
+(MR_Word *) &mercury_data__closure_layout__transform_hlds__ctgc__structure_reuse__direct__choose_reuse__annotate_reuse_for_unification_5_0_1,
+(MR_Word *) (MR_Integer) 0,
+2,
+MR_CTOR0_ADDR(transform_hlds__smm_common, program_point),
+MR_CTOR0_ADDR(transform_hlds__ctgc__structure_reuse__direct__choose_reuse, construction_spec)
+},
+{
+(MR_Word *) &mercury_data__closure_layout__transform_hlds__ctgc__structure_reuse__direct__choose_reuse__annotate_reuse_for_unification_5_0_2,
+(MR_Word *) (MR_Integer) 0,
+2,
+MR_CTOR0_ADDR(transform_hlds__ctgc__structure_reuse__direct__choose_reuse, deconstruction_spec),
+MR_CTOR0_ADDR(parse_tree__prog_data, cons_id)
+},
+{
+(MR_Word *) &mercury_data__closure_layout__transform_hlds__ctgc__structure_reuse__direct__choose_reuse__dump_match_details_3_0_1,
+(MR_Word *) (MR_Integer) 0,
+2,
+MR_CTOR0_ADDR(transform_hlds__ctgc__structure_reuse__direct__choose_reuse, deconstruction_spec),
+MR_CTOR0_ADDR(transform_hlds__ctgc__structure_reuse__domain, reuse_as)
+},
+{
+(MR_Word *) &mercury_data__closure_layout__transform_hlds__ctgc__structure_reuse__direct__choose_reuse__dump_match_4_0_1,
+(MR_Word *) (MR_Integer) 0,
+2,
+MR_CTOR0_ADDR(transform_hlds__ctgc__structure_reuse__direct__choose_reuse, deconstruction_spec),
+MR_COMMON(5,8)
+},
+{
+(MR_Word *) &mercury_data__closure_layout__transform_hlds__ctgc__structure_reuse__direct__choose_reuse__deconstruction_specs_2_4_0_1,
+(MR_Word *) (MR_Integer) 0,
+2,
+MR_CTOR0_ADDR(transform_hlds__ctgc__structure_reuse__direct__choose_reuse, match),
+MR_COMMON(5,9)
+},
+{
+(MR_Word *) &mercury_data__closure_layout__transform_hlds__ctgc__structure_reuse__direct__choose_reuse__find_match_in_goal_2_4_0_1,
+(MR_Word *) (MR_Integer) 0,
+2,
+MR_CTOR0_ADDR(hlds__hlds_goal, case),
+MR_CTOR0_ADDR(hlds__hlds_goal, hlds_goal)
+},
+};
+
+MR_decl_entry(transform_hlds__ctgc__structure_reuse__domain__reuse_as_all_unconditional_reuses_1_0);
+static const struct mercury_type_1 mercury_common_1[27] =
+{
+{
+MR_COMMON(0,0),
+MR_ENTRY_AP(fn__transform_hlds__ctgc__structure_reuse__direct__choose_reuse__IntroducedFrom__func__match_get_condition__316__1_1_0),
+0
+},
+{
+MR_COMMON(4,0),
+MR_ENTRY_AP(transform_hlds__ctgc__structure_reuse__direct__choose_reuse__remove_deconstruction_from_dead_cell_table_3_0),
+0
+},
+{
+MR_COMMON(4,1),
+MR_ENTRY_AP(fn__transform_hlds__ctgc__structure_reuse__direct__choose_reuse__common_var_with_list_2_0),
+0
+},
+{
+MR_COMMON(4,2),
+MR_ENTRY_AP(transform_hlds__ctgc__structure_reuse__direct__choose_reuse__IntroducedFrom__pred__compute_match_table_in_disjunction__673__1_3_0),
+0
+},
+{
+MR_COMMON(4,3),
+MR_ENTRY_AP(transform_hlds__ctgc__structure_reuse__direct__choose_reuse__IntroducedFrom__pred__compute_match_table_in_disjunction__681__1_3_0),
+0
+},
+{
+MR_COMMON(4,4),
+MR_ENTRY_AP(fn__transform_hlds__ctgc__structure_reuse__direct__choose_reuse__common_var_with_list_2_0),
+0
+},
+{
+MR_COMMON(4,5),
+MR_ENTRY_AP(transform_hlds__ctgc__structure_reuse__direct__choose_reuse__IntroducedFrom__pred__compute_match_table_in_disjunction__681__1_3_0),
+0
+},
+{
+MR_COMMON(4,6),
+MR_ENTRY_AP(transform_hlds__ctgc__structure_reuse__direct__choose_reuse__IntroducedFrom__pred__compute_match_table_in_disjunction__681__1_3_0),
+0
+},
+{
+MR_COMMON(4,7),
+MR_ENTRY_AP(fn__transform_hlds__ctgc__structure_reuse__direct__choose_reuse__add_degree_2_0),
+0
+},
+{
+MR_COMMON(4,8),
+MR_ENTRY_AP(transform_hlds__ctgc__structure_reuse__direct__choose_reuse__reverse_compare_matches_value_3_0),
+0
+},
+{
+MR_COMMON(4,9),
+MR_ENTRY_AP(transform_hlds__ctgc__structure_reuse__direct__choose_reuse__IntroducedFrom__pred__compute_match_table_with_continuation__645__1_3_0),
+0
+},
+{
+MR_COMMON(0,1),
+MR_ENTRY_AP(fn__transform_hlds__ctgc__structure_reuse__direct__choose_reuse__IntroducedFrom__func__compute_match_table_with_continuation__615__1_1_0),
+0
+},
+{
+MR_COMMON(0,2),
+MR_ENTRY_AP(fn__transform_hlds__ctgc__structure_reuse__direct__choose_reuse__IntroducedFrom__func__match_get_dead_var__286__1_1_0),
+0
+},
+{
+MR_COMMON(0,5),
+MR_ENTRY_AP(fn__transform_hlds__ctgc__structure_reuse__direct__choose_reuse__IntroducedFrom__func__match_get_dead_cons_ids__308__1_1_0),
+0
+},
+{
+MR_COMMON(0,6),
+MR_ENTRY_AP(fn__transform_hlds__ctgc__structure_reuse__direct__choose_reuse__IntroducedFrom__func__dump_match_details__1376__1_1_0),
+0
+},
+{
+MR_COMMON(8,0),
+MR_ENTRY_AP(transform_hlds__ctgc__structure_reuse__domain__reuse_as_all_unconditional_reuses_1_0),
+0
+},
+{
+MR_COMMON(0,7),
+MR_ENTRY_AP(fn__transform_hlds__ctgc__structure_reuse__direct__choose_reuse__IntroducedFrom__func__match_get_dead_var__286__1_1_0),
+0
+},
+{
+MR_COMMON(4,10),
+MR_ENTRY_AP(transform_hlds__ctgc__structure_reuse__direct__choose_reuse__reverse_compare_matches_value_degree_3_0),
+0
+},
+{
+MR_COMMON(4,14),
+MR_ENTRY_AP(transform_hlds__ctgc__structure_reuse__direct__choose_reuse__IntroducedFrom__pred__average_match__430__1_3_0),
+0
+},
+{
+MR_COMMON(4,15),
+MR_ENTRY_AP(fn__transform_hlds__ctgc__structure_reuse__direct__choose_reuse__add_degree_2_0),
+0
+},
+{
+MR_COMMON(4,16),
+MR_ENTRY_AP(transform_hlds__ctgc__structure_reuse__direct__choose_reuse__reverse_compare_matches_value_3_0),
+0
+},
+{
+MR_COMMON(0,8),
+MR_ENTRY_AP(fn__transform_hlds__ctgc__structure_reuse__direct__choose_reuse__match_get_decon_specs_1_0),
+0
+},
+{
+MR_COMMON(4,17),
+MR_ENTRY_AP(transform_hlds__ctgc__structure_reuse__direct__choose_reuse__IntroducedFrom__pred__average_match__430__1_3_0),
+0
+},
+{
+MR_COMMON(4,18),
+MR_ENTRY_AP(fn__transform_hlds__ctgc__structure_reuse__direct__choose_reuse__glb_reuse_types_2_2_0),
+0
+},
+{
+MR_COMMON(0,9),
+MR_ENTRY_AP(fn__transform_hlds__ctgc__structure_reuse__direct__choose_reuse__IntroducedFrom__func__find_match_in_goal_2__851__1_1_0),
+0
+},
+{
+MR_COMMON(4,19),
+MR_ENTRY_AP(fn__transform_hlds__ctgc__structure_reuse__direct__choose_reuse__needs_update_and_2_0),
+0
+},
+{
+MR_COMMON(4,20),
+MR_ENTRY_AP(fn__transform_hlds__ctgc__structure_reuse__direct__choose_reuse__needs_update_and_2_0),
+0
+},
+};
+
+static const MR_UserClosureId
+mercury_data__closure_layout__fn__transform_hlds__ctgc__structure_reuse__direct__choose_reuse__match_get_condition_2_0_2;
+extern const MR_TypeCtorInfo_Struct mercury_data_hlds__hlds_module__type_ctor_info_module_info_0;
+extern const MR_TypeCtorInfo_Struct mercury_data_hlds__hlds_pred__type_ctor_info_proc_info_0;
+static const MR_UserClosureId
+mercury_data__closure_layout__transform_hlds__ctgc__structure_reuse__direct__choose_reuse__process_possible_common_dead_vars_4_0_2;
+extern const MR_TypeCtorInfo_Struct mercury_data_transform_hlds__ctgc__structure_reuse__direct__choose_reuse__type_ctor_info_background_info_0;
+static const MR_UserClosureId
+mercury_data__closure_layout__transform_hlds__ctgc__structure_reuse__direct__choose_reuse__compute_match_table_in_disjunction_6_0_6;
+static const struct mercury_type_2 mercury_common_2[3] =
+{
+{
+{
+(MR_Word *) &mercury_data__closure_layout__fn__transform_hlds__ctgc__structure_reuse__direct__choose_reuse__match_get_condition_2_0_2,
+(MR_Word *) (MR_Integer) 0
+},
+5,
+{
+MR_CTOR0_ADDR(hlds__hlds_module, module_info),
+MR_CTOR0_ADDR(hlds__hlds_pred, proc_info),
+MR_CTOR0_ADDR(transform_hlds__ctgc__structure_reuse__domain, reuse_as),
+MR_CTOR0_ADDR(transform_hlds__ctgc__structure_reuse__domain, reuse_as),
+MR_CTOR0_ADDR(transform_hlds__ctgc__structure_reuse__domain, reuse_as)
+}
+},
+{
+{
+(MR_Word *) &mercury_data__closure_layout__transform_hlds__ctgc__structure_reuse__direct__choose_reuse__process_possible_common_dead_vars_4_0_2,
+(MR_Word *) (MR_Integer) 0
+},
+5,
+{
+MR_CTOR0_ADDR(transform_hlds__ctgc__structure_reuse__direct__choose_reuse, background_info),
+MR_COMMON(5,6),
+MR_COMMON(5,7),
+MR_COMMON(5,8),
+MR_COMMON(3,3)
+}
+},
+{
+{
+(MR_Word *) &mercury_data__closure_layout__transform_hlds__ctgc__structure_reuse__direct__choose_reuse__compute_match_table_in_disjunction_6_0_6,
+(MR_Word *) (MR_Integer) 0
+},
+5,
+{
+MR_CTOR0_ADDR(transform_hlds__ctgc__structure_reuse__direct__choose_reuse, background_info),
+MR_COMMON(5,6),
+MR_COMMON(5,7),
+MR_COMMON(5,8),
+MR_COMMON(3,3)
+}
+},
+};
+
+extern const MR_TypeCtorInfo_Struct mercury_data_tree234__type_ctor_info_tree234_2;
+extern const MR_TypeCtorInfo_Struct mercury_data_transform_hlds__smm_common__type_ctor_info_program_point_0;
+extern const MR_TypeCtorInfo_Struct mercury_data_transform_hlds__ctgc__structure_reuse__domain__type_ctor_info_reuse_condition_0;
+extern const MR_TypeCtorInfo_Struct mercury_data_transform_hlds__smm_common__type_ctor_info_program_point_0;
+extern const MR_TypeCtorInfo_Struct mercury_data_transform_hlds__ctgc__structure_reuse__domain__type_ctor_info_reuse_condition_0;
+extern const MR_TypeCtorInfo_Struct mercury_data_tree234__type_ctor_info_tree234_2;
+static const struct mercury_type_3 mercury_common_3[5] =
+{
+{
+{
+MR_CTOR_ADDR(tree234, tree234, 2),
+MR_CTOR0_ADDR(transform_hlds__smm_common, program_point),
+MR_CTOR0_ADDR(transform_hlds__ctgc__structure_reuse__domain, reuse_condition)
+}
+},
+{
+{
+MR_CTOR_ADDR(tree234, tree234, 2),
+MR_CTOR0_ADDR(transform_hlds__smm_common, program_point),
+MR_CTOR0_ADDR(transform_hlds__ctgc__structure_reuse__domain, reuse_condition)
+}
+},
+{
+{
+MR_CTOR_ADDR(tree234, tree234, 2),
+MR_TAG_COMMON(0,5,0),
+MR_TAG_COMMON(0,5,1)
+}
+},
+{
+{
+MR_CTOR_ADDR(tree234, tree234, 2),
+MR_COMMON(5,3),
+MR_COMMON(5,4)
+}
+},
+{
+{
+MR_CTOR_ADDR(tree234, tree234, 2),
+MR_COMMON(5,3),
+MR_COMMON(5,4)
+}
+},
+};
+
+static const MR_UserClosureId
+mercury_data__closure_layout__transform_hlds__ctgc__structure_reuse__direct__choose_reuse__remove_deconstructions_from_dead_cell_table_3_0_1;
+static const MR_UserClosureId
+mercury_data__closure_layout__transform_hlds__ctgc__structure_reuse__direct__choose_reuse__process_possible_common_dead_vars_4_0_1;
+static const MR_UserClosureId
+mercury_data__closure_layout__transform_hlds__ctgc__structure_reuse__direct__choose_reuse__compute_match_table_in_disjunction_6_0_2;
+static const MR_UserClosureId
+mercury_data__closure_layout__transform_hlds__ctgc__structure_reuse__direct__choose_reuse__compute_match_table_in_disjunction_6_0_3;
+static const MR_UserClosureId
+mercury_data__closure_layout__transform_hlds__ctgc__structure_reuse__direct__choose_reuse__compute_match_table_in_disjunction_6_0_4;
+static const MR_UserClosureId
+mercury_data__closure_layout__transform_hlds__ctgc__structure_reuse__direct__choose_reuse__compute_match_table_in_disjunction_6_0_5;
+static const MR_UserClosureId
+mercury_data__closure_layout__transform_hlds__ctgc__structure_reuse__direct__choose_reuse__compute_match_table_in_disjunction_6_0_7;
+static const MR_UserClosureId
+mercury_data__closure_layout__transform_hlds__ctgc__structure_reuse__direct__choose_reuse__find_best_match_in_conjunction_4_0_2;
+extern const MR_TypeCtorInfo_Struct mercury_data_builtin__type_ctor_info_int_0;
+static const MR_UserClosureId
+mercury_data__closure_layout__transform_hlds__ctgc__structure_reuse__direct__choose_reuse__find_best_match_in_conjunction_4_0_3;
+extern const MR_TypeCtorInfo_Struct mercury_data_builtin__type_ctor_info_comparison_result_0;
+static const MR_UserClosureId
+mercury_data__closure_layout__transform_hlds__ctgc__structure_reuse__direct__choose_reuse__compute_match_table_with_continuation_6_0_1;
+static const MR_UserClosureId
+mercury_data__closure_layout__transform_hlds__ctgc__structure_reuse__direct__choose_reuse__choose_reuse_in_goal_7_0_1;
+static const MR_UserClosureId
+mercury_data__closure_layout__transform_hlds__ctgc__structure_reuse__direct__choose_reuse__check_for_cell_caching_2_3_0_1;
+static const MR_UserClosureId
+mercury_data__closure_layout__transform_hlds__ctgc__structure_reuse__direct__choose_reuse__check_for_cell_caching_2_3_0_2;
+static const MR_UserClosureId
+mercury_data__closure_layout__transform_hlds__ctgc__structure_reuse__direct__choose_reuse__check_for_cell_caching_2_3_0_3;
+static const MR_UserClosureId
+mercury_data__closure_layout__transform_hlds__ctgc__structure_reuse__direct__choose_reuse__average_match_2_0_1;
+static const MR_UserClosureId
+mercury_data__closure_layout__transform_hlds__ctgc__structure_reuse__direct__choose_reuse__process_common_var_5_0_3;
+static const MR_UserClosureId
+mercury_data__closure_layout__transform_hlds__ctgc__structure_reuse__direct__choose_reuse__process_common_var_5_0_4;
+static const MR_UserClosureId
+mercury_data__closure_layout__transform_hlds__ctgc__structure_reuse__direct__choose_reuse__find_match_in_disjunction_4_0_2;
+static const MR_UserClosureId
+mercury_data__closure_layout__transform_hlds__ctgc__structure_reuse__direct__choose_reuse__verify_match_7_0_2;
+extern const MR_TypeCtorInfo_Struct mercury_data_transform_hlds__ctgc__structure_reuse__direct__choose_reuse__type_ctor_info_reuse_type_0;
+static const MR_UserClosureId
+mercury_data__closure_layout__fn__transform_hlds__ctgc__structure_reuse__direct__choose_reuse__glb_reuse_types_2_2_0_1;
+extern const MR_TypeCtorInfo_Struct mercury_data_hlds__hlds_goal__type_ctor_info_needs_update_0;
+static const MR_UserClosureId
+mercury_data__closure_layout__fn__transform_hlds__ctgc__structure_reuse__direct__choose_reuse__glb_reuse_types_2_2_0_2;
+static const struct mercury_type_4 mercury_common_4[21] =
+{
+{
+{
+(MR_Word *) &mercury_data__closure_layout__transform_hlds__ctgc__structure_reuse__direct__choose_reuse__remove_deconstructions_from_dead_cell_table_3_0_1,
+(MR_Word *) (MR_Integer) 0
+},
+3,
+{
+MR_CTOR0_ADDR(transform_hlds__ctgc__structure_reuse__direct__choose_reuse, deconstruction_spec),
+MR_COMMON(3,1),
+MR_COMMON(3,1)
+}
+},
+{
+{
+(MR_Word *) &mercury_data__closure_layout__transform_hlds__ctgc__structure_reuse__direct__choose_reuse__process_possible_common_dead_vars_4_0_1,
+(MR_Word *) (MR_Integer) 0
+},
+3,
+{
+MR_COMMON(3,3),
+MR_COMMON(5,5),
+MR_COMMON(5,5)
+}
+},
+{
+{
+(MR_Word *) &mercury_data__closure_layout__transform_hlds__ctgc__structure_reuse__direct__choose_reuse__compute_match_table_in_disjunction_6_0_2,
+(MR_Word *) (MR_Integer) 0
+},
+3,
+{
+MR_COMMON(3,3),
+MR_COMMON(3,3),
+MR_COMMON(3,3)
+}
+},
+{
+{
+(MR_Word *) &mercury_data__closure_layout__transform_hlds__ctgc__structure_reuse__direct__choose_reuse__compute_match_table_in_disjunction_6_0_3,
+(MR_Word *) (MR_Integer) 0
+},
+3,
+{
+MR_COMMON(3,3),
+MR_COMMON(3,3),
+MR_COMMON(3,3)
+}
+},
+{
+{
+(MR_Word *) &mercury_data__closure_layout__transform_hlds__ctgc__structure_reuse__direct__choose_reuse__compute_match_table_in_disjunction_6_0_4,
+(MR_Word *) (MR_Integer) 0
+},
+3,
+{
+MR_COMMON(3,3),
+MR_COMMON(5,5),
+MR_COMMON(5,5)
+}
+},
+{
+{
+(MR_Word *) &mercury_data__closure_layout__transform_hlds__ctgc__structure_reuse__direct__choose_reuse__compute_match_table_in_disjunction_6_0_5,
+(MR_Word *) (MR_Integer) 0
+},
+3,
+{
+MR_COMMON(3,3),
+MR_COMMON(3,3),
+MR_COMMON(3,3)
+}
+},
+{
+{
+(MR_Word *) &mercury_data__closure_layout__transform_hlds__ctgc__structure_reuse__direct__choose_reuse__compute_match_table_in_disjunction_6_0_7,
+(MR_Word *) (MR_Integer) 0
+},
+3,
+{
+MR_COMMON(3,3),
+MR_COMMON(3,3),
+MR_COMMON(3,3)
+}
+},
+{
+{
+(MR_Word *) &mercury_data__closure_layout__transform_hlds__ctgc__structure_reuse__direct__choose_reuse__find_best_match_in_conjunction_4_0_2,
+(MR_Word *) (MR_Integer) 0
+},
+3,
+{
+MR_CTOR0_ADDR(transform_hlds__ctgc__structure_reuse__direct__choose_reuse, match),
+MR_INT_CTOR_ADDR,
+MR_INT_CTOR_ADDR
+}
+},
+{
+{
+(MR_Word *) &mercury_data__closure_layout__transform_hlds__ctgc__structure_reuse__direct__choose_reuse__find_best_match_in_conjunction_4_0_3,
+(MR_Word *) (MR_Integer) 0
+},
+3,
+{
+MR_CTOR0_ADDR(transform_hlds__ctgc__structure_reuse__direct__choose_reuse, match),
+MR_CTOR0_ADDR(transform_hlds__ctgc__structure_reuse__direct__choose_reuse, match),
+MR_CTOR0_ADDR(builtin, comparison_result)
+}
+},
+{
+{
+(MR_Word *) &mercury_data__closure_layout__transform_hlds__ctgc__structure_reuse__direct__choose_reuse__compute_match_table_with_continuation_6_0_1,
+(MR_Word *) (MR_Integer) 0
+},
+3,
+{
+MR_COMMON(3,3),
+MR_COMMON(3,3),
+MR_COMMON(3,3)
+}
+},
+{
+{
+(MR_Word *) &mercury_data__closure_layout__transform_hlds__ctgc__structure_reuse__direct__choose_reuse__choose_reuse_in_goal_7_0_1,
+(MR_Word *) (MR_Integer) 0
+},
+3,
+{
+MR_CTOR0_ADDR(transform_hlds__ctgc__structure_reuse__direct__choose_reuse, match),
+MR_CTOR0_ADDR(transform_hlds__ctgc__structure_reuse__direct__choose_reuse, match),
+MR_CTOR0_ADDR(builtin, comparison_result)
+}
+},
+{
+{
+(MR_Word *) &mercury_data__closure_layout__transform_hlds__ctgc__structure_reuse__direct__choose_reuse__check_for_cell_caching_2_3_0_1,
+(MR_Word *) (MR_Integer) 0
+},
+3,
+{
+MR_COMMON(3,1),
+MR_CTOR0_ADDR(hlds__hlds_goal, hlds_goal),
+MR_CTOR0_ADDR(hlds__hlds_goal, hlds_goal)
+}
+},
+{
+{
+(MR_Word *) &mercury_data__closure_layout__transform_hlds__ctgc__structure_reuse__direct__choose_reuse__check_for_cell_caching_2_3_0_2,
+(MR_Word *) (MR_Integer) 0
+},
+3,
+{
+MR_COMMON(3,1),
+MR_CTOR0_ADDR(hlds__hlds_goal, hlds_goal),
+MR_CTOR0_ADDR(hlds__hlds_goal, hlds_goal)
+}
+},
+{
+{
+(MR_Word *) &mercury_data__closure_layout__transform_hlds__ctgc__structure_reuse__direct__choose_reuse__check_for_cell_caching_2_3_0_3,
+(MR_Word *) (MR_Integer) 0
+},
+3,
+{
+MR_COMMON(3,1),
+MR_CTOR0_ADDR(hlds__hlds_goal, case),
+MR_CTOR0_ADDR(hlds__hlds_goal, case)
+}
+},
+{
+{
+(MR_Word *) &mercury_data__closure_layout__transform_hlds__ctgc__structure_reuse__direct__choose_reuse__average_match_2_0_1,
+(MR_Word *) (MR_Integer) 0
+},
+3,
+{
+MR_CTOR0_ADDR(transform_hlds__ctgc__structure_reuse__direct__choose_reuse, match),
+MR_CTOR0_ADDR(transform_hlds__ctgc__structure_reuse__direct__choose_reuse, match),
+MR_CTOR0_ADDR(transform_hlds__ctgc__structure_reuse__direct__choose_reuse, match)
+}
+},
+{
+{
+(MR_Word *) &mercury_data__closure_layout__transform_hlds__ctgc__structure_reuse__direct__choose_reuse__process_common_var_5_0_3,
+(MR_Word *) (MR_Integer) 0
+},
+3,
+{
+MR_CTOR0_ADDR(transform_hlds__ctgc__structure_reuse__direct__choose_reuse, match),
+MR_INT_CTOR_ADDR,
+MR_INT_CTOR_ADDR
+}
+},
+{
+{
+(MR_Word *) &mercury_data__closure_layout__transform_hlds__ctgc__structure_reuse__direct__choose_reuse__process_common_var_5_0_4,
+(MR_Word *) (MR_Integer) 0
+},
+3,
+{
+MR_CTOR0_ADDR(transform_hlds__ctgc__structure_reuse__direct__choose_reuse, match),
+MR_CTOR0_ADDR(transform_hlds__ctgc__structure_reuse__direct__choose_reuse, match),
+MR_CTOR0_ADDR(builtin, comparison_result)
+}
+},
+{
+{
+(MR_Word *) &mercury_data__closure_layout__transform_hlds__ctgc__structure_reuse__direct__choose_reuse__find_match_in_disjunction_4_0_2,
+(MR_Word *) (MR_Integer) 0
+},
+3,
+{
+MR_CTOR0_ADDR(transform_hlds__ctgc__structure_reuse__direct__choose_reuse, match),
+MR_CTOR0_ADDR(transform_hlds__ctgc__structure_reuse__direct__choose_reuse, match),
+MR_CTOR0_ADDR(transform_hlds__ctgc__structure_reuse__direct__choose_reuse, match)
+}
+},
+{
+{
+(MR_Word *) &mercury_data__closure_layout__transform_hlds__ctgc__structure_reuse__direct__choose_reuse__verify_match_7_0_2,
+(MR_Word *) (MR_Integer) 0
+},
+3,
+{
+MR_CTOR0_ADDR(transform_hlds__ctgc__structure_reuse__direct__choose_reuse, reuse_type),
+MR_CTOR0_ADDR(transform_hlds__ctgc__structure_reuse__direct__choose_reuse, reuse_type),
+MR_CTOR0_ADDR(transform_hlds__ctgc__structure_reuse__direct__choose_reuse, reuse_type)
+}
+},
+{
+{
+(MR_Word *) &mercury_data__closure_layout__fn__transform_hlds__ctgc__structure_reuse__direct__choose_reuse__glb_reuse_types_2_2_0_1,
+(MR_Word *) (MR_Integer) 0
+},
+3,
+{
+MR_CTOR0_ADDR(hlds__hlds_goal, needs_update),
+MR_CTOR0_ADDR(hlds__hlds_goal, needs_update),
+MR_CTOR0_ADDR(hlds__hlds_goal, needs_update)
+}
+},
+{
+{
+(MR_Word *) &mercury_data__closure_layout__fn__transform_hlds__ctgc__structure_reuse__direct__choose_reuse__glb_reuse_types_2_2_0_2,
+(MR_Word *) (MR_Integer) 0
+},
+3,
+{
+MR_CTOR0_ADDR(hlds__hlds_goal, needs_update),
+MR_CTOR0_ADDR(hlds__hlds_goal, needs_update),
+MR_CTOR0_ADDR(hlds__hlds_goal, needs_update)
+}
+},
+};
+
+extern const MR_TypeCtorInfo_Struct mercury_data_term__type_ctor_info_var_1;
+extern const MR_TypeCtorInfo_Struct mercury_data_parse_tree__prog_data__type_ctor_info_prog_var_type_0;
+extern const MR_TypeCtorInfo_Struct mercury_data_list__type_ctor_info_list_1;
+extern const MR_TypeCtorInfo_Struct mercury_data_term__type_ctor_info_var_1;
+extern const MR_TypeCtorInfo_Struct mercury_data_parse_tree__prog_data__type_ctor_info_prog_var_type_0;
+extern const MR_TypeCtorInfo_Struct mercury_data_list__type_ctor_info_list_1;
+extern const MR_TypeCtorInfo_Struct mercury_data_transform_hlds__ctgc__structure_reuse__direct__choose_reuse__type_ctor_info_match_0;
+extern const MR_TypeCtorInfo_Struct mercury_data_hlds__hlds_goal__type_ctor_info_hlds_goal_0;
+extern const MR_TypeCtorInfo_Struct mercury_data_transform_hlds__ctgc__structure_reuse__direct__choose_reuse__type_ctor_info_deconstruction_spec_0;
+static const struct mercury_type_5 mercury_common_5[11] =
+{
+{
+{
+MR_CTOR1_ADDR(term, var),
+MR_CTOR0_ADDR(parse_tree__prog_data, prog_var_type)
+}
+},
+{
+{
+MR_LIST_CTOR_ADDR,
+MR_CTOR0_ADDR(transform_hlds__ctgc__structure_reuse__direct__choose_reuse, match)
+}
+},
+{
+{
+MR_LIST_CTOR_ADDR,
+MR_TAG_COMMON(0,5,0)
+}
+},
+{
+{
+MR_CTOR1_ADDR(term, var),
+MR_CTOR0_ADDR(parse_tree__prog_data, prog_var_type)
+}
+},
+{
+{
+MR_LIST_CTOR_ADDR,
+MR_CTOR0_ADDR(transform_hlds__ctgc__structure_reuse__direct__choose_reuse, match)
+}
+},
+{
+{
+MR_LIST_CTOR_ADDR,
+MR_COMMON(5,3)
+}
+},
+{
+{
+MR_LIST_CTOR_ADDR,
+MR_CTOR0_ADDR(hlds__hlds_goal, hlds_goal)
+}
+},
+{
+{
+MR_LIST_CTOR_ADDR,
+MR_COMMON(3,4)
+}
+},
+{
+{
+MR_CTOR1_ADDR(term, var),
+MR_CTOR0_ADDR(parse_tree__prog_data, prog_var_type)
+}
+},
+{
+{
+MR_LIST_CTOR_ADDR,
+MR_CTOR0_ADDR(transform_hlds__ctgc__structure_reuse__direct__choose_reuse, deconstruction_spec)
+}
+},
+{
+{
+MR_LIST_CTOR_ADDR,
+MR_CTOR0_ADDR(transform_hlds__ctgc__structure_reuse__direct__choose_reuse, deconstruction_spec)
+}
+},
+};
+
+static const MR_UserClosureId
+mercury_data__closure_layout__transform_hlds__ctgc__structure_reuse__direct__choose_reuse__compute_match_table_in_disjunction_6_0_1;
+static const MR_UserClosureId
+mercury_data__closure_layout__transform_hlds__ctgc__structure_reuse__direct__choose_reuse__find_best_match_in_conjunction_4_0_1;
+static const MR_UserClosureId
+mercury_data__closure_layout__transform_hlds__ctgc__structure_reuse__direct__choose_reuse__annotate_reuses_in_goal_4_0_1;
+static const MR_UserClosureId
+mercury_data__closure_layout__transform_hlds__ctgc__structure_reuse__direct__choose_reuse__annotate_reuses_in_goal_4_0_2;
+static const MR_UserClosureId
+mercury_data__closure_layout__transform_hlds__ctgc__structure_reuse__direct__choose_reuse__annotate_reuses_in_goal_4_0_3;
+static const MR_UserClosureId
+mercury_data__closure_layout__transform_hlds__ctgc__structure_reuse__direct__choose_reuse__dump_full_table_3_0_1;
+extern const MR_TypeCtorInfo_Struct mercury_data_builtin__type_ctor_info_string_0;
+extern const MR_TypeCtorInfo_Struct mercury_data_io__type_ctor_info_state_0;
+static const MR_UserClosureId
+mercury_data__closure_layout__transform_hlds__ctgc__structure_reuse__direct__choose_reuse__process_common_var_5_0_1;
+static const MR_UserClosureId
+mercury_data__closure_layout__transform_hlds__ctgc__structure_reuse__direct__choose_reuse__process_common_var_5_0_2;
+static const MR_UserClosureId
+mercury_data__closure_layout__transform_hlds__ctgc__structure_reuse__direct__choose_reuse__find_match_in_disjunction_4_0_1;
+static const struct mercury_type_6 mercury_common_6[9] =
+{
+{
+{
+(MR_Word *) &mercury_data__closure_layout__transform_hlds__ctgc__structure_reuse__direct__choose_reuse__compute_match_table_in_disjunction_6_0_1,
+(MR_Word *) (MR_Integer) 0
+},
+4,
+{
+MR_CTOR0_ADDR(transform_hlds__ctgc__structure_reuse__direct__choose_reuse, background_info),
+MR_COMMON(3,1),
+MR_CTOR0_ADDR(hlds__hlds_goal, hlds_goal),
+MR_COMMON(3,3)
+}
+},
+{
+{
+(MR_Word *) &mercury_data__closure_layout__transform_hlds__ctgc__structure_reuse__direct__choose_reuse__find_best_match_in_conjunction_4_0_1,
+(MR_Word *) (MR_Integer) 0
+},
+4,
+{
+MR_CTOR0_ADDR(transform_hlds__ctgc__structure_reuse__direct__choose_reuse, background_info),
+MR_CTOR0_ADDR(transform_hlds__ctgc__structure_reuse__direct__choose_reuse, match),
+MR_CTOR0_ADDR(hlds__hlds_goal, hlds_goal),
+MR_CTOR0_ADDR(transform_hlds__ctgc__structure_reuse__direct__choose_reuse, match)
+}
+},
+{
+{
+(MR_Word *) &mercury_data__closure_layout__transform_hlds__ctgc__structure_reuse__direct__choose_reuse__annotate_reuses_in_goal_4_0_1,
+(MR_Word *) (MR_Integer) 0
+},
+4,
+{
+MR_CTOR0_ADDR(transform_hlds__ctgc__structure_reuse__direct__choose_reuse, background_info),
+MR_CTOR0_ADDR(transform_hlds__ctgc__structure_reuse__direct__choose_reuse, match),
+MR_CTOR0_ADDR(hlds__hlds_goal, hlds_goal),
+MR_CTOR0_ADDR(hlds__hlds_goal, hlds_goal)
+}
+},
+{
+{
+(MR_Word *) &mercury_data__closure_layout__transform_hlds__ctgc__structure_reuse__direct__choose_reuse__annotate_reuses_in_goal_4_0_2,
+(MR_Word *) (MR_Integer) 0
+},
+4,
+{
+MR_CTOR0_ADDR(transform_hlds__ctgc__structure_reuse__direct__choose_reuse, background_info),
+MR_CTOR0_ADDR(transform_hlds__ctgc__structure_reuse__direct__choose_reuse, match),
+MR_CTOR0_ADDR(hlds__hlds_goal, hlds_goal),
+MR_CTOR0_ADDR(hlds__hlds_goal, hlds_goal)
+}
+},
+{
+{
+(MR_Word *) &mercury_data__closure_layout__transform_hlds__ctgc__structure_reuse__direct__choose_reuse__annotate_reuses_in_goal_4_0_3,
+(MR_Word *) (MR_Integer) 0
+},
+4,
+{
+MR_CTOR0_ADDR(transform_hlds__ctgc__structure_reuse__direct__choose_reuse, background_info),
+MR_CTOR0_ADDR(transform_hlds__ctgc__structure_reuse__direct__choose_reuse, match),
+MR_CTOR0_ADDR(hlds__hlds_goal, case),
+MR_CTOR0_ADDR(hlds__hlds_goal, case)
+}
+},
+{
+{
+(MR_Word *) &mercury_data__closure_layout__transform_hlds__ctgc__structure_reuse__direct__choose_reuse__dump_full_table_3_0_1,
+(MR_Word *) (MR_Integer) 0
+},
+4,
+{
+MR_STRING_CTOR_ADDR,
+MR_CTOR0_ADDR(transform_hlds__ctgc__structure_reuse__direct__choose_reuse, match),
+MR_IO_CTOR_ADDR,
+MR_IO_CTOR_ADDR
+}
+},
+{
+{
+(MR_Word *) &mercury_data__closure_layout__transform_hlds__ctgc__structure_reuse__direct__choose_reuse__process_common_var_5_0_1,
+(MR_Word *) (MR_Integer) 0
+},
+4,
+{
+MR_COMMON(5,8),
+MR_COMMON(3,3),
+MR_COMMON(5,9),
+MR_COMMON(5,9)
+}
+},
+{
+{
+(MR_Word *) &mercury_data__closure_layout__transform_hlds__ctgc__structure_reuse__direct__choose_reuse__process_common_var_5_0_2,
+(MR_Word *) (MR_Integer) 0
+},
+4,
+{
+MR_CTOR0_ADDR(transform_hlds__ctgc__structure_reuse__direct__choose_reuse, background_info),
+MR_CTOR0_ADDR(transform_hlds__ctgc__structure_reuse__direct__choose_reuse, match),
+MR_CTOR0_ADDR(hlds__hlds_goal, hlds_goal),
+MR_CTOR0_ADDR(transform_hlds__ctgc__structure_reuse__direct__choose_reuse, match)
+}
+},
+{
+{
+(MR_Word *) &mercury_data__closure_layout__transform_hlds__ctgc__structure_reuse__direct__choose_reuse__find_match_in_disjunction_4_0_1,
+(MR_Word *) (MR_Integer) 0
+},
+4,
+{
+MR_CTOR0_ADDR(transform_hlds__ctgc__structure_reuse__direct__choose_reuse, background_info),
+MR_CTOR0_ADDR(transform_hlds__ctgc__structure_reuse__direct__choose_reuse, match),
+MR_CTOR0_ADDR(hlds__hlds_goal, hlds_goal),
+MR_CTOR0_ADDR(transform_hlds__ctgc__structure_reuse__direct__choose_reuse, match)
+}
+},
+};
+
+static const struct mercury_type_7 mercury_common_7[1] =
+{
+{
+MR_tbmkword(0, 0)
+},
+};
+
+static const MR_UserClosureId
+mercury_data__closure_layout__transform_hlds__ctgc__structure_reuse__direct__choose_reuse__dump_match_details_3_0_2;
+static const struct mercury_type_8 mercury_common_8[1] =
+{
+{
+(MR_Word *) &mercury_data__closure_layout__transform_hlds__ctgc__structure_reuse__direct__choose_reuse__dump_match_details_3_0_2,
+(MR_Word *) (MR_Integer) 0,
+1,
+MR_CTOR0_ADDR(transform_hlds__ctgc__structure_reuse__domain, reuse_as)
+},
+};
+
+static const struct mercury_type_9 mercury_common_9[1] =
+{
+{
+MR_COMMON(6,5),
+MR_ENTRY_AP(transform_hlds__ctgc__structure_reuse__direct__choose_reuse__dump_match_4_0),
+1,
+MR_string_const("%-----", 6)
+},
+};
+
+static const MR_UserClosureId
+mercury_data__closure_layout__transform_hlds__ctgc__structure_reuse__direct__choose_reuse__verify_match_7_0_1;
+static const struct mercury_type_10 mercury_common_10[1] =
+{
+{
+{
+(MR_Word *) &mercury_data__closure_layout__transform_hlds__ctgc__structure_reuse__direct__choose_reuse__verify_match_7_0_1,
+(MR_Word *) (MR_Integer) 0
+},
+6,
+{
+MR_CTOR0_ADDR(transform_hlds__ctgc__structure_reuse__direct__choose_reuse, background_info),
+MR_COMMON(5,8),
+MR_CTOR0_ADDR(parse_tree__prog_data, cons_id),
+MR_COMMON(5,5),
+MR_CTOR0_ADDR(transform_hlds__ctgc__structure_reuse__direct__choose_reuse, deconstruction_spec),
+MR_CTOR0_ADDR(transform_hlds__ctgc__structure_reuse__direct__choose_reuse, reuse_type)
+}
+},
+};
+
+static const struct mercury_type_11 mercury_common_11[1] =
+{
+{
+0,
+MR_tbmkword(0, 0)
+},
+};
+extern const MR_TypeCtorInfo_Struct mercury_data_libs__globals__type_ctor_info_reuse_strategy_0;
+extern const MR_TypeCtorInfo_Struct mercury_data_hlds__hlds_module__type_ctor_info_module_info_0;
+extern const MR_TypeCtorInfo_Struct mercury_data_hlds__hlds_pred__type_ctor_info_proc_info_0;
+
+static const MR_FA_TypeInfo_Struct1 mercury_data_term__ti_var_1parse_tree__prog_data__type_ctor_info_prog_var_type_0 = {
+	&mercury_data_term__type_ctor_info_var_1,
+{	(MR_TypeInfo) &mercury_data_parse_tree__prog_data__type_ctor_info_prog_var_type_0
+}};
+extern const MR_TypeCtorInfo_Struct mercury_data_parse_tree__prog_data__type_ctor_info_mer_type_0;
+extern const MR_TypeCtorInfo_Struct mercury_data_parse_tree__prog_data__type_ctor_info_mer_type_0;
+
+static const MR_FA_TypeInfo_Struct2 mercury_data_tree234__ti_tree234_2term__ti_var_1parse_tree__prog_data__type_ctor_info_prog_var_type_0parse_tree__prog_data__type_ctor_info_mer_type_0 = {
+	&mercury_data_tree234__type_ctor_info_tree234_2,
+{	(MR_TypeInfo) &mercury_data_term__ti_var_1parse_tree__prog_data__type_ctor_info_prog_var_type_0,
+	(MR_TypeInfo) &mercury_data_parse_tree__prog_data__type_ctor_info_mer_type_0
+}};
+extern const MR_TypeCtorInfo_Struct mercury_data_libs__globals__type_ctor_info_reuse_strategy_0;
+extern const MR_TypeCtorInfo_Struct mercury_data_hlds__hlds_module__type_ctor_info_module_info_0;
+extern const MR_TypeCtorInfo_Struct mercury_data_hlds__hlds_pred__type_ctor_info_proc_info_0;
+
+const MR_PseudoTypeInfo mercury_data_transform_hlds__ctgc__structure_reuse__direct__choose_reuse__field_types_background_info_0_0[] = {
+	(MR_PseudoTypeInfo) &mercury_data_libs__globals__type_ctor_info_reuse_strategy_0,
+	(MR_PseudoTypeInfo) &mercury_data_hlds__hlds_module__type_ctor_info_module_info_0,
+	(MR_PseudoTypeInfo) &mercury_data_hlds__hlds_pred__type_ctor_info_proc_info_0,
+	(MR_PseudoTypeInfo) &mercury_data_tree234__ti_tree234_2term__ti_var_1parse_tree__prog_data__type_ctor_info_prog_var_type_0parse_tree__prog_data__type_ctor_info_mer_type_0
+};
+
+const MR_ConstString mercury_data_transform_hlds__ctgc__structure_reuse__direct__choose_reuse__field_names_background_info_0_0[] = {
+	"back_strategy",
+	"back_module_info",
+	"back_proc_info",
+	"back_vartypes"
+};
+
+static const MR_DuFunctorDesc mercury_data_transform_hlds__ctgc__structure_reuse__direct__choose_reuse__du_functor_desc_background_info_0_0 = {
+	"background",
+	4,
+	0,
+	MR_SECTAG_NONE,
+	0,
+	-1,
+	0,
+	(MR_PseudoTypeInfo *) mercury_data_transform_hlds__ctgc__structure_reuse__direct__choose_reuse__field_types_background_info_0_0,
+	mercury_data_transform_hlds__ctgc__structure_reuse__direct__choose_reuse__field_names_background_info_0_0,
+	NULL,
+	NULL
+};
+
+const MR_DuFunctorDescPtr mercury_data_transform_hlds__ctgc__structure_reuse__direct__choose_reuse__du_stag_ordered_background_info_0_0[] = {
+	&mercury_data_transform_hlds__ctgc__structure_reuse__direct__choose_reuse__du_functor_desc_background_info_0_0
+
+};
+
+const MR_DuPtagLayout mercury_data_transform_hlds__ctgc__structure_reuse__direct__choose_reuse__du_ptag_ordered_background_info_0[] = {
+	{ 1, MR_SECTAG_NONE,
+	mercury_data_transform_hlds__ctgc__structure_reuse__direct__choose_reuse__du_stag_ordered_background_info_0_0 }
+
+};
+
+const MR_DuFunctorDescPtr mercury_data_transform_hlds__ctgc__structure_reuse__direct__choose_reuse__du_name_ordered_background_info_0[] = {
+	&mercury_data_transform_hlds__ctgc__structure_reuse__direct__choose_reuse__du_functor_desc_background_info_0_0
+};
+
+const MR_Integer mercury_data_transform_hlds__ctgc__structure_reuse__direct__choose_reuse__functor_number_map_background_info_0[] = {
+	0 };
+	
+const MR_TypeCtorInfo_Struct mercury_data_transform_hlds__ctgc__structure_reuse__direct__choose_reuse__type_ctor_info_background_info_0 = {
+	0,
+	15,
+	1,
+	MR_TYPECTOR_REP_DU,
+	MR_MAYBE_STATIC_CODE(MR_ENTRY_AP(__Unify___transform_hlds__ctgc__structure_reuse__direct__choose_reuse__background_info_0_0)),
+	MR_MAYBE_STATIC_CODE(MR_ENTRY_AP(__Compare___transform_hlds__ctgc__structure_reuse__direct__choose_reuse__background_info_0_0)),
+	"transform_hlds.ctgc.structure_reuse.direct.choose_reuse",
+	"background_info",
+	{ (void *)mercury_data_transform_hlds__ctgc__structure_reuse__direct__choose_reuse__du_name_ordered_background_info_0 },
+	{ (void *)mercury_data_transform_hlds__ctgc__structure_reuse__direct__choose_reuse__du_ptag_ordered_background_info_0 },
+	1,
+	4,
+	mercury_data_transform_hlds__ctgc__structure_reuse__direct__choose_reuse__functor_number_map_background_info_0
+};
+extern const MR_TypeCtorInfo_Struct mercury_data_transform_hlds__ctgc__structure_reuse__direct__choose_reuse__type_ctor_info_reuse_type_0;
+
+const MR_PseudoTypeInfo mercury_data_transform_hlds__ctgc__structure_reuse__direct__choose_reuse__field_types_construction_spec_0_0[] = {
+	(MR_PseudoTypeInfo) &mercury_data_transform_hlds__smm_common__type_ctor_info_program_point_0,
+	(MR_PseudoTypeInfo) &mercury_data_transform_hlds__ctgc__structure_reuse__direct__choose_reuse__type_ctor_info_reuse_type_0
+};
+
+const MR_ConstString mercury_data_transform_hlds__ctgc__structure_reuse__direct__choose_reuse__field_names_construction_spec_0_0[] = {
+	"con_pp",
+	"con_reuse"
+};
+
+static const MR_DuFunctorDesc mercury_data_transform_hlds__ctgc__structure_reuse__direct__choose_reuse__du_functor_desc_construction_spec_0_0 = {
+	"con",
+	2,
+	0,
+	MR_SECTAG_NONE,
+	0,
+	-1,
+	0,
+	(MR_PseudoTypeInfo *) mercury_data_transform_hlds__ctgc__structure_reuse__direct__choose_reuse__field_types_construction_spec_0_0,
+	mercury_data_transform_hlds__ctgc__structure_reuse__direct__choose_reuse__field_names_construction_spec_0_0,
+	NULL,
+	NULL
+};
+
+const MR_DuFunctorDescPtr mercury_data_transform_hlds__ctgc__structure_reuse__direct__choose_reuse__du_stag_ordered_construction_spec_0_0[] = {
+	&mercury_data_transform_hlds__ctgc__structure_reuse__direct__choose_reuse__du_functor_desc_construction_spec_0_0
+
+};
+
+const MR_DuPtagLayout mercury_data_transform_hlds__ctgc__structure_reuse__direct__choose_reuse__du_ptag_ordered_construction_spec_0[] = {
+	{ 1, MR_SECTAG_NONE,
+	mercury_data_transform_hlds__ctgc__structure_reuse__direct__choose_reuse__du_stag_ordered_construction_spec_0_0 }
+
+};
+
+const MR_DuFunctorDescPtr mercury_data_transform_hlds__ctgc__structure_reuse__direct__choose_reuse__du_name_ordered_construction_spec_0[] = {
+	&mercury_data_transform_hlds__ctgc__structure_reuse__direct__choose_reuse__du_functor_desc_construction_spec_0_0
+};
+
+const MR_Integer mercury_data_transform_hlds__ctgc__structure_reuse__direct__choose_reuse__functor_number_map_construction_spec_0[] = {
+	0 };
+	
+const MR_TypeCtorInfo_Struct mercury_data_transform_hlds__ctgc__structure_reuse__direct__choose_reuse__type_ctor_info_construction_spec_0 = {
+	0,
+	15,
+	1,
+	MR_TYPECTOR_REP_DU,
+	MR_MAYBE_STATIC_CODE(MR_ENTRY_AP(__Unify___transform_hlds__ctgc__structure_reuse__direct__choose_reuse__construction_spec_0_0)),
+	MR_MAYBE_STATIC_CODE(MR_ENTRY_AP(__Compare___transform_hlds__ctgc__structure_reuse__direct__choose_reuse__construction_spec_0_0)),
+	"transform_hlds.ctgc.structure_reuse.direct.choose_reuse",
+	"construction_spec",
+	{ (void *)mercury_data_transform_hlds__ctgc__structure_reuse__direct__choose_reuse__du_name_ordered_construction_spec_0 },
+	{ (void *)mercury_data_transform_hlds__ctgc__structure_reuse__direct__choose_reuse__du_ptag_ordered_construction_spec_0 },
+	1,
+	4,
+	mercury_data_transform_hlds__ctgc__structure_reuse__direct__choose_reuse__functor_number_map_construction_spec_0
+};
+extern const MR_TypeCtorInfo_Struct mercury_data_parse_tree__prog_data__type_ctor_info_cons_id_0;
+
+static const MR_FA_TypeInfo_Struct1 mercury_data_list__ti_list_1term__ti_var_1parse_tree__prog_data__type_ctor_info_prog_var_type_0 = {
+	&mercury_data_list__type_ctor_info_list_1,
+{	(MR_TypeInfo) &mercury_data_term__ti_var_1parse_tree__prog_data__type_ctor_info_prog_var_type_0
+}};
+extern const MR_TypeCtorInfo_Struct mercury_data_transform_hlds__ctgc__structure_reuse__domain__type_ctor_info_reuse_as_0;
+extern const MR_TypeCtorInfo_Struct mercury_data_parse_tree__prog_data__type_ctor_info_cons_id_0;
+extern const MR_TypeCtorInfo_Struct mercury_data_transform_hlds__ctgc__structure_reuse__domain__type_ctor_info_reuse_as_0;
+
+const MR_PseudoTypeInfo mercury_data_transform_hlds__ctgc__structure_reuse__direct__choose_reuse__field_types_deconstruction_spec_0_0[] = {
+	(MR_PseudoTypeInfo) &mercury_data_term__ti_var_1parse_tree__prog_data__type_ctor_info_prog_var_type_0,
+	(MR_PseudoTypeInfo) &mercury_data_transform_hlds__smm_common__type_ctor_info_program_point_0,
+	(MR_PseudoTypeInfo) &mercury_data_parse_tree__prog_data__type_ctor_info_cons_id_0,
+	(MR_PseudoTypeInfo) &mercury_data_list__ti_list_1term__ti_var_1parse_tree__prog_data__type_ctor_info_prog_var_type_0,
+	(MR_PseudoTypeInfo) &mercury_data_transform_hlds__ctgc__structure_reuse__domain__type_ctor_info_reuse_as_0
+};
+
+const MR_ConstString mercury_data_transform_hlds__ctgc__structure_reuse__direct__choose_reuse__field_names_deconstruction_spec_0_0[] = {
+	"decon_var",
+	"decon_pp",
+	"decon_cons_id",
+	"decon_args",
+	"decon_conds"
+};
+
+static const MR_DuFunctorDesc mercury_data_transform_hlds__ctgc__structure_reuse__direct__choose_reuse__du_functor_desc_deconstruction_spec_0_0 = {
+	"decon",
+	5,
+	0,
+	MR_SECTAG_NONE,
+	0,
+	-1,
+	0,
+	(MR_PseudoTypeInfo *) mercury_data_transform_hlds__ctgc__structure_reuse__direct__choose_reuse__field_types_deconstruction_spec_0_0,
+	mercury_data_transform_hlds__ctgc__structure_reuse__direct__choose_reuse__field_names_deconstruction_spec_0_0,
+	NULL,
+	NULL
+};
+
+const MR_DuFunctorDescPtr mercury_data_transform_hlds__ctgc__structure_reuse__direct__choose_reuse__du_stag_ordered_deconstruction_spec_0_0[] = {
+	&mercury_data_transform_hlds__ctgc__structure_reuse__direct__choose_reuse__du_functor_desc_deconstruction_spec_0_0
+
+};
+
+const MR_DuPtagLayout mercury_data_transform_hlds__ctgc__structure_reuse__direct__choose_reuse__du_ptag_ordered_deconstruction_spec_0[] = {
+	{ 1, MR_SECTAG_NONE,
+	mercury_data_transform_hlds__ctgc__structure_reuse__direct__choose_reuse__du_stag_ordered_deconstruction_spec_0_0 }
+
+};
+
+const MR_DuFunctorDescPtr mercury_data_transform_hlds__ctgc__structure_reuse__direct__choose_reuse__du_name_ordered_deconstruction_spec_0[] = {
+	&mercury_data_transform_hlds__ctgc__structure_reuse__direct__choose_reuse__du_functor_desc_deconstruction_spec_0_0
+};
+
+const MR_Integer mercury_data_transform_hlds__ctgc__structure_reuse__direct__choose_reuse__functor_number_map_deconstruction_spec_0[] = {
+	0 };
+	
+const MR_TypeCtorInfo_Struct mercury_data_transform_hlds__ctgc__structure_reuse__direct__choose_reuse__type_ctor_info_deconstruction_spec_0 = {
+	0,
+	15,
+	1,
+	MR_TYPECTOR_REP_DU,
+	MR_MAYBE_STATIC_CODE(MR_ENTRY_AP(__Unify___transform_hlds__ctgc__structure_reuse__direct__choose_reuse__deconstruction_spec_0_0)),
+	MR_MAYBE_STATIC_CODE(MR_ENTRY_AP(__Compare___transform_hlds__ctgc__structure_reuse__direct__choose_reuse__deconstruction_spec_0_0)),
+	"transform_hlds.ctgc.structure_reuse.direct.choose_reuse",
+	"deconstruction_spec",
+	{ (void *)mercury_data_transform_hlds__ctgc__structure_reuse__direct__choose_reuse__du_name_ordered_deconstruction_spec_0 },
+	{ (void *)mercury_data_transform_hlds__ctgc__structure_reuse__direct__choose_reuse__du_ptag_ordered_deconstruction_spec_0 },
+	1,
+	4,
+	mercury_data_transform_hlds__ctgc__structure_reuse__direct__choose_reuse__functor_number_map_deconstruction_spec_0
+};
+
+static const MR_FA_TypeInfo_Struct1 mercury_data_list__ti_list_1transform_hlds__ctgc__structure_reuse__direct__choose_reuse__type_ctor_info_deconstruction_spec_0 = {
+	&mercury_data_list__type_ctor_info_list_1,
+{	(MR_TypeInfo) &mercury_data_transform_hlds__ctgc__structure_reuse__direct__choose_reuse__type_ctor_info_deconstruction_spec_0
+}};
+extern const MR_TypeCtorInfo_Struct mercury_data_transform_hlds__ctgc__structure_reuse__direct__choose_reuse__type_ctor_info_construction_spec_0;
+
+static const MR_FA_TypeInfo_Struct1 mercury_data_list__ti_list_1transform_hlds__ctgc__structure_reuse__direct__choose_reuse__type_ctor_info_construction_spec_0 = {
+	&mercury_data_list__type_ctor_info_list_1,
+{	(MR_TypeInfo) &mercury_data_transform_hlds__ctgc__structure_reuse__direct__choose_reuse__type_ctor_info_construction_spec_0
+}};
+extern const MR_TypeCtorInfo_Struct mercury_data_builtin__type_ctor_info_float_0;
+extern const MR_TypeCtorInfo_Struct mercury_data_builtin__type_ctor_info_int_0;
+extern const MR_TypeCtorInfo_Struct mercury_data_builtin__type_ctor_info_float_0;
+extern const MR_TypeCtorInfo_Struct mercury_data_builtin__type_ctor_info_int_0;
+
+const MR_PseudoTypeInfo mercury_data_transform_hlds__ctgc__structure_reuse__direct__choose_reuse__field_types_match_0_0[] = {
+	(MR_PseudoTypeInfo) &mercury_data_list__ti_list_1transform_hlds__ctgc__structure_reuse__direct__choose_reuse__type_ctor_info_deconstruction_spec_0,
+	(MR_PseudoTypeInfo) &mercury_data_list__ti_list_1transform_hlds__ctgc__structure_reuse__direct__choose_reuse__type_ctor_info_construction_spec_0,
+	(MR_PseudoTypeInfo) &mercury_data_builtin__type_ctor_info_float_0,
+	(MR_PseudoTypeInfo) &mercury_data_builtin__type_ctor_info_int_0
+};
+
+const MR_ConstString mercury_data_transform_hlds__ctgc__structure_reuse__direct__choose_reuse__field_names_match_0_0[] = {
+	"decon_specs",
+	"con_specs",
+	"match_value",
+	"match_degree"
+};
+
+static const MR_DuFunctorDesc mercury_data_transform_hlds__ctgc__structure_reuse__direct__choose_reuse__du_functor_desc_match_0_0 = {
+	"match",
+	4,
+	0,
+	MR_SECTAG_NONE,
+	0,
+	-1,
+	0,
+	(MR_PseudoTypeInfo *) mercury_data_transform_hlds__ctgc__structure_reuse__direct__choose_reuse__field_types_match_0_0,
+	mercury_data_transform_hlds__ctgc__structure_reuse__direct__choose_reuse__field_names_match_0_0,
+	NULL,
+	NULL
+};
+
+const MR_DuFunctorDescPtr mercury_data_transform_hlds__ctgc__structure_reuse__direct__choose_reuse__du_stag_ordered_match_0_0[] = {
+	&mercury_data_transform_hlds__ctgc__structure_reuse__direct__choose_reuse__du_functor_desc_match_0_0
+
+};
+
+const MR_DuPtagLayout mercury_data_transform_hlds__ctgc__structure_reuse__direct__choose_reuse__du_ptag_ordered_match_0[] = {
+	{ 1, MR_SECTAG_NONE,
+	mercury_data_transform_hlds__ctgc__structure_reuse__direct__choose_reuse__du_stag_ordered_match_0_0 }
+
+};
+
+const MR_DuFunctorDescPtr mercury_data_transform_hlds__ctgc__structure_reuse__direct__choose_reuse__du_name_ordered_match_0[] = {
+	&mercury_data_transform_hlds__ctgc__structure_reuse__direct__choose_reuse__du_functor_desc_match_0_0
+};
+
+const MR_Integer mercury_data_transform_hlds__ctgc__structure_reuse__direct__choose_reuse__functor_number_map_match_0[] = {
+	0 };
+	
+const MR_TypeCtorInfo_Struct mercury_data_transform_hlds__ctgc__structure_reuse__direct__choose_reuse__type_ctor_info_match_0 = {
+	0,
+	15,
+	1,
+	MR_TYPECTOR_REP_DU,
+	MR_MAYBE_STATIC_CODE(MR_ENTRY_AP(__Unify___transform_hlds__ctgc__structure_reuse__direct__choose_reuse__match_0_0)),
+	MR_MAYBE_STATIC_CODE(MR_ENTRY_AP(__Compare___transform_hlds__ctgc__structure_reuse__direct__choose_reuse__match_0_0)),
+	"transform_hlds.ctgc.structure_reuse.direct.choose_reuse",
+	"match",
+	{ (void *)mercury_data_transform_hlds__ctgc__structure_reuse__direct__choose_reuse__du_name_ordered_match_0 },
+	{ (void *)mercury_data_transform_hlds__ctgc__structure_reuse__direct__choose_reuse__du_ptag_ordered_match_0 },
+	1,
+	4,
+	mercury_data_transform_hlds__ctgc__structure_reuse__direct__choose_reuse__functor_number_map_match_0
+};
+
+static const MR_FA_TypeInfo_Struct1 mercury_data_list__ti_list_1transform_hlds__ctgc__structure_reuse__direct__choose_reuse__type_ctor_info_match_0 = {
+	&mercury_data_list__type_ctor_info_list_1,
+{	(MR_TypeInfo) &mercury_data_transform_hlds__ctgc__structure_reuse__direct__choose_reuse__type_ctor_info_match_0
+}};
+
+static const MR_FA_TypeInfo_Struct2 mercury_data_tree234__ti_tree234_2term__ti_var_1parse_tree__prog_data__type_ctor_info_prog_var_type_0list__ti_list_1transform_hlds__ctgc__structure_reuse__direct__choose_reuse__type_ctor_info_match_0 = {
+	&mercury_data_tree234__type_ctor_info_tree234_2,
+{	(MR_TypeInfo) &mercury_data_term__ti_var_1parse_tree__prog_data__type_ctor_info_prog_var_type_0,
+	(MR_TypeInfo) &mercury_data_list__ti_list_1transform_hlds__ctgc__structure_reuse__direct__choose_reuse__type_ctor_info_match_0
+}};
+
+const MR_TypeCtorInfo_Struct mercury_data_transform_hlds__ctgc__structure_reuse__direct__choose_reuse__type_ctor_info_match_table_0 = {
+	0,
+	15,
+	-1,
+	MR_TYPECTOR_REP_EQUIV_GROUND,
+	MR_MAYBE_STATIC_CODE(MR_ENTRY_AP(__Unify___transform_hlds__ctgc__structure_reuse__direct__choose_reuse__match_table_0_0)),
+	MR_MAYBE_STATIC_CODE(MR_ENTRY_AP(__Compare___transform_hlds__ctgc__structure_reuse__direct__choose_reuse__match_table_0_0)),
+	"transform_hlds.ctgc.structure_reuse.direct.choose_reuse",
+	"match_table",
+	{ 0 },
+	{ (void *)&mercury_data_tree234__ti_tree234_2term__ti_var_1parse_tree__prog_data__type_ctor_info_prog_var_type_0list__ti_list_1transform_hlds__ctgc__structure_reuse__direct__choose_reuse__type_ctor_info_match_0 },
+	-1,
+	0,
+	NULL
+};
+extern const MR_TypeCtorInfo_Struct mercury_data_bool__type_ctor_info_bool_0;
+extern const MR_TypeCtorInfo_Struct mercury_data_hlds__hlds_goal__type_ctor_info_needs_update_0;
+extern const MR_TypeCtorInfo_Struct mercury_data_hlds__hlds_goal__type_ctor_info_needs_update_0;
+
+static const MR_FA_TypeInfo_Struct1 mercury_data_list__ti_list_1hlds__hlds_goal__type_ctor_info_needs_update_0 = {
+	&mercury_data_list__type_ctor_info_list_1,
+{	(MR_TypeInfo) &mercury_data_hlds__hlds_goal__type_ctor_info_needs_update_0
+}};
+extern const MR_TypeCtorInfo_Struct mercury_data_bool__type_ctor_info_bool_0;
+
+const MR_PseudoTypeInfo mercury_data_transform_hlds__ctgc__structure_reuse__direct__choose_reuse__field_types_reuse_type_0_0[] = {
+	(MR_PseudoTypeInfo) &mercury_data_bool__type_ctor_info_bool_0,
+	(MR_PseudoTypeInfo) &mercury_data_list__ti_list_1hlds__hlds_goal__type_ctor_info_needs_update_0,
+	(MR_PseudoTypeInfo) &mercury_data_builtin__type_ctor_info_float_0
+};
+
+const MR_ConstString mercury_data_transform_hlds__ctgc__structure_reuse__direct__choose_reuse__field_names_reuse_type_0_0[] = {
+	"same_cons",
+	"reuse_fields",
+	"reuse_value"
+};
+
+static const MR_DuFunctorDesc mercury_data_transform_hlds__ctgc__structure_reuse__direct__choose_reuse__du_functor_desc_reuse_type_0_0 = {
+	"reuse_type",
+	3,
+	0,
+	MR_SECTAG_NONE,
+	0,
+	-1,
+	0,
+	(MR_PseudoTypeInfo *) mercury_data_transform_hlds__ctgc__structure_reuse__direct__choose_reuse__field_types_reuse_type_0_0,
+	mercury_data_transform_hlds__ctgc__structure_reuse__direct__choose_reuse__field_names_reuse_type_0_0,
+	NULL,
+	NULL
+};
+
+const MR_DuFunctorDescPtr mercury_data_transform_hlds__ctgc__structure_reuse__direct__choose_reuse__du_stag_ordered_reuse_type_0_0[] = {
+	&mercury_data_transform_hlds__ctgc__structure_reuse__direct__choose_reuse__du_functor_desc_reuse_type_0_0
+
+};
+
+const MR_DuPtagLayout mercury_data_transform_hlds__ctgc__structure_reuse__direct__choose_reuse__du_ptag_ordered_reuse_type_0[] = {
+	{ 1, MR_SECTAG_NONE,
+	mercury_data_transform_hlds__ctgc__structure_reuse__direct__choose_reuse__du_stag_ordered_reuse_type_0_0 }
+
+};
+
+const MR_DuFunctorDescPtr mercury_data_transform_hlds__ctgc__structure_reuse__direct__choose_reuse__du_name_ordered_reuse_type_0[] = {
+	&mercury_data_transform_hlds__ctgc__structure_reuse__direct__choose_reuse__du_functor_desc_reuse_type_0_0
+};
+
+const MR_Integer mercury_data_transform_hlds__ctgc__structure_reuse__direct__choose_reuse__functor_number_map_reuse_type_0[] = {
+	0 };
+	
+const MR_TypeCtorInfo_Struct mercury_data_transform_hlds__ctgc__structure_reuse__direct__choose_reuse__type_ctor_info_reuse_type_0 = {
+	0,
+	15,
+	1,
+	MR_TYPECTOR_REP_DU,
+	MR_MAYBE_STATIC_CODE(MR_ENTRY_AP(__Unify___transform_hlds__ctgc__structure_reuse__direct__choose_reuse__reuse_type_0_0)),
+	MR_MAYBE_STATIC_CODE(MR_ENTRY_AP(__Compare___transform_hlds__ctgc__structure_reuse__direct__choose_reuse__reuse_type_0_0)),
+	"transform_hlds.ctgc.structure_reuse.direct.choose_reuse",
+	"reuse_type",
+	{ (void *)mercury_data_transform_hlds__ctgc__structure_reuse__direct__choose_reuse__du_name_ordered_reuse_type_0 },
+	{ (void *)mercury_data_transform_hlds__ctgc__structure_reuse__direct__choose_reuse__du_ptag_ordered_reuse_type_0 },
+	1,
+	4,
+	mercury_data_transform_hlds__ctgc__structure_reuse__direct__choose_reuse__functor_number_map_reuse_type_0
+};
+
+
+static const MR_UserClosureId
+mercury_data__closure_layout__fn__transform_hlds__ctgc__structure_reuse__direct__choose_reuse__glb_reuse_types_2_2_0_2 = {
+{
+MR_FUNCTION,
+"transform_hlds.ctgc.structure_reuse.direct.choose_reuse",
+"transform_hlds.ctgc.structure_reuse.direct.choose_reuse",
+"needs_update_and",
+3,
+0
+},
+"transform_hlds.ctgc.structure_reuse.direct.choose_reuse",
+"structure_reuse.direct.choose_reuse.m",
+1069,
+"19"
+};
+
+static const MR_UserClosureId
+mercury_data__closure_layout__fn__transform_hlds__ctgc__structure_reuse__direct__choose_reuse__glb_reuse_types_2_2_0_1 = {
+{
+MR_FUNCTION,
+"transform_hlds.ctgc.structure_reuse.direct.choose_reuse",
+"transform_hlds.ctgc.structure_reuse.direct.choose_reuse",
+"needs_update_and",
+3,
+0
+},
+"transform_hlds.ctgc.structure_reuse.direct.choose_reuse",
+"structure_reuse.direct.choose_reuse.m",
+1069,
+"19"
+};
+
+static const MR_UserClosureId
+mercury_data__closure_layout__transform_hlds__ctgc__structure_reuse__direct__choose_reuse__find_match_in_goal_2_4_0_1 = {
+{
+MR_FUNCTION,
+"transform_hlds.ctgc.structure_reuse.direct.choose_reuse",
+"transform_hlds.ctgc.structure_reuse.direct.choose_reuse",
+"lambda_structure_reuse_direct_choose_reuse_m_851",
+2,
+0
+},
+"transform_hlds.ctgc.structure_reuse.direct.choose_reuse",
+"structure_reuse.direct.choose_reuse.m",
+851,
+"59"
+};
+
+static const MR_UserClosureId
+mercury_data__closure_layout__transform_hlds__ctgc__structure_reuse__direct__choose_reuse__verify_match_7_0_2 = {
+{
+MR_FUNCTION,
+"transform_hlds.ctgc.structure_reuse.direct.choose_reuse",
+"transform_hlds.ctgc.structure_reuse.direct.choose_reuse",
+"glb_reuse_types_2",
+3,
+0
+},
+"transform_hlds.ctgc.structure_reuse.direct.choose_reuse",
+"structure_reuse.direct.choose_reuse.m",
+1047,
+"4"
+};
+
+static const MR_UserClosureId
+mercury_data__closure_layout__transform_hlds__ctgc__structure_reuse__direct__choose_reuse__verify_match_7_0_1 = {
+{
+MR_PREDICATE,
+"transform_hlds.ctgc.structure_reuse.direct.choose_reuse",
+"transform_hlds.ctgc.structure_reuse.direct.choose_reuse",
+"compute_reuse_type",
+6,
+0
+},
+"transform_hlds.ctgc.structure_reuse.direct.choose_reuse",
+"structure_reuse.direct.choose_reuse.m",
+923,
+"12"
+};
+
+static const MR_UserClosureId
+mercury_data__closure_layout__transform_hlds__ctgc__structure_reuse__direct__choose_reuse__find_match_in_disjunction_4_0_2 = {
+{
+MR_PREDICATE,
+"transform_hlds.ctgc.structure_reuse.direct.choose_reuse",
+"transform_hlds.ctgc.structure_reuse.direct.choose_reuse",
+"lambda_structure_reuse_direct_choose_reuse_m_430",
+3,
+0
+},
+"transform_hlds.ctgc.structure_reuse.direct.choose_reuse",
+"structure_reuse.direct.choose_reuse.m",
+430,
+"8"
+};
+
+static const MR_UserClosureId
+mercury_data__closure_layout__transform_hlds__ctgc__structure_reuse__direct__choose_reuse__find_match_in_disjunction_4_0_1 = {
+{
+MR_PREDICATE,
+"transform_hlds.ctgc.structure_reuse.direct.choose_reuse",
+"transform_hlds.ctgc.structure_reuse.direct.choose_reuse",
+"find_match_in_goal",
+4,
+0
+},
+"transform_hlds.ctgc.structure_reuse.direct.choose_reuse",
+"structure_reuse.direct.choose_reuse.m",
+793,
+"12"
+};
+
+static const MR_UserClosureId
+mercury_data__closure_layout__transform_hlds__ctgc__structure_reuse__direct__choose_reuse__deconstruction_specs_2_4_0_1 = {
+{
+MR_FUNCTION,
+"transform_hlds.ctgc.structure_reuse.direct.choose_reuse",
+"transform_hlds.ctgc.structure_reuse.direct.choose_reuse",
+"match_get_decon_specs",
+2,
+0
+},
+"transform_hlds.ctgc.structure_reuse.direct.choose_reuse",
+"structure_reuse.direct.choose_reuse.m",
+739,
+"9"
+};
+
+static const MR_UserClosureId
+mercury_data__closure_layout__transform_hlds__ctgc__structure_reuse__direct__choose_reuse__process_common_var_5_0_4 = {
+{
+MR_PREDICATE,
+"transform_hlds.ctgc.structure_reuse.direct.choose_reuse",
+"transform_hlds.ctgc.structure_reuse.direct.choose_reuse",
+"reverse_compare_matches_value",
+3,
+0
+},
+"transform_hlds.ctgc.structure_reuse.direct.choose_reuse",
+"structure_reuse.direct.choose_reuse.m",
+410,
+"5"
+};
+
+static const MR_UserClosureId
+mercury_data__closure_layout__transform_hlds__ctgc__structure_reuse__direct__choose_reuse__process_common_var_5_0_3 = {
+{
+MR_FUNCTION,
+"transform_hlds.ctgc.structure_reuse.direct.choose_reuse",
+"transform_hlds.ctgc.structure_reuse.direct.choose_reuse",
+"add_degree",
+3,
+0
+},
+"transform_hlds.ctgc.structure_reuse.direct.choose_reuse",
+"structure_reuse.direct.choose_reuse.m",
+875,
+"4"
+};
+
+static const MR_UserClosureId
+mercury_data__closure_layout__transform_hlds__ctgc__structure_reuse__direct__choose_reuse__process_common_var_5_0_2 = {
+{
+MR_PREDICATE,
+"transform_hlds.ctgc.structure_reuse.direct.choose_reuse",
+"transform_hlds.ctgc.structure_reuse.direct.choose_reuse",
+"find_match_in_goal",
+4,
+0
+},
+"transform_hlds.ctgc.structure_reuse.direct.choose_reuse",
+"structure_reuse.direct.choose_reuse.m",
+773,
+"7"
+};
+
+static const MR_UserClosureId
+mercury_data__closure_layout__transform_hlds__ctgc__structure_reuse__direct__choose_reuse__process_common_var_5_0_1 = {
+{
+MR_PREDICATE,
+"transform_hlds.ctgc.structure_reuse.direct.choose_reuse",
+"transform_hlds.ctgc.structure_reuse.direct.choose_reuse",
+"deconstruction_specs_2",
+4,
+0
+},
+"transform_hlds.ctgc.structure_reuse.direct.choose_reuse",
+"structure_reuse.direct.choose_reuse.m",
+731,
+"5"
+};
+
+static const MR_UserClosureId
+mercury_data__closure_layout__transform_hlds__ctgc__structure_reuse__direct__choose_reuse__average_match_2_0_1 = {
+{
+MR_PREDICATE,
+"transform_hlds.ctgc.structure_reuse.direct.choose_reuse",
+"transform_hlds.ctgc.structure_reuse.direct.choose_reuse",
+"lambda_structure_reuse_direct_choose_reuse_m_430",
+3,
+0
+},
+"transform_hlds.ctgc.structure_reuse.direct.choose_reuse",
+"structure_reuse.direct.choose_reuse.m",
+430,
+"8"
+};
+
+static const MR_UserClosureId
+mercury_data__closure_layout__transform_hlds__ctgc__structure_reuse__direct__choose_reuse__check_for_cell_caching_2_3_0_3 = {
+{
+MR_PREDICATE,
+"transform_hlds.ctgc.structure_reuse.direct.choose_reuse",
+"transform_hlds.ctgc.structure_reuse.direct.choose_reuse",
+"check_for_cell_caching_in_case",
+3,
+0
+},
+"transform_hlds.ctgc.structure_reuse.direct.choose_reuse",
+"structure_reuse.direct.choose_reuse.m",
+1473,
+"37"
+};
+
+static const MR_UserClosureId
+mercury_data__closure_layout__transform_hlds__ctgc__structure_reuse__direct__choose_reuse__check_for_cell_caching_2_3_0_2 = {
+{
+MR_PREDICATE,
+"transform_hlds.ctgc.structure_reuse.direct.choose_reuse",
+"transform_hlds.ctgc.structure_reuse.direct.choose_reuse",
+"check_for_cell_caching_2",
+3,
+0
+},
+"transform_hlds.ctgc.structure_reuse.direct.choose_reuse",
+"structure_reuse.direct.choose_reuse.m",
+1468,
+"31"
+};
+
+static const MR_UserClosureId
+mercury_data__closure_layout__transform_hlds__ctgc__structure_reuse__direct__choose_reuse__check_for_cell_caching_2_3_0_1 = {
+{
+MR_PREDICATE,
+"transform_hlds.ctgc.structure_reuse.direct.choose_reuse",
+"transform_hlds.ctgc.structure_reuse.direct.choose_reuse",
+"check_for_cell_caching_2",
+3,
+0
+},
+"transform_hlds.ctgc.structure_reuse.direct.choose_reuse",
+"structure_reuse.direct.choose_reuse.m",
+1463,
+"25"
+};
+
+static const MR_UserClosureId
+mercury_data__closure_layout__transform_hlds__ctgc__structure_reuse__direct__choose_reuse__choose_reuse_in_goal_7_0_1 = {
+{
+MR_PREDICATE,
+"transform_hlds.ctgc.structure_reuse.direct.choose_reuse",
+"transform_hlds.ctgc.structure_reuse.direct.choose_reuse",
+"reverse_compare_matches_value_degree",
+3,
+0
+},
+"transform_hlds.ctgc.structure_reuse.direct.choose_reuse",
+"structure_reuse.direct.choose_reuse.m",
+354,
+"5"
+};
+
+static const MR_UserClosureId
+mercury_data__closure_layout__transform_hlds__ctgc__structure_reuse__direct__choose_reuse__dump_full_table_3_0_1 = {
+{
+MR_PREDICATE,
+"transform_hlds.ctgc.structure_reuse.direct.choose_reuse",
+"transform_hlds.ctgc.structure_reuse.direct.choose_reuse",
+"dump_match",
+4,
+0
+},
+"transform_hlds.ctgc.structure_reuse.direct.choose_reuse",
+"structure_reuse.direct.choose_reuse.m",
+1399,
+"14"
+};
+
+static const MR_UserClosureId
+mercury_data__closure_layout__transform_hlds__ctgc__structure_reuse__direct__choose_reuse__dump_match_4_0_1 = {
+{
+MR_FUNCTION,
+"transform_hlds.ctgc.structure_reuse.direct.choose_reuse",
+"transform_hlds.ctgc.structure_reuse.direct.choose_reuse",
+"lambda_structure_reuse_direct_choose_reuse_m_286",
+2,
+0
+},
+"transform_hlds.ctgc.structure_reuse.direct.choose_reuse",
+"structure_reuse.direct.choose_reuse.m",
+286,
+"4"
+};
+
+static const MR_UserClosureId
+mercury_data__closure_layout__transform_hlds__ctgc__structure_reuse__direct__choose_reuse__dump_match_details_3_0_2 = {
+{
+MR_PREDICATE,
+"transform_hlds.ctgc.structure_reuse.domain",
+"transform_hlds.ctgc.structure_reuse.domain",
+"reuse_as_all_unconditional_reuses",
+1,
+0
+},
+"transform_hlds.ctgc.structure_reuse.direct.choose_reuse",
+"structure_reuse.direct.choose_reuse.m",
+1378,
+"14"
+};
+
+static const MR_UserClosureId
+mercury_data__closure_layout__transform_hlds__ctgc__structure_reuse__direct__choose_reuse__dump_match_details_3_0_1 = {
+{
+MR_FUNCTION,
+"transform_hlds.ctgc.structure_reuse.direct.choose_reuse",
+"transform_hlds.ctgc.structure_reuse.direct.choose_reuse",
+"lambda_structure_reuse_direct_choose_reuse_m_1376",
+2,
+0
+},
+"transform_hlds.ctgc.structure_reuse.direct.choose_reuse",
+"structure_reuse.direct.choose_reuse.m",
+1376,
+"6"
+};
+
+static const MR_UserClosureId
+mercury_data__closure_layout__transform_hlds__ctgc__structure_reuse__direct__choose_reuse__annotate_reuses_in_goal_4_0_3 = {
+{
+MR_PREDICATE,
+"transform_hlds.ctgc.structure_reuse.direct.choose_reuse",
+"transform_hlds.ctgc.structure_reuse.direct.choose_reuse",
+"annotate_reuses_in_case",
+4,
+0
+},
+"transform_hlds.ctgc.structure_reuse.direct.choose_reuse",
+"structure_reuse.direct.choose_reuse.m",
+1197,
+"38"
+};
+
+static const MR_UserClosureId
+mercury_data__closure_layout__transform_hlds__ctgc__structure_reuse__direct__choose_reuse__annotate_reuses_in_goal_4_0_2 = {
+{
+MR_PREDICATE,
+"transform_hlds.ctgc.structure_reuse.direct.choose_reuse",
+"transform_hlds.ctgc.structure_reuse.direct.choose_reuse",
+"annotate_reuses_in_goal",
+4,
+0
+},
+"transform_hlds.ctgc.structure_reuse.direct.choose_reuse",
+"structure_reuse.direct.choose_reuse.m",
+1192,
+"32"
+};
+
+static const MR_UserClosureId
+mercury_data__closure_layout__transform_hlds__ctgc__structure_reuse__direct__choose_reuse__annotate_reuses_in_goal_4_0_1 = {
+{
+MR_PREDICATE,
+"transform_hlds.ctgc.structure_reuse.direct.choose_reuse",
+"transform_hlds.ctgc.structure_reuse.direct.choose_reuse",
+"annotate_reuses_in_goal",
+4,
+0
+},
+"transform_hlds.ctgc.structure_reuse.direct.choose_reuse",
+"structure_reuse.direct.choose_reuse.m",
+1187,
+"26"
+};
+
+static const MR_UserClosureId
+mercury_data__closure_layout__transform_hlds__ctgc__structure_reuse__direct__choose_reuse__annotate_reuse_for_unification_5_0_2 = {
+{
+MR_FUNCTION,
+"transform_hlds.ctgc.structure_reuse.direct.choose_reuse",
+"transform_hlds.ctgc.structure_reuse.direct.choose_reuse",
+"lambda_structure_reuse_direct_choose_reuse_m_308",
+2,
+0
+},
+"transform_hlds.ctgc.structure_reuse.direct.choose_reuse",
+"structure_reuse.direct.choose_reuse.m",
+308,
+"4"
+};
+
+static const MR_UserClosureId
+mercury_data__closure_layout__transform_hlds__ctgc__structure_reuse__direct__choose_reuse__annotate_reuse_for_unification_5_0_1 = {
+{
+MR_PREDICATE,
+"transform_hlds.ctgc.structure_reuse.direct.choose_reuse",
+"transform_hlds.ctgc.structure_reuse.direct.choose_reuse",
+"construction_spec_with_program_point",
+2,
+0
+},
+"transform_hlds.ctgc.structure_reuse.direct.choose_reuse",
+"structure_reuse.direct.choose_reuse.m",
+1302,
+"5"
+};
+
+static const MR_UserClosureId
+mercury_data__closure_layout__transform_hlds__ctgc__structure_reuse__direct__choose_reuse__match_find_deconstruction_spec_3_0_1 = {
+{
+MR_PREDICATE,
+"transform_hlds.ctgc.structure_reuse.direct.choose_reuse",
+"transform_hlds.ctgc.structure_reuse.direct.choose_reuse",
+"deconstruction_spec_with_program_point",
+2,
+0
+},
+"transform_hlds.ctgc.structure_reuse.direct.choose_reuse",
+"structure_reuse.direct.choose_reuse.m",
+1295,
+"5"
+};
+
+static const MR_UserClosureId
+mercury_data__closure_layout__fn__transform_hlds__ctgc__structure_reuse__direct__choose_reuse__match_get_dead_var_1_0_1 = {
+{
+MR_FUNCTION,
+"transform_hlds.ctgc.structure_reuse.direct.choose_reuse",
+"transform_hlds.ctgc.structure_reuse.direct.choose_reuse",
+"lambda_structure_reuse_direct_choose_reuse_m_286",
+2,
+0
+},
+"transform_hlds.ctgc.structure_reuse.direct.choose_reuse",
+"structure_reuse.direct.choose_reuse.m",
+286,
+"4"
+};
+
+static const MR_UserClosureId
+mercury_data__closure_layout__transform_hlds__ctgc__structure_reuse__direct__choose_reuse__compute_match_table_with_continuation_6_0_2 = {
+{
+MR_FUNCTION,
+"transform_hlds.ctgc.structure_reuse.direct.choose_reuse",
+"transform_hlds.ctgc.structure_reuse.direct.choose_reuse",
+"lambda_structure_reuse_direct_choose_reuse_m_615",
+2,
+0
+},
+"transform_hlds.ctgc.structure_reuse.direct.choose_reuse",
+"structure_reuse.direct.choose_reuse.m",
+615,
+"49"
+};
+
+static const MR_UserClosureId
+mercury_data__closure_layout__transform_hlds__ctgc__structure_reuse__direct__choose_reuse__compute_match_table_with_continuation_6_0_1 = {
+{
+MR_PREDICATE,
+"transform_hlds.ctgc.structure_reuse.direct.choose_reuse",
+"transform_hlds.ctgc.structure_reuse.direct.choose_reuse",
+"lambda_structure_reuse_direct_choose_reuse_m_645",
+3,
+0
+},
+"transform_hlds.ctgc.structure_reuse.direct.choose_reuse",
+"structure_reuse.direct.choose_reuse.m",
+645,
+"78"
+};
+
+static const MR_UserClosureId
+mercury_data__closure_layout__transform_hlds__ctgc__structure_reuse__direct__choose_reuse__find_best_match_in_conjunction_4_0_3 = {
+{
+MR_PREDICATE,
+"transform_hlds.ctgc.structure_reuse.direct.choose_reuse",
+"transform_hlds.ctgc.structure_reuse.direct.choose_reuse",
+"reverse_compare_matches_value",
+3,
+0
+},
+"transform_hlds.ctgc.structure_reuse.direct.choose_reuse",
+"structure_reuse.direct.choose_reuse.m",
+410,
+"5"
+};
+
+static const MR_UserClosureId
+mercury_data__closure_layout__transform_hlds__ctgc__structure_reuse__direct__choose_reuse__find_best_match_in_conjunction_4_0_2 = {
+{
+MR_FUNCTION,
+"transform_hlds.ctgc.structure_reuse.direct.choose_reuse",
+"transform_hlds.ctgc.structure_reuse.direct.choose_reuse",
+"add_degree",
+3,
+0
+},
+"transform_hlds.ctgc.structure_reuse.direct.choose_reuse",
+"structure_reuse.direct.choose_reuse.m",
+875,
+"4"
+};
+
+static const MR_UserClosureId
+mercury_data__closure_layout__transform_hlds__ctgc__structure_reuse__direct__choose_reuse__find_best_match_in_conjunction_4_0_1 = {
+{
+MR_PREDICATE,
+"transform_hlds.ctgc.structure_reuse.direct.choose_reuse",
+"transform_hlds.ctgc.structure_reuse.direct.choose_reuse",
+"find_match_in_goal",
+4,
+0
+},
+"transform_hlds.ctgc.structure_reuse.direct.choose_reuse",
+"structure_reuse.direct.choose_reuse.m",
+773,
+"7"
+};
+
+static const MR_UserClosureId
+mercury_data__closure_layout__transform_hlds__ctgc__structure_reuse__direct__choose_reuse__compute_match_table_in_disjunction_6_0_7 = {
+{
+MR_PREDICATE,
+"transform_hlds.ctgc.structure_reuse.direct.choose_reuse",
+"transform_hlds.ctgc.structure_reuse.direct.choose_reuse",
+"lambda_structure_reuse_direct_choose_reuse_m_681",
+3,
+0
+},
+"transform_hlds.ctgc.structure_reuse.direct.choose_reuse",
+"structure_reuse.direct.choose_reuse.m",
+681,
+"12"
+};
+
+static const MR_UserClosureId
+mercury_data__closure_layout__transform_hlds__ctgc__structure_reuse__direct__choose_reuse__compute_match_table_in_disjunction_6_0_6 = {
+{
+MR_PREDICATE,
+"transform_hlds.ctgc.structure_reuse.direct.choose_reuse",
+"transform_hlds.ctgc.structure_reuse.direct.choose_reuse",
+"process_common_var",
+5,
+0
+},
+"transform_hlds.ctgc.structure_reuse.direct.choose_reuse",
+"structure_reuse.direct.choose_reuse.m",
+691,
+"10"
+};
+
+static const MR_UserClosureId
+mercury_data__closure_layout__transform_hlds__ctgc__structure_reuse__direct__choose_reuse__compute_match_table_in_disjunction_6_0_5 = {
+{
+MR_PREDICATE,
+"transform_hlds.ctgc.structure_reuse.direct.choose_reuse",
+"transform_hlds.ctgc.structure_reuse.direct.choose_reuse",
+"lambda_structure_reuse_direct_choose_reuse_m_681",
+3,
+0
+},
+"transform_hlds.ctgc.structure_reuse.direct.choose_reuse",
+"structure_reuse.direct.choose_reuse.m",
+681,
+"12"
+};
+
+static const MR_UserClosureId
+mercury_data__closure_layout__transform_hlds__ctgc__structure_reuse__direct__choose_reuse__compute_match_table_in_disjunction_6_0_4 = {
+{
+MR_FUNCTION,
+"transform_hlds.ctgc.structure_reuse.direct.choose_reuse",
+"transform_hlds.ctgc.structure_reuse.direct.choose_reuse",
+"common_var_with_list",
+3,
+0
+},
+"transform_hlds.ctgc.structure_reuse.direct.choose_reuse",
+"structure_reuse.direct.choose_reuse.m",
+703,
+"8"
+};
+
+static const MR_UserClosureId
+mercury_data__closure_layout__transform_hlds__ctgc__structure_reuse__direct__choose_reuse__compute_match_table_in_disjunction_6_0_3 = {
+{
+MR_PREDICATE,
+"transform_hlds.ctgc.structure_reuse.direct.choose_reuse",
+"transform_hlds.ctgc.structure_reuse.direct.choose_reuse",
+"lambda_structure_reuse_direct_choose_reuse_m_681",
+3,
+0
+},
+"transform_hlds.ctgc.structure_reuse.direct.choose_reuse",
+"structure_reuse.direct.choose_reuse.m",
+681,
+"12"
+};
+
+static const MR_UserClosureId
+mercury_data__closure_layout__transform_hlds__ctgc__structure_reuse__direct__choose_reuse__compute_match_table_in_disjunction_6_0_2 = {
+{
+MR_PREDICATE,
+"transform_hlds.ctgc.structure_reuse.direct.choose_reuse",
+"transform_hlds.ctgc.structure_reuse.direct.choose_reuse",
+"lambda_structure_reuse_direct_choose_reuse_m_673",
+3,
+0
+},
+"transform_hlds.ctgc.structure_reuse.direct.choose_reuse",
+"structure_reuse.direct.choose_reuse.m",
+673,
+"9"
+};
+
+static const MR_UserClosureId
+mercury_data__closure_layout__transform_hlds__ctgc__structure_reuse__direct__choose_reuse__compute_match_table_in_disjunction_6_0_1 = {
+{
+MR_PREDICATE,
+"transform_hlds.ctgc.structure_reuse.direct.choose_reuse",
+"transform_hlds.ctgc.structure_reuse.direct.choose_reuse",
+"compute_match_table",
+4,
+0
+},
+"transform_hlds.ctgc.structure_reuse.direct.choose_reuse",
+"structure_reuse.direct.choose_reuse.m",
+658,
+"6"
+};
+
+static const MR_UserClosureId
+mercury_data__closure_layout__transform_hlds__ctgc__structure_reuse__direct__choose_reuse__process_possible_common_dead_vars_4_0_2 = {
+{
+MR_PREDICATE,
+"transform_hlds.ctgc.structure_reuse.direct.choose_reuse",
+"transform_hlds.ctgc.structure_reuse.direct.choose_reuse",
+"process_common_var",
+5,
+0
+},
+"transform_hlds.ctgc.structure_reuse.direct.choose_reuse",
+"structure_reuse.direct.choose_reuse.m",
+691,
+"10"
+};
+
+static const MR_UserClosureId
+mercury_data__closure_layout__transform_hlds__ctgc__structure_reuse__direct__choose_reuse__process_possible_common_dead_vars_4_0_1 = {
+{
+MR_FUNCTION,
+"transform_hlds.ctgc.structure_reuse.direct.choose_reuse",
+"transform_hlds.ctgc.structure_reuse.direct.choose_reuse",
+"common_var_with_list",
+3,
+0
+},
+"transform_hlds.ctgc.structure_reuse.direct.choose_reuse",
+"structure_reuse.direct.choose_reuse.m",
+703,
+"8"
+};
+
+static const MR_UserClosureId
+mercury_data__closure_layout__transform_hlds__ctgc__structure_reuse__direct__choose_reuse__remove_deconstructions_from_dead_cell_table_3_0_1 = {
+{
+MR_PREDICATE,
+"transform_hlds.ctgc.structure_reuse.direct.choose_reuse",
+"transform_hlds.ctgc.structure_reuse.direct.choose_reuse",
+"remove_deconstruction_from_dead_cell_table",
+3,
+0
+},
+"transform_hlds.ctgc.structure_reuse.direct.choose_reuse",
+"structure_reuse.direct.choose_reuse.m",
+524,
+"6"
+};
+
+static const MR_UserClosureId
+mercury_data__closure_layout__fn__transform_hlds__ctgc__structure_reuse__direct__choose_reuse__match_get_condition_2_0_2 = {
+{
+MR_PREDICATE,
+"transform_hlds.ctgc.structure_reuse.domain",
+"transform_hlds.ctgc.structure_reuse.domain",
+"reuse_as_least_upper_bound",
+5,
+0
+},
+"transform_hlds.ctgc.structure_reuse.direct.choose_reuse",
+"structure_reuse.direct.choose_reuse.m",
+320,
+"15"
+};
+
+static const MR_UserClosureId
+mercury_data__closure_layout__fn__transform_hlds__ctgc__structure_reuse__direct__choose_reuse__match_get_condition_2_0_1 = {
+{
+MR_FUNCTION,
+"transform_hlds.ctgc.structure_reuse.direct.choose_reuse",
+"transform_hlds.ctgc.structure_reuse.direct.choose_reuse",
+"lambda_structure_reuse_direct_choose_reuse_m_316",
+2,
+0
+},
+"transform_hlds.ctgc.structure_reuse.direct.choose_reuse",
+"structure_reuse.direct.choose_reuse.m",
+316,
+"5"
+};
+
+
+MR_decl_entry(fn__list__map_2_0);
+MR_decl_entry(transform_hlds__ctgc__structure_reuse__domain__reuse_as_least_upper_bound_5_0);
+MR_decl_entry(list__foldl_4_0);
+MR_decl_entry(require__unexpected_3_0);
+
+MR_BEGIN_MODULE(transform_hlds__ctgc__structure_reuse__direct__choose_reuse_module0)
+	MR_init_entry1(fn__transform_hlds__ctgc__structure_reuse__direct__choose_reuse__match_get_condition_2_0);
+	MR_INIT_PROC_LAYOUT_ADDR(mercury__fn__transform_hlds__ctgc__structure_reuse__direct__choose_reuse__match_get_condition_2_0);
+	MR_init_label2(fn__transform_hlds__ctgc__structure_reuse__direct__choose_reuse__match_get_condition_2_0,3,5)
+MR_BEGIN_CODE
+
+/*-------------------------------------------------------------------------*/
+/* code for 'match_get_condition'/3 mode 0 */
+#ifdef MR_maybe_local_thread_engine_base
+	#undef MR_maybe_local_thread_engine_base
+	#define MR_maybe_local_thread_engine_base MR_local_thread_engine_base
+#endif
+MR_def_static(fn__transform_hlds__ctgc__structure_reuse__direct__choose_reuse__match_get_condition_2_0)
+	MR_MAYBE_INIT_LOCAL_THREAD_ENGINE_BASE
+	MR_incr_sp(2);
+	MR_sv(2) = (MR_Word) MR_succip;
+	MR_sv(1) = MR_r1;
+	MR_r1 = (MR_Word) MR_CTOR0_ADDR(transform_hlds__ctgc__structure_reuse__direct__choose_reuse, deconstruction_spec);
+	{
+	MR_Word MR_tempr1;
+	MR_tempr1 = MR_r2;
+	MR_r2 = (MR_Word) MR_CTOR0_ADDR(transform_hlds__ctgc__structure_reuse__domain, reuse_as);
+	MR_r3 = (MR_Word) MR_TAG_COMMON(0,1,0);
+	MR_r4 = MR_tfield(0, MR_tempr1, 0);
+	}
+	MR_np_call_localret_ent(fn__list__map_2_0,
+		fn__transform_hlds__ctgc__structure_reuse__direct__choose_reuse__match_get_condition_2_0_i3);
+MR_def_label(fn__transform_hlds__ctgc__structure_reuse__direct__choose_reuse__match_get_condition_2_0,3)
+	MR_MAYBE_INIT_LOCAL_THREAD_ENGINE_BASE
+	if (MR_LTAGS_TEST(MR_r1,0,0)) {
+		MR_GOTO_LAB(fn__transform_hlds__ctgc__structure_reuse__direct__choose_reuse__match_get_condition_2_0_i5);
+	}
+	{
+	MR_Word MR_tempr1, MR_tempr2, MR_tempr3;
+	MR_tag_alloc_heap(MR_tempr1, 0, (MR_Integer) 5);
+	MR_r3 = MR_tempr1;
+	MR_tfield(0, MR_tempr1, 0) = (MR_Word) MR_COMMON(2,0);
+	MR_tfield(0, MR_tempr1, 1) = (MR_Word) MR_ENTRY_AP(transform_hlds__ctgc__structure_reuse__domain__reuse_as_least_upper_bound_5_0);
+	MR_tfield(0, MR_tempr1, 2) = (MR_Integer) 2;
+	MR_tempr3 = MR_sv(1);
+	MR_tfield(0, MR_tempr1, 3) = MR_tfield(0, MR_tempr3, 1);
+	MR_tfield(0, MR_tempr1, 4) = MR_tfield(0, MR_tempr3, 2);
+	MR_tempr2 = MR_r1;
+	MR_r1 = (MR_Word) MR_CTOR0_ADDR(transform_hlds__ctgc__structure_reuse__domain, reuse_as);
+	MR_r2 = MR_r1;
+	MR_r4 = MR_tfield(1, MR_tempr2, 1);
+	MR_r5 = MR_tfield(1, MR_tempr2, 0);
+	MR_succip_word = MR_sv(2);
+	MR_decr_sp(2);
+	MR_np_tailcall_ent(list__foldl_4_0);
+	}
+MR_def_label(fn__transform_hlds__ctgc__structure_reuse__direct__choose_reuse__match_get_condition_2_0,5)
+	MR_MAYBE_INIT_LOCAL_THREAD_ENGINE_BASE
+	MR_r1 = (MR_Word) MR_string_const("transform_hlds.ctgc.structure_reuse.direct.choose_reuse", 55);
+	MR_r2 = (MR_Word) MR_string_const("function \140transform_hlds.ctgc.structure_reuse.direct.choose_reuse.match_get_condition\'/2", 88);
+	MR_r3 = (MR_Word) MR_string_const("no reuse conditions", 19);
+	MR_succip_word = MR_sv(2);
+	MR_decr_sp(2);
+	MR_np_tailcall_ent(require__unexpected_3_0);
+#ifdef MR_maybe_local_thread_engine_base
+	#undef MR_maybe_local_thread_engine_base
+	#define MR_maybe_local_thread_engine_base MR_thread_engine_base
+#endif
+MR_END_MODULE
+
+
+MR_BEGIN_MODULE(transform_hlds__ctgc__structure_reuse__direct__choose_reuse_module1)
+	MR_init_entry1(transform_hlds__ctgc__structure_reuse__direct__choose_reuse__remove_deconstructions_from_dead_cell_table_3_0);
+	MR_INIT_PROC_LAYOUT_ADDR(mercury__transform_hlds__ctgc__structure_reuse__direct__choose_reuse__remove_deconstructions_from_dead_cell_table_3_0);
+MR_BEGIN_CODE
+
+/*-------------------------------------------------------------------------*/
+/* code for 'remove_deconstructions_from_dead_cell_table'/3 mode 0 */
+#ifdef MR_maybe_local_thread_engine_base
+	#undef MR_maybe_local_thread_engine_base
+	#define MR_maybe_local_thread_engine_base MR_local_thread_engine_base
+#endif
+MR_def_static(transform_hlds__ctgc__structure_reuse__direct__choose_reuse__remove_deconstructions_from_dead_cell_table_3_0)
+	MR_MAYBE_INIT_LOCAL_THREAD_ENGINE_BASE
+	{
+	MR_Word MR_tempr1, MR_tempr2;
+	MR_tempr1 = MR_r1;
+	MR_r1 = (MR_Word) MR_CTOR0_ADDR(transform_hlds__ctgc__structure_reuse__direct__choose_reuse, deconstruction_spec);
+	MR_tempr2 = MR_r2;
+	MR_r2 = (MR_Word) MR_TAG_COMMON(0,3,0);
+	MR_r3 = (MR_Word) MR_TAG_COMMON(0,1,1);
+	MR_r4 = MR_tfield(0, MR_tempr1, 0);
+	MR_r5 = MR_tempr2;
+	MR_np_tailcall_ent(list__foldl_4_0);
+	}
+#ifdef MR_maybe_local_thread_engine_base
+	#undef MR_maybe_local_thread_engine_base
+	#define MR_maybe_local_thread_engine_base MR_thread_engine_base
+#endif
+MR_END_MODULE
+
+
+MR_BEGIN_MODULE(transform_hlds__ctgc__structure_reuse__direct__choose_reuse_module2)
+	MR_init_entry1(fn__transform_hlds__ctgc__structure_reuse__direct__choose_reuse__deconstruction_spec_init_5_0);
+	MR_INIT_PROC_LAYOUT_ADDR(mercury__fn__transform_hlds__ctgc__structure_reuse__direct__choose_reuse__deconstruction_spec_init_5_0);
+MR_BEGIN_CODE
+
+/*-------------------------------------------------------------------------*/
+/* code for 'deconstruction_spec_init'/6 mode 0 */
+#ifdef MR_maybe_local_thread_engine_base
+	#undef MR_maybe_local_thread_engine_base
+	#define MR_maybe_local_thread_engine_base MR_local_thread_engine_base
+#endif
+MR_def_static(fn__transform_hlds__ctgc__structure_reuse__direct__choose_reuse__deconstruction_spec_init_5_0)
+	MR_MAYBE_INIT_LOCAL_THREAD_ENGINE_BASE
+	{
+	MR_Word MR_tempr1;
+	MR_tag_alloc_heap(MR_tempr1, 0, (MR_Integer) 5);
+	MR_tfield(0, MR_tempr1, 0) = MR_r1;
+	MR_tfield(0, MR_tempr1, 1) = MR_r2;
+	MR_tfield(0, MR_tempr1, 2) = MR_r3;
+	MR_tfield(0, MR_tempr1, 3) = MR_r4;
+	MR_tfield(0, MR_tempr1, 4) = MR_r5;
+	MR_r1 = MR_tempr1;
+	MR_proceed();
+	}
+#ifdef MR_maybe_local_thread_engine_base
+	#undef MR_maybe_local_thread_engine_base
+	#define MR_maybe_local_thread_engine_base MR_thread_engine_base
+#endif
+MR_END_MODULE
+
+static const MR_Float mercury_float_const_0pt0000000000000000 = 0.0000000000000000;
+
+MR_BEGIN_MODULE(transform_hlds__ctgc__structure_reuse__direct__choose_reuse_module3)
+	MR_init_entry1(fn__transform_hlds__ctgc__structure_reuse__direct__choose_reuse__match_init_1_0);
+	MR_INIT_PROC_LAYOUT_ADDR(mercury__fn__transform_hlds__ctgc__structure_reuse__direct__choose_reuse__match_init_1_0);
+MR_BEGIN_CODE
+
+/*-------------------------------------------------------------------------*/
+/* code for 'match_init'/2 mode 0 */
+#ifdef MR_maybe_local_thread_engine_base
+	#undef MR_maybe_local_thread_engine_base
+	#define MR_maybe_local_thread_engine_base MR_local_thread_engine_base
+#endif
+MR_def_static(fn__transform_hlds__ctgc__structure_reuse__direct__choose_reuse__match_init_1_0)
+	MR_MAYBE_INIT_LOCAL_THREAD_ENGINE_BASE
+	MR_tag_alloc_heap(MR_r2, 0, (MR_Integer) 4);
+	MR_tfield(0, MR_r2, 0) = MR_r1;
+	MR_tfield(0, MR_r2, 1) = (MR_Word) MR_tbmkword(0, 0);
+	MR_tfield(0, MR_r2, 2) = (MR_Word) &mercury_float_const_0pt0000000000000000;
+	MR_tfield(0, MR_r2, 3) = (MR_Integer) 0;
+	MR_r1 = MR_r2;
+	MR_proceed();
+#ifdef MR_maybe_local_thread_engine_base
+	#undef MR_maybe_local_thread_engine_base
+	#define MR_maybe_local_thread_engine_base MR_thread_engine_base
+#endif
+MR_END_MODULE
+
+MR_decl_entry(fn__map__keys_1_0);
+MR_decl_entry(fn__list__foldl_3_0);
+MR_decl_entry(list__filter_map_3_0);
+
+MR_BEGIN_MODULE(transform_hlds__ctgc__structure_reuse__direct__choose_reuse_module4)
+	MR_init_entry1(transform_hlds__ctgc__structure_reuse__direct__choose_reuse__process_possible_common_dead_vars_4_0);
+	MR_INIT_PROC_LAYOUT_ADDR(mercury__transform_hlds__ctgc__structure_reuse__direct__choose_reuse__process_possible_common_dead_vars_4_0);
+	MR_init_label4(transform_hlds__ctgc__structure_reuse__direct__choose_reuse__process_possible_common_dead_vars_4_0,32,8,10,12)
+MR_BEGIN_CODE
+
+/*-------------------------------------------------------------------------*/
+/* code for 'process_possible_common_dead_vars'/4 mode 0 */
+#ifdef MR_maybe_local_thread_engine_base
+	#undef MR_maybe_local_thread_engine_base
+	#define MR_maybe_local_thread_engine_base MR_local_thread_engine_base
+#endif
+MR_def_static(transform_hlds__ctgc__structure_reuse__direct__choose_reuse__process_possible_common_dead_vars_4_0)
+	MR_MAYBE_INIT_LOCAL_THREAD_ENGINE_BASE
+	if (MR_LTAGS_TESTR(MR_r3,0,0)) {
+		MR_GOTO_LAB(transform_hlds__ctgc__structure_reuse__direct__choose_reuse__process_possible_common_dead_vars_4_0_i32);
+	}
+	MR_r1 = (MR_Word) MR_tbmkword(0, 0);
+	MR_proceed();
+MR_def_label(transform_hlds__ctgc__structure_reuse__direct__choose_reuse__process_possible_common_dead_vars_4_0,32)
+	MR_MAYBE_INIT_LOCAL_THREAD_ENGINE_BASE
+	MR_incr_sp(8);
+	MR_sv(8) = (MR_Word) MR_succip;
+	MR_sv(1) = MR_r1;
+	MR_sv(2) = MR_r2;
+	{
+	MR_Word MR_tempr1;
+	MR_tempr1 = MR_r3;
+	MR_sv(3) = MR_tempr1;
+	MR_sv(4) = MR_tfield(1, MR_tempr1, 1);
+	MR_sv(5) = (MR_Word) MR_TAG_COMMON(0,5,0);
+	MR_sv(6) = (MR_Word) MR_TAG_COMMON(0,3,2);
+	MR_sv(7) = (MR_Word) MR_TAG_COMMON(0,5,2);
+	MR_r1 = MR_sv(5);
+	MR_r2 = (MR_Word) MR_TAG_COMMON(0,5,1);
+	MR_r3 = MR_tfield(1, MR_tempr1, 0);
+	}
+	MR_np_call_localret_ent(fn__map__keys_1_0,
+		transform_hlds__ctgc__structure_reuse__direct__choose_reuse__process_possible_common_dead_vars_4_0_i8);
+MR_def_label(transform_hlds__ctgc__structure_reuse__direct__choose_reuse__process_possible_common_dead_vars_4_0,8)
+	MR_MAYBE_INIT_LOCAL_THREAD_ENGINE_BASE
+	{
+	MR_Word MR_tempr1;
+	MR_tempr1 = MR_r1;
+	MR_r1 = MR_sv(6);
+	MR_r2 = MR_sv(7);
+	MR_r3 = (MR_Word) MR_TAG_COMMON(0,1,2);
+	MR_r4 = MR_sv(4);
+	MR_r5 = MR_tempr1;
+	}
+	MR_np_call_localret_ent(fn__list__foldl_3_0,
+		transform_hlds__ctgc__structure_reuse__direct__choose_reuse__process_possible_common_dead_vars_4_0_i10);
+MR_def_label(transform_hlds__ctgc__structure_reuse__direct__choose_reuse__process_possible_common_dead_vars_4_0,10)
+	MR_MAYBE_INIT_LOCAL_THREAD_ENGINE_BASE
+	if (MR_LTAGS_TESTR(MR_r1,0,0)) {
+		MR_GOTO_LAB(transform_hlds__ctgc__structure_reuse__direct__choose_reuse__process_possible_common_dead_vars_4_0_i12);
+	}
+	MR_r1 = (MR_Word) MR_tbmkword(0, 0);
+	MR_decr_sp_and_return(8);
+MR_def_label(transform_hlds__ctgc__structure_reuse__direct__choose_reuse__process_possible_common_dead_vars_4_0,12)
+	MR_MAYBE_INIT_LOCAL_THREAD_ENGINE_BASE
+	{
+	MR_Word MR_tempr1, MR_tempr2;
+	MR_tag_alloc_heap(MR_tempr1, 0, (MR_Integer) 6);
+	MR_r3 = MR_tempr1;
+	MR_tfield(0, MR_tempr1, 0) = (MR_Word) MR_COMMON(2,1);
+	MR_tfield(0, MR_tempr1, 1) = (MR_Word) MR_ENTRY_AP(transform_hlds__ctgc__structure_reuse__direct__choose_reuse__process_common_var_5_0);
+	MR_tfield(0, MR_tempr1, 2) = (MR_Integer) 3;
+	MR_tfield(0, MR_tempr1, 3) = MR_sv(1);
+	MR_tfield(0, MR_tempr1, 4) = MR_sv(2);
+	MR_tfield(0, MR_tempr1, 5) = MR_sv(3);
+	MR_tempr2 = MR_r1;
+	MR_r1 = MR_sv(5);
+	MR_r2 = MR_sv(6);
+	MR_r4 = MR_tempr2;
+	MR_succip_word = MR_sv(8);
+	MR_decr_sp(8);
+	MR_np_tailcall_ent(list__filter_map_3_0);
+	}
+#ifdef MR_maybe_local_thread_engine_base
+	#undef MR_maybe_local_thread_engine_base
+	#define MR_maybe_local_thread_engine_base MR_thread_engine_base
+#endif
+MR_END_MODULE
+
+extern const MR_TypeCtorInfo_Struct mercury_data_hlds__hlds_goal__type_ctor_info_hlds_goal_0;
+MR_decl_entry(list__map_3_0);
+
+MR_BEGIN_MODULE(transform_hlds__ctgc__structure_reuse__direct__choose_reuse_module5)
+	MR_init_entry1(transform_hlds__ctgc__structure_reuse__direct__choose_reuse__compute_match_table_in_disjunction_6_0);
+	MR_INIT_PROC_LAYOUT_ADDR(mercury__transform_hlds__ctgc__structure_reuse__direct__choose_reuse__compute_match_table_in_disjunction_6_0);
+	MR_init_label8(transform_hlds__ctgc__structure_reuse__direct__choose_reuse__compute_match_table_in_disjunction_6_0,6,8,10,13,15,17,20,9)
+MR_BEGIN_CODE
+
+/*-------------------------------------------------------------------------*/
+/* code for 'compute_match_table_in_disjunction'/6 mode 0 */
+#ifdef MR_maybe_local_thread_engine_base
+	#undef MR_maybe_local_thread_engine_base
+	#define MR_maybe_local_thread_engine_base MR_local_thread_engine_base
+#endif
+MR_def_static(transform_hlds__ctgc__structure_reuse__direct__choose_reuse__compute_match_table_in_disjunction_6_0)
+	MR_MAYBE_INIT_LOCAL_THREAD_ENGINE_BASE
+	MR_incr_sp(9);
+	MR_sv(9) = (MR_Word) MR_succip;
+	{
+	MR_Word MR_tempr1, MR_tempr2;
+	MR_tag_alloc_heap(MR_tempr1, 0, (MR_Integer) 5);
+	MR_tfield(0, MR_tempr1, 0) = (MR_Word) MR_COMMON(6,0);
+	MR_tfield(0, MR_tempr1, 1) = (MR_Word) MR_ENTRY_AP(transform_hlds__ctgc__structure_reuse__direct__choose_reuse__compute_match_table_4_0);
+	MR_tfield(0, MR_tempr1, 2) = (MR_Integer) 2;
+	MR_tfield(0, MR_tempr1, 3) = MR_r1;
+	MR_tfield(0, MR_tempr1, 4) = MR_r2;
+	MR_sv(1) = MR_r1;
+	MR_sv(2) = MR_r4;
+	MR_sv(3) = MR_r5;
+	MR_sv(4) = (MR_Word) MR_TAG_COMMON(0,5,0);
+	MR_sv(5) = (MR_Word) MR_TAG_COMMON(0,5,1);
+	MR_sv(6) = (MR_Word) MR_TAG_COMMON(0,3,2);
+	MR_r1 = (MR_Word) MR_CTOR0_ADDR(hlds__hlds_goal, hlds_goal);
+	MR_r2 = MR_sv(6);
+	MR_tempr2 = MR_r3;
+	MR_r3 = MR_tempr1;
+	MR_r4 = MR_tempr2;
+	}
+	MR_np_call_localret_ent(list__map_3_0,
+		transform_hlds__ctgc__structure_reuse__direct__choose_reuse__compute_match_table_in_disjunction_6_0_i6);
+MR_def_label(transform_hlds__ctgc__structure_reuse__direct__choose_reuse__compute_match_table_in_disjunction_6_0,6)
+	MR_MAYBE_INIT_LOCAL_THREAD_ENGINE_BASE
+	{
+	MR_Word MR_tempr1;
+	MR_tempr1 = MR_sv(3);
+	MR_sv(3) = MR_r1;
+	MR_r1 = MR_sv(6);
+	MR_r2 = MR_r1;
+	MR_r3 = (MR_Word) MR_TAG_COMMON(0,1,3);
+	MR_r4 = MR_sv(3);
+	MR_r5 = MR_tempr1;
+	}
+	MR_np_call_localret_ent(list__foldl_4_0,
+		transform_hlds__ctgc__structure_reuse__direct__choose_reuse__compute_match_table_in_disjunction_6_0_i8);
+MR_def_label(transform_hlds__ctgc__structure_reuse__direct__choose_reuse__compute_match_table_in_disjunction_6_0,8)
+	MR_MAYBE_INIT_LOCAL_THREAD_ENGINE_BASE
+	if (MR_LTAGS_TESTR(MR_sv(3),0,0)) {
+		MR_GOTO_LAB(transform_hlds__ctgc__structure_reuse__direct__choose_reuse__compute_match_table_in_disjunction_6_0_i10);
+	}
+	MR_r4 = (MR_Word) MR_tbmkword(0, 0);
+	MR_r5 = MR_r1;
+	MR_r3 = (MR_Word) MR_TAG_COMMON(0,1,4);
+	MR_r1 = MR_sv(6);
+	MR_GOTO_LAB(transform_hlds__ctgc__structure_reuse__direct__choose_reuse__compute_match_table_in_disjunction_6_0_i9);
+MR_def_label(transform_hlds__ctgc__structure_reuse__direct__choose_reuse__compute_match_table_in_disjunction_6_0,10)
+	MR_MAYBE_INIT_LOCAL_THREAD_ENGINE_BASE
+	MR_sv(5) = MR_r1;
+	{
+	MR_Word MR_tempr1;
+	MR_tempr1 = MR_sv(3);
+	MR_sv(7) = MR_tfield(1, MR_tempr1, 1);
+	MR_sv(8) = (MR_Word) MR_TAG_COMMON(0,5,2);
+	MR_r1 = MR_sv(4);
+	MR_r2 = (MR_Word) MR_TAG_COMMON(0,5,1);
+	MR_r3 = MR_tfield(1, MR_tempr1, 0);
+	}
+	MR_np_call_localret_ent(fn__map__keys_1_0,
+		transform_hlds__ctgc__structure_reuse__direct__choose_reuse__compute_match_table_in_disjunction_6_0_i13);
+MR_def_label(transform_hlds__ctgc__structure_reuse__direct__choose_reuse__compute_match_table_in_disjunction_6_0,13)
+	MR_MAYBE_INIT_LOCAL_THREAD_ENGINE_BASE
+	{
+	MR_Word MR_tempr1;
+	MR_tempr1 = MR_r1;
+	MR_r1 = MR_sv(6);
+	MR_r2 = MR_sv(8);
+	MR_r3 = (MR_Word) MR_TAG_COMMON(0,1,5);
+	MR_r4 = MR_sv(7);
+	MR_r5 = MR_tempr1;
+	}
+	MR_np_call_localret_ent(fn__list__foldl_3_0,
+		transform_hlds__ctgc__structure_reuse__direct__choose_reuse__compute_match_table_in_disjunction_6_0_i15);
+MR_def_label(transform_hlds__ctgc__structure_reuse__direct__choose_reuse__compute_match_table_in_disjunction_6_0,15)
+	MR_MAYBE_INIT_LOCAL_THREAD_ENGINE_BASE
+	if (MR_LTAGS_TESTR(MR_r1,0,0)) {
+		MR_GOTO_LAB(transform_hlds__ctgc__structure_reuse__direct__choose_reuse__compute_match_table_in_disjunction_6_0_i17);
+	}
+	MR_r4 = (MR_Word) MR_tbmkword(0, 0);
+	MR_r5 = MR_sv(5);
+	MR_r3 = (MR_Word) MR_TAG_COMMON(0,1,6);
+	MR_r1 = MR_sv(6);
+	MR_GOTO_LAB(transform_hlds__ctgc__structure_reuse__direct__choose_reuse__compute_match_table_in_disjunction_6_0_i9);
+MR_def_label(transform_hlds__ctgc__structure_reuse__direct__choose_reuse__compute_match_table_in_disjunction_6_0,17)
+	MR_MAYBE_INIT_LOCAL_THREAD_ENGINE_BASE
+	{
+	MR_Word MR_tempr1, MR_tempr2;
+	MR_tag_alloc_heap(MR_tempr1, 0, (MR_Integer) 6);
+	MR_r3 = MR_tempr1;
+	MR_tfield(0, MR_tempr1, 0) = (MR_Word) MR_COMMON(2,2);
+	MR_tfield(0, MR_tempr1, 1) = (MR_Word) MR_ENTRY_AP(transform_hlds__ctgc__structure_reuse__direct__choose_reuse__process_common_var_5_0);
+	MR_tfield(0, MR_tempr1, 2) = (MR_Integer) 3;
+	MR_tfield(0, MR_tempr1, 3) = MR_sv(1);
+	MR_tfield(0, MR_tempr1, 4) = MR_sv(2);
+	MR_tfield(0, MR_tempr1, 5) = MR_sv(3);
+	MR_tempr2 = MR_r1;
+	MR_r1 = MR_sv(4);
+	MR_r2 = MR_sv(6);
+	MR_r4 = MR_tempr2;
+	}
+	MR_np_call_localret_ent(list__filter_map_3_0,
+		transform_hlds__ctgc__structure_reuse__direct__choose_reuse__compute_match_table_in_disjunction_6_0_i20);
+MR_def_label(transform_hlds__ctgc__structure_reuse__direct__choose_reuse__compute_match_table_in_disjunction_6_0,20)
+	MR_MAYBE_INIT_LOCAL_THREAD_ENGINE_BASE
+	MR_r4 = MR_r1;
+	MR_r5 = MR_sv(5);
+	MR_r3 = (MR_Word) MR_TAG_COMMON(0,1,7);
+	MR_r1 = MR_sv(6);
+MR_def_label(transform_hlds__ctgc__structure_reuse__direct__choose_reuse__compute_match_table_in_disjunction_6_0,9)
+	MR_MAYBE_INIT_LOCAL_THREAD_ENGINE_BASE
+	MR_r2 = MR_r1;
+	MR_succip_word = MR_sv(9);
+	MR_decr_sp(9);
+	MR_np_tailcall_ent(list__foldl_4_0);
+#ifdef MR_maybe_local_thread_engine_base
+	#undef MR_maybe_local_thread_engine_base
+	#define MR_maybe_local_thread_engine_base MR_thread_engine_base
+#endif
+MR_END_MODULE
+
+extern const MR_TypeCtorInfo_Struct mercury_data_builtin__type_ctor_info_int_0;
+MR_decl_entry(list__sort_3_0);
+
+MR_BEGIN_MODULE(transform_hlds__ctgc__structure_reuse__direct__choose_reuse_module6)
+	MR_init_entry1(transform_hlds__ctgc__structure_reuse__direct__choose_reuse__find_best_match_in_conjunction_4_0);
+	MR_INIT_PROC_LAYOUT_ADDR(mercury__transform_hlds__ctgc__structure_reuse__direct__choose_reuse__find_best_match_in_conjunction_4_0);
+	MR_init_label5(transform_hlds__ctgc__structure_reuse__direct__choose_reuse__find_best_match_in_conjunction_4_0,3,5,8,10,9)
+MR_BEGIN_CODE
+
+/*-------------------------------------------------------------------------*/
+/* code for 'find_best_match_in_conjunction'/4 mode 0 */
+#ifdef MR_maybe_local_thread_engine_base
+	#undef MR_maybe_local_thread_engine_base
+	#define MR_maybe_local_thread_engine_base MR_local_thread_engine_base
+#endif
+MR_def_static(transform_hlds__ctgc__structure_reuse__direct__choose_reuse__find_best_match_in_conjunction_4_0)
+	MR_MAYBE_INIT_LOCAL_THREAD_ENGINE_BASE
+	MR_incr_sp(3);
+	MR_sv(3) = (MR_Word) MR_succip;
+	{
+	MR_Word MR_tempr1, MR_tempr2, MR_tempr3;
+	MR_tag_alloc_heap(MR_tempr1, 0, (MR_Integer) 5);
+	MR_tfield(0, MR_tempr1, 0) = (MR_Word) MR_COMMON(6,1);
+	MR_tfield(0, MR_tempr1, 1) = (MR_Word) MR_ENTRY_AP(transform_hlds__ctgc__structure_reuse__direct__choose_reuse__find_match_in_goal_4_0);
+	MR_tfield(0, MR_tempr1, 2) = (MR_Integer) 2;
+	MR_tfield(0, MR_tempr1, 3) = MR_r1;
+	MR_tempr3 = MR_r3;
+	MR_tfield(0, MR_tempr1, 4) = MR_tempr3;
+	MR_sv(2) = MR_tempr3;
+	MR_r1 = (MR_Word) MR_CTOR0_ADDR(hlds__hlds_goal, hlds_goal);
+	MR_tempr2 = MR_r2;
+	MR_r2 = (MR_Word) MR_CTOR0_ADDR(transform_hlds__ctgc__structure_reuse__direct__choose_reuse, match);
+	MR_r3 = MR_tempr1;
+	MR_r4 = MR_tempr2;
+	}
+	MR_np_call_localret_ent(list__map_3_0,
+		transform_hlds__ctgc__structure_reuse__direct__choose_reuse__find_best_match_in_conjunction_4_0_i3);
+MR_def_label(transform_hlds__ctgc__structure_reuse__direct__choose_reuse__find_best_match_in_conjunction_4_0,3)
+	MR_MAYBE_INIT_LOCAL_THREAD_ENGINE_BASE
+	MR_sv(1) = MR_r1;
+	MR_r1 = (MR_Word) MR_CTOR0_ADDR(transform_hlds__ctgc__structure_reuse__direct__choose_reuse, match);
+	MR_r2 = (MR_Word) MR_INT_CTOR_ADDR;
+	MR_r3 = (MR_Word) MR_TAG_COMMON(0,1,8);
+	MR_r4 = MR_sv(1);
+	MR_r5 = (MR_Integer) 0;
+	MR_np_call_localret_ent(fn__list__foldl_3_0,
+		transform_hlds__ctgc__structure_reuse__direct__choose_reuse__find_best_match_in_conjunction_4_0_i5);
+MR_def_label(transform_hlds__ctgc__structure_reuse__direct__choose_reuse__find_best_match_in_conjunction_4_0,5)
+	MR_MAYBE_INIT_LOCAL_THREAD_ENGINE_BASE
+	{
+	MR_Word MR_tempr1;
+	MR_tag_alloc_heap(MR_tempr1, 1, (MR_Integer) 2);
+	MR_r3 = MR_tempr1;
+	MR_tfield(1, MR_tempr1, 0) = MR_sv(2);
+	MR_tfield(1, MR_tempr1, 1) = MR_sv(1);
+	MR_sv(1) = MR_r1;
+	MR_r1 = (MR_Word) MR_CTOR0_ADDR(transform_hlds__ctgc__structure_reuse__direct__choose_reuse, match);
+	MR_r2 = (MR_Word) MR_TAG_COMMON(0,1,9);
+	}
+	MR_np_call_localret_ent(list__sort_3_0,
+		transform_hlds__ctgc__structure_reuse__direct__choose_reuse__find_best_match_in_conjunction_4_0_i8);
+MR_def_label(transform_hlds__ctgc__structure_reuse__direct__choose_reuse__find_best_match_in_conjunction_4_0,8)
+	MR_MAYBE_INIT_LOCAL_THREAD_ENGINE_BASE
+	if (MR_LTAGS_TEST(MR_r1,0,0)) {
+		MR_GOTO_LAB(transform_hlds__ctgc__structure_reuse__direct__choose_reuse__find_best_match_in_conjunction_4_0_i10);
+	}
+	MR_r1 = MR_tfield(1, MR_r1, 0);
+	MR_GOTO_LAB(transform_hlds__ctgc__structure_reuse__direct__choose_reuse__find_best_match_in_conjunction_4_0_i9);
+MR_def_label(transform_hlds__ctgc__structure_reuse__direct__choose_reuse__find_best_match_in_conjunction_4_0,10)
+	MR_MAYBE_INIT_LOCAL_THREAD_ENGINE_BASE
+	MR_r1 = (MR_Word) MR_string_const("transform_hlds.ctgc.structure_reuse.direct.choose_reuse", 55);
+	MR_r2 = (MR_Word) MR_string_const("predicate \140transform_hlds.ctgc.structure_reuse.direct.choose_reuse.highest_match_in_list\'/3", 91);
+	MR_r3 = (MR_Word) MR_string_const("empty list of matches", 21);
+	MR_np_call_localret_ent(require__unexpected_3_0,
+		transform_hlds__ctgc__structure_reuse__direct__choose_reuse__find_best_match_in_conjunction_4_0_i9);
+MR_def_label(transform_hlds__ctgc__structure_reuse__direct__choose_reuse__find_best_match_in_conjunction_4_0,9)
+	MR_MAYBE_INIT_LOCAL_THREAD_ENGINE_BASE
+	MR_tag_alloc_heap(MR_r2, 0, (MR_Integer) 4);
+	MR_tfield(0, MR_r2, 0) = MR_tfield(0, MR_r1, 0);
+	MR_tfield(0, MR_r2, 1) = MR_tfield(0, MR_r1, 1);
+	MR_tfield(0, MR_r2, 2) = MR_tfield(0, MR_r1, 2);
+	MR_tfield(0, MR_r2, 3) = MR_sv(1);
+	MR_r1 = MR_r2;
+	MR_decr_sp_and_return(3);
+#ifdef MR_maybe_local_thread_engine_base
+	#undef MR_maybe_local_thread_engine_base
+	#define MR_maybe_local_thread_engine_base MR_thread_engine_base
+#endif
+MR_END_MODULE
+
+
+MR_BEGIN_MODULE(transform_hlds__ctgc__structure_reuse__direct__choose_reuse_module7)
+	MR_init_entry1(transform_hlds__ctgc__structure_reuse__direct__choose_reuse__compute_match_table_goal_list_5_0);
+	MR_INIT_PROC_LAYOUT_ADDR(mercury__transform_hlds__ctgc__structure_reuse__direct__choose_reuse__compute_match_table_goal_list_5_0);
+	MR_init_label1(transform_hlds__ctgc__structure_reuse__direct__choose_reuse__compute_match_table_goal_list_5_0,3)
+MR_BEGIN_CODE
+
+/*-------------------------------------------------------------------------*/
+/* code for 'compute_match_table_goal_list'/5 mode 0 */
+#ifdef MR_maybe_local_thread_engine_base
+	#undef MR_maybe_local_thread_engine_base
+	#define MR_maybe_local_thread_engine_base MR_local_thread_engine_base
+#endif
+MR_def_static(transform_hlds__ctgc__structure_reuse__direct__choose_reuse__compute_match_table_goal_list_5_0)
+	MR_MAYBE_INIT_LOCAL_THREAD_ENGINE_BASE
+	if (MR_LTAGS_TESTR(MR_r3,0,0)) {
+		MR_GOTO_LAB(transform_hlds__ctgc__structure_reuse__direct__choose_reuse__compute_match_table_goal_list_5_0_i3);
+	}
+	MR_r1 = MR_r4;
+	MR_proceed();
+MR_def_label(transform_hlds__ctgc__structure_reuse__direct__choose_reuse__compute_match_table_goal_list_5_0,3)
+	MR_MAYBE_INIT_LOCAL_THREAD_ENGINE_BASE
+	{
+	MR_Word MR_tempr1, MR_tempr2;
+	MR_tempr1 = MR_r3;
+	MR_r3 = MR_tfield(1, MR_r3, 0);
+	MR_tempr2 = MR_r4;
+	MR_r4 = MR_tfield(1, MR_tempr1, 1);
+	MR_r5 = MR_tempr2;
+	MR_np_tailcall_ent(transform_hlds__ctgc__structure_reuse__direct__choose_reuse__compute_match_table_with_continuation_6_0);
+	}
+#ifdef MR_maybe_local_thread_engine_base
+	#undef MR_maybe_local_thread_engine_base
+	#define MR_maybe_local_thread_engine_base MR_thread_engine_base
+#endif
+MR_END_MODULE
+
+MR_decl_entry(list__append_3_1);
+MR_decl_entry(multi_map__init_1_0);
+MR_decl_entry(multi_map__merge_3_0);
+extern const MR_TypeCtorInfo_Struct mercury_data_hlds__hlds_goal__type_ctor_info_case_0;
+MR_decl_entry(fn__transform_hlds__smm_common__program_point_init_1_0);
+MR_decl_entry(fn__transform_hlds__ctgc__structure_reuse__direct__dead_cell_table_search_2_0);
+MR_decl_entry(fn__transform_hlds__ctgc__structure_reuse__domain__reuse_as_init_with_one_condition_1_0);
+MR_decl_entry(multi_map__set_4_0);
+
+MR_BEGIN_MODULE(transform_hlds__ctgc__structure_reuse__direct__choose_reuse_module8)
+	MR_init_entry1(transform_hlds__ctgc__structure_reuse__direct__choose_reuse__compute_match_table_with_continuation_6_0);
+	MR_INIT_PROC_LAYOUT_ADDR(mercury__transform_hlds__ctgc__structure_reuse__direct__choose_reuse__compute_match_table_with_continuation_6_0);
+	MR_init_label10(transform_hlds__ctgc__structure_reuse__direct__choose_reuse__compute_match_table_with_continuation_6_0,129,3,6,5,8,11,15,17,18,19)
+	MR_init_label10(transform_hlds__ctgc__structure_reuse__direct__choose_reuse__compute_match_table_with_continuation_6_0,20,23,13,29,78,32,34,38,36,44)
+	MR_init_label8(transform_hlds__ctgc__structure_reuse__direct__choose_reuse__compute_match_table_with_continuation_6_0,47,49,50,52,53,55,46,41)
+MR_BEGIN_CODE
+
+/*-------------------------------------------------------------------------*/
+/* code for 'compute_match_table_with_continuation'/6 mode 0 */
+#ifdef MR_maybe_local_thread_engine_base
+	#undef MR_maybe_local_thread_engine_base
+	#define MR_maybe_local_thread_engine_base MR_local_thread_engine_base
+#endif
+MR_def_static(transform_hlds__ctgc__structure_reuse__direct__choose_reuse__compute_match_table_with_continuation_6_0)
+	MR_MAYBE_INIT_LOCAL_THREAD_ENGINE_BASE
+	MR_incr_sp(10);
+	MR_sv(10) = (MR_Word) MR_succip;
+MR_def_label(transform_hlds__ctgc__structure_reuse__direct__choose_reuse__compute_match_table_with_continuation_6_0,129)
+	MR_MAYBE_INIT_LOCAL_THREAD_ENGINE_BASE
+	{
+	MR_Word MR_tempr1;
+	MR_tempr1 = MR_tfield(0, MR_r3, 0);
+	MR_r6 = MR_tempr1;
+	if (MR_RTAGS_TESTR(MR_tempr1,3,1)) {
+		MR_GOTO_LAB(transform_hlds__ctgc__structure_reuse__direct__choose_reuse__compute_match_table_with_continuation_6_0_i3);
+	}
+	MR_r3 = MR_r4;
+	MR_r4 = MR_r5;
+	MR_succip_word = MR_sv(10);
+	MR_decr_sp(10);
+	MR_np_tailcall_ent(transform_hlds__ctgc__structure_reuse__direct__choose_reuse__compute_match_table_goal_list_5_0);
+	}
+MR_def_label(transform_hlds__ctgc__structure_reuse__direct__choose_reuse__compute_match_table_with_continuation_6_0,3)
+	MR_MAYBE_INIT_LOCAL_THREAD_ENGINE_BASE
+	if (MR_RTAGS_TESTR(MR_r6,3,2)) {
+		MR_GOTO_LAB(transform_hlds__ctgc__structure_reuse__direct__choose_reuse__compute_match_table_with_continuation_6_0_i5);
+	}
+	MR_sv(2) = MR_r1;
+	MR_sv(3) = MR_r2;
+	MR_sv(8) = MR_r5;
+	MR_r1 = (MR_Word) MR_CTOR0_ADDR(hlds__hlds_goal, hlds_goal);
+	MR_r2 = MR_tfield(3, MR_r6, 2);
+	MR_r3 = MR_r4;
+	MR_np_call_localret_ent(list__append_3_1,
+		transform_hlds__ctgc__structure_reuse__direct__choose_reuse__compute_match_table_with_continuation_6_0_i6);
+MR_def_label(transform_hlds__ctgc__structure_reuse__direct__choose_reuse__compute_match_table_with_continuation_6_0,6)
+	MR_MAYBE_INIT_LOCAL_THREAD_ENGINE_BASE
+	{
+	MR_Word MR_tempr1;
+	MR_tempr1 = MR_r1;
+	MR_r1 = MR_sv(2);
+	MR_r2 = MR_sv(3);
+	MR_r3 = MR_tempr1;
+	MR_r4 = MR_sv(8);
+	MR_succip_word = MR_sv(10);
+	MR_decr_sp(10);
+	MR_np_tailcall_ent(transform_hlds__ctgc__structure_reuse__direct__choose_reuse__compute_match_table_goal_list_5_0);
+	}
+MR_def_label(transform_hlds__ctgc__structure_reuse__direct__choose_reuse__compute_match_table_with_continuation_6_0,5)
+	MR_MAYBE_INIT_LOCAL_THREAD_ENGINE_BASE
+	if (MR_RTAGS_TESTR(MR_r6,3,3)) {
+		MR_GOTO_LAB(transform_hlds__ctgc__structure_reuse__direct__choose_reuse__compute_match_table_with_continuation_6_0_i8);
+	}
+	MR_sv(2) = MR_r1;
+	MR_sv(3) = MR_r2;
+	MR_sv(4) = MR_r4;
+	MR_r3 = MR_tfield(3, MR_r6, 1);
+	MR_np_call_localret_ent(transform_hlds__ctgc__structure_reuse__direct__choose_reuse__compute_match_table_in_disjunction_6_0,
+		transform_hlds__ctgc__structure_reuse__direct__choose_reuse__compute_match_table_with_continuation_6_0_i55);
+MR_def_label(transform_hlds__ctgc__structure_reuse__direct__choose_reuse__compute_match_table_with_continuation_6_0,8)
+	MR_MAYBE_INIT_LOCAL_THREAD_ENGINE_BASE
+	if (MR_RTAGS_TESTR(MR_r6,3,0)) {
+		MR_GOTO_LAB(transform_hlds__ctgc__structure_reuse__direct__choose_reuse__compute_match_table_with_continuation_6_0_i11);
+	}
+	MR_r3 = MR_r4;
+	MR_r4 = MR_r5;
+	MR_succip_word = MR_sv(10);
+	MR_decr_sp(10);
+	MR_np_tailcall_ent(transform_hlds__ctgc__structure_reuse__direct__choose_reuse__compute_match_table_goal_list_5_0);
+MR_def_label(transform_hlds__ctgc__structure_reuse__direct__choose_reuse__compute_match_table_with_continuation_6_0,11)
+	MR_MAYBE_INIT_LOCAL_THREAD_ENGINE_BASE
+	if (MR_RTAGS_TESTR(MR_r6,3,6)) {
+		MR_GOTO_LAB(transform_hlds__ctgc__structure_reuse__direct__choose_reuse__compute_match_table_with_continuation_6_0_i13);
+	}
+	MR_sv(2) = MR_r1;
+	MR_sv(3) = MR_r2;
+	MR_sv(4) = MR_r4;
+	{
+	MR_Word MR_tempr1;
+	MR_tempr1 = MR_r6;
+	MR_sv(7) = MR_tfield(3, MR_tempr1, 2);
+	MR_sv(1) = MR_tfield(3, MR_tempr1, 3);
+	MR_sv(6) = MR_tfield(3, MR_tempr1, 4);
+	MR_sv(8) = MR_r5;
+	MR_sv(5) = (MR_Word) MR_TAG_COMMON(0,5,0);
+	MR_sv(9) = (MR_Word) MR_CTOR0_ADDR(transform_hlds__ctgc__structure_reuse__direct__choose_reuse, match);
+	MR_r1 = MR_sv(5);
+	MR_r2 = MR_sv(9);
+	}
+	MR_np_call_localret_ent(multi_map__init_1_0,
+		transform_hlds__ctgc__structure_reuse__direct__choose_reuse__compute_match_table_with_continuation_6_0_i15);
+MR_def_label(transform_hlds__ctgc__structure_reuse__direct__choose_reuse__compute_match_table_with_continuation_6_0,15)
+	MR_MAYBE_INIT_LOCAL_THREAD_ENGINE_BASE
+	{
+	MR_Word MR_tempr1, MR_tempr2;
+	MR_tag_alloc_heap(MR_tempr1, 1, (MR_Integer) 2);
+	MR_r4 = MR_tempr1;
+	MR_tfield(1, MR_tempr1, 0) = MR_sv(1);
+	MR_tfield(1, MR_tempr1, 1) = (MR_Word) MR_tbmkword(0, 0);
+	MR_tempr2 = MR_sv(7);
+	MR_sv(7) = MR_r1;
+	MR_r1 = MR_sv(2);
+	MR_r2 = MR_sv(3);
+	MR_r3 = MR_tempr2;
+	MR_r5 = MR_sv(7);
+	}
+	MR_np_localcall_lab(transform_hlds__ctgc__structure_reuse__direct__choose_reuse__compute_match_table_with_continuation_6_0,
+		transform_hlds__ctgc__structure_reuse__direct__choose_reuse__compute_match_table_with_continuation_6_0_i17);
+MR_def_label(transform_hlds__ctgc__structure_reuse__direct__choose_reuse__compute_match_table_with_continuation_6_0,17)
+	MR_MAYBE_INIT_LOCAL_THREAD_ENGINE_BASE
+	{
+	MR_Word MR_tempr1;
+	MR_tempr1 = MR_sv(7);
+	MR_sv(7) = MR_r1;
+	MR_r1 = MR_sv(2);
+	MR_r2 = MR_sv(3);
+	MR_r3 = MR_sv(6);
+	MR_r4 = (MR_Word) MR_tbmkword(0, 0);
+	MR_r5 = MR_tempr1;
+	}
+	MR_np_localcall_lab(transform_hlds__ctgc__structure_reuse__direct__choose_reuse__compute_match_table_with_continuation_6_0,
+		transform_hlds__ctgc__structure_reuse__direct__choose_reuse__compute_match_table_with_continuation_6_0_i18);
+MR_def_label(transform_hlds__ctgc__structure_reuse__direct__choose_reuse__compute_match_table_with_continuation_6_0,18)
+	MR_MAYBE_INIT_LOCAL_THREAD_ENGINE_BASE
+	MR_sv(1) = MR_r1;
+	MR_r1 = MR_sv(5);
+	MR_r2 = MR_sv(9);
+	MR_r3 = MR_sv(7);
+	MR_r4 = MR_sv(8);
+	MR_np_call_localret_ent(multi_map__merge_3_0,
+		transform_hlds__ctgc__structure_reuse__direct__choose_reuse__compute_match_table_with_continuation_6_0_i19);
+MR_def_label(transform_hlds__ctgc__structure_reuse__direct__choose_reuse__compute_match_table_with_continuation_6_0,19)
+	MR_MAYBE_INIT_LOCAL_THREAD_ENGINE_BASE
+	{
+	MR_Word MR_tempr1;
+	MR_tempr1 = MR_r1;
+	MR_r1 = MR_sv(5);
+	MR_r2 = MR_sv(9);
+	MR_r3 = MR_sv(1);
+	MR_r4 = MR_tempr1;
+	}
+	MR_np_call_localret_ent(multi_map__merge_3_0,
+		transform_hlds__ctgc__structure_reuse__direct__choose_reuse__compute_match_table_with_continuation_6_0_i20);
+MR_def_label(transform_hlds__ctgc__structure_reuse__direct__choose_reuse__compute_match_table_with_continuation_6_0,20)
+	MR_MAYBE_INIT_LOCAL_THREAD_ENGINE_BASE
+	{
+	MR_Word MR_tempr1, MR_tempr2;
+	MR_tag_alloc_heap(MR_tempr1, 1, (MR_Integer) 2);
+	MR_tfield(1, MR_tempr1, 0) = MR_sv(1);
+	MR_tfield(1, MR_tempr1, 1) = (MR_Word) MR_tbmkword(0, 0);
+	MR_tag_alloc_heap(MR_tempr2, 1, (MR_Integer) 2);
+	MR_r3 = MR_tempr2;
+	MR_tfield(1, MR_tempr2, 0) = MR_sv(7);
+	MR_tfield(1, MR_tempr2, 1) = MR_tempr1;
+	MR_sv(7) = MR_r1;
+	MR_r1 = MR_sv(2);
+	MR_r2 = MR_sv(4);
+	}
+	MR_np_call_localret_ent(transform_hlds__ctgc__structure_reuse__direct__choose_reuse__process_possible_common_dead_vars_4_0,
+		transform_hlds__ctgc__structure_reuse__direct__choose_reuse__compute_match_table_with_continuation_6_0_i23);
+MR_def_label(transform_hlds__ctgc__structure_reuse__direct__choose_reuse__compute_match_table_with_continuation_6_0,23)
+	MR_MAYBE_INIT_LOCAL_THREAD_ENGINE_BASE
+	{
+	MR_Word MR_tempr1;
+	MR_tempr1 = MR_r1;
+	MR_r1 = (MR_Word) MR_TAG_COMMON(0,3,2);
+	MR_r2 = MR_r1;
+	MR_r3 = (MR_Word) MR_TAG_COMMON(0,1,10);
+	MR_r4 = MR_tempr1;
+	MR_r5 = MR_sv(7);
+	}
+	MR_np_call_localret_ent(list__foldl_4_0,
+		transform_hlds__ctgc__structure_reuse__direct__choose_reuse__compute_match_table_with_continuation_6_0_i55);
+MR_def_label(transform_hlds__ctgc__structure_reuse__direct__choose_reuse__compute_match_table_with_continuation_6_0,13)
+	MR_MAYBE_INIT_LOCAL_THREAD_ENGINE_BASE
+	if (MR_PTAG_TESTR(MR_r6,0)) {
+		MR_GOTO_LAB(transform_hlds__ctgc__structure_reuse__direct__choose_reuse__compute_match_table_with_continuation_6_0_i29);
+	}
+	MR_sv(2) = MR_r1;
+	MR_sv(3) = MR_r2;
+	MR_sv(4) = MR_r4;
+	MR_r3 = MR_body((MR_Integer) MR_r6, (MR_Integer) 0);
+	MR_r4 = (MR_Word) MR_tbmkword(0, 0);
+	MR_np_localcall_lab(transform_hlds__ctgc__structure_reuse__direct__choose_reuse__compute_match_table_with_continuation_6_0,
+		transform_hlds__ctgc__structure_reuse__direct__choose_reuse__compute_match_table_with_continuation_6_0_i55);
+MR_def_label(transform_hlds__ctgc__structure_reuse__direct__choose_reuse__compute_match_table_with_continuation_6_0,29)
+	MR_MAYBE_INIT_LOCAL_THREAD_ENGINE_BASE
+	if (MR_PTAG_TESTR(MR_r6,2)) {
+		MR_GOTO_LAB(transform_hlds__ctgc__structure_reuse__direct__choose_reuse__compute_match_table_with_continuation_6_0_i32);
+	}
+MR_def_label(transform_hlds__ctgc__structure_reuse__direct__choose_reuse__compute_match_table_with_continuation_6_0,78)
+	MR_MAYBE_INIT_LOCAL_THREAD_ENGINE_BASE
+	MR_r3 = MR_r4;
+	MR_r4 = MR_r5;
+	MR_succip_word = MR_sv(10);
+	MR_decr_sp(10);
+	MR_np_tailcall_ent(transform_hlds__ctgc__structure_reuse__direct__choose_reuse__compute_match_table_goal_list_5_0);
+MR_def_label(transform_hlds__ctgc__structure_reuse__direct__choose_reuse__compute_match_table_with_continuation_6_0,32)
+	MR_MAYBE_INIT_LOCAL_THREAD_ENGINE_BASE
+	if (MR_RTAGS_TESTR(MR_r6,3,5)) {
+		MR_GOTO_LAB(transform_hlds__ctgc__structure_reuse__direct__choose_reuse__compute_match_table_with_continuation_6_0_i34);
+	}
+	MR_r3 = MR_tfield(3, MR_r6, 2);
+	MR_succip_word = MR_sv(10);
+	MR_GOTO_LAB(transform_hlds__ctgc__structure_reuse__direct__choose_reuse__compute_match_table_with_continuation_6_0_i129);
+MR_def_label(transform_hlds__ctgc__structure_reuse__direct__choose_reuse__compute_match_table_with_continuation_6_0,34)
+	MR_MAYBE_INIT_LOCAL_THREAD_ENGINE_BASE
+	if (MR_RTAGS_TESTR(MR_r6,3,4)) {
+		MR_GOTO_LAB(transform_hlds__ctgc__structure_reuse__direct__choose_reuse__compute_match_table_with_continuation_6_0_i36);
+	}
+	MR_sv(2) = MR_r1;
+	MR_sv(3) = MR_r2;
+	MR_sv(4) = MR_r4;
+	MR_sv(8) = MR_r5;
+	MR_r1 = (MR_Word) MR_CTOR0_ADDR(hlds__hlds_goal, case);
+	MR_r2 = (MR_Word) MR_CTOR0_ADDR(hlds__hlds_goal, hlds_goal);
+	MR_r3 = (MR_Word) MR_TAG_COMMON(0,1,11);
+	MR_r4 = MR_tfield(3, MR_r6, 3);
+	MR_np_call_localret_ent(fn__list__map_2_0,
+		transform_hlds__ctgc__structure_reuse__direct__choose_reuse__compute_match_table_with_continuation_6_0_i38);
+MR_def_label(transform_hlds__ctgc__structure_reuse__direct__choose_reuse__compute_match_table_with_continuation_6_0,38)
+	MR_MAYBE_INIT_LOCAL_THREAD_ENGINE_BASE
+	{
+	MR_Word MR_tempr1;
+	MR_tempr1 = MR_r1;
+	MR_r1 = MR_sv(2);
+	MR_r2 = MR_sv(3);
+	MR_r3 = MR_tempr1;
+	MR_r4 = MR_sv(4);
+	MR_r5 = MR_sv(8);
+	}
+	MR_np_call_localret_ent(transform_hlds__ctgc__structure_reuse__direct__choose_reuse__compute_match_table_in_disjunction_6_0,
+		transform_hlds__ctgc__structure_reuse__direct__choose_reuse__compute_match_table_with_continuation_6_0_i55);
+MR_def_label(transform_hlds__ctgc__structure_reuse__direct__choose_reuse__compute_match_table_with_continuation_6_0,36)
+	MR_MAYBE_INIT_LOCAL_THREAD_ENGINE_BASE
+	if (MR_PTAG_TESTR(MR_r6,1)) {
+		MR_GOTO_LAB(transform_hlds__ctgc__structure_reuse__direct__choose_reuse__compute_match_table_with_continuation_6_0_i41);
+	}
+	{
+	MR_Word MR_tempr1;
+	MR_tempr1 = MR_tfield(1, MR_r6, 3);
+	if (MR_PTAG_TESTR(MR_tempr1,1)) {
+		MR_GOTO_LAB(transform_hlds__ctgc__structure_reuse__direct__choose_reuse__compute_match_table_with_continuation_6_0_i78);
+	}
+	MR_sv(2) = MR_r1;
+	MR_sv(3) = MR_r2;
+	MR_sv(4) = MR_r4;
+	MR_sv(7) = MR_tfield(1, MR_tempr1, 0);
+	MR_sv(1) = MR_tfield(1, MR_tempr1, 1);
+	MR_sv(6) = MR_tfield(1, MR_tempr1, 2);
+	MR_sv(8) = MR_r5;
+	MR_r1 = MR_tfield(0, MR_r3, 1);
+	}
+	MR_np_call_localret_ent(fn__transform_hlds__smm_common__program_point_init_1_0,
+		transform_hlds__ctgc__structure_reuse__direct__choose_reuse__compute_match_table_with_continuation_6_0_i44);
+MR_def_label(transform_hlds__ctgc__structure_reuse__direct__choose_reuse__compute_match_table_with_continuation_6_0,44)
+	MR_MAYBE_INIT_LOCAL_THREAD_ENGINE_BASE
+	MR_sv(5) = MR_r1;
+	MR_r2 = MR_sv(3);
+	MR_np_call_localret_ent(fn__transform_hlds__ctgc__structure_reuse__direct__dead_cell_table_search_2_0,
+		transform_hlds__ctgc__structure_reuse__direct__choose_reuse__compute_match_table_with_continuation_6_0_i47);
+MR_def_label(transform_hlds__ctgc__structure_reuse__direct__choose_reuse__compute_match_table_with_continuation_6_0,47)
+	MR_MAYBE_INIT_LOCAL_THREAD_ENGINE_BASE
+	if (!(MR_r1)) {
+		MR_GOTO_LAB(transform_hlds__ctgc__structure_reuse__direct__choose_reuse__compute_match_table_with_continuation_6_0_i46);
+	}
+	MR_r1 = MR_r2;
+	MR_np_call_localret_ent(fn__transform_hlds__ctgc__structure_reuse__domain__reuse_as_init_with_one_condition_1_0,
+		transform_hlds__ctgc__structure_reuse__direct__choose_reuse__compute_match_table_with_continuation_6_0_i49);
+MR_def_label(transform_hlds__ctgc__structure_reuse__direct__choose_reuse__compute_match_table_with_continuation_6_0,49)
+	MR_MAYBE_INIT_LOCAL_THREAD_ENGINE_BASE
+	{
+	MR_Word MR_tempr1;
+	MR_tempr1 = MR_r1;
+	MR_r1 = MR_sv(7);
+	MR_r2 = MR_sv(5);
+	MR_r3 = MR_sv(1);
+	MR_r4 = MR_sv(6);
+	MR_r5 = MR_tempr1;
+	}
+	MR_np_call_localret_ent(fn__transform_hlds__ctgc__structure_reuse__direct__choose_reuse__deconstruction_spec_init_5_0,
+		transform_hlds__ctgc__structure_reuse__direct__choose_reuse__compute_match_table_with_continuation_6_0_i50);
+MR_def_label(transform_hlds__ctgc__structure_reuse__direct__choose_reuse__compute_match_table_with_continuation_6_0,50)
+	MR_MAYBE_INIT_LOCAL_THREAD_ENGINE_BASE
+	MR_tag_alloc_heap(MR_r2, 1, (MR_Integer) 2);
+	MR_tfield(1, MR_r2, 0) = MR_r1;
+	MR_tfield(1, MR_r2, 1) = (MR_Word) MR_tbmkword(0, 0);
+	MR_r1 = MR_r2;
+	MR_np_call_localret_ent(fn__transform_hlds__ctgc__structure_reuse__direct__choose_reuse__match_init_1_0,
+		transform_hlds__ctgc__structure_reuse__direct__choose_reuse__compute_match_table_with_continuation_6_0_i52);
+MR_def_label(transform_hlds__ctgc__structure_reuse__direct__choose_reuse__compute_match_table_with_continuation_6_0,52)
+	MR_MAYBE_INIT_LOCAL_THREAD_ENGINE_BASE
+	{
+	MR_Word MR_tempr1;
+	MR_tempr1 = MR_r1;
+	MR_r1 = MR_sv(2);
+	MR_r2 = MR_sv(4);
+	MR_r3 = MR_tempr1;
+	}
+	MR_np_call_localret_ent(transform_hlds__ctgc__structure_reuse__direct__choose_reuse__find_best_match_in_conjunction_4_0,
+		transform_hlds__ctgc__structure_reuse__direct__choose_reuse__compute_match_table_with_continuation_6_0_i53);
+MR_def_label(transform_hlds__ctgc__structure_reuse__direct__choose_reuse__compute_match_table_with_continuation_6_0,53)
+	MR_MAYBE_INIT_LOCAL_THREAD_ENGINE_BASE
+	{
+	MR_Word MR_tempr1;
+	MR_tempr1 = MR_r1;
+	MR_r1 = (MR_Word) MR_TAG_COMMON(0,5,0);
+	MR_r2 = (MR_Word) MR_CTOR0_ADDR(transform_hlds__ctgc__structure_reuse__direct__choose_reuse, match);
+	MR_r3 = MR_sv(7);
+	MR_r4 = MR_tempr1;
+	MR_r5 = MR_sv(8);
+	}
+	MR_np_call_localret_ent(multi_map__set_4_0,
+		transform_hlds__ctgc__structure_reuse__direct__choose_reuse__compute_match_table_with_continuation_6_0_i55);
+MR_def_label(transform_hlds__ctgc__structure_reuse__direct__choose_reuse__compute_match_table_with_continuation_6_0,55)
+	MR_MAYBE_INIT_LOCAL_THREAD_ENGINE_BASE
+	{
+	MR_Word MR_tempr1;
+	MR_tempr1 = MR_r1;
+	MR_r1 = MR_sv(2);
+	MR_r2 = MR_sv(3);
+	MR_r3 = MR_sv(4);
+	MR_r4 = MR_tempr1;
+	MR_succip_word = MR_sv(10);
+	MR_decr_sp(10);
+	MR_np_tailcall_ent(transform_hlds__ctgc__structure_reuse__direct__choose_reuse__compute_match_table_goal_list_5_0);
+	}
+MR_def_label(transform_hlds__ctgc__structure_reuse__direct__choose_reuse__compute_match_table_with_continuation_6_0,46)
+	MR_MAYBE_INIT_LOCAL_THREAD_ENGINE_BASE
+	MR_r1 = MR_sv(2);
+	MR_r2 = MR_sv(3);
+	MR_r3 = MR_sv(4);
+	MR_r4 = MR_sv(8);
+	MR_succip_word = MR_sv(10);
+	MR_decr_sp(10);
+	MR_np_tailcall_ent(transform_hlds__ctgc__structure_reuse__direct__choose_reuse__compute_match_table_goal_list_5_0);
+MR_def_label(transform_hlds__ctgc__structure_reuse__direct__choose_reuse__compute_match_table_with_continuation_6_0,41)
+	MR_MAYBE_INIT_LOCAL_THREAD_ENGINE_BASE
+	MR_r1 = (MR_Word) MR_string_const("transform_hlds.ctgc.structure_reuse.direct.choose_reuse", 55);
+	MR_r2 = (MR_Word) MR_string_const("predicate \140transform_hlds.ctgc.structure_reuse.direct.choose_reuse.compute_match_table_with_continuation\'/6", 107);
+	MR_r3 = (MR_Word) MR_string_const("shorthand", 9);
+	MR_succip_word = MR_sv(10);
+	MR_decr_sp(10);
+	MR_np_tailcall_ent(require__unexpected_3_0);
+#ifdef MR_maybe_local_thread_engine_base
+	#undef MR_maybe_local_thread_engine_base
+	#define MR_maybe_local_thread_engine_base MR_thread_engine_base
+#endif
+MR_END_MODULE
+
+MR_decl_entry(fn__multi_map__init_0_0);
+
+MR_BEGIN_MODULE(transform_hlds__ctgc__structure_reuse__direct__choose_reuse_module9)
+	MR_init_entry1(transform_hlds__ctgc__structure_reuse__direct__choose_reuse__compute_match_table_4_0);
+	MR_INIT_PROC_LAYOUT_ADDR(mercury__transform_hlds__ctgc__structure_reuse__direct__choose_reuse__compute_match_table_4_0);
+	MR_init_label1(transform_hlds__ctgc__structure_reuse__direct__choose_reuse__compute_match_table_4_0,3)
+MR_BEGIN_CODE
+
+/*-------------------------------------------------------------------------*/
+/* code for 'compute_match_table'/4 mode 0 */
+#ifdef MR_maybe_local_thread_engine_base
+	#undef MR_maybe_local_thread_engine_base
+	#define MR_maybe_local_thread_engine_base MR_local_thread_engine_base
+#endif
+MR_def_static(transform_hlds__ctgc__structure_reuse__direct__choose_reuse__compute_match_table_4_0)
+	MR_MAYBE_INIT_LOCAL_THREAD_ENGINE_BASE
+	MR_incr_sp(4);
+	MR_sv(4) = (MR_Word) MR_succip;
+	MR_sv(1) = MR_r1;
+	MR_sv(2) = MR_r2;
+	MR_sv(3) = MR_r3;
+	MR_r1 = (MR_Word) MR_TAG_COMMON(0,5,0);
+	MR_r2 = (MR_Word) MR_CTOR0_ADDR(transform_hlds__ctgc__structure_reuse__direct__choose_reuse, match);
+	MR_np_call_localret_ent(fn__multi_map__init_0_0,
+		transform_hlds__ctgc__structure_reuse__direct__choose_reuse__compute_match_table_4_0_i3);
+MR_def_label(transform_hlds__ctgc__structure_reuse__direct__choose_reuse__compute_match_table_4_0,3)
+	MR_MAYBE_INIT_LOCAL_THREAD_ENGINE_BASE
+	{
+	MR_Word MR_tempr1;
+	MR_tempr1 = MR_r1;
+	MR_r1 = MR_sv(1);
+	MR_r2 = MR_sv(2);
+	MR_r3 = MR_sv(3);
+	MR_r4 = (MR_Word) MR_tbmkword(0, 0);
+	MR_r5 = MR_tempr1;
+	MR_succip_word = MR_sv(4);
+	MR_decr_sp(4);
+	MR_np_tailcall_ent(transform_hlds__ctgc__structure_reuse__direct__choose_reuse__compute_match_table_with_continuation_6_0);
+	}
+#ifdef MR_maybe_local_thread_engine_base
+	#undef MR_maybe_local_thread_engine_base
+	#define MR_maybe_local_thread_engine_base MR_thread_engine_base
+#endif
+MR_END_MODULE
+
+MR_decl_entry(fn__list__remove_dups_1_0);
+
+MR_BEGIN_MODULE(transform_hlds__ctgc__structure_reuse__direct__choose_reuse_module10)
+	MR_init_entry1(fn__transform_hlds__ctgc__structure_reuse__direct__choose_reuse__match_get_dead_var_1_0);
+	MR_INIT_PROC_LAYOUT_ADDR(mercury__fn__transform_hlds__ctgc__structure_reuse__direct__choose_reuse__match_get_dead_var_1_0);
+	MR_init_label4(fn__transform_hlds__ctgc__structure_reuse__direct__choose_reuse__match_get_dead_var_1_0,4,5,9,7)
+MR_BEGIN_CODE
+
+/*-------------------------------------------------------------------------*/
+/* code for 'match_get_dead_var'/2 mode 0 */
+#ifdef MR_maybe_local_thread_engine_base
+	#undef MR_maybe_local_thread_engine_base
+	#define MR_maybe_local_thread_engine_base MR_local_thread_engine_base
+#endif
+MR_def_static(fn__transform_hlds__ctgc__structure_reuse__direct__choose_reuse__match_get_dead_var_1_0)
+	MR_MAYBE_INIT_LOCAL_THREAD_ENGINE_BASE
+	MR_incr_sp(2);
+	MR_sv(2) = (MR_Word) MR_succip;
+	MR_sv(1) = (MR_Word) MR_TAG_COMMON(0,5,0);
+	{
+	MR_Word MR_tempr1;
+	MR_tempr1 = MR_r1;
+	MR_r1 = (MR_Word) MR_CTOR0_ADDR(transform_hlds__ctgc__structure_reuse__direct__choose_reuse, deconstruction_spec);
+	MR_r2 = MR_sv(1);
+	MR_r3 = (MR_Word) MR_TAG_COMMON(0,1,12);
+	MR_r4 = MR_tfield(0, MR_tempr1, 0);
+	}
+	MR_np_call_localret_ent(fn__list__map_2_0,
+		fn__transform_hlds__ctgc__structure_reuse__direct__choose_reuse__match_get_dead_var_1_0_i4);
+MR_def_label(fn__transform_hlds__ctgc__structure_reuse__direct__choose_reuse__match_get_dead_var_1_0,4)
+	MR_MAYBE_INIT_LOCAL_THREAD_ENGINE_BASE
+	{
+	MR_Word MR_tempr1;
+	MR_tempr1 = MR_r1;
+	MR_r1 = MR_sv(1);
+	MR_r2 = MR_tempr1;
+	}
+	MR_np_call_localret_ent(fn__list__remove_dups_1_0,
+		fn__transform_hlds__ctgc__structure_reuse__direct__choose_reuse__match_get_dead_var_1_0_i5);
+MR_def_label(fn__transform_hlds__ctgc__structure_reuse__direct__choose_reuse__match_get_dead_var_1_0,5)
+	MR_MAYBE_INIT_LOCAL_THREAD_ENGINE_BASE
+	if (MR_LTAGS_TEST(MR_r1,0,0)) {
+		MR_GOTO_LAB(fn__transform_hlds__ctgc__structure_reuse__direct__choose_reuse__match_get_dead_var_1_0_i7);
+	}
+	{
+	MR_Word MR_tempr1;
+	MR_tempr1 = MR_tfield(1, MR_r1, 1);
+	if (MR_LTAGS_TESTR(MR_tempr1,0,0)) {
+		MR_GOTO_LAB(fn__transform_hlds__ctgc__structure_reuse__direct__choose_reuse__match_get_dead_var_1_0_i9);
+	}
+	MR_r1 = MR_tfield(1, MR_r1, 0);
+	MR_decr_sp_and_return(2);
+	}
+MR_def_label(fn__transform_hlds__ctgc__structure_reuse__direct__choose_reuse__match_get_dead_var_1_0,9)
+	MR_MAYBE_INIT_LOCAL_THREAD_ENGINE_BASE
+	{
+	MR_Word MR_tempr1;
+	MR_tempr1 = MR_r1;
+	MR_r1 = (MR_Word) MR_string_const("transform_hlds.ctgc.structure_reuse.direct.choose_reuse", 55);
+	MR_r2 = (MR_Word) MR_string_const("function \140transform_hlds.ctgc.structure_reuse.direct.choose_reuse.match_get_dead_var\'/1", 87);
+	MR_r3 = (MR_Word) MR_string_const("too many dead vars", 18);
+	MR_succip_word = MR_sv(2);
+	MR_decr_sp(2);
+	MR_np_tailcall_ent(require__unexpected_3_0);
+	}
+MR_def_label(fn__transform_hlds__ctgc__structure_reuse__direct__choose_reuse__match_get_dead_var_1_0,7)
+	MR_MAYBE_INIT_LOCAL_THREAD_ENGINE_BASE
+	MR_r1 = (MR_Word) MR_string_const("transform_hlds.ctgc.structure_reuse.direct.choose_reuse", 55);
+	MR_r2 = (MR_Word) MR_string_const("function \140transform_hlds.ctgc.structure_reuse.direct.choose_reuse.match_get_dead_var\'/1", 87);
+	MR_r3 = (MR_Word) MR_string_const("empty list of vars", 18);
+	MR_succip_word = MR_sv(2);
+	MR_decr_sp(2);
+	MR_np_tailcall_ent(require__unexpected_3_0);
+#ifdef MR_maybe_local_thread_engine_base
+	#undef MR_maybe_local_thread_engine_base
+	#define MR_maybe_local_thread_engine_base MR_thread_engine_base
+#endif
+MR_END_MODULE
+
+MR_decl_entry(list__filter_3_0);
+MR_decl_entry(__Unify___list__list_1_0);
+
+MR_BEGIN_MODULE(transform_hlds__ctgc__structure_reuse__direct__choose_reuse_module11)
+	MR_init_entry1(transform_hlds__ctgc__structure_reuse__direct__choose_reuse__match_find_deconstruction_spec_3_0);
+	MR_INIT_PROC_LAYOUT_ADDR(mercury__transform_hlds__ctgc__structure_reuse__direct__choose_reuse__match_find_deconstruction_spec_3_0);
+	MR_init_label3(transform_hlds__ctgc__structure_reuse__direct__choose_reuse__match_find_deconstruction_spec_3_0,3,5,1)
+MR_BEGIN_CODE
+
+/*-------------------------------------------------------------------------*/
+/* code for 'match_find_deconstruction_spec'/3 mode 0 */
+#ifdef MR_maybe_local_thread_engine_base
+	#undef MR_maybe_local_thread_engine_base
+	#define MR_maybe_local_thread_engine_base MR_local_thread_engine_base
+#endif
+MR_def_static(transform_hlds__ctgc__structure_reuse__direct__choose_reuse__match_find_deconstruction_spec_3_0)
+	MR_MAYBE_INIT_LOCAL_THREAD_ENGINE_BASE
+	MR_incr_sp(2);
+	MR_sv(2) = (MR_Word) MR_succip;
+	{
+	MR_Word MR_tempr1, MR_tempr2;
+	MR_tag_alloc_heap(MR_tempr1, 0, (MR_Integer) 4);
+	MR_tfield(0, MR_tempr1, 0) = (MR_Word) MR_COMMON(0,3);
+	MR_tfield(0, MR_tempr1, 1) = (MR_Word) MR_ENTRY_AP(transform_hlds__ctgc__structure_reuse__direct__choose_reuse__deconstruction_spec_with_program_point_2_0);
+	MR_tfield(0, MR_tempr1, 2) = (MR_Integer) 1;
+	MR_tfield(0, MR_tempr1, 3) = MR_r2;
+	MR_tempr2 = MR_r1;
+	MR_r1 = (MR_Word) MR_CTOR0_ADDR(transform_hlds__ctgc__structure_reuse__direct__choose_reuse, deconstruction_spec);
+	MR_r2 = MR_tempr1;
+	MR_r3 = MR_tfield(0, MR_tempr2, 0);
+	}
+	MR_np_call_localret_ent(list__filter_3_0,
+		transform_hlds__ctgc__structure_reuse__direct__choose_reuse__match_find_deconstruction_spec_3_0_i3);
+MR_def_label(transform_hlds__ctgc__structure_reuse__direct__choose_reuse__match_find_deconstruction_spec_3_0,3)
+	MR_MAYBE_INIT_LOCAL_THREAD_ENGINE_BASE
+	if (MR_LTAGS_TEST(MR_r1,0,0)) {
+		MR_GOTO_LAB(transform_hlds__ctgc__structure_reuse__direct__choose_reuse__match_find_deconstruction_spec_3_0_i1);
+	}
+	MR_sv(1) = MR_tfield(1, MR_r1, 0);
+	{
+	MR_Word MR_tempr1;
+	MR_tempr1 = MR_r1;
+	MR_r1 = (MR_Word) MR_CTOR0_ADDR(transform_hlds__ctgc__structure_reuse__direct__choose_reuse, deconstruction_spec);
+	MR_r2 = (MR_Word) MR_tbmkword(0, 0);
+	MR_r3 = MR_tfield(1, MR_tempr1, 1);
+	}
+	MR_np_call_localret_ent(__Unify___list__list_1_0,
+		transform_hlds__ctgc__structure_reuse__direct__choose_reuse__match_find_deconstruction_spec_3_0_i5);
+MR_def_label(transform_hlds__ctgc__structure_reuse__direct__choose_reuse__match_find_deconstruction_spec_3_0,5)
+	MR_MAYBE_INIT_LOCAL_THREAD_ENGINE_BASE
+	if (!(MR_r1)) {
+		MR_GOTO_LAB(transform_hlds__ctgc__structure_reuse__direct__choose_reuse__match_find_deconstruction_spec_3_0_i1);
+	}
+	MR_r2 = MR_sv(1);
+	MR_succip_word = MR_sv(2);
+	MR_decr_sp(2);
+	MR_r1 = MR_TRUE;
+	MR_proceed();
+MR_def_label(transform_hlds__ctgc__structure_reuse__direct__choose_reuse__match_find_deconstruction_spec_3_0,1)
+	MR_MAYBE_INIT_LOCAL_THREAD_ENGINE_BASE
+	MR_succip_word = MR_sv(2);
+	MR_decr_sp(2);
+	MR_r1 = MR_FALSE;
+	MR_proceed();
+#ifdef MR_maybe_local_thread_engine_base
+	#undef MR_maybe_local_thread_engine_base
+	#define MR_maybe_local_thread_engine_base MR_thread_engine_base
+#endif
+MR_END_MODULE
+
+MR_decl_entry(transform_hlds__ctgc__structure_reuse__domain__reuse_as_conditional_reuses_1_0);
+MR_decl_entry(hlds__hlds_goal__goal_info_set_reuse_3_0);
+
+MR_BEGIN_MODULE(transform_hlds__ctgc__structure_reuse__direct__choose_reuse_module12)
+	MR_init_entry1(transform_hlds__ctgc__structure_reuse__direct__choose_reuse__annotate_reuse_for_unification_5_0);
+	MR_INIT_PROC_LAYOUT_ADDR(mercury__transform_hlds__ctgc__structure_reuse__direct__choose_reuse__annotate_reuse_for_unification_5_0);
+	MR_init_label10(transform_hlds__ctgc__structure_reuse__direct__choose_reuse__annotate_reuse_for_unification_5_0,2,4,8,10,12,14,15,18,16,23)
+	MR_init_label8(transform_hlds__ctgc__structure_reuse__direct__choose_reuse__annotate_reuse_for_unification_5_0,22,28,30,5,38,35,54,43)
+MR_BEGIN_CODE
+
+/*-------------------------------------------------------------------------*/
+/* code for 'annotate_reuse_for_unification'/5 mode 0 */
+#ifdef MR_maybe_local_thread_engine_base
+	#undef MR_maybe_local_thread_engine_base
+	#define MR_maybe_local_thread_engine_base MR_local_thread_engine_base
+#endif
+MR_def_static(transform_hlds__ctgc__structure_reuse__direct__choose_reuse__annotate_reuse_for_unification_5_0)
+	MR_MAYBE_INIT_LOCAL_THREAD_ENGINE_BASE
+	MR_incr_sp(6);
+	MR_sv(6) = (MR_Word) MR_succip;
+	MR_sv(2) = MR_r1;
+	MR_sv(3) = MR_r2;
+	MR_sv(4) = MR_r3;
+	{
+	MR_Word MR_tempr1;
+	MR_tempr1 = MR_r4;
+	MR_sv(5) = MR_tempr1;
+	MR_r1 = MR_tempr1;
+	}
+	MR_np_call_localret_ent(fn__transform_hlds__smm_common__program_point_init_1_0,
+		transform_hlds__ctgc__structure_reuse__direct__choose_reuse__annotate_reuse_for_unification_5_0_i2);
+MR_def_label(transform_hlds__ctgc__structure_reuse__direct__choose_reuse__annotate_reuse_for_unification_5_0,2)
+	MR_MAYBE_INIT_LOCAL_THREAD_ENGINE_BASE
+	if (MR_PTAG_TESTR(MR_sv(4),2)) {
+		MR_GOTO_LAB(transform_hlds__ctgc__structure_reuse__direct__choose_reuse__annotate_reuse_for_unification_5_0_i4);
+	}
+	MR_r1 = MR_sv(5);
+	MR_decr_sp_and_return(6);
+MR_def_label(transform_hlds__ctgc__structure_reuse__direct__choose_reuse__annotate_reuse_for_unification_5_0,4)
+	MR_MAYBE_INIT_LOCAL_THREAD_ENGINE_BASE
+	if (MR_PTAG_TESTR(MR_sv(4),0)) {
+		MR_GOTO_LAB(transform_hlds__ctgc__structure_reuse__direct__choose_reuse__annotate_reuse_for_unification_5_0_i5);
+	}
+	MR_tag_alloc_heap(MR_r2, 0, (MR_Integer) 4);
+	MR_tfield(0, MR_r2, 0) = (MR_Word) MR_COMMON(0,4);
+	MR_tfield(0, MR_r2, 1) = (MR_Word) MR_ENTRY_AP(transform_hlds__ctgc__structure_reuse__direct__choose_reuse__construction_spec_with_program_point_2_0);
+	MR_tfield(0, MR_r2, 2) = (MR_Integer) 1;
+	MR_tfield(0, MR_r2, 3) = MR_r1;
+	MR_r1 = (MR_Word) MR_CTOR0_ADDR(transform_hlds__ctgc__structure_reuse__direct__choose_reuse, construction_spec);
+	MR_r3 = MR_tfield(0, MR_sv(3), 1);
+	MR_np_call_localret_ent(list__filter_3_0,
+		transform_hlds__ctgc__structure_reuse__direct__choose_reuse__annotate_reuse_for_unification_5_0_i8);
+MR_def_label(transform_hlds__ctgc__structure_reuse__direct__choose_reuse__annotate_reuse_for_unification_5_0,8)
+	MR_MAYBE_INIT_LOCAL_THREAD_ENGINE_BASE
+	if (MR_LTAGS_TEST(MR_r1,0,0)) {
+		MR_GOTO_LAB(transform_hlds__ctgc__structure_reuse__direct__choose_reuse__annotate_reuse_for_unification_5_0_i54);
+	}
+	MR_sv(4) = MR_tfield(1, MR_r1, 0);
+	{
+	MR_Word MR_tempr1;
+	MR_tempr1 = MR_r1;
+	MR_r1 = (MR_Word) MR_CTOR0_ADDR(transform_hlds__ctgc__structure_reuse__direct__choose_reuse, construction_spec);
+	MR_r2 = (MR_Word) MR_tbmkword(0, 0);
+	MR_r3 = MR_tfield(1, MR_tempr1, 1);
+	}
+	MR_np_call_localret_ent(__Unify___list__list_1_0,
+		transform_hlds__ctgc__structure_reuse__direct__choose_reuse__annotate_reuse_for_unification_5_0_i10);
+MR_def_label(transform_hlds__ctgc__structure_reuse__direct__choose_reuse__annotate_reuse_for_unification_5_0,10)
+	MR_MAYBE_INIT_LOCAL_THREAD_ENGINE_BASE
+	if (!(MR_r1)) {
+		MR_GOTO_LAB(transform_hlds__ctgc__structure_reuse__direct__choose_reuse__annotate_reuse_for_unification_5_0_i54);
+	}
+	MR_r1 = MR_sv(3);
+	MR_np_call_localret_ent(fn__transform_hlds__ctgc__structure_reuse__direct__choose_reuse__match_get_dead_var_1_0,
+		transform_hlds__ctgc__structure_reuse__direct__choose_reuse__annotate_reuse_for_unification_5_0_i12);
+MR_def_label(transform_hlds__ctgc__structure_reuse__direct__choose_reuse__annotate_reuse_for_unification_5_0,12)
+	MR_MAYBE_INIT_LOCAL_THREAD_ENGINE_BASE
+	MR_sv(1) = MR_r1;
+	MR_r1 = (MR_Word) MR_CTOR0_ADDR(transform_hlds__ctgc__structure_reuse__direct__choose_reuse, deconstruction_spec);
+	MR_r2 = (MR_Word) MR_CTOR0_ADDR(parse_tree__prog_data, cons_id);
+	MR_r3 = (MR_Word) MR_TAG_COMMON(0,1,13);
+	MR_r4 = MR_tfield(0, MR_sv(3), 0);
+	MR_np_call_localret_ent(fn__list__map_2_0,
+		transform_hlds__ctgc__structure_reuse__direct__choose_reuse__annotate_reuse_for_unification_5_0_i14);
+MR_def_label(transform_hlds__ctgc__structure_reuse__direct__choose_reuse__annotate_reuse_for_unification_5_0,14)
+	MR_MAYBE_INIT_LOCAL_THREAD_ENGINE_BASE
+	{
+	MR_Word MR_tempr1;
+	MR_tempr1 = MR_sv(2);
+	MR_sv(2) = MR_r1;
+	MR_r1 = MR_tempr1;
+	MR_r2 = MR_sv(3);
+	}
+	MR_np_call_localret_ent(fn__transform_hlds__ctgc__structure_reuse__direct__choose_reuse__match_get_condition_2_0,
+		transform_hlds__ctgc__structure_reuse__direct__choose_reuse__annotate_reuse_for_unification_5_0_i15);
+MR_def_label(transform_hlds__ctgc__structure_reuse__direct__choose_reuse__annotate_reuse_for_unification_5_0,15)
+	MR_MAYBE_INIT_LOCAL_THREAD_ENGINE_BASE
+	MR_r2 = MR_tfield(0, MR_tfield(0, MR_sv(4), 1), 1);
+	MR_sv(3) = MR_r1;
+	MR_sv(4) = MR_r2;
+	MR_np_call_localret_ent(transform_hlds__ctgc__structure_reuse__domain__reuse_as_conditional_reuses_1_0,
+		transform_hlds__ctgc__structure_reuse__direct__choose_reuse__annotate_reuse_for_unification_5_0_i18);
+MR_def_label(transform_hlds__ctgc__structure_reuse__direct__choose_reuse__annotate_reuse_for_unification_5_0,18)
+	MR_MAYBE_INIT_LOCAL_THREAD_ENGINE_BASE
+	if (!(MR_r1)) {
+		MR_GOTO_LAB(transform_hlds__ctgc__structure_reuse__direct__choose_reuse__annotate_reuse_for_unification_5_0_i16);
+	}
+	{
+	MR_Word MR_tempr1;
+	MR_tag_alloc_heap(MR_tempr1, 1, (MR_Integer) 4);
+	MR_r3 = MR_tempr1;
+	MR_tfield(1, MR_tempr1, 0) = MR_sv(1);
+	MR_tfield(1, MR_tempr1, 1) = (MR_Integer) 0;
+	MR_tfield(1, MR_tempr1, 2) = MR_sv(2);
+	MR_tfield(1, MR_tempr1, 3) = MR_sv(4);
+	MR_r1 = (MR_Integer) 0;
+	MR_r2 = MR_sv(5);
+	MR_GOTO_LAB(transform_hlds__ctgc__structure_reuse__direct__choose_reuse__annotate_reuse_for_unification_5_0_i28);
+	}
+MR_def_label(transform_hlds__ctgc__structure_reuse__direct__choose_reuse__annotate_reuse_for_unification_5_0,16)
+	MR_MAYBE_INIT_LOCAL_THREAD_ENGINE_BASE
+	MR_r1 = MR_sv(3);
+	MR_r2 = MR_sv(4);
+	MR_np_call_localret_ent(transform_hlds__ctgc__structure_reuse__domain__reuse_as_all_unconditional_reuses_1_0,
+		transform_hlds__ctgc__structure_reuse__direct__choose_reuse__annotate_reuse_for_unification_5_0_i23);
+MR_def_label(transform_hlds__ctgc__structure_reuse__direct__choose_reuse__annotate_reuse_for_unification_5_0,23)
+	MR_MAYBE_INIT_LOCAL_THREAD_ENGINE_BASE
+	if (!(MR_r1)) {
+		MR_GOTO_LAB(transform_hlds__ctgc__structure_reuse__direct__choose_reuse__annotate_reuse_for_unification_5_0_i22);
+	}
+	{
+	MR_Word MR_tempr1;
+	MR_tag_alloc_heap(MR_tempr1, 1, (MR_Integer) 4);
+	MR_r3 = MR_tempr1;
+	MR_tfield(1, MR_tempr1, 0) = MR_sv(1);
+	MR_tfield(1, MR_tempr1, 1) = (MR_Integer) 1;
+	MR_tfield(1, MR_tempr1, 2) = MR_sv(2);
+	MR_tfield(1, MR_tempr1, 3) = MR_sv(4);
+	MR_r1 = (MR_Integer) 1;
+	MR_r2 = MR_sv(5);
+	MR_GOTO_LAB(transform_hlds__ctgc__structure_reuse__direct__choose_reuse__annotate_reuse_for_unification_5_0_i28);
+	}
+MR_def_label(transform_hlds__ctgc__structure_reuse__direct__choose_reuse__annotate_reuse_for_unification_5_0,22)
+	MR_MAYBE_INIT_LOCAL_THREAD_ENGINE_BASE
+	MR_r1 = (MR_Word) MR_string_const("transform_hlds.ctgc.structure_reuse.direct.choose_reuse", 55);
+	MR_r2 = (MR_Word) MR_string_const("predicate \140transform_hlds.ctgc.structure_reuse.direct.choose_reuse.annotate_reuse_for_unification\'/5", 100);
+	MR_r3 = (MR_Word) MR_string_const("no reuse conditions", 19);
+	MR_np_call_localret_ent(require__unexpected_3_0,
+		transform_hlds__ctgc__structure_reuse__direct__choose_reuse__annotate_reuse_for_unification_5_0_i28);
+MR_def_label(transform_hlds__ctgc__structure_reuse__direct__choose_reuse__annotate_reuse_for_unification_5_0,28)
+	MR_MAYBE_INIT_LOCAL_THREAD_ENGINE_BASE
+	if (MR_INT_NE(MR_r1,0)) {
+		MR_GOTO_LAB(transform_hlds__ctgc__structure_reuse__direct__choose_reuse__annotate_reuse_for_unification_5_0_i30);
+	}
+	MR_tag_alloc_heap(MR_r1, 2, (MR_Integer) 1);
+	MR_tfield(2, MR_r1, 0) = MR_r3;
+	MR_succip_word = MR_sv(6);
+	MR_decr_sp(6);
+	MR_np_tailcall_ent(hlds__hlds_goal__goal_info_set_reuse_3_0);
+MR_def_label(transform_hlds__ctgc__structure_reuse__direct__choose_reuse__annotate_reuse_for_unification_5_0,30)
+	MR_MAYBE_INIT_LOCAL_THREAD_ENGINE_BASE
+	MR_tag_alloc_heap(MR_r1, 3, (MR_Integer) 1);
+	MR_tfield(3, MR_r1, 0) = MR_r3;
+	MR_succip_word = MR_sv(6);
+	MR_decr_sp(6);
+	MR_np_tailcall_ent(hlds__hlds_goal__goal_info_set_reuse_3_0);
+MR_def_label(transform_hlds__ctgc__structure_reuse__direct__choose_reuse__annotate_reuse_for_unification_5_0,5)
+	MR_MAYBE_INIT_LOCAL_THREAD_ENGINE_BASE
+	if (MR_PTAG_TESTR(MR_sv(4),1)) {
+		MR_GOTO_LAB(transform_hlds__ctgc__structure_reuse__direct__choose_reuse__annotate_reuse_for_unification_5_0_i35);
+	}
+	{
+	MR_Word MR_tempr1;
+	MR_tempr1 = MR_r1;
+	MR_r1 = MR_sv(3);
+	MR_r2 = MR_tempr1;
+	}
+	MR_np_call_localret_ent(transform_hlds__ctgc__structure_reuse__direct__choose_reuse__match_find_deconstruction_spec_3_0,
+		transform_hlds__ctgc__structure_reuse__direct__choose_reuse__annotate_reuse_for_unification_5_0_i38);
+MR_def_label(transform_hlds__ctgc__structure_reuse__direct__choose_reuse__annotate_reuse_for_unification_5_0,38)
+	MR_MAYBE_INIT_LOCAL_THREAD_ENGINE_BASE
+	if (!(MR_r1)) {
+		MR_GOTO_LAB(transform_hlds__ctgc__structure_reuse__direct__choose_reuse__annotate_reuse_for_unification_5_0_i54);
+	}
+	MR_r1 = (MR_Word) MR_TAG_COMMON(2,7,0);
+	MR_r2 = MR_sv(5);
+	MR_succip_word = MR_sv(6);
+	MR_decr_sp(6);
+	MR_np_tailcall_ent(hlds__hlds_goal__goal_info_set_reuse_3_0);
+MR_def_label(transform_hlds__ctgc__structure_reuse__direct__choose_reuse__annotate_reuse_for_unification_5_0,35)
+	MR_MAYBE_INIT_LOCAL_THREAD_ENGINE_BASE
+	if (MR_RTAGS_TESTR(MR_sv(4),3,0)) {
+		MR_GOTO_LAB(transform_hlds__ctgc__structure_reuse__direct__choose_reuse__annotate_reuse_for_unification_5_0_i43);
+	}
+MR_def_label(transform_hlds__ctgc__structure_reuse__direct__choose_reuse__annotate_reuse_for_unification_5_0,54)
+	MR_MAYBE_INIT_LOCAL_THREAD_ENGINE_BASE
+	MR_r1 = MR_sv(5);
+	MR_decr_sp_and_return(6);
+MR_def_label(transform_hlds__ctgc__structure_reuse__direct__choose_reuse__annotate_reuse_for_unification_5_0,43)
+	MR_MAYBE_INIT_LOCAL_THREAD_ENGINE_BASE
+	MR_r1 = (MR_Word) MR_string_const("transform_hlds.ctgc.structure_reuse.direct.choose_reuse", 55);
+	MR_r2 = (MR_Word) MR_string_const("predicate \140transform_hlds.ctgc.structure_reuse.direct.choose_reuse.annotate_reuse_for_unification\'/5", 100);
+	MR_r3 = (MR_Word) MR_string_const("complicated_unify", 17);
+	MR_succip_word = MR_sv(6);
+	MR_decr_sp(6);
+	MR_np_tailcall_ent(require__unexpected_3_0);
+#ifdef MR_maybe_local_thread_engine_base
+	#undef MR_maybe_local_thread_engine_base
+	#define MR_maybe_local_thread_engine_base MR_thread_engine_base
+#endif
+MR_END_MODULE
+
+
+MR_BEGIN_MODULE(transform_hlds__ctgc__structure_reuse__direct__choose_reuse_module13)
+	MR_init_entry1(transform_hlds__ctgc__structure_reuse__direct__choose_reuse__annotate_reuses_in_goal_4_0);
+	MR_INIT_PROC_LAYOUT_ADDR(mercury__transform_hlds__ctgc__structure_reuse__direct__choose_reuse__annotate_reuses_in_goal_4_0);
+	MR_init_label10(transform_hlds__ctgc__structure_reuse__direct__choose_reuse__annotate_reuses_in_goal_4_0,67,3,6,4,11,9,14,16,17,18)
+	MR_init_label9(transform_hlds__ctgc__structure_reuse__direct__choose_reuse__annotate_reuses_in_goal_4_0,15,21,22,24,23,29,27,33,32)
+MR_BEGIN_CODE
+
+/*-------------------------------------------------------------------------*/
+/* code for 'annotate_reuses_in_goal'/4 mode 0 */
+#ifdef MR_maybe_local_thread_engine_base
+	#undef MR_maybe_local_thread_engine_base
+	#define MR_maybe_local_thread_engine_base MR_local_thread_engine_base
+#endif
+MR_def_static(transform_hlds__ctgc__structure_reuse__direct__choose_reuse__annotate_reuses_in_goal_4_0)
+	MR_MAYBE_INIT_LOCAL_THREAD_ENGINE_BASE
+MR_def_label(transform_hlds__ctgc__structure_reuse__direct__choose_reuse__annotate_reuses_in_goal_4_0,67)
+	MR_MAYBE_INIT_LOCAL_THREAD_ENGINE_BASE
+	{
+	MR_Word MR_tempr1, MR_tempr2;
+	MR_tempr2 = MR_r3;
+	MR_tempr1 = MR_tfield(0, MR_tempr2, 0);
+	MR_r4 = MR_tempr1;
+	if (MR_RTAGS_TESTR(MR_tempr1,3,1)) {
+		MR_GOTO_LAB(transform_hlds__ctgc__structure_reuse__direct__choose_reuse__annotate_reuses_in_goal_4_0_i3);
+	}
+	MR_r1 = MR_tempr2;
+	MR_proceed();
+	}
+MR_def_label(transform_hlds__ctgc__structure_reuse__direct__choose_reuse__annotate_reuses_in_goal_4_0,3)
+	MR_MAYBE_INIT_LOCAL_THREAD_ENGINE_BASE
+	if (MR_RTAGS_TESTR(MR_r4,3,2)) {
+		MR_GOTO_LAB(transform_hlds__ctgc__structure_reuse__direct__choose_reuse__annotate_reuses_in_goal_4_0_i4);
+	}
+	MR_incr_sp(7);
+	MR_sv(7) = (MR_Word) MR_succip;
+	{
+	MR_Word MR_tempr1;
+	MR_tag_alloc_heap(MR_tempr1, 0, (MR_Integer) 5);
+	MR_tfield(0, MR_tempr1, 0) = (MR_Word) MR_COMMON(6,2);
+	MR_tfield(0, MR_tempr1, 1) = (MR_Word) MR_LABEL_AP(transform_hlds__ctgc__structure_reuse__direct__choose_reuse__annotate_reuses_in_goal_4_0_i67);
+	MR_tfield(0, MR_tempr1, 2) = (MR_Integer) 2;
+	MR_tfield(0, MR_tempr1, 3) = MR_r1;
+	MR_tfield(0, MR_tempr1, 4) = MR_r2;
+	MR_sv(2) = MR_tfield(0, MR_r3, 1);
+	MR_sv(6) = MR_tfield(3, MR_r4, 1);
+	MR_r1 = (MR_Word) MR_CTOR0_ADDR(hlds__hlds_goal, hlds_goal);
+	MR_r2 = MR_r1;
+	MR_r3 = MR_tempr1;
+	MR_r4 = MR_tfield(3, MR_r4, 2);
+	}
+	MR_np_call_localret_ent(list__map_3_0,
+		transform_hlds__ctgc__structure_reuse__direct__choose_reuse__annotate_reuses_in_goal_4_0_i6);
+MR_def_label(transform_hlds__ctgc__structure_reuse__direct__choose_reuse__annotate_reuses_in_goal_4_0,6)
+	MR_MAYBE_INIT_LOCAL_THREAD_ENGINE_BASE
+	MR_tag_alloc_heap(MR_r2, 3, (MR_Integer) 3);
+	MR_tfield(3, MR_r2, 0) = (MR_Integer) 2;
+	MR_tfield(3, MR_r2, 1) = MR_sv(6);
+	MR_tfield(3, MR_r2, 2) = MR_r1;
+	MR_tag_alloc_heap(MR_r1, 0, (MR_Integer) 2);
+	MR_tfield(0, MR_r1, 0) = MR_r2;
+	MR_tfield(0, MR_r1, 1) = MR_sv(2);
+	MR_decr_sp_and_return(7);
+MR_def_label(transform_hlds__ctgc__structure_reuse__direct__choose_reuse__annotate_reuses_in_goal_4_0,4)
+	MR_MAYBE_INIT_LOCAL_THREAD_ENGINE_BASE
+	if (MR_RTAGS_TESTR(MR_r4,3,3)) {
+		MR_GOTO_LAB(transform_hlds__ctgc__structure_reuse__direct__choose_reuse__annotate_reuses_in_goal_4_0_i9);
+	}
+	MR_incr_sp(7);
+	MR_sv(7) = (MR_Word) MR_succip;
+	{
+	MR_Word MR_tempr1;
+	MR_tag_alloc_heap(MR_tempr1, 0, (MR_Integer) 5);
+	MR_tfield(0, MR_tempr1, 0) = (MR_Word) MR_COMMON(6,3);
+	MR_tfield(0, MR_tempr1, 1) = (MR_Word) MR_LABEL_AP(transform_hlds__ctgc__structure_reuse__direct__choose_reuse__annotate_reuses_in_goal_4_0_i67);
+	MR_tfield(0, MR_tempr1, 2) = (MR_Integer) 2;
+	MR_tfield(0, MR_tempr1, 3) = MR_r1;
+	MR_tfield(0, MR_tempr1, 4) = MR_r2;
+	MR_sv(2) = MR_tfield(0, MR_r3, 1);
+	MR_r1 = (MR_Word) MR_CTOR0_ADDR(hlds__hlds_goal, hlds_goal);
+	MR_r2 = MR_r1;
+	MR_r3 = MR_tempr1;
+	MR_r4 = MR_tfield(3, MR_r4, 1);
+	}
+	MR_np_call_localret_ent(list__map_3_0,
+		transform_hlds__ctgc__structure_reuse__direct__choose_reuse__annotate_reuses_in_goal_4_0_i11);
+MR_def_label(transform_hlds__ctgc__structure_reuse__direct__choose_reuse__annotate_reuses_in_goal_4_0,11)
+	MR_MAYBE_INIT_LOCAL_THREAD_ENGINE_BASE
+	{
+	MR_Word MR_tempr1;
+	MR_tag_alloc_heap(MR_tempr1, 3, (MR_Integer) 2);
+	MR_tfield(3, MR_tempr1, 0) = (MR_Integer) 3;
+	MR_tfield(3, MR_tempr1, 1) = MR_r1;
+	MR_tag_alloc_heap(MR_r1, 0, (MR_Integer) 2);
+	MR_tfield(0, MR_r1, 0) = MR_tempr1;
+	MR_tfield(0, MR_r1, 1) = MR_sv(2);
+	MR_decr_sp_and_return(7);
+	}
+MR_def_label(transform_hlds__ctgc__structure_reuse__direct__choose_reuse__annotate_reuses_in_goal_4_0,9)
+	MR_MAYBE_INIT_LOCAL_THREAD_ENGINE_BASE
+	if (MR_RTAGS_TESTR(MR_r4,3,0)) {
+		MR_GOTO_LAB(transform_hlds__ctgc__structure_reuse__direct__choose_reuse__annotate_reuses_in_goal_4_0_i14);
+	}
+	MR_r1 = MR_r3;
+	MR_proceed();
+MR_def_label(transform_hlds__ctgc__structure_reuse__direct__choose_reuse__annotate_reuses_in_goal_4_0,14)
+	MR_MAYBE_INIT_LOCAL_THREAD_ENGINE_BASE
+	if (MR_RTAGS_TESTR(MR_r4,3,6)) {
+		MR_GOTO_LAB(transform_hlds__ctgc__structure_reuse__direct__choose_reuse__annotate_reuses_in_goal_4_0_i15);
+	}
+	MR_incr_sp(7);
+	MR_sv(7) = (MR_Word) MR_succip;
+	MR_sv(6) = MR_r1;
+	MR_sv(5) = MR_r2;
+	MR_sv(2) = MR_tfield(0, MR_r3, 1);
+	{
+	MR_Word MR_tempr1;
+	MR_tempr1 = MR_r4;
+	MR_sv(4) = MR_tfield(3, MR_tempr1, 3);
+	MR_sv(3) = MR_tfield(3, MR_tempr1, 4);
+	MR_sv(1) = MR_tfield(3, MR_tempr1, 1);
+	MR_r3 = MR_tfield(3, MR_tempr1, 2);
+	}
+	MR_np_localcall_lab(transform_hlds__ctgc__structure_reuse__direct__choose_reuse__annotate_reuses_in_goal_4_0,
+		transform_hlds__ctgc__structure_reuse__direct__choose_reuse__annotate_reuses_in_goal_4_0_i16);
+MR_def_label(transform_hlds__ctgc__structure_reuse__direct__choose_reuse__annotate_reuses_in_goal_4_0,16)
+	MR_MAYBE_INIT_LOCAL_THREAD_ENGINE_BASE
+	{
+	MR_Word MR_tempr1;
+	MR_tempr1 = MR_sv(4);
+	MR_sv(4) = MR_r1;
+	MR_r1 = MR_sv(6);
+	MR_r2 = MR_sv(5);
+	MR_r3 = MR_tempr1;
+	}
+	MR_np_localcall_lab(transform_hlds__ctgc__structure_reuse__direct__choose_reuse__annotate_reuses_in_goal_4_0,
+		transform_hlds__ctgc__structure_reuse__direct__choose_reuse__annotate_reuses_in_goal_4_0_i17);
+MR_def_label(transform_hlds__ctgc__structure_reuse__direct__choose_reuse__annotate_reuses_in_goal_4_0,17)
+	MR_MAYBE_INIT_LOCAL_THREAD_ENGINE_BASE
+	{
+	MR_Word MR_tempr1;
+	MR_tempr1 = MR_sv(6);
+	MR_sv(6) = MR_r1;
+	MR_r1 = MR_tempr1;
+	MR_r2 = MR_sv(5);
+	MR_r3 = MR_sv(3);
+	}
+	MR_np_localcall_lab(transform_hlds__ctgc__structure_reuse__direct__choose_reuse__annotate_reuses_in_goal_4_0,
+		transform_hlds__ctgc__structure_reuse__direct__choose_reuse__annotate_reuses_in_goal_4_0_i18);
+MR_def_label(transform_hlds__ctgc__structure_reuse__direct__choose_reuse__annotate_reuses_in_goal_4_0,18)
+	MR_MAYBE_INIT_LOCAL_THREAD_ENGINE_BASE
+	{
+	MR_Word MR_tempr1;
+	MR_tag_alloc_heap(MR_tempr1, 3, (MR_Integer) 5);
+	MR_tfield(3, MR_tempr1, 0) = (MR_Integer) 6;
+	MR_tfield(3, MR_tempr1, 1) = MR_sv(1);
+	MR_tfield(3, MR_tempr1, 2) = MR_sv(4);
+	MR_tfield(3, MR_tempr1, 3) = MR_sv(6);
+	MR_tfield(3, MR_tempr1, 4) = MR_r1;
+	MR_tag_alloc_heap(MR_r1, 0, (MR_Integer) 2);
+	MR_tfield(0, MR_r1, 0) = MR_tempr1;
+	MR_tfield(0, MR_r1, 1) = MR_sv(2);
+	MR_decr_sp_and_return(7);
+	}
+MR_def_label(transform_hlds__ctgc__structure_reuse__direct__choose_reuse__annotate_reuses_in_goal_4_0,15)
+	MR_MAYBE_INIT_LOCAL_THREAD_ENGINE_BASE
+	if (MR_PTAG_TESTR(MR_r4,0)) {
+		MR_GOTO_LAB(transform_hlds__ctgc__structure_reuse__direct__choose_reuse__annotate_reuses_in_goal_4_0_i21);
+	}
+	MR_r1 = MR_r3;
+	MR_proceed();
+MR_def_label(transform_hlds__ctgc__structure_reuse__direct__choose_reuse__annotate_reuses_in_goal_4_0,21)
+	MR_MAYBE_INIT_LOCAL_THREAD_ENGINE_BASE
+	if (MR_PTAG_TESTR(MR_r4,2)) {
+		MR_GOTO_LAB(transform_hlds__ctgc__structure_reuse__direct__choose_reuse__annotate_reuses_in_goal_4_0_i22);
+	}
+	MR_r1 = MR_r3;
+	MR_proceed();
+MR_def_label(transform_hlds__ctgc__structure_reuse__direct__choose_reuse__annotate_reuses_in_goal_4_0,22)
+	MR_MAYBE_INIT_LOCAL_THREAD_ENGINE_BASE
+	if (MR_RTAGS_TESTR(MR_r4,3,5)) {
+		MR_GOTO_LAB(transform_hlds__ctgc__structure_reuse__direct__choose_reuse__annotate_reuses_in_goal_4_0_i23);
+	}
+	MR_incr_sp(7);
+	MR_sv(7) = (MR_Word) MR_succip;
+	MR_sv(2) = MR_tfield(0, MR_r3, 1);
+	{
+	MR_Word MR_tempr1;
+	MR_tempr1 = MR_r4;
+	MR_sv(6) = MR_tfield(3, MR_tempr1, 1);
+	MR_r3 = MR_tfield(3, MR_tempr1, 2);
+	}
+	MR_np_localcall_lab(transform_hlds__ctgc__structure_reuse__direct__choose_reuse__annotate_reuses_in_goal_4_0,
+		transform_hlds__ctgc__structure_reuse__direct__choose_reuse__annotate_reuses_in_goal_4_0_i24);
+MR_def_label(transform_hlds__ctgc__structure_reuse__direct__choose_reuse__annotate_reuses_in_goal_4_0,24)
+	MR_MAYBE_INIT_LOCAL_THREAD_ENGINE_BASE
+	{
+	MR_Word MR_tempr1;
+	MR_tag_alloc_heap(MR_tempr1, 3, (MR_Integer) 3);
+	MR_tfield(3, MR_tempr1, 0) = (MR_Integer) 5;
+	MR_tfield(3, MR_tempr1, 1) = MR_sv(6);
+	MR_tfield(3, MR_tempr1, 2) = MR_r1;
+	MR_tag_alloc_heap(MR_r1, 0, (MR_Integer) 2);
+	MR_tfield(0, MR_r1, 0) = MR_tempr1;
+	MR_tfield(0, MR_r1, 1) = MR_sv(2);
+	MR_decr_sp_and_return(7);
+	}
+MR_def_label(transform_hlds__ctgc__structure_reuse__direct__choose_reuse__annotate_reuses_in_goal_4_0,23)
+	MR_MAYBE_INIT_LOCAL_THREAD_ENGINE_BASE
+	if (MR_RTAGS_TESTR(MR_r4,3,4)) {
+		MR_GOTO_LAB(transform_hlds__ctgc__structure_reuse__direct__choose_reuse__annotate_reuses_in_goal_4_0_i27);
+	}
+	MR_incr_sp(7);
+	MR_sv(7) = (MR_Word) MR_succip;
+	{
+	MR_Word MR_tempr1, MR_tempr2;
+	MR_tag_alloc_heap(MR_tempr1, 0, (MR_Integer) 5);
+	MR_tfield(0, MR_tempr1, 0) = (MR_Word) MR_COMMON(6,4);
+	MR_tfield(0, MR_tempr1, 1) = (MR_Word) MR_ENTRY_AP(transform_hlds__ctgc__structure_reuse__direct__choose_reuse__annotate_reuses_in_case_4_0);
+	MR_tfield(0, MR_tempr1, 2) = (MR_Integer) 2;
+	MR_tfield(0, MR_tempr1, 3) = MR_r1;
+	MR_tfield(0, MR_tempr1, 4) = MR_r2;
+	MR_sv(2) = MR_tfield(0, MR_r3, 1);
+	MR_tempr2 = MR_r4;
+	MR_sv(6) = MR_tfield(3, MR_tempr2, 2);
+	MR_sv(5) = MR_tfield(3, MR_tempr2, 1);
+	MR_r1 = (MR_Word) MR_CTOR0_ADDR(hlds__hlds_goal, case);
+	MR_r2 = MR_r1;
+	MR_r3 = MR_tempr1;
+	MR_r4 = MR_tfield(3, MR_tempr2, 3);
+	}
+	MR_np_call_localret_ent(list__map_3_0,
+		transform_hlds__ctgc__structure_reuse__direct__choose_reuse__annotate_reuses_in_goal_4_0_i29);
+MR_def_label(transform_hlds__ctgc__structure_reuse__direct__choose_reuse__annotate_reuses_in_goal_4_0,29)
+	MR_MAYBE_INIT_LOCAL_THREAD_ENGINE_BASE
+	{
+	MR_Word MR_tempr1;
+	MR_tag_alloc_heap(MR_tempr1, 3, (MR_Integer) 4);
+	MR_tfield(3, MR_tempr1, 0) = (MR_Integer) 4;
+	MR_tfield(3, MR_tempr1, 1) = MR_sv(5);
+	MR_tfield(3, MR_tempr1, 2) = MR_sv(6);
+	MR_tfield(3, MR_tempr1, 3) = MR_r1;
+	MR_tag_alloc_heap(MR_r1, 0, (MR_Integer) 2);
+	MR_tfield(0, MR_r1, 0) = MR_tempr1;
+	MR_tfield(0, MR_r1, 1) = MR_sv(2);
+	MR_decr_sp_and_return(7);
+	}
+MR_def_label(transform_hlds__ctgc__structure_reuse__direct__choose_reuse__annotate_reuses_in_goal_4_0,27)
+	MR_MAYBE_INIT_LOCAL_THREAD_ENGINE_BASE
+	if (MR_PTAG_TESTR(MR_r4,1)) {
+		MR_GOTO_LAB(transform_hlds__ctgc__structure_reuse__direct__choose_reuse__annotate_reuses_in_goal_4_0_i32);
+	}
+	MR_incr_sp(7);
+	MR_sv(7) = (MR_Word) MR_succip;
+	{
+	MR_Word MR_tempr1, MR_tempr2;
+	MR_tempr2 = MR_r4;
+	MR_sv(6) = MR_tempr2;
+	MR_tempr1 = MR_r3;
+	MR_r3 = MR_tfield(1, MR_tempr2, 3);
+	MR_r4 = MR_tfield(0, MR_tempr1, 1);
+	}
+	MR_np_call_localret_ent(transform_hlds__ctgc__structure_reuse__direct__choose_reuse__annotate_reuse_for_unification_5_0,
+		transform_hlds__ctgc__structure_reuse__direct__choose_reuse__annotate_reuses_in_goal_4_0_i33);
+MR_def_label(transform_hlds__ctgc__structure_reuse__direct__choose_reuse__annotate_reuses_in_goal_4_0,33)
+	MR_MAYBE_INIT_LOCAL_THREAD_ENGINE_BASE
+	{
+	MR_Word MR_tempr1;
+	MR_tag_alloc_heap(MR_tempr1, 0, (MR_Integer) 2);
+	MR_tfield(0, MR_tempr1, 0) = MR_sv(6);
+	MR_tfield(0, MR_tempr1, 1) = MR_r1;
+	MR_r1 = MR_tempr1;
+	MR_decr_sp_and_return(7);
+	}
+MR_def_label(transform_hlds__ctgc__structure_reuse__direct__choose_reuse__annotate_reuses_in_goal_4_0,32)
+	MR_MAYBE_INIT_LOCAL_THREAD_ENGINE_BASE
+	MR_r1 = (MR_Word) MR_string_const("transform_hlds.ctgc.structure_reuse.direct.choose_reuse", 55);
+	MR_r2 = (MR_Word) MR_string_const("predicate \140transform_hlds.ctgc.structure_reuse.direct.choose_reuse.annotate_reuses_in_goal\'/4", 93);
+	MR_r3 = (MR_Word) MR_string_const("shorthand.", 10);
+	MR_np_tailcall_ent(require__unexpected_3_0);
+#ifdef MR_maybe_local_thread_engine_base
+	#undef MR_maybe_local_thread_engine_base
+	#define MR_maybe_local_thread_engine_base MR_thread_engine_base
+#endif
+MR_END_MODULE
+
+MR_decl_entry(list__takewhile_4_0);
+MR_decl_entry(fn__list__length_1_0);
+MR_decl_entry(fn__string__int_to_string_1_0);
+MR_decl_entry(string__append_list_2_0);
+MR_decl_entry(io__write_string_3_0);
+
+MR_BEGIN_MODULE(transform_hlds__ctgc__structure_reuse__direct__choose_reuse_module14)
+	MR_init_entry1(transform_hlds__ctgc__structure_reuse__direct__choose_reuse__dump_match_details_3_0);
+	MR_INIT_PROC_LAYOUT_ADDR(mercury__transform_hlds__ctgc__structure_reuse__direct__choose_reuse__dump_match_details_3_0);
+	MR_init_label9(transform_hlds__ctgc__structure_reuse__direct__choose_reuse__dump_match_details_3_0,3,6,7,4,10,11,12,13,20)
+MR_BEGIN_CODE
+
+/*-------------------------------------------------------------------------*/
+/* code for 'dump_match_details'/3 mode 0 */
+#ifdef MR_maybe_local_thread_engine_base
+	#undef MR_maybe_local_thread_engine_base
+	#define MR_maybe_local_thread_engine_base MR_local_thread_engine_base
+#endif
+MR_def_static(transform_hlds__ctgc__structure_reuse__direct__choose_reuse__dump_match_details_3_0)
+	MR_MAYBE_INIT_LOCAL_THREAD_ENGINE_BASE
+	MR_incr_sp(3);
+	MR_sv(3) = (MR_Word) MR_succip;
+	MR_sv(2) = MR_r1;
+	MR_r1 = (MR_Word) MR_CTOR0_ADDR(transform_hlds__ctgc__structure_reuse__direct__choose_reuse, deconstruction_spec);
+	MR_r2 = (MR_Word) MR_CTOR0_ADDR(transform_hlds__ctgc__structure_reuse__domain, reuse_as);
+	MR_r3 = (MR_Word) MR_TAG_COMMON(0,1,14);
+	MR_r4 = MR_tfield(0, MR_sv(2), 0);
+	MR_np_call_localret_ent(fn__list__map_2_0,
+		transform_hlds__ctgc__structure_reuse__direct__choose_reuse__dump_match_details_3_0_i3);
+MR_def_label(transform_hlds__ctgc__structure_reuse__direct__choose_reuse__dump_match_details_3_0,3)
+	MR_MAYBE_INIT_LOCAL_THREAD_ENGINE_BASE
+	{
+	MR_Word MR_tempr1;
+	MR_tempr1 = MR_r1;
+	MR_r1 = (MR_Word) MR_CTOR0_ADDR(transform_hlds__ctgc__structure_reuse__domain, reuse_as);
+	MR_r2 = (MR_Word) MR_TAG_COMMON(0,1,15);
+	MR_r3 = MR_tempr1;
+	}
+	MR_np_call_localret_ent(list__takewhile_4_0,
+		transform_hlds__ctgc__structure_reuse__direct__choose_reuse__dump_match_details_3_0_i6);
+MR_def_label(transform_hlds__ctgc__structure_reuse__direct__choose_reuse__dump_match_details_3_0,6)
+	MR_MAYBE_INIT_LOCAL_THREAD_ENGINE_BASE
+	MR_r1 = (MR_Word) MR_CTOR0_ADDR(transform_hlds__ctgc__structure_reuse__domain, reuse_as);
+	{
+	MR_Word MR_tempr1;
+	MR_tempr1 = MR_r2;
+	MR_r2 = (MR_Word) MR_tbmkword(0, 0);
+	MR_r3 = MR_tempr1;
+	}
+	MR_np_call_localret_ent(__Unify___list__list_1_0,
+		transform_hlds__ctgc__structure_reuse__direct__choose_reuse__dump_match_details_3_0_i7);
+MR_def_label(transform_hlds__ctgc__structure_reuse__direct__choose_reuse__dump_match_details_3_0,7)
+	MR_MAYBE_INIT_LOCAL_THREAD_ENGINE_BASE
+	if (!(MR_r1)) {
+		MR_GOTO_LAB(transform_hlds__ctgc__structure_reuse__direct__choose_reuse__dump_match_details_3_0_i4);
+	}
+	MR_sv(1) = (MR_Word) MR_string_const("A", 1);
+	MR_r2 = MR_tfield(0, MR_sv(2), 0);
+	MR_r1 = (MR_Word) MR_CTOR0_ADDR(transform_hlds__ctgc__structure_reuse__direct__choose_reuse, deconstruction_spec);
+	MR_np_call_localret_ent(fn__list__length_1_0,
+		transform_hlds__ctgc__structure_reuse__direct__choose_reuse__dump_match_details_3_0_i10);
+MR_def_label(transform_hlds__ctgc__structure_reuse__direct__choose_reuse__dump_match_details_3_0,4)
+	MR_MAYBE_INIT_LOCAL_THREAD_ENGINE_BASE
+	MR_sv(1) = (MR_Word) MR_string_const("C", 1);
+	MR_r2 = MR_tfield(0, MR_sv(2), 0);
+	MR_r1 = (MR_Word) MR_CTOR0_ADDR(transform_hlds__ctgc__structure_reuse__direct__choose_reuse, deconstruction_spec);
+	MR_np_call_localret_ent(fn__list__length_1_0,
+		transform_hlds__ctgc__structure_reuse__direct__choose_reuse__dump_match_details_3_0_i10);
+MR_def_label(transform_hlds__ctgc__structure_reuse__direct__choose_reuse__dump_match_details_3_0,10)
+	MR_MAYBE_INIT_LOCAL_THREAD_ENGINE_BASE
+	{
+	MR_Word MR_tempr1;
+	MR_tempr1 = MR_sv(2);
+	MR_sv(2) = MR_r1;
+	MR_r1 = (MR_Word) MR_CTOR0_ADDR(transform_hlds__ctgc__structure_reuse__direct__choose_reuse, construction_spec);
+	MR_r2 = MR_tfield(0, MR_tempr1, 1);
+	}
+	MR_np_call_localret_ent(fn__list__length_1_0,
+		transform_hlds__ctgc__structure_reuse__direct__choose_reuse__dump_match_details_3_0_i11);
+MR_def_label(transform_hlds__ctgc__structure_reuse__direct__choose_reuse__dump_match_details_3_0,11)
+	MR_MAYBE_INIT_LOCAL_THREAD_ENGINE_BASE
+	MR_r2 = MR_sv(2);
+	MR_sv(2) = MR_r1;
+	MR_r1 = MR_r2;
+	MR_np_call_localret_ent(fn__string__int_to_string_1_0,
+		transform_hlds__ctgc__structure_reuse__direct__choose_reuse__dump_match_details_3_0_i12);
+MR_def_label(transform_hlds__ctgc__structure_reuse__direct__choose_reuse__dump_match_details_3_0,12)
+	MR_MAYBE_INIT_LOCAL_THREAD_ENGINE_BASE
+	MR_r2 = MR_sv(2);
+	MR_sv(2) = MR_r1;
+	MR_r1 = MR_r2;
+	MR_np_call_localret_ent(fn__string__int_to_string_1_0,
+		transform_hlds__ctgc__structure_reuse__direct__choose_reuse__dump_match_details_3_0_i13);
+MR_def_label(transform_hlds__ctgc__structure_reuse__direct__choose_reuse__dump_match_details_3_0,13)
+	MR_MAYBE_INIT_LOCAL_THREAD_ENGINE_BASE
+	MR_tag_alloc_heap(MR_r2, 1, (MR_Integer) 2);
+	MR_tfield(1, MR_r2, 0) = MR_sv(1);
+	MR_tfield(1, MR_r2, 1) = (MR_Word) MR_tbmkword(0, 0);
+	{
+	MR_Word MR_tempr1;
+	MR_tag_alloc_heap(MR_tempr1, 1, (MR_Integer) 2);
+	MR_tfield(1, MR_tempr1, 0) = (MR_Word) MR_string_const(", Co: ", 6);
+	MR_tfield(1, MR_tempr1, 1) = MR_r2;
+	MR_tag_alloc_heap(MR_r2, 1, (MR_Integer) 2);
+	MR_tfield(1, MR_r2, 0) = MR_r1;
+	MR_tfield(1, MR_r2, 1) = MR_tempr1;
+	MR_tag_alloc_heap(MR_tempr1, 1, (MR_Integer) 2);
+	MR_tfield(1, MR_tempr1, 0) = (MR_Word) MR_string_const(", c: ", 5);
+	MR_tfield(1, MR_tempr1, 1) = MR_r2;
+	MR_tag_alloc_heap(MR_r2, 1, (MR_Integer) 2);
+	MR_tfield(1, MR_r2, 0) = MR_sv(2);
+	MR_tfield(1, MR_r2, 1) = MR_tempr1;
+	MR_tag_alloc_heap(MR_r1, 1, (MR_Integer) 2);
+	MR_tfield(1, MR_r1, 0) = (MR_Word) MR_string_const("d: ", 3);
+	MR_tfield(1, MR_r1, 1) = MR_r2;
+	}
+	MR_np_call_localret_ent(string__append_list_2_0,
+		transform_hlds__ctgc__structure_reuse__direct__choose_reuse__dump_match_details_3_0_i20);
+MR_def_label(transform_hlds__ctgc__structure_reuse__direct__choose_reuse__dump_match_details_3_0,20)
+	MR_MAYBE_INIT_LOCAL_THREAD_ENGINE_BASE
+	MR_succip_word = MR_sv(3);
+	MR_decr_sp(3);
+	MR_np_tailcall_ent(io__write_string_3_0);
+#ifdef MR_maybe_local_thread_engine_base
+	#undef MR_maybe_local_thread_engine_base
+	#define MR_maybe_local_thread_engine_base MR_thread_engine_base
+#endif
+MR_END_MODULE
+
+MR_decl_entry(fn__term__var_to_int_1_0);
+MR_decl_entry(io__write_int_3_0);
+MR_decl_entry(io__format_4_0);
+MR_decl_entry(io__nl_2_0);
+
+MR_BEGIN_MODULE(transform_hlds__ctgc__structure_reuse__direct__choose_reuse_module15)
+	MR_init_entry1(transform_hlds__ctgc__structure_reuse__direct__choose_reuse__dump_match_4_0);
+	MR_INIT_PROC_LAYOUT_ADDR(mercury__transform_hlds__ctgc__structure_reuse__direct__choose_reuse__dump_match_4_0);
+	MR_init_label10(transform_hlds__ctgc__structure_reuse__direct__choose_reuse__dump_match_4_0,2,3,6,7,11,9,8,14,15,16)
+	MR_init_label6(transform_hlds__ctgc__structure_reuse__direct__choose_reuse__dump_match_4_0,17,23,25,26,27,28)
+MR_BEGIN_CODE
+
+/*-------------------------------------------------------------------------*/
+/* code for 'dump_match'/4 mode 0 */
+#ifdef MR_maybe_local_thread_engine_base
+	#undef MR_maybe_local_thread_engine_base
+	#define MR_maybe_local_thread_engine_base MR_local_thread_engine_base
+#endif
+MR_def_static(transform_hlds__ctgc__structure_reuse__direct__choose_reuse__dump_match_4_0)
+	MR_MAYBE_INIT_LOCAL_THREAD_ENGINE_BASE
+	MR_incr_sp(3);
+	MR_sv(3) = (MR_Word) MR_succip;
+	MR_sv(1) = MR_r2;
+	MR_np_call_localret_ent(io__write_string_3_0,
+		transform_hlds__ctgc__structure_reuse__direct__choose_reuse__dump_match_4_0_i2);
+MR_def_label(transform_hlds__ctgc__structure_reuse__direct__choose_reuse__dump_match_4_0,2)
+	MR_MAYBE_INIT_LOCAL_THREAD_ENGINE_BASE
+	MR_r1 = (MR_Word) MR_string_const("\t|\t", 3);
+	MR_np_call_localret_ent(io__write_string_3_0,
+		transform_hlds__ctgc__structure_reuse__direct__choose_reuse__dump_match_4_0_i3);
+MR_def_label(transform_hlds__ctgc__structure_reuse__direct__choose_reuse__dump_match_4_0,3)
+	MR_MAYBE_INIT_LOCAL_THREAD_ENGINE_BASE
+	MR_sv(2) = (MR_Word) MR_TAG_COMMON(0,5,0);
+	MR_r1 = (MR_Word) MR_CTOR0_ADDR(transform_hlds__ctgc__structure_reuse__direct__choose_reuse, deconstruction_spec);
+	MR_r2 = MR_sv(2);
+	MR_r3 = (MR_Word) MR_TAG_COMMON(0,1,16);
+	MR_r4 = MR_tfield(0, MR_sv(1), 0);
+	MR_np_call_localret_ent(fn__list__map_2_0,
+		transform_hlds__ctgc__structure_reuse__direct__choose_reuse__dump_match_4_0_i6);
+MR_def_label(transform_hlds__ctgc__structure_reuse__direct__choose_reuse__dump_match_4_0,6)
+	MR_MAYBE_INIT_LOCAL_THREAD_ENGINE_BASE
+	{
+	MR_Word MR_tempr1;
+	MR_tempr1 = MR_r1;
+	MR_r1 = MR_sv(2);
+	MR_r2 = MR_tempr1;
+	}
+	MR_np_call_localret_ent(fn__list__remove_dups_1_0,
+		transform_hlds__ctgc__structure_reuse__direct__choose_reuse__dump_match_4_0_i7);
+MR_def_label(transform_hlds__ctgc__structure_reuse__direct__choose_reuse__dump_match_4_0,7)
+	MR_MAYBE_INIT_LOCAL_THREAD_ENGINE_BASE
+	if (MR_LTAGS_TEST(MR_r1,0,0)) {
+		MR_GOTO_LAB(transform_hlds__ctgc__structure_reuse__direct__choose_reuse__dump_match_4_0_i9);
+	}
+	{
+	MR_Word MR_tempr1;
+	MR_tempr1 = MR_tfield(1, MR_r1, 1);
+	if (MR_LTAGS_TESTR(MR_tempr1,0,0)) {
+		MR_GOTO_LAB(transform_hlds__ctgc__structure_reuse__direct__choose_reuse__dump_match_4_0_i11);
+	}
+	MR_r2 = MR_tfield(1, MR_r1, 0);
+	MR_r1 = (MR_Word) MR_CTOR0_ADDR(parse_tree__prog_data, prog_var_type);
+	}
+	MR_np_call_localret_ent(fn__term__var_to_int_1_0,
+		transform_hlds__ctgc__structure_reuse__direct__choose_reuse__dump_match_4_0_i14);
+MR_def_label(transform_hlds__ctgc__structure_reuse__direct__choose_reuse__dump_match_4_0,11)
+	MR_MAYBE_INIT_LOCAL_THREAD_ENGINE_BASE
+	{
+	MR_Word MR_tempr1;
+	MR_tempr1 = MR_r1;
+	MR_r1 = (MR_Word) MR_string_const("transform_hlds.ctgc.structure_reuse.direct.choose_reuse", 55);
+	MR_r2 = (MR_Word) MR_string_const("function \140transform_hlds.ctgc.structure_reuse.direct.choose_reuse.match_get_dead_var\'/1", 87);
+	MR_r3 = (MR_Word) MR_string_const("too many dead vars", 18);
+	}
+	MR_np_call_localret_ent(require__unexpected_3_0,
+		transform_hlds__ctgc__structure_reuse__direct__choose_reuse__dump_match_4_0_i8);
+MR_def_label(transform_hlds__ctgc__structure_reuse__direct__choose_reuse__dump_match_4_0,9)
+	MR_MAYBE_INIT_LOCAL_THREAD_ENGINE_BASE
+	MR_r1 = (MR_Word) MR_string_const("transform_hlds.ctgc.structure_reuse.direct.choose_reuse", 55);
+	MR_r2 = (MR_Word) MR_string_const("function \140transform_hlds.ctgc.structure_reuse.direct.choose_reuse.match_get_dead_var\'/1", 87);
+	MR_r3 = (MR_Word) MR_string_const("empty list of vars", 18);
+	MR_np_call_localret_ent(require__unexpected_3_0,
+		transform_hlds__ctgc__structure_reuse__direct__choose_reuse__dump_match_4_0_i8);
+MR_def_label(transform_hlds__ctgc__structure_reuse__direct__choose_reuse__dump_match_4_0,8)
+	MR_MAYBE_INIT_LOCAL_THREAD_ENGINE_BASE
+	MR_np_call_localret_ent(fn__term__var_to_int_1_0,
+		transform_hlds__ctgc__structure_reuse__direct__choose_reuse__dump_match_4_0_i14);
+MR_def_label(transform_hlds__ctgc__structure_reuse__direct__choose_reuse__dump_match_4_0,14)
+	MR_MAYBE_INIT_LOCAL_THREAD_ENGINE_BASE
+	MR_np_call_localret_ent(io__write_int_3_0,
+		transform_hlds__ctgc__structure_reuse__direct__choose_reuse__dump_match_4_0_i15);
+MR_def_label(transform_hlds__ctgc__structure_reuse__direct__choose_reuse__dump_match_4_0,15)
+	MR_MAYBE_INIT_LOCAL_THREAD_ENGINE_BASE
+	MR_r1 = (MR_Word) MR_string_const("\t|\t", 3);
+	MR_np_call_localret_ent(io__write_string_3_0,
+		transform_hlds__ctgc__structure_reuse__direct__choose_reuse__dump_match_4_0_i16);
+MR_def_label(transform_hlds__ctgc__structure_reuse__direct__choose_reuse__dump_match_4_0,16)
+	MR_MAYBE_INIT_LOCAL_THREAD_ENGINE_BASE
+	{
+	MR_Word MR_tempr1, MR_tempr2;
+	MR_tempr1 = MR_tfield(0, MR_sv(1), 2);
+	if ((MR_word_to_float(MR_tempr1) == (MR_Float) 0.0000000000000000)) {
+		MR_GOTO_LAB(transform_hlds__ctgc__structure_reuse__direct__choose_reuse__dump_match_4_0_i17);
+	}
+	MR_tag_alloc_heap(MR_tempr2, 0, (MR_Integer) 1);
+	MR_tfield(0, MR_tempr2, 0) = MR_tempr1;
+	MR_tag_alloc_heap(MR_r2, 1, (MR_Integer) 2);
+	MR_tfield(1, MR_r2, 0) = MR_tempr2;
+	MR_tfield(1, MR_r2, 1) = (MR_Word) MR_tbmkword(0, 0);
+	MR_r1 = (MR_Word) MR_string_const("%.2f", 4);
+	}
+	MR_np_call_localret_ent(io__format_4_0,
+		transform_hlds__ctgc__structure_reuse__direct__choose_reuse__dump_match_4_0_i23);
+MR_def_label(transform_hlds__ctgc__structure_reuse__direct__choose_reuse__dump_match_4_0,17)
+	MR_MAYBE_INIT_LOCAL_THREAD_ENGINE_BASE
+	MR_r1 = (MR_Word) MR_string_const("-", 1);
+	MR_np_call_localret_ent(io__write_string_3_0,
+		transform_hlds__ctgc__structure_reuse__direct__choose_reuse__dump_match_4_0_i23);
+MR_def_label(transform_hlds__ctgc__structure_reuse__direct__choose_reuse__dump_match_4_0,23)
+	MR_MAYBE_INIT_LOCAL_THREAD_ENGINE_BASE
+	MR_sv(2) = MR_tfield(0, MR_sv(1), 3);
+	MR_r1 = (MR_Word) MR_string_const("\t|\t", 3);
+	MR_np_call_localret_ent(io__write_string_3_0,
+		transform_hlds__ctgc__structure_reuse__direct__choose_reuse__dump_match_4_0_i25);
+MR_def_label(transform_hlds__ctgc__structure_reuse__direct__choose_reuse__dump_match_4_0,25)
+	MR_MAYBE_INIT_LOCAL_THREAD_ENGINE_BASE
+	MR_r1 = MR_sv(2);
+	MR_np_call_localret_ent(io__write_int_3_0,
+		transform_hlds__ctgc__structure_reuse__direct__choose_reuse__dump_match_4_0_i26);
+MR_def_label(transform_hlds__ctgc__structure_reuse__direct__choose_reuse__dump_match_4_0,26)
+	MR_MAYBE_INIT_LOCAL_THREAD_ENGINE_BASE
+	MR_r1 = (MR_Word) MR_string_const("\t", 1);
+	MR_np_call_localret_ent(io__write_string_3_0,
+		transform_hlds__ctgc__structure_reuse__direct__choose_reuse__dump_match_4_0_i27);
+MR_def_label(transform_hlds__ctgc__structure_reuse__direct__choose_reuse__dump_match_4_0,27)
+	MR_MAYBE_INIT_LOCAL_THREAD_ENGINE_BASE
+	MR_r1 = MR_sv(1);
+	MR_np_call_localret_ent(transform_hlds__ctgc__structure_reuse__direct__choose_reuse__dump_match_details_3_0,
+		transform_hlds__ctgc__structure_reuse__direct__choose_reuse__dump_match_4_0_i28);
+MR_def_label(transform_hlds__ctgc__structure_reuse__direct__choose_reuse__dump_match_4_0,28)
+	MR_MAYBE_INIT_LOCAL_THREAD_ENGINE_BASE
+	MR_succip_word = MR_sv(3);
+	MR_decr_sp(3);
+	MR_np_tailcall_ent(io__nl_2_0);
+#ifdef MR_maybe_local_thread_engine_base
+	#undef MR_maybe_local_thread_engine_base
+	#define MR_maybe_local_thread_engine_base MR_thread_engine_base
+#endif
+MR_END_MODULE
+
+MR_decl_entry(multi_map__is_empty_1_0);
+MR_decl_entry(fn__string__count_codepoints_1_0);
+MR_decl_entry(fn__string__duplicate_char_2_0);
+MR_decl_entry(fn__f_115_116_114_105_110_103_95_95_43_43_2_0);
+MR_decl_entry(multi_map__values_2_0);
+extern const MR_TypeCtorInfo_Struct mercury_data_io__type_ctor_info_state_0;
+MR_decl_entry(list__foldl_4_2);
+
+MR_BEGIN_MODULE(transform_hlds__ctgc__structure_reuse__direct__choose_reuse_module16)
+	MR_init_entry1(transform_hlds__ctgc__structure_reuse__direct__choose_reuse__dump_full_table_3_0);
+	MR_INIT_PROC_LAYOUT_ADDR(mercury__transform_hlds__ctgc__structure_reuse__direct__choose_reuse__dump_full_table_3_0);
+	MR_init_label10(transform_hlds__ctgc__structure_reuse__direct__choose_reuse__dump_full_table_3_0,4,2,11,12,13,14,15,17,19,20)
+	MR_init_label3(transform_hlds__ctgc__structure_reuse__direct__choose_reuse__dump_full_table_3_0,21,22,23)
+MR_BEGIN_CODE
+
+/*-------------------------------------------------------------------------*/
+/* code for 'dump_full_table'/3 mode 0 */
+#ifdef MR_maybe_local_thread_engine_base
+	#undef MR_maybe_local_thread_engine_base
+	#define MR_maybe_local_thread_engine_base MR_local_thread_engine_base
+#endif
+MR_def_static(transform_hlds__ctgc__structure_reuse__direct__choose_reuse__dump_full_table_3_0)
+	MR_MAYBE_INIT_LOCAL_THREAD_ENGINE_BASE
+	MR_incr_sp(3);
+	MR_sv(3) = (MR_Word) MR_succip;
+	MR_sv(1) = MR_r1;
+	MR_r1 = (MR_Word) MR_TAG_COMMON(0,5,0);
+	MR_r2 = (MR_Word) MR_CTOR0_ADDR(transform_hlds__ctgc__structure_reuse__direct__choose_reuse, match);
+	MR_r3 = MR_sv(1);
+	MR_np_call_localret_ent(multi_map__is_empty_1_0,
+		transform_hlds__ctgc__structure_reuse__direct__choose_reuse__dump_full_table_3_0_i4);
+MR_def_label(transform_hlds__ctgc__structure_reuse__direct__choose_reuse__dump_full_table_3_0,4)
+	MR_MAYBE_INIT_LOCAL_THREAD_ENGINE_BASE
+	if (!(MR_r1)) {
+		MR_GOTO_LAB(transform_hlds__ctgc__structure_reuse__direct__choose_reuse__dump_full_table_3_0_i2);
+	}
+	MR_sv(1) = (MR_Word) MR_string_const("%---empty match table", 21);
+	MR_r1 = MR_sv(1);
+	MR_np_call_localret_ent(fn__string__count_codepoints_1_0,
+		transform_hlds__ctgc__structure_reuse__direct__choose_reuse__dump_full_table_3_0_i20);
+MR_def_label(transform_hlds__ctgc__structure_reuse__direct__choose_reuse__dump_full_table_3_0,2)
+	MR_MAYBE_INIT_LOCAL_THREAD_ENGINE_BASE
+	MR_sv(2) = (MR_Word) MR_string_const("%---full table (start)", 22);
+	MR_r1 = MR_sv(2);
+	MR_np_call_localret_ent(fn__string__count_codepoints_1_0,
+		transform_hlds__ctgc__structure_reuse__direct__choose_reuse__dump_full_table_3_0_i11);
+MR_def_label(transform_hlds__ctgc__structure_reuse__direct__choose_reuse__dump_full_table_3_0,11)
+	MR_MAYBE_INIT_LOCAL_THREAD_ENGINE_BASE
+	{
+	MR_Word MR_tempr1;
+	MR_tempr1 = MR_r1;
+	MR_r1 = (MR_Integer) 45;
+	MR_r2 = (((MR_Integer) 79 - (MR_Integer) MR_tempr1) - (MR_Integer) 1);
+	}
+	MR_np_call_localret_ent(fn__string__duplicate_char_2_0,
+		transform_hlds__ctgc__structure_reuse__direct__choose_reuse__dump_full_table_3_0_i12);
+MR_def_label(transform_hlds__ctgc__structure_reuse__direct__choose_reuse__dump_full_table_3_0,12)
+	MR_MAYBE_INIT_LOCAL_THREAD_ENGINE_BASE
+	{
+	MR_Word MR_tempr1;
+	MR_tempr1 = MR_r1;
+	MR_r1 = MR_sv(2);
+	MR_r2 = MR_tempr1;
+	}
+	MR_np_call_localret_ent(fn__f_115_116_114_105_110_103_95_95_43_43_2_0,
+		transform_hlds__ctgc__structure_reuse__direct__choose_reuse__dump_full_table_3_0_i13);
+MR_def_label(transform_hlds__ctgc__structure_reuse__direct__choose_reuse__dump_full_table_3_0,13)
+	MR_MAYBE_INIT_LOCAL_THREAD_ENGINE_BASE
+	MR_np_call_localret_ent(io__write_string_3_0,
+		transform_hlds__ctgc__structure_reuse__direct__choose_reuse__dump_full_table_3_0_i14);
+MR_def_label(transform_hlds__ctgc__structure_reuse__direct__choose_reuse__dump_full_table_3_0,14)
+	MR_MAYBE_INIT_LOCAL_THREAD_ENGINE_BASE
+	MR_r1 = (MR_Word) MR_string_const("%\n", 2);
+	MR_np_call_localret_ent(io__write_string_3_0,
+		transform_hlds__ctgc__structure_reuse__direct__choose_reuse__dump_full_table_3_0_i15);
+MR_def_label(transform_hlds__ctgc__structure_reuse__direct__choose_reuse__dump_full_table_3_0,15)
+	MR_MAYBE_INIT_LOCAL_THREAD_ENGINE_BASE
+	{
+	MR_Word MR_tempr1;
+	MR_tempr1 = MR_sv(1);
+	MR_sv(1) = (MR_Word) MR_CTOR0_ADDR(transform_hlds__ctgc__structure_reuse__direct__choose_reuse, match);
+	MR_r1 = (MR_Word) MR_TAG_COMMON(0,5,0);
+	MR_r2 = MR_sv(1);
+	MR_r3 = MR_tempr1;
+	}
+	MR_np_call_localret_ent(multi_map__values_2_0,
+		transform_hlds__ctgc__structure_reuse__direct__choose_reuse__dump_full_table_3_0_i17);
+MR_def_label(transform_hlds__ctgc__structure_reuse__direct__choose_reuse__dump_full_table_3_0,17)
+	MR_MAYBE_INIT_LOCAL_THREAD_ENGINE_BASE
+	{
+	MR_Word MR_tempr1;
+	MR_tempr1 = MR_r1;
+	MR_r1 = MR_sv(1);
+	MR_r2 = (MR_Word) MR_IO_CTOR_ADDR;
+	MR_r3 = (MR_Word) MR_TAG_COMMON(0,9,0);
+	MR_r4 = MR_tempr1;
+	}
+	MR_np_call_localret_ent(list__foldl_4_2,
+		transform_hlds__ctgc__structure_reuse__direct__choose_reuse__dump_full_table_3_0_i19);
+MR_def_label(transform_hlds__ctgc__structure_reuse__direct__choose_reuse__dump_full_table_3_0,19)
+	MR_MAYBE_INIT_LOCAL_THREAD_ENGINE_BASE
+	MR_sv(1) = (MR_Word) MR_string_const("%---full table (end)", 20);
+	MR_r1 = MR_sv(1);
+	MR_np_call_localret_ent(fn__string__count_codepoints_1_0,
+		transform_hlds__ctgc__structure_reuse__direct__choose_reuse__dump_full_table_3_0_i20);
+MR_def_label(transform_hlds__ctgc__structure_reuse__direct__choose_reuse__dump_full_table_3_0,20)
+	MR_MAYBE_INIT_LOCAL_THREAD_ENGINE_BASE
+	{
+	MR_Word MR_tempr1;
+	MR_tempr1 = MR_r1;
+	MR_r1 = (MR_Integer) 45;
+	MR_r2 = (((MR_Integer) 79 - (MR_Integer) MR_tempr1) - (MR_Integer) 1);
+	}
+	MR_np_call_localret_ent(fn__string__duplicate_char_2_0,
+		transform_hlds__ctgc__structure_reuse__direct__choose_reuse__dump_full_table_3_0_i21);
+MR_def_label(transform_hlds__ctgc__structure_reuse__direct__choose_reuse__dump_full_table_3_0,21)
+	MR_MAYBE_INIT_LOCAL_THREAD_ENGINE_BASE
+	{
+	MR_Word MR_tempr1;
+	MR_tempr1 = MR_r1;
+	MR_r1 = MR_sv(1);
+	MR_r2 = MR_tempr1;
+	}
+	MR_np_call_localret_ent(fn__f_115_116_114_105_110_103_95_95_43_43_2_0,
+		transform_hlds__ctgc__structure_reuse__direct__choose_reuse__dump_full_table_3_0_i22);
+MR_def_label(transform_hlds__ctgc__structure_reuse__direct__choose_reuse__dump_full_table_3_0,22)
+	MR_MAYBE_INIT_LOCAL_THREAD_ENGINE_BASE
+	MR_np_call_localret_ent(io__write_string_3_0,
+		transform_hlds__ctgc__structure_reuse__direct__choose_reuse__dump_full_table_3_0_i23);
+MR_def_label(transform_hlds__ctgc__structure_reuse__direct__choose_reuse__dump_full_table_3_0,23)
+	MR_MAYBE_INIT_LOCAL_THREAD_ENGINE_BASE
+	MR_r1 = (MR_Word) MR_string_const("%\n", 2);
+	MR_succip_word = MR_sv(3);
+	MR_decr_sp(3);
+	MR_np_tailcall_ent(io__write_string_3_0);
+#ifdef MR_maybe_local_thread_engine_base
+	#undef MR_maybe_local_thread_engine_base
+	#define MR_maybe_local_thread_engine_base MR_thread_engine_base
+#endif
+MR_END_MODULE
+
+
+MR_BEGIN_MODULE(transform_hlds__ctgc__structure_reuse__direct__choose_reuse_module17)
+	MR_init_entry1(transform_hlds__ctgc__structure_reuse__direct__choose_reuse__maybe_dump_match_table_5_0);
+	MR_INIT_PROC_LAYOUT_ADDR(mercury__transform_hlds__ctgc__structure_reuse__direct__choose_reuse__maybe_dump_match_table_5_0);
+	MR_init_label10(transform_hlds__ctgc__structure_reuse__direct__choose_reuse__maybe_dump_match_table_5_0,4,5,6,7,8,9,10,11,12,13)
+	MR_init_label3(transform_hlds__ctgc__structure_reuse__direct__choose_reuse__maybe_dump_match_table_5_0,14,15,24)
+MR_BEGIN_CODE
+
+/*-------------------------------------------------------------------------*/
+/* code for 'maybe_dump_match_table'/5 mode 0 */
+#ifdef MR_maybe_local_thread_engine_base
+	#undef MR_maybe_local_thread_engine_base
+	#define MR_maybe_local_thread_engine_base MR_local_thread_engine_base
+#endif
+MR_def_static(transform_hlds__ctgc__structure_reuse__direct__choose_reuse__maybe_dump_match_table_5_0)
+	MR_MAYBE_INIT_LOCAL_THREAD_ENGINE_BASE
+	if (MR_INT_EQ(MR_r1,0)) {
+		MR_GOTO_LAB(transform_hlds__ctgc__structure_reuse__direct__choose_reuse__maybe_dump_match_table_5_0_i24);
+	}
+	MR_incr_sp(4);
+	MR_sv(4) = (MR_Word) MR_succip;
+	MR_sv(3) = MR_r2;
+	MR_sv(1) = MR_r3;
+	MR_sv(2) = (MR_Word) MR_string_const("%---reuse table", 15);
+	MR_r1 = MR_sv(2);
+	MR_np_call_localret_ent(fn__string__count_codepoints_1_0,
+		transform_hlds__ctgc__structure_reuse__direct__choose_reuse__maybe_dump_match_table_5_0_i4);
+MR_def_label(transform_hlds__ctgc__structure_reuse__direct__choose_reuse__maybe_dump_match_table_5_0,4)
+	MR_MAYBE_INIT_LOCAL_THREAD_ENGINE_BASE
+	{
+	MR_Word MR_tempr1;
+	MR_tempr1 = MR_r1;
+	MR_r1 = (MR_Integer) 45;
+	MR_r2 = (((MR_Integer) 79 - (MR_Integer) MR_tempr1) - (MR_Integer) 1);
+	}
+	MR_np_call_localret_ent(fn__string__duplicate_char_2_0,
+		transform_hlds__ctgc__structure_reuse__direct__choose_reuse__maybe_dump_match_table_5_0_i5);
+MR_def_label(transform_hlds__ctgc__structure_reuse__direct__choose_reuse__maybe_dump_match_table_5_0,5)
+	MR_MAYBE_INIT_LOCAL_THREAD_ENGINE_BASE
+	{
+	MR_Word MR_tempr1;
+	MR_tempr1 = MR_r1;
+	MR_r1 = MR_sv(2);
+	MR_r2 = MR_tempr1;
+	}
+	MR_np_call_localret_ent(fn__f_115_116_114_105_110_103_95_95_43_43_2_0,
+		transform_hlds__ctgc__structure_reuse__direct__choose_reuse__maybe_dump_match_table_5_0_i6);
+MR_def_label(transform_hlds__ctgc__structure_reuse__direct__choose_reuse__maybe_dump_match_table_5_0,6)
+	MR_MAYBE_INIT_LOCAL_THREAD_ENGINE_BASE
+	MR_np_call_localret_ent(io__write_string_3_0,
+		transform_hlds__ctgc__structure_reuse__direct__choose_reuse__maybe_dump_match_table_5_0_i7);
+MR_def_label(transform_hlds__ctgc__structure_reuse__direct__choose_reuse__maybe_dump_match_table_5_0,7)
+	MR_MAYBE_INIT_LOCAL_THREAD_ENGINE_BASE
+	MR_r1 = (MR_Word) MR_string_const("%\n", 2);
+	MR_np_call_localret_ent(io__write_string_3_0,
+		transform_hlds__ctgc__structure_reuse__direct__choose_reuse__maybe_dump_match_table_5_0_i8);
+MR_def_label(transform_hlds__ctgc__structure_reuse__direct__choose_reuse__maybe_dump_match_table_5_0,8)
+	MR_MAYBE_INIT_LOCAL_THREAD_ENGINE_BASE
+	MR_r1 = (MR_Word) MR_string_const("%\t|\tvar\t|\tvalue\t|\tdegree\n", 25);
+	MR_np_call_localret_ent(io__write_string_3_0,
+		transform_hlds__ctgc__structure_reuse__direct__choose_reuse__maybe_dump_match_table_5_0_i9);
+MR_def_label(transform_hlds__ctgc__structure_reuse__direct__choose_reuse__maybe_dump_match_table_5_0,9)
+	MR_MAYBE_INIT_LOCAL_THREAD_ENGINE_BASE
+	MR_r1 = (MR_Word) MR_string_const("%-sel- ", 7);
+	MR_r2 = MR_sv(1);
+	MR_np_call_localret_ent(transform_hlds__ctgc__structure_reuse__direct__choose_reuse__dump_match_4_0,
+		transform_hlds__ctgc__structure_reuse__direct__choose_reuse__maybe_dump_match_table_5_0_i10);
+MR_def_label(transform_hlds__ctgc__structure_reuse__direct__choose_reuse__maybe_dump_match_table_5_0,10)
+	MR_MAYBE_INIT_LOCAL_THREAD_ENGINE_BASE
+	MR_r1 = MR_sv(3);
+	MR_np_call_localret_ent(transform_hlds__ctgc__structure_reuse__direct__choose_reuse__dump_full_table_3_0,
+		transform_hlds__ctgc__structure_reuse__direct__choose_reuse__maybe_dump_match_table_5_0_i11);
+MR_def_label(transform_hlds__ctgc__structure_reuse__direct__choose_reuse__maybe_dump_match_table_5_0,11)
+	MR_MAYBE_INIT_LOCAL_THREAD_ENGINE_BASE
+	MR_sv(3) = (MR_Word) MR_string_const("%---", 4);
+	MR_r1 = MR_sv(3);
+	MR_np_call_localret_ent(fn__string__count_codepoints_1_0,
+		transform_hlds__ctgc__structure_reuse__direct__choose_reuse__maybe_dump_match_table_5_0_i12);
+MR_def_label(transform_hlds__ctgc__structure_reuse__direct__choose_reuse__maybe_dump_match_table_5_0,12)
+	MR_MAYBE_INIT_LOCAL_THREAD_ENGINE_BASE
+	{
+	MR_Word MR_tempr1;
+	MR_tempr1 = MR_r1;
+	MR_r1 = (MR_Integer) 45;
+	MR_r2 = (((MR_Integer) 79 - (MR_Integer) MR_tempr1) - (MR_Integer) 1);
+	}
+	MR_np_call_localret_ent(fn__string__duplicate_char_2_0,
+		transform_hlds__ctgc__structure_reuse__direct__choose_reuse__maybe_dump_match_table_5_0_i13);
+MR_def_label(transform_hlds__ctgc__structure_reuse__direct__choose_reuse__maybe_dump_match_table_5_0,13)
+	MR_MAYBE_INIT_LOCAL_THREAD_ENGINE_BASE
+	{
+	MR_Word MR_tempr1;
+	MR_tempr1 = MR_r1;
+	MR_r1 = MR_sv(3);
+	MR_r2 = MR_tempr1;
+	}
+	MR_np_call_localret_ent(fn__f_115_116_114_105_110_103_95_95_43_43_2_0,
+		transform_hlds__ctgc__structure_reuse__direct__choose_reuse__maybe_dump_match_table_5_0_i14);
+MR_def_label(transform_hlds__ctgc__structure_reuse__direct__choose_reuse__maybe_dump_match_table_5_0,14)
+	MR_MAYBE_INIT_LOCAL_THREAD_ENGINE_BASE
+	MR_np_call_localret_ent(io__write_string_3_0,
+		transform_hlds__ctgc__structure_reuse__direct__choose_reuse__maybe_dump_match_table_5_0_i15);
+MR_def_label(transform_hlds__ctgc__structure_reuse__direct__choose_reuse__maybe_dump_match_table_5_0,15)
+	MR_MAYBE_INIT_LOCAL_THREAD_ENGINE_BASE
+	MR_r1 = (MR_Word) MR_string_const("%\n", 2);
+	MR_succip_word = MR_sv(4);
+	MR_decr_sp(4);
+	MR_np_tailcall_ent(io__write_string_3_0);
+MR_def_label(transform_hlds__ctgc__structure_reuse__direct__choose_reuse__maybe_dump_match_table_5_0,24)
+	MR_MAYBE_INIT_LOCAL_THREAD_ENGINE_BASE
+	MR_proceed();
+#ifdef MR_maybe_local_thread_engine_base
+	#undef MR_maybe_local_thread_engine_base
+	#define MR_maybe_local_thread_engine_base MR_thread_engine_base
+#endif
+MR_END_MODULE
+
+MR_decl_entry(hlds__hlds_module__module_info_get_globals_2_0);
+MR_decl_entry(libs__globals__lookup_bool_option_3_0);
+MR_decl_entry(libs__file_util__maybe_write_string_4_0);
+MR_decl_entry(libs__globals__lookup_int_option_3_0);
+MR_decl_entry(fn__transform_hlds__ctgc__structure_reuse__domain__reuse_as_count_conditions_1_0);
+
+MR_BEGIN_MODULE(transform_hlds__ctgc__structure_reuse__direct__choose_reuse_module18)
+	MR_init_entry1(transform_hlds__ctgc__structure_reuse__direct__choose_reuse__choose_reuse_in_goal_7_0);
+	MR_INIT_PROC_LAYOUT_ADDR(mercury__transform_hlds__ctgc__structure_reuse__direct__choose_reuse__choose_reuse_in_goal_7_0);
+	MR_init_label10(transform_hlds__ctgc__structure_reuse__direct__choose_reuse__choose_reuse_in_goal_7_0,55,2,3,5,6,8,7,10,12,14)
+	MR_init_label10(transform_hlds__ctgc__structure_reuse__direct__choose_reuse__choose_reuse_in_goal_7_0,13,18,19,20,21,22,23,24,26,25)
+	MR_init_label1(transform_hlds__ctgc__structure_reuse__direct__choose_reuse__choose_reuse_in_goal_7_0,59)
+MR_BEGIN_CODE
+
+/*-------------------------------------------------------------------------*/
+/* code for 'choose_reuse_in_goal'/7 mode 0 */
+#ifdef MR_maybe_local_thread_engine_base
+	#undef MR_maybe_local_thread_engine_base
+	#define MR_maybe_local_thread_engine_base MR_local_thread_engine_base
+#endif
+MR_def_static(transform_hlds__ctgc__structure_reuse__direct__choose_reuse__choose_reuse_in_goal_7_0)
+	MR_MAYBE_INIT_LOCAL_THREAD_ENGINE_BASE
+	MR_incr_sp(10);
+	MR_sv(10) = (MR_Word) MR_succip;
+MR_def_label(transform_hlds__ctgc__structure_reuse__direct__choose_reuse__choose_reuse_in_goal_7_0,55)
+	MR_MAYBE_INIT_LOCAL_THREAD_ENGINE_BASE
+	MR_sv(1) = MR_r1;
+	MR_sv(3) = MR_tfield(0, MR_r1, 1);
+	MR_sv(4) = MR_r2;
+	MR_sv(5) = MR_r3;
+	MR_sv(6) = MR_r4;
+	MR_r1 = MR_sv(3);
+	MR_np_call_localret_ent(hlds__hlds_module__module_info_get_globals_2_0,
+		transform_hlds__ctgc__structure_reuse__direct__choose_reuse__choose_reuse_in_goal_7_0_i2);
+MR_def_label(transform_hlds__ctgc__structure_reuse__direct__choose_reuse__choose_reuse_in_goal_7_0,2)
+	MR_MAYBE_INIT_LOCAL_THREAD_ENGINE_BASE
+	MR_sv(9) = MR_r1;
+	MR_r2 = (MR_Integer) 45;
+	MR_np_call_localret_ent(libs__globals__lookup_bool_option_3_0,
+		transform_hlds__ctgc__structure_reuse__direct__choose_reuse__choose_reuse_in_goal_7_0_i3);
+MR_def_label(transform_hlds__ctgc__structure_reuse__direct__choose_reuse__choose_reuse_in_goal_7_0,3)
+	MR_MAYBE_INIT_LOCAL_THREAD_ENGINE_BASE
+	MR_sv(2) = MR_r1;
+	MR_sv(8) = (MR_Word) MR_TAG_COMMON(0,5,0);
+	MR_r1 = MR_sv(8);
+	MR_r2 = (MR_Word) MR_CTOR0_ADDR(transform_hlds__ctgc__structure_reuse__direct__choose_reuse, match);
+	MR_np_call_localret_ent(fn__multi_map__init_0_0,
+		transform_hlds__ctgc__structure_reuse__direct__choose_reuse__choose_reuse_in_goal_7_0_i5);
+MR_def_label(transform_hlds__ctgc__structure_reuse__direct__choose_reuse__choose_reuse_in_goal_7_0,5)
+	MR_MAYBE_INIT_LOCAL_THREAD_ENGINE_BASE
+	{
+	MR_Word MR_tempr1;
+	MR_tempr1 = MR_r1;
+	MR_r1 = MR_sv(1);
+	MR_r2 = MR_sv(4);
+	MR_r3 = MR_sv(5);
+	MR_r4 = (MR_Word) MR_tbmkword(0, 0);
+	MR_r5 = MR_tempr1;
+	}
+	MR_np_call_localret_ent(transform_hlds__ctgc__structure_reuse__direct__choose_reuse__compute_match_table_with_continuation_6_0,
+		transform_hlds__ctgc__structure_reuse__direct__choose_reuse__choose_reuse_in_goal_7_0_i6);
+MR_def_label(transform_hlds__ctgc__structure_reuse__direct__choose_reuse__choose_reuse_in_goal_7_0,6)
+	MR_MAYBE_INIT_LOCAL_THREAD_ENGINE_BASE
+	MR_sv(7) = MR_r1;
+	MR_r1 = MR_sv(8);
+	MR_r2 = (MR_Word) MR_CTOR0_ADDR(transform_hlds__ctgc__structure_reuse__direct__choose_reuse, match);
+	MR_r3 = MR_sv(7);
+	MR_np_call_localret_ent(multi_map__is_empty_1_0,
+		transform_hlds__ctgc__structure_reuse__direct__choose_reuse__choose_reuse_in_goal_7_0_i8);
+MR_def_label(transform_hlds__ctgc__structure_reuse__direct__choose_reuse__choose_reuse_in_goal_7_0,8)
+	MR_MAYBE_INIT_LOCAL_THREAD_ENGINE_BASE
+	if (!(MR_r1)) {
+		MR_GOTO_LAB(transform_hlds__ctgc__structure_reuse__direct__choose_reuse__choose_reuse_in_goal_7_0_i7);
+	}
+	MR_r1 = MR_sv(4);
+	MR_r2 = MR_sv(5);
+	MR_r3 = MR_sv(6);
+	MR_decr_sp_and_return(10);
+MR_def_label(transform_hlds__ctgc__structure_reuse__direct__choose_reuse__choose_reuse_in_goal_7_0,7)
+	MR_MAYBE_INIT_LOCAL_THREAD_ENGINE_BASE
+	{
+	MR_Word MR_tempr1;
+	MR_tempr1 = MR_sv(8);
+	MR_sv(8) = (MR_Word) MR_CTOR0_ADDR(transform_hlds__ctgc__structure_reuse__direct__choose_reuse, match);
+	MR_r1 = MR_tempr1;
+	MR_r2 = MR_sv(8);
+	MR_r3 = MR_sv(7);
+	}
+	MR_np_call_localret_ent(multi_map__values_2_0,
+		transform_hlds__ctgc__structure_reuse__direct__choose_reuse__choose_reuse_in_goal_7_0_i10);
+MR_def_label(transform_hlds__ctgc__structure_reuse__direct__choose_reuse__choose_reuse_in_goal_7_0,10)
+	MR_MAYBE_INIT_LOCAL_THREAD_ENGINE_BASE
+	{
+	MR_Word MR_tempr1;
+	MR_tempr1 = MR_r1;
+	MR_r1 = MR_sv(8);
+	MR_r2 = (MR_Word) MR_TAG_COMMON(0,1,17);
+	MR_r3 = MR_tempr1;
+	}
+	MR_np_call_localret_ent(list__sort_3_0,
+		transform_hlds__ctgc__structure_reuse__direct__choose_reuse__choose_reuse_in_goal_7_0_i12);
+MR_def_label(transform_hlds__ctgc__structure_reuse__direct__choose_reuse__choose_reuse_in_goal_7_0,12)
+	MR_MAYBE_INIT_LOCAL_THREAD_ENGINE_BASE
+	if (MR_LTAGS_TEST(MR_r1,0,0)) {
+		MR_GOTO_LAB(transform_hlds__ctgc__structure_reuse__direct__choose_reuse__choose_reuse_in_goal_7_0_i14);
+	}
+	MR_sv(8) = MR_tfield(1, MR_r1, 0);
+	MR_r1 = MR_sv(4);
+	MR_r2 = MR_sv(5);
+	MR_r3 = MR_sv(6);
+	MR_r4 = MR_tfield(0, MR_sv(8), 1);
+	MR_GOTO_LAB(transform_hlds__ctgc__structure_reuse__direct__choose_reuse__choose_reuse_in_goal_7_0_i13);
+MR_def_label(transform_hlds__ctgc__structure_reuse__direct__choose_reuse__choose_reuse_in_goal_7_0,14)
+	MR_MAYBE_INIT_LOCAL_THREAD_ENGINE_BASE
+	MR_r1 = (MR_Word) MR_string_const("transform_hlds.ctgc.structure_reuse.direct.choose_reuse", 55);
+	MR_r2 = (MR_Word) MR_string_const("function \140transform_hlds.ctgc.structure_reuse.direct.choose_reuse.highest_match_degree_ratio\'/1", 95);
+	MR_r3 = (MR_Word) MR_string_const("empty multi_map", 15);
+	MR_np_call_localret_ent(require__unexpected_3_0,
+		transform_hlds__ctgc__structure_reuse__direct__choose_reuse__choose_reuse_in_goal_7_0_i13);
+MR_def_label(transform_hlds__ctgc__structure_reuse__direct__choose_reuse__choose_reuse_in_goal_7_0,13)
+	MR_MAYBE_INIT_LOCAL_THREAD_ENGINE_BASE
+	if (MR_LTAGS_TEST(MR_r4,0,0)) {
+		MR_GOTO_LAB(transform_hlds__ctgc__structure_reuse__direct__choose_reuse__choose_reuse_in_goal_7_0_i59);
+	}
+	MR_sv(4) = MR_r1;
+	MR_sv(5) = MR_r2;
+	MR_sv(6) = MR_r3;
+	MR_r1 = MR_sv(2);
+	MR_r2 = (MR_Word) MR_string_const("% Reuse results: \n", 18);
+	MR_np_call_localret_ent(libs__file_util__maybe_write_string_4_0,
+		transform_hlds__ctgc__structure_reuse__direct__choose_reuse__choose_reuse_in_goal_7_0_i18);
+MR_def_label(transform_hlds__ctgc__structure_reuse__direct__choose_reuse__choose_reuse_in_goal_7_0,18)
+	MR_MAYBE_INIT_LOCAL_THREAD_ENGINE_BASE
+	MR_r1 = MR_sv(2);
+	MR_r2 = MR_sv(7);
+	MR_r3 = MR_sv(8);
+	MR_np_call_localret_ent(transform_hlds__ctgc__structure_reuse__direct__choose_reuse__maybe_dump_match_table_5_0,
+		transform_hlds__ctgc__structure_reuse__direct__choose_reuse__choose_reuse_in_goal_7_0_i19);
+MR_def_label(transform_hlds__ctgc__structure_reuse__direct__choose_reuse__choose_reuse_in_goal_7_0,19)
+	MR_MAYBE_INIT_LOCAL_THREAD_ENGINE_BASE
+	MR_r1 = MR_sv(1);
+	MR_r2 = MR_sv(8);
+	MR_r3 = MR_sv(5);
+	MR_np_call_localret_ent(transform_hlds__ctgc__structure_reuse__direct__choose_reuse__annotate_reuses_in_goal_4_0,
+		transform_hlds__ctgc__structure_reuse__direct__choose_reuse__choose_reuse_in_goal_7_0_i20);
+MR_def_label(transform_hlds__ctgc__structure_reuse__direct__choose_reuse__choose_reuse_in_goal_7_0,20)
+	MR_MAYBE_INIT_LOCAL_THREAD_ENGINE_BASE
+	MR_sv(7) = MR_r1;
+	MR_r1 = MR_sv(8);
+	MR_r2 = MR_sv(4);
+	MR_np_call_localret_ent(transform_hlds__ctgc__structure_reuse__direct__choose_reuse__remove_deconstructions_from_dead_cell_table_3_0,
+		transform_hlds__ctgc__structure_reuse__direct__choose_reuse__choose_reuse_in_goal_7_0_i21);
+MR_def_label(transform_hlds__ctgc__structure_reuse__direct__choose_reuse__choose_reuse_in_goal_7_0,21)
+	MR_MAYBE_INIT_LOCAL_THREAD_ENGINE_BASE
+	{
+	MR_Word MR_tempr1, MR_tempr2;
+	MR_tempr2 = MR_sv(1);
+	MR_sv(2) = MR_tfield(0, MR_tempr2, 2);
+	MR_tempr1 = MR_sv(8);
+	MR_sv(8) = MR_r1;
+	MR_r1 = MR_tempr2;
+	MR_r2 = MR_tempr1;
+	}
+	MR_np_call_localret_ent(fn__transform_hlds__ctgc__structure_reuse__direct__choose_reuse__match_get_condition_2_0,
+		transform_hlds__ctgc__structure_reuse__direct__choose_reuse__choose_reuse_in_goal_7_0_i22);
+MR_def_label(transform_hlds__ctgc__structure_reuse__direct__choose_reuse__choose_reuse_in_goal_7_0,22)
+	MR_MAYBE_INIT_LOCAL_THREAD_ENGINE_BASE
+	{
+	MR_Word MR_tempr1;
+	MR_tempr1 = MR_r1;
+	MR_r1 = MR_sv(3);
+	MR_r2 = MR_sv(2);
+	MR_r3 = MR_tempr1;
+	MR_r4 = MR_sv(6);
+	}
+	MR_np_call_localret_ent(transform_hlds__ctgc__structure_reuse__domain__reuse_as_least_upper_bound_5_0,
+		transform_hlds__ctgc__structure_reuse__direct__choose_reuse__choose_reuse_in_goal_7_0_i23);
+MR_def_label(transform_hlds__ctgc__structure_reuse__direct__choose_reuse__choose_reuse_in_goal_7_0,23)
+	MR_MAYBE_INIT_LOCAL_THREAD_ENGINE_BASE
+	{
+	MR_Word MR_tempr1;
+	MR_tempr1 = MR_sv(9);
+	MR_sv(9) = MR_r1;
+	MR_r1 = MR_tempr1;
+	MR_r2 = (MR_Integer) 403;
+	}
+	MR_np_call_localret_ent(libs__globals__lookup_int_option_3_0,
+		transform_hlds__ctgc__structure_reuse__direct__choose_reuse__choose_reuse_in_goal_7_0_i24);
+MR_def_label(transform_hlds__ctgc__structure_reuse__direct__choose_reuse__choose_reuse_in_goal_7_0,24)
+	MR_MAYBE_INIT_LOCAL_THREAD_ENGINE_BASE
+	MR_sv(3) = MR_r1;
+	MR_r1 = MR_sv(9);
+	MR_np_call_localret_ent(fn__transform_hlds__ctgc__structure_reuse__domain__reuse_as_count_conditions_1_0,
+		transform_hlds__ctgc__structure_reuse__direct__choose_reuse__choose_reuse_in_goal_7_0_i26);
+MR_def_label(transform_hlds__ctgc__structure_reuse__direct__choose_reuse__choose_reuse_in_goal_7_0,26)
+	MR_MAYBE_INIT_LOCAL_THREAD_ENGINE_BASE
+	if (((MR_Integer) MR_r1 <= (MR_Integer) MR_sv(3))) {
+		MR_GOTO_LAB(transform_hlds__ctgc__structure_reuse__direct__choose_reuse__choose_reuse_in_goal_7_0_i25);
+	}
+	MR_r1 = MR_sv(1);
+	MR_r2 = MR_sv(8);
+	MR_r3 = MR_sv(5);
+	MR_r4 = MR_sv(6);
+	MR_succip_word = MR_sv(10);
+	MR_GOTO_LAB(transform_hlds__ctgc__structure_reuse__direct__choose_reuse__choose_reuse_in_goal_7_0_i55);
+MR_def_label(transform_hlds__ctgc__structure_reuse__direct__choose_reuse__choose_reuse_in_goal_7_0,25)
+	MR_MAYBE_INIT_LOCAL_THREAD_ENGINE_BASE
+	MR_r1 = MR_sv(1);
+	MR_r2 = MR_sv(8);
+	MR_r3 = MR_sv(7);
+	MR_r4 = MR_sv(9);
+	MR_succip_word = MR_sv(10);
+	MR_GOTO_LAB(transform_hlds__ctgc__structure_reuse__direct__choose_reuse__choose_reuse_in_goal_7_0_i55);
+MR_def_label(transform_hlds__ctgc__structure_reuse__direct__choose_reuse__choose_reuse_in_goal_7_0,59)
+	MR_MAYBE_INIT_LOCAL_THREAD_ENGINE_BASE
+	MR_decr_sp_and_return(10);
+#ifdef MR_maybe_local_thread_engine_base
+	#undef MR_maybe_local_thread_engine_base
+	#define MR_maybe_local_thread_engine_base MR_thread_engine_base
+#endif
+MR_END_MODULE
+
+MR_decl_entry(transform_hlds__ctgc__structure_reuse__domain__reuse_condition_is_conditional_1_0);
+
+MR_BEGIN_MODULE(transform_hlds__ctgc__structure_reuse__direct__choose_reuse_module19)
+	MR_init_entry1(transform_hlds__ctgc__structure_reuse__direct__choose_reuse__check_for_cell_caching_2_3_0);
+	MR_INIT_PROC_LAYOUT_ADDR(mercury__transform_hlds__ctgc__structure_reuse__direct__choose_reuse__check_for_cell_caching_2_3_0);
+	MR_init_label10(transform_hlds__ctgc__structure_reuse__direct__choose_reuse__check_for_cell_caching_2_3_0,129,3,6,4,11,9,14,16,17,18)
+	MR_init_label10(transform_hlds__ctgc__structure_reuse__direct__choose_reuse__check_for_cell_caching_2_3_0,15,21,22,24,23,29,27,36,37,41)
+	MR_init_label4(transform_hlds__ctgc__structure_reuse__direct__choose_reuse__check_for_cell_caching_2_3_0,45,33,34,32)
+MR_BEGIN_CODE
+
+/*-------------------------------------------------------------------------*/
+/* code for 'check_for_cell_caching_2'/3 mode 0 */
+#ifdef MR_maybe_local_thread_engine_base
+	#undef MR_maybe_local_thread_engine_base
+	#define MR_maybe_local_thread_engine_base MR_local_thread_engine_base
+#endif
+MR_def_static(transform_hlds__ctgc__structure_reuse__direct__choose_reuse__check_for_cell_caching_2_3_0)
+	MR_MAYBE_INIT_LOCAL_THREAD_ENGINE_BASE
+MR_def_label(transform_hlds__ctgc__structure_reuse__direct__choose_reuse__check_for_cell_caching_2_3_0,129)
+	MR_MAYBE_INIT_LOCAL_THREAD_ENGINE_BASE
+	{
+	MR_Word MR_tempr1;
+	MR_tempr1 = MR_tfield(0, MR_r2, 0);
+	MR_r3 = MR_tempr1;
+	if (MR_RTAGS_TESTR(MR_tempr1,3,1)) {
+		MR_GOTO_LAB(transform_hlds__ctgc__structure_reuse__direct__choose_reuse__check_for_cell_caching_2_3_0_i3);
+	}
+	MR_r1 = MR_r2;
+	MR_proceed();
+	}
+MR_def_label(transform_hlds__ctgc__structure_reuse__direct__choose_reuse__check_for_cell_caching_2_3_0,3)
+	MR_MAYBE_INIT_LOCAL_THREAD_ENGINE_BASE
+	if (MR_RTAGS_TESTR(MR_r3,3,2)) {
+		MR_GOTO_LAB(transform_hlds__ctgc__structure_reuse__direct__choose_reuse__check_for_cell_caching_2_3_0_i4);
+	}
+	MR_incr_sp(13);
+	MR_sv(13) = (MR_Word) MR_succip;
+	{
+	MR_Word MR_tempr1, MR_tempr2, MR_tempr3;
+	MR_tag_alloc_heap(MR_tempr1, 0, (MR_Integer) 4);
+	MR_tfield(0, MR_tempr1, 0) = (MR_Word) MR_COMMON(4,11);
+	MR_tfield(0, MR_tempr1, 1) = (MR_Word) MR_LABEL_AP(transform_hlds__ctgc__structure_reuse__direct__choose_reuse__check_for_cell_caching_2_3_0_i129);
+	MR_tfield(0, MR_tempr1, 2) = (MR_Integer) 1;
+	MR_tfield(0, MR_tempr1, 3) = MR_r1;
+	MR_sv(1) = MR_tfield(0, MR_r2, 1);
+	MR_tempr3 = MR_r3;
+	MR_sv(6) = MR_tfield(3, MR_tempr3, 1);
+	MR_r1 = (MR_Word) MR_CTOR0_ADDR(hlds__hlds_goal, hlds_goal);
+	MR_r2 = MR_r1;
+	MR_tempr2 = MR_tempr3;
+	MR_r3 = MR_tempr1;
+	MR_r4 = MR_tfield(3, MR_tempr2, 2);
+	}
+	MR_np_call_localret_ent(list__map_3_0,
+		transform_hlds__ctgc__structure_reuse__direct__choose_reuse__check_for_cell_caching_2_3_0_i6);
+MR_def_label(transform_hlds__ctgc__structure_reuse__direct__choose_reuse__check_for_cell_caching_2_3_0,6)
+	MR_MAYBE_INIT_LOCAL_THREAD_ENGINE_BASE
+	MR_tag_alloc_heap(MR_r2, 3, (MR_Integer) 3);
+	MR_tfield(3, MR_r2, 0) = (MR_Integer) 2;
+	MR_tfield(3, MR_r2, 1) = MR_sv(6);
+	MR_tfield(3, MR_r2, 2) = MR_r1;
+	MR_tag_alloc_heap(MR_r1, 0, (MR_Integer) 2);
+	MR_tfield(0, MR_r1, 0) = MR_r2;
+	MR_tfield(0, MR_r1, 1) = MR_sv(1);
+	MR_decr_sp_and_return(13);
+MR_def_label(transform_hlds__ctgc__structure_reuse__direct__choose_reuse__check_for_cell_caching_2_3_0,4)
+	MR_MAYBE_INIT_LOCAL_THREAD_ENGINE_BASE
+	if (MR_RTAGS_TESTR(MR_r3,3,3)) {
+		MR_GOTO_LAB(transform_hlds__ctgc__structure_reuse__direct__choose_reuse__check_for_cell_caching_2_3_0_i9);
+	}
+	MR_incr_sp(13);
+	MR_sv(13) = (MR_Word) MR_succip;
+	{
+	MR_Word MR_tempr1, MR_tempr2;
+	MR_tag_alloc_heap(MR_tempr1, 0, (MR_Integer) 4);
+	MR_tfield(0, MR_tempr1, 0) = (MR_Word) MR_COMMON(4,12);
+	MR_tfield(0, MR_tempr1, 1) = (MR_Word) MR_LABEL_AP(transform_hlds__ctgc__structure_reuse__direct__choose_reuse__check_for_cell_caching_2_3_0_i129);
+	MR_tfield(0, MR_tempr1, 2) = (MR_Integer) 1;
+	MR_tfield(0, MR_tempr1, 3) = MR_r1;
+	MR_sv(1) = MR_tfield(0, MR_r2, 1);
+	MR_r1 = (MR_Word) MR_CTOR0_ADDR(hlds__hlds_goal, hlds_goal);
+	MR_r2 = MR_r1;
+	MR_tempr2 = MR_r3;
+	MR_r3 = MR_tempr1;
+	MR_r4 = MR_tfield(3, MR_tempr2, 1);
+	}
+	MR_np_call_localret_ent(list__map_3_0,
+		transform_hlds__ctgc__structure_reuse__direct__choose_reuse__check_for_cell_caching_2_3_0_i11);
+MR_def_label(transform_hlds__ctgc__structure_reuse__direct__choose_reuse__check_for_cell_caching_2_3_0,11)
+	MR_MAYBE_INIT_LOCAL_THREAD_ENGINE_BASE
+	{
+	MR_Word MR_tempr1;
+	MR_tag_alloc_heap(MR_tempr1, 3, (MR_Integer) 2);
+	MR_tfield(3, MR_tempr1, 0) = (MR_Integer) 3;
+	MR_tfield(3, MR_tempr1, 1) = MR_r1;
+	MR_tag_alloc_heap(MR_r1, 0, (MR_Integer) 2);
+	MR_tfield(0, MR_r1, 0) = MR_tempr1;
+	MR_tfield(0, MR_r1, 1) = MR_sv(1);
+	MR_decr_sp_and_return(13);
+	}
+MR_def_label(transform_hlds__ctgc__structure_reuse__direct__choose_reuse__check_for_cell_caching_2_3_0,9)
+	MR_MAYBE_INIT_LOCAL_THREAD_ENGINE_BASE
+	if (MR_RTAGS_TESTR(MR_r3,3,0)) {
+		MR_GOTO_LAB(transform_hlds__ctgc__structure_reuse__direct__choose_reuse__check_for_cell_caching_2_3_0_i14);
+	}
+	MR_r1 = MR_r2;
+	MR_proceed();
+MR_def_label(transform_hlds__ctgc__structure_reuse__direct__choose_reuse__check_for_cell_caching_2_3_0,14)
+	MR_MAYBE_INIT_LOCAL_THREAD_ENGINE_BASE
+	if (MR_RTAGS_TESTR(MR_r3,3,6)) {
+		MR_GOTO_LAB(transform_hlds__ctgc__structure_reuse__direct__choose_reuse__check_for_cell_caching_2_3_0_i15);
+	}
+	MR_incr_sp(13);
+	MR_sv(13) = (MR_Word) MR_succip;
+	MR_sv(6) = MR_r1;
+	MR_sv(1) = MR_tfield(0, MR_r2, 1);
+	{
+	MR_Word MR_tempr1;
+	MR_tempr1 = MR_r3;
+	MR_sv(5) = MR_tfield(3, MR_tempr1, 3);
+	MR_sv(3) = MR_tfield(3, MR_tempr1, 4);
+	MR_sv(7) = MR_tfield(3, MR_tempr1, 1);
+	MR_r2 = MR_tfield(3, MR_tempr1, 2);
+	}
+	MR_np_localcall_lab(transform_hlds__ctgc__structure_reuse__direct__choose_reuse__check_for_cell_caching_2_3_0,
+		transform_hlds__ctgc__structure_reuse__direct__choose_reuse__check_for_cell_caching_2_3_0_i16);
+MR_def_label(transform_hlds__ctgc__structure_reuse__direct__choose_reuse__check_for_cell_caching_2_3_0,16)
+	MR_MAYBE_INIT_LOCAL_THREAD_ENGINE_BASE
+	{
+	MR_Word MR_tempr1;
+	MR_tempr1 = MR_sv(5);
+	MR_sv(5) = MR_r1;
+	MR_r1 = MR_sv(6);
+	MR_r2 = MR_tempr1;
+	}
+	MR_np_localcall_lab(transform_hlds__ctgc__structure_reuse__direct__choose_reuse__check_for_cell_caching_2_3_0,
+		transform_hlds__ctgc__structure_reuse__direct__choose_reuse__check_for_cell_caching_2_3_0_i17);
+MR_def_label(transform_hlds__ctgc__structure_reuse__direct__choose_reuse__check_for_cell_caching_2_3_0,17)
+	MR_MAYBE_INIT_LOCAL_THREAD_ENGINE_BASE
+	{
+	MR_Word MR_tempr1;
+	MR_tempr1 = MR_sv(6);
+	MR_sv(6) = MR_r1;
+	MR_r1 = MR_tempr1;
+	MR_r2 = MR_sv(3);
+	}
+	MR_np_localcall_lab(transform_hlds__ctgc__structure_reuse__direct__choose_reuse__check_for_cell_caching_2_3_0,
+		transform_hlds__ctgc__structure_reuse__direct__choose_reuse__check_for_cell_caching_2_3_0_i18);
+MR_def_label(transform_hlds__ctgc__structure_reuse__direct__choose_reuse__check_for_cell_caching_2_3_0,18)
+	MR_MAYBE_INIT_LOCAL_THREAD_ENGINE_BASE
+	{
+	MR_Word MR_tempr1;
+	MR_tag_alloc_heap(MR_tempr1, 3, (MR_Integer) 5);
+	MR_tfield(3, MR_tempr1, 0) = (MR_Integer) 6;
+	MR_tfield(3, MR_tempr1, 1) = MR_sv(7);
+	MR_tfield(3, MR_tempr1, 2) = MR_sv(5);
+	MR_tfield(3, MR_tempr1, 3) = MR_sv(6);
+	MR_tfield(3, MR_tempr1, 4) = MR_r1;
+	MR_tag_alloc_heap(MR_r1, 0, (MR_Integer) 2);
+	MR_tfield(0, MR_r1, 0) = MR_tempr1;
+	MR_tfield(0, MR_r1, 1) = MR_sv(1);
+	MR_decr_sp_and_return(13);
+	}
+MR_def_label(transform_hlds__ctgc__structure_reuse__direct__choose_reuse__check_for_cell_caching_2_3_0,15)
+	MR_MAYBE_INIT_LOCAL_THREAD_ENGINE_BASE
+	if (MR_PTAG_TESTR(MR_r3,0)) {
+		MR_GOTO_LAB(transform_hlds__ctgc__structure_reuse__direct__choose_reuse__check_for_cell_caching_2_3_0_i21);
+	}
+	MR_r1 = MR_r2;
+	MR_proceed();
+MR_def_label(transform_hlds__ctgc__structure_reuse__direct__choose_reuse__check_for_cell_caching_2_3_0,21)
+	MR_MAYBE_INIT_LOCAL_THREAD_ENGINE_BASE
+	if (MR_PTAG_TESTR(MR_r3,2)) {
+		MR_GOTO_LAB(transform_hlds__ctgc__structure_reuse__direct__choose_reuse__check_for_cell_caching_2_3_0_i22);
+	}
+	MR_r1 = MR_r2;
+	MR_proceed();
+MR_def_label(transform_hlds__ctgc__structure_reuse__direct__choose_reuse__check_for_cell_caching_2_3_0,22)
+	MR_MAYBE_INIT_LOCAL_THREAD_ENGINE_BASE
+	if (MR_RTAGS_TESTR(MR_r3,3,5)) {
+		MR_GOTO_LAB(transform_hlds__ctgc__structure_reuse__direct__choose_reuse__check_for_cell_caching_2_3_0_i23);
+	}
+	MR_incr_sp(13);
+	MR_sv(13) = (MR_Word) MR_succip;
+	MR_sv(1) = MR_tfield(0, MR_r2, 1);
+	{
+	MR_Word MR_tempr1;
+	MR_tempr1 = MR_r3;
+	MR_sv(6) = MR_tfield(3, MR_tempr1, 1);
+	MR_r2 = MR_tfield(3, MR_tempr1, 2);
+	}
+	MR_np_localcall_lab(transform_hlds__ctgc__structure_reuse__direct__choose_reuse__check_for_cell_caching_2_3_0,
+		transform_hlds__ctgc__structure_reuse__direct__choose_reuse__check_for_cell_caching_2_3_0_i24);
+MR_def_label(transform_hlds__ctgc__structure_reuse__direct__choose_reuse__check_for_cell_caching_2_3_0,24)
+	MR_MAYBE_INIT_LOCAL_THREAD_ENGINE_BASE
+	{
+	MR_Word MR_tempr1;
+	MR_tag_alloc_heap(MR_tempr1, 3, (MR_Integer) 3);
+	MR_tfield(3, MR_tempr1, 0) = (MR_Integer) 5;
+	MR_tfield(3, MR_tempr1, 1) = MR_sv(6);
+	MR_tfield(3, MR_tempr1, 2) = MR_r1;
+	MR_tag_alloc_heap(MR_r1, 0, (MR_Integer) 2);
+	MR_tfield(0, MR_r1, 0) = MR_tempr1;
+	MR_tfield(0, MR_r1, 1) = MR_sv(1);
+	MR_decr_sp_and_return(13);
+	}
+MR_def_label(transform_hlds__ctgc__structure_reuse__direct__choose_reuse__check_for_cell_caching_2_3_0,23)
+	MR_MAYBE_INIT_LOCAL_THREAD_ENGINE_BASE
+	if (MR_RTAGS_TESTR(MR_r3,3,4)) {
+		MR_GOTO_LAB(transform_hlds__ctgc__structure_reuse__direct__choose_reuse__check_for_cell_caching_2_3_0_i27);
+	}
+	MR_incr_sp(13);
+	MR_sv(13) = (MR_Word) MR_succip;
+	{
+	MR_Word MR_tempr1, MR_tempr2, MR_tempr3;
+	MR_tag_alloc_heap(MR_tempr1, 0, (MR_Integer) 4);
+	MR_tfield(0, MR_tempr1, 0) = (MR_Word) MR_COMMON(4,13);
+	MR_tfield(0, MR_tempr1, 1) = (MR_Word) MR_ENTRY_AP(transform_hlds__ctgc__structure_reuse__direct__choose_reuse__check_for_cell_caching_in_case_3_0);
+	MR_tfield(0, MR_tempr1, 2) = (MR_Integer) 1;
+	MR_tfield(0, MR_tempr1, 3) = MR_r1;
+	MR_sv(1) = MR_tfield(0, MR_r2, 1);
+	MR_tempr3 = MR_r3;
+	MR_sv(6) = MR_tfield(3, MR_tempr3, 1);
+	MR_sv(5) = MR_tfield(3, MR_tempr3, 2);
+	MR_r1 = (MR_Word) MR_CTOR0_ADDR(hlds__hlds_goal, case);
+	MR_r2 = MR_r1;
+	MR_tempr2 = MR_tempr3;
+	MR_r3 = MR_tempr1;
+	MR_r4 = MR_tfield(3, MR_tempr2, 3);
+	}
+	MR_np_call_localret_ent(list__map_3_0,
+		transform_hlds__ctgc__structure_reuse__direct__choose_reuse__check_for_cell_caching_2_3_0_i29);
+MR_def_label(transform_hlds__ctgc__structure_reuse__direct__choose_reuse__check_for_cell_caching_2_3_0,29)
+	MR_MAYBE_INIT_LOCAL_THREAD_ENGINE_BASE
+	{
+	MR_Word MR_tempr1;
+	MR_tag_alloc_heap(MR_tempr1, 3, (MR_Integer) 4);
+	MR_tfield(3, MR_tempr1, 0) = (MR_Integer) 4;
+	MR_tfield(3, MR_tempr1, 1) = MR_sv(6);
+	MR_tfield(3, MR_tempr1, 2) = MR_sv(5);
+	MR_tfield(3, MR_tempr1, 3) = MR_r1;
+	MR_tag_alloc_heap(MR_r1, 0, (MR_Integer) 2);
+	MR_tfield(0, MR_r1, 0) = MR_tempr1;
+	MR_tfield(0, MR_r1, 1) = MR_sv(1);
+	MR_decr_sp_and_return(13);
+	}
+MR_def_label(transform_hlds__ctgc__structure_reuse__direct__choose_reuse__check_for_cell_caching_2_3_0,27)
+	MR_MAYBE_INIT_LOCAL_THREAD_ENGINE_BASE
+	if (MR_PTAG_TESTR(MR_r3,1)) {
+		MR_GOTO_LAB(transform_hlds__ctgc__structure_reuse__direct__choose_reuse__check_for_cell_caching_2_3_0_i32);
+	}
+	MR_incr_sp(13);
+	MR_sv(13) = (MR_Word) MR_succip;
+	{
+	MR_Word MR_tempr1, MR_tempr2;
+	MR_tempr2 = MR_r3;
+	MR_tempr1 = MR_tfield(1, MR_tempr2, 3);
+	if (MR_PTAG_TESTR(MR_tempr1,1)) {
+		MR_GOTO_LAB(transform_hlds__ctgc__structure_reuse__direct__choose_reuse__check_for_cell_caching_2_3_0_i34);
+	}
+	MR_sv(6) = MR_r1;
+	MR_sv(1) = MR_tfield(0, MR_r2, 1);
+	MR_sv(5) = MR_tfield(1, MR_tempr2, 0);
+	MR_sv(3) = MR_tfield(1, MR_tempr2, 1);
+	MR_sv(7) = MR_tfield(1, MR_tempr2, 2);
+	MR_sv(2) = MR_tfield(1, MR_tempr2, 4);
+	MR_sv(4) = MR_r2;
+	MR_sv(8) = MR_tfield(1, MR_tempr1, 0);
+	MR_sv(9) = MR_tfield(1, MR_tempr1, 1);
+	MR_sv(10) = MR_tfield(1, MR_tempr1, 2);
+	MR_sv(11) = MR_tfield(1, MR_tempr1, 3);
+	MR_sv(12) = MR_tfield(1, MR_tempr1, 4);
+	MR_r1 = MR_sv(1);
+	}
+	MR_np_call_localret_ent(fn__transform_hlds__smm_common__program_point_init_1_0,
+		transform_hlds__ctgc__structure_reuse__direct__choose_reuse__check_for_cell_caching_2_3_0_i36);
+MR_def_label(transform_hlds__ctgc__structure_reuse__direct__choose_reuse__check_for_cell_caching_2_3_0,36)
+	MR_MAYBE_INIT_LOCAL_THREAD_ENGINE_BASE
+	MR_r2 = MR_sv(6);
+	MR_np_call_localret_ent(fn__transform_hlds__ctgc__structure_reuse__direct__dead_cell_table_search_2_0,
+		transform_hlds__ctgc__structure_reuse__direct__choose_reuse__check_for_cell_caching_2_3_0_i37);
+MR_def_label(transform_hlds__ctgc__structure_reuse__direct__choose_reuse__check_for_cell_caching_2_3_0,37)
+	MR_MAYBE_INIT_LOCAL_THREAD_ENGINE_BASE
+	if (!(MR_r1)) {
+		MR_GOTO_LAB(transform_hlds__ctgc__structure_reuse__direct__choose_reuse__check_for_cell_caching_2_3_0_i33);
+	}
+	MR_r1 = MR_r2;
+	MR_np_call_localret_ent(transform_hlds__ctgc__structure_reuse__domain__reuse_condition_is_conditional_1_0,
+		transform_hlds__ctgc__structure_reuse__direct__choose_reuse__check_for_cell_caching_2_3_0_i41);
+MR_def_label(transform_hlds__ctgc__structure_reuse__direct__choose_reuse__check_for_cell_caching_2_3_0,41)
+	MR_MAYBE_INIT_LOCAL_THREAD_ENGINE_BASE
+	if (MR_r1) {
+		MR_GOTO_LAB(transform_hlds__ctgc__structure_reuse__direct__choose_reuse__check_for_cell_caching_2_3_0_i33);
+	}
+	{
+	MR_Word MR_tempr1;
+	MR_tag_alloc_heap(MR_tempr1, 1, (MR_Integer) 6);
+	MR_sv(6) = MR_tempr1;
+	MR_tfield(1, MR_tempr1, 0) = MR_sv(8);
+	MR_tfield(1, MR_tempr1, 1) = MR_sv(9);
+	MR_tfield(1, MR_tempr1, 2) = MR_sv(10);
+	MR_tfield(1, MR_tempr1, 3) = MR_sv(11);
+	MR_tfield(1, MR_tempr1, 4) = MR_sv(12);
+	MR_tfield(1, MR_tempr1, 5) = (MR_Integer) 0;
+	MR_r1 = (MR_Word) MR_TAG_COMMON(2,7,0);
+	MR_r2 = MR_sv(1);
+	}
+	MR_np_call_localret_ent(hlds__hlds_goal__goal_info_set_reuse_3_0,
+		transform_hlds__ctgc__structure_reuse__direct__choose_reuse__check_for_cell_caching_2_3_0_i45);
+MR_def_label(transform_hlds__ctgc__structure_reuse__direct__choose_reuse__check_for_cell_caching_2_3_0,45)
+	MR_MAYBE_INIT_LOCAL_THREAD_ENGINE_BASE
+	{
+	MR_Word MR_tempr1, MR_tempr2;
+	MR_tag_alloc_heap(MR_tempr1, 1, (MR_Integer) 5);
+	MR_tfield(1, MR_tempr1, 0) = MR_sv(5);
+	MR_tfield(1, MR_tempr1, 1) = MR_sv(3);
+	MR_tfield(1, MR_tempr1, 2) = MR_sv(7);
+	MR_tfield(1, MR_tempr1, 3) = MR_sv(6);
+	MR_tfield(1, MR_tempr1, 4) = MR_sv(2);
+	MR_tag_alloc_heap(MR_tempr2, 0, (MR_Integer) 2);
+	MR_tfield(0, MR_tempr2, 0) = MR_tempr1;
+	MR_tfield(0, MR_tempr2, 1) = MR_r1;
+	MR_r1 = MR_tempr2;
+	MR_decr_sp_and_return(13);
+	}
+MR_def_label(transform_hlds__ctgc__structure_reuse__direct__choose_reuse__check_for_cell_caching_2_3_0,33)
+	MR_MAYBE_INIT_LOCAL_THREAD_ENGINE_BASE
+	MR_r2 = MR_sv(4);
+MR_def_label(transform_hlds__ctgc__structure_reuse__direct__choose_reuse__check_for_cell_caching_2_3_0,34)
+	MR_MAYBE_INIT_LOCAL_THREAD_ENGINE_BASE
+	MR_r1 = MR_r2;
+	MR_decr_sp_and_return(13);
+MR_def_label(transform_hlds__ctgc__structure_reuse__direct__choose_reuse__check_for_cell_caching_2_3_0,32)
+	MR_MAYBE_INIT_LOCAL_THREAD_ENGINE_BASE
+	MR_r1 = (MR_Word) MR_string_const("transform_hlds.ctgc.structure_reuse.direct.choose_reuse", 55);
+	MR_r2 = (MR_Word) MR_string_const("predicate \140transform_hlds.ctgc.structure_reuse.direct.choose_reuse.check_for_cell_caching_2\'/3", 94);
+	MR_r3 = (MR_Word) MR_string_const("shorthand", 9);
+	MR_np_tailcall_ent(require__unexpected_3_0);
+#ifdef MR_maybe_local_thread_engine_base
+	#undef MR_maybe_local_thread_engine_base
+	#define MR_maybe_local_thread_engine_base MR_thread_engine_base
+#endif
+MR_END_MODULE
+
+MR_decl_entry(libs__globals__get_reuse_strategy_2_0);
+MR_decl_entry(hlds__hlds_pred__proc_info_get_vartypes_2_0);
+MR_decl_entry(fn__transform_hlds__ctgc__structure_reuse__domain__reuse_as_init_0_0);
+MR_decl_entry(transform_hlds__ctgc__structure_reuse__direct__dead_cell_table_remove_conditionals_2_0);
+MR_decl_entry(transform_hlds__ctgc__structure_reuse__direct__dead_cell_table_is_empty_1_0);
+
+MR_BEGIN_MODULE(transform_hlds__ctgc__structure_reuse__direct__choose_reuse_module20)
+	MR_init_entry1(transform_hlds__ctgc__structure_reuse__direct__choose_reuse__determine_reuse_6_0);
+	MR_INIT_PROC_LAYOUT_ADDR(mercury__transform_hlds__ctgc__structure_reuse__direct__choose_reuse__determine_reuse_6_0);
+	MR_init_label10(transform_hlds__ctgc__structure_reuse__direct__choose_reuse__determine_reuse_6_0,2,3,4,6,7,8,21,10,11,12)
+	MR_init_label4(transform_hlds__ctgc__structure_reuse__direct__choose_reuse__determine_reuse_6_0,15,13,18,19)
+MR_BEGIN_CODE
+
+/*-------------------------------------------------------------------------*/
+/* code for 'determine_reuse'/6 mode 0 */
+#ifdef MR_maybe_local_thread_engine_base
+	#undef MR_maybe_local_thread_engine_base
+	#define MR_maybe_local_thread_engine_base MR_local_thread_engine_base
+#endif
+MR_define_entry(mercury__transform_hlds__ctgc__structure_reuse__direct__choose_reuse__determine_reuse_6_0);
+	MR_MAYBE_INIT_LOCAL_THREAD_ENGINE_BASE
+	MR_incr_sp(7);
+	MR_sv(7) = (MR_Word) MR_succip;
+	MR_sv(2) = MR_r1;
+	MR_sv(3) = MR_r2;
+	MR_sv(5) = MR_r3;
+	MR_sv(4) = MR_r4;
+	MR_np_call_localret_ent(hlds__hlds_module__module_info_get_globals_2_0,
+		transform_hlds__ctgc__structure_reuse__direct__choose_reuse__determine_reuse_6_0_i2);
+MR_def_label(transform_hlds__ctgc__structure_reuse__direct__choose_reuse__determine_reuse_6_0,2)
+	MR_MAYBE_INIT_LOCAL_THREAD_ENGINE_BASE
+	MR_sv(6) = MR_r1;
+	MR_np_call_localret_ent(libs__globals__get_reuse_strategy_2_0,
+		transform_hlds__ctgc__structure_reuse__direct__choose_reuse__determine_reuse_6_0_i3);
+MR_def_label(transform_hlds__ctgc__structure_reuse__direct__choose_reuse__determine_reuse_6_0,3)
+	MR_MAYBE_INIT_LOCAL_THREAD_ENGINE_BASE
+	MR_sv(1) = MR_r1;
+	MR_r1 = MR_sv(3);
+	MR_np_call_localret_ent(hlds__hlds_pred__proc_info_get_vartypes_2_0,
+		transform_hlds__ctgc__structure_reuse__direct__choose_reuse__determine_reuse_6_0_i4);
+MR_def_label(transform_hlds__ctgc__structure_reuse__direct__choose_reuse__determine_reuse_6_0,4)
+	MR_MAYBE_INIT_LOCAL_THREAD_ENGINE_BASE
+	MR_tag_alloc_heap(MR_r2, 0, (MR_Integer) 4);
+	MR_tfield(0, MR_r2, 0) = MR_sv(1);
+	MR_tfield(0, MR_r2, 1) = MR_sv(2);
+	MR_tfield(0, MR_r2, 2) = MR_sv(3);
+	MR_tfield(0, MR_r2, 3) = MR_r1;
+	MR_sv(2) = MR_r2;
+	MR_np_call_localret_ent(fn__transform_hlds__ctgc__structure_reuse__domain__reuse_as_init_0_0,
+		transform_hlds__ctgc__structure_reuse__direct__choose_reuse__determine_reuse_6_0_i6);
+MR_def_label(transform_hlds__ctgc__structure_reuse__direct__choose_reuse__determine_reuse_6_0,6)
+	MR_MAYBE_INIT_LOCAL_THREAD_ENGINE_BASE
+	{
+	MR_Word MR_tempr1;
+	MR_tempr1 = MR_r1;
+	MR_r1 = MR_sv(2);
+	MR_r2 = MR_sv(5);
+	MR_r3 = MR_sv(4);
+	MR_r4 = MR_tempr1;
+	}
+	MR_np_call_localret_ent(transform_hlds__ctgc__structure_reuse__direct__choose_reuse__choose_reuse_in_goal_7_0,
+		transform_hlds__ctgc__structure_reuse__direct__choose_reuse__determine_reuse_6_0_i7);
+MR_def_label(transform_hlds__ctgc__structure_reuse__direct__choose_reuse__determine_reuse_6_0,7)
+	MR_MAYBE_INIT_LOCAL_THREAD_ENGINE_BASE
+	MR_sv(2) = MR_r3;
+	MR_sv(3) = MR_r1;
+	MR_sv(5) = MR_r2;
+	MR_r1 = MR_sv(6);
+	MR_r2 = (MR_Integer) 405;
+	MR_np_call_localret_ent(libs__globals__lookup_bool_option_3_0,
+		transform_hlds__ctgc__structure_reuse__direct__choose_reuse__determine_reuse_6_0_i8);
+MR_def_label(transform_hlds__ctgc__structure_reuse__direct__choose_reuse__determine_reuse_6_0,8)
+	MR_MAYBE_INIT_LOCAL_THREAD_ENGINE_BASE
+	if (MR_INT_NE(MR_r1,0)) {
+		MR_GOTO_LAB(transform_hlds__ctgc__structure_reuse__direct__choose_reuse__determine_reuse_6_0_i10);
+	}
+MR_def_label(transform_hlds__ctgc__structure_reuse__direct__choose_reuse__determine_reuse_6_0,21)
+	MR_MAYBE_INIT_LOCAL_THREAD_ENGINE_BASE
+	MR_r2 = MR_sv(2);
+	MR_r1 = MR_sv(5);
+	MR_decr_sp_and_return(7);
+MR_def_label(transform_hlds__ctgc__structure_reuse__direct__choose_reuse__determine_reuse_6_0,10)
+	MR_MAYBE_INIT_LOCAL_THREAD_ENGINE_BASE
+	MR_r1 = MR_sv(6);
+	MR_r2 = (MR_Integer) 45;
+	MR_np_call_localret_ent(libs__globals__lookup_bool_option_3_0,
+		transform_hlds__ctgc__structure_reuse__direct__choose_reuse__determine_reuse_6_0_i11);
+MR_def_label(transform_hlds__ctgc__structure_reuse__direct__choose_reuse__determine_reuse_6_0,11)
+	MR_MAYBE_INIT_LOCAL_THREAD_ENGINE_BASE
+	MR_r2 = MR_sv(3);
+	MR_sv(3) = MR_r1;
+	MR_r1 = MR_r2;
+	MR_np_call_localret_ent(transform_hlds__ctgc__structure_reuse__direct__dead_cell_table_remove_conditionals_2_0,
+		transform_hlds__ctgc__structure_reuse__direct__choose_reuse__determine_reuse_6_0_i12);
+MR_def_label(transform_hlds__ctgc__structure_reuse__direct__choose_reuse__determine_reuse_6_0,12)
+	MR_MAYBE_INIT_LOCAL_THREAD_ENGINE_BASE
+	MR_sv(6) = MR_r1;
+	MR_np_call_localret_ent(transform_hlds__ctgc__structure_reuse__direct__dead_cell_table_is_empty_1_0,
+		transform_hlds__ctgc__structure_reuse__direct__choose_reuse__determine_reuse_6_0_i15);
+MR_def_label(transform_hlds__ctgc__structure_reuse__direct__choose_reuse__determine_reuse_6_0,15)
+	MR_MAYBE_INIT_LOCAL_THREAD_ENGINE_BASE
+	if (!(MR_r1)) {
+		MR_GOTO_LAB(transform_hlds__ctgc__structure_reuse__direct__choose_reuse__determine_reuse_6_0_i13);
+	}
+	MR_r1 = MR_sv(3);
+	MR_r2 = (MR_Word) MR_string_const("% No cells to be cached/freed.\n", 31);
+	MR_np_call_localret_ent(libs__file_util__maybe_write_string_4_0,
+		transform_hlds__ctgc__structure_reuse__direct__choose_reuse__determine_reuse_6_0_i21);
+MR_def_label(transform_hlds__ctgc__structure_reuse__direct__choose_reuse__determine_reuse_6_0,13)
+	MR_MAYBE_INIT_LOCAL_THREAD_ENGINE_BASE
+	MR_r1 = MR_sv(6);
+	MR_r1 = MR_sv(3);
+	MR_r2 = (MR_Word) MR_string_const("% Marking cacheable/freeable cells.\n", 36);
+	MR_np_call_localret_ent(libs__file_util__maybe_write_string_4_0,
+		transform_hlds__ctgc__structure_reuse__direct__choose_reuse__determine_reuse_6_0_i18);
+MR_def_label(transform_hlds__ctgc__structure_reuse__direct__choose_reuse__determine_reuse_6_0,18)
+	MR_MAYBE_INIT_LOCAL_THREAD_ENGINE_BASE
+	MR_r1 = MR_sv(6);
+	MR_r2 = MR_sv(5);
+	MR_np_call_localret_ent(transform_hlds__ctgc__structure_reuse__direct__choose_reuse__check_for_cell_caching_2_3_0,
+		transform_hlds__ctgc__structure_reuse__direct__choose_reuse__determine_reuse_6_0_i19);
+MR_def_label(transform_hlds__ctgc__structure_reuse__direct__choose_reuse__determine_reuse_6_0,19)
+	MR_MAYBE_INIT_LOCAL_THREAD_ENGINE_BASE
+	MR_r2 = MR_sv(2);
+	MR_decr_sp_and_return(7);
+#ifdef MR_maybe_local_thread_engine_base
+	#undef MR_maybe_local_thread_engine_base
+	#define MR_maybe_local_thread_engine_base MR_thread_engine_base
+#endif
+MR_END_MODULE
+
+MR_decl_entry(fn__float__float_1_0);
+MR_decl_entry(fn__f_102_108_111_97_116_95_95_47_2_0);
+MR_decl_entry(private_builtin__builtin_compare_float_3_0);
+
+MR_BEGIN_MODULE(transform_hlds__ctgc__structure_reuse__direct__choose_reuse_module21)
+	MR_init_entry1(transform_hlds__ctgc__structure_reuse__direct__choose_reuse__reverse_compare_matches_value_degree_3_0);
+	MR_INIT_PROC_LAYOUT_ADDR(mercury__transform_hlds__ctgc__structure_reuse__direct__choose_reuse__reverse_compare_matches_value_degree_3_0);
+	MR_init_label7(transform_hlds__ctgc__structure_reuse__direct__choose_reuse__reverse_compare_matches_value_degree_3_0,6,7,3,8,13,14,10)
+MR_BEGIN_CODE
+
+/*-------------------------------------------------------------------------*/
+/* code for 'reverse_compare_matches_value_degree'/3 mode 0 */
+#ifdef MR_maybe_local_thread_engine_base
+	#undef MR_maybe_local_thread_engine_base
+	#define MR_maybe_local_thread_engine_base MR_local_thread_engine_base
+#endif
+MR_def_static(transform_hlds__ctgc__structure_reuse__direct__choose_reuse__reverse_compare_matches_value_degree_3_0)
+	MR_MAYBE_INIT_LOCAL_THREAD_ENGINE_BASE
+	MR_incr_sp(6);
+	MR_sv(6) = (MR_Word) MR_succip;
+	{
+	MR_Word MR_tempr1;
+	MR_tempr1 = MR_tfield(0, MR_r2, 2);
+	if ((MR_word_to_float(MR_tempr1) == (MR_Float) 0.0000000000000000)) {
+		MR_GOTO_LAB(transform_hlds__ctgc__structure_reuse__direct__choose_reuse__reverse_compare_matches_value_degree_3_0_i3);
+	}
+	MR_sv(1) = MR_r1;
+	* (MR_Float *) &MR_sv(5) = MR_word_to_float(MR_tfield(0, MR_r2, 2));
+	MR_r1 = MR_tfield(0, MR_r2, 3);
+	}
+	MR_np_call_localret_ent(fn__float__float_1_0,
+		transform_hlds__ctgc__structure_reuse__direct__choose_reuse__reverse_compare_matches_value_degree_3_0_i6);
+MR_def_label(transform_hlds__ctgc__structure_reuse__direct__choose_reuse__reverse_compare_matches_value_degree_3_0,6)
+	MR_MAYBE_INIT_LOCAL_THREAD_ENGINE_BASE
+	{
+	MR_Word MR_tempr1;
+	MR_tempr1 = MR_r1;
+	MR_r1 = MR_float_to_word(MR_float_from_dword_ptr(&MR_sv(5)));
+	MR_r2 = MR_tempr1;
+	}
+	MR_np_call_localret_ent(fn__f_102_108_111_97_116_95_95_47_2_0,
+		transform_hlds__ctgc__structure_reuse__direct__choose_reuse__reverse_compare_matches_value_degree_3_0_i7);
+MR_def_label(transform_hlds__ctgc__structure_reuse__direct__choose_reuse__reverse_compare_matches_value_degree_3_0,7)
+	MR_MAYBE_INIT_LOCAL_THREAD_ENGINE_BASE
+	* (MR_Float *) &MR_sv(3) = MR_word_to_float(MR_r1);
+	MR_GOTO_LAB(transform_hlds__ctgc__structure_reuse__direct__choose_reuse__reverse_compare_matches_value_degree_3_0_i8);
+MR_def_label(transform_hlds__ctgc__structure_reuse__direct__choose_reuse__reverse_compare_matches_value_degree_3_0,3)
+	MR_MAYBE_INIT_LOCAL_THREAD_ENGINE_BASE
+	MR_sv(1) = MR_r1;
+	* (MR_Float *) &MR_sv(3) = (MR_Float) 0.0000000000000000;
+MR_def_label(transform_hlds__ctgc__structure_reuse__direct__choose_reuse__reverse_compare_matches_value_degree_3_0,8)
+	MR_MAYBE_INIT_LOCAL_THREAD_ENGINE_BASE
+	{
+	MR_Word MR_tempr1;
+	MR_tempr1 = MR_sv(1);
+	MR_r2 = MR_tfield(0, MR_tempr1, 2);
+	if ((MR_word_to_float(MR_r2) == (MR_Float) 0.0000000000000000)) {
+		MR_GOTO_LAB(transform_hlds__ctgc__structure_reuse__direct__choose_reuse__reverse_compare_matches_value_degree_3_0_i10);
+	}
+	* (MR_Float *) &MR_sv(5) = MR_word_to_float(MR_tfield(0, MR_tempr1, 2));
+	MR_r1 = MR_tfield(0, MR_tempr1, 3);
+	}
+	MR_np_call_localret_ent(fn__float__float_1_0,
+		transform_hlds__ctgc__structure_reuse__direct__choose_reuse__reverse_compare_matches_value_degree_3_0_i13);
+MR_def_label(transform_hlds__ctgc__structure_reuse__direct__choose_reuse__reverse_compare_matches_value_degree_3_0,13)
+	MR_MAYBE_INIT_LOCAL_THREAD_ENGINE_BASE
+	{
+	MR_Word MR_tempr1;
+	MR_tempr1 = MR_r1;
+	MR_r1 = MR_float_to_word(MR_float_from_dword_ptr(&MR_sv(5)));
+	MR_r2 = MR_tempr1;
+	}
+	MR_np_call_localret_ent(fn__f_102_108_111_97_116_95_95_47_2_0,
+		transform_hlds__ctgc__structure_reuse__direct__choose_reuse__reverse_compare_matches_value_degree_3_0_i14);
+MR_def_label(transform_hlds__ctgc__structure_reuse__direct__choose_reuse__reverse_compare_matches_value_degree_3_0,14)
+	MR_MAYBE_INIT_LOCAL_THREAD_ENGINE_BASE
+	{
+	MR_Word MR_tempr1;
+	MR_tempr1 = MR_r1;
+	MR_r1 = MR_float_to_word(MR_float_from_dword_ptr(&MR_sv(3)));
+	MR_r2 = MR_tempr1;
+	MR_succip_word = MR_sv(6);
+	MR_decr_sp(6);
+	MR_np_tailcall_ent(private_builtin__builtin_compare_float_3_0);
+	}
+MR_def_label(transform_hlds__ctgc__structure_reuse__direct__choose_reuse__reverse_compare_matches_value_degree_3_0,10)
+	MR_MAYBE_INIT_LOCAL_THREAD_ENGINE_BASE
+	MR_r1 = MR_float_to_word(MR_float_from_dword_ptr(&MR_sv(3)));
+	MR_r2 = (MR_Word) &mercury_float_const_0pt0000000000000000;
+	MR_succip_word = MR_sv(6);
+	MR_decr_sp(6);
+	MR_np_tailcall_ent(private_builtin__builtin_compare_float_3_0);
+#ifdef MR_maybe_local_thread_engine_base
+	#undef MR_maybe_local_thread_engine_base
+	#define MR_maybe_local_thread_engine_base MR_thread_engine_base
+#endif
+MR_END_MODULE
+
+
+MR_BEGIN_MODULE(transform_hlds__ctgc__structure_reuse__direct__choose_reuse_module22)
+	MR_init_entry1(transform_hlds__ctgc__structure_reuse__direct__choose_reuse__reverse_compare_matches_value_3_0);
+	MR_INIT_PROC_LAYOUT_ADDR(mercury__transform_hlds__ctgc__structure_reuse__direct__choose_reuse__reverse_compare_matches_value_3_0);
+MR_BEGIN_CODE
+
+/*-------------------------------------------------------------------------*/
+/* code for 'reverse_compare_matches_value'/3 mode 0 */
+#ifdef MR_maybe_local_thread_engine_base
+	#undef MR_maybe_local_thread_engine_base
+	#define MR_maybe_local_thread_engine_base MR_local_thread_engine_base
+#endif
+MR_def_static(transform_hlds__ctgc__structure_reuse__direct__choose_reuse__reverse_compare_matches_value_3_0)
+	MR_MAYBE_INIT_LOCAL_THREAD_ENGINE_BASE
+	{
+	MR_Word MR_tempr1;
+	MR_tempr1 = MR_r1;
+	MR_r1 = MR_tfield(0, MR_r2, 2);
+	MR_r2 = MR_tfield(0, MR_tempr1, 2);
+	MR_np_tailcall_ent(private_builtin__builtin_compare_float_3_0);
+	}
+#ifdef MR_maybe_local_thread_engine_base
+	#undef MR_maybe_local_thread_engine_base
+	#define MR_maybe_local_thread_engine_base MR_thread_engine_base
+#endif
+MR_END_MODULE
+
+MR_decl_entry(list__length_2_0);
+
+MR_BEGIN_MODULE(transform_hlds__ctgc__structure_reuse__direct__choose_reuse_module23)
+	MR_init_entry1(transform_hlds__ctgc__structure_reuse__direct__choose_reuse__average_match_2_0);
+	MR_INIT_PROC_LAYOUT_ADDR(mercury__transform_hlds__ctgc__structure_reuse__direct__choose_reuse__average_match_2_0);
+	MR_init_label5(transform_hlds__ctgc__structure_reuse__direct__choose_reuse__average_match_2_0,4,6,7,8,3)
+MR_BEGIN_CODE
+
+/*-------------------------------------------------------------------------*/
+/* code for 'average_match'/2 mode 0 */
+#ifdef MR_maybe_local_thread_engine_base
+	#undef MR_maybe_local_thread_engine_base
+	#define MR_maybe_local_thread_engine_base MR_local_thread_engine_base
+#endif
+MR_def_static(transform_hlds__ctgc__structure_reuse__direct__choose_reuse__average_match_2_0)
+	MR_MAYBE_INIT_LOCAL_THREAD_ENGINE_BASE
+	if (MR_LTAGS_TEST(MR_r1,0,0)) {
+		MR_GOTO_LAB(transform_hlds__ctgc__structure_reuse__direct__choose_reuse__average_match_2_0_i3);
+	}
+	MR_incr_sp(6);
+	MR_sv(6) = (MR_Word) MR_succip;
+	MR_sv(1) = MR_tfield(1, MR_r1, 0);
+	MR_sv(2) = MR_tfield(1, MR_r1, 1);
+	MR_sv(5) = (MR_Word) MR_CTOR0_ADDR(transform_hlds__ctgc__structure_reuse__direct__choose_reuse, match);
+	{
+	MR_Word MR_tempr1;
+	MR_tempr1 = MR_r1;
+	MR_r1 = MR_sv(5);
+	MR_r2 = MR_tempr1;
+	}
+	MR_np_call_localret_ent(list__length_2_0,
+		transform_hlds__ctgc__structure_reuse__direct__choose_reuse__average_match_2_0_i4);
+MR_def_label(transform_hlds__ctgc__structure_reuse__direct__choose_reuse__average_match_2_0,4)
+	MR_MAYBE_INIT_LOCAL_THREAD_ENGINE_BASE
+	{
+	MR_Word MR_tempr1;
+	MR_tempr1 = MR_sv(1);
+	MR_sv(1) = MR_r1;
+	MR_r1 = MR_sv(5);
+	MR_r2 = MR_r1;
+	MR_r3 = (MR_Word) MR_TAG_COMMON(0,1,18);
+	MR_r4 = MR_sv(2);
+	MR_r5 = MR_tempr1;
+	}
+	MR_np_call_localret_ent(list__foldl_4_0,
+		transform_hlds__ctgc__structure_reuse__direct__choose_reuse__average_match_2_0_i6);
+MR_def_label(transform_hlds__ctgc__structure_reuse__direct__choose_reuse__average_match_2_0,6)
+	MR_MAYBE_INIT_LOCAL_THREAD_ENGINE_BASE
+	MR_r2 = MR_sv(1);
+	MR_sv(1) = MR_r1;
+	* (MR_Float *) &MR_sv(4) = MR_word_to_float(MR_tfield(0, MR_r1, 2));
+	MR_r1 = MR_r2;
+	MR_np_call_localret_ent(fn__float__float_1_0,
+		transform_hlds__ctgc__structure_reuse__direct__choose_reuse__average_match_2_0_i7);
+MR_def_label(transform_hlds__ctgc__structure_reuse__direct__choose_reuse__average_match_2_0,7)
+	MR_MAYBE_INIT_LOCAL_THREAD_ENGINE_BASE
+	{
+	MR_Word MR_tempr1;
+	MR_tempr1 = MR_r1;
+	MR_r1 = MR_float_to_word(MR_float_from_dword_ptr(&MR_sv(4)));
+	MR_r2 = MR_tempr1;
+	}
+	MR_np_call_localret_ent(fn__f_102_108_111_97_116_95_95_47_2_0,
+		transform_hlds__ctgc__structure_reuse__direct__choose_reuse__average_match_2_0_i8);
+MR_def_label(transform_hlds__ctgc__structure_reuse__direct__choose_reuse__average_match_2_0,8)
+	MR_MAYBE_INIT_LOCAL_THREAD_ENGINE_BASE
+	{
+	MR_Word MR_tempr1, MR_tempr2;
+	MR_tag_alloc_heap(MR_tempr1, 0, (MR_Integer) 4);
+	MR_tempr2 = MR_sv(1);
+	MR_tfield(0, MR_tempr1, 0) = MR_tfield(0, MR_tempr2, 0);
+	MR_tfield(0, MR_tempr1, 1) = MR_tfield(0, MR_tempr2, 1);
+	MR_tfield(0, MR_tempr1, 2) = MR_r1;
+	MR_tfield(0, MR_tempr1, 3) = MR_tfield(0, MR_tempr2, 3);
+	MR_r1 = MR_tempr1;
+	MR_decr_sp_and_return(6);
+	}
+MR_def_label(transform_hlds__ctgc__structure_reuse__direct__choose_reuse__average_match_2_0,3)
+	MR_MAYBE_INIT_LOCAL_THREAD_ENGINE_BASE
+	MR_r1 = (MR_Word) MR_string_const("transform_hlds.ctgc.structure_reuse.direct.choose_reuse", 55);
+	MR_r2 = (MR_Word) MR_string_const("predicate \140transform_hlds.ctgc.structure_reuse.direct.choose_reuse.average_match\'/2", 83);
+	MR_r3 = (MR_Word) MR_string_const("empty list", 10);
+	MR_np_tailcall_ent(require__unexpected_3_0);
+#ifdef MR_maybe_local_thread_engine_base
+	#undef MR_maybe_local_thread_engine_base
+	#define MR_maybe_local_thread_engine_base MR_thread_engine_base
+#endif
+MR_END_MODULE
+
+MR_decl_entry(transform_hlds__ctgc__structure_reuse__direct__dead_cell_table_remove_3_0);
+
+MR_BEGIN_MODULE(transform_hlds__ctgc__structure_reuse__direct__choose_reuse_module24)
+	MR_init_entry1(transform_hlds__ctgc__structure_reuse__direct__choose_reuse__remove_deconstruction_from_dead_cell_table_3_0);
+	MR_INIT_PROC_LAYOUT_ADDR(mercury__transform_hlds__ctgc__structure_reuse__direct__choose_reuse__remove_deconstruction_from_dead_cell_table_3_0);
+MR_BEGIN_CODE
+
+/*-------------------------------------------------------------------------*/
+/* code for 'remove_deconstruction_from_dead_cell_table'/3 mode 0 */
+#ifdef MR_maybe_local_thread_engine_base
+	#undef MR_maybe_local_thread_engine_base
+	#define MR_maybe_local_thread_engine_base MR_local_thread_engine_base
+#endif
+MR_def_static(transform_hlds__ctgc__structure_reuse__direct__choose_reuse__remove_deconstruction_from_dead_cell_table_3_0)
+	MR_MAYBE_INIT_LOCAL_THREAD_ENGINE_BASE
+	MR_r1 = MR_tfield(0, MR_r1, 1);
+	MR_np_tailcall_ent(transform_hlds__ctgc__structure_reuse__direct__dead_cell_table_remove_3_0);
+#ifdef MR_maybe_local_thread_engine_base
+	#undef MR_maybe_local_thread_engine_base
+	#define MR_maybe_local_thread_engine_base MR_thread_engine_base
+#endif
+MR_END_MODULE
+
+MR_decl_entry(map__keys_2_0);
+MR_decl_entry(fn__f_115_101_116_95_95_84_121_112_101_83_112_101_99_79_102_95_95_112_114_101_100_95_111_114_95_102_117_110_99_95_95_108_105_115_116_95_116_111_95_115_101_116_95_95_91_84_32_61_32_118_97_114_40_86_95_50_41_93_95_48_95_49_1_0);
+MR_decl_entry(fn__f_115_101_116_95_95_84_121_112_101_83_112_101_99_79_102_95_95_112_114_101_100_95_111_114_95_102_117_110_99_95_95_105_110_116_101_114_115_101_99_116_95_95_91_84_32_61_32_118_97_114_40_86_95_50_41_93_95_48_95_49_2_0);
+MR_decl_entry(fn__set__to_sorted_list_1_0);
+
+MR_BEGIN_MODULE(transform_hlds__ctgc__structure_reuse__direct__choose_reuse_module25)
+	MR_init_entry1(fn__transform_hlds__ctgc__structure_reuse__direct__choose_reuse__common_var_with_list_2_0);
+	MR_INIT_PROC_LAYOUT_ADDR(mercury__fn__transform_hlds__ctgc__structure_reuse__direct__choose_reuse__common_var_with_list_2_0);
+	MR_init_label4(fn__transform_hlds__ctgc__structure_reuse__direct__choose_reuse__common_var_with_list_2_0,4,5,6,7)
+MR_BEGIN_CODE
+
+/*-------------------------------------------------------------------------*/
+/* code for 'common_var_with_list'/3 mode 0 */
+#ifdef MR_maybe_local_thread_engine_base
+	#undef MR_maybe_local_thread_engine_base
+	#define MR_maybe_local_thread_engine_base MR_local_thread_engine_base
+#endif
+MR_def_static(fn__transform_hlds__ctgc__structure_reuse__direct__choose_reuse__common_var_with_list_2_0)
+	MR_MAYBE_INIT_LOCAL_THREAD_ENGINE_BASE
+	MR_incr_sp(4);
+	MR_sv(4) = (MR_Word) MR_succip;
+	MR_sv(1) = MR_r2;
+	MR_sv(2) = (MR_Word) MR_CTOR0_ADDR(parse_tree__prog_data, prog_var_type);
+	MR_sv(3) = (MR_Word) MR_TAG_COMMON(0,5,0);
+	{
+	MR_Word MR_tempr1;
+	MR_tempr1 = MR_r1;
+	MR_r1 = MR_sv(3);
+	MR_r2 = (MR_Word) MR_TAG_COMMON(0,5,1);
+	MR_r3 = MR_tempr1;
+	}
+	MR_np_call_localret_ent(map__keys_2_0,
+		fn__transform_hlds__ctgc__structure_reuse__direct__choose_reuse__common_var_with_list_2_0_i4);
+MR_def_label(fn__transform_hlds__ctgc__structure_reuse__direct__choose_reuse__common_var_with_list_2_0,4)
+	MR_MAYBE_INIT_LOCAL_THREAD_ENGINE_BASE
+	{
+	MR_Word MR_tempr1;
+	MR_tempr1 = MR_sv(1);
+	MR_sv(1) = MR_r1;
+	MR_r1 = MR_sv(2);
+	MR_r2 = MR_sv(3);
+	MR_r3 = MR_tempr1;
+	}
+	MR_np_call_localret_ent(fn__f_115_101_116_95_95_84_121_112_101_83_112_101_99_79_102_95_95_112_114_101_100_95_111_114_95_102_117_110_99_95_95_108_105_115_116_95_116_111_95_115_101_116_95_95_91_84_32_61_32_118_97_114_40_86_95_50_41_93_95_48_95_49_1_0,
+		fn__transform_hlds__ctgc__structure_reuse__direct__choose_reuse__common_var_with_list_2_0_i5);
+MR_def_label(fn__transform_hlds__ctgc__structure_reuse__direct__choose_reuse__common_var_with_list_2_0,5)
+	MR_MAYBE_INIT_LOCAL_THREAD_ENGINE_BASE
+	{
+	MR_Word MR_tempr1;
+	MR_tempr1 = MR_sv(1);
+	MR_sv(1) = MR_r1;
+	MR_r1 = MR_sv(2);
+	MR_r2 = MR_sv(3);
+	MR_r3 = MR_tempr1;
+	}
+	MR_np_call_localret_ent(fn__f_115_101_116_95_95_84_121_112_101_83_112_101_99_79_102_95_95_112_114_101_100_95_111_114_95_102_117_110_99_95_95_108_105_115_116_95_116_111_95_115_101_116_95_95_91_84_32_61_32_118_97_114_40_86_95_50_41_93_95_48_95_49_1_0,
+		fn__transform_hlds__ctgc__structure_reuse__direct__choose_reuse__common_var_with_list_2_0_i6);
+MR_def_label(fn__transform_hlds__ctgc__structure_reuse__direct__choose_reuse__common_var_with_list_2_0,6)
+	MR_MAYBE_INIT_LOCAL_THREAD_ENGINE_BASE
+	{
+	MR_Word MR_tempr1;
+	MR_tempr1 = MR_r1;
+	MR_r1 = MR_sv(2);
+	MR_r2 = MR_sv(3);
+	MR_r3 = MR_sv(1);
+	MR_r4 = MR_tempr1;
+	}
+	MR_np_call_localret_ent(fn__f_115_101_116_95_95_84_121_112_101_83_112_101_99_79_102_95_95_112_114_101_100_95_111_114_95_102_117_110_99_95_95_105_110_116_101_114_115_101_99_116_95_95_91_84_32_61_32_118_97_114_40_86_95_50_41_93_95_48_95_49_2_0,
+		fn__transform_hlds__ctgc__structure_reuse__direct__choose_reuse__common_var_with_list_2_0_i7);
+MR_def_label(fn__transform_hlds__ctgc__structure_reuse__direct__choose_reuse__common_var_with_list_2_0,7)
+	MR_MAYBE_INIT_LOCAL_THREAD_ENGINE_BASE
+	{
+	MR_Word MR_tempr1;
+	MR_tempr1 = MR_r1;
+	MR_r1 = MR_sv(3);
+	MR_r2 = MR_tempr1;
+	MR_succip_word = MR_sv(4);
+	MR_decr_sp(4);
+	MR_np_tailcall_ent(fn__set__to_sorted_list_1_0);
+	}
+#ifdef MR_maybe_local_thread_engine_base
+	#undef MR_maybe_local_thread_engine_base
+	#define MR_maybe_local_thread_engine_base MR_thread_engine_base
+#endif
+MR_END_MODULE
+
+MR_decl_entry(multi_map__det_insert_4_0);
+
+MR_BEGIN_MODULE(transform_hlds__ctgc__structure_reuse__direct__choose_reuse_module26)
+	MR_init_entry1(transform_hlds__ctgc__structure_reuse__direct__choose_reuse__process_common_var_5_0);
+	MR_INIT_PROC_LAYOUT_ADDR(mercury__transform_hlds__ctgc__structure_reuse__direct__choose_reuse__process_common_var_5_0);
+	MR_init_label9(transform_hlds__ctgc__structure_reuse__direct__choose_reuse__process_common_var_5_0,7,10,12,15,17,16,21,22,1)
+MR_BEGIN_CODE
+
+/*-------------------------------------------------------------------------*/
+/* code for 'process_common_var'/5 mode 0 */
+#ifdef MR_maybe_local_thread_engine_base
+	#undef MR_maybe_local_thread_engine_base
+	#define MR_maybe_local_thread_engine_base MR_local_thread_engine_base
+#endif
+MR_def_static(transform_hlds__ctgc__structure_reuse__direct__choose_reuse__process_common_var_5_0)
+	MR_MAYBE_INIT_LOCAL_THREAD_ENGINE_BASE
+	MR_incr_sp(5);
+	MR_sv(5) = (MR_Word) MR_succip;
+	{
+	MR_Word MR_tempr1, MR_tempr2, MR_tempr3;
+	MR_tag_alloc_heap(MR_tempr1, 0, (MR_Integer) 4);
+	MR_tfield(0, MR_tempr1, 0) = (MR_Word) MR_COMMON(6,6);
+	MR_tfield(0, MR_tempr1, 1) = (MR_Word) MR_ENTRY_AP(transform_hlds__ctgc__structure_reuse__direct__choose_reuse__deconstruction_specs_2_4_0);
+	MR_tfield(0, MR_tempr1, 2) = (MR_Integer) 1;
+	MR_tempr3 = MR_r4;
+	MR_tfield(0, MR_tempr1, 3) = MR_tempr3;
+	MR_sv(4) = MR_r1;
+	MR_sv(3) = MR_r2;
+	MR_sv(1) = MR_tempr3;
+	MR_sv(2) = (MR_Word) MR_TAG_COMMON(0,5,0);
+	MR_r1 = (MR_Word) MR_TAG_COMMON(0,3,2);
+	MR_r2 = (MR_Word) MR_TAG_COMMON(0,5,10);
+	MR_tempr2 = MR_r3;
+	MR_r3 = MR_tempr1;
+	MR_r4 = MR_tempr2;
+	MR_r5 = (MR_Word) MR_tbmkword(0, 0);
+	}
+	MR_np_call_localret_ent(list__foldl_4_0,
+		transform_hlds__ctgc__structure_reuse__direct__choose_reuse__process_common_var_5_0_i7);
+MR_def_label(transform_hlds__ctgc__structure_reuse__direct__choose_reuse__process_common_var_5_0,7)
+	MR_MAYBE_INIT_LOCAL_THREAD_ENGINE_BASE
+	{
+	MR_Word MR_tempr1, MR_tempr2;
+	MR_tag_alloc_heap(MR_tempr1, 0, (MR_Integer) 4);
+	MR_tfield(0, MR_tempr1, 0) = MR_r1;
+	MR_tfield(0, MR_tempr1, 1) = (MR_Word) MR_tbmkword(0, 0);
+	MR_tfield(0, MR_tempr1, 2) = (MR_Word) &mercury_float_const_0pt0000000000000000;
+	MR_tfield(0, MR_tempr1, 3) = (MR_Integer) 0;
+	MR_tag_alloc_heap(MR_tempr2, 0, (MR_Integer) 5);
+	MR_r3 = MR_tempr2;
+	MR_tfield(0, MR_tempr2, 0) = (MR_Word) MR_COMMON(6,7);
+	MR_tfield(0, MR_tempr2, 1) = (MR_Word) MR_ENTRY_AP(transform_hlds__ctgc__structure_reuse__direct__choose_reuse__find_match_in_goal_4_0);
+	MR_tfield(0, MR_tempr2, 2) = (MR_Integer) 2;
+	MR_tfield(0, MR_tempr2, 3) = MR_sv(4);
+	MR_tfield(0, MR_tempr2, 4) = MR_tempr1;
+	MR_sv(4) = MR_tempr1;
+	MR_r1 = (MR_Word) MR_CTOR0_ADDR(hlds__hlds_goal, hlds_goal);
+	MR_r2 = (MR_Word) MR_CTOR0_ADDR(transform_hlds__ctgc__structure_reuse__direct__choose_reuse, match);
+	MR_r4 = MR_sv(3);
+	}
+	MR_np_call_localret_ent(list__map_3_0,
+		transform_hlds__ctgc__structure_reuse__direct__choose_reuse__process_common_var_5_0_i10);
+MR_def_label(transform_hlds__ctgc__structure_reuse__direct__choose_reuse__process_common_var_5_0,10)
+	MR_MAYBE_INIT_LOCAL_THREAD_ENGINE_BASE
+	MR_sv(3) = MR_r1;
+	MR_r1 = (MR_Word) MR_CTOR0_ADDR(transform_hlds__ctgc__structure_reuse__direct__choose_reuse, match);
+	MR_r2 = (MR_Word) MR_INT_CTOR_ADDR;
+	MR_r3 = (MR_Word) MR_TAG_COMMON(0,1,19);
+	MR_r4 = MR_sv(3);
+	MR_r5 = (MR_Integer) 0;
+	MR_np_call_localret_ent(fn__list__foldl_3_0,
+		transform_hlds__ctgc__structure_reuse__direct__choose_reuse__process_common_var_5_0_i12);
+MR_def_label(transform_hlds__ctgc__structure_reuse__direct__choose_reuse__process_common_var_5_0,12)
+	MR_MAYBE_INIT_LOCAL_THREAD_ENGINE_BASE
+	{
+	MR_Word MR_tempr1;
+	MR_tag_alloc_heap(MR_tempr1, 1, (MR_Integer) 2);
+	MR_r3 = MR_tempr1;
+	MR_tfield(1, MR_tempr1, 0) = MR_sv(4);
+	MR_tfield(1, MR_tempr1, 1) = MR_sv(3);
+	MR_sv(4) = MR_r1;
+	MR_r1 = (MR_Word) MR_CTOR0_ADDR(transform_hlds__ctgc__structure_reuse__direct__choose_reuse, match);
+	MR_r2 = (MR_Word) MR_TAG_COMMON(0,1,20);
+	}
+	MR_np_call_localret_ent(list__sort_3_0,
+		transform_hlds__ctgc__structure_reuse__direct__choose_reuse__process_common_var_5_0_i15);
+MR_def_label(transform_hlds__ctgc__structure_reuse__direct__choose_reuse__process_common_var_5_0,15)
+	MR_MAYBE_INIT_LOCAL_THREAD_ENGINE_BASE
+	if (MR_LTAGS_TEST(MR_r1,0,0)) {
+		MR_GOTO_LAB(transform_hlds__ctgc__structure_reuse__direct__choose_reuse__process_common_var_5_0_i17);
+	}
+	MR_r3 = MR_r1;
+	MR_r1 = MR_sv(2);
+	MR_r2 = MR_tfield(1, MR_r3, 0);
+	MR_GOTO_LAB(transform_hlds__ctgc__structure_reuse__direct__choose_reuse__process_common_var_5_0_i16);
+MR_def_label(transform_hlds__ctgc__structure_reuse__direct__choose_reuse__process_common_var_5_0,17)
+	MR_MAYBE_INIT_LOCAL_THREAD_ENGINE_BASE
+	MR_r1 = (MR_Word) MR_string_const("transform_hlds.ctgc.structure_reuse.direct.choose_reuse", 55);
+	MR_r2 = (MR_Word) MR_string_const("predicate \140transform_hlds.ctgc.structure_reuse.direct.choose_reuse.highest_match_in_list\'/3", 91);
+	MR_r3 = (MR_Word) MR_string_const("empty list of matches", 21);
+	MR_np_call_localret_ent(require__unexpected_3_0,
+		transform_hlds__ctgc__structure_reuse__direct__choose_reuse__process_common_var_5_0_i16);
+MR_def_label(transform_hlds__ctgc__structure_reuse__direct__choose_reuse__process_common_var_5_0,16)
+	MR_MAYBE_INIT_LOCAL_THREAD_ENGINE_BASE
+	{
+	MR_Word MR_tempr1;
+	MR_tag_alloc_heap(MR_tempr1, 0, (MR_Integer) 4);
+	MR_tfield(0, MR_tempr1, 0) = MR_tfield(0, MR_r2, 0);
+	MR_tfield(0, MR_tempr1, 1) = MR_tfield(0, MR_r2, 1);
+	MR_tfield(0, MR_tempr1, 2) = MR_tfield(0, MR_r2, 2);
+	MR_tfield(0, MR_tempr1, 3) = MR_sv(4);
+	if (MR_LTAGS_TEST(MR_tfield(0, MR_tempr1, 1),0,0)) {
+		MR_GOTO_LAB(transform_hlds__ctgc__structure_reuse__direct__choose_reuse__process_common_var_5_0_i1);
+	}
+	if ((MR_word_to_float(MR_tfield(0, MR_tempr1, 2)) <= (MR_Float) 0.0000000000000000)) {
+		MR_GOTO_LAB(transform_hlds__ctgc__structure_reuse__direct__choose_reuse__process_common_var_5_0_i1);
+	}
+	MR_sv(4) = MR_tempr1;
+	MR_sv(2) = MR_r1;
+	MR_sv(3) = (MR_Word) MR_CTOR0_ADDR(transform_hlds__ctgc__structure_reuse__direct__choose_reuse, match);
+	MR_r2 = MR_sv(3);
+	}
+	MR_np_call_localret_ent(multi_map__init_1_0,
+		transform_hlds__ctgc__structure_reuse__direct__choose_reuse__process_common_var_5_0_i21);
+MR_def_label(transform_hlds__ctgc__structure_reuse__direct__choose_reuse__process_common_var_5_0,21)
+	MR_MAYBE_INIT_LOCAL_THREAD_ENGINE_BASE
+	{
+	MR_Word MR_tempr1;
+	MR_tempr1 = MR_r1;
+	MR_r1 = MR_sv(2);
+	MR_r2 = MR_sv(3);
+	MR_r3 = MR_sv(1);
+	MR_r4 = MR_sv(4);
+	MR_r5 = MR_tempr1;
+	}
+	MR_np_call_localret_ent(multi_map__det_insert_4_0,
+		transform_hlds__ctgc__structure_reuse__direct__choose_reuse__process_common_var_5_0_i22);
+MR_def_label(transform_hlds__ctgc__structure_reuse__direct__choose_reuse__process_common_var_5_0,22)
+	MR_MAYBE_INIT_LOCAL_THREAD_ENGINE_BASE
+	MR_r2 = MR_r1;
+	MR_succip_word = MR_sv(5);
+	MR_decr_sp(5);
+	MR_r1 = MR_TRUE;
+	MR_proceed();
+MR_def_label(transform_hlds__ctgc__structure_reuse__direct__choose_reuse__process_common_var_5_0,1)
+	MR_MAYBE_INIT_LOCAL_THREAD_ENGINE_BASE
+	MR_succip_word = MR_sv(5);
+	MR_decr_sp(5);
+	MR_r1 = MR_FALSE;
+	MR_proceed();
+#ifdef MR_maybe_local_thread_engine_base
+	#undef MR_maybe_local_thread_engine_base
+	#define MR_maybe_local_thread_engine_base MR_thread_engine_base
+#endif
+MR_END_MODULE
+
+MR_decl_entry(multi_map__lookup_3_0);
+MR_decl_entry(fn__list__condense_1_0);
+
+MR_BEGIN_MODULE(transform_hlds__ctgc__structure_reuse__direct__choose_reuse_module27)
+	MR_init_entry1(transform_hlds__ctgc__structure_reuse__direct__choose_reuse__deconstruction_specs_2_4_0);
+	MR_INIT_PROC_LAYOUT_ADDR(mercury__transform_hlds__ctgc__structure_reuse__direct__choose_reuse__deconstruction_specs_2_4_0);
+	MR_init_label3(transform_hlds__ctgc__structure_reuse__direct__choose_reuse__deconstruction_specs_2_4_0,3,6,7)
+MR_BEGIN_CODE
+
+/*-------------------------------------------------------------------------*/
+/* code for 'deconstruction_specs_2'/4 mode 0 */
+#ifdef MR_maybe_local_thread_engine_base
+	#undef MR_maybe_local_thread_engine_base
+	#define MR_maybe_local_thread_engine_base MR_local_thread_engine_base
+#endif
+MR_def_static(transform_hlds__ctgc__structure_reuse__direct__choose_reuse__deconstruction_specs_2_4_0)
+	MR_MAYBE_INIT_LOCAL_THREAD_ENGINE_BASE
+	MR_incr_sp(3);
+	MR_sv(3) = (MR_Word) MR_succip;
+	MR_sv(1) = MR_r3;
+	MR_sv(2) = (MR_Word) MR_CTOR0_ADDR(transform_hlds__ctgc__structure_reuse__direct__choose_reuse, match);
+	{
+	MR_Word MR_tempr1, MR_tempr2;
+	MR_tempr1 = MR_r1;
+	MR_r1 = (MR_Word) MR_TAG_COMMON(0,5,0);
+	MR_tempr2 = MR_r2;
+	MR_r2 = MR_sv(2);
+	MR_r3 = MR_tempr2;
+	MR_r4 = MR_tempr1;
+	}
+	MR_np_call_localret_ent(multi_map__lookup_3_0,
+		transform_hlds__ctgc__structure_reuse__direct__choose_reuse__deconstruction_specs_2_4_0_i3);
+MR_def_label(transform_hlds__ctgc__structure_reuse__direct__choose_reuse__deconstruction_specs_2_4_0,3)
+	MR_MAYBE_INIT_LOCAL_THREAD_ENGINE_BASE
+	MR_sv(2) = (MR_Word) MR_CTOR0_ADDR(transform_hlds__ctgc__structure_reuse__direct__choose_reuse, deconstruction_spec);
+	{
+	MR_Word MR_tempr1;
+	MR_tempr1 = MR_r1;
+	MR_r1 = (MR_Word) MR_CTOR0_ADDR(transform_hlds__ctgc__structure_reuse__direct__choose_reuse, match);
+	MR_r2 = (MR_Word) MR_TAG_COMMON(0,5,10);
+	MR_r3 = (MR_Word) MR_TAG_COMMON(0,1,21);
+	MR_r4 = MR_tempr1;
+	}
+	MR_np_call_localret_ent(fn__list__map_2_0,
+		transform_hlds__ctgc__structure_reuse__direct__choose_reuse__deconstruction_specs_2_4_0_i6);
+MR_def_label(transform_hlds__ctgc__structure_reuse__direct__choose_reuse__deconstruction_specs_2_4_0,6)
+	MR_MAYBE_INIT_LOCAL_THREAD_ENGINE_BASE
+	{
+	MR_Word MR_tempr1;
+	MR_tempr1 = MR_r1;
+	MR_r1 = MR_sv(2);
+	MR_r2 = MR_tempr1;
+	}
+	MR_np_call_localret_ent(fn__list__condense_1_0,
+		transform_hlds__ctgc__structure_reuse__direct__choose_reuse__deconstruction_specs_2_4_0_i7);
+MR_def_label(transform_hlds__ctgc__structure_reuse__direct__choose_reuse__deconstruction_specs_2_4_0,7)
+	MR_MAYBE_INIT_LOCAL_THREAD_ENGINE_BASE
+	{
+	MR_Word MR_tempr1;
+	MR_tempr1 = MR_r1;
+	MR_r1 = MR_sv(2);
+	MR_r2 = MR_tempr1;
+	MR_r3 = MR_sv(1);
+	MR_succip_word = MR_sv(3);
+	MR_decr_sp(3);
+	MR_np_tailcall_ent(list__append_3_1);
+	}
+#ifdef MR_maybe_local_thread_engine_base
+	#undef MR_maybe_local_thread_engine_base
+	#define MR_maybe_local_thread_engine_base MR_thread_engine_base
+#endif
+MR_END_MODULE
+
+
+MR_BEGIN_MODULE(transform_hlds__ctgc__structure_reuse__direct__choose_reuse_module28)
+	MR_init_entry1(fn__transform_hlds__ctgc__structure_reuse__direct__choose_reuse__match_get_decon_specs_1_0);
+	MR_INIT_PROC_LAYOUT_ADDR(mercury__fn__transform_hlds__ctgc__structure_reuse__direct__choose_reuse__match_get_decon_specs_1_0);
+MR_BEGIN_CODE
+
+/*-------------------------------------------------------------------------*/
+/* code for 'match_get_decon_specs'/2 mode 0 */
+#ifdef MR_maybe_local_thread_engine_base
+	#undef MR_maybe_local_thread_engine_base
+	#define MR_maybe_local_thread_engine_base MR_local_thread_engine_base
+#endif
+MR_def_static(fn__transform_hlds__ctgc__structure_reuse__direct__choose_reuse__match_get_decon_specs_1_0)
+	MR_MAYBE_INIT_LOCAL_THREAD_ENGINE_BASE
+	MR_r1 = MR_tfield(0, MR_r1, 0);
+	MR_proceed();
+#ifdef MR_maybe_local_thread_engine_base
+	#undef MR_maybe_local_thread_engine_base
+	#define MR_maybe_local_thread_engine_base MR_thread_engine_base
+#endif
+MR_END_MODULE
+
+
+MR_BEGIN_MODULE(transform_hlds__ctgc__structure_reuse__direct__choose_reuse_module29)
+	MR_init_entry1(transform_hlds__ctgc__structure_reuse__direct__choose_reuse__find_match_in_disjunction_4_0);
+	MR_INIT_PROC_LAYOUT_ADDR(mercury__transform_hlds__ctgc__structure_reuse__direct__choose_reuse__find_match_in_disjunction_4_0);
+	MR_init_label7(transform_hlds__ctgc__structure_reuse__direct__choose_reuse__find_match_in_disjunction_4_0,32,5,8,10,11,12,7)
+MR_BEGIN_CODE
+
+/*-------------------------------------------------------------------------*/
+/* code for 'find_match_in_disjunction'/4 mode 0 */
+#ifdef MR_maybe_local_thread_engine_base
+	#undef MR_maybe_local_thread_engine_base
+	#define MR_maybe_local_thread_engine_base MR_local_thread_engine_base
+#endif
+MR_def_static(transform_hlds__ctgc__structure_reuse__direct__choose_reuse__find_match_in_disjunction_4_0)
+	MR_MAYBE_INIT_LOCAL_THREAD_ENGINE_BASE
+	if (MR_LTAGS_TESTR(MR_r2,0,0)) {
+		MR_GOTO_LAB(transform_hlds__ctgc__structure_reuse__direct__choose_reuse__find_match_in_disjunction_4_0_i32);
+	}
+	MR_r1 = MR_r3;
+	MR_proceed();
+MR_def_label(transform_hlds__ctgc__structure_reuse__direct__choose_reuse__find_match_in_disjunction_4_0,32)
+	MR_MAYBE_INIT_LOCAL_THREAD_ENGINE_BASE
+	MR_incr_sp(6);
+	MR_sv(6) = (MR_Word) MR_succip;
+	{
+	MR_Word MR_tempr1, MR_tempr2;
+	MR_tag_alloc_heap(MR_tempr1, 0, (MR_Integer) 5);
+	MR_tfield(0, MR_tempr1, 0) = (MR_Word) MR_COMMON(6,8);
+	MR_tfield(0, MR_tempr1, 1) = (MR_Word) MR_ENTRY_AP(transform_hlds__ctgc__structure_reuse__direct__choose_reuse__find_match_in_goal_4_0);
+	MR_tfield(0, MR_tempr1, 2) = (MR_Integer) 2;
+	MR_tfield(0, MR_tempr1, 3) = MR_r1;
+	MR_tfield(0, MR_tempr1, 4) = MR_r3;
+	MR_r1 = (MR_Word) MR_CTOR0_ADDR(hlds__hlds_goal, hlds_goal);
+	MR_tempr2 = MR_r2;
+	MR_r2 = (MR_Word) MR_CTOR0_ADDR(transform_hlds__ctgc__structure_reuse__direct__choose_reuse, match);
+	MR_r3 = MR_tempr1;
+	MR_r4 = MR_tempr2;
+	}
+	MR_np_call_localret_ent(list__map_3_0,
+		transform_hlds__ctgc__structure_reuse__direct__choose_reuse__find_match_in_disjunction_4_0_i5);
+MR_def_label(transform_hlds__ctgc__structure_reuse__direct__choose_reuse__find_match_in_disjunction_4_0,5)
+	MR_MAYBE_INIT_LOCAL_THREAD_ENGINE_BASE
+	if (MR_LTAGS_TEST(MR_r1,0,0)) {
+		MR_GOTO_LAB(transform_hlds__ctgc__structure_reuse__direct__choose_reuse__find_match_in_disjunction_4_0_i7);
+	}
+	MR_sv(1) = MR_tfield(1, MR_r1, 0);
+	MR_sv(2) = MR_tfield(1, MR_r1, 1);
+	MR_sv(5) = (MR_Word) MR_CTOR0_ADDR(transform_hlds__ctgc__structure_reuse__direct__choose_reuse, match);
+	{
+	MR_Word MR_tempr1;
+	MR_tempr1 = MR_r1;
+	MR_r1 = MR_sv(5);
+	MR_r2 = MR_tempr1;
+	}
+	MR_np_call_localret_ent(list__length_2_0,
+		transform_hlds__ctgc__structure_reuse__direct__choose_reuse__find_match_in_disjunction_4_0_i8);
+MR_def_label(transform_hlds__ctgc__structure_reuse__direct__choose_reuse__find_match_in_disjunction_4_0,8)
+	MR_MAYBE_INIT_LOCAL_THREAD_ENGINE_BASE
+	{
+	MR_Word MR_tempr1;
+	MR_tempr1 = MR_sv(1);
+	MR_sv(1) = MR_r1;
+	MR_r1 = MR_sv(5);
+	MR_r2 = MR_r1;
+	MR_r3 = (MR_Word) MR_TAG_COMMON(0,1,22);
+	MR_r4 = MR_sv(2);
+	MR_r5 = MR_tempr1;
+	}
+	MR_np_call_localret_ent(list__foldl_4_0,
+		transform_hlds__ctgc__structure_reuse__direct__choose_reuse__find_match_in_disjunction_4_0_i10);
+MR_def_label(transform_hlds__ctgc__structure_reuse__direct__choose_reuse__find_match_in_disjunction_4_0,10)
+	MR_MAYBE_INIT_LOCAL_THREAD_ENGINE_BASE
+	MR_r2 = MR_sv(1);
+	MR_sv(1) = MR_r1;
+	* (MR_Float *) &MR_sv(4) = MR_word_to_float(MR_tfield(0, MR_r1, 2));
+	MR_r1 = MR_r2;
+	MR_np_call_localret_ent(fn__float__float_1_0,
+		transform_hlds__ctgc__structure_reuse__direct__choose_reuse__find_match_in_disjunction_4_0_i11);
+MR_def_label(transform_hlds__ctgc__structure_reuse__direct__choose_reuse__find_match_in_disjunction_4_0,11)
+	MR_MAYBE_INIT_LOCAL_THREAD_ENGINE_BASE
+	{
+	MR_Word MR_tempr1;
+	MR_tempr1 = MR_r1;
+	MR_r1 = MR_float_to_word(MR_float_from_dword_ptr(&MR_sv(4)));
+	MR_r2 = MR_tempr1;
+	}
+	MR_np_call_localret_ent(fn__f_102_108_111_97_116_95_95_47_2_0,
+		transform_hlds__ctgc__structure_reuse__direct__choose_reuse__find_match_in_disjunction_4_0_i12);
+MR_def_label(transform_hlds__ctgc__structure_reuse__direct__choose_reuse__find_match_in_disjunction_4_0,12)
+	MR_MAYBE_INIT_LOCAL_THREAD_ENGINE_BASE
+	{
+	MR_Word MR_tempr1, MR_tempr2;
+	MR_tag_alloc_heap(MR_tempr1, 0, (MR_Integer) 4);
+	MR_tempr2 = MR_sv(1);
+	MR_tfield(0, MR_tempr1, 0) = MR_tfield(0, MR_tempr2, 0);
+	MR_tfield(0, MR_tempr1, 1) = MR_tfield(0, MR_tempr2, 1);
+	MR_tfield(0, MR_tempr1, 2) = MR_r1;
+	MR_tfield(0, MR_tempr1, 3) = MR_tfield(0, MR_tempr2, 3);
+	MR_r1 = MR_tempr1;
+	MR_decr_sp_and_return(6);
+	}
+MR_def_label(transform_hlds__ctgc__structure_reuse__direct__choose_reuse__find_match_in_disjunction_4_0,7)
+	MR_MAYBE_INIT_LOCAL_THREAD_ENGINE_BASE
+	MR_r1 = (MR_Word) MR_string_const("transform_hlds.ctgc.structure_reuse.direct.choose_reuse", 55);
+	MR_r2 = (MR_Word) MR_string_const("predicate \140transform_hlds.ctgc.structure_reuse.direct.choose_reuse.average_match\'/2", 83);
+	MR_r3 = (MR_Word) MR_string_const("empty list", 10);
+	MR_succip_word = MR_sv(6);
+	MR_decr_sp(6);
+	MR_np_tailcall_ent(require__unexpected_3_0);
+#ifdef MR_maybe_local_thread_engine_base
+	#undef MR_maybe_local_thread_engine_base
+	#define MR_maybe_local_thread_engine_base MR_thread_engine_base
+#endif
+MR_END_MODULE
+
+
+MR_BEGIN_MODULE(transform_hlds__ctgc__structure_reuse__direct__choose_reuse_module30)
+	MR_init_entry1(transform_hlds__ctgc__structure_reuse__direct__choose_reuse__empty_reuse_description_1_0);
+	MR_INIT_PROC_LAYOUT_ADDR(mercury__transform_hlds__ctgc__structure_reuse__direct__choose_reuse__empty_reuse_description_1_0);
+	MR_init_label1(transform_hlds__ctgc__structure_reuse__direct__choose_reuse__empty_reuse_description_1_0,1)
+MR_BEGIN_CODE
+
+/*-------------------------------------------------------------------------*/
+/* code for 'empty_reuse_description'/1 mode 0 */
+#ifdef MR_maybe_local_thread_engine_base
+	#undef MR_maybe_local_thread_engine_base
+	#define MR_maybe_local_thread_engine_base MR_local_thread_engine_base
+#endif
+MR_def_static(transform_hlds__ctgc__structure_reuse__direct__choose_reuse__empty_reuse_description_1_0)
+	MR_MAYBE_INIT_LOCAL_THREAD_ENGINE_BASE
+	if (MR_LTAGS_TESTR(MR_r1,0,0)) {
+		MR_GOTO_LAB(transform_hlds__ctgc__structure_reuse__direct__choose_reuse__empty_reuse_description_1_0_i1);
+	}
+	MR_r1 = MR_TRUE;
+	MR_proceed();
+MR_def_label(transform_hlds__ctgc__structure_reuse__direct__choose_reuse__empty_reuse_description_1_0,1)
+	MR_MAYBE_INIT_LOCAL_THREAD_ENGINE_BASE
+	MR_r1 = MR_FALSE;
+	MR_proceed();
+#ifdef MR_maybe_local_thread_engine_base
+	#undef MR_maybe_local_thread_engine_base
+	#define MR_maybe_local_thread_engine_base MR_thread_engine_base
+#endif
+MR_END_MODULE
+
+MR_decl_entry(list__map_3_2);
+
+MR_BEGIN_MODULE(transform_hlds__ctgc__structure_reuse__direct__choose_reuse_module31)
+	MR_init_entry1(transform_hlds__ctgc__structure_reuse__direct__choose_reuse__verify_match_7_0);
+	MR_INIT_PROC_LAYOUT_ADDR(mercury__transform_hlds__ctgc__structure_reuse__direct__choose_reuse__verify_match_7_0);
+	MR_init_label6(transform_hlds__ctgc__structure_reuse__direct__choose_reuse__verify_match_7_0,4,8,11,12,13,2)
+MR_BEGIN_CODE
+
+/*-------------------------------------------------------------------------*/
+/* code for 'verify_match'/7 mode 0 */
+#ifdef MR_maybe_local_thread_engine_base
+	#undef MR_maybe_local_thread_engine_base
+	#define MR_maybe_local_thread_engine_base MR_local_thread_engine_base
+#endif
+MR_def_static(transform_hlds__ctgc__structure_reuse__direct__choose_reuse__verify_match_7_0)
+	MR_MAYBE_INIT_LOCAL_THREAD_ENGINE_BASE
+	MR_incr_sp(9);
+	MR_sv(9) = (MR_Word) MR_succip;
+	{
+	MR_Word MR_tempr1, MR_tempr2;
+	MR_tag_alloc_heap(MR_tempr1, 0, (MR_Integer) 7);
+	MR_tfield(0, MR_tempr1, 0) = (MR_Word) MR_COMMON(10,0);
+	MR_tfield(0, MR_tempr1, 1) = (MR_Word) MR_ENTRY_AP(transform_hlds__ctgc__structure_reuse__direct__choose_reuse__compute_reuse_type_6_0);
+	MR_tfield(0, MR_tempr1, 2) = (MR_Integer) 4;
+	MR_tfield(0, MR_tempr1, 3) = MR_r1;
+	MR_tfield(0, MR_tempr1, 4) = MR_r2;
+	MR_tfield(0, MR_tempr1, 5) = MR_r3;
+	MR_tfield(0, MR_tempr1, 6) = MR_r4;
+	MR_sv(1) = MR_r5;
+	MR_tempr2 = MR_r6;
+	MR_sv(2) = MR_tempr2;
+	MR_r1 = (MR_Word) MR_CTOR0_ADDR(transform_hlds__ctgc__structure_reuse__direct__choose_reuse, deconstruction_spec);
+	MR_r2 = (MR_Word) MR_CTOR0_ADDR(transform_hlds__ctgc__structure_reuse__direct__choose_reuse, reuse_type);
+	MR_r3 = MR_tempr1;
+	MR_r4 = MR_tfield(0, MR_tempr2, 0);
+	}
+	MR_np_call_localret_ent(list__map_3_2,
+		transform_hlds__ctgc__structure_reuse__direct__choose_reuse__verify_match_7_0_i4);
+MR_def_label(transform_hlds__ctgc__structure_reuse__direct__choose_reuse__verify_match_7_0,4)
+	MR_MAYBE_INIT_LOCAL_THREAD_ENGINE_BASE
+	if (!(MR_r1)) {
+		MR_GOTO_LAB(transform_hlds__ctgc__structure_reuse__direct__choose_reuse__verify_match_7_0_i2);
+	}
+	if (MR_LTAGS_TEST(MR_r2,0,0)) {
+		MR_GOTO_LAB(transform_hlds__ctgc__structure_reuse__direct__choose_reuse__verify_match_7_0_i2);
+	}
+	MR_r1 = (MR_Word) MR_CTOR0_ADDR(transform_hlds__ctgc__structure_reuse__direct__choose_reuse, reuse_type);
+	{
+	MR_Word MR_tempr1;
+	MR_tempr1 = MR_r2;
+	MR_r2 = MR_r1;
+	MR_r3 = (MR_Word) MR_TAG_COMMON(0,1,23);
+	MR_r4 = MR_tfield(1, MR_tempr1, 1);
+	MR_r5 = MR_tfield(1, MR_tempr1, 0);
+	}
+	MR_np_call_localret_ent(fn__list__foldl_3_0,
+		transform_hlds__ctgc__structure_reuse__direct__choose_reuse__verify_match_7_0_i8);
+MR_def_label(transform_hlds__ctgc__structure_reuse__direct__choose_reuse__verify_match_7_0,8)
+	MR_MAYBE_INIT_LOCAL_THREAD_ENGINE_BASE
+	MR_tag_alloc_heap(MR_r2, 0, (MR_Integer) 2);
+	MR_tfield(0, MR_r2, 0) = MR_sv(1);
+	MR_tfield(0, MR_r2, 1) = MR_r1;
+	{
+	MR_Word MR_tempr1, MR_tempr2, MR_tempr3;
+	MR_tag_alloc_heap(MR_tempr1, 1, (MR_Integer) 2);
+	MR_sv(5) = MR_tempr1;
+	MR_tfield(1, MR_tempr1, 0) = MR_r2;
+	MR_tempr3 = MR_sv(2);
+	MR_tfield(1, MR_tempr1, 1) = MR_tfield(0, MR_tempr3, 1);
+	MR_sv(1) = MR_r2;
+	MR_tempr2 = MR_tempr3;
+	MR_sv(2) = MR_tfield(0, MR_tempr2, 0);
+	* (MR_Float *) &MR_sv(4) = MR_word_to_float(MR_tfield(0, MR_tempr2, 2));
+	MR_sv(6) = ((MR_Integer) MR_tfield(0, MR_tempr2, 3) + (MR_Integer) 1);
+	MR_r1 = MR_tfield(0, MR_tempr2, 3);
+	}
+	MR_np_call_localret_ent(fn__float__float_1_0,
+		transform_hlds__ctgc__structure_reuse__direct__choose_reuse__verify_match_7_0_i11);
+MR_def_label(transform_hlds__ctgc__structure_reuse__direct__choose_reuse__verify_match_7_0,11)
+	MR_MAYBE_INIT_LOCAL_THREAD_ENGINE_BASE
+	* (MR_Float *) &MR_sv(8) = MR_word_to_float(MR_r1);
+	MR_r1 = MR_sv(6);
+	MR_np_call_localret_ent(fn__float__float_1_0,
+		transform_hlds__ctgc__structure_reuse__direct__choose_reuse__verify_match_7_0_i12);
+MR_def_label(transform_hlds__ctgc__structure_reuse__direct__choose_reuse__verify_match_7_0,12)
+	MR_MAYBE_INIT_LOCAL_THREAD_ENGINE_BASE
+	{
+	MR_Word MR_tempr1;
+	MR_tempr1 = MR_r1;
+	MR_r1 = MR_float_to_word(((MR_float_from_dword_ptr(&MR_sv(4)) * MR_float_from_dword_ptr(&MR_sv(8))) + MR_word_to_float(MR_tfield(0, MR_tfield(0, MR_sv(1), 1), 2))));
+	MR_r2 = MR_tempr1;
+	}
+	MR_np_call_localret_ent(fn__f_102_108_111_97_116_95_95_47_2_0,
+		transform_hlds__ctgc__structure_reuse__direct__choose_reuse__verify_match_7_0_i13);
+MR_def_label(transform_hlds__ctgc__structure_reuse__direct__choose_reuse__verify_match_7_0,13)
+	MR_MAYBE_INIT_LOCAL_THREAD_ENGINE_BASE
+	MR_tag_alloc_heap(MR_r2, 0, (MR_Integer) 4);
+	MR_tfield(0, MR_r2, 0) = MR_sv(2);
+	MR_tfield(0, MR_r2, 1) = MR_sv(5);
+	MR_tfield(0, MR_r2, 2) = MR_r1;
+	MR_tfield(0, MR_r2, 3) = MR_sv(6);
+	MR_r1 = MR_r2;
+	MR_decr_sp_and_return(9);
+MR_def_label(transform_hlds__ctgc__structure_reuse__direct__choose_reuse__verify_match_7_0,2)
+	MR_MAYBE_INIT_LOCAL_THREAD_ENGINE_BASE
+	MR_r1 = MR_sv(2);
+	MR_decr_sp_and_return(9);
+#ifdef MR_maybe_local_thread_engine_base
+	#undef MR_maybe_local_thread_engine_base
+	#define MR_maybe_local_thread_engine_base MR_thread_engine_base
+#endif
+MR_END_MODULE
+
+MR_decl_entry(f_109_97_112_95_95_84_121_112_101_83_112_101_99_79_102_95_95_112_114_101_100_95_111_114_95_102_117_110_99_95_95_108_111_111_107_117_112_95_95_91_75_32_61_32_118_97_114_40_86_95_50_41_93_95_48_95_49_3_0);
+MR_decl_entry(transform_hlds__ctgc__util__top_cell_may_be_reusable_2_0);
+MR_decl_entry(fn__hlds__hlds_goal__goal_info_get_reuse_1_0);
+
+MR_BEGIN_MODULE(transform_hlds__ctgc__structure_reuse__direct__choose_reuse_module32)
+	MR_init_entry1(transform_hlds__ctgc__structure_reuse__direct__choose_reuse__find_match_in_goal_2_4_0);
+	MR_INIT_PROC_LAYOUT_ADDR(mercury__transform_hlds__ctgc__structure_reuse__direct__choose_reuse__find_match_in_goal_2_4_0);
+	MR_init_label10(transform_hlds__ctgc__structure_reuse__direct__choose_reuse__find_match_in_goal_2_4_0,141,3,4,6,8,12,13,9,17,18)
+	MR_init_label10(transform_hlds__ctgc__structure_reuse__direct__choose_reuse__find_match_in_goal_2_4_0,19,23,21,27,31,32,34,35,37,29)
+	MR_init_label4(transform_hlds__ctgc__structure_reuse__direct__choose_reuse__find_match_in_goal_2_4_0,28,40,41,25)
+MR_BEGIN_CODE
+
+/*-------------------------------------------------------------------------*/
+/* code for 'find_match_in_goal_2'/4 mode 0 */
+#ifdef MR_maybe_local_thread_engine_base
+	#undef MR_maybe_local_thread_engine_base
+	#define MR_maybe_local_thread_engine_base MR_local_thread_engine_base
+#endif
+MR_def_static(transform_hlds__ctgc__structure_reuse__direct__choose_reuse__find_match_in_goal_2_4_0)
+	MR_MAYBE_INIT_LOCAL_THREAD_ENGINE_BASE
+	MR_incr_sp(7);
+	MR_sv(7) = (MR_Word) MR_succip;
+MR_def_label(transform_hlds__ctgc__structure_reuse__direct__choose_reuse__find_match_in_goal_2_4_0,141)
+	MR_MAYBE_INIT_LOCAL_THREAD_ENGINE_BASE
+	{
+	MR_Word MR_tempr1;
+	MR_tempr1 = MR_tfield(0, MR_r2, 0);
+	MR_r4 = MR_tempr1;
+	if (MR_RTAGS_TESTR(MR_tempr1,3,1)) {
+		MR_GOTO_LAB(transform_hlds__ctgc__structure_reuse__direct__choose_reuse__find_match_in_goal_2_4_0_i3);
+	}
+	MR_r1 = MR_r3;
+	MR_decr_sp_and_return(7);
+	}
+MR_def_label(transform_hlds__ctgc__structure_reuse__direct__choose_reuse__find_match_in_goal_2_4_0,3)
+	MR_MAYBE_INIT_LOCAL_THREAD_ENGINE_BASE
+	if (MR_RTAGS_TESTR(MR_r4,3,2)) {
+		MR_GOTO_LAB(transform_hlds__ctgc__structure_reuse__direct__choose_reuse__find_match_in_goal_2_4_0_i4);
+	}
+	MR_r2 = MR_tfield(3, MR_r4, 2);
+	MR_succip_word = MR_sv(7);
+	MR_decr_sp(7);
+	MR_np_tailcall_ent(transform_hlds__ctgc__structure_reuse__direct__choose_reuse__find_best_match_in_conjunction_4_0);
+MR_def_label(transform_hlds__ctgc__structure_reuse__direct__choose_reuse__find_match_in_goal_2_4_0,4)
+	MR_MAYBE_INIT_LOCAL_THREAD_ENGINE_BASE
+	if (MR_RTAGS_TESTR(MR_r4,3,3)) {
+		MR_GOTO_LAB(transform_hlds__ctgc__structure_reuse__direct__choose_reuse__find_match_in_goal_2_4_0_i6);
+	}
+	MR_r2 = MR_tfield(3, MR_r4, 1);
+	MR_succip_word = MR_sv(7);
+	MR_decr_sp(7);
+	MR_np_tailcall_ent(transform_hlds__ctgc__structure_reuse__direct__choose_reuse__find_match_in_disjunction_4_0);
+MR_def_label(transform_hlds__ctgc__structure_reuse__direct__choose_reuse__find_match_in_goal_2_4_0,6)
+	MR_MAYBE_INIT_LOCAL_THREAD_ENGINE_BASE
+	if (MR_RTAGS_TESTR(MR_r4,3,0)) {
+		MR_GOTO_LAB(transform_hlds__ctgc__structure_reuse__direct__choose_reuse__find_match_in_goal_2_4_0_i8);
+	}
+	MR_r1 = MR_r3;
+	MR_decr_sp_and_return(7);
+MR_def_label(transform_hlds__ctgc__structure_reuse__direct__choose_reuse__find_match_in_goal_2_4_0,8)
+	MR_MAYBE_INIT_LOCAL_THREAD_ENGINE_BASE
+	if (MR_RTAGS_TESTR(MR_r4,3,6)) {
+		MR_GOTO_LAB(transform_hlds__ctgc__structure_reuse__direct__choose_reuse__find_match_in_goal_2_4_0_i9);
+	}
+	{
+	MR_Word MR_tempr1, MR_tempr2;
+	MR_tag_alloc_heap(MR_tempr1, 1, (MR_Integer) 2);
+	MR_tempr2 = MR_r4;
+	MR_tfield(1, MR_tempr1, 0) = MR_tfield(3, MR_tempr2, 3);
+	MR_tfield(1, MR_tempr1, 1) = (MR_Word) MR_tbmkword(0, 0);
+	MR_tag_alloc_heap(MR_r2, 1, (MR_Integer) 2);
+	MR_tfield(1, MR_r2, 0) = MR_tfield(3, MR_tempr2, 2);
+	MR_tfield(1, MR_r2, 1) = MR_tempr1;
+	MR_sv(1) = MR_r1;
+	MR_sv(5) = MR_tfield(3, MR_tempr2, 4);
+	MR_sv(6) = MR_r3;
+	}
+	MR_np_call_localret_ent(transform_hlds__ctgc__structure_reuse__direct__choose_reuse__find_best_match_in_conjunction_4_0,
+		transform_hlds__ctgc__structure_reuse__direct__choose_reuse__find_match_in_goal_2_4_0_i12);
+MR_def_label(transform_hlds__ctgc__structure_reuse__direct__choose_reuse__find_match_in_goal_2_4_0,12)
+	MR_MAYBE_INIT_LOCAL_THREAD_ENGINE_BASE
+	{
+	MR_Word MR_tempr1;
+	MR_tempr1 = MR_sv(1);
+	MR_sv(1) = MR_r1;
+	MR_r1 = MR_tempr1;
+	MR_r2 = MR_sv(5);
+	MR_r3 = MR_sv(6);
+	}
+	MR_np_localcall_lab(transform_hlds__ctgc__structure_reuse__direct__choose_reuse__find_match_in_goal_2_4_0,
+		transform_hlds__ctgc__structure_reuse__direct__choose_reuse__find_match_in_goal_2_4_0_i13);
+MR_def_label(transform_hlds__ctgc__structure_reuse__direct__choose_reuse__find_match_in_goal_2_4_0,13)
+	MR_MAYBE_INIT_LOCAL_THREAD_ENGINE_BASE
+	MR_tag_alloc_heap(MR_r2, 1, (MR_Integer) 2);
+	MR_tfield(1, MR_r2, 0) = MR_r1;
+	MR_tfield(1, MR_r2, 1) = (MR_Word) MR_tbmkword(0, 0);
+	MR_tag_alloc_heap(MR_r1, 1, (MR_Integer) 2);
+	MR_tfield(1, MR_r1, 0) = MR_sv(1);
+	MR_tfield(1, MR_r1, 1) = MR_r2;
+	MR_succip_word = MR_sv(7);
+	MR_decr_sp(7);
+	MR_np_tailcall_ent(transform_hlds__ctgc__structure_reuse__direct__choose_reuse__average_match_2_0);
+MR_def_label(transform_hlds__ctgc__structure_reuse__direct__choose_reuse__find_match_in_goal_2_4_0,9)
+	MR_MAYBE_INIT_LOCAL_THREAD_ENGINE_BASE
+	if (MR_PTAG_TESTR(MR_r4,0)) {
+		MR_GOTO_LAB(transform_hlds__ctgc__structure_reuse__direct__choose_reuse__find_match_in_goal_2_4_0_i17);
+	}
+	MR_r1 = MR_r3;
+	MR_decr_sp_and_return(7);
+MR_def_label(transform_hlds__ctgc__structure_reuse__direct__choose_reuse__find_match_in_goal_2_4_0,17)
+	MR_MAYBE_INIT_LOCAL_THREAD_ENGINE_BASE
+	if (MR_PTAG_TESTR(MR_r4,2)) {
+		MR_GOTO_LAB(transform_hlds__ctgc__structure_reuse__direct__choose_reuse__find_match_in_goal_2_4_0_i18);
+	}
+	MR_r1 = MR_r3;
+	MR_decr_sp_and_return(7);
+MR_def_label(transform_hlds__ctgc__structure_reuse__direct__choose_reuse__find_match_in_goal_2_4_0,18)
+	MR_MAYBE_INIT_LOCAL_THREAD_ENGINE_BASE
+	if (MR_RTAGS_TESTR(MR_r4,3,5)) {
+		MR_GOTO_LAB(transform_hlds__ctgc__structure_reuse__direct__choose_reuse__find_match_in_goal_2_4_0_i19);
+	}
+	MR_r2 = MR_tfield(3, MR_r4, 2);
+	MR_succip_word = MR_sv(7);
+	MR_GOTO_LAB(transform_hlds__ctgc__structure_reuse__direct__choose_reuse__find_match_in_goal_2_4_0_i141);
+MR_def_label(transform_hlds__ctgc__structure_reuse__direct__choose_reuse__find_match_in_goal_2_4_0,19)
+	MR_MAYBE_INIT_LOCAL_THREAD_ENGINE_BASE
+	if (MR_RTAGS_TESTR(MR_r4,3,4)) {
+		MR_GOTO_LAB(transform_hlds__ctgc__structure_reuse__direct__choose_reuse__find_match_in_goal_2_4_0_i21);
+	}
+	MR_sv(1) = MR_r1;
+	MR_sv(6) = MR_r3;
+	MR_r1 = (MR_Word) MR_CTOR0_ADDR(hlds__hlds_goal, case);
+	MR_r2 = (MR_Word) MR_CTOR0_ADDR(hlds__hlds_goal, hlds_goal);
+	MR_r3 = (MR_Word) MR_TAG_COMMON(0,1,24);
+	MR_r4 = MR_tfield(3, MR_r4, 3);
+	MR_np_call_localret_ent(fn__list__map_2_0,
+		transform_hlds__ctgc__structure_reuse__direct__choose_reuse__find_match_in_goal_2_4_0_i23);
+MR_def_label(transform_hlds__ctgc__structure_reuse__direct__choose_reuse__find_match_in_goal_2_4_0,23)
+	MR_MAYBE_INIT_LOCAL_THREAD_ENGINE_BASE
+	{
+	MR_Word MR_tempr1;
+	MR_tempr1 = MR_r1;
+	MR_r1 = MR_sv(1);
+	MR_r2 = MR_tempr1;
+	MR_r3 = MR_sv(6);
+	MR_succip_word = MR_sv(7);
+	MR_decr_sp(7);
+	MR_np_tailcall_ent(transform_hlds__ctgc__structure_reuse__direct__choose_reuse__find_match_in_disjunction_4_0);
+	}
+MR_def_label(transform_hlds__ctgc__structure_reuse__direct__choose_reuse__find_match_in_goal_2_4_0,21)
+	MR_MAYBE_INIT_LOCAL_THREAD_ENGINE_BASE
+	if (MR_PTAG_TESTR(MR_r4,1)) {
+		MR_GOTO_LAB(transform_hlds__ctgc__structure_reuse__direct__choose_reuse__find_match_in_goal_2_4_0_i25);
+	}
+	MR_r5 = MR_tfield(1, MR_r4, 3);
+	if (MR_PTAG_TESTR(MR_r5,2)) {
+		MR_GOTO_LAB(transform_hlds__ctgc__structure_reuse__direct__choose_reuse__find_match_in_goal_2_4_0_i27);
+	}
+	MR_r1 = MR_r3;
+	MR_decr_sp_and_return(7);
+MR_def_label(transform_hlds__ctgc__structure_reuse__direct__choose_reuse__find_match_in_goal_2_4_0,27)
+	MR_MAYBE_INIT_LOCAL_THREAD_ENGINE_BASE
+	if (MR_PTAG_TESTR(MR_r5,0)) {
+		MR_GOTO_LAB(transform_hlds__ctgc__structure_reuse__direct__choose_reuse__find_match_in_goal_2_4_0_i28);
+	}
+	MR_sv(1) = MR_r1;
+	MR_sv(5) = MR_tfield(0, MR_r2, 1);
+	{
+	MR_Word MR_tempr1;
+	MR_tempr1 = MR_r5;
+	MR_sv(2) = MR_tfield(0, MR_tempr1, 0);
+	MR_sv(3) = MR_tfield(0, MR_tempr1, 1);
+	MR_sv(4) = MR_tfield(0, MR_tempr1, 2);
+	MR_sv(6) = MR_r3;
+	MR_r1 = (MR_Word) MR_CTOR0_ADDR(parse_tree__prog_data, prog_var_type);
+	MR_r2 = (MR_Word) MR_TAG_COMMON(0,5,0);
+	MR_r3 = (MR_Word) MR_CTOR0_ADDR(parse_tree__prog_data, mer_type);
+	MR_r4 = MR_tfield(0, MR_sv(1), 3);
+	MR_r5 = MR_sv(2);
+	}
+	MR_np_call_localret_ent(f_109_97_112_95_95_84_121_112_101_83_112_101_99_79_102_95_95_112_114_101_100_95_111_114_95_102_117_110_99_95_95_108_111_111_107_117_112_95_95_91_75_32_61_32_118_97_114_40_86_95_50_41_93_95_48_95_49_3_0,
+		transform_hlds__ctgc__structure_reuse__direct__choose_reuse__find_match_in_goal_2_4_0_i31);
+MR_def_label(transform_hlds__ctgc__structure_reuse__direct__choose_reuse__find_match_in_goal_2_4_0,31)
+	MR_MAYBE_INIT_LOCAL_THREAD_ENGINE_BASE
+	{
+	MR_Word MR_tempr1;
+	MR_tempr1 = MR_r1;
+	MR_r1 = MR_tfield(0, MR_sv(1), 1);
+	MR_r2 = MR_tempr1;
+	}
+	MR_np_call_localret_ent(transform_hlds__ctgc__util__top_cell_may_be_reusable_2_0,
+		transform_hlds__ctgc__structure_reuse__direct__choose_reuse__find_match_in_goal_2_4_0_i32);
+MR_def_label(transform_hlds__ctgc__structure_reuse__direct__choose_reuse__find_match_in_goal_2_4_0,32)
+	MR_MAYBE_INIT_LOCAL_THREAD_ENGINE_BASE
+	if (!(MR_r1)) {
+		MR_GOTO_LAB(transform_hlds__ctgc__structure_reuse__direct__choose_reuse__find_match_in_goal_2_4_0_i29);
+	}
+	MR_r1 = MR_sv(5);
+	MR_np_call_localret_ent(fn__hlds__hlds_goal__goal_info_get_reuse_1_0,
+		transform_hlds__ctgc__structure_reuse__direct__choose_reuse__find_match_in_goal_2_4_0_i34);
+MR_def_label(transform_hlds__ctgc__structure_reuse__direct__choose_reuse__find_match_in_goal_2_4_0,34)
+	MR_MAYBE_INIT_LOCAL_THREAD_ENGINE_BASE
+	MR_np_call_localret_ent(transform_hlds__ctgc__structure_reuse__direct__choose_reuse__empty_reuse_description_1_0,
+		transform_hlds__ctgc__structure_reuse__direct__choose_reuse__find_match_in_goal_2_4_0_i35);
+MR_def_label(transform_hlds__ctgc__structure_reuse__direct__choose_reuse__find_match_in_goal_2_4_0,35)
+	MR_MAYBE_INIT_LOCAL_THREAD_ENGINE_BASE
+	if (!(MR_r1)) {
+		MR_GOTO_LAB(transform_hlds__ctgc__structure_reuse__direct__choose_reuse__find_match_in_goal_2_4_0_i29);
+	}
+	MR_r1 = MR_sv(5);
+	MR_np_call_localret_ent(fn__transform_hlds__smm_common__program_point_init_1_0,
+		transform_hlds__ctgc__structure_reuse__direct__choose_reuse__find_match_in_goal_2_4_0_i37);
+MR_def_label(transform_hlds__ctgc__structure_reuse__direct__choose_reuse__find_match_in_goal_2_4_0,37)
+	MR_MAYBE_INIT_LOCAL_THREAD_ENGINE_BASE
+	{
+	MR_Word MR_tempr1;
+	MR_tempr1 = MR_r1;
+	MR_r1 = MR_sv(1);
+	MR_r2 = MR_sv(2);
+	MR_r3 = MR_sv(3);
+	MR_r4 = MR_sv(4);
+	MR_r5 = MR_tempr1;
+	MR_r6 = MR_sv(6);
+	MR_succip_word = MR_sv(7);
+	MR_decr_sp(7);
+	MR_np_tailcall_ent(transform_hlds__ctgc__structure_reuse__direct__choose_reuse__verify_match_7_0);
+	}
+MR_def_label(transform_hlds__ctgc__structure_reuse__direct__choose_reuse__find_match_in_goal_2_4_0,29)
+	MR_MAYBE_INIT_LOCAL_THREAD_ENGINE_BASE
+	MR_r1 = MR_sv(6);
+	MR_decr_sp_and_return(7);
+MR_def_label(transform_hlds__ctgc__structure_reuse__direct__choose_reuse__find_match_in_goal_2_4_0,28)
+	MR_MAYBE_INIT_LOCAL_THREAD_ENGINE_BASE
+	if (MR_PTAG_TESTR(MR_r5,1)) {
+		MR_GOTO_LAB(transform_hlds__ctgc__structure_reuse__direct__choose_reuse__find_match_in_goal_2_4_0_i40);
+	}
+	MR_r1 = MR_r3;
+	MR_decr_sp_and_return(7);
+MR_def_label(transform_hlds__ctgc__structure_reuse__direct__choose_reuse__find_match_in_goal_2_4_0,40)
+	MR_MAYBE_INIT_LOCAL_THREAD_ENGINE_BASE
+	if (MR_RTAGS_TESTR(MR_r5,3,0)) {
+		MR_GOTO_LAB(transform_hlds__ctgc__structure_reuse__direct__choose_reuse__find_match_in_goal_2_4_0_i41);
+	}
+	MR_r1 = MR_r3;
+	MR_decr_sp_and_return(7);
+MR_def_label(transform_hlds__ctgc__structure_reuse__direct__choose_reuse__find_match_in_goal_2_4_0,41)
+	MR_MAYBE_INIT_LOCAL_THREAD_ENGINE_BASE
+	MR_r1 = (MR_Word) MR_string_const("transform_hlds.ctgc.structure_reuse.direct.choose_reuse", 55);
+	MR_r2 = (MR_Word) MR_string_const("predicate \140transform_hlds.ctgc.structure_reuse.direct.choose_reuse.find_match_in_goal_2\'/4", 90);
+	MR_r3 = (MR_Word) MR_string_const("complicated unify", 17);
+	MR_succip_word = MR_sv(7);
+	MR_decr_sp(7);
+	MR_np_tailcall_ent(require__unexpected_3_0);
+MR_def_label(transform_hlds__ctgc__structure_reuse__direct__choose_reuse__find_match_in_goal_2_4_0,25)
+	MR_MAYBE_INIT_LOCAL_THREAD_ENGINE_BASE
+	MR_r1 = (MR_Word) MR_string_const("transform_hlds.ctgc.structure_reuse.direct.choose_reuse", 55);
+	MR_r2 = (MR_Word) MR_string_const("predicate \140transform_hlds.ctgc.structure_reuse.direct.choose_reuse.find_match_in_goal_2\'/4", 90);
+	MR_r3 = (MR_Word) MR_string_const("shorthand", 9);
+	MR_succip_word = MR_sv(7);
+	MR_decr_sp(7);
+	MR_np_tailcall_ent(require__unexpected_3_0);
+#ifdef MR_maybe_local_thread_engine_base
+	#undef MR_maybe_local_thread_engine_base
+	#define MR_maybe_local_thread_engine_base MR_thread_engine_base
+#endif
+MR_END_MODULE
+
+
+MR_BEGIN_MODULE(transform_hlds__ctgc__structure_reuse__direct__choose_reuse_module33)
+	MR_init_entry1(transform_hlds__ctgc__structure_reuse__direct__choose_reuse__find_match_in_goal_4_0);
+	MR_INIT_PROC_LAYOUT_ADDR(mercury__transform_hlds__ctgc__structure_reuse__direct__choose_reuse__find_match_in_goal_4_0);
+MR_BEGIN_CODE
+
+/*-------------------------------------------------------------------------*/
+/* code for 'find_match_in_goal'/4 mode 0 */
+#ifdef MR_maybe_local_thread_engine_base
+	#undef MR_maybe_local_thread_engine_base
+	#define MR_maybe_local_thread_engine_base MR_local_thread_engine_base
+#endif
+MR_def_static(transform_hlds__ctgc__structure_reuse__direct__choose_reuse__find_match_in_goal_4_0)
+	MR_MAYBE_INIT_LOCAL_THREAD_ENGINE_BASE
+	{
+	MR_Word MR_tempr1;
+	MR_tempr1 = MR_r2;
+	MR_r2 = MR_r3;
+	MR_r3 = MR_tempr1;
+	MR_np_tailcall_ent(transform_hlds__ctgc__structure_reuse__direct__choose_reuse__find_match_in_goal_2_4_0);
+	}
+#ifdef MR_maybe_local_thread_engine_base
+	#undef MR_maybe_local_thread_engine_base
+	#define MR_maybe_local_thread_engine_base MR_thread_engine_base
+#endif
+MR_END_MODULE
+
+
+MR_BEGIN_MODULE(transform_hlds__ctgc__structure_reuse__direct__choose_reuse_module34)
+	MR_init_entry1(fn__transform_hlds__ctgc__structure_reuse__direct__choose_reuse__add_degree_2_0);
+	MR_INIT_PROC_LAYOUT_ADDR(mercury__fn__transform_hlds__ctgc__structure_reuse__direct__choose_reuse__add_degree_2_0);
+MR_BEGIN_CODE
+
+/*-------------------------------------------------------------------------*/
+/* code for 'add_degree'/3 mode 0 */
+#ifdef MR_maybe_local_thread_engine_base
+	#undef MR_maybe_local_thread_engine_base
+	#define MR_maybe_local_thread_engine_base MR_local_thread_engine_base
+#endif
+MR_def_static(fn__transform_hlds__ctgc__structure_reuse__direct__choose_reuse__add_degree_2_0)
+	MR_MAYBE_INIT_LOCAL_THREAD_ENGINE_BASE
+	MR_r1 = ((MR_Integer) MR_r2 + (MR_Integer) MR_tfield(0, MR_r1, 3));
+	MR_proceed();
+#ifdef MR_maybe_local_thread_engine_base
+	#undef MR_maybe_local_thread_engine_base
+	#define MR_maybe_local_thread_engine_base MR_thread_engine_base
+#endif
+MR_END_MODULE
+
+MR_decl_entry(check_hlds__type_util__get_cons_defn_det_4_0);
+extern const MR_TypeCtorInfo_Struct mercury_data_parse_tree__prog_data__type_ctor_info_constructor_arg_0;
+MR_decl_entry(list__member_2_1);
+MR_declare_entry(MR_do_redo);
+
+MR_BEGIN_MODULE(transform_hlds__ctgc__structure_reuse__direct__choose_reuse_module35)
+	MR_init_entry1(transform_hlds__ctgc__structure_reuse__direct__choose_reuse__cons_has_normal_fields_2_0);
+	MR_INIT_PROC_LAYOUT_ADDR(mercury__transform_hlds__ctgc__structure_reuse__direct__choose_reuse__cons_has_normal_fields_2_0);
+	MR_init_label5(transform_hlds__ctgc__structure_reuse__direct__choose_reuse__cons_has_normal_fields_2_0,4,9,8,3,2)
+MR_BEGIN_CODE
+
+/*-------------------------------------------------------------------------*/
+/* code for 'cons_has_normal_fields'/2 mode 0 */
+#ifdef MR_maybe_local_thread_engine_base
+	#undef MR_maybe_local_thread_engine_base
+	#define MR_maybe_local_thread_engine_base MR_local_thread_engine_base
+#endif
+MR_def_static(transform_hlds__ctgc__structure_reuse__direct__choose_reuse__cons_has_normal_fields_2_0)
+	MR_MAYBE_INIT_LOCAL_THREAD_ENGINE_BASE
+	MR_incr_sp(4);
+	MR_sv(4) = (MR_Word) MR_succip;
+	if (MR_RTAGS_TESTR(MR_r2,3,2)) {
+		MR_GOTO_LAB(transform_hlds__ctgc__structure_reuse__direct__choose_reuse__cons_has_normal_fields_2_0_i3);
+	}
+	{
+	MR_Word MR_tempr1;
+	MR_tempr1 = MR_r2;
+	MR_r2 = MR_tfield(3, MR_r2, 3);
+	MR_r3 = MR_tempr1;
+	}
+	MR_np_call_localret_ent(check_hlds__type_util__get_cons_defn_det_4_0,
+		transform_hlds__ctgc__structure_reuse__direct__choose_reuse__cons_has_normal_fields_2_0_i4);
+MR_def_label(transform_hlds__ctgc__structure_reuse__direct__choose_reuse__cons_has_normal_fields_2_0,4)
+	MR_MAYBE_INIT_LOCAL_THREAD_ENGINE_BASE
+	MR_sv(1) = (MR_Word) MR_redoip_slot(MR_maxfr);
+	MR_sv(2) = (MR_Word) MR_redofr_slot(MR_maxfr);
+	MR_save_maxfr(MR_sv(3));
+	MR_redofr_slot_word(MR_maxfr) = (MR_Word) MR_curfr;
+	MR_redoip_slot_word(MR_maxfr) = (MR_Word) MR_LABEL_AP(transform_hlds__ctgc__structure_reuse__direct__choose_reuse__cons_has_normal_fields_2_0_i8);
+	{
+	MR_Word MR_tempr1;
+	MR_tempr1 = MR_r1;
+	MR_r1 = (MR_Word) MR_CTOR0_ADDR(parse_tree__prog_data, constructor_arg);
+	MR_r2 = MR_tfield(0, MR_tempr1, 6);
+	}
+	MR_np_call_localret_ent(list__member_2_1,
+		transform_hlds__ctgc__structure_reuse__direct__choose_reuse__cons_has_normal_fields_2_0_i9);
+MR_def_label(transform_hlds__ctgc__structure_reuse__direct__choose_reuse__cons_has_normal_fields_2_0,9)
+	MR_MAYBE_INIT_LOCAL_THREAD_ENGINE_BASE
+	MR_r4 = MR_tfield(0, MR_r1, 2);
+	if (MR_LTAGS_TEST(MR_r4,0,0)) {
+		MR_GOTO(MR_ENTRY(MR_do_redo));
+	}
+	MR_restore_maxfr(MR_sv(3));
+	MR_redoip_slot_word(MR_maxfr) = MR_sv(1);
+	MR_redofr_slot_word(MR_maxfr) = MR_sv(2);
+	MR_succip_word = MR_sv(4);
+	MR_decr_sp(4);
+	MR_r1 = MR_FALSE;
+	MR_proceed();
+MR_def_label(transform_hlds__ctgc__structure_reuse__direct__choose_reuse__cons_has_normal_fields_2_0,8)
+	MR_MAYBE_INIT_LOCAL_THREAD_ENGINE_BASE
+	MR_redoip_slot_word(MR_maxfr) = MR_sv(1);
+	MR_redofr_slot_word(MR_maxfr) = MR_sv(2);
+	MR_succip_word = MR_sv(4);
+	MR_decr_sp(4);
+	MR_r1 = MR_TRUE;
+	MR_proceed();
+MR_def_label(transform_hlds__ctgc__structure_reuse__direct__choose_reuse__cons_has_normal_fields_2_0,3)
+	MR_MAYBE_INIT_LOCAL_THREAD_ENGINE_BASE
+	if (MR_RTAGS_TEST(MR_r2,3,3)) {
+		MR_GOTO_LAB(transform_hlds__ctgc__structure_reuse__direct__choose_reuse__cons_has_normal_fields_2_0_i2);
+	}
+	MR_r1 = (MR_Word) MR_string_const("transform_hlds.ctgc.structure_reuse.direct.choose_reuse", 55);
+	MR_r2 = (MR_Word) MR_string_const("predicate \140transform_hlds.ctgc.structure_reuse.direct.choose_reuse.cons_has_normal_fields\'/2", 92);
+	MR_r3 = (MR_Word) MR_string_const("unusual cons_id", 15);
+	MR_np_call_localret_ent(require__unexpected_3_0,
+		transform_hlds__ctgc__structure_reuse__direct__choose_reuse__cons_has_normal_fields_2_0_i2);
+MR_def_label(transform_hlds__ctgc__structure_reuse__direct__choose_reuse__cons_has_normal_fields_2_0,2)
+	MR_MAYBE_INIT_LOCAL_THREAD_ENGINE_BASE
+	MR_succip_word = MR_sv(4);
+	MR_decr_sp(4);
+	MR_r1 = MR_TRUE;
+	MR_proceed();
+#ifdef MR_maybe_local_thread_engine_base
+	#undef MR_maybe_local_thread_engine_base
+	#define MR_maybe_local_thread_engine_base MR_thread_engine_base
+#endif
+MR_END_MODULE
+
+MR_decl_entry(check_hlds__type_util__type_to_type_defn_body_3_0);
+extern const MR_TypeCtorInfo_Struct mercury_data_hlds__hlds_data__type_ctor_info_cons_tag_0;
+MR_decl_entry(map__search_3_0);
+MR_decl_entry(fn__hlds__hlds_data__get_secondary_tag_1_0);
+
+MR_BEGIN_MODULE(transform_hlds__ctgc__structure_reuse__direct__choose_reuse_module36)
+	MR_init_entry1(transform_hlds__ctgc__structure_reuse__direct__choose_reuse__has_secondary_tag_5_0);
+	MR_INIT_PROC_LAYOUT_ADDR(mercury__transform_hlds__ctgc__structure_reuse__direct__choose_reuse__has_secondary_tag_5_0);
+	MR_init_label5(transform_hlds__ctgc__structure_reuse__direct__choose_reuse__has_secondary_tag_5_0,4,5,8,10,2)
+MR_BEGIN_CODE
+
+/*-------------------------------------------------------------------------*/
+/* code for 'has_secondary_tag'/5 mode 0 */
+#ifdef MR_maybe_local_thread_engine_base
+	#undef MR_maybe_local_thread_engine_base
+	#define MR_maybe_local_thread_engine_base MR_local_thread_engine_base
+#endif
+MR_def_static(transform_hlds__ctgc__structure_reuse__direct__choose_reuse__has_secondary_tag_5_0)
+	MR_MAYBE_INIT_LOCAL_THREAD_ENGINE_BASE
+	MR_incr_sp(3);
+	MR_sv(3) = (MR_Word) MR_succip;
+	MR_sv(1) = MR_r1;
+	MR_sv(2) = MR_r4;
+	MR_r1 = (MR_Word) MR_CTOR0_ADDR(parse_tree__prog_data, prog_var_type);
+	{
+	MR_Word MR_tempr1, MR_tempr2;
+	MR_tempr1 = MR_r2;
+	MR_r2 = (MR_Word) MR_TAG_COMMON(0,5,0);
+	MR_tempr2 = MR_r3;
+	MR_r3 = (MR_Word) MR_CTOR0_ADDR(parse_tree__prog_data, mer_type);
+	MR_r4 = MR_tempr1;
+	MR_r5 = MR_tempr2;
+	}
+	MR_np_call_localret_ent(f_109_97_112_95_95_84_121_112_101_83_112_101_99_79_102_95_95_112_114_101_100_95_111_114_95_102_117_110_99_95_95_108_111_111_107_117_112_95_95_91_75_32_61_32_118_97_114_40_86_95_50_41_93_95_48_95_49_3_0,
+		transform_hlds__ctgc__structure_reuse__direct__choose_reuse__has_secondary_tag_5_0_i4);
+MR_def_label(transform_hlds__ctgc__structure_reuse__direct__choose_reuse__has_secondary_tag_5_0,4)
+	MR_MAYBE_INIT_LOCAL_THREAD_ENGINE_BASE
+	{
+	MR_Word MR_tempr1;
+	MR_tempr1 = MR_r1;
+	MR_r1 = MR_sv(1);
+	MR_r2 = MR_tempr1;
+	}
+	MR_np_call_localret_ent(check_hlds__type_util__type_to_type_defn_body_3_0,
+		transform_hlds__ctgc__structure_reuse__direct__choose_reuse__has_secondary_tag_5_0_i5);
+MR_def_label(transform_hlds__ctgc__structure_reuse__direct__choose_reuse__has_secondary_tag_5_0,5)
+	MR_MAYBE_INIT_LOCAL_THREAD_ENGINE_BASE
+	if (!(MR_r1)) {
+		MR_GOTO_LAB(transform_hlds__ctgc__structure_reuse__direct__choose_reuse__has_secondary_tag_5_0_i2);
+	}
+	if (MR_PTAG_TESTR(MR_r2,1)) {
+		MR_GOTO_LAB(transform_hlds__ctgc__structure_reuse__direct__choose_reuse__has_secondary_tag_5_0_i2);
+	}
+	MR_r1 = (MR_Word) MR_CTOR0_ADDR(parse_tree__prog_data, cons_id);
+	{
+	MR_Word MR_tempr1;
+	MR_tempr1 = MR_r2;
+	MR_r2 = (MR_Word) MR_CTOR0_ADDR(hlds__hlds_data, cons_tag);
+	MR_r3 = MR_tfield(1, MR_tempr1, 1);
+	MR_r4 = MR_sv(2);
+	}
+	MR_np_call_localret_ent(map__search_3_0,
+		transform_hlds__ctgc__structure_reuse__direct__choose_reuse__has_secondary_tag_5_0_i8);
+MR_def_label(transform_hlds__ctgc__structure_reuse__direct__choose_reuse__has_secondary_tag_5_0,8)
+	MR_MAYBE_INIT_LOCAL_THREAD_ENGINE_BASE
+	if (!(MR_r1)) {
+		MR_GOTO_LAB(transform_hlds__ctgc__structure_reuse__direct__choose_reuse__has_secondary_tag_5_0_i2);
+	}
+	MR_r1 = MR_r2;
+	MR_np_call_localret_ent(fn__hlds__hlds_data__get_secondary_tag_1_0,
+		transform_hlds__ctgc__structure_reuse__direct__choose_reuse__has_secondary_tag_5_0_i10);
+MR_def_label(transform_hlds__ctgc__structure_reuse__direct__choose_reuse__has_secondary_tag_5_0,10)
+	MR_MAYBE_INIT_LOCAL_THREAD_ENGINE_BASE
+	if (MR_LTAGS_TEST(MR_r1,0,0)) {
+		MR_GOTO_LAB(transform_hlds__ctgc__structure_reuse__direct__choose_reuse__has_secondary_tag_5_0_i2);
+	}
+	MR_r1 = (MR_Integer) 1;
+	MR_decr_sp_and_return(3);
+MR_def_label(transform_hlds__ctgc__structure_reuse__direct__choose_reuse__has_secondary_tag_5_0,2)
+	MR_MAYBE_INIT_LOCAL_THREAD_ENGINE_BASE
+	MR_r1 = (MR_Integer) 0;
+	MR_decr_sp_and_return(3);
+#ifdef MR_maybe_local_thread_engine_base
+	#undef MR_maybe_local_thread_engine_base
+	#define MR_maybe_local_thread_engine_base MR_thread_engine_base
+#endif
+MR_END_MODULE
+
+MR_decl_entry(builtin__unify_2_0);
+
+MR_BEGIN_MODULE(transform_hlds__ctgc__structure_reuse__direct__choose_reuse_module37)
+	MR_init_entry1(fn__transform_hlds__ctgc__structure_reuse__direct__choose_reuse__equals_2_0);
+	MR_INIT_PROC_LAYOUT_ADDR(mercury__fn__transform_hlds__ctgc__structure_reuse__direct__choose_reuse__equals_2_0);
+	MR_init_label6(fn__transform_hlds__ctgc__structure_reuse__direct__choose_reuse__equals_2_0,3,18,42,8,11,9)
+MR_BEGIN_CODE
+
+/*-------------------------------------------------------------------------*/
+/* code for 'equals'/3 mode 0 */
+#ifdef MR_maybe_local_thread_engine_base
+	#undef MR_maybe_local_thread_engine_base
+	#define MR_maybe_local_thread_engine_base MR_local_thread_engine_base
+#endif
+MR_def_static(fn__transform_hlds__ctgc__structure_reuse__direct__choose_reuse__equals_2_0)
+	MR_MAYBE_INIT_LOCAL_THREAD_ENGINE_BASE
+	if (MR_LTAGS_TESTR(MR_r2,0,0)) {
+		MR_GOTO_LAB(fn__transform_hlds__ctgc__structure_reuse__direct__choose_reuse__equals_2_0_i3);
+	}
+	if (MR_LTAGS_TESTR(MR_r3,0,0)) {
+		MR_GOTO_LAB(fn__transform_hlds__ctgc__structure_reuse__direct__choose_reuse__equals_2_0_i18);
+	}
+	MR_r1 = (MR_Word) MR_tbmkword(0, 0);
+	MR_proceed();
+MR_def_label(fn__transform_hlds__ctgc__structure_reuse__direct__choose_reuse__equals_2_0,3)
+	MR_MAYBE_INIT_LOCAL_THREAD_ENGINE_BASE
+	if (MR_LTAGS_TESTR(MR_r3,0,0)) {
+		MR_GOTO_LAB(fn__transform_hlds__ctgc__structure_reuse__direct__choose_reuse__equals_2_0_i42);
+	}
+MR_def_label(fn__transform_hlds__ctgc__structure_reuse__direct__choose_reuse__equals_2_0,18)
+	MR_MAYBE_INIT_LOCAL_THREAD_ENGINE_BASE
+	MR_r1 = (MR_Word) MR_tbmkword(0, 0);
+	MR_proceed();
+MR_def_label(fn__transform_hlds__ctgc__structure_reuse__direct__choose_reuse__equals_2_0,42)
+	MR_MAYBE_INIT_LOCAL_THREAD_ENGINE_BASE
+	MR_incr_sp(4);
+	MR_sv(4) = (MR_Word) MR_succip;
+	MR_sv(1) = MR_tfield(1, MR_r3, 0);
+	MR_sv(2) = MR_r1;
+	MR_sv(3) = MR_tfield(1, MR_r2, 0);
+	MR_r2 = MR_tfield(1, MR_r2, 1);
+	MR_r3 = MR_tfield(1, MR_r3, 1);
+	MR_np_localcall_lab(fn__transform_hlds__ctgc__structure_reuse__direct__choose_reuse__equals_2_0,
+		fn__transform_hlds__ctgc__structure_reuse__direct__choose_reuse__equals_2_0_i8);
+MR_def_label(fn__transform_hlds__ctgc__structure_reuse__direct__choose_reuse__equals_2_0,8)
+	MR_MAYBE_INIT_LOCAL_THREAD_ENGINE_BASE
+	{
+	MR_Word MR_tempr1;
+	MR_tempr1 = MR_sv(1);
+	MR_sv(1) = MR_r1;
+	MR_r1 = MR_sv(2);
+	MR_r2 = MR_sv(3);
+	MR_r3 = MR_tempr1;
+	}
+	MR_np_call_localret_ent(builtin__unify_2_0,
+		fn__transform_hlds__ctgc__structure_reuse__direct__choose_reuse__equals_2_0_i11);
+MR_def_label(fn__transform_hlds__ctgc__structure_reuse__direct__choose_reuse__equals_2_0,11)
+	MR_MAYBE_INIT_LOCAL_THREAD_ENGINE_BASE
+	if (!(MR_r1)) {
+		MR_GOTO_LAB(fn__transform_hlds__ctgc__structure_reuse__direct__choose_reuse__equals_2_0_i9);
+	}
+	MR_tag_alloc_heap(MR_r1, 1, (MR_Integer) 2);
+	MR_tfield(1, MR_r1, 0) = (MR_Integer) 1;
+	MR_tfield(1, MR_r1, 1) = MR_sv(1);
+	MR_decr_sp_and_return(4);
+MR_def_label(fn__transform_hlds__ctgc__structure_reuse__direct__choose_reuse__equals_2_0,9)
+	MR_MAYBE_INIT_LOCAL_THREAD_ENGINE_BASE
+	MR_r1 = MR_sv(1);
+	MR_tag_alloc_heap(MR_r2, 1, (MR_Integer) 2);
+	MR_tfield(1, MR_r2, 0) = (MR_Integer) 0;
+	MR_tfield(1, MR_r2, 1) = MR_r1;
+	MR_r1 = MR_r2;
+	MR_decr_sp_and_return(4);
+#ifdef MR_maybe_local_thread_engine_base
+	#undef MR_maybe_local_thread_engine_base
+	#define MR_maybe_local_thread_engine_base MR_thread_engine_base
+#endif
+MR_END_MODULE
+
+MR_decl_entry(fn__list__duplicate_2_0);
+MR_decl_entry(fn__f_108_105_115_116_95_95_43_43_2_0);
+
+MR_BEGIN_MODULE(transform_hlds__ctgc__structure_reuse__direct__choose_reuse_module38)
+	MR_init_entry1(fn__transform_hlds__ctgc__structure_reuse__direct__choose_reuse__already_correct_fields_4_0);
+	MR_INIT_PROC_LAYOUT_ADDR(mercury__fn__transform_hlds__ctgc__structure_reuse__direct__choose_reuse__already_correct_fields_4_0);
+	MR_init_label10(fn__transform_hlds__ctgc__structure_reuse__direct__choose_reuse__already_correct_fields_4_0,5,10,3,21,20,22,18,25,26,27)
+	MR_init_label1(fn__transform_hlds__ctgc__structure_reuse__direct__choose_reuse__already_correct_fields_4_0,28)
+MR_BEGIN_CODE
+
+/*-------------------------------------------------------------------------*/
+/* code for 'already_correct_fields'/5 mode 0 */
+#ifdef MR_maybe_local_thread_engine_base
+	#undef MR_maybe_local_thread_engine_base
+	#define MR_maybe_local_thread_engine_base MR_local_thread_engine_base
+#endif
+MR_def_static(fn__transform_hlds__ctgc__structure_reuse__direct__choose_reuse__already_correct_fields_4_0)
+	MR_MAYBE_INIT_LOCAL_THREAD_ENGINE_BASE
+	MR_incr_sp(4);
+	MR_sv(4) = (MR_Word) MR_succip;
+	if (MR_INT_NE(MR_r1,0)) {
+		MR_GOTO_LAB(fn__transform_hlds__ctgc__structure_reuse__direct__choose_reuse__already_correct_fields_4_0_i3);
+	}
+	if (MR_INT_NE(MR_r3,0)) {
+		MR_GOTO_LAB(fn__transform_hlds__ctgc__structure_reuse__direct__choose_reuse__already_correct_fields_4_0_i5);
+	}
+	MR_sv(1) = MR_r2;
+	MR_sv(3) = (MR_Word) MR_TAG_COMMON(0,5,0);
+	MR_r1 = MR_sv(3);
+	MR_r3 = MR_r4;
+	MR_np_call_localret_ent(fn__transform_hlds__ctgc__structure_reuse__direct__choose_reuse__equals_2_0,
+		fn__transform_hlds__ctgc__structure_reuse__direct__choose_reuse__already_correct_fields_4_0_i25);
+MR_def_label(fn__transform_hlds__ctgc__structure_reuse__direct__choose_reuse__already_correct_fields_4_0,5)
+	MR_MAYBE_INIT_LOCAL_THREAD_ENGINE_BASE
+	if (MR_LTAGS_TESTR(MR_r2,0,0)) {
+		MR_GOTO_LAB(fn__transform_hlds__ctgc__structure_reuse__direct__choose_reuse__already_correct_fields_4_0_i10);
+	}
+	MR_sv(1) = (MR_Word) MR_TAG_COMMON(1,11,0);
+	MR_r1 = (MR_Word) MR_TAG_COMMON(0,5,0);
+	MR_np_call_localret_ent(fn__list__length_1_0,
+		fn__transform_hlds__ctgc__structure_reuse__direct__choose_reuse__already_correct_fields_4_0_i26);
+MR_def_label(fn__transform_hlds__ctgc__structure_reuse__direct__choose_reuse__already_correct_fields_4_0,10)
+	MR_MAYBE_INIT_LOCAL_THREAD_ENGINE_BASE
+	MR_sv(1) = MR_r2;
+	MR_sv(3) = (MR_Word) MR_TAG_COMMON(0,5,0);
+	MR_r1 = MR_sv(3);
+	MR_r2 = MR_tfield(1, MR_r2, 1);
+	MR_r3 = MR_r4;
+	MR_np_call_localret_ent(fn__transform_hlds__ctgc__structure_reuse__direct__choose_reuse__equals_2_0,
+		fn__transform_hlds__ctgc__structure_reuse__direct__choose_reuse__already_correct_fields_4_0_i22);
+MR_def_label(fn__transform_hlds__ctgc__structure_reuse__direct__choose_reuse__already_correct_fields_4_0,3)
+	MR_MAYBE_INIT_LOCAL_THREAD_ENGINE_BASE
+	if (MR_INT_NE(MR_r3,0)) {
+		MR_GOTO_LAB(fn__transform_hlds__ctgc__structure_reuse__direct__choose_reuse__already_correct_fields_4_0_i18);
+	}
+	if (MR_LTAGS_TESTR(MR_r4,0,0)) {
+		MR_GOTO_LAB(fn__transform_hlds__ctgc__structure_reuse__direct__choose_reuse__already_correct_fields_4_0_i21);
+	}
+	MR_r1 = (MR_Word) MR_TAG_COMMON(0,5,0);
+	MR_r3 = (MR_Word) MR_tbmkword(0, 0);
+	MR_GOTO_LAB(fn__transform_hlds__ctgc__structure_reuse__direct__choose_reuse__already_correct_fields_4_0_i20);
+MR_def_label(fn__transform_hlds__ctgc__structure_reuse__direct__choose_reuse__already_correct_fields_4_0,21)
+	MR_MAYBE_INIT_LOCAL_THREAD_ENGINE_BASE
+	MR_r1 = (MR_Word) MR_TAG_COMMON(0,5,0);
+	MR_r3 = MR_tfield(1, MR_r4, 1);
+MR_def_label(fn__transform_hlds__ctgc__structure_reuse__direct__choose_reuse__already_correct_fields_4_0,20)
+	MR_MAYBE_INIT_LOCAL_THREAD_ENGINE_BASE
+	MR_sv(1) = MR_r2;
+	MR_sv(3) = MR_r1;
+	MR_np_call_localret_ent(fn__transform_hlds__ctgc__structure_reuse__direct__choose_reuse__equals_2_0,
+		fn__transform_hlds__ctgc__structure_reuse__direct__choose_reuse__already_correct_fields_4_0_i22);
+MR_def_label(fn__transform_hlds__ctgc__structure_reuse__direct__choose_reuse__already_correct_fields_4_0,22)
+	MR_MAYBE_INIT_LOCAL_THREAD_ENGINE_BASE
+	{
+	MR_Word MR_tempr1;
+	MR_tag_alloc_heap(MR_tempr1, 1, (MR_Integer) 2);
+	MR_tfield(1, MR_tempr1, 0) = (MR_Integer) 0;
+	MR_tfield(1, MR_tempr1, 1) = MR_r1;
+	MR_r2 = MR_sv(1);
+	MR_sv(1) = MR_tempr1;
+	MR_r1 = MR_sv(3);
+	}
+	MR_np_call_localret_ent(fn__list__length_1_0,
+		fn__transform_hlds__ctgc__structure_reuse__direct__choose_reuse__already_correct_fields_4_0_i26);
+MR_def_label(fn__transform_hlds__ctgc__structure_reuse__direct__choose_reuse__already_correct_fields_4_0,18)
+	MR_MAYBE_INIT_LOCAL_THREAD_ENGINE_BASE
+	MR_sv(1) = MR_r2;
+	MR_sv(3) = (MR_Word) MR_TAG_COMMON(0,5,0);
+	MR_r1 = MR_sv(3);
+	MR_r3 = MR_r4;
+	MR_np_call_localret_ent(fn__transform_hlds__ctgc__structure_reuse__direct__choose_reuse__equals_2_0,
+		fn__transform_hlds__ctgc__structure_reuse__direct__choose_reuse__already_correct_fields_4_0_i25);
+MR_def_label(fn__transform_hlds__ctgc__structure_reuse__direct__choose_reuse__already_correct_fields_4_0,25)
+	MR_MAYBE_INIT_LOCAL_THREAD_ENGINE_BASE
+	MR_r2 = MR_sv(1);
+	MR_sv(1) = MR_r1;
+	MR_r1 = MR_sv(3);
+	MR_np_call_localret_ent(fn__list__length_1_0,
+		fn__transform_hlds__ctgc__structure_reuse__direct__choose_reuse__already_correct_fields_4_0_i26);
+MR_def_label(fn__transform_hlds__ctgc__structure_reuse__direct__choose_reuse__already_correct_fields_4_0,26)
+	MR_MAYBE_INIT_LOCAL_THREAD_ENGINE_BASE
+	MR_sv(3) = MR_r1;
+	MR_sv(2) = (MR_Word) MR_CTOR0_ADDR(hlds__hlds_goal, needs_update);
+	MR_r1 = MR_sv(2);
+	MR_r2 = MR_sv(1);
+	MR_np_call_localret_ent(fn__list__length_1_0,
+		fn__transform_hlds__ctgc__structure_reuse__direct__choose_reuse__already_correct_fields_4_0_i27);
+MR_def_label(fn__transform_hlds__ctgc__structure_reuse__direct__choose_reuse__already_correct_fields_4_0,27)
+	MR_MAYBE_INIT_LOCAL_THREAD_ENGINE_BASE
+	{
+	MR_Word MR_tempr1;
+	MR_tempr1 = MR_r1;
+	MR_r1 = MR_sv(2);
+	MR_r2 = ((MR_Integer) MR_sv(3) - (MR_Integer) MR_tempr1);
+	MR_r3 = (MR_Integer) 0;
+	}
+	MR_np_call_localret_ent(fn__list__duplicate_2_0,
+		fn__transform_hlds__ctgc__structure_reuse__direct__choose_reuse__already_correct_fields_4_0_i28);
+MR_def_label(fn__transform_hlds__ctgc__structure_reuse__direct__choose_reuse__already_correct_fields_4_0,28)
+	MR_MAYBE_INIT_LOCAL_THREAD_ENGINE_BASE
+	{
+	MR_Word MR_tempr1;
+	MR_tempr1 = MR_r1;
+	MR_r1 = MR_sv(2);
+	MR_r2 = MR_sv(1);
+	MR_r3 = MR_tempr1;
+	MR_succip_word = MR_sv(4);
+	MR_decr_sp(4);
+	MR_np_tailcall_ent(fn__f_108_105_115_116_95_95_43_43_2_0);
+	}
+#ifdef MR_maybe_local_thread_engine_base
+	#undef MR_maybe_local_thread_engine_base
+	#define MR_maybe_local_thread_engine_base MR_thread_engine_base
+#endif
+MR_END_MODULE
+
+MR_decl_entry(__Unify___parse_tree__prog_data__cons_id_0_0);
+MR_decl_entry(fn__list__delete_all_2_0);
+
+MR_BEGIN_MODULE(transform_hlds__ctgc__structure_reuse__direct__choose_reuse_module39)
+	MR_init_entry1(transform_hlds__ctgc__structure_reuse__direct__choose_reuse__compute_reuse_type_6_0);
+	MR_INIT_PROC_LAYOUT_ADDR(mercury__transform_hlds__ctgc__structure_reuse__direct__choose_reuse__compute_reuse_type_6_0);
+	MR_init_label10(transform_hlds__ctgc__structure_reuse__direct__choose_reuse__compute_reuse_type_6_0,4,2,7,9,12,13,14,17,18,20)
+	MR_init_label10(transform_hlds__ctgc__structure_reuse__direct__choose_reuse__compute_reuse_type_6_0,22,23,26,28,31,21,35,37,39,40)
+	MR_init_label4(transform_hlds__ctgc__structure_reuse__direct__choose_reuse__compute_reuse_type_6_0,41,43,44,1)
+MR_BEGIN_CODE
+
+/*-------------------------------------------------------------------------*/
+/* code for 'compute_reuse_type'/6 mode 0 */
+#ifdef MR_maybe_local_thread_engine_base
+	#undef MR_maybe_local_thread_engine_base
+	#define MR_maybe_local_thread_engine_base MR_local_thread_engine_base
+#endif
+MR_def_static(transform_hlds__ctgc__structure_reuse__direct__choose_reuse__compute_reuse_type_6_0)
+	MR_MAYBE_INIT_LOCAL_THREAD_ENGINE_BASE
+	MR_incr_sp(13);
+	MR_sv(13) = (MR_Word) MR_succip;
+	MR_sv(5) = MR_tfield(0, MR_r1, 3);
+	MR_sv(4) = MR_tfield(0, MR_r1, 1);
+	{
+	MR_Word MR_tempr1, MR_tempr2, MR_tempr3;
+	MR_tempr2 = MR_r5;
+	MR_sv(3) = MR_tfield(0, MR_tempr2, 3);
+	MR_tempr1 = MR_tfield(0, MR_tempr2, 2);
+	MR_sv(9) = MR_tfield(0, MR_tempr2, 0);
+	MR_sv(8) = MR_r1;
+	MR_sv(10) = MR_r2;
+	MR_tempr3 = MR_r3;
+	MR_sv(11) = MR_tempr3;
+	MR_sv(1) = MR_r4;
+	MR_sv(2) = MR_tempr1;
+	MR_r1 = MR_tempr3;
+	MR_r2 = MR_tempr1;
+	}
+	MR_np_call_localret_ent(__Unify___parse_tree__prog_data__cons_id_0_0,
+		transform_hlds__ctgc__structure_reuse__direct__choose_reuse__compute_reuse_type_6_0_i4);
+MR_def_label(transform_hlds__ctgc__structure_reuse__direct__choose_reuse__compute_reuse_type_6_0,4)
+	MR_MAYBE_INIT_LOCAL_THREAD_ENGINE_BASE
+	if (!(MR_r1)) {
+		MR_GOTO_LAB(transform_hlds__ctgc__structure_reuse__direct__choose_reuse__compute_reuse_type_6_0_i2);
+	}
+	MR_r2 = MR_sv(1);
+	MR_sv(6) = (MR_Integer) 1;
+	MR_r1 = (MR_Word) MR_TAG_COMMON(0,5,0);
+	MR_GOTO_LAB(transform_hlds__ctgc__structure_reuse__direct__choose_reuse__compute_reuse_type_6_0_i12);
+MR_def_label(transform_hlds__ctgc__structure_reuse__direct__choose_reuse__compute_reuse_type_6_0,2)
+	MR_MAYBE_INIT_LOCAL_THREAD_ENGINE_BASE
+	MR_r1 = MR_sv(8);
+	MR_r2 = MR_sv(10);
+	{
+	MR_Word MR_tempr1, MR_tempr2, MR_tempr3;
+	MR_tempr1 = MR_sv(11);
+	MR_tempr2 = MR_sv(1);
+	MR_tempr3 = MR_sv(2);
+	MR_r1 = MR_sv(4);
+	MR_r2 = MR_tempr1;
+	}
+	MR_np_call_localret_ent(transform_hlds__ctgc__structure_reuse__direct__choose_reuse__cons_has_normal_fields_2_0,
+		transform_hlds__ctgc__structure_reuse__direct__choose_reuse__compute_reuse_type_6_0_i7);
+MR_def_label(transform_hlds__ctgc__structure_reuse__direct__choose_reuse__compute_reuse_type_6_0,7)
+	MR_MAYBE_INIT_LOCAL_THREAD_ENGINE_BASE
+	if (!(MR_r1)) {
+		MR_GOTO_LAB(transform_hlds__ctgc__structure_reuse__direct__choose_reuse__compute_reuse_type_6_0_i1);
+	}
+	MR_r1 = MR_sv(4);
+	MR_r2 = MR_sv(2);
+	MR_np_call_localret_ent(transform_hlds__ctgc__structure_reuse__direct__choose_reuse__cons_has_normal_fields_2_0,
+		transform_hlds__ctgc__structure_reuse__direct__choose_reuse__compute_reuse_type_6_0_i9);
+MR_def_label(transform_hlds__ctgc__structure_reuse__direct__choose_reuse__compute_reuse_type_6_0,9)
+	MR_MAYBE_INIT_LOCAL_THREAD_ENGINE_BASE
+	if (!(MR_r1)) {
+		MR_GOTO_LAB(transform_hlds__ctgc__structure_reuse__direct__choose_reuse__compute_reuse_type_6_0_i1);
+	}
+	MR_r2 = MR_sv(1);
+	MR_sv(6) = (MR_Integer) 0;
+	MR_r1 = (MR_Word) MR_TAG_COMMON(0,5,0);
+MR_def_label(transform_hlds__ctgc__structure_reuse__direct__choose_reuse__compute_reuse_type_6_0,12)
+	MR_MAYBE_INIT_LOCAL_THREAD_ENGINE_BASE
+	MR_sv(1) = MR_r2;
+	MR_sv(12) = MR_r1;
+	MR_np_call_localret_ent(fn__list__length_1_0,
+		transform_hlds__ctgc__structure_reuse__direct__choose_reuse__compute_reuse_type_6_0_i13);
+MR_def_label(transform_hlds__ctgc__structure_reuse__direct__choose_reuse__compute_reuse_type_6_0,13)
+	MR_MAYBE_INIT_LOCAL_THREAD_ENGINE_BASE
+	MR_sv(7) = MR_r1;
+	MR_r1 = MR_sv(12);
+	MR_r2 = MR_sv(3);
+	MR_np_call_localret_ent(fn__list__length_1_0,
+		transform_hlds__ctgc__structure_reuse__direct__choose_reuse__compute_reuse_type_6_0_i14);
+MR_def_label(transform_hlds__ctgc__structure_reuse__direct__choose_reuse__compute_reuse_type_6_0,14)
+	MR_MAYBE_INIT_LOCAL_THREAD_ENGINE_BASE
+	if (MR_INT_EQ(MR_sv(7),0)) {
+		MR_GOTO_LAB(transform_hlds__ctgc__structure_reuse__direct__choose_reuse__compute_reuse_type_6_0_i1);
+	}
+	{
+	MR_Word MR_tempr1;
+	MR_tempr1 = MR_sv(9);
+	MR_sv(9) = MR_r1;
+	MR_r1 = MR_sv(4);
+	MR_r2 = MR_sv(5);
+	MR_r3 = MR_tempr1;
+	MR_r4 = MR_sv(2);
+	}
+	MR_np_call_localret_ent(transform_hlds__ctgc__structure_reuse__direct__choose_reuse__has_secondary_tag_5_0,
+		transform_hlds__ctgc__structure_reuse__direct__choose_reuse__compute_reuse_type_6_0_i17);
+MR_def_label(transform_hlds__ctgc__structure_reuse__direct__choose_reuse__compute_reuse_type_6_0,17)
+	MR_MAYBE_INIT_LOCAL_THREAD_ENGINE_BASE
+	if (MR_INT_NE(MR_r1,1)) {
+		MR_GOTO_LAB(transform_hlds__ctgc__structure_reuse__direct__choose_reuse__compute_reuse_type_6_0_i18);
+	}
+	MR_r5 = MR_sv(10);
+	MR_r4 = MR_sv(5);
+	MR_r6 = MR_sv(8);
+	MR_sv(8) = MR_r1;
+	MR_sv(10) = ((MR_Integer) MR_sv(9) + (MR_Integer) 1);
+	MR_sv(9) = MR_tfield(0, MR_r6, 0);
+	MR_r2 = MR_sv(12);
+	MR_GOTO_LAB(transform_hlds__ctgc__structure_reuse__direct__choose_reuse__compute_reuse_type_6_0_i20);
+MR_def_label(transform_hlds__ctgc__structure_reuse__direct__choose_reuse__compute_reuse_type_6_0,18)
+	MR_MAYBE_INIT_LOCAL_THREAD_ENGINE_BASE
+	MR_r5 = MR_sv(10);
+	MR_r4 = MR_sv(5);
+	{
+	MR_Word MR_tempr1;
+	MR_tempr1 = MR_sv(8);
+	MR_sv(8) = MR_r1;
+	MR_sv(10) = ((MR_Integer) MR_sv(9) + (MR_Integer) 0);
+	MR_sv(9) = MR_tfield(0, MR_tempr1, 0);
+	MR_r2 = MR_sv(12);
+	}
+MR_def_label(transform_hlds__ctgc__structure_reuse__direct__choose_reuse__compute_reuse_type_6_0,20)
+	MR_MAYBE_INIT_LOCAL_THREAD_ENGINE_BASE
+	MR_r1 = (MR_Word) MR_CTOR0_ADDR(parse_tree__prog_data, prog_var_type);
+	MR_r3 = (MR_Word) MR_CTOR0_ADDR(parse_tree__prog_data, mer_type);
+	MR_np_call_localret_ent(f_109_97_112_95_95_84_121_112_101_83_112_101_99_79_102_95_95_112_114_101_100_95_111_114_95_102_117_110_99_95_95_108_111_111_107_117_112_95_95_91_75_32_61_32_118_97_114_40_86_95_50_41_93_95_48_95_49_3_0,
+		transform_hlds__ctgc__structure_reuse__direct__choose_reuse__compute_reuse_type_6_0_i22);
+MR_def_label(transform_hlds__ctgc__structure_reuse__direct__choose_reuse__compute_reuse_type_6_0,22)
+	MR_MAYBE_INIT_LOCAL_THREAD_ENGINE_BASE
+	{
+	MR_Word MR_tempr1;
+	MR_tempr1 = MR_r1;
+	MR_r1 = MR_sv(4);
+	MR_r2 = MR_tempr1;
+	}
+	MR_np_call_localret_ent(check_hlds__type_util__type_to_type_defn_body_3_0,
+		transform_hlds__ctgc__structure_reuse__direct__choose_reuse__compute_reuse_type_6_0_i23);
+MR_def_label(transform_hlds__ctgc__structure_reuse__direct__choose_reuse__compute_reuse_type_6_0,23)
+	MR_MAYBE_INIT_LOCAL_THREAD_ENGINE_BASE
+	if (!(MR_r1)) {
+		MR_GOTO_LAB(transform_hlds__ctgc__structure_reuse__direct__choose_reuse__compute_reuse_type_6_0_i21);
+	}
+	if (MR_PTAG_TESTR(MR_r2,1)) {
+		MR_GOTO_LAB(transform_hlds__ctgc__structure_reuse__direct__choose_reuse__compute_reuse_type_6_0_i21);
+	}
+	MR_r1 = (MR_Word) MR_CTOR0_ADDR(parse_tree__prog_data, cons_id);
+	{
+	MR_Word MR_tempr1;
+	MR_tempr1 = MR_r2;
+	MR_r2 = (MR_Word) MR_CTOR0_ADDR(hlds__hlds_data, cons_tag);
+	MR_r3 = MR_tfield(1, MR_tempr1, 1);
+	MR_r4 = MR_sv(11);
+	}
+	MR_np_call_localret_ent(map__search_3_0,
+		transform_hlds__ctgc__structure_reuse__direct__choose_reuse__compute_reuse_type_6_0_i26);
+MR_def_label(transform_hlds__ctgc__structure_reuse__direct__choose_reuse__compute_reuse_type_6_0,26)
+	MR_MAYBE_INIT_LOCAL_THREAD_ENGINE_BASE
+	if (!(MR_r1)) {
+		MR_GOTO_LAB(transform_hlds__ctgc__structure_reuse__direct__choose_reuse__compute_reuse_type_6_0_i21);
+	}
+	MR_r1 = MR_r2;
+	MR_np_call_localret_ent(fn__hlds__hlds_data__get_secondary_tag_1_0,
+		transform_hlds__ctgc__structure_reuse__direct__choose_reuse__compute_reuse_type_6_0_i28);
+MR_def_label(transform_hlds__ctgc__structure_reuse__direct__choose_reuse__compute_reuse_type_6_0,28)
+	MR_MAYBE_INIT_LOCAL_THREAD_ENGINE_BASE
+	if (MR_LTAGS_TEST(MR_r1,0,0)) {
+		MR_GOTO_LAB(transform_hlds__ctgc__structure_reuse__direct__choose_reuse__compute_reuse_type_6_0_i21);
+	}
+	{
+	MR_Word MR_tempr1;
+	MR_tempr1 = ((MR_Integer) MR_sv(7) + (MR_Integer) 1);
+	MR_r5 = MR_tempr1;
+	if (((MR_Integer) MR_tempr1 > (MR_Integer) MR_sv(10))) {
+		MR_GOTO_LAB(transform_hlds__ctgc__structure_reuse__direct__choose_reuse__compute_reuse_type_6_0_i1);
+	}
+	if (MR_LTAGS_TESTR(MR_sv(9),0,0)) {
+		MR_GOTO_LAB(transform_hlds__ctgc__structure_reuse__direct__choose_reuse__compute_reuse_type_6_0_i31);
+	}
+	if (MR_INT_NE(MR_sv(6),1)) {
+		MR_GOTO_LAB(transform_hlds__ctgc__structure_reuse__direct__choose_reuse__compute_reuse_type_6_0_i1);
+	}
+	MR_r2 = MR_sv(1);
+	MR_r4 = MR_sv(3);
+	MR_r3 = MR_sv(8);
+	MR_sv(8) = MR_tempr1;
+	MR_sv(10) = ((MR_Integer) MR_sv(10) - (MR_Integer) MR_tempr1);
+	MR_r1 = (MR_Integer) 1;
+	}
+	MR_np_call_localret_ent(fn__transform_hlds__ctgc__structure_reuse__direct__choose_reuse__already_correct_fields_4_0,
+		transform_hlds__ctgc__structure_reuse__direct__choose_reuse__compute_reuse_type_6_0_i37);
+MR_def_label(transform_hlds__ctgc__structure_reuse__direct__choose_reuse__compute_reuse_type_6_0,31)
+	MR_MAYBE_INIT_LOCAL_THREAD_ENGINE_BASE
+	{
+	MR_Word MR_tempr1, MR_tempr2, MR_tempr3;
+	MR_tempr3 = MR_r5;
+	MR_tempr1 = ((MR_Integer) MR_sv(10) - (MR_Integer) MR_tempr3);
+	MR_tempr2 = MR_tfield(1, MR_sv(9), 0);
+	if (((MR_Integer) MR_tempr1 > (MR_Integer) MR_tempr2)) {
+		MR_GOTO_LAB(transform_hlds__ctgc__structure_reuse__direct__choose_reuse__compute_reuse_type_6_0_i1);
+	}
+	MR_r2 = MR_sv(1);
+	MR_r4 = MR_sv(3);
+	MR_r3 = MR_sv(8);
+	MR_sv(8) = MR_tempr3;
+	MR_sv(10) = MR_tempr1;
+	MR_r1 = (MR_Integer) 1;
+	}
+	MR_np_call_localret_ent(fn__transform_hlds__ctgc__structure_reuse__direct__choose_reuse__already_correct_fields_4_0,
+		transform_hlds__ctgc__structure_reuse__direct__choose_reuse__compute_reuse_type_6_0_i37);
+MR_def_label(transform_hlds__ctgc__structure_reuse__direct__choose_reuse__compute_reuse_type_6_0,21)
+	MR_MAYBE_INIT_LOCAL_THREAD_ENGINE_BASE
+	{
+	MR_Word MR_tempr1;
+	MR_tempr1 = ((MR_Integer) MR_sv(7) + (MR_Integer) 0);
+	MR_r5 = MR_tempr1;
+	if (((MR_Integer) MR_tempr1 > (MR_Integer) MR_sv(10))) {
+		MR_GOTO_LAB(transform_hlds__ctgc__structure_reuse__direct__choose_reuse__compute_reuse_type_6_0_i1);
+	}
+	if (MR_LTAGS_TESTR(MR_sv(9),0,0)) {
+		MR_GOTO_LAB(transform_hlds__ctgc__structure_reuse__direct__choose_reuse__compute_reuse_type_6_0_i35);
+	}
+	if (MR_INT_NE(MR_sv(6),1)) {
+		MR_GOTO_LAB(transform_hlds__ctgc__structure_reuse__direct__choose_reuse__compute_reuse_type_6_0_i1);
+	}
+	MR_r2 = MR_sv(1);
+	MR_r4 = MR_sv(3);
+	MR_r3 = MR_sv(8);
+	MR_sv(8) = MR_tempr1;
+	MR_sv(10) = ((MR_Integer) MR_sv(10) - (MR_Integer) MR_tempr1);
+	MR_r1 = (MR_Integer) 0;
+	}
+	MR_np_call_localret_ent(fn__transform_hlds__ctgc__structure_reuse__direct__choose_reuse__already_correct_fields_4_0,
+		transform_hlds__ctgc__structure_reuse__direct__choose_reuse__compute_reuse_type_6_0_i37);
+MR_def_label(transform_hlds__ctgc__structure_reuse__direct__choose_reuse__compute_reuse_type_6_0,35)
+	MR_MAYBE_INIT_LOCAL_THREAD_ENGINE_BASE
+	{
+	MR_Word MR_tempr1, MR_tempr2, MR_tempr3;
+	MR_tempr3 = MR_r5;
+	MR_tempr1 = ((MR_Integer) MR_sv(10) - (MR_Integer) MR_tempr3);
+	MR_tempr2 = MR_tfield(1, MR_sv(9), 0);
+	if (((MR_Integer) MR_tempr1 > (MR_Integer) MR_tempr2)) {
+		MR_GOTO_LAB(transform_hlds__ctgc__structure_reuse__direct__choose_reuse__compute_reuse_type_6_0_i1);
+	}
+	MR_r2 = MR_sv(1);
+	MR_r4 = MR_sv(3);
+	MR_r3 = MR_sv(8);
+	MR_sv(8) = MR_tempr3;
+	MR_sv(10) = MR_tempr1;
+	MR_r1 = (MR_Integer) 0;
+	}
+	MR_np_call_localret_ent(fn__transform_hlds__ctgc__structure_reuse__direct__choose_reuse__already_correct_fields_4_0,
+		transform_hlds__ctgc__structure_reuse__direct__choose_reuse__compute_reuse_type_6_0_i37);
+MR_def_label(transform_hlds__ctgc__structure_reuse__direct__choose_reuse__compute_reuse_type_6_0,37)
+	MR_MAYBE_INIT_LOCAL_THREAD_ENGINE_BASE
+	MR_r2 = MR_r1;
+	MR_r3 = (MR_Integer) 0;
+	MR_r1 = (MR_Word) MR_CTOR0_ADDR(hlds__hlds_goal, needs_update);
+	MR_sv(11) = MR_r2;
+	MR_sv(1) = MR_r1;
+	MR_np_call_localret_ent(fn__list__delete_all_2_0,
+		transform_hlds__ctgc__structure_reuse__direct__choose_reuse__compute_reuse_type_6_0_i39);
+MR_def_label(transform_hlds__ctgc__structure_reuse__direct__choose_reuse__compute_reuse_type_6_0,39)
+	MR_MAYBE_INIT_LOCAL_THREAD_ENGINE_BASE
+	{
+	MR_Word MR_tempr1;
+	MR_tempr1 = MR_r1;
+	MR_r1 = MR_sv(1);
+	MR_r2 = MR_tempr1;
+	}
+	MR_np_call_localret_ent(fn__list__length_1_0,
+		transform_hlds__ctgc__structure_reuse__direct__choose_reuse__compute_reuse_type_6_0_i40);
+MR_def_label(transform_hlds__ctgc__structure_reuse__direct__choose_reuse__compute_reuse_type_6_0,40)
+	MR_MAYBE_INIT_LOCAL_THREAD_ENGINE_BASE
+	if (MR_INT_NE(MR_sv(6),1)) {
+		MR_GOTO_LAB(transform_hlds__ctgc__structure_reuse__direct__choose_reuse__compute_reuse_type_6_0_i41);
+	}
+	MR_r2 = (MR_Integer) 0;
+	MR_GOTO_LAB(transform_hlds__ctgc__structure_reuse__direct__choose_reuse__compute_reuse_type_6_0_i43);
+MR_def_label(transform_hlds__ctgc__structure_reuse__direct__choose_reuse__compute_reuse_type_6_0,41)
+	MR_MAYBE_INIT_LOCAL_THREAD_ENGINE_BASE
+	MR_r2 = (MR_Integer) 1;
+MR_def_label(transform_hlds__ctgc__structure_reuse__direct__choose_reuse__compute_reuse_type_6_0,43)
+	MR_MAYBE_INIT_LOCAL_THREAD_ENGINE_BASE
+	{
+	MR_Word MR_tempr1, MR_tempr2;
+	MR_tempr2 = MR_sv(8);
+	MR_tempr1 = ((((((MR_Integer) 6 * (MR_Integer) MR_tempr2) + (MR_Integer) 1) - ((MR_Integer) 1 * ((MR_Integer) MR_tempr2 - (MR_Integer) MR_r1))) - ((MR_Integer) 1 * (MR_Integer) MR_r2)) - ((MR_Integer) 5 * (MR_Integer) MR_sv(10)));
+	if (MR_INT_LE(MR_tempr1,0)) {
+		MR_GOTO_LAB(transform_hlds__ctgc__structure_reuse__direct__choose_reuse__compute_reuse_type_6_0_i1);
+	}
+	MR_r1 = MR_tempr1;
+	}
+	MR_np_call_localret_ent(fn__float__float_1_0,
+		transform_hlds__ctgc__structure_reuse__direct__choose_reuse__compute_reuse_type_6_0_i44);
+MR_def_label(transform_hlds__ctgc__structure_reuse__direct__choose_reuse__compute_reuse_type_6_0,44)
+	MR_MAYBE_INIT_LOCAL_THREAD_ENGINE_BASE
+	MR_tag_alloc_heap(MR_r2, 0, (MR_Integer) 3);
+	MR_tfield(0, MR_r2, 0) = MR_sv(6);
+	MR_tfield(0, MR_r2, 1) = MR_sv(11);
+	MR_tfield(0, MR_r2, 2) = MR_r1;
+	MR_succip_word = MR_sv(13);
+	MR_decr_sp(13);
+	MR_r1 = MR_TRUE;
+	MR_proceed();
+MR_def_label(transform_hlds__ctgc__structure_reuse__direct__choose_reuse__compute_reuse_type_6_0,1)
+	MR_MAYBE_INIT_LOCAL_THREAD_ENGINE_BASE
+	MR_succip_word = MR_sv(13);
+	MR_decr_sp(13);
+	MR_r1 = MR_FALSE;
+	MR_proceed();
+#ifdef MR_maybe_local_thread_engine_base
+	#undef MR_maybe_local_thread_engine_base
+	#define MR_maybe_local_thread_engine_base MR_thread_engine_base
+#endif
+MR_END_MODULE
+
+MR_decl_entry(fn__bool__and_2_0);
+MR_decl_entry(fn__list__take_upto_2_0);
+MR_decl_entry(fn__list__map_corresponding_3_0);
+static const MR_Float mercury_float_const_2pt0000000000000000 = 2.0000000000000000;
+
+MR_BEGIN_MODULE(transform_hlds__ctgc__structure_reuse__direct__choose_reuse_module40)
+	MR_init_entry1(fn__transform_hlds__ctgc__structure_reuse__direct__choose_reuse__glb_reuse_types_2_2_0);
+	MR_INIT_PROC_LAYOUT_ADDR(mercury__fn__transform_hlds__ctgc__structure_reuse__direct__choose_reuse__glb_reuse_types_2_2_0);
+	MR_init_label10(fn__transform_hlds__ctgc__structure_reuse__direct__choose_reuse__glb_reuse_types_2_2_0,2,4,5,6,7,3,9,10,12,13)
+	MR_init_label1(fn__transform_hlds__ctgc__structure_reuse__direct__choose_reuse__glb_reuse_types_2_2_0,14)
+MR_BEGIN_CODE
+
+/*-------------------------------------------------------------------------*/
+/* code for 'glb_reuse_types_2'/3 mode 0 */
+#ifdef MR_maybe_local_thread_engine_base
+	#undef MR_maybe_local_thread_engine_base
+	#define MR_maybe_local_thread_engine_base MR_local_thread_engine_base
+#endif
+MR_def_static(fn__transform_hlds__ctgc__structure_reuse__direct__choose_reuse__glb_reuse_types_2_2_0)
+	MR_MAYBE_INIT_LOCAL_THREAD_ENGINE_BASE
+	MR_incr_sp(9);
+	MR_sv(9) = (MR_Word) MR_succip;
+	MR_sv(7) = MR_tfield(0, MR_r1, 1);
+	* (MR_Float *) &MR_sv(2) = MR_word_to_float(MR_tfield(0, MR_r1, 2));
+	MR_sv(3) = MR_tfield(0, MR_r2, 1);
+	* (MR_Float *) &MR_sv(5) = MR_word_to_float(MR_tfield(0, MR_r2, 2));
+	MR_r1 = MR_tfield(0, MR_r1, 0);
+	MR_r2 = MR_tfield(0, MR_r2, 0);
+	MR_np_call_localret_ent(fn__bool__and_2_0,
+		fn__transform_hlds__ctgc__structure_reuse__direct__choose_reuse__glb_reuse_types_2_2_0_i2);
+MR_def_label(fn__transform_hlds__ctgc__structure_reuse__direct__choose_reuse__glb_reuse_types_2_2_0,2)
+	MR_MAYBE_INIT_LOCAL_THREAD_ENGINE_BASE
+	MR_sv(6) = MR_r1;
+	MR_sv(8) = (MR_Word) MR_CTOR0_ADDR(hlds__hlds_goal, needs_update);
+	MR_r1 = MR_sv(8);
+	MR_r2 = MR_sv(7);
+	MR_np_call_localret_ent(fn__list__length_1_0,
+		fn__transform_hlds__ctgc__structure_reuse__direct__choose_reuse__glb_reuse_types_2_2_0_i4);
+MR_def_label(fn__transform_hlds__ctgc__structure_reuse__direct__choose_reuse__glb_reuse_types_2_2_0,4)
+	MR_MAYBE_INIT_LOCAL_THREAD_ENGINE_BASE
+	MR_sv(8) = MR_r1;
+	MR_r1 = (MR_Word) MR_CTOR0_ADDR(hlds__hlds_goal, needs_update);
+	MR_r2 = MR_sv(3);
+	MR_np_call_localret_ent(fn__list__length_1_0,
+		fn__transform_hlds__ctgc__structure_reuse__direct__choose_reuse__glb_reuse_types_2_2_0_i5);
+MR_def_label(fn__transform_hlds__ctgc__structure_reuse__direct__choose_reuse__glb_reuse_types_2_2_0,5)
+	MR_MAYBE_INIT_LOCAL_THREAD_ENGINE_BASE
+	if (((MR_Integer) MR_sv(8) > (MR_Integer) MR_r1)) {
+		MR_GOTO_LAB(fn__transform_hlds__ctgc__structure_reuse__direct__choose_reuse__glb_reuse_types_2_2_0_i3);
+	}
+	MR_sv(8) = (MR_Word) MR_CTOR0_ADDR(hlds__hlds_goal, needs_update);
+	MR_r1 = MR_sv(8);
+	MR_r2 = MR_sv(7);
+	MR_np_call_localret_ent(fn__list__length_1_0,
+		fn__transform_hlds__ctgc__structure_reuse__direct__choose_reuse__glb_reuse_types_2_2_0_i6);
+MR_def_label(fn__transform_hlds__ctgc__structure_reuse__direct__choose_reuse__glb_reuse_types_2_2_0,6)
+	MR_MAYBE_INIT_LOCAL_THREAD_ENGINE_BASE
+	{
+	MR_Word MR_tempr1;
+	MR_tempr1 = MR_r1;
+	MR_r1 = MR_sv(8);
+	MR_r2 = MR_tempr1;
+	MR_r3 = MR_sv(3);
+	}
+	MR_np_call_localret_ent(fn__list__take_upto_2_0,
+		fn__transform_hlds__ctgc__structure_reuse__direct__choose_reuse__glb_reuse_types_2_2_0_i7);
+MR_def_label(fn__transform_hlds__ctgc__structure_reuse__direct__choose_reuse__glb_reuse_types_2_2_0,7)
+	MR_MAYBE_INIT_LOCAL_THREAD_ENGINE_BASE
+	MR_r5 = MR_sv(7);
+	MR_r6 = MR_r1;
+	MR_r4 = (MR_Word) MR_TAG_COMMON(0,1,25);
+	MR_r1 = (MR_Word) MR_CTOR0_ADDR(hlds__hlds_goal, needs_update);
+	MR_GOTO_LAB(fn__transform_hlds__ctgc__structure_reuse__direct__choose_reuse__glb_reuse_types_2_2_0_i12);
+MR_def_label(fn__transform_hlds__ctgc__structure_reuse__direct__choose_reuse__glb_reuse_types_2_2_0,3)
+	MR_MAYBE_INIT_LOCAL_THREAD_ENGINE_BASE
+	MR_sv(8) = (MR_Word) MR_CTOR0_ADDR(hlds__hlds_goal, needs_update);
+	MR_r1 = MR_sv(8);
+	MR_r2 = MR_sv(3);
+	MR_np_call_localret_ent(fn__list__length_1_0,
+		fn__transform_hlds__ctgc__structure_reuse__direct__choose_reuse__glb_reuse_types_2_2_0_i9);
+MR_def_label(fn__transform_hlds__ctgc__structure_reuse__direct__choose_reuse__glb_reuse_types_2_2_0,9)
+	MR_MAYBE_INIT_LOCAL_THREAD_ENGINE_BASE
+	{
+	MR_Word MR_tempr1;
+	MR_tempr1 = MR_r1;
+	MR_r1 = MR_sv(8);
+	MR_r2 = MR_tempr1;
+	MR_r3 = MR_sv(7);
+	}
+	MR_np_call_localret_ent(fn__list__take_upto_2_0,
+		fn__transform_hlds__ctgc__structure_reuse__direct__choose_reuse__glb_reuse_types_2_2_0_i10);
+MR_def_label(fn__transform_hlds__ctgc__structure_reuse__direct__choose_reuse__glb_reuse_types_2_2_0,10)
+	MR_MAYBE_INIT_LOCAL_THREAD_ENGINE_BASE
+	MR_r5 = MR_r1;
+	MR_r6 = MR_sv(3);
+	MR_r4 = (MR_Word) MR_TAG_COMMON(0,1,26);
+	MR_r1 = (MR_Word) MR_CTOR0_ADDR(hlds__hlds_goal, needs_update);
+MR_def_label(fn__transform_hlds__ctgc__structure_reuse__direct__choose_reuse__glb_reuse_types_2_2_0,12)
+	MR_MAYBE_INIT_LOCAL_THREAD_ENGINE_BASE
+	MR_r2 = MR_r1;
+	MR_r3 = MR_r1;
+	MR_np_call_localret_ent(fn__list__map_corresponding_3_0,
+		fn__transform_hlds__ctgc__structure_reuse__direct__choose_reuse__glb_reuse_types_2_2_0_i13);
+MR_def_label(fn__transform_hlds__ctgc__structure_reuse__direct__choose_reuse__glb_reuse_types_2_2_0,13)
+	MR_MAYBE_INIT_LOCAL_THREAD_ENGINE_BASE
+	MR_sv(7) = MR_r1;
+	MR_r1 = MR_float_to_word((MR_float_from_dword_ptr(&MR_sv(2)) + MR_float_from_dword_ptr(&MR_sv(5))));
+	MR_r2 = (MR_Word) &mercury_float_const_2pt0000000000000000;
+	MR_np_call_localret_ent(fn__f_102_108_111_97_116_95_95_47_2_0,
+		fn__transform_hlds__ctgc__structure_reuse__direct__choose_reuse__glb_reuse_types_2_2_0_i14);
+MR_def_label(fn__transform_hlds__ctgc__structure_reuse__direct__choose_reuse__glb_reuse_types_2_2_0,14)
+	MR_MAYBE_INIT_LOCAL_THREAD_ENGINE_BASE
+	MR_tag_alloc_heap(MR_r2, 0, (MR_Integer) 3);
+	MR_tfield(0, MR_r2, 0) = MR_sv(6);
+	MR_tfield(0, MR_r2, 1) = MR_sv(7);
+	MR_tfield(0, MR_r2, 2) = MR_r1;
+	MR_r1 = MR_r2;
+	MR_decr_sp_and_return(9);
+#ifdef MR_maybe_local_thread_engine_base
+	#undef MR_maybe_local_thread_engine_base
+	#define MR_maybe_local_thread_engine_base MR_thread_engine_base
+#endif
+MR_END_MODULE
+
+
+MR_BEGIN_MODULE(transform_hlds__ctgc__structure_reuse__direct__choose_reuse_module41)
+	MR_init_entry1(fn__transform_hlds__ctgc__structure_reuse__direct__choose_reuse__needs_update_and_2_0);
+	MR_INIT_PROC_LAYOUT_ADDR(mercury__fn__transform_hlds__ctgc__structure_reuse__direct__choose_reuse__needs_update_and_2_0);
+	MR_init_label1(fn__transform_hlds__ctgc__structure_reuse__direct__choose_reuse__needs_update_and_2_0,10)
+MR_BEGIN_CODE
+
+/*-------------------------------------------------------------------------*/
+/* code for 'needs_update_and'/3 mode 0 */
+#ifdef MR_maybe_local_thread_engine_base
+	#undef MR_maybe_local_thread_engine_base
+	#define MR_maybe_local_thread_engine_base MR_local_thread_engine_base
+#endif
+MR_def_static(fn__transform_hlds__ctgc__structure_reuse__direct__choose_reuse__needs_update_and_2_0)
+	MR_MAYBE_INIT_LOCAL_THREAD_ENGINE_BASE
+	if (MR_INT_NE(MR_r1,1)) {
+		MR_GOTO_LAB(fn__transform_hlds__ctgc__structure_reuse__direct__choose_reuse__needs_update_and_2_0_i10);
+	}
+	if (MR_INT_NE(MR_r2,1)) {
+		MR_GOTO_LAB(fn__transform_hlds__ctgc__structure_reuse__direct__choose_reuse__needs_update_and_2_0_i10);
+	}
+	MR_r1 = (MR_Integer) 1;
+	MR_proceed();
+MR_def_label(fn__transform_hlds__ctgc__structure_reuse__direct__choose_reuse__needs_update_and_2_0,10)
+	MR_MAYBE_INIT_LOCAL_THREAD_ENGINE_BASE
+	MR_r1 = (MR_Integer) 0;
+	MR_proceed();
+#ifdef MR_maybe_local_thread_engine_base
+	#undef MR_maybe_local_thread_engine_base
+	#define MR_maybe_local_thread_engine_base MR_thread_engine_base
+#endif
+MR_END_MODULE
+
+
+MR_BEGIN_MODULE(transform_hlds__ctgc__structure_reuse__direct__choose_reuse_module42)
+	MR_init_entry1(transform_hlds__ctgc__structure_reuse__direct__choose_reuse__annotate_reuses_in_case_4_0);
+	MR_INIT_PROC_LAYOUT_ADDR(mercury__transform_hlds__ctgc__structure_reuse__direct__choose_reuse__annotate_reuses_in_case_4_0);
+	MR_init_label1(transform_hlds__ctgc__structure_reuse__direct__choose_reuse__annotate_reuses_in_case_4_0,2)
+MR_BEGIN_CODE
+
+/*-------------------------------------------------------------------------*/
+/* code for 'annotate_reuses_in_case'/4 mode 0 */
+#ifdef MR_maybe_local_thread_engine_base
+	#undef MR_maybe_local_thread_engine_base
+	#define MR_maybe_local_thread_engine_base MR_local_thread_engine_base
+#endif
+MR_def_static(transform_hlds__ctgc__structure_reuse__direct__choose_reuse__annotate_reuses_in_case_4_0)
+	MR_MAYBE_INIT_LOCAL_THREAD_ENGINE_BASE
+	MR_incr_sp(3);
+	MR_sv(3) = (MR_Word) MR_succip;
+	{
+	MR_Word MR_tempr1;
+	MR_tempr1 = MR_r3;
+	MR_sv(1) = MR_tfield(0, MR_tempr1, 0);
+	MR_sv(2) = MR_tfield(0, MR_tempr1, 1);
+	MR_r3 = MR_tfield(0, MR_tempr1, 2);
+	}
+	MR_np_call_localret_ent(transform_hlds__ctgc__structure_reuse__direct__choose_reuse__annotate_reuses_in_goal_4_0,
+		transform_hlds__ctgc__structure_reuse__direct__choose_reuse__annotate_reuses_in_case_4_0_i2);
+MR_def_label(transform_hlds__ctgc__structure_reuse__direct__choose_reuse__annotate_reuses_in_case_4_0,2)
+	MR_MAYBE_INIT_LOCAL_THREAD_ENGINE_BASE
+	MR_tag_alloc_heap(MR_r2, 0, (MR_Integer) 3);
+	MR_tfield(0, MR_r2, 0) = MR_sv(1);
+	MR_tfield(0, MR_r2, 1) = MR_sv(2);
+	MR_tfield(0, MR_r2, 2) = MR_r1;
+	MR_r1 = MR_r2;
+	MR_decr_sp_and_return(3);
+#ifdef MR_maybe_local_thread_engine_base
+	#undef MR_maybe_local_thread_engine_base
+	#define MR_maybe_local_thread_engine_base MR_thread_engine_base
+#endif
+MR_END_MODULE
+
+MR_decl_entry(__Unify___transform_hlds__smm_common__program_point_0_0);
+
+MR_BEGIN_MODULE(transform_hlds__ctgc__structure_reuse__direct__choose_reuse_module43)
+	MR_init_entry1(transform_hlds__ctgc__structure_reuse__direct__choose_reuse__deconstruction_spec_with_program_point_2_0);
+	MR_INIT_PROC_LAYOUT_ADDR(mercury__transform_hlds__ctgc__structure_reuse__direct__choose_reuse__deconstruction_spec_with_program_point_2_0);
+MR_BEGIN_CODE
+
+/*-------------------------------------------------------------------------*/
+/* code for 'deconstruction_spec_with_program_point'/2 mode 0 */
+#ifdef MR_maybe_local_thread_engine_base
+	#undef MR_maybe_local_thread_engine_base
+	#define MR_maybe_local_thread_engine_base MR_local_thread_engine_base
+#endif
+MR_def_static(transform_hlds__ctgc__structure_reuse__direct__choose_reuse__deconstruction_spec_with_program_point_2_0)
+	MR_MAYBE_INIT_LOCAL_THREAD_ENGINE_BASE
+	MR_r2 = MR_tfield(0, MR_r2, 1);
+	MR_np_tailcall_ent(__Unify___transform_hlds__smm_common__program_point_0_0);
+#ifdef MR_maybe_local_thread_engine_base
+	#undef MR_maybe_local_thread_engine_base
+	#define MR_maybe_local_thread_engine_base MR_thread_engine_base
+#endif
+MR_END_MODULE
+
+
+MR_BEGIN_MODULE(transform_hlds__ctgc__structure_reuse__direct__choose_reuse_module44)
+	MR_init_entry1(transform_hlds__ctgc__structure_reuse__direct__choose_reuse__construction_spec_with_program_point_2_0);
+	MR_INIT_PROC_LAYOUT_ADDR(mercury__transform_hlds__ctgc__structure_reuse__direct__choose_reuse__construction_spec_with_program_point_2_0);
+MR_BEGIN_CODE
+
+/*-------------------------------------------------------------------------*/
+/* code for 'construction_spec_with_program_point'/2 mode 0 */
+#ifdef MR_maybe_local_thread_engine_base
+	#undef MR_maybe_local_thread_engine_base
+	#define MR_maybe_local_thread_engine_base MR_local_thread_engine_base
+#endif
+MR_def_static(transform_hlds__ctgc__structure_reuse__direct__choose_reuse__construction_spec_with_program_point_2_0)
+	MR_MAYBE_INIT_LOCAL_THREAD_ENGINE_BASE
+	MR_r2 = MR_tfield(0, MR_r2, 0);
+	MR_np_tailcall_ent(__Unify___transform_hlds__smm_common__program_point_0_0);
+#ifdef MR_maybe_local_thread_engine_base
+	#undef MR_maybe_local_thread_engine_base
+	#define MR_maybe_local_thread_engine_base MR_thread_engine_base
+#endif
+MR_END_MODULE
+
+
+MR_BEGIN_MODULE(transform_hlds__ctgc__structure_reuse__direct__choose_reuse_module45)
+	MR_init_entry1(transform_hlds__ctgc__structure_reuse__direct__choose_reuse__check_for_cell_caching_in_case_3_0);
+	MR_INIT_PROC_LAYOUT_ADDR(mercury__transform_hlds__ctgc__structure_reuse__direct__choose_reuse__check_for_cell_caching_in_case_3_0);
+	MR_init_label1(transform_hlds__ctgc__structure_reuse__direct__choose_reuse__check_for_cell_caching_in_case_3_0,2)
+MR_BEGIN_CODE
+
+/*-------------------------------------------------------------------------*/
+/* code for 'check_for_cell_caching_in_case'/3 mode 0 */
+#ifdef MR_maybe_local_thread_engine_base
+	#undef MR_maybe_local_thread_engine_base
+	#define MR_maybe_local_thread_engine_base MR_local_thread_engine_base
+#endif
+MR_def_static(transform_hlds__ctgc__structure_reuse__direct__choose_reuse__check_for_cell_caching_in_case_3_0)
+	MR_MAYBE_INIT_LOCAL_THREAD_ENGINE_BASE
+	MR_incr_sp(3);
+	MR_sv(3) = (MR_Word) MR_succip;
+	MR_sv(1) = MR_tfield(0, MR_r2, 0);
+	MR_sv(2) = MR_tfield(0, MR_r2, 1);
+	MR_r2 = MR_tfield(0, MR_r2, 2);
+	MR_np_call_localret_ent(transform_hlds__ctgc__structure_reuse__direct__choose_reuse__check_for_cell_caching_2_3_0,
+		transform_hlds__ctgc__structure_reuse__direct__choose_reuse__check_for_cell_caching_in_case_3_0_i2);
+MR_def_label(transform_hlds__ctgc__structure_reuse__direct__choose_reuse__check_for_cell_caching_in_case_3_0,2)
+	MR_MAYBE_INIT_LOCAL_THREAD_ENGINE_BASE
+	MR_tag_alloc_heap(MR_r2, 0, (MR_Integer) 3);
+	MR_tfield(0, MR_r2, 0) = MR_sv(1);
+	MR_tfield(0, MR_r2, 1) = MR_sv(2);
+	MR_tfield(0, MR_r2, 2) = MR_r1;
+	MR_r1 = MR_r2;
+	MR_decr_sp_and_return(3);
+#ifdef MR_maybe_local_thread_engine_base
+	#undef MR_maybe_local_thread_engine_base
+	#define MR_maybe_local_thread_engine_base MR_thread_engine_base
+#endif
+MR_END_MODULE
+
+MR_decl_entry(__Unify___libs__globals__reuse_strategy_0_0);
+MR_decl_entry(__Unify___hlds__hlds_module__module_info_0_0);
+MR_decl_entry(__Unify___hlds__hlds_pred__proc_info_0_0);
+MR_decl_entry(__Unify___tree234__tree234_2_0);
+
+MR_BEGIN_MODULE(transform_hlds__ctgc__structure_reuse__direct__choose_reuse_module46)
+	MR_init_entry1(__Unify___transform_hlds__ctgc__structure_reuse__direct__choose_reuse__background_info_0_0);
+	MR_INIT_PROC_LAYOUT_ADDR(mercury____Unify___transform_hlds__ctgc__structure_reuse__direct__choose_reuse__background_info_0_0);
+	MR_init_label5(__Unify___transform_hlds__ctgc__structure_reuse__direct__choose_reuse__background_info_0_0,4,6,8,13,1)
+MR_BEGIN_CODE
+
+/*-------------------------------------------------------------------------*/
+/* code for '__Unify__'/2 mode 0 */
+#ifdef MR_maybe_local_thread_engine_base
+	#undef MR_maybe_local_thread_engine_base
+	#define MR_maybe_local_thread_engine_base MR_local_thread_engine_base
+#endif
+MR_def_static(__Unify___transform_hlds__ctgc__structure_reuse__direct__choose_reuse__background_info_0_0)
+	MR_MAYBE_INIT_LOCAL_THREAD_ENGINE_BASE
+	if ((MR_r1 == MR_r2)) {
+		MR_GOTO_LAB(__Unify___transform_hlds__ctgc__structure_reuse__direct__choose_reuse__background_info_0_0_i13);
+	}
+	MR_incr_sp(7);
+	MR_sv(7) = (MR_Word) MR_succip;
+	MR_sv(1) = MR_r1;
+	MR_sv(2) = MR_r2;
+	{
+	MR_Word MR_tempr1, MR_tempr2;
+	MR_tempr1 = MR_sv(1);
+	MR_sv(1) = MR_tfield(0, MR_tempr1, 1);
+	MR_tempr2 = MR_sv(2);
+	MR_sv(2) = MR_tfield(0, MR_tempr1, 2);
+	MR_sv(3) = MR_tfield(0, MR_tempr1, 3);
+	MR_sv(4) = MR_tfield(0, MR_tempr2, 1);
+	MR_sv(5) = MR_tfield(0, MR_tempr2, 2);
+	MR_sv(6) = MR_tfield(0, MR_tempr2, 3);
+	MR_r1 = MR_tfield(0, MR_tempr1, 0);
+	MR_r2 = MR_tfield(0, MR_tempr2, 0);
+	}
+	MR_np_call_localret_ent(__Unify___libs__globals__reuse_strategy_0_0,
+		__Unify___transform_hlds__ctgc__structure_reuse__direct__choose_reuse__background_info_0_0_i4);
+MR_def_label(__Unify___transform_hlds__ctgc__structure_reuse__direct__choose_reuse__background_info_0_0,4)
+	MR_MAYBE_INIT_LOCAL_THREAD_ENGINE_BASE
+	if (!(MR_r1)) {
+		MR_GOTO_LAB(__Unify___transform_hlds__ctgc__structure_reuse__direct__choose_reuse__background_info_0_0_i1);
+	}
+	MR_r1 = MR_sv(1);
+	MR_r2 = MR_sv(4);
+	MR_np_call_localret_ent(__Unify___hlds__hlds_module__module_info_0_0,
+		__Unify___transform_hlds__ctgc__structure_reuse__direct__choose_reuse__background_info_0_0_i6);
+MR_def_label(__Unify___transform_hlds__ctgc__structure_reuse__direct__choose_reuse__background_info_0_0,6)
+	MR_MAYBE_INIT_LOCAL_THREAD_ENGINE_BASE
+	if (!(MR_r1)) {
+		MR_GOTO_LAB(__Unify___transform_hlds__ctgc__structure_reuse__direct__choose_reuse__background_info_0_0_i1);
+	}
+	MR_r1 = MR_sv(2);
+	MR_r2 = MR_sv(5);
+	MR_np_call_localret_ent(__Unify___hlds__hlds_pred__proc_info_0_0,
+		__Unify___transform_hlds__ctgc__structure_reuse__direct__choose_reuse__background_info_0_0_i8);
+MR_def_label(__Unify___transform_hlds__ctgc__structure_reuse__direct__choose_reuse__background_info_0_0,8)
+	MR_MAYBE_INIT_LOCAL_THREAD_ENGINE_BASE
+	if (!(MR_r1)) {
+		MR_GOTO_LAB(__Unify___transform_hlds__ctgc__structure_reuse__direct__choose_reuse__background_info_0_0_i1);
+	}
+	MR_r1 = (MR_Word) MR_TAG_COMMON(0,5,0);
+	MR_r2 = (MR_Word) MR_CTOR0_ADDR(parse_tree__prog_data, mer_type);
+	MR_r3 = MR_sv(3);
+	MR_r4 = MR_sv(6);
+	MR_succip_word = MR_sv(7);
+	MR_decr_sp(7);
+	MR_np_tailcall_ent(__Unify___tree234__tree234_2_0);
+MR_def_label(__Unify___transform_hlds__ctgc__structure_reuse__direct__choose_reuse__background_info_0_0,13)
+	MR_MAYBE_INIT_LOCAL_THREAD_ENGINE_BASE
+	MR_r1 = MR_TRUE;
+	MR_proceed();
+MR_def_label(__Unify___transform_hlds__ctgc__structure_reuse__direct__choose_reuse__background_info_0_0,1)
+	MR_MAYBE_INIT_LOCAL_THREAD_ENGINE_BASE
+	MR_r1 = MR_FALSE;
+	MR_decr_sp_and_return(7);
+#ifdef MR_maybe_local_thread_engine_base
+	#undef MR_maybe_local_thread_engine_base
+	#define MR_maybe_local_thread_engine_base MR_thread_engine_base
+#endif
+MR_END_MODULE
+
+MR_decl_entry(__Compare___libs__globals__reuse_strategy_0_0);
+MR_decl_entry(__Compare___hlds__hlds_module__module_info_0_0);
+MR_decl_entry(__Compare___hlds__hlds_pred__proc_info_0_0);
+MR_decl_entry(__Compare___tree234__tree234_2_0);
+
+MR_BEGIN_MODULE(transform_hlds__ctgc__structure_reuse__direct__choose_reuse_module47)
+	MR_init_entry1(__Compare___transform_hlds__ctgc__structure_reuse__direct__choose_reuse__background_info_0_0);
+	MR_INIT_PROC_LAYOUT_ADDR(mercury____Compare___transform_hlds__ctgc__structure_reuse__direct__choose_reuse__background_info_0_0);
+	MR_init_label6(__Compare___transform_hlds__ctgc__structure_reuse__direct__choose_reuse__background_info_0_0,3,2,5,9,13,50)
+MR_BEGIN_CODE
+
+/*-------------------------------------------------------------------------*/
+/* code for '__Compare__'/3 mode 0 */
+#ifdef MR_maybe_local_thread_engine_base
+	#undef MR_maybe_local_thread_engine_base
+	#define MR_maybe_local_thread_engine_base MR_local_thread_engine_base
+#endif
+MR_def_static(__Compare___transform_hlds__ctgc__structure_reuse__direct__choose_reuse__background_info_0_0)
+	MR_MAYBE_INIT_LOCAL_THREAD_ENGINE_BASE
+	if ((MR_r1 == MR_r2)) {
+		MR_GOTO_LAB(__Compare___transform_hlds__ctgc__structure_reuse__direct__choose_reuse__background_info_0_0_i3);
+	}
+	MR_incr_sp(7);
+	MR_sv(7) = (MR_Word) MR_succip;
+	MR_sv(1) = MR_r1;
+	MR_sv(2) = MR_r2;
+	MR_GOTO_LAB(__Compare___transform_hlds__ctgc__structure_reuse__direct__choose_reuse__background_info_0_0_i2);
+MR_def_label(__Compare___transform_hlds__ctgc__structure_reuse__direct__choose_reuse__background_info_0_0,3)
+	MR_MAYBE_INIT_LOCAL_THREAD_ENGINE_BASE
+	MR_r1 = (MR_Integer) 0;
+	MR_proceed();
+MR_def_label(__Compare___transform_hlds__ctgc__structure_reuse__direct__choose_reuse__background_info_0_0,2)
+	MR_MAYBE_INIT_LOCAL_THREAD_ENGINE_BASE
+	{
+	MR_Word MR_tempr1, MR_tempr2, MR_tempr3, MR_tempr4, MR_tempr5, MR_tempr6;
+	MR_tempr5 = MR_sv(2);
+	MR_sv(6) = MR_tfield(0, MR_tempr5, 3);
+	MR_sv(5) = MR_tfield(0, MR_tempr5, 2);
+	MR_sv(4) = MR_tfield(0, MR_tempr5, 1);
+	MR_tempr6 = MR_sv(1);
+	MR_sv(3) = MR_tfield(0, MR_tempr6, 3);
+	MR_tempr1 = MR_tfield(0, MR_tempr6, 2);
+	MR_tempr2 = MR_tfield(0, MR_tempr6, 1);
+	MR_tempr3 = MR_tempr6;
+	MR_sv(1) = MR_tempr2;
+	MR_tempr4 = MR_tempr5;
+	MR_sv(2) = MR_tempr1;
+	MR_r1 = MR_tfield(0, MR_tempr3, 0);
+	MR_r2 = MR_tfield(0, MR_tempr4, 0);
+	}
+	MR_np_call_localret_ent(__Compare___libs__globals__reuse_strategy_0_0,
+		__Compare___transform_hlds__ctgc__structure_reuse__direct__choose_reuse__background_info_0_0_i5);
+MR_def_label(__Compare___transform_hlds__ctgc__structure_reuse__direct__choose_reuse__background_info_0_0,5)
+	MR_MAYBE_INIT_LOCAL_THREAD_ENGINE_BASE
+	if (MR_INT_NE(MR_r1,0)) {
+		MR_GOTO_LAB(__Compare___transform_hlds__ctgc__structure_reuse__direct__choose_reuse__background_info_0_0_i50);
+	}
+	MR_r1 = MR_sv(1);
+	MR_r2 = MR_sv(4);
+	MR_np_call_localret_ent(__Compare___hlds__hlds_module__module_info_0_0,
+		__Compare___transform_hlds__ctgc__structure_reuse__direct__choose_reuse__background_info_0_0_i9);
+MR_def_label(__Compare___transform_hlds__ctgc__structure_reuse__direct__choose_reuse__background_info_0_0,9)
+	MR_MAYBE_INIT_LOCAL_THREAD_ENGINE_BASE
+	if (MR_INT_NE(MR_r1,0)) {
+		MR_GOTO_LAB(__Compare___transform_hlds__ctgc__structure_reuse__direct__choose_reuse__background_info_0_0_i50);
+	}
+	MR_r1 = MR_sv(2);
+	MR_r2 = MR_sv(5);
+	MR_np_call_localret_ent(__Compare___hlds__hlds_pred__proc_info_0_0,
+		__Compare___transform_hlds__ctgc__structure_reuse__direct__choose_reuse__background_info_0_0_i13);
+MR_def_label(__Compare___transform_hlds__ctgc__structure_reuse__direct__choose_reuse__background_info_0_0,13)
+	MR_MAYBE_INIT_LOCAL_THREAD_ENGINE_BASE
+	if (MR_INT_NE(MR_r1,0)) {
+		MR_GOTO_LAB(__Compare___transform_hlds__ctgc__structure_reuse__direct__choose_reuse__background_info_0_0_i50);
+	}
+	MR_r1 = (MR_Word) MR_TAG_COMMON(0,5,0);
+	MR_r2 = (MR_Word) MR_CTOR0_ADDR(parse_tree__prog_data, mer_type);
+	MR_r3 = MR_sv(3);
+	MR_r4 = MR_sv(6);
+	MR_succip_word = MR_sv(7);
+	MR_decr_sp(7);
+	MR_np_tailcall_ent(__Compare___tree234__tree234_2_0);
+MR_def_label(__Compare___transform_hlds__ctgc__structure_reuse__direct__choose_reuse__background_info_0_0,50)
+	MR_MAYBE_INIT_LOCAL_THREAD_ENGINE_BASE
+	MR_decr_sp_and_return(7);
+#ifdef MR_maybe_local_thread_engine_base
+	#undef MR_maybe_local_thread_engine_base
+	#define MR_maybe_local_thread_engine_base MR_thread_engine_base
+#endif
+MR_END_MODULE
+
+
+MR_BEGIN_MODULE(transform_hlds__ctgc__structure_reuse__direct__choose_reuse_module48)
+	MR_init_entry1(__Unify___transform_hlds__ctgc__structure_reuse__direct__choose_reuse__construction_spec_0_0);
+	MR_INIT_PROC_LAYOUT_ADDR(mercury____Unify___transform_hlds__ctgc__structure_reuse__direct__choose_reuse__construction_spec_0_0);
+	MR_init_label3(__Unify___transform_hlds__ctgc__structure_reuse__direct__choose_reuse__construction_spec_0_0,4,8,1)
+MR_BEGIN_CODE
+
+/*-------------------------------------------------------------------------*/
+/* code for '__Unify__'/2 mode 0 */
+#ifdef MR_maybe_local_thread_engine_base
+	#undef MR_maybe_local_thread_engine_base
+	#define MR_maybe_local_thread_engine_base MR_local_thread_engine_base
+#endif
+MR_def_static(__Unify___transform_hlds__ctgc__structure_reuse__direct__choose_reuse__construction_spec_0_0)
+	MR_MAYBE_INIT_LOCAL_THREAD_ENGINE_BASE
+	if ((MR_r1 == MR_r2)) {
+		MR_GOTO_LAB(__Unify___transform_hlds__ctgc__structure_reuse__direct__choose_reuse__construction_spec_0_0_i8);
+	}
+	MR_incr_sp(3);
+	MR_sv(3) = (MR_Word) MR_succip;
+	MR_sv(1) = MR_r1;
+	MR_sv(2) = MR_r2;
+	{
+	MR_Word MR_tempr1, MR_tempr2;
+	MR_tempr1 = MR_sv(1);
+	MR_sv(1) = MR_tfield(0, MR_tempr1, 1);
+	MR_tempr2 = MR_sv(2);
+	MR_sv(2) = MR_tfield(0, MR_tempr2, 1);
+	MR_r1 = MR_tfield(0, MR_tempr1, 0);
+	MR_r2 = MR_tfield(0, MR_tempr2, 0);
+	}
+	MR_np_call_localret_ent(__Unify___transform_hlds__smm_common__program_point_0_0,
+		__Unify___transform_hlds__ctgc__structure_reuse__direct__choose_reuse__construction_spec_0_0_i4);
+MR_def_label(__Unify___transform_hlds__ctgc__structure_reuse__direct__choose_reuse__construction_spec_0_0,4)
+	MR_MAYBE_INIT_LOCAL_THREAD_ENGINE_BASE
+	if (!(MR_r1)) {
+		MR_GOTO_LAB(__Unify___transform_hlds__ctgc__structure_reuse__direct__choose_reuse__construction_spec_0_0_i1);
+	}
+	MR_r1 = MR_sv(1);
+	MR_r2 = MR_sv(2);
+	MR_succip_word = MR_sv(3);
+	MR_decr_sp(3);
+	MR_np_tailcall_ent(__Unify___transform_hlds__ctgc__structure_reuse__direct__choose_reuse__reuse_type_0_0);
+MR_def_label(__Unify___transform_hlds__ctgc__structure_reuse__direct__choose_reuse__construction_spec_0_0,8)
+	MR_MAYBE_INIT_LOCAL_THREAD_ENGINE_BASE
+	MR_r1 = MR_TRUE;
+	MR_proceed();
+MR_def_label(__Unify___transform_hlds__ctgc__structure_reuse__direct__choose_reuse__construction_spec_0_0,1)
+	MR_MAYBE_INIT_LOCAL_THREAD_ENGINE_BASE
+	MR_r1 = MR_FALSE;
+	MR_decr_sp_and_return(3);
+#ifdef MR_maybe_local_thread_engine_base
+	#undef MR_maybe_local_thread_engine_base
+	#define MR_maybe_local_thread_engine_base MR_thread_engine_base
+#endif
+MR_END_MODULE
+
+MR_decl_entry(__Compare___transform_hlds__smm_common__program_point_0_0);
+
+MR_BEGIN_MODULE(transform_hlds__ctgc__structure_reuse__direct__choose_reuse_module49)
+	MR_init_entry1(__Compare___transform_hlds__ctgc__structure_reuse__direct__choose_reuse__construction_spec_0_0);
+	MR_INIT_PROC_LAYOUT_ADDR(mercury____Compare___transform_hlds__ctgc__structure_reuse__direct__choose_reuse__construction_spec_0_0);
+	MR_init_label4(__Compare___transform_hlds__ctgc__structure_reuse__direct__choose_reuse__construction_spec_0_0,3,2,5,21)
+MR_BEGIN_CODE
+
+/*-------------------------------------------------------------------------*/
+/* code for '__Compare__'/3 mode 0 */
+#ifdef MR_maybe_local_thread_engine_base
+	#undef MR_maybe_local_thread_engine_base
+	#define MR_maybe_local_thread_engine_base MR_local_thread_engine_base
+#endif
+MR_def_static(__Compare___transform_hlds__ctgc__structure_reuse__direct__choose_reuse__construction_spec_0_0)
+	MR_MAYBE_INIT_LOCAL_THREAD_ENGINE_BASE
+	if ((MR_r1 == MR_r2)) {
+		MR_GOTO_LAB(__Compare___transform_hlds__ctgc__structure_reuse__direct__choose_reuse__construction_spec_0_0_i3);
+	}
+	MR_incr_sp(3);
+	MR_sv(3) = (MR_Word) MR_succip;
+	MR_sv(1) = MR_r1;
+	MR_sv(2) = MR_r2;
+	MR_GOTO_LAB(__Compare___transform_hlds__ctgc__structure_reuse__direct__choose_reuse__construction_spec_0_0_i2);
+MR_def_label(__Compare___transform_hlds__ctgc__structure_reuse__direct__choose_reuse__construction_spec_0_0,3)
+	MR_MAYBE_INIT_LOCAL_THREAD_ENGINE_BASE
+	MR_r1 = (MR_Integer) 0;
+	MR_proceed();
+MR_def_label(__Compare___transform_hlds__ctgc__structure_reuse__direct__choose_reuse__construction_spec_0_0,2)
+	MR_MAYBE_INIT_LOCAL_THREAD_ENGINE_BASE
+	{
+	MR_Word MR_tempr1, MR_tempr2, MR_tempr3, MR_tempr4, MR_tempr5, MR_tempr6;
+	MR_tempr5 = MR_sv(2);
+	MR_tempr1 = MR_tfield(0, MR_tempr5, 1);
+	MR_tempr6 = MR_sv(1);
+	MR_tempr2 = MR_tfield(0, MR_tempr6, 1);
+	MR_tempr3 = MR_tempr6;
+	MR_sv(1) = MR_tempr2;
+	MR_tempr4 = MR_tempr5;
+	MR_sv(2) = MR_tempr1;
+	MR_r1 = MR_tfield(0, MR_tempr3, 0);
+	MR_r2 = MR_tfield(0, MR_tempr4, 0);
+	}
+	MR_np_call_localret_ent(__Compare___transform_hlds__smm_common__program_point_0_0,
+		__Compare___transform_hlds__ctgc__structure_reuse__direct__choose_reuse__construction_spec_0_0_i5);
+MR_def_label(__Compare___transform_hlds__ctgc__structure_reuse__direct__choose_reuse__construction_spec_0_0,5)
+	MR_MAYBE_INIT_LOCAL_THREAD_ENGINE_BASE
+	if (MR_INT_NE(MR_r1,0)) {
+		MR_GOTO_LAB(__Compare___transform_hlds__ctgc__structure_reuse__direct__choose_reuse__construction_spec_0_0_i21);
+	}
+	MR_r1 = MR_sv(1);
+	MR_r2 = MR_sv(2);
+	MR_succip_word = MR_sv(3);
+	MR_decr_sp(3);
+	MR_np_tailcall_ent(__Compare___transform_hlds__ctgc__structure_reuse__direct__choose_reuse__reuse_type_0_0);
+MR_def_label(__Compare___transform_hlds__ctgc__structure_reuse__direct__choose_reuse__construction_spec_0_0,21)
+	MR_MAYBE_INIT_LOCAL_THREAD_ENGINE_BASE
+	MR_decr_sp_and_return(3);
+#ifdef MR_maybe_local_thread_engine_base
+	#undef MR_maybe_local_thread_engine_base
+	#define MR_maybe_local_thread_engine_base MR_thread_engine_base
+#endif
+MR_END_MODULE
+
+MR_decl_entry(__Unify___term__var_1_0);
+MR_decl_entry(__Unify___transform_hlds__ctgc__structure_reuse__domain__reuse_as_0_0);
+
+MR_BEGIN_MODULE(transform_hlds__ctgc__structure_reuse__direct__choose_reuse_module50)
+	MR_init_entry1(__Unify___transform_hlds__ctgc__structure_reuse__direct__choose_reuse__deconstruction_spec_0_0);
+	MR_INIT_PROC_LAYOUT_ADDR(mercury____Unify___transform_hlds__ctgc__structure_reuse__direct__choose_reuse__deconstruction_spec_0_0);
+	MR_init_label6(__Unify___transform_hlds__ctgc__structure_reuse__direct__choose_reuse__deconstruction_spec_0_0,5,7,9,11,15,1)
+MR_BEGIN_CODE
+
+/*-------------------------------------------------------------------------*/
+/* code for '__Unify__'/2 mode 0 */
+#ifdef MR_maybe_local_thread_engine_base
+	#undef MR_maybe_local_thread_engine_base
+	#define MR_maybe_local_thread_engine_base MR_local_thread_engine_base
+#endif
+MR_def_static(__Unify___transform_hlds__ctgc__structure_reuse__direct__choose_reuse__deconstruction_spec_0_0)
+	MR_MAYBE_INIT_LOCAL_THREAD_ENGINE_BASE
+	if ((MR_r1 == MR_r2)) {
+		MR_GOTO_LAB(__Unify___transform_hlds__ctgc__structure_reuse__direct__choose_reuse__deconstruction_spec_0_0_i15);
+	}
+	MR_incr_sp(10);
+	MR_sv(10) = (MR_Word) MR_succip;
+	MR_sv(1) = MR_r1;
+	MR_sv(2) = MR_r2;
+	{
+	MR_Word MR_tempr1, MR_tempr2;
+	MR_tempr1 = MR_sv(1);
+	MR_sv(1) = MR_tfield(0, MR_tempr1, 1);
+	MR_tempr2 = MR_sv(2);
+	MR_sv(2) = MR_tfield(0, MR_tempr1, 2);
+	MR_sv(3) = MR_tfield(0, MR_tempr1, 3);
+	MR_sv(4) = MR_tfield(0, MR_tempr1, 4);
+	MR_sv(5) = MR_tfield(0, MR_tempr2, 1);
+	MR_sv(6) = MR_tfield(0, MR_tempr2, 2);
+	MR_sv(7) = MR_tfield(0, MR_tempr2, 3);
+	MR_sv(8) = MR_tfield(0, MR_tempr2, 4);
+	MR_sv(9) = (MR_Word) MR_TAG_COMMON(0,5,0);
+	MR_r1 = (MR_Word) MR_CTOR0_ADDR(parse_tree__prog_data, prog_var_type);
+	MR_r2 = MR_tfield(0, MR_tempr1, 0);
+	MR_r3 = MR_tfield(0, MR_tempr2, 0);
+	}
+	MR_np_call_localret_ent(__Unify___term__var_1_0,
+		__Unify___transform_hlds__ctgc__structure_reuse__direct__choose_reuse__deconstruction_spec_0_0_i5);
+MR_def_label(__Unify___transform_hlds__ctgc__structure_reuse__direct__choose_reuse__deconstruction_spec_0_0,5)
+	MR_MAYBE_INIT_LOCAL_THREAD_ENGINE_BASE
+	if (!(MR_r1)) {
+		MR_GOTO_LAB(__Unify___transform_hlds__ctgc__structure_reuse__direct__choose_reuse__deconstruction_spec_0_0_i1);
+	}
+	MR_r1 = MR_sv(1);
+	MR_r2 = MR_sv(5);
+	MR_np_call_localret_ent(__Unify___transform_hlds__smm_common__program_point_0_0,
+		__Unify___transform_hlds__ctgc__structure_reuse__direct__choose_reuse__deconstruction_spec_0_0_i7);
+MR_def_label(__Unify___transform_hlds__ctgc__structure_reuse__direct__choose_reuse__deconstruction_spec_0_0,7)
+	MR_MAYBE_INIT_LOCAL_THREAD_ENGINE_BASE
+	if (!(MR_r1)) {
+		MR_GOTO_LAB(__Unify___transform_hlds__ctgc__structure_reuse__direct__choose_reuse__deconstruction_spec_0_0_i1);
+	}
+	MR_r1 = MR_sv(2);
+	MR_r2 = MR_sv(6);
+	MR_np_call_localret_ent(__Unify___parse_tree__prog_data__cons_id_0_0,
+		__Unify___transform_hlds__ctgc__structure_reuse__direct__choose_reuse__deconstruction_spec_0_0_i9);
+MR_def_label(__Unify___transform_hlds__ctgc__structure_reuse__direct__choose_reuse__deconstruction_spec_0_0,9)
+	MR_MAYBE_INIT_LOCAL_THREAD_ENGINE_BASE
+	if (!(MR_r1)) {
+		MR_GOTO_LAB(__Unify___transform_hlds__ctgc__structure_reuse__direct__choose_reuse__deconstruction_spec_0_0_i1);
+	}
+	MR_r1 = MR_sv(9);
+	MR_r2 = MR_sv(3);
+	MR_r3 = MR_sv(7);
+	MR_np_call_localret_ent(__Unify___list__list_1_0,
+		__Unify___transform_hlds__ctgc__structure_reuse__direct__choose_reuse__deconstruction_spec_0_0_i11);
+MR_def_label(__Unify___transform_hlds__ctgc__structure_reuse__direct__choose_reuse__deconstruction_spec_0_0,11)
+	MR_MAYBE_INIT_LOCAL_THREAD_ENGINE_BASE
+	if (!(MR_r1)) {
+		MR_GOTO_LAB(__Unify___transform_hlds__ctgc__structure_reuse__direct__choose_reuse__deconstruction_spec_0_0_i1);
+	}
+	MR_r1 = MR_sv(4);
+	MR_r2 = MR_sv(8);
+	MR_succip_word = MR_sv(10);
+	MR_decr_sp(10);
+	MR_np_tailcall_ent(__Unify___transform_hlds__ctgc__structure_reuse__domain__reuse_as_0_0);
+MR_def_label(__Unify___transform_hlds__ctgc__structure_reuse__direct__choose_reuse__deconstruction_spec_0_0,15)
+	MR_MAYBE_INIT_LOCAL_THREAD_ENGINE_BASE
+	MR_r1 = MR_TRUE;
+	MR_proceed();
+MR_def_label(__Unify___transform_hlds__ctgc__structure_reuse__direct__choose_reuse__deconstruction_spec_0_0,1)
+	MR_MAYBE_INIT_LOCAL_THREAD_ENGINE_BASE
+	MR_r1 = MR_FALSE;
+	MR_decr_sp_and_return(10);
+#ifdef MR_maybe_local_thread_engine_base
+	#undef MR_maybe_local_thread_engine_base
+	#define MR_maybe_local_thread_engine_base MR_thread_engine_base
+#endif
+MR_END_MODULE
+
+MR_decl_entry(__Compare___term__var_1_0);
+MR_decl_entry(__Compare___parse_tree__prog_data__cons_id_0_0);
+MR_decl_entry(__Compare___list__list_1_0);
+MR_decl_entry(__Compare___transform_hlds__ctgc__structure_reuse__domain__reuse_as_0_0);
+
+MR_BEGIN_MODULE(transform_hlds__ctgc__structure_reuse__direct__choose_reuse_module51)
+	MR_init_entry1(__Compare___transform_hlds__ctgc__structure_reuse__direct__choose_reuse__deconstruction_spec_0_0);
+	MR_INIT_PROC_LAYOUT_ADDR(mercury____Compare___transform_hlds__ctgc__structure_reuse__direct__choose_reuse__deconstruction_spec_0_0);
+	MR_init_label7(__Compare___transform_hlds__ctgc__structure_reuse__direct__choose_reuse__deconstruction_spec_0_0,3,2,5,9,13,18,61)
+MR_BEGIN_CODE
+
+/*-------------------------------------------------------------------------*/
+/* code for '__Compare__'/3 mode 0 */
+#ifdef MR_maybe_local_thread_engine_base
+	#undef MR_maybe_local_thread_engine_base
+	#define MR_maybe_local_thread_engine_base MR_local_thread_engine_base
+#endif
+MR_def_static(__Compare___transform_hlds__ctgc__structure_reuse__direct__choose_reuse__deconstruction_spec_0_0)
+	MR_MAYBE_INIT_LOCAL_THREAD_ENGINE_BASE
+	if ((MR_r1 == MR_r2)) {
+		MR_GOTO_LAB(__Compare___transform_hlds__ctgc__structure_reuse__direct__choose_reuse__deconstruction_spec_0_0_i3);
+	}
+	MR_incr_sp(9);
+	MR_sv(9) = (MR_Word) MR_succip;
+	MR_sv(1) = MR_r1;
+	MR_sv(2) = MR_r2;
+	MR_GOTO_LAB(__Compare___transform_hlds__ctgc__structure_reuse__direct__choose_reuse__deconstruction_spec_0_0_i2);
+MR_def_label(__Compare___transform_hlds__ctgc__structure_reuse__direct__choose_reuse__deconstruction_spec_0_0,3)
+	MR_MAYBE_INIT_LOCAL_THREAD_ENGINE_BASE
+	MR_r1 = (MR_Integer) 0;
+	MR_proceed();
+MR_def_label(__Compare___transform_hlds__ctgc__structure_reuse__direct__choose_reuse__deconstruction_spec_0_0,2)
+	MR_MAYBE_INIT_LOCAL_THREAD_ENGINE_BASE
+	{
+	MR_Word MR_tempr1, MR_tempr2, MR_tempr3, MR_tempr4, MR_tempr5, MR_tempr6;
+	MR_tempr5 = MR_sv(2);
+	MR_sv(8) = MR_tfield(0, MR_tempr5, 4);
+	MR_sv(7) = MR_tfield(0, MR_tempr5, 3);
+	MR_sv(6) = MR_tfield(0, MR_tempr5, 2);
+	MR_sv(5) = MR_tfield(0, MR_tempr5, 1);
+	MR_tempr6 = MR_sv(1);
+	MR_sv(4) = MR_tfield(0, MR_tempr6, 4);
+	MR_sv(3) = MR_tfield(0, MR_tempr6, 3);
+	MR_tempr1 = MR_tfield(0, MR_tempr6, 2);
+	MR_tempr2 = MR_tfield(0, MR_tempr6, 1);
+	MR_tempr3 = MR_tempr6;
+	MR_sv(1) = MR_tempr2;
+	MR_tempr4 = MR_tempr5;
+	MR_sv(2) = MR_tempr1;
+	MR_r1 = (MR_Word) MR_CTOR0_ADDR(parse_tree__prog_data, prog_var_type);
+	MR_r2 = MR_tfield(0, MR_tempr3, 0);
+	MR_r3 = MR_tfield(0, MR_tempr4, 0);
+	}
+	MR_np_call_localret_ent(__Compare___term__var_1_0,
+		__Compare___transform_hlds__ctgc__structure_reuse__direct__choose_reuse__deconstruction_spec_0_0_i5);
+MR_def_label(__Compare___transform_hlds__ctgc__structure_reuse__direct__choose_reuse__deconstruction_spec_0_0,5)
+	MR_MAYBE_INIT_LOCAL_THREAD_ENGINE_BASE
+	if (MR_INT_NE(MR_r1,0)) {
+		MR_GOTO_LAB(__Compare___transform_hlds__ctgc__structure_reuse__direct__choose_reuse__deconstruction_spec_0_0_i61);
+	}
+	MR_r1 = MR_sv(1);
+	MR_r2 = MR_sv(5);
+	MR_np_call_localret_ent(__Compare___transform_hlds__smm_common__program_point_0_0,
+		__Compare___transform_hlds__ctgc__structure_reuse__direct__choose_reuse__deconstruction_spec_0_0_i9);
+MR_def_label(__Compare___transform_hlds__ctgc__structure_reuse__direct__choose_reuse__deconstruction_spec_0_0,9)
+	MR_MAYBE_INIT_LOCAL_THREAD_ENGINE_BASE
+	if (MR_INT_NE(MR_r1,0)) {
+		MR_GOTO_LAB(__Compare___transform_hlds__ctgc__structure_reuse__direct__choose_reuse__deconstruction_spec_0_0_i61);
+	}
+	MR_r1 = MR_sv(2);
+	MR_r2 = MR_sv(6);
+	MR_np_call_localret_ent(__Compare___parse_tree__prog_data__cons_id_0_0,
+		__Compare___transform_hlds__ctgc__structure_reuse__direct__choose_reuse__deconstruction_spec_0_0_i13);
+MR_def_label(__Compare___transform_hlds__ctgc__structure_reuse__direct__choose_reuse__deconstruction_spec_0_0,13)
+	MR_MAYBE_INIT_LOCAL_THREAD_ENGINE_BASE
+	if (MR_INT_NE(MR_r1,0)) {
+		MR_GOTO_LAB(__Compare___transform_hlds__ctgc__structure_reuse__direct__choose_reuse__deconstruction_spec_0_0_i61);
+	}
+	MR_r1 = (MR_Word) MR_TAG_COMMON(0,5,0);
+	MR_r2 = MR_sv(3);
+	MR_r3 = MR_sv(7);
+	MR_np_call_localret_ent(__Compare___list__list_1_0,
+		__Compare___transform_hlds__ctgc__structure_reuse__direct__choose_reuse__deconstruction_spec_0_0_i18);
+MR_def_label(__Compare___transform_hlds__ctgc__structure_reuse__direct__choose_reuse__deconstruction_spec_0_0,18)
+	MR_MAYBE_INIT_LOCAL_THREAD_ENGINE_BASE
+	if (MR_INT_NE(MR_r1,0)) {
+		MR_GOTO_LAB(__Compare___transform_hlds__ctgc__structure_reuse__direct__choose_reuse__deconstruction_spec_0_0_i61);
+	}
+	MR_r1 = MR_sv(4);
+	MR_r2 = MR_sv(8);
+	MR_succip_word = MR_sv(9);
+	MR_decr_sp(9);
+	MR_np_tailcall_ent(__Compare___transform_hlds__ctgc__structure_reuse__domain__reuse_as_0_0);
+MR_def_label(__Compare___transform_hlds__ctgc__structure_reuse__direct__choose_reuse__deconstruction_spec_0_0,61)
+	MR_MAYBE_INIT_LOCAL_THREAD_ENGINE_BASE
+	MR_decr_sp_and_return(9);
+#ifdef MR_maybe_local_thread_engine_base
+	#undef MR_maybe_local_thread_engine_base
+	#define MR_maybe_local_thread_engine_base MR_thread_engine_base
+#endif
+MR_END_MODULE
+
+
+MR_BEGIN_MODULE(transform_hlds__ctgc__structure_reuse__direct__choose_reuse_module52)
+	MR_init_entry1(__Unify___transform_hlds__ctgc__structure_reuse__direct__choose_reuse__match_0_0);
+	MR_INIT_PROC_LAYOUT_ADDR(mercury____Unify___transform_hlds__ctgc__structure_reuse__direct__choose_reuse__match_0_0);
+	MR_init_label4(__Unify___transform_hlds__ctgc__structure_reuse__direct__choose_reuse__match_0_0,4,6,8,1)
+MR_BEGIN_CODE
+
+/*-------------------------------------------------------------------------*/
+/* code for '__Unify__'/2 mode 0 */
+#ifdef MR_maybe_local_thread_engine_base
+	#undef MR_maybe_local_thread_engine_base
+	#define MR_maybe_local_thread_engine_base MR_local_thread_engine_base
+#endif
+MR_def_static(__Unify___transform_hlds__ctgc__structure_reuse__direct__choose_reuse__match_0_0)
+	MR_MAYBE_INIT_LOCAL_THREAD_ENGINE_BASE
+	if ((MR_r1 == MR_r2)) {
+		MR_GOTO_LAB(__Unify___transform_hlds__ctgc__structure_reuse__direct__choose_reuse__match_0_0_i8);
+	}
+	MR_incr_sp(10);
+	MR_sv(10) = (MR_Word) MR_succip;
+	MR_sv(1) = MR_r1;
+	{
+	MR_Word MR_tempr1, MR_tempr2;
+	MR_tempr1 = MR_r2;
+	MR_sv(2) = MR_tempr1;
+	MR_tempr2 = MR_sv(1);
+	MR_sv(1) = MR_tfield(0, MR_tempr2, 1);
+	* (MR_Float *) &MR_sv(4) = MR_word_to_float(MR_tfield(0, MR_tempr2, 2));
+	MR_sv(5) = MR_tfield(0, MR_tempr2, 3);
+	MR_sv(6) = MR_tfield(0, MR_tempr1, 1);
+	* (MR_Float *) &MR_sv(8) = MR_word_to_float(MR_tfield(0, MR_tempr1, 2));
+	MR_sv(9) = MR_tfield(0, MR_tempr1, 3);
+	MR_r1 = (MR_Word) MR_CTOR0_ADDR(transform_hlds__ctgc__structure_reuse__direct__choose_reuse, deconstruction_spec);
+	MR_r2 = MR_tfield(0, MR_tempr2, 0);
+	MR_r3 = MR_tfield(0, MR_tempr1, 0);
+	}
+	MR_np_call_localret_ent(__Unify___list__list_1_0,
+		__Unify___transform_hlds__ctgc__structure_reuse__direct__choose_reuse__match_0_0_i4);
+MR_def_label(__Unify___transform_hlds__ctgc__structure_reuse__direct__choose_reuse__match_0_0,4)
+	MR_MAYBE_INIT_LOCAL_THREAD_ENGINE_BASE
+	if (!(MR_r1)) {
+		MR_GOTO_LAB(__Unify___transform_hlds__ctgc__structure_reuse__direct__choose_reuse__match_0_0_i1);
+	}
+	MR_r1 = (MR_Word) MR_CTOR0_ADDR(transform_hlds__ctgc__structure_reuse__direct__choose_reuse, construction_spec);
+	MR_r2 = MR_sv(1);
+	MR_r3 = MR_sv(6);
+	MR_np_call_localret_ent(__Unify___list__list_1_0,
+		__Unify___transform_hlds__ctgc__structure_reuse__direct__choose_reuse__match_0_0_i6);
+MR_def_label(__Unify___transform_hlds__ctgc__structure_reuse__direct__choose_reuse__match_0_0,6)
+	MR_MAYBE_INIT_LOCAL_THREAD_ENGINE_BASE
+	if (!(MR_r1)) {
+		MR_GOTO_LAB(__Unify___transform_hlds__ctgc__structure_reuse__direct__choose_reuse__match_0_0_i1);
+	}
+	if ((MR_float_from_dword_ptr(&MR_sv(4)) != MR_float_from_dword_ptr(&MR_sv(8)))) {
+		MR_GOTO_LAB(__Unify___transform_hlds__ctgc__structure_reuse__direct__choose_reuse__match_0_0_i1);
+	}
+	MR_r1 = (MR_sv(5) == MR_sv(9));
+	MR_decr_sp_and_return(10);
+MR_def_label(__Unify___transform_hlds__ctgc__structure_reuse__direct__choose_reuse__match_0_0,8)
+	MR_MAYBE_INIT_LOCAL_THREAD_ENGINE_BASE
+	MR_r1 = MR_TRUE;
+	MR_proceed();
+MR_def_label(__Unify___transform_hlds__ctgc__structure_reuse__direct__choose_reuse__match_0_0,1)
+	MR_MAYBE_INIT_LOCAL_THREAD_ENGINE_BASE
+	MR_r1 = MR_FALSE;
+	MR_decr_sp_and_return(10);
+#ifdef MR_maybe_local_thread_engine_base
+	#undef MR_maybe_local_thread_engine_base
+	#define MR_maybe_local_thread_engine_base MR_thread_engine_base
+#endif
+MR_END_MODULE
+
+MR_decl_entry(private_builtin__builtin_compare_int_3_0);
+
+MR_BEGIN_MODULE(transform_hlds__ctgc__structure_reuse__direct__choose_reuse_module53)
+	MR_init_entry1(__Compare___transform_hlds__ctgc__structure_reuse__direct__choose_reuse__match_0_0);
+	MR_INIT_PROC_LAYOUT_ADDR(mercury____Compare___transform_hlds__ctgc__structure_reuse__direct__choose_reuse__match_0_0);
+	MR_init_label6(__Compare___transform_hlds__ctgc__structure_reuse__direct__choose_reuse__match_0_0,3,2,5,9,13,37)
+MR_BEGIN_CODE
+
+/*-------------------------------------------------------------------------*/
+/* code for '__Compare__'/3 mode 0 */
+#ifdef MR_maybe_local_thread_engine_base
+	#undef MR_maybe_local_thread_engine_base
+	#define MR_maybe_local_thread_engine_base MR_local_thread_engine_base
+#endif
+MR_def_static(__Compare___transform_hlds__ctgc__structure_reuse__direct__choose_reuse__match_0_0)
+	MR_MAYBE_INIT_LOCAL_THREAD_ENGINE_BASE
+	if ((MR_r1 == MR_r2)) {
+		MR_GOTO_LAB(__Compare___transform_hlds__ctgc__structure_reuse__direct__choose_reuse__match_0_0_i3);
+	}
+	MR_incr_sp(10);
+	MR_sv(10) = (MR_Word) MR_succip;
+	MR_sv(1) = MR_r1;
+	MR_sv(2) = MR_r2;
+	MR_GOTO_LAB(__Compare___transform_hlds__ctgc__structure_reuse__direct__choose_reuse__match_0_0_i2);
+MR_def_label(__Compare___transform_hlds__ctgc__structure_reuse__direct__choose_reuse__match_0_0,3)
+	MR_MAYBE_INIT_LOCAL_THREAD_ENGINE_BASE
+	MR_r1 = (MR_Integer) 0;
+	MR_proceed();
+MR_def_label(__Compare___transform_hlds__ctgc__structure_reuse__direct__choose_reuse__match_0_0,2)
+	MR_MAYBE_INIT_LOCAL_THREAD_ENGINE_BASE
+	{
+	MR_Word MR_tempr1, MR_tempr2, MR_tempr3, MR_tempr4;
+	MR_tempr3 = MR_sv(2);
+	MR_sv(9) = MR_tfield(0, MR_tempr3, 3);
+	* (MR_Float *) &MR_sv(8) = MR_word_to_float(MR_tfield(0, MR_tempr3, 2));
+	MR_sv(6) = MR_tfield(0, MR_tempr3, 1);
+	MR_tempr4 = MR_sv(1);
+	MR_sv(5) = MR_tfield(0, MR_tempr4, 3);
+	* (MR_Float *) &MR_sv(4) = MR_word_to_float(MR_tfield(0, MR_tempr4, 2));
+	MR_tempr1 = MR_tfield(0, MR_tempr4, 1);
+	MR_tempr2 = MR_tempr4;
+	MR_sv(1) = MR_tempr1;
+	MR_r1 = (MR_Word) MR_CTOR0_ADDR(transform_hlds__ctgc__structure_reuse__direct__choose_reuse, deconstruction_spec);
+	MR_r2 = MR_tfield(0, MR_tempr2, 0);
+	MR_r3 = MR_tfield(0, MR_tempr3, 0);
+	}
+	MR_np_call_localret_ent(__Compare___list__list_1_0,
+		__Compare___transform_hlds__ctgc__structure_reuse__direct__choose_reuse__match_0_0_i5);
+MR_def_label(__Compare___transform_hlds__ctgc__structure_reuse__direct__choose_reuse__match_0_0,5)
+	MR_MAYBE_INIT_LOCAL_THREAD_ENGINE_BASE
+	if (MR_INT_NE(MR_r1,0)) {
+		MR_GOTO_LAB(__Compare___transform_hlds__ctgc__structure_reuse__direct__choose_reuse__match_0_0_i37);
+	}
+	MR_r1 = (MR_Word) MR_CTOR0_ADDR(transform_hlds__ctgc__structure_reuse__direct__choose_reuse, construction_spec);
+	MR_r2 = MR_sv(1);
+	MR_r3 = MR_sv(6);
+	MR_np_call_localret_ent(__Compare___list__list_1_0,
+		__Compare___transform_hlds__ctgc__structure_reuse__direct__choose_reuse__match_0_0_i9);
+MR_def_label(__Compare___transform_hlds__ctgc__structure_reuse__direct__choose_reuse__match_0_0,9)
+	MR_MAYBE_INIT_LOCAL_THREAD_ENGINE_BASE
+	if (MR_INT_NE(MR_r1,0)) {
+		MR_GOTO_LAB(__Compare___transform_hlds__ctgc__structure_reuse__direct__choose_reuse__match_0_0_i37);
+	}
+	MR_r1 = MR_float_to_word(MR_float_from_dword_ptr(&MR_sv(4)));
+	MR_r2 = MR_float_to_word(MR_float_from_dword_ptr(&MR_sv(8)));
+	MR_np_call_localret_ent(private_builtin__builtin_compare_float_3_0,
+		__Compare___transform_hlds__ctgc__structure_reuse__direct__choose_reuse__match_0_0_i13);
+MR_def_label(__Compare___transform_hlds__ctgc__structure_reuse__direct__choose_reuse__match_0_0,13)
+	MR_MAYBE_INIT_LOCAL_THREAD_ENGINE_BASE
+	if (MR_INT_NE(MR_r1,0)) {
+		MR_GOTO_LAB(__Compare___transform_hlds__ctgc__structure_reuse__direct__choose_reuse__match_0_0_i37);
+	}
+	MR_r1 = MR_sv(5);
+	MR_r2 = MR_sv(9);
+	MR_succip_word = MR_sv(10);
+	MR_decr_sp(10);
+	MR_np_tailcall_ent(private_builtin__builtin_compare_int_3_0);
+MR_def_label(__Compare___transform_hlds__ctgc__structure_reuse__direct__choose_reuse__match_0_0,37)
+	MR_MAYBE_INIT_LOCAL_THREAD_ENGINE_BASE
+	MR_decr_sp_and_return(10);
+#ifdef MR_maybe_local_thread_engine_base
+	#undef MR_maybe_local_thread_engine_base
+	#define MR_maybe_local_thread_engine_base MR_thread_engine_base
+#endif
+MR_END_MODULE
+
+
+MR_BEGIN_MODULE(transform_hlds__ctgc__structure_reuse__direct__choose_reuse_module54)
+	MR_init_entry1(__Unify___transform_hlds__ctgc__structure_reuse__direct__choose_reuse__match_table_0_0);
+	MR_INIT_PROC_LAYOUT_ADDR(mercury____Unify___transform_hlds__ctgc__structure_reuse__direct__choose_reuse__match_table_0_0);
+MR_BEGIN_CODE
+
+/*-------------------------------------------------------------------------*/
+/* code for '__Unify__'/2 mode 0 */
+#ifdef MR_maybe_local_thread_engine_base
+	#undef MR_maybe_local_thread_engine_base
+	#define MR_maybe_local_thread_engine_base MR_local_thread_engine_base
+#endif
+MR_def_static(__Unify___transform_hlds__ctgc__structure_reuse__direct__choose_reuse__match_table_0_0)
+	MR_MAYBE_INIT_LOCAL_THREAD_ENGINE_BASE
+	{
+	MR_Word MR_tempr1, MR_tempr2;
+	MR_tempr1 = MR_r1;
+	MR_r1 = (MR_Word) MR_TAG_COMMON(0,5,0);
+	MR_tempr2 = MR_r2;
+	MR_r2 = (MR_Word) MR_TAG_COMMON(0,5,1);
+	MR_r3 = MR_tempr1;
+	MR_r4 = MR_tempr2;
+	MR_np_tailcall_ent(__Unify___tree234__tree234_2_0);
+	}
+#ifdef MR_maybe_local_thread_engine_base
+	#undef MR_maybe_local_thread_engine_base
+	#define MR_maybe_local_thread_engine_base MR_thread_engine_base
+#endif
+MR_END_MODULE
+
+
+MR_BEGIN_MODULE(transform_hlds__ctgc__structure_reuse__direct__choose_reuse_module55)
+	MR_init_entry1(__Compare___transform_hlds__ctgc__structure_reuse__direct__choose_reuse__match_table_0_0);
+	MR_INIT_PROC_LAYOUT_ADDR(mercury____Compare___transform_hlds__ctgc__structure_reuse__direct__choose_reuse__match_table_0_0);
+MR_BEGIN_CODE
+
+/*-------------------------------------------------------------------------*/
+/* code for '__Compare__'/3 mode 0 */
+#ifdef MR_maybe_local_thread_engine_base
+	#undef MR_maybe_local_thread_engine_base
+	#define MR_maybe_local_thread_engine_base MR_local_thread_engine_base
+#endif
+MR_def_static(__Compare___transform_hlds__ctgc__structure_reuse__direct__choose_reuse__match_table_0_0)
+	MR_MAYBE_INIT_LOCAL_THREAD_ENGINE_BASE
+	{
+	MR_Word MR_tempr1, MR_tempr2;
+	MR_tempr1 = MR_r1;
+	MR_r1 = (MR_Word) MR_TAG_COMMON(0,5,0);
+	MR_tempr2 = MR_r2;
+	MR_r2 = (MR_Word) MR_TAG_COMMON(0,5,1);
+	MR_r3 = MR_tempr1;
+	MR_r4 = MR_tempr2;
+	MR_np_tailcall_ent(__Compare___tree234__tree234_2_0);
+	}
+#ifdef MR_maybe_local_thread_engine_base
+	#undef MR_maybe_local_thread_engine_base
+	#define MR_maybe_local_thread_engine_base MR_thread_engine_base
+#endif
+MR_END_MODULE
+
+
+MR_BEGIN_MODULE(transform_hlds__ctgc__structure_reuse__direct__choose_reuse_module56)
+	MR_init_entry1(__Unify___transform_hlds__ctgc__structure_reuse__direct__choose_reuse__reuse_type_0_0);
+	MR_INIT_PROC_LAYOUT_ADDR(mercury____Unify___transform_hlds__ctgc__structure_reuse__direct__choose_reuse__reuse_type_0_0);
+	MR_init_label3(__Unify___transform_hlds__ctgc__structure_reuse__direct__choose_reuse__reuse_type_0_0,4,6,1)
+MR_BEGIN_CODE
+
+/*-------------------------------------------------------------------------*/
+/* code for '__Unify__'/2 mode 0 */
+#ifdef MR_maybe_local_thread_engine_base
+	#undef MR_maybe_local_thread_engine_base
+	#define MR_maybe_local_thread_engine_base MR_local_thread_engine_base
+#endif
+MR_def_static(__Unify___transform_hlds__ctgc__structure_reuse__direct__choose_reuse__reuse_type_0_0)
+	MR_MAYBE_INIT_LOCAL_THREAD_ENGINE_BASE
+	if ((MR_r1 == MR_r2)) {
+		MR_GOTO_LAB(__Unify___transform_hlds__ctgc__structure_reuse__direct__choose_reuse__reuse_type_0_0_i6);
+	}
+	MR_incr_sp(7);
+	MR_sv(7) = (MR_Word) MR_succip;
+	{
+	MR_Word MR_tempr1, MR_tempr2, MR_tempr3, MR_tempr4;
+	MR_tempr1 = MR_r1;
+	MR_sv(1) = MR_tempr1;
+	MR_tempr2 = MR_r2;
+	MR_sv(4) = MR_tempr2;
+	MR_tempr3 = MR_tfield(0, MR_tempr1, 0);
+	MR_tempr4 = MR_tfield(0, MR_tempr2, 0);
+	if ((MR_tempr3 != MR_tempr4)) {
+		MR_GOTO_LAB(__Unify___transform_hlds__ctgc__structure_reuse__direct__choose_reuse__reuse_type_0_0_i1);
+	}
+	* (MR_Float *) &MR_sv(3) = MR_word_to_float(MR_tfield(0, MR_tempr1, 2));
+	* (MR_Float *) &MR_sv(6) = MR_word_to_float(MR_tfield(0, MR_tempr2, 2));
+	MR_r1 = (MR_Word) MR_CTOR0_ADDR(hlds__hlds_goal, needs_update);
+	MR_r2 = MR_tfield(0, MR_tempr1, 1);
+	MR_r3 = MR_tfield(0, MR_tempr2, 1);
+	}
+	MR_np_call_localret_ent(__Unify___list__list_1_0,
+		__Unify___transform_hlds__ctgc__structure_reuse__direct__choose_reuse__reuse_type_0_0_i4);
+MR_def_label(__Unify___transform_hlds__ctgc__structure_reuse__direct__choose_reuse__reuse_type_0_0,4)
+	MR_MAYBE_INIT_LOCAL_THREAD_ENGINE_BASE
+	if (!(MR_r1)) {
+		MR_GOTO_LAB(__Unify___transform_hlds__ctgc__structure_reuse__direct__choose_reuse__reuse_type_0_0_i1);
+	}
+	MR_r1 = (MR_float_from_dword_ptr(&MR_sv(3)) == MR_float_from_dword_ptr(&MR_sv(6)));
+	MR_decr_sp_and_return(7);
+MR_def_label(__Unify___transform_hlds__ctgc__structure_reuse__direct__choose_reuse__reuse_type_0_0,6)
+	MR_MAYBE_INIT_LOCAL_THREAD_ENGINE_BASE
+	MR_r1 = MR_TRUE;
+	MR_proceed();
+MR_def_label(__Unify___transform_hlds__ctgc__structure_reuse__direct__choose_reuse__reuse_type_0_0,1)
+	MR_MAYBE_INIT_LOCAL_THREAD_ENGINE_BASE
+	MR_r1 = MR_FALSE;
+	MR_decr_sp_and_return(7);
+#ifdef MR_maybe_local_thread_engine_base
+	#undef MR_maybe_local_thread_engine_base
+	#define MR_maybe_local_thread_engine_base MR_thread_engine_base
+#endif
+MR_END_MODULE
+
+
+MR_BEGIN_MODULE(transform_hlds__ctgc__structure_reuse__direct__choose_reuse_module57)
+	MR_init_entry1(__Compare___transform_hlds__ctgc__structure_reuse__direct__choose_reuse__reuse_type_0_0);
+	MR_INIT_PROC_LAYOUT_ADDR(mercury____Compare___transform_hlds__ctgc__structure_reuse__direct__choose_reuse__reuse_type_0_0);
+	MR_init_label5(__Compare___transform_hlds__ctgc__structure_reuse__direct__choose_reuse__reuse_type_0_0,3,2,5,9,29)
+MR_BEGIN_CODE
+
+/*-------------------------------------------------------------------------*/
+/* code for '__Compare__'/3 mode 0 */
+#ifdef MR_maybe_local_thread_engine_base
+	#undef MR_maybe_local_thread_engine_base
+	#define MR_maybe_local_thread_engine_base MR_local_thread_engine_base
+#endif
+MR_def_static(__Compare___transform_hlds__ctgc__structure_reuse__direct__choose_reuse__reuse_type_0_0)
+	MR_MAYBE_INIT_LOCAL_THREAD_ENGINE_BASE
+	if ((MR_r1 == MR_r2)) {
+		MR_GOTO_LAB(__Compare___transform_hlds__ctgc__structure_reuse__direct__choose_reuse__reuse_type_0_0_i3);
+	}
+	MR_incr_sp(8);
+	MR_sv(8) = (MR_Word) MR_succip;
+	MR_sv(1) = MR_r1;
+	MR_sv(2) = MR_r2;
+	MR_GOTO_LAB(__Compare___transform_hlds__ctgc__structure_reuse__direct__choose_reuse__reuse_type_0_0_i2);
+MR_def_label(__Compare___transform_hlds__ctgc__structure_reuse__direct__choose_reuse__reuse_type_0_0,3)
+	MR_MAYBE_INIT_LOCAL_THREAD_ENGINE_BASE
+	MR_r1 = (MR_Integer) 0;
+	MR_proceed();
+MR_def_label(__Compare___transform_hlds__ctgc__structure_reuse__direct__choose_reuse__reuse_type_0_0,2)
+	MR_MAYBE_INIT_LOCAL_THREAD_ENGINE_BASE
+	{
+	MR_Word MR_tempr1, MR_tempr2, MR_tempr3, MR_tempr4;
+	MR_tempr3 = MR_sv(2);
+	* (MR_Float *) &MR_sv(7) = MR_word_to_float(MR_tfield(0, MR_tempr3, 2));
+	MR_sv(5) = MR_tfield(0, MR_tempr3, 1);
+	MR_tempr4 = MR_sv(1);
+	* (MR_Float *) &MR_sv(4) = MR_word_to_float(MR_tfield(0, MR_tempr4, 2));
+	MR_tempr1 = MR_tfield(0, MR_tempr4, 1);
+	MR_tempr2 = MR_tempr4;
+	MR_sv(1) = MR_tempr1;
+	MR_r1 = MR_tfield(0, MR_tempr2, 0);
+	MR_r2 = MR_tfield(0, MR_tempr3, 0);
+	}
+	MR_np_call_localret_ent(private_builtin__builtin_compare_int_3_0,
+		__Compare___transform_hlds__ctgc__structure_reuse__direct__choose_reuse__reuse_type_0_0_i5);
+MR_def_label(__Compare___transform_hlds__ctgc__structure_reuse__direct__choose_reuse__reuse_type_0_0,5)
+	MR_MAYBE_INIT_LOCAL_THREAD_ENGINE_BASE
+	if (MR_INT_NE(MR_r1,0)) {
+		MR_GOTO_LAB(__Compare___transform_hlds__ctgc__structure_reuse__direct__choose_reuse__reuse_type_0_0_i29);
+	}
+	MR_r1 = (MR_Word) MR_CTOR0_ADDR(hlds__hlds_goal, needs_update);
+	MR_r2 = MR_sv(1);
+	MR_r3 = MR_sv(5);
+	MR_np_call_localret_ent(__Compare___list__list_1_0,
+		__Compare___transform_hlds__ctgc__structure_reuse__direct__choose_reuse__reuse_type_0_0_i9);
+MR_def_label(__Compare___transform_hlds__ctgc__structure_reuse__direct__choose_reuse__reuse_type_0_0,9)
+	MR_MAYBE_INIT_LOCAL_THREAD_ENGINE_BASE
+	if (MR_INT_NE(MR_r1,0)) {
+		MR_GOTO_LAB(__Compare___transform_hlds__ctgc__structure_reuse__direct__choose_reuse__reuse_type_0_0_i29);
+	}
+	MR_r1 = MR_float_to_word(MR_float_from_dword_ptr(&MR_sv(4)));
+	MR_r2 = MR_float_to_word(MR_float_from_dword_ptr(&MR_sv(7)));
+	MR_succip_word = MR_sv(8);
+	MR_decr_sp(8);
+	MR_np_tailcall_ent(private_builtin__builtin_compare_float_3_0);
+MR_def_label(__Compare___transform_hlds__ctgc__structure_reuse__direct__choose_reuse__reuse_type_0_0,29)
+	MR_MAYBE_INIT_LOCAL_THREAD_ENGINE_BASE
+	MR_decr_sp_and_return(8);
+#ifdef MR_maybe_local_thread_engine_base
+	#undef MR_maybe_local_thread_engine_base
+	#define MR_maybe_local_thread_engine_base MR_thread_engine_base
+#endif
+MR_END_MODULE
+
+
+MR_BEGIN_MODULE(transform_hlds__ctgc__structure_reuse__direct__choose_reuse_module58)
+	MR_init_entry1(fn__transform_hlds__ctgc__structure_reuse__direct__choose_reuse__IntroducedFrom__func__match_get_dead_var__286__1_1_0);
+	MR_INIT_PROC_LAYOUT_ADDR(mercury__fn__transform_hlds__ctgc__structure_reuse__direct__choose_reuse__IntroducedFrom__func__match_get_dead_var__286__1_1_0);
+MR_BEGIN_CODE
+
+/*-------------------------------------------------------------------------*/
+/* code for 'IntroducedFrom__func__match_get_dead_var__286__1'/2 mode 0 */
+#ifdef MR_maybe_local_thread_engine_base
+	#undef MR_maybe_local_thread_engine_base
+	#define MR_maybe_local_thread_engine_base MR_local_thread_engine_base
+#endif
+MR_def_static(fn__transform_hlds__ctgc__structure_reuse__direct__choose_reuse__IntroducedFrom__func__match_get_dead_var__286__1_1_0)
+	MR_MAYBE_INIT_LOCAL_THREAD_ENGINE_BASE
+	MR_r1 = MR_tfield(0, MR_r1, 0);
+	MR_proceed();
+#ifdef MR_maybe_local_thread_engine_base
+	#undef MR_maybe_local_thread_engine_base
+	#define MR_maybe_local_thread_engine_base MR_thread_engine_base
+#endif
+MR_END_MODULE
+
+
+MR_BEGIN_MODULE(transform_hlds__ctgc__structure_reuse__direct__choose_reuse_module59)
+	MR_init_entry1(fn__transform_hlds__ctgc__structure_reuse__direct__choose_reuse__IntroducedFrom__func__match_get_dead_cons_ids__308__1_1_0);
+	MR_INIT_PROC_LAYOUT_ADDR(mercury__fn__transform_hlds__ctgc__structure_reuse__direct__choose_reuse__IntroducedFrom__func__match_get_dead_cons_ids__308__1_1_0);
+MR_BEGIN_CODE
+
+/*-------------------------------------------------------------------------*/
+/* code for 'IntroducedFrom__func__match_get_dead_cons_ids__308__1'/2 mode 0 */
+#ifdef MR_maybe_local_thread_engine_base
+	#undef MR_maybe_local_thread_engine_base
+	#define MR_maybe_local_thread_engine_base MR_local_thread_engine_base
+#endif
+MR_def_static(fn__transform_hlds__ctgc__structure_reuse__direct__choose_reuse__IntroducedFrom__func__match_get_dead_cons_ids__308__1_1_0)
+	MR_MAYBE_INIT_LOCAL_THREAD_ENGINE_BASE
+	MR_r1 = MR_tfield(0, MR_r1, 2);
+	MR_proceed();
+#ifdef MR_maybe_local_thread_engine_base
+	#undef MR_maybe_local_thread_engine_base
+	#define MR_maybe_local_thread_engine_base MR_thread_engine_base
+#endif
+MR_END_MODULE
+
+
+MR_BEGIN_MODULE(transform_hlds__ctgc__structure_reuse__direct__choose_reuse_module60)
+	MR_init_entry1(fn__transform_hlds__ctgc__structure_reuse__direct__choose_reuse__IntroducedFrom__func__match_get_condition__316__1_1_0);
+	MR_INIT_PROC_LAYOUT_ADDR(mercury__fn__transform_hlds__ctgc__structure_reuse__direct__choose_reuse__IntroducedFrom__func__match_get_condition__316__1_1_0);
+MR_BEGIN_CODE
+
+/*-------------------------------------------------------------------------*/
+/* code for 'IntroducedFrom__func__match_get_condition__316__1'/2 mode 0 */
+#ifdef MR_maybe_local_thread_engine_base
+	#undef MR_maybe_local_thread_engine_base
+	#define MR_maybe_local_thread_engine_base MR_local_thread_engine_base
+#endif
+MR_def_static(fn__transform_hlds__ctgc__structure_reuse__direct__choose_reuse__IntroducedFrom__func__match_get_condition__316__1_1_0)
+	MR_MAYBE_INIT_LOCAL_THREAD_ENGINE_BASE
+	MR_r1 = MR_tfield(0, MR_r1, 4);
+	MR_proceed();
+#ifdef MR_maybe_local_thread_engine_base
+	#undef MR_maybe_local_thread_engine_base
+	#define MR_maybe_local_thread_engine_base MR_thread_engine_base
+#endif
+MR_END_MODULE
+
+MR_decl_entry(fn__list__append_2_0);
+
+MR_BEGIN_MODULE(transform_hlds__ctgc__structure_reuse__direct__choose_reuse_module61)
+	MR_init_entry1(transform_hlds__ctgc__structure_reuse__direct__choose_reuse__IntroducedFrom__pred__average_match__430__1_3_0);
+	MR_INIT_PROC_LAYOUT_ADDR(mercury__transform_hlds__ctgc__structure_reuse__direct__choose_reuse__IntroducedFrom__pred__average_match__430__1_3_0);
+	MR_init_label1(transform_hlds__ctgc__structure_reuse__direct__choose_reuse__IntroducedFrom__pred__average_match__430__1_3_0,2)
+MR_BEGIN_CODE
+
+/*-------------------------------------------------------------------------*/
+/* code for 'IntroducedFrom__pred__average_match__430__1'/3 mode 0 */
+#ifdef MR_maybe_local_thread_engine_base
+	#undef MR_maybe_local_thread_engine_base
+	#define MR_maybe_local_thread_engine_base MR_local_thread_engine_base
+#endif
+MR_def_static(transform_hlds__ctgc__structure_reuse__direct__choose_reuse__IntroducedFrom__pred__average_match__430__1_3_0)
+	MR_MAYBE_INIT_LOCAL_THREAD_ENGINE_BASE
+	MR_incr_sp(4);
+	MR_sv(4) = (MR_Word) MR_succip;
+	MR_sv(1) = MR_tfield(0, MR_r2, 0);
+	MR_sv(2) = MR_r1;
+	MR_sv(3) = MR_r2;
+	MR_r1 = (MR_Word) MR_CTOR0_ADDR(transform_hlds__ctgc__structure_reuse__direct__choose_reuse, construction_spec);
+	MR_r2 = MR_tfield(0, MR_r2, 1);
+	MR_r3 = MR_tfield(0, MR_sv(2), 1);
+	MR_np_call_localret_ent(fn__list__append_2_0,
+		transform_hlds__ctgc__structure_reuse__direct__choose_reuse__IntroducedFrom__pred__average_match__430__1_3_0_i2);
+MR_def_label(transform_hlds__ctgc__structure_reuse__direct__choose_reuse__IntroducedFrom__pred__average_match__430__1_3_0,2)
+	MR_MAYBE_INIT_LOCAL_THREAD_ENGINE_BASE
+	MR_tag_alloc_heap(MR_r2, 0, (MR_Integer) 4);
+	MR_tfield(0, MR_r2, 0) = MR_sv(1);
+	MR_tfield(0, MR_r2, 1) = MR_r1;
+	{
+	MR_Word MR_tempr1, MR_tempr2;
+	MR_tempr1 = MR_sv(3);
+	MR_tempr2 = MR_sv(2);
+	MR_tfield(0, MR_r2, 2) = MR_float_to_word((MR_word_to_float(MR_tfield(0, MR_tempr1, 2)) + MR_word_to_float(MR_tfield(0, MR_tempr2, 2))));
+	MR_tfield(0, MR_r2, 3) = ((MR_Integer) MR_tfield(0, MR_tempr1, 3) + (MR_Integer) MR_tfield(0, MR_tempr2, 3));
+	MR_r1 = MR_r2;
+	MR_decr_sp_and_return(4);
+	}
+#ifdef MR_maybe_local_thread_engine_base
+	#undef MR_maybe_local_thread_engine_base
+	#define MR_maybe_local_thread_engine_base MR_thread_engine_base
+#endif
+MR_END_MODULE
+
+
+MR_BEGIN_MODULE(transform_hlds__ctgc__structure_reuse__direct__choose_reuse_module62)
+	MR_init_entry1(transform_hlds__ctgc__structure_reuse__direct__choose_reuse__IntroducedFrom__pred__compute_match_table_with_continuation__645__1_3_0);
+	MR_INIT_PROC_LAYOUT_ADDR(mercury__transform_hlds__ctgc__structure_reuse__direct__choose_reuse__IntroducedFrom__pred__compute_match_table_with_continuation__645__1_3_0);
+MR_BEGIN_CODE
+
+/*-------------------------------------------------------------------------*/
+/* code for 'IntroducedFrom__pred__compute_match_table_with_continuation__645__1'/3 mode 0 */
+#ifdef MR_maybe_local_thread_engine_base
+	#undef MR_maybe_local_thread_engine_base
+	#define MR_maybe_local_thread_engine_base MR_local_thread_engine_base
+#endif
+MR_def_static(transform_hlds__ctgc__structure_reuse__direct__choose_reuse__IntroducedFrom__pred__compute_match_table_with_continuation__645__1_3_0)
+	MR_MAYBE_INIT_LOCAL_THREAD_ENGINE_BASE
+	{
+	MR_Word MR_tempr1, MR_tempr2;
+	MR_tempr1 = MR_r1;
+	MR_r1 = (MR_Word) MR_TAG_COMMON(0,5,0);
+	MR_tempr2 = MR_r2;
+	MR_r2 = (MR_Word) MR_CTOR0_ADDR(transform_hlds__ctgc__structure_reuse__direct__choose_reuse, match);
+	MR_r3 = MR_tempr1;
+	MR_r4 = MR_tempr2;
+	MR_np_tailcall_ent(multi_map__merge_3_0);
+	}
+#ifdef MR_maybe_local_thread_engine_base
+	#undef MR_maybe_local_thread_engine_base
+	#define MR_maybe_local_thread_engine_base MR_thread_engine_base
+#endif
+MR_END_MODULE
+
+
+MR_BEGIN_MODULE(transform_hlds__ctgc__structure_reuse__direct__choose_reuse_module63)
+	MR_init_entry1(fn__transform_hlds__ctgc__structure_reuse__direct__choose_reuse__IntroducedFrom__func__compute_match_table_with_continuation__615__1_1_0);
+	MR_INIT_PROC_LAYOUT_ADDR(mercury__fn__transform_hlds__ctgc__structure_reuse__direct__choose_reuse__IntroducedFrom__func__compute_match_table_with_continuation__615__1_1_0);
+MR_BEGIN_CODE
+
+/*-------------------------------------------------------------------------*/
+/* code for 'IntroducedFrom__func__compute_match_table_with_continuation__615__1'/2 mode 0 */
+#ifdef MR_maybe_local_thread_engine_base
+	#undef MR_maybe_local_thread_engine_base
+	#define MR_maybe_local_thread_engine_base MR_local_thread_engine_base
+#endif
+MR_def_static(fn__transform_hlds__ctgc__structure_reuse__direct__choose_reuse__IntroducedFrom__func__compute_match_table_with_continuation__615__1_1_0)
+	MR_MAYBE_INIT_LOCAL_THREAD_ENGINE_BASE
+	MR_r1 = MR_tfield(0, MR_r1, 2);
+	MR_proceed();
+#ifdef MR_maybe_local_thread_engine_base
+	#undef MR_maybe_local_thread_engine_base
+	#define MR_maybe_local_thread_engine_base MR_thread_engine_base
+#endif
+MR_END_MODULE
+
+
+MR_BEGIN_MODULE(transform_hlds__ctgc__structure_reuse__direct__choose_reuse_module64)
+	MR_init_entry1(transform_hlds__ctgc__structure_reuse__direct__choose_reuse__IntroducedFrom__pred__compute_match_table_in_disjunction__673__1_3_0);
+	MR_INIT_PROC_LAYOUT_ADDR(mercury__transform_hlds__ctgc__structure_reuse__direct__choose_reuse__IntroducedFrom__pred__compute_match_table_in_disjunction__673__1_3_0);
+MR_BEGIN_CODE
+
+/*-------------------------------------------------------------------------*/
+/* code for 'IntroducedFrom__pred__compute_match_table_in_disjunction__673__1'/3 mode 0 */
+#ifdef MR_maybe_local_thread_engine_base
+	#undef MR_maybe_local_thread_engine_base
+	#define MR_maybe_local_thread_engine_base MR_local_thread_engine_base
+#endif
+MR_def_static(transform_hlds__ctgc__structure_reuse__direct__choose_reuse__IntroducedFrom__pred__compute_match_table_in_disjunction__673__1_3_0)
+	MR_MAYBE_INIT_LOCAL_THREAD_ENGINE_BASE
+	{
+	MR_Word MR_tempr1, MR_tempr2;
+	MR_tempr1 = MR_r1;
+	MR_r1 = (MR_Word) MR_TAG_COMMON(0,5,0);
+	MR_tempr2 = MR_r2;
+	MR_r2 = (MR_Word) MR_CTOR0_ADDR(transform_hlds__ctgc__structure_reuse__direct__choose_reuse, match);
+	MR_r3 = MR_tempr1;
+	MR_r4 = MR_tempr2;
+	MR_np_tailcall_ent(multi_map__merge_3_0);
+	}
+#ifdef MR_maybe_local_thread_engine_base
+	#undef MR_maybe_local_thread_engine_base
+	#define MR_maybe_local_thread_engine_base MR_thread_engine_base
+#endif
+MR_END_MODULE
+
+
+MR_BEGIN_MODULE(transform_hlds__ctgc__structure_reuse__direct__choose_reuse_module65)
+	MR_init_entry1(transform_hlds__ctgc__structure_reuse__direct__choose_reuse__IntroducedFrom__pred__compute_match_table_in_disjunction__681__1_3_0);
+	MR_INIT_PROC_LAYOUT_ADDR(mercury__transform_hlds__ctgc__structure_reuse__direct__choose_reuse__IntroducedFrom__pred__compute_match_table_in_disjunction__681__1_3_0);
+MR_BEGIN_CODE
+
+/*-------------------------------------------------------------------------*/
+/* code for 'IntroducedFrom__pred__compute_match_table_in_disjunction__681__1'/3 mode 0 */
+#ifdef MR_maybe_local_thread_engine_base
+	#undef MR_maybe_local_thread_engine_base
+	#define MR_maybe_local_thread_engine_base MR_local_thread_engine_base
+#endif
+MR_def_static(transform_hlds__ctgc__structure_reuse__direct__choose_reuse__IntroducedFrom__pred__compute_match_table_in_disjunction__681__1_3_0)
+	MR_MAYBE_INIT_LOCAL_THREAD_ENGINE_BASE
+	{
+	MR_Word MR_tempr1, MR_tempr2;
+	MR_tempr1 = MR_r1;
+	MR_r1 = (MR_Word) MR_TAG_COMMON(0,5,0);
+	MR_tempr2 = MR_r2;
+	MR_r2 = (MR_Word) MR_CTOR0_ADDR(transform_hlds__ctgc__structure_reuse__direct__choose_reuse, match);
+	MR_r3 = MR_tempr1;
+	MR_r4 = MR_tempr2;
+	MR_np_tailcall_ent(multi_map__merge_3_0);
+	}
+#ifdef MR_maybe_local_thread_engine_base
+	#undef MR_maybe_local_thread_engine_base
+	#define MR_maybe_local_thread_engine_base MR_thread_engine_base
+#endif
+MR_END_MODULE
+
+
+MR_BEGIN_MODULE(transform_hlds__ctgc__structure_reuse__direct__choose_reuse_module66)
+	MR_init_entry1(fn__transform_hlds__ctgc__structure_reuse__direct__choose_reuse__IntroducedFrom__func__find_match_in_goal_2__851__1_1_0);
+	MR_INIT_PROC_LAYOUT_ADDR(mercury__fn__transform_hlds__ctgc__structure_reuse__direct__choose_reuse__IntroducedFrom__func__find_match_in_goal_2__851__1_1_0);
+MR_BEGIN_CODE
+
+/*-------------------------------------------------------------------------*/
+/* code for 'IntroducedFrom__func__find_match_in_goal_2__851__1'/2 mode 0 */
+#ifdef MR_maybe_local_thread_engine_base
+	#undef MR_maybe_local_thread_engine_base
+	#define MR_maybe_local_thread_engine_base MR_local_thread_engine_base
+#endif
+MR_def_static(fn__transform_hlds__ctgc__structure_reuse__direct__choose_reuse__IntroducedFrom__func__find_match_in_goal_2__851__1_1_0)
+	MR_MAYBE_INIT_LOCAL_THREAD_ENGINE_BASE
+	MR_r1 = MR_tfield(0, MR_r1, 2);
+	MR_proceed();
+#ifdef MR_maybe_local_thread_engine_base
+	#undef MR_maybe_local_thread_engine_base
+	#define MR_maybe_local_thread_engine_base MR_thread_engine_base
+#endif
+MR_END_MODULE
+
+
+MR_BEGIN_MODULE(transform_hlds__ctgc__structure_reuse__direct__choose_reuse_module67)
+	MR_init_entry1(fn__transform_hlds__ctgc__structure_reuse__direct__choose_reuse__IntroducedFrom__func__dump_match_details__1376__1_1_0);
+	MR_INIT_PROC_LAYOUT_ADDR(mercury__fn__transform_hlds__ctgc__structure_reuse__direct__choose_reuse__IntroducedFrom__func__dump_match_details__1376__1_1_0);
+MR_BEGIN_CODE
+
+/*-------------------------------------------------------------------------*/
+/* code for 'IntroducedFrom__func__dump_match_details__1376__1'/2 mode 0 */
+#ifdef MR_maybe_local_thread_engine_base
+	#undef MR_maybe_local_thread_engine_base
+	#define MR_maybe_local_thread_engine_base MR_local_thread_engine_base
+#endif
+MR_def_static(fn__transform_hlds__ctgc__structure_reuse__direct__choose_reuse__IntroducedFrom__func__dump_match_details__1376__1_1_0)
+	MR_MAYBE_INIT_LOCAL_THREAD_ENGINE_BASE
+	MR_r1 = MR_tfield(0, MR_r1, 4);
+	MR_proceed();
+#ifdef MR_maybe_local_thread_engine_base
+	#undef MR_maybe_local_thread_engine_base
+	#define MR_maybe_local_thread_engine_base MR_thread_engine_base
+#endif
+MR_END_MODULE
+
+static void mercury__transform_hlds__ctgc__structure_reuse__direct__choose_reuse_maybe_bunch_0(void)
+{
+	transform_hlds__ctgc__structure_reuse__direct__choose_reuse_module0();
+	transform_hlds__ctgc__structure_reuse__direct__choose_reuse_module1();
+	transform_hlds__ctgc__structure_reuse__direct__choose_reuse_module2();
+	transform_hlds__ctgc__structure_reuse__direct__choose_reuse_module3();
+	transform_hlds__ctgc__structure_reuse__direct__choose_reuse_module4();
+	transform_hlds__ctgc__structure_reuse__direct__choose_reuse_module5();
+	transform_hlds__ctgc__structure_reuse__direct__choose_reuse_module6();
+	transform_hlds__ctgc__structure_reuse__direct__choose_reuse_module7();
+	transform_hlds__ctgc__structure_reuse__direct__choose_reuse_module8();
+	transform_hlds__ctgc__structure_reuse__direct__choose_reuse_module9();
+	transform_hlds__ctgc__structure_reuse__direct__choose_reuse_module10();
+	transform_hlds__ctgc__structure_reuse__direct__choose_reuse_module11();
+	transform_hlds__ctgc__structure_reuse__direct__choose_reuse_module12();
+	transform_hlds__ctgc__structure_reuse__direct__choose_reuse_module13();
+	transform_hlds__ctgc__structure_reuse__direct__choose_reuse_module14();
+	transform_hlds__ctgc__structure_reuse__direct__choose_reuse_module15();
+	transform_hlds__ctgc__structure_reuse__direct__choose_reuse_module16();
+	transform_hlds__ctgc__structure_reuse__direct__choose_reuse_module17();
+	transform_hlds__ctgc__structure_reuse__direct__choose_reuse_module18();
+	transform_hlds__ctgc__structure_reuse__direct__choose_reuse_module19();
+	transform_hlds__ctgc__structure_reuse__direct__choose_reuse_module20();
+	transform_hlds__ctgc__structure_reuse__direct__choose_reuse_module21();
+	transform_hlds__ctgc__structure_reuse__direct__choose_reuse_module22();
+	transform_hlds__ctgc__structure_reuse__direct__choose_reuse_module23();
+	transform_hlds__ctgc__structure_reuse__direct__choose_reuse_module24();
+	transform_hlds__ctgc__structure_reuse__direct__choose_reuse_module25();
+	transform_hlds__ctgc__structure_reuse__direct__choose_reuse_module26();
+	transform_hlds__ctgc__structure_reuse__direct__choose_reuse_module27();
+	transform_hlds__ctgc__structure_reuse__direct__choose_reuse_module28();
+	transform_hlds__ctgc__structure_reuse__direct__choose_reuse_module29();
+	transform_hlds__ctgc__structure_reuse__direct__choose_reuse_module30();
+	transform_hlds__ctgc__structure_reuse__direct__choose_reuse_module31();
+	transform_hlds__ctgc__structure_reuse__direct__choose_reuse_module32();
+	transform_hlds__ctgc__structure_reuse__direct__choose_reuse_module33();
+	transform_hlds__ctgc__structure_reuse__direct__choose_reuse_module34();
+	transform_hlds__ctgc__structure_reuse__direct__choose_reuse_module35();
+	transform_hlds__ctgc__structure_reuse__direct__choose_reuse_module36();
+	transform_hlds__ctgc__structure_reuse__direct__choose_reuse_module37();
+	transform_hlds__ctgc__structure_reuse__direct__choose_reuse_module38();
+	transform_hlds__ctgc__structure_reuse__direct__choose_reuse_module39();
+}
+
+static void mercury__transform_hlds__ctgc__structure_reuse__direct__choose_reuse_maybe_bunch_1(void)
+{
+	transform_hlds__ctgc__structure_reuse__direct__choose_reuse_module40();
+	transform_hlds__ctgc__structure_reuse__direct__choose_reuse_module41();
+	transform_hlds__ctgc__structure_reuse__direct__choose_reuse_module42();
+	transform_hlds__ctgc__structure_reuse__direct__choose_reuse_module43();
+	transform_hlds__ctgc__structure_reuse__direct__choose_reuse_module44();
+	transform_hlds__ctgc__structure_reuse__direct__choose_reuse_module45();
+	transform_hlds__ctgc__structure_reuse__direct__choose_reuse_module46();
+	transform_hlds__ctgc__structure_reuse__direct__choose_reuse_module47();
+	transform_hlds__ctgc__structure_reuse__direct__choose_reuse_module48();
+	transform_hlds__ctgc__structure_reuse__direct__choose_reuse_module49();
+	transform_hlds__ctgc__structure_reuse__direct__choose_reuse_module50();
+	transform_hlds__ctgc__structure_reuse__direct__choose_reuse_module51();
+	transform_hlds__ctgc__structure_reuse__direct__choose_reuse_module52();
+	transform_hlds__ctgc__structure_reuse__direct__choose_reuse_module53();
+	transform_hlds__ctgc__structure_reuse__direct__choose_reuse_module54();
+	transform_hlds__ctgc__structure_reuse__direct__choose_reuse_module55();
+	transform_hlds__ctgc__structure_reuse__direct__choose_reuse_module56();
+	transform_hlds__ctgc__structure_reuse__direct__choose_reuse_module57();
+	transform_hlds__ctgc__structure_reuse__direct__choose_reuse_module58();
+	transform_hlds__ctgc__structure_reuse__direct__choose_reuse_module59();
+	transform_hlds__ctgc__structure_reuse__direct__choose_reuse_module60();
+	transform_hlds__ctgc__structure_reuse__direct__choose_reuse_module61();
+	transform_hlds__ctgc__structure_reuse__direct__choose_reuse_module62();
+	transform_hlds__ctgc__structure_reuse__direct__choose_reuse_module63();
+	transform_hlds__ctgc__structure_reuse__direct__choose_reuse_module64();
+	transform_hlds__ctgc__structure_reuse__direct__choose_reuse_module65();
+	transform_hlds__ctgc__structure_reuse__direct__choose_reuse_module66();
+	transform_hlds__ctgc__structure_reuse__direct__choose_reuse_module67();
+}
+
+/* suppress gcc -Wmissing-decls warnings */
+void mercury__transform_hlds__ctgc__structure_reuse__direct__choose_reuse__init(void);
+void mercury__transform_hlds__ctgc__structure_reuse__direct__choose_reuse__init_type_tables(void);
+void mercury__transform_hlds__ctgc__structure_reuse__direct__choose_reuse__init_debugger(void);
+#ifdef MR_DEEP_PROFILING
+void mercury__transform_hlds__ctgc__structure_reuse__direct__choose_reuse__write_out_proc_statics(FILE *deep_fp, FILE *procrep_fp);
+#endif
+#ifdef MR_RECORD_TERM_SIZES
+void mercury__transform_hlds__ctgc__structure_reuse__direct__choose_reuse__init_complexity_procs(void);
+#endif
+#ifdef MR_THREADSCOPE
+void mercury__transform_hlds__ctgc__structure_reuse__direct__choose_reuse__init_threadscope_string_table(void);
+#endif
+
+void mercury__transform_hlds__ctgc__structure_reuse__direct__choose_reuse__init(void)
+{
+	static MR_bool done = MR_FALSE;
+	if (done) {
+		return;
+	}
+	done = MR_TRUE;
+	mercury__transform_hlds__ctgc__structure_reuse__direct__choose_reuse_maybe_bunch_0();
+	mercury__transform_hlds__ctgc__structure_reuse__direct__choose_reuse_maybe_bunch_1();
+	MR_INIT_TYPE_CTOR_INFO(
+		mercury_data_transform_hlds__ctgc__structure_reuse__direct__choose_reuse__type_ctor_info_background_info_0,
+		transform_hlds__ctgc__structure_reuse__direct__choose_reuse__background_info_0_0);
+	MR_INIT_TYPE_CTOR_INFO(
+		mercury_data_transform_hlds__ctgc__structure_reuse__direct__choose_reuse__type_ctor_info_construction_spec_0,
+		transform_hlds__ctgc__structure_reuse__direct__choose_reuse__construction_spec_0_0);
+	MR_INIT_TYPE_CTOR_INFO(
+		mercury_data_transform_hlds__ctgc__structure_reuse__direct__choose_reuse__type_ctor_info_deconstruction_spec_0,
+		transform_hlds__ctgc__structure_reuse__direct__choose_reuse__deconstruction_spec_0_0);
+	MR_INIT_TYPE_CTOR_INFO(
+		mercury_data_transform_hlds__ctgc__structure_reuse__direct__choose_reuse__type_ctor_info_match_0,
+		transform_hlds__ctgc__structure_reuse__direct__choose_reuse__match_0_0);
+	MR_INIT_TYPE_CTOR_INFO(
+		mercury_data_transform_hlds__ctgc__structure_reuse__direct__choose_reuse__type_ctor_info_match_table_0,
+		transform_hlds__ctgc__structure_reuse__direct__choose_reuse__match_table_0_0);
+	MR_INIT_TYPE_CTOR_INFO(
+		mercury_data_transform_hlds__ctgc__structure_reuse__direct__choose_reuse__type_ctor_info_reuse_type_0,
+		transform_hlds__ctgc__structure_reuse__direct__choose_reuse__reuse_type_0_0);
+	mercury__transform_hlds__ctgc__structure_reuse__direct__choose_reuse__init_debugger();
+}
+
+void mercury__transform_hlds__ctgc__structure_reuse__direct__choose_reuse__init_type_tables(void)
+{
+	static MR_bool done = MR_FALSE;
+	if (done) {
+		return;
+	}
+	done = MR_TRUE;
+	{
+		MR_register_type_ctor_info(
+		&mercury_data_transform_hlds__ctgc__structure_reuse__direct__choose_reuse__type_ctor_info_background_info_0);
+	}
+	{
+		MR_register_type_ctor_info(
+		&mercury_data_transform_hlds__ctgc__structure_reuse__direct__choose_reuse__type_ctor_info_construction_spec_0);
+	}
+	{
+		MR_register_type_ctor_info(
+		&mercury_data_transform_hlds__ctgc__structure_reuse__direct__choose_reuse__type_ctor_info_deconstruction_spec_0);
+	}
+	{
+		MR_register_type_ctor_info(
+		&mercury_data_transform_hlds__ctgc__structure_reuse__direct__choose_reuse__type_ctor_info_match_0);
+	}
+	{
+		MR_register_type_ctor_info(
+		&mercury_data_transform_hlds__ctgc__structure_reuse__direct__choose_reuse__type_ctor_info_match_table_0);
+	}
+	{
+		MR_register_type_ctor_info(
+		&mercury_data_transform_hlds__ctgc__structure_reuse__direct__choose_reuse__type_ctor_info_reuse_type_0);
+	}
+}
+
+
+void mercury__transform_hlds__ctgc__structure_reuse__direct__choose_reuse__init_debugger(void)
+{
+	static MR_bool done = MR_FALSE;
+	if (done) {
+		return;
+	}
+	done = MR_TRUE;
+}
+
+#ifdef MR_DEEP_PROFILING
+
+void mercury__transform_hlds__ctgc__structure_reuse__direct__choose_reuse__write_out_proc_statics(FILE *deep_fp, FILE *procrep_fp)
+{
+	MR_write_out_module_proc_reps_start(procrep_fp, &mercury_data__module_common_layout__transform_hlds__ctgc__structure_reuse__direct__choose_reuse);
+	MR_write_out_module_proc_reps_end(procrep_fp);
+}
+
+#endif
+
+#ifdef MR_RECORD_TERM_SIZES
+
+void mercury__transform_hlds__ctgc__structure_reuse__direct__choose_reuse__init_complexity_procs(void)
+{
+}
+
+#endif
+
+#ifdef MR_THREADSCOPE
+
+void mercury__transform_hlds__ctgc__structure_reuse__direct__choose_reuse__init_threadscope_string_table(void)
+{
+}
+
+#endif
+
+/* ensure everything is compiled with the same grade */
+static const void *const MR_grade = &MR_GRADE_VAR;
