@@ -1,0 +1,44 @@
+:- module (parse_tree.read_modules).
+:- interface.
+:- import_module io.
+:- import_module libs.
+:- import_module list.
+:- import_module map.
+:- import_module maybe.
+:- import_module mdbcomp.
+:- import_module term.
+:- import_module (libs.file_util).
+:- import_module (libs.globals).
+:- import_module (libs.timestamp).
+:- import_module (mdbcomp.sym_name).
+:- import_module (parse_tree.error_util).
+:- import_module (parse_tree.file_kind).
+:- import_module (parse_tree.file_names).
+:- import_module (parse_tree.module_imports).
+:- import_module (parse_tree.parse_error).
+:- import_module (parse_tree.prog_item).
+:- type have_read_module(PT)
+    --->    have_read_module(libs.file_util.file_name, parse_tree.module_imports.module_timestamp, PT, list.list(parse_tree.error_util.error_spec), parse_tree.parse_error.read_module_errors).
+:- type have_read_module_int_map == parse_tree.read_modules.have_read_module_map(parse_tree.file_kind.int_file_kind, parse_tree.prog_item.parse_tree_int).
+:- type have_read_module_key(FK)
+    --->    have_read_module_key(mdbcomp.sym_name.module_name, FK).
+:- type have_read_module_map(FK, PT) == map.map(parse_tree.read_modules.have_read_module_key(FK), parse_tree.read_modules.have_read_module(PT)).
+:- type have_read_module_maps
+    --->    have_read_module_maps(((parse_tree.read_modules).hrmm_src) :: parse_tree.read_modules.have_read_module_src_map, ((parse_tree.read_modules).hrmm_int) :: parse_tree.read_modules.have_read_module_int_map, ((parse_tree.read_modules).hrmm_opt) :: parse_tree.read_modules.have_read_module_opt_map).
+:- type have_read_module_opt_map == parse_tree.read_modules.have_read_module_map(parse_tree.file_kind.opt_file_kind, parse_tree.prog_item.parse_tree_opt).
+:- type have_read_module_src_map == parse_tree.read_modules.have_read_module_map(parse_tree.file_kind.src_file_kind, parse_tree.prog_item.parse_tree_src).
+:- type maybe_ignore_errors
+    --->    ignore_errors 
+    ;       do_not_ignore_errors .
+:- pred find_read_module_int(parse_tree.read_modules.have_read_module_int_map, mdbcomp.sym_name.module_name, parse_tree.file_kind.int_file_kind, libs.timestamp.maybe_return_timestamp, libs.file_util.file_name, maybe.maybe(libs.timestamp.timestamp), parse_tree.prog_item.parse_tree_int, list.list(parse_tree.error_util.error_spec), parse_tree.parse_error.read_module_errors).
+:- mode find_read_module_int((builtin.in), (builtin.in), (builtin.in), (builtin.in), (builtin.out), (builtin.out), (builtin.out), (builtin.out), (builtin.out)) is semidet.
+:- pred find_read_module_src(parse_tree.read_modules.have_read_module_src_map, mdbcomp.sym_name.module_name, libs.timestamp.maybe_return_timestamp, libs.file_util.file_name, maybe.maybe(libs.timestamp.timestamp), parse_tree.prog_item.parse_tree_src, list.list(parse_tree.error_util.error_spec), parse_tree.parse_error.read_module_errors).
+:- mode find_read_module_src((builtin.in), (builtin.in), (builtin.in), (builtin.out), (builtin.out), (builtin.out), (builtin.out), (builtin.out)) is semidet.
+:- pred maybe_read_module_int(libs.globals.globals, parse_tree.read_modules.have_read_module_int_map, string, parse_tree.file_names.maybe_search, mdbcomp.sym_name.module_name, parse_tree.file_kind.int_file_kind, libs.file_util.file_name, libs.timestamp.maybe_return_timestamp, maybe.maybe(libs.timestamp.timestamp), parse_tree.prog_item.parse_tree_int, list.list(parse_tree.error_util.error_spec), parse_tree.parse_error.read_module_errors, io.io, io.io).
+:- mode maybe_read_module_int((builtin.in), (builtin.in), (builtin.in), (builtin.in), (builtin.in), (builtin.in), (builtin.out), (builtin.in), (builtin.out), (builtin.out), (builtin.out), (builtin.out), (builtin.di), (builtin.uo)) is det.
+:- pred read_module_int(libs.globals.globals, string, parse_tree.read_modules.maybe_ignore_errors, parse_tree.file_names.maybe_search, mdbcomp.sym_name.module_name, parse_tree.file_kind.int_file_kind, libs.file_util.file_name, libs.timestamp.read_module_and_timestamps, maybe.maybe(libs.timestamp.timestamp), parse_tree.prog_item.parse_tree_int, list.list(parse_tree.error_util.error_spec), parse_tree.parse_error.read_module_errors, io.io, io.io).
+:- mode read_module_int((builtin.in), (builtin.in), (builtin.in), (builtin.in), (builtin.in), (builtin.in), (builtin.out), (builtin.in), (builtin.out), (builtin.out), (builtin.out), (builtin.out), (builtin.di), (builtin.uo)) is det.
+:- pred read_module_src(libs.globals.globals, string, parse_tree.read_modules.maybe_ignore_errors, parse_tree.file_names.maybe_search, mdbcomp.sym_name.module_name, list.list(term.context), libs.file_util.file_name, libs.timestamp.read_module_and_timestamps, maybe.maybe(libs.timestamp.timestamp), parse_tree.prog_item.parse_tree_src, list.list(parse_tree.error_util.error_spec), parse_tree.parse_error.read_module_errors, io.io, io.io).
+:- mode read_module_src((builtin.in), (builtin.in), (builtin.in), (builtin.in), (builtin.in), (builtin.in), (builtin.out), (builtin.in), (builtin.out), (builtin.out), (builtin.out), (builtin.out), (builtin.di), (builtin.uo)) is det.
+:- pred read_module_src_from_file(libs.globals.globals, libs.file_util.file_name, string, parse_tree.file_names.maybe_search, libs.timestamp.read_module_and_timestamps, maybe.maybe(libs.timestamp.timestamp), parse_tree.prog_item.parse_tree_src, list.list(parse_tree.error_util.error_spec), parse_tree.parse_error.read_module_errors, io.io, io.io).
+:- mode read_module_src_from_file((builtin.in), (builtin.in), (builtin.in), (builtin.in), (builtin.in), (builtin.out), (builtin.out), (builtin.out), (builtin.out), (builtin.di), (builtin.uo)) is det.

@@ -1,0 +1,33 @@
+:- module (mode_robdd.equiv_vars).
+:- interface.
+:- import_module bool.
+:- import_module check_hlds.
+:- import_module robdd.
+:- import_module term.
+:- import_module (check_hlds.mode_constraint_robdd).
+:- func *(robdd.equiv_vars(T), robdd.equiv_vars(T)) = robdd.equiv_vars(T).
+:- func +(robdd.equiv_vars(T), robdd.equiv_vars(T)) = robdd.equiv_vars(T).
+:- func add_equalities(robdd.vars(T), robdd.equiv_vars(T)) = robdd.equiv_vars(T).
+:- func add_equality(term.var(T), term.var(T), robdd.equiv_vars(T)) = robdd.equiv_vars(T).
+:- func delete(robdd.equiv_vars(T), term.var(T)) = robdd.equiv_vars(T).
+:- func det_leader(term.var(T), robdd.equiv_vars(T)) = term.var(T).
+:- func difference(robdd.equiv_vars(T), robdd.equiv_vars(T)) = robdd.equiv_vars(T).
+:- pred empty(robdd.equiv_vars(T)).
+:- mode empty((builtin.in)) is semidet.
+:- func equivalent_vars_in_robdd(robdd.robdd(T)) = robdd.equiv_vars(T) is semidet.
+:- func filter((pred term.var(T)), robdd.equiv_vars(T)) = robdd.equiv_vars(T).
+:- mode filter((pred((builtin.in)) is semidet), (builtin.in)) = (builtin.out) is det.
+:- func init_equiv_vars = robdd.equiv_vars(T).
+:- pred label(robdd.equiv_vars(T), robdd.vars(T), robdd.vars(T), robdd.vars(T), robdd.vars(T)).
+:- mode label((builtin.in), (builtin.in), (builtin.out), (builtin.in), (builtin.out)) is det.
+:- func leader(term.var(T), robdd.equiv_vars(T)) = term.var(T) is semidet.
+:- pred normalise_known_equivalent_vars(bool.bool, robdd.vars(T), robdd.vars(T), robdd.equiv_vars(T), robdd.equiv_vars(T)).
+:- mode normalise_known_equivalent_vars((builtin.out), (builtin.in), (builtin.out), (builtin.in), (builtin.out)) is det.
+:- func remove_equiv(robdd.equiv_vars(T), robdd.robdd(T)) = robdd.robdd(T).
+:- func restrict_threshold(term.var(T), robdd.equiv_vars(T)) = robdd.equiv_vars(T).
+:- pred vars_are_equivalent(robdd.equiv_vars(T), term.var(T), term.var(T)).
+:- mode vars_are_equivalent((builtin.in), (builtin.in), (builtin.in)) is semidet.
+:- pred vars_are_not_equivalent(robdd.equiv_vars(T), term.var(T), term.var(T)).
+:- mode vars_are_not_equivalent((builtin.in), (builtin.in), (builtin.in)) is semidet.
+:- pragma type_spec(((mode_robdd.equiv_vars).leader)/2, (T = check_hlds.mode_constraint_robdd.mc_type), ((mode_robdd.equiv_vars).'TypeSpecOf__pred_or_func__leader__[T = mc_type]')).
+:- pragma type_spec(((mode_robdd.equiv_vars).normalise_known_equivalent_vars)/5, (T = check_hlds.mode_constraint_robdd.mc_type), ((mode_robdd.equiv_vars).'TypeSpecOf__pred_or_func__normalise_known_equivalent_vars__[T = mc_type]')).
