@@ -1,0 +1,6 @@
+:- module (hlds.error_msg_inst).
+:- interface.
+:- type maybe_expand_named_insts
+	where	type_is_abstract_enum(1).
+:- type short_inst
+	where	type_is_abstract_enum(1).
