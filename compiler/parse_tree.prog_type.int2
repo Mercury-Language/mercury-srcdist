@@ -1,0 +1,48 @@
+:- module (parse_tree.prog_type).
+:- interface.
+:- import_module bool.
+:- import_module libs.
+:- import_module list.
+:- import_module map.
+:- import_module maybe.
+:- import_module mdbcomp.
+:- import_module term.
+:- import_module (libs.globals).
+:- import_module (mdbcomp.prim_data).
+:- import_module (mdbcomp.sym_name).
+:- import_module (parse_tree.prog_data).
+:- type ctor_defn
+    --->    ctor_defn(((parse_tree.prog_type).ctor_tvars) :: parse_tree.prog_data.tvarset, ((parse_tree.prog_type).ctor_existq_tvars) :: parse_tree.prog_data.existq_tvars, ((parse_tree.prog_type).ctor_tvar_kinds) :: parse_tree.prog_data.tvar_kind_map, ((parse_tree.prog_type).ctor_constraints) :: list.list(parse_tree.prog_data.prog_constraint), ((parse_tree.prog_type).ctor_arg_types) :: list.list(parse_tree.prog_data.mer_type), ((parse_tree.prog_type).ctor_result_type) :: parse_tree.prog_data.mer_type).
+:- type is_builtin_dummy_type_ctor
+    --->    is_builtin_dummy_type_ctor 
+    ;       is_not_builtin_dummy_type_ctor .
+:- type polymorphism_cell
+    --->    type_info_cell(parse_tree.prog_data.type_ctor)
+    ;       typeclass_info_cell .
+:- type type_ctor_cat_builtin
+    --->    cat_builtin_int(parse_tree.prog_data.int_type)
+    ;       cat_builtin_float 
+    ;       cat_builtin_char 
+    ;       cat_builtin_string .
+:- type type_ctor_cat_enum
+    --->    cat_enum_mercury 
+    ;       cat_enum_foreign .
+:- type type_ctor_cat_system
+    --->    cat_system_type_info 
+    ;       cat_system_type_ctor_info 
+    ;       cat_system_typeclass_info 
+    ;       cat_system_base_typeclass_info .
+:- type type_ctor_cat_user
+    --->    cat_user_direct_dummy 
+    ;       cat_user_notag 
+    ;       cat_user_general .
+:- type type_ctor_category
+    --->    ctor_cat_builtin(parse_tree.prog_type.type_ctor_cat_builtin)
+    ;       ctor_cat_higher_order 
+    ;       ctor_cat_tuple 
+    ;       ctor_cat_enum(parse_tree.prog_type.type_ctor_cat_enum)
+    ;       ctor_cat_builtin_dummy 
+    ;       ctor_cat_variable 
+    ;       ctor_cat_system(parse_tree.prog_type.type_ctor_cat_system)
+    ;       ctor_cat_void 
+    ;       ctor_cat_user(parse_tree.prog_type.type_ctor_cat_user).

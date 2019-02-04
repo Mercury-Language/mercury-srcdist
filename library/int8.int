@@ -1,0 +1,4 @@
+:- module int8.
+:- interface.
+:- type placeholder_int8
+    --->    placeholder_int8 .
