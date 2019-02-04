@@ -1,0 +1,328 @@
+/*
+** Automatically generated from `builtin.m'
+** by the Mercury compiler,
+** version rotd-2018-07-31
+** configured for x86_64-pc-linux-gnu.
+** Do not edit.
+**
+** The autoconfigured grade settings governing
+** the generation of this C file were
+**
+** TAG_BITS=2
+** UNBOXED_FLOAT=no
+** UNBOXED_INT64S=no
+** PREGENERATED_DIST=yes
+** HIGHLEVEL_CODE=yes
+**
+** END_OF_C_GRADE_INFO
+*/
+
+
+// :- module builtin.
+// :- interface.
+
+#ifndef MR_HEADER_GUARD_builtin
+#define MR_HEADER_GUARD_builtin
+
+#ifdef __cplusplus
+extern "C" {
+#endif
+
+#include "mercury.h"
+
+
+#ifndef BUILTIN_DECL_GUARD
+#define BUILTIN_DECL_GUARD
+#include "mercury_ho_call.h"
+#endif
+
+
+
+
+extern const MR_TypeCtorInfo_Struct mercury__builtin__builtin__type_ctor_info_compare_1;
+
+extern const MR_TypeCtorInfo_Struct mercury__builtin__builtin__type_ctor_info_comparison_func_1;
+
+extern const MR_TypeCtorInfo_Struct mercury__builtin__builtin__type_ctor_info_comparison_pred_1;
+
+extern const MR_TypeCtorInfo_Struct mercury__builtin__builtin__type_ctor_info_comparison_result_0;
+
+extern const MR_TypeCtorInfo_Struct mercury__builtin__builtin__type_ctor_info_unify_1;
+
+MR_bool MR_CALL 
+mercury__builtin__f_64_60_2_p_0(
+  MR_Word param_1,
+  MR_Box param_2,
+  MR_Box param_3);
+
+MR_bool MR_CALL 
+mercury__builtin__f_64_61_60_2_p_0(
+  MR_Word param_1,
+  MR_Box param_2,
+  MR_Box param_3);
+
+MR_bool MR_CALL 
+mercury__builtin__f_64_62_2_p_0(
+  MR_Word param_1,
+  MR_Box param_2,
+  MR_Box param_3);
+
+MR_bool MR_CALL 
+mercury__builtin__f_64_62_61_2_p_0(
+  MR_Word param_1,
+  MR_Box param_2,
+  MR_Box param_3);
+
+void MR_CALL 
+mercury__builtin__cc_multi_equal_2_p_0(
+  MR_Word param_1,
+  MR_Box param_2,
+  MR_Box * param_3);
+
+void MR_CALL 
+mercury__builtin__cc_multi_equal_2_p_1(
+  MR_Word param_1,
+  MR_Box param_2,
+  MR_Box * param_3);
+
+void MR_CALL 
+mercury__builtin__compare_3_p_0(
+  MR_Word param_1,
+  MR_Word * param_2,
+  MR_Box param_3,
+  MR_Box param_4);
+
+void MR_CALL 
+mercury__builtin__compare_3_p_1(
+  MR_Word param_1,
+  MR_Word * param_2,
+  MR_Box param_3,
+  MR_Box param_4);
+
+void MR_CALL 
+mercury__builtin__compare_3_p_2(
+  MR_Word param_1,
+  MR_Word * param_2,
+  MR_Box param_3,
+  MR_Box param_4);
+
+void MR_CALL 
+mercury__builtin__compare_3_p_3(
+  MR_Word param_1,
+  MR_Word * param_2,
+  MR_Box param_3,
+  MR_Box param_4);
+
+void MR_CALL 
+mercury__builtin__compare_representation_3_p_0(
+  MR_Word param_1,
+  MR_Word * param_2,
+  MR_Box param_3,
+  MR_Box param_4);
+
+void MR_CALL 
+mercury__builtin__copy_2_p_0(
+  MR_Word param_1,
+  MR_Box param_2,
+  MR_Box * param_3);
+
+void MR_CALL 
+mercury__builtin__copy_2_p_1(
+  MR_Word param_1,
+  MR_Box param_2,
+  MR_Box * param_3);
+
+MR_bool MR_CALL 
+mercury__builtin__dynamic_cast_2_p_0(
+  MR_Word param_1,
+  MR_Word param_2,
+  MR_Box param_3,
+  MR_Box * param_4);
+
+MR_bool MR_CALL 
+mercury__builtin__false_0_p_0(void);
+
+void MR_CALL 
+mercury__builtin__get_one_solution_io_4_p_0(
+  MR_Word param_1,
+  MR_Word param_2,
+  MR_Word param_3,
+  MR_Box * param_4,
+  MR_Box param_5,
+  MR_Box * param_6);
+
+void MR_CALL 
+mercury__builtin__impure_true_0_p_0(void);
+
+void MR_CALL 
+mercury__builtin__init_runtime_hooks_0_p_0(void);
+
+void MR_CALL 
+mercury__builtin__promise_only_solution_io_4_p_0(
+  MR_Word param_1,
+  MR_Word param_2,
+  MR_Word param_3,
+  MR_Box * param_4,
+  MR_Box param_5,
+  MR_Box * param_6);
+
+MR_bool MR_CALL 
+mercury__builtin__semidet_fail_0_p_0(void);
+
+MR_bool MR_CALL 
+mercury__builtin__semidet_false_0_p_0(void);
+
+MR_bool MR_CALL 
+mercury__builtin__semidet_succeed_0_p_0(void);
+
+MR_bool MR_CALL 
+mercury__builtin__semidet_true_0_p_0(void);
+
+void MR_CALL 
+mercury__builtin__semipure_true_0_p_0(void);
+
+MR_bool MR_CALL 
+mercury__builtin__unify_2_p_0(
+  MR_Word param_1,
+  MR_Box param_2,
+  MR_Box param_3);
+
+void MR_CALL 
+mercury__builtin__unsafe_promise_unique_2_p_0(
+  MR_Box param_1,
+  MR_Box * param_2);
+
+MR_Box MR_CALL 
+mercury__builtin__get_one_solution_1_f_0(
+  MR_Word param_1,
+  MR_Word param_2);
+
+MR_bool MR_CALL 
+mercury__builtin__get_one_solution_1_f_1(
+  MR_Word param_1,
+  MR_Word param_2,
+  MR_Box * param_3);
+
+MR_Word MR_CALL 
+mercury__builtin__ordering_2_f_0(
+  MR_Word param_1,
+  MR_Box param_2,
+  MR_Box param_3);
+
+MR_Box MR_CALL 
+mercury__builtin__promise_only_solution_1_f_0(
+  MR_Word param_1,
+  MR_Word param_2);
+
+MR_Box MR_CALL 
+mercury__builtin__promise_only_solution_1_f_1(
+  MR_Word param_1,
+  MR_Word param_2);
+
+MR_bool MR_CALL 
+mercury__builtin__promise_only_solution_1_f_2(
+  MR_Word param_1,
+  MR_Word param_2,
+  MR_Box * param_3);
+
+MR_bool MR_CALL 
+mercury__builtin__promise_only_solution_1_f_3(
+  MR_Word param_1,
+  MR_Word param_2,
+  MR_Box * param_3);
+
+MR_Box MR_CALL 
+mercury__builtin__unsafe_cast_any_to_ground_1_f_0(
+  MR_Word param_1,
+  MR_Box param_2);
+
+MR_Box MR_CALL 
+mercury__builtin__unsafe_promise_unique_1_f_0(
+  MR_Box param_1);
+
+void MR_CALL 
+mercury__builtin____Compare____c_pointer_0_0(
+  MR_Word * param_1,
+  MR_Word param_2,
+  MR_Word param_3);
+
+void MR_CALL 
+mercury__builtin____Compare____compare_1_0(
+  MR_Word param_1,
+  MR_Word * param_2,
+  MR_Word param_3,
+  MR_Word param_4);
+
+void MR_CALL 
+mercury__builtin____Compare____comparison_func_1_0(
+  MR_Word param_1,
+  MR_Word * param_2,
+  MR_Word param_3,
+  MR_Word param_4);
+
+void MR_CALL 
+mercury__builtin____Compare____comparison_pred_1_0(
+  MR_Word param_1,
+  MR_Word * param_2,
+  MR_Word param_3,
+  MR_Word param_4);
+
+void MR_CALL 
+mercury__builtin____Compare____comparison_result_0_0(
+  MR_Word * param_1,
+  MR_Word param_2,
+  MR_Word param_3);
+
+void MR_CALL 
+mercury__builtin____Compare____unify_1_0(
+  MR_Word param_1,
+  MR_Word * param_2,
+  MR_Word param_3,
+  MR_Word param_4);
+
+MR_bool MR_CALL 
+mercury__builtin____Unify____c_pointer_0_0(
+  MR_Word param_1,
+  MR_Word param_2);
+
+MR_bool MR_CALL 
+mercury__builtin____Unify____compare_1_0(
+  MR_Word param_1,
+  MR_Word param_2,
+  MR_Word param_3);
+
+MR_bool MR_CALL 
+mercury__builtin____Unify____comparison_func_1_0(
+  MR_Word param_1,
+  MR_Word param_2,
+  MR_Word param_3);
+
+MR_bool MR_CALL 
+mercury__builtin____Unify____comparison_pred_1_0(
+  MR_Word param_1,
+  MR_Word param_2,
+  MR_Word param_3);
+
+MR_bool MR_CALL 
+mercury__builtin____Unify____comparison_result_0_0(
+  MR_Word param_1,
+  MR_Word param_2);
+
+MR_bool MR_CALL 
+mercury__builtin____Unify____unify_1_0(
+  MR_Word param_1,
+  MR_Word param_2,
+  MR_Word param_3);
+
+void mercury__builtin__init(void);
+void mercury__builtin__init_type_tables(void);
+void mercury__builtin__init_debugger(void);
+const char *mercury__builtin__grade_check(void);
+
+#ifdef __cplusplus
+}
+#endif
+
+#endif // MR_HEADER_GUARD_builtin
+
+// :- end_interface builtin.

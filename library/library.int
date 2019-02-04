@@ -1,0 +1,6 @@
+:- module library.
+:- interface.
+:- pred mercury_std_library_module(string).
+:- mode mercury_std_library_module((builtin.in)) is semidet.
+:- pred version(string, string).
+:- mode version((builtin.out), (builtin.out)) is det.
