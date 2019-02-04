@@ -1,0 +1,8 @@
+:- module (hlds.hlds_rtti).
+:- interface.
+:- type instance_method_constraints.
+:- type prog_var_name.
+:- type rtti_proc_label.
+:- type rtti_var_info.
+:- type rtti_varmaps.
+:- type type_info_locn.
