@@ -1,0 +1,46 @@
+/*
+** Automatically generated from `mlds_to_java.m'
+** by the Mercury compiler,
+** version rotd-2011-08-19, configured for x86_64-unknown-linux-gnu.
+** Do not edit.
+*/
+#ifndef ML_BACKEND__MLDS_TO_JAVA_MH
+#define ML_BACKEND__MLDS_TO_JAVA_MH
+
+#ifdef __cplusplus
+extern "C" {
+#endif
+
+#ifdef MR_HIGHLEVEL_CODE
+#include "mercury.h"
+#else
+  #ifndef MERCURY_HDR_EXCLUDE_IMP_H
+  #include "mercury_imp.h"
+  #endif
+#endif
+#ifdef MR_DEEP_PROFILING
+#include "mercury_deep_profiling.h"
+#endif
+
+#ifndef ML_BACKEND__MLDS_TO_JAVA_DECL_GUARD
+#define ML_BACKEND__MLDS_TO_JAVA_DECL_GUARD
+#line 5145 "mlds_to_java.m"
+#ifdef MR_HIGHLEVEL_CODE
+    extern MR_Word ml_backend__mlds_to_java__mutable_variable_last_context;
+#else
+    extern MR_Word ml_backend__mlds_to_java__mutable_variable_last_context;
+#endif
+#ifdef MR_THREAD_SAFE
+    extern MercuryLock ml_backend__mlds_to_java__mutable_variable_last_context_lock;
+#endif
+
+#line 38 "ml_backend.mlds_to_java.mh.tmp"
+
+#endif
+void ml_backend__mlds_to_java__user_init_pred_0(void);
+
+#ifdef __cplusplus
+}
+#endif
+
+#endif /* ML_BACKEND__MLDS_TO_JAVA_MH */

@@ -1,0 +1,4 @@
+:- module (ll_backend.x86_64_regs).
+:- interface.
+:- type reg_locn.
+:- type reg_map.

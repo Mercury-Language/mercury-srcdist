@@ -1,0 +1,4 @@
+:- module (parse_tree.read_modules).
+:- interface.
+:- type have_read_module.
+:- type have_read_module_map.

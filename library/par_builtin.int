@@ -1,0 +1,33 @@
+:- module par_builtin.
+:- interface.
+:- import_module io.
+:- type future(T).
+:- impure pred evaluate_parallelism_condition is semidet.
+:- pred get_future(par_builtin.future(T), T).
+:- mode get_future((builtin.in), (builtin.out)) is det.
+:- pred new_future(int, par_builtin.future(T)).
+:- mode new_future((builtin.in), (builtin.uo)) is det.
+:- pred num_os_threads(int).
+:- mode num_os_threads((builtin.out)) is det.
+:- pred par_cond_close_stats_file(io.io, io.io).
+:- mode par_cond_close_stats_file((builtin.di), (builtin.uo)) is det.
+:- impure pred signal_future(par_builtin.future(T), T).
+:- mode signal_future((builtin.in), (builtin.in)) is det.
+:- impure pred wait_future(par_builtin.future(T), T).
+:- mode wait_future((builtin.in), (builtin.out)) is det.
+:- implementation.
+:- pragma foreign_type(il, future(T), "class [mscorlib]System.Object").
+:- pragma foreign_type(c, future(T), "MR_Future *", [can_pass_as_mercury_type]).
+:- pragma foreign_type(java, future(T), "java.lang.Object").
+:- pragma foreign_type(csharp, future(T), "object").
+:- pragma foreign_type(erlang, future(T), "").
+:- pragma foreign_import_module("C", par_builtin).
+:- pragma foreign_import_module("C#", par_builtin).
+:- pragma foreign_import_module("Java", par_builtin).
+:- pragma foreign_import_module("IL", par_builtin).
+:- pragma foreign_import_module("Erlang", par_builtin).
+:- pragma foreign_import_module("C", par_builtin).
+:- pragma foreign_import_module("C#", par_builtin).
+:- pragma foreign_import_module("Java", par_builtin).
+:- pragma foreign_import_module("IL", par_builtin).
+:- pragma foreign_import_module("Erlang", par_builtin).

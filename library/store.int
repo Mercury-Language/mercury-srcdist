@@ -1,0 +1,81 @@
+:- module store.
+:- interface.
+:- import_module io.
+:- type store(S).
+:- type io_mutvar(T) == store.generic_mutvar(T, io.state).
+:- type generic_mutvar(T, S).
+:- type generic_ref(T, S).
+:- type io_ref(T, S) == store.generic_ref(T, io.state).
+:- type store_mutvar(T, S) == store.generic_mutvar(T, store.store(S)).
+:- type store_ref(T, S) == store.generic_ref(T, store.store(S)).
+:- pragma obsolete((store.new)/1).
+:- typeclass store(T) where [
+
+].
+:- instance (store.store(io.state)).
+:- instance (store.store(store.store(S))).
+:- pred arg_ref(store.generic_ref(T, S), int, store.generic_ref(ArgT, S), S, S) <= (store.store(S)).
+:- mode arg_ref((builtin.in), (builtin.in), (builtin.out), (builtin.di), (builtin.uo)) is det.
+:- pred copy_mutvar(store.generic_mutvar(T, S), store.generic_mutvar(T, S), S, S) <= (store.store(S)).
+:- mode copy_mutvar((builtin.in), (builtin.out), (builtin.di), (builtin.uo)) is det.
+:- pred copy_ref_value(store.generic_ref(T, S), T, S, S) <= (store.store(S)).
+:- mode copy_ref_value((builtin.in), (builtin.uo), (builtin.di), (builtin.uo)) is det.
+:- pred extract_ref_value(S, store.generic_ref(T, S), T) <= (store.store(S)).
+:- mode extract_ref_value((builtin.di), (builtin.in), (builtin.out)) is det.
+:- pred get_mutvar(store.generic_mutvar(T, S), T, S, S) <= (store.store(S)).
+:- mode get_mutvar((builtin.in), (builtin.out), (builtin.di), (builtin.uo)) is det.
+:- some [S] (pred init(store.store(S))).
+:- mode init((builtin.uo)) is det.
+:- some [S] (pred new(store.store(S))).
+:- mode new((builtin.uo)) is det.
+:- pred new_arg_ref(T, int, store.generic_ref(ArgT, S), S, S) <= (store.store(S)).
+:- mode new_arg_ref((builtin.di), (builtin.in), (builtin.out), (builtin.di), (builtin.uo)) is det.
+:- pred new_cyclic_mutvar(((func store.generic_mutvar(T, S)) = T), store.generic_mutvar(T, S), S, S) <= (store.store(S)).
+:- mode new_cyclic_mutvar((builtin.in), (builtin.out), (builtin.di), (builtin.uo)) is det.
+:- pred new_mutvar(T, store.generic_mutvar(T, S), S, S) <= (store.store(S)).
+:- mode new_mutvar((builtin.in), (builtin.out), (builtin.di), (builtin.uo)) is det.
+:- pred new_ref(T, store.generic_ref(T, S), S, S) <= (store.store(S)).
+:- mode new_ref((builtin.di), (builtin.out), (builtin.di), (builtin.uo)) is det.
+:- pred ref_functor(store.generic_ref(T, S), string, int, S, S) <= (store.store(S)).
+:- mode ref_functor((builtin.in), (builtin.out), (builtin.out), (builtin.di), (builtin.uo)) is det.
+:- pred set_mutvar(store.generic_mutvar(T, S), T, S, S) <= (store.store(S)).
+:- mode set_mutvar((builtin.in), (builtin.in), (builtin.di), (builtin.uo)) is det.
+:- pred set_ref(store.generic_ref(T, S), store.generic_ref(T, S), S, S) <= (store.store(S)).
+:- mode set_ref((builtin.in), (builtin.in), (builtin.di), (builtin.uo)) is det.
+:- pred set_ref_value(store.generic_ref(T, S), T, S, S) <= (store.store(S)).
+:- mode set_ref_value((builtin.in), (builtin.di), (builtin.di), (builtin.uo)) is det.
+:- pred unsafe_arg_ref(store.generic_ref(T, S), int, store.generic_ref(ArgT, S), S, S) <= (store.store(S)).
+:- mode unsafe_arg_ref((builtin.in), (builtin.in), (builtin.out), (builtin.di), (builtin.uo)) is det.
+:- pred unsafe_new_arg_ref(T, int, store.generic_ref(ArgT, S), S, S) <= (store.store(S)).
+:- mode unsafe_new_arg_ref((builtin.di), (builtin.in), (builtin.out), (builtin.di), (builtin.uo)) is det.
+:- implementation.
+:- type store(S).
+:- pragma foreign_type(il, store(S), "valuetype [mscorlib]System.Int32", [can_pass_as_mercury_type])
+	where	type_is_abstract_noncanonical.
+:- pragma foreign_type(c, store(S), "MR_Word", [can_pass_as_mercury_type])
+	where	type_is_abstract_noncanonical.
+:- pragma foreign_type(java, store(S), "int", [can_pass_as_mercury_type])
+	where	type_is_abstract_noncanonical.
+:- pragma foreign_type(csharp, store(S), "int", [can_pass_as_mercury_type])
+	where	type_is_abstract_noncanonical.
+:- pragma foreign_type(erlang, store(S), "", [can_pass_as_mercury_type])
+	where	type_is_abstract_noncanonical.
+:- type generic_mutvar(T, S)
+	--->	mutvar(private_builtin.ref(T)).
+:- pragma foreign_type(java, generic_mutvar(T, S), "mutvar.Mutvar").
+:- pragma foreign_type(csharp, generic_mutvar(T, S), "object[]").
+:- pragma foreign_type(erlang, generic_mutvar(T, S), "").
+:- type generic_ref(T, S)
+	--->	ref(private_builtin.ref(T)).
+:- pragma foreign_type(java, generic_ref(T, S), "store.Ref").
+:- pragma foreign_type(csharp, generic_ref(T, S), "store.Ref").
+:- pragma foreign_import_module("C", store).
+:- pragma foreign_import_module("C#", store).
+:- pragma foreign_import_module("Java", store).
+:- pragma foreign_import_module("IL", store).
+:- pragma foreign_import_module("Erlang", store).
+:- pragma foreign_import_module("C", store).
+:- pragma foreign_import_module("C#", store).
+:- pragma foreign_import_module("Java", store).
+:- pragma foreign_import_module("IL", store).
+:- pragma foreign_import_module("Erlang", store).

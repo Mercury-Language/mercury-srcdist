@@ -1,0 +1,11 @@
+:- module (check_hlds.try_expand).
+:- interface.
+:- import_module hlds.
+:- import_module list.
+:- import_module (hlds.hlds_module).
+:- import_module (parse_tree.error_util).
+:- import_module (parse_tree.prog_data).
+:- pred expand_try_goals_in_module(hlds.hlds_module.module_info, hlds.hlds_module.module_info, list.list(parse_tree.error_util.error_spec), list.list(parse_tree.error_util.error_spec)).
+:- mode expand_try_goals_in_module((builtin.in), (builtin.out), (builtin.in), (builtin.out)) is det.
+:- pred try_expand_may_introduce_calls(string, parse_tree.prog_data.arity).
+:- mode try_expand_may_introduce_calls((builtin.in), (builtin.in)) is semidet.

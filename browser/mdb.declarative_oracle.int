@@ -1,0 +1,51 @@
+:- module (mdb.declarative_oracle).
+:- interface.
+:- import_module bool.
+:- import_module io.
+:- import_module (mdb.browser_info).
+:- import_module (mdb.declarative_debugger).
+:- import_module (mdb.declarative_user).
+:- import_module (mdb.help).
+:- import_module (mdbcomp.prim_data).
+:- import_module (mdbcomp.rtti_access).
+:- type oracle_state.
+:- type oracle_response(T)
+	--->	oracle_response_answer(mdb.declarative_debugger.decl_answer(T))
+	;	oracle_response_show_info(io.output_stream)
+	;	oracle_response_change_search(mdb.declarative_user.user_search_mode)
+	;	oracle_response_undo 
+	;	oracle_response_exit_diagnosis(T)
+	;	oracle_response_abort_diagnosis .
+:- pred add_trusted_module(mdbcomp.prim_data.module_name, mdb.declarative_oracle.oracle_state, mdb.declarative_oracle.oracle_state).
+:- mode add_trusted_module((builtin.in), (builtin.in), (builtin.out)) is det.
+:- pred add_trusted_pred_or_func(mdbcomp.rtti_access.proc_layout, mdb.declarative_oracle.oracle_state, mdb.declarative_oracle.oracle_state).
+:- mode add_trusted_pred_or_func((builtin.in), (builtin.in), (builtin.out)) is det.
+:- pred answer_known(mdb.declarative_oracle.oracle_state, mdb.declarative_debugger.decl_question(T), mdb.declarative_debugger.decl_answer(T)).
+:- mode answer_known((builtin.in), (builtin.in), builtin.out(((mdb.declarative_debugger).known_answer))) is semidet.
+:- func get_browser_state(mdb.declarative_oracle.oracle_state) = mdb.browser_info.browser_persistent_state.
+:- pred get_trusted_list(mdb.declarative_oracle.oracle_state, bool.bool, string).
+:- mode get_trusted_list((builtin.in), (builtin.in), (builtin.out)) is det.
+:- func get_user_input_stream(mdb.declarative_oracle.oracle_state) = io.input_stream.
+:- func get_user_output_stream(mdb.declarative_oracle.oracle_state) = io.output_stream.
+:- pred oracle_confirm_bug(mdb.declarative_debugger.decl_bug, mdb.declarative_debugger.decl_evidence(T), mdb.declarative_debugger.decl_confirmation, mdb.declarative_oracle.oracle_state, mdb.declarative_oracle.oracle_state, io.io, io.io).
+:- mode oracle_confirm_bug((builtin.in), (builtin.in), (builtin.out), (builtin.in), (builtin.out), (builtin.di), (builtin.uo)) is cc_multi.
+:- pred oracle_response_undoable(mdb.declarative_oracle.oracle_response(T)).
+:- mode oracle_response_undoable((builtin.in)) is semidet.
+:- pred oracle_state_init(io.input_stream, io.output_stream, mdb.browser_info.browser_persistent_state, mdb.help.system, mdb.declarative_oracle.oracle_state).
+:- mode oracle_state_init((builtin.in), (builtin.in), (builtin.in), (builtin.in), (builtin.out)) is det.
+:- pred query_oracle(mdb.declarative_debugger.decl_question(T), mdb.declarative_oracle.oracle_response(T), bool.bool, mdb.declarative_oracle.oracle_state, mdb.declarative_oracle.oracle_state, io.io, io.io).
+:- mode query_oracle((builtin.in), (builtin.out), (builtin.out), (builtin.in), (builtin.out), (builtin.di), (builtin.uo)) is cc_multi.
+:- pred remove_trusted(int, mdb.declarative_oracle.oracle_state, mdb.declarative_oracle.oracle_state).
+:- mode remove_trusted((builtin.in), (builtin.in), (builtin.out)) is semidet.
+:- pred reset_oracle_knowledge_base(mdb.declarative_oracle.oracle_state, mdb.declarative_oracle.oracle_state).
+:- mode reset_oracle_knowledge_base((builtin.in), (builtin.out)) is det.
+:- pred revise_oracle(mdb.declarative_debugger.decl_question(T), mdb.declarative_oracle.oracle_state, mdb.declarative_oracle.oracle_state).
+:- mode revise_oracle((builtin.in), (builtin.in), (builtin.out)) is det.
+:- pred set_browser_state(mdb.browser_info.browser_persistent_state, mdb.declarative_oracle.oracle_state, mdb.declarative_oracle.oracle_state).
+:- mode set_browser_state((builtin.in), (builtin.in), (builtin.out)) is det.
+:- pred set_oracle_testing_flag(bool.bool, mdb.declarative_oracle.oracle_state, mdb.declarative_oracle.oracle_state).
+:- mode set_oracle_testing_flag((builtin.in), (builtin.in), (builtin.out)) is det.
+:- pred trust_standard_library(mdb.declarative_oracle.oracle_state, mdb.declarative_oracle.oracle_state).
+:- mode trust_standard_library((builtin.in), (builtin.out)) is det.
+:- pred update_revised_knowledge_base(mdb.declarative_oracle.oracle_state, mdb.declarative_oracle.oracle_state, mdb.declarative_oracle.oracle_state).
+:- mode update_revised_knowledge_base((builtin.in), (builtin.in), (builtin.out)) is det.
