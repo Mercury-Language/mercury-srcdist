@@ -1,0 +1,11 @@
+:- module require.
+:- interface.
+:- pred error(string).
+:- mode error((builtin.in)) is erroneous.
+:- func func_error(string) = V_1 is erroneous.
+:- pred report_lookup_error(string, K, V).
+:- mode report_lookup_error((builtin.in), (builtin.in), (builtin.unused)) is erroneous.
+:- pred report_lookup_error(string, K).
+:- mode report_lookup_error((builtin.in), (builtin.in)) is erroneous.
+:- pred require((pred), string).
+:- mode require(((pred) is semidet), (builtin.in)) is det.

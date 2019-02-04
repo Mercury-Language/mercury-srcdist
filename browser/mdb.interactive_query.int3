@@ -1,0 +1,5 @@
+:- module (mdb.interactive_query).
+:- interface.
+:- type imports.
+:- type options.
+:- type query_type.

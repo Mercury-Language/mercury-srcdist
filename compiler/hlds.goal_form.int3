@@ -1,0 +1,5 @@
+:- module (hlds.goal_form).
+:- interface.
+:- type goal_loop_or_throw_status.
+:- type goal_loop_status.
+:- type goal_throw_status.

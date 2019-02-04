@@ -1,0 +1,12 @@
+:- module (libs.globals).
+:- interface.
+:- type c_compiler_type.
+:- type compilation_target.
+:- type foreign_language.
+:- type gc_method.
+:- type globals.
+:- type il_version_number.
+:- type may_be_thread_safe.
+:- type source_file_map.
+:- type tags_method.
+:- type termination_norm.

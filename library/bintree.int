@@ -1,0 +1,63 @@
+:- module bintree.
+:- interface.
+:- import_module assoc_list.
+:- import_module list.
+:- type bintree(K, V).
+:- pred balance(bintree.bintree(K, V), bintree.bintree(K, V)).
+:- mode balance((builtin.in), (builtin.out)) is det.
+:- func balance(bintree.bintree(K, V)) = bintree.bintree(K, V).
+:- pred branching_factor(bintree.bintree(_K, _V), int, int).
+:- mode branching_factor((builtin.in), (builtin.out), (builtin.out)) is det.
+:- pred count(bintree.bintree(_K, _V), int).
+:- mode count((builtin.in), (builtin.out)) is det.
+:- func count(bintree.bintree(_K, _V)) = int.
+:- pred delete(bintree.bintree(K, V), K, bintree.bintree(K, V)).
+:- mode delete((builtin.in), (builtin.in), (builtin.out)) is det.
+:- func delete(bintree.bintree(K, V), K) = bintree.bintree(K, V).
+:- pred depth(bintree.bintree(_K, _V), int).
+:- mode depth((builtin.in), (builtin.out)) is det.
+:- func depth(bintree.bintree(_K, _V)) = int.
+:- pred from_corresponding_lists(list.list(K), list.list(V), bintree.bintree(K, V)).
+:- mode from_corresponding_lists((builtin.in), (builtin.in), (builtin.out)) is det.
+:- func from_corresponding_lists(list.list(K), list.list(V)) = bintree.bintree(K, V).
+:- pred from_list(assoc_list.assoc_list(K, V), bintree.bintree(K, V)).
+:- mode from_list((builtin.in), (builtin.out)) is det.
+:- func from_list(assoc_list.assoc_list(K, V)) = bintree.bintree(K, V).
+:- pred from_sorted_list(assoc_list.assoc_list(K, V), bintree.bintree(K, V)).
+:- mode from_sorted_list((builtin.in), (builtin.out)) is det.
+:- func from_sorted_list(assoc_list.assoc_list(K, V)) = bintree.bintree(K, V).
+:- pred init(bintree.bintree(K, V)).
+:- mode init((builtin.uo)) is det.
+:- pred insert(bintree.bintree(K, V), K, V, bintree.bintree(K, V)).
+:- mode insert((builtin.in), (builtin.in), (builtin.in), (builtin.out)) is semidet.
+:- pred keys(bintree.bintree(K, _V), list.list(K)).
+:- mode keys((builtin.in), (builtin.out)) is det.
+:- func keys(bintree.bintree(K, _V)) = list.list(K).
+:- pred lookup(bintree.bintree(K, V), K, V).
+:- mode lookup((builtin.in), (builtin.in), (builtin.out)) is det.
+:- func lookup(bintree.bintree(K, V), K) = V.
+:- pred lower_bound_lookup(bintree.bintree(K, V), K, K, V).
+:- mode lower_bound_lookup((builtin.in), (builtin.in), (builtin.out), (builtin.out)) is det.
+:- pred lower_bound_search(bintree.bintree(K, V), K, K, V).
+:- mode lower_bound_search((builtin.in), (builtin.in), (builtin.out), (builtin.out)) is semidet.
+:- pred remove(bintree.bintree(K, V), K, V, bintree.bintree(K, V)).
+:- mode remove((builtin.in), (builtin.in), (builtin.out), (builtin.out)) is semidet.
+:- pred search(bintree.bintree(K, V), K, V).
+:- mode search((builtin.in), (builtin.in), (builtin.in)) is semidet.
+:- mode search((builtin.in), (builtin.in), (builtin.out)) is semidet.
+:- pred set(bintree.bintree(K, V), K, V, bintree.bintree(K, V)).
+:- mode set((builtin.di), (builtin.di), (builtin.di), (builtin.uo)) is det.
+:- mode set((builtin.in), (builtin.in), (builtin.in), (builtin.out)) is det.
+:- func set(bintree.bintree(K, V), K, V) = bintree.bintree(K, V).
+:- pred to_list(bintree.bintree(K, V), assoc_list.assoc_list(K, V)).
+:- mode to_list((builtin.in), (builtin.out)) is det.
+:- func to_list(bintree.bintree(K, V)) = assoc_list.assoc_list(K, V).
+:- pred update(bintree.bintree(K, V), K, V, bintree.bintree(K, V)).
+:- mode update((builtin.in), (builtin.in), (builtin.in), (builtin.out)) is semidet.
+:- pred upper_bound_lookup(bintree.bintree(K, V), K, K, V).
+:- mode upper_bound_lookup((builtin.in), (builtin.in), (builtin.out), (builtin.out)) is det.
+:- pred upper_bound_search(bintree.bintree(K, V), K, K, V).
+:- mode upper_bound_search((builtin.in), (builtin.in), (builtin.out), (builtin.out)) is semidet.
+:- pred values(bintree.bintree(_K, V), list.list(V)).
+:- mode values((builtin.in), (builtin.out)) is det.
+:- func values(bintree.bintree(_K, V)) = list.list(V).

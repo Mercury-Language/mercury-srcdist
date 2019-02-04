@@ -1,0 +1,23 @@
+:- module (check_hlds.modes).
+:- interface.
+:- import_module bool.
+:- import_module hlds.
+:- import_module list.
+:- import_module maybe.
+:- import_module parse_tree.
+:- import_module (check_hlds.mode_info).
+:- import_module (hlds.hlds_goal).
+:- import_module (hlds.hlds_module).
+:- import_module (hlds.hlds_pred).
+:- import_module (hlds.instmap).
+:- import_module (parse_tree.error_util).
+:- import_module (parse_tree.prog_data).
+:- type after_goals
+	--->	no_after_goals 
+	;	after_goals(((check_hlds.modes).after_instmap) :: hlds.instmap.instmap, ((check_hlds.modes).after_goals) :: list.list(hlds.hlds_goal.hlds_goal)).
+:- type extra_goals
+	--->	no_extra_goals 
+	;	extra_goals(((check_hlds.modes).extra_before_main) :: list.list(hlds.hlds_goal.hlds_goal), ((check_hlds.modes).extra_after_main) :: list.list(hlds.hlds_goal.hlds_goal)).
+:- type modes_safe_to_continue
+	--->	modes_safe_to_continue 
+	;	modes_unsafe_to_continue .

@@ -1,0 +1,5 @@
+:- module (hlds.hlds_out).
+:- interface.
+:- type is_first.
+:- type is_last.
+:- type maybe_vartypes.

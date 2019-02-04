@@ -1,0 +1,100 @@
+:- module graph.
+:- use_module builtin, counter, list, map, private_builtin, require, set, solutions, unit.
+:- type graph.node(N)
+	--->	node(int).
+:- type graph.graph(N, A)
+	--->	graph((graph.node_supply) :: counter.counter, (graph.arc_supply) :: counter.counter, (graph.node_map) :: tree234.tree234(graph.node(N), N), (graph.arc_map) :: tree234.tree234(graph.arc(A), graph.arc_info(N, A)), (graph.edge_map) :: tree234.tree234(graph.node(N), tree234.tree234(graph.arc(A), graph.node(N)))).
+:- type graph.arc_info(N, A)
+	--->	arc_info(graph.node(N), graph.node(N), A).
+:- type graph.arc(A)
+	--->	arc(int).
+:- pred graph.select_node(tree234.tree234(graph.node(N_1), N_1), N_1, graph.node(N_1)).
+:- mode graph.select_node((builtin.in), (builtin.in), (builtin.out)) is nondet.
+:- pred graph.path_2(graph.graph(N_1, A_2), graph.node(N_1), graph.node(N_1), list.list(graph.node(N_1)), list.list(graph.arc(A_2))).
+:- mode graph.path_2((builtin.in), (builtin.in), (builtin.in), (builtin.in), (builtin.out)) is nondet.
+:- mode graph.path_2((builtin.in), (builtin.in), (builtin.out), (builtin.in), (builtin.out)) is nondet.
+graph.init = G_2 :-
+    graph.init(G_2).
+graph.search_node(Graph_4, NodeInfo_5, Node_6) :-
+    Graph_4 = graph.graph(V_9, V_8, NodeTable_7, V_11, V_10) : graph.graph(N_1, A_2),
+    map.member(NodeTable_7, Node_6, NodeInfo_5).
+graph.find_matching_nodes(Graph_4, NodeInfo_5, NodeSet_6) :-
+    Graph_4 = graph.graph(V_11, V_10, NodeTable_7, V_13, V_12) : graph.graph(N_1, A_2),
+    V_9 = graph.select_node(NodeTable_7, NodeInfo_5) : (pred graph.node(N_1)),
+    solutions.solutions(V_9, NodeList_8),
+    set.sorted_list_to_set(NodeList_8, NodeSet_6).
+graph.find_matching_nodes(G_4, N_5) = S_6 :-
+    graph.find_matching_nodes(G_4, N_5, S_6).
+graph.node_contents(G_4, N_5, I_6) :-
+    G_4 = graph.graph(V_9, V_8, V_7, V_11, V_10) : graph.graph(N_1, A_2),
+    map.lookup(V_7, N_5, I_6).
+graph.node_contents(G_4, N_5) = NI_6 :-
+    graph.node_contents(G_4, N_5, NI_6).
+graph.successors(G_4, N_5, Ss_6) :-
+    G_4 = graph.graph(V_13, V_12, V_11, V_10, V_9) : graph.graph(N_1, A_2),
+    map.lookup(V_9, N_5, E_7),
+    map.values(E_7, SsList_8),
+    set.list_to_set(SsList_8, Ss_6).
+graph.successors(G_4, N_5) = S_6 :-
+    graph.successors(G_4, N_5, S_6).
+graph.nodes(G_3, Ns_4) :-
+    G_3 = graph.graph(V_8, V_7, V_6, V_10, V_9) : graph.graph(N_1, A_2),
+    map.keys(V_6, Ns1_5),
+    set.list_to_set(Ns1_5, Ns_4).
+graph.nodes(G_3) = S_4 :-
+    graph.nodes(G_3, S_4).
+graph.arc_contents(G_6, N_7, S_8, E_9, A_10) :-
+    G_6 = graph.graph(V_15, V_14, V_13, V_12, V_16) : graph.graph(N_1, A_2),
+    map.lookup(V_12, N_7, I_11),
+    I_11 = graph.arc_info(S_8, E_9, A_10) : graph.arc_info(N_1, A_2).
+graph.path(G_5, S_6, E_7, Path_8) :-
+    V_9 = list.[] : list.list(graph.node(N_1)),
+    graph.path_2(G_5, S_6, E_7, V_9, Path_8).
+graph.select_node(NodeTable_4, NodeInfo_5, Node_6) :-
+    map.member(NodeTable_4, Node_6, NodeInfo_5).
+:- pragma exceptions(predicate, (graph.init), 1, 0, may_throw(user_exception)).
+:- pragma exceptions(function, (graph.init), 1, 0, may_throw(user_exception)).
+:- pragma exceptions(predicate, (graph.set_node), 4, 0, may_throw(user_exception)).
+:- pragma exceptions(predicate, (graph.insert_node), 4, 0, may_throw(user_exception)).
+:- pragma exceptions(predicate, (graph.det_insert_node), 4, 0, may_throw(user_exception)).
+:- pragma exceptions(predicate, (graph.search_node), 3, 0, may_throw(user_exception)).
+:- pragma exceptions(predicate, (graph.find_matching_nodes), 3, 0, may_throw(user_exception)).
+:- pragma exceptions(function, (graph.find_matching_nodes), 3, 0, may_throw(user_exception)).
+:- pragma exceptions(predicate, (graph.node_contents), 3, 0, may_throw(user_exception)).
+:- pragma exceptions(function, (graph.node_contents), 3, 0, may_throw(user_exception)).
+:- pragma exceptions(predicate, (graph.successors), 3, 0, may_throw(user_exception)).
+:- pragma exceptions(function, (graph.successors), 3, 0, may_throw(user_exception)).
+:- pragma exceptions(predicate, (graph.nodes), 2, 0, may_throw(user_exception)).
+:- pragma exceptions(function, (graph.nodes), 2, 0, may_throw(user_exception)).
+:- pragma exceptions(predicate, (graph.set_edge), 6, 0, may_throw(user_exception)).
+:- pragma exceptions(predicate, (graph.insert_edge), 6, 0, may_throw(user_exception)).
+:- pragma exceptions(predicate, (graph.det_insert_edge), 6, 0, may_throw(user_exception)).
+:- pragma exceptions(predicate, (graph.arc_contents), 5, 0, may_throw(user_exception)).
+:- pragma exceptions(predicate, (graph.path), 4, 0, may_throw(user_exception)).
+:- pragma exceptions(predicate, (graph.path), 4, 1, may_throw(user_exception)).
+:- pragma exceptions(predicate, (graph.select_node), 3, 0, may_throw(user_exception)).
+:- pragma exceptions(predicate, (graph.path_2), 5, 0, may_throw(user_exception)).
+:- pragma exceptions(predicate, (graph.path_2), 5, 1, may_throw(user_exception)).
+:- pragma termination_info(graph.init((builtin.out)), infinite, can_loop).
+:- pragma termination_info((graph.init) = (builtin.out), infinite, can_loop).
+:- pragma termination_info(graph.set_node((builtin.in), (builtin.in), (builtin.out), (builtin.out)), infinite, can_loop).
+:- pragma termination_info(graph.insert_node((builtin.in), (builtin.in), (builtin.out), (builtin.out)), infinite, can_loop).
+:- pragma termination_info(graph.det_insert_node((builtin.in), (builtin.in), (builtin.out), (builtin.out)), infinite, can_loop).
+:- pragma termination_info(graph.search_node((builtin.in), (builtin.in), (builtin.out)), infinite, can_loop).
+:- pragma termination_info(graph.find_matching_nodes((builtin.in), (builtin.in), (builtin.out)), infinite, can_loop).
+:- pragma termination_info(graph.find_matching_nodes((builtin.in), (builtin.in)) = (builtin.out), infinite, can_loop).
+:- pragma termination_info(graph.node_contents((builtin.in), (builtin.in), (builtin.out)), infinite, can_loop).
+:- pragma termination_info(graph.node_contents((builtin.in), (builtin.in)) = (builtin.out), infinite, can_loop).
+:- pragma termination_info(graph.successors((builtin.in), (builtin.in), (builtin.out)), infinite, can_loop).
+:- pragma termination_info(graph.successors((builtin.in), (builtin.in)) = (builtin.out), infinite, can_loop).
+:- pragma termination_info(graph.nodes((builtin.in), (builtin.out)), infinite, can_loop).
+:- pragma termination_info(graph.nodes((builtin.in)) = (builtin.out), infinite, can_loop).
+:- pragma termination_info(graph.set_edge((builtin.in), (builtin.in), (builtin.in), (builtin.in), (builtin.out), (builtin.out)), infinite, can_loop).
+:- pragma termination_info(graph.insert_edge((builtin.in), (builtin.in), (builtin.in), (builtin.in), (builtin.out), (builtin.out)), infinite, can_loop).
+:- pragma termination_info(graph.det_insert_edge((builtin.in), (builtin.in), (builtin.in), (builtin.in), (builtin.out), (builtin.out)), infinite, can_loop).
+:- pragma termination_info(graph.arc_contents((builtin.in), (builtin.in), (builtin.out), (builtin.out), (builtin.out)), infinite, can_loop).
+:- pragma termination_info(graph.path((builtin.in), (builtin.in), (builtin.in), (builtin.out)), infinite, can_loop).
+:- pragma termination_info(graph.path((builtin.in), (builtin.in), (builtin.out), (builtin.out)), infinite, can_loop).
+:- pragma termination_info(graph.select_node((builtin.in), (builtin.in), (builtin.out)), infinite, can_loop).
+:- pragma termination_info(graph.path_2((builtin.in), (builtin.in), (builtin.in), (builtin.in), (builtin.out)), infinite, can_loop).
+:- pragma termination_info(graph.path_2((builtin.in), (builtin.in), (builtin.out), (builtin.in), (builtin.out)), infinite, can_loop).

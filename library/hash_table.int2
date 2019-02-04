@@ -1,0 +1,14 @@
+:- module hash_table.
+:- interface.
+:- import_module array.
+:- import_module assoc_list.
+:- import_module char.
+:- type hash_pred(K) == pred(K, int).
+:- type hash_table(K, V)
+	--->	ht((hash_table.num_occupants) :: int, (hash_table.max_occupants) :: int, (hash_table.hash_pred) :: hash_table.hash_pred(K), (hash_table.buckets) :: array.array(assoc_list.assoc_list(K, V))).
+:- type hash_table(K, V).
+:- inst (hash_pred) == (pred((builtin.in), (builtin.out)) is det).
+:- inst (hash_table) == bound(ht(ground, ground, (hash_table.hash_pred), (array.array))).
+:- mode (hash_table_di) == builtin.di((hash_table.hash_table)).
+:- mode (hash_table_ui) == builtin.in((hash_table.hash_table)).
+:- mode (hash_table_uo) == builtin.out((hash_table.hash_table)).

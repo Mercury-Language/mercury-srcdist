@@ -1,0 +1,7 @@
+:- module (transform_hlds.term_constr_main).
+:- interface.
+:- type constr_arg_size_info.
+:- type constr_termination_info.
+:- type intermod_status.
+:- type term_reason.
+:- type termination2_info.

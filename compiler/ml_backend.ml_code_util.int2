@@ -1,0 +1,31 @@
+:- module (ml_backend.ml_code_util).
+:- interface.
+:- import_module bool.
+:- import_module list.
+:- import_module map.
+:- import_module maybe.
+:- import_module set.
+:- import_module (backend_libs.builtin_ops).
+:- import_module (hlds.code_model).
+:- import_module (hlds.hlds_module).
+:- import_module (hlds.hlds_pred).
+:- import_module (hlds.hlds_rtti).
+:- import_module (libs.globals).
+:- import_module (mdbcomp.prim_data).
+:- import_module (ml_backend.ml_global_data).
+:- import_module (ml_backend.mlds).
+:- import_module (parse_tree.prog_data).
+:- type cond_seq
+	--->	cond_seq(int).
+:- type conv_seq
+	--->	conv_seq(int).
+:- type gen_pred == pred(list.list(ml_backend.mlds.mlds_defn), list.list(ml_backend.mlds.statement), ml_backend.ml_code_util.ml_gen_info, ml_backend.ml_code_util.ml_gen_info).
+:- type label_num == int.
+:- type ml_gen_info.
+:- type ml_ground_term
+	--->	ml_ground_term(ml_backend.mlds.mlds_rval, parse_tree.prog_data.mer_type, ml_backend.mlds.mlds_type).
+:- type ml_ground_term_map == map.map(parse_tree.prog_data.prog_var, ml_backend.ml_code_util.ml_ground_term).
+:- type ml_label_func == ml_backend.mlds.mlds_func_sequence_num.
+:- type success_cont
+	--->	success_cont(ml_backend.mlds.mlds_rval, ml_backend.mlds.mlds_rval, list.list(ml_backend.mlds.mlds_type), list.list(ml_backend.mlds.mlds_lval)).
+:- inst (gen_pred) == (pred((builtin.out), (builtin.out), (builtin.in), (builtin.out)) is det).

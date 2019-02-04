@@ -1,0 +1,24 @@
+:- module (check_hlds.build_mode_constraints).
+:- interface.
+:- import_module bimap.
+:- import_module hlds.
+:- import_module list.
+:- import_module mdbcomp.
+:- import_module parse_tree.
+:- import_module set.
+:- import_module (check_hlds.abstract_mode_constraints).
+:- import_module (hlds.hlds_goal).
+:- import_module (hlds.hlds_module).
+:- import_module (hlds.hlds_pred).
+:- import_module (mdbcomp.program_representation).
+:- import_module (parse_tree.prog_data).
+:- type args == list.list(parse_tree.prog_data.prog_var).
+:- type mc_prog_var
+	--->	in(parse_tree.prog_data.prog_var, hlds.hlds_pred.pred_id).
+:- type mc_rep_var
+	--->	at(check_hlds.build_mode_constraints.mc_prog_var, mdbcomp.program_representation.goal_path).
+:- type mc_var_info
+	--->	mc_var_info(((check_hlds.build_mode_constraints).mc_varset) :: check_hlds.abstract_mode_constraints.mc_varset, ((check_hlds.build_mode_constraints).rep_var_map) :: check_hlds.build_mode_constraints.mc_var_map).
+:- type mc_var_map == bimap.bimap(check_hlds.build_mode_constraints.mc_rep_var, check_hlds.abstract_mode_constraints.mc_var).
+:- type mode_constraints == check_hlds.abstract_mode_constraints.pred_p_c_constraints.
+:- type nonlocals == set.set(parse_tree.prog_data.prog_var).

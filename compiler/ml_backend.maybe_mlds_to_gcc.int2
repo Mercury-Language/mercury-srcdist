@@ -1,0 +1,7 @@
+:- module (ml_backend.maybe_mlds_to_gcc).
+:- interface.
+:- import_module bool.
+:- import_module (ml_backend.mlds).
+:- use_module io.
+:- type frontend_callback(T) == pred(T, io.state, io.state).
+:- inst (frontend_callback) == (pred((builtin.out), (builtin.di), (builtin.uo)) is det).

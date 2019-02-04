@@ -1,0 +1,31 @@
+:- module (ml_backend.ml_global_data).
+:- interface.
+:- import_module list.
+:- import_module map.
+:- import_module (backend_libs.rtti).
+:- import_module (ml_backend.mlds).
+:- type ml_global_data.
+:- type ml_rtti_rval_type_map == map.map(backend_libs.rtti.rtti_id, ml_backend.ml_global_data.ml_rval_and_type).
+:- type ml_rval_and_type
+	--->	ml_rval_and_type(ml_backend.mlds.mlds_rval, ml_backend.mlds.mlds_type).
+:- pred ml_global_data_add_flat_cell_defn(ml_backend.mlds.mlds_defn, ml_backend.ml_global_data.ml_global_data, ml_backend.ml_global_data.ml_global_data).
+:- mode ml_global_data_add_flat_cell_defn((builtin.in), (builtin.in), (builtin.out)) is det.
+:- pred ml_global_data_add_flat_rtti_defn(ml_backend.mlds.mlds_defn, ml_backend.ml_global_data.ml_global_data, ml_backend.ml_global_data.ml_global_data).
+:- mode ml_global_data_add_flat_rtti_defn((builtin.in), (builtin.in), (builtin.out)) is det.
+:- pred ml_global_data_add_flat_rtti_defns(list.list(ml_backend.mlds.mlds_defn), ml_backend.ml_global_data.ml_global_data, ml_backend.ml_global_data.ml_global_data).
+:- mode ml_global_data_add_flat_rtti_defns((builtin.in), (builtin.in), (builtin.out)) is det.
+:- pred ml_global_data_add_maybe_nonflat_defns(list.list(ml_backend.mlds.mlds_defn), ml_backend.ml_global_data.ml_global_data, ml_backend.ml_global_data.ml_global_data).
+:- mode ml_global_data_add_maybe_nonflat_defns((builtin.in), (builtin.in), (builtin.out)) is det.
+:- pred ml_global_data_add_pdup_rtti_id(backend_libs.rtti.rtti_id, ml_backend.ml_global_data.ml_rval_and_type, ml_backend.ml_global_data.ml_global_data, ml_backend.ml_global_data.ml_global_data).
+:- mode ml_global_data_add_pdup_rtti_id((builtin.in), (builtin.in), (builtin.in), (builtin.out)) is det.
+:- pred ml_global_data_get_all_global_defns(ml_backend.ml_global_data.ml_global_data, list.list(ml_backend.mlds.mlds_defn)).
+:- mode ml_global_data_get_all_global_defns((builtin.in), (builtin.out)) is det.
+:- pred ml_global_data_get_global_defns(ml_backend.ml_global_data.ml_global_data, list.list(ml_backend.mlds.mlds_defn), list.list(ml_backend.mlds.mlds_defn), list.list(ml_backend.mlds.mlds_defn)).
+:- mode ml_global_data_get_global_defns((builtin.in), (builtin.out), (builtin.out), (builtin.out)) is det.
+:- pred ml_global_data_get_pdup_rval_type_map(ml_backend.ml_global_data.ml_global_data, ml_backend.ml_global_data.ml_rtti_rval_type_map).
+:- mode ml_global_data_get_pdup_rval_type_map((builtin.in), (builtin.out)) is det.
+:- pred ml_global_data_get_unique_const_num(int, ml_backend.ml_global_data.ml_global_data, ml_backend.ml_global_data.ml_global_data).
+:- mode ml_global_data_get_unique_const_num((builtin.out), (builtin.in), (builtin.out)) is det.
+:- func ml_global_data_init = ml_backend.ml_global_data.ml_global_data.
+:- pred ml_global_data_set_rev_maybe_nonflat_defns(list.list(ml_backend.mlds.mlds_defn), ml_backend.ml_global_data.ml_global_data, ml_backend.ml_global_data.ml_global_data).
+:- mode ml_global_data_set_rev_maybe_nonflat_defns((builtin.in), (builtin.in), (builtin.out)) is det.

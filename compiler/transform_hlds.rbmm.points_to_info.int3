@@ -1,0 +1,5 @@
+:- module ((transform_hlds.rbmm).points_to_info).
+:- interface.
+:- type rpt_alpha_mapping.
+:- type rpta_info.
+:- type rpta_info_table.

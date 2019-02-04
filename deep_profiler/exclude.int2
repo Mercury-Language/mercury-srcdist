@@ -1,0 +1,10 @@
+:- module exclude.
+:- interface.
+:- import_module io.
+:- import_module maybe.
+:- import_module profile.
+:- type exclude_file.
+:- implementation.
+:- import_module set.
+:- type exclude_file == set.set(exclude.exclude_spec).
+:- type exclude_spec.

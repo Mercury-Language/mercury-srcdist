@@ -1,0 +1,24 @@
+:- module (hlds.hlds_rtti).
+:- interface.
+:- import_module array.
+:- import_module assoc_list.
+:- import_module bool.
+:- import_module list.
+:- import_module set.
+:- import_module (hlds.hlds_module).
+:- import_module (hlds.hlds_pred).
+:- import_module (mdbcomp.prim_data).
+:- import_module (parse_tree.prog_data).
+:- type instance_method_constraints
+	--->	instance_method_constraints(parse_tree.prog_data.class_id, list.list(parse_tree.prog_data.mer_type), list.list(parse_tree.prog_data.prog_constraint), parse_tree.prog_data.prog_constraints).
+:- type prog_var_name == string.
+:- type rtti_proc_label
+	--->	rtti_proc_label(((hlds.hlds_rtti).pred_or_func) :: mdbcomp.prim_data.pred_or_func, ((hlds.hlds_rtti).this_module) :: mdbcomp.prim_data.module_name, ((hlds.hlds_rtti).proc_module) :: mdbcomp.prim_data.module_name, ((hlds.hlds_rtti).proc_name) :: string, ((hlds.hlds_rtti).proc_arity) :: parse_tree.prog_data.arity, ((hlds.hlds_rtti).proc_arg_types) :: list.list(parse_tree.prog_data.mer_type), ((hlds.hlds_rtti).pred_id) :: hlds.hlds_pred.pred_id, ((hlds.hlds_rtti).proc_id) :: hlds.hlds_pred.proc_id, ((hlds.hlds_rtti).proc_headvars) :: assoc_list.assoc_list(parse_tree.prog_data.prog_var, hlds.hlds_rtti.prog_var_name), ((hlds.hlds_rtti).proc_arg_modes) :: list.list(hlds.hlds_pred.arg_mode), ((hlds.hlds_rtti).proc_interface_detism) :: parse_tree.prog_data.determinism, ((hlds.hlds_rtti).pred_is_imported) :: bool.bool, ((hlds.hlds_rtti).pred_is_pseudo_imported) :: bool.bool, ((hlds.hlds_rtti).pred_info_origin) :: hlds.hlds_pred.pred_origin, ((hlds.hlds_rtti).proc_is_exported) :: bool.bool, ((hlds.hlds_rtti).proc_is_imported) :: bool.bool).
+:- type rtti_var_info
+	--->	type_info_var(parse_tree.prog_data.mer_type)
+	;	typeclass_info_var(parse_tree.prog_data.prog_constraint)
+	;	non_rtti_var .
+:- type rtti_varmaps.
+:- type type_info_locn
+	--->	type_info(parse_tree.prog_data.prog_var)
+	;	typeclass_info(parse_tree.prog_data.prog_var, int).

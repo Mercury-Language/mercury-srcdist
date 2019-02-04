@@ -1,0 +1,27 @@
+:- module (ml_backend.ml_code_util).
+:- interface.
+:- import_module bool.
+:- import_module list.
+:- import_module map.
+:- import_module maybe.
+:- import_module set.
+:- import_module (backend_libs.builtin_ops).
+:- import_module (hlds.code_model).
+:- import_module (hlds.hlds_module).
+:- import_module (hlds.hlds_pred).
+:- import_module (hlds.hlds_rtti).
+:- import_module (libs.globals).
+:- import_module (mdbcomp.prim_data).
+:- import_module (ml_backend.ml_global_data).
+:- import_module (ml_backend.mlds).
+:- import_module (parse_tree.prog_data).
+:- type cond_seq.
+:- type conv_seq.
+:- type gen_pred.
+:- type label_num.
+:- type ml_gen_info.
+:- type ml_ground_term.
+:- type ml_ground_term_map.
+:- type ml_label_func.
+:- type success_cont.
+:- inst (gen_pred) == (pred(out, out, in, out) is det).

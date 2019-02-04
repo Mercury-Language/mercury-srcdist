@@ -1,0 +1,27 @@
+:- module measurement_units.
+:- interface.
+:- import_module int.
+:- import_module string.
+:- type memory.
+:- type memory_units
+	--->	units_words 
+	;	units_bytes .
+:- type percent.
+:- type time.
+:- func /(measurement_units.memory, int) = measurement_units.memory is det.
+:- func commas(int) = string.
+:- pred compare_memory(measurement_units.memory, measurement_units.memory, builtin.comparison_result).
+:- mode compare_memory((builtin.in), (builtin.in), (builtin.out)) is det.
+:- func decimal_fraction(string, float) = string.
+:- func format_memory(measurement_units.memory, measurement_units.memory_units, int) = string.
+:- func format_percent(measurement_units.percent) = string.
+:- func format_time(measurement_units.time) = string.
+:- func four_decimal_fraction(float) = string.
+:- func memory_words(int, int) = measurement_units.memory.
+:- func one_decimal_fraction(float) = string.
+:- func percent(float) = measurement_units.percent.
+:- pred percent_at_or_above_threshold(int, measurement_units.percent).
+:- mode percent_at_or_above_threshold((builtin.in), (builtin.in)) is semidet.
+:- func ticks_to_time(int, int) = measurement_units.time.
+:- func time_percall(measurement_units.time, int) = measurement_units.time.
+:- func two_decimal_fraction(float) = string.

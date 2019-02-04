@@ -1,0 +1,69 @@
+:- module (ll_backend.llds_out).
+:- interface.
+:- import_module bool.
+:- import_module io.
+:- import_module list.
+:- import_module map.
+:- import_module (hlds.hlds_llds).
+:- import_module (hlds.hlds_module).
+:- import_module (libs.globals).
+:- import_module (ll_backend.llds).
+:- import_module (mdbcomp.prim_data).
+:- import_module (parse_tree.prog_data).
+:- type decl_id
+	--->	decl_common_type(ll_backend.llds.type_num)
+	;	decl_scalar_common_array(ll_backend.llds.type_num)
+	;	decl_float_label(string)
+	;	decl_code_addr(ll_backend.llds.code_addr)
+	;	decl_data_addr(ll_backend.llds.data_addr)
+	;	decl_foreign_proc_struct(string)
+	;	decl_c_global_var(ll_backend.llds.c_global_var_ref)
+	;	decl_type_info_like_struct(int)
+	;	decl_typeclass_constraint_struct(int).
+:- type decl_set.
+:- type linkage
+	--->	extern 
+	;	static .
+:- func c_data_const_string(libs.globals.globals, bool.bool) = string.
+:- func c_data_linkage_string(ll_backend.llds_out.linkage, bool.bool) = string.
+:- pred decl_set_init(ll_backend.llds_out.decl_set).
+:- mode decl_set_init((builtin.out)) is det.
+:- pred decl_set_insert(ll_backend.llds_out.decl_id, ll_backend.llds_out.decl_set, ll_backend.llds_out.decl_set).
+:- mode decl_set_insert((builtin.in), (builtin.in), (builtin.out)) is det.
+:- pred decl_set_is_member(ll_backend.llds_out.decl_id, ll_backend.llds_out.decl_set).
+:- mode decl_set_is_member((builtin.in), (builtin.in)) is semidet.
+:- func explain_stack_slots(hlds.hlds_llds.stack_slots, parse_tree.prog_data.prog_varset) = string.
+:- func ho_call_variant_to_string(ll_backend.llds.ho_call_variant) = string.
+:- func label_to_c_string(ll_backend.llds.label, bool.bool) = string.
+:- func lval_to_string(ll_backend.llds.lval) = string is semidet.
+:- pred output_code_addr(ll_backend.llds.code_addr, io.io, io.io).
+:- mode output_code_addr((builtin.in), (builtin.di), (builtin.uo)) is det.
+:- pred output_code_addr_decls(ll_backend.llds.code_addr, ll_backend.llds_out.decl_set, ll_backend.llds_out.decl_set, io.io, io.io).
+:- mode output_code_addr_decls((builtin.in), (builtin.in), (builtin.out), (builtin.di), (builtin.uo)) is det.
+:- pred output_data_addr(ll_backend.llds.data_addr, io.io, io.io).
+:- mode output_data_addr((builtin.in), (builtin.di), (builtin.uo)) is det.
+:- pred output_data_addr_decls(ll_backend.llds.data_addr, ll_backend.llds_out.decl_set, ll_backend.llds_out.decl_set, io.io, io.io).
+:- mode output_data_addr_decls((builtin.in), (builtin.in), (builtin.out), (builtin.di), (builtin.uo)) is det.
+:- pred output_data_addr_decls_format(ll_backend.llds.data_addr, string, string, int, int, ll_backend.llds_out.decl_set, ll_backend.llds_out.decl_set, io.io, io.io).
+:- mode output_data_addr_decls_format((builtin.in), (builtin.in), (builtin.in), (builtin.in), (builtin.out), (builtin.in), (builtin.out), (builtin.di), (builtin.uo)) is det.
+:- pred output_data_addrs_decls(list.list(ll_backend.llds.data_addr), string, string, int, int, ll_backend.llds_out.decl_set, ll_backend.llds_out.decl_set, io.io, io.io).
+:- mode output_data_addrs_decls((builtin.in), (builtin.in), (builtin.in), (builtin.in), (builtin.out), (builtin.in), (builtin.out), (builtin.di), (builtin.uo)) is det.
+:- pred output_debug_instruction(ll_backend.llds.instr, io.io, io.io).
+:- mode output_debug_instruction((builtin.in), (builtin.di), (builtin.uo)) is det.
+:- pred output_debug_instruction_and_comment(ll_backend.llds.instr, string, bool.bool, io.io, io.io).
+:- mode output_debug_instruction_and_comment((builtin.in), (builtin.in), (builtin.in), (builtin.di), (builtin.uo)) is det.
+:- pred output_label(ll_backend.llds.label, io.io, io.io).
+:- mode output_label((builtin.in), (builtin.di), (builtin.uo)) is det.
+:- pred output_label(ll_backend.llds.label, bool.bool, io.io, io.io).
+:- mode output_label((builtin.in), (builtin.in), (builtin.di), (builtin.uo)) is det.
+:- pred output_llds(ll_backend.llds.c_file, list.list(hlds.hlds_module.complexity_proc_info), map.map(ll_backend.llds.label, ll_backend.llds.data_addr), io.io, io.io).
+:- mode output_llds((builtin.in), (builtin.in), (builtin.in), (builtin.di), (builtin.uo)) is det.
+:- pred output_rval(ll_backend.llds.rval, io.io, io.io).
+:- mode output_rval((builtin.in), (builtin.di), (builtin.uo)) is det.
+:- pred output_rval_decls(ll_backend.llds.rval, ll_backend.llds_out.decl_set, ll_backend.llds_out.decl_set, io.io, io.io).
+:- mode output_rval_decls((builtin.in), (builtin.in), (builtin.out), (builtin.di), (builtin.uo)) is det.
+:- func proc_tabling_info_var_name(mdbcomp.prim_data.proc_label) = string.
+:- func reg_to_string(ll_backend.llds.reg_type, int) = string.
+:- implementation.
+:- import_module set_tree234.
+:- type decl_set == set_tree234.set_tree234(ll_backend.llds_out.decl_id).

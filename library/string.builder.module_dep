@@ -1,0 +1,13 @@
+module(1, "string.builder.m",
+	(string.builder),
+	{string},
+	{builtin, char, stream, private_builtin},
+	{builtin, char, stream, list, private_builtin},
+	{},
+	{},
+	{},
+	{},
+	{},
+	no_foreign_export,
+	no_main
+).

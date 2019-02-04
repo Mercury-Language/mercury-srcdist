@@ -1,0 +1,11 @@
+:- module (ml_backend.maybe_mlds_to_gcc).
+:- interface.
+:- import_module bool.
+:- import_module (ml_backend.mlds).
+:- use_module io.
+:- type frontend_callback(T) == pred(T, io.state, io.state).
+:- inst (frontend_callback) == (pred((builtin.out), (builtin.di), (builtin.uo)) is det).
+:- pred compile_to_asm(ml_backend.mlds.mlds, bool.bool, io.state, io.state).
+:- mode compile_to_asm((builtin.in), (builtin.out), (builtin.di), (builtin.uo)) is det.
+:- pred run_gcc_backend(ml_backend.mlds.mercury_module_name, ml_backend.maybe_mlds_to_gcc.frontend_callback(T), T, io.state, io.state).
+:- mode run_gcc_backend((builtin.in), builtin.in(((ml_backend.maybe_mlds_to_gcc).frontend_callback)), (builtin.out), (builtin.di), (builtin.uo)) is det.

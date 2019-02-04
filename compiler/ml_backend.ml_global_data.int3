@@ -1,0 +1,5 @@
+:- module (ml_backend.ml_global_data).
+:- interface.
+:- type ml_global_data.
+:- type ml_rtti_rval_type_map.
+:- type ml_rval_and_type.

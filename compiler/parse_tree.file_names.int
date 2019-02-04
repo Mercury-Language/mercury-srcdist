@@ -1,0 +1,32 @@
+:- module (parse_tree.file_names).
+:- interface.
+:- import_module io.
+:- import_module (libs.file_util).
+:- import_module (mdbcomp.prim_data).
+:- type maybe_create_dirs
+	--->	do_create_dirs 
+	;	do_not_create_dirs .
+:- type maybe_search
+	--->	do_search 
+	;	do_not_search .
+:- pred extra_link_obj_file_name(mdbcomp.prim_data.module_name, libs.file_util.file_name, string, parse_tree.file_names.maybe_create_dirs, libs.file_util.file_name, io.io, io.io).
+:- mode extra_link_obj_file_name((builtin.in), (builtin.in), (builtin.in), (builtin.in), (builtin.out), (builtin.di), (builtin.uo)) is det.
+:- pred fact_table_file_name(mdbcomp.prim_data.module_name, libs.file_util.file_name, string, parse_tree.file_names.maybe_create_dirs, libs.file_util.file_name, io.io, io.io).
+:- mode fact_table_file_name((builtin.in), (builtin.in), (builtin.in), (builtin.in), (builtin.out), (builtin.di), (builtin.uo)) is det.
+:- pred file_name_to_module_name(libs.file_util.file_name, mdbcomp.prim_data.module_name).
+:- mode file_name_to_module_name((builtin.in), (builtin.out)) is det.
+:- pred get_class_dir_name(string, io.io, io.io).
+:- mode get_class_dir_name((builtin.out), (builtin.di), (builtin.uo)) is det.
+:- pred mercury_std_library_module_name(mdbcomp.prim_data.module_name).
+:- mode mercury_std_library_module_name((builtin.in)) is semidet.
+:- pred module_name_to_file_name(mdbcomp.prim_data.module_name, string, parse_tree.file_names.maybe_create_dirs, libs.file_util.file_name, io.io, io.io).
+:- mode module_name_to_file_name((builtin.in), (builtin.in), (builtin.in), (builtin.out), (builtin.di), (builtin.uo)) is det.
+:- pred module_name_to_file_name(mdbcomp.prim_data.module_name, libs.file_util.file_name).
+:- mode module_name_to_file_name((builtin.in), (builtin.out)) is det.
+:- pred module_name_to_lib_file_name(string, mdbcomp.prim_data.module_name, string, parse_tree.file_names.maybe_create_dirs, libs.file_util.file_name, io.io, io.io).
+:- mode module_name_to_lib_file_name((builtin.in), (builtin.in), (builtin.in), (builtin.in), (builtin.out), (builtin.di), (builtin.uo)) is det.
+:- pred module_name_to_make_var_name(mdbcomp.prim_data.module_name, string).
+:- mode module_name_to_make_var_name((builtin.in), (builtin.out)) is det.
+:- pred module_name_to_search_file_name(mdbcomp.prim_data.module_name, string, libs.file_util.file_name, io.io, io.io).
+:- mode module_name_to_search_file_name((builtin.in), (builtin.in), (builtin.out), (builtin.di), (builtin.uo)) is det.
+:- func qualify_mercury_std_library_module_name(mdbcomp.prim_data.module_name) = mdbcomp.prim_data.module_name.

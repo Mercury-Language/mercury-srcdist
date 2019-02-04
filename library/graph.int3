@@ -1,0 +1,7 @@
+:- module graph.
+:- interface.
+:- type arc.
+:- type arc(A).
+:- type graph(N).
+:- type node(N).
+:- type graph(N, A).
