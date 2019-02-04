@@ -1,0 +1,55 @@
+:- module (ml_backend.ml_util).
+:- interface.
+:- import_module bool.
+:- import_module hlds.
+:- import_module libs.
+:- import_module list.
+:- import_module maybe.
+:- import_module (hlds.hlds_data).
+:- import_module (hlds.hlds_module).
+:- import_module (libs.globals).
+:- import_module (ml_backend.mlds).
+:- pred code_address_is_for_this_function(ml_backend.mlds.mlds_code_addr, ml_backend.mlds.mlds_module_name, ml_backend.mlds.mlds_entity_name).
+:- mode code_address_is_for_this_function((builtin.in), (builtin.in), (builtin.in)) is semidet.
+:- pred defn_contains_foreign_code(ml_backend.mlds.mlds_target_lang, ml_backend.mlds.mlds_defn).
+:- mode defn_contains_foreign_code((builtin.in), (builtin.in)) is semidet.
+:- pred defn_contains_outline_foreign_proc(libs.globals.foreign_language, ml_backend.mlds.mlds_defn).
+:- mode defn_contains_outline_foreign_proc((builtin.in), (builtin.in)) is semidet.
+:- func defn_contains_var(ml_backend.mlds.mlds_defn, ml_backend.mlds.mlds_data) = bool.bool.
+:- pred defn_is_commit_type_var(ml_backend.mlds.mlds_defn).
+:- mode defn_is_commit_type_var((builtin.in)) is semidet.
+:- pred defn_is_function(ml_backend.mlds.mlds_defn).
+:- mode defn_is_function((builtin.in)) is semidet.
+:- pred defn_is_public(ml_backend.mlds.mlds_defn).
+:- mode defn_is_public((builtin.in)) is semidet.
+:- pred defn_is_type(ml_backend.mlds.mlds_defn).
+:- mode defn_is_type((builtin.in)) is semidet.
+:- pred defn_is_type_ctor_info(ml_backend.mlds.mlds_defn).
+:- mode defn_is_type_ctor_info((builtin.in)) is semidet.
+:- pred defns_contain_main(list.list(ml_backend.mlds.mlds_defn)).
+:- mode defns_contain_main((builtin.in)) is semidet.
+:- func defns_contains_var(list.list(ml_backend.mlds.mlds_defn), ml_backend.mlds.mlds_data) = bool.bool.
+:- func gen_init_array(((func T) = ml_backend.mlds.mlds_initializer), list.list(T)) = ml_backend.mlds.mlds_initializer.
+:- func gen_init_bool(bool.bool) = ml_backend.mlds.mlds_initializer.
+:- func gen_init_boxed_int(int) = ml_backend.mlds.mlds_initializer.
+:- func gen_init_builtin_const(string) = ml_backend.mlds.mlds_initializer.
+:- func gen_init_foreign(libs.globals.foreign_language, string) = ml_backend.mlds.mlds_initializer.
+:- func gen_init_int(int) = ml_backend.mlds.mlds_initializer.
+:- func gen_init_maybe(ml_backend.mlds.mlds_type, ((func T) = ml_backend.mlds.mlds_initializer), maybe.maybe(T)) = ml_backend.mlds.mlds_initializer.
+:- func gen_init_null_pointer(ml_backend.mlds.mlds_type) = ml_backend.mlds.mlds_initializer.
+:- func gen_init_reserved_address(hlds.hlds_module.module_info, hlds.hlds_data.reserved_address) = ml_backend.mlds.mlds_initializer.
+:- func gen_init_string(string) = ml_backend.mlds.mlds_initializer.
+:- pred has_foreign_languages(ml_backend.mlds.statement, list.list(libs.globals.foreign_language)).
+:- mode has_foreign_languages((builtin.in), (builtin.out)) is det.
+:- func initializer_contains_var(ml_backend.mlds.mlds_initializer, ml_backend.mlds.mlds_data) = bool.bool.
+:- func lval_contains_var(ml_backend.mlds.mlds_lval, ml_backend.mlds.mlds_data) = bool.bool.
+:- func lvals_contains_var(list.list(ml_backend.mlds.mlds_lval), ml_backend.mlds.mlds_data) = bool.bool.
+:- func maybe_rval_contains_var(maybe.maybe(ml_backend.mlds.mlds_rval), ml_backend.mlds.mlds_data) = bool.bool.
+:- func rval_contains_var(ml_backend.mlds.mlds_rval, ml_backend.mlds.mlds_data) = bool.bool.
+:- func rvals_contains_var(list.list(ml_backend.mlds.mlds_rval), ml_backend.mlds.mlds_data) = bool.bool.
+:- pred statement_contains_statement(ml_backend.mlds.statement, ml_backend.mlds.statement).
+:- mode statement_contains_statement((builtin.in), (builtin.out)) is multi.
+:- func statement_contains_var(ml_backend.mlds.statement, ml_backend.mlds.mlds_data) = bool.bool.
+:- pred stmt_contains_statement(ml_backend.mlds.mlds_stmt, ml_backend.mlds.statement).
+:- mode stmt_contains_statement((builtin.in), (builtin.out)) is nondet.
+:- func wrap_init_obj(ml_backend.mlds.mlds_rval) = ml_backend.mlds.mlds_initializer.
