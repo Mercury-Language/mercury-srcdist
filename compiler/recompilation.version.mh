@@ -1,0 +1,34 @@
+/*
+** Automatically generated from `recompilation.version.m'
+** by the Mercury compiler,
+** version rotd-2012-03-21, configured for x86_64-unknown-linux-gnu.
+** Do not edit.
+*/
+#ifndef RECOMPILATION__VERSION_MH
+#define RECOMPILATION__VERSION_MH
+
+#ifdef __cplusplus
+extern "C" {
+#endif
+
+#ifdef MR_HIGHLEVEL_CODE
+#include "mercury.h"
+#else
+  #ifndef MERCURY_HDR_EXCLUDE_IMP_H
+  #include "mercury_imp.h"
+  #endif
+#endif
+#ifdef MR_DEEP_PROFILING
+#include "mercury_deep_profiling.h"
+#endif
+
+#ifndef RECOMPILATION__VERSION_DECL_GUARD
+#define RECOMPILATION__VERSION_DECL_GUARD
+
+#endif
+
+#ifdef __cplusplus
+}
+#endif
+
+#endif /* RECOMPILATION__VERSION_MH */

@@ -1,0 +1,3 @@
+:- module version_array.
+:- interface.
+:- type version_array(T).

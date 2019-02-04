@@ -1,0 +1,24 @@
+:- module (mdbcomp.goal_path).
+:- interface.
+:- import_module array.
+:- import_module bimap.
+:- import_module char.
+:- import_module map.
+:- import_module maybe.
+:- type containing_goal.
+:- type containing_goal_map.
+:- type forward_goal_path.
+:- type goal_forward_path_map.
+:- type goal_id.
+:- type goal_path_step.
+:- type goal_path_string.
+:- type goal_reverse_path_bimap.
+:- type goal_reverse_path_map.
+:- type maybe_cut
+	where	type_is_abstract_enum(1).
+:- type maybe_switch_num_functors.
+:- type reverse_goal_path.
+:- type goal_attr_array(T).
+:- inst (uniq_goal_attr_array) == bound(goal_attr_array(uniq_array)).
+:- mode (gaa_di) == di(((mdbcomp.goal_path).uniq_goal_attr_array)).
+:- mode (gaa_uo) == out(((mdbcomp.goal_path).uniq_goal_attr_array)).
