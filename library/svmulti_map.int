@@ -1,0 +1,28 @@
+:- module svmulti_map.
+:- interface.
+:- import_module list.
+:- import_module multi_map.
+:- pred add(K, V, (multi_map.multi_map(K, V)), (multi_map.multi_map(K, V))).
+:- mode add((builtin.in), (builtin.in), (builtin.in), (builtin.out)) is det.
+:- pred delete(K, (multi_map.multi_map(K, V)), (multi_map.multi_map(K, V))).
+:- mode delete((builtin.in), (builtin.in), (builtin.out)) is det.
+:- pred delete(K, V, (multi_map.multi_map(K, V)), (multi_map.multi_map(K, V))).
+:- mode delete((builtin.in), (builtin.in), (builtin.in), (builtin.out)) is det.
+:- pred det_insert(K, V, (multi_map.multi_map(K, V)), (multi_map.multi_map(K, V))).
+:- mode det_insert((builtin.in), (builtin.in), (builtin.in), (builtin.out)) is det.
+:- pred det_remove(K, (list.list(V)), (multi_map.multi_map(K, V)), (multi_map.multi_map(K, V))).
+:- mode det_remove((builtin.in), (builtin.out), (builtin.in), (builtin.out)) is det.
+:- pred det_replace(K, (list.list(V)), (multi_map.multi_map(K, V)), (multi_map.multi_map(K, V))).
+:- mode det_replace((builtin.in), (builtin.in), (builtin.in), (builtin.out)) is det.
+:- pred det_update(K, V, (multi_map.multi_map(K, V)), (multi_map.multi_map(K, V))).
+:- mode det_update((builtin.in), (builtin.in), (builtin.in), (builtin.out)) is det.
+:- pred insert(K, V, (multi_map.multi_map(K, V)), (multi_map.multi_map(K, V))).
+:- mode insert((builtin.in), (builtin.in), (builtin.in), (builtin.out)) is semidet.
+:- pred remove(K, (list.list(V)), (multi_map.multi_map(K, V)), (multi_map.multi_map(K, V))).
+:- mode remove((builtin.in), (builtin.out), (builtin.in), (builtin.out)) is semidet.
+:- pred remove_smallest(K, (list.list(V)), (multi_map.multi_map(K, V)), (multi_map.multi_map(K, V))).
+:- mode remove_smallest((builtin.out), (builtin.out), (builtin.in), (builtin.out)) is semidet.
+:- pred set(K, V, (multi_map.multi_map(K, V)), (multi_map.multi_map(K, V))).
+:- mode set((builtin.in), (builtin.in), (builtin.in), (builtin.out)) is det.
+:- pred update(K, V, (multi_map.multi_map(K, V)), (multi_map.multi_map(K, V))).
+:- mode update((builtin.in), (builtin.in), (builtin.in), (builtin.out)) is semidet.

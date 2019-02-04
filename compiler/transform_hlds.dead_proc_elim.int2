@@ -1,0 +1,16 @@
+:- module (transform_hlds.dead_proc_elim).
+:- interface.
+:- import_module list.
+:- import_module map.
+:- import_module maybe.
+:- import_module (hlds.hlds_module).
+:- import_module (hlds.hlds_pred).
+:- import_module (mdbcomp.prim_data).
+:- import_module (parse_tree.error_util).
+:- type dead_proc_pass
+	--->	warning_pass 
+	;	final_optimization_pass .
+:- type entity
+	--->	proc(((hlds.hlds_pred).pred_id), ((hlds.hlds_pred).proc_id))
+	;	base_gen_info(((mdbcomp.prim_data).module_name), string, int).
+:- type needed_map == (map.map(((transform_hlds.dead_proc_elim).entity), (maybe.maybe(int)))).

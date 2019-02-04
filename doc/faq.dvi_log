@@ -1,0 +1,26 @@
+This is e-TeXk, Version 3.14159-2.1 (Web2C 7.4.5)
+ file:line:error style messages enabled.
+entering extended mode
+
+(/home/mercury/public/test_mercury/test_dirs/jupiter/build.latest.gcc/mercury/d
+oc/faq.texi_pp (./texinfo.tex Loading texinfo [version 1999-09-25.10]: Basics,
+pdf, fonts, page headings, tables, conditionals, indexing, sectioning, toc,
+environments, defuns, macros, cross references,
+(/usr/share/texmf/tex/generic/dvips/epsf.tex) localization,
+and turning on texinfo input format.) [1] [2] [-1] Chapter 1 [1] Chapter 2
+Chapter 3 [2] [3] )
+Output written on faq.dvi (6 pages, 7760 bytes).
+Transcript written on faq.log.
+This is e-TeXk, Version 3.14159-2.1 (Web2C 7.4.5)
+ file:line:error style messages enabled.
+entering extended mode
+
+(/home/mercury/public/test_mercury/test_dirs/jupiter/build.latest.gcc/mercury/d
+oc/faq.texi_pp (./texinfo.tex Loading texinfo [version 1999-09-25.10]: Basics,
+pdf, fonts, page headings, tables, conditionals, indexing, sectioning, toc,
+environments, defuns, macros, cross references,
+(/usr/share/texmf/tex/generic/dvips/epsf.tex) localization,
+and turning on texinfo input format.) (./faq.aux) [1] [2] (./faq.toc) [-1]
+Chapter 1 [1] Chapter 2 Chapter 3 [2] [3] )
+Output written on faq.dvi (6 pages, 8520 bytes).
+Transcript written on faq.log.

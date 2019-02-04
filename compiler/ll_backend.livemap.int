@@ -1,0 +1,11 @@
+:- module (ll_backend.livemap).
+:- interface.
+:- import_module list.
+:- import_module map.
+:- import_module maybe.
+:- import_module set.
+:- import_module (ll_backend.llds).
+:- type livemap == (map.map(((ll_backend.llds).label), ((ll_backend.livemap).lvalset))).
+:- type lvalset == (set.set(((ll_backend.llds).lval))).
+:- pred build_livemap((list.list(((ll_backend.llds).instruction))), (maybe.maybe(((ll_backend.livemap).livemap)))).
+:- mode build_livemap((builtin.in), (builtin.out)) is det.

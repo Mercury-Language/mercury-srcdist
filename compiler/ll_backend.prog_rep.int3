@@ -1,0 +1,3 @@
+:- module (ll_backend.prog_rep).
+:- interface.
+:- type var_num_map.

@@ -1,0 +1,57 @@
+:- module erlang_rtti_implementation.
+:- pragma termination_info(erlang_rtti_implementation.get_type_info((builtin.unused)) = (builtin.out), finite(0, [no, no, no]), cannot_loop).
+:- pragma termination_info(erlang_rtti_implementation.generic_unify((builtin.in), (builtin.in)), finite(0, [no, no, no]), can_loop).
+:- pragma termination_info(erlang_rtti_implementation.generic_compare((builtin.out), (builtin.in), (builtin.in)), finite(0, [no, no, no, no]), can_loop).
+:- pragma termination_info(erlang_rtti_implementation.compare_type_infos((builtin.out), (builtin.in), (builtin.in)), finite(0, [no, no, no]), cannot_loop).
+:- pragma termination_info(erlang_rtti_implementation.type_ctor_and_args((builtin.in), (builtin.out), (builtin.out)), infinite, can_loop).
+:- pragma termination_info(erlang_rtti_implementation.type_ctor_name_and_arity((builtin.in), (builtin.out), (builtin.out), (builtin.out)), finite(0, [no, no, no, no]), cannot_loop).
+:- pragma termination_info(erlang_rtti_implementation.deconstruct((builtin.in), builtin.in((deconstruct.do_not_allow)), (builtin.out), (builtin.out), (builtin.out)), infinite, can_loop).
+:- pragma termination_info(erlang_rtti_implementation.deconstruct((builtin.in), builtin.in((deconstruct.canonicalize)), (builtin.out), (builtin.out), (builtin.out)), infinite, can_loop).
+:- pragma termination_info(erlang_rtti_implementation.deconstruct((builtin.in), builtin.in((deconstruct.include_details_cc)), (builtin.out), (builtin.out), (builtin.out)), infinite, can_loop).
+:- pragma termination_info(erlang_rtti_implementation.deconstruct((builtin.in), (builtin.in), (builtin.out), (builtin.out), (builtin.out)), infinite, can_loop).
+:- pragma termination_info(erlang_rtti_implementation.num_functors((builtin.in)) = (builtin.out), finite(0, [no, no]), cannot_loop).
+:- pragma termination_info(erlang_rtti_implementation.get_functor((builtin.in), (builtin.in), (builtin.out), (builtin.out), (builtin.out)), infinite, can_loop).
+:- pragma termination_info(erlang_rtti_implementation.get_functor_with_names((builtin.in), (builtin.in), (builtin.out), (builtin.out), (builtin.out), (builtin.out)), infinite, can_loop).
+:- pragma termination_info(erlang_rtti_implementation.deconstruct_2((builtin.in), (builtin.in), (builtin.in), (builtin.in), builtin.in((deconstruct.do_not_allow)), (builtin.out), (builtin.out), (builtin.out)), infinite, can_loop).
+:- pragma termination_info(erlang_rtti_implementation.deconstruct_2((builtin.in), (builtin.in), (builtin.in), (builtin.in), builtin.in((deconstruct.canonicalize)), (builtin.out), (builtin.out), (builtin.out)), infinite, can_loop).
+:- pragma termination_info(erlang_rtti_implementation.deconstruct_2((builtin.in), (builtin.in), (builtin.in), (builtin.in), builtin.in((deconstruct.include_details_cc)), (builtin.out), (builtin.out), (builtin.out)), infinite, can_loop).
+:- pragma termination_info(erlang_rtti_implementation.deconstruct_2((builtin.in), (builtin.in), (builtin.in), (builtin.in), (builtin.in), (builtin.out), (builtin.out), (builtin.out)), infinite, can_loop).
+:- pragma termination_info(erlang_rtti_implementation.num_functors((builtin.in), (builtin.out)), finite(1, [no, no]), cannot_loop).
+:- pragma termination_info(erlang_rtti_implementation.get_functor_with_names((builtin.in), (builtin.in)) = (builtin.out), infinite, can_loop).
+:- pragma termination_info(erlang_rtti_implementation.type_info((builtin.unused)) = (builtin.out), finite(0, [no, no, no]), cannot_loop).
+:- pragma termination_info(erlang_rtti_implementation.type_ctor_info_evaled((builtin.in)) = (builtin.out), finite(0, [no, no]), cannot_loop).
+:- pragma termination_info(erlang_rtti_implementation.type_ctor_rep((builtin.in)) = (builtin.out), infinite, cannot_loop).
+:- pragma termination_info(erlang_rtti_implementation.type_ctor_module_name((builtin.in)) = (builtin.out), finite(0, [no, no]), cannot_loop).
+:- pragma termination_info(erlang_rtti_implementation.type_ctor_type_name((builtin.in)) = (builtin.out), finite(0, [no, no]), cannot_loop).
+:- pragma termination_info(erlang_rtti_implementation.type_ctor_arity((builtin.in)) = (builtin.out), finite(0, [no, no]), cannot_loop).
+:- pragma termination_info(erlang_rtti_implementation.unsafe_cast((builtin.in)) = (builtin.out), infinite, cannot_loop).
+:- pragma termination_info(erlang_rtti_implementation.det_unimplemented((builtin.in)), finite(0, [no]), cannot_loop).
+:- pragma termination_info((erlang_rtti_implementation.is_erlang_backend), finite(0, []), cannot_loop).
+:- pragma exceptions(function, (erlang_rtti_implementation.get_type_info), 2, 0, may_throw(user_exception)).
+:- pragma exceptions(predicate, (erlang_rtti_implementation.generic_unify), 2, 0, may_throw(user_exception)).
+:- pragma exceptions(predicate, (erlang_rtti_implementation.generic_compare), 3, 0, may_throw(user_exception)).
+:- pragma exceptions(predicate, (erlang_rtti_implementation.compare_type_infos), 3, 0, may_throw(user_exception)).
+:- pragma exceptions(predicate, (erlang_rtti_implementation.type_ctor_and_args), 3, 0, may_throw(user_exception)).
+:- pragma exceptions(predicate, (erlang_rtti_implementation.type_ctor_name_and_arity), 4, 0, may_throw(user_exception)).
+:- pragma exceptions(predicate, (erlang_rtti_implementation.deconstruct), 5, 0, may_throw(user_exception)).
+:- pragma exceptions(predicate, (erlang_rtti_implementation.deconstruct), 5, 1, may_throw(user_exception)).
+:- pragma exceptions(predicate, (erlang_rtti_implementation.deconstruct), 5, 2, may_throw(user_exception)).
+:- pragma exceptions(predicate, (erlang_rtti_implementation.deconstruct), 5, 3, may_throw(user_exception)).
+:- pragma exceptions(function, (erlang_rtti_implementation.num_functors), 2, 0, may_throw(user_exception)).
+:- pragma exceptions(predicate, (erlang_rtti_implementation.get_functor), 5, 0, may_throw(user_exception)).
+:- pragma exceptions(predicate, (erlang_rtti_implementation.get_functor_with_names), 6, 0, may_throw(user_exception)).
+:- pragma exceptions(predicate, (erlang_rtti_implementation.deconstruct_2), 8, 0, may_throw(user_exception)).
+:- pragma exceptions(predicate, (erlang_rtti_implementation.deconstruct_2), 8, 1, may_throw(user_exception)).
+:- pragma exceptions(predicate, (erlang_rtti_implementation.deconstruct_2), 8, 2, may_throw(user_exception)).
+:- pragma exceptions(predicate, (erlang_rtti_implementation.deconstruct_2), 8, 3, may_throw(user_exception)).
+:- pragma exceptions(predicate, (erlang_rtti_implementation.num_functors), 2, 0, may_throw(user_exception)).
+:- pragma exceptions(function, (erlang_rtti_implementation.get_functor_with_names), 3, 0, may_throw(user_exception)).
+:- pragma exceptions(function, (erlang_rtti_implementation.type_info), 2, 0, may_throw(user_exception)).
+:- pragma exceptions(function, (erlang_rtti_implementation.type_ctor_info_evaled), 2, 0, may_throw(user_exception)).
+:- pragma exceptions(function, (erlang_rtti_implementation.type_ctor_rep), 2, 0, may_throw(user_exception)).
+:- pragma exceptions(function, (erlang_rtti_implementation.type_ctor_module_name), 2, 0, may_throw(user_exception)).
+:- pragma exceptions(function, (erlang_rtti_implementation.type_ctor_type_name), 2, 0, may_throw(user_exception)).
+:- pragma exceptions(function, (erlang_rtti_implementation.type_ctor_arity), 2, 0, may_throw(user_exception)).
+:- pragma exceptions(function, (erlang_rtti_implementation.unsafe_cast), 2, 0, may_throw(user_exception)).
+:- pragma exceptions(predicate, (erlang_rtti_implementation.det_unimplemented), 1, 0, may_throw(user_exception)).
+:- pragma exceptions(predicate, (erlang_rtti_implementation.is_erlang_backend), 0, 0, will_not_throw).

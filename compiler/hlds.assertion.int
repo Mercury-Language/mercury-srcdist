@@ -1,0 +1,22 @@
+:- module (hlds.assertion).
+:- interface.
+:- import_module pair.
+:- import_module (hlds.hlds_data).
+:- import_module (hlds.hlds_goal).
+:- import_module (hlds.hlds_module).
+:- import_module (hlds.hlds_pred).
+:- import_module (parse_tree.prog_data).
+:- pred assert_id_goal(((hlds.hlds_module).module_info), ((hlds.hlds_data).assert_id), ((hlds.hlds_goal).hlds_goal)).
+:- mode assert_id_goal((builtin.in), (builtin.in), (builtin.out)) is det.
+:- pred is_associativity_assertion(((hlds.hlds_module).module_info), ((hlds.hlds_data).assert_id), ((parse_tree.prog_data).prog_vars), (pair.pair(((parse_tree.prog_data).prog_var))), ((parse_tree.prog_data).prog_var)).
+:- mode is_associativity_assertion((builtin.in), (builtin.in), (builtin.in), (builtin.out), (builtin.out)) is semidet.
+:- pred is_commutativity_assertion(((hlds.hlds_module).module_info), ((hlds.hlds_data).assert_id), ((parse_tree.prog_data).prog_vars), (pair.pair(((parse_tree.prog_data).prog_var)))).
+:- mode is_commutativity_assertion((builtin.in), (builtin.in), (builtin.in), (builtin.out)) is semidet.
+:- pred is_construction_equivalence_assertion(((hlds.hlds_module).module_info), ((hlds.hlds_data).assert_id), ((parse_tree.prog_data).cons_id), ((hlds.hlds_pred).pred_id)).
+:- mode is_construction_equivalence_assertion((builtin.in), (builtin.in), (builtin.in), (builtin.in)) is semidet.
+:- pred is_update_assertion(((hlds.hlds_module).module_info), ((hlds.hlds_data).assert_id), ((hlds.hlds_pred).pred_id), ((parse_tree.prog_data).prog_vars), (pair.pair(((parse_tree.prog_data).prog_var)))).
+:- mode is_update_assertion((builtin.in), (builtin.in), (builtin.in), (builtin.in), (builtin.out)) is semidet.
+:- pred normalise_goal(((hlds.hlds_goal).hlds_goal), ((hlds.hlds_goal).hlds_goal)).
+:- mode normalise_goal((builtin.in), (builtin.out)) is det.
+:- pred record_preds_used_in(((hlds.hlds_goal).hlds_goal), ((hlds.hlds_data).assert_id), ((hlds.hlds_module).module_info), ((hlds.hlds_module).module_info)).
+:- mode record_preds_used_in((builtin.in), (builtin.in), (builtin.in), (builtin.out)) is det.

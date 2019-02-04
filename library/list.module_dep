@@ -1,0 +1,13 @@
+module(1, "list.m",
+	list,
+	{},
+	{builtin, term, private_builtin},
+	{builtin, term, int, require, set_tree234, string, private_builtin},
+	{},
+	{},
+	{},
+	{"C"},
+	{"C" - list, "IL" - list, "Erlang" - list, "C" - list},
+	contains_foreign_export,
+	no_main
+).

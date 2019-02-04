@@ -1,0 +1,6 @@
+:- module (ml_backend.ml_simplify_switch).
+:- interface.
+:- import_module (ml_backend.ml_code_util).
+:- import_module (ml_backend.mlds).
+:- pred ml_simplify_switch(((ml_backend.mlds).mlds_stmt), ((ml_backend.mlds).mlds_context), ((ml_backend.mlds).statement), ((ml_backend.ml_code_util).ml_gen_info), ((ml_backend.ml_code_util).ml_gen_info)).
+:- mode ml_simplify_switch((builtin.in), (builtin.in), (builtin.out), (builtin.in), (builtin.out)) is det.

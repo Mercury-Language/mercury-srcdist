@@ -1,0 +1,11 @@
+:- module par_builtin.
+:- pragma termination_info(par_builtin.new_future((builtin.uo)), infinite, cannot_loop).
+:- pragma termination_info(par_builtin.wait((builtin.in), (builtin.out)), infinite, cannot_loop).
+:- pragma termination_info(par_builtin.get((builtin.in), (builtin.out)), infinite, cannot_loop).
+:- pragma termination_info(par_builtin.signal((builtin.in), (builtin.in)), finite(0, [no, no]), cannot_loop).
+:- pragma termination_info((par_builtin.evaluate_parallelism_condition), finite(0, []), cannot_loop).
+:- pragma exceptions(predicate, (par_builtin.new_future), 1, 0, will_not_throw).
+:- pragma exceptions(predicate, (par_builtin.wait), 2, 0, will_not_throw).
+:- pragma exceptions(predicate, (par_builtin.get), 2, 0, will_not_throw).
+:- pragma exceptions(predicate, (par_builtin.signal), 2, 0, will_not_throw).
+:- pragma exceptions(predicate, (par_builtin.evaluate_parallelism_condition), 0, 0, will_not_throw).

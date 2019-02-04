@@ -1,0 +1,17 @@
+:- module rtti_implementation.
+:- interface.
+:- import_module deconstruct.
+:- import_module list.
+:- import_module univ.
+:- use_module type_desc.
+:- type type_ctor_info.
+:- type type_info.
+:- implementation.
+:- type type_ctor_info
+	--->	type_ctor_info((builtin.c_pointer)).
+:- pragma foreign_type(java, type_ctor_info, "mercury.runtime.TypeCtorInfo_Struct").
+:- type type_info
+	--->	type_info((builtin.c_pointer)).
+:- pragma foreign_type(java, type_info, "mercury.runtime.TypeInfo_Struct").
+:- pragma foreign_import_module("Java", rtti_implementation).
+:- pragma foreign_import_module("Java", rtti_implementation).

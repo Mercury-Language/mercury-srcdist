@@ -1,0 +1,14 @@
+:- module (backend_libs.switch_util).
+:- interface.
+:- type cases_list.
+:- type extended_case.
+:- type hash_slot.
+:- type ptag_case.
+:- type ptag_case_list.
+:- type ptag_case_map.
+:- type ptag_count_list.
+:- type ptag_count_map.
+:- type stag_goal.
+:- type stag_goal_list.
+:- type stag_goal_map.
+:- type switch_category.

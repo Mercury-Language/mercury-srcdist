@@ -1,0 +1,18 @@
+:- module svqueue.
+:- interface.
+:- import_module list.
+:- import_module queue.
+:- pred delete_all(T, (queue.queue(T)), (queue.queue(T))).
+:- mode delete_all((builtin.in), (builtin.in), (builtin.out)) is det.
+:- pred get(T, (queue.queue(T)), (queue.queue(T))).
+:- mode get((builtin.out), (builtin.in), (builtin.out)) is semidet.
+:- pred get_from_back(T, (queue.queue(T)), (queue.queue(T))).
+:- mode get_from_back((builtin.out), (builtin.in), (builtin.out)) is semidet.
+:- pred put(T, (queue.queue(T)), (queue.queue(T))).
+:- mode put((builtin.in), (builtin.in), (builtin.out)) is det.
+:- pred put_list((list.list(T)), (queue.queue(T)), (queue.queue(T))).
+:- mode put_list((builtin.in), (builtin.in), (builtin.out)) is det.
+:- pred put_list_on_front((list.list(T)), (queue.queue(T)), (queue.queue(T))).
+:- mode put_list_on_front((builtin.in), (builtin.in), (builtin.out)) is det.
+:- pred put_on_front(T, (queue.queue(T)), (queue.queue(T))).
+:- mode put_on_front((builtin.in), (builtin.in), (builtin.out)) is det.

@@ -1,0 +1,55 @@
+:- module (((transform_hlds.ctgc).structure_sharing).domain).
+:- interface.
+:- import_module bool.
+:- import_module list.
+:- import_module map.
+:- import_module set.
+:- import_module (hlds.goal_util).
+:- import_module (hlds.hlds_goal).
+:- import_module (hlds.hlds_module).
+:- import_module (hlds.hlds_pred).
+:- import_module (parse_tree.prog_data).
+:- type sharing_as.
+:- type sharing_as_table == (map.map(((hlds.hlds_pred).pred_proc_id), ((((transform_hlds.ctgc).structure_sharing).domain).sharing_as))).
+:- func add_foreign_proc_sharing(((hlds.hlds_module).module_info), ((hlds.hlds_pred).proc_info), ((hlds.hlds_pred).pred_proc_id), ((parse_tree.prog_data).pragma_foreign_proc_attributes), ((parse_tree.prog_data).prog_context), ((((transform_hlds.ctgc).structure_sharing).domain).sharing_as)) = ((((transform_hlds.ctgc).structure_sharing).domain).sharing_as).
+:- func add_unify_sharing(((hlds.hlds_module).module_info), ((hlds.hlds_pred).proc_info), ((hlds.hlds_goal).unification), ((hlds.hlds_goal).hlds_goal_info), ((((transform_hlds.ctgc).structure_sharing).domain).sharing_as)) = ((((transform_hlds.ctgc).structure_sharing).domain).sharing_as).
+:- pred apply_widening(((hlds.hlds_module).module_info), ((hlds.hlds_pred).proc_info), int, (bool.bool), ((((transform_hlds.ctgc).structure_sharing).domain).sharing_as), ((((transform_hlds.ctgc).structure_sharing).domain).sharing_as)).
+:- mode apply_widening((builtin.in), (builtin.in), (builtin.in), (builtin.out), (builtin.in), (builtin.out)) is det.
+:- pred bottom_sharing_is_safe_approximation(((hlds.hlds_module).module_info), ((hlds.hlds_pred).proc_info)).
+:- mode bottom_sharing_is_safe_approximation((builtin.in), (builtin.in)) is semidet.
+:- func extend_datastruct(((hlds.hlds_module).module_info), ((hlds.hlds_pred).proc_info), ((((transform_hlds.ctgc).structure_sharing).domain).sharing_as), ((parse_tree.prog_data).datastruct)) = (list.list(((parse_tree.prog_data).datastruct))).
+:- func extend_datastructs(((hlds.hlds_module).module_info), ((hlds.hlds_pred).proc_info), ((((transform_hlds.ctgc).structure_sharing).domain).sharing_as), (list.list(((parse_tree.prog_data).datastruct)))) = (list.list(((parse_tree.prog_data).datastruct))).
+:- func from_structure_sharing_domain(((parse_tree.prog_data).structure_sharing_domain)) = ((((transform_hlds.ctgc).structure_sharing).domain).sharing_as).
+:- func load_structure_sharing_table(((hlds.hlds_module).module_info)) = ((((transform_hlds.ctgc).structure_sharing).domain).sharing_as_table).
+:- pred lookup_sharing_and_comb(((hlds.hlds_module).module_info), ((hlds.hlds_pred).pred_info), ((hlds.hlds_pred).proc_info), ((((transform_hlds.ctgc).structure_sharing).domain).sharing_as_table), ((hlds.hlds_pred).pred_id), ((hlds.hlds_pred).proc_id), ((parse_tree.prog_data).prog_vars), ((((transform_hlds.ctgc).structure_sharing).domain).sharing_as), ((((transform_hlds.ctgc).structure_sharing).domain).sharing_as)).
+:- mode lookup_sharing_and_comb((builtin.in), (builtin.in), (builtin.in), (builtin.in), (builtin.in), (builtin.in), (builtin.in), (builtin.in), (builtin.out)) is det.
+:- pred lookup_sharing_or_predict(((hlds.hlds_module).module_info), ((((transform_hlds.ctgc).structure_sharing).domain).sharing_as_table), ((hlds.hlds_pred).pred_proc_id), ((((transform_hlds.ctgc).structure_sharing).domain).sharing_as)).
+:- mode lookup_sharing_or_predict((builtin.in), (builtin.in), (builtin.in), (builtin.out)) is det.
+:- func sharing_as_comb(((hlds.hlds_module).module_info), ((hlds.hlds_pred).proc_info), ((((transform_hlds.ctgc).structure_sharing).domain).sharing_as), ((((transform_hlds.ctgc).structure_sharing).domain).sharing_as)) = ((((transform_hlds.ctgc).structure_sharing).domain).sharing_as).
+:- func sharing_as_init = ((((transform_hlds.ctgc).structure_sharing).domain).sharing_as).
+:- pred sharing_as_is_bottom(((((transform_hlds.ctgc).structure_sharing).domain).sharing_as)).
+:- mode sharing_as_is_bottom((builtin.in)) is semidet.
+:- pred sharing_as_is_subsumed_by(((hlds.hlds_module).module_info), ((hlds.hlds_pred).proc_info), ((((transform_hlds.ctgc).structure_sharing).domain).sharing_as), ((((transform_hlds.ctgc).structure_sharing).domain).sharing_as)).
+:- mode sharing_as_is_subsumed_by((builtin.in), (builtin.in), (builtin.in), (builtin.in)) is semidet.
+:- pred sharing_as_is_top(((((transform_hlds.ctgc).structure_sharing).domain).sharing_as)).
+:- mode sharing_as_is_top((builtin.in)) is semidet.
+:- func sharing_as_least_upper_bound(((hlds.hlds_module).module_info), ((hlds.hlds_pred).proc_info), ((((transform_hlds.ctgc).structure_sharing).domain).sharing_as), ((((transform_hlds.ctgc).structure_sharing).domain).sharing_as)) = ((((transform_hlds.ctgc).structure_sharing).domain).sharing_as).
+:- func sharing_as_least_upper_bound_of_list(((hlds.hlds_module).module_info), ((hlds.hlds_pred).proc_info), (list.list(((((transform_hlds.ctgc).structure_sharing).domain).sharing_as)))) = ((((transform_hlds.ctgc).structure_sharing).domain).sharing_as).
+:- pred sharing_as_project(((parse_tree.prog_data).prog_vars), ((((transform_hlds.ctgc).structure_sharing).domain).sharing_as), ((((transform_hlds.ctgc).structure_sharing).domain).sharing_as)).
+:- mode sharing_as_project((builtin.in), (builtin.in), (builtin.out)) is det.
+:- func sharing_as_project(((parse_tree.prog_data).prog_vars), ((((transform_hlds.ctgc).structure_sharing).domain).sharing_as)) = ((((transform_hlds.ctgc).structure_sharing).domain).sharing_as).
+:- pred sharing_as_project_set((set.set(((parse_tree.prog_data).prog_var))), ((((transform_hlds.ctgc).structure_sharing).domain).sharing_as), ((((transform_hlds.ctgc).structure_sharing).domain).sharing_as)).
+:- mode sharing_as_project_set((builtin.in), (builtin.in), (builtin.out)) is det.
+:- pred sharing_as_rename(((hlds.goal_util).prog_var_renaming), ((parse_tree.prog_data).tsubst), ((((transform_hlds.ctgc).structure_sharing).domain).sharing_as), ((((transform_hlds.ctgc).structure_sharing).domain).sharing_as)).
+:- mode sharing_as_rename((builtin.in), (builtin.in), (builtin.in), (builtin.out)) is det.
+:- pred sharing_as_rename_using_module_info(((hlds.hlds_module).module_info), ((hlds.hlds_pred).pred_proc_id), ((parse_tree.prog_data).prog_vars), (list.list(((parse_tree.prog_data).mer_type))), ((parse_tree.prog_data).tvarset), ((((transform_hlds.ctgc).structure_sharing).domain).sharing_as), ((((transform_hlds.ctgc).structure_sharing).domain).sharing_as)).
+:- mode sharing_as_rename_using_module_info((builtin.in), (builtin.in), (builtin.in), (builtin.in), (builtin.in), (builtin.in), (builtin.out)) is det.
+:- func sharing_as_short_description(((((transform_hlds.ctgc).structure_sharing).domain).sharing_as)) = string.
+:- func sharing_as_size(((((transform_hlds.ctgc).structure_sharing).domain).sharing_as)) = int is semidet.
+:- func sharing_as_table_init = ((((transform_hlds.ctgc).structure_sharing).domain).sharing_as_table).
+:- func sharing_as_table_search(((hlds.hlds_pred).pred_proc_id), ((((transform_hlds.ctgc).structure_sharing).domain).sharing_as_table)) = ((((transform_hlds.ctgc).structure_sharing).domain).sharing_as) is semidet.
+:- pred sharing_as_table_set(((hlds.hlds_pred).pred_proc_id), ((((transform_hlds.ctgc).structure_sharing).domain).sharing_as), ((((transform_hlds.ctgc).structure_sharing).domain).sharing_as_table), ((((transform_hlds.ctgc).structure_sharing).domain).sharing_as_table)).
+:- mode sharing_as_table_set((builtin.in), (builtin.in), (builtin.in), (builtin.out)) is det.
+:- func sharing_as_top_sharing(string) = ((((transform_hlds.ctgc).structure_sharing).domain).sharing_as).
+:- func sharing_as_top_sharing_accumulate(string, ((((transform_hlds.ctgc).structure_sharing).domain).sharing_as)) = ((((transform_hlds.ctgc).structure_sharing).domain).sharing_as).
+:- func to_structure_sharing_domain(((((transform_hlds.ctgc).structure_sharing).domain).sharing_as)) = ((parse_tree.prog_data).structure_sharing_domain).

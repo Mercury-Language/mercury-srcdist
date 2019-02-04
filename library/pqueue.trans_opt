@@ -1,0 +1,23 @@
+:- module pqueue.
+:- pragma termination_info((pqueue.init) = (builtin.out), finite(0, [no, no, no]), cannot_loop).
+:- pragma termination_info(pqueue.init((builtin.out)), finite(0, [no, no, no]), cannot_loop).
+:- pragma termination_info(pqueue.insert((builtin.in), (builtin.in), (builtin.in)) = (builtin.out), finite(5, [no, no, yes, yes, yes, no]), cannot_loop).
+:- pragma termination_info(pqueue.insert((builtin.in), (builtin.in), (builtin.in), (builtin.out)), finite(5, [no, no, yes, yes, yes, no]), cannot_loop).
+:- pragma termination_info(pqueue.remove((builtin.in), (builtin.out), (builtin.out), (builtin.out)), infinite, cannot_loop).
+:- pragma termination_info(pqueue.to_assoc_list((builtin.in)) = (builtin.out), infinite, can_loop).
+:- pragma termination_info(pqueue.to_assoc_list((builtin.in), (builtin.out)), infinite, can_loop).
+:- pragma termination_info(pqueue.assoc_list_to_pqueue((builtin.in)) = (builtin.out), infinite, cannot_loop).
+:- pragma termination_info(pqueue.assoc_list_to_pqueue((builtin.in), (builtin.out)), infinite, cannot_loop).
+:- pragma termination_info(pqueue.from_assoc_list((builtin.in)) = (builtin.out), infinite, cannot_loop).
+:- pragma termination_info(pqueue.remove_2((builtin.in), (builtin.in), (builtin.out)), infinite, cannot_loop).
+:- pragma exceptions(function, (pqueue.init), 1, 0, will_not_throw).
+:- pragma exceptions(predicate, (pqueue.init), 1, 0, will_not_throw).
+:- pragma exceptions(function, (pqueue.insert), 4, 0, conditional).
+:- pragma exceptions(predicate, (pqueue.insert), 4, 0, conditional).
+:- pragma exceptions(predicate, (pqueue.remove), 4, 0, conditional).
+:- pragma exceptions(function, (pqueue.to_assoc_list), 2, 0, conditional).
+:- pragma exceptions(predicate, (pqueue.to_assoc_list), 2, 0, conditional).
+:- pragma exceptions(function, (pqueue.assoc_list_to_pqueue), 2, 0, conditional).
+:- pragma exceptions(predicate, (pqueue.assoc_list_to_pqueue), 2, 0, conditional).
+:- pragma exceptions(function, (pqueue.from_assoc_list), 2, 0, conditional).
+:- pragma exceptions(predicate, (pqueue.remove_2), 3, 0, conditional).

@@ -1,0 +1,19 @@
+:- module dir.
+:- interface.
+:- import_module bool.
+:- import_module io.
+:- import_module list.
+:- type foldl_pred(T) == pred(string, string, (io.file_type), (bool.bool), T, T, (io.io), (io.io)).
+:- inst (foldl_pred) == (pred((builtin.in), (builtin.in), (builtin.in), (builtin.out), (builtin.in), (builtin.out), (builtin.di), (builtin.uo)) is det).
+:- implementation.
+:- type stream
+	--->	stream .
+:- pragma foreign_type(il, stream, "class [mscorlib]System.Collections.IEnumerator").
+:- pragma foreign_type(c, stream, "ML_DIR_STREAM").
+:- pragma foreign_type(java, stream, "java.util.Iterator").
+:- pragma foreign_import_module("C", dir).
+:- pragma foreign_import_module("Java", dir).
+:- pragma foreign_import_module("IL", dir).
+:- pragma foreign_import_module("C", dir).
+:- pragma foreign_import_module("Java", dir).
+:- pragma foreign_import_module("IL", dir).

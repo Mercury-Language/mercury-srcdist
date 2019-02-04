@@ -1,0 +1,41 @@
+/*
+** Automatically generated from `bitmap.m'
+** by the Mercury compiler,
+** version rotd-2007-08-01, configured for i686-pc-linux-gnu.
+** Do not edit.
+*/
+#ifndef BITMAP_MH
+#define BITMAP_MH
+
+#ifdef __cplusplus
+extern "C" {
+#endif
+
+#ifdef MR_HIGHLEVEL_CODE
+#include "mercury.h"
+#else
+  #ifndef MERCURY_HDR_EXCLUDE_IMP_H
+  #include "mercury_imp.h"
+  #endif
+#endif
+#ifdef MR_DEEP_PROFILING
+#include "mercury_deep_profiling.h"
+#endif
+
+#ifndef BITMAP_DECL_GUARD
+#define BITMAP_DECL_GUARD
+#line 1522 "bitmap.m"
+
+#include "mercury_types.h"
+#include "mercury_bitmap.h"
+#include "mercury_type_info.h"
+
+#line 34 "bitmap.mh.tmp"
+
+#endif
+
+#ifdef __cplusplus
+}
+#endif
+
+#endif /* BITMAP_MH */

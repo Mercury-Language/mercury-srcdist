@@ -1,0 +1,38 @@
+:- module (parse_tree.prog_io_util).
+:- interface.
+:- import_module assoc_list.
+:- import_module list.
+:- import_module map.
+:- import_module maybe.
+:- import_module pair.
+:- import_module term.
+:- import_module (mdbcomp.prim_data).
+:- import_module (parse_tree.prog_data).
+:- import_module (parse_tree.prog_item).
+:- type allow_constrained_inst_var
+	--->	allow_constrained_inst_var 
+	;	no_allow_constrained_inst_var .
+:- type maybe_functor == ((parse_tree.prog_io_util).maybe_functor((term.generic))).
+:- type maybe_item_and_context == ((parse_tree.prog_io_util).maybe2(((parse_tree.prog_item).item), ((parse_tree.prog_data).prog_context))).
+:- type var2pvar == (map.map((term.var), ((parse_tree.prog_data).prog_var))).
+:- type var2tvar == (map.map((term.var), ((parse_tree.prog_data).tvar))).
+:- type maybe_functor(T) == ((parse_tree.prog_io_util).maybe2(((mdbcomp.prim_data).sym_name), (list.list((term.term(T)))))).
+:- type maybe_pred_or_func(T) == ((parse_tree.prog_io_util).maybe2(((mdbcomp.prim_data).sym_name), (pair.pair((list.list(T)), (maybe.maybe(T)))))).
+:- type parser(T) == pred((term.term), ((parse_tree.prog_io_util).maybe1(T))).
+:- type maybe1(T1) == ((parse_tree.prog_io_util).maybe1(T1, (term.generic))).
+:- type maybe2(T1, T2) == ((parse_tree.prog_io_util).maybe2(T1, T2, (term.generic))).
+:- type maybe1(T1, U)
+	--->	error1((assoc_list.assoc_list(string, (term.term(U)))))
+	;	ok1(T1).
+:- type maybe3(T1, T2, T3) == ((parse_tree.prog_io_util).maybe3(T1, T2, T3, (term.generic))).
+:- type maybe2(T1, T2, U)
+	--->	error2((assoc_list.assoc_list(string, (term.term(U)))))
+	;	ok2(T1, T2).
+:- type maybe4(T1, T2, T3, T4) == ((parse_tree.prog_io_util).maybe4(T1, T2, T3, T4, (term.generic))).
+:- type maybe3(T1, T2, T3, U)
+	--->	error3((assoc_list.assoc_list(string, (term.term(U)))))
+	;	ok3(T1, T2, T3).
+:- type maybe4(T1, T2, T3, T4, U)
+	--->	error4((assoc_list.assoc_list(string, (term.term(U)))))
+	;	ok4(T1, T2, T3, T4).
+:- mode (parser) == (pred((builtin.in), (builtin.out)) is det).

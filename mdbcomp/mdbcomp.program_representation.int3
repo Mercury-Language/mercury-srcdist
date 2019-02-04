@@ -1,0 +1,29 @@
+:- module (mdbcomp.program_representation).
+:- pragma foreign_import_module("C", (mdbcomp.program_representation)).
+:- pragma foreign_import_module("Java", (mdbcomp.program_representation)).
+:- interface.
+:- import_module bool.
+:- import_module char.
+:- import_module list.
+:- import_module maybe.
+:- import_module type_desc.
+:- import_module (mdbcomp.prim_data).
+:- import_module (mdbcomp.rtti_access).
+:- type arg_pos.
+:- type atomic_goal_id.
+:- type atomic_goal_rep.
+:- type bytecode.
+:- pragma foreign_type(c, bytecode, "const MR_uint_least8_t *", [can_pass_as_mercury_type, stable]).
+:- pragma foreign_type(java, bytecode, "java.lang.Object").
+:- type bytecode_goal_type.
+:- type cons_id_rep.
+:- type detism_rep.
+:- type goal_path.
+:- type goal_path_step.
+:- type goal_path_string.
+:- type goal_rep.
+:- type maybe_cut.
+:- type proc_rep.
+:- type term_path.
+:- type var_num_rep.
+:- type var_rep.

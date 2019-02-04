@@ -1,0 +1,11 @@
+:- module (check_hlds.prop_mode_constraints).
+:- interface.
+:- import_module hlds.
+:- import_module io.
+:- import_module list.
+:- import_module map.
+:- import_module (check_hlds.abstract_mode_constraints).
+:- import_module (check_hlds.build_mode_constraints).
+:- import_module (hlds.hlds_module).
+:- import_module (hlds.hlds_pred).
+:- type pred_constraints_map == (map.map(((hlds.hlds_pred).pred_id), ((check_hlds.build_mode_constraints).mode_constraints))).

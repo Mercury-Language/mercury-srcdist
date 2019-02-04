@@ -1,0 +1,14 @@
+:- module (check_hlds.mode_errors).
+:- interface.
+:- type delayed_goal.
+:- type final_inst_error.
+:- type merge_context.
+:- type merge_error.
+:- type merge_errors.
+:- type mode_error.
+:- type mode_error_info.
+:- type mode_error_unify_rhs.
+:- type mode_warning.
+:- type mode_warning_info.
+:- type negated_context_desc.
+:- type schedule_culprit.

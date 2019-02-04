@@ -1,0 +1,10 @@
+:- module varset.
+:- interface.
+:- import_module assoc_list.
+:- import_module list.
+:- import_module map.
+:- import_module maybe.
+:- import_module set.
+:- import_module term.
+:- type varset == (varset.varset((term.generic))).
+:- type varset(T).

@@ -1,0 +1,39 @@
+:- module measurements.
+:- interface.
+:- import_module list.
+:- type inherit_prof_info.
+:- type own_prof_info.
+:- func add_inherit_to_inherit((measurements.inherit_prof_info), (measurements.inherit_prof_info)) = (measurements.inherit_prof_info).
+:- func add_inherit_to_own((measurements.inherit_prof_info), (measurements.own_prof_info)) = (measurements.own_prof_info).
+:- func add_own_to_inherit((measurements.own_prof_info), (measurements.inherit_prof_info)) = (measurements.inherit_prof_info).
+:- func add_own_to_own((measurements.own_prof_info), (measurements.own_prof_info)) = (measurements.own_prof_info).
+:- func allocs((measurements.own_prof_info)) = int.
+:- func calls((measurements.own_prof_info)) = int.
+:- func callseqs((measurements.own_prof_info)) = int.
+:- func compress_profile(int, int, int, int, int, int, int, int) = (measurements.own_prof_info).
+:- func compress_profile((measurements.own_prof_info)) = (measurements.own_prof_info).
+:- pred decompress_profile((measurements.own_prof_info), int, int, int, int, int, int, int, int, int).
+:- mode decompress_profile((builtin.in), (builtin.out), (builtin.out), (builtin.out), (builtin.out), (builtin.out), (builtin.out), (builtin.out), (builtin.out), (builtin.out)) is det.
+:- func excps((measurements.own_prof_info)) = int.
+:- func exits((measurements.own_prof_info)) = int.
+:- func fails((measurements.own_prof_info)) = int.
+:- func inherit_allocs((measurements.inherit_prof_info)) = int.
+:- func inherit_callseqs((measurements.inherit_prof_info)) = int.
+:- func inherit_quanta((measurements.inherit_prof_info)) = int.
+:- func inherit_words((measurements.inherit_prof_info)) = int.
+:- pred is_inactive((measurements.own_prof_info)).
+:- mode is_inactive((builtin.in)) is semidet.
+:- pred is_zero_inherit_prof_info((measurements.inherit_prof_info)).
+:- mode is_zero_inherit_prof_info((builtin.in)) is semidet.
+:- pred is_zero_own_prof_info((measurements.own_prof_info)).
+:- mode is_zero_own_prof_info((builtin.in)) is semidet.
+:- func own_to_string((measurements.own_prof_info)) = string.
+:- func quanta((measurements.own_prof_info)) = int.
+:- func redos((measurements.own_prof_info)) = int.
+:- func subtract_inherit_from_inherit((measurements.inherit_prof_info), (measurements.inherit_prof_info)) = (measurements.inherit_prof_info).
+:- func subtract_own_from_inherit((measurements.own_prof_info), (measurements.inherit_prof_info)) = (measurements.inherit_prof_info).
+:- func sum_inherit_infos((list.list((measurements.inherit_prof_info)))) = (measurements.inherit_prof_info).
+:- func sum_own_infos((list.list((measurements.own_prof_info)))) = (measurements.own_prof_info).
+:- func words((measurements.own_prof_info)) = int.
+:- func zero_inherit_prof_info = (measurements.inherit_prof_info).
+:- func zero_own_prof_info = (measurements.own_prof_info).

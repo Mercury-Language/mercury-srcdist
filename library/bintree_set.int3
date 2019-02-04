@@ -1,0 +1,3 @@
+:- module bintree_set.
+:- interface.
+:- type bintree_set(_T).

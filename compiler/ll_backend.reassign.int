@@ -1,0 +1,6 @@
+:- module (ll_backend.reassign).
+:- interface.
+:- import_module list.
+:- import_module (ll_backend.llds).
+:- pred remove_reassign((list.list(((ll_backend.llds).instruction))), (list.list(((ll_backend.llds).instruction)))).
+:- mode remove_reassign((builtin.in), (builtin.out)) is det.

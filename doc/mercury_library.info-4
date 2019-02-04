@@ -1,0 +1,337 @@
+This is mercury_library.info, produced by makeinfo version 4.7 from
+library.texi_pp.
+
+INFO-DIR-SECTION The Mercury Programming Language
+START-INFO-DIR-ENTRY
+* Mercury Library: (mercury_library).  The Mercury Library Reference Manual.
+END-INFO-DIR-ENTRY
+
+   This file documents the Mercury standard library, version
+rotd-2007-08-01.
+
+   Copyright (C) 1995-1997,1999-2007 The University of Melbourne.
+
+   Permission is granted to make and distribute verbatim copies of this
+manual provided the copyright notice and this permission notice are
+preserved on all copies.
+
+   Permission is granted to copy and distribute modified versions of
+this manual under the conditions for verbatim copying, provided also
+that the entire resulting derived work is distributed under the terms
+of a permission notice identical to this one.
+
+   Permission is granted to copy and distribute translations of this
+manual into another language, under the above conditions for modified
+versions.
+
+
+File: mercury_library.info,  Node: version_hash_table,  Next: version_store,  Prev: version_bitmap,  Up: Top
+
+99 version_hash_table
+*********************
+
+     %--------------------------------------------------%
+     % Copyright (C) 2004-2006 The University of Melbourne.
+     % This file may only be copied under the terms of the GNU Library General
+     % Public License - see the file COPYING.LIB in the Mercury distribution.
+     % vim: ft=mercury ts=4 sw=4 et wm=0 tw=0
+     %--------------------------------------------------%
+     %
+     % File: version_hash_table.m.
+     % Main author: rafe.
+     % Stability: low.
+     %
+     % (See the header comments in version_types.m for an explanation of version
+     % types.)
+     %
+     % Version hash tables.  The "latest" version of the hash table
+     % provides roughly the same performance as the unique hash table
+     % implementation.  "Older" versions of the hash table are still
+     % accessible, but will incurr a growing performance penalty as
+     % more updates are made to the hash table.
+     %
+     %--------------------------------------------------%
+     %--------------------------------------------------%
+
+     :- module version_hash_table.
+     :- interface.
+
+     :- import_module assoc_list.
+     :- import_module char.
+
+     %--------------------------------------------------%
+
+     :- type version_hash_table(K, V).
+
+     :- type hash_pred(K) == ( pred(K,  int, int)        ).
+     :- inst hash_pred    == ( pred(in, out, out) is det ).
+
+         % new(HashFunc, N, MaxOccupancy)
+         % constructs a new hash table with initial size 2 ^ N that is
+         % doubled whenever MaxOccupancy is achieved; elements are
+         % indexed using HashFunc.
+         %
+         % HashFunc must compute two *independent* hashes for a given
+         % key - that is, one hash should not be a function of the other.
+         % Otherwise poor performance will result.
+         %
+         % N must be greater than 1.
+         % MaxOccupancy must be in (0.0, 1.0).
+         %
+         % XXX Values too close to the limits may cause bad things
+         % to happen.
+         %
+     :- func new(hash_pred(K)::in(hash_pred), int::in, float::in) =
+                 (version_hash_table(K, V)::out) is det.
+
+         % new_default(HashFn) constructs a hash table with default size and
+         % occupancy arguments.
+         %
+     :- func new_default(hash_pred(K)::in(hash_pred)) =
+                 (version_hash_table(K, V)::out) is det.
+
+         % Retrieve the hash_pred associated with a hash table.
+         %
+     % :- func hash_pred(version_hash_table(K, V)) = hash_pred(K).
+
+         % Default hash_preds for ints and strings and everything (buwahahaha!)
+         %
+     :- pred int_double_hash     `with_type` hash_pred(int)    `with_inst` hash_pred.
+     :- pred string_double_hash  `with_type` hash_pred(string) `with_inst` hash_pred.
+     :- pred char_double_hash    `with_type` hash_pred(char)   `with_inst` hash_pred.
+     :- pred float_double_hash   `with_type` hash_pred(float)  `with_inst` hash_pred.
+     :- pred generic_double_hash `with_type` hash_pred(T)      `with_inst` hash_pred.
+
+         % Returns the number of buckets in a hash table.
+         %
+     :- func num_buckets(version_hash_table(K, V)) = int.
+
+         % Returns the number of occupants in a hash table.
+         %
+     :- func num_occupants(version_hash_table(K, V)) = int.
+
+         % Insert key-value binding into a hash table; if one is
+         % already there then the previous value is overwritten.
+         % A predicate version is also provided.
+         %
+     :- func set(version_hash_table(K, V), K, V) = version_hash_table(K, V).
+     :- pred set(K::in, V::in,
+                 version_hash_table(K, V)::in, version_hash_table(K, V)::out)
+                     is det.
+
+         % Field update for hash tables.
+         % HT ^ elem(K) := V  is equivalent to  set(HT, K, V).
+         %
+     :- func 'elem :='(K, version_hash_table(K, V), V) = version_hash_table(K, V).
+
+         % Insert a key-value binding into a hash table.  An
+         % exception is thrown if a binding for the key is already
+         % present.  A predicate version is also provided.
+         %
+     :- func det_insert(version_hash_table(K, V), K, V) = version_hash_table(K, V).
+     :- pred det_insert(K::in, V::in,
+                 version_hash_table(K, V)::in, version_hash_table(K, V)::out)
+                     is det.
+
+         % Change a key-value binding in a hash table.  An
+         % exception is thrown if a binding for the key does not
+         % already exist.  A predicate version is also provided.
+         %
+         %
+     :- func det_update(version_hash_table(K, V), K, V) = version_hash_table(K, V).
+     :- pred det_update(K::in, V::in,
+                 version_hash_table(K, V)::in, version_hash_table(K, V)::out)
+                     is det.
+
+         % Delete the entry for the given key, leaving the hash table
+         % unchanged if there is no such entry.  A predicate version is also
+         % provided.
+         %
+     :- func delete(version_hash_table(K, V), K) = version_hash_table(K, V).
+     :- pred delete(K::in, version_hash_table(K, V)::in,
+                 version_hash_table(K, V)::out) is det.
+
+         % Lookup the value associated with the given key.  An exception
+         % is raised if there is no entry for the key.
+         %
+     :- func lookup(version_hash_table(K, V), K) = V.
+
+         % Field access for hash tables.
+         % HT ^ elem(K)  is equivalent to  lookup(HT, K).
+         %
+     :- func version_hash_table(K, V) ^ elem(K) = V.
+
+         % Like lookup, but just fails if there is no entry for the key.
+         %
+     :- func search(version_hash_table(K, V), K) = V is semidet.
+     :- pred search(version_hash_table(K, V)::in, K::in, V::out) is semidet.
+
+         % Convert a hash table into an association list.
+         %
+     :- func to_assoc_list(version_hash_table(K, V)) = assoc_list(K, V).
+
+         % Fold a function over the key-value bindings in a hash table.
+         %
+     :- func fold(func(K, V, T) = T, version_hash_table(K, V), T) = T.
+
+     %--------------------------------------------------%
+     %--------------------------------------------------%
+
+
+File: mercury_library.info,  Node: version_store,  Next: version_types,  Prev: version_hash_table,  Up: Top
+
+100 version_store
+*****************
+
+     %--------------------------------------------------%
+     % Copyright (C) 2004-2006 The University of Melbourne.
+     % This file may only be copied under the terms of the GNU Library General
+     % Public License - see the file COPYING.LIB in the Mercury distribution.
+     % vim: ft=mercury ts=4 sw=4 et wm=0 tw=0
+     %--------------------------------------------------%
+     %
+     % File: version_store.m.
+     % Author: Ralph Becket <rafe@cs.mu.oz.au>
+     % Stability: low.
+     %
+     % (See the header comments in version_types.m for an explanation of version
+     % types.)
+     %
+     % A version_store is similar to, albeit slightly slower than, an ordinary
+     % store, but does not depend upon uniqueness.
+     %
+     % Note that, unlike ordinary stores, liveness of data is via the version store
+     % rather than the mutvars.  This means that dead data (i.e.  whose mutvar is
+     % out of scope) in a version_store may not be garbage collected.
+     %
+     %--------------------------------------------------%
+     %--------------------------------------------------%
+
+     :- module version_store.
+     :- interface.
+
+     %--------------------------------------------------%
+
+     :- type version_store(S).
+
+     :- type mutvar(T, S).
+
+         % Construct a new version store.  This is distinguished from other
+         % version stores by its existentially quantified type.  This means
+         % the compiler can automatically detect any attempt to use a
+         % mutvar with the wrong version store.
+         %
+     :- some [S] func new = version_store(S).
+
+         % new_mutvar(X, Mutvar, VS0, VS) adds a new mutvar with value reference X
+         % to the version store.
+         %
+     :- pred new_mutvar(T::in, mutvar(T, S)::out,
+                 version_store(S)::in, version_store(S)::out) is det.
+
+         % new_cyclic_mutvar(F, Mutvar, VS0, VS) adds a new mutvar with value
+         % reference F(Mutvar) to the version store.  This can be used to
+         % construct cyclic terms.
+         %
+     :- pred new_cyclic_mutvar((func(mutvar(T, S)) = T)::in, mutvar(T, S)::out,
+                 version_store(S)::in, version_store(S)::out) is det.
+
+         % copy_mutvar(Mutvar, NewMutvar, VS0, VS) constructs NewMutvar
+         % with the same value reference as Mutvar.
+         %
+     :- pred copy_mutvar(mutvar(T, S)::in, mutvar(T, S)::out,
+                 version_store(S)::in, version_store(S)::out) is det.
+
+         % VS ^ elem(Mutvar) returns the element referenced by Mutvar in
+         % the version store.
+         %
+     :- func version_store(S) ^ elem(mutvar(T, S)) = T.
+
+         % lookup(VS, Mutvar) = VS ^ elem(Mutvar).
+         %
+         % A predicate version is also provided.
+         %
+     :- func lookup(version_store(S), mutvar(T, S)) = T.
+     :- pred get_mutvar(mutvar(T, S)::in, T::out, version_store(S)::in,
+                 version_store(S)::out) is det.
+
+         % ( VS ^ elem(Mutvar) := X ) updates the version store so that
+         % Mutvar now refers to value X.
+         %
+     :- func ( version_store(S) ^ elem(mutvar(T, S)) := T ) = version_store(S).
+
+         % set(VS, Mutvar, X) = ( VS ^ elem(Mutvar) := X ).
+         %
+         % A predicate version is also provided.
+         %
+     :- func set(version_store(S), mutvar(T, S), T) = version_store(S).
+     :- pred set_mutvar(mutvar(T, S)::in, T::in, version_store(S)::in,
+                 version_store(S)::out) is det.
+
+         % unsafe_rewind(VS) produces a version of VS for which all accesses are
+         % O(1).  Invoking this predicate renders undefined VS and all later
+         % versions undefined that were derived by performing individual updates.
+         % Only use this when you are absolutely certain there are no live
+         % references to VS or later versions of VS.
+         %
+         % A predicate version is also provided.
+         %
+     :- func unsafe_rewind(version_store(T)) = version_store(T).
+     :- pred unsafe_rewind(version_store(T)::in, version_store(T)::out) is det.
+
+     %--------------------------------------------------%
+     %--------------------------------------------------%
+
+
+File: mercury_library.info,  Node: version_types,  Prev: version_store,  Up: Top
+
+101 version_types
+*****************
+
+     %--------------------------------------------------%
+     % Copyright (C) 2004-2005 The University of Melbourne.
+     % This file may only be copied under the terms of the GNU Library General
+     % Public License - see the file COPYING.LIB in the Mercury distribution.
+     % vim: ft=mercury ts=4 sw=4 et wm=0 tw=0
+     %--------------------------------------------------%
+     % version_types.m
+     % Ralph Becket <rafe@cs.mu.oz.au>
+     % Fri Jul  9 15:31:16 EST 2004
+     %
+     % (This module only provides documentation describing general properties
+     % of version types.)
+     %
+     % Version types are efficient pure implementations of typically imperative
+     % structures, subject to the following caveat: efficient access is only
+     % guaranteed for the "latest" version of a given structure.  An older version
+     % incurs an access cost proportional to the number of its descendants.
+     %
+     % For example, if A0 is a version array, and A1 is created by updating A0,
+     % and A2 is created by updating A1, ..., and An is created by updating An-1,
+     % then accesses to An cost O(1) (assuming no further versions of the array
+     % have been created from An), but accesses to A0 cost O(n).
+     %
+     % Most of these data structures come with impure, unsafe means to "rewind"
+     % to an earlier version, restoring that version's O(1) access times, but
+     % leaving later versions undefined (i.e. only do this if you are discarding
+     % all later versions of the structure.)
+     %
+     % The motivation for using version types is that they are ordinary ground
+     % structures and do not depend upon uniqueness, while in many circumstances
+     % offering similar levels of performance.
+     %
+     %--------------------------------------------------%
+
+     :- module version_types.
+
+     :- interface.
+
+         % This is just to stop the compiler complaining about this module
+         % not defining anything.
+         %
+     :- type prevent_warning_about_empty_interface ---> dummy.
+
+     %--------------------------------------------------%
+     %--------------------------------------------------%
+
+

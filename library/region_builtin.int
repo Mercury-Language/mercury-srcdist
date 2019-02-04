@@ -1,0 +1,9 @@
+:- module region_builtin.
+:- interface.
+:- type region.
+:- impure pred create_region((region_builtin.region)).
+:- mode create_region((builtin.out)) is det.
+:- impure pred remove_region((region_builtin.region)).
+:- mode remove_region((builtin.in)) is det.
+:- implementation.
+:- type region == (builtin.c_pointer).

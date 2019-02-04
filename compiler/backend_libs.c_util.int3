@@ -1,0 +1,4 @@
+:- module (backend_libs.c_util).
+:- interface.
+:- type binop_category.
+:- type multi_string.

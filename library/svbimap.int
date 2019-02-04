@@ -1,0 +1,9 @@
+:- module svbimap.
+:- interface.
+:- import_module bimap.
+:- pred det_insert(K, V, (bimap.bimap(K, V)), (bimap.bimap(K, V))).
+:- mode det_insert((builtin.in), (builtin.in), (builtin.in), (builtin.out)) is det.
+:- pred insert(K, V, (bimap.bimap(K, V)), (bimap.bimap(K, V))).
+:- mode insert((builtin.in), (builtin.in), (builtin.in), (builtin.out)) is semidet.
+:- pred set(K, V, (bimap.bimap(K, V)), (bimap.bimap(K, V))).
+:- mode set((builtin.in), (builtin.in), (builtin.in), (builtin.out)) is det.

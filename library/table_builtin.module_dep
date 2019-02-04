@@ -1,0 +1,13 @@
+module(1, "table_builtin.m",
+	table_builtin,
+	{},
+	{builtin, io, list, maybe, private_builtin},
+	{builtin, maybe, list, io, int, require, univ, private_builtin},
+	{},
+	{},
+	{},
+	{"C"},
+	{"C" - table_builtin, "IL" - table_builtin, "Erlang" - table_builtin, "C" - table_builtin},
+	contains_foreign_export,
+	no_main
+).
