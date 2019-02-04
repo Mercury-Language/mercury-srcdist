@@ -1,0 +1,4 @@
+:- module ((ll_backend.llds_out).llds_out_code_addr).
+:- interface.
+:- type wrapper
+	where	type_is_abstract_enum(2).

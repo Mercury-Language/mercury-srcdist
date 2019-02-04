@@ -1,0 +1,22 @@
+:- module analysis_utils.
+:- interface.
+:- import_module assoc_list.
+:- import_module list.
+:- import_module map.
+:- import_module maybe.
+:- import_module mdbcomp.
+:- import_module measurements.
+:- import_module pair.
+:- import_module profile.
+:- import_module report.
+:- import_module set.
+:- import_module (mdbcomp.goal_path).
+:- import_module (mdbcomp.program_representation).
+:- type callee
+    --->    callee((analysis_utils.c_clique) :: profile.clique_ptr, (analysis_utils.c_csd) :: profile.call_site_dynamic_ptr).
+:- type cost_and_callees == analysis_utils.cost_and_callees(analysis_utils.callee).
+:- type cost_and_callees(Callee)
+    --->    cost_and_callees((analysis_utils.cac_cost) :: measurements.cs_cost_csq, (analysis_utils.cac_exits) :: int, (analysis_utils.cac_callees) :: set.set(Callee), (analysis_utils.cac_call_site_is_ho) :: analysis_utils.higher_order).
+:- type higher_order
+    --->    first_order_call 
+    ;       higher_order_call .
