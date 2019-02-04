@@ -1,0 +1,50 @@
+:- module benchmarking.
+:- interface.
+:- import_module io.
+:- import_module maybe.
+:- pred benchmark_det(pred(T1, T2), T1, T2, int, int).
+:- mode benchmark_det((pred((builtin.in), (builtin.out)) is det), (builtin.in), (builtin.out), (builtin.in), (builtin.out)) is cc_multi.
+:- mode benchmark_det((pred((builtin.in), (builtin.out)) is cc_multi), (builtin.in), (builtin.out), (builtin.in), (builtin.out)) is cc_multi.
+:- pred benchmark_det_io(pred(T1, T2, T3, T3), T1, T2, T3, T3, int, int).
+:- mode benchmark_det_io((pred((builtin.in), (builtin.out), (builtin.di), (builtin.uo)) is det), (builtin.in), (builtin.out), (builtin.di), (builtin.uo), (builtin.in), (builtin.out)) is cc_multi.
+:- pred benchmark_func(((func T1) = T2), T1, T2, int, int).
+:- mode benchmark_func((func((builtin.in)) = (builtin.out) is det), (builtin.in), (builtin.out), (builtin.in), (builtin.out)) is cc_multi.
+:- pred benchmark_nondet(pred(T1, T2), T1, int, int, int).
+:- mode benchmark_nondet((pred((builtin.in), (builtin.out)) is nondet), (builtin.in), (builtin.out), (builtin.in), (builtin.out)) is cc_multi.
+:- pred log_threadscope_message(string, io.io, io.io).
+:- mode log_threadscope_message((builtin.in), (builtin.di), (builtin.uo)) is det.
+:- impure pred report_full_memory_stats is det.
+:- pred report_memory_attribution(string, io.io, io.io).
+:- mode report_memory_attribution((builtin.in), (builtin.di), (builtin.uo)) is det.
+:- impure pred report_memory_attribution(string).
+:- mode report_memory_attribution((builtin.in)) is det.
+:- impure pred report_stats is det.
+:- pred turn_off_call_profiling(io.io, io.io).
+:- mode turn_off_call_profiling((builtin.di), (builtin.uo)) is det.
+:- impure pred turn_off_call_profiling is det.
+:- pred turn_off_heap_profiling(io.io, io.io).
+:- mode turn_off_heap_profiling((builtin.di), (builtin.uo)) is det.
+:- impure pred turn_off_heap_profiling is det.
+:- pred turn_off_profiling(io.io, io.io).
+:- mode turn_off_profiling((builtin.di), (builtin.uo)) is det.
+:- impure pred turn_off_profiling is det.
+:- pred turn_off_time_profiling(io.io, io.io).
+:- mode turn_off_time_profiling((builtin.di), (builtin.uo)) is det.
+:- impure pred turn_off_time_profiling is det.
+:- pred turn_on_call_profiling(io.io, io.io).
+:- mode turn_on_call_profiling((builtin.di), (builtin.uo)) is det.
+:- impure pred turn_on_call_profiling is det.
+:- pred turn_on_heap_profiling(io.io, io.io).
+:- mode turn_on_heap_profiling((builtin.di), (builtin.uo)) is det.
+:- impure pred turn_on_heap_profiling is det.
+:- pred turn_on_profiling(io.io, io.io).
+:- mode turn_on_profiling((builtin.di), (builtin.uo)) is det.
+:- impure pred turn_on_profiling is det.
+:- pred turn_on_time_profiling(io.io, io.io).
+:- mode turn_on_time_profiling((builtin.di), (builtin.uo)) is det.
+:- impure pred turn_on_time_profiling is det.
+:- pred write_out_trace_counts(string, maybe.maybe(string), io.io, io.io).
+:- mode write_out_trace_counts((builtin.in), (builtin.out), (builtin.di), (builtin.uo)) is det.
+:- implementation.
+:- pragma foreign_import_module("Java", benchmarking).
+:- pragma foreign_import_module("Java", benchmarking).

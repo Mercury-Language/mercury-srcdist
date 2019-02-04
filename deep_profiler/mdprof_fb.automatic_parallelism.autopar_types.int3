@@ -1,0 +1,16 @@
+:- module ((mdprof_fb.automatic_parallelism).autopar_types).
+:- interface.
+:- type candidate_par_conjunctions.
+:- type dependency_graphs.
+:- type dependent_conjunct_execution.
+:- type implicit_parallelism_info.
+:- type incomplete_parallelisation.
+:- type inst_map_info.
+:- type is_costly_goal
+	where	type_is_abstract_enum(1).
+:- type parallel_execution_overlap.
+:- type parallelisation_cost_data.
+:- type pard_goal_detail.
+:- type pard_goal_detail_annotation.
+:- type pard_goal_type.
+:- type var_and_mode.

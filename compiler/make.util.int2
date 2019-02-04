@@ -1,0 +1,13 @@
+:- module (make.util).
+:- interface.
+:- import_module (libs.globals).
+:- type build(T) == make.util.build(T, make.make_info).
+:- type build(T, Info) == make.util.build(T, Info, Info).
+:- type build2(T, U) == pred(libs.globals.globals, T, U, bool.bool, make.make_info, make.make_info, io.io, io.io).
+:- type foldl2_pred_with_status(T, Info, IO) == pred(libs.globals.globals, T, bool.bool, Info, Info, IO, IO).
+:- type build(T, Info1, Info2) == pred(libs.globals.globals, T, bool.bool, Info1, Info2, io.io, io.io).
+:- type foldl3_pred_with_status(T, Acc, Info, IO) == pred(libs.globals.globals, T, bool.bool, Acc, Acc, Info, Info, IO, IO).
+:- inst (build) == (pred((builtin.in), (builtin.in), (builtin.out), (builtin.in), (builtin.out), (builtin.di), (builtin.uo)) is det).
+:- inst (build2) == (pred((builtin.in), (builtin.in), (builtin.in), (builtin.out), (builtin.in), (builtin.out), (builtin.di), (builtin.uo)) is det).
+:- inst (foldl2_pred_with_status) == (pred((builtin.in), (builtin.in), (builtin.out), (builtin.in), (builtin.out), (builtin.di), (builtin.uo)) is det).
+:- inst (foldl3_pred_with_status) == (pred((builtin.in), (builtin.in), (builtin.out), (builtin.in), (builtin.out), (builtin.in), (builtin.out), (builtin.di), (builtin.uo)) is det).

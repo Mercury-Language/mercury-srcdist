@@ -1,0 +1,73 @@
+:- module dir.
+:- pragma termination_info((dir.directory_separator) = (builtin.out), finite(0, [no]), cannot_loop).
+:- pragma termination_info(dir.directory_separator((builtin.out)), finite(0, [no]), cannot_loop).
+:- pragma termination_info(dir.is_directory_separator((builtin.in)), finite(0, [no]), cannot_loop).
+:- pragma termination_info(dir.is_directory_separator((builtin.out)), finite(0, [no]), cannot_loop).
+:- pragma termination_info((dir.this_directory) = (builtin.out), finite(0, [no]), cannot_loop).
+:- pragma termination_info(dir.this_directory((builtin.out)), finite(0, [no]), cannot_loop).
+:- pragma termination_info((dir.parent_directory) = (builtin.out), finite(0, [no]), cannot_loop).
+:- pragma termination_info(dir.parent_directory((builtin.out)), finite(0, [no]), cannot_loop).
+:- pragma termination_info(dir.split_name((builtin.in), (builtin.out), (builtin.out)), infinite, can_loop).
+:- pragma termination_info(dir.basename((builtin.in)) = (builtin.out), infinite, can_loop).
+:- pragma termination_info(dir.basename((builtin.in), (builtin.out)), infinite, can_loop).
+:- pragma termination_info(dir.det_basename((builtin.in)) = (builtin.out), infinite, can_loop).
+:- pragma termination_info(dir.basename_det((builtin.in)) = (builtin.out), infinite, can_loop).
+:- pragma termination_info(dir.dirname((builtin.in)) = (builtin.out), infinite, can_loop).
+:- pragma termination_info(dir.dirname((builtin.in), (builtin.out)), infinite, can_loop).
+:- pragma termination_info(dir.path_name_is_absolute((builtin.in)), finite(0, [no]), can_loop).
+:- pragma termination_info(dir.path_name_is_root_directory((builtin.in)), finite(0, [no]), can_loop).
+:- pragma termination_info(dir.'/'((builtin.in), (builtin.in)) = (builtin.out), infinite, can_loop).
+:- pragma termination_info(dir.make_path_name((builtin.in), (builtin.in)) = (builtin.out), infinite, can_loop).
+:- pragma termination_info(dir.relative_path_name_from_components((builtin.in)) = (builtin.out), infinite, cannot_loop).
+:- pragma termination_info(dir.current_directory((builtin.out), (builtin.di), (builtin.uo)), infinite, cannot_loop).
+:- pragma termination_info(dir.make_directory((builtin.in), (builtin.out), (builtin.di), (builtin.uo)), infinite, can_loop).
+:- pragma termination_info(dir.make_single_directory((builtin.in), (builtin.out), (builtin.di), (builtin.uo)), infinite, cannot_loop).
+:- pragma termination_info(dir.foldl2(builtin.in((dir.foldl_pred)), (builtin.in), (builtin.in), (builtin.out), (builtin.di), (builtin.uo)), infinite, can_loop).
+:- pragma termination_info(dir.recursive_foldl2(builtin.in((dir.foldl_pred)), (builtin.in), (builtin.in), (builtin.in), (builtin.out), (builtin.di), (builtin.uo)), infinite, can_loop).
+:- pragma termination_info(dir.expand_braces((builtin.in)) = (builtin.out), infinite, can_loop).
+:- pragma termination_info((dir.use_windows_paths), finite(0, []), cannot_loop).
+:- pragma termination_info((dir.alt_directory_separator) = (builtin.out), finite(0, [no]), cannot_loop).
+:- pragma termination_info(dir.split_name_2((builtin.in), (builtin.out), (builtin.out)), infinite, can_loop).
+:- pragma termination_info(dir.canonicalize_path_chars((builtin.in)) = (builtin.out), finite(2, [yes, no]), can_loop).
+:- pragma termination_info(dir.is_root_directory((builtin.in)), finite(0, [no]), can_loop).
+:- pragma termination_info(dir.make_single_directory_2((builtin.in), (builtin.in), (builtin.out), (builtin.di), (builtin.uo)), infinite, cannot_loop).
+:- pragma termination_info(dir.fixup_dirname((builtin.in)) = (builtin.out), infinite, can_loop).
+:- pragma termination_info(dir.foldl2_process_dir((builtin.in), builtin.in((dir.foldl_pred)), (builtin.in), (builtin.in), (builtin.in), (builtin.in), (builtin.out), (builtin.in), (builtin.out), (builtin.di), (builtin.uo)), infinite, can_loop).
+:- pragma termination_info(dir.expand((builtin.in)) = (builtin.out), infinite, can_loop).
+:- pragma termination_info(dir.expand_acc((builtin.in), (builtin.in)) = (builtin.out), infinite, can_loop).
+:- pragma exceptions(function, (dir.directory_separator), 1, 0, will_not_throw).
+:- pragma exceptions(predicate, (dir.directory_separator), 1, 0, will_not_throw).
+:- pragma exceptions(predicate, (dir.is_directory_separator), 1, 0, will_not_throw).
+:- pragma exceptions(predicate, (dir.is_directory_separator), 1, 1, will_not_throw).
+:- pragma exceptions(function, (dir.this_directory), 1, 0, will_not_throw).
+:- pragma exceptions(predicate, (dir.this_directory), 1, 0, will_not_throw).
+:- pragma exceptions(function, (dir.parent_directory), 1, 0, will_not_throw).
+:- pragma exceptions(predicate, (dir.parent_directory), 1, 0, will_not_throw).
+:- pragma exceptions(predicate, (dir.split_name), 3, 0, may_throw(user_exception)).
+:- pragma exceptions(function, (dir.basename), 2, 0, may_throw(user_exception)).
+:- pragma exceptions(predicate, (dir.basename), 2, 0, may_throw(user_exception)).
+:- pragma exceptions(function, (dir.det_basename), 2, 0, may_throw(user_exception)).
+:- pragma exceptions(function, (dir.basename_det), 2, 0, may_throw(user_exception)).
+:- pragma exceptions(function, (dir.dirname), 2, 0, may_throw(user_exception)).
+:- pragma exceptions(predicate, (dir.dirname), 2, 0, may_throw(user_exception)).
+:- pragma exceptions(predicate, (dir.path_name_is_absolute), 1, 0, may_throw(user_exception)).
+:- pragma exceptions(predicate, (dir.path_name_is_root_directory), 1, 0, may_throw(user_exception)).
+:- pragma exceptions(function, (dir.(/)), 3, 0, may_throw(user_exception)).
+:- pragma exceptions(function, (dir.make_path_name), 3, 0, may_throw(user_exception)).
+:- pragma exceptions(function, (dir.relative_path_name_from_components), 2, 0, may_throw(user_exception)).
+:- pragma exceptions(predicate, (dir.current_directory), 3, 0, may_throw(user_exception)).
+:- pragma exceptions(predicate, (dir.make_directory), 4, 0, may_throw(user_exception)).
+:- pragma exceptions(predicate, (dir.make_single_directory), 4, 0, may_throw(user_exception)).
+:- pragma exceptions(predicate, (dir.foldl2), 6, 0, may_throw(user_exception)).
+:- pragma exceptions(predicate, (dir.recursive_foldl2), 7, 0, may_throw(user_exception)).
+:- pragma exceptions(function, (dir.expand_braces), 2, 0, may_throw(user_exception)).
+:- pragma exceptions(predicate, (dir.use_windows_paths), 0, 0, will_not_throw).
+:- pragma exceptions(function, (dir.alt_directory_separator), 1, 0, will_not_throw).
+:- pragma exceptions(predicate, (dir.split_name_2), 3, 0, may_throw(user_exception)).
+:- pragma exceptions(function, (dir.canonicalize_path_chars), 2, 0, will_not_throw).
+:- pragma exceptions(predicate, (dir.is_root_directory), 1, 0, may_throw(user_exception)).
+:- pragma exceptions(predicate, (dir.make_single_directory_2), 5, 0, may_throw(user_exception)).
+:- pragma exceptions(function, (dir.fixup_dirname), 2, 0, may_throw(user_exception)).
+:- pragma exceptions(predicate, (dir.foldl2_process_dir), 11, 0, may_throw(user_exception)).
+:- pragma exceptions(function, (dir.expand), 2, 0, may_throw(user_exception)).
+:- pragma exceptions(function, (dir.expand_acc), 3, 0, may_throw(user_exception)).
