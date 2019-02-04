@@ -1,0 +1,79 @@
+:- module (hlds.hlds_rtti).
+:- interface.
+:- import_module assoc_list.
+:- import_module bool.
+:- import_module list.
+:- import_module map.
+:- import_module set.
+:- import_module (hlds.hlds_module).
+:- import_module (hlds.hlds_pred).
+:- import_module (mdbcomp.prim_data).
+:- import_module (parse_tree.prog_data).
+:- type instance_method_constraints
+	--->	instance_method_constraints(((parse_tree.prog_data).class_id), (list.list(((parse_tree.prog_data).mer_type))), (list.list(((parse_tree.prog_data).prog_constraint))), ((parse_tree.prog_data).prog_constraints)).
+:- type prog_var_name == string.
+:- type rtti_proc_label
+	--->	rtti_proc_label(((hlds.hlds_rtti).pred_or_func) :: ((mdbcomp.prim_data).pred_or_func), ((hlds.hlds_rtti).this_module) :: ((mdbcomp.prim_data).module_name), ((hlds.hlds_rtti).proc_module) :: ((mdbcomp.prim_data).module_name), ((hlds.hlds_rtti).proc_name) :: string, ((hlds.hlds_rtti).proc_arity) :: ((parse_tree.prog_data).arity), ((hlds.hlds_rtti).proc_arg_types) :: (list.list(((parse_tree.prog_data).mer_type))), ((hlds.hlds_rtti).pred_id) :: ((hlds.hlds_pred).pred_id), ((hlds.hlds_rtti).proc_id) :: ((hlds.hlds_pred).proc_id), ((hlds.hlds_rtti).proc_headvars) :: (assoc_list.assoc_list(((parse_tree.prog_data).prog_var), ((hlds.hlds_rtti).prog_var_name))), ((hlds.hlds_rtti).proc_arg_modes) :: (list.list(((hlds.hlds_pred).arg_mode))), ((hlds.hlds_rtti).proc_interface_detism) :: ((parse_tree.prog_data).determinism), ((hlds.hlds_rtti).pred_is_imported) :: (bool.bool), ((hlds.hlds_rtti).pred_is_pseudo_imported) :: (bool.bool), ((hlds.hlds_rtti).pred_info_origin) :: ((hlds.hlds_pred).pred_origin), ((hlds.hlds_rtti).proc_is_exported) :: (bool.bool), ((hlds.hlds_rtti).proc_is_imported) :: (bool.bool)).
+:- type rtti_var_info
+	--->	type_info_var(((parse_tree.prog_data).mer_type))
+	;	typeclass_info_var(((parse_tree.prog_data).prog_constraint))
+	;	non_rtti_var .
+:- type rtti_varmaps.
+:- type type_info_locn
+	--->	type_info(((parse_tree.prog_data).prog_var))
+	;	typeclass_info(((parse_tree.prog_data).prog_var), int).
+:- pred apply_substitutions_to_rtti_varmaps(((parse_tree.prog_data).tvar_renaming), ((parse_tree.prog_data).tsubst), (map.map(((parse_tree.prog_data).prog_var), ((parse_tree.prog_data).prog_var))), ((hlds.hlds_rtti).rtti_varmaps), ((hlds.hlds_rtti).rtti_varmaps)).
+:- mode apply_substitutions_to_rtti_varmaps((builtin.in), (builtin.in), (builtin.in), (builtin.in), (builtin.out)) is det.
+:- pred get_typeinfo_vars((set.set(((parse_tree.prog_data).prog_var))), ((parse_tree.prog_data).vartypes), ((hlds.hlds_rtti).rtti_varmaps), (set.set(((parse_tree.prog_data).prog_var)))).
+:- mode get_typeinfo_vars((builtin.in), (builtin.in), (builtin.in), (builtin.out)) is det.
+:- func make_rtti_proc_label(((hlds.hlds_module).module_info), ((hlds.hlds_pred).pred_id), ((hlds.hlds_pred).proc_id)) = ((hlds.hlds_rtti).rtti_proc_label).
+:- pred maybe_complete_with_typeinfo_vars((set.set(((parse_tree.prog_data).prog_var))), (bool.bool), ((parse_tree.prog_data).vartypes), ((hlds.hlds_rtti).rtti_varmaps), (set.set(((parse_tree.prog_data).prog_var)))).
+:- mode maybe_complete_with_typeinfo_vars((builtin.in), (builtin.in), (builtin.in), (builtin.in), (builtin.out)) is det.
+:- pred proc_label_pred_proc_id(((hlds.hlds_rtti).rtti_proc_label), ((hlds.hlds_pred).pred_id), ((hlds.hlds_pred).proc_id)).
+:- mode proc_label_pred_proc_id((builtin.in), (builtin.out), (builtin.out)) is det.
+:- pred rtti_det_insert_type_info_locn(((parse_tree.prog_data).tvar), ((hlds.hlds_rtti).type_info_locn), ((hlds.hlds_rtti).rtti_varmaps), ((hlds.hlds_rtti).rtti_varmaps)).
+:- mode rtti_det_insert_type_info_locn((builtin.in), (builtin.in), (builtin.in), (builtin.out)) is det.
+:- pred rtti_det_insert_type_info_type(((parse_tree.prog_data).prog_var), ((parse_tree.prog_data).mer_type), ((hlds.hlds_rtti).rtti_varmaps), ((hlds.hlds_rtti).rtti_varmaps)).
+:- mode rtti_det_insert_type_info_type((builtin.in), (builtin.in), (builtin.in), (builtin.out)) is det.
+:- pred rtti_det_insert_typeclass_info_var(((parse_tree.prog_data).prog_constraint), ((parse_tree.prog_data).prog_var), ((hlds.hlds_rtti).rtti_varmaps), ((hlds.hlds_rtti).rtti_varmaps)).
+:- mode rtti_det_insert_typeclass_info_var((builtin.in), (builtin.in), (builtin.in), (builtin.out)) is det.
+:- pred rtti_lookup_type_info_locn(((hlds.hlds_rtti).rtti_varmaps), ((parse_tree.prog_data).tvar), ((hlds.hlds_rtti).type_info_locn)).
+:- mode rtti_lookup_type_info_locn((builtin.in), (builtin.in), (builtin.out)) is det.
+:- pred rtti_lookup_typeclass_info_var(((hlds.hlds_rtti).rtti_varmaps), ((parse_tree.prog_data).prog_constraint), ((parse_tree.prog_data).prog_var)).
+:- mode rtti_lookup_typeclass_info_var((builtin.in), (builtin.in), (builtin.out)) is det.
+:- pred rtti_reuse_typeclass_info_var(((parse_tree.prog_data).prog_var), ((hlds.hlds_rtti).rtti_varmaps), ((hlds.hlds_rtti).rtti_varmaps)).
+:- mode rtti_reuse_typeclass_info_var((builtin.in), (builtin.in), (builtin.out)) is det.
+:- pred rtti_search_type_info_locn(((hlds.hlds_rtti).rtti_varmaps), ((parse_tree.prog_data).tvar), ((hlds.hlds_rtti).type_info_locn)).
+:- mode rtti_search_type_info_locn((builtin.in), (builtin.in), (builtin.out)) is semidet.
+:- pred rtti_search_typeclass_info_var(((hlds.hlds_rtti).rtti_varmaps), ((parse_tree.prog_data).prog_constraint), ((parse_tree.prog_data).prog_var)).
+:- mode rtti_search_typeclass_info_var((builtin.in), (builtin.in), (builtin.out)) is semidet.
+:- pred rtti_set_type_info_locn(((parse_tree.prog_data).tvar), ((hlds.hlds_rtti).type_info_locn), ((hlds.hlds_rtti).rtti_varmaps), ((hlds.hlds_rtti).rtti_varmaps)).
+:- mode rtti_set_type_info_locn((builtin.in), (builtin.in), (builtin.in), (builtin.out)) is det.
+:- pred rtti_set_type_info_type(((parse_tree.prog_data).prog_var), ((parse_tree.prog_data).mer_type), ((hlds.hlds_rtti).rtti_varmaps), ((hlds.hlds_rtti).rtti_varmaps)).
+:- mode rtti_set_type_info_type((builtin.in), (builtin.in), (builtin.in), (builtin.out)) is det.
+:- pred rtti_set_typeclass_info_var(((parse_tree.prog_data).prog_constraint), ((parse_tree.prog_data).prog_var), ((hlds.hlds_rtti).rtti_varmaps), ((hlds.hlds_rtti).rtti_varmaps)).
+:- mode rtti_set_typeclass_info_var((builtin.in), (builtin.in), (builtin.in), (builtin.out)) is det.
+:- pred rtti_var_info_duplicate(((parse_tree.prog_data).prog_var), ((parse_tree.prog_data).prog_var), ((hlds.hlds_rtti).rtti_varmaps), ((hlds.hlds_rtti).rtti_varmaps)).
+:- mode rtti_var_info_duplicate((builtin.in), (builtin.in), (builtin.in), (builtin.out)) is det.
+:- pred rtti_varmaps_init(((hlds.hlds_rtti).rtti_varmaps)).
+:- mode rtti_varmaps_init((builtin.out)) is det.
+:- pred rtti_varmaps_no_tvars(((hlds.hlds_rtti).rtti_varmaps)).
+:- mode rtti_varmaps_no_tvars((builtin.in)) is semidet.
+:- pred rtti_varmaps_overlay(((hlds.hlds_rtti).rtti_varmaps), ((hlds.hlds_rtti).rtti_varmaps), ((hlds.hlds_rtti).rtti_varmaps)).
+:- mode rtti_varmaps_overlay((builtin.in), (builtin.in), (builtin.out)) is det.
+:- pred rtti_varmaps_reusable_constraints(((hlds.hlds_rtti).rtti_varmaps), (list.list(((parse_tree.prog_data).prog_constraint)))).
+:- mode rtti_varmaps_reusable_constraints((builtin.in), (builtin.out)) is det.
+:- pred rtti_varmaps_rtti_prog_vars(((hlds.hlds_rtti).rtti_varmaps), (list.list(((parse_tree.prog_data).prog_var)))).
+:- mode rtti_varmaps_rtti_prog_vars((builtin.in), (builtin.out)) is det.
+:- pred rtti_varmaps_transform_types(pred(((parse_tree.prog_data).mer_type), ((parse_tree.prog_data).mer_type)), ((hlds.hlds_rtti).rtti_varmaps), ((hlds.hlds_rtti).rtti_varmaps)).
+:- mode rtti_varmaps_transform_types(builtin.in((pred((builtin.in), (builtin.out)) is det)), (builtin.in), (builtin.out)) is det.
+:- pred rtti_varmaps_tvars(((hlds.hlds_rtti).rtti_varmaps), (list.list(((parse_tree.prog_data).tvar)))).
+:- mode rtti_varmaps_tvars((builtin.in), (builtin.out)) is det.
+:- pred rtti_varmaps_types(((hlds.hlds_rtti).rtti_varmaps), (list.list(((parse_tree.prog_data).mer_type)))).
+:- mode rtti_varmaps_types((builtin.in), (builtin.out)) is det.
+:- pred rtti_varmaps_var_info(((hlds.hlds_rtti).rtti_varmaps), ((parse_tree.prog_data).prog_var), ((hlds.hlds_rtti).rtti_var_info)).
+:- mode rtti_varmaps_var_info((builtin.in), (builtin.in), (builtin.out)) is det.
+:- pred type_info_locn_set_var(((parse_tree.prog_data).prog_var), ((hlds.hlds_rtti).type_info_locn), ((hlds.hlds_rtti).type_info_locn)).
+:- mode type_info_locn_set_var((builtin.in), (builtin.in), (builtin.out)) is det.
+:- pred type_info_locn_var(((hlds.hlds_rtti).type_info_locn), ((parse_tree.prog_data).prog_var)).
+:- mode type_info_locn_var((builtin.in), (builtin.out)) is det.

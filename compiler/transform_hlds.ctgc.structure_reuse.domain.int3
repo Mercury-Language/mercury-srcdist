@@ -1,0 +1,6 @@
+:- module (((transform_hlds.ctgc).structure_reuse).domain).
+:- interface.
+:- type reuse_as.
+:- type reuse_as_table.
+:- type reuse_condition.
+:- type reuse_conditions.

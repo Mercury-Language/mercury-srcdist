@@ -1,0 +1,27 @@
+:- module (ll_backend.rtti_out).
+:- interface.
+:- import_module bool.
+:- import_module io.
+:- import_module list.
+:- import_module (backend_libs.rtti).
+:- import_module (ll_backend.llds_out).
+:- pred init_rtti_data_if_nec(((backend_libs.rtti).rtti_data), (io.io), (io.io)).
+:- mode init_rtti_data_if_nec((builtin.in), (builtin.di), (builtin.uo)) is det.
+:- pred output_addr_of_rtti_data(((backend_libs.rtti).rtti_data), (io.io), (io.io)).
+:- mode output_addr_of_rtti_data((builtin.in), (builtin.di), (builtin.uo)) is det.
+:- pred output_cast_addr_of_rtti_data(string, ((backend_libs.rtti).rtti_data), (io.io), (io.io)).
+:- mode output_cast_addr_of_rtti_data((builtin.in), (builtin.in), (builtin.di), (builtin.uo)) is det.
+:- pred output_rtti_data_decl(((backend_libs.rtti).rtti_data), ((ll_backend.llds_out).decl_set), ((ll_backend.llds_out).decl_set), (io.io), (io.io)).
+:- mode output_rtti_data_decl((builtin.in), (builtin.in), (builtin.out), (builtin.di), (builtin.uo)) is det.
+:- pred output_rtti_data_decl_list((list.list(((backend_libs.rtti).rtti_data))), ((ll_backend.llds_out).decl_set), ((ll_backend.llds_out).decl_set), (io.io), (io.io)).
+:- mode output_rtti_data_decl_list((builtin.in), (builtin.in), (builtin.out), (builtin.di), (builtin.uo)) is det.
+:- pred output_rtti_data_defn(((backend_libs.rtti).rtti_data), ((ll_backend.llds_out).decl_set), ((ll_backend.llds_out).decl_set), (io.io), (io.io)).
+:- mode output_rtti_data_defn((builtin.in), (builtin.in), (builtin.out), (builtin.di), (builtin.uo)) is det.
+:- pred output_rtti_id(((backend_libs.rtti).rtti_id), (io.io), (io.io)).
+:- mode output_rtti_id((builtin.in), (builtin.di), (builtin.uo)) is det.
+:- pred output_rtti_id_storage_type_name(((backend_libs.rtti).rtti_id), (bool.bool), ((ll_backend.llds_out).decl_set), ((ll_backend.llds_out).decl_set), (io.io), (io.io)).
+:- mode output_rtti_id_storage_type_name((builtin.in), (builtin.in), (builtin.in), (builtin.out), (builtin.di), (builtin.uo)) is det.
+:- pred output_rtti_id_storage_type_name_no_decl(((backend_libs.rtti).rtti_id), (bool.bool), (io.io), (io.io)).
+:- mode output_rtti_id_storage_type_name_no_decl((builtin.in), (builtin.in), (builtin.di), (builtin.uo)) is det.
+:- pred register_rtti_data_if_nec(((backend_libs.rtti).rtti_data), (io.io), (io.io)).
+:- mode register_rtti_data_if_nec((builtin.in), (builtin.di), (builtin.uo)) is det.

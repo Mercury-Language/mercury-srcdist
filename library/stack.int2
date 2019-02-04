@@ -1,0 +1,6 @@
+:- module stack.
+:- interface.
+:- import_module list.
+:- type stack(T).
+:- implementation.
+:- type stack(T) == (list.list(T)).

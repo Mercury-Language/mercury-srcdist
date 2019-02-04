@@ -1,0 +1,106 @@
+/*
+** Automatically generated from `ssdb.m'
+** by the Mercury compiler,
+** version rotd-2007-12-21, configured for i686-pc-linux-gnu.
+** Do not edit.
+*/
+#ifndef SSDB_MH
+#define SSDB_MH
+
+#ifdef __cplusplus
+extern "C" {
+#endif
+
+#ifdef MR_HIGHLEVEL_CODE
+#include "mercury.h"
+#else
+  #ifndef MERCURY_HDR_EXCLUDE_IMP_H
+  #include "mercury_imp.h"
+  #endif
+#endif
+#ifdef MR_DEEP_PROFILING
+#include "mercury_deep_profiling.h"
+#endif
+
+#ifndef SSDB_DECL_GUARD
+#define SSDB_DECL_GUARD
+#line 241 "ssdb.m"
+extern MR_Word ssdb__mutable_variable_cur_ssdb_event_number;
+#ifdef MR_THREAD_SAFE
+    extern MercuryLock ssdb__mutable_variable_cur_ssdb_event_number_lock;
+#endif
+
+#line 34 "ssdb.mh.tmp"
+#line 244 "ssdb.m"
+extern MR_Word ssdb__mutable_variable_cur_ssdb_csn;
+#ifdef MR_THREAD_SAFE
+    extern MercuryLock ssdb__mutable_variable_cur_ssdb_csn_lock;
+#endif
+
+#line 41 "ssdb.mh.tmp"
+#line 246 "ssdb.m"
+extern MR_Word ssdb__mutable_variable_cur_ssdb_depth;
+#ifdef MR_THREAD_SAFE
+    extern MercuryLock ssdb__mutable_variable_cur_ssdb_depth_lock;
+#endif
+
+#line 48 "ssdb.mh.tmp"
+#line 248 "ssdb.m"
+extern MR_Word ssdb__mutable_variable_cur_ssdb_next_stop;
+#ifdef MR_THREAD_SAFE
+    extern MercuryLock ssdb__mutable_variable_cur_ssdb_next_stop_lock;
+#endif
+
+#line 55 "ssdb.mh.tmp"
+#line 251 "ssdb.m"
+extern MR_Word ssdb__mutable_variable_cur_ssdb_breakpoints;
+#ifdef MR_THREAD_SAFE
+    extern MercuryLock ssdb__mutable_variable_cur_ssdb_breakpoints_lock;
+#endif
+
+#line 62 "ssdb.mh.tmp"
+#line 254 "ssdb.m"
+extern MR_Word ssdb__mutable_variable_cur_ssdb_number_of_breakpoint;
+#ifdef MR_THREAD_SAFE
+    extern MercuryLock ssdb__mutable_variable_cur_ssdb_number_of_breakpoint_lock;
+#endif
+
+#line 69 "ssdb.mh.tmp"
+#line 257 "ssdb.m"
+extern MR_Word ssdb__mutable_variable_cur_ssdb_shadow_stack;
+#ifdef MR_THREAD_SAFE
+    extern MercuryLock ssdb__mutable_variable_cur_ssdb_shadow_stack_lock;
+#endif
+
+#line 76 "ssdb.mh.tmp"
+#line 260 "ssdb.m"
+extern MR_Word ssdb__mutable_variable_cur_ssdb_shadow_stack_nondet;
+#ifdef MR_THREAD_SAFE
+    extern MercuryLock ssdb__mutable_variable_cur_ssdb_shadow_stack_nondet_lock;
+#endif
+
+#line 83 "ssdb.mh.tmp"
+#line 263 "ssdb.m"
+extern MR_Word ssdb__mutable_variable_debugger_state;
+#ifdef MR_THREAD_SAFE
+    extern MercuryLock ssdb__mutable_variable_debugger_state_lock;
+#endif
+
+#line 90 "ssdb.mh.tmp"
+
+#endif
+void ssdb__user_init_pred_8(void);
+void ssdb__user_init_pred_7(void);
+void ssdb__user_init_pred_6(void);
+void ssdb__user_init_pred_5(void);
+void ssdb__user_init_pred_4(void);
+void ssdb__user_init_pred_3(void);
+void ssdb__user_init_pred_2(void);
+void ssdb__user_init_pred_1(void);
+void ssdb__user_init_pred_0(void);
+
+#ifdef __cplusplus
+}
+#endif
+
+#endif /* SSDB_MH */

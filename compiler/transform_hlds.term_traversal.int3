@@ -1,0 +1,5 @@
+:- module (transform_hlds.term_traversal).
+:- interface.
+:- type path_info.
+:- type traversal_info.
+:- type traversal_params.

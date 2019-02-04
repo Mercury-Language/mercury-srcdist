@@ -1,0 +1,12 @@
+:- module (transform_hlds.exception_analysis).
+:- interface.
+:- import_module analysis.
+:- import_module io.
+:- import_module (hlds.hlds_module).
+:- import_module (hlds.hlds_pred).
+:- import_module (parse_tree.prog_data).
+:- type exception_analysis_answer.
+:- instance (analysis.analysis((analysis.any_call), ((transform_hlds.exception_analysis).exception_analysis_answer))).
+:- instance (analysis.answer_pattern(((transform_hlds.exception_analysis).exception_analysis_answer))).
+:- instance (analysis.partial_order(((transform_hlds.exception_analysis).exception_analysis_answer))).
+:- instance (analysis.to_string(((transform_hlds.exception_analysis).exception_analysis_answer))).

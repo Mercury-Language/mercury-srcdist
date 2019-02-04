@@ -1,0 +1,21 @@
+:- module (parse_tree.error_util).
+:- interface.
+:- import_module bool.
+:- import_module io.
+:- import_module list.
+:- import_module maybe.
+:- import_module (libs.globals).
+:- import_module (libs.options).
+:- import_module (mdbcomp.prim_data).
+:- import_module (parse_tree.prog_data).
+:- type actual_severity.
+:- type error_msg.
+:- type error_phase.
+:- type error_severity.
+:- type error_spec.
+:- type error_spec_accumulator.
+:- type format_component.
+:- type format_components.
+:- type mode_report_control.
+:- type error_msg_component.
+:- typeclass print_anything(T).

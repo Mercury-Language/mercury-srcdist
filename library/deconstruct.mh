@@ -1,0 +1,42 @@
+/*
+** Automatically generated from `deconstruct.m'
+** by the Mercury compiler,
+** version rotd-2007-12-21, configured for i686-pc-linux-gnu.
+** Do not edit.
+*/
+#ifndef DECONSTRUCT_MH
+#define DECONSTRUCT_MH
+
+#ifdef __cplusplus
+extern "C" {
+#endif
+
+#ifdef MR_HIGHLEVEL_CODE
+#include "mercury.h"
+#else
+  #ifndef MERCURY_HDR_EXCLUDE_IMP_H
+  #include "mercury_imp.h"
+  #endif
+#endif
+#ifdef MR_DEEP_PROFILING
+#include "mercury_deep_profiling.h"
+#endif
+
+#ifndef DECONSTRUCT_DECL_GUARD
+#define DECONSTRUCT_DECL_GUARD
+#line 287 "deconstruct.m"
+
+
+#include "mercury_deconstruct.h"
+#include "mercury_deconstruct_macros.h"
+
+
+#line 35 "deconstruct.mh.tmp"
+
+#endif
+
+#ifdef __cplusplus
+}
+#endif
+
+#endif /* DECONSTRUCT_MH */

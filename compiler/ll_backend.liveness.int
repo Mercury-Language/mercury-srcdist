@@ -1,0 +1,15 @@
+:- module (ll_backend.liveness).
+:- interface.
+:- import_module io.
+:- import_module set.
+:- import_module (hlds.hlds_module).
+:- import_module (hlds.hlds_pred).
+:- import_module (parse_tree.prog_data).
+:- pred detect_liveness_preds_parallel(((hlds.hlds_module).module_info), ((hlds.hlds_module).module_info)).
+:- mode detect_liveness_preds_parallel((builtin.in), (builtin.out)) is det.
+:- pred detect_liveness_proc(((hlds.hlds_pred).pred_id), ((hlds.hlds_pred).proc_id), ((hlds.hlds_module).module_info), ((hlds.hlds_pred).proc_info), ((hlds.hlds_pred).proc_info), (io.io), (io.io)).
+:- mode detect_liveness_proc((builtin.in), (builtin.in), (builtin.in), (builtin.in), (builtin.out), (builtin.di), (builtin.uo)) is det.
+:- pred initial_liveness(((hlds.hlds_pred).proc_info), ((hlds.hlds_pred).pred_id), ((hlds.hlds_module).module_info), (set.set(((parse_tree.prog_data).prog_var)))).
+:- mode initial_liveness((builtin.in), (builtin.in), (builtin.in), (builtin.out)) is det.
+:- implementation.
+:- typeclass debug_liveness_io(T).

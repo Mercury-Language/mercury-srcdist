@@ -1,0 +1,4 @@
+:- module (check_hlds.unify_proc).
+:- interface.
+:- type proc_requests.
+:- type unify_proc_id.

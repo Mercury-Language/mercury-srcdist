@@ -1,0 +1,27 @@
+:- module analysis.
+:- interface.
+:- import_module bool.
+:- import_module io.
+:- import_module list.
+:- import_module maybe.
+:- import_module set.
+:- import_module unit.
+:- type analysis_info.
+:- type analysis_name.
+:- type analysis_status.
+:- type any_call.
+:- type extra_info_key.
+:- type fixpoint_type.
+:- type func_id.
+:- type module_id.
+:- type analysis_type.
+:- typeclass compiler(Compiler).
+:- typeclass partial_order(T).
+:- typeclass to_string(S).
+:- typeclass analysis(Call, Answer) <= (analysis.call_pattern(Call), analysis.answer_pattern(Answer)).
+:- typeclass answer_pattern(Answer) <= (analysis.partial_order(Answer), analysis.to_string(Answer)).
+:- typeclass call_pattern(Call) <= (analysis.partial_order(Call), analysis.to_string(Call)).
+:- typeclass extra_info(ExtraInfo) <= (analysis.to_string(ExtraInfo)).
+:- instance (analysis.call_pattern((analysis.any_call))).
+:- instance (analysis.partial_order((analysis.any_call))).
+:- instance (analysis.to_string((analysis.any_call))).

@@ -1,0 +1,6 @@
+:- module (mdb.declarative_user).
+:- interface.
+:- type user_search_mode.
+:- type user_state.
+:- type user_question(T).
+:- type user_response(T).

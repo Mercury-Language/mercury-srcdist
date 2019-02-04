@@ -1,0 +1,16 @@
+:- module (((transform_hlds.ctgc).structure_reuse).domain).
+:- interface.
+:- import_module bool.
+:- import_module io.
+:- import_module list.
+:- import_module map.
+:- import_module set.
+:- import_module (hlds.hlds_module).
+:- import_module (hlds.hlds_pred).
+:- import_module (parse_tree.prog_data).
+:- import_module ((transform_hlds.ctgc).livedata).
+:- import_module (((transform_hlds.ctgc).structure_sharing).domain).
+:- type reuse_as.
+:- type reuse_as_table == (map.map(((hlds.hlds_pred).pred_proc_id), ((((transform_hlds.ctgc).structure_reuse).domain).reuse_as))).
+:- type reuse_condition.
+:- type reuse_conditions == (list.list(((((transform_hlds.ctgc).structure_reuse).domain).reuse_condition))).

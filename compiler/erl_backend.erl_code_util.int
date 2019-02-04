@@ -1,0 +1,63 @@
+:- module (erl_backend.erl_code_util).
+:- interface.
+:- import_module list.
+:- import_module maybe.
+:- import_module set.
+:- import_module (erl_backend.elds).
+:- import_module (hlds.hlds_goal).
+:- import_module (hlds.hlds_module).
+:- import_module (hlds.hlds_pred).
+:- import_module (hlds.instmap).
+:- import_module (parse_tree.prog_data).
+:- type erl_gen_info.
+:- type opt_dummy_args
+	--->	opt_dummy_args 
+	;	no_opt_dummy_args .
+:- func erl_base_typeclass_info_method_offset = int.
+:- pred erl_bind_unbound_vars(((erl_backend.erl_code_util).erl_gen_info), (set.set(((parse_tree.prog_data).prog_var))), ((hlds.hlds_goal).hlds_goal), ((hlds.instmap).instmap), ((erl_backend.elds).elds_expr), ((erl_backend.elds).elds_expr)).
+:- mode erl_bind_unbound_vars((builtin.in), (builtin.in), (builtin.in), (builtin.in), (builtin.in), (builtin.out)) is det.
+:- pred erl_bound_nonlocals_in_goal(((erl_backend.erl_code_util).erl_gen_info), ((hlds.instmap).instmap), ((hlds.hlds_goal).hlds_goal), (set.set(((parse_tree.prog_data).prog_var)))).
+:- mode erl_bound_nonlocals_in_goal((builtin.in), (builtin.in), (builtin.in), (builtin.out)) is det.
+:- pred erl_create_renaming(((parse_tree.prog_data).prog_vars), ((parse_tree.prog_data).prog_var_renaming), ((erl_backend.erl_code_util).erl_gen_info), ((erl_backend.erl_code_util).erl_gen_info)).
+:- mode erl_create_renaming((builtin.in), (builtin.out), (builtin.in), (builtin.out)) is det.
+:- func erl_expr_size(((erl_backend.elds).elds_expr)) = int.
+:- pred erl_expr_vars(((erl_backend.elds).elds_expr), (set.set(((parse_tree.prog_data).prog_var)))).
+:- mode erl_expr_vars((builtin.in), (builtin.out)) is det.
+:- pred erl_fix_success_expr(((hlds.instmap).instmap), ((hlds.hlds_goal).hlds_goal), (maybe.maybe(((erl_backend.elds).elds_expr))), (maybe.maybe(((erl_backend.elds).elds_expr))), ((erl_backend.erl_code_util).erl_gen_info), ((erl_backend.erl_code_util).erl_gen_info)).
+:- mode erl_fix_success_expr((builtin.in), (builtin.in), (builtin.in), (builtin.out), (builtin.in), (builtin.out)) is det.
+:- pred erl_gen_arg_list(((hlds.hlds_module).module_info), ((erl_backend.erl_code_util).opt_dummy_args), (list.list(T)), (list.list(((parse_tree.prog_data).mer_type))), (list.list(((parse_tree.prog_data).mer_mode))), (list.list(T)), (list.list(T))).
+:- mode erl_gen_arg_list((builtin.in), (builtin.in), (builtin.in), (builtin.in), (builtin.in), (builtin.out), (builtin.out)) is det.
+:- pred erl_gen_arg_list_arg_modes(((hlds.hlds_module).module_info), ((erl_backend.erl_code_util).opt_dummy_args), (list.list(T)), (list.list(((parse_tree.prog_data).mer_type))), (list.list(((hlds.hlds_pred).arg_mode))), (list.list(T)), (list.list(T))).
+:- mode erl_gen_arg_list_arg_modes((builtin.in), (builtin.in), (builtin.in), (builtin.in), (builtin.in), (builtin.out), (builtin.out)) is det.
+:- pred erl_gen_info_add_env_var_name(string, ((erl_backend.erl_code_util).erl_gen_info), ((erl_backend.erl_code_util).erl_gen_info)).
+:- mode erl_gen_info_add_env_var_name((builtin.in), (builtin.in), (builtin.out)) is det.
+:- pred erl_gen_info_get_env_vars(((erl_backend.erl_code_util).erl_gen_info), (set.set(string))).
+:- mode erl_gen_info_get_env_vars((builtin.in), (builtin.out)) is det.
+:- pred erl_gen_info_get_input_vars(((erl_backend.erl_code_util).erl_gen_info), ((parse_tree.prog_data).prog_vars)).
+:- mode erl_gen_info_get_input_vars((builtin.in), (builtin.out)) is det.
+:- pred erl_gen_info_get_module_info(((erl_backend.erl_code_util).erl_gen_info), ((hlds.hlds_module).module_info)).
+:- mode erl_gen_info_get_module_info((builtin.in), (builtin.out)) is det.
+:- pred erl_gen_info_get_output_vars(((erl_backend.erl_code_util).erl_gen_info), ((parse_tree.prog_data).prog_vars)).
+:- mode erl_gen_info_get_output_vars((builtin.in), (builtin.out)) is det.
+:- pred erl_gen_info_get_var_types(((erl_backend.erl_code_util).erl_gen_info), ((parse_tree.prog_data).vartypes)).
+:- mode erl_gen_info_get_var_types((builtin.in), (builtin.out)) is det.
+:- pred erl_gen_info_get_varset(((erl_backend.erl_code_util).erl_gen_info), ((parse_tree.prog_data).prog_varset)).
+:- mode erl_gen_info_get_varset((builtin.in), (builtin.out)) is det.
+:- func erl_gen_info_init(((hlds.hlds_module).module_info), ((hlds.hlds_pred).pred_id), ((hlds.hlds_pred).proc_id)) = ((erl_backend.erl_code_util).erl_gen_info).
+:- pred erl_gen_info_new_anonymous_vars(int, ((parse_tree.prog_data).prog_vars), ((erl_backend.erl_code_util).erl_gen_info), ((erl_backend.erl_code_util).erl_gen_info)).
+:- mode erl_gen_info_new_anonymous_vars((builtin.in), (builtin.out), (builtin.in), (builtin.out)) is det.
+:- pred erl_gen_info_new_named_var(string, ((parse_tree.prog_data).prog_var), ((erl_backend.erl_code_util).erl_gen_info), ((erl_backend.erl_code_util).erl_gen_info)).
+:- mode erl_gen_info_new_named_var((builtin.in), (builtin.out), (builtin.in), (builtin.out)) is det.
+:- pred erl_gen_info_new_vars(int, ((parse_tree.prog_data).prog_vars), ((erl_backend.erl_code_util).erl_gen_info), ((erl_backend.erl_code_util).erl_gen_info)).
+:- mode erl_gen_info_new_vars((builtin.in), (builtin.out), (builtin.in), (builtin.out)) is det.
+:- pred erl_rename_vars_in_expr(((parse_tree.prog_data).prog_var_renaming), ((erl_backend.elds).elds_expr), ((erl_backend.elds).elds_expr)).
+:- mode erl_rename_vars_in_expr((builtin.in), (builtin.in), (builtin.out)) is det.
+:- pred erl_rename_vars_in_expr_except((set.set(((parse_tree.prog_data).prog_var))), ((erl_backend.elds).elds_expr), ((erl_backend.elds).elds_expr), ((erl_backend.erl_code_util).erl_gen_info), ((erl_backend.erl_code_util).erl_gen_info)).
+:- mode erl_rename_vars_in_expr_except((builtin.in), (builtin.in), (builtin.out), (builtin.in), (builtin.out)) is det.
+:- func erl_var_or_dummy_replacement(((hlds.hlds_module).module_info), ((parse_tree.prog_data).vartypes), ((erl_backend.elds).elds_term), ((parse_tree.prog_data).prog_var)) = ((erl_backend.elds).elds_expr).
+:- pred erl_variable_type(((erl_backend.erl_code_util).erl_gen_info), ((parse_tree.prog_data).prog_var), ((parse_tree.prog_data).mer_type)).
+:- mode erl_variable_type((builtin.in), (builtin.in), (builtin.out)) is det.
+:- pred erl_variable_types(((erl_backend.erl_code_util).erl_gen_info), ((parse_tree.prog_data).prog_vars), (list.list(((parse_tree.prog_data).mer_type)))).
+:- mode erl_variable_types((builtin.in), (builtin.in), (builtin.out)) is det.
+:- pred maybe_simplify_nested_cases(((erl_backend.elds).elds_expr), ((erl_backend.elds).elds_expr)).
+:- mode maybe_simplify_nested_cases((builtin.in), (builtin.out)) is det.

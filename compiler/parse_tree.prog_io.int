@@ -1,0 +1,57 @@
+:- module (parse_tree.prog_io).
+:- interface.
+:- import_module bool.
+:- import_module io.
+:- import_module list.
+:- import_module maybe.
+:- import_module term.
+:- import_module varset.
+:- import_module (libs.timestamp).
+:- import_module (mdbcomp.prim_data).
+:- import_module (parse_tree.prog_data).
+:- import_module (parse_tree.prog_io_util).
+:- import_module (parse_tree.prog_item).
+:- type dir_name == string.
+:- type file_name == string.
+:- type module_error
+	--->	no_module_errors 
+	;	some_module_errors 
+	;	fatal_module_errors .
+:- type open_file(FileInfo) == pred((maybe.maybe_error(FileInfo)), (io.io), (io.io)).
+:- inst (open_file) == (pred((builtin.out), (builtin.di), (builtin.uo)) is det).
+:- pred check_module_has_expected_name(((parse_tree.prog_io).file_name), ((mdbcomp.prim_data).module_name), ((mdbcomp.prim_data).module_name), (io.io), (io.io)).
+:- mode check_module_has_expected_name((builtin.in), (builtin.in), (builtin.in), (builtin.di), (builtin.uo)) is det.
+:- pred constrain_inst_vars_in_mode(((parse_tree.prog_data).mer_mode), ((parse_tree.prog_data).mer_mode)).
+:- mode constrain_inst_vars_in_mode((builtin.in), (builtin.out)) is det.
+:- pred constrain_inst_vars_in_mode(((parse_tree.prog_data).inst_var_sub), ((parse_tree.prog_data).mer_mode), ((parse_tree.prog_data).mer_mode)).
+:- mode constrain_inst_vars_in_mode((builtin.in), (builtin.in), (builtin.out)) is det.
+:- pred find_module_name(((parse_tree.prog_io).file_name), (maybe.maybe(((mdbcomp.prim_data).module_name))), (io.io), (io.io)).
+:- mode find_module_name((builtin.in), (builtin.out), (builtin.di), (builtin.uo)) is det.
+:- pred inst_var_constraints_are_consistent_in_modes((list.list(((parse_tree.prog_data).mer_mode)))).
+:- mode inst_var_constraints_are_consistent_in_modes((builtin.in)) is semidet.
+:- pred parse_decl(((mdbcomp.prim_data).module_name), (varset.varset), (term.term), ((parse_tree.prog_io_util).maybe_item_and_context)).
+:- mode parse_decl((builtin.in), (builtin.in), (builtin.in), (builtin.out)) is det.
+:- pred parse_implicitly_qualified_term(((mdbcomp.prim_data).module_name), (term.term(T)), (term.term(T)), string, ((parse_tree.prog_io_util).maybe_functor(T))).
+:- mode parse_implicitly_qualified_term((builtin.in), (builtin.in), (builtin.in), (builtin.in), (builtin.out)) is det.
+:- pred parse_item(((mdbcomp.prim_data).module_name), (varset.varset), (term.term), ((parse_tree.prog_io_util).maybe_item_and_context)).
+:- mode parse_item((builtin.in), (builtin.in), (builtin.in), (builtin.out)) is det.
+:- pred parse_qualified_term((term.term(T)), (term.term(T)), string, ((parse_tree.prog_io_util).maybe_functor(T))).
+:- mode parse_qualified_term((builtin.in), (builtin.in), (builtin.in), (builtin.out)) is det.
+:- pred parse_type_decl_where_part_if_present(((parse_tree.prog_data).is_solver_type), ((mdbcomp.prim_data).module_name), (term.term), (term.term), ((parse_tree.prog_io_util).maybe2((maybe.maybe(((parse_tree.prog_data).solver_type_details))), (maybe.maybe(((parse_tree.prog_data).unify_compare)))))).
+:- mode parse_type_decl_where_part_if_present((builtin.in), (builtin.in), (builtin.in), (builtin.out), (builtin.out)) is det.
+:- pred parse_type_defn_head(((mdbcomp.prim_data).module_name), (term.term), (term.term), ((parse_tree.prog_io_util).maybe2(((mdbcomp.prim_data).sym_name), (list.list(((parse_tree.prog_data).type_param)))))).
+:- mode parse_type_defn_head((builtin.in), (builtin.in), (builtin.in), (builtin.out)) is det.
+:- pred read_module(((parse_tree.prog_io).open_file(FileInfo)), ((mdbcomp.prim_data).module_name), (bool.bool), ((parse_tree.prog_io).module_error), (maybe.maybe(FileInfo)), ((mdbcomp.prim_data).module_name), ((parse_tree.prog_item).message_list), ((parse_tree.prog_item).item_list), (maybe.maybe((io.res(((libs.timestamp).timestamp))))), (io.io), (io.io)).
+:- mode read_module(builtin.in(((parse_tree.prog_io).open_file)), (builtin.in), (builtin.in), (builtin.out), (builtin.out), (builtin.out), (builtin.out), (builtin.out), (builtin.out), (builtin.di), (builtin.uo)) is det.
+:- pred read_module_if_changed(((parse_tree.prog_io).open_file(FileInfo)), ((mdbcomp.prim_data).module_name), ((libs.timestamp).timestamp), ((parse_tree.prog_io).module_error), (maybe.maybe(FileInfo)), ((mdbcomp.prim_data).module_name), ((parse_tree.prog_item).message_list), ((parse_tree.prog_item).item_list), (maybe.maybe((io.res(((libs.timestamp).timestamp))))), (io.io), (io.io)).
+:- mode read_module_if_changed(builtin.in(((parse_tree.prog_io).open_file)), (builtin.in), (builtin.in), (builtin.out), (builtin.out), (builtin.out), (builtin.out), (builtin.out), (builtin.out), (builtin.di), (builtin.uo)) is det.
+:- pred read_opt_file(((parse_tree.prog_io).file_name), ((mdbcomp.prim_data).module_name), ((parse_tree.prog_io).module_error), ((parse_tree.prog_item).message_list), ((parse_tree.prog_item).item_list), (io.io), (io.io)).
+:- mode read_opt_file((builtin.in), (builtin.in), (builtin.out), (builtin.out), (builtin.out), (builtin.di), (builtin.uo)) is det.
+:- pred search_for_file((list.list(((parse_tree.prog_io).dir_name))), ((parse_tree.prog_io).file_name), (maybe.maybe_error(((parse_tree.prog_io).file_name))), (io.io), (io.io)).
+:- mode search_for_file((builtin.in), (builtin.in), (builtin.out), (builtin.di), (builtin.uo)) is det.
+:- pred search_for_file_returning_dir((list.list(((parse_tree.prog_io).dir_name))), ((parse_tree.prog_io).file_name), (maybe.maybe_error(((parse_tree.prog_io).dir_name))), (io.io), (io.io)).
+:- mode search_for_file_returning_dir((builtin.in), (builtin.in), (builtin.out), (builtin.di), (builtin.uo)) is det.
+:- pred search_for_module_source((list.list(((parse_tree.prog_io).dir_name))), (list.list(((parse_tree.prog_io).dir_name))), ((mdbcomp.prim_data).module_name), (maybe.maybe_error(((parse_tree.prog_io).file_name))), (io.io), (io.io)).
+:- mode search_for_module_source((builtin.in), (builtin.in), (builtin.in), (builtin.out), (builtin.di), (builtin.uo)) is det.
+:- pred sym_name_and_args((term.term(T)), ((mdbcomp.prim_data).sym_name), (list.list((term.term(T))))).
+:- mode sym_name_and_args((builtin.in), (builtin.out), (builtin.out)) is semidet.

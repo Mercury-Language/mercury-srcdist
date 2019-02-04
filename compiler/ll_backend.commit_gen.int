@@ -1,0 +1,10 @@
+:- module (ll_backend.commit_gen).
+:- interface.
+:- import_module set.
+:- import_module (hlds.code_model).
+:- import_module (hlds.hlds_goal).
+:- import_module (ll_backend.code_info).
+:- import_module (ll_backend.llds).
+:- import_module (parse_tree.prog_data).
+:- pred generate_scope(((hlds.hlds_goal).scope_reason), ((hlds.code_model).code_model), ((hlds.hlds_goal).hlds_goal_info), (set.set(((parse_tree.prog_data).prog_var))), ((hlds.hlds_goal).hlds_goal), ((ll_backend.llds).code_tree), ((ll_backend.code_info).code_info), ((ll_backend.code_info).code_info)).
+:- mode generate_scope((builtin.in), (builtin.in), (builtin.in), (builtin.in), (builtin.in), (builtin.out), (builtin.in), (builtin.out)) is det.

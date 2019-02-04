@@ -1,0 +1,6 @@
+:- module (ll_backend.delay_slot).
+:- interface.
+:- import_module list.
+:- import_module (ll_backend.llds).
+:- pred fill_branch_delay_slot((list.list(((ll_backend.llds).instruction))), (list.list(((ll_backend.llds).instruction)))).
+:- mode fill_branch_delay_slot((builtin.in), (builtin.out)) is det.

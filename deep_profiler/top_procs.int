@@ -1,0 +1,13 @@
+:- module top_procs.
+:- interface.
+:- import_module interface.
+:- import_module list.
+:- import_module maybe.
+:- import_module measurements.
+:- import_module profile.
+:- type line_group(FL, LL)
+	--->	line_group((top_procs.group_filename) :: string, (top_procs.group_linenumber) :: int, (top_procs.group_name) :: string, (top_procs.group_own) :: (measurements.own_prof_info), (top_procs.group_desc) :: (measurements.inherit_prof_info), (top_procs.group_first_line_id) :: string, (top_procs.group_later_lines) :: LL).
+:- func find_top_procs((interface.cost_kind), (interface.include_descendants), (interface.measurement_scope), (interface.display_limit), (profile.deep)) = (maybe.maybe_error((list.list(int)))).
+:- func sort_line_groups((interface.order_criteria), (list.list((top_procs.line_group(FL, LL))))) = (list.list((top_procs.line_group(FL, LL)))).
+:- pred sum_line_group_measurements((list.list((top_procs.line_group(FL, LL)))), (measurements.own_prof_info), (measurements.inherit_prof_info)).
+:- mode sum_line_group_measurements((builtin.in), (builtin.out), (builtin.out)) is det.

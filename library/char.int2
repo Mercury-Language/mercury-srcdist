@@ -1,0 +1,6 @@
+:- module char.
+:- interface.
+:- import_module enum.
+:- import_module pretty_printer.
+:- type char == character.
+:- instance (enum.enum(character)).

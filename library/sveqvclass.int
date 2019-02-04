@@ -1,0 +1,13 @@
+:- module sveqvclass.
+:- interface.
+:- import_module eqvclass.
+:- pred ensure_element(T, (eqvclass.eqvclass(T)), (eqvclass.eqvclass(T))).
+:- mode ensure_element((builtin.in), (builtin.in), (builtin.out)) is det.
+:- pred ensure_equivalence(T, T, (eqvclass.eqvclass(T)), (eqvclass.eqvclass(T))).
+:- mode ensure_equivalence((builtin.in), (builtin.in), (builtin.in), (builtin.out)) is det.
+:- pred new_element(T, (eqvclass.eqvclass(T)), (eqvclass.eqvclass(T))).
+:- mode new_element((builtin.in), (builtin.in), (builtin.out)) is det.
+:- pred new_equivalence(T, T, (eqvclass.eqvclass(T)), (eqvclass.eqvclass(T))).
+:- mode new_equivalence((builtin.in), (builtin.in), (builtin.in), (builtin.out)) is det.
+:- pred remove_equivalent_elements(T, (eqvclass.eqvclass(T)), (eqvclass.eqvclass(T))).
+:- mode remove_equivalent_elements((builtin.in), (builtin.in), (builtin.out)) is det.

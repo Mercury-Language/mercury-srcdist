@@ -1,0 +1,9 @@
+:- module (hlds.make_tags).
+:- interface.
+:- import_module list.
+:- import_module maybe.
+:- import_module (hlds.hlds_data).
+:- import_module (libs.globals).
+:- import_module (parse_tree.prog_data).
+:- pred assign_constructor_tags((list.list(((parse_tree.prog_data).constructor))), (maybe.maybe(((parse_tree.prog_data).unify_compare))), ((parse_tree.prog_data).type_ctor), ((parse_tree.prog_data).uses_reserved_tag), ((libs.globals).globals), ((hlds.hlds_data).cons_tag_values), ((parse_tree.prog_data).uses_reserved_address), ((hlds.hlds_data).enum_or_dummy)).
+:- mode assign_constructor_tags((builtin.in), (builtin.in), (builtin.in), (builtin.in), (builtin.in), (builtin.out), (builtin.out), (builtin.out)) is det.

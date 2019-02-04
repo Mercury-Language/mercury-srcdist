@@ -1,0 +1,45 @@
+:- module type_desc.
+:- pragma termination_info(type_desc.pseudo_type_desc_is_ground((builtin.in)), infinite, can_loop).
+:- pragma termination_info(type_desc.pseudo_type_desc_to_rep((builtin.in)) = (builtin.out), infinite, cannot_loop).
+:- pragma termination_info(type_desc.type_desc_to_pseudo_type_desc((builtin.in)) = (builtin.out), infinite, cannot_loop).
+:- pragma termination_info(type_desc.ground_pseudo_type_desc_to_type_desc((builtin.in)) = (builtin.out), infinite, can_loop).
+:- pragma termination_info(type_desc.ground_pseudo_type_desc_to_type_desc_det((builtin.in)) = (builtin.out), infinite, can_loop).
+:- pragma termination_info(type_desc.type_of((builtin.unused)) = (builtin.out), infinite, cannot_loop).
+:- pragma termination_info(type_desc.has_type((builtin.unused), (builtin.in)), infinite, cannot_loop).
+:- pragma termination_info(type_desc.same_type((builtin.unused), (builtin.unused)), finite(0, [no, no, no]), cannot_loop).
+:- pragma termination_info(type_desc.type_name((builtin.in)) = (builtin.out), infinite, can_loop).
+:- pragma termination_info(type_desc.type_ctor_and_args((builtin.in), (builtin.out), (builtin.out)), infinite, cannot_loop).
+:- pragma termination_info(type_desc.pseudo_type_ctor_and_args((builtin.in), (builtin.out), (builtin.out)), infinite, cannot_loop).
+:- pragma termination_info(type_desc.type_ctor((builtin.in)) = (builtin.out), infinite, cannot_loop).
+:- pragma termination_info(type_desc.pseudo_type_ctor((builtin.in)) = (builtin.out), infinite, cannot_loop).
+:- pragma termination_info(type_desc.type_args((builtin.in)) = (builtin.out), infinite, cannot_loop).
+:- pragma termination_info(type_desc.pseudo_type_args((builtin.in)) = (builtin.out), infinite, cannot_loop).
+:- pragma termination_info(type_desc.type_ctor_name((builtin.in)) = (builtin.out), infinite, cannot_loop).
+:- pragma termination_info(type_desc.type_ctor_module_name((builtin.in)) = (builtin.out), infinite, cannot_loop).
+:- pragma termination_info(type_desc.type_ctor_arity((builtin.in)) = (builtin.out), infinite, cannot_loop).
+:- pragma termination_info(type_desc.type_ctor_name_and_arity((builtin.in), (builtin.out), (builtin.out), (builtin.out)), infinite, cannot_loop).
+:- pragma termination_info(type_desc.make_type((builtin.in), (builtin.in)) = (builtin.out), infinite, cannot_loop).
+:- pragma termination_info(type_desc.make_type((builtin.out), (builtin.out)) = (builtin.in), infinite, cannot_loop).
+:- pragma termination_info(type_desc.det_make_type((builtin.in), (builtin.in)) = (builtin.out), infinite, cannot_loop).
+:- pragma exceptions(predicate, (type_desc.pseudo_type_desc_is_ground), 1, 0, may_throw(user_exception)).
+:- pragma exceptions(function, (type_desc.pseudo_type_desc_to_rep), 2, 0, may_throw(user_exception)).
+:- pragma exceptions(function, (type_desc.type_desc_to_pseudo_type_desc), 2, 0, will_not_throw).
+:- pragma exceptions(function, (type_desc.ground_pseudo_type_desc_to_type_desc), 2, 0, may_throw(user_exception)).
+:- pragma exceptions(function, (type_desc.ground_pseudo_type_desc_to_type_desc_det), 2, 0, may_throw(user_exception)).
+:- pragma exceptions(function, (type_desc.type_of), 2, 0, will_not_throw).
+:- pragma exceptions(predicate, (type_desc.has_type), 2, 0, will_not_throw).
+:- pragma exceptions(predicate, (type_desc.same_type), 2, 0, will_not_throw).
+:- pragma exceptions(function, (type_desc.type_name), 2, 0, will_not_throw).
+:- pragma exceptions(predicate, (type_desc.type_ctor_and_args), 3, 0, will_not_throw).
+:- pragma exceptions(predicate, (type_desc.pseudo_type_ctor_and_args), 3, 0, will_not_throw).
+:- pragma exceptions(function, (type_desc.type_ctor), 2, 0, will_not_throw).
+:- pragma exceptions(function, (type_desc.pseudo_type_ctor), 2, 0, will_not_throw).
+:- pragma exceptions(function, (type_desc.type_args), 2, 0, will_not_throw).
+:- pragma exceptions(function, (type_desc.pseudo_type_args), 2, 0, will_not_throw).
+:- pragma exceptions(function, (type_desc.type_ctor_name), 2, 0, will_not_throw).
+:- pragma exceptions(function, (type_desc.type_ctor_module_name), 2, 0, will_not_throw).
+:- pragma exceptions(function, (type_desc.type_ctor_arity), 2, 0, will_not_throw).
+:- pragma exceptions(predicate, (type_desc.type_ctor_name_and_arity), 4, 0, will_not_throw).
+:- pragma exceptions(function, (type_desc.make_type), 3, 0, will_not_throw).
+:- pragma exceptions(function, (type_desc.make_type), 3, 1, will_not_throw).
+:- pragma exceptions(function, (type_desc.det_make_type), 3, 0, may_throw(user_exception)).

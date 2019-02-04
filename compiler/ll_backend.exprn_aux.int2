@@ -1,0 +1,12 @@
+:- module (ll_backend.exprn_aux).
+:- interface.
+:- import_module assoc_list.
+:- import_module bool.
+:- import_module list.
+:- import_module (libs.options).
+:- import_module (ll_backend.llds).
+:- import_module (parse_tree.prog_data).
+:- type exprn_opts
+	--->	nlg_asm_sgt_ubf(((ll_backend.exprn_aux).non_local_gotos) :: (bool.bool), ((ll_backend.exprn_aux).asm_labels) :: (bool.bool), ((ll_backend.exprn_aux).static_ground_terms) :: (bool.bool), ((ll_backend.exprn_aux).unboxed_float) :: (bool.bool)).
+:- type transform_lval(T) == pred(((ll_backend.llds).lval), ((ll_backend.llds).lval), T, T).
+:- inst (transform_lval) == (pred((builtin.in), (builtin.out), (builtin.in), (builtin.out)) is det).

@@ -1,0 +1,39 @@
+:- module cord.
+:- pragma termination_info(cord.list((builtin.in)) = (builtin.out), finite(1, [no, yes, no]), cannot_loop).
+:- pragma termination_info((cord.empty) = (builtin.out), finite(0, [no, no]), cannot_loop).
+:- pragma termination_info(cord.is_empty((builtin.in)), finite(0, [no, no]), cannot_loop).
+:- pragma termination_info(cord.singleton((builtin.in)) = (builtin.out), finite(1, [no, yes, no]), cannot_loop).
+:- pragma termination_info(cord.from_list((builtin.in)) = (builtin.out), finite(1, [no, yes, no]), cannot_loop).
+:- pragma termination_info(cord.cons((builtin.in), (builtin.in)) = (builtin.out), finite(3, [no, yes, yes, no]), cannot_loop).
+:- pragma termination_info(cord.snoc((builtin.in), (builtin.in)) = (builtin.out), finite(3, [no, yes, yes, no]), cannot_loop).
+:- pragma termination_info(cord.'++'((builtin.in), (builtin.in)) = (builtin.out), finite(2, [no, yes, yes, no]), cannot_loop).
+:- pragma termination_info(cord.head_tail((builtin.in), (builtin.out), (builtin.out)), finite(-1, [no, yes, no, no]), cannot_loop).
+:- pragma termination_info(cord.split_last((builtin.in), (builtin.out), (builtin.out)), infinite, can_loop).
+:- pragma termination_info(cord.get_first((builtin.in), (builtin.out)), finite(-1, [no, yes, no]), cannot_loop).
+:- pragma termination_info(cord.get_last((builtin.in), (builtin.out)), finite(-1, [no, yes, no]), cannot_loop).
+:- pragma termination_info(cord.length((builtin.in)) = (builtin.out), infinite, can_loop).
+:- pragma termination_info(cord.member((builtin.out), (builtin.in)), finite(-1, [no, no, yes]), cannot_loop).
+:- pragma termination_info(cord.map((builtin.in), (builtin.in)) = (builtin.out), infinite, can_loop).
+:- pragma termination_info(cord.foldl((builtin.in), (builtin.in), (builtin.in)) = (builtin.out), infinite, can_loop).
+:- pragma termination_info(cord.foldr((builtin.in), (builtin.in), (builtin.in)) = (builtin.out), infinite, can_loop).
+:- pragma termination_info(cord.equal((builtin.in), (builtin.in)), finite(0, [no, no, no]), cannot_loop).
+:- pragma termination_info(cord.list_2((builtin.in), (builtin.in)) = (builtin.out), finite(1, [no, yes, yes, no]), cannot_loop).
+:- pragma exceptions(function, (cord.list), 2, 0, will_not_throw).
+:- pragma exceptions(function, (cord.empty), 1, 0, will_not_throw).
+:- pragma exceptions(predicate, (cord.is_empty), 1, 0, will_not_throw).
+:- pragma exceptions(function, (cord.singleton), 2, 0, will_not_throw).
+:- pragma exceptions(function, (cord.from_list), 2, 0, will_not_throw).
+:- pragma exceptions(function, (cord.cons), 3, 0, will_not_throw).
+:- pragma exceptions(function, (cord.snoc), 3, 0, will_not_throw).
+:- pragma exceptions(function, (cord.(++)), 3, 0, will_not_throw).
+:- pragma exceptions(predicate, (cord.head_tail), 3, 0, will_not_throw).
+:- pragma exceptions(predicate, (cord.split_last), 3, 0, may_throw(user_exception)).
+:- pragma exceptions(predicate, (cord.get_first), 2, 0, will_not_throw).
+:- pragma exceptions(predicate, (cord.get_last), 2, 0, will_not_throw).
+:- pragma exceptions(function, (cord.length), 2, 0, may_throw(user_exception)).
+:- pragma exceptions(predicate, (cord.member), 2, 0, will_not_throw).
+:- pragma exceptions(function, (cord.map), 3, 0, may_throw(user_exception)).
+:- pragma exceptions(function, (cord.foldl), 4, 0, may_throw(user_exception)).
+:- pragma exceptions(function, (cord.foldr), 4, 0, may_throw(user_exception)).
+:- pragma exceptions(predicate, (cord.equal), 2, 0, conditional).
+:- pragma exceptions(function, (cord.list_2), 3, 0, will_not_throw).

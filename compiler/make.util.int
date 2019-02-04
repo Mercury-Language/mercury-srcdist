@@ -1,0 +1,93 @@
+:- module (make.util).
+:- interface.
+:- import_module assoc_list.
+:- type build(T) == ((make.util).build(T, (make.make_info))).
+:- type build(T, Info) == ((make.util).build(T, Info, Info)).
+:- type build2(T, U) == pred(T, U, (bool.bool), (make.make_info), (make.make_info), (io.io), (io.io)).
+:- type foldl2_pred_with_status(T, Info, IO) == pred(T, (bool.bool), Info, Info, IO, IO).
+:- type build(T, Info1, Info2) == pred(T, (bool.bool), Info1, Info2, (io.io), (io.io)).
+:- type foldl3_pred_with_status(T, Acc, Info, IO) == pred(T, (bool.bool), Acc, Acc, Info, Info, IO, IO).
+:- inst (build) == (pred((builtin.in), (builtin.out), (builtin.in), (builtin.out), (builtin.di), (builtin.uo)) is det).
+:- inst (build2) == (pred((builtin.in), (builtin.in), (builtin.out), (builtin.in), (builtin.out), (builtin.di), (builtin.uo)) is det).
+:- inst (foldl2_pred_with_status) == (pred((builtin.in), (builtin.out), (builtin.in), (builtin.out), (builtin.di), (builtin.uo)) is det).
+:- inst (foldl3_pred_with_status) == (pred((builtin.in), (builtin.out), (builtin.in), (builtin.out), (builtin.in), (builtin.out), (builtin.di), (builtin.uo)) is det).
+:- pred build_with_module_options(((mdbcomp.prim_data).module_name), (list.list(string)), ((make.util).build((list.list(string)))), (bool.bool), (make.make_info), (make.make_info), (io.io), (io.io)).
+:- mode build_with_module_options((builtin.in), (builtin.in), builtin.in(((make.util).build)), (builtin.out), (builtin.in), (builtin.out), (builtin.di), (builtin.uo)) is det.
+:- pred build_with_module_options_and_output_redirect(((mdbcomp.prim_data).module_name), (list.list(string)), ((make.util).build2((list.list(string)), (io.output_stream))), (bool.bool), (make.make_info), (make.make_info), (io.io), (io.io)).
+:- mode build_with_module_options_and_output_redirect((builtin.in), (builtin.in), builtin.in(((make.util).build2)), (builtin.out), (builtin.in), (builtin.out), (builtin.di), (builtin.uo)) is det.
+:- pred build_with_module_options_args(((mdbcomp.prim_data).module_name), ((make.options_file).options_variables), (list.list(string)), (list.list(string)), ((make.util).build((list.list(string)), Info1, Info2)), (bool.bool), Info1, (maybe.maybe(Info2)), (io.io), (io.io)).
+:- mode build_with_module_options_args((builtin.in), (builtin.in), (builtin.in), (builtin.in), builtin.in(((make.util).build)), (builtin.out), (builtin.in), (builtin.out), (builtin.di), (builtin.uo)) is det.
+:- pred build_with_output_redirect(((mdbcomp.prim_data).module_name), ((make.util).build((io.output_stream))), (bool.bool), (make.make_info), (make.make_info), (io.io), (io.io)).
+:- mode build_with_output_redirect((builtin.in), builtin.in(((make.util).build)), (builtin.out), (builtin.in), (builtin.out), (builtin.di), (builtin.uo)) is det.
+:- pred debug_file_msg((make.target_file), string, (io.io), (io.io)).
+:- mode debug_file_msg((builtin.in), (builtin.in), (builtin.di), (builtin.uo)) is det.
+:- pred debug_msg(pred((io.io), (io.io)), (io.io), (io.io)).
+:- mode debug_msg((pred((builtin.di), (builtin.uo)) is det), (builtin.di), (builtin.uo)) is det.
+:- pred file_error(((parse_tree.prog_io).file_name), (io.io), (io.io)).
+:- mode file_error((builtin.in), (builtin.di), (builtin.uo)) is det.
+:- func find_oldest_timestamp((maybe.maybe_error(((libs.timestamp).timestamp))), (maybe.maybe_error(((libs.timestamp).timestamp)))) = (maybe.maybe_error(((libs.timestamp).timestamp))).
+:- pred foldl2_maybe_stop_at_error((bool.bool), ((make.util).foldl2_pred_with_status(T, Info, IO)), (list.list(T)), (bool.bool), Info, Info, IO, IO).
+:- mode foldl2_maybe_stop_at_error((builtin.in), builtin.in(((make.util).foldl2_pred_with_status)), (builtin.in), (builtin.out), (builtin.in), (builtin.out), (builtin.di), (builtin.uo)) is det.
+:- pred foldl2_maybe_stop_at_error_maybe_parallel((bool.bool), ((make.util).foldl2_pred_with_status(T, (make.make_info), (io.io))), (list.list(T)), (bool.bool), (make.make_info), (make.make_info), (io.io), (io.io)).
+:- mode foldl2_maybe_stop_at_error_maybe_parallel((builtin.in), builtin.in(((make.util).foldl2_pred_with_status)), (builtin.in), (builtin.out), (builtin.in), (builtin.out), (builtin.di), (builtin.uo)) is det.
+:- pred foldl3_maybe_stop_at_error((bool.bool), ((make.util).foldl3_pred_with_status(T, Acc, Info, IO)), (list.list(T)), (bool.bool), Acc, Acc, Info, Info, IO, IO).
+:- mode foldl3_maybe_stop_at_error((builtin.in), builtin.in(((make.util).foldl3_pred_with_status)), (builtin.in), (builtin.out), (builtin.in), (builtin.out), (builtin.in), (builtin.out), (builtin.di), (builtin.uo)) is det.
+:- pred get_dependency_timestamp(((make.dependencies).dependency_file), (maybe.maybe_error(((libs.timestamp).timestamp))), (make.make_info), (make.make_info), (io.io), (io.io)).
+:- mode get_dependency_timestamp((builtin.in), (builtin.out), (builtin.in), (builtin.out), (builtin.di), (builtin.uo)) is det.
+:- pred get_file_name((bool.bool), (make.target_file), ((parse_tree.prog_io).file_name), (make.make_info), (make.make_info), (io.io), (io.io)).
+:- mode get_file_name((builtin.in), (builtin.in), (builtin.out), (builtin.in), (builtin.out), (builtin.di), (builtin.uo)) is det.
+:- pred get_file_timestamp((list.list(((parse_tree.prog_io).dir_name))), ((parse_tree.prog_io).file_name), (maybe.maybe_error(((libs.timestamp).timestamp))), (make.make_info), (make.make_info), (io.io), (io.io)).
+:- mode get_file_timestamp((builtin.in), (builtin.in), (builtin.out), (builtin.in), (builtin.out), (builtin.di), (builtin.uo)) is det.
+:- pred get_target_timestamp((bool.bool), (make.target_file), (maybe.maybe_error(((libs.timestamp).timestamp))), (make.make_info), (make.make_info), (io.io), (io.io)).
+:- mode get_target_timestamp((builtin.in), (builtin.in), (builtin.out), (builtin.in), (builtin.out), (builtin.di), (builtin.uo)) is det.
+:- pred get_timestamp_file_timestamp((make.target_file), (maybe.maybe_error(((libs.timestamp).timestamp))), (make.make_info), (make.make_info), (io.io), (io.io)).
+:- mode get_timestamp_file_timestamp((builtin.in), (builtin.out), (builtin.in), (builtin.out), (builtin.di), (builtin.uo)) is det.
+:- pred linked_target_file_name(((mdbcomp.prim_data).module_name), ((backend_libs.compile_target_code).linked_target_type), ((parse_tree.prog_io).file_name), (io.io), (io.io)).
+:- mode linked_target_file_name((builtin.in), (builtin.in), (builtin.out), (builtin.di), (builtin.uo)) is det.
+:- func make_dependency_list((list.list(((mdbcomp.prim_data).module_name))), (make.module_target_type)) = (list.list(((make.dependencies).dependency_file))).
+:- pred make_remove_file(((libs.options).option), ((mdbcomp.prim_data).module_name), string, (make.make_info), (make.make_info), (io.io), (io.io)).
+:- mode make_remove_file((builtin.in), (builtin.in), (builtin.in), (builtin.in), (builtin.out), (builtin.di), (builtin.uo)) is det.
+:- pred make_remove_file(((libs.options).option), ((parse_tree.prog_io).file_name), (make.make_info), (make.make_info), (io.io), (io.io)).
+:- mode make_remove_file((builtin.in), (builtin.in), (builtin.in), (builtin.out), (builtin.di), (builtin.uo)) is det.
+:- pred make_remove_target_file(((libs.options).option), (make.target_file), (make.make_info), (make.make_info), (io.io), (io.io)).
+:- mode make_remove_target_file((builtin.in), (builtin.in), (builtin.in), (builtin.out), (builtin.di), (builtin.uo)) is det.
+:- pred make_remove_target_file(((libs.options).option), ((mdbcomp.prim_data).module_name), (make.module_target_type), (make.make_info), (make.make_info), (io.io), (io.io)).
+:- mode make_remove_target_file((builtin.in), (builtin.in), (builtin.in), (builtin.in), (builtin.out), (builtin.di), (builtin.uo)) is det.
+:- func make_target_file_list((list.list(((mdbcomp.prim_data).module_name))), (make.module_target_type)) = (list.list((make.target_file))).
+:- func make_target_list((list.list(K)), V) = (assoc_list.assoc_list(K, V)).
+:- pred maybe_make_linked_target_message(((parse_tree.prog_io).file_name), (io.io), (io.io)).
+:- mode maybe_make_linked_target_message((builtin.in), (builtin.di), (builtin.uo)) is det.
+:- pred maybe_make_target_message((make.target_file), (io.io), (io.io)).
+:- mode maybe_make_target_message((builtin.in), (builtin.di), (builtin.uo)) is det.
+:- pred maybe_make_target_message_to_stream((io.output_stream), (make.target_file), (io.io), (io.io)).
+:- mode maybe_make_target_message_to_stream((builtin.in), (builtin.in), (builtin.di), (builtin.uo)) is det.
+:- pred maybe_reanalyse_modules_message((io.io), (io.io)).
+:- mode maybe_reanalyse_modules_message((builtin.di), (builtin.uo)) is det.
+:- pred maybe_symlink_or_copy_linked_target_message((pair.pair(((mdbcomp.prim_data).module_name), (make.target_type))), (io.io), (io.io)).
+:- mode maybe_symlink_or_copy_linked_target_message((builtin.in), (builtin.di), (builtin.uo)) is det.
+:- pred maybe_warn_up_to_date_target((pair.pair(((mdbcomp.prim_data).module_name), (make.target_type))), (make.make_info), (make.make_info), (io.io), (io.io)).
+:- mode maybe_warn_up_to_date_target((builtin.in), (builtin.in), (builtin.out), (builtin.di), (builtin.uo)) is det.
+:- pred redirect_output(((mdbcomp.prim_data).module_name), (maybe.maybe((io.output_stream))), (make.make_info), (make.make_info), (io.io), (io.io)).
+:- mode redirect_output((builtin.in), (builtin.out), (builtin.in), (builtin.out), (builtin.di), (builtin.uo)) is det.
+:- func target_extension(((libs.globals).globals), (make.module_target_type)) = (maybe.maybe(string)).
+:- mode target_extension((builtin.in), (builtin.in)) = (builtin.out) is det.
+:- mode target_extension((builtin.in), (builtin.out)) = builtin.in(bound(yes(ground))) is nondet.
+:- pred target_file_error((make.target_file), (io.io), (io.io)).
+:- mode target_file_error((builtin.in), (builtin.di), (builtin.uo)) is det.
+:- pred target_is_grade_or_arch_dependent((make.module_target_type)).
+:- mode target_is_grade_or_arch_dependent((builtin.in)) is semidet.
+:- func timestamp_extension(((libs.globals).globals), (make.module_target_type)) = string is semidet.
+:- pred unredirect_output(((mdbcomp.prim_data).module_name), (io.output_stream), (make.make_info), (make.make_info), (io.io), (io.io)).
+:- mode unredirect_output((builtin.in), (builtin.in), (builtin.in), (builtin.out), (builtin.di), (builtin.uo)) is det.
+:- pred verbose_msg(pred((io.io), (io.io)), (io.io), (io.io)).
+:- mode verbose_msg((pred((builtin.di), (builtin.uo)) is det), (builtin.di), (builtin.uo)) is det.
+:- pred verbose_msg(((libs.options).option), pred((io.io), (io.io)), (io.io), (io.io)).
+:- mode verbose_msg((builtin.in), (pred((builtin.di), (builtin.uo)) is det), (builtin.di), (builtin.uo)) is det.
+:- pred write_dependency_file(((make.dependencies).dependency_file), (io.io), (io.io)).
+:- mode write_dependency_file((builtin.in), (builtin.di), (builtin.uo)) is det.
+:- pred write_dependency_file_list((list.list(((make.dependencies).dependency_file))), (io.io), (io.io)).
+:- mode write_dependency_file_list((builtin.in), (builtin.di), (builtin.uo)) is det.
+:- pred write_target_file((make.target_file), (io.io), (io.io)).
+:- mode write_target_file((builtin.in), (builtin.di), (builtin.uo)) is det.
+:- implementation.
+:- typeclass par_fold(PF).

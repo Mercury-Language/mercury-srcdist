@@ -1,0 +1,13 @@
+module(1, "parser.m",
+	parser,
+	{},
+	{builtin, io, lexer, ops, term_io, private_builtin},
+	{builtin, io, lexer, ops, term_io, bool, char, float, int, list, map, maybe, require, string, term, varset, private_builtin},
+	{},
+	{},
+	{},
+	{},
+	{},
+	no_foreign_export,
+	no_main
+).

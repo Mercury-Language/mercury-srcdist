@@ -1,0 +1,12 @@
+:- module (make.module_target).
+:- interface.
+:- type foreign_code_file
+	--->	foreign_code_file(((make.module_target).foreign_language) :: ((libs.globals).foreign_language), ((make.module_target).target_file) :: ((parse_tree.prog_io).file_name), ((make.module_target).object_file) :: ((parse_tree.prog_io).file_name)).
+:- pred external_foreign_code_files(((backend_libs.compile_target_code).pic), ((parse_tree.modules).module_imports), (list.list(((make.module_target).foreign_code_file))), (io.io), (io.io)).
+:- mode external_foreign_code_files((builtin.in), (builtin.in), (builtin.out), (builtin.di), (builtin.uo)) is det.
+:- pred make_module_target(((make.dependencies).dependency_file), (bool.bool), (make.make_info), (make.make_info), (io.io), (io.io)).
+:- mode make_module_target((builtin.in), (builtin.out), (builtin.in), (builtin.out), (builtin.di), (builtin.uo)) is det.
+:- pred make_module_target_extra_options((list.list(string)), ((make.dependencies).dependency_file), (bool.bool), (make.make_info), (make.make_info), (io.io), (io.io)).
+:- mode make_module_target_extra_options((builtin.in), (builtin.in), (builtin.out), (builtin.in), (builtin.out), (builtin.di), (builtin.uo)) is det.
+:- pred record_made_target((make.target_file), (make.compilation_task_type), (bool.bool), (make.make_info), (make.make_info), (io.io), (io.io)).
+:- mode record_made_target((builtin.in), (builtin.in), (builtin.in), (builtin.in), (builtin.out), (builtin.di), (builtin.uo)) is det.

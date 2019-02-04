@@ -1,0 +1,7 @@
+:- module ((transform_hlds.rbmm).region_instruction).
+:- interface.
+:- type instructions_before_after.
+:- type region_instruction.
+:- type region_instruction_proc.
+:- type region_instruction_table.
+:- type region_instruction_type.

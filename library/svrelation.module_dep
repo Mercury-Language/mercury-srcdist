@@ -1,0 +1,13 @@
+module(1, "svrelation.m",
+	svrelation,
+	{},
+	{builtin, assoc_list, relation, private_builtin},
+	{builtin, assoc_list, relation, private_builtin},
+	{},
+	{},
+	{},
+	{},
+	{},
+	no_foreign_export,
+	no_main
+).

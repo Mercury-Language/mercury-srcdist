@@ -1,0 +1,108 @@
+:- module interface.
+:- interface.
+:- import_module bool.
+:- import_module char.
+:- import_module io.
+:- import_module maybe.
+:- import_module profile.
+:- type alloc_fields
+	--->	no_alloc 
+	;	alloc 
+	;	alloc_and_percall .
+:- type box
+	--->	box 
+	;	nobox .
+:- type caller_groups
+	--->	group_by_call_site 
+	;	group_by_proc 
+	;	group_by_module 
+	;	group_by_clique .
+:- type callseqs_fields
+	--->	no_callseqs 
+	;	callseqs 
+	;	callseqs_and_percall .
+:- type cmd
+	--->	deep_cmd_quit 
+	;	deep_cmd_restart 
+	;	deep_cmd_timeout(int)
+	;	deep_cmd_menu 
+	;	deep_cmd_root((maybe.maybe(int)))
+	;	deep_cmd_clique(int)
+	;	deep_cmd_proc(int)
+	;	deep_cmd_proc_callers(int, (interface.caller_groups), int)
+	;	deep_cmd_modules 
+	;	deep_cmd_module(string)
+	;	deep_cmd_top_procs((interface.display_limit), (interface.cost_kind), (interface.include_descendants), (interface.measurement_scope))
+	;	deep_cmd_proc_static(int)
+	;	deep_cmd_proc_dynamic(int)
+	;	deep_cmd_call_site_static(int)
+	;	deep_cmd_call_site_dynamic(int)
+	;	deep_cmd_raw_clique(int).
+:- type cmd_pref
+	--->	cmd_pref((interface.cmd), (interface.preferences_indication)).
+:- type colour_scheme
+	--->	colour_column_groups 
+	;	colour_none .
+:- type contour
+	--->	apply_contour 
+	;	no_contour .
+:- type cost_kind
+	--->	cost_calls 
+	;	cost_redos 
+	;	cost_time 
+	;	cost_callseqs 
+	;	cost_allocs 
+	;	cost_words .
+:- type display_limit
+	--->	rank_range(int, int)
+	;	threshold_percent(float)
+	;	threshold_value(float).
+:- type fields
+	--->	fields((interface.port_fields) :: (interface.port_fields), (interface.time_fields) :: (interface.time_fields), (interface.callseqs_fields) :: (interface.callseqs_fields), (interface.alloc_fields) :: (interface.alloc_fields), (interface.memory_fields) :: (interface.memory_fields)).
+:- type inactive_items
+	--->	inactive_items((interface.inactive_procs) :: (interface.inactive_status), (interface.inactive_modules) :: (interface.inactive_status)).
+:- type inactive_status
+	--->	inactive_hide 
+	;	inactive_show .
+:- type include_descendants
+	--->	self 
+	;	self_and_desc .
+:- type measurement_scope
+	--->	per_call 
+	;	overall .
+:- type memory_fields
+	--->	no_memory 
+	;	memory((interface.memory_units))
+	;	memory_and_percall((interface.memory_units)).
+:- type memory_units
+	--->	units_words 
+	;	units_bytes .
+:- type order_criteria
+	--->	by_context 
+	;	by_name 
+	;	by_cost((interface.cost_kind), (interface.include_descendants), (interface.measurement_scope)).
+:- type port_fields
+	--->	no_port 
+	;	port .
+:- type preferences
+	--->	preferences((interface.pref_fields) :: (interface.fields), (interface.pref_box) :: (interface.box), (interface.pref_colour) :: (interface.colour_scheme), (interface.pref_anc) :: (maybe.maybe(int)), (interface.pref_summarize) :: (interface.summarize), (interface.pref_criteria) :: (interface.order_criteria), (interface.pref_contour) :: (interface.contour), (interface.pref_time) :: (interface.time_format), (interface.pref_inactive) :: (interface.inactive_items)).
+:- type preferences_indication
+	--->	given_pref((interface.preferences))
+	;	default_pref 
+	;	all_pref .
+:- type resp
+	--->	html(string).
+:- type summarize
+	--->	summarize 
+	;	dont_summarize .
+:- type time_fields
+	--->	no_time 
+	;	ticks 
+	;	time 
+	;	ticks_and_time 
+	;	time_and_percall 
+	;	ticks_and_time_and_percall .
+:- type time_format
+	--->	no_scale 
+	;	scale_by_millions 
+	;	scale_by_thousands .

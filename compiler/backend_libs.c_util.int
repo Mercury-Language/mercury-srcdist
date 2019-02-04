@@ -1,0 +1,39 @@
+:- module (backend_libs.c_util).
+:- interface.
+:- import_module char.
+:- import_module io.
+:- import_module list.
+:- import_module (backend_libs.builtin_ops).
+:- type binop_category
+	--->	array_index_binop 
+	;	compound_compare_binop 
+	;	string_compare_binop 
+	;	unsigned_compare_binop 
+	;	float_compare_binop 
+	;	float_arith_binop 
+	;	int_or_bool_binary_infix_binop 
+	;	macro_binop .
+:- type multi_string == (list.list(string)).
+:- pred binop_category_string(((backend_libs.builtin_ops).binary_op), ((backend_libs.c_util).binop_category), string).
+:- mode binop_category_string((builtin.in), (builtin.out), (builtin.out)) is det.
+:- pred is_valid_c_identifier(string).
+:- mode is_valid_c_identifier((builtin.in)) is semidet.
+:- func make_float_literal(float) = string.
+:- pred output_c_file_intro_and_grade(string, string, (io.io), (io.io)).
+:- mode output_c_file_intro_and_grade((builtin.in), (builtin.in), (builtin.di), (builtin.uo)) is det.
+:- pred output_float_literal(float, (io.io), (io.io)).
+:- mode output_float_literal((builtin.in), (builtin.di), (builtin.uo)) is det.
+:- pred output_quoted_char((char.char), (io.io), (io.io)).
+:- mode output_quoted_char((builtin.in), (builtin.di), (builtin.uo)) is det.
+:- pred output_quoted_multi_string(((backend_libs.c_util).multi_string), (io.io), (io.io)).
+:- mode output_quoted_multi_string((builtin.in), (builtin.di), (builtin.uo)) is det.
+:- pred output_quoted_string(string, (io.io), (io.io)).
+:- mode output_quoted_string((builtin.in), (builtin.di), (builtin.uo)) is det.
+:- func quote_char((char.char)) = string.
+:- func quote_string(string) = string.
+:- pred reset_line_num((io.io), (io.io)).
+:- mode reset_line_num((builtin.di), (builtin.uo)) is det.
+:- pred set_line_num(string, int, (io.io), (io.io)).
+:- mode set_line_num((builtin.in), (builtin.in), (builtin.di), (builtin.uo)) is det.
+:- pred unary_prefix_op(((backend_libs.builtin_ops).unary_op), string).
+:- mode unary_prefix_op((builtin.in), (builtin.out)) is det.

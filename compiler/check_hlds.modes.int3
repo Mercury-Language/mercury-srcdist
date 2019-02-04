@@ -1,0 +1,4 @@
+:- module (check_hlds.modes).
+:- interface.
+:- type after_goals.
+:- type extra_goals.

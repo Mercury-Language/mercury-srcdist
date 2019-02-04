@@ -1,0 +1,44 @@
+:- module graph.
+:- interface.
+:- import_module list.
+:- import_module set.
+:- import_module unit.
+:- type arc == (graph.arc((unit.unit))).
+:- type arc(A).
+:- type graph(N) == (graph.graph(N, (unit.unit))).
+:- type node(N).
+:- type graph(N, A).
+:- pred arc_contents((graph.graph(N, A)), (graph.arc(A)), (graph.node(N)), (graph.node(N)), A).
+:- mode arc_contents((builtin.in), (builtin.in), (builtin.out), (builtin.out), (builtin.out)) is det.
+:- pred det_insert_edge((graph.graph(N, A)), (graph.node(N)), (graph.node(N)), A, (graph.arc(A)), (graph.graph(N, A))).
+:- mode det_insert_edge((builtin.in), (builtin.in), (builtin.in), (builtin.in), (builtin.out), (builtin.out)) is det.
+:- pred det_insert_node((graph.graph(N, A)), N, (graph.node(N)), (graph.graph(N, A))).
+:- mode det_insert_node((builtin.in), (builtin.in), (builtin.out), (builtin.out)) is det.
+:- pred find_matching_nodes((graph.graph(N, A)), N, (set.set((graph.node(N))))).
+:- mode find_matching_nodes((builtin.in), (builtin.in), (builtin.out)) is det.
+:- func find_matching_nodes((graph.graph(N, A)), N) = (set.set((graph.node(N)))).
+:- pred init((graph.graph(N, A))).
+:- mode init((builtin.out)) is det.
+:- func init = (graph.graph(N, A)).
+:- pred insert_edge((graph.graph(N, A)), (graph.node(N)), (graph.node(N)), A, (graph.arc(A)), (graph.graph(N, A))).
+:- mode insert_edge((builtin.in), (builtin.in), (builtin.in), (builtin.in), (builtin.out), (builtin.out)) is semidet.
+:- pred insert_node((graph.graph(N, A)), N, (graph.node(N)), (graph.graph(N, A))).
+:- mode insert_node((builtin.in), (builtin.in), (builtin.out), (builtin.out)) is semidet.
+:- pred node_contents((graph.graph(N, A)), (graph.node(N)), N).
+:- mode node_contents((builtin.in), (builtin.in), (builtin.out)) is det.
+:- func node_contents((graph.graph(N, A)), (graph.node(N))) = N.
+:- pred nodes((graph.graph(N, A)), (set.set((graph.node(N))))).
+:- mode nodes((builtin.in), (builtin.out)) is det.
+:- func nodes((graph.graph(N, A))) = (set.set((graph.node(N)))).
+:- pred path((graph.graph(N, A)), (graph.node(N)), (graph.node(N)), (list.list((graph.arc(A))))).
+:- mode path((builtin.in), (builtin.in), (builtin.in), (builtin.out)) is nondet.
+:- mode path((builtin.in), (builtin.in), (builtin.out), (builtin.out)) is nondet.
+:- pred search_node((graph.graph(N, A)), N, (graph.node(N))).
+:- mode search_node((builtin.in), (builtin.in), (builtin.out)) is nondet.
+:- pred set_edge((graph.graph(N, A)), (graph.node(N)), (graph.node(N)), A, (graph.arc(A)), (graph.graph(N, A))).
+:- mode set_edge((builtin.in), (builtin.in), (builtin.in), (builtin.in), (builtin.out), (builtin.out)) is det.
+:- pred set_node((graph.graph(N, A)), N, (graph.node(N)), (graph.graph(N, A))).
+:- mode set_node((builtin.in), (builtin.in), (builtin.out), (builtin.out)) is det.
+:- pred successors((graph.graph(N, A)), (graph.node(N)), (set.set((graph.node(N))))).
+:- mode successors((builtin.in), (builtin.in), (builtin.out)) is det.
+:- func successors((graph.graph(N, A)), (graph.node(N))) = (set.set((graph.node(N)))).

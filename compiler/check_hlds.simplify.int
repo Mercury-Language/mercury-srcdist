@@ -1,0 +1,119 @@
+:- module (check_hlds.simplify).
+:- interface.
+:- import_module bool.
+:- import_module hlds.
+:- import_module io.
+:- import_module libs.
+:- import_module list.
+:- import_module (check_hlds.common).
+:- import_module (check_hlds.det_util).
+:- import_module (hlds.hlds_goal).
+:- import_module (hlds.hlds_module).
+:- import_module (hlds.hlds_pred).
+:- import_module (hlds.hlds_rtti).
+:- import_module (hlds.instmap).
+:- import_module (libs.globals).
+:- import_module (parse_tree.error_util).
+:- import_module (parse_tree.prog_data).
+:- type simplification
+	--->	simp_warn_simple_code 
+	;	simp_warn_duplicate_calls 
+	;	simp_warn_known_bad_format 
+	;	simp_warn_unknown_format 
+	;	simp_warn_obsolete 
+	;	simp_do_once 
+	;	simp_after_front_end 
+	;	simp_excess_assigns 
+	;	simp_elim_removable_scopes 
+	;	simp_opt_duplicate_calls 
+	;	simp_constant_prop 
+	;	simp_common_struct 
+	;	simp_extra_common_struct .
+:- type simplifications.
+:- type simplify_info.
+:- pred find_simplifications((bool.bool), ((libs.globals).globals), ((check_hlds.simplify).simplifications)).
+:- mode find_simplifications((builtin.in), (builtin.in), (builtin.out)) is det.
+:- func list_to_simplifications((list.list(((check_hlds.simplify).simplification)))) = ((check_hlds.simplify).simplifications).
+:- func simplifications_to_list(((check_hlds.simplify).simplifications)) = (list.list(((check_hlds.simplify).simplification))).
+:- pred simplify_do_after_front_end(((check_hlds.simplify).simplify_info)).
+:- mode simplify_do_after_front_end((builtin.in)) is semidet.
+:- pred simplify_do_common_struct(((check_hlds.simplify).simplify_info)).
+:- mode simplify_do_common_struct((builtin.in)) is semidet.
+:- pred simplify_do_const_prop(((check_hlds.simplify).simplify_info)).
+:- mode simplify_do_const_prop((builtin.in)) is semidet.
+:- pred simplify_do_elim_removable_scopes(((check_hlds.simplify).simplify_info)).
+:- mode simplify_do_elim_removable_scopes((builtin.in)) is semidet.
+:- pred simplify_do_excess_assign(((check_hlds.simplify).simplify_info)).
+:- mode simplify_do_excess_assign((builtin.in)) is semidet.
+:- pred simplify_do_extra_common_struct(((check_hlds.simplify).simplify_info)).
+:- mode simplify_do_extra_common_struct((builtin.in)) is semidet.
+:- pred simplify_do_once(((check_hlds.simplify).simplify_info)).
+:- mode simplify_do_once((builtin.in)) is semidet.
+:- pred simplify_do_opt_duplicate_calls(((check_hlds.simplify).simplify_info)).
+:- mode simplify_do_opt_duplicate_calls((builtin.in)) is semidet.
+:- pred simplify_do_warn_duplicate_calls(((check_hlds.simplify).simplify_info)).
+:- mode simplify_do_warn_duplicate_calls((builtin.in)) is semidet.
+:- pred simplify_do_warn_known_bad_format(((check_hlds.simplify).simplify_info)).
+:- mode simplify_do_warn_known_bad_format((builtin.in)) is semidet.
+:- pred simplify_do_warn_obsolete(((check_hlds.simplify).simplify_info)).
+:- mode simplify_do_warn_obsolete((builtin.in)) is semidet.
+:- pred simplify_do_warn_simple_code(((check_hlds.simplify).simplify_info)).
+:- mode simplify_do_warn_simple_code((builtin.in)) is semidet.
+:- pred simplify_do_warn_unknown_format(((check_hlds.simplify).simplify_info)).
+:- mode simplify_do_warn_unknown_format((builtin.in)) is semidet.
+:- pred simplify_info_apply_type_substitution(((parse_tree.prog_data).tsubst), ((check_hlds.simplify).simplify_info), ((check_hlds.simplify).simplify_info)).
+:- mode simplify_info_apply_type_substitution((builtin.in), (builtin.in), (builtin.out)) is det.
+:- pred simplify_info_do_add_error_spec(((parse_tree.error_util).error_spec), ((check_hlds.simplify).simplify_info), ((check_hlds.simplify).simplify_info)).
+:- mode simplify_info_do_add_error_spec((builtin.in), (builtin.in), (builtin.out)) is det.
+:- pred simplify_info_get_common_info(((check_hlds.simplify).simplify_info), ((check_hlds.common).common_info)).
+:- mode simplify_info_get_common_info((builtin.in), (builtin.out)) is det.
+:- pred simplify_info_get_cost_delta(((check_hlds.simplify).simplify_info), int).
+:- mode simplify_info_get_cost_delta((builtin.in), (builtin.out)) is det.
+:- pred simplify_info_get_det_info(((check_hlds.simplify).simplify_info), ((check_hlds.det_util).det_info)).
+:- mode simplify_info_get_det_info((builtin.in), (builtin.out)) is det.
+:- pred simplify_info_get_error_specs(((check_hlds.simplify).simplify_info), (list.list(((parse_tree.error_util).error_spec)))).
+:- mode simplify_info_get_error_specs((builtin.in), (builtin.out)) is det.
+:- pred simplify_info_get_instmap(((check_hlds.simplify).simplify_info), ((hlds.instmap).instmap)).
+:- mode simplify_info_get_instmap((builtin.in), (builtin.out)) is det.
+:- pred simplify_info_get_module_info(((check_hlds.simplify).simplify_info), ((hlds.hlds_module).module_info)).
+:- mode simplify_info_get_module_info((builtin.in), (builtin.out)) is det.
+:- pred simplify_info_get_pred_info(((check_hlds.simplify).simplify_info), ((hlds.hlds_pred).pred_info)).
+:- mode simplify_info_get_pred_info((builtin.in), (builtin.out)) is det.
+:- pred simplify_info_get_pred_proc_info(((check_hlds.simplify).simplify_info), ((hlds.hlds_pred).pred_info), ((hlds.hlds_pred).proc_info)).
+:- mode simplify_info_get_pred_proc_info((builtin.in), (builtin.out), (builtin.out)) is det.
+:- pred simplify_info_get_rtti_varmaps(((check_hlds.simplify).simplify_info), ((hlds.hlds_rtti).rtti_varmaps)).
+:- mode simplify_info_get_rtti_varmaps((builtin.in), (builtin.out)) is det.
+:- pred simplify_info_get_simplifications(((check_hlds.simplify).simplify_info), ((check_hlds.simplify).simplifications)).
+:- mode simplify_info_get_simplifications((builtin.in), (builtin.out)) is det.
+:- pred simplify_info_get_var_types(((check_hlds.simplify).simplify_info), ((parse_tree.prog_data).vartypes)).
+:- mode simplify_info_get_var_types((builtin.in), (builtin.out)) is det.
+:- pred simplify_info_get_varset(((check_hlds.simplify).simplify_info), ((parse_tree.prog_data).prog_varset)).
+:- mode simplify_info_get_varset((builtin.in), (builtin.out)) is det.
+:- pred simplify_info_incr_cost_delta(int, ((check_hlds.simplify).simplify_info), ((check_hlds.simplify).simplify_info)).
+:- mode simplify_info_incr_cost_delta((builtin.in), (builtin.in), (builtin.out)) is det.
+:- pred simplify_info_init(((check_hlds.det_util).det_info), ((check_hlds.simplify).simplifications), ((hlds.instmap).instmap), ((hlds.hlds_pred).proc_info), ((check_hlds.simplify).simplify_info)).
+:- mode simplify_info_init((builtin.in), (builtin.in), (builtin.in), (builtin.in), (builtin.out)) is det.
+:- pred simplify_info_recompute_atomic(((check_hlds.simplify).simplify_info)).
+:- mode simplify_info_recompute_atomic((builtin.in)) is semidet.
+:- pred simplify_info_requantify(((check_hlds.simplify).simplify_info)).
+:- mode simplify_info_requantify((builtin.in)) is semidet.
+:- pred simplify_info_rerun_det(((check_hlds.simplify).simplify_info)).
+:- mode simplify_info_rerun_det((builtin.in)) is semidet.
+:- pred simplify_info_set_common_info(((check_hlds.common).common_info), ((check_hlds.simplify).simplify_info), ((check_hlds.simplify).simplify_info)).
+:- mode simplify_info_set_common_info((builtin.in), (builtin.in), (builtin.out)) is det.
+:- pred simplify_info_set_requantify(((check_hlds.simplify).simplify_info), ((check_hlds.simplify).simplify_info)).
+:- mode simplify_info_set_requantify((builtin.in), (builtin.out)) is det.
+:- pred simplify_info_set_rerun_det(((check_hlds.simplify).simplify_info), ((check_hlds.simplify).simplify_info)).
+:- mode simplify_info_set_rerun_det((builtin.in), (builtin.out)) is det.
+:- pred simplify_info_set_rtti_varmaps(((hlds.hlds_rtti).rtti_varmaps), ((check_hlds.simplify).simplify_info), ((check_hlds.simplify).simplify_info)).
+:- mode simplify_info_set_rtti_varmaps((builtin.in), (builtin.in), (builtin.out)) is det.
+:- pred simplify_may_introduce_calls(string, string, ((parse_tree.prog_data).arity)).
+:- mode simplify_may_introduce_calls((builtin.in), (builtin.in), (builtin.in)) is semidet.
+:- pred simplify_pred(((check_hlds.simplify).simplifications), ((hlds.hlds_pred).pred_id), ((hlds.hlds_module).module_info), ((hlds.hlds_module).module_info), ((hlds.hlds_pred).pred_info), ((hlds.hlds_pred).pred_info), (list.list(((parse_tree.error_util).error_spec))), (list.list(((parse_tree.error_util).error_spec))), (io.io), (io.io)).
+:- mode simplify_pred((builtin.in), (builtin.in), (builtin.in), (builtin.out), (builtin.in), (builtin.out), (builtin.in), (builtin.out), (builtin.di), (builtin.uo)) is det.
+:- pred simplify_proc(((check_hlds.simplify).simplifications), ((hlds.hlds_pred).pred_id), ((hlds.hlds_pred).proc_id), ((hlds.hlds_module).module_info), ((hlds.hlds_module).module_info), ((hlds.hlds_pred).proc_info), ((hlds.hlds_pred).proc_info), (io.io), (io.io)).
+:- mode simplify_proc((builtin.in), (builtin.in), (builtin.in), (builtin.in), (builtin.out), (builtin.in), (builtin.out), (builtin.di), (builtin.uo)) is det.
+:- pred simplify_proc_return_msgs(((check_hlds.simplify).simplifications), ((hlds.hlds_pred).pred_id), ((hlds.hlds_pred).proc_id), ((hlds.hlds_module).module_info), ((hlds.hlds_module).module_info), ((hlds.hlds_pred).proc_info), ((hlds.hlds_pred).proc_info), (list.list(((parse_tree.error_util).error_spec))), (io.io), (io.io)).
+:- mode simplify_proc_return_msgs((builtin.in), (builtin.in), (builtin.in), (builtin.in), (builtin.out), (builtin.in), (builtin.out), (builtin.out), (builtin.di), (builtin.uo)) is det.
+:- pred simplify_process_clause_body_goal(((hlds.hlds_goal).hlds_goal), ((hlds.hlds_goal).hlds_goal), ((check_hlds.simplify).simplify_info), ((check_hlds.simplify).simplify_info), (io.io), (io.io)).
+:- mode simplify_process_clause_body_goal((builtin.in), (builtin.out), (builtin.in), (builtin.out), (builtin.di), (builtin.uo)) is det.

@@ -1,0 +1,10 @@
+:- module (mdb.sized_pretty).
+:- interface.
+:- import_module univ.
+:- import_module (mdb.browser_info).
+:- import_module (mdb.browser_term).
+:- implementation.
+:- type no_measure_params
+	--->	no_measure_params .
+:- typeclass measure(T).
+:- typeclass measure_with_params(T, MeasureParams) <= ((mdb.sized_pretty).measure(T)).

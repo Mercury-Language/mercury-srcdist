@@ -1,0 +1,10 @@
+:- module (ll_backend.ite_gen).
+:- interface.
+:- import_module (hlds.code_model).
+:- import_module (hlds.hlds_goal).
+:- import_module (ll_backend.code_info).
+:- import_module (ll_backend.llds).
+:- pred generate_ite(((hlds.code_model).code_model), ((hlds.hlds_goal).hlds_goal), ((hlds.hlds_goal).hlds_goal), ((hlds.hlds_goal).hlds_goal), ((hlds.hlds_goal).hlds_goal_info), ((ll_backend.llds).code_tree), ((ll_backend.code_info).code_info), ((ll_backend.code_info).code_info)).
+:- mode generate_ite((builtin.in), (builtin.in), (builtin.in), (builtin.in), (builtin.in), (builtin.out), (builtin.in), (builtin.out)) is det.
+:- pred generate_negation(((hlds.code_model).code_model), ((hlds.hlds_goal).hlds_goal), ((hlds.hlds_goal).hlds_goal_info), ((ll_backend.llds).code_tree), ((ll_backend.code_info).code_info), ((ll_backend.code_info).code_info)).
+:- mode generate_negation((builtin.in), (builtin.in), (builtin.in), (builtin.out), (builtin.in), (builtin.out)) is det.

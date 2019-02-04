@@ -1,0 +1,8 @@
+:- module region_builtin.
+:- interface.
+:- import_module io.
+:- type region.
+:- implementation.
+:- pragma foreign_type(c, region, "MR_RegionHeader *", [can_pass_as_mercury_type]).
+:- pragma foreign_import_module("C", region_builtin).
+:- pragma foreign_import_module("C", region_builtin).
