@@ -1,0 +1,2 @@
+spurious_mode_error.m:087: In clause for predicate `foldit'/4:
+spurious_mode_error.m:087:   error: undefined predicate `foobie'/3.

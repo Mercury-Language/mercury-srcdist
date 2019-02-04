@@ -1,0 +1,21 @@
+:- module ops.
+:- interface.
+:- import_module list.
+:- type assoc
+    --->    x 
+    ;       y .
+:- type class
+    --->    infix(ops.assoc, ops.assoc)
+    ;       prefix(ops.assoc)
+    ;       binary_prefix(ops.assoc, ops.assoc)
+    ;       postfix(ops.assoc).
+:- type mercury_op_table.
+:- type op_info
+    --->    op_info(ops.class, ops.priority).
+:- type priority == int.
+:- type table == ops.mercury_op_table.
+:- typeclass op_table(Table).
+:- instance (ops.op_table(ops.mercury_op_table)).
+:- implementation.
+:- type mercury_op_table
+    --->    mercury_op_table .
