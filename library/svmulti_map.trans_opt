@@ -1,0 +1,25 @@
+:- module svmulti_map.
+:- pragma termination_info(svmulti_map.insert((builtin.in), (builtin.in), (builtin.in), (builtin.out)), infinite, cannot_loop).
+:- pragma termination_info(svmulti_map.det_insert((builtin.in), (builtin.in), (builtin.in), (builtin.out)), infinite, can_loop).
+:- pragma termination_info(svmulti_map.update((builtin.in), (builtin.in), (builtin.in), (builtin.out)), infinite, cannot_loop).
+:- pragma termination_info(svmulti_map.det_update((builtin.in), (builtin.in), (builtin.in), (builtin.out)), infinite, can_loop).
+:- pragma termination_info(svmulti_map.det_replace((builtin.in), (builtin.in), (builtin.in), (builtin.out)), finite(0, [no, no, no, yes, yes, no]), can_loop).
+:- pragma termination_info(svmulti_map.set((builtin.in), (builtin.in), (builtin.in), (builtin.out)), infinite, can_loop).
+:- pragma termination_info(svmulti_map.add((builtin.in), (builtin.in), (builtin.in), (builtin.out)), infinite, can_loop).
+:- pragma termination_info(svmulti_map.delete((builtin.in), (builtin.in), (builtin.out)), infinite, cannot_loop).
+:- pragma termination_info(svmulti_map.delete((builtin.in), (builtin.in), (builtin.in), (builtin.out)), infinite, cannot_loop).
+:- pragma termination_info(svmulti_map.remove((builtin.in), (builtin.out), (builtin.in), (builtin.out)), infinite, cannot_loop).
+:- pragma termination_info(svmulti_map.det_remove((builtin.in), (builtin.out), (builtin.in), (builtin.out)), infinite, can_loop).
+:- pragma termination_info(svmulti_map.remove_smallest((builtin.out), (builtin.out), (builtin.in), (builtin.out)), infinite, cannot_loop).
+:- pragma exceptions(predicate, (svmulti_map.insert), 4, 0, may_throw(type_exception)).
+:- pragma exceptions(predicate, (svmulti_map.det_insert), 4, 0, may_throw(user_exception)).
+:- pragma exceptions(predicate, (svmulti_map.update), 4, 0, may_throw(type_exception)).
+:- pragma exceptions(predicate, (svmulti_map.det_update), 4, 0, may_throw(user_exception)).
+:- pragma exceptions(predicate, (svmulti_map.det_replace), 4, 0, may_throw(user_exception)).
+:- pragma exceptions(predicate, (svmulti_map.set), 4, 0, may_throw(user_exception)).
+:- pragma exceptions(predicate, (svmulti_map.add), 4, 0, may_throw(user_exception)).
+:- pragma exceptions(predicate, (svmulti_map.delete), 3, 0, may_throw(user_exception)).
+:- pragma exceptions(predicate, (svmulti_map.delete), 4, 0, may_throw(user_exception)).
+:- pragma exceptions(predicate, (svmulti_map.remove), 4, 0, may_throw(user_exception)).
+:- pragma exceptions(predicate, (svmulti_map.det_remove), 4, 0, may_throw(user_exception)).
+:- pragma exceptions(predicate, (svmulti_map.remove_smallest), 4, 0, may_throw(user_exception)).

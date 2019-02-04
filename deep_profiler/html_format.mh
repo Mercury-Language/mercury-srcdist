@@ -1,0 +1,34 @@
+/*
+** Automatically generated from `html_format.m'
+** by the Mercury compiler,
+** version rotd-2011-08-13, configured for x86_64-unknown-linux-gnu.
+** Do not edit.
+*/
+#ifndef HTML_FORMAT_MH
+#define HTML_FORMAT_MH
+
+#ifdef __cplusplus
+extern "C" {
+#endif
+
+#ifdef MR_HIGHLEVEL_CODE
+#include "mercury.h"
+#else
+  #ifndef MERCURY_HDR_EXCLUDE_IMP_H
+  #include "mercury_imp.h"
+  #endif
+#endif
+#ifdef MR_DEEP_PROFILING
+#include "mercury_deep_profiling.h"
+#endif
+
+#ifndef HTML_FORMAT_DECL_GUARD
+#define HTML_FORMAT_DECL_GUARD
+
+#endif
+
+#ifdef __cplusplus
+}
+#endif
+
+#endif /* HTML_FORMAT_MH */

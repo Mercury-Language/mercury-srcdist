@@ -1,0 +1,12 @@
+:- module ((transform_hlds.implicit_parallelism).push_goals_together).
+:- interface.
+:- import_module list.
+:- import_module (hlds.hlds_module).
+:- import_module (hlds.hlds_pred).
+:- import_module (mdbcomp.feedback).
+:- import_module ((mdbcomp.feedback).automatic_parallelism).
+:- type push_result
+	--->	push_failed 
+	;	push_succeeded .
+:- pred push_goals_in_proc(list.list(mdbcomp.feedback.automatic_parallelism.push_goal), transform_hlds.implicit_parallelism.push_goals_together.push_result, hlds.hlds_pred.proc_info, hlds.hlds_pred.proc_info, hlds.hlds_module.module_info, hlds.hlds_module.module_info).
+:- mode push_goals_in_proc((builtin.in), (builtin.out), (builtin.in), (builtin.out), (builtin.in), (builtin.out)) is det.
