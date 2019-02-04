@@ -1,0 +1,184 @@
+:- module (ll_backend.code_info).
+:- interface.
+:- import_module bool.
+:- import_module check_hlds.
+:- import_module counter.
+:- import_module libs.
+:- import_module list.
+:- import_module map.
+:- import_module maybe.
+:- import_module mdbcomp.
+:- import_module parse_tree.
+:- import_module set.
+:- import_module set_tree234.
+:- import_module term.
+:- import_module (check_hlds.type_util).
+:- import_module (hlds.code_model).
+:- import_module (hlds.hlds_data).
+:- import_module (hlds.hlds_goal).
+:- import_module (hlds.hlds_llds).
+:- import_module (hlds.hlds_module).
+:- import_module (hlds.hlds_pred).
+:- import_module (hlds.vartypes).
+:- import_module (libs.globals).
+:- import_module (ll_backend.continuation_info).
+:- import_module (ll_backend.global_data).
+:- import_module (ll_backend.layout).
+:- import_module (ll_backend.llds).
+:- import_module (ll_backend.trace_gen).
+:- import_module (mdbcomp.goal_path).
+:- import_module (mdbcomp.prim_data).
+:- import_module (parse_tree.prog_data).
+:- import_module (parse_tree.set_of_var).
+:- type code_info.
+:- pred add_alloc_site_info(parse_tree.prog_data.prog_context, string, int, ll_backend.llds.alloc_site_id, ll_backend.code_info.code_info, ll_backend.code_info.code_info).
+:- mode add_alloc_site_info((builtin.in), (builtin.in), (builtin.in), (builtin.out), (builtin.in), (builtin.out)) is det.
+:- pred add_closure_layout(ll_backend.layout.closure_proc_id_data, ll_backend.code_info.code_info, ll_backend.code_info.code_info).
+:- mode add_closure_layout((builtin.in), (builtin.in), (builtin.out)) is det.
+:- pred add_out_of_line_code(ll_backend.llds.llds_code, ll_backend.code_info.code_info, ll_backend.code_info.code_info).
+:- mode add_out_of_line_code((builtin.in), (builtin.in), (builtin.out)) is det.
+:- pred add_resume_layout_for_label(ll_backend.llds.label, ll_backend.continuation_info.layout_label_info, ll_backend.code_info.code_info, ll_backend.code_info.code_info).
+:- mode add_resume_layout_for_label((builtin.in), (builtin.in), (builtin.in), (builtin.out)) is det.
+:- pred add_scalar_static_cell(list.list(ll_backend.llds.typed_rval), ll_backend.llds.data_id, ll_backend.code_info.code_info, ll_backend.code_info.code_info).
+:- mode add_scalar_static_cell((builtin.in), (builtin.out), (builtin.in), (builtin.out)) is det.
+:- pred add_scalar_static_cell_natural_types(list.list(ll_backend.llds.rval), ll_backend.llds.data_id, ll_backend.code_info.code_info, ll_backend.code_info.code_info).
+:- mode add_scalar_static_cell_natural_types((builtin.in), (builtin.out), (builtin.in), (builtin.out)) is det.
+:- pred add_threadscope_string(string, int, ll_backend.code_info.code_info, ll_backend.code_info.code_info).
+:- mode add_threadscope_string((builtin.in), (builtin.out), (builtin.in), (builtin.out)) is det.
+:- pred add_trace_layout_for_label(ll_backend.llds.label, term.context, mdbcomp.prim_data.trace_port, bool.bool, mdbcomp.goal_path.forward_goal_path, maybe.maybe(ll_backend.continuation_info.user_event_info), ll_backend.continuation_info.layout_label_info, ll_backend.code_info.code_info, ll_backend.code_info.code_info).
+:- mode add_trace_layout_for_label((builtin.in), (builtin.in), (builtin.in), (builtin.in), (builtin.in), (builtin.in), (builtin.in), (builtin.in), (builtin.out)) is det.
+:- pred add_vector_static_cell(list.list(ll_backend.llds.llds_type), list.list(list.list(ll_backend.llds.rval)), ll_backend.llds.data_id, ll_backend.code_info.code_info, ll_backend.code_info.code_info).
+:- mode add_vector_static_cell((builtin.in), (builtin.in), (builtin.out), (builtin.in), (builtin.out)) is det.
+:- func body_typeinfo_liveness(ll_backend.code_info.code_info) = bool.bool.
+:- pred code_info_init(hlds.hlds_module.module_info, hlds.hlds_pred.pred_id, hlds.hlds_pred.proc_id, hlds.hlds_pred.pred_info, hlds.hlds_pred.proc_info, bool.bool, ll_backend.global_data.static_cell_info, ll_backend.llds.const_struct_map, maybe.maybe(mdbcomp.goal_path.containing_goal_map), list.list(string), int, ll_backend.trace_gen.trace_slot_info, ll_backend.code_info.code_info).
+:- mode code_info_init((builtin.in), (builtin.in), (builtin.in), (builtin.in), (builtin.in), (builtin.in), (builtin.in), (builtin.in), (builtin.in), (builtin.in), (builtin.in), (builtin.out), (builtin.out)) is det.
+:- func filter_region_vars(ll_backend.code_info.code_info, parse_tree.set_of_var.set_of_progvar) = parse_tree.set_of_var.set_of_progvar.
+:- pred get_alloc_sites(ll_backend.code_info.code_info, set_tree234.set_tree234(ll_backend.layout.alloc_site_info)).
+:- mode get_alloc_sites((builtin.in), (builtin.out)) is det.
+:- func get_arginfo(ll_backend.code_info.code_info) = list.list(hlds.hlds_pred.arg_info).
+:- pred get_auto_comments(ll_backend.code_info.code_info, bool.bool).
+:- mode get_auto_comments((builtin.in), (builtin.out)) is det.
+:- pred get_closure_layouts(ll_backend.code_info.code_info, list.list(ll_backend.layout.closure_proc_id_data)).
+:- mode get_closure_layouts((builtin.in), (builtin.out)) is det.
+:- pred get_const_struct_map(ll_backend.code_info.code_info, ll_backend.llds.const_struct_map).
+:- mode get_const_struct_map((builtin.in), (builtin.out)) is det.
+:- pred get_containing_goal_map(ll_backend.code_info.code_info, mdbcomp.goal_path.containing_goal_map).
+:- mode get_containing_goal_map((builtin.in), (builtin.out)) is det.
+:- pred get_created_temp_frame(ll_backend.code_info.code_info, bool.bool).
+:- mode get_created_temp_frame((builtin.in), (builtin.out)) is det.
+:- pred get_emit_region_ops(ll_backend.code_info.code_info, ll_backend.llds.add_region_ops).
+:- mode get_emit_region_ops((builtin.in), (builtin.out)) is det.
+:- pred get_emit_trail_ops(ll_backend.code_info.code_info, ll_backend.llds.add_trail_ops).
+:- mode get_emit_trail_ops((builtin.in), (builtin.out)) is det.
+:- pred get_exprn_opts(ll_backend.code_info.code_info, ll_backend.llds.exprn_opts).
+:- mode get_exprn_opts((builtin.in), (builtin.out)) is det.
+:- pred get_gc_method(ll_backend.code_info.code_info, libs.globals.gc_method).
+:- mode get_gc_method((builtin.in), (builtin.out)) is det.
+:- pred get_globals(ll_backend.code_info.code_info, libs.globals.globals).
+:- mode get_globals((builtin.in), (builtin.out)) is det.
+:- func get_headvars(ll_backend.code_info.code_info) = list.list(parse_tree.prog_data.prog_var).
+:- pred get_label_counter(ll_backend.code_info.code_info, counter.counter).
+:- mode get_label_counter((builtin.in), (builtin.out)) is det.
+:- pred get_layout_info(ll_backend.code_info.code_info, ll_backend.continuation_info.proc_label_layout_info).
+:- mode get_layout_info((builtin.in), (builtin.out)) is det.
+:- pred get_lcmc_null(ll_backend.code_info.code_info, bool.bool).
+:- mode get_lcmc_null((builtin.in), (builtin.out)) is det.
+:- pred get_max_regs_in_use_at_trace(ll_backend.code_info.code_info, int, int).
+:- mode get_max_regs_in_use_at_trace((builtin.in), (builtin.out), (builtin.out)) is det.
+:- pred get_max_temp_slot_count(ll_backend.code_info.code_info, int).
+:- mode get_max_temp_slot_count((builtin.in), (builtin.out)) is det.
+:- pred get_may_use_atomic_alloc(ll_backend.code_info.code_info, hlds.hlds_data.may_use_atomic_alloc).
+:- mode get_may_use_atomic_alloc((builtin.in), (builtin.out)) is det.
+:- pred get_maybe_containing_goal_map(ll_backend.code_info.code_info, maybe.maybe(mdbcomp.goal_path.containing_goal_map)).
+:- mode get_maybe_containing_goal_map((builtin.in), (builtin.out)) is det.
+:- pred get_maybe_trace_info(ll_backend.code_info.code_info, maybe.maybe(ll_backend.trace_gen.trace_info)).
+:- mode get_maybe_trace_info((builtin.in), (builtin.out)) is det.
+:- pred get_module_info(ll_backend.code_info.code_info, hlds.hlds_module.module_info).
+:- mode get_module_info((builtin.in), (builtin.out)) is det.
+:- pred get_next_closure_seq_no(int, ll_backend.code_info.code_info, ll_backend.code_info.code_info).
+:- mode get_next_closure_seq_no((builtin.out), (builtin.in), (builtin.out)) is det.
+:- pred get_next_label(ll_backend.llds.label, ll_backend.code_info.code_info, ll_backend.code_info.code_info).
+:- mode get_next_label((builtin.out), (builtin.in), (builtin.out)) is det.
+:- pred get_num_ptag_bits(ll_backend.code_info.code_info, uint8).
+:- mode get_num_ptag_bits((builtin.in), (builtin.out)) is det.
+:- pred get_opt_no_return_calls(ll_backend.code_info.code_info, bool.bool).
+:- mode get_opt_no_return_calls((builtin.in), (builtin.out)) is det.
+:- pred get_opt_region_ops(ll_backend.code_info.code_info, bool.bool).
+:- mode get_opt_region_ops((builtin.in), (builtin.out)) is det.
+:- pred get_opt_trail_ops(ll_backend.code_info.code_info, bool.bool).
+:- mode get_opt_trail_ops((builtin.in), (builtin.out)) is det.
+:- pred get_out_of_line_code(ll_backend.code_info.code_info, ll_backend.llds.llds_code).
+:- mode get_out_of_line_code((builtin.in), (builtin.out)) is det.
+:- pred get_persistent_temps(ll_backend.code_info.code_info, set.set(ll_backend.llds.lval)).
+:- mode get_persistent_temps((builtin.in), (builtin.out)) is det.
+:- pred get_pred_id(ll_backend.code_info.code_info, hlds.hlds_pred.pred_id).
+:- mode get_pred_id((builtin.in), (builtin.out)) is det.
+:- pred get_pred_info(ll_backend.code_info.code_info, hlds.hlds_pred.pred_info).
+:- mode get_pred_info((builtin.in), (builtin.out)) is det.
+:- func get_pred_proc_arginfo(ll_backend.code_info.code_info, hlds.hlds_pred.pred_id, hlds.hlds_pred.proc_id) = list.list(hlds.hlds_pred.arg_info).
+:- pred get_proc_id(ll_backend.code_info.code_info, hlds.hlds_pred.proc_id).
+:- mode get_proc_id((builtin.in), (builtin.out)) is det.
+:- pred get_proc_info(ll_backend.code_info.code_info, hlds.hlds_pred.proc_info).
+:- mode get_proc_info((builtin.in), (builtin.out)) is det.
+:- pred get_proc_label(ll_backend.code_info.code_info, mdbcomp.prim_data.proc_label).
+:- mode get_proc_label((builtin.in), (builtin.out)) is det.
+:- func get_proc_model(ll_backend.code_info.code_info) = hlds.code_model.code_model.
+:- pred get_proc_trace_events(ll_backend.code_info.code_info, bool.bool).
+:- mode get_proc_trace_events((builtin.in), (builtin.out)) is det.
+:- pred get_profile_memory(ll_backend.code_info.code_info, bool.bool).
+:- mode get_profile_memory((builtin.in), (builtin.out)) is det.
+:- pred get_stack_slots(ll_backend.code_info.code_info, hlds.hlds_llds.stack_slots).
+:- mode get_stack_slots((builtin.in), (builtin.out)) is det.
+:- pred get_static_cell_info(ll_backend.code_info.code_info, ll_backend.global_data.static_cell_info).
+:- mode get_static_cell_info((builtin.in), (builtin.out)) is det.
+:- pred get_succip_used(ll_backend.code_info.code_info, bool.bool).
+:- mode get_succip_used((builtin.in), (builtin.out)) is det.
+:- pred get_temp_content_map(ll_backend.code_info.code_info, map.map(ll_backend.llds.lval, ll_backend.continuation_info.slot_contents)).
+:- mode get_temp_content_map((builtin.in), (builtin.out)) is det.
+:- pred get_threadscope_rev_string_table(ll_backend.code_info.code_info, list.list(string), int).
+:- mode get_threadscope_rev_string_table((builtin.in), (builtin.out), (builtin.out)) is det.
+:- pred get_total_stackslot_count(ll_backend.code_info.code_info, int).
+:- mode get_total_stackslot_count((builtin.in), (builtin.out)) is det.
+:- pred get_used_env_vars(ll_backend.code_info.code_info, set.set(string)).
+:- mode get_used_env_vars((builtin.in), (builtin.out)) is det.
+:- pred get_var_slot_count(ll_backend.code_info.code_info, int).
+:- mode get_var_slot_count((builtin.in), (builtin.out)) is det.
+:- pred get_variable_slot(ll_backend.code_info.code_info, parse_tree.prog_data.prog_var, ll_backend.llds.lval).
+:- mode get_variable_slot((builtin.in), (builtin.in), (builtin.out)) is det.
+:- pred get_varset(ll_backend.code_info.code_info, parse_tree.prog_data.prog_varset).
+:- mode get_varset((builtin.in), (builtin.out)) is det.
+:- pred get_vartypes(ll_backend.code_info.code_info, hlds.vartypes.vartypes).
+:- mode get_vartypes((builtin.in), (builtin.out)) is det.
+:- func lookup_cheaper_tag_test(ll_backend.code_info.code_info, parse_tree.prog_data.mer_type) = hlds.hlds_data.maybe_cheaper_tag_test.
+:- func lookup_type_defn(ll_backend.code_info.code_info, parse_tree.prog_data.mer_type) = hlds.hlds_data.hlds_type_defn.
+:- func make_proc_entry_label(ll_backend.code_info.code_info, hlds.hlds_module.module_info, hlds.hlds_pred.pred_id, hlds.hlds_pred.proc_id, bool.bool) = ll_backend.llds.code_addr.
+:- pred maybe_add_alloc_site_info(parse_tree.prog_data.prog_context, string, int, maybe.maybe(ll_backend.llds.alloc_site_id), ll_backend.code_info.code_info, ll_backend.code_info.code_info).
+:- mode maybe_add_alloc_site_info((builtin.in), (builtin.in), (builtin.in), (builtin.out), (builtin.in), (builtin.out)) is det.
+:- func round_det_stack_frame_size(ll_backend.code_info.code_info, int) = int.
+:- pred search_type_defn(ll_backend.code_info.code_info, parse_tree.prog_data.mer_type, hlds.hlds_data.hlds_type_defn).
+:- mode search_type_defn((builtin.in), (builtin.in), (builtin.out)) is semidet.
+:- pred set_alloc_sites(set_tree234.set_tree234(ll_backend.layout.alloc_site_info), ll_backend.code_info.code_info, ll_backend.code_info.code_info).
+:- mode set_alloc_sites((builtin.in), (builtin.in), (builtin.out)) is det.
+:- pred set_created_temp_frame(bool.bool, ll_backend.code_info.code_info, ll_backend.code_info.code_info).
+:- mode set_created_temp_frame((builtin.in), (builtin.in), (builtin.out)) is det.
+:- pred set_max_regs_in_use_at_trace(int, int, ll_backend.code_info.code_info, ll_backend.code_info.code_info).
+:- mode set_max_regs_in_use_at_trace((builtin.in), (builtin.in), (builtin.in), (builtin.out)) is det.
+:- pred set_max_temp_slot_count(int, ll_backend.code_info.code_info, ll_backend.code_info.code_info).
+:- mode set_max_temp_slot_count((builtin.in), (builtin.in), (builtin.out)) is det.
+:- pred set_persistent_temps(set.set(ll_backend.llds.lval), ll_backend.code_info.code_info, ll_backend.code_info.code_info).
+:- mode set_persistent_temps((builtin.in), (builtin.in), (builtin.out)) is det.
+:- pred set_proc_trace_events(bool.bool, ll_backend.code_info.code_info, ll_backend.code_info.code_info).
+:- mode set_proc_trace_events((builtin.in), (builtin.in), (builtin.out)) is det.
+:- pred set_static_cell_info(ll_backend.global_data.static_cell_info, ll_backend.code_info.code_info, ll_backend.code_info.code_info).
+:- mode set_static_cell_info((builtin.in), (builtin.in), (builtin.out)) is det.
+:- pred set_temp_content_map(map.map(ll_backend.llds.lval, ll_backend.continuation_info.slot_contents), ll_backend.code_info.code_info, ll_backend.code_info.code_info).
+:- mode set_temp_content_map((builtin.in), (builtin.in), (builtin.out)) is det.
+:- pred set_used_env_vars(set.set(string), ll_backend.code_info.code_info, ll_backend.code_info.code_info).
+:- mode set_used_env_vars((builtin.in), (builtin.in), (builtin.out)) is det.
+:- func should_add_region_ops(ll_backend.code_info.code_info, hlds.hlds_goal.hlds_goal_info) = ll_backend.llds.add_region_ops.
+:- func should_add_trail_ops(ll_backend.code_info.code_info, hlds.hlds_goal.hlds_goal_info) = ll_backend.llds.add_trail_ops.
+:- pred succip_is_used(ll_backend.code_info.code_info, ll_backend.code_info.code_info).
+:- mode succip_is_used((builtin.in), (builtin.out)) is det.
+:- func variable_is_of_dummy_type(ll_backend.code_info.code_info, parse_tree.prog_data.prog_var) = check_hlds.type_util.is_dummy_type.
+:- func variable_name(ll_backend.code_info.code_info, parse_tree.prog_data.prog_var) = string.
+:- func variable_type(ll_backend.code_info.code_info, parse_tree.prog_data.prog_var) = parse_tree.prog_data.mer_type.

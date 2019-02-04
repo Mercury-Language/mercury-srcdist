@@ -1,0 +1,10 @@
+:- module (ll_backend.ll_pseudo_type_info).
+:- interface.
+:- import_module parse_tree.
+:- import_module (ll_backend.global_data).
+:- import_module (ll_backend.llds).
+:- import_module (parse_tree.prog_data).
+:- pred construct_llds_pseudo_type_info(parse_tree.prog_data.mer_type, int, parse_tree.prog_data.existq_tvars, ll_backend.global_data.static_cell_info, ll_backend.global_data.static_cell_info, ll_backend.llds.rval).
+:- mode construct_llds_pseudo_type_info((builtin.in), (builtin.in), (builtin.in), (builtin.in), (builtin.out), (builtin.out)) is det.
+:- pred construct_typed_llds_pseudo_type_info(parse_tree.prog_data.mer_type, int, parse_tree.prog_data.existq_tvars, ll_backend.global_data.static_cell_info, ll_backend.global_data.static_cell_info, ll_backend.llds.rval, ll_backend.llds.llds_type).
+:- mode construct_typed_llds_pseudo_type_info((builtin.in), (builtin.in), (builtin.in), (builtin.in), (builtin.out), (builtin.out), (builtin.out)) is det.
