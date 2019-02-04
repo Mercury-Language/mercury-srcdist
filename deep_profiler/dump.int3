@@ -1,0 +1,9 @@
+:- module dump.
+:- interface.
+:- type dump_cliques.
+:- type dump_options.
+:- type dump_prop_measurements.
+:- type dump_rev_links.
+:- type dumpable_array.
+:- type show_restricted_dump.
+:- type show_stats.

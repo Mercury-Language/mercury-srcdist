@@ -1,0 +1,6 @@
+:- module (check_hlds.ordering_mode_constraints).
+:- interface.
+:- type conjunct_id.
+:- type mode_ordering_constraint.
+:- type mode_ordering_constraints.
+:- type ordering_constraints_info.

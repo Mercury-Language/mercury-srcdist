@@ -1,0 +1,13 @@
+module(1, "group.m",
+	group,
+	{},
+	{builtin, assoc_list, list, set, private_builtin},
+	{builtin, assoc_list, list, set, counter, map, pair, require, private_builtin},
+	{},
+	{},
+	{},
+	{},
+	{},
+	no_foreign_export,
+	no_main
+).

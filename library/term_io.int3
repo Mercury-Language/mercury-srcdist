@@ -1,0 +1,5 @@
+:- module term_io.
+:- interface.
+:- type adjacent_to_graphic_token.
+:- type read_term.
+:- type read_term(T).

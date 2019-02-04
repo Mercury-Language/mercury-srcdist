@@ -1,0 +1,3 @@
+:- module (transform_hlds.size_prof).
+:- interface.
+:- type construct_transform.

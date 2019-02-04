@@ -1,0 +1,7 @@
+:- module measurement_units.
+:- interface.
+:- type memory.
+:- type memory_units.
+:- type percent.
+:- type probability.
+:- type time.

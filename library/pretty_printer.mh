@@ -1,0 +1,52 @@
+/*
+** Automatically generated from `pretty_printer.m'
+** by the Mercury compiler,
+** version rotd-2010-03-01, configured for x86_64-unknown-linux-gnu.
+** Do not edit.
+*/
+#ifndef PRETTY_PRINTER_MH
+#define PRETTY_PRINTER_MH
+
+#ifdef __cplusplus
+extern "C" {
+#endif
+
+#ifdef MR_HIGHLEVEL_CODE
+#include "mercury.h"
+#else
+  #ifndef MERCURY_HDR_EXCLUDE_IMP_H
+  #include "mercury_imp.h"
+  #endif
+#endif
+#ifdef MR_DEEP_PROFILING
+#include "mercury_deep_profiling.h"
+#endif
+
+#ifndef PRETTY_PRINTER_DECL_GUARD
+#define PRETTY_PRINTER_DECL_GUARD
+#line 887 "pretty_printer.m"
+#ifdef MR_HIGHLEVEL_CODE
+    extern MR_Unsigned mercury__pretty_printer__mutable_variable_io_formatter_map;
+#else
+    extern MR_Unsigned mercury__pretty_printer__mutable_variable_io_formatter_map;
+#endif
+
+#line 35 "pretty_printer.mh.tmp"
+#line 890 "pretty_printer.m"
+#ifdef MR_HIGHLEVEL_CODE
+    extern MR_Unsigned mercury__pretty_printer__mutable_variable_io_pp_params;
+#else
+    extern MR_Unsigned mercury__pretty_printer__mutable_variable_io_pp_params;
+#endif
+
+#line 43 "pretty_printer.mh.tmp"
+
+#endif
+void mercury__pretty_printer__user_init_pred_1(void);
+void mercury__pretty_printer__user_init_pred_0(void);
+
+#ifdef __cplusplus
+}
+#endif
+
+#endif /* PRETTY_PRINTER_MH */

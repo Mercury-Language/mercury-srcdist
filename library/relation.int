@@ -1,0 +1,123 @@
+:- module relation.
+:- interface.
+:- import_module assoc_list.
+:- import_module enum.
+:- import_module list.
+:- import_module set.
+:- import_module sparse_bitset.
+:- type relation_key.
+:- type relation_key_set == sparse_bitset.sparse_bitset(relation.relation_key).
+:- type relation(T).
+:- pragma obsolete((relation.init)/0).
+:- pragma obsolete((relation.init)/1).
+:- instance (enum.enum(relation.relation_key)).
+:- func add(relation.relation(T), relation.relation_key, relation.relation_key) = relation.relation(T).
+:- pred add(relation.relation(T), relation.relation_key, relation.relation_key, relation.relation(T)).
+:- mode add((builtin.in), (builtin.in), (builtin.in), (builtin.out)) is det.
+:- func add_assoc_list(relation.relation(T), assoc_list.assoc_list(relation.relation_key, relation.relation_key)) = relation.relation(T).
+:- pred add_assoc_list(relation.relation(T), assoc_list.assoc_list(relation.relation_key, relation.relation_key), relation.relation(T)).
+:- mode add_assoc_list((builtin.in), (builtin.in), (builtin.out)) is det.
+:- pred add_element(relation.relation(T), T, relation.relation_key, relation.relation(T)).
+:- mode add_element((builtin.in), (builtin.in), (builtin.out), (builtin.out)) is det.
+:- func add_values(relation.relation(T), T, T) = relation.relation(T).
+:- pred add_values(relation.relation(T), T, T, relation.relation(T)).
+:- mode add_values((builtin.in), (builtin.in), (builtin.in), (builtin.out)) is det.
+:- func atsort(relation.relation(T)) = list.list(set.set(T)).
+:- pred atsort(relation.relation(T), list.list(set.set(T))).
+:- mode atsort((builtin.in), (builtin.out)) is det.
+:- func cliques(relation.relation(T)) = set.set(set.set(relation.relation_key)).
+:- pred cliques(relation.relation(T), set.set(set.set(relation.relation_key))).
+:- mode cliques((builtin.in), (builtin.out)) is det.
+:- func components(relation.relation(T)) = set.set(set.set(relation.relation_key)).
+:- pred components(relation.relation(T), set.set(set.set(relation.relation_key))).
+:- mode components((builtin.in), (builtin.out)) is det.
+:- func compose(relation.relation(T), relation.relation(T)) = relation.relation(T).
+:- pred compose(relation.relation(T), relation.relation(T), relation.relation(T)).
+:- mode compose((builtin.in), (builtin.in), (builtin.out)) is det.
+:- func dfs(relation.relation(T), relation.relation_key) = list.list(relation.relation_key).
+:- pred dfs(relation.relation(T), relation.relation_key, list.list(relation.relation_key)).
+:- mode dfs((builtin.in), (builtin.in), (builtin.out)) is det.
+:- func dfs(relation.relation(T)) = list.list(relation.relation_key).
+:- pred dfs(relation.relation(T), list.list(relation.relation_key)).
+:- mode dfs((builtin.in), (builtin.out)) is det.
+:- pred dfs(relation.relation(T), relation.relation_key, relation.relation_key_set, relation.relation_key_set, list.list(relation.relation_key)).
+:- mode dfs((builtin.in), (builtin.in), (builtin.in), (builtin.out), (builtin.out)) is det.
+:- func dfsrev(relation.relation(T), relation.relation_key) = list.list(relation.relation_key).
+:- pred dfsrev(relation.relation(T), relation.relation_key, list.list(relation.relation_key)).
+:- mode dfsrev((builtin.in), (builtin.in), (builtin.out)) is det.
+:- func dfsrev(relation.relation(T)) = list.list(relation.relation_key).
+:- pred dfsrev(relation.relation(T), list.list(relation.relation_key)).
+:- mode dfsrev((builtin.in), (builtin.out)) is det.
+:- pred dfsrev(relation.relation(T), relation.relation_key, relation.relation_key_set, relation.relation_key_set, list.list(relation.relation_key)).
+:- mode dfsrev((builtin.in), (builtin.in), (builtin.in), (builtin.out), (builtin.out)) is det.
+:- func domain(relation.relation(T)) = set.set(T).
+:- pred domain(relation.relation(T), set.set(T)).
+:- mode domain((builtin.in), (builtin.out)) is det.
+:- func from_assoc_list(assoc_list.assoc_list(T, T)) = relation.relation(T).
+:- pred from_assoc_list(assoc_list.assoc_list(T, T), relation.relation(T)).
+:- mode from_assoc_list((builtin.in), (builtin.out)) is det.
+:- func init = relation.relation(T).
+:- pred init(relation.relation(T)).
+:- mode init((builtin.out)) is det.
+:- func inverse(relation.relation(T)) = relation.relation(T).
+:- pred inverse(relation.relation(T), relation.relation(T)).
+:- mode inverse((builtin.in), (builtin.out)) is det.
+:- pred is_dag(relation.relation(T)).
+:- mode is_dag((builtin.in)) is semidet.
+:- pred lookup(relation.relation(T), relation.relation_key, relation.relation_key).
+:- mode lookup((builtin.in), (builtin.in), (builtin.out)) is nondet.
+:- mode lookup((builtin.in), (builtin.in), (builtin.in)) is semidet.
+:- func lookup_element(relation.relation(T), T) = relation.relation_key.
+:- pred lookup_element(relation.relation(T), T, relation.relation_key).
+:- mode lookup_element((builtin.in), (builtin.in), (builtin.out)) is det.
+:- func lookup_from(relation.relation(T), relation.relation_key) = set.set(relation.relation_key).
+:- pred lookup_from(relation.relation(T), relation.relation_key, set.set(relation.relation_key)).
+:- mode lookup_from((builtin.in), (builtin.in), (builtin.out)) is det.
+:- func lookup_key(relation.relation(T), relation.relation_key) = T.
+:- pred lookup_key(relation.relation(T), relation.relation_key, T).
+:- mode lookup_key((builtin.in), (builtin.in), (builtin.out)) is det.
+:- func lookup_key_set_from(relation.relation(T), relation.relation_key) = relation.relation_key_set.
+:- pred lookup_key_set_from(relation.relation(T), relation.relation_key, relation.relation_key_set).
+:- mode lookup_key_set_from((builtin.in), (builtin.in), (builtin.out)) is det.
+:- func lookup_key_set_to(relation.relation(T), relation.relation_key) = relation.relation_key_set.
+:- pred lookup_key_set_to(relation.relation(T), relation.relation_key, relation.relation_key_set).
+:- mode lookup_key_set_to((builtin.in), (builtin.in), (builtin.out)) is det.
+:- func lookup_to(relation.relation(T), relation.relation_key) = set.set(relation.relation_key).
+:- pred lookup_to(relation.relation(T), relation.relation_key, set.set(relation.relation_key)).
+:- mode lookup_to((builtin.in), (builtin.in), (builtin.out)) is det.
+:- func reduced(relation.relation(T)) = relation.relation(set.set(T)).
+:- pred reduced(relation.relation(T), relation.relation(set.set(T))).
+:- mode reduced((builtin.in), (builtin.out)) is det.
+:- func remove(relation.relation(T), relation.relation_key, relation.relation_key) = relation.relation(T).
+:- pred remove(relation.relation(T), relation.relation_key, relation.relation_key, relation.relation(T)).
+:- mode remove((builtin.in), (builtin.in), (builtin.in), (builtin.out)) is det.
+:- func remove_assoc_list(relation.relation(T), assoc_list.assoc_list(relation.relation_key, relation.relation_key)) = relation.relation(T).
+:- pred remove_assoc_list(relation.relation(T), assoc_list.assoc_list(relation.relation_key, relation.relation_key), relation.relation(T)).
+:- mode remove_assoc_list((builtin.in), (builtin.in), (builtin.out)) is det.
+:- pred reverse_lookup(relation.relation(T), relation.relation_key, relation.relation_key).
+:- mode reverse_lookup((builtin.in), (builtin.out), (builtin.in)) is nondet.
+:- mode reverse_lookup((builtin.in), (builtin.in), (builtin.in)) is semidet.
+:- func rtc(relation.relation(T)) = relation.relation(T).
+:- pred rtc(relation.relation(T), relation.relation(T)).
+:- mode rtc((builtin.in), (builtin.out)) is det.
+:- func sc(relation.relation(T)) = relation.relation(T).
+:- pred sc(relation.relation(T), relation.relation(T)).
+:- mode sc((builtin.in), (builtin.out)) is det.
+:- pred search_element(relation.relation(T), T, relation.relation_key).
+:- mode search_element((builtin.in), (builtin.in), (builtin.out)) is semidet.
+:- pred search_key(relation.relation(T), relation.relation_key, T).
+:- mode search_key((builtin.in), (builtin.in), (builtin.out)) is semidet.
+:- func tc(relation.relation(T)) = relation.relation(T).
+:- pred tc(relation.relation(T), relation.relation(T)).
+:- mode tc((builtin.in), (builtin.out)) is det.
+:- func to_assoc_list(relation.relation(T)) = assoc_list.assoc_list(T, T).
+:- pred to_assoc_list(relation.relation(T), assoc_list.assoc_list(T, T)).
+:- mode to_assoc_list((builtin.in), (builtin.out)) is det.
+:- func to_key_assoc_list(relation.relation(T)) = assoc_list.assoc_list(relation.relation_key, relation.relation_key).
+:- pred to_key_assoc_list(relation.relation(T), assoc_list.assoc_list(relation.relation_key, relation.relation_key)).
+:- mode to_key_assoc_list((builtin.in), (builtin.out)) is det.
+:- pred traverse(relation.relation(K), pred(K, T, T), pred(K, K, T, T), T, T).
+:- mode traverse((builtin.in), (pred((builtin.in), (builtin.di), (builtin.uo)) is det), (pred((builtin.in), (builtin.in), (builtin.di), (builtin.uo)) is det), (builtin.di), (builtin.uo)) is det.
+:- mode traverse((builtin.in), (pred((builtin.in), (builtin.in), (builtin.out)) is det), (pred((builtin.in), (builtin.in), (builtin.in), (builtin.out)) is det), (builtin.in), (builtin.out)) is det.
+:- pred tsort(relation.relation(T), list.list(T)).
+:- mode tsort((builtin.in), (builtin.out)) is semidet.

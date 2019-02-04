@@ -1,0 +1,16 @@
+:- module (erl_backend.elds).
+:- interface.
+:- type elds.
+:- type elds_binop.
+:- type elds_body.
+:- type elds_call_target.
+:- type elds_case.
+:- type elds_catch.
+:- type elds_clause.
+:- type elds_defn.
+:- type elds_expr.
+:- type elds_foreign_export_defn.
+:- type elds_rtti_defn.
+:- type elds_rtti_id.
+:- type elds_term.
+:- type elds_unop.
