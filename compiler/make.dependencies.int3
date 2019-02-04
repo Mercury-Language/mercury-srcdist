@@ -1,0 +1,17 @@
+:- module (make.dependencies).
+:- interface.
+:- import_module enum.
+:- type cached_direct_imports.
+:- type cached_foreign_imports.
+:- type cached_transitive_dependencies.
+:- type dependencies_result.
+:- type dependency_file.
+:- type dependency_file_index.
+:- type module_index.
+:- type deps_set(T).
+:- type find_module_deps(T).
+:- type find_module_deps_plain_set(T).
+:- inst (find_module_deps) == (pred(in, in, out, out, in, out, di, uo) is det).
+:- inst (find_module_deps_plain_set) == (pred(in, in, out, out, in, out, di, uo) is det).
+:- instance (enum(make.dependencies.dependency_file_index)).
+:- instance (enum(make.dependencies.module_index)).

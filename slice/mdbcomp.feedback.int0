@@ -1,0 +1,80 @@
+:- module (mdbcomp.feedback).
+:- interface.
+:- include_module ((mdbcomp.feedback).automatic_parallelism).
+:- import_module ((mdbcomp.feedback).automatic_parallelism).
+:- import_module (mdbcomp.program_representation).
+:- import_module assoc_list.
+:- import_module io.
+:- import_module list.
+:- type feedback_info.
+:- type feedback_data
+	--->	feedback_data_calls_above_threshold_sorted(((mdbcomp.feedback).threshold) :: int, ((mdbcomp.feedback).stat_measure) :: mdbcomp.feedback.automatic_parallelism.stat_measure, ((mdbcomp.feedback).calls) :: list.list(mdbcomp.program_representation.call_site))
+	;	feedback_data_candidate_parallel_conjunctions(((mdbcomp.feedback).parameters) :: mdbcomp.feedback.automatic_parallelism.candidate_par_conjunctions_params, ((mdbcomp.feedback).conjunctions) :: assoc_list.assoc_list(mdbcomp.program_representation.string_proc_label, mdbcomp.feedback.automatic_parallelism.candidate_par_conjunctions_proc)).
+:- inst (feedback_data_query) == bound(feedback_data_calls_above_threshold_sorted(free, free, free) ; feedback_data_candidate_parallel_conjunctions(free, free)).
+:- pred put_feedback_data(mdbcomp.feedback.feedback_data, mdbcomp.feedback.feedback_info, mdbcomp.feedback.feedback_info).
+:- mode put_feedback_data((builtin.in), (builtin.in), (builtin.out)) is det.
+:- pred get_feedback_data(mdbcomp.feedback.feedback_info, mdbcomp.feedback.feedback_data).
+:- mode get_feedback_data((builtin.in), ((mdbcomp.feedback).feedback_data_query)) is semidet.
+:- mode (feedback_data_query) == (((mdbcomp.feedback).feedback_data_query) >> ground).
+:- pred get_all_feedback_data(mdbcomp.feedback.feedback_info, list.list(mdbcomp.feedback.feedback_data)).
+:- mode get_all_feedback_data((builtin.in), (builtin.out)) is det.
+:- func get_feedback_program_name(mdbcomp.feedback.feedback_info) = string.
+:- pred read_feedback_file(string, mdbcomp.feedback.feedback_read_result(mdbcomp.feedback.feedback_info), io.io, io.io).
+:- mode read_feedback_file((builtin.in), (builtin.out), (builtin.di), (builtin.uo)) is det.
+:- type feedback_read_result(T)
+	--->	ok(T)
+	;	error(mdbcomp.feedback.feedback_read_error).
+:- type feedback_read_error
+	--->	open_error(io.error)
+	;	read_error(io.error)
+	;	parse_error(((mdbcomp.feedback).fre_pe_message) :: string, ((mdbcomp.feedback).fre_pe_line_no) :: int)
+	;	unexpected_eof 
+	;	incorrect_version(string)
+	;	incorrect_first_line 
+	;	incorrect_program_name(((mdbcomp.feedback).fre_ipn_expected) :: string, ((mdbcomp.feedback).fre_ipn_got) :: string).
+:- pred read_error_message_string(string, mdbcomp.feedback.feedback_read_error, string).
+:- mode read_error_message_string((builtin.in), (builtin.in), (builtin.out)) is det.
+:- pred read_or_create(string, string, mdbcomp.feedback.feedback_read_result(mdbcomp.feedback.feedback_info), io.io, io.io).
+:- mode read_or_create((builtin.in), (builtin.in), (builtin.out), (builtin.di), (builtin.uo)) is det.
+:- func init_feedback_info(string) = mdbcomp.feedback.feedback_info.
+:- pred write_feedback_file(string, string, mdbcomp.feedback.feedback_info, mdbcomp.feedback.feedback_write_result, io.io, io.io).
+:- mode write_feedback_file((builtin.in), (builtin.in), (builtin.in), (builtin.out), (builtin.di), (builtin.uo)) is det.
+:- type feedback_write_result
+	--->	ok 
+	;	open_error(io.error)
+	;	write_error(io.error).
+:- import_module exception.
+:- import_module map.
+:- import_module require.
+:- import_module string.
+:- import_module svmap.
+:- import_module unit.
+:- import_module univ.
+:- type feedback_info
+	--->	feedback_info(((mdbcomp.feedback).fi_program_name) :: string, ((mdbcomp.feedback).fi_map) :: map.map(mdbcomp.feedback.feedback_type, mdbcomp.feedback.feedback_data)).
+:- type feedback_type
+	--->	feedback_type_calls_above_threshold_sorted 
+	;	feedback_type_candidate_parallel_conjunctions .
+:- pred feedback_data_type(mdbcomp.feedback.feedback_type, mdbcomp.feedback.feedback_data).
+:- mode feedback_data_type((builtin.out), builtin.in(((mdbcomp.feedback).feedback_data_query))) is det.
+:- mode feedback_data_type((builtin.out), (builtin.in)) is det.
+:- pred feedback_data_mismatch_error(string, mdbcomp.feedback.feedback_type, mdbcomp.feedback.feedback_data).
+:- mode feedback_data_mismatch_error((builtin.in), (builtin.in), (builtin.in)) is erroneous.
+:- pred maybe_read(pred(A, mdbcomp.feedback.feedback_read_result(B), io.io, io.io), mdbcomp.feedback.feedback_read_result(A), mdbcomp.feedback.feedback_read_result(B), io.io, io.io).
+:- mode maybe_read(builtin.in((pred((builtin.in), (builtin.out), (builtin.di), (builtin.uo)) is det)), (builtin.in), (builtin.out), (builtin.di), (builtin.uo)) is det.
+:- pred read_check_line(string, mdbcomp.feedback.feedback_read_error, io.input_stream, unit.unit, mdbcomp.feedback.feedback_read_result(unit.unit), io.io, io.io).
+:- mode read_check_line((builtin.in), (builtin.in), (builtin.in), (builtin.in), (builtin.out), (builtin.di), (builtin.uo)) is det.
+:- pred read_no_check_line(io.input_stream, unit.unit, mdbcomp.feedback.feedback_read_result(unit.unit), io.io, io.io).
+:- mode read_no_check_line((builtin.in), (builtin.in), (builtin.out), (builtin.di), (builtin.uo)) is det.
+:- pred read_program_name(io.input_stream, unit.unit, mdbcomp.feedback.feedback_read_result(string), io.io, io.io).
+:- mode read_program_name((builtin.in), (builtin.in), (builtin.out), (builtin.di), (builtin.uo)) is det.
+:- pred read_data(io.input_stream, string, mdbcomp.feedback.feedback_read_result(mdbcomp.feedback.feedback_info), io.io, io.io).
+:- mode read_data((builtin.in), (builtin.in), (builtin.out), (builtin.di), (builtin.uo)) is det.
+:- pred det_insert_feedback_data(mdbcomp.feedback.feedback_data, map.map(mdbcomp.feedback.feedback_type, mdbcomp.feedback.feedback_data), map.map(mdbcomp.feedback.feedback_type, mdbcomp.feedback.feedback_data)).
+:- mode det_insert_feedback_data((builtin.in), (builtin.in), (builtin.out)) is det.
+:- pred display_read_error(string, mdbcomp.feedback.feedback_read_error, io.io, io.io).
+:- mode display_read_error((builtin.in), (builtin.in), (builtin.di), (builtin.uo)) is det.
+:- pred write_feedback_file_2(io.output_stream, string, mdbcomp.feedback.feedback_info, unit.unit, io.io, io.io).
+:- mode write_feedback_file_2((builtin.in), (builtin.in), (builtin.in), (builtin.out), (builtin.di), (builtin.uo)) is det.
+:- func feedback_first_line = string.
+:- func feedback_version = string.

@@ -1,0 +1,332 @@
+:- module digraph.
+:- use_module assoc_list, bimap, builtin, enum, int, list, map, pair, private_builtin, require, set, sparse_bitset, svmap, svset.
+:- type digraph.key_set_map(T) == tree234.tree234(int, sparse_bitset.sparse_bitset(digraph.digraph_key(T))).
+:- type digraph.key_map(T) == tree234.tree234(int, digraph.digraph_key(T)).
+:- type digraph.digraph_key(T)
+	--->	digraph_key(int).
+:- type digraph.digraph(T)
+	--->	digraph((digraph.next_key) :: int, (digraph.vertex_map) :: bimap.bimap(T, digraph.digraph_key(T)), (digraph.fwd_map) :: tree234.tree234(int, sparse_bitset.sparse_bitset(digraph.digraph_key(T))), (digraph.bwd_map) :: tree234.tree234(int, sparse_bitset.sparse_bitset(digraph.digraph_key(T)))).
+:- type digraph.clique_map(T) == tree234.tree234(digraph.digraph_key(T), digraph.digraph_key(set_ordlist.set_ordlist(T))).
+:- instance (enum.enum(digraph.digraph_key(T))).
+:- pred digraph.to_key_assoc_list_2(tree234.tree234(int, sparse_bitset.sparse_bitset(digraph.digraph_key(T_1))), list.list(int), list.list(pair.pair(digraph.digraph_key(T_1), digraph.digraph_key(T_1))), list.list(pair.pair(digraph.digraph_key(T_1), digraph.digraph_key(T_1)))).
+:- mode digraph.to_key_assoc_list_2((builtin.in), (builtin.in), (builtin.in), (builtin.out)) is det.
+:- pred digraph.dfs_2(digraph.digraph(T_1), digraph.digraph_key(T_1), sparse_bitset.sparse_bitset(digraph.digraph_key(T_1)), sparse_bitset.sparse_bitset(digraph.digraph_key(T_1)), list.list(digraph.digraph_key(T_1)), list.list(digraph.digraph_key(T_1))).
+:- mode digraph.dfs_2((builtin.in), (builtin.in), (builtin.in), (builtin.out), (builtin.in), (builtin.out)) is det.
+:- pred digraph.keys(digraph.digraph(T_1), list.list(digraph.digraph_key(T_1))).
+:- mode digraph.keys((builtin.in), (builtin.out)) is det.
+:- pred digraph.traverse_2(list.list(digraph.digraph_key(T_1)), digraph.digraph(T_1), pred(T_1, A_2, A_2), pred(T_1, T_1, A_2, A_2), A_2, A_2).
+:- mode digraph.traverse_2((builtin.in), (builtin.in), (pred((builtin.in), (builtin.di), (builtin.uo)) is det), (pred((builtin.in), (builtin.in), (builtin.di), (builtin.uo)) is det), (builtin.di), (builtin.uo)) is det.
+:- mode digraph.traverse_2((builtin.in), (builtin.in), (pred((builtin.in), (builtin.in), (builtin.out)) is det), (pred((builtin.in), (builtin.in), (builtin.in), (builtin.out)) is det), (builtin.in), (builtin.out)) is det.
+:- pred digraph.traverse_children(list.list(digraph.digraph_key(T_1)), T_1, digraph.digraph(T_1), pred(T_1, T_1, A_2, A_2), A_2, A_2).
+:- mode digraph.traverse_children((builtin.in), (builtin.in), (builtin.in), (pred((builtin.in), (builtin.in), (builtin.di), (builtin.uo)) is det), (builtin.di), (builtin.uo)) is det.
+:- mode digraph.traverse_children((builtin.in), (builtin.in), (builtin.in), (pred((builtin.in), (builtin.in), (builtin.in), (builtin.out)) is det), (builtin.in), (builtin.out)) is det.
+digraph.init = G_2 :-
+    digraph.init(G_2).
+digraph.init(digraph.digraph(V_5, VMap_2, FwdMap_3, BwdMap_4)) :-
+    V_5 = 0 : int,
+    bimap.init(VMap_2),
+    map.init(FwdMap_3),
+    map.init(BwdMap_4).
+digraph.search_key(G_4, Vertex_5, Key_6) :-
+    G_4 = digraph.digraph(V_8, V_7, V_9, V_10) : digraph.digraph(T_1),
+    bimap.search(V_7, Vertex_5, Key_6).
+digraph.lookup_key(G_4, Vertex_5) = Key_6 :-
+    digraph.lookup_key(G_4, Vertex_5, Key_6).
+digraph.lookup_vertex(G_4, Key_5) = Vertex_6 :-
+    digraph.lookup_vertex(G_4, Key_5, Vertex_6).
+digraph.add_edge(X_5, Y_6, STATE_VARIABLE_G_0_8) = STATE_VARIABLE_G_9 :-
+    digraph.add_edge(X_5, Y_6, STATE_VARIABLE_G_0_8, STATE_VARIABLE_G_9).
+digraph.add_vertices_and_edge(VX_5, VY_6, STATE_VARIABLE_G_0_8) = STATE_VARIABLE_G_9 :-
+    digraph.add_vertices_and_edge(VX_5, VY_6, STATE_VARIABLE_G_0_8, STATE_VARIABLE_G_9).
+digraph.add_vertices_and_edge(VX_5, VY_6, STATE_VARIABLE_G_0_10, STATE_VARIABLE_G_11) :-
+    digraph.add_vertex(VX_5, X_8, STATE_VARIABLE_G_0_10, STATE_VARIABLE_G_12_12),
+    digraph.add_vertex(VY_6, Y_9, STATE_VARIABLE_G_12_12, STATE_VARIABLE_G_13_13),
+    digraph.add_edge(X_8, Y_9, STATE_VARIABLE_G_13_13, STATE_VARIABLE_G_11).
+digraph.add_vertex_pair(Edge_4, STATE_VARIABLE_G_0_6) = STATE_VARIABLE_G_7 :-
+    digraph.add_vertex_pair(Edge_4, STATE_VARIABLE_G_0_6, STATE_VARIABLE_G_7).
+digraph.add_vertex_pair(pair.(VX_4 - VY_5), STATE_VARIABLE_G_0_7, STATE_VARIABLE_G_8) :-
+    digraph.add_vertices_and_edge(VX_4, VY_5, STATE_VARIABLE_G_0_7, STATE_VARIABLE_G_8).
+digraph.add_assoc_list(Edges_4, STATE_VARIABLE_G_0_6) = STATE_VARIABLE_G_7 :-
+    digraph.add_assoc_list(Edges_4, STATE_VARIABLE_G_0_6, STATE_VARIABLE_G_7).
+digraph.delete_edge(X_5, Y_6, STATE_VARIABLE_G_0_8) = STATE_VARIABLE_G_9 :-
+    digraph.delete_edge(X_5, Y_6, STATE_VARIABLE_G_0_8, STATE_VARIABLE_G_9).
+digraph.delete_assoc_list(Edges_4, STATE_VARIABLE_G_0_6) = STATE_VARIABLE_G_7 :-
+    digraph.delete_assoc_list(Edges_4, STATE_VARIABLE_G_0_6, STATE_VARIABLE_G_7).
+digraph.is_edge(G_4, digraph.digraph_key(XI_5), Y_6) :-
+    G_4 = digraph.digraph(V_9, V_10, V_8, V_11) : digraph.digraph(T_1),
+    map.search(V_8, XI_5, YSet_7),
+    sparse_bitset.member(Y_6, YSet_7).
+digraph.is_edge_rev(G_4, X_5, digraph.digraph_key(YI_6)) :-
+    G_4 = digraph.digraph(V_9, V_10, V_11, V_8) : digraph.digraph(T_1),
+    map.search(V_8, YI_6, XSet_7),
+    sparse_bitset.member(X_5, XSet_7).
+digraph.lookup_from(G_4, X_5) = Ys_6 :-
+    digraph.lookup_from(G_4, X_5, Ys_6).
+digraph.lookup_from(G_4, X_5, HeadVar__3_3) :-
+    HeadVar__3_3 = sparse_bitset.to_set(Ys_6),
+    digraph.lookup_key_set_from(G_4, X_5, Ys_6).
+digraph.lookup_key_set_from(G_4, X_5) = Ys_6 :-
+    digraph.lookup_key_set_from(G_4, X_5, Ys_6).
+digraph.lookup_to(G_4, Y_5) = Xs_6 :-
+    digraph.lookup_to(G_4, Y_5, Xs_6).
+digraph.lookup_to(G_4, Y_5, HeadVar__3_3) :-
+    HeadVar__3_3 = sparse_bitset.to_set(Xs_6),
+    digraph.lookup_key_set_to(G_4, Y_5, Xs_6).
+digraph.lookup_key_set_to(G_4, Y_5) = Xs_6 :-
+    digraph.lookup_key_set_to(G_4, Y_5, Xs_6).
+digraph.to_assoc_list(G_3) = List_4 :-
+    digraph.to_assoc_list(G_3, List_4).
+digraph.to_key_assoc_list(G_3) = List_4 :-
+    digraph.to_key_assoc_list(G_3, List_4).
+digraph.to_key_assoc_list(G_3, List_4) :-
+    G_3 = digraph.digraph(V_8, V_9, Fwd_5, V_10) : digraph.digraph(T_1),
+    map.keys(Fwd_5, FwdKeys_6),
+    V_7 = list.[] : list.list(pair.pair(digraph.digraph_key(T_1), digraph.digraph_key(T_1))),
+    digraph.to_key_assoc_list_2(Fwd_5, FwdKeys_6, V_7, List_4).
+digraph.from_assoc_list(AL_3) = G_4 :-
+    digraph.from_assoc_list(AL_3, G_4).
+digraph.from_assoc_list(AL_3, G_4) :-
+    V_5 = digraph.add_vertex_pair : pred(pair.pair(T_1, T_1), digraph.digraph(T_1), digraph.digraph(T_1)),
+    V_6 = digraph.init,
+    list.foldl(V_5, AL_3, V_6, G_4).
+digraph.dfs(G_4, X_5) = Dfs_6 :-
+    digraph.dfs(G_4, X_5, Dfs_6).
+digraph.dfs(G_4, X_5, Dfs_6) :-
+    digraph.dfsrev(G_4, X_5, DfsRev_7),
+    list.reverse(DfsRev_7, Dfs_6).
+digraph.dfsrev(G_4, X_5) = DfsRev_6 :-
+    digraph.dfsrev(G_4, X_5, DfsRev_6).
+digraph.dfsrev(G_4, X_5, DfsRev_6) :-
+    sparse_bitset.init(Vis0_7),
+    V_9 = list.[] : list.list(digraph.digraph_key(T_1)),
+    digraph.dfs_2(G_4, X_5, Vis0_7, V_8, V_9, DfsRev_6).
+digraph.dfs(G_3) = Dfs_4 :-
+    digraph.dfs(G_3, Dfs_4).
+digraph.dfs(G_3, Dfs_4) :-
+    digraph.dfsrev(G_3, DfsRev_5),
+    list.reverse(DfsRev_5, Dfs_4).
+digraph.dfsrev(G_3) = DfsRev_4 :-
+    digraph.dfsrev(G_3, DfsRev_4).
+digraph.dfs(G_6, X_7, STATE_VARIABLE_Visited_0_11, STATE_VARIABLE_Visited_12, Dfs_9) :-
+    V_14 = list.[] : list.list(digraph.digraph_key(T_1)),
+    digraph.dfs_2(G_6, X_7, STATE_VARIABLE_Visited_0_11, STATE_VARIABLE_Visited_12, V_14, DfsRev_10),
+    list.reverse(DfsRev_10, Dfs_9).
+digraph.dfsrev(G_6, X_7, STATE_VARIABLE_Visited_0_10, STATE_VARIABLE_Visited_11, DfsRev_9) :-
+    V_13 = list.[] : list.list(digraph.digraph_key(T_1)),
+    digraph.dfs_2(G_6, X_7, STATE_VARIABLE_Visited_0_10, STATE_VARIABLE_Visited_11, V_13, DfsRev_9).
+digraph.vertices(G_3) = Vs_4 :-
+    digraph.vertices(G_3, Vs_4).
+digraph.vertices(G_3, Vs_4) :-
+    G_3 = digraph.digraph(V_7, V_6, V_8, V_9) : digraph.digraph(T_1),
+    bimap.ordinates(V_6, VsList_5),
+    set.sorted_list_to_set(VsList_5, Vs_4).
+digraph.inverse(G_3) = InvG_4 :-
+    digraph.inverse(G_3, InvG_4).
+digraph.inverse(G_3, InvG_4) :-
+    G_3 = digraph.digraph(Next_5, VMap_6, Fwd_7, Bwd_8) : digraph.digraph(T_1),
+    InvG_4 = digraph.digraph(Next_5, VMap_6, Bwd_8, Fwd_7) : digraph.digraph(T_1).
+digraph.compose(G1_4, G2_5) = Comp_6 :-
+    digraph.compose(G1_4, G2_5, Comp_6).
+digraph.components(G_3) = Components_4 :-
+    digraph.components(G_3, Components_4).
+digraph.cliques(G_3) = Cliques_4 :-
+    digraph.cliques(G_3, Cliques_4).
+digraph.reduced(G_3) = R_4 :-
+    digraph.reduced(G_3, R_4).
+digraph.reduced(G_3, R_4) :-
+    digraph.reduced(G_3, R_4, V_5).
+digraph.atsort(G_3) = ATsort_4 :-
+    digraph.atsort(G_3, ATsort_4).
+digraph.sc(G_3) = Sc_4 :-
+    digraph.sc(G_3, Sc_4).
+digraph.sc(G_3, Sc_4) :-
+    digraph.inverse(G_3, GInv_5),
+    digraph.to_key_assoc_list(GInv_5, GInvList_6),
+    digraph.add_assoc_list(GInvList_6, G_3, Sc_4).
+digraph.tc(G_3) = Tc_4 :-
+    digraph.tc(G_3, Tc_4).
+digraph.rtc(G_3) = Rtc_4 :-
+    digraph.rtc(G_3, Rtc_4).
+digraph.traverse(G_6, ProcessVertex_7, ProcessEdge_8, STATE_VARIABLE_Acc_0_11, STATE_VARIABLE_Acc_12) :-
+    digraph.keys(G_6, Keys_10),
+    digraph.traverse_2(Keys_10, G_6, ProcessVertex_7, ProcessEdge_8, STATE_VARIABLE_Acc_0_11, STATE_VARIABLE_Acc_12).
+digraph.keys(G_3, Keys_4) :-
+    G_3 = digraph.digraph(V_6, V_5, V_7, V_8) : digraph.digraph(T_1),
+    bimap.coordinates(V_5, Keys_4).
+digraph.traverse_2(list.[], V_7, V_8, V_9, STATE_VARIABLE_Acc_0_11, STATE_VARIABLE_Acc_12) :-
+    STATE_VARIABLE_Acc_12 = STATE_VARIABLE_Acc_0_11.
+digraph.traverse_2(list.[X_13 | Xs_14], G_15, ProcessVertex_16, ProcessEdge_17, STATE_VARIABLE_Acc_0_21, STATE_VARIABLE_Acc_22) :-
+    VX_19 = digraph.lookup_vertex(G_15, X_13),
+    Children_20 = set.to_sorted_list(V_23),
+    V_23 = digraph.lookup_from(G_15, X_13),
+    call(ProcessVertex_16, VX_19, STATE_VARIABLE_Acc_0_21, STATE_VARIABLE_Acc_24_24),
+    digraph.traverse_children(Children_20, VX_19, G_15, ProcessEdge_17, STATE_VARIABLE_Acc_24_24, STATE_VARIABLE_Acc_25_25),
+    digraph.traverse_2(Xs_14, G_15, ProcessVertex_16, ProcessEdge_17, STATE_VARIABLE_Acc_25_25, STATE_VARIABLE_Acc_22).
+digraph.traverse_children(list.[], V_7, V_8, V_9, STATE_VARIABLE_Acc_0_11, STATE_VARIABLE_Acc_12) :-
+    STATE_VARIABLE_Acc_12 = STATE_VARIABLE_Acc_0_11.
+digraph.traverse_children(list.[X_13 | Xs_14], Parent_15, G_16, ProcessEdge_17, STATE_VARIABLE_Acc_0_20, STATE_VARIABLE_Acc_21) :-
+    Child_19 = digraph.lookup_vertex(G_16, X_13),
+    call(ProcessEdge_17, Parent_15, Child_19, STATE_VARIABLE_Acc_0_20, STATE_VARIABLE_Acc_22_22),
+    digraph.traverse_children(Xs_14, Parent_15, G_16, ProcessEdge_17, STATE_VARIABLE_Acc_22_22, STATE_VARIABLE_Acc_21).
+:- pragma exceptions(function, (digraph.init), 1, 0, may_throw(user_exception)).
+:- pragma exceptions(predicate, (digraph.init), 1, 0, may_throw(user_exception)).
+:- pragma exceptions(predicate, (digraph.add_vertex), 4, 0, may_throw(user_exception)).
+:- pragma exceptions(predicate, (digraph.search_key), 3, 0, may_throw(user_exception)).
+:- pragma exceptions(function, (digraph.lookup_key), 3, 0, may_throw(user_exception)).
+:- pragma exceptions(predicate, (digraph.lookup_key), 3, 0, may_throw(user_exception)).
+:- pragma exceptions(function, (digraph.lookup_vertex), 3, 0, may_throw(user_exception)).
+:- pragma exceptions(predicate, (digraph.lookup_vertex), 3, 0, may_throw(user_exception)).
+:- pragma exceptions(function, (digraph.add_edge), 4, 0, may_throw(user_exception)).
+:- pragma exceptions(predicate, (digraph.add_edge), 4, 0, may_throw(user_exception)).
+:- pragma exceptions(function, (digraph.add_vertices_and_edge), 4, 0, may_throw(user_exception)).
+:- pragma exceptions(predicate, (digraph.add_vertices_and_edge), 4, 0, may_throw(user_exception)).
+:- pragma exceptions(function, (digraph.add_vertex_pair), 3, 0, may_throw(user_exception)).
+:- pragma exceptions(predicate, (digraph.add_vertex_pair), 3, 0, may_throw(user_exception)).
+:- pragma exceptions(function, (digraph.add_assoc_list), 3, 0, may_throw(user_exception)).
+:- pragma exceptions(predicate, (digraph.add_assoc_list), 3, 0, may_throw(user_exception)).
+:- pragma exceptions(function, (digraph.delete_edge), 4, 0, may_throw(user_exception)).
+:- pragma exceptions(predicate, (digraph.delete_edge), 4, 0, may_throw(user_exception)).
+:- pragma exceptions(function, (digraph.delete_assoc_list), 3, 0, may_throw(user_exception)).
+:- pragma exceptions(predicate, (digraph.delete_assoc_list), 3, 0, may_throw(user_exception)).
+:- pragma exceptions(predicate, (digraph.is_edge), 3, 0, may_throw(user_exception)).
+:- pragma exceptions(predicate, (digraph.is_edge), 3, 1, may_throw(user_exception)).
+:- pragma exceptions(predicate, (digraph.is_edge_rev), 3, 0, may_throw(user_exception)).
+:- pragma exceptions(predicate, (digraph.is_edge_rev), 3, 1, may_throw(user_exception)).
+:- pragma exceptions(function, (digraph.lookup_from), 3, 0, may_throw(user_exception)).
+:- pragma exceptions(predicate, (digraph.lookup_from), 3, 0, may_throw(user_exception)).
+:- pragma exceptions(function, (digraph.lookup_key_set_from), 3, 0, may_throw(user_exception)).
+:- pragma exceptions(predicate, (digraph.lookup_key_set_from), 3, 0, may_throw(user_exception)).
+:- pragma exceptions(function, (digraph.lookup_to), 3, 0, may_throw(user_exception)).
+:- pragma exceptions(predicate, (digraph.lookup_to), 3, 0, may_throw(user_exception)).
+:- pragma exceptions(function, (digraph.lookup_key_set_to), 3, 0, may_throw(user_exception)).
+:- pragma exceptions(predicate, (digraph.lookup_key_set_to), 3, 0, may_throw(user_exception)).
+:- pragma exceptions(function, (digraph.to_assoc_list), 2, 0, may_throw(user_exception)).
+:- pragma exceptions(predicate, (digraph.to_assoc_list), 2, 0, may_throw(user_exception)).
+:- pragma exceptions(function, (digraph.to_key_assoc_list), 2, 0, may_throw(user_exception)).
+:- pragma exceptions(predicate, (digraph.to_key_assoc_list), 2, 0, may_throw(user_exception)).
+:- pragma exceptions(function, (digraph.from_assoc_list), 2, 0, may_throw(user_exception)).
+:- pragma exceptions(predicate, (digraph.from_assoc_list), 2, 0, may_throw(user_exception)).
+:- pragma exceptions(function, (digraph.dfs), 3, 0, may_throw(user_exception)).
+:- pragma exceptions(predicate, (digraph.dfs), 3, 0, may_throw(user_exception)).
+:- pragma exceptions(function, (digraph.dfsrev), 3, 0, may_throw(user_exception)).
+:- pragma exceptions(predicate, (digraph.dfsrev), 3, 0, may_throw(user_exception)).
+:- pragma exceptions(function, (digraph.dfs), 2, 0, may_throw(user_exception)).
+:- pragma exceptions(predicate, (digraph.dfs), 2, 0, may_throw(user_exception)).
+:- pragma exceptions(function, (digraph.dfsrev), 2, 0, may_throw(user_exception)).
+:- pragma exceptions(predicate, (digraph.dfsrev), 2, 0, may_throw(user_exception)).
+:- pragma exceptions(predicate, (digraph.dfs), 5, 0, may_throw(user_exception)).
+:- pragma exceptions(predicate, (digraph.dfsrev), 5, 0, may_throw(user_exception)).
+:- pragma exceptions(function, (digraph.vertices), 2, 0, may_throw(user_exception)).
+:- pragma exceptions(predicate, (digraph.vertices), 2, 0, may_throw(user_exception)).
+:- pragma exceptions(function, (digraph.inverse), 2, 0, will_not_throw).
+:- pragma exceptions(predicate, (digraph.inverse), 2, 0, will_not_throw).
+:- pragma exceptions(function, (digraph.compose), 3, 0, may_throw(user_exception)).
+:- pragma exceptions(predicate, (digraph.compose), 3, 0, may_throw(user_exception)).
+:- pragma exceptions(predicate, (digraph.is_dag), 1, 0, may_throw(user_exception)).
+:- pragma exceptions(function, (digraph.components), 2, 0, may_throw(user_exception)).
+:- pragma exceptions(predicate, (digraph.components), 2, 0, may_throw(user_exception)).
+:- pragma exceptions(function, (digraph.cliques), 2, 0, may_throw(user_exception)).
+:- pragma exceptions(predicate, (digraph.cliques), 2, 0, may_throw(user_exception)).
+:- pragma exceptions(function, (digraph.reduced), 2, 0, may_throw(user_exception)).
+:- pragma exceptions(predicate, (digraph.reduced), 2, 0, may_throw(user_exception)).
+:- pragma exceptions(predicate, (digraph.reduced), 3, 0, may_throw(user_exception)).
+:- pragma exceptions(predicate, (digraph.tsort), 2, 0, may_throw(user_exception)).
+:- pragma exceptions(function, (digraph.atsort), 2, 0, may_throw(user_exception)).
+:- pragma exceptions(predicate, (digraph.atsort), 2, 0, may_throw(user_exception)).
+:- pragma exceptions(function, (digraph.sc), 2, 0, may_throw(user_exception)).
+:- pragma exceptions(predicate, (digraph.sc), 2, 0, may_throw(user_exception)).
+:- pragma exceptions(function, (digraph.tc), 2, 0, may_throw(user_exception)).
+:- pragma exceptions(predicate, (digraph.tc), 2, 0, may_throw(user_exception)).
+:- pragma exceptions(function, (digraph.rtc), 2, 0, may_throw(user_exception)).
+:- pragma exceptions(predicate, (digraph.rtc), 2, 0, may_throw(user_exception)).
+:- pragma exceptions(predicate, (digraph.traverse), 5, 0, may_throw(user_exception)).
+:- pragma exceptions(predicate, (digraph.traverse), 5, 1, may_throw(user_exception)).
+:- pragma exceptions(predicate, (digraph.to_key_assoc_list_2), 4, 0, may_throw(user_exception)).
+:- pragma exceptions(predicate, (digraph.dfs_2), 6, 0, may_throw(user_exception)).
+:- pragma exceptions(predicate, (digraph.keys), 2, 0, may_throw(user_exception)).
+:- pragma exceptions(predicate, (digraph.traverse_2), 6, 0, may_throw(user_exception)).
+:- pragma exceptions(predicate, (digraph.traverse_2), 6, 1, may_throw(user_exception)).
+:- pragma exceptions(predicate, (digraph.traverse_children), 6, 0, may_throw(user_exception)).
+:- pragma exceptions(predicate, (digraph.traverse_children), 6, 1, may_throw(user_exception)).
+:- pragma termination_info((digraph.init) = (builtin.out), infinite, can_loop).
+:- pragma termination_info(digraph.init((builtin.out)), infinite, can_loop).
+:- pragma termination_info(digraph.add_vertex((builtin.in), (builtin.out), (builtin.in), (builtin.out)), infinite, can_loop).
+:- pragma termination_info(digraph.search_key((builtin.in), (builtin.in), (builtin.out)), infinite, can_loop).
+:- pragma termination_info(digraph.lookup_key((builtin.in), (builtin.in)) = (builtin.out), infinite, can_loop).
+:- pragma termination_info(digraph.lookup_key((builtin.in), (builtin.in), (builtin.out)), infinite, can_loop).
+:- pragma termination_info(digraph.lookup_vertex((builtin.in), (builtin.in)) = (builtin.out), infinite, can_loop).
+:- pragma termination_info(digraph.lookup_vertex((builtin.in), (builtin.in), (builtin.out)), infinite, can_loop).
+:- pragma termination_info(digraph.add_edge((builtin.in), (builtin.in), (builtin.in)) = (builtin.out), infinite, can_loop).
+:- pragma termination_info(digraph.add_edge((builtin.in), (builtin.in), (builtin.in), (builtin.out)), infinite, can_loop).
+:- pragma termination_info(digraph.add_vertices_and_edge((builtin.in), (builtin.in), (builtin.in)) = (builtin.out), infinite, can_loop).
+:- pragma termination_info(digraph.add_vertices_and_edge((builtin.in), (builtin.in), (builtin.in), (builtin.out)), infinite, can_loop).
+:- pragma termination_info(digraph.add_vertex_pair((builtin.in), (builtin.in)) = (builtin.out), infinite, can_loop).
+:- pragma termination_info(digraph.add_vertex_pair((builtin.in), (builtin.in), (builtin.out)), infinite, can_loop).
+:- pragma termination_info(digraph.add_assoc_list((builtin.in), (builtin.in)) = (builtin.out), infinite, can_loop).
+:- pragma termination_info(digraph.add_assoc_list((builtin.in), (builtin.in), (builtin.out)), infinite, can_loop).
+:- pragma termination_info(digraph.delete_edge((builtin.in), (builtin.in), (builtin.in)) = (builtin.out), infinite, can_loop).
+:- pragma termination_info(digraph.delete_edge((builtin.in), (builtin.in), (builtin.in), (builtin.out)), infinite, can_loop).
+:- pragma termination_info(digraph.delete_assoc_list((builtin.in), (builtin.in)) = (builtin.out), infinite, can_loop).
+:- pragma termination_info(digraph.delete_assoc_list((builtin.in), (builtin.in), (builtin.out)), infinite, can_loop).
+:- pragma termination_info(digraph.is_edge((builtin.in), (builtin.in), (builtin.out)), infinite, can_loop).
+:- pragma termination_info(digraph.is_edge((builtin.in), (builtin.in), (builtin.in)), finite(0, [no, no, no, no]), can_loop).
+:- pragma termination_info(digraph.is_edge_rev((builtin.in), (builtin.out), (builtin.in)), infinite, can_loop).
+:- pragma termination_info(digraph.is_edge_rev((builtin.in), (builtin.in), (builtin.in)), finite(0, [no, no, no, no]), can_loop).
+:- pragma termination_info(digraph.lookup_from((builtin.in), (builtin.in)) = (builtin.out), infinite, can_loop).
+:- pragma termination_info(digraph.lookup_from((builtin.in), (builtin.in), (builtin.out)), infinite, can_loop).
+:- pragma termination_info(digraph.lookup_key_set_from((builtin.in), (builtin.in)) = (builtin.out), infinite, can_loop).
+:- pragma termination_info(digraph.lookup_key_set_from((builtin.in), (builtin.in), (builtin.out)), infinite, can_loop).
+:- pragma termination_info(digraph.lookup_to((builtin.in), (builtin.in)) = (builtin.out), infinite, can_loop).
+:- pragma termination_info(digraph.lookup_to((builtin.in), (builtin.in), (builtin.out)), infinite, can_loop).
+:- pragma termination_info(digraph.lookup_key_set_to((builtin.in), (builtin.in)) = (builtin.out), infinite, can_loop).
+:- pragma termination_info(digraph.lookup_key_set_to((builtin.in), (builtin.in), (builtin.out)), infinite, can_loop).
+:- pragma termination_info(digraph.to_assoc_list((builtin.in)) = (builtin.out), infinite, can_loop).
+:- pragma termination_info(digraph.to_assoc_list((builtin.in), (builtin.out)), infinite, can_loop).
+:- pragma termination_info(digraph.to_key_assoc_list((builtin.in)) = (builtin.out), infinite, can_loop).
+:- pragma termination_info(digraph.to_key_assoc_list((builtin.in), (builtin.out)), infinite, can_loop).
+:- pragma termination_info(digraph.from_assoc_list((builtin.in)) = (builtin.out), infinite, can_loop).
+:- pragma termination_info(digraph.from_assoc_list((builtin.in), (builtin.out)), infinite, can_loop).
+:- pragma termination_info(digraph.dfs((builtin.in), (builtin.in)) = (builtin.out), infinite, can_loop).
+:- pragma termination_info(digraph.dfs((builtin.in), (builtin.in), (builtin.out)), infinite, can_loop).
+:- pragma termination_info(digraph.dfsrev((builtin.in), (builtin.in)) = (builtin.out), infinite, can_loop).
+:- pragma termination_info(digraph.dfsrev((builtin.in), (builtin.in), (builtin.out)), infinite, can_loop).
+:- pragma termination_info(digraph.dfs((builtin.in)) = (builtin.out), infinite, can_loop).
+:- pragma termination_info(digraph.dfs((builtin.in), (builtin.out)), infinite, can_loop).
+:- pragma termination_info(digraph.dfsrev((builtin.in)) = (builtin.out), infinite, can_loop).
+:- pragma termination_info(digraph.dfsrev((builtin.in), (builtin.out)), infinite, can_loop).
+:- pragma termination_info(digraph.dfs((builtin.in), (builtin.in), (builtin.in), (builtin.out), (builtin.out)), infinite, can_loop).
+:- pragma termination_info(digraph.dfsrev((builtin.in), (builtin.in), (builtin.in), (builtin.out), (builtin.out)), infinite, can_loop).
+:- pragma termination_info(digraph.vertices((builtin.in)) = (builtin.out), infinite, can_loop).
+:- pragma termination_info(digraph.vertices((builtin.in), (builtin.out)), infinite, can_loop).
+:- pragma termination_info(digraph.inverse((builtin.in)) = (builtin.out), finite(0, [no, yes, no]), cannot_loop).
+:- pragma termination_info(digraph.inverse((builtin.in), (builtin.out)), finite(0, [no, yes, no]), cannot_loop).
+:- pragma termination_info(digraph.compose((builtin.in), (builtin.in)) = (builtin.out), infinite, can_loop).
+:- pragma termination_info(digraph.compose((builtin.in), (builtin.in), (builtin.out)), infinite, can_loop).
+:- pragma termination_info(digraph.is_dag((builtin.in)), infinite, can_loop).
+:- pragma termination_info(digraph.components((builtin.in)) = (builtin.out), infinite, can_loop).
+:- pragma termination_info(digraph.components((builtin.in), (builtin.out)), infinite, can_loop).
+:- pragma termination_info(digraph.cliques((builtin.in)) = (builtin.out), infinite, can_loop).
+:- pragma termination_info(digraph.cliques((builtin.in), (builtin.out)), infinite, can_loop).
+:- pragma termination_info(digraph.reduced((builtin.in)) = (builtin.out), infinite, can_loop).
+:- pragma termination_info(digraph.reduced((builtin.in), (builtin.out)), infinite, can_loop).
+:- pragma termination_info(digraph.reduced((builtin.in), (builtin.out), (builtin.out)), infinite, can_loop).
+:- pragma termination_info(digraph.tsort((builtin.in), (builtin.out)), infinite, can_loop).
+:- pragma termination_info(digraph.atsort((builtin.in)) = (builtin.out), infinite, can_loop).
+:- pragma termination_info(digraph.atsort((builtin.in), (builtin.out)), infinite, can_loop).
+:- pragma termination_info(digraph.sc((builtin.in)) = (builtin.out), infinite, can_loop).
+:- pragma termination_info(digraph.sc((builtin.in), (builtin.out)), infinite, can_loop).
+:- pragma termination_info(digraph.tc((builtin.in)) = (builtin.out), infinite, can_loop).
+:- pragma termination_info(digraph.tc((builtin.in), (builtin.out)), infinite, can_loop).
+:- pragma termination_info(digraph.rtc((builtin.in)) = (builtin.out), infinite, can_loop).
+:- pragma termination_info(digraph.rtc((builtin.in), (builtin.out)), infinite, can_loop).
+:- pragma termination_info(digraph.traverse((builtin.in), (pred((builtin.in), (builtin.di), (builtin.uo)) is det), (pred((builtin.in), (builtin.in), (builtin.di), (builtin.uo)) is det), (builtin.di), (builtin.uo)), infinite, can_loop).
+:- pragma termination_info(digraph.traverse((builtin.in), (pred((builtin.in), (builtin.in), (builtin.out)) is det), (pred((builtin.in), (builtin.in), (builtin.in), (builtin.out)) is det), (builtin.in), (builtin.out)), infinite, can_loop).
+:- pragma termination_info(digraph.to_key_assoc_list_2((builtin.in), (builtin.in), (builtin.in), (builtin.out)), infinite, can_loop).
+:- pragma termination_info(digraph.dfs_2((builtin.in), (builtin.in), (builtin.in), (builtin.out), (builtin.in), (builtin.out)), infinite, can_loop).
+:- pragma termination_info(digraph.keys((builtin.in), (builtin.out)), infinite, can_loop).
+:- pragma termination_info(digraph.traverse_2((builtin.in), (builtin.in), (pred((builtin.in), (builtin.di), (builtin.uo)) is det), (pred((builtin.in), (builtin.in), (builtin.di), (builtin.uo)) is det), (builtin.di), (builtin.uo)), infinite, can_loop).
+:- pragma termination_info(digraph.traverse_2((builtin.in), (builtin.in), (pred((builtin.in), (builtin.in), (builtin.out)) is det), (pred((builtin.in), (builtin.in), (builtin.in), (builtin.out)) is det), (builtin.in), (builtin.out)), infinite, can_loop).
+:- pragma termination_info(digraph.traverse_children((builtin.in), (builtin.in), (builtin.in), (pred((builtin.in), (builtin.in), (builtin.di), (builtin.uo)) is det), (builtin.di), (builtin.uo)), infinite, can_loop).
+:- pragma termination_info(digraph.traverse_children((builtin.in), (builtin.in), (builtin.in), (pred((builtin.in), (builtin.in), (builtin.in), (builtin.out)) is det), (builtin.in), (builtin.out)), infinite, can_loop).
+:- pragma termination_info(digraph.'ClassMethod_for_enum__enum____digraph__digraph_key__arity1______enum__to_int_1'((builtin.in)) = (builtin.out), finite(-1, [no, yes, no]), cannot_loop).
+:- pragma termination_info(digraph.'ClassMethod_for_enum__enum____digraph__digraph_key__arity1______enum__from_int_1'((builtin.in)) = (builtin.out), finite(1, [no, yes, no]), cannot_loop).

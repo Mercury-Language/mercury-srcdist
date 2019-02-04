@@ -1,0 +1,89 @@
+:- module group.
+:- use_module assoc_list, builtin, counter, list, map, pair, private_builtin, require, set.
+:- type group.key == int.
+:- type group.group(T)
+	--->	group((group.key_supply) :: counter.counter, (group.sets) :: tree234.tree234(int, set_ordlist.set_ordlist(T)), (group.elements) :: tree234.tree234(T, int)).
+group.init = G_2 :-
+    group.init(G_2).
+group.insert(G1_4, S_5) = G2_6 :-
+    group.insert(G1_4, S_5, G2_6).
+group.group(G_4, E_5, S_6) :-
+    G_4 = group.group(V_10, V_11, V_8) : group.group(T_1),
+    map.lookup(V_8, E_5, GK_7),
+    G_4 = group.group(V_12, V_9, V_13) : group.group(T_1),
+    map.lookup(V_9, GK_7, S_6).
+group.group(G_4, T_5) = S_6 :-
+    group.group(G_4, T_5, S_6).
+group.to_set(G_3, S_4) :-
+    G_3 = group.group(V_7, V_6, V_8) : group.group(T_1),
+    map.values(V_6, S0_5),
+    set.list_to_set(S0_5, S_4).
+group.to_set(G_3) = SS_4 :-
+    group.to_set(G_3, SS_4).
+group.sets_and_keys(G_3, SKs_4) :-
+    G_3 = group.group(V_7, V_6, V_8) : group.group(T_1),
+    map.to_assoc_list(V_6, SKs0_5),
+    assoc_list.reverse_members(SKs0_5, SKs_4).
+group.sets_and_keys(G_3) = AL_4 :-
+    group.sets_and_keys(G_3, AL_4).
+group.group_key(G_4, E_5, GK_6) :-
+    G_4 = group.group(V_8, V_9, V_7) : group.group(T_1),
+    map.lookup(V_7, E_5, GK_6).
+group.group_key(G_4, T_5) = K_6 :-
+    group.group_key(G_4, T_5, K_6).
+group.key_group(G_4, GK_5, S_6) :-
+    G_4 = group.group(V_8, V_7, V_9) : group.group(T_1),
+    map.lookup(V_7, GK_5, S_6).
+group.key_group(G_4, K_5) = S_6 :-
+    group.key_group(G_4, K_5, S_6).
+group.same_group(G_4, E0_5, E1_6) :-
+    G_4 = group.group(V_9, V_10, Es_7) : group.group(T_1),
+    map.lookup(Es_7, E0_5, GK_8),
+    map.lookup(Es_7, E1_6, GK_8).
+group.largest_group_key(G_3) = K_4 :-
+    group.largest_group_key(G_3, K_4).
+group.group_keys(G_3, Ks_4) :-
+    G_3 = group.group(V_6, V_5, V_7) : group.group(T_1),
+    map.keys(V_5, Ks_4).
+group.group_keys(G_3) = Ks_4 :-
+    group.group_keys(G_3, Ks_4).
+:- pragma exceptions(predicate, (group.init), 1, 0, may_throw(user_exception)).
+:- pragma exceptions(function, (group.init), 1, 0, may_throw(user_exception)).
+:- pragma exceptions(predicate, (group.insert), 3, 0, may_throw(user_exception)).
+:- pragma exceptions(function, (group.insert), 3, 0, may_throw(user_exception)).
+:- pragma exceptions(predicate, (group.group), 3, 0, may_throw(user_exception)).
+:- pragma exceptions(function, (group.group), 3, 0, may_throw(user_exception)).
+:- pragma exceptions(predicate, (group.to_set), 2, 0, may_throw(user_exception)).
+:- pragma exceptions(function, (group.to_set), 2, 0, may_throw(user_exception)).
+:- pragma exceptions(predicate, (group.sets_and_keys), 2, 0, may_throw(user_exception)).
+:- pragma exceptions(function, (group.sets_and_keys), 2, 0, may_throw(user_exception)).
+:- pragma exceptions(predicate, (group.group_key), 3, 0, may_throw(user_exception)).
+:- pragma exceptions(function, (group.group_key), 3, 0, may_throw(user_exception)).
+:- pragma exceptions(predicate, (group.key_group), 3, 0, may_throw(user_exception)).
+:- pragma exceptions(function, (group.key_group), 3, 0, may_throw(user_exception)).
+:- pragma exceptions(predicate, (group.remove_group), 4, 0, may_throw(user_exception)).
+:- pragma exceptions(predicate, (group.same_group), 3, 0, may_throw(user_exception)).
+:- pragma exceptions(predicate, (group.largest_group_key), 2, 0, may_throw(user_exception)).
+:- pragma exceptions(function, (group.largest_group_key), 2, 0, may_throw(user_exception)).
+:- pragma exceptions(predicate, (group.group_keys), 2, 0, may_throw(user_exception)).
+:- pragma exceptions(function, (group.group_keys), 2, 0, may_throw(user_exception)).
+:- pragma termination_info(group.init((builtin.out)), infinite, can_loop).
+:- pragma termination_info((group.init) = (builtin.out), infinite, can_loop).
+:- pragma termination_info(group.insert((builtin.in), (builtin.in), (builtin.out)), infinite, can_loop).
+:- pragma termination_info(group.insert((builtin.in), (builtin.in)) = (builtin.out), infinite, can_loop).
+:- pragma termination_info(group.group((builtin.in), (builtin.in), (builtin.out)), infinite, can_loop).
+:- pragma termination_info(group.group((builtin.in), (builtin.in)) = (builtin.out), infinite, can_loop).
+:- pragma termination_info(group.to_set((builtin.in), (builtin.out)), infinite, can_loop).
+:- pragma termination_info(group.to_set((builtin.in)) = (builtin.out), infinite, can_loop).
+:- pragma termination_info(group.sets_and_keys((builtin.in), (builtin.out)), infinite, can_loop).
+:- pragma termination_info(group.sets_and_keys((builtin.in)) = (builtin.out), infinite, can_loop).
+:- pragma termination_info(group.group_key((builtin.in), (builtin.in), (builtin.out)), infinite, can_loop).
+:- pragma termination_info(group.group_key((builtin.in), (builtin.in)) = (builtin.out), infinite, can_loop).
+:- pragma termination_info(group.key_group((builtin.in), (builtin.in), (builtin.out)), infinite, can_loop).
+:- pragma termination_info(group.key_group((builtin.in), (builtin.in)) = (builtin.out), infinite, can_loop).
+:- pragma termination_info(group.remove_group((builtin.in), (builtin.in), (builtin.out), (builtin.out)), infinite, can_loop).
+:- pragma termination_info(group.same_group((builtin.in), (builtin.in), (builtin.in)), finite(0, [no, no, no, no]), can_loop).
+:- pragma termination_info(group.largest_group_key((builtin.in), (builtin.out)), infinite, can_loop).
+:- pragma termination_info(group.largest_group_key((builtin.in)) = (builtin.out), infinite, can_loop).
+:- pragma termination_info(group.group_keys((builtin.in), (builtin.out)), infinite, can_loop).
+:- pragma termination_info(group.group_keys((builtin.in)) = (builtin.out), infinite, can_loop).

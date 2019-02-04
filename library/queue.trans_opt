@@ -1,0 +1,49 @@
+:- module queue.
+:- pragma termination_info(queue.init((builtin.out)), finite(2, [no, no]), cannot_loop).
+:- pragma termination_info((queue.init) = (builtin.out), finite(2, [no, no]), cannot_loop).
+:- pragma termination_info(queue.equal((builtin.in), (builtin.in)), finite(0, [no, no, no]), can_loop).
+:- pragma termination_info(queue.is_empty((builtin.in)), finite(0, [no, no]), cannot_loop).
+:- pragma termination_info(queue.is_full((builtin.in)), finite(0, [no, no]), cannot_loop).
+:- pragma termination_info(queue.put((builtin.in), (builtin.in), (builtin.out)), finite(2, [no, yes, yes, no]), cannot_loop).
+:- pragma termination_info(queue.put((builtin.in), (builtin.in)) = (builtin.out), finite(2, [no, yes, yes, no]), cannot_loop).
+:- pragma termination_info(queue.put_list((builtin.in), (builtin.in), (builtin.out)), finite(0, [no, yes, yes, no]), can_loop).
+:- pragma termination_info(queue.put_list((builtin.in), (builtin.in)) = (builtin.out), finite(0, [no, yes, yes, no]), can_loop).
+:- pragma termination_info(queue.first((builtin.in), (builtin.out)), finite(-4, [no, yes, no]), cannot_loop).
+:- pragma termination_info(queue.get((builtin.in), (builtin.out), (builtin.out)), finite(-2, [no, yes, no, no]), can_loop).
+:- pragma termination_info(queue.length((builtin.in), (builtin.out)), finite(0, [no, no, no]), cannot_loop).
+:- pragma termination_info(queue.length((builtin.in)) = (builtin.out), finite(0, [no, no, no]), cannot_loop).
+:- pragma termination_info(queue.list_to_queue((builtin.in), (builtin.out)), finite(2, [no, yes, no]), cannot_loop).
+:- pragma termination_info(queue.list_to_queue((builtin.in)) = (builtin.out), finite(2, [no, yes, no]), cannot_loop).
+:- pragma termination_info(queue.from_list((builtin.in)) = (builtin.out), finite(2, [no, yes, no]), cannot_loop).
+:- pragma termination_info(queue.to_list((builtin.in)) = (builtin.out), finite(-2, [no, yes, no]), can_loop).
+:- pragma termination_info(queue.delete_all((builtin.in), (builtin.in), (builtin.out)), finite(0, [no, yes, no, no]), can_loop).
+:- pragma termination_info(queue.delete_all((builtin.in), (builtin.in)) = (builtin.out), finite(0, [no, yes, no, no]), can_loop).
+:- pragma termination_info(queue.put_on_front((builtin.in), (builtin.in)) = (builtin.out), finite(2, [no, yes, yes, no]), cannot_loop).
+:- pragma termination_info(queue.put_on_front((builtin.in), (builtin.in), (builtin.out)), finite(2, [no, yes, yes, no]), cannot_loop).
+:- pragma termination_info(queue.put_list_on_front((builtin.in), (builtin.in)) = (builtin.out), finite(0, [no, yes, yes, no]), cannot_loop).
+:- pragma termination_info(queue.put_list_on_front((builtin.in), (builtin.in), (builtin.out)), finite(0, [no, yes, yes, no]), cannot_loop).
+:- pragma termination_info(queue.get_from_back((builtin.in), (builtin.out), (builtin.out)), finite(-2, [no, yes, no, no]), can_loop).
+:- pragma exceptions(predicate, (queue.init), 1, 0, will_not_throw).
+:- pragma exceptions(function, (queue.init), 1, 0, will_not_throw).
+:- pragma exceptions(predicate, (queue.equal), 2, 0, conditional).
+:- pragma exceptions(predicate, (queue.is_empty), 1, 0, will_not_throw).
+:- pragma exceptions(predicate, (queue.is_full), 1, 0, will_not_throw).
+:- pragma exceptions(predicate, (queue.put), 3, 0, will_not_throw).
+:- pragma exceptions(function, (queue.put), 3, 0, will_not_throw).
+:- pragma exceptions(predicate, (queue.put_list), 3, 0, will_not_throw).
+:- pragma exceptions(function, (queue.put_list), 3, 0, will_not_throw).
+:- pragma exceptions(predicate, (queue.first), 2, 0, will_not_throw).
+:- pragma exceptions(predicate, (queue.get), 3, 0, will_not_throw).
+:- pragma exceptions(predicate, (queue.length), 2, 0, will_not_throw).
+:- pragma exceptions(function, (queue.length), 2, 0, will_not_throw).
+:- pragma exceptions(predicate, (queue.list_to_queue), 2, 0, will_not_throw).
+:- pragma exceptions(function, (queue.list_to_queue), 2, 0, will_not_throw).
+:- pragma exceptions(function, (queue.from_list), 2, 0, will_not_throw).
+:- pragma exceptions(function, (queue.to_list), 2, 0, will_not_throw).
+:- pragma exceptions(predicate, (queue.delete_all), 3, 0, conditional).
+:- pragma exceptions(function, (queue.delete_all), 3, 0, conditional).
+:- pragma exceptions(function, (queue.put_on_front), 3, 0, will_not_throw).
+:- pragma exceptions(predicate, (queue.put_on_front), 3, 0, will_not_throw).
+:- pragma exceptions(function, (queue.put_list_on_front), 3, 0, will_not_throw).
+:- pragma exceptions(predicate, (queue.put_list_on_front), 3, 0, will_not_throw).
+:- pragma exceptions(predicate, (queue.get_from_back), 3, 0, may_throw(user_exception)).

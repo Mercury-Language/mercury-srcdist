@@ -1,0 +1,329 @@
+:- module relation.
+:- use_module assoc_list, bimap, builtin, enum, int, list, map, pair, private_builtin, queue, require, set, sparse_bitset.
+:- type relation.relation_key
+	--->	relation_key(int).
+:- type relation.relation(T)
+	--->	relation(relation.relation_key, bimap.bimap(T, relation.relation_key), tree234.tree234(int, sparse_bitset.sparse_bitset(relation.relation_key)), tree234.tree234(int, sparse_bitset.sparse_bitset(relation.relation_key))).
+:- type relation.key_set_map == tree234.tree234(int, sparse_bitset.sparse_bitset(relation.relation_key)).
+:- type relation.key_map == tree234.tree234(int, relation.relation_key).
+:- instance (enum.enum(relation.relation_key)).
+:- pred relation.init_internal(relation.relation(T_1)).
+:- mode relation.init_internal((builtin.out)) is det.
+:- pred relation.to_assoc_list_2(tree234.tree234(int, sparse_bitset.sparse_bitset(relation.relation_key)), list.list(int), bimap.bimap(T_1, relation.relation_key), list.list(pair.pair(T_1, T_1)), list.list(pair.pair(T_1, T_1))).
+:- mode relation.to_assoc_list_2((builtin.in), (builtin.in), (builtin.in), (builtin.in), (builtin.out)) is det.
+:- pred relation.to_key_assoc_list_2(tree234.tree234(int, sparse_bitset.sparse_bitset(relation.relation_key)), list.list(int), list.list(pair.pair(relation.relation_key, relation.relation_key)), list.list(pair.pair(relation.relation_key, relation.relation_key))).
+:- mode relation.to_key_assoc_list_2((builtin.in), (builtin.in), (builtin.in), (builtin.out)) is det.
+:- pred relation.dfs_2(relation.relation(T_1), relation.relation_key, sparse_bitset.sparse_bitset(relation.relation_key), sparse_bitset.sparse_bitset(relation.relation_key), list.list(relation.relation_key), list.list(relation.relation_key)).
+:- mode relation.dfs_2((builtin.in), (builtin.in), (builtin.in), (builtin.out), (builtin.in), (builtin.out)) is det.
+:- pred relation.traverse_nodes(list.list(K_1), relation.relation(K_1), pred(K_1, T_2, T_2), pred(K_1, K_1, T_2, T_2), T_2, T_2).
+:- mode relation.traverse_nodes((builtin.in), (builtin.in), (pred((builtin.in), (builtin.di), (builtin.uo)) is det), (pred((builtin.in), (builtin.in), (builtin.di), (builtin.uo)) is det), (builtin.di), (builtin.uo)) is det.
+:- mode relation.traverse_nodes((builtin.in), (builtin.in), (pred((builtin.in), (builtin.in), (builtin.out)) is det), (pred((builtin.in), (builtin.in), (builtin.in), (builtin.out)) is det), (builtin.in), (builtin.out)) is det.
+:- pred relation.traverse_children(list.list(relation.relation_key), K_1, relation.relation(K_1), pred(K_1, K_1, T_2, T_2), T_2, T_2).
+:- mode relation.traverse_children((builtin.in), (builtin.in), (builtin.in), (pred((builtin.in), (builtin.in), (builtin.di), (builtin.uo)) is det), (builtin.di), (builtin.uo)) is det.
+:- mode relation.traverse_children((builtin.in), (builtin.in), (builtin.in), (pred((builtin.in), (builtin.in), (builtin.in), (builtin.out)) is det), (builtin.in), (builtin.out)) is det.
+relation.init = R_2 :-
+    relation.init_internal(R_2).
+relation.init(R_2) :-
+    relation.init_internal(R_2).
+relation.search_element(relation.relation(_Key_4, ElMap_5, _Fwd_6, _Rev_7), Elem_8, Key_9) :-
+    bimap.search(ElMap_5, Elem_8, Key_9).
+relation.lookup_element(R_4, X_5) = K_6 :-
+    relation.lookup_element(R_4, X_5, K_6).
+relation.search_key(relation.relation(_Key_4, ElMap_5, _Fwd_6, _Rev_7), Key_8, Elem_9) :-
+    bimap.search(ElMap_5, Elem_9, Key_8).
+relation.lookup_key(R_4, K_5) = X_6 :-
+    relation.lookup_key(R_4, K_5, X_6).
+relation.add(R1_5, K1_6, K2_7) = R2_8 :-
+    relation.add(R1_5, K1_6, K2_7, R2_8).
+relation.add_values(R1_5, X_6, Y_7) = R2_8 :-
+    relation.add_values(R1_5, X_6, Y_7, R2_8).
+relation.add_values(R0_5, X_6, Y_7, R_8) :-
+    relation.add_element(R0_5, X_6, XKey_9, R1_10),
+    relation.add_element(R1_10, Y_7, YKey_11, R2_12),
+    relation.add(R2_12, XKey_9, YKey_11, R_8).
+relation.add_assoc_list(R1_4, AL_5) = R2_6 :-
+    relation.add_assoc_list(R1_4, AL_5, R2_6).
+relation.remove(R1_5, K1_6, K2_7) = R2_8 :-
+    relation.remove(R1_5, K1_6, K2_7, R2_8).
+relation.remove_assoc_list(R1_4, AL_5) = R2_6 :-
+    relation.remove_assoc_list(R1_4, AL_5, R2_6).
+relation.lookup(relation.relation(_Key_4, _ElMap_5, Fwd_6, _Bwd_7), relation.relation_key(U_8), V_9) :-
+    map.search(Fwd_6, U_8, VSet_10),
+    sparse_bitset.member(V_9, VSet_10).
+relation.reverse_lookup(Rel_4, U_5, relation.relation_key(V_6)) :-
+    Rel_4 = relation.relation(_Key_7, _ElMap_8, _Fwd_9, Bwd_10) : relation.relation(T_1),
+    map.search(Bwd_10, V_6, USet_11),
+    sparse_bitset.member(U_5, USet_11).
+relation.lookup_from(R_4, K_5) = S_6 :-
+    relation.lookup_from(R_4, K_5, S_6).
+relation.lookup_from(R_4, U_5, HeadVar__3_3) :-
+    HeadVar__3_3 = sparse_bitset.to_set(Vs_6),
+    relation.lookup_key_set_from(R_4, U_5, Vs_6).
+relation.lookup_key_set_from(R_4, U_5) = Vs_6 :-
+    relation.lookup_key_set_from(R_4, U_5, Vs_6).
+relation.lookup_to(R_4, K_5) = S_6 :-
+    relation.lookup_to(R_4, K_5, S_6).
+relation.lookup_to(R_4, U_5, HeadVar__3_3) :-
+    HeadVar__3_3 = sparse_bitset.to_set(Vs_6),
+    relation.lookup_key_set_to(R_4, U_5, Vs_6).
+relation.lookup_key_set_to(R_4, U_5) = Vs_6 :-
+    relation.lookup_key_set_to(R_4, U_5, Vs_6).
+relation.to_assoc_list(R_3) = AL_4 :-
+    relation.to_assoc_list(R_3, AL_4).
+relation.to_assoc_list(relation.relation(_Key_3, ElMap_4, Fwd_5, _Bwd_6), List_7) :-
+    map.keys(Fwd_5, FwdKeys_8),
+    V_9 = list.[] : list.list(pair.pair(T_1, T_1)),
+    relation.to_assoc_list_2(Fwd_5, FwdKeys_8, ElMap_4, V_9, List_7).
+relation.to_key_assoc_list(R_3) = AL_4 :-
+    relation.to_key_assoc_list(R_3, AL_4).
+relation.to_key_assoc_list(relation.relation(_Key_3, _ElMap_4, Fwd_5, _Bwd_6), List_7) :-
+    map.keys(Fwd_5, FwdKeys_8),
+    V_9 = list.[] : list.list(pair.pair(relation.relation_key, relation.relation_key)),
+    relation.to_key_assoc_list_2(Fwd_5, FwdKeys_8, V_9, List_7).
+relation.from_assoc_list(AL_3) = R_4 :-
+    relation.from_assoc_list(AL_3, R_4).
+relation.from_assoc_list(AL_3, Rel_4) :-
+    relation.init_internal(Rel0_5),
+    Rel_4 = list.foldl(V_10, AL_3, Rel0_5),
+    V_10 = (func(V_11::(builtin.in), V_12::(builtin.in)) = (V_13::(builtin.out)) is det :-
+      some [] (
+        V_11 = pair.(U_14 - V_15) : pair.pair(T_1, T_1),
+        V_12 = R0_16,
+        relation.add_values(R0_16, U_14, V_15, R_9),
+        V_13 = R_9
+      )
+    ) : (func(pair.pair(T_1, T_1), relation.relation(T_1)) = relation.relation(T_1)).
+relation.domain(R_3) = S_4 :-
+    relation.domain(R_3, S_4).
+relation.domain(relation.relation(_Key_3, ElMap_4, _Fwd_5, _Bwd_6), Dom_7) :-
+    bimap.ordinates(ElMap_4, DomList_8),
+    set.sorted_list_to_set(DomList_8, Dom_7).
+relation.inverse(R1_3) = R2_4 :-
+    relation.inverse(R1_3, R2_4).
+relation.inverse(Rel_3, InvRel_4) :-
+    Rel_3 = relation.relation(Key_5, ElMap_6, Fwd_7, Bwd_8) : relation.relation(T_1),
+    InvRel_4 = relation.relation(Key_5, ElMap_6, Bwd_8, Fwd_7) : relation.relation(T_1).
+relation.compose(R1_4, R2_5) = R3_6 :-
+    relation.compose(R1_4, R2_5, R3_6).
+relation.dfs(R_4, K_5) = Ks_6 :-
+    relation.dfs(R_4, K_5, Ks_6).
+relation.dfs(Rel_4, X_5, Dfs_6) :-
+    relation.dfsrev(Rel_4, X_5, DfsRev_7),
+    list.reverse(DfsRev_7, Dfs_6).
+relation.dfsrev(R_4, K_5) = Ks_6 :-
+    relation.dfsrev(R_4, K_5, Ks_6).
+relation.dfsrev(Rel_4, X_5, DfsRev_6) :-
+    sparse_bitset.init(Vis0_7),
+    V_9 = list.[] : list.list(relation.relation_key),
+    relation.dfs_2(Rel_4, X_5, Vis0_7, V_8, V_9, DfsRev_6).
+relation.dfs(R_3) = Ks_4 :-
+    relation.dfs(R_3, Ks_4).
+relation.dfs(Rel_3, Dfs_4) :-
+    relation.dfsrev(Rel_3, DfsRev_5),
+    list.reverse(DfsRev_5, Dfs_4).
+relation.dfsrev(R_3) = Ks_4 :-
+    relation.dfsrev(R_3, Ks_4).
+relation.dfs(Rel_6, X_7, Visited0_8, Visited_9, Dfs_10) :-
+    V_12 = list.[] : list.list(relation.relation_key),
+    relation.dfs_2(Rel_6, X_7, Visited0_8, Visited_9, V_12, DfsRev_11),
+    list.reverse(DfsRev_11, Dfs_10).
+relation.dfsrev(Rel_6, X_7, Visited0_8, Visited_9, DfsRev_10) :-
+    V_11 = list.[] : list.list(relation.relation_key),
+    relation.dfs_2(Rel_6, X_7, Visited0_8, Visited_9, V_11, DfsRev_10).
+relation.components(R_3) = KSS_4 :-
+    relation.components(R_3, KSS_4).
+relation.cliques(R_3) = KSS_4 :-
+    relation.cliques(R_3, KSS_4).
+relation.reduced(R1_3) = R2_4 :-
+    relation.reduced(R1_3, R2_4).
+relation.atsort(R_3) = Ss_4 :-
+    relation.atsort(R_3, Ss_4).
+relation.sc(R1_3) = R2_4 :-
+    relation.sc(R1_3, R2_4).
+relation.sc(Rel_3, Sc_4) :-
+    relation.inverse(Rel_3, Inv_5),
+    relation.to_key_assoc_list(Inv_5, InvList_6),
+    relation.add_assoc_list(Rel_3, InvList_6, Sc_4).
+relation.tc(R1_3) = R2_4 :-
+    relation.tc(R1_3, R2_4).
+relation.rtc(R1_3) = R2_4 :-
+    relation.rtc(R1_3, R2_4).
+relation.traverse(Relation_6, ProcessNode_7, ProcessEdge_8, STATE_VARIABLE_Acc_0_11, STATE_VARIABLE_Acc_12) :-
+    Domain_10 = set.to_sorted_list(V_13),
+    V_13 = relation.domain(Relation_6),
+    relation.traverse_nodes(Domain_10, Relation_6, ProcessNode_7, ProcessEdge_8, STATE_VARIABLE_Acc_0_11, STATE_VARIABLE_Acc_12).
+relation.traverse_nodes(list.[], V_7, V_8, V_9, STATE_VARIABLE_Acc_0_11, STATE_VARIABLE_Acc_12) :-
+    STATE_VARIABLE_Acc_12 = STATE_VARIABLE_Acc_0_11.
+relation.traverse_nodes(list.[Node_13 | Nodes_14], Relation_15, ProcessNode_16, ProcessEdge_17, STATE_VARIABLE_Acc_0_20, STATE_VARIABLE_Acc_21) :-
+    Children_19 = set.to_sorted_list(V_22),
+    V_22 = relation.lookup_from(Relation_15, V_23),
+    V_23 = relation.lookup_element(Relation_15, Node_13),
+    call(ProcessNode_16, Node_13, STATE_VARIABLE_Acc_0_20, STATE_VARIABLE_Acc_24_24),
+    relation.traverse_children(Children_19, Node_13, Relation_15, ProcessEdge_17, STATE_VARIABLE_Acc_24_24, STATE_VARIABLE_Acc_25_25),
+    relation.traverse_nodes(Nodes_14, Relation_15, ProcessNode_16, ProcessEdge_17, STATE_VARIABLE_Acc_25_25, STATE_VARIABLE_Acc_21).
+relation.traverse_children(list.[], V_7, V_8, V_9, STATE_VARIABLE_Acc_0_11, STATE_VARIABLE_Acc_12) :-
+    STATE_VARIABLE_Acc_12 = STATE_VARIABLE_Acc_0_11.
+relation.traverse_children(list.[ChildKey_13 | Children_14], Parent_15, Relation_16, ProcessEdge_17, STATE_VARIABLE_Acc_0_20, STATE_VARIABLE_Acc_21) :-
+    Child_19 = relation.lookup_key(Relation_16, ChildKey_13),
+    call(ProcessEdge_17, Parent_15, Child_19, STATE_VARIABLE_Acc_0_20, STATE_VARIABLE_Acc_22_22),
+    relation.traverse_children(Children_14, Parent_15, Relation_16, ProcessEdge_17, STATE_VARIABLE_Acc_22_22, STATE_VARIABLE_Acc_21).
+:- pragma exceptions(function, (relation.init), 1, 0, may_throw(user_exception)).
+:- pragma exceptions(predicate, (relation.init), 1, 0, may_throw(user_exception)).
+:- pragma exceptions(predicate, (relation.add_element), 4, 0, may_throw(user_exception)).
+:- pragma exceptions(predicate, (relation.search_element), 3, 0, may_throw(user_exception)).
+:- pragma exceptions(function, (relation.lookup_element), 3, 0, may_throw(user_exception)).
+:- pragma exceptions(predicate, (relation.lookup_element), 3, 0, may_throw(user_exception)).
+:- pragma exceptions(predicate, (relation.search_key), 3, 0, may_throw(user_exception)).
+:- pragma exceptions(function, (relation.lookup_key), 3, 0, may_throw(user_exception)).
+:- pragma exceptions(predicate, (relation.lookup_key), 3, 0, may_throw(user_exception)).
+:- pragma exceptions(function, (relation.add), 4, 0, may_throw(user_exception)).
+:- pragma exceptions(predicate, (relation.add), 4, 0, may_throw(user_exception)).
+:- pragma exceptions(function, (relation.add_values), 4, 0, may_throw(user_exception)).
+:- pragma exceptions(predicate, (relation.add_values), 4, 0, may_throw(user_exception)).
+:- pragma exceptions(function, (relation.add_assoc_list), 3, 0, may_throw(user_exception)).
+:- pragma exceptions(predicate, (relation.add_assoc_list), 3, 0, may_throw(user_exception)).
+:- pragma exceptions(function, (relation.remove), 4, 0, may_throw(user_exception)).
+:- pragma exceptions(predicate, (relation.remove), 4, 0, may_throw(user_exception)).
+:- pragma exceptions(function, (relation.remove_assoc_list), 3, 0, may_throw(user_exception)).
+:- pragma exceptions(predicate, (relation.remove_assoc_list), 3, 0, may_throw(user_exception)).
+:- pragma exceptions(predicate, (relation.lookup), 3, 0, may_throw(user_exception)).
+:- pragma exceptions(predicate, (relation.lookup), 3, 1, may_throw(user_exception)).
+:- pragma exceptions(predicate, (relation.reverse_lookup), 3, 0, may_throw(user_exception)).
+:- pragma exceptions(predicate, (relation.reverse_lookup), 3, 1, may_throw(user_exception)).
+:- pragma exceptions(function, (relation.lookup_from), 3, 0, may_throw(user_exception)).
+:- pragma exceptions(predicate, (relation.lookup_from), 3, 0, may_throw(user_exception)).
+:- pragma exceptions(function, (relation.lookup_key_set_from), 3, 0, may_throw(user_exception)).
+:- pragma exceptions(predicate, (relation.lookup_key_set_from), 3, 0, may_throw(user_exception)).
+:- pragma exceptions(function, (relation.lookup_to), 3, 0, may_throw(user_exception)).
+:- pragma exceptions(predicate, (relation.lookup_to), 3, 0, may_throw(user_exception)).
+:- pragma exceptions(function, (relation.lookup_key_set_to), 3, 0, may_throw(user_exception)).
+:- pragma exceptions(predicate, (relation.lookup_key_set_to), 3, 0, may_throw(user_exception)).
+:- pragma exceptions(function, (relation.to_assoc_list), 2, 0, may_throw(user_exception)).
+:- pragma exceptions(predicate, (relation.to_assoc_list), 2, 0, may_throw(user_exception)).
+:- pragma exceptions(function, (relation.to_key_assoc_list), 2, 0, may_throw(user_exception)).
+:- pragma exceptions(predicate, (relation.to_key_assoc_list), 2, 0, may_throw(user_exception)).
+:- pragma exceptions(function, (relation.from_assoc_list), 2, 0, may_throw(user_exception)).
+:- pragma exceptions(predicate, (relation.from_assoc_list), 2, 0, may_throw(user_exception)).
+:- pragma exceptions(function, (relation.domain), 2, 0, may_throw(user_exception)).
+:- pragma exceptions(predicate, (relation.domain), 2, 0, may_throw(user_exception)).
+:- pragma exceptions(function, (relation.inverse), 2, 0, will_not_throw).
+:- pragma exceptions(predicate, (relation.inverse), 2, 0, will_not_throw).
+:- pragma exceptions(function, (relation.compose), 3, 0, may_throw(user_exception)).
+:- pragma exceptions(predicate, (relation.compose), 3, 0, may_throw(user_exception)).
+:- pragma exceptions(function, (relation.dfs), 3, 0, may_throw(user_exception)).
+:- pragma exceptions(predicate, (relation.dfs), 3, 0, may_throw(user_exception)).
+:- pragma exceptions(function, (relation.dfsrev), 3, 0, may_throw(user_exception)).
+:- pragma exceptions(predicate, (relation.dfsrev), 3, 0, may_throw(user_exception)).
+:- pragma exceptions(function, (relation.dfs), 2, 0, may_throw(user_exception)).
+:- pragma exceptions(predicate, (relation.dfs), 2, 0, may_throw(user_exception)).
+:- pragma exceptions(function, (relation.dfsrev), 2, 0, may_throw(user_exception)).
+:- pragma exceptions(predicate, (relation.dfsrev), 2, 0, may_throw(user_exception)).
+:- pragma exceptions(predicate, (relation.dfs), 5, 0, may_throw(user_exception)).
+:- pragma exceptions(predicate, (relation.dfsrev), 5, 0, may_throw(user_exception)).
+:- pragma exceptions(predicate, (relation.is_dag), 1, 0, may_throw(user_exception)).
+:- pragma exceptions(function, (relation.components), 2, 0, may_throw(user_exception)).
+:- pragma exceptions(predicate, (relation.components), 2, 0, may_throw(user_exception)).
+:- pragma exceptions(function, (relation.cliques), 2, 0, may_throw(user_exception)).
+:- pragma exceptions(predicate, (relation.cliques), 2, 0, may_throw(user_exception)).
+:- pragma exceptions(function, (relation.reduced), 2, 0, may_throw(user_exception)).
+:- pragma exceptions(predicate, (relation.reduced), 2, 0, may_throw(user_exception)).
+:- pragma exceptions(predicate, (relation.tsort), 2, 0, may_throw(user_exception)).
+:- pragma exceptions(function, (relation.atsort), 2, 0, may_throw(user_exception)).
+:- pragma exceptions(predicate, (relation.atsort), 2, 0, may_throw(user_exception)).
+:- pragma exceptions(function, (relation.sc), 2, 0, may_throw(user_exception)).
+:- pragma exceptions(predicate, (relation.sc), 2, 0, may_throw(user_exception)).
+:- pragma exceptions(function, (relation.tc), 2, 0, may_throw(user_exception)).
+:- pragma exceptions(predicate, (relation.tc), 2, 0, may_throw(user_exception)).
+:- pragma exceptions(function, (relation.rtc), 2, 0, may_throw(user_exception)).
+:- pragma exceptions(predicate, (relation.rtc), 2, 0, may_throw(user_exception)).
+:- pragma exceptions(predicate, (relation.traverse), 5, 0, may_throw(user_exception)).
+:- pragma exceptions(predicate, (relation.traverse), 5, 1, may_throw(user_exception)).
+:- pragma exceptions(predicate, (relation.init_internal), 1, 0, may_throw(user_exception)).
+:- pragma exceptions(predicate, (relation.to_assoc_list_2), 5, 0, may_throw(user_exception)).
+:- pragma exceptions(predicate, (relation.to_key_assoc_list_2), 4, 0, may_throw(user_exception)).
+:- pragma exceptions(predicate, (relation.dfs_2), 6, 0, may_throw(user_exception)).
+:- pragma exceptions(predicate, (relation.traverse_nodes), 6, 0, may_throw(user_exception)).
+:- pragma exceptions(predicate, (relation.traverse_nodes), 6, 1, may_throw(user_exception)).
+:- pragma exceptions(predicate, (relation.traverse_children), 6, 0, may_throw(user_exception)).
+:- pragma exceptions(predicate, (relation.traverse_children), 6, 1, may_throw(user_exception)).
+:- pragma termination_info((relation.init) = (builtin.out), infinite, can_loop).
+:- pragma termination_info(relation.init((builtin.out)), infinite, can_loop).
+:- pragma termination_info(relation.add_element((builtin.in), (builtin.in), (builtin.out), (builtin.out)), infinite, can_loop).
+:- pragma termination_info(relation.search_element((builtin.in), (builtin.in), (builtin.out)), infinite, can_loop).
+:- pragma termination_info(relation.lookup_element((builtin.in), (builtin.in)) = (builtin.out), infinite, can_loop).
+:- pragma termination_info(relation.lookup_element((builtin.in), (builtin.in), (builtin.out)), infinite, can_loop).
+:- pragma termination_info(relation.search_key((builtin.in), (builtin.in), (builtin.out)), infinite, can_loop).
+:- pragma termination_info(relation.lookup_key((builtin.in), (builtin.in)) = (builtin.out), infinite, can_loop).
+:- pragma termination_info(relation.lookup_key((builtin.in), (builtin.in), (builtin.out)), infinite, can_loop).
+:- pragma termination_info(relation.add((builtin.in), (builtin.in), (builtin.in)) = (builtin.out), infinite, can_loop).
+:- pragma termination_info(relation.add((builtin.in), (builtin.in), (builtin.in), (builtin.out)), infinite, can_loop).
+:- pragma termination_info(relation.add_values((builtin.in), (builtin.in), (builtin.in)) = (builtin.out), infinite, can_loop).
+:- pragma termination_info(relation.add_values((builtin.in), (builtin.in), (builtin.in), (builtin.out)), infinite, can_loop).
+:- pragma termination_info(relation.add_assoc_list((builtin.in), (builtin.in)) = (builtin.out), infinite, can_loop).
+:- pragma termination_info(relation.add_assoc_list((builtin.in), (builtin.in), (builtin.out)), infinite, can_loop).
+:- pragma termination_info(relation.remove((builtin.in), (builtin.in), (builtin.in)) = (builtin.out), infinite, can_loop).
+:- pragma termination_info(relation.remove((builtin.in), (builtin.in), (builtin.in), (builtin.out)), infinite, can_loop).
+:- pragma termination_info(relation.remove_assoc_list((builtin.in), (builtin.in)) = (builtin.out), infinite, can_loop).
+:- pragma termination_info(relation.remove_assoc_list((builtin.in), (builtin.in), (builtin.out)), infinite, can_loop).
+:- pragma termination_info(relation.lookup((builtin.in), (builtin.in), (builtin.out)), infinite, can_loop).
+:- pragma termination_info(relation.lookup((builtin.in), (builtin.in), (builtin.in)), finite(0, [no, no, no, no]), can_loop).
+:- pragma termination_info(relation.reverse_lookup((builtin.in), (builtin.out), (builtin.in)), infinite, can_loop).
+:- pragma termination_info(relation.reverse_lookup((builtin.in), (builtin.in), (builtin.in)), finite(0, [no, no, no, no]), can_loop).
+:- pragma termination_info(relation.lookup_from((builtin.in), (builtin.in)) = (builtin.out), infinite, can_loop).
+:- pragma termination_info(relation.lookup_from((builtin.in), (builtin.in), (builtin.out)), infinite, can_loop).
+:- pragma termination_info(relation.lookup_key_set_from((builtin.in), (builtin.in)) = (builtin.out), infinite, can_loop).
+:- pragma termination_info(relation.lookup_key_set_from((builtin.in), (builtin.in), (builtin.out)), infinite, can_loop).
+:- pragma termination_info(relation.lookup_to((builtin.in), (builtin.in)) = (builtin.out), infinite, can_loop).
+:- pragma termination_info(relation.lookup_to((builtin.in), (builtin.in), (builtin.out)), infinite, can_loop).
+:- pragma termination_info(relation.lookup_key_set_to((builtin.in), (builtin.in)) = (builtin.out), infinite, can_loop).
+:- pragma termination_info(relation.lookup_key_set_to((builtin.in), (builtin.in), (builtin.out)), infinite, can_loop).
+:- pragma termination_info(relation.to_assoc_list((builtin.in)) = (builtin.out), infinite, can_loop).
+:- pragma termination_info(relation.to_assoc_list((builtin.in), (builtin.out)), infinite, can_loop).
+:- pragma termination_info(relation.to_key_assoc_list((builtin.in)) = (builtin.out), infinite, can_loop).
+:- pragma termination_info(relation.to_key_assoc_list((builtin.in), (builtin.out)), infinite, can_loop).
+:- pragma termination_info(relation.from_assoc_list((builtin.in)) = (builtin.out), infinite, can_loop).
+:- pragma termination_info(relation.from_assoc_list((builtin.in), (builtin.out)), infinite, can_loop).
+:- pragma termination_info(relation.domain((builtin.in)) = (builtin.out), infinite, can_loop).
+:- pragma termination_info(relation.domain((builtin.in), (builtin.out)), infinite, can_loop).
+:- pragma termination_info(relation.inverse((builtin.in)) = (builtin.out), finite(0, [no, yes, no]), cannot_loop).
+:- pragma termination_info(relation.inverse((builtin.in), (builtin.out)), finite(0, [no, yes, no]), cannot_loop).
+:- pragma termination_info(relation.compose((builtin.in), (builtin.in)) = (builtin.out), infinite, can_loop).
+:- pragma termination_info(relation.compose((builtin.in), (builtin.in), (builtin.out)), infinite, can_loop).
+:- pragma termination_info(relation.dfs((builtin.in), (builtin.in)) = (builtin.out), infinite, can_loop).
+:- pragma termination_info(relation.dfs((builtin.in), (builtin.in), (builtin.out)), infinite, can_loop).
+:- pragma termination_info(relation.dfsrev((builtin.in), (builtin.in)) = (builtin.out), infinite, can_loop).
+:- pragma termination_info(relation.dfsrev((builtin.in), (builtin.in), (builtin.out)), infinite, can_loop).
+:- pragma termination_info(relation.dfs((builtin.in)) = (builtin.out), infinite, can_loop).
+:- pragma termination_info(relation.dfs((builtin.in), (builtin.out)), infinite, can_loop).
+:- pragma termination_info(relation.dfsrev((builtin.in)) = (builtin.out), infinite, can_loop).
+:- pragma termination_info(relation.dfsrev((builtin.in), (builtin.out)), infinite, can_loop).
+:- pragma termination_info(relation.dfs((builtin.in), (builtin.in), (builtin.in), (builtin.out), (builtin.out)), infinite, can_loop).
+:- pragma termination_info(relation.dfsrev((builtin.in), (builtin.in), (builtin.in), (builtin.out), (builtin.out)), infinite, can_loop).
+:- pragma termination_info(relation.is_dag((builtin.in)), infinite, can_loop).
+:- pragma termination_info(relation.components((builtin.in)) = (builtin.out), infinite, can_loop).
+:- pragma termination_info(relation.components((builtin.in), (builtin.out)), infinite, can_loop).
+:- pragma termination_info(relation.cliques((builtin.in)) = (builtin.out), infinite, can_loop).
+:- pragma termination_info(relation.cliques((builtin.in), (builtin.out)), infinite, can_loop).
+:- pragma termination_info(relation.reduced((builtin.in)) = (builtin.out), infinite, can_loop).
+:- pragma termination_info(relation.reduced((builtin.in), (builtin.out)), infinite, can_loop).
+:- pragma termination_info(relation.tsort((builtin.in), (builtin.out)), infinite, can_loop).
+:- pragma termination_info(relation.atsort((builtin.in)) = (builtin.out), infinite, can_loop).
+:- pragma termination_info(relation.atsort((builtin.in), (builtin.out)), infinite, can_loop).
+:- pragma termination_info(relation.sc((builtin.in)) = (builtin.out), infinite, can_loop).
+:- pragma termination_info(relation.sc((builtin.in), (builtin.out)), infinite, can_loop).
+:- pragma termination_info(relation.tc((builtin.in)) = (builtin.out), infinite, can_loop).
+:- pragma termination_info(relation.tc((builtin.in), (builtin.out)), infinite, can_loop).
+:- pragma termination_info(relation.rtc((builtin.in)) = (builtin.out), infinite, can_loop).
+:- pragma termination_info(relation.rtc((builtin.in), (builtin.out)), infinite, can_loop).
+:- pragma termination_info(relation.traverse((builtin.in), (pred((builtin.in), (builtin.di), (builtin.uo)) is det), (pred((builtin.in), (builtin.in), (builtin.di), (builtin.uo)) is det), (builtin.di), (builtin.uo)), infinite, can_loop).
+:- pragma termination_info(relation.traverse((builtin.in), (pred((builtin.in), (builtin.in), (builtin.out)) is det), (pred((builtin.in), (builtin.in), (builtin.in), (builtin.out)) is det), (builtin.in), (builtin.out)), infinite, can_loop).
+:- pragma termination_info(relation.init_internal((builtin.out)), infinite, can_loop).
+:- pragma termination_info(relation.to_assoc_list_2((builtin.in), (builtin.in), (builtin.in), (builtin.in), (builtin.out)), infinite, can_loop).
+:- pragma termination_info(relation.to_key_assoc_list_2((builtin.in), (builtin.in), (builtin.in), (builtin.out)), infinite, can_loop).
+:- pragma termination_info(relation.dfs_2((builtin.in), (builtin.in), (builtin.in), (builtin.out), (builtin.in), (builtin.out)), infinite, can_loop).
+:- pragma termination_info(relation.traverse_nodes((builtin.in), (builtin.in), (pred((builtin.in), (builtin.di), (builtin.uo)) is det), (pred((builtin.in), (builtin.in), (builtin.di), (builtin.uo)) is det), (builtin.di), (builtin.uo)), infinite, can_loop).
+:- pragma termination_info(relation.traverse_nodes((builtin.in), (builtin.in), (pred((builtin.in), (builtin.in), (builtin.out)) is det), (pred((builtin.in), (builtin.in), (builtin.in), (builtin.out)) is det), (builtin.in), (builtin.out)), infinite, can_loop).
+:- pragma termination_info(relation.traverse_children((builtin.in), (builtin.in), (builtin.in), (pred((builtin.in), (builtin.in), (builtin.di), (builtin.uo)) is det), (builtin.di), (builtin.uo)), infinite, can_loop).
+:- pragma termination_info(relation.traverse_children((builtin.in), (builtin.in), (builtin.in), (pred((builtin.in), (builtin.in), (builtin.in), (builtin.out)) is det), (builtin.in), (builtin.out)), infinite, can_loop).
+:- pragma termination_info(relation.'ClassMethod_for_enum__enum____relation__relation_key__arity0______enum__to_int_1'((builtin.in)) = (builtin.out), finite(-1, [yes, no]), cannot_loop).
+:- pragma termination_info(relation.'ClassMethod_for_enum__enum____relation__relation_key__arity0______enum__from_int_1'((builtin.in)) = (builtin.out), finite(1, [yes, no]), cannot_loop).

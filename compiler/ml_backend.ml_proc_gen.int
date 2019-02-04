@@ -1,0 +1,6 @@
+:- module (ml_backend.ml_proc_gen).
+:- interface.
+:- import_module (hlds.hlds_module).
+:- import_module (ml_backend.mlds).
+:- pred ml_code_gen(hlds.hlds_module.module_info, hlds.hlds_module.module_info, ml_backend.mlds.mlds).
+:- mode ml_code_gen((builtin.in), (builtin.out), (builtin.out)) is det.

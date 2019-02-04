@@ -1,0 +1,44 @@
+:- module svmap.
+:- interface.
+:- import_module assoc_list.
+:- import_module list.
+:- import_module map.
+:- import_module term.
+:- pragma type_spec(svmap.det_insert((builtin.in), (builtin.in), (builtin.in), (builtin.out)), (K = int), (svmap.'TypeSpecOf__pred__det_insert__[K = int]')).
+:- pragma type_spec(svmap.det_insert((builtin.in), (builtin.in), (builtin.in), (builtin.out)), (K = term.var(V_2)), (svmap.'TypeSpecOf__pred__det_insert__[K = var(V_2)]')).
+:- pragma type_spec(svmap.det_update((builtin.in), (builtin.in), (builtin.in), (builtin.out)), (K = int), (svmap.'TypeSpecOf__pred__det_update__[K = int]')).
+:- pragma type_spec(svmap.det_update((builtin.in), (builtin.in), (builtin.in), (builtin.out)), (K = term.var(V_2)), (svmap.'TypeSpecOf__pred__det_update__[K = var(V_2)]')).
+:- pragma type_spec(svmap.insert((builtin.in), (builtin.in), (builtin.in), (builtin.out)), (K = int), (svmap.'TypeSpecOf__pred__insert__[K = int]')).
+:- pragma type_spec(svmap.insert((builtin.in), (builtin.in), (builtin.in), (builtin.out)), (K = term.var(V_2)), (svmap.'TypeSpecOf__pred__insert__[K = var(V_2)]')).
+:- pragma type_spec(svmap.set((builtin.in), (builtin.in), (builtin.in), (builtin.out)), (K = int), (svmap.'TypeSpecOf__pred__set__[K = int]')).
+:- pragma type_spec(svmap.set((builtin.in), (builtin.in), (builtin.in), (builtin.out)), (K = term.var(V_2)), (svmap.'TypeSpecOf__pred__set__[K = var(V_2)]')).
+:- pragma type_spec(svmap.update((builtin.in), (builtin.in), (builtin.in), (builtin.out)), (K = int), (svmap.'TypeSpecOf__pred__update__[K = int]')).
+:- pragma type_spec(svmap.update((builtin.in), (builtin.in), (builtin.in), (builtin.out)), (K = term.var(V_2)), (svmap.'TypeSpecOf__pred__update__[K = var(V_2)]')).
+:- pred delete(K, map.map(K, V), map.map(K, V)).
+:- mode delete((builtin.in), (builtin.in), (builtin.out)) is det.
+:- pred delete_list(list.list(K), map.map(K, V), map.map(K, V)).
+:- mode delete_list((builtin.in), (builtin.in), (builtin.out)) is det.
+:- pred det_insert(K, V, map.map(K, V), map.map(K, V)).
+:- mode det_insert((builtin.in), (builtin.in), (builtin.in), (builtin.out)) is det.
+:- pred det_insert_from_assoc_list(assoc_list.assoc_list(K, V), map.map(K, V), map.map(K, V)).
+:- mode det_insert_from_assoc_list((builtin.in), (builtin.in), (builtin.out)) is det.
+:- pred det_insert_from_corresponding_lists(list.list(K), list.list(V), map.map(K, V), map.map(K, V)).
+:- mode det_insert_from_corresponding_lists((builtin.in), (builtin.in), (builtin.in), (builtin.out)) is det.
+:- pred det_remove(K, V, map.map(K, V), map.map(K, V)).
+:- mode det_remove((builtin.in), (builtin.out), (builtin.in), (builtin.out)) is det.
+:- pred det_update(K, V, map.map(K, V), map.map(K, V)).
+:- mode det_update((builtin.in), (builtin.in), (builtin.in), (builtin.out)) is det.
+:- pred insert(K, V, map.map(K, V), map.map(K, V)).
+:- mode insert((builtin.in), (builtin.in), (builtin.in), (builtin.out)) is semidet.
+:- pred remove(K, V, map.map(K, V), map.map(K, V)).
+:- mode remove((builtin.in), (builtin.out), (builtin.in), (builtin.out)) is semidet.
+:- pred remove_smallest(K, V, map.map(K, V), map.map(K, V)).
+:- mode remove_smallest((builtin.out), (builtin.out), (builtin.in), (builtin.out)) is semidet.
+:- pred set(K, V, map.map(K, V), map.map(K, V)).
+:- mode set((builtin.in), (builtin.in), (builtin.in), (builtin.out)) is det.
+:- pred set_from_assoc_list(assoc_list.assoc_list(K, V), map.map(K, V), map.map(K, V)).
+:- mode set_from_assoc_list((builtin.in), (builtin.in), (builtin.out)) is det.
+:- pred set_from_corresponding_lists(list.list(K), list.list(V), map.map(K, V), map.map(K, V)).
+:- mode set_from_corresponding_lists((builtin.in), (builtin.in), (builtin.in), (builtin.out)) is det.
+:- pred update(K, V, map.map(K, V), map.map(K, V)).
+:- mode update((builtin.in), (builtin.in), (builtin.in), (builtin.out)) is semidet.

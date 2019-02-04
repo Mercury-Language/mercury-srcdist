@@ -1,0 +1,5 @@
+:- module (transform_hlds.term_constr_errors).
+:- interface.
+:- type error.
+:- type term2_errors.
+:- type termination2_error.

@@ -1,0 +1,176 @@
+:- module (libs.globals).
+:- interface.
+:- import_module bool.
+:- import_module getopt_io.
+:- import_module io.
+:- import_module list.
+:- import_module map.
+:- import_module maybe.
+:- import_module mdbcomp.
+:- import_module (libs.options).
+:- import_module (libs.trace_params).
+:- import_module (mdbcomp.feedback).
+:- import_module (mdbcomp.prim_data).
+:- type c_compiler_type
+	--->	cc_gcc(((libs.globals).gcc_major_ver) :: maybe.maybe(int), ((libs.globals).gcc_minor_ver) :: maybe.maybe(int), ((libs.globals).gcc_patch_level) :: maybe.maybe(int))
+	;	cc_lcc 
+	;	cc_cl 
+	;	cc_unknown .
+:- type compilation_target
+	--->	target_c 
+	;	target_il 
+	;	target_csharp 
+	;	target_java 
+	;	target_asm 
+	;	target_x86_64 
+	;	target_erlang .
+:- type env_type
+	--->	env_type_posix 
+	;	env_type_cygwin 
+	;	env_type_msys 
+	;	env_type_win_cmd .
+:- type foreign_language
+	--->	lang_c 
+	;	lang_csharp 
+	;	lang_java 
+	;	lang_il 
+	;	lang_erlang .
+:- type gc_method
+	--->	gc_automatic 
+	;	gc_none 
+	;	gc_boehm 
+	;	gc_boehm_debug 
+	;	gc_hgc 
+	;	gc_mps 
+	;	gc_accurate .
+:- type globals.
+:- type il_version_number
+	--->	il_version_number(((libs.globals).ivn_major) :: int, ((libs.globals).ivn_minor) :: int, ((libs.globals).ivn_build) :: int, ((libs.globals).ivn_revision) :: int).
+:- type may_be_thread_safe == bool.bool.
+:- type reuse_strategy
+	--->	same_cons_id 
+	;	within_n_cells_difference(int).
+:- type source_file_map == map.map(mdbcomp.prim_data.module_name, string).
+:- type tags_method
+	--->	tags_none 
+	;	tags_low 
+	;	tags_high .
+:- type termination_norm
+	--->	norm_simple 
+	;	norm_total 
+	;	norm_num_data_elems 
+	;	norm_size_data_elems .
+:- func compilation_target_string(libs.globals.compilation_target) = string.
+:- pred convert_c_compiler_type(string, libs.globals.c_compiler_type).
+:- mode convert_c_compiler_type((builtin.in), (builtin.out)) is semidet.
+:- pred convert_env_type(string, libs.globals.env_type).
+:- mode convert_env_type((builtin.in), (builtin.out)) is semidet.
+:- pred convert_foreign_language(string, libs.globals.foreign_language).
+:- mode convert_foreign_language((builtin.in), (builtin.out)) is semidet.
+:- pred convert_gc_method(string, libs.globals.gc_method).
+:- mode convert_gc_method((builtin.in), (builtin.out)) is semidet.
+:- pred convert_maybe_thread_safe(string, libs.globals.may_be_thread_safe).
+:- mode convert_maybe_thread_safe((builtin.in), (builtin.out)) is semidet.
+:- pred convert_reuse_strategy(string, int, libs.globals.reuse_strategy).
+:- mode convert_reuse_strategy((builtin.in), (builtin.in), (builtin.out)) is semidet.
+:- pred convert_tags_method(string, libs.globals.tags_method).
+:- mode convert_tags_method((builtin.in), (builtin.out)) is semidet.
+:- pred convert_target(string, libs.globals.compilation_target).
+:- mode convert_target((builtin.in), (builtin.out)) is semidet.
+:- pred convert_termination_norm(string, libs.globals.termination_norm).
+:- mode convert_termination_norm((builtin.in), (builtin.out)) is semidet.
+:- pred current_grade_supports_concurrency(libs.globals.globals, bool.bool).
+:- mode current_grade_supports_concurrency((builtin.in), (builtin.out)) is det.
+:- pred current_grade_supports_par_conj(libs.globals.globals, bool.bool).
+:- mode current_grade_supports_par_conj((builtin.in), (builtin.out)) is det.
+:- pred current_grade_supports_tabling(libs.globals.globals, bool.bool).
+:- mode current_grade_supports_tabling((builtin.in), (builtin.out)) is det.
+:- func foreign_language_string(libs.globals.foreign_language) = string.
+:- func gc_is_conservative(libs.globals.gc_method) = bool.bool.
+:- pred get_any_intermod(libs.globals.globals, bool.bool).
+:- mode get_any_intermod((builtin.in), (builtin.out)) is det.
+:- pred get_backend_foreign_languages(libs.globals.globals, list.list(libs.globals.foreign_language)).
+:- mode get_backend_foreign_languages((builtin.in), (builtin.out)) is det.
+:- pred get_c_compiler_type(libs.globals.globals, libs.globals.c_compiler_type).
+:- mode get_c_compiler_type((builtin.in), (builtin.out)) is det.
+:- pred get_gc_method(libs.globals.globals, libs.globals.gc_method).
+:- mode get_gc_method((builtin.in), (builtin.out)) is det.
+:- pred get_host_env_type(libs.globals.globals, libs.globals.env_type).
+:- mode get_host_env_type((builtin.in), (builtin.out)) is det.
+:- pred get_maybe_feedback_info(libs.globals.globals, maybe.maybe(mdbcomp.feedback.feedback_info)).
+:- mode get_maybe_feedback_info((builtin.in), (builtin.out)) is det.
+:- func get_maybe_from_ground_term_threshold = maybe.maybe(int).
+:- pred get_maybe_il_version_number(libs.globals.globals, maybe.maybe(libs.globals.il_version_number)).
+:- mode get_maybe_il_version_number((builtin.in), (builtin.out)) is det.
+:- pred get_maybe_thread_safe(libs.globals.globals, libs.globals.may_be_thread_safe).
+:- mode get_maybe_thread_safe((builtin.in), (builtin.out)) is det.
+:- pred get_options(libs.globals.globals, libs.options.option_table).
+:- mode get_options((builtin.in), (builtin.out)) is det.
+:- pred get_reuse_strategy(libs.globals.globals, libs.globals.reuse_strategy).
+:- mode get_reuse_strategy((builtin.in), (builtin.out)) is det.
+:- pred get_tags_method(libs.globals.globals, libs.globals.tags_method).
+:- mode get_tags_method((builtin.in), (builtin.out)) is det.
+:- pred get_target(libs.globals.globals, libs.globals.compilation_target).
+:- mode get_target((builtin.in), (builtin.out)) is det.
+:- pred get_target_env_type(libs.globals.globals, libs.globals.env_type).
+:- mode get_target_env_type((builtin.in), (builtin.out)) is det.
+:- pred get_termination2_norm(libs.globals.globals, libs.globals.termination_norm).
+:- mode get_termination2_norm((builtin.in), (builtin.out)) is det.
+:- pred get_termination_norm(libs.globals.globals, libs.globals.termination_norm).
+:- mode get_termination_norm((builtin.in), (builtin.out)) is det.
+:- pred get_trace_level(libs.globals.globals, libs.trace_params.trace_level).
+:- mode get_trace_level((builtin.in), (builtin.out)) is det.
+:- pred get_trace_suppress(libs.globals.globals, libs.trace_params.trace_suppress_items).
+:- mode get_trace_suppress((builtin.in), (builtin.out)) is det.
+:- pred globals_init(libs.options.option_table, libs.globals.compilation_target, libs.globals.gc_method, libs.globals.tags_method, libs.globals.termination_norm, libs.globals.termination_norm, libs.trace_params.trace_level, libs.trace_params.trace_suppress_items, libs.globals.may_be_thread_safe, libs.globals.c_compiler_type, libs.globals.reuse_strategy, maybe.maybe(libs.globals.il_version_number), maybe.maybe(mdbcomp.feedback.feedback_info), libs.globals.env_type, libs.globals.env_type, libs.globals.globals).
+:- mode globals_init((builtin.in), (builtin.in), (builtin.in), (builtin.in), (builtin.in), (builtin.in), (builtin.in), (builtin.in), (builtin.in), (builtin.in), (builtin.in), (builtin.in), (builtin.in), (builtin.in), (builtin.in), (builtin.out)) is det.
+:- pred globals_init_mutables(libs.globals.globals, io.io, io.io).
+:- mode globals_init_mutables((builtin.in), (builtin.di), (builtin.uo)) is det.
+:- pred io_get_disable_generate_item_version_numbers(bool.bool, io.io, io.io).
+:- mode io_get_disable_generate_item_version_numbers((builtin.out), (builtin.di), (builtin.uo)) is det.
+:- pred io_get_disable_smart_recompilation(bool.bool, io.io, io.io).
+:- mode io_get_disable_smart_recompilation((builtin.out), (builtin.di), (builtin.uo)) is det.
+:- pred io_get_extra_error_info(bool.bool, io.io, io.io).
+:- mode io_get_extra_error_info((builtin.out), (builtin.di), (builtin.uo)) is det.
+:- pred io_get_maybe_source_file_map(maybe.maybe(libs.globals.source_file_map), io.io, io.io).
+:- mode io_get_maybe_source_file_map((builtin.out), (builtin.di), (builtin.uo)) is det.
+:- pred io_set_disable_generate_item_version_numbers(bool.bool, io.io, io.io).
+:- mode io_set_disable_generate_item_version_numbers((builtin.in), (builtin.di), (builtin.uo)) is det.
+:- pred io_set_disable_smart_recompilation(bool.bool, io.io, io.io).
+:- mode io_set_disable_smart_recompilation((builtin.in), (builtin.di), (builtin.uo)) is det.
+:- pred io_set_extra_error_info(bool.bool, io.io, io.io).
+:- mode io_set_extra_error_info((builtin.in), (builtin.di), (builtin.uo)) is det.
+:- pred io_set_maybe_source_file_map(maybe.maybe(libs.globals.source_file_map), io.io, io.io).
+:- mode io_set_maybe_source_file_map((builtin.in), (builtin.di), (builtin.uo)) is det.
+:- pred lookup_accumulating_option(libs.globals.globals, libs.options.option, list.list(string)).
+:- mode lookup_accumulating_option((builtin.in), (builtin.in), (builtin.out)) is det.
+:- pred lookup_bool_option(libs.globals.globals, libs.options.option, bool.bool).
+:- mode lookup_bool_option((builtin.in), (builtin.in), (builtin.out)) is det.
+:- mode lookup_bool_option((builtin.in), (builtin.in), (builtin.in)) is semidet.
+:- pred lookup_int_option(libs.globals.globals, libs.options.option, int).
+:- mode lookup_int_option((builtin.in), (builtin.in), (builtin.out)) is det.
+:- pred lookup_maybe_string_option(libs.globals.globals, libs.options.option, maybe.maybe(string)).
+:- mode lookup_maybe_string_option((builtin.in), (builtin.in), (builtin.out)) is det.
+:- pred lookup_option(libs.globals.globals, libs.options.option, getopt_io.option_data).
+:- mode lookup_option((builtin.in), (builtin.in), (builtin.out)) is det.
+:- pred lookup_string_option(libs.globals.globals, libs.options.option, string).
+:- mode lookup_string_option((builtin.in), (builtin.in), (builtin.out)) is det.
+:- semipure pred semipure_get_solver_auto_init_supported(bool.bool).
+:- mode semipure_get_solver_auto_init_supported((builtin.out)) is det.
+:- pred set_gc_method(libs.globals.gc_method, libs.globals.globals, libs.globals.globals).
+:- mode set_gc_method((builtin.in), (builtin.in), (builtin.out)) is det.
+:- pred set_maybe_feedback_info(maybe.maybe(mdbcomp.feedback.feedback_info), libs.globals.globals, libs.globals.globals).
+:- mode set_maybe_feedback_info((builtin.in), (builtin.in), (builtin.out)) is det.
+:- pred set_option(libs.options.option, getopt_io.option_data, libs.globals.globals, libs.globals.globals).
+:- mode set_option((builtin.in), (builtin.in), (builtin.in), (builtin.out)) is det.
+:- pred set_options(libs.options.option_table, libs.globals.globals, libs.globals.globals).
+:- mode set_options((builtin.in), (builtin.in), (builtin.out)) is det.
+:- pred set_tags_method(libs.globals.tags_method, libs.globals.globals, libs.globals.globals).
+:- mode set_tags_method((builtin.in), (builtin.in), (builtin.out)) is det.
+:- pred set_trace_level(libs.trace_params.trace_level, libs.globals.globals, libs.globals.globals).
+:- mode set_trace_level((builtin.in), (builtin.in), (builtin.out)) is det.
+:- pred set_trace_level_none(libs.globals.globals, libs.globals.globals).
+:- mode set_trace_level_none((builtin.in), (builtin.out)) is det.
+:- func simple_foreign_language_string(libs.globals.foreign_language) = string.
+:- pred want_return_var_layouts(libs.globals.globals, bool.bool).
+:- mode want_return_var_layouts((builtin.in), (builtin.out)) is det.

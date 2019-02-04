@@ -1,0 +1,14 @@
+:- module globals.
+:- interface.
+:- import_module bool.
+:- import_module getopt.
+:- import_module io.
+:- import_module list.
+:- import_module options.
+:- type globals.
+:- type what_to_profile
+	--->	memory_words 
+	;	memory_cells 
+	;	user_plus_system_time 
+	;	user_time 
+	;	real_time .

@@ -1,0 +1,150 @@
+:- module io.
+:- interface.
+:- import_module bitmap.
+:- import_module bool.
+:- import_module char.
+:- import_module deconstruct.
+:- import_module list.
+:- import_module map.
+:- import_module maybe.
+:- import_module ops.
+:- import_module stream.
+:- import_module string.
+:- import_module time.
+:- import_module univ.
+:- type access_type
+	--->	read 
+	;	write 
+	;	execute .
+:- type binary_input_stream.
+:- type binary_output_stream.
+:- type error.
+:- type file_id.
+:- type file_type
+	--->	regular_file 
+	;	directory 
+	;	symbolic_link 
+	;	named_pipe 
+	;	socket 
+	;	character_device 
+	;	block_device 
+	;	message_queue 
+	;	semaphore 
+	;	shared_memory 
+	;	unknown .
+:- type input_stream.
+:- type io == io.state.
+:- type maybe_stream_info
+	--->	stream((io.maybe_stream_id) :: int, (io.maybe_stream_mode) :: io.stream_mode, (io.maybe_stream_content) :: io.stream_content, (io.maybe_stream_source) :: io.stream_source)
+	;	unknown_stream .
+:- type output_stream.
+:- type poly_type == string.poly_type.
+:- type posn
+	--->	posn(int, int, int).
+:- type res
+	--->	ok 
+	;	error(io.error).
+:- type result
+	--->	ok 
+	;	eof 
+	;	error(io.error).
+:- type state.
+:- type stream_content
+	--->	text 
+	;	binary 
+	;	preopen .
+:- type stream_db == map.map(io.stream_id, io.stream_info).
+:- type stream_id.
+:- type stream_info
+	--->	stream((io.stream_id) :: int, (io.stream_mode) :: io.stream_mode, (io.stream_content) :: io.stream_content, (io.stream_source) :: io.stream_source).
+:- type stream_mode
+	--->	input 
+	;	output 
+	;	append .
+:- type stream_source
+	--->	file(string)
+	;	stdin 
+	;	stdout 
+	;	stderr .
+:- type system_error.
+:- pragma foreign_type(il, system_error, "class [mscorlib]System.Exception").
+:- pragma foreign_type(c, system_error, "MR_Integer").
+:- pragma foreign_type(java, system_error, "java.lang.Exception").
+:- pragma foreign_type(csharp, system_error, "System.Exception").
+:- pragma foreign_type(erlang, system_error, "").
+:- type system_result
+	--->	exited(int)
+	;	signalled(int).
+:- type text_input_stream == io.input_stream.
+:- type text_output_stream == io.output_stream.
+:- type whence
+	--->	set 
+	;	cur 
+	;	end .
+:- type maybe_partial_res(T)
+	--->	ok(T)
+	;	error(T, io.error).
+:- type read_result(T)
+	--->	ok(T)
+	;	eof 
+	;	error(string, int).
+:- type res(T)
+	--->	ok(T)
+	;	error(io.error).
+:- type result(T)
+	--->	ok(T)
+	;	eof 
+	;	error(io.error).
+:- inst (maybe_partial_res(T)) == bound(error(T, ground) ; ok(T)).
+:- instance (stream.bulk_reader(io.binary_input_stream, int, bitmap.bitmap, io.io, io.error)).
+:- instance (stream.error(io.error)).
+:- instance (stream.input(io.binary_input_stream, io.io)).
+:- instance (stream.input(io.input_stream, io.io)).
+:- instance (stream.line_oriented(io.input_stream, io.io)).
+:- instance (stream.line_oriented(io.output_stream, io.io)).
+:- instance (stream.output(io.binary_output_stream, io.io)).
+:- instance (stream.output(io.output_stream, io.io)).
+:- instance (stream.putback(io.binary_input_stream, int, io.io, io.error)).
+:- instance (stream.putback(io.input_stream, char.char, io.io, io.error)).
+:- instance (stream.reader(io.binary_input_stream, int, io.io, io.error)).
+:- instance (stream.reader(io.input_stream, char.char, io.io, io.error)).
+:- instance (stream.reader(io.input_stream, string.line, io.io, io.error)).
+:- instance (stream.reader(io.input_stream, string.text_file, io.io, io.error)).
+:- instance (stream.seekable(io.binary_input_stream, io.io)).
+:- instance (stream.seekable(io.binary_output_stream, io.io)).
+:- instance (stream.stream(io.binary_input_stream, io.io)).
+:- instance (stream.stream(io.binary_output_stream, io.io)).
+:- instance (stream.stream(io.input_stream, io.io)).
+:- instance (stream.stream(io.output_stream, io.io)).
+:- instance (stream.writer(io.binary_output_stream, bitmap.byte, io.io)).
+:- instance (stream.writer(io.binary_output_stream, bitmap.slice, io.io)).
+:- instance (stream.writer(io.output_stream, char.char, io.io)).
+:- instance (stream.writer(io.output_stream, univ.univ, io.io)).
+:- instance (stream.writer(io.output_stream, int, io.io)).
+:- instance (stream.writer(io.output_stream, float, io.io)).
+:- instance (stream.writer(io.output_stream, string, io.io)).
+:- implementation.
+:- type file_id
+	--->	file_id .
+:- pragma foreign_type(c, file_id, "ML_File_Id")
+	where	type_is_abstract_noncanonical.
+:- pragma foreign_type(erlang, file_id, "")
+	where	type_is_abstract_noncanonical.
+:- type state.
+:- pragma foreign_type(il, state, "valuetype [mscorlib]System.Int32", [can_pass_as_mercury_type]).
+:- pragma foreign_type(c, state, "MR_Word", [can_pass_as_mercury_type]).
+:- pragma foreign_type(java, state, "java.lang.Object", [can_pass_as_mercury_type]).
+:- pragma foreign_type(csharp, state, "int", [can_pass_as_mercury_type]).
+:- pragma foreign_type(erlang, state, "", [can_pass_as_mercury_type]).
+:- type stream_id == int.
+:- pragma foreign_import_module("C", io).
+:- pragma foreign_import_module("C#", io).
+:- pragma foreign_import_module("Java", io).
+:- pragma foreign_import_module("IL", io).
+:- pragma foreign_import_module("Erlang", io).
+:- pragma foreign_import_module("C", io).
+:- pragma foreign_import_module("C#", io).
+:- pragma foreign_import_module("Java", io).
+:- pragma foreign_import_module("IL", io).
+:- pragma foreign_import_module("Erlang", io).
+:- pragma foreign_import_module("C", string).

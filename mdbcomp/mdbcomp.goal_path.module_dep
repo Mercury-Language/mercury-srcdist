@@ -1,0 +1,13 @@
+module(1, "mdbcomp.goal_path.m",
+	(mdbcomp.goal_path),
+	{mdbcomp},
+	{builtin, array, bimap, char, list, map, maybe, private_builtin},
+	{builtin, array, bimap, char, list, map, maybe, assoc_list, cord, int, pair, require, string, svbimap, svmap, private_builtin},
+	{},
+	{},
+	{},
+	{},
+	{},
+	no_foreign_export,
+	no_main
+).

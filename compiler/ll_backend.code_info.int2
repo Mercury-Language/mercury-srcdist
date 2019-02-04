@@ -1,0 +1,56 @@
+:- module (ll_backend.code_info).
+:- interface.
+:- import_module assoc_list.
+:- import_module bool.
+:- import_module counter.
+:- import_module io.
+:- import_module list.
+:- import_module map.
+:- import_module maybe.
+:- import_module set.
+:- import_module term.
+:- import_module (check_hlds.type_util).
+:- import_module (hlds.code_model).
+:- import_module (hlds.hlds_data).
+:- import_module (hlds.hlds_goal).
+:- import_module (hlds.hlds_llds).
+:- import_module (hlds.hlds_module).
+:- import_module (hlds.hlds_pred).
+:- import_module (hlds.instmap).
+:- import_module (libs.globals).
+:- import_module (ll_backend.continuation_info).
+:- import_module (ll_backend.global_data).
+:- import_module (ll_backend.layout).
+:- import_module (ll_backend.llds).
+:- import_module (ll_backend.trace_gen).
+:- import_module (mdbcomp.goal_path).
+:- import_module (mdbcomp.prim_data).
+:- import_module (parse_tree.prog_data).
+:- type branch_end == maybe.maybe(ll_backend.code_info.branch_end_info).
+:- type branch_end_info.
+:- type call_direction
+	--->	caller 
+	;	callee .
+:- type code_info.
+:- type code_info_component
+	--->	cic_forward_live_vars 
+	;	cic_zombies 
+	;	cic_temps_in_use 
+	;	cic_par_conj_depth .
+:- type det_commit_info.
+:- type disj_hijack_info.
+:- type ite_hijack_info.
+:- type position_info.
+:- type resume_map.
+:- type resume_point_info.
+:- type semi_commit_info.
+:- type simple_neg_info.
+:- type temp_slot_persistence
+	--->	persistent_temp_slot 
+	;	non_persistent_temp_slot .
+:- implementation.
+:- import_module set.
+:- import_module stack.
+:- type fail_info.
+:- type resume_map == map.map(parse_tree.prog_data.prog_var, set.set(ll_backend.llds.lval)).
+:- type simple_neg_info == ll_backend.code_info.fail_info.

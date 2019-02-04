@@ -1,0 +1,906 @@
+/usr/bin/texi2dvi: Running etex --file-line-error './user_guide.texi_pp' ...
+This is pdfTeXk, Version 3.141592-1.40.3 (Web2C 7.5.6)
+ file:line:error style messages enabled.
+ %&-line parsing enabled.
+entering extended mode
+(./user_guide.texi_pp (./texinfo.tex Loading texinfo [version 2008-04-18.10]:
+pdf, fonts, page headings, tables, conditionals, indexing, sectioning, toc,
+environments, defuns, macros, cross references, insertions, localization,
+formatting, and turning on texinfo input format.) [1] [2] [-1] Chapter 1
+Chapter 2
+Underfull \hbox (badness 10000) in paragraph at lines 171--193
+@textrm `@texttt --make-private-interface[]@textrm '[] (or `@texttt --make-priv
+-int[]@textrm '[]), `@texttt --make-short-interface[]@textrm '[]
+Cross reference values unknown; you must run TeX again.
+Underfull \hbox (badness 4108) in paragraph at lines 204--215
+[]@textrm `@texttt .c_date[]@textrm '[], `@texttt .il_date[]@textrm '[], `@text
+tt .cs_date[]@textrm '[], `@texttt .java_date[]@textrm '[], `@texttt .erl_date[
+]@textrm '[], `@texttt .s_date[]@textrm '[] and
+[1] Chapter 3 [2] [3] Chapter 4 Chapter 5 [4]
+Overfull \hbox (1.17876pt too wide) in paragraph at lines 526--533
+[]@textrm Mmake's builtin rules are de-fined by the file `@textttsl pre-fix@tex
+ttt /lib/mercury/mmake/Mmake.rules[]@textrm '[]
+
+Underfull \hbox (badness 2753) in paragraph at lines 536--542
+ @textrm op-ti-miza-tion per-formed (see $@textsy h$@textrm un-de-fined$@textsy
+ i$ @textrm [Over-all op-ti-miza-tion op-tions],
+[5]
+Underfull \hbox (badness 10000) in paragraph at lines 598--615
+ @textrm `@texttt lib@textttsl main-module@texttt .so[]@textrm '[], `@textttsl 
+main-module@texttt .init[]@textrm '[], `@textttsl main-module@texttt .dep[]@tex
+trm '[] and
+[6] [7] [8]
+Underfull \hbox (badness 10000) in paragraph at lines 845--848
+[]@textrm Mmake has a few op-tions, in-clud-ing `@texttt --use-subdirs[]@textrm
+ '[], `@texttt --use-mmc-make[]@textrm '[],
+[9] Chapter 6
+Underfull \hbox (badness 10000) in paragraph at lines 939--943
+@textrm This de-fines a mod-ule `@texttt mypackage[]@textrm '[] con-tain-ing su
+b-modules `@texttt mypackage:foo[]@textrm '[],
+[10]
+Overfull \hbox (20.69044pt too wide) in paragraph at lines 1028--1028
+ []@texttt mmc ... --ml mypackage ... --ml myotherlib ... --ml my_yet_another_l
+ib ...[] 
+[11]
+Overfull \hbox (26.43913pt too wide) in paragraph at lines 1084--1084
+ []        @texttt --link-object <dir>/Mercury/<grade>/*/Mercury/lib/libmypacka
+ge.a \\[] 
+[12] [13] [14] Chapter 7 [15] [16] [17] [18] [19] [20] [21] [22] [23] [24]
+[25] [26] [27] [28] [29] [30] [31] [32] [33] [34] [35] [36] [37] [38] [39]
+[40] [41] [42] [43] [44] [45] [46] [47] [48] [49] [50] [51] [52] [53]
+Underfull \hbox (badness 2865) in paragraph at lines 4115--4127
+ []@textrm The ar-gu-ments sup-plied to the `@texttt --pass-trace-counts[]@text
+rm '[] (or `@texttt -p[]@textrm '[]) and
+
+Underfull \hbox (badness 2119) in paragraph at lines 4115--4127
+ @textrm `@texttt fail_trace_counts[]@textrm '[] and `@texttt pass_trace_counts
+[]@textrm '[] con-fig-u-ra-tion pa-ram-e-ters
+[54] [55] [56] [57] [58] [59] [60] [61] [62] [63] [64] [65] [66] [67] [68]
+[69] [70] [71]
+Underfull \hbox (badness 2213) in paragraph at lines 5257--5264
+[]@textrm `@texttt mtc[]@textrm '[] also sup-ports two more op-tions in-tended 
+for cov-er-age test-ing: `@texttt -s[]@textrm '[] or
+
+Underfull \hbox (badness 3657) in paragraph at lines 5257--5264
+@textrm `@texttt --summary-file[]@textrm '[], and `@texttt --summary-count[]@te
+xtrm '[]. These each set an op-tion in the
+
+Underfull \hbox (badness 10000) in paragraph at lines 5257--5264
+@textrm `@texttt MERCURY_OPTIONS[]@textrm '[] en-vi-ron-ment vari-able, `@textt
+t --trace-count-summary-file[]@textrm '[] and
+[72] [73] [74] [75]
+Overfull \hbox (37.93651pt too wide) in paragraph at lines 5466--5466
+ []@texttt mdice [-s sortspec] [-l N] [-m module] [-n N] [-p N] [-f N] passfile
+ failfile[] 
+[76] Chapter 8 [77] [78] [79]
+Overfull \hbox (32.18782pt too wide) in paragraph at lines 5850--5850
+ []                @texttt 0.00        0.00       1/1           io.init_state/2
+(0) [11][] 
+
+Overfull \hbox (20.69044pt too wide) in paragraph at lines 5855--5855
+ []                @texttt 0.00        0.75       1/1           call_engine_lab
+el [1][] 
+[80]
+Overfull \hbox (14.94176pt too wide) in paragraph at lines 5864--5864
+ []                @texttt 0.00        0.00       1/1           print_list/3(0)
+ [16][] 
+
+Overfull \hbox (43.6852pt too wide) in paragraph at lines 5865--5865
+ []                @texttt 0.00        0.00       1/10          io.write_string
+/3(0) [18][] 
+
+Overfull \hbox (14.94176pt too wide) in paragraph at lines 5879--5879
+ []                @texttt 0.00        0.60    5914/5914        list.insert/3(2
+) [7][] 
+
+Overfull \hbox (14.94176pt too wide) in paragraph at lines 5886--5886
+ []                @texttt 0.60        0.60    5914/5914        list.delete/3(3
+) [8][] 
+
+Overfull \hbox (14.94176pt too wide) in paragraph at lines 5890--5890
+ []                                   @texttt 40319             list.delete/3(3
+) [8][] 
+
+Overfull \hbox (14.94176pt too wide) in paragraph at lines 5891--5891
+ []                @texttt 0.60        0.60    5914/5914        list.insert/3(2
+) [7][] 
+
+Overfull \hbox (14.94176pt too wide) in paragraph at lines 5893--5893
+ []                                   @texttt 40319             list.delete/3(3
+) [8][] 
+
+Overfull \hbox (20.69044pt too wide) in paragraph at lines 5897--5897
+ []                @texttt 0.00        0.00       3/69283       tree234.set/4(0
+) [15][] 
+
+Overfull \hbox (83.92601pt too wide) in paragraph at lines 5900--5900
+ []                @texttt 0.00        0.00       3/3           __Compare___io_
+_stream/0(0) [20][] 
+
+Overfull \hbox (66.67995pt too wide) in paragraph at lines 5901--5901
+ []                @texttt 0.00        0.00   69280/69280       builtin_compare
+_int/3(0) [27][] 
+[81] [82]
+Underfull \hbox (badness 3019) in paragraph at lines 6006--6022
+@textrm tion con-tained in a deep pro-fil-ing data file (which will be called `
+@texttt Deep.data[]@textrm '[]
+
+Underfull \hbox (badness 10000) in paragraph at lines 6006--6022
+@textrm `@texttt http://server.domain.name/cgi-bin/mdprof_cgi?/full/path/name/D
+eep.data[]@textrm '[].
+[83] [84] Chapter 9 [85]
+Underfull \hbox (badness 10000) in paragraph at lines 6258--6260
+ []@textrm Don't warn about ar-gu-ment or-der re-ar-range-ment caused by
+[86] [87] [88] [89] [90] [91] [92] [93] [94] [95] [96]
+Underfull \hbox (badness 2608) in paragraph at lines 7247--7253
+ @textrm of each pred-i-cate to see whether it ter-mi-nates. The `@texttt termi
+nates[]@textrm '[],
+
+Underfull \hbox (badness 10000) in paragraph at lines 7247--7253
+ @textrm `@texttt does_not_terminate[]@textrm '[] and `@texttt check_terminatio
+n[]@textrm '[] prag-mas have no
+[97] [98] [99]
+Underfull \hbox (badness 10000) in paragraph at lines 7493--7495
+ @textrm `@texttt none[]@textrm '[]@texttt --target c --no-gcc-global-registers
+ --no-gcc-nonlocal-
+
+Underfull \hbox (badness 10000) in paragraph at lines 7496--7498
+ @textrm `@texttt reg[]@textrm '[]@texttt --target c --gcc-global-registers --n
+o-gcc-nonlocal-
+
+Underfull \hbox (badness 10000) in paragraph at lines 7499--7501
+ @textrm `@texttt jump[]@textrm '[]@texttt --target c --no-gcc-global-registers
+ --gcc-nonlocal-
+
+Underfull \hbox (badness 10000) in paragraph at lines 7502--7504
+ @textrm `@texttt fast[]@textrm '[]@texttt --target c --gcc-global-registers --
+gcc-nonlocal-gotos
+
+Underfull \hbox (badness 10000) in paragraph at lines 7506--7507
+ []@texttt --target c --no-gcc-global-registers --gcc-nonlocal-
+
+Underfull \hbox (badness 10000) in paragraph at lines 7509--7510
+ []@texttt --target c --gcc-global-registers --gcc-nonlocal-gotos
+[100] [101] [102]
+Underfull \hbox (badness 4266) in paragraph at lines 7918--7922
+ []@textrm Enable ex-per-i-men-tal com-plex-ity anal-y-sis for the pred-i-cates
+ listed in
+
+Underfull \hbox (badness 2134) in paragraph at lines 7918--7922
+ @textrm the given file. This op-tion is sup-ported for the C back-end, with
+[103] [104] [105] [106] [107]
+Underfull \hbox (badness 6758) in paragraph at lines 8358--8365
+ @textrm `@texttt --transitive-intermodule-optimization[]@textrm '[] does not w
+ork with `@texttt mmc
+[108] [109] [110]
+Underfull \hbox (badness 10000) in paragraph at lines 8567--8571
+ []@textrm Set the max-i-mum goal size of spe-cial-ized ver-sions cre-ated by
+
+Underfull \hbox (badness 10000) in paragraph at lines 8567--8571
+ @textrm `@texttt --optimize-higher-order[]@textrm '[] and `@texttt --type-spec
+ialization[]@textrm '[]. Goal
+[111] [112] [113] [114] [115] [116] [117] [118] [119] [120] [121] [122]
+Underfull \hbox (badness 6510) in paragraph at lines 9693--9700
+ []@textrm Search @textsl di-rec-tory @textrm for Mer-cury li-brary files have 
+not yet been in-
+
+Overfull \hbox (1.84586pt too wide) in paragraph at lines 9693--9700
+ @textrm `@texttt --intermod-directory[]@textrm '[], `@texttt --library-directo
+ry[]@textrm '[], `@texttt --init-file-directory[]@textrm '[],
+
+Overfull \hbox (61.58371pt too wide) in paragraph at lines 9708--9714
+ @textrm `@texttt --init-file-directory[]@textrm '[], `@texttt --c-include-dire
+ctory[]@textrm '[] and `@texttt --erlang-include-directory[]@textrm '[]
+[123]
+Underfull \hbox (badness 10000) in paragraph at lines 9729--9732
+ []@textrm Search @textsl di-rec-tory @textrm for the Mer-cury stan-dard li-bra
+ry. Im-plies
+
+Overfull \hbox (57.40642pt too wide) in paragraph at lines 9729--9732
+ @textrm `@texttt --mercury-library-directory @textttsl di-rec-tory[]@textrm '[
+] and `@texttt --mercury-configuration-directory
+
+Overfull \hbox (67.87207pt too wide) in paragraph at lines 9738--9740
+ []@textrm Don't use the Mer-cury stan-dard li-brary. Im-plies `@texttt --no-me
+rcury-configuration-directory[]@textrm '[]. 
+[124] Chapter 10
+Underfull \hbox (badness 10000) in paragraph at lines 9871--9875
+ []@textrm The di-rec-tory con-tain-ing the in-stalled Mer-cury stan-dard li-br
+ary.
+
+Underfull \hbox (badness 3354) in paragraph at lines 9871--9875
+ @textrm `@texttt c2init[]@textrm '[] scripts over-ride the set-ting of the MER
+-CURY[]STDLIB[]DIR
+[125] [126]
+Underfull \hbox (badness 10000) in paragraph at lines 10016--10019
+ @texttt `p[]'[][]@textrm Profile user time plus sys-tem time (us-ing
+[127] [128] [129] [130] [131] Chapter 11
+Overfull \hbox (72.92915pt too wide) in paragraph at lines 10476--10479
+ @textrm spec-i-fy-ing the dif-fer-ent C com-piler, e.g. `@texttt mercury_confi
+g --output-prefix=/usr/local/mercury-cc
+Chapter 12 [132] Chapter 13
+Underfull \hbox (badness 10000) in paragraph at lines 10563--10570
+[]@textrm A stand-alone in-ter-face is cre-ated by in-vok-ing the com-piler wit
+h the
+[133] (Index) [134] )
+(see the transcript file for additional information)
+Output written on user_guide.dvi (137 pages, 412184 bytes).
+Transcript written on user_guide.log.
+/usr/bin/texi2dvi: Running etex --file-line-error './user_guide.texi_pp' ...
+This is pdfTeXk, Version 3.141592-1.40.3 (Web2C 7.5.6)
+ file:line:error style messages enabled.
+ %&-line parsing enabled.
+entering extended mode
+(./user_guide.texi_pp (./texinfo.tex Loading texinfo [version 2008-04-18.10]:
+pdf, fonts, page headings, tables, conditionals, indexing, sectioning, toc,
+environments, defuns, macros, cross references, insertions, localization,
+formatting, and turning on texinfo input format.) (./user_guide.aux) [1]
+[2] (./user_guide.toc [-1] [-2]) [-3] Chapter 1 Chapter 2
+Underfull \hbox (badness 10000) in paragraph at lines 171--193
+@textrm `@texttt --make-private-interface[]@textrm '[] (or `@texttt --make-priv
+-int[]@textrm '[]), `@texttt --make-short-interface[]@textrm '[]
+
+Underfull \hbox (badness 4108) in paragraph at lines 204--215
+[]@textrm `@texttt .c_date[]@textrm '[], `@texttt .il_date[]@textrm '[], `@text
+tt .cs_date[]@textrm '[], `@texttt .java_date[]@textrm '[], `@texttt .erl_date[
+]@textrm '[], `@texttt .s_date[]@textrm '[] and
+[1] Chapter 3 [2] [3] Chapter 4 Chapter 5 [4]
+Overfull \hbox (1.17876pt too wide) in paragraph at lines 526--533
+[]@textrm Mmake's builtin rules are de-fined by the file `@textttsl pre-fix@tex
+ttt /lib/mercury/mmake/Mmake.rules[]@textrm '[]
+[5]
+Underfull \hbox (badness 10000) in paragraph at lines 598--615
+ @textrm `@texttt lib@textttsl main-module@texttt .so[]@textrm '[], `@textttsl 
+main-module@texttt .init[]@textrm '[], `@textttsl main-module@texttt .dep[]@tex
+trm '[] and
+[6] [7] [8]
+Underfull \hbox (badness 10000) in paragraph at lines 845--848
+[]@textrm Mmake has a few op-tions, in-clud-ing `@texttt --use-subdirs[]@textrm
+ '[], `@texttt --use-mmc-make[]@textrm '[],
+[9] Chapter 6
+Underfull \hbox (badness 10000) in paragraph at lines 939--943
+@textrm This de-fines a mod-ule `@texttt mypackage[]@textrm '[] con-tain-ing su
+b-modules `@texttt mypackage:foo[]@textrm '[],
+[10]
+Overfull \hbox (20.69044pt too wide) in paragraph at lines 1028--1028
+ []@texttt mmc ... --ml mypackage ... --ml myotherlib ... --ml my_yet_another_l
+ib ...[] 
+[11]
+Overfull \hbox (26.43913pt too wide) in paragraph at lines 1084--1084
+ []        @texttt --link-object <dir>/Mercury/<grade>/*/Mercury/lib/libmypacka
+ge.a \\[] 
+[12] [13] Chapter 7 [14] [15] [16] [17] [18] [19] [20] [21] [22] [23] [24]
+[25] [26] [27] [28] [29] [30] [31] [32] [33] [34] [35] [36] [37] [38] [39]
+[40] [41] [42] [43] [44] [45] [46] [47] [48] [49] [50] [51] [52] [53]
+Underfull \hbox (badness 2865) in paragraph at lines 4115--4127
+ []@textrm The ar-gu-ments sup-plied to the `@texttt --pass-trace-counts[]@text
+rm '[] (or `@texttt -p[]@textrm '[]) and
+
+Underfull \hbox (badness 2119) in paragraph at lines 4115--4127
+ @textrm `@texttt fail_trace_counts[]@textrm '[] and `@texttt pass_trace_counts
+[]@textrm '[] con-fig-u-ra-tion pa-ram-e-ters
+[54] [55] [56] [57] [58] [59] [60] [61] [62] [63] [64] [65] [66] [67] [68]
+[69] [70] [71]
+Underfull \hbox (badness 2213) in paragraph at lines 5257--5264
+[]@textrm `@texttt mtc[]@textrm '[] also sup-ports two more op-tions in-tended 
+for cov-er-age test-ing: `@texttt -s[]@textrm '[] or
+
+Underfull \hbox (badness 3657) in paragraph at lines 5257--5264
+@textrm `@texttt --summary-file[]@textrm '[], and `@texttt --summary-count[]@te
+xtrm '[]. These each set an op-tion in the
+
+Underfull \hbox (badness 10000) in paragraph at lines 5257--5264
+@textrm `@texttt MERCURY_OPTIONS[]@textrm '[] en-vi-ron-ment vari-able, `@textt
+t --trace-count-summary-file[]@textrm '[] and
+[72] [73] [74]
+Overfull \hbox (37.93651pt too wide) in paragraph at lines 5466--5466
+ []@texttt mdice [-s sortspec] [-l N] [-m module] [-n N] [-p N] [-f N] passfile
+ failfile[] 
+[75] [76] Chapter 8 [77] [78] [79]
+Overfull \hbox (32.18782pt too wide) in paragraph at lines 5850--5850
+ []                @texttt 0.00        0.00       1/1           io.init_state/2
+(0) [11][] 
+
+Overfull \hbox (20.69044pt too wide) in paragraph at lines 5855--5855
+ []                @texttt 0.00        0.75       1/1           call_engine_lab
+el [1][] 
+
+Overfull \hbox (14.94176pt too wide) in paragraph at lines 5864--5864
+ []                @texttt 0.00        0.00       1/1           print_list/3(0)
+ [16][] 
+
+Overfull \hbox (43.6852pt too wide) in paragraph at lines 5865--5865
+ []                @texttt 0.00        0.00       1/10          io.write_string
+/3(0) [18][] 
+[80]
+Overfull \hbox (14.94176pt too wide) in paragraph at lines 5879--5879
+ []                @texttt 0.00        0.60    5914/5914        list.insert/3(2
+) [7][] 
+
+Overfull \hbox (14.94176pt too wide) in paragraph at lines 5886--5886
+ []                @texttt 0.60        0.60    5914/5914        list.delete/3(3
+) [8][] 
+
+Overfull \hbox (14.94176pt too wide) in paragraph at lines 5890--5890
+ []                                   @texttt 40319             list.delete/3(3
+) [8][] 
+
+Overfull \hbox (14.94176pt too wide) in paragraph at lines 5891--5891
+ []                @texttt 0.60        0.60    5914/5914        list.insert/3(2
+) [7][] 
+
+Overfull \hbox (14.94176pt too wide) in paragraph at lines 5893--5893
+ []                                   @texttt 40319             list.delete/3(3
+) [8][] 
+
+Overfull \hbox (20.69044pt too wide) in paragraph at lines 5897--5897
+ []                @texttt 0.00        0.00       3/69283       tree234.set/4(0
+) [15][] 
+
+Overfull \hbox (83.92601pt too wide) in paragraph at lines 5900--5900
+ []                @texttt 0.00        0.00       3/3           __Compare___io_
+_stream/0(0) [20][] 
+
+Overfull \hbox (66.67995pt too wide) in paragraph at lines 5901--5901
+ []                @texttt 0.00        0.00   69280/69280       builtin_compare
+_int/3(0) [27][] 
+[81]
+Underfull \hbox (badness 3019) in paragraph at lines 6006--6022
+@textrm tion con-tained in a deep pro-fil-ing data file (which will be called `
+@texttt Deep.data[]@textrm '[]
+
+Underfull \hbox (badness 10000) in paragraph at lines 6006--6022
+@textrm `@texttt http://server.domain.name/cgi-bin/mdprof_cgi?/full/path/name/D
+eep.data[]@textrm '[].
+[82] [83] Chapter 9 [84]
+Underfull \hbox (badness 10000) in paragraph at lines 6258--6260
+ []@textrm Don't warn about ar-gu-ment or-der re-ar-range-ment caused by
+[85] [86] [87] [88] [89] [90] [91] [92] [93] [94] [95] [96]
+Underfull \hbox (badness 2608) in paragraph at lines 7247--7253
+ @textrm of each pred-i-cate to see whether it ter-mi-nates. The `@texttt termi
+nates[]@textrm '[],
+
+Underfull \hbox (badness 10000) in paragraph at lines 7247--7253
+ @textrm `@texttt does_not_terminate[]@textrm '[] and `@texttt check_terminatio
+n[]@textrm '[] prag-mas have no
+[97] [98]
+Underfull \hbox (badness 10000) in paragraph at lines 7493--7495
+ @textrm `@texttt none[]@textrm '[]@texttt --target c --no-gcc-global-registers
+ --no-gcc-nonlocal-
+[99]
+Underfull \hbox (badness 10000) in paragraph at lines 7496--7498
+ @textrm `@texttt reg[]@textrm '[]@texttt --target c --gcc-global-registers --n
+o-gcc-nonlocal-
+
+Underfull \hbox (badness 10000) in paragraph at lines 7499--7501
+ @textrm `@texttt jump[]@textrm '[]@texttt --target c --no-gcc-global-registers
+ --gcc-nonlocal-
+
+Underfull \hbox (badness 10000) in paragraph at lines 7502--7504
+ @textrm `@texttt fast[]@textrm '[]@texttt --target c --gcc-global-registers --
+gcc-nonlocal-gotos
+
+Underfull \hbox (badness 10000) in paragraph at lines 7506--7507
+ []@texttt --target c --no-gcc-global-registers --gcc-nonlocal-
+
+Underfull \hbox (badness 10000) in paragraph at lines 7509--7510
+ []@texttt --target c --gcc-global-registers --gcc-nonlocal-gotos
+[100] [101] [102]
+Underfull \hbox (badness 4266) in paragraph at lines 7918--7922
+ []@textrm Enable ex-per-i-men-tal com-plex-ity anal-y-sis for the pred-i-cates
+ listed in
+
+Underfull \hbox (badness 2134) in paragraph at lines 7918--7922
+ @textrm the given file. This op-tion is sup-ported for the C back-end, with
+[103] [104] [105] [106] [107]
+Underfull \hbox (badness 6758) in paragraph at lines 8358--8365
+ @textrm `@texttt --transitive-intermodule-optimization[]@textrm '[] does not w
+ork with `@texttt mmc
+[108] [109]
+Underfull \hbox (badness 10000) in paragraph at lines 8567--8571
+ []@textrm Set the max-i-mum goal size of spe-cial-ized ver-sions cre-ated by
+
+Underfull \hbox (badness 10000) in paragraph at lines 8567--8571
+ @textrm `@texttt --optimize-higher-order[]@textrm '[] and `@texttt --type-spec
+ialization[]@textrm '[]. Goal
+[110] [111] [112] [113] [114] [115] [116] [117] [118] [119] [120] [121]
+[122]
+Underfull \hbox (badness 6510) in paragraph at lines 9693--9700
+ []@textrm Search @textsl di-rec-tory @textrm for Mer-cury li-brary files have 
+not yet been in-
+
+Overfull \hbox (1.84586pt too wide) in paragraph at lines 9693--9700
+ @textrm `@texttt --intermod-directory[]@textrm '[], `@texttt --library-directo
+ry[]@textrm '[], `@texttt --init-file-directory[]@textrm '[],
+
+Overfull \hbox (61.58371pt too wide) in paragraph at lines 9708--9714
+ @textrm `@texttt --init-file-directory[]@textrm '[], `@texttt --c-include-dire
+ctory[]@textrm '[] and `@texttt --erlang-include-directory[]@textrm '[]
+[123]
+Underfull \hbox (badness 10000) in paragraph at lines 9729--9732
+ []@textrm Search @textsl di-rec-tory @textrm for the Mer-cury stan-dard li-bra
+ry. Im-plies
+
+Overfull \hbox (57.40642pt too wide) in paragraph at lines 9729--9732
+ @textrm `@texttt --mercury-library-directory @textttsl di-rec-tory[]@textrm '[
+] and `@texttt --mercury-configuration-directory
+
+Overfull \hbox (67.87207pt too wide) in paragraph at lines 9738--9740
+ []@textrm Don't use the Mer-cury stan-dard li-brary. Im-plies `@texttt --no-me
+rcury-configuration-directory[]@textrm '[]. 
+[124] Chapter 10
+Underfull \hbox (badness 10000) in paragraph at lines 9871--9875
+ []@textrm The di-rec-tory con-tain-ing the in-stalled Mer-cury stan-dard li-br
+ary.
+
+Underfull \hbox (badness 3354) in paragraph at lines 9871--9875
+ @textrm `@texttt c2init[]@textrm '[] scripts over-ride the set-ting of the MER
+-CURY[]STDLIB[]DIR
+[125] [126]
+Underfull \hbox (badness 10000) in paragraph at lines 10016--10019
+ @texttt `p[]'[][]@textrm Profile user time plus sys-tem time (us-ing
+[127] [128] [129] [130] [131] Chapter 11
+Overfull \hbox (72.92915pt too wide) in paragraph at lines 10476--10479
+ @textrm spec-i-fy-ing the dif-fer-ent C com-piler, e.g. `@texttt mercury_confi
+g --output-prefix=/usr/local/mercury-cc
+Chapter 12 Chapter 13 [132]
+Underfull \hbox (badness 10000) in paragraph at lines 10563--10570
+[]@textrm A stand-alone in-ter-face is cre-ated by in-vok-ing the com-piler wit
+h the
+[133] (Index) (./user_guide.cps [134] [135] [136] [137] [138] [139] [140]
+[141] [142]) [143] )
+(see the transcript file for additional information)
+Output written on user_guide.dvi (148 pages, 687588 bytes).
+Transcript written on user_guide.log.
+/usr/bin/texi2dvi: Running etex --file-line-error './user_guide.texi_pp' ...
+This is pdfTeXk, Version 3.141592-1.40.3 (Web2C 7.5.6)
+ file:line:error style messages enabled.
+ %&-line parsing enabled.
+entering extended mode
+(./user_guide.texi_pp (./texinfo.tex Loading texinfo [version 2008-04-18.10]:
+pdf, fonts, page headings, tables, conditionals, indexing, sectioning, toc,
+environments, defuns, macros, cross references, insertions, localization,
+formatting, and turning on texinfo input format.) (./user_guide.aux) [1]
+[2] (./user_guide.toc [-1] [-2]) [-3] Chapter 1 Chapter 2
+Underfull \hbox (badness 10000) in paragraph at lines 171--193
+@textrm `@texttt --make-private-interface[]@textrm '[] (or `@texttt --make-priv
+-int[]@textrm '[]), `@texttt --make-short-interface[]@textrm '[]
+
+Underfull \hbox (badness 4108) in paragraph at lines 204--215
+[]@textrm `@texttt .c_date[]@textrm '[], `@texttt .il_date[]@textrm '[], `@text
+tt .cs_date[]@textrm '[], `@texttt .java_date[]@textrm '[], `@texttt .erl_date[
+]@textrm '[], `@texttt .s_date[]@textrm '[] and
+[1] Chapter 3 [2] [3] Chapter 4 Chapter 5 [4]
+Overfull \hbox (1.17876pt too wide) in paragraph at lines 526--533
+[]@textrm Mmake's builtin rules are de-fined by the file `@textttsl pre-fix@tex
+ttt /lib/mercury/mmake/Mmake.rules[]@textrm '[]
+[5]
+Underfull \hbox (badness 10000) in paragraph at lines 598--615
+ @textrm `@texttt lib@textttsl main-module@texttt .so[]@textrm '[], `@textttsl 
+main-module@texttt .init[]@textrm '[], `@textttsl main-module@texttt .dep[]@tex
+trm '[] and
+[6] [7] [8]
+Underfull \hbox (badness 10000) in paragraph at lines 845--848
+[]@textrm Mmake has a few op-tions, in-clud-ing `@texttt --use-subdirs[]@textrm
+ '[], `@texttt --use-mmc-make[]@textrm '[],
+[9] Chapter 6
+Underfull \hbox (badness 10000) in paragraph at lines 939--943
+@textrm This de-fines a mod-ule `@texttt mypackage[]@textrm '[] con-tain-ing su
+b-modules `@texttt mypackage:foo[]@textrm '[],
+[10]
+Overfull \hbox (20.69044pt too wide) in paragraph at lines 1028--1028
+ []@texttt mmc ... --ml mypackage ... --ml myotherlib ... --ml my_yet_another_l
+ib ...[] 
+[11]
+Overfull \hbox (26.43913pt too wide) in paragraph at lines 1084--1084
+ []        @texttt --link-object <dir>/Mercury/<grade>/*/Mercury/lib/libmypacka
+ge.a \\[] 
+[12] [13] Chapter 7 [14] [15] [16] [17] [18] [19] [20] [21] [22] [23] [24]
+[25] [26] [27] [28] [29] [30] [31] [32] [33] [34] [35] [36] [37] [38] [39]
+[40] [41] [42] [43] [44] [45] [46] [47] [48] [49] [50] [51] [52] [53]
+Underfull \hbox (badness 2865) in paragraph at lines 4115--4127
+ []@textrm The ar-gu-ments sup-plied to the `@texttt --pass-trace-counts[]@text
+rm '[] (or `@texttt -p[]@textrm '[]) and
+
+Underfull \hbox (badness 2119) in paragraph at lines 4115--4127
+ @textrm `@texttt fail_trace_counts[]@textrm '[] and `@texttt pass_trace_counts
+[]@textrm '[] con-fig-u-ra-tion pa-ram-e-ters
+[54] [55] [56] [57] [58] [59] [60] [61] [62] [63] [64] [65] [66] [67] [68]
+[69] [70] [71]
+Underfull \hbox (badness 2213) in paragraph at lines 5257--5264
+[]@textrm `@texttt mtc[]@textrm '[] also sup-ports two more op-tions in-tended 
+for cov-er-age test-ing: `@texttt -s[]@textrm '[] or
+
+Underfull \hbox (badness 3657) in paragraph at lines 5257--5264
+@textrm `@texttt --summary-file[]@textrm '[], and `@texttt --summary-count[]@te
+xtrm '[]. These each set an op-tion in the
+
+Underfull \hbox (badness 10000) in paragraph at lines 5257--5264
+@textrm `@texttt MERCURY_OPTIONS[]@textrm '[] en-vi-ron-ment vari-able, `@textt
+t --trace-count-summary-file[]@textrm '[] and
+[72] [73] [74]
+Overfull \hbox (37.93651pt too wide) in paragraph at lines 5466--5466
+ []@texttt mdice [-s sortspec] [-l N] [-m module] [-n N] [-p N] [-f N] passfile
+ failfile[] 
+[75] [76] Chapter 8 [77] [78] [79]
+Overfull \hbox (32.18782pt too wide) in paragraph at lines 5850--5850
+ []                @texttt 0.00        0.00       1/1           io.init_state/2
+(0) [11][] 
+
+Overfull \hbox (20.69044pt too wide) in paragraph at lines 5855--5855
+ []                @texttt 0.00        0.75       1/1           call_engine_lab
+el [1][] 
+
+Overfull \hbox (14.94176pt too wide) in paragraph at lines 5864--5864
+ []                @texttt 0.00        0.00       1/1           print_list/3(0)
+ [16][] 
+
+Overfull \hbox (43.6852pt too wide) in paragraph at lines 5865--5865
+ []                @texttt 0.00        0.00       1/10          io.write_string
+/3(0) [18][] 
+[80]
+Overfull \hbox (14.94176pt too wide) in paragraph at lines 5879--5879
+ []                @texttt 0.00        0.60    5914/5914        list.insert/3(2
+) [7][] 
+
+Overfull \hbox (14.94176pt too wide) in paragraph at lines 5886--5886
+ []                @texttt 0.60        0.60    5914/5914        list.delete/3(3
+) [8][] 
+
+Overfull \hbox (14.94176pt too wide) in paragraph at lines 5890--5890
+ []                                   @texttt 40319             list.delete/3(3
+) [8][] 
+
+Overfull \hbox (14.94176pt too wide) in paragraph at lines 5891--5891
+ []                @texttt 0.60        0.60    5914/5914        list.insert/3(2
+) [7][] 
+
+Overfull \hbox (14.94176pt too wide) in paragraph at lines 5893--5893
+ []                                   @texttt 40319             list.delete/3(3
+) [8][] 
+
+Overfull \hbox (20.69044pt too wide) in paragraph at lines 5897--5897
+ []                @texttt 0.00        0.00       3/69283       tree234.set/4(0
+) [15][] 
+
+Overfull \hbox (83.92601pt too wide) in paragraph at lines 5900--5900
+ []                @texttt 0.00        0.00       3/3           __Compare___io_
+_stream/0(0) [20][] 
+
+Overfull \hbox (66.67995pt too wide) in paragraph at lines 5901--5901
+ []                @texttt 0.00        0.00   69280/69280       builtin_compare
+_int/3(0) [27][] 
+[81]
+Underfull \hbox (badness 3019) in paragraph at lines 6006--6022
+@textrm tion con-tained in a deep pro-fil-ing data file (which will be called `
+@texttt Deep.data[]@textrm '[]
+
+Underfull \hbox (badness 10000) in paragraph at lines 6006--6022
+@textrm `@texttt http://server.domain.name/cgi-bin/mdprof_cgi?/full/path/name/D
+eep.data[]@textrm '[].
+[82] [83] Chapter 9 [84]
+Underfull \hbox (badness 10000) in paragraph at lines 6258--6260
+ []@textrm Don't warn about ar-gu-ment or-der re-ar-range-ment caused by
+[85] [86] [87] [88] [89] [90] [91] [92] [93] [94] [95] [96]
+Underfull \hbox (badness 2608) in paragraph at lines 7247--7253
+ @textrm of each pred-i-cate to see whether it ter-mi-nates. The `@texttt termi
+nates[]@textrm '[],
+
+Underfull \hbox (badness 10000) in paragraph at lines 7247--7253
+ @textrm `@texttt does_not_terminate[]@textrm '[] and `@texttt check_terminatio
+n[]@textrm '[] prag-mas have no
+[97] [98]
+Underfull \hbox (badness 10000) in paragraph at lines 7493--7495
+ @textrm `@texttt none[]@textrm '[]@texttt --target c --no-gcc-global-registers
+ --no-gcc-nonlocal-
+[99]
+Underfull \hbox (badness 10000) in paragraph at lines 7496--7498
+ @textrm `@texttt reg[]@textrm '[]@texttt --target c --gcc-global-registers --n
+o-gcc-nonlocal-
+
+Underfull \hbox (badness 10000) in paragraph at lines 7499--7501
+ @textrm `@texttt jump[]@textrm '[]@texttt --target c --no-gcc-global-registers
+ --gcc-nonlocal-
+
+Underfull \hbox (badness 10000) in paragraph at lines 7502--7504
+ @textrm `@texttt fast[]@textrm '[]@texttt --target c --gcc-global-registers --
+gcc-nonlocal-gotos
+
+Underfull \hbox (badness 10000) in paragraph at lines 7506--7507
+ []@texttt --target c --no-gcc-global-registers --gcc-nonlocal-
+
+Underfull \hbox (badness 10000) in paragraph at lines 7509--7510
+ []@texttt --target c --gcc-global-registers --gcc-nonlocal-gotos
+[100] [101] [102]
+Underfull \hbox (badness 4266) in paragraph at lines 7918--7922
+ []@textrm Enable ex-per-i-men-tal com-plex-ity anal-y-sis for the pred-i-cates
+ listed in
+
+Underfull \hbox (badness 2134) in paragraph at lines 7918--7922
+ @textrm the given file. This op-tion is sup-ported for the C back-end, with
+[103] [104] [105] [106] [107]
+Underfull \hbox (badness 6758) in paragraph at lines 8358--8365
+ @textrm `@texttt --transitive-intermodule-optimization[]@textrm '[] does not w
+ork with `@texttt mmc
+[108] [109]
+Underfull \hbox (badness 10000) in paragraph at lines 8567--8571
+ []@textrm Set the max-i-mum goal size of spe-cial-ized ver-sions cre-ated by
+
+Underfull \hbox (badness 10000) in paragraph at lines 8567--8571
+ @textrm `@texttt --optimize-higher-order[]@textrm '[] and `@texttt --type-spec
+ialization[]@textrm '[]. Goal
+[110] [111] [112] [113] [114] [115] [116] [117] [118] [119] [120] [121]
+[122]
+Underfull \hbox (badness 6510) in paragraph at lines 9693--9700
+ []@textrm Search @textsl di-rec-tory @textrm for Mer-cury li-brary files have 
+not yet been in-
+
+Overfull \hbox (1.84586pt too wide) in paragraph at lines 9693--9700
+ @textrm `@texttt --intermod-directory[]@textrm '[], `@texttt --library-directo
+ry[]@textrm '[], `@texttt --init-file-directory[]@textrm '[],
+
+Overfull \hbox (61.58371pt too wide) in paragraph at lines 9708--9714
+ @textrm `@texttt --init-file-directory[]@textrm '[], `@texttt --c-include-dire
+ctory[]@textrm '[] and `@texttt --erlang-include-directory[]@textrm '[]
+[123]
+Underfull \hbox (badness 10000) in paragraph at lines 9729--9732
+ []@textrm Search @textsl di-rec-tory @textrm for the Mer-cury stan-dard li-bra
+ry. Im-plies
+
+Overfull \hbox (57.40642pt too wide) in paragraph at lines 9729--9732
+ @textrm `@texttt --mercury-library-directory @textttsl di-rec-tory[]@textrm '[
+] and `@texttt --mercury-configuration-directory
+
+Overfull \hbox (67.87207pt too wide) in paragraph at lines 9738--9740
+ []@textrm Don't use the Mer-cury stan-dard li-brary. Im-plies `@texttt --no-me
+rcury-configuration-directory[]@textrm '[]. 
+[124] Chapter 10
+Underfull \hbox (badness 10000) in paragraph at lines 9871--9875
+ []@textrm The di-rec-tory con-tain-ing the in-stalled Mer-cury stan-dard li-br
+ary.
+
+Underfull \hbox (badness 3354) in paragraph at lines 9871--9875
+ @textrm `@texttt c2init[]@textrm '[] scripts over-ride the set-ting of the MER
+-CURY[]STDLIB[]DIR
+[125] [126]
+Underfull \hbox (badness 10000) in paragraph at lines 10016--10019
+ @texttt `p[]'[][]@textrm Profile user time plus sys-tem time (us-ing
+[127] [128] [129] [130] [131] Chapter 11
+Overfull \hbox (72.92915pt too wide) in paragraph at lines 10476--10479
+ @textrm spec-i-fy-ing the dif-fer-ent C com-piler, e.g. `@texttt mercury_confi
+g --output-prefix=/usr/local/mercury-cc
+Chapter 12 Chapter 13 [132]
+Underfull \hbox (badness 10000) in paragraph at lines 10563--10570
+[]@textrm A stand-alone in-ter-face is cre-ated by in-vok-ing the com-piler wit
+h the
+[133] (Index) (./user_guide.cps [134] [135] [136] [137] [138] [139] [140]
+[141] [142]) [143] )
+(see the transcript file for additional information)
+Output written on user_guide.dvi (148 pages, 687216 bytes).
+Transcript written on user_guide.log.
+/usr/bin/texi2dvi: Running etex --file-line-error './user_guide.texi_pp' ...
+This is pdfTeXk, Version 3.141592-1.40.3 (Web2C 7.5.6)
+ file:line:error style messages enabled.
+ %&-line parsing enabled.
+entering extended mode
+(./user_guide.texi_pp (./texinfo.tex Loading texinfo [version 2008-04-18.10]:
+pdf, fonts, page headings, tables, conditionals, indexing, sectioning, toc,
+environments, defuns, macros, cross references, insertions, localization,
+formatting, and turning on texinfo input format.) (./user_guide.aux) [1]
+[2] (./user_guide.toc [-1] [-2]) [-3] Chapter 1 Chapter 2
+Underfull \hbox (badness 10000) in paragraph at lines 171--193
+@textrm `@texttt --make-private-interface[]@textrm '[] (or `@texttt --make-priv
+-int[]@textrm '[]), `@texttt --make-short-interface[]@textrm '[]
+
+Underfull \hbox (badness 4108) in paragraph at lines 204--215
+[]@textrm `@texttt .c_date[]@textrm '[], `@texttt .il_date[]@textrm '[], `@text
+tt .cs_date[]@textrm '[], `@texttt .java_date[]@textrm '[], `@texttt .erl_date[
+]@textrm '[], `@texttt .s_date[]@textrm '[] and
+[1] Chapter 3 [2] [3] Chapter 4 Chapter 5 [4]
+Overfull \hbox (1.17876pt too wide) in paragraph at lines 526--533
+[]@textrm Mmake's builtin rules are de-fined by the file `@textttsl pre-fix@tex
+ttt /lib/mercury/mmake/Mmake.rules[]@textrm '[]
+[5]
+Underfull \hbox (badness 10000) in paragraph at lines 598--615
+ @textrm `@texttt lib@textttsl main-module@texttt .so[]@textrm '[], `@textttsl 
+main-module@texttt .init[]@textrm '[], `@textttsl main-module@texttt .dep[]@tex
+trm '[] and
+[6] [7] [8]
+Underfull \hbox (badness 10000) in paragraph at lines 845--848
+[]@textrm Mmake has a few op-tions, in-clud-ing `@texttt --use-subdirs[]@textrm
+ '[], `@texttt --use-mmc-make[]@textrm '[],
+[9] Chapter 6
+Underfull \hbox (badness 10000) in paragraph at lines 939--943
+@textrm This de-fines a mod-ule `@texttt mypackage[]@textrm '[] con-tain-ing su
+b-modules `@texttt mypackage:foo[]@textrm '[],
+[10]
+Overfull \hbox (20.69044pt too wide) in paragraph at lines 1028--1028
+ []@texttt mmc ... --ml mypackage ... --ml myotherlib ... --ml my_yet_another_l
+ib ...[] 
+[11]
+Overfull \hbox (26.43913pt too wide) in paragraph at lines 1084--1084
+ []        @texttt --link-object <dir>/Mercury/<grade>/*/Mercury/lib/libmypacka
+ge.a \\[] 
+[12] [13] Chapter 7 [14] [15] [16] [17] [18] [19] [20] [21] [22] [23] [24]
+[25] [26] [27] [28] [29] [30] [31] [32] [33] [34] [35] [36] [37] [38] [39]
+[40] [41] [42] [43] [44] [45] [46] [47] [48] [49] [50] [51] [52] [53]
+Underfull \hbox (badness 2865) in paragraph at lines 4115--4127
+ []@textrm The ar-gu-ments sup-plied to the `@texttt --pass-trace-counts[]@text
+rm '[] (or `@texttt -p[]@textrm '[]) and
+
+Underfull \hbox (badness 2119) in paragraph at lines 4115--4127
+ @textrm `@texttt fail_trace_counts[]@textrm '[] and `@texttt pass_trace_counts
+[]@textrm '[] con-fig-u-ra-tion pa-ram-e-ters
+[54] [55] [56] [57] [58] [59] [60] [61] [62] [63] [64] [65] [66] [67] [68]
+[69] [70] [71]
+Underfull \hbox (badness 2213) in paragraph at lines 5257--5264
+[]@textrm `@texttt mtc[]@textrm '[] also sup-ports two more op-tions in-tended 
+for cov-er-age test-ing: `@texttt -s[]@textrm '[] or
+
+Underfull \hbox (badness 3657) in paragraph at lines 5257--5264
+@textrm `@texttt --summary-file[]@textrm '[], and `@texttt --summary-count[]@te
+xtrm '[]. These each set an op-tion in the
+
+Underfull \hbox (badness 10000) in paragraph at lines 5257--5264
+@textrm `@texttt MERCURY_OPTIONS[]@textrm '[] en-vi-ron-ment vari-able, `@textt
+t --trace-count-summary-file[]@textrm '[] and
+[72] [73] [74]
+Overfull \hbox (37.93651pt too wide) in paragraph at lines 5466--5466
+ []@texttt mdice [-s sortspec] [-l N] [-m module] [-n N] [-p N] [-f N] passfile
+ failfile[] 
+[75] [76] Chapter 8 [77] [78] [79]
+Overfull \hbox (32.18782pt too wide) in paragraph at lines 5850--5850
+ []                @texttt 0.00        0.00       1/1           io.init_state/2
+(0) [11][] 
+
+Overfull \hbox (20.69044pt too wide) in paragraph at lines 5855--5855
+ []                @texttt 0.00        0.75       1/1           call_engine_lab
+el [1][] 
+
+Overfull \hbox (14.94176pt too wide) in paragraph at lines 5864--5864
+ []                @texttt 0.00        0.00       1/1           print_list/3(0)
+ [16][] 
+
+Overfull \hbox (43.6852pt too wide) in paragraph at lines 5865--5865
+ []                @texttt 0.00        0.00       1/10          io.write_string
+/3(0) [18][] 
+[80]
+Overfull \hbox (14.94176pt too wide) in paragraph at lines 5879--5879
+ []                @texttt 0.00        0.60    5914/5914        list.insert/3(2
+) [7][] 
+
+Overfull \hbox (14.94176pt too wide) in paragraph at lines 5886--5886
+ []                @texttt 0.60        0.60    5914/5914        list.delete/3(3
+) [8][] 
+
+Overfull \hbox (14.94176pt too wide) in paragraph at lines 5890--5890
+ []                                   @texttt 40319             list.delete/3(3
+) [8][] 
+
+Overfull \hbox (14.94176pt too wide) in paragraph at lines 5891--5891
+ []                @texttt 0.60        0.60    5914/5914        list.insert/3(2
+) [7][] 
+
+Overfull \hbox (14.94176pt too wide) in paragraph at lines 5893--5893
+ []                                   @texttt 40319             list.delete/3(3
+) [8][] 
+
+Overfull \hbox (20.69044pt too wide) in paragraph at lines 5897--5897
+ []                @texttt 0.00        0.00       3/69283       tree234.set/4(0
+) [15][] 
+
+Overfull \hbox (83.92601pt too wide) in paragraph at lines 5900--5900
+ []                @texttt 0.00        0.00       3/3           __Compare___io_
+_stream/0(0) [20][] 
+
+Overfull \hbox (66.67995pt too wide) in paragraph at lines 5901--5901
+ []                @texttt 0.00        0.00   69280/69280       builtin_compare
+_int/3(0) [27][] 
+[81]
+Underfull \hbox (badness 3019) in paragraph at lines 6006--6022
+@textrm tion con-tained in a deep pro-fil-ing data file (which will be called `
+@texttt Deep.data[]@textrm '[]
+
+Underfull \hbox (badness 10000) in paragraph at lines 6006--6022
+@textrm `@texttt http://server.domain.name/cgi-bin/mdprof_cgi?/full/path/name/D
+eep.data[]@textrm '[].
+[82] [83] Chapter 9 [84]
+Underfull \hbox (badness 10000) in paragraph at lines 6258--6260
+ []@textrm Don't warn about ar-gu-ment or-der re-ar-range-ment caused by
+[85] [86] [87] [88] [89] [90] [91] [92] [93] [94] [95] [96]
+Underfull \hbox (badness 2608) in paragraph at lines 7247--7253
+ @textrm of each pred-i-cate to see whether it ter-mi-nates. The `@texttt termi
+nates[]@textrm '[],
+
+Underfull \hbox (badness 10000) in paragraph at lines 7247--7253
+ @textrm `@texttt does_not_terminate[]@textrm '[] and `@texttt check_terminatio
+n[]@textrm '[] prag-mas have no
+[97] [98]
+Underfull \hbox (badness 10000) in paragraph at lines 7493--7495
+ @textrm `@texttt none[]@textrm '[]@texttt --target c --no-gcc-global-registers
+ --no-gcc-nonlocal-
+[99]
+Underfull \hbox (badness 10000) in paragraph at lines 7496--7498
+ @textrm `@texttt reg[]@textrm '[]@texttt --target c --gcc-global-registers --n
+o-gcc-nonlocal-
+
+Underfull \hbox (badness 10000) in paragraph at lines 7499--7501
+ @textrm `@texttt jump[]@textrm '[]@texttt --target c --no-gcc-global-registers
+ --gcc-nonlocal-
+
+Underfull \hbox (badness 10000) in paragraph at lines 7502--7504
+ @textrm `@texttt fast[]@textrm '[]@texttt --target c --gcc-global-registers --
+gcc-nonlocal-gotos
+
+Underfull \hbox (badness 10000) in paragraph at lines 7506--7507
+ []@texttt --target c --no-gcc-global-registers --gcc-nonlocal-
+
+Underfull \hbox (badness 10000) in paragraph at lines 7509--7510
+ []@texttt --target c --gcc-global-registers --gcc-nonlocal-gotos
+[100] [101] [102]
+Underfull \hbox (badness 4266) in paragraph at lines 7918--7922
+ []@textrm Enable ex-per-i-men-tal com-plex-ity anal-y-sis for the pred-i-cates
+ listed in
+
+Underfull \hbox (badness 2134) in paragraph at lines 7918--7922
+ @textrm the given file. This op-tion is sup-ported for the C back-end, with
+[103] [104] [105] [106] [107]
+Underfull \hbox (badness 6758) in paragraph at lines 8358--8365
+ @textrm `@texttt --transitive-intermodule-optimization[]@textrm '[] does not w
+ork with `@texttt mmc
+[108] [109]
+Underfull \hbox (badness 10000) in paragraph at lines 8567--8571
+ []@textrm Set the max-i-mum goal size of spe-cial-ized ver-sions cre-ated by
+
+Underfull \hbox (badness 10000) in paragraph at lines 8567--8571
+ @textrm `@texttt --optimize-higher-order[]@textrm '[] and `@texttt --type-spec
+ialization[]@textrm '[]. Goal
+[110] [111] [112] [113] [114] [115] [116] [117] [118] [119] [120] [121]
+[122]
+Underfull \hbox (badness 6510) in paragraph at lines 9693--9700
+ []@textrm Search @textsl di-rec-tory @textrm for Mer-cury li-brary files have 
+not yet been in-
+
+Overfull \hbox (1.84586pt too wide) in paragraph at lines 9693--9700
+ @textrm `@texttt --intermod-directory[]@textrm '[], `@texttt --library-directo
+ry[]@textrm '[], `@texttt --init-file-directory[]@textrm '[],
+
+Overfull \hbox (61.58371pt too wide) in paragraph at lines 9708--9714
+ @textrm `@texttt --init-file-directory[]@textrm '[], `@texttt --c-include-dire
+ctory[]@textrm '[] and `@texttt --erlang-include-directory[]@textrm '[]
+[123]
+Underfull \hbox (badness 10000) in paragraph at lines 9729--9732
+ []@textrm Search @textsl di-rec-tory @textrm for the Mer-cury stan-dard li-bra
+ry. Im-plies
+
+Overfull \hbox (57.40642pt too wide) in paragraph at lines 9729--9732
+ @textrm `@texttt --mercury-library-directory @textttsl di-rec-tory[]@textrm '[
+] and `@texttt --mercury-configuration-directory
+
+Overfull \hbox (67.87207pt too wide) in paragraph at lines 9738--9740
+ []@textrm Don't use the Mer-cury stan-dard li-brary. Im-plies `@texttt --no-me
+rcury-configuration-directory[]@textrm '[]. 
+[124] Chapter 10
+Underfull \hbox (badness 10000) in paragraph at lines 9871--9875
+ []@textrm The di-rec-tory con-tain-ing the in-stalled Mer-cury stan-dard li-br
+ary.
+
+Underfull \hbox (badness 3354) in paragraph at lines 9871--9875
+ @textrm `@texttt c2init[]@textrm '[] scripts over-ride the set-ting of the MER
+-CURY[]STDLIB[]DIR
+[125] [126]
+Underfull \hbox (badness 10000) in paragraph at lines 10016--10019
+ @texttt `p[]'[][]@textrm Profile user time plus sys-tem time (us-ing
+[127] [128] [129] [130] [131] Chapter 11
+Overfull \hbox (72.92915pt too wide) in paragraph at lines 10476--10479
+ @textrm spec-i-fy-ing the dif-fer-ent C com-piler, e.g. `@texttt mercury_confi
+g --output-prefix=/usr/local/mercury-cc
+Chapter 12 Chapter 13 [132]
+Underfull \hbox (badness 10000) in paragraph at lines 10563--10570
+[]@textrm A stand-alone in-ter-face is cre-ated by in-vok-ing the com-piler wit
+h the
+[133] (Index) (./user_guide.cps [134] [135] [136] [137] [138] [139] [140]
+[141] [142]) [143] )
+(see the transcript file for additional information)
+Output written on user_guide.dvi (148 pages, 687216 bytes).
+Transcript written on user_guide.log.
