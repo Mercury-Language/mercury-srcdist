@@ -1,0 +1,13145 @@
+/*
+** Automatically generated from `frameopt.m'
+** by the Mercury compiler,
+** version DEV
+** configured for x86_64-apple-darwin13.4.0.
+** Do not edit.
+**
+** The autoconfigured grade settings governing
+** the generation of this C file were
+**
+** TAG_BITS=2
+** UNBOXED_FLOAT=no
+** PREGENERATED_DIST=yes
+** HIGHLEVEL_CODE=yes
+**
+** END_OF_C_GRADE_INFO
+*/
+
+
+/* :- module ll_backend.frameopt. */
+/* :- implementation. */
+
+/*
+INIT mercury__ll_backend__frameopt__init
+ENDINIT
+*/
+
+#include "ll_backend.frameopt.mih"
+
+
+#include "analysis.mih"
+#include "backend_libs.mih"
+#include "check_hlds.mih"
+#include "hlds.mih"
+#include "libs.mih"
+#include "ll_backend.mih"
+#include "mdbcomp.mih"
+#include "mode_robdd.mih"
+#include "parse_tree.mih"
+#include "recompilation.mih"
+#include "transform_hlds.mih"
+#include "backend_libs.builtin_ops.mih"
+#include "backend_libs.rtti.mih"
+#include "check_hlds.delay_info.mih"
+#include "check_hlds.mode_constraint_robdd.mih"
+#include "check_hlds.mode_errors.mih"
+#include "check_hlds.mode_info.mih"
+#include "check_hlds.proc_requests.mih"
+#include "check_hlds.type_util.mih"
+#include "hlds.code_model.mih"
+#include "hlds.const_struct.mih"
+#include "hlds.hlds_args.mih"
+#include "hlds.hlds_clauses.mih"
+#include "hlds.hlds_data.mih"
+#include "hlds.hlds_dependency_graph.mih"
+#include "hlds.hlds_goal.mih"
+#include "hlds.hlds_llds.mih"
+#include "hlds.hlds_module.mih"
+#include "hlds.hlds_pred.mih"
+#include "hlds.hlds_rtti.mih"
+#include "hlds.inst_graph.mih"
+#include "hlds.instmap.mih"
+#include "hlds.pred_table.mih"
+#include "hlds.special_pred.mih"
+#include "hlds.status.mih"
+#include "hlds.vartypes.mih"
+#include "libs.compiler_util.mih"
+#include "libs.dependency_graph.mih"
+#include "libs.globals.mih"
+#include "libs.lp_rational.mih"
+#include "libs.op_mode.mih"
+#include "libs.options.mih"
+#include "libs.polyhedron.mih"
+#include "libs.rat.mih"
+#include "libs.timestamp.mih"
+#include "libs.trace_params.mih"
+#include "ll_backend.layout.mih"
+#include "ll_backend.livemap.mih"
+#include "ll_backend.llds.mih"
+#include "ll_backend.opt_debug.mih"
+#include "ll_backend.opt_util.mih"
+#include "mdbcomp.feedback.mih"
+#include "mdbcomp.goal_path.mih"
+#include "mdbcomp.prim_data.mih"
+#include "mdbcomp.program_representation.mih"
+#include "mdbcomp.rtti_access.mih"
+#include "mdbcomp.sym_name.mih"
+#include "mdbcomp.trace_counts.mih"
+#include "array.mih"
+#include "assoc_list.mih"
+#include "bag.mih"
+#include "bimap.mih"
+#include "bitmap.mih"
+#include "bool.mih"
+#include "builtin.mih"
+#include "char.mih"
+#include "construct.mih"
+#include "cord.mih"
+#include "counter.mih"
+#include "deconstruct.mih"
+#include "digraph.mih"
+#include "enum.mih"
+#include "getopt_io.mih"
+#include "int.mih"
+#include "integer.mih"
+#include "io.mih"
+#include "list.mih"
+#include "map.mih"
+#include "maybe.mih"
+#include "multi_map.mih"
+#include "ops.mih"
+#include "pair.mih"
+#include "pretty_printer.mih"
+#include "private_builtin.mih"
+#include "queue.mih"
+#include "random.mih"
+#include "require.mih"
+#include "robdd.mih"
+#include "rtti_implementation.mih"
+#include "set.mih"
+#include "set_ordlist.mih"
+#include "set_tree234.mih"
+#include "sparse_bitset.mih"
+#include "stack.mih"
+#include "stream.mih"
+#include "string.mih"
+#include "term.mih"
+#include "time.mih"
+#include "tree234.mih"
+#include "type_desc.mih"
+#include "unit.mih"
+#include "univ.mih"
+#include "varset.mih"
+#include "mode_robdd.tfeirn.mih"
+#include "parse_tree.error_util.mih"
+#include "parse_tree.file_kind.mih"
+#include "parse_tree.maybe_error.mih"
+#include "parse_tree.module_qual.mih"
+#include "parse_tree.prog_data.mih"
+#include "parse_tree.prog_data_event.mih"
+#include "parse_tree.prog_data_foreign.mih"
+#include "parse_tree.prog_data_pragma.mih"
+#include "parse_tree.prog_data_used_modules.mih"
+#include "parse_tree.prog_foreign.mih"
+#include "parse_tree.prog_item.mih"
+#include "parse_tree.prog_rename.mih"
+#include "parse_tree.prog_type.mih"
+#include "parse_tree.set_of_var.mih"
+#include "transform_hlds.term_constr_data.mih"
+#include "transform_hlds.term_constr_errors.mih"
+#include "transform_hlds.term_constr_main_types.mih"
+#include "transform_hlds.term_errors.mih"
+#include "transform_hlds.term_norm.mih"
+#include "transform_hlds.term_util.mih"
+#include "mdbcomp.feedback.automatic_parallelism.mih"
+
+
+
+struct ll_backend__frameopt__can_clobber_succip_3_f_0_env_0_s {
+  MR_bool ll_backend__frameopt__can_clobber_succip_3_f_0_env_0__succeeded;
+  MR_Word ll_backend__frameopt__can_clobber_succip_3_f_0_env_0__Instrs_10;
+  jmp_buf ll_backend__frameopt__can_clobber_succip_3_f_0_env_0__commit_0;
+  MR_Word ll_backend__frameopt__can_clobber_succip_3_f_0_env_0__Instr_11;
+  MR_Word ll_backend__frameopt__can_clobber_succip_3_f_0_env_0__Uinstr_12;
+  MR_Box ll_backend__frameopt__can_clobber_succip_3_f_0_env_0__conv1_Instr_11;
+};
+
+struct ll_backend__frameopt__f_85_110_117_115_101_100_65_114_103_115_95_95_112_114_101_100_95_95_99_111_109_112_117_116_101_95_98_108_111_99_107_95_110_101_101_100_115_95_102_114_97_109_101_95_95_91_49_93_95_48_95_51_95_112_95_48_95_101_110_118_0_s {
+  MR_Word ll_backend__frameopt__f_85_110_117_115_101_100_65_114_103_115_95_95_112_114_101_100_95_95_99_111_109_112_117_116_101_95_98_108_111_99_107_95_110_101_101_100_115_95_102_114_97_109_101_95_95_91_49_93_95_48_95_51_95_112_95_48_95_101_110_118_95_48__Instrs_5;
+  MR_bool ll_backend__frameopt__f_85_110_117_115_101_100_65_114_103_115_95_95_112_114_101_100_95_95_99_111_109_112_117_116_101_95_98_108_111_99_107_95_110_101_101_100_115_95_102_114_97_109_101_95_95_91_49_93_95_48_95_51_95_112_95_48_95_101_110_118_95_48__succeeded;
+  jmp_buf ll_backend__frameopt__f_85_110_117_115_101_100_65_114_103_115_95_95_112_114_101_100_95_95_99_111_109_112_117_116_101_95_98_108_111_99_107_95_110_101_101_100_115_95_102_114_97_109_101_95_95_91_49_93_95_48_95_51_95_112_95_48_95_101_110_118_95_48__commit_0;
+  MR_Word ll_backend__frameopt__f_85_110_117_115_101_100_65_114_103_115_95_95_112_114_101_100_95_95_99_111_109_112_117_116_101_95_98_108_111_99_107_95_110_101_101_100_115_95_102_114_97_109_101_95_95_91_49_93_95_48_95_51_95_112_95_48_95_101_110_118_95_48__Instr_8;
+  MR_Word ll_backend__frameopt__f_85_110_117_115_101_100_65_114_103_115_95_95_112_114_101_100_95_95_99_111_109_112_117_116_101_95_98_108_111_99_107_95_110_101_101_100_115_95_102_114_97_109_101_95_95_91_49_93_95_48_95_51_95_112_95_48_95_101_110_118_95_48__Uinstr_9;
+  MR_Box ll_backend__frameopt__f_85_110_117_115_101_100_65_114_103_115_95_95_112_114_101_100_95_95_99_111_109_112_117_116_101_95_98_108_111_99_107_95_110_101_101_100_115_95_102_114_97_109_101_95_95_91_49_93_95_48_95_51_95_112_95_48_95_101_110_118_95_48__conv0_Instr_8;
+};
+
+
+static const MR_FA_PseudoTypeInfo_Struct2 ll_backend__frameopt__ll_backend__frameopt__pti_frame_block_info_2__pseudo_1__pseudo_2;
+
+static const MR_FA_PseudoTypeInfo_Struct2 ll_backend__frameopt__tree234__pti_tree234_2__plain_ll_backend__llds__type_ctor_info_label_0__pseudo_ll_backend__frameopt__pti_frame_block_info_2__pseudo_1__pseudo_2;
+
+static const MR_FA_PseudoTypeInfo_Struct1 ll_backend__frameopt__set_ordlist__pti_set_ordlist_1__plain_ll_backend__llds__type_ctor_info_label_0;
+
+static const MR_FA_PseudoTypeInfo_Struct2 ll_backend__frameopt__tree234__pti_tree234_2__plain_ll_backend__llds__type_ctor_info_label_0__plain_ll_backend__frameopt__type_ctor_info_block_needs_frame_0;
+
+static const MR_FA_TypeInfo_Struct2 ll_backend__frameopt__pair__ti_pair_2ll_backend__llds__type_ctor_info_label_0ll_backend__llds__type_ctor_info_label_0;
+
+static const MR_FA_PseudoTypeInfo_Struct1 ll_backend__frameopt__list__pti_list_1__plain_pair__ti_pair_2ll_backend__llds__type_ctor_info_label_0ll_backend__llds__type_ctor_info_label_0;
+
+static const MR_FA_PseudoTypeInfo_Struct1 ll_backend__frameopt__maybe__pti_maybe_1__plain_ll_backend__llds__type_ctor_info_label_0;
+
+static const MR_FA_PseudoTypeInfo_Struct2 ll_backend__frameopt__ll_backend__frameopt__pti_block_type_2__pseudo_1__pseudo_2;
+
+static const MR_FA_PseudoTypeInfo_Struct2 ll_backend__frameopt__pair__pti_pair_2__plain_ll_backend__llds__type_ctor_info_label_0__plain_ll_backend__frameopt__type_ctor_info_block_needs_frame_0;
+
+static const MR_FA_PseudoTypeInfo_Struct2 ll_backend__frameopt__tree234__pti_tree234_2__plain_ll_backend__llds__type_ctor_info_label_0__plain_ll_backend__llds__type_ctor_info_label_0;
+
+static const MR_EnumFunctorDesc ll_backend__frameopt__ll_backend__frameopt__enum_functor_desc_block_needs_frame_0_0;
+
+static const MR_EnumFunctorDesc ll_backend__frameopt__ll_backend__frameopt__enum_functor_desc_block_needs_frame_0_1;
+
+static const MR_EnumFunctorDescPtr ll_backend__frameopt__ll_backend__frameopt__enum_value_ordered_block_needs_frame_0[2];
+
+static const MR_EnumFunctorDescPtr ll_backend__frameopt__ll_backend__frameopt__enum_name_ordered_block_needs_frame_0[2];
+
+static const MR_Integer ll_backend__frameopt__ll_backend__frameopt__functor_number_map_block_needs_frame_0[2];
+
+static const MR_PseudoTypeInfo ll_backend__frameopt__ll_backend__frameopt__field_types_block_type_2_0[1];
+
+static const MR_DuFunctorDesc ll_backend__frameopt__ll_backend__frameopt__du_functor_desc_block_type_2_0;
+
+static const MR_PseudoTypeInfo ll_backend__frameopt__ll_backend__frameopt__field_types_block_type_2_1[2];
+
+static const MR_DuFunctorDesc ll_backend__frameopt__ll_backend__frameopt__du_functor_desc_block_type_2_1;
+
+static const MR_PseudoTypeInfo ll_backend__frameopt__ll_backend__frameopt__field_types_block_type_2_2[1];
+
+static const MR_DuFunctorDesc ll_backend__frameopt__ll_backend__frameopt__du_functor_desc_block_type_2_2;
+
+static const MR_DuFunctorDescPtr ll_backend__frameopt__ll_backend__frameopt__du_stag_ordered_block_type_2_0[1];
+
+static const MR_DuFunctorDescPtr ll_backend__frameopt__ll_backend__frameopt__du_stag_ordered_block_type_2_1[1];
+
+static const MR_DuFunctorDescPtr ll_backend__frameopt__ll_backend__frameopt__du_stag_ordered_block_type_2_2[1];
+
+static const MR_DuPtagLayout ll_backend__frameopt__ll_backend__frameopt__du_ptag_ordered_block_type_2[3];
+
+static const MR_DuFunctorDescPtr ll_backend__frameopt__ll_backend__frameopt__du_name_ordered_block_type_2[3];
+
+static const MR_Integer ll_backend__frameopt__ll_backend__frameopt__functor_number_map_block_type_2[3];
+
+static const MR_EnumFunctorDesc ll_backend__frameopt__ll_backend__frameopt__enum_functor_desc_can_transform_0_0;
+
+static const MR_EnumFunctorDesc ll_backend__frameopt__ll_backend__frameopt__enum_functor_desc_can_transform_0_1;
+
+static const MR_EnumFunctorDescPtr ll_backend__frameopt__ll_backend__frameopt__enum_value_ordered_can_transform_0[2];
+
+static const MR_EnumFunctorDescPtr ll_backend__frameopt__ll_backend__frameopt__enum_name_ordered_can_transform_0[2];
+
+static const MR_Integer ll_backend__frameopt__ll_backend__frameopt__functor_number_map_can_transform_0[2];
+
+static const MR_PseudoTypeInfo ll_backend__frameopt__ll_backend__frameopt__field_types_det_entry_info_0_0[3];
+
+static const MR_DuFunctorDesc ll_backend__frameopt__ll_backend__frameopt__du_functor_desc_det_entry_info_0_0;
+
+static const MR_DuFunctorDescPtr ll_backend__frameopt__ll_backend__frameopt__du_stag_ordered_det_entry_info_0_0[1];
+
+static const MR_DuPtagLayout ll_backend__frameopt__ll_backend__frameopt__du_ptag_ordered_det_entry_info_0[1];
+
+static const MR_DuFunctorDescPtr ll_backend__frameopt__ll_backend__frameopt__du_name_ordered_det_entry_info_0[1];
+
+static const MR_Integer ll_backend__frameopt__ll_backend__frameopt__functor_number_map_det_entry_info_0[1];
+
+static const MR_FA_TypeInfo_Struct1 ll_backend__frameopt__list__ti_list_1ll_backend__llds__type_ctor_info_instruction_0;
+
+static const MR_PseudoTypeInfo ll_backend__frameopt__ll_backend__frameopt__field_types_det_exit_info_0_0[3];
+
+static const MR_DuFunctorDesc ll_backend__frameopt__ll_backend__frameopt__du_functor_desc_det_exit_info_0_0;
+
+static const MR_DuFunctorDescPtr ll_backend__frameopt__ll_backend__frameopt__du_stag_ordered_det_exit_info_0_0[1];
+
+static const MR_DuPtagLayout ll_backend__frameopt__ll_backend__frameopt__du_ptag_ordered_det_exit_info_0[1];
+
+static const MR_DuFunctorDescPtr ll_backend__frameopt__ll_backend__frameopt__du_name_ordered_det_exit_info_0[1];
+
+static const MR_Integer ll_backend__frameopt__ll_backend__frameopt__functor_number_map_det_exit_info_0[1];
+
+static const MR_FA_TypeInfo_Struct2 ll_backend__frameopt__ll_backend__frameopt__ti_frame_block_info_2ll_backend__frameopt__type_ctor_info_det_entry_info_0ll_backend__frameopt__type_ctor_info_det_exit_info_0;
+
+static const MR_FA_TypeInfo_Struct2 ll_backend__frameopt__tree234__ti_tree234_2ll_backend__llds__type_ctor_info_label_0ll_backend__frameopt__ti_frame_block_info_2ll_backend__frameopt__type_ctor_info_det_entry_info_0ll_backend__frameopt__type_ctor_info_det_exit_info_0;
+
+static const MR_Integer ll_backend__frameopt__ll_backend__frameopt__functor_number_map_exit_par_map_0[1];
+
+static const MR_FA_TypeInfo_Struct2 ll_backend__frameopt__tree234__ti_tree234_2ll_backend__llds__type_ctor_info_label_0ll_backend__llds__type_ctor_info_label_0;
+
+static const MR_NotagFunctorDesc ll_backend__frameopt__ll_backend__frameopt__notag_functor_desc_exit_par_map_0;
+
+static const MR_FA_TypeInfo_Struct1 ll_backend__frameopt__maybe__ti_maybe_1ll_backend__llds__type_ctor_info_label_0;
+
+static const MR_FA_TypeInfo_Struct1 ll_backend__frameopt__list__ti_list_1ll_backend__llds__type_ctor_info_label_0;
+
+static const MR_PseudoTypeInfo ll_backend__frameopt__ll_backend__frameopt__field_types_frame_block_info_2_0[6];
+
+static const MR_ConstString ll_backend__frameopt__ll_backend__frameopt__field_names_frame_block_info_2_0[6];
+
+static const MR_DuFunctorDesc ll_backend__frameopt__ll_backend__frameopt__du_functor_desc_frame_block_info_2_0;
+
+static const MR_DuFunctorDescPtr ll_backend__frameopt__ll_backend__frameopt__du_stag_ordered_frame_block_info_2_0[1];
+
+static const MR_DuPtagLayout ll_backend__frameopt__ll_backend__frameopt__du_ptag_ordered_frame_block_info_2[1];
+
+static const MR_DuFunctorDescPtr ll_backend__frameopt__ll_backend__frameopt__du_name_ordered_frame_block_info_2[1];
+
+static const MR_Integer ll_backend__frameopt__ll_backend__frameopt__functor_number_map_frame_block_info_2[1];
+
+static const MR_EnumFunctorDesc ll_backend__frameopt__ll_backend__frameopt__enum_functor_desc_maybe_dummy_0_0;
+
+static const MR_EnumFunctorDesc ll_backend__frameopt__ll_backend__frameopt__enum_functor_desc_maybe_dummy_0_1;
+
+static const MR_EnumFunctorDesc ll_backend__frameopt__ll_backend__frameopt__enum_functor_desc_maybe_dummy_0_2;
+
+static const MR_EnumFunctorDescPtr ll_backend__frameopt__ll_backend__frameopt__enum_value_ordered_maybe_dummy_0[3];
+
+static const MR_EnumFunctorDescPtr ll_backend__frameopt__ll_backend__frameopt__enum_name_ordered_maybe_dummy_0[3];
+
+static const MR_Integer ll_backend__frameopt__ll_backend__frameopt__functor_number_map_maybe_dummy_0[3];
+
+static const MR_PseudoTypeInfo ll_backend__frameopt__ll_backend__frameopt__field_types_nondet_entry_info_0_0[3];
+
+static const MR_DuFunctorDesc ll_backend__frameopt__ll_backend__frameopt__du_functor_desc_nondet_entry_info_0_0;
+
+static const MR_DuFunctorDescPtr ll_backend__frameopt__ll_backend__frameopt__du_stag_ordered_nondet_entry_info_0_0[1];
+
+static const MR_DuPtagLayout ll_backend__frameopt__ll_backend__frameopt__du_ptag_ordered_nondet_entry_info_0[1];
+
+static const MR_DuFunctorDescPtr ll_backend__frameopt__ll_backend__frameopt__du_name_ordered_nondet_entry_info_0[1];
+
+static const MR_Integer ll_backend__frameopt__ll_backend__frameopt__functor_number_map_nondet_entry_info_0[1];
+
+static const MR_PseudoTypeInfo ll_backend__frameopt__ll_backend__frameopt__field_types_nondet_exit_info_0_0[2];
+
+static const MR_DuFunctorDesc ll_backend__frameopt__ll_backend__frameopt__du_functor_desc_nondet_exit_info_0_0;
+
+static const MR_PseudoTypeInfo ll_backend__frameopt__ll_backend__frameopt__field_types_nondet_exit_info_0_1[5];
+
+static const MR_DuFunctorDesc ll_backend__frameopt__ll_backend__frameopt__du_functor_desc_nondet_exit_info_0_1;
+
+static const MR_DuFunctorDescPtr ll_backend__frameopt__ll_backend__frameopt__du_stag_ordered_nondet_exit_info_0_0[1];
+
+static const MR_DuFunctorDescPtr ll_backend__frameopt__ll_backend__frameopt__du_stag_ordered_nondet_exit_info_0_1[1];
+
+static const MR_DuPtagLayout ll_backend__frameopt__ll_backend__frameopt__du_ptag_ordered_nondet_exit_info_0[2];
+
+static const MR_DuFunctorDescPtr ll_backend__frameopt__ll_backend__frameopt__du_name_ordered_nondet_exit_info_0[2];
+
+static const MR_Integer ll_backend__frameopt__ll_backend__frameopt__functor_number_map_nondet_exit_info_0[2];
+
+static const MR_FA_TypeInfo_Struct2 ll_backend__frameopt__tree234__ti_tree234_2ll_backend__llds__type_ctor_info_label_0ll_backend__frameopt__type_ctor_info_block_needs_frame_0;
+
+static const MR_FA_TypeInfo_Struct1 ll_backend__frameopt__queue__ti_queue_1ll_backend__llds__type_ctor_info_label_0;
+
+static const MR_FA_TypeInfo_Struct2 ll_backend__frameopt__tree234__ti_tree234_2ll_backend__llds__type_ctor_info_label_0list__ti_list_1ll_backend__llds__type_ctor_info_label_0;
+
+static const MR_Integer ll_backend__frameopt__ll_backend__frameopt__functor_number_map_setup_par_map_0[1];
+
+static const MR_NotagFunctorDesc ll_backend__frameopt__ll_backend__frameopt__notag_functor_desc_setup_par_map_0;
+
+static const MR_ConstString ll_backend__frameopt__ll_backend__frameopt__type_class_id_var_names_block_entry_exit_2[2];
+
+static const MR_TypeClassMethod ll_backend__frameopt__ll_backend__frameopt__type_class_id_method_ids_block_entry_exit_2[6];
+
+static const MR_TypeClassId ll_backend__frameopt__ll_backend__frameopt__type_class_id_block_entry_exit_2;
+
+static MR_bool MR_CALL 
+ll_backend__frameopt__IntroducedFrom__pred__describe_block__2307__1_2_p_0(
+  MR_Word ll_backend__frameopt__UsesFrame_35,
+  MR_Word ll_backend__frameopt__HeadVar__2_80);
+
+static MR_bool MR_CALL 
+ll_backend__frameopt__IntroducedFrom__pred__describe_block__2322__1_2_p_0(
+  MR_Word ll_backend__frameopt__MaybeFallThrough_18,
+  MR_Word ll_backend__frameopt__HeadVar__2_70);
+
+static MR_bool MR_CALL 
+ll_backend__frameopt__IntroducedFrom__pred__describe_block__2247__1_2_p_0(
+  MR_Word ll_backend__frameopt__Label_11,
+  MR_Word ll_backend__frameopt__BlockLabel_14);
+
+static MR_bool MR_CALL 
+ll_backend__frameopt__IntroducedFrom__pred__create_parallels__2105__1_2_p_0(
+  MR_Word ll_backend__frameopt__TypeClassInfo_for_block_entry_exit_157,
+  MR_Word ll_backend__frameopt__Type_43);
+
+static MR_bool MR_CALL 
+ll_backend__frameopt__f_85_110_117_115_101_100_65_114_103_115_95_95_112_114_101_100_95_95_105_115_95_111_114_100_105_110_97_114_121_95_98_108_111_99_107_95_95_91_49_44_32_50_93_95_48_1_p_0(
+  MR_Word ll_backend__frameopt__HeadVar__1_1);
+
+static MR_bool MR_CALL 
+ll_backend__frameopt__IntroducedFrom__pred__create_parallels__2064__1_2_p_0(
+  MR_Word ll_backend__frameopt__MaybeFallThrough_42,
+  MR_Word ll_backend__frameopt__HeadVar__2_80);
+
+static MR_bool MR_CALL 
+ll_backend__frameopt__IntroducedFrom__pred__create_parallels__2061__1_2_p_0(
+  MR_Word ll_backend__frameopt__Label0_25,
+  MR_Word ll_backend__frameopt__Label0Copy_38);
+
+static MR_bool MR_CALL 
+ll_backend__frameopt__IntroducedFrom__pred__process_frame_delay__1858__1_2_p_0(
+  MR_Word ll_backend__frameopt__Label0_26,
+  MR_Word ll_backend__frameopt__Label0Copy_35);
+
+static MR_bool MR_CALL 
+ll_backend__frameopt__IntroducedFrom__pred__propagate_frame_requirement_to_successors__1724__1_2_p_0(
+  MR_Word ll_backend__frameopt__STATE_VARIABLE_AlreadyProcessed_38_51,
+  MR_Word ll_backend__frameopt__HeadVar__2_74);
+
+static void MR_CALL 
+ll_backend__frameopt__IntroducedFrom__pred__analyze_block__1255__1_4_p_0(
+  MR_Word ll_backend__frameopt__TypeClassInfo_for_block_entry_exit_104,
+  MR_Word ll_backend__frameopt__HeadVar__2_118,
+  MR_Word ll_backend__frameopt__HeadVar__3_119,
+  MR_Word * ll_backend__frameopt__HeadVar__4_120);
+
+static MR_bool MR_CALL 
+ll_backend__frameopt__IntroducedFrom__pred__build_frame_block_map__687__1_2_p_0(
+  MR_Word ll_backend__frameopt__NeedsFrame_69,
+  MR_Word ll_backend__frameopt__HeadVar__2_142);
+
+static MR_String MR_CALL 
+ll_backend__frameopt__ClassMethod_for_ll_backend__frameopt__block_entry_exit____ll_backend__frameopt__det_entry_info__arity0__ll_backend__frameopt__det_exit_info__arity0______ll_backend__frameopt__describe_exit_2_2_f_0(
+  MR_Word ll_backend__frameopt__HeadVar__1_1,
+  MR_Word ll_backend__frameopt__HeadVar__2_2);
+
+static MR_String MR_CALL 
+ll_backend__frameopt__ClassMethod_for_ll_backend__frameopt__block_entry_exit____ll_backend__frameopt__det_entry_info__arity0__ll_backend__frameopt__det_exit_info__arity0______ll_backend__frameopt__describe_entry_1_1_f_0(
+  MR_Word ll_backend__frameopt__HeadVar__1_1);
+
+static MR_Word MR_CALL 
+ll_backend__frameopt__ClassMethod_for_ll_backend__frameopt__block_entry_exit____ll_backend__frameopt__det_entry_info__arity0__ll_backend__frameopt__det_exit_info__arity0______ll_backend__frameopt__non_teardown_exit_code_1_1_f_0(
+  MR_Word ll_backend__frameopt__HeadVar__1_1);
+
+static MR_Word MR_CALL 
+ll_backend__frameopt__ClassMethod_for_ll_backend__frameopt__block_entry_exit____ll_backend__frameopt__det_entry_info__arity0__ll_backend__frameopt__det_exit_info__arity0______ll_backend__frameopt__late_setup_code_1_1_f_0(
+  MR_Word ll_backend__frameopt__HeadVar__1_1);
+
+static MR_bool MR_CALL 
+ll_backend__frameopt__ClassMethod_for_ll_backend__frameopt__block_entry_exit____ll_backend__frameopt__det_entry_info__arity0__ll_backend__frameopt__det_exit_info__arity0______ll_backend__frameopt__detect_exit_6_6_p_0(
+  MR_Word ll_backend__frameopt__HeadVar__1_1,
+  MR_Word ll_backend__frameopt__HeadVar__2_2,
+  MR_Word * ll_backend__frameopt__HeadVar__3_3,
+  MR_Word * ll_backend__frameopt__HeadVar__4_4,
+  MR_Word * ll_backend__frameopt__HeadVar__5_5,
+  MR_Word * ll_backend__frameopt__HeadVar__6_6);
+
+static MR_bool MR_CALL 
+ll_backend__frameopt__ClassMethod_for_ll_backend__frameopt__block_entry_exit____ll_backend__frameopt__det_entry_info__arity0__ll_backend__frameopt__det_exit_info__arity0______ll_backend__frameopt__detect_entry_4_4_p_0(
+  MR_Word ll_backend__frameopt__HeadVar__1_1,
+  MR_Word * ll_backend__frameopt__HeadVar__2_2,
+  MR_Word * ll_backend__frameopt__HeadVar__3_3,
+  MR_Word * ll_backend__frameopt__HeadVar__4_4);
+
+static MR_String MR_CALL 
+ll_backend__frameopt__ClassMethod_for_ll_backend__frameopt__block_entry_exit____ll_backend__frameopt__nondet_entry_info__arity0__ll_backend__frameopt__nondet_exit_info__arity0______ll_backend__frameopt__describe_exit_2_2_f_0(
+  MR_Word ll_backend__frameopt__HeadVar__1_1,
+  MR_Word ll_backend__frameopt__HeadVar__2_2);
+
+static MR_String MR_CALL 
+ll_backend__frameopt__ClassMethod_for_ll_backend__frameopt__block_entry_exit____ll_backend__frameopt__nondet_entry_info__arity0__ll_backend__frameopt__nondet_exit_info__arity0______ll_backend__frameopt__describe_entry_1_1_f_0(
+  MR_Word ll_backend__frameopt__HeadVar__1_1);
+
+static MR_Word MR_CALL 
+ll_backend__frameopt__ClassMethod_for_ll_backend__frameopt__block_entry_exit____ll_backend__frameopt__nondet_entry_info__arity0__ll_backend__frameopt__nondet_exit_info__arity0______ll_backend__frameopt__non_teardown_exit_code_1_1_f_0(
+  MR_Word ll_backend__frameopt__HeadVar__1_1);
+
+static MR_Word MR_CALL 
+ll_backend__frameopt__ClassMethod_for_ll_backend__frameopt__block_entry_exit____ll_backend__frameopt__nondet_entry_info__arity0__ll_backend__frameopt__nondet_exit_info__arity0______ll_backend__frameopt__late_setup_code_1_1_f_0(
+  MR_Word ll_backend__frameopt__HeadVar__1_1);
+
+static MR_bool MR_CALL 
+ll_backend__frameopt__ClassMethod_for_ll_backend__frameopt__block_entry_exit____ll_backend__frameopt__nondet_entry_info__arity0__ll_backend__frameopt__nondet_exit_info__arity0______ll_backend__frameopt__detect_exit_6_6_p_0(
+  MR_Word ll_backend__frameopt__HeadVar__1_1,
+  MR_Word ll_backend__frameopt__HeadVar__2_2,
+  MR_Word * ll_backend__frameopt__HeadVar__3_3,
+  MR_Word * ll_backend__frameopt__HeadVar__4_4,
+  MR_Word * ll_backend__frameopt__HeadVar__5_5,
+  MR_Word * ll_backend__frameopt__HeadVar__6_6);
+
+static MR_bool MR_CALL 
+ll_backend__frameopt__f_85_110_117_115_101_100_65_114_103_115_95_95_112_114_101_100_95_95_67_108_97_115_115_77_101_116_104_111_100_95_102_111_114_95_108_108_95_98_97_99_107_101_110_100_95_95_102_114_97_109_101_111_112_116_95_95_98_108_111_99_107_95_101_110_116_114_121_95_101_120_105_116_95_95_95_95_108_108_95_98_97_99_107_101_110_100_95_95_102_114_97_109_101_111_112_116_95_95_110_111_110_100_101_116_95_101_110_116_114_121_95_105_110_102_111_95_95_97_114_105_116_121_48_95_95_108_108_95_98_97_99_107_101_110_100_95_95_102_114_97_109_101_111_112_116_95_95_110_111_110_100_101_116_95_101_120_105_116_95_105_110_102_111_95_95_97_114_105_116_121_48_95_95_95_95_95_95_108_108_95_98_97_99_107_101_110_100_95_95_102_114_97_109_101_111_112_116_95_95_100_101_116_101_99_116_95_101_120_105_116_95_54_95_95_91_50_93_95_48_6_p_0(
+  MR_Word ll_backend__frameopt__HeadVar__1_1,
+  MR_Word * ll_backend__frameopt__HeadVar__3_3,
+  MR_Word * ll_backend__frameopt__HeadVar__4_4,
+  MR_Word * ll_backend__frameopt__HeadVar__5_5,
+  MR_Word * ll_backend__frameopt__HeadVar__6_6);
+
+static MR_bool MR_CALL 
+ll_backend__frameopt__ClassMethod_for_ll_backend__frameopt__block_entry_exit____ll_backend__frameopt__nondet_entry_info__arity0__ll_backend__frameopt__nondet_exit_info__arity0______ll_backend__frameopt__detect_entry_4_4_p_0(
+  MR_Word ll_backend__frameopt__HeadVar__1_1,
+  MR_Word * ll_backend__frameopt__HeadVar__2_2,
+  MR_Word * ll_backend__frameopt__HeadVar__3_3,
+  MR_Word * ll_backend__frameopt__HeadVar__4_4);
+
+static void MR_CALL 
+ll_backend__frameopt____Compare____setup_par_map_0_0(
+  MR_Word * ll_backend__frameopt__HeadVar__1_1,
+  MR_Word ll_backend__frameopt__HeadVar__2_2,
+  MR_Word ll_backend__frameopt__HeadVar__3_3);
+
+static MR_bool MR_CALL 
+ll_backend__frameopt____Unify____setup_par_map_0_0(
+  MR_Word ll_backend__frameopt__HeadVar__1_1,
+  MR_Word ll_backend__frameopt__HeadVar__2_2);
+
+static void MR_CALL 
+ll_backend__frameopt____Compare____rev_map_0_0(
+  MR_Word * ll_backend__frameopt__HeadVar__1_1,
+  MR_Word ll_backend__frameopt__HeadVar__2_2,
+  MR_Word ll_backend__frameopt__HeadVar__3_3);
+
+static MR_bool MR_CALL 
+ll_backend__frameopt____Unify____rev_map_0_0(
+  MR_Word ll_backend__frameopt__HeadVar__1_1,
+  MR_Word ll_backend__frameopt__HeadVar__2_2);
+
+static void MR_CALL 
+ll_backend__frameopt____Compare____prop_queue_0_0(
+  MR_Word * ll_backend__frameopt__HeadVar__1_1,
+  MR_Word ll_backend__frameopt__HeadVar__2_2,
+  MR_Word ll_backend__frameopt__HeadVar__3_3);
+
+static MR_bool MR_CALL 
+ll_backend__frameopt____Unify____prop_queue_0_0(
+  MR_Word ll_backend__frameopt__HeadVar__1_1,
+  MR_Word ll_backend__frameopt__HeadVar__2_2);
+
+static void MR_CALL 
+ll_backend__frameopt____Compare____pred_map_0_0(
+  MR_Word * ll_backend__frameopt__HeadVar__1_1,
+  MR_Word ll_backend__frameopt__HeadVar__2_2,
+  MR_Word ll_backend__frameopt__HeadVar__3_3);
+
+static MR_bool MR_CALL 
+ll_backend__frameopt____Unify____pred_map_0_0(
+  MR_Word ll_backend__frameopt__HeadVar__1_1,
+  MR_Word ll_backend__frameopt__HeadVar__2_2);
+
+static void MR_CALL 
+ll_backend__frameopt____Compare____pre_exit_dummy_label_map_0_0(
+  MR_Word * ll_backend__frameopt__HeadVar__1_1,
+  MR_Word ll_backend__frameopt__HeadVar__2_2,
+  MR_Word ll_backend__frameopt__HeadVar__3_3);
+
+static MR_bool MR_CALL 
+ll_backend__frameopt____Unify____pre_exit_dummy_label_map_0_0(
+  MR_Word ll_backend__frameopt__HeadVar__1_1,
+  MR_Word ll_backend__frameopt__HeadVar__2_2);
+
+static void MR_CALL 
+ll_backend__frameopt____Compare____ord_needs_frame_0_0(
+  MR_Word * ll_backend__frameopt__HeadVar__1_1,
+  MR_Word ll_backend__frameopt__HeadVar__2_2,
+  MR_Word ll_backend__frameopt__HeadVar__3_3);
+
+static MR_bool MR_CALL 
+ll_backend__frameopt____Unify____ord_needs_frame_0_0(
+  MR_Word ll_backend__frameopt__HeadVar__1_1,
+  MR_Word ll_backend__frameopt__HeadVar__2_2);
+
+static void MR_CALL 
+ll_backend__frameopt____Compare____nondet_exit_info_0_0(
+  MR_Word * ll_backend__frameopt__HeadVar__1_1,
+  MR_Word ll_backend__frameopt__HeadVar__2_2,
+  MR_Word ll_backend__frameopt__HeadVar__3_3);
+
+static MR_bool MR_CALL 
+ll_backend__frameopt____Unify____nondet_exit_info_0_0(
+  MR_Word ll_backend__frameopt__HeadVar__1_1,
+  MR_Word ll_backend__frameopt__HeadVar__2_2);
+
+static void MR_CALL 
+ll_backend__frameopt____Compare____nondet_entry_info_0_0(
+  MR_Word * ll_backend__frameopt__HeadVar__1_1,
+  MR_Word ll_backend__frameopt__HeadVar__2_2,
+  MR_Word ll_backend__frameopt__HeadVar__3_3);
+
+static MR_bool MR_CALL 
+ll_backend__frameopt____Unify____nondet_entry_info_0_0(
+  MR_Word ll_backend__frameopt__HeadVar__1_1,
+  MR_Word ll_backend__frameopt__HeadVar__2_2);
+
+static void MR_CALL 
+ll_backend__frameopt____Compare____maybe_dummy_0_0(
+  MR_Word * ll_backend__frameopt__HeadVar__1_1,
+  MR_Word ll_backend__frameopt__HeadVar__2_2,
+  MR_Word ll_backend__frameopt__HeadVar__3_3);
+
+static MR_bool MR_CALL 
+ll_backend__frameopt____Unify____maybe_dummy_0_0(
+  MR_Word ll_backend__frameopt__HeadVar__2_1,
+  MR_Word ll_backend__frameopt__HeadVar__2_2);
+
+static void MR_CALL 
+ll_backend__frameopt____Compare____frame_block_map_2_0(
+  MR_Word ll_backend__frameopt__TypeInfo_for_En_6,
+  MR_Word ll_backend__frameopt__TypeInfo_for_Ex_7,
+  MR_Word * ll_backend__frameopt__HeadVar__1_1,
+  MR_Word ll_backend__frameopt__HeadVar__2_2,
+  MR_Word ll_backend__frameopt__HeadVar__3_3);
+
+static MR_bool MR_CALL 
+ll_backend__frameopt____Unify____frame_block_map_2_0(
+  MR_Word ll_backend__frameopt__TypeInfo_for_En_5,
+  MR_Word ll_backend__frameopt__TypeInfo_for_Ex_6,
+  MR_Word ll_backend__frameopt__HeadVar__1_1,
+  MR_Word ll_backend__frameopt__HeadVar__2_2);
+
+static void MR_CALL 
+ll_backend__frameopt____Compare____frame_block_info_2_0(
+  MR_Word ll_backend__frameopt__TypeInfo_for_En_23,
+  MR_Word ll_backend__frameopt__TypeInfo_for_Ex_24,
+  MR_Word * ll_backend__frameopt__HeadVar__1_1,
+  MR_Word ll_backend__frameopt__HeadVar__2_2,
+  MR_Word ll_backend__frameopt__HeadVar__3_3);
+
+static MR_bool MR_CALL 
+ll_backend__frameopt____Unify____frame_block_info_2_0(
+  MR_Word ll_backend__frameopt__TypeInfo_for_En_17,
+  MR_Word ll_backend__frameopt__TypeInfo_for_Ex_18,
+  MR_Word ll_backend__frameopt__HeadVar__1_1,
+  MR_Word ll_backend__frameopt__HeadVar__2_2);
+
+static void MR_CALL 
+ll_backend__frameopt____Compare____exit_par_map_0_0(
+  MR_Word * ll_backend__frameopt__HeadVar__1_1,
+  MR_Word ll_backend__frameopt__HeadVar__2_2,
+  MR_Word ll_backend__frameopt__HeadVar__3_3);
+
+static MR_bool MR_CALL 
+ll_backend__frameopt____Unify____exit_par_map_0_0(
+  MR_Word ll_backend__frameopt__HeadVar__1_1,
+  MR_Word ll_backend__frameopt__HeadVar__2_2);
+
+static void MR_CALL 
+ll_backend__frameopt____Compare____det_frame_block_map_0_0(
+  MR_Word * ll_backend__frameopt__HeadVar__1_1,
+  MR_Word ll_backend__frameopt__HeadVar__2_2,
+  MR_Word ll_backend__frameopt__HeadVar__3_3);
+
+static MR_bool MR_CALL 
+ll_backend__frameopt____Unify____det_frame_block_map_0_0(
+  MR_Word ll_backend__frameopt__HeadVar__1_1,
+  MR_Word ll_backend__frameopt__HeadVar__2_2);
+
+static void MR_CALL 
+ll_backend__frameopt____Compare____det_exit_info_0_0(
+  MR_Word * ll_backend__frameopt__HeadVar__1_1,
+  MR_Word ll_backend__frameopt__HeadVar__2_2,
+  MR_Word ll_backend__frameopt__HeadVar__3_3);
+
+static MR_bool MR_CALL 
+ll_backend__frameopt____Unify____det_exit_info_0_0(
+  MR_Word ll_backend__frameopt__HeadVar__1_1,
+  MR_Word ll_backend__frameopt__HeadVar__2_2);
+
+static void MR_CALL 
+ll_backend__frameopt____Compare____det_entry_info_0_0(
+  MR_Word * ll_backend__frameopt__HeadVar__1_1,
+  MR_Word ll_backend__frameopt__HeadVar__2_2,
+  MR_Word ll_backend__frameopt__HeadVar__3_3);
+
+static MR_bool MR_CALL 
+ll_backend__frameopt____Unify____det_entry_info_0_0(
+  MR_Word ll_backend__frameopt__HeadVar__1_1,
+  MR_Word ll_backend__frameopt__HeadVar__2_2);
+
+static void MR_CALL 
+ll_backend__frameopt____Compare____can_transform_0_0(
+  MR_Word * ll_backend__frameopt__HeadVar__1_1,
+  MR_Word ll_backend__frameopt__HeadVar__2_2,
+  MR_Word ll_backend__frameopt__HeadVar__3_3);
+
+static MR_bool MR_CALL 
+ll_backend__frameopt____Unify____can_transform_0_0(
+  MR_Word ll_backend__frameopt__HeadVar__2_1,
+  MR_Word ll_backend__frameopt__HeadVar__2_2);
+
+static void MR_CALL 
+ll_backend__frameopt____Compare____block_type_2_0(
+  MR_Word ll_backend__frameopt__TypeInfo_for_EntryInfo_31,
+  MR_Word ll_backend__frameopt__TypeInfo_for_ExitInfo_32,
+  MR_Word * ll_backend__frameopt__HeadVar__1_1,
+  MR_Word ll_backend__frameopt__HeadVar__2_2,
+  MR_Word ll_backend__frameopt__HeadVar__3_3);
+
+static MR_bool MR_CALL 
+ll_backend__frameopt____Unify____block_type_2_0(
+  MR_Word ll_backend__frameopt__TypeInfo_for_EntryInfo_13,
+  MR_Word ll_backend__frameopt__TypeInfo_for_ExitInfo_14,
+  MR_Word ll_backend__frameopt__HeadVar__1_1,
+  MR_Word ll_backend__frameopt__HeadVar__2_2);
+
+static void MR_CALL 
+ll_backend__frameopt____Compare____block_needs_frame_0_0(
+  MR_Word * ll_backend__frameopt__HeadVar__1_1,
+  MR_Word ll_backend__frameopt__HeadVar__2_2,
+  MR_Word ll_backend__frameopt__HeadVar__3_3);
+
+static MR_bool MR_CALL 
+ll_backend__frameopt____Unify____block_needs_frame_0_0(
+  MR_Word ll_backend__frameopt__HeadVar__2_1,
+  MR_Word ll_backend__frameopt__HeadVar__2_2);
+
+static MR_bool MR_CALL 
+ll_backend__frameopt__describe_block_6_p_0_3(
+  MR_Box ll_backend__frameopt__closure_arg);
+
+static MR_bool MR_CALL 
+ll_backend__frameopt__describe_block_6_p_0_2(
+  MR_Box ll_backend__frameopt__closure_arg);
+
+static MR_bool MR_CALL 
+ll_backend__frameopt__describe_block_6_p_0_1(
+  MR_Box ll_backend__frameopt__closure_arg);
+
+static void MR_CALL 
+ll_backend__frameopt__describe_block_6_p_0(
+  MR_Word ll_backend__frameopt__TypeClassInfo_for_block_entry_exit_96,
+  MR_Word ll_backend__frameopt__BlockMap_7,
+  MR_Word ll_backend__frameopt__OrdNeedsFrame_8,
+  MR_Word ll_backend__frameopt__PredMap_9,
+  MR_Word ll_backend__frameopt__ProcLabel_10,
+  MR_Word ll_backend__frameopt__Label_11,
+  MR_Word * ll_backend__frameopt__Instr_12);
+
+static MR_String MR_CALL 
+ll_backend__frameopt__describe_exit_2_f_0(
+  MR_Word ll_backend__frameopt__TypeClassInfo_for_block_entry_exit_4,
+  MR_Word ll_backend__frameopt__HeadVar__1_1,
+  MR_Box ll_backend__frameopt__HeadVar__2_2);
+
+static MR_String MR_CALL 
+ll_backend__frameopt__describe_entry_1_f_0(
+  MR_Word ll_backend__frameopt__TypeClassInfo_for_block_entry_exit_3,
+  MR_Box ll_backend__frameopt__HeadVar__1_1);
+
+static MR_bool MR_CALL 
+ll_backend__frameopt__no_disagreement_3_p_0(
+  MR_Word ll_backend__frameopt__HeadVar__1_1,
+  MR_Word ll_backend__frameopt__Key_2,
+  MR_Word ll_backend__frameopt__Value_3);
+
+static MR_bool MR_CALL 
+ll_backend__frameopt__label_needs_frame_2_p_0(
+  MR_Word ll_backend__frameopt__OrdNeedsFrame_3,
+  MR_Word ll_backend__frameopt__Label_4);
+
+static MR_bool MR_CALL 
+ll_backend__frameopt__all_successors_need_frame_3_p_0_1(
+  MR_Box ll_backend__frameopt__closure_arg,
+  MR_Box ll_backend__frameopt__wrapper_arg_1);
+
+static MR_bool MR_CALL 
+ll_backend__frameopt__all_successors_need_frame_3_p_0(
+  MR_Word ll_backend__frameopt__TypeInfo_for_En_12,
+  MR_Word ll_backend__frameopt__TypeInfo_for_Ex_13,
+  MR_Word ll_backend__frameopt__BlockMap_4,
+  MR_Word ll_backend__frameopt__OrdNeedsFrame_5,
+  MR_Word ll_backend__frameopt__Label_6);
+
+static void MR_CALL 
+ll_backend__frameopt__record_frame_need_6_p_0(
+  MR_Word ll_backend__frameopt__TypeInfo_for_En_31,
+  MR_Word ll_backend__frameopt__TypeInfo_for_Ex_32,
+  MR_Word ll_backend__frameopt__BlockMap_7,
+  MR_Word ll_backend__frameopt__Label_8,
+  MR_Word ll_backend__frameopt__STATE_VARIABLE_OrdNeedsFrame_0_17,
+  MR_Word * ll_backend__frameopt__STATE_VARIABLE_OrdNeedsFrame_18,
+  MR_Word ll_backend__frameopt__STATE_VARIABLE_CanTransform_0_19,
+  MR_Word * ll_backend__frameopt__STATE_VARIABLE_CanTransform_20);
+
+static MR_bool MR_CALL 
+ll_backend__frameopt__key_block_needs_frame_2_p_0(
+  MR_Word ll_backend__frameopt__HeadVar__1_1,
+  MR_Word * ll_backend__frameopt__Label_3);
+
+static void MR_CALL 
+ll_backend__frameopt__mark_redoip_label_3_p_0(
+  MR_Word ll_backend__frameopt__TypeInfo_for_En_35,
+  MR_Word ll_backend__frameopt__TypeInfo_for_Ex_36,
+  MR_Word ll_backend__frameopt__Label_4,
+  MR_Word ll_backend__frameopt__STATE_VARIABLE_BlockMap_0_14,
+  MR_Word * ll_backend__frameopt__STATE_VARIABLE_BlockMap_15);
+
+static MR_bool MR_CALL 
+ll_backend__frameopt__local_label_2_p_0(
+  MR_Word ll_backend__frameopt__ProcLabel_1,
+  MR_Word ll_backend__frameopt__HeadVar__2_2);
+
+static MR_bool MR_CALL 
+ll_backend__frameopt__nondetstack_teardown_9_p_0(
+  MR_Word ll_backend__frameopt__HeadVar__1_1,
+  MR_Word * ll_backend__frameopt__Extra_12,
+  MR_Word * ll_backend__frameopt__SuccipRestore_13,
+  MR_Word * ll_backend__frameopt__Maxfr_14,
+  MR_Word * ll_backend__frameopt__Curfr_15,
+  MR_Word * ll_backend__frameopt__Livevals_16,
+  MR_Word * ll_backend__frameopt__Goto_17,
+  MR_Word * ll_backend__frameopt__GotoTarget_18,
+  MR_Word * ll_backend__frameopt__Remain_19);
+
+static MR_bool MR_CALL 
+ll_backend__frameopt__nondetstack_teardown_2_14_p_0(
+  MR_Word ll_backend__frameopt__Instrs0_15,
+  MR_Word ll_backend__frameopt__STATE_VARIABLE_Extra_0_32,
+  MR_Word * ll_backend__frameopt__STATE_VARIABLE_Extra_33,
+  MR_Word ll_backend__frameopt__STATE_VARIABLE_SuccipRestore_0_34,
+  MR_Word * ll_backend__frameopt__STATE_VARIABLE_SuccipRestore_35,
+  MR_Word ll_backend__frameopt__STATE_VARIABLE_Maxfr_0_36,
+  MR_Word * ll_backend__frameopt__STATE_VARIABLE_Maxfr_37,
+  MR_Word ll_backend__frameopt__STATE_VARIABLE_Curfr_0_38,
+  MR_Word * ll_backend__frameopt__STATE_VARIABLE_Curfr_39,
+  MR_Word ll_backend__frameopt__STATE_VARIABLE_Livevals_0_40,
+  MR_Word * ll_backend__frameopt__STATE_VARIABLE_Livevals_41,
+  MR_Word * ll_backend__frameopt__Goto_21,
+  MR_Word * ll_backend__frameopt__GotoTarget_22,
+  MR_Word * ll_backend__frameopt__Remain_23);
+
+static MR_bool MR_CALL 
+ll_backend__frameopt__detstack_teardown_8_p_0(
+  MR_Word ll_backend__frameopt__HeadVar__1_1,
+  MR_Integer ll_backend__frameopt__FrameSize_11,
+  MR_Word * ll_backend__frameopt__Extra_12,
+  MR_Word * ll_backend__frameopt__SuccipRestore_13,
+  MR_Word * ll_backend__frameopt__Decrsp_14,
+  MR_Word * ll_backend__frameopt__Livevals_15,
+  MR_Word * ll_backend__frameopt__Goto_16,
+  MR_Word * ll_backend__frameopt__Remain_17);
+
+static MR_bool MR_CALL 
+ll_backend__frameopt__detstack_teardown_2_12_p_0(
+  MR_Word ll_backend__frameopt__Instrs0_13,
+  MR_Integer ll_backend__frameopt__FrameSize_14,
+  MR_Word ll_backend__frameopt__STATE_VARIABLE_Extra_0_31,
+  MR_Word * ll_backend__frameopt__STATE_VARIABLE_Extra_32,
+  MR_Word ll_backend__frameopt__STATE_VARIABLE_SuccipRestore_0_33,
+  MR_Word * ll_backend__frameopt__STATE_VARIABLE_SuccipRestore_34,
+  MR_Word ll_backend__frameopt__STATE_VARIABLE_Decrsp_0_35,
+  MR_Word * ll_backend__frameopt__STATE_VARIABLE_Decrsp_36,
+  MR_Word ll_backend__frameopt__STATE_VARIABLE_Livevals_0_37,
+  MR_Word * ll_backend__frameopt__STATE_VARIABLE_Livevals_38,
+  MR_Word * ll_backend__frameopt__Goto_19,
+  MR_Word * ll_backend__frameopt__Remain_20);
+
+static void MR_CALL 
+ll_backend__frameopt__keep_nondet_frame_9_p_0(
+  MR_Word ll_backend__frameopt__HeadVar__1_1,
+  MR_Word * ll_backend__frameopt__HeadVar__2_2,
+  MR_Word ll_backend__frameopt__ProcLabel_3,
+  MR_Word ll_backend__frameopt__KeepFrameLabel_4,
+  MR_Word ll_backend__frameopt__PrevInstr_5,
+  MR_Word ll_backend__frameopt__SuccMap_6,
+  MR_Word ll_backend__frameopt__LayoutLabels_7,
+  MR_Word ll_backend__frameopt__STATE_VARIABLE_Changed_0_8,
+  MR_Word * ll_backend__frameopt__STATE_VARIABLE_Changed_9);
+
+static void MR_CALL 
+ll_backend__frameopt__find_succeed_labels_3_p_0(
+  MR_Word ll_backend__frameopt__HeadVar__1_1,
+  MR_Word ll_backend__frameopt__STATE_VARIABLE_SuccMap_0_2,
+  MR_Word * ll_backend__frameopt__STATE_VARIABLE_SuccMap_3);
+
+static void MR_CALL 
+ll_backend__frameopt__delay_frame_transform_13_p_0_2(
+  MR_Box ll_backend__frameopt__closure_arg,
+  MR_Box ll_backend__frameopt__wrapper_arg_1,
+  MR_Box * ll_backend__frameopt__wrapper_arg_2);
+
+static MR_bool MR_CALL 
+ll_backend__frameopt__delay_frame_transform_13_p_0_1(
+  MR_Box ll_backend__frameopt__closure_arg,
+  MR_Box ll_backend__frameopt__wrapper_arg_1,
+  MR_Box * ll_backend__frameopt__wrapper_arg_2);
+
+static void MR_CALL 
+ll_backend__frameopt__delay_frame_transform_13_p_0(
+  MR_Word ll_backend__frameopt__TypeClassInfo_for_block_entry_exit_68,
+  MR_Word ll_backend__frameopt__STATE_VARIABLE_LabelSeq_0_34,
+  MR_Word * ll_backend__frameopt__STATE_VARIABLE_LabelSeq_35,
+  MR_Box ll_backend__frameopt__EntryInfo_15,
+  MR_Word ll_backend__frameopt__ProcLabel_16,
+  MR_Word ll_backend__frameopt__PredMap_17,
+  MR_Word ll_backend__frameopt__STATE_VARIABLE_C_0_36,
+  MR_Word * ll_backend__frameopt__STATE_VARIABLE_C_37,
+  MR_Word ll_backend__frameopt__STATE_VARIABLE_BlockMap_0_38,
+  MR_Word * ll_backend__frameopt__STATE_VARIABLE_BlockMap_39,
+  MR_Word ll_backend__frameopt__AddComments_20,
+  MR_Word * ll_backend__frameopt__TransformComments_21,
+  MR_Word * ll_backend__frameopt__DescComments_22,
+  MR_Word * ll_backend__frameopt__CanTransform_23);
+
+static MR_bool MR_CALL 
+ll_backend__frameopt__f_85_110_117_115_101_100_65_114_103_115_95_95_112_114_101_100_95_95_99_114_101_97_116_101_95_112_97_114_97_108_108_101_108_115_95_95_91_49_49_93_95_48_12_p_0_3(
+  MR_Box ll_backend__frameopt__closure_arg);
+
+static MR_bool MR_CALL 
+ll_backend__frameopt__f_85_110_117_115_101_100_65_114_103_115_95_95_112_114_101_100_95_95_99_114_101_97_116_101_95_112_97_114_97_108_108_101_108_115_95_95_91_49_49_93_95_48_12_p_0_2(
+  MR_Box ll_backend__frameopt__closure_arg);
+
+static MR_bool MR_CALL 
+ll_backend__frameopt__f_85_110_117_115_101_100_65_114_103_115_95_95_112_114_101_100_95_95_99_114_101_97_116_101_95_112_97_114_97_108_108_101_108_115_95_95_91_49_49_93_95_48_12_p_0_1(
+  MR_Box ll_backend__frameopt__closure_arg);
+
+static void MR_CALL 
+ll_backend__frameopt__f_85_110_117_115_101_100_65_114_103_115_95_95_112_114_101_100_95_95_99_114_101_97_116_101_95_112_97_114_97_108_108_101_108_115_95_95_91_49_49_93_95_48_12_p_0(
+  MR_Word ll_backend__frameopt__TypeClassInfo_for_block_entry_exit_157,
+  MR_Word ll_backend__frameopt__HeadVar__1_1,
+  MR_Word * ll_backend__frameopt__HeadVar__2_2,
+  MR_Box ll_backend__frameopt__EntryInfo_3,
+  MR_Word ll_backend__frameopt__ProcLabel_4,
+  MR_Word ll_backend__frameopt__STATE_VARIABLE_C_0_5,
+  MR_Word * ll_backend__frameopt__STATE_VARIABLE_C_6,
+  MR_Word ll_backend__frameopt__OrdNeedsFrame_7,
+  MR_Word ll_backend__frameopt__SetupParMap_8,
+  MR_Word ll_backend__frameopt__ExitParMap_9,
+  MR_Word ll_backend__frameopt__STATE_VARIABLE_BlockMap_0_11,
+  MR_Word * ll_backend__frameopt__STATE_VARIABLE_BlockMap_12);
+
+static MR_Word MR_CALL 
+ll_backend__frameopt__f_85_110_117_115_101_100_65_114_103_115_95_95_102_117_110_99_95_95_112_114_101_118_95_98_108_111_99_107_95_110_101_101_100_115_95_102_114_97_109_101_95_95_91_49_44_32_50_93_95_48_2_f_0(
+  MR_Word ll_backend__frameopt__OrdNeedsFrame_4,
+  MR_Word ll_backend__frameopt__BlockInfo_5);
+
+static MR_Word MR_CALL 
+ll_backend__frameopt__non_teardown_exit_code_1_f_0(
+  MR_Word ll_backend__frameopt__TypeClassInfo_for_block_entry_exit_3,
+  MR_Box ll_backend__frameopt__HeadVar__1_1);
+
+static MR_Word MR_CALL 
+ll_backend__frameopt__late_setup_code_1_f_0(
+  MR_Word ll_backend__frameopt__TypeClassInfo_for_block_entry_exit_3,
+  MR_Box ll_backend__frameopt__HeadVar__1_1);
+
+static MR_bool MR_CALL 
+ll_backend__frameopt__search_exit_par_map_3_p_0(
+  MR_Word ll_backend__frameopt__HeadVar__1_1,
+  MR_Word ll_backend__frameopt__Label_5,
+  MR_Word * ll_backend__frameopt__ParallelLabel_6);
+
+static MR_bool MR_CALL 
+ll_backend__frameopt__search_setup_par_map_3_p_0(
+  MR_Word ll_backend__frameopt__HeadVar__1_1,
+  MR_Word ll_backend__frameopt__Label_5,
+  MR_Word * ll_backend__frameopt__ParallelLabel_6);
+
+static MR_bool MR_CALL 
+ll_backend__frameopt__transform_nostack_ordinary_block_13_p_0_1(
+  MR_Box ll_backend__frameopt__closure_arg);
+
+static void MR_CALL 
+ll_backend__frameopt__transform_nostack_ordinary_block_13_p_0(
+  MR_Word ll_backend__frameopt__TypeClassInfo_for_block_entry_exit_73,
+  MR_Word ll_backend__frameopt__Label0_14,
+  MR_Word ll_backend__frameopt__Labels0_15,
+  MR_Word ll_backend__frameopt__BlockInfo0_16,
+  MR_Word ll_backend__frameopt__OrdNeedsFrame_17,
+  MR_Word ll_backend__frameopt__ProcLabel_18,
+  MR_Word ll_backend__frameopt__STATE_VARIABLE_C_0_42,
+  MR_Word * ll_backend__frameopt__STATE_VARIABLE_C_43,
+  MR_Word ll_backend__frameopt__STATE_VARIABLE_BlockMap_0_44,
+  MR_Word * ll_backend__frameopt__STATE_VARIABLE_BlockMap_45,
+  MR_Word ll_backend__frameopt__STATE_VARIABLE_SetupParMap_0_46,
+  MR_Word * ll_backend__frameopt__STATE_VARIABLE_SetupParMap_47,
+  MR_Word ll_backend__frameopt__STATE_VARIABLE_ExitParMap_0_48,
+  MR_Word * ll_backend__frameopt__STATE_VARIABLE_ExitParMap_49);
+
+static MR_bool MR_CALL 
+ll_backend__frameopt__process_frame_delay_11_p_0_1(
+  MR_Box ll_backend__frameopt__closure_arg);
+
+static void MR_CALL 
+ll_backend__frameopt__process_frame_delay_11_p_0(
+  MR_Word ll_backend__frameopt__TypeClassInfo_for_block_entry_exit_90,
+  MR_Word ll_backend__frameopt__HeadVar__1_1,
+  MR_Word ll_backend__frameopt__OrdNeedsFrame_2,
+  MR_Word ll_backend__frameopt__ProcLabel_3,
+  MR_Word ll_backend__frameopt__STATE_VARIABLE_C_0_4,
+  MR_Word * ll_backend__frameopt__STATE_VARIABLE_C_5,
+  MR_Word ll_backend__frameopt__STATE_VARIABLE_BlockMap_0_6,
+  MR_Word * ll_backend__frameopt__STATE_VARIABLE_BlockMap_7,
+  MR_Word ll_backend__frameopt__STATE_VARIABLE_SetupParMap_0_8,
+  MR_Word * ll_backend__frameopt__STATE_VARIABLE_SetupParMap_9,
+  MR_Word ll_backend__frameopt__STATE_VARIABLE_ExitParMap_0_10,
+  MR_Word * ll_backend__frameopt__STATE_VARIABLE_ExitParMap_11);
+
+static void MR_CALL 
+ll_backend__frameopt__mark_parallels_for_nostack_successors_12_p_0(
+  MR_Word ll_backend__frameopt__TypeInfo_for_En_49,
+  MR_Word ll_backend__frameopt__TypeInfo_for_Ex_50,
+  MR_Word ll_backend__frameopt__HeadVar__1_1,
+  MR_Word * ll_backend__frameopt__HeadVar__2_2,
+  MR_Word * ll_backend__frameopt__HeadVar__3_3,
+  MR_Word ll_backend__frameopt__OrdNeedsFrame_4,
+  MR_Word ll_backend__frameopt__BlockMap_5,
+  MR_Word ll_backend__frameopt__ProcLabel_6,
+  MR_Word ll_backend__frameopt__STATE_VARIABLE_C_0_7,
+  MR_Word * ll_backend__frameopt__STATE_VARIABLE_C_8,
+  MR_Word ll_backend__frameopt__STATE_VARIABLE_SetupParMap_0_9,
+  MR_Word * ll_backend__frameopt__STATE_VARIABLE_SetupParMap_10,
+  MR_Word ll_backend__frameopt__STATE_VARIABLE_ExitParMap_0_11,
+  MR_Word * ll_backend__frameopt__STATE_VARIABLE_ExitParMap_12);
+
+static void MR_CALL 
+ll_backend__frameopt__mark_parallel_for_nostack_successor_11_p_0(
+  MR_Word ll_backend__frameopt__TypeInfo_for_En_45,
+  MR_Word ll_backend__frameopt__TypeInfo_for_Ex_46,
+  MR_Word ll_backend__frameopt__Label0_12,
+  MR_Word * ll_backend__frameopt__Label_13,
+  MR_Word ll_backend__frameopt__OrdNeedsFrame_14,
+  MR_Word ll_backend__frameopt__BlockMap_15,
+  MR_Word ll_backend__frameopt__ProcLabel_16,
+  MR_Word ll_backend__frameopt__STATE_VARIABLE_C_0_27,
+  MR_Word * ll_backend__frameopt__STATE_VARIABLE_C_28,
+  MR_Word ll_backend__frameopt__STATE_VARIABLE_SetupParMap_0_29,
+  MR_Word * ll_backend__frameopt__STATE_VARIABLE_SetupParMap_30,
+  MR_Word ll_backend__frameopt__STATE_VARIABLE_ExitParMap_0_31,
+  MR_Word * ll_backend__frameopt__STATE_VARIABLE_ExitParMap_32);
+
+static void MR_CALL 
+ll_backend__frameopt__propagate_frame_requirement_to_predecessors_9_p_0_2(
+  MR_Box ll_backend__frameopt__closure_arg,
+  MR_Box ll_backend__frameopt__wrapper_arg_1,
+  MR_Box ll_backend__frameopt__wrapper_arg_2,
+  MR_Box * ll_backend__frameopt__wrapper_arg_3,
+  MR_Box ll_backend__frameopt__wrapper_arg_4,
+  MR_Box * ll_backend__frameopt__wrapper_arg_5);
+
+static MR_bool MR_CALL 
+ll_backend__frameopt__propagate_frame_requirement_to_predecessors_9_p_0_1(
+  MR_Box ll_backend__frameopt__closure_arg,
+  MR_Box ll_backend__frameopt__wrapper_arg_1);
+
+static void MR_CALL 
+ll_backend__frameopt__propagate_frame_requirement_to_predecessors_9_p_0(
+  MR_Word ll_backend__frameopt__TypeInfo_for_En_49,
+  MR_Word ll_backend__frameopt__TypeInfo_for_Ex_50,
+  MR_Word ll_backend__frameopt__STATE_VARIABLE_Queue_0_20,
+  MR_Word ll_backend__frameopt__BlockMap_11,
+  MR_Word ll_backend__frameopt__RevMap_12,
+  MR_Word ll_backend__frameopt__STATE_VARIABLE_OrdNeedsFrame_0_21,
+  MR_Word * ll_backend__frameopt__STATE_VARIABLE_OrdNeedsFrame_22,
+  MR_Integer ll_backend__frameopt__STATE_VARIABLE_PropagationStepsLeft_0_23,
+  MR_Integer * ll_backend__frameopt__STATE_VARIABLE_PropagationStepsLeft_24,
+  MR_Word ll_backend__frameopt__STATE_VARIABLE_CanTransform_0_25,
+  MR_Word * ll_backend__frameopt__STATE_VARIABLE_CanTransform_26);
+
+static MR_bool MR_CALL 
+ll_backend__frameopt__propagate_frame_requirement_to_successors_9_p_0_1(
+  MR_Box ll_backend__frameopt__closure_arg,
+  MR_Box ll_backend__frameopt__wrapper_arg_1);
+
+static void MR_CALL 
+ll_backend__frameopt__propagate_frame_requirement_to_successors_9_p_0(
+  MR_Word ll_backend__frameopt__TypeInfo_for_En_68,
+  MR_Word ll_backend__frameopt__TypeInfo_for_Ex_69,
+  MR_Word ll_backend__frameopt__STATE_VARIABLE_Queue_0_25,
+  MR_Word ll_backend__frameopt__BlockMap_11,
+  MR_Word ll_backend__frameopt__STATE_VARIABLE_OrdNeedsFrame_0_26,
+  MR_Word * ll_backend__frameopt__STATE_VARIABLE_OrdNeedsFrame_27,
+  MR_Word ll_backend__frameopt__STATE_VARIABLE_AlreadyProcessed_0_28,
+  MR_Integer ll_backend__frameopt__STATE_VARIABLE_PropagationStepsLeft_0_29,
+  MR_Integer * ll_backend__frameopt__STATE_VARIABLE_PropagationStepsLeft_30,
+  MR_Word ll_backend__frameopt__STATE_VARIABLE_CanTransform_0_31,
+  MR_Word * ll_backend__frameopt__STATE_VARIABLE_CanTransform_32);
+
+static MR_Word MR_CALL 
+ll_backend__frameopt__f_85_110_117_115_101_100_65_114_103_115_95_95_102_117_110_99_95_95_115_117_99_99_101_115_115_111_114_115_95_95_91_49_44_32_50_93_95_48_1_f_0(
+  MR_Word ll_backend__frameopt__BlockInfo_3);
+
+static void MR_CALL 
+ll_backend__frameopt__delay_frame_init_8_p_0(
+  MR_Word ll_backend__frameopt__TypeInfo_for_En_52,
+  MR_Word ll_backend__frameopt__TypeInfo_for_Ex_53,
+  MR_Word ll_backend__frameopt__HeadVar__1_1,
+  MR_Word ll_backend__frameopt__BlockMap_2,
+  MR_Word ll_backend__frameopt__STATE_VARIABLE_RevMap_0_3,
+  MR_Word * ll_backend__frameopt__STATE_VARIABLE_RevMap_4,
+  MR_Word ll_backend__frameopt__STATE_VARIABLE_Queue_0_5,
+  MR_Word * ll_backend__frameopt__STATE_VARIABLE_Queue_6,
+  MR_Word ll_backend__frameopt__STATE_VARIABLE_OrdNeedsFrame_0_7,
+  MR_Word * ll_backend__frameopt__STATE_VARIABLE_OrdNeedsFrame_8);
+
+static void MR_CALL 
+ll_backend__frameopt__rev_map_side_labels_4_p_0(
+  MR_Word ll_backend__frameopt__HeadVar__1_1,
+  MR_Word ll_backend__frameopt__HeadVar__2_2,
+  MR_Word ll_backend__frameopt__STATE_VARIABLE_RevMap_0_3,
+  MR_Word * ll_backend__frameopt__STATE_VARIABLE_RevMap_4);
+
+static MR_bool MR_CALL 
+ll_backend__frameopt__can_delay_frame_2_p_0(
+  MR_Word ll_backend__frameopt__TypeInfo_for_En_15,
+  MR_Word ll_backend__frameopt__TypeInfo_for_Ex_16,
+  MR_Word ll_backend__frameopt__HeadVar__1_1,
+  MR_Word ll_backend__frameopt__BlockMap_2);
+
+static void MR_CALL 
+ll_backend__frameopt__keep_frame_transform_6_p_0(
+  MR_Word ll_backend__frameopt__HeadVar__1_1,
+  MR_Word ll_backend__frameopt__FirstLabel_2,
+  MR_Word ll_backend__frameopt__SecondLabel_3,
+  MR_Word ll_backend__frameopt__CanClobberSuccip_4,
+  MR_Word ll_backend__frameopt__STATE_VARIABLE_BlockMap_0_5,
+  MR_Word * ll_backend__frameopt__STATE_VARIABLE_BlockMap_6);
+
+static void MR_CALL 
+ll_backend__frameopt__can_clobber_succip_2_f_0_1(
+  void * ll_backend__frameopt__env_ptr_arg);
+
+static void MR_CALL 
+ll_backend__frameopt__can_clobber_succip_2_f_0_3(
+  void * ll_backend__frameopt__env_ptr_arg);
+
+static void MR_CALL 
+ll_backend__frameopt__can_clobber_succip_2_f_0_2(
+  void * ll_backend__frameopt__env_ptr_arg);
+
+static void MR_CALL 
+ll_backend__frameopt__can_clobber_succip_2_f_0_4(
+  void * ll_backend__frameopt__env_ptr_arg);
+
+static MR_Word MR_CALL 
+ll_backend__frameopt__can_clobber_succip_2_f_0(
+  MR_Word ll_backend__frameopt__TypeInfo_35_35,
+  MR_Word ll_backend__frameopt__TypeInfo_36_36,
+  MR_Word ll_backend__frameopt__HeadVar__1_1,
+  MR_Word ll_backend__frameopt__HeadVar__2_2);
+
+static void MR_CALL 
+ll_backend__frameopt__analyze_block_map_5_p_0(
+  MR_Word ll_backend__frameopt__TypeClassInfo_for_block_entry_exit_33,
+  MR_Word ll_backend__frameopt__LabelSeq_6,
+  MR_Word ll_backend__frameopt__PreExitDummyLabelMap_7,
+  MR_Word ll_backend__frameopt__STATE_VARIABLE_BlockMap_0_23,
+  MR_Word * ll_backend__frameopt__STATE_VARIABLE_BlockMap_24,
+  MR_Word * ll_backend__frameopt__KeepFrameData_9);
+
+static void MR_CALL 
+ll_backend__frameopt__analyze_block_map_2_10_p_0(
+  MR_Word ll_backend__frameopt__TypeClassInfo_for_block_entry_exit_43,
+  MR_Word ll_backend__frameopt__HeadVar__1_1,
+  MR_Word ll_backend__frameopt__FirstLabel_2,
+  MR_Word ll_backend__frameopt__ProcLabel_3,
+  MR_Word ll_backend__frameopt__PreExitDummyLabelMap_4,
+  MR_Word ll_backend__frameopt__STATE_VARIABLE_BlockMap_0_5,
+  MR_Word * ll_backend__frameopt__STATE_VARIABLE_BlockMap_6,
+  MR_Word ll_backend__frameopt__STATE_VARIABLE_AnyBlockNeedsFrame_0_7,
+  MR_Word * ll_backend__frameopt__STATE_VARIABLE_AnyBlockNeedsFrame_8,
+  MR_Word ll_backend__frameopt__HeadVar__9_9,
+  MR_Word * ll_backend__frameopt__HeadVar__10_10);
+
+static void MR_CALL 
+ll_backend__frameopt__analyze_block_11_p_0_2(
+  MR_Box ll_backend__frameopt__closure_arg,
+  MR_Box ll_backend__frameopt__wrapper_arg_1,
+  MR_Box ll_backend__frameopt__wrapper_arg_2,
+  MR_Box * ll_backend__frameopt__wrapper_arg_3);
+
+static MR_bool MR_CALL 
+ll_backend__frameopt__analyze_block_11_p_0_1(
+  MR_Box ll_backend__frameopt__closure_arg,
+  MR_Box ll_backend__frameopt__wrapper_arg_1);
+
+static void MR_CALL 
+ll_backend__frameopt__analyze_block_11_p_0(
+  MR_Word ll_backend__frameopt__TypeClassInfo_for_block_entry_exit_104,
+  MR_Word ll_backend__frameopt__Label_12,
+  MR_Word ll_backend__frameopt__FollowingLabels_13,
+  MR_Word ll_backend__frameopt__FirstLabel_14,
+  MR_Word ll_backend__frameopt__ProcLabel_15,
+  MR_Word ll_backend__frameopt__PreExitDummyLabelMap_16,
+  MR_Word ll_backend__frameopt__STATE_VARIABLE_BlockMap_0_66,
+  MR_Word * ll_backend__frameopt__STATE_VARIABLE_BlockMap_67,
+  MR_Word ll_backend__frameopt__STATE_VARIABLE_AnyBlockNeedsFrame_0_68,
+  MR_Word * ll_backend__frameopt__STATE_VARIABLE_AnyBlockNeedsFrame_69,
+  MR_Word ll_backend__frameopt__STATE_VARIABLE_JumpToStart_0_70,
+  MR_Word * ll_backend__frameopt__STATE_VARIABLE_JumpToStart_71);
+
+static void MR_CALL 
+ll_backend__frameopt__find_redoip_labels_4_p_0(
+  MR_Word ll_backend__frameopt__HeadVar__1_1,
+  MR_Word ll_backend__frameopt__ProcLabel_2,
+  MR_Word ll_backend__frameopt__STATE_VARIABLE_RedoipLabels_0_3,
+  MR_Word * ll_backend__frameopt__STATE_VARIABLE_RedoipLabels_4);
+
+static MR_bool MR_CALL 
+ll_backend__frameopt__matching_label_ref_2_p_0(
+  MR_Word ll_backend__frameopt__FirstLabel_3,
+  MR_Word ll_backend__frameopt__GotoLabel_4);
+
+static MR_bool MR_CALL 
+ll_backend__frameopt__detect_det_entry_4_p_0(
+  MR_Word ll_backend__frameopt__Instrs0_5,
+  MR_Word * ll_backend__frameopt__Setup_6,
+  MR_Word * ll_backend__frameopt__HeadVar__3_3,
+  MR_Word * ll_backend__frameopt__EntryInfo_9);
+
+static MR_bool MR_CALL 
+ll_backend__frameopt__detstack_setup_6_p_0(
+  MR_Word ll_backend__frameopt__HeadVar__1_1,
+  MR_Integer ll_backend__frameopt__FrameSize_9,
+  MR_Word * ll_backend__frameopt__Setup_10,
+  MR_Word ll_backend__frameopt__STATE_VARIABLE_Others_0_18,
+  MR_Word * ll_backend__frameopt__STATE_VARIABLE_Others_19,
+  MR_Word * ll_backend__frameopt__Remain_12);
+
+static MR_bool MR_CALL 
+ll_backend__frameopt__build_frame_block_map_14_p_0_1(
+  MR_Box ll_backend__frameopt__closure_arg);
+
+static void MR_CALL 
+ll_backend__frameopt__build_frame_block_map_14_p_0(
+  MR_Word ll_backend__frameopt__TypeClassInfo_for_block_entry_exit_189,
+  MR_Word ll_backend__frameopt__HeadVar__1_1,
+  MR_Box ll_backend__frameopt__EntryInfo_2,
+  MR_Word * ll_backend__frameopt__HeadVar__3_3,
+  MR_Word ll_backend__frameopt__MaybePrevLabel_4,
+  MR_Word ll_backend__frameopt__FallInto_5,
+  MR_Word ll_backend__frameopt__ProcLabel_6,
+  MR_Word ll_backend__frameopt__STATE_VARIABLE_BlockMap_0_7,
+  MR_Word * ll_backend__frameopt__STATE_VARIABLE_BlockMap_8,
+  MR_Word ll_backend__frameopt__STATE_VARIABLE_PredMap_0_9,
+  MR_Word * ll_backend__frameopt__STATE_VARIABLE_PredMap_10,
+  MR_Word ll_backend__frameopt__STATE_VARIABLE_C_0_11,
+  MR_Word * ll_backend__frameopt__STATE_VARIABLE_C_12,
+  MR_Word ll_backend__frameopt__STATE_VARIABLE_PreExitDummyLabelMap_0_13,
+  MR_Word * ll_backend__frameopt__STATE_VARIABLE_PreExitDummyLabelMap_14);
+
+static void MR_CALL 
+ll_backend__frameopt__f_85_110_117_115_101_100_65_114_103_115_95_95_112_114_101_100_95_95_99_111_109_112_117_116_101_95_98_108_111_99_107_95_110_101_101_100_115_95_102_114_97_109_101_95_95_91_49_93_95_48_3_p_0_1(
+  void * ll_backend__frameopt__env_ptr_arg);
+
+static void MR_CALL 
+ll_backend__frameopt__f_85_110_117_115_101_100_65_114_103_115_95_95_112_114_101_100_95_95_99_111_109_112_117_116_101_95_98_108_111_99_107_95_110_101_101_100_115_95_102_114_97_109_101_95_95_91_49_93_95_48_3_p_0_3(
+  void * ll_backend__frameopt__env_ptr_arg);
+
+static void MR_CALL 
+ll_backend__frameopt__f_85_110_117_115_101_100_65_114_103_115_95_95_112_114_101_100_95_95_99_111_109_112_117_116_101_95_98_108_111_99_107_95_110_101_101_100_115_95_102_114_97_109_101_95_95_91_49_93_95_48_3_p_0_2(
+  void * ll_backend__frameopt__env_ptr_arg);
+
+static void MR_CALL 
+ll_backend__frameopt__f_85_110_117_115_101_100_65_114_103_115_95_95_112_114_101_100_95_95_99_111_109_112_117_116_101_95_98_108_111_99_107_95_110_101_101_100_115_95_102_114_97_109_101_95_95_91_49_93_95_48_3_p_0_4(
+  void * ll_backend__frameopt__env_ptr_arg);
+
+static void MR_CALL 
+ll_backend__frameopt__f_85_110_117_115_101_100_65_114_103_115_95_95_112_114_101_100_95_95_99_111_109_112_117_116_101_95_98_108_111_99_107_95_110_101_101_100_115_95_102_114_97_109_101_95_95_91_49_93_95_48_3_p_0(
+  MR_Word ll_backend__frameopt__Instrs_5,
+  MR_Word * ll_backend__frameopt__NeedsFrame_6);
+
+static MR_bool MR_CALL 
+ll_backend__frameopt__detect_exit_6_p_0(
+  MR_Word ll_backend__frameopt__TypeClassInfo_for_block_entry_exit_7,
+  MR_Word ll_backend__frameopt__HeadVar__1_1,
+  MR_Box ll_backend__frameopt__HeadVar__2_2,
+  MR_Word * ll_backend__frameopt__HeadVar__3_3,
+  MR_Word * ll_backend__frameopt__HeadVar__4_4,
+  MR_Word * ll_backend__frameopt__HeadVar__5_5,
+  MR_Box * ll_backend__frameopt__HeadVar__6_6);
+
+static MR_bool MR_CALL 
+ll_backend__frameopt__detect_entry_4_p_0(
+  MR_Word ll_backend__frameopt__TypeClassInfo_for_block_entry_exit_5,
+  MR_Word ll_backend__frameopt__HeadVar__1_1,
+  MR_Word * ll_backend__frameopt__HeadVar__2_2,
+  MR_Word * ll_backend__frameopt__HeadVar__3_3,
+  MR_Box * ll_backend__frameopt__HeadVar__4_4);
+
+static void MR_CALL 
+ll_backend__frameopt__flatten_block_seq_3_p_0(
+  MR_Word ll_backend__frameopt__TypeInfo_for_En_24,
+  MR_Word ll_backend__frameopt__TypeInfo_for_Ex_25,
+  MR_Word ll_backend__frameopt__HeadVar__1_1,
+  MR_Word ll_backend__frameopt__BlockMap_2,
+  MR_Word * ll_backend__frameopt__HeadVar__3_3);
+
+static void MR_CALL 
+ll_backend__frameopt__divide_into_basic_blocks_5_p_0(
+  MR_Word ll_backend__frameopt__HeadVar__1_1,
+  MR_Word ll_backend__frameopt__ProcLabel_2,
+  MR_Word * ll_backend__frameopt__HeadVar__3_3,
+  MR_Word ll_backend__frameopt__STATE_VARIABLE_C_0_4,
+  MR_Word * ll_backend__frameopt__STATE_VARIABLE_C_5);
+
+static void MR_CALL 
+ll_backend__frameopt__maybe_add_comments_5_p_0(
+  MR_Word ll_backend__frameopt__Comments_6,
+  MR_Word ll_backend__frameopt__DescComments_7,
+  MR_Word ll_backend__frameopt__Instrs0_8,
+  MR_Word * ll_backend__frameopt__Instrs_9,
+  MR_Word * ll_backend__frameopt__Mod_10);
+
+static MR_bool MR_CALL 
+ll_backend__frameopt____Unify____block_needs_frame_0_0_10001(
+  MR_Box ll_backend__frameopt__wrapper_arg_1,
+  MR_Box ll_backend__frameopt__wrapper_arg_2);
+
+static void MR_CALL 
+ll_backend__frameopt____Compare____block_needs_frame_0_0_10001(
+  MR_Box * ll_backend__frameopt__wrapper_arg_1,
+  MR_Box ll_backend__frameopt__wrapper_arg_2,
+  MR_Box ll_backend__frameopt__wrapper_arg_3);
+
+static MR_bool MR_CALL 
+ll_backend__frameopt____Unify____block_type_2_0_10001(
+  MR_Box ll_backend__frameopt__wrapper_arg_1,
+  MR_Box ll_backend__frameopt__wrapper_arg_2,
+  MR_Box ll_backend__frameopt__wrapper_arg_3,
+  MR_Box ll_backend__frameopt__wrapper_arg_4);
+
+static void MR_CALL 
+ll_backend__frameopt____Compare____block_type_2_0_10001(
+  MR_Box ll_backend__frameopt__wrapper_arg_1,
+  MR_Box ll_backend__frameopt__wrapper_arg_2,
+  MR_Box * ll_backend__frameopt__wrapper_arg_3,
+  MR_Box ll_backend__frameopt__wrapper_arg_4,
+  MR_Box ll_backend__frameopt__wrapper_arg_5);
+
+static MR_bool MR_CALL 
+ll_backend__frameopt____Unify____can_transform_0_0_10001(
+  MR_Box ll_backend__frameopt__wrapper_arg_1,
+  MR_Box ll_backend__frameopt__wrapper_arg_2);
+
+static void MR_CALL 
+ll_backend__frameopt____Compare____can_transform_0_0_10001(
+  MR_Box * ll_backend__frameopt__wrapper_arg_1,
+  MR_Box ll_backend__frameopt__wrapper_arg_2,
+  MR_Box ll_backend__frameopt__wrapper_arg_3);
+
+static MR_bool MR_CALL 
+ll_backend__frameopt____Unify____det_entry_info_0_0_10001(
+  MR_Box ll_backend__frameopt__wrapper_arg_1,
+  MR_Box ll_backend__frameopt__wrapper_arg_2);
+
+static void MR_CALL 
+ll_backend__frameopt____Compare____det_entry_info_0_0_10001(
+  MR_Box * ll_backend__frameopt__wrapper_arg_1,
+  MR_Box ll_backend__frameopt__wrapper_arg_2,
+  MR_Box ll_backend__frameopt__wrapper_arg_3);
+
+static MR_bool MR_CALL 
+ll_backend__frameopt____Unify____det_exit_info_0_0_10001(
+  MR_Box ll_backend__frameopt__wrapper_arg_1,
+  MR_Box ll_backend__frameopt__wrapper_arg_2);
+
+static void MR_CALL 
+ll_backend__frameopt____Compare____det_exit_info_0_0_10001(
+  MR_Box * ll_backend__frameopt__wrapper_arg_1,
+  MR_Box ll_backend__frameopt__wrapper_arg_2,
+  MR_Box ll_backend__frameopt__wrapper_arg_3);
+
+static MR_bool MR_CALL 
+ll_backend__frameopt____Unify____det_frame_block_map_0_0_10001(
+  MR_Box ll_backend__frameopt__wrapper_arg_1,
+  MR_Box ll_backend__frameopt__wrapper_arg_2);
+
+static void MR_CALL 
+ll_backend__frameopt____Compare____det_frame_block_map_0_0_10001(
+  MR_Box * ll_backend__frameopt__wrapper_arg_1,
+  MR_Box ll_backend__frameopt__wrapper_arg_2,
+  MR_Box ll_backend__frameopt__wrapper_arg_3);
+
+static MR_bool MR_CALL 
+ll_backend__frameopt____Unify____exit_par_map_0_0_10001(
+  MR_Box ll_backend__frameopt__wrapper_arg_1,
+  MR_Box ll_backend__frameopt__wrapper_arg_2);
+
+static void MR_CALL 
+ll_backend__frameopt____Compare____exit_par_map_0_0_10001(
+  MR_Box * ll_backend__frameopt__wrapper_arg_1,
+  MR_Box ll_backend__frameopt__wrapper_arg_2,
+  MR_Box ll_backend__frameopt__wrapper_arg_3);
+
+static MR_bool MR_CALL 
+ll_backend__frameopt____Unify____frame_block_info_2_0_10001(
+  MR_Box ll_backend__frameopt__wrapper_arg_1,
+  MR_Box ll_backend__frameopt__wrapper_arg_2,
+  MR_Box ll_backend__frameopt__wrapper_arg_3,
+  MR_Box ll_backend__frameopt__wrapper_arg_4);
+
+static void MR_CALL 
+ll_backend__frameopt____Compare____frame_block_info_2_0_10001(
+  MR_Box ll_backend__frameopt__wrapper_arg_1,
+  MR_Box ll_backend__frameopt__wrapper_arg_2,
+  MR_Box * ll_backend__frameopt__wrapper_arg_3,
+  MR_Box ll_backend__frameopt__wrapper_arg_4,
+  MR_Box ll_backend__frameopt__wrapper_arg_5);
+
+static MR_bool MR_CALL 
+ll_backend__frameopt____Unify____frame_block_map_2_0_10001(
+  MR_Box ll_backend__frameopt__wrapper_arg_1,
+  MR_Box ll_backend__frameopt__wrapper_arg_2,
+  MR_Box ll_backend__frameopt__wrapper_arg_3,
+  MR_Box ll_backend__frameopt__wrapper_arg_4);
+
+static void MR_CALL 
+ll_backend__frameopt____Compare____frame_block_map_2_0_10001(
+  MR_Box ll_backend__frameopt__wrapper_arg_1,
+  MR_Box ll_backend__frameopt__wrapper_arg_2,
+  MR_Box * ll_backend__frameopt__wrapper_arg_3,
+  MR_Box ll_backend__frameopt__wrapper_arg_4,
+  MR_Box ll_backend__frameopt__wrapper_arg_5);
+
+static MR_bool MR_CALL 
+ll_backend__frameopt____Unify____maybe_dummy_0_0_10001(
+  MR_Box ll_backend__frameopt__wrapper_arg_1,
+  MR_Box ll_backend__frameopt__wrapper_arg_2);
+
+static void MR_CALL 
+ll_backend__frameopt____Compare____maybe_dummy_0_0_10001(
+  MR_Box * ll_backend__frameopt__wrapper_arg_1,
+  MR_Box ll_backend__frameopt__wrapper_arg_2,
+  MR_Box ll_backend__frameopt__wrapper_arg_3);
+
+static MR_bool MR_CALL 
+ll_backend__frameopt____Unify____nondet_entry_info_0_0_10001(
+  MR_Box ll_backend__frameopt__wrapper_arg_1,
+  MR_Box ll_backend__frameopt__wrapper_arg_2);
+
+static void MR_CALL 
+ll_backend__frameopt____Compare____nondet_entry_info_0_0_10001(
+  MR_Box * ll_backend__frameopt__wrapper_arg_1,
+  MR_Box ll_backend__frameopt__wrapper_arg_2,
+  MR_Box ll_backend__frameopt__wrapper_arg_3);
+
+static MR_bool MR_CALL 
+ll_backend__frameopt____Unify____nondet_exit_info_0_0_10001(
+  MR_Box ll_backend__frameopt__wrapper_arg_1,
+  MR_Box ll_backend__frameopt__wrapper_arg_2);
+
+static void MR_CALL 
+ll_backend__frameopt____Compare____nondet_exit_info_0_0_10001(
+  MR_Box * ll_backend__frameopt__wrapper_arg_1,
+  MR_Box ll_backend__frameopt__wrapper_arg_2,
+  MR_Box ll_backend__frameopt__wrapper_arg_3);
+
+static MR_bool MR_CALL 
+ll_backend__frameopt____Unify____ord_needs_frame_0_0_10001(
+  MR_Box ll_backend__frameopt__wrapper_arg_1,
+  MR_Box ll_backend__frameopt__wrapper_arg_2);
+
+static void MR_CALL 
+ll_backend__frameopt____Compare____ord_needs_frame_0_0_10001(
+  MR_Box * ll_backend__frameopt__wrapper_arg_1,
+  MR_Box ll_backend__frameopt__wrapper_arg_2,
+  MR_Box ll_backend__frameopt__wrapper_arg_3);
+
+static MR_bool MR_CALL 
+ll_backend__frameopt____Unify____pre_exit_dummy_label_map_0_0_10001(
+  MR_Box ll_backend__frameopt__wrapper_arg_1,
+  MR_Box ll_backend__frameopt__wrapper_arg_2);
+
+static void MR_CALL 
+ll_backend__frameopt____Compare____pre_exit_dummy_label_map_0_0_10001(
+  MR_Box * ll_backend__frameopt__wrapper_arg_1,
+  MR_Box ll_backend__frameopt__wrapper_arg_2,
+  MR_Box ll_backend__frameopt__wrapper_arg_3);
+
+static MR_bool MR_CALL 
+ll_backend__frameopt____Unify____pred_map_0_0_10001(
+  MR_Box ll_backend__frameopt__wrapper_arg_1,
+  MR_Box ll_backend__frameopt__wrapper_arg_2);
+
+static void MR_CALL 
+ll_backend__frameopt____Compare____pred_map_0_0_10001(
+  MR_Box * ll_backend__frameopt__wrapper_arg_1,
+  MR_Box ll_backend__frameopt__wrapper_arg_2,
+  MR_Box ll_backend__frameopt__wrapper_arg_3);
+
+static MR_bool MR_CALL 
+ll_backend__frameopt____Unify____prop_queue_0_0_10001(
+  MR_Box ll_backend__frameopt__wrapper_arg_1,
+  MR_Box ll_backend__frameopt__wrapper_arg_2);
+
+static void MR_CALL 
+ll_backend__frameopt____Compare____prop_queue_0_0_10001(
+  MR_Box * ll_backend__frameopt__wrapper_arg_1,
+  MR_Box ll_backend__frameopt__wrapper_arg_2,
+  MR_Box ll_backend__frameopt__wrapper_arg_3);
+
+static MR_bool MR_CALL 
+ll_backend__frameopt____Unify____rev_map_0_0_10001(
+  MR_Box ll_backend__frameopt__wrapper_arg_1,
+  MR_Box ll_backend__frameopt__wrapper_arg_2);
+
+static void MR_CALL 
+ll_backend__frameopt____Compare____rev_map_0_0_10001(
+  MR_Box * ll_backend__frameopt__wrapper_arg_1,
+  MR_Box ll_backend__frameopt__wrapper_arg_2,
+  MR_Box ll_backend__frameopt__wrapper_arg_3);
+
+static MR_bool MR_CALL 
+ll_backend__frameopt____Unify____setup_par_map_0_0_10001(
+  MR_Box ll_backend__frameopt__wrapper_arg_1,
+  MR_Box ll_backend__frameopt__wrapper_arg_2);
+
+static void MR_CALL 
+ll_backend__frameopt____Compare____setup_par_map_0_0_10001(
+  MR_Box * ll_backend__frameopt__wrapper_arg_1,
+  MR_Box ll_backend__frameopt__wrapper_arg_2,
+  MR_Box ll_backend__frameopt__wrapper_arg_3);
+
+static MR_bool MR_CALL 
+ll_backend__frameopt__ClassMethod_for_ll_backend__frameopt__block_entry_exit____ll_backend__frameopt__nondet_entry_info__arity0__ll_backend__frameopt__nondet_exit_info__arity0______ll_backend__frameopt__detect_entry_4_4_p_0_10001(
+  MR_Box ll_backend__frameopt__closure_arg,
+  MR_Box ll_backend__frameopt__wrapper_arg_1,
+  MR_Box * ll_backend__frameopt__wrapper_arg_2,
+  MR_Box * ll_backend__frameopt__wrapper_arg_3,
+  MR_Box * ll_backend__frameopt__wrapper_arg_4);
+
+static MR_bool MR_CALL 
+ll_backend__frameopt__ClassMethod_for_ll_backend__frameopt__block_entry_exit____ll_backend__frameopt__nondet_entry_info__arity0__ll_backend__frameopt__nondet_exit_info__arity0______ll_backend__frameopt__detect_exit_6_6_p_0_10001(
+  MR_Box ll_backend__frameopt__closure_arg,
+  MR_Box ll_backend__frameopt__wrapper_arg_1,
+  MR_Box ll_backend__frameopt__wrapper_arg_2,
+  MR_Box * ll_backend__frameopt__wrapper_arg_3,
+  MR_Box * ll_backend__frameopt__wrapper_arg_4,
+  MR_Box * ll_backend__frameopt__wrapper_arg_5,
+  MR_Box * ll_backend__frameopt__wrapper_arg_6);
+
+static MR_Box MR_CALL 
+ll_backend__frameopt__ClassMethod_for_ll_backend__frameopt__block_entry_exit____ll_backend__frameopt__nondet_entry_info__arity0__ll_backend__frameopt__nondet_exit_info__arity0______ll_backend__frameopt__late_setup_code_1_1_f_0_10001(
+  MR_Box ll_backend__frameopt__closure_arg,
+  MR_Box ll_backend__frameopt__wrapper_arg_1);
+
+static MR_Box MR_CALL 
+ll_backend__frameopt__ClassMethod_for_ll_backend__frameopt__block_entry_exit____ll_backend__frameopt__nondet_entry_info__arity0__ll_backend__frameopt__nondet_exit_info__arity0______ll_backend__frameopt__non_teardown_exit_code_1_1_f_0_10001(
+  MR_Box ll_backend__frameopt__closure_arg,
+  MR_Box ll_backend__frameopt__wrapper_arg_1);
+
+static MR_Box MR_CALL 
+ll_backend__frameopt__ClassMethod_for_ll_backend__frameopt__block_entry_exit____ll_backend__frameopt__nondet_entry_info__arity0__ll_backend__frameopt__nondet_exit_info__arity0______ll_backend__frameopt__describe_entry_1_1_f_0_10001(
+  MR_Box ll_backend__frameopt__closure_arg,
+  MR_Box ll_backend__frameopt__wrapper_arg_1);
+
+static MR_Box MR_CALL 
+ll_backend__frameopt__ClassMethod_for_ll_backend__frameopt__block_entry_exit____ll_backend__frameopt__nondet_entry_info__arity0__ll_backend__frameopt__nondet_exit_info__arity0______ll_backend__frameopt__describe_exit_2_2_f_0_10001(
+  MR_Box ll_backend__frameopt__closure_arg,
+  MR_Box ll_backend__frameopt__wrapper_arg_1,
+  MR_Box ll_backend__frameopt__wrapper_arg_2);
+
+static MR_bool MR_CALL 
+ll_backend__frameopt__ClassMethod_for_ll_backend__frameopt__block_entry_exit____ll_backend__frameopt__det_entry_info__arity0__ll_backend__frameopt__det_exit_info__arity0______ll_backend__frameopt__detect_entry_4_4_p_0_10001(
+  MR_Box ll_backend__frameopt__closure_arg,
+  MR_Box ll_backend__frameopt__wrapper_arg_1,
+  MR_Box * ll_backend__frameopt__wrapper_arg_2,
+  MR_Box * ll_backend__frameopt__wrapper_arg_3,
+  MR_Box * ll_backend__frameopt__wrapper_arg_4);
+
+static MR_bool MR_CALL 
+ll_backend__frameopt__ClassMethod_for_ll_backend__frameopt__block_entry_exit____ll_backend__frameopt__det_entry_info__arity0__ll_backend__frameopt__det_exit_info__arity0______ll_backend__frameopt__detect_exit_6_6_p_0_10001(
+  MR_Box ll_backend__frameopt__closure_arg,
+  MR_Box ll_backend__frameopt__wrapper_arg_1,
+  MR_Box ll_backend__frameopt__wrapper_arg_2,
+  MR_Box * ll_backend__frameopt__wrapper_arg_3,
+  MR_Box * ll_backend__frameopt__wrapper_arg_4,
+  MR_Box * ll_backend__frameopt__wrapper_arg_5,
+  MR_Box * ll_backend__frameopt__wrapper_arg_6);
+
+static MR_Box MR_CALL 
+ll_backend__frameopt__ClassMethod_for_ll_backend__frameopt__block_entry_exit____ll_backend__frameopt__det_entry_info__arity0__ll_backend__frameopt__det_exit_info__arity0______ll_backend__frameopt__late_setup_code_1_1_f_0_10001(
+  MR_Box ll_backend__frameopt__closure_arg,
+  MR_Box ll_backend__frameopt__wrapper_arg_1);
+
+static MR_Box MR_CALL 
+ll_backend__frameopt__ClassMethod_for_ll_backend__frameopt__block_entry_exit____ll_backend__frameopt__det_entry_info__arity0__ll_backend__frameopt__det_exit_info__arity0______ll_backend__frameopt__non_teardown_exit_code_1_1_f_0_10001(
+  MR_Box ll_backend__frameopt__closure_arg,
+  MR_Box ll_backend__frameopt__wrapper_arg_1);
+
+static MR_Box MR_CALL 
+ll_backend__frameopt__ClassMethod_for_ll_backend__frameopt__block_entry_exit____ll_backend__frameopt__det_entry_info__arity0__ll_backend__frameopt__det_exit_info__arity0______ll_backend__frameopt__describe_entry_1_1_f_0_10001(
+  MR_Box ll_backend__frameopt__closure_arg,
+  MR_Box ll_backend__frameopt__wrapper_arg_1);
+
+static MR_Box MR_CALL 
+ll_backend__frameopt__ClassMethod_for_ll_backend__frameopt__block_entry_exit____ll_backend__frameopt__det_entry_info__arity0__ll_backend__frameopt__det_exit_info__arity0______ll_backend__frameopt__describe_exit_2_2_f_0_10001(
+  MR_Box ll_backend__frameopt__closure_arg,
+  MR_Box ll_backend__frameopt__wrapper_arg_1,
+  MR_Box ll_backend__frameopt__wrapper_arg_2);
+
+
+static /* final */ const MR_Box ll_backend__frameopt_scalar_common_1[10][3];
+
+static /* final */ const MR_Box ll_backend__frameopt_scalar_common_2[17][2];
+
+static /* final */ const MR_Box ll_backend__frameopt_scalar_common_3[5][1];
+
+static /* final */ const MR_Box ll_backend__frameopt_scalar_common_4[8][5];
+
+static /* final */ const MR_Integer ll_backend__frameopt_scalar_common_5[2][3];
+
+static /* final */ const MR_Box ll_backend__frameopt_scalar_common_6[1][7];
+
+static /* final */ const MR_Box ll_backend__frameopt_scalar_common_7[1][8];
+
+static /* final */ const MR_Box ll_backend__frameopt_scalar_common_8[1][11];
+
+static /* final */ const MR_Box ll_backend__frameopt_scalar_common_9[1][6];
+
+static /* final */ const MR_Box ll_backend__frameopt_scalar_common_10[1][10];
+
+
+
+
+static /* final */ const MR_Box ll_backend__frameopt_scalar_common_1[10][3] = {
+  /* row 0 */
+  {
+    ((MR_Box) (&ll_backend__frameopt__ll_backend__frameopt__type_ctor_info_frame_block_info_2)),
+    ((MR_Box) (&ll_backend__frameopt__ll_backend__frameopt__type_ctor_info_det_entry_info_0)),
+    ((MR_Box) (&ll_backend__frameopt__ll_backend__frameopt__type_ctor_info_det_exit_info_0))
+  },
+  /* row 1 */
+  {
+    ((MR_Box) (base_typeclass_info_ll_backend__frameopt__block_entry_exit__arity2__ll_backend__frameopt__det_entry_info__arity0__ll_backend__frameopt__det_exit_info__arity0__)),
+    ((MR_Box) (&ll_backend__frameopt__ll_backend__frameopt__type_ctor_info_det_entry_info_0)),
+    ((MR_Box) (&ll_backend__frameopt__ll_backend__frameopt__type_ctor_info_det_exit_info_0))
+  },
+  /* row 2 */
+  {
+    ((MR_Box) (&ll_backend__frameopt__ll_backend__frameopt__type_ctor_info_frame_block_info_2)),
+    ((MR_Box) (&ll_backend__frameopt__ll_backend__frameopt__type_ctor_info_nondet_entry_info_0)),
+    ((MR_Box) (&ll_backend__frameopt__ll_backend__frameopt__type_ctor_info_nondet_exit_info_0))
+  },
+  /* row 3 */
+  {
+    ((MR_Box) (base_typeclass_info_ll_backend__frameopt__block_entry_exit__arity2__ll_backend__frameopt__nondet_entry_info__arity0__ll_backend__frameopt__nondet_exit_info__arity0__)),
+    ((MR_Box) (&ll_backend__frameopt__ll_backend__frameopt__type_ctor_info_nondet_entry_info_0)),
+    ((MR_Box) (&ll_backend__frameopt__ll_backend__frameopt__type_ctor_info_nondet_exit_info_0))
+  },
+  /* row 4 */
+  {
+    ((MR_Box) (&mercury__pair__pair__type_ctor_info_pair_2)),
+    ((MR_Box) (&ll_backend__llds__ll_backend__llds__type_ctor_info_label_0)),
+    ((MR_Box) (&ll_backend__frameopt__ll_backend__frameopt__type_ctor_info_block_needs_frame_0))
+  },
+  /* row 5 */
+  {
+    ((MR_Box) (&mercury__tree234__tree234__type_ctor_info_tree234_2)),
+    ((MR_Box) (&ll_backend__llds__ll_backend__llds__type_ctor_info_label_0)),
+    ((MR_Box) (&ll_backend__frameopt__ll_backend__frameopt__type_ctor_info_block_needs_frame_0))
+  },
+  /* row 6 */
+  {
+    ((MR_Box) (&mercury__tree234__tree234__type_ctor_info_tree234_2)),
+    ((MR_Box) (&ll_backend__llds__ll_backend__llds__type_ctor_info_label_0)),
+    ((MR_Box) (&ll_backend__frameopt_scalar_common_1[0]))
+  },
+  /* row 7 */
+  {
+    ((MR_Box) (&mercury__tree234__tree234__type_ctor_info_tree234_2)),
+    ((MR_Box) (&ll_backend__llds__ll_backend__llds__type_ctor_info_label_0)),
+    ((MR_Box) (&ll_backend__llds__ll_backend__llds__type_ctor_info_label_0))
+  },
+  /* row 8 */
+  {
+    ((MR_Box) (&mercury__tree234__tree234__type_ctor_info_tree234_2)),
+    ((MR_Box) (&ll_backend__llds__ll_backend__llds__type_ctor_info_label_0)),
+    ((MR_Box) (&ll_backend__frameopt_scalar_common_2[1]))
+  },
+  /* row 9 */
+  {
+    ((MR_Box) (&ll_backend__frameopt_scalar_common_4[6])),
+    ((MR_Box) (ll_backend__frameopt__delay_frame_transform_13_p_0_1)),
+    ((MR_Box) (MR_Word) ((MR_Integer) 0))
+  },
+};
+
+static /* final */ const MR_Box ll_backend__frameopt_scalar_common_2[17][2] = {
+  /* row 0 */
+  {
+    ((MR_Box) (&mercury__list__list__type_ctor_info_list_1)),
+    ((MR_Box) (&ll_backend__llds__ll_backend__llds__type_ctor_info_instruction_0))
+  },
+  /* row 1 */
+  {
+    ((MR_Box) (&mercury__list__list__type_ctor_info_list_1)),
+    ((MR_Box) (&ll_backend__llds__ll_backend__llds__type_ctor_info_label_0))
+  },
+  /* row 2 */
+  {
+    ((MR_Box) (&mercury__maybe__maybe__type_ctor_info_maybe_1)),
+    ((MR_Box) (&ll_backend__llds__ll_backend__llds__type_ctor_info_label_0))
+  },
+  /* row 3 */
+  {
+    ((MR_Box) (&mercury__queue__queue__type_ctor_info_queue_1)),
+    ((MR_Box) (&ll_backend__llds__ll_backend__llds__type_ctor_info_label_0))
+  },
+  /* row 4 */
+  {
+    ((MR_Box) (MR_mkword(MR_mktag(1), &ll_backend__frameopt_scalar_common_3[0]))),
+    ((MR_Box) ((MR_String) ""))
+  },
+  /* row 5 */
+  {
+    ((MR_Box) (&ll_backend__frameopt_scalar_common_2[4])),
+    ((MR_Box) (MR_mkword(MR_mktag(0), MR_mkbody((MR_Integer) 0))))
+  },
+  /* row 6 */
+  {
+    ((MR_Box) (MR_mkword(MR_mktag(1), &ll_backend__frameopt_scalar_common_3[1]))),
+    ((MR_Box) ((MR_String) ""))
+  },
+  /* row 7 */
+  {
+    ((MR_Box) (&ll_backend__frameopt_scalar_common_2[6])),
+    ((MR_Box) (MR_mkword(MR_mktag(0), MR_mkbody((MR_Integer) 0))))
+  },
+  /* row 8 */
+  {
+    ((MR_Box) (MR_Word) ((MR_Integer) 6)),
+    ((MR_Box) (MR_mkword(MR_mktag(0), MR_mkbody((MR_Integer) 0))))
+  },
+  /* row 9 */
+  {
+    ((MR_Box) (MR_mkword(MR_mktag(3), &ll_backend__frameopt_scalar_common_2[8]))),
+    ((MR_Box) ((MR_String) ""))
+  },
+  /* row 10 */
+  {
+    ((MR_Box) (&ll_backend__frameopt_scalar_common_2[9])),
+    ((MR_Box) (MR_mkword(MR_mktag(0), MR_mkbody((MR_Integer) 0))))
+  },
+  /* row 11 */
+  {
+    ((MR_Box) ((MR_Integer) 1)),
+    ((MR_Box) ((MR_Integer) 1))
+  },
+  /* row 12 */
+  {
+    ((MR_Box) ((MR_Integer) 0)),
+    ((MR_Box) ((MR_Integer) 0))
+  },
+  /* row 13 */
+  {
+    ((MR_Box) ((MR_Integer) 1)),
+    ((MR_Box) ((MR_Integer) 0))
+  },
+  /* row 14 */
+  {
+    ((MR_Box) (MR_mkword(MR_mktag(1), &ll_backend__frameopt_scalar_common_3[2]))),
+    ((MR_Box) ((MR_String) ""))
+  },
+  /* row 15 */
+  {
+    ((MR_Box) (&ll_backend__frameopt_scalar_common_2[14])),
+    ((MR_Box) (MR_mkword(MR_mktag(0), MR_mkbody((MR_Integer) 0))))
+  },
+  /* row 16 */
+  {
+    ((MR_Box) (MR_Word) ((MR_Integer) 6)),
+    ((MR_Box) (&ll_backend__frameopt_scalar_common_3[3]))
+  },
+};
+
+static /* final */ const MR_Box ll_backend__frameopt_scalar_common_3[5][1] = {
+  /* row 0 */
+  {
+    ((MR_Box) ((MR_String) "could not delay frame creation"))
+  },
+  /* row 1 */
+  {
+    ((MR_Box) ((MR_String) "delaying stack frame"))
+  },
+  /* row 2 */
+  {
+    ((MR_Box) ((MR_String) "keeping stack frame"))
+  },
+  /* row 3 */
+  {
+    ((MR_Box) (MR_mkword(MR_mktag(0), MR_mkbody((MR_Integer) 2))))
+  },
+  /* row 4 */
+  {
+    ((MR_Box) (MR_mkword(MR_mktag(0), MR_mkbody((MR_Integer) 0))))
+  },
+};
+
+static /* final */ const MR_Box ll_backend__frameopt_scalar_common_4[8][5] = {
+  /* row 0 */
+  {
+    NULL,
+    ((MR_Box) (NULL)),
+    ((MR_Box) (MR_Word) ((MR_Integer) 2)),
+    ((MR_Box) (&ll_backend__frameopt__ll_backend__frameopt__type_ctor_info_block_needs_frame_0)),
+    ((MR_Box) (&ll_backend__frameopt__ll_backend__frameopt__type_ctor_info_block_needs_frame_0))
+  },
+  /* row 1 */
+  {
+    NULL,
+    ((MR_Box) (NULL)),
+    ((MR_Box) (MR_Word) ((MR_Integer) 2)),
+    ((MR_Box) (&mdbcomp__prim_data__mdbcomp__prim_data__type_ctor_info_proc_label_0)),
+    ((MR_Box) (&ll_backend__llds__ll_backend__llds__type_ctor_info_label_0))
+  },
+  /* row 2 */
+  {
+    NULL,
+    ((MR_Box) (NULL)),
+    ((MR_Box) (MR_Word) ((MR_Integer) 2)),
+    ((MR_Box) (&ll_backend__frameopt__set_ordlist__pti_set_ordlist_1__plain_ll_backend__llds__type_ctor_info_label_0)),
+    ((MR_Box) (&ll_backend__llds__ll_backend__llds__type_ctor_info_label_0))
+  },
+  /* row 3 */
+  {
+    NULL,
+    ((MR_Box) (NULL)),
+    ((MR_Box) (MR_Word) ((MR_Integer) 2)),
+    ((MR_Box) (&ll_backend__llds__ll_backend__llds__type_ctor_info_label_0)),
+    ((MR_Box) (&ll_backend__llds__ll_backend__llds__type_ctor_info_label_0))
+  },
+  /* row 4 */
+  {
+    NULL,
+    ((MR_Box) (NULL)),
+    ((MR_Box) (MR_Word) ((MR_Integer) 2)),
+    ((MR_Box) (&ll_backend__frameopt__maybe__pti_maybe_1__plain_ll_backend__llds__type_ctor_info_label_0)),
+    ((MR_Box) (&ll_backend__frameopt__maybe__pti_maybe_1__plain_ll_backend__llds__type_ctor_info_label_0))
+  },
+  /* row 5 */
+  {
+    NULL,
+    ((MR_Box) (&ll_backend__frameopt_scalar_common_5[0])),
+    ((MR_Box) (MR_Word) ((MR_Integer) 2)),
+    ((MR_Box) (&mercury__private_builtin__private_builtin__type_ctor_info_typeclass_info_0)),
+    ((MR_Box) (&ll_backend__frameopt__ll_backend__frameopt__pti_block_type_2__pseudo_1__pseudo_2))
+  },
+  /* row 6 */
+  {
+    NULL,
+    ((MR_Box) (NULL)),
+    ((MR_Box) (MR_Word) ((MR_Integer) 2)),
+    ((MR_Box) (&ll_backend__frameopt__pair__pti_pair_2__plain_ll_backend__llds__type_ctor_info_label_0__plain_ll_backend__frameopt__type_ctor_info_block_needs_frame_0)),
+    ((MR_Box) (&ll_backend__llds__ll_backend__llds__type_ctor_info_label_0))
+  },
+  /* row 7 */
+  {
+    NULL,
+    ((MR_Box) (NULL)),
+    ((MR_Box) (MR_Word) ((MR_Integer) 2)),
+    ((MR_Box) (&ll_backend__frameopt__tree234__pti_tree234_2__plain_ll_backend__llds__type_ctor_info_label_0__plain_ll_backend__frameopt__type_ctor_info_block_needs_frame_0)),
+    ((MR_Box) (&ll_backend__llds__ll_backend__llds__type_ctor_info_label_0))
+  },
+};
+
+static /* final */ const MR_Integer ll_backend__frameopt_scalar_common_5[2][3] = {
+  /* row 0 */
+  {
+    (MR_Integer) 2,
+    (MR_Integer) 67631,
+    (MR_Integer) 67663
+  },
+  /* row 1 */
+  {
+    (MR_Integer) 2,
+    (MR_Integer) 33,
+    (MR_Integer) 65
+  },
+};
+
+static /* final */ const MR_Box ll_backend__frameopt_scalar_common_6[1][7] = {
+  /* row 0 */
+  {
+    NULL,
+    ((MR_Box) (&ll_backend__frameopt_scalar_common_5[0])),
+    ((MR_Box) (MR_Word) ((MR_Integer) 4)),
+    ((MR_Box) (&mercury__private_builtin__private_builtin__type_ctor_info_typeclass_info_0)),
+    ((MR_Box) (&ll_backend__llds__ll_backend__llds__type_ctor_info_label_0)),
+    ((MR_Box) (&ll_backend__frameopt__tree234__pti_tree234_2__plain_ll_backend__llds__type_ctor_info_label_0__pseudo_ll_backend__frameopt__pti_frame_block_info_2__pseudo_1__pseudo_2)),
+    ((MR_Box) (&ll_backend__frameopt__tree234__pti_tree234_2__plain_ll_backend__llds__type_ctor_info_label_0__pseudo_ll_backend__frameopt__pti_frame_block_info_2__pseudo_1__pseudo_2))
+  },
+};
+
+static /* final */ const MR_Box ll_backend__frameopt_scalar_common_7[1][8] = {
+  /* row 0 */
+  {
+    NULL,
+    ((MR_Box) (&ll_backend__frameopt_scalar_common_5[1])),
+    ((MR_Box) (MR_Word) ((MR_Integer) 5)),
+    ((MR_Box) (&mercury__private_builtin__private_builtin__type_ctor_info_type_info_0)),
+    ((MR_Box) (&mercury__private_builtin__private_builtin__type_ctor_info_type_info_0)),
+    ((MR_Box) (&ll_backend__frameopt__tree234__pti_tree234_2__plain_ll_backend__llds__type_ctor_info_label_0__pseudo_ll_backend__frameopt__pti_frame_block_info_2__pseudo_1__pseudo_2)),
+    ((MR_Box) (&ll_backend__frameopt__tree234__pti_tree234_2__plain_ll_backend__llds__type_ctor_info_label_0__plain_ll_backend__frameopt__type_ctor_info_block_needs_frame_0)),
+    ((MR_Box) (&ll_backend__llds__ll_backend__llds__type_ctor_info_label_0))
+  },
+};
+
+static /* final */ const MR_Box ll_backend__frameopt_scalar_common_8[1][11] = {
+  /* row 0 */
+  {
+    NULL,
+    ((MR_Box) (&ll_backend__frameopt_scalar_common_5[1])),
+    ((MR_Box) (MR_Word) ((MR_Integer) 8)),
+    ((MR_Box) (&mercury__private_builtin__private_builtin__type_ctor_info_type_info_0)),
+    ((MR_Box) (&mercury__private_builtin__private_builtin__type_ctor_info_type_info_0)),
+    ((MR_Box) (&ll_backend__frameopt__tree234__pti_tree234_2__plain_ll_backend__llds__type_ctor_info_label_0__pseudo_ll_backend__frameopt__pti_frame_block_info_2__pseudo_1__pseudo_2)),
+    ((MR_Box) (&ll_backend__llds__ll_backend__llds__type_ctor_info_label_0)),
+    ((MR_Box) (&ll_backend__frameopt__tree234__pti_tree234_2__plain_ll_backend__llds__type_ctor_info_label_0__plain_ll_backend__frameopt__type_ctor_info_block_needs_frame_0)),
+    ((MR_Box) (&ll_backend__frameopt__tree234__pti_tree234_2__plain_ll_backend__llds__type_ctor_info_label_0__plain_ll_backend__frameopt__type_ctor_info_block_needs_frame_0)),
+    ((MR_Box) (&ll_backend__frameopt__ll_backend__frameopt__type_ctor_info_can_transform_0)),
+    ((MR_Box) (&ll_backend__frameopt__ll_backend__frameopt__type_ctor_info_can_transform_0))
+  },
+};
+
+static /* final */ const MR_Box ll_backend__frameopt_scalar_common_9[1][6] = {
+  /* row 0 */
+  {
+    NULL,
+    ((MR_Box) (NULL)),
+    ((MR_Box) (MR_Word) ((MR_Integer) 3)),
+    ((MR_Box) (&ll_backend__frameopt__list__pti_list_1__plain_pair__ti_pair_2ll_backend__llds__type_ctor_info_label_0ll_backend__llds__type_ctor_info_label_0)),
+    ((MR_Box) (&ll_backend__llds__ll_backend__llds__type_ctor_info_label_0)),
+    ((MR_Box) (&ll_backend__llds__ll_backend__llds__type_ctor_info_label_0))
+  },
+};
+
+static /* final */ const MR_Box ll_backend__frameopt_scalar_common_10[1][10] = {
+  /* row 0 */
+  {
+    NULL,
+    ((MR_Box) (&ll_backend__frameopt_scalar_common_5[0])),
+    ((MR_Box) (MR_Word) ((MR_Integer) 7)),
+    ((MR_Box) (&mercury__private_builtin__private_builtin__type_ctor_info_typeclass_info_0)),
+    ((MR_Box) (&ll_backend__frameopt__tree234__pti_tree234_2__plain_ll_backend__llds__type_ctor_info_label_0__pseudo_ll_backend__frameopt__pti_frame_block_info_2__pseudo_1__pseudo_2)),
+    ((MR_Box) (&ll_backend__frameopt__tree234__pti_tree234_2__plain_ll_backend__llds__type_ctor_info_label_0__plain_ll_backend__frameopt__type_ctor_info_block_needs_frame_0)),
+    ((MR_Box) (&ll_backend__frameopt__tree234__pti_tree234_2__plain_ll_backend__llds__type_ctor_info_label_0__plain_ll_backend__llds__type_ctor_info_label_0)),
+    ((MR_Box) (&mdbcomp__prim_data__mdbcomp__prim_data__type_ctor_info_proc_label_0)),
+    ((MR_Box) (&ll_backend__llds__ll_backend__llds__type_ctor_info_label_0)),
+    ((MR_Box) (&ll_backend__llds__ll_backend__llds__type_ctor_info_instruction_0))
+  },
+};
+
+
+
+#include "io.mh"
+#include "string.mh"
+#include "time.mh"
+#include "mdbcomp.rtti_access.mh"
+
+
+
+static const MR_FA_PseudoTypeInfo_Struct2 ll_backend__frameopt__ll_backend__frameopt__pti_frame_block_info_2__pseudo_1__pseudo_2 = {
+  &ll_backend__frameopt__ll_backend__frameopt__type_ctor_info_frame_block_info_2,
+  {
+    (MR_PseudoTypeInfo) (MR_Integer) 1,
+    (MR_PseudoTypeInfo) (MR_Integer) 2
+  }
+};
+
+static const MR_FA_PseudoTypeInfo_Struct2 ll_backend__frameopt__tree234__pti_tree234_2__plain_ll_backend__llds__type_ctor_info_label_0__pseudo_ll_backend__frameopt__pti_frame_block_info_2__pseudo_1__pseudo_2 = {
+  &mercury__tree234__tree234__type_ctor_info_tree234_2,
+  {
+    (MR_PseudoTypeInfo) &ll_backend__llds__ll_backend__llds__type_ctor_info_label_0,
+    (MR_PseudoTypeInfo) &ll_backend__frameopt__ll_backend__frameopt__pti_frame_block_info_2__pseudo_1__pseudo_2
+  }
+};
+
+static const MR_FA_PseudoTypeInfo_Struct1 ll_backend__frameopt__set_ordlist__pti_set_ordlist_1__plain_ll_backend__llds__type_ctor_info_label_0 = {
+  &mercury__set_ordlist__set_ordlist__type_ctor_info_set_ordlist_1,
+  {
+    (MR_PseudoTypeInfo) &ll_backend__llds__ll_backend__llds__type_ctor_info_label_0
+  }
+};
+
+static const MR_FA_PseudoTypeInfo_Struct2 ll_backend__frameopt__tree234__pti_tree234_2__plain_ll_backend__llds__type_ctor_info_label_0__plain_ll_backend__frameopt__type_ctor_info_block_needs_frame_0 = {
+  &mercury__tree234__tree234__type_ctor_info_tree234_2,
+  {
+    (MR_PseudoTypeInfo) &ll_backend__llds__ll_backend__llds__type_ctor_info_label_0,
+    (MR_PseudoTypeInfo) &ll_backend__frameopt__ll_backend__frameopt__type_ctor_info_block_needs_frame_0
+  }
+};
+
+static const MR_FA_TypeInfo_Struct2 ll_backend__frameopt__pair__ti_pair_2ll_backend__llds__type_ctor_info_label_0ll_backend__llds__type_ctor_info_label_0 = {
+  &mercury__pair__pair__type_ctor_info_pair_2,
+  {
+    (MR_TypeInfo) &ll_backend__llds__ll_backend__llds__type_ctor_info_label_0,
+    (MR_TypeInfo) &ll_backend__llds__ll_backend__llds__type_ctor_info_label_0
+  }
+};
+
+static const MR_FA_PseudoTypeInfo_Struct1 ll_backend__frameopt__list__pti_list_1__plain_pair__ti_pair_2ll_backend__llds__type_ctor_info_label_0ll_backend__llds__type_ctor_info_label_0 = {
+  &mercury__list__list__type_ctor_info_list_1,
+  {
+    (MR_PseudoTypeInfo) &ll_backend__frameopt__pair__ti_pair_2ll_backend__llds__type_ctor_info_label_0ll_backend__llds__type_ctor_info_label_0
+  }
+};
+
+static const MR_FA_PseudoTypeInfo_Struct1 ll_backend__frameopt__maybe__pti_maybe_1__plain_ll_backend__llds__type_ctor_info_label_0 = {
+  &mercury__maybe__maybe__type_ctor_info_maybe_1,
+  {
+    (MR_PseudoTypeInfo) &ll_backend__llds__ll_backend__llds__type_ctor_info_label_0
+  }
+};
+
+static const MR_FA_PseudoTypeInfo_Struct2 ll_backend__frameopt__ll_backend__frameopt__pti_block_type_2__pseudo_1__pseudo_2 = {
+  &ll_backend__frameopt__ll_backend__frameopt__type_ctor_info_block_type_2,
+  {
+    (MR_PseudoTypeInfo) (MR_Integer) 1,
+    (MR_PseudoTypeInfo) (MR_Integer) 2
+  }
+};
+
+static const MR_FA_PseudoTypeInfo_Struct2 ll_backend__frameopt__pair__pti_pair_2__plain_ll_backend__llds__type_ctor_info_label_0__plain_ll_backend__frameopt__type_ctor_info_block_needs_frame_0 = {
+  &mercury__pair__pair__type_ctor_info_pair_2,
+  {
+    (MR_PseudoTypeInfo) &ll_backend__llds__ll_backend__llds__type_ctor_info_label_0,
+    (MR_PseudoTypeInfo) &ll_backend__frameopt__ll_backend__frameopt__type_ctor_info_block_needs_frame_0
+  }
+};
+
+static const MR_FA_PseudoTypeInfo_Struct2 ll_backend__frameopt__tree234__pti_tree234_2__plain_ll_backend__llds__type_ctor_info_label_0__plain_ll_backend__llds__type_ctor_info_label_0 = {
+  &mercury__tree234__tree234__type_ctor_info_tree234_2,
+  {
+    (MR_PseudoTypeInfo) &ll_backend__llds__ll_backend__llds__type_ctor_info_label_0,
+    (MR_PseudoTypeInfo) &ll_backend__llds__ll_backend__llds__type_ctor_info_label_0
+  }
+};
+
+static const MR_EnumFunctorDesc ll_backend__frameopt__ll_backend__frameopt__enum_functor_desc_block_needs_frame_0_0 = {
+  (MR_String) "block_needs_frame",
+  (MR_Integer) 0
+};
+
+static const MR_EnumFunctorDesc ll_backend__frameopt__ll_backend__frameopt__enum_functor_desc_block_needs_frame_0_1 = {
+  (MR_String) "block_doesnt_need_frame",
+  (MR_Integer) 1
+};
+
+static const MR_EnumFunctorDescPtr ll_backend__frameopt__ll_backend__frameopt__enum_value_ordered_block_needs_frame_0[2] = {
+  &ll_backend__frameopt__ll_backend__frameopt__enum_functor_desc_block_needs_frame_0_0,
+  &ll_backend__frameopt__ll_backend__frameopt__enum_functor_desc_block_needs_frame_0_1
+};
+
+static const MR_EnumFunctorDescPtr ll_backend__frameopt__ll_backend__frameopt__enum_name_ordered_block_needs_frame_0[2] = {
+  &ll_backend__frameopt__ll_backend__frameopt__enum_functor_desc_block_needs_frame_0_1,
+  &ll_backend__frameopt__ll_backend__frameopt__enum_functor_desc_block_needs_frame_0_0
+};
+
+static const MR_Integer ll_backend__frameopt__ll_backend__frameopt__functor_number_map_block_needs_frame_0[2] = {
+  (MR_Integer) 1,
+  (MR_Integer) 0
+};
+
+const MR_TypeCtorInfo_Struct ll_backend__frameopt__ll_backend__frameopt__type_ctor_info_block_needs_frame_0 = {
+  (MR_Integer) 0,
+  (MR_Integer) 17,
+  (MR_Integer) -1,
+  MR_TYPECTOR_REP_ENUM,
+  ((MR_Box) (ll_backend__frameopt____Unify____block_needs_frame_0_0_10001)),
+  ((MR_Box) (ll_backend__frameopt____Compare____block_needs_frame_0_0_10001)),
+  (MR_String) "ll_backend.frameopt",
+  (MR_String) "block_needs_frame",
+  {     ll_backend__frameopt__ll_backend__frameopt__enum_name_ordered_block_needs_frame_0 },
+  {     ll_backend__frameopt__ll_backend__frameopt__enum_value_ordered_block_needs_frame_0 },
+  (MR_Integer) 2,
+  (MR_Integer) 4,
+  ll_backend__frameopt__ll_backend__frameopt__functor_number_map_block_needs_frame_0
+};
+
+static const MR_PseudoTypeInfo ll_backend__frameopt__ll_backend__frameopt__field_types_block_type_2_0[1] = {
+  (MR_PseudoTypeInfo) (MR_Integer) 1
+};
+
+static const MR_DuFunctorDesc ll_backend__frameopt__ll_backend__frameopt__du_functor_desc_block_type_2_0 = {
+  (MR_String) "entry_block",
+  (MR_Integer) 1,
+  (MR_Integer) 1,
+  MR_SECTAG_NONE,
+  (MR_Integer) 0,
+  (MR_Integer) -1,
+  (MR_Integer) 0,
+  ll_backend__frameopt__ll_backend__frameopt__field_types_block_type_2_0,
+  NULL,
+  NULL,
+  NULL,
+  MR_FUNCTOR_SUBTYPE_NONE
+};
+
+static const MR_PseudoTypeInfo ll_backend__frameopt__ll_backend__frameopt__field_types_block_type_2_1[2] = {
+  (MR_PseudoTypeInfo) &ll_backend__frameopt__ll_backend__frameopt__type_ctor_info_block_needs_frame_0,
+  (MR_PseudoTypeInfo) &ll_backend__frameopt__ll_backend__frameopt__type_ctor_info_maybe_dummy_0
+};
+
+static const MR_DuFunctorDesc ll_backend__frameopt__ll_backend__frameopt__du_functor_desc_block_type_2_1 = {
+  (MR_String) "ordinary_block",
+  (MR_Integer) 2,
+  (MR_Integer) 0,
+  MR_SECTAG_NONE,
+  (MR_Integer) 1,
+  (MR_Integer) -1,
+  (MR_Integer) 1,
+  ll_backend__frameopt__ll_backend__frameopt__field_types_block_type_2_1,
+  NULL,
+  NULL,
+  NULL,
+  MR_FUNCTOR_SUBTYPE_NONE
+};
+
+static const MR_PseudoTypeInfo ll_backend__frameopt__ll_backend__frameopt__field_types_block_type_2_2[1] = {
+  (MR_PseudoTypeInfo) (MR_Integer) 2
+};
+
+static const MR_DuFunctorDesc ll_backend__frameopt__ll_backend__frameopt__du_functor_desc_block_type_2_2 = {
+  (MR_String) "exit_block",
+  (MR_Integer) 1,
+  (MR_Integer) 1,
+  MR_SECTAG_NONE,
+  (MR_Integer) 2,
+  (MR_Integer) -1,
+  (MR_Integer) 2,
+  ll_backend__frameopt__ll_backend__frameopt__field_types_block_type_2_2,
+  NULL,
+  NULL,
+  NULL,
+  MR_FUNCTOR_SUBTYPE_NONE
+};
+
+static const MR_DuFunctorDescPtr ll_backend__frameopt__ll_backend__frameopt__du_stag_ordered_block_type_2_0[1] = {
+  &ll_backend__frameopt__ll_backend__frameopt__du_functor_desc_block_type_2_0
+};
+
+static const MR_DuFunctorDescPtr ll_backend__frameopt__ll_backend__frameopt__du_stag_ordered_block_type_2_1[1] = {
+  &ll_backend__frameopt__ll_backend__frameopt__du_functor_desc_block_type_2_1
+};
+
+static const MR_DuFunctorDescPtr ll_backend__frameopt__ll_backend__frameopt__du_stag_ordered_block_type_2_2[1] = {
+  &ll_backend__frameopt__ll_backend__frameopt__du_functor_desc_block_type_2_2
+};
+
+static const MR_DuPtagLayout ll_backend__frameopt__ll_backend__frameopt__du_ptag_ordered_block_type_2[3] = {
+  {
+    (MR_Integer) 1,
+    MR_SECTAG_NONE,
+    ll_backend__frameopt__ll_backend__frameopt__du_stag_ordered_block_type_2_0
+  },
+  {
+    (MR_Integer) 1,
+    MR_SECTAG_NONE,
+    ll_backend__frameopt__ll_backend__frameopt__du_stag_ordered_block_type_2_1
+  },
+  {
+    (MR_Integer) 1,
+    MR_SECTAG_NONE,
+    ll_backend__frameopt__ll_backend__frameopt__du_stag_ordered_block_type_2_2
+  }
+};
+
+static const MR_DuFunctorDescPtr ll_backend__frameopt__ll_backend__frameopt__du_name_ordered_block_type_2[3] = {
+  &ll_backend__frameopt__ll_backend__frameopt__du_functor_desc_block_type_2_0,
+  &ll_backend__frameopt__ll_backend__frameopt__du_functor_desc_block_type_2_2,
+  &ll_backend__frameopt__ll_backend__frameopt__du_functor_desc_block_type_2_1
+};
+
+static const MR_Integer ll_backend__frameopt__ll_backend__frameopt__functor_number_map_block_type_2[3] = {
+  (MR_Integer) 0,
+  (MR_Integer) 2,
+  (MR_Integer) 1
+};
+
+const MR_TypeCtorInfo_Struct ll_backend__frameopt__ll_backend__frameopt__type_ctor_info_block_type_2 = {
+  (MR_Integer) 2,
+  (MR_Integer) 17,
+  (MR_Integer) 3,
+  MR_TYPECTOR_REP_DU,
+  ((MR_Box) (ll_backend__frameopt____Unify____block_type_2_0_10001)),
+  ((MR_Box) (ll_backend__frameopt____Compare____block_type_2_0_10001)),
+  (MR_String) "ll_backend.frameopt",
+  (MR_String) "block_type",
+  {     ll_backend__frameopt__ll_backend__frameopt__du_name_ordered_block_type_2 },
+  {     ll_backend__frameopt__ll_backend__frameopt__du_ptag_ordered_block_type_2 },
+  (MR_Integer) 3,
+  (MR_Integer) 4,
+  ll_backend__frameopt__ll_backend__frameopt__functor_number_map_block_type_2
+};
+
+static const MR_EnumFunctorDesc ll_backend__frameopt__ll_backend__frameopt__enum_functor_desc_can_transform_0_0 = {
+  (MR_String) "can_transform",
+  (MR_Integer) 0
+};
+
+static const MR_EnumFunctorDesc ll_backend__frameopt__ll_backend__frameopt__enum_functor_desc_can_transform_0_1 = {
+  (MR_String) "cannot_transform",
+  (MR_Integer) 1
+};
+
+static const MR_EnumFunctorDescPtr ll_backend__frameopt__ll_backend__frameopt__enum_value_ordered_can_transform_0[2] = {
+  &ll_backend__frameopt__ll_backend__frameopt__enum_functor_desc_can_transform_0_0,
+  &ll_backend__frameopt__ll_backend__frameopt__enum_functor_desc_can_transform_0_1
+};
+
+static const MR_EnumFunctorDescPtr ll_backend__frameopt__ll_backend__frameopt__enum_name_ordered_can_transform_0[2] = {
+  &ll_backend__frameopt__ll_backend__frameopt__enum_functor_desc_can_transform_0_0,
+  &ll_backend__frameopt__ll_backend__frameopt__enum_functor_desc_can_transform_0_1
+};
+
+static const MR_Integer ll_backend__frameopt__ll_backend__frameopt__functor_number_map_can_transform_0[2] = {
+  (MR_Integer) 0,
+  (MR_Integer) 1
+};
+
+const MR_TypeCtorInfo_Struct ll_backend__frameopt__ll_backend__frameopt__type_ctor_info_can_transform_0 = {
+  (MR_Integer) 0,
+  (MR_Integer) 17,
+  (MR_Integer) -1,
+  MR_TYPECTOR_REP_ENUM,
+  ((MR_Box) (ll_backend__frameopt____Unify____can_transform_0_0_10001)),
+  ((MR_Box) (ll_backend__frameopt____Compare____can_transform_0_0_10001)),
+  (MR_String) "ll_backend.frameopt",
+  (MR_String) "can_transform",
+  {     ll_backend__frameopt__ll_backend__frameopt__enum_name_ordered_can_transform_0 },
+  {     ll_backend__frameopt__ll_backend__frameopt__enum_value_ordered_can_transform_0 },
+  (MR_Integer) 2,
+  (MR_Integer) 4,
+  ll_backend__frameopt__ll_backend__frameopt__functor_number_map_can_transform_0
+};
+
+static const MR_PseudoTypeInfo ll_backend__frameopt__ll_backend__frameopt__field_types_det_entry_info_0_0[3] = {
+  (MR_PseudoTypeInfo) &mercury__builtin__builtin__type_ctor_info_int_0,
+  (MR_PseudoTypeInfo) &mercury__builtin__builtin__type_ctor_info_string_0,
+  (MR_PseudoTypeInfo) &ll_backend__llds__ll_backend__llds__type_ctor_info_stack_incr_kind_0
+};
+
+static const MR_DuFunctorDesc ll_backend__frameopt__ll_backend__frameopt__du_functor_desc_det_entry_info_0_0 = {
+  (MR_String) "det_entry",
+  (MR_Integer) 3,
+  (MR_Integer) 0,
+  MR_SECTAG_NONE,
+  (MR_Integer) 0,
+  (MR_Integer) -1,
+  (MR_Integer) 0,
+  ll_backend__frameopt__ll_backend__frameopt__field_types_det_entry_info_0_0,
+  NULL,
+  NULL,
+  NULL,
+  MR_FUNCTOR_SUBTYPE_NONE
+};
+
+static const MR_DuFunctorDescPtr ll_backend__frameopt__ll_backend__frameopt__du_stag_ordered_det_entry_info_0_0[1] = {
+  &ll_backend__frameopt__ll_backend__frameopt__du_functor_desc_det_entry_info_0_0
+};
+
+static const MR_DuPtagLayout ll_backend__frameopt__ll_backend__frameopt__du_ptag_ordered_det_entry_info_0[1] = {
+  {
+    (MR_Integer) 1,
+    MR_SECTAG_NONE,
+    ll_backend__frameopt__ll_backend__frameopt__du_stag_ordered_det_entry_info_0_0
+  }
+};
+
+static const MR_DuFunctorDescPtr ll_backend__frameopt__ll_backend__frameopt__du_name_ordered_det_entry_info_0[1] = {
+  &ll_backend__frameopt__ll_backend__frameopt__du_functor_desc_det_entry_info_0_0
+};
+
+static const MR_Integer ll_backend__frameopt__ll_backend__frameopt__functor_number_map_det_entry_info_0[1] = {
+  (MR_Integer) 0
+};
+
+const MR_TypeCtorInfo_Struct ll_backend__frameopt__ll_backend__frameopt__type_ctor_info_det_entry_info_0 = {
+  (MR_Integer) 0,
+  (MR_Integer) 17,
+  (MR_Integer) 1,
+  MR_TYPECTOR_REP_DU,
+  ((MR_Box) (ll_backend__frameopt____Unify____det_entry_info_0_0_10001)),
+  ((MR_Box) (ll_backend__frameopt____Compare____det_entry_info_0_0_10001)),
+  (MR_String) "ll_backend.frameopt",
+  (MR_String) "det_entry_info",
+  {     ll_backend__frameopt__ll_backend__frameopt__du_name_ordered_det_entry_info_0 },
+  {     ll_backend__frameopt__ll_backend__frameopt__du_ptag_ordered_det_entry_info_0 },
+  (MR_Integer) 1,
+  (MR_Integer) 4,
+  ll_backend__frameopt__ll_backend__frameopt__functor_number_map_det_entry_info_0
+};
+
+static const MR_FA_TypeInfo_Struct1 ll_backend__frameopt__list__ti_list_1ll_backend__llds__type_ctor_info_instruction_0 = {
+  &mercury__list__list__type_ctor_info_list_1,
+  {
+    (MR_TypeInfo) &ll_backend__llds__ll_backend__llds__type_ctor_info_instruction_0
+  }
+};
+
+static const MR_PseudoTypeInfo ll_backend__frameopt__ll_backend__frameopt__field_types_det_exit_info_0_0[3] = {
+  (MR_PseudoTypeInfo) &ll_backend__frameopt__list__ti_list_1ll_backend__llds__type_ctor_info_instruction_0,
+  (MR_PseudoTypeInfo) &ll_backend__frameopt__list__ti_list_1ll_backend__llds__type_ctor_info_instruction_0,
+  (MR_PseudoTypeInfo) &ll_backend__llds__ll_backend__llds__type_ctor_info_instruction_0
+};
+
+static const MR_DuFunctorDesc ll_backend__frameopt__ll_backend__frameopt__du_functor_desc_det_exit_info_0_0 = {
+  (MR_String) "det_exit",
+  (MR_Integer) 3,
+  (MR_Integer) 0,
+  MR_SECTAG_NONE,
+  (MR_Integer) 0,
+  (MR_Integer) -1,
+  (MR_Integer) 0,
+  ll_backend__frameopt__ll_backend__frameopt__field_types_det_exit_info_0_0,
+  NULL,
+  NULL,
+  NULL,
+  MR_FUNCTOR_SUBTYPE_NONE
+};
+
+static const MR_DuFunctorDescPtr ll_backend__frameopt__ll_backend__frameopt__du_stag_ordered_det_exit_info_0_0[1] = {
+  &ll_backend__frameopt__ll_backend__frameopt__du_functor_desc_det_exit_info_0_0
+};
+
+static const MR_DuPtagLayout ll_backend__frameopt__ll_backend__frameopt__du_ptag_ordered_det_exit_info_0[1] = {
+  {
+    (MR_Integer) 1,
+    MR_SECTAG_NONE,
+    ll_backend__frameopt__ll_backend__frameopt__du_stag_ordered_det_exit_info_0_0
+  }
+};
+
+static const MR_DuFunctorDescPtr ll_backend__frameopt__ll_backend__frameopt__du_name_ordered_det_exit_info_0[1] = {
+  &ll_backend__frameopt__ll_backend__frameopt__du_functor_desc_det_exit_info_0_0
+};
+
+static const MR_Integer ll_backend__frameopt__ll_backend__frameopt__functor_number_map_det_exit_info_0[1] = {
+  (MR_Integer) 0
+};
+
+const MR_TypeCtorInfo_Struct ll_backend__frameopt__ll_backend__frameopt__type_ctor_info_det_exit_info_0 = {
+  (MR_Integer) 0,
+  (MR_Integer) 17,
+  (MR_Integer) 1,
+  MR_TYPECTOR_REP_DU,
+  ((MR_Box) (ll_backend__frameopt____Unify____det_exit_info_0_0_10001)),
+  ((MR_Box) (ll_backend__frameopt____Compare____det_exit_info_0_0_10001)),
+  (MR_String) "ll_backend.frameopt",
+  (MR_String) "det_exit_info",
+  {     ll_backend__frameopt__ll_backend__frameopt__du_name_ordered_det_exit_info_0 },
+  {     ll_backend__frameopt__ll_backend__frameopt__du_ptag_ordered_det_exit_info_0 },
+  (MR_Integer) 1,
+  (MR_Integer) 4,
+  ll_backend__frameopt__ll_backend__frameopt__functor_number_map_det_exit_info_0
+};
+
+static const MR_FA_TypeInfo_Struct2 ll_backend__frameopt__ll_backend__frameopt__ti_frame_block_info_2ll_backend__frameopt__type_ctor_info_det_entry_info_0ll_backend__frameopt__type_ctor_info_det_exit_info_0 = {
+  &ll_backend__frameopt__ll_backend__frameopt__type_ctor_info_frame_block_info_2,
+  {
+    (MR_TypeInfo) &ll_backend__frameopt__ll_backend__frameopt__type_ctor_info_det_entry_info_0,
+    (MR_TypeInfo) &ll_backend__frameopt__ll_backend__frameopt__type_ctor_info_det_exit_info_0
+  }
+};
+
+static const MR_FA_TypeInfo_Struct2 ll_backend__frameopt__tree234__ti_tree234_2ll_backend__llds__type_ctor_info_label_0ll_backend__frameopt__ti_frame_block_info_2ll_backend__frameopt__type_ctor_info_det_entry_info_0ll_backend__frameopt__type_ctor_info_det_exit_info_0 = {
+  &mercury__tree234__tree234__type_ctor_info_tree234_2,
+  {
+    (MR_TypeInfo) &ll_backend__llds__ll_backend__llds__type_ctor_info_label_0,
+    (MR_TypeInfo) &ll_backend__frameopt__ll_backend__frameopt__ti_frame_block_info_2ll_backend__frameopt__type_ctor_info_det_entry_info_0ll_backend__frameopt__type_ctor_info_det_exit_info_0
+  }
+};
+
+const MR_TypeCtorInfo_Struct ll_backend__frameopt__ll_backend__frameopt__type_ctor_info_det_frame_block_map_0 = {
+  (MR_Integer) 0,
+  (MR_Integer) 17,
+  (MR_Integer) -1,
+  MR_TYPECTOR_REP_EQUIV_GROUND,
+  ((MR_Box) (ll_backend__frameopt____Unify____det_frame_block_map_0_0_10001)),
+  ((MR_Box) (ll_backend__frameopt____Compare____det_frame_block_map_0_0_10001)),
+  (MR_String) "ll_backend.frameopt",
+  (MR_String) "det_frame_block_map",
+  {     NULL },
+  {     (MR_PseudoTypeInfo) &ll_backend__frameopt__tree234__ti_tree234_2ll_backend__llds__type_ctor_info_label_0ll_backend__frameopt__ti_frame_block_info_2ll_backend__frameopt__type_ctor_info_det_entry_info_0ll_backend__frameopt__type_ctor_info_det_exit_info_0 },
+  (MR_Integer) -1,
+  (MR_Integer) 0,
+  NULL
+};
+
+static const MR_Integer ll_backend__frameopt__ll_backend__frameopt__functor_number_map_exit_par_map_0[1] = {
+  (MR_Integer) 0
+};
+
+static const MR_FA_TypeInfo_Struct2 ll_backend__frameopt__tree234__ti_tree234_2ll_backend__llds__type_ctor_info_label_0ll_backend__llds__type_ctor_info_label_0 = {
+  &mercury__tree234__tree234__type_ctor_info_tree234_2,
+  {
+    (MR_TypeInfo) &ll_backend__llds__ll_backend__llds__type_ctor_info_label_0,
+    (MR_TypeInfo) &ll_backend__llds__ll_backend__llds__type_ctor_info_label_0
+  }
+};
+
+static const MR_NotagFunctorDesc ll_backend__frameopt__ll_backend__frameopt__notag_functor_desc_exit_par_map_0 = {
+  (MR_String) "exit_par_map",
+  (MR_PseudoTypeInfo) &ll_backend__frameopt__tree234__ti_tree234_2ll_backend__llds__type_ctor_info_label_0ll_backend__llds__type_ctor_info_label_0,
+  NULL,
+  MR_FUNCTOR_SUBTYPE_NONE
+};
+
+const MR_TypeCtorInfo_Struct ll_backend__frameopt__ll_backend__frameopt__type_ctor_info_exit_par_map_0 = {
+  (MR_Integer) 0,
+  (MR_Integer) 17,
+  (MR_Integer) -1,
+  MR_TYPECTOR_REP_NOTAG_GROUND,
+  ((MR_Box) (ll_backend__frameopt____Unify____exit_par_map_0_0_10001)),
+  ((MR_Box) (ll_backend__frameopt____Compare____exit_par_map_0_0_10001)),
+  (MR_String) "ll_backend.frameopt",
+  (MR_String) "exit_par_map",
+  {     &ll_backend__frameopt__ll_backend__frameopt__notag_functor_desc_exit_par_map_0 },
+  {     &ll_backend__frameopt__ll_backend__frameopt__notag_functor_desc_exit_par_map_0 },
+  (MR_Integer) 1,
+  (MR_Integer) 4,
+  ll_backend__frameopt__ll_backend__frameopt__functor_number_map_exit_par_map_0
+};
+
+static const MR_FA_TypeInfo_Struct1 ll_backend__frameopt__maybe__ti_maybe_1ll_backend__llds__type_ctor_info_label_0 = {
+  &mercury__maybe__maybe__type_ctor_info_maybe_1,
+  {
+    (MR_TypeInfo) &ll_backend__llds__ll_backend__llds__type_ctor_info_label_0
+  }
+};
+
+static const MR_FA_TypeInfo_Struct1 ll_backend__frameopt__list__ti_list_1ll_backend__llds__type_ctor_info_label_0 = {
+  &mercury__list__list__type_ctor_info_list_1,
+  {
+    (MR_TypeInfo) &ll_backend__llds__ll_backend__llds__type_ctor_info_label_0
+  }
+};
+
+static const MR_PseudoTypeInfo ll_backend__frameopt__ll_backend__frameopt__field_types_frame_block_info_2_0[6] = {
+  (MR_PseudoTypeInfo) &ll_backend__llds__ll_backend__llds__type_ctor_info_label_0,
+  (MR_PseudoTypeInfo) &ll_backend__frameopt__list__ti_list_1ll_backend__llds__type_ctor_info_instruction_0,
+  (MR_PseudoTypeInfo) &ll_backend__frameopt__maybe__ti_maybe_1ll_backend__llds__type_ctor_info_label_0,
+  (MR_PseudoTypeInfo) &ll_backend__frameopt__list__ti_list_1ll_backend__llds__type_ctor_info_label_0,
+  (MR_PseudoTypeInfo) &ll_backend__frameopt__maybe__ti_maybe_1ll_backend__llds__type_ctor_info_label_0,
+  (MR_PseudoTypeInfo) &ll_backend__frameopt__ll_backend__frameopt__pti_block_type_2__pseudo_1__pseudo_2
+};
+
+static const MR_ConstString ll_backend__frameopt__ll_backend__frameopt__field_names_frame_block_info_2_0[6] = {
+  (MR_String) "fb_label",
+  (MR_String) "fb_instrs",
+  (MR_String) "fb_fallen_into",
+  (MR_String) "fb_jump_dests",
+  (MR_String) "fb_fall_dest",
+  (MR_String) "fb_type"
+};
+
+static const MR_DuFunctorDesc ll_backend__frameopt__ll_backend__frameopt__du_functor_desc_frame_block_info_2_0 = {
+  (MR_String) "frame_block_info",
+  (MR_Integer) 6,
+  (MR_Integer) 32,
+  MR_SECTAG_NONE,
+  (MR_Integer) 0,
+  (MR_Integer) -1,
+  (MR_Integer) 0,
+  ll_backend__frameopt__ll_backend__frameopt__field_types_frame_block_info_2_0,
+  ll_backend__frameopt__ll_backend__frameopt__field_names_frame_block_info_2_0,
+  NULL,
+  NULL,
+  MR_FUNCTOR_SUBTYPE_NONE
+};
+
+static const MR_DuFunctorDescPtr ll_backend__frameopt__ll_backend__frameopt__du_stag_ordered_frame_block_info_2_0[1] = {
+  &ll_backend__frameopt__ll_backend__frameopt__du_functor_desc_frame_block_info_2_0
+};
+
+static const MR_DuPtagLayout ll_backend__frameopt__ll_backend__frameopt__du_ptag_ordered_frame_block_info_2[1] = {
+  {
+    (MR_Integer) 1,
+    MR_SECTAG_NONE,
+    ll_backend__frameopt__ll_backend__frameopt__du_stag_ordered_frame_block_info_2_0
+  }
+};
+
+static const MR_DuFunctorDescPtr ll_backend__frameopt__ll_backend__frameopt__du_name_ordered_frame_block_info_2[1] = {
+  &ll_backend__frameopt__ll_backend__frameopt__du_functor_desc_frame_block_info_2_0
+};
+
+static const MR_Integer ll_backend__frameopt__ll_backend__frameopt__functor_number_map_frame_block_info_2[1] = {
+  (MR_Integer) 0
+};
+
+const MR_TypeCtorInfo_Struct ll_backend__frameopt__ll_backend__frameopt__type_ctor_info_frame_block_info_2 = {
+  (MR_Integer) 2,
+  (MR_Integer) 17,
+  (MR_Integer) 1,
+  MR_TYPECTOR_REP_DU,
+  ((MR_Box) (ll_backend__frameopt____Unify____frame_block_info_2_0_10001)),
+  ((MR_Box) (ll_backend__frameopt____Compare____frame_block_info_2_0_10001)),
+  (MR_String) "ll_backend.frameopt",
+  (MR_String) "frame_block_info",
+  {     ll_backend__frameopt__ll_backend__frameopt__du_name_ordered_frame_block_info_2 },
+  {     ll_backend__frameopt__ll_backend__frameopt__du_ptag_ordered_frame_block_info_2 },
+  (MR_Integer) 1,
+  (MR_Integer) 4,
+  ll_backend__frameopt__ll_backend__frameopt__functor_number_map_frame_block_info_2
+};
+
+const MR_TypeCtorInfo_Struct ll_backend__frameopt__ll_backend__frameopt__type_ctor_info_frame_block_map_2 = {
+  (MR_Integer) 2,
+  (MR_Integer) 17,
+  (MR_Integer) -1,
+  MR_TYPECTOR_REP_EQUIV,
+  ((MR_Box) (ll_backend__frameopt____Unify____frame_block_map_2_0_10001)),
+  ((MR_Box) (ll_backend__frameopt____Compare____frame_block_map_2_0_10001)),
+  (MR_String) "ll_backend.frameopt",
+  (MR_String) "frame_block_map",
+  {     NULL },
+  {     (MR_PseudoTypeInfo) &ll_backend__frameopt__tree234__pti_tree234_2__plain_ll_backend__llds__type_ctor_info_label_0__pseudo_ll_backend__frameopt__pti_frame_block_info_2__pseudo_1__pseudo_2 },
+  (MR_Integer) -1,
+  (MR_Integer) 0,
+  NULL
+};
+
+static const MR_EnumFunctorDesc ll_backend__frameopt__ll_backend__frameopt__enum_functor_desc_maybe_dummy_0_0 = {
+  (MR_String) "is_not_dummy",
+  (MR_Integer) 0
+};
+
+static const MR_EnumFunctorDesc ll_backend__frameopt__ll_backend__frameopt__enum_functor_desc_maybe_dummy_0_1 = {
+  (MR_String) "is_post_entry_dummy",
+  (MR_Integer) 1
+};
+
+static const MR_EnumFunctorDesc ll_backend__frameopt__ll_backend__frameopt__enum_functor_desc_maybe_dummy_0_2 = {
+  (MR_String) "is_pre_exit_dummy",
+  (MR_Integer) 2
+};
+
+static const MR_EnumFunctorDescPtr ll_backend__frameopt__ll_backend__frameopt__enum_value_ordered_maybe_dummy_0[3] = {
+  &ll_backend__frameopt__ll_backend__frameopt__enum_functor_desc_maybe_dummy_0_0,
+  &ll_backend__frameopt__ll_backend__frameopt__enum_functor_desc_maybe_dummy_0_1,
+  &ll_backend__frameopt__ll_backend__frameopt__enum_functor_desc_maybe_dummy_0_2
+};
+
+static const MR_EnumFunctorDescPtr ll_backend__frameopt__ll_backend__frameopt__enum_name_ordered_maybe_dummy_0[3] = {
+  &ll_backend__frameopt__ll_backend__frameopt__enum_functor_desc_maybe_dummy_0_0,
+  &ll_backend__frameopt__ll_backend__frameopt__enum_functor_desc_maybe_dummy_0_1,
+  &ll_backend__frameopt__ll_backend__frameopt__enum_functor_desc_maybe_dummy_0_2
+};
+
+static const MR_Integer ll_backend__frameopt__ll_backend__frameopt__functor_number_map_maybe_dummy_0[3] = {
+  (MR_Integer) 0,
+  (MR_Integer) 1,
+  (MR_Integer) 2
+};
+
+const MR_TypeCtorInfo_Struct ll_backend__frameopt__ll_backend__frameopt__type_ctor_info_maybe_dummy_0 = {
+  (MR_Integer) 0,
+  (MR_Integer) 17,
+  (MR_Integer) -1,
+  MR_TYPECTOR_REP_ENUM,
+  ((MR_Box) (ll_backend__frameopt____Unify____maybe_dummy_0_0_10001)),
+  ((MR_Box) (ll_backend__frameopt____Compare____maybe_dummy_0_0_10001)),
+  (MR_String) "ll_backend.frameopt",
+  (MR_String) "maybe_dummy",
+  {     ll_backend__frameopt__ll_backend__frameopt__enum_name_ordered_maybe_dummy_0 },
+  {     ll_backend__frameopt__ll_backend__frameopt__enum_value_ordered_maybe_dummy_0 },
+  (MR_Integer) 3,
+  (MR_Integer) 4,
+  ll_backend__frameopt__ll_backend__frameopt__functor_number_map_maybe_dummy_0
+};
+
+static const MR_PseudoTypeInfo ll_backend__frameopt__ll_backend__frameopt__field_types_nondet_entry_info_0_0[3] = {
+  (MR_PseudoTypeInfo) &mercury__builtin__builtin__type_ctor_info_string_0,
+  (MR_PseudoTypeInfo) &mercury__builtin__builtin__type_ctor_info_int_0,
+  (MR_PseudoTypeInfo) &ll_backend__llds__ll_backend__llds__type_ctor_info_code_addr_0
+};
+
+static const MR_DuFunctorDesc ll_backend__frameopt__ll_backend__frameopt__du_functor_desc_nondet_entry_info_0_0 = {
+  (MR_String) "nondet_entry",
+  (MR_Integer) 3,
+  (MR_Integer) 0,
+  MR_SECTAG_NONE,
+  (MR_Integer) 0,
+  (MR_Integer) -1,
+  (MR_Integer) 0,
+  ll_backend__frameopt__ll_backend__frameopt__field_types_nondet_entry_info_0_0,
+  NULL,
+  NULL,
+  NULL,
+  MR_FUNCTOR_SUBTYPE_NONE
+};
+
+static const MR_DuFunctorDescPtr ll_backend__frameopt__ll_backend__frameopt__du_stag_ordered_nondet_entry_info_0_0[1] = {
+  &ll_backend__frameopt__ll_backend__frameopt__du_functor_desc_nondet_entry_info_0_0
+};
+
+static const MR_DuPtagLayout ll_backend__frameopt__ll_backend__frameopt__du_ptag_ordered_nondet_entry_info_0[1] = {
+  {
+    (MR_Integer) 1,
+    MR_SECTAG_NONE,
+    ll_backend__frameopt__ll_backend__frameopt__du_stag_ordered_nondet_entry_info_0_0
+  }
+};
+
+static const MR_DuFunctorDescPtr ll_backend__frameopt__ll_backend__frameopt__du_name_ordered_nondet_entry_info_0[1] = {
+  &ll_backend__frameopt__ll_backend__frameopt__du_functor_desc_nondet_entry_info_0_0
+};
+
+static const MR_Integer ll_backend__frameopt__ll_backend__frameopt__functor_number_map_nondet_entry_info_0[1] = {
+  (MR_Integer) 0
+};
+
+const MR_TypeCtorInfo_Struct ll_backend__frameopt__ll_backend__frameopt__type_ctor_info_nondet_entry_info_0 = {
+  (MR_Integer) 0,
+  (MR_Integer) 17,
+  (MR_Integer) 1,
+  MR_TYPECTOR_REP_DU,
+  ((MR_Box) (ll_backend__frameopt____Unify____nondet_entry_info_0_0_10001)),
+  ((MR_Box) (ll_backend__frameopt____Compare____nondet_entry_info_0_0_10001)),
+  (MR_String) "ll_backend.frameopt",
+  (MR_String) "nondet_entry_info",
+  {     ll_backend__frameopt__ll_backend__frameopt__du_name_ordered_nondet_entry_info_0 },
+  {     ll_backend__frameopt__ll_backend__frameopt__du_ptag_ordered_nondet_entry_info_0 },
+  (MR_Integer) 1,
+  (MR_Integer) 4,
+  ll_backend__frameopt__ll_backend__frameopt__functor_number_map_nondet_entry_info_0
+};
+
+static const MR_PseudoTypeInfo ll_backend__frameopt__ll_backend__frameopt__field_types_nondet_exit_info_0_0[2] = {
+  (MR_PseudoTypeInfo) &ll_backend__frameopt__list__ti_list_1ll_backend__llds__type_ctor_info_instruction_0,
+  (MR_PseudoTypeInfo) &ll_backend__llds__ll_backend__llds__type_ctor_info_instruction_0
+};
+
+static const MR_DuFunctorDesc ll_backend__frameopt__ll_backend__frameopt__du_functor_desc_nondet_exit_info_0_0 = {
+  (MR_String) "nondet_plain_exit",
+  (MR_Integer) 2,
+  (MR_Integer) 0,
+  MR_SECTAG_NONE,
+  (MR_Integer) 0,
+  (MR_Integer) -1,
+  (MR_Integer) 0,
+  ll_backend__frameopt__ll_backend__frameopt__field_types_nondet_exit_info_0_0,
+  NULL,
+  NULL,
+  NULL,
+  MR_FUNCTOR_SUBTYPE_NONE
+};
+
+static const MR_PseudoTypeInfo ll_backend__frameopt__ll_backend__frameopt__field_types_nondet_exit_info_0_1[5] = {
+  (MR_PseudoTypeInfo) &ll_backend__llds__ll_backend__llds__type_ctor_info_instruction_0,
+  (MR_PseudoTypeInfo) &ll_backend__llds__ll_backend__llds__type_ctor_info_instruction_0,
+  (MR_PseudoTypeInfo) &ll_backend__llds__ll_backend__llds__type_ctor_info_instruction_0,
+  (MR_PseudoTypeInfo) &ll_backend__frameopt__list__ti_list_1ll_backend__llds__type_ctor_info_instruction_0,
+  (MR_PseudoTypeInfo) &ll_backend__llds__ll_backend__llds__type_ctor_info_instruction_0
+};
+
+static const MR_DuFunctorDesc ll_backend__frameopt__ll_backend__frameopt__du_functor_desc_nondet_exit_info_0_1 = {
+  (MR_String) "nondet_teardown_exit",
+  (MR_Integer) 5,
+  (MR_Integer) 0,
+  MR_SECTAG_NONE,
+  (MR_Integer) 1,
+  (MR_Integer) -1,
+  (MR_Integer) 1,
+  ll_backend__frameopt__ll_backend__frameopt__field_types_nondet_exit_info_0_1,
+  NULL,
+  NULL,
+  NULL,
+  MR_FUNCTOR_SUBTYPE_NONE
+};
+
+static const MR_DuFunctorDescPtr ll_backend__frameopt__ll_backend__frameopt__du_stag_ordered_nondet_exit_info_0_0[1] = {
+  &ll_backend__frameopt__ll_backend__frameopt__du_functor_desc_nondet_exit_info_0_0
+};
+
+static const MR_DuFunctorDescPtr ll_backend__frameopt__ll_backend__frameopt__du_stag_ordered_nondet_exit_info_0_1[1] = {
+  &ll_backend__frameopt__ll_backend__frameopt__du_functor_desc_nondet_exit_info_0_1
+};
+
+static const MR_DuPtagLayout ll_backend__frameopt__ll_backend__frameopt__du_ptag_ordered_nondet_exit_info_0[2] = {
+  {
+    (MR_Integer) 1,
+    MR_SECTAG_NONE,
+    ll_backend__frameopt__ll_backend__frameopt__du_stag_ordered_nondet_exit_info_0_0
+  },
+  {
+    (MR_Integer) 1,
+    MR_SECTAG_NONE,
+    ll_backend__frameopt__ll_backend__frameopt__du_stag_ordered_nondet_exit_info_0_1
+  }
+};
+
+static const MR_DuFunctorDescPtr ll_backend__frameopt__ll_backend__frameopt__du_name_ordered_nondet_exit_info_0[2] = {
+  &ll_backend__frameopt__ll_backend__frameopt__du_functor_desc_nondet_exit_info_0_0,
+  &ll_backend__frameopt__ll_backend__frameopt__du_functor_desc_nondet_exit_info_0_1
+};
+
+static const MR_Integer ll_backend__frameopt__ll_backend__frameopt__functor_number_map_nondet_exit_info_0[2] = {
+  (MR_Integer) 0,
+  (MR_Integer) 1
+};
+
+const MR_TypeCtorInfo_Struct ll_backend__frameopt__ll_backend__frameopt__type_ctor_info_nondet_exit_info_0 = {
+  (MR_Integer) 0,
+  (MR_Integer) 17,
+  (MR_Integer) 2,
+  MR_TYPECTOR_REP_DU,
+  ((MR_Box) (ll_backend__frameopt____Unify____nondet_exit_info_0_0_10001)),
+  ((MR_Box) (ll_backend__frameopt____Compare____nondet_exit_info_0_0_10001)),
+  (MR_String) "ll_backend.frameopt",
+  (MR_String) "nondet_exit_info",
+  {     ll_backend__frameopt__ll_backend__frameopt__du_name_ordered_nondet_exit_info_0 },
+  {     ll_backend__frameopt__ll_backend__frameopt__du_ptag_ordered_nondet_exit_info_0 },
+  (MR_Integer) 2,
+  (MR_Integer) 4,
+  ll_backend__frameopt__ll_backend__frameopt__functor_number_map_nondet_exit_info_0
+};
+
+static const MR_FA_TypeInfo_Struct2 ll_backend__frameopt__tree234__ti_tree234_2ll_backend__llds__type_ctor_info_label_0ll_backend__frameopt__type_ctor_info_block_needs_frame_0 = {
+  &mercury__tree234__tree234__type_ctor_info_tree234_2,
+  {
+    (MR_TypeInfo) &ll_backend__llds__ll_backend__llds__type_ctor_info_label_0,
+    (MR_TypeInfo) &ll_backend__frameopt__ll_backend__frameopt__type_ctor_info_block_needs_frame_0
+  }
+};
+
+const MR_TypeCtorInfo_Struct ll_backend__frameopt__ll_backend__frameopt__type_ctor_info_ord_needs_frame_0 = {
+  (MR_Integer) 0,
+  (MR_Integer) 17,
+  (MR_Integer) -1,
+  MR_TYPECTOR_REP_EQUIV_GROUND,
+  ((MR_Box) (ll_backend__frameopt____Unify____ord_needs_frame_0_0_10001)),
+  ((MR_Box) (ll_backend__frameopt____Compare____ord_needs_frame_0_0_10001)),
+  (MR_String) "ll_backend.frameopt",
+  (MR_String) "ord_needs_frame",
+  {     NULL },
+  {     (MR_PseudoTypeInfo) &ll_backend__frameopt__tree234__ti_tree234_2ll_backend__llds__type_ctor_info_label_0ll_backend__frameopt__type_ctor_info_block_needs_frame_0 },
+  (MR_Integer) -1,
+  (MR_Integer) 0,
+  NULL
+};
+
+const MR_TypeCtorInfo_Struct ll_backend__frameopt__ll_backend__frameopt__type_ctor_info_pre_exit_dummy_label_map_0 = {
+  (MR_Integer) 0,
+  (MR_Integer) 17,
+  (MR_Integer) -1,
+  MR_TYPECTOR_REP_EQUIV_GROUND,
+  ((MR_Box) (ll_backend__frameopt____Unify____pre_exit_dummy_label_map_0_0_10001)),
+  ((MR_Box) (ll_backend__frameopt____Compare____pre_exit_dummy_label_map_0_0_10001)),
+  (MR_String) "ll_backend.frameopt",
+  (MR_String) "pre_exit_dummy_label_map",
+  {     NULL },
+  {     (MR_PseudoTypeInfo) &ll_backend__frameopt__tree234__ti_tree234_2ll_backend__llds__type_ctor_info_label_0ll_backend__llds__type_ctor_info_label_0 },
+  (MR_Integer) -1,
+  (MR_Integer) 0,
+  NULL
+};
+
+const MR_TypeCtorInfo_Struct ll_backend__frameopt__ll_backend__frameopt__type_ctor_info_pred_map_0 = {
+  (MR_Integer) 0,
+  (MR_Integer) 17,
+  (MR_Integer) -1,
+  MR_TYPECTOR_REP_EQUIV_GROUND,
+  ((MR_Box) (ll_backend__frameopt____Unify____pred_map_0_0_10001)),
+  ((MR_Box) (ll_backend__frameopt____Compare____pred_map_0_0_10001)),
+  (MR_String) "ll_backend.frameopt",
+  (MR_String) "pred_map",
+  {     NULL },
+  {     (MR_PseudoTypeInfo) &ll_backend__frameopt__tree234__ti_tree234_2ll_backend__llds__type_ctor_info_label_0ll_backend__llds__type_ctor_info_label_0 },
+  (MR_Integer) -1,
+  (MR_Integer) 0,
+  NULL
+};
+
+static const MR_FA_TypeInfo_Struct1 ll_backend__frameopt__queue__ti_queue_1ll_backend__llds__type_ctor_info_label_0 = {
+  &mercury__queue__queue__type_ctor_info_queue_1,
+  {
+    (MR_TypeInfo) &ll_backend__llds__ll_backend__llds__type_ctor_info_label_0
+  }
+};
+
+const MR_TypeCtorInfo_Struct ll_backend__frameopt__ll_backend__frameopt__type_ctor_info_prop_queue_0 = {
+  (MR_Integer) 0,
+  (MR_Integer) 17,
+  (MR_Integer) -1,
+  MR_TYPECTOR_REP_EQUIV_GROUND,
+  ((MR_Box) (ll_backend__frameopt____Unify____prop_queue_0_0_10001)),
+  ((MR_Box) (ll_backend__frameopt____Compare____prop_queue_0_0_10001)),
+  (MR_String) "ll_backend.frameopt",
+  (MR_String) "prop_queue",
+  {     NULL },
+  {     (MR_PseudoTypeInfo) &ll_backend__frameopt__queue__ti_queue_1ll_backend__llds__type_ctor_info_label_0 },
+  (MR_Integer) -1,
+  (MR_Integer) 0,
+  NULL
+};
+
+static const MR_FA_TypeInfo_Struct2 ll_backend__frameopt__tree234__ti_tree234_2ll_backend__llds__type_ctor_info_label_0list__ti_list_1ll_backend__llds__type_ctor_info_label_0 = {
+  &mercury__tree234__tree234__type_ctor_info_tree234_2,
+  {
+    (MR_TypeInfo) &ll_backend__llds__ll_backend__llds__type_ctor_info_label_0,
+    (MR_TypeInfo) &ll_backend__frameopt__list__ti_list_1ll_backend__llds__type_ctor_info_label_0
+  }
+};
+
+const MR_TypeCtorInfo_Struct ll_backend__frameopt__ll_backend__frameopt__type_ctor_info_rev_map_0 = {
+  (MR_Integer) 0,
+  (MR_Integer) 17,
+  (MR_Integer) -1,
+  MR_TYPECTOR_REP_EQUIV_GROUND,
+  ((MR_Box) (ll_backend__frameopt____Unify____rev_map_0_0_10001)),
+  ((MR_Box) (ll_backend__frameopt____Compare____rev_map_0_0_10001)),
+  (MR_String) "ll_backend.frameopt",
+  (MR_String) "rev_map",
+  {     NULL },
+  {     (MR_PseudoTypeInfo) &ll_backend__frameopt__tree234__ti_tree234_2ll_backend__llds__type_ctor_info_label_0list__ti_list_1ll_backend__llds__type_ctor_info_label_0 },
+  (MR_Integer) -1,
+  (MR_Integer) 0,
+  NULL
+};
+
+static const MR_Integer ll_backend__frameopt__ll_backend__frameopt__functor_number_map_setup_par_map_0[1] = {
+  (MR_Integer) 0
+};
+
+static const MR_NotagFunctorDesc ll_backend__frameopt__ll_backend__frameopt__notag_functor_desc_setup_par_map_0 = {
+  (MR_String) "setup_par_map",
+  (MR_PseudoTypeInfo) &ll_backend__frameopt__tree234__ti_tree234_2ll_backend__llds__type_ctor_info_label_0ll_backend__llds__type_ctor_info_label_0,
+  NULL,
+  MR_FUNCTOR_SUBTYPE_NONE
+};
+
+const MR_TypeCtorInfo_Struct ll_backend__frameopt__ll_backend__frameopt__type_ctor_info_setup_par_map_0 = {
+  (MR_Integer) 0,
+  (MR_Integer) 17,
+  (MR_Integer) -1,
+  MR_TYPECTOR_REP_NOTAG_GROUND,
+  ((MR_Box) (ll_backend__frameopt____Unify____setup_par_map_0_0_10001)),
+  ((MR_Box) (ll_backend__frameopt____Compare____setup_par_map_0_0_10001)),
+  (MR_String) "ll_backend.frameopt",
+  (MR_String) "setup_par_map",
+  {     &ll_backend__frameopt__ll_backend__frameopt__notag_functor_desc_setup_par_map_0 },
+  {     &ll_backend__frameopt__ll_backend__frameopt__notag_functor_desc_setup_par_map_0 },
+  (MR_Integer) 1,
+  (MR_Integer) 4,
+  ll_backend__frameopt__ll_backend__frameopt__functor_number_map_setup_par_map_0
+};
+
+const MR_BaseTypeclassInfo base_typeclass_info_ll_backend__frameopt__block_entry_exit__arity2__ll_backend__frameopt__nondet_entry_info__arity0__ll_backend__frameopt__nondet_exit_info__arity0__[11] = {
+  ((MR_Box) (MR_Word) ((MR_Integer) 0)),
+  ((MR_Box) (MR_Word) ((MR_Integer) 0)),
+  ((MR_Box) (MR_Word) ((MR_Integer) 0)),
+  ((MR_Box) (MR_Word) ((MR_Integer) 2)),
+  ((MR_Box) (MR_Word) ((MR_Integer) 6)),
+  ((MR_Box) (ll_backend__frameopt__ClassMethod_for_ll_backend__frameopt__block_entry_exit____ll_backend__frameopt__nondet_entry_info__arity0__ll_backend__frameopt__nondet_exit_info__arity0______ll_backend__frameopt__detect_entry_4_4_p_0_10001)),
+  ((MR_Box) (ll_backend__frameopt__ClassMethod_for_ll_backend__frameopt__block_entry_exit____ll_backend__frameopt__nondet_entry_info__arity0__ll_backend__frameopt__nondet_exit_info__arity0______ll_backend__frameopt__detect_exit_6_6_p_0_10001)),
+  ((MR_Box) (ll_backend__frameopt__ClassMethod_for_ll_backend__frameopt__block_entry_exit____ll_backend__frameopt__nondet_entry_info__arity0__ll_backend__frameopt__nondet_exit_info__arity0______ll_backend__frameopt__late_setup_code_1_1_f_0_10001)),
+  ((MR_Box) (ll_backend__frameopt__ClassMethod_for_ll_backend__frameopt__block_entry_exit____ll_backend__frameopt__nondet_entry_info__arity0__ll_backend__frameopt__nondet_exit_info__arity0______ll_backend__frameopt__non_teardown_exit_code_1_1_f_0_10001)),
+  ((MR_Box) (ll_backend__frameopt__ClassMethod_for_ll_backend__frameopt__block_entry_exit____ll_backend__frameopt__nondet_entry_info__arity0__ll_backend__frameopt__nondet_exit_info__arity0______ll_backend__frameopt__describe_entry_1_1_f_0_10001)),
+  ((MR_Box) (ll_backend__frameopt__ClassMethod_for_ll_backend__frameopt__block_entry_exit____ll_backend__frameopt__nondet_entry_info__arity0__ll_backend__frameopt__nondet_exit_info__arity0______ll_backend__frameopt__describe_exit_2_2_f_0_10001))
+};
+
+const MR_BaseTypeclassInfo base_typeclass_info_ll_backend__frameopt__block_entry_exit__arity2__ll_backend__frameopt__det_entry_info__arity0__ll_backend__frameopt__det_exit_info__arity0__[11] = {
+  ((MR_Box) (MR_Word) ((MR_Integer) 0)),
+  ((MR_Box) (MR_Word) ((MR_Integer) 0)),
+  ((MR_Box) (MR_Word) ((MR_Integer) 0)),
+  ((MR_Box) (MR_Word) ((MR_Integer) 2)),
+  ((MR_Box) (MR_Word) ((MR_Integer) 6)),
+  ((MR_Box) (ll_backend__frameopt__ClassMethod_for_ll_backend__frameopt__block_entry_exit____ll_backend__frameopt__det_entry_info__arity0__ll_backend__frameopt__det_exit_info__arity0______ll_backend__frameopt__detect_entry_4_4_p_0_10001)),
+  ((MR_Box) (ll_backend__frameopt__ClassMethod_for_ll_backend__frameopt__block_entry_exit____ll_backend__frameopt__det_entry_info__arity0__ll_backend__frameopt__det_exit_info__arity0______ll_backend__frameopt__detect_exit_6_6_p_0_10001)),
+  ((MR_Box) (ll_backend__frameopt__ClassMethod_for_ll_backend__frameopt__block_entry_exit____ll_backend__frameopt__det_entry_info__arity0__ll_backend__frameopt__det_exit_info__arity0______ll_backend__frameopt__late_setup_code_1_1_f_0_10001)),
+  ((MR_Box) (ll_backend__frameopt__ClassMethod_for_ll_backend__frameopt__block_entry_exit____ll_backend__frameopt__det_entry_info__arity0__ll_backend__frameopt__det_exit_info__arity0______ll_backend__frameopt__non_teardown_exit_code_1_1_f_0_10001)),
+  ((MR_Box) (ll_backend__frameopt__ClassMethod_for_ll_backend__frameopt__block_entry_exit____ll_backend__frameopt__det_entry_info__arity0__ll_backend__frameopt__det_exit_info__arity0______ll_backend__frameopt__describe_entry_1_1_f_0_10001)),
+  ((MR_Box) (ll_backend__frameopt__ClassMethod_for_ll_backend__frameopt__block_entry_exit____ll_backend__frameopt__det_entry_info__arity0__ll_backend__frameopt__det_exit_info__arity0______ll_backend__frameopt__describe_exit_2_2_f_0_10001))
+};
+
+static const MR_ConstString ll_backend__frameopt__ll_backend__frameopt__type_class_id_var_names_block_entry_exit_2[2] = {
+  (MR_String) "En",
+  (MR_String) "Ex"
+};
+
+static const MR_TypeClassMethod ll_backend__frameopt__ll_backend__frameopt__type_class_id_method_ids_block_entry_exit_2[6] = {
+  {
+    (MR_String) "detect_entry",
+    (MR_Integer) 4,
+    MR_PREDICATE
+  },
+  {
+    (MR_String) "detect_exit",
+    (MR_Integer) 6,
+    MR_PREDICATE
+  },
+  {
+    (MR_String) "late_setup_code",
+    (MR_Integer) 2,
+    MR_FUNCTION
+  },
+  {
+    (MR_String) "non_teardown_exit_code",
+    (MR_Integer) 2,
+    MR_FUNCTION
+  },
+  {
+    (MR_String) "describe_entry",
+    (MR_Integer) 2,
+    MR_FUNCTION
+  },
+  {
+    (MR_String) "describe_exit",
+    (MR_Integer) 3,
+    MR_FUNCTION
+  }
+};
+
+static const MR_TypeClassId ll_backend__frameopt__ll_backend__frameopt__type_class_id_block_entry_exit_2 = {
+  (MR_String) "ll_backend.frameopt",
+  (MR_String) "block_entry_exit",
+  (MR_Integer) 2,
+  (MR_Integer) 2,
+  (MR_Integer) 6,
+  ll_backend__frameopt__ll_backend__frameopt__type_class_id_var_names_block_entry_exit_2,
+  ll_backend__frameopt__ll_backend__frameopt__type_class_id_method_ids_block_entry_exit_2
+};
+
+const MR_TypeClassDeclStruct ll_backend__frameopt__ll_backend__frameopt__type_class_decl_block_entry_exit_2 = {
+  &ll_backend__frameopt__ll_backend__frameopt__type_class_id_block_entry_exit_2,
+  (MR_Integer) 0,
+  (MR_Integer) 0,
+  NULL
+};
+
+static MR_bool MR_CALL 
+ll_backend__frameopt__IntroducedFrom__pred__describe_block__2307__1_2_p_0(
+  MR_Word ll_backend__frameopt__UsesFrame_35,
+  MR_Word ll_backend__frameopt__HeadVar__2_80)
+{
+  {
+    MR_bool ll_backend__frameopt__succeeded = (ll_backend__frameopt__UsesFrame_35 == ll_backend__frameopt__HeadVar__2_80);
+
+    return ll_backend__frameopt__succeeded;
+  }
+}
+
+static MR_bool MR_CALL 
+ll_backend__frameopt__IntroducedFrom__pred__describe_block__2322__1_2_p_0(
+  MR_Word ll_backend__frameopt__MaybeFallThrough_18,
+  MR_Word ll_backend__frameopt__HeadVar__2_70)
+{
+  {
+    MR_bool ll_backend__frameopt__succeeded;
+
+    {
+      ll_backend__frameopt__succeeded = mercury__builtin__unify_2_p_0((MR_Word) &ll_backend__frameopt_scalar_common_2[2], ((MR_Box) (ll_backend__frameopt__MaybeFallThrough_18)), ((MR_Box) (ll_backend__frameopt__HeadVar__2_70)));
+    }
+    return ll_backend__frameopt__succeeded;
+  }
+}
+
+static MR_bool MR_CALL 
+ll_backend__frameopt__IntroducedFrom__pred__describe_block__2247__1_2_p_0(
+  MR_Word ll_backend__frameopt__Label_11,
+  MR_Word ll_backend__frameopt__BlockLabel_14)
+{
+  {
+    MR_bool ll_backend__frameopt__succeeded;
+
+    {
+      ll_backend__frameopt__succeeded = ll_backend__llds____Unify____label_0_0(ll_backend__frameopt__Label_11, ll_backend__frameopt__BlockLabel_14);
+    }
+    return ll_backend__frameopt__succeeded;
+  }
+}
+
+static MR_bool MR_CALL 
+ll_backend__frameopt__IntroducedFrom__pred__create_parallels__2105__1_2_p_0(
+  MR_Word ll_backend__frameopt__TypeClassInfo_for_block_entry_exit_157,
+  MR_Word ll_backend__frameopt__Type_43)
+{
+  {
+    MR_bool ll_backend__frameopt__succeeded;
+    MR_Word ll_backend__frameopt__TypeInfo_171_171;
+    MR_Word ll_backend__frameopt__TypeInfo_173_173;
+
+    {
+      mercury__private_builtin__type_info_from_typeclass_info_3_p_0(ll_backend__frameopt__TypeClassInfo_for_block_entry_exit_157, (MR_Integer) 1, &ll_backend__frameopt__TypeInfo_171_171);
+    }
+    {
+      mercury__private_builtin__type_info_from_typeclass_info_3_p_0(ll_backend__frameopt__TypeClassInfo_for_block_entry_exit_157, (MR_Integer) 2, &ll_backend__frameopt__TypeInfo_173_173);
+    }
+    {
+      ll_backend__frameopt__succeeded = ll_backend__frameopt__f_85_110_117_115_101_100_65_114_103_115_95_95_112_114_101_100_95_95_105_115_95_111_114_100_105_110_97_114_121_95_98_108_111_99_107_95_95_91_49_44_32_50_93_95_48_1_p_0(ll_backend__frameopt__Type_43);
+    }
+    return ll_backend__frameopt__succeeded;
+  }
+}
+
+static MR_bool MR_CALL 
+ll_backend__frameopt__f_85_110_117_115_101_100_65_114_103_115_95_95_112_114_101_100_95_95_105_115_95_111_114_100_105_110_97_114_121_95_98_108_111_99_107_95_95_91_49_44_32_50_93_95_48_1_p_0(
+  MR_Word ll_backend__frameopt__HeadVar__1_1)
+{
+  {
+    MR_bool ll_backend__frameopt__succeeded = ((MR_tag((MR_Word) ll_backend__frameopt__HeadVar__1_1)) == (MR_mktag((MR_Integer) 1)));
+    MR_Word ll_backend__frameopt__Var_2;
+    MR_Word ll_backend__frameopt__Var_3;
+
+    if (ll_backend__frameopt__succeeded)
+      {
+        ll_backend__frameopt__Var_2 = ((MR_Word) (MR_hl_field(MR_mktag(1), ll_backend__frameopt__HeadVar__1_1, (MR_Integer) 0)));
+        ll_backend__frameopt__Var_3 = ((MR_Word) (MR_hl_field(MR_mktag(1), ll_backend__frameopt__HeadVar__1_1, (MR_Integer) 1)));
+      }
+    return ll_backend__frameopt__succeeded;
+  }
+}
+
+static MR_bool MR_CALL 
+ll_backend__frameopt__IntroducedFrom__pred__create_parallels__2064__1_2_p_0(
+  MR_Word ll_backend__frameopt__MaybeFallThrough_42,
+  MR_Word ll_backend__frameopt__HeadVar__2_80)
+{
+  {
+    MR_bool ll_backend__frameopt__succeeded;
+
+    {
+      ll_backend__frameopt__succeeded = mercury__builtin__unify_2_p_0((MR_Word) &ll_backend__frameopt_scalar_common_2[2], ((MR_Box) (ll_backend__frameopt__MaybeFallThrough_42)), ((MR_Box) (ll_backend__frameopt__HeadVar__2_80)));
+    }
+    return ll_backend__frameopt__succeeded;
+  }
+}
+
+static MR_bool MR_CALL 
+ll_backend__frameopt__IntroducedFrom__pred__create_parallels__2061__1_2_p_0(
+  MR_Word ll_backend__frameopt__Label0_25,
+  MR_Word ll_backend__frameopt__Label0Copy_38)
+{
+  {
+    MR_bool ll_backend__frameopt__succeeded;
+
+    {
+      ll_backend__frameopt__succeeded = ll_backend__llds____Unify____label_0_0(ll_backend__frameopt__Label0_25, ll_backend__frameopt__Label0Copy_38);
+    }
+    return ll_backend__frameopt__succeeded;
+  }
+}
+
+static MR_bool MR_CALL 
+ll_backend__frameopt__IntroducedFrom__pred__process_frame_delay__1858__1_2_p_0(
+  MR_Word ll_backend__frameopt__Label0_26,
+  MR_Word ll_backend__frameopt__Label0Copy_35)
+{
+  {
+    MR_bool ll_backend__frameopt__succeeded;
+
+    {
+      ll_backend__frameopt__succeeded = ll_backend__llds____Unify____label_0_0(ll_backend__frameopt__Label0_26, ll_backend__frameopt__Label0Copy_35);
+    }
+    return ll_backend__frameopt__succeeded;
+  }
+}
+
+static MR_bool MR_CALL 
+ll_backend__frameopt__IntroducedFrom__pred__propagate_frame_requirement_to_successors__1724__1_2_p_0(
+  MR_Word ll_backend__frameopt__STATE_VARIABLE_AlreadyProcessed_38_51,
+  MR_Word ll_backend__frameopt__HeadVar__2_74)
+{
+  {
+    MR_bool ll_backend__frameopt__succeeded;
+
+    {
+      ll_backend__frameopt__succeeded = mercury__set__contains_2_p_0((MR_Word) &ll_backend__llds__ll_backend__llds__type_ctor_info_label_0, ll_backend__frameopt__STATE_VARIABLE_AlreadyProcessed_38_51, ((MR_Box) (ll_backend__frameopt__HeadVar__2_74)));
+    }
+    return ll_backend__frameopt__succeeded;
+  }
+}
+
+static void MR_CALL 
+ll_backend__frameopt__IntroducedFrom__pred__analyze_block__1255__1_4_p_0(
+  MR_Word ll_backend__frameopt__TypeClassInfo_for_block_entry_exit_104,
+  MR_Word ll_backend__frameopt__HeadVar__2_118,
+  MR_Word ll_backend__frameopt__HeadVar__3_119,
+  MR_Word * ll_backend__frameopt__HeadVar__4_120)
+{
+  {
+    MR_Word ll_backend__frameopt__TypeInfo_122_122;
+    MR_Word ll_backend__frameopt__TypeInfo_124_124;
+
+    {
+      mercury__private_builtin__type_info_from_typeclass_info_3_p_0(ll_backend__frameopt__TypeClassInfo_for_block_entry_exit_104, (MR_Integer) 1, &ll_backend__frameopt__TypeInfo_122_122);
+    }
+    {
+      mercury__private_builtin__type_info_from_typeclass_info_3_p_0(ll_backend__frameopt__TypeClassInfo_for_block_entry_exit_104, (MR_Integer) 2, &ll_backend__frameopt__TypeInfo_124_124);
+    }
+    {
+      ll_backend__frameopt__mark_redoip_label_3_p_0(ll_backend__frameopt__TypeInfo_122_122, ll_backend__frameopt__TypeInfo_124_124, ll_backend__frameopt__HeadVar__2_118, ll_backend__frameopt__HeadVar__3_119, ll_backend__frameopt__HeadVar__4_120);
+    }
+  }
+}
+
+static MR_bool MR_CALL 
+ll_backend__frameopt__IntroducedFrom__pred__build_frame_block_map__687__1_2_p_0(
+  MR_Word ll_backend__frameopt__NeedsFrame_69,
+  MR_Word ll_backend__frameopt__HeadVar__2_142)
+{
+  {
+    MR_bool ll_backend__frameopt__succeeded = (ll_backend__frameopt__NeedsFrame_69 == ll_backend__frameopt__HeadVar__2_142);
+
+    return ll_backend__frameopt__succeeded;
+  }
+}
+
+static MR_String MR_CALL 
+ll_backend__frameopt__ClassMethod_for_ll_backend__frameopt__block_entry_exit____ll_backend__frameopt__det_entry_info__arity0__ll_backend__frameopt__det_exit_info__arity0______ll_backend__frameopt__describe_exit_2_2_f_0(
+  MR_Word ll_backend__frameopt__HeadVar__1_1,
+  MR_Word ll_backend__frameopt__HeadVar__2_2)
+{
+  {
+    MR_String ll_backend__frameopt__HeadVar__3_3;
+    MR_Word ll_backend__frameopt__RestoreSuccip_5 = ((MR_Word) (MR_hl_field(MR_mktag(0), ll_backend__frameopt__HeadVar__2_2, (MR_Integer) 0)));
+    MR_Word ll_backend__frameopt__Livevals_6 = ((MR_Word) (MR_hl_field(MR_mktag(0), ll_backend__frameopt__HeadVar__2_2, (MR_Integer) 1)));
+    MR_Word ll_backend__frameopt__Goto_7 = ((MR_Word) (MR_hl_field(MR_mktag(0), ll_backend__frameopt__HeadVar__2_2, (MR_Integer) 2)));
+    MR_String ll_backend__frameopt__Var_9;
+    MR_String ll_backend__frameopt__Var_10;
+    MR_String ll_backend__frameopt__Var_12;
+    MR_String ll_backend__frameopt__Var_14;
+    MR_String ll_backend__frameopt__Var_15;
+    MR_String ll_backend__frameopt__Var_17;
+    MR_String ll_backend__frameopt__Var_19;
+
+    {
+      ll_backend__frameopt__Var_10 = ll_backend__opt_debug__dump_fullinstrs_3_f_0(ll_backend__frameopt__HeadVar__1_1, (MR_Integer) 1, ll_backend__frameopt__RestoreSuccip_5);
+    }
+    {
+      ll_backend__frameopt__Var_15 = ll_backend__opt_debug__dump_fullinstrs_3_f_0(ll_backend__frameopt__HeadVar__1_1, (MR_Integer) 1, ll_backend__frameopt__Livevals_6);
+    }
+    {
+      ll_backend__frameopt__Var_19 = ll_backend__opt_debug__dump_fullinstr_3_f_0(ll_backend__frameopt__HeadVar__1_1, (MR_Integer) 1, ll_backend__frameopt__Goto_7);
+    }
+    {
+      ll_backend__frameopt__Var_17 = mercury__string__f_43_43_2_f_0((MR_String) "goto:     ", ll_backend__frameopt__Var_19);
+    }
+    {
+      ll_backend__frameopt__Var_14 = mercury__string__f_43_43_2_f_0(ll_backend__frameopt__Var_15, ll_backend__frameopt__Var_17);
+    }
+    {
+      ll_backend__frameopt__Var_12 = mercury__string__f_43_43_2_f_0((MR_String) "livevals: ", ll_backend__frameopt__Var_14);
+    }
+    {
+      ll_backend__frameopt__Var_9 = mercury__string__f_43_43_2_f_0(ll_backend__frameopt__Var_10, ll_backend__frameopt__Var_12);
+    }
+    {
+      ll_backend__frameopt__HeadVar__3_3 = mercury__string__f_43_43_2_f_0((MR_String) "restore:  ", ll_backend__frameopt__Var_9);
+    }
+    return ll_backend__frameopt__HeadVar__3_3;
+  }
+}
+
+static MR_String MR_CALL 
+ll_backend__frameopt__ClassMethod_for_ll_backend__frameopt__block_entry_exit____ll_backend__frameopt__det_entry_info__arity0__ll_backend__frameopt__det_exit_info__arity0______ll_backend__frameopt__describe_entry_1_1_f_0(
+  MR_Word ll_backend__frameopt__HeadVar__1_1)
+{
+  {
+    MR_String ll_backend__frameopt__HeadVar__2_2;
+    MR_Integer ll_backend__frameopt__Size_3 = ((MR_Integer) (MR_hl_field(MR_mktag(0), ll_backend__frameopt__HeadVar__1_1, (MR_Integer) 0)));
+    MR_String ll_backend__frameopt__Msg_4 = ((MR_String) (MR_hl_field(MR_mktag(0), ll_backend__frameopt__HeadVar__1_1, (MR_Integer) 1)));
+    MR_Word ll_backend__frameopt__Kind_5 = ((MR_Word) (MR_hl_field(MR_mktag(0), ll_backend__frameopt__HeadVar__1_1, (MR_Integer) 2)));
+    MR_String ll_backend__frameopt__Var_7;
+    MR_String ll_backend__frameopt__Var_8;
+    MR_String ll_backend__frameopt__Var_9;
+    MR_String ll_backend__frameopt__Var_11;
+    MR_String ll_backend__frameopt__Var_12;
+    MR_String ll_backend__frameopt__Var_14;
+    MR_String ll_backend__frameopt__Var_15;
+
+    {
+      ll_backend__frameopt__Var_8 = mercury__string__int_to_string_1_f_0(ll_backend__frameopt__Size_3);
+    }
+    {
+      ll_backend__frameopt__Var_15 = ll_backend__opt_debug__dump_stack_incr_kind_1_f_0(ll_backend__frameopt__Kind_5);
+    }
+    {
+      ll_backend__frameopt__Var_14 = mercury__string__f_43_43_2_f_0(ll_backend__frameopt__Var_15, (MR_String) "\n");
+    }
+    {
+      ll_backend__frameopt__Var_12 = mercury__string__f_43_43_2_f_0((MR_String) ", kind: ", ll_backend__frameopt__Var_14);
+    }
+    {
+      ll_backend__frameopt__Var_11 = mercury__string__f_43_43_2_f_0(ll_backend__frameopt__Msg_4, ll_backend__frameopt__Var_12);
+    }
+    {
+      ll_backend__frameopt__Var_9 = mercury__string__f_43_43_2_f_0((MR_String) ", msg: ", ll_backend__frameopt__Var_11);
+    }
+    {
+      ll_backend__frameopt__Var_7 = mercury__string__f_43_43_2_f_0(ll_backend__frameopt__Var_8, ll_backend__frameopt__Var_9);
+    }
+    {
+      ll_backend__frameopt__HeadVar__2_2 = mercury__string__f_43_43_2_f_0((MR_String) "size: ", ll_backend__frameopt__Var_7);
+    }
+    return ll_backend__frameopt__HeadVar__2_2;
+  }
+}
+
+static MR_Word MR_CALL 
+ll_backend__frameopt__ClassMethod_for_ll_backend__frameopt__block_entry_exit____ll_backend__frameopt__det_entry_info__arity0__ll_backend__frameopt__det_exit_info__arity0______ll_backend__frameopt__non_teardown_exit_code_1_1_f_0(
+  MR_Word ll_backend__frameopt__HeadVar__1_1)
+{
+  {
+    MR_Word ll_backend__frameopt__HeadVar__2_2;
+    MR_Word ll_backend__frameopt__Livevals_4 = ((MR_Word) (MR_hl_field(MR_mktag(0), ll_backend__frameopt__HeadVar__1_1, (MR_Integer) 1)));
+    MR_Word ll_backend__frameopt__Goto_5 = ((MR_Word) (MR_hl_field(MR_mktag(0), ll_backend__frameopt__HeadVar__1_1, (MR_Integer) 2)));
+    MR_Word ll_backend__frameopt__Var_6;
+    MR_Word ll_backend__frameopt__Var_3 = ((MR_Word) (MR_hl_field(MR_mktag(0), ll_backend__frameopt__HeadVar__1_1, (MR_Integer) 0)));
+
+    {
+      ll_backend__frameopt__Var_6 = (MR_Word) MR_mkword(MR_mktag(1), MR_new_object(MR_Word, ((MR_Integer) 2 * sizeof(MR_Word)), NULL, NULL));
+      MR_hl_field(MR_mktag(1), ll_backend__frameopt__Var_6, 0) = ((MR_Box) (ll_backend__frameopt__Goto_5));
+      MR_hl_field(MR_mktag(1), ll_backend__frameopt__Var_6, 1) = ((MR_Box) (MR_mkword(MR_mktag(0), MR_mkbody((MR_Integer) 0))));
+    }
+    {
+      ll_backend__frameopt__HeadVar__2_2 = mercury__list__f_43_43_2_f_0((MR_Word) &ll_backend__llds__ll_backend__llds__type_ctor_info_instruction_0, ll_backend__frameopt__Livevals_4, ll_backend__frameopt__Var_6);
+    }
+    return ll_backend__frameopt__HeadVar__2_2;
+  }
+}
+
+static MR_Word MR_CALL 
+ll_backend__frameopt__ClassMethod_for_ll_backend__frameopt__block_entry_exit____ll_backend__frameopt__det_entry_info__arity0__ll_backend__frameopt__det_exit_info__arity0______ll_backend__frameopt__late_setup_code_1_1_f_0(
+  MR_Word ll_backend__frameopt__HeadVar__1_1)
+{
+  {
+    MR_Word ll_backend__frameopt__HeadVar__2_2;
+    MR_Integer ll_backend__frameopt__FrameSize_3 = ((MR_Integer) (MR_hl_field(MR_mktag(0), ll_backend__frameopt__HeadVar__1_1, (MR_Integer) 0)));
+    MR_String ll_backend__frameopt__Msg_4 = ((MR_String) (MR_hl_field(MR_mktag(0), ll_backend__frameopt__HeadVar__1_1, (MR_Integer) 1)));
+    MR_Word ll_backend__frameopt__Kind_5 = ((MR_Word) (MR_hl_field(MR_mktag(0), ll_backend__frameopt__HeadVar__1_1, (MR_Integer) 2)));
+    MR_Word ll_backend__frameopt__Var_6;
+    MR_Word ll_backend__frameopt__Var_7;
+    MR_Word ll_backend__frameopt__Var_9;
+    MR_Word ll_backend__frameopt__Var_10;
+    MR_Word ll_backend__frameopt__Var_11;
+    MR_Word ll_backend__frameopt__Var_12;
+
+    {
+      ll_backend__frameopt__Var_7 = (MR_Word) MR_mkword(MR_mktag(3), MR_new_object(MR_Word, ((MR_Integer) 4 * sizeof(MR_Word)), NULL, NULL));
+      MR_hl_field(MR_mktag(3), ll_backend__frameopt__Var_7, 0) = ((MR_Box) (MR_Word) ((MR_Integer) 24));
+      MR_hl_field(MR_mktag(3), ll_backend__frameopt__Var_7, 1) = ((MR_Box) (ll_backend__frameopt__FrameSize_3));
+      MR_hl_field(MR_mktag(3), ll_backend__frameopt__Var_7, 2) = ((MR_Box) (ll_backend__frameopt__Msg_4));
+      MR_hl_field(MR_mktag(3), ll_backend__frameopt__Var_7, 3) = ((MR_Box) (ll_backend__frameopt__Kind_5));
+    }
+    {
+      ll_backend__frameopt__Var_6 = (MR_Word) MR_new_object(MR_Word, ((MR_Integer) 2 * sizeof(MR_Word)), NULL, NULL);
+      MR_hl_field(MR_mktag(0), ll_backend__frameopt__Var_6, 0) = ((MR_Box) (ll_backend__frameopt__Var_7));
+      MR_hl_field(MR_mktag(0), ll_backend__frameopt__Var_6, 1) = ((MR_Box) ((MR_String) "late setup"));
+    }
+    {
+      ll_backend__frameopt__Var_12 = (MR_Word) MR_mkword(MR_mktag(3), MR_new_object(MR_Word, ((MR_Integer) 2 * sizeof(MR_Word)), NULL, NULL));
+      MR_hl_field(MR_mktag(3), ll_backend__frameopt__Var_12, 0) = ((MR_Box) (MR_Word) ((MR_Integer) 0));
+      MR_hl_field(MR_mktag(3), ll_backend__frameopt__Var_12, 1) = ((MR_Box) (ll_backend__frameopt__FrameSize_3));
+    }
+    {
+      ll_backend__frameopt__Var_11 = (MR_Word) MR_mkword(MR_mktag(3), MR_new_object(MR_Word, ((MR_Integer) 3 * sizeof(MR_Word)), NULL, NULL));
+      MR_hl_field(MR_mktag(3), ll_backend__frameopt__Var_11, 0) = ((MR_Box) (MR_Word) ((MR_Integer) 1));
+      MR_hl_field(MR_mktag(3), ll_backend__frameopt__Var_11, 1) = ((MR_Box) (ll_backend__frameopt__Var_12));
+      MR_hl_field(MR_mktag(3), ll_backend__frameopt__Var_11, 2) = ((MR_Box) (&ll_backend__frameopt_scalar_common_3[4]));
+    }
+    {
+      ll_backend__frameopt__Var_10 = (MR_Word) MR_new_object(MR_Word, ((MR_Integer) 2 * sizeof(MR_Word)), NULL, NULL);
+      MR_hl_field(MR_mktag(0), ll_backend__frameopt__Var_10, 0) = ((MR_Box) (ll_backend__frameopt__Var_11));
+      MR_hl_field(MR_mktag(0), ll_backend__frameopt__Var_10, 1) = ((MR_Box) ((MR_String) "late save"));
+    }
+    {
+      ll_backend__frameopt__Var_9 = (MR_Word) MR_mkword(MR_mktag(1), MR_new_object(MR_Word, ((MR_Integer) 2 * sizeof(MR_Word)), NULL, NULL));
+      MR_hl_field(MR_mktag(1), ll_backend__frameopt__Var_9, 0) = ((MR_Box) (ll_backend__frameopt__Var_10));
+      MR_hl_field(MR_mktag(1), ll_backend__frameopt__Var_9, 1) = ((MR_Box) (MR_mkword(MR_mktag(0), MR_mkbody((MR_Integer) 0))));
+    }
+    {
+      ll_backend__frameopt__HeadVar__2_2 = (MR_Word) MR_mkword(MR_mktag(1), MR_new_object(MR_Word, ((MR_Integer) 2 * sizeof(MR_Word)), NULL, NULL));
+      MR_hl_field(MR_mktag(1), ll_backend__frameopt__HeadVar__2_2, 0) = ((MR_Box) (ll_backend__frameopt__Var_6));
+      MR_hl_field(MR_mktag(1), ll_backend__frameopt__HeadVar__2_2, 1) = ((MR_Box) (ll_backend__frameopt__Var_9));
+    }
+    return ll_backend__frameopt__HeadVar__2_2;
+  }
+}
+
+static MR_bool MR_CALL 
+ll_backend__frameopt__ClassMethod_for_ll_backend__frameopt__block_entry_exit____ll_backend__frameopt__det_entry_info__arity0__ll_backend__frameopt__det_exit_info__arity0______ll_backend__frameopt__detect_exit_6_6_p_0(
+  MR_Word ll_backend__frameopt__HeadVar__1_1,
+  MR_Word ll_backend__frameopt__HeadVar__2_2,
+  MR_Word * ll_backend__frameopt__HeadVar__3_3,
+  MR_Word * ll_backend__frameopt__HeadVar__4_4,
+  MR_Word * ll_backend__frameopt__HeadVar__5_5,
+  MR_Word * ll_backend__frameopt__HeadVar__6_6)
+{
+  {
+    MR_bool ll_backend__frameopt__succeeded;
+    MR_Word ll_backend__frameopt__TypeCtorInfo_24_24;
+    MR_Integer ll_backend__frameopt__FrameSize_13 = ((MR_Integer) (MR_hl_field(MR_mktag(0), ll_backend__frameopt__HeadVar__2_2, (MR_Integer) 0)));
+    MR_Word ll_backend__frameopt__SuccipRestore_16;
+    MR_Word ll_backend__frameopt__Decrsp_17;
+    MR_Word ll_backend__frameopt__Livevals_18;
+    MR_Word ll_backend__frameopt__Goto_19;
+    MR_Word ll_backend__frameopt__Var_20;
+    MR_Word ll_backend__frameopt__Var_21;
+    MR_Word ll_backend__frameopt__Var_22;
+    MR_Word ll_backend__frameopt__Var_23;
+    MR_String ll_backend__frameopt___Msg_14 = ((MR_String) (MR_hl_field(MR_mktag(0), ll_backend__frameopt__HeadVar__2_2, (MR_Integer) 1)));
+    MR_Word ll_backend__frameopt__Var_15 = ((MR_Word) (MR_hl_field(MR_mktag(0), ll_backend__frameopt__HeadVar__2_2, (MR_Integer) 2)));
+
+    {
+      ll_backend__frameopt__succeeded = ll_backend__frameopt__detstack_teardown_8_p_0(ll_backend__frameopt__HeadVar__1_1, ll_backend__frameopt__FrameSize_13, ll_backend__frameopt__HeadVar__3_3, &ll_backend__frameopt__SuccipRestore_16, &ll_backend__frameopt__Decrsp_17, &ll_backend__frameopt__Livevals_18, &ll_backend__frameopt__Goto_19, ll_backend__frameopt__HeadVar__5_5);
+    }
+    if (ll_backend__frameopt__succeeded)
+      {
+        ll_backend__frameopt__TypeCtorInfo_24_24 = (MR_Word) &ll_backend__llds__ll_backend__llds__type_ctor_info_instruction_0;
+        ll_backend__frameopt__Var_23 = (MR_Word) MR_mkword(MR_mktag(0), MR_mkbody((MR_Integer) 0));
+        {
+          ll_backend__frameopt__Var_22 = (MR_Word) MR_mkword(MR_mktag(1), MR_new_object(MR_Word, ((MR_Integer) 2 * sizeof(MR_Word)), NULL, NULL));
+          MR_hl_field(MR_mktag(1), ll_backend__frameopt__Var_22, 0) = ((MR_Box) (ll_backend__frameopt__Goto_19));
+          MR_hl_field(MR_mktag(1), ll_backend__frameopt__Var_22, 1) = ((MR_Box) (ll_backend__frameopt__Var_23));
+        }
+        {
+          ll_backend__frameopt__Var_21 = mercury__list__f_43_43_2_f_0(ll_backend__frameopt__TypeCtorInfo_24_24, ll_backend__frameopt__Livevals_18, ll_backend__frameopt__Var_22);
+        }
+        {
+          ll_backend__frameopt__Var_20 = mercury__list__f_43_43_2_f_0(ll_backend__frameopt__TypeCtorInfo_24_24, ll_backend__frameopt__Decrsp_17, ll_backend__frameopt__Var_21);
+        }
+        {
+          *ll_backend__frameopt__HeadVar__4_4 = mercury__list__f_43_43_2_f_0(ll_backend__frameopt__TypeCtorInfo_24_24, ll_backend__frameopt__SuccipRestore_16, ll_backend__frameopt__Var_20);
+        }
+        {
+          MR_Word base;
+          base = (MR_Word) MR_new_object(MR_Word, ((MR_Integer) 3 * sizeof(MR_Word)), NULL, NULL);
+          *ll_backend__frameopt__HeadVar__6_6 = base;
+          MR_hl_field(MR_mktag(0), base, 0) = ((MR_Box) (ll_backend__frameopt__SuccipRestore_16));
+          MR_hl_field(MR_mktag(0), base, 1) = ((MR_Box) (ll_backend__frameopt__Livevals_18));
+          MR_hl_field(MR_mktag(0), base, 2) = ((MR_Box) (ll_backend__frameopt__Goto_19));
+        }
+        ll_backend__frameopt__succeeded = MR_TRUE;
+      }
+    return ll_backend__frameopt__succeeded;
+  }
+}
+
+static MR_bool MR_CALL 
+ll_backend__frameopt__ClassMethod_for_ll_backend__frameopt__block_entry_exit____ll_backend__frameopt__det_entry_info__arity0__ll_backend__frameopt__det_exit_info__arity0______ll_backend__frameopt__detect_entry_4_4_p_0(
+  MR_Word ll_backend__frameopt__HeadVar__1_1,
+  MR_Word * ll_backend__frameopt__HeadVar__2_2,
+  MR_Word * ll_backend__frameopt__HeadVar__3_3,
+  MR_Word * ll_backend__frameopt__HeadVar__4_4)
+{
+  {
+    MR_bool ll_backend__frameopt__succeeded;
+    MR_Word ll_backend__frameopt__Others_8;
+    MR_Word ll_backend__frameopt__Remain_9;
+    MR_Word ll_backend__frameopt__Others0_10;
+    MR_Word ll_backend__frameopt__Instrs1_11;
+    MR_Word ll_backend__frameopt__SetupInstr1_12;
+    MR_Word ll_backend__frameopt__Instrs2_13;
+    MR_Integer ll_backend__frameopt__FrameSize_14;
+    MR_String ll_backend__frameopt__Msg_15;
+    MR_Word ll_backend__frameopt__Kind_16;
+    MR_Word ll_backend__frameopt__SetupInstr2_18;
+    MR_Word ll_backend__frameopt__Var_19;
+    MR_Word ll_backend__frameopt__Var_20;
+    MR_Word ll_backend__frameopt__Var_21;
+    MR_String ll_backend__frameopt__Var_17;
+
+    {
+      ll_backend__opt_util__gather_comments_3_p_0(ll_backend__frameopt__HeadVar__1_1, &ll_backend__frameopt__Others0_10, &ll_backend__frameopt__Instrs1_11);
+    }
+    ll_backend__frameopt__succeeded = ((MR_tag((MR_Word) ll_backend__frameopt__Instrs1_11)) == (MR_mktag((MR_Integer) 1)));
+    if (ll_backend__frameopt__succeeded)
+      {
+        ll_backend__frameopt__SetupInstr1_12 = ((MR_Word) (MR_hl_field(MR_mktag(1), ll_backend__frameopt__Instrs1_11, (MR_Integer) 0)));
+        ll_backend__frameopt__Instrs2_13 = ((MR_Word) (MR_hl_field(MR_mktag(1), ll_backend__frameopt__Instrs1_11, (MR_Integer) 1)));
+        ll_backend__frameopt__Var_19 = ((MR_Word) (MR_hl_field(MR_mktag(0), ll_backend__frameopt__SetupInstr1_12, (MR_Integer) 0)));
+        ll_backend__frameopt__Var_17 = ((MR_String) (MR_hl_field(MR_mktag(0), ll_backend__frameopt__SetupInstr1_12, (MR_Integer) 1)));
+        ll_backend__frameopt__succeeded = ((((MR_tag((MR_Word) ll_backend__frameopt__Var_19)) == (MR_mktag((MR_Integer) 3)))) && (((((MR_Integer) (MR_Word) (MR_hl_field(MR_mktag(3), ll_backend__frameopt__Var_19, (MR_Integer) 0)))) == (MR_Integer) 24)));
+        if (ll_backend__frameopt__succeeded)
+          {
+            ll_backend__frameopt__FrameSize_14 = ((MR_Integer) (MR_hl_field(MR_mktag(3), ll_backend__frameopt__Var_19, (MR_Integer) 1)));
+            ll_backend__frameopt__Msg_15 = ((MR_String) (MR_hl_field(MR_mktag(3), ll_backend__frameopt__Var_19, (MR_Integer) 2)));
+            ll_backend__frameopt__Kind_16 = ((MR_Word) (MR_hl_field(MR_mktag(3), ll_backend__frameopt__Var_19, (MR_Integer) 3)));
+            {
+              ll_backend__frameopt__succeeded = ll_backend__frameopt__detstack_setup_6_p_0(ll_backend__frameopt__Instrs2_13, ll_backend__frameopt__FrameSize_14, &ll_backend__frameopt__SetupInstr2_18, ll_backend__frameopt__Others0_10, &ll_backend__frameopt__Others_8, &ll_backend__frameopt__Remain_9);
+            }
+            if (ll_backend__frameopt__succeeded)
+              {
+                {
+                  *ll_backend__frameopt__HeadVar__3_3 = mercury__list__f_43_43_2_f_0((MR_Word) &ll_backend__llds__ll_backend__llds__type_ctor_info_instruction_0, ll_backend__frameopt__Others_8, ll_backend__frameopt__Remain_9);
+                }
+                ll_backend__frameopt__Var_21 = (MR_Word) MR_mkword(MR_mktag(0), MR_mkbody((MR_Integer) 0));
+                {
+                  ll_backend__frameopt__Var_20 = (MR_Word) MR_mkword(MR_mktag(1), MR_new_object(MR_Word, ((MR_Integer) 2 * sizeof(MR_Word)), NULL, NULL));
+                  MR_hl_field(MR_mktag(1), ll_backend__frameopt__Var_20, 0) = ((MR_Box) (ll_backend__frameopt__SetupInstr2_18));
+                  MR_hl_field(MR_mktag(1), ll_backend__frameopt__Var_20, 1) = ((MR_Box) (ll_backend__frameopt__Var_21));
+                }
+                {
+                  MR_Word base;
+                  base = (MR_Word) MR_mkword(MR_mktag(1), MR_new_object(MR_Word, ((MR_Integer) 2 * sizeof(MR_Word)), NULL, NULL));
+                  *ll_backend__frameopt__HeadVar__2_2 = base;
+                  MR_hl_field(MR_mktag(1), base, 0) = ((MR_Box) (ll_backend__frameopt__SetupInstr1_12));
+                  MR_hl_field(MR_mktag(1), base, 1) = ((MR_Box) (ll_backend__frameopt__Var_20));
+                }
+                {
+                  MR_Word base;
+                  base = (MR_Word) MR_new_object(MR_Word, ((MR_Integer) 3 * sizeof(MR_Word)), NULL, NULL);
+                  *ll_backend__frameopt__HeadVar__4_4 = base;
+                  MR_hl_field(MR_mktag(0), base, 0) = ((MR_Box) (ll_backend__frameopt__FrameSize_14));
+                  MR_hl_field(MR_mktag(0), base, 1) = ((MR_Box) (ll_backend__frameopt__Msg_15));
+                  MR_hl_field(MR_mktag(0), base, 2) = ((MR_Box) (ll_backend__frameopt__Kind_16));
+                }
+                ll_backend__frameopt__succeeded = MR_TRUE;
+              }
+          }
+      }
+    return ll_backend__frameopt__succeeded;
+  }
+}
+
+static MR_String MR_CALL 
+ll_backend__frameopt__ClassMethod_for_ll_backend__frameopt__block_entry_exit____ll_backend__frameopt__nondet_entry_info__arity0__ll_backend__frameopt__nondet_exit_info__arity0______ll_backend__frameopt__describe_exit_2_2_f_0(
+  MR_Word ll_backend__frameopt__HeadVar__1_1,
+  MR_Word ll_backend__frameopt__HeadVar__2_2)
+{
+  {
+    MR_String ll_backend__frameopt__HeadVar__3_3;
+
+    if (((MR_tag((MR_Word) ll_backend__frameopt__HeadVar__2_2)) == (MR_mktag((MR_Integer) 0))))
+      {
+        MR_Word ll_backend__frameopt__Livevals_5 = ((MR_Word) (MR_hl_field(MR_mktag(0), ll_backend__frameopt__HeadVar__2_2, (MR_Integer) 0)));
+        MR_Word ll_backend__frameopt__Goto_6 = ((MR_Word) (MR_hl_field(MR_mktag(0), ll_backend__frameopt__HeadVar__2_2, (MR_Integer) 1)));
+        MR_String ll_backend__frameopt__Var_8;
+        MR_String ll_backend__frameopt__Var_9;
+        MR_String ll_backend__frameopt__Var_11;
+        MR_String ll_backend__frameopt__Var_13;
+
+        {
+          ll_backend__frameopt__Var_9 = ll_backend__opt_debug__dump_fullinstrs_3_f_0(ll_backend__frameopt__HeadVar__1_1, (MR_Integer) 1, ll_backend__frameopt__Livevals_5);
+        }
+        {
+          ll_backend__frameopt__Var_13 = ll_backend__opt_debug__dump_fullinstr_3_f_0(ll_backend__frameopt__HeadVar__1_1, (MR_Integer) 1, ll_backend__frameopt__Goto_6);
+        }
+        {
+          ll_backend__frameopt__Var_11 = mercury__string__f_43_43_2_f_0((MR_String) "goto:     ", ll_backend__frameopt__Var_13);
+        }
+        {
+          ll_backend__frameopt__Var_8 = mercury__string__f_43_43_2_f_0(ll_backend__frameopt__Var_9, ll_backend__frameopt__Var_11);
+        }
+        {
+          ll_backend__frameopt__HeadVar__3_3 = mercury__string__f_43_43_2_f_0((MR_String) "livevals: ", ll_backend__frameopt__Var_8);
+        }
+      }
+    else
+      {
+        MR_Word ll_backend__frameopt__Succip_16 = ((MR_Word) (MR_hl_field(MR_mktag(1), ll_backend__frameopt__HeadVar__2_2, (MR_Integer) 0)));
+        MR_Word ll_backend__frameopt__Maxfr_17 = ((MR_Word) (MR_hl_field(MR_mktag(1), ll_backend__frameopt__HeadVar__2_2, (MR_Integer) 1)));
+        MR_Word ll_backend__frameopt__Curfr_18 = ((MR_Word) (MR_hl_field(MR_mktag(1), ll_backend__frameopt__HeadVar__2_2, (MR_Integer) 2)));
+        MR_Word ll_backend__frameopt__Livevals_19 = ((MR_Word) (MR_hl_field(MR_mktag(1), ll_backend__frameopt__HeadVar__2_2, (MR_Integer) 3)));
+        MR_Word ll_backend__frameopt__Goto_20 = ((MR_Word) (MR_hl_field(MR_mktag(1), ll_backend__frameopt__HeadVar__2_2, (MR_Integer) 4)));
+        MR_String ll_backend__frameopt__Var_22;
+        MR_String ll_backend__frameopt__Var_23;
+        MR_String ll_backend__frameopt__Var_25;
+        MR_String ll_backend__frameopt__Var_27;
+        MR_String ll_backend__frameopt__Var_28;
+        MR_String ll_backend__frameopt__Var_30;
+        MR_String ll_backend__frameopt__Var_32;
+        MR_String ll_backend__frameopt__Var_33;
+        MR_String ll_backend__frameopt__Var_35;
+        MR_String ll_backend__frameopt__Var_37;
+        MR_String ll_backend__frameopt__Var_38;
+        MR_String ll_backend__frameopt__Var_40;
+        MR_String ll_backend__frameopt__Var_42;
+
+        {
+          ll_backend__frameopt__Var_23 = ll_backend__opt_debug__dump_fullinstr_3_f_0(ll_backend__frameopt__HeadVar__1_1, (MR_Integer) 1, ll_backend__frameopt__Succip_16);
+        }
+        {
+          ll_backend__frameopt__Var_28 = ll_backend__opt_debug__dump_fullinstr_3_f_0(ll_backend__frameopt__HeadVar__1_1, (MR_Integer) 1, ll_backend__frameopt__Maxfr_17);
+        }
+        {
+          ll_backend__frameopt__Var_33 = ll_backend__opt_debug__dump_fullinstr_3_f_0(ll_backend__frameopt__HeadVar__1_1, (MR_Integer) 1, ll_backend__frameopt__Curfr_18);
+        }
+        {
+          ll_backend__frameopt__Var_38 = ll_backend__opt_debug__dump_fullinstrs_3_f_0(ll_backend__frameopt__HeadVar__1_1, (MR_Integer) 1, ll_backend__frameopt__Livevals_19);
+        }
+        {
+          ll_backend__frameopt__Var_42 = ll_backend__opt_debug__dump_fullinstr_3_f_0(ll_backend__frameopt__HeadVar__1_1, (MR_Integer) 1, ll_backend__frameopt__Goto_20);
+        }
+        {
+          ll_backend__frameopt__Var_40 = mercury__string__f_43_43_2_f_0((MR_String) "goto:     ", ll_backend__frameopt__Var_42);
+        }
+        {
+          ll_backend__frameopt__Var_37 = mercury__string__f_43_43_2_f_0(ll_backend__frameopt__Var_38, ll_backend__frameopt__Var_40);
+        }
+        {
+          ll_backend__frameopt__Var_35 = mercury__string__f_43_43_2_f_0((MR_String) "livevals: ", ll_backend__frameopt__Var_37);
+        }
+        {
+          ll_backend__frameopt__Var_32 = mercury__string__f_43_43_2_f_0(ll_backend__frameopt__Var_33, ll_backend__frameopt__Var_35);
+        }
+        {
+          ll_backend__frameopt__Var_30 = mercury__string__f_43_43_2_f_0((MR_String) "curfr: ", ll_backend__frameopt__Var_32);
+        }
+        {
+          ll_backend__frameopt__Var_27 = mercury__string__f_43_43_2_f_0(ll_backend__frameopt__Var_28, ll_backend__frameopt__Var_30);
+        }
+        {
+          ll_backend__frameopt__Var_25 = mercury__string__f_43_43_2_f_0((MR_String) "maxfr: ", ll_backend__frameopt__Var_27);
+        }
+        {
+          ll_backend__frameopt__Var_22 = mercury__string__f_43_43_2_f_0(ll_backend__frameopt__Var_23, ll_backend__frameopt__Var_25);
+        }
+        {
+          ll_backend__frameopt__HeadVar__3_3 = mercury__string__f_43_43_2_f_0((MR_String) "succip: ", ll_backend__frameopt__Var_22);
+        }
+      }
+    return ll_backend__frameopt__HeadVar__3_3;
+  }
+}
+
+static MR_String MR_CALL 
+ll_backend__frameopt__ClassMethod_for_ll_backend__frameopt__block_entry_exit____ll_backend__frameopt__nondet_entry_info__arity0__ll_backend__frameopt__nondet_exit_info__arity0______ll_backend__frameopt__describe_entry_1_1_f_0(
+  MR_Word ll_backend__frameopt__HeadVar__1_1)
+{
+  {
+    MR_String ll_backend__frameopt__HeadVar__2_2;
+    MR_String ll_backend__frameopt__Msg_3 = ((MR_String) (MR_hl_field(MR_mktag(0), ll_backend__frameopt__HeadVar__1_1, (MR_Integer) 0)));
+    MR_Integer ll_backend__frameopt__Size_4 = ((MR_Integer) (MR_hl_field(MR_mktag(0), ll_backend__frameopt__HeadVar__1_1, (MR_Integer) 1)));
+    MR_Word ll_backend__frameopt__Redoip_5 = ((MR_Word) (MR_hl_field(MR_mktag(0), ll_backend__frameopt__HeadVar__1_1, (MR_Integer) 2)));
+    MR_String ll_backend__frameopt__Var_7;
+    MR_String ll_backend__frameopt__Var_8;
+    MR_String ll_backend__frameopt__Var_10;
+    MR_String ll_backend__frameopt__Var_11;
+    MR_String ll_backend__frameopt__Var_12;
+    MR_String ll_backend__frameopt__Var_14;
+    MR_String ll_backend__frameopt__Var_15;
+
+    {
+      ll_backend__frameopt__Var_11 = mercury__string__int_to_string_1_f_0(ll_backend__frameopt__Size_4);
+    }
+    {
+      ll_backend__frameopt__Var_15 = ll_backend__opt_debug__dump_code_addr_2_f_0((MR_Word) MR_mkword(MR_mktag(0), MR_mkbody((MR_Integer) 0)), ll_backend__frameopt__Redoip_5);
+    }
+    {
+      ll_backend__frameopt__Var_14 = mercury__string__f_43_43_2_f_0(ll_backend__frameopt__Var_15, (MR_String) "\n");
+    }
+    {
+      ll_backend__frameopt__Var_12 = mercury__string__f_43_43_2_f_0((MR_String) ", redoip: ", ll_backend__frameopt__Var_14);
+    }
+    {
+      ll_backend__frameopt__Var_10 = mercury__string__f_43_43_2_f_0(ll_backend__frameopt__Var_11, ll_backend__frameopt__Var_12);
+    }
+    {
+      ll_backend__frameopt__Var_8 = mercury__string__f_43_43_2_f_0((MR_String) ", size: ", ll_backend__frameopt__Var_10);
+    }
+    {
+      ll_backend__frameopt__Var_7 = mercury__string__f_43_43_2_f_0(ll_backend__frameopt__Msg_3, ll_backend__frameopt__Var_8);
+    }
+    {
+      ll_backend__frameopt__HeadVar__2_2 = mercury__string__f_43_43_2_f_0((MR_String) "msg: ", ll_backend__frameopt__Var_7);
+    }
+    return ll_backend__frameopt__HeadVar__2_2;
+  }
+}
+
+static MR_Word MR_CALL 
+ll_backend__frameopt__ClassMethod_for_ll_backend__frameopt__block_entry_exit____ll_backend__frameopt__nondet_entry_info__arity0__ll_backend__frameopt__nondet_exit_info__arity0______ll_backend__frameopt__non_teardown_exit_code_1_1_f_0(
+  MR_Word ll_backend__frameopt__HeadVar__1_1)
+{
+  {
+    MR_Word ll_backend__frameopt__HeadVar__2_2;
+
+    if (((MR_tag((MR_Word) ll_backend__frameopt__HeadVar__1_1)) == (MR_mktag((MR_Integer) 0))))
+      {
+        MR_Word ll_backend__frameopt__Livevals_3 = ((MR_Word) (MR_hl_field(MR_mktag(0), ll_backend__frameopt__HeadVar__1_1, (MR_Integer) 0)));
+        MR_Word ll_backend__frameopt___Goto_4 = ((MR_Word) (MR_hl_field(MR_mktag(0), ll_backend__frameopt__HeadVar__1_1, (MR_Integer) 1)));
+
+        {
+          ll_backend__frameopt__HeadVar__2_2 = mercury__list__f_43_43_2_f_0((MR_Word) &ll_backend__llds__ll_backend__llds__type_ctor_info_instruction_0, ll_backend__frameopt__Livevals_3, (MR_Word) MR_mkword(MR_mktag(1), &ll_backend__frameopt_scalar_common_2[10]));
+        }
+      }
+    else
+      {
+        MR_Word ll_backend__frameopt__Livevals_14 = ((MR_Word) (MR_hl_field(MR_mktag(1), ll_backend__frameopt__HeadVar__1_1, (MR_Integer) 3)));
+        MR_Word ll_backend__frameopt__Goto_15 = ((MR_Word) (MR_hl_field(MR_mktag(1), ll_backend__frameopt__HeadVar__1_1, (MR_Integer) 4)));
+        MR_Word ll_backend__frameopt__Var_16;
+        MR_Word ll_backend__frameopt__Var_11 = ((MR_Word) (MR_hl_field(MR_mktag(1), ll_backend__frameopt__HeadVar__1_1, (MR_Integer) 0)));
+        MR_Word ll_backend__frameopt__Var_12 = ((MR_Word) (MR_hl_field(MR_mktag(1), ll_backend__frameopt__HeadVar__1_1, (MR_Integer) 1)));
+        MR_Word ll_backend__frameopt__Var_13 = ((MR_Word) (MR_hl_field(MR_mktag(1), ll_backend__frameopt__HeadVar__1_1, (MR_Integer) 2)));
+
+        {
+          ll_backend__frameopt__Var_16 = (MR_Word) MR_mkword(MR_mktag(1), MR_new_object(MR_Word, ((MR_Integer) 2 * sizeof(MR_Word)), NULL, NULL));
+          MR_hl_field(MR_mktag(1), ll_backend__frameopt__Var_16, 0) = ((MR_Box) (ll_backend__frameopt__Goto_15));
+          MR_hl_field(MR_mktag(1), ll_backend__frameopt__Var_16, 1) = ((MR_Box) (MR_mkword(MR_mktag(0), MR_mkbody((MR_Integer) 0))));
+        }
+        {
+          ll_backend__frameopt__HeadVar__2_2 = mercury__list__f_43_43_2_f_0((MR_Word) &ll_backend__llds__ll_backend__llds__type_ctor_info_instruction_0, ll_backend__frameopt__Livevals_14, ll_backend__frameopt__Var_16);
+        }
+      }
+    return ll_backend__frameopt__HeadVar__2_2;
+  }
+}
+
+static MR_Word MR_CALL 
+ll_backend__frameopt__ClassMethod_for_ll_backend__frameopt__block_entry_exit____ll_backend__frameopt__nondet_entry_info__arity0__ll_backend__frameopt__nondet_exit_info__arity0______ll_backend__frameopt__late_setup_code_1_1_f_0(
+  MR_Word ll_backend__frameopt__HeadVar__1_1)
+{
+  {
+    MR_Word ll_backend__frameopt__HeadVar__2_2;
+    MR_String ll_backend__frameopt__Msg_3 = ((MR_String) (MR_hl_field(MR_mktag(0), ll_backend__frameopt__HeadVar__1_1, (MR_Integer) 0)));
+    MR_Integer ll_backend__frameopt__FrameSize_4 = ((MR_Integer) (MR_hl_field(MR_mktag(0), ll_backend__frameopt__HeadVar__1_1, (MR_Integer) 1)));
+    MR_Word ll_backend__frameopt__Redoip_5 = ((MR_Word) (MR_hl_field(MR_mktag(0), ll_backend__frameopt__HeadVar__1_1, (MR_Integer) 2)));
+    MR_Word ll_backend__frameopt__Var_6;
+    MR_Word ll_backend__frameopt__Var_7;
+    MR_Word ll_backend__frameopt__Var_8;
+    MR_Word ll_backend__frameopt__Var_9;
+
+    {
+      ll_backend__frameopt__Var_8 = (MR_Word) MR_mkword(MR_mktag(1), MR_new_object(MR_Word, ((MR_Integer) 2 * sizeof(MR_Word)), NULL, NULL));
+      MR_hl_field(MR_mktag(1), ll_backend__frameopt__Var_8, 0) = ((MR_Box) (ll_backend__frameopt__Msg_3));
+      MR_hl_field(MR_mktag(1), ll_backend__frameopt__Var_8, 1) = ((MR_Box) (ll_backend__frameopt__FrameSize_4));
+    }
+    {
+      ll_backend__frameopt__Var_9 = (MR_Word) MR_mkword(MR_mktag(1), MR_new_object(MR_Word, ((MR_Integer) 1 * sizeof(MR_Word)), NULL, NULL));
+      MR_hl_field(MR_mktag(1), ll_backend__frameopt__Var_9, 0) = ((MR_Box) (ll_backend__frameopt__Redoip_5));
+    }
+    {
+      ll_backend__frameopt__Var_7 = (MR_Word) MR_mkword(MR_mktag(3), MR_new_object(MR_Word, ((MR_Integer) 3 * sizeof(MR_Word)), NULL, NULL));
+      MR_hl_field(MR_mktag(3), ll_backend__frameopt__Var_7, 0) = ((MR_Box) (MR_Word) ((MR_Integer) 4));
+      MR_hl_field(MR_mktag(3), ll_backend__frameopt__Var_7, 1) = ((MR_Box) (ll_backend__frameopt__Var_8));
+      MR_hl_field(MR_mktag(3), ll_backend__frameopt__Var_7, 2) = ((MR_Box) (ll_backend__frameopt__Var_9));
+    }
+    {
+      ll_backend__frameopt__Var_6 = (MR_Word) MR_new_object(MR_Word, ((MR_Integer) 2 * sizeof(MR_Word)), NULL, NULL);
+      MR_hl_field(MR_mktag(0), ll_backend__frameopt__Var_6, 0) = ((MR_Box) (ll_backend__frameopt__Var_7));
+      MR_hl_field(MR_mktag(0), ll_backend__frameopt__Var_6, 1) = ((MR_Box) ((MR_String) "late setup"));
+    }
+    {
+      ll_backend__frameopt__HeadVar__2_2 = (MR_Word) MR_mkword(MR_mktag(1), MR_new_object(MR_Word, ((MR_Integer) 2 * sizeof(MR_Word)), NULL, NULL));
+      MR_hl_field(MR_mktag(1), ll_backend__frameopt__HeadVar__2_2, 0) = ((MR_Box) (ll_backend__frameopt__Var_6));
+      MR_hl_field(MR_mktag(1), ll_backend__frameopt__HeadVar__2_2, 1) = ((MR_Box) (MR_mkword(MR_mktag(0), MR_mkbody((MR_Integer) 0))));
+    }
+    return ll_backend__frameopt__HeadVar__2_2;
+  }
+}
+
+static MR_bool MR_CALL 
+ll_backend__frameopt__ClassMethod_for_ll_backend__frameopt__block_entry_exit____ll_backend__frameopt__nondet_entry_info__arity0__ll_backend__frameopt__nondet_exit_info__arity0______ll_backend__frameopt__detect_exit_6_6_p_0(
+  MR_Word ll_backend__frameopt__HeadVar__1_1,
+  MR_Word ll_backend__frameopt__HeadVar__2_2,
+  MR_Word * ll_backend__frameopt__HeadVar__3_3,
+  MR_Word * ll_backend__frameopt__HeadVar__4_4,
+  MR_Word * ll_backend__frameopt__HeadVar__5_5,
+  MR_Word * ll_backend__frameopt__HeadVar__6_6)
+{
+  {
+    MR_bool ll_backend__frameopt__succeeded;
+
+    {
+      ll_backend__frameopt__succeeded = ll_backend__frameopt__f_85_110_117_115_101_100_65_114_103_115_95_95_112_114_101_100_95_95_67_108_97_115_115_77_101_116_104_111_100_95_102_111_114_95_108_108_95_98_97_99_107_101_110_100_95_95_102_114_97_109_101_111_112_116_95_95_98_108_111_99_107_95_101_110_116_114_121_95_101_120_105_116_95_95_95_95_108_108_95_98_97_99_107_101_110_100_95_95_102_114_97_109_101_111_112_116_95_95_110_111_110_100_101_116_95_101_110_116_114_121_95_105_110_102_111_95_95_97_114_105_116_121_48_95_95_108_108_95_98_97_99_107_101_110_100_95_95_102_114_97_109_101_111_112_116_95_95_110_111_110_100_101_116_95_101_120_105_116_95_105_110_102_111_95_95_97_114_105_116_121_48_95_95_95_95_95_95_108_108_95_98_97_99_107_101_110_100_95_95_102_114_97_109_101_111_112_116_95_95_100_101_116_101_99_116_95_101_120_105_116_95_54_95_95_91_50_93_95_48_6_p_0(ll_backend__frameopt__HeadVar__1_1, ll_backend__frameopt__HeadVar__3_3, ll_backend__frameopt__HeadVar__4_4, ll_backend__frameopt__HeadVar__5_5, ll_backend__frameopt__HeadVar__6_6);
+    }
+    return ll_backend__frameopt__succeeded;
+  }
+}
+
+static MR_bool MR_CALL 
+ll_backend__frameopt__f_85_110_117_115_101_100_65_114_103_115_95_95_112_114_101_100_95_95_67_108_97_115_115_77_101_116_104_111_100_95_102_111_114_95_108_108_95_98_97_99_107_101_110_100_95_95_102_114_97_109_101_111_112_116_95_95_98_108_111_99_107_95_101_110_116_114_121_95_101_120_105_116_95_95_95_95_108_108_95_98_97_99_107_101_110_100_95_95_102_114_97_109_101_111_112_116_95_95_110_111_110_100_101_116_95_101_110_116_114_121_95_105_110_102_111_95_95_97_114_105_116_121_48_95_95_108_108_95_98_97_99_107_101_110_100_95_95_102_114_97_109_101_111_112_116_95_95_110_111_110_100_101_116_95_101_120_105_116_95_105_110_102_111_95_95_97_114_105_116_121_48_95_95_95_95_95_95_108_108_95_98_97_99_107_101_110_100_95_95_102_114_97_109_101_111_112_116_95_95_100_101_116_101_99_116_95_101_120_105_116_95_54_95_95_91_50_93_95_48_6_p_0(
+  MR_Word ll_backend__frameopt__HeadVar__1_1,
+  MR_Word * ll_backend__frameopt__HeadVar__3_3,
+  MR_Word * ll_backend__frameopt__HeadVar__4_4,
+  MR_Word * ll_backend__frameopt__HeadVar__5_5,
+  MR_Word * ll_backend__frameopt__HeadVar__6_6)
+{
+  {
+    MR_bool ll_backend__frameopt__succeeded;
+    MR_Word ll_backend__frameopt__TypeCtorInfo_35_35;
+    MR_Word ll_backend__frameopt__SuccipRestore_13;
+    MR_Word ll_backend__frameopt__Maxfr_14;
+    MR_Word ll_backend__frameopt__Curfr_15;
+    MR_Word ll_backend__frameopt__Livevals_16;
+    MR_Word ll_backend__frameopt__Goto_17;
+    MR_Word ll_backend__frameopt__GotoTarget_18;
+    MR_Word ll_backend__frameopt__Var_26;
+    MR_Word ll_backend__frameopt__Var_27;
+    MR_Word ll_backend__frameopt__Var_28;
+    MR_Word ll_backend__frameopt__Var_29;
+    MR_Word ll_backend__frameopt__Var_30;
+
+    {
+      ll_backend__frameopt__succeeded = ll_backend__frameopt__nondetstack_teardown_9_p_0(ll_backend__frameopt__HeadVar__1_1, ll_backend__frameopt__HeadVar__3_3, &ll_backend__frameopt__SuccipRestore_13, &ll_backend__frameopt__Maxfr_14, &ll_backend__frameopt__Curfr_15, &ll_backend__frameopt__Livevals_16, &ll_backend__frameopt__Goto_17, &ll_backend__frameopt__GotoTarget_18, ll_backend__frameopt__HeadVar__5_5);
+    }
+    if (ll_backend__frameopt__succeeded)
+      {
+        ll_backend__frameopt__TypeCtorInfo_35_35 = (MR_Word) &ll_backend__llds__ll_backend__llds__type_ctor_info_instruction_0;
+        ll_backend__frameopt__Var_30 = (MR_Word) MR_mkword(MR_mktag(0), MR_mkbody((MR_Integer) 0));
+        {
+          ll_backend__frameopt__Var_29 = (MR_Word) MR_mkword(MR_mktag(1), MR_new_object(MR_Word, ((MR_Integer) 2 * sizeof(MR_Word)), NULL, NULL));
+          MR_hl_field(MR_mktag(1), ll_backend__frameopt__Var_29, 0) = ((MR_Box) (ll_backend__frameopt__Goto_17));
+          MR_hl_field(MR_mktag(1), ll_backend__frameopt__Var_29, 1) = ((MR_Box) (ll_backend__frameopt__Var_30));
+        }
+        {
+          ll_backend__frameopt__Var_28 = mercury__list__f_43_43_2_f_0(ll_backend__frameopt__TypeCtorInfo_35_35, ll_backend__frameopt__Livevals_16, ll_backend__frameopt__Var_29);
+        }
+        {
+          ll_backend__frameopt__Var_27 = mercury__list__f_43_43_2_f_0(ll_backend__frameopt__TypeCtorInfo_35_35, ll_backend__frameopt__Curfr_15, ll_backend__frameopt__Var_28);
+        }
+        {
+          ll_backend__frameopt__Var_26 = mercury__list__f_43_43_2_f_0(ll_backend__frameopt__TypeCtorInfo_35_35, ll_backend__frameopt__Maxfr_14, ll_backend__frameopt__Var_27);
+        }
+        {
+          *ll_backend__frameopt__HeadVar__4_4 = mercury__list__f_43_43_2_f_0(ll_backend__frameopt__TypeCtorInfo_35_35, ll_backend__frameopt__SuccipRestore_13, ll_backend__frameopt__Var_26);
+        }
+        if ((ll_backend__frameopt__SuccipRestore_13 == ((MR_Word) MR_mkword(MR_mktag(0), MR_mkbody((MR_Integer) 0)))))
+          {
+            MR_Word ll_backend__frameopt__Var_19;
+
+            ll_backend__frameopt__succeeded = (ll_backend__frameopt__Curfr_15 == ((MR_Word) MR_mkword(MR_mktag(0), MR_mkbody((MR_Integer) 0))));
+            if (ll_backend__frameopt__succeeded)
+              {
+                ll_backend__frameopt__succeeded = (ll_backend__frameopt__Maxfr_14 == ((MR_Word) MR_mkword(MR_mktag(0), MR_mkbody((MR_Integer) 0))));
+                if (ll_backend__frameopt__succeeded)
+                  {
+                    ll_backend__frameopt__succeeded = ((((MR_tag((MR_Word) ll_backend__frameopt__GotoTarget_18)) == (MR_mktag((MR_Integer) 3)))) && (((((MR_Integer) (MR_Word) (MR_hl_field(MR_mktag(3), ll_backend__frameopt__GotoTarget_18, (MR_Integer) 0)))) == (MR_Integer) 0)));
+                    if (ll_backend__frameopt__succeeded)
+                      {
+                        ll_backend__frameopt__Var_19 = ((MR_Word) (MR_hl_field(MR_mktag(3), ll_backend__frameopt__GotoTarget_18, (MR_Integer) 1)));
+                        {
+                          MR_Word base;
+                          base = (MR_Word) MR_new_object(MR_Word, ((MR_Integer) 2 * sizeof(MR_Word)), NULL, NULL);
+                          *ll_backend__frameopt__HeadVar__6_6 = base;
+                          MR_hl_field(MR_mktag(0), base, 0) = ((MR_Box) (ll_backend__frameopt__Livevals_16));
+                          MR_hl_field(MR_mktag(0), base, 1) = ((MR_Box) (ll_backend__frameopt__Goto_17));
+                        }
+                        ll_backend__frameopt__succeeded = MR_TRUE;
+                      }
+                  }
+              }
+          }
+        else
+          {
+            MR_Word ll_backend__frameopt__CurfrInstr_20;
+            MR_Word ll_backend__frameopt__MaxfrInstr_21;
+            MR_Word ll_backend__frameopt__SuccipRestoreInstr_22;
+            MR_Word ll_backend__frameopt__Var_31;
+            MR_Word ll_backend__frameopt__Var_32;
+            MR_Word ll_backend__frameopt__Var_33;
+
+            if (((MR_tag((MR_Word) ll_backend__frameopt__GotoTarget_18)) == (MR_mktag((MR_Integer) 2))))
+              ll_backend__frameopt__succeeded = MR_TRUE;
+            else
+            if (((MR_tag((MR_Word) ll_backend__frameopt__GotoTarget_18)) == (MR_mktag((MR_Integer) 1))))
+              {
+                MR_Word ll_backend__frameopt__Var_34 = ((MR_Word) (MR_hl_field(MR_mktag(1), ll_backend__frameopt__GotoTarget_18, (MR_Integer) 0)));
+                MR_Word ll_backend__frameopt__Var_23;
+                MR_Word ll_backend__frameopt__Var_24;
+
+                ll_backend__frameopt__succeeded = ((MR_tag((MR_Word) ll_backend__frameopt__Var_34)) == (MR_mktag((MR_Integer) 1)));
+                if (ll_backend__frameopt__succeeded)
+                  {
+                    ll_backend__frameopt__Var_23 = ((MR_Word) (MR_hl_field(MR_mktag(1), ll_backend__frameopt__Var_34, (MR_Integer) 0)));
+                    ll_backend__frameopt__Var_24 = ((MR_Word) (MR_hl_field(MR_mktag(1), ll_backend__frameopt__Var_34, (MR_Integer) 1)));
+                  }
+              }
+            else
+              ll_backend__frameopt__succeeded = MR_FALSE;
+            if (ll_backend__frameopt__succeeded)
+              {
+                ll_backend__frameopt__succeeded = ((MR_tag((MR_Word) ll_backend__frameopt__Curfr_15)) == (MR_mktag((MR_Integer) 1)));
+                if (ll_backend__frameopt__succeeded)
+                  {
+                    ll_backend__frameopt__CurfrInstr_20 = ((MR_Word) (MR_hl_field(MR_mktag(1), ll_backend__frameopt__Curfr_15, (MR_Integer) 0)));
+                    ll_backend__frameopt__Var_31 = ((MR_Word) (MR_hl_field(MR_mktag(1), ll_backend__frameopt__Curfr_15, (MR_Integer) 1)));
+                    ll_backend__frameopt__succeeded = (ll_backend__frameopt__Var_31 == ((MR_Word) MR_mkword(MR_mktag(0), MR_mkbody((MR_Integer) 0))));
+                    if (ll_backend__frameopt__succeeded)
+                      {
+                        ll_backend__frameopt__succeeded = ((MR_tag((MR_Word) ll_backend__frameopt__Maxfr_14)) == (MR_mktag((MR_Integer) 1)));
+                        if (ll_backend__frameopt__succeeded)
+                          {
+                            ll_backend__frameopt__MaxfrInstr_21 = ((MR_Word) (MR_hl_field(MR_mktag(1), ll_backend__frameopt__Maxfr_14, (MR_Integer) 0)));
+                            ll_backend__frameopt__Var_32 = ((MR_Word) (MR_hl_field(MR_mktag(1), ll_backend__frameopt__Maxfr_14, (MR_Integer) 1)));
+                            ll_backend__frameopt__succeeded = (ll_backend__frameopt__Var_32 == ((MR_Word) MR_mkword(MR_mktag(0), MR_mkbody((MR_Integer) 0))));
+                            if (ll_backend__frameopt__succeeded)
+                              {
+                                ll_backend__frameopt__SuccipRestoreInstr_22 = ((MR_Word) (MR_hl_field(MR_mktag(1), ll_backend__frameopt__SuccipRestore_13, (MR_Integer) 0)));
+                                ll_backend__frameopt__Var_33 = ((MR_Word) (MR_hl_field(MR_mktag(1), ll_backend__frameopt__SuccipRestore_13, (MR_Integer) 1)));
+                                ll_backend__frameopt__succeeded = (ll_backend__frameopt__Var_33 == ((MR_Word) MR_mkword(MR_mktag(0), MR_mkbody((MR_Integer) 0))));
+                                if (ll_backend__frameopt__succeeded)
+                                  {
+                                    {
+                                      MR_Word base;
+                                      base = (MR_Word) MR_mkword(MR_mktag(1), MR_new_object(MR_Word, ((MR_Integer) 5 * sizeof(MR_Word)), NULL, NULL));
+                                      *ll_backend__frameopt__HeadVar__6_6 = base;
+                                      MR_hl_field(MR_mktag(1), base, 0) = ((MR_Box) (ll_backend__frameopt__SuccipRestoreInstr_22));
+                                      MR_hl_field(MR_mktag(1), base, 1) = ((MR_Box) (ll_backend__frameopt__MaxfrInstr_21));
+                                      MR_hl_field(MR_mktag(1), base, 2) = ((MR_Box) (ll_backend__frameopt__CurfrInstr_20));
+                                      MR_hl_field(MR_mktag(1), base, 3) = ((MR_Box) (ll_backend__frameopt__Livevals_16));
+                                      MR_hl_field(MR_mktag(1), base, 4) = ((MR_Box) (ll_backend__frameopt__Goto_17));
+                                    }
+                                    ll_backend__frameopt__succeeded = MR_TRUE;
+                                  }
+                              }
+                          }
+                      }
+                  }
+              }
+          }
+      }
+    return ll_backend__frameopt__succeeded;
+  }
+}
+
+static MR_bool MR_CALL 
+ll_backend__frameopt__ClassMethod_for_ll_backend__frameopt__block_entry_exit____ll_backend__frameopt__nondet_entry_info__arity0__ll_backend__frameopt__nondet_exit_info__arity0______ll_backend__frameopt__detect_entry_4_4_p_0(
+  MR_Word ll_backend__frameopt__HeadVar__1_1,
+  MR_Word * ll_backend__frameopt__HeadVar__2_2,
+  MR_Word * ll_backend__frameopt__HeadVar__3_3,
+  MR_Word * ll_backend__frameopt__HeadVar__4_4)
+{
+  {
+    MR_bool ll_backend__frameopt__succeeded = ((MR_tag((MR_Word) ll_backend__frameopt__HeadVar__1_1)) == (MR_mktag((MR_Integer) 1)));
+    MR_Word ll_backend__frameopt__MkframeInstr_8;
+    MR_Word ll_backend__frameopt__FrameInfo_9;
+    MR_Word ll_backend__frameopt__MaybeRedoip_10;
+    MR_Word ll_backend__frameopt__Redoip_12;
+    MR_String ll_backend__frameopt__Msg_13;
+    MR_Integer ll_backend__frameopt__Size_14;
+    MR_Word ll_backend__frameopt__Var_16;
+    MR_String ll_backend__frameopt__Var_11;
+
+    if (ll_backend__frameopt__succeeded)
+      {
+        ll_backend__frameopt__MkframeInstr_8 = ((MR_Word) (MR_hl_field(MR_mktag(1), ll_backend__frameopt__HeadVar__1_1, (MR_Integer) 0)));
+        *ll_backend__frameopt__HeadVar__3_3 = ((MR_Word) (MR_hl_field(MR_mktag(1), ll_backend__frameopt__HeadVar__1_1, (MR_Integer) 1)));
+        ll_backend__frameopt__Var_16 = ((MR_Word) (MR_hl_field(MR_mktag(0), ll_backend__frameopt__MkframeInstr_8, (MR_Integer) 0)));
+        ll_backend__frameopt__Var_11 = ((MR_String) (MR_hl_field(MR_mktag(0), ll_backend__frameopt__MkframeInstr_8, (MR_Integer) 1)));
+        ll_backend__frameopt__succeeded = ((((MR_tag((MR_Word) ll_backend__frameopt__Var_16)) == (MR_mktag((MR_Integer) 3)))) && (((((MR_Integer) (MR_Word) (MR_hl_field(MR_mktag(3), ll_backend__frameopt__Var_16, (MR_Integer) 0)))) == (MR_Integer) 4)));
+        if (ll_backend__frameopt__succeeded)
+          {
+            ll_backend__frameopt__FrameInfo_9 = ((MR_Word) (MR_hl_field(MR_mktag(3), ll_backend__frameopt__Var_16, (MR_Integer) 1)));
+            ll_backend__frameopt__MaybeRedoip_10 = ((MR_Word) (MR_hl_field(MR_mktag(3), ll_backend__frameopt__Var_16, (MR_Integer) 2)));
+            ll_backend__frameopt__succeeded = ((MR_tag((MR_Word) ll_backend__frameopt__MaybeRedoip_10)) == (MR_mktag((MR_Integer) 1)));
+            if (ll_backend__frameopt__succeeded)
+              {
+                ll_backend__frameopt__Redoip_12 = ((MR_Word) (MR_hl_field(MR_mktag(1), ll_backend__frameopt__MaybeRedoip_10, (MR_Integer) 0)));
+                ll_backend__frameopt__succeeded = (ll_backend__frameopt__Redoip_12 == ((MR_Word) MR_mkword(MR_mktag(0), MR_mkbody((MR_Integer) 2))));
+                if (ll_backend__frameopt__succeeded)
+                  {
+                    ll_backend__frameopt__succeeded = ((MR_tag((MR_Word) ll_backend__frameopt__FrameInfo_9)) == (MR_mktag((MR_Integer) 1)));
+                    if (ll_backend__frameopt__succeeded)
+                      {
+                        ll_backend__frameopt__Msg_13 = ((MR_String) (MR_hl_field(MR_mktag(1), ll_backend__frameopt__FrameInfo_9, (MR_Integer) 0)));
+                        ll_backend__frameopt__Size_14 = ((MR_Integer) (MR_hl_field(MR_mktag(1), ll_backend__frameopt__FrameInfo_9, (MR_Integer) 1)));
+                        {
+                          MR_Word base;
+                          base = (MR_Word) MR_mkword(MR_mktag(1), MR_new_object(MR_Word, ((MR_Integer) 2 * sizeof(MR_Word)), NULL, NULL));
+                          *ll_backend__frameopt__HeadVar__2_2 = base;
+                          MR_hl_field(MR_mktag(1), base, 0) = ((MR_Box) (ll_backend__frameopt__MkframeInstr_8));
+                          MR_hl_field(MR_mktag(1), base, 1) = ((MR_Box) (MR_mkword(MR_mktag(0), MR_mkbody((MR_Integer) 0))));
+                        }
+                        {
+                          MR_Word base;
+                          base = (MR_Word) MR_new_object(MR_Word, ((MR_Integer) 3 * sizeof(MR_Word)), NULL, NULL);
+                          *ll_backend__frameopt__HeadVar__4_4 = base;
+                          MR_hl_field(MR_mktag(0), base, 0) = ((MR_Box) (ll_backend__frameopt__Msg_13));
+                          MR_hl_field(MR_mktag(0), base, 1) = ((MR_Box) (ll_backend__frameopt__Size_14));
+                          MR_hl_field(MR_mktag(0), base, 2) = ((MR_Box) (ll_backend__frameopt__Redoip_12));
+                        }
+                        ll_backend__frameopt__succeeded = MR_TRUE;
+                      }
+                  }
+              }
+          }
+      }
+    return ll_backend__frameopt__succeeded;
+  }
+}
+
+static void MR_CALL 
+ll_backend__frameopt____Compare____setup_par_map_0_0(
+  MR_Word * ll_backend__frameopt__HeadVar__1_1,
+  MR_Word ll_backend__frameopt__HeadVar__2_2,
+  MR_Word ll_backend__frameopt__HeadVar__3_3)
+{
+  {
+    MR_bool ll_backend__frameopt__succeeded;
+    MR_Integer ll_backend__frameopt__CastX_6 = (MR_Integer) ll_backend__frameopt__HeadVar__2_2;
+    MR_Integer ll_backend__frameopt__CastY_7 = (MR_Integer) ll_backend__frameopt__HeadVar__3_3;
+
+    ll_backend__frameopt__succeeded = (ll_backend__frameopt__CastX_6 == ll_backend__frameopt__CastY_7);
+    if (ll_backend__frameopt__succeeded)
+      *ll_backend__frameopt__HeadVar__1_1 = (MR_Integer) 0;
+    else
+      {
+        MR_Word ll_backend__frameopt__ArgX1_4 = (MR_Word) ll_backend__frameopt__HeadVar__2_2;
+        MR_Word ll_backend__frameopt__ArgY1_5 = (MR_Word) ll_backend__frameopt__HeadVar__3_3;
+
+        {
+          mercury__builtin__compare_3_p_0((MR_Word) &ll_backend__frameopt_scalar_common_1[7], ll_backend__frameopt__HeadVar__1_1, ((MR_Box) (ll_backend__frameopt__ArgX1_4)), ((MR_Box) (ll_backend__frameopt__ArgY1_5)));
+        }
+      }
+  }
+}
+
+static MR_bool MR_CALL 
+ll_backend__frameopt____Unify____setup_par_map_0_0(
+  MR_Word ll_backend__frameopt__HeadVar__1_1,
+  MR_Word ll_backend__frameopt__HeadVar__2_2)
+{
+  {
+    MR_bool ll_backend__frameopt__succeeded;
+    MR_Integer ll_backend__frameopt__CastX_5 = (MR_Integer) ll_backend__frameopt__HeadVar__1_1;
+    MR_Integer ll_backend__frameopt__CastY_6 = (MR_Integer) ll_backend__frameopt__HeadVar__2_2;
+
+    ll_backend__frameopt__succeeded = (ll_backend__frameopt__CastX_5 == ll_backend__frameopt__CastY_6);
+    if (ll_backend__frameopt__succeeded)
+      ll_backend__frameopt__succeeded = MR_TRUE;
+    else
+      {
+        MR_Word ll_backend__frameopt__ArgX1_3 = (MR_Word) ll_backend__frameopt__HeadVar__1_1;
+        MR_Word ll_backend__frameopt__ArgY1_4 = (MR_Word) ll_backend__frameopt__HeadVar__2_2;
+
+        {
+          ll_backend__frameopt__succeeded = mercury__builtin__unify_2_p_0((MR_Word) &ll_backend__frameopt_scalar_common_1[7], ((MR_Box) (ll_backend__frameopt__ArgX1_3)), ((MR_Box) (ll_backend__frameopt__ArgY1_4)));
+        }
+      }
+    return ll_backend__frameopt__succeeded;
+  }
+}
+
+static void MR_CALL 
+ll_backend__frameopt____Compare____rev_map_0_0(
+  MR_Word * ll_backend__frameopt__HeadVar__1_1,
+  MR_Word ll_backend__frameopt__HeadVar__2_2,
+  MR_Word ll_backend__frameopt__HeadVar__3_3)
+{
+  {
+    MR_Word ll_backend__frameopt__Cast_HeadVar1_4 = ll_backend__frameopt__HeadVar__2_2;
+    MR_Word ll_backend__frameopt__Cast_HeadVar2_5 = ll_backend__frameopt__HeadVar__3_3;
+
+    {
+      mercury__builtin__compare_3_p_0((MR_Word) &ll_backend__frameopt_scalar_common_1[8], ll_backend__frameopt__HeadVar__1_1, ((MR_Box) (ll_backend__frameopt__Cast_HeadVar1_4)), ((MR_Box) (ll_backend__frameopt__Cast_HeadVar2_5)));
+    }
+  }
+}
+
+static MR_bool MR_CALL 
+ll_backend__frameopt____Unify____rev_map_0_0(
+  MR_Word ll_backend__frameopt__HeadVar__1_1,
+  MR_Word ll_backend__frameopt__HeadVar__2_2)
+{
+  {
+    MR_bool ll_backend__frameopt__succeeded;
+    MR_Word ll_backend__frameopt__Cast_HeadVar1_3 = ll_backend__frameopt__HeadVar__1_1;
+    MR_Word ll_backend__frameopt__Cast_HeadVar2_4 = ll_backend__frameopt__HeadVar__2_2;
+
+    {
+      ll_backend__frameopt__succeeded = mercury__builtin__unify_2_p_0((MR_Word) &ll_backend__frameopt_scalar_common_1[8], ((MR_Box) (ll_backend__frameopt__Cast_HeadVar1_3)), ((MR_Box) (ll_backend__frameopt__Cast_HeadVar2_4)));
+    }
+    return ll_backend__frameopt__succeeded;
+  }
+}
+
+static void MR_CALL 
+ll_backend__frameopt____Compare____prop_queue_0_0(
+  MR_Word * ll_backend__frameopt__HeadVar__1_1,
+  MR_Word ll_backend__frameopt__HeadVar__2_2,
+  MR_Word ll_backend__frameopt__HeadVar__3_3)
+{
+  {
+    MR_Word ll_backend__frameopt__Cast_HeadVar1_4 = ll_backend__frameopt__HeadVar__2_2;
+    MR_Word ll_backend__frameopt__Cast_HeadVar2_5 = ll_backend__frameopt__HeadVar__3_3;
+
+    {
+      mercury__builtin__compare_3_p_0((MR_Word) &ll_backend__frameopt_scalar_common_2[3], ll_backend__frameopt__HeadVar__1_1, ((MR_Box) (ll_backend__frameopt__Cast_HeadVar1_4)), ((MR_Box) (ll_backend__frameopt__Cast_HeadVar2_5)));
+    }
+  }
+}
+
+static MR_bool MR_CALL 
+ll_backend__frameopt____Unify____prop_queue_0_0(
+  MR_Word ll_backend__frameopt__HeadVar__1_1,
+  MR_Word ll_backend__frameopt__HeadVar__2_2)
+{
+  {
+    MR_bool ll_backend__frameopt__succeeded;
+    MR_Word ll_backend__frameopt__Cast_HeadVar1_3 = ll_backend__frameopt__HeadVar__1_1;
+    MR_Word ll_backend__frameopt__Cast_HeadVar2_4 = ll_backend__frameopt__HeadVar__2_2;
+
+    {
+      ll_backend__frameopt__succeeded = mercury__builtin__unify_2_p_0((MR_Word) &ll_backend__frameopt_scalar_common_2[3], ((MR_Box) (ll_backend__frameopt__Cast_HeadVar1_3)), ((MR_Box) (ll_backend__frameopt__Cast_HeadVar2_4)));
+    }
+    return ll_backend__frameopt__succeeded;
+  }
+}
+
+static void MR_CALL 
+ll_backend__frameopt____Compare____pred_map_0_0(
+  MR_Word * ll_backend__frameopt__HeadVar__1_1,
+  MR_Word ll_backend__frameopt__HeadVar__2_2,
+  MR_Word ll_backend__frameopt__HeadVar__3_3)
+{
+  {
+    MR_Word ll_backend__frameopt__Cast_HeadVar1_4 = ll_backend__frameopt__HeadVar__2_2;
+    MR_Word ll_backend__frameopt__Cast_HeadVar2_5 = ll_backend__frameopt__HeadVar__3_3;
+
+    {
+      mercury__builtin__compare_3_p_0((MR_Word) &ll_backend__frameopt_scalar_common_1[7], ll_backend__frameopt__HeadVar__1_1, ((MR_Box) (ll_backend__frameopt__Cast_HeadVar1_4)), ((MR_Box) (ll_backend__frameopt__Cast_HeadVar2_5)));
+    }
+  }
+}
+
+static MR_bool MR_CALL 
+ll_backend__frameopt____Unify____pred_map_0_0(
+  MR_Word ll_backend__frameopt__HeadVar__1_1,
+  MR_Word ll_backend__frameopt__HeadVar__2_2)
+{
+  {
+    MR_bool ll_backend__frameopt__succeeded;
+    MR_Word ll_backend__frameopt__Cast_HeadVar1_3 = ll_backend__frameopt__HeadVar__1_1;
+    MR_Word ll_backend__frameopt__Cast_HeadVar2_4 = ll_backend__frameopt__HeadVar__2_2;
+
+    {
+      ll_backend__frameopt__succeeded = mercury__builtin__unify_2_p_0((MR_Word) &ll_backend__frameopt_scalar_common_1[7], ((MR_Box) (ll_backend__frameopt__Cast_HeadVar1_3)), ((MR_Box) (ll_backend__frameopt__Cast_HeadVar2_4)));
+    }
+    return ll_backend__frameopt__succeeded;
+  }
+}
+
+static void MR_CALL 
+ll_backend__frameopt____Compare____pre_exit_dummy_label_map_0_0(
+  MR_Word * ll_backend__frameopt__HeadVar__1_1,
+  MR_Word ll_backend__frameopt__HeadVar__2_2,
+  MR_Word ll_backend__frameopt__HeadVar__3_3)
+{
+  {
+    MR_Word ll_backend__frameopt__Cast_HeadVar1_4 = ll_backend__frameopt__HeadVar__2_2;
+    MR_Word ll_backend__frameopt__Cast_HeadVar2_5 = ll_backend__frameopt__HeadVar__3_3;
+
+    {
+      mercury__builtin__compare_3_p_0((MR_Word) &ll_backend__frameopt_scalar_common_1[7], ll_backend__frameopt__HeadVar__1_1, ((MR_Box) (ll_backend__frameopt__Cast_HeadVar1_4)), ((MR_Box) (ll_backend__frameopt__Cast_HeadVar2_5)));
+    }
+  }
+}
+
+static MR_bool MR_CALL 
+ll_backend__frameopt____Unify____pre_exit_dummy_label_map_0_0(
+  MR_Word ll_backend__frameopt__HeadVar__1_1,
+  MR_Word ll_backend__frameopt__HeadVar__2_2)
+{
+  {
+    MR_bool ll_backend__frameopt__succeeded;
+    MR_Word ll_backend__frameopt__Cast_HeadVar1_3 = ll_backend__frameopt__HeadVar__1_1;
+    MR_Word ll_backend__frameopt__Cast_HeadVar2_4 = ll_backend__frameopt__HeadVar__2_2;
+
+    {
+      ll_backend__frameopt__succeeded = mercury__builtin__unify_2_p_0((MR_Word) &ll_backend__frameopt_scalar_common_1[7], ((MR_Box) (ll_backend__frameopt__Cast_HeadVar1_3)), ((MR_Box) (ll_backend__frameopt__Cast_HeadVar2_4)));
+    }
+    return ll_backend__frameopt__succeeded;
+  }
+}
+
+static void MR_CALL 
+ll_backend__frameopt____Compare____ord_needs_frame_0_0(
+  MR_Word * ll_backend__frameopt__HeadVar__1_1,
+  MR_Word ll_backend__frameopt__HeadVar__2_2,
+  MR_Word ll_backend__frameopt__HeadVar__3_3)
+{
+  {
+    MR_Word ll_backend__frameopt__Cast_HeadVar1_4 = ll_backend__frameopt__HeadVar__2_2;
+    MR_Word ll_backend__frameopt__Cast_HeadVar2_5 = ll_backend__frameopt__HeadVar__3_3;
+
+    {
+      mercury__builtin__compare_3_p_0((MR_Word) &ll_backend__frameopt_scalar_common_1[5], ll_backend__frameopt__HeadVar__1_1, ((MR_Box) (ll_backend__frameopt__Cast_HeadVar1_4)), ((MR_Box) (ll_backend__frameopt__Cast_HeadVar2_5)));
+    }
+  }
+}
+
+static MR_bool MR_CALL 
+ll_backend__frameopt____Unify____ord_needs_frame_0_0(
+  MR_Word ll_backend__frameopt__HeadVar__1_1,
+  MR_Word ll_backend__frameopt__HeadVar__2_2)
+{
+  {
+    MR_bool ll_backend__frameopt__succeeded;
+    MR_Word ll_backend__frameopt__Cast_HeadVar1_3 = ll_backend__frameopt__HeadVar__1_1;
+    MR_Word ll_backend__frameopt__Cast_HeadVar2_4 = ll_backend__frameopt__HeadVar__2_2;
+
+    {
+      ll_backend__frameopt__succeeded = mercury__builtin__unify_2_p_0((MR_Word) &ll_backend__frameopt_scalar_common_1[5], ((MR_Box) (ll_backend__frameopt__Cast_HeadVar1_3)), ((MR_Box) (ll_backend__frameopt__Cast_HeadVar2_4)));
+    }
+    return ll_backend__frameopt__succeeded;
+  }
+}
+
+static void MR_CALL 
+ll_backend__frameopt____Compare____nondet_exit_info_0_0(
+  MR_Word * ll_backend__frameopt__HeadVar__1_1,
+  MR_Word ll_backend__frameopt__HeadVar__2_2,
+  MR_Word ll_backend__frameopt__HeadVar__3_3)
+{
+  {
+    MR_bool ll_backend__frameopt__succeeded;
+    MR_Integer ll_backend__frameopt__CastX_37 = (MR_Integer) ll_backend__frameopt__HeadVar__2_2;
+    MR_Integer ll_backend__frameopt__CastY_38 = (MR_Integer) ll_backend__frameopt__HeadVar__3_3;
+
+    ll_backend__frameopt__succeeded = (ll_backend__frameopt__CastX_37 == ll_backend__frameopt__CastY_38);
+    if (ll_backend__frameopt__succeeded)
+      *ll_backend__frameopt__HeadVar__1_1 = (MR_Integer) 0;
+    else
+    if (((MR_tag((MR_Word) ll_backend__frameopt__HeadVar__2_2)) == (MR_mktag((MR_Integer) 0))))
+      {
+        MR_Word ll_backend__frameopt__Var_46 = ((MR_Word) (MR_hl_field(MR_mktag(0), ll_backend__frameopt__HeadVar__2_2, (MR_Integer) 1)));
+        MR_Word ll_backend__frameopt__Var_47 = ((MR_Word) (MR_hl_field(MR_mktag(0), ll_backend__frameopt__HeadVar__2_2, (MR_Integer) 0)));
+
+        if (((MR_tag((MR_Word) ll_backend__frameopt__HeadVar__3_3)) == (MR_mktag((MR_Integer) 0))))
+          {
+            MR_Word ll_backend__frameopt__ArgY1_5 = ((MR_Word) (MR_hl_field(MR_mktag(0), ll_backend__frameopt__HeadVar__3_3, (MR_Integer) 0)));
+            MR_Word ll_backend__frameopt__ArgY2_7 = ((MR_Word) (MR_hl_field(MR_mktag(0), ll_backend__frameopt__HeadVar__3_3, (MR_Integer) 1)));
+            MR_Word ll_backend__frameopt__Var_8;
+
+            {
+              mercury__builtin__compare_3_p_0((MR_Word) &ll_backend__frameopt_scalar_common_2[0], &ll_backend__frameopt__Var_8, ((MR_Box) (ll_backend__frameopt__Var_47)), ((MR_Box) (ll_backend__frameopt__ArgY1_5)));
+            }
+            ll_backend__frameopt__succeeded = (ll_backend__frameopt__Var_8 == (MR_Integer) 0);
+            ll_backend__frameopt__succeeded = !(ll_backend__frameopt__succeeded);
+            if (ll_backend__frameopt__succeeded)
+              *ll_backend__frameopt__HeadVar__1_1 = ll_backend__frameopt__Var_8;
+            else
+              {
+                ll_backend__llds____Compare____instruction_0_0(ll_backend__frameopt__HeadVar__1_1, ll_backend__frameopt__Var_46, ll_backend__frameopt__ArgY2_7);
+              }
+          }
+        else
+          *ll_backend__frameopt__HeadVar__1_1 = (MR_Integer) 1;
+      }
+    else
+      {
+        MR_Word ll_backend__frameopt__Var_48 = ((MR_Word) (MR_hl_field(MR_mktag(1), ll_backend__frameopt__HeadVar__2_2, (MR_Integer) 4)));
+        MR_Word ll_backend__frameopt__Var_49 = ((MR_Word) (MR_hl_field(MR_mktag(1), ll_backend__frameopt__HeadVar__2_2, (MR_Integer) 3)));
+        MR_Word ll_backend__frameopt__Var_50 = ((MR_Word) (MR_hl_field(MR_mktag(1), ll_backend__frameopt__HeadVar__2_2, (MR_Integer) 2)));
+        MR_Word ll_backend__frameopt__Var_51 = ((MR_Word) (MR_hl_field(MR_mktag(1), ll_backend__frameopt__HeadVar__2_2, (MR_Integer) 1)));
+        MR_Word ll_backend__frameopt__Var_52 = ((MR_Word) (MR_hl_field(MR_mktag(1), ll_backend__frameopt__HeadVar__2_2, (MR_Integer) 0)));
+
+        if (((MR_tag((MR_Word) ll_backend__frameopt__HeadVar__3_3)) == (MR_mktag((MR_Integer) 0))))
+          *ll_backend__frameopt__HeadVar__1_1 = (MR_Integer) 2;
+        else
+          {
+            MR_Word ll_backend__frameopt__ArgY1_24 = ((MR_Word) (MR_hl_field(MR_mktag(1), ll_backend__frameopt__HeadVar__3_3, (MR_Integer) 0)));
+            MR_Word ll_backend__frameopt__ArgY2_26 = ((MR_Word) (MR_hl_field(MR_mktag(1), ll_backend__frameopt__HeadVar__3_3, (MR_Integer) 1)));
+            MR_Word ll_backend__frameopt__ArgY3_28 = ((MR_Word) (MR_hl_field(MR_mktag(1), ll_backend__frameopt__HeadVar__3_3, (MR_Integer) 2)));
+            MR_Word ll_backend__frameopt__ArgY4_30 = ((MR_Word) (MR_hl_field(MR_mktag(1), ll_backend__frameopt__HeadVar__3_3, (MR_Integer) 3)));
+            MR_Word ll_backend__frameopt__ArgY5_32 = ((MR_Word) (MR_hl_field(MR_mktag(1), ll_backend__frameopt__HeadVar__3_3, (MR_Integer) 4)));
+            MR_Word ll_backend__frameopt__Var_33;
+
+            {
+              ll_backend__llds____Compare____instruction_0_0(&ll_backend__frameopt__Var_33, ll_backend__frameopt__Var_52, ll_backend__frameopt__ArgY1_24);
+            }
+            ll_backend__frameopt__succeeded = (ll_backend__frameopt__Var_33 == (MR_Integer) 0);
+            ll_backend__frameopt__succeeded = !(ll_backend__frameopt__succeeded);
+            if (ll_backend__frameopt__succeeded)
+              *ll_backend__frameopt__HeadVar__1_1 = ll_backend__frameopt__Var_33;
+            else
+              {
+                MR_Word ll_backend__frameopt__Var_34;
+
+                {
+                  ll_backend__llds____Compare____instruction_0_0(&ll_backend__frameopt__Var_34, ll_backend__frameopt__Var_51, ll_backend__frameopt__ArgY2_26);
+                }
+                ll_backend__frameopt__succeeded = (ll_backend__frameopt__Var_34 == (MR_Integer) 0);
+                ll_backend__frameopt__succeeded = !(ll_backend__frameopt__succeeded);
+                if (ll_backend__frameopt__succeeded)
+                  *ll_backend__frameopt__HeadVar__1_1 = ll_backend__frameopt__Var_34;
+                else
+                  {
+                    MR_Word ll_backend__frameopt__Var_35;
+
+                    {
+                      ll_backend__llds____Compare____instruction_0_0(&ll_backend__frameopt__Var_35, ll_backend__frameopt__Var_50, ll_backend__frameopt__ArgY3_28);
+                    }
+                    ll_backend__frameopt__succeeded = (ll_backend__frameopt__Var_35 == (MR_Integer) 0);
+                    ll_backend__frameopt__succeeded = !(ll_backend__frameopt__succeeded);
+                    if (ll_backend__frameopt__succeeded)
+                      *ll_backend__frameopt__HeadVar__1_1 = ll_backend__frameopt__Var_35;
+                    else
+                      {
+                        MR_Word ll_backend__frameopt__Var_36;
+
+                        {
+                          mercury__builtin__compare_3_p_0((MR_Word) &ll_backend__frameopt_scalar_common_2[0], &ll_backend__frameopt__Var_36, ((MR_Box) (ll_backend__frameopt__Var_49)), ((MR_Box) (ll_backend__frameopt__ArgY4_30)));
+                        }
+                        ll_backend__frameopt__succeeded = (ll_backend__frameopt__Var_36 == (MR_Integer) 0);
+                        ll_backend__frameopt__succeeded = !(ll_backend__frameopt__succeeded);
+                        if (ll_backend__frameopt__succeeded)
+                          *ll_backend__frameopt__HeadVar__1_1 = ll_backend__frameopt__Var_36;
+                        else
+                          {
+                            ll_backend__llds____Compare____instruction_0_0(ll_backend__frameopt__HeadVar__1_1, ll_backend__frameopt__Var_48, ll_backend__frameopt__ArgY5_32);
+                          }
+                      }
+                  }
+              }
+          }
+      }
+  }
+}
+
+static MR_bool MR_CALL 
+ll_backend__frameopt____Unify____nondet_exit_info_0_0(
+  MR_Word ll_backend__frameopt__HeadVar__1_1,
+  MR_Word ll_backend__frameopt__HeadVar__2_2)
+{
+  {
+    MR_bool ll_backend__frameopt__succeeded;
+    MR_Integer ll_backend__frameopt__CastX_17 = (MR_Integer) ll_backend__frameopt__HeadVar__1_1;
+    MR_Integer ll_backend__frameopt__CastY_18 = (MR_Integer) ll_backend__frameopt__HeadVar__2_2;
+
+    ll_backend__frameopt__succeeded = (ll_backend__frameopt__CastX_17 == ll_backend__frameopt__CastY_18);
+    if (ll_backend__frameopt__succeeded)
+      ll_backend__frameopt__succeeded = MR_TRUE;
+    else
+    if (((MR_tag((MR_Word) ll_backend__frameopt__HeadVar__1_1)) == (MR_mktag((MR_Integer) 0))))
+      {
+        MR_Word ll_backend__frameopt__TypeInfo_19_19;
+        MR_Word ll_backend__frameopt__ArgX1_3 = ((MR_Word) (MR_hl_field(MR_mktag(0), ll_backend__frameopt__HeadVar__1_1, (MR_Integer) 0)));
+        MR_Word ll_backend__frameopt__ArgY1_4;
+        MR_Word ll_backend__frameopt__ArgX2_5 = ((MR_Word) (MR_hl_field(MR_mktag(0), ll_backend__frameopt__HeadVar__1_1, (MR_Integer) 1)));
+        MR_Word ll_backend__frameopt__ArgY2_6;
+
+        ll_backend__frameopt__succeeded = ((MR_tag((MR_Word) ll_backend__frameopt__HeadVar__2_2)) == (MR_mktag((MR_Integer) 0)));
+        if (ll_backend__frameopt__succeeded)
+          {
+            ll_backend__frameopt__ArgY1_4 = ((MR_Word) (MR_hl_field(MR_mktag(0), ll_backend__frameopt__HeadVar__2_2, (MR_Integer) 0)));
+            ll_backend__frameopt__ArgY2_6 = ((MR_Word) (MR_hl_field(MR_mktag(0), ll_backend__frameopt__HeadVar__2_2, (MR_Integer) 1)));
+            ll_backend__frameopt__TypeInfo_19_19 = (MR_Word) &ll_backend__frameopt_scalar_common_2[0];
+            {
+              ll_backend__frameopt__succeeded = mercury__builtin__unify_2_p_0(ll_backend__frameopt__TypeInfo_19_19, ((MR_Box) (ll_backend__frameopt__ArgX1_3)), ((MR_Box) (ll_backend__frameopt__ArgY1_4)));
+            }
+            if (ll_backend__frameopt__succeeded)
+              {
+                ll_backend__frameopt__succeeded = ll_backend__llds____Unify____instruction_0_0(ll_backend__frameopt__ArgX2_5, ll_backend__frameopt__ArgY2_6);
+              }
+          }
+      }
+    else
+      {
+        MR_Word ll_backend__frameopt__TypeInfo_24_24;
+        MR_Word ll_backend__frameopt__ArgX1_7 = ((MR_Word) (MR_hl_field(MR_mktag(1), ll_backend__frameopt__HeadVar__1_1, (MR_Integer) 0)));
+        MR_Word ll_backend__frameopt__ArgY1_8;
+        MR_Word ll_backend__frameopt__ArgX2_9 = ((MR_Word) (MR_hl_field(MR_mktag(1), ll_backend__frameopt__HeadVar__1_1, (MR_Integer) 1)));
+        MR_Word ll_backend__frameopt__ArgY2_10;
+        MR_Word ll_backend__frameopt__ArgX3_11 = ((MR_Word) (MR_hl_field(MR_mktag(1), ll_backend__frameopt__HeadVar__1_1, (MR_Integer) 2)));
+        MR_Word ll_backend__frameopt__ArgY3_12;
+        MR_Word ll_backend__frameopt__ArgX4_13 = ((MR_Word) (MR_hl_field(MR_mktag(1), ll_backend__frameopt__HeadVar__1_1, (MR_Integer) 3)));
+        MR_Word ll_backend__frameopt__ArgY4_14;
+        MR_Word ll_backend__frameopt__ArgX5_15 = ((MR_Word) (MR_hl_field(MR_mktag(1), ll_backend__frameopt__HeadVar__1_1, (MR_Integer) 4)));
+        MR_Word ll_backend__frameopt__ArgY5_16;
+
+        ll_backend__frameopt__succeeded = ((MR_tag((MR_Word) ll_backend__frameopt__HeadVar__2_2)) == (MR_mktag((MR_Integer) 1)));
+        if (ll_backend__frameopt__succeeded)
+          {
+            ll_backend__frameopt__ArgY1_8 = ((MR_Word) (MR_hl_field(MR_mktag(1), ll_backend__frameopt__HeadVar__2_2, (MR_Integer) 0)));
+            ll_backend__frameopt__ArgY2_10 = ((MR_Word) (MR_hl_field(MR_mktag(1), ll_backend__frameopt__HeadVar__2_2, (MR_Integer) 1)));
+            ll_backend__frameopt__ArgY3_12 = ((MR_Word) (MR_hl_field(MR_mktag(1), ll_backend__frameopt__HeadVar__2_2, (MR_Integer) 2)));
+            ll_backend__frameopt__ArgY4_14 = ((MR_Word) (MR_hl_field(MR_mktag(1), ll_backend__frameopt__HeadVar__2_2, (MR_Integer) 3)));
+            ll_backend__frameopt__ArgY5_16 = ((MR_Word) (MR_hl_field(MR_mktag(1), ll_backend__frameopt__HeadVar__2_2, (MR_Integer) 4)));
+            {
+              ll_backend__frameopt__succeeded = ll_backend__llds____Unify____instruction_0_0(ll_backend__frameopt__ArgX1_7, ll_backend__frameopt__ArgY1_8);
+            }
+            if (ll_backend__frameopt__succeeded)
+              {
+                {
+                  ll_backend__frameopt__succeeded = ll_backend__llds____Unify____instruction_0_0(ll_backend__frameopt__ArgX2_9, ll_backend__frameopt__ArgY2_10);
+                }
+                if (ll_backend__frameopt__succeeded)
+                  {
+                    {
+                      ll_backend__frameopt__succeeded = ll_backend__llds____Unify____instruction_0_0(ll_backend__frameopt__ArgX3_11, ll_backend__frameopt__ArgY3_12);
+                    }
+                    if (ll_backend__frameopt__succeeded)
+                      {
+                        ll_backend__frameopt__TypeInfo_24_24 = (MR_Word) &ll_backend__frameopt_scalar_common_2[0];
+                        {
+                          ll_backend__frameopt__succeeded = mercury__builtin__unify_2_p_0(ll_backend__frameopt__TypeInfo_24_24, ((MR_Box) (ll_backend__frameopt__ArgX4_13)), ((MR_Box) (ll_backend__frameopt__ArgY4_14)));
+                        }
+                        if (ll_backend__frameopt__succeeded)
+                          {
+                            ll_backend__frameopt__succeeded = ll_backend__llds____Unify____instruction_0_0(ll_backend__frameopt__ArgX5_15, ll_backend__frameopt__ArgY5_16);
+                          }
+                      }
+                  }
+              }
+          }
+      }
+    return ll_backend__frameopt__succeeded;
+  }
+}
+
+static void MR_CALL 
+ll_backend__frameopt____Compare____nondet_entry_info_0_0(
+  MR_Word * ll_backend__frameopt__HeadVar__1_1,
+  MR_Word ll_backend__frameopt__HeadVar__2_2,
+  MR_Word ll_backend__frameopt__HeadVar__3_3)
+{
+  {
+    MR_bool ll_backend__frameopt__succeeded;
+    MR_Integer ll_backend__frameopt__CastX_12 = (MR_Integer) ll_backend__frameopt__HeadVar__2_2;
+    MR_Integer ll_backend__frameopt__CastY_13 = (MR_Integer) ll_backend__frameopt__HeadVar__3_3;
+
+    ll_backend__frameopt__succeeded = (ll_backend__frameopt__CastX_12 == ll_backend__frameopt__CastY_13);
+    if (ll_backend__frameopt__succeeded)
+      *ll_backend__frameopt__HeadVar__1_1 = (MR_Integer) 0;
+    else
+      {
+        MR_String ll_backend__frameopt__ArgX1_4 = ((MR_String) (MR_hl_field(MR_mktag(0), ll_backend__frameopt__HeadVar__2_2, (MR_Integer) 0)));
+        MR_String ll_backend__frameopt__ArgY1_5 = ((MR_String) (MR_hl_field(MR_mktag(0), ll_backend__frameopt__HeadVar__3_3, (MR_Integer) 0)));
+        MR_Integer ll_backend__frameopt__ArgX2_6 = ((MR_Integer) (MR_hl_field(MR_mktag(0), ll_backend__frameopt__HeadVar__2_2, (MR_Integer) 1)));
+        MR_Integer ll_backend__frameopt__ArgY2_7 = ((MR_Integer) (MR_hl_field(MR_mktag(0), ll_backend__frameopt__HeadVar__3_3, (MR_Integer) 1)));
+        MR_Word ll_backend__frameopt__ArgX3_8 = ((MR_Word) (MR_hl_field(MR_mktag(0), ll_backend__frameopt__HeadVar__2_2, (MR_Integer) 2)));
+        MR_Word ll_backend__frameopt__ArgY3_9 = ((MR_Word) (MR_hl_field(MR_mktag(0), ll_backend__frameopt__HeadVar__3_3, (MR_Integer) 2)));
+        MR_Word ll_backend__frameopt__Var_10;
+
+        {
+          mercury__private_builtin__builtin_compare_string_3_p_0(&ll_backend__frameopt__Var_10, ll_backend__frameopt__ArgX1_4, ll_backend__frameopt__ArgY1_5);
+        }
+        ll_backend__frameopt__succeeded = (ll_backend__frameopt__Var_10 == (MR_Integer) 0);
+        ll_backend__frameopt__succeeded = !(ll_backend__frameopt__succeeded);
+        if (ll_backend__frameopt__succeeded)
+          *ll_backend__frameopt__HeadVar__1_1 = ll_backend__frameopt__Var_10;
+        else
+          {
+            MR_Word ll_backend__frameopt__Var_11;
+
+            {
+              mercury__private_builtin__builtin_compare_int_3_p_0(&ll_backend__frameopt__Var_11, ll_backend__frameopt__ArgX2_6, ll_backend__frameopt__ArgY2_7);
+            }
+            ll_backend__frameopt__succeeded = (ll_backend__frameopt__Var_11 == (MR_Integer) 0);
+            ll_backend__frameopt__succeeded = !(ll_backend__frameopt__succeeded);
+            if (ll_backend__frameopt__succeeded)
+              *ll_backend__frameopt__HeadVar__1_1 = ll_backend__frameopt__Var_11;
+            else
+              {
+                ll_backend__llds____Compare____code_addr_0_0(ll_backend__frameopt__HeadVar__1_1, ll_backend__frameopt__ArgX3_8, ll_backend__frameopt__ArgY3_9);
+              }
+          }
+      }
+  }
+}
+
+static MR_bool MR_CALL 
+ll_backend__frameopt____Unify____nondet_entry_info_0_0(
+  MR_Word ll_backend__frameopt__HeadVar__1_1,
+  MR_Word ll_backend__frameopt__HeadVar__2_2)
+{
+  {
+    MR_bool ll_backend__frameopt__succeeded;
+    MR_Integer ll_backend__frameopt__CastX_9 = (MR_Integer) ll_backend__frameopt__HeadVar__1_1;
+    MR_Integer ll_backend__frameopt__CastY_10 = (MR_Integer) ll_backend__frameopt__HeadVar__2_2;
+
+    ll_backend__frameopt__succeeded = (ll_backend__frameopt__CastX_9 == ll_backend__frameopt__CastY_10);
+    if (ll_backend__frameopt__succeeded)
+      ll_backend__frameopt__succeeded = MR_TRUE;
+    else
+      {
+        MR_String ll_backend__frameopt__ArgX1_3 = ((MR_String) (MR_hl_field(MR_mktag(0), ll_backend__frameopt__HeadVar__1_1, (MR_Integer) 0)));
+        MR_String ll_backend__frameopt__ArgY1_4 = ((MR_String) (MR_hl_field(MR_mktag(0), ll_backend__frameopt__HeadVar__2_2, (MR_Integer) 0)));
+        MR_Integer ll_backend__frameopt__ArgX2_5 = ((MR_Integer) (MR_hl_field(MR_mktag(0), ll_backend__frameopt__HeadVar__1_1, (MR_Integer) 1)));
+        MR_Integer ll_backend__frameopt__ArgY2_6 = ((MR_Integer) (MR_hl_field(MR_mktag(0), ll_backend__frameopt__HeadVar__2_2, (MR_Integer) 1)));
+        MR_Word ll_backend__frameopt__ArgX3_7 = ((MR_Word) (MR_hl_field(MR_mktag(0), ll_backend__frameopt__HeadVar__1_1, (MR_Integer) 2)));
+        MR_Word ll_backend__frameopt__ArgY3_8 = ((MR_Word) (MR_hl_field(MR_mktag(0), ll_backend__frameopt__HeadVar__2_2, (MR_Integer) 2)));
+
+        ll_backend__frameopt__succeeded = (strcmp(ll_backend__frameopt__ArgX1_3, ll_backend__frameopt__ArgY1_4) == 0);
+        if (ll_backend__frameopt__succeeded)
+          {
+            ll_backend__frameopt__succeeded = (ll_backend__frameopt__ArgX2_5 == ll_backend__frameopt__ArgY2_6);
+            if (ll_backend__frameopt__succeeded)
+              {
+                ll_backend__frameopt__succeeded = ll_backend__llds____Unify____code_addr_0_0(ll_backend__frameopt__ArgX3_7, ll_backend__frameopt__ArgY3_8);
+              }
+          }
+      }
+    return ll_backend__frameopt__succeeded;
+  }
+}
+
+static void MR_CALL 
+ll_backend__frameopt____Compare____maybe_dummy_0_0(
+  MR_Word * ll_backend__frameopt__HeadVar__1_1,
+  MR_Word ll_backend__frameopt__HeadVar__2_2,
+  MR_Word ll_backend__frameopt__HeadVar__3_3)
+{
+  {
+    MR_Integer ll_backend__frameopt__Cast_HeadVar1_4 = (MR_Integer) ll_backend__frameopt__HeadVar__2_2;
+    MR_Integer ll_backend__frameopt__Cast_HeadVar2_5 = (MR_Integer) ll_backend__frameopt__HeadVar__3_3;
+
+    {
+      mercury__private_builtin__builtin_compare_int_3_p_0(ll_backend__frameopt__HeadVar__1_1, ll_backend__frameopt__Cast_HeadVar1_4, ll_backend__frameopt__Cast_HeadVar2_5);
+    }
+  }
+}
+
+static MR_bool MR_CALL 
+ll_backend__frameopt____Unify____maybe_dummy_0_0(
+  MR_Word ll_backend__frameopt__HeadVar__2_1,
+  MR_Word ll_backend__frameopt__HeadVar__2_2)
+{
+  {
+    MR_bool ll_backend__frameopt__succeeded = (ll_backend__frameopt__HeadVar__2_1 == ll_backend__frameopt__HeadVar__2_2);
+
+    return ll_backend__frameopt__succeeded;
+  }
+}
+
+static void MR_CALL 
+ll_backend__frameopt____Compare____frame_block_map_2_0(
+  MR_Word ll_backend__frameopt__TypeInfo_for_En_6,
+  MR_Word ll_backend__frameopt__TypeInfo_for_Ex_7,
+  MR_Word * ll_backend__frameopt__HeadVar__1_1,
+  MR_Word ll_backend__frameopt__HeadVar__2_2,
+  MR_Word ll_backend__frameopt__HeadVar__3_3)
+{
+  {
+    MR_Word ll_backend__frameopt__TypeInfo_10_10;
+    MR_Word ll_backend__frameopt__Cast_HeadVar1_4 = ll_backend__frameopt__HeadVar__2_2;
+    MR_Word ll_backend__frameopt__Cast_HeadVar2_5 = ll_backend__frameopt__HeadVar__3_3;
+
+    {
+      ll_backend__frameopt__TypeInfo_10_10 = (MR_Word) MR_new_object(MR_Word, ((MR_Integer) 3 * sizeof(MR_Word)), NULL, NULL);
+      MR_hl_field(MR_mktag(0), ll_backend__frameopt__TypeInfo_10_10, 0) = ((MR_Box) (&ll_backend__frameopt__ll_backend__frameopt__type_ctor_info_frame_block_info_2));
+      MR_hl_field(MR_mktag(0), ll_backend__frameopt__TypeInfo_10_10, 1) = ((MR_Box) (ll_backend__frameopt__TypeInfo_for_En_6));
+      MR_hl_field(MR_mktag(0), ll_backend__frameopt__TypeInfo_10_10, 2) = ((MR_Box) (ll_backend__frameopt__TypeInfo_for_Ex_7));
+    }
+    {
+      mercury__tree234____Compare____tree234_2_0((MR_Word) &ll_backend__llds__ll_backend__llds__type_ctor_info_label_0, ll_backend__frameopt__TypeInfo_10_10, ll_backend__frameopt__HeadVar__1_1, (MR_Word) ll_backend__frameopt__Cast_HeadVar1_4, (MR_Word) ll_backend__frameopt__Cast_HeadVar2_5);
+    }
+  }
+}
+
+static MR_bool MR_CALL 
+ll_backend__frameopt____Unify____frame_block_map_2_0(
+  MR_Word ll_backend__frameopt__TypeInfo_for_En_5,
+  MR_Word ll_backend__frameopt__TypeInfo_for_Ex_6,
+  MR_Word ll_backend__frameopt__HeadVar__1_1,
+  MR_Word ll_backend__frameopt__HeadVar__2_2)
+{
+  {
+    MR_bool ll_backend__frameopt__succeeded;
+    MR_Word ll_backend__frameopt__TypeInfo_9_9;
+    MR_Word ll_backend__frameopt__Cast_HeadVar1_3 = ll_backend__frameopt__HeadVar__1_1;
+    MR_Word ll_backend__frameopt__Cast_HeadVar2_4 = ll_backend__frameopt__HeadVar__2_2;
+
+    {
+      ll_backend__frameopt__TypeInfo_9_9 = (MR_Word) MR_new_object(MR_Word, ((MR_Integer) 3 * sizeof(MR_Word)), NULL, NULL);
+      MR_hl_field(MR_mktag(0), ll_backend__frameopt__TypeInfo_9_9, 0) = ((MR_Box) (&ll_backend__frameopt__ll_backend__frameopt__type_ctor_info_frame_block_info_2));
+      MR_hl_field(MR_mktag(0), ll_backend__frameopt__TypeInfo_9_9, 1) = ((MR_Box) (ll_backend__frameopt__TypeInfo_for_En_5));
+      MR_hl_field(MR_mktag(0), ll_backend__frameopt__TypeInfo_9_9, 2) = ((MR_Box) (ll_backend__frameopt__TypeInfo_for_Ex_6));
+    }
+    {
+      ll_backend__frameopt__succeeded = mercury__tree234____Unify____tree234_2_0((MR_Word) &ll_backend__llds__ll_backend__llds__type_ctor_info_label_0, ll_backend__frameopt__TypeInfo_9_9, (MR_Word) ll_backend__frameopt__Cast_HeadVar1_3, (MR_Word) ll_backend__frameopt__Cast_HeadVar2_4);
+    }
+    return ll_backend__frameopt__succeeded;
+  }
+}
+
+static void MR_CALL 
+ll_backend__frameopt____Compare____frame_block_info_2_0(
+  MR_Word ll_backend__frameopt__TypeInfo_for_En_23,
+  MR_Word ll_backend__frameopt__TypeInfo_for_Ex_24,
+  MR_Word * ll_backend__frameopt__HeadVar__1_1,
+  MR_Word ll_backend__frameopt__HeadVar__2_2,
+  MR_Word ll_backend__frameopt__HeadVar__3_3)
+{
+  {
+    MR_bool ll_backend__frameopt__succeeded;
+    MR_Integer ll_backend__frameopt__CastX_21 = (MR_Integer) ll_backend__frameopt__HeadVar__2_2;
+    MR_Integer ll_backend__frameopt__CastY_22 = (MR_Integer) ll_backend__frameopt__HeadVar__3_3;
+
+    ll_backend__frameopt__succeeded = (ll_backend__frameopt__CastX_21 == ll_backend__frameopt__CastY_22);
+    if (ll_backend__frameopt__succeeded)
+      *ll_backend__frameopt__HeadVar__1_1 = (MR_Integer) 0;
+    else
+      {
+        MR_Word ll_backend__frameopt__ArgX1_4 = ((MR_Word) (MR_hl_field(MR_mktag(0), ll_backend__frameopt__HeadVar__2_2, (MR_Integer) 0)));
+        MR_Word ll_backend__frameopt__ArgY1_5 = ((MR_Word) (MR_hl_field(MR_mktag(0), ll_backend__frameopt__HeadVar__3_3, (MR_Integer) 0)));
+        MR_Word ll_backend__frameopt__ArgX2_6 = ((MR_Word) (MR_hl_field(MR_mktag(0), ll_backend__frameopt__HeadVar__2_2, (MR_Integer) 1)));
+        MR_Word ll_backend__frameopt__ArgY2_7 = ((MR_Word) (MR_hl_field(MR_mktag(0), ll_backend__frameopt__HeadVar__3_3, (MR_Integer) 1)));
+        MR_Word ll_backend__frameopt__ArgX3_8 = ((MR_Word) (MR_hl_field(MR_mktag(0), ll_backend__frameopt__HeadVar__2_2, (MR_Integer) 2)));
+        MR_Word ll_backend__frameopt__ArgY3_9 = ((MR_Word) (MR_hl_field(MR_mktag(0), ll_backend__frameopt__HeadVar__3_3, (MR_Integer) 2)));
+        MR_Word ll_backend__frameopt__ArgX4_10 = ((MR_Word) (MR_hl_field(MR_mktag(0), ll_backend__frameopt__HeadVar__2_2, (MR_Integer) 3)));
+        MR_Word ll_backend__frameopt__ArgY4_11 = ((MR_Word) (MR_hl_field(MR_mktag(0), ll_backend__frameopt__HeadVar__3_3, (MR_Integer) 3)));
+        MR_Word ll_backend__frameopt__ArgX5_12 = ((MR_Word) (MR_hl_field(MR_mktag(0), ll_backend__frameopt__HeadVar__2_2, (MR_Integer) 4)));
+        MR_Word ll_backend__frameopt__ArgY5_13 = ((MR_Word) (MR_hl_field(MR_mktag(0), ll_backend__frameopt__HeadVar__3_3, (MR_Integer) 4)));
+        MR_Word ll_backend__frameopt__ArgX6_14 = ((MR_Word) (MR_hl_field(MR_mktag(0), ll_backend__frameopt__HeadVar__2_2, (MR_Integer) 5)));
+        MR_Word ll_backend__frameopt__ArgY6_15 = ((MR_Word) (MR_hl_field(MR_mktag(0), ll_backend__frameopt__HeadVar__3_3, (MR_Integer) 5)));
+        MR_Word ll_backend__frameopt__Var_16;
+
+        {
+          ll_backend__llds____Compare____label_0_0(&ll_backend__frameopt__Var_16, ll_backend__frameopt__ArgX1_4, ll_backend__frameopt__ArgY1_5);
+        }
+        ll_backend__frameopt__succeeded = (ll_backend__frameopt__Var_16 == (MR_Integer) 0);
+        ll_backend__frameopt__succeeded = !(ll_backend__frameopt__succeeded);
+        if (ll_backend__frameopt__succeeded)
+          *ll_backend__frameopt__HeadVar__1_1 = ll_backend__frameopt__Var_16;
+        else
+          {
+            MR_Word ll_backend__frameopt__Var_17;
+
+            {
+              mercury__builtin__compare_3_p_0((MR_Word) &ll_backend__frameopt_scalar_common_2[0], &ll_backend__frameopt__Var_17, ((MR_Box) (ll_backend__frameopt__ArgX2_6)), ((MR_Box) (ll_backend__frameopt__ArgY2_7)));
+            }
+            ll_backend__frameopt__succeeded = (ll_backend__frameopt__Var_17 == (MR_Integer) 0);
+            ll_backend__frameopt__succeeded = !(ll_backend__frameopt__succeeded);
+            if (ll_backend__frameopt__succeeded)
+              *ll_backend__frameopt__HeadVar__1_1 = ll_backend__frameopt__Var_17;
+            else
+              {
+                MR_Word ll_backend__frameopt__Var_18;
+
+                {
+                  mercury__builtin__compare_3_p_0((MR_Word) &ll_backend__frameopt_scalar_common_2[2], &ll_backend__frameopt__Var_18, ((MR_Box) (ll_backend__frameopt__ArgX3_8)), ((MR_Box) (ll_backend__frameopt__ArgY3_9)));
+                }
+                ll_backend__frameopt__succeeded = (ll_backend__frameopt__Var_18 == (MR_Integer) 0);
+                ll_backend__frameopt__succeeded = !(ll_backend__frameopt__succeeded);
+                if (ll_backend__frameopt__succeeded)
+                  *ll_backend__frameopt__HeadVar__1_1 = ll_backend__frameopt__Var_18;
+                else
+                  {
+                    MR_Word ll_backend__frameopt__Var_19;
+
+                    {
+                      mercury__builtin__compare_3_p_0((MR_Word) &ll_backend__frameopt_scalar_common_2[1], &ll_backend__frameopt__Var_19, ((MR_Box) (ll_backend__frameopt__ArgX4_10)), ((MR_Box) (ll_backend__frameopt__ArgY4_11)));
+                    }
+                    ll_backend__frameopt__succeeded = (ll_backend__frameopt__Var_19 == (MR_Integer) 0);
+                    ll_backend__frameopt__succeeded = !(ll_backend__frameopt__succeeded);
+                    if (ll_backend__frameopt__succeeded)
+                      *ll_backend__frameopt__HeadVar__1_1 = ll_backend__frameopt__Var_19;
+                    else
+                      {
+                        MR_Word ll_backend__frameopt__Var_20;
+
+                        {
+                          mercury__builtin__compare_3_p_0((MR_Word) &ll_backend__frameopt_scalar_common_2[2], &ll_backend__frameopt__Var_20, ((MR_Box) (ll_backend__frameopt__ArgX5_12)), ((MR_Box) (ll_backend__frameopt__ArgY5_13)));
+                        }
+                        ll_backend__frameopt__succeeded = (ll_backend__frameopt__Var_20 == (MR_Integer) 0);
+                        ll_backend__frameopt__succeeded = !(ll_backend__frameopt__succeeded);
+                        if (ll_backend__frameopt__succeeded)
+                          *ll_backend__frameopt__HeadVar__1_1 = ll_backend__frameopt__Var_20;
+                        else
+                          {
+                            ll_backend__frameopt____Compare____block_type_2_0(ll_backend__frameopt__TypeInfo_for_En_23, ll_backend__frameopt__TypeInfo_for_Ex_24, ll_backend__frameopt__HeadVar__1_1, ll_backend__frameopt__ArgX6_14, ll_backend__frameopt__ArgY6_15);
+                          }
+                      }
+                  }
+              }
+          }
+      }
+  }
+}
+
+static MR_bool MR_CALL 
+ll_backend__frameopt____Unify____frame_block_info_2_0(
+  MR_Word ll_backend__frameopt__TypeInfo_for_En_17,
+  MR_Word ll_backend__frameopt__TypeInfo_for_Ex_18,
+  MR_Word ll_backend__frameopt__HeadVar__1_1,
+  MR_Word ll_backend__frameopt__HeadVar__2_2)
+{
+  {
+    MR_bool ll_backend__frameopt__succeeded;
+    MR_Integer ll_backend__frameopt__CastX_15 = (MR_Integer) ll_backend__frameopt__HeadVar__1_1;
+    MR_Integer ll_backend__frameopt__CastY_16 = (MR_Integer) ll_backend__frameopt__HeadVar__2_2;
+
+    ll_backend__frameopt__succeeded = (ll_backend__frameopt__CastX_15 == ll_backend__frameopt__CastY_16);
+    if (ll_backend__frameopt__succeeded)
+      ll_backend__frameopt__succeeded = MR_TRUE;
+    else
+      {
+        MR_Word ll_backend__frameopt__TypeInfo_20_20;
+        MR_Word ll_backend__frameopt__TypeInfo_21_21;
+        MR_Word ll_backend__frameopt__TypeInfo_22_22;
+        MR_Word ll_backend__frameopt__TypeInfo_23_23;
+        MR_Word ll_backend__frameopt__ArgX1_3 = ((MR_Word) (MR_hl_field(MR_mktag(0), ll_backend__frameopt__HeadVar__1_1, (MR_Integer) 0)));
+        MR_Word ll_backend__frameopt__ArgY1_4 = ((MR_Word) (MR_hl_field(MR_mktag(0), ll_backend__frameopt__HeadVar__2_2, (MR_Integer) 0)));
+        MR_Word ll_backend__frameopt__ArgX2_5 = ((MR_Word) (MR_hl_field(MR_mktag(0), ll_backend__frameopt__HeadVar__1_1, (MR_Integer) 1)));
+        MR_Word ll_backend__frameopt__ArgY2_6 = ((MR_Word) (MR_hl_field(MR_mktag(0), ll_backend__frameopt__HeadVar__2_2, (MR_Integer) 1)));
+        MR_Word ll_backend__frameopt__ArgX3_7 = ((MR_Word) (MR_hl_field(MR_mktag(0), ll_backend__frameopt__HeadVar__1_1, (MR_Integer) 2)));
+        MR_Word ll_backend__frameopt__ArgY3_8 = ((MR_Word) (MR_hl_field(MR_mktag(0), ll_backend__frameopt__HeadVar__2_2, (MR_Integer) 2)));
+        MR_Word ll_backend__frameopt__ArgX4_9 = ((MR_Word) (MR_hl_field(MR_mktag(0), ll_backend__frameopt__HeadVar__1_1, (MR_Integer) 3)));
+        MR_Word ll_backend__frameopt__ArgY4_10 = ((MR_Word) (MR_hl_field(MR_mktag(0), ll_backend__frameopt__HeadVar__2_2, (MR_Integer) 3)));
+        MR_Word ll_backend__frameopt__ArgX5_11 = ((MR_Word) (MR_hl_field(MR_mktag(0), ll_backend__frameopt__HeadVar__1_1, (MR_Integer) 4)));
+        MR_Word ll_backend__frameopt__ArgY5_12 = ((MR_Word) (MR_hl_field(MR_mktag(0), ll_backend__frameopt__HeadVar__2_2, (MR_Integer) 4)));
+        MR_Word ll_backend__frameopt__ArgX6_13 = ((MR_Word) (MR_hl_field(MR_mktag(0), ll_backend__frameopt__HeadVar__1_1, (MR_Integer) 5)));
+        MR_Word ll_backend__frameopt__ArgY6_14 = ((MR_Word) (MR_hl_field(MR_mktag(0), ll_backend__frameopt__HeadVar__2_2, (MR_Integer) 5)));
+
+        {
+          ll_backend__frameopt__succeeded = ll_backend__llds____Unify____label_0_0(ll_backend__frameopt__ArgX1_3, ll_backend__frameopt__ArgY1_4);
+        }
+        if (ll_backend__frameopt__succeeded)
+          {
+            ll_backend__frameopt__TypeInfo_20_20 = (MR_Word) &ll_backend__frameopt_scalar_common_2[0];
+            {
+              ll_backend__frameopt__succeeded = mercury__builtin__unify_2_p_0(ll_backend__frameopt__TypeInfo_20_20, ((MR_Box) (ll_backend__frameopt__ArgX2_5)), ((MR_Box) (ll_backend__frameopt__ArgY2_6)));
+            }
+            if (ll_backend__frameopt__succeeded)
+              {
+                ll_backend__frameopt__TypeInfo_21_21 = (MR_Word) &ll_backend__frameopt_scalar_common_2[2];
+                {
+                  ll_backend__frameopt__succeeded = mercury__builtin__unify_2_p_0(ll_backend__frameopt__TypeInfo_21_21, ((MR_Box) (ll_backend__frameopt__ArgX3_7)), ((MR_Box) (ll_backend__frameopt__ArgY3_8)));
+                }
+                if (ll_backend__frameopt__succeeded)
+                  {
+                    ll_backend__frameopt__TypeInfo_22_22 = (MR_Word) &ll_backend__frameopt_scalar_common_2[1];
+                    {
+                      ll_backend__frameopt__succeeded = mercury__builtin__unify_2_p_0(ll_backend__frameopt__TypeInfo_22_22, ((MR_Box) (ll_backend__frameopt__ArgX4_9)), ((MR_Box) (ll_backend__frameopt__ArgY4_10)));
+                    }
+                    if (ll_backend__frameopt__succeeded)
+                      {
+                        ll_backend__frameopt__TypeInfo_23_23 = (MR_Word) &ll_backend__frameopt_scalar_common_2[2];
+                        {
+                          ll_backend__frameopt__succeeded = mercury__builtin__unify_2_p_0(ll_backend__frameopt__TypeInfo_23_23, ((MR_Box) (ll_backend__frameopt__ArgX5_11)), ((MR_Box) (ll_backend__frameopt__ArgY5_12)));
+                        }
+                        if (ll_backend__frameopt__succeeded)
+                          {
+                            ll_backend__frameopt__succeeded = ll_backend__frameopt____Unify____block_type_2_0(ll_backend__frameopt__TypeInfo_for_En_17, ll_backend__frameopt__TypeInfo_for_Ex_18, ll_backend__frameopt__ArgX6_13, ll_backend__frameopt__ArgY6_14);
+                          }
+                      }
+                  }
+              }
+          }
+      }
+    return ll_backend__frameopt__succeeded;
+  }
+}
+
+static void MR_CALL 
+ll_backend__frameopt____Compare____exit_par_map_0_0(
+  MR_Word * ll_backend__frameopt__HeadVar__1_1,
+  MR_Word ll_backend__frameopt__HeadVar__2_2,
+  MR_Word ll_backend__frameopt__HeadVar__3_3)
+{
+  {
+    MR_bool ll_backend__frameopt__succeeded;
+    MR_Integer ll_backend__frameopt__CastX_6 = (MR_Integer) ll_backend__frameopt__HeadVar__2_2;
+    MR_Integer ll_backend__frameopt__CastY_7 = (MR_Integer) ll_backend__frameopt__HeadVar__3_3;
+
+    ll_backend__frameopt__succeeded = (ll_backend__frameopt__CastX_6 == ll_backend__frameopt__CastY_7);
+    if (ll_backend__frameopt__succeeded)
+      *ll_backend__frameopt__HeadVar__1_1 = (MR_Integer) 0;
+    else
+      {
+        MR_Word ll_backend__frameopt__ArgX1_4 = (MR_Word) ll_backend__frameopt__HeadVar__2_2;
+        MR_Word ll_backend__frameopt__ArgY1_5 = (MR_Word) ll_backend__frameopt__HeadVar__3_3;
+
+        {
+          mercury__builtin__compare_3_p_0((MR_Word) &ll_backend__frameopt_scalar_common_1[7], ll_backend__frameopt__HeadVar__1_1, ((MR_Box) (ll_backend__frameopt__ArgX1_4)), ((MR_Box) (ll_backend__frameopt__ArgY1_5)));
+        }
+      }
+  }
+}
+
+static MR_bool MR_CALL 
+ll_backend__frameopt____Unify____exit_par_map_0_0(
+  MR_Word ll_backend__frameopt__HeadVar__1_1,
+  MR_Word ll_backend__frameopt__HeadVar__2_2)
+{
+  {
+    MR_bool ll_backend__frameopt__succeeded;
+    MR_Integer ll_backend__frameopt__CastX_5 = (MR_Integer) ll_backend__frameopt__HeadVar__1_1;
+    MR_Integer ll_backend__frameopt__CastY_6 = (MR_Integer) ll_backend__frameopt__HeadVar__2_2;
+
+    ll_backend__frameopt__succeeded = (ll_backend__frameopt__CastX_5 == ll_backend__frameopt__CastY_6);
+    if (ll_backend__frameopt__succeeded)
+      ll_backend__frameopt__succeeded = MR_TRUE;
+    else
+      {
+        MR_Word ll_backend__frameopt__ArgX1_3 = (MR_Word) ll_backend__frameopt__HeadVar__1_1;
+        MR_Word ll_backend__frameopt__ArgY1_4 = (MR_Word) ll_backend__frameopt__HeadVar__2_2;
+
+        {
+          ll_backend__frameopt__succeeded = mercury__builtin__unify_2_p_0((MR_Word) &ll_backend__frameopt_scalar_common_1[7], ((MR_Box) (ll_backend__frameopt__ArgX1_3)), ((MR_Box) (ll_backend__frameopt__ArgY1_4)));
+        }
+      }
+    return ll_backend__frameopt__succeeded;
+  }
+}
+
+static void MR_CALL 
+ll_backend__frameopt____Compare____det_frame_block_map_0_0(
+  MR_Word * ll_backend__frameopt__HeadVar__1_1,
+  MR_Word ll_backend__frameopt__HeadVar__2_2,
+  MR_Word ll_backend__frameopt__HeadVar__3_3)
+{
+  {
+    MR_Word ll_backend__frameopt__Cast_HeadVar1_4 = ll_backend__frameopt__HeadVar__2_2;
+    MR_Word ll_backend__frameopt__Cast_HeadVar2_5 = ll_backend__frameopt__HeadVar__3_3;
+
+    {
+      mercury__builtin__compare_3_p_0((MR_Word) &ll_backend__frameopt_scalar_common_1[6], ll_backend__frameopt__HeadVar__1_1, ((MR_Box) (ll_backend__frameopt__Cast_HeadVar1_4)), ((MR_Box) (ll_backend__frameopt__Cast_HeadVar2_5)));
+    }
+  }
+}
+
+static MR_bool MR_CALL 
+ll_backend__frameopt____Unify____det_frame_block_map_0_0(
+  MR_Word ll_backend__frameopt__HeadVar__1_1,
+  MR_Word ll_backend__frameopt__HeadVar__2_2)
+{
+  {
+    MR_bool ll_backend__frameopt__succeeded;
+    MR_Word ll_backend__frameopt__Cast_HeadVar1_3 = ll_backend__frameopt__HeadVar__1_1;
+    MR_Word ll_backend__frameopt__Cast_HeadVar2_4 = ll_backend__frameopt__HeadVar__2_2;
+
+    {
+      ll_backend__frameopt__succeeded = mercury__builtin__unify_2_p_0((MR_Word) &ll_backend__frameopt_scalar_common_1[6], ((MR_Box) (ll_backend__frameopt__Cast_HeadVar1_3)), ((MR_Box) (ll_backend__frameopt__Cast_HeadVar2_4)));
+    }
+    return ll_backend__frameopt__succeeded;
+  }
+}
+
+static void MR_CALL 
+ll_backend__frameopt____Compare____det_exit_info_0_0(
+  MR_Word * ll_backend__frameopt__HeadVar__1_1,
+  MR_Word ll_backend__frameopt__HeadVar__2_2,
+  MR_Word ll_backend__frameopt__HeadVar__3_3)
+{
+  {
+    MR_bool ll_backend__frameopt__succeeded;
+    MR_Integer ll_backend__frameopt__CastX_12 = (MR_Integer) ll_backend__frameopt__HeadVar__2_2;
+    MR_Integer ll_backend__frameopt__CastY_13 = (MR_Integer) ll_backend__frameopt__HeadVar__3_3;
+
+    ll_backend__frameopt__succeeded = (ll_backend__frameopt__CastX_12 == ll_backend__frameopt__CastY_13);
+    if (ll_backend__frameopt__succeeded)
+      *ll_backend__frameopt__HeadVar__1_1 = (MR_Integer) 0;
+    else
+      {
+        MR_Word ll_backend__frameopt__ArgX1_4 = ((MR_Word) (MR_hl_field(MR_mktag(0), ll_backend__frameopt__HeadVar__2_2, (MR_Integer) 0)));
+        MR_Word ll_backend__frameopt__ArgY1_5 = ((MR_Word) (MR_hl_field(MR_mktag(0), ll_backend__frameopt__HeadVar__3_3, (MR_Integer) 0)));
+        MR_Word ll_backend__frameopt__ArgX2_6 = ((MR_Word) (MR_hl_field(MR_mktag(0), ll_backend__frameopt__HeadVar__2_2, (MR_Integer) 1)));
+        MR_Word ll_backend__frameopt__ArgY2_7 = ((MR_Word) (MR_hl_field(MR_mktag(0), ll_backend__frameopt__HeadVar__3_3, (MR_Integer) 1)));
+        MR_Word ll_backend__frameopt__ArgX3_8 = ((MR_Word) (MR_hl_field(MR_mktag(0), ll_backend__frameopt__HeadVar__2_2, (MR_Integer) 2)));
+        MR_Word ll_backend__frameopt__ArgY3_9 = ((MR_Word) (MR_hl_field(MR_mktag(0), ll_backend__frameopt__HeadVar__3_3, (MR_Integer) 2)));
+        MR_Word ll_backend__frameopt__Var_10;
+
+        {
+          mercury__builtin__compare_3_p_0((MR_Word) &ll_backend__frameopt_scalar_common_2[0], &ll_backend__frameopt__Var_10, ((MR_Box) (ll_backend__frameopt__ArgX1_4)), ((MR_Box) (ll_backend__frameopt__ArgY1_5)));
+        }
+        ll_backend__frameopt__succeeded = (ll_backend__frameopt__Var_10 == (MR_Integer) 0);
+        ll_backend__frameopt__succeeded = !(ll_backend__frameopt__succeeded);
+        if (ll_backend__frameopt__succeeded)
+          *ll_backend__frameopt__HeadVar__1_1 = ll_backend__frameopt__Var_10;
+        else
+          {
+            MR_Word ll_backend__frameopt__Var_11;
+
+            {
+              mercury__builtin__compare_3_p_0((MR_Word) &ll_backend__frameopt_scalar_common_2[0], &ll_backend__frameopt__Var_11, ((MR_Box) (ll_backend__frameopt__ArgX2_6)), ((MR_Box) (ll_backend__frameopt__ArgY2_7)));
+            }
+            ll_backend__frameopt__succeeded = (ll_backend__frameopt__Var_11 == (MR_Integer) 0);
+            ll_backend__frameopt__succeeded = !(ll_backend__frameopt__succeeded);
+            if (ll_backend__frameopt__succeeded)
+              *ll_backend__frameopt__HeadVar__1_1 = ll_backend__frameopt__Var_11;
+            else
+              {
+                ll_backend__llds____Compare____instruction_0_0(ll_backend__frameopt__HeadVar__1_1, ll_backend__frameopt__ArgX3_8, ll_backend__frameopt__ArgY3_9);
+              }
+          }
+      }
+  }
+}
+
+static MR_bool MR_CALL 
+ll_backend__frameopt____Unify____det_exit_info_0_0(
+  MR_Word ll_backend__frameopt__HeadVar__1_1,
+  MR_Word ll_backend__frameopt__HeadVar__2_2)
+{
+  {
+    MR_bool ll_backend__frameopt__succeeded;
+    MR_Integer ll_backend__frameopt__CastX_9 = (MR_Integer) ll_backend__frameopt__HeadVar__1_1;
+    MR_Integer ll_backend__frameopt__CastY_10 = (MR_Integer) ll_backend__frameopt__HeadVar__2_2;
+
+    ll_backend__frameopt__succeeded = (ll_backend__frameopt__CastX_9 == ll_backend__frameopt__CastY_10);
+    if (ll_backend__frameopt__succeeded)
+      ll_backend__frameopt__succeeded = MR_TRUE;
+    else
+      {
+        MR_Word ll_backend__frameopt__TypeInfo_12_12;
+        MR_Word ll_backend__frameopt__ArgX1_3 = ((MR_Word) (MR_hl_field(MR_mktag(0), ll_backend__frameopt__HeadVar__1_1, (MR_Integer) 0)));
+        MR_Word ll_backend__frameopt__ArgY1_4 = ((MR_Word) (MR_hl_field(MR_mktag(0), ll_backend__frameopt__HeadVar__2_2, (MR_Integer) 0)));
+        MR_Word ll_backend__frameopt__ArgX2_5 = ((MR_Word) (MR_hl_field(MR_mktag(0), ll_backend__frameopt__HeadVar__1_1, (MR_Integer) 1)));
+        MR_Word ll_backend__frameopt__ArgY2_6 = ((MR_Word) (MR_hl_field(MR_mktag(0), ll_backend__frameopt__HeadVar__2_2, (MR_Integer) 1)));
+        MR_Word ll_backend__frameopt__ArgX3_7 = ((MR_Word) (MR_hl_field(MR_mktag(0), ll_backend__frameopt__HeadVar__1_1, (MR_Integer) 2)));
+        MR_Word ll_backend__frameopt__ArgY3_8 = ((MR_Word) (MR_hl_field(MR_mktag(0), ll_backend__frameopt__HeadVar__2_2, (MR_Integer) 2)));
+
+        {
+          ll_backend__frameopt__succeeded = mercury__builtin__unify_2_p_0((MR_Word) &ll_backend__frameopt_scalar_common_2[0], ((MR_Box) (ll_backend__frameopt__ArgX1_3)), ((MR_Box) (ll_backend__frameopt__ArgY1_4)));
+        }
+        if (ll_backend__frameopt__succeeded)
+          {
+            ll_backend__frameopt__TypeInfo_12_12 = (MR_Word) &ll_backend__frameopt_scalar_common_2[0];
+            {
+              ll_backend__frameopt__succeeded = mercury__builtin__unify_2_p_0(ll_backend__frameopt__TypeInfo_12_12, ((MR_Box) (ll_backend__frameopt__ArgX2_5)), ((MR_Box) (ll_backend__frameopt__ArgY2_6)));
+            }
+            if (ll_backend__frameopt__succeeded)
+              {
+                ll_backend__frameopt__succeeded = ll_backend__llds____Unify____instruction_0_0(ll_backend__frameopt__ArgX3_7, ll_backend__frameopt__ArgY3_8);
+              }
+          }
+      }
+    return ll_backend__frameopt__succeeded;
+  }
+}
+
+static void MR_CALL 
+ll_backend__frameopt____Compare____det_entry_info_0_0(
+  MR_Word * ll_backend__frameopt__HeadVar__1_1,
+  MR_Word ll_backend__frameopt__HeadVar__2_2,
+  MR_Word ll_backend__frameopt__HeadVar__3_3)
+{
+  {
+    MR_bool ll_backend__frameopt__succeeded;
+    MR_Integer ll_backend__frameopt__CastX_12 = (MR_Integer) ll_backend__frameopt__HeadVar__2_2;
+    MR_Integer ll_backend__frameopt__CastY_13 = (MR_Integer) ll_backend__frameopt__HeadVar__3_3;
+
+    ll_backend__frameopt__succeeded = (ll_backend__frameopt__CastX_12 == ll_backend__frameopt__CastY_13);
+    if (ll_backend__frameopt__succeeded)
+      *ll_backend__frameopt__HeadVar__1_1 = (MR_Integer) 0;
+    else
+      {
+        MR_Integer ll_backend__frameopt__ArgX1_4 = ((MR_Integer) (MR_hl_field(MR_mktag(0), ll_backend__frameopt__HeadVar__2_2, (MR_Integer) 0)));
+        MR_Integer ll_backend__frameopt__ArgY1_5 = ((MR_Integer) (MR_hl_field(MR_mktag(0), ll_backend__frameopt__HeadVar__3_3, (MR_Integer) 0)));
+        MR_String ll_backend__frameopt__ArgX2_6 = ((MR_String) (MR_hl_field(MR_mktag(0), ll_backend__frameopt__HeadVar__2_2, (MR_Integer) 1)));
+        MR_String ll_backend__frameopt__ArgY2_7 = ((MR_String) (MR_hl_field(MR_mktag(0), ll_backend__frameopt__HeadVar__3_3, (MR_Integer) 1)));
+        MR_Word ll_backend__frameopt__ArgX3_8 = ((MR_Word) (MR_hl_field(MR_mktag(0), ll_backend__frameopt__HeadVar__2_2, (MR_Integer) 2)));
+        MR_Word ll_backend__frameopt__ArgY3_9 = ((MR_Word) (MR_hl_field(MR_mktag(0), ll_backend__frameopt__HeadVar__3_3, (MR_Integer) 2)));
+        MR_Word ll_backend__frameopt__Var_10;
+
+        {
+          mercury__private_builtin__builtin_compare_int_3_p_0(&ll_backend__frameopt__Var_10, ll_backend__frameopt__ArgX1_4, ll_backend__frameopt__ArgY1_5);
+        }
+        ll_backend__frameopt__succeeded = (ll_backend__frameopt__Var_10 == (MR_Integer) 0);
+        ll_backend__frameopt__succeeded = !(ll_backend__frameopt__succeeded);
+        if (ll_backend__frameopt__succeeded)
+          *ll_backend__frameopt__HeadVar__1_1 = ll_backend__frameopt__Var_10;
+        else
+          {
+            MR_Word ll_backend__frameopt__Var_11;
+
+            {
+              mercury__private_builtin__builtin_compare_string_3_p_0(&ll_backend__frameopt__Var_11, ll_backend__frameopt__ArgX2_6, ll_backend__frameopt__ArgY2_7);
+            }
+            ll_backend__frameopt__succeeded = (ll_backend__frameopt__Var_11 == (MR_Integer) 0);
+            ll_backend__frameopt__succeeded = !(ll_backend__frameopt__succeeded);
+            if (ll_backend__frameopt__succeeded)
+              *ll_backend__frameopt__HeadVar__1_1 = ll_backend__frameopt__Var_11;
+            else
+              {
+                MR_Integer ll_backend__frameopt__Var_17 = (MR_Integer) ll_backend__frameopt__ArgX3_8;
+                MR_Integer ll_backend__frameopt__Var_18 = (MR_Integer) ll_backend__frameopt__ArgY3_9;
+
+                {
+                  mercury__private_builtin__builtin_compare_int_3_p_0(ll_backend__frameopt__HeadVar__1_1, ll_backend__frameopt__Var_17, ll_backend__frameopt__Var_18);
+                }
+              }
+          }
+      }
+  }
+}
+
+static MR_bool MR_CALL 
+ll_backend__frameopt____Unify____det_entry_info_0_0(
+  MR_Word ll_backend__frameopt__HeadVar__1_1,
+  MR_Word ll_backend__frameopt__HeadVar__2_2)
+{
+  {
+    MR_bool ll_backend__frameopt__succeeded;
+    MR_Integer ll_backend__frameopt__CastX_9 = (MR_Integer) ll_backend__frameopt__HeadVar__1_1;
+    MR_Integer ll_backend__frameopt__CastY_10 = (MR_Integer) ll_backend__frameopt__HeadVar__2_2;
+
+    ll_backend__frameopt__succeeded = (ll_backend__frameopt__CastX_9 == ll_backend__frameopt__CastY_10);
+    if (ll_backend__frameopt__succeeded)
+      ll_backend__frameopt__succeeded = MR_TRUE;
+    else
+      {
+        MR_Integer ll_backend__frameopt__ArgX1_3 = ((MR_Integer) (MR_hl_field(MR_mktag(0), ll_backend__frameopt__HeadVar__1_1, (MR_Integer) 0)));
+        MR_Integer ll_backend__frameopt__ArgY1_4 = ((MR_Integer) (MR_hl_field(MR_mktag(0), ll_backend__frameopt__HeadVar__2_2, (MR_Integer) 0)));
+        MR_String ll_backend__frameopt__ArgX2_5 = ((MR_String) (MR_hl_field(MR_mktag(0), ll_backend__frameopt__HeadVar__1_1, (MR_Integer) 1)));
+        MR_String ll_backend__frameopt__ArgY2_6 = ((MR_String) (MR_hl_field(MR_mktag(0), ll_backend__frameopt__HeadVar__2_2, (MR_Integer) 1)));
+        MR_Word ll_backend__frameopt__ArgX3_7 = ((MR_Word) (MR_hl_field(MR_mktag(0), ll_backend__frameopt__HeadVar__1_1, (MR_Integer) 2)));
+        MR_Word ll_backend__frameopt__ArgY3_8 = ((MR_Word) (MR_hl_field(MR_mktag(0), ll_backend__frameopt__HeadVar__2_2, (MR_Integer) 2)));
+
+        ll_backend__frameopt__succeeded = (ll_backend__frameopt__ArgX1_3 == ll_backend__frameopt__ArgY1_4);
+        if (ll_backend__frameopt__succeeded)
+          {
+            ll_backend__frameopt__succeeded = (strcmp(ll_backend__frameopt__ArgX2_5, ll_backend__frameopt__ArgY2_6) == 0);
+            if (ll_backend__frameopt__succeeded)
+              ll_backend__frameopt__succeeded = (ll_backend__frameopt__ArgX3_7 == ll_backend__frameopt__ArgY3_8);
+          }
+      }
+    return ll_backend__frameopt__succeeded;
+  }
+}
+
+static void MR_CALL 
+ll_backend__frameopt____Compare____can_transform_0_0(
+  MR_Word * ll_backend__frameopt__HeadVar__1_1,
+  MR_Word ll_backend__frameopt__HeadVar__2_2,
+  MR_Word ll_backend__frameopt__HeadVar__3_3)
+{
+  {
+    MR_Integer ll_backend__frameopt__Cast_HeadVar1_4 = (MR_Integer) ll_backend__frameopt__HeadVar__2_2;
+    MR_Integer ll_backend__frameopt__Cast_HeadVar2_5 = (MR_Integer) ll_backend__frameopt__HeadVar__3_3;
+
+    {
+      mercury__private_builtin__builtin_compare_int_3_p_0(ll_backend__frameopt__HeadVar__1_1, ll_backend__frameopt__Cast_HeadVar1_4, ll_backend__frameopt__Cast_HeadVar2_5);
+    }
+  }
+}
+
+static MR_bool MR_CALL 
+ll_backend__frameopt____Unify____can_transform_0_0(
+  MR_Word ll_backend__frameopt__HeadVar__2_1,
+  MR_Word ll_backend__frameopt__HeadVar__2_2)
+{
+  {
+    MR_bool ll_backend__frameopt__succeeded = (ll_backend__frameopt__HeadVar__2_1 == ll_backend__frameopt__HeadVar__2_2);
+
+    return ll_backend__frameopt__succeeded;
+  }
+}
+
+static void MR_CALL 
+ll_backend__frameopt____Compare____block_type_2_0(
+  MR_Word ll_backend__frameopt__TypeInfo_for_EntryInfo_31,
+  MR_Word ll_backend__frameopt__TypeInfo_for_ExitInfo_32,
+  MR_Word * ll_backend__frameopt__HeadVar__1_1,
+  MR_Word ll_backend__frameopt__HeadVar__2_2,
+  MR_Word ll_backend__frameopt__HeadVar__3_3)
+{
+  {
+    MR_bool ll_backend__frameopt__succeeded;
+    MR_Integer ll_backend__frameopt__CastX_29 = (MR_Integer) ll_backend__frameopt__HeadVar__2_2;
+    MR_Integer ll_backend__frameopt__CastY_30 = (MR_Integer) ll_backend__frameopt__HeadVar__3_3;
+
+    ll_backend__frameopt__succeeded = (ll_backend__frameopt__CastX_29 == ll_backend__frameopt__CastY_30);
+    if (ll_backend__frameopt__succeeded)
+      *ll_backend__frameopt__HeadVar__1_1 = (MR_Integer) 0;
+    else
+      switch (MR_tag((MR_Word) ll_backend__frameopt__HeadVar__2_2)) {
+        default: /*NOTREACHED*/ MR_assert(0);
+        case (MR_Integer) 0:
+          {
+            MR_Box ll_backend__frameopt__Var_35 = (MR_hl_field(MR_mktag(0), ll_backend__frameopt__HeadVar__2_2, (MR_Integer) 0));
+
+            switch (MR_tag((MR_Word) ll_backend__frameopt__HeadVar__3_3)) {
+              default: /*NOTREACHED*/ MR_assert(0);
+              case (MR_Integer) 0:
+                {
+                  MR_Box ll_backend__frameopt__ArgY1_5 = (MR_hl_field(MR_mktag(0), ll_backend__frameopt__HeadVar__3_3, (MR_Integer) 0));
+
+                  {
+                    mercury__builtin__compare_3_p_0(ll_backend__frameopt__TypeInfo_for_EntryInfo_31, ll_backend__frameopt__HeadVar__1_1, ll_backend__frameopt__Var_35, ll_backend__frameopt__ArgY1_5);
+                  }
+                }
+                break;
+              case (MR_Integer) 1:
+                *ll_backend__frameopt__HeadVar__1_1 = (MR_Integer) 1;
+                break;
+              case (MR_Integer) 2:
+                *ll_backend__frameopt__HeadVar__1_1 = (MR_Integer) 1;
+                break;
+            }
+          }
+          break;
+        case (MR_Integer) 1:
+          {
+            MR_Word ll_backend__frameopt__Var_37 = ((MR_Word) (MR_hl_field(MR_mktag(1), ll_backend__frameopt__HeadVar__2_2, (MR_Integer) 1)));
+            MR_Word ll_backend__frameopt__Var_38 = ((MR_Word) (MR_hl_field(MR_mktag(1), ll_backend__frameopt__HeadVar__2_2, (MR_Integer) 0)));
+
+            switch (MR_tag((MR_Word) ll_backend__frameopt__HeadVar__3_3)) {
+              default: /*NOTREACHED*/ MR_assert(0);
+              case (MR_Integer) 0:
+                *ll_backend__frameopt__HeadVar__1_1 = (MR_Integer) 2;
+                break;
+              case (MR_Integer) 1:
+                {
+                  MR_Word ll_backend__frameopt__ArgY1_15 = ((MR_Word) (MR_hl_field(MR_mktag(1), ll_backend__frameopt__HeadVar__3_3, (MR_Integer) 0)));
+                  MR_Word ll_backend__frameopt__ArgY2_17 = ((MR_Word) (MR_hl_field(MR_mktag(1), ll_backend__frameopt__HeadVar__3_3, (MR_Integer) 1)));
+                  MR_Word ll_backend__frameopt__Var_18;
+                  MR_Integer ll_backend__frameopt__Var_39 = (MR_Integer) ll_backend__frameopt__Var_38;
+                  MR_Integer ll_backend__frameopt__Var_40 = (MR_Integer) ll_backend__frameopt__ArgY1_15;
+
+                  {
+                    mercury__private_builtin__builtin_compare_int_3_p_0(&ll_backend__frameopt__Var_18, ll_backend__frameopt__Var_39, ll_backend__frameopt__Var_40);
+                  }
+                  ll_backend__frameopt__succeeded = (ll_backend__frameopt__Var_18 == (MR_Integer) 0);
+                  ll_backend__frameopt__succeeded = !(ll_backend__frameopt__succeeded);
+                  if (ll_backend__frameopt__succeeded)
+                    *ll_backend__frameopt__HeadVar__1_1 = ll_backend__frameopt__Var_18;
+                  else
+                    {
+                      MR_Integer ll_backend__frameopt__Var_41 = (MR_Integer) ll_backend__frameopt__Var_37;
+                      MR_Integer ll_backend__frameopt__Var_42 = (MR_Integer) ll_backend__frameopt__ArgY2_17;
+
+                      {
+                        mercury__private_builtin__builtin_compare_int_3_p_0(ll_backend__frameopt__HeadVar__1_1, ll_backend__frameopt__Var_41, ll_backend__frameopt__Var_42);
+                      }
+                    }
+                }
+                break;
+              case (MR_Integer) 2:
+                *ll_backend__frameopt__HeadVar__1_1 = (MR_Integer) 1;
+                break;
+            }
+          }
+          break;
+        case (MR_Integer) 2:
+          {
+            MR_Box ll_backend__frameopt__Var_36 = (MR_hl_field(MR_mktag(2), ll_backend__frameopt__HeadVar__2_2, (MR_Integer) 0));
+
+            switch (MR_tag((MR_Word) ll_backend__frameopt__HeadVar__3_3)) {
+              default: /*NOTREACHED*/ MR_assert(0);
+              case (MR_Integer) 0:
+                *ll_backend__frameopt__HeadVar__1_1 = (MR_Integer) 2;
+                break;
+              case (MR_Integer) 1:
+                *ll_backend__frameopt__HeadVar__1_1 = (MR_Integer) 2;
+                break;
+              case (MR_Integer) 2:
+                {
+                  MR_Box ll_backend__frameopt__ArgY1_28 = (MR_hl_field(MR_mktag(2), ll_backend__frameopt__HeadVar__3_3, (MR_Integer) 0));
+
+                  {
+                    mercury__builtin__compare_3_p_0(ll_backend__frameopt__TypeInfo_for_ExitInfo_32, ll_backend__frameopt__HeadVar__1_1, ll_backend__frameopt__Var_36, ll_backend__frameopt__ArgY1_28);
+                  }
+                }
+                break;
+            }
+          }
+          break;
+      }
+  }
+}
+
+static MR_bool MR_CALL 
+ll_backend__frameopt____Unify____block_type_2_0(
+  MR_Word ll_backend__frameopt__TypeInfo_for_EntryInfo_13,
+  MR_Word ll_backend__frameopt__TypeInfo_for_ExitInfo_14,
+  MR_Word ll_backend__frameopt__HeadVar__1_1,
+  MR_Word ll_backend__frameopt__HeadVar__2_2)
+{
+  {
+    MR_bool ll_backend__frameopt__succeeded;
+    MR_Integer ll_backend__frameopt__CastX_11 = (MR_Integer) ll_backend__frameopt__HeadVar__1_1;
+    MR_Integer ll_backend__frameopt__CastY_12 = (MR_Integer) ll_backend__frameopt__HeadVar__2_2;
+
+    ll_backend__frameopt__succeeded = (ll_backend__frameopt__CastX_11 == ll_backend__frameopt__CastY_12);
+    if (ll_backend__frameopt__succeeded)
+      ll_backend__frameopt__succeeded = MR_TRUE;
+    else
+      switch (MR_tag((MR_Word) ll_backend__frameopt__HeadVar__1_1)) {
+        default: /*NOTREACHED*/ MR_assert(0);
+        case (MR_Integer) 0:
+          {
+            MR_Box ll_backend__frameopt__ArgX1_3 = (MR_hl_field(MR_mktag(0), ll_backend__frameopt__HeadVar__1_1, (MR_Integer) 0));
+            MR_Box ll_backend__frameopt__ArgY1_4;
+
+            ll_backend__frameopt__succeeded = ((MR_tag((MR_Word) ll_backend__frameopt__HeadVar__2_2)) == (MR_mktag((MR_Integer) 0)));
+            if (ll_backend__frameopt__succeeded)
+              {
+                ll_backend__frameopt__ArgY1_4 = (MR_hl_field(MR_mktag(0), ll_backend__frameopt__HeadVar__2_2, (MR_Integer) 0));
+                {
+                  ll_backend__frameopt__succeeded = mercury__builtin__unify_2_p_0(ll_backend__frameopt__TypeInfo_for_EntryInfo_13, ll_backend__frameopt__ArgX1_3, ll_backend__frameopt__ArgY1_4);
+                }
+              }
+          }
+          break;
+        case (MR_Integer) 1:
+          {
+            MR_Word ll_backend__frameopt__ArgX1_5 = ((MR_Word) (MR_hl_field(MR_mktag(1), ll_backend__frameopt__HeadVar__1_1, (MR_Integer) 0)));
+            MR_Word ll_backend__frameopt__ArgY1_6;
+            MR_Word ll_backend__frameopt__ArgX2_7 = ((MR_Word) (MR_hl_field(MR_mktag(1), ll_backend__frameopt__HeadVar__1_1, (MR_Integer) 1)));
+            MR_Word ll_backend__frameopt__ArgY2_8;
+
+            ll_backend__frameopt__succeeded = ((MR_tag((MR_Word) ll_backend__frameopt__HeadVar__2_2)) == (MR_mktag((MR_Integer) 1)));
+            if (ll_backend__frameopt__succeeded)
+              {
+                ll_backend__frameopt__ArgY1_6 = ((MR_Word) (MR_hl_field(MR_mktag(1), ll_backend__frameopt__HeadVar__2_2, (MR_Integer) 0)));
+                ll_backend__frameopt__ArgY2_8 = ((MR_Word) (MR_hl_field(MR_mktag(1), ll_backend__frameopt__HeadVar__2_2, (MR_Integer) 1)));
+                ll_backend__frameopt__succeeded = (ll_backend__frameopt__ArgX1_5 == ll_backend__frameopt__ArgY1_6);
+                if (ll_backend__frameopt__succeeded)
+                  ll_backend__frameopt__succeeded = (ll_backend__frameopt__ArgX2_7 == ll_backend__frameopt__ArgY2_8);
+              }
+          }
+          break;
+        case (MR_Integer) 2:
+          {
+            MR_Box ll_backend__frameopt__ArgX1_9 = (MR_hl_field(MR_mktag(2), ll_backend__frameopt__HeadVar__1_1, (MR_Integer) 0));
+            MR_Box ll_backend__frameopt__ArgY1_10;
+
+            ll_backend__frameopt__succeeded = ((MR_tag((MR_Word) ll_backend__frameopt__HeadVar__2_2)) == (MR_mktag((MR_Integer) 2)));
+            if (ll_backend__frameopt__succeeded)
+              {
+                ll_backend__frameopt__ArgY1_10 = (MR_hl_field(MR_mktag(2), ll_backend__frameopt__HeadVar__2_2, (MR_Integer) 0));
+                {
+                  ll_backend__frameopt__succeeded = mercury__builtin__unify_2_p_0(ll_backend__frameopt__TypeInfo_for_ExitInfo_14, ll_backend__frameopt__ArgX1_9, ll_backend__frameopt__ArgY1_10);
+                }
+              }
+          }
+          break;
+      }
+    return ll_backend__frameopt__succeeded;
+  }
+}
+
+static void MR_CALL 
+ll_backend__frameopt____Compare____block_needs_frame_0_0(
+  MR_Word * ll_backend__frameopt__HeadVar__1_1,
+  MR_Word ll_backend__frameopt__HeadVar__2_2,
+  MR_Word ll_backend__frameopt__HeadVar__3_3)
+{
+  {
+    MR_Integer ll_backend__frameopt__Cast_HeadVar1_4 = (MR_Integer) ll_backend__frameopt__HeadVar__2_2;
+    MR_Integer ll_backend__frameopt__Cast_HeadVar2_5 = (MR_Integer) ll_backend__frameopt__HeadVar__3_3;
+
+    {
+      mercury__private_builtin__builtin_compare_int_3_p_0(ll_backend__frameopt__HeadVar__1_1, ll_backend__frameopt__Cast_HeadVar1_4, ll_backend__frameopt__Cast_HeadVar2_5);
+    }
+  }
+}
+
+static MR_bool MR_CALL 
+ll_backend__frameopt____Unify____block_needs_frame_0_0(
+  MR_Word ll_backend__frameopt__HeadVar__2_1,
+  MR_Word ll_backend__frameopt__HeadVar__2_2)
+{
+  {
+    MR_bool ll_backend__frameopt__succeeded = (ll_backend__frameopt__HeadVar__2_1 == ll_backend__frameopt__HeadVar__2_2);
+
+    return ll_backend__frameopt__succeeded;
+  }
+}
+
+static MR_bool MR_CALL 
+ll_backend__frameopt__describe_block_6_p_0_3(
+  MR_Box ll_backend__frameopt__closure_arg)
+{
+  {
+    MR_bool ll_backend__frameopt__succeeded;
+    MR_Box ll_backend__frameopt__closure = ll_backend__frameopt__closure_arg;
+
+    {
+      ll_backend__frameopt__succeeded = ll_backend__frameopt__IntroducedFrom__pred__describe_block__2307__1_2_p_0(((MR_Word) (MR_hl_field(MR_mktag(0), ll_backend__frameopt__closure, (MR_Integer) 3))), ((MR_Word) (MR_hl_field(MR_mktag(0), ll_backend__frameopt__closure, (MR_Integer) 4))));
+    }
+    return ll_backend__frameopt__succeeded;
+  }
+}
+
+static MR_bool MR_CALL 
+ll_backend__frameopt__describe_block_6_p_0_2(
+  MR_Box ll_backend__frameopt__closure_arg)
+{
+  {
+    MR_bool ll_backend__frameopt__succeeded;
+    MR_Box ll_backend__frameopt__closure = ll_backend__frameopt__closure_arg;
+
+    {
+      ll_backend__frameopt__succeeded = ll_backend__frameopt__IntroducedFrom__pred__describe_block__2322__1_2_p_0(((MR_Word) (MR_hl_field(MR_mktag(0), ll_backend__frameopt__closure, (MR_Integer) 3))), ((MR_Word) (MR_hl_field(MR_mktag(0), ll_backend__frameopt__closure, (MR_Integer) 4))));
+    }
+    return ll_backend__frameopt__succeeded;
+  }
+}
+
+static MR_bool MR_CALL 
+ll_backend__frameopt__describe_block_6_p_0_1(
+  MR_Box ll_backend__frameopt__closure_arg)
+{
+  {
+    MR_bool ll_backend__frameopt__succeeded;
+    MR_Box ll_backend__frameopt__closure = ll_backend__frameopt__closure_arg;
+
+    {
+      ll_backend__frameopt__succeeded = ll_backend__frameopt__IntroducedFrom__pred__describe_block__2247__1_2_p_0(((MR_Word) (MR_hl_field(MR_mktag(0), ll_backend__frameopt__closure, (MR_Integer) 3))), ((MR_Word) (MR_hl_field(MR_mktag(0), ll_backend__frameopt__closure, (MR_Integer) 4))));
+    }
+    return ll_backend__frameopt__succeeded;
+  }
+}
+
+static void MR_CALL 
+ll_backend__frameopt__describe_block_6_p_0(
+  MR_Word ll_backend__frameopt__TypeClassInfo_for_block_entry_exit_96,
+  MR_Word ll_backend__frameopt__BlockMap_7,
+  MR_Word ll_backend__frameopt__OrdNeedsFrame_8,
+  MR_Word ll_backend__frameopt__PredMap_9,
+  MR_Word ll_backend__frameopt__ProcLabel_10,
+  MR_Word ll_backend__frameopt__Label_11,
+  MR_Word * ll_backend__frameopt__Instr_12)
+{
+  {
+    MR_bool ll_backend__frameopt__succeeded;
+    MR_Word ll_backend__frameopt__TypeCtorInfo_97_97 = (MR_Word) &ll_backend__llds__ll_backend__llds__type_ctor_info_label_0;
+    MR_Word ll_backend__frameopt__TypeInfo_99_99;
+    MR_Word ll_backend__frameopt__TypeInfo_101_101;
+    MR_Word ll_backend__frameopt__TypeInfo_103_103;
+    MR_Word ll_backend__frameopt__BlockInfo_13;
+    MR_Word ll_backend__frameopt__BlockLabel_14;
+    MR_Word ll_backend__frameopt__BlockInstrs_15;
+    MR_Word ll_backend__frameopt__FallInto_16;
+    MR_Word ll_backend__frameopt__SideLabels_17;
+    MR_Word ll_backend__frameopt__MaybeFallThrough_18;
+    MR_Word ll_backend__frameopt__Type_19;
+    MR_Word ll_backend__frameopt__YesProcLabel_20;
+    MR_String ll_backend__frameopt__LabelStr_21;
+    MR_String ll_backend__frameopt__BlockInstrsStr_22;
+    MR_String ll_backend__frameopt__Heading_23;
+    MR_String ll_backend__frameopt__PredStr_25;
+    MR_String ll_backend__frameopt__FallIntoStr_27;
+    MR_String ll_backend__frameopt__SideStr_28;
+    MR_String ll_backend__frameopt__FallThroughStr_32;
+    MR_String ll_backend__frameopt__TypeStr_34;
+    MR_String ll_backend__frameopt__Comment_41;
+    MR_Word ll_backend__frameopt__Var_42;
+    MR_String ll_backend__frameopt__Var_48;
+    MR_String ll_backend__frameopt__Var_87;
+    MR_String ll_backend__frameopt__Var_88;
+    MR_String ll_backend__frameopt__Var_89;
+    MR_String ll_backend__frameopt__Var_90;
+    MR_String ll_backend__frameopt__Var_91;
+    MR_String ll_backend__frameopt__Var_92;
+    MR_Word ll_backend__frameopt__Var_94;
+    MR_Box ll_backend__frameopt__conv0_BlockInfo_13;
+    MR_Word ll_backend__frameopt__PredLabel_24;
+    MR_Box ll_backend__frameopt__conv1_PredLabel_24;
+
+    {
+      mercury__private_builtin__type_info_from_typeclass_info_3_p_0(ll_backend__frameopt__TypeClassInfo_for_block_entry_exit_96, (MR_Integer) 1, &ll_backend__frameopt__TypeInfo_99_99);
+    }
+    {
+      mercury__private_builtin__type_info_from_typeclass_info_3_p_0(ll_backend__frameopt__TypeClassInfo_for_block_entry_exit_96, (MR_Integer) 2, &ll_backend__frameopt__TypeInfo_101_101);
+    }
+    {
+      ll_backend__frameopt__TypeInfo_103_103 = (MR_Word) MR_new_object(MR_Word, ((MR_Integer) 3 * sizeof(MR_Word)), NULL, NULL);
+      MR_hl_field(MR_mktag(0), ll_backend__frameopt__TypeInfo_103_103, 0) = ((MR_Box) (&ll_backend__frameopt__ll_backend__frameopt__type_ctor_info_frame_block_info_2));
+      MR_hl_field(MR_mktag(0), ll_backend__frameopt__TypeInfo_103_103, 1) = ((MR_Box) (ll_backend__frameopt__TypeInfo_99_99));
+      MR_hl_field(MR_mktag(0), ll_backend__frameopt__TypeInfo_103_103, 2) = ((MR_Box) (ll_backend__frameopt__TypeInfo_101_101));
+    }
+    {
+      mercury__map__lookup_3_p_0(ll_backend__frameopt__TypeCtorInfo_97_97, ll_backend__frameopt__TypeInfo_103_103, (MR_Word) ll_backend__frameopt__BlockMap_7, ((MR_Box) (ll_backend__frameopt__Label_11)), &ll_backend__frameopt__conv0_BlockInfo_13);
+    }
+    ll_backend__frameopt__BlockInfo_13 = ((MR_Word) ll_backend__frameopt__conv0_BlockInfo_13);
+    ll_backend__frameopt__BlockLabel_14 = ((MR_Word) (MR_hl_field(MR_mktag(0), ll_backend__frameopt__BlockInfo_13, (MR_Integer) 0)));
+    ll_backend__frameopt__BlockInstrs_15 = ((MR_Word) (MR_hl_field(MR_mktag(0), ll_backend__frameopt__BlockInfo_13, (MR_Integer) 1)));
+    ll_backend__frameopt__FallInto_16 = ((MR_Word) (MR_hl_field(MR_mktag(0), ll_backend__frameopt__BlockInfo_13, (MR_Integer) 2)));
+    ll_backend__frameopt__SideLabels_17 = ((MR_Word) (MR_hl_field(MR_mktag(0), ll_backend__frameopt__BlockInfo_13, (MR_Integer) 3)));
+    ll_backend__frameopt__MaybeFallThrough_18 = ((MR_Word) (MR_hl_field(MR_mktag(0), ll_backend__frameopt__BlockInfo_13, (MR_Integer) 4)));
+    ll_backend__frameopt__Type_19 = ((MR_Word) (MR_hl_field(MR_mktag(0), ll_backend__frameopt__BlockInfo_13, (MR_Integer) 5)));
+    {
+      ll_backend__frameopt__Var_42 = (MR_Word) MR_new_object(MR_Word, ((MR_Integer) 5 * sizeof(MR_Word)), NULL, NULL);
+      MR_hl_field(MR_mktag(0), ll_backend__frameopt__Var_42, 0) = ((MR_Box) (&ll_backend__frameopt_scalar_common_4[3]));
+      MR_hl_field(MR_mktag(0), ll_backend__frameopt__Var_42, 1) = ((MR_Box) (ll_backend__frameopt__describe_block_6_p_0_1));
+      MR_hl_field(MR_mktag(0), ll_backend__frameopt__Var_42, 2) = ((MR_Box) (MR_Word) ((MR_Integer) 2));
+      MR_hl_field(MR_mktag(0), ll_backend__frameopt__Var_42, 3) = ((MR_Box) (ll_backend__frameopt__Label_11));
+      MR_hl_field(MR_mktag(0), ll_backend__frameopt__Var_42, 4) = ((MR_Box) (ll_backend__frameopt__BlockLabel_14));
+    }
+    {
+      mercury__require__expect_4_p_0(ll_backend__frameopt__Var_42, (MR_String) "ll_backend.frameopt", (MR_String) "predicate \140ll_backend.frameopt.describe_block\'/6", (MR_String) "label mismatch");
+    }
+    {
+      ll_backend__frameopt__YesProcLabel_20 = (MR_Word) MR_mkword(MR_mktag(1), MR_new_object(MR_Word, ((MR_Integer) 1 * sizeof(MR_Word)), NULL, NULL));
+      MR_hl_field(MR_mktag(1), ll_backend__frameopt__YesProcLabel_20, 0) = ((MR_Box) (ll_backend__frameopt__ProcLabel_10));
+    }
+    {
+      ll_backend__frameopt__LabelStr_21 = ll_backend__opt_debug__dump_label_2_f_0(ll_backend__frameopt__YesProcLabel_20, ll_backend__frameopt__Label_11);
+    }
+    {
+      ll_backend__frameopt__BlockInstrsStr_22 = ll_backend__opt_debug__dump_fullinstrs_3_f_0(ll_backend__frameopt__YesProcLabel_20, (MR_Integer) 1, ll_backend__frameopt__BlockInstrs_15);
+    }
+    {
+      ll_backend__frameopt__Var_48 = mercury__string__f_43_43_2_f_0(ll_backend__frameopt__LabelStr_21, (MR_String) "\n\n");
+    }
+    {
+      ll_backend__frameopt__Heading_23 = mercury__string__f_43_43_2_f_0((MR_String) "\nBLOCK ", ll_backend__frameopt__Var_48);
+    }
+    {
+      ll_backend__frameopt__succeeded = mercury__map__search_3_p_0(ll_backend__frameopt__TypeCtorInfo_97_97, ll_backend__frameopt__TypeCtorInfo_97_97, ll_backend__frameopt__PredMap_9, ((MR_Box) (ll_backend__frameopt__Label_11)), &ll_backend__frameopt__conv1_PredLabel_24);
+    }
+    if (ll_backend__frameopt__succeeded)
+      {
+        ll_backend__frameopt__PredLabel_24 = ((MR_Word) ll_backend__frameopt__conv1_PredLabel_24);
+        ll_backend__frameopt__succeeded = MR_TRUE;
+      }
+    if (ll_backend__frameopt__succeeded)
+      {
+        MR_String ll_backend__frameopt__Var_51;
+        MR_String ll_backend__frameopt__Var_52;
+
+        {
+          ll_backend__frameopt__Var_52 = ll_backend__opt_debug__dump_label_2_f_0(ll_backend__frameopt__YesProcLabel_20, ll_backend__frameopt__PredLabel_24);
+        }
+        {
+          ll_backend__frameopt__Var_51 = mercury__string__f_43_43_2_f_0(ll_backend__frameopt__Var_52, (MR_String) "\n");
+        }
+        {
+          ll_backend__frameopt__PredStr_25 = mercury__string__f_43_43_2_f_0((MR_String) "previous label ", ll_backend__frameopt__Var_51);
+        }
+      }
+    else
+      ll_backend__frameopt__PredStr_25 = (MR_String) "no previous label\n";
+    if ((ll_backend__frameopt__FallInto_16 == ((MR_Word) MR_mkword(MR_mktag(0), MR_mkbody((MR_Integer) 0)))))
+      ll_backend__frameopt__FallIntoStr_27 = (MR_String) "not fallen into\n";
+    else
+      {
+        MR_Word ll_backend__frameopt__FallIntoFromLabel_26 = ((MR_Word) (MR_hl_field(MR_mktag(1), ll_backend__frameopt__FallInto_16, (MR_Integer) 0)));
+        MR_String ll_backend__frameopt__Var_55;
+        MR_String ll_backend__frameopt__Var_56;
+
+        {
+          ll_backend__frameopt__Var_56 = ll_backend__opt_debug__dump_label_2_f_0(ll_backend__frameopt__YesProcLabel_20, ll_backend__frameopt__FallIntoFromLabel_26);
+        }
+        {
+          ll_backend__frameopt__Var_55 = mercury__string__f_43_43_2_f_0(ll_backend__frameopt__Var_56, (MR_String) "\n");
+        }
+        {
+          ll_backend__frameopt__FallIntoStr_27 = mercury__string__f_43_43_2_f_0((MR_String) "fallen into from ", ll_backend__frameopt__Var_55);
+        }
+      }
+    if ((ll_backend__frameopt__SideLabels_17 == ((MR_Word) MR_mkword(MR_mktag(0), MR_mkbody((MR_Integer) 0)))))
+      ll_backend__frameopt__SideStr_28 = (MR_String) "no side labels\n";
+    else
+      {
+        MR_String ll_backend__frameopt__Var_59;
+        MR_String ll_backend__frameopt__Var_60;
+
+        {
+          ll_backend__frameopt__Var_60 = ll_backend__opt_debug__dump_labels_2_f_0(ll_backend__frameopt__YesProcLabel_20, ll_backend__frameopt__SideLabels_17);
+        }
+        {
+          ll_backend__frameopt__Var_59 = mercury__string__f_43_43_2_f_0(ll_backend__frameopt__Var_60, (MR_String) "\n");
+        }
+        {
+          ll_backend__frameopt__SideStr_28 = mercury__string__f_43_43_2_f_0((MR_String) "side labels ", ll_backend__frameopt__Var_59);
+        }
+      }
+    if ((ll_backend__frameopt__MaybeFallThrough_18 == ((MR_Word) MR_mkword(MR_mktag(0), MR_mkbody((MR_Integer) 0)))))
+      ll_backend__frameopt__FallThroughStr_32 = (MR_String) "does not fall through\n";
+    else
+      {
+        MR_Word ll_backend__frameopt__FallThroughLabel_31 = ((MR_Word) (MR_hl_field(MR_mktag(1), ll_backend__frameopt__MaybeFallThrough_18, (MR_Integer) 0)));
+        MR_String ll_backend__frameopt__Var_63;
+        MR_String ll_backend__frameopt__Var_64;
+
+        {
+          ll_backend__frameopt__Var_64 = ll_backend__opt_debug__dump_label_2_f_0(ll_backend__frameopt__YesProcLabel_20, ll_backend__frameopt__FallThroughLabel_31);
+        }
+        {
+          ll_backend__frameopt__Var_63 = mercury__string__f_43_43_2_f_0(ll_backend__frameopt__Var_64, (MR_String) "\n");
+        }
+        {
+          ll_backend__frameopt__FallThroughStr_32 = mercury__string__f_43_43_2_f_0((MR_String) "falls through to ", ll_backend__frameopt__Var_63);
+        }
+      }
+    switch (MR_tag((MR_Word) ll_backend__frameopt__Type_19)) {
+      default: /*NOTREACHED*/ MR_assert(0);
+      case (MR_Integer) 0:
+        {
+          MR_Box ll_backend__frameopt__Entry_33 = (MR_hl_field(MR_mktag(0), ll_backend__frameopt__Type_19, (MR_Integer) 0));
+          MR_String ll_backend__frameopt__Var_86;
+
+          {
+            ll_backend__frameopt__Var_86 = ll_backend__frameopt__describe_entry_1_f_0(ll_backend__frameopt__TypeClassInfo_for_block_entry_exit_96, ll_backend__frameopt__Entry_33);
+          }
+          {
+            ll_backend__frameopt__TypeStr_34 = mercury__string__f_43_43_2_f_0((MR_String) "entry_block\n", ll_backend__frameopt__Var_86);
+          }
+        }
+        break;
+      case (MR_Integer) 1:
+        {
+          MR_Word ll_backend__frameopt__UsesFrame_35 = ((MR_Word) (MR_hl_field(MR_mktag(1), ll_backend__frameopt__Type_19, (MR_Integer) 0)));
+          MR_Word ll_backend__frameopt__MaybeDummy_36 = ((MR_Word) (MR_hl_field(MR_mktag(1), ll_backend__frameopt__Type_19, (MR_Integer) 1)));
+          MR_String ll_backend__frameopt__TypeStr0_37;
+          MR_String ll_backend__frameopt__TypeStr1_38;
+          MR_Word ll_backend__frameopt__NeedsFrame_39;
+          MR_Box ll_backend__frameopt__conv2_NeedsFrame_39;
+
+          switch (ll_backend__frameopt__MaybeDummy_36) {
+            default: /*NOTREACHED*/ MR_assert(0);
+            case (MR_Integer) 0:
+              ll_backend__frameopt__TypeStr0_37 = (MR_String) "ordinary_block; ";
+              break;
+            case (MR_Integer) 1:
+              ll_backend__frameopt__TypeStr0_37 = (MR_String) "ordinary_block (post_entry_dummy); ";
+              break;
+            case (MR_Integer) 2:
+              ll_backend__frameopt__TypeStr0_37 = (MR_String) "ordinary_block (pre_exit_dummy); ";
+              break;
+          }
+          switch (ll_backend__frameopt__UsesFrame_35) {
+            default: /*NOTREACHED*/ MR_assert(0);
+            case (MR_Integer) 1:
+              {
+                {
+                  ll_backend__frameopt__TypeStr1_38 = mercury__string__f_43_43_2_f_0(ll_backend__frameopt__TypeStr0_37, (MR_String) "does not use frame\n");
+                }
+              }
+              break;
+            case (MR_Integer) 0:
+              {
+                {
+                  ll_backend__frameopt__TypeStr1_38 = mercury__string__f_43_43_2_f_0(ll_backend__frameopt__TypeStr0_37, (MR_String) "uses frame\n");
+                }
+              }
+              break;
+          }
+          {
+            ll_backend__frameopt__succeeded = mercury__map__search_3_p_0(ll_backend__frameopt__TypeCtorInfo_97_97, (MR_Word) &ll_backend__frameopt__ll_backend__frameopt__type_ctor_info_block_needs_frame_0, ll_backend__frameopt__OrdNeedsFrame_8, ((MR_Box) (ll_backend__frameopt__Label_11)), &ll_backend__frameopt__conv2_NeedsFrame_39);
+          }
+          if (ll_backend__frameopt__succeeded)
+            {
+              ll_backend__frameopt__NeedsFrame_39 = ((MR_Word) ll_backend__frameopt__conv2_NeedsFrame_39);
+              ll_backend__frameopt__succeeded = MR_TRUE;
+            }
+          if (ll_backend__frameopt__succeeded)
+            switch (ll_backend__frameopt__NeedsFrame_39) {
+              default: /*NOTREACHED*/ MR_assert(0);
+              case (MR_Integer) 1:
+                {
+                  MR_Word ll_backend__frameopt__Var_76;
+
+                  {
+                    ll_backend__frameopt__Var_76 = (MR_Word) MR_new_object(MR_Word, ((MR_Integer) 5 * sizeof(MR_Word)), NULL, NULL);
+                    MR_hl_field(MR_mktag(0), ll_backend__frameopt__Var_76, 0) = ((MR_Box) (&ll_backend__frameopt_scalar_common_4[0]));
+                    MR_hl_field(MR_mktag(0), ll_backend__frameopt__Var_76, 1) = ((MR_Box) (ll_backend__frameopt__describe_block_6_p_0_3));
+                    MR_hl_field(MR_mktag(0), ll_backend__frameopt__Var_76, 2) = ((MR_Box) (MR_Word) ((MR_Integer) 2));
+                    MR_hl_field(MR_mktag(0), ll_backend__frameopt__Var_76, 3) = ((MR_Box) (ll_backend__frameopt__UsesFrame_35));
+                    MR_hl_field(MR_mktag(0), ll_backend__frameopt__Var_76, 4) = ((MR_Box) ((MR_Integer) 1));
+                  }
+                  {
+                    mercury__require__expect_4_p_0(ll_backend__frameopt__Var_76, (MR_String) "ll_backend.frameopt", (MR_String) "predicate \140ll_backend.frameopt.describe_block\'/6", (MR_String) "NeedsFrame=block_doesnt_need_frame, UsesFrame=block_needs_frame");
+                  }
+                  {
+                    ll_backend__frameopt__TypeStr_34 = mercury__string__f_43_43_2_f_0(ll_backend__frameopt__TypeStr1_38, (MR_String) "does not need frame\n");
+                  }
+                }
+                break;
+              case (MR_Integer) 0:
+                {
+                  {
+                    ll_backend__frameopt__TypeStr_34 = mercury__string__f_43_43_2_f_0(ll_backend__frameopt__TypeStr1_38, (MR_String) "does need frame\n");
+                  }
+                }
+                break;
+            }
+          else
+            {
+              {
+                ll_backend__frameopt__TypeStr_34 = mercury__string__f_43_43_2_f_0(ll_backend__frameopt__TypeStr1_38, (MR_String) "(unknown whether it does need frame)\n");
+              }
+            }
+        }
+        break;
+      case (MR_Integer) 2:
+        {
+          MR_Box ll_backend__frameopt__Exit_40 = (MR_hl_field(MR_mktag(2), ll_backend__frameopt__Type_19, (MR_Integer) 0));
+          MR_Word ll_backend__frameopt__Var_66;
+          MR_String ll_backend__frameopt__Var_72;
+
+          {
+            ll_backend__frameopt__Var_66 = (MR_Word) MR_new_object(MR_Word, ((MR_Integer) 5 * sizeof(MR_Word)), NULL, NULL);
+            MR_hl_field(MR_mktag(0), ll_backend__frameopt__Var_66, 0) = ((MR_Box) (&ll_backend__frameopt_scalar_common_4[4]));
+            MR_hl_field(MR_mktag(0), ll_backend__frameopt__Var_66, 1) = ((MR_Box) (ll_backend__frameopt__describe_block_6_p_0_2));
+            MR_hl_field(MR_mktag(0), ll_backend__frameopt__Var_66, 2) = ((MR_Box) (MR_Word) ((MR_Integer) 2));
+            MR_hl_field(MR_mktag(0), ll_backend__frameopt__Var_66, 3) = ((MR_Box) (ll_backend__frameopt__MaybeFallThrough_18));
+            MR_hl_field(MR_mktag(0), ll_backend__frameopt__Var_66, 4) = ((MR_Box) (MR_mkword(MR_mktag(0), MR_mkbody((MR_Integer) 0))));
+          }
+          {
+            mercury__require__expect_4_p_0(ll_backend__frameopt__Var_66, (MR_String) "ll_backend.frameopt", (MR_String) "predicate \140ll_backend.frameopt.describe_block\'/6", (MR_String) "exit_block, MaybeFallThrough=yes(_)");
+          }
+          {
+            ll_backend__frameopt__Var_72 = ll_backend__frameopt__describe_exit_2_f_0(ll_backend__frameopt__TypeClassInfo_for_block_entry_exit_96, ll_backend__frameopt__YesProcLabel_20, ll_backend__frameopt__Exit_40);
+          }
+          {
+            ll_backend__frameopt__TypeStr_34 = mercury__string__f_43_43_2_f_0((MR_String) "exit_block\n", ll_backend__frameopt__Var_72);
+          }
+        }
+        break;
+    }
+    {
+      ll_backend__frameopt__Var_92 = mercury__string__f_43_43_2_f_0((MR_String) "CODE:\n", ll_backend__frameopt__BlockInstrsStr_22);
+    }
+    {
+      ll_backend__frameopt__Var_91 = mercury__string__f_43_43_2_f_0(ll_backend__frameopt__TypeStr_34, ll_backend__frameopt__Var_92);
+    }
+    {
+      ll_backend__frameopt__Var_90 = mercury__string__f_43_43_2_f_0(ll_backend__frameopt__FallThroughStr_32, ll_backend__frameopt__Var_91);
+    }
+    {
+      ll_backend__frameopt__Var_89 = mercury__string__f_43_43_2_f_0(ll_backend__frameopt__SideStr_28, ll_backend__frameopt__Var_90);
+    }
+    {
+      ll_backend__frameopt__Var_88 = mercury__string__f_43_43_2_f_0(ll_backend__frameopt__FallIntoStr_27, ll_backend__frameopt__Var_89);
+    }
+    {
+      ll_backend__frameopt__Var_87 = mercury__string__f_43_43_2_f_0(ll_backend__frameopt__PredStr_25, ll_backend__frameopt__Var_88);
+    }
+    {
+      ll_backend__frameopt__Comment_41 = mercury__string__f_43_43_2_f_0(ll_backend__frameopt__Heading_23, ll_backend__frameopt__Var_87);
+    }
+    {
+      ll_backend__frameopt__Var_94 = (MR_Word) MR_mkword(MR_mktag(1), MR_new_object(MR_Word, ((MR_Integer) 1 * sizeof(MR_Word)), NULL, NULL));
+      MR_hl_field(MR_mktag(1), ll_backend__frameopt__Var_94, 0) = ((MR_Box) (ll_backend__frameopt__Comment_41));
+    }
+    {
+      MR_Word base;
+      base = (MR_Word) MR_new_object(MR_Word, ((MR_Integer) 2 * sizeof(MR_Word)), NULL, NULL);
+      *ll_backend__frameopt__Instr_12 = base;
+      MR_hl_field(MR_mktag(0), base, 0) = ((MR_Box) (ll_backend__frameopt__Var_94));
+      MR_hl_field(MR_mktag(0), base, 1) = ((MR_Box) ((MR_String) ""));
+    }
+  }
+}
+
+static MR_String MR_CALL 
+ll_backend__frameopt__describe_exit_2_f_0(
+  MR_Word ll_backend__frameopt__TypeClassInfo_for_block_entry_exit_4,
+  MR_Word ll_backend__frameopt__HeadVar__1_1,
+  MR_Box ll_backend__frameopt__HeadVar__2_2)
+{
+  {
+    MR_String ll_backend__frameopt__HeadVar__3_3;
+    MR_Box MR_CALL (* ll_backend__frameopt__func_0)(MR_Box, MR_Box, MR_Box) = ((MR_Box MR_CALL (*)(MR_Box, MR_Box, MR_Box)) (MR_hl_field(MR_mktag(0), (MR_hl_field(MR_mktag(0), ll_backend__frameopt__TypeClassInfo_for_block_entry_exit_4, (MR_Integer) 0)), (MR_Integer) 10)));
+    MR_Box ll_backend__frameopt__conv1_HeadVar__3_3;
+
+    {
+      ll_backend__frameopt__conv1_HeadVar__3_3 = ll_backend__frameopt__func_0(((MR_Box) ll_backend__frameopt__TypeClassInfo_for_block_entry_exit_4), ((MR_Box) (ll_backend__frameopt__HeadVar__1_1)), ll_backend__frameopt__HeadVar__2_2);
+    }
+    ll_backend__frameopt__HeadVar__3_3 = ((MR_String) ll_backend__frameopt__conv1_HeadVar__3_3);
+    return ll_backend__frameopt__HeadVar__3_3;
+  }
+}
+
+static MR_String MR_CALL 
+ll_backend__frameopt__describe_entry_1_f_0(
+  MR_Word ll_backend__frameopt__TypeClassInfo_for_block_entry_exit_3,
+  MR_Box ll_backend__frameopt__HeadVar__1_1)
+{
+  {
+    MR_String ll_backend__frameopt__HeadVar__2_2;
+    MR_Box MR_CALL (* ll_backend__frameopt__func_0)(MR_Box, MR_Box) = ((MR_Box MR_CALL (*)(MR_Box, MR_Box)) (MR_hl_field(MR_mktag(0), (MR_hl_field(MR_mktag(0), ll_backend__frameopt__TypeClassInfo_for_block_entry_exit_3, (MR_Integer) 0)), (MR_Integer) 9)));
+    MR_Box ll_backend__frameopt__conv1_HeadVar__2_2;
+
+    {
+      ll_backend__frameopt__conv1_HeadVar__2_2 = ll_backend__frameopt__func_0(((MR_Box) ll_backend__frameopt__TypeClassInfo_for_block_entry_exit_3), ll_backend__frameopt__HeadVar__1_1);
+    }
+    ll_backend__frameopt__HeadVar__2_2 = ((MR_String) ll_backend__frameopt__conv1_HeadVar__2_2);
+    return ll_backend__frameopt__HeadVar__2_2;
+  }
+}
+
+static MR_bool MR_CALL 
+ll_backend__frameopt__no_disagreement_3_p_0(
+  MR_Word ll_backend__frameopt__HeadVar__1_1,
+  MR_Word ll_backend__frameopt__Key_2,
+  MR_Word ll_backend__frameopt__Value_3)
+{
+  while (MR_TRUE)
+    {
+      /* tailcall optimized into a loop */
+      {
+        MR_bool ll_backend__frameopt__succeeded;
+
+        if ((ll_backend__frameopt__HeadVar__1_1 == ((MR_Word) MR_mkword(MR_mktag(0), MR_mkbody((MR_Integer) 0)))))
+          ll_backend__frameopt__succeeded = MR_TRUE;
+        else
+          {
+            MR_Word ll_backend__frameopt__K_6;
+            MR_Word ll_backend__frameopt__V_7;
+            MR_Word ll_backend__frameopt__KVs_8 = ((MR_Word) (MR_hl_field(MR_mktag(1), ll_backend__frameopt__HeadVar__1_1, (MR_Integer) 1)));
+            MR_Word ll_backend__frameopt__Var_11 = ((MR_Word) (MR_hl_field(MR_mktag(1), ll_backend__frameopt__HeadVar__1_1, (MR_Integer) 0)));
+
+            ll_backend__frameopt__K_6 = ((MR_Word) (MR_hl_field(MR_mktag(0), ll_backend__frameopt__Var_11, (MR_Integer) 0)));
+            ll_backend__frameopt__V_7 = ((MR_Word) (MR_hl_field(MR_mktag(0), ll_backend__frameopt__Var_11, (MR_Integer) 1)));
+            {
+              ll_backend__frameopt__succeeded = ll_backend__llds____Unify____label_0_0(ll_backend__frameopt__K_6, ll_backend__frameopt__Key_2);
+            }
+            if (ll_backend__frameopt__succeeded)
+              {
+                {
+                  ll_backend__frameopt__succeeded = ll_backend__llds____Unify____label_0_0(ll_backend__frameopt__V_7, ll_backend__frameopt__Value_3);
+                }
+                ll_backend__frameopt__succeeded = !(ll_backend__frameopt__succeeded);
+              }
+            ll_backend__frameopt__succeeded = !(ll_backend__frameopt__succeeded);
+            if (ll_backend__frameopt__succeeded)
+              {
+                /* direct tailcall eliminated */
+                {
+                  MR_Word ll_backend__frameopt__next_value_of_HeadVar__1_1 = ll_backend__frameopt__KVs_8;
+
+                  ll_backend__frameopt__HeadVar__1_1 = ll_backend__frameopt__next_value_of_HeadVar__1_1;
+                }
+                continue;
+              }
+          }
+        return ll_backend__frameopt__succeeded;
+      }
+      break;
+    }
+}
+
+static MR_bool MR_CALL 
+ll_backend__frameopt__label_needs_frame_2_p_0(
+  MR_Word ll_backend__frameopt__OrdNeedsFrame_3,
+  MR_Word ll_backend__frameopt__Label_4)
+{
+  {
+    MR_bool ll_backend__frameopt__succeeded;
+    MR_Word ll_backend__frameopt__NeedsFrame_5;
+    MR_Box ll_backend__frameopt__conv0_NeedsFrame_5;
+
+    {
+      ll_backend__frameopt__succeeded = mercury__map__search_3_p_0((MR_Word) &ll_backend__llds__ll_backend__llds__type_ctor_info_label_0, (MR_Word) &ll_backend__frameopt__ll_backend__frameopt__type_ctor_info_block_needs_frame_0, ll_backend__frameopt__OrdNeedsFrame_3, ((MR_Box) (ll_backend__frameopt__Label_4)), &ll_backend__frameopt__conv0_NeedsFrame_5);
+    }
+    if (ll_backend__frameopt__succeeded)
+      {
+        ll_backend__frameopt__NeedsFrame_5 = ((MR_Word) ll_backend__frameopt__conv0_NeedsFrame_5);
+        ll_backend__frameopt__succeeded = MR_TRUE;
+      }
+    if (ll_backend__frameopt__succeeded)
+      ll_backend__frameopt__succeeded = (ll_backend__frameopt__NeedsFrame_5 == (MR_Integer) 0);
+    return ll_backend__frameopt__succeeded;
+  }
+}
+
+static MR_bool MR_CALL 
+ll_backend__frameopt__all_successors_need_frame_3_p_0_1(
+  MR_Box ll_backend__frameopt__closure_arg,
+  MR_Box ll_backend__frameopt__wrapper_arg_1)
+{
+  {
+    MR_bool ll_backend__frameopt__succeeded;
+    MR_Box ll_backend__frameopt__closure = ll_backend__frameopt__closure_arg;
+
+    {
+      ll_backend__frameopt__succeeded = ll_backend__frameopt__label_needs_frame_2_p_0(((MR_Word) (MR_hl_field(MR_mktag(0), ll_backend__frameopt__closure, (MR_Integer) 3))), ((MR_Word) ll_backend__frameopt__wrapper_arg_1));
+    }
+    return ll_backend__frameopt__succeeded;
+  }
+}
+
+static MR_bool MR_CALL 
+ll_backend__frameopt__all_successors_need_frame_3_p_0(
+  MR_Word ll_backend__frameopt__TypeInfo_for_En_12,
+  MR_Word ll_backend__frameopt__TypeInfo_for_Ex_13,
+  MR_Word ll_backend__frameopt__BlockMap_4,
+  MR_Word ll_backend__frameopt__OrdNeedsFrame_5,
+  MR_Word ll_backend__frameopt__Label_6)
+{
+  {
+    MR_bool ll_backend__frameopt__succeeded;
+    MR_Word ll_backend__frameopt__TypeCtorInfo_14_14 = (MR_Word) &ll_backend__llds__ll_backend__llds__type_ctor_info_label_0;
+    MR_Word ll_backend__frameopt__TypeInfo_16_16;
+    MR_Word ll_backend__frameopt__BlockInfo_7;
+    MR_Word ll_backend__frameopt__Successors_8;
+    MR_Word ll_backend__frameopt__NoNeedFrameSuccessors_10;
+    MR_Word ll_backend__frameopt__Var_11;
+    MR_Word ll_backend__frameopt__SideLabels_20;
+    MR_Word ll_backend__frameopt__MaybeFallThrough_21;
+    MR_Box ll_backend__frameopt__conv0_BlockInfo_7;
+    MR_Word ll_backend__frameopt__Var_23;
+    MR_Word ll_backend__frameopt__Var_24;
+    MR_Word ll_backend__frameopt__Var_25;
+    MR_Word ll_backend__frameopt__Var_27;
+    MR_Word ll_backend__frameopt___NeedFrameSuccessors_9;
+
+    {
+      ll_backend__frameopt__TypeInfo_16_16 = (MR_Word) MR_new_object(MR_Word, ((MR_Integer) 3 * sizeof(MR_Word)), NULL, NULL);
+      MR_hl_field(MR_mktag(0), ll_backend__frameopt__TypeInfo_16_16, 0) = ((MR_Box) (&ll_backend__frameopt__ll_backend__frameopt__type_ctor_info_frame_block_info_2));
+      MR_hl_field(MR_mktag(0), ll_backend__frameopt__TypeInfo_16_16, 1) = ((MR_Box) (ll_backend__frameopt__TypeInfo_for_En_12));
+      MR_hl_field(MR_mktag(0), ll_backend__frameopt__TypeInfo_16_16, 2) = ((MR_Box) (ll_backend__frameopt__TypeInfo_for_Ex_13));
+    }
+    {
+      mercury__map__lookup_3_p_0(ll_backend__frameopt__TypeCtorInfo_14_14, ll_backend__frameopt__TypeInfo_16_16, (MR_Word) ll_backend__frameopt__BlockMap_4, ((MR_Box) (ll_backend__frameopt__Label_6)), &ll_backend__frameopt__conv0_BlockInfo_7);
+    }
+    ll_backend__frameopt__BlockInfo_7 = ((MR_Word) ll_backend__frameopt__conv0_BlockInfo_7);
+    ll_backend__frameopt__Var_23 = ((MR_Word) (MR_hl_field(MR_mktag(0), ll_backend__frameopt__BlockInfo_7, (MR_Integer) 0)));
+    ll_backend__frameopt__Var_24 = ((MR_Word) (MR_hl_field(MR_mktag(0), ll_backend__frameopt__BlockInfo_7, (MR_Integer) 1)));
+    ll_backend__frameopt__Var_25 = ((MR_Word) (MR_hl_field(MR_mktag(0), ll_backend__frameopt__BlockInfo_7, (MR_Integer) 2)));
+    ll_backend__frameopt__SideLabels_20 = ((MR_Word) (MR_hl_field(MR_mktag(0), ll_backend__frameopt__BlockInfo_7, (MR_Integer) 3)));
+    ll_backend__frameopt__MaybeFallThrough_21 = ((MR_Word) (MR_hl_field(MR_mktag(0), ll_backend__frameopt__BlockInfo_7, (MR_Integer) 4)));
+    ll_backend__frameopt__Var_27 = ((MR_Word) (MR_hl_field(MR_mktag(0), ll_backend__frameopt__BlockInfo_7, (MR_Integer) 5)));
+    if ((ll_backend__frameopt__MaybeFallThrough_21 == ((MR_Word) MR_mkword(MR_mktag(0), MR_mkbody((MR_Integer) 0)))))
+      ll_backend__frameopt__Successors_8 = ll_backend__frameopt__SideLabels_20;
+    else
+      {
+        MR_Word ll_backend__frameopt__FallThrough_22 = ((MR_Word) (MR_hl_field(MR_mktag(1), ll_backend__frameopt__MaybeFallThrough_21, (MR_Integer) 0)));
+
+        {
+          ll_backend__frameopt__Successors_8 = (MR_Word) MR_mkword(MR_mktag(1), MR_new_object(MR_Word, ((MR_Integer) 2 * sizeof(MR_Word)), NULL, NULL));
+          MR_hl_field(MR_mktag(1), ll_backend__frameopt__Successors_8, 0) = ((MR_Box) (ll_backend__frameopt__FallThrough_22));
+          MR_hl_field(MR_mktag(1), ll_backend__frameopt__Successors_8, 1) = ((MR_Box) (ll_backend__frameopt__SideLabels_20));
+        }
+      }
+    {
+      ll_backend__frameopt__Var_11 = (MR_Word) MR_new_object(MR_Word, ((MR_Integer) 4 * sizeof(MR_Word)), NULL, NULL);
+      MR_hl_field(MR_mktag(0), ll_backend__frameopt__Var_11, 0) = ((MR_Box) (&ll_backend__frameopt_scalar_common_4[7]));
+      MR_hl_field(MR_mktag(0), ll_backend__frameopt__Var_11, 1) = ((MR_Box) (ll_backend__frameopt__all_successors_need_frame_3_p_0_1));
+      MR_hl_field(MR_mktag(0), ll_backend__frameopt__Var_11, 2) = ((MR_Box) (MR_Word) ((MR_Integer) 1));
+      MR_hl_field(MR_mktag(0), ll_backend__frameopt__Var_11, 3) = ((MR_Box) (ll_backend__frameopt__OrdNeedsFrame_5));
+    }
+    {
+      mercury__list__filter_4_p_0(ll_backend__frameopt__TypeCtorInfo_14_14, ll_backend__frameopt__Var_11, ll_backend__frameopt__Successors_8, &ll_backend__frameopt___NeedFrameSuccessors_9, &ll_backend__frameopt__NoNeedFrameSuccessors_10);
+    }
+    ll_backend__frameopt__succeeded = (ll_backend__frameopt__NoNeedFrameSuccessors_10 == ((MR_Word) MR_mkword(MR_mktag(0), MR_mkbody((MR_Integer) 0))));
+    return ll_backend__frameopt__succeeded;
+  }
+}
+
+static void MR_CALL 
+ll_backend__frameopt__record_frame_need_6_p_0(
+  MR_Word ll_backend__frameopt__TypeInfo_for_En_31,
+  MR_Word ll_backend__frameopt__TypeInfo_for_Ex_32,
+  MR_Word ll_backend__frameopt__BlockMap_7,
+  MR_Word ll_backend__frameopt__Label_8,
+  MR_Word ll_backend__frameopt__STATE_VARIABLE_OrdNeedsFrame_0_17,
+  MR_Word * ll_backend__frameopt__STATE_VARIABLE_OrdNeedsFrame_18,
+  MR_Word ll_backend__frameopt__STATE_VARIABLE_CanTransform_0_19,
+  MR_Word * ll_backend__frameopt__STATE_VARIABLE_CanTransform_20)
+{
+  {
+    MR_Word ll_backend__frameopt__TypeInfo_35_35;
+    MR_Word ll_backend__frameopt__BlockInfo_11;
+    MR_Word ll_backend__frameopt__BlockType_12;
+    MR_Box ll_backend__frameopt__conv0_BlockInfo_11;
+    MR_Word ll_backend__frameopt__Var_26;
+    MR_Word ll_backend__frameopt__Var_27;
+    MR_Word ll_backend__frameopt__Var_28;
+    MR_Word ll_backend__frameopt__Var_29;
+    MR_Word ll_backend__frameopt__Var_30;
+
+    {
+      ll_backend__frameopt__TypeInfo_35_35 = (MR_Word) MR_new_object(MR_Word, ((MR_Integer) 3 * sizeof(MR_Word)), NULL, NULL);
+      MR_hl_field(MR_mktag(0), ll_backend__frameopt__TypeInfo_35_35, 0) = ((MR_Box) (&ll_backend__frameopt__ll_backend__frameopt__type_ctor_info_frame_block_info_2));
+      MR_hl_field(MR_mktag(0), ll_backend__frameopt__TypeInfo_35_35, 1) = ((MR_Box) (ll_backend__frameopt__TypeInfo_for_En_31));
+      MR_hl_field(MR_mktag(0), ll_backend__frameopt__TypeInfo_35_35, 2) = ((MR_Box) (ll_backend__frameopt__TypeInfo_for_Ex_32));
+    }
+    {
+      mercury__map__lookup_3_p_0((MR_Word) &ll_backend__llds__ll_backend__llds__type_ctor_info_label_0, ll_backend__frameopt__TypeInfo_35_35, (MR_Word) ll_backend__frameopt__BlockMap_7, ((MR_Box) (ll_backend__frameopt__Label_8)), &ll_backend__frameopt__conv0_BlockInfo_11);
+    }
+    ll_backend__frameopt__BlockInfo_11 = ((MR_Word) ll_backend__frameopt__conv0_BlockInfo_11);
+    ll_backend__frameopt__Var_26 = ((MR_Word) (MR_hl_field(MR_mktag(0), ll_backend__frameopt__BlockInfo_11, (MR_Integer) 0)));
+    ll_backend__frameopt__Var_27 = ((MR_Word) (MR_hl_field(MR_mktag(0), ll_backend__frameopt__BlockInfo_11, (MR_Integer) 1)));
+    ll_backend__frameopt__Var_28 = ((MR_Word) (MR_hl_field(MR_mktag(0), ll_backend__frameopt__BlockInfo_11, (MR_Integer) 2)));
+    ll_backend__frameopt__Var_29 = ((MR_Word) (MR_hl_field(MR_mktag(0), ll_backend__frameopt__BlockInfo_11, (MR_Integer) 3)));
+    ll_backend__frameopt__Var_30 = ((MR_Word) (MR_hl_field(MR_mktag(0), ll_backend__frameopt__BlockInfo_11, (MR_Integer) 4)));
+    ll_backend__frameopt__BlockType_12 = ((MR_Word) (MR_hl_field(MR_mktag(0), ll_backend__frameopt__BlockInfo_11, (MR_Integer) 5)));
+    switch (MR_tag((MR_Word) ll_backend__frameopt__BlockType_12)) {
+      default: /*NOTREACHED*/ MR_assert(0);
+      case (MR_Integer) 0:
+        {
+          *ll_backend__frameopt__STATE_VARIABLE_CanTransform_20 = (MR_Integer) 1;
+          *ll_backend__frameopt__STATE_VARIABLE_OrdNeedsFrame_18 = ll_backend__frameopt__STATE_VARIABLE_OrdNeedsFrame_0_17;
+        }
+        break;
+      case (MR_Integer) 1:
+        {
+          MR_Word ll_backend__frameopt__TypeCtorInfo_11_43 = (MR_Word) &ll_backend__llds__ll_backend__llds__type_ctor_info_label_0;
+          MR_Word ll_backend__frameopt__TypeCtorInfo_12_44 = (MR_Word) &ll_backend__frameopt__ll_backend__frameopt__type_ctor_info_block_needs_frame_0;
+          MR_Word ll_backend__frameopt__NeedsFrame0_40;
+          MR_Box ll_backend__frameopt__conv1_NeedsFrame0_40;
+
+          {
+            mercury__map__lookup_3_p_0(ll_backend__frameopt__TypeCtorInfo_11_43, ll_backend__frameopt__TypeCtorInfo_12_44, ll_backend__frameopt__STATE_VARIABLE_OrdNeedsFrame_0_17, ((MR_Box) (ll_backend__frameopt__Label_8)), &ll_backend__frameopt__conv1_NeedsFrame0_40);
+          }
+          ll_backend__frameopt__NeedsFrame0_40 = ((MR_Word) ll_backend__frameopt__conv1_NeedsFrame0_40);
+          switch (ll_backend__frameopt__NeedsFrame0_40) {
+            default: /*NOTREACHED*/ MR_assert(0);
+            case (MR_Integer) 1:
+              {
+                {
+                  mercury__map__det_update_4_p_0(ll_backend__frameopt__TypeCtorInfo_11_43, ll_backend__frameopt__TypeCtorInfo_12_44, ((MR_Box) (ll_backend__frameopt__Label_8)), ((MR_Box) ((MR_Integer) 0)), ll_backend__frameopt__STATE_VARIABLE_OrdNeedsFrame_0_17, ll_backend__frameopt__STATE_VARIABLE_OrdNeedsFrame_18);
+                }
+              }
+              break;
+            case (MR_Integer) 0:
+              *ll_backend__frameopt__STATE_VARIABLE_OrdNeedsFrame_18 = ll_backend__frameopt__STATE_VARIABLE_OrdNeedsFrame_0_17;
+              break;
+          }
+          *ll_backend__frameopt__STATE_VARIABLE_CanTransform_20 = ll_backend__frameopt__STATE_VARIABLE_CanTransform_0_19;
+        }
+        break;
+      case (MR_Integer) 2:
+        {
+          {
+            mercury__require__unexpected_3_p_0((MR_String) "ll_backend.frameopt", (MR_String) "predicate \140ll_backend.frameopt.record_frame_need\'/6", (MR_String) "exit_block");
+            return;
+          }
+        }
+        break;
+    }
+  }
+}
+
+static MR_bool MR_CALL 
+ll_backend__frameopt__key_block_needs_frame_2_p_0(
+  MR_Word ll_backend__frameopt__HeadVar__1_1,
+  MR_Word * ll_backend__frameopt__Label_3)
+{
+  {
+    MR_bool ll_backend__frameopt__succeeded;
+    MR_Word ll_backend__frameopt__Var_4;
+
+    *ll_backend__frameopt__Label_3 = ((MR_Word) (MR_hl_field(MR_mktag(0), ll_backend__frameopt__HeadVar__1_1, (MR_Integer) 0)));
+    ll_backend__frameopt__Var_4 = ((MR_Word) (MR_hl_field(MR_mktag(0), ll_backend__frameopt__HeadVar__1_1, (MR_Integer) 1)));
+    ll_backend__frameopt__succeeded = (ll_backend__frameopt__Var_4 == (MR_Integer) 0);
+    return ll_backend__frameopt__succeeded;
+  }
+}
+
+static void MR_CALL 
+ll_backend__frameopt__mark_redoip_label_3_p_0(
+  MR_Word ll_backend__frameopt__TypeInfo_for_En_35,
+  MR_Word ll_backend__frameopt__TypeInfo_for_Ex_36,
+  MR_Word ll_backend__frameopt__Label_4,
+  MR_Word ll_backend__frameopt__STATE_VARIABLE_BlockMap_0_14,
+  MR_Word * ll_backend__frameopt__STATE_VARIABLE_BlockMap_15)
+{
+  {
+    MR_Word ll_backend__frameopt__TypeCtorInfo_37_37 = (MR_Word) &ll_backend__llds__ll_backend__llds__type_ctor_info_label_0;
+    MR_Word ll_backend__frameopt__TypeInfo_39_39;
+    MR_Word ll_backend__frameopt__BlockInfo0_6;
+    MR_Word ll_backend__frameopt__BlockType0_7;
+    MR_Word ll_backend__frameopt__Var_24;
+    MR_Word ll_backend__frameopt__Var_25;
+    MR_Word ll_backend__frameopt__Var_26;
+    MR_Word ll_backend__frameopt__Var_27;
+    MR_Word ll_backend__frameopt__Var_28;
+    MR_Box ll_backend__frameopt__conv0_BlockInfo0_6;
+
+    {
+      ll_backend__frameopt__TypeInfo_39_39 = (MR_Word) MR_new_object(MR_Word, ((MR_Integer) 3 * sizeof(MR_Word)), NULL, NULL);
+      MR_hl_field(MR_mktag(0), ll_backend__frameopt__TypeInfo_39_39, 0) = ((MR_Box) (&ll_backend__frameopt__ll_backend__frameopt__type_ctor_info_frame_block_info_2));
+      MR_hl_field(MR_mktag(0), ll_backend__frameopt__TypeInfo_39_39, 1) = ((MR_Box) (ll_backend__frameopt__TypeInfo_for_En_35));
+      MR_hl_field(MR_mktag(0), ll_backend__frameopt__TypeInfo_39_39, 2) = ((MR_Box) (ll_backend__frameopt__TypeInfo_for_Ex_36));
+    }
+    {
+      mercury__map__lookup_3_p_0(ll_backend__frameopt__TypeCtorInfo_37_37, ll_backend__frameopt__TypeInfo_39_39, (MR_Word) ll_backend__frameopt__STATE_VARIABLE_BlockMap_0_14, ((MR_Box) (ll_backend__frameopt__Label_4)), &ll_backend__frameopt__conv0_BlockInfo0_6);
+    }
+    ll_backend__frameopt__BlockInfo0_6 = ((MR_Word) ll_backend__frameopt__conv0_BlockInfo0_6);
+    ll_backend__frameopt__Var_24 = ((MR_Word) (MR_hl_field(MR_mktag(0), ll_backend__frameopt__BlockInfo0_6, (MR_Integer) 0)));
+    ll_backend__frameopt__Var_25 = ((MR_Word) (MR_hl_field(MR_mktag(0), ll_backend__frameopt__BlockInfo0_6, (MR_Integer) 1)));
+    ll_backend__frameopt__Var_26 = ((MR_Word) (MR_hl_field(MR_mktag(0), ll_backend__frameopt__BlockInfo0_6, (MR_Integer) 2)));
+    ll_backend__frameopt__Var_27 = ((MR_Word) (MR_hl_field(MR_mktag(0), ll_backend__frameopt__BlockInfo0_6, (MR_Integer) 3)));
+    ll_backend__frameopt__Var_28 = ((MR_Word) (MR_hl_field(MR_mktag(0), ll_backend__frameopt__BlockInfo0_6, (MR_Integer) 4)));
+    ll_backend__frameopt__BlockType0_7 = ((MR_Word) (MR_hl_field(MR_mktag(0), ll_backend__frameopt__BlockInfo0_6, (MR_Integer) 5)));
+    switch (MR_tag((MR_Word) ll_backend__frameopt__BlockType0_7)) {
+      default: /*NOTREACHED*/ MR_assert(0);
+      case (MR_Integer) 0:
+        {
+          {
+            mercury__require__unexpected_3_p_0((MR_String) "ll_backend.frameopt", (MR_String) "predicate \140ll_backend.frameopt.mark_redoip_label\'/3", (MR_String) "entry_block");
+            return;
+          }
+        }
+        break;
+      case (MR_Integer) 1:
+        {
+          MR_Word ll_backend__frameopt__MaybeDummy_10 = ((MR_Word) (MR_hl_field(MR_mktag(1), ll_backend__frameopt__BlockType0_7, (MR_Integer) 1)));
+          MR_Word ll_backend__frameopt__BlockType_11;
+          MR_Word ll_backend__frameopt__BlockInfo_12;
+          MR_Word ll_backend__frameopt__Var_9 = ((MR_Word) (MR_hl_field(MR_mktag(1), ll_backend__frameopt__BlockType0_7, (MR_Integer) 0)));
+          MR_Word ll_backend__frameopt__conv1_STATE_VARIABLE_BlockMap_15;
+
+          {
+            ll_backend__frameopt__BlockType_11 = (MR_Word) MR_mkword(MR_mktag(1), MR_new_object(MR_Word, ((MR_Integer) 2 * sizeof(MR_Word)), NULL, NULL));
+            MR_hl_field(MR_mktag(1), ll_backend__frameopt__BlockType_11, 0) = ((MR_Box) ((MR_Integer) 0));
+            MR_hl_field(MR_mktag(1), ll_backend__frameopt__BlockType_11, 1) = ((MR_Box) (ll_backend__frameopt__MaybeDummy_10));
+          }
+          {
+            ll_backend__frameopt__BlockInfo_12 = (MR_Word) MR_new_object(MR_Word, ((MR_Integer) 6 * sizeof(MR_Word)), NULL, NULL);
+            MR_hl_field(MR_mktag(0), ll_backend__frameopt__BlockInfo_12, 0) = ((MR_Box) (ll_backend__frameopt__Var_24));
+            MR_hl_field(MR_mktag(0), ll_backend__frameopt__BlockInfo_12, 1) = ((MR_Box) (ll_backend__frameopt__Var_25));
+            MR_hl_field(MR_mktag(0), ll_backend__frameopt__BlockInfo_12, 2) = ((MR_Box) (ll_backend__frameopt__Var_26));
+            MR_hl_field(MR_mktag(0), ll_backend__frameopt__BlockInfo_12, 3) = ((MR_Box) (ll_backend__frameopt__Var_27));
+            MR_hl_field(MR_mktag(0), ll_backend__frameopt__BlockInfo_12, 4) = ((MR_Box) (ll_backend__frameopt__Var_28));
+            MR_hl_field(MR_mktag(0), ll_backend__frameopt__BlockInfo_12, 5) = ((MR_Box) (ll_backend__frameopt__BlockType_11));
+          }
+          {
+            mercury__map__det_update_4_p_0(ll_backend__frameopt__TypeCtorInfo_37_37, ll_backend__frameopt__TypeInfo_39_39, ((MR_Box) (ll_backend__frameopt__Label_4)), ((MR_Box) (ll_backend__frameopt__BlockInfo_12)), (MR_Word) ll_backend__frameopt__STATE_VARIABLE_BlockMap_0_14, &ll_backend__frameopt__conv1_STATE_VARIABLE_BlockMap_15);
+          }
+          *ll_backend__frameopt__STATE_VARIABLE_BlockMap_15 = (MR_Word) ll_backend__frameopt__conv1_STATE_VARIABLE_BlockMap_15;
+        }
+        break;
+      case (MR_Integer) 2:
+        {
+          {
+            mercury__require__unexpected_3_p_0((MR_String) "ll_backend.frameopt", (MR_String) "predicate \140ll_backend.frameopt.mark_redoip_label\'/3", (MR_String) "exit_block");
+            return;
+          }
+        }
+        break;
+    }
+  }
+}
+
+static MR_bool MR_CALL 
+ll_backend__frameopt__local_label_2_p_0(
+  MR_Word ll_backend__frameopt__ProcLabel_1,
+  MR_Word ll_backend__frameopt__HeadVar__2_2)
+{
+  {
+    MR_bool ll_backend__frameopt__succeeded;
+
+    if (((MR_tag((MR_Word) ll_backend__frameopt__HeadVar__2_2)) == (MR_mktag((MR_Integer) 1))))
+      {
+        MR_Word ll_backend__frameopt__Var_7 = ((MR_Word) (MR_hl_field(MR_mktag(1), ll_backend__frameopt__HeadVar__2_2, (MR_Integer) 1)));
+        MR_Word ll_backend__frameopt__Var_4 = ((MR_Word) (MR_hl_field(MR_mktag(1), ll_backend__frameopt__HeadVar__2_2, (MR_Integer) 0)));
+
+        {
+          ll_backend__frameopt__succeeded = mdbcomp__prim_data____Unify____proc_label_0_0(ll_backend__frameopt__ProcLabel_1, ll_backend__frameopt__Var_7);
+        }
+      }
+    else
+      {
+        MR_Word ll_backend__frameopt__Var_8 = ((MR_Word) (MR_hl_field(MR_mktag(0), ll_backend__frameopt__HeadVar__2_2, (MR_Integer) 1)));
+        MR_Integer ll_backend__frameopt__Var_6 = ((MR_Integer) (MR_hl_field(MR_mktag(0), ll_backend__frameopt__HeadVar__2_2, (MR_Integer) 0)));
+
+        {
+          ll_backend__frameopt__succeeded = mdbcomp__prim_data____Unify____proc_label_0_0(ll_backend__frameopt__ProcLabel_1, ll_backend__frameopt__Var_8);
+        }
+      }
+    return ll_backend__frameopt__succeeded;
+  }
+}
+
+static MR_bool MR_CALL 
+ll_backend__frameopt__nondetstack_teardown_9_p_0(
+  MR_Word ll_backend__frameopt__HeadVar__1_1,
+  MR_Word * ll_backend__frameopt__Extra_12,
+  MR_Word * ll_backend__frameopt__SuccipRestore_13,
+  MR_Word * ll_backend__frameopt__Maxfr_14,
+  MR_Word * ll_backend__frameopt__Curfr_15,
+  MR_Word * ll_backend__frameopt__Livevals_16,
+  MR_Word * ll_backend__frameopt__Goto_17,
+  MR_Word * ll_backend__frameopt__GotoTarget_18,
+  MR_Word * ll_backend__frameopt__Remain_19)
+{
+  {
+    MR_bool ll_backend__frameopt__succeeded = ((MR_tag((MR_Word) ll_backend__frameopt__HeadVar__1_1)) == (MR_mktag((MR_Integer) 1)));
+    MR_Word ll_backend__frameopt__Instr0_10;
+    MR_Word ll_backend__frameopt__Instrs0_11;
+    MR_Word ll_backend__frameopt__Var_31;
+    MR_String ll_backend__frameopt__Var_21;
+    MR_Word ll_backend__frameopt__Var_20;
+
+    if (ll_backend__frameopt__succeeded)
+      {
+        ll_backend__frameopt__Instr0_10 = ((MR_Word) (MR_hl_field(MR_mktag(1), ll_backend__frameopt__HeadVar__1_1, (MR_Integer) 0)));
+        ll_backend__frameopt__Instrs0_11 = ((MR_Word) (MR_hl_field(MR_mktag(1), ll_backend__frameopt__HeadVar__1_1, (MR_Integer) 1)));
+        ll_backend__frameopt__Var_31 = ((MR_Word) (MR_hl_field(MR_mktag(0), ll_backend__frameopt__Instr0_10, (MR_Integer) 0)));
+        ll_backend__frameopt__Var_21 = ((MR_String) (MR_hl_field(MR_mktag(0), ll_backend__frameopt__Instr0_10, (MR_Integer) 1)));
+        ll_backend__frameopt__succeeded = ((((MR_tag((MR_Word) ll_backend__frameopt__Var_31)) == (MR_mktag((MR_Integer) 3)))) && (((((MR_Integer) (MR_Word) (MR_hl_field(MR_mktag(3), ll_backend__frameopt__Var_31, (MR_Integer) 0)))) == (MR_Integer) 5)));
+        if (ll_backend__frameopt__succeeded)
+          {
+            ll_backend__frameopt__Var_20 = ((MR_Word) (MR_hl_field(MR_mktag(3), ll_backend__frameopt__Var_31, (MR_Integer) 1)));
+            ll_backend__frameopt__succeeded = MR_FALSE;
+          }
+        else
+          {
+            MR_Word ll_backend__frameopt__ExtraPrime_22;
+            MR_Word ll_backend__frameopt__SuccipRestorePrime_23;
+            MR_Word ll_backend__frameopt__MaxfrPrime_24;
+            MR_Word ll_backend__frameopt__CurfrPrime_25;
+            MR_Word ll_backend__frameopt__LivevalsPrime_26;
+            MR_Word ll_backend__frameopt__GotoPrime_27;
+            MR_Word ll_backend__frameopt__GotoTargetPrime_28;
+            MR_Word ll_backend__frameopt__RemainPrime_29;
+
+            {
+              ll_backend__frameopt__succeeded = ll_backend__frameopt__nondetstack_teardown_2_14_p_0(ll_backend__frameopt__HeadVar__1_1, (MR_Word) MR_mkword(MR_mktag(0), MR_mkbody((MR_Integer) 0)), &ll_backend__frameopt__ExtraPrime_22, (MR_Word) MR_mkword(MR_mktag(0), MR_mkbody((MR_Integer) 0)), &ll_backend__frameopt__SuccipRestorePrime_23, (MR_Word) MR_mkword(MR_mktag(0), MR_mkbody((MR_Integer) 0)), &ll_backend__frameopt__MaxfrPrime_24, (MR_Word) MR_mkword(MR_mktag(0), MR_mkbody((MR_Integer) 0)), &ll_backend__frameopt__CurfrPrime_25, (MR_Word) MR_mkword(MR_mktag(0), MR_mkbody((MR_Integer) 0)), &ll_backend__frameopt__LivevalsPrime_26, &ll_backend__frameopt__GotoPrime_27, &ll_backend__frameopt__GotoTargetPrime_28, &ll_backend__frameopt__RemainPrime_29);
+            }
+            if (ll_backend__frameopt__succeeded)
+              {
+                *ll_backend__frameopt__Extra_12 = ll_backend__frameopt__ExtraPrime_22;
+                *ll_backend__frameopt__SuccipRestore_13 = ll_backend__frameopt__SuccipRestorePrime_23;
+                *ll_backend__frameopt__Maxfr_14 = ll_backend__frameopt__MaxfrPrime_24;
+                *ll_backend__frameopt__Curfr_15 = ll_backend__frameopt__CurfrPrime_25;
+                *ll_backend__frameopt__Livevals_16 = ll_backend__frameopt__LivevalsPrime_26;
+                *ll_backend__frameopt__Goto_17 = ll_backend__frameopt__GotoPrime_27;
+                *ll_backend__frameopt__GotoTarget_18 = ll_backend__frameopt__GotoTargetPrime_28;
+                *ll_backend__frameopt__Remain_19 = ll_backend__frameopt__RemainPrime_29;
+                ll_backend__frameopt__succeeded = MR_TRUE;
+              }
+            else
+              {
+                MR_Word ll_backend__frameopt__Extra1_30;
+
+                {
+                  ll_backend__frameopt__succeeded = ll_backend__frameopt__nondetstack_teardown_9_p_0(ll_backend__frameopt__Instrs0_11, &ll_backend__frameopt__Extra1_30, ll_backend__frameopt__SuccipRestore_13, ll_backend__frameopt__Maxfr_14, ll_backend__frameopt__Curfr_15, ll_backend__frameopt__Livevals_16, ll_backend__frameopt__Goto_17, ll_backend__frameopt__GotoTarget_18, ll_backend__frameopt__Remain_19);
+                }
+                if (ll_backend__frameopt__succeeded)
+                  {
+                    {
+                      MR_Word base;
+                      base = (MR_Word) MR_mkword(MR_mktag(1), MR_new_object(MR_Word, ((MR_Integer) 2 * sizeof(MR_Word)), NULL, NULL));
+                      *ll_backend__frameopt__Extra_12 = base;
+                      MR_hl_field(MR_mktag(1), base, 0) = ((MR_Box) (ll_backend__frameopt__Instr0_10));
+                      MR_hl_field(MR_mktag(1), base, 1) = ((MR_Box) (ll_backend__frameopt__Extra1_30));
+                    }
+                    ll_backend__frameopt__succeeded = MR_TRUE;
+                  }
+              }
+          }
+      }
+    return ll_backend__frameopt__succeeded;
+  }
+}
+
+static MR_bool MR_CALL 
+ll_backend__frameopt__nondetstack_teardown_2_14_p_0(
+  MR_Word ll_backend__frameopt__Instrs0_15,
+  MR_Word ll_backend__frameopt__STATE_VARIABLE_Extra_0_32,
+  MR_Word * ll_backend__frameopt__STATE_VARIABLE_Extra_33,
+  MR_Word ll_backend__frameopt__STATE_VARIABLE_SuccipRestore_0_34,
+  MR_Word * ll_backend__frameopt__STATE_VARIABLE_SuccipRestore_35,
+  MR_Word ll_backend__frameopt__STATE_VARIABLE_Maxfr_0_36,
+  MR_Word * ll_backend__frameopt__STATE_VARIABLE_Maxfr_37,
+  MR_Word ll_backend__frameopt__STATE_VARIABLE_Curfr_0_38,
+  MR_Word * ll_backend__frameopt__STATE_VARIABLE_Curfr_39,
+  MR_Word ll_backend__frameopt__STATE_VARIABLE_Livevals_0_40,
+  MR_Word * ll_backend__frameopt__STATE_VARIABLE_Livevals_41,
+  MR_Word * ll_backend__frameopt__Goto_21,
+  MR_Word * ll_backend__frameopt__GotoTarget_22,
+  MR_Word * ll_backend__frameopt__Remain_23)
+{
+  while (MR_TRUE)
+    {
+      /* tailcall optimized into a loop */
+      {
+        MR_bool ll_backend__frameopt__succeeded;
+        MR_Word ll_backend__frameopt__Instrs1_24;
+        MR_Word ll_backend__frameopt__Instr1_25;
+        MR_Word ll_backend__frameopt__Instrs2_26;
+        MR_Word ll_backend__frameopt__Uinstr1_27;
+        MR_String ll_backend__frameopt__Var_28;
+
+        {
+          ll_backend__opt_util__skip_comments_2_p_0(ll_backend__frameopt__Instrs0_15, &ll_backend__frameopt__Instrs1_24);
+        }
+        ll_backend__frameopt__succeeded = ((MR_tag((MR_Word) ll_backend__frameopt__Instrs1_24)) == (MR_mktag((MR_Integer) 1)));
+        if (ll_backend__frameopt__succeeded)
+          {
+            ll_backend__frameopt__Instr1_25 = ((MR_Word) (MR_hl_field(MR_mktag(1), ll_backend__frameopt__Instrs1_24, (MR_Integer) 0)));
+            ll_backend__frameopt__Instrs2_26 = ((MR_Word) (MR_hl_field(MR_mktag(1), ll_backend__frameopt__Instrs1_24, (MR_Integer) 1)));
+            ll_backend__frameopt__Uinstr1_27 = ((MR_Word) (MR_hl_field(MR_mktag(0), ll_backend__frameopt__Instr1_25, (MR_Integer) 0)));
+            ll_backend__frameopt__Var_28 = ((MR_String) (MR_hl_field(MR_mktag(0), ll_backend__frameopt__Instr1_25, (MR_Integer) 1)));
+            switch (MR_tag((MR_Word) ll_backend__frameopt__Uinstr1_27)) {
+              default:
+                ll_backend__frameopt__succeeded = MR_FALSE;
+                break;
+              case (MR_Integer) 2:
+                {
+                  MR_Word ll_backend__frameopt__STATE_VARIABLE_Livevals_42_42;
+                  MR_Word ll_backend__frameopt__Var_43;
+
+                  ll_backend__frameopt__succeeded = (ll_backend__frameopt__STATE_VARIABLE_Livevals_0_40 == ((MR_Word) MR_mkword(MR_mktag(0), MR_mkbody((MR_Integer) 0))));
+                  if (ll_backend__frameopt__succeeded)
+                    {
+                      ll_backend__frameopt__Var_43 = (MR_Word) MR_mkword(MR_mktag(0), MR_mkbody((MR_Integer) 0));
+                      {
+                        ll_backend__frameopt__STATE_VARIABLE_Livevals_42_42 = (MR_Word) MR_mkword(MR_mktag(1), MR_new_object(MR_Word, ((MR_Integer) 2 * sizeof(MR_Word)), NULL, NULL));
+                        MR_hl_field(MR_mktag(1), ll_backend__frameopt__STATE_VARIABLE_Livevals_42_42, 0) = ((MR_Box) (ll_backend__frameopt__Instr1_25));
+                        MR_hl_field(MR_mktag(1), ll_backend__frameopt__STATE_VARIABLE_Livevals_42_42, 1) = ((MR_Box) (ll_backend__frameopt__Var_43));
+                      }
+                      /* direct tailcall eliminated */
+                      {
+                        MR_Word ll_backend__frameopt__next_value_of_Instrs0_15 = ll_backend__frameopt__Instrs2_26;
+                        MR_Word ll_backend__frameopt__next_value_of_STATE_VARIABLE_Livevals_0_40 = ll_backend__frameopt__STATE_VARIABLE_Livevals_42_42;
+
+                        ll_backend__frameopt__STATE_VARIABLE_Livevals_0_40 = ll_backend__frameopt__next_value_of_STATE_VARIABLE_Livevals_0_40;
+                        ll_backend__frameopt__Instrs0_15 = ll_backend__frameopt__next_value_of_Instrs0_15;
+                      }
+                      continue;
+                    }
+                }
+                break;
+              case (MR_Integer) 3:
+                switch (((MR_Integer) (MR_Word) (MR_hl_field(MR_mktag(3), ll_backend__frameopt__Uinstr1_27, (MR_Integer) 0)))) {
+                  default:
+                    ll_backend__frameopt__succeeded = MR_FALSE;
+                    break;
+                  case (MR_Integer) 1:
+                    {
+                      MR_Word ll_backend__frameopt__Lval_29 = ((MR_Word) (MR_hl_field(MR_mktag(3), ll_backend__frameopt__Uinstr1_27, (MR_Integer) 1)));
+                      MR_Word ll_backend__frameopt__Rval_30 = ((MR_Word) (MR_hl_field(MR_mktag(3), ll_backend__frameopt__Uinstr1_27, (MR_Integer) 2)));
+                      MR_Word ll_backend__frameopt__STATE_VARIABLE_SuccipRestore_52_52;
+                      MR_Word ll_backend__frameopt__STATE_VARIABLE_Maxfr_57_57;
+                      MR_Word ll_backend__frameopt__STATE_VARIABLE_Curfr_62_62;
+                      MR_Word ll_backend__frameopt__STATE_VARIABLE_Extra_66_66;
+                      MR_Word ll_backend__frameopt__Var_49;
+                      MR_Word ll_backend__frameopt__Var_50;
+                      MR_Word ll_backend__frameopt__Var_51;
+
+                      ll_backend__frameopt__succeeded = (ll_backend__frameopt__Lval_29 == ((MR_Word) MR_mkword(MR_mktag(0), MR_mkbody((MR_Integer) 0))));
+                      if (ll_backend__frameopt__succeeded)
+                        {
+                          ll_backend__frameopt__succeeded = (ll_backend__frameopt__STATE_VARIABLE_SuccipRestore_0_34 == ((MR_Word) MR_mkword(MR_mktag(0), MR_mkbody((MR_Integer) 0))));
+                          if (ll_backend__frameopt__succeeded)
+                            {
+                              ll_backend__frameopt__succeeded = (ll_backend__frameopt__STATE_VARIABLE_Curfr_0_38 == ((MR_Word) MR_mkword(MR_mktag(0), MR_mkbody((MR_Integer) 0))));
+                              if (ll_backend__frameopt__succeeded)
+                                {
+                                  ll_backend__frameopt__succeeded = ((MR_tag((MR_Word) ll_backend__frameopt__Rval_30)) == (MR_mktag((MR_Integer) 0)));
+                                  if (ll_backend__frameopt__succeeded)
+                                    {
+                                      ll_backend__frameopt__Var_49 = ((MR_Word) (MR_hl_field(MR_mktag(0), ll_backend__frameopt__Rval_30, (MR_Integer) 0)));
+                                      ll_backend__frameopt__succeeded = ((((MR_tag((MR_Word) ll_backend__frameopt__Var_49)) == (MR_mktag((MR_Integer) 3)))) && (((((MR_Integer) (MR_Word) (MR_hl_field(MR_mktag(3), ll_backend__frameopt__Var_49, (MR_Integer) 0)))) == (MR_Integer) 4)));
+                                      if (ll_backend__frameopt__succeeded)
+                                        {
+                                          ll_backend__frameopt__Var_50 = ((MR_Word) (MR_hl_field(MR_mktag(3), ll_backend__frameopt__Var_49, (MR_Integer) 1)));
+                                          ll_backend__frameopt__succeeded = ((MR_tag((MR_Word) ll_backend__frameopt__Var_50)) == (MR_mktag((MR_Integer) 0)));
+                                          if (ll_backend__frameopt__succeeded)
+                                            {
+                                              ll_backend__frameopt__Var_51 = ((MR_Word) (MR_hl_field(MR_mktag(0), ll_backend__frameopt__Var_50, (MR_Integer) 0)));
+                                              ll_backend__frameopt__succeeded = (ll_backend__frameopt__Var_51 == ((MR_Word) MR_mkword(MR_mktag(0), MR_mkbody((MR_Integer) 2))));
+                                            }
+                                        }
+                                    }
+                                }
+                            }
+                        }
+                      if (ll_backend__frameopt__succeeded)
+                        {
+                          {
+                            ll_backend__frameopt__STATE_VARIABLE_SuccipRestore_52_52 = (MR_Word) MR_mkword(MR_mktag(1), MR_new_object(MR_Word, ((MR_Integer) 2 * sizeof(MR_Word)), NULL, NULL));
+                            MR_hl_field(MR_mktag(1), ll_backend__frameopt__STATE_VARIABLE_SuccipRestore_52_52, 0) = ((MR_Box) (ll_backend__frameopt__Instr1_25));
+                            MR_hl_field(MR_mktag(1), ll_backend__frameopt__STATE_VARIABLE_SuccipRestore_52_52, 1) = ((MR_Box) (MR_mkword(MR_mktag(0), MR_mkbody((MR_Integer) 0))));
+                          }
+                          ll_backend__frameopt__STATE_VARIABLE_Curfr_62_62 = ll_backend__frameopt__STATE_VARIABLE_Curfr_0_38;
+                          ll_backend__frameopt__STATE_VARIABLE_Maxfr_57_57 = ll_backend__frameopt__STATE_VARIABLE_Maxfr_0_36;
+                          ll_backend__frameopt__STATE_VARIABLE_Extra_66_66 = ll_backend__frameopt__STATE_VARIABLE_Extra_0_32;
+                          ll_backend__frameopt__succeeded = MR_TRUE;
+                        }
+                      else
+                        {
+                          MR_Word ll_backend__frameopt__Var_54;
+                          MR_Word ll_backend__frameopt__Var_55;
+                          MR_Word ll_backend__frameopt__Var_56;
+
+                          ll_backend__frameopt__succeeded = (ll_backend__frameopt__Lval_29 == ((MR_Word) MR_mkword(MR_mktag(0), MR_mkbody((MR_Integer) 1))));
+                          if (ll_backend__frameopt__succeeded)
+                            {
+                              ll_backend__frameopt__succeeded = (ll_backend__frameopt__STATE_VARIABLE_Maxfr_0_36 == ((MR_Word) MR_mkword(MR_mktag(0), MR_mkbody((MR_Integer) 0))));
+                              if (ll_backend__frameopt__succeeded)
+                                {
+                                  ll_backend__frameopt__succeeded = (ll_backend__frameopt__STATE_VARIABLE_Curfr_0_38 == ((MR_Word) MR_mkword(MR_mktag(0), MR_mkbody((MR_Integer) 0))));
+                                  if (ll_backend__frameopt__succeeded)
+                                    {
+                                      ll_backend__frameopt__succeeded = ((MR_tag((MR_Word) ll_backend__frameopt__Rval_30)) == (MR_mktag((MR_Integer) 0)));
+                                      if (ll_backend__frameopt__succeeded)
+                                        {
+                                          ll_backend__frameopt__Var_54 = ((MR_Word) (MR_hl_field(MR_mktag(0), ll_backend__frameopt__Rval_30, (MR_Integer) 0)));
+                                          ll_backend__frameopt__succeeded = ((((MR_tag((MR_Word) ll_backend__frameopt__Var_54)) == (MR_mktag((MR_Integer) 3)))) && (((((MR_Integer) (MR_Word) (MR_hl_field(MR_mktag(3), ll_backend__frameopt__Var_54, (MR_Integer) 0)))) == (MR_Integer) 8)));
+                                          if (ll_backend__frameopt__succeeded)
+                                            {
+                                              ll_backend__frameopt__Var_55 = ((MR_Word) (MR_hl_field(MR_mktag(3), ll_backend__frameopt__Var_54, (MR_Integer) 1)));
+                                              ll_backend__frameopt__succeeded = ((MR_tag((MR_Word) ll_backend__frameopt__Var_55)) == (MR_mktag((MR_Integer) 0)));
+                                              if (ll_backend__frameopt__succeeded)
+                                                {
+                                                  ll_backend__frameopt__Var_56 = ((MR_Word) (MR_hl_field(MR_mktag(0), ll_backend__frameopt__Var_55, (MR_Integer) 0)));
+                                                  ll_backend__frameopt__succeeded = (ll_backend__frameopt__Var_56 == ((MR_Word) MR_mkword(MR_mktag(0), MR_mkbody((MR_Integer) 2))));
+                                                }
+                                            }
+                                        }
+                                    }
+                                }
+                            }
+                          if (ll_backend__frameopt__succeeded)
+                            {
+                              {
+                                ll_backend__frameopt__STATE_VARIABLE_Maxfr_57_57 = (MR_Word) MR_mkword(MR_mktag(1), MR_new_object(MR_Word, ((MR_Integer) 2 * sizeof(MR_Word)), NULL, NULL));
+                                MR_hl_field(MR_mktag(1), ll_backend__frameopt__STATE_VARIABLE_Maxfr_57_57, 0) = ((MR_Box) (ll_backend__frameopt__Instr1_25));
+                                MR_hl_field(MR_mktag(1), ll_backend__frameopt__STATE_VARIABLE_Maxfr_57_57, 1) = ((MR_Box) (MR_mkword(MR_mktag(0), MR_mkbody((MR_Integer) 0))));
+                              }
+                              ll_backend__frameopt__STATE_VARIABLE_Curfr_62_62 = ll_backend__frameopt__STATE_VARIABLE_Curfr_0_38;
+                              ll_backend__frameopt__STATE_VARIABLE_Extra_66_66 = ll_backend__frameopt__STATE_VARIABLE_Extra_0_32;
+                              ll_backend__frameopt__succeeded = MR_TRUE;
+                            }
+                          else
+                            {
+                              MR_Word ll_backend__frameopt__Var_59;
+                              MR_Word ll_backend__frameopt__Var_60;
+                              MR_Word ll_backend__frameopt__Var_61;
+
+                              ll_backend__frameopt__succeeded = (ll_backend__frameopt__Lval_29 == ((MR_Word) MR_mkword(MR_mktag(0), MR_mkbody((MR_Integer) 2))));
+                              if (ll_backend__frameopt__succeeded)
+                                {
+                                  ll_backend__frameopt__succeeded = (ll_backend__frameopt__STATE_VARIABLE_Curfr_0_38 == ((MR_Word) MR_mkword(MR_mktag(0), MR_mkbody((MR_Integer) 0))));
+                                  if (ll_backend__frameopt__succeeded)
+                                    {
+                                      ll_backend__frameopt__succeeded = ((MR_tag((MR_Word) ll_backend__frameopt__Rval_30)) == (MR_mktag((MR_Integer) 0)));
+                                      if (ll_backend__frameopt__succeeded)
+                                        {
+                                          ll_backend__frameopt__Var_59 = ((MR_Word) (MR_hl_field(MR_mktag(0), ll_backend__frameopt__Rval_30, (MR_Integer) 0)));
+                                          ll_backend__frameopt__succeeded = ((((MR_tag((MR_Word) ll_backend__frameopt__Var_59)) == (MR_mktag((MR_Integer) 3)))) && (((((MR_Integer) (MR_Word) (MR_hl_field(MR_mktag(3), ll_backend__frameopt__Var_59, (MR_Integer) 0)))) == (MR_Integer) 5)));
+                                          if (ll_backend__frameopt__succeeded)
+                                            {
+                                              ll_backend__frameopt__Var_60 = ((MR_Word) (MR_hl_field(MR_mktag(3), ll_backend__frameopt__Var_59, (MR_Integer) 1)));
+                                              ll_backend__frameopt__succeeded = ((MR_tag((MR_Word) ll_backend__frameopt__Var_60)) == (MR_mktag((MR_Integer) 0)));
+                                              if (ll_backend__frameopt__succeeded)
+                                                {
+                                                  ll_backend__frameopt__Var_61 = ((MR_Word) (MR_hl_field(MR_mktag(0), ll_backend__frameopt__Var_60, (MR_Integer) 0)));
+                                                  ll_backend__frameopt__succeeded = (ll_backend__frameopt__Var_61 == ((MR_Word) MR_mkword(MR_mktag(0), MR_mkbody((MR_Integer) 2))));
+                                                }
+                                            }
+                                        }
+                                    }
+                                }
+                              if (ll_backend__frameopt__succeeded)
+                                {
+                                  {
+                                    ll_backend__frameopt__STATE_VARIABLE_Curfr_62_62 = (MR_Word) MR_mkword(MR_mktag(1), MR_new_object(MR_Word, ((MR_Integer) 2 * sizeof(MR_Word)), NULL, NULL));
+                                    MR_hl_field(MR_mktag(1), ll_backend__frameopt__STATE_VARIABLE_Curfr_62_62, 0) = ((MR_Box) (ll_backend__frameopt__Instr1_25));
+                                    MR_hl_field(MR_mktag(1), ll_backend__frameopt__STATE_VARIABLE_Curfr_62_62, 1) = ((MR_Box) (MR_mkword(MR_mktag(0), MR_mkbody((MR_Integer) 0))));
+                                  }
+                                  ll_backend__frameopt__STATE_VARIABLE_Extra_66_66 = ll_backend__frameopt__STATE_VARIABLE_Extra_0_32;
+                                  ll_backend__frameopt__succeeded = MR_TRUE;
+                                }
+                              else
+                                {
+                                  MR_Word ll_backend__frameopt__TypeCtorInfo_74_74;
+                                  MR_Word ll_backend__frameopt__Var_64;
+                                  MR_Word ll_backend__frameopt__Var_65;
+                                  MR_Word ll_backend__frameopt__Var_67;
+                                  MR_Word ll_backend__frameopt__Var_68;
+
+                                  {
+                                    ll_backend__frameopt__Var_64 = ll_backend__opt_util__lval_refers_stackvars_1_f_0(ll_backend__frameopt__Lval_29);
+                                  }
+                                  ll_backend__frameopt__succeeded = (ll_backend__frameopt__Var_64 == (MR_Integer) 0);
+                                  if (ll_backend__frameopt__succeeded)
+                                    {
+                                      {
+                                        ll_backend__frameopt__Var_65 = ll_backend__opt_util__rval_refers_stackvars_1_f_0(ll_backend__frameopt__Rval_30);
+                                      }
+                                      ll_backend__frameopt__succeeded = (ll_backend__frameopt__Var_65 == (MR_Integer) 0);
+                                      if (ll_backend__frameopt__succeeded)
+                                        {
+                                          ll_backend__frameopt__TypeCtorInfo_74_74 = (MR_Word) &ll_backend__llds__ll_backend__llds__type_ctor_info_instruction_0;
+                                          ll_backend__frameopt__Var_68 = (MR_Word) MR_mkword(MR_mktag(0), MR_mkbody((MR_Integer) 0));
+                                          {
+                                            ll_backend__frameopt__Var_67 = (MR_Word) MR_mkword(MR_mktag(1), MR_new_object(MR_Word, ((MR_Integer) 2 * sizeof(MR_Word)), NULL, NULL));
+                                            MR_hl_field(MR_mktag(1), ll_backend__frameopt__Var_67, 0) = ((MR_Box) (ll_backend__frameopt__Instr1_25));
+                                            MR_hl_field(MR_mktag(1), ll_backend__frameopt__Var_67, 1) = ((MR_Box) (ll_backend__frameopt__Var_68));
+                                          }
+                                          {
+                                            ll_backend__frameopt__STATE_VARIABLE_Extra_66_66 = mercury__list__f_43_43_2_f_0(ll_backend__frameopt__TypeCtorInfo_74_74, ll_backend__frameopt__STATE_VARIABLE_Extra_0_32, ll_backend__frameopt__Var_67);
+                                          }
+                                          ll_backend__frameopt__STATE_VARIABLE_Curfr_62_62 = ll_backend__frameopt__STATE_VARIABLE_Curfr_0_38;
+                                          ll_backend__frameopt__succeeded = MR_TRUE;
+                                        }
+                                    }
+                                }
+                              if (ll_backend__frameopt__succeeded)
+                                {
+                                  ll_backend__frameopt__STATE_VARIABLE_Maxfr_57_57 = ll_backend__frameopt__STATE_VARIABLE_Maxfr_0_36;
+                                  ll_backend__frameopt__succeeded = MR_TRUE;
+                                }
+                            }
+                          if (ll_backend__frameopt__succeeded)
+                            {
+                              ll_backend__frameopt__STATE_VARIABLE_SuccipRestore_52_52 = ll_backend__frameopt__STATE_VARIABLE_SuccipRestore_0_34;
+                              ll_backend__frameopt__succeeded = MR_TRUE;
+                            }
+                        }
+                      if (ll_backend__frameopt__succeeded)
+                        {
+                          /* direct tailcall eliminated */
+                          {
+                            MR_Word ll_backend__frameopt__next_value_of_Instrs0_15 = ll_backend__frameopt__Instrs2_26;
+                            MR_Word ll_backend__frameopt__next_value_of_STATE_VARIABLE_Extra_0_32 = ll_backend__frameopt__STATE_VARIABLE_Extra_66_66;
+                            MR_Word ll_backend__frameopt__next_value_of_STATE_VARIABLE_SuccipRestore_0_34 = ll_backend__frameopt__STATE_VARIABLE_SuccipRestore_52_52;
+                            MR_Word ll_backend__frameopt__next_value_of_STATE_VARIABLE_Maxfr_0_36 = ll_backend__frameopt__STATE_VARIABLE_Maxfr_57_57;
+                            MR_Word ll_backend__frameopt__next_value_of_STATE_VARIABLE_Curfr_0_38 = ll_backend__frameopt__STATE_VARIABLE_Curfr_62_62;
+
+                            ll_backend__frameopt__STATE_VARIABLE_Curfr_0_38 = ll_backend__frameopt__next_value_of_STATE_VARIABLE_Curfr_0_38;
+                            ll_backend__frameopt__STATE_VARIABLE_Maxfr_0_36 = ll_backend__frameopt__next_value_of_STATE_VARIABLE_Maxfr_0_36;
+                            ll_backend__frameopt__STATE_VARIABLE_SuccipRestore_0_34 = ll_backend__frameopt__next_value_of_STATE_VARIABLE_SuccipRestore_0_34;
+                            ll_backend__frameopt__STATE_VARIABLE_Extra_0_32 = ll_backend__frameopt__next_value_of_STATE_VARIABLE_Extra_0_32;
+                            ll_backend__frameopt__Instrs0_15 = ll_backend__frameopt__next_value_of_Instrs0_15;
+                          }
+                          continue;
+                        }
+                    }
+                    break;
+                  case (MR_Integer) 6:
+                    {
+                      *ll_backend__frameopt__GotoTarget_22 = ((MR_Word) (MR_hl_field(MR_mktag(3), ll_backend__frameopt__Uinstr1_27, (MR_Integer) 1)));
+                      *ll_backend__frameopt__Goto_21 = ll_backend__frameopt__Instr1_25;
+                      *ll_backend__frameopt__Remain_23 = ll_backend__frameopt__Instrs2_26;
+                      *ll_backend__frameopt__STATE_VARIABLE_Extra_33 = ll_backend__frameopt__STATE_VARIABLE_Extra_0_32;
+                      *ll_backend__frameopt__STATE_VARIABLE_SuccipRestore_35 = ll_backend__frameopt__STATE_VARIABLE_SuccipRestore_0_34;
+                      *ll_backend__frameopt__STATE_VARIABLE_Maxfr_37 = ll_backend__frameopt__STATE_VARIABLE_Maxfr_0_36;
+                      *ll_backend__frameopt__STATE_VARIABLE_Curfr_39 = ll_backend__frameopt__STATE_VARIABLE_Curfr_0_38;
+                      *ll_backend__frameopt__STATE_VARIABLE_Livevals_41 = ll_backend__frameopt__STATE_VARIABLE_Livevals_0_40;
+                      ll_backend__frameopt__succeeded = MR_TRUE;
+                    }
+                    break;
+                }
+                break;
+            }
+          }
+        return ll_backend__frameopt__succeeded;
+      }
+      break;
+    }
+}
+
+static MR_bool MR_CALL 
+ll_backend__frameopt__detstack_teardown_8_p_0(
+  MR_Word ll_backend__frameopt__HeadVar__1_1,
+  MR_Integer ll_backend__frameopt__FrameSize_11,
+  MR_Word * ll_backend__frameopt__Extra_12,
+  MR_Word * ll_backend__frameopt__SuccipRestore_13,
+  MR_Word * ll_backend__frameopt__Decrsp_14,
+  MR_Word * ll_backend__frameopt__Livevals_15,
+  MR_Word * ll_backend__frameopt__Goto_16,
+  MR_Word * ll_backend__frameopt__Remain_17)
+{
+  {
+    MR_bool ll_backend__frameopt__succeeded = ((MR_tag((MR_Word) ll_backend__frameopt__HeadVar__1_1)) == (MR_mktag((MR_Integer) 1)));
+    MR_Word ll_backend__frameopt__Instr0_9;
+    MR_Word ll_backend__frameopt__Instrs0_10;
+    MR_Word ll_backend__frameopt__Var_27;
+    MR_String ll_backend__frameopt__Var_19;
+    MR_Word ll_backend__frameopt__Var_18;
+
+    if (ll_backend__frameopt__succeeded)
+      {
+        ll_backend__frameopt__Instr0_9 = ((MR_Word) (MR_hl_field(MR_mktag(1), ll_backend__frameopt__HeadVar__1_1, (MR_Integer) 0)));
+        ll_backend__frameopt__Instrs0_10 = ((MR_Word) (MR_hl_field(MR_mktag(1), ll_backend__frameopt__HeadVar__1_1, (MR_Integer) 1)));
+        ll_backend__frameopt__Var_27 = ((MR_Word) (MR_hl_field(MR_mktag(0), ll_backend__frameopt__Instr0_9, (MR_Integer) 0)));
+        ll_backend__frameopt__Var_19 = ((MR_String) (MR_hl_field(MR_mktag(0), ll_backend__frameopt__Instr0_9, (MR_Integer) 1)));
+        ll_backend__frameopt__succeeded = ((((MR_tag((MR_Word) ll_backend__frameopt__Var_27)) == (MR_mktag((MR_Integer) 3)))) && (((((MR_Integer) (MR_Word) (MR_hl_field(MR_mktag(3), ll_backend__frameopt__Var_27, (MR_Integer) 0)))) == (MR_Integer) 5)));
+        if (ll_backend__frameopt__succeeded)
+          {
+            ll_backend__frameopt__Var_18 = ((MR_Word) (MR_hl_field(MR_mktag(3), ll_backend__frameopt__Var_27, (MR_Integer) 1)));
+            ll_backend__frameopt__succeeded = MR_FALSE;
+          }
+        else
+          {
+            MR_Word ll_backend__frameopt__ExtraPrime_20;
+            MR_Word ll_backend__frameopt__SuccipRestorePrime_21;
+            MR_Word ll_backend__frameopt__DecrspPrime_22;
+            MR_Word ll_backend__frameopt__LivevalsPrime_23;
+            MR_Word ll_backend__frameopt__GotoPrime_24;
+            MR_Word ll_backend__frameopt__RemainPrime_25;
+
+            {
+              ll_backend__frameopt__succeeded = ll_backend__frameopt__detstack_teardown_2_12_p_0(ll_backend__frameopt__HeadVar__1_1, ll_backend__frameopt__FrameSize_11, (MR_Word) MR_mkword(MR_mktag(0), MR_mkbody((MR_Integer) 0)), &ll_backend__frameopt__ExtraPrime_20, (MR_Word) MR_mkword(MR_mktag(0), MR_mkbody((MR_Integer) 0)), &ll_backend__frameopt__SuccipRestorePrime_21, (MR_Word) MR_mkword(MR_mktag(0), MR_mkbody((MR_Integer) 0)), &ll_backend__frameopt__DecrspPrime_22, (MR_Word) MR_mkword(MR_mktag(0), MR_mkbody((MR_Integer) 0)), &ll_backend__frameopt__LivevalsPrime_23, &ll_backend__frameopt__GotoPrime_24, &ll_backend__frameopt__RemainPrime_25);
+            }
+            if (ll_backend__frameopt__succeeded)
+              {
+                *ll_backend__frameopt__Extra_12 = ll_backend__frameopt__ExtraPrime_20;
+                *ll_backend__frameopt__SuccipRestore_13 = ll_backend__frameopt__SuccipRestorePrime_21;
+                *ll_backend__frameopt__Decrsp_14 = ll_backend__frameopt__DecrspPrime_22;
+                *ll_backend__frameopt__Livevals_15 = ll_backend__frameopt__LivevalsPrime_23;
+                *ll_backend__frameopt__Goto_16 = ll_backend__frameopt__GotoPrime_24;
+                *ll_backend__frameopt__Remain_17 = ll_backend__frameopt__RemainPrime_25;
+                ll_backend__frameopt__succeeded = MR_TRUE;
+              }
+            else
+              {
+                MR_Word ll_backend__frameopt__Extra1_26;
+
+                {
+                  ll_backend__frameopt__succeeded = ll_backend__frameopt__detstack_teardown_8_p_0(ll_backend__frameopt__Instrs0_10, ll_backend__frameopt__FrameSize_11, &ll_backend__frameopt__Extra1_26, ll_backend__frameopt__SuccipRestore_13, ll_backend__frameopt__Decrsp_14, ll_backend__frameopt__Livevals_15, ll_backend__frameopt__Goto_16, ll_backend__frameopt__Remain_17);
+                }
+                if (ll_backend__frameopt__succeeded)
+                  {
+                    {
+                      MR_Word base;
+                      base = (MR_Word) MR_mkword(MR_mktag(1), MR_new_object(MR_Word, ((MR_Integer) 2 * sizeof(MR_Word)), NULL, NULL));
+                      *ll_backend__frameopt__Extra_12 = base;
+                      MR_hl_field(MR_mktag(1), base, 0) = ((MR_Box) (ll_backend__frameopt__Instr0_9));
+                      MR_hl_field(MR_mktag(1), base, 1) = ((MR_Box) (ll_backend__frameopt__Extra1_26));
+                    }
+                    ll_backend__frameopt__succeeded = MR_TRUE;
+                  }
+              }
+          }
+      }
+    return ll_backend__frameopt__succeeded;
+  }
+}
+
+static MR_bool MR_CALL 
+ll_backend__frameopt__detstack_teardown_2_12_p_0(
+  MR_Word ll_backend__frameopt__Instrs0_13,
+  MR_Integer ll_backend__frameopt__FrameSize_14,
+  MR_Word ll_backend__frameopt__STATE_VARIABLE_Extra_0_31,
+  MR_Word * ll_backend__frameopt__STATE_VARIABLE_Extra_32,
+  MR_Word ll_backend__frameopt__STATE_VARIABLE_SuccipRestore_0_33,
+  MR_Word * ll_backend__frameopt__STATE_VARIABLE_SuccipRestore_34,
+  MR_Word ll_backend__frameopt__STATE_VARIABLE_Decrsp_0_35,
+  MR_Word * ll_backend__frameopt__STATE_VARIABLE_Decrsp_36,
+  MR_Word ll_backend__frameopt__STATE_VARIABLE_Livevals_0_37,
+  MR_Word * ll_backend__frameopt__STATE_VARIABLE_Livevals_38,
+  MR_Word * ll_backend__frameopt__Goto_19,
+  MR_Word * ll_backend__frameopt__Remain_20)
+{
+  while (MR_TRUE)
+    {
+      /* tailcall optimized into a loop */
+      {
+        MR_bool ll_backend__frameopt__succeeded;
+        MR_Word ll_backend__frameopt__Instrs1_21;
+        MR_Word ll_backend__frameopt__Instr1_22;
+        MR_Word ll_backend__frameopt__Instrs2_23;
+        MR_Word ll_backend__frameopt__Uinstr1_24;
+        MR_String ll_backend__frameopt__Var_25;
+
+        {
+          ll_backend__opt_util__skip_comments_2_p_0(ll_backend__frameopt__Instrs0_13, &ll_backend__frameopt__Instrs1_21);
+        }
+        ll_backend__frameopt__succeeded = ((MR_tag((MR_Word) ll_backend__frameopt__Instrs1_21)) == (MR_mktag((MR_Integer) 1)));
+        if (ll_backend__frameopt__succeeded)
+          {
+            ll_backend__frameopt__Instr1_22 = ((MR_Word) (MR_hl_field(MR_mktag(1), ll_backend__frameopt__Instrs1_21, (MR_Integer) 0)));
+            ll_backend__frameopt__Instrs2_23 = ((MR_Word) (MR_hl_field(MR_mktag(1), ll_backend__frameopt__Instrs1_21, (MR_Integer) 1)));
+            ll_backend__frameopt__Uinstr1_24 = ((MR_Word) (MR_hl_field(MR_mktag(0), ll_backend__frameopt__Instr1_22, (MR_Integer) 0)));
+            ll_backend__frameopt__Var_25 = ((MR_String) (MR_hl_field(MR_mktag(0), ll_backend__frameopt__Instr1_22, (MR_Integer) 1)));
+            switch (MR_tag((MR_Word) ll_backend__frameopt__Uinstr1_24)) {
+              default:
+                ll_backend__frameopt__succeeded = MR_FALSE;
+                break;
+              case (MR_Integer) 2:
+                {
+                  MR_Word ll_backend__frameopt__STATE_VARIABLE_Livevals_40_40;
+                  MR_Word ll_backend__frameopt__Var_41;
+
+                  ll_backend__frameopt__succeeded = (ll_backend__frameopt__STATE_VARIABLE_Livevals_0_37 == ((MR_Word) MR_mkword(MR_mktag(0), MR_mkbody((MR_Integer) 0))));
+                  if (ll_backend__frameopt__succeeded)
+                    {
+                      ll_backend__frameopt__Var_41 = (MR_Word) MR_mkword(MR_mktag(0), MR_mkbody((MR_Integer) 0));
+                      {
+                        ll_backend__frameopt__STATE_VARIABLE_Livevals_40_40 = (MR_Word) MR_mkword(MR_mktag(1), MR_new_object(MR_Word, ((MR_Integer) 2 * sizeof(MR_Word)), NULL, NULL));
+                        MR_hl_field(MR_mktag(1), ll_backend__frameopt__STATE_VARIABLE_Livevals_40_40, 0) = ((MR_Box) (ll_backend__frameopt__Instr1_22));
+                        MR_hl_field(MR_mktag(1), ll_backend__frameopt__STATE_VARIABLE_Livevals_40_40, 1) = ((MR_Box) (ll_backend__frameopt__Var_41));
+                      }
+                      /* direct tailcall eliminated */
+                      {
+                        MR_Word ll_backend__frameopt__next_value_of_Instrs0_13 = ll_backend__frameopt__Instrs2_23;
+                        MR_Word ll_backend__frameopt__next_value_of_STATE_VARIABLE_Livevals_0_37 = ll_backend__frameopt__STATE_VARIABLE_Livevals_40_40;
+
+                        ll_backend__frameopt__STATE_VARIABLE_Livevals_0_37 = ll_backend__frameopt__next_value_of_STATE_VARIABLE_Livevals_0_37;
+                        ll_backend__frameopt__Instrs0_13 = ll_backend__frameopt__next_value_of_Instrs0_13;
+                      }
+                      continue;
+                    }
+                }
+                break;
+              case (MR_Integer) 3:
+                switch (((MR_Integer) (MR_Word) (MR_hl_field(MR_mktag(3), ll_backend__frameopt__Uinstr1_24, (MR_Integer) 0)))) {
+                  default:
+                    ll_backend__frameopt__succeeded = MR_FALSE;
+                    break;
+                  case (MR_Integer) 1:
+                    {
+                      MR_Word ll_backend__frameopt__Lval_26 = ((MR_Word) (MR_hl_field(MR_mktag(3), ll_backend__frameopt__Uinstr1_24, (MR_Integer) 1)));
+                      MR_Word ll_backend__frameopt__Rval_27 = ((MR_Word) (MR_hl_field(MR_mktag(3), ll_backend__frameopt__Uinstr1_24, (MR_Integer) 2)));
+                      MR_Word ll_backend__frameopt__Var_52;
+                      MR_Integer ll_backend__frameopt__Var_69;
+
+                      ll_backend__frameopt__succeeded = (ll_backend__frameopt__Lval_26 == ((MR_Word) MR_mkword(MR_mktag(0), MR_mkbody((MR_Integer) 0))));
+                      if (ll_backend__frameopt__succeeded)
+                        {
+                          ll_backend__frameopt__succeeded = ((MR_tag((MR_Word) ll_backend__frameopt__Rval_27)) == (MR_mktag((MR_Integer) 0)));
+                          if (ll_backend__frameopt__succeeded)
+                            {
+                              ll_backend__frameopt__Var_52 = ((MR_Word) (MR_hl_field(MR_mktag(0), ll_backend__frameopt__Rval_27, (MR_Integer) 0)));
+                              ll_backend__frameopt__succeeded = ((((MR_tag((MR_Word) ll_backend__frameopt__Var_52)) == (MR_mktag((MR_Integer) 3)))) && (((((MR_Integer) (MR_Word) (MR_hl_field(MR_mktag(3), ll_backend__frameopt__Var_52, (MR_Integer) 0)))) == (MR_Integer) 0)));
+                              if (ll_backend__frameopt__succeeded)
+                                {
+                                  ll_backend__frameopt__Var_69 = ((MR_Integer) (MR_hl_field(MR_mktag(3), ll_backend__frameopt__Var_52, (MR_Integer) 1)));
+                                  ll_backend__frameopt__succeeded = (ll_backend__frameopt__FrameSize_14 == ll_backend__frameopt__Var_69);
+                                }
+                            }
+                        }
+                      if (ll_backend__frameopt__succeeded)
+                        {
+                          MR_Word ll_backend__frameopt__STATE_VARIABLE_SuccipRestore_53_53;
+                          MR_Word ll_backend__frameopt__Var_54;
+
+                          ll_backend__frameopt__succeeded = (ll_backend__frameopt__STATE_VARIABLE_SuccipRestore_0_33 == ((MR_Word) MR_mkword(MR_mktag(0), MR_mkbody((MR_Integer) 0))));
+                          if (ll_backend__frameopt__succeeded)
+                            {
+                              ll_backend__frameopt__succeeded = (ll_backend__frameopt__STATE_VARIABLE_Decrsp_0_35 == ((MR_Word) MR_mkword(MR_mktag(0), MR_mkbody((MR_Integer) 0))));
+                              if (ll_backend__frameopt__succeeded)
+                                {
+                                  ll_backend__frameopt__Var_54 = (MR_Word) MR_mkword(MR_mktag(0), MR_mkbody((MR_Integer) 0));
+                                  {
+                                    ll_backend__frameopt__STATE_VARIABLE_SuccipRestore_53_53 = (MR_Word) MR_mkword(MR_mktag(1), MR_new_object(MR_Word, ((MR_Integer) 2 * sizeof(MR_Word)), NULL, NULL));
+                                    MR_hl_field(MR_mktag(1), ll_backend__frameopt__STATE_VARIABLE_SuccipRestore_53_53, 0) = ((MR_Box) (ll_backend__frameopt__Instr1_22));
+                                    MR_hl_field(MR_mktag(1), ll_backend__frameopt__STATE_VARIABLE_SuccipRestore_53_53, 1) = ((MR_Box) (ll_backend__frameopt__Var_54));
+                                  }
+                                  /* direct tailcall eliminated */
+                                  {
+                                    MR_Word ll_backend__frameopt__next_value_of_Instrs0_13 = ll_backend__frameopt__Instrs2_23;
+                                    MR_Word ll_backend__frameopt__next_value_of_STATE_VARIABLE_SuccipRestore_0_33 = ll_backend__frameopt__STATE_VARIABLE_SuccipRestore_53_53;
+
+                                    ll_backend__frameopt__STATE_VARIABLE_SuccipRestore_0_33 = ll_backend__frameopt__next_value_of_STATE_VARIABLE_SuccipRestore_0_33;
+                                    ll_backend__frameopt__Instrs0_13 = ll_backend__frameopt__next_value_of_Instrs0_13;
+                                  }
+                                  continue;
+                                }
+                            }
+                        }
+                      else
+                        {
+                          MR_Word ll_backend__frameopt__TypeCtorInfo_68_68;
+                          MR_Word ll_backend__frameopt__Var_59;
+                          MR_Word ll_backend__frameopt__Var_60;
+                          MR_Word ll_backend__frameopt__STATE_VARIABLE_Extra_61_61;
+                          MR_Word ll_backend__frameopt__Var_62;
+                          MR_Word ll_backend__frameopt__Var_63;
+
+                          {
+                            ll_backend__frameopt__Var_59 = ll_backend__opt_util__lval_refers_stackvars_1_f_0(ll_backend__frameopt__Lval_26);
+                          }
+                          ll_backend__frameopt__succeeded = (ll_backend__frameopt__Var_59 == (MR_Integer) 0);
+                          if (ll_backend__frameopt__succeeded)
+                            {
+                              {
+                                ll_backend__frameopt__Var_60 = ll_backend__opt_util__rval_refers_stackvars_1_f_0(ll_backend__frameopt__Rval_27);
+                              }
+                              ll_backend__frameopt__succeeded = (ll_backend__frameopt__Var_60 == (MR_Integer) 0);
+                              if (ll_backend__frameopt__succeeded)
+                                {
+                                  ll_backend__frameopt__TypeCtorInfo_68_68 = (MR_Word) &ll_backend__llds__ll_backend__llds__type_ctor_info_instruction_0;
+                                  ll_backend__frameopt__Var_63 = (MR_Word) MR_mkword(MR_mktag(0), MR_mkbody((MR_Integer) 0));
+                                  {
+                                    ll_backend__frameopt__Var_62 = (MR_Word) MR_mkword(MR_mktag(1), MR_new_object(MR_Word, ((MR_Integer) 2 * sizeof(MR_Word)), NULL, NULL));
+                                    MR_hl_field(MR_mktag(1), ll_backend__frameopt__Var_62, 0) = ((MR_Box) (ll_backend__frameopt__Instr1_22));
+                                    MR_hl_field(MR_mktag(1), ll_backend__frameopt__Var_62, 1) = ((MR_Box) (ll_backend__frameopt__Var_63));
+                                  }
+                                  {
+                                    ll_backend__frameopt__STATE_VARIABLE_Extra_61_61 = mercury__list__f_43_43_2_f_0(ll_backend__frameopt__TypeCtorInfo_68_68, ll_backend__frameopt__STATE_VARIABLE_Extra_0_31, ll_backend__frameopt__Var_62);
+                                  }
+                                  /* direct tailcall eliminated */
+                                  {
+                                    MR_Word ll_backend__frameopt__next_value_of_Instrs0_13 = ll_backend__frameopt__Instrs2_23;
+                                    MR_Word ll_backend__frameopt__next_value_of_STATE_VARIABLE_Extra_0_31 = ll_backend__frameopt__STATE_VARIABLE_Extra_61_61;
+
+                                    ll_backend__frameopt__STATE_VARIABLE_Extra_0_31 = ll_backend__frameopt__next_value_of_STATE_VARIABLE_Extra_0_31;
+                                    ll_backend__frameopt__Instrs0_13 = ll_backend__frameopt__next_value_of_Instrs0_13;
+                                  }
+                                  continue;
+                                }
+                            }
+                        }
+                    }
+                    break;
+                  case (MR_Integer) 6:
+                    {
+                      MR_Word ll_backend__frameopt__Var_39;
+                      MR_Word ll_backend__frameopt__Var_30;
+
+                      ll_backend__frameopt__succeeded = ((MR_tag((MR_Word) ll_backend__frameopt__STATE_VARIABLE_Decrsp_0_35)) == (MR_mktag((MR_Integer) 1)));
+                      if (ll_backend__frameopt__succeeded)
+                        {
+                          ll_backend__frameopt__Var_30 = ((MR_Word) (MR_hl_field(MR_mktag(1), ll_backend__frameopt__STATE_VARIABLE_Decrsp_0_35, (MR_Integer) 0)));
+                          ll_backend__frameopt__Var_39 = ((MR_Word) (MR_hl_field(MR_mktag(1), ll_backend__frameopt__STATE_VARIABLE_Decrsp_0_35, (MR_Integer) 1)));
+                          ll_backend__frameopt__succeeded = (ll_backend__frameopt__Var_39 == ((MR_Word) MR_mkword(MR_mktag(0), MR_mkbody((MR_Integer) 0))));
+                          if (ll_backend__frameopt__succeeded)
+                            {
+                              *ll_backend__frameopt__Goto_19 = ll_backend__frameopt__Instr1_22;
+                              *ll_backend__frameopt__Remain_20 = ll_backend__frameopt__Instrs2_23;
+                              *ll_backend__frameopt__STATE_VARIABLE_Extra_32 = ll_backend__frameopt__STATE_VARIABLE_Extra_0_31;
+                              *ll_backend__frameopt__STATE_VARIABLE_SuccipRestore_34 = ll_backend__frameopt__STATE_VARIABLE_SuccipRestore_0_33;
+                              *ll_backend__frameopt__STATE_VARIABLE_Decrsp_36 = ll_backend__frameopt__STATE_VARIABLE_Decrsp_0_35;
+                              *ll_backend__frameopt__STATE_VARIABLE_Livevals_38 = ll_backend__frameopt__STATE_VARIABLE_Livevals_0_37;
+                              ll_backend__frameopt__succeeded = MR_TRUE;
+                            }
+                        }
+                    }
+                    break;
+                  case (MR_Integer) 25:
+                    {
+                      MR_Word ll_backend__frameopt__STATE_VARIABLE_Decrsp_46_46;
+                      MR_Word ll_backend__frameopt__Var_47;
+                      MR_Integer ll_backend__frameopt__Var_70;
+
+                      ll_backend__frameopt__succeeded = (ll_backend__frameopt__STATE_VARIABLE_Decrsp_0_35 == ((MR_Word) MR_mkword(MR_mktag(0), MR_mkbody((MR_Integer) 0))));
+                      if (ll_backend__frameopt__succeeded)
+                        {
+                          ll_backend__frameopt__Var_70 = ((MR_Integer) (MR_hl_field(MR_mktag(3), ll_backend__frameopt__Uinstr1_24, (MR_Integer) 1)));
+                          ll_backend__frameopt__succeeded = (ll_backend__frameopt__FrameSize_14 == ll_backend__frameopt__Var_70);
+                          if (ll_backend__frameopt__succeeded)
+                            {
+                              ll_backend__frameopt__Var_47 = (MR_Word) MR_mkword(MR_mktag(0), MR_mkbody((MR_Integer) 0));
+                              {
+                                ll_backend__frameopt__STATE_VARIABLE_Decrsp_46_46 = (MR_Word) MR_mkword(MR_mktag(1), MR_new_object(MR_Word, ((MR_Integer) 2 * sizeof(MR_Word)), NULL, NULL));
+                                MR_hl_field(MR_mktag(1), ll_backend__frameopt__STATE_VARIABLE_Decrsp_46_46, 0) = ((MR_Box) (ll_backend__frameopt__Instr1_22));
+                                MR_hl_field(MR_mktag(1), ll_backend__frameopt__STATE_VARIABLE_Decrsp_46_46, 1) = ((MR_Box) (ll_backend__frameopt__Var_47));
+                              }
+                              /* direct tailcall eliminated */
+                              {
+                                MR_Word ll_backend__frameopt__next_value_of_Instrs0_13 = ll_backend__frameopt__Instrs2_23;
+                                MR_Word ll_backend__frameopt__next_value_of_STATE_VARIABLE_Decrsp_0_35 = ll_backend__frameopt__STATE_VARIABLE_Decrsp_46_46;
+
+                                ll_backend__frameopt__STATE_VARIABLE_Decrsp_0_35 = ll_backend__frameopt__next_value_of_STATE_VARIABLE_Decrsp_0_35;
+                                ll_backend__frameopt__Instrs0_13 = ll_backend__frameopt__next_value_of_Instrs0_13;
+                              }
+                              continue;
+                            }
+                        }
+                    }
+                    break;
+                }
+                break;
+            }
+          }
+        return ll_backend__frameopt__succeeded;
+      }
+      break;
+    }
+}
+
+void MR_CALL 
+ll_backend__frameopt__frameopt_keep_nondet_frame_7_p_0(
+  MR_Word ll_backend__frameopt__ProcLabel_8,
+  MR_Word ll_backend__frameopt__LayoutLabels_9,
+  MR_Word ll_backend__frameopt__STATE_VARIABLE_C_0_27,
+  MR_Word * ll_backend__frameopt__STATE_VARIABLE_C_28,
+  MR_Word ll_backend__frameopt__Instrs0_11,
+  MR_Word * ll_backend__frameopt__Instrs_12,
+  MR_Word * ll_backend__frameopt__Mod_13)
+{
+  {
+    MR_bool ll_backend__frameopt__succeeded;
+    MR_Word ll_backend__frameopt__LabelInstr_14;
+    MR_Word ll_backend__frameopt__Comments0_15;
+    MR_Word ll_backend__frameopt__Instrs1_16;
+    MR_Word ll_backend__frameopt__FrameInfo_17;
+    MR_Word ll_backend__frameopt__Redoip_18;
+    MR_String ll_backend__frameopt__MkframeComment_22;
+    MR_Word ll_backend__frameopt__KeepFrameLabel_25;
+    MR_Word ll_backend__frameopt__Instrs2_26;
+    MR_Word ll_backend__frameopt__STATE_VARIABLE_C_30_30;
+    MR_Word ll_backend__frameopt__TypeCtorInfo_59_59;
+    MR_Word ll_backend__frameopt__TypeInfo_60_60;
+    MR_Word ll_backend__frameopt__MkframeInstr_19;
+    MR_Word ll_backend__frameopt__Remain_20;
+    MR_Word ll_backend__frameopt__MkframeUinstr_21;
+    MR_Word ll_backend__frameopt__SuccMap_23;
+    MR_Integer ll_backend__frameopt__KeepFrameLabelNum_24;
+    MR_Word ll_backend__frameopt__Var_29;
+    MR_Word ll_backend__frameopt__Var_31;
+    MR_Word ll_backend__frameopt__Var_32;
+    MR_Word ll_backend__frameopt__Var_62;
+    MR_Word ll_backend__frameopt__Var_72;
+    MR_Word ll_backend__frameopt__Instr_76;
+    MR_Word ll_backend__frameopt__Instrs_77;
+    MR_Word ll_backend__frameopt__Uinstr_79;
+    MR_Word ll_backend__frameopt__STATE_VARIABLE_SuccMap_17_86;
+    MR_String ll_backend__frameopt__Var_69;
+    MR_Integer ll_backend__frameopt__Var_70;
+    MR_String ll_backend__frameopt__Var_80;
+    MR_Word ll_backend__frameopt__Label_81;
+    MR_Word ll_backend__frameopt__Between_83;
+    MR_Word ll_backend__frameopt__TailInstrs_82;
+
+    {
+      ll_backend__opt_util__get_prologue_4_p_0(ll_backend__frameopt__Instrs0_11, &ll_backend__frameopt__LabelInstr_14, &ll_backend__frameopt__Comments0_15, &ll_backend__frameopt__Instrs1_16);
+    }
+    ll_backend__frameopt__succeeded = ((MR_tag((MR_Word) ll_backend__frameopt__Instrs1_16)) == (MR_mktag((MR_Integer) 1)));
+    if (ll_backend__frameopt__succeeded)
+      {
+        ll_backend__frameopt__MkframeInstr_19 = ((MR_Word) (MR_hl_field(MR_mktag(1), ll_backend__frameopt__Instrs1_16, (MR_Integer) 0)));
+        ll_backend__frameopt__Remain_20 = ((MR_Word) (MR_hl_field(MR_mktag(1), ll_backend__frameopt__Instrs1_16, (MR_Integer) 1)));
+        ll_backend__frameopt__MkframeUinstr_21 = ((MR_Word) (MR_hl_field(MR_mktag(0), ll_backend__frameopt__MkframeInstr_19, (MR_Integer) 0)));
+        ll_backend__frameopt__MkframeComment_22 = ((MR_String) (MR_hl_field(MR_mktag(0), ll_backend__frameopt__MkframeInstr_19, (MR_Integer) 1)));
+        ll_backend__frameopt__succeeded = ((((MR_tag((MR_Word) ll_backend__frameopt__MkframeUinstr_21)) == (MR_mktag((MR_Integer) 3)))) && (((((MR_Integer) (MR_Word) (MR_hl_field(MR_mktag(3), ll_backend__frameopt__MkframeUinstr_21, (MR_Integer) 0)))) == (MR_Integer) 4)));
+        if (ll_backend__frameopt__succeeded)
+          {
+            ll_backend__frameopt__FrameInfo_17 = ((MR_Word) (MR_hl_field(MR_mktag(3), ll_backend__frameopt__MkframeUinstr_21, (MR_Integer) 1)));
+            ll_backend__frameopt__Var_72 = ((MR_Word) (MR_hl_field(MR_mktag(3), ll_backend__frameopt__MkframeUinstr_21, (MR_Integer) 2)));
+            ll_backend__frameopt__succeeded = ((MR_tag((MR_Word) ll_backend__frameopt__FrameInfo_17)) == (MR_mktag((MR_Integer) 1)));
+            if (ll_backend__frameopt__succeeded)
+              {
+                ll_backend__frameopt__Var_69 = ((MR_String) (MR_hl_field(MR_mktag(1), ll_backend__frameopt__FrameInfo_17, (MR_Integer) 0)));
+                ll_backend__frameopt__Var_70 = ((MR_Integer) (MR_hl_field(MR_mktag(1), ll_backend__frameopt__FrameInfo_17, (MR_Integer) 1)));
+                ll_backend__frameopt__succeeded = ((MR_tag((MR_Word) ll_backend__frameopt__Var_72)) == (MR_mktag((MR_Integer) 1)));
+                if (ll_backend__frameopt__succeeded)
+                  {
+                    ll_backend__frameopt__Redoip_18 = ((MR_Word) (MR_hl_field(MR_mktag(1), ll_backend__frameopt__Var_72, (MR_Integer) 0)));
+                    ll_backend__frameopt__TypeCtorInfo_59_59 = (MR_Word) &ll_backend__llds__ll_backend__llds__type_ctor_info_label_0;
+                    ll_backend__frameopt__TypeInfo_60_60 = (MR_Word) &ll_backend__frameopt_scalar_common_2[0];
+                    {
+                      ll_backend__frameopt__Var_29 = mercury__map__init_0_f_0(ll_backend__frameopt__TypeCtorInfo_59_59, ll_backend__frameopt__TypeInfo_60_60);
+                    }
+                    ll_backend__frameopt__Instr_76 = ((MR_Word) (MR_hl_field(MR_mktag(1), ll_backend__frameopt__Instrs1_16, (MR_Integer) 0)));
+                    ll_backend__frameopt__Instrs_77 = ((MR_Word) (MR_hl_field(MR_mktag(1), ll_backend__frameopt__Instrs1_16, (MR_Integer) 1)));
+                    ll_backend__frameopt__Uinstr_79 = ((MR_Word) (MR_hl_field(MR_mktag(0), ll_backend__frameopt__Instr_76, (MR_Integer) 0)));
+                    ll_backend__frameopt__Var_80 = ((MR_String) (MR_hl_field(MR_mktag(0), ll_backend__frameopt__Instr_76, (MR_Integer) 1)));
+                    ll_backend__frameopt__succeeded = ((((MR_tag((MR_Word) ll_backend__frameopt__Uinstr_79)) == (MR_mktag((MR_Integer) 3)))) && (((((MR_Integer) (MR_Word) (MR_hl_field(MR_mktag(3), ll_backend__frameopt__Uinstr_79, (MR_Integer) 0)))) == (MR_Integer) 5)));
+                    if (ll_backend__frameopt__succeeded)
+                      {
+                        ll_backend__frameopt__Label_81 = ((MR_Word) (MR_hl_field(MR_mktag(3), ll_backend__frameopt__Uinstr_79, (MR_Integer) 1)));
+                        {
+                          ll_backend__opt_util__skip_comments_2_p_0(ll_backend__frameopt__Instrs_77, &ll_backend__frameopt__TailInstrs_82);
+                        }
+                        {
+                          ll_backend__frameopt__succeeded = ll_backend__opt_util__is_succeed_next_2_p_0(ll_backend__frameopt__TailInstrs_82, &ll_backend__frameopt__Between_83);
+                        }
+                      }
+                    if (ll_backend__frameopt__succeeded)
+                      {
+                        {
+                          mercury__map__det_insert_4_p_0((MR_Word) &ll_backend__llds__ll_backend__llds__type_ctor_info_label_0, (MR_Word) &ll_backend__frameopt_scalar_common_2[0], ((MR_Box) (ll_backend__frameopt__Label_81)), ((MR_Box) (ll_backend__frameopt__Between_83)), ll_backend__frameopt__Var_29, &ll_backend__frameopt__STATE_VARIABLE_SuccMap_17_86);
+                        }
+                      }
+                    else
+                      ll_backend__frameopt__STATE_VARIABLE_SuccMap_17_86 = ll_backend__frameopt__Var_29;
+                    {
+                      ll_backend__frameopt__find_succeed_labels_3_p_0(ll_backend__frameopt__Instrs_77, ll_backend__frameopt__STATE_VARIABLE_SuccMap_17_86, &ll_backend__frameopt__SuccMap_23);
+                    }
+                    {
+                      mercury__counter__allocate_3_p_0(&ll_backend__frameopt__KeepFrameLabelNum_24, ll_backend__frameopt__STATE_VARIABLE_C_0_27, &ll_backend__frameopt__STATE_VARIABLE_C_30_30);
+                    }
+                    ll_backend__frameopt__Var_31 = (MR_Integer) 0;
+                    ll_backend__frameopt__Var_32 = (MR_Integer) 1;
+                    {
+                      ll_backend__frameopt__KeepFrameLabel_25 = (MR_Word) MR_new_object(MR_Word, ((MR_Integer) 2 * sizeof(MR_Word)), NULL, NULL);
+                      MR_hl_field(MR_mktag(0), ll_backend__frameopt__KeepFrameLabel_25, 0) = ((MR_Box) (ll_backend__frameopt__KeepFrameLabelNum_24));
+                      MR_hl_field(MR_mktag(0), ll_backend__frameopt__KeepFrameLabel_25, 1) = ((MR_Box) (ll_backend__frameopt__ProcLabel_8));
+                    }
+                    {
+                      ll_backend__frameopt__keep_nondet_frame_9_p_0(ll_backend__frameopt__Remain_20, &ll_backend__frameopt__Instrs2_26, ll_backend__frameopt__ProcLabel_8, ll_backend__frameopt__KeepFrameLabel_25, ll_backend__frameopt__MkframeUinstr_21, ll_backend__frameopt__SuccMap_23, ll_backend__frameopt__LayoutLabels_9, ll_backend__frameopt__Var_31, &ll_backend__frameopt__Var_62);
+                    }
+                    ll_backend__frameopt__succeeded = (ll_backend__frameopt__Var_32 == ll_backend__frameopt__Var_62);
+                  }
+              }
+          }
+      }
+    if (ll_backend__frameopt__succeeded)
+      {
+        MR_Word ll_backend__frameopt__Var_33;
+        MR_Word ll_backend__frameopt__Var_34;
+        MR_Word ll_backend__frameopt__Var_36;
+        MR_Word ll_backend__frameopt__Var_37;
+        MR_Word ll_backend__frameopt__Var_38;
+        MR_Word ll_backend__frameopt__Var_39;
+        MR_Word ll_backend__frameopt__Var_40;
+        MR_Word ll_backend__frameopt__Var_42;
+        MR_Word ll_backend__frameopt__Var_43;
+        MR_Word ll_backend__frameopt__Var_44;
+        MR_Word ll_backend__frameopt__Var_46;
+        MR_Word ll_backend__frameopt__Var_47;
+        MR_Word ll_backend__frameopt__Var_48;
+        MR_Word ll_backend__frameopt__Var_52;
+        MR_Word ll_backend__frameopt__Var_53;
+        MR_Word ll_backend__frameopt__Var_56;
+
+        *ll_backend__frameopt__STATE_VARIABLE_C_28 = ll_backend__frameopt__STATE_VARIABLE_C_30_30;
+        {
+          ll_backend__frameopt__Var_34 = (MR_Word) MR_mkword(MR_mktag(1), MR_new_object(MR_Word, ((MR_Integer) 2 * sizeof(MR_Word)), NULL, NULL));
+          MR_hl_field(MR_mktag(1), ll_backend__frameopt__Var_34, 0) = ((MR_Box) (ll_backend__frameopt__LabelInstr_14));
+          MR_hl_field(MR_mktag(1), ll_backend__frameopt__Var_34, 1) = ((MR_Box) (MR_mkword(MR_mktag(0), MR_mkbody((MR_Integer) 0))));
+        }
+        {
+          ll_backend__frameopt__Var_40 = (MR_Word) MR_mkword(MR_mktag(3), MR_new_object(MR_Word, ((MR_Integer) 3 * sizeof(MR_Word)), NULL, NULL));
+          MR_hl_field(MR_mktag(3), ll_backend__frameopt__Var_40, 0) = ((MR_Box) (MR_Word) ((MR_Integer) 4));
+          MR_hl_field(MR_mktag(3), ll_backend__frameopt__Var_40, 1) = ((MR_Box) (ll_backend__frameopt__FrameInfo_17));
+          MR_hl_field(MR_mktag(3), ll_backend__frameopt__Var_40, 2) = ((MR_Box) (MR_mkword(MR_mktag(0), MR_mkbody((MR_Integer) 0))));
+        }
+        {
+          ll_backend__frameopt__Var_39 = (MR_Word) MR_new_object(MR_Word, ((MR_Integer) 2 * sizeof(MR_Word)), NULL, NULL);
+          MR_hl_field(MR_mktag(0), ll_backend__frameopt__Var_39, 0) = ((MR_Box) (ll_backend__frameopt__Var_40));
+          MR_hl_field(MR_mktag(0), ll_backend__frameopt__Var_39, 1) = ((MR_Box) (ll_backend__frameopt__MkframeComment_22));
+        }
+        {
+          ll_backend__frameopt__Var_44 = (MR_Word) MR_mkword(MR_mktag(3), MR_new_object(MR_Word, ((MR_Integer) 2 * sizeof(MR_Word)), NULL, NULL));
+          MR_hl_field(MR_mktag(3), ll_backend__frameopt__Var_44, 0) = ((MR_Box) (MR_Word) ((MR_Integer) 5));
+          MR_hl_field(MR_mktag(3), ll_backend__frameopt__Var_44, 1) = ((MR_Box) (ll_backend__frameopt__KeepFrameLabel_25));
+        }
+        {
+          ll_backend__frameopt__Var_43 = (MR_Word) MR_new_object(MR_Word, ((MR_Integer) 2 * sizeof(MR_Word)), NULL, NULL);
+          MR_hl_field(MR_mktag(0), ll_backend__frameopt__Var_43, 0) = ((MR_Box) (ll_backend__frameopt__Var_44));
+          MR_hl_field(MR_mktag(0), ll_backend__frameopt__Var_43, 1) = ((MR_Box) ((MR_String) "tail recursion target, nofulljump"));
+        }
+        {
+          ll_backend__frameopt__Var_53 = (MR_Word) MR_mkword(MR_mktag(3), MR_new_object(MR_Word, ((MR_Integer) 2 * sizeof(MR_Word)), NULL, NULL));
+          MR_hl_field(MR_mktag(3), ll_backend__frameopt__Var_53, 0) = ((MR_Box) (MR_Word) ((MR_Integer) 10));
+          MR_hl_field(MR_mktag(3), ll_backend__frameopt__Var_53, 1) = ((MR_Box) (ll_backend__frameopt__Redoip_18));
+        }
+        {
+          ll_backend__frameopt__Var_52 = (MR_Word) MR_mkword(MR_mktag(3), MR_new_object(MR_Word, ((MR_Integer) 2 * sizeof(MR_Word)), NULL, NULL));
+          MR_hl_field(MR_mktag(3), ll_backend__frameopt__Var_52, 0) = ((MR_Box) (MR_Word) ((MR_Integer) 1));
+          MR_hl_field(MR_mktag(3), ll_backend__frameopt__Var_52, 1) = ((MR_Box) (ll_backend__frameopt__Var_53));
+        }
+        {
+          ll_backend__frameopt__Var_48 = (MR_Word) MR_mkword(MR_mktag(3), MR_new_object(MR_Word, ((MR_Integer) 3 * sizeof(MR_Word)), NULL, NULL));
+          MR_hl_field(MR_mktag(3), ll_backend__frameopt__Var_48, 0) = ((MR_Box) (MR_Word) ((MR_Integer) 1));
+          MR_hl_field(MR_mktag(3), ll_backend__frameopt__Var_48, 1) = ((MR_Box) (MR_mkword(MR_mktag(3), &ll_backend__frameopt_scalar_common_2[16])));
+          MR_hl_field(MR_mktag(3), ll_backend__frameopt__Var_48, 2) = ((MR_Box) (ll_backend__frameopt__Var_52));
+        }
+        {
+          ll_backend__frameopt__Var_47 = (MR_Word) MR_new_object(MR_Word, ((MR_Integer) 2 * sizeof(MR_Word)), NULL, NULL);
+          MR_hl_field(MR_mktag(0), ll_backend__frameopt__Var_47, 0) = ((MR_Box) (ll_backend__frameopt__Var_48));
+          MR_hl_field(MR_mktag(0), ll_backend__frameopt__Var_47, 1) = ((MR_Box) ((MR_String) ""));
+        }
+        {
+          ll_backend__frameopt__Var_46 = (MR_Word) MR_mkword(MR_mktag(1), MR_new_object(MR_Word, ((MR_Integer) 2 * sizeof(MR_Word)), NULL, NULL));
+          MR_hl_field(MR_mktag(1), ll_backend__frameopt__Var_46, 0) = ((MR_Box) (ll_backend__frameopt__Var_47));
+          MR_hl_field(MR_mktag(1), ll_backend__frameopt__Var_46, 1) = ((MR_Box) (MR_mkword(MR_mktag(0), MR_mkbody((MR_Integer) 0))));
+        }
+        {
+          ll_backend__frameopt__Var_42 = (MR_Word) MR_mkword(MR_mktag(1), MR_new_object(MR_Word, ((MR_Integer) 2 * sizeof(MR_Word)), NULL, NULL));
+          MR_hl_field(MR_mktag(1), ll_backend__frameopt__Var_42, 0) = ((MR_Box) (ll_backend__frameopt__Var_43));
+          MR_hl_field(MR_mktag(1), ll_backend__frameopt__Var_42, 1) = ((MR_Box) (ll_backend__frameopt__Var_46));
+        }
+        {
+          ll_backend__frameopt__Var_38 = (MR_Word) MR_mkword(MR_mktag(1), MR_new_object(MR_Word, ((MR_Integer) 2 * sizeof(MR_Word)), NULL, NULL));
+          MR_hl_field(MR_mktag(1), ll_backend__frameopt__Var_38, 0) = ((MR_Box) (ll_backend__frameopt__Var_39));
+          MR_hl_field(MR_mktag(1), ll_backend__frameopt__Var_38, 1) = ((MR_Box) (ll_backend__frameopt__Var_42));
+        }
+        {
+          ll_backend__frameopt__Var_56 = (MR_Word) MR_mkword(MR_mktag(1), MR_new_object(MR_Word, ((MR_Integer) 2 * sizeof(MR_Word)), NULL, NULL));
+          MR_hl_field(MR_mktag(1), ll_backend__frameopt__Var_56, 0) = ((MR_Box) (ll_backend__frameopt__Instrs2_26));
+          MR_hl_field(MR_mktag(1), ll_backend__frameopt__Var_56, 1) = ((MR_Box) (MR_mkword(MR_mktag(0), MR_mkbody((MR_Integer) 0))));
+        }
+        {
+          ll_backend__frameopt__Var_37 = (MR_Word) MR_mkword(MR_mktag(1), MR_new_object(MR_Word, ((MR_Integer) 2 * sizeof(MR_Word)), NULL, NULL));
+          MR_hl_field(MR_mktag(1), ll_backend__frameopt__Var_37, 0) = ((MR_Box) (ll_backend__frameopt__Var_38));
+          MR_hl_field(MR_mktag(1), ll_backend__frameopt__Var_37, 1) = ((MR_Box) (ll_backend__frameopt__Var_56));
+        }
+        {
+          ll_backend__frameopt__Var_36 = (MR_Word) MR_mkword(MR_mktag(1), MR_new_object(MR_Word, ((MR_Integer) 2 * sizeof(MR_Word)), NULL, NULL));
+          MR_hl_field(MR_mktag(1), ll_backend__frameopt__Var_36, 0) = ((MR_Box) (ll_backend__frameopt__Comments0_15));
+          MR_hl_field(MR_mktag(1), ll_backend__frameopt__Var_36, 1) = ((MR_Box) (ll_backend__frameopt__Var_37));
+        }
+        {
+          ll_backend__frameopt__Var_33 = (MR_Word) MR_mkword(MR_mktag(1), MR_new_object(MR_Word, ((MR_Integer) 2 * sizeof(MR_Word)), NULL, NULL));
+          MR_hl_field(MR_mktag(1), ll_backend__frameopt__Var_33, 0) = ((MR_Box) (ll_backend__frameopt__Var_34));
+          MR_hl_field(MR_mktag(1), ll_backend__frameopt__Var_33, 1) = ((MR_Box) (ll_backend__frameopt__Var_36));
+        }
+        {
+          mercury__list__condense_2_p_0((MR_Word) &ll_backend__llds__ll_backend__llds__type_ctor_info_instruction_0, ll_backend__frameopt__Var_33, ll_backend__frameopt__Instrs_12);
+        }
+        *ll_backend__frameopt__Mod_13 = (MR_Integer) 1;
+      }
+    else
+      {
+        *ll_backend__frameopt__Instrs_12 = ll_backend__frameopt__Instrs0_11;
+        *ll_backend__frameopt__Mod_13 = (MR_Integer) 0;
+        *ll_backend__frameopt__STATE_VARIABLE_C_28 = ll_backend__frameopt__STATE_VARIABLE_C_0_27;
+      }
+  }
+}
+
+static void MR_CALL 
+ll_backend__frameopt__keep_nondet_frame_9_p_0(
+  MR_Word ll_backend__frameopt__HeadVar__1_1,
+  MR_Word * ll_backend__frameopt__HeadVar__2_2,
+  MR_Word ll_backend__frameopt__ProcLabel_3,
+  MR_Word ll_backend__frameopt__KeepFrameLabel_4,
+  MR_Word ll_backend__frameopt__PrevInstr_5,
+  MR_Word ll_backend__frameopt__SuccMap_6,
+  MR_Word ll_backend__frameopt__LayoutLabels_7,
+  MR_Word ll_backend__frameopt__STATE_VARIABLE_Changed_0_8,
+  MR_Word * ll_backend__frameopt__STATE_VARIABLE_Changed_9)
+{
+  {
+    MR_bool ll_backend__frameopt__succeeded;
+
+    if ((ll_backend__frameopt__HeadVar__1_1 == ((MR_Word) MR_mkword(MR_mktag(0), MR_mkbody((MR_Integer) 0)))))
+      {
+        *ll_backend__frameopt__HeadVar__2_2 = (MR_Word) MR_mkword(MR_mktag(0), MR_mkbody((MR_Integer) 0));
+        *ll_backend__frameopt__STATE_VARIABLE_Changed_9 = ll_backend__frameopt__STATE_VARIABLE_Changed_0_8;
+      }
+    else
+      {
+        MR_Word ll_backend__frameopt__Instr0_18 = ((MR_Word) (MR_hl_field(MR_mktag(1), ll_backend__frameopt__HeadVar__1_1, (MR_Integer) 0)));
+        MR_Word ll_backend__frameopt__Instrs0_19 = ((MR_Word) (MR_hl_field(MR_mktag(1), ll_backend__frameopt__HeadVar__1_1, (MR_Integer) 1)));
+        MR_Word ll_backend__frameopt__Uinstr0_27 = ((MR_Word) (MR_hl_field(MR_mktag(0), ll_backend__frameopt__Instr0_18, (MR_Integer) 0)));
+        MR_String ll_backend__frameopt__Comment_28 = ((MR_String) (MR_hl_field(MR_mktag(0), ll_backend__frameopt__Instr0_18, (MR_Integer) 1)));
+        MR_Word ll_backend__frameopt__TypeCtorInfo_67_67;
+        MR_Word ll_backend__frameopt__TypeInfo_68_68;
+        MR_Word ll_backend__frameopt__RetLabel_30;
+        MR_Word ll_backend__frameopt__CallModel_34;
+        MR_Word ll_backend__frameopt__BetweenIncl_35;
+        MR_Word ll_backend__frameopt__Var_46;
+        MR_Word ll_backend__frameopt__Var_47;
+        MR_Word ll_backend__frameopt__Var_48;
+        MR_Word ll_backend__frameopt__Var_49;
+        MR_Word ll_backend__frameopt__Var_50;
+        MR_Word ll_backend__frameopt__Var_51;
+        MR_Word ll_backend__frameopt__Var_52;
+        MR_Word ll_backend__frameopt__Var_53;
+        MR_Word ll_backend__frameopt__Var_54;
+        MR_Word ll_backend__frameopt__Var_55;
+        MR_Word ll_backend__frameopt__Var_69;
+        MR_Word ll_backend__frameopt__Var_31;
+        MR_Word ll_backend__frameopt__Var_32;
+        MR_Word ll_backend__frameopt__Var_33;
+        MR_Word ll_backend__frameopt__Var_29;
+        MR_Box ll_backend__frameopt__conv0_BetweenIncl_35;
+        MR_Word ll_backend__frameopt__Livevals_40;
+        MR_String ll_backend__frameopt__Var_37;
+        MR_Word ll_backend__frameopt__Var_36;
+        MR_String ll_backend__frameopt__Var_39;
+        MR_Word ll_backend__frameopt__Var_38;
+
+        ll_backend__frameopt__succeeded = ((((MR_tag((MR_Word) ll_backend__frameopt__Uinstr0_27)) == (MR_mktag((MR_Integer) 3)))) && (((((MR_Integer) (MR_Word) (MR_hl_field(MR_mktag(3), ll_backend__frameopt__Uinstr0_27, (MR_Integer) 0)))) == (MR_Integer) 3)));
+        if (ll_backend__frameopt__succeeded)
+          {
+            ll_backend__frameopt__Var_46 = ((MR_Word) (MR_hl_field(MR_mktag(3), ll_backend__frameopt__Uinstr0_27, (MR_Integer) 1)));
+            ll_backend__frameopt__Var_48 = ((MR_Word) (MR_hl_field(MR_mktag(3), ll_backend__frameopt__Uinstr0_27, (MR_Integer) 2)));
+            ll_backend__frameopt__Var_31 = ((MR_Word) (MR_hl_field(MR_mktag(3), ll_backend__frameopt__Uinstr0_27, (MR_Integer) 3)));
+            ll_backend__frameopt__Var_32 = ((MR_Word) (MR_hl_field(MR_mktag(3), ll_backend__frameopt__Uinstr0_27, (MR_Integer) 4)));
+            ll_backend__frameopt__Var_33 = ((MR_Word) (MR_hl_field(MR_mktag(3), ll_backend__frameopt__Uinstr0_27, (MR_Integer) 5)));
+            ll_backend__frameopt__CallModel_34 = ((MR_Word) (MR_hl_field(MR_mktag(3), ll_backend__frameopt__Uinstr0_27, (MR_Integer) 6)));
+            ll_backend__frameopt__succeeded = ((MR_tag((MR_Word) ll_backend__frameopt__Var_46)) == (MR_mktag((MR_Integer) 1)));
+            if (ll_backend__frameopt__succeeded)
+              {
+                ll_backend__frameopt__Var_47 = ((MR_Word) (MR_hl_field(MR_mktag(1), ll_backend__frameopt__Var_46, (MR_Integer) 0)));
+                ll_backend__frameopt__succeeded = ((MR_tag((MR_Word) ll_backend__frameopt__Var_47)) == (MR_mktag((MR_Integer) 1)));
+                if (ll_backend__frameopt__succeeded)
+                  {
+                    ll_backend__frameopt__Var_29 = ((MR_Word) (MR_hl_field(MR_mktag(1), ll_backend__frameopt__Var_47, (MR_Integer) 0)));
+                    ll_backend__frameopt__Var_69 = ((MR_Word) (MR_hl_field(MR_mktag(1), ll_backend__frameopt__Var_47, (MR_Integer) 1)));
+                    {
+                      ll_backend__frameopt__succeeded = mdbcomp__prim_data____Unify____proc_label_0_0(ll_backend__frameopt__ProcLabel_3, ll_backend__frameopt__Var_69);
+                    }
+                    if (ll_backend__frameopt__succeeded)
+                      {
+                        ll_backend__frameopt__succeeded = ((MR_tag((MR_Word) ll_backend__frameopt__Var_48)) == (MR_mktag((MR_Integer) 1)));
+                        if (ll_backend__frameopt__succeeded)
+                          {
+                            ll_backend__frameopt__RetLabel_30 = ((MR_Word) (MR_hl_field(MR_mktag(1), ll_backend__frameopt__Var_48, (MR_Integer) 0)));
+                            ll_backend__frameopt__succeeded = ((MR_tag((MR_Word) ll_backend__frameopt__CallModel_34)) == (MR_mktag((MR_Integer) 2)));
+                            if (ll_backend__frameopt__succeeded)
+                              {
+                                ll_backend__frameopt__Var_49 = ((MR_Word) (MR_hl_field(MR_mktag(2), ll_backend__frameopt__CallModel_34, (MR_Integer) 0)));
+                                ll_backend__frameopt__succeeded = (ll_backend__frameopt__Var_49 == (MR_Integer) 2);
+                                if (ll_backend__frameopt__succeeded)
+                                  {
+                                    ll_backend__frameopt__TypeCtorInfo_67_67 = (MR_Word) &ll_backend__llds__ll_backend__llds__type_ctor_info_label_0;
+                                    ll_backend__frameopt__TypeInfo_68_68 = (MR_Word) &ll_backend__frameopt_scalar_common_2[0];
+                                    {
+                                      ll_backend__frameopt__succeeded = mercury__map__search_3_p_0(ll_backend__frameopt__TypeCtorInfo_67_67, ll_backend__frameopt__TypeInfo_68_68, ll_backend__frameopt__SuccMap_6, ((MR_Box) (ll_backend__frameopt__RetLabel_30)), &ll_backend__frameopt__conv0_BetweenIncl_35);
+                                    }
+                                    if (ll_backend__frameopt__succeeded)
+                                      {
+                                        ll_backend__frameopt__BetweenIncl_35 = ((MR_Word) ll_backend__frameopt__conv0_BetweenIncl_35);
+                                        ll_backend__frameopt__succeeded = MR_TRUE;
+                                      }
+                                    if (ll_backend__frameopt__succeeded)
+                                      {
+                                        ll_backend__frameopt__succeeded = ((MR_tag((MR_Word) ll_backend__frameopt__PrevInstr_5)) == (MR_mktag((MR_Integer) 2)));
+                                        if (ll_backend__frameopt__succeeded)
+                                          {
+                                            ll_backend__frameopt__Livevals_40 = ((MR_Word) (MR_hl_field(MR_mktag(2), ll_backend__frameopt__PrevInstr_5, (MR_Integer) 0)));
+                                            ll_backend__frameopt__succeeded = ((MR_tag((MR_Word) ll_backend__frameopt__BetweenIncl_35)) == (MR_mktag((MR_Integer) 1)));
+                                            if (ll_backend__frameopt__succeeded)
+                                              {
+                                                ll_backend__frameopt__Var_50 = ((MR_Word) (MR_hl_field(MR_mktag(1), ll_backend__frameopt__BetweenIncl_35, (MR_Integer) 0)));
+                                                ll_backend__frameopt__Var_52 = ((MR_Word) (MR_hl_field(MR_mktag(1), ll_backend__frameopt__BetweenIncl_35, (MR_Integer) 1)));
+                                                ll_backend__frameopt__Var_51 = ((MR_Word) (MR_hl_field(MR_mktag(0), ll_backend__frameopt__Var_50, (MR_Integer) 0)));
+                                                ll_backend__frameopt__Var_37 = ((MR_String) (MR_hl_field(MR_mktag(0), ll_backend__frameopt__Var_50, (MR_Integer) 1)));
+                                                ll_backend__frameopt__succeeded = ((MR_tag((MR_Word) ll_backend__frameopt__Var_51)) == (MR_mktag((MR_Integer) 2)));
+                                                if (ll_backend__frameopt__succeeded)
+                                                  {
+                                                    ll_backend__frameopt__Var_36 = ((MR_Word) (MR_hl_field(MR_mktag(2), ll_backend__frameopt__Var_51, (MR_Integer) 0)));
+                                                    ll_backend__frameopt__succeeded = ((MR_tag((MR_Word) ll_backend__frameopt__Var_52)) == (MR_mktag((MR_Integer) 1)));
+                                                    if (ll_backend__frameopt__succeeded)
+                                                      {
+                                                        ll_backend__frameopt__Var_53 = ((MR_Word) (MR_hl_field(MR_mktag(1), ll_backend__frameopt__Var_52, (MR_Integer) 0)));
+                                                        ll_backend__frameopt__Var_55 = ((MR_Word) (MR_hl_field(MR_mktag(1), ll_backend__frameopt__Var_52, (MR_Integer) 1)));
+                                                        ll_backend__frameopt__succeeded = (ll_backend__frameopt__Var_55 == ((MR_Word) MR_mkword(MR_mktag(0), MR_mkbody((MR_Integer) 0))));
+                                                        if (ll_backend__frameopt__succeeded)
+                                                          {
+                                                            ll_backend__frameopt__Var_54 = ((MR_Word) (MR_hl_field(MR_mktag(0), ll_backend__frameopt__Var_53, (MR_Integer) 0)));
+                                                            ll_backend__frameopt__Var_39 = ((MR_String) (MR_hl_field(MR_mktag(0), ll_backend__frameopt__Var_53, (MR_Integer) 1)));
+                                                            ll_backend__frameopt__succeeded = ((((MR_tag((MR_Word) ll_backend__frameopt__Var_54)) == (MR_mktag((MR_Integer) 3)))) && (((((MR_Integer) (MR_Word) (MR_hl_field(MR_mktag(3), ll_backend__frameopt__Var_54, (MR_Integer) 0)))) == (MR_Integer) 6)));
+                                                            if (ll_backend__frameopt__succeeded)
+                                                              {
+                                                                ll_backend__frameopt__Var_38 = ((MR_Word) (MR_hl_field(MR_mktag(3), ll_backend__frameopt__Var_54, (MR_Integer) 1)));
+                                                                {
+                                                                  ll_backend__frameopt__succeeded = mercury__set_tree234__member_2_p_0(ll_backend__frameopt__TypeCtorInfo_67_67, ((MR_Box) (ll_backend__frameopt__RetLabel_30)), ll_backend__frameopt__LayoutLabels_7);
+                                                                }
+                                                                ll_backend__frameopt__succeeded = !(ll_backend__frameopt__succeeded);
+                                                              }
+                                                          }
+                                                      }
+                                                  }
+                                              }
+                                          }
+                                      }
+                                  }
+                              }
+                          }
+                      }
+                  }
+              }
+          }
+        if (ll_backend__frameopt__succeeded)
+          {
+            MR_Word ll_backend__frameopt__Instrs1_41;
+            MR_String ll_backend__frameopt__NewComment_43;
+            MR_Word ll_backend__frameopt__Var_58;
+            MR_Word ll_backend__frameopt__Var_61;
+            MR_Word ll_backend__frameopt__Var_62;
+            MR_Word ll_backend__frameopt__Var_63;
+            MR_Word ll_backend__frameopt__Var_64;
+            MR_Word ll_backend__frameopt__Var_42;
+
+            {
+              ll_backend__frameopt__keep_nondet_frame_9_p_0(ll_backend__frameopt__Instrs0_19, &ll_backend__frameopt__Instrs1_41, ll_backend__frameopt__ProcLabel_3, ll_backend__frameopt__KeepFrameLabel_4, ll_backend__frameopt__Uinstr0_27, ll_backend__frameopt__SuccMap_6, ll_backend__frameopt__LayoutLabels_7, ll_backend__frameopt__STATE_VARIABLE_Changed_0_8, &ll_backend__frameopt__Var_42);
+            }
+            *ll_backend__frameopt__STATE_VARIABLE_Changed_9 = (MR_Integer) 1;
+            {
+              ll_backend__frameopt__NewComment_43 = mercury__string__f_43_43_2_f_0(ll_backend__frameopt__Comment_28, (MR_String) " (nondet tailcall)");
+            }
+            {
+              ll_backend__frameopt__Var_58 = (MR_Word) MR_new_object(MR_Word, ((MR_Integer) 2 * sizeof(MR_Word)), NULL, NULL);
+              MR_hl_field(MR_mktag(0), ll_backend__frameopt__Var_58, 0) = ((MR_Box) (ll_backend__frameopt__PrevInstr_5));
+              MR_hl_field(MR_mktag(0), ll_backend__frameopt__Var_58, 1) = ((MR_Box) ((MR_String) ""));
+            }
+            {
+              ll_backend__frameopt__Var_64 = (MR_Word) MR_mkword(MR_mktag(1), MR_new_object(MR_Word, ((MR_Integer) 1 * sizeof(MR_Word)), NULL, NULL));
+              MR_hl_field(MR_mktag(1), ll_backend__frameopt__Var_64, 0) = ((MR_Box) (ll_backend__frameopt__KeepFrameLabel_4));
+            }
+            {
+              ll_backend__frameopt__Var_63 = (MR_Word) MR_mkword(MR_mktag(3), MR_new_object(MR_Word, ((MR_Integer) 2 * sizeof(MR_Word)), NULL, NULL));
+              MR_hl_field(MR_mktag(3), ll_backend__frameopt__Var_63, 0) = ((MR_Box) (MR_Word) ((MR_Integer) 6));
+              MR_hl_field(MR_mktag(3), ll_backend__frameopt__Var_63, 1) = ((MR_Box) (ll_backend__frameopt__Var_64));
+            }
+            {
+              ll_backend__frameopt__Var_62 = (MR_Word) MR_new_object(MR_Word, ((MR_Integer) 2 * sizeof(MR_Word)), NULL, NULL);
+              MR_hl_field(MR_mktag(0), ll_backend__frameopt__Var_62, 0) = ((MR_Box) (ll_backend__frameopt__Var_63));
+              MR_hl_field(MR_mktag(0), ll_backend__frameopt__Var_62, 1) = ((MR_Box) (ll_backend__frameopt__NewComment_43));
+            }
+            {
+              ll_backend__frameopt__Var_61 = (MR_Word) MR_mkword(MR_mktag(1), MR_new_object(MR_Word, ((MR_Integer) 2 * sizeof(MR_Word)), NULL, NULL));
+              MR_hl_field(MR_mktag(1), ll_backend__frameopt__Var_61, 0) = ((MR_Box) (ll_backend__frameopt__Var_62));
+              MR_hl_field(MR_mktag(1), ll_backend__frameopt__Var_61, 1) = ((MR_Box) (ll_backend__frameopt__Instrs1_41));
+            }
+            {
+              MR_Word base;
+              base = (MR_Word) MR_mkword(MR_mktag(1), MR_new_object(MR_Word, ((MR_Integer) 2 * sizeof(MR_Word)), NULL, NULL));
+              *ll_backend__frameopt__HeadVar__2_2 = base;
+              MR_hl_field(MR_mktag(1), base, 0) = ((MR_Box) (ll_backend__frameopt__Var_58));
+              MR_hl_field(MR_mktag(1), base, 1) = ((MR_Box) (ll_backend__frameopt__Var_61));
+            }
+          }
+        else
+          {
+            MR_Word ll_backend__frameopt__Instrs1_66;
+
+            {
+              ll_backend__frameopt__keep_nondet_frame_9_p_0(ll_backend__frameopt__Instrs0_19, &ll_backend__frameopt__Instrs1_66, ll_backend__frameopt__ProcLabel_3, ll_backend__frameopt__KeepFrameLabel_4, ll_backend__frameopt__Uinstr0_27, ll_backend__frameopt__SuccMap_6, ll_backend__frameopt__LayoutLabels_7, ll_backend__frameopt__STATE_VARIABLE_Changed_0_8, ll_backend__frameopt__STATE_VARIABLE_Changed_9);
+            }
+            {
+              MR_Word base;
+              base = (MR_Word) MR_mkword(MR_mktag(1), MR_new_object(MR_Word, ((MR_Integer) 2 * sizeof(MR_Word)), NULL, NULL));
+              *ll_backend__frameopt__HeadVar__2_2 = base;
+              MR_hl_field(MR_mktag(1), base, 0) = ((MR_Box) (ll_backend__frameopt__Instr0_18));
+              MR_hl_field(MR_mktag(1), base, 1) = ((MR_Box) (ll_backend__frameopt__Instrs1_66));
+            }
+          }
+      }
+  }
+}
+
+static void MR_CALL 
+ll_backend__frameopt__find_succeed_labels_3_p_0(
+  MR_Word ll_backend__frameopt__HeadVar__1_1,
+  MR_Word ll_backend__frameopt__STATE_VARIABLE_SuccMap_0_2,
+  MR_Word * ll_backend__frameopt__STATE_VARIABLE_SuccMap_3)
+{
+  while (MR_TRUE)
+    {
+      /* tailcall optimized into a loop */
+      {
+        MR_bool ll_backend__frameopt__succeeded;
+
+        if ((ll_backend__frameopt__HeadVar__1_1 == ((MR_Word) MR_mkword(MR_mktag(0), MR_mkbody((MR_Integer) 0)))))
+          *ll_backend__frameopt__STATE_VARIABLE_SuccMap_3 = ll_backend__frameopt__STATE_VARIABLE_SuccMap_0_2;
+        else
+          {
+            MR_Word ll_backend__frameopt__Instr_7 = ((MR_Word) (MR_hl_field(MR_mktag(1), ll_backend__frameopt__HeadVar__1_1, (MR_Integer) 0)));
+            MR_Word ll_backend__frameopt__Instrs_8 = ((MR_Word) (MR_hl_field(MR_mktag(1), ll_backend__frameopt__HeadVar__1_1, (MR_Integer) 1)));
+            MR_Word ll_backend__frameopt__Uinstr_10 = ((MR_Word) (MR_hl_field(MR_mktag(0), ll_backend__frameopt__Instr_7, (MR_Integer) 0)));
+            MR_Word ll_backend__frameopt__STATE_VARIABLE_SuccMap_17_17;
+            MR_String ll_backend__frameopt__Var_11 = ((MR_String) (MR_hl_field(MR_mktag(0), ll_backend__frameopt__Instr_7, (MR_Integer) 1)));
+            MR_Word ll_backend__frameopt__Label_12;
+            MR_Word ll_backend__frameopt__Between_14;
+            MR_Word ll_backend__frameopt__TailInstrs_13;
+
+            ll_backend__frameopt__succeeded = ((((MR_tag((MR_Word) ll_backend__frameopt__Uinstr_10)) == (MR_mktag((MR_Integer) 3)))) && (((((MR_Integer) (MR_Word) (MR_hl_field(MR_mktag(3), ll_backend__frameopt__Uinstr_10, (MR_Integer) 0)))) == (MR_Integer) 5)));
+            if (ll_backend__frameopt__succeeded)
+              {
+                ll_backend__frameopt__Label_12 = ((MR_Word) (MR_hl_field(MR_mktag(3), ll_backend__frameopt__Uinstr_10, (MR_Integer) 1)));
+                {
+                  ll_backend__opt_util__skip_comments_2_p_0(ll_backend__frameopt__Instrs_8, &ll_backend__frameopt__TailInstrs_13);
+                }
+                {
+                  ll_backend__frameopt__succeeded = ll_backend__opt_util__is_succeed_next_2_p_0(ll_backend__frameopt__TailInstrs_13, &ll_backend__frameopt__Between_14);
+                }
+              }
+            if (ll_backend__frameopt__succeeded)
+              {
+                {
+                  mercury__map__det_insert_4_p_0((MR_Word) &ll_backend__llds__ll_backend__llds__type_ctor_info_label_0, (MR_Word) &ll_backend__frameopt_scalar_common_2[0], ((MR_Box) (ll_backend__frameopt__Label_12)), ((MR_Box) (ll_backend__frameopt__Between_14)), ll_backend__frameopt__STATE_VARIABLE_SuccMap_0_2, &ll_backend__frameopt__STATE_VARIABLE_SuccMap_17_17);
+                }
+              }
+            else
+              ll_backend__frameopt__STATE_VARIABLE_SuccMap_17_17 = ll_backend__frameopt__STATE_VARIABLE_SuccMap_0_2;
+            /* direct tailcall eliminated */
+            {
+              MR_Word ll_backend__frameopt__next_value_of_HeadVar__1_1 = ll_backend__frameopt__Instrs_8;
+              MR_Word ll_backend__frameopt__next_value_of_STATE_VARIABLE_SuccMap_0_2 = ll_backend__frameopt__STATE_VARIABLE_SuccMap_17_17;
+
+              ll_backend__frameopt__STATE_VARIABLE_SuccMap_0_2 = ll_backend__frameopt__next_value_of_STATE_VARIABLE_SuccMap_0_2;
+              ll_backend__frameopt__HeadVar__1_1 = ll_backend__frameopt__next_value_of_HeadVar__1_1;
+            }
+            continue;
+          }
+      }
+      break;
+    }
+}
+
+void MR_CALL 
+ll_backend__frameopt__frameopt_main_nondet_stack_7_p_0(
+  MR_Word ll_backend__frameopt__ProcLabel_8,
+  MR_Word ll_backend__frameopt__STATE_VARIABLE_C_0_32,
+  MR_Word * ll_backend__frameopt__STATE_VARIABLE_C_33,
+  MR_Word ll_backend__frameopt__Instrs0_10,
+  MR_Word * ll_backend__frameopt__Instrs_11,
+  MR_Word ll_backend__frameopt__AddComments_12,
+  MR_Word * ll_backend__frameopt__Mod_13)
+{
+  {
+    MR_bool ll_backend__frameopt__succeeded;
+    MR_Word ll_backend__frameopt__LabelInstr_14;
+    MR_Word ll_backend__frameopt__Comments0_15;
+    MR_Word ll_backend__frameopt__Instrs1_16;
+    MR_Word ll_backend__frameopt__EntryInfo_19;
+    MR_Word ll_backend__frameopt__MkframeInstr_61;
+    MR_Word ll_backend__frameopt__FrameInfo_62;
+    MR_Word ll_backend__frameopt__MaybeRedoip_63;
+    MR_Word ll_backend__frameopt__Redoip_65;
+    MR_String ll_backend__frameopt__Msg_66;
+    MR_Integer ll_backend__frameopt__Size_67;
+    MR_Word ll_backend__frameopt__Var_69;
+    MR_Word ll_backend__frameopt__Var_18;
+    MR_String ll_backend__frameopt__Var_64;
+
+    {
+      ll_backend__opt_util__get_prologue_4_p_0(ll_backend__frameopt__Instrs0_10, &ll_backend__frameopt__LabelInstr_14, &ll_backend__frameopt__Comments0_15, &ll_backend__frameopt__Instrs1_16);
+    }
+    ll_backend__frameopt__succeeded = ((MR_tag((MR_Word) ll_backend__frameopt__Instrs1_16)) == (MR_mktag((MR_Integer) 1)));
+    if (ll_backend__frameopt__succeeded)
+      {
+        ll_backend__frameopt__MkframeInstr_61 = ((MR_Word) (MR_hl_field(MR_mktag(1), ll_backend__frameopt__Instrs1_16, (MR_Integer) 0)));
+        ll_backend__frameopt__Var_18 = ((MR_Word) (MR_hl_field(MR_mktag(1), ll_backend__frameopt__Instrs1_16, (MR_Integer) 1)));
+        ll_backend__frameopt__Var_69 = ((MR_Word) (MR_hl_field(MR_mktag(0), ll_backend__frameopt__MkframeInstr_61, (MR_Integer) 0)));
+        ll_backend__frameopt__Var_64 = ((MR_String) (MR_hl_field(MR_mktag(0), ll_backend__frameopt__MkframeInstr_61, (MR_Integer) 1)));
+        ll_backend__frameopt__succeeded = ((((MR_tag((MR_Word) ll_backend__frameopt__Var_69)) == (MR_mktag((MR_Integer) 3)))) && (((((MR_Integer) (MR_Word) (MR_hl_field(MR_mktag(3), ll_backend__frameopt__Var_69, (MR_Integer) 0)))) == (MR_Integer) 4)));
+        if (ll_backend__frameopt__succeeded)
+          {
+            ll_backend__frameopt__FrameInfo_62 = ((MR_Word) (MR_hl_field(MR_mktag(3), ll_backend__frameopt__Var_69, (MR_Integer) 1)));
+            ll_backend__frameopt__MaybeRedoip_63 = ((MR_Word) (MR_hl_field(MR_mktag(3), ll_backend__frameopt__Var_69, (MR_Integer) 2)));
+            ll_backend__frameopt__succeeded = ((MR_tag((MR_Word) ll_backend__frameopt__MaybeRedoip_63)) == (MR_mktag((MR_Integer) 1)));
+            if (ll_backend__frameopt__succeeded)
+              {
+                ll_backend__frameopt__Redoip_65 = ((MR_Word) (MR_hl_field(MR_mktag(1), ll_backend__frameopt__MaybeRedoip_63, (MR_Integer) 0)));
+                ll_backend__frameopt__succeeded = (ll_backend__frameopt__Redoip_65 == ((MR_Word) MR_mkword(MR_mktag(0), MR_mkbody((MR_Integer) 2))));
+                if (ll_backend__frameopt__succeeded)
+                  {
+                    ll_backend__frameopt__succeeded = ((MR_tag((MR_Word) ll_backend__frameopt__FrameInfo_62)) == (MR_mktag((MR_Integer) 1)));
+                    if (ll_backend__frameopt__succeeded)
+                      {
+                        ll_backend__frameopt__Msg_66 = ((MR_String) (MR_hl_field(MR_mktag(1), ll_backend__frameopt__FrameInfo_62, (MR_Integer) 0)));
+                        ll_backend__frameopt__Size_67 = ((MR_Integer) (MR_hl_field(MR_mktag(1), ll_backend__frameopt__FrameInfo_62, (MR_Integer) 1)));
+                        {
+                          ll_backend__frameopt__EntryInfo_19 = (MR_Word) MR_new_object(MR_Word, ((MR_Integer) 3 * sizeof(MR_Word)), NULL, NULL);
+                          MR_hl_field(MR_mktag(0), ll_backend__frameopt__EntryInfo_19, 0) = ((MR_Box) (ll_backend__frameopt__Msg_66));
+                          MR_hl_field(MR_mktag(0), ll_backend__frameopt__EntryInfo_19, 1) = ((MR_Box) (ll_backend__frameopt__Size_67));
+                          MR_hl_field(MR_mktag(0), ll_backend__frameopt__EntryInfo_19, 2) = ((MR_Box) (ll_backend__frameopt__Redoip_65));
+                        }
+                        ll_backend__frameopt__succeeded = MR_TRUE;
+                      }
+                  }
+              }
+          }
+      }
+    if (ll_backend__frameopt__succeeded)
+      {
+        MR_Word ll_backend__frameopt__TypeCtorInfo_49_49 = (MR_Word) &ll_backend__llds__ll_backend__llds__type_ctor_info_label_0;
+        MR_Word ll_backend__frameopt__TypeClassInfo_for_block_entry_exit_52;
+        MR_Word ll_backend__frameopt__BasicInstrs_21;
+        MR_Word ll_backend__frameopt__LabelSeq0_22;
+        MR_Word ll_backend__frameopt__PredMap_23;
+        MR_Word ll_backend__frameopt__PreExitDummyLabelMap_24;
+        MR_Word ll_backend__frameopt__STATE_VARIABLE_BlockMap_34_34;
+        MR_Word ll_backend__frameopt__Var_35;
+        MR_Word ll_backend__frameopt__STATE_VARIABLE_C_36_36;
+        MR_Word ll_backend__frameopt__STATE_VARIABLE_BlockMap_39_39;
+        MR_Word ll_backend__frameopt__Var_40;
+        MR_Word ll_backend__frameopt__STATE_VARIABLE_C_41_41;
+        MR_Word ll_backend__frameopt__Var_42;
+        MR_Word ll_backend__frameopt__STATE_VARIABLE_BlockMap_43_43;
+        MR_Word ll_backend__frameopt___KeepFrame_25;
+
+        {
+          mercury__map__init_1_p_0(ll_backend__frameopt__TypeCtorInfo_49_49, (MR_Word) &ll_backend__frameopt_scalar_common_1[2], &ll_backend__frameopt__STATE_VARIABLE_BlockMap_34_34);
+        }
+        {
+          ll_backend__frameopt__Var_35 = (MR_Word) MR_mkword(MR_mktag(1), MR_new_object(MR_Word, ((MR_Integer) 2 * sizeof(MR_Word)), NULL, NULL));
+          MR_hl_field(MR_mktag(1), ll_backend__frameopt__Var_35, 0) = ((MR_Box) (ll_backend__frameopt__LabelInstr_14));
+          MR_hl_field(MR_mktag(1), ll_backend__frameopt__Var_35, 1) = ((MR_Box) (ll_backend__frameopt__Instrs1_16));
+        }
+        {
+          ll_backend__frameopt__divide_into_basic_blocks_5_p_0(ll_backend__frameopt__Var_35, ll_backend__frameopt__ProcLabel_8, &ll_backend__frameopt__BasicInstrs_21, ll_backend__frameopt__STATE_VARIABLE_C_0_32, &ll_backend__frameopt__STATE_VARIABLE_C_36_36);
+        }
+        {
+          ll_backend__frameopt__Var_40 = mercury__map__init_0_f_0(ll_backend__frameopt__TypeCtorInfo_49_49, ll_backend__frameopt__TypeCtorInfo_49_49);
+        }
+        {
+          ll_backend__frameopt__Var_42 = mercury__map__init_0_f_0(ll_backend__frameopt__TypeCtorInfo_49_49, ll_backend__frameopt__TypeCtorInfo_49_49);
+        }
+        {
+          ll_backend__frameopt__build_frame_block_map_14_p_0((MR_Word) &ll_backend__frameopt_scalar_common_1[3], ll_backend__frameopt__BasicInstrs_21, ((MR_Box) (ll_backend__frameopt__EntryInfo_19)), &ll_backend__frameopt__LabelSeq0_22, (MR_Word) MR_mkword(MR_mktag(0), MR_mkbody((MR_Integer) 0)), (MR_Word) MR_mkword(MR_mktag(0), MR_mkbody((MR_Integer) 0)), ll_backend__frameopt__ProcLabel_8, ll_backend__frameopt__STATE_VARIABLE_BlockMap_34_34, &ll_backend__frameopt__STATE_VARIABLE_BlockMap_39_39, ll_backend__frameopt__Var_40, &ll_backend__frameopt__PredMap_23, ll_backend__frameopt__STATE_VARIABLE_C_36_36, &ll_backend__frameopt__STATE_VARIABLE_C_41_41, ll_backend__frameopt__Var_42, &ll_backend__frameopt__PreExitDummyLabelMap_24);
+        }
+        ll_backend__frameopt__TypeClassInfo_for_block_entry_exit_52 = (MR_Word) &ll_backend__frameopt_scalar_common_1[3];
+        {
+          ll_backend__frameopt__analyze_block_map_5_p_0(ll_backend__frameopt__TypeClassInfo_for_block_entry_exit_52, ll_backend__frameopt__LabelSeq0_22, ll_backend__frameopt__PreExitDummyLabelMap_24, ll_backend__frameopt__STATE_VARIABLE_BlockMap_39_39, &ll_backend__frameopt__STATE_VARIABLE_BlockMap_43_43, &ll_backend__frameopt___KeepFrame_25);
+        }
+        if ((ll_backend__frameopt__LabelSeq0_22 == ((MR_Word) MR_mkword(MR_mktag(0), MR_mkbody((MR_Integer) 0)))))
+          ll_backend__frameopt__succeeded = MR_TRUE;
+        else
+          {
+            MR_Word ll_backend__frameopt__Label_71 = ((MR_Word) (MR_hl_field(MR_mktag(1), ll_backend__frameopt__LabelSeq0_22, (MR_Integer) 0)));
+            MR_Word ll_backend__frameopt__BlockInfo_74;
+            MR_Word ll_backend__frameopt__Var_76;
+            MR_Word ll_backend__frameopt___Labels_72 = ((MR_Word) (MR_hl_field(MR_mktag(1), ll_backend__frameopt__LabelSeq0_22, (MR_Integer) 1)));
+            MR_Box ll_backend__frameopt__conv0_BlockInfo_74;
+            MR_Word ll_backend__frameopt__Var_77;
+            MR_Word ll_backend__frameopt__Var_78;
+            MR_Word ll_backend__frameopt__Var_79;
+            MR_Word ll_backend__frameopt__Var_80;
+            MR_Word ll_backend__frameopt__Var_81;
+            MR_Word ll_backend__frameopt__Var_75;
+
+            {
+              mercury__map__lookup_3_p_0((MR_Word) &ll_backend__llds__ll_backend__llds__type_ctor_info_label_0, (MR_Word) &ll_backend__frameopt_scalar_common_1[2], ll_backend__frameopt__STATE_VARIABLE_BlockMap_43_43, ((MR_Box) (ll_backend__frameopt__Label_71)), &ll_backend__frameopt__conv0_BlockInfo_74);
+            }
+            ll_backend__frameopt__BlockInfo_74 = ((MR_Word) ll_backend__frameopt__conv0_BlockInfo_74);
+            ll_backend__frameopt__Var_77 = ((MR_Word) (MR_hl_field(MR_mktag(0), ll_backend__frameopt__BlockInfo_74, (MR_Integer) 0)));
+            ll_backend__frameopt__Var_78 = ((MR_Word) (MR_hl_field(MR_mktag(0), ll_backend__frameopt__BlockInfo_74, (MR_Integer) 1)));
+            ll_backend__frameopt__Var_79 = ((MR_Word) (MR_hl_field(MR_mktag(0), ll_backend__frameopt__BlockInfo_74, (MR_Integer) 2)));
+            ll_backend__frameopt__Var_80 = ((MR_Word) (MR_hl_field(MR_mktag(0), ll_backend__frameopt__BlockInfo_74, (MR_Integer) 3)));
+            ll_backend__frameopt__Var_81 = ((MR_Word) (MR_hl_field(MR_mktag(0), ll_backend__frameopt__BlockInfo_74, (MR_Integer) 4)));
+            ll_backend__frameopt__Var_76 = ((MR_Word) (MR_hl_field(MR_mktag(0), ll_backend__frameopt__BlockInfo_74, (MR_Integer) 5)));
+            ll_backend__frameopt__succeeded = ((MR_tag((MR_Word) ll_backend__frameopt__Var_76)) == (MR_mktag((MR_Integer) 0)));
+            if (ll_backend__frameopt__succeeded)
+              ll_backend__frameopt__Var_75 = ((MR_Word) (MR_hl_field(MR_mktag(0), ll_backend__frameopt__Var_76, (MR_Integer) 0)));
+          }
+        if (ll_backend__frameopt__succeeded)
+          {
+            MR_Word ll_backend__frameopt__LabelSeq_26;
+            MR_Word ll_backend__frameopt__TransformComments_27;
+            MR_Word ll_backend__frameopt__DescComments_28;
+            MR_Word ll_backend__frameopt__CanTransform_29;
+            MR_Word ll_backend__frameopt__STATE_VARIABLE_BlockMap_45_45;
+
+            {
+              ll_backend__frameopt__delay_frame_transform_13_p_0(ll_backend__frameopt__TypeClassInfo_for_block_entry_exit_52, ll_backend__frameopt__LabelSeq0_22, &ll_backend__frameopt__LabelSeq_26, ((MR_Box) (ll_backend__frameopt__EntryInfo_19)), ll_backend__frameopt__ProcLabel_8, ll_backend__frameopt__PredMap_23, ll_backend__frameopt__STATE_VARIABLE_C_41_41, ll_backend__frameopt__STATE_VARIABLE_C_33, ll_backend__frameopt__STATE_VARIABLE_BlockMap_43_43, &ll_backend__frameopt__STATE_VARIABLE_BlockMap_45_45, ll_backend__frameopt__AddComments_12, &ll_backend__frameopt__TransformComments_27, &ll_backend__frameopt__DescComments_28, &ll_backend__frameopt__CanTransform_29);
+            }
+            switch (ll_backend__frameopt__CanTransform_29) {
+              default: /*NOTREACHED*/ MR_assert(0);
+              case (MR_Integer) 0:
+                {
+                  MR_Word ll_backend__frameopt__TypeCtorInfo_55_55 = (MR_Word) &ll_backend__llds__ll_backend__llds__type_ctor_info_instruction_0;
+                  MR_Word ll_backend__frameopt__Comments_30;
+                  MR_Word ll_backend__frameopt__BodyInstrs_31;
+                  MR_Word ll_backend__frameopt__Var_46;
+
+                  {
+                    ll_backend__frameopt__Var_46 = mercury__list__f_43_43_2_f_0(ll_backend__frameopt__TypeCtorInfo_55_55, ll_backend__frameopt__TransformComments_27, ll_backend__frameopt__DescComments_28);
+                  }
+                  {
+                    ll_backend__frameopt__Comments_30 = mercury__list__f_43_43_2_f_0(ll_backend__frameopt__TypeCtorInfo_55_55, ll_backend__frameopt__Comments0_15, ll_backend__frameopt__Var_46);
+                  }
+                  {
+                    ll_backend__frameopt__flatten_block_seq_3_p_0((MR_Word) &ll_backend__frameopt__ll_backend__frameopt__type_ctor_info_nondet_entry_info_0, (MR_Word) &ll_backend__frameopt__ll_backend__frameopt__type_ctor_info_nondet_exit_info_0, ll_backend__frameopt__LabelSeq_26, ll_backend__frameopt__STATE_VARIABLE_BlockMap_45_45, &ll_backend__frameopt__BodyInstrs_31);
+                  }
+                  {
+                    *ll_backend__frameopt__Instrs_11 = mercury__list__f_43_43_2_f_0(ll_backend__frameopt__TypeCtorInfo_55_55, ll_backend__frameopt__Comments_30, ll_backend__frameopt__BodyInstrs_31);
+                  }
+                  *ll_backend__frameopt__Mod_13 = (MR_Integer) 1;
+                }
+                break;
+              case (MR_Integer) 1:
+                {
+                  ll_backend__frameopt__maybe_add_comments_5_p_0(ll_backend__frameopt__AddComments_12, ll_backend__frameopt__DescComments_28, ll_backend__frameopt__Instrs0_10, ll_backend__frameopt__Instrs_11, ll_backend__frameopt__Mod_13);
+                }
+                break;
+            }
+          }
+        else
+          {
+            *ll_backend__frameopt__Instrs_11 = ll_backend__frameopt__Instrs0_10;
+            *ll_backend__frameopt__Mod_13 = (MR_Integer) 0;
+            *ll_backend__frameopt__STATE_VARIABLE_C_33 = ll_backend__frameopt__STATE_VARIABLE_C_41_41;
+          }
+      }
+    else
+      {
+        *ll_backend__frameopt__Instrs_11 = ll_backend__frameopt__Instrs0_10;
+        *ll_backend__frameopt__Mod_13 = (MR_Integer) 0;
+        *ll_backend__frameopt__STATE_VARIABLE_C_33 = ll_backend__frameopt__STATE_VARIABLE_C_0_32;
+      }
+  }
+}
+
+void MR_CALL 
+ll_backend__frameopt__frameopt_main_det_stack_7_p_0(
+  MR_Word ll_backend__frameopt__ProcLabel_8,
+  MR_Word ll_backend__frameopt__STATE_VARIABLE_C_0_36,
+  MR_Word * ll_backend__frameopt__STATE_VARIABLE_C_37,
+  MR_Word ll_backend__frameopt__Instrs0_10,
+  MR_Word * ll_backend__frameopt__Instrs_11,
+  MR_Word ll_backend__frameopt__AddComments_12,
+  MR_Word * ll_backend__frameopt__Mod_13)
+{
+  {
+    MR_bool ll_backend__frameopt__succeeded;
+    MR_Word ll_backend__frameopt__LabelInstr_14;
+    MR_Word ll_backend__frameopt__Comments0_15;
+    MR_Word ll_backend__frameopt__Instrs1_16;
+    MR_Word ll_backend__frameopt__EntryInfo_19;
+    MR_Word ll_backend__frameopt__Var_17;
+    MR_Word ll_backend__frameopt__Var_18;
+
+    {
+      ll_backend__opt_util__get_prologue_4_p_0(ll_backend__frameopt__Instrs0_10, &ll_backend__frameopt__LabelInstr_14, &ll_backend__frameopt__Comments0_15, &ll_backend__frameopt__Instrs1_16);
+    }
+    {
+      ll_backend__frameopt__succeeded = ll_backend__frameopt__detect_det_entry_4_p_0(ll_backend__frameopt__Instrs1_16, &ll_backend__frameopt__Var_17, &ll_backend__frameopt__Var_18, &ll_backend__frameopt__EntryInfo_19);
+    }
+    if (ll_backend__frameopt__succeeded)
+      {
+        MR_Word ll_backend__frameopt__TypeCtorInfo_76_76 = (MR_Word) &ll_backend__llds__ll_backend__llds__type_ctor_info_label_0;
+        MR_Word ll_backend__frameopt__TypeClassInfo_for_block_entry_exit_79;
+        MR_Word ll_backend__frameopt__BasicInstrs_21;
+        MR_Word ll_backend__frameopt__LabelSeq0_22;
+        MR_Word ll_backend__frameopt__PredMap_23;
+        MR_Word ll_backend__frameopt__PreExitDummyLabelMap_24;
+        MR_Word ll_backend__frameopt__KeepFrame_25;
+        MR_Word ll_backend__frameopt__STATE_VARIABLE_BlockMap_38_38;
+        MR_Word ll_backend__frameopt__Var_39;
+        MR_Word ll_backend__frameopt__STATE_VARIABLE_C_40_40;
+        MR_Word ll_backend__frameopt__STATE_VARIABLE_BlockMap_43_43;
+        MR_Word ll_backend__frameopt__Var_44;
+        MR_Word ll_backend__frameopt__STATE_VARIABLE_C_45_45;
+        MR_Word ll_backend__frameopt__Var_46;
+        MR_Word ll_backend__frameopt__STATE_VARIABLE_BlockMap_47_47;
+
+        {
+          mercury__map__init_1_p_0(ll_backend__frameopt__TypeCtorInfo_76_76, (MR_Word) &ll_backend__frameopt_scalar_common_1[0], &ll_backend__frameopt__STATE_VARIABLE_BlockMap_38_38);
+        }
+        {
+          ll_backend__frameopt__Var_39 = (MR_Word) MR_mkword(MR_mktag(1), MR_new_object(MR_Word, ((MR_Integer) 2 * sizeof(MR_Word)), NULL, NULL));
+          MR_hl_field(MR_mktag(1), ll_backend__frameopt__Var_39, 0) = ((MR_Box) (ll_backend__frameopt__LabelInstr_14));
+          MR_hl_field(MR_mktag(1), ll_backend__frameopt__Var_39, 1) = ((MR_Box) (ll_backend__frameopt__Instrs1_16));
+        }
+        {
+          ll_backend__frameopt__divide_into_basic_blocks_5_p_0(ll_backend__frameopt__Var_39, ll_backend__frameopt__ProcLabel_8, &ll_backend__frameopt__BasicInstrs_21, ll_backend__frameopt__STATE_VARIABLE_C_0_36, &ll_backend__frameopt__STATE_VARIABLE_C_40_40);
+        }
+        {
+          ll_backend__frameopt__Var_44 = mercury__map__init_0_f_0(ll_backend__frameopt__TypeCtorInfo_76_76, ll_backend__frameopt__TypeCtorInfo_76_76);
+        }
+        {
+          ll_backend__frameopt__Var_46 = mercury__map__init_0_f_0(ll_backend__frameopt__TypeCtorInfo_76_76, ll_backend__frameopt__TypeCtorInfo_76_76);
+        }
+        {
+          ll_backend__frameopt__build_frame_block_map_14_p_0((MR_Word) &ll_backend__frameopt_scalar_common_1[1], ll_backend__frameopt__BasicInstrs_21, ((MR_Box) (ll_backend__frameopt__EntryInfo_19)), &ll_backend__frameopt__LabelSeq0_22, (MR_Word) MR_mkword(MR_mktag(0), MR_mkbody((MR_Integer) 0)), (MR_Word) MR_mkword(MR_mktag(0), MR_mkbody((MR_Integer) 0)), ll_backend__frameopt__ProcLabel_8, ll_backend__frameopt__STATE_VARIABLE_BlockMap_38_38, &ll_backend__frameopt__STATE_VARIABLE_BlockMap_43_43, ll_backend__frameopt__Var_44, &ll_backend__frameopt__PredMap_23, ll_backend__frameopt__STATE_VARIABLE_C_40_40, &ll_backend__frameopt__STATE_VARIABLE_C_45_45, ll_backend__frameopt__Var_46, &ll_backend__frameopt__PreExitDummyLabelMap_24);
+        }
+        ll_backend__frameopt__TypeClassInfo_for_block_entry_exit_79 = (MR_Word) &ll_backend__frameopt_scalar_common_1[1];
+        {
+          ll_backend__frameopt__analyze_block_map_5_p_0(ll_backend__frameopt__TypeClassInfo_for_block_entry_exit_79, ll_backend__frameopt__LabelSeq0_22, ll_backend__frameopt__PreExitDummyLabelMap_24, ll_backend__frameopt__STATE_VARIABLE_BlockMap_43_43, &ll_backend__frameopt__STATE_VARIABLE_BlockMap_47_47, &ll_backend__frameopt__KeepFrame_25);
+        }
+        if ((ll_backend__frameopt__KeepFrame_25 == ((MR_Word) MR_mkword(MR_mktag(0), MR_mkbody((MR_Integer) 0)))))
+          {
+            {
+              ll_backend__frameopt__succeeded = ll_backend__frameopt__can_delay_frame_2_p_0((MR_Word) &ll_backend__frameopt__ll_backend__frameopt__type_ctor_info_det_entry_info_0, (MR_Word) &ll_backend__frameopt__ll_backend__frameopt__type_ctor_info_det_exit_info_0, ll_backend__frameopt__LabelSeq0_22, ll_backend__frameopt__STATE_VARIABLE_BlockMap_47_47);
+            }
+            if (ll_backend__frameopt__succeeded)
+              {
+                MR_Word ll_backend__frameopt__TransformComments_33;
+                MR_Word ll_backend__frameopt__DescComments_34;
+                MR_Word ll_backend__frameopt__CanTransform_35;
+                MR_Word ll_backend__frameopt__LabelSeq_62;
+                MR_Word ll_backend__frameopt__STATE_VARIABLE_BlockMap_52_65;
+
+                {
+                  ll_backend__frameopt__delay_frame_transform_13_p_0(ll_backend__frameopt__TypeClassInfo_for_block_entry_exit_79, ll_backend__frameopt__LabelSeq0_22, &ll_backend__frameopt__LabelSeq_62, ((MR_Box) (ll_backend__frameopt__EntryInfo_19)), ll_backend__frameopt__ProcLabel_8, ll_backend__frameopt__PredMap_23, ll_backend__frameopt__STATE_VARIABLE_C_45_45, ll_backend__frameopt__STATE_VARIABLE_C_37, ll_backend__frameopt__STATE_VARIABLE_BlockMap_47_47, &ll_backend__frameopt__STATE_VARIABLE_BlockMap_52_65, ll_backend__frameopt__AddComments_12, &ll_backend__frameopt__TransformComments_33, &ll_backend__frameopt__DescComments_34, &ll_backend__frameopt__CanTransform_35);
+                }
+                switch (ll_backend__frameopt__CanTransform_35) {
+                  default: /*NOTREACHED*/ MR_assert(0);
+                  case (MR_Integer) 0:
+                    {
+                      MR_Word ll_backend__frameopt__TypeCtorInfo_85_85 = (MR_Word) &ll_backend__llds__ll_backend__llds__type_ctor_info_instruction_0;
+                      MR_Word ll_backend__frameopt__Var_50;
+                      MR_Word ll_backend__frameopt__Comments_58;
+                      MR_Word ll_backend__frameopt__BodyInstrs_59;
+
+                      {
+                        ll_backend__frameopt__Var_50 = mercury__list__f_43_43_2_f_0(ll_backend__frameopt__TypeCtorInfo_85_85, ll_backend__frameopt__TransformComments_33, ll_backend__frameopt__DescComments_34);
+                      }
+                      {
+                        ll_backend__frameopt__Comments_58 = mercury__list__f_43_43_2_f_0(ll_backend__frameopt__TypeCtorInfo_85_85, ll_backend__frameopt__Comments0_15, ll_backend__frameopt__Var_50);
+                      }
+                      {
+                        ll_backend__frameopt__flatten_block_seq_3_p_0((MR_Word) &ll_backend__frameopt__ll_backend__frameopt__type_ctor_info_det_entry_info_0, (MR_Word) &ll_backend__frameopt__ll_backend__frameopt__type_ctor_info_det_exit_info_0, ll_backend__frameopt__LabelSeq_62, ll_backend__frameopt__STATE_VARIABLE_BlockMap_52_65, &ll_backend__frameopt__BodyInstrs_59);
+                      }
+                      {
+                        *ll_backend__frameopt__Instrs_11 = mercury__list__f_43_43_2_f_0(ll_backend__frameopt__TypeCtorInfo_85_85, ll_backend__frameopt__Comments_58, ll_backend__frameopt__BodyInstrs_59);
+                      }
+                      *ll_backend__frameopt__Mod_13 = (MR_Integer) 1;
+                    }
+                    break;
+                  case (MR_Integer) 1:
+                    {
+                      ll_backend__frameopt__maybe_add_comments_5_p_0(ll_backend__frameopt__AddComments_12, ll_backend__frameopt__DescComments_34, ll_backend__frameopt__Instrs0_10, ll_backend__frameopt__Instrs_11, ll_backend__frameopt__Mod_13);
+                    }
+                    break;
+                }
+              }
+            else
+              {
+                *ll_backend__frameopt__Instrs_11 = ll_backend__frameopt__Instrs0_10;
+                *ll_backend__frameopt__Mod_13 = (MR_Integer) 0;
+                *ll_backend__frameopt__STATE_VARIABLE_C_37 = ll_backend__frameopt__STATE_VARIABLE_C_45_45;
+              }
+          }
+        else
+          {
+            MR_Word ll_backend__frameopt__TypeCtorInfo_80_80;
+            MR_Word ll_backend__frameopt__TypeCtorInfo_81_81;
+            MR_Word ll_backend__frameopt__TypeCtorInfo_82_82;
+            MR_Word ll_backend__frameopt__FirstLabel_26;
+            MR_Word ll_backend__frameopt__SecondLabel_27;
+            MR_Word ll_backend__frameopt__CanClobberSuccip_28;
+            MR_Word ll_backend__frameopt__Comments_31;
+            MR_Word ll_backend__frameopt__BodyInstrs_32;
+            MR_Word ll_backend__frameopt__Var_51 = ((MR_Word) (MR_hl_field(MR_mktag(1), ll_backend__frameopt__KeepFrame_25, (MR_Integer) 0)));
+            MR_Word ll_backend__frameopt__STATE_VARIABLE_BlockMap_52_52;
+
+            ll_backend__frameopt__FirstLabel_26 = ((MR_Word) (MR_hl_field(MR_mktag(0), ll_backend__frameopt__Var_51, (MR_Integer) 0)));
+            ll_backend__frameopt__SecondLabel_27 = ((MR_Word) (MR_hl_field(MR_mktag(0), ll_backend__frameopt__Var_51, (MR_Integer) 1)));
+            ll_backend__frameopt__TypeCtorInfo_80_80 = (MR_Word) &ll_backend__frameopt__ll_backend__frameopt__type_ctor_info_det_entry_info_0;
+            ll_backend__frameopt__TypeCtorInfo_81_81 = (MR_Word) &ll_backend__frameopt__ll_backend__frameopt__type_ctor_info_det_exit_info_0;
+            {
+              ll_backend__frameopt__CanClobberSuccip_28 = ll_backend__frameopt__can_clobber_succip_2_f_0(ll_backend__frameopt__TypeCtorInfo_80_80, ll_backend__frameopt__TypeCtorInfo_81_81, ll_backend__frameopt__LabelSeq0_22, ll_backend__frameopt__STATE_VARIABLE_BlockMap_47_47);
+            }
+            {
+              ll_backend__frameopt__keep_frame_transform_6_p_0(ll_backend__frameopt__LabelSeq0_22, ll_backend__frameopt__FirstLabel_26, ll_backend__frameopt__SecondLabel_27, ll_backend__frameopt__CanClobberSuccip_28, ll_backend__frameopt__STATE_VARIABLE_BlockMap_47_47, &ll_backend__frameopt__STATE_VARIABLE_BlockMap_52_52);
+            }
+            ll_backend__frameopt__TypeCtorInfo_82_82 = (MR_Word) &ll_backend__llds__ll_backend__llds__type_ctor_info_instruction_0;
+            {
+              ll_backend__frameopt__Comments_31 = mercury__list__f_43_43_2_f_0(ll_backend__frameopt__TypeCtorInfo_82_82, ll_backend__frameopt__Comments0_15, (MR_Word) MR_mkword(MR_mktag(1), &ll_backend__frameopt_scalar_common_2[15]));
+            }
+            {
+              ll_backend__frameopt__flatten_block_seq_3_p_0(ll_backend__frameopt__TypeCtorInfo_80_80, ll_backend__frameopt__TypeCtorInfo_81_81, ll_backend__frameopt__LabelSeq0_22, ll_backend__frameopt__STATE_VARIABLE_BlockMap_52_52, &ll_backend__frameopt__BodyInstrs_32);
+            }
+            {
+              *ll_backend__frameopt__Instrs_11 = mercury__list__f_43_43_2_f_0(ll_backend__frameopt__TypeCtorInfo_82_82, ll_backend__frameopt__Comments_31, ll_backend__frameopt__BodyInstrs_32);
+            }
+            *ll_backend__frameopt__Mod_13 = (MR_Integer) 1;
+            *ll_backend__frameopt__STATE_VARIABLE_C_37 = ll_backend__frameopt__STATE_VARIABLE_C_45_45;
+          }
+      }
+    else
+      {
+        *ll_backend__frameopt__Instrs_11 = ll_backend__frameopt__Instrs0_10;
+        *ll_backend__frameopt__Mod_13 = (MR_Integer) 0;
+        *ll_backend__frameopt__STATE_VARIABLE_C_37 = ll_backend__frameopt__STATE_VARIABLE_C_0_36;
+      }
+  }
+}
+
+static void MR_CALL 
+ll_backend__frameopt__delay_frame_transform_13_p_0_2(
+  MR_Box ll_backend__frameopt__closure_arg,
+  MR_Box ll_backend__frameopt__wrapper_arg_1,
+  MR_Box * ll_backend__frameopt__wrapper_arg_2)
+{
+  {
+    MR_Box ll_backend__frameopt__closure = ll_backend__frameopt__closure_arg;
+    MR_Word ll_backend__frameopt__conv1_Instr_12;
+
+    {
+      ll_backend__frameopt__describe_block_6_p_0(((MR_Word) (MR_hl_field(MR_mktag(0), ll_backend__frameopt__closure, (MR_Integer) 3))), ((MR_Word) (MR_hl_field(MR_mktag(0), ll_backend__frameopt__closure, (MR_Integer) 4))), ((MR_Word) (MR_hl_field(MR_mktag(0), ll_backend__frameopt__closure, (MR_Integer) 5))), ((MR_Word) (MR_hl_field(MR_mktag(0), ll_backend__frameopt__closure, (MR_Integer) 6))), ((MR_Word) (MR_hl_field(MR_mktag(0), ll_backend__frameopt__closure, (MR_Integer) 7))), ((MR_Word) ll_backend__frameopt__wrapper_arg_1), &ll_backend__frameopt__conv1_Instr_12);
+    }
+    *ll_backend__frameopt__wrapper_arg_2 = ((MR_Box) (ll_backend__frameopt__conv1_Instr_12));
+  }
+}
+
+static MR_bool MR_CALL 
+ll_backend__frameopt__delay_frame_transform_13_p_0_1(
+  MR_Box ll_backend__frameopt__closure_arg,
+  MR_Box ll_backend__frameopt__wrapper_arg_1,
+  MR_Box * ll_backend__frameopt__wrapper_arg_2)
+{
+  {
+    MR_bool ll_backend__frameopt__succeeded;
+    MR_Box ll_backend__frameopt__closure = ll_backend__frameopt__closure_arg;
+    MR_Word ll_backend__frameopt__conv0_Label_3;
+
+    {
+      ll_backend__frameopt__succeeded = ll_backend__frameopt__key_block_needs_frame_2_p_0(((MR_Word) ll_backend__frameopt__wrapper_arg_1), &ll_backend__frameopt__conv0_Label_3);
+    }
+    if (ll_backend__frameopt__succeeded)
+      {
+        *ll_backend__frameopt__wrapper_arg_2 = ((MR_Box) (ll_backend__frameopt__conv0_Label_3));
+        ll_backend__frameopt__succeeded = MR_TRUE;
+      }
+    return ll_backend__frameopt__succeeded;
+  }
+}
+
+static void MR_CALL 
+ll_backend__frameopt__delay_frame_transform_13_p_0(
+  MR_Word ll_backend__frameopt__TypeClassInfo_for_block_entry_exit_68,
+  MR_Word ll_backend__frameopt__STATE_VARIABLE_LabelSeq_0_34,
+  MR_Word * ll_backend__frameopt__STATE_VARIABLE_LabelSeq_35,
+  MR_Box ll_backend__frameopt__EntryInfo_15,
+  MR_Word ll_backend__frameopt__ProcLabel_16,
+  MR_Word ll_backend__frameopt__PredMap_17,
+  MR_Word ll_backend__frameopt__STATE_VARIABLE_C_0_36,
+  MR_Word * ll_backend__frameopt__STATE_VARIABLE_C_37,
+  MR_Word ll_backend__frameopt__STATE_VARIABLE_BlockMap_0_38,
+  MR_Word * ll_backend__frameopt__STATE_VARIABLE_BlockMap_39,
+  MR_Word ll_backend__frameopt__AddComments_20,
+  MR_Word * ll_backend__frameopt__TransformComments_21,
+  MR_Word * ll_backend__frameopt__DescComments_22,
+  MR_Word * ll_backend__frameopt__CanTransform_23)
+{
+  {
+    MR_bool ll_backend__frameopt__succeeded;
+    MR_Word ll_backend__frameopt__TypeCtorInfo_69_69 = (MR_Word) &ll_backend__llds__ll_backend__llds__type_ctor_info_label_0;
+    MR_Word ll_backend__frameopt__TypeCtorInfo_70_70 = (MR_Word) &ll_backend__frameopt__ll_backend__frameopt__type_ctor_info_block_needs_frame_0;
+    MR_Word ll_backend__frameopt__TypeInfo_73_73;
+    MR_Word ll_backend__frameopt__TypeInfo_75_75;
+    MR_Word ll_backend__frameopt__TypeInfo_76_76;
+    MR_Word ll_backend__frameopt__TypeInfo_77_77;
+    MR_Word ll_backend__frameopt__TypeInfo_81_81;
+    MR_Word ll_backend__frameopt__TypeInfo_82_82;
+    MR_Word ll_backend__frameopt__RevMap_26;
+    MR_Word ll_backend__frameopt__SuccQueue_27;
+    MR_Word ll_backend__frameopt__OrdNeedsFrameList_28;
+    MR_Word ll_backend__frameopt__Frontier_29;
+    MR_Word ll_backend__frameopt__PredQueue_30;
+    MR_Word ll_backend__frameopt__STATE_VARIABLE_OrdNeedsFrame_40_40;
+    MR_Word ll_backend__frameopt__Var_43;
+    MR_Word ll_backend__frameopt__Var_44;
+    MR_Word ll_backend__frameopt__STATE_VARIABLE_OrdNeedsFrame_45_45;
+    MR_Word ll_backend__frameopt__STATE_VARIABLE_OrdNeedsFrame_46_46;
+    MR_Word ll_backend__frameopt__Var_47;
+    MR_Integer ll_backend__frameopt__STATE_VARIABLE_PropagationStepsLeft_48_48;
+    MR_Word ll_backend__frameopt__STATE_VARIABLE_CanTransform_49_49;
+    MR_Word ll_backend__frameopt__STATE_VARIABLE_OrdNeedsFrame_51_51;
+    MR_Integer ll_backend__frameopt__Var_31;
+
+    {
+      ll_backend__frameopt__STATE_VARIABLE_OrdNeedsFrame_40_40 = mercury__map__init_0_f_0(ll_backend__frameopt__TypeCtorInfo_69_69, ll_backend__frameopt__TypeCtorInfo_70_70);
+    }
+    {
+      ll_backend__frameopt__Var_43 = mercury__map__init_0_f_0(ll_backend__frameopt__TypeCtorInfo_69_69, (MR_Word) &ll_backend__frameopt_scalar_common_2[1]);
+    }
+    {
+      ll_backend__frameopt__Var_44 = mercury__queue__init_0_f_0(ll_backend__frameopt__TypeCtorInfo_69_69);
+    }
+    {
+      mercury__private_builtin__type_info_from_typeclass_info_3_p_0(ll_backend__frameopt__TypeClassInfo_for_block_entry_exit_68, (MR_Integer) 1, &ll_backend__frameopt__TypeInfo_73_73);
+    }
+    {
+      mercury__private_builtin__type_info_from_typeclass_info_3_p_0(ll_backend__frameopt__TypeClassInfo_for_block_entry_exit_68, (MR_Integer) 2, &ll_backend__frameopt__TypeInfo_75_75);
+    }
+    {
+      ll_backend__frameopt__delay_frame_init_8_p_0(ll_backend__frameopt__TypeInfo_73_73, ll_backend__frameopt__TypeInfo_75_75, ll_backend__frameopt__STATE_VARIABLE_LabelSeq_0_34, ll_backend__frameopt__STATE_VARIABLE_BlockMap_0_38, ll_backend__frameopt__Var_43, &ll_backend__frameopt__RevMap_26, ll_backend__frameopt__Var_44, &ll_backend__frameopt__SuccQueue_27, ll_backend__frameopt__STATE_VARIABLE_OrdNeedsFrame_40_40, &ll_backend__frameopt__STATE_VARIABLE_OrdNeedsFrame_45_45);
+    }
+    {
+      ll_backend__frameopt__Var_47 = mercury__set__init_0_f_0(ll_backend__frameopt__TypeCtorInfo_69_69);
+    }
+    {
+      mercury__private_builtin__type_info_from_typeclass_info_3_p_0(ll_backend__frameopt__TypeClassInfo_for_block_entry_exit_68, (MR_Integer) 1, &ll_backend__frameopt__TypeInfo_76_76);
+    }
+    {
+      mercury__private_builtin__type_info_from_typeclass_info_3_p_0(ll_backend__frameopt__TypeClassInfo_for_block_entry_exit_68, (MR_Integer) 2, &ll_backend__frameopt__TypeInfo_77_77);
+    }
+    {
+      ll_backend__frameopt__propagate_frame_requirement_to_successors_9_p_0(ll_backend__frameopt__TypeInfo_76_76, ll_backend__frameopt__TypeInfo_77_77, ll_backend__frameopt__SuccQueue_27, ll_backend__frameopt__STATE_VARIABLE_BlockMap_0_38, ll_backend__frameopt__STATE_VARIABLE_OrdNeedsFrame_45_45, &ll_backend__frameopt__STATE_VARIABLE_OrdNeedsFrame_46_46, ll_backend__frameopt__Var_47, (MR_Integer) 10000, &ll_backend__frameopt__STATE_VARIABLE_PropagationStepsLeft_48_48, (MR_Integer) 0, &ll_backend__frameopt__STATE_VARIABLE_CanTransform_49_49);
+    }
+    {
+      mercury__map__to_assoc_list_2_p_0(ll_backend__frameopt__TypeCtorInfo_69_69, ll_backend__frameopt__TypeCtorInfo_70_70, ll_backend__frameopt__STATE_VARIABLE_OrdNeedsFrame_46_46, &ll_backend__frameopt__OrdNeedsFrameList_28);
+    }
+    {
+      mercury__list__filter_map_3_p_0((MR_Word) &ll_backend__frameopt_scalar_common_1[4], ll_backend__frameopt__TypeCtorInfo_69_69, (MR_Word) &ll_backend__frameopt_scalar_common_1[9], ll_backend__frameopt__OrdNeedsFrameList_28, &ll_backend__frameopt__Frontier_29);
+    }
+    {
+      mercury__queue__list_to_queue_2_p_0(ll_backend__frameopt__TypeCtorInfo_69_69, ll_backend__frameopt__Frontier_29, &ll_backend__frameopt__PredQueue_30);
+    }
+    {
+      mercury__private_builtin__type_info_from_typeclass_info_3_p_0(ll_backend__frameopt__TypeClassInfo_for_block_entry_exit_68, (MR_Integer) 1, &ll_backend__frameopt__TypeInfo_81_81);
+    }
+    {
+      mercury__private_builtin__type_info_from_typeclass_info_3_p_0(ll_backend__frameopt__TypeClassInfo_for_block_entry_exit_68, (MR_Integer) 2, &ll_backend__frameopt__TypeInfo_82_82);
+    }
+    {
+      ll_backend__frameopt__propagate_frame_requirement_to_predecessors_9_p_0(ll_backend__frameopt__TypeInfo_81_81, ll_backend__frameopt__TypeInfo_82_82, ll_backend__frameopt__PredQueue_30, ll_backend__frameopt__STATE_VARIABLE_BlockMap_0_38, ll_backend__frameopt__RevMap_26, ll_backend__frameopt__STATE_VARIABLE_OrdNeedsFrame_46_46, &ll_backend__frameopt__STATE_VARIABLE_OrdNeedsFrame_51_51, ll_backend__frameopt__STATE_VARIABLE_PropagationStepsLeft_48_48, &ll_backend__frameopt__Var_31, ll_backend__frameopt__STATE_VARIABLE_CanTransform_49_49, ll_backend__frameopt__CanTransform_23);
+    }
+    switch (*ll_backend__frameopt__CanTransform_23) {
+      default: /*NOTREACHED*/ MR_assert(0);
+      case (MR_Integer) 0:
+        {
+          MR_Word ll_backend__frameopt__SetupParMap_32;
+          MR_Word ll_backend__frameopt__ExitParMap_33;
+          MR_Word ll_backend__frameopt__STATE_VARIABLE_C_53_53;
+          MR_Word ll_backend__frameopt__STATE_VARIABLE_BlockMap_54_54;
+          MR_Word ll_backend__frameopt__Var_55;
+          MR_Word ll_backend__frameopt__Var_56;
+          MR_Word ll_backend__frameopt__Var_57;
+          MR_Word ll_backend__frameopt__Var_58;
+
+          {
+            ll_backend__frameopt__Var_57 = mercury__map__init_0_f_0(ll_backend__frameopt__TypeCtorInfo_69_69, ll_backend__frameopt__TypeCtorInfo_69_69);
+          }
+          ll_backend__frameopt__Var_55 = (MR_Word) ll_backend__frameopt__Var_57;
+          {
+            ll_backend__frameopt__Var_58 = mercury__map__init_0_f_0(ll_backend__frameopt__TypeCtorInfo_69_69, ll_backend__frameopt__TypeCtorInfo_69_69);
+          }
+          ll_backend__frameopt__Var_56 = (MR_Word) ll_backend__frameopt__Var_58;
+          {
+            ll_backend__frameopt__process_frame_delay_11_p_0(ll_backend__frameopt__TypeClassInfo_for_block_entry_exit_68, ll_backend__frameopt__STATE_VARIABLE_LabelSeq_0_34, ll_backend__frameopt__STATE_VARIABLE_OrdNeedsFrame_51_51, ll_backend__frameopt__ProcLabel_16, ll_backend__frameopt__STATE_VARIABLE_C_0_36, &ll_backend__frameopt__STATE_VARIABLE_C_53_53, ll_backend__frameopt__STATE_VARIABLE_BlockMap_0_38, &ll_backend__frameopt__STATE_VARIABLE_BlockMap_54_54, ll_backend__frameopt__Var_55, &ll_backend__frameopt__SetupParMap_32, ll_backend__frameopt__Var_56, &ll_backend__frameopt__ExitParMap_33);
+          }
+          {
+            ll_backend__frameopt__f_85_110_117_115_101_100_65_114_103_115_95_95_112_114_101_100_95_95_99_114_101_97_116_101_95_112_97_114_97_108_108_101_108_115_95_95_91_49_49_93_95_48_12_p_0(ll_backend__frameopt__TypeClassInfo_for_block_entry_exit_68, ll_backend__frameopt__STATE_VARIABLE_LabelSeq_0_34, ll_backend__frameopt__STATE_VARIABLE_LabelSeq_35, ll_backend__frameopt__EntryInfo_15, ll_backend__frameopt__ProcLabel_16, ll_backend__frameopt__STATE_VARIABLE_C_53_53, ll_backend__frameopt__STATE_VARIABLE_C_37, ll_backend__frameopt__STATE_VARIABLE_OrdNeedsFrame_51_51, ll_backend__frameopt__SetupParMap_32, ll_backend__frameopt__ExitParMap_33, ll_backend__frameopt__STATE_VARIABLE_BlockMap_54_54, ll_backend__frameopt__STATE_VARIABLE_BlockMap_39);
+          }
+        }
+        break;
+      case (MR_Integer) 1:
+        {
+          *ll_backend__frameopt__STATE_VARIABLE_LabelSeq_35 = ll_backend__frameopt__STATE_VARIABLE_LabelSeq_0_34;
+          *ll_backend__frameopt__STATE_VARIABLE_C_37 = ll_backend__frameopt__STATE_VARIABLE_C_0_36;
+          *ll_backend__frameopt__STATE_VARIABLE_BlockMap_39 = ll_backend__frameopt__STATE_VARIABLE_BlockMap_0_38;
+        }
+        break;
+    }
+    switch (ll_backend__frameopt__AddComments_20) {
+      default: /*NOTREACHED*/ MR_assert(0);
+      case (MR_Integer) 0:
+        {
+          *ll_backend__frameopt__TransformComments_21 = (MR_Word) MR_mkword(MR_mktag(0), MR_mkbody((MR_Integer) 0));
+          *ll_backend__frameopt__DescComments_22 = (MR_Word) MR_mkword(MR_mktag(0), MR_mkbody((MR_Integer) 0));
+        }
+        break;
+      case (MR_Integer) 1:
+        {
+          MR_Word ll_backend__frameopt__Var_67;
+
+          *ll_backend__frameopt__TransformComments_21 = (MR_Word) MR_mkword(MR_mktag(1), &ll_backend__frameopt_scalar_common_2[7]);
+          {
+            ll_backend__frameopt__Var_67 = (MR_Word) MR_new_object(MR_Word, ((MR_Integer) 8 * sizeof(MR_Word)), NULL, NULL);
+            MR_hl_field(MR_mktag(0), ll_backend__frameopt__Var_67, 0) = ((MR_Box) (&ll_backend__frameopt_scalar_common_10[0]));
+            MR_hl_field(MR_mktag(0), ll_backend__frameopt__Var_67, 1) = ((MR_Box) (ll_backend__frameopt__delay_frame_transform_13_p_0_2));
+            MR_hl_field(MR_mktag(0), ll_backend__frameopt__Var_67, 2) = ((MR_Box) (MR_Word) ((MR_Integer) 5));
+            MR_hl_field(MR_mktag(0), ll_backend__frameopt__Var_67, 3) = ((MR_Box) (ll_backend__frameopt__TypeClassInfo_for_block_entry_exit_68));
+            MR_hl_field(MR_mktag(0), ll_backend__frameopt__Var_67, 4) = ((MR_Box) (*ll_backend__frameopt__STATE_VARIABLE_BlockMap_39));
+            MR_hl_field(MR_mktag(0), ll_backend__frameopt__Var_67, 5) = ((MR_Box) (ll_backend__frameopt__STATE_VARIABLE_OrdNeedsFrame_51_51));
+            MR_hl_field(MR_mktag(0), ll_backend__frameopt__Var_67, 6) = ((MR_Box) (ll_backend__frameopt__PredMap_17));
+            MR_hl_field(MR_mktag(0), ll_backend__frameopt__Var_67, 7) = ((MR_Box) (ll_backend__frameopt__ProcLabel_16));
+          }
+          {
+            mercury__list__map_3_p_0(ll_backend__frameopt__TypeCtorInfo_69_69, (MR_Word) &ll_backend__llds__ll_backend__llds__type_ctor_info_instruction_0, ll_backend__frameopt__Var_67, *ll_backend__frameopt__STATE_VARIABLE_LabelSeq_35, ll_backend__frameopt__DescComments_22);
+          }
+        }
+        break;
+    }
+  }
+}
+
+static MR_bool MR_CALL 
+ll_backend__frameopt__f_85_110_117_115_101_100_65_114_103_115_95_95_112_114_101_100_95_95_99_114_101_97_116_101_95_112_97_114_97_108_108_101_108_115_95_95_91_49_49_93_95_48_12_p_0_3(
+  MR_Box ll_backend__frameopt__closure_arg)
+{
+  {
+    MR_bool ll_backend__frameopt__succeeded;
+    MR_Box ll_backend__frameopt__closure = ll_backend__frameopt__closure_arg;
+
+    {
+      ll_backend__frameopt__succeeded = ll_backend__frameopt__IntroducedFrom__pred__create_parallels__2105__1_2_p_0(((MR_Word) (MR_hl_field(MR_mktag(0), ll_backend__frameopt__closure, (MR_Integer) 3))), ((MR_Word) (MR_hl_field(MR_mktag(0), ll_backend__frameopt__closure, (MR_Integer) 4))));
+    }
+    return ll_backend__frameopt__succeeded;
+  }
+}
+
+static MR_bool MR_CALL 
+ll_backend__frameopt__f_85_110_117_115_101_100_65_114_103_115_95_95_112_114_101_100_95_95_99_114_101_97_116_101_95_112_97_114_97_108_108_101_108_115_95_95_91_49_49_93_95_48_12_p_0_2(
+  MR_Box ll_backend__frameopt__closure_arg)
+{
+  {
+    MR_bool ll_backend__frameopt__succeeded;
+    MR_Box ll_backend__frameopt__closure = ll_backend__frameopt__closure_arg;
+
+    {
+      ll_backend__frameopt__succeeded = ll_backend__frameopt__IntroducedFrom__pred__create_parallels__2064__1_2_p_0(((MR_Word) (MR_hl_field(MR_mktag(0), ll_backend__frameopt__closure, (MR_Integer) 3))), ((MR_Word) (MR_hl_field(MR_mktag(0), ll_backend__frameopt__closure, (MR_Integer) 4))));
+    }
+    return ll_backend__frameopt__succeeded;
+  }
+}
+
+static MR_bool MR_CALL 
+ll_backend__frameopt__f_85_110_117_115_101_100_65_114_103_115_95_95_112_114_101_100_95_95_99_114_101_97_116_101_95_112_97_114_97_108_108_101_108_115_95_95_91_49_49_93_95_48_12_p_0_1(
+  MR_Box ll_backend__frameopt__closure_arg)
+{
+  {
+    MR_bool ll_backend__frameopt__succeeded;
+    MR_Box ll_backend__frameopt__closure = ll_backend__frameopt__closure_arg;
+
+    {
+      ll_backend__frameopt__succeeded = ll_backend__frameopt__IntroducedFrom__pred__create_parallels__2061__1_2_p_0(((MR_Word) (MR_hl_field(MR_mktag(0), ll_backend__frameopt__closure, (MR_Integer) 3))), ((MR_Word) (MR_hl_field(MR_mktag(0), ll_backend__frameopt__closure, (MR_Integer) 4))));
+    }
+    return ll_backend__frameopt__succeeded;
+  }
+}
+
+static void MR_CALL 
+ll_backend__frameopt__f_85_110_117_115_101_100_65_114_103_115_95_95_112_114_101_100_95_95_99_114_101_97_116_101_95_112_97_114_97_108_108_101_108_115_95_95_91_49_49_93_95_48_12_p_0(
+  MR_Word ll_backend__frameopt__TypeClassInfo_for_block_entry_exit_157,
+  MR_Word ll_backend__frameopt__HeadVar__1_1,
+  MR_Word * ll_backend__frameopt__HeadVar__2_2,
+  MR_Box ll_backend__frameopt__EntryInfo_3,
+  MR_Word ll_backend__frameopt__ProcLabel_4,
+  MR_Word ll_backend__frameopt__STATE_VARIABLE_C_0_5,
+  MR_Word * ll_backend__frameopt__STATE_VARIABLE_C_6,
+  MR_Word ll_backend__frameopt__OrdNeedsFrame_7,
+  MR_Word ll_backend__frameopt__SetupParMap_8,
+  MR_Word ll_backend__frameopt__ExitParMap_9,
+  MR_Word ll_backend__frameopt__STATE_VARIABLE_BlockMap_0_11,
+  MR_Word * ll_backend__frameopt__STATE_VARIABLE_BlockMap_12)
+{
+  {
+    MR_bool ll_backend__frameopt__succeeded;
+
+    if ((ll_backend__frameopt__HeadVar__1_1 == ((MR_Word) MR_mkword(MR_mktag(0), MR_mkbody((MR_Integer) 0)))))
+      {
+        *ll_backend__frameopt__HeadVar__2_2 = (MR_Word) MR_mkword(MR_mktag(0), MR_mkbody((MR_Integer) 0));
+        *ll_backend__frameopt__STATE_VARIABLE_BlockMap_12 = ll_backend__frameopt__STATE_VARIABLE_BlockMap_0_11;
+        *ll_backend__frameopt__STATE_VARIABLE_C_6 = ll_backend__frameopt__STATE_VARIABLE_C_0_5;
+      }
+    else
+      {
+        MR_Word ll_backend__frameopt__TypeCtorInfo_158_158;
+        MR_Word ll_backend__frameopt__TypeInfo_160_160;
+        MR_Word ll_backend__frameopt__TypeInfo_162_162;
+        MR_Word ll_backend__frameopt__TypeInfo_164_164;
+        MR_Word ll_backend__frameopt__Label0_25 = ((MR_Word) (MR_hl_field(MR_mktag(1), ll_backend__frameopt__HeadVar__1_1, (MR_Integer) 0)));
+        MR_Word ll_backend__frameopt__Labels0_26 = ((MR_Word) (MR_hl_field(MR_mktag(1), ll_backend__frameopt__HeadVar__1_1, (MR_Integer) 1)));
+        MR_Word ll_backend__frameopt__Labels1_36;
+        MR_Word ll_backend__frameopt__BlockInfo0_37;
+        MR_Word ll_backend__frameopt__Label0Copy_38;
+        MR_Word ll_backend__frameopt__FallInto_40;
+        MR_Word ll_backend__frameopt__SideLabels_41;
+        MR_Word ll_backend__frameopt__MaybeFallThrough_42;
+        MR_Word ll_backend__frameopt__Type_43;
+        MR_Word ll_backend__frameopt__STATE_VARIABLE_C_70_70;
+        MR_Word ll_backend__frameopt__STATE_VARIABLE_BlockMap_71_71;
+        MR_Word ll_backend__frameopt__Var_72;
+        MR_Box ll_backend__frameopt__conv0_BlockInfo0_37;
+        MR_Word ll_backend__frameopt__Var_39;
+        MR_Word ll_backend__frameopt__ParallelLabel_44;
+
+        {
+          ll_backend__frameopt__f_85_110_117_115_101_100_65_114_103_115_95_95_112_114_101_100_95_95_99_114_101_97_116_101_95_112_97_114_97_108_108_101_108_115_95_95_91_49_49_93_95_48_12_p_0(ll_backend__frameopt__TypeClassInfo_for_block_entry_exit_157, ll_backend__frameopt__Labels0_26, &ll_backend__frameopt__Labels1_36, ll_backend__frameopt__EntryInfo_3, ll_backend__frameopt__ProcLabel_4, ll_backend__frameopt__STATE_VARIABLE_C_0_5, &ll_backend__frameopt__STATE_VARIABLE_C_70_70, ll_backend__frameopt__OrdNeedsFrame_7, ll_backend__frameopt__SetupParMap_8, ll_backend__frameopt__ExitParMap_9, ll_backend__frameopt__STATE_VARIABLE_BlockMap_0_11, &ll_backend__frameopt__STATE_VARIABLE_BlockMap_71_71);
+        }
+        ll_backend__frameopt__TypeCtorInfo_158_158 = (MR_Word) &ll_backend__llds__ll_backend__llds__type_ctor_info_label_0;
+        {
+          mercury__private_builtin__type_info_from_typeclass_info_3_p_0(ll_backend__frameopt__TypeClassInfo_for_block_entry_exit_157, (MR_Integer) 1, &ll_backend__frameopt__TypeInfo_160_160);
+        }
+        {
+          mercury__private_builtin__type_info_from_typeclass_info_3_p_0(ll_backend__frameopt__TypeClassInfo_for_block_entry_exit_157, (MR_Integer) 2, &ll_backend__frameopt__TypeInfo_162_162);
+        }
+        {
+          ll_backend__frameopt__TypeInfo_164_164 = (MR_Word) MR_new_object(MR_Word, ((MR_Integer) 3 * sizeof(MR_Word)), NULL, NULL);
+          MR_hl_field(MR_mktag(0), ll_backend__frameopt__TypeInfo_164_164, 0) = ((MR_Box) (&ll_backend__frameopt__ll_backend__frameopt__type_ctor_info_frame_block_info_2));
+          MR_hl_field(MR_mktag(0), ll_backend__frameopt__TypeInfo_164_164, 1) = ((MR_Box) (ll_backend__frameopt__TypeInfo_160_160));
+          MR_hl_field(MR_mktag(0), ll_backend__frameopt__TypeInfo_164_164, 2) = ((MR_Box) (ll_backend__frameopt__TypeInfo_162_162));
+        }
+        {
+          mercury__map__lookup_3_p_0(ll_backend__frameopt__TypeCtorInfo_158_158, ll_backend__frameopt__TypeInfo_164_164, (MR_Word) ll_backend__frameopt__STATE_VARIABLE_BlockMap_71_71, ((MR_Box) (ll_backend__frameopt__Label0_25)), &ll_backend__frameopt__conv0_BlockInfo0_37);
+        }
+        ll_backend__frameopt__BlockInfo0_37 = ((MR_Word) ll_backend__frameopt__conv0_BlockInfo0_37);
+        ll_backend__frameopt__Label0Copy_38 = ((MR_Word) (MR_hl_field(MR_mktag(0), ll_backend__frameopt__BlockInfo0_37, (MR_Integer) 0)));
+        ll_backend__frameopt__Var_39 = ((MR_Word) (MR_hl_field(MR_mktag(0), ll_backend__frameopt__BlockInfo0_37, (MR_Integer) 1)));
+        ll_backend__frameopt__FallInto_40 = ((MR_Word) (MR_hl_field(MR_mktag(0), ll_backend__frameopt__BlockInfo0_37, (MR_Integer) 2)));
+        ll_backend__frameopt__SideLabels_41 = ((MR_Word) (MR_hl_field(MR_mktag(0), ll_backend__frameopt__BlockInfo0_37, (MR_Integer) 3)));
+        ll_backend__frameopt__MaybeFallThrough_42 = ((MR_Word) (MR_hl_field(MR_mktag(0), ll_backend__frameopt__BlockInfo0_37, (MR_Integer) 4)));
+        ll_backend__frameopt__Type_43 = ((MR_Word) (MR_hl_field(MR_mktag(0), ll_backend__frameopt__BlockInfo0_37, (MR_Integer) 5)));
+        {
+          ll_backend__frameopt__Var_72 = (MR_Word) MR_new_object(MR_Word, ((MR_Integer) 5 * sizeof(MR_Word)), NULL, NULL);
+          MR_hl_field(MR_mktag(0), ll_backend__frameopt__Var_72, 0) = ((MR_Box) (&ll_backend__frameopt_scalar_common_4[3]));
+          MR_hl_field(MR_mktag(0), ll_backend__frameopt__Var_72, 1) = ((MR_Box) (ll_backend__frameopt__f_85_110_117_115_101_100_65_114_103_115_95_95_112_114_101_100_95_95_99_114_101_97_116_101_95_112_97_114_97_108_108_101_108_115_95_95_91_49_49_93_95_48_12_p_0_1));
+          MR_hl_field(MR_mktag(0), ll_backend__frameopt__Var_72, 2) = ((MR_Box) (MR_Word) ((MR_Integer) 2));
+          MR_hl_field(MR_mktag(0), ll_backend__frameopt__Var_72, 3) = ((MR_Box) (ll_backend__frameopt__Label0_25));
+          MR_hl_field(MR_mktag(0), ll_backend__frameopt__Var_72, 4) = ((MR_Box) (ll_backend__frameopt__Label0Copy_38));
+        }
+        {
+          mercury__require__expect_4_p_0(ll_backend__frameopt__Var_72, (MR_String) "ll_backend.frameopt", (MR_String) "predicate \140ll_backend.frameopt.create_parallels\'/12", (MR_String) "label in frame_block_info is not copy");
+        }
+        {
+          ll_backend__frameopt__succeeded = ll_backend__frameopt__search_exit_par_map_3_p_0(ll_backend__frameopt__ExitParMap_9, ll_backend__frameopt__Label0_25, &ll_backend__frameopt__ParallelLabel_44);
+        }
+        if (ll_backend__frameopt__succeeded)
+          {
+            MR_Word ll_backend__frameopt__Comments_45;
+            MR_Word ll_backend__frameopt__PrevNeedsFrame_48;
+            MR_Word ll_backend__frameopt__Var_76;
+            MR_Word ll_backend__frameopt__TypeInfo_167_167;
+            MR_Word ll_backend__frameopt__TypeInfo_168_168;
+
+            {
+              ll_backend__frameopt__Var_76 = (MR_Word) MR_new_object(MR_Word, ((MR_Integer) 5 * sizeof(MR_Word)), NULL, NULL);
+              MR_hl_field(MR_mktag(0), ll_backend__frameopt__Var_76, 0) = ((MR_Box) (&ll_backend__frameopt_scalar_common_4[4]));
+              MR_hl_field(MR_mktag(0), ll_backend__frameopt__Var_76, 1) = ((MR_Box) (ll_backend__frameopt__f_85_110_117_115_101_100_65_114_103_115_95_95_112_114_101_100_95_95_99_114_101_97_116_101_95_112_97_114_97_108_108_101_108_115_95_95_91_49_49_93_95_48_12_p_0_2));
+              MR_hl_field(MR_mktag(0), ll_backend__frameopt__Var_76, 2) = ((MR_Box) (MR_Word) ((MR_Integer) 2));
+              MR_hl_field(MR_mktag(0), ll_backend__frameopt__Var_76, 3) = ((MR_Box) (ll_backend__frameopt__MaybeFallThrough_42));
+              MR_hl_field(MR_mktag(0), ll_backend__frameopt__Var_76, 4) = ((MR_Box) (MR_mkword(MR_mktag(0), MR_mkbody((MR_Integer) 0))));
+            }
+            {
+              mercury__require__expect_4_p_0(ll_backend__frameopt__Var_76, (MR_String) "ll_backend.frameopt", (MR_String) "predicate \140ll_backend.frameopt.create_parallels\'/12", (MR_String) "exit block with parallel has fall through");
+            }
+            if ((ll_backend__frameopt__SideLabels_41 == ((MR_Word) MR_mkword(MR_mktag(0), MR_mkbody((MR_Integer) 0)))))
+              ll_backend__frameopt__Comments_45 = (MR_Word) MR_mkword(MR_mktag(0), MR_mkbody((MR_Integer) 0));
+            else
+              {
+                MR_Word ll_backend__frameopt__Var_81;
+                MR_Word ll_backend__frameopt__Var_82;
+                MR_String ll_backend__frameopt__Var_83;
+                MR_String ll_backend__frameopt__Var_85;
+                MR_Word ll_backend__frameopt__Var_86;
+
+                {
+                  ll_backend__frameopt__Var_86 = (MR_Word) MR_mkword(MR_mktag(1), MR_new_object(MR_Word, ((MR_Integer) 1 * sizeof(MR_Word)), NULL, NULL));
+                  MR_hl_field(MR_mktag(1), ll_backend__frameopt__Var_86, 0) = ((MR_Box) (ll_backend__frameopt__ProcLabel_4));
+                }
+                {
+                  ll_backend__frameopt__Var_85 = ll_backend__opt_debug__dump_labels_2_f_0(ll_backend__frameopt__Var_86, ll_backend__frameopt__SideLabels_41);
+                }
+                {
+                  ll_backend__frameopt__Var_83 = mercury__string__f_43_43_2_f_0((MR_String) "exit side labels ", ll_backend__frameopt__Var_85);
+                }
+                {
+                  ll_backend__frameopt__Var_82 = (MR_Word) MR_mkword(MR_mktag(1), MR_new_object(MR_Word, ((MR_Integer) 1 * sizeof(MR_Word)), NULL, NULL));
+                  MR_hl_field(MR_mktag(1), ll_backend__frameopt__Var_82, 0) = ((MR_Box) (ll_backend__frameopt__Var_83));
+                }
+                {
+                  ll_backend__frameopt__Var_81 = (MR_Word) MR_new_object(MR_Word, ((MR_Integer) 2 * sizeof(MR_Word)), NULL, NULL);
+                  MR_hl_field(MR_mktag(0), ll_backend__frameopt__Var_81, 0) = ((MR_Box) (ll_backend__frameopt__Var_82));
+                  MR_hl_field(MR_mktag(0), ll_backend__frameopt__Var_81, 1) = ((MR_Box) ((MR_String) ""));
+                }
+                {
+                  ll_backend__frameopt__Comments_45 = (MR_Word) MR_mkword(MR_mktag(1), MR_new_object(MR_Word, ((MR_Integer) 2 * sizeof(MR_Word)), NULL, NULL));
+                  MR_hl_field(MR_mktag(1), ll_backend__frameopt__Comments_45, 0) = ((MR_Box) (ll_backend__frameopt__Var_81));
+                  MR_hl_field(MR_mktag(1), ll_backend__frameopt__Comments_45, 1) = ((MR_Box) (MR_mkword(MR_mktag(0), MR_mkbody((MR_Integer) 0))));
+                }
+              }
+            {
+              mercury__private_builtin__type_info_from_typeclass_info_3_p_0(ll_backend__frameopt__TypeClassInfo_for_block_entry_exit_157, (MR_Integer) 1, &ll_backend__frameopt__TypeInfo_167_167);
+            }
+            {
+              mercury__private_builtin__type_info_from_typeclass_info_3_p_0(ll_backend__frameopt__TypeClassInfo_for_block_entry_exit_157, (MR_Integer) 2, &ll_backend__frameopt__TypeInfo_168_168);
+            }
+            {
+              ll_backend__frameopt__PrevNeedsFrame_48 = ll_backend__frameopt__f_85_110_117_115_101_100_65_114_103_115_95_95_102_117_110_99_95_95_112_114_101_118_95_98_108_111_99_107_95_110_101_101_100_115_95_102_114_97_109_101_95_95_91_49_44_32_50_93_95_48_2_f_0(ll_backend__frameopt__OrdNeedsFrame_7, ll_backend__frameopt__BlockInfo0_37);
+            }
+            switch (MR_tag((MR_Word) ll_backend__frameopt__Type_43)) {
+              default: /*NOTREACHED*/ MR_assert(0);
+              case (MR_Integer) 0:
+              case (MR_Integer) 1:
+                {
+                  {
+                    mercury__require__unexpected_3_p_0((MR_String) "ll_backend.frameopt", (MR_String) "predicate \140ll_backend.frameopt.create_parallels\'/12", (MR_String) "block in exit_par_map is not exit");
+                    return;
+                  }
+                }
+                break;
+              case (MR_Integer) 2:
+                {
+                  MR_Word ll_backend__frameopt__TypeCtorInfo_169_169;
+                  MR_Box ll_backend__frameopt__ExitInfo_49 = (MR_hl_field(MR_mktag(2), ll_backend__frameopt__Type_43, (MR_Integer) 0));
+                  MR_Word ll_backend__frameopt__LabelInstr_50;
+                  MR_Word ll_backend__frameopt__ReplacementCode_51;
+                  MR_Word ll_backend__frameopt__ParallelBlockFallInto_53;
+                  MR_Word ll_backend__frameopt__ParallelBlockInfo_54;
+                  MR_Word ll_backend__frameopt__Var_92;
+                  MR_Word ll_backend__frameopt__Var_94;
+                  MR_Word ll_backend__frameopt__Var_96;
+                  MR_Word ll_backend__frameopt__Var_97;
+                  MR_Word ll_backend__frameopt__STATE_VARIABLE_BlockMap_101_101;
+                  MR_Word ll_backend__frameopt__conv2_STATE_VARIABLE_BlockMap_12;
+
+                  {
+                    ll_backend__frameopt__Var_92 = (MR_Word) MR_mkword(MR_mktag(3), MR_new_object(MR_Word, ((MR_Integer) 2 * sizeof(MR_Word)), NULL, NULL));
+                    MR_hl_field(MR_mktag(3), ll_backend__frameopt__Var_92, 0) = ((MR_Box) (MR_Word) ((MR_Integer) 5));
+                    MR_hl_field(MR_mktag(3), ll_backend__frameopt__Var_92, 1) = ((MR_Box) (ll_backend__frameopt__ParallelLabel_44));
+                  }
+                  {
+                    ll_backend__frameopt__LabelInstr_50 = (MR_Word) MR_new_object(MR_Word, ((MR_Integer) 2 * sizeof(MR_Word)), NULL, NULL);
+                    MR_hl_field(MR_mktag(0), ll_backend__frameopt__LabelInstr_50, 0) = ((MR_Box) (ll_backend__frameopt__Var_92));
+                    MR_hl_field(MR_mktag(0), ll_backend__frameopt__LabelInstr_50, 1) = ((MR_Box) ((MR_String) "non-teardown parallel"));
+                  }
+                  ll_backend__frameopt__TypeCtorInfo_169_169 = (MR_Word) &ll_backend__llds__ll_backend__llds__type_ctor_info_instruction_0;
+                  {
+                    ll_backend__frameopt__Var_94 = (MR_Word) MR_mkword(MR_mktag(1), MR_new_object(MR_Word, ((MR_Integer) 2 * sizeof(MR_Word)), NULL, NULL));
+                    MR_hl_field(MR_mktag(1), ll_backend__frameopt__Var_94, 0) = ((MR_Box) (ll_backend__frameopt__LabelInstr_50));
+                    MR_hl_field(MR_mktag(1), ll_backend__frameopt__Var_94, 1) = ((MR_Box) (MR_mkword(MR_mktag(0), MR_mkbody((MR_Integer) 0))));
+                  }
+                  {
+                    ll_backend__frameopt__Var_97 = ll_backend__frameopt__non_teardown_exit_code_1_f_0(ll_backend__frameopt__TypeClassInfo_for_block_entry_exit_157, ll_backend__frameopt__ExitInfo_49);
+                  }
+                  {
+                    ll_backend__frameopt__Var_96 = mercury__list__f_43_43_2_f_0(ll_backend__frameopt__TypeCtorInfo_169_169, ll_backend__frameopt__Comments_45, ll_backend__frameopt__Var_97);
+                  }
+                  {
+                    ll_backend__frameopt__ReplacementCode_51 = mercury__list__f_43_43_2_f_0(ll_backend__frameopt__TypeCtorInfo_169_169, ll_backend__frameopt__Var_94, ll_backend__frameopt__Var_96);
+                  }
+                  switch (ll_backend__frameopt__PrevNeedsFrame_48) {
+                    default: /*NOTREACHED*/ MR_assert(0);
+                    case (MR_Integer) 1:
+                      {
+                        MR_Word ll_backend__frameopt__BlockInfo_52;
+                        MR_Word ll_backend__frameopt__Var_99;
+                        MR_Word ll_backend__frameopt__Var_145;
+                        MR_Word ll_backend__frameopt__Var_146;
+                        MR_Word ll_backend__frameopt__Var_148;
+                        MR_Word ll_backend__frameopt__Var_149;
+                        MR_Word ll_backend__frameopt__Var_150;
+                        MR_Word ll_backend__frameopt__Var_147;
+                        MR_Word ll_backend__frameopt__conv1_STATE_VARIABLE_BlockMap_101_101;
+
+                        {
+                          ll_backend__frameopt__Var_99 = (MR_Word) MR_mkword(MR_mktag(1), MR_new_object(MR_Word, ((MR_Integer) 2 * sizeof(MR_Word)), NULL, NULL));
+                          MR_hl_field(MR_mktag(1), ll_backend__frameopt__Var_99, 0) = ((MR_Box) (ll_backend__frameopt__Label0_25));
+                          MR_hl_field(MR_mktag(1), ll_backend__frameopt__Var_99, 1) = ((MR_Box) (ll_backend__frameopt__Labels1_36));
+                        }
+                        {
+                          MR_Word base;
+                          base = (MR_Word) MR_mkword(MR_mktag(1), MR_new_object(MR_Word, ((MR_Integer) 2 * sizeof(MR_Word)), NULL, NULL));
+                          *ll_backend__frameopt__HeadVar__2_2 = base;
+                          MR_hl_field(MR_mktag(1), base, 0) = ((MR_Box) (ll_backend__frameopt__ParallelLabel_44));
+                          MR_hl_field(MR_mktag(1), base, 1) = ((MR_Box) (ll_backend__frameopt__Var_99));
+                        }
+                        ll_backend__frameopt__Var_145 = ((MR_Word) (MR_hl_field(MR_mktag(0), ll_backend__frameopt__BlockInfo0_37, (MR_Integer) 0)));
+                        ll_backend__frameopt__Var_146 = ((MR_Word) (MR_hl_field(MR_mktag(0), ll_backend__frameopt__BlockInfo0_37, (MR_Integer) 1)));
+                        ll_backend__frameopt__Var_147 = ((MR_Word) (MR_hl_field(MR_mktag(0), ll_backend__frameopt__BlockInfo0_37, (MR_Integer) 2)));
+                        ll_backend__frameopt__Var_148 = ((MR_Word) (MR_hl_field(MR_mktag(0), ll_backend__frameopt__BlockInfo0_37, (MR_Integer) 3)));
+                        ll_backend__frameopt__Var_149 = ((MR_Word) (MR_hl_field(MR_mktag(0), ll_backend__frameopt__BlockInfo0_37, (MR_Integer) 4)));
+                        ll_backend__frameopt__Var_150 = ((MR_Word) (MR_hl_field(MR_mktag(0), ll_backend__frameopt__BlockInfo0_37, (MR_Integer) 5)));
+                        {
+                          ll_backend__frameopt__BlockInfo_52 = (MR_Word) MR_new_object(MR_Word, ((MR_Integer) 6 * sizeof(MR_Word)), NULL, NULL);
+                          MR_hl_field(MR_mktag(0), ll_backend__frameopt__BlockInfo_52, 0) = ((MR_Box) (ll_backend__frameopt__Var_145));
+                          MR_hl_field(MR_mktag(0), ll_backend__frameopt__BlockInfo_52, 1) = ((MR_Box) (ll_backend__frameopt__Var_146));
+                          MR_hl_field(MR_mktag(0), ll_backend__frameopt__BlockInfo_52, 2) = ((MR_Box) (MR_mkword(MR_mktag(0), MR_mkbody((MR_Integer) 0))));
+                          MR_hl_field(MR_mktag(0), ll_backend__frameopt__BlockInfo_52, 3) = ((MR_Box) (ll_backend__frameopt__Var_148));
+                          MR_hl_field(MR_mktag(0), ll_backend__frameopt__BlockInfo_52, 4) = ((MR_Box) (ll_backend__frameopt__Var_149));
+                          MR_hl_field(MR_mktag(0), ll_backend__frameopt__BlockInfo_52, 5) = ((MR_Box) (ll_backend__frameopt__Var_150));
+                        }
+                        {
+                          mercury__map__det_update_4_p_0(ll_backend__frameopt__TypeCtorInfo_158_158, ll_backend__frameopt__TypeInfo_164_164, ((MR_Box) (ll_backend__frameopt__Label0_25)), ((MR_Box) (ll_backend__frameopt__BlockInfo_52)), (MR_Word) ll_backend__frameopt__STATE_VARIABLE_BlockMap_71_71, &ll_backend__frameopt__conv1_STATE_VARIABLE_BlockMap_101_101);
+                        }
+                        ll_backend__frameopt__STATE_VARIABLE_BlockMap_101_101 = (MR_Word) ll_backend__frameopt__conv1_STATE_VARIABLE_BlockMap_101_101;
+                        ll_backend__frameopt__ParallelBlockFallInto_53 = ll_backend__frameopt__FallInto_40;
+                      }
+                      break;
+                    case (MR_Integer) 0:
+                      {
+                        MR_Word ll_backend__frameopt__Var_98;
+
+                        {
+                          ll_backend__frameopt__Var_98 = (MR_Word) MR_mkword(MR_mktag(1), MR_new_object(MR_Word, ((MR_Integer) 2 * sizeof(MR_Word)), NULL, NULL));
+                          MR_hl_field(MR_mktag(1), ll_backend__frameopt__Var_98, 0) = ((MR_Box) (ll_backend__frameopt__ParallelLabel_44));
+                          MR_hl_field(MR_mktag(1), ll_backend__frameopt__Var_98, 1) = ((MR_Box) (ll_backend__frameopt__Labels1_36));
+                        }
+                        {
+                          MR_Word base;
+                          base = (MR_Word) MR_mkword(MR_mktag(1), MR_new_object(MR_Word, ((MR_Integer) 2 * sizeof(MR_Word)), NULL, NULL));
+                          *ll_backend__frameopt__HeadVar__2_2 = base;
+                          MR_hl_field(MR_mktag(1), base, 0) = ((MR_Box) (ll_backend__frameopt__Label0_25));
+                          MR_hl_field(MR_mktag(1), base, 1) = ((MR_Box) (ll_backend__frameopt__Var_98));
+                        }
+                        ll_backend__frameopt__ParallelBlockFallInto_53 = (MR_Word) MR_mkword(MR_mktag(0), MR_mkbody((MR_Integer) 0));
+                        ll_backend__frameopt__STATE_VARIABLE_BlockMap_101_101 = ll_backend__frameopt__STATE_VARIABLE_BlockMap_71_71;
+                      }
+                      break;
+                  }
+                  {
+                    ll_backend__frameopt__ParallelBlockInfo_54 = (MR_Word) MR_new_object(MR_Word, ((MR_Integer) 6 * sizeof(MR_Word)), NULL, NULL);
+                    MR_hl_field(MR_mktag(0), ll_backend__frameopt__ParallelBlockInfo_54, 0) = ((MR_Box) (ll_backend__frameopt__ParallelLabel_44));
+                    MR_hl_field(MR_mktag(0), ll_backend__frameopt__ParallelBlockInfo_54, 1) = ((MR_Box) (ll_backend__frameopt__ReplacementCode_51));
+                    MR_hl_field(MR_mktag(0), ll_backend__frameopt__ParallelBlockInfo_54, 2) = ((MR_Box) (ll_backend__frameopt__ParallelBlockFallInto_53));
+                    MR_hl_field(MR_mktag(0), ll_backend__frameopt__ParallelBlockInfo_54, 3) = ((MR_Box) (ll_backend__frameopt__SideLabels_41));
+                    MR_hl_field(MR_mktag(0), ll_backend__frameopt__ParallelBlockInfo_54, 4) = ((MR_Box) (MR_mkword(MR_mktag(0), MR_mkbody((MR_Integer) 0))));
+                    MR_hl_field(MR_mktag(0), ll_backend__frameopt__ParallelBlockInfo_54, 5) = ((MR_Box) (MR_mkword(MR_mktag(1), &ll_backend__frameopt_scalar_common_2[13])));
+                  }
+                  {
+                    mercury__map__det_insert_4_p_0(ll_backend__frameopt__TypeCtorInfo_158_158, ll_backend__frameopt__TypeInfo_164_164, ((MR_Box) (ll_backend__frameopt__ParallelLabel_44)), ((MR_Box) (ll_backend__frameopt__ParallelBlockInfo_54)), (MR_Word) ll_backend__frameopt__STATE_VARIABLE_BlockMap_101_101, &ll_backend__frameopt__conv2_STATE_VARIABLE_BlockMap_12);
+                  }
+                  *ll_backend__frameopt__STATE_VARIABLE_BlockMap_12 = (MR_Word) ll_backend__frameopt__conv2_STATE_VARIABLE_BlockMap_12;
+                }
+                break;
+            }
+            *ll_backend__frameopt__STATE_VARIABLE_C_6 = ll_backend__frameopt__STATE_VARIABLE_C_70_70;
+          }
+        else
+          {
+            MR_Word ll_backend__frameopt__SetupLabel_58;
+
+            {
+              ll_backend__frameopt__succeeded = ll_backend__frameopt__search_setup_par_map_3_p_0(ll_backend__frameopt__SetupParMap_8, ll_backend__frameopt__Label0_25, &ll_backend__frameopt__SetupLabel_58);
+            }
+            if (ll_backend__frameopt__succeeded)
+              {
+                MR_Word ll_backend__frameopt__SetupFallInto_63;
+                MR_Word ll_backend__frameopt__SetupCode_64;
+                MR_Word ll_backend__frameopt__SetupBlockInfo_65;
+                MR_Word ll_backend__frameopt__Var_107;
+                MR_Word ll_backend__frameopt__STATE_VARIABLE_BlockMap_128_128;
+                MR_Word ll_backend__frameopt__Var_129;
+                MR_Word ll_backend__frameopt__Var_130;
+                MR_Word ll_backend__frameopt__Var_131;
+                MR_Word ll_backend__frameopt__Var_134;
+                MR_Word ll_backend__frameopt__Var_136;
+                MR_Word ll_backend__frameopt__Var_137;
+                MR_Word ll_backend__frameopt__PrevNeedsFrame_141;
+                MR_Word ll_backend__frameopt__TypeInfo_174_174;
+                MR_Word ll_backend__frameopt__TypeInfo_175_175;
+                MR_Word ll_backend__frameopt__conv5_STATE_VARIABLE_BlockMap_12;
+
+                {
+                  ll_backend__frameopt__Var_107 = (MR_Word) MR_new_object(MR_Word, ((MR_Integer) 5 * sizeof(MR_Word)), NULL, NULL);
+                  MR_hl_field(MR_mktag(0), ll_backend__frameopt__Var_107, 0) = ((MR_Box) (&ll_backend__frameopt_scalar_common_4[5]));
+                  MR_hl_field(MR_mktag(0), ll_backend__frameopt__Var_107, 1) = ((MR_Box) (ll_backend__frameopt__f_85_110_117_115_101_100_65_114_103_115_95_95_112_114_101_100_95_95_99_114_101_97_116_101_95_112_97_114_97_108_108_101_108_115_95_95_91_49_49_93_95_48_12_p_0_3));
+                  MR_hl_field(MR_mktag(0), ll_backend__frameopt__Var_107, 2) = ((MR_Box) (MR_Word) ((MR_Integer) 2));
+                  MR_hl_field(MR_mktag(0), ll_backend__frameopt__Var_107, 3) = ((MR_Box) (ll_backend__frameopt__TypeClassInfo_for_block_entry_exit_157));
+                  MR_hl_field(MR_mktag(0), ll_backend__frameopt__Var_107, 4) = ((MR_Box) (ll_backend__frameopt__Type_43));
+                }
+                {
+                  mercury__require__expect_4_p_0(ll_backend__frameopt__Var_107, (MR_String) "ll_backend.frameopt", (MR_String) "predicate \140ll_backend.frameopt.create_parallels\'/12", (MR_String) "block in setup map is not ordinary");
+                }
+                {
+                  mercury__private_builtin__type_info_from_typeclass_info_3_p_0(ll_backend__frameopt__TypeClassInfo_for_block_entry_exit_157, (MR_Integer) 1, &ll_backend__frameopt__TypeInfo_174_174);
+                }
+                {
+                  mercury__private_builtin__type_info_from_typeclass_info_3_p_0(ll_backend__frameopt__TypeClassInfo_for_block_entry_exit_157, (MR_Integer) 2, &ll_backend__frameopt__TypeInfo_175_175);
+                }
+                {
+                  ll_backend__frameopt__PrevNeedsFrame_141 = ll_backend__frameopt__f_85_110_117_115_101_100_65_114_103_115_95_95_102_117_110_99_95_95_112_114_101_118_95_98_108_111_99_107_95_110_101_101_100_115_95_102_114_97_109_101_95_95_91_49_44_32_50_93_95_48_2_f_0(ll_backend__frameopt__OrdNeedsFrame_7, ll_backend__frameopt__BlockInfo0_37);
+                }
+                switch (ll_backend__frameopt__PrevNeedsFrame_141) {
+                  default: /*NOTREACHED*/ MR_assert(0);
+                  case (MR_Integer) 1:
+                    {
+                      MR_Word ll_backend__frameopt__Var_111;
+
+                      {
+                        ll_backend__frameopt__Var_111 = (MR_Word) MR_mkword(MR_mktag(1), MR_new_object(MR_Word, ((MR_Integer) 2 * sizeof(MR_Word)), NULL, NULL));
+                        MR_hl_field(MR_mktag(1), ll_backend__frameopt__Var_111, 0) = ((MR_Box) (ll_backend__frameopt__Label0_25));
+                        MR_hl_field(MR_mktag(1), ll_backend__frameopt__Var_111, 1) = ((MR_Box) (ll_backend__frameopt__Labels1_36));
+                      }
+                      {
+                        MR_Word base;
+                        base = (MR_Word) MR_mkword(MR_mktag(1), MR_new_object(MR_Word, ((MR_Integer) 2 * sizeof(MR_Word)), NULL, NULL));
+                        *ll_backend__frameopt__HeadVar__2_2 = base;
+                        MR_hl_field(MR_mktag(1), base, 0) = ((MR_Box) (ll_backend__frameopt__SetupLabel_58));
+                        MR_hl_field(MR_mktag(1), base, 1) = ((MR_Box) (ll_backend__frameopt__Var_111));
+                      }
+                      ll_backend__frameopt__SetupFallInto_63 = (MR_Word) MR_mkword(MR_mktag(0), MR_mkbody((MR_Integer) 0));
+                      *ll_backend__frameopt__STATE_VARIABLE_C_6 = ll_backend__frameopt__STATE_VARIABLE_C_70_70;
+                      ll_backend__frameopt__STATE_VARIABLE_BlockMap_128_128 = ll_backend__frameopt__STATE_VARIABLE_BlockMap_71_71;
+                    }
+                    break;
+                  case (MR_Integer) 0:
+                    {
+                      MR_Integer ll_backend__frameopt__N_59;
+                      MR_Word ll_backend__frameopt__JumpAroundLabel_60;
+                      MR_Word ll_backend__frameopt__JumpAroundCode_61;
+                      MR_Word ll_backend__frameopt__JumpAroundBlockInfo_62;
+                      MR_Word ll_backend__frameopt__Var_113;
+                      MR_Word ll_backend__frameopt__Var_114;
+                      MR_Word ll_backend__frameopt__Var_115;
+                      MR_Word ll_backend__frameopt__Var_118;
+                      MR_Word ll_backend__frameopt__Var_119;
+                      MR_Word ll_backend__frameopt__Var_121;
+                      MR_Word ll_backend__frameopt__STATE_VARIABLE_BlockMap_126_126;
+                      MR_Word ll_backend__frameopt__Var_127;
+                      MR_Word ll_backend__frameopt__BlockInfo_139;
+                      MR_Word ll_backend__frameopt__conv3_STATE_VARIABLE_BlockMap_126_126;
+                      MR_Word ll_backend__frameopt__Var_151;
+                      MR_Word ll_backend__frameopt__Var_152;
+                      MR_Word ll_backend__frameopt__Var_154;
+                      MR_Word ll_backend__frameopt__Var_155;
+                      MR_Word ll_backend__frameopt__Var_156;
+                      MR_Word ll_backend__frameopt__Var_153;
+                      MR_Word ll_backend__frameopt__conv4_STATE_VARIABLE_BlockMap_128_128;
+
+                      {
+                        mercury__counter__allocate_3_p_0(&ll_backend__frameopt__N_59, ll_backend__frameopt__STATE_VARIABLE_C_70_70, ll_backend__frameopt__STATE_VARIABLE_C_6);
+                      }
+                      {
+                        ll_backend__frameopt__JumpAroundLabel_60 = (MR_Word) MR_new_object(MR_Word, ((MR_Integer) 2 * sizeof(MR_Word)), NULL, NULL);
+                        MR_hl_field(MR_mktag(0), ll_backend__frameopt__JumpAroundLabel_60, 0) = ((MR_Box) (ll_backend__frameopt__N_59));
+                        MR_hl_field(MR_mktag(0), ll_backend__frameopt__JumpAroundLabel_60, 1) = ((MR_Box) (ll_backend__frameopt__ProcLabel_4));
+                      }
+                      {
+                        ll_backend__frameopt__Var_115 = (MR_Word) MR_mkword(MR_mktag(1), MR_new_object(MR_Word, ((MR_Integer) 1 * sizeof(MR_Word)), NULL, NULL));
+                        MR_hl_field(MR_mktag(1), ll_backend__frameopt__Var_115, 0) = ((MR_Box) (ll_backend__frameopt__Label0_25));
+                      }
+                      {
+                        ll_backend__frameopt__Var_114 = (MR_Word) MR_mkword(MR_mktag(3), MR_new_object(MR_Word, ((MR_Integer) 2 * sizeof(MR_Word)), NULL, NULL));
+                        MR_hl_field(MR_mktag(3), ll_backend__frameopt__Var_114, 0) = ((MR_Box) (MR_Word) ((MR_Integer) 6));
+                        MR_hl_field(MR_mktag(3), ll_backend__frameopt__Var_114, 1) = ((MR_Box) (ll_backend__frameopt__Var_115));
+                      }
+                      {
+                        ll_backend__frameopt__Var_113 = (MR_Word) MR_new_object(MR_Word, ((MR_Integer) 2 * sizeof(MR_Word)), NULL, NULL);
+                        MR_hl_field(MR_mktag(0), ll_backend__frameopt__Var_113, 0) = ((MR_Box) (ll_backend__frameopt__Var_114));
+                        MR_hl_field(MR_mktag(0), ll_backend__frameopt__Var_113, 1) = ((MR_Box) ((MR_String) "jump around setup"));
+                      }
+                      {
+                        ll_backend__frameopt__JumpAroundCode_61 = (MR_Word) MR_mkword(MR_mktag(1), MR_new_object(MR_Word, ((MR_Integer) 2 * sizeof(MR_Word)), NULL, NULL));
+                        MR_hl_field(MR_mktag(1), ll_backend__frameopt__JumpAroundCode_61, 0) = ((MR_Box) (ll_backend__frameopt__Var_113));
+                        MR_hl_field(MR_mktag(1), ll_backend__frameopt__JumpAroundCode_61, 1) = ((MR_Box) (MR_mkword(MR_mktag(0), MR_mkbody((MR_Integer) 0))));
+                      }
+                      {
+                        ll_backend__frameopt__Var_119 = (MR_Word) MR_mkword(MR_mktag(1), MR_new_object(MR_Word, ((MR_Integer) 2 * sizeof(MR_Word)), NULL, NULL));
+                        MR_hl_field(MR_mktag(1), ll_backend__frameopt__Var_119, 0) = ((MR_Box) (ll_backend__frameopt__Label0_25));
+                        MR_hl_field(MR_mktag(1), ll_backend__frameopt__Var_119, 1) = ((MR_Box) (ll_backend__frameopt__Labels1_36));
+                      }
+                      {
+                        ll_backend__frameopt__Var_118 = (MR_Word) MR_mkword(MR_mktag(1), MR_new_object(MR_Word, ((MR_Integer) 2 * sizeof(MR_Word)), NULL, NULL));
+                        MR_hl_field(MR_mktag(1), ll_backend__frameopt__Var_118, 0) = ((MR_Box) (ll_backend__frameopt__SetupLabel_58));
+                        MR_hl_field(MR_mktag(1), ll_backend__frameopt__Var_118, 1) = ((MR_Box) (ll_backend__frameopt__Var_119));
+                      }
+                      {
+                        MR_Word base;
+                        base = (MR_Word) MR_mkword(MR_mktag(1), MR_new_object(MR_Word, ((MR_Integer) 2 * sizeof(MR_Word)), NULL, NULL));
+                        *ll_backend__frameopt__HeadVar__2_2 = base;
+                        MR_hl_field(MR_mktag(1), base, 0) = ((MR_Box) (ll_backend__frameopt__JumpAroundLabel_60));
+                        MR_hl_field(MR_mktag(1), base, 1) = ((MR_Box) (ll_backend__frameopt__Var_118));
+                      }
+                      {
+                        ll_backend__frameopt__Var_121 = (MR_Word) MR_mkword(MR_mktag(1), MR_new_object(MR_Word, ((MR_Integer) 2 * sizeof(MR_Word)), NULL, NULL));
+                        MR_hl_field(MR_mktag(1), ll_backend__frameopt__Var_121, 0) = ((MR_Box) (ll_backend__frameopt__Label0_25));
+                        MR_hl_field(MR_mktag(1), ll_backend__frameopt__Var_121, 1) = ((MR_Box) (MR_mkword(MR_mktag(0), MR_mkbody((MR_Integer) 0))));
+                      }
+                      {
+                        ll_backend__frameopt__JumpAroundBlockInfo_62 = (MR_Word) MR_new_object(MR_Word, ((MR_Integer) 6 * sizeof(MR_Word)), NULL, NULL);
+                        MR_hl_field(MR_mktag(0), ll_backend__frameopt__JumpAroundBlockInfo_62, 0) = ((MR_Box) (ll_backend__frameopt__JumpAroundLabel_60));
+                        MR_hl_field(MR_mktag(0), ll_backend__frameopt__JumpAroundBlockInfo_62, 1) = ((MR_Box) (ll_backend__frameopt__JumpAroundCode_61));
+                        MR_hl_field(MR_mktag(0), ll_backend__frameopt__JumpAroundBlockInfo_62, 2) = ((MR_Box) (MR_mkword(MR_mktag(0), MR_mkbody((MR_Integer) 0))));
+                        MR_hl_field(MR_mktag(0), ll_backend__frameopt__JumpAroundBlockInfo_62, 3) = ((MR_Box) (ll_backend__frameopt__Var_121));
+                        MR_hl_field(MR_mktag(0), ll_backend__frameopt__JumpAroundBlockInfo_62, 4) = ((MR_Box) (ll_backend__frameopt__FallInto_40));
+                        MR_hl_field(MR_mktag(0), ll_backend__frameopt__JumpAroundBlockInfo_62, 5) = ((MR_Box) (MR_mkword(MR_mktag(1), &ll_backend__frameopt_scalar_common_2[12])));
+                      }
+                      {
+                        mercury__map__det_insert_4_p_0(ll_backend__frameopt__TypeCtorInfo_158_158, ll_backend__frameopt__TypeInfo_164_164, ((MR_Box) (ll_backend__frameopt__JumpAroundLabel_60)), ((MR_Box) (ll_backend__frameopt__JumpAroundBlockInfo_62)), (MR_Word) ll_backend__frameopt__STATE_VARIABLE_BlockMap_71_71, &ll_backend__frameopt__conv3_STATE_VARIABLE_BlockMap_126_126);
+                      }
+                      ll_backend__frameopt__STATE_VARIABLE_BlockMap_126_126 = (MR_Word) ll_backend__frameopt__conv3_STATE_VARIABLE_BlockMap_126_126;
+                      {
+                        ll_backend__frameopt__SetupFallInto_63 = (MR_Word) MR_mkword(MR_mktag(1), MR_new_object(MR_Word, ((MR_Integer) 1 * sizeof(MR_Word)), NULL, NULL));
+                        MR_hl_field(MR_mktag(1), ll_backend__frameopt__SetupFallInto_63, 0) = ((MR_Box) (ll_backend__frameopt__JumpAroundLabel_60));
+                      }
+                      {
+                        ll_backend__frameopt__Var_127 = (MR_Word) MR_mkword(MR_mktag(1), MR_new_object(MR_Word, ((MR_Integer) 1 * sizeof(MR_Word)), NULL, NULL));
+                        MR_hl_field(MR_mktag(1), ll_backend__frameopt__Var_127, 0) = ((MR_Box) (ll_backend__frameopt__SetupLabel_58));
+                      }
+                      ll_backend__frameopt__Var_151 = ((MR_Word) (MR_hl_field(MR_mktag(0), ll_backend__frameopt__BlockInfo0_37, (MR_Integer) 0)));
+                      ll_backend__frameopt__Var_152 = ((MR_Word) (MR_hl_field(MR_mktag(0), ll_backend__frameopt__BlockInfo0_37, (MR_Integer) 1)));
+                      ll_backend__frameopt__Var_153 = ((MR_Word) (MR_hl_field(MR_mktag(0), ll_backend__frameopt__BlockInfo0_37, (MR_Integer) 2)));
+                      ll_backend__frameopt__Var_154 = ((MR_Word) (MR_hl_field(MR_mktag(0), ll_backend__frameopt__BlockInfo0_37, (MR_Integer) 3)));
+                      ll_backend__frameopt__Var_155 = ((MR_Word) (MR_hl_field(MR_mktag(0), ll_backend__frameopt__BlockInfo0_37, (MR_Integer) 4)));
+                      ll_backend__frameopt__Var_156 = ((MR_Word) (MR_hl_field(MR_mktag(0), ll_backend__frameopt__BlockInfo0_37, (MR_Integer) 5)));
+                      {
+                        ll_backend__frameopt__BlockInfo_139 = (MR_Word) MR_new_object(MR_Word, ((MR_Integer) 6 * sizeof(MR_Word)), NULL, NULL);
+                        MR_hl_field(MR_mktag(0), ll_backend__frameopt__BlockInfo_139, 0) = ((MR_Box) (ll_backend__frameopt__Var_151));
+                        MR_hl_field(MR_mktag(0), ll_backend__frameopt__BlockInfo_139, 1) = ((MR_Box) (ll_backend__frameopt__Var_152));
+                        MR_hl_field(MR_mktag(0), ll_backend__frameopt__BlockInfo_139, 2) = ((MR_Box) (ll_backend__frameopt__Var_127));
+                        MR_hl_field(MR_mktag(0), ll_backend__frameopt__BlockInfo_139, 3) = ((MR_Box) (ll_backend__frameopt__Var_154));
+                        MR_hl_field(MR_mktag(0), ll_backend__frameopt__BlockInfo_139, 4) = ((MR_Box) (ll_backend__frameopt__Var_155));
+                        MR_hl_field(MR_mktag(0), ll_backend__frameopt__BlockInfo_139, 5) = ((MR_Box) (ll_backend__frameopt__Var_156));
+                      }
+                      {
+                        mercury__map__det_update_4_p_0(ll_backend__frameopt__TypeCtorInfo_158_158, ll_backend__frameopt__TypeInfo_164_164, ((MR_Box) (ll_backend__frameopt__Label0_25)), ((MR_Box) (ll_backend__frameopt__BlockInfo_139)), (MR_Word) ll_backend__frameopt__STATE_VARIABLE_BlockMap_126_126, &ll_backend__frameopt__conv4_STATE_VARIABLE_BlockMap_128_128);
+                      }
+                      ll_backend__frameopt__STATE_VARIABLE_BlockMap_128_128 = (MR_Word) ll_backend__frameopt__conv4_STATE_VARIABLE_BlockMap_128_128;
+                    }
+                    break;
+                }
+                {
+                  ll_backend__frameopt__Var_131 = (MR_Word) MR_mkword(MR_mktag(3), MR_new_object(MR_Word, ((MR_Integer) 2 * sizeof(MR_Word)), NULL, NULL));
+                  MR_hl_field(MR_mktag(3), ll_backend__frameopt__Var_131, 0) = ((MR_Box) (MR_Word) ((MR_Integer) 5));
+                  MR_hl_field(MR_mktag(3), ll_backend__frameopt__Var_131, 1) = ((MR_Box) (ll_backend__frameopt__SetupLabel_58));
+                }
+                {
+                  ll_backend__frameopt__Var_130 = (MR_Word) MR_new_object(MR_Word, ((MR_Integer) 2 * sizeof(MR_Word)), NULL, NULL);
+                  MR_hl_field(MR_mktag(0), ll_backend__frameopt__Var_130, 0) = ((MR_Box) (ll_backend__frameopt__Var_131));
+                  MR_hl_field(MR_mktag(0), ll_backend__frameopt__Var_130, 1) = ((MR_Box) ((MR_String) "late setup label"));
+                }
+                {
+                  ll_backend__frameopt__Var_129 = (MR_Word) MR_mkword(MR_mktag(1), MR_new_object(MR_Word, ((MR_Integer) 2 * sizeof(MR_Word)), NULL, NULL));
+                  MR_hl_field(MR_mktag(1), ll_backend__frameopt__Var_129, 0) = ((MR_Box) (ll_backend__frameopt__Var_130));
+                  MR_hl_field(MR_mktag(1), ll_backend__frameopt__Var_129, 1) = ((MR_Box) (MR_mkword(MR_mktag(0), MR_mkbody((MR_Integer) 0))));
+                }
+                {
+                  ll_backend__frameopt__Var_134 = ll_backend__frameopt__late_setup_code_1_f_0(ll_backend__frameopt__TypeClassInfo_for_block_entry_exit_157, ll_backend__frameopt__EntryInfo_3);
+                }
+                {
+                  ll_backend__frameopt__SetupCode_64 = mercury__list__f_43_43_2_f_0((MR_Word) &ll_backend__llds__ll_backend__llds__type_ctor_info_instruction_0, ll_backend__frameopt__Var_129, ll_backend__frameopt__Var_134);
+                }
+                {
+                  ll_backend__frameopt__Var_136 = (MR_Word) MR_mkword(MR_mktag(1), MR_new_object(MR_Word, ((MR_Integer) 1 * sizeof(MR_Word)), NULL, NULL));
+                  MR_hl_field(MR_mktag(1), ll_backend__frameopt__Var_136, 0) = ((MR_Box) (ll_backend__frameopt__Label0_25));
+                }
+                {
+                  ll_backend__frameopt__Var_137 = (MR_Word) MR_new_object(MR_Word, ((MR_Integer) 1 * sizeof(MR_Word)), NULL, NULL);
+                  MR_hl_field(MR_mktag(0), ll_backend__frameopt__Var_137, 0) = ll_backend__frameopt__EntryInfo_3;
+                }
+                {
+                  ll_backend__frameopt__SetupBlockInfo_65 = (MR_Word) MR_new_object(MR_Word, ((MR_Integer) 6 * sizeof(MR_Word)), NULL, NULL);
+                  MR_hl_field(MR_mktag(0), ll_backend__frameopt__SetupBlockInfo_65, 0) = ((MR_Box) (ll_backend__frameopt__SetupLabel_58));
+                  MR_hl_field(MR_mktag(0), ll_backend__frameopt__SetupBlockInfo_65, 1) = ((MR_Box) (ll_backend__frameopt__SetupCode_64));
+                  MR_hl_field(MR_mktag(0), ll_backend__frameopt__SetupBlockInfo_65, 2) = ((MR_Box) (ll_backend__frameopt__SetupFallInto_63));
+                  MR_hl_field(MR_mktag(0), ll_backend__frameopt__SetupBlockInfo_65, 3) = ((MR_Box) (MR_mkword(MR_mktag(0), MR_mkbody((MR_Integer) 0))));
+                  MR_hl_field(MR_mktag(0), ll_backend__frameopt__SetupBlockInfo_65, 4) = ((MR_Box) (ll_backend__frameopt__Var_136));
+                  MR_hl_field(MR_mktag(0), ll_backend__frameopt__SetupBlockInfo_65, 5) = ((MR_Box) (ll_backend__frameopt__Var_137));
+                }
+                {
+                  mercury__map__det_insert_4_p_0(ll_backend__frameopt__TypeCtorInfo_158_158, ll_backend__frameopt__TypeInfo_164_164, ((MR_Box) (ll_backend__frameopt__SetupLabel_58)), ((MR_Box) (ll_backend__frameopt__SetupBlockInfo_65)), (MR_Word) ll_backend__frameopt__STATE_VARIABLE_BlockMap_128_128, &ll_backend__frameopt__conv5_STATE_VARIABLE_BlockMap_12);
+                }
+                *ll_backend__frameopt__STATE_VARIABLE_BlockMap_12 = (MR_Word) ll_backend__frameopt__conv5_STATE_VARIABLE_BlockMap_12;
+              }
+            else
+              {
+                {
+                  MR_Word base;
+                  base = (MR_Word) MR_mkword(MR_mktag(1), MR_new_object(MR_Word, ((MR_Integer) 2 * sizeof(MR_Word)), NULL, NULL));
+                  *ll_backend__frameopt__HeadVar__2_2 = base;
+                  MR_hl_field(MR_mktag(1), base, 0) = ((MR_Box) (ll_backend__frameopt__Label0_25));
+                  MR_hl_field(MR_mktag(1), base, 1) = ((MR_Box) (ll_backend__frameopt__Labels1_36));
+                }
+                *ll_backend__frameopt__STATE_VARIABLE_BlockMap_12 = ll_backend__frameopt__STATE_VARIABLE_BlockMap_71_71;
+                *ll_backend__frameopt__STATE_VARIABLE_C_6 = ll_backend__frameopt__STATE_VARIABLE_C_70_70;
+              }
+          }
+      }
+  }
+}
+
+static MR_Word MR_CALL 
+ll_backend__frameopt__f_85_110_117_115_101_100_65_114_103_115_95_95_102_117_110_99_95_95_112_114_101_118_95_98_108_111_99_107_95_110_101_101_100_115_95_102_114_97_109_101_95_95_91_49_44_32_50_93_95_48_2_f_0(
+  MR_Word ll_backend__frameopt__OrdNeedsFrame_4,
+  MR_Word ll_backend__frameopt__BlockInfo_5)
+{
+  {
+    MR_bool ll_backend__frameopt__succeeded;
+    MR_Word ll_backend__frameopt__PrevNeedsFrame_6;
+    MR_Word ll_backend__frameopt__MaybeFallIntoFrom_7 = ((MR_Word) (MR_hl_field(MR_mktag(0), ll_backend__frameopt__BlockInfo_5, (MR_Integer) 2)));
+    MR_Word ll_backend__frameopt__Var_10 = ((MR_Word) (MR_hl_field(MR_mktag(0), ll_backend__frameopt__BlockInfo_5, (MR_Integer) 0)));
+    MR_Word ll_backend__frameopt__Var_11 = ((MR_Word) (MR_hl_field(MR_mktag(0), ll_backend__frameopt__BlockInfo_5, (MR_Integer) 1)));
+    MR_Word ll_backend__frameopt__Var_12 = ((MR_Word) (MR_hl_field(MR_mktag(0), ll_backend__frameopt__BlockInfo_5, (MR_Integer) 3)));
+    MR_Word ll_backend__frameopt__Var_13 = ((MR_Word) (MR_hl_field(MR_mktag(0), ll_backend__frameopt__BlockInfo_5, (MR_Integer) 4)));
+    MR_Word ll_backend__frameopt__Var_14 = ((MR_Word) (MR_hl_field(MR_mktag(0), ll_backend__frameopt__BlockInfo_5, (MR_Integer) 5)));
+
+    if ((ll_backend__frameopt__MaybeFallIntoFrom_7 == ((MR_Word) MR_mkword(MR_mktag(0), MR_mkbody((MR_Integer) 0)))))
+      ll_backend__frameopt__PrevNeedsFrame_6 = (MR_Integer) 1;
+    else
+      {
+        MR_Word ll_backend__frameopt__FallIntoFrom_8 = ((MR_Word) (MR_hl_field(MR_mktag(1), ll_backend__frameopt__MaybeFallIntoFrom_7, (MR_Integer) 0)));
+        MR_Word ll_backend__frameopt__NeedsFrame_9;
+        MR_Box ll_backend__frameopt__conv0_NeedsFrame_9;
+
+        {
+          ll_backend__frameopt__succeeded = mercury__map__search_3_p_0((MR_Word) &ll_backend__llds__ll_backend__llds__type_ctor_info_label_0, (MR_Word) &ll_backend__frameopt__ll_backend__frameopt__type_ctor_info_block_needs_frame_0, ll_backend__frameopt__OrdNeedsFrame_4, ((MR_Box) (ll_backend__frameopt__FallIntoFrom_8)), &ll_backend__frameopt__conv0_NeedsFrame_9);
+        }
+        if (ll_backend__frameopt__succeeded)
+          {
+            ll_backend__frameopt__NeedsFrame_9 = ((MR_Word) ll_backend__frameopt__conv0_NeedsFrame_9);
+            ll_backend__frameopt__succeeded = MR_TRUE;
+          }
+        if (ll_backend__frameopt__succeeded)
+          ll_backend__frameopt__PrevNeedsFrame_6 = ll_backend__frameopt__NeedsFrame_9;
+        else
+          ll_backend__frameopt__PrevNeedsFrame_6 = (MR_Integer) 1;
+      }
+    return ll_backend__frameopt__PrevNeedsFrame_6;
+  }
+}
+
+static MR_Word MR_CALL 
+ll_backend__frameopt__non_teardown_exit_code_1_f_0(
+  MR_Word ll_backend__frameopt__TypeClassInfo_for_block_entry_exit_3,
+  MR_Box ll_backend__frameopt__HeadVar__1_1)
+{
+  {
+    MR_Word ll_backend__frameopt__HeadVar__2_2;
+    MR_Box MR_CALL (* ll_backend__frameopt__func_0)(MR_Box, MR_Box) = ((MR_Box MR_CALL (*)(MR_Box, MR_Box)) (MR_hl_field(MR_mktag(0), (MR_hl_field(MR_mktag(0), ll_backend__frameopt__TypeClassInfo_for_block_entry_exit_3, (MR_Integer) 0)), (MR_Integer) 8)));
+    MR_Box ll_backend__frameopt__conv1_HeadVar__2_2;
+
+    {
+      ll_backend__frameopt__conv1_HeadVar__2_2 = ll_backend__frameopt__func_0(((MR_Box) ll_backend__frameopt__TypeClassInfo_for_block_entry_exit_3), ll_backend__frameopt__HeadVar__1_1);
+    }
+    ll_backend__frameopt__HeadVar__2_2 = ((MR_Word) ll_backend__frameopt__conv1_HeadVar__2_2);
+    return ll_backend__frameopt__HeadVar__2_2;
+  }
+}
+
+static MR_Word MR_CALL 
+ll_backend__frameopt__late_setup_code_1_f_0(
+  MR_Word ll_backend__frameopt__TypeClassInfo_for_block_entry_exit_3,
+  MR_Box ll_backend__frameopt__HeadVar__1_1)
+{
+  {
+    MR_Word ll_backend__frameopt__HeadVar__2_2;
+    MR_Box MR_CALL (* ll_backend__frameopt__func_0)(MR_Box, MR_Box) = ((MR_Box MR_CALL (*)(MR_Box, MR_Box)) (MR_hl_field(MR_mktag(0), (MR_hl_field(MR_mktag(0), ll_backend__frameopt__TypeClassInfo_for_block_entry_exit_3, (MR_Integer) 0)), (MR_Integer) 7)));
+    MR_Box ll_backend__frameopt__conv1_HeadVar__2_2;
+
+    {
+      ll_backend__frameopt__conv1_HeadVar__2_2 = ll_backend__frameopt__func_0(((MR_Box) ll_backend__frameopt__TypeClassInfo_for_block_entry_exit_3), ll_backend__frameopt__HeadVar__1_1);
+    }
+    ll_backend__frameopt__HeadVar__2_2 = ((MR_Word) ll_backend__frameopt__conv1_HeadVar__2_2);
+    return ll_backend__frameopt__HeadVar__2_2;
+  }
+}
+
+static MR_bool MR_CALL 
+ll_backend__frameopt__search_exit_par_map_3_p_0(
+  MR_Word ll_backend__frameopt__HeadVar__1_1,
+  MR_Word ll_backend__frameopt__Label_5,
+  MR_Word * ll_backend__frameopt__ParallelLabel_6)
+{
+  {
+    MR_bool ll_backend__frameopt__succeeded;
+    MR_Word ll_backend__frameopt__TypeCtorInfo_7_7 = (MR_Word) &ll_backend__llds__ll_backend__llds__type_ctor_info_label_0;
+    MR_Word ll_backend__frameopt__ParMap_4 = (MR_Word) ll_backend__frameopt__HeadVar__1_1;
+    MR_Box ll_backend__frameopt__conv0_ParallelLabel_6;
+
+    {
+      ll_backend__frameopt__succeeded = mercury__map__search_3_p_0(ll_backend__frameopt__TypeCtorInfo_7_7, ll_backend__frameopt__TypeCtorInfo_7_7, ll_backend__frameopt__ParMap_4, ((MR_Box) (ll_backend__frameopt__Label_5)), &ll_backend__frameopt__conv0_ParallelLabel_6);
+    }
+    if (ll_backend__frameopt__succeeded)
+      {
+        *ll_backend__frameopt__ParallelLabel_6 = ((MR_Word) ll_backend__frameopt__conv0_ParallelLabel_6);
+        ll_backend__frameopt__succeeded = MR_TRUE;
+      }
+    return ll_backend__frameopt__succeeded;
+  }
+}
+
+static MR_bool MR_CALL 
+ll_backend__frameopt__search_setup_par_map_3_p_0(
+  MR_Word ll_backend__frameopt__HeadVar__1_1,
+  MR_Word ll_backend__frameopt__Label_5,
+  MR_Word * ll_backend__frameopt__ParallelLabel_6)
+{
+  {
+    MR_bool ll_backend__frameopt__succeeded;
+    MR_Word ll_backend__frameopt__TypeCtorInfo_7_7 = (MR_Word) &ll_backend__llds__ll_backend__llds__type_ctor_info_label_0;
+    MR_Word ll_backend__frameopt__ParMap_4 = (MR_Word) ll_backend__frameopt__HeadVar__1_1;
+    MR_Box ll_backend__frameopt__conv0_ParallelLabel_6;
+
+    {
+      ll_backend__frameopt__succeeded = mercury__map__search_3_p_0(ll_backend__frameopt__TypeCtorInfo_7_7, ll_backend__frameopt__TypeCtorInfo_7_7, ll_backend__frameopt__ParMap_4, ((MR_Box) (ll_backend__frameopt__Label_5)), &ll_backend__frameopt__conv0_ParallelLabel_6);
+    }
+    if (ll_backend__frameopt__succeeded)
+      {
+        *ll_backend__frameopt__ParallelLabel_6 = ((MR_Word) ll_backend__frameopt__conv0_ParallelLabel_6);
+        ll_backend__frameopt__succeeded = MR_TRUE;
+      }
+    return ll_backend__frameopt__succeeded;
+  }
+}
+
+static MR_bool MR_CALL 
+ll_backend__frameopt__transform_nostack_ordinary_block_13_p_0_1(
+  MR_Box ll_backend__frameopt__closure_arg)
+{
+  {
+    MR_bool ll_backend__frameopt__succeeded;
+    MR_Box ll_backend__frameopt__closure = ll_backend__frameopt__closure_arg;
+
+    {
+      ll_backend__frameopt__succeeded = ll_backend__frameopt__no_disagreement_3_p_0(((MR_Word) (MR_hl_field(MR_mktag(0), ll_backend__frameopt__closure, (MR_Integer) 3))), ((MR_Word) (MR_hl_field(MR_mktag(0), ll_backend__frameopt__closure, (MR_Integer) 4))), ((MR_Word) (MR_hl_field(MR_mktag(0), ll_backend__frameopt__closure, (MR_Integer) 5))));
+    }
+    return ll_backend__frameopt__succeeded;
+  }
+}
+
+static void MR_CALL 
+ll_backend__frameopt__transform_nostack_ordinary_block_13_p_0(
+  MR_Word ll_backend__frameopt__TypeClassInfo_for_block_entry_exit_73,
+  MR_Word ll_backend__frameopt__Label0_14,
+  MR_Word ll_backend__frameopt__Labels0_15,
+  MR_Word ll_backend__frameopt__BlockInfo0_16,
+  MR_Word ll_backend__frameopt__OrdNeedsFrame_17,
+  MR_Word ll_backend__frameopt__ProcLabel_18,
+  MR_Word ll_backend__frameopt__STATE_VARIABLE_C_0_42,
+  MR_Word * ll_backend__frameopt__STATE_VARIABLE_C_43,
+  MR_Word ll_backend__frameopt__STATE_VARIABLE_BlockMap_0_44,
+  MR_Word * ll_backend__frameopt__STATE_VARIABLE_BlockMap_45,
+  MR_Word ll_backend__frameopt__STATE_VARIABLE_SetupParMap_0_46,
+  MR_Word * ll_backend__frameopt__STATE_VARIABLE_SetupParMap_47,
+  MR_Word ll_backend__frameopt__STATE_VARIABLE_ExitParMap_0_48,
+  MR_Word * ll_backend__frameopt__STATE_VARIABLE_ExitParMap_49)
+{
+  {
+    MR_bool ll_backend__frameopt__succeeded;
+    MR_Word ll_backend__frameopt__TypeInfo_75_75;
+    MR_Word ll_backend__frameopt__TypeInfo_77_77;
+    MR_Word ll_backend__frameopt__TypeCtorInfo_80_80;
+    MR_Word ll_backend__frameopt__TypeCtorInfo_81_81;
+    MR_Word ll_backend__frameopt__TypeInfo_82_82;
+    MR_Word ll_backend__frameopt__TypeInfo_83_83;
+    MR_Word ll_backend__frameopt__TypeInfo_85_85;
+    MR_Word ll_backend__frameopt__Instrs0_24 = ((MR_Word) (MR_hl_field(MR_mktag(0), ll_backend__frameopt__BlockInfo0_16, (MR_Integer) 1)));
+    MR_Word ll_backend__frameopt__FallInto_25 = ((MR_Word) (MR_hl_field(MR_mktag(0), ll_backend__frameopt__BlockInfo0_16, (MR_Integer) 2)));
+    MR_Word ll_backend__frameopt__SideLabels0_26 = ((MR_Word) (MR_hl_field(MR_mktag(0), ll_backend__frameopt__BlockInfo0_16, (MR_Integer) 3)));
+    MR_Word ll_backend__frameopt__MaybeFallThrough0_27 = ((MR_Word) (MR_hl_field(MR_mktag(0), ll_backend__frameopt__BlockInfo0_16, (MR_Integer) 4)));
+    MR_Word ll_backend__frameopt__Type_28 = ((MR_Word) (MR_hl_field(MR_mktag(0), ll_backend__frameopt__BlockInfo0_16, (MR_Integer) 5)));
+    MR_Word ll_backend__frameopt__SideLabels_29;
+    MR_Word ll_backend__frameopt__SideAssocLabelMap_30;
+    MR_Word ll_backend__frameopt__MaybeFallThrough_33;
+    MR_Word ll_backend__frameopt__AssocLabelMap_34;
+    MR_Word ll_backend__frameopt__RedirectFallThrough_35;
+    MR_Word ll_backend__frameopt__PrevInstrs_36;
+    MR_Word ll_backend__frameopt__LastInstr0_37;
+    MR_Word ll_backend__frameopt__LabelMap_38;
+    MR_Word ll_backend__frameopt__LastInstr_39;
+    MR_Word ll_backend__frameopt__Instrs_40;
+    MR_Word ll_backend__frameopt__BlockInfo_41;
+    MR_Word ll_backend__frameopt__STATE_VARIABLE_C_50_50;
+    MR_Word ll_backend__frameopt__STATE_VARIABLE_SetupParMap_51_51;
+    MR_Word ll_backend__frameopt__STATE_VARIABLE_ExitParMap_52_52;
+    MR_Word ll_backend__frameopt__STATE_VARIABLE_C_53_53;
+    MR_Word ll_backend__frameopt__STATE_VARIABLE_SetupParMap_54_54;
+    MR_Word ll_backend__frameopt__STATE_VARIABLE_ExitParMap_55_55;
+    MR_Word ll_backend__frameopt__Var_67;
+    MR_Word ll_backend__frameopt__STATE_VARIABLE_BlockMap_68_68;
+    MR_Word ll_backend__frameopt__Var_23 = ((MR_Word) (MR_hl_field(MR_mktag(0), ll_backend__frameopt__BlockInfo0_16, (MR_Integer) 0)));
+    MR_Box ll_backend__frameopt__conv0_LastInstr0_37;
+    MR_Word ll_backend__frameopt__conv1_STATE_VARIABLE_BlockMap_68_68;
+
+    {
+      mercury__private_builtin__type_info_from_typeclass_info_3_p_0(ll_backend__frameopt__TypeClassInfo_for_block_entry_exit_73, (MR_Integer) 1, &ll_backend__frameopt__TypeInfo_75_75);
+    }
+    {
+      mercury__private_builtin__type_info_from_typeclass_info_3_p_0(ll_backend__frameopt__TypeClassInfo_for_block_entry_exit_73, (MR_Integer) 2, &ll_backend__frameopt__TypeInfo_77_77);
+    }
+    {
+      ll_backend__frameopt__mark_parallels_for_nostack_successors_12_p_0(ll_backend__frameopt__TypeInfo_75_75, ll_backend__frameopt__TypeInfo_77_77, ll_backend__frameopt__SideLabels0_26, &ll_backend__frameopt__SideLabels_29, &ll_backend__frameopt__SideAssocLabelMap_30, ll_backend__frameopt__OrdNeedsFrame_17, ll_backend__frameopt__STATE_VARIABLE_BlockMap_0_44, ll_backend__frameopt__ProcLabel_18, ll_backend__frameopt__STATE_VARIABLE_C_0_42, &ll_backend__frameopt__STATE_VARIABLE_C_50_50, ll_backend__frameopt__STATE_VARIABLE_SetupParMap_0_46, &ll_backend__frameopt__STATE_VARIABLE_SetupParMap_51_51, ll_backend__frameopt__STATE_VARIABLE_ExitParMap_0_48, &ll_backend__frameopt__STATE_VARIABLE_ExitParMap_52_52);
+    }
+    if ((ll_backend__frameopt__MaybeFallThrough0_27 == ((MR_Word) MR_mkword(MR_mktag(0), MR_mkbody((MR_Integer) 0)))))
+      {
+        ll_backend__frameopt__MaybeFallThrough_33 = (MR_Word) MR_mkword(MR_mktag(0), MR_mkbody((MR_Integer) 0));
+        ll_backend__frameopt__AssocLabelMap_34 = ll_backend__frameopt__SideAssocLabelMap_30;
+        ll_backend__frameopt__RedirectFallThrough_35 = (MR_Word) MR_mkword(MR_mktag(0), MR_mkbody((MR_Integer) 0));
+        ll_backend__frameopt__STATE_VARIABLE_C_53_53 = ll_backend__frameopt__STATE_VARIABLE_C_50_50;
+        ll_backend__frameopt__STATE_VARIABLE_SetupParMap_54_54 = ll_backend__frameopt__STATE_VARIABLE_SetupParMap_51_51;
+        ll_backend__frameopt__STATE_VARIABLE_ExitParMap_55_55 = ll_backend__frameopt__STATE_VARIABLE_ExitParMap_52_52;
+      }
+    else
+      {
+        MR_Word ll_backend__frameopt__TypeInfo_78_78;
+        MR_Word ll_backend__frameopt__TypeInfo_79_79;
+        MR_Word ll_backend__frameopt__FallThroughLabel0_31 = ((MR_Word) (MR_hl_field(MR_mktag(1), ll_backend__frameopt__MaybeFallThrough0_27, (MR_Integer) 0)));
+        MR_Word ll_backend__frameopt__FallThroughLabel_32;
+        MR_Word ll_backend__frameopt__Var_56;
+        MR_Word ll_backend__frameopt__Var_60;
+
+        {
+          mercury__private_builtin__type_info_from_typeclass_info_3_p_0(ll_backend__frameopt__TypeClassInfo_for_block_entry_exit_73, (MR_Integer) 1, &ll_backend__frameopt__TypeInfo_78_78);
+        }
+        {
+          mercury__private_builtin__type_info_from_typeclass_info_3_p_0(ll_backend__frameopt__TypeClassInfo_for_block_entry_exit_73, (MR_Integer) 2, &ll_backend__frameopt__TypeInfo_79_79);
+        }
+        {
+          ll_backend__frameopt__mark_parallel_for_nostack_successor_11_p_0(ll_backend__frameopt__TypeInfo_78_78, ll_backend__frameopt__TypeInfo_79_79, ll_backend__frameopt__FallThroughLabel0_31, &ll_backend__frameopt__FallThroughLabel_32, ll_backend__frameopt__OrdNeedsFrame_17, ll_backend__frameopt__STATE_VARIABLE_BlockMap_0_44, ll_backend__frameopt__ProcLabel_18, ll_backend__frameopt__STATE_VARIABLE_C_50_50, &ll_backend__frameopt__STATE_VARIABLE_C_53_53, ll_backend__frameopt__STATE_VARIABLE_SetupParMap_51_51, &ll_backend__frameopt__STATE_VARIABLE_SetupParMap_54_54, ll_backend__frameopt__STATE_VARIABLE_ExitParMap_52_52, &ll_backend__frameopt__STATE_VARIABLE_ExitParMap_55_55);
+        }
+        {
+          ll_backend__frameopt__MaybeFallThrough_33 = (MR_Word) MR_mkword(MR_mktag(1), MR_new_object(MR_Word, ((MR_Integer) 1 * sizeof(MR_Word)), NULL, NULL));
+          MR_hl_field(MR_mktag(1), ll_backend__frameopt__MaybeFallThrough_33, 0) = ((MR_Box) (ll_backend__frameopt__FallThroughLabel_32));
+        }
+        {
+          ll_backend__frameopt__Var_56 = (MR_Word) MR_new_object(MR_Word, ((MR_Integer) 6 * sizeof(MR_Word)), NULL, NULL);
+          MR_hl_field(MR_mktag(0), ll_backend__frameopt__Var_56, 0) = ((MR_Box) (&ll_backend__frameopt_scalar_common_9[0]));
+          MR_hl_field(MR_mktag(0), ll_backend__frameopt__Var_56, 1) = ((MR_Box) (ll_backend__frameopt__transform_nostack_ordinary_block_13_p_0_1));
+          MR_hl_field(MR_mktag(0), ll_backend__frameopt__Var_56, 2) = ((MR_Box) (MR_Word) ((MR_Integer) 3));
+          MR_hl_field(MR_mktag(0), ll_backend__frameopt__Var_56, 3) = ((MR_Box) (ll_backend__frameopt__SideAssocLabelMap_30));
+          MR_hl_field(MR_mktag(0), ll_backend__frameopt__Var_56, 4) = ((MR_Box) (ll_backend__frameopt__FallThroughLabel0_31));
+          MR_hl_field(MR_mktag(0), ll_backend__frameopt__Var_56, 5) = ((MR_Box) (ll_backend__frameopt__FallThroughLabel_32));
+        }
+        {
+          mercury__require__expect_4_p_0(ll_backend__frameopt__Var_56, (MR_String) "ll_backend.frameopt", (MR_String) "predicate \140ll_backend.frameopt.transform_nostack_ordinary_block\'/13", (MR_String) "disagreement");
+        }
+        {
+          ll_backend__frameopt__Var_60 = (MR_Word) MR_new_object(MR_Word, ((MR_Integer) 2 * sizeof(MR_Word)), NULL, NULL);
+          MR_hl_field(MR_mktag(0), ll_backend__frameopt__Var_60, 0) = ((MR_Box) (ll_backend__frameopt__FallThroughLabel0_31));
+          MR_hl_field(MR_mktag(0), ll_backend__frameopt__Var_60, 1) = ((MR_Box) (ll_backend__frameopt__FallThroughLabel_32));
+        }
+        {
+          ll_backend__frameopt__AssocLabelMap_34 = (MR_Word) MR_mkword(MR_mktag(1), MR_new_object(MR_Word, ((MR_Integer) 2 * sizeof(MR_Word)), NULL, NULL));
+          MR_hl_field(MR_mktag(1), ll_backend__frameopt__AssocLabelMap_34, 0) = ((MR_Box) (ll_backend__frameopt__Var_60));
+          MR_hl_field(MR_mktag(1), ll_backend__frameopt__AssocLabelMap_34, 1) = ((MR_Box) (ll_backend__frameopt__SideAssocLabelMap_30));
+        }
+        {
+          ll_backend__frameopt__succeeded = ll_backend__llds____Unify____label_0_0(ll_backend__frameopt__FallThroughLabel_32, ll_backend__frameopt__FallThroughLabel0_31);
+        }
+        if (ll_backend__frameopt__succeeded)
+          ll_backend__frameopt__RedirectFallThrough_35 = (MR_Word) MR_mkword(MR_mktag(0), MR_mkbody((MR_Integer) 0));
+        else
+          {
+            MR_Word ll_backend__frameopt__Var_61;
+            MR_Word ll_backend__frameopt__Var_62;
+            MR_Word ll_backend__frameopt__Var_63;
+
+            {
+              ll_backend__frameopt__Var_63 = (MR_Word) MR_mkword(MR_mktag(1), MR_new_object(MR_Word, ((MR_Integer) 1 * sizeof(MR_Word)), NULL, NULL));
+              MR_hl_field(MR_mktag(1), ll_backend__frameopt__Var_63, 0) = ((MR_Box) (ll_backend__frameopt__FallThroughLabel_32));
+            }
+            {
+              ll_backend__frameopt__Var_62 = (MR_Word) MR_mkword(MR_mktag(3), MR_new_object(MR_Word, ((MR_Integer) 2 * sizeof(MR_Word)), NULL, NULL));
+              MR_hl_field(MR_mktag(3), ll_backend__frameopt__Var_62, 0) = ((MR_Box) (MR_Word) ((MR_Integer) 6));
+              MR_hl_field(MR_mktag(3), ll_backend__frameopt__Var_62, 1) = ((MR_Box) (ll_backend__frameopt__Var_63));
+            }
+            {
+              ll_backend__frameopt__Var_61 = (MR_Word) MR_new_object(MR_Word, ((MR_Integer) 2 * sizeof(MR_Word)), NULL, NULL);
+              MR_hl_field(MR_mktag(0), ll_backend__frameopt__Var_61, 0) = ((MR_Box) (ll_backend__frameopt__Var_62));
+              MR_hl_field(MR_mktag(0), ll_backend__frameopt__Var_61, 1) = ((MR_Box) ((MR_String) "redirect fallthrough"));
+            }
+            {
+              ll_backend__frameopt__RedirectFallThrough_35 = (MR_Word) MR_mkword(MR_mktag(1), MR_new_object(MR_Word, ((MR_Integer) 2 * sizeof(MR_Word)), NULL, NULL));
+              MR_hl_field(MR_mktag(1), ll_backend__frameopt__RedirectFallThrough_35, 0) = ((MR_Box) (ll_backend__frameopt__Var_61));
+              MR_hl_field(MR_mktag(1), ll_backend__frameopt__RedirectFallThrough_35, 1) = ((MR_Box) (MR_mkword(MR_mktag(0), MR_mkbody((MR_Integer) 0))));
+            }
+          }
+      }
+    ll_backend__frameopt__TypeCtorInfo_80_80 = (MR_Word) &ll_backend__llds__ll_backend__llds__type_ctor_info_instruction_0;
+    {
+      mercury__list__det_split_last_3_p_0(ll_backend__frameopt__TypeCtorInfo_80_80, ll_backend__frameopt__Instrs0_24, &ll_backend__frameopt__PrevInstrs_36, &ll_backend__frameopt__conv0_LastInstr0_37);
+    }
+    ll_backend__frameopt__LastInstr0_37 = ((MR_Word) ll_backend__frameopt__conv0_LastInstr0_37);
+    ll_backend__frameopt__TypeCtorInfo_81_81 = (MR_Word) &ll_backend__llds__ll_backend__llds__type_ctor_info_label_0;
+    {
+      mercury__map__from_assoc_list_2_p_0(ll_backend__frameopt__TypeCtorInfo_81_81, ll_backend__frameopt__TypeCtorInfo_81_81, ll_backend__frameopt__AssocLabelMap_34, &ll_backend__frameopt__LabelMap_38);
+    }
+    {
+      ll_backend__opt_util__replace_labels_instruction_4_p_0(ll_backend__frameopt__LastInstr0_37, &ll_backend__frameopt__LastInstr_39, ll_backend__frameopt__LabelMap_38, (MR_Integer) 0);
+    }
+    {
+      ll_backend__frameopt__Var_67 = (MR_Word) MR_mkword(MR_mktag(1), MR_new_object(MR_Word, ((MR_Integer) 2 * sizeof(MR_Word)), NULL, NULL));
+      MR_hl_field(MR_mktag(1), ll_backend__frameopt__Var_67, 0) = ((MR_Box) (ll_backend__frameopt__LastInstr_39));
+      MR_hl_field(MR_mktag(1), ll_backend__frameopt__Var_67, 1) = ((MR_Box) (ll_backend__frameopt__RedirectFallThrough_35));
+    }
+    {
+      ll_backend__frameopt__Instrs_40 = mercury__list__f_43_43_2_f_0(ll_backend__frameopt__TypeCtorInfo_80_80, ll_backend__frameopt__PrevInstrs_36, ll_backend__frameopt__Var_67);
+    }
+    {
+      ll_backend__frameopt__BlockInfo_41 = (MR_Word) MR_new_object(MR_Word, ((MR_Integer) 6 * sizeof(MR_Word)), NULL, NULL);
+      MR_hl_field(MR_mktag(0), ll_backend__frameopt__BlockInfo_41, 0) = ((MR_Box) (ll_backend__frameopt__Label0_14));
+      MR_hl_field(MR_mktag(0), ll_backend__frameopt__BlockInfo_41, 1) = ((MR_Box) (ll_backend__frameopt__Instrs_40));
+      MR_hl_field(MR_mktag(0), ll_backend__frameopt__BlockInfo_41, 2) = ((MR_Box) (ll_backend__frameopt__FallInto_25));
+      MR_hl_field(MR_mktag(0), ll_backend__frameopt__BlockInfo_41, 3) = ((MR_Box) (ll_backend__frameopt__SideLabels_29));
+      MR_hl_field(MR_mktag(0), ll_backend__frameopt__BlockInfo_41, 4) = ((MR_Box) (ll_backend__frameopt__MaybeFallThrough_33));
+      MR_hl_field(MR_mktag(0), ll_backend__frameopt__BlockInfo_41, 5) = ((MR_Box) (ll_backend__frameopt__Type_28));
+    }
+    {
+      mercury__private_builtin__type_info_from_typeclass_info_3_p_0(ll_backend__frameopt__TypeClassInfo_for_block_entry_exit_73, (MR_Integer) 1, &ll_backend__frameopt__TypeInfo_82_82);
+    }
+    {
+      mercury__private_builtin__type_info_from_typeclass_info_3_p_0(ll_backend__frameopt__TypeClassInfo_for_block_entry_exit_73, (MR_Integer) 2, &ll_backend__frameopt__TypeInfo_83_83);
+    }
+    {
+      ll_backend__frameopt__TypeInfo_85_85 = (MR_Word) MR_new_object(MR_Word, ((MR_Integer) 3 * sizeof(MR_Word)), NULL, NULL);
+      MR_hl_field(MR_mktag(0), ll_backend__frameopt__TypeInfo_85_85, 0) = ((MR_Box) (&ll_backend__frameopt__ll_backend__frameopt__type_ctor_info_frame_block_info_2));
+      MR_hl_field(MR_mktag(0), ll_backend__frameopt__TypeInfo_85_85, 1) = ((MR_Box) (ll_backend__frameopt__TypeInfo_82_82));
+      MR_hl_field(MR_mktag(0), ll_backend__frameopt__TypeInfo_85_85, 2) = ((MR_Box) (ll_backend__frameopt__TypeInfo_83_83));
+    }
+    {
+      mercury__map__set_4_p_0(ll_backend__frameopt__TypeCtorInfo_81_81, ll_backend__frameopt__TypeInfo_85_85, ((MR_Box) (ll_backend__frameopt__Label0_14)), ((MR_Box) (ll_backend__frameopt__BlockInfo_41)), (MR_Word) ll_backend__frameopt__STATE_VARIABLE_BlockMap_0_44, &ll_backend__frameopt__conv1_STATE_VARIABLE_BlockMap_68_68);
+    }
+    ll_backend__frameopt__STATE_VARIABLE_BlockMap_68_68 = (MR_Word) ll_backend__frameopt__conv1_STATE_VARIABLE_BlockMap_68_68;
+    {
+      ll_backend__frameopt__process_frame_delay_11_p_0(ll_backend__frameopt__TypeClassInfo_for_block_entry_exit_73, ll_backend__frameopt__Labels0_15, ll_backend__frameopt__OrdNeedsFrame_17, ll_backend__frameopt__ProcLabel_18, ll_backend__frameopt__STATE_VARIABLE_C_53_53, ll_backend__frameopt__STATE_VARIABLE_C_43, ll_backend__frameopt__STATE_VARIABLE_BlockMap_68_68, ll_backend__frameopt__STATE_VARIABLE_BlockMap_45, ll_backend__frameopt__STATE_VARIABLE_SetupParMap_54_54, ll_backend__frameopt__STATE_VARIABLE_SetupParMap_47, ll_backend__frameopt__STATE_VARIABLE_ExitParMap_55_55, ll_backend__frameopt__STATE_VARIABLE_ExitParMap_49);
+    }
+  }
+}
+
+static MR_bool MR_CALL 
+ll_backend__frameopt__process_frame_delay_11_p_0_1(
+  MR_Box ll_backend__frameopt__closure_arg)
+{
+  {
+    MR_bool ll_backend__frameopt__succeeded;
+    MR_Box ll_backend__frameopt__closure = ll_backend__frameopt__closure_arg;
+
+    {
+      ll_backend__frameopt__succeeded = ll_backend__frameopt__IntroducedFrom__pred__process_frame_delay__1858__1_2_p_0(((MR_Word) (MR_hl_field(MR_mktag(0), ll_backend__frameopt__closure, (MR_Integer) 3))), ((MR_Word) (MR_hl_field(MR_mktag(0), ll_backend__frameopt__closure, (MR_Integer) 4))));
+    }
+    return ll_backend__frameopt__succeeded;
+  }
+}
+
+static void MR_CALL 
+ll_backend__frameopt__process_frame_delay_11_p_0(
+  MR_Word ll_backend__frameopt__TypeClassInfo_for_block_entry_exit_90,
+  MR_Word ll_backend__frameopt__HeadVar__1_1,
+  MR_Word ll_backend__frameopt__OrdNeedsFrame_2,
+  MR_Word ll_backend__frameopt__ProcLabel_3,
+  MR_Word ll_backend__frameopt__STATE_VARIABLE_C_0_4,
+  MR_Word * ll_backend__frameopt__STATE_VARIABLE_C_5,
+  MR_Word ll_backend__frameopt__STATE_VARIABLE_BlockMap_0_6,
+  MR_Word * ll_backend__frameopt__STATE_VARIABLE_BlockMap_7,
+  MR_Word ll_backend__frameopt__STATE_VARIABLE_SetupParMap_0_8,
+  MR_Word * ll_backend__frameopt__STATE_VARIABLE_SetupParMap_9,
+  MR_Word ll_backend__frameopt__STATE_VARIABLE_ExitParMap_0_10,
+  MR_Word * ll_backend__frameopt__STATE_VARIABLE_ExitParMap_11)
+{
+  while (MR_TRUE)
+    {
+      /* tailcall optimized into a loop */
+      {
+        MR_bool ll_backend__frameopt__succeeded;
+
+        if ((ll_backend__frameopt__HeadVar__1_1 == ((MR_Word) MR_mkword(MR_mktag(0), MR_mkbody((MR_Integer) 0)))))
+          {
+            *ll_backend__frameopt__STATE_VARIABLE_ExitParMap_11 = ll_backend__frameopt__STATE_VARIABLE_ExitParMap_0_10;
+            *ll_backend__frameopt__STATE_VARIABLE_SetupParMap_9 = ll_backend__frameopt__STATE_VARIABLE_SetupParMap_0_8;
+            *ll_backend__frameopt__STATE_VARIABLE_BlockMap_7 = ll_backend__frameopt__STATE_VARIABLE_BlockMap_0_6;
+            *ll_backend__frameopt__STATE_VARIABLE_C_5 = ll_backend__frameopt__STATE_VARIABLE_C_0_4;
+          }
+        else
+          {
+            MR_Word ll_backend__frameopt__TypeCtorInfo_91_91 = (MR_Word) &ll_backend__llds__ll_backend__llds__type_ctor_info_label_0;
+            MR_Word ll_backend__frameopt__TypeInfo_93_93;
+            MR_Word ll_backend__frameopt__TypeInfo_95_95;
+            MR_Word ll_backend__frameopt__TypeInfo_97_97;
+            MR_Word ll_backend__frameopt__Label0_26 = ((MR_Word) (MR_hl_field(MR_mktag(1), ll_backend__frameopt__HeadVar__1_1, (MR_Integer) 0)));
+            MR_Word ll_backend__frameopt__Labels0_27 = ((MR_Word) (MR_hl_field(MR_mktag(1), ll_backend__frameopt__HeadVar__1_1, (MR_Integer) 1)));
+            MR_Word ll_backend__frameopt__BlockInfo0_34;
+            MR_Word ll_backend__frameopt__Label0Copy_35;
+            MR_Word ll_backend__frameopt__Instrs0_36;
+            MR_Word ll_backend__frameopt__FallInto_37;
+            MR_Word ll_backend__frameopt__SideLabels0_38;
+            MR_Word ll_backend__frameopt__MaybeFallThrough0_39;
+            MR_Word ll_backend__frameopt__Type_40;
+            MR_Word ll_backend__frameopt__Var_60;
+            MR_Box ll_backend__frameopt__conv0_BlockInfo0_34;
+
+            {
+              mercury__private_builtin__type_info_from_typeclass_info_3_p_0(ll_backend__frameopt__TypeClassInfo_for_block_entry_exit_90, (MR_Integer) 1, &ll_backend__frameopt__TypeInfo_93_93);
+            }
+            {
+              mercury__private_builtin__type_info_from_typeclass_info_3_p_0(ll_backend__frameopt__TypeClassInfo_for_block_entry_exit_90, (MR_Integer) 2, &ll_backend__frameopt__TypeInfo_95_95);
+            }
+            {
+              ll_backend__frameopt__TypeInfo_97_97 = (MR_Word) MR_new_object(MR_Word, ((MR_Integer) 3 * sizeof(MR_Word)), NULL, NULL);
+              MR_hl_field(MR_mktag(0), ll_backend__frameopt__TypeInfo_97_97, 0) = ((MR_Box) (&ll_backend__frameopt__ll_backend__frameopt__type_ctor_info_frame_block_info_2));
+              MR_hl_field(MR_mktag(0), ll_backend__frameopt__TypeInfo_97_97, 1) = ((MR_Box) (ll_backend__frameopt__TypeInfo_93_93));
+              MR_hl_field(MR_mktag(0), ll_backend__frameopt__TypeInfo_97_97, 2) = ((MR_Box) (ll_backend__frameopt__TypeInfo_95_95));
+            }
+            {
+              mercury__map__lookup_3_p_0(ll_backend__frameopt__TypeCtorInfo_91_91, ll_backend__frameopt__TypeInfo_97_97, (MR_Word) ll_backend__frameopt__STATE_VARIABLE_BlockMap_0_6, ((MR_Box) (ll_backend__frameopt__Label0_26)), &ll_backend__frameopt__conv0_BlockInfo0_34);
+            }
+            ll_backend__frameopt__BlockInfo0_34 = ((MR_Word) ll_backend__frameopt__conv0_BlockInfo0_34);
+            ll_backend__frameopt__Label0Copy_35 = ((MR_Word) (MR_hl_field(MR_mktag(0), ll_backend__frameopt__BlockInfo0_34, (MR_Integer) 0)));
+            ll_backend__frameopt__Instrs0_36 = ((MR_Word) (MR_hl_field(MR_mktag(0), ll_backend__frameopt__BlockInfo0_34, (MR_Integer) 1)));
+            ll_backend__frameopt__FallInto_37 = ((MR_Word) (MR_hl_field(MR_mktag(0), ll_backend__frameopt__BlockInfo0_34, (MR_Integer) 2)));
+            ll_backend__frameopt__SideLabels0_38 = ((MR_Word) (MR_hl_field(MR_mktag(0), ll_backend__frameopt__BlockInfo0_34, (MR_Integer) 3)));
+            ll_backend__frameopt__MaybeFallThrough0_39 = ((MR_Word) (MR_hl_field(MR_mktag(0), ll_backend__frameopt__BlockInfo0_34, (MR_Integer) 4)));
+            ll_backend__frameopt__Type_40 = ((MR_Word) (MR_hl_field(MR_mktag(0), ll_backend__frameopt__BlockInfo0_34, (MR_Integer) 5)));
+            {
+              ll_backend__frameopt__Var_60 = (MR_Word) MR_new_object(MR_Word, ((MR_Integer) 5 * sizeof(MR_Word)), NULL, NULL);
+              MR_hl_field(MR_mktag(0), ll_backend__frameopt__Var_60, 0) = ((MR_Box) (&ll_backend__frameopt_scalar_common_4[3]));
+              MR_hl_field(MR_mktag(0), ll_backend__frameopt__Var_60, 1) = ((MR_Box) (ll_backend__frameopt__process_frame_delay_11_p_0_1));
+              MR_hl_field(MR_mktag(0), ll_backend__frameopt__Var_60, 2) = ((MR_Box) (MR_Word) ((MR_Integer) 2));
+              MR_hl_field(MR_mktag(0), ll_backend__frameopt__Var_60, 3) = ((MR_Box) (ll_backend__frameopt__Label0_26));
+              MR_hl_field(MR_mktag(0), ll_backend__frameopt__Var_60, 4) = ((MR_Box) (ll_backend__frameopt__Label0Copy_35));
+            }
+            {
+              mercury__require__expect_4_p_0(ll_backend__frameopt__Var_60, (MR_String) "ll_backend.frameopt", (MR_String) "predicate \140ll_backend.frameopt.process_frame_delay\'/11", (MR_String) "label in frame_block_info is not copy");
+            }
+            switch (MR_tag((MR_Word) ll_backend__frameopt__Type_40)) {
+              default: /*NOTREACHED*/ MR_assert(0);
+              case (MR_Integer) 0:
+                {
+                  MR_Word ll_backend__frameopt__LabelInstr_46;
+                  MR_Word ll_backend__frameopt__BlockInfo_47;
+                  MR_Word ll_backend__frameopt__Var_80;
+                  MR_Word ll_backend__frameopt__STATE_VARIABLE_BlockMap_85_85;
+                  MR_Word ll_backend__frameopt__LabelInstrPrime_42;
+                  MR_Word ll_backend__frameopt__Var_76;
+                  MR_Word ll_backend__frameopt__Var_43;
+                  MR_String ll_backend__frameopt__Var_45;
+                  MR_Word ll_backend__frameopt__Var_44;
+                  MR_Word ll_backend__frameopt__conv1_STATE_VARIABLE_BlockMap_85_85;
+
+                  ll_backend__frameopt__succeeded = ((MR_tag((MR_Word) ll_backend__frameopt__Instrs0_36)) == (MR_mktag((MR_Integer) 1)));
+                  if (ll_backend__frameopt__succeeded)
+                    {
+                      ll_backend__frameopt__LabelInstrPrime_42 = ((MR_Word) (MR_hl_field(MR_mktag(1), ll_backend__frameopt__Instrs0_36, (MR_Integer) 0)));
+                      ll_backend__frameopt__Var_43 = ((MR_Word) (MR_hl_field(MR_mktag(1), ll_backend__frameopt__Instrs0_36, (MR_Integer) 1)));
+                      ll_backend__frameopt__Var_76 = ((MR_Word) (MR_hl_field(MR_mktag(0), ll_backend__frameopt__LabelInstrPrime_42, (MR_Integer) 0)));
+                      ll_backend__frameopt__Var_45 = ((MR_String) (MR_hl_field(MR_mktag(0), ll_backend__frameopt__LabelInstrPrime_42, (MR_Integer) 1)));
+                      ll_backend__frameopt__succeeded = ((((MR_tag((MR_Word) ll_backend__frameopt__Var_76)) == (MR_mktag((MR_Integer) 3)))) && (((((MR_Integer) (MR_Word) (MR_hl_field(MR_mktag(3), ll_backend__frameopt__Var_76, (MR_Integer) 0)))) == (MR_Integer) 5)));
+                      if (ll_backend__frameopt__succeeded)
+                        ll_backend__frameopt__Var_44 = ((MR_Word) (MR_hl_field(MR_mktag(3), ll_backend__frameopt__Var_76, (MR_Integer) 1)));
+                    }
+                  if (ll_backend__frameopt__succeeded)
+                    ll_backend__frameopt__LabelInstr_46 = ll_backend__frameopt__LabelInstrPrime_42;
+                  else
+                    {
+                      {
+                        mercury__require__unexpected_3_p_0((MR_String) "ll_backend.frameopt", (MR_String) "predicate \140ll_backend.frameopt.process_frame_delay\'/11", (MR_String) "setup block does not begin with label");
+                        return;
+                      }
+                    }
+                  {
+                    ll_backend__frameopt__Var_80 = (MR_Word) MR_mkword(MR_mktag(1), MR_new_object(MR_Word, ((MR_Integer) 2 * sizeof(MR_Word)), NULL, NULL));
+                    MR_hl_field(MR_mktag(1), ll_backend__frameopt__Var_80, 0) = ((MR_Box) (ll_backend__frameopt__LabelInstr_46));
+                    MR_hl_field(MR_mktag(1), ll_backend__frameopt__Var_80, 1) = ((MR_Box) (MR_mkword(MR_mktag(0), MR_mkbody((MR_Integer) 0))));
+                  }
+                  {
+                    ll_backend__frameopt__BlockInfo_47 = (MR_Word) MR_new_object(MR_Word, ((MR_Integer) 6 * sizeof(MR_Word)), NULL, NULL);
+                    MR_hl_field(MR_mktag(0), ll_backend__frameopt__BlockInfo_47, 0) = ((MR_Box) (ll_backend__frameopt__Label0_26));
+                    MR_hl_field(MR_mktag(0), ll_backend__frameopt__BlockInfo_47, 1) = ((MR_Box) (ll_backend__frameopt__Var_80));
+                    MR_hl_field(MR_mktag(0), ll_backend__frameopt__BlockInfo_47, 2) = ((MR_Box) (ll_backend__frameopt__FallInto_37));
+                    MR_hl_field(MR_mktag(0), ll_backend__frameopt__BlockInfo_47, 3) = ((MR_Box) (ll_backend__frameopt__SideLabels0_38));
+                    MR_hl_field(MR_mktag(0), ll_backend__frameopt__BlockInfo_47, 4) = ((MR_Box) (ll_backend__frameopt__MaybeFallThrough0_39));
+                    MR_hl_field(MR_mktag(0), ll_backend__frameopt__BlockInfo_47, 5) = ((MR_Box) (MR_mkword(MR_mktag(1), &ll_backend__frameopt_scalar_common_2[13])));
+                  }
+                  {
+                    mercury__map__det_update_4_p_0(ll_backend__frameopt__TypeCtorInfo_91_91, ll_backend__frameopt__TypeInfo_97_97, ((MR_Box) (ll_backend__frameopt__Label0_26)), ((MR_Box) (ll_backend__frameopt__BlockInfo_47)), (MR_Word) ll_backend__frameopt__STATE_VARIABLE_BlockMap_0_6, &ll_backend__frameopt__conv1_STATE_VARIABLE_BlockMap_85_85);
+                  }
+                  ll_backend__frameopt__STATE_VARIABLE_BlockMap_85_85 = (MR_Word) ll_backend__frameopt__conv1_STATE_VARIABLE_BlockMap_85_85;
+                  /* direct tailcall eliminated */
+                  {
+                    MR_Word ll_backend__frameopt__next_value_of_HeadVar__1_1 = ll_backend__frameopt__Labels0_27;
+                    MR_Word ll_backend__frameopt__next_value_of_STATE_VARIABLE_BlockMap_0_6 = ll_backend__frameopt__STATE_VARIABLE_BlockMap_85_85;
+
+                    ll_backend__frameopt__STATE_VARIABLE_BlockMap_0_6 = ll_backend__frameopt__next_value_of_STATE_VARIABLE_BlockMap_0_6;
+                    ll_backend__frameopt__HeadVar__1_1 = ll_backend__frameopt__next_value_of_HeadVar__1_1;
+                  }
+                  continue;
+                }
+                break;
+              case (MR_Integer) 1:
+                {
+                  MR_Word ll_backend__frameopt__NeedsFrame_50;
+                  MR_Box ll_backend__frameopt__conv2_NeedsFrame_50;
+
+                  {
+                    mercury__map__lookup_3_p_0(ll_backend__frameopt__TypeCtorInfo_91_91, (MR_Word) &ll_backend__frameopt__ll_backend__frameopt__type_ctor_info_block_needs_frame_0, ll_backend__frameopt__OrdNeedsFrame_2, ((MR_Box) (ll_backend__frameopt__Label0_26)), &ll_backend__frameopt__conv2_NeedsFrame_50);
+                  }
+                  ll_backend__frameopt__NeedsFrame_50 = ((MR_Word) ll_backend__frameopt__conv2_NeedsFrame_50);
+                  switch (ll_backend__frameopt__NeedsFrame_50) {
+                    default: /*NOTREACHED*/ MR_assert(0);
+                    case (MR_Integer) 1:
+                      {
+                        ll_backend__frameopt__transform_nostack_ordinary_block_13_p_0(ll_backend__frameopt__TypeClassInfo_for_block_entry_exit_90, ll_backend__frameopt__Label0_26, ll_backend__frameopt__Labels0_27, ll_backend__frameopt__BlockInfo0_34, ll_backend__frameopt__OrdNeedsFrame_2, ll_backend__frameopt__ProcLabel_3, ll_backend__frameopt__STATE_VARIABLE_C_0_4, ll_backend__frameopt__STATE_VARIABLE_C_5, ll_backend__frameopt__STATE_VARIABLE_BlockMap_0_6, ll_backend__frameopt__STATE_VARIABLE_BlockMap_7, ll_backend__frameopt__STATE_VARIABLE_SetupParMap_0_8, ll_backend__frameopt__STATE_VARIABLE_SetupParMap_9, ll_backend__frameopt__STATE_VARIABLE_ExitParMap_0_10, ll_backend__frameopt__STATE_VARIABLE_ExitParMap_11);
+                      }
+                      break;
+                    case (MR_Integer) 0:
+                      {
+                        /* direct tailcall eliminated */
+                        {
+                          MR_Word ll_backend__frameopt__next_value_of_HeadVar__1_1 = ll_backend__frameopt__Labels0_27;
+
+                          ll_backend__frameopt__HeadVar__1_1 = ll_backend__frameopt__next_value_of_HeadVar__1_1;
+                        }
+                        continue;
+                      }
+                      break;
+                  }
+                }
+                break;
+              case (MR_Integer) 2:
+                {
+                  /* direct tailcall eliminated */
+                  {
+                    MR_Word ll_backend__frameopt__next_value_of_HeadVar__1_1 = ll_backend__frameopt__Labels0_27;
+
+                    ll_backend__frameopt__HeadVar__1_1 = ll_backend__frameopt__next_value_of_HeadVar__1_1;
+                  }
+                  continue;
+                }
+                break;
+            }
+          }
+      }
+      break;
+    }
+}
+
+static void MR_CALL 
+ll_backend__frameopt__mark_parallels_for_nostack_successors_12_p_0(
+  MR_Word ll_backend__frameopt__TypeInfo_for_En_49,
+  MR_Word ll_backend__frameopt__TypeInfo_for_Ex_50,
+  MR_Word ll_backend__frameopt__HeadVar__1_1,
+  MR_Word * ll_backend__frameopt__HeadVar__2_2,
+  MR_Word * ll_backend__frameopt__HeadVar__3_3,
+  MR_Word ll_backend__frameopt__OrdNeedsFrame_4,
+  MR_Word ll_backend__frameopt__BlockMap_5,
+  MR_Word ll_backend__frameopt__ProcLabel_6,
+  MR_Word ll_backend__frameopt__STATE_VARIABLE_C_0_7,
+  MR_Word * ll_backend__frameopt__STATE_VARIABLE_C_8,
+  MR_Word ll_backend__frameopt__STATE_VARIABLE_SetupParMap_0_9,
+  MR_Word * ll_backend__frameopt__STATE_VARIABLE_SetupParMap_10,
+  MR_Word ll_backend__frameopt__STATE_VARIABLE_ExitParMap_0_11,
+  MR_Word * ll_backend__frameopt__STATE_VARIABLE_ExitParMap_12)
+{
+  if ((ll_backend__frameopt__HeadVar__1_1 == ((MR_Word) MR_mkword(MR_mktag(0), MR_mkbody((MR_Integer) 0)))))
+    {
+      *ll_backend__frameopt__HeadVar__2_2 = (MR_Word) MR_mkword(MR_mktag(0), MR_mkbody((MR_Integer) 0));
+      *ll_backend__frameopt__HeadVar__3_3 = (MR_Word) MR_mkword(MR_mktag(0), MR_mkbody((MR_Integer) 0));
+      *ll_backend__frameopt__STATE_VARIABLE_ExitParMap_12 = ll_backend__frameopt__STATE_VARIABLE_ExitParMap_0_11;
+      *ll_backend__frameopt__STATE_VARIABLE_SetupParMap_10 = ll_backend__frameopt__STATE_VARIABLE_SetupParMap_0_9;
+      *ll_backend__frameopt__STATE_VARIABLE_C_8 = ll_backend__frameopt__STATE_VARIABLE_C_0_7;
+    }
+  else
+    {
+      MR_Word ll_backend__frameopt__Label0_25 = ((MR_Word) (MR_hl_field(MR_mktag(1), ll_backend__frameopt__HeadVar__1_1, (MR_Integer) 0)));
+      MR_Word ll_backend__frameopt__Labels0_26 = ((MR_Word) (MR_hl_field(MR_mktag(1), ll_backend__frameopt__HeadVar__1_1, (MR_Integer) 1)));
+      MR_Word ll_backend__frameopt__Label_27;
+      MR_Word ll_backend__frameopt__Labels_28;
+      MR_Word ll_backend__frameopt__LabelMap_29;
+      MR_Word ll_backend__frameopt__Var_42;
+      MR_Word ll_backend__frameopt__STATE_VARIABLE_C_43_43;
+      MR_Word ll_backend__frameopt__STATE_VARIABLE_SetupParMap_44_44;
+      MR_Word ll_backend__frameopt__STATE_VARIABLE_ExitParMap_45_45;
+
+      {
+        ll_backend__frameopt__mark_parallel_for_nostack_successor_11_p_0(ll_backend__frameopt__TypeInfo_for_En_49, ll_backend__frameopt__TypeInfo_for_Ex_50, ll_backend__frameopt__Label0_25, &ll_backend__frameopt__Label_27, ll_backend__frameopt__OrdNeedsFrame_4, ll_backend__frameopt__BlockMap_5, ll_backend__frameopt__ProcLabel_6, ll_backend__frameopt__STATE_VARIABLE_C_0_7, &ll_backend__frameopt__STATE_VARIABLE_C_43_43, ll_backend__frameopt__STATE_VARIABLE_SetupParMap_0_9, &ll_backend__frameopt__STATE_VARIABLE_SetupParMap_44_44, ll_backend__frameopt__STATE_VARIABLE_ExitParMap_0_11, &ll_backend__frameopt__STATE_VARIABLE_ExitParMap_45_45);
+      }
+      {
+        ll_backend__frameopt__Var_42 = (MR_Word) MR_new_object(MR_Word, ((MR_Integer) 2 * sizeof(MR_Word)), NULL, NULL);
+        MR_hl_field(MR_mktag(0), ll_backend__frameopt__Var_42, 0) = ((MR_Box) (ll_backend__frameopt__Label0_25));
+        MR_hl_field(MR_mktag(0), ll_backend__frameopt__Var_42, 1) = ((MR_Box) (ll_backend__frameopt__Label_27));
+      }
+      {
+        ll_backend__frameopt__mark_parallels_for_nostack_successors_12_p_0(ll_backend__frameopt__TypeInfo_for_En_49, ll_backend__frameopt__TypeInfo_for_Ex_50, ll_backend__frameopt__Labels0_26, &ll_backend__frameopt__Labels_28, &ll_backend__frameopt__LabelMap_29, ll_backend__frameopt__OrdNeedsFrame_4, ll_backend__frameopt__BlockMap_5, ll_backend__frameopt__ProcLabel_6, ll_backend__frameopt__STATE_VARIABLE_C_43_43, ll_backend__frameopt__STATE_VARIABLE_C_8, ll_backend__frameopt__STATE_VARIABLE_SetupParMap_44_44, ll_backend__frameopt__STATE_VARIABLE_SetupParMap_10, ll_backend__frameopt__STATE_VARIABLE_ExitParMap_45_45, ll_backend__frameopt__STATE_VARIABLE_ExitParMap_12);
+      }
+      {
+        MR_Word base;
+        base = (MR_Word) MR_mkword(MR_mktag(1), MR_new_object(MR_Word, ((MR_Integer) 2 * sizeof(MR_Word)), NULL, NULL));
+        *ll_backend__frameopt__HeadVar__2_2 = base;
+        MR_hl_field(MR_mktag(1), base, 0) = ((MR_Box) (ll_backend__frameopt__Label_27));
+        MR_hl_field(MR_mktag(1), base, 1) = ((MR_Box) (ll_backend__frameopt__Labels_28));
+      }
+      {
+        MR_Word base;
+        base = (MR_Word) MR_mkword(MR_mktag(1), MR_new_object(MR_Word, ((MR_Integer) 2 * sizeof(MR_Word)), NULL, NULL));
+        *ll_backend__frameopt__HeadVar__3_3 = base;
+        MR_hl_field(MR_mktag(1), base, 0) = ((MR_Box) (ll_backend__frameopt__Var_42));
+        MR_hl_field(MR_mktag(1), base, 1) = ((MR_Box) (ll_backend__frameopt__LabelMap_29));
+      }
+    }
+}
+
+static void MR_CALL 
+ll_backend__frameopt__mark_parallel_for_nostack_successor_11_p_0(
+  MR_Word ll_backend__frameopt__TypeInfo_for_En_45,
+  MR_Word ll_backend__frameopt__TypeInfo_for_Ex_46,
+  MR_Word ll_backend__frameopt__Label0_12,
+  MR_Word * ll_backend__frameopt__Label_13,
+  MR_Word ll_backend__frameopt__OrdNeedsFrame_14,
+  MR_Word ll_backend__frameopt__BlockMap_15,
+  MR_Word ll_backend__frameopt__ProcLabel_16,
+  MR_Word ll_backend__frameopt__STATE_VARIABLE_C_0_27,
+  MR_Word * ll_backend__frameopt__STATE_VARIABLE_C_28,
+  MR_Word ll_backend__frameopt__STATE_VARIABLE_SetupParMap_0_29,
+  MR_Word * ll_backend__frameopt__STATE_VARIABLE_SetupParMap_30,
+  MR_Word ll_backend__frameopt__STATE_VARIABLE_ExitParMap_0_31,
+  MR_Word * ll_backend__frameopt__STATE_VARIABLE_ExitParMap_32)
+{
+  {
+    MR_bool ll_backend__frameopt__succeeded;
+    MR_Word ll_backend__frameopt__TypeCtorInfo_47_47 = (MR_Word) &ll_backend__llds__ll_backend__llds__type_ctor_info_label_0;
+    MR_Word ll_backend__frameopt__TypeInfo_49_49;
+    MR_Word ll_backend__frameopt__BlockInfo_20;
+    MR_Word ll_backend__frameopt__Type_21;
+    MR_Box ll_backend__frameopt__conv0_BlockInfo_20;
+    MR_Word ll_backend__frameopt__Var_40;
+    MR_Word ll_backend__frameopt__Var_41;
+    MR_Word ll_backend__frameopt__Var_42;
+    MR_Word ll_backend__frameopt__Var_43;
+    MR_Word ll_backend__frameopt__Var_44;
+
+    {
+      ll_backend__frameopt__TypeInfo_49_49 = (MR_Word) MR_new_object(MR_Word, ((MR_Integer) 3 * sizeof(MR_Word)), NULL, NULL);
+      MR_hl_field(MR_mktag(0), ll_backend__frameopt__TypeInfo_49_49, 0) = ((MR_Box) (&ll_backend__frameopt__ll_backend__frameopt__type_ctor_info_frame_block_info_2));
+      MR_hl_field(MR_mktag(0), ll_backend__frameopt__TypeInfo_49_49, 1) = ((MR_Box) (ll_backend__frameopt__TypeInfo_for_En_45));
+      MR_hl_field(MR_mktag(0), ll_backend__frameopt__TypeInfo_49_49, 2) = ((MR_Box) (ll_backend__frameopt__TypeInfo_for_Ex_46));
+    }
+    {
+      mercury__map__lookup_3_p_0(ll_backend__frameopt__TypeCtorInfo_47_47, ll_backend__frameopt__TypeInfo_49_49, (MR_Word) ll_backend__frameopt__BlockMap_15, ((MR_Box) (ll_backend__frameopt__Label0_12)), &ll_backend__frameopt__conv0_BlockInfo_20);
+    }
+    ll_backend__frameopt__BlockInfo_20 = ((MR_Word) ll_backend__frameopt__conv0_BlockInfo_20);
+    ll_backend__frameopt__Var_40 = ((MR_Word) (MR_hl_field(MR_mktag(0), ll_backend__frameopt__BlockInfo_20, (MR_Integer) 0)));
+    ll_backend__frameopt__Var_41 = ((MR_Word) (MR_hl_field(MR_mktag(0), ll_backend__frameopt__BlockInfo_20, (MR_Integer) 1)));
+    ll_backend__frameopt__Var_42 = ((MR_Word) (MR_hl_field(MR_mktag(0), ll_backend__frameopt__BlockInfo_20, (MR_Integer) 2)));
+    ll_backend__frameopt__Var_43 = ((MR_Word) (MR_hl_field(MR_mktag(0), ll_backend__frameopt__BlockInfo_20, (MR_Integer) 3)));
+    ll_backend__frameopt__Var_44 = ((MR_Word) (MR_hl_field(MR_mktag(0), ll_backend__frameopt__BlockInfo_20, (MR_Integer) 4)));
+    ll_backend__frameopt__Type_21 = ((MR_Word) (MR_hl_field(MR_mktag(0), ll_backend__frameopt__BlockInfo_20, (MR_Integer) 5)));
+    switch (MR_tag((MR_Word) ll_backend__frameopt__Type_21)) {
+      default: /*NOTREACHED*/ MR_assert(0);
+      case (MR_Integer) 0:
+        {
+          {
+            mercury__require__unexpected_3_p_0((MR_String) "ll_backend.frameopt", (MR_String) "predicate \140ll_backend.frameopt.mark_parallel_for_nostack_successor\'/11", (MR_String) "reached setup via jump from ordinary block");
+            return;
+          }
+        }
+        break;
+      case (MR_Integer) 1:
+        {
+          MR_Word ll_backend__frameopt__NeedsFrame_25;
+          MR_Box ll_backend__frameopt__conv2_NeedsFrame_25;
+
+          {
+            mercury__map__lookup_3_p_0(ll_backend__frameopt__TypeCtorInfo_47_47, (MR_Word) &ll_backend__frameopt__ll_backend__frameopt__type_ctor_info_block_needs_frame_0, ll_backend__frameopt__OrdNeedsFrame_14, ((MR_Box) (ll_backend__frameopt__Label0_12)), &ll_backend__frameopt__conv2_NeedsFrame_25);
+          }
+          ll_backend__frameopt__NeedsFrame_25 = ((MR_Word) ll_backend__frameopt__conv2_NeedsFrame_25);
+          switch (ll_backend__frameopt__NeedsFrame_25) {
+            default: /*NOTREACHED*/ MR_assert(0);
+            case (MR_Integer) 1:
+              {
+                *ll_backend__frameopt__Label_13 = ll_backend__frameopt__Label0_12;
+                *ll_backend__frameopt__STATE_VARIABLE_C_28 = ll_backend__frameopt__STATE_VARIABLE_C_0_27;
+                *ll_backend__frameopt__STATE_VARIABLE_SetupParMap_30 = ll_backend__frameopt__STATE_VARIABLE_SetupParMap_0_29;
+              }
+              break;
+            case (MR_Integer) 0:
+              {
+                MR_Word ll_backend__frameopt__ParMap0_78 = (MR_Word) ll_backend__frameopt__STATE_VARIABLE_SetupParMap_0_29;
+                MR_Word ll_backend__frameopt__OldParallel_79;
+                MR_Word ll_backend__frameopt__TypeCtorInfo_24_85 = (MR_Word) &ll_backend__llds__ll_backend__llds__type_ctor_info_label_0;
+                MR_Box ll_backend__frameopt__conv3_OldParallel_79;
+
+                {
+                  ll_backend__frameopt__succeeded = mercury__map__search_3_p_0(ll_backend__frameopt__TypeCtorInfo_24_85, ll_backend__frameopt__TypeCtorInfo_24_85, ll_backend__frameopt__ParMap0_78, ((MR_Box) (ll_backend__frameopt__Label0_12)), &ll_backend__frameopt__conv3_OldParallel_79);
+                }
+                if (ll_backend__frameopt__succeeded)
+                  {
+                    ll_backend__frameopt__OldParallel_79 = ((MR_Word) ll_backend__frameopt__conv3_OldParallel_79);
+                    ll_backend__frameopt__succeeded = MR_TRUE;
+                  }
+                if (ll_backend__frameopt__succeeded)
+                  {
+                    *ll_backend__frameopt__Label_13 = ll_backend__frameopt__OldParallel_79;
+                    *ll_backend__frameopt__STATE_VARIABLE_SetupParMap_30 = ll_backend__frameopt__STATE_VARIABLE_SetupParMap_0_29;
+                    *ll_backend__frameopt__STATE_VARIABLE_C_28 = ll_backend__frameopt__STATE_VARIABLE_C_0_27;
+                  }
+                else
+                  {
+                    MR_Word ll_backend__frameopt__TypeCtorInfo_25_86;
+                    MR_Integer ll_backend__frameopt__N_80;
+                    MR_Word ll_backend__frameopt__ParMap_82;
+
+                    {
+                      mercury__counter__allocate_3_p_0(&ll_backend__frameopt__N_80, ll_backend__frameopt__STATE_VARIABLE_C_0_27, ll_backend__frameopt__STATE_VARIABLE_C_28);
+                    }
+                    {
+                      MR_Word base;
+                      base = (MR_Word) MR_new_object(MR_Word, ((MR_Integer) 2 * sizeof(MR_Word)), NULL, NULL);
+                      *ll_backend__frameopt__Label_13 = base;
+                      MR_hl_field(MR_mktag(0), base, 0) = ((MR_Box) (ll_backend__frameopt__N_80));
+                      MR_hl_field(MR_mktag(0), base, 1) = ((MR_Box) (ll_backend__frameopt__ProcLabel_16));
+                    }
+                    ll_backend__frameopt__TypeCtorInfo_25_86 = (MR_Word) &ll_backend__llds__ll_backend__llds__type_ctor_info_label_0;
+                    {
+                      mercury__map__det_insert_4_p_0(ll_backend__frameopt__TypeCtorInfo_25_86, ll_backend__frameopt__TypeCtorInfo_25_86, ((MR_Box) (ll_backend__frameopt__Label0_12)), ((MR_Box) (*ll_backend__frameopt__Label_13)), ll_backend__frameopt__ParMap0_78, &ll_backend__frameopt__ParMap_82);
+                    }
+                    *ll_backend__frameopt__STATE_VARIABLE_SetupParMap_30 = (MR_Word) ll_backend__frameopt__ParMap_82;
+                  }
+              }
+              break;
+          }
+          *ll_backend__frameopt__STATE_VARIABLE_ExitParMap_32 = ll_backend__frameopt__STATE_VARIABLE_ExitParMap_0_31;
+        }
+        break;
+      case (MR_Integer) 2:
+        {
+          MR_Word ll_backend__frameopt__ParMap0_60 = (MR_Word) ll_backend__frameopt__STATE_VARIABLE_ExitParMap_0_31;
+          MR_Word ll_backend__frameopt__OldParallel_61;
+          MR_Word ll_backend__frameopt__TypeCtorInfo_24_67 = (MR_Word) &ll_backend__llds__ll_backend__llds__type_ctor_info_label_0;
+          MR_Box ll_backend__frameopt__conv1_OldParallel_61;
+
+          {
+            ll_backend__frameopt__succeeded = mercury__map__search_3_p_0(ll_backend__frameopt__TypeCtorInfo_24_67, ll_backend__frameopt__TypeCtorInfo_24_67, ll_backend__frameopt__ParMap0_60, ((MR_Box) (ll_backend__frameopt__Label0_12)), &ll_backend__frameopt__conv1_OldParallel_61);
+          }
+          if (ll_backend__frameopt__succeeded)
+            {
+              ll_backend__frameopt__OldParallel_61 = ((MR_Word) ll_backend__frameopt__conv1_OldParallel_61);
+              ll_backend__frameopt__succeeded = MR_TRUE;
+            }
+          if (ll_backend__frameopt__succeeded)
+            {
+              *ll_backend__frameopt__Label_13 = ll_backend__frameopt__OldParallel_61;
+              *ll_backend__frameopt__STATE_VARIABLE_ExitParMap_32 = ll_backend__frameopt__STATE_VARIABLE_ExitParMap_0_31;
+              *ll_backend__frameopt__STATE_VARIABLE_C_28 = ll_backend__frameopt__STATE_VARIABLE_C_0_27;
+            }
+          else
+            {
+              MR_Word ll_backend__frameopt__TypeCtorInfo_25_68;
+              MR_Integer ll_backend__frameopt__N_62;
+              MR_Word ll_backend__frameopt__ParMap_64;
+
+              {
+                mercury__counter__allocate_3_p_0(&ll_backend__frameopt__N_62, ll_backend__frameopt__STATE_VARIABLE_C_0_27, ll_backend__frameopt__STATE_VARIABLE_C_28);
+              }
+              {
+                MR_Word base;
+                base = (MR_Word) MR_new_object(MR_Word, ((MR_Integer) 2 * sizeof(MR_Word)), NULL, NULL);
+                *ll_backend__frameopt__Label_13 = base;
+                MR_hl_field(MR_mktag(0), base, 0) = ((MR_Box) (ll_backend__frameopt__N_62));
+                MR_hl_field(MR_mktag(0), base, 1) = ((MR_Box) (ll_backend__frameopt__ProcLabel_16));
+              }
+              ll_backend__frameopt__TypeCtorInfo_25_68 = (MR_Word) &ll_backend__llds__ll_backend__llds__type_ctor_info_label_0;
+              {
+                mercury__map__det_insert_4_p_0(ll_backend__frameopt__TypeCtorInfo_25_68, ll_backend__frameopt__TypeCtorInfo_25_68, ((MR_Box) (ll_backend__frameopt__Label0_12)), ((MR_Box) (*ll_backend__frameopt__Label_13)), ll_backend__frameopt__ParMap0_60, &ll_backend__frameopt__ParMap_64);
+              }
+              *ll_backend__frameopt__STATE_VARIABLE_ExitParMap_32 = (MR_Word) ll_backend__frameopt__ParMap_64;
+            }
+          *ll_backend__frameopt__STATE_VARIABLE_SetupParMap_30 = ll_backend__frameopt__STATE_VARIABLE_SetupParMap_0_29;
+        }
+        break;
+    }
+  }
+}
+
+static void MR_CALL 
+ll_backend__frameopt__propagate_frame_requirement_to_predecessors_9_p_0_2(
+  MR_Box ll_backend__frameopt__closure_arg,
+  MR_Box ll_backend__frameopt__wrapper_arg_1,
+  MR_Box ll_backend__frameopt__wrapper_arg_2,
+  MR_Box * ll_backend__frameopt__wrapper_arg_3,
+  MR_Box ll_backend__frameopt__wrapper_arg_4,
+  MR_Box * ll_backend__frameopt__wrapper_arg_5)
+{
+  {
+    MR_Box ll_backend__frameopt__closure = ll_backend__frameopt__closure_arg;
+    MR_Word ll_backend__frameopt__conv4_STATE_VARIABLE_OrdNeedsFrame_18;
+    MR_Word ll_backend__frameopt__conv3_STATE_VARIABLE_CanTransform_20;
+
+    {
+      ll_backend__frameopt__record_frame_need_6_p_0(((MR_Word) (MR_hl_field(MR_mktag(0), ll_backend__frameopt__closure, (MR_Integer) 3))), ((MR_Word) (MR_hl_field(MR_mktag(0), ll_backend__frameopt__closure, (MR_Integer) 4))), ((MR_Word) (MR_hl_field(MR_mktag(0), ll_backend__frameopt__closure, (MR_Integer) 5))), ((MR_Word) ll_backend__frameopt__wrapper_arg_1), ((MR_Word) ll_backend__frameopt__wrapper_arg_2), &ll_backend__frameopt__conv4_STATE_VARIABLE_OrdNeedsFrame_18, ((MR_Word) ll_backend__frameopt__wrapper_arg_4), &ll_backend__frameopt__conv3_STATE_VARIABLE_CanTransform_20);
+    }
+    *ll_backend__frameopt__wrapper_arg_3 = ((MR_Box) (ll_backend__frameopt__conv4_STATE_VARIABLE_OrdNeedsFrame_18));
+    *ll_backend__frameopt__wrapper_arg_5 = ((MR_Box) (ll_backend__frameopt__conv3_STATE_VARIABLE_CanTransform_20));
+  }
+}
+
+static MR_bool MR_CALL 
+ll_backend__frameopt__propagate_frame_requirement_to_predecessors_9_p_0_1(
+  MR_Box ll_backend__frameopt__closure_arg,
+  MR_Box ll_backend__frameopt__wrapper_arg_1)
+{
+  {
+    MR_bool ll_backend__frameopt__succeeded;
+    MR_Box ll_backend__frameopt__closure = ll_backend__frameopt__closure_arg;
+
+    {
+      ll_backend__frameopt__succeeded = ll_backend__frameopt__all_successors_need_frame_3_p_0(((MR_Word) (MR_hl_field(MR_mktag(0), ll_backend__frameopt__closure, (MR_Integer) 3))), ((MR_Word) (MR_hl_field(MR_mktag(0), ll_backend__frameopt__closure, (MR_Integer) 4))), ((MR_Word) (MR_hl_field(MR_mktag(0), ll_backend__frameopt__closure, (MR_Integer) 5))), ((MR_Word) (MR_hl_field(MR_mktag(0), ll_backend__frameopt__closure, (MR_Integer) 6))), ((MR_Word) ll_backend__frameopt__wrapper_arg_1));
+    }
+    return ll_backend__frameopt__succeeded;
+  }
+}
+
+static void MR_CALL 
+ll_backend__frameopt__propagate_frame_requirement_to_predecessors_9_p_0(
+  MR_Word ll_backend__frameopt__TypeInfo_for_En_49,
+  MR_Word ll_backend__frameopt__TypeInfo_for_Ex_50,
+  MR_Word ll_backend__frameopt__STATE_VARIABLE_Queue_0_20,
+  MR_Word ll_backend__frameopt__BlockMap_11,
+  MR_Word ll_backend__frameopt__RevMap_12,
+  MR_Word ll_backend__frameopt__STATE_VARIABLE_OrdNeedsFrame_0_21,
+  MR_Word * ll_backend__frameopt__STATE_VARIABLE_OrdNeedsFrame_22,
+  MR_Integer ll_backend__frameopt__STATE_VARIABLE_PropagationStepsLeft_0_23,
+  MR_Integer * ll_backend__frameopt__STATE_VARIABLE_PropagationStepsLeft_24,
+  MR_Word ll_backend__frameopt__STATE_VARIABLE_CanTransform_0_25,
+  MR_Word * ll_backend__frameopt__STATE_VARIABLE_CanTransform_26)
+{
+  while (MR_TRUE)
+    {
+      /* tailcall optimized into a loop */
+      {
+        MR_bool ll_backend__frameopt__succeeded;
+
+        switch (ll_backend__frameopt__STATE_VARIABLE_CanTransform_0_25) {
+          default: /*NOTREACHED*/ MR_assert(0);
+          case (MR_Integer) 0:
+            {
+              ll_backend__frameopt__succeeded = (ll_backend__frameopt__STATE_VARIABLE_PropagationStepsLeft_0_23 < (MR_Integer) 0);
+              if (ll_backend__frameopt__succeeded)
+                {
+                  *ll_backend__frameopt__STATE_VARIABLE_CanTransform_26 = (MR_Integer) 1;
+                  *ll_backend__frameopt__STATE_VARIABLE_PropagationStepsLeft_24 = ll_backend__frameopt__STATE_VARIABLE_PropagationStepsLeft_0_23;
+                  *ll_backend__frameopt__STATE_VARIABLE_OrdNeedsFrame_22 = ll_backend__frameopt__STATE_VARIABLE_OrdNeedsFrame_0_21;
+                }
+              else
+                {
+                  MR_Word ll_backend__frameopt__Label_16;
+                  MR_Word ll_backend__frameopt__STATE_VARIABLE_Queue_29_29;
+                  MR_Box ll_backend__frameopt__conv0_Label_16;
+
+                  {
+                    ll_backend__frameopt__succeeded = mercury__queue__get_3_p_0((MR_Word) &ll_backend__llds__ll_backend__llds__type_ctor_info_label_0, &ll_backend__frameopt__conv0_Label_16, ll_backend__frameopt__STATE_VARIABLE_Queue_0_20, &ll_backend__frameopt__STATE_VARIABLE_Queue_29_29);
+                  }
+                  if (ll_backend__frameopt__succeeded)
+                    {
+                      ll_backend__frameopt__Label_16 = ((MR_Word) ll_backend__frameopt__conv0_Label_16);
+                      ll_backend__frameopt__succeeded = MR_TRUE;
+                    }
+                  if (ll_backend__frameopt__succeeded)
+                    {
+                      MR_Word ll_backend__frameopt__TypeCtorInfo_55_55;
+                      MR_Word ll_backend__frameopt__Predecessors_18;
+                      MR_Word ll_backend__frameopt__NowNeedFrameLabels_19;
+                      MR_Integer ll_backend__frameopt__STATE_VARIABLE_PropagationStepsLeft_30_30 = (ll_backend__frameopt__STATE_VARIABLE_PropagationStepsLeft_0_23 - (MR_Integer) 1);
+                      MR_Word ll_backend__frameopt__STATE_VARIABLE_OrdNeedsFrame_32_32;
+                      MR_Word ll_backend__frameopt__Var_33;
+                      MR_Word ll_backend__frameopt__Var_34;
+                      MR_Word ll_backend__frameopt__STATE_VARIABLE_OrdNeedsFrame_35_35;
+                      MR_Word ll_backend__frameopt__STATE_VARIABLE_CanTransform_36_36;
+                      MR_Word ll_backend__frameopt__STATE_VARIABLE_Queue_37_43;
+                      MR_Word ll_backend__frameopt__PredecessorsPrime_17;
+                      MR_Box ll_backend__frameopt__conv1_PredecessorsPrime_17;
+                      MR_Box ll_backend__frameopt__conv6_STATE_VARIABLE_OrdNeedsFrame_35_35;
+                      MR_Box ll_backend__frameopt__conv5_STATE_VARIABLE_CanTransform_36_36;
+
+                      {
+                        ll_backend__frameopt__succeeded = mercury__map__search_3_p_0((MR_Word) &ll_backend__llds__ll_backend__llds__type_ctor_info_label_0, (MR_Word) &ll_backend__frameopt_scalar_common_2[1], ll_backend__frameopt__RevMap_12, ((MR_Box) (ll_backend__frameopt__Label_16)), &ll_backend__frameopt__conv1_PredecessorsPrime_17);
+                      }
+                      if (ll_backend__frameopt__succeeded)
+                        {
+                          ll_backend__frameopt__PredecessorsPrime_17 = ((MR_Word) ll_backend__frameopt__conv1_PredecessorsPrime_17);
+                          ll_backend__frameopt__succeeded = MR_TRUE;
+                        }
+                      if (ll_backend__frameopt__succeeded)
+                        {
+                          ll_backend__frameopt__Predecessors_18 = ll_backend__frameopt__PredecessorsPrime_17;
+                          ll_backend__frameopt__STATE_VARIABLE_OrdNeedsFrame_32_32 = ll_backend__frameopt__STATE_VARIABLE_OrdNeedsFrame_0_21;
+                        }
+                      else
+                        {
+                          MR_Word ll_backend__frameopt__TypeCtorInfo_11_70;
+                          MR_Word ll_backend__frameopt__TypeCtorInfo_12_71;
+                          MR_Word ll_backend__frameopt__NeedsFrame0_67;
+                          MR_Box ll_backend__frameopt__conv2_NeedsFrame0_67;
+
+                          ll_backend__frameopt__Predecessors_18 = (MR_Word) MR_mkword(MR_mktag(0), MR_mkbody((MR_Integer) 0));
+                          ll_backend__frameopt__TypeCtorInfo_11_70 = (MR_Word) &ll_backend__llds__ll_backend__llds__type_ctor_info_label_0;
+                          ll_backend__frameopt__TypeCtorInfo_12_71 = (MR_Word) &ll_backend__frameopt__ll_backend__frameopt__type_ctor_info_block_needs_frame_0;
+                          {
+                            mercury__map__lookup_3_p_0(ll_backend__frameopt__TypeCtorInfo_11_70, ll_backend__frameopt__TypeCtorInfo_12_71, ll_backend__frameopt__STATE_VARIABLE_OrdNeedsFrame_0_21, ((MR_Box) (ll_backend__frameopt__Label_16)), &ll_backend__frameopt__conv2_NeedsFrame0_67);
+                          }
+                          ll_backend__frameopt__NeedsFrame0_67 = ((MR_Word) ll_backend__frameopt__conv2_NeedsFrame0_67);
+                          switch (ll_backend__frameopt__NeedsFrame0_67) {
+                            default: /*NOTREACHED*/ MR_assert(0);
+                            case (MR_Integer) 1:
+                              {
+                                {
+                                  mercury__map__det_update_4_p_0(ll_backend__frameopt__TypeCtorInfo_11_70, ll_backend__frameopt__TypeCtorInfo_12_71, ((MR_Box) (ll_backend__frameopt__Label_16)), ((MR_Box) ((MR_Integer) 0)), ll_backend__frameopt__STATE_VARIABLE_OrdNeedsFrame_0_21, &ll_backend__frameopt__STATE_VARIABLE_OrdNeedsFrame_32_32);
+                                }
+                              }
+                              break;
+                            case (MR_Integer) 0:
+                              ll_backend__frameopt__STATE_VARIABLE_OrdNeedsFrame_32_32 = ll_backend__frameopt__STATE_VARIABLE_OrdNeedsFrame_0_21;
+                              break;
+                          }
+                        }
+                      {
+                        ll_backend__frameopt__Var_33 = (MR_Word) MR_new_object(MR_Word, ((MR_Integer) 7 * sizeof(MR_Word)), NULL, NULL);
+                        MR_hl_field(MR_mktag(0), ll_backend__frameopt__Var_33, 0) = ((MR_Box) (&ll_backend__frameopt_scalar_common_7[0]));
+                        MR_hl_field(MR_mktag(0), ll_backend__frameopt__Var_33, 1) = ((MR_Box) (ll_backend__frameopt__propagate_frame_requirement_to_predecessors_9_p_0_1));
+                        MR_hl_field(MR_mktag(0), ll_backend__frameopt__Var_33, 2) = ((MR_Box) (MR_Word) ((MR_Integer) 4));
+                        MR_hl_field(MR_mktag(0), ll_backend__frameopt__Var_33, 3) = ((MR_Box) (ll_backend__frameopt__TypeInfo_for_En_49));
+                        MR_hl_field(MR_mktag(0), ll_backend__frameopt__Var_33, 4) = ((MR_Box) (ll_backend__frameopt__TypeInfo_for_Ex_50));
+                        MR_hl_field(MR_mktag(0), ll_backend__frameopt__Var_33, 5) = ((MR_Box) (ll_backend__frameopt__BlockMap_11));
+                        MR_hl_field(MR_mktag(0), ll_backend__frameopt__Var_33, 6) = ((MR_Box) (ll_backend__frameopt__STATE_VARIABLE_OrdNeedsFrame_32_32));
+                      }
+                      ll_backend__frameopt__TypeCtorInfo_55_55 = (MR_Word) &ll_backend__llds__ll_backend__llds__type_ctor_info_label_0;
+                      {
+                        mercury__list__filter_3_p_0(ll_backend__frameopt__TypeCtorInfo_55_55, ll_backend__frameopt__Var_33, ll_backend__frameopt__Predecessors_18, &ll_backend__frameopt__NowNeedFrameLabels_19);
+                      }
+                      {
+                        ll_backend__frameopt__Var_34 = (MR_Word) MR_new_object(MR_Word, ((MR_Integer) 6 * sizeof(MR_Word)), NULL, NULL);
+                        MR_hl_field(MR_mktag(0), ll_backend__frameopt__Var_34, 0) = ((MR_Box) (&ll_backend__frameopt_scalar_common_8[0]));
+                        MR_hl_field(MR_mktag(0), ll_backend__frameopt__Var_34, 1) = ((MR_Box) (ll_backend__frameopt__propagate_frame_requirement_to_predecessors_9_p_0_2));
+                        MR_hl_field(MR_mktag(0), ll_backend__frameopt__Var_34, 2) = ((MR_Box) (MR_Word) ((MR_Integer) 3));
+                        MR_hl_field(MR_mktag(0), ll_backend__frameopt__Var_34, 3) = ((MR_Box) (ll_backend__frameopt__TypeInfo_for_En_49));
+                        MR_hl_field(MR_mktag(0), ll_backend__frameopt__Var_34, 4) = ((MR_Box) (ll_backend__frameopt__TypeInfo_for_Ex_50));
+                        MR_hl_field(MR_mktag(0), ll_backend__frameopt__Var_34, 5) = ((MR_Box) (ll_backend__frameopt__BlockMap_11));
+                      }
+                      {
+                        mercury__list__foldl2_6_p_0(ll_backend__frameopt__TypeCtorInfo_55_55, (MR_Word) &ll_backend__frameopt_scalar_common_1[5], (MR_Word) &ll_backend__frameopt__ll_backend__frameopt__type_ctor_info_can_transform_0, ll_backend__frameopt__Var_34, ll_backend__frameopt__NowNeedFrameLabels_19, ((MR_Box) (ll_backend__frameopt__STATE_VARIABLE_OrdNeedsFrame_32_32)), &ll_backend__frameopt__conv6_STATE_VARIABLE_OrdNeedsFrame_35_35, ((MR_Box) (ll_backend__frameopt__STATE_VARIABLE_CanTransform_0_25)), &ll_backend__frameopt__conv5_STATE_VARIABLE_CanTransform_36_36);
+                      }
+                      ll_backend__frameopt__STATE_VARIABLE_OrdNeedsFrame_35_35 = ((MR_Word) ll_backend__frameopt__conv6_STATE_VARIABLE_OrdNeedsFrame_35_35);
+                      ll_backend__frameopt__STATE_VARIABLE_CanTransform_36_36 = ((MR_Word) ll_backend__frameopt__conv5_STATE_VARIABLE_CanTransform_36_36);
+                      {
+                        mercury__queue__put_list_3_p_0(ll_backend__frameopt__TypeCtorInfo_55_55, ll_backend__frameopt__NowNeedFrameLabels_19, ll_backend__frameopt__STATE_VARIABLE_Queue_29_29, &ll_backend__frameopt__STATE_VARIABLE_Queue_37_43);
+                      }
+                      /* direct tailcall eliminated */
+                      {
+                        MR_Word ll_backend__frameopt__next_value_of_STATE_VARIABLE_Queue_0_20 = ll_backend__frameopt__STATE_VARIABLE_Queue_37_43;
+                        MR_Word ll_backend__frameopt__next_value_of_STATE_VARIABLE_OrdNeedsFrame_0_21 = ll_backend__frameopt__STATE_VARIABLE_OrdNeedsFrame_35_35;
+                        MR_Integer ll_backend__frameopt__next_value_of_STATE_VARIABLE_PropagationStepsLeft_0_23 = ll_backend__frameopt__STATE_VARIABLE_PropagationStepsLeft_30_30;
+                        MR_Word ll_backend__frameopt__next_value_of_STATE_VARIABLE_CanTransform_0_25 = ll_backend__frameopt__STATE_VARIABLE_CanTransform_36_36;
+
+                        ll_backend__frameopt__STATE_VARIABLE_CanTransform_0_25 = ll_backend__frameopt__next_value_of_STATE_VARIABLE_CanTransform_0_25;
+                        ll_backend__frameopt__STATE_VARIABLE_PropagationStepsLeft_0_23 = ll_backend__frameopt__next_value_of_STATE_VARIABLE_PropagationStepsLeft_0_23;
+                        ll_backend__frameopt__STATE_VARIABLE_OrdNeedsFrame_0_21 = ll_backend__frameopt__next_value_of_STATE_VARIABLE_OrdNeedsFrame_0_21;
+                        ll_backend__frameopt__STATE_VARIABLE_Queue_0_20 = ll_backend__frameopt__next_value_of_STATE_VARIABLE_Queue_0_20;
+                      }
+                      continue;
+                    }
+                  else
+                    {
+                      *ll_backend__frameopt__STATE_VARIABLE_CanTransform_26 = ll_backend__frameopt__STATE_VARIABLE_CanTransform_0_25;
+                      *ll_backend__frameopt__STATE_VARIABLE_PropagationStepsLeft_24 = ll_backend__frameopt__STATE_VARIABLE_PropagationStepsLeft_0_23;
+                      *ll_backend__frameopt__STATE_VARIABLE_OrdNeedsFrame_22 = ll_backend__frameopt__STATE_VARIABLE_OrdNeedsFrame_0_21;
+                    }
+                }
+            }
+            break;
+          case (MR_Integer) 1:
+            {
+              *ll_backend__frameopt__STATE_VARIABLE_OrdNeedsFrame_22 = ll_backend__frameopt__STATE_VARIABLE_OrdNeedsFrame_0_21;
+              *ll_backend__frameopt__STATE_VARIABLE_PropagationStepsLeft_24 = ll_backend__frameopt__STATE_VARIABLE_PropagationStepsLeft_0_23;
+              *ll_backend__frameopt__STATE_VARIABLE_CanTransform_26 = ll_backend__frameopt__STATE_VARIABLE_CanTransform_0_25;
+            }
+            break;
+        }
+      }
+      break;
+    }
+}
+
+static MR_bool MR_CALL 
+ll_backend__frameopt__propagate_frame_requirement_to_successors_9_p_0_1(
+  MR_Box ll_backend__frameopt__closure_arg,
+  MR_Box ll_backend__frameopt__wrapper_arg_1)
+{
+  {
+    MR_bool ll_backend__frameopt__succeeded;
+    MR_Box ll_backend__frameopt__closure = ll_backend__frameopt__closure_arg;
+
+    {
+      ll_backend__frameopt__succeeded = ll_backend__frameopt__IntroducedFrom__pred__propagate_frame_requirement_to_successors__1724__1_2_p_0(((MR_Word) (MR_hl_field(MR_mktag(0), ll_backend__frameopt__closure, (MR_Integer) 3))), ((MR_Word) ll_backend__frameopt__wrapper_arg_1));
+    }
+    return ll_backend__frameopt__succeeded;
+  }
+}
+
+static void MR_CALL 
+ll_backend__frameopt__propagate_frame_requirement_to_successors_9_p_0(
+  MR_Word ll_backend__frameopt__TypeInfo_for_En_68,
+  MR_Word ll_backend__frameopt__TypeInfo_for_Ex_69,
+  MR_Word ll_backend__frameopt__STATE_VARIABLE_Queue_0_25,
+  MR_Word ll_backend__frameopt__BlockMap_11,
+  MR_Word ll_backend__frameopt__STATE_VARIABLE_OrdNeedsFrame_0_26,
+  MR_Word * ll_backend__frameopt__STATE_VARIABLE_OrdNeedsFrame_27,
+  MR_Word ll_backend__frameopt__STATE_VARIABLE_AlreadyProcessed_0_28,
+  MR_Integer ll_backend__frameopt__STATE_VARIABLE_PropagationStepsLeft_0_29,
+  MR_Integer * ll_backend__frameopt__STATE_VARIABLE_PropagationStepsLeft_30,
+  MR_Word ll_backend__frameopt__STATE_VARIABLE_CanTransform_0_31,
+  MR_Word * ll_backend__frameopt__STATE_VARIABLE_CanTransform_32)
+{
+  while (MR_TRUE)
+    {
+      /* tailcall optimized into a loop */
+      {
+        MR_bool ll_backend__frameopt__succeeded;
+
+        switch (ll_backend__frameopt__STATE_VARIABLE_CanTransform_0_31) {
+          default: /*NOTREACHED*/ MR_assert(0);
+          case (MR_Integer) 0:
+            {
+              ll_backend__frameopt__succeeded = (ll_backend__frameopt__STATE_VARIABLE_PropagationStepsLeft_0_29 < (MR_Integer) 0);
+              if (ll_backend__frameopt__succeeded)
+                {
+                  *ll_backend__frameopt__STATE_VARIABLE_CanTransform_32 = (MR_Integer) 1;
+                  *ll_backend__frameopt__STATE_VARIABLE_PropagationStepsLeft_30 = ll_backend__frameopt__STATE_VARIABLE_PropagationStepsLeft_0_29;
+                  *ll_backend__frameopt__STATE_VARIABLE_OrdNeedsFrame_27 = ll_backend__frameopt__STATE_VARIABLE_OrdNeedsFrame_0_26;
+                }
+              else
+                {
+                  MR_Word ll_backend__frameopt__Label_16;
+                  MR_Word ll_backend__frameopt__STATE_VARIABLE_Queue_35_35;
+                  MR_Box ll_backend__frameopt__conv0_Label_16;
+
+                  {
+                    ll_backend__frameopt__succeeded = mercury__queue__get_3_p_0((MR_Word) &ll_backend__llds__ll_backend__llds__type_ctor_info_label_0, &ll_backend__frameopt__conv0_Label_16, ll_backend__frameopt__STATE_VARIABLE_Queue_0_25, &ll_backend__frameopt__STATE_VARIABLE_Queue_35_35);
+                  }
+                  if (ll_backend__frameopt__succeeded)
+                    {
+                      ll_backend__frameopt__Label_16 = ((MR_Word) ll_backend__frameopt__conv0_Label_16);
+                      ll_backend__frameopt__succeeded = MR_TRUE;
+                    }
+                  if (ll_backend__frameopt__succeeded)
+                    {
+                      MR_Word ll_backend__frameopt__TypeCtorInfo_71_71 = (MR_Word) &ll_backend__llds__ll_backend__llds__type_ctor_info_label_0;
+                      MR_Word ll_backend__frameopt__TypeInfo_73_73;
+                      MR_Word ll_backend__frameopt__BlockInfo_17;
+                      MR_Word ll_backend__frameopt__BlockType_18;
+                      MR_Integer ll_backend__frameopt__STATE_VARIABLE_PropagationStepsLeft_36_36 = (ll_backend__frameopt__STATE_VARIABLE_PropagationStepsLeft_0_29 - (MR_Integer) 1);
+                      MR_Word ll_backend__frameopt__STATE_VARIABLE_CanTransform_39_39;
+                      MR_Word ll_backend__frameopt__STATE_VARIABLE_OrdNeedsFrame_40_40;
+                      MR_Word ll_backend__frameopt__STATE_VARIABLE_AlreadyProcessed_38_51;
+                      MR_Word ll_backend__frameopt__STATE_VARIABLE_Queue_43_52;
+                      MR_Box ll_backend__frameopt__conv1_BlockInfo_17;
+                      MR_Word ll_backend__frameopt__Var_63;
+                      MR_Word ll_backend__frameopt__Var_64;
+                      MR_Word ll_backend__frameopt__Var_65;
+                      MR_Word ll_backend__frameopt__Var_66;
+                      MR_Word ll_backend__frameopt__Var_67;
+
+                      {
+                        mercury__set__insert_3_p_0(ll_backend__frameopt__TypeCtorInfo_71_71, ((MR_Box) (ll_backend__frameopt__Label_16)), ll_backend__frameopt__STATE_VARIABLE_AlreadyProcessed_0_28, &ll_backend__frameopt__STATE_VARIABLE_AlreadyProcessed_38_51);
+                      }
+                      {
+                        ll_backend__frameopt__TypeInfo_73_73 = (MR_Word) MR_new_object(MR_Word, ((MR_Integer) 3 * sizeof(MR_Word)), NULL, NULL);
+                        MR_hl_field(MR_mktag(0), ll_backend__frameopt__TypeInfo_73_73, 0) = ((MR_Box) (&ll_backend__frameopt__ll_backend__frameopt__type_ctor_info_frame_block_info_2));
+                        MR_hl_field(MR_mktag(0), ll_backend__frameopt__TypeInfo_73_73, 1) = ((MR_Box) (ll_backend__frameopt__TypeInfo_for_En_68));
+                        MR_hl_field(MR_mktag(0), ll_backend__frameopt__TypeInfo_73_73, 2) = ((MR_Box) (ll_backend__frameopt__TypeInfo_for_Ex_69));
+                      }
+                      {
+                        mercury__map__lookup_3_p_0(ll_backend__frameopt__TypeCtorInfo_71_71, ll_backend__frameopt__TypeInfo_73_73, (MR_Word) ll_backend__frameopt__BlockMap_11, ((MR_Box) (ll_backend__frameopt__Label_16)), &ll_backend__frameopt__conv1_BlockInfo_17);
+                      }
+                      ll_backend__frameopt__BlockInfo_17 = ((MR_Word) ll_backend__frameopt__conv1_BlockInfo_17);
+                      ll_backend__frameopt__Var_63 = ((MR_Word) (MR_hl_field(MR_mktag(0), ll_backend__frameopt__BlockInfo_17, (MR_Integer) 0)));
+                      ll_backend__frameopt__Var_64 = ((MR_Word) (MR_hl_field(MR_mktag(0), ll_backend__frameopt__BlockInfo_17, (MR_Integer) 1)));
+                      ll_backend__frameopt__Var_65 = ((MR_Word) (MR_hl_field(MR_mktag(0), ll_backend__frameopt__BlockInfo_17, (MR_Integer) 2)));
+                      ll_backend__frameopt__Var_66 = ((MR_Word) (MR_hl_field(MR_mktag(0), ll_backend__frameopt__BlockInfo_17, (MR_Integer) 3)));
+                      ll_backend__frameopt__Var_67 = ((MR_Word) (MR_hl_field(MR_mktag(0), ll_backend__frameopt__BlockInfo_17, (MR_Integer) 4)));
+                      ll_backend__frameopt__BlockType_18 = ((MR_Word) (MR_hl_field(MR_mktag(0), ll_backend__frameopt__BlockInfo_17, (MR_Integer) 5)));
+                      switch (MR_tag((MR_Word) ll_backend__frameopt__BlockType_18)) {
+                        default: /*NOTREACHED*/ MR_assert(0);
+                        case (MR_Integer) 0:
+                          {
+                            ll_backend__frameopt__STATE_VARIABLE_CanTransform_39_39 = (MR_Integer) 1;
+                            ll_backend__frameopt__STATE_VARIABLE_Queue_43_52 = ll_backend__frameopt__STATE_VARIABLE_Queue_35_35;
+                            ll_backend__frameopt__STATE_VARIABLE_OrdNeedsFrame_40_40 = ll_backend__frameopt__STATE_VARIABLE_OrdNeedsFrame_0_26;
+                          }
+                          break;
+                        case (MR_Integer) 1:
+                          {
+                            MR_Word ll_backend__frameopt__TypeCtorInfo_11_83 = (MR_Word) &ll_backend__llds__ll_backend__llds__type_ctor_info_label_0;
+                            MR_Word ll_backend__frameopt__TypeCtorInfo_12_84 = (MR_Word) &ll_backend__frameopt__ll_backend__frameopt__type_ctor_info_block_needs_frame_0;
+                            MR_Word ll_backend__frameopt__UnprocessedSuccessors_22;
+                            MR_Word ll_backend__frameopt__Var_41;
+                            MR_Word ll_backend__frameopt__Var_42;
+                            MR_Word ll_backend__frameopt__NeedsFrame0_80;
+                            MR_Box ll_backend__frameopt__conv2_NeedsFrame0_80;
+                            MR_Word ll_backend__frameopt__Var_21;
+
+                            {
+                              mercury__map__lookup_3_p_0(ll_backend__frameopt__TypeCtorInfo_11_83, ll_backend__frameopt__TypeCtorInfo_12_84, ll_backend__frameopt__STATE_VARIABLE_OrdNeedsFrame_0_26, ((MR_Box) (ll_backend__frameopt__Label_16)), &ll_backend__frameopt__conv2_NeedsFrame0_80);
+                            }
+                            ll_backend__frameopt__NeedsFrame0_80 = ((MR_Word) ll_backend__frameopt__conv2_NeedsFrame0_80);
+                            switch (ll_backend__frameopt__NeedsFrame0_80) {
+                              default: /*NOTREACHED*/ MR_assert(0);
+                              case (MR_Integer) 1:
+                                {
+                                  {
+                                    mercury__map__det_update_4_p_0(ll_backend__frameopt__TypeCtorInfo_11_83, ll_backend__frameopt__TypeCtorInfo_12_84, ((MR_Box) (ll_backend__frameopt__Label_16)), ((MR_Box) ((MR_Integer) 0)), ll_backend__frameopt__STATE_VARIABLE_OrdNeedsFrame_0_26, &ll_backend__frameopt__STATE_VARIABLE_OrdNeedsFrame_40_40);
+                                  }
+                                }
+                                break;
+                              case (MR_Integer) 0:
+                                ll_backend__frameopt__STATE_VARIABLE_OrdNeedsFrame_40_40 = ll_backend__frameopt__STATE_VARIABLE_OrdNeedsFrame_0_26;
+                                break;
+                            }
+                            {
+                              ll_backend__frameopt__Var_41 = (MR_Word) MR_new_object(MR_Word, ((MR_Integer) 4 * sizeof(MR_Word)), NULL, NULL);
+                              MR_hl_field(MR_mktag(0), ll_backend__frameopt__Var_41, 0) = ((MR_Box) (&ll_backend__frameopt_scalar_common_4[2]));
+                              MR_hl_field(MR_mktag(0), ll_backend__frameopt__Var_41, 1) = ((MR_Box) (ll_backend__frameopt__propagate_frame_requirement_to_successors_9_p_0_1));
+                              MR_hl_field(MR_mktag(0), ll_backend__frameopt__Var_41, 2) = ((MR_Box) (MR_Word) ((MR_Integer) 1));
+                              MR_hl_field(MR_mktag(0), ll_backend__frameopt__Var_41, 3) = ((MR_Box) (ll_backend__frameopt__STATE_VARIABLE_AlreadyProcessed_38_51));
+                            }
+                            {
+                              ll_backend__frameopt__Var_42 = ll_backend__frameopt__f_85_110_117_115_101_100_65_114_103_115_95_95_102_117_110_99_95_95_115_117_99_99_101_115_115_111_114_115_95_95_91_49_44_32_50_93_95_48_1_f_0(ll_backend__frameopt__BlockInfo_17);
+                            }
+                            {
+                              mercury__list__filter_4_p_0(ll_backend__frameopt__TypeCtorInfo_71_71, ll_backend__frameopt__Var_41, ll_backend__frameopt__Var_42, &ll_backend__frameopt__Var_21, &ll_backend__frameopt__UnprocessedSuccessors_22);
+                            }
+                            {
+                              mercury__queue__put_list_3_p_0(ll_backend__frameopt__TypeCtorInfo_71_71, ll_backend__frameopt__UnprocessedSuccessors_22, ll_backend__frameopt__STATE_VARIABLE_Queue_35_35, &ll_backend__frameopt__STATE_VARIABLE_Queue_43_52);
+                            }
+                            ll_backend__frameopt__STATE_VARIABLE_CanTransform_39_39 = ll_backend__frameopt__STATE_VARIABLE_CanTransform_0_31;
+                          }
+                          break;
+                        case (MR_Integer) 2:
+                          {
+                            ll_backend__frameopt__STATE_VARIABLE_Queue_43_52 = ll_backend__frameopt__STATE_VARIABLE_Queue_35_35;
+                            ll_backend__frameopt__STATE_VARIABLE_OrdNeedsFrame_40_40 = ll_backend__frameopt__STATE_VARIABLE_OrdNeedsFrame_0_26;
+                            ll_backend__frameopt__STATE_VARIABLE_CanTransform_39_39 = ll_backend__frameopt__STATE_VARIABLE_CanTransform_0_31;
+                          }
+                          break;
+                      }
+                      /* direct tailcall eliminated */
+                      {
+                        MR_Word ll_backend__frameopt__next_value_of_STATE_VARIABLE_Queue_0_25 = ll_backend__frameopt__STATE_VARIABLE_Queue_43_52;
+                        MR_Word ll_backend__frameopt__next_value_of_STATE_VARIABLE_OrdNeedsFrame_0_26 = ll_backend__frameopt__STATE_VARIABLE_OrdNeedsFrame_40_40;
+                        MR_Word ll_backend__frameopt__next_value_of_STATE_VARIABLE_AlreadyProcessed_0_28 = ll_backend__frameopt__STATE_VARIABLE_AlreadyProcessed_38_51;
+                        MR_Integer ll_backend__frameopt__next_value_of_STATE_VARIABLE_PropagationStepsLeft_0_29 = ll_backend__frameopt__STATE_VARIABLE_PropagationStepsLeft_36_36;
+                        MR_Word ll_backend__frameopt__next_value_of_STATE_VARIABLE_CanTransform_0_31 = ll_backend__frameopt__STATE_VARIABLE_CanTransform_39_39;
+
+                        ll_backend__frameopt__STATE_VARIABLE_CanTransform_0_31 = ll_backend__frameopt__next_value_of_STATE_VARIABLE_CanTransform_0_31;
+                        ll_backend__frameopt__STATE_VARIABLE_PropagationStepsLeft_0_29 = ll_backend__frameopt__next_value_of_STATE_VARIABLE_PropagationStepsLeft_0_29;
+                        ll_backend__frameopt__STATE_VARIABLE_AlreadyProcessed_0_28 = ll_backend__frameopt__next_value_of_STATE_VARIABLE_AlreadyProcessed_0_28;
+                        ll_backend__frameopt__STATE_VARIABLE_OrdNeedsFrame_0_26 = ll_backend__frameopt__next_value_of_STATE_VARIABLE_OrdNeedsFrame_0_26;
+                        ll_backend__frameopt__STATE_VARIABLE_Queue_0_25 = ll_backend__frameopt__next_value_of_STATE_VARIABLE_Queue_0_25;
+                      }
+                      continue;
+                    }
+                  else
+                    {
+                      *ll_backend__frameopt__STATE_VARIABLE_CanTransform_32 = ll_backend__frameopt__STATE_VARIABLE_CanTransform_0_31;
+                      *ll_backend__frameopt__STATE_VARIABLE_PropagationStepsLeft_30 = ll_backend__frameopt__STATE_VARIABLE_PropagationStepsLeft_0_29;
+                      *ll_backend__frameopt__STATE_VARIABLE_OrdNeedsFrame_27 = ll_backend__frameopt__STATE_VARIABLE_OrdNeedsFrame_0_26;
+                    }
+                }
+            }
+            break;
+          case (MR_Integer) 1:
+            {
+              *ll_backend__frameopt__STATE_VARIABLE_OrdNeedsFrame_27 = ll_backend__frameopt__STATE_VARIABLE_OrdNeedsFrame_0_26;
+              *ll_backend__frameopt__STATE_VARIABLE_PropagationStepsLeft_30 = ll_backend__frameopt__STATE_VARIABLE_PropagationStepsLeft_0_29;
+              *ll_backend__frameopt__STATE_VARIABLE_CanTransform_32 = ll_backend__frameopt__STATE_VARIABLE_CanTransform_0_31;
+            }
+            break;
+        }
+      }
+      break;
+    }
+}
+
+static MR_Word MR_CALL 
+ll_backend__frameopt__f_85_110_117_115_101_100_65_114_103_115_95_95_102_117_110_99_95_95_115_117_99_99_101_115_115_111_114_115_95_95_91_49_44_32_50_93_95_48_1_f_0(
+  MR_Word ll_backend__frameopt__BlockInfo_3)
+{
+  {
+    MR_Word ll_backend__frameopt__Successors_4;
+    MR_Word ll_backend__frameopt__SideLabels_5 = ((MR_Word) (MR_hl_field(MR_mktag(0), ll_backend__frameopt__BlockInfo_3, (MR_Integer) 3)));
+    MR_Word ll_backend__frameopt__MaybeFallThrough_6 = ((MR_Word) (MR_hl_field(MR_mktag(0), ll_backend__frameopt__BlockInfo_3, (MR_Integer) 4)));
+    MR_Word ll_backend__frameopt__Var_8 = ((MR_Word) (MR_hl_field(MR_mktag(0), ll_backend__frameopt__BlockInfo_3, (MR_Integer) 0)));
+    MR_Word ll_backend__frameopt__Var_9 = ((MR_Word) (MR_hl_field(MR_mktag(0), ll_backend__frameopt__BlockInfo_3, (MR_Integer) 1)));
+    MR_Word ll_backend__frameopt__Var_10 = ((MR_Word) (MR_hl_field(MR_mktag(0), ll_backend__frameopt__BlockInfo_3, (MR_Integer) 2)));
+    MR_Word ll_backend__frameopt__Var_12 = ((MR_Word) (MR_hl_field(MR_mktag(0), ll_backend__frameopt__BlockInfo_3, (MR_Integer) 5)));
+
+    if ((ll_backend__frameopt__MaybeFallThrough_6 == ((MR_Word) MR_mkword(MR_mktag(0), MR_mkbody((MR_Integer) 0)))))
+      ll_backend__frameopt__Successors_4 = ll_backend__frameopt__SideLabels_5;
+    else
+      {
+        MR_Word ll_backend__frameopt__FallThrough_7 = ((MR_Word) (MR_hl_field(MR_mktag(1), ll_backend__frameopt__MaybeFallThrough_6, (MR_Integer) 0)));
+
+        {
+          ll_backend__frameopt__Successors_4 = (MR_Word) MR_mkword(MR_mktag(1), MR_new_object(MR_Word, ((MR_Integer) 2 * sizeof(MR_Word)), NULL, NULL));
+          MR_hl_field(MR_mktag(1), ll_backend__frameopt__Successors_4, 0) = ((MR_Box) (ll_backend__frameopt__FallThrough_7));
+          MR_hl_field(MR_mktag(1), ll_backend__frameopt__Successors_4, 1) = ((MR_Box) (ll_backend__frameopt__SideLabels_5));
+        }
+      }
+    return ll_backend__frameopt__Successors_4;
+  }
+}
+
+static void MR_CALL 
+ll_backend__frameopt__delay_frame_init_8_p_0(
+  MR_Word ll_backend__frameopt__TypeInfo_for_En_52,
+  MR_Word ll_backend__frameopt__TypeInfo_for_Ex_53,
+  MR_Word ll_backend__frameopt__HeadVar__1_1,
+  MR_Word ll_backend__frameopt__BlockMap_2,
+  MR_Word ll_backend__frameopt__STATE_VARIABLE_RevMap_0_3,
+  MR_Word * ll_backend__frameopt__STATE_VARIABLE_RevMap_4,
+  MR_Word ll_backend__frameopt__STATE_VARIABLE_Queue_0_5,
+  MR_Word * ll_backend__frameopt__STATE_VARIABLE_Queue_6,
+  MR_Word ll_backend__frameopt__STATE_VARIABLE_OrdNeedsFrame_0_7,
+  MR_Word * ll_backend__frameopt__STATE_VARIABLE_OrdNeedsFrame_8)
+{
+  while (MR_TRUE)
+    {
+      /* tailcall optimized into a loop */
+      if ((ll_backend__frameopt__HeadVar__1_1 == ((MR_Word) MR_mkword(MR_mktag(0), MR_mkbody((MR_Integer) 0)))))
+        {
+          *ll_backend__frameopt__STATE_VARIABLE_OrdNeedsFrame_8 = ll_backend__frameopt__STATE_VARIABLE_OrdNeedsFrame_0_7;
+          *ll_backend__frameopt__STATE_VARIABLE_Queue_6 = ll_backend__frameopt__STATE_VARIABLE_Queue_0_5;
+          *ll_backend__frameopt__STATE_VARIABLE_RevMap_4 = ll_backend__frameopt__STATE_VARIABLE_RevMap_0_3;
+        }
+      else
+        {
+          MR_Word ll_backend__frameopt__TypeCtorInfo_54_54 = (MR_Word) &ll_backend__llds__ll_backend__llds__type_ctor_info_label_0;
+          MR_Word ll_backend__frameopt__TypeInfo_56_56;
+          MR_Word ll_backend__frameopt__Label_19 = ((MR_Word) (MR_hl_field(MR_mktag(1), ll_backend__frameopt__HeadVar__1_1, (MR_Integer) 0)));
+          MR_Word ll_backend__frameopt__Labels_20 = ((MR_Word) (MR_hl_field(MR_mktag(1), ll_backend__frameopt__HeadVar__1_1, (MR_Integer) 1)));
+          MR_Word ll_backend__frameopt__BlockInfo_25;
+          MR_Word ll_backend__frameopt__BlockType_26;
+          MR_Word ll_backend__frameopt__STATE_VARIABLE_Queue_39_39;
+          MR_Word ll_backend__frameopt__STATE_VARIABLE_OrdNeedsFrame_41_41;
+          MR_Word ll_backend__frameopt__Var_42;
+          MR_Word ll_backend__frameopt__STATE_VARIABLE_RevMap_43_43;
+          MR_Word ll_backend__frameopt__SideLabels_61;
+          MR_Word ll_backend__frameopt__MaybeFallThrough_62;
+          MR_Box ll_backend__frameopt__conv0_BlockInfo_25;
+          MR_Word ll_backend__frameopt__Var_47;
+          MR_Word ll_backend__frameopt__Var_48;
+          MR_Word ll_backend__frameopt__Var_49;
+
+          {
+            ll_backend__frameopt__TypeInfo_56_56 = (MR_Word) MR_new_object(MR_Word, ((MR_Integer) 3 * sizeof(MR_Word)), NULL, NULL);
+            MR_hl_field(MR_mktag(0), ll_backend__frameopt__TypeInfo_56_56, 0) = ((MR_Box) (&ll_backend__frameopt__ll_backend__frameopt__type_ctor_info_frame_block_info_2));
+            MR_hl_field(MR_mktag(0), ll_backend__frameopt__TypeInfo_56_56, 1) = ((MR_Box) (ll_backend__frameopt__TypeInfo_for_En_52));
+            MR_hl_field(MR_mktag(0), ll_backend__frameopt__TypeInfo_56_56, 2) = ((MR_Box) (ll_backend__frameopt__TypeInfo_for_Ex_53));
+          }
+          {
+            mercury__map__lookup_3_p_0(ll_backend__frameopt__TypeCtorInfo_54_54, ll_backend__frameopt__TypeInfo_56_56, (MR_Word) ll_backend__frameopt__BlockMap_2, ((MR_Box) (ll_backend__frameopt__Label_19)), &ll_backend__frameopt__conv0_BlockInfo_25);
+          }
+          ll_backend__frameopt__BlockInfo_25 = ((MR_Word) ll_backend__frameopt__conv0_BlockInfo_25);
+          ll_backend__frameopt__Var_47 = ((MR_Word) (MR_hl_field(MR_mktag(0), ll_backend__frameopt__BlockInfo_25, (MR_Integer) 0)));
+          ll_backend__frameopt__Var_48 = ((MR_Word) (MR_hl_field(MR_mktag(0), ll_backend__frameopt__BlockInfo_25, (MR_Integer) 1)));
+          ll_backend__frameopt__Var_49 = ((MR_Word) (MR_hl_field(MR_mktag(0), ll_backend__frameopt__BlockInfo_25, (MR_Integer) 2)));
+          ll_backend__frameopt__SideLabels_61 = ((MR_Word) (MR_hl_field(MR_mktag(0), ll_backend__frameopt__BlockInfo_25, (MR_Integer) 3)));
+          ll_backend__frameopt__MaybeFallThrough_62 = ((MR_Word) (MR_hl_field(MR_mktag(0), ll_backend__frameopt__BlockInfo_25, (MR_Integer) 4)));
+          ll_backend__frameopt__BlockType_26 = ((MR_Word) (MR_hl_field(MR_mktag(0), ll_backend__frameopt__BlockInfo_25, (MR_Integer) 5)));
+          switch (MR_tag((MR_Word) ll_backend__frameopt__BlockType_26)) {
+            default: /*NOTREACHED*/ MR_assert(0);
+            case (MR_Integer) 0:
+              {
+                ll_backend__frameopt__STATE_VARIABLE_Queue_39_39 = ll_backend__frameopt__STATE_VARIABLE_Queue_0_5;
+                ll_backend__frameopt__STATE_VARIABLE_OrdNeedsFrame_41_41 = ll_backend__frameopt__STATE_VARIABLE_OrdNeedsFrame_0_7;
+              }
+              break;
+            case (MR_Integer) 1:
+              {
+                MR_Word ll_backend__frameopt__NeedsFrame_28 = ((MR_Word) (MR_hl_field(MR_mktag(1), ll_backend__frameopt__BlockType_26, (MR_Integer) 0)));
+                MR_Word ll_backend__frameopt__Var_29 = ((MR_Word) (MR_hl_field(MR_mktag(1), ll_backend__frameopt__BlockType_26, (MR_Integer) 1)));
+
+                switch (ll_backend__frameopt__NeedsFrame_28) {
+                  default: /*NOTREACHED*/ MR_assert(0);
+                  case (MR_Integer) 1:
+                    {
+                      {
+                        mercury__map__det_insert_4_p_0(ll_backend__frameopt__TypeCtorInfo_54_54, (MR_Word) &ll_backend__frameopt__ll_backend__frameopt__type_ctor_info_block_needs_frame_0, ((MR_Box) (ll_backend__frameopt__Label_19)), ((MR_Box) ((MR_Integer) 1)), ll_backend__frameopt__STATE_VARIABLE_OrdNeedsFrame_0_7, &ll_backend__frameopt__STATE_VARIABLE_OrdNeedsFrame_41_41);
+                      }
+                      ll_backend__frameopt__STATE_VARIABLE_Queue_39_39 = ll_backend__frameopt__STATE_VARIABLE_Queue_0_5;
+                    }
+                    break;
+                  case (MR_Integer) 0:
+                    {
+                      {
+                        mercury__map__det_insert_4_p_0(ll_backend__frameopt__TypeCtorInfo_54_54, (MR_Word) &ll_backend__frameopt__ll_backend__frameopt__type_ctor_info_block_needs_frame_0, ((MR_Box) (ll_backend__frameopt__Label_19)), ((MR_Box) ((MR_Integer) 0)), ll_backend__frameopt__STATE_VARIABLE_OrdNeedsFrame_0_7, &ll_backend__frameopt__STATE_VARIABLE_OrdNeedsFrame_41_41);
+                      }
+                      {
+                        mercury__queue__put_3_p_0(ll_backend__frameopt__TypeCtorInfo_54_54, ((MR_Box) (ll_backend__frameopt__Label_19)), ll_backend__frameopt__STATE_VARIABLE_Queue_0_5, &ll_backend__frameopt__STATE_VARIABLE_Queue_39_39);
+                      }
+                    }
+                    break;
+                }
+              }
+              break;
+            case (MR_Integer) 2:
+              {
+                ll_backend__frameopt__STATE_VARIABLE_Queue_39_39 = ll_backend__frameopt__STATE_VARIABLE_Queue_0_5;
+                ll_backend__frameopt__STATE_VARIABLE_OrdNeedsFrame_41_41 = ll_backend__frameopt__STATE_VARIABLE_OrdNeedsFrame_0_7;
+              }
+              break;
+          }
+          if ((ll_backend__frameopt__MaybeFallThrough_62 == ((MR_Word) MR_mkword(MR_mktag(0), MR_mkbody((MR_Integer) 0)))))
+            ll_backend__frameopt__Var_42 = ll_backend__frameopt__SideLabels_61;
+          else
+            {
+              MR_Word ll_backend__frameopt__FallThrough_63 = ((MR_Word) (MR_hl_field(MR_mktag(1), ll_backend__frameopt__MaybeFallThrough_62, (MR_Integer) 0)));
+
+              {
+                ll_backend__frameopt__Var_42 = (MR_Word) MR_mkword(MR_mktag(1), MR_new_object(MR_Word, ((MR_Integer) 2 * sizeof(MR_Word)), NULL, NULL));
+                MR_hl_field(MR_mktag(1), ll_backend__frameopt__Var_42, 0) = ((MR_Box) (ll_backend__frameopt__FallThrough_63));
+                MR_hl_field(MR_mktag(1), ll_backend__frameopt__Var_42, 1) = ((MR_Box) (ll_backend__frameopt__SideLabels_61));
+              }
+            }
+          {
+            ll_backend__frameopt__rev_map_side_labels_4_p_0(ll_backend__frameopt__Var_42, ll_backend__frameopt__Label_19, ll_backend__frameopt__STATE_VARIABLE_RevMap_0_3, &ll_backend__frameopt__STATE_VARIABLE_RevMap_43_43);
+          }
+          /* direct tailcall eliminated */
+          {
+            MR_Word ll_backend__frameopt__next_value_of_HeadVar__1_1 = ll_backend__frameopt__Labels_20;
+            MR_Word ll_backend__frameopt__next_value_of_STATE_VARIABLE_RevMap_0_3 = ll_backend__frameopt__STATE_VARIABLE_RevMap_43_43;
+            MR_Word ll_backend__frameopt__next_value_of_STATE_VARIABLE_Queue_0_5 = ll_backend__frameopt__STATE_VARIABLE_Queue_39_39;
+            MR_Word ll_backend__frameopt__next_value_of_STATE_VARIABLE_OrdNeedsFrame_0_7 = ll_backend__frameopt__STATE_VARIABLE_OrdNeedsFrame_41_41;
+
+            ll_backend__frameopt__STATE_VARIABLE_OrdNeedsFrame_0_7 = ll_backend__frameopt__next_value_of_STATE_VARIABLE_OrdNeedsFrame_0_7;
+            ll_backend__frameopt__STATE_VARIABLE_Queue_0_5 = ll_backend__frameopt__next_value_of_STATE_VARIABLE_Queue_0_5;
+            ll_backend__frameopt__STATE_VARIABLE_RevMap_0_3 = ll_backend__frameopt__next_value_of_STATE_VARIABLE_RevMap_0_3;
+            ll_backend__frameopt__HeadVar__1_1 = ll_backend__frameopt__next_value_of_HeadVar__1_1;
+          }
+          continue;
+        }
+      break;
+    }
+}
+
+static void MR_CALL 
+ll_backend__frameopt__rev_map_side_labels_4_p_0(
+  MR_Word ll_backend__frameopt__HeadVar__1_1,
+  MR_Word ll_backend__frameopt__HeadVar__2_2,
+  MR_Word ll_backend__frameopt__STATE_VARIABLE_RevMap_0_3,
+  MR_Word * ll_backend__frameopt__STATE_VARIABLE_RevMap_4)
+{
+  while (MR_TRUE)
+    {
+      /* tailcall optimized into a loop */
+      {
+        MR_bool ll_backend__frameopt__succeeded;
+
+        if ((ll_backend__frameopt__HeadVar__1_1 == ((MR_Word) MR_mkword(MR_mktag(0), MR_mkbody((MR_Integer) 0)))))
+          *ll_backend__frameopt__STATE_VARIABLE_RevMap_4 = ll_backend__frameopt__STATE_VARIABLE_RevMap_0_3;
+        else
+          {
+            MR_Word ll_backend__frameopt__Label_9 = ((MR_Word) (MR_hl_field(MR_mktag(1), ll_backend__frameopt__HeadVar__1_1, (MR_Integer) 0)));
+            MR_Word ll_backend__frameopt__Labels_10 = ((MR_Word) (MR_hl_field(MR_mktag(1), ll_backend__frameopt__HeadVar__1_1, (MR_Integer) 1)));
+            MR_Word ll_backend__frameopt__STATE_VARIABLE_RevMap_17_17;
+            MR_Word ll_backend__frameopt__OtherSources0_13;
+            MR_Box ll_backend__frameopt__conv0_OtherSources0_13;
+
+            {
+              ll_backend__frameopt__succeeded = mercury__map__search_3_p_0((MR_Word) &ll_backend__llds__ll_backend__llds__type_ctor_info_label_0, (MR_Word) &ll_backend__frameopt_scalar_common_2[1], ll_backend__frameopt__STATE_VARIABLE_RevMap_0_3, ((MR_Box) (ll_backend__frameopt__Label_9)), &ll_backend__frameopt__conv0_OtherSources0_13);
+            }
+            if (ll_backend__frameopt__succeeded)
+              {
+                ll_backend__frameopt__OtherSources0_13 = ((MR_Word) ll_backend__frameopt__conv0_OtherSources0_13);
+                ll_backend__frameopt__succeeded = MR_TRUE;
+              }
+            if (ll_backend__frameopt__succeeded)
+              {
+                MR_Word ll_backend__frameopt__OtherSources_14;
+
+                {
+                  ll_backend__frameopt__OtherSources_14 = (MR_Word) MR_mkword(MR_mktag(1), MR_new_object(MR_Word, ((MR_Integer) 2 * sizeof(MR_Word)), NULL, NULL));
+                  MR_hl_field(MR_mktag(1), ll_backend__frameopt__OtherSources_14, 0) = ((MR_Box) (ll_backend__frameopt__HeadVar__2_2));
+                  MR_hl_field(MR_mktag(1), ll_backend__frameopt__OtherSources_14, 1) = ((MR_Box) (ll_backend__frameopt__OtherSources0_13));
+                }
+                {
+                  mercury__map__det_update_4_p_0((MR_Word) &ll_backend__llds__ll_backend__llds__type_ctor_info_label_0, (MR_Word) &ll_backend__frameopt_scalar_common_2[1], ((MR_Box) (ll_backend__frameopt__Label_9)), ((MR_Box) (ll_backend__frameopt__OtherSources_14)), ll_backend__frameopt__STATE_VARIABLE_RevMap_0_3, &ll_backend__frameopt__STATE_VARIABLE_RevMap_17_17);
+                }
+              }
+            else
+              {
+                MR_Word ll_backend__frameopt__OtherSources_21;
+
+                {
+                  ll_backend__frameopt__OtherSources_21 = (MR_Word) MR_mkword(MR_mktag(1), MR_new_object(MR_Word, ((MR_Integer) 2 * sizeof(MR_Word)), NULL, NULL));
+                  MR_hl_field(MR_mktag(1), ll_backend__frameopt__OtherSources_21, 0) = ((MR_Box) (ll_backend__frameopt__HeadVar__2_2));
+                  MR_hl_field(MR_mktag(1), ll_backend__frameopt__OtherSources_21, 1) = ((MR_Box) (MR_mkword(MR_mktag(0), MR_mkbody((MR_Integer) 0))));
+                }
+                {
+                  mercury__map__det_insert_4_p_0((MR_Word) &ll_backend__llds__ll_backend__llds__type_ctor_info_label_0, (MR_Word) &ll_backend__frameopt_scalar_common_2[1], ((MR_Box) (ll_backend__frameopt__Label_9)), ((MR_Box) (ll_backend__frameopt__OtherSources_21)), ll_backend__frameopt__STATE_VARIABLE_RevMap_0_3, &ll_backend__frameopt__STATE_VARIABLE_RevMap_17_17);
+                }
+              }
+            /* direct tailcall eliminated */
+            {
+              MR_Word ll_backend__frameopt__next_value_of_HeadVar__1_1 = ll_backend__frameopt__Labels_10;
+              MR_Word ll_backend__frameopt__next_value_of_STATE_VARIABLE_RevMap_0_3 = ll_backend__frameopt__STATE_VARIABLE_RevMap_17_17;
+
+              ll_backend__frameopt__STATE_VARIABLE_RevMap_0_3 = ll_backend__frameopt__next_value_of_STATE_VARIABLE_RevMap_0_3;
+              ll_backend__frameopt__HeadVar__1_1 = ll_backend__frameopt__next_value_of_HeadVar__1_1;
+            }
+            continue;
+          }
+      }
+      break;
+    }
+}
+
+static MR_bool MR_CALL 
+ll_backend__frameopt__can_delay_frame_2_p_0(
+  MR_Word ll_backend__frameopt__TypeInfo_for_En_15,
+  MR_Word ll_backend__frameopt__TypeInfo_for_Ex_16,
+  MR_Word ll_backend__frameopt__HeadVar__1_1,
+  MR_Word ll_backend__frameopt__BlockMap_2)
+{
+  {
+    MR_bool ll_backend__frameopt__succeeded;
+
+    if ((ll_backend__frameopt__HeadVar__1_1 == ((MR_Word) MR_mkword(MR_mktag(0), MR_mkbody((MR_Integer) 0)))))
+      ll_backend__frameopt__succeeded = MR_TRUE;
+    else
+      {
+        MR_Word ll_backend__frameopt__TypeInfo_19_19;
+        MR_Word ll_backend__frameopt__Label_4 = ((MR_Word) (MR_hl_field(MR_mktag(1), ll_backend__frameopt__HeadVar__1_1, (MR_Integer) 0)));
+        MR_Word ll_backend__frameopt__BlockInfo_7;
+        MR_Word ll_backend__frameopt__Var_9;
+        MR_Word ll_backend__frameopt___Labels_5 = ((MR_Word) (MR_hl_field(MR_mktag(1), ll_backend__frameopt__HeadVar__1_1, (MR_Integer) 1)));
+        MR_Box ll_backend__frameopt__conv0_BlockInfo_7;
+        MR_Word ll_backend__frameopt__Var_10;
+        MR_Word ll_backend__frameopt__Var_11;
+        MR_Word ll_backend__frameopt__Var_12;
+        MR_Word ll_backend__frameopt__Var_13;
+        MR_Word ll_backend__frameopt__Var_14;
+        MR_Box ll_backend__frameopt__Var_8;
+
+        {
+          ll_backend__frameopt__TypeInfo_19_19 = (MR_Word) MR_new_object(MR_Word, ((MR_Integer) 3 * sizeof(MR_Word)), NULL, NULL);
+          MR_hl_field(MR_mktag(0), ll_backend__frameopt__TypeInfo_19_19, 0) = ((MR_Box) (&ll_backend__frameopt__ll_backend__frameopt__type_ctor_info_frame_block_info_2));
+          MR_hl_field(MR_mktag(0), ll_backend__frameopt__TypeInfo_19_19, 1) = ((MR_Box) (ll_backend__frameopt__TypeInfo_for_En_15));
+          MR_hl_field(MR_mktag(0), ll_backend__frameopt__TypeInfo_19_19, 2) = ((MR_Box) (ll_backend__frameopt__TypeInfo_for_Ex_16));
+        }
+        {
+          mercury__map__lookup_3_p_0((MR_Word) &ll_backend__llds__ll_backend__llds__type_ctor_info_label_0, ll_backend__frameopt__TypeInfo_19_19, (MR_Word) ll_backend__frameopt__BlockMap_2, ((MR_Box) (ll_backend__frameopt__Label_4)), &ll_backend__frameopt__conv0_BlockInfo_7);
+        }
+        ll_backend__frameopt__BlockInfo_7 = ((MR_Word) ll_backend__frameopt__conv0_BlockInfo_7);
+        ll_backend__frameopt__Var_10 = ((MR_Word) (MR_hl_field(MR_mktag(0), ll_backend__frameopt__BlockInfo_7, (MR_Integer) 0)));
+        ll_backend__frameopt__Var_11 = ((MR_Word) (MR_hl_field(MR_mktag(0), ll_backend__frameopt__BlockInfo_7, (MR_Integer) 1)));
+        ll_backend__frameopt__Var_12 = ((MR_Word) (MR_hl_field(MR_mktag(0), ll_backend__frameopt__BlockInfo_7, (MR_Integer) 2)));
+        ll_backend__frameopt__Var_13 = ((MR_Word) (MR_hl_field(MR_mktag(0), ll_backend__frameopt__BlockInfo_7, (MR_Integer) 3)));
+        ll_backend__frameopt__Var_14 = ((MR_Word) (MR_hl_field(MR_mktag(0), ll_backend__frameopt__BlockInfo_7, (MR_Integer) 4)));
+        ll_backend__frameopt__Var_9 = ((MR_Word) (MR_hl_field(MR_mktag(0), ll_backend__frameopt__BlockInfo_7, (MR_Integer) 5)));
+        ll_backend__frameopt__succeeded = ((MR_tag((MR_Word) ll_backend__frameopt__Var_9)) == (MR_mktag((MR_Integer) 0)));
+        if (ll_backend__frameopt__succeeded)
+          ll_backend__frameopt__Var_8 = (MR_hl_field(MR_mktag(0), ll_backend__frameopt__Var_9, (MR_Integer) 0));
+      }
+    return ll_backend__frameopt__succeeded;
+  }
+}
+
+static void MR_CALL 
+ll_backend__frameopt__keep_frame_transform_6_p_0(
+  MR_Word ll_backend__frameopt__HeadVar__1_1,
+  MR_Word ll_backend__frameopt__FirstLabel_2,
+  MR_Word ll_backend__frameopt__SecondLabel_3,
+  MR_Word ll_backend__frameopt__CanClobberSuccip_4,
+  MR_Word ll_backend__frameopt__STATE_VARIABLE_BlockMap_0_5,
+  MR_Word * ll_backend__frameopt__STATE_VARIABLE_BlockMap_6)
+{
+  while (MR_TRUE)
+    {
+      /* tailcall optimized into a loop */
+      {
+        MR_bool ll_backend__frameopt__succeeded;
+
+        if ((ll_backend__frameopt__HeadVar__1_1 == ((MR_Word) MR_mkword(MR_mktag(0), MR_mkbody((MR_Integer) 0)))))
+          *ll_backend__frameopt__STATE_VARIABLE_BlockMap_6 = ll_backend__frameopt__STATE_VARIABLE_BlockMap_0_5;
+        else
+          {
+            MR_Word ll_backend__frameopt__TypeCtorInfo_65_65 = (MR_Word) &ll_backend__llds__ll_backend__llds__type_ctor_info_label_0;
+            MR_Word ll_backend__frameopt__TypeInfo_66_66 = (MR_Word) &ll_backend__frameopt_scalar_common_1[0];
+            MR_Word ll_backend__frameopt__Label_13 = ((MR_Word) (MR_hl_field(MR_mktag(1), ll_backend__frameopt__HeadVar__1_1, (MR_Integer) 0)));
+            MR_Word ll_backend__frameopt__Labels_14 = ((MR_Word) (MR_hl_field(MR_mktag(1), ll_backend__frameopt__HeadVar__1_1, (MR_Integer) 1)));
+            MR_Word ll_backend__frameopt__BlockInfo0_19;
+            MR_Word ll_backend__frameopt__STATE_VARIABLE_BlockMap_63_63;
+            MR_Box ll_backend__frameopt__conv0_BlockInfo0_19;
+            MR_Word ll_backend__frameopt__OrigInstrs_20;
+            MR_Word ll_backend__frameopt__FallInto_21;
+            MR_Word ll_backend__frameopt__Succip_23;
+            MR_Word ll_backend__frameopt__Livevals_24;
+            MR_String ll_backend__frameopt__Comment_27;
+            MR_Word ll_backend__frameopt__Goto_25;
+            MR_Word ll_backend__frameopt__GotoLabel_26;
+            MR_Word ll_backend__frameopt__Var_42;
+            MR_Word ll_backend__frameopt__Var_43;
+            MR_Word ll_backend__frameopt__Var_44;
+            MR_Word ll_backend__frameopt__Var_45;
+            MR_Word ll_backend__frameopt__Var_46;
+            MR_Word ll_backend__frameopt__Var_47;
+            MR_Word ll_backend__frameopt__Var_48;
+            MR_Word ll_backend__frameopt__Var_68;
+            MR_Word ll_backend__frameopt__FirstLabelType_72;
+            MR_Word ll_backend__frameopt__ProcLabel_73;
+            MR_Word ll_backend__frameopt__GotoLabelType_74;
+            MR_Word ll_backend__frameopt__Var_75;
+            MR_Word ll_backend__frameopt__Var_22;
+
+            {
+              mercury__map__lookup_3_p_0(ll_backend__frameopt__TypeCtorInfo_65_65, ll_backend__frameopt__TypeInfo_66_66, ll_backend__frameopt__STATE_VARIABLE_BlockMap_0_5, ((MR_Box) (ll_backend__frameopt__Label_13)), &ll_backend__frameopt__conv0_BlockInfo0_19);
+            }
+            ll_backend__frameopt__BlockInfo0_19 = ((MR_Word) ll_backend__frameopt__conv0_BlockInfo0_19);
+            ll_backend__frameopt__Var_68 = ((MR_Word) (MR_hl_field(MR_mktag(0), ll_backend__frameopt__BlockInfo0_19, (MR_Integer) 0)));
+            ll_backend__frameopt__OrigInstrs_20 = ((MR_Word) (MR_hl_field(MR_mktag(0), ll_backend__frameopt__BlockInfo0_19, (MR_Integer) 1)));
+            ll_backend__frameopt__FallInto_21 = ((MR_Word) (MR_hl_field(MR_mktag(0), ll_backend__frameopt__BlockInfo0_19, (MR_Integer) 2)));
+            ll_backend__frameopt__Var_42 = ((MR_Word) (MR_hl_field(MR_mktag(0), ll_backend__frameopt__BlockInfo0_19, (MR_Integer) 3)));
+            ll_backend__frameopt__Var_44 = ((MR_Word) (MR_hl_field(MR_mktag(0), ll_backend__frameopt__BlockInfo0_19, (MR_Integer) 4)));
+            ll_backend__frameopt__Var_45 = ((MR_Word) (MR_hl_field(MR_mktag(0), ll_backend__frameopt__BlockInfo0_19, (MR_Integer) 5)));
+            {
+              ll_backend__frameopt__succeeded = ll_backend__llds____Unify____label_0_0(ll_backend__frameopt__Label_13, ll_backend__frameopt__Var_68);
+            }
+            if (ll_backend__frameopt__succeeded)
+              {
+                ll_backend__frameopt__succeeded = (ll_backend__frameopt__Var_44 == ((MR_Word) MR_mkword(MR_mktag(0), MR_mkbody((MR_Integer) 0))));
+                if (ll_backend__frameopt__succeeded)
+                  {
+                    ll_backend__frameopt__succeeded = ((MR_tag((MR_Word) ll_backend__frameopt__Var_42)) == (MR_mktag((MR_Integer) 1)));
+                    if (ll_backend__frameopt__succeeded)
+                      {
+                        ll_backend__frameopt__Var_22 = ((MR_Word) (MR_hl_field(MR_mktag(1), ll_backend__frameopt__Var_42, (MR_Integer) 0)));
+                        ll_backend__frameopt__Var_43 = ((MR_Word) (MR_hl_field(MR_mktag(1), ll_backend__frameopt__Var_42, (MR_Integer) 1)));
+                        ll_backend__frameopt__succeeded = (ll_backend__frameopt__Var_43 == ((MR_Word) MR_mkword(MR_mktag(0), MR_mkbody((MR_Integer) 0))));
+                        if (ll_backend__frameopt__succeeded)
+                          {
+                            ll_backend__frameopt__succeeded = ((MR_tag((MR_Word) ll_backend__frameopt__Var_45)) == (MR_mktag((MR_Integer) 2)));
+                            if (ll_backend__frameopt__succeeded)
+                              {
+                                ll_backend__frameopt__Var_46 = ((MR_Word) (MR_hl_field(MR_mktag(2), ll_backend__frameopt__Var_45, (MR_Integer) 0)));
+                                ll_backend__frameopt__Succip_23 = ((MR_Word) (MR_hl_field(MR_mktag(0), ll_backend__frameopt__Var_46, (MR_Integer) 0)));
+                                ll_backend__frameopt__Livevals_24 = ((MR_Word) (MR_hl_field(MR_mktag(0), ll_backend__frameopt__Var_46, (MR_Integer) 1)));
+                                ll_backend__frameopt__Goto_25 = ((MR_Word) (MR_hl_field(MR_mktag(0), ll_backend__frameopt__Var_46, (MR_Integer) 2)));
+                                ll_backend__frameopt__Var_47 = ((MR_Word) (MR_hl_field(MR_mktag(0), ll_backend__frameopt__Goto_25, (MR_Integer) 0)));
+                                ll_backend__frameopt__Comment_27 = ((MR_String) (MR_hl_field(MR_mktag(0), ll_backend__frameopt__Goto_25, (MR_Integer) 1)));
+                                ll_backend__frameopt__succeeded = ((((MR_tag((MR_Word) ll_backend__frameopt__Var_47)) == (MR_mktag((MR_Integer) 3)))) && (((((MR_Integer) (MR_Word) (MR_hl_field(MR_mktag(3), ll_backend__frameopt__Var_47, (MR_Integer) 0)))) == (MR_Integer) 6)));
+                                if (ll_backend__frameopt__succeeded)
+                                  {
+                                    ll_backend__frameopt__Var_48 = ((MR_Word) (MR_hl_field(MR_mktag(3), ll_backend__frameopt__Var_47, (MR_Integer) 1)));
+                                    ll_backend__frameopt__succeeded = ((MR_tag((MR_Word) ll_backend__frameopt__Var_48)) == (MR_mktag((MR_Integer) 1)));
+                                    if (ll_backend__frameopt__succeeded)
+                                      {
+                                        ll_backend__frameopt__GotoLabel_26 = ((MR_Word) (MR_hl_field(MR_mktag(1), ll_backend__frameopt__Var_48, (MR_Integer) 0)));
+                                        ll_backend__frameopt__succeeded = ((MR_tag((MR_Word) ll_backend__frameopt__FirstLabel_2)) == (MR_mktag((MR_Integer) 1)));
+                                        if (ll_backend__frameopt__succeeded)
+                                          {
+                                            ll_backend__frameopt__FirstLabelType_72 = ((MR_Word) (MR_hl_field(MR_mktag(1), ll_backend__frameopt__FirstLabel_2, (MR_Integer) 0)));
+                                            ll_backend__frameopt__ProcLabel_73 = ((MR_Word) (MR_hl_field(MR_mktag(1), ll_backend__frameopt__FirstLabel_2, (MR_Integer) 1)));
+                                            ll_backend__frameopt__succeeded = ((MR_tag((MR_Word) ll_backend__frameopt__GotoLabel_26)) == (MR_mktag((MR_Integer) 1)));
+                                            if (ll_backend__frameopt__succeeded)
+                                              {
+                                                ll_backend__frameopt__GotoLabelType_74 = ((MR_Word) (MR_hl_field(MR_mktag(1), ll_backend__frameopt__GotoLabel_26, (MR_Integer) 0)));
+                                                ll_backend__frameopt__Var_75 = ((MR_Word) (MR_hl_field(MR_mktag(1), ll_backend__frameopt__GotoLabel_26, (MR_Integer) 1)));
+                                                {
+                                                  ll_backend__frameopt__succeeded = mdbcomp__prim_data____Unify____proc_label_0_0(ll_backend__frameopt__ProcLabel_73, ll_backend__frameopt__Var_75);
+                                                }
+                                                if (ll_backend__frameopt__succeeded)
+                                                  switch (ll_backend__frameopt__FirstLabelType_72) {
+                                                    default: /*NOTREACHED*/ MR_assert(0);
+                                                    case (MR_Integer) 0:
+                                                      ll_backend__frameopt__succeeded = (ll_backend__frameopt__GotoLabelType_74 == (MR_Integer) 0);
+                                                      break;
+                                                    case (MR_Integer) 2:
+                                                      ll_backend__frameopt__succeeded = MR_TRUE;
+                                                      break;
+                                                    case (MR_Integer) 1:
+                                                      switch (ll_backend__frameopt__GotoLabelType_74) {
+                                                        default:
+                                                          ll_backend__frameopt__succeeded = MR_FALSE;
+                                                          break;
+                                                        case (MR_Integer) 0:
+                                                        case (MR_Integer) 1:
+                                                          ll_backend__frameopt__succeeded = MR_TRUE;
+                                                          break;
+                                                      }
+                                                      break;
+                                                  }
+                                              }
+                                          }
+                                      }
+                                  }
+                              }
+                          }
+                      }
+                  }
+              }
+            if (ll_backend__frameopt__succeeded)
+              {
+                MR_Word ll_backend__frameopt__TypeCtorInfo_67_67;
+                MR_Word ll_backend__frameopt__OrigLabelInstr_32;
+                MR_String ll_backend__frameopt__NewComment_33;
+                MR_Word ll_backend__frameopt__NewGoto_34;
+                MR_Word ll_backend__frameopt__LivevalsGoto_35;
+                MR_Word ll_backend__frameopt__BackInstrs_36;
+                MR_Word ll_backend__frameopt__Instrs_37;
+                MR_Word ll_backend__frameopt__BlockInfo_39;
+                MR_Word ll_backend__frameopt__Var_54;
+                MR_Word ll_backend__frameopt__Var_55;
+                MR_Word ll_backend__frameopt__Var_56;
+                MR_Word ll_backend__frameopt__Var_60;
+                MR_Word ll_backend__frameopt__OrigInstr0_28;
+                MR_Word ll_backend__frameopt__Var_49;
+                MR_Word ll_backend__frameopt__Var_29;
+                MR_String ll_backend__frameopt__Var_31;
+                MR_Word ll_backend__frameopt__Var_30;
+
+                ll_backend__frameopt__succeeded = ((MR_tag((MR_Word) ll_backend__frameopt__OrigInstrs_20)) == (MR_mktag((MR_Integer) 1)));
+                if (ll_backend__frameopt__succeeded)
+                  {
+                    ll_backend__frameopt__OrigInstr0_28 = ((MR_Word) (MR_hl_field(MR_mktag(1), ll_backend__frameopt__OrigInstrs_20, (MR_Integer) 0)));
+                    ll_backend__frameopt__Var_29 = ((MR_Word) (MR_hl_field(MR_mktag(1), ll_backend__frameopt__OrigInstrs_20, (MR_Integer) 1)));
+                    ll_backend__frameopt__Var_49 = ((MR_Word) (MR_hl_field(MR_mktag(0), ll_backend__frameopt__OrigInstr0_28, (MR_Integer) 0)));
+                    ll_backend__frameopt__Var_31 = ((MR_String) (MR_hl_field(MR_mktag(0), ll_backend__frameopt__OrigInstr0_28, (MR_Integer) 1)));
+                    ll_backend__frameopt__succeeded = ((((MR_tag((MR_Word) ll_backend__frameopt__Var_49)) == (MR_mktag((MR_Integer) 3)))) && (((((MR_Integer) (MR_Word) (MR_hl_field(MR_mktag(3), ll_backend__frameopt__Var_49, (MR_Integer) 0)))) == (MR_Integer) 5)));
+                    if (ll_backend__frameopt__succeeded)
+                      ll_backend__frameopt__Var_30 = ((MR_Word) (MR_hl_field(MR_mktag(3), ll_backend__frameopt__Var_49, (MR_Integer) 1)));
+                  }
+                if (ll_backend__frameopt__succeeded)
+                  ll_backend__frameopt__OrigLabelInstr_32 = ll_backend__frameopt__OrigInstr0_28;
+                else
+                  {
+                    {
+                      mercury__require__unexpected_3_p_0((MR_String) "ll_backend.frameopt", (MR_String) "predicate \140ll_backend.frameopt.keep_frame_transform\'/6", (MR_String) "block does not begin with label");
+                      return;
+                    }
+                  }
+                {
+                  mercury__string__append_3_p_2(ll_backend__frameopt__Comment_27, (MR_String) " (keeping frame)", &ll_backend__frameopt__NewComment_33);
+                }
+                {
+                  ll_backend__frameopt__Var_55 = (MR_Word) MR_mkword(MR_mktag(1), MR_new_object(MR_Word, ((MR_Integer) 1 * sizeof(MR_Word)), NULL, NULL));
+                  MR_hl_field(MR_mktag(1), ll_backend__frameopt__Var_55, 0) = ((MR_Box) (ll_backend__frameopt__SecondLabel_3));
+                }
+                {
+                  ll_backend__frameopt__Var_54 = (MR_Word) MR_mkword(MR_mktag(3), MR_new_object(MR_Word, ((MR_Integer) 2 * sizeof(MR_Word)), NULL, NULL));
+                  MR_hl_field(MR_mktag(3), ll_backend__frameopt__Var_54, 0) = ((MR_Box) (MR_Word) ((MR_Integer) 6));
+                  MR_hl_field(MR_mktag(3), ll_backend__frameopt__Var_54, 1) = ((MR_Box) (ll_backend__frameopt__Var_55));
+                }
+                {
+                  ll_backend__frameopt__NewGoto_34 = (MR_Word) MR_new_object(MR_Word, ((MR_Integer) 2 * sizeof(MR_Word)), NULL, NULL);
+                  MR_hl_field(MR_mktag(0), ll_backend__frameopt__NewGoto_34, 0) = ((MR_Box) (ll_backend__frameopt__Var_54));
+                  MR_hl_field(MR_mktag(0), ll_backend__frameopt__NewGoto_34, 1) = ((MR_Box) (ll_backend__frameopt__NewComment_33));
+                }
+                ll_backend__frameopt__TypeCtorInfo_67_67 = (MR_Word) &ll_backend__llds__ll_backend__llds__type_ctor_info_instruction_0;
+                {
+                  ll_backend__frameopt__Var_56 = (MR_Word) MR_mkword(MR_mktag(1), MR_new_object(MR_Word, ((MR_Integer) 2 * sizeof(MR_Word)), NULL, NULL));
+                  MR_hl_field(MR_mktag(1), ll_backend__frameopt__Var_56, 0) = ((MR_Box) (ll_backend__frameopt__NewGoto_34));
+                  MR_hl_field(MR_mktag(1), ll_backend__frameopt__Var_56, 1) = ((MR_Box) (MR_mkword(MR_mktag(0), MR_mkbody((MR_Integer) 0))));
+                }
+                {
+                  ll_backend__frameopt__LivevalsGoto_35 = mercury__list__f_43_43_2_f_0(ll_backend__frameopt__TypeCtorInfo_67_67, ll_backend__frameopt__Livevals_24, ll_backend__frameopt__Var_56);
+                }
+                switch (ll_backend__frameopt__CanClobberSuccip_4) {
+                  default: /*NOTREACHED*/ MR_assert(0);
+                  case (MR_Integer) 0:
+                    ll_backend__frameopt__BackInstrs_36 = ll_backend__frameopt__LivevalsGoto_35;
+                    break;
+                  case (MR_Integer) 1:
+                    {
+                      ll_backend__frameopt__BackInstrs_36 = mercury__list__f_43_43_2_f_0(ll_backend__frameopt__TypeCtorInfo_67_67, ll_backend__frameopt__Succip_23, ll_backend__frameopt__LivevalsGoto_35);
+                    }
+                    break;
+                }
+                {
+                  ll_backend__frameopt__Instrs_37 = (MR_Word) MR_mkword(MR_mktag(1), MR_new_object(MR_Word, ((MR_Integer) 2 * sizeof(MR_Word)), NULL, NULL));
+                  MR_hl_field(MR_mktag(1), ll_backend__frameopt__Instrs_37, 0) = ((MR_Box) (ll_backend__frameopt__OrigLabelInstr_32));
+                  MR_hl_field(MR_mktag(1), ll_backend__frameopt__Instrs_37, 1) = ((MR_Box) (ll_backend__frameopt__BackInstrs_36));
+                }
+                {
+                  ll_backend__frameopt__Var_60 = (MR_Word) MR_mkword(MR_mktag(1), MR_new_object(MR_Word, ((MR_Integer) 2 * sizeof(MR_Word)), NULL, NULL));
+                  MR_hl_field(MR_mktag(1), ll_backend__frameopt__Var_60, 0) = ((MR_Box) (ll_backend__frameopt__SecondLabel_3));
+                  MR_hl_field(MR_mktag(1), ll_backend__frameopt__Var_60, 1) = ((MR_Box) (MR_mkword(MR_mktag(0), MR_mkbody((MR_Integer) 0))));
+                }
+                {
+                  ll_backend__frameopt__BlockInfo_39 = (MR_Word) MR_new_object(MR_Word, ((MR_Integer) 6 * sizeof(MR_Word)), NULL, NULL);
+                  MR_hl_field(MR_mktag(0), ll_backend__frameopt__BlockInfo_39, 0) = ((MR_Box) (ll_backend__frameopt__Label_13));
+                  MR_hl_field(MR_mktag(0), ll_backend__frameopt__BlockInfo_39, 1) = ((MR_Box) (ll_backend__frameopt__Instrs_37));
+                  MR_hl_field(MR_mktag(0), ll_backend__frameopt__BlockInfo_39, 2) = ((MR_Box) (ll_backend__frameopt__FallInto_21));
+                  MR_hl_field(MR_mktag(0), ll_backend__frameopt__BlockInfo_39, 3) = ((MR_Box) (ll_backend__frameopt__Var_60));
+                  MR_hl_field(MR_mktag(0), ll_backend__frameopt__BlockInfo_39, 4) = ((MR_Box) (MR_mkword(MR_mktag(0), MR_mkbody((MR_Integer) 0))));
+                  MR_hl_field(MR_mktag(0), ll_backend__frameopt__BlockInfo_39, 5) = ((MR_Box) (MR_mkword(MR_mktag(1), &ll_backend__frameopt_scalar_common_2[12])));
+                }
+                {
+                  mercury__map__det_update_4_p_0(ll_backend__frameopt__TypeCtorInfo_65_65, ll_backend__frameopt__TypeInfo_66_66, ((MR_Box) (ll_backend__frameopt__Label_13)), ((MR_Box) (ll_backend__frameopt__BlockInfo_39)), ll_backend__frameopt__STATE_VARIABLE_BlockMap_0_5, &ll_backend__frameopt__STATE_VARIABLE_BlockMap_63_63);
+                }
+              }
+            else
+              ll_backend__frameopt__STATE_VARIABLE_BlockMap_63_63 = ll_backend__frameopt__STATE_VARIABLE_BlockMap_0_5;
+            /* direct tailcall eliminated */
+            {
+              MR_Word ll_backend__frameopt__next_value_of_HeadVar__1_1 = ll_backend__frameopt__Labels_14;
+              MR_Word ll_backend__frameopt__next_value_of_STATE_VARIABLE_BlockMap_0_5 = ll_backend__frameopt__STATE_VARIABLE_BlockMap_63_63;
+
+              ll_backend__frameopt__STATE_VARIABLE_BlockMap_0_5 = ll_backend__frameopt__next_value_of_STATE_VARIABLE_BlockMap_0_5;
+              ll_backend__frameopt__HeadVar__1_1 = ll_backend__frameopt__next_value_of_HeadVar__1_1;
+            }
+            continue;
+          }
+      }
+      break;
+    }
+}
+
+static void MR_CALL 
+ll_backend__frameopt__can_clobber_succip_2_f_0_1(
+  void * ll_backend__frameopt__env_ptr_arg)
+{
+  {
+    struct ll_backend__frameopt__can_clobber_succip_3_f_0_env_0_s * ll_backend__frameopt__env_ptr = (struct ll_backend__frameopt__can_clobber_succip_3_f_0_env_0_s *) ll_backend__frameopt__env_ptr_arg;
+
+    MR_builtin_longjmp((ll_backend__frameopt__env_ptr)->ll_backend__frameopt__can_clobber_succip_3_f_0_env_0__commit_0, 1);
+  }
+}
+
+static void MR_CALL 
+ll_backend__frameopt__can_clobber_succip_2_f_0_3(
+  void * ll_backend__frameopt__env_ptr_arg)
+{
+  {
+    struct ll_backend__frameopt__can_clobber_succip_3_f_0_env_0_s * ll_backend__frameopt__env_ptr = (struct ll_backend__frameopt__can_clobber_succip_3_f_0_env_0_s *) ll_backend__frameopt__env_ptr_arg;
+
+    (ll_backend__frameopt__env_ptr)->ll_backend__frameopt__can_clobber_succip_3_f_0_env_0__Instr_11 = ((MR_Word) (ll_backend__frameopt__env_ptr)->ll_backend__frameopt__can_clobber_succip_3_f_0_env_0__conv1_Instr_11);
+    {
+      ll_backend__frameopt__can_clobber_succip_2_f_0_2(ll_backend__frameopt__env_ptr);
+    }
+  }
+}
+
+static void MR_CALL 
+ll_backend__frameopt__can_clobber_succip_2_f_0_2(
+  void * ll_backend__frameopt__env_ptr_arg)
+{
+  {
+    struct ll_backend__frameopt__can_clobber_succip_3_f_0_env_0_s * ll_backend__frameopt__env_ptr = (struct ll_backend__frameopt__can_clobber_succip_3_f_0_env_0_s *) ll_backend__frameopt__env_ptr_arg;
+
+    {
+      MR_String ll_backend__frameopt__Var_13;
+
+      (ll_backend__frameopt__env_ptr)->ll_backend__frameopt__can_clobber_succip_3_f_0_env_0__Uinstr_12 = ((MR_Word) (MR_hl_field(MR_mktag(0), (ll_backend__frameopt__env_ptr)->ll_backend__frameopt__can_clobber_succip_3_f_0_env_0__Instr_11, (MR_Integer) 0)));
+      ll_backend__frameopt__Var_13 = ((MR_String) (MR_hl_field(MR_mktag(0), (ll_backend__frameopt__env_ptr)->ll_backend__frameopt__can_clobber_succip_3_f_0_env_0__Instr_11, (MR_Integer) 1)));
+      if (((((MR_tag((MR_Word) (ll_backend__frameopt__env_ptr)->ll_backend__frameopt__can_clobber_succip_3_f_0_env_0__Uinstr_12)) == (MR_mktag((MR_Integer) 3)))) && (((((MR_Integer) (MR_Word) (MR_hl_field(MR_mktag(3), (ll_backend__frameopt__env_ptr)->ll_backend__frameopt__can_clobber_succip_3_f_0_env_0__Uinstr_12, (MR_Integer) 0)))) == (MR_Integer) 27))))
+        {
+          MR_Word ll_backend__frameopt__Var_29 = ((MR_Word) (MR_hl_field(MR_mktag(3), (ll_backend__frameopt__env_ptr)->ll_backend__frameopt__can_clobber_succip_3_f_0_env_0__Uinstr_12, (MR_Integer) 3)));
+          MR_Word ll_backend__frameopt__Var_20 = ((MR_Word) (MR_hl_field(MR_mktag(3), (ll_backend__frameopt__env_ptr)->ll_backend__frameopt__can_clobber_succip_3_f_0_env_0__Uinstr_12, (MR_Integer) 1)));
+          MR_Word ll_backend__frameopt__Var_21 = ((MR_Word) (MR_hl_field(MR_mktag(3), (ll_backend__frameopt__env_ptr)->ll_backend__frameopt__can_clobber_succip_3_f_0_env_0__Uinstr_12, (MR_Integer) 2)));
+          MR_Word ll_backend__frameopt__Var_22 = ((MR_Word) (MR_hl_field(MR_mktag(3), (ll_backend__frameopt__env_ptr)->ll_backend__frameopt__can_clobber_succip_3_f_0_env_0__Uinstr_12, (MR_Integer) 4)));
+          MR_Word ll_backend__frameopt__Var_23 = ((MR_Word) (MR_hl_field(MR_mktag(3), (ll_backend__frameopt__env_ptr)->ll_backend__frameopt__can_clobber_succip_3_f_0_env_0__Uinstr_12, (MR_Integer) 5)));
+          MR_Word ll_backend__frameopt__Var_24 = ((MR_Word) (MR_hl_field(MR_mktag(3), (ll_backend__frameopt__env_ptr)->ll_backend__frameopt__can_clobber_succip_3_f_0_env_0__Uinstr_12, (MR_Integer) 6)));
+          MR_Word ll_backend__frameopt__Var_25 = ((MR_Word) (MR_hl_field(MR_mktag(3), (ll_backend__frameopt__env_ptr)->ll_backend__frameopt__can_clobber_succip_3_f_0_env_0__Uinstr_12, (MR_Integer) 7)));
+          MR_Word ll_backend__frameopt__Var_26 = ((MR_Word) (MR_hl_field(MR_mktag(3), (ll_backend__frameopt__env_ptr)->ll_backend__frameopt__can_clobber_succip_3_f_0_env_0__Uinstr_12, (MR_Integer) 8)));
+          MR_Word ll_backend__frameopt__Var_27 = ((MR_Word) (MR_hl_field(MR_mktag(3), (ll_backend__frameopt__env_ptr)->ll_backend__frameopt__can_clobber_succip_3_f_0_env_0__Uinstr_12, (MR_Integer) 9)));
+          MR_Word ll_backend__frameopt__Var_28 = ((MR_Word) (MR_hl_field(MR_mktag(3), (ll_backend__frameopt__env_ptr)->ll_backend__frameopt__can_clobber_succip_3_f_0_env_0__Uinstr_12, (MR_Integer) 10)));
+
+          (ll_backend__frameopt__env_ptr)->ll_backend__frameopt__can_clobber_succip_3_f_0_env_0__succeeded = (ll_backend__frameopt__Var_29 == (MR_Integer) 0);
+        }
+      else
+      if (((((MR_tag((MR_Word) (ll_backend__frameopt__env_ptr)->ll_backend__frameopt__can_clobber_succip_3_f_0_env_0__Uinstr_12)) == (MR_mktag((MR_Integer) 3)))) && (((((MR_Integer) (MR_Word) (MR_hl_field(MR_mktag(3), (ll_backend__frameopt__env_ptr)->ll_backend__frameopt__can_clobber_succip_3_f_0_env_0__Uinstr_12, (MR_Integer) 0)))) == (MR_Integer) 3))))
+        (ll_backend__frameopt__env_ptr)->ll_backend__frameopt__can_clobber_succip_3_f_0_env_0__succeeded = MR_TRUE;
+      else
+        (ll_backend__frameopt__env_ptr)->ll_backend__frameopt__can_clobber_succip_3_f_0_env_0__succeeded = MR_FALSE;
+      if ((ll_backend__frameopt__env_ptr)->ll_backend__frameopt__can_clobber_succip_3_f_0_env_0__succeeded)
+        {
+          ll_backend__frameopt__can_clobber_succip_2_f_0_1(ll_backend__frameopt__env_ptr);
+        }
+    }
+  }
+}
+
+static void MR_CALL 
+ll_backend__frameopt__can_clobber_succip_2_f_0_4(
+  void * ll_backend__frameopt__env_ptr_arg)
+{
+  {
+    struct ll_backend__frameopt__can_clobber_succip_3_f_0_env_0_s * ll_backend__frameopt__env_ptr = (struct ll_backend__frameopt__can_clobber_succip_3_f_0_env_0_s *) ll_backend__frameopt__env_ptr_arg;
+
+    if (MR_builtin_setjmp((ll_backend__frameopt__env_ptr)->ll_backend__frameopt__can_clobber_succip_3_f_0_env_0__commit_0) == 0)
+      {
+        {
+          {
+            mercury__list__member_2_p_1((MR_Word) &ll_backend__llds__ll_backend__llds__type_ctor_info_instruction_0, &(ll_backend__frameopt__env_ptr)->ll_backend__frameopt__can_clobber_succip_3_f_0_env_0__conv1_Instr_11, (ll_backend__frameopt__env_ptr)->ll_backend__frameopt__can_clobber_succip_3_f_0_env_0__Instrs_10, ll_backend__frameopt__can_clobber_succip_2_f_0_3, ll_backend__frameopt__env_ptr);
+          }
+        }
+        (ll_backend__frameopt__env_ptr)->ll_backend__frameopt__can_clobber_succip_3_f_0_env_0__succeeded = MR_FALSE;
+      }
+    else
+      (ll_backend__frameopt__env_ptr)->ll_backend__frameopt__can_clobber_succip_3_f_0_env_0__succeeded = MR_TRUE;
+  }
+}
+
+static MR_Word MR_CALL 
+ll_backend__frameopt__can_clobber_succip_2_f_0(
+  MR_Word ll_backend__frameopt__TypeInfo_35_35,
+  MR_Word ll_backend__frameopt__TypeInfo_36_36,
+  MR_Word ll_backend__frameopt__HeadVar__1_1,
+  MR_Word ll_backend__frameopt__HeadVar__2_2)
+{
+  {
+    struct ll_backend__frameopt__can_clobber_succip_3_f_0_env_0_s ll_backend__frameopt__env;
+
+    while (MR_TRUE)
+      {
+        /* tailcall optimized into a loop */
+        {
+          MR_Word ll_backend__frameopt__HeadVar__3_3;
+
+          if ((ll_backend__frameopt__HeadVar__1_1 == ((MR_Word) MR_mkword(MR_mktag(0), MR_mkbody((MR_Integer) 0)))))
+            ll_backend__frameopt__HeadVar__3_3 = (MR_Integer) 0;
+          else
+            {
+              MR_Word ll_backend__frameopt__TypeInfo_39_39;
+              MR_Word ll_backend__frameopt__Label_5 = ((MR_Word) (MR_hl_field(MR_mktag(1), ll_backend__frameopt__HeadVar__1_1, (MR_Integer) 0)));
+              MR_Word ll_backend__frameopt__Labels_6 = ((MR_Word) (MR_hl_field(MR_mktag(1), ll_backend__frameopt__HeadVar__1_1, (MR_Integer) 1)));
+              MR_Word ll_backend__frameopt__BlockInfo_9;
+              MR_Box ll_backend__frameopt__conv0_BlockInfo_9;
+              MR_Word ll_backend__frameopt__Var_30;
+              MR_Word ll_backend__frameopt__Var_31;
+              MR_Word ll_backend__frameopt__Var_32;
+              MR_Word ll_backend__frameopt__Var_33;
+              MR_Word ll_backend__frameopt__Var_34;
+
+              {
+                ll_backend__frameopt__TypeInfo_39_39 = (MR_Word) MR_new_object(MR_Word, ((MR_Integer) 3 * sizeof(MR_Word)), NULL, NULL);
+                MR_hl_field(MR_mktag(0), ll_backend__frameopt__TypeInfo_39_39, 0) = ((MR_Box) (&ll_backend__frameopt__ll_backend__frameopt__type_ctor_info_frame_block_info_2));
+                MR_hl_field(MR_mktag(0), ll_backend__frameopt__TypeInfo_39_39, 1) = ((MR_Box) (ll_backend__frameopt__TypeInfo_35_35));
+                MR_hl_field(MR_mktag(0), ll_backend__frameopt__TypeInfo_39_39, 2) = ((MR_Box) (ll_backend__frameopt__TypeInfo_36_36));
+              }
+              {
+                mercury__map__lookup_3_p_0((MR_Word) &ll_backend__llds__ll_backend__llds__type_ctor_info_label_0, ll_backend__frameopt__TypeInfo_39_39, (MR_Word) ll_backend__frameopt__HeadVar__2_2, ((MR_Box) (ll_backend__frameopt__Label_5)), &ll_backend__frameopt__conv0_BlockInfo_9);
+              }
+              ll_backend__frameopt__BlockInfo_9 = ((MR_Word) ll_backend__frameopt__conv0_BlockInfo_9);
+              ll_backend__frameopt__Var_30 = ((MR_Word) (MR_hl_field(MR_mktag(0), ll_backend__frameopt__BlockInfo_9, (MR_Integer) 0)));
+              (ll_backend__frameopt__env).ll_backend__frameopt__can_clobber_succip_3_f_0_env_0__Instrs_10 = ((MR_Word) (MR_hl_field(MR_mktag(0), ll_backend__frameopt__BlockInfo_9, (MR_Integer) 1)));
+              ll_backend__frameopt__Var_31 = ((MR_Word) (MR_hl_field(MR_mktag(0), ll_backend__frameopt__BlockInfo_9, (MR_Integer) 2)));
+              ll_backend__frameopt__Var_32 = ((MR_Word) (MR_hl_field(MR_mktag(0), ll_backend__frameopt__BlockInfo_9, (MR_Integer) 3)));
+              ll_backend__frameopt__Var_33 = ((MR_Word) (MR_hl_field(MR_mktag(0), ll_backend__frameopt__BlockInfo_9, (MR_Integer) 4)));
+              ll_backend__frameopt__Var_34 = ((MR_Word) (MR_hl_field(MR_mktag(0), ll_backend__frameopt__BlockInfo_9, (MR_Integer) 5)));
+              {
+                ll_backend__frameopt__can_clobber_succip_2_f_0_4(&ll_backend__frameopt__env);
+              }
+              if ((ll_backend__frameopt__env).ll_backend__frameopt__can_clobber_succip_3_f_0_env_0__succeeded)
+                ll_backend__frameopt__HeadVar__3_3 = (MR_Integer) 1;
+              else
+                {
+                  /* direct tailcall eliminated */
+                  {
+                    MR_Word ll_backend__frameopt__next_value_of_HeadVar__1_1 = ll_backend__frameopt__Labels_6;
+
+                    ll_backend__frameopt__HeadVar__1_1 = ll_backend__frameopt__next_value_of_HeadVar__1_1;
+                  }
+                  continue;
+                }
+            }
+          return ll_backend__frameopt__HeadVar__3_3;
+        }
+        break;
+      }
+  }
+}
+
+static void MR_CALL 
+ll_backend__frameopt__analyze_block_map_5_p_0(
+  MR_Word ll_backend__frameopt__TypeClassInfo_for_block_entry_exit_33,
+  MR_Word ll_backend__frameopt__LabelSeq_6,
+  MR_Word ll_backend__frameopt__PreExitDummyLabelMap_7,
+  MR_Word ll_backend__frameopt__STATE_VARIABLE_BlockMap_0_23,
+  MR_Word * ll_backend__frameopt__STATE_VARIABLE_BlockMap_24,
+  MR_Word * ll_backend__frameopt__KeepFrameData_9)
+{
+  {
+    MR_bool ll_backend__frameopt__succeeded = ((MR_tag((MR_Word) ll_backend__frameopt__LabelSeq_6)) == (MR_mktag((MR_Integer) 1)));
+    MR_Word ll_backend__frameopt__FirstLabel_10;
+    MR_Word ll_backend__frameopt__SecondLabel_11;
+    MR_Word ll_backend__frameopt__TypeCtorInfo_34_34;
+    MR_Word ll_backend__frameopt__TypeInfo_36_36;
+    MR_Word ll_backend__frameopt__TypeInfo_38_38;
+    MR_Word ll_backend__frameopt__TypeCtorInfo_39_39;
+    MR_Word ll_backend__frameopt__TypeInfo_40_40;
+    MR_Word ll_backend__frameopt__FirstBlockInfo_13;
+    MR_Word ll_backend__frameopt__BlockType_18;
+    MR_Word ll_backend__frameopt__Var_25;
+    MR_Integer ll_backend__frameopt__PolyConst1_35;
+    MR_Integer ll_backend__frameopt__PolyConst2_37;
+    MR_Word ll_backend__frameopt__Var_41;
+    MR_Word ll_backend__frameopt__Var_12;
+    MR_Box ll_backend__frameopt__conv0_FirstBlockInfo_13;
+    MR_Word ll_backend__frameopt__Var_14;
+    MR_Word ll_backend__frameopt__Var_15;
+    MR_Word ll_backend__frameopt__Var_16;
+    MR_Word ll_backend__frameopt__Var_17;
+    MR_Box ll_backend__frameopt__Var_19;
+
+    if (ll_backend__frameopt__succeeded)
+      {
+        ll_backend__frameopt__FirstLabel_10 = ((MR_Word) (MR_hl_field(MR_mktag(1), ll_backend__frameopt__LabelSeq_6, (MR_Integer) 0)));
+        ll_backend__frameopt__Var_25 = ((MR_Word) (MR_hl_field(MR_mktag(1), ll_backend__frameopt__LabelSeq_6, (MR_Integer) 1)));
+        ll_backend__frameopt__succeeded = ((MR_tag((MR_Word) ll_backend__frameopt__Var_25)) == (MR_mktag((MR_Integer) 1)));
+        if (ll_backend__frameopt__succeeded)
+          {
+            ll_backend__frameopt__SecondLabel_11 = ((MR_Word) (MR_hl_field(MR_mktag(1), ll_backend__frameopt__Var_25, (MR_Integer) 0)));
+            ll_backend__frameopt__Var_12 = ((MR_Word) (MR_hl_field(MR_mktag(1), ll_backend__frameopt__Var_25, (MR_Integer) 1)));
+            ll_backend__frameopt__TypeCtorInfo_34_34 = (MR_Word) &ll_backend__llds__ll_backend__llds__type_ctor_info_label_0;
+            ll_backend__frameopt__TypeCtorInfo_39_39 = (MR_Word) &ll_backend__frameopt__ll_backend__frameopt__type_ctor_info_frame_block_info_2;
+            ll_backend__frameopt__PolyConst1_35 = (MR_Integer) 1;
+            {
+              mercury__private_builtin__type_info_from_typeclass_info_3_p_0(ll_backend__frameopt__TypeClassInfo_for_block_entry_exit_33, ll_backend__frameopt__PolyConst1_35, &ll_backend__frameopt__TypeInfo_36_36);
+            }
+            ll_backend__frameopt__PolyConst2_37 = (MR_Integer) 2;
+            {
+              mercury__private_builtin__type_info_from_typeclass_info_3_p_0(ll_backend__frameopt__TypeClassInfo_for_block_entry_exit_33, ll_backend__frameopt__PolyConst2_37, &ll_backend__frameopt__TypeInfo_38_38);
+            }
+            {
+              ll_backend__frameopt__TypeInfo_40_40 = (MR_Word) MR_new_object(MR_Word, ((MR_Integer) 3 * sizeof(MR_Word)), NULL, NULL);
+              MR_hl_field(MR_mktag(0), ll_backend__frameopt__TypeInfo_40_40, 0) = ((MR_Box) (ll_backend__frameopt__TypeCtorInfo_39_39));
+              MR_hl_field(MR_mktag(0), ll_backend__frameopt__TypeInfo_40_40, 1) = ((MR_Box) (ll_backend__frameopt__TypeInfo_36_36));
+              MR_hl_field(MR_mktag(0), ll_backend__frameopt__TypeInfo_40_40, 2) = ((MR_Box) (ll_backend__frameopt__TypeInfo_38_38));
+            }
+            {
+              ll_backend__frameopt__succeeded = mercury__map__search_3_p_0(ll_backend__frameopt__TypeCtorInfo_34_34, ll_backend__frameopt__TypeInfo_40_40, (MR_Word) ll_backend__frameopt__STATE_VARIABLE_BlockMap_0_23, ((MR_Box) (ll_backend__frameopt__FirstLabel_10)), &ll_backend__frameopt__conv0_FirstBlockInfo_13);
+            }
+            if (ll_backend__frameopt__succeeded)
+              {
+                ll_backend__frameopt__FirstBlockInfo_13 = ((MR_Word) ll_backend__frameopt__conv0_FirstBlockInfo_13);
+                ll_backend__frameopt__succeeded = MR_TRUE;
+              }
+            if (ll_backend__frameopt__succeeded)
+              {
+                ll_backend__frameopt__Var_41 = ((MR_Word) (MR_hl_field(MR_mktag(0), ll_backend__frameopt__FirstBlockInfo_13, (MR_Integer) 0)));
+                ll_backend__frameopt__Var_14 = ((MR_Word) (MR_hl_field(MR_mktag(0), ll_backend__frameopt__FirstBlockInfo_13, (MR_Integer) 1)));
+                ll_backend__frameopt__Var_15 = ((MR_Word) (MR_hl_field(MR_mktag(0), ll_backend__frameopt__FirstBlockInfo_13, (MR_Integer) 2)));
+                ll_backend__frameopt__Var_16 = ((MR_Word) (MR_hl_field(MR_mktag(0), ll_backend__frameopt__FirstBlockInfo_13, (MR_Integer) 3)));
+                ll_backend__frameopt__Var_17 = ((MR_Word) (MR_hl_field(MR_mktag(0), ll_backend__frameopt__FirstBlockInfo_13, (MR_Integer) 4)));
+                ll_backend__frameopt__BlockType_18 = ((MR_Word) (MR_hl_field(MR_mktag(0), ll_backend__frameopt__FirstBlockInfo_13, (MR_Integer) 5)));
+                {
+                  ll_backend__frameopt__succeeded = ll_backend__llds____Unify____label_0_0(ll_backend__frameopt__FirstLabel_10, ll_backend__frameopt__Var_41);
+                }
+                if (ll_backend__frameopt__succeeded)
+                  {
+                    ll_backend__frameopt__succeeded = ((MR_tag((MR_Word) ll_backend__frameopt__BlockType_18)) == (MR_mktag((MR_Integer) 0)));
+                    if (ll_backend__frameopt__succeeded)
+                      ll_backend__frameopt__Var_19 = (MR_hl_field(MR_mktag(0), ll_backend__frameopt__BlockType_18, (MR_Integer) 0));
+                  }
+              }
+          }
+      }
+    if (ll_backend__frameopt__succeeded)
+      {
+        MR_Word ll_backend__frameopt__ProcLabel_20;
+        MR_Word ll_backend__frameopt__AnyBlockNeedsFrame_21;
+        MR_Word ll_backend__frameopt__JumpToStart_22;
+        MR_Word ll_backend__frameopt__Label_55;
+        MR_Word ll_backend__frameopt__Labels_56;
+        MR_Word ll_backend__frameopt__STATE_VARIABLE_BlockMap_37_69;
+        MR_Word ll_backend__frameopt__STATE_VARIABLE_AnyBlockNeedsFrame_38_70;
+        MR_Word ll_backend__frameopt__STATE_VARIABLE_JumpToStart_39_71;
+
+        {
+          ll_backend__frameopt__ProcLabel_20 = ll_backend__llds__get_proc_label_1_f_0(ll_backend__frameopt__FirstLabel_10);
+        }
+        ll_backend__frameopt__Label_55 = ((MR_Word) (MR_hl_field(MR_mktag(1), ll_backend__frameopt__LabelSeq_6, (MR_Integer) 0)));
+        ll_backend__frameopt__Labels_56 = ((MR_Word) (MR_hl_field(MR_mktag(1), ll_backend__frameopt__LabelSeq_6, (MR_Integer) 1)));
+        {
+          ll_backend__frameopt__analyze_block_11_p_0(ll_backend__frameopt__TypeClassInfo_for_block_entry_exit_33, ll_backend__frameopt__Label_55, ll_backend__frameopt__Labels_56, ll_backend__frameopt__FirstLabel_10, ll_backend__frameopt__ProcLabel_20, ll_backend__frameopt__PreExitDummyLabelMap_7, ll_backend__frameopt__STATE_VARIABLE_BlockMap_0_23, &ll_backend__frameopt__STATE_VARIABLE_BlockMap_37_69, (MR_Integer) 0, &ll_backend__frameopt__STATE_VARIABLE_AnyBlockNeedsFrame_38_70, (MR_Integer) 0, &ll_backend__frameopt__STATE_VARIABLE_JumpToStart_39_71);
+        }
+        {
+          ll_backend__frameopt__analyze_block_map_2_10_p_0(ll_backend__frameopt__TypeClassInfo_for_block_entry_exit_33, ll_backend__frameopt__Labels_56, ll_backend__frameopt__FirstLabel_10, ll_backend__frameopt__ProcLabel_20, ll_backend__frameopt__PreExitDummyLabelMap_7, ll_backend__frameopt__STATE_VARIABLE_BlockMap_37_69, ll_backend__frameopt__STATE_VARIABLE_BlockMap_24, ll_backend__frameopt__STATE_VARIABLE_AnyBlockNeedsFrame_38_70, &ll_backend__frameopt__AnyBlockNeedsFrame_21, ll_backend__frameopt__STATE_VARIABLE_JumpToStart_39_71, &ll_backend__frameopt__JumpToStart_22);
+        }
+        ll_backend__frameopt__succeeded = (ll_backend__frameopt__AnyBlockNeedsFrame_21 == (MR_Integer) 1);
+        if (ll_backend__frameopt__succeeded)
+          ll_backend__frameopt__succeeded = (ll_backend__frameopt__JumpToStart_22 == (MR_Integer) 1);
+        if (ll_backend__frameopt__succeeded)
+          {
+            MR_Word ll_backend__frameopt__Var_29;
+
+            {
+              ll_backend__frameopt__Var_29 = (MR_Word) MR_new_object(MR_Word, ((MR_Integer) 2 * sizeof(MR_Word)), NULL, NULL);
+              MR_hl_field(MR_mktag(0), ll_backend__frameopt__Var_29, 0) = ((MR_Box) (ll_backend__frameopt__FirstLabel_10));
+              MR_hl_field(MR_mktag(0), ll_backend__frameopt__Var_29, 1) = ((MR_Box) (ll_backend__frameopt__SecondLabel_11));
+            }
+            {
+              MR_Word base;
+              base = (MR_Word) MR_mkword(MR_mktag(1), MR_new_object(MR_Word, ((MR_Integer) 1 * sizeof(MR_Word)), NULL, NULL));
+              *ll_backend__frameopt__KeepFrameData_9 = base;
+              MR_hl_field(MR_mktag(1), base, 0) = ((MR_Box) (ll_backend__frameopt__Var_29));
+            }
+          }
+        else
+          *ll_backend__frameopt__KeepFrameData_9 = (MR_Word) MR_mkword(MR_mktag(0), MR_mkbody((MR_Integer) 0));
+      }
+    else
+      {
+        {
+          mercury__require__unexpected_3_p_0((MR_String) "ll_backend.frameopt", (MR_String) "predicate \140ll_backend.frameopt.analyze_block_map\'/5", (MR_String) "bad data");
+          return;
+        }
+      }
+  }
+}
+
+static void MR_CALL 
+ll_backend__frameopt__analyze_block_map_2_10_p_0(
+  MR_Word ll_backend__frameopt__TypeClassInfo_for_block_entry_exit_43,
+  MR_Word ll_backend__frameopt__HeadVar__1_1,
+  MR_Word ll_backend__frameopt__FirstLabel_2,
+  MR_Word ll_backend__frameopt__ProcLabel_3,
+  MR_Word ll_backend__frameopt__PreExitDummyLabelMap_4,
+  MR_Word ll_backend__frameopt__STATE_VARIABLE_BlockMap_0_5,
+  MR_Word * ll_backend__frameopt__STATE_VARIABLE_BlockMap_6,
+  MR_Word ll_backend__frameopt__STATE_VARIABLE_AnyBlockNeedsFrame_0_7,
+  MR_Word * ll_backend__frameopt__STATE_VARIABLE_AnyBlockNeedsFrame_8,
+  MR_Word ll_backend__frameopt__HeadVar__9_9,
+  MR_Word * ll_backend__frameopt__HeadVar__10_10)
+{
+  while (MR_TRUE)
+    {
+      /* tailcall optimized into a loop */
+      if ((ll_backend__frameopt__HeadVar__1_1 == ((MR_Word) MR_mkword(MR_mktag(0), MR_mkbody((MR_Integer) 0)))))
+        {
+          *ll_backend__frameopt__HeadVar__10_10 = ll_backend__frameopt__HeadVar__9_9;
+          *ll_backend__frameopt__STATE_VARIABLE_AnyBlockNeedsFrame_8 = ll_backend__frameopt__STATE_VARIABLE_AnyBlockNeedsFrame_0_7;
+          *ll_backend__frameopt__STATE_VARIABLE_BlockMap_6 = ll_backend__frameopt__STATE_VARIABLE_BlockMap_0_5;
+        }
+      else
+        {
+          MR_Word ll_backend__frameopt__Label_23 = ((MR_Word) (MR_hl_field(MR_mktag(1), ll_backend__frameopt__HeadVar__1_1, (MR_Integer) 0)));
+          MR_Word ll_backend__frameopt__Labels_24 = ((MR_Word) (MR_hl_field(MR_mktag(1), ll_backend__frameopt__HeadVar__1_1, (MR_Integer) 1)));
+          MR_Word ll_backend__frameopt__STATE_VARIABLE_BlockMap_37_37;
+          MR_Word ll_backend__frameopt__STATE_VARIABLE_AnyBlockNeedsFrame_38_38;
+          MR_Word ll_backend__frameopt__STATE_VARIABLE_JumpToStart_39_39;
+
+          {
+            ll_backend__frameopt__analyze_block_11_p_0(ll_backend__frameopt__TypeClassInfo_for_block_entry_exit_43, ll_backend__frameopt__Label_23, ll_backend__frameopt__Labels_24, ll_backend__frameopt__FirstLabel_2, ll_backend__frameopt__ProcLabel_3, ll_backend__frameopt__PreExitDummyLabelMap_4, ll_backend__frameopt__STATE_VARIABLE_BlockMap_0_5, &ll_backend__frameopt__STATE_VARIABLE_BlockMap_37_37, ll_backend__frameopt__STATE_VARIABLE_AnyBlockNeedsFrame_0_7, &ll_backend__frameopt__STATE_VARIABLE_AnyBlockNeedsFrame_38_38, ll_backend__frameopt__HeadVar__9_9, &ll_backend__frameopt__STATE_VARIABLE_JumpToStart_39_39);
+          }
+          /* direct tailcall eliminated */
+          {
+            MR_Word ll_backend__frameopt__next_value_of_HeadVar__1_1 = ll_backend__frameopt__Labels_24;
+            MR_Word ll_backend__frameopt__next_value_of_STATE_VARIABLE_BlockMap_0_5 = ll_backend__frameopt__STATE_VARIABLE_BlockMap_37_37;
+            MR_Word ll_backend__frameopt__next_value_of_STATE_VARIABLE_AnyBlockNeedsFrame_0_7 = ll_backend__frameopt__STATE_VARIABLE_AnyBlockNeedsFrame_38_38;
+            MR_Word ll_backend__frameopt__next_value_of_HeadVar__9_9 = ll_backend__frameopt__STATE_VARIABLE_JumpToStart_39_39;
+
+            ll_backend__frameopt__HeadVar__9_9 = ll_backend__frameopt__next_value_of_HeadVar__9_9;
+            ll_backend__frameopt__STATE_VARIABLE_AnyBlockNeedsFrame_0_7 = ll_backend__frameopt__next_value_of_STATE_VARIABLE_AnyBlockNeedsFrame_0_7;
+            ll_backend__frameopt__STATE_VARIABLE_BlockMap_0_5 = ll_backend__frameopt__next_value_of_STATE_VARIABLE_BlockMap_0_5;
+            ll_backend__frameopt__HeadVar__1_1 = ll_backend__frameopt__next_value_of_HeadVar__1_1;
+          }
+          continue;
+        }
+      break;
+    }
+}
+
+static void MR_CALL 
+ll_backend__frameopt__analyze_block_11_p_0_2(
+  MR_Box ll_backend__frameopt__closure_arg,
+  MR_Box ll_backend__frameopt__wrapper_arg_1,
+  MR_Box ll_backend__frameopt__wrapper_arg_2,
+  MR_Box * ll_backend__frameopt__wrapper_arg_3)
+{
+  {
+    MR_Box ll_backend__frameopt__closure = ll_backend__frameopt__closure_arg;
+    MR_Word ll_backend__frameopt__conv3_HeadVar__4_120;
+
+    {
+      ll_backend__frameopt__IntroducedFrom__pred__analyze_block__1255__1_4_p_0(((MR_Word) (MR_hl_field(MR_mktag(0), ll_backend__frameopt__closure, (MR_Integer) 3))), ((MR_Word) ll_backend__frameopt__wrapper_arg_1), ((MR_Word) ll_backend__frameopt__wrapper_arg_2), &ll_backend__frameopt__conv3_HeadVar__4_120);
+    }
+    *ll_backend__frameopt__wrapper_arg_3 = ((MR_Box) (ll_backend__frameopt__conv3_HeadVar__4_120));
+  }
+}
+
+static MR_bool MR_CALL 
+ll_backend__frameopt__analyze_block_11_p_0_1(
+  MR_Box ll_backend__frameopt__closure_arg,
+  MR_Box ll_backend__frameopt__wrapper_arg_1)
+{
+  {
+    MR_bool ll_backend__frameopt__succeeded;
+    MR_Box ll_backend__frameopt__closure = ll_backend__frameopt__closure_arg;
+
+    {
+      ll_backend__frameopt__succeeded = ll_backend__frameopt__local_label_2_p_0(((MR_Word) (MR_hl_field(MR_mktag(0), ll_backend__frameopt__closure, (MR_Integer) 3))), ((MR_Word) ll_backend__frameopt__wrapper_arg_1));
+    }
+    return ll_backend__frameopt__succeeded;
+  }
+}
+
+static void MR_CALL 
+ll_backend__frameopt__analyze_block_11_p_0(
+  MR_Word ll_backend__frameopt__TypeClassInfo_for_block_entry_exit_104,
+  MR_Word ll_backend__frameopt__Label_12,
+  MR_Word ll_backend__frameopt__FollowingLabels_13,
+  MR_Word ll_backend__frameopt__FirstLabel_14,
+  MR_Word ll_backend__frameopt__ProcLabel_15,
+  MR_Word ll_backend__frameopt__PreExitDummyLabelMap_16,
+  MR_Word ll_backend__frameopt__STATE_VARIABLE_BlockMap_0_66,
+  MR_Word * ll_backend__frameopt__STATE_VARIABLE_BlockMap_67,
+  MR_Word ll_backend__frameopt__STATE_VARIABLE_AnyBlockNeedsFrame_0_68,
+  MR_Word * ll_backend__frameopt__STATE_VARIABLE_AnyBlockNeedsFrame_69,
+  MR_Word ll_backend__frameopt__STATE_VARIABLE_JumpToStart_0_70,
+  MR_Word * ll_backend__frameopt__STATE_VARIABLE_JumpToStart_71)
+{
+  {
+    MR_bool ll_backend__frameopt__succeeded;
+    MR_Word ll_backend__frameopt__TypeCtorInfo_105_105 = (MR_Word) &ll_backend__llds__ll_backend__llds__type_ctor_info_label_0;
+    MR_Word ll_backend__frameopt__TypeInfo_107_107;
+    MR_Word ll_backend__frameopt__TypeInfo_109_109;
+    MR_Word ll_backend__frameopt__TypeInfo_111_111;
+    MR_Word ll_backend__frameopt__TypeInfo_126_126;
+    MR_Word ll_backend__frameopt__BlockInfo0_20;
+    MR_Word ll_backend__frameopt__BlockLabel_21;
+    MR_Word ll_backend__frameopt__BlockInstrs0_22;
+    MR_Word ll_backend__frameopt__FallInto_23;
+    MR_Word ll_backend__frameopt__Type_26;
+    MR_Word ll_backend__frameopt__BlockInstrs_39;
+    MR_Word ll_backend__frameopt__SideLabels_59;
+    MR_Word ll_backend__frameopt__MaybeFallThrough_62;
+    MR_Word ll_backend__frameopt__BlockInfo_64;
+    MR_Word ll_backend__frameopt__RedoipLabels_65;
+    MR_Word ll_backend__frameopt__STATE_VARIABLE_BlockMap_90_90;
+    MR_Word ll_backend__frameopt__Var_92;
+    MR_Box ll_backend__frameopt__conv0_BlockInfo0_20;
+    MR_Word ll_backend__frameopt__Var_24;
+    MR_Word ll_backend__frameopt__Var_25;
+    MR_Word ll_backend__frameopt__AllButLastInstrs_31;
+    MR_Word ll_backend__frameopt__LastInstr0_32;
+    MR_Word ll_backend__frameopt__TypeCtorInfo_112_112;
+    MR_Box ll_backend__frameopt__conv1_LastInstr0_32;
+    MR_Word ll_backend__frameopt__conv2_STATE_VARIABLE_BlockMap_90_90;
+    MR_Box ll_backend__frameopt__conv4_STATE_VARIABLE_BlockMap_67;
+
+    {
+      mercury__private_builtin__type_info_from_typeclass_info_3_p_0(ll_backend__frameopt__TypeClassInfo_for_block_entry_exit_104, (MR_Integer) 1, &ll_backend__frameopt__TypeInfo_107_107);
+    }
+    {
+      mercury__private_builtin__type_info_from_typeclass_info_3_p_0(ll_backend__frameopt__TypeClassInfo_for_block_entry_exit_104, (MR_Integer) 2, &ll_backend__frameopt__TypeInfo_109_109);
+    }
+    {
+      ll_backend__frameopt__TypeInfo_111_111 = (MR_Word) MR_new_object(MR_Word, ((MR_Integer) 3 * sizeof(MR_Word)), NULL, NULL);
+      MR_hl_field(MR_mktag(0), ll_backend__frameopt__TypeInfo_111_111, 0) = ((MR_Box) (&ll_backend__frameopt__ll_backend__frameopt__type_ctor_info_frame_block_info_2));
+      MR_hl_field(MR_mktag(0), ll_backend__frameopt__TypeInfo_111_111, 1) = ((MR_Box) (ll_backend__frameopt__TypeInfo_107_107));
+      MR_hl_field(MR_mktag(0), ll_backend__frameopt__TypeInfo_111_111, 2) = ((MR_Box) (ll_backend__frameopt__TypeInfo_109_109));
+    }
+    {
+      mercury__map__lookup_3_p_0(ll_backend__frameopt__TypeCtorInfo_105_105, ll_backend__frameopt__TypeInfo_111_111, (MR_Word) ll_backend__frameopt__STATE_VARIABLE_BlockMap_0_66, ((MR_Box) (ll_backend__frameopt__Label_12)), &ll_backend__frameopt__conv0_BlockInfo0_20);
+    }
+    ll_backend__frameopt__BlockInfo0_20 = ((MR_Word) ll_backend__frameopt__conv0_BlockInfo0_20);
+    ll_backend__frameopt__BlockLabel_21 = ((MR_Word) (MR_hl_field(MR_mktag(0), ll_backend__frameopt__BlockInfo0_20, (MR_Integer) 0)));
+    ll_backend__frameopt__BlockInstrs0_22 = ((MR_Word) (MR_hl_field(MR_mktag(0), ll_backend__frameopt__BlockInfo0_20, (MR_Integer) 1)));
+    ll_backend__frameopt__FallInto_23 = ((MR_Word) (MR_hl_field(MR_mktag(0), ll_backend__frameopt__BlockInfo0_20, (MR_Integer) 2)));
+    ll_backend__frameopt__Var_24 = ((MR_Word) (MR_hl_field(MR_mktag(0), ll_backend__frameopt__BlockInfo0_20, (MR_Integer) 3)));
+    ll_backend__frameopt__Var_25 = ((MR_Word) (MR_hl_field(MR_mktag(0), ll_backend__frameopt__BlockInfo0_20, (MR_Integer) 4)));
+    ll_backend__frameopt__Type_26 = ((MR_Word) (MR_hl_field(MR_mktag(0), ll_backend__frameopt__BlockInfo0_20, (MR_Integer) 5)));
+    switch (MR_tag((MR_Word) ll_backend__frameopt__Type_26)) {
+      default: /*NOTREACHED*/ MR_assert(0);
+      case (MR_Integer) 0:
+        *ll_backend__frameopt__STATE_VARIABLE_AnyBlockNeedsFrame_69 = ll_backend__frameopt__STATE_VARIABLE_AnyBlockNeedsFrame_0_68;
+        break;
+      case (MR_Integer) 1:
+        {
+          MR_Word ll_backend__frameopt__Var_128 = ((MR_Word) (MR_hl_field(MR_mktag(1), ll_backend__frameopt__Type_26, (MR_Integer) 0)));
+          MR_Word ll_backend__frameopt__Var_127 = ((MR_Word) (MR_hl_field(MR_mktag(1), ll_backend__frameopt__Type_26, (MR_Integer) 1)));
+
+          switch (ll_backend__frameopt__Var_128) {
+            default: /*NOTREACHED*/ MR_assert(0);
+            case (MR_Integer) 1:
+              *ll_backend__frameopt__STATE_VARIABLE_AnyBlockNeedsFrame_69 = ll_backend__frameopt__STATE_VARIABLE_AnyBlockNeedsFrame_0_68;
+              break;
+            case (MR_Integer) 0:
+              *ll_backend__frameopt__STATE_VARIABLE_AnyBlockNeedsFrame_69 = (MR_Integer) 1;
+              break;
+          }
+        }
+        break;
+      case (MR_Integer) 2:
+        *ll_backend__frameopt__STATE_VARIABLE_AnyBlockNeedsFrame_69 = ll_backend__frameopt__STATE_VARIABLE_AnyBlockNeedsFrame_0_68;
+        break;
+    }
+    {
+      ll_backend__frameopt__succeeded = ll_backend__llds____Unify____label_0_0(ll_backend__frameopt__Label_12, ll_backend__frameopt__BlockLabel_21);
+    }
+    if (ll_backend__frameopt__succeeded)
+      {
+        ll_backend__frameopt__TypeCtorInfo_112_112 = (MR_Word) &ll_backend__llds__ll_backend__llds__type_ctor_info_instruction_0;
+        {
+          mercury__list__det_split_last_3_p_0(ll_backend__frameopt__TypeCtorInfo_112_112, ll_backend__frameopt__BlockInstrs0_22, &ll_backend__frameopt__AllButLastInstrs_31, &ll_backend__frameopt__conv1_LastInstr0_32);
+        }
+        ll_backend__frameopt__LastInstr0_32 = ((MR_Word) ll_backend__frameopt__conv1_LastInstr0_32);
+        ll_backend__frameopt__succeeded = MR_TRUE;
+      }
+    if (ll_backend__frameopt__succeeded)
+      {
+        MR_Word ll_backend__frameopt__LastUinstr0_33 = ((MR_Word) (MR_hl_field(MR_mktag(0), ll_backend__frameopt__LastInstr0_32, (MR_Integer) 0)));
+        MR_String ll_backend__frameopt__Comment_34 = ((MR_String) (MR_hl_field(MR_mktag(0), ll_backend__frameopt__LastInstr0_32, (MR_Integer) 1)));
+        MR_Word ll_backend__frameopt__LastUinstr_37;
+        MR_Word ll_backend__frameopt__SideLabels0_57;
+        MR_Word ll_backend__frameopt__Var_83;
+        MR_Word ll_backend__frameopt__GotoTarget0_35;
+        MR_Word ll_backend__frameopt___SideCodeAddrs_58;
+        MR_Word ll_backend__frameopt__NextLabel_60;
+        MR_Word ll_backend__frameopt__Var_84;
+        MR_Word ll_backend__frameopt__Var_61;
+        MR_Word ll_backend__frameopt__GotoLabel_63;
+        MR_Word ll_backend__frameopt__Var_85;
+
+        ll_backend__frameopt__succeeded = ((((MR_tag((MR_Word) ll_backend__frameopt__LastUinstr0_33)) == (MR_mktag((MR_Integer) 3)))) && (((((MR_Integer) (MR_Word) (MR_hl_field(MR_mktag(3), ll_backend__frameopt__LastUinstr0_33, (MR_Integer) 0)))) == (MR_Integer) 6)));
+        if (ll_backend__frameopt__succeeded)
+          {
+            ll_backend__frameopt__GotoTarget0_35 = ((MR_Word) (MR_hl_field(MR_mktag(3), ll_backend__frameopt__LastUinstr0_33, (MR_Integer) 1)));
+            {
+              MR_Word ll_backend__frameopt__GotoTarget_36;
+              MR_Word ll_backend__frameopt__LastInstr_38;
+              MR_Word ll_backend__frameopt__Var_75;
+
+              {
+                ll_backend__opt_util__replace_labels_code_addr_3_p_0(ll_backend__frameopt__GotoTarget0_35, &ll_backend__frameopt__GotoTarget_36, ll_backend__frameopt__PreExitDummyLabelMap_16);
+              }
+              {
+                ll_backend__frameopt__LastUinstr_37 = (MR_Word) MR_mkword(MR_mktag(3), MR_new_object(MR_Word, ((MR_Integer) 2 * sizeof(MR_Word)), NULL, NULL));
+                MR_hl_field(MR_mktag(3), ll_backend__frameopt__LastUinstr_37, 0) = ((MR_Box) (MR_Word) ((MR_Integer) 6));
+                MR_hl_field(MR_mktag(3), ll_backend__frameopt__LastUinstr_37, 1) = ((MR_Box) (ll_backend__frameopt__GotoTarget_36));
+              }
+              {
+                ll_backend__frameopt__LastInstr_38 = (MR_Word) MR_new_object(MR_Word, ((MR_Integer) 2 * sizeof(MR_Word)), NULL, NULL);
+                MR_hl_field(MR_mktag(0), ll_backend__frameopt__LastInstr_38, 0) = ((MR_Box) (ll_backend__frameopt__LastUinstr_37));
+                MR_hl_field(MR_mktag(0), ll_backend__frameopt__LastInstr_38, 1) = ((MR_Box) (ll_backend__frameopt__Comment_34));
+              }
+              {
+                ll_backend__frameopt__Var_75 = (MR_Word) MR_mkword(MR_mktag(1), MR_new_object(MR_Word, ((MR_Integer) 2 * sizeof(MR_Word)), NULL, NULL));
+                MR_hl_field(MR_mktag(1), ll_backend__frameopt__Var_75, 0) = ((MR_Box) (ll_backend__frameopt__LastInstr_38));
+                MR_hl_field(MR_mktag(1), ll_backend__frameopt__Var_75, 1) = ((MR_Box) (MR_mkword(MR_mktag(0), MR_mkbody((MR_Integer) 0))));
+              }
+              {
+                ll_backend__frameopt__BlockInstrs_39 = mercury__list__f_43_43_2_f_0((MR_Word) &ll_backend__llds__ll_backend__llds__type_ctor_info_instruction_0, ll_backend__frameopt__AllButLastInstrs_31, ll_backend__frameopt__Var_75);
+              }
+            }
+          }
+        else
+          {
+            MR_Word ll_backend__frameopt__Rval_40;
+            MR_Word ll_backend__frameopt__GotoTarget0_101;
+
+            ll_backend__frameopt__succeeded = ((((MR_tag((MR_Word) ll_backend__frameopt__LastUinstr0_33)) == (MR_mktag((MR_Integer) 3)))) && (((((MR_Integer) (MR_Word) (MR_hl_field(MR_mktag(3), ll_backend__frameopt__LastUinstr0_33, (MR_Integer) 0)))) == (MR_Integer) 9)));
+            if (ll_backend__frameopt__succeeded)
+              {
+                ll_backend__frameopt__Rval_40 = ((MR_Word) (MR_hl_field(MR_mktag(3), ll_backend__frameopt__LastUinstr0_33, (MR_Integer) 1)));
+                ll_backend__frameopt__GotoTarget0_101 = ((MR_Word) (MR_hl_field(MR_mktag(3), ll_backend__frameopt__LastUinstr0_33, (MR_Integer) 2)));
+                {
+                  MR_Word ll_backend__frameopt__Var_77;
+                  MR_Word ll_backend__frameopt__GotoTarget_94;
+                  MR_Word ll_backend__frameopt__LastInstr_95;
+
+                  {
+                    ll_backend__opt_util__replace_labels_code_addr_3_p_0(ll_backend__frameopt__GotoTarget0_101, &ll_backend__frameopt__GotoTarget_94, ll_backend__frameopt__PreExitDummyLabelMap_16);
+                  }
+                  {
+                    ll_backend__frameopt__LastUinstr_37 = (MR_Word) MR_mkword(MR_mktag(3), MR_new_object(MR_Word, ((MR_Integer) 3 * sizeof(MR_Word)), NULL, NULL));
+                    MR_hl_field(MR_mktag(3), ll_backend__frameopt__LastUinstr_37, 0) = ((MR_Box) (MR_Word) ((MR_Integer) 9));
+                    MR_hl_field(MR_mktag(3), ll_backend__frameopt__LastUinstr_37, 1) = ((MR_Box) (ll_backend__frameopt__Rval_40));
+                    MR_hl_field(MR_mktag(3), ll_backend__frameopt__LastUinstr_37, 2) = ((MR_Box) (ll_backend__frameopt__GotoTarget_94));
+                  }
+                  {
+                    ll_backend__frameopt__LastInstr_95 = (MR_Word) MR_new_object(MR_Word, ((MR_Integer) 2 * sizeof(MR_Word)), NULL, NULL);
+                    MR_hl_field(MR_mktag(0), ll_backend__frameopt__LastInstr_95, 0) = ((MR_Box) (ll_backend__frameopt__LastUinstr_37));
+                    MR_hl_field(MR_mktag(0), ll_backend__frameopt__LastInstr_95, 1) = ((MR_Box) (ll_backend__frameopt__Comment_34));
+                  }
+                  {
+                    ll_backend__frameopt__Var_77 = (MR_Word) MR_mkword(MR_mktag(1), MR_new_object(MR_Word, ((MR_Integer) 2 * sizeof(MR_Word)), NULL, NULL));
+                    MR_hl_field(MR_mktag(1), ll_backend__frameopt__Var_77, 0) = ((MR_Box) (ll_backend__frameopt__LastInstr_95));
+                    MR_hl_field(MR_mktag(1), ll_backend__frameopt__Var_77, 1) = ((MR_Box) (MR_mkword(MR_mktag(0), MR_mkbody((MR_Integer) 0))));
+                  }
+                  {
+                    ll_backend__frameopt__BlockInstrs_39 = mercury__list__f_43_43_2_f_0((MR_Word) &ll_backend__llds__ll_backend__llds__type_ctor_info_instruction_0, ll_backend__frameopt__AllButLastInstrs_31, ll_backend__frameopt__Var_77);
+                  }
+                }
+              }
+            else
+              {
+                MR_Word ll_backend__frameopt__GotoTargets0_41;
+                MR_Word ll_backend__frameopt__Rval_100;
+
+                ll_backend__frameopt__succeeded = ((((MR_tag((MR_Word) ll_backend__frameopt__LastUinstr0_33)) == (MR_mktag((MR_Integer) 3)))) && (((((MR_Integer) (MR_Word) (MR_hl_field(MR_mktag(3), ll_backend__frameopt__LastUinstr0_33, (MR_Integer) 0)))) == (MR_Integer) 7)));
+                if (ll_backend__frameopt__succeeded)
+                  {
+                    ll_backend__frameopt__Rval_100 = ((MR_Word) (MR_hl_field(MR_mktag(3), ll_backend__frameopt__LastUinstr0_33, (MR_Integer) 1)));
+                    ll_backend__frameopt__GotoTargets0_41 = ((MR_Word) (MR_hl_field(MR_mktag(3), ll_backend__frameopt__LastUinstr0_33, (MR_Integer) 2)));
+                    {
+                      MR_Word ll_backend__frameopt__GotoTargets_42;
+                      MR_Word ll_backend__frameopt__Var_79;
+                      MR_Word ll_backend__frameopt__LastInstr_96;
+
+                      {
+                        ll_backend__opt_util__replace_labels_maybe_label_list_3_p_0(ll_backend__frameopt__GotoTargets0_41, &ll_backend__frameopt__GotoTargets_42, ll_backend__frameopt__PreExitDummyLabelMap_16);
+                      }
+                      {
+                        ll_backend__frameopt__LastUinstr_37 = (MR_Word) MR_mkword(MR_mktag(3), MR_new_object(MR_Word, ((MR_Integer) 3 * sizeof(MR_Word)), NULL, NULL));
+                        MR_hl_field(MR_mktag(3), ll_backend__frameopt__LastUinstr_37, 0) = ((MR_Box) (MR_Word) ((MR_Integer) 7));
+                        MR_hl_field(MR_mktag(3), ll_backend__frameopt__LastUinstr_37, 1) = ((MR_Box) (ll_backend__frameopt__Rval_100));
+                        MR_hl_field(MR_mktag(3), ll_backend__frameopt__LastUinstr_37, 2) = ((MR_Box) (ll_backend__frameopt__GotoTargets_42));
+                      }
+                      {
+                        ll_backend__frameopt__LastInstr_96 = (MR_Word) MR_new_object(MR_Word, ((MR_Integer) 2 * sizeof(MR_Word)), NULL, NULL);
+                        MR_hl_field(MR_mktag(0), ll_backend__frameopt__LastInstr_96, 0) = ((MR_Box) (ll_backend__frameopt__LastUinstr_37));
+                        MR_hl_field(MR_mktag(0), ll_backend__frameopt__LastInstr_96, 1) = ((MR_Box) (ll_backend__frameopt__Comment_34));
+                      }
+                      {
+                        ll_backend__frameopt__Var_79 = (MR_Word) MR_mkword(MR_mktag(1), MR_new_object(MR_Word, ((MR_Integer) 2 * sizeof(MR_Word)), NULL, NULL));
+                        MR_hl_field(MR_mktag(1), ll_backend__frameopt__Var_79, 0) = ((MR_Box) (ll_backend__frameopt__LastInstr_96));
+                        MR_hl_field(MR_mktag(1), ll_backend__frameopt__Var_79, 1) = ((MR_Box) (MR_mkword(MR_mktag(0), MR_mkbody((MR_Integer) 0))));
+                      }
+                      {
+                        ll_backend__frameopt__BlockInstrs_39 = mercury__list__f_43_43_2_f_0((MR_Word) &ll_backend__llds__ll_backend__llds__type_ctor_info_instruction_0, ll_backend__frameopt__AllButLastInstrs_31, ll_backend__frameopt__Var_79);
+                      }
+                    }
+                  }
+                else
+                  {
+                    MR_Word ll_backend__frameopt__D_43;
+                    MR_Word ll_backend__frameopt__Comps0_44;
+                    MR_Word ll_backend__frameopt__MC_45;
+                    MR_Word ll_backend__frameopt__FNL_46;
+                    MR_Word ll_backend__frameopt__FL_47;
+                    MR_Word ll_backend__frameopt__FOL_48;
+                    MR_Word ll_backend__frameopt__NF0_49;
+                    MR_Word ll_backend__frameopt__MDL_50;
+                    MR_Word ll_backend__frameopt__S_51;
+                    MR_Word ll_backend__frameopt__MD_52;
+
+                    ll_backend__frameopt__succeeded = ((((MR_tag((MR_Word) ll_backend__frameopt__LastUinstr0_33)) == (MR_mktag((MR_Integer) 3)))) && (((((MR_Integer) (MR_Word) (MR_hl_field(MR_mktag(3), ll_backend__frameopt__LastUinstr0_33, (MR_Integer) 0)))) == (MR_Integer) 27)));
+                    if (ll_backend__frameopt__succeeded)
+                      {
+                        ll_backend__frameopt__D_43 = ((MR_Word) (MR_hl_field(MR_mktag(3), ll_backend__frameopt__LastUinstr0_33, (MR_Integer) 1)));
+                        ll_backend__frameopt__Comps0_44 = ((MR_Word) (MR_hl_field(MR_mktag(3), ll_backend__frameopt__LastUinstr0_33, (MR_Integer) 2)));
+                        ll_backend__frameopt__MC_45 = ((MR_Word) (MR_hl_field(MR_mktag(3), ll_backend__frameopt__LastUinstr0_33, (MR_Integer) 3)));
+                        ll_backend__frameopt__FNL_46 = ((MR_Word) (MR_hl_field(MR_mktag(3), ll_backend__frameopt__LastUinstr0_33, (MR_Integer) 4)));
+                        ll_backend__frameopt__FL_47 = ((MR_Word) (MR_hl_field(MR_mktag(3), ll_backend__frameopt__LastUinstr0_33, (MR_Integer) 5)));
+                        ll_backend__frameopt__FOL_48 = ((MR_Word) (MR_hl_field(MR_mktag(3), ll_backend__frameopt__LastUinstr0_33, (MR_Integer) 6)));
+                        ll_backend__frameopt__NF0_49 = ((MR_Word) (MR_hl_field(MR_mktag(3), ll_backend__frameopt__LastUinstr0_33, (MR_Integer) 7)));
+                        ll_backend__frameopt__MDL_50 = ((MR_Word) (MR_hl_field(MR_mktag(3), ll_backend__frameopt__LastUinstr0_33, (MR_Integer) 8)));
+                        ll_backend__frameopt__S_51 = ((MR_Word) (MR_hl_field(MR_mktag(3), ll_backend__frameopt__LastUinstr0_33, (MR_Integer) 9)));
+                        ll_backend__frameopt__MD_52 = ((MR_Word) (MR_hl_field(MR_mktag(3), ll_backend__frameopt__LastUinstr0_33, (MR_Integer) 10)));
+                        {
+                          MR_Word ll_backend__frameopt__NF_53;
+                          MR_Word ll_backend__frameopt__Comps_54;
+                          MR_Word ll_backend__frameopt__Var_81;
+                          MR_Word ll_backend__frameopt__LastInstr_97;
+
+                          if ((ll_backend__frameopt__NF0_49 == ((MR_Word) MR_mkword(MR_mktag(0), MR_mkbody((MR_Integer) 0)))))
+                            {
+                              ll_backend__frameopt__NF_53 = (MR_Word) MR_mkword(MR_mktag(0), MR_mkbody((MR_Integer) 0));
+                              ll_backend__frameopt__Comps_54 = ll_backend__frameopt__Comps0_44;
+                            }
+                          else
+                            {
+                              MR_Word ll_backend__frameopt__NFLabel0_55 = ((MR_Word) (MR_hl_field(MR_mktag(1), ll_backend__frameopt__NF0_49, (MR_Integer) 0)));
+                              MR_Word ll_backend__frameopt__NFLabel_56;
+
+                              {
+                                ll_backend__opt_util__replace_labels_label_3_p_0(ll_backend__frameopt__NFLabel0_55, &ll_backend__frameopt__NFLabel_56, ll_backend__frameopt__PreExitDummyLabelMap_16);
+                              }
+                              {
+                                ll_backend__frameopt__NF_53 = (MR_Word) MR_mkword(MR_mktag(1), MR_new_object(MR_Word, ((MR_Integer) 1 * sizeof(MR_Word)), NULL, NULL));
+                                MR_hl_field(MR_mktag(1), ll_backend__frameopt__NF_53, 0) = ((MR_Box) (ll_backend__frameopt__NFLabel_56));
+                              }
+                              {
+                                ll_backend__opt_util__replace_labels_comps_3_p_0(ll_backend__frameopt__Comps0_44, &ll_backend__frameopt__Comps_54, ll_backend__frameopt__PreExitDummyLabelMap_16);
+                              }
+                            }
+                          {
+                            ll_backend__frameopt__LastUinstr_37 = (MR_Word) MR_mkword(MR_mktag(3), MR_new_object(MR_Word, ((MR_Integer) 11 * sizeof(MR_Word)), NULL, NULL));
+                            MR_hl_field(MR_mktag(3), ll_backend__frameopt__LastUinstr_37, 0) = ((MR_Box) (MR_Word) ((MR_Integer) 27));
+                            MR_hl_field(MR_mktag(3), ll_backend__frameopt__LastUinstr_37, 1) = ((MR_Box) (ll_backend__frameopt__D_43));
+                            MR_hl_field(MR_mktag(3), ll_backend__frameopt__LastUinstr_37, 2) = ((MR_Box) (ll_backend__frameopt__Comps_54));
+                            MR_hl_field(MR_mktag(3), ll_backend__frameopt__LastUinstr_37, 3) = ((MR_Box) (ll_backend__frameopt__MC_45));
+                            MR_hl_field(MR_mktag(3), ll_backend__frameopt__LastUinstr_37, 4) = ((MR_Box) (ll_backend__frameopt__FNL_46));
+                            MR_hl_field(MR_mktag(3), ll_backend__frameopt__LastUinstr_37, 5) = ((MR_Box) (ll_backend__frameopt__FL_47));
+                            MR_hl_field(MR_mktag(3), ll_backend__frameopt__LastUinstr_37, 6) = ((MR_Box) (ll_backend__frameopt__FOL_48));
+                            MR_hl_field(MR_mktag(3), ll_backend__frameopt__LastUinstr_37, 7) = ((MR_Box) (ll_backend__frameopt__NF_53));
+                            MR_hl_field(MR_mktag(3), ll_backend__frameopt__LastUinstr_37, 8) = ((MR_Box) (ll_backend__frameopt__MDL_50));
+                            MR_hl_field(MR_mktag(3), ll_backend__frameopt__LastUinstr_37, 9) = ((MR_Box) (ll_backend__frameopt__S_51));
+                            MR_hl_field(MR_mktag(3), ll_backend__frameopt__LastUinstr_37, 10) = ((MR_Box) (ll_backend__frameopt__MD_52));
+                          }
+                          {
+                            ll_backend__frameopt__LastInstr_97 = (MR_Word) MR_new_object(MR_Word, ((MR_Integer) 2 * sizeof(MR_Word)), NULL, NULL);
+                            MR_hl_field(MR_mktag(0), ll_backend__frameopt__LastInstr_97, 0) = ((MR_Box) (ll_backend__frameopt__LastUinstr_37));
+                            MR_hl_field(MR_mktag(0), ll_backend__frameopt__LastInstr_97, 1) = ((MR_Box) (ll_backend__frameopt__Comment_34));
+                          }
+                          {
+                            ll_backend__frameopt__Var_81 = (MR_Word) MR_mkword(MR_mktag(1), MR_new_object(MR_Word, ((MR_Integer) 2 * sizeof(MR_Word)), NULL, NULL));
+                            MR_hl_field(MR_mktag(1), ll_backend__frameopt__Var_81, 0) = ((MR_Box) (ll_backend__frameopt__LastInstr_97));
+                            MR_hl_field(MR_mktag(1), ll_backend__frameopt__Var_81, 1) = ((MR_Box) (MR_mkword(MR_mktag(0), MR_mkbody((MR_Integer) 0))));
+                          }
+                          {
+                            ll_backend__frameopt__BlockInstrs_39 = mercury__list__f_43_43_2_f_0((MR_Word) &ll_backend__llds__ll_backend__llds__type_ctor_info_instruction_0, ll_backend__frameopt__AllButLastInstrs_31, ll_backend__frameopt__Var_81);
+                          }
+                        }
+                      }
+                    else
+                      {
+                        ll_backend__frameopt__LastUinstr_37 = ll_backend__frameopt__LastUinstr0_33;
+                        ll_backend__frameopt__BlockInstrs_39 = ll_backend__frameopt__BlockInstrs0_22;
+                      }
+                  }
+              }
+          }
+        {
+          ll_backend__opt_util__possible_targets_3_p_0(ll_backend__frameopt__LastUinstr_37, &ll_backend__frameopt__SideLabels0_57, &ll_backend__frameopt___SideCodeAddrs_58);
+        }
+        {
+          ll_backend__frameopt__Var_83 = (MR_Word) MR_new_object(MR_Word, ((MR_Integer) 4 * sizeof(MR_Word)), NULL, NULL);
+          MR_hl_field(MR_mktag(0), ll_backend__frameopt__Var_83, 0) = ((MR_Box) (&ll_backend__frameopt_scalar_common_4[1]));
+          MR_hl_field(MR_mktag(0), ll_backend__frameopt__Var_83, 1) = ((MR_Box) (ll_backend__frameopt__analyze_block_11_p_0_1));
+          MR_hl_field(MR_mktag(0), ll_backend__frameopt__Var_83, 2) = ((MR_Box) (MR_Word) ((MR_Integer) 1));
+          MR_hl_field(MR_mktag(0), ll_backend__frameopt__Var_83, 3) = ((MR_Box) (ll_backend__frameopt__ProcLabel_15));
+        }
+        {
+          mercury__list__filter_3_p_0(ll_backend__frameopt__TypeCtorInfo_105_105, ll_backend__frameopt__Var_83, ll_backend__frameopt__SideLabels0_57, &ll_backend__frameopt__SideLabels_59);
+        }
+        {
+          ll_backend__frameopt__Var_84 = ll_backend__opt_util__can_instr_fall_through_1_f_0(ll_backend__frameopt__LastUinstr_37);
+        }
+        ll_backend__frameopt__succeeded = (ll_backend__frameopt__Var_84 == (MR_Integer) 1);
+        if (ll_backend__frameopt__succeeded)
+          {
+            ll_backend__frameopt__succeeded = ((MR_tag((MR_Word) ll_backend__frameopt__FollowingLabels_13)) == (MR_mktag((MR_Integer) 1)));
+            if (ll_backend__frameopt__succeeded)
+              {
+                ll_backend__frameopt__NextLabel_60 = ((MR_Word) (MR_hl_field(MR_mktag(1), ll_backend__frameopt__FollowingLabels_13, (MR_Integer) 0)));
+                ll_backend__frameopt__Var_61 = ((MR_Word) (MR_hl_field(MR_mktag(1), ll_backend__frameopt__FollowingLabels_13, (MR_Integer) 1)));
+              }
+          }
+        if (ll_backend__frameopt__succeeded)
+          {
+            ll_backend__frameopt__MaybeFallThrough_62 = (MR_Word) MR_mkword(MR_mktag(1), MR_new_object(MR_Word, ((MR_Integer) 1 * sizeof(MR_Word)), NULL, NULL));
+            MR_hl_field(MR_mktag(1), ll_backend__frameopt__MaybeFallThrough_62, 0) = ((MR_Box) (ll_backend__frameopt__NextLabel_60));
+          }
+        else
+          ll_backend__frameopt__MaybeFallThrough_62 = (MR_Word) MR_mkword(MR_mktag(0), MR_mkbody((MR_Integer) 0));
+        ll_backend__frameopt__succeeded = ((((MR_tag((MR_Word) ll_backend__frameopt__LastUinstr_37)) == (MR_mktag((MR_Integer) 3)))) && (((((MR_Integer) (MR_Word) (MR_hl_field(MR_mktag(3), ll_backend__frameopt__LastUinstr_37, (MR_Integer) 0)))) == (MR_Integer) 6)));
+        if (ll_backend__frameopt__succeeded)
+          {
+            ll_backend__frameopt__Var_85 = ((MR_Word) (MR_hl_field(MR_mktag(3), ll_backend__frameopt__LastUinstr_37, (MR_Integer) 1)));
+            ll_backend__frameopt__succeeded = ((MR_tag((MR_Word) ll_backend__frameopt__Var_85)) == (MR_mktag((MR_Integer) 1)));
+            if (ll_backend__frameopt__succeeded)
+              {
+                ll_backend__frameopt__GotoLabel_63 = ((MR_Word) (MR_hl_field(MR_mktag(1), ll_backend__frameopt__Var_85, (MR_Integer) 0)));
+                {
+                  ll_backend__frameopt__succeeded = ll_backend__frameopt__matching_label_ref_2_p_0(ll_backend__frameopt__FirstLabel_14, ll_backend__frameopt__GotoLabel_63);
+                }
+              }
+          }
+        if (ll_backend__frameopt__succeeded)
+          *ll_backend__frameopt__STATE_VARIABLE_JumpToStart_71 = (MR_Integer) 1;
+        else
+          *ll_backend__frameopt__STATE_VARIABLE_JumpToStart_71 = ll_backend__frameopt__STATE_VARIABLE_JumpToStart_0_70;
+      }
+    else
+      {
+        {
+          mercury__require__unexpected_3_p_0((MR_String) "ll_backend.frameopt", (MR_String) "predicate \140ll_backend.frameopt.analyze_block\'/11", (MR_String) "mismatch or no last instr");
+          return;
+        }
+      }
+    {
+      ll_backend__frameopt__BlockInfo_64 = (MR_Word) MR_new_object(MR_Word, ((MR_Integer) 6 * sizeof(MR_Word)), NULL, NULL);
+      MR_hl_field(MR_mktag(0), ll_backend__frameopt__BlockInfo_64, 0) = ((MR_Box) (ll_backend__frameopt__BlockLabel_21));
+      MR_hl_field(MR_mktag(0), ll_backend__frameopt__BlockInfo_64, 1) = ((MR_Box) (ll_backend__frameopt__BlockInstrs_39));
+      MR_hl_field(MR_mktag(0), ll_backend__frameopt__BlockInfo_64, 2) = ((MR_Box) (ll_backend__frameopt__FallInto_23));
+      MR_hl_field(MR_mktag(0), ll_backend__frameopt__BlockInfo_64, 3) = ((MR_Box) (ll_backend__frameopt__SideLabels_59));
+      MR_hl_field(MR_mktag(0), ll_backend__frameopt__BlockInfo_64, 4) = ((MR_Box) (ll_backend__frameopt__MaybeFallThrough_62));
+      MR_hl_field(MR_mktag(0), ll_backend__frameopt__BlockInfo_64, 5) = ((MR_Box) (ll_backend__frameopt__Type_26));
+    }
+    {
+      mercury__map__det_update_4_p_0(ll_backend__frameopt__TypeCtorInfo_105_105, ll_backend__frameopt__TypeInfo_111_111, ((MR_Box) (ll_backend__frameopt__Label_12)), ((MR_Box) (ll_backend__frameopt__BlockInfo_64)), (MR_Word) ll_backend__frameopt__STATE_VARIABLE_BlockMap_0_66, &ll_backend__frameopt__conv2_STATE_VARIABLE_BlockMap_90_90);
+    }
+    ll_backend__frameopt__STATE_VARIABLE_BlockMap_90_90 = (MR_Word) ll_backend__frameopt__conv2_STATE_VARIABLE_BlockMap_90_90;
+    {
+      ll_backend__frameopt__find_redoip_labels_4_p_0(ll_backend__frameopt__BlockInstrs_39, ll_backend__frameopt__ProcLabel_15, (MR_Word) MR_mkword(MR_mktag(0), MR_mkbody((MR_Integer) 0)), &ll_backend__frameopt__RedoipLabels_65);
+    }
+    {
+      ll_backend__frameopt__Var_92 = (MR_Word) MR_new_object(MR_Word, ((MR_Integer) 4 * sizeof(MR_Word)), NULL, NULL);
+      MR_hl_field(MR_mktag(0), ll_backend__frameopt__Var_92, 0) = ((MR_Box) (&ll_backend__frameopt_scalar_common_6[0]));
+      MR_hl_field(MR_mktag(0), ll_backend__frameopt__Var_92, 1) = ((MR_Box) (ll_backend__frameopt__analyze_block_11_p_0_2));
+      MR_hl_field(MR_mktag(0), ll_backend__frameopt__Var_92, 2) = ((MR_Box) (MR_Word) ((MR_Integer) 1));
+      MR_hl_field(MR_mktag(0), ll_backend__frameopt__Var_92, 3) = ((MR_Box) (ll_backend__frameopt__TypeClassInfo_for_block_entry_exit_104));
+    }
+    {
+      ll_backend__frameopt__TypeInfo_126_126 = (MR_Word) MR_new_object(MR_Word, ((MR_Integer) 3 * sizeof(MR_Word)), NULL, NULL);
+      MR_hl_field(MR_mktag(0), ll_backend__frameopt__TypeInfo_126_126, 0) = ((MR_Box) (&mercury__tree234__tree234__type_ctor_info_tree234_2));
+      MR_hl_field(MR_mktag(0), ll_backend__frameopt__TypeInfo_126_126, 1) = ((MR_Box) (ll_backend__frameopt__TypeCtorInfo_105_105));
+      MR_hl_field(MR_mktag(0), ll_backend__frameopt__TypeInfo_126_126, 2) = ((MR_Box) (ll_backend__frameopt__TypeInfo_111_111));
+    }
+    {
+      mercury__list__foldl_4_p_0(ll_backend__frameopt__TypeCtorInfo_105_105, ll_backend__frameopt__TypeInfo_126_126, (MR_Word) ll_backend__frameopt__Var_92, ll_backend__frameopt__RedoipLabels_65, ((MR_Box) (ll_backend__frameopt__STATE_VARIABLE_BlockMap_90_90)), &ll_backend__frameopt__conv4_STATE_VARIABLE_BlockMap_67);
+    }
+    *ll_backend__frameopt__STATE_VARIABLE_BlockMap_67 = ((MR_Word) ll_backend__frameopt__conv4_STATE_VARIABLE_BlockMap_67);
+  }
+}
+
+static void MR_CALL 
+ll_backend__frameopt__find_redoip_labels_4_p_0(
+  MR_Word ll_backend__frameopt__HeadVar__1_1,
+  MR_Word ll_backend__frameopt__ProcLabel_2,
+  MR_Word ll_backend__frameopt__STATE_VARIABLE_RedoipLabels_0_3,
+  MR_Word * ll_backend__frameopt__STATE_VARIABLE_RedoipLabels_4)
+{
+  while (MR_TRUE)
+    {
+      /* tailcall optimized into a loop */
+      {
+        MR_bool ll_backend__frameopt__succeeded;
+
+        if ((ll_backend__frameopt__HeadVar__1_1 == ((MR_Word) MR_mkword(MR_mktag(0), MR_mkbody((MR_Integer) 0)))))
+          *ll_backend__frameopt__STATE_VARIABLE_RedoipLabels_4 = ll_backend__frameopt__STATE_VARIABLE_RedoipLabels_0_3;
+        else
+          {
+            MR_Word ll_backend__frameopt__Instr_9 = ((MR_Word) (MR_hl_field(MR_mktag(1), ll_backend__frameopt__HeadVar__1_1, (MR_Integer) 0)));
+            MR_Word ll_backend__frameopt__Instrs_10 = ((MR_Word) (MR_hl_field(MR_mktag(1), ll_backend__frameopt__HeadVar__1_1, (MR_Integer) 1)));
+            MR_Word ll_backend__frameopt__Uinstr_13 = ((MR_Word) (MR_hl_field(MR_mktag(0), ll_backend__frameopt__Instr_9, (MR_Integer) 0)));
+            MR_Word ll_backend__frameopt__STATE_VARIABLE_RedoipLabels_23_23;
+            MR_String ll_backend__frameopt__Var_14 = ((MR_String) (MR_hl_field(MR_mktag(0), ll_backend__frameopt__Instr_9, (MR_Integer) 1)));
+            MR_Word ll_backend__frameopt__Label_16;
+            MR_Word ll_backend__frameopt__Var_19;
+            MR_Word ll_backend__frameopt__Var_20;
+            MR_Word ll_backend__frameopt__Var_21;
+            MR_Word ll_backend__frameopt__Var_22;
+            MR_Word ll_backend__frameopt__Var_25;
+            MR_Word ll_backend__frameopt__Var_15;
+
+            ll_backend__frameopt__succeeded = ((((MR_tag((MR_Word) ll_backend__frameopt__Uinstr_13)) == (MR_mktag((MR_Integer) 3)))) && (((((MR_Integer) (MR_Word) (MR_hl_field(MR_mktag(3), ll_backend__frameopt__Uinstr_13, (MR_Integer) 0)))) == (MR_Integer) 1)));
+            if (ll_backend__frameopt__succeeded)
+              {
+                ll_backend__frameopt__Var_19 = ((MR_Word) (MR_hl_field(MR_mktag(3), ll_backend__frameopt__Uinstr_13, (MR_Integer) 1)));
+                ll_backend__frameopt__Var_20 = ((MR_Word) (MR_hl_field(MR_mktag(3), ll_backend__frameopt__Uinstr_13, (MR_Integer) 2)));
+                ll_backend__frameopt__succeeded = ((((MR_tag((MR_Word) ll_backend__frameopt__Var_19)) == (MR_mktag((MR_Integer) 3)))) && (((((MR_Integer) (MR_Word) (MR_hl_field(MR_mktag(3), ll_backend__frameopt__Var_19, (MR_Integer) 0)))) == (MR_Integer) 6)));
+                if (ll_backend__frameopt__succeeded)
+                  {
+                    ll_backend__frameopt__Var_15 = ((MR_Word) (MR_hl_field(MR_mktag(3), ll_backend__frameopt__Var_19, (MR_Integer) 1)));
+                    ll_backend__frameopt__succeeded = ((((MR_tag((MR_Word) ll_backend__frameopt__Var_20)) == (MR_mktag((MR_Integer) 3)))) && (((((MR_Integer) (MR_Word) (MR_hl_field(MR_mktag(3), ll_backend__frameopt__Var_20, (MR_Integer) 0)))) == (MR_Integer) 1)));
+                    if (ll_backend__frameopt__succeeded)
+                      {
+                        ll_backend__frameopt__Var_21 = ((MR_Word) (MR_hl_field(MR_mktag(3), ll_backend__frameopt__Var_20, (MR_Integer) 1)));
+                        ll_backend__frameopt__succeeded = ((((MR_tag((MR_Word) ll_backend__frameopt__Var_21)) == (MR_mktag((MR_Integer) 3)))) && (((((MR_Integer) (MR_Word) (MR_hl_field(MR_mktag(3), ll_backend__frameopt__Var_21, (MR_Integer) 0)))) == (MR_Integer) 10)));
+                        if (ll_backend__frameopt__succeeded)
+                          {
+                            ll_backend__frameopt__Var_22 = ((MR_Word) (MR_hl_field(MR_mktag(3), ll_backend__frameopt__Var_21, (MR_Integer) 1)));
+                            ll_backend__frameopt__succeeded = ((MR_tag((MR_Word) ll_backend__frameopt__Var_22)) == (MR_mktag((MR_Integer) 1)));
+                            if (ll_backend__frameopt__succeeded)
+                              {
+                                ll_backend__frameopt__Label_16 = ((MR_Word) (MR_hl_field(MR_mktag(1), ll_backend__frameopt__Var_22, (MR_Integer) 0)));
+                                {
+                                  ll_backend__frameopt__Var_25 = ll_backend__llds__get_proc_label_1_f_0(ll_backend__frameopt__Label_16);
+                                }
+                                {
+                                  ll_backend__frameopt__succeeded = mdbcomp__prim_data____Unify____proc_label_0_0(ll_backend__frameopt__ProcLabel_2, ll_backend__frameopt__Var_25);
+                                }
+                              }
+                          }
+                      }
+                  }
+              }
+            if (ll_backend__frameopt__succeeded)
+              {
+                ll_backend__frameopt__STATE_VARIABLE_RedoipLabels_23_23 = (MR_Word) MR_mkword(MR_mktag(1), MR_new_object(MR_Word, ((MR_Integer) 2 * sizeof(MR_Word)), NULL, NULL));
+                MR_hl_field(MR_mktag(1), ll_backend__frameopt__STATE_VARIABLE_RedoipLabels_23_23, 0) = ((MR_Box) (ll_backend__frameopt__Label_16));
+                MR_hl_field(MR_mktag(1), ll_backend__frameopt__STATE_VARIABLE_RedoipLabels_23_23, 1) = ((MR_Box) (ll_backend__frameopt__STATE_VARIABLE_RedoipLabels_0_3));
+              }
+            else
+              ll_backend__frameopt__STATE_VARIABLE_RedoipLabels_23_23 = ll_backend__frameopt__STATE_VARIABLE_RedoipLabels_0_3;
+            /* direct tailcall eliminated */
+            {
+              MR_Word ll_backend__frameopt__next_value_of_HeadVar__1_1 = ll_backend__frameopt__Instrs_10;
+              MR_Word ll_backend__frameopt__next_value_of_STATE_VARIABLE_RedoipLabels_0_3 = ll_backend__frameopt__STATE_VARIABLE_RedoipLabels_23_23;
+
+              ll_backend__frameopt__STATE_VARIABLE_RedoipLabels_0_3 = ll_backend__frameopt__next_value_of_STATE_VARIABLE_RedoipLabels_0_3;
+              ll_backend__frameopt__HeadVar__1_1 = ll_backend__frameopt__next_value_of_HeadVar__1_1;
+            }
+            continue;
+          }
+      }
+      break;
+    }
+}
+
+static MR_bool MR_CALL 
+ll_backend__frameopt__matching_label_ref_2_p_0(
+  MR_Word ll_backend__frameopt__FirstLabel_3,
+  MR_Word ll_backend__frameopt__GotoLabel_4)
+{
+  {
+    MR_bool ll_backend__frameopt__succeeded = ((MR_tag((MR_Word) ll_backend__frameopt__FirstLabel_3)) == (MR_mktag((MR_Integer) 1)));
+    MR_Word ll_backend__frameopt__FirstLabelType_5;
+    MR_Word ll_backend__frameopt__ProcLabel_6;
+    MR_Word ll_backend__frameopt__GotoLabelType_7;
+    MR_Word ll_backend__frameopt__Var_8;
+
+    if (ll_backend__frameopt__succeeded)
+      {
+        ll_backend__frameopt__FirstLabelType_5 = ((MR_Word) (MR_hl_field(MR_mktag(1), ll_backend__frameopt__FirstLabel_3, (MR_Integer) 0)));
+        ll_backend__frameopt__ProcLabel_6 = ((MR_Word) (MR_hl_field(MR_mktag(1), ll_backend__frameopt__FirstLabel_3, (MR_Integer) 1)));
+        ll_backend__frameopt__succeeded = ((MR_tag((MR_Word) ll_backend__frameopt__GotoLabel_4)) == (MR_mktag((MR_Integer) 1)));
+        if (ll_backend__frameopt__succeeded)
+          {
+            ll_backend__frameopt__GotoLabelType_7 = ((MR_Word) (MR_hl_field(MR_mktag(1), ll_backend__frameopt__GotoLabel_4, (MR_Integer) 0)));
+            ll_backend__frameopt__Var_8 = ((MR_Word) (MR_hl_field(MR_mktag(1), ll_backend__frameopt__GotoLabel_4, (MR_Integer) 1)));
+            {
+              ll_backend__frameopt__succeeded = mdbcomp__prim_data____Unify____proc_label_0_0(ll_backend__frameopt__ProcLabel_6, ll_backend__frameopt__Var_8);
+            }
+            if (ll_backend__frameopt__succeeded)
+              switch (ll_backend__frameopt__FirstLabelType_5) {
+                default: /*NOTREACHED*/ MR_assert(0);
+                case (MR_Integer) 0:
+                  ll_backend__frameopt__succeeded = (ll_backend__frameopt__GotoLabelType_7 == (MR_Integer) 0);
+                  break;
+                case (MR_Integer) 2:
+                  ll_backend__frameopt__succeeded = MR_TRUE;
+                  break;
+                case (MR_Integer) 1:
+                  switch (ll_backend__frameopt__GotoLabelType_7) {
+                    default:
+                      ll_backend__frameopt__succeeded = MR_FALSE;
+                      break;
+                    case (MR_Integer) 0:
+                    case (MR_Integer) 1:
+                      ll_backend__frameopt__succeeded = MR_TRUE;
+                      break;
+                  }
+                  break;
+              }
+          }
+      }
+    return ll_backend__frameopt__succeeded;
+  }
+}
+
+static MR_bool MR_CALL 
+ll_backend__frameopt__detect_det_entry_4_p_0(
+  MR_Word ll_backend__frameopt__Instrs0_5,
+  MR_Word * ll_backend__frameopt__Setup_6,
+  MR_Word * ll_backend__frameopt__HeadVar__3_3,
+  MR_Word * ll_backend__frameopt__EntryInfo_9)
+{
+  {
+    MR_bool ll_backend__frameopt__succeeded;
+    MR_Word ll_backend__frameopt__Others_7;
+    MR_Word ll_backend__frameopt__Remain_8;
+    MR_Word ll_backend__frameopt__Others0_10;
+    MR_Word ll_backend__frameopt__Instrs1_11;
+    MR_Word ll_backend__frameopt__SetupInstr1_12;
+    MR_Word ll_backend__frameopt__Instrs2_13;
+    MR_Integer ll_backend__frameopt__FrameSize_14;
+    MR_String ll_backend__frameopt__Msg_15;
+    MR_Word ll_backend__frameopt__Kind_16;
+    MR_Word ll_backend__frameopt__SetupInstr2_18;
+    MR_Word ll_backend__frameopt__Var_19;
+    MR_Word ll_backend__frameopt__Var_20;
+    MR_Word ll_backend__frameopt__Var_21;
+    MR_String ll_backend__frameopt__Var_17;
+
+    {
+      ll_backend__opt_util__gather_comments_3_p_0(ll_backend__frameopt__Instrs0_5, &ll_backend__frameopt__Others0_10, &ll_backend__frameopt__Instrs1_11);
+    }
+    ll_backend__frameopt__succeeded = ((MR_tag((MR_Word) ll_backend__frameopt__Instrs1_11)) == (MR_mktag((MR_Integer) 1)));
+    if (ll_backend__frameopt__succeeded)
+      {
+        ll_backend__frameopt__SetupInstr1_12 = ((MR_Word) (MR_hl_field(MR_mktag(1), ll_backend__frameopt__Instrs1_11, (MR_Integer) 0)));
+        ll_backend__frameopt__Instrs2_13 = ((MR_Word) (MR_hl_field(MR_mktag(1), ll_backend__frameopt__Instrs1_11, (MR_Integer) 1)));
+        ll_backend__frameopt__Var_19 = ((MR_Word) (MR_hl_field(MR_mktag(0), ll_backend__frameopt__SetupInstr1_12, (MR_Integer) 0)));
+        ll_backend__frameopt__Var_17 = ((MR_String) (MR_hl_field(MR_mktag(0), ll_backend__frameopt__SetupInstr1_12, (MR_Integer) 1)));
+        ll_backend__frameopt__succeeded = ((((MR_tag((MR_Word) ll_backend__frameopt__Var_19)) == (MR_mktag((MR_Integer) 3)))) && (((((MR_Integer) (MR_Word) (MR_hl_field(MR_mktag(3), ll_backend__frameopt__Var_19, (MR_Integer) 0)))) == (MR_Integer) 24)));
+        if (ll_backend__frameopt__succeeded)
+          {
+            ll_backend__frameopt__FrameSize_14 = ((MR_Integer) (MR_hl_field(MR_mktag(3), ll_backend__frameopt__Var_19, (MR_Integer) 1)));
+            ll_backend__frameopt__Msg_15 = ((MR_String) (MR_hl_field(MR_mktag(3), ll_backend__frameopt__Var_19, (MR_Integer) 2)));
+            ll_backend__frameopt__Kind_16 = ((MR_Word) (MR_hl_field(MR_mktag(3), ll_backend__frameopt__Var_19, (MR_Integer) 3)));
+            {
+              ll_backend__frameopt__succeeded = ll_backend__frameopt__detstack_setup_6_p_0(ll_backend__frameopt__Instrs2_13, ll_backend__frameopt__FrameSize_14, &ll_backend__frameopt__SetupInstr2_18, ll_backend__frameopt__Others0_10, &ll_backend__frameopt__Others_7, &ll_backend__frameopt__Remain_8);
+            }
+            if (ll_backend__frameopt__succeeded)
+              {
+                {
+                  *ll_backend__frameopt__HeadVar__3_3 = mercury__list__f_43_43_2_f_0((MR_Word) &ll_backend__llds__ll_backend__llds__type_ctor_info_instruction_0, ll_backend__frameopt__Others_7, ll_backend__frameopt__Remain_8);
+                }
+                ll_backend__frameopt__Var_21 = (MR_Word) MR_mkword(MR_mktag(0), MR_mkbody((MR_Integer) 0));
+                {
+                  ll_backend__frameopt__Var_20 = (MR_Word) MR_mkword(MR_mktag(1), MR_new_object(MR_Word, ((MR_Integer) 2 * sizeof(MR_Word)), NULL, NULL));
+                  MR_hl_field(MR_mktag(1), ll_backend__frameopt__Var_20, 0) = ((MR_Box) (ll_backend__frameopt__SetupInstr2_18));
+                  MR_hl_field(MR_mktag(1), ll_backend__frameopt__Var_20, 1) = ((MR_Box) (ll_backend__frameopt__Var_21));
+                }
+                {
+                  MR_Word base;
+                  base = (MR_Word) MR_mkword(MR_mktag(1), MR_new_object(MR_Word, ((MR_Integer) 2 * sizeof(MR_Word)), NULL, NULL));
+                  *ll_backend__frameopt__Setup_6 = base;
+                  MR_hl_field(MR_mktag(1), base, 0) = ((MR_Box) (ll_backend__frameopt__SetupInstr1_12));
+                  MR_hl_field(MR_mktag(1), base, 1) = ((MR_Box) (ll_backend__frameopt__Var_20));
+                }
+                {
+                  MR_Word base;
+                  base = (MR_Word) MR_new_object(MR_Word, ((MR_Integer) 3 * sizeof(MR_Word)), NULL, NULL);
+                  *ll_backend__frameopt__EntryInfo_9 = base;
+                  MR_hl_field(MR_mktag(0), base, 0) = ((MR_Box) (ll_backend__frameopt__FrameSize_14));
+                  MR_hl_field(MR_mktag(0), base, 1) = ((MR_Box) (ll_backend__frameopt__Msg_15));
+                  MR_hl_field(MR_mktag(0), base, 2) = ((MR_Box) (ll_backend__frameopt__Kind_16));
+                }
+                ll_backend__frameopt__succeeded = MR_TRUE;
+              }
+          }
+      }
+    return ll_backend__frameopt__succeeded;
+  }
+}
+
+static MR_bool MR_CALL 
+ll_backend__frameopt__detstack_setup_6_p_0(
+  MR_Word ll_backend__frameopt__HeadVar__1_1,
+  MR_Integer ll_backend__frameopt__FrameSize_9,
+  MR_Word * ll_backend__frameopt__Setup_10,
+  MR_Word ll_backend__frameopt__STATE_VARIABLE_Others_0_18,
+  MR_Word * ll_backend__frameopt__STATE_VARIABLE_Others_19,
+  MR_Word * ll_backend__frameopt__Remain_12)
+{
+  while (MR_TRUE)
+    {
+      /* tailcall optimized into a loop */
+      {
+        MR_bool ll_backend__frameopt__succeeded = ((MR_tag((MR_Word) ll_backend__frameopt__HeadVar__1_1)) == (MR_mktag((MR_Integer) 1)));
+        MR_Word ll_backend__frameopt__Instr0_7;
+        MR_Word ll_backend__frameopt__Instrs0_8;
+        MR_Word ll_backend__frameopt__Uinstr0_13;
+        MR_String ll_backend__frameopt__Var_14;
+        MR_Word ll_backend__frameopt__Lval_15;
+        MR_Word ll_backend__frameopt__Rval_16;
+
+        if (ll_backend__frameopt__succeeded)
+          {
+            ll_backend__frameopt__Instr0_7 = ((MR_Word) (MR_hl_field(MR_mktag(1), ll_backend__frameopt__HeadVar__1_1, (MR_Integer) 0)));
+            ll_backend__frameopt__Instrs0_8 = ((MR_Word) (MR_hl_field(MR_mktag(1), ll_backend__frameopt__HeadVar__1_1, (MR_Integer) 1)));
+            ll_backend__frameopt__Uinstr0_13 = ((MR_Word) (MR_hl_field(MR_mktag(0), ll_backend__frameopt__Instr0_7, (MR_Integer) 0)));
+            ll_backend__frameopt__Var_14 = ((MR_String) (MR_hl_field(MR_mktag(0), ll_backend__frameopt__Instr0_7, (MR_Integer) 1)));
+            ll_backend__frameopt__succeeded = ((((MR_tag((MR_Word) ll_backend__frameopt__Uinstr0_13)) == (MR_mktag((MR_Integer) 3)))) && (((((MR_Integer) (MR_Word) (MR_hl_field(MR_mktag(3), ll_backend__frameopt__Uinstr0_13, (MR_Integer) 0)))) == (MR_Integer) 1)));
+            if (ll_backend__frameopt__succeeded)
+              {
+                ll_backend__frameopt__Lval_15 = ((MR_Word) (MR_hl_field(MR_mktag(3), ll_backend__frameopt__Uinstr0_13, (MR_Integer) 1)));
+                ll_backend__frameopt__Rval_16 = ((MR_Word) (MR_hl_field(MR_mktag(3), ll_backend__frameopt__Uinstr0_13, (MR_Integer) 2)));
+                {
+                  MR_Word ll_backend__frameopt__Var_20;
+                  MR_Integer ll_backend__frameopt__Var_31;
+
+                  ll_backend__frameopt__succeeded = ((((MR_tag((MR_Word) ll_backend__frameopt__Lval_15)) == (MR_mktag((MR_Integer) 3)))) && (((((MR_Integer) (MR_Word) (MR_hl_field(MR_mktag(3), ll_backend__frameopt__Lval_15, (MR_Integer) 0)))) == (MR_Integer) 0)));
+                  if (ll_backend__frameopt__succeeded)
+                    {
+                      ll_backend__frameopt__Var_31 = ((MR_Integer) (MR_hl_field(MR_mktag(3), ll_backend__frameopt__Lval_15, (MR_Integer) 1)));
+                      ll_backend__frameopt__succeeded = (ll_backend__frameopt__FrameSize_9 == ll_backend__frameopt__Var_31);
+                      if (ll_backend__frameopt__succeeded)
+                        {
+                          ll_backend__frameopt__succeeded = ((MR_tag((MR_Word) ll_backend__frameopt__Rval_16)) == (MR_mktag((MR_Integer) 0)));
+                          if (ll_backend__frameopt__succeeded)
+                            {
+                              ll_backend__frameopt__Var_20 = ((MR_Word) (MR_hl_field(MR_mktag(0), ll_backend__frameopt__Rval_16, (MR_Integer) 0)));
+                              ll_backend__frameopt__succeeded = (ll_backend__frameopt__Var_20 == ((MR_Word) MR_mkword(MR_mktag(0), MR_mkbody((MR_Integer) 0))));
+                            }
+                        }
+                    }
+                  if (ll_backend__frameopt__succeeded)
+                    {
+                      *ll_backend__frameopt__Setup_10 = ll_backend__frameopt__Instr0_7;
+                      *ll_backend__frameopt__Remain_12 = ll_backend__frameopt__Instrs0_8;
+                      *ll_backend__frameopt__STATE_VARIABLE_Others_19 = ll_backend__frameopt__STATE_VARIABLE_Others_0_18;
+                      ll_backend__frameopt__succeeded = MR_TRUE;
+                    }
+                  else
+                    {
+                      MR_Word ll_backend__frameopt__TypeCtorInfo_29_29;
+                      MR_Word ll_backend__frameopt__STATE_VARIABLE_Others_21_21;
+                      MR_Word ll_backend__frameopt__Var_22;
+                      MR_Word ll_backend__frameopt__Var_23;
+                      MR_Integer ll_backend__frameopt__Var_32;
+
+                      ll_backend__frameopt__succeeded = (ll_backend__frameopt__Lval_15 == ((MR_Word) MR_mkword(MR_mktag(0), MR_mkbody((MR_Integer) 0))));
+                      ll_backend__frameopt__succeeded = !(ll_backend__frameopt__succeeded);
+                      if (ll_backend__frameopt__succeeded)
+                        {
+                          ll_backend__frameopt__succeeded = ((((MR_tag((MR_Word) ll_backend__frameopt__Lval_15)) == (MR_mktag((MR_Integer) 3)))) && (((((MR_Integer) (MR_Word) (MR_hl_field(MR_mktag(3), ll_backend__frameopt__Lval_15, (MR_Integer) 0)))) == (MR_Integer) 0)));
+                          if (ll_backend__frameopt__succeeded)
+                            {
+                              ll_backend__frameopt__Var_32 = ((MR_Integer) (MR_hl_field(MR_mktag(3), ll_backend__frameopt__Lval_15, (MR_Integer) 1)));
+                              ll_backend__frameopt__succeeded = (ll_backend__frameopt__FrameSize_9 == ll_backend__frameopt__Var_32);
+                            }
+                          ll_backend__frameopt__succeeded = !(ll_backend__frameopt__succeeded);
+                          if (ll_backend__frameopt__succeeded)
+                            {
+                              ll_backend__frameopt__TypeCtorInfo_29_29 = (MR_Word) &ll_backend__llds__ll_backend__llds__type_ctor_info_instruction_0;
+                              ll_backend__frameopt__Var_23 = (MR_Word) MR_mkword(MR_mktag(0), MR_mkbody((MR_Integer) 0));
+                              {
+                                ll_backend__frameopt__Var_22 = (MR_Word) MR_mkword(MR_mktag(1), MR_new_object(MR_Word, ((MR_Integer) 2 * sizeof(MR_Word)), NULL, NULL));
+                                MR_hl_field(MR_mktag(1), ll_backend__frameopt__Var_22, 0) = ((MR_Box) (ll_backend__frameopt__Instr0_7));
+                                MR_hl_field(MR_mktag(1), ll_backend__frameopt__Var_22, 1) = ((MR_Box) (ll_backend__frameopt__Var_23));
+                              }
+                              {
+                                ll_backend__frameopt__STATE_VARIABLE_Others_21_21 = mercury__list__f_43_43_2_f_0(ll_backend__frameopt__TypeCtorInfo_29_29, ll_backend__frameopt__STATE_VARIABLE_Others_0_18, ll_backend__frameopt__Var_22);
+                              }
+                              /* direct tailcall eliminated */
+                              {
+                                MR_Word ll_backend__frameopt__next_value_of_HeadVar__1_1 = ll_backend__frameopt__Instrs0_8;
+                                MR_Word ll_backend__frameopt__next_value_of_STATE_VARIABLE_Others_0_18 = ll_backend__frameopt__STATE_VARIABLE_Others_21_21;
+
+                                ll_backend__frameopt__STATE_VARIABLE_Others_0_18 = ll_backend__frameopt__next_value_of_STATE_VARIABLE_Others_0_18;
+                                ll_backend__frameopt__HeadVar__1_1 = ll_backend__frameopt__next_value_of_HeadVar__1_1;
+                              }
+                              continue;
+                            }
+                        }
+                    }
+                }
+              }
+            else
+              {
+                MR_Word ll_backend__frameopt__TypeCtorInfo_30_30;
+                MR_Word ll_backend__frameopt__STATE_VARIABLE_Others_25_25;
+                MR_Word ll_backend__frameopt__Var_26;
+                MR_Word ll_backend__frameopt__Var_27;
+                MR_String ll_backend__frameopt__Var_17;
+
+                ll_backend__frameopt__succeeded = ((MR_tag((MR_Word) ll_backend__frameopt__Uinstr0_13)) == (MR_mktag((MR_Integer) 1)));
+                if (ll_backend__frameopt__succeeded)
+                  {
+                    ll_backend__frameopt__Var_17 = ((MR_String) (MR_hl_field(MR_mktag(1), ll_backend__frameopt__Uinstr0_13, (MR_Integer) 0)));
+                    ll_backend__frameopt__TypeCtorInfo_30_30 = (MR_Word) &ll_backend__llds__ll_backend__llds__type_ctor_info_instruction_0;
+                    ll_backend__frameopt__Var_27 = (MR_Word) MR_mkword(MR_mktag(0), MR_mkbody((MR_Integer) 0));
+                    {
+                      ll_backend__frameopt__Var_26 = (MR_Word) MR_mkword(MR_mktag(1), MR_new_object(MR_Word, ((MR_Integer) 2 * sizeof(MR_Word)), NULL, NULL));
+                      MR_hl_field(MR_mktag(1), ll_backend__frameopt__Var_26, 0) = ((MR_Box) (ll_backend__frameopt__Instr0_7));
+                      MR_hl_field(MR_mktag(1), ll_backend__frameopt__Var_26, 1) = ((MR_Box) (ll_backend__frameopt__Var_27));
+                    }
+                    {
+                      ll_backend__frameopt__STATE_VARIABLE_Others_25_25 = mercury__list__f_43_43_2_f_0(ll_backend__frameopt__TypeCtorInfo_30_30, ll_backend__frameopt__STATE_VARIABLE_Others_0_18, ll_backend__frameopt__Var_26);
+                    }
+                    {
+                      /* direct tailcall eliminated */
+                      {
+                        MR_Word ll_backend__frameopt__next_value_of_HeadVar__1_1 = ll_backend__frameopt__Instrs0_8;
+                        MR_Word ll_backend__frameopt__next_value_of_STATE_VARIABLE_Others_0_18 = ll_backend__frameopt__STATE_VARIABLE_Others_25_25;
+
+                        ll_backend__frameopt__STATE_VARIABLE_Others_0_18 = ll_backend__frameopt__next_value_of_STATE_VARIABLE_Others_0_18;
+                        ll_backend__frameopt__HeadVar__1_1 = ll_backend__frameopt__next_value_of_HeadVar__1_1;
+                      }
+                      continue;
+                    }
+                  }
+              }
+          }
+        return ll_backend__frameopt__succeeded;
+      }
+      break;
+    }
+}
+
+static MR_bool MR_CALL 
+ll_backend__frameopt__build_frame_block_map_14_p_0_1(
+  MR_Box ll_backend__frameopt__closure_arg)
+{
+  {
+    MR_bool ll_backend__frameopt__succeeded;
+    MR_Box ll_backend__frameopt__closure = ll_backend__frameopt__closure_arg;
+
+    {
+      ll_backend__frameopt__succeeded = ll_backend__frameopt__IntroducedFrom__pred__build_frame_block_map__687__1_2_p_0(((MR_Word) (MR_hl_field(MR_mktag(0), ll_backend__frameopt__closure, (MR_Integer) 3))), ((MR_Word) (MR_hl_field(MR_mktag(0), ll_backend__frameopt__closure, (MR_Integer) 4))));
+    }
+    return ll_backend__frameopt__succeeded;
+  }
+}
+
+static void MR_CALL 
+ll_backend__frameopt__build_frame_block_map_14_p_0(
+  MR_Word ll_backend__frameopt__TypeClassInfo_for_block_entry_exit_189,
+  MR_Word ll_backend__frameopt__HeadVar__1_1,
+  MR_Box ll_backend__frameopt__EntryInfo_2,
+  MR_Word * ll_backend__frameopt__HeadVar__3_3,
+  MR_Word ll_backend__frameopt__MaybePrevLabel_4,
+  MR_Word ll_backend__frameopt__FallInto_5,
+  MR_Word ll_backend__frameopt__ProcLabel_6,
+  MR_Word ll_backend__frameopt__STATE_VARIABLE_BlockMap_0_7,
+  MR_Word * ll_backend__frameopt__STATE_VARIABLE_BlockMap_8,
+  MR_Word ll_backend__frameopt__STATE_VARIABLE_PredMap_0_9,
+  MR_Word * ll_backend__frameopt__STATE_VARIABLE_PredMap_10,
+  MR_Word ll_backend__frameopt__STATE_VARIABLE_C_0_11,
+  MR_Word * ll_backend__frameopt__STATE_VARIABLE_C_12,
+  MR_Word ll_backend__frameopt__STATE_VARIABLE_PreExitDummyLabelMap_0_13,
+  MR_Word * ll_backend__frameopt__STATE_VARIABLE_PreExitDummyLabelMap_14)
+{
+  {
+    MR_bool ll_backend__frameopt__succeeded;
+
+    if ((ll_backend__frameopt__HeadVar__1_1 == ((MR_Word) MR_mkword(MR_mktag(0), MR_mkbody((MR_Integer) 0)))))
+      {
+        *ll_backend__frameopt__HeadVar__3_3 = (MR_Word) MR_mkword(MR_mktag(0), MR_mkbody((MR_Integer) 0));
+        *ll_backend__frameopt__STATE_VARIABLE_PreExitDummyLabelMap_14 = ll_backend__frameopt__STATE_VARIABLE_PreExitDummyLabelMap_0_13;
+        *ll_backend__frameopt__STATE_VARIABLE_C_12 = ll_backend__frameopt__STATE_VARIABLE_C_0_11;
+        *ll_backend__frameopt__STATE_VARIABLE_PredMap_10 = ll_backend__frameopt__STATE_VARIABLE_PredMap_0_9;
+        *ll_backend__frameopt__STATE_VARIABLE_BlockMap_8 = ll_backend__frameopt__STATE_VARIABLE_BlockMap_0_7;
+      }
+    else
+      {
+        MR_Word ll_backend__frameopt__Instr0_31 = ((MR_Word) (MR_hl_field(MR_mktag(1), ll_backend__frameopt__HeadVar__1_1, (MR_Integer) 0)));
+        MR_Word ll_backend__frameopt__Instrs0_32 = ((MR_Word) (MR_hl_field(MR_mktag(1), ll_backend__frameopt__HeadVar__1_1, (MR_Integer) 1)));
+        MR_Word ll_backend__frameopt__Label_42;
+        MR_Word ll_backend__frameopt__Var_94 = ((MR_Word) (MR_hl_field(MR_mktag(0), ll_backend__frameopt__Instr0_31, (MR_Integer) 0)));
+        MR_String ll_backend__frameopt__Var_43 = ((MR_String) (MR_hl_field(MR_mktag(0), ll_backend__frameopt__Instr0_31, (MR_Integer) 1)));
+
+        ll_backend__frameopt__succeeded = ((((MR_tag((MR_Word) ll_backend__frameopt__Var_94)) == (MR_mktag((MR_Integer) 3)))) && (((((MR_Integer) (MR_Word) (MR_hl_field(MR_mktag(3), ll_backend__frameopt__Var_94, (MR_Integer) 0)))) == (MR_Integer) 5)));
+        if (ll_backend__frameopt__succeeded)
+          {
+            ll_backend__frameopt__Label_42 = ((MR_Word) (MR_hl_field(MR_mktag(3), ll_backend__frameopt__Var_94, (MR_Integer) 1)));
+            {
+              MR_Word ll_backend__frameopt__STATE_VARIABLE_PredMap_95_95;
+              MR_Word ll_backend__frameopt__EntryInstrs_45;
+              MR_Word ll_backend__frameopt__Instrs1_46;
+              MR_Word ll_backend__frameopt__TypeInfo_219_219;
+              MR_Box ll_backend__frameopt__Var_217;
+              MR_Integer ll_backend__frameopt__TypeInfoIndex_218;
+
+              if ((ll_backend__frameopt__MaybePrevLabel_4 == ((MR_Word) MR_mkword(MR_mktag(0), MR_mkbody((MR_Integer) 0)))))
+                ll_backend__frameopt__STATE_VARIABLE_PredMap_95_95 = ll_backend__frameopt__STATE_VARIABLE_PredMap_0_9;
+              else
+                {
+                  MR_Word ll_backend__frameopt__TypeCtorInfo_190_190 = (MR_Word) &ll_backend__llds__ll_backend__llds__type_ctor_info_label_0;
+                  MR_Word ll_backend__frameopt__PrevLabel_44 = ((MR_Word) (MR_hl_field(MR_mktag(1), ll_backend__frameopt__MaybePrevLabel_4, (MR_Integer) 0)));
+
+                  {
+                    mercury__map__det_insert_4_p_0(ll_backend__frameopt__TypeCtorInfo_190_190, ll_backend__frameopt__TypeCtorInfo_190_190, ((MR_Box) (ll_backend__frameopt__Label_42)), ((MR_Box) (ll_backend__frameopt__PrevLabel_44)), ll_backend__frameopt__STATE_VARIABLE_PredMap_0_9, &ll_backend__frameopt__STATE_VARIABLE_PredMap_95_95);
+                  }
+                }
+              {
+                ll_backend__frameopt__succeeded = ll_backend__frameopt__detect_entry_4_p_0(ll_backend__frameopt__TypeClassInfo_for_block_entry_exit_189, ll_backend__frameopt__Instrs0_32, &ll_backend__frameopt__EntryInstrs_45, &ll_backend__frameopt__Instrs1_46, &ll_backend__frameopt__Var_217);
+              }
+              if (ll_backend__frameopt__succeeded)
+                {
+                  ll_backend__frameopt__TypeInfoIndex_218 = (MR_Integer) 1;
+                  {
+                    mercury__private_builtin__type_info_from_typeclass_info_3_p_0(ll_backend__frameopt__TypeClassInfo_for_block_entry_exit_189, ll_backend__frameopt__TypeInfoIndex_218, &ll_backend__frameopt__TypeInfo_219_219);
+                  }
+                  {
+                    ll_backend__frameopt__succeeded = mercury__builtin__unify_2_p_0(ll_backend__frameopt__TypeInfo_219_219, ll_backend__frameopt__EntryInfo_2, ll_backend__frameopt__Var_217);
+                  }
+                }
+              if (ll_backend__frameopt__succeeded)
+                {
+                  MR_Word ll_backend__frameopt__TypeCtorInfo_192_192;
+                  MR_Word ll_backend__frameopt__TypeInfo_194_194;
+                  MR_Word ll_backend__frameopt__TypeInfo_196_196;
+                  MR_Word ll_backend__frameopt__TypeInfo_198_198;
+                  MR_Integer ll_backend__frameopt__EmptyN_47;
+                  MR_Word ll_backend__frameopt__EmptyLabel_48;
+                  MR_Word ll_backend__frameopt__FallThroughToEmptyInstr_49;
+                  MR_Word ll_backend__frameopt__BlockInfo_50;
+                  MR_Word ll_backend__frameopt__NextLabel_55;
+                  MR_Word ll_backend__frameopt__Instrs2_56;
+                  MR_Word ll_backend__frameopt__EmptyLabelInstr_59;
+                  MR_Word ll_backend__frameopt__FallThroughFromEmptyInstr_60;
+                  MR_Word ll_backend__frameopt__EmptyBlockInfo_62;
+                  MR_Word ll_backend__frameopt__LabelSeq0_63;
+                  MR_Word ll_backend__frameopt__STATE_VARIABLE_C_96_96;
+                  MR_Word ll_backend__frameopt__Var_97;
+                  MR_Word ll_backend__frameopt__Var_98;
+                  MR_Word ll_backend__frameopt__Var_100;
+                  MR_Word ll_backend__frameopt__Var_101;
+                  MR_Word ll_backend__frameopt__Var_102;
+                  MR_Word ll_backend__frameopt__Var_106;
+                  MR_Word ll_backend__frameopt__STATE_VARIABLE_C_108_108;
+                  MR_Word ll_backend__frameopt__Var_111;
+                  MR_Word ll_backend__frameopt__Var_113;
+                  MR_Word ll_backend__frameopt__Var_114;
+                  MR_Word ll_backend__frameopt__Var_118;
+                  MR_Word ll_backend__frameopt__Var_119;
+                  MR_Word ll_backend__frameopt__Var_121;
+                  MR_Word ll_backend__frameopt__Var_124;
+                  MR_Word ll_backend__frameopt__STATE_VARIABLE_BlockMap_126_126;
+                  MR_Word ll_backend__frameopt__STATE_VARIABLE_BlockMap_130_130;
+                  MR_Word ll_backend__frameopt__Var_132;
+                  MR_Word ll_backend__frameopt__NextLabelPrime_53;
+                  MR_Word ll_backend__frameopt__Instr1_51;
+                  MR_Word ll_backend__frameopt__Var_107;
+                  MR_Word ll_backend__frameopt__Var_52;
+                  MR_String ll_backend__frameopt__Var_54;
+                  MR_Word ll_backend__frameopt__conv0_STATE_VARIABLE_BlockMap_130_130;
+                  MR_Word ll_backend__frameopt__conv1_STATE_VARIABLE_BlockMap_8;
+
+                  {
+                    mercury__counter__allocate_3_p_0(&ll_backend__frameopt__EmptyN_47, ll_backend__frameopt__STATE_VARIABLE_C_0_11, &ll_backend__frameopt__STATE_VARIABLE_C_96_96);
+                  }
+                  {
+                    ll_backend__frameopt__EmptyLabel_48 = (MR_Word) MR_new_object(MR_Word, ((MR_Integer) 2 * sizeof(MR_Word)), NULL, NULL);
+                    MR_hl_field(MR_mktag(0), ll_backend__frameopt__EmptyLabel_48, 0) = ((MR_Box) (ll_backend__frameopt__EmptyN_47));
+                    MR_hl_field(MR_mktag(0), ll_backend__frameopt__EmptyLabel_48, 1) = ((MR_Box) (ll_backend__frameopt__ProcLabel_6));
+                  }
+                  {
+                    ll_backend__frameopt__Var_98 = (MR_Word) MR_mkword(MR_mktag(1), MR_new_object(MR_Word, ((MR_Integer) 1 * sizeof(MR_Word)), NULL, NULL));
+                    MR_hl_field(MR_mktag(1), ll_backend__frameopt__Var_98, 0) = ((MR_Box) (ll_backend__frameopt__EmptyLabel_48));
+                  }
+                  {
+                    ll_backend__frameopt__Var_97 = (MR_Word) MR_mkword(MR_mktag(3), MR_new_object(MR_Word, ((MR_Integer) 2 * sizeof(MR_Word)), NULL, NULL));
+                    MR_hl_field(MR_mktag(3), ll_backend__frameopt__Var_97, 0) = ((MR_Box) (MR_Word) ((MR_Integer) 6));
+                    MR_hl_field(MR_mktag(3), ll_backend__frameopt__Var_97, 1) = ((MR_Box) (ll_backend__frameopt__Var_98));
+                  }
+                  {
+                    ll_backend__frameopt__FallThroughToEmptyInstr_49 = (MR_Word) MR_new_object(MR_Word, ((MR_Integer) 2 * sizeof(MR_Word)), NULL, NULL);
+                    MR_hl_field(MR_mktag(0), ll_backend__frameopt__FallThroughToEmptyInstr_49, 0) = ((MR_Box) (ll_backend__frameopt__Var_97));
+                    MR_hl_field(MR_mktag(0), ll_backend__frameopt__FallThroughToEmptyInstr_49, 1) = ((MR_Box) ((MR_String) "fall through"));
+                  }
+                  {
+                    ll_backend__frameopt__Var_101 = (MR_Word) MR_mkword(MR_mktag(1), MR_new_object(MR_Word, ((MR_Integer) 2 * sizeof(MR_Word)), NULL, NULL));
+                    MR_hl_field(MR_mktag(1), ll_backend__frameopt__Var_101, 0) = ((MR_Box) (ll_backend__frameopt__Instr0_31));
+                    MR_hl_field(MR_mktag(1), ll_backend__frameopt__Var_101, 1) = ((MR_Box) (ll_backend__frameopt__EntryInstrs_45));
+                  }
+                  {
+                    ll_backend__frameopt__Var_102 = (MR_Word) MR_mkword(MR_mktag(1), MR_new_object(MR_Word, ((MR_Integer) 2 * sizeof(MR_Word)), NULL, NULL));
+                    MR_hl_field(MR_mktag(1), ll_backend__frameopt__Var_102, 0) = ((MR_Box) (ll_backend__frameopt__FallThroughToEmptyInstr_49));
+                    MR_hl_field(MR_mktag(1), ll_backend__frameopt__Var_102, 1) = ((MR_Box) (MR_mkword(MR_mktag(0), MR_mkbody((MR_Integer) 0))));
+                  }
+                  {
+                    ll_backend__frameopt__Var_100 = mercury__list__f_43_43_2_f_0((MR_Word) &ll_backend__llds__ll_backend__llds__type_ctor_info_instruction_0, ll_backend__frameopt__Var_101, ll_backend__frameopt__Var_102);
+                  }
+                  {
+                    ll_backend__frameopt__Var_106 = (MR_Word) MR_new_object(MR_Word, ((MR_Integer) 1 * sizeof(MR_Word)), NULL, NULL);
+                    MR_hl_field(MR_mktag(0), ll_backend__frameopt__Var_106, 0) = ll_backend__frameopt__EntryInfo_2;
+                  }
+                  {
+                    ll_backend__frameopt__BlockInfo_50 = (MR_Word) MR_new_object(MR_Word, ((MR_Integer) 6 * sizeof(MR_Word)), NULL, NULL);
+                    MR_hl_field(MR_mktag(0), ll_backend__frameopt__BlockInfo_50, 0) = ((MR_Box) (ll_backend__frameopt__Label_42));
+                    MR_hl_field(MR_mktag(0), ll_backend__frameopt__BlockInfo_50, 1) = ((MR_Box) (ll_backend__frameopt__Var_100));
+                    MR_hl_field(MR_mktag(0), ll_backend__frameopt__BlockInfo_50, 2) = ((MR_Box) (ll_backend__frameopt__FallInto_5));
+                    MR_hl_field(MR_mktag(0), ll_backend__frameopt__BlockInfo_50, 3) = ((MR_Box) (MR_mkword(MR_mktag(0), MR_mkbody((MR_Integer) 0))));
+                    MR_hl_field(MR_mktag(0), ll_backend__frameopt__BlockInfo_50, 4) = ((MR_Box) (MR_mkword(MR_mktag(0), MR_mkbody((MR_Integer) 0))));
+                    MR_hl_field(MR_mktag(0), ll_backend__frameopt__BlockInfo_50, 5) = ((MR_Box) (ll_backend__frameopt__Var_106));
+                  }
+                  ll_backend__frameopt__succeeded = ((MR_tag((MR_Word) ll_backend__frameopt__Instrs1_46)) == (MR_mktag((MR_Integer) 1)));
+                  if (ll_backend__frameopt__succeeded)
+                    {
+                      ll_backend__frameopt__Instr1_51 = ((MR_Word) (MR_hl_field(MR_mktag(1), ll_backend__frameopt__Instrs1_46, (MR_Integer) 0)));
+                      ll_backend__frameopt__Var_52 = ((MR_Word) (MR_hl_field(MR_mktag(1), ll_backend__frameopt__Instrs1_46, (MR_Integer) 1)));
+                      ll_backend__frameopt__Var_107 = ((MR_Word) (MR_hl_field(MR_mktag(0), ll_backend__frameopt__Instr1_51, (MR_Integer) 0)));
+                      ll_backend__frameopt__Var_54 = ((MR_String) (MR_hl_field(MR_mktag(0), ll_backend__frameopt__Instr1_51, (MR_Integer) 1)));
+                      ll_backend__frameopt__succeeded = ((((MR_tag((MR_Word) ll_backend__frameopt__Var_107)) == (MR_mktag((MR_Integer) 3)))) && (((((MR_Integer) (MR_Word) (MR_hl_field(MR_mktag(3), ll_backend__frameopt__Var_107, (MR_Integer) 0)))) == (MR_Integer) 5)));
+                      if (ll_backend__frameopt__succeeded)
+                        ll_backend__frameopt__NextLabelPrime_53 = ((MR_Word) (MR_hl_field(MR_mktag(3), ll_backend__frameopt__Var_107, (MR_Integer) 1)));
+                    }
+                  if (ll_backend__frameopt__succeeded)
+                    {
+                      ll_backend__frameopt__NextLabel_55 = ll_backend__frameopt__NextLabelPrime_53;
+                      ll_backend__frameopt__Instrs2_56 = ll_backend__frameopt__Instrs1_46;
+                      ll_backend__frameopt__STATE_VARIABLE_C_108_108 = ll_backend__frameopt__STATE_VARIABLE_C_96_96;
+                    }
+                  else
+                    {
+                      MR_Integer ll_backend__frameopt__N_57;
+                      MR_Word ll_backend__frameopt__NextLabelInstr_58;
+                      MR_Word ll_backend__frameopt__Var_109;
+
+                      {
+                        mercury__counter__allocate_3_p_0(&ll_backend__frameopt__N_57, ll_backend__frameopt__STATE_VARIABLE_C_96_96, &ll_backend__frameopt__STATE_VARIABLE_C_108_108);
+                      }
+                      {
+                        ll_backend__frameopt__NextLabel_55 = (MR_Word) MR_new_object(MR_Word, ((MR_Integer) 2 * sizeof(MR_Word)), NULL, NULL);
+                        MR_hl_field(MR_mktag(0), ll_backend__frameopt__NextLabel_55, 0) = ((MR_Box) (ll_backend__frameopt__N_57));
+                        MR_hl_field(MR_mktag(0), ll_backend__frameopt__NextLabel_55, 1) = ((MR_Box) (ll_backend__frameopt__ProcLabel_6));
+                      }
+                      {
+                        ll_backend__frameopt__Var_109 = (MR_Word) MR_mkword(MR_mktag(3), MR_new_object(MR_Word, ((MR_Integer) 2 * sizeof(MR_Word)), NULL, NULL));
+                        MR_hl_field(MR_mktag(3), ll_backend__frameopt__Var_109, 0) = ((MR_Box) (MR_Word) ((MR_Integer) 5));
+                        MR_hl_field(MR_mktag(3), ll_backend__frameopt__Var_109, 1) = ((MR_Box) (ll_backend__frameopt__NextLabel_55));
+                      }
+                      {
+                        ll_backend__frameopt__NextLabelInstr_58 = (MR_Word) MR_new_object(MR_Word, ((MR_Integer) 2 * sizeof(MR_Word)), NULL, NULL);
+                        MR_hl_field(MR_mktag(0), ll_backend__frameopt__NextLabelInstr_58, 0) = ((MR_Box) (ll_backend__frameopt__Var_109));
+                        MR_hl_field(MR_mktag(0), ll_backend__frameopt__NextLabelInstr_58, 1) = ((MR_Box) ((MR_String) ""));
+                      }
+                      {
+                        ll_backend__frameopt__Instrs2_56 = (MR_Word) MR_mkword(MR_mktag(1), MR_new_object(MR_Word, ((MR_Integer) 2 * sizeof(MR_Word)), NULL, NULL));
+                        MR_hl_field(MR_mktag(1), ll_backend__frameopt__Instrs2_56, 0) = ((MR_Box) (ll_backend__frameopt__NextLabelInstr_58));
+                        MR_hl_field(MR_mktag(1), ll_backend__frameopt__Instrs2_56, 1) = ((MR_Box) (ll_backend__frameopt__Instrs1_46));
+                      }
+                    }
+                  {
+                    ll_backend__frameopt__Var_111 = (MR_Word) MR_mkword(MR_mktag(3), MR_new_object(MR_Word, ((MR_Integer) 2 * sizeof(MR_Word)), NULL, NULL));
+                    MR_hl_field(MR_mktag(3), ll_backend__frameopt__Var_111, 0) = ((MR_Box) (MR_Word) ((MR_Integer) 5));
+                    MR_hl_field(MR_mktag(3), ll_backend__frameopt__Var_111, 1) = ((MR_Box) (ll_backend__frameopt__EmptyLabel_48));
+                  }
+                  {
+                    ll_backend__frameopt__EmptyLabelInstr_59 = (MR_Word) MR_new_object(MR_Word, ((MR_Integer) 2 * sizeof(MR_Word)), NULL, NULL);
+                    MR_hl_field(MR_mktag(0), ll_backend__frameopt__EmptyLabelInstr_59, 0) = ((MR_Box) (ll_backend__frameopt__Var_111));
+                    MR_hl_field(MR_mktag(0), ll_backend__frameopt__EmptyLabelInstr_59, 1) = ((MR_Box) ((MR_String) ""));
+                  }
+                  {
+                    ll_backend__frameopt__Var_114 = (MR_Word) MR_mkword(MR_mktag(1), MR_new_object(MR_Word, ((MR_Integer) 1 * sizeof(MR_Word)), NULL, NULL));
+                    MR_hl_field(MR_mktag(1), ll_backend__frameopt__Var_114, 0) = ((MR_Box) (ll_backend__frameopt__NextLabel_55));
+                  }
+                  {
+                    ll_backend__frameopt__Var_113 = (MR_Word) MR_mkword(MR_mktag(3), MR_new_object(MR_Word, ((MR_Integer) 2 * sizeof(MR_Word)), NULL, NULL));
+                    MR_hl_field(MR_mktag(3), ll_backend__frameopt__Var_113, 0) = ((MR_Box) (MR_Word) ((MR_Integer) 6));
+                    MR_hl_field(MR_mktag(3), ll_backend__frameopt__Var_113, 1) = ((MR_Box) (ll_backend__frameopt__Var_114));
+                  }
+                  {
+                    ll_backend__frameopt__FallThroughFromEmptyInstr_60 = (MR_Word) MR_new_object(MR_Word, ((MR_Integer) 2 * sizeof(MR_Word)), NULL, NULL);
+                    MR_hl_field(MR_mktag(0), ll_backend__frameopt__FallThroughFromEmptyInstr_60, 0) = ((MR_Box) (ll_backend__frameopt__Var_113));
+                    MR_hl_field(MR_mktag(0), ll_backend__frameopt__FallThroughFromEmptyInstr_60, 1) = ((MR_Box) ((MR_String) "fall through"));
+                  }
+                  {
+                    ll_backend__frameopt__Var_119 = (MR_Word) MR_mkword(MR_mktag(1), MR_new_object(MR_Word, ((MR_Integer) 2 * sizeof(MR_Word)), NULL, NULL));
+                    MR_hl_field(MR_mktag(1), ll_backend__frameopt__Var_119, 0) = ((MR_Box) (ll_backend__frameopt__FallThroughFromEmptyInstr_60));
+                    MR_hl_field(MR_mktag(1), ll_backend__frameopt__Var_119, 1) = ((MR_Box) (MR_mkword(MR_mktag(0), MR_mkbody((MR_Integer) 0))));
+                  }
+                  {
+                    ll_backend__frameopt__Var_118 = (MR_Word) MR_mkword(MR_mktag(1), MR_new_object(MR_Word, ((MR_Integer) 2 * sizeof(MR_Word)), NULL, NULL));
+                    MR_hl_field(MR_mktag(1), ll_backend__frameopt__Var_118, 0) = ((MR_Box) (ll_backend__frameopt__EmptyLabelInstr_59));
+                    MR_hl_field(MR_mktag(1), ll_backend__frameopt__Var_118, 1) = ((MR_Box) (ll_backend__frameopt__Var_119));
+                  }
+                  {
+                    ll_backend__frameopt__Var_121 = (MR_Word) MR_mkword(MR_mktag(1), MR_new_object(MR_Word, ((MR_Integer) 1 * sizeof(MR_Word)), NULL, NULL));
+                    MR_hl_field(MR_mktag(1), ll_backend__frameopt__Var_121, 0) = ((MR_Box) (ll_backend__frameopt__Label_42));
+                  }
+                  {
+                    ll_backend__frameopt__EmptyBlockInfo_62 = (MR_Word) MR_new_object(MR_Word, ((MR_Integer) 6 * sizeof(MR_Word)), NULL, NULL);
+                    MR_hl_field(MR_mktag(0), ll_backend__frameopt__EmptyBlockInfo_62, 0) = ((MR_Box) (ll_backend__frameopt__EmptyLabel_48));
+                    MR_hl_field(MR_mktag(0), ll_backend__frameopt__EmptyBlockInfo_62, 1) = ((MR_Box) (ll_backend__frameopt__Var_118));
+                    MR_hl_field(MR_mktag(0), ll_backend__frameopt__EmptyBlockInfo_62, 2) = ((MR_Box) (ll_backend__frameopt__Var_121));
+                    MR_hl_field(MR_mktag(0), ll_backend__frameopt__EmptyBlockInfo_62, 3) = ((MR_Box) (MR_mkword(MR_mktag(0), MR_mkbody((MR_Integer) 0))));
+                    MR_hl_field(MR_mktag(0), ll_backend__frameopt__EmptyBlockInfo_62, 4) = ((MR_Box) (MR_mkword(MR_mktag(0), MR_mkbody((MR_Integer) 0))));
+                    MR_hl_field(MR_mktag(0), ll_backend__frameopt__EmptyBlockInfo_62, 5) = ((MR_Box) (MR_mkword(MR_mktag(1), &ll_backend__frameopt_scalar_common_2[11])));
+                  }
+                  {
+                    ll_backend__frameopt__Var_124 = (MR_Word) MR_mkword(MR_mktag(1), MR_new_object(MR_Word, ((MR_Integer) 1 * sizeof(MR_Word)), NULL, NULL));
+                    MR_hl_field(MR_mktag(1), ll_backend__frameopt__Var_124, 0) = ((MR_Box) (ll_backend__frameopt__EmptyLabel_48));
+                  }
+                  {
+                    ll_backend__frameopt__build_frame_block_map_14_p_0(ll_backend__frameopt__TypeClassInfo_for_block_entry_exit_189, ll_backend__frameopt__Instrs2_56, ll_backend__frameopt__EntryInfo_2, &ll_backend__frameopt__LabelSeq0_63, ll_backend__frameopt__Var_124, ll_backend__frameopt__Var_124, ll_backend__frameopt__ProcLabel_6, ll_backend__frameopt__STATE_VARIABLE_BlockMap_0_7, &ll_backend__frameopt__STATE_VARIABLE_BlockMap_126_126, ll_backend__frameopt__STATE_VARIABLE_PredMap_95_95, ll_backend__frameopt__STATE_VARIABLE_PredMap_10, ll_backend__frameopt__STATE_VARIABLE_C_108_108, ll_backend__frameopt__STATE_VARIABLE_C_12, ll_backend__frameopt__STATE_VARIABLE_PreExitDummyLabelMap_0_13, ll_backend__frameopt__STATE_VARIABLE_PreExitDummyLabelMap_14);
+                  }
+                  ll_backend__frameopt__TypeCtorInfo_192_192 = (MR_Word) &ll_backend__llds__ll_backend__llds__type_ctor_info_label_0;
+                  {
+                    mercury__private_builtin__type_info_from_typeclass_info_3_p_0(ll_backend__frameopt__TypeClassInfo_for_block_entry_exit_189, (MR_Integer) 1, &ll_backend__frameopt__TypeInfo_194_194);
+                  }
+                  {
+                    mercury__private_builtin__type_info_from_typeclass_info_3_p_0(ll_backend__frameopt__TypeClassInfo_for_block_entry_exit_189, (MR_Integer) 2, &ll_backend__frameopt__TypeInfo_196_196);
+                  }
+                  {
+                    ll_backend__frameopt__TypeInfo_198_198 = (MR_Word) MR_new_object(MR_Word, ((MR_Integer) 3 * sizeof(MR_Word)), NULL, NULL);
+                    MR_hl_field(MR_mktag(0), ll_backend__frameopt__TypeInfo_198_198, 0) = ((MR_Box) (&ll_backend__frameopt__ll_backend__frameopt__type_ctor_info_frame_block_info_2));
+                    MR_hl_field(MR_mktag(0), ll_backend__frameopt__TypeInfo_198_198, 1) = ((MR_Box) (ll_backend__frameopt__TypeInfo_194_194));
+                    MR_hl_field(MR_mktag(0), ll_backend__frameopt__TypeInfo_198_198, 2) = ((MR_Box) (ll_backend__frameopt__TypeInfo_196_196));
+                  }
+                  {
+                    mercury__map__det_insert_4_p_0(ll_backend__frameopt__TypeCtorInfo_192_192, ll_backend__frameopt__TypeInfo_198_198, ((MR_Box) (ll_backend__frameopt__Label_42)), ((MR_Box) (ll_backend__frameopt__BlockInfo_50)), (MR_Word) ll_backend__frameopt__STATE_VARIABLE_BlockMap_126_126, &ll_backend__frameopt__conv0_STATE_VARIABLE_BlockMap_130_130);
+                  }
+                  ll_backend__frameopt__STATE_VARIABLE_BlockMap_130_130 = (MR_Word) ll_backend__frameopt__conv0_STATE_VARIABLE_BlockMap_130_130;
+                  {
+                    mercury__map__det_insert_4_p_0(ll_backend__frameopt__TypeCtorInfo_192_192, ll_backend__frameopt__TypeInfo_198_198, ((MR_Box) (ll_backend__frameopt__EmptyLabel_48)), ((MR_Box) (ll_backend__frameopt__EmptyBlockInfo_62)), (MR_Word) ll_backend__frameopt__STATE_VARIABLE_BlockMap_130_130, &ll_backend__frameopt__conv1_STATE_VARIABLE_BlockMap_8);
+                  }
+                  *ll_backend__frameopt__STATE_VARIABLE_BlockMap_8 = (MR_Word) ll_backend__frameopt__conv1_STATE_VARIABLE_BlockMap_8;
+                  {
+                    ll_backend__frameopt__Var_132 = (MR_Word) MR_mkword(MR_mktag(1), MR_new_object(MR_Word, ((MR_Integer) 2 * sizeof(MR_Word)), NULL, NULL));
+                    MR_hl_field(MR_mktag(1), ll_backend__frameopt__Var_132, 0) = ((MR_Box) (ll_backend__frameopt__EmptyLabel_48));
+                    MR_hl_field(MR_mktag(1), ll_backend__frameopt__Var_132, 1) = ((MR_Box) (ll_backend__frameopt__LabelSeq0_63));
+                  }
+                  {
+                    MR_Word base;
+                    base = (MR_Word) MR_mkword(MR_mktag(1), MR_new_object(MR_Word, ((MR_Integer) 2 * sizeof(MR_Word)), NULL, NULL));
+                    *ll_backend__frameopt__HeadVar__3_3 = base;
+                    MR_hl_field(MR_mktag(1), base, 0) = ((MR_Box) (ll_backend__frameopt__Label_42));
+                    MR_hl_field(MR_mktag(1), base, 1) = ((MR_Box) (ll_backend__frameopt__Var_132));
+                  }
+                }
+              else
+                {
+                  MR_Word ll_backend__frameopt__Extra_64;
+                  MR_Word ll_backend__frameopt__ExitInstrs_65;
+                  MR_Word ll_backend__frameopt__Remain_66;
+                  MR_Box ll_backend__frameopt__ExitInfo_67;
+
+                  {
+                    ll_backend__frameopt__succeeded = ll_backend__frameopt__detect_exit_6_p_0(ll_backend__frameopt__TypeClassInfo_for_block_entry_exit_189, ll_backend__frameopt__Instrs0_32, ll_backend__frameopt__EntryInfo_2, &ll_backend__frameopt__Extra_64, &ll_backend__frameopt__ExitInstrs_65, &ll_backend__frameopt__Remain_66, &ll_backend__frameopt__ExitInfo_67);
+                  }
+                  if (ll_backend__frameopt__succeeded)
+                    {
+                      MR_Word ll_backend__frameopt__TypeCtorInfo_202_202;
+                      MR_Word ll_backend__frameopt__TypeInfo_204_204;
+                      MR_Word ll_backend__frameopt__TypeInfo_206_206;
+                      MR_Word ll_backend__frameopt__TypeInfo_208_208;
+                      MR_Word ll_backend__frameopt__ExitLabel_68;
+                      MR_Word ll_backend__frameopt__NeedsFrame_69;
+                      MR_Word ll_backend__frameopt__FallThroughInstr_70;
+                      MR_Word ll_backend__frameopt__ExtraBlockType_71;
+                      MR_Word ll_backend__frameopt__ExtraInstrs_74;
+                      MR_Word ll_backend__frameopt__ExtraInfo_75;
+                      MR_Word ll_backend__frameopt__ExitLabelInstr_76;
+                      MR_Word ll_backend__frameopt__LabelledBlock_77;
+                      MR_Word ll_backend__frameopt__ExitBlockInfo_78;
+                      MR_Word ll_backend__frameopt__STATE_VARIABLE_C_133_133;
+                      MR_Word ll_backend__frameopt__Var_134;
+                      MR_Word ll_backend__frameopt__Var_135;
+                      MR_Word ll_backend__frameopt__STATE_VARIABLE_PreExitDummyLabelMap_143_143;
+                      MR_Word ll_backend__frameopt__Var_145;
+                      MR_Word ll_backend__frameopt__Var_146;
+                      MR_Word ll_backend__frameopt__Var_150;
+                      MR_Word ll_backend__frameopt__Var_152;
+                      MR_Word ll_backend__frameopt__Var_155;
+                      MR_Word ll_backend__frameopt__STATE_VARIABLE_PredMap_156_156;
+                      MR_Word ll_backend__frameopt__Var_157;
+                      MR_Word ll_backend__frameopt__STATE_VARIABLE_BlockMap_159_159;
+                      MR_Word ll_backend__frameopt__STATE_VARIABLE_BlockMap_163_163;
+                      MR_Word ll_backend__frameopt__Var_165;
+                      MR_Integer ll_backend__frameopt__N_179;
+                      MR_Word ll_backend__frameopt__LabelSeq0_180;
+                      MR_Word ll_backend__frameopt__conv2_STATE_VARIABLE_BlockMap_163_163;
+                      MR_Word ll_backend__frameopt__conv3_STATE_VARIABLE_BlockMap_8;
+
+                      {
+                        mercury__counter__allocate_3_p_0(&ll_backend__frameopt__N_179, ll_backend__frameopt__STATE_VARIABLE_C_0_11, &ll_backend__frameopt__STATE_VARIABLE_C_133_133);
+                      }
+                      {
+                        ll_backend__frameopt__ExitLabel_68 = (MR_Word) MR_new_object(MR_Word, ((MR_Integer) 2 * sizeof(MR_Word)), NULL, NULL);
+                        MR_hl_field(MR_mktag(0), ll_backend__frameopt__ExitLabel_68, 0) = ((MR_Box) (ll_backend__frameopt__N_179));
+                        MR_hl_field(MR_mktag(0), ll_backend__frameopt__ExitLabel_68, 1) = ((MR_Box) (ll_backend__frameopt__ProcLabel_6));
+                      }
+                      {
+                        ll_backend__frameopt__f_85_110_117_115_101_100_65_114_103_115_95_95_112_114_101_100_95_95_99_111_109_112_117_116_101_95_98_108_111_99_107_95_110_101_101_100_115_95_102_114_97_109_101_95_95_91_49_93_95_48_3_p_0(ll_backend__frameopt__Extra_64, &ll_backend__frameopt__NeedsFrame_69);
+                      }
+                      {
+                        ll_backend__frameopt__Var_135 = (MR_Word) MR_mkword(MR_mktag(1), MR_new_object(MR_Word, ((MR_Integer) 1 * sizeof(MR_Word)), NULL, NULL));
+                        MR_hl_field(MR_mktag(1), ll_backend__frameopt__Var_135, 0) = ((MR_Box) (ll_backend__frameopt__ExitLabel_68));
+                      }
+                      {
+                        ll_backend__frameopt__Var_134 = (MR_Word) MR_mkword(MR_mktag(3), MR_new_object(MR_Word, ((MR_Integer) 2 * sizeof(MR_Word)), NULL, NULL));
+                        MR_hl_field(MR_mktag(3), ll_backend__frameopt__Var_134, 0) = ((MR_Box) (MR_Word) ((MR_Integer) 6));
+                        MR_hl_field(MR_mktag(3), ll_backend__frameopt__Var_134, 1) = ((MR_Box) (ll_backend__frameopt__Var_135));
+                      }
+                      {
+                        ll_backend__frameopt__FallThroughInstr_70 = (MR_Word) MR_new_object(MR_Word, ((MR_Integer) 2 * sizeof(MR_Word)), NULL, NULL);
+                        MR_hl_field(MR_mktag(0), ll_backend__frameopt__FallThroughInstr_70, 0) = ((MR_Box) (ll_backend__frameopt__Var_134));
+                        MR_hl_field(MR_mktag(0), ll_backend__frameopt__FallThroughInstr_70, 1) = ((MR_Box) ((MR_String) "fall through"));
+                      }
+                      if ((ll_backend__frameopt__Extra_64 == ((MR_Word) MR_mkword(MR_mktag(0), MR_mkbody((MR_Integer) 0)))))
+                        {
+                          MR_Word ll_backend__frameopt__TypeCtorInfo_200_200;
+                          MR_Word ll_backend__frameopt__Var_138;
+
+                          {
+                            ll_backend__frameopt__Var_138 = (MR_Word) MR_new_object(MR_Word, ((MR_Integer) 5 * sizeof(MR_Word)), NULL, NULL);
+                            MR_hl_field(MR_mktag(0), ll_backend__frameopt__Var_138, 0) = ((MR_Box) (&ll_backend__frameopt_scalar_common_4[0]));
+                            MR_hl_field(MR_mktag(0), ll_backend__frameopt__Var_138, 1) = ((MR_Box) (ll_backend__frameopt__build_frame_block_map_14_p_0_1));
+                            MR_hl_field(MR_mktag(0), ll_backend__frameopt__Var_138, 2) = ((MR_Box) (MR_Word) ((MR_Integer) 2));
+                            MR_hl_field(MR_mktag(0), ll_backend__frameopt__Var_138, 3) = ((MR_Box) (ll_backend__frameopt__NeedsFrame_69));
+                            MR_hl_field(MR_mktag(0), ll_backend__frameopt__Var_138, 4) = ((MR_Box) ((MR_Integer) 1));
+                          }
+                          {
+                            mercury__require__expect_4_p_0(ll_backend__frameopt__Var_138, (MR_String) "ll_backend.frameopt", (MR_String) "predicate \140ll_backend.frameopt.build_frame_block_map\'/14", (MR_String) "[] needs frame");
+                          }
+                          ll_backend__frameopt__TypeCtorInfo_200_200 = (MR_Word) &ll_backend__llds__ll_backend__llds__type_ctor_info_label_0;
+                          {
+                            mercury__map__det_insert_4_p_0(ll_backend__frameopt__TypeCtorInfo_200_200, ll_backend__frameopt__TypeCtorInfo_200_200, ((MR_Box) (ll_backend__frameopt__Label_42)), ((MR_Box) (ll_backend__frameopt__ExitLabel_68)), ll_backend__frameopt__STATE_VARIABLE_PreExitDummyLabelMap_0_13, &ll_backend__frameopt__STATE_VARIABLE_PreExitDummyLabelMap_143_143);
+                          }
+                          {
+                            ll_backend__frameopt__ExtraBlockType_71 = (MR_Word) MR_mkword(MR_mktag(1), MR_new_object(MR_Word, ((MR_Integer) 2 * sizeof(MR_Word)), NULL, NULL));
+                            MR_hl_field(MR_mktag(1), ll_backend__frameopt__ExtraBlockType_71, 0) = ((MR_Box) (ll_backend__frameopt__NeedsFrame_69));
+                            MR_hl_field(MR_mktag(1), ll_backend__frameopt__ExtraBlockType_71, 1) = ((MR_Box) ((MR_Integer) 2));
+                          }
+                        }
+                      else
+                        {
+                          {
+                            ll_backend__frameopt__ExtraBlockType_71 = (MR_Word) MR_mkword(MR_mktag(1), MR_new_object(MR_Word, ((MR_Integer) 2 * sizeof(MR_Word)), NULL, NULL));
+                            MR_hl_field(MR_mktag(1), ll_backend__frameopt__ExtraBlockType_71, 0) = ((MR_Box) (ll_backend__frameopt__NeedsFrame_69));
+                            MR_hl_field(MR_mktag(1), ll_backend__frameopt__ExtraBlockType_71, 1) = ((MR_Box) ((MR_Integer) 0));
+                          }
+                          ll_backend__frameopt__STATE_VARIABLE_PreExitDummyLabelMap_143_143 = ll_backend__frameopt__STATE_VARIABLE_PreExitDummyLabelMap_0_13;
+                        }
+                      {
+                        ll_backend__frameopt__Var_145 = (MR_Word) MR_mkword(MR_mktag(1), MR_new_object(MR_Word, ((MR_Integer) 2 * sizeof(MR_Word)), NULL, NULL));
+                        MR_hl_field(MR_mktag(1), ll_backend__frameopt__Var_145, 0) = ((MR_Box) (ll_backend__frameopt__Instr0_31));
+                        MR_hl_field(MR_mktag(1), ll_backend__frameopt__Var_145, 1) = ((MR_Box) (ll_backend__frameopt__Extra_64));
+                      }
+                      {
+                        ll_backend__frameopt__Var_146 = (MR_Word) MR_mkword(MR_mktag(1), MR_new_object(MR_Word, ((MR_Integer) 2 * sizeof(MR_Word)), NULL, NULL));
+                        MR_hl_field(MR_mktag(1), ll_backend__frameopt__Var_146, 0) = ((MR_Box) (ll_backend__frameopt__FallThroughInstr_70));
+                        MR_hl_field(MR_mktag(1), ll_backend__frameopt__Var_146, 1) = ((MR_Box) (MR_mkword(MR_mktag(0), MR_mkbody((MR_Integer) 0))));
+                      }
+                      {
+                        ll_backend__frameopt__ExtraInstrs_74 = mercury__list__f_43_43_2_f_0((MR_Word) &ll_backend__llds__ll_backend__llds__type_ctor_info_instruction_0, ll_backend__frameopt__Var_145, ll_backend__frameopt__Var_146);
+                      }
+                      {
+                        ll_backend__frameopt__ExtraInfo_75 = (MR_Word) MR_new_object(MR_Word, ((MR_Integer) 6 * sizeof(MR_Word)), NULL, NULL);
+                        MR_hl_field(MR_mktag(0), ll_backend__frameopt__ExtraInfo_75, 0) = ((MR_Box) (ll_backend__frameopt__Label_42));
+                        MR_hl_field(MR_mktag(0), ll_backend__frameopt__ExtraInfo_75, 1) = ((MR_Box) (ll_backend__frameopt__ExtraInstrs_74));
+                        MR_hl_field(MR_mktag(0), ll_backend__frameopt__ExtraInfo_75, 2) = ((MR_Box) (ll_backend__frameopt__FallInto_5));
+                        MR_hl_field(MR_mktag(0), ll_backend__frameopt__ExtraInfo_75, 3) = ((MR_Box) (MR_mkword(MR_mktag(0), MR_mkbody((MR_Integer) 0))));
+                        MR_hl_field(MR_mktag(0), ll_backend__frameopt__ExtraInfo_75, 4) = ((MR_Box) (MR_mkword(MR_mktag(0), MR_mkbody((MR_Integer) 0))));
+                        MR_hl_field(MR_mktag(0), ll_backend__frameopt__ExtraInfo_75, 5) = ((MR_Box) (ll_backend__frameopt__ExtraBlockType_71));
+                      }
+                      {
+                        ll_backend__frameopt__Var_150 = (MR_Word) MR_mkword(MR_mktag(3), MR_new_object(MR_Word, ((MR_Integer) 2 * sizeof(MR_Word)), NULL, NULL));
+                        MR_hl_field(MR_mktag(3), ll_backend__frameopt__Var_150, 0) = ((MR_Box) (MR_Word) ((MR_Integer) 5));
+                        MR_hl_field(MR_mktag(3), ll_backend__frameopt__Var_150, 1) = ((MR_Box) (ll_backend__frameopt__ExitLabel_68));
+                      }
+                      {
+                        ll_backend__frameopt__ExitLabelInstr_76 = (MR_Word) MR_new_object(MR_Word, ((MR_Integer) 2 * sizeof(MR_Word)), NULL, NULL);
+                        MR_hl_field(MR_mktag(0), ll_backend__frameopt__ExitLabelInstr_76, 0) = ((MR_Box) (ll_backend__frameopt__Var_150));
+                        MR_hl_field(MR_mktag(0), ll_backend__frameopt__ExitLabelInstr_76, 1) = ((MR_Box) ((MR_String) ""));
+                      }
+                      {
+                        ll_backend__frameopt__LabelledBlock_77 = (MR_Word) MR_mkword(MR_mktag(1), MR_new_object(MR_Word, ((MR_Integer) 2 * sizeof(MR_Word)), NULL, NULL));
+                        MR_hl_field(MR_mktag(1), ll_backend__frameopt__LabelledBlock_77, 0) = ((MR_Box) (ll_backend__frameopt__ExitLabelInstr_76));
+                        MR_hl_field(MR_mktag(1), ll_backend__frameopt__LabelledBlock_77, 1) = ((MR_Box) (ll_backend__frameopt__ExitInstrs_65));
+                      }
+                      {
+                        ll_backend__frameopt__Var_152 = (MR_Word) MR_mkword(MR_mktag(1), MR_new_object(MR_Word, ((MR_Integer) 1 * sizeof(MR_Word)), NULL, NULL));
+                        MR_hl_field(MR_mktag(1), ll_backend__frameopt__Var_152, 0) = ((MR_Box) (ll_backend__frameopt__Label_42));
+                      }
+                      {
+                        ll_backend__frameopt__Var_155 = (MR_Word) MR_mkword(MR_mktag(2), MR_new_object(MR_Word, ((MR_Integer) 1 * sizeof(MR_Word)), NULL, NULL));
+                        MR_hl_field(MR_mktag(2), ll_backend__frameopt__Var_155, 0) = ll_backend__frameopt__ExitInfo_67;
+                      }
+                      {
+                        ll_backend__frameopt__ExitBlockInfo_78 = (MR_Word) MR_new_object(MR_Word, ((MR_Integer) 6 * sizeof(MR_Word)), NULL, NULL);
+                        MR_hl_field(MR_mktag(0), ll_backend__frameopt__ExitBlockInfo_78, 0) = ((MR_Box) (ll_backend__frameopt__ExitLabel_68));
+                        MR_hl_field(MR_mktag(0), ll_backend__frameopt__ExitBlockInfo_78, 1) = ((MR_Box) (ll_backend__frameopt__LabelledBlock_77));
+                        MR_hl_field(MR_mktag(0), ll_backend__frameopt__ExitBlockInfo_78, 2) = ((MR_Box) (ll_backend__frameopt__Var_152));
+                        MR_hl_field(MR_mktag(0), ll_backend__frameopt__ExitBlockInfo_78, 3) = ((MR_Box) (MR_mkword(MR_mktag(0), MR_mkbody((MR_Integer) 0))));
+                        MR_hl_field(MR_mktag(0), ll_backend__frameopt__ExitBlockInfo_78, 4) = ((MR_Box) (MR_mkword(MR_mktag(0), MR_mkbody((MR_Integer) 0))));
+                        MR_hl_field(MR_mktag(0), ll_backend__frameopt__ExitBlockInfo_78, 5) = ((MR_Box) (ll_backend__frameopt__Var_155));
+                      }
+                      ll_backend__frameopt__TypeCtorInfo_202_202 = (MR_Word) &ll_backend__llds__ll_backend__llds__type_ctor_info_label_0;
+                      {
+                        mercury__map__det_insert_4_p_0(ll_backend__frameopt__TypeCtorInfo_202_202, ll_backend__frameopt__TypeCtorInfo_202_202, ((MR_Box) (ll_backend__frameopt__ExitLabel_68)), ((MR_Box) (ll_backend__frameopt__Label_42)), ll_backend__frameopt__STATE_VARIABLE_PredMap_95_95, &ll_backend__frameopt__STATE_VARIABLE_PredMap_156_156);
+                      }
+                      {
+                        ll_backend__frameopt__Var_157 = (MR_Word) MR_mkword(MR_mktag(1), MR_new_object(MR_Word, ((MR_Integer) 1 * sizeof(MR_Word)), NULL, NULL));
+                        MR_hl_field(MR_mktag(1), ll_backend__frameopt__Var_157, 0) = ((MR_Box) (ll_backend__frameopt__ExitLabel_68));
+                      }
+                      {
+                        ll_backend__frameopt__build_frame_block_map_14_p_0(ll_backend__frameopt__TypeClassInfo_for_block_entry_exit_189, ll_backend__frameopt__Remain_66, ll_backend__frameopt__EntryInfo_2, &ll_backend__frameopt__LabelSeq0_180, ll_backend__frameopt__Var_157, (MR_Word) MR_mkword(MR_mktag(0), MR_mkbody((MR_Integer) 0)), ll_backend__frameopt__ProcLabel_6, ll_backend__frameopt__STATE_VARIABLE_BlockMap_0_7, &ll_backend__frameopt__STATE_VARIABLE_BlockMap_159_159, ll_backend__frameopt__STATE_VARIABLE_PredMap_156_156, ll_backend__frameopt__STATE_VARIABLE_PredMap_10, ll_backend__frameopt__STATE_VARIABLE_C_133_133, ll_backend__frameopt__STATE_VARIABLE_C_12, ll_backend__frameopt__STATE_VARIABLE_PreExitDummyLabelMap_143_143, ll_backend__frameopt__STATE_VARIABLE_PreExitDummyLabelMap_14);
+                      }
+                      {
+                        mercury__private_builtin__type_info_from_typeclass_info_3_p_0(ll_backend__frameopt__TypeClassInfo_for_block_entry_exit_189, (MR_Integer) 1, &ll_backend__frameopt__TypeInfo_204_204);
+                      }
+                      {
+                        mercury__private_builtin__type_info_from_typeclass_info_3_p_0(ll_backend__frameopt__TypeClassInfo_for_block_entry_exit_189, (MR_Integer) 2, &ll_backend__frameopt__TypeInfo_206_206);
+                      }
+                      {
+                        ll_backend__frameopt__TypeInfo_208_208 = (MR_Word) MR_new_object(MR_Word, ((MR_Integer) 3 * sizeof(MR_Word)), NULL, NULL);
+                        MR_hl_field(MR_mktag(0), ll_backend__frameopt__TypeInfo_208_208, 0) = ((MR_Box) (&ll_backend__frameopt__ll_backend__frameopt__type_ctor_info_frame_block_info_2));
+                        MR_hl_field(MR_mktag(0), ll_backend__frameopt__TypeInfo_208_208, 1) = ((MR_Box) (ll_backend__frameopt__TypeInfo_204_204));
+                        MR_hl_field(MR_mktag(0), ll_backend__frameopt__TypeInfo_208_208, 2) = ((MR_Box) (ll_backend__frameopt__TypeInfo_206_206));
+                      }
+                      {
+                        mercury__map__det_insert_4_p_0(ll_backend__frameopt__TypeCtorInfo_202_202, ll_backend__frameopt__TypeInfo_208_208, ((MR_Box) (ll_backend__frameopt__ExitLabel_68)), ((MR_Box) (ll_backend__frameopt__ExitBlockInfo_78)), (MR_Word) ll_backend__frameopt__STATE_VARIABLE_BlockMap_159_159, &ll_backend__frameopt__conv2_STATE_VARIABLE_BlockMap_163_163);
+                      }
+                      ll_backend__frameopt__STATE_VARIABLE_BlockMap_163_163 = (MR_Word) ll_backend__frameopt__conv2_STATE_VARIABLE_BlockMap_163_163;
+                      {
+                        mercury__map__det_insert_4_p_0(ll_backend__frameopt__TypeCtorInfo_202_202, ll_backend__frameopt__TypeInfo_208_208, ((MR_Box) (ll_backend__frameopt__Label_42)), ((MR_Box) (ll_backend__frameopt__ExtraInfo_75)), (MR_Word) ll_backend__frameopt__STATE_VARIABLE_BlockMap_163_163, &ll_backend__frameopt__conv3_STATE_VARIABLE_BlockMap_8);
+                      }
+                      *ll_backend__frameopt__STATE_VARIABLE_BlockMap_8 = (MR_Word) ll_backend__frameopt__conv3_STATE_VARIABLE_BlockMap_8;
+                      {
+                        ll_backend__frameopt__Var_165 = (MR_Word) MR_mkword(MR_mktag(1), MR_new_object(MR_Word, ((MR_Integer) 2 * sizeof(MR_Word)), NULL, NULL));
+                        MR_hl_field(MR_mktag(1), ll_backend__frameopt__Var_165, 0) = ((MR_Box) (ll_backend__frameopt__ExitLabel_68));
+                        MR_hl_field(MR_mktag(1), ll_backend__frameopt__Var_165, 1) = ((MR_Box) (ll_backend__frameopt__LabelSeq0_180));
+                      }
+                      {
+                        MR_Word base;
+                        base = (MR_Word) MR_mkword(MR_mktag(1), MR_new_object(MR_Word, ((MR_Integer) 2 * sizeof(MR_Word)), NULL, NULL));
+                        *ll_backend__frameopt__HeadVar__3_3 = base;
+                        MR_hl_field(MR_mktag(1), base, 0) = ((MR_Box) (ll_backend__frameopt__Label_42));
+                        MR_hl_field(MR_mktag(1), base, 1) = ((MR_Box) (ll_backend__frameopt__Var_165));
+                      }
+                    }
+                  else
+                    {
+                      MR_Word ll_backend__frameopt__TypeInfo_212_212;
+                      MR_Word ll_backend__frameopt__TypeInfo_214_214;
+                      MR_Word ll_backend__frameopt__TypeInfo_216_216;
+                      MR_Word ll_backend__frameopt__Block_79;
+                      MR_Word ll_backend__frameopt__BlockInstrs_80;
+                      MR_Word ll_backend__frameopt__NextFallInto_85;
+                      MR_Word ll_backend__frameopt__Var_168;
+                      MR_Word ll_backend__frameopt__Var_170;
+                      MR_Word ll_backend__frameopt__STATE_VARIABLE_BlockMap_171_171;
+                      MR_Word ll_backend__frameopt__Instrs1_181;
+                      MR_Word ll_backend__frameopt__BlockInfo_182;
+                      MR_Word ll_backend__frameopt__LabelSeq0_183;
+                      MR_Word ll_backend__frameopt__NeedsFrame_184;
+                      MR_Word ll_backend__frameopt__LastBlockInstr_81;
+                      MR_Box ll_backend__frameopt__conv4_LastBlockInstr_81;
+                      MR_Word ll_backend__frameopt__conv5_STATE_VARIABLE_BlockMap_8;
+
+                      {
+                        ll_backend__opt_util__skip_to_next_label_3_p_0(ll_backend__frameopt__Instrs0_32, &ll_backend__frameopt__Block_79, &ll_backend__frameopt__Instrs1_181);
+                      }
+                      {
+                        ll_backend__frameopt__f_85_110_117_115_101_100_65_114_103_115_95_95_112_114_101_100_95_95_99_111_109_112_117_116_101_95_98_108_111_99_107_95_110_101_101_100_115_95_102_114_97_109_101_95_95_91_49_93_95_48_3_p_0(ll_backend__frameopt__Block_79, &ll_backend__frameopt__NeedsFrame_184);
+                      }
+                      {
+                        ll_backend__frameopt__BlockInstrs_80 = (MR_Word) MR_mkword(MR_mktag(1), MR_new_object(MR_Word, ((MR_Integer) 2 * sizeof(MR_Word)), NULL, NULL));
+                        MR_hl_field(MR_mktag(1), ll_backend__frameopt__BlockInstrs_80, 0) = ((MR_Box) (ll_backend__frameopt__Instr0_31));
+                        MR_hl_field(MR_mktag(1), ll_backend__frameopt__BlockInstrs_80, 1) = ((MR_Box) (ll_backend__frameopt__Block_79));
+                      }
+                      {
+                        ll_backend__frameopt__Var_168 = (MR_Word) MR_mkword(MR_mktag(1), MR_new_object(MR_Word, ((MR_Integer) 2 * sizeof(MR_Word)), NULL, NULL));
+                        MR_hl_field(MR_mktag(1), ll_backend__frameopt__Var_168, 0) = ((MR_Box) (ll_backend__frameopt__NeedsFrame_184));
+                        MR_hl_field(MR_mktag(1), ll_backend__frameopt__Var_168, 1) = ((MR_Box) ((MR_Integer) 0));
+                      }
+                      {
+                        ll_backend__frameopt__BlockInfo_182 = (MR_Word) MR_new_object(MR_Word, ((MR_Integer) 6 * sizeof(MR_Word)), NULL, NULL);
+                        MR_hl_field(MR_mktag(0), ll_backend__frameopt__BlockInfo_182, 0) = ((MR_Box) (ll_backend__frameopt__Label_42));
+                        MR_hl_field(MR_mktag(0), ll_backend__frameopt__BlockInfo_182, 1) = ((MR_Box) (ll_backend__frameopt__BlockInstrs_80));
+                        MR_hl_field(MR_mktag(0), ll_backend__frameopt__BlockInfo_182, 2) = ((MR_Box) (ll_backend__frameopt__FallInto_5));
+                        MR_hl_field(MR_mktag(0), ll_backend__frameopt__BlockInfo_182, 3) = ((MR_Box) (MR_mkword(MR_mktag(0), MR_mkbody((MR_Integer) 0))));
+                        MR_hl_field(MR_mktag(0), ll_backend__frameopt__BlockInfo_182, 4) = ((MR_Box) (MR_mkword(MR_mktag(0), MR_mkbody((MR_Integer) 0))));
+                        MR_hl_field(MR_mktag(0), ll_backend__frameopt__BlockInfo_182, 5) = ((MR_Box) (ll_backend__frameopt__Var_168));
+                      }
+                      {
+                        ll_backend__frameopt__succeeded = mercury__list__last_2_p_0((MR_Word) &ll_backend__llds__ll_backend__llds__type_ctor_info_instruction_0, ll_backend__frameopt__BlockInstrs_80, &ll_backend__frameopt__conv4_LastBlockInstr_81);
+                      }
+                      if (ll_backend__frameopt__succeeded)
+                        {
+                          ll_backend__frameopt__LastBlockInstr_81 = ((MR_Word) ll_backend__frameopt__conv4_LastBlockInstr_81);
+                          ll_backend__frameopt__succeeded = MR_TRUE;
+                        }
+                      if (ll_backend__frameopt__succeeded)
+                        {
+                          MR_Word ll_backend__frameopt__LastBlockUinstr_82 = ((MR_Word) (MR_hl_field(MR_mktag(0), ll_backend__frameopt__LastBlockInstr_81, (MR_Integer) 0)));
+                          MR_Word ll_backend__frameopt__NextFallIntoBool_84;
+                          MR_String ll_backend__frameopt__Var_83 = ((MR_String) (MR_hl_field(MR_mktag(0), ll_backend__frameopt__LastBlockInstr_81, (MR_Integer) 1)));
+
+                          {
+                            ll_backend__frameopt__NextFallIntoBool_84 = ll_backend__opt_util__can_instr_fall_through_1_f_0(ll_backend__frameopt__LastBlockUinstr_82);
+                          }
+                          switch (ll_backend__frameopt__NextFallIntoBool_84) {
+                            default: /*NOTREACHED*/ MR_assert(0);
+                            case (MR_Integer) 0:
+                              ll_backend__frameopt__NextFallInto_85 = (MR_Word) MR_mkword(MR_mktag(0), MR_mkbody((MR_Integer) 0));
+                              break;
+                            case (MR_Integer) 1:
+                              {
+                                ll_backend__frameopt__NextFallInto_85 = (MR_Word) MR_mkword(MR_mktag(1), MR_new_object(MR_Word, ((MR_Integer) 1 * sizeof(MR_Word)), NULL, NULL));
+                                MR_hl_field(MR_mktag(1), ll_backend__frameopt__NextFallInto_85, 0) = ((MR_Box) (ll_backend__frameopt__Label_42));
+                              }
+                              break;
+                          }
+                        }
+                      else
+                        {
+                          ll_backend__frameopt__NextFallInto_85 = (MR_Word) MR_mkword(MR_mktag(1), MR_new_object(MR_Word, ((MR_Integer) 1 * sizeof(MR_Word)), NULL, NULL));
+                          MR_hl_field(MR_mktag(1), ll_backend__frameopt__NextFallInto_85, 0) = ((MR_Box) (ll_backend__frameopt__Label_42));
+                        }
+                      {
+                        ll_backend__frameopt__Var_170 = (MR_Word) MR_mkword(MR_mktag(1), MR_new_object(MR_Word, ((MR_Integer) 1 * sizeof(MR_Word)), NULL, NULL));
+                        MR_hl_field(MR_mktag(1), ll_backend__frameopt__Var_170, 0) = ((MR_Box) (ll_backend__frameopt__Label_42));
+                      }
+                      {
+                        ll_backend__frameopt__build_frame_block_map_14_p_0(ll_backend__frameopt__TypeClassInfo_for_block_entry_exit_189, ll_backend__frameopt__Instrs1_181, ll_backend__frameopt__EntryInfo_2, &ll_backend__frameopt__LabelSeq0_183, ll_backend__frameopt__Var_170, ll_backend__frameopt__NextFallInto_85, ll_backend__frameopt__ProcLabel_6, ll_backend__frameopt__STATE_VARIABLE_BlockMap_0_7, &ll_backend__frameopt__STATE_VARIABLE_BlockMap_171_171, ll_backend__frameopt__STATE_VARIABLE_PredMap_95_95, ll_backend__frameopt__STATE_VARIABLE_PredMap_10, ll_backend__frameopt__STATE_VARIABLE_C_0_11, ll_backend__frameopt__STATE_VARIABLE_C_12, ll_backend__frameopt__STATE_VARIABLE_PreExitDummyLabelMap_0_13, ll_backend__frameopt__STATE_VARIABLE_PreExitDummyLabelMap_14);
+                      }
+                      {
+                        mercury__private_builtin__type_info_from_typeclass_info_3_p_0(ll_backend__frameopt__TypeClassInfo_for_block_entry_exit_189, (MR_Integer) 1, &ll_backend__frameopt__TypeInfo_212_212);
+                      }
+                      {
+                        mercury__private_builtin__type_info_from_typeclass_info_3_p_0(ll_backend__frameopt__TypeClassInfo_for_block_entry_exit_189, (MR_Integer) 2, &ll_backend__frameopt__TypeInfo_214_214);
+                      }
+                      {
+                        ll_backend__frameopt__TypeInfo_216_216 = (MR_Word) MR_new_object(MR_Word, ((MR_Integer) 3 * sizeof(MR_Word)), NULL, NULL);
+                        MR_hl_field(MR_mktag(0), ll_backend__frameopt__TypeInfo_216_216, 0) = ((MR_Box) (&ll_backend__frameopt__ll_backend__frameopt__type_ctor_info_frame_block_info_2));
+                        MR_hl_field(MR_mktag(0), ll_backend__frameopt__TypeInfo_216_216, 1) = ((MR_Box) (ll_backend__frameopt__TypeInfo_212_212));
+                        MR_hl_field(MR_mktag(0), ll_backend__frameopt__TypeInfo_216_216, 2) = ((MR_Box) (ll_backend__frameopt__TypeInfo_214_214));
+                      }
+                      {
+                        mercury__map__det_insert_4_p_0((MR_Word) &ll_backend__llds__ll_backend__llds__type_ctor_info_label_0, ll_backend__frameopt__TypeInfo_216_216, ((MR_Box) (ll_backend__frameopt__Label_42)), ((MR_Box) (ll_backend__frameopt__BlockInfo_182)), (MR_Word) ll_backend__frameopt__STATE_VARIABLE_BlockMap_171_171, &ll_backend__frameopt__conv5_STATE_VARIABLE_BlockMap_8);
+                      }
+                      *ll_backend__frameopt__STATE_VARIABLE_BlockMap_8 = (MR_Word) ll_backend__frameopt__conv5_STATE_VARIABLE_BlockMap_8;
+                      {
+                        MR_Word base;
+                        base = (MR_Word) MR_mkword(MR_mktag(1), MR_new_object(MR_Word, ((MR_Integer) 2 * sizeof(MR_Word)), NULL, NULL));
+                        *ll_backend__frameopt__HeadVar__3_3 = base;
+                        MR_hl_field(MR_mktag(1), base, 0) = ((MR_Box) (ll_backend__frameopt__Label_42));
+                        MR_hl_field(MR_mktag(1), base, 1) = ((MR_Box) (ll_backend__frameopt__LabelSeq0_183));
+                      }
+                    }
+                }
+            }
+          }
+        else
+          {
+            {
+              mercury__require__unexpected_3_p_0((MR_String) "ll_backend.frameopt", (MR_String) "predicate \140ll_backend.frameopt.build_frame_block_map\'/14", (MR_String) "block does not start with label");
+              return;
+            }
+          }
+      }
+  }
+}
+
+static void MR_CALL 
+ll_backend__frameopt__f_85_110_117_115_101_100_65_114_103_115_95_95_112_114_101_100_95_95_99_111_109_112_117_116_101_95_98_108_111_99_107_95_110_101_101_100_115_95_102_114_97_109_101_95_95_91_49_93_95_48_3_p_0_1(
+  void * ll_backend__frameopt__env_ptr_arg)
+{
+  {
+    struct ll_backend__frameopt__f_85_110_117_115_101_100_65_114_103_115_95_95_112_114_101_100_95_95_99_111_109_112_117_116_101_95_98_108_111_99_107_95_110_101_101_100_115_95_102_114_97_109_101_95_95_91_49_93_95_48_95_51_95_112_95_48_95_101_110_118_0_s * ll_backend__frameopt__env_ptr = (struct ll_backend__frameopt__f_85_110_117_115_101_100_65_114_103_115_95_95_112_114_101_100_95_95_99_111_109_112_117_116_101_95_98_108_111_99_107_95_110_101_101_100_115_95_102_114_97_109_101_95_95_91_49_93_95_48_95_51_95_112_95_48_95_101_110_118_0_s *) ll_backend__frameopt__env_ptr_arg;
+
+    MR_builtin_longjmp((ll_backend__frameopt__env_ptr)->ll_backend__frameopt__f_85_110_117_115_101_100_65_114_103_115_95_95_112_114_101_100_95_95_99_111_109_112_117_116_101_95_98_108_111_99_107_95_110_101_101_100_115_95_102_114_97_109_101_95_95_91_49_93_95_48_95_51_95_112_95_48_95_101_110_118_95_48__commit_0, 1);
+  }
+}
+
+static void MR_CALL 
+ll_backend__frameopt__f_85_110_117_115_101_100_65_114_103_115_95_95_112_114_101_100_95_95_99_111_109_112_117_116_101_95_98_108_111_99_107_95_110_101_101_100_115_95_102_114_97_109_101_95_95_91_49_93_95_48_3_p_0_3(
+  void * ll_backend__frameopt__env_ptr_arg)
+{
+  {
+    struct ll_backend__frameopt__f_85_110_117_115_101_100_65_114_103_115_95_95_112_114_101_100_95_95_99_111_109_112_117_116_101_95_98_108_111_99_107_95_110_101_101_100_115_95_102_114_97_109_101_95_95_91_49_93_95_48_95_51_95_112_95_48_95_101_110_118_0_s * ll_backend__frameopt__env_ptr = (struct ll_backend__frameopt__f_85_110_117_115_101_100_65_114_103_115_95_95_112_114_101_100_95_95_99_111_109_112_117_116_101_95_98_108_111_99_107_95_110_101_101_100_115_95_102_114_97_109_101_95_95_91_49_93_95_48_95_51_95_112_95_48_95_101_110_118_0_s *) ll_backend__frameopt__env_ptr_arg;
+
+    (ll_backend__frameopt__env_ptr)->ll_backend__frameopt__f_85_110_117_115_101_100_65_114_103_115_95_95_112_114_101_100_95_95_99_111_109_112_117_116_101_95_98_108_111_99_107_95_110_101_101_100_115_95_102_114_97_109_101_95_95_91_49_93_95_48_95_51_95_112_95_48_95_101_110_118_95_48__Instr_8 = ((MR_Word) (ll_backend__frameopt__env_ptr)->ll_backend__frameopt__f_85_110_117_115_101_100_65_114_103_115_95_95_112_114_101_100_95_95_99_111_109_112_117_116_101_95_98_108_111_99_107_95_110_101_101_100_115_95_102_114_97_109_101_95_95_91_49_93_95_48_95_51_95_112_95_48_95_101_110_118_95_48__conv0_Instr_8);
+    {
+      ll_backend__frameopt__f_85_110_117_115_101_100_65_114_103_115_95_95_112_114_101_100_95_95_99_111_109_112_117_116_101_95_98_108_111_99_107_95_110_101_101_100_115_95_102_114_97_109_101_95_95_91_49_93_95_48_3_p_0_2(ll_backend__frameopt__env_ptr);
+    }
+  }
+}
+
+static void MR_CALL 
+ll_backend__frameopt__f_85_110_117_115_101_100_65_114_103_115_95_95_112_114_101_100_95_95_99_111_109_112_117_116_101_95_98_108_111_99_107_95_110_101_101_100_115_95_102_114_97_109_101_95_95_91_49_93_95_48_3_p_0_2(
+  void * ll_backend__frameopt__env_ptr_arg)
+{
+  {
+    struct ll_backend__frameopt__f_85_110_117_115_101_100_65_114_103_115_95_95_112_114_101_100_95_95_99_111_109_112_117_116_101_95_98_108_111_99_107_95_110_101_101_100_115_95_102_114_97_109_101_95_95_91_49_93_95_48_95_51_95_112_95_48_95_101_110_118_0_s * ll_backend__frameopt__env_ptr = (struct ll_backend__frameopt__f_85_110_117_115_101_100_65_114_103_115_95_95_112_114_101_100_95_95_99_111_109_112_117_116_101_95_98_108_111_99_107_95_110_101_101_100_115_95_102_114_97_109_101_95_95_91_49_93_95_48_95_51_95_112_95_48_95_101_110_118_0_s *) ll_backend__frameopt__env_ptr_arg;
+
+    {
+      MR_String ll_backend__frameopt__Var_10;
+
+      (ll_backend__frameopt__env_ptr)->ll_backend__frameopt__f_85_110_117_115_101_100_65_114_103_115_95_95_112_114_101_100_95_95_99_111_109_112_117_116_101_95_98_108_111_99_107_95_110_101_101_100_115_95_102_114_97_109_101_95_95_91_49_93_95_48_95_51_95_112_95_48_95_101_110_118_95_48__Uinstr_9 = ((MR_Word) (MR_hl_field(MR_mktag(0), (ll_backend__frameopt__env_ptr)->ll_backend__frameopt__f_85_110_117_115_101_100_65_114_103_115_95_95_112_114_101_100_95_95_99_111_109_112_117_116_101_95_98_108_111_99_107_95_110_101_101_100_115_95_102_114_97_109_101_95_95_91_49_93_95_48_95_51_95_112_95_48_95_101_110_118_95_48__Instr_8, (MR_Integer) 0)));
+      ll_backend__frameopt__Var_10 = ((MR_String) (MR_hl_field(MR_mktag(0), (ll_backend__frameopt__env_ptr)->ll_backend__frameopt__f_85_110_117_115_101_100_65_114_103_115_95_95_112_114_101_100_95_95_99_111_109_112_117_116_101_95_98_108_111_99_107_95_110_101_101_100_115_95_102_114_97_109_101_95_95_91_49_93_95_48_95_51_95_112_95_48_95_101_110_118_95_48__Instr_8, (MR_Integer) 1)));
+      switch (MR_tag((MR_Word) (ll_backend__frameopt__env_ptr)->ll_backend__frameopt__f_85_110_117_115_101_100_65_114_103_115_95_95_112_114_101_100_95_95_99_111_109_112_117_116_101_95_98_108_111_99_107_95_110_101_101_100_115_95_102_114_97_109_101_95_95_91_49_93_95_48_95_51_95_112_95_48_95_101_110_118_95_48__Uinstr_9)) {
+        default:
+          (ll_backend__frameopt__env_ptr)->ll_backend__frameopt__f_85_110_117_115_101_100_65_114_103_115_95_95_112_114_101_100_95_95_99_111_109_112_117_116_101_95_98_108_111_99_107_95_110_101_101_100_115_95_102_114_97_109_101_95_95_91_49_93_95_48_95_51_95_112_95_48_95_101_110_118_95_48__succeeded = MR_FALSE;
+          break;
+        case (MR_Integer) 3:
+          switch (((MR_Integer) (MR_Word) (MR_hl_field(MR_mktag(3), (ll_backend__frameopt__env_ptr)->ll_backend__frameopt__f_85_110_117_115_101_100_65_114_103_115_95_95_112_114_101_100_95_95_99_111_109_112_117_116_101_95_98_108_111_99_107_95_110_101_101_100_115_95_102_114_97_109_101_95_95_91_49_93_95_48_95_51_95_112_95_48_95_101_110_118_95_48__Uinstr_9, (MR_Integer) 0)))) {
+            default:
+              (ll_backend__frameopt__env_ptr)->ll_backend__frameopt__f_85_110_117_115_101_100_65_114_103_115_95_95_112_114_101_100_95_95_99_111_109_112_117_116_101_95_98_108_111_99_107_95_110_101_101_100_115_95_102_114_97_109_101_95_95_91_49_93_95_48_95_51_95_112_95_48_95_101_110_118_95_48__succeeded = MR_FALSE;
+              break;
+            case (MR_Integer) 1:
+              {
+                MR_Word ll_backend__frameopt__Var_36 = ((MR_Word) (MR_hl_field(MR_mktag(3), (ll_backend__frameopt__env_ptr)->ll_backend__frameopt__f_85_110_117_115_101_100_65_114_103_115_95_95_112_114_101_100_95_95_99_111_109_112_117_116_101_95_98_108_111_99_107_95_110_101_101_100_115_95_102_114_97_109_101_95_95_91_49_93_95_48_95_51_95_112_95_48_95_101_110_118_95_48__Uinstr_9, (MR_Integer) 1)));
+                MR_Word ll_backend__frameopt__Var_35 = ((MR_Word) (MR_hl_field(MR_mktag(3), (ll_backend__frameopt__env_ptr)->ll_backend__frameopt__f_85_110_117_115_101_100_65_114_103_115_95_95_112_114_101_100_95_95_99_111_109_112_117_116_101_95_98_108_111_99_107_95_110_101_101_100_115_95_102_114_97_109_101_95_95_91_49_93_95_48_95_51_95_112_95_48_95_101_110_118_95_48__Uinstr_9, (MR_Integer) 2)));
+
+                (ll_backend__frameopt__env_ptr)->ll_backend__frameopt__f_85_110_117_115_101_100_65_114_103_115_95_95_112_114_101_100_95_95_99_111_109_112_117_116_101_95_98_108_111_99_107_95_110_101_101_100_115_95_102_114_97_109_101_95_95_91_49_93_95_48_95_51_95_112_95_48_95_101_110_118_95_48__succeeded = (ll_backend__frameopt__Var_36 == ((MR_Word) MR_mkword(MR_mktag(0), MR_mkbody((MR_Integer) 0))));
+              }
+              break;
+            case (MR_Integer) 3:
+              (ll_backend__frameopt__env_ptr)->ll_backend__frameopt__f_85_110_117_115_101_100_65_114_103_115_95_95_112_114_101_100_95_95_99_111_109_112_117_116_101_95_98_108_111_99_107_95_110_101_101_100_115_95_102_114_97_109_101_95_95_91_49_93_95_48_95_51_95_112_95_48_95_101_110_118_95_48__succeeded = MR_TRUE;
+              break;
+            case (MR_Integer) 4:
+              (ll_backend__frameopt__env_ptr)->ll_backend__frameopt__f_85_110_117_115_101_100_65_114_103_115_95_95_112_114_101_100_95_95_99_111_109_112_117_116_101_95_98_108_111_99_107_95_110_101_101_100_115_95_102_114_97_109_101_95_95_91_49_93_95_48_95_51_95_112_95_48_95_101_110_118_95_48__succeeded = MR_TRUE;
+              break;
+            case (MR_Integer) 8:
+              (ll_backend__frameopt__env_ptr)->ll_backend__frameopt__f_85_110_117_115_101_100_65_114_103_115_95_95_112_114_101_100_95_95_99_111_109_112_117_116_101_95_98_108_111_99_107_95_110_101_101_100_115_95_102_114_97_109_101_95_95_91_49_93_95_48_95_51_95_112_95_48_95_101_110_118_95_48__succeeded = MR_TRUE;
+              break;
+            case (MR_Integer) 27:
+              {
+                MR_Word ll_backend__frameopt__MayCallMercury_24 = ((MR_Word) (MR_hl_field(MR_mktag(3), (ll_backend__frameopt__env_ptr)->ll_backend__frameopt__f_85_110_117_115_101_100_65_114_103_115_95_95_112_114_101_100_95_95_99_111_109_112_117_116_101_95_98_108_111_99_107_95_110_101_101_100_115_95_102_114_97_109_101_95_95_91_49_93_95_48_95_51_95_112_95_48_95_101_110_118_95_48__Uinstr_9, (MR_Integer) 3)));
+                MR_Word ll_backend__frameopt__MaybeLayout_26 = ((MR_Word) (MR_hl_field(MR_mktag(3), (ll_backend__frameopt__env_ptr)->ll_backend__frameopt__f_85_110_117_115_101_100_65_114_103_115_95_95_112_114_101_100_95_95_99_111_109_112_117_116_101_95_98_108_111_99_107_95_110_101_101_100_115_95_102_114_97_109_101_95_95_91_49_93_95_48_95_51_95_112_95_48_95_101_110_118_95_48__Uinstr_9, (MR_Integer) 5)));
+                MR_Word ll_backend__frameopt__MaybeOnlyLayout_27 = ((MR_Word) (MR_hl_field(MR_mktag(3), (ll_backend__frameopt__env_ptr)->ll_backend__frameopt__f_85_110_117_115_101_100_65_114_103_115_95_95_112_114_101_100_95_95_99_111_109_112_117_116_101_95_98_108_111_99_107_95_110_101_101_100_115_95_102_114_97_109_101_95_95_91_49_93_95_48_95_51_95_112_95_48_95_101_110_118_95_48__Uinstr_9, (MR_Integer) 6)));
+                MR_Word ll_backend__frameopt__MaybeDefLabel_29 = ((MR_Word) (MR_hl_field(MR_mktag(3), (ll_backend__frameopt__env_ptr)->ll_backend__frameopt__f_85_110_117_115_101_100_65_114_103_115_95_95_112_114_101_100_95_95_99_111_109_112_117_116_101_95_98_108_111_99_107_95_110_101_101_100_115_95_102_114_97_109_101_95_95_91_49_93_95_48_95_51_95_112_95_48_95_101_110_118_95_48__Uinstr_9, (MR_Integer) 8)));
+                MR_Word ll_backend__frameopt__NeedStack_30 = ((MR_Word) (MR_hl_field(MR_mktag(3), (ll_backend__frameopt__env_ptr)->ll_backend__frameopt__f_85_110_117_115_101_100_65_114_103_115_95_95_112_114_101_100_95_95_99_111_109_112_117_116_101_95_98_108_111_99_107_95_110_101_101_100_115_95_102_114_97_109_101_95_95_91_49_93_95_48_95_51_95_112_95_48_95_101_110_118_95_48__Uinstr_9, (MR_Integer) 9)));
+                MR_Word ll_backend__frameopt__Var_22 = ((MR_Word) (MR_hl_field(MR_mktag(3), (ll_backend__frameopt__env_ptr)->ll_backend__frameopt__f_85_110_117_115_101_100_65_114_103_115_95_95_112_114_101_100_95_95_99_111_109_112_117_116_101_95_98_108_111_99_107_95_110_101_101_100_115_95_102_114_97_109_101_95_95_91_49_93_95_48_95_51_95_112_95_48_95_101_110_118_95_48__Uinstr_9, (MR_Integer) 1)));
+                MR_Word ll_backend__frameopt__Var_23 = ((MR_Word) (MR_hl_field(MR_mktag(3), (ll_backend__frameopt__env_ptr)->ll_backend__frameopt__f_85_110_117_115_101_100_65_114_103_115_95_95_112_114_101_100_95_95_99_111_109_112_117_116_101_95_98_108_111_99_107_95_110_101_101_100_115_95_102_114_97_109_101_95_95_91_49_93_95_48_95_51_95_112_95_48_95_101_110_118_95_48__Uinstr_9, (MR_Integer) 2)));
+                MR_Word ll_backend__frameopt__Var_25 = ((MR_Word) (MR_hl_field(MR_mktag(3), (ll_backend__frameopt__env_ptr)->ll_backend__frameopt__f_85_110_117_115_101_100_65_114_103_115_95_95_112_114_101_100_95_95_99_111_109_112_117_116_101_95_98_108_111_99_107_95_110_101_101_100_115_95_102_114_97_109_101_95_95_91_49_93_95_48_95_51_95_112_95_48_95_101_110_118_95_48__Uinstr_9, (MR_Integer) 4)));
+                MR_Word ll_backend__frameopt__Var_28 = ((MR_Word) (MR_hl_field(MR_mktag(3), (ll_backend__frameopt__env_ptr)->ll_backend__frameopt__f_85_110_117_115_101_100_65_114_103_115_95_95_112_114_101_100_95_95_99_111_109_112_117_116_101_95_98_108_111_99_107_95_110_101_101_100_115_95_102_114_97_109_101_95_95_91_49_93_95_48_95_51_95_112_95_48_95_101_110_118_95_48__Uinstr_9, (MR_Integer) 7)));
+                MR_Word ll_backend__frameopt__Var_31 = ((MR_Word) (MR_hl_field(MR_mktag(3), (ll_backend__frameopt__env_ptr)->ll_backend__frameopt__f_85_110_117_115_101_100_65_114_103_115_95_95_112_114_101_100_95_95_99_111_109_112_117_116_101_95_98_108_111_99_107_95_110_101_101_100_115_95_102_114_97_109_101_95_95_91_49_93_95_48_95_51_95_112_95_48_95_101_110_118_95_48__Uinstr_9, (MR_Integer) 10)));
+
+                (ll_backend__frameopt__env_ptr)->ll_backend__frameopt__f_85_110_117_115_101_100_65_114_103_115_95_95_112_114_101_100_95_95_99_111_109_112_117_116_101_95_98_108_111_99_107_95_110_101_101_100_115_95_102_114_97_109_101_95_95_91_49_93_95_48_95_51_95_112_95_48_95_101_110_118_95_48__succeeded = (ll_backend__frameopt__MayCallMercury_24 == (MR_Integer) 0);
+                if (!((ll_backend__frameopt__env_ptr)->ll_backend__frameopt__f_85_110_117_115_101_100_65_114_103_115_95_95_112_114_101_100_95_95_99_111_109_112_117_116_101_95_98_108_111_99_107_95_110_101_101_100_115_95_102_114_97_109_101_95_95_91_49_93_95_48_95_51_95_112_95_48_95_101_110_118_95_48__succeeded))
+                  {
+                    {
+                      MR_Word ll_backend__frameopt__Var_32;
+
+                      (ll_backend__frameopt__env_ptr)->ll_backend__frameopt__f_85_110_117_115_101_100_65_114_103_115_95_95_112_114_101_100_95_95_99_111_109_112_117_116_101_95_98_108_111_99_107_95_110_101_101_100_115_95_102_114_97_109_101_95_95_91_49_93_95_48_95_51_95_112_95_48_95_101_110_118_95_48__succeeded = ((MR_tag((MR_Word) ll_backend__frameopt__MaybeLayout_26)) == (MR_mktag((MR_Integer) 1)));
+                      if ((ll_backend__frameopt__env_ptr)->ll_backend__frameopt__f_85_110_117_115_101_100_65_114_103_115_95_95_112_114_101_100_95_95_99_111_109_112_117_116_101_95_98_108_111_99_107_95_110_101_101_100_115_95_102_114_97_109_101_95_95_91_49_93_95_48_95_51_95_112_95_48_95_101_110_118_95_48__succeeded)
+                        ll_backend__frameopt__Var_32 = ((MR_Word) (MR_hl_field(MR_mktag(1), ll_backend__frameopt__MaybeLayout_26, (MR_Integer) 0)));
+                    }
+                    if (!((ll_backend__frameopt__env_ptr)->ll_backend__frameopt__f_85_110_117_115_101_100_65_114_103_115_95_95_112_114_101_100_95_95_99_111_109_112_117_116_101_95_98_108_111_99_107_95_110_101_101_100_115_95_102_114_97_109_101_95_95_91_49_93_95_48_95_51_95_112_95_48_95_101_110_118_95_48__succeeded))
+                      {
+                        {
+                          MR_Word ll_backend__frameopt__Var_33;
+
+                          (ll_backend__frameopt__env_ptr)->ll_backend__frameopt__f_85_110_117_115_101_100_65_114_103_115_95_95_112_114_101_100_95_95_99_111_109_112_117_116_101_95_98_108_111_99_107_95_110_101_101_100_115_95_102_114_97_109_101_95_95_91_49_93_95_48_95_51_95_112_95_48_95_101_110_118_95_48__succeeded = ((MR_tag((MR_Word) ll_backend__frameopt__MaybeOnlyLayout_27)) == (MR_mktag((MR_Integer) 1)));
+                          if ((ll_backend__frameopt__env_ptr)->ll_backend__frameopt__f_85_110_117_115_101_100_65_114_103_115_95_95_112_114_101_100_95_95_99_111_109_112_117_116_101_95_98_108_111_99_107_95_110_101_101_100_115_95_102_114_97_109_101_95_95_91_49_93_95_48_95_51_95_112_95_48_95_101_110_118_95_48__succeeded)
+                            ll_backend__frameopt__Var_33 = ((MR_Word) (MR_hl_field(MR_mktag(1), ll_backend__frameopt__MaybeOnlyLayout_27, (MR_Integer) 0)));
+                        }
+                        if (!((ll_backend__frameopt__env_ptr)->ll_backend__frameopt__f_85_110_117_115_101_100_65_114_103_115_95_95_112_114_101_100_95_95_99_111_109_112_117_116_101_95_98_108_111_99_107_95_110_101_101_100_115_95_102_114_97_109_101_95_95_91_49_93_95_48_95_51_95_112_95_48_95_101_110_118_95_48__succeeded))
+                          {
+                            {
+                              MR_Word ll_backend__frameopt__Var_34;
+
+                              (ll_backend__frameopt__env_ptr)->ll_backend__frameopt__f_85_110_117_115_101_100_65_114_103_115_95_95_112_114_101_100_95_95_99_111_109_112_117_116_101_95_98_108_111_99_107_95_110_101_101_100_115_95_102_114_97_109_101_95_95_91_49_93_95_48_95_51_95_112_95_48_95_101_110_118_95_48__succeeded = ((MR_tag((MR_Word) ll_backend__frameopt__MaybeDefLabel_29)) == (MR_mktag((MR_Integer) 1)));
+                              if ((ll_backend__frameopt__env_ptr)->ll_backend__frameopt__f_85_110_117_115_101_100_65_114_103_115_95_95_112_114_101_100_95_95_99_111_109_112_117_116_101_95_98_108_111_99_107_95_110_101_101_100_115_95_102_114_97_109_101_95_95_91_49_93_95_48_95_51_95_112_95_48_95_101_110_118_95_48__succeeded)
+                                ll_backend__frameopt__Var_34 = ((MR_Word) (MR_hl_field(MR_mktag(1), ll_backend__frameopt__MaybeDefLabel_29, (MR_Integer) 0)));
+                            }
+                            if (!((ll_backend__frameopt__env_ptr)->ll_backend__frameopt__f_85_110_117_115_101_100_65_114_103_115_95_95_112_114_101_100_95_95_99_111_109_112_117_116_101_95_98_108_111_99_107_95_110_101_101_100_115_95_102_114_97_109_101_95_95_91_49_93_95_48_95_51_95_112_95_48_95_101_110_118_95_48__succeeded))
+                              (ll_backend__frameopt__env_ptr)->ll_backend__frameopt__f_85_110_117_115_101_100_65_114_103_115_95_95_112_114_101_100_95_95_99_111_109_112_117_116_101_95_98_108_111_99_107_95_110_101_101_100_115_95_102_114_97_109_101_95_95_91_49_93_95_48_95_51_95_112_95_48_95_101_110_118_95_48__succeeded = (ll_backend__frameopt__NeedStack_30 == (MR_Integer) 1);
+                          }
+                      }
+                  }
+              }
+              break;
+          }
+          break;
+      }
+      if ((ll_backend__frameopt__env_ptr)->ll_backend__frameopt__f_85_110_117_115_101_100_65_114_103_115_95_95_112_114_101_100_95_95_99_111_109_112_117_116_101_95_98_108_111_99_107_95_110_101_101_100_115_95_102_114_97_109_101_95_95_91_49_93_95_48_95_51_95_112_95_48_95_101_110_118_95_48__succeeded)
+        {
+          ll_backend__frameopt__f_85_110_117_115_101_100_65_114_103_115_95_95_112_114_101_100_95_95_99_111_109_112_117_116_101_95_98_108_111_99_107_95_110_101_101_100_115_95_102_114_97_109_101_95_95_91_49_93_95_48_3_p_0_1(ll_backend__frameopt__env_ptr);
+        }
+    }
+  }
+}
+
+static void MR_CALL 
+ll_backend__frameopt__f_85_110_117_115_101_100_65_114_103_115_95_95_112_114_101_100_95_95_99_111_109_112_117_116_101_95_98_108_111_99_107_95_110_101_101_100_115_95_102_114_97_109_101_95_95_91_49_93_95_48_3_p_0_4(
+  void * ll_backend__frameopt__env_ptr_arg)
+{
+  {
+    struct ll_backend__frameopt__f_85_110_117_115_101_100_65_114_103_115_95_95_112_114_101_100_95_95_99_111_109_112_117_116_101_95_98_108_111_99_107_95_110_101_101_100_115_95_102_114_97_109_101_95_95_91_49_93_95_48_95_51_95_112_95_48_95_101_110_118_0_s * ll_backend__frameopt__env_ptr = (struct ll_backend__frameopt__f_85_110_117_115_101_100_65_114_103_115_95_95_112_114_101_100_95_95_99_111_109_112_117_116_101_95_98_108_111_99_107_95_110_101_101_100_115_95_102_114_97_109_101_95_95_91_49_93_95_48_95_51_95_112_95_48_95_101_110_118_0_s *) ll_backend__frameopt__env_ptr_arg;
+
+    if (MR_builtin_setjmp((ll_backend__frameopt__env_ptr)->ll_backend__frameopt__f_85_110_117_115_101_100_65_114_103_115_95_95_112_114_101_100_95_95_99_111_109_112_117_116_101_95_98_108_111_99_107_95_110_101_101_100_115_95_102_114_97_109_101_95_95_91_49_93_95_48_95_51_95_112_95_48_95_101_110_118_95_48__commit_0) == 0)
+      {
+        {
+          {
+            mercury__list__member_2_p_1((MR_Word) &ll_backend__llds__ll_backend__llds__type_ctor_info_instruction_0, &(ll_backend__frameopt__env_ptr)->ll_backend__frameopt__f_85_110_117_115_101_100_65_114_103_115_95_95_112_114_101_100_95_95_99_111_109_112_117_116_101_95_98_108_111_99_107_95_110_101_101_100_115_95_102_114_97_109_101_95_95_91_49_93_95_48_95_51_95_112_95_48_95_101_110_118_95_48__conv0_Instr_8, (ll_backend__frameopt__env_ptr)->ll_backend__frameopt__f_85_110_117_115_101_100_65_114_103_115_95_95_112_114_101_100_95_95_99_111_109_112_117_116_101_95_98_108_111_99_107_95_110_101_101_100_115_95_102_114_97_109_101_95_95_91_49_93_95_48_95_51_95_112_95_48_95_101_110_118_95_48__Instrs_5, ll_backend__frameopt__f_85_110_117_115_101_100_65_114_103_115_95_95_112_114_101_100_95_95_99_111_109_112_117_116_101_95_98_108_111_99_107_95_110_101_101_100_115_95_102_114_97_109_101_95_95_91_49_93_95_48_3_p_0_3, ll_backend__frameopt__env_ptr);
+          }
+        }
+        (ll_backend__frameopt__env_ptr)->ll_backend__frameopt__f_85_110_117_115_101_100_65_114_103_115_95_95_112_114_101_100_95_95_99_111_109_112_117_116_101_95_98_108_111_99_107_95_110_101_101_100_115_95_102_114_97_109_101_95_95_91_49_93_95_48_95_51_95_112_95_48_95_101_110_118_95_48__succeeded = MR_FALSE;
+      }
+    else
+      (ll_backend__frameopt__env_ptr)->ll_backend__frameopt__f_85_110_117_115_101_100_65_114_103_115_95_95_112_114_101_100_95_95_99_111_109_112_117_116_101_95_98_108_111_99_107_95_110_101_101_100_115_95_102_114_97_109_101_95_95_91_49_93_95_48_95_51_95_112_95_48_95_101_110_118_95_48__succeeded = MR_TRUE;
+  }
+}
+
+static void MR_CALL 
+ll_backend__frameopt__f_85_110_117_115_101_100_65_114_103_115_95_95_112_114_101_100_95_95_99_111_109_112_117_116_101_95_98_108_111_99_107_95_110_101_101_100_115_95_102_114_97_109_101_95_95_91_49_93_95_48_3_p_0(
+  MR_Word ll_backend__frameopt__Instrs_5,
+  MR_Word * ll_backend__frameopt__NeedsFrame_6)
+{
+  {
+    struct ll_backend__frameopt__f_85_110_117_115_101_100_65_114_103_115_95_95_112_114_101_100_95_95_99_111_109_112_117_116_101_95_98_108_111_99_107_95_110_101_101_100_115_95_102_114_97_109_101_95_95_91_49_93_95_48_95_51_95_112_95_48_95_101_110_118_0_s ll_backend__frameopt__env;
+
+    (ll_backend__frameopt__env).ll_backend__frameopt__f_85_110_117_115_101_100_65_114_103_115_95_95_112_114_101_100_95_95_99_111_109_112_117_116_101_95_98_108_111_99_107_95_110_101_101_100_115_95_102_114_97_109_101_95_95_91_49_93_95_48_95_51_95_112_95_48_95_101_110_118_95_48__Instrs_5 = ll_backend__frameopt__Instrs_5;
+    {
+      MR_Word ll_backend__frameopt__ReferStackVars_7;
+
+      {
+        ll_backend__frameopt__ReferStackVars_7 = ll_backend__opt_util__block_refers_to_stack_1_f_0((ll_backend__frameopt__env).ll_backend__frameopt__f_85_110_117_115_101_100_65_114_103_115_95_95_112_114_101_100_95_95_99_111_109_112_117_116_101_95_98_108_111_99_107_95_110_101_101_100_115_95_102_114_97_109_101_95_95_91_49_93_95_48_95_51_95_112_95_48_95_101_110_118_95_48__Instrs_5);
+      }
+      switch (ll_backend__frameopt__ReferStackVars_7) {
+        default: /*NOTREACHED*/ MR_assert(0);
+        case (MR_Integer) 0:
+          {
+            {
+              ll_backend__frameopt__f_85_110_117_115_101_100_65_114_103_115_95_95_112_114_101_100_95_95_99_111_109_112_117_116_101_95_98_108_111_99_107_95_110_101_101_100_115_95_102_114_97_109_101_95_95_91_49_93_95_48_3_p_0_4(&ll_backend__frameopt__env);
+            }
+            if ((ll_backend__frameopt__env).ll_backend__frameopt__f_85_110_117_115_101_100_65_114_103_115_95_95_112_114_101_100_95_95_99_111_109_112_117_116_101_95_98_108_111_99_107_95_110_101_101_100_115_95_102_114_97_109_101_95_95_91_49_93_95_48_95_51_95_112_95_48_95_101_110_118_95_48__succeeded)
+              *ll_backend__frameopt__NeedsFrame_6 = (MR_Integer) 0;
+            else
+              *ll_backend__frameopt__NeedsFrame_6 = (MR_Integer) 1;
+          }
+          break;
+        case (MR_Integer) 1:
+          *ll_backend__frameopt__NeedsFrame_6 = (MR_Integer) 0;
+          break;
+      }
+    }
+  }
+}
+
+static MR_bool MR_CALL 
+ll_backend__frameopt__detect_exit_6_p_0(
+  MR_Word ll_backend__frameopt__TypeClassInfo_for_block_entry_exit_7,
+  MR_Word ll_backend__frameopt__HeadVar__1_1,
+  MR_Box ll_backend__frameopt__HeadVar__2_2,
+  MR_Word * ll_backend__frameopt__HeadVar__3_3,
+  MR_Word * ll_backend__frameopt__HeadVar__4_4,
+  MR_Word * ll_backend__frameopt__HeadVar__5_5,
+  MR_Box * ll_backend__frameopt__HeadVar__6_6)
+{
+  {
+    MR_bool ll_backend__frameopt__succeeded;
+    MR_bool MR_CALL (* ll_backend__frameopt__func_0)(MR_Box, MR_Box, MR_Box, MR_Box *, MR_Box *, MR_Box *, MR_Box *) = ((MR_bool MR_CALL (*)(MR_Box, MR_Box, MR_Box, MR_Box *, MR_Box *, MR_Box *, MR_Box *)) (MR_hl_field(MR_mktag(0), (MR_hl_field(MR_mktag(0), ll_backend__frameopt__TypeClassInfo_for_block_entry_exit_7, (MR_Integer) 0)), (MR_Integer) 6)));
+    MR_Box ll_backend__frameopt__conv3_HeadVar__3_3;
+    MR_Box ll_backend__frameopt__conv2_HeadVar__4_4;
+    MR_Box ll_backend__frameopt__conv1_HeadVar__5_5;
+
+    {
+      ll_backend__frameopt__succeeded = ll_backend__frameopt__func_0(((MR_Box) ll_backend__frameopt__TypeClassInfo_for_block_entry_exit_7), ((MR_Box) (ll_backend__frameopt__HeadVar__1_1)), ll_backend__frameopt__HeadVar__2_2, &ll_backend__frameopt__conv3_HeadVar__3_3, &ll_backend__frameopt__conv2_HeadVar__4_4, &ll_backend__frameopt__conv1_HeadVar__5_5, ll_backend__frameopt__HeadVar__6_6);
+    }
+    if (ll_backend__frameopt__succeeded)
+      {
+        *ll_backend__frameopt__HeadVar__3_3 = ((MR_Word) ll_backend__frameopt__conv3_HeadVar__3_3);
+        *ll_backend__frameopt__HeadVar__4_4 = ((MR_Word) ll_backend__frameopt__conv2_HeadVar__4_4);
+        *ll_backend__frameopt__HeadVar__5_5 = ((MR_Word) ll_backend__frameopt__conv1_HeadVar__5_5);
+        ll_backend__frameopt__succeeded = MR_TRUE;
+      }
+    return ll_backend__frameopt__succeeded;
+  }
+}
+
+static MR_bool MR_CALL 
+ll_backend__frameopt__detect_entry_4_p_0(
+  MR_Word ll_backend__frameopt__TypeClassInfo_for_block_entry_exit_5,
+  MR_Word ll_backend__frameopt__HeadVar__1_1,
+  MR_Word * ll_backend__frameopt__HeadVar__2_2,
+  MR_Word * ll_backend__frameopt__HeadVar__3_3,
+  MR_Box * ll_backend__frameopt__HeadVar__4_4)
+{
+  {
+    MR_bool ll_backend__frameopt__succeeded;
+    MR_bool MR_CALL (* ll_backend__frameopt__func_0)(MR_Box, MR_Box, MR_Box *, MR_Box *, MR_Box *) = ((MR_bool MR_CALL (*)(MR_Box, MR_Box, MR_Box *, MR_Box *, MR_Box *)) (MR_hl_field(MR_mktag(0), (MR_hl_field(MR_mktag(0), ll_backend__frameopt__TypeClassInfo_for_block_entry_exit_5, (MR_Integer) 0)), (MR_Integer) 5)));
+    MR_Box ll_backend__frameopt__conv2_HeadVar__2_2;
+    MR_Box ll_backend__frameopt__conv1_HeadVar__3_3;
+
+    {
+      ll_backend__frameopt__succeeded = ll_backend__frameopt__func_0(((MR_Box) ll_backend__frameopt__TypeClassInfo_for_block_entry_exit_5), ((MR_Box) (ll_backend__frameopt__HeadVar__1_1)), &ll_backend__frameopt__conv2_HeadVar__2_2, &ll_backend__frameopt__conv1_HeadVar__3_3, ll_backend__frameopt__HeadVar__4_4);
+    }
+    if (ll_backend__frameopt__succeeded)
+      {
+        *ll_backend__frameopt__HeadVar__2_2 = ((MR_Word) ll_backend__frameopt__conv2_HeadVar__2_2);
+        *ll_backend__frameopt__HeadVar__3_3 = ((MR_Word) ll_backend__frameopt__conv1_HeadVar__3_3);
+        ll_backend__frameopt__succeeded = MR_TRUE;
+      }
+    return ll_backend__frameopt__succeeded;
+  }
+}
+
+static void MR_CALL 
+ll_backend__frameopt__flatten_block_seq_3_p_0(
+  MR_Word ll_backend__frameopt__TypeInfo_for_En_24,
+  MR_Word ll_backend__frameopt__TypeInfo_for_Ex_25,
+  MR_Word ll_backend__frameopt__HeadVar__1_1,
+  MR_Word ll_backend__frameopt__BlockMap_2,
+  MR_Word * ll_backend__frameopt__HeadVar__3_3)
+{
+  {
+    MR_bool ll_backend__frameopt__succeeded;
+
+    if ((ll_backend__frameopt__HeadVar__1_1 == ((MR_Word) MR_mkword(MR_mktag(0), MR_mkbody((MR_Integer) 0)))))
+      *ll_backend__frameopt__HeadVar__3_3 = (MR_Word) MR_mkword(MR_mktag(0), MR_mkbody((MR_Integer) 0));
+    else
+      {
+        MR_Word ll_backend__frameopt__TypeInfo_28_28;
+        MR_Word ll_backend__frameopt__Label_5 = ((MR_Word) (MR_hl_field(MR_mktag(1), ll_backend__frameopt__HeadVar__1_1, (MR_Integer) 0)));
+        MR_Word ll_backend__frameopt__Labels_6 = ((MR_Word) (MR_hl_field(MR_mktag(1), ll_backend__frameopt__HeadVar__1_1, (MR_Integer) 1)));
+        MR_Word ll_backend__frameopt__RestInstrs_9;
+        MR_Word ll_backend__frameopt__BlockInfo_10;
+        MR_Word ll_backend__frameopt__BlockInstrs_11;
+        MR_Box ll_backend__frameopt__conv0_BlockInfo_10;
+        MR_Word ll_backend__frameopt__Var_19;
+        MR_Word ll_backend__frameopt__Var_20;
+        MR_Word ll_backend__frameopt__Var_21;
+        MR_Word ll_backend__frameopt__Var_22;
+        MR_Word ll_backend__frameopt__Var_23;
+        MR_Word ll_backend__frameopt__MostInstrs_12;
+        MR_Word ll_backend__frameopt__LastInstr_13;
+        MR_Word ll_backend__frameopt__NextLabel_14;
+        MR_Word ll_backend__frameopt__Var_17;
+        MR_Word ll_backend__frameopt__Var_18;
+        MR_Word ll_backend__frameopt__Var_32;
+        MR_Box ll_backend__frameopt__conv1_LastInstr_13;
+        MR_Word ll_backend__frameopt__Var_15;
+        MR_String ll_backend__frameopt__Var_16;
+
+        {
+          ll_backend__frameopt__flatten_block_seq_3_p_0(ll_backend__frameopt__TypeInfo_for_En_24, ll_backend__frameopt__TypeInfo_for_Ex_25, ll_backend__frameopt__Labels_6, ll_backend__frameopt__BlockMap_2, &ll_backend__frameopt__RestInstrs_9);
+        }
+        {
+          ll_backend__frameopt__TypeInfo_28_28 = (MR_Word) MR_new_object(MR_Word, ((MR_Integer) 3 * sizeof(MR_Word)), NULL, NULL);
+          MR_hl_field(MR_mktag(0), ll_backend__frameopt__TypeInfo_28_28, 0) = ((MR_Box) (&ll_backend__frameopt__ll_backend__frameopt__type_ctor_info_frame_block_info_2));
+          MR_hl_field(MR_mktag(0), ll_backend__frameopt__TypeInfo_28_28, 1) = ((MR_Box) (ll_backend__frameopt__TypeInfo_for_En_24));
+          MR_hl_field(MR_mktag(0), ll_backend__frameopt__TypeInfo_28_28, 2) = ((MR_Box) (ll_backend__frameopt__TypeInfo_for_Ex_25));
+        }
+        {
+          mercury__map__lookup_3_p_0((MR_Word) &ll_backend__llds__ll_backend__llds__type_ctor_info_label_0, ll_backend__frameopt__TypeInfo_28_28, (MR_Word) ll_backend__frameopt__BlockMap_2, ((MR_Box) (ll_backend__frameopt__Label_5)), &ll_backend__frameopt__conv0_BlockInfo_10);
+        }
+        ll_backend__frameopt__BlockInfo_10 = ((MR_Word) ll_backend__frameopt__conv0_BlockInfo_10);
+        ll_backend__frameopt__Var_19 = ((MR_Word) (MR_hl_field(MR_mktag(0), ll_backend__frameopt__BlockInfo_10, (MR_Integer) 0)));
+        ll_backend__frameopt__BlockInstrs_11 = ((MR_Word) (MR_hl_field(MR_mktag(0), ll_backend__frameopt__BlockInfo_10, (MR_Integer) 1)));
+        ll_backend__frameopt__Var_20 = ((MR_Word) (MR_hl_field(MR_mktag(0), ll_backend__frameopt__BlockInfo_10, (MR_Integer) 2)));
+        ll_backend__frameopt__Var_21 = ((MR_Word) (MR_hl_field(MR_mktag(0), ll_backend__frameopt__BlockInfo_10, (MR_Integer) 3)));
+        ll_backend__frameopt__Var_22 = ((MR_Word) (MR_hl_field(MR_mktag(0), ll_backend__frameopt__BlockInfo_10, (MR_Integer) 4)));
+        ll_backend__frameopt__Var_23 = ((MR_Word) (MR_hl_field(MR_mktag(0), ll_backend__frameopt__BlockInfo_10, (MR_Integer) 5)));
+        {
+          ll_backend__frameopt__succeeded = mercury__list__split_last_3_p_0((MR_Word) &ll_backend__llds__ll_backend__llds__type_ctor_info_instruction_0, ll_backend__frameopt__BlockInstrs_11, &ll_backend__frameopt__MostInstrs_12, &ll_backend__frameopt__conv1_LastInstr_13);
+        }
+        if (ll_backend__frameopt__succeeded)
+          {
+            ll_backend__frameopt__LastInstr_13 = ((MR_Word) ll_backend__frameopt__conv1_LastInstr_13);
+            ll_backend__frameopt__succeeded = MR_TRUE;
+          }
+        if (ll_backend__frameopt__succeeded)
+          {
+            ll_backend__frameopt__succeeded = ((MR_tag((MR_Word) ll_backend__frameopt__Labels_6)) == (MR_mktag((MR_Integer) 1)));
+            if (ll_backend__frameopt__succeeded)
+              {
+                ll_backend__frameopt__NextLabel_14 = ((MR_Word) (MR_hl_field(MR_mktag(1), ll_backend__frameopt__Labels_6, (MR_Integer) 0)));
+                ll_backend__frameopt__Var_15 = ((MR_Word) (MR_hl_field(MR_mktag(1), ll_backend__frameopt__Labels_6, (MR_Integer) 1)));
+                ll_backend__frameopt__Var_17 = ((MR_Word) (MR_hl_field(MR_mktag(0), ll_backend__frameopt__LastInstr_13, (MR_Integer) 0)));
+                ll_backend__frameopt__Var_16 = ((MR_String) (MR_hl_field(MR_mktag(0), ll_backend__frameopt__LastInstr_13, (MR_Integer) 1)));
+                ll_backend__frameopt__succeeded = ((((MR_tag((MR_Word) ll_backend__frameopt__Var_17)) == (MR_mktag((MR_Integer) 3)))) && (((((MR_Integer) (MR_Word) (MR_hl_field(MR_mktag(3), ll_backend__frameopt__Var_17, (MR_Integer) 0)))) == (MR_Integer) 6)));
+                if (ll_backend__frameopt__succeeded)
+                  {
+                    ll_backend__frameopt__Var_18 = ((MR_Word) (MR_hl_field(MR_mktag(3), ll_backend__frameopt__Var_17, (MR_Integer) 1)));
+                    ll_backend__frameopt__succeeded = ((MR_tag((MR_Word) ll_backend__frameopt__Var_18)) == (MR_mktag((MR_Integer) 1)));
+                    if (ll_backend__frameopt__succeeded)
+                      {
+                        ll_backend__frameopt__Var_32 = ((MR_Word) (MR_hl_field(MR_mktag(1), ll_backend__frameopt__Var_18, (MR_Integer) 0)));
+                        {
+                          ll_backend__frameopt__succeeded = ll_backend__llds____Unify____label_0_0(ll_backend__frameopt__NextLabel_14, ll_backend__frameopt__Var_32);
+                        }
+                      }
+                  }
+              }
+          }
+        if (ll_backend__frameopt__succeeded)
+          {
+            {
+              *ll_backend__frameopt__HeadVar__3_3 = mercury__list__f_43_43_2_f_0((MR_Word) &ll_backend__llds__ll_backend__llds__type_ctor_info_instruction_0, ll_backend__frameopt__MostInstrs_12, ll_backend__frameopt__RestInstrs_9);
+            }
+          }
+        else
+          {
+            {
+              *ll_backend__frameopt__HeadVar__3_3 = mercury__list__f_43_43_2_f_0((MR_Word) &ll_backend__llds__ll_backend__llds__type_ctor_info_instruction_0, ll_backend__frameopt__BlockInstrs_11, ll_backend__frameopt__RestInstrs_9);
+            }
+          }
+      }
+  }
+}
+
+static void MR_CALL 
+ll_backend__frameopt__divide_into_basic_blocks_5_p_0(
+  MR_Word ll_backend__frameopt__HeadVar__1_1,
+  MR_Word ll_backend__frameopt__ProcLabel_2,
+  MR_Word * ll_backend__frameopt__HeadVar__3_3,
+  MR_Word ll_backend__frameopt__STATE_VARIABLE_C_0_4,
+  MR_Word * ll_backend__frameopt__STATE_VARIABLE_C_5)
+{
+  {
+    MR_bool ll_backend__frameopt__succeeded;
+
+    if ((ll_backend__frameopt__HeadVar__1_1 == ((MR_Word) MR_mkword(MR_mktag(0), MR_mkbody((MR_Integer) 0)))))
+      {
+        *ll_backend__frameopt__HeadVar__3_3 = (MR_Word) MR_mkword(MR_mktag(0), MR_mkbody((MR_Integer) 0));
+        *ll_backend__frameopt__STATE_VARIABLE_C_5 = ll_backend__frameopt__STATE_VARIABLE_C_0_4;
+      }
+    else
+      {
+        MR_Word ll_backend__frameopt__Instr0_10 = ((MR_Word) (MR_hl_field(MR_mktag(1), ll_backend__frameopt__HeadVar__1_1, (MR_Integer) 0)));
+        MR_Word ll_backend__frameopt__Instrs0_11 = ((MR_Word) (MR_hl_field(MR_mktag(1), ll_backend__frameopt__HeadVar__1_1, (MR_Integer) 1)));
+        MR_Word ll_backend__frameopt__Uinstr0_15 = ((MR_Word) (MR_hl_field(MR_mktag(0), ll_backend__frameopt__Instr0_10, (MR_Integer) 0)));
+        MR_Word ll_backend__frameopt__CanBranchAway_17;
+        MR_String ll_backend__frameopt___Comment_16 = ((MR_String) (MR_hl_field(MR_mktag(0), ll_backend__frameopt__Instr0_10, (MR_Integer) 1)));
+
+        {
+          ll_backend__frameopt__CanBranchAway_17 = ll_backend__opt_util__can_instr_branch_away_1_f_0(ll_backend__frameopt__Uinstr0_15);
+        }
+        switch (ll_backend__frameopt__CanBranchAway_17) {
+          default: /*NOTREACHED*/ MR_assert(0);
+          case (MR_Integer) 0:
+            {
+              MR_Word ll_backend__frameopt__Instrs1_38;
+
+              {
+                ll_backend__frameopt__divide_into_basic_blocks_5_p_0(ll_backend__frameopt__Instrs0_11, ll_backend__frameopt__ProcLabel_2, &ll_backend__frameopt__Instrs1_38, ll_backend__frameopt__STATE_VARIABLE_C_0_4, ll_backend__frameopt__STATE_VARIABLE_C_5);
+              }
+              {
+                MR_Word base;
+                base = (MR_Word) MR_mkword(MR_mktag(1), MR_new_object(MR_Word, ((MR_Integer) 2 * sizeof(MR_Word)), NULL, NULL));
+                *ll_backend__frameopt__HeadVar__3_3 = base;
+                MR_hl_field(MR_mktag(1), base, 0) = ((MR_Box) (ll_backend__frameopt__Instr0_10));
+                MR_hl_field(MR_mktag(1), base, 1) = ((MR_Box) (ll_backend__frameopt__Instrs1_38));
+              }
+            }
+            break;
+          case (MR_Integer) 1:
+            if ((ll_backend__frameopt__Instrs0_11 == ((MR_Word) MR_mkword(MR_mktag(0), MR_mkbody((MR_Integer) 0)))))
+              {
+                {
+                  MR_Word base;
+                  base = (MR_Word) MR_mkword(MR_mktag(1), MR_new_object(MR_Word, ((MR_Integer) 2 * sizeof(MR_Word)), NULL, NULL));
+                  *ll_backend__frameopt__HeadVar__3_3 = base;
+                  MR_hl_field(MR_mktag(1), base, 0) = ((MR_Box) (ll_backend__frameopt__Instr0_10));
+                  MR_hl_field(MR_mktag(1), base, 1) = ((MR_Box) (MR_mkword(MR_mktag(0), MR_mkbody((MR_Integer) 0))));
+                }
+                *ll_backend__frameopt__STATE_VARIABLE_C_5 = ll_backend__frameopt__STATE_VARIABLE_C_0_4;
+              }
+            else
+              {
+                MR_Word ll_backend__frameopt__Instr1_18 = ((MR_Word) (MR_hl_field(MR_mktag(1), ll_backend__frameopt__Instrs0_11, (MR_Integer) 0)));
+                MR_Word ll_backend__frameopt__Var_19 = ((MR_Word) (MR_hl_field(MR_mktag(1), ll_backend__frameopt__Instrs0_11, (MR_Integer) 1)));
+                MR_Word ll_backend__frameopt__Var_30 = ((MR_Word) (MR_hl_field(MR_mktag(0), ll_backend__frameopt__Instr1_18, (MR_Integer) 0)));
+                MR_String ll_backend__frameopt__Var_21 = ((MR_String) (MR_hl_field(MR_mktag(0), ll_backend__frameopt__Instr1_18, (MR_Integer) 1)));
+                MR_Word ll_backend__frameopt__Var_20;
+
+                ll_backend__frameopt__succeeded = ((((MR_tag((MR_Word) ll_backend__frameopt__Var_30)) == (MR_mktag((MR_Integer) 3)))) && (((((MR_Integer) (MR_Word) (MR_hl_field(MR_mktag(3), ll_backend__frameopt__Var_30, (MR_Integer) 0)))) == (MR_Integer) 5)));
+                if (ll_backend__frameopt__succeeded)
+                  {
+                    ll_backend__frameopt__Var_20 = ((MR_Word) (MR_hl_field(MR_mktag(3), ll_backend__frameopt__Var_30, (MR_Integer) 1)));
+                    {
+                      MR_Word ll_backend__frameopt__Instrs1_22;
+
+                      {
+                        ll_backend__frameopt__divide_into_basic_blocks_5_p_0(ll_backend__frameopt__Instrs0_11, ll_backend__frameopt__ProcLabel_2, &ll_backend__frameopt__Instrs1_22, ll_backend__frameopt__STATE_VARIABLE_C_0_4, ll_backend__frameopt__STATE_VARIABLE_C_5);
+                      }
+                      {
+                        MR_Word base;
+                        base = (MR_Word) MR_mkword(MR_mktag(1), MR_new_object(MR_Word, ((MR_Integer) 2 * sizeof(MR_Word)), NULL, NULL));
+                        *ll_backend__frameopt__HeadVar__3_3 = base;
+                        MR_hl_field(MR_mktag(1), base, 0) = ((MR_Box) (ll_backend__frameopt__Instr0_10));
+                        MR_hl_field(MR_mktag(1), base, 1) = ((MR_Box) (ll_backend__frameopt__Instrs1_22));
+                      }
+                    }
+                  }
+                else
+                  {
+                    MR_Integer ll_backend__frameopt__N_23;
+                    MR_Word ll_backend__frameopt__NewLabel_24;
+                    MR_Word ll_backend__frameopt__NewInstr_25;
+                    MR_Word ll_backend__frameopt__STATE_VARIABLE_C_32_32;
+                    MR_Word ll_backend__frameopt__Var_33;
+                    MR_Word ll_backend__frameopt__Var_36;
+                    MR_Word ll_backend__frameopt__Instrs1_37;
+
+                    {
+                      mercury__counter__allocate_3_p_0(&ll_backend__frameopt__N_23, ll_backend__frameopt__STATE_VARIABLE_C_0_4, &ll_backend__frameopt__STATE_VARIABLE_C_32_32);
+                    }
+                    {
+                      ll_backend__frameopt__NewLabel_24 = (MR_Word) MR_new_object(MR_Word, ((MR_Integer) 2 * sizeof(MR_Word)), NULL, NULL);
+                      MR_hl_field(MR_mktag(0), ll_backend__frameopt__NewLabel_24, 0) = ((MR_Box) (ll_backend__frameopt__N_23));
+                      MR_hl_field(MR_mktag(0), ll_backend__frameopt__NewLabel_24, 1) = ((MR_Box) (ll_backend__frameopt__ProcLabel_2));
+                    }
+                    {
+                      ll_backend__frameopt__Var_33 = (MR_Word) MR_mkword(MR_mktag(3), MR_new_object(MR_Word, ((MR_Integer) 2 * sizeof(MR_Word)), NULL, NULL));
+                      MR_hl_field(MR_mktag(3), ll_backend__frameopt__Var_33, 0) = ((MR_Box) (MR_Word) ((MR_Integer) 5));
+                      MR_hl_field(MR_mktag(3), ll_backend__frameopt__Var_33, 1) = ((MR_Box) (ll_backend__frameopt__NewLabel_24));
+                    }
+                    {
+                      ll_backend__frameopt__NewInstr_25 = (MR_Word) MR_new_object(MR_Word, ((MR_Integer) 2 * sizeof(MR_Word)), NULL, NULL);
+                      MR_hl_field(MR_mktag(0), ll_backend__frameopt__NewInstr_25, 0) = ((MR_Box) (ll_backend__frameopt__Var_33));
+                      MR_hl_field(MR_mktag(0), ll_backend__frameopt__NewInstr_25, 1) = ((MR_Box) ((MR_String) ""));
+                    }
+                    {
+                      ll_backend__frameopt__divide_into_basic_blocks_5_p_0(ll_backend__frameopt__Instrs0_11, ll_backend__frameopt__ProcLabel_2, &ll_backend__frameopt__Instrs1_37, ll_backend__frameopt__STATE_VARIABLE_C_32_32, ll_backend__frameopt__STATE_VARIABLE_C_5);
+                    }
+                    {
+                      ll_backend__frameopt__Var_36 = (MR_Word) MR_mkword(MR_mktag(1), MR_new_object(MR_Word, ((MR_Integer) 2 * sizeof(MR_Word)), NULL, NULL));
+                      MR_hl_field(MR_mktag(1), ll_backend__frameopt__Var_36, 0) = ((MR_Box) (ll_backend__frameopt__NewInstr_25));
+                      MR_hl_field(MR_mktag(1), ll_backend__frameopt__Var_36, 1) = ((MR_Box) (ll_backend__frameopt__Instrs1_37));
+                    }
+                    {
+                      MR_Word base;
+                      base = (MR_Word) MR_mkword(MR_mktag(1), MR_new_object(MR_Word, ((MR_Integer) 2 * sizeof(MR_Word)), NULL, NULL));
+                      *ll_backend__frameopt__HeadVar__3_3 = base;
+                      MR_hl_field(MR_mktag(1), base, 0) = ((MR_Box) (ll_backend__frameopt__Instr0_10));
+                      MR_hl_field(MR_mktag(1), base, 1) = ((MR_Box) (ll_backend__frameopt__Var_36));
+                    }
+                  }
+              }
+            break;
+        }
+      }
+  }
+}
+
+static void MR_CALL 
+ll_backend__frameopt__maybe_add_comments_5_p_0(
+  MR_Word ll_backend__frameopt__Comments_6,
+  MR_Word ll_backend__frameopt__DescComments_7,
+  MR_Word ll_backend__frameopt__Instrs0_8,
+  MR_Word * ll_backend__frameopt__Instrs_9,
+  MR_Word * ll_backend__frameopt__Mod_10)
+{
+  switch (ll_backend__frameopt__Comments_6) {
+    default: /*NOTREACHED*/ MR_assert(0);
+    case (MR_Integer) 0:
+      {
+        *ll_backend__frameopt__Instrs_9 = ll_backend__frameopt__Instrs0_8;
+        *ll_backend__frameopt__Mod_10 = (MR_Integer) 0;
+      }
+      break;
+    case (MR_Integer) 1:
+      {
+        MR_Word ll_backend__frameopt__TypeCtorInfo_18_18 = (MR_Word) &ll_backend__llds__ll_backend__llds__type_ctor_info_instruction_0;
+        MR_Word ll_backend__frameopt__Var_17;
+
+        {
+          ll_backend__frameopt__Var_17 = mercury__list__f_43_43_2_f_0(ll_backend__frameopt__TypeCtorInfo_18_18, ll_backend__frameopt__DescComments_7, ll_backend__frameopt__Instrs0_8);
+        }
+        {
+          *ll_backend__frameopt__Instrs_9 = mercury__list__f_43_43_2_f_0(ll_backend__frameopt__TypeCtorInfo_18_18, (MR_Word) MR_mkword(MR_mktag(1), &ll_backend__frameopt_scalar_common_2[5]), ll_backend__frameopt__Var_17);
+        }
+        *ll_backend__frameopt__Mod_10 = (MR_Integer) 1;
+      }
+      break;
+  }
+}
+
+static MR_bool MR_CALL 
+ll_backend__frameopt____Unify____block_needs_frame_0_0_10001(
+  MR_Box ll_backend__frameopt__wrapper_arg_1,
+  MR_Box ll_backend__frameopt__wrapper_arg_2)
+{
+  {
+    MR_bool ll_backend__frameopt__succeeded;
+
+    {
+      ll_backend__frameopt__succeeded = ll_backend__frameopt____Unify____block_needs_frame_0_0(((MR_Word) ll_backend__frameopt__wrapper_arg_1), ((MR_Word) ll_backend__frameopt__wrapper_arg_2));
+    }
+    return ll_backend__frameopt__succeeded;
+  }
+}
+
+static void MR_CALL 
+ll_backend__frameopt____Compare____block_needs_frame_0_0_10001(
+  MR_Box * ll_backend__frameopt__wrapper_arg_1,
+  MR_Box ll_backend__frameopt__wrapper_arg_2,
+  MR_Box ll_backend__frameopt__wrapper_arg_3)
+{
+  {
+    MR_Word ll_backend__frameopt__conv0_HeadVar__1_1;
+
+    {
+      ll_backend__frameopt____Compare____block_needs_frame_0_0(&ll_backend__frameopt__conv0_HeadVar__1_1, ((MR_Word) ll_backend__frameopt__wrapper_arg_2), ((MR_Word) ll_backend__frameopt__wrapper_arg_3));
+    }
+    *ll_backend__frameopt__wrapper_arg_1 = ((MR_Box) (ll_backend__frameopt__conv0_HeadVar__1_1));
+  }
+}
+
+static MR_bool MR_CALL 
+ll_backend__frameopt____Unify____block_type_2_0_10001(
+  MR_Box ll_backend__frameopt__wrapper_arg_1,
+  MR_Box ll_backend__frameopt__wrapper_arg_2,
+  MR_Box ll_backend__frameopt__wrapper_arg_3,
+  MR_Box ll_backend__frameopt__wrapper_arg_4)
+{
+  {
+    MR_bool ll_backend__frameopt__succeeded;
+
+    {
+      ll_backend__frameopt__succeeded = ll_backend__frameopt____Unify____block_type_2_0(((MR_Word) ll_backend__frameopt__wrapper_arg_1), ((MR_Word) ll_backend__frameopt__wrapper_arg_2), ((MR_Word) ll_backend__frameopt__wrapper_arg_3), ((MR_Word) ll_backend__frameopt__wrapper_arg_4));
+    }
+    return ll_backend__frameopt__succeeded;
+  }
+}
+
+static void MR_CALL 
+ll_backend__frameopt____Compare____block_type_2_0_10001(
+  MR_Box ll_backend__frameopt__wrapper_arg_1,
+  MR_Box ll_backend__frameopt__wrapper_arg_2,
+  MR_Box * ll_backend__frameopt__wrapper_arg_3,
+  MR_Box ll_backend__frameopt__wrapper_arg_4,
+  MR_Box ll_backend__frameopt__wrapper_arg_5)
+{
+  {
+    MR_Word ll_backend__frameopt__conv0_HeadVar__1_1;
+
+    {
+      ll_backend__frameopt____Compare____block_type_2_0(((MR_Word) ll_backend__frameopt__wrapper_arg_1), ((MR_Word) ll_backend__frameopt__wrapper_arg_2), &ll_backend__frameopt__conv0_HeadVar__1_1, ((MR_Word) ll_backend__frameopt__wrapper_arg_4), ((MR_Word) ll_backend__frameopt__wrapper_arg_5));
+    }
+    *ll_backend__frameopt__wrapper_arg_3 = ((MR_Box) (ll_backend__frameopt__conv0_HeadVar__1_1));
+  }
+}
+
+static MR_bool MR_CALL 
+ll_backend__frameopt____Unify____can_transform_0_0_10001(
+  MR_Box ll_backend__frameopt__wrapper_arg_1,
+  MR_Box ll_backend__frameopt__wrapper_arg_2)
+{
+  {
+    MR_bool ll_backend__frameopt__succeeded;
+
+    {
+      ll_backend__frameopt__succeeded = ll_backend__frameopt____Unify____can_transform_0_0(((MR_Word) ll_backend__frameopt__wrapper_arg_1), ((MR_Word) ll_backend__frameopt__wrapper_arg_2));
+    }
+    return ll_backend__frameopt__succeeded;
+  }
+}
+
+static void MR_CALL 
+ll_backend__frameopt____Compare____can_transform_0_0_10001(
+  MR_Box * ll_backend__frameopt__wrapper_arg_1,
+  MR_Box ll_backend__frameopt__wrapper_arg_2,
+  MR_Box ll_backend__frameopt__wrapper_arg_3)
+{
+  {
+    MR_Word ll_backend__frameopt__conv0_HeadVar__1_1;
+
+    {
+      ll_backend__frameopt____Compare____can_transform_0_0(&ll_backend__frameopt__conv0_HeadVar__1_1, ((MR_Word) ll_backend__frameopt__wrapper_arg_2), ((MR_Word) ll_backend__frameopt__wrapper_arg_3));
+    }
+    *ll_backend__frameopt__wrapper_arg_1 = ((MR_Box) (ll_backend__frameopt__conv0_HeadVar__1_1));
+  }
+}
+
+static MR_bool MR_CALL 
+ll_backend__frameopt____Unify____det_entry_info_0_0_10001(
+  MR_Box ll_backend__frameopt__wrapper_arg_1,
+  MR_Box ll_backend__frameopt__wrapper_arg_2)
+{
+  {
+    MR_bool ll_backend__frameopt__succeeded;
+
+    {
+      ll_backend__frameopt__succeeded = ll_backend__frameopt____Unify____det_entry_info_0_0(((MR_Word) ll_backend__frameopt__wrapper_arg_1), ((MR_Word) ll_backend__frameopt__wrapper_arg_2));
+    }
+    return ll_backend__frameopt__succeeded;
+  }
+}
+
+static void MR_CALL 
+ll_backend__frameopt____Compare____det_entry_info_0_0_10001(
+  MR_Box * ll_backend__frameopt__wrapper_arg_1,
+  MR_Box ll_backend__frameopt__wrapper_arg_2,
+  MR_Box ll_backend__frameopt__wrapper_arg_3)
+{
+  {
+    MR_Word ll_backend__frameopt__conv0_HeadVar__1_1;
+
+    {
+      ll_backend__frameopt____Compare____det_entry_info_0_0(&ll_backend__frameopt__conv0_HeadVar__1_1, ((MR_Word) ll_backend__frameopt__wrapper_arg_2), ((MR_Word) ll_backend__frameopt__wrapper_arg_3));
+    }
+    *ll_backend__frameopt__wrapper_arg_1 = ((MR_Box) (ll_backend__frameopt__conv0_HeadVar__1_1));
+  }
+}
+
+static MR_bool MR_CALL 
+ll_backend__frameopt____Unify____det_exit_info_0_0_10001(
+  MR_Box ll_backend__frameopt__wrapper_arg_1,
+  MR_Box ll_backend__frameopt__wrapper_arg_2)
+{
+  {
+    MR_bool ll_backend__frameopt__succeeded;
+
+    {
+      ll_backend__frameopt__succeeded = ll_backend__frameopt____Unify____det_exit_info_0_0(((MR_Word) ll_backend__frameopt__wrapper_arg_1), ((MR_Word) ll_backend__frameopt__wrapper_arg_2));
+    }
+    return ll_backend__frameopt__succeeded;
+  }
+}
+
+static void MR_CALL 
+ll_backend__frameopt____Compare____det_exit_info_0_0_10001(
+  MR_Box * ll_backend__frameopt__wrapper_arg_1,
+  MR_Box ll_backend__frameopt__wrapper_arg_2,
+  MR_Box ll_backend__frameopt__wrapper_arg_3)
+{
+  {
+    MR_Word ll_backend__frameopt__conv0_HeadVar__1_1;
+
+    {
+      ll_backend__frameopt____Compare____det_exit_info_0_0(&ll_backend__frameopt__conv0_HeadVar__1_1, ((MR_Word) ll_backend__frameopt__wrapper_arg_2), ((MR_Word) ll_backend__frameopt__wrapper_arg_3));
+    }
+    *ll_backend__frameopt__wrapper_arg_1 = ((MR_Box) (ll_backend__frameopt__conv0_HeadVar__1_1));
+  }
+}
+
+static MR_bool MR_CALL 
+ll_backend__frameopt____Unify____det_frame_block_map_0_0_10001(
+  MR_Box ll_backend__frameopt__wrapper_arg_1,
+  MR_Box ll_backend__frameopt__wrapper_arg_2)
+{
+  {
+    MR_bool ll_backend__frameopt__succeeded;
+
+    {
+      ll_backend__frameopt__succeeded = ll_backend__frameopt____Unify____det_frame_block_map_0_0(((MR_Word) ll_backend__frameopt__wrapper_arg_1), ((MR_Word) ll_backend__frameopt__wrapper_arg_2));
+    }
+    return ll_backend__frameopt__succeeded;
+  }
+}
+
+static void MR_CALL 
+ll_backend__frameopt____Compare____det_frame_block_map_0_0_10001(
+  MR_Box * ll_backend__frameopt__wrapper_arg_1,
+  MR_Box ll_backend__frameopt__wrapper_arg_2,
+  MR_Box ll_backend__frameopt__wrapper_arg_3)
+{
+  {
+    MR_Word ll_backend__frameopt__conv0_HeadVar__1_1;
+
+    {
+      ll_backend__frameopt____Compare____det_frame_block_map_0_0(&ll_backend__frameopt__conv0_HeadVar__1_1, ((MR_Word) ll_backend__frameopt__wrapper_arg_2), ((MR_Word) ll_backend__frameopt__wrapper_arg_3));
+    }
+    *ll_backend__frameopt__wrapper_arg_1 = ((MR_Box) (ll_backend__frameopt__conv0_HeadVar__1_1));
+  }
+}
+
+static MR_bool MR_CALL 
+ll_backend__frameopt____Unify____exit_par_map_0_0_10001(
+  MR_Box ll_backend__frameopt__wrapper_arg_1,
+  MR_Box ll_backend__frameopt__wrapper_arg_2)
+{
+  {
+    MR_bool ll_backend__frameopt__succeeded;
+
+    {
+      ll_backend__frameopt__succeeded = ll_backend__frameopt____Unify____exit_par_map_0_0(((MR_Word) ll_backend__frameopt__wrapper_arg_1), ((MR_Word) ll_backend__frameopt__wrapper_arg_2));
+    }
+    return ll_backend__frameopt__succeeded;
+  }
+}
+
+static void MR_CALL 
+ll_backend__frameopt____Compare____exit_par_map_0_0_10001(
+  MR_Box * ll_backend__frameopt__wrapper_arg_1,
+  MR_Box ll_backend__frameopt__wrapper_arg_2,
+  MR_Box ll_backend__frameopt__wrapper_arg_3)
+{
+  {
+    MR_Word ll_backend__frameopt__conv0_HeadVar__1_1;
+
+    {
+      ll_backend__frameopt____Compare____exit_par_map_0_0(&ll_backend__frameopt__conv0_HeadVar__1_1, ((MR_Word) ll_backend__frameopt__wrapper_arg_2), ((MR_Word) ll_backend__frameopt__wrapper_arg_3));
+    }
+    *ll_backend__frameopt__wrapper_arg_1 = ((MR_Box) (ll_backend__frameopt__conv0_HeadVar__1_1));
+  }
+}
+
+static MR_bool MR_CALL 
+ll_backend__frameopt____Unify____frame_block_info_2_0_10001(
+  MR_Box ll_backend__frameopt__wrapper_arg_1,
+  MR_Box ll_backend__frameopt__wrapper_arg_2,
+  MR_Box ll_backend__frameopt__wrapper_arg_3,
+  MR_Box ll_backend__frameopt__wrapper_arg_4)
+{
+  {
+    MR_bool ll_backend__frameopt__succeeded;
+
+    {
+      ll_backend__frameopt__succeeded = ll_backend__frameopt____Unify____frame_block_info_2_0(((MR_Word) ll_backend__frameopt__wrapper_arg_1), ((MR_Word) ll_backend__frameopt__wrapper_arg_2), ((MR_Word) ll_backend__frameopt__wrapper_arg_3), ((MR_Word) ll_backend__frameopt__wrapper_arg_4));
+    }
+    return ll_backend__frameopt__succeeded;
+  }
+}
+
+static void MR_CALL 
+ll_backend__frameopt____Compare____frame_block_info_2_0_10001(
+  MR_Box ll_backend__frameopt__wrapper_arg_1,
+  MR_Box ll_backend__frameopt__wrapper_arg_2,
+  MR_Box * ll_backend__frameopt__wrapper_arg_3,
+  MR_Box ll_backend__frameopt__wrapper_arg_4,
+  MR_Box ll_backend__frameopt__wrapper_arg_5)
+{
+  {
+    MR_Word ll_backend__frameopt__conv0_HeadVar__1_1;
+
+    {
+      ll_backend__frameopt____Compare____frame_block_info_2_0(((MR_Word) ll_backend__frameopt__wrapper_arg_1), ((MR_Word) ll_backend__frameopt__wrapper_arg_2), &ll_backend__frameopt__conv0_HeadVar__1_1, ((MR_Word) ll_backend__frameopt__wrapper_arg_4), ((MR_Word) ll_backend__frameopt__wrapper_arg_5));
+    }
+    *ll_backend__frameopt__wrapper_arg_3 = ((MR_Box) (ll_backend__frameopt__conv0_HeadVar__1_1));
+  }
+}
+
+static MR_bool MR_CALL 
+ll_backend__frameopt____Unify____frame_block_map_2_0_10001(
+  MR_Box ll_backend__frameopt__wrapper_arg_1,
+  MR_Box ll_backend__frameopt__wrapper_arg_2,
+  MR_Box ll_backend__frameopt__wrapper_arg_3,
+  MR_Box ll_backend__frameopt__wrapper_arg_4)
+{
+  {
+    MR_bool ll_backend__frameopt__succeeded;
+
+    {
+      ll_backend__frameopt__succeeded = ll_backend__frameopt____Unify____frame_block_map_2_0(((MR_Word) ll_backend__frameopt__wrapper_arg_1), ((MR_Word) ll_backend__frameopt__wrapper_arg_2), ((MR_Word) ll_backend__frameopt__wrapper_arg_3), ((MR_Word) ll_backend__frameopt__wrapper_arg_4));
+    }
+    return ll_backend__frameopt__succeeded;
+  }
+}
+
+static void MR_CALL 
+ll_backend__frameopt____Compare____frame_block_map_2_0_10001(
+  MR_Box ll_backend__frameopt__wrapper_arg_1,
+  MR_Box ll_backend__frameopt__wrapper_arg_2,
+  MR_Box * ll_backend__frameopt__wrapper_arg_3,
+  MR_Box ll_backend__frameopt__wrapper_arg_4,
+  MR_Box ll_backend__frameopt__wrapper_arg_5)
+{
+  {
+    MR_Word ll_backend__frameopt__conv0_HeadVar__1_1;
+
+    {
+      ll_backend__frameopt____Compare____frame_block_map_2_0(((MR_Word) ll_backend__frameopt__wrapper_arg_1), ((MR_Word) ll_backend__frameopt__wrapper_arg_2), &ll_backend__frameopt__conv0_HeadVar__1_1, ((MR_Word) ll_backend__frameopt__wrapper_arg_4), ((MR_Word) ll_backend__frameopt__wrapper_arg_5));
+    }
+    *ll_backend__frameopt__wrapper_arg_3 = ((MR_Box) (ll_backend__frameopt__conv0_HeadVar__1_1));
+  }
+}
+
+static MR_bool MR_CALL 
+ll_backend__frameopt____Unify____maybe_dummy_0_0_10001(
+  MR_Box ll_backend__frameopt__wrapper_arg_1,
+  MR_Box ll_backend__frameopt__wrapper_arg_2)
+{
+  {
+    MR_bool ll_backend__frameopt__succeeded;
+
+    {
+      ll_backend__frameopt__succeeded = ll_backend__frameopt____Unify____maybe_dummy_0_0(((MR_Word) ll_backend__frameopt__wrapper_arg_1), ((MR_Word) ll_backend__frameopt__wrapper_arg_2));
+    }
+    return ll_backend__frameopt__succeeded;
+  }
+}
+
+static void MR_CALL 
+ll_backend__frameopt____Compare____maybe_dummy_0_0_10001(
+  MR_Box * ll_backend__frameopt__wrapper_arg_1,
+  MR_Box ll_backend__frameopt__wrapper_arg_2,
+  MR_Box ll_backend__frameopt__wrapper_arg_3)
+{
+  {
+    MR_Word ll_backend__frameopt__conv0_HeadVar__1_1;
+
+    {
+      ll_backend__frameopt____Compare____maybe_dummy_0_0(&ll_backend__frameopt__conv0_HeadVar__1_1, ((MR_Word) ll_backend__frameopt__wrapper_arg_2), ((MR_Word) ll_backend__frameopt__wrapper_arg_3));
+    }
+    *ll_backend__frameopt__wrapper_arg_1 = ((MR_Box) (ll_backend__frameopt__conv0_HeadVar__1_1));
+  }
+}
+
+static MR_bool MR_CALL 
+ll_backend__frameopt____Unify____nondet_entry_info_0_0_10001(
+  MR_Box ll_backend__frameopt__wrapper_arg_1,
+  MR_Box ll_backend__frameopt__wrapper_arg_2)
+{
+  {
+    MR_bool ll_backend__frameopt__succeeded;
+
+    {
+      ll_backend__frameopt__succeeded = ll_backend__frameopt____Unify____nondet_entry_info_0_0(((MR_Word) ll_backend__frameopt__wrapper_arg_1), ((MR_Word) ll_backend__frameopt__wrapper_arg_2));
+    }
+    return ll_backend__frameopt__succeeded;
+  }
+}
+
+static void MR_CALL 
+ll_backend__frameopt____Compare____nondet_entry_info_0_0_10001(
+  MR_Box * ll_backend__frameopt__wrapper_arg_1,
+  MR_Box ll_backend__frameopt__wrapper_arg_2,
+  MR_Box ll_backend__frameopt__wrapper_arg_3)
+{
+  {
+    MR_Word ll_backend__frameopt__conv0_HeadVar__1_1;
+
+    {
+      ll_backend__frameopt____Compare____nondet_entry_info_0_0(&ll_backend__frameopt__conv0_HeadVar__1_1, ((MR_Word) ll_backend__frameopt__wrapper_arg_2), ((MR_Word) ll_backend__frameopt__wrapper_arg_3));
+    }
+    *ll_backend__frameopt__wrapper_arg_1 = ((MR_Box) (ll_backend__frameopt__conv0_HeadVar__1_1));
+  }
+}
+
+static MR_bool MR_CALL 
+ll_backend__frameopt____Unify____nondet_exit_info_0_0_10001(
+  MR_Box ll_backend__frameopt__wrapper_arg_1,
+  MR_Box ll_backend__frameopt__wrapper_arg_2)
+{
+  {
+    MR_bool ll_backend__frameopt__succeeded;
+
+    {
+      ll_backend__frameopt__succeeded = ll_backend__frameopt____Unify____nondet_exit_info_0_0(((MR_Word) ll_backend__frameopt__wrapper_arg_1), ((MR_Word) ll_backend__frameopt__wrapper_arg_2));
+    }
+    return ll_backend__frameopt__succeeded;
+  }
+}
+
+static void MR_CALL 
+ll_backend__frameopt____Compare____nondet_exit_info_0_0_10001(
+  MR_Box * ll_backend__frameopt__wrapper_arg_1,
+  MR_Box ll_backend__frameopt__wrapper_arg_2,
+  MR_Box ll_backend__frameopt__wrapper_arg_3)
+{
+  {
+    MR_Word ll_backend__frameopt__conv0_HeadVar__1_1;
+
+    {
+      ll_backend__frameopt____Compare____nondet_exit_info_0_0(&ll_backend__frameopt__conv0_HeadVar__1_1, ((MR_Word) ll_backend__frameopt__wrapper_arg_2), ((MR_Word) ll_backend__frameopt__wrapper_arg_3));
+    }
+    *ll_backend__frameopt__wrapper_arg_1 = ((MR_Box) (ll_backend__frameopt__conv0_HeadVar__1_1));
+  }
+}
+
+static MR_bool MR_CALL 
+ll_backend__frameopt____Unify____ord_needs_frame_0_0_10001(
+  MR_Box ll_backend__frameopt__wrapper_arg_1,
+  MR_Box ll_backend__frameopt__wrapper_arg_2)
+{
+  {
+    MR_bool ll_backend__frameopt__succeeded;
+
+    {
+      ll_backend__frameopt__succeeded = ll_backend__frameopt____Unify____ord_needs_frame_0_0(((MR_Word) ll_backend__frameopt__wrapper_arg_1), ((MR_Word) ll_backend__frameopt__wrapper_arg_2));
+    }
+    return ll_backend__frameopt__succeeded;
+  }
+}
+
+static void MR_CALL 
+ll_backend__frameopt____Compare____ord_needs_frame_0_0_10001(
+  MR_Box * ll_backend__frameopt__wrapper_arg_1,
+  MR_Box ll_backend__frameopt__wrapper_arg_2,
+  MR_Box ll_backend__frameopt__wrapper_arg_3)
+{
+  {
+    MR_Word ll_backend__frameopt__conv0_HeadVar__1_1;
+
+    {
+      ll_backend__frameopt____Compare____ord_needs_frame_0_0(&ll_backend__frameopt__conv0_HeadVar__1_1, ((MR_Word) ll_backend__frameopt__wrapper_arg_2), ((MR_Word) ll_backend__frameopt__wrapper_arg_3));
+    }
+    *ll_backend__frameopt__wrapper_arg_1 = ((MR_Box) (ll_backend__frameopt__conv0_HeadVar__1_1));
+  }
+}
+
+static MR_bool MR_CALL 
+ll_backend__frameopt____Unify____pre_exit_dummy_label_map_0_0_10001(
+  MR_Box ll_backend__frameopt__wrapper_arg_1,
+  MR_Box ll_backend__frameopt__wrapper_arg_2)
+{
+  {
+    MR_bool ll_backend__frameopt__succeeded;
+
+    {
+      ll_backend__frameopt__succeeded = ll_backend__frameopt____Unify____pre_exit_dummy_label_map_0_0(((MR_Word) ll_backend__frameopt__wrapper_arg_1), ((MR_Word) ll_backend__frameopt__wrapper_arg_2));
+    }
+    return ll_backend__frameopt__succeeded;
+  }
+}
+
+static void MR_CALL 
+ll_backend__frameopt____Compare____pre_exit_dummy_label_map_0_0_10001(
+  MR_Box * ll_backend__frameopt__wrapper_arg_1,
+  MR_Box ll_backend__frameopt__wrapper_arg_2,
+  MR_Box ll_backend__frameopt__wrapper_arg_3)
+{
+  {
+    MR_Word ll_backend__frameopt__conv0_HeadVar__1_1;
+
+    {
+      ll_backend__frameopt____Compare____pre_exit_dummy_label_map_0_0(&ll_backend__frameopt__conv0_HeadVar__1_1, ((MR_Word) ll_backend__frameopt__wrapper_arg_2), ((MR_Word) ll_backend__frameopt__wrapper_arg_3));
+    }
+    *ll_backend__frameopt__wrapper_arg_1 = ((MR_Box) (ll_backend__frameopt__conv0_HeadVar__1_1));
+  }
+}
+
+static MR_bool MR_CALL 
+ll_backend__frameopt____Unify____pred_map_0_0_10001(
+  MR_Box ll_backend__frameopt__wrapper_arg_1,
+  MR_Box ll_backend__frameopt__wrapper_arg_2)
+{
+  {
+    MR_bool ll_backend__frameopt__succeeded;
+
+    {
+      ll_backend__frameopt__succeeded = ll_backend__frameopt____Unify____pred_map_0_0(((MR_Word) ll_backend__frameopt__wrapper_arg_1), ((MR_Word) ll_backend__frameopt__wrapper_arg_2));
+    }
+    return ll_backend__frameopt__succeeded;
+  }
+}
+
+static void MR_CALL 
+ll_backend__frameopt____Compare____pred_map_0_0_10001(
+  MR_Box * ll_backend__frameopt__wrapper_arg_1,
+  MR_Box ll_backend__frameopt__wrapper_arg_2,
+  MR_Box ll_backend__frameopt__wrapper_arg_3)
+{
+  {
+    MR_Word ll_backend__frameopt__conv0_HeadVar__1_1;
+
+    {
+      ll_backend__frameopt____Compare____pred_map_0_0(&ll_backend__frameopt__conv0_HeadVar__1_1, ((MR_Word) ll_backend__frameopt__wrapper_arg_2), ((MR_Word) ll_backend__frameopt__wrapper_arg_3));
+    }
+    *ll_backend__frameopt__wrapper_arg_1 = ((MR_Box) (ll_backend__frameopt__conv0_HeadVar__1_1));
+  }
+}
+
+static MR_bool MR_CALL 
+ll_backend__frameopt____Unify____prop_queue_0_0_10001(
+  MR_Box ll_backend__frameopt__wrapper_arg_1,
+  MR_Box ll_backend__frameopt__wrapper_arg_2)
+{
+  {
+    MR_bool ll_backend__frameopt__succeeded;
+
+    {
+      ll_backend__frameopt__succeeded = ll_backend__frameopt____Unify____prop_queue_0_0(((MR_Word) ll_backend__frameopt__wrapper_arg_1), ((MR_Word) ll_backend__frameopt__wrapper_arg_2));
+    }
+    return ll_backend__frameopt__succeeded;
+  }
+}
+
+static void MR_CALL 
+ll_backend__frameopt____Compare____prop_queue_0_0_10001(
+  MR_Box * ll_backend__frameopt__wrapper_arg_1,
+  MR_Box ll_backend__frameopt__wrapper_arg_2,
+  MR_Box ll_backend__frameopt__wrapper_arg_3)
+{
+  {
+    MR_Word ll_backend__frameopt__conv0_HeadVar__1_1;
+
+    {
+      ll_backend__frameopt____Compare____prop_queue_0_0(&ll_backend__frameopt__conv0_HeadVar__1_1, ((MR_Word) ll_backend__frameopt__wrapper_arg_2), ((MR_Word) ll_backend__frameopt__wrapper_arg_3));
+    }
+    *ll_backend__frameopt__wrapper_arg_1 = ((MR_Box) (ll_backend__frameopt__conv0_HeadVar__1_1));
+  }
+}
+
+static MR_bool MR_CALL 
+ll_backend__frameopt____Unify____rev_map_0_0_10001(
+  MR_Box ll_backend__frameopt__wrapper_arg_1,
+  MR_Box ll_backend__frameopt__wrapper_arg_2)
+{
+  {
+    MR_bool ll_backend__frameopt__succeeded;
+
+    {
+      ll_backend__frameopt__succeeded = ll_backend__frameopt____Unify____rev_map_0_0(((MR_Word) ll_backend__frameopt__wrapper_arg_1), ((MR_Word) ll_backend__frameopt__wrapper_arg_2));
+    }
+    return ll_backend__frameopt__succeeded;
+  }
+}
+
+static void MR_CALL 
+ll_backend__frameopt____Compare____rev_map_0_0_10001(
+  MR_Box * ll_backend__frameopt__wrapper_arg_1,
+  MR_Box ll_backend__frameopt__wrapper_arg_2,
+  MR_Box ll_backend__frameopt__wrapper_arg_3)
+{
+  {
+    MR_Word ll_backend__frameopt__conv0_HeadVar__1_1;
+
+    {
+      ll_backend__frameopt____Compare____rev_map_0_0(&ll_backend__frameopt__conv0_HeadVar__1_1, ((MR_Word) ll_backend__frameopt__wrapper_arg_2), ((MR_Word) ll_backend__frameopt__wrapper_arg_3));
+    }
+    *ll_backend__frameopt__wrapper_arg_1 = ((MR_Box) (ll_backend__frameopt__conv0_HeadVar__1_1));
+  }
+}
+
+static MR_bool MR_CALL 
+ll_backend__frameopt____Unify____setup_par_map_0_0_10001(
+  MR_Box ll_backend__frameopt__wrapper_arg_1,
+  MR_Box ll_backend__frameopt__wrapper_arg_2)
+{
+  {
+    MR_bool ll_backend__frameopt__succeeded;
+
+    {
+      ll_backend__frameopt__succeeded = ll_backend__frameopt____Unify____setup_par_map_0_0(((MR_Word) ll_backend__frameopt__wrapper_arg_1), ((MR_Word) ll_backend__frameopt__wrapper_arg_2));
+    }
+    return ll_backend__frameopt__succeeded;
+  }
+}
+
+static void MR_CALL 
+ll_backend__frameopt____Compare____setup_par_map_0_0_10001(
+  MR_Box * ll_backend__frameopt__wrapper_arg_1,
+  MR_Box ll_backend__frameopt__wrapper_arg_2,
+  MR_Box ll_backend__frameopt__wrapper_arg_3)
+{
+  {
+    MR_Word ll_backend__frameopt__conv0_HeadVar__1_1;
+
+    {
+      ll_backend__frameopt____Compare____setup_par_map_0_0(&ll_backend__frameopt__conv0_HeadVar__1_1, ((MR_Word) ll_backend__frameopt__wrapper_arg_2), ((MR_Word) ll_backend__frameopt__wrapper_arg_3));
+    }
+    *ll_backend__frameopt__wrapper_arg_1 = ((MR_Box) (ll_backend__frameopt__conv0_HeadVar__1_1));
+  }
+}
+
+static MR_bool MR_CALL 
+ll_backend__frameopt__ClassMethod_for_ll_backend__frameopt__block_entry_exit____ll_backend__frameopt__nondet_entry_info__arity0__ll_backend__frameopt__nondet_exit_info__arity0______ll_backend__frameopt__detect_entry_4_4_p_0_10001(
+  MR_Box ll_backend__frameopt__closure_arg,
+  MR_Box ll_backend__frameopt__wrapper_arg_1,
+  MR_Box * ll_backend__frameopt__wrapper_arg_2,
+  MR_Box * ll_backend__frameopt__wrapper_arg_3,
+  MR_Box * ll_backend__frameopt__wrapper_arg_4)
+{
+  {
+    MR_bool ll_backend__frameopt__succeeded;
+    MR_Box ll_backend__frameopt__closure = ll_backend__frameopt__closure_arg;
+    MR_Word ll_backend__frameopt__conv2_HeadVar__2_2;
+    MR_Word ll_backend__frameopt__conv1_HeadVar__3_3;
+    MR_Word ll_backend__frameopt__conv0_HeadVar__4_4;
+
+    {
+      ll_backend__frameopt__succeeded = ll_backend__frameopt__ClassMethod_for_ll_backend__frameopt__block_entry_exit____ll_backend__frameopt__nondet_entry_info__arity0__ll_backend__frameopt__nondet_exit_info__arity0______ll_backend__frameopt__detect_entry_4_4_p_0(((MR_Word) ll_backend__frameopt__wrapper_arg_1), &ll_backend__frameopt__conv2_HeadVar__2_2, &ll_backend__frameopt__conv1_HeadVar__3_3, &ll_backend__frameopt__conv0_HeadVar__4_4);
+    }
+    if (ll_backend__frameopt__succeeded)
+      {
+        *ll_backend__frameopt__wrapper_arg_2 = ((MR_Box) (ll_backend__frameopt__conv2_HeadVar__2_2));
+        *ll_backend__frameopt__wrapper_arg_3 = ((MR_Box) (ll_backend__frameopt__conv1_HeadVar__3_3));
+        *ll_backend__frameopt__wrapper_arg_4 = ((MR_Box) (ll_backend__frameopt__conv0_HeadVar__4_4));
+        ll_backend__frameopt__succeeded = MR_TRUE;
+      }
+    return ll_backend__frameopt__succeeded;
+  }
+}
+
+static MR_bool MR_CALL 
+ll_backend__frameopt__ClassMethod_for_ll_backend__frameopt__block_entry_exit____ll_backend__frameopt__nondet_entry_info__arity0__ll_backend__frameopt__nondet_exit_info__arity0______ll_backend__frameopt__detect_exit_6_6_p_0_10001(
+  MR_Box ll_backend__frameopt__closure_arg,
+  MR_Box ll_backend__frameopt__wrapper_arg_1,
+  MR_Box ll_backend__frameopt__wrapper_arg_2,
+  MR_Box * ll_backend__frameopt__wrapper_arg_3,
+  MR_Box * ll_backend__frameopt__wrapper_arg_4,
+  MR_Box * ll_backend__frameopt__wrapper_arg_5,
+  MR_Box * ll_backend__frameopt__wrapper_arg_6)
+{
+  {
+    MR_bool ll_backend__frameopt__succeeded;
+    MR_Box ll_backend__frameopt__closure = ll_backend__frameopt__closure_arg;
+    MR_Word ll_backend__frameopt__conv3_HeadVar__3_3;
+    MR_Word ll_backend__frameopt__conv2_HeadVar__4_4;
+    MR_Word ll_backend__frameopt__conv1_HeadVar__5_5;
+    MR_Word ll_backend__frameopt__conv0_HeadVar__6_6;
+
+    {
+      ll_backend__frameopt__succeeded = ll_backend__frameopt__ClassMethod_for_ll_backend__frameopt__block_entry_exit____ll_backend__frameopt__nondet_entry_info__arity0__ll_backend__frameopt__nondet_exit_info__arity0______ll_backend__frameopt__detect_exit_6_6_p_0(((MR_Word) ll_backend__frameopt__wrapper_arg_1), ((MR_Word) ll_backend__frameopt__wrapper_arg_2), &ll_backend__frameopt__conv3_HeadVar__3_3, &ll_backend__frameopt__conv2_HeadVar__4_4, &ll_backend__frameopt__conv1_HeadVar__5_5, &ll_backend__frameopt__conv0_HeadVar__6_6);
+    }
+    if (ll_backend__frameopt__succeeded)
+      {
+        *ll_backend__frameopt__wrapper_arg_3 = ((MR_Box) (ll_backend__frameopt__conv3_HeadVar__3_3));
+        *ll_backend__frameopt__wrapper_arg_4 = ((MR_Box) (ll_backend__frameopt__conv2_HeadVar__4_4));
+        *ll_backend__frameopt__wrapper_arg_5 = ((MR_Box) (ll_backend__frameopt__conv1_HeadVar__5_5));
+        *ll_backend__frameopt__wrapper_arg_6 = ((MR_Box) (ll_backend__frameopt__conv0_HeadVar__6_6));
+        ll_backend__frameopt__succeeded = MR_TRUE;
+      }
+    return ll_backend__frameopt__succeeded;
+  }
+}
+
+static MR_Box MR_CALL 
+ll_backend__frameopt__ClassMethod_for_ll_backend__frameopt__block_entry_exit____ll_backend__frameopt__nondet_entry_info__arity0__ll_backend__frameopt__nondet_exit_info__arity0______ll_backend__frameopt__late_setup_code_1_1_f_0_10001(
+  MR_Box ll_backend__frameopt__closure_arg,
+  MR_Box ll_backend__frameopt__wrapper_arg_1)
+{
+  {
+    MR_Box ll_backend__frameopt__wrapper_arg_2;
+    MR_Box ll_backend__frameopt__closure = ll_backend__frameopt__closure_arg;
+    MR_Word ll_backend__frameopt__conv0_HeadVar__2_2;
+
+    {
+      ll_backend__frameopt__conv0_HeadVar__2_2 = ll_backend__frameopt__ClassMethod_for_ll_backend__frameopt__block_entry_exit____ll_backend__frameopt__nondet_entry_info__arity0__ll_backend__frameopt__nondet_exit_info__arity0______ll_backend__frameopt__late_setup_code_1_1_f_0(((MR_Word) ll_backend__frameopt__wrapper_arg_1));
+    }
+    ll_backend__frameopt__wrapper_arg_2 = ((MR_Box) (ll_backend__frameopt__conv0_HeadVar__2_2));
+    return ll_backend__frameopt__wrapper_arg_2;
+  }
+}
+
+static MR_Box MR_CALL 
+ll_backend__frameopt__ClassMethod_for_ll_backend__frameopt__block_entry_exit____ll_backend__frameopt__nondet_entry_info__arity0__ll_backend__frameopt__nondet_exit_info__arity0______ll_backend__frameopt__non_teardown_exit_code_1_1_f_0_10001(
+  MR_Box ll_backend__frameopt__closure_arg,
+  MR_Box ll_backend__frameopt__wrapper_arg_1)
+{
+  {
+    MR_Box ll_backend__frameopt__wrapper_arg_2;
+    MR_Box ll_backend__frameopt__closure = ll_backend__frameopt__closure_arg;
+    MR_Word ll_backend__frameopt__conv0_HeadVar__2_2;
+
+    {
+      ll_backend__frameopt__conv0_HeadVar__2_2 = ll_backend__frameopt__ClassMethod_for_ll_backend__frameopt__block_entry_exit____ll_backend__frameopt__nondet_entry_info__arity0__ll_backend__frameopt__nondet_exit_info__arity0______ll_backend__frameopt__non_teardown_exit_code_1_1_f_0(((MR_Word) ll_backend__frameopt__wrapper_arg_1));
+    }
+    ll_backend__frameopt__wrapper_arg_2 = ((MR_Box) (ll_backend__frameopt__conv0_HeadVar__2_2));
+    return ll_backend__frameopt__wrapper_arg_2;
+  }
+}
+
+static MR_Box MR_CALL 
+ll_backend__frameopt__ClassMethod_for_ll_backend__frameopt__block_entry_exit____ll_backend__frameopt__nondet_entry_info__arity0__ll_backend__frameopt__nondet_exit_info__arity0______ll_backend__frameopt__describe_entry_1_1_f_0_10001(
+  MR_Box ll_backend__frameopt__closure_arg,
+  MR_Box ll_backend__frameopt__wrapper_arg_1)
+{
+  {
+    MR_Box ll_backend__frameopt__wrapper_arg_2;
+    MR_Box ll_backend__frameopt__closure = ll_backend__frameopt__closure_arg;
+    MR_String ll_backend__frameopt__conv0_HeadVar__2_2;
+
+    {
+      ll_backend__frameopt__conv0_HeadVar__2_2 = ll_backend__frameopt__ClassMethod_for_ll_backend__frameopt__block_entry_exit____ll_backend__frameopt__nondet_entry_info__arity0__ll_backend__frameopt__nondet_exit_info__arity0______ll_backend__frameopt__describe_entry_1_1_f_0(((MR_Word) ll_backend__frameopt__wrapper_arg_1));
+    }
+    ll_backend__frameopt__wrapper_arg_2 = ((MR_Box) (ll_backend__frameopt__conv0_HeadVar__2_2));
+    return ll_backend__frameopt__wrapper_arg_2;
+  }
+}
+
+static MR_Box MR_CALL 
+ll_backend__frameopt__ClassMethod_for_ll_backend__frameopt__block_entry_exit____ll_backend__frameopt__nondet_entry_info__arity0__ll_backend__frameopt__nondet_exit_info__arity0______ll_backend__frameopt__describe_exit_2_2_f_0_10001(
+  MR_Box ll_backend__frameopt__closure_arg,
+  MR_Box ll_backend__frameopt__wrapper_arg_1,
+  MR_Box ll_backend__frameopt__wrapper_arg_2)
+{
+  {
+    MR_Box ll_backend__frameopt__wrapper_arg_3;
+    MR_Box ll_backend__frameopt__closure = ll_backend__frameopt__closure_arg;
+    MR_String ll_backend__frameopt__conv0_HeadVar__3_3;
+
+    {
+      ll_backend__frameopt__conv0_HeadVar__3_3 = ll_backend__frameopt__ClassMethod_for_ll_backend__frameopt__block_entry_exit____ll_backend__frameopt__nondet_entry_info__arity0__ll_backend__frameopt__nondet_exit_info__arity0______ll_backend__frameopt__describe_exit_2_2_f_0(((MR_Word) ll_backend__frameopt__wrapper_arg_1), ((MR_Word) ll_backend__frameopt__wrapper_arg_2));
+    }
+    ll_backend__frameopt__wrapper_arg_3 = ((MR_Box) (ll_backend__frameopt__conv0_HeadVar__3_3));
+    return ll_backend__frameopt__wrapper_arg_3;
+  }
+}
+
+static MR_bool MR_CALL 
+ll_backend__frameopt__ClassMethod_for_ll_backend__frameopt__block_entry_exit____ll_backend__frameopt__det_entry_info__arity0__ll_backend__frameopt__det_exit_info__arity0______ll_backend__frameopt__detect_entry_4_4_p_0_10001(
+  MR_Box ll_backend__frameopt__closure_arg,
+  MR_Box ll_backend__frameopt__wrapper_arg_1,
+  MR_Box * ll_backend__frameopt__wrapper_arg_2,
+  MR_Box * ll_backend__frameopt__wrapper_arg_3,
+  MR_Box * ll_backend__frameopt__wrapper_arg_4)
+{
+  {
+    MR_bool ll_backend__frameopt__succeeded;
+    MR_Box ll_backend__frameopt__closure = ll_backend__frameopt__closure_arg;
+    MR_Word ll_backend__frameopt__conv2_HeadVar__2_2;
+    MR_Word ll_backend__frameopt__conv1_HeadVar__3_3;
+    MR_Word ll_backend__frameopt__conv0_HeadVar__4_4;
+
+    {
+      ll_backend__frameopt__succeeded = ll_backend__frameopt__ClassMethod_for_ll_backend__frameopt__block_entry_exit____ll_backend__frameopt__det_entry_info__arity0__ll_backend__frameopt__det_exit_info__arity0______ll_backend__frameopt__detect_entry_4_4_p_0(((MR_Word) ll_backend__frameopt__wrapper_arg_1), &ll_backend__frameopt__conv2_HeadVar__2_2, &ll_backend__frameopt__conv1_HeadVar__3_3, &ll_backend__frameopt__conv0_HeadVar__4_4);
+    }
+    if (ll_backend__frameopt__succeeded)
+      {
+        *ll_backend__frameopt__wrapper_arg_2 = ((MR_Box) (ll_backend__frameopt__conv2_HeadVar__2_2));
+        *ll_backend__frameopt__wrapper_arg_3 = ((MR_Box) (ll_backend__frameopt__conv1_HeadVar__3_3));
+        *ll_backend__frameopt__wrapper_arg_4 = ((MR_Box) (ll_backend__frameopt__conv0_HeadVar__4_4));
+        ll_backend__frameopt__succeeded = MR_TRUE;
+      }
+    return ll_backend__frameopt__succeeded;
+  }
+}
+
+static MR_bool MR_CALL 
+ll_backend__frameopt__ClassMethod_for_ll_backend__frameopt__block_entry_exit____ll_backend__frameopt__det_entry_info__arity0__ll_backend__frameopt__det_exit_info__arity0______ll_backend__frameopt__detect_exit_6_6_p_0_10001(
+  MR_Box ll_backend__frameopt__closure_arg,
+  MR_Box ll_backend__frameopt__wrapper_arg_1,
+  MR_Box ll_backend__frameopt__wrapper_arg_2,
+  MR_Box * ll_backend__frameopt__wrapper_arg_3,
+  MR_Box * ll_backend__frameopt__wrapper_arg_4,
+  MR_Box * ll_backend__frameopt__wrapper_arg_5,
+  MR_Box * ll_backend__frameopt__wrapper_arg_6)
+{
+  {
+    MR_bool ll_backend__frameopt__succeeded;
+    MR_Box ll_backend__frameopt__closure = ll_backend__frameopt__closure_arg;
+    MR_Word ll_backend__frameopt__conv3_HeadVar__3_3;
+    MR_Word ll_backend__frameopt__conv2_HeadVar__4_4;
+    MR_Word ll_backend__frameopt__conv1_HeadVar__5_5;
+    MR_Word ll_backend__frameopt__conv0_HeadVar__6_6;
+
+    {
+      ll_backend__frameopt__succeeded = ll_backend__frameopt__ClassMethod_for_ll_backend__frameopt__block_entry_exit____ll_backend__frameopt__det_entry_info__arity0__ll_backend__frameopt__det_exit_info__arity0______ll_backend__frameopt__detect_exit_6_6_p_0(((MR_Word) ll_backend__frameopt__wrapper_arg_1), ((MR_Word) ll_backend__frameopt__wrapper_arg_2), &ll_backend__frameopt__conv3_HeadVar__3_3, &ll_backend__frameopt__conv2_HeadVar__4_4, &ll_backend__frameopt__conv1_HeadVar__5_5, &ll_backend__frameopt__conv0_HeadVar__6_6);
+    }
+    if (ll_backend__frameopt__succeeded)
+      {
+        *ll_backend__frameopt__wrapper_arg_3 = ((MR_Box) (ll_backend__frameopt__conv3_HeadVar__3_3));
+        *ll_backend__frameopt__wrapper_arg_4 = ((MR_Box) (ll_backend__frameopt__conv2_HeadVar__4_4));
+        *ll_backend__frameopt__wrapper_arg_5 = ((MR_Box) (ll_backend__frameopt__conv1_HeadVar__5_5));
+        *ll_backend__frameopt__wrapper_arg_6 = ((MR_Box) (ll_backend__frameopt__conv0_HeadVar__6_6));
+        ll_backend__frameopt__succeeded = MR_TRUE;
+      }
+    return ll_backend__frameopt__succeeded;
+  }
+}
+
+static MR_Box MR_CALL 
+ll_backend__frameopt__ClassMethod_for_ll_backend__frameopt__block_entry_exit____ll_backend__frameopt__det_entry_info__arity0__ll_backend__frameopt__det_exit_info__arity0______ll_backend__frameopt__late_setup_code_1_1_f_0_10001(
+  MR_Box ll_backend__frameopt__closure_arg,
+  MR_Box ll_backend__frameopt__wrapper_arg_1)
+{
+  {
+    MR_Box ll_backend__frameopt__wrapper_arg_2;
+    MR_Box ll_backend__frameopt__closure = ll_backend__frameopt__closure_arg;
+    MR_Word ll_backend__frameopt__conv0_HeadVar__2_2;
+
+    {
+      ll_backend__frameopt__conv0_HeadVar__2_2 = ll_backend__frameopt__ClassMethod_for_ll_backend__frameopt__block_entry_exit____ll_backend__frameopt__det_entry_info__arity0__ll_backend__frameopt__det_exit_info__arity0______ll_backend__frameopt__late_setup_code_1_1_f_0(((MR_Word) ll_backend__frameopt__wrapper_arg_1));
+    }
+    ll_backend__frameopt__wrapper_arg_2 = ((MR_Box) (ll_backend__frameopt__conv0_HeadVar__2_2));
+    return ll_backend__frameopt__wrapper_arg_2;
+  }
+}
+
+static MR_Box MR_CALL 
+ll_backend__frameopt__ClassMethod_for_ll_backend__frameopt__block_entry_exit____ll_backend__frameopt__det_entry_info__arity0__ll_backend__frameopt__det_exit_info__arity0______ll_backend__frameopt__non_teardown_exit_code_1_1_f_0_10001(
+  MR_Box ll_backend__frameopt__closure_arg,
+  MR_Box ll_backend__frameopt__wrapper_arg_1)
+{
+  {
+    MR_Box ll_backend__frameopt__wrapper_arg_2;
+    MR_Box ll_backend__frameopt__closure = ll_backend__frameopt__closure_arg;
+    MR_Word ll_backend__frameopt__conv0_HeadVar__2_2;
+
+    {
+      ll_backend__frameopt__conv0_HeadVar__2_2 = ll_backend__frameopt__ClassMethod_for_ll_backend__frameopt__block_entry_exit____ll_backend__frameopt__det_entry_info__arity0__ll_backend__frameopt__det_exit_info__arity0______ll_backend__frameopt__non_teardown_exit_code_1_1_f_0(((MR_Word) ll_backend__frameopt__wrapper_arg_1));
+    }
+    ll_backend__frameopt__wrapper_arg_2 = ((MR_Box) (ll_backend__frameopt__conv0_HeadVar__2_2));
+    return ll_backend__frameopt__wrapper_arg_2;
+  }
+}
+
+static MR_Box MR_CALL 
+ll_backend__frameopt__ClassMethod_for_ll_backend__frameopt__block_entry_exit____ll_backend__frameopt__det_entry_info__arity0__ll_backend__frameopt__det_exit_info__arity0______ll_backend__frameopt__describe_entry_1_1_f_0_10001(
+  MR_Box ll_backend__frameopt__closure_arg,
+  MR_Box ll_backend__frameopt__wrapper_arg_1)
+{
+  {
+    MR_Box ll_backend__frameopt__wrapper_arg_2;
+    MR_Box ll_backend__frameopt__closure = ll_backend__frameopt__closure_arg;
+    MR_String ll_backend__frameopt__conv0_HeadVar__2_2;
+
+    {
+      ll_backend__frameopt__conv0_HeadVar__2_2 = ll_backend__frameopt__ClassMethod_for_ll_backend__frameopt__block_entry_exit____ll_backend__frameopt__det_entry_info__arity0__ll_backend__frameopt__det_exit_info__arity0______ll_backend__frameopt__describe_entry_1_1_f_0(((MR_Word) ll_backend__frameopt__wrapper_arg_1));
+    }
+    ll_backend__frameopt__wrapper_arg_2 = ((MR_Box) (ll_backend__frameopt__conv0_HeadVar__2_2));
+    return ll_backend__frameopt__wrapper_arg_2;
+  }
+}
+
+static MR_Box MR_CALL 
+ll_backend__frameopt__ClassMethod_for_ll_backend__frameopt__block_entry_exit____ll_backend__frameopt__det_entry_info__arity0__ll_backend__frameopt__det_exit_info__arity0______ll_backend__frameopt__describe_exit_2_2_f_0_10001(
+  MR_Box ll_backend__frameopt__closure_arg,
+  MR_Box ll_backend__frameopt__wrapper_arg_1,
+  MR_Box ll_backend__frameopt__wrapper_arg_2)
+{
+  {
+    MR_Box ll_backend__frameopt__wrapper_arg_3;
+    MR_Box ll_backend__frameopt__closure = ll_backend__frameopt__closure_arg;
+    MR_String ll_backend__frameopt__conv0_HeadVar__3_3;
+
+    {
+      ll_backend__frameopt__conv0_HeadVar__3_3 = ll_backend__frameopt__ClassMethod_for_ll_backend__frameopt__block_entry_exit____ll_backend__frameopt__det_entry_info__arity0__ll_backend__frameopt__det_exit_info__arity0______ll_backend__frameopt__describe_exit_2_2_f_0(((MR_Word) ll_backend__frameopt__wrapper_arg_1), ((MR_Word) ll_backend__frameopt__wrapper_arg_2));
+    }
+    ll_backend__frameopt__wrapper_arg_3 = ((MR_Box) (ll_backend__frameopt__conv0_HeadVar__3_3));
+    return ll_backend__frameopt__wrapper_arg_3;
+  }
+}
+
+void mercury__ll_backend__frameopt__init(void)
+{
+}
+
+void mercury__ll_backend__frameopt__init_type_tables(void)
+{
+	static MR_bool initialised = MR_FALSE;
+	if (initialised) return;
+	initialised = MR_TRUE;
+
+	MR_register_type_ctor_info(&ll_backend__frameopt__ll_backend__frameopt__type_ctor_info_block_needs_frame_0);
+	MR_register_type_ctor_info(&ll_backend__frameopt__ll_backend__frameopt__type_ctor_info_block_type_2);
+	MR_register_type_ctor_info(&ll_backend__frameopt__ll_backend__frameopt__type_ctor_info_can_transform_0);
+	MR_register_type_ctor_info(&ll_backend__frameopt__ll_backend__frameopt__type_ctor_info_det_entry_info_0);
+	MR_register_type_ctor_info(&ll_backend__frameopt__ll_backend__frameopt__type_ctor_info_det_exit_info_0);
+	MR_register_type_ctor_info(&ll_backend__frameopt__ll_backend__frameopt__type_ctor_info_det_frame_block_map_0);
+	MR_register_type_ctor_info(&ll_backend__frameopt__ll_backend__frameopt__type_ctor_info_exit_par_map_0);
+	MR_register_type_ctor_info(&ll_backend__frameopt__ll_backend__frameopt__type_ctor_info_frame_block_info_2);
+	MR_register_type_ctor_info(&ll_backend__frameopt__ll_backend__frameopt__type_ctor_info_frame_block_map_2);
+	MR_register_type_ctor_info(&ll_backend__frameopt__ll_backend__frameopt__type_ctor_info_maybe_dummy_0);
+	MR_register_type_ctor_info(&ll_backend__frameopt__ll_backend__frameopt__type_ctor_info_nondet_entry_info_0);
+	MR_register_type_ctor_info(&ll_backend__frameopt__ll_backend__frameopt__type_ctor_info_nondet_exit_info_0);
+	MR_register_type_ctor_info(&ll_backend__frameopt__ll_backend__frameopt__type_ctor_info_ord_needs_frame_0);
+	MR_register_type_ctor_info(&ll_backend__frameopt__ll_backend__frameopt__type_ctor_info_pre_exit_dummy_label_map_0);
+	MR_register_type_ctor_info(&ll_backend__frameopt__ll_backend__frameopt__type_ctor_info_pred_map_0);
+	MR_register_type_ctor_info(&ll_backend__frameopt__ll_backend__frameopt__type_ctor_info_prop_queue_0);
+	MR_register_type_ctor_info(&ll_backend__frameopt__ll_backend__frameopt__type_ctor_info_rev_map_0);
+	MR_register_type_ctor_info(&ll_backend__frameopt__ll_backend__frameopt__type_ctor_info_setup_par_map_0);
+}
+
+void mercury__ll_backend__frameopt__init_debugger(void)
+{
+	MR_fatal_error("debugger initialization in MLDS grade");
+}
+
+// Ensure everything is compiled with the same grade.
+const char *mercury__ll_backend__frameopt__grade_check(void)
+{
+    return &MR_GRADE_VAR;
+}
+
+/* :- end_module ll_backend.frameopt. */

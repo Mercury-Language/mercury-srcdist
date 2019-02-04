@@ -1,0 +1,3 @@
+:- module mutvar.
+:- interface.
+:- type mutvar(T).
