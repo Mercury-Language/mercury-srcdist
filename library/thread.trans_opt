@@ -1,0 +1,29 @@
+:- module thread.
+
+:- pragma termination_info(thread.call_back_to_mercury((pred((builtin.in), (builtin.di), (builtin.uo)) is cc_multi), (builtin.in), (builtin.di), (builtin.uo)), infinite, can_loop).
+:- pragma termination_info((thread.can_spawn), finite(0, []), cannot_loop).
+:- pragma termination_info((thread.can_spawn_context), finite(0, []), cannot_loop).
+:- pragma termination_info((thread.can_spawn_native), finite(0, []), cannot_loop).
+:- pragma termination_info(thread.num_processors((builtin.out), (builtin.di), (builtin.uo)), infinite, cannot_loop).
+:- pragma termination_info(thread.num_processors((builtin.out), (builtin.out), (builtin.di), (builtin.uo)), infinite, cannot_loop).
+:- pragma termination_info(thread.spawn((pred((builtin.di), (builtin.uo)) is cc_multi), (builtin.di), (builtin.uo)), infinite, can_loop).
+:- pragma termination_info(thread.spawn((pred((builtin.in), (builtin.di), (builtin.uo)) is cc_multi), (builtin.out), (builtin.di), (builtin.uo)), infinite, can_loop).
+:- pragma termination_info(thread.spawn_context((pred((builtin.in), (builtin.di), (builtin.uo)) is cc_multi), (builtin.out), (builtin.di), (builtin.uo)), infinite, can_loop).
+:- pragma termination_info(thread.spawn_context_2((pred((builtin.in), (builtin.di), (builtin.uo)) is cc_multi), (builtin.out), (builtin.out), (builtin.di), (builtin.uo)), infinite, cannot_loop).
+:- pragma termination_info(thread.spawn_native((pred((builtin.in), (builtin.di), (builtin.uo)) is cc_multi), (builtin.out), (builtin.di), (builtin.uo)), infinite, can_loop).
+:- pragma termination_info(thread.spawn_native_2((pred((builtin.in), (builtin.di), (builtin.uo)) is cc_multi), (builtin.out), (builtin.out), (builtin.di), (builtin.uo)), infinite, cannot_loop).
+:- pragma termination_info(thread.yield((builtin.di), (builtin.uo)), infinite, cannot_loop).
+
+:- pragma exceptions(predicate, (thread.call_back_to_mercury), 4, 0, may_throw(user_exception)).
+:- pragma exceptions(predicate, (thread.can_spawn), 0, 0, will_not_throw).
+:- pragma exceptions(predicate, (thread.can_spawn_context), 0, 0, will_not_throw).
+:- pragma exceptions(predicate, (thread.can_spawn_native), 0, 0, will_not_throw).
+:- pragma exceptions(predicate, (thread.num_processors), 3, 0, will_not_throw).
+:- pragma exceptions(predicate, (thread.num_processors), 4, 0, will_not_throw).
+:- pragma exceptions(predicate, (thread.spawn), 3, 0, may_throw(user_exception)).
+:- pragma exceptions(predicate, (thread.spawn), 4, 0, will_not_throw).
+:- pragma exceptions(predicate, (thread.spawn_context), 4, 0, will_not_throw).
+:- pragma exceptions(predicate, (thread.spawn_context_2), 5, 0, will_not_throw).
+:- pragma exceptions(predicate, (thread.spawn_native), 4, 0, will_not_throw).
+:- pragma exceptions(predicate, (thread.spawn_native_2), 5, 0, will_not_throw).
+:- pragma exceptions(predicate, (thread.yield), 2, 0, will_not_throw).

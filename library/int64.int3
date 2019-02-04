@@ -1,0 +1,3 @@
+:- module int64.
+:- interface.
+:- type placeholder_int64.
