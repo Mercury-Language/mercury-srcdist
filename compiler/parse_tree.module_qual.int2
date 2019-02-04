@@ -1,0 +1,4 @@
+:- module (parse_tree.module_qual).
+:- interface.
+:- type mq_info.
+:- type partial_qualifier_info.

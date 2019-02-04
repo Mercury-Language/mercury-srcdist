@@ -1,0 +1,44 @@
+:- module (ll_backend.code_util).
+:- interface.
+:- import_module assoc_list.
+:- import_module bool.
+:- import_module list.
+:- import_module maybe.
+:- import_module pair.
+:- import_module set.
+:- import_module (hlds.hlds_goal).
+:- import_module (hlds.hlds_llds).
+:- import_module (hlds.hlds_module).
+:- import_module (hlds.hlds_pred).
+:- import_module (hlds.hlds_rtti).
+:- import_module (ll_backend.llds).
+:- import_module (mdbcomp.prim_data).
+:- import_module (parse_tree.prog_data).
+:- type immed == maybe.maybe(pair.pair(int, hlds.hlds_pred.pred_proc_id)).
+:- pred arg_loc_to_register(hlds.hlds_pred.arg_loc, ll_backend.llds.lval).
+:- mode arg_loc_to_register((builtin.in), (builtin.out)) is det.
+:- pred build_input_arg_list(hlds.hlds_pred.proc_info, assoc_list.assoc_list(parse_tree.prog_data.prog_var, ll_backend.llds.lval)).
+:- mode build_input_arg_list((builtin.in), (builtin.out)) is det.
+:- func extract_proc_label_from_code_addr(ll_backend.llds.code_addr) = mdbcomp.prim_data.proc_label.
+:- pred goal_may_alloc_temp_frame(hlds.hlds_goal.hlds_goal, bool.bool).
+:- mode goal_may_alloc_temp_frame((builtin.in), (builtin.out)) is det.
+:- pred instr_rvals_and_lvals(ll_backend.llds.instr, set.set(ll_backend.llds.rval), set.set(ll_backend.llds.lval)).
+:- mode instr_rvals_and_lvals((builtin.in), (builtin.out), (builtin.out)) is det.
+:- pred instrs_rvals_and_lvals(list.list(ll_backend.llds.instruction), set.set(ll_backend.llds.rval), set.set(ll_backend.llds.lval)).
+:- mode instrs_rvals_and_lvals((builtin.in), (builtin.out), (builtin.out)) is det.
+:- func lvals_in_lval(ll_backend.llds.lval) = list.list(ll_backend.llds.lval).
+:- func lvals_in_lvals(list.list(ll_backend.llds.lval)) = list.list(ll_backend.llds.lval).
+:- func lvals_in_rval(ll_backend.llds.rval) = list.list(ll_backend.llds.lval).
+:- func make_entry_label(hlds.hlds_module.module_info, hlds.hlds_pred.pred_id, hlds.hlds_pred.proc_id, ll_backend.code_util.immed) = ll_backend.llds.code_addr.
+:- func make_entry_label_from_rtti(hlds.hlds_rtti.rtti_proc_label, ll_backend.code_util.immed) = ll_backend.llds.code_addr.
+:- func make_internal_label(hlds.hlds_module.module_info, hlds.hlds_pred.pred_id, hlds.hlds_pred.proc_id, int) = ll_backend.llds.label.
+:- func make_local_entry_label(hlds.hlds_module.module_info, hlds.hlds_pred.pred_id, hlds.hlds_pred.proc_id, ll_backend.code_util.immed) = ll_backend.llds.label.
+:- pred max_mentioned_abs_regs(list.list(hlds.hlds_llds.abs_locn), int, int).
+:- mode max_mentioned_abs_regs((builtin.in), (builtin.out), (builtin.out)) is det.
+:- pred max_mentioned_regs(list.list(ll_backend.llds.lval), int, int).
+:- mode max_mentioned_regs((builtin.in), (builtin.out), (builtin.out)) is det.
+:- pred neg_rval(ll_backend.llds.rval, ll_backend.llds.rval).
+:- mode neg_rval((builtin.in), (builtin.out)) is det.
+:- pred negate_the_test(list.list(ll_backend.llds.instruction), list.list(ll_backend.llds.instruction)).
+:- mode negate_the_test((builtin.in), (builtin.out)) is det.
+:- func size_of_cell_args(list.list(ll_backend.llds.cell_arg)) = int.

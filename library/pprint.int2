@@ -1,0 +1,15 @@
+:- module pprint.
+:- interface.
+:- import_module char.
+:- import_module io.
+:- import_module list.
+:- import_module stream.
+:- import_module string.
+:- import_module univ.
+:- type doc.
+:- typeclass doc(T).
+:- instance (pprint.doc(char.char)).
+:- instance (pprint.doc(pprint.doc)).
+:- instance (pprint.doc(int)).
+:- instance (pprint.doc(float)).
+:- instance (pprint.doc(string)).

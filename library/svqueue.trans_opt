@@ -1,0 +1,15 @@
+:- module svqueue.
+:- pragma termination_info(svqueue.put((builtin.in), (builtin.in), (builtin.out)), finite(2, [no, yes, yes, no]), cannot_loop).
+:- pragma termination_info(svqueue.put_list((builtin.in), (builtin.in), (builtin.out)), finite(0, [no, yes, yes, no]), can_loop).
+:- pragma termination_info(svqueue.get((builtin.out), (builtin.in), (builtin.out)), finite(-2, [no, no, yes, no]), can_loop).
+:- pragma termination_info(svqueue.delete_all((builtin.in), (builtin.in), (builtin.out)), finite(0, [no, no, yes, no]), can_loop).
+:- pragma termination_info(svqueue.put_on_front((builtin.in), (builtin.in), (builtin.out)), finite(2, [no, yes, yes, no]), cannot_loop).
+:- pragma termination_info(svqueue.put_list_on_front((builtin.in), (builtin.in), (builtin.out)), finite(0, [no, yes, yes, no]), cannot_loop).
+:- pragma termination_info(svqueue.get_from_back((builtin.out), (builtin.in), (builtin.out)), finite(-2, [no, no, yes, no]), can_loop).
+:- pragma exceptions(predicate, (svqueue.put), 3, 0, will_not_throw).
+:- pragma exceptions(predicate, (svqueue.put_list), 3, 0, will_not_throw).
+:- pragma exceptions(predicate, (svqueue.get), 3, 0, will_not_throw).
+:- pragma exceptions(predicate, (svqueue.delete_all), 3, 0, conditional).
+:- pragma exceptions(predicate, (svqueue.put_on_front), 3, 0, will_not_throw).
+:- pragma exceptions(predicate, (svqueue.put_list_on_front), 3, 0, will_not_throw).
+:- pragma exceptions(predicate, (svqueue.get_from_back), 3, 0, may_throw(user_exception)).

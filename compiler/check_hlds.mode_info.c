@@ -1,0 +1,7727 @@
+/*
+** Automatically generated from `mode_info.m'
+** by the Mercury compiler,
+** version rotd-2011-10-23, configured for x86_64-unknown-linux-gnu.
+** Do not edit.
+**
+** The autoconfigured grade settings governing
+** the generation of this C file were
+**
+** TAG_BITS=2
+** UNBOXED_FLOAT=no
+** HIGHLEVEL_CODE=no
+**
+** END_OF_C_GRADE_INFO
+*/
+
+/*
+INIT mercury__check_hlds__mode_info__init
+ENDINIT
+*/
+
+#define MR_ALLOW_RESET
+#include "mercury_imp.h"
+#line 140 "../library/io.int2"
+#include "io.mh"
+
+#line 28 "check_hlds.mode_info.c"
+#line 150 "../library/io.int2"
+#include "time.mh"
+
+#line 32 "check_hlds.mode_info.c"
+#line 151 "../library/io.int2"
+#include "string.mh"
+
+#line 36 "check_hlds.mode_info.c"
+#line 33 "../library/array.int2"
+#include "array.mh"
+
+#line 40 "check_hlds.mode_info.c"
+#line 39 "../mdbcomp/mdbcomp.rtti_access.int2"
+#include "mdbcomp.rtti_access.mh"
+
+#line 44 "check_hlds.mode_info.c"
+#line 31 "../library/bitmap.int2"
+#include "bitmap.mh"
+
+#line 48 "check_hlds.mode_info.c"
+#line 49 "check_hlds.mode_info.c"
+#include "check_hlds.mode_info.mh"
+
+#line 52 "check_hlds.mode_info.c"
+#line 53 "check_hlds.mode_info.c"
+#ifndef CHECK_HLDS__MODE_INFO_DECL_GUARD
+#define CHECK_HLDS__MODE_INFO_DECL_GUARD
+
+#line 57 "check_hlds.mode_info.c"
+#line 58 "check_hlds.mode_info.c"
+
+#endif
+#line 61 "check_hlds.mode_info.c"
+
+#ifdef _MSC_VER
+#define MR_STATIC_LINKAGE extern
+#else
+#define MR_STATIC_LINKAGE static
+#endif
+
+struct mercury_type_0 {
+	MR_Word * f1[2];
+};
+MR_STATIC_LINKAGE const struct mercury_type_0 mercury_common_0[];
+
+struct mercury_type_1 {
+	MR_Word * f1[3];
+};
+MR_STATIC_LINKAGE const struct mercury_type_1 mercury_common_1[];
+
+extern const MR_TypeCtorInfo_Struct
+	mercury_data_check_hlds__mode_info__type_ctor_info_call_context_0,
+	mercury_data_check_hlds__mode_info__type_ctor_info_debug_flags_0,
+	mercury_data_check_hlds__mode_info__type_ctor_info_had_from_ground_term_scope_0,
+	mercury_data_check_hlds__mode_info__type_ctor_info_how_to_check_goal_0,
+	mercury_data_check_hlds__mode_info__type_ctor_info_in_dupl_for_switch_0,
+	mercury_data_check_hlds__mode_info__type_ctor_info_in_from_ground_term_scope_0,
+	mercury_data_check_hlds__mode_info__type_ctor_info_in_promise_purity_scope_0,
+	mercury_data_check_hlds__mode_info__type_ctor_info_locked_vars_0,
+	mercury_data_check_hlds__mode_info__type_ctor_info_make_ground_terms_unique_0,
+	mercury_data_check_hlds__mode_info__type_ctor_info_may_change_called_proc_0;
+
+extern const MR_TypeCtorInfo_Struct
+	mercury_data_check_hlds__mode_info__type_ctor_info_may_init_solver_vars_0,
+	mercury_data_check_hlds__mode_info__type_ctor_info_mode_context_0,
+	mercury_data_check_hlds__mode_info__type_ctor_info_mode_info_0,
+	mercury_data_check_hlds__mode_info__type_ctor_info_mode_sub_info_0,
+	mercury_data_check_hlds__mode_info__type_ctor_info_par_conj_mode_check_0,
+	mercury_data_check_hlds__mode_info__type_ctor_info_par_conj_mode_check_stack_0,
+	mercury_data_check_hlds__mode_info__type_ctor_info_side_0,
+	mercury_data_check_hlds__mode_info__type_ctor_info_var_lock_reason_0;
+MR_decl_label1(check_hlds__mode_info__mode_info_add_error_3_0, 3)
+MR_decl_label4(check_hlds__mode_info__mode_info_add_live_vars_3_0, 2,4,5,6)
+MR_decl_label1(check_hlds__mode_info__mode_info_add_warning_3_0, 3)
+MR_decl_label1(check_hlds__mode_info__mode_info_get_call_id_3_0, 2)
+MR_decl_label1(check_hlds__mode_info__mode_info_get_liveness_2_0, 3)
+MR_decl_label10(check_hlds__mode_info__mode_info_init_9_0, 2,3,4,5,9,10,11,12,7,15)
+MR_decl_label10(check_hlds__mode_info__mode_info_init_9_0, 16,17,18,19,20,22,23,25,26,27)
+MR_decl_label1(check_hlds__mode_info__mode_info_init_9_0, 28)
+MR_decl_label5(check_hlds__mode_info__mode_info_remove_live_vars_3_0, 2,4,5,6,8)
+MR_decl_label2(check_hlds__mode_info__mode_info_set_call_arg_context_3_0, 3,6)
+MR_decl_label1(check_hlds__mode_info__mode_info_set_call_context_3_0, 3)
+MR_decl_label1(check_hlds__mode_info__mode_info_set_checking_extra_goals_3_0, 2)
+MR_decl_label4(check_hlds__mode_info__mode_info_set_instmap_3_0, 4,6,8,3)
+MR_decl_label1(check_hlds__mode_info__mode_info_solver_init_is_supported_1_0, 2)
+MR_decl_label4(check_hlds__mode_info__mode_info_unlock_vars_4_0, 4,6,2,9)
+MR_decl_label2(check_hlds__mode_info__mode_info_var_is_live_3_0, 4,2)
+MR_decl_label4(check_hlds__mode_info__mode_info_var_is_locked_2_3_0, 19,4,3,1)
+MR_decl_label2(check_hlds__mode_info__mode_info_var_is_nondet_live_3_0, 4,2)
+MR_decl_label3(check_hlds__mode_info__mode_info_var_list_is_live_3_0, 17,4,5)
+MR_decl_label3(__Unify___check_hlds__mode_info__call_context_0_0, 16,5,1)
+MR_decl_label2(__Unify___check_hlds__mode_info__debug_flags_0_0, 4,1)
+MR_decl_label6(__Unify___check_hlds__mode_info__mode_context_0_0, 5,8,20,6,11,1)
+MR_decl_label9(__Unify___check_hlds__mode_info__mode_info_0_0, 4,6,8,10,12,14,17,21,1)
+MR_decl_label10(__Unify___check_hlds__mode_info__mode_sub_info_0_0, 4,7,9,13,15,17,19,21,23,25)
+MR_decl_label2(__Unify___check_hlds__mode_info__mode_sub_info_0_0, 27,1)
+MR_decl_label3(__Unify___check_hlds__mode_info__par_conj_mode_check_0_0, 5,9,1)
+MR_decl_label7(__Unify___check_hlds__mode_info__var_lock_reason_0_0, 5,6,7,8,22,9,1)
+MR_decl_label5(__Compare___check_hlds__mode_info__call_context_0_0, 3,2,7,5,10)
+MR_decl_label5(__Compare___check_hlds__mode_info__debug_flags_0_0, 3,2,5,9,29)
+MR_decl_label10(__Compare___check_hlds__mode_info__mode_context_0_0, 42,7,5,11,14,9,37,20,38,21)
+MR_decl_label2(__Compare___check_hlds__mode_info__mode_context_0_0, 23,28)
+MR_decl_label10(__Compare___check_hlds__mode_info__mode_info_0_0, 3,2,5,9,13,17,21,25,30,94)
+MR_decl_label10(__Compare___check_hlds__mode_info__mode_sub_info_0_0, 3,2,5,9,13,18,22,29,34,38)
+MR_decl_label10(__Compare___check_hlds__mode_info__mode_sub_info_0_0, 42,46,50,54,58,62,66,70,74,78)
+MR_decl_label5(__Compare___check_hlds__mode_info__mode_sub_info_0_0, 82,86,90,94,263)
+MR_decl_label4(__Compare___check_hlds__mode_info__par_conj_mode_check_0_0, 3,2,6,29)
+MR_decl_label10(__Compare___check_hlds__mode_info__var_lock_reason_0_0, 7,8,9,10,5,14,15,16,17,12)
+MR_decl_label10(__Compare___check_hlds__mode_info__var_lock_reason_0_0, 21,22,23,24,19,28,29,30,31,26)
+MR_decl_label10(__Compare___check_hlds__mode_info__var_lock_reason_0_0, 35,36,37,38,114,33,41,42,81,43)
+MR_decl_label3(__Compare___check_hlds__mode_info__var_lock_reason_0_0, 44,83,45)
+MR_def_extern_entry(check_hlds__mode_info__mode_info_init_9_0)
+MR_def_extern_entry(check_hlds__mode_info__mode_info_get_module_info_2_0)
+MR_def_extern_entry(check_hlds__mode_info__mode_info_get_preds_2_0)
+MR_def_extern_entry(check_hlds__mode_info__mode_info_get_modes_2_0)
+MR_def_extern_entry(check_hlds__mode_info__mode_info_get_insts_2_0)
+MR_def_extern_entry(check_hlds__mode_info__mode_info_get_pred_id_2_0)
+MR_def_extern_entry(check_hlds__mode_info__mode_info_get_proc_id_2_0)
+MR_def_extern_entry(check_hlds__mode_info__mode_info_get_debug_modes_2_0)
+MR_def_extern_entry(check_hlds__mode_info__mode_info_get_context_2_0)
+MR_def_extern_entry(check_hlds__mode_info__mode_info_get_mode_context_2_0)
+MR_def_extern_entry(check_hlds__mode_info__mode_info_get_instmap_2_0)
+MR_def_extern_entry(check_hlds__mode_info__mode_info_get_locked_vars_2_0)
+MR_def_extern_entry(check_hlds__mode_info__mode_info_get_errors_2_0)
+MR_def_extern_entry(check_hlds__mode_info__mode_info_get_warnings_2_0)
+MR_def_extern_entry(check_hlds__mode_info__mode_info_get_need_to_requantify_2_0)
+MR_def_extern_entry(check_hlds__mode_info__mode_info_get_in_promise_purity_scope_2_0)
+MR_def_extern_entry(check_hlds__mode_info__mode_info_get_num_errors_2_0)
+MR_def_extern_entry(check_hlds__mode_info__mode_info_get_live_vars_2_0)
+MR_def_extern_entry(check_hlds__mode_info__mode_info_get_liveness_2_0)
+MR_def_extern_entry(check_hlds__mode_info__mode_info_get_varset_2_0)
+MR_def_extern_entry(check_hlds__mode_info__mode_info_get_instvarset_2_0)
+MR_def_extern_entry(check_hlds__mode_info__mode_info_get_var_types_2_0)
+MR_def_extern_entry(check_hlds__mode_info__mode_info_get_delay_info_2_0)
+MR_def_extern_entry(check_hlds__mode_info__mode_info_get_nondet_live_vars_2_0)
+MR_def_extern_entry(check_hlds__mode_info__mode_info_get_last_checkpoint_insts_2_0)
+MR_def_extern_entry(check_hlds__mode_info__mode_info_get_parallel_vars_2_0)
+MR_def_extern_entry(check_hlds__mode_info__mode_info_get_changed_flag_2_0)
+MR_def_extern_entry(check_hlds__mode_info__mode_info_get_how_to_check_2_0)
+MR_def_extern_entry(check_hlds__mode_info__mode_info_get_may_change_called_proc_2_0)
+MR_def_extern_entry(check_hlds__mode_info__mode_info_get_initial_instmap_2_0)
+MR_def_extern_entry(check_hlds__mode_info__mode_info_get_checking_extra_goals_2_0)
+MR_def_extern_entry(check_hlds__mode_info__mode_info_get_may_init_solver_vars_2_0)
+MR_def_extern_entry(check_hlds__mode_info__mode_info_get_in_from_ground_term_2_0)
+MR_def_extern_entry(check_hlds__mode_info__mode_info_get_had_from_ground_term_2_0)
+MR_def_extern_entry(check_hlds__mode_info__mode_info_get_make_ground_terms_unique_2_0)
+MR_def_extern_entry(check_hlds__mode_info__mode_info_get_in_dupl_for_switch_2_0)
+MR_def_extern_entry(check_hlds__mode_info__mode_info_set_module_info_3_0)
+MR_def_extern_entry(check_hlds__mode_info__mode_info_set_pred_id_3_0)
+MR_def_extern_entry(check_hlds__mode_info__mode_info_set_proc_id_3_0)
+MR_def_extern_entry(check_hlds__mode_info__mode_info_set_context_3_0)
+MR_def_extern_entry(check_hlds__mode_info__mode_info_set_mode_context_3_0)
+MR_def_extern_entry(check_hlds__mode_info__mode_info_set_call_context_3_0)
+MR_def_extern_entry(check_hlds__mode_info__mode_info_set_call_arg_context_3_0)
+MR_def_extern_entry(check_hlds__mode_info__mode_info_unset_call_context_2_0)
+MR_def_extern_entry(check_hlds__mode_info__mode_info_set_delay_info_3_0)
+MR_def_extern_entry(check_hlds__mode_info__mode_info_set_instmap_3_0)
+MR_def_extern_entry(check_hlds__mode_info__mode_info_set_locked_vars_3_0)
+MR_def_extern_entry(check_hlds__mode_info__mode_info_set_errors_3_0)
+MR_def_extern_entry(check_hlds__mode_info__mode_info_set_warnings_3_0)
+MR_def_extern_entry(check_hlds__mode_info__mode_info_set_need_to_requantify_3_0)
+MR_def_extern_entry(check_hlds__mode_info__mode_info_set_in_promise_purity_scope_3_0)
+MR_def_extern_entry(check_hlds__mode_info__mode_info_set_live_vars_3_0)
+MR_def_extern_entry(check_hlds__mode_info__mode_info_set_nondet_live_vars_3_0)
+MR_def_extern_entry(check_hlds__mode_info__mode_info_add_live_vars_3_0)
+MR_def_extern_entry(check_hlds__mode_info__mode_info_remove_live_vars_3_0)
+MR_def_extern_entry(check_hlds__mode_info__mode_info_set_varset_3_0)
+MR_def_extern_entry(check_hlds__mode_info__mode_info_set_var_types_3_0)
+MR_def_extern_entry(check_hlds__mode_info__mode_info_set_last_checkpoint_insts_3_0)
+MR_def_extern_entry(check_hlds__mode_info__mode_info_set_parallel_vars_3_0)
+MR_def_extern_entry(check_hlds__mode_info__mode_info_set_changed_flag_3_0)
+MR_def_extern_entry(check_hlds__mode_info__mode_info_set_how_to_check_3_0)
+MR_def_extern_entry(check_hlds__mode_info__mode_info_set_may_change_called_proc_3_0)
+MR_def_extern_entry(check_hlds__mode_info__mode_info_set_checking_extra_goals_3_0)
+MR_def_extern_entry(check_hlds__mode_info__mode_info_set_may_init_solver_vars_3_0)
+MR_def_extern_entry(check_hlds__mode_info__mode_info_set_in_from_ground_term_3_0)
+MR_def_extern_entry(check_hlds__mode_info__mode_info_set_had_from_ground_term_3_0)
+MR_def_extern_entry(check_hlds__mode_info__mode_info_set_make_ground_terms_unique_3_0)
+MR_def_extern_entry(check_hlds__mode_info__mode_info_set_in_dupl_for_switch_3_0)
+MR_def_extern_entry(check_hlds__mode_info__mode_info_get_types_of_vars_3_0)
+MR_def_extern_entry(check_hlds__mode_info__mode_info_lock_vars_4_0)
+MR_def_extern_entry(check_hlds__mode_info__mode_info_unlock_vars_4_0)
+MR_decl_static(check_hlds__mode_info__mode_info_var_is_locked_2_3_0)
+MR_def_extern_entry(check_hlds__mode_info__mode_info_var_is_locked_3_0)
+MR_def_extern_entry(check_hlds__mode_info__mode_info_get_call_id_3_0)
+MR_def_extern_entry(check_hlds__mode_info__mode_info_var_is_live_3_0)
+MR_def_extern_entry(check_hlds__mode_info__mode_info_var_list_is_live_3_0)
+MR_def_extern_entry(check_hlds__mode_info__mode_info_var_is_nondet_live_3_0)
+MR_def_extern_entry(check_hlds__mode_info__mode_info_add_error_3_0)
+MR_def_extern_entry(check_hlds__mode_info__mode_info_error_4_0)
+MR_def_extern_entry(check_hlds__mode_info__mode_info_add_warning_3_0)
+MR_def_extern_entry(check_hlds__mode_info__mode_info_warning_3_0)
+MR_def_extern_entry(check_hlds__mode_info__mode_info_need_to_requantify_2_0)
+MR_def_extern_entry(check_hlds__mode_info__mode_info_may_init_solver_vars_1_0)
+MR_def_extern_entry(check_hlds__mode_info__mode_info_solver_init_is_supported_1_0)
+MR_def_extern_entry(__Unify___check_hlds__mode_info__call_context_0_0)
+MR_def_extern_entry(__Compare___check_hlds__mode_info__call_context_0_0)
+MR_def_extern_entry(__Unify___check_hlds__mode_info__debug_flags_0_0)
+MR_def_extern_entry(__Compare___check_hlds__mode_info__debug_flags_0_0)
+MR_def_extern_entry(__Unify___check_hlds__mode_info__had_from_ground_term_scope_0_0)
+MR_def_extern_entry(__Compare___check_hlds__mode_info__had_from_ground_term_scope_0_0)
+MR_def_extern_entry(__Unify___check_hlds__mode_info__how_to_check_goal_0_0)
+MR_def_extern_entry(__Compare___check_hlds__mode_info__how_to_check_goal_0_0)
+MR_def_extern_entry(__Unify___check_hlds__mode_info__in_dupl_for_switch_0_0)
+MR_def_extern_entry(__Compare___check_hlds__mode_info__in_dupl_for_switch_0_0)
+MR_def_extern_entry(__Unify___check_hlds__mode_info__in_from_ground_term_scope_0_0)
+MR_def_extern_entry(__Compare___check_hlds__mode_info__in_from_ground_term_scope_0_0)
+MR_def_extern_entry(__Unify___check_hlds__mode_info__in_promise_purity_scope_0_0)
+MR_def_extern_entry(__Compare___check_hlds__mode_info__in_promise_purity_scope_0_0)
+MR_def_extern_entry(__Unify___check_hlds__mode_info__locked_vars_0_0)
+MR_def_extern_entry(__Compare___check_hlds__mode_info__locked_vars_0_0)
+MR_def_extern_entry(__Unify___check_hlds__mode_info__make_ground_terms_unique_0_0)
+MR_def_extern_entry(__Compare___check_hlds__mode_info__make_ground_terms_unique_0_0)
+MR_def_extern_entry(__Unify___check_hlds__mode_info__may_change_called_proc_0_0)
+MR_def_extern_entry(__Compare___check_hlds__mode_info__may_change_called_proc_0_0)
+MR_def_extern_entry(__Unify___check_hlds__mode_info__may_init_solver_vars_0_0)
+MR_def_extern_entry(__Compare___check_hlds__mode_info__may_init_solver_vars_0_0)
+MR_def_extern_entry(__Unify___check_hlds__mode_info__mode_context_0_0)
+MR_def_extern_entry(__Compare___check_hlds__mode_info__mode_context_0_0)
+MR_def_extern_entry(__Unify___check_hlds__mode_info__mode_info_0_0)
+MR_def_extern_entry(__Compare___check_hlds__mode_info__mode_info_0_0)
+MR_decl_static(__Unify___check_hlds__mode_info__mode_sub_info_0_0)
+MR_decl_static(__Compare___check_hlds__mode_info__mode_sub_info_0_0)
+MR_def_extern_entry(__Unify___check_hlds__mode_info__par_conj_mode_check_0_0)
+MR_def_extern_entry(__Compare___check_hlds__mode_info__par_conj_mode_check_0_0)
+MR_def_extern_entry(__Unify___check_hlds__mode_info__par_conj_mode_check_stack_0_0)
+MR_def_extern_entry(__Compare___check_hlds__mode_info__par_conj_mode_check_stack_0_0)
+MR_def_extern_entry(__Unify___check_hlds__mode_info__side_0_0)
+MR_def_extern_entry(__Compare___check_hlds__mode_info__side_0_0)
+MR_def_extern_entry(__Unify___check_hlds__mode_info__var_lock_reason_0_0)
+MR_def_extern_entry(__Compare___check_hlds__mode_info__var_lock_reason_0_0)
+
+extern const MR_TypeCtorInfo_Struct mercury_data_term__type_ctor_info_var_1;
+extern const MR_TypeCtorInfo_Struct mercury_data_parse_tree__prog_data__type_ctor_info_prog_var_type_0;
+extern const MR_TypeCtorInfo_Struct mercury_data_tree_bitset__type_ctor_info_tree_bitset_1;
+static const struct mercury_type_0 mercury_common_0[2] =
+{
+{
+{
+MR_CTOR1_ADDR(term, var),
+MR_CTOR0_ADDR(parse_tree__prog_data, prog_var_type)
+}
+},
+{
+{
+MR_CTOR1_ADDR(tree_bitset, tree_bitset),
+MR_TAG_COMMON(0,0,0)
+}
+},
+};
+
+extern const MR_TypeCtorInfo_Struct mercury_data_pair__type_ctor_info_pair_2;
+static const struct mercury_type_1 mercury_common_1[1] =
+{
+{
+{
+MR_CTOR_ADDR(pair, pair, 2),
+MR_CTOR0_ADDR(check_hlds__mode_info, var_lock_reason),
+MR_TAG_COMMON(0,0,1)
+}
+},
+};
+extern const MR_TypeCtorInfo_Struct mercury_data_hlds__hlds_goal__type_ctor_info_unify_context_0;
+extern const MR_TypeCtorInfo_Struct mercury_data_hlds__hlds_goal__type_ctor_info_unify_context_0;
+
+const MR_PseudoTypeInfo mercury_data_check_hlds__mode_info__field_types_call_context_0_0[] = {
+	(MR_PseudoTypeInfo) &mercury_data_hlds__hlds_goal__type_ctor_info_unify_context_0
+};
+
+static const MR_DuFunctorDesc mercury_data_check_hlds__mode_info__du_functor_desc_call_context_0_0 = {
+	"call_context_unify",
+	1,
+	0,
+	MR_SECTAG_NONE,
+	0,
+	-1,
+	0,
+	(MR_PseudoTypeInfo *) mercury_data_check_hlds__mode_info__field_types_call_context_0_0,
+	NULL,
+	NULL,
+	NULL
+};
+extern const MR_TypeCtorInfo_Struct mercury_data_hlds__hlds_pred__type_ctor_info_call_id_0;
+extern const MR_TypeCtorInfo_Struct mercury_data_hlds__hlds_pred__type_ctor_info_call_id_0;
+
+const MR_PseudoTypeInfo mercury_data_check_hlds__mode_info__field_types_call_context_0_1[] = {
+	(MR_PseudoTypeInfo) &mercury_data_hlds__hlds_pred__type_ctor_info_call_id_0
+};
+
+static const MR_DuFunctorDesc mercury_data_check_hlds__mode_info__du_functor_desc_call_context_0_1 = {
+	"call_context_call",
+	1,
+	0,
+	MR_SECTAG_NONE,
+	1,
+	-1,
+	1,
+	(MR_PseudoTypeInfo *) mercury_data_check_hlds__mode_info__field_types_call_context_0_1,
+	NULL,
+	NULL,
+	NULL
+};
+
+const MR_DuFunctorDescPtr mercury_data_check_hlds__mode_info__du_stag_ordered_call_context_0_0[] = {
+	&mercury_data_check_hlds__mode_info__du_functor_desc_call_context_0_0
+
+};
+
+const MR_DuFunctorDescPtr mercury_data_check_hlds__mode_info__du_stag_ordered_call_context_0_1[] = {
+	&mercury_data_check_hlds__mode_info__du_functor_desc_call_context_0_1
+
+};
+
+const MR_DuPtagLayout mercury_data_check_hlds__mode_info__du_ptag_ordered_call_context_0[] = {
+	{ 1, MR_SECTAG_NONE,
+	mercury_data_check_hlds__mode_info__du_stag_ordered_call_context_0_0 },
+	{ 1, MR_SECTAG_NONE,
+	mercury_data_check_hlds__mode_info__du_stag_ordered_call_context_0_1 }
+
+};
+
+const MR_DuFunctorDescPtr mercury_data_check_hlds__mode_info__du_name_ordered_call_context_0[] = {
+	&mercury_data_check_hlds__mode_info__du_functor_desc_call_context_0_1,
+	&mercury_data_check_hlds__mode_info__du_functor_desc_call_context_0_0
+};
+
+const MR_Integer mercury_data_check_hlds__mode_info__functor_number_map_call_context_0[] = {
+	1,
+	0 };
+	
+const MR_TypeCtorInfo_Struct mercury_data_check_hlds__mode_info__type_ctor_info_call_context_0 = {
+	0,
+	15,
+	2,
+	MR_TYPECTOR_REP_DU,
+	MR_MAYBE_STATIC_CODE(MR_ENTRY_AP(__Unify___check_hlds__mode_info__call_context_0_0)),
+	MR_MAYBE_STATIC_CODE(MR_ENTRY_AP(__Compare___check_hlds__mode_info__call_context_0_0)),
+	"check_hlds.mode_info",
+	"call_context",
+	{ (void *)mercury_data_check_hlds__mode_info__du_name_ordered_call_context_0 },
+	{ (void *)mercury_data_check_hlds__mode_info__du_ptag_ordered_call_context_0 },
+	2,
+	4,
+	mercury_data_check_hlds__mode_info__functor_number_map_call_context_0
+};
+extern const MR_TypeCtorInfo_Struct mercury_data_bool__type_ctor_info_bool_0;
+extern const MR_TypeCtorInfo_Struct mercury_data_bool__type_ctor_info_bool_0;
+
+const MR_PseudoTypeInfo mercury_data_check_hlds__mode_info__field_types_debug_flags_0_0[] = {
+	(MR_PseudoTypeInfo) &mercury_data_bool__type_ctor_info_bool_0,
+	(MR_PseudoTypeInfo) &mercury_data_bool__type_ctor_info_bool_0,
+	(MR_PseudoTypeInfo) &mercury_data_bool__type_ctor_info_bool_0
+};
+
+const MR_ConstString mercury_data_check_hlds__mode_info__field_names_debug_flags_0_0[] = {
+	"verbose",
+	"minimal",
+	"statistics"
+};
+
+const MR_DuArgLocn mercury_data_check_hlds__mode_info__field_locns_debug_flags_0_0[] = {
+	{ 0, 0, 1 },
+	{ 0, 1, 1 },
+	{ 0, 2, 1 },
+};
+
+static const MR_DuFunctorDesc mercury_data_check_hlds__mode_info__du_functor_desc_debug_flags_0_0 = {
+	"debug_flags",
+	3,
+	0,
+	MR_SECTAG_NONE,
+	0,
+	-1,
+	0,
+	(MR_PseudoTypeInfo *) mercury_data_check_hlds__mode_info__field_types_debug_flags_0_0,
+	mercury_data_check_hlds__mode_info__field_names_debug_flags_0_0,
+	mercury_data_check_hlds__mode_info__field_locns_debug_flags_0_0,
+	NULL
+};
+
+const MR_DuFunctorDescPtr mercury_data_check_hlds__mode_info__du_stag_ordered_debug_flags_0_0[] = {
+	&mercury_data_check_hlds__mode_info__du_functor_desc_debug_flags_0_0
+
+};
+
+const MR_DuPtagLayout mercury_data_check_hlds__mode_info__du_ptag_ordered_debug_flags_0[] = {
+	{ 1, MR_SECTAG_NONE,
+	mercury_data_check_hlds__mode_info__du_stag_ordered_debug_flags_0_0 }
+
+};
+
+const MR_DuFunctorDescPtr mercury_data_check_hlds__mode_info__du_name_ordered_debug_flags_0[] = {
+	&mercury_data_check_hlds__mode_info__du_functor_desc_debug_flags_0_0
+};
+
+const MR_Integer mercury_data_check_hlds__mode_info__functor_number_map_debug_flags_0[] = {
+	0 };
+	
+const MR_TypeCtorInfo_Struct mercury_data_check_hlds__mode_info__type_ctor_info_debug_flags_0 = {
+	0,
+	15,
+	1,
+	MR_TYPECTOR_REP_DU,
+	MR_MAYBE_STATIC_CODE(MR_ENTRY_AP(__Unify___check_hlds__mode_info__debug_flags_0_0)),
+	MR_MAYBE_STATIC_CODE(MR_ENTRY_AP(__Compare___check_hlds__mode_info__debug_flags_0_0)),
+	"check_hlds.mode_info",
+	"debug_flags",
+	{ (void *)mercury_data_check_hlds__mode_info__du_name_ordered_debug_flags_0 },
+	{ (void *)mercury_data_check_hlds__mode_info__du_ptag_ordered_debug_flags_0 },
+	1,
+	4,
+	mercury_data_check_hlds__mode_info__functor_number_map_debug_flags_0
+};
+
+static const MR_EnumFunctorDesc mercury_data_check_hlds__mode_info__enum_functor_desc_had_from_ground_term_scope_0_0 = {
+	"had_from_ground_term_scope",
+	0
+};
+
+static const MR_EnumFunctorDesc mercury_data_check_hlds__mode_info__enum_functor_desc_had_from_ground_term_scope_0_1 = {
+	"did_not_have_from_ground_term_scope",
+	1
+};
+
+const MR_EnumFunctorDescPtr mercury_data_check_hlds__mode_info__enum_value_ordered_had_from_ground_term_scope_0[] = {
+	&mercury_data_check_hlds__mode_info__enum_functor_desc_had_from_ground_term_scope_0_0,
+	&mercury_data_check_hlds__mode_info__enum_functor_desc_had_from_ground_term_scope_0_1
+};
+
+const MR_EnumFunctorDescPtr mercury_data_check_hlds__mode_info__enum_name_ordered_had_from_ground_term_scope_0[] = {
+	&mercury_data_check_hlds__mode_info__enum_functor_desc_had_from_ground_term_scope_0_1,
+	&mercury_data_check_hlds__mode_info__enum_functor_desc_had_from_ground_term_scope_0_0
+};
+
+const MR_Integer mercury_data_check_hlds__mode_info__functor_number_map_had_from_ground_term_scope_0[] = {
+	1,
+	0 };
+	
+const MR_TypeCtorInfo_Struct mercury_data_check_hlds__mode_info__type_ctor_info_had_from_ground_term_scope_0 = {
+	0,
+	15,
+	-1,
+	MR_TYPECTOR_REP_ENUM,
+	MR_MAYBE_STATIC_CODE(MR_ENTRY_AP(__Unify___check_hlds__mode_info__had_from_ground_term_scope_0_0)),
+	MR_MAYBE_STATIC_CODE(MR_ENTRY_AP(__Compare___check_hlds__mode_info__had_from_ground_term_scope_0_0)),
+	"check_hlds.mode_info",
+	"had_from_ground_term_scope",
+	{ (void *)mercury_data_check_hlds__mode_info__enum_name_ordered_had_from_ground_term_scope_0 },
+	{ (void *)mercury_data_check_hlds__mode_info__enum_value_ordered_had_from_ground_term_scope_0 },
+	2,
+	4,
+	mercury_data_check_hlds__mode_info__functor_number_map_had_from_ground_term_scope_0
+};
+
+static const MR_EnumFunctorDesc mercury_data_check_hlds__mode_info__enum_functor_desc_how_to_check_goal_0_0 = {
+	"check_modes",
+	0
+};
+
+static const MR_EnumFunctorDesc mercury_data_check_hlds__mode_info__enum_functor_desc_how_to_check_goal_0_1 = {
+	"check_unique_modes",
+	1
+};
+
+const MR_EnumFunctorDescPtr mercury_data_check_hlds__mode_info__enum_value_ordered_how_to_check_goal_0[] = {
+	&mercury_data_check_hlds__mode_info__enum_functor_desc_how_to_check_goal_0_0,
+	&mercury_data_check_hlds__mode_info__enum_functor_desc_how_to_check_goal_0_1
+};
+
+const MR_EnumFunctorDescPtr mercury_data_check_hlds__mode_info__enum_name_ordered_how_to_check_goal_0[] = {
+	&mercury_data_check_hlds__mode_info__enum_functor_desc_how_to_check_goal_0_0,
+	&mercury_data_check_hlds__mode_info__enum_functor_desc_how_to_check_goal_0_1
+};
+
+const MR_Integer mercury_data_check_hlds__mode_info__functor_number_map_how_to_check_goal_0[] = {
+	0,
+	1 };
+	
+const MR_TypeCtorInfo_Struct mercury_data_check_hlds__mode_info__type_ctor_info_how_to_check_goal_0 = {
+	0,
+	15,
+	-1,
+	MR_TYPECTOR_REP_ENUM,
+	MR_MAYBE_STATIC_CODE(MR_ENTRY_AP(__Unify___check_hlds__mode_info__how_to_check_goal_0_0)),
+	MR_MAYBE_STATIC_CODE(MR_ENTRY_AP(__Compare___check_hlds__mode_info__how_to_check_goal_0_0)),
+	"check_hlds.mode_info",
+	"how_to_check_goal",
+	{ (void *)mercury_data_check_hlds__mode_info__enum_name_ordered_how_to_check_goal_0 },
+	{ (void *)mercury_data_check_hlds__mode_info__enum_value_ordered_how_to_check_goal_0 },
+	2,
+	4,
+	mercury_data_check_hlds__mode_info__functor_number_map_how_to_check_goal_0
+};
+
+static const MR_EnumFunctorDesc mercury_data_check_hlds__mode_info__enum_functor_desc_in_dupl_for_switch_0_0 = {
+	"in_dupl_for_switch",
+	0
+};
+
+static const MR_EnumFunctorDesc mercury_data_check_hlds__mode_info__enum_functor_desc_in_dupl_for_switch_0_1 = {
+	"not_in_dupl_for_switch",
+	1
+};
+
+const MR_EnumFunctorDescPtr mercury_data_check_hlds__mode_info__enum_value_ordered_in_dupl_for_switch_0[] = {
+	&mercury_data_check_hlds__mode_info__enum_functor_desc_in_dupl_for_switch_0_0,
+	&mercury_data_check_hlds__mode_info__enum_functor_desc_in_dupl_for_switch_0_1
+};
+
+const MR_EnumFunctorDescPtr mercury_data_check_hlds__mode_info__enum_name_ordered_in_dupl_for_switch_0[] = {
+	&mercury_data_check_hlds__mode_info__enum_functor_desc_in_dupl_for_switch_0_0,
+	&mercury_data_check_hlds__mode_info__enum_functor_desc_in_dupl_for_switch_0_1
+};
+
+const MR_Integer mercury_data_check_hlds__mode_info__functor_number_map_in_dupl_for_switch_0[] = {
+	0,
+	1 };
+	
+const MR_TypeCtorInfo_Struct mercury_data_check_hlds__mode_info__type_ctor_info_in_dupl_for_switch_0 = {
+	0,
+	15,
+	-1,
+	MR_TYPECTOR_REP_ENUM,
+	MR_MAYBE_STATIC_CODE(MR_ENTRY_AP(__Unify___check_hlds__mode_info__in_dupl_for_switch_0_0)),
+	MR_MAYBE_STATIC_CODE(MR_ENTRY_AP(__Compare___check_hlds__mode_info__in_dupl_for_switch_0_0)),
+	"check_hlds.mode_info",
+	"in_dupl_for_switch",
+	{ (void *)mercury_data_check_hlds__mode_info__enum_name_ordered_in_dupl_for_switch_0 },
+	{ (void *)mercury_data_check_hlds__mode_info__enum_value_ordered_in_dupl_for_switch_0 },
+	2,
+	4,
+	mercury_data_check_hlds__mode_info__functor_number_map_in_dupl_for_switch_0
+};
+
+static const MR_EnumFunctorDesc mercury_data_check_hlds__mode_info__enum_functor_desc_in_from_ground_term_scope_0_0 = {
+	"in_from_ground_term_scope",
+	0
+};
+
+static const MR_EnumFunctorDesc mercury_data_check_hlds__mode_info__enum_functor_desc_in_from_ground_term_scope_0_1 = {
+	"not_in_from_ground_term_scope",
+	1
+};
+
+const MR_EnumFunctorDescPtr mercury_data_check_hlds__mode_info__enum_value_ordered_in_from_ground_term_scope_0[] = {
+	&mercury_data_check_hlds__mode_info__enum_functor_desc_in_from_ground_term_scope_0_0,
+	&mercury_data_check_hlds__mode_info__enum_functor_desc_in_from_ground_term_scope_0_1
+};
+
+const MR_EnumFunctorDescPtr mercury_data_check_hlds__mode_info__enum_name_ordered_in_from_ground_term_scope_0[] = {
+	&mercury_data_check_hlds__mode_info__enum_functor_desc_in_from_ground_term_scope_0_0,
+	&mercury_data_check_hlds__mode_info__enum_functor_desc_in_from_ground_term_scope_0_1
+};
+
+const MR_Integer mercury_data_check_hlds__mode_info__functor_number_map_in_from_ground_term_scope_0[] = {
+	0,
+	1 };
+	
+const MR_TypeCtorInfo_Struct mercury_data_check_hlds__mode_info__type_ctor_info_in_from_ground_term_scope_0 = {
+	0,
+	15,
+	-1,
+	MR_TYPECTOR_REP_ENUM,
+	MR_MAYBE_STATIC_CODE(MR_ENTRY_AP(__Unify___check_hlds__mode_info__in_from_ground_term_scope_0_0)),
+	MR_MAYBE_STATIC_CODE(MR_ENTRY_AP(__Compare___check_hlds__mode_info__in_from_ground_term_scope_0_0)),
+	"check_hlds.mode_info",
+	"in_from_ground_term_scope",
+	{ (void *)mercury_data_check_hlds__mode_info__enum_name_ordered_in_from_ground_term_scope_0 },
+	{ (void *)mercury_data_check_hlds__mode_info__enum_value_ordered_in_from_ground_term_scope_0 },
+	2,
+	4,
+	mercury_data_check_hlds__mode_info__functor_number_map_in_from_ground_term_scope_0
+};
+
+static const MR_EnumFunctorDesc mercury_data_check_hlds__mode_info__enum_functor_desc_in_promise_purity_scope_0_0 = {
+	"in_promise_purity_scope",
+	0
+};
+
+static const MR_EnumFunctorDesc mercury_data_check_hlds__mode_info__enum_functor_desc_in_promise_purity_scope_0_1 = {
+	"not_in_promise_purity_scope",
+	1
+};
+
+const MR_EnumFunctorDescPtr mercury_data_check_hlds__mode_info__enum_value_ordered_in_promise_purity_scope_0[] = {
+	&mercury_data_check_hlds__mode_info__enum_functor_desc_in_promise_purity_scope_0_0,
+	&mercury_data_check_hlds__mode_info__enum_functor_desc_in_promise_purity_scope_0_1
+};
+
+const MR_EnumFunctorDescPtr mercury_data_check_hlds__mode_info__enum_name_ordered_in_promise_purity_scope_0[] = {
+	&mercury_data_check_hlds__mode_info__enum_functor_desc_in_promise_purity_scope_0_0,
+	&mercury_data_check_hlds__mode_info__enum_functor_desc_in_promise_purity_scope_0_1
+};
+
+const MR_Integer mercury_data_check_hlds__mode_info__functor_number_map_in_promise_purity_scope_0[] = {
+	0,
+	1 };
+	
+const MR_TypeCtorInfo_Struct mercury_data_check_hlds__mode_info__type_ctor_info_in_promise_purity_scope_0 = {
+	0,
+	15,
+	-1,
+	MR_TYPECTOR_REP_ENUM,
+	MR_MAYBE_STATIC_CODE(MR_ENTRY_AP(__Unify___check_hlds__mode_info__in_promise_purity_scope_0_0)),
+	MR_MAYBE_STATIC_CODE(MR_ENTRY_AP(__Compare___check_hlds__mode_info__in_promise_purity_scope_0_0)),
+	"check_hlds.mode_info",
+	"in_promise_purity_scope",
+	{ (void *)mercury_data_check_hlds__mode_info__enum_name_ordered_in_promise_purity_scope_0 },
+	{ (void *)mercury_data_check_hlds__mode_info__enum_value_ordered_in_promise_purity_scope_0 },
+	2,
+	4,
+	mercury_data_check_hlds__mode_info__functor_number_map_in_promise_purity_scope_0
+};
+extern const MR_TypeCtorInfo_Struct mercury_data_list__type_ctor_info_list_1;
+extern const MR_TypeCtorInfo_Struct mercury_data_parse_tree__prog_data__type_ctor_info_prog_var_type_0;
+
+static const MR_FA_TypeInfo_Struct1 mercury_data_term__ti_var_1parse_tree__prog_data__type_ctor_info_prog_var_type_0 = {
+	&mercury_data_term__type_ctor_info_var_1,
+{	(MR_TypeInfo) &mercury_data_parse_tree__prog_data__type_ctor_info_prog_var_type_0
+}};
+
+static const MR_FA_TypeInfo_Struct1 mercury_data_tree_bitset__ti_tree_bitset_1term__ti_var_1parse_tree__prog_data__type_ctor_info_prog_var_type_0 = {
+	&mercury_data_tree_bitset__type_ctor_info_tree_bitset_1,
+{	(MR_TypeInfo) &mercury_data_term__ti_var_1parse_tree__prog_data__type_ctor_info_prog_var_type_0
+}};
+extern const MR_TypeCtorInfo_Struct mercury_data_check_hlds__mode_info__type_ctor_info_var_lock_reason_0;
+
+static const MR_FA_TypeInfo_Struct2 mercury_data_pair__ti_pair_2check_hlds__mode_info__type_ctor_info_var_lock_reason_0tree_bitset__ti_tree_bitset_1term__ti_var_1parse_tree__prog_data__type_ctor_info_prog_var_type_0 = {
+	&mercury_data_pair__type_ctor_info_pair_2,
+{	(MR_TypeInfo) &mercury_data_check_hlds__mode_info__type_ctor_info_var_lock_reason_0,
+	(MR_TypeInfo) &mercury_data_tree_bitset__ti_tree_bitset_1term__ti_var_1parse_tree__prog_data__type_ctor_info_prog_var_type_0
+}};
+
+static const MR_FA_TypeInfo_Struct1 mercury_data_list__ti_list_1pair__ti_pair_2check_hlds__mode_info__type_ctor_info_var_lock_reason_0tree_bitset__ti_tree_bitset_1term__ti_var_1parse_tree__prog_data__type_ctor_info_prog_var_type_0 = {
+	&mercury_data_list__type_ctor_info_list_1,
+{	(MR_TypeInfo) &mercury_data_pair__ti_pair_2check_hlds__mode_info__type_ctor_info_var_lock_reason_0tree_bitset__ti_tree_bitset_1term__ti_var_1parse_tree__prog_data__type_ctor_info_prog_var_type_0
+}};
+
+const MR_TypeCtorInfo_Struct mercury_data_check_hlds__mode_info__type_ctor_info_locked_vars_0 = {
+	0,
+	15,
+	-1,
+	MR_TYPECTOR_REP_EQUIV_GROUND,
+	MR_MAYBE_STATIC_CODE(MR_ENTRY_AP(__Unify___check_hlds__mode_info__locked_vars_0_0)),
+	MR_MAYBE_STATIC_CODE(MR_ENTRY_AP(__Compare___check_hlds__mode_info__locked_vars_0_0)),
+	"check_hlds.mode_info",
+	"locked_vars",
+	{ 0 },
+	{ (void *)&mercury_data_list__ti_list_1pair__ti_pair_2check_hlds__mode_info__type_ctor_info_var_lock_reason_0tree_bitset__ti_tree_bitset_1term__ti_var_1parse_tree__prog_data__type_ctor_info_prog_var_type_0 },
+	-1,
+	0,
+	NULL
+};
+
+static const MR_EnumFunctorDesc mercury_data_check_hlds__mode_info__enum_functor_desc_make_ground_terms_unique_0_0 = {
+	"make_ground_terms_unique",
+	0
+};
+
+static const MR_EnumFunctorDesc mercury_data_check_hlds__mode_info__enum_functor_desc_make_ground_terms_unique_0_1 = {
+	"do_not_make_ground_terms_unique",
+	1
+};
+
+const MR_EnumFunctorDescPtr mercury_data_check_hlds__mode_info__enum_value_ordered_make_ground_terms_unique_0[] = {
+	&mercury_data_check_hlds__mode_info__enum_functor_desc_make_ground_terms_unique_0_0,
+	&mercury_data_check_hlds__mode_info__enum_functor_desc_make_ground_terms_unique_0_1
+};
+
+const MR_EnumFunctorDescPtr mercury_data_check_hlds__mode_info__enum_name_ordered_make_ground_terms_unique_0[] = {
+	&mercury_data_check_hlds__mode_info__enum_functor_desc_make_ground_terms_unique_0_1,
+	&mercury_data_check_hlds__mode_info__enum_functor_desc_make_ground_terms_unique_0_0
+};
+
+const MR_Integer mercury_data_check_hlds__mode_info__functor_number_map_make_ground_terms_unique_0[] = {
+	1,
+	0 };
+	
+const MR_TypeCtorInfo_Struct mercury_data_check_hlds__mode_info__type_ctor_info_make_ground_terms_unique_0 = {
+	0,
+	15,
+	-1,
+	MR_TYPECTOR_REP_ENUM,
+	MR_MAYBE_STATIC_CODE(MR_ENTRY_AP(__Unify___check_hlds__mode_info__make_ground_terms_unique_0_0)),
+	MR_MAYBE_STATIC_CODE(MR_ENTRY_AP(__Compare___check_hlds__mode_info__make_ground_terms_unique_0_0)),
+	"check_hlds.mode_info",
+	"make_ground_terms_unique",
+	{ (void *)mercury_data_check_hlds__mode_info__enum_name_ordered_make_ground_terms_unique_0 },
+	{ (void *)mercury_data_check_hlds__mode_info__enum_value_ordered_make_ground_terms_unique_0 },
+	2,
+	4,
+	mercury_data_check_hlds__mode_info__functor_number_map_make_ground_terms_unique_0
+};
+
+static const MR_EnumFunctorDesc mercury_data_check_hlds__mode_info__enum_functor_desc_may_change_called_proc_0_0 = {
+	"may_change_called_proc",
+	0
+};
+
+static const MR_EnumFunctorDesc mercury_data_check_hlds__mode_info__enum_functor_desc_may_change_called_proc_0_1 = {
+	"may_not_change_called_proc",
+	1
+};
+
+const MR_EnumFunctorDescPtr mercury_data_check_hlds__mode_info__enum_value_ordered_may_change_called_proc_0[] = {
+	&mercury_data_check_hlds__mode_info__enum_functor_desc_may_change_called_proc_0_0,
+	&mercury_data_check_hlds__mode_info__enum_functor_desc_may_change_called_proc_0_1
+};
+
+const MR_EnumFunctorDescPtr mercury_data_check_hlds__mode_info__enum_name_ordered_may_change_called_proc_0[] = {
+	&mercury_data_check_hlds__mode_info__enum_functor_desc_may_change_called_proc_0_0,
+	&mercury_data_check_hlds__mode_info__enum_functor_desc_may_change_called_proc_0_1
+};
+
+const MR_Integer mercury_data_check_hlds__mode_info__functor_number_map_may_change_called_proc_0[] = {
+	0,
+	1 };
+	
+const MR_TypeCtorInfo_Struct mercury_data_check_hlds__mode_info__type_ctor_info_may_change_called_proc_0 = {
+	0,
+	15,
+	-1,
+	MR_TYPECTOR_REP_ENUM,
+	MR_MAYBE_STATIC_CODE(MR_ENTRY_AP(__Unify___check_hlds__mode_info__may_change_called_proc_0_0)),
+	MR_MAYBE_STATIC_CODE(MR_ENTRY_AP(__Compare___check_hlds__mode_info__may_change_called_proc_0_0)),
+	"check_hlds.mode_info",
+	"may_change_called_proc",
+	{ (void *)mercury_data_check_hlds__mode_info__enum_name_ordered_may_change_called_proc_0 },
+	{ (void *)mercury_data_check_hlds__mode_info__enum_value_ordered_may_change_called_proc_0 },
+	2,
+	4,
+	mercury_data_check_hlds__mode_info__functor_number_map_may_change_called_proc_0
+};
+
+static const MR_EnumFunctorDesc mercury_data_check_hlds__mode_info__enum_functor_desc_may_init_solver_vars_0_0 = {
+	"may_init_solver_vars",
+	0
+};
+
+static const MR_EnumFunctorDesc mercury_data_check_hlds__mode_info__enum_functor_desc_may_init_solver_vars_0_1 = {
+	"may_not_init_solver_vars",
+	1
+};
+
+const MR_EnumFunctorDescPtr mercury_data_check_hlds__mode_info__enum_value_ordered_may_init_solver_vars_0[] = {
+	&mercury_data_check_hlds__mode_info__enum_functor_desc_may_init_solver_vars_0_0,
+	&mercury_data_check_hlds__mode_info__enum_functor_desc_may_init_solver_vars_0_1
+};
+
+const MR_EnumFunctorDescPtr mercury_data_check_hlds__mode_info__enum_name_ordered_may_init_solver_vars_0[] = {
+	&mercury_data_check_hlds__mode_info__enum_functor_desc_may_init_solver_vars_0_0,
+	&mercury_data_check_hlds__mode_info__enum_functor_desc_may_init_solver_vars_0_1
+};
+
+const MR_Integer mercury_data_check_hlds__mode_info__functor_number_map_may_init_solver_vars_0[] = {
+	0,
+	1 };
+	
+const MR_TypeCtorInfo_Struct mercury_data_check_hlds__mode_info__type_ctor_info_may_init_solver_vars_0 = {
+	0,
+	15,
+	-1,
+	MR_TYPECTOR_REP_ENUM,
+	MR_MAYBE_STATIC_CODE(MR_ENTRY_AP(__Unify___check_hlds__mode_info__may_init_solver_vars_0_0)),
+	MR_MAYBE_STATIC_CODE(MR_ENTRY_AP(__Compare___check_hlds__mode_info__may_init_solver_vars_0_0)),
+	"check_hlds.mode_info",
+	"may_init_solver_vars",
+	{ (void *)mercury_data_check_hlds__mode_info__enum_name_ordered_may_init_solver_vars_0 },
+	{ (void *)mercury_data_check_hlds__mode_info__enum_value_ordered_may_init_solver_vars_0 },
+	2,
+	4,
+	mercury_data_check_hlds__mode_info__functor_number_map_may_init_solver_vars_0
+};
+extern const MR_TypeCtorInfo_Struct mercury_data_builtin__type_ctor_info_int_0;
+extern const MR_TypeCtorInfo_Struct mercury_data_builtin__type_ctor_info_int_0;
+
+const MR_PseudoTypeInfo mercury_data_check_hlds__mode_info__field_types_mode_context_0_0[] = {
+	(MR_PseudoTypeInfo) &mercury_data_hlds__hlds_pred__type_ctor_info_call_id_0,
+	(MR_PseudoTypeInfo) &mercury_data_builtin__type_ctor_info_int_0
+};
+
+static const MR_DuFunctorDesc mercury_data_check_hlds__mode_info__du_functor_desc_mode_context_0_0 = {
+	"mode_context_call",
+	2,
+	0,
+	MR_SECTAG_NONE,
+	1,
+	-1,
+	0,
+	(MR_PseudoTypeInfo *) mercury_data_check_hlds__mode_info__field_types_mode_context_0_0,
+	NULL,
+	NULL,
+	NULL
+};
+extern const MR_TypeCtorInfo_Struct mercury_data_check_hlds__mode_info__type_ctor_info_side_0;
+
+const MR_PseudoTypeInfo mercury_data_check_hlds__mode_info__field_types_mode_context_0_1[] = {
+	(MR_PseudoTypeInfo) &mercury_data_hlds__hlds_goal__type_ctor_info_unify_context_0,
+	(MR_PseudoTypeInfo) &mercury_data_check_hlds__mode_info__type_ctor_info_side_0
+};
+
+static const MR_DuFunctorDesc mercury_data_check_hlds__mode_info__du_functor_desc_mode_context_0_1 = {
+	"mode_context_unify",
+	2,
+	0,
+	MR_SECTAG_NONE,
+	2,
+	-1,
+	1,
+	(MR_PseudoTypeInfo *) mercury_data_check_hlds__mode_info__field_types_mode_context_0_1,
+	NULL,
+	NULL,
+	NULL
+};
+
+static const MR_DuFunctorDesc mercury_data_check_hlds__mode_info__du_functor_desc_mode_context_0_2 = {
+	"mode_context_uninitialized",
+	0,
+	0,
+	MR_SECTAG_LOCAL,
+	0,
+	0,
+	2,
+	(MR_PseudoTypeInfo *) NULL,
+	NULL,
+	NULL,
+	NULL
+};
+
+const MR_DuFunctorDescPtr mercury_data_check_hlds__mode_info__du_stag_ordered_mode_context_0_0[] = {
+	&mercury_data_check_hlds__mode_info__du_functor_desc_mode_context_0_2
+
+};
+
+const MR_DuFunctorDescPtr mercury_data_check_hlds__mode_info__du_stag_ordered_mode_context_0_1[] = {
+	&mercury_data_check_hlds__mode_info__du_functor_desc_mode_context_0_0
+
+};
+
+const MR_DuFunctorDescPtr mercury_data_check_hlds__mode_info__du_stag_ordered_mode_context_0_2[] = {
+	&mercury_data_check_hlds__mode_info__du_functor_desc_mode_context_0_1
+
+};
+
+const MR_DuPtagLayout mercury_data_check_hlds__mode_info__du_ptag_ordered_mode_context_0[] = {
+	{ 1, MR_SECTAG_LOCAL,
+	mercury_data_check_hlds__mode_info__du_stag_ordered_mode_context_0_0 },
+	{ 1, MR_SECTAG_NONE,
+	mercury_data_check_hlds__mode_info__du_stag_ordered_mode_context_0_1 },
+	{ 1, MR_SECTAG_NONE,
+	mercury_data_check_hlds__mode_info__du_stag_ordered_mode_context_0_2 }
+
+};
+
+const MR_DuFunctorDescPtr mercury_data_check_hlds__mode_info__du_name_ordered_mode_context_0[] = {
+	&mercury_data_check_hlds__mode_info__du_functor_desc_mode_context_0_0,
+	&mercury_data_check_hlds__mode_info__du_functor_desc_mode_context_0_1,
+	&mercury_data_check_hlds__mode_info__du_functor_desc_mode_context_0_2
+};
+
+const MR_Integer mercury_data_check_hlds__mode_info__functor_number_map_mode_context_0[] = {
+	0,
+	1,
+	2 };
+	
+const MR_TypeCtorInfo_Struct mercury_data_check_hlds__mode_info__type_ctor_info_mode_context_0 = {
+	0,
+	15,
+	3,
+	MR_TYPECTOR_REP_DU,
+	MR_MAYBE_STATIC_CODE(MR_ENTRY_AP(__Unify___check_hlds__mode_info__mode_context_0_0)),
+	MR_MAYBE_STATIC_CODE(MR_ENTRY_AP(__Compare___check_hlds__mode_info__mode_context_0_0)),
+	"check_hlds.mode_info",
+	"mode_context",
+	{ (void *)mercury_data_check_hlds__mode_info__du_name_ordered_mode_context_0 },
+	{ (void *)mercury_data_check_hlds__mode_info__du_ptag_ordered_mode_context_0 },
+	3,
+	4,
+	mercury_data_check_hlds__mode_info__functor_number_map_mode_context_0
+};
+extern const MR_TypeCtorInfo_Struct mercury_data_hlds__hlds_module__type_ctor_info_module_info_0;
+extern const MR_TypeCtorInfo_Struct mercury_data_hlds__instmap__type_ctor_info_instmap_0;
+extern const MR_TypeCtorInfo_Struct mercury_data_check_hlds__delay_info__type_ctor_info_delay_info_0;
+extern const MR_TypeCtorInfo_Struct mercury_data_check_hlds__mode_errors__type_ctor_info_mode_error_info_0;
+extern const MR_TypeCtorInfo_Struct mercury_data_check_hlds__mode_errors__type_ctor_info_mode_error_info_0;
+
+static const MR_FA_TypeInfo_Struct1 mercury_data_list__ti_list_1check_hlds__mode_errors__type_ctor_info_mode_error_info_0 = {
+	&mercury_data_list__type_ctor_info_list_1,
+{	(MR_TypeInfo) &mercury_data_check_hlds__mode_errors__type_ctor_info_mode_error_info_0
+}};
+extern const MR_TypeCtorInfo_Struct mercury_data_term__type_ctor_info_context_0;
+extern const MR_TypeCtorInfo_Struct mercury_data_bag__type_ctor_info_bag_1;
+
+static const MR_FA_TypeInfo_Struct1 mercury_data_bag__ti_bag_1term__ti_var_1parse_tree__prog_data__type_ctor_info_prog_var_type_0 = {
+	&mercury_data_bag__type_ctor_info_bag_1,
+{	(MR_TypeInfo) &mercury_data_term__ti_var_1parse_tree__prog_data__type_ctor_info_prog_var_type_0
+}};
+extern const MR_TypeCtorInfo_Struct mercury_data_hlds__hlds_module__type_ctor_info_module_info_0;
+extern const MR_TypeCtorInfo_Struct mercury_data_hlds__instmap__type_ctor_info_instmap_0;
+extern const MR_TypeCtorInfo_Struct mercury_data_check_hlds__delay_info__type_ctor_info_delay_info_0;
+extern const MR_TypeCtorInfo_Struct mercury_data_check_hlds__mode_info__type_ctor_info_mode_context_0;
+extern const MR_TypeCtorInfo_Struct mercury_data_term__type_ctor_info_context_0;
+extern const MR_TypeCtorInfo_Struct mercury_data_check_hlds__mode_info__type_ctor_info_mode_sub_info_0;
+
+const MR_PseudoTypeInfo mercury_data_check_hlds__mode_info__field_types_mode_info_0_0[] = {
+	(MR_PseudoTypeInfo) &mercury_data_hlds__hlds_module__type_ctor_info_module_info_0,
+	(MR_PseudoTypeInfo) &mercury_data_hlds__instmap__type_ctor_info_instmap_0,
+	(MR_PseudoTypeInfo) &mercury_data_check_hlds__delay_info__type_ctor_info_delay_info_0,
+	(MR_PseudoTypeInfo) &mercury_data_list__ti_list_1check_hlds__mode_errors__type_ctor_info_mode_error_info_0,
+	(MR_PseudoTypeInfo) &mercury_data_check_hlds__mode_info__type_ctor_info_mode_context_0,
+	(MR_PseudoTypeInfo) &mercury_data_term__type_ctor_info_context_0,
+	(MR_PseudoTypeInfo) &mercury_data_bag__ti_bag_1term__ti_var_1parse_tree__prog_data__type_ctor_info_prog_var_type_0,
+	(MR_PseudoTypeInfo) &mercury_data_check_hlds__mode_info__type_ctor_info_mode_sub_info_0
+};
+
+const MR_ConstString mercury_data_check_hlds__mode_info__field_names_mode_info_0_0[] = {
+	"mi_module_info",
+	"mi_instmap",
+	"mi_delay_info",
+	"mi_errors",
+	"mi_mode_context",
+	"mi_context",
+	"mi_nondet_live_vars",
+	"mi_sub_info"
+};
+
+static const MR_DuFunctorDesc mercury_data_check_hlds__mode_info__du_functor_desc_mode_info_0_0 = {
+	"mode_info",
+	8,
+	0,
+	MR_SECTAG_NONE,
+	0,
+	-1,
+	0,
+	(MR_PseudoTypeInfo *) mercury_data_check_hlds__mode_info__field_types_mode_info_0_0,
+	mercury_data_check_hlds__mode_info__field_names_mode_info_0_0,
+	NULL,
+	NULL
+};
+
+const MR_DuFunctorDescPtr mercury_data_check_hlds__mode_info__du_stag_ordered_mode_info_0_0[] = {
+	&mercury_data_check_hlds__mode_info__du_functor_desc_mode_info_0_0
+
+};
+
+const MR_DuPtagLayout mercury_data_check_hlds__mode_info__du_ptag_ordered_mode_info_0[] = {
+	{ 1, MR_SECTAG_NONE,
+	mercury_data_check_hlds__mode_info__du_stag_ordered_mode_info_0_0 }
+
+};
+
+const MR_DuFunctorDescPtr mercury_data_check_hlds__mode_info__du_name_ordered_mode_info_0[] = {
+	&mercury_data_check_hlds__mode_info__du_functor_desc_mode_info_0_0
+};
+
+const MR_Integer mercury_data_check_hlds__mode_info__functor_number_map_mode_info_0[] = {
+	0 };
+	
+const MR_TypeCtorInfo_Struct mercury_data_check_hlds__mode_info__type_ctor_info_mode_info_0 = {
+	0,
+	15,
+	1,
+	MR_TYPECTOR_REP_DU,
+	MR_MAYBE_STATIC_CODE(MR_ENTRY_AP(__Unify___check_hlds__mode_info__mode_info_0_0)),
+	MR_MAYBE_STATIC_CODE(MR_ENTRY_AP(__Compare___check_hlds__mode_info__mode_info_0_0)),
+	"check_hlds.mode_info",
+	"mode_info",
+	{ (void *)mercury_data_check_hlds__mode_info__du_name_ordered_mode_info_0 },
+	{ (void *)mercury_data_check_hlds__mode_info__du_ptag_ordered_mode_info_0 },
+	1,
+	4,
+	mercury_data_check_hlds__mode_info__functor_number_map_mode_info_0
+};
+extern const MR_TypeCtorInfo_Struct mercury_data_varset__type_ctor_info_varset_1;
+
+static const MR_FA_TypeInfo_Struct1 mercury_data_varset__ti_varset_1parse_tree__prog_data__type_ctor_info_prog_var_type_0 = {
+	&mercury_data_varset__type_ctor_info_varset_1,
+{	(MR_TypeInfo) &mercury_data_parse_tree__prog_data__type_ctor_info_prog_var_type_0
+}};
+extern const MR_TypeCtorInfo_Struct mercury_data_tree234__type_ctor_info_tree234_2;
+extern const MR_TypeCtorInfo_Struct mercury_data_parse_tree__prog_data__type_ctor_info_mer_type_0;
+extern const MR_TypeCtorInfo_Struct mercury_data_parse_tree__prog_data__type_ctor_info_mer_type_0;
+
+static const MR_FA_TypeInfo_Struct2 mercury_data_tree234__ti_tree234_2term__ti_var_1parse_tree__prog_data__type_ctor_info_prog_var_type_0parse_tree__prog_data__type_ctor_info_mer_type_0 = {
+	&mercury_data_tree234__type_ctor_info_tree234_2,
+{	(MR_TypeInfo) &mercury_data_term__ti_var_1parse_tree__prog_data__type_ctor_info_prog_var_type_0,
+	(MR_TypeInfo) &mercury_data_parse_tree__prog_data__type_ctor_info_mer_type_0
+}};
+extern const MR_TypeCtorInfo_Struct mercury_data_maybe__type_ctor_info_maybe_1;
+extern const MR_TypeCtorInfo_Struct mercury_data_check_hlds__mode_info__type_ctor_info_debug_flags_0;
+
+static const MR_FA_TypeInfo_Struct1 mercury_data_maybe__ti_maybe_1check_hlds__mode_info__type_ctor_info_debug_flags_0 = {
+	&mercury_data_maybe__type_ctor_info_maybe_1,
+{	(MR_TypeInfo) &mercury_data_check_hlds__mode_info__type_ctor_info_debug_flags_0
+}};
+extern const MR_TypeCtorInfo_Struct mercury_data_parse_tree__prog_data__type_ctor_info_inst_var_type_0;
+extern const MR_TypeCtorInfo_Struct mercury_data_parse_tree__prog_data__type_ctor_info_inst_var_type_0;
+
+static const MR_FA_TypeInfo_Struct1 mercury_data_varset__ti_varset_1parse_tree__prog_data__type_ctor_info_inst_var_type_0 = {
+	&mercury_data_varset__type_ctor_info_varset_1,
+{	(MR_TypeInfo) &mercury_data_parse_tree__prog_data__type_ctor_info_inst_var_type_0
+}};
+extern const MR_TypeCtorInfo_Struct mercury_data_check_hlds__mode_info__type_ctor_info_par_conj_mode_check_0;
+
+static const MR_FA_TypeInfo_Struct1 mercury_data_list__ti_list_1check_hlds__mode_info__type_ctor_info_par_conj_mode_check_0 = {
+	&mercury_data_list__type_ctor_info_list_1,
+{	(MR_TypeInfo) &mercury_data_check_hlds__mode_info__type_ctor_info_par_conj_mode_check_0
+}};
+extern const MR_TypeCtorInfo_Struct mercury_data_check_hlds__mode_errors__type_ctor_info_mode_warning_info_0;
+extern const MR_TypeCtorInfo_Struct mercury_data_check_hlds__mode_errors__type_ctor_info_mode_warning_info_0;
+
+static const MR_FA_TypeInfo_Struct1 mercury_data_list__ti_list_1check_hlds__mode_errors__type_ctor_info_mode_warning_info_0 = {
+	&mercury_data_list__type_ctor_info_list_1,
+{	(MR_TypeInfo) &mercury_data_check_hlds__mode_errors__type_ctor_info_mode_warning_info_0
+}};
+extern const MR_TypeCtorInfo_Struct mercury_data_hlds__hlds_pred__type_ctor_info_need_to_requantify_0;
+extern const MR_TypeCtorInfo_Struct mercury_data_check_hlds__mode_info__type_ctor_info_how_to_check_goal_0;
+extern const MR_TypeCtorInfo_Struct mercury_data_check_hlds__mode_info__type_ctor_info_may_change_called_proc_0;
+extern const MR_TypeCtorInfo_Struct mercury_data_check_hlds__mode_info__type_ctor_info_may_init_solver_vars_0;
+extern const MR_TypeCtorInfo_Struct mercury_data_hlds__hlds_pred__type_ctor_info_need_to_requantify_0;
+extern const MR_TypeCtorInfo_Struct mercury_data_check_hlds__mode_info__type_ctor_info_in_promise_purity_scope_0;
+extern const MR_TypeCtorInfo_Struct mercury_data_check_hlds__mode_info__type_ctor_info_in_from_ground_term_scope_0;
+extern const MR_TypeCtorInfo_Struct mercury_data_check_hlds__mode_info__type_ctor_info_had_from_ground_term_scope_0;
+extern const MR_TypeCtorInfo_Struct mercury_data_check_hlds__mode_info__type_ctor_info_make_ground_terms_unique_0;
+extern const MR_TypeCtorInfo_Struct mercury_data_check_hlds__mode_info__type_ctor_info_in_dupl_for_switch_0;
+
+const MR_PseudoTypeInfo mercury_data_check_hlds__mode_info__field_types_mode_sub_info_0_0[] = {
+	(MR_PseudoTypeInfo) &mercury_data_builtin__type_ctor_info_int_0,
+	(MR_PseudoTypeInfo) &mercury_data_builtin__type_ctor_info_int_0,
+	(MR_PseudoTypeInfo) &mercury_data_varset__ti_varset_1parse_tree__prog_data__type_ctor_info_prog_var_type_0,
+	(MR_PseudoTypeInfo) &mercury_data_tree234__ti_tree234_2term__ti_var_1parse_tree__prog_data__type_ctor_info_prog_var_type_0parse_tree__prog_data__type_ctor_info_mer_type_0,
+	(MR_PseudoTypeInfo) &mercury_data_maybe__ti_maybe_1check_hlds__mode_info__type_ctor_info_debug_flags_0,
+	(MR_PseudoTypeInfo) &mercury_data_list__ti_list_1pair__ti_pair_2check_hlds__mode_info__type_ctor_info_var_lock_reason_0tree_bitset__ti_tree_bitset_1term__ti_var_1parse_tree__prog_data__type_ctor_info_prog_var_type_0,
+	(MR_PseudoTypeInfo) &mercury_data_bag__ti_bag_1term__ti_var_1parse_tree__prog_data__type_ctor_info_prog_var_type_0,
+	(MR_PseudoTypeInfo) &mercury_data_varset__ti_varset_1parse_tree__prog_data__type_ctor_info_inst_var_type_0,
+	(MR_PseudoTypeInfo) &mercury_data_list__ti_list_1check_hlds__mode_info__type_ctor_info_par_conj_mode_check_0,
+	(MR_PseudoTypeInfo) &mercury_data_check_hlds__mode_info__type_ctor_info_how_to_check_goal_0,
+	(MR_PseudoTypeInfo) &mercury_data_check_hlds__mode_info__type_ctor_info_may_change_called_proc_0,
+	(MR_PseudoTypeInfo) &mercury_data_check_hlds__mode_info__type_ctor_info_may_init_solver_vars_0,
+	(MR_PseudoTypeInfo) &mercury_data_hlds__instmap__type_ctor_info_instmap_0,
+	(MR_PseudoTypeInfo) &mercury_data_bool__type_ctor_info_bool_0,
+	(MR_PseudoTypeInfo) &mercury_data_bool__type_ctor_info_bool_0,
+	(MR_PseudoTypeInfo) &mercury_data_hlds__instmap__type_ctor_info_instmap_0,
+	(MR_PseudoTypeInfo) &mercury_data_list__ti_list_1check_hlds__mode_errors__type_ctor_info_mode_warning_info_0,
+	(MR_PseudoTypeInfo) &mercury_data_hlds__hlds_pred__type_ctor_info_need_to_requantify_0,
+	(MR_PseudoTypeInfo) &mercury_data_check_hlds__mode_info__type_ctor_info_in_promise_purity_scope_0,
+	(MR_PseudoTypeInfo) &mercury_data_check_hlds__mode_info__type_ctor_info_in_from_ground_term_scope_0,
+	(MR_PseudoTypeInfo) &mercury_data_check_hlds__mode_info__type_ctor_info_had_from_ground_term_scope_0,
+	(MR_PseudoTypeInfo) &mercury_data_check_hlds__mode_info__type_ctor_info_make_ground_terms_unique_0,
+	(MR_PseudoTypeInfo) &mercury_data_check_hlds__mode_info__type_ctor_info_in_dupl_for_switch_0
+};
+
+const MR_ConstString mercury_data_check_hlds__mode_info__field_names_mode_sub_info_0_0[] = {
+	"msi_pred_id",
+	"msi_proc_id",
+	"msi_varset",
+	"msi_vartypes",
+	"msi_debug",
+	"msi_locked_vars",
+	"msi_live_vars",
+	"msi_instvarset",
+	"msi_par_conj",
+	"msi_how_to_check",
+	"msi_may_change_called_proc",
+	"msi_may_init_solver_vars",
+	"msi_last_checkpoint_insts",
+	"msi_changed_flag",
+	"msi_checking_extra_goals",
+	"msi_initial_instmap",
+	"msi_warnings",
+	"msi_need_to_requantify",
+	"msi_in_promise_purity_scope",
+	"msi_in_from_ground_term",
+	"msi_had_from_ground_term",
+	"msi_make_ground_terms_unique",
+	"msi_in_dupl_for_switch"
+};
+
+const MR_DuArgLocn mercury_data_check_hlds__mode_info__field_locns_mode_sub_info_0_0[] = {
+	{ 0, 0, 0 },
+	{ 1, 0, 0 },
+	{ 2, 0, 0 },
+	{ 3, 0, 0 },
+	{ 4, 0, 0 },
+	{ 5, 0, 0 },
+	{ 6, 0, 0 },
+	{ 7, 0, 0 },
+	{ 8, 0, 0 },
+	{ 9, 0, 1 },
+	{ 9, 1, 1 },
+	{ 9, 2, 1 },
+	{ 10, 0, 0 },
+	{ 11, 0, 1 },
+	{ 11, 1, 1 },
+	{ 12, 0, 0 },
+	{ 13, 0, 0 },
+	{ 14, 0, 1 },
+	{ 14, 1, 1 },
+	{ 14, 2, 1 },
+	{ 14, 3, 1 },
+	{ 14, 4, 1 },
+	{ 14, 5, 1 },
+};
+
+static const MR_DuFunctorDesc mercury_data_check_hlds__mode_info__du_functor_desc_mode_sub_info_0_0 = {
+	"mode_sub_info",
+	23,
+	0,
+	MR_SECTAG_NONE,
+	0,
+	-1,
+	0,
+	(MR_PseudoTypeInfo *) mercury_data_check_hlds__mode_info__field_types_mode_sub_info_0_0,
+	mercury_data_check_hlds__mode_info__field_names_mode_sub_info_0_0,
+	mercury_data_check_hlds__mode_info__field_locns_mode_sub_info_0_0,
+	NULL
+};
+
+const MR_DuFunctorDescPtr mercury_data_check_hlds__mode_info__du_stag_ordered_mode_sub_info_0_0[] = {
+	&mercury_data_check_hlds__mode_info__du_functor_desc_mode_sub_info_0_0
+
+};
+
+const MR_DuPtagLayout mercury_data_check_hlds__mode_info__du_ptag_ordered_mode_sub_info_0[] = {
+	{ 1, MR_SECTAG_NONE,
+	mercury_data_check_hlds__mode_info__du_stag_ordered_mode_sub_info_0_0 }
+
+};
+
+const MR_DuFunctorDescPtr mercury_data_check_hlds__mode_info__du_name_ordered_mode_sub_info_0[] = {
+	&mercury_data_check_hlds__mode_info__du_functor_desc_mode_sub_info_0_0
+};
+
+const MR_Integer mercury_data_check_hlds__mode_info__functor_number_map_mode_sub_info_0[] = {
+	0 };
+	
+const MR_TypeCtorInfo_Struct mercury_data_check_hlds__mode_info__type_ctor_info_mode_sub_info_0 = {
+	0,
+	15,
+	1,
+	MR_TYPECTOR_REP_DU,
+	MR_MAYBE_STATIC_CODE(MR_ENTRY_AP(__Unify___check_hlds__mode_info__mode_sub_info_0_0)),
+	MR_MAYBE_STATIC_CODE(MR_ENTRY_AP(__Compare___check_hlds__mode_info__mode_sub_info_0_0)),
+	"check_hlds.mode_info",
+	"mode_sub_info",
+	{ (void *)mercury_data_check_hlds__mode_info__du_name_ordered_mode_sub_info_0 },
+	{ (void *)mercury_data_check_hlds__mode_info__du_ptag_ordered_mode_sub_info_0 },
+	1,
+	4,
+	mercury_data_check_hlds__mode_info__functor_number_map_mode_sub_info_0
+};
+
+const MR_PseudoTypeInfo mercury_data_check_hlds__mode_info__field_types_par_conj_mode_check_0_0[] = {
+	(MR_PseudoTypeInfo) &mercury_data_tree_bitset__ti_tree_bitset_1term__ti_var_1parse_tree__prog_data__type_ctor_info_prog_var_type_0,
+	(MR_PseudoTypeInfo) &mercury_data_tree_bitset__ti_tree_bitset_1term__ti_var_1parse_tree__prog_data__type_ctor_info_prog_var_type_0
+};
+
+const MR_ConstString mercury_data_check_hlds__mode_info__field_names_par_conj_mode_check_0_0[] = {
+	"par_conj_nonlocals",
+	"par_conj_bound"
+};
+
+static const MR_DuFunctorDesc mercury_data_check_hlds__mode_info__du_functor_desc_par_conj_mode_check_0_0 = {
+	"par_conj_mode_check",
+	2,
+	0,
+	MR_SECTAG_NONE,
+	0,
+	-1,
+	0,
+	(MR_PseudoTypeInfo *) mercury_data_check_hlds__mode_info__field_types_par_conj_mode_check_0_0,
+	mercury_data_check_hlds__mode_info__field_names_par_conj_mode_check_0_0,
+	NULL,
+	NULL
+};
+
+const MR_DuFunctorDescPtr mercury_data_check_hlds__mode_info__du_stag_ordered_par_conj_mode_check_0_0[] = {
+	&mercury_data_check_hlds__mode_info__du_functor_desc_par_conj_mode_check_0_0
+
+};
+
+const MR_DuPtagLayout mercury_data_check_hlds__mode_info__du_ptag_ordered_par_conj_mode_check_0[] = {
+	{ 1, MR_SECTAG_NONE,
+	mercury_data_check_hlds__mode_info__du_stag_ordered_par_conj_mode_check_0_0 }
+
+};
+
+const MR_DuFunctorDescPtr mercury_data_check_hlds__mode_info__du_name_ordered_par_conj_mode_check_0[] = {
+	&mercury_data_check_hlds__mode_info__du_functor_desc_par_conj_mode_check_0_0
+};
+
+const MR_Integer mercury_data_check_hlds__mode_info__functor_number_map_par_conj_mode_check_0[] = {
+	0 };
+	
+const MR_TypeCtorInfo_Struct mercury_data_check_hlds__mode_info__type_ctor_info_par_conj_mode_check_0 = {
+	0,
+	15,
+	1,
+	MR_TYPECTOR_REP_DU,
+	MR_MAYBE_STATIC_CODE(MR_ENTRY_AP(__Unify___check_hlds__mode_info__par_conj_mode_check_0_0)),
+	MR_MAYBE_STATIC_CODE(MR_ENTRY_AP(__Compare___check_hlds__mode_info__par_conj_mode_check_0_0)),
+	"check_hlds.mode_info",
+	"par_conj_mode_check",
+	{ (void *)mercury_data_check_hlds__mode_info__du_name_ordered_par_conj_mode_check_0 },
+	{ (void *)mercury_data_check_hlds__mode_info__du_ptag_ordered_par_conj_mode_check_0 },
+	1,
+	4,
+	mercury_data_check_hlds__mode_info__functor_number_map_par_conj_mode_check_0
+};
+
+const MR_TypeCtorInfo_Struct mercury_data_check_hlds__mode_info__type_ctor_info_par_conj_mode_check_stack_0 = {
+	0,
+	15,
+	-1,
+	MR_TYPECTOR_REP_EQUIV_GROUND,
+	MR_MAYBE_STATIC_CODE(MR_ENTRY_AP(__Unify___check_hlds__mode_info__par_conj_mode_check_stack_0_0)),
+	MR_MAYBE_STATIC_CODE(MR_ENTRY_AP(__Compare___check_hlds__mode_info__par_conj_mode_check_stack_0_0)),
+	"check_hlds.mode_info",
+	"par_conj_mode_check_stack",
+	{ 0 },
+	{ (void *)&mercury_data_list__ti_list_1check_hlds__mode_info__type_ctor_info_par_conj_mode_check_0 },
+	-1,
+	0,
+	NULL
+};
+
+static const MR_EnumFunctorDesc mercury_data_check_hlds__mode_info__enum_functor_desc_side_0_0 = {
+	"left",
+	0
+};
+
+static const MR_EnumFunctorDesc mercury_data_check_hlds__mode_info__enum_functor_desc_side_0_1 = {
+	"right",
+	1
+};
+
+const MR_EnumFunctorDescPtr mercury_data_check_hlds__mode_info__enum_value_ordered_side_0[] = {
+	&mercury_data_check_hlds__mode_info__enum_functor_desc_side_0_0,
+	&mercury_data_check_hlds__mode_info__enum_functor_desc_side_0_1
+};
+
+const MR_EnumFunctorDescPtr mercury_data_check_hlds__mode_info__enum_name_ordered_side_0[] = {
+	&mercury_data_check_hlds__mode_info__enum_functor_desc_side_0_0,
+	&mercury_data_check_hlds__mode_info__enum_functor_desc_side_0_1
+};
+
+const MR_Integer mercury_data_check_hlds__mode_info__functor_number_map_side_0[] = {
+	0,
+	1 };
+	
+const MR_TypeCtorInfo_Struct mercury_data_check_hlds__mode_info__type_ctor_info_side_0 = {
+	0,
+	15,
+	-1,
+	MR_TYPECTOR_REP_ENUM,
+	MR_MAYBE_STATIC_CODE(MR_ENTRY_AP(__Unify___check_hlds__mode_info__side_0_0)),
+	MR_MAYBE_STATIC_CODE(MR_ENTRY_AP(__Compare___check_hlds__mode_info__side_0_0)),
+	"check_hlds.mode_info",
+	"side",
+	{ (void *)mercury_data_check_hlds__mode_info__enum_name_ordered_side_0 },
+	{ (void *)mercury_data_check_hlds__mode_info__enum_value_ordered_side_0 },
+	2,
+	4,
+	mercury_data_check_hlds__mode_info__functor_number_map_side_0
+};
+
+static const MR_DuFunctorDesc mercury_data_check_hlds__mode_info__du_functor_desc_var_lock_reason_0_0 = {
+	"var_lock_negation",
+	0,
+	0,
+	MR_SECTAG_LOCAL,
+	0,
+	0,
+	0,
+	(MR_PseudoTypeInfo *) NULL,
+	NULL,
+	NULL,
+	NULL
+};
+
+static const MR_DuFunctorDesc mercury_data_check_hlds__mode_info__du_functor_desc_var_lock_reason_0_1 = {
+	"var_lock_if_then_else",
+	0,
+	0,
+	MR_SECTAG_LOCAL,
+	0,
+	1,
+	1,
+	(MR_PseudoTypeInfo *) NULL,
+	NULL,
+	NULL,
+	NULL
+};
+extern const MR_TypeCtorInfo_Struct mercury_data_mdbcomp__prim_data__type_ctor_info_pred_or_func_0;
+extern const MR_TypeCtorInfo_Struct mercury_data_mdbcomp__prim_data__type_ctor_info_pred_or_func_0;
+
+const MR_PseudoTypeInfo mercury_data_check_hlds__mode_info__field_types_var_lock_reason_0_2[] = {
+	(MR_PseudoTypeInfo) &mercury_data_mdbcomp__prim_data__type_ctor_info_pred_or_func_0
+};
+
+static const MR_DuFunctorDesc mercury_data_check_hlds__mode_info__du_functor_desc_var_lock_reason_0_2 = {
+	"var_lock_lambda",
+	1,
+	0,
+	MR_SECTAG_NONE,
+	1,
+	-1,
+	2,
+	(MR_PseudoTypeInfo *) mercury_data_check_hlds__mode_info__field_types_var_lock_reason_0_2,
+	NULL,
+	NULL,
+	NULL
+};
+
+static const MR_DuFunctorDesc mercury_data_check_hlds__mode_info__du_functor_desc_var_lock_reason_0_3 = {
+	"var_lock_trace_goal",
+	0,
+	0,
+	MR_SECTAG_LOCAL,
+	0,
+	2,
+	3,
+	(MR_PseudoTypeInfo *) NULL,
+	NULL,
+	NULL,
+	NULL
+};
+
+static const MR_DuFunctorDesc mercury_data_check_hlds__mode_info__du_functor_desc_var_lock_reason_0_4 = {
+	"var_lock_atomic_goal",
+	0,
+	0,
+	MR_SECTAG_LOCAL,
+	0,
+	3,
+	4,
+	(MR_PseudoTypeInfo *) NULL,
+	NULL,
+	NULL,
+	NULL
+};
+
+static const MR_DuFunctorDesc mercury_data_check_hlds__mode_info__du_functor_desc_var_lock_reason_0_5 = {
+	"var_lock_par_conj",
+	0,
+	0,
+	MR_SECTAG_LOCAL,
+	0,
+	4,
+	5,
+	(MR_PseudoTypeInfo *) NULL,
+	NULL,
+	NULL,
+	NULL
+};
+
+const MR_DuFunctorDescPtr mercury_data_check_hlds__mode_info__du_stag_ordered_var_lock_reason_0_0[] = {
+	&mercury_data_check_hlds__mode_info__du_functor_desc_var_lock_reason_0_0,
+	&mercury_data_check_hlds__mode_info__du_functor_desc_var_lock_reason_0_1,
+	&mercury_data_check_hlds__mode_info__du_functor_desc_var_lock_reason_0_3,
+	&mercury_data_check_hlds__mode_info__du_functor_desc_var_lock_reason_0_4,
+	&mercury_data_check_hlds__mode_info__du_functor_desc_var_lock_reason_0_5
+
+};
+
+const MR_DuFunctorDescPtr mercury_data_check_hlds__mode_info__du_stag_ordered_var_lock_reason_0_1[] = {
+	&mercury_data_check_hlds__mode_info__du_functor_desc_var_lock_reason_0_2
+
+};
+
+const MR_DuPtagLayout mercury_data_check_hlds__mode_info__du_ptag_ordered_var_lock_reason_0[] = {
+	{ 5, MR_SECTAG_LOCAL,
+	mercury_data_check_hlds__mode_info__du_stag_ordered_var_lock_reason_0_0 },
+	{ 1, MR_SECTAG_NONE,
+	mercury_data_check_hlds__mode_info__du_stag_ordered_var_lock_reason_0_1 }
+
+};
+
+const MR_DuFunctorDescPtr mercury_data_check_hlds__mode_info__du_name_ordered_var_lock_reason_0[] = {
+	&mercury_data_check_hlds__mode_info__du_functor_desc_var_lock_reason_0_4,
+	&mercury_data_check_hlds__mode_info__du_functor_desc_var_lock_reason_0_1,
+	&mercury_data_check_hlds__mode_info__du_functor_desc_var_lock_reason_0_2,
+	&mercury_data_check_hlds__mode_info__du_functor_desc_var_lock_reason_0_0,
+	&mercury_data_check_hlds__mode_info__du_functor_desc_var_lock_reason_0_5,
+	&mercury_data_check_hlds__mode_info__du_functor_desc_var_lock_reason_0_3
+};
+
+const MR_Integer mercury_data_check_hlds__mode_info__functor_number_map_var_lock_reason_0[] = {
+	3,
+	1,
+	2,
+	5,
+	0,
+	4 };
+	
+const MR_TypeCtorInfo_Struct mercury_data_check_hlds__mode_info__type_ctor_info_var_lock_reason_0 = {
+	0,
+	15,
+	2,
+	MR_TYPECTOR_REP_DU,
+	MR_MAYBE_STATIC_CODE(MR_ENTRY_AP(__Unify___check_hlds__mode_info__var_lock_reason_0_0)),
+	MR_MAYBE_STATIC_CODE(MR_ENTRY_AP(__Compare___check_hlds__mode_info__var_lock_reason_0_0)),
+	"check_hlds.mode_info",
+	"var_lock_reason",
+	{ (void *)mercury_data_check_hlds__mode_info__du_name_ordered_var_lock_reason_0 },
+	{ (void *)mercury_data_check_hlds__mode_info__du_ptag_ordered_var_lock_reason_0 },
+	6,
+	4,
+	mercury_data_check_hlds__mode_info__functor_number_map_var_lock_reason_0
+};
+
+
+
+MR_decl_entry(hlds__hlds_module__module_info_get_globals_2_0);
+MR_decl_entry(libs__globals__lookup_bool_option_3_0);
+MR_decl_entry(libs__globals__lookup_int_option_3_0);
+MR_decl_entry(hlds__hlds_pred__pred_id_to_int_2_0);
+MR_decl_entry(hlds__hlds_module__module_info_proc_info_4_0);
+MR_decl_entry(hlds__hlds_pred__proc_info_get_varset_2_0);
+MR_decl_entry(hlds__hlds_pred__proc_info_get_vartypes_2_0);
+MR_decl_entry(hlds__hlds_pred__proc_info_get_inst_varset_2_0);
+MR_decl_entry(fn__parse_tree__set_of_var__to_sorted_list_1_0);
+MR_decl_entry(bag__from_sorted_list_2_0);
+MR_decl_entry(hlds__instmap__init_unreachable_1_0);
+MR_decl_entry(check_hlds__mode_errors__mode_context_init_1_0);
+MR_decl_entry(check_hlds__delay_info__delay_info_init_1_0);
+
+MR_BEGIN_MODULE(check_hlds__mode_info_module0)
+	MR_init_entry1(check_hlds__mode_info__mode_info_init_9_0);
+	MR_INIT_PROC_LAYOUT_ADDR(mercury__check_hlds__mode_info__mode_info_init_9_0);
+	MR_init_label10(check_hlds__mode_info__mode_info_init_9_0,2,3,4,5,9,10,11,12,7,15)
+	MR_init_label10(check_hlds__mode_info__mode_info_init_9_0,16,17,18,19,20,22,23,25,26,27)
+	MR_init_label1(check_hlds__mode_info__mode_info_init_9_0,28)
+MR_BEGIN_CODE
+
+/*-------------------------------------------------------------------------*/
+/* code for 'mode_info_init'/9 mode 0 */
+#ifdef MR_maybe_local_thread_engine_base
+	#undef MR_maybe_local_thread_engine_base
+	#define MR_maybe_local_thread_engine_base MR_local_thread_engine_base
+#endif
+MR_define_entry(mercury__check_hlds__mode_info__mode_info_init_9_0);
+	MR_MAYBE_INIT_LOCAL_THREAD_ENGINE_BASE
+	MR_incr_sp(16);
+	MR_sv(16) = (MR_Word) MR_succip;
+	MR_sv(1) = MR_r1;
+	MR_sv(11) = MR_r2;
+	MR_sv(12) = MR_r3;
+	MR_sv(2) = MR_r4;
+	MR_sv(13) = MR_r5;
+	MR_sv(3) = MR_r6;
+	MR_sv(4) = MR_r7;
+	MR_sv(5) = MR_r8;
+	MR_np_call_localret_ent(hlds__hlds_module__module_info_get_globals_2_0,
+		check_hlds__mode_info__mode_info_init_9_0_i2);
+MR_def_label(check_hlds__mode_info__mode_info_init_9_0,2)
+	MR_MAYBE_INIT_LOCAL_THREAD_ENGINE_BASE
+	MR_sv(6) = MR_r1;
+	MR_r2 = (MR_Integer) 55;
+	MR_np_call_localret_ent(libs__globals__lookup_bool_option_3_0,
+		check_hlds__mode_info__mode_info_init_9_0_i3);
+MR_def_label(check_hlds__mode_info__mode_info_init_9_0,3)
+	MR_MAYBE_INIT_LOCAL_THREAD_ENGINE_BASE
+	MR_sv(8) = MR_r1;
+	MR_r1 = MR_sv(6);
+	MR_r2 = (MR_Integer) 59;
+	MR_np_call_localret_ent(libs__globals__lookup_int_option_3_0,
+		check_hlds__mode_info__mode_info_init_9_0_i4);
+MR_def_label(check_hlds__mode_info__mode_info_init_9_0,4)
+	MR_MAYBE_INIT_LOCAL_THREAD_ENGINE_BASE
+	MR_sv(7) = MR_r1;
+	MR_r1 = MR_sv(11);
+	MR_np_call_localret_ent(hlds__hlds_pred__pred_id_to_int_2_0,
+		check_hlds__mode_info__mode_info_init_9_0_i5);
+MR_def_label(check_hlds__mode_info__mode_info_init_9_0,5)
+	MR_MAYBE_INIT_LOCAL_THREAD_ENGINE_BASE
+	if (MR_INT_NE(MR_sv(8),1)) {
+		MR_GOTO_LAB(check_hlds__mode_info__mode_info_init_9_0_i7);
+	}
+	if (MR_INT_LT(MR_sv(7),0)) {
+		MR_GOTO_LAB(check_hlds__mode_info__mode_info_init_9_0_i9);
+	}
+	if ((MR_sv(7) != MR_r1)) {
+		MR_GOTO_LAB(check_hlds__mode_info__mode_info_init_9_0_i7);
+	}
+MR_def_label(check_hlds__mode_info__mode_info_init_9_0,9)
+	MR_MAYBE_INIT_LOCAL_THREAD_ENGINE_BASE
+	MR_r1 = MR_sv(6);
+	MR_r2 = (MR_Integer) 58;
+	MR_np_call_localret_ent(libs__globals__lookup_bool_option_3_0,
+		check_hlds__mode_info__mode_info_init_9_0_i10);
+MR_def_label(check_hlds__mode_info__mode_info_init_9_0,10)
+	MR_MAYBE_INIT_LOCAL_THREAD_ENGINE_BASE
+	MR_sv(8) = MR_r1;
+	MR_r1 = MR_sv(6);
+	MR_r2 = (MR_Integer) 57;
+	MR_np_call_localret_ent(libs__globals__lookup_bool_option_3_0,
+		check_hlds__mode_info__mode_info_init_9_0_i11);
+MR_def_label(check_hlds__mode_info__mode_info_init_9_0,11)
+	MR_MAYBE_INIT_LOCAL_THREAD_ENGINE_BASE
+	{
+	MR_Word MR_tempr1;
+	MR_tempr1 = MR_sv(6);
+	MR_sv(6) = MR_r1;
+	MR_r1 = MR_tempr1;
+	MR_r2 = (MR_Integer) 56;
+	}
+	MR_np_call_localret_ent(libs__globals__lookup_bool_option_3_0,
+		check_hlds__mode_info__mode_info_init_9_0_i12);
+MR_def_label(check_hlds__mode_info__mode_info_init_9_0,12)
+	MR_MAYBE_INIT_LOCAL_THREAD_ENGINE_BASE
+	{
+	MR_Word MR_tempr1;
+	MR_tag_alloc_heap(MR_tempr1, 0, (MR_Integer) 1);
+	MR_r4 = MR_tempr1;
+	MR_tfield(0, MR_tempr1, 0) = ((MR_Integer) MR_sv(8) | (((MR_Integer) MR_sv(6) << (MR_Integer) 1) | ((MR_Integer) MR_r1 << (MR_Integer) 2)));
+	MR_tag_alloc_heap(MR_sv(6), 1, (MR_Integer) 1);
+	MR_tfield(1, MR_sv(6), 0) = MR_tempr1;
+	MR_r1 = MR_sv(1);
+	MR_r2 = MR_sv(11);
+	MR_r3 = MR_sv(12);
+	MR_GOTO_LAB(check_hlds__mode_info__mode_info_init_9_0_i15);
+	}
+MR_def_label(check_hlds__mode_info__mode_info_init_9_0,7)
+	MR_MAYBE_INIT_LOCAL_THREAD_ENGINE_BASE
+	MR_r1 = MR_sv(1);
+	MR_r2 = MR_sv(11);
+	MR_r3 = MR_sv(12);
+	MR_sv(6) = (MR_Word) MR_tbmkword(0, 0);
+MR_def_label(check_hlds__mode_info__mode_info_init_9_0,15)
+	MR_MAYBE_INIT_LOCAL_THREAD_ENGINE_BASE
+	MR_sv(1) = MR_r1;
+	MR_sv(11) = MR_r2;
+	MR_sv(12) = MR_r3;
+	MR_np_call_localret_ent(hlds__hlds_module__module_info_proc_info_4_0,
+		check_hlds__mode_info__mode_info_init_9_0_i16);
+MR_def_label(check_hlds__mode_info__mode_info_init_9_0,16)
+	MR_MAYBE_INIT_LOCAL_THREAD_ENGINE_BASE
+	MR_sv(8) = MR_r1;
+	MR_np_call_localret_ent(hlds__hlds_pred__proc_info_get_varset_2_0,
+		check_hlds__mode_info__mode_info_init_9_0_i17);
+MR_def_label(check_hlds__mode_info__mode_info_init_9_0,17)
+	MR_MAYBE_INIT_LOCAL_THREAD_ENGINE_BASE
+	MR_sv(7) = MR_r1;
+	MR_r1 = MR_sv(8);
+	MR_np_call_localret_ent(hlds__hlds_pred__proc_info_get_vartypes_2_0,
+		check_hlds__mode_info__mode_info_init_9_0_i18);
+MR_def_label(check_hlds__mode_info__mode_info_init_9_0,18)
+	MR_MAYBE_INIT_LOCAL_THREAD_ENGINE_BASE
+	MR_r2 = MR_sv(8);
+	MR_sv(8) = MR_r1;
+	MR_r1 = MR_r2;
+	MR_np_call_localret_ent(hlds__hlds_pred__proc_info_get_inst_varset_2_0,
+		check_hlds__mode_info__mode_info_init_9_0_i19);
+MR_def_label(check_hlds__mode_info__mode_info_init_9_0,19)
+	MR_MAYBE_INIT_LOCAL_THREAD_ENGINE_BASE
+	MR_sv(9) = MR_r1;
+	MR_sv(14) = (MR_Word) MR_CTOR0_ADDR(parse_tree__prog_data, prog_var_type);
+	MR_r1 = MR_sv(14);
+	MR_r2 = MR_sv(13);
+	MR_np_call_localret_ent(fn__parse_tree__set_of_var__to_sorted_list_1_0,
+		check_hlds__mode_info__mode_info_init_9_0_i20);
+MR_def_label(check_hlds__mode_info__mode_info_init_9_0,20)
+	MR_MAYBE_INIT_LOCAL_THREAD_ENGINE_BASE
+	MR_sv(15) = (MR_Word) MR_TAG_COMMON(0,0,0);
+	{
+	MR_Word MR_tempr1;
+	MR_tempr1 = MR_r1;
+	MR_r1 = MR_sv(15);
+	MR_r2 = MR_tempr1;
+	}
+	MR_np_call_localret_ent(bag__from_sorted_list_2_0,
+		check_hlds__mode_info__mode_info_init_9_0_i22);
+MR_def_label(check_hlds__mode_info__mode_info_init_9_0,22)
+	MR_MAYBE_INIT_LOCAL_THREAD_ENGINE_BASE
+	MR_sv(10) = MR_r1;
+	MR_np_call_localret_ent(hlds__instmap__init_unreachable_1_0,
+		check_hlds__mode_info__mode_info_init_9_0_i23);
+MR_def_label(check_hlds__mode_info__mode_info_init_9_0,23)
+	MR_MAYBE_INIT_LOCAL_THREAD_ENGINE_BASE
+	MR_tag_alloc_heap(MR_r2, 0, (MR_Integer) 15);
+	MR_tfield(0, MR_r2, 0) = MR_sv(11);
+	MR_tfield(0, MR_r2, 1) = MR_sv(12);
+	MR_tfield(0, MR_r2, 2) = MR_sv(7);
+	MR_tfield(0, MR_r2, 3) = MR_sv(8);
+	MR_tfield(0, MR_r2, 4) = MR_sv(6);
+	MR_tfield(0, MR_r2, 5) = (MR_Word) MR_tbmkword(0, 0);
+	MR_tfield(0, MR_r2, 6) = MR_sv(10);
+	MR_tfield(0, MR_r2, 7) = MR_sv(9);
+	MR_tfield(0, MR_r2, 8) = (MR_Word) MR_tbmkword(0, 0);
+	MR_tfield(0, MR_r2, 9) = ((MR_Integer) MR_sv(4) | (((MR_Integer) MR_sv(5) << (MR_Integer) 1) | ((MR_Integer) 0 << (MR_Integer) 2)));
+	MR_tfield(0, MR_r2, 10) = MR_r1;
+	MR_tfield(0, MR_r2, 11) = ((MR_Integer) 0 | ((MR_Integer) 0 << (MR_Integer) 1));
+	MR_tfield(0, MR_r2, 12) = MR_sv(3);
+	MR_tfield(0, MR_r2, 13) = (MR_Word) MR_tbmkword(0, 0);
+	MR_tfield(0, MR_r2, 14) = ((MR_Integer) 1 | (((MR_Integer) 1 << (MR_Integer) 1) | (((MR_Integer) 1 << (MR_Integer) 2) | (((MR_Integer) 1 << (MR_Integer) 3) | (((MR_Integer) 1 << (MR_Integer) 4) | ((MR_Integer) 1 << (MR_Integer) 5))))));
+	MR_sv(11) = MR_r2;
+	MR_np_call_localret_ent(check_hlds__mode_errors__mode_context_init_1_0,
+		check_hlds__mode_info__mode_info_init_9_0_i25);
+MR_def_label(check_hlds__mode_info__mode_info_init_9_0,25)
+	MR_MAYBE_INIT_LOCAL_THREAD_ENGINE_BASE
+	MR_sv(12) = MR_r1;
+	MR_np_call_localret_ent(check_hlds__delay_info__delay_info_init_1_0,
+		check_hlds__mode_info__mode_info_init_9_0_i26);
+MR_def_label(check_hlds__mode_info__mode_info_init_9_0,26)
+	MR_MAYBE_INIT_LOCAL_THREAD_ENGINE_BASE
+	{
+	MR_Word MR_tempr1;
+	MR_tempr1 = MR_sv(13);
+	MR_sv(13) = MR_r1;
+	MR_r1 = MR_sv(14);
+	MR_r2 = MR_tempr1;
+	}
+	MR_np_call_localret_ent(fn__parse_tree__set_of_var__to_sorted_list_1_0,
+		check_hlds__mode_info__mode_info_init_9_0_i27);
+MR_def_label(check_hlds__mode_info__mode_info_init_9_0,27)
+	MR_MAYBE_INIT_LOCAL_THREAD_ENGINE_BASE
+	{
+	MR_Word MR_tempr1;
+	MR_tempr1 = MR_r1;
+	MR_r1 = MR_sv(15);
+	MR_r2 = MR_tempr1;
+	}
+	MR_np_call_localret_ent(bag__from_sorted_list_2_0,
+		check_hlds__mode_info__mode_info_init_9_0_i28);
+MR_def_label(check_hlds__mode_info__mode_info_init_9_0,28)
+	MR_MAYBE_INIT_LOCAL_THREAD_ENGINE_BASE
+	MR_tag_alloc_heap(MR_r2, 0, (MR_Integer) 8);
+	MR_tfield(0, MR_r2, 0) = MR_sv(1);
+	MR_tfield(0, MR_r2, 1) = MR_sv(3);
+	MR_tfield(0, MR_r2, 2) = MR_sv(13);
+	MR_tfield(0, MR_r2, 3) = (MR_Word) MR_tbmkword(0, 0);
+	MR_tfield(0, MR_r2, 4) = MR_sv(12);
+	MR_tfield(0, MR_r2, 5) = MR_sv(2);
+	MR_tfield(0, MR_r2, 6) = MR_r1;
+	MR_tfield(0, MR_r2, 7) = MR_sv(11);
+	MR_r1 = MR_r2;
+	MR_decr_sp_and_return(16);
+#ifdef MR_maybe_local_thread_engine_base
+	#undef MR_maybe_local_thread_engine_base
+	#define MR_maybe_local_thread_engine_base MR_thread_engine_base
+#endif
+MR_END_MODULE
+
+
+MR_BEGIN_MODULE(check_hlds__mode_info_module1)
+	MR_init_entry1(check_hlds__mode_info__mode_info_get_module_info_2_0);
+	MR_INIT_PROC_LAYOUT_ADDR(mercury__check_hlds__mode_info__mode_info_get_module_info_2_0);
+MR_BEGIN_CODE
+
+/*-------------------------------------------------------------------------*/
+/* code for 'mode_info_get_module_info'/2 mode 0 */
+#ifdef MR_maybe_local_thread_engine_base
+	#undef MR_maybe_local_thread_engine_base
+	#define MR_maybe_local_thread_engine_base MR_local_thread_engine_base
+#endif
+MR_define_entry(mercury__check_hlds__mode_info__mode_info_get_module_info_2_0);
+	MR_MAYBE_INIT_LOCAL_THREAD_ENGINE_BASE
+	MR_r1 = MR_tfield(0, MR_r1, 0);
+	MR_proceed();
+#ifdef MR_maybe_local_thread_engine_base
+	#undef MR_maybe_local_thread_engine_base
+	#define MR_maybe_local_thread_engine_base MR_thread_engine_base
+#endif
+MR_END_MODULE
+
+MR_decl_entry(hlds__hlds_module__module_info_get_preds_2_0);
+
+MR_BEGIN_MODULE(check_hlds__mode_info_module2)
+	MR_init_entry1(check_hlds__mode_info__mode_info_get_preds_2_0);
+	MR_INIT_PROC_LAYOUT_ADDR(mercury__check_hlds__mode_info__mode_info_get_preds_2_0);
+MR_BEGIN_CODE
+
+/*-------------------------------------------------------------------------*/
+/* code for 'mode_info_get_preds'/2 mode 0 */
+#ifdef MR_maybe_local_thread_engine_base
+	#undef MR_maybe_local_thread_engine_base
+	#define MR_maybe_local_thread_engine_base MR_local_thread_engine_base
+#endif
+MR_define_entry(mercury__check_hlds__mode_info__mode_info_get_preds_2_0);
+	MR_MAYBE_INIT_LOCAL_THREAD_ENGINE_BASE
+	MR_r1 = MR_tfield(0, MR_r1, 0);
+	MR_np_tailcall_ent(hlds__hlds_module__module_info_get_preds_2_0);
+#ifdef MR_maybe_local_thread_engine_base
+	#undef MR_maybe_local_thread_engine_base
+	#define MR_maybe_local_thread_engine_base MR_thread_engine_base
+#endif
+MR_END_MODULE
+
+MR_decl_entry(hlds__hlds_module__module_info_get_mode_table_2_0);
+
+MR_BEGIN_MODULE(check_hlds__mode_info_module3)
+	MR_init_entry1(check_hlds__mode_info__mode_info_get_modes_2_0);
+	MR_INIT_PROC_LAYOUT_ADDR(mercury__check_hlds__mode_info__mode_info_get_modes_2_0);
+MR_BEGIN_CODE
+
+/*-------------------------------------------------------------------------*/
+/* code for 'mode_info_get_modes'/2 mode 0 */
+#ifdef MR_maybe_local_thread_engine_base
+	#undef MR_maybe_local_thread_engine_base
+	#define MR_maybe_local_thread_engine_base MR_local_thread_engine_base
+#endif
+MR_define_entry(mercury__check_hlds__mode_info__mode_info_get_modes_2_0);
+	MR_MAYBE_INIT_LOCAL_THREAD_ENGINE_BASE
+	MR_r1 = MR_tfield(0, MR_r1, 0);
+	MR_np_tailcall_ent(hlds__hlds_module__module_info_get_mode_table_2_0);
+#ifdef MR_maybe_local_thread_engine_base
+	#undef MR_maybe_local_thread_engine_base
+	#define MR_maybe_local_thread_engine_base MR_thread_engine_base
+#endif
+MR_END_MODULE
+
+MR_decl_entry(hlds__hlds_module__module_info_get_inst_table_2_0);
+
+MR_BEGIN_MODULE(check_hlds__mode_info_module4)
+	MR_init_entry1(check_hlds__mode_info__mode_info_get_insts_2_0);
+	MR_INIT_PROC_LAYOUT_ADDR(mercury__check_hlds__mode_info__mode_info_get_insts_2_0);
+MR_BEGIN_CODE
+
+/*-------------------------------------------------------------------------*/
+/* code for 'mode_info_get_insts'/2 mode 0 */
+#ifdef MR_maybe_local_thread_engine_base
+	#undef MR_maybe_local_thread_engine_base
+	#define MR_maybe_local_thread_engine_base MR_local_thread_engine_base
+#endif
+MR_define_entry(mercury__check_hlds__mode_info__mode_info_get_insts_2_0);
+	MR_MAYBE_INIT_LOCAL_THREAD_ENGINE_BASE
+	MR_r1 = MR_tfield(0, MR_r1, 0);
+	MR_np_tailcall_ent(hlds__hlds_module__module_info_get_inst_table_2_0);
+#ifdef MR_maybe_local_thread_engine_base
+	#undef MR_maybe_local_thread_engine_base
+	#define MR_maybe_local_thread_engine_base MR_thread_engine_base
+#endif
+MR_END_MODULE
+
+
+MR_BEGIN_MODULE(check_hlds__mode_info_module5)
+	MR_init_entry1(check_hlds__mode_info__mode_info_get_pred_id_2_0);
+	MR_INIT_PROC_LAYOUT_ADDR(mercury__check_hlds__mode_info__mode_info_get_pred_id_2_0);
+MR_BEGIN_CODE
+
+/*-------------------------------------------------------------------------*/
+/* code for 'mode_info_get_pred_id'/2 mode 0 */
+#ifdef MR_maybe_local_thread_engine_base
+	#undef MR_maybe_local_thread_engine_base
+	#define MR_maybe_local_thread_engine_base MR_local_thread_engine_base
+#endif
+MR_define_entry(mercury__check_hlds__mode_info__mode_info_get_pred_id_2_0);
+	MR_MAYBE_INIT_LOCAL_THREAD_ENGINE_BASE
+	MR_r1 = MR_tfield(0, MR_tfield(0, MR_r1, 7), 0);
+	MR_proceed();
+#ifdef MR_maybe_local_thread_engine_base
+	#undef MR_maybe_local_thread_engine_base
+	#define MR_maybe_local_thread_engine_base MR_thread_engine_base
+#endif
+MR_END_MODULE
+
+
+MR_BEGIN_MODULE(check_hlds__mode_info_module6)
+	MR_init_entry1(check_hlds__mode_info__mode_info_get_proc_id_2_0);
+	MR_INIT_PROC_LAYOUT_ADDR(mercury__check_hlds__mode_info__mode_info_get_proc_id_2_0);
+MR_BEGIN_CODE
+
+/*-------------------------------------------------------------------------*/
+/* code for 'mode_info_get_proc_id'/2 mode 0 */
+#ifdef MR_maybe_local_thread_engine_base
+	#undef MR_maybe_local_thread_engine_base
+	#define MR_maybe_local_thread_engine_base MR_local_thread_engine_base
+#endif
+MR_define_entry(mercury__check_hlds__mode_info__mode_info_get_proc_id_2_0);
+	MR_MAYBE_INIT_LOCAL_THREAD_ENGINE_BASE
+	MR_r1 = MR_tfield(0, MR_tfield(0, MR_r1, 7), 1);
+	MR_proceed();
+#ifdef MR_maybe_local_thread_engine_base
+	#undef MR_maybe_local_thread_engine_base
+	#define MR_maybe_local_thread_engine_base MR_thread_engine_base
+#endif
+MR_END_MODULE
+
+
+MR_BEGIN_MODULE(check_hlds__mode_info_module7)
+	MR_init_entry1(check_hlds__mode_info__mode_info_get_debug_modes_2_0);
+	MR_INIT_PROC_LAYOUT_ADDR(mercury__check_hlds__mode_info__mode_info_get_debug_modes_2_0);
+MR_BEGIN_CODE
+
+/*-------------------------------------------------------------------------*/
+/* code for 'mode_info_get_debug_modes'/2 mode 0 */
+#ifdef MR_maybe_local_thread_engine_base
+	#undef MR_maybe_local_thread_engine_base
+	#define MR_maybe_local_thread_engine_base MR_local_thread_engine_base
+#endif
+MR_define_entry(mercury__check_hlds__mode_info__mode_info_get_debug_modes_2_0);
+	MR_MAYBE_INIT_LOCAL_THREAD_ENGINE_BASE
+	MR_r1 = MR_tfield(0, MR_tfield(0, MR_r1, 7), 4);
+	MR_proceed();
+#ifdef MR_maybe_local_thread_engine_base
+	#undef MR_maybe_local_thread_engine_base
+	#define MR_maybe_local_thread_engine_base MR_thread_engine_base
+#endif
+MR_END_MODULE
+
+
+MR_BEGIN_MODULE(check_hlds__mode_info_module8)
+	MR_init_entry1(check_hlds__mode_info__mode_info_get_context_2_0);
+	MR_INIT_PROC_LAYOUT_ADDR(mercury__check_hlds__mode_info__mode_info_get_context_2_0);
+MR_BEGIN_CODE
+
+/*-------------------------------------------------------------------------*/
+/* code for 'mode_info_get_context'/2 mode 0 */
+#ifdef MR_maybe_local_thread_engine_base
+	#undef MR_maybe_local_thread_engine_base
+	#define MR_maybe_local_thread_engine_base MR_local_thread_engine_base
+#endif
+MR_define_entry(mercury__check_hlds__mode_info__mode_info_get_context_2_0);
+	MR_MAYBE_INIT_LOCAL_THREAD_ENGINE_BASE
+	MR_r1 = MR_tfield(0, MR_r1, 5);
+	MR_proceed();
+#ifdef MR_maybe_local_thread_engine_base
+	#undef MR_maybe_local_thread_engine_base
+	#define MR_maybe_local_thread_engine_base MR_thread_engine_base
+#endif
+MR_END_MODULE
+
+
+MR_BEGIN_MODULE(check_hlds__mode_info_module9)
+	MR_init_entry1(check_hlds__mode_info__mode_info_get_mode_context_2_0);
+	MR_INIT_PROC_LAYOUT_ADDR(mercury__check_hlds__mode_info__mode_info_get_mode_context_2_0);
+MR_BEGIN_CODE
+
+/*-------------------------------------------------------------------------*/
+/* code for 'mode_info_get_mode_context'/2 mode 0 */
+#ifdef MR_maybe_local_thread_engine_base
+	#undef MR_maybe_local_thread_engine_base
+	#define MR_maybe_local_thread_engine_base MR_local_thread_engine_base
+#endif
+MR_define_entry(mercury__check_hlds__mode_info__mode_info_get_mode_context_2_0);
+	MR_MAYBE_INIT_LOCAL_THREAD_ENGINE_BASE
+	MR_r1 = MR_tfield(0, MR_r1, 4);
+	MR_proceed();
+#ifdef MR_maybe_local_thread_engine_base
+	#undef MR_maybe_local_thread_engine_base
+	#define MR_maybe_local_thread_engine_base MR_thread_engine_base
+#endif
+MR_END_MODULE
+
+
+MR_BEGIN_MODULE(check_hlds__mode_info_module10)
+	MR_init_entry1(check_hlds__mode_info__mode_info_get_instmap_2_0);
+	MR_INIT_PROC_LAYOUT_ADDR(mercury__check_hlds__mode_info__mode_info_get_instmap_2_0);
+MR_BEGIN_CODE
+
+/*-------------------------------------------------------------------------*/
+/* code for 'mode_info_get_instmap'/2 mode 0 */
+#ifdef MR_maybe_local_thread_engine_base
+	#undef MR_maybe_local_thread_engine_base
+	#define MR_maybe_local_thread_engine_base MR_local_thread_engine_base
+#endif
+MR_define_entry(mercury__check_hlds__mode_info__mode_info_get_instmap_2_0);
+	MR_MAYBE_INIT_LOCAL_THREAD_ENGINE_BASE
+	MR_r1 = MR_tfield(0, MR_r1, 1);
+	MR_proceed();
+#ifdef MR_maybe_local_thread_engine_base
+	#undef MR_maybe_local_thread_engine_base
+	#define MR_maybe_local_thread_engine_base MR_thread_engine_base
+#endif
+MR_END_MODULE
+
+
+MR_BEGIN_MODULE(check_hlds__mode_info_module11)
+	MR_init_entry1(check_hlds__mode_info__mode_info_get_locked_vars_2_0);
+	MR_INIT_PROC_LAYOUT_ADDR(mercury__check_hlds__mode_info__mode_info_get_locked_vars_2_0);
+MR_BEGIN_CODE
+
+/*-------------------------------------------------------------------------*/
+/* code for 'mode_info_get_locked_vars'/2 mode 0 */
+#ifdef MR_maybe_local_thread_engine_base
+	#undef MR_maybe_local_thread_engine_base
+	#define MR_maybe_local_thread_engine_base MR_local_thread_engine_base
+#endif
+MR_define_entry(mercury__check_hlds__mode_info__mode_info_get_locked_vars_2_0);
+	MR_MAYBE_INIT_LOCAL_THREAD_ENGINE_BASE
+	MR_r1 = MR_tfield(0, MR_tfield(0, MR_r1, 7), 5);
+	MR_proceed();
+#ifdef MR_maybe_local_thread_engine_base
+	#undef MR_maybe_local_thread_engine_base
+	#define MR_maybe_local_thread_engine_base MR_thread_engine_base
+#endif
+MR_END_MODULE
+
+
+MR_BEGIN_MODULE(check_hlds__mode_info_module12)
+	MR_init_entry1(check_hlds__mode_info__mode_info_get_errors_2_0);
+	MR_INIT_PROC_LAYOUT_ADDR(mercury__check_hlds__mode_info__mode_info_get_errors_2_0);
+MR_BEGIN_CODE
+
+/*-------------------------------------------------------------------------*/
+/* code for 'mode_info_get_errors'/2 mode 0 */
+#ifdef MR_maybe_local_thread_engine_base
+	#undef MR_maybe_local_thread_engine_base
+	#define MR_maybe_local_thread_engine_base MR_local_thread_engine_base
+#endif
+MR_define_entry(mercury__check_hlds__mode_info__mode_info_get_errors_2_0);
+	MR_MAYBE_INIT_LOCAL_THREAD_ENGINE_BASE
+	MR_r1 = MR_tfield(0, MR_r1, 3);
+	MR_proceed();
+#ifdef MR_maybe_local_thread_engine_base
+	#undef MR_maybe_local_thread_engine_base
+	#define MR_maybe_local_thread_engine_base MR_thread_engine_base
+#endif
+MR_END_MODULE
+
+
+MR_BEGIN_MODULE(check_hlds__mode_info_module13)
+	MR_init_entry1(check_hlds__mode_info__mode_info_get_warnings_2_0);
+	MR_INIT_PROC_LAYOUT_ADDR(mercury__check_hlds__mode_info__mode_info_get_warnings_2_0);
+MR_BEGIN_CODE
+
+/*-------------------------------------------------------------------------*/
+/* code for 'mode_info_get_warnings'/2 mode 0 */
+#ifdef MR_maybe_local_thread_engine_base
+	#undef MR_maybe_local_thread_engine_base
+	#define MR_maybe_local_thread_engine_base MR_local_thread_engine_base
+#endif
+MR_define_entry(mercury__check_hlds__mode_info__mode_info_get_warnings_2_0);
+	MR_MAYBE_INIT_LOCAL_THREAD_ENGINE_BASE
+	MR_r1 = MR_tfield(0, MR_tfield(0, MR_r1, 7), 13);
+	MR_proceed();
+#ifdef MR_maybe_local_thread_engine_base
+	#undef MR_maybe_local_thread_engine_base
+	#define MR_maybe_local_thread_engine_base MR_thread_engine_base
+#endif
+MR_END_MODULE
+
+
+MR_BEGIN_MODULE(check_hlds__mode_info_module14)
+	MR_init_entry1(check_hlds__mode_info__mode_info_get_need_to_requantify_2_0);
+	MR_INIT_PROC_LAYOUT_ADDR(mercury__check_hlds__mode_info__mode_info_get_need_to_requantify_2_0);
+MR_BEGIN_CODE
+
+/*-------------------------------------------------------------------------*/
+/* code for 'mode_info_get_need_to_requantify'/2 mode 0 */
+#ifdef MR_maybe_local_thread_engine_base
+	#undef MR_maybe_local_thread_engine_base
+	#define MR_maybe_local_thread_engine_base MR_local_thread_engine_base
+#endif
+MR_define_entry(mercury__check_hlds__mode_info__mode_info_get_need_to_requantify_2_0);
+	MR_MAYBE_INIT_LOCAL_THREAD_ENGINE_BASE
+	MR_r1 = ((MR_Integer) MR_tfield(0, MR_tfield(0, MR_r1, 7), 14) & (MR_Integer) 1);
+	MR_proceed();
+#ifdef MR_maybe_local_thread_engine_base
+	#undef MR_maybe_local_thread_engine_base
+	#define MR_maybe_local_thread_engine_base MR_thread_engine_base
+#endif
+MR_END_MODULE
+
+
+MR_BEGIN_MODULE(check_hlds__mode_info_module15)
+	MR_init_entry1(check_hlds__mode_info__mode_info_get_in_promise_purity_scope_2_0);
+	MR_INIT_PROC_LAYOUT_ADDR(mercury__check_hlds__mode_info__mode_info_get_in_promise_purity_scope_2_0);
+MR_BEGIN_CODE
+
+/*-------------------------------------------------------------------------*/
+/* code for 'mode_info_get_in_promise_purity_scope'/2 mode 0 */
+#ifdef MR_maybe_local_thread_engine_base
+	#undef MR_maybe_local_thread_engine_base
+	#define MR_maybe_local_thread_engine_base MR_local_thread_engine_base
+#endif
+MR_define_entry(mercury__check_hlds__mode_info__mode_info_get_in_promise_purity_scope_2_0);
+	MR_MAYBE_INIT_LOCAL_THREAD_ENGINE_BASE
+	MR_r1 = (((MR_Integer) MR_tfield(0, MR_tfield(0, MR_r1, 7), 14) >> (MR_Integer) 1) & (MR_Integer) 1);
+	MR_proceed();
+#ifdef MR_maybe_local_thread_engine_base
+	#undef MR_maybe_local_thread_engine_base
+	#define MR_maybe_local_thread_engine_base MR_thread_engine_base
+#endif
+MR_END_MODULE
+
+MR_decl_entry(list__length_2_0);
+
+MR_BEGIN_MODULE(check_hlds__mode_info_module16)
+	MR_init_entry1(check_hlds__mode_info__mode_info_get_num_errors_2_0);
+	MR_INIT_PROC_LAYOUT_ADDR(mercury__check_hlds__mode_info__mode_info_get_num_errors_2_0);
+MR_BEGIN_CODE
+
+/*-------------------------------------------------------------------------*/
+/* code for 'mode_info_get_num_errors'/2 mode 0 */
+#ifdef MR_maybe_local_thread_engine_base
+	#undef MR_maybe_local_thread_engine_base
+	#define MR_maybe_local_thread_engine_base MR_local_thread_engine_base
+#endif
+MR_define_entry(mercury__check_hlds__mode_info__mode_info_get_num_errors_2_0);
+	MR_MAYBE_INIT_LOCAL_THREAD_ENGINE_BASE
+	{
+	MR_Word MR_tempr1;
+	MR_tempr1 = MR_r1;
+	MR_r1 = (MR_Word) MR_CTOR0_ADDR(check_hlds__mode_errors, mode_error_info);
+	MR_r2 = MR_tfield(0, MR_tempr1, 3);
+	MR_np_tailcall_ent(list__length_2_0);
+	}
+#ifdef MR_maybe_local_thread_engine_base
+	#undef MR_maybe_local_thread_engine_base
+	#define MR_maybe_local_thread_engine_base MR_thread_engine_base
+#endif
+MR_END_MODULE
+
+
+MR_BEGIN_MODULE(check_hlds__mode_info_module17)
+	MR_init_entry1(check_hlds__mode_info__mode_info_get_live_vars_2_0);
+	MR_INIT_PROC_LAYOUT_ADDR(mercury__check_hlds__mode_info__mode_info_get_live_vars_2_0);
+MR_BEGIN_CODE
+
+/*-------------------------------------------------------------------------*/
+/* code for 'mode_info_get_live_vars'/2 mode 0 */
+#ifdef MR_maybe_local_thread_engine_base
+	#undef MR_maybe_local_thread_engine_base
+	#define MR_maybe_local_thread_engine_base MR_local_thread_engine_base
+#endif
+MR_define_entry(mercury__check_hlds__mode_info__mode_info_get_live_vars_2_0);
+	MR_MAYBE_INIT_LOCAL_THREAD_ENGINE_BASE
+	MR_r1 = MR_tfield(0, MR_tfield(0, MR_r1, 7), 6);
+	MR_proceed();
+#ifdef MR_maybe_local_thread_engine_base
+	#undef MR_maybe_local_thread_engine_base
+	#define MR_maybe_local_thread_engine_base MR_thread_engine_base
+#endif
+MR_END_MODULE
+
+MR_decl_entry(bag__to_list_without_duplicates_2_0);
+MR_decl_entry(parse_tree__set_of_var__sorted_list_to_set_2_0);
+
+MR_BEGIN_MODULE(check_hlds__mode_info_module18)
+	MR_init_entry1(check_hlds__mode_info__mode_info_get_liveness_2_0);
+	MR_INIT_PROC_LAYOUT_ADDR(mercury__check_hlds__mode_info__mode_info_get_liveness_2_0);
+	MR_init_label1(check_hlds__mode_info__mode_info_get_liveness_2_0,3)
+MR_BEGIN_CODE
+
+/*-------------------------------------------------------------------------*/
+/* code for 'mode_info_get_liveness'/2 mode 0 */
+#ifdef MR_maybe_local_thread_engine_base
+	#undef MR_maybe_local_thread_engine_base
+	#define MR_maybe_local_thread_engine_base MR_local_thread_engine_base
+#endif
+MR_define_entry(mercury__check_hlds__mode_info__mode_info_get_liveness_2_0);
+	MR_MAYBE_INIT_LOCAL_THREAD_ENGINE_BASE
+	MR_incr_sp(2);
+	MR_sv(2) = (MR_Word) MR_succip;
+	MR_sv(1) = (MR_Word) MR_CTOR0_ADDR(parse_tree__prog_data, prog_var_type);
+	{
+	MR_Word MR_tempr1;
+	MR_tempr1 = MR_r1;
+	MR_r1 = (MR_Word) MR_TAG_COMMON(0,0,0);
+	MR_r2 = MR_tfield(0, MR_tfield(0, MR_tempr1, 7), 6);
+	}
+	MR_np_call_localret_ent(bag__to_list_without_duplicates_2_0,
+		check_hlds__mode_info__mode_info_get_liveness_2_0_i3);
+MR_def_label(check_hlds__mode_info__mode_info_get_liveness_2_0,3)
+	MR_MAYBE_INIT_LOCAL_THREAD_ENGINE_BASE
+	{
+	MR_Word MR_tempr1;
+	MR_tempr1 = MR_r1;
+	MR_r1 = MR_sv(1);
+	MR_r2 = MR_tempr1;
+	MR_succip_word = MR_sv(2);
+	MR_decr_sp(2);
+	MR_np_tailcall_ent(parse_tree__set_of_var__sorted_list_to_set_2_0);
+	}
+#ifdef MR_maybe_local_thread_engine_base
+	#undef MR_maybe_local_thread_engine_base
+	#define MR_maybe_local_thread_engine_base MR_thread_engine_base
+#endif
+MR_END_MODULE
+
+
+MR_BEGIN_MODULE(check_hlds__mode_info_module19)
+	MR_init_entry1(check_hlds__mode_info__mode_info_get_varset_2_0);
+	MR_INIT_PROC_LAYOUT_ADDR(mercury__check_hlds__mode_info__mode_info_get_varset_2_0);
+MR_BEGIN_CODE
+
+/*-------------------------------------------------------------------------*/
+/* code for 'mode_info_get_varset'/2 mode 0 */
+#ifdef MR_maybe_local_thread_engine_base
+	#undef MR_maybe_local_thread_engine_base
+	#define MR_maybe_local_thread_engine_base MR_local_thread_engine_base
+#endif
+MR_define_entry(mercury__check_hlds__mode_info__mode_info_get_varset_2_0);
+	MR_MAYBE_INIT_LOCAL_THREAD_ENGINE_BASE
+	MR_r1 = MR_tfield(0, MR_tfield(0, MR_r1, 7), 2);
+	MR_proceed();
+#ifdef MR_maybe_local_thread_engine_base
+	#undef MR_maybe_local_thread_engine_base
+	#define MR_maybe_local_thread_engine_base MR_thread_engine_base
+#endif
+MR_END_MODULE
+
+
+MR_BEGIN_MODULE(check_hlds__mode_info_module20)
+	MR_init_entry1(check_hlds__mode_info__mode_info_get_instvarset_2_0);
+	MR_INIT_PROC_LAYOUT_ADDR(mercury__check_hlds__mode_info__mode_info_get_instvarset_2_0);
+MR_BEGIN_CODE
+
+/*-------------------------------------------------------------------------*/
+/* code for 'mode_info_get_instvarset'/2 mode 0 */
+#ifdef MR_maybe_local_thread_engine_base
+	#undef MR_maybe_local_thread_engine_base
+	#define MR_maybe_local_thread_engine_base MR_local_thread_engine_base
+#endif
+MR_define_entry(mercury__check_hlds__mode_info__mode_info_get_instvarset_2_0);
+	MR_MAYBE_INIT_LOCAL_THREAD_ENGINE_BASE
+	MR_r1 = MR_tfield(0, MR_tfield(0, MR_r1, 7), 7);
+	MR_proceed();
+#ifdef MR_maybe_local_thread_engine_base
+	#undef MR_maybe_local_thread_engine_base
+	#define MR_maybe_local_thread_engine_base MR_thread_engine_base
+#endif
+MR_END_MODULE
+
+
+MR_BEGIN_MODULE(check_hlds__mode_info_module21)
+	MR_init_entry1(check_hlds__mode_info__mode_info_get_var_types_2_0);
+	MR_INIT_PROC_LAYOUT_ADDR(mercury__check_hlds__mode_info__mode_info_get_var_types_2_0);
+MR_BEGIN_CODE
+
+/*-------------------------------------------------------------------------*/
+/* code for 'mode_info_get_var_types'/2 mode 0 */
+#ifdef MR_maybe_local_thread_engine_base
+	#undef MR_maybe_local_thread_engine_base
+	#define MR_maybe_local_thread_engine_base MR_local_thread_engine_base
+#endif
+MR_define_entry(mercury__check_hlds__mode_info__mode_info_get_var_types_2_0);
+	MR_MAYBE_INIT_LOCAL_THREAD_ENGINE_BASE
+	MR_r1 = MR_tfield(0, MR_tfield(0, MR_r1, 7), 3);
+	MR_proceed();
+#ifdef MR_maybe_local_thread_engine_base
+	#undef MR_maybe_local_thread_engine_base
+	#define MR_maybe_local_thread_engine_base MR_thread_engine_base
+#endif
+MR_END_MODULE
+
+
+MR_BEGIN_MODULE(check_hlds__mode_info_module22)
+	MR_init_entry1(check_hlds__mode_info__mode_info_get_delay_info_2_0);
+	MR_INIT_PROC_LAYOUT_ADDR(mercury__check_hlds__mode_info__mode_info_get_delay_info_2_0);
+MR_BEGIN_CODE
+
+/*-------------------------------------------------------------------------*/
+/* code for 'mode_info_get_delay_info'/2 mode 0 */
+#ifdef MR_maybe_local_thread_engine_base
+	#undef MR_maybe_local_thread_engine_base
+	#define MR_maybe_local_thread_engine_base MR_local_thread_engine_base
+#endif
+MR_define_entry(mercury__check_hlds__mode_info__mode_info_get_delay_info_2_0);
+	MR_MAYBE_INIT_LOCAL_THREAD_ENGINE_BASE
+	MR_r1 = MR_tfield(0, MR_r1, 2);
+	MR_proceed();
+#ifdef MR_maybe_local_thread_engine_base
+	#undef MR_maybe_local_thread_engine_base
+	#define MR_maybe_local_thread_engine_base MR_thread_engine_base
+#endif
+MR_END_MODULE
+
+
+MR_BEGIN_MODULE(check_hlds__mode_info_module23)
+	MR_init_entry1(check_hlds__mode_info__mode_info_get_nondet_live_vars_2_0);
+	MR_INIT_PROC_LAYOUT_ADDR(mercury__check_hlds__mode_info__mode_info_get_nondet_live_vars_2_0);
+MR_BEGIN_CODE
+
+/*-------------------------------------------------------------------------*/
+/* code for 'mode_info_get_nondet_live_vars'/2 mode 0 */
+#ifdef MR_maybe_local_thread_engine_base
+	#undef MR_maybe_local_thread_engine_base
+	#define MR_maybe_local_thread_engine_base MR_local_thread_engine_base
+#endif
+MR_define_entry(mercury__check_hlds__mode_info__mode_info_get_nondet_live_vars_2_0);
+	MR_MAYBE_INIT_LOCAL_THREAD_ENGINE_BASE
+	MR_r1 = MR_tfield(0, MR_r1, 6);
+	MR_proceed();
+#ifdef MR_maybe_local_thread_engine_base
+	#undef MR_maybe_local_thread_engine_base
+	#define MR_maybe_local_thread_engine_base MR_thread_engine_base
+#endif
+MR_END_MODULE
+
+
+MR_BEGIN_MODULE(check_hlds__mode_info_module24)
+	MR_init_entry1(check_hlds__mode_info__mode_info_get_last_checkpoint_insts_2_0);
+	MR_INIT_PROC_LAYOUT_ADDR(mercury__check_hlds__mode_info__mode_info_get_last_checkpoint_insts_2_0);
+MR_BEGIN_CODE
+
+/*-------------------------------------------------------------------------*/
+/* code for 'mode_info_get_last_checkpoint_insts'/2 mode 0 */
+#ifdef MR_maybe_local_thread_engine_base
+	#undef MR_maybe_local_thread_engine_base
+	#define MR_maybe_local_thread_engine_base MR_local_thread_engine_base
+#endif
+MR_define_entry(mercury__check_hlds__mode_info__mode_info_get_last_checkpoint_insts_2_0);
+	MR_MAYBE_INIT_LOCAL_THREAD_ENGINE_BASE
+	MR_r1 = MR_tfield(0, MR_tfield(0, MR_r1, 7), 10);
+	MR_proceed();
+#ifdef MR_maybe_local_thread_engine_base
+	#undef MR_maybe_local_thread_engine_base
+	#define MR_maybe_local_thread_engine_base MR_thread_engine_base
+#endif
+MR_END_MODULE
+
+
+MR_BEGIN_MODULE(check_hlds__mode_info_module25)
+	MR_init_entry1(check_hlds__mode_info__mode_info_get_parallel_vars_2_0);
+	MR_INIT_PROC_LAYOUT_ADDR(mercury__check_hlds__mode_info__mode_info_get_parallel_vars_2_0);
+MR_BEGIN_CODE
+
+/*-------------------------------------------------------------------------*/
+/* code for 'mode_info_get_parallel_vars'/2 mode 0 */
+#ifdef MR_maybe_local_thread_engine_base
+	#undef MR_maybe_local_thread_engine_base
+	#define MR_maybe_local_thread_engine_base MR_local_thread_engine_base
+#endif
+MR_define_entry(mercury__check_hlds__mode_info__mode_info_get_parallel_vars_2_0);
+	MR_MAYBE_INIT_LOCAL_THREAD_ENGINE_BASE
+	MR_r1 = MR_tfield(0, MR_tfield(0, MR_r1, 7), 8);
+	MR_proceed();
+#ifdef MR_maybe_local_thread_engine_base
+	#undef MR_maybe_local_thread_engine_base
+	#define MR_maybe_local_thread_engine_base MR_thread_engine_base
+#endif
+MR_END_MODULE
+
+
+MR_BEGIN_MODULE(check_hlds__mode_info_module26)
+	MR_init_entry1(check_hlds__mode_info__mode_info_get_changed_flag_2_0);
+	MR_INIT_PROC_LAYOUT_ADDR(mercury__check_hlds__mode_info__mode_info_get_changed_flag_2_0);
+MR_BEGIN_CODE
+
+/*-------------------------------------------------------------------------*/
+/* code for 'mode_info_get_changed_flag'/2 mode 0 */
+#ifdef MR_maybe_local_thread_engine_base
+	#undef MR_maybe_local_thread_engine_base
+	#define MR_maybe_local_thread_engine_base MR_local_thread_engine_base
+#endif
+MR_define_entry(mercury__check_hlds__mode_info__mode_info_get_changed_flag_2_0);
+	MR_MAYBE_INIT_LOCAL_THREAD_ENGINE_BASE
+	MR_r1 = ((MR_Integer) MR_tfield(0, MR_tfield(0, MR_r1, 7), 11) & (MR_Integer) 1);
+	MR_proceed();
+#ifdef MR_maybe_local_thread_engine_base
+	#undef MR_maybe_local_thread_engine_base
+	#define MR_maybe_local_thread_engine_base MR_thread_engine_base
+#endif
+MR_END_MODULE
+
+
+MR_BEGIN_MODULE(check_hlds__mode_info_module27)
+	MR_init_entry1(check_hlds__mode_info__mode_info_get_how_to_check_2_0);
+	MR_INIT_PROC_LAYOUT_ADDR(mercury__check_hlds__mode_info__mode_info_get_how_to_check_2_0);
+MR_BEGIN_CODE
+
+/*-------------------------------------------------------------------------*/
+/* code for 'mode_info_get_how_to_check'/2 mode 0 */
+#ifdef MR_maybe_local_thread_engine_base
+	#undef MR_maybe_local_thread_engine_base
+	#define MR_maybe_local_thread_engine_base MR_local_thread_engine_base
+#endif
+MR_define_entry(mercury__check_hlds__mode_info__mode_info_get_how_to_check_2_0);
+	MR_MAYBE_INIT_LOCAL_THREAD_ENGINE_BASE
+	MR_r1 = ((MR_Integer) MR_tfield(0, MR_tfield(0, MR_r1, 7), 9) & (MR_Integer) 1);
+	MR_proceed();
+#ifdef MR_maybe_local_thread_engine_base
+	#undef MR_maybe_local_thread_engine_base
+	#define MR_maybe_local_thread_engine_base MR_thread_engine_base
+#endif
+MR_END_MODULE
+
+
+MR_BEGIN_MODULE(check_hlds__mode_info_module28)
+	MR_init_entry1(check_hlds__mode_info__mode_info_get_may_change_called_proc_2_0);
+	MR_INIT_PROC_LAYOUT_ADDR(mercury__check_hlds__mode_info__mode_info_get_may_change_called_proc_2_0);
+MR_BEGIN_CODE
+
+/*-------------------------------------------------------------------------*/
+/* code for 'mode_info_get_may_change_called_proc'/2 mode 0 */
+#ifdef MR_maybe_local_thread_engine_base
+	#undef MR_maybe_local_thread_engine_base
+	#define MR_maybe_local_thread_engine_base MR_local_thread_engine_base
+#endif
+MR_define_entry(mercury__check_hlds__mode_info__mode_info_get_may_change_called_proc_2_0);
+	MR_MAYBE_INIT_LOCAL_THREAD_ENGINE_BASE
+	MR_r1 = (((MR_Integer) MR_tfield(0, MR_tfield(0, MR_r1, 7), 9) >> (MR_Integer) 1) & (MR_Integer) 1);
+	MR_proceed();
+#ifdef MR_maybe_local_thread_engine_base
+	#undef MR_maybe_local_thread_engine_base
+	#define MR_maybe_local_thread_engine_base MR_thread_engine_base
+#endif
+MR_END_MODULE
+
+
+MR_BEGIN_MODULE(check_hlds__mode_info_module29)
+	MR_init_entry1(check_hlds__mode_info__mode_info_get_initial_instmap_2_0);
+	MR_INIT_PROC_LAYOUT_ADDR(mercury__check_hlds__mode_info__mode_info_get_initial_instmap_2_0);
+MR_BEGIN_CODE
+
+/*-------------------------------------------------------------------------*/
+/* code for 'mode_info_get_initial_instmap'/2 mode 0 */
+#ifdef MR_maybe_local_thread_engine_base
+	#undef MR_maybe_local_thread_engine_base
+	#define MR_maybe_local_thread_engine_base MR_local_thread_engine_base
+#endif
+MR_define_entry(mercury__check_hlds__mode_info__mode_info_get_initial_instmap_2_0);
+	MR_MAYBE_INIT_LOCAL_THREAD_ENGINE_BASE
+	MR_r1 = MR_tfield(0, MR_tfield(0, MR_r1, 7), 12);
+	MR_proceed();
+#ifdef MR_maybe_local_thread_engine_base
+	#undef MR_maybe_local_thread_engine_base
+	#define MR_maybe_local_thread_engine_base MR_thread_engine_base
+#endif
+MR_END_MODULE
+
+
+MR_BEGIN_MODULE(check_hlds__mode_info_module30)
+	MR_init_entry1(check_hlds__mode_info__mode_info_get_checking_extra_goals_2_0);
+	MR_INIT_PROC_LAYOUT_ADDR(mercury__check_hlds__mode_info__mode_info_get_checking_extra_goals_2_0);
+MR_BEGIN_CODE
+
+/*-------------------------------------------------------------------------*/
+/* code for 'mode_info_get_checking_extra_goals'/2 mode 0 */
+#ifdef MR_maybe_local_thread_engine_base
+	#undef MR_maybe_local_thread_engine_base
+	#define MR_maybe_local_thread_engine_base MR_local_thread_engine_base
+#endif
+MR_define_entry(mercury__check_hlds__mode_info__mode_info_get_checking_extra_goals_2_0);
+	MR_MAYBE_INIT_LOCAL_THREAD_ENGINE_BASE
+	MR_r1 = (((MR_Integer) MR_tfield(0, MR_tfield(0, MR_r1, 7), 11) >> (MR_Integer) 1) & (MR_Integer) 1);
+	MR_proceed();
+#ifdef MR_maybe_local_thread_engine_base
+	#undef MR_maybe_local_thread_engine_base
+	#define MR_maybe_local_thread_engine_base MR_thread_engine_base
+#endif
+MR_END_MODULE
+
+
+MR_BEGIN_MODULE(check_hlds__mode_info_module31)
+	MR_init_entry1(check_hlds__mode_info__mode_info_get_may_init_solver_vars_2_0);
+	MR_INIT_PROC_LAYOUT_ADDR(mercury__check_hlds__mode_info__mode_info_get_may_init_solver_vars_2_0);
+MR_BEGIN_CODE
+
+/*-------------------------------------------------------------------------*/
+/* code for 'mode_info_get_may_init_solver_vars'/2 mode 0 */
+#ifdef MR_maybe_local_thread_engine_base
+	#undef MR_maybe_local_thread_engine_base
+	#define MR_maybe_local_thread_engine_base MR_local_thread_engine_base
+#endif
+MR_define_entry(mercury__check_hlds__mode_info__mode_info_get_may_init_solver_vars_2_0);
+	MR_MAYBE_INIT_LOCAL_THREAD_ENGINE_BASE
+	MR_r1 = (((MR_Integer) MR_tfield(0, MR_tfield(0, MR_r1, 7), 9) >> (MR_Integer) 2) & (MR_Integer) 1);
+	MR_proceed();
+#ifdef MR_maybe_local_thread_engine_base
+	#undef MR_maybe_local_thread_engine_base
+	#define MR_maybe_local_thread_engine_base MR_thread_engine_base
+#endif
+MR_END_MODULE
+
+
+MR_BEGIN_MODULE(check_hlds__mode_info_module32)
+	MR_init_entry1(check_hlds__mode_info__mode_info_get_in_from_ground_term_2_0);
+	MR_INIT_PROC_LAYOUT_ADDR(mercury__check_hlds__mode_info__mode_info_get_in_from_ground_term_2_0);
+MR_BEGIN_CODE
+
+/*-------------------------------------------------------------------------*/
+/* code for 'mode_info_get_in_from_ground_term'/2 mode 0 */
+#ifdef MR_maybe_local_thread_engine_base
+	#undef MR_maybe_local_thread_engine_base
+	#define MR_maybe_local_thread_engine_base MR_local_thread_engine_base
+#endif
+MR_define_entry(mercury__check_hlds__mode_info__mode_info_get_in_from_ground_term_2_0);
+	MR_MAYBE_INIT_LOCAL_THREAD_ENGINE_BASE
+	MR_r1 = (((MR_Integer) MR_tfield(0, MR_tfield(0, MR_r1, 7), 14) >> (MR_Integer) 2) & (MR_Integer) 1);
+	MR_proceed();
+#ifdef MR_maybe_local_thread_engine_base
+	#undef MR_maybe_local_thread_engine_base
+	#define MR_maybe_local_thread_engine_base MR_thread_engine_base
+#endif
+MR_END_MODULE
+
+
+MR_BEGIN_MODULE(check_hlds__mode_info_module33)
+	MR_init_entry1(check_hlds__mode_info__mode_info_get_had_from_ground_term_2_0);
+	MR_INIT_PROC_LAYOUT_ADDR(mercury__check_hlds__mode_info__mode_info_get_had_from_ground_term_2_0);
+MR_BEGIN_CODE
+
+/*-------------------------------------------------------------------------*/
+/* code for 'mode_info_get_had_from_ground_term'/2 mode 0 */
+#ifdef MR_maybe_local_thread_engine_base
+	#undef MR_maybe_local_thread_engine_base
+	#define MR_maybe_local_thread_engine_base MR_local_thread_engine_base
+#endif
+MR_define_entry(mercury__check_hlds__mode_info__mode_info_get_had_from_ground_term_2_0);
+	MR_MAYBE_INIT_LOCAL_THREAD_ENGINE_BASE
+	MR_r1 = (((MR_Integer) MR_tfield(0, MR_tfield(0, MR_r1, 7), 14) >> (MR_Integer) 3) & (MR_Integer) 1);
+	MR_proceed();
+#ifdef MR_maybe_local_thread_engine_base
+	#undef MR_maybe_local_thread_engine_base
+	#define MR_maybe_local_thread_engine_base MR_thread_engine_base
+#endif
+MR_END_MODULE
+
+
+MR_BEGIN_MODULE(check_hlds__mode_info_module34)
+	MR_init_entry1(check_hlds__mode_info__mode_info_get_make_ground_terms_unique_2_0);
+	MR_INIT_PROC_LAYOUT_ADDR(mercury__check_hlds__mode_info__mode_info_get_make_ground_terms_unique_2_0);
+MR_BEGIN_CODE
+
+/*-------------------------------------------------------------------------*/
+/* code for 'mode_info_get_make_ground_terms_unique'/2 mode 0 */
+#ifdef MR_maybe_local_thread_engine_base
+	#undef MR_maybe_local_thread_engine_base
+	#define MR_maybe_local_thread_engine_base MR_local_thread_engine_base
+#endif
+MR_define_entry(mercury__check_hlds__mode_info__mode_info_get_make_ground_terms_unique_2_0);
+	MR_MAYBE_INIT_LOCAL_THREAD_ENGINE_BASE
+	MR_r1 = (((MR_Integer) MR_tfield(0, MR_tfield(0, MR_r1, 7), 14) >> (MR_Integer) 4) & (MR_Integer) 1);
+	MR_proceed();
+#ifdef MR_maybe_local_thread_engine_base
+	#undef MR_maybe_local_thread_engine_base
+	#define MR_maybe_local_thread_engine_base MR_thread_engine_base
+#endif
+MR_END_MODULE
+
+
+MR_BEGIN_MODULE(check_hlds__mode_info_module35)
+	MR_init_entry1(check_hlds__mode_info__mode_info_get_in_dupl_for_switch_2_0);
+	MR_INIT_PROC_LAYOUT_ADDR(mercury__check_hlds__mode_info__mode_info_get_in_dupl_for_switch_2_0);
+MR_BEGIN_CODE
+
+/*-------------------------------------------------------------------------*/
+/* code for 'mode_info_get_in_dupl_for_switch'/2 mode 0 */
+#ifdef MR_maybe_local_thread_engine_base
+	#undef MR_maybe_local_thread_engine_base
+	#define MR_maybe_local_thread_engine_base MR_local_thread_engine_base
+#endif
+MR_define_entry(mercury__check_hlds__mode_info__mode_info_get_in_dupl_for_switch_2_0);
+	MR_MAYBE_INIT_LOCAL_THREAD_ENGINE_BASE
+	MR_r1 = (((MR_Integer) MR_tfield(0, MR_tfield(0, MR_r1, 7), 14) >> (MR_Integer) 5) & (MR_Integer) 1);
+	MR_proceed();
+#ifdef MR_maybe_local_thread_engine_base
+	#undef MR_maybe_local_thread_engine_base
+	#define MR_maybe_local_thread_engine_base MR_thread_engine_base
+#endif
+MR_END_MODULE
+
+
+MR_BEGIN_MODULE(check_hlds__mode_info_module36)
+	MR_init_entry1(check_hlds__mode_info__mode_info_set_module_info_3_0);
+	MR_INIT_PROC_LAYOUT_ADDR(mercury__check_hlds__mode_info__mode_info_set_module_info_3_0);
+MR_BEGIN_CODE
+
+/*-------------------------------------------------------------------------*/
+/* code for 'mode_info_set_module_info'/3 mode 0 */
+#ifdef MR_maybe_local_thread_engine_base
+	#undef MR_maybe_local_thread_engine_base
+	#define MR_maybe_local_thread_engine_base MR_local_thread_engine_base
+#endif
+MR_define_entry(mercury__check_hlds__mode_info__mode_info_set_module_info_3_0);
+	MR_MAYBE_INIT_LOCAL_THREAD_ENGINE_BASE
+	{
+	MR_Word MR_tempr1;
+	MR_tag_alloc_heap(MR_tempr1, 0, (MR_Integer) 8);
+	MR_tfield(0, MR_tempr1, 0) = MR_r1;
+	MR_tfield(0, MR_tempr1, 1) = MR_tfield(0, MR_r2, 1);
+	MR_tfield(0, MR_tempr1, 2) = MR_tfield(0, MR_r2, 2);
+	MR_tfield(0, MR_tempr1, 3) = MR_tfield(0, MR_r2, 3);
+	MR_tfield(0, MR_tempr1, 4) = MR_tfield(0, MR_r2, 4);
+	MR_tfield(0, MR_tempr1, 5) = MR_tfield(0, MR_r2, 5);
+	MR_tfield(0, MR_tempr1, 6) = MR_tfield(0, MR_r2, 6);
+	MR_tfield(0, MR_tempr1, 7) = MR_tfield(0, MR_r2, 7);
+	MR_r1 = MR_tempr1;
+	MR_proceed();
+	}
+#ifdef MR_maybe_local_thread_engine_base
+	#undef MR_maybe_local_thread_engine_base
+	#define MR_maybe_local_thread_engine_base MR_thread_engine_base
+#endif
+MR_END_MODULE
+
+
+MR_BEGIN_MODULE(check_hlds__mode_info_module37)
+	MR_init_entry1(check_hlds__mode_info__mode_info_set_pred_id_3_0);
+	MR_INIT_PROC_LAYOUT_ADDR(mercury__check_hlds__mode_info__mode_info_set_pred_id_3_0);
+MR_BEGIN_CODE
+
+/*-------------------------------------------------------------------------*/
+/* code for 'mode_info_set_pred_id'/3 mode 0 */
+#ifdef MR_maybe_local_thread_engine_base
+	#undef MR_maybe_local_thread_engine_base
+	#define MR_maybe_local_thread_engine_base MR_local_thread_engine_base
+#endif
+MR_define_entry(mercury__check_hlds__mode_info__mode_info_set_pred_id_3_0);
+	MR_MAYBE_INIT_LOCAL_THREAD_ENGINE_BASE
+	{
+	MR_Word MR_tempr1, MR_tempr2, MR_tempr3, MR_tempr4, MR_tempr5, MR_tempr6, MR_tempr7, MR_tempr8, MR_tempr9, MR_tempr10, MR_tempr11, MR_tempr12, MR_tempr13;
+	MR_tempr1 = MR_tfield(0, MR_r2, 7);
+	MR_tempr2 = (((MR_Integer) MR_tfield(0, MR_tempr1, 9) >> (MR_Integer) 2) & (MR_Integer) 1);
+	MR_tempr3 = (((MR_Integer) MR_tfield(0, MR_tempr1, 11) >> (MR_Integer) 1) & (MR_Integer) 1);
+	MR_tempr4 = (((MR_Integer) MR_tfield(0, MR_tempr1, 14) >> (MR_Integer) 5) & (MR_Integer) 1);
+	MR_tempr5 = (((MR_Integer) MR_tfield(0, MR_tempr1, 14) >> (MR_Integer) 4) & (MR_Integer) 1);
+	MR_tempr6 = (((MR_Integer) MR_tfield(0, MR_tempr1, 14) >> (MR_Integer) 3) & (MR_Integer) 1);
+	MR_tempr7 = (((MR_Integer) MR_tfield(0, MR_tempr1, 14) >> (MR_Integer) 2) & (MR_Integer) 1);
+	MR_tempr8 = (((MR_Integer) MR_tfield(0, MR_tempr1, 14) >> (MR_Integer) 1) & (MR_Integer) 1);
+	MR_tempr9 = ((MR_Integer) MR_tfield(0, MR_tempr1, 14) & (MR_Integer) 1);
+	MR_tempr10 = ((MR_Integer) MR_tfield(0, MR_tempr1, 11) & (MR_Integer) 1);
+	MR_tempr11 = (((MR_Integer) MR_tfield(0, MR_tempr1, 9) >> (MR_Integer) 1) & (MR_Integer) 1);
+	MR_tempr12 = ((MR_Integer) MR_tfield(0, MR_tempr1, 9) & (MR_Integer) 1);
+	MR_tag_alloc_heap(MR_tempr13, 0, (MR_Integer) 15);
+	MR_tfield(0, MR_tempr13, 0) = MR_r1;
+	MR_tfield(0, MR_tempr13, 1) = MR_tfield(0, MR_tempr1, 1);
+	MR_tfield(0, MR_tempr13, 2) = MR_tfield(0, MR_tempr1, 2);
+	MR_tfield(0, MR_tempr13, 3) = MR_tfield(0, MR_tempr1, 3);
+	MR_tfield(0, MR_tempr13, 4) = MR_tfield(0, MR_tempr1, 4);
+	MR_tfield(0, MR_tempr13, 5) = MR_tfield(0, MR_tempr1, 5);
+	MR_tfield(0, MR_tempr13, 6) = MR_tfield(0, MR_tempr1, 6);
+	MR_tfield(0, MR_tempr13, 7) = MR_tfield(0, MR_tempr1, 7);
+	MR_tfield(0, MR_tempr13, 8) = MR_tfield(0, MR_tempr1, 8);
+	MR_tfield(0, MR_tempr13, 9) = ((MR_Integer) MR_tempr12 | (((MR_Integer) MR_tempr11 << (MR_Integer) 1) | ((MR_Integer) MR_tempr2 << (MR_Integer) 2)));
+	MR_tfield(0, MR_tempr13, 10) = MR_tfield(0, MR_tempr1, 10);
+	MR_tfield(0, MR_tempr13, 11) = ((MR_Integer) MR_tempr10 | ((MR_Integer) MR_tempr3 << (MR_Integer) 1));
+	MR_tfield(0, MR_tempr13, 12) = MR_tfield(0, MR_tempr1, 12);
+	MR_tfield(0, MR_tempr13, 13) = MR_tfield(0, MR_tempr1, 13);
+	MR_tfield(0, MR_tempr13, 14) = ((MR_Integer) MR_tempr9 | (((MR_Integer) MR_tempr8 << (MR_Integer) 1) | (((MR_Integer) MR_tempr7 << (MR_Integer) 2) | (((MR_Integer) MR_tempr6 << (MR_Integer) 3) | (((MR_Integer) MR_tempr5 << (MR_Integer) 4) | ((MR_Integer) MR_tempr4 << (MR_Integer) 5))))));
+	MR_tag_alloc_heap(MR_r1, 0, (MR_Integer) 8);
+	MR_tfield(0, MR_r1, 0) = MR_tfield(0, MR_r2, 0);
+	MR_tfield(0, MR_r1, 1) = MR_tfield(0, MR_r2, 1);
+	MR_tfield(0, MR_r1, 2) = MR_tfield(0, MR_r2, 2);
+	MR_tfield(0, MR_r1, 3) = MR_tfield(0, MR_r2, 3);
+	MR_tfield(0, MR_r1, 4) = MR_tfield(0, MR_r2, 4);
+	MR_tfield(0, MR_r1, 5) = MR_tfield(0, MR_r2, 5);
+	MR_tfield(0, MR_r1, 6) = MR_tfield(0, MR_r2, 6);
+	MR_tfield(0, MR_r1, 7) = MR_tempr13;
+	MR_proceed();
+	}
+#ifdef MR_maybe_local_thread_engine_base
+	#undef MR_maybe_local_thread_engine_base
+	#define MR_maybe_local_thread_engine_base MR_thread_engine_base
+#endif
+MR_END_MODULE
+
+
+MR_BEGIN_MODULE(check_hlds__mode_info_module38)
+	MR_init_entry1(check_hlds__mode_info__mode_info_set_proc_id_3_0);
+	MR_INIT_PROC_LAYOUT_ADDR(mercury__check_hlds__mode_info__mode_info_set_proc_id_3_0);
+MR_BEGIN_CODE
+
+/*-------------------------------------------------------------------------*/
+/* code for 'mode_info_set_proc_id'/3 mode 0 */
+#ifdef MR_maybe_local_thread_engine_base
+	#undef MR_maybe_local_thread_engine_base
+	#define MR_maybe_local_thread_engine_base MR_local_thread_engine_base
+#endif
+MR_define_entry(mercury__check_hlds__mode_info__mode_info_set_proc_id_3_0);
+	MR_MAYBE_INIT_LOCAL_THREAD_ENGINE_BASE
+	{
+	MR_Word MR_tempr1, MR_tempr2, MR_tempr3, MR_tempr4, MR_tempr5, MR_tempr6, MR_tempr7, MR_tempr8, MR_tempr9, MR_tempr10, MR_tempr11, MR_tempr12, MR_tempr13;
+	MR_tempr1 = MR_tfield(0, MR_r2, 7);
+	MR_tempr2 = (((MR_Integer) MR_tfield(0, MR_tempr1, 9) >> (MR_Integer) 2) & (MR_Integer) 1);
+	MR_tempr3 = (((MR_Integer) MR_tfield(0, MR_tempr1, 11) >> (MR_Integer) 1) & (MR_Integer) 1);
+	MR_tempr4 = (((MR_Integer) MR_tfield(0, MR_tempr1, 14) >> (MR_Integer) 5) & (MR_Integer) 1);
+	MR_tempr5 = (((MR_Integer) MR_tfield(0, MR_tempr1, 14) >> (MR_Integer) 4) & (MR_Integer) 1);
+	MR_tempr6 = (((MR_Integer) MR_tfield(0, MR_tempr1, 14) >> (MR_Integer) 3) & (MR_Integer) 1);
+	MR_tempr7 = (((MR_Integer) MR_tfield(0, MR_tempr1, 14) >> (MR_Integer) 2) & (MR_Integer) 1);
+	MR_tempr8 = (((MR_Integer) MR_tfield(0, MR_tempr1, 14) >> (MR_Integer) 1) & (MR_Integer) 1);
+	MR_tempr9 = ((MR_Integer) MR_tfield(0, MR_tempr1, 14) & (MR_Integer) 1);
+	MR_tempr10 = ((MR_Integer) MR_tfield(0, MR_tempr1, 11) & (MR_Integer) 1);
+	MR_tempr11 = (((MR_Integer) MR_tfield(0, MR_tempr1, 9) >> (MR_Integer) 1) & (MR_Integer) 1);
+	MR_tempr12 = ((MR_Integer) MR_tfield(0, MR_tempr1, 9) & (MR_Integer) 1);
+	MR_tag_alloc_heap(MR_tempr13, 0, (MR_Integer) 15);
+	MR_tfield(0, MR_tempr13, 0) = MR_tfield(0, MR_tempr1, 0);
+	MR_tfield(0, MR_tempr13, 1) = MR_r1;
+	MR_tfield(0, MR_tempr13, 2) = MR_tfield(0, MR_tempr1, 2);
+	MR_tfield(0, MR_tempr13, 3) = MR_tfield(0, MR_tempr1, 3);
+	MR_tfield(0, MR_tempr13, 4) = MR_tfield(0, MR_tempr1, 4);
+	MR_tfield(0, MR_tempr13, 5) = MR_tfield(0, MR_tempr1, 5);
+	MR_tfield(0, MR_tempr13, 6) = MR_tfield(0, MR_tempr1, 6);
+	MR_tfield(0, MR_tempr13, 7) = MR_tfield(0, MR_tempr1, 7);
+	MR_tfield(0, MR_tempr13, 8) = MR_tfield(0, MR_tempr1, 8);
+	MR_tfield(0, MR_tempr13, 9) = ((MR_Integer) MR_tempr12 | (((MR_Integer) MR_tempr11 << (MR_Integer) 1) | ((MR_Integer) MR_tempr2 << (MR_Integer) 2)));
+	MR_tfield(0, MR_tempr13, 10) = MR_tfield(0, MR_tempr1, 10);
+	MR_tfield(0, MR_tempr13, 11) = ((MR_Integer) MR_tempr10 | ((MR_Integer) MR_tempr3 << (MR_Integer) 1));
+	MR_tfield(0, MR_tempr13, 12) = MR_tfield(0, MR_tempr1, 12);
+	MR_tfield(0, MR_tempr13, 13) = MR_tfield(0, MR_tempr1, 13);
+	MR_tfield(0, MR_tempr13, 14) = ((MR_Integer) MR_tempr9 | (((MR_Integer) MR_tempr8 << (MR_Integer) 1) | (((MR_Integer) MR_tempr7 << (MR_Integer) 2) | (((MR_Integer) MR_tempr6 << (MR_Integer) 3) | (((MR_Integer) MR_tempr5 << (MR_Integer) 4) | ((MR_Integer) MR_tempr4 << (MR_Integer) 5))))));
+	MR_tag_alloc_heap(MR_r1, 0, (MR_Integer) 8);
+	MR_tfield(0, MR_r1, 0) = MR_tfield(0, MR_r2, 0);
+	MR_tfield(0, MR_r1, 1) = MR_tfield(0, MR_r2, 1);
+	MR_tfield(0, MR_r1, 2) = MR_tfield(0, MR_r2, 2);
+	MR_tfield(0, MR_r1, 3) = MR_tfield(0, MR_r2, 3);
+	MR_tfield(0, MR_r1, 4) = MR_tfield(0, MR_r2, 4);
+	MR_tfield(0, MR_r1, 5) = MR_tfield(0, MR_r2, 5);
+	MR_tfield(0, MR_r1, 6) = MR_tfield(0, MR_r2, 6);
+	MR_tfield(0, MR_r1, 7) = MR_tempr13;
+	MR_proceed();
+	}
+#ifdef MR_maybe_local_thread_engine_base
+	#undef MR_maybe_local_thread_engine_base
+	#define MR_maybe_local_thread_engine_base MR_thread_engine_base
+#endif
+MR_END_MODULE
+
+
+MR_BEGIN_MODULE(check_hlds__mode_info_module39)
+	MR_init_entry1(check_hlds__mode_info__mode_info_set_context_3_0);
+	MR_INIT_PROC_LAYOUT_ADDR(mercury__check_hlds__mode_info__mode_info_set_context_3_0);
+MR_BEGIN_CODE
+
+/*-------------------------------------------------------------------------*/
+/* code for 'mode_info_set_context'/3 mode 0 */
+#ifdef MR_maybe_local_thread_engine_base
+	#undef MR_maybe_local_thread_engine_base
+	#define MR_maybe_local_thread_engine_base MR_local_thread_engine_base
+#endif
+MR_define_entry(mercury__check_hlds__mode_info__mode_info_set_context_3_0);
+	MR_MAYBE_INIT_LOCAL_THREAD_ENGINE_BASE
+	{
+	MR_Word MR_tempr1;
+	MR_tag_alloc_heap(MR_tempr1, 0, (MR_Integer) 8);
+	MR_tfield(0, MR_tempr1, 0) = MR_tfield(0, MR_r2, 0);
+	MR_tfield(0, MR_tempr1, 1) = MR_tfield(0, MR_r2, 1);
+	MR_tfield(0, MR_tempr1, 2) = MR_tfield(0, MR_r2, 2);
+	MR_tfield(0, MR_tempr1, 3) = MR_tfield(0, MR_r2, 3);
+	MR_tfield(0, MR_tempr1, 4) = MR_tfield(0, MR_r2, 4);
+	MR_tfield(0, MR_tempr1, 5) = MR_r1;
+	MR_tfield(0, MR_tempr1, 6) = MR_tfield(0, MR_r2, 6);
+	MR_tfield(0, MR_tempr1, 7) = MR_tfield(0, MR_r2, 7);
+	MR_r1 = MR_tempr1;
+	MR_proceed();
+	}
+#ifdef MR_maybe_local_thread_engine_base
+	#undef MR_maybe_local_thread_engine_base
+	#define MR_maybe_local_thread_engine_base MR_thread_engine_base
+#endif
+MR_END_MODULE
+
+
+MR_BEGIN_MODULE(check_hlds__mode_info_module40)
+	MR_init_entry1(check_hlds__mode_info__mode_info_set_mode_context_3_0);
+	MR_INIT_PROC_LAYOUT_ADDR(mercury__check_hlds__mode_info__mode_info_set_mode_context_3_0);
+MR_BEGIN_CODE
+
+/*-------------------------------------------------------------------------*/
+/* code for 'mode_info_set_mode_context'/3 mode 0 */
+#ifdef MR_maybe_local_thread_engine_base
+	#undef MR_maybe_local_thread_engine_base
+	#define MR_maybe_local_thread_engine_base MR_local_thread_engine_base
+#endif
+MR_define_entry(mercury__check_hlds__mode_info__mode_info_set_mode_context_3_0);
+	MR_MAYBE_INIT_LOCAL_THREAD_ENGINE_BASE
+	{
+	MR_Word MR_tempr1;
+	MR_tag_alloc_heap(MR_tempr1, 0, (MR_Integer) 8);
+	MR_tfield(0, MR_tempr1, 0) = MR_tfield(0, MR_r2, 0);
+	MR_tfield(0, MR_tempr1, 1) = MR_tfield(0, MR_r2, 1);
+	MR_tfield(0, MR_tempr1, 2) = MR_tfield(0, MR_r2, 2);
+	MR_tfield(0, MR_tempr1, 3) = MR_tfield(0, MR_r2, 3);
+	MR_tfield(0, MR_tempr1, 4) = MR_r1;
+	MR_tfield(0, MR_tempr1, 5) = MR_tfield(0, MR_r2, 5);
+	MR_tfield(0, MR_tempr1, 6) = MR_tfield(0, MR_r2, 6);
+	MR_tfield(0, MR_tempr1, 7) = MR_tfield(0, MR_r2, 7);
+	MR_r1 = MR_tempr1;
+	MR_proceed();
+	}
+#ifdef MR_maybe_local_thread_engine_base
+	#undef MR_maybe_local_thread_engine_base
+	#define MR_maybe_local_thread_engine_base MR_thread_engine_base
+#endif
+MR_END_MODULE
+
+
+MR_BEGIN_MODULE(check_hlds__mode_info_module41)
+	MR_init_entry1(check_hlds__mode_info__mode_info_set_call_context_3_0);
+	MR_INIT_PROC_LAYOUT_ADDR(mercury__check_hlds__mode_info__mode_info_set_call_context_3_0);
+	MR_init_label1(check_hlds__mode_info__mode_info_set_call_context_3_0,3)
+MR_BEGIN_CODE
+
+/*-------------------------------------------------------------------------*/
+/* code for 'mode_info_set_call_context'/3 mode 0 */
+#ifdef MR_maybe_local_thread_engine_base
+	#undef MR_maybe_local_thread_engine_base
+	#define MR_maybe_local_thread_engine_base MR_local_thread_engine_base
+#endif
+MR_define_entry(mercury__check_hlds__mode_info__mode_info_set_call_context_3_0);
+	MR_MAYBE_INIT_LOCAL_THREAD_ENGINE_BASE
+	if (MR_PTAG_TESTR(MR_r1,1)) {
+		MR_GOTO_LAB(check_hlds__mode_info__mode_info_set_call_context_3_0_i3);
+	}
+	{
+	MR_Word MR_tempr1;
+	MR_tag_alloc_heap(MR_tempr1, 1, (MR_Integer) 2);
+	MR_tfield(1, MR_tempr1, 0) = MR_tfield(1, MR_r1, 0);
+	MR_tfield(1, MR_tempr1, 1) = (MR_Integer) 0;
+	MR_tag_alloc_heap(MR_r1, 0, (MR_Integer) 8);
+	MR_tfield(0, MR_r1, 0) = MR_tfield(0, MR_r2, 0);
+	MR_tfield(0, MR_r1, 1) = MR_tfield(0, MR_r2, 1);
+	MR_tfield(0, MR_r1, 2) = MR_tfield(0, MR_r2, 2);
+	MR_tfield(0, MR_r1, 3) = MR_tfield(0, MR_r2, 3);
+	MR_tfield(0, MR_r1, 4) = MR_tempr1;
+	MR_tfield(0, MR_r1, 5) = MR_tfield(0, MR_r2, 5);
+	MR_tfield(0, MR_r1, 6) = MR_tfield(0, MR_r2, 6);
+	MR_tfield(0, MR_r1, 7) = MR_tfield(0, MR_r2, 7);
+	MR_proceed();
+	}
+MR_def_label(check_hlds__mode_info__mode_info_set_call_context_3_0,3)
+	MR_MAYBE_INIT_LOCAL_THREAD_ENGINE_BASE
+	{
+	MR_Word MR_tempr1;
+	MR_tag_alloc_heap(MR_tempr1, 2, (MR_Integer) 2);
+	MR_tfield(2, MR_tempr1, 0) = MR_tfield(0, MR_r1, 0);
+	MR_tfield(2, MR_tempr1, 1) = (MR_Integer) 0;
+	MR_tag_alloc_heap(MR_r1, 0, (MR_Integer) 8);
+	MR_tfield(0, MR_r1, 0) = MR_tfield(0, MR_r2, 0);
+	MR_tfield(0, MR_r1, 1) = MR_tfield(0, MR_r2, 1);
+	MR_tfield(0, MR_r1, 2) = MR_tfield(0, MR_r2, 2);
+	MR_tfield(0, MR_r1, 3) = MR_tfield(0, MR_r2, 3);
+	MR_tfield(0, MR_r1, 4) = MR_tempr1;
+	MR_tfield(0, MR_r1, 5) = MR_tfield(0, MR_r2, 5);
+	MR_tfield(0, MR_r1, 6) = MR_tfield(0, MR_r2, 6);
+	MR_tfield(0, MR_r1, 7) = MR_tfield(0, MR_r2, 7);
+	MR_proceed();
+	}
+#ifdef MR_maybe_local_thread_engine_base
+	#undef MR_maybe_local_thread_engine_base
+	#define MR_maybe_local_thread_engine_base MR_thread_engine_base
+#endif
+MR_END_MODULE
+
+MR_decl_entry(require__unexpected_3_0);
+
+MR_BEGIN_MODULE(check_hlds__mode_info_module42)
+	MR_init_entry1(check_hlds__mode_info__mode_info_set_call_arg_context_3_0);
+	MR_INIT_PROC_LAYOUT_ADDR(mercury__check_hlds__mode_info__mode_info_set_call_arg_context_3_0);
+	MR_init_label2(check_hlds__mode_info__mode_info_set_call_arg_context_3_0,3,6)
+MR_BEGIN_CODE
+
+/*-------------------------------------------------------------------------*/
+/* code for 'mode_info_set_call_arg_context'/3 mode 0 */
+#ifdef MR_maybe_local_thread_engine_base
+	#undef MR_maybe_local_thread_engine_base
+	#define MR_maybe_local_thread_engine_base MR_local_thread_engine_base
+#endif
+MR_define_entry(mercury__check_hlds__mode_info__mode_info_set_call_arg_context_3_0);
+	MR_MAYBE_INIT_LOCAL_THREAD_ENGINE_BASE
+	{
+	MR_Word MR_tempr1, MR_tempr2;
+	MR_tempr1 = MR_tfield(0, MR_r2, 4);
+	MR_r3 = MR_tempr1;
+	if (MR_PTAG_TESTR(MR_tempr1,1)) {
+		MR_GOTO_LAB(check_hlds__mode_info__mode_info_set_call_arg_context_3_0_i3);
+	}
+	MR_tag_alloc_heap(MR_tempr2, 1, (MR_Integer) 2);
+	MR_tfield(1, MR_tempr2, 0) = MR_tfield(1, MR_tempr1, 0);
+	MR_tfield(1, MR_tempr2, 1) = MR_r1;
+	MR_tag_alloc_heap(MR_r1, 0, (MR_Integer) 8);
+	MR_tfield(0, MR_r1, 0) = MR_tfield(0, MR_r2, 0);
+	MR_tfield(0, MR_r1, 1) = MR_tfield(0, MR_r2, 1);
+	MR_tfield(0, MR_r1, 2) = MR_tfield(0, MR_r2, 2);
+	MR_tfield(0, MR_r1, 3) = MR_tfield(0, MR_r2, 3);
+	MR_tfield(0, MR_r1, 4) = MR_tempr2;
+	MR_tfield(0, MR_r1, 5) = MR_tfield(0, MR_r2, 5);
+	MR_tfield(0, MR_r1, 6) = MR_tfield(0, MR_r2, 6);
+	MR_tfield(0, MR_r1, 7) = MR_tfield(0, MR_r2, 7);
+	MR_proceed();
+	}
+MR_def_label(check_hlds__mode_info__mode_info_set_call_arg_context_3_0,3)
+	MR_MAYBE_INIT_LOCAL_THREAD_ENGINE_BASE
+	if (MR_PTAG_TESTR(MR_r3,2)) {
+		MR_GOTO_LAB(check_hlds__mode_info__mode_info_set_call_arg_context_3_0_i6);
+	}
+	MR_r1 = MR_r2;
+	MR_proceed();
+MR_def_label(check_hlds__mode_info__mode_info_set_call_arg_context_3_0,6)
+	MR_MAYBE_INIT_LOCAL_THREAD_ENGINE_BASE
+	MR_r1 = (MR_Word) MR_string_const("check_hlds.mode_info", 20);
+	MR_r2 = (MR_Word) MR_string_const("predicate \140check_hlds.mode_info.mode_info_set_call_arg_context\'/3", 65);
+	MR_r3 = (MR_Word) MR_string_const("uninitialized", 13);
+	MR_np_tailcall_ent(require__unexpected_3_0);
+#ifdef MR_maybe_local_thread_engine_base
+	#undef MR_maybe_local_thread_engine_base
+	#define MR_maybe_local_thread_engine_base MR_thread_engine_base
+#endif
+MR_END_MODULE
+
+
+MR_BEGIN_MODULE(check_hlds__mode_info_module43)
+	MR_init_entry1(check_hlds__mode_info__mode_info_unset_call_context_2_0);
+	MR_INIT_PROC_LAYOUT_ADDR(mercury__check_hlds__mode_info__mode_info_unset_call_context_2_0);
+MR_BEGIN_CODE
+
+/*-------------------------------------------------------------------------*/
+/* code for 'mode_info_unset_call_context'/2 mode 0 */
+#ifdef MR_maybe_local_thread_engine_base
+	#undef MR_maybe_local_thread_engine_base
+	#define MR_maybe_local_thread_engine_base MR_local_thread_engine_base
+#endif
+MR_define_entry(mercury__check_hlds__mode_info__mode_info_unset_call_context_2_0);
+	MR_MAYBE_INIT_LOCAL_THREAD_ENGINE_BASE
+	MR_tag_alloc_heap(MR_r2, 0, (MR_Integer) 8);
+	MR_tfield(0, MR_r2, 0) = MR_tfield(0, MR_r1, 0);
+	MR_tfield(0, MR_r2, 1) = MR_tfield(0, MR_r1, 1);
+	MR_tfield(0, MR_r2, 2) = MR_tfield(0, MR_r1, 2);
+	MR_tfield(0, MR_r2, 3) = MR_tfield(0, MR_r1, 3);
+	MR_tfield(0, MR_r2, 4) = (MR_Word) MR_tbmkword(0, 0);
+	MR_tfield(0, MR_r2, 5) = MR_tfield(0, MR_r1, 5);
+	MR_tfield(0, MR_r2, 6) = MR_tfield(0, MR_r1, 6);
+	MR_tfield(0, MR_r2, 7) = MR_tfield(0, MR_r1, 7);
+	MR_r1 = MR_r2;
+	MR_proceed();
+#ifdef MR_maybe_local_thread_engine_base
+	#undef MR_maybe_local_thread_engine_base
+	#define MR_maybe_local_thread_engine_base MR_thread_engine_base
+#endif
+MR_END_MODULE
+
+
+MR_BEGIN_MODULE(check_hlds__mode_info_module44)
+	MR_init_entry1(check_hlds__mode_info__mode_info_set_delay_info_3_0);
+	MR_INIT_PROC_LAYOUT_ADDR(mercury__check_hlds__mode_info__mode_info_set_delay_info_3_0);
+MR_BEGIN_CODE
+
+/*-------------------------------------------------------------------------*/
+/* code for 'mode_info_set_delay_info'/3 mode 0 */
+#ifdef MR_maybe_local_thread_engine_base
+	#undef MR_maybe_local_thread_engine_base
+	#define MR_maybe_local_thread_engine_base MR_local_thread_engine_base
+#endif
+MR_define_entry(mercury__check_hlds__mode_info__mode_info_set_delay_info_3_0);
+	MR_MAYBE_INIT_LOCAL_THREAD_ENGINE_BASE
+	{
+	MR_Word MR_tempr1;
+	MR_tag_alloc_heap(MR_tempr1, 0, (MR_Integer) 8);
+	MR_tfield(0, MR_tempr1, 0) = MR_tfield(0, MR_r2, 0);
+	MR_tfield(0, MR_tempr1, 1) = MR_tfield(0, MR_r2, 1);
+	MR_tfield(0, MR_tempr1, 2) = MR_r1;
+	MR_tfield(0, MR_tempr1, 3) = MR_tfield(0, MR_r2, 3);
+	MR_tfield(0, MR_tempr1, 4) = MR_tfield(0, MR_r2, 4);
+	MR_tfield(0, MR_tempr1, 5) = MR_tfield(0, MR_r2, 5);
+	MR_tfield(0, MR_tempr1, 6) = MR_tfield(0, MR_r2, 6);
+	MR_tfield(0, MR_tempr1, 7) = MR_tfield(0, MR_r2, 7);
+	MR_r1 = MR_tempr1;
+	MR_proceed();
+	}
+#ifdef MR_maybe_local_thread_engine_base
+	#undef MR_maybe_local_thread_engine_base
+	#define MR_maybe_local_thread_engine_base MR_thread_engine_base
+#endif
+MR_END_MODULE
+
+MR_decl_entry(hlds__instmap__instmap_is_unreachable_1_0);
+MR_decl_entry(hlds__instmap__instmap_is_reachable_1_0);
+MR_decl_entry(check_hlds__delay_info__delay_info_bind_all_vars_2_0);
+
+MR_BEGIN_MODULE(check_hlds__mode_info_module45)
+	MR_init_entry1(check_hlds__mode_info__mode_info_set_instmap_3_0);
+	MR_INIT_PROC_LAYOUT_ADDR(mercury__check_hlds__mode_info__mode_info_set_instmap_3_0);
+	MR_init_label4(check_hlds__mode_info__mode_info_set_instmap_3_0,4,6,8,3)
+MR_BEGIN_CODE
+
+/*-------------------------------------------------------------------------*/
+/* code for 'mode_info_set_instmap'/3 mode 0 */
+#ifdef MR_maybe_local_thread_engine_base
+	#undef MR_maybe_local_thread_engine_base
+	#define MR_maybe_local_thread_engine_base MR_local_thread_engine_base
+#endif
+MR_define_entry(mercury__check_hlds__mode_info__mode_info_set_instmap_3_0);
+	MR_MAYBE_INIT_LOCAL_THREAD_ENGINE_BASE
+	MR_incr_sp(3);
+	MR_sv(3) = (MR_Word) MR_succip;
+	{
+	MR_Word MR_tempr1;
+	MR_tag_alloc_heap(MR_tempr1, 0, (MR_Integer) 8);
+	MR_sv(2) = MR_tempr1;
+	MR_tfield(0, MR_tempr1, 0) = MR_tfield(0, MR_r2, 0);
+	MR_tfield(0, MR_tempr1, 1) = MR_r1;
+	MR_tfield(0, MR_tempr1, 2) = MR_tfield(0, MR_r2, 2);
+	MR_tfield(0, MR_tempr1, 3) = MR_tfield(0, MR_r2, 3);
+	MR_tfield(0, MR_tempr1, 4) = MR_tfield(0, MR_r2, 4);
+	MR_tfield(0, MR_tempr1, 5) = MR_tfield(0, MR_r2, 5);
+	MR_tfield(0, MR_tempr1, 6) = MR_tfield(0, MR_r2, 6);
+	MR_tfield(0, MR_tempr1, 7) = MR_tfield(0, MR_r2, 7);
+	MR_sv(1) = MR_tfield(0, MR_r2, 1);
+	}
+	MR_np_call_localret_ent(hlds__instmap__instmap_is_unreachable_1_0,
+		check_hlds__mode_info__mode_info_set_instmap_3_0_i4);
+MR_def_label(check_hlds__mode_info__mode_info_set_instmap_3_0,4)
+	MR_MAYBE_INIT_LOCAL_THREAD_ENGINE_BASE
+	if (!(MR_r1)) {
+		MR_GOTO_LAB(check_hlds__mode_info__mode_info_set_instmap_3_0_i3);
+	}
+	MR_r1 = MR_sv(1);
+	MR_np_call_localret_ent(hlds__instmap__instmap_is_reachable_1_0,
+		check_hlds__mode_info__mode_info_set_instmap_3_0_i6);
+MR_def_label(check_hlds__mode_info__mode_info_set_instmap_3_0,6)
+	MR_MAYBE_INIT_LOCAL_THREAD_ENGINE_BASE
+	if (!(MR_r1)) {
+		MR_GOTO_LAB(check_hlds__mode_info__mode_info_set_instmap_3_0_i3);
+	}
+	MR_r1 = MR_tfield(0, MR_sv(2), 2);
+	MR_np_call_localret_ent(check_hlds__delay_info__delay_info_bind_all_vars_2_0,
+		check_hlds__mode_info__mode_info_set_instmap_3_0_i8);
+MR_def_label(check_hlds__mode_info__mode_info_set_instmap_3_0,8)
+	MR_MAYBE_INIT_LOCAL_THREAD_ENGINE_BASE
+	MR_tag_alloc_heap(MR_r2, 0, (MR_Integer) 8);
+	{
+	MR_Word MR_tempr1;
+	MR_tempr1 = MR_sv(2);
+	MR_tfield(0, MR_r2, 0) = MR_tfield(0, MR_tempr1, 0);
+	MR_tfield(0, MR_r2, 1) = MR_tfield(0, MR_tempr1, 1);
+	MR_tfield(0, MR_r2, 2) = MR_r1;
+	MR_tfield(0, MR_r2, 3) = MR_tfield(0, MR_tempr1, 3);
+	MR_tfield(0, MR_r2, 4) = MR_tfield(0, MR_tempr1, 4);
+	MR_tfield(0, MR_r2, 5) = MR_tfield(0, MR_tempr1, 5);
+	MR_tfield(0, MR_r2, 6) = MR_tfield(0, MR_tempr1, 6);
+	MR_tfield(0, MR_r2, 7) = MR_tfield(0, MR_tempr1, 7);
+	MR_r1 = MR_r2;
+	MR_decr_sp_and_return(3);
+	}
+MR_def_label(check_hlds__mode_info__mode_info_set_instmap_3_0,3)
+	MR_MAYBE_INIT_LOCAL_THREAD_ENGINE_BASE
+	MR_r1 = MR_sv(2);
+	MR_decr_sp_and_return(3);
+#ifdef MR_maybe_local_thread_engine_base
+	#undef MR_maybe_local_thread_engine_base
+	#define MR_maybe_local_thread_engine_base MR_thread_engine_base
+#endif
+MR_END_MODULE
+
+
+MR_BEGIN_MODULE(check_hlds__mode_info_module46)
+	MR_init_entry1(check_hlds__mode_info__mode_info_set_locked_vars_3_0);
+	MR_INIT_PROC_LAYOUT_ADDR(mercury__check_hlds__mode_info__mode_info_set_locked_vars_3_0);
+MR_BEGIN_CODE
+
+/*-------------------------------------------------------------------------*/
+/* code for 'mode_info_set_locked_vars'/3 mode 0 */
+#ifdef MR_maybe_local_thread_engine_base
+	#undef MR_maybe_local_thread_engine_base
+	#define MR_maybe_local_thread_engine_base MR_local_thread_engine_base
+#endif
+MR_define_entry(mercury__check_hlds__mode_info__mode_info_set_locked_vars_3_0);
+	MR_MAYBE_INIT_LOCAL_THREAD_ENGINE_BASE
+	{
+	MR_Word MR_tempr1, MR_tempr2, MR_tempr3, MR_tempr4, MR_tempr5, MR_tempr6, MR_tempr7, MR_tempr8, MR_tempr9, MR_tempr10, MR_tempr11, MR_tempr12, MR_tempr13;
+	MR_tempr1 = MR_tfield(0, MR_r2, 7);
+	MR_tempr2 = (((MR_Integer) MR_tfield(0, MR_tempr1, 9) >> (MR_Integer) 2) & (MR_Integer) 1);
+	MR_tempr3 = (((MR_Integer) MR_tfield(0, MR_tempr1, 11) >> (MR_Integer) 1) & (MR_Integer) 1);
+	MR_tempr4 = (((MR_Integer) MR_tfield(0, MR_tempr1, 14) >> (MR_Integer) 5) & (MR_Integer) 1);
+	MR_tempr5 = (((MR_Integer) MR_tfield(0, MR_tempr1, 14) >> (MR_Integer) 4) & (MR_Integer) 1);
+	MR_tempr6 = (((MR_Integer) MR_tfield(0, MR_tempr1, 14) >> (MR_Integer) 3) & (MR_Integer) 1);
+	MR_tempr7 = (((MR_Integer) MR_tfield(0, MR_tempr1, 14) >> (MR_Integer) 2) & (MR_Integer) 1);
+	MR_tempr8 = (((MR_Integer) MR_tfield(0, MR_tempr1, 14) >> (MR_Integer) 1) & (MR_Integer) 1);
+	MR_tempr9 = ((MR_Integer) MR_tfield(0, MR_tempr1, 14) & (MR_Integer) 1);
+	MR_tempr10 = ((MR_Integer) MR_tfield(0, MR_tempr1, 11) & (MR_Integer) 1);
+	MR_tempr11 = (((MR_Integer) MR_tfield(0, MR_tempr1, 9) >> (MR_Integer) 1) & (MR_Integer) 1);
+	MR_tempr12 = ((MR_Integer) MR_tfield(0, MR_tempr1, 9) & (MR_Integer) 1);
+	MR_tag_alloc_heap(MR_tempr13, 0, (MR_Integer) 15);
+	MR_tfield(0, MR_tempr13, 0) = MR_tfield(0, MR_tempr1, 0);
+	MR_tfield(0, MR_tempr13, 1) = MR_tfield(0, MR_tempr1, 1);
+	MR_tfield(0, MR_tempr13, 2) = MR_tfield(0, MR_tempr1, 2);
+	MR_tfield(0, MR_tempr13, 3) = MR_tfield(0, MR_tempr1, 3);
+	MR_tfield(0, MR_tempr13, 4) = MR_tfield(0, MR_tempr1, 4);
+	MR_tfield(0, MR_tempr13, 5) = MR_r1;
+	MR_tfield(0, MR_tempr13, 6) = MR_tfield(0, MR_tempr1, 6);
+	MR_tfield(0, MR_tempr13, 7) = MR_tfield(0, MR_tempr1, 7);
+	MR_tfield(0, MR_tempr13, 8) = MR_tfield(0, MR_tempr1, 8);
+	MR_tfield(0, MR_tempr13, 9) = ((MR_Integer) MR_tempr12 | (((MR_Integer) MR_tempr11 << (MR_Integer) 1) | ((MR_Integer) MR_tempr2 << (MR_Integer) 2)));
+	MR_tfield(0, MR_tempr13, 10) = MR_tfield(0, MR_tempr1, 10);
+	MR_tfield(0, MR_tempr13, 11) = ((MR_Integer) MR_tempr10 | ((MR_Integer) MR_tempr3 << (MR_Integer) 1));
+	MR_tfield(0, MR_tempr13, 12) = MR_tfield(0, MR_tempr1, 12);
+	MR_tfield(0, MR_tempr13, 13) = MR_tfield(0, MR_tempr1, 13);
+	MR_tfield(0, MR_tempr13, 14) = ((MR_Integer) MR_tempr9 | (((MR_Integer) MR_tempr8 << (MR_Integer) 1) | (((MR_Integer) MR_tempr7 << (MR_Integer) 2) | (((MR_Integer) MR_tempr6 << (MR_Integer) 3) | (((MR_Integer) MR_tempr5 << (MR_Integer) 4) | ((MR_Integer) MR_tempr4 << (MR_Integer) 5))))));
+	MR_tag_alloc_heap(MR_r1, 0, (MR_Integer) 8);
+	MR_tfield(0, MR_r1, 0) = MR_tfield(0, MR_r2, 0);
+	MR_tfield(0, MR_r1, 1) = MR_tfield(0, MR_r2, 1);
+	MR_tfield(0, MR_r1, 2) = MR_tfield(0, MR_r2, 2);
+	MR_tfield(0, MR_r1, 3) = MR_tfield(0, MR_r2, 3);
+	MR_tfield(0, MR_r1, 4) = MR_tfield(0, MR_r2, 4);
+	MR_tfield(0, MR_r1, 5) = MR_tfield(0, MR_r2, 5);
+	MR_tfield(0, MR_r1, 6) = MR_tfield(0, MR_r2, 6);
+	MR_tfield(0, MR_r1, 7) = MR_tempr13;
+	MR_proceed();
+	}
+#ifdef MR_maybe_local_thread_engine_base
+	#undef MR_maybe_local_thread_engine_base
+	#define MR_maybe_local_thread_engine_base MR_thread_engine_base
+#endif
+MR_END_MODULE
+
+
+MR_BEGIN_MODULE(check_hlds__mode_info_module47)
+	MR_init_entry1(check_hlds__mode_info__mode_info_set_errors_3_0);
+	MR_INIT_PROC_LAYOUT_ADDR(mercury__check_hlds__mode_info__mode_info_set_errors_3_0);
+MR_BEGIN_CODE
+
+/*-------------------------------------------------------------------------*/
+/* code for 'mode_info_set_errors'/3 mode 0 */
+#ifdef MR_maybe_local_thread_engine_base
+	#undef MR_maybe_local_thread_engine_base
+	#define MR_maybe_local_thread_engine_base MR_local_thread_engine_base
+#endif
+MR_define_entry(mercury__check_hlds__mode_info__mode_info_set_errors_3_0);
+	MR_MAYBE_INIT_LOCAL_THREAD_ENGINE_BASE
+	{
+	MR_Word MR_tempr1;
+	MR_tag_alloc_heap(MR_tempr1, 0, (MR_Integer) 8);
+	MR_tfield(0, MR_tempr1, 0) = MR_tfield(0, MR_r2, 0);
+	MR_tfield(0, MR_tempr1, 1) = MR_tfield(0, MR_r2, 1);
+	MR_tfield(0, MR_tempr1, 2) = MR_tfield(0, MR_r2, 2);
+	MR_tfield(0, MR_tempr1, 3) = MR_r1;
+	MR_tfield(0, MR_tempr1, 4) = MR_tfield(0, MR_r2, 4);
+	MR_tfield(0, MR_tempr1, 5) = MR_tfield(0, MR_r2, 5);
+	MR_tfield(0, MR_tempr1, 6) = MR_tfield(0, MR_r2, 6);
+	MR_tfield(0, MR_tempr1, 7) = MR_tfield(0, MR_r2, 7);
+	MR_r1 = MR_tempr1;
+	MR_proceed();
+	}
+#ifdef MR_maybe_local_thread_engine_base
+	#undef MR_maybe_local_thread_engine_base
+	#define MR_maybe_local_thread_engine_base MR_thread_engine_base
+#endif
+MR_END_MODULE
+
+
+MR_BEGIN_MODULE(check_hlds__mode_info_module48)
+	MR_init_entry1(check_hlds__mode_info__mode_info_set_warnings_3_0);
+	MR_INIT_PROC_LAYOUT_ADDR(mercury__check_hlds__mode_info__mode_info_set_warnings_3_0);
+MR_BEGIN_CODE
+
+/*-------------------------------------------------------------------------*/
+/* code for 'mode_info_set_warnings'/3 mode 0 */
+#ifdef MR_maybe_local_thread_engine_base
+	#undef MR_maybe_local_thread_engine_base
+	#define MR_maybe_local_thread_engine_base MR_local_thread_engine_base
+#endif
+MR_define_entry(mercury__check_hlds__mode_info__mode_info_set_warnings_3_0);
+	MR_MAYBE_INIT_LOCAL_THREAD_ENGINE_BASE
+	{
+	MR_Word MR_tempr1, MR_tempr2, MR_tempr3, MR_tempr4, MR_tempr5, MR_tempr6, MR_tempr7, MR_tempr8, MR_tempr9, MR_tempr10, MR_tempr11, MR_tempr12, MR_tempr13;
+	MR_tempr1 = MR_tfield(0, MR_r2, 7);
+	MR_tempr2 = (((MR_Integer) MR_tfield(0, MR_tempr1, 9) >> (MR_Integer) 2) & (MR_Integer) 1);
+	MR_tempr3 = (((MR_Integer) MR_tfield(0, MR_tempr1, 11) >> (MR_Integer) 1) & (MR_Integer) 1);
+	MR_tempr4 = (((MR_Integer) MR_tfield(0, MR_tempr1, 14) >> (MR_Integer) 5) & (MR_Integer) 1);
+	MR_tempr5 = (((MR_Integer) MR_tfield(0, MR_tempr1, 14) >> (MR_Integer) 4) & (MR_Integer) 1);
+	MR_tempr6 = (((MR_Integer) MR_tfield(0, MR_tempr1, 14) >> (MR_Integer) 3) & (MR_Integer) 1);
+	MR_tempr7 = (((MR_Integer) MR_tfield(0, MR_tempr1, 14) >> (MR_Integer) 2) & (MR_Integer) 1);
+	MR_tempr8 = (((MR_Integer) MR_tfield(0, MR_tempr1, 14) >> (MR_Integer) 1) & (MR_Integer) 1);
+	MR_tempr9 = ((MR_Integer) MR_tfield(0, MR_tempr1, 14) & (MR_Integer) 1);
+	MR_tempr10 = ((MR_Integer) MR_tfield(0, MR_tempr1, 11) & (MR_Integer) 1);
+	MR_tempr11 = (((MR_Integer) MR_tfield(0, MR_tempr1, 9) >> (MR_Integer) 1) & (MR_Integer) 1);
+	MR_tempr12 = ((MR_Integer) MR_tfield(0, MR_tempr1, 9) & (MR_Integer) 1);
+	MR_tag_alloc_heap(MR_tempr13, 0, (MR_Integer) 15);
+	MR_tfield(0, MR_tempr13, 0) = MR_tfield(0, MR_tempr1, 0);
+	MR_tfield(0, MR_tempr13, 1) = MR_tfield(0, MR_tempr1, 1);
+	MR_tfield(0, MR_tempr13, 2) = MR_tfield(0, MR_tempr1, 2);
+	MR_tfield(0, MR_tempr13, 3) = MR_tfield(0, MR_tempr1, 3);
+	MR_tfield(0, MR_tempr13, 4) = MR_tfield(0, MR_tempr1, 4);
+	MR_tfield(0, MR_tempr13, 5) = MR_tfield(0, MR_tempr1, 5);
+	MR_tfield(0, MR_tempr13, 6) = MR_tfield(0, MR_tempr1, 6);
+	MR_tfield(0, MR_tempr13, 7) = MR_tfield(0, MR_tempr1, 7);
+	MR_tfield(0, MR_tempr13, 8) = MR_tfield(0, MR_tempr1, 8);
+	MR_tfield(0, MR_tempr13, 9) = ((MR_Integer) MR_tempr12 | (((MR_Integer) MR_tempr11 << (MR_Integer) 1) | ((MR_Integer) MR_tempr2 << (MR_Integer) 2)));
+	MR_tfield(0, MR_tempr13, 10) = MR_tfield(0, MR_tempr1, 10);
+	MR_tfield(0, MR_tempr13, 11) = ((MR_Integer) MR_tempr10 | ((MR_Integer) MR_tempr3 << (MR_Integer) 1));
+	MR_tfield(0, MR_tempr13, 12) = MR_tfield(0, MR_tempr1, 12);
+	MR_tfield(0, MR_tempr13, 13) = MR_r1;
+	MR_tfield(0, MR_tempr13, 14) = ((MR_Integer) MR_tempr9 | (((MR_Integer) MR_tempr8 << (MR_Integer) 1) | (((MR_Integer) MR_tempr7 << (MR_Integer) 2) | (((MR_Integer) MR_tempr6 << (MR_Integer) 3) | (((MR_Integer) MR_tempr5 << (MR_Integer) 4) | ((MR_Integer) MR_tempr4 << (MR_Integer) 5))))));
+	MR_tag_alloc_heap(MR_r1, 0, (MR_Integer) 8);
+	MR_tfield(0, MR_r1, 0) = MR_tfield(0, MR_r2, 0);
+	MR_tfield(0, MR_r1, 1) = MR_tfield(0, MR_r2, 1);
+	MR_tfield(0, MR_r1, 2) = MR_tfield(0, MR_r2, 2);
+	MR_tfield(0, MR_r1, 3) = MR_tfield(0, MR_r2, 3);
+	MR_tfield(0, MR_r1, 4) = MR_tfield(0, MR_r2, 4);
+	MR_tfield(0, MR_r1, 5) = MR_tfield(0, MR_r2, 5);
+	MR_tfield(0, MR_r1, 6) = MR_tfield(0, MR_r2, 6);
+	MR_tfield(0, MR_r1, 7) = MR_tempr13;
+	MR_proceed();
+	}
+#ifdef MR_maybe_local_thread_engine_base
+	#undef MR_maybe_local_thread_engine_base
+	#define MR_maybe_local_thread_engine_base MR_thread_engine_base
+#endif
+MR_END_MODULE
+
+
+MR_BEGIN_MODULE(check_hlds__mode_info_module49)
+	MR_init_entry1(check_hlds__mode_info__mode_info_set_need_to_requantify_3_0);
+	MR_INIT_PROC_LAYOUT_ADDR(mercury__check_hlds__mode_info__mode_info_set_need_to_requantify_3_0);
+MR_BEGIN_CODE
+
+/*-------------------------------------------------------------------------*/
+/* code for 'mode_info_set_need_to_requantify'/3 mode 0 */
+#ifdef MR_maybe_local_thread_engine_base
+	#undef MR_maybe_local_thread_engine_base
+	#define MR_maybe_local_thread_engine_base MR_local_thread_engine_base
+#endif
+MR_define_entry(mercury__check_hlds__mode_info__mode_info_set_need_to_requantify_3_0);
+	MR_MAYBE_INIT_LOCAL_THREAD_ENGINE_BASE
+	{
+	MR_Word MR_tempr1, MR_tempr2, MR_tempr3, MR_tempr4, MR_tempr5, MR_tempr6, MR_tempr7, MR_tempr8, MR_tempr9, MR_tempr10, MR_tempr11, MR_tempr12;
+	MR_tempr1 = MR_tfield(0, MR_r2, 7);
+	MR_tempr2 = (((MR_Integer) MR_tfield(0, MR_tempr1, 9) >> (MR_Integer) 2) & (MR_Integer) 1);
+	MR_tempr3 = (((MR_Integer) MR_tfield(0, MR_tempr1, 11) >> (MR_Integer) 1) & (MR_Integer) 1);
+	MR_tempr4 = (((MR_Integer) MR_tfield(0, MR_tempr1, 14) >> (MR_Integer) 5) & (MR_Integer) 1);
+	MR_tempr5 = (((MR_Integer) MR_tfield(0, MR_tempr1, 14) >> (MR_Integer) 4) & (MR_Integer) 1);
+	MR_tempr6 = (((MR_Integer) MR_tfield(0, MR_tempr1, 14) >> (MR_Integer) 3) & (MR_Integer) 1);
+	MR_tempr7 = (((MR_Integer) MR_tfield(0, MR_tempr1, 14) >> (MR_Integer) 2) & (MR_Integer) 1);
+	MR_tempr8 = (((MR_Integer) MR_tfield(0, MR_tempr1, 14) >> (MR_Integer) 1) & (MR_Integer) 1);
+	MR_tempr9 = ((MR_Integer) MR_tfield(0, MR_tempr1, 11) & (MR_Integer) 1);
+	MR_tempr10 = (((MR_Integer) MR_tfield(0, MR_tempr1, 9) >> (MR_Integer) 1) & (MR_Integer) 1);
+	MR_tempr11 = ((MR_Integer) MR_tfield(0, MR_tempr1, 9) & (MR_Integer) 1);
+	MR_tag_alloc_heap(MR_tempr12, 0, (MR_Integer) 15);
+	MR_tfield(0, MR_tempr12, 0) = MR_tfield(0, MR_tempr1, 0);
+	MR_tfield(0, MR_tempr12, 1) = MR_tfield(0, MR_tempr1, 1);
+	MR_tfield(0, MR_tempr12, 2) = MR_tfield(0, MR_tempr1, 2);
+	MR_tfield(0, MR_tempr12, 3) = MR_tfield(0, MR_tempr1, 3);
+	MR_tfield(0, MR_tempr12, 4) = MR_tfield(0, MR_tempr1, 4);
+	MR_tfield(0, MR_tempr12, 5) = MR_tfield(0, MR_tempr1, 5);
+	MR_tfield(0, MR_tempr12, 6) = MR_tfield(0, MR_tempr1, 6);
+	MR_tfield(0, MR_tempr12, 7) = MR_tfield(0, MR_tempr1, 7);
+	MR_tfield(0, MR_tempr12, 8) = MR_tfield(0, MR_tempr1, 8);
+	MR_tfield(0, MR_tempr12, 9) = ((MR_Integer) MR_tempr11 | (((MR_Integer) MR_tempr10 << (MR_Integer) 1) | ((MR_Integer) MR_tempr2 << (MR_Integer) 2)));
+	MR_tfield(0, MR_tempr12, 10) = MR_tfield(0, MR_tempr1, 10);
+	MR_tfield(0, MR_tempr12, 11) = ((MR_Integer) MR_tempr9 | ((MR_Integer) MR_tempr3 << (MR_Integer) 1));
+	MR_tfield(0, MR_tempr12, 12) = MR_tfield(0, MR_tempr1, 12);
+	MR_tfield(0, MR_tempr12, 13) = MR_tfield(0, MR_tempr1, 13);
+	MR_tfield(0, MR_tempr12, 14) = ((MR_Integer) MR_r1 | (((MR_Integer) MR_tempr8 << (MR_Integer) 1) | (((MR_Integer) MR_tempr7 << (MR_Integer) 2) | (((MR_Integer) MR_tempr6 << (MR_Integer) 3) | (((MR_Integer) MR_tempr5 << (MR_Integer) 4) | ((MR_Integer) MR_tempr4 << (MR_Integer) 5))))));
+	MR_tag_alloc_heap(MR_r1, 0, (MR_Integer) 8);
+	MR_tfield(0, MR_r1, 0) = MR_tfield(0, MR_r2, 0);
+	MR_tfield(0, MR_r1, 1) = MR_tfield(0, MR_r2, 1);
+	MR_tfield(0, MR_r1, 2) = MR_tfield(0, MR_r2, 2);
+	MR_tfield(0, MR_r1, 3) = MR_tfield(0, MR_r2, 3);
+	MR_tfield(0, MR_r1, 4) = MR_tfield(0, MR_r2, 4);
+	MR_tfield(0, MR_r1, 5) = MR_tfield(0, MR_r2, 5);
+	MR_tfield(0, MR_r1, 6) = MR_tfield(0, MR_r2, 6);
+	MR_tfield(0, MR_r1, 7) = MR_tempr12;
+	MR_proceed();
+	}
+#ifdef MR_maybe_local_thread_engine_base
+	#undef MR_maybe_local_thread_engine_base
+	#define MR_maybe_local_thread_engine_base MR_thread_engine_base
+#endif
+MR_END_MODULE
+
+
+MR_BEGIN_MODULE(check_hlds__mode_info_module50)
+	MR_init_entry1(check_hlds__mode_info__mode_info_set_in_promise_purity_scope_3_0);
+	MR_INIT_PROC_LAYOUT_ADDR(mercury__check_hlds__mode_info__mode_info_set_in_promise_purity_scope_3_0);
+MR_BEGIN_CODE
+
+/*-------------------------------------------------------------------------*/
+/* code for 'mode_info_set_in_promise_purity_scope'/3 mode 0 */
+#ifdef MR_maybe_local_thread_engine_base
+	#undef MR_maybe_local_thread_engine_base
+	#define MR_maybe_local_thread_engine_base MR_local_thread_engine_base
+#endif
+MR_define_entry(mercury__check_hlds__mode_info__mode_info_set_in_promise_purity_scope_3_0);
+	MR_MAYBE_INIT_LOCAL_THREAD_ENGINE_BASE
+	{
+	MR_Word MR_tempr1, MR_tempr2, MR_tempr3, MR_tempr4, MR_tempr5, MR_tempr6, MR_tempr7, MR_tempr8, MR_tempr9, MR_tempr10, MR_tempr11, MR_tempr12;
+	MR_tempr1 = MR_tfield(0, MR_r2, 7);
+	MR_tempr2 = (((MR_Integer) MR_tfield(0, MR_tempr1, 9) >> (MR_Integer) 2) & (MR_Integer) 1);
+	MR_tempr3 = (((MR_Integer) MR_tfield(0, MR_tempr1, 11) >> (MR_Integer) 1) & (MR_Integer) 1);
+	MR_tempr4 = (((MR_Integer) MR_tfield(0, MR_tempr1, 14) >> (MR_Integer) 5) & (MR_Integer) 1);
+	MR_tempr5 = (((MR_Integer) MR_tfield(0, MR_tempr1, 14) >> (MR_Integer) 4) & (MR_Integer) 1);
+	MR_tempr6 = (((MR_Integer) MR_tfield(0, MR_tempr1, 14) >> (MR_Integer) 3) & (MR_Integer) 1);
+	MR_tempr7 = (((MR_Integer) MR_tfield(0, MR_tempr1, 14) >> (MR_Integer) 2) & (MR_Integer) 1);
+	MR_tempr8 = ((MR_Integer) MR_tfield(0, MR_tempr1, 14) & (MR_Integer) 1);
+	MR_tempr9 = ((MR_Integer) MR_tfield(0, MR_tempr1, 11) & (MR_Integer) 1);
+	MR_tempr10 = (((MR_Integer) MR_tfield(0, MR_tempr1, 9) >> (MR_Integer) 1) & (MR_Integer) 1);
+	MR_tempr11 = ((MR_Integer) MR_tfield(0, MR_tempr1, 9) & (MR_Integer) 1);
+	MR_tag_alloc_heap(MR_tempr12, 0, (MR_Integer) 15);
+	MR_tfield(0, MR_tempr12, 0) = MR_tfield(0, MR_tempr1, 0);
+	MR_tfield(0, MR_tempr12, 1) = MR_tfield(0, MR_tempr1, 1);
+	MR_tfield(0, MR_tempr12, 2) = MR_tfield(0, MR_tempr1, 2);
+	MR_tfield(0, MR_tempr12, 3) = MR_tfield(0, MR_tempr1, 3);
+	MR_tfield(0, MR_tempr12, 4) = MR_tfield(0, MR_tempr1, 4);
+	MR_tfield(0, MR_tempr12, 5) = MR_tfield(0, MR_tempr1, 5);
+	MR_tfield(0, MR_tempr12, 6) = MR_tfield(0, MR_tempr1, 6);
+	MR_tfield(0, MR_tempr12, 7) = MR_tfield(0, MR_tempr1, 7);
+	MR_tfield(0, MR_tempr12, 8) = MR_tfield(0, MR_tempr1, 8);
+	MR_tfield(0, MR_tempr12, 9) = ((MR_Integer) MR_tempr11 | (((MR_Integer) MR_tempr10 << (MR_Integer) 1) | ((MR_Integer) MR_tempr2 << (MR_Integer) 2)));
+	MR_tfield(0, MR_tempr12, 10) = MR_tfield(0, MR_tempr1, 10);
+	MR_tfield(0, MR_tempr12, 11) = ((MR_Integer) MR_tempr9 | ((MR_Integer) MR_tempr3 << (MR_Integer) 1));
+	MR_tfield(0, MR_tempr12, 12) = MR_tfield(0, MR_tempr1, 12);
+	MR_tfield(0, MR_tempr12, 13) = MR_tfield(0, MR_tempr1, 13);
+	MR_tfield(0, MR_tempr12, 14) = ((MR_Integer) MR_tempr8 | (((MR_Integer) MR_r1 << (MR_Integer) 1) | (((MR_Integer) MR_tempr7 << (MR_Integer) 2) | (((MR_Integer) MR_tempr6 << (MR_Integer) 3) | (((MR_Integer) MR_tempr5 << (MR_Integer) 4) | ((MR_Integer) MR_tempr4 << (MR_Integer) 5))))));
+	MR_tag_alloc_heap(MR_r1, 0, (MR_Integer) 8);
+	MR_tfield(0, MR_r1, 0) = MR_tfield(0, MR_r2, 0);
+	MR_tfield(0, MR_r1, 1) = MR_tfield(0, MR_r2, 1);
+	MR_tfield(0, MR_r1, 2) = MR_tfield(0, MR_r2, 2);
+	MR_tfield(0, MR_r1, 3) = MR_tfield(0, MR_r2, 3);
+	MR_tfield(0, MR_r1, 4) = MR_tfield(0, MR_r2, 4);
+	MR_tfield(0, MR_r1, 5) = MR_tfield(0, MR_r2, 5);
+	MR_tfield(0, MR_r1, 6) = MR_tfield(0, MR_r2, 6);
+	MR_tfield(0, MR_r1, 7) = MR_tempr12;
+	MR_proceed();
+	}
+#ifdef MR_maybe_local_thread_engine_base
+	#undef MR_maybe_local_thread_engine_base
+	#define MR_maybe_local_thread_engine_base MR_thread_engine_base
+#endif
+MR_END_MODULE
+
+
+MR_BEGIN_MODULE(check_hlds__mode_info_module51)
+	MR_init_entry1(check_hlds__mode_info__mode_info_set_live_vars_3_0);
+	MR_INIT_PROC_LAYOUT_ADDR(mercury__check_hlds__mode_info__mode_info_set_live_vars_3_0);
+MR_BEGIN_CODE
+
+/*-------------------------------------------------------------------------*/
+/* code for 'mode_info_set_live_vars'/3 mode 0 */
+#ifdef MR_maybe_local_thread_engine_base
+	#undef MR_maybe_local_thread_engine_base
+	#define MR_maybe_local_thread_engine_base MR_local_thread_engine_base
+#endif
+MR_define_entry(mercury__check_hlds__mode_info__mode_info_set_live_vars_3_0);
+	MR_MAYBE_INIT_LOCAL_THREAD_ENGINE_BASE
+	{
+	MR_Word MR_tempr1, MR_tempr2, MR_tempr3, MR_tempr4, MR_tempr5, MR_tempr6, MR_tempr7, MR_tempr8, MR_tempr9, MR_tempr10, MR_tempr11, MR_tempr12, MR_tempr13;
+	MR_tempr1 = MR_tfield(0, MR_r2, 7);
+	MR_tempr2 = (((MR_Integer) MR_tfield(0, MR_tempr1, 9) >> (MR_Integer) 2) & (MR_Integer) 1);
+	MR_tempr3 = (((MR_Integer) MR_tfield(0, MR_tempr1, 11) >> (MR_Integer) 1) & (MR_Integer) 1);
+	MR_tempr4 = (((MR_Integer) MR_tfield(0, MR_tempr1, 14) >> (MR_Integer) 5) & (MR_Integer) 1);
+	MR_tempr5 = (((MR_Integer) MR_tfield(0, MR_tempr1, 14) >> (MR_Integer) 4) & (MR_Integer) 1);
+	MR_tempr6 = (((MR_Integer) MR_tfield(0, MR_tempr1, 14) >> (MR_Integer) 3) & (MR_Integer) 1);
+	MR_tempr7 = (((MR_Integer) MR_tfield(0, MR_tempr1, 14) >> (MR_Integer) 2) & (MR_Integer) 1);
+	MR_tempr8 = (((MR_Integer) MR_tfield(0, MR_tempr1, 14) >> (MR_Integer) 1) & (MR_Integer) 1);
+	MR_tempr9 = ((MR_Integer) MR_tfield(0, MR_tempr1, 14) & (MR_Integer) 1);
+	MR_tempr10 = ((MR_Integer) MR_tfield(0, MR_tempr1, 11) & (MR_Integer) 1);
+	MR_tempr11 = (((MR_Integer) MR_tfield(0, MR_tempr1, 9) >> (MR_Integer) 1) & (MR_Integer) 1);
+	MR_tempr12 = ((MR_Integer) MR_tfield(0, MR_tempr1, 9) & (MR_Integer) 1);
+	MR_tag_alloc_heap(MR_tempr13, 0, (MR_Integer) 15);
+	MR_tfield(0, MR_tempr13, 0) = MR_tfield(0, MR_tempr1, 0);
+	MR_tfield(0, MR_tempr13, 1) = MR_tfield(0, MR_tempr1, 1);
+	MR_tfield(0, MR_tempr13, 2) = MR_tfield(0, MR_tempr1, 2);
+	MR_tfield(0, MR_tempr13, 3) = MR_tfield(0, MR_tempr1, 3);
+	MR_tfield(0, MR_tempr13, 4) = MR_tfield(0, MR_tempr1, 4);
+	MR_tfield(0, MR_tempr13, 5) = MR_tfield(0, MR_tempr1, 5);
+	MR_tfield(0, MR_tempr13, 6) = MR_r1;
+	MR_tfield(0, MR_tempr13, 7) = MR_tfield(0, MR_tempr1, 7);
+	MR_tfield(0, MR_tempr13, 8) = MR_tfield(0, MR_tempr1, 8);
+	MR_tfield(0, MR_tempr13, 9) = ((MR_Integer) MR_tempr12 | (((MR_Integer) MR_tempr11 << (MR_Integer) 1) | ((MR_Integer) MR_tempr2 << (MR_Integer) 2)));
+	MR_tfield(0, MR_tempr13, 10) = MR_tfield(0, MR_tempr1, 10);
+	MR_tfield(0, MR_tempr13, 11) = ((MR_Integer) MR_tempr10 | ((MR_Integer) MR_tempr3 << (MR_Integer) 1));
+	MR_tfield(0, MR_tempr13, 12) = MR_tfield(0, MR_tempr1, 12);
+	MR_tfield(0, MR_tempr13, 13) = MR_tfield(0, MR_tempr1, 13);
+	MR_tfield(0, MR_tempr13, 14) = ((MR_Integer) MR_tempr9 | (((MR_Integer) MR_tempr8 << (MR_Integer) 1) | (((MR_Integer) MR_tempr7 << (MR_Integer) 2) | (((MR_Integer) MR_tempr6 << (MR_Integer) 3) | (((MR_Integer) MR_tempr5 << (MR_Integer) 4) | ((MR_Integer) MR_tempr4 << (MR_Integer) 5))))));
+	MR_tag_alloc_heap(MR_r1, 0, (MR_Integer) 8);
+	MR_tfield(0, MR_r1, 0) = MR_tfield(0, MR_r2, 0);
+	MR_tfield(0, MR_r1, 1) = MR_tfield(0, MR_r2, 1);
+	MR_tfield(0, MR_r1, 2) = MR_tfield(0, MR_r2, 2);
+	MR_tfield(0, MR_r1, 3) = MR_tfield(0, MR_r2, 3);
+	MR_tfield(0, MR_r1, 4) = MR_tfield(0, MR_r2, 4);
+	MR_tfield(0, MR_r1, 5) = MR_tfield(0, MR_r2, 5);
+	MR_tfield(0, MR_r1, 6) = MR_tfield(0, MR_r2, 6);
+	MR_tfield(0, MR_r1, 7) = MR_tempr13;
+	MR_proceed();
+	}
+#ifdef MR_maybe_local_thread_engine_base
+	#undef MR_maybe_local_thread_engine_base
+	#define MR_maybe_local_thread_engine_base MR_thread_engine_base
+#endif
+MR_END_MODULE
+
+
+MR_BEGIN_MODULE(check_hlds__mode_info_module52)
+	MR_init_entry1(check_hlds__mode_info__mode_info_set_nondet_live_vars_3_0);
+	MR_INIT_PROC_LAYOUT_ADDR(mercury__check_hlds__mode_info__mode_info_set_nondet_live_vars_3_0);
+MR_BEGIN_CODE
+
+/*-------------------------------------------------------------------------*/
+/* code for 'mode_info_set_nondet_live_vars'/3 mode 0 */
+#ifdef MR_maybe_local_thread_engine_base
+	#undef MR_maybe_local_thread_engine_base
+	#define MR_maybe_local_thread_engine_base MR_local_thread_engine_base
+#endif
+MR_define_entry(mercury__check_hlds__mode_info__mode_info_set_nondet_live_vars_3_0);
+	MR_MAYBE_INIT_LOCAL_THREAD_ENGINE_BASE
+	{
+	MR_Word MR_tempr1;
+	MR_tag_alloc_heap(MR_tempr1, 0, (MR_Integer) 8);
+	MR_tfield(0, MR_tempr1, 0) = MR_tfield(0, MR_r2, 0);
+	MR_tfield(0, MR_tempr1, 1) = MR_tfield(0, MR_r2, 1);
+	MR_tfield(0, MR_tempr1, 2) = MR_tfield(0, MR_r2, 2);
+	MR_tfield(0, MR_tempr1, 3) = MR_tfield(0, MR_r2, 3);
+	MR_tfield(0, MR_tempr1, 4) = MR_tfield(0, MR_r2, 4);
+	MR_tfield(0, MR_tempr1, 5) = MR_tfield(0, MR_r2, 5);
+	MR_tfield(0, MR_tempr1, 6) = MR_r1;
+	MR_tfield(0, MR_tempr1, 7) = MR_tfield(0, MR_r2, 7);
+	MR_r1 = MR_tempr1;
+	MR_proceed();
+	}
+#ifdef MR_maybe_local_thread_engine_base
+	#undef MR_maybe_local_thread_engine_base
+	#define MR_maybe_local_thread_engine_base MR_thread_engine_base
+#endif
+MR_END_MODULE
+
+MR_decl_entry(parse_tree__set_of_var__to_sorted_list_2_0);
+MR_decl_entry(f_98_97_103_95_95_84_121_112_101_83_112_101_99_79_102_95_95_112_114_101_100_95_111_114_95_102_117_110_99_95_95_105_110_115_101_114_116_95_108_105_115_116_95_95_91_84_32_61_32_118_97_114_40_86_95_50_41_93_95_48_95_49_3_0);
+
+MR_BEGIN_MODULE(check_hlds__mode_info_module53)
+	MR_init_entry1(check_hlds__mode_info__mode_info_add_live_vars_3_0);
+	MR_INIT_PROC_LAYOUT_ADDR(mercury__check_hlds__mode_info__mode_info_add_live_vars_3_0);
+	MR_init_label4(check_hlds__mode_info__mode_info_add_live_vars_3_0,2,4,5,6)
+MR_BEGIN_CODE
+
+/*-------------------------------------------------------------------------*/
+/* code for 'mode_info_add_live_vars'/3 mode 0 */
+#ifdef MR_maybe_local_thread_engine_base
+	#undef MR_maybe_local_thread_engine_base
+	#define MR_maybe_local_thread_engine_base MR_local_thread_engine_base
+#endif
+MR_define_entry(mercury__check_hlds__mode_info__mode_info_add_live_vars_3_0);
+	MR_MAYBE_INIT_LOCAL_THREAD_ENGINE_BASE
+	MR_incr_sp(6);
+	MR_sv(6) = (MR_Word) MR_succip;
+	MR_sv(3) = MR_r2;
+	MR_sv(4) = (MR_Word) MR_CTOR0_ADDR(parse_tree__prog_data, prog_var_type);
+	{
+	MR_Word MR_tempr1;
+	MR_tempr1 = MR_r1;
+	MR_r1 = MR_sv(4);
+	MR_r2 = MR_tempr1;
+	}
+	MR_np_call_localret_ent(parse_tree__set_of_var__to_sorted_list_2_0,
+		check_hlds__mode_info__mode_info_add_live_vars_3_0_i2);
+MR_def_label(check_hlds__mode_info__mode_info_add_live_vars_3_0,2)
+	MR_MAYBE_INIT_LOCAL_THREAD_ENGINE_BASE
+	MR_sv(2) = MR_r1;
+	{
+	MR_Word MR_tempr1;
+	MR_tempr1 = MR_sv(3);
+	MR_sv(1) = MR_tfield(0, MR_tempr1, 6);
+	MR_sv(5) = (MR_Word) MR_TAG_COMMON(0,0,0);
+	MR_r1 = MR_sv(4);
+	MR_r2 = MR_sv(5);
+	MR_r3 = MR_sv(2);
+	MR_r4 = MR_tfield(0, MR_tfield(0, MR_tempr1, 7), 6);
+	}
+	MR_np_call_localret_ent(f_98_97_103_95_95_84_121_112_101_83_112_101_99_79_102_95_95_112_114_101_100_95_111_114_95_102_117_110_99_95_95_105_110_115_101_114_116_95_108_105_115_116_95_95_91_84_32_61_32_118_97_114_40_86_95_50_41_93_95_48_95_49_3_0,
+		check_hlds__mode_info__mode_info_add_live_vars_3_0_i4);
+MR_def_label(check_hlds__mode_info__mode_info_add_live_vars_3_0,4)
+	MR_MAYBE_INIT_LOCAL_THREAD_ENGINE_BASE
+	{
+	MR_Word MR_tempr1;
+	MR_tempr1 = MR_sv(2);
+	MR_sv(2) = MR_r1;
+	MR_r1 = MR_sv(4);
+	MR_r2 = MR_sv(5);
+	MR_r3 = MR_tempr1;
+	MR_r4 = MR_sv(1);
+	}
+	MR_np_call_localret_ent(f_98_97_103_95_95_84_121_112_101_83_112_101_99_79_102_95_95_112_114_101_100_95_111_114_95_102_117_110_99_95_95_105_110_115_101_114_116_95_108_105_115_116_95_95_91_84_32_61_32_118_97_114_40_86_95_50_41_93_95_48_95_49_3_0,
+		check_hlds__mode_info__mode_info_add_live_vars_3_0_i5);
+MR_def_label(check_hlds__mode_info__mode_info_add_live_vars_3_0,5)
+	MR_MAYBE_INIT_LOCAL_THREAD_ENGINE_BASE
+	{
+	MR_Word MR_tempr1;
+	MR_tempr1 = MR_sv(2);
+	MR_sv(2) = MR_r1;
+	MR_r1 = MR_tempr1;
+	MR_r2 = MR_sv(3);
+	}
+	MR_np_call_localret_ent(check_hlds__mode_info__mode_info_set_live_vars_3_0,
+		check_hlds__mode_info__mode_info_add_live_vars_3_0_i6);
+MR_def_label(check_hlds__mode_info__mode_info_add_live_vars_3_0,6)
+	MR_MAYBE_INIT_LOCAL_THREAD_ENGINE_BASE
+	MR_tag_alloc_heap(MR_r2, 0, (MR_Integer) 8);
+	MR_tfield(0, MR_r2, 0) = MR_tfield(0, MR_r1, 0);
+	MR_tfield(0, MR_r2, 1) = MR_tfield(0, MR_r1, 1);
+	MR_tfield(0, MR_r2, 2) = MR_tfield(0, MR_r1, 2);
+	MR_tfield(0, MR_r2, 3) = MR_tfield(0, MR_r1, 3);
+	MR_tfield(0, MR_r2, 4) = MR_tfield(0, MR_r1, 4);
+	MR_tfield(0, MR_r2, 5) = MR_tfield(0, MR_r1, 5);
+	MR_tfield(0, MR_r2, 6) = MR_sv(2);
+	MR_tfield(0, MR_r2, 7) = MR_tfield(0, MR_r1, 7);
+	MR_r1 = MR_r2;
+	MR_decr_sp_and_return(6);
+#ifdef MR_maybe_local_thread_engine_base
+	#undef MR_maybe_local_thread_engine_base
+	#define MR_maybe_local_thread_engine_base MR_thread_engine_base
+#endif
+MR_END_MODULE
+
+MR_decl_entry(f_98_97_103_95_95_84_121_112_101_83_112_101_99_79_102_95_95_112_114_101_100_95_111_114_95_102_117_110_99_95_95_100_101_116_95_114_101_109_111_118_101_95_108_105_115_116_95_95_91_84_32_61_32_118_97_114_40_86_95_50_41_93_95_48_95_49_3_0);
+MR_decl_entry(check_hlds__delay_info__delay_info_bind_var_list_3_0);
+
+MR_BEGIN_MODULE(check_hlds__mode_info_module54)
+	MR_init_entry1(check_hlds__mode_info__mode_info_remove_live_vars_3_0);
+	MR_INIT_PROC_LAYOUT_ADDR(mercury__check_hlds__mode_info__mode_info_remove_live_vars_3_0);
+	MR_init_label5(check_hlds__mode_info__mode_info_remove_live_vars_3_0,2,4,5,6,8)
+MR_BEGIN_CODE
+
+/*-------------------------------------------------------------------------*/
+/* code for 'mode_info_remove_live_vars'/3 mode 0 */
+#ifdef MR_maybe_local_thread_engine_base
+	#undef MR_maybe_local_thread_engine_base
+	#define MR_maybe_local_thread_engine_base MR_local_thread_engine_base
+#endif
+MR_define_entry(mercury__check_hlds__mode_info__mode_info_remove_live_vars_3_0);
+	MR_MAYBE_INIT_LOCAL_THREAD_ENGINE_BASE
+	MR_incr_sp(6);
+	MR_sv(6) = (MR_Word) MR_succip;
+	MR_sv(2) = MR_r2;
+	MR_sv(4) = (MR_Word) MR_CTOR0_ADDR(parse_tree__prog_data, prog_var_type);
+	{
+	MR_Word MR_tempr1;
+	MR_tempr1 = MR_r1;
+	MR_r1 = MR_sv(4);
+	MR_r2 = MR_tempr1;
+	}
+	MR_np_call_localret_ent(parse_tree__set_of_var__to_sorted_list_2_0,
+		check_hlds__mode_info__mode_info_remove_live_vars_3_0_i2);
+MR_def_label(check_hlds__mode_info__mode_info_remove_live_vars_3_0,2)
+	MR_MAYBE_INIT_LOCAL_THREAD_ENGINE_BASE
+	MR_sv(3) = MR_r1;
+	{
+	MR_Word MR_tempr1;
+	MR_tempr1 = MR_sv(2);
+	MR_sv(1) = MR_tfield(0, MR_tempr1, 6);
+	MR_sv(5) = (MR_Word) MR_TAG_COMMON(0,0,0);
+	MR_r1 = MR_sv(4);
+	MR_r2 = MR_sv(5);
+	MR_r3 = MR_sv(3);
+	MR_r4 = MR_tfield(0, MR_tfield(0, MR_tempr1, 7), 6);
+	}
+	MR_np_call_localret_ent(f_98_97_103_95_95_84_121_112_101_83_112_101_99_79_102_95_95_112_114_101_100_95_111_114_95_102_117_110_99_95_95_100_101_116_95_114_101_109_111_118_101_95_108_105_115_116_95_95_91_84_32_61_32_118_97_114_40_86_95_50_41_93_95_48_95_49_3_0,
+		check_hlds__mode_info__mode_info_remove_live_vars_3_0_i4);
+MR_def_label(check_hlds__mode_info__mode_info_remove_live_vars_3_0,4)
+	MR_MAYBE_INIT_LOCAL_THREAD_ENGINE_BASE
+	{
+	MR_Word MR_tempr1;
+	MR_tempr1 = MR_sv(1);
+	MR_sv(1) = MR_r1;
+	MR_r1 = MR_sv(4);
+	MR_r2 = MR_sv(5);
+	MR_r3 = MR_sv(3);
+	MR_r4 = MR_tempr1;
+	}
+	MR_np_call_localret_ent(f_98_97_103_95_95_84_121_112_101_83_112_101_99_79_102_95_95_112_114_101_100_95_111_114_95_102_117_110_99_95_95_100_101_116_95_114_101_109_111_118_101_95_108_105_115_116_95_95_91_84_32_61_32_118_97_114_40_86_95_50_41_93_95_48_95_49_3_0,
+		check_hlds__mode_info__mode_info_remove_live_vars_3_0_i5);
+MR_def_label(check_hlds__mode_info__mode_info_remove_live_vars_3_0,5)
+	MR_MAYBE_INIT_LOCAL_THREAD_ENGINE_BASE
+	{
+	MR_Word MR_tempr1;
+	MR_tempr1 = MR_sv(1);
+	MR_sv(1) = MR_r1;
+	MR_r1 = MR_tempr1;
+	MR_r2 = MR_sv(2);
+	}
+	MR_np_call_localret_ent(check_hlds__mode_info__mode_info_set_live_vars_3_0,
+		check_hlds__mode_info__mode_info_remove_live_vars_3_0_i6);
+MR_def_label(check_hlds__mode_info__mode_info_remove_live_vars_3_0,6)
+	MR_MAYBE_INIT_LOCAL_THREAD_ENGINE_BASE
+	{
+	MR_Word MR_tempr1, MR_tempr2;
+	MR_tag_alloc_heap(MR_tempr1, 0, (MR_Integer) 8);
+	MR_tfield(0, MR_tempr1, 0) = MR_tfield(0, MR_r1, 0);
+	MR_tfield(0, MR_tempr1, 1) = MR_tfield(0, MR_r1, 1);
+	MR_tfield(0, MR_tempr1, 2) = MR_tfield(0, MR_r1, 2);
+	MR_tfield(0, MR_tempr1, 3) = MR_tfield(0, MR_r1, 3);
+	MR_tfield(0, MR_tempr1, 4) = MR_tfield(0, MR_r1, 4);
+	MR_tfield(0, MR_tempr1, 5) = MR_tfield(0, MR_r1, 5);
+	MR_tfield(0, MR_tempr1, 6) = MR_sv(1);
+	MR_tfield(0, MR_tempr1, 7) = MR_tfield(0, MR_r1, 7);
+	MR_tempr2 = MR_sv(3);
+	MR_sv(3) = MR_tempr1;
+	MR_r1 = MR_tempr2;
+	MR_r2 = MR_tfield(0, MR_tempr1, 2);
+	}
+	MR_np_call_localret_ent(check_hlds__delay_info__delay_info_bind_var_list_3_0,
+		check_hlds__mode_info__mode_info_remove_live_vars_3_0_i8);
+MR_def_label(check_hlds__mode_info__mode_info_remove_live_vars_3_0,8)
+	MR_MAYBE_INIT_LOCAL_THREAD_ENGINE_BASE
+	MR_tag_alloc_heap(MR_r2, 0, (MR_Integer) 8);
+	{
+	MR_Word MR_tempr1;
+	MR_tempr1 = MR_sv(3);
+	MR_tfield(0, MR_r2, 0) = MR_tfield(0, MR_tempr1, 0);
+	MR_tfield(0, MR_r2, 1) = MR_tfield(0, MR_tempr1, 1);
+	MR_tfield(0, MR_r2, 2) = MR_r1;
+	MR_tfield(0, MR_r2, 3) = MR_tfield(0, MR_tempr1, 3);
+	MR_tfield(0, MR_r2, 4) = MR_tfield(0, MR_tempr1, 4);
+	MR_tfield(0, MR_r2, 5) = MR_tfield(0, MR_tempr1, 5);
+	MR_tfield(0, MR_r2, 6) = MR_tfield(0, MR_tempr1, 6);
+	MR_tfield(0, MR_r2, 7) = MR_tfield(0, MR_tempr1, 7);
+	MR_r1 = MR_r2;
+	MR_decr_sp_and_return(6);
+	}
+#ifdef MR_maybe_local_thread_engine_base
+	#undef MR_maybe_local_thread_engine_base
+	#define MR_maybe_local_thread_engine_base MR_thread_engine_base
+#endif
+MR_END_MODULE
+
+
+MR_BEGIN_MODULE(check_hlds__mode_info_module55)
+	MR_init_entry1(check_hlds__mode_info__mode_info_set_varset_3_0);
+	MR_INIT_PROC_LAYOUT_ADDR(mercury__check_hlds__mode_info__mode_info_set_varset_3_0);
+MR_BEGIN_CODE
+
+/*-------------------------------------------------------------------------*/
+/* code for 'mode_info_set_varset'/3 mode 0 */
+#ifdef MR_maybe_local_thread_engine_base
+	#undef MR_maybe_local_thread_engine_base
+	#define MR_maybe_local_thread_engine_base MR_local_thread_engine_base
+#endif
+MR_define_entry(mercury__check_hlds__mode_info__mode_info_set_varset_3_0);
+	MR_MAYBE_INIT_LOCAL_THREAD_ENGINE_BASE
+	{
+	MR_Word MR_tempr1, MR_tempr2, MR_tempr3, MR_tempr4, MR_tempr5, MR_tempr6, MR_tempr7, MR_tempr8, MR_tempr9, MR_tempr10, MR_tempr11, MR_tempr12, MR_tempr13;
+	MR_tempr1 = MR_tfield(0, MR_r2, 7);
+	MR_tempr2 = (((MR_Integer) MR_tfield(0, MR_tempr1, 9) >> (MR_Integer) 2) & (MR_Integer) 1);
+	MR_tempr3 = (((MR_Integer) MR_tfield(0, MR_tempr1, 11) >> (MR_Integer) 1) & (MR_Integer) 1);
+	MR_tempr4 = (((MR_Integer) MR_tfield(0, MR_tempr1, 14) >> (MR_Integer) 5) & (MR_Integer) 1);
+	MR_tempr5 = (((MR_Integer) MR_tfield(0, MR_tempr1, 14) >> (MR_Integer) 4) & (MR_Integer) 1);
+	MR_tempr6 = (((MR_Integer) MR_tfield(0, MR_tempr1, 14) >> (MR_Integer) 3) & (MR_Integer) 1);
+	MR_tempr7 = (((MR_Integer) MR_tfield(0, MR_tempr1, 14) >> (MR_Integer) 2) & (MR_Integer) 1);
+	MR_tempr8 = (((MR_Integer) MR_tfield(0, MR_tempr1, 14) >> (MR_Integer) 1) & (MR_Integer) 1);
+	MR_tempr9 = ((MR_Integer) MR_tfield(0, MR_tempr1, 14) & (MR_Integer) 1);
+	MR_tempr10 = ((MR_Integer) MR_tfield(0, MR_tempr1, 11) & (MR_Integer) 1);
+	MR_tempr11 = (((MR_Integer) MR_tfield(0, MR_tempr1, 9) >> (MR_Integer) 1) & (MR_Integer) 1);
+	MR_tempr12 = ((MR_Integer) MR_tfield(0, MR_tempr1, 9) & (MR_Integer) 1);
+	MR_tag_alloc_heap(MR_tempr13, 0, (MR_Integer) 15);
+	MR_tfield(0, MR_tempr13, 0) = MR_tfield(0, MR_tempr1, 0);
+	MR_tfield(0, MR_tempr13, 1) = MR_tfield(0, MR_tempr1, 1);
+	MR_tfield(0, MR_tempr13, 2) = MR_r1;
+	MR_tfield(0, MR_tempr13, 3) = MR_tfield(0, MR_tempr1, 3);
+	MR_tfield(0, MR_tempr13, 4) = MR_tfield(0, MR_tempr1, 4);
+	MR_tfield(0, MR_tempr13, 5) = MR_tfield(0, MR_tempr1, 5);
+	MR_tfield(0, MR_tempr13, 6) = MR_tfield(0, MR_tempr1, 6);
+	MR_tfield(0, MR_tempr13, 7) = MR_tfield(0, MR_tempr1, 7);
+	MR_tfield(0, MR_tempr13, 8) = MR_tfield(0, MR_tempr1, 8);
+	MR_tfield(0, MR_tempr13, 9) = ((MR_Integer) MR_tempr12 | (((MR_Integer) MR_tempr11 << (MR_Integer) 1) | ((MR_Integer) MR_tempr2 << (MR_Integer) 2)));
+	MR_tfield(0, MR_tempr13, 10) = MR_tfield(0, MR_tempr1, 10);
+	MR_tfield(0, MR_tempr13, 11) = ((MR_Integer) MR_tempr10 | ((MR_Integer) MR_tempr3 << (MR_Integer) 1));
+	MR_tfield(0, MR_tempr13, 12) = MR_tfield(0, MR_tempr1, 12);
+	MR_tfield(0, MR_tempr13, 13) = MR_tfield(0, MR_tempr1, 13);
+	MR_tfield(0, MR_tempr13, 14) = ((MR_Integer) MR_tempr9 | (((MR_Integer) MR_tempr8 << (MR_Integer) 1) | (((MR_Integer) MR_tempr7 << (MR_Integer) 2) | (((MR_Integer) MR_tempr6 << (MR_Integer) 3) | (((MR_Integer) MR_tempr5 << (MR_Integer) 4) | ((MR_Integer) MR_tempr4 << (MR_Integer) 5))))));
+	MR_tag_alloc_heap(MR_r1, 0, (MR_Integer) 8);
+	MR_tfield(0, MR_r1, 0) = MR_tfield(0, MR_r2, 0);
+	MR_tfield(0, MR_r1, 1) = MR_tfield(0, MR_r2, 1);
+	MR_tfield(0, MR_r1, 2) = MR_tfield(0, MR_r2, 2);
+	MR_tfield(0, MR_r1, 3) = MR_tfield(0, MR_r2, 3);
+	MR_tfield(0, MR_r1, 4) = MR_tfield(0, MR_r2, 4);
+	MR_tfield(0, MR_r1, 5) = MR_tfield(0, MR_r2, 5);
+	MR_tfield(0, MR_r1, 6) = MR_tfield(0, MR_r2, 6);
+	MR_tfield(0, MR_r1, 7) = MR_tempr13;
+	MR_proceed();
+	}
+#ifdef MR_maybe_local_thread_engine_base
+	#undef MR_maybe_local_thread_engine_base
+	#define MR_maybe_local_thread_engine_base MR_thread_engine_base
+#endif
+MR_END_MODULE
+
+
+MR_BEGIN_MODULE(check_hlds__mode_info_module56)
+	MR_init_entry1(check_hlds__mode_info__mode_info_set_var_types_3_0);
+	MR_INIT_PROC_LAYOUT_ADDR(mercury__check_hlds__mode_info__mode_info_set_var_types_3_0);
+MR_BEGIN_CODE
+
+/*-------------------------------------------------------------------------*/
+/* code for 'mode_info_set_var_types'/3 mode 0 */
+#ifdef MR_maybe_local_thread_engine_base
+	#undef MR_maybe_local_thread_engine_base
+	#define MR_maybe_local_thread_engine_base MR_local_thread_engine_base
+#endif
+MR_define_entry(mercury__check_hlds__mode_info__mode_info_set_var_types_3_0);
+	MR_MAYBE_INIT_LOCAL_THREAD_ENGINE_BASE
+	{
+	MR_Word MR_tempr1, MR_tempr2, MR_tempr3, MR_tempr4, MR_tempr5, MR_tempr6, MR_tempr7, MR_tempr8, MR_tempr9, MR_tempr10, MR_tempr11, MR_tempr12, MR_tempr13;
+	MR_tempr1 = MR_tfield(0, MR_r2, 7);
+	MR_tempr2 = (((MR_Integer) MR_tfield(0, MR_tempr1, 9) >> (MR_Integer) 2) & (MR_Integer) 1);
+	MR_tempr3 = (((MR_Integer) MR_tfield(0, MR_tempr1, 11) >> (MR_Integer) 1) & (MR_Integer) 1);
+	MR_tempr4 = (((MR_Integer) MR_tfield(0, MR_tempr1, 14) >> (MR_Integer) 5) & (MR_Integer) 1);
+	MR_tempr5 = (((MR_Integer) MR_tfield(0, MR_tempr1, 14) >> (MR_Integer) 4) & (MR_Integer) 1);
+	MR_tempr6 = (((MR_Integer) MR_tfield(0, MR_tempr1, 14) >> (MR_Integer) 3) & (MR_Integer) 1);
+	MR_tempr7 = (((MR_Integer) MR_tfield(0, MR_tempr1, 14) >> (MR_Integer) 2) & (MR_Integer) 1);
+	MR_tempr8 = (((MR_Integer) MR_tfield(0, MR_tempr1, 14) >> (MR_Integer) 1) & (MR_Integer) 1);
+	MR_tempr9 = ((MR_Integer) MR_tfield(0, MR_tempr1, 14) & (MR_Integer) 1);
+	MR_tempr10 = ((MR_Integer) MR_tfield(0, MR_tempr1, 11) & (MR_Integer) 1);
+	MR_tempr11 = (((MR_Integer) MR_tfield(0, MR_tempr1, 9) >> (MR_Integer) 1) & (MR_Integer) 1);
+	MR_tempr12 = ((MR_Integer) MR_tfield(0, MR_tempr1, 9) & (MR_Integer) 1);
+	MR_tag_alloc_heap(MR_tempr13, 0, (MR_Integer) 15);
+	MR_tfield(0, MR_tempr13, 0) = MR_tfield(0, MR_tempr1, 0);
+	MR_tfield(0, MR_tempr13, 1) = MR_tfield(0, MR_tempr1, 1);
+	MR_tfield(0, MR_tempr13, 2) = MR_tfield(0, MR_tempr1, 2);
+	MR_tfield(0, MR_tempr13, 3) = MR_r1;
+	MR_tfield(0, MR_tempr13, 4) = MR_tfield(0, MR_tempr1, 4);
+	MR_tfield(0, MR_tempr13, 5) = MR_tfield(0, MR_tempr1, 5);
+	MR_tfield(0, MR_tempr13, 6) = MR_tfield(0, MR_tempr1, 6);
+	MR_tfield(0, MR_tempr13, 7) = MR_tfield(0, MR_tempr1, 7);
+	MR_tfield(0, MR_tempr13, 8) = MR_tfield(0, MR_tempr1, 8);
+	MR_tfield(0, MR_tempr13, 9) = ((MR_Integer) MR_tempr12 | (((MR_Integer) MR_tempr11 << (MR_Integer) 1) | ((MR_Integer) MR_tempr2 << (MR_Integer) 2)));
+	MR_tfield(0, MR_tempr13, 10) = MR_tfield(0, MR_tempr1, 10);
+	MR_tfield(0, MR_tempr13, 11) = ((MR_Integer) MR_tempr10 | ((MR_Integer) MR_tempr3 << (MR_Integer) 1));
+	MR_tfield(0, MR_tempr13, 12) = MR_tfield(0, MR_tempr1, 12);
+	MR_tfield(0, MR_tempr13, 13) = MR_tfield(0, MR_tempr1, 13);
+	MR_tfield(0, MR_tempr13, 14) = ((MR_Integer) MR_tempr9 | (((MR_Integer) MR_tempr8 << (MR_Integer) 1) | (((MR_Integer) MR_tempr7 << (MR_Integer) 2) | (((MR_Integer) MR_tempr6 << (MR_Integer) 3) | (((MR_Integer) MR_tempr5 << (MR_Integer) 4) | ((MR_Integer) MR_tempr4 << (MR_Integer) 5))))));
+	MR_tag_alloc_heap(MR_r1, 0, (MR_Integer) 8);
+	MR_tfield(0, MR_r1, 0) = MR_tfield(0, MR_r2, 0);
+	MR_tfield(0, MR_r1, 1) = MR_tfield(0, MR_r2, 1);
+	MR_tfield(0, MR_r1, 2) = MR_tfield(0, MR_r2, 2);
+	MR_tfield(0, MR_r1, 3) = MR_tfield(0, MR_r2, 3);
+	MR_tfield(0, MR_r1, 4) = MR_tfield(0, MR_r2, 4);
+	MR_tfield(0, MR_r1, 5) = MR_tfield(0, MR_r2, 5);
+	MR_tfield(0, MR_r1, 6) = MR_tfield(0, MR_r2, 6);
+	MR_tfield(0, MR_r1, 7) = MR_tempr13;
+	MR_proceed();
+	}
+#ifdef MR_maybe_local_thread_engine_base
+	#undef MR_maybe_local_thread_engine_base
+	#define MR_maybe_local_thread_engine_base MR_thread_engine_base
+#endif
+MR_END_MODULE
+
+
+MR_BEGIN_MODULE(check_hlds__mode_info_module57)
+	MR_init_entry1(check_hlds__mode_info__mode_info_set_last_checkpoint_insts_3_0);
+	MR_INIT_PROC_LAYOUT_ADDR(mercury__check_hlds__mode_info__mode_info_set_last_checkpoint_insts_3_0);
+MR_BEGIN_CODE
+
+/*-------------------------------------------------------------------------*/
+/* code for 'mode_info_set_last_checkpoint_insts'/3 mode 0 */
+#ifdef MR_maybe_local_thread_engine_base
+	#undef MR_maybe_local_thread_engine_base
+	#define MR_maybe_local_thread_engine_base MR_local_thread_engine_base
+#endif
+MR_define_entry(mercury__check_hlds__mode_info__mode_info_set_last_checkpoint_insts_3_0);
+	MR_MAYBE_INIT_LOCAL_THREAD_ENGINE_BASE
+	{
+	MR_Word MR_tempr1, MR_tempr2, MR_tempr3, MR_tempr4, MR_tempr5, MR_tempr6, MR_tempr7, MR_tempr8, MR_tempr9, MR_tempr10, MR_tempr11, MR_tempr12, MR_tempr13;
+	MR_tempr1 = MR_tfield(0, MR_r2, 7);
+	MR_tempr2 = (((MR_Integer) MR_tfield(0, MR_tempr1, 9) >> (MR_Integer) 2) & (MR_Integer) 1);
+	MR_tempr3 = (((MR_Integer) MR_tfield(0, MR_tempr1, 11) >> (MR_Integer) 1) & (MR_Integer) 1);
+	MR_tempr4 = (((MR_Integer) MR_tfield(0, MR_tempr1, 14) >> (MR_Integer) 5) & (MR_Integer) 1);
+	MR_tempr5 = (((MR_Integer) MR_tfield(0, MR_tempr1, 14) >> (MR_Integer) 4) & (MR_Integer) 1);
+	MR_tempr6 = (((MR_Integer) MR_tfield(0, MR_tempr1, 14) >> (MR_Integer) 3) & (MR_Integer) 1);
+	MR_tempr7 = (((MR_Integer) MR_tfield(0, MR_tempr1, 14) >> (MR_Integer) 2) & (MR_Integer) 1);
+	MR_tempr8 = (((MR_Integer) MR_tfield(0, MR_tempr1, 14) >> (MR_Integer) 1) & (MR_Integer) 1);
+	MR_tempr9 = ((MR_Integer) MR_tfield(0, MR_tempr1, 14) & (MR_Integer) 1);
+	MR_tempr10 = ((MR_Integer) MR_tfield(0, MR_tempr1, 11) & (MR_Integer) 1);
+	MR_tempr11 = (((MR_Integer) MR_tfield(0, MR_tempr1, 9) >> (MR_Integer) 1) & (MR_Integer) 1);
+	MR_tempr12 = ((MR_Integer) MR_tfield(0, MR_tempr1, 9) & (MR_Integer) 1);
+	MR_tag_alloc_heap(MR_tempr13, 0, (MR_Integer) 15);
+	MR_tfield(0, MR_tempr13, 0) = MR_tfield(0, MR_tempr1, 0);
+	MR_tfield(0, MR_tempr13, 1) = MR_tfield(0, MR_tempr1, 1);
+	MR_tfield(0, MR_tempr13, 2) = MR_tfield(0, MR_tempr1, 2);
+	MR_tfield(0, MR_tempr13, 3) = MR_tfield(0, MR_tempr1, 3);
+	MR_tfield(0, MR_tempr13, 4) = MR_tfield(0, MR_tempr1, 4);
+	MR_tfield(0, MR_tempr13, 5) = MR_tfield(0, MR_tempr1, 5);
+	MR_tfield(0, MR_tempr13, 6) = MR_tfield(0, MR_tempr1, 6);
+	MR_tfield(0, MR_tempr13, 7) = MR_tfield(0, MR_tempr1, 7);
+	MR_tfield(0, MR_tempr13, 8) = MR_tfield(0, MR_tempr1, 8);
+	MR_tfield(0, MR_tempr13, 9) = ((MR_Integer) MR_tempr12 | (((MR_Integer) MR_tempr11 << (MR_Integer) 1) | ((MR_Integer) MR_tempr2 << (MR_Integer) 2)));
+	MR_tfield(0, MR_tempr13, 10) = MR_r1;
+	MR_tfield(0, MR_tempr13, 11) = ((MR_Integer) MR_tempr10 | ((MR_Integer) MR_tempr3 << (MR_Integer) 1));
+	MR_tfield(0, MR_tempr13, 12) = MR_tfield(0, MR_tempr1, 12);
+	MR_tfield(0, MR_tempr13, 13) = MR_tfield(0, MR_tempr1, 13);
+	MR_tfield(0, MR_tempr13, 14) = ((MR_Integer) MR_tempr9 | (((MR_Integer) MR_tempr8 << (MR_Integer) 1) | (((MR_Integer) MR_tempr7 << (MR_Integer) 2) | (((MR_Integer) MR_tempr6 << (MR_Integer) 3) | (((MR_Integer) MR_tempr5 << (MR_Integer) 4) | ((MR_Integer) MR_tempr4 << (MR_Integer) 5))))));
+	MR_tag_alloc_heap(MR_r1, 0, (MR_Integer) 8);
+	MR_tfield(0, MR_r1, 0) = MR_tfield(0, MR_r2, 0);
+	MR_tfield(0, MR_r1, 1) = MR_tfield(0, MR_r2, 1);
+	MR_tfield(0, MR_r1, 2) = MR_tfield(0, MR_r2, 2);
+	MR_tfield(0, MR_r1, 3) = MR_tfield(0, MR_r2, 3);
+	MR_tfield(0, MR_r1, 4) = MR_tfield(0, MR_r2, 4);
+	MR_tfield(0, MR_r1, 5) = MR_tfield(0, MR_r2, 5);
+	MR_tfield(0, MR_r1, 6) = MR_tfield(0, MR_r2, 6);
+	MR_tfield(0, MR_r1, 7) = MR_tempr13;
+	MR_proceed();
+	}
+#ifdef MR_maybe_local_thread_engine_base
+	#undef MR_maybe_local_thread_engine_base
+	#define MR_maybe_local_thread_engine_base MR_thread_engine_base
+#endif
+MR_END_MODULE
+
+
+MR_BEGIN_MODULE(check_hlds__mode_info_module58)
+	MR_init_entry1(check_hlds__mode_info__mode_info_set_parallel_vars_3_0);
+	MR_INIT_PROC_LAYOUT_ADDR(mercury__check_hlds__mode_info__mode_info_set_parallel_vars_3_0);
+MR_BEGIN_CODE
+
+/*-------------------------------------------------------------------------*/
+/* code for 'mode_info_set_parallel_vars'/3 mode 0 */
+#ifdef MR_maybe_local_thread_engine_base
+	#undef MR_maybe_local_thread_engine_base
+	#define MR_maybe_local_thread_engine_base MR_local_thread_engine_base
+#endif
+MR_define_entry(mercury__check_hlds__mode_info__mode_info_set_parallel_vars_3_0);
+	MR_MAYBE_INIT_LOCAL_THREAD_ENGINE_BASE
+	{
+	MR_Word MR_tempr1, MR_tempr2, MR_tempr3, MR_tempr4, MR_tempr5, MR_tempr6, MR_tempr7, MR_tempr8, MR_tempr9, MR_tempr10, MR_tempr11, MR_tempr12, MR_tempr13;
+	MR_tempr1 = MR_tfield(0, MR_r2, 7);
+	MR_tempr2 = (((MR_Integer) MR_tfield(0, MR_tempr1, 9) >> (MR_Integer) 2) & (MR_Integer) 1);
+	MR_tempr3 = (((MR_Integer) MR_tfield(0, MR_tempr1, 11) >> (MR_Integer) 1) & (MR_Integer) 1);
+	MR_tempr4 = (((MR_Integer) MR_tfield(0, MR_tempr1, 14) >> (MR_Integer) 5) & (MR_Integer) 1);
+	MR_tempr5 = (((MR_Integer) MR_tfield(0, MR_tempr1, 14) >> (MR_Integer) 4) & (MR_Integer) 1);
+	MR_tempr6 = (((MR_Integer) MR_tfield(0, MR_tempr1, 14) >> (MR_Integer) 3) & (MR_Integer) 1);
+	MR_tempr7 = (((MR_Integer) MR_tfield(0, MR_tempr1, 14) >> (MR_Integer) 2) & (MR_Integer) 1);
+	MR_tempr8 = (((MR_Integer) MR_tfield(0, MR_tempr1, 14) >> (MR_Integer) 1) & (MR_Integer) 1);
+	MR_tempr9 = ((MR_Integer) MR_tfield(0, MR_tempr1, 14) & (MR_Integer) 1);
+	MR_tempr10 = ((MR_Integer) MR_tfield(0, MR_tempr1, 11) & (MR_Integer) 1);
+	MR_tempr11 = (((MR_Integer) MR_tfield(0, MR_tempr1, 9) >> (MR_Integer) 1) & (MR_Integer) 1);
+	MR_tempr12 = ((MR_Integer) MR_tfield(0, MR_tempr1, 9) & (MR_Integer) 1);
+	MR_tag_alloc_heap(MR_tempr13, 0, (MR_Integer) 15);
+	MR_tfield(0, MR_tempr13, 0) = MR_tfield(0, MR_tempr1, 0);
+	MR_tfield(0, MR_tempr13, 1) = MR_tfield(0, MR_tempr1, 1);
+	MR_tfield(0, MR_tempr13, 2) = MR_tfield(0, MR_tempr1, 2);
+	MR_tfield(0, MR_tempr13, 3) = MR_tfield(0, MR_tempr1, 3);
+	MR_tfield(0, MR_tempr13, 4) = MR_tfield(0, MR_tempr1, 4);
+	MR_tfield(0, MR_tempr13, 5) = MR_tfield(0, MR_tempr1, 5);
+	MR_tfield(0, MR_tempr13, 6) = MR_tfield(0, MR_tempr1, 6);
+	MR_tfield(0, MR_tempr13, 7) = MR_tfield(0, MR_tempr1, 7);
+	MR_tfield(0, MR_tempr13, 8) = MR_r1;
+	MR_tfield(0, MR_tempr13, 9) = ((MR_Integer) MR_tempr12 | (((MR_Integer) MR_tempr11 << (MR_Integer) 1) | ((MR_Integer) MR_tempr2 << (MR_Integer) 2)));
+	MR_tfield(0, MR_tempr13, 10) = MR_tfield(0, MR_tempr1, 10);
+	MR_tfield(0, MR_tempr13, 11) = ((MR_Integer) MR_tempr10 | ((MR_Integer) MR_tempr3 << (MR_Integer) 1));
+	MR_tfield(0, MR_tempr13, 12) = MR_tfield(0, MR_tempr1, 12);
+	MR_tfield(0, MR_tempr13, 13) = MR_tfield(0, MR_tempr1, 13);
+	MR_tfield(0, MR_tempr13, 14) = ((MR_Integer) MR_tempr9 | (((MR_Integer) MR_tempr8 << (MR_Integer) 1) | (((MR_Integer) MR_tempr7 << (MR_Integer) 2) | (((MR_Integer) MR_tempr6 << (MR_Integer) 3) | (((MR_Integer) MR_tempr5 << (MR_Integer) 4) | ((MR_Integer) MR_tempr4 << (MR_Integer) 5))))));
+	MR_tag_alloc_heap(MR_r1, 0, (MR_Integer) 8);
+	MR_tfield(0, MR_r1, 0) = MR_tfield(0, MR_r2, 0);
+	MR_tfield(0, MR_r1, 1) = MR_tfield(0, MR_r2, 1);
+	MR_tfield(0, MR_r1, 2) = MR_tfield(0, MR_r2, 2);
+	MR_tfield(0, MR_r1, 3) = MR_tfield(0, MR_r2, 3);
+	MR_tfield(0, MR_r1, 4) = MR_tfield(0, MR_r2, 4);
+	MR_tfield(0, MR_r1, 5) = MR_tfield(0, MR_r2, 5);
+	MR_tfield(0, MR_r1, 6) = MR_tfield(0, MR_r2, 6);
+	MR_tfield(0, MR_r1, 7) = MR_tempr13;
+	MR_proceed();
+	}
+#ifdef MR_maybe_local_thread_engine_base
+	#undef MR_maybe_local_thread_engine_base
+	#define MR_maybe_local_thread_engine_base MR_thread_engine_base
+#endif
+MR_END_MODULE
+
+
+MR_BEGIN_MODULE(check_hlds__mode_info_module59)
+	MR_init_entry1(check_hlds__mode_info__mode_info_set_changed_flag_3_0);
+	MR_INIT_PROC_LAYOUT_ADDR(mercury__check_hlds__mode_info__mode_info_set_changed_flag_3_0);
+MR_BEGIN_CODE
+
+/*-------------------------------------------------------------------------*/
+/* code for 'mode_info_set_changed_flag'/3 mode 0 */
+#ifdef MR_maybe_local_thread_engine_base
+	#undef MR_maybe_local_thread_engine_base
+	#define MR_maybe_local_thread_engine_base MR_local_thread_engine_base
+#endif
+MR_define_entry(mercury__check_hlds__mode_info__mode_info_set_changed_flag_3_0);
+	MR_MAYBE_INIT_LOCAL_THREAD_ENGINE_BASE
+	{
+	MR_Word MR_tempr1, MR_tempr2, MR_tempr3, MR_tempr4, MR_tempr5, MR_tempr6, MR_tempr7, MR_tempr8, MR_tempr9, MR_tempr10, MR_tempr11, MR_tempr12;
+	MR_tempr1 = MR_tfield(0, MR_r2, 7);
+	MR_tempr2 = (((MR_Integer) MR_tfield(0, MR_tempr1, 9) >> (MR_Integer) 2) & (MR_Integer) 1);
+	MR_tempr3 = (((MR_Integer) MR_tfield(0, MR_tempr1, 11) >> (MR_Integer) 1) & (MR_Integer) 1);
+	MR_tempr4 = (((MR_Integer) MR_tfield(0, MR_tempr1, 14) >> (MR_Integer) 5) & (MR_Integer) 1);
+	MR_tempr5 = (((MR_Integer) MR_tfield(0, MR_tempr1, 14) >> (MR_Integer) 4) & (MR_Integer) 1);
+	MR_tempr6 = (((MR_Integer) MR_tfield(0, MR_tempr1, 14) >> (MR_Integer) 3) & (MR_Integer) 1);
+	MR_tempr7 = (((MR_Integer) MR_tfield(0, MR_tempr1, 14) >> (MR_Integer) 2) & (MR_Integer) 1);
+	MR_tempr8 = (((MR_Integer) MR_tfield(0, MR_tempr1, 14) >> (MR_Integer) 1) & (MR_Integer) 1);
+	MR_tempr9 = ((MR_Integer) MR_tfield(0, MR_tempr1, 14) & (MR_Integer) 1);
+	MR_tempr10 = (((MR_Integer) MR_tfield(0, MR_tempr1, 9) >> (MR_Integer) 1) & (MR_Integer) 1);
+	MR_tempr11 = ((MR_Integer) MR_tfield(0, MR_tempr1, 9) & (MR_Integer) 1);
+	MR_tag_alloc_heap(MR_tempr12, 0, (MR_Integer) 15);
+	MR_tfield(0, MR_tempr12, 0) = MR_tfield(0, MR_tempr1, 0);
+	MR_tfield(0, MR_tempr12, 1) = MR_tfield(0, MR_tempr1, 1);
+	MR_tfield(0, MR_tempr12, 2) = MR_tfield(0, MR_tempr1, 2);
+	MR_tfield(0, MR_tempr12, 3) = MR_tfield(0, MR_tempr1, 3);
+	MR_tfield(0, MR_tempr12, 4) = MR_tfield(0, MR_tempr1, 4);
+	MR_tfield(0, MR_tempr12, 5) = MR_tfield(0, MR_tempr1, 5);
+	MR_tfield(0, MR_tempr12, 6) = MR_tfield(0, MR_tempr1, 6);
+	MR_tfield(0, MR_tempr12, 7) = MR_tfield(0, MR_tempr1, 7);
+	MR_tfield(0, MR_tempr12, 8) = MR_tfield(0, MR_tempr1, 8);
+	MR_tfield(0, MR_tempr12, 9) = ((MR_Integer) MR_tempr11 | (((MR_Integer) MR_tempr10 << (MR_Integer) 1) | ((MR_Integer) MR_tempr2 << (MR_Integer) 2)));
+	MR_tfield(0, MR_tempr12, 10) = MR_tfield(0, MR_tempr1, 10);
+	MR_tfield(0, MR_tempr12, 11) = ((MR_Integer) MR_r1 | ((MR_Integer) MR_tempr3 << (MR_Integer) 1));
+	MR_tfield(0, MR_tempr12, 12) = MR_tfield(0, MR_tempr1, 12);
+	MR_tfield(0, MR_tempr12, 13) = MR_tfield(0, MR_tempr1, 13);
+	MR_tfield(0, MR_tempr12, 14) = ((MR_Integer) MR_tempr9 | (((MR_Integer) MR_tempr8 << (MR_Integer) 1) | (((MR_Integer) MR_tempr7 << (MR_Integer) 2) | (((MR_Integer) MR_tempr6 << (MR_Integer) 3) | (((MR_Integer) MR_tempr5 << (MR_Integer) 4) | ((MR_Integer) MR_tempr4 << (MR_Integer) 5))))));
+	MR_tag_alloc_heap(MR_r1, 0, (MR_Integer) 8);
+	MR_tfield(0, MR_r1, 0) = MR_tfield(0, MR_r2, 0);
+	MR_tfield(0, MR_r1, 1) = MR_tfield(0, MR_r2, 1);
+	MR_tfield(0, MR_r1, 2) = MR_tfield(0, MR_r2, 2);
+	MR_tfield(0, MR_r1, 3) = MR_tfield(0, MR_r2, 3);
+	MR_tfield(0, MR_r1, 4) = MR_tfield(0, MR_r2, 4);
+	MR_tfield(0, MR_r1, 5) = MR_tfield(0, MR_r2, 5);
+	MR_tfield(0, MR_r1, 6) = MR_tfield(0, MR_r2, 6);
+	MR_tfield(0, MR_r1, 7) = MR_tempr12;
+	MR_proceed();
+	}
+#ifdef MR_maybe_local_thread_engine_base
+	#undef MR_maybe_local_thread_engine_base
+	#define MR_maybe_local_thread_engine_base MR_thread_engine_base
+#endif
+MR_END_MODULE
+
+
+MR_BEGIN_MODULE(check_hlds__mode_info_module60)
+	MR_init_entry1(check_hlds__mode_info__mode_info_set_how_to_check_3_0);
+	MR_INIT_PROC_LAYOUT_ADDR(mercury__check_hlds__mode_info__mode_info_set_how_to_check_3_0);
+MR_BEGIN_CODE
+
+/*-------------------------------------------------------------------------*/
+/* code for 'mode_info_set_how_to_check'/3 mode 0 */
+#ifdef MR_maybe_local_thread_engine_base
+	#undef MR_maybe_local_thread_engine_base
+	#define MR_maybe_local_thread_engine_base MR_local_thread_engine_base
+#endif
+MR_define_entry(mercury__check_hlds__mode_info__mode_info_set_how_to_check_3_0);
+	MR_MAYBE_INIT_LOCAL_THREAD_ENGINE_BASE
+	{
+	MR_Word MR_tempr1, MR_tempr2, MR_tempr3, MR_tempr4, MR_tempr5, MR_tempr6, MR_tempr7, MR_tempr8, MR_tempr9, MR_tempr10, MR_tempr11, MR_tempr12;
+	MR_tempr1 = MR_tfield(0, MR_r2, 7);
+	MR_tempr2 = (((MR_Integer) MR_tfield(0, MR_tempr1, 9) >> (MR_Integer) 2) & (MR_Integer) 1);
+	MR_tempr3 = (((MR_Integer) MR_tfield(0, MR_tempr1, 11) >> (MR_Integer) 1) & (MR_Integer) 1);
+	MR_tempr4 = (((MR_Integer) MR_tfield(0, MR_tempr1, 14) >> (MR_Integer) 5) & (MR_Integer) 1);
+	MR_tempr5 = (((MR_Integer) MR_tfield(0, MR_tempr1, 14) >> (MR_Integer) 4) & (MR_Integer) 1);
+	MR_tempr6 = (((MR_Integer) MR_tfield(0, MR_tempr1, 14) >> (MR_Integer) 3) & (MR_Integer) 1);
+	MR_tempr7 = (((MR_Integer) MR_tfield(0, MR_tempr1, 14) >> (MR_Integer) 2) & (MR_Integer) 1);
+	MR_tempr8 = (((MR_Integer) MR_tfield(0, MR_tempr1, 14) >> (MR_Integer) 1) & (MR_Integer) 1);
+	MR_tempr9 = ((MR_Integer) MR_tfield(0, MR_tempr1, 14) & (MR_Integer) 1);
+	MR_tempr10 = ((MR_Integer) MR_tfield(0, MR_tempr1, 11) & (MR_Integer) 1);
+	MR_tempr11 = (((MR_Integer) MR_tfield(0, MR_tempr1, 9) >> (MR_Integer) 1) & (MR_Integer) 1);
+	MR_tag_alloc_heap(MR_tempr12, 0, (MR_Integer) 15);
+	MR_tfield(0, MR_tempr12, 0) = MR_tfield(0, MR_tempr1, 0);
+	MR_tfield(0, MR_tempr12, 1) = MR_tfield(0, MR_tempr1, 1);
+	MR_tfield(0, MR_tempr12, 2) = MR_tfield(0, MR_tempr1, 2);
+	MR_tfield(0, MR_tempr12, 3) = MR_tfield(0, MR_tempr1, 3);
+	MR_tfield(0, MR_tempr12, 4) = MR_tfield(0, MR_tempr1, 4);
+	MR_tfield(0, MR_tempr12, 5) = MR_tfield(0, MR_tempr1, 5);
+	MR_tfield(0, MR_tempr12, 6) = MR_tfield(0, MR_tempr1, 6);
+	MR_tfield(0, MR_tempr12, 7) = MR_tfield(0, MR_tempr1, 7);
+	MR_tfield(0, MR_tempr12, 8) = MR_tfield(0, MR_tempr1, 8);
+	MR_tfield(0, MR_tempr12, 9) = ((MR_Integer) MR_r1 | (((MR_Integer) MR_tempr11 << (MR_Integer) 1) | ((MR_Integer) MR_tempr2 << (MR_Integer) 2)));
+	MR_tfield(0, MR_tempr12, 10) = MR_tfield(0, MR_tempr1, 10);
+	MR_tfield(0, MR_tempr12, 11) = ((MR_Integer) MR_tempr10 | ((MR_Integer) MR_tempr3 << (MR_Integer) 1));
+	MR_tfield(0, MR_tempr12, 12) = MR_tfield(0, MR_tempr1, 12);
+	MR_tfield(0, MR_tempr12, 13) = MR_tfield(0, MR_tempr1, 13);
+	MR_tfield(0, MR_tempr12, 14) = ((MR_Integer) MR_tempr9 | (((MR_Integer) MR_tempr8 << (MR_Integer) 1) | (((MR_Integer) MR_tempr7 << (MR_Integer) 2) | (((MR_Integer) MR_tempr6 << (MR_Integer) 3) | (((MR_Integer) MR_tempr5 << (MR_Integer) 4) | ((MR_Integer) MR_tempr4 << (MR_Integer) 5))))));
+	MR_tag_alloc_heap(MR_r1, 0, (MR_Integer) 8);
+	MR_tfield(0, MR_r1, 0) = MR_tfield(0, MR_r2, 0);
+	MR_tfield(0, MR_r1, 1) = MR_tfield(0, MR_r2, 1);
+	MR_tfield(0, MR_r1, 2) = MR_tfield(0, MR_r2, 2);
+	MR_tfield(0, MR_r1, 3) = MR_tfield(0, MR_r2, 3);
+	MR_tfield(0, MR_r1, 4) = MR_tfield(0, MR_r2, 4);
+	MR_tfield(0, MR_r1, 5) = MR_tfield(0, MR_r2, 5);
+	MR_tfield(0, MR_r1, 6) = MR_tfield(0, MR_r2, 6);
+	MR_tfield(0, MR_r1, 7) = MR_tempr12;
+	MR_proceed();
+	}
+#ifdef MR_maybe_local_thread_engine_base
+	#undef MR_maybe_local_thread_engine_base
+	#define MR_maybe_local_thread_engine_base MR_thread_engine_base
+#endif
+MR_END_MODULE
+
+
+MR_BEGIN_MODULE(check_hlds__mode_info_module61)
+	MR_init_entry1(check_hlds__mode_info__mode_info_set_may_change_called_proc_3_0);
+	MR_INIT_PROC_LAYOUT_ADDR(mercury__check_hlds__mode_info__mode_info_set_may_change_called_proc_3_0);
+MR_BEGIN_CODE
+
+/*-------------------------------------------------------------------------*/
+/* code for 'mode_info_set_may_change_called_proc'/3 mode 0 */
+#ifdef MR_maybe_local_thread_engine_base
+	#undef MR_maybe_local_thread_engine_base
+	#define MR_maybe_local_thread_engine_base MR_local_thread_engine_base
+#endif
+MR_define_entry(mercury__check_hlds__mode_info__mode_info_set_may_change_called_proc_3_0);
+	MR_MAYBE_INIT_LOCAL_THREAD_ENGINE_BASE
+	{
+	MR_Word MR_tempr1, MR_tempr2, MR_tempr3, MR_tempr4, MR_tempr5, MR_tempr6, MR_tempr7, MR_tempr8, MR_tempr9, MR_tempr10, MR_tempr11, MR_tempr12;
+	MR_tempr1 = MR_tfield(0, MR_r2, 7);
+	MR_tempr2 = (((MR_Integer) MR_tfield(0, MR_tempr1, 9) >> (MR_Integer) 2) & (MR_Integer) 1);
+	MR_tempr3 = (((MR_Integer) MR_tfield(0, MR_tempr1, 11) >> (MR_Integer) 1) & (MR_Integer) 1);
+	MR_tempr4 = (((MR_Integer) MR_tfield(0, MR_tempr1, 14) >> (MR_Integer) 5) & (MR_Integer) 1);
+	MR_tempr5 = (((MR_Integer) MR_tfield(0, MR_tempr1, 14) >> (MR_Integer) 4) & (MR_Integer) 1);
+	MR_tempr6 = (((MR_Integer) MR_tfield(0, MR_tempr1, 14) >> (MR_Integer) 3) & (MR_Integer) 1);
+	MR_tempr7 = (((MR_Integer) MR_tfield(0, MR_tempr1, 14) >> (MR_Integer) 2) & (MR_Integer) 1);
+	MR_tempr8 = (((MR_Integer) MR_tfield(0, MR_tempr1, 14) >> (MR_Integer) 1) & (MR_Integer) 1);
+	MR_tempr9 = ((MR_Integer) MR_tfield(0, MR_tempr1, 14) & (MR_Integer) 1);
+	MR_tempr10 = ((MR_Integer) MR_tfield(0, MR_tempr1, 11) & (MR_Integer) 1);
+	MR_tempr11 = ((MR_Integer) MR_tfield(0, MR_tempr1, 9) & (MR_Integer) 1);
+	MR_tag_alloc_heap(MR_tempr12, 0, (MR_Integer) 15);
+	MR_tfield(0, MR_tempr12, 0) = MR_tfield(0, MR_tempr1, 0);
+	MR_tfield(0, MR_tempr12, 1) = MR_tfield(0, MR_tempr1, 1);
+	MR_tfield(0, MR_tempr12, 2) = MR_tfield(0, MR_tempr1, 2);
+	MR_tfield(0, MR_tempr12, 3) = MR_tfield(0, MR_tempr1, 3);
+	MR_tfield(0, MR_tempr12, 4) = MR_tfield(0, MR_tempr1, 4);
+	MR_tfield(0, MR_tempr12, 5) = MR_tfield(0, MR_tempr1, 5);
+	MR_tfield(0, MR_tempr12, 6) = MR_tfield(0, MR_tempr1, 6);
+	MR_tfield(0, MR_tempr12, 7) = MR_tfield(0, MR_tempr1, 7);
+	MR_tfield(0, MR_tempr12, 8) = MR_tfield(0, MR_tempr1, 8);
+	MR_tfield(0, MR_tempr12, 9) = ((MR_Integer) MR_tempr11 | (((MR_Integer) MR_r1 << (MR_Integer) 1) | ((MR_Integer) MR_tempr2 << (MR_Integer) 2)));
+	MR_tfield(0, MR_tempr12, 10) = MR_tfield(0, MR_tempr1, 10);
+	MR_tfield(0, MR_tempr12, 11) = ((MR_Integer) MR_tempr10 | ((MR_Integer) MR_tempr3 << (MR_Integer) 1));
+	MR_tfield(0, MR_tempr12, 12) = MR_tfield(0, MR_tempr1, 12);
+	MR_tfield(0, MR_tempr12, 13) = MR_tfield(0, MR_tempr1, 13);
+	MR_tfield(0, MR_tempr12, 14) = ((MR_Integer) MR_tempr9 | (((MR_Integer) MR_tempr8 << (MR_Integer) 1) | (((MR_Integer) MR_tempr7 << (MR_Integer) 2) | (((MR_Integer) MR_tempr6 << (MR_Integer) 3) | (((MR_Integer) MR_tempr5 << (MR_Integer) 4) | ((MR_Integer) MR_tempr4 << (MR_Integer) 5))))));
+	MR_tag_alloc_heap(MR_r1, 0, (MR_Integer) 8);
+	MR_tfield(0, MR_r1, 0) = MR_tfield(0, MR_r2, 0);
+	MR_tfield(0, MR_r1, 1) = MR_tfield(0, MR_r2, 1);
+	MR_tfield(0, MR_r1, 2) = MR_tfield(0, MR_r2, 2);
+	MR_tfield(0, MR_r1, 3) = MR_tfield(0, MR_r2, 3);
+	MR_tfield(0, MR_r1, 4) = MR_tfield(0, MR_r2, 4);
+	MR_tfield(0, MR_r1, 5) = MR_tfield(0, MR_r2, 5);
+	MR_tfield(0, MR_r1, 6) = MR_tfield(0, MR_r2, 6);
+	MR_tfield(0, MR_r1, 7) = MR_tempr12;
+	MR_proceed();
+	}
+#ifdef MR_maybe_local_thread_engine_base
+	#undef MR_maybe_local_thread_engine_base
+	#define MR_maybe_local_thread_engine_base MR_thread_engine_base
+#endif
+MR_END_MODULE
+
+
+MR_BEGIN_MODULE(check_hlds__mode_info_module62)
+	MR_init_entry1(check_hlds__mode_info__mode_info_set_checking_extra_goals_3_0);
+	MR_INIT_PROC_LAYOUT_ADDR(mercury__check_hlds__mode_info__mode_info_set_checking_extra_goals_3_0);
+	MR_init_label1(check_hlds__mode_info__mode_info_set_checking_extra_goals_3_0,2)
+MR_BEGIN_CODE
+
+/*-------------------------------------------------------------------------*/
+/* code for 'mode_info_set_checking_extra_goals'/3 mode 0 */
+#ifdef MR_maybe_local_thread_engine_base
+	#undef MR_maybe_local_thread_engine_base
+	#define MR_maybe_local_thread_engine_base MR_local_thread_engine_base
+#endif
+MR_define_entry(mercury__check_hlds__mode_info__mode_info_set_checking_extra_goals_3_0);
+	MR_MAYBE_INIT_LOCAL_THREAD_ENGINE_BASE
+	{
+	MR_Word MR_tempr1;
+	MR_tempr1 = (((MR_Integer) MR_tfield(0, MR_tfield(0, MR_r2, 7), 11) >> (MR_Integer) 1) & (MR_Integer) 1);
+	if (MR_INT_NE(MR_tempr1,1)) {
+		MR_GOTO_LAB(check_hlds__mode_info__mode_info_set_checking_extra_goals_3_0_i2);
+	}
+	if (MR_INT_NE(MR_r1,1)) {
+		MR_GOTO_LAB(check_hlds__mode_info__mode_info_set_checking_extra_goals_3_0_i2);
+	}
+	MR_r1 = (MR_Word) MR_string_const("check_hlds.mode_info", 20);
+	MR_r2 = (MR_Word) MR_string_const("predicate \140check_hlds.mode_info.mode_info_set_checking_extra_goals\'/3", 69);
+	MR_r3 = (MR_Word) MR_string_const("rechecking extra goals adds more extra goals", 44);
+	MR_np_tailcall_ent(require__unexpected_3_0);
+	}
+MR_def_label(check_hlds__mode_info__mode_info_set_checking_extra_goals_3_0,2)
+	MR_MAYBE_INIT_LOCAL_THREAD_ENGINE_BASE
+	{
+	MR_Word MR_tempr1, MR_tempr2, MR_tempr3, MR_tempr4, MR_tempr5, MR_tempr6, MR_tempr7, MR_tempr8, MR_tempr9, MR_tempr10, MR_tempr11, MR_tempr12;
+	MR_tempr1 = MR_tfield(0, MR_r2, 7);
+	MR_tempr2 = (((MR_Integer) MR_tfield(0, MR_tempr1, 9) >> (MR_Integer) 2) & (MR_Integer) 1);
+	MR_tempr3 = (((MR_Integer) MR_tfield(0, MR_tempr1, 14) >> (MR_Integer) 5) & (MR_Integer) 1);
+	MR_tempr4 = (((MR_Integer) MR_tfield(0, MR_tempr1, 14) >> (MR_Integer) 4) & (MR_Integer) 1);
+	MR_tempr5 = (((MR_Integer) MR_tfield(0, MR_tempr1, 14) >> (MR_Integer) 3) & (MR_Integer) 1);
+	MR_tempr6 = (((MR_Integer) MR_tfield(0, MR_tempr1, 14) >> (MR_Integer) 2) & (MR_Integer) 1);
+	MR_tempr7 = (((MR_Integer) MR_tfield(0, MR_tempr1, 14) >> (MR_Integer) 1) & (MR_Integer) 1);
+	MR_tempr8 = ((MR_Integer) MR_tfield(0, MR_tempr1, 14) & (MR_Integer) 1);
+	MR_tempr9 = ((MR_Integer) MR_tfield(0, MR_tempr1, 11) & (MR_Integer) 1);
+	MR_tempr10 = (((MR_Integer) MR_tfield(0, MR_tempr1, 9) >> (MR_Integer) 1) & (MR_Integer) 1);
+	MR_tempr11 = ((MR_Integer) MR_tfield(0, MR_tempr1, 9) & (MR_Integer) 1);
+	MR_tag_alloc_heap(MR_tempr12, 0, (MR_Integer) 15);
+	MR_tfield(0, MR_tempr12, 0) = MR_tfield(0, MR_tempr1, 0);
+	MR_tfield(0, MR_tempr12, 1) = MR_tfield(0, MR_tempr1, 1);
+	MR_tfield(0, MR_tempr12, 2) = MR_tfield(0, MR_tempr1, 2);
+	MR_tfield(0, MR_tempr12, 3) = MR_tfield(0, MR_tempr1, 3);
+	MR_tfield(0, MR_tempr12, 4) = MR_tfield(0, MR_tempr1, 4);
+	MR_tfield(0, MR_tempr12, 5) = MR_tfield(0, MR_tempr1, 5);
+	MR_tfield(0, MR_tempr12, 6) = MR_tfield(0, MR_tempr1, 6);
+	MR_tfield(0, MR_tempr12, 7) = MR_tfield(0, MR_tempr1, 7);
+	MR_tfield(0, MR_tempr12, 8) = MR_tfield(0, MR_tempr1, 8);
+	MR_tfield(0, MR_tempr12, 9) = ((MR_Integer) MR_tempr11 | (((MR_Integer) MR_tempr10 << (MR_Integer) 1) | ((MR_Integer) MR_tempr2 << (MR_Integer) 2)));
+	MR_tfield(0, MR_tempr12, 10) = MR_tfield(0, MR_tempr1, 10);
+	MR_tfield(0, MR_tempr12, 11) = ((MR_Integer) MR_tempr9 | ((MR_Integer) MR_r1 << (MR_Integer) 1));
+	MR_tfield(0, MR_tempr12, 12) = MR_tfield(0, MR_tempr1, 12);
+	MR_tfield(0, MR_tempr12, 13) = MR_tfield(0, MR_tempr1, 13);
+	MR_tfield(0, MR_tempr12, 14) = ((MR_Integer) MR_tempr8 | (((MR_Integer) MR_tempr7 << (MR_Integer) 1) | (((MR_Integer) MR_tempr6 << (MR_Integer) 2) | (((MR_Integer) MR_tempr5 << (MR_Integer) 3) | (((MR_Integer) MR_tempr4 << (MR_Integer) 4) | ((MR_Integer) MR_tempr3 << (MR_Integer) 5))))));
+	MR_tag_alloc_heap(MR_r1, 0, (MR_Integer) 8);
+	MR_tfield(0, MR_r1, 0) = MR_tfield(0, MR_r2, 0);
+	MR_tfield(0, MR_r1, 1) = MR_tfield(0, MR_r2, 1);
+	MR_tfield(0, MR_r1, 2) = MR_tfield(0, MR_r2, 2);
+	MR_tfield(0, MR_r1, 3) = MR_tfield(0, MR_r2, 3);
+	MR_tfield(0, MR_r1, 4) = MR_tfield(0, MR_r2, 4);
+	MR_tfield(0, MR_r1, 5) = MR_tfield(0, MR_r2, 5);
+	MR_tfield(0, MR_r1, 6) = MR_tfield(0, MR_r2, 6);
+	MR_tfield(0, MR_r1, 7) = MR_tempr12;
+	MR_proceed();
+	}
+#ifdef MR_maybe_local_thread_engine_base
+	#undef MR_maybe_local_thread_engine_base
+	#define MR_maybe_local_thread_engine_base MR_thread_engine_base
+#endif
+MR_END_MODULE
+
+
+MR_BEGIN_MODULE(check_hlds__mode_info_module63)
+	MR_init_entry1(check_hlds__mode_info__mode_info_set_may_init_solver_vars_3_0);
+	MR_INIT_PROC_LAYOUT_ADDR(mercury__check_hlds__mode_info__mode_info_set_may_init_solver_vars_3_0);
+MR_BEGIN_CODE
+
+/*-------------------------------------------------------------------------*/
+/* code for 'mode_info_set_may_init_solver_vars'/3 mode 0 */
+#ifdef MR_maybe_local_thread_engine_base
+	#undef MR_maybe_local_thread_engine_base
+	#define MR_maybe_local_thread_engine_base MR_local_thread_engine_base
+#endif
+MR_define_entry(mercury__check_hlds__mode_info__mode_info_set_may_init_solver_vars_3_0);
+	MR_MAYBE_INIT_LOCAL_THREAD_ENGINE_BASE
+	{
+	MR_Word MR_tempr1, MR_tempr2, MR_tempr3, MR_tempr4, MR_tempr5, MR_tempr6, MR_tempr7, MR_tempr8, MR_tempr9, MR_tempr10, MR_tempr11, MR_tempr12;
+	MR_tempr1 = MR_tfield(0, MR_r2, 7);
+	MR_tempr2 = (((MR_Integer) MR_tfield(0, MR_tempr1, 11) >> (MR_Integer) 1) & (MR_Integer) 1);
+	MR_tempr3 = (((MR_Integer) MR_tfield(0, MR_tempr1, 14) >> (MR_Integer) 5) & (MR_Integer) 1);
+	MR_tempr4 = (((MR_Integer) MR_tfield(0, MR_tempr1, 14) >> (MR_Integer) 4) & (MR_Integer) 1);
+	MR_tempr5 = (((MR_Integer) MR_tfield(0, MR_tempr1, 14) >> (MR_Integer) 3) & (MR_Integer) 1);
+	MR_tempr6 = (((MR_Integer) MR_tfield(0, MR_tempr1, 14) >> (MR_Integer) 2) & (MR_Integer) 1);
+	MR_tempr7 = (((MR_Integer) MR_tfield(0, MR_tempr1, 14) >> (MR_Integer) 1) & (MR_Integer) 1);
+	MR_tempr8 = ((MR_Integer) MR_tfield(0, MR_tempr1, 14) & (MR_Integer) 1);
+	MR_tempr9 = ((MR_Integer) MR_tfield(0, MR_tempr1, 11) & (MR_Integer) 1);
+	MR_tempr10 = (((MR_Integer) MR_tfield(0, MR_tempr1, 9) >> (MR_Integer) 1) & (MR_Integer) 1);
+	MR_tempr11 = ((MR_Integer) MR_tfield(0, MR_tempr1, 9) & (MR_Integer) 1);
+	MR_tag_alloc_heap(MR_tempr12, 0, (MR_Integer) 15);
+	MR_tfield(0, MR_tempr12, 0) = MR_tfield(0, MR_tempr1, 0);
+	MR_tfield(0, MR_tempr12, 1) = MR_tfield(0, MR_tempr1, 1);
+	MR_tfield(0, MR_tempr12, 2) = MR_tfield(0, MR_tempr1, 2);
+	MR_tfield(0, MR_tempr12, 3) = MR_tfield(0, MR_tempr1, 3);
+	MR_tfield(0, MR_tempr12, 4) = MR_tfield(0, MR_tempr1, 4);
+	MR_tfield(0, MR_tempr12, 5) = MR_tfield(0, MR_tempr1, 5);
+	MR_tfield(0, MR_tempr12, 6) = MR_tfield(0, MR_tempr1, 6);
+	MR_tfield(0, MR_tempr12, 7) = MR_tfield(0, MR_tempr1, 7);
+	MR_tfield(0, MR_tempr12, 8) = MR_tfield(0, MR_tempr1, 8);
+	MR_tfield(0, MR_tempr12, 9) = ((MR_Integer) MR_tempr11 | (((MR_Integer) MR_tempr10 << (MR_Integer) 1) | ((MR_Integer) MR_r1 << (MR_Integer) 2)));
+	MR_tfield(0, MR_tempr12, 10) = MR_tfield(0, MR_tempr1, 10);
+	MR_tfield(0, MR_tempr12, 11) = ((MR_Integer) MR_tempr9 | ((MR_Integer) MR_tempr2 << (MR_Integer) 1));
+	MR_tfield(0, MR_tempr12, 12) = MR_tfield(0, MR_tempr1, 12);
+	MR_tfield(0, MR_tempr12, 13) = MR_tfield(0, MR_tempr1, 13);
+	MR_tfield(0, MR_tempr12, 14) = ((MR_Integer) MR_tempr8 | (((MR_Integer) MR_tempr7 << (MR_Integer) 1) | (((MR_Integer) MR_tempr6 << (MR_Integer) 2) | (((MR_Integer) MR_tempr5 << (MR_Integer) 3) | (((MR_Integer) MR_tempr4 << (MR_Integer) 4) | ((MR_Integer) MR_tempr3 << (MR_Integer) 5))))));
+	MR_tag_alloc_heap(MR_r1, 0, (MR_Integer) 8);
+	MR_tfield(0, MR_r1, 0) = MR_tfield(0, MR_r2, 0);
+	MR_tfield(0, MR_r1, 1) = MR_tfield(0, MR_r2, 1);
+	MR_tfield(0, MR_r1, 2) = MR_tfield(0, MR_r2, 2);
+	MR_tfield(0, MR_r1, 3) = MR_tfield(0, MR_r2, 3);
+	MR_tfield(0, MR_r1, 4) = MR_tfield(0, MR_r2, 4);
+	MR_tfield(0, MR_r1, 5) = MR_tfield(0, MR_r2, 5);
+	MR_tfield(0, MR_r1, 6) = MR_tfield(0, MR_r2, 6);
+	MR_tfield(0, MR_r1, 7) = MR_tempr12;
+	MR_proceed();
+	}
+#ifdef MR_maybe_local_thread_engine_base
+	#undef MR_maybe_local_thread_engine_base
+	#define MR_maybe_local_thread_engine_base MR_thread_engine_base
+#endif
+MR_END_MODULE
+
+
+MR_BEGIN_MODULE(check_hlds__mode_info_module64)
+	MR_init_entry1(check_hlds__mode_info__mode_info_set_in_from_ground_term_3_0);
+	MR_INIT_PROC_LAYOUT_ADDR(mercury__check_hlds__mode_info__mode_info_set_in_from_ground_term_3_0);
+MR_BEGIN_CODE
+
+/*-------------------------------------------------------------------------*/
+/* code for 'mode_info_set_in_from_ground_term'/3 mode 0 */
+#ifdef MR_maybe_local_thread_engine_base
+	#undef MR_maybe_local_thread_engine_base
+	#define MR_maybe_local_thread_engine_base MR_local_thread_engine_base
+#endif
+MR_define_entry(mercury__check_hlds__mode_info__mode_info_set_in_from_ground_term_3_0);
+	MR_MAYBE_INIT_LOCAL_THREAD_ENGINE_BASE
+	{
+	MR_Word MR_tempr1, MR_tempr2, MR_tempr3, MR_tempr4, MR_tempr5, MR_tempr6, MR_tempr7, MR_tempr8, MR_tempr9, MR_tempr10, MR_tempr11, MR_tempr12;
+	MR_tempr1 = MR_tfield(0, MR_r2, 7);
+	MR_tempr2 = (((MR_Integer) MR_tfield(0, MR_tempr1, 9) >> (MR_Integer) 2) & (MR_Integer) 1);
+	MR_tempr3 = (((MR_Integer) MR_tfield(0, MR_tempr1, 11) >> (MR_Integer) 1) & (MR_Integer) 1);
+	MR_tempr4 = (((MR_Integer) MR_tfield(0, MR_tempr1, 14) >> (MR_Integer) 5) & (MR_Integer) 1);
+	MR_tempr5 = (((MR_Integer) MR_tfield(0, MR_tempr1, 14) >> (MR_Integer) 4) & (MR_Integer) 1);
+	MR_tempr6 = (((MR_Integer) MR_tfield(0, MR_tempr1, 14) >> (MR_Integer) 3) & (MR_Integer) 1);
+	MR_tempr7 = (((MR_Integer) MR_tfield(0, MR_tempr1, 14) >> (MR_Integer) 1) & (MR_Integer) 1);
+	MR_tempr8 = ((MR_Integer) MR_tfield(0, MR_tempr1, 14) & (MR_Integer) 1);
+	MR_tempr9 = ((MR_Integer) MR_tfield(0, MR_tempr1, 11) & (MR_Integer) 1);
+	MR_tempr10 = (((MR_Integer) MR_tfield(0, MR_tempr1, 9) >> (MR_Integer) 1) & (MR_Integer) 1);
+	MR_tempr11 = ((MR_Integer) MR_tfield(0, MR_tempr1, 9) & (MR_Integer) 1);
+	MR_tag_alloc_heap(MR_tempr12, 0, (MR_Integer) 15);
+	MR_tfield(0, MR_tempr12, 0) = MR_tfield(0, MR_tempr1, 0);
+	MR_tfield(0, MR_tempr12, 1) = MR_tfield(0, MR_tempr1, 1);
+	MR_tfield(0, MR_tempr12, 2) = MR_tfield(0, MR_tempr1, 2);
+	MR_tfield(0, MR_tempr12, 3) = MR_tfield(0, MR_tempr1, 3);
+	MR_tfield(0, MR_tempr12, 4) = MR_tfield(0, MR_tempr1, 4);
+	MR_tfield(0, MR_tempr12, 5) = MR_tfield(0, MR_tempr1, 5);
+	MR_tfield(0, MR_tempr12, 6) = MR_tfield(0, MR_tempr1, 6);
+	MR_tfield(0, MR_tempr12, 7) = MR_tfield(0, MR_tempr1, 7);
+	MR_tfield(0, MR_tempr12, 8) = MR_tfield(0, MR_tempr1, 8);
+	MR_tfield(0, MR_tempr12, 9) = ((MR_Integer) MR_tempr11 | (((MR_Integer) MR_tempr10 << (MR_Integer) 1) | ((MR_Integer) MR_tempr2 << (MR_Integer) 2)));
+	MR_tfield(0, MR_tempr12, 10) = MR_tfield(0, MR_tempr1, 10);
+	MR_tfield(0, MR_tempr12, 11) = ((MR_Integer) MR_tempr9 | ((MR_Integer) MR_tempr3 << (MR_Integer) 1));
+	MR_tfield(0, MR_tempr12, 12) = MR_tfield(0, MR_tempr1, 12);
+	MR_tfield(0, MR_tempr12, 13) = MR_tfield(0, MR_tempr1, 13);
+	MR_tfield(0, MR_tempr12, 14) = ((MR_Integer) MR_tempr8 | (((MR_Integer) MR_tempr7 << (MR_Integer) 1) | (((MR_Integer) MR_r1 << (MR_Integer) 2) | (((MR_Integer) MR_tempr6 << (MR_Integer) 3) | (((MR_Integer) MR_tempr5 << (MR_Integer) 4) | ((MR_Integer) MR_tempr4 << (MR_Integer) 5))))));
+	MR_tag_alloc_heap(MR_r1, 0, (MR_Integer) 8);
+	MR_tfield(0, MR_r1, 0) = MR_tfield(0, MR_r2, 0);
+	MR_tfield(0, MR_r1, 1) = MR_tfield(0, MR_r2, 1);
+	MR_tfield(0, MR_r1, 2) = MR_tfield(0, MR_r2, 2);
+	MR_tfield(0, MR_r1, 3) = MR_tfield(0, MR_r2, 3);
+	MR_tfield(0, MR_r1, 4) = MR_tfield(0, MR_r2, 4);
+	MR_tfield(0, MR_r1, 5) = MR_tfield(0, MR_r2, 5);
+	MR_tfield(0, MR_r1, 6) = MR_tfield(0, MR_r2, 6);
+	MR_tfield(0, MR_r1, 7) = MR_tempr12;
+	MR_proceed();
+	}
+#ifdef MR_maybe_local_thread_engine_base
+	#undef MR_maybe_local_thread_engine_base
+	#define MR_maybe_local_thread_engine_base MR_thread_engine_base
+#endif
+MR_END_MODULE
+
+
+MR_BEGIN_MODULE(check_hlds__mode_info_module65)
+	MR_init_entry1(check_hlds__mode_info__mode_info_set_had_from_ground_term_3_0);
+	MR_INIT_PROC_LAYOUT_ADDR(mercury__check_hlds__mode_info__mode_info_set_had_from_ground_term_3_0);
+MR_BEGIN_CODE
+
+/*-------------------------------------------------------------------------*/
+/* code for 'mode_info_set_had_from_ground_term'/3 mode 0 */
+#ifdef MR_maybe_local_thread_engine_base
+	#undef MR_maybe_local_thread_engine_base
+	#define MR_maybe_local_thread_engine_base MR_local_thread_engine_base
+#endif
+MR_define_entry(mercury__check_hlds__mode_info__mode_info_set_had_from_ground_term_3_0);
+	MR_MAYBE_INIT_LOCAL_THREAD_ENGINE_BASE
+	{
+	MR_Word MR_tempr1, MR_tempr2, MR_tempr3, MR_tempr4, MR_tempr5, MR_tempr6, MR_tempr7, MR_tempr8, MR_tempr9, MR_tempr10, MR_tempr11, MR_tempr12;
+	MR_tempr1 = MR_tfield(0, MR_r2, 7);
+	MR_tempr2 = (((MR_Integer) MR_tfield(0, MR_tempr1, 9) >> (MR_Integer) 2) & (MR_Integer) 1);
+	MR_tempr3 = (((MR_Integer) MR_tfield(0, MR_tempr1, 11) >> (MR_Integer) 1) & (MR_Integer) 1);
+	MR_tempr4 = (((MR_Integer) MR_tfield(0, MR_tempr1, 14) >> (MR_Integer) 5) & (MR_Integer) 1);
+	MR_tempr5 = (((MR_Integer) MR_tfield(0, MR_tempr1, 14) >> (MR_Integer) 4) & (MR_Integer) 1);
+	MR_tempr6 = (((MR_Integer) MR_tfield(0, MR_tempr1, 14) >> (MR_Integer) 2) & (MR_Integer) 1);
+	MR_tempr7 = (((MR_Integer) MR_tfield(0, MR_tempr1, 14) >> (MR_Integer) 1) & (MR_Integer) 1);
+	MR_tempr8 = ((MR_Integer) MR_tfield(0, MR_tempr1, 14) & (MR_Integer) 1);
+	MR_tempr9 = ((MR_Integer) MR_tfield(0, MR_tempr1, 11) & (MR_Integer) 1);
+	MR_tempr10 = (((MR_Integer) MR_tfield(0, MR_tempr1, 9) >> (MR_Integer) 1) & (MR_Integer) 1);
+	MR_tempr11 = ((MR_Integer) MR_tfield(0, MR_tempr1, 9) & (MR_Integer) 1);
+	MR_tag_alloc_heap(MR_tempr12, 0, (MR_Integer) 15);
+	MR_tfield(0, MR_tempr12, 0) = MR_tfield(0, MR_tempr1, 0);
+	MR_tfield(0, MR_tempr12, 1) = MR_tfield(0, MR_tempr1, 1);
+	MR_tfield(0, MR_tempr12, 2) = MR_tfield(0, MR_tempr1, 2);
+	MR_tfield(0, MR_tempr12, 3) = MR_tfield(0, MR_tempr1, 3);
+	MR_tfield(0, MR_tempr12, 4) = MR_tfield(0, MR_tempr1, 4);
+	MR_tfield(0, MR_tempr12, 5) = MR_tfield(0, MR_tempr1, 5);
+	MR_tfield(0, MR_tempr12, 6) = MR_tfield(0, MR_tempr1, 6);
+	MR_tfield(0, MR_tempr12, 7) = MR_tfield(0, MR_tempr1, 7);
+	MR_tfield(0, MR_tempr12, 8) = MR_tfield(0, MR_tempr1, 8);
+	MR_tfield(0, MR_tempr12, 9) = ((MR_Integer) MR_tempr11 | (((MR_Integer) MR_tempr10 << (MR_Integer) 1) | ((MR_Integer) MR_tempr2 << (MR_Integer) 2)));
+	MR_tfield(0, MR_tempr12, 10) = MR_tfield(0, MR_tempr1, 10);
+	MR_tfield(0, MR_tempr12, 11) = ((MR_Integer) MR_tempr9 | ((MR_Integer) MR_tempr3 << (MR_Integer) 1));
+	MR_tfield(0, MR_tempr12, 12) = MR_tfield(0, MR_tempr1, 12);
+	MR_tfield(0, MR_tempr12, 13) = MR_tfield(0, MR_tempr1, 13);
+	MR_tfield(0, MR_tempr12, 14) = ((MR_Integer) MR_tempr8 | (((MR_Integer) MR_tempr7 << (MR_Integer) 1) | (((MR_Integer) MR_tempr6 << (MR_Integer) 2) | (((MR_Integer) MR_r1 << (MR_Integer) 3) | (((MR_Integer) MR_tempr5 << (MR_Integer) 4) | ((MR_Integer) MR_tempr4 << (MR_Integer) 5))))));
+	MR_tag_alloc_heap(MR_r1, 0, (MR_Integer) 8);
+	MR_tfield(0, MR_r1, 0) = MR_tfield(0, MR_r2, 0);
+	MR_tfield(0, MR_r1, 1) = MR_tfield(0, MR_r2, 1);
+	MR_tfield(0, MR_r1, 2) = MR_tfield(0, MR_r2, 2);
+	MR_tfield(0, MR_r1, 3) = MR_tfield(0, MR_r2, 3);
+	MR_tfield(0, MR_r1, 4) = MR_tfield(0, MR_r2, 4);
+	MR_tfield(0, MR_r1, 5) = MR_tfield(0, MR_r2, 5);
+	MR_tfield(0, MR_r1, 6) = MR_tfield(0, MR_r2, 6);
+	MR_tfield(0, MR_r1, 7) = MR_tempr12;
+	MR_proceed();
+	}
+#ifdef MR_maybe_local_thread_engine_base
+	#undef MR_maybe_local_thread_engine_base
+	#define MR_maybe_local_thread_engine_base MR_thread_engine_base
+#endif
+MR_END_MODULE
+
+
+MR_BEGIN_MODULE(check_hlds__mode_info_module66)
+	MR_init_entry1(check_hlds__mode_info__mode_info_set_make_ground_terms_unique_3_0);
+	MR_INIT_PROC_LAYOUT_ADDR(mercury__check_hlds__mode_info__mode_info_set_make_ground_terms_unique_3_0);
+MR_BEGIN_CODE
+
+/*-------------------------------------------------------------------------*/
+/* code for 'mode_info_set_make_ground_terms_unique'/3 mode 0 */
+#ifdef MR_maybe_local_thread_engine_base
+	#undef MR_maybe_local_thread_engine_base
+	#define MR_maybe_local_thread_engine_base MR_local_thread_engine_base
+#endif
+MR_define_entry(mercury__check_hlds__mode_info__mode_info_set_make_ground_terms_unique_3_0);
+	MR_MAYBE_INIT_LOCAL_THREAD_ENGINE_BASE
+	{
+	MR_Word MR_tempr1, MR_tempr2, MR_tempr3, MR_tempr4, MR_tempr5, MR_tempr6, MR_tempr7, MR_tempr8, MR_tempr9, MR_tempr10, MR_tempr11, MR_tempr12;
+	MR_tempr1 = MR_tfield(0, MR_r2, 7);
+	MR_tempr2 = (((MR_Integer) MR_tfield(0, MR_tempr1, 9) >> (MR_Integer) 2) & (MR_Integer) 1);
+	MR_tempr3 = (((MR_Integer) MR_tfield(0, MR_tempr1, 11) >> (MR_Integer) 1) & (MR_Integer) 1);
+	MR_tempr4 = (((MR_Integer) MR_tfield(0, MR_tempr1, 14) >> (MR_Integer) 5) & (MR_Integer) 1);
+	MR_tempr5 = (((MR_Integer) MR_tfield(0, MR_tempr1, 14) >> (MR_Integer) 3) & (MR_Integer) 1);
+	MR_tempr6 = (((MR_Integer) MR_tfield(0, MR_tempr1, 14) >> (MR_Integer) 2) & (MR_Integer) 1);
+	MR_tempr7 = (((MR_Integer) MR_tfield(0, MR_tempr1, 14) >> (MR_Integer) 1) & (MR_Integer) 1);
+	MR_tempr8 = ((MR_Integer) MR_tfield(0, MR_tempr1, 14) & (MR_Integer) 1);
+	MR_tempr9 = ((MR_Integer) MR_tfield(0, MR_tempr1, 11) & (MR_Integer) 1);
+	MR_tempr10 = (((MR_Integer) MR_tfield(0, MR_tempr1, 9) >> (MR_Integer) 1) & (MR_Integer) 1);
+	MR_tempr11 = ((MR_Integer) MR_tfield(0, MR_tempr1, 9) & (MR_Integer) 1);
+	MR_tag_alloc_heap(MR_tempr12, 0, (MR_Integer) 15);
+	MR_tfield(0, MR_tempr12, 0) = MR_tfield(0, MR_tempr1, 0);
+	MR_tfield(0, MR_tempr12, 1) = MR_tfield(0, MR_tempr1, 1);
+	MR_tfield(0, MR_tempr12, 2) = MR_tfield(0, MR_tempr1, 2);
+	MR_tfield(0, MR_tempr12, 3) = MR_tfield(0, MR_tempr1, 3);
+	MR_tfield(0, MR_tempr12, 4) = MR_tfield(0, MR_tempr1, 4);
+	MR_tfield(0, MR_tempr12, 5) = MR_tfield(0, MR_tempr1, 5);
+	MR_tfield(0, MR_tempr12, 6) = MR_tfield(0, MR_tempr1, 6);
+	MR_tfield(0, MR_tempr12, 7) = MR_tfield(0, MR_tempr1, 7);
+	MR_tfield(0, MR_tempr12, 8) = MR_tfield(0, MR_tempr1, 8);
+	MR_tfield(0, MR_tempr12, 9) = ((MR_Integer) MR_tempr11 | (((MR_Integer) MR_tempr10 << (MR_Integer) 1) | ((MR_Integer) MR_tempr2 << (MR_Integer) 2)));
+	MR_tfield(0, MR_tempr12, 10) = MR_tfield(0, MR_tempr1, 10);
+	MR_tfield(0, MR_tempr12, 11) = ((MR_Integer) MR_tempr9 | ((MR_Integer) MR_tempr3 << (MR_Integer) 1));
+	MR_tfield(0, MR_tempr12, 12) = MR_tfield(0, MR_tempr1, 12);
+	MR_tfield(0, MR_tempr12, 13) = MR_tfield(0, MR_tempr1, 13);
+	MR_tfield(0, MR_tempr12, 14) = ((MR_Integer) MR_tempr8 | (((MR_Integer) MR_tempr7 << (MR_Integer) 1) | (((MR_Integer) MR_tempr6 << (MR_Integer) 2) | (((MR_Integer) MR_tempr5 << (MR_Integer) 3) | (((MR_Integer) MR_r1 << (MR_Integer) 4) | ((MR_Integer) MR_tempr4 << (MR_Integer) 5))))));
+	MR_tag_alloc_heap(MR_r1, 0, (MR_Integer) 8);
+	MR_tfield(0, MR_r1, 0) = MR_tfield(0, MR_r2, 0);
+	MR_tfield(0, MR_r1, 1) = MR_tfield(0, MR_r2, 1);
+	MR_tfield(0, MR_r1, 2) = MR_tfield(0, MR_r2, 2);
+	MR_tfield(0, MR_r1, 3) = MR_tfield(0, MR_r2, 3);
+	MR_tfield(0, MR_r1, 4) = MR_tfield(0, MR_r2, 4);
+	MR_tfield(0, MR_r1, 5) = MR_tfield(0, MR_r2, 5);
+	MR_tfield(0, MR_r1, 6) = MR_tfield(0, MR_r2, 6);
+	MR_tfield(0, MR_r1, 7) = MR_tempr12;
+	MR_proceed();
+	}
+#ifdef MR_maybe_local_thread_engine_base
+	#undef MR_maybe_local_thread_engine_base
+	#define MR_maybe_local_thread_engine_base MR_thread_engine_base
+#endif
+MR_END_MODULE
+
+
+MR_BEGIN_MODULE(check_hlds__mode_info_module67)
+	MR_init_entry1(check_hlds__mode_info__mode_info_set_in_dupl_for_switch_3_0);
+	MR_INIT_PROC_LAYOUT_ADDR(mercury__check_hlds__mode_info__mode_info_set_in_dupl_for_switch_3_0);
+MR_BEGIN_CODE
+
+/*-------------------------------------------------------------------------*/
+/* code for 'mode_info_set_in_dupl_for_switch'/3 mode 0 */
+#ifdef MR_maybe_local_thread_engine_base
+	#undef MR_maybe_local_thread_engine_base
+	#define MR_maybe_local_thread_engine_base MR_local_thread_engine_base
+#endif
+MR_define_entry(mercury__check_hlds__mode_info__mode_info_set_in_dupl_for_switch_3_0);
+	MR_MAYBE_INIT_LOCAL_THREAD_ENGINE_BASE
+	{
+	MR_Word MR_tempr1, MR_tempr2, MR_tempr3, MR_tempr4, MR_tempr5, MR_tempr6, MR_tempr7, MR_tempr8, MR_tempr9, MR_tempr10, MR_tempr11, MR_tempr12;
+	MR_tempr1 = MR_tfield(0, MR_r2, 7);
+	MR_tempr2 = (((MR_Integer) MR_tfield(0, MR_tempr1, 9) >> (MR_Integer) 2) & (MR_Integer) 1);
+	MR_tempr3 = (((MR_Integer) MR_tfield(0, MR_tempr1, 11) >> (MR_Integer) 1) & (MR_Integer) 1);
+	MR_tempr4 = (((MR_Integer) MR_tfield(0, MR_tempr1, 14) >> (MR_Integer) 4) & (MR_Integer) 1);
+	MR_tempr5 = (((MR_Integer) MR_tfield(0, MR_tempr1, 14) >> (MR_Integer) 3) & (MR_Integer) 1);
+	MR_tempr6 = (((MR_Integer) MR_tfield(0, MR_tempr1, 14) >> (MR_Integer) 2) & (MR_Integer) 1);
+	MR_tempr7 = (((MR_Integer) MR_tfield(0, MR_tempr1, 14) >> (MR_Integer) 1) & (MR_Integer) 1);
+	MR_tempr8 = ((MR_Integer) MR_tfield(0, MR_tempr1, 14) & (MR_Integer) 1);
+	MR_tempr9 = ((MR_Integer) MR_tfield(0, MR_tempr1, 11) & (MR_Integer) 1);
+	MR_tempr10 = (((MR_Integer) MR_tfield(0, MR_tempr1, 9) >> (MR_Integer) 1) & (MR_Integer) 1);
+	MR_tempr11 = ((MR_Integer) MR_tfield(0, MR_tempr1, 9) & (MR_Integer) 1);
+	MR_tag_alloc_heap(MR_tempr12, 0, (MR_Integer) 15);
+	MR_tfield(0, MR_tempr12, 0) = MR_tfield(0, MR_tempr1, 0);
+	MR_tfield(0, MR_tempr12, 1) = MR_tfield(0, MR_tempr1, 1);
+	MR_tfield(0, MR_tempr12, 2) = MR_tfield(0, MR_tempr1, 2);
+	MR_tfield(0, MR_tempr12, 3) = MR_tfield(0, MR_tempr1, 3);
+	MR_tfield(0, MR_tempr12, 4) = MR_tfield(0, MR_tempr1, 4);
+	MR_tfield(0, MR_tempr12, 5) = MR_tfield(0, MR_tempr1, 5);
+	MR_tfield(0, MR_tempr12, 6) = MR_tfield(0, MR_tempr1, 6);
+	MR_tfield(0, MR_tempr12, 7) = MR_tfield(0, MR_tempr1, 7);
+	MR_tfield(0, MR_tempr12, 8) = MR_tfield(0, MR_tempr1, 8);
+	MR_tfield(0, MR_tempr12, 9) = ((MR_Integer) MR_tempr11 | (((MR_Integer) MR_tempr10 << (MR_Integer) 1) | ((MR_Integer) MR_tempr2 << (MR_Integer) 2)));
+	MR_tfield(0, MR_tempr12, 10) = MR_tfield(0, MR_tempr1, 10);
+	MR_tfield(0, MR_tempr12, 11) = ((MR_Integer) MR_tempr9 | ((MR_Integer) MR_tempr3 << (MR_Integer) 1));
+	MR_tfield(0, MR_tempr12, 12) = MR_tfield(0, MR_tempr1, 12);
+	MR_tfield(0, MR_tempr12, 13) = MR_tfield(0, MR_tempr1, 13);
+	MR_tfield(0, MR_tempr12, 14) = ((MR_Integer) MR_tempr8 | (((MR_Integer) MR_tempr7 << (MR_Integer) 1) | (((MR_Integer) MR_tempr6 << (MR_Integer) 2) | (((MR_Integer) MR_tempr5 << (MR_Integer) 3) | (((MR_Integer) MR_tempr4 << (MR_Integer) 4) | ((MR_Integer) MR_r1 << (MR_Integer) 5))))));
+	MR_tag_alloc_heap(MR_r1, 0, (MR_Integer) 8);
+	MR_tfield(0, MR_r1, 0) = MR_tfield(0, MR_r2, 0);
+	MR_tfield(0, MR_r1, 1) = MR_tfield(0, MR_r2, 1);
+	MR_tfield(0, MR_r1, 2) = MR_tfield(0, MR_r2, 2);
+	MR_tfield(0, MR_r1, 3) = MR_tfield(0, MR_r2, 3);
+	MR_tfield(0, MR_r1, 4) = MR_tfield(0, MR_r2, 4);
+	MR_tfield(0, MR_r1, 5) = MR_tfield(0, MR_r2, 5);
+	MR_tfield(0, MR_r1, 6) = MR_tfield(0, MR_r2, 6);
+	MR_tfield(0, MR_r1, 7) = MR_tempr12;
+	MR_proceed();
+	}
+#ifdef MR_maybe_local_thread_engine_base
+	#undef MR_maybe_local_thread_engine_base
+	#define MR_maybe_local_thread_engine_base MR_thread_engine_base
+#endif
+MR_END_MODULE
+
+MR_decl_entry(map__apply_to_list_3_0);
+
+MR_BEGIN_MODULE(check_hlds__mode_info_module68)
+	MR_init_entry1(check_hlds__mode_info__mode_info_get_types_of_vars_3_0);
+	MR_INIT_PROC_LAYOUT_ADDR(mercury__check_hlds__mode_info__mode_info_get_types_of_vars_3_0);
+MR_BEGIN_CODE
+
+/*-------------------------------------------------------------------------*/
+/* code for 'mode_info_get_types_of_vars'/3 mode 0 */
+#ifdef MR_maybe_local_thread_engine_base
+	#undef MR_maybe_local_thread_engine_base
+	#define MR_maybe_local_thread_engine_base MR_local_thread_engine_base
+#endif
+MR_define_entry(mercury__check_hlds__mode_info__mode_info_get_types_of_vars_3_0);
+	MR_MAYBE_INIT_LOCAL_THREAD_ENGINE_BASE
+	{
+	MR_Word MR_tempr1, MR_tempr2;
+	MR_tempr1 = MR_r1;
+	MR_r1 = (MR_Word) MR_TAG_COMMON(0,0,0);
+	MR_tempr2 = MR_r2;
+	MR_r2 = (MR_Word) MR_CTOR0_ADDR(parse_tree__prog_data, mer_type);
+	MR_r3 = MR_tempr2;
+	MR_r4 = MR_tfield(0, MR_tfield(0, MR_tempr1, 7), 3);
+	MR_np_tailcall_ent(map__apply_to_list_3_0);
+	}
+#ifdef MR_maybe_local_thread_engine_base
+	#undef MR_maybe_local_thread_engine_base
+	#define MR_maybe_local_thread_engine_base MR_thread_engine_base
+#endif
+MR_END_MODULE
+
+
+MR_BEGIN_MODULE(check_hlds__mode_info_module69)
+	MR_init_entry1(check_hlds__mode_info__mode_info_lock_vars_4_0);
+	MR_INIT_PROC_LAYOUT_ADDR(mercury__check_hlds__mode_info__mode_info_lock_vars_4_0);
+MR_BEGIN_CODE
+
+/*-------------------------------------------------------------------------*/
+/* code for 'mode_info_lock_vars'/4 mode 0 */
+#ifdef MR_maybe_local_thread_engine_base
+	#undef MR_maybe_local_thread_engine_base
+	#define MR_maybe_local_thread_engine_base MR_local_thread_engine_base
+#endif
+MR_define_entry(mercury__check_hlds__mode_info__mode_info_lock_vars_4_0);
+	MR_MAYBE_INIT_LOCAL_THREAD_ENGINE_BASE
+	{
+	MR_Word MR_tempr1, MR_tempr2, MR_tempr3, MR_tempr4, MR_tempr5, MR_tempr6, MR_tempr7, MR_tempr8, MR_tempr9, MR_tempr10, MR_tempr11, MR_tempr12, MR_tempr13, MR_tempr14;
+	MR_tag_alloc_heap(MR_tempr1, 0, (MR_Integer) 2);
+	MR_tfield(0, MR_tempr1, 0) = MR_r1;
+	MR_tfield(0, MR_tempr1, 1) = MR_r2;
+	MR_tag_alloc_heap(MR_r2, 1, (MR_Integer) 2);
+	MR_tfield(1, MR_r2, 0) = MR_tempr1;
+	MR_tempr14 = MR_r3;
+	MR_tempr2 = MR_tfield(0, MR_tempr14, 7);
+	MR_tfield(1, MR_r2, 1) = MR_tfield(0, MR_tempr2, 5);
+	MR_tempr1 = (((MR_Integer) MR_tfield(0, MR_tempr2, 9) >> (MR_Integer) 2) & (MR_Integer) 1);
+	MR_tempr3 = (((MR_Integer) MR_tfield(0, MR_tempr2, 11) >> (MR_Integer) 1) & (MR_Integer) 1);
+	MR_tempr4 = (((MR_Integer) MR_tfield(0, MR_tempr2, 14) >> (MR_Integer) 5) & (MR_Integer) 1);
+	MR_tempr5 = (((MR_Integer) MR_tfield(0, MR_tempr2, 14) >> (MR_Integer) 4) & (MR_Integer) 1);
+	MR_tempr6 = (((MR_Integer) MR_tfield(0, MR_tempr2, 14) >> (MR_Integer) 3) & (MR_Integer) 1);
+	MR_tempr7 = (((MR_Integer) MR_tfield(0, MR_tempr2, 14) >> (MR_Integer) 2) & (MR_Integer) 1);
+	MR_tempr8 = (((MR_Integer) MR_tfield(0, MR_tempr2, 14) >> (MR_Integer) 1) & (MR_Integer) 1);
+	MR_tempr9 = ((MR_Integer) MR_tfield(0, MR_tempr2, 14) & (MR_Integer) 1);
+	MR_tempr10 = ((MR_Integer) MR_tfield(0, MR_tempr2, 11) & (MR_Integer) 1);
+	MR_tempr11 = (((MR_Integer) MR_tfield(0, MR_tempr2, 9) >> (MR_Integer) 1) & (MR_Integer) 1);
+	MR_tempr12 = ((MR_Integer) MR_tfield(0, MR_tempr2, 9) & (MR_Integer) 1);
+	MR_tag_alloc_heap(MR_tempr13, 0, (MR_Integer) 15);
+	MR_tfield(0, MR_tempr13, 0) = MR_tfield(0, MR_tempr2, 0);
+	MR_tfield(0, MR_tempr13, 1) = MR_tfield(0, MR_tempr2, 1);
+	MR_tfield(0, MR_tempr13, 2) = MR_tfield(0, MR_tempr2, 2);
+	MR_tfield(0, MR_tempr13, 3) = MR_tfield(0, MR_tempr2, 3);
+	MR_tfield(0, MR_tempr13, 4) = MR_tfield(0, MR_tempr2, 4);
+	MR_tfield(0, MR_tempr13, 5) = MR_r2;
+	MR_tfield(0, MR_tempr13, 6) = MR_tfield(0, MR_tempr2, 6);
+	MR_tfield(0, MR_tempr13, 7) = MR_tfield(0, MR_tempr2, 7);
+	MR_tfield(0, MR_tempr13, 8) = MR_tfield(0, MR_tempr2, 8);
+	MR_tfield(0, MR_tempr13, 9) = ((MR_Integer) MR_tempr12 | (((MR_Integer) MR_tempr11 << (MR_Integer) 1) | ((MR_Integer) MR_tempr1 << (MR_Integer) 2)));
+	MR_tfield(0, MR_tempr13, 10) = MR_tfield(0, MR_tempr2, 10);
+	MR_tfield(0, MR_tempr13, 11) = ((MR_Integer) MR_tempr10 | ((MR_Integer) MR_tempr3 << (MR_Integer) 1));
+	MR_tfield(0, MR_tempr13, 12) = MR_tfield(0, MR_tempr2, 12);
+	MR_tfield(0, MR_tempr13, 13) = MR_tfield(0, MR_tempr2, 13);
+	MR_tfield(0, MR_tempr13, 14) = ((MR_Integer) MR_tempr9 | (((MR_Integer) MR_tempr8 << (MR_Integer) 1) | (((MR_Integer) MR_tempr7 << (MR_Integer) 2) | (((MR_Integer) MR_tempr6 << (MR_Integer) 3) | (((MR_Integer) MR_tempr5 << (MR_Integer) 4) | ((MR_Integer) MR_tempr4 << (MR_Integer) 5))))));
+	MR_tag_alloc_heap(MR_r1, 0, (MR_Integer) 8);
+	MR_tfield(0, MR_r1, 0) = MR_tfield(0, MR_tempr14, 0);
+	MR_tfield(0, MR_r1, 1) = MR_tfield(0, MR_tempr14, 1);
+	MR_tfield(0, MR_r1, 2) = MR_tfield(0, MR_tempr14, 2);
+	MR_tfield(0, MR_r1, 3) = MR_tfield(0, MR_tempr14, 3);
+	MR_tfield(0, MR_r1, 4) = MR_tfield(0, MR_tempr14, 4);
+	MR_tfield(0, MR_r1, 5) = MR_tfield(0, MR_tempr14, 5);
+	MR_tfield(0, MR_r1, 6) = MR_tfield(0, MR_tempr14, 6);
+	MR_tfield(0, MR_r1, 7) = MR_tempr13;
+	MR_proceed();
+	}
+#ifdef MR_maybe_local_thread_engine_base
+	#undef MR_maybe_local_thread_engine_base
+	#define MR_maybe_local_thread_engine_base MR_thread_engine_base
+#endif
+MR_END_MODULE
+
+MR_decl_entry(parse_tree__set_of_var__equal_2_0);
+
+MR_BEGIN_MODULE(check_hlds__mode_info_module70)
+	MR_init_entry1(check_hlds__mode_info__mode_info_unlock_vars_4_0);
+	MR_INIT_PROC_LAYOUT_ADDR(mercury__check_hlds__mode_info__mode_info_unlock_vars_4_0);
+	MR_init_label4(check_hlds__mode_info__mode_info_unlock_vars_4_0,4,6,2,9)
+MR_BEGIN_CODE
+
+/*-------------------------------------------------------------------------*/
+/* code for 'mode_info_unlock_vars'/4 mode 0 */
+#ifdef MR_maybe_local_thread_engine_base
+	#undef MR_maybe_local_thread_engine_base
+	#define MR_maybe_local_thread_engine_base MR_local_thread_engine_base
+#endif
+MR_define_entry(mercury__check_hlds__mode_info__mode_info_unlock_vars_4_0);
+	MR_MAYBE_INIT_LOCAL_THREAD_ENGINE_BASE
+	MR_incr_sp(5);
+	MR_sv(5) = (MR_Word) MR_succip;
+	{
+	MR_Word MR_tempr1, MR_tempr2, MR_tempr3;
+	MR_tempr3 = MR_r3;
+	MR_tempr1 = MR_tfield(0, MR_tfield(0, MR_tempr3, 7), 5);
+	if (MR_LTAGS_TEST(MR_tempr1,0,0)) {
+		MR_GOTO_LAB(check_hlds__mode_info__mode_info_unlock_vars_4_0_i2);
+	}
+	MR_sv(1) = MR_r2;
+	MR_tempr2 = MR_tfield(1, MR_tempr1, 0);
+	MR_sv(2) = MR_tfield(0, MR_tempr2, 1);
+	MR_sv(3) = MR_tfield(1, MR_tempr1, 1);
+	MR_sv(4) = MR_tempr3;
+	MR_r2 = MR_tfield(0, MR_tempr2, 0);
+	}
+	MR_np_call_localret_ent(__Unify___check_hlds__mode_info__var_lock_reason_0_0,
+		check_hlds__mode_info__mode_info_unlock_vars_4_0_i4);
+MR_def_label(check_hlds__mode_info__mode_info_unlock_vars_4_0,4)
+	MR_MAYBE_INIT_LOCAL_THREAD_ENGINE_BASE
+	if (!(MR_r1)) {
+		MR_GOTO_LAB(check_hlds__mode_info__mode_info_unlock_vars_4_0_i2);
+	}
+	MR_r1 = (MR_Word) MR_CTOR0_ADDR(parse_tree__prog_data, prog_var_type);
+	MR_r2 = MR_sv(2);
+	MR_r3 = MR_sv(1);
+	MR_np_call_localret_ent(parse_tree__set_of_var__equal_2_0,
+		check_hlds__mode_info__mode_info_unlock_vars_4_0_i6);
+MR_def_label(check_hlds__mode_info__mode_info_unlock_vars_4_0,6)
+	MR_MAYBE_INIT_LOCAL_THREAD_ENGINE_BASE
+	if (!(MR_r1)) {
+		MR_GOTO_LAB(check_hlds__mode_info__mode_info_unlock_vars_4_0_i2);
+	}
+	MR_r1 = MR_sv(3);
+	{
+	MR_Word MR_tempr1;
+	MR_tempr1 = MR_sv(4);
+	MR_r2 = MR_tfield(0, MR_tempr1, 7);
+	MR_r3 = MR_tfield(0, MR_tempr1, 0);
+	MR_r4 = MR_tfield(0, MR_tempr1, 1);
+	MR_r5 = MR_tfield(0, MR_tempr1, 2);
+	MR_r6 = MR_tfield(0, MR_tempr1, 3);
+	MR_r7 = MR_tfield(0, MR_tempr1, 4);
+	MR_r8 = MR_tfield(0, MR_tempr1, 5);
+	MR_r9 = MR_tfield(0, MR_tempr1, 6);
+	MR_GOTO_LAB(check_hlds__mode_info__mode_info_unlock_vars_4_0_i9);
+	}
+MR_def_label(check_hlds__mode_info__mode_info_unlock_vars_4_0,2)
+	MR_MAYBE_INIT_LOCAL_THREAD_ENGINE_BASE
+	MR_r1 = (MR_Word) MR_string_const("check_hlds.mode_info", 20);
+	MR_r2 = (MR_Word) MR_string_const("predicate \140check_hlds.mode_info.mode_info_unlock_vars\'/4", 56);
+	MR_r3 = (MR_Word) MR_string_const("some kind of nesting error", 26);
+	MR_np_call_localret_ent(require__unexpected_3_0,
+		check_hlds__mode_info__mode_info_unlock_vars_4_0_i9);
+MR_def_label(check_hlds__mode_info__mode_info_unlock_vars_4_0,9)
+	MR_MAYBE_INIT_LOCAL_THREAD_ENGINE_BASE
+	{
+	MR_Word MR_tempr1, MR_tempr2, MR_tempr3, MR_tempr4, MR_tempr5, MR_tempr6, MR_tempr7, MR_tempr8, MR_tempr9, MR_tempr10, MR_tempr11, MR_tempr12;
+	MR_tempr1 = (((MR_Integer) MR_tfield(0, MR_r2, 9) >> (MR_Integer) 2) & (MR_Integer) 1);
+	MR_tempr2 = (((MR_Integer) MR_tfield(0, MR_r2, 11) >> (MR_Integer) 1) & (MR_Integer) 1);
+	MR_tempr3 = (((MR_Integer) MR_tfield(0, MR_r2, 14) >> (MR_Integer) 5) & (MR_Integer) 1);
+	MR_tempr4 = (((MR_Integer) MR_tfield(0, MR_r2, 14) >> (MR_Integer) 4) & (MR_Integer) 1);
+	MR_tempr5 = (((MR_Integer) MR_tfield(0, MR_r2, 14) >> (MR_Integer) 3) & (MR_Integer) 1);
+	MR_tempr6 = (((MR_Integer) MR_tfield(0, MR_r2, 14) >> (MR_Integer) 2) & (MR_Integer) 1);
+	MR_tempr7 = (((MR_Integer) MR_tfield(0, MR_r2, 14) >> (MR_Integer) 1) & (MR_Integer) 1);
+	MR_tempr8 = ((MR_Integer) MR_tfield(0, MR_r2, 14) & (MR_Integer) 1);
+	MR_tempr9 = ((MR_Integer) MR_tfield(0, MR_r2, 11) & (MR_Integer) 1);
+	MR_tempr10 = (((MR_Integer) MR_tfield(0, MR_r2, 9) >> (MR_Integer) 1) & (MR_Integer) 1);
+	MR_tempr11 = ((MR_Integer) MR_tfield(0, MR_r2, 9) & (MR_Integer) 1);
+	MR_tag_alloc_heap(MR_tempr12, 0, (MR_Integer) 15);
+	MR_tfield(0, MR_tempr12, 0) = MR_tfield(0, MR_r2, 0);
+	MR_tfield(0, MR_tempr12, 1) = MR_tfield(0, MR_r2, 1);
+	MR_tfield(0, MR_tempr12, 2) = MR_tfield(0, MR_r2, 2);
+	MR_tfield(0, MR_tempr12, 3) = MR_tfield(0, MR_r2, 3);
+	MR_tfield(0, MR_tempr12, 4) = MR_tfield(0, MR_r2, 4);
+	MR_tfield(0, MR_tempr12, 5) = MR_r1;
+	MR_tfield(0, MR_tempr12, 6) = MR_tfield(0, MR_r2, 6);
+	MR_tfield(0, MR_tempr12, 7) = MR_tfield(0, MR_r2, 7);
+	MR_tfield(0, MR_tempr12, 8) = MR_tfield(0, MR_r2, 8);
+	MR_tfield(0, MR_tempr12, 9) = ((MR_Integer) MR_tempr11 | (((MR_Integer) MR_tempr10 << (MR_Integer) 1) | ((MR_Integer) MR_tempr1 << (MR_Integer) 2)));
+	MR_tfield(0, MR_tempr12, 10) = MR_tfield(0, MR_r2, 10);
+	MR_tfield(0, MR_tempr12, 11) = ((MR_Integer) MR_tempr9 | ((MR_Integer) MR_tempr2 << (MR_Integer) 1));
+	MR_tfield(0, MR_tempr12, 12) = MR_tfield(0, MR_r2, 12);
+	MR_tfield(0, MR_tempr12, 13) = MR_tfield(0, MR_r2, 13);
+	MR_tfield(0, MR_tempr12, 14) = ((MR_Integer) MR_tempr8 | (((MR_Integer) MR_tempr7 << (MR_Integer) 1) | (((MR_Integer) MR_tempr6 << (MR_Integer) 2) | (((MR_Integer) MR_tempr5 << (MR_Integer) 3) | (((MR_Integer) MR_tempr4 << (MR_Integer) 4) | ((MR_Integer) MR_tempr3 << (MR_Integer) 5))))));
+	MR_tag_alloc_heap(MR_r1, 0, (MR_Integer) 8);
+	MR_tfield(0, MR_r1, 0) = MR_r3;
+	MR_tfield(0, MR_r1, 1) = MR_r4;
+	MR_tfield(0, MR_r1, 2) = MR_r5;
+	MR_tfield(0, MR_r1, 3) = MR_r6;
+	MR_tfield(0, MR_r1, 4) = MR_r7;
+	MR_tfield(0, MR_r1, 5) = MR_r8;
+	MR_tfield(0, MR_r1, 6) = MR_r9;
+	MR_tfield(0, MR_r1, 7) = MR_tempr12;
+	MR_decr_sp_and_return(5);
+	}
+#ifdef MR_maybe_local_thread_engine_base
+	#undef MR_maybe_local_thread_engine_base
+	#define MR_maybe_local_thread_engine_base MR_thread_engine_base
+#endif
+MR_END_MODULE
+
+MR_decl_entry(parse_tree__set_of_var__member_2_0);
+
+MR_BEGIN_MODULE(check_hlds__mode_info_module71)
+	MR_init_entry1(check_hlds__mode_info__mode_info_var_is_locked_2_3_0);
+	MR_INIT_PROC_LAYOUT_ADDR(mercury__check_hlds__mode_info__mode_info_var_is_locked_2_3_0);
+	MR_init_label4(check_hlds__mode_info__mode_info_var_is_locked_2_3_0,19,4,3,1)
+MR_BEGIN_CODE
+
+/*-------------------------------------------------------------------------*/
+/* code for 'mode_info_var_is_locked_2'/3 mode 0 */
+#ifdef MR_maybe_local_thread_engine_base
+	#undef MR_maybe_local_thread_engine_base
+	#define MR_maybe_local_thread_engine_base MR_local_thread_engine_base
+#endif
+MR_def_static(check_hlds__mode_info__mode_info_var_is_locked_2_3_0)
+	MR_MAYBE_INIT_LOCAL_THREAD_ENGINE_BASE
+	MR_incr_sp(4);
+	MR_sv(4) = (MR_Word) MR_succip;
+MR_def_label(check_hlds__mode_info__mode_info_var_is_locked_2_3_0,19)
+	MR_MAYBE_INIT_LOCAL_THREAD_ENGINE_BASE
+	if (MR_LTAGS_TEST(MR_r1,0,0)) {
+		MR_GOTO_LAB(check_hlds__mode_info__mode_info_var_is_locked_2_3_0_i1);
+	}
+	MR_sv(2) = MR_tfield(1, MR_r1, 1);
+	{
+	MR_Word MR_tempr1;
+	MR_tempr1 = MR_tfield(1, MR_r1, 0);
+	MR_sv(1) = MR_tfield(0, MR_tempr1, 0);
+	MR_sv(3) = MR_r2;
+	MR_r1 = (MR_Word) MR_CTOR0_ADDR(parse_tree__prog_data, prog_var_type);
+	MR_r2 = MR_tfield(0, MR_tempr1, 1);
+	MR_r3 = MR_sv(3);
+	}
+	MR_np_call_localret_ent(parse_tree__set_of_var__member_2_0,
+		check_hlds__mode_info__mode_info_var_is_locked_2_3_0_i4);
+MR_def_label(check_hlds__mode_info__mode_info_var_is_locked_2_3_0,4)
+	MR_MAYBE_INIT_LOCAL_THREAD_ENGINE_BASE
+	if (!(MR_r1)) {
+		MR_GOTO_LAB(check_hlds__mode_info__mode_info_var_is_locked_2_3_0_i3);
+	}
+	MR_r2 = MR_sv(1);
+	MR_r1 = MR_TRUE;
+	MR_decr_sp_and_return(4);
+MR_def_label(check_hlds__mode_info__mode_info_var_is_locked_2_3_0,3)
+	MR_MAYBE_INIT_LOCAL_THREAD_ENGINE_BASE
+	MR_r1 = MR_sv(2);
+	MR_r2 = MR_sv(3);
+	MR_succip_word = MR_sv(4);
+	MR_GOTO_LAB(check_hlds__mode_info__mode_info_var_is_locked_2_3_0_i19);
+MR_def_label(check_hlds__mode_info__mode_info_var_is_locked_2_3_0,1)
+	MR_MAYBE_INIT_LOCAL_THREAD_ENGINE_BASE
+	MR_r1 = MR_FALSE;
+	MR_decr_sp_and_return(4);
+#ifdef MR_maybe_local_thread_engine_base
+	#undef MR_maybe_local_thread_engine_base
+	#define MR_maybe_local_thread_engine_base MR_thread_engine_base
+#endif
+MR_END_MODULE
+
+
+MR_BEGIN_MODULE(check_hlds__mode_info_module72)
+	MR_init_entry1(check_hlds__mode_info__mode_info_var_is_locked_3_0);
+	MR_INIT_PROC_LAYOUT_ADDR(mercury__check_hlds__mode_info__mode_info_var_is_locked_3_0);
+MR_BEGIN_CODE
+
+/*-------------------------------------------------------------------------*/
+/* code for 'mode_info_var_is_locked'/3 mode 0 */
+#ifdef MR_maybe_local_thread_engine_base
+	#undef MR_maybe_local_thread_engine_base
+	#define MR_maybe_local_thread_engine_base MR_local_thread_engine_base
+#endif
+MR_define_entry(mercury__check_hlds__mode_info__mode_info_var_is_locked_3_0);
+	MR_MAYBE_INIT_LOCAL_THREAD_ENGINE_BASE
+	MR_r1 = MR_tfield(0, MR_tfield(0, MR_r1, 7), 5);
+	MR_np_tailcall_ent(check_hlds__mode_info__mode_info_var_is_locked_2_3_0);
+#ifdef MR_maybe_local_thread_engine_base
+	#undef MR_maybe_local_thread_engine_base
+	#define MR_maybe_local_thread_engine_base MR_thread_engine_base
+#endif
+MR_END_MODULE
+
+MR_decl_entry(hlds__hlds_module__module_info_pred_info_3_0);
+MR_decl_entry(hlds__hlds_pred__pred_info_get_call_id_2_0);
+
+MR_BEGIN_MODULE(check_hlds__mode_info_module73)
+	MR_init_entry1(check_hlds__mode_info__mode_info_get_call_id_3_0);
+	MR_INIT_PROC_LAYOUT_ADDR(mercury__check_hlds__mode_info__mode_info_get_call_id_3_0);
+	MR_init_label1(check_hlds__mode_info__mode_info_get_call_id_3_0,2)
+MR_BEGIN_CODE
+
+/*-------------------------------------------------------------------------*/
+/* code for 'mode_info_get_call_id'/3 mode 0 */
+#ifdef MR_maybe_local_thread_engine_base
+	#undef MR_maybe_local_thread_engine_base
+	#define MR_maybe_local_thread_engine_base MR_local_thread_engine_base
+#endif
+MR_define_entry(mercury__check_hlds__mode_info__mode_info_get_call_id_3_0);
+	MR_MAYBE_INIT_LOCAL_THREAD_ENGINE_BASE
+	MR_incr_sp(1);
+	MR_sv(1) = (MR_Word) MR_succip;
+	MR_r1 = MR_tfield(0, MR_r1, 0);
+	MR_np_call_localret_ent(hlds__hlds_module__module_info_pred_info_3_0,
+		check_hlds__mode_info__mode_info_get_call_id_3_0_i2);
+MR_def_label(check_hlds__mode_info__mode_info_get_call_id_3_0,2)
+	MR_MAYBE_INIT_LOCAL_THREAD_ENGINE_BASE
+	MR_succip_word = MR_sv(1);
+	MR_decr_sp(1);
+	MR_np_tailcall_ent(hlds__hlds_pred__pred_info_get_call_id_2_0);
+#ifdef MR_maybe_local_thread_engine_base
+	#undef MR_maybe_local_thread_engine_base
+	#define MR_maybe_local_thread_engine_base MR_thread_engine_base
+#endif
+MR_END_MODULE
+
+MR_decl_entry(bag__contains_2_0);
+
+MR_BEGIN_MODULE(check_hlds__mode_info_module74)
+	MR_init_entry1(check_hlds__mode_info__mode_info_var_is_live_3_0);
+	MR_INIT_PROC_LAYOUT_ADDR(mercury__check_hlds__mode_info__mode_info_var_is_live_3_0);
+	MR_init_label2(check_hlds__mode_info__mode_info_var_is_live_3_0,4,2)
+MR_BEGIN_CODE
+
+/*-------------------------------------------------------------------------*/
+/* code for 'mode_info_var_is_live'/3 mode 0 */
+#ifdef MR_maybe_local_thread_engine_base
+	#undef MR_maybe_local_thread_engine_base
+	#define MR_maybe_local_thread_engine_base MR_local_thread_engine_base
+#endif
+MR_define_entry(mercury__check_hlds__mode_info__mode_info_var_is_live_3_0);
+	MR_MAYBE_INIT_LOCAL_THREAD_ENGINE_BASE
+	MR_incr_sp(1);
+	MR_sv(1) = (MR_Word) MR_succip;
+	{
+	MR_Word MR_tempr1, MR_tempr2;
+	MR_tempr1 = MR_r1;
+	MR_r1 = (MR_Word) MR_TAG_COMMON(0,0,0);
+	MR_tempr2 = MR_r2;
+	MR_r2 = MR_tfield(0, MR_tfield(0, MR_tempr1, 7), 6);
+	MR_r3 = MR_tempr2;
+	}
+	MR_np_call_localret_ent(bag__contains_2_0,
+		check_hlds__mode_info__mode_info_var_is_live_3_0_i4);
+MR_def_label(check_hlds__mode_info__mode_info_var_is_live_3_0,4)
+	MR_MAYBE_INIT_LOCAL_THREAD_ENGINE_BASE
+	if (!(MR_r1)) {
+		MR_GOTO_LAB(check_hlds__mode_info__mode_info_var_is_live_3_0_i2);
+	}
+	MR_r1 = (MR_Integer) 0;
+	MR_decr_sp_and_return(1);
+MR_def_label(check_hlds__mode_info__mode_info_var_is_live_3_0,2)
+	MR_MAYBE_INIT_LOCAL_THREAD_ENGINE_BASE
+	MR_r1 = (MR_Integer) 1;
+	MR_decr_sp_and_return(1);
+#ifdef MR_maybe_local_thread_engine_base
+	#undef MR_maybe_local_thread_engine_base
+	#define MR_maybe_local_thread_engine_base MR_thread_engine_base
+#endif
+MR_END_MODULE
+
+
+MR_BEGIN_MODULE(check_hlds__mode_info_module75)
+	MR_init_entry1(check_hlds__mode_info__mode_info_var_list_is_live_3_0);
+	MR_INIT_PROC_LAYOUT_ADDR(mercury__check_hlds__mode_info__mode_info_var_list_is_live_3_0);
+	MR_init_label3(check_hlds__mode_info__mode_info_var_list_is_live_3_0,17,4,5)
+MR_BEGIN_CODE
+
+/*-------------------------------------------------------------------------*/
+/* code for 'mode_info_var_list_is_live'/3 mode 0 */
+#ifdef MR_maybe_local_thread_engine_base
+	#undef MR_maybe_local_thread_engine_base
+	#define MR_maybe_local_thread_engine_base MR_local_thread_engine_base
+#endif
+MR_define_entry(mercury__check_hlds__mode_info__mode_info_var_list_is_live_3_0);
+	MR_MAYBE_INIT_LOCAL_THREAD_ENGINE_BASE
+	if (MR_LTAGS_TESTR(MR_r2,0,0)) {
+		MR_GOTO_LAB(check_hlds__mode_info__mode_info_var_list_is_live_3_0_i17);
+	}
+	MR_r1 = (MR_Word) MR_tbmkword(0, 0);
+	MR_proceed();
+MR_def_label(check_hlds__mode_info__mode_info_var_list_is_live_3_0,17)
+	MR_MAYBE_INIT_LOCAL_THREAD_ENGINE_BASE
+	MR_incr_sp(3);
+	MR_sv(3) = (MR_Word) MR_succip;
+	MR_sv(2) = MR_r1;
+	MR_sv(1) = MR_tfield(1, MR_r2, 1);
+	MR_r2 = MR_tfield(1, MR_r2, 0);
+	MR_np_call_localret_ent(check_hlds__mode_info__mode_info_var_is_live_3_0,
+		check_hlds__mode_info__mode_info_var_list_is_live_3_0_i4);
+MR_def_label(check_hlds__mode_info__mode_info_var_list_is_live_3_0,4)
+	MR_MAYBE_INIT_LOCAL_THREAD_ENGINE_BASE
+	{
+	MR_Word MR_tempr1;
+	MR_tempr1 = MR_sv(2);
+	MR_sv(2) = MR_r1;
+	MR_r1 = MR_tempr1;
+	MR_r2 = MR_sv(1);
+	}
+	MR_np_localcall_lab(check_hlds__mode_info__mode_info_var_list_is_live_3_0,
+		check_hlds__mode_info__mode_info_var_list_is_live_3_0_i5);
+MR_def_label(check_hlds__mode_info__mode_info_var_list_is_live_3_0,5)
+	MR_MAYBE_INIT_LOCAL_THREAD_ENGINE_BASE
+	MR_tag_alloc_heap(MR_r2, 1, (MR_Integer) 2);
+	MR_tfield(1, MR_r2, 0) = MR_sv(2);
+	MR_tfield(1, MR_r2, 1) = MR_r1;
+	MR_r1 = MR_r2;
+	MR_decr_sp_and_return(3);
+#ifdef MR_maybe_local_thread_engine_base
+	#undef MR_maybe_local_thread_engine_base
+	#define MR_maybe_local_thread_engine_base MR_thread_engine_base
+#endif
+MR_END_MODULE
+
+
+MR_BEGIN_MODULE(check_hlds__mode_info_module76)
+	MR_init_entry1(check_hlds__mode_info__mode_info_var_is_nondet_live_3_0);
+	MR_INIT_PROC_LAYOUT_ADDR(mercury__check_hlds__mode_info__mode_info_var_is_nondet_live_3_0);
+	MR_init_label2(check_hlds__mode_info__mode_info_var_is_nondet_live_3_0,4,2)
+MR_BEGIN_CODE
+
+/*-------------------------------------------------------------------------*/
+/* code for 'mode_info_var_is_nondet_live'/3 mode 0 */
+#ifdef MR_maybe_local_thread_engine_base
+	#undef MR_maybe_local_thread_engine_base
+	#define MR_maybe_local_thread_engine_base MR_local_thread_engine_base
+#endif
+MR_define_entry(mercury__check_hlds__mode_info__mode_info_var_is_nondet_live_3_0);
+	MR_MAYBE_INIT_LOCAL_THREAD_ENGINE_BASE
+	MR_incr_sp(1);
+	MR_sv(1) = (MR_Word) MR_succip;
+	{
+	MR_Word MR_tempr1, MR_tempr2;
+	MR_tempr1 = MR_r1;
+	MR_r1 = (MR_Word) MR_TAG_COMMON(0,0,0);
+	MR_tempr2 = MR_r2;
+	MR_r2 = MR_tfield(0, MR_tempr1, 6);
+	MR_r3 = MR_tempr2;
+	}
+	MR_np_call_localret_ent(bag__contains_2_0,
+		check_hlds__mode_info__mode_info_var_is_nondet_live_3_0_i4);
+MR_def_label(check_hlds__mode_info__mode_info_var_is_nondet_live_3_0,4)
+	MR_MAYBE_INIT_LOCAL_THREAD_ENGINE_BASE
+	if (!(MR_r1)) {
+		MR_GOTO_LAB(check_hlds__mode_info__mode_info_var_is_nondet_live_3_0_i2);
+	}
+	MR_r1 = (MR_Integer) 0;
+	MR_decr_sp_and_return(1);
+MR_def_label(check_hlds__mode_info__mode_info_var_is_nondet_live_3_0,2)
+	MR_MAYBE_INIT_LOCAL_THREAD_ENGINE_BASE
+	MR_r1 = (MR_Integer) 1;
+	MR_decr_sp_and_return(1);
+#ifdef MR_maybe_local_thread_engine_base
+	#undef MR_maybe_local_thread_engine_base
+	#define MR_maybe_local_thread_engine_base MR_thread_engine_base
+#endif
+MR_END_MODULE
+
+MR_decl_entry(list__append_3_1);
+
+MR_BEGIN_MODULE(check_hlds__mode_info_module77)
+	MR_init_entry1(check_hlds__mode_info__mode_info_add_error_3_0);
+	MR_INIT_PROC_LAYOUT_ADDR(mercury__check_hlds__mode_info__mode_info_add_error_3_0);
+	MR_init_label1(check_hlds__mode_info__mode_info_add_error_3_0,3)
+MR_BEGIN_CODE
+
+/*-------------------------------------------------------------------------*/
+/* code for 'mode_info_add_error'/3 mode 0 */
+#ifdef MR_maybe_local_thread_engine_base
+	#undef MR_maybe_local_thread_engine_base
+	#define MR_maybe_local_thread_engine_base MR_local_thread_engine_base
+#endif
+MR_define_entry(mercury__check_hlds__mode_info__mode_info_add_error_3_0);
+	MR_MAYBE_INIT_LOCAL_THREAD_ENGINE_BASE
+	MR_incr_sp(2);
+	MR_sv(2) = (MR_Word) MR_succip;
+	{
+	MR_Word MR_tempr1;
+	MR_tag_alloc_heap(MR_tempr1, 1, (MR_Integer) 2);
+	MR_r3 = MR_tempr1;
+	MR_tfield(1, MR_tempr1, 0) = MR_r1;
+	MR_tfield(1, MR_tempr1, 1) = (MR_Word) MR_tbmkword(0, 0);
+	MR_sv(1) = MR_r2;
+	MR_r1 = (MR_Word) MR_CTOR0_ADDR(check_hlds__mode_errors, mode_error_info);
+	MR_r2 = MR_tfield(0, MR_r2, 3);
+	}
+	MR_np_call_localret_ent(list__append_3_1,
+		check_hlds__mode_info__mode_info_add_error_3_0_i3);
+MR_def_label(check_hlds__mode_info__mode_info_add_error_3_0,3)
+	MR_MAYBE_INIT_LOCAL_THREAD_ENGINE_BASE
+	MR_tag_alloc_heap(MR_r2, 0, (MR_Integer) 8);
+	{
+	MR_Word MR_tempr1;
+	MR_tempr1 = MR_sv(1);
+	MR_tfield(0, MR_r2, 0) = MR_tfield(0, MR_tempr1, 0);
+	MR_tfield(0, MR_r2, 1) = MR_tfield(0, MR_tempr1, 1);
+	MR_tfield(0, MR_r2, 2) = MR_tfield(0, MR_tempr1, 2);
+	MR_tfield(0, MR_r2, 3) = MR_r1;
+	MR_tfield(0, MR_r2, 4) = MR_tfield(0, MR_tempr1, 4);
+	MR_tfield(0, MR_r2, 5) = MR_tfield(0, MR_tempr1, 5);
+	MR_tfield(0, MR_r2, 6) = MR_tfield(0, MR_tempr1, 6);
+	MR_tfield(0, MR_r2, 7) = MR_tfield(0, MR_tempr1, 7);
+	MR_r1 = MR_r2;
+	MR_decr_sp_and_return(2);
+	}
+#ifdef MR_maybe_local_thread_engine_base
+	#undef MR_maybe_local_thread_engine_base
+	#define MR_maybe_local_thread_engine_base MR_thread_engine_base
+#endif
+MR_END_MODULE
+
+
+MR_BEGIN_MODULE(check_hlds__mode_info_module78)
+	MR_init_entry1(check_hlds__mode_info__mode_info_error_4_0);
+	MR_INIT_PROC_LAYOUT_ADDR(mercury__check_hlds__mode_info__mode_info_error_4_0);
+MR_BEGIN_CODE
+
+/*-------------------------------------------------------------------------*/
+/* code for 'mode_info_error'/4 mode 0 */
+#ifdef MR_maybe_local_thread_engine_base
+	#undef MR_maybe_local_thread_engine_base
+	#define MR_maybe_local_thread_engine_base MR_local_thread_engine_base
+#endif
+MR_define_entry(mercury__check_hlds__mode_info__mode_info_error_4_0);
+	MR_MAYBE_INIT_LOCAL_THREAD_ENGINE_BASE
+	{
+	MR_Word MR_tempr1, MR_tempr2;
+	MR_tag_alloc_heap(MR_tempr1, 0, (MR_Integer) 4);
+	MR_tfield(0, MR_tempr1, 0) = MR_r1;
+	MR_tfield(0, MR_tempr1, 1) = MR_r2;
+	MR_tempr2 = MR_r3;
+	MR_tfield(0, MR_tempr1, 2) = MR_tfield(0, MR_tempr2, 5);
+	MR_tfield(0, MR_tempr1, 3) = MR_tfield(0, MR_tempr2, 4);
+	MR_r1 = MR_tempr1;
+	MR_r2 = MR_tempr2;
+	MR_np_tailcall_ent(check_hlds__mode_info__mode_info_add_error_3_0);
+	}
+#ifdef MR_maybe_local_thread_engine_base
+	#undef MR_maybe_local_thread_engine_base
+	#define MR_maybe_local_thread_engine_base MR_thread_engine_base
+#endif
+MR_END_MODULE
+
+
+MR_BEGIN_MODULE(check_hlds__mode_info_module79)
+	MR_init_entry1(check_hlds__mode_info__mode_info_add_warning_3_0);
+	MR_INIT_PROC_LAYOUT_ADDR(mercury__check_hlds__mode_info__mode_info_add_warning_3_0);
+	MR_init_label1(check_hlds__mode_info__mode_info_add_warning_3_0,3)
+MR_BEGIN_CODE
+
+/*-------------------------------------------------------------------------*/
+/* code for 'mode_info_add_warning'/3 mode 0 */
+#ifdef MR_maybe_local_thread_engine_base
+	#undef MR_maybe_local_thread_engine_base
+	#define MR_maybe_local_thread_engine_base MR_local_thread_engine_base
+#endif
+MR_define_entry(mercury__check_hlds__mode_info__mode_info_add_warning_3_0);
+	MR_MAYBE_INIT_LOCAL_THREAD_ENGINE_BASE
+	MR_incr_sp(2);
+	MR_sv(2) = (MR_Word) MR_succip;
+	{
+	MR_Word MR_tempr1;
+	MR_tag_alloc_heap(MR_tempr1, 1, (MR_Integer) 2);
+	MR_r3 = MR_tempr1;
+	MR_tfield(1, MR_tempr1, 0) = MR_r1;
+	MR_tfield(1, MR_tempr1, 1) = (MR_Word) MR_tbmkword(0, 0);
+	MR_sv(1) = MR_r2;
+	MR_r1 = (MR_Word) MR_CTOR0_ADDR(check_hlds__mode_errors, mode_warning_info);
+	MR_r2 = MR_tfield(0, MR_tfield(0, MR_r2, 7), 13);
+	}
+	MR_np_call_localret_ent(list__append_3_1,
+		check_hlds__mode_info__mode_info_add_warning_3_0_i3);
+MR_def_label(check_hlds__mode_info__mode_info_add_warning_3_0,3)
+	MR_MAYBE_INIT_LOCAL_THREAD_ENGINE_BASE
+	{
+	MR_Word MR_tempr1, MR_tempr2, MR_tempr3, MR_tempr4, MR_tempr5, MR_tempr6, MR_tempr7, MR_tempr8, MR_tempr9, MR_tempr10, MR_tempr11, MR_tempr12, MR_tempr13;
+	MR_tempr13 = MR_sv(1);
+	MR_tempr1 = MR_tfield(0, MR_tempr13, 7);
+	MR_r2 = (((MR_Integer) MR_tfield(0, MR_tempr1, 9) >> (MR_Integer) 2) & (MR_Integer) 1);
+	MR_tempr2 = (((MR_Integer) MR_tfield(0, MR_tempr1, 11) >> (MR_Integer) 1) & (MR_Integer) 1);
+	MR_tempr3 = (((MR_Integer) MR_tfield(0, MR_tempr1, 14) >> (MR_Integer) 5) & (MR_Integer) 1);
+	MR_tempr4 = (((MR_Integer) MR_tfield(0, MR_tempr1, 14) >> (MR_Integer) 4) & (MR_Integer) 1);
+	MR_tempr5 = (((MR_Integer) MR_tfield(0, MR_tempr1, 14) >> (MR_Integer) 3) & (MR_Integer) 1);
+	MR_tempr6 = (((MR_Integer) MR_tfield(0, MR_tempr1, 14) >> (MR_Integer) 2) & (MR_Integer) 1);
+	MR_tempr7 = (((MR_Integer) MR_tfield(0, MR_tempr1, 14) >> (MR_Integer) 1) & (MR_Integer) 1);
+	MR_tempr8 = ((MR_Integer) MR_tfield(0, MR_tempr1, 14) & (MR_Integer) 1);
+	MR_tempr9 = ((MR_Integer) MR_tfield(0, MR_tempr1, 11) & (MR_Integer) 1);
+	MR_tempr10 = (((MR_Integer) MR_tfield(0, MR_tempr1, 9) >> (MR_Integer) 1) & (MR_Integer) 1);
+	MR_tempr11 = ((MR_Integer) MR_tfield(0, MR_tempr1, 9) & (MR_Integer) 1);
+	MR_tag_alloc_heap(MR_tempr12, 0, (MR_Integer) 15);
+	MR_tfield(0, MR_tempr12, 0) = MR_tfield(0, MR_tempr1, 0);
+	MR_tfield(0, MR_tempr12, 1) = MR_tfield(0, MR_tempr1, 1);
+	MR_tfield(0, MR_tempr12, 2) = MR_tfield(0, MR_tempr1, 2);
+	MR_tfield(0, MR_tempr12, 3) = MR_tfield(0, MR_tempr1, 3);
+	MR_tfield(0, MR_tempr12, 4) = MR_tfield(0, MR_tempr1, 4);
+	MR_tfield(0, MR_tempr12, 5) = MR_tfield(0, MR_tempr1, 5);
+	MR_tfield(0, MR_tempr12, 6) = MR_tfield(0, MR_tempr1, 6);
+	MR_tfield(0, MR_tempr12, 7) = MR_tfield(0, MR_tempr1, 7);
+	MR_tfield(0, MR_tempr12, 8) = MR_tfield(0, MR_tempr1, 8);
+	MR_tfield(0, MR_tempr12, 9) = ((MR_Integer) MR_tempr11 | (((MR_Integer) MR_tempr10 << (MR_Integer) 1) | ((MR_Integer) MR_r2 << (MR_Integer) 2)));
+	MR_tfield(0, MR_tempr12, 10) = MR_tfield(0, MR_tempr1, 10);
+	MR_tfield(0, MR_tempr12, 11) = ((MR_Integer) MR_tempr9 | ((MR_Integer) MR_tempr2 << (MR_Integer) 1));
+	MR_tfield(0, MR_tempr12, 12) = MR_tfield(0, MR_tempr1, 12);
+	MR_tfield(0, MR_tempr12, 13) = MR_r1;
+	MR_tfield(0, MR_tempr12, 14) = ((MR_Integer) MR_tempr8 | (((MR_Integer) MR_tempr7 << (MR_Integer) 1) | (((MR_Integer) MR_tempr6 << (MR_Integer) 2) | (((MR_Integer) MR_tempr5 << (MR_Integer) 3) | (((MR_Integer) MR_tempr4 << (MR_Integer) 4) | ((MR_Integer) MR_tempr3 << (MR_Integer) 5))))));
+	MR_tag_alloc_heap(MR_r1, 0, (MR_Integer) 8);
+	MR_tfield(0, MR_r1, 0) = MR_tfield(0, MR_tempr13, 0);
+	MR_tfield(0, MR_r1, 1) = MR_tfield(0, MR_tempr13, 1);
+	MR_tfield(0, MR_r1, 2) = MR_tfield(0, MR_tempr13, 2);
+	MR_tfield(0, MR_r1, 3) = MR_tfield(0, MR_tempr13, 3);
+	MR_tfield(0, MR_r1, 4) = MR_tfield(0, MR_tempr13, 4);
+	MR_tfield(0, MR_r1, 5) = MR_tfield(0, MR_tempr13, 5);
+	MR_tfield(0, MR_r1, 6) = MR_tfield(0, MR_tempr13, 6);
+	MR_tfield(0, MR_r1, 7) = MR_tempr12;
+	MR_decr_sp_and_return(2);
+	}
+#ifdef MR_maybe_local_thread_engine_base
+	#undef MR_maybe_local_thread_engine_base
+	#define MR_maybe_local_thread_engine_base MR_thread_engine_base
+#endif
+MR_END_MODULE
+
+
+MR_BEGIN_MODULE(check_hlds__mode_info_module80)
+	MR_init_entry1(check_hlds__mode_info__mode_info_warning_3_0);
+	MR_INIT_PROC_LAYOUT_ADDR(mercury__check_hlds__mode_info__mode_info_warning_3_0);
+MR_BEGIN_CODE
+
+/*-------------------------------------------------------------------------*/
+/* code for 'mode_info_warning'/3 mode 0 */
+#ifdef MR_maybe_local_thread_engine_base
+	#undef MR_maybe_local_thread_engine_base
+	#define MR_maybe_local_thread_engine_base MR_local_thread_engine_base
+#endif
+MR_define_entry(mercury__check_hlds__mode_info__mode_info_warning_3_0);
+	MR_MAYBE_INIT_LOCAL_THREAD_ENGINE_BASE
+	{
+	MR_Word MR_tempr1;
+	MR_tag_alloc_heap(MR_tempr1, 0, (MR_Integer) 3);
+	MR_tfield(0, MR_tempr1, 0) = MR_r1;
+	MR_tfield(0, MR_tempr1, 1) = MR_tfield(0, MR_r2, 5);
+	MR_tfield(0, MR_tempr1, 2) = MR_tfield(0, MR_r2, 4);
+	MR_r1 = MR_tempr1;
+	MR_np_tailcall_ent(check_hlds__mode_info__mode_info_add_warning_3_0);
+	}
+#ifdef MR_maybe_local_thread_engine_base
+	#undef MR_maybe_local_thread_engine_base
+	#define MR_maybe_local_thread_engine_base MR_thread_engine_base
+#endif
+MR_END_MODULE
+
+
+MR_BEGIN_MODULE(check_hlds__mode_info_module81)
+	MR_init_entry1(check_hlds__mode_info__mode_info_need_to_requantify_2_0);
+	MR_INIT_PROC_LAYOUT_ADDR(mercury__check_hlds__mode_info__mode_info_need_to_requantify_2_0);
+MR_BEGIN_CODE
+
+/*-------------------------------------------------------------------------*/
+/* code for 'mode_info_need_to_requantify'/2 mode 0 */
+#ifdef MR_maybe_local_thread_engine_base
+	#undef MR_maybe_local_thread_engine_base
+	#define MR_maybe_local_thread_engine_base MR_local_thread_engine_base
+#endif
+MR_define_entry(mercury__check_hlds__mode_info__mode_info_need_to_requantify_2_0);
+	MR_MAYBE_INIT_LOCAL_THREAD_ENGINE_BASE
+	{
+	MR_Word MR_tempr1, MR_tempr2, MR_tempr3, MR_tempr4, MR_tempr5, MR_tempr6, MR_tempr7, MR_tempr8, MR_tempr9, MR_tempr10, MR_tempr11;
+	MR_tempr1 = MR_tfield(0, MR_r1, 7);
+	MR_r2 = (((MR_Integer) MR_tfield(0, MR_tempr1, 9) >> (MR_Integer) 2) & (MR_Integer) 1);
+	MR_tempr2 = (((MR_Integer) MR_tfield(0, MR_tempr1, 11) >> (MR_Integer) 1) & (MR_Integer) 1);
+	MR_tempr3 = (((MR_Integer) MR_tfield(0, MR_tempr1, 14) >> (MR_Integer) 5) & (MR_Integer) 1);
+	MR_tempr4 = (((MR_Integer) MR_tfield(0, MR_tempr1, 14) >> (MR_Integer) 4) & (MR_Integer) 1);
+	MR_tempr5 = (((MR_Integer) MR_tfield(0, MR_tempr1, 14) >> (MR_Integer) 3) & (MR_Integer) 1);
+	MR_tempr6 = (((MR_Integer) MR_tfield(0, MR_tempr1, 14) >> (MR_Integer) 2) & (MR_Integer) 1);
+	MR_tempr7 = (((MR_Integer) MR_tfield(0, MR_tempr1, 14) >> (MR_Integer) 1) & (MR_Integer) 1);
+	MR_tempr8 = ((MR_Integer) MR_tfield(0, MR_tempr1, 11) & (MR_Integer) 1);
+	MR_tempr9 = (((MR_Integer) MR_tfield(0, MR_tempr1, 9) >> (MR_Integer) 1) & (MR_Integer) 1);
+	MR_tempr10 = ((MR_Integer) MR_tfield(0, MR_tempr1, 9) & (MR_Integer) 1);
+	MR_tag_alloc_heap(MR_tempr11, 0, (MR_Integer) 15);
+	MR_tfield(0, MR_tempr11, 0) = MR_tfield(0, MR_tempr1, 0);
+	MR_tfield(0, MR_tempr11, 1) = MR_tfield(0, MR_tempr1, 1);
+	MR_tfield(0, MR_tempr11, 2) = MR_tfield(0, MR_tempr1, 2);
+	MR_tfield(0, MR_tempr11, 3) = MR_tfield(0, MR_tempr1, 3);
+	MR_tfield(0, MR_tempr11, 4) = MR_tfield(0, MR_tempr1, 4);
+	MR_tfield(0, MR_tempr11, 5) = MR_tfield(0, MR_tempr1, 5);
+	MR_tfield(0, MR_tempr11, 6) = MR_tfield(0, MR_tempr1, 6);
+	MR_tfield(0, MR_tempr11, 7) = MR_tfield(0, MR_tempr1, 7);
+	MR_tfield(0, MR_tempr11, 8) = MR_tfield(0, MR_tempr1, 8);
+	MR_tfield(0, MR_tempr11, 9) = ((MR_Integer) MR_tempr10 | (((MR_Integer) MR_tempr9 << (MR_Integer) 1) | ((MR_Integer) MR_r2 << (MR_Integer) 2)));
+	MR_tfield(0, MR_tempr11, 10) = MR_tfield(0, MR_tempr1, 10);
+	MR_tfield(0, MR_tempr11, 11) = ((MR_Integer) MR_tempr8 | ((MR_Integer) MR_tempr2 << (MR_Integer) 1));
+	MR_tfield(0, MR_tempr11, 12) = MR_tfield(0, MR_tempr1, 12);
+	MR_tfield(0, MR_tempr11, 13) = MR_tfield(0, MR_tempr1, 13);
+	MR_tfield(0, MR_tempr11, 14) = ((MR_Integer) 0 | (((MR_Integer) MR_tempr7 << (MR_Integer) 1) | (((MR_Integer) MR_tempr6 << (MR_Integer) 2) | (((MR_Integer) MR_tempr5 << (MR_Integer) 3) | (((MR_Integer) MR_tempr4 << (MR_Integer) 4) | ((MR_Integer) MR_tempr3 << (MR_Integer) 5))))));
+	MR_tag_alloc_heap(MR_r2, 0, (MR_Integer) 8);
+	MR_tfield(0, MR_r2, 0) = MR_tfield(0, MR_r1, 0);
+	MR_tfield(0, MR_r2, 1) = MR_tfield(0, MR_r1, 1);
+	MR_tfield(0, MR_r2, 2) = MR_tfield(0, MR_r1, 2);
+	MR_tfield(0, MR_r2, 3) = MR_tfield(0, MR_r1, 3);
+	MR_tfield(0, MR_r2, 4) = MR_tfield(0, MR_r1, 4);
+	MR_tfield(0, MR_r2, 5) = MR_tfield(0, MR_r1, 5);
+	MR_tfield(0, MR_r2, 6) = MR_tfield(0, MR_r1, 6);
+	MR_tfield(0, MR_r2, 7) = MR_tempr11;
+	MR_r1 = MR_r2;
+	MR_proceed();
+	}
+#ifdef MR_maybe_local_thread_engine_base
+	#undef MR_maybe_local_thread_engine_base
+	#define MR_maybe_local_thread_engine_base MR_thread_engine_base
+#endif
+MR_END_MODULE
+
+
+MR_BEGIN_MODULE(check_hlds__mode_info_module82)
+	MR_init_entry1(check_hlds__mode_info__mode_info_may_init_solver_vars_1_0);
+	MR_INIT_PROC_LAYOUT_ADDR(mercury__check_hlds__mode_info__mode_info_may_init_solver_vars_1_0);
+MR_BEGIN_CODE
+
+/*-------------------------------------------------------------------------*/
+/* code for 'mode_info_may_init_solver_vars'/1 mode 0 */
+#ifdef MR_maybe_local_thread_engine_base
+	#undef MR_maybe_local_thread_engine_base
+	#define MR_maybe_local_thread_engine_base MR_local_thread_engine_base
+#endif
+MR_define_entry(mercury__check_hlds__mode_info__mode_info_may_init_solver_vars_1_0);
+	MR_MAYBE_INIT_LOCAL_THREAD_ENGINE_BASE
+	MR_r2 = (((MR_Integer) MR_tfield(0, MR_tfield(0, MR_r1, 7), 9) >> (MR_Integer) 2) & (MR_Integer) 1);
+	MR_r1 = ((MR_Integer) MR_r2 == (MR_Integer) 0);
+	MR_proceed();
+#ifdef MR_maybe_local_thread_engine_base
+	#undef MR_maybe_local_thread_engine_base
+	#define MR_maybe_local_thread_engine_base MR_thread_engine_base
+#endif
+MR_END_MODULE
+
+MR_decl_entry(libs__globals__lookup_bool_option_3_1);
+
+MR_BEGIN_MODULE(check_hlds__mode_info_module83)
+	MR_init_entry1(check_hlds__mode_info__mode_info_solver_init_is_supported_1_0);
+	MR_INIT_PROC_LAYOUT_ADDR(mercury__check_hlds__mode_info__mode_info_solver_init_is_supported_1_0);
+	MR_init_label1(check_hlds__mode_info__mode_info_solver_init_is_supported_1_0,2)
+MR_BEGIN_CODE
+
+/*-------------------------------------------------------------------------*/
+/* code for 'mode_info_solver_init_is_supported'/1 mode 0 */
+#ifdef MR_maybe_local_thread_engine_base
+	#undef MR_maybe_local_thread_engine_base
+	#define MR_maybe_local_thread_engine_base MR_local_thread_engine_base
+#endif
+MR_define_entry(mercury__check_hlds__mode_info__mode_info_solver_init_is_supported_1_0);
+	MR_MAYBE_INIT_LOCAL_THREAD_ENGINE_BASE
+	MR_incr_sp(1);
+	MR_sv(1) = (MR_Word) MR_succip;
+	MR_r1 = MR_tfield(0, MR_r1, 0);
+	MR_np_call_localret_ent(hlds__hlds_module__module_info_get_globals_2_0,
+		check_hlds__mode_info__mode_info_solver_init_is_supported_1_0_i2);
+MR_def_label(check_hlds__mode_info__mode_info_solver_init_is_supported_1_0,2)
+	MR_MAYBE_INIT_LOCAL_THREAD_ENGINE_BASE
+	MR_r2 = (MR_Integer) 282;
+	MR_r3 = (MR_Integer) 1;
+	MR_succip_word = MR_sv(1);
+	MR_decr_sp(1);
+	MR_np_tailcall_ent(libs__globals__lookup_bool_option_3_1);
+#ifdef MR_maybe_local_thread_engine_base
+	#undef MR_maybe_local_thread_engine_base
+	#define MR_maybe_local_thread_engine_base MR_thread_engine_base
+#endif
+MR_END_MODULE
+
+MR_decl_entry(__Unify___hlds__hlds_pred__call_id_0_0);
+MR_decl_entry(__Unify___hlds__hlds_goal__unify_context_0_0);
+
+MR_BEGIN_MODULE(check_hlds__mode_info_module84)
+	MR_init_entry1(__Unify___check_hlds__mode_info__call_context_0_0);
+	MR_INIT_PROC_LAYOUT_ADDR(mercury____Unify___check_hlds__mode_info__call_context_0_0);
+	MR_init_label3(__Unify___check_hlds__mode_info__call_context_0_0,16,5,1)
+MR_BEGIN_CODE
+
+/*-------------------------------------------------------------------------*/
+/* code for '__Unify__'/2 mode 0 */
+#ifdef MR_maybe_local_thread_engine_base
+	#undef MR_maybe_local_thread_engine_base
+	#define MR_maybe_local_thread_engine_base MR_local_thread_engine_base
+#endif
+MR_define_entry(mercury____Unify___check_hlds__mode_info__call_context_0_0);
+	MR_MAYBE_INIT_LOCAL_THREAD_ENGINE_BASE
+	if ((MR_r1 == MR_r2)) {
+		MR_GOTO_LAB(__Unify___check_hlds__mode_info__call_context_0_0_i16);
+	}
+	MR_incr_sp(3);
+	MR_sv(3) = (MR_Word) MR_succip;
+	{
+	MR_Word MR_tempr1, MR_tempr2;
+	MR_tempr1 = MR_r1;
+	MR_sv(1) = MR_tempr1;
+	MR_tempr2 = MR_r2;
+	MR_sv(2) = MR_tempr2;
+	if (MR_PTAG_TESTR(MR_tempr1,1)) {
+		MR_GOTO_LAB(__Unify___check_hlds__mode_info__call_context_0_0_i5);
+	}
+	if (MR_PTAG_TESTR(MR_tempr2,1)) {
+		MR_GOTO_LAB(__Unify___check_hlds__mode_info__call_context_0_0_i1);
+	}
+	MR_r1 = MR_tfield(1, MR_tempr1, 0);
+	MR_r2 = MR_tfield(1, MR_tempr2, 0);
+	MR_decr_sp(3);
+	MR_np_tailcall_ent(__Unify___hlds__hlds_pred__call_id_0_0);
+	}
+MR_def_label(__Unify___check_hlds__mode_info__call_context_0_0,16)
+	MR_MAYBE_INIT_LOCAL_THREAD_ENGINE_BASE
+	MR_r1 = MR_TRUE;
+	MR_proceed();
+MR_def_label(__Unify___check_hlds__mode_info__call_context_0_0,5)
+	MR_MAYBE_INIT_LOCAL_THREAD_ENGINE_BASE
+	if (MR_PTAG_TESTR(MR_sv(2),0)) {
+		MR_GOTO_LAB(__Unify___check_hlds__mode_info__call_context_0_0_i1);
+	}
+	MR_r1 = MR_tfield(0, MR_sv(1), 0);
+	MR_r2 = MR_tfield(0, MR_sv(2), 0);
+	MR_succip_word = MR_sv(3);
+	MR_decr_sp(3);
+	MR_np_tailcall_ent(__Unify___hlds__hlds_goal__unify_context_0_0);
+MR_def_label(__Unify___check_hlds__mode_info__call_context_0_0,1)
+	MR_MAYBE_INIT_LOCAL_THREAD_ENGINE_BASE
+	MR_r1 = MR_FALSE;
+	MR_decr_sp_and_return(3);
+#ifdef MR_maybe_local_thread_engine_base
+	#undef MR_maybe_local_thread_engine_base
+	#define MR_maybe_local_thread_engine_base MR_thread_engine_base
+#endif
+MR_END_MODULE
+
+MR_decl_entry(__Compare___hlds__hlds_pred__call_id_0_0);
+MR_decl_entry(__Compare___hlds__hlds_goal__unify_context_0_0);
+
+MR_BEGIN_MODULE(check_hlds__mode_info_module85)
+	MR_init_entry1(__Compare___check_hlds__mode_info__call_context_0_0);
+	MR_INIT_PROC_LAYOUT_ADDR(mercury____Compare___check_hlds__mode_info__call_context_0_0);
+	MR_init_label5(__Compare___check_hlds__mode_info__call_context_0_0,3,2,7,5,10)
+MR_BEGIN_CODE
+
+/*-------------------------------------------------------------------------*/
+/* code for '__Compare__'/3 mode 0 */
+#ifdef MR_maybe_local_thread_engine_base
+	#undef MR_maybe_local_thread_engine_base
+	#define MR_maybe_local_thread_engine_base MR_local_thread_engine_base
+#endif
+MR_define_entry(mercury____Compare___check_hlds__mode_info__call_context_0_0);
+	MR_MAYBE_INIT_LOCAL_THREAD_ENGINE_BASE
+	if ((MR_r1 == MR_r2)) {
+		MR_GOTO_LAB(__Compare___check_hlds__mode_info__call_context_0_0_i3);
+	}
+	MR_incr_sp(3);
+	MR_sv(3) = (MR_Word) MR_succip;
+	MR_sv(1) = MR_r1;
+	MR_sv(2) = MR_r2;
+	MR_GOTO_LAB(__Compare___check_hlds__mode_info__call_context_0_0_i2);
+MR_def_label(__Compare___check_hlds__mode_info__call_context_0_0,3)
+	MR_MAYBE_INIT_LOCAL_THREAD_ENGINE_BASE
+	MR_r1 = (MR_Integer) 0;
+	MR_proceed();
+MR_def_label(__Compare___check_hlds__mode_info__call_context_0_0,2)
+	MR_MAYBE_INIT_LOCAL_THREAD_ENGINE_BASE
+	if (MR_PTAG_TESTR(MR_sv(1),1)) {
+		MR_GOTO_LAB(__Compare___check_hlds__mode_info__call_context_0_0_i5);
+	}
+	if (MR_PTAG_TESTR(MR_sv(2),1)) {
+		MR_GOTO_LAB(__Compare___check_hlds__mode_info__call_context_0_0_i7);
+	}
+	MR_r1 = MR_tfield(1, MR_sv(1), 0);
+	MR_r2 = MR_tfield(1, MR_sv(2), 0);
+	MR_succip_word = MR_sv(3);
+	MR_decr_sp(3);
+	MR_np_tailcall_ent(__Compare___hlds__hlds_pred__call_id_0_0);
+MR_def_label(__Compare___check_hlds__mode_info__call_context_0_0,7)
+	MR_MAYBE_INIT_LOCAL_THREAD_ENGINE_BASE
+	MR_r1 = (MR_Integer) 2;
+	MR_decr_sp_and_return(3);
+MR_def_label(__Compare___check_hlds__mode_info__call_context_0_0,5)
+	MR_MAYBE_INIT_LOCAL_THREAD_ENGINE_BASE
+	if (MR_PTAG_TESTR(MR_sv(2),1)) {
+		MR_GOTO_LAB(__Compare___check_hlds__mode_info__call_context_0_0_i10);
+	}
+	MR_r1 = (MR_Integer) 1;
+	MR_decr_sp_and_return(3);
+MR_def_label(__Compare___check_hlds__mode_info__call_context_0_0,10)
+	MR_MAYBE_INIT_LOCAL_THREAD_ENGINE_BASE
+	MR_r1 = MR_tfield(0, MR_sv(1), 0);
+	MR_r2 = MR_tfield(0, MR_sv(2), 0);
+	MR_succip_word = MR_sv(3);
+	MR_decr_sp(3);
+	MR_np_tailcall_ent(__Compare___hlds__hlds_goal__unify_context_0_0);
+#ifdef MR_maybe_local_thread_engine_base
+	#undef MR_maybe_local_thread_engine_base
+	#define MR_maybe_local_thread_engine_base MR_thread_engine_base
+#endif
+MR_END_MODULE
+
+
+MR_BEGIN_MODULE(check_hlds__mode_info_module86)
+	MR_init_entry1(__Unify___check_hlds__mode_info__debug_flags_0_0);
+	MR_INIT_PROC_LAYOUT_ADDR(mercury____Unify___check_hlds__mode_info__debug_flags_0_0);
+	MR_init_label2(__Unify___check_hlds__mode_info__debug_flags_0_0,4,1)
+MR_BEGIN_CODE
+
+/*-------------------------------------------------------------------------*/
+/* code for '__Unify__'/2 mode 0 */
+#ifdef MR_maybe_local_thread_engine_base
+	#undef MR_maybe_local_thread_engine_base
+	#define MR_maybe_local_thread_engine_base MR_local_thread_engine_base
+#endif
+MR_define_entry(mercury____Unify___check_hlds__mode_info__debug_flags_0_0);
+	MR_MAYBE_INIT_LOCAL_THREAD_ENGINE_BASE
+	MR_incr_sp(2);
+	if ((MR_r1 == MR_r2)) {
+		MR_GOTO_LAB(__Unify___check_hlds__mode_info__debug_flags_0_0_i4);
+	}
+	{
+	MR_Word MR_tempr1, MR_tempr2;
+	MR_tempr1 = MR_r1;
+	MR_sv(1) = MR_tempr1;
+	MR_tempr2 = MR_r2;
+	MR_sv(2) = MR_tempr2;
+	MR_r1 = ((MR_Integer) MR_tfield(0, MR_tempr1, 0) & (MR_Integer) 1);
+	MR_r2 = ((MR_Integer) MR_tfield(0, MR_tempr2, 0) & (MR_Integer) 1);
+	if ((MR_r1 != MR_r2)) {
+		MR_GOTO_LAB(__Unify___check_hlds__mode_info__debug_flags_0_0_i1);
+	}
+	MR_r1 = (((MR_Integer) MR_tfield(0, MR_tempr1, 0) >> (MR_Integer) 1) & (MR_Integer) 1);
+	MR_r2 = (((MR_Integer) MR_tfield(0, MR_tempr2, 0) >> (MR_Integer) 1) & (MR_Integer) 1);
+	if ((MR_r1 != MR_r2)) {
+		MR_GOTO_LAB(__Unify___check_hlds__mode_info__debug_flags_0_0_i1);
+	}
+	MR_r1 = (((MR_Integer) MR_tfield(0, MR_tempr1, 0) >> (MR_Integer) 2) & (MR_Integer) 1);
+	MR_r2 = (((MR_Integer) MR_tfield(0, MR_tempr2, 0) >> (MR_Integer) 2) & (MR_Integer) 1);
+	MR_r1 = (MR_r1 == MR_r2);
+	MR_decr_sp(2);
+	MR_proceed();
+	}
+MR_def_label(__Unify___check_hlds__mode_info__debug_flags_0_0,4)
+	MR_MAYBE_INIT_LOCAL_THREAD_ENGINE_BASE
+	MR_decr_sp(2);
+	MR_r1 = MR_TRUE;
+	MR_proceed();
+MR_def_label(__Unify___check_hlds__mode_info__debug_flags_0_0,1)
+	MR_MAYBE_INIT_LOCAL_THREAD_ENGINE_BASE
+	MR_decr_sp(2);
+	MR_r1 = MR_FALSE;
+	MR_proceed();
+#ifdef MR_maybe_local_thread_engine_base
+	#undef MR_maybe_local_thread_engine_base
+	#define MR_maybe_local_thread_engine_base MR_thread_engine_base
+#endif
+MR_END_MODULE
+
+MR_decl_entry(private_builtin__builtin_compare_int_3_0);
+
+MR_BEGIN_MODULE(check_hlds__mode_info_module87)
+	MR_init_entry1(__Compare___check_hlds__mode_info__debug_flags_0_0);
+	MR_INIT_PROC_LAYOUT_ADDR(mercury____Compare___check_hlds__mode_info__debug_flags_0_0);
+	MR_init_label5(__Compare___check_hlds__mode_info__debug_flags_0_0,3,2,5,9,29)
+MR_BEGIN_CODE
+
+/*-------------------------------------------------------------------------*/
+/* code for '__Compare__'/3 mode 0 */
+#ifdef MR_maybe_local_thread_engine_base
+	#undef MR_maybe_local_thread_engine_base
+	#define MR_maybe_local_thread_engine_base MR_local_thread_engine_base
+#endif
+MR_define_entry(mercury____Compare___check_hlds__mode_info__debug_flags_0_0);
+	MR_MAYBE_INIT_LOCAL_THREAD_ENGINE_BASE
+	if ((MR_r1 == MR_r2)) {
+		MR_GOTO_LAB(__Compare___check_hlds__mode_info__debug_flags_0_0_i3);
+	}
+	MR_incr_sp(5);
+	MR_sv(5) = (MR_Word) MR_succip;
+	MR_sv(1) = MR_r1;
+	MR_sv(2) = MR_r2;
+	MR_GOTO_LAB(__Compare___check_hlds__mode_info__debug_flags_0_0_i2);
+MR_def_label(__Compare___check_hlds__mode_info__debug_flags_0_0,3)
+	MR_MAYBE_INIT_LOCAL_THREAD_ENGINE_BASE
+	MR_r1 = (MR_Integer) 0;
+	MR_proceed();
+MR_def_label(__Compare___check_hlds__mode_info__debug_flags_0_0,2)
+	MR_MAYBE_INIT_LOCAL_THREAD_ENGINE_BASE
+	{
+	MR_Word MR_tempr1, MR_tempr2, MR_tempr3, MR_tempr4, MR_tempr5, MR_tempr6;
+	MR_tempr5 = MR_sv(2);
+	MR_sv(4) = (((MR_Integer) MR_tfield(0, MR_tempr5, 0) >> (MR_Integer) 2) & (MR_Integer) 1);
+	MR_sv(3) = (((MR_Integer) MR_tfield(0, MR_tempr5, 0) >> (MR_Integer) 1) & (MR_Integer) 1);
+	MR_tempr6 = MR_sv(1);
+	MR_tempr1 = (((MR_Integer) MR_tfield(0, MR_tempr6, 0) >> (MR_Integer) 2) & (MR_Integer) 1);
+	MR_tempr2 = (((MR_Integer) MR_tfield(0, MR_tempr6, 0) >> (MR_Integer) 1) & (MR_Integer) 1);
+	MR_tempr3 = MR_tempr6;
+	MR_sv(1) = MR_tempr2;
+	MR_tempr4 = MR_tempr5;
+	MR_sv(2) = MR_tempr1;
+	MR_r1 = ((MR_Integer) MR_tfield(0, MR_tempr3, 0) & (MR_Integer) 1);
+	MR_r2 = ((MR_Integer) MR_tfield(0, MR_tempr4, 0) & (MR_Integer) 1);
+	}
+	MR_np_call_localret_ent(private_builtin__builtin_compare_int_3_0,
+		__Compare___check_hlds__mode_info__debug_flags_0_0_i5);
+MR_def_label(__Compare___check_hlds__mode_info__debug_flags_0_0,5)
+	MR_MAYBE_INIT_LOCAL_THREAD_ENGINE_BASE
+	if (MR_INT_NE(MR_r1,0)) {
+		MR_GOTO_LAB(__Compare___check_hlds__mode_info__debug_flags_0_0_i29);
+	}
+	MR_r1 = MR_sv(1);
+	MR_r2 = MR_sv(3);
+	MR_np_call_localret_ent(private_builtin__builtin_compare_int_3_0,
+		__Compare___check_hlds__mode_info__debug_flags_0_0_i9);
+MR_def_label(__Compare___check_hlds__mode_info__debug_flags_0_0,9)
+	MR_MAYBE_INIT_LOCAL_THREAD_ENGINE_BASE
+	if (MR_INT_NE(MR_r1,0)) {
+		MR_GOTO_LAB(__Compare___check_hlds__mode_info__debug_flags_0_0_i29);
+	}
+	MR_r1 = MR_sv(2);
+	MR_r2 = MR_sv(4);
+	MR_succip_word = MR_sv(5);
+	MR_decr_sp(5);
+	MR_np_tailcall_ent(private_builtin__builtin_compare_int_3_0);
+MR_def_label(__Compare___check_hlds__mode_info__debug_flags_0_0,29)
+	MR_MAYBE_INIT_LOCAL_THREAD_ENGINE_BASE
+	MR_decr_sp_and_return(5);
+#ifdef MR_maybe_local_thread_engine_base
+	#undef MR_maybe_local_thread_engine_base
+	#define MR_maybe_local_thread_engine_base MR_thread_engine_base
+#endif
+MR_END_MODULE
+
+
+MR_BEGIN_MODULE(check_hlds__mode_info_module88)
+	MR_init_entry1(__Unify___check_hlds__mode_info__had_from_ground_term_scope_0_0);
+	MR_INIT_PROC_LAYOUT_ADDR(mercury____Unify___check_hlds__mode_info__had_from_ground_term_scope_0_0);
+MR_BEGIN_CODE
+
+/*-------------------------------------------------------------------------*/
+/* code for '__Unify__'/2 mode 0 */
+#ifdef MR_maybe_local_thread_engine_base
+	#undef MR_maybe_local_thread_engine_base
+	#define MR_maybe_local_thread_engine_base MR_local_thread_engine_base
+#endif
+MR_define_entry(mercury____Unify___check_hlds__mode_info__had_from_ground_term_scope_0_0);
+	MR_MAYBE_INIT_LOCAL_THREAD_ENGINE_BASE
+	MR_r1 = (MR_r1 == MR_r2);
+	MR_proceed();
+#ifdef MR_maybe_local_thread_engine_base
+	#undef MR_maybe_local_thread_engine_base
+	#define MR_maybe_local_thread_engine_base MR_thread_engine_base
+#endif
+MR_END_MODULE
+
+
+MR_BEGIN_MODULE(check_hlds__mode_info_module89)
+	MR_init_entry1(__Compare___check_hlds__mode_info__had_from_ground_term_scope_0_0);
+	MR_INIT_PROC_LAYOUT_ADDR(mercury____Compare___check_hlds__mode_info__had_from_ground_term_scope_0_0);
+MR_BEGIN_CODE
+
+/*-------------------------------------------------------------------------*/
+/* code for '__Compare__'/3 mode 0 */
+#ifdef MR_maybe_local_thread_engine_base
+	#undef MR_maybe_local_thread_engine_base
+	#define MR_maybe_local_thread_engine_base MR_local_thread_engine_base
+#endif
+MR_define_entry(mercury____Compare___check_hlds__mode_info__had_from_ground_term_scope_0_0);
+	MR_MAYBE_INIT_LOCAL_THREAD_ENGINE_BASE
+	MR_np_tailcall_ent(private_builtin__builtin_compare_int_3_0);
+#ifdef MR_maybe_local_thread_engine_base
+	#undef MR_maybe_local_thread_engine_base
+	#define MR_maybe_local_thread_engine_base MR_thread_engine_base
+#endif
+MR_END_MODULE
+
+
+MR_BEGIN_MODULE(check_hlds__mode_info_module90)
+	MR_init_entry1(__Unify___check_hlds__mode_info__how_to_check_goal_0_0);
+	MR_INIT_PROC_LAYOUT_ADDR(mercury____Unify___check_hlds__mode_info__how_to_check_goal_0_0);
+MR_BEGIN_CODE
+
+/*-------------------------------------------------------------------------*/
+/* code for '__Unify__'/2 mode 0 */
+#ifdef MR_maybe_local_thread_engine_base
+	#undef MR_maybe_local_thread_engine_base
+	#define MR_maybe_local_thread_engine_base MR_local_thread_engine_base
+#endif
+MR_define_entry(mercury____Unify___check_hlds__mode_info__how_to_check_goal_0_0);
+	MR_MAYBE_INIT_LOCAL_THREAD_ENGINE_BASE
+	MR_r1 = (MR_r1 == MR_r2);
+	MR_proceed();
+#ifdef MR_maybe_local_thread_engine_base
+	#undef MR_maybe_local_thread_engine_base
+	#define MR_maybe_local_thread_engine_base MR_thread_engine_base
+#endif
+MR_END_MODULE
+
+
+MR_BEGIN_MODULE(check_hlds__mode_info_module91)
+	MR_init_entry1(__Compare___check_hlds__mode_info__how_to_check_goal_0_0);
+	MR_INIT_PROC_LAYOUT_ADDR(mercury____Compare___check_hlds__mode_info__how_to_check_goal_0_0);
+MR_BEGIN_CODE
+
+/*-------------------------------------------------------------------------*/
+/* code for '__Compare__'/3 mode 0 */
+#ifdef MR_maybe_local_thread_engine_base
+	#undef MR_maybe_local_thread_engine_base
+	#define MR_maybe_local_thread_engine_base MR_local_thread_engine_base
+#endif
+MR_define_entry(mercury____Compare___check_hlds__mode_info__how_to_check_goal_0_0);
+	MR_MAYBE_INIT_LOCAL_THREAD_ENGINE_BASE
+	MR_np_tailcall_ent(private_builtin__builtin_compare_int_3_0);
+#ifdef MR_maybe_local_thread_engine_base
+	#undef MR_maybe_local_thread_engine_base
+	#define MR_maybe_local_thread_engine_base MR_thread_engine_base
+#endif
+MR_END_MODULE
+
+
+MR_BEGIN_MODULE(check_hlds__mode_info_module92)
+	MR_init_entry1(__Unify___check_hlds__mode_info__in_dupl_for_switch_0_0);
+	MR_INIT_PROC_LAYOUT_ADDR(mercury____Unify___check_hlds__mode_info__in_dupl_for_switch_0_0);
+MR_BEGIN_CODE
+
+/*-------------------------------------------------------------------------*/
+/* code for '__Unify__'/2 mode 0 */
+#ifdef MR_maybe_local_thread_engine_base
+	#undef MR_maybe_local_thread_engine_base
+	#define MR_maybe_local_thread_engine_base MR_local_thread_engine_base
+#endif
+MR_define_entry(mercury____Unify___check_hlds__mode_info__in_dupl_for_switch_0_0);
+	MR_MAYBE_INIT_LOCAL_THREAD_ENGINE_BASE
+	MR_r1 = (MR_r1 == MR_r2);
+	MR_proceed();
+#ifdef MR_maybe_local_thread_engine_base
+	#undef MR_maybe_local_thread_engine_base
+	#define MR_maybe_local_thread_engine_base MR_thread_engine_base
+#endif
+MR_END_MODULE
+
+
+MR_BEGIN_MODULE(check_hlds__mode_info_module93)
+	MR_init_entry1(__Compare___check_hlds__mode_info__in_dupl_for_switch_0_0);
+	MR_INIT_PROC_LAYOUT_ADDR(mercury____Compare___check_hlds__mode_info__in_dupl_for_switch_0_0);
+MR_BEGIN_CODE
+
+/*-------------------------------------------------------------------------*/
+/* code for '__Compare__'/3 mode 0 */
+#ifdef MR_maybe_local_thread_engine_base
+	#undef MR_maybe_local_thread_engine_base
+	#define MR_maybe_local_thread_engine_base MR_local_thread_engine_base
+#endif
+MR_define_entry(mercury____Compare___check_hlds__mode_info__in_dupl_for_switch_0_0);
+	MR_MAYBE_INIT_LOCAL_THREAD_ENGINE_BASE
+	MR_np_tailcall_ent(private_builtin__builtin_compare_int_3_0);
+#ifdef MR_maybe_local_thread_engine_base
+	#undef MR_maybe_local_thread_engine_base
+	#define MR_maybe_local_thread_engine_base MR_thread_engine_base
+#endif
+MR_END_MODULE
+
+
+MR_BEGIN_MODULE(check_hlds__mode_info_module94)
+	MR_init_entry1(__Unify___check_hlds__mode_info__in_from_ground_term_scope_0_0);
+	MR_INIT_PROC_LAYOUT_ADDR(mercury____Unify___check_hlds__mode_info__in_from_ground_term_scope_0_0);
+MR_BEGIN_CODE
+
+/*-------------------------------------------------------------------------*/
+/* code for '__Unify__'/2 mode 0 */
+#ifdef MR_maybe_local_thread_engine_base
+	#undef MR_maybe_local_thread_engine_base
+	#define MR_maybe_local_thread_engine_base MR_local_thread_engine_base
+#endif
+MR_define_entry(mercury____Unify___check_hlds__mode_info__in_from_ground_term_scope_0_0);
+	MR_MAYBE_INIT_LOCAL_THREAD_ENGINE_BASE
+	MR_r1 = (MR_r1 == MR_r2);
+	MR_proceed();
+#ifdef MR_maybe_local_thread_engine_base
+	#undef MR_maybe_local_thread_engine_base
+	#define MR_maybe_local_thread_engine_base MR_thread_engine_base
+#endif
+MR_END_MODULE
+
+
+MR_BEGIN_MODULE(check_hlds__mode_info_module95)
+	MR_init_entry1(__Compare___check_hlds__mode_info__in_from_ground_term_scope_0_0);
+	MR_INIT_PROC_LAYOUT_ADDR(mercury____Compare___check_hlds__mode_info__in_from_ground_term_scope_0_0);
+MR_BEGIN_CODE
+
+/*-------------------------------------------------------------------------*/
+/* code for '__Compare__'/3 mode 0 */
+#ifdef MR_maybe_local_thread_engine_base
+	#undef MR_maybe_local_thread_engine_base
+	#define MR_maybe_local_thread_engine_base MR_local_thread_engine_base
+#endif
+MR_define_entry(mercury____Compare___check_hlds__mode_info__in_from_ground_term_scope_0_0);
+	MR_MAYBE_INIT_LOCAL_THREAD_ENGINE_BASE
+	MR_np_tailcall_ent(private_builtin__builtin_compare_int_3_0);
+#ifdef MR_maybe_local_thread_engine_base
+	#undef MR_maybe_local_thread_engine_base
+	#define MR_maybe_local_thread_engine_base MR_thread_engine_base
+#endif
+MR_END_MODULE
+
+
+MR_BEGIN_MODULE(check_hlds__mode_info_module96)
+	MR_init_entry1(__Unify___check_hlds__mode_info__in_promise_purity_scope_0_0);
+	MR_INIT_PROC_LAYOUT_ADDR(mercury____Unify___check_hlds__mode_info__in_promise_purity_scope_0_0);
+MR_BEGIN_CODE
+
+/*-------------------------------------------------------------------------*/
+/* code for '__Unify__'/2 mode 0 */
+#ifdef MR_maybe_local_thread_engine_base
+	#undef MR_maybe_local_thread_engine_base
+	#define MR_maybe_local_thread_engine_base MR_local_thread_engine_base
+#endif
+MR_define_entry(mercury____Unify___check_hlds__mode_info__in_promise_purity_scope_0_0);
+	MR_MAYBE_INIT_LOCAL_THREAD_ENGINE_BASE
+	MR_r1 = (MR_r1 == MR_r2);
+	MR_proceed();
+#ifdef MR_maybe_local_thread_engine_base
+	#undef MR_maybe_local_thread_engine_base
+	#define MR_maybe_local_thread_engine_base MR_thread_engine_base
+#endif
+MR_END_MODULE
+
+
+MR_BEGIN_MODULE(check_hlds__mode_info_module97)
+	MR_init_entry1(__Compare___check_hlds__mode_info__in_promise_purity_scope_0_0);
+	MR_INIT_PROC_LAYOUT_ADDR(mercury____Compare___check_hlds__mode_info__in_promise_purity_scope_0_0);
+MR_BEGIN_CODE
+
+/*-------------------------------------------------------------------------*/
+/* code for '__Compare__'/3 mode 0 */
+#ifdef MR_maybe_local_thread_engine_base
+	#undef MR_maybe_local_thread_engine_base
+	#define MR_maybe_local_thread_engine_base MR_local_thread_engine_base
+#endif
+MR_define_entry(mercury____Compare___check_hlds__mode_info__in_promise_purity_scope_0_0);
+	MR_MAYBE_INIT_LOCAL_THREAD_ENGINE_BASE
+	MR_np_tailcall_ent(private_builtin__builtin_compare_int_3_0);
+#ifdef MR_maybe_local_thread_engine_base
+	#undef MR_maybe_local_thread_engine_base
+	#define MR_maybe_local_thread_engine_base MR_thread_engine_base
+#endif
+MR_END_MODULE
+
+MR_decl_entry(__Unify___list__list_1_0);
+
+MR_BEGIN_MODULE(check_hlds__mode_info_module98)
+	MR_init_entry1(__Unify___check_hlds__mode_info__locked_vars_0_0);
+	MR_INIT_PROC_LAYOUT_ADDR(mercury____Unify___check_hlds__mode_info__locked_vars_0_0);
+MR_BEGIN_CODE
+
+/*-------------------------------------------------------------------------*/
+/* code for '__Unify__'/2 mode 0 */
+#ifdef MR_maybe_local_thread_engine_base
+	#undef MR_maybe_local_thread_engine_base
+	#define MR_maybe_local_thread_engine_base MR_local_thread_engine_base
+#endif
+MR_define_entry(mercury____Unify___check_hlds__mode_info__locked_vars_0_0);
+	MR_MAYBE_INIT_LOCAL_THREAD_ENGINE_BASE
+	{
+	MR_Word MR_tempr1, MR_tempr2;
+	MR_tempr1 = MR_r1;
+	MR_r1 = (MR_Word) MR_TAG_COMMON(0,1,0);
+	MR_tempr2 = MR_r2;
+	MR_r2 = MR_tempr1;
+	MR_r3 = MR_tempr2;
+	MR_np_tailcall_ent(__Unify___list__list_1_0);
+	}
+#ifdef MR_maybe_local_thread_engine_base
+	#undef MR_maybe_local_thread_engine_base
+	#define MR_maybe_local_thread_engine_base MR_thread_engine_base
+#endif
+MR_END_MODULE
+
+MR_decl_entry(__Compare___list__list_1_0);
+
+MR_BEGIN_MODULE(check_hlds__mode_info_module99)
+	MR_init_entry1(__Compare___check_hlds__mode_info__locked_vars_0_0);
+	MR_INIT_PROC_LAYOUT_ADDR(mercury____Compare___check_hlds__mode_info__locked_vars_0_0);
+MR_BEGIN_CODE
+
+/*-------------------------------------------------------------------------*/
+/* code for '__Compare__'/3 mode 0 */
+#ifdef MR_maybe_local_thread_engine_base
+	#undef MR_maybe_local_thread_engine_base
+	#define MR_maybe_local_thread_engine_base MR_local_thread_engine_base
+#endif
+MR_define_entry(mercury____Compare___check_hlds__mode_info__locked_vars_0_0);
+	MR_MAYBE_INIT_LOCAL_THREAD_ENGINE_BASE
+	{
+	MR_Word MR_tempr1, MR_tempr2;
+	MR_tempr1 = MR_r1;
+	MR_r1 = (MR_Word) MR_TAG_COMMON(0,1,0);
+	MR_tempr2 = MR_r2;
+	MR_r2 = MR_tempr1;
+	MR_r3 = MR_tempr2;
+	MR_np_tailcall_ent(__Compare___list__list_1_0);
+	}
+#ifdef MR_maybe_local_thread_engine_base
+	#undef MR_maybe_local_thread_engine_base
+	#define MR_maybe_local_thread_engine_base MR_thread_engine_base
+#endif
+MR_END_MODULE
+
+
+MR_BEGIN_MODULE(check_hlds__mode_info_module100)
+	MR_init_entry1(__Unify___check_hlds__mode_info__make_ground_terms_unique_0_0);
+	MR_INIT_PROC_LAYOUT_ADDR(mercury____Unify___check_hlds__mode_info__make_ground_terms_unique_0_0);
+MR_BEGIN_CODE
+
+/*-------------------------------------------------------------------------*/
+/* code for '__Unify__'/2 mode 0 */
+#ifdef MR_maybe_local_thread_engine_base
+	#undef MR_maybe_local_thread_engine_base
+	#define MR_maybe_local_thread_engine_base MR_local_thread_engine_base
+#endif
+MR_define_entry(mercury____Unify___check_hlds__mode_info__make_ground_terms_unique_0_0);
+	MR_MAYBE_INIT_LOCAL_THREAD_ENGINE_BASE
+	MR_r1 = (MR_r1 == MR_r2);
+	MR_proceed();
+#ifdef MR_maybe_local_thread_engine_base
+	#undef MR_maybe_local_thread_engine_base
+	#define MR_maybe_local_thread_engine_base MR_thread_engine_base
+#endif
+MR_END_MODULE
+
+
+MR_BEGIN_MODULE(check_hlds__mode_info_module101)
+	MR_init_entry1(__Compare___check_hlds__mode_info__make_ground_terms_unique_0_0);
+	MR_INIT_PROC_LAYOUT_ADDR(mercury____Compare___check_hlds__mode_info__make_ground_terms_unique_0_0);
+MR_BEGIN_CODE
+
+/*-------------------------------------------------------------------------*/
+/* code for '__Compare__'/3 mode 0 */
+#ifdef MR_maybe_local_thread_engine_base
+	#undef MR_maybe_local_thread_engine_base
+	#define MR_maybe_local_thread_engine_base MR_local_thread_engine_base
+#endif
+MR_define_entry(mercury____Compare___check_hlds__mode_info__make_ground_terms_unique_0_0);
+	MR_MAYBE_INIT_LOCAL_THREAD_ENGINE_BASE
+	MR_np_tailcall_ent(private_builtin__builtin_compare_int_3_0);
+#ifdef MR_maybe_local_thread_engine_base
+	#undef MR_maybe_local_thread_engine_base
+	#define MR_maybe_local_thread_engine_base MR_thread_engine_base
+#endif
+MR_END_MODULE
+
+
+MR_BEGIN_MODULE(check_hlds__mode_info_module102)
+	MR_init_entry1(__Unify___check_hlds__mode_info__may_change_called_proc_0_0);
+	MR_INIT_PROC_LAYOUT_ADDR(mercury____Unify___check_hlds__mode_info__may_change_called_proc_0_0);
+MR_BEGIN_CODE
+
+/*-------------------------------------------------------------------------*/
+/* code for '__Unify__'/2 mode 0 */
+#ifdef MR_maybe_local_thread_engine_base
+	#undef MR_maybe_local_thread_engine_base
+	#define MR_maybe_local_thread_engine_base MR_local_thread_engine_base
+#endif
+MR_define_entry(mercury____Unify___check_hlds__mode_info__may_change_called_proc_0_0);
+	MR_MAYBE_INIT_LOCAL_THREAD_ENGINE_BASE
+	MR_r1 = (MR_r1 == MR_r2);
+	MR_proceed();
+#ifdef MR_maybe_local_thread_engine_base
+	#undef MR_maybe_local_thread_engine_base
+	#define MR_maybe_local_thread_engine_base MR_thread_engine_base
+#endif
+MR_END_MODULE
+
+
+MR_BEGIN_MODULE(check_hlds__mode_info_module103)
+	MR_init_entry1(__Compare___check_hlds__mode_info__may_change_called_proc_0_0);
+	MR_INIT_PROC_LAYOUT_ADDR(mercury____Compare___check_hlds__mode_info__may_change_called_proc_0_0);
+MR_BEGIN_CODE
+
+/*-------------------------------------------------------------------------*/
+/* code for '__Compare__'/3 mode 0 */
+#ifdef MR_maybe_local_thread_engine_base
+	#undef MR_maybe_local_thread_engine_base
+	#define MR_maybe_local_thread_engine_base MR_local_thread_engine_base
+#endif
+MR_define_entry(mercury____Compare___check_hlds__mode_info__may_change_called_proc_0_0);
+	MR_MAYBE_INIT_LOCAL_THREAD_ENGINE_BASE
+	MR_np_tailcall_ent(private_builtin__builtin_compare_int_3_0);
+#ifdef MR_maybe_local_thread_engine_base
+	#undef MR_maybe_local_thread_engine_base
+	#define MR_maybe_local_thread_engine_base MR_thread_engine_base
+#endif
+MR_END_MODULE
+
+
+MR_BEGIN_MODULE(check_hlds__mode_info_module104)
+	MR_init_entry1(__Unify___check_hlds__mode_info__may_init_solver_vars_0_0);
+	MR_INIT_PROC_LAYOUT_ADDR(mercury____Unify___check_hlds__mode_info__may_init_solver_vars_0_0);
+MR_BEGIN_CODE
+
+/*-------------------------------------------------------------------------*/
+/* code for '__Unify__'/2 mode 0 */
+#ifdef MR_maybe_local_thread_engine_base
+	#undef MR_maybe_local_thread_engine_base
+	#define MR_maybe_local_thread_engine_base MR_local_thread_engine_base
+#endif
+MR_define_entry(mercury____Unify___check_hlds__mode_info__may_init_solver_vars_0_0);
+	MR_MAYBE_INIT_LOCAL_THREAD_ENGINE_BASE
+	MR_r1 = (MR_r1 == MR_r2);
+	MR_proceed();
+#ifdef MR_maybe_local_thread_engine_base
+	#undef MR_maybe_local_thread_engine_base
+	#define MR_maybe_local_thread_engine_base MR_thread_engine_base
+#endif
+MR_END_MODULE
+
+
+MR_BEGIN_MODULE(check_hlds__mode_info_module105)
+	MR_init_entry1(__Compare___check_hlds__mode_info__may_init_solver_vars_0_0);
+	MR_INIT_PROC_LAYOUT_ADDR(mercury____Compare___check_hlds__mode_info__may_init_solver_vars_0_0);
+MR_BEGIN_CODE
+
+/*-------------------------------------------------------------------------*/
+/* code for '__Compare__'/3 mode 0 */
+#ifdef MR_maybe_local_thread_engine_base
+	#undef MR_maybe_local_thread_engine_base
+	#define MR_maybe_local_thread_engine_base MR_local_thread_engine_base
+#endif
+MR_define_entry(mercury____Compare___check_hlds__mode_info__may_init_solver_vars_0_0);
+	MR_MAYBE_INIT_LOCAL_THREAD_ENGINE_BASE
+	MR_np_tailcall_ent(private_builtin__builtin_compare_int_3_0);
+#ifdef MR_maybe_local_thread_engine_base
+	#undef MR_maybe_local_thread_engine_base
+	#define MR_maybe_local_thread_engine_base MR_thread_engine_base
+#endif
+MR_END_MODULE
+
+
+MR_BEGIN_MODULE(check_hlds__mode_info_module106)
+	MR_init_entry1(__Unify___check_hlds__mode_info__mode_context_0_0);
+	MR_INIT_PROC_LAYOUT_ADDR(mercury____Unify___check_hlds__mode_info__mode_context_0_0);
+	MR_init_label6(__Unify___check_hlds__mode_info__mode_context_0_0,5,8,20,6,11,1)
+MR_BEGIN_CODE
+
+/*-------------------------------------------------------------------------*/
+/* code for '__Unify__'/2 mode 0 */
+#ifdef MR_maybe_local_thread_engine_base
+	#undef MR_maybe_local_thread_engine_base
+	#define MR_maybe_local_thread_engine_base MR_local_thread_engine_base
+#endif
+MR_define_entry(mercury____Unify___check_hlds__mode_info__mode_context_0_0);
+	MR_MAYBE_INIT_LOCAL_THREAD_ENGINE_BASE
+	if ((MR_r1 == MR_r2)) {
+		MR_GOTO_LAB(__Unify___check_hlds__mode_info__mode_context_0_0_i20);
+	}
+	MR_incr_sp(3);
+	MR_sv(3) = (MR_Word) MR_succip;
+	{
+	MR_Word MR_tempr1;
+	MR_tempr1 = MR_r1;
+	MR_sv(1) = MR_tempr1;
+	MR_sv(2) = MR_r2;
+	if (MR_LTAGS_TESTR(MR_tempr1,0,0)) {
+		MR_GOTO_LAB(__Unify___check_hlds__mode_info__mode_context_0_0_i5);
+	}
+	MR_r1 = (MR_sv(2) == MR_tempr1);
+	MR_decr_sp(3);
+	MR_proceed();
+	}
+MR_def_label(__Unify___check_hlds__mode_info__mode_context_0_0,5)
+	MR_MAYBE_INIT_LOCAL_THREAD_ENGINE_BASE
+	if (MR_PTAG_TESTR(MR_sv(1),1)) {
+		MR_GOTO_LAB(__Unify___check_hlds__mode_info__mode_context_0_0_i6);
+	}
+	if (MR_PTAG_TESTR(MR_sv(2),1)) {
+		MR_GOTO_LAB(__Unify___check_hlds__mode_info__mode_context_0_0_i1);
+	}
+	{
+	MR_Word MR_tempr1, MR_tempr2;
+	MR_tempr1 = MR_sv(1);
+	MR_sv(1) = MR_tfield(1, MR_tempr1, 1);
+	MR_tempr2 = MR_sv(2);
+	MR_sv(2) = MR_tfield(1, MR_tempr2, 1);
+	MR_r1 = MR_tfield(1, MR_tempr1, 0);
+	MR_r2 = MR_tfield(1, MR_tempr2, 0);
+	}
+	MR_np_call_localret_ent(__Unify___hlds__hlds_pred__call_id_0_0,
+		__Unify___check_hlds__mode_info__mode_context_0_0_i8);
+MR_def_label(__Unify___check_hlds__mode_info__mode_context_0_0,8)
+	MR_MAYBE_INIT_LOCAL_THREAD_ENGINE_BASE
+	if (!(MR_r1)) {
+		MR_GOTO_LAB(__Unify___check_hlds__mode_info__mode_context_0_0_i1);
+	}
+	MR_r1 = (MR_sv(1) == MR_sv(2));
+	MR_decr_sp_and_return(3);
+MR_def_label(__Unify___check_hlds__mode_info__mode_context_0_0,20)
+	MR_MAYBE_INIT_LOCAL_THREAD_ENGINE_BASE
+	MR_r1 = MR_TRUE;
+	MR_proceed();
+MR_def_label(__Unify___check_hlds__mode_info__mode_context_0_0,6)
+	MR_MAYBE_INIT_LOCAL_THREAD_ENGINE_BASE
+	if (MR_PTAG_TESTR(MR_sv(2),2)) {
+		MR_GOTO_LAB(__Unify___check_hlds__mode_info__mode_context_0_0_i1);
+	}
+	{
+	MR_Word MR_tempr1, MR_tempr2;
+	MR_tempr1 = MR_sv(1);
+	MR_sv(1) = MR_tfield(2, MR_tempr1, 1);
+	MR_tempr2 = MR_sv(2);
+	MR_sv(2) = MR_tfield(2, MR_tempr2, 1);
+	MR_r1 = MR_tfield(2, MR_tempr1, 0);
+	MR_r2 = MR_tfield(2, MR_tempr2, 0);
+	}
+	MR_np_call_localret_ent(__Unify___hlds__hlds_goal__unify_context_0_0,
+		__Unify___check_hlds__mode_info__mode_context_0_0_i11);
+MR_def_label(__Unify___check_hlds__mode_info__mode_context_0_0,11)
+	MR_MAYBE_INIT_LOCAL_THREAD_ENGINE_BASE
+	if (!(MR_r1)) {
+		MR_GOTO_LAB(__Unify___check_hlds__mode_info__mode_context_0_0_i1);
+	}
+	MR_r1 = (MR_sv(1) == MR_sv(2));
+	MR_decr_sp_and_return(3);
+MR_def_label(__Unify___check_hlds__mode_info__mode_context_0_0,1)
+	MR_MAYBE_INIT_LOCAL_THREAD_ENGINE_BASE
+	MR_r1 = MR_FALSE;
+	MR_decr_sp_and_return(3);
+#ifdef MR_maybe_local_thread_engine_base
+	#undef MR_maybe_local_thread_engine_base
+	#define MR_maybe_local_thread_engine_base MR_thread_engine_base
+#endif
+MR_END_MODULE
+
+
+MR_BEGIN_MODULE(check_hlds__mode_info_module107)
+	MR_init_entry1(__Compare___check_hlds__mode_info__mode_context_0_0);
+	MR_INIT_PROC_LAYOUT_ADDR(mercury____Compare___check_hlds__mode_info__mode_context_0_0);
+	MR_init_label10(__Compare___check_hlds__mode_info__mode_context_0_0,42,7,5,11,14,9,37,20,38,21)
+	MR_init_label2(__Compare___check_hlds__mode_info__mode_context_0_0,23,28)
+MR_BEGIN_CODE
+
+/*-------------------------------------------------------------------------*/
+/* code for '__Compare__'/3 mode 0 */
+#ifdef MR_maybe_local_thread_engine_base
+	#undef MR_maybe_local_thread_engine_base
+	#define MR_maybe_local_thread_engine_base MR_local_thread_engine_base
+#endif
+MR_define_entry(mercury____Compare___check_hlds__mode_info__mode_context_0_0);
+	MR_MAYBE_INIT_LOCAL_THREAD_ENGINE_BASE
+	MR_incr_sp(3);
+	MR_sv(3) = (MR_Word) MR_succip;
+	if ((MR_r1 == MR_r2)) {
+		MR_GOTO_LAB(__Compare___check_hlds__mode_info__mode_context_0_0_i42);
+	}
+	MR_sv(1) = MR_r1;
+	MR_sv(2) = MR_r2;
+	if (MR_LTAGS_TESTR(MR_sv(1),0,0)) {
+		MR_GOTO_LAB(__Compare___check_hlds__mode_info__mode_context_0_0_i5);
+	}
+	if (MR_LTAGS_TESTR(MR_sv(2),0,0)) {
+		MR_GOTO_LAB(__Compare___check_hlds__mode_info__mode_context_0_0_i7);
+	}
+MR_def_label(__Compare___check_hlds__mode_info__mode_context_0_0,42)
+	MR_MAYBE_INIT_LOCAL_THREAD_ENGINE_BASE
+	MR_r1 = (MR_Integer) 0;
+	MR_decr_sp_and_return(3);
+MR_def_label(__Compare___check_hlds__mode_info__mode_context_0_0,7)
+	MR_MAYBE_INIT_LOCAL_THREAD_ENGINE_BASE
+	if (MR_PTAG_TESTR(MR_sv(2),1)) {
+		MR_GOTO_LAB(__Compare___check_hlds__mode_info__mode_context_0_0_i38);
+	}
+	MR_r1 = (MR_Integer) 2;
+	MR_decr_sp_and_return(3);
+MR_def_label(__Compare___check_hlds__mode_info__mode_context_0_0,5)
+	MR_MAYBE_INIT_LOCAL_THREAD_ENGINE_BASE
+	if (MR_PTAG_TESTR(MR_sv(1),1)) {
+		MR_GOTO_LAB(__Compare___check_hlds__mode_info__mode_context_0_0_i9);
+	}
+	if (MR_LTAGS_TESTR(MR_sv(2),0,0)) {
+		MR_GOTO_LAB(__Compare___check_hlds__mode_info__mode_context_0_0_i11);
+	}
+	MR_r1 = (MR_Integer) 1;
+	MR_decr_sp_and_return(3);
+MR_def_label(__Compare___check_hlds__mode_info__mode_context_0_0,11)
+	MR_MAYBE_INIT_LOCAL_THREAD_ENGINE_BASE
+	if (MR_PTAG_TESTR(MR_sv(2),1)) {
+		MR_GOTO_LAB(__Compare___check_hlds__mode_info__mode_context_0_0_i37);
+	}
+	{
+	MR_Word MR_tempr1, MR_tempr2, MR_tempr3, MR_tempr4, MR_tempr5, MR_tempr6;
+	MR_tempr5 = MR_sv(1);
+	MR_tempr1 = MR_tfield(1, MR_tempr5, 1);
+	MR_tempr6 = MR_sv(2);
+	MR_tempr2 = MR_tfield(1, MR_tempr6, 1);
+	MR_tempr3 = MR_tempr5;
+	MR_sv(1) = MR_tempr2;
+	MR_tempr4 = MR_tempr6;
+	MR_sv(2) = MR_tempr1;
+	MR_r1 = MR_tfield(1, MR_tempr3, 0);
+	MR_r2 = MR_tfield(1, MR_tempr4, 0);
+	}
+	MR_np_call_localret_ent(__Compare___hlds__hlds_pred__call_id_0_0,
+		__Compare___check_hlds__mode_info__mode_context_0_0_i14);
+MR_def_label(__Compare___check_hlds__mode_info__mode_context_0_0,14)
+	MR_MAYBE_INIT_LOCAL_THREAD_ENGINE_BASE
+	if (MR_INT_NE(MR_r1,0)) {
+		MR_GOTO_LAB(__Compare___check_hlds__mode_info__mode_context_0_0_i28);
+	}
+	MR_r1 = MR_sv(2);
+	MR_r2 = MR_sv(1);
+	MR_succip_word = MR_sv(3);
+	MR_decr_sp(3);
+	MR_np_tailcall_ent(private_builtin__builtin_compare_int_3_0);
+MR_def_label(__Compare___check_hlds__mode_info__mode_context_0_0,9)
+	MR_MAYBE_INIT_LOCAL_THREAD_ENGINE_BASE
+	if (MR_LTAGS_TESTR(MR_sv(2),0,0)) {
+		MR_GOTO_LAB(__Compare___check_hlds__mode_info__mode_context_0_0_i20);
+	}
+MR_def_label(__Compare___check_hlds__mode_info__mode_context_0_0,37)
+	MR_MAYBE_INIT_LOCAL_THREAD_ENGINE_BASE
+	MR_r1 = (MR_Integer) 1;
+	MR_decr_sp_and_return(3);
+MR_def_label(__Compare___check_hlds__mode_info__mode_context_0_0,20)
+	MR_MAYBE_INIT_LOCAL_THREAD_ENGINE_BASE
+	if (MR_PTAG_TESTR(MR_sv(2),1)) {
+		MR_GOTO_LAB(__Compare___check_hlds__mode_info__mode_context_0_0_i21);
+	}
+MR_def_label(__Compare___check_hlds__mode_info__mode_context_0_0,38)
+	MR_MAYBE_INIT_LOCAL_THREAD_ENGINE_BASE
+	MR_r1 = (MR_Integer) 2;
+	MR_decr_sp_and_return(3);
+MR_def_label(__Compare___check_hlds__mode_info__mode_context_0_0,21)
+	MR_MAYBE_INIT_LOCAL_THREAD_ENGINE_BASE
+	{
+	MR_Word MR_tempr1, MR_tempr2, MR_tempr3, MR_tempr4, MR_tempr5, MR_tempr6;
+	MR_tempr5 = MR_sv(1);
+	MR_tempr1 = MR_tfield(2, MR_tempr5, 1);
+	MR_tempr6 = MR_sv(2);
+	MR_tempr2 = MR_tfield(2, MR_tempr6, 1);
+	MR_tempr3 = MR_tempr5;
+	MR_sv(1) = MR_tempr2;
+	MR_tempr4 = MR_tempr6;
+	MR_sv(2) = MR_tempr1;
+	MR_r1 = MR_tfield(2, MR_tempr3, 0);
+	MR_r2 = MR_tfield(2, MR_tempr4, 0);
+	}
+	MR_np_call_localret_ent(__Compare___hlds__hlds_goal__unify_context_0_0,
+		__Compare___check_hlds__mode_info__mode_context_0_0_i23);
+MR_def_label(__Compare___check_hlds__mode_info__mode_context_0_0,23)
+	MR_MAYBE_INIT_LOCAL_THREAD_ENGINE_BASE
+	if (MR_INT_NE(MR_r1,0)) {
+		MR_GOTO_LAB(__Compare___check_hlds__mode_info__mode_context_0_0_i28);
+	}
+	MR_r1 = MR_sv(2);
+	MR_r2 = MR_sv(1);
+	MR_succip_word = MR_sv(3);
+	MR_decr_sp(3);
+	MR_np_tailcall_ent(private_builtin__builtin_compare_int_3_0);
+MR_def_label(__Compare___check_hlds__mode_info__mode_context_0_0,28)
+	MR_MAYBE_INIT_LOCAL_THREAD_ENGINE_BASE
+	MR_decr_sp_and_return(3);
+#ifdef MR_maybe_local_thread_engine_base
+	#undef MR_maybe_local_thread_engine_base
+	#define MR_maybe_local_thread_engine_base MR_thread_engine_base
+#endif
+MR_END_MODULE
+
+MR_decl_entry(__Unify___hlds__hlds_module__module_info_0_0);
+MR_decl_entry(__Unify___hlds__instmap__instmap_0_0);
+MR_decl_entry(__Unify___check_hlds__delay_info__delay_info_0_0);
+MR_decl_entry(__Unify___term__context_0_0);
+MR_decl_entry(__Unify___bag__bag_1_0);
+
+MR_BEGIN_MODULE(check_hlds__mode_info_module108)
+	MR_init_entry1(__Unify___check_hlds__mode_info__mode_info_0_0);
+	MR_INIT_PROC_LAYOUT_ADDR(mercury____Unify___check_hlds__mode_info__mode_info_0_0);
+	MR_init_label9(__Unify___check_hlds__mode_info__mode_info_0_0,4,6,8,10,12,14,17,21,1)
+MR_BEGIN_CODE
+
+/*-------------------------------------------------------------------------*/
+/* code for '__Unify__'/2 mode 0 */
+#ifdef MR_maybe_local_thread_engine_base
+	#undef MR_maybe_local_thread_engine_base
+	#define MR_maybe_local_thread_engine_base MR_local_thread_engine_base
+#endif
+MR_define_entry(mercury____Unify___check_hlds__mode_info__mode_info_0_0);
+	MR_MAYBE_INIT_LOCAL_THREAD_ENGINE_BASE
+	if ((MR_r1 == MR_r2)) {
+		MR_GOTO_LAB(__Unify___check_hlds__mode_info__mode_info_0_0_i21);
+	}
+	MR_incr_sp(15);
+	MR_sv(15) = (MR_Word) MR_succip;
+	MR_sv(1) = MR_r1;
+	MR_sv(2) = MR_r2;
+	{
+	MR_Word MR_tempr1, MR_tempr2;
+	MR_tempr1 = MR_sv(1);
+	MR_sv(1) = MR_tfield(0, MR_tempr1, 1);
+	MR_tempr2 = MR_sv(2);
+	MR_sv(2) = MR_tfield(0, MR_tempr1, 2);
+	MR_sv(3) = MR_tfield(0, MR_tempr1, 3);
+	MR_sv(4) = MR_tfield(0, MR_tempr1, 4);
+	MR_sv(5) = MR_tfield(0, MR_tempr1, 5);
+	MR_sv(6) = MR_tfield(0, MR_tempr1, 6);
+	MR_sv(7) = MR_tfield(0, MR_tempr1, 7);
+	MR_sv(8) = MR_tfield(0, MR_tempr2, 1);
+	MR_sv(9) = MR_tfield(0, MR_tempr2, 2);
+	MR_sv(10) = MR_tfield(0, MR_tempr2, 3);
+	MR_sv(11) = MR_tfield(0, MR_tempr2, 4);
+	MR_sv(12) = MR_tfield(0, MR_tempr2, 5);
+	MR_sv(13) = MR_tfield(0, MR_tempr2, 6);
+	MR_sv(14) = MR_tfield(0, MR_tempr2, 7);
+	MR_r1 = MR_tfield(0, MR_tempr1, 0);
+	MR_r2 = MR_tfield(0, MR_tempr2, 0);
+	}
+	MR_np_call_localret_ent(__Unify___hlds__hlds_module__module_info_0_0,
+		__Unify___check_hlds__mode_info__mode_info_0_0_i4);
+MR_def_label(__Unify___check_hlds__mode_info__mode_info_0_0,4)
+	MR_MAYBE_INIT_LOCAL_THREAD_ENGINE_BASE
+	if (!(MR_r1)) {
+		MR_GOTO_LAB(__Unify___check_hlds__mode_info__mode_info_0_0_i1);
+	}
+	MR_r1 = MR_sv(1);
+	MR_r2 = MR_sv(8);
+	MR_np_call_localret_ent(__Unify___hlds__instmap__instmap_0_0,
+		__Unify___check_hlds__mode_info__mode_info_0_0_i6);
+MR_def_label(__Unify___check_hlds__mode_info__mode_info_0_0,6)
+	MR_MAYBE_INIT_LOCAL_THREAD_ENGINE_BASE
+	if (!(MR_r1)) {
+		MR_GOTO_LAB(__Unify___check_hlds__mode_info__mode_info_0_0_i1);
+	}
+	MR_r1 = MR_sv(2);
+	MR_r2 = MR_sv(9);
+	MR_np_call_localret_ent(__Unify___check_hlds__delay_info__delay_info_0_0,
+		__Unify___check_hlds__mode_info__mode_info_0_0_i8);
+MR_def_label(__Unify___check_hlds__mode_info__mode_info_0_0,8)
+	MR_MAYBE_INIT_LOCAL_THREAD_ENGINE_BASE
+	if (!(MR_r1)) {
+		MR_GOTO_LAB(__Unify___check_hlds__mode_info__mode_info_0_0_i1);
+	}
+	MR_r1 = (MR_Word) MR_CTOR0_ADDR(check_hlds__mode_errors, mode_error_info);
+	MR_r2 = MR_sv(3);
+	MR_r3 = MR_sv(10);
+	MR_np_call_localret_ent(__Unify___list__list_1_0,
+		__Unify___check_hlds__mode_info__mode_info_0_0_i10);
+MR_def_label(__Unify___check_hlds__mode_info__mode_info_0_0,10)
+	MR_MAYBE_INIT_LOCAL_THREAD_ENGINE_BASE
+	if (!(MR_r1)) {
+		MR_GOTO_LAB(__Unify___check_hlds__mode_info__mode_info_0_0_i1);
+	}
+	MR_r1 = MR_sv(4);
+	MR_r2 = MR_sv(11);
+	MR_np_call_localret_ent(__Unify___check_hlds__mode_info__mode_context_0_0,
+		__Unify___check_hlds__mode_info__mode_info_0_0_i12);
+MR_def_label(__Unify___check_hlds__mode_info__mode_info_0_0,12)
+	MR_MAYBE_INIT_LOCAL_THREAD_ENGINE_BASE
+	if (!(MR_r1)) {
+		MR_GOTO_LAB(__Unify___check_hlds__mode_info__mode_info_0_0_i1);
+	}
+	MR_r1 = MR_sv(5);
+	MR_r2 = MR_sv(12);
+	MR_np_call_localret_ent(__Unify___term__context_0_0,
+		__Unify___check_hlds__mode_info__mode_info_0_0_i14);
+MR_def_label(__Unify___check_hlds__mode_info__mode_info_0_0,14)
+	MR_MAYBE_INIT_LOCAL_THREAD_ENGINE_BASE
+	if (!(MR_r1)) {
+		MR_GOTO_LAB(__Unify___check_hlds__mode_info__mode_info_0_0_i1);
+	}
+	MR_r1 = (MR_Word) MR_TAG_COMMON(0,0,0);
+	MR_r2 = MR_sv(6);
+	MR_r3 = MR_sv(13);
+	MR_np_call_localret_ent(__Unify___bag__bag_1_0,
+		__Unify___check_hlds__mode_info__mode_info_0_0_i17);
+MR_def_label(__Unify___check_hlds__mode_info__mode_info_0_0,17)
+	MR_MAYBE_INIT_LOCAL_THREAD_ENGINE_BASE
+	if (!(MR_r1)) {
+		MR_GOTO_LAB(__Unify___check_hlds__mode_info__mode_info_0_0_i1);
+	}
+	MR_r1 = MR_sv(7);
+	MR_r2 = MR_sv(14);
+	MR_succip_word = MR_sv(15);
+	MR_decr_sp(15);
+	MR_np_tailcall_ent(__Unify___check_hlds__mode_info__mode_sub_info_0_0);
+MR_def_label(__Unify___check_hlds__mode_info__mode_info_0_0,21)
+	MR_MAYBE_INIT_LOCAL_THREAD_ENGINE_BASE
+	MR_r1 = MR_TRUE;
+	MR_proceed();
+MR_def_label(__Unify___check_hlds__mode_info__mode_info_0_0,1)
+	MR_MAYBE_INIT_LOCAL_THREAD_ENGINE_BASE
+	MR_r1 = MR_FALSE;
+	MR_decr_sp_and_return(15);
+#ifdef MR_maybe_local_thread_engine_base
+	#undef MR_maybe_local_thread_engine_base
+	#define MR_maybe_local_thread_engine_base MR_thread_engine_base
+#endif
+MR_END_MODULE
+
+MR_decl_entry(__Compare___hlds__hlds_module__module_info_0_0);
+MR_decl_entry(__Compare___hlds__instmap__instmap_0_0);
+MR_decl_entry(__Compare___check_hlds__delay_info__delay_info_0_0);
+MR_decl_entry(__Compare___term__context_0_0);
+MR_decl_entry(__Compare___bag__bag_1_0);
+
+MR_BEGIN_MODULE(check_hlds__mode_info_module109)
+	MR_init_entry1(__Compare___check_hlds__mode_info__mode_info_0_0);
+	MR_INIT_PROC_LAYOUT_ADDR(mercury____Compare___check_hlds__mode_info__mode_info_0_0);
+	MR_init_label10(__Compare___check_hlds__mode_info__mode_info_0_0,3,2,5,9,13,17,21,25,30,94)
+MR_BEGIN_CODE
+
+/*-------------------------------------------------------------------------*/
+/* code for '__Compare__'/3 mode 0 */
+#ifdef MR_maybe_local_thread_engine_base
+	#undef MR_maybe_local_thread_engine_base
+	#define MR_maybe_local_thread_engine_base MR_local_thread_engine_base
+#endif
+MR_define_entry(mercury____Compare___check_hlds__mode_info__mode_info_0_0);
+	MR_MAYBE_INIT_LOCAL_THREAD_ENGINE_BASE
+	if ((MR_r1 == MR_r2)) {
+		MR_GOTO_LAB(__Compare___check_hlds__mode_info__mode_info_0_0_i3);
+	}
+	MR_incr_sp(15);
+	MR_sv(15) = (MR_Word) MR_succip;
+	MR_sv(1) = MR_r1;
+	MR_sv(2) = MR_r2;
+	MR_GOTO_LAB(__Compare___check_hlds__mode_info__mode_info_0_0_i2);
+MR_def_label(__Compare___check_hlds__mode_info__mode_info_0_0,3)
+	MR_MAYBE_INIT_LOCAL_THREAD_ENGINE_BASE
+	MR_r1 = (MR_Integer) 0;
+	MR_proceed();
+MR_def_label(__Compare___check_hlds__mode_info__mode_info_0_0,2)
+	MR_MAYBE_INIT_LOCAL_THREAD_ENGINE_BASE
+	{
+	MR_Word MR_tempr1, MR_tempr2, MR_tempr3, MR_tempr4, MR_tempr5, MR_tempr6;
+	MR_tempr5 = MR_sv(2);
+	MR_sv(14) = MR_tfield(0, MR_tempr5, 7);
+	MR_sv(13) = MR_tfield(0, MR_tempr5, 6);
+	MR_sv(12) = MR_tfield(0, MR_tempr5, 5);
+	MR_sv(11) = MR_tfield(0, MR_tempr5, 4);
+	MR_sv(10) = MR_tfield(0, MR_tempr5, 3);
+	MR_sv(9) = MR_tfield(0, MR_tempr5, 2);
+	MR_sv(8) = MR_tfield(0, MR_tempr5, 1);
+	MR_tempr6 = MR_sv(1);
+	MR_sv(7) = MR_tfield(0, MR_tempr6, 7);
+	MR_sv(6) = MR_tfield(0, MR_tempr6, 6);
+	MR_sv(5) = MR_tfield(0, MR_tempr6, 5);
+	MR_sv(4) = MR_tfield(0, MR_tempr6, 4);
+	MR_sv(3) = MR_tfield(0, MR_tempr6, 3);
+	MR_tempr1 = MR_tfield(0, MR_tempr6, 2);
+	MR_tempr2 = MR_tfield(0, MR_tempr6, 1);
+	MR_tempr3 = MR_tempr6;
+	MR_sv(1) = MR_tempr2;
+	MR_tempr4 = MR_tempr5;
+	MR_sv(2) = MR_tempr1;
+	MR_r1 = MR_tfield(0, MR_tempr3, 0);
+	MR_r2 = MR_tfield(0, MR_tempr4, 0);
+	}
+	MR_np_call_localret_ent(__Compare___hlds__hlds_module__module_info_0_0,
+		__Compare___check_hlds__mode_info__mode_info_0_0_i5);
+MR_def_label(__Compare___check_hlds__mode_info__mode_info_0_0,5)
+	MR_MAYBE_INIT_LOCAL_THREAD_ENGINE_BASE
+	if (MR_INT_NE(MR_r1,0)) {
+		MR_GOTO_LAB(__Compare___check_hlds__mode_info__mode_info_0_0_i94);
+	}
+	MR_r1 = MR_sv(1);
+	MR_r2 = MR_sv(8);
+	MR_np_call_localret_ent(__Compare___hlds__instmap__instmap_0_0,
+		__Compare___check_hlds__mode_info__mode_info_0_0_i9);
+MR_def_label(__Compare___check_hlds__mode_info__mode_info_0_0,9)
+	MR_MAYBE_INIT_LOCAL_THREAD_ENGINE_BASE
+	if (MR_INT_NE(MR_r1,0)) {
+		MR_GOTO_LAB(__Compare___check_hlds__mode_info__mode_info_0_0_i94);
+	}
+	MR_r1 = MR_sv(2);
+	MR_r2 = MR_sv(9);
+	MR_np_call_localret_ent(__Compare___check_hlds__delay_info__delay_info_0_0,
+		__Compare___check_hlds__mode_info__mode_info_0_0_i13);
+MR_def_label(__Compare___check_hlds__mode_info__mode_info_0_0,13)
+	MR_MAYBE_INIT_LOCAL_THREAD_ENGINE_BASE
+	if (MR_INT_NE(MR_r1,0)) {
+		MR_GOTO_LAB(__Compare___check_hlds__mode_info__mode_info_0_0_i94);
+	}
+	MR_r1 = (MR_Word) MR_CTOR0_ADDR(check_hlds__mode_errors, mode_error_info);
+	MR_r2 = MR_sv(3);
+	MR_r3 = MR_sv(10);
+	MR_np_call_localret_ent(__Compare___list__list_1_0,
+		__Compare___check_hlds__mode_info__mode_info_0_0_i17);
+MR_def_label(__Compare___check_hlds__mode_info__mode_info_0_0,17)
+	MR_MAYBE_INIT_LOCAL_THREAD_ENGINE_BASE
+	if (MR_INT_NE(MR_r1,0)) {
+		MR_GOTO_LAB(__Compare___check_hlds__mode_info__mode_info_0_0_i94);
+	}
+	MR_r1 = MR_sv(4);
+	MR_r2 = MR_sv(11);
+	MR_np_call_localret_ent(__Compare___check_hlds__mode_info__mode_context_0_0,
+		__Compare___check_hlds__mode_info__mode_info_0_0_i21);
+MR_def_label(__Compare___check_hlds__mode_info__mode_info_0_0,21)
+	MR_MAYBE_INIT_LOCAL_THREAD_ENGINE_BASE
+	if (MR_INT_NE(MR_r1,0)) {
+		MR_GOTO_LAB(__Compare___check_hlds__mode_info__mode_info_0_0_i94);
+	}
+	MR_r1 = MR_sv(5);
+	MR_r2 = MR_sv(12);
+	MR_np_call_localret_ent(__Compare___term__context_0_0,
+		__Compare___check_hlds__mode_info__mode_info_0_0_i25);
+MR_def_label(__Compare___check_hlds__mode_info__mode_info_0_0,25)
+	MR_MAYBE_INIT_LOCAL_THREAD_ENGINE_BASE
+	if (MR_INT_NE(MR_r1,0)) {
+		MR_GOTO_LAB(__Compare___check_hlds__mode_info__mode_info_0_0_i94);
+	}
+	MR_r1 = (MR_Word) MR_TAG_COMMON(0,0,0);
+	MR_r2 = MR_sv(6);
+	MR_r3 = MR_sv(13);
+	MR_np_call_localret_ent(__Compare___bag__bag_1_0,
+		__Compare___check_hlds__mode_info__mode_info_0_0_i30);
+MR_def_label(__Compare___check_hlds__mode_info__mode_info_0_0,30)
+	MR_MAYBE_INIT_LOCAL_THREAD_ENGINE_BASE
+	if (MR_INT_NE(MR_r1,0)) {
+		MR_GOTO_LAB(__Compare___check_hlds__mode_info__mode_info_0_0_i94);
+	}
+	MR_r1 = MR_sv(7);
+	MR_r2 = MR_sv(14);
+	MR_succip_word = MR_sv(15);
+	MR_decr_sp(15);
+	MR_np_tailcall_ent(__Compare___check_hlds__mode_info__mode_sub_info_0_0);
+MR_def_label(__Compare___check_hlds__mode_info__mode_info_0_0,94)
+	MR_MAYBE_INIT_LOCAL_THREAD_ENGINE_BASE
+	MR_decr_sp_and_return(15);
+#ifdef MR_maybe_local_thread_engine_base
+	#undef MR_maybe_local_thread_engine_base
+	#define MR_maybe_local_thread_engine_base MR_thread_engine_base
+#endif
+MR_END_MODULE
+
+MR_decl_entry(__Unify___varset__varset_1_0);
+MR_decl_entry(__Unify___tree234__tree234_2_0);
+MR_decl_entry(__Unify___maybe__maybe_1_0);
+
+MR_BEGIN_MODULE(check_hlds__mode_info_module110)
+	MR_init_entry1(__Unify___check_hlds__mode_info__mode_sub_info_0_0);
+	MR_INIT_PROC_LAYOUT_ADDR(mercury____Unify___check_hlds__mode_info__mode_sub_info_0_0);
+	MR_init_label10(__Unify___check_hlds__mode_info__mode_sub_info_0_0,4,7,9,13,15,17,19,21,23,25)
+	MR_init_label2(__Unify___check_hlds__mode_info__mode_sub_info_0_0,27,1)
+MR_BEGIN_CODE
+
+/*-------------------------------------------------------------------------*/
+/* code for '__Unify__'/2 mode 0 */
+#ifdef MR_maybe_local_thread_engine_base
+	#undef MR_maybe_local_thread_engine_base
+	#define MR_maybe_local_thread_engine_base MR_local_thread_engine_base
+#endif
+MR_def_static(__Unify___check_hlds__mode_info__mode_sub_info_0_0)
+	MR_MAYBE_INIT_LOCAL_THREAD_ENGINE_BASE
+	if ((MR_r1 == MR_r2)) {
+		MR_GOTO_LAB(__Unify___check_hlds__mode_info__mode_sub_info_0_0_i27);
+	}
+	MR_incr_sp(41);
+	MR_sv(41) = (MR_Word) MR_succip;
+	{
+	MR_Word MR_tempr1, MR_tempr2, MR_tempr3, MR_tempr4;
+	MR_tempr1 = MR_r1;
+	MR_sv(1) = MR_tempr1;
+	MR_tempr2 = MR_r2;
+	MR_sv(2) = MR_tempr2;
+	MR_tempr3 = MR_tfield(0, MR_tempr1, 0);
+	MR_tempr4 = MR_tfield(0, MR_tempr2, 0);
+	if ((MR_tempr3 != MR_tempr4)) {
+		MR_GOTO_LAB(__Unify___check_hlds__mode_info__mode_sub_info_0_0_i1);
+	}
+	MR_tempr3 = MR_tfield(0, MR_tempr1, 1);
+	MR_tempr4 = MR_tfield(0, MR_tempr2, 1);
+	if ((MR_tempr3 != MR_tempr4)) {
+		MR_GOTO_LAB(__Unify___check_hlds__mode_info__mode_sub_info_0_0_i1);
+	}
+	MR_tempr3 = MR_tempr1;
+	MR_sv(1) = MR_tfield(0, MR_tempr3, 3);
+	MR_tempr4 = MR_tempr2;
+	MR_sv(2) = MR_tfield(0, MR_tempr3, 4);
+	MR_sv(3) = MR_tfield(0, MR_tempr3, 5);
+	MR_sv(4) = MR_tfield(0, MR_tempr3, 6);
+	MR_sv(5) = MR_tfield(0, MR_tempr3, 7);
+	MR_sv(6) = MR_tfield(0, MR_tempr3, 8);
+	MR_sv(7) = ((MR_Integer) MR_tfield(0, MR_tempr3, 9) & (MR_Integer) 1);
+	MR_sv(8) = (((MR_Integer) MR_tfield(0, MR_tempr3, 9) >> (MR_Integer) 1) & (MR_Integer) 1);
+	MR_sv(9) = (((MR_Integer) MR_tfield(0, MR_tempr3, 9) >> (MR_Integer) 2) & (MR_Integer) 1);
+	MR_sv(10) = MR_tfield(0, MR_tempr3, 10);
+	MR_sv(11) = ((MR_Integer) MR_tfield(0, MR_tempr3, 11) & (MR_Integer) 1);
+	MR_sv(12) = (((MR_Integer) MR_tfield(0, MR_tempr3, 11) >> (MR_Integer) 1) & (MR_Integer) 1);
+	MR_sv(13) = MR_tfield(0, MR_tempr3, 12);
+	MR_sv(14) = MR_tfield(0, MR_tempr3, 13);
+	MR_sv(15) = ((MR_Integer) MR_tfield(0, MR_tempr3, 14) & (MR_Integer) 1);
+	MR_sv(16) = (((MR_Integer) MR_tfield(0, MR_tempr3, 14) >> (MR_Integer) 1) & (MR_Integer) 1);
+	MR_sv(17) = (((MR_Integer) MR_tfield(0, MR_tempr3, 14) >> (MR_Integer) 2) & (MR_Integer) 1);
+	MR_sv(18) = (((MR_Integer) MR_tfield(0, MR_tempr3, 14) >> (MR_Integer) 3) & (MR_Integer) 1);
+	MR_sv(19) = (((MR_Integer) MR_tfield(0, MR_tempr3, 14) >> (MR_Integer) 4) & (MR_Integer) 1);
+	MR_sv(20) = (((MR_Integer) MR_tfield(0, MR_tempr3, 14) >> (MR_Integer) 5) & (MR_Integer) 1);
+	MR_sv(21) = MR_tfield(0, MR_tempr4, 3);
+	MR_sv(22) = MR_tfield(0, MR_tempr4, 4);
+	MR_sv(23) = MR_tfield(0, MR_tempr4, 5);
+	MR_sv(24) = MR_tfield(0, MR_tempr4, 6);
+	MR_sv(25) = MR_tfield(0, MR_tempr4, 7);
+	MR_sv(26) = MR_tfield(0, MR_tempr4, 8);
+	MR_sv(27) = ((MR_Integer) MR_tfield(0, MR_tempr4, 9) & (MR_Integer) 1);
+	MR_sv(28) = (((MR_Integer) MR_tfield(0, MR_tempr4, 9) >> (MR_Integer) 1) & (MR_Integer) 1);
+	MR_sv(29) = (((MR_Integer) MR_tfield(0, MR_tempr4, 9) >> (MR_Integer) 2) & (MR_Integer) 1);
+	MR_sv(30) = MR_tfield(0, MR_tempr4, 10);
+	MR_sv(31) = ((MR_Integer) MR_tfield(0, MR_tempr4, 11) & (MR_Integer) 1);
+	MR_sv(32) = (((MR_Integer) MR_tfield(0, MR_tempr4, 11) >> (MR_Integer) 1) & (MR_Integer) 1);
+	MR_sv(33) = MR_tfield(0, MR_tempr4, 12);
+	MR_sv(34) = MR_tfield(0, MR_tempr4, 13);
+	MR_sv(35) = ((MR_Integer) MR_tfield(0, MR_tempr4, 14) & (MR_Integer) 1);
+	MR_sv(36) = (((MR_Integer) MR_tfield(0, MR_tempr4, 14) >> (MR_Integer) 1) & (MR_Integer) 1);
+	MR_sv(37) = (((MR_Integer) MR_tfield(0, MR_tempr4, 14) >> (MR_Integer) 2) & (MR_Integer) 1);
+	MR_sv(38) = (((MR_Integer) MR_tfield(0, MR_tempr4, 14) >> (MR_Integer) 3) & (MR_Integer) 1);
+	MR_sv(39) = (((MR_Integer) MR_tfield(0, MR_tempr4, 14) >> (MR_Integer) 4) & (MR_Integer) 1);
+	MR_sv(40) = (((MR_Integer) MR_tfield(0, MR_tempr4, 14) >> (MR_Integer) 5) & (MR_Integer) 1);
+	MR_r1 = (MR_Word) MR_CTOR0_ADDR(parse_tree__prog_data, prog_var_type);
+	MR_r2 = MR_tfield(0, MR_tempr3, 2);
+	MR_r3 = MR_tfield(0, MR_tempr4, 2);
+	}
+	MR_np_call_localret_ent(__Unify___varset__varset_1_0,
+		__Unify___check_hlds__mode_info__mode_sub_info_0_0_i4);
+MR_def_label(__Unify___check_hlds__mode_info__mode_sub_info_0_0,4)
+	MR_MAYBE_INIT_LOCAL_THREAD_ENGINE_BASE
+	if (!(MR_r1)) {
+		MR_GOTO_LAB(__Unify___check_hlds__mode_info__mode_sub_info_0_0_i1);
+	}
+	{
+	MR_Word MR_tempr1;
+	MR_tempr1 = MR_sv(1);
+	MR_sv(1) = (MR_Word) MR_TAG_COMMON(0,0,0);
+	MR_r1 = MR_sv(1);
+	MR_r2 = (MR_Word) MR_CTOR0_ADDR(parse_tree__prog_data, mer_type);
+	MR_r3 = MR_tempr1;
+	MR_r4 = MR_sv(21);
+	}
+	MR_np_call_localret_ent(__Unify___tree234__tree234_2_0,
+		__Unify___check_hlds__mode_info__mode_sub_info_0_0_i7);
+MR_def_label(__Unify___check_hlds__mode_info__mode_sub_info_0_0,7)
+	MR_MAYBE_INIT_LOCAL_THREAD_ENGINE_BASE
+	if (!(MR_r1)) {
+		MR_GOTO_LAB(__Unify___check_hlds__mode_info__mode_sub_info_0_0_i1);
+	}
+	MR_r1 = (MR_Word) MR_CTOR0_ADDR(check_hlds__mode_info, debug_flags);
+	MR_r2 = MR_sv(2);
+	MR_r3 = MR_sv(22);
+	MR_np_call_localret_ent(__Unify___maybe__maybe_1_0,
+		__Unify___check_hlds__mode_info__mode_sub_info_0_0_i9);
+MR_def_label(__Unify___check_hlds__mode_info__mode_sub_info_0_0,9)
+	MR_MAYBE_INIT_LOCAL_THREAD_ENGINE_BASE
+	if (!(MR_r1)) {
+		MR_GOTO_LAB(__Unify___check_hlds__mode_info__mode_sub_info_0_0_i1);
+	}
+	MR_r1 = (MR_Word) MR_TAG_COMMON(0,1,0);
+	MR_r2 = MR_sv(3);
+	MR_r3 = MR_sv(23);
+	MR_np_call_localret_ent(__Unify___list__list_1_0,
+		__Unify___check_hlds__mode_info__mode_sub_info_0_0_i13);
+MR_def_label(__Unify___check_hlds__mode_info__mode_sub_info_0_0,13)
+	MR_MAYBE_INIT_LOCAL_THREAD_ENGINE_BASE
+	if (!(MR_r1)) {
+		MR_GOTO_LAB(__Unify___check_hlds__mode_info__mode_sub_info_0_0_i1);
+	}
+	MR_r1 = MR_sv(1);
+	MR_r2 = MR_sv(4);
+	MR_r3 = MR_sv(24);
+	MR_np_call_localret_ent(__Unify___bag__bag_1_0,
+		__Unify___check_hlds__mode_info__mode_sub_info_0_0_i15);
+MR_def_label(__Unify___check_hlds__mode_info__mode_sub_info_0_0,15)
+	MR_MAYBE_INIT_LOCAL_THREAD_ENGINE_BASE
+	if (!(MR_r1)) {
+		MR_GOTO_LAB(__Unify___check_hlds__mode_info__mode_sub_info_0_0_i1);
+	}
+	MR_r1 = (MR_Word) MR_CTOR0_ADDR(parse_tree__prog_data, inst_var_type);
+	MR_r2 = MR_sv(5);
+	MR_r3 = MR_sv(25);
+	MR_np_call_localret_ent(__Unify___varset__varset_1_0,
+		__Unify___check_hlds__mode_info__mode_sub_info_0_0_i17);
+MR_def_label(__Unify___check_hlds__mode_info__mode_sub_info_0_0,17)
+	MR_MAYBE_INIT_LOCAL_THREAD_ENGINE_BASE
+	if (!(MR_r1)) {
+		MR_GOTO_LAB(__Unify___check_hlds__mode_info__mode_sub_info_0_0_i1);
+	}
+	MR_r1 = (MR_Word) MR_CTOR0_ADDR(check_hlds__mode_info, par_conj_mode_check);
+	MR_r2 = MR_sv(6);
+	MR_r3 = MR_sv(26);
+	MR_np_call_localret_ent(__Unify___list__list_1_0,
+		__Unify___check_hlds__mode_info__mode_sub_info_0_0_i19);
+MR_def_label(__Unify___check_hlds__mode_info__mode_sub_info_0_0,19)
+	MR_MAYBE_INIT_LOCAL_THREAD_ENGINE_BASE
+	if (!(MR_r1)) {
+		MR_GOTO_LAB(__Unify___check_hlds__mode_info__mode_sub_info_0_0_i1);
+	}
+	if ((MR_sv(7) != MR_sv(27))) {
+		MR_GOTO_LAB(__Unify___check_hlds__mode_info__mode_sub_info_0_0_i1);
+	}
+	if ((MR_sv(8) != MR_sv(28))) {
+		MR_GOTO_LAB(__Unify___check_hlds__mode_info__mode_sub_info_0_0_i1);
+	}
+	if ((MR_sv(9) != MR_sv(29))) {
+		MR_GOTO_LAB(__Unify___check_hlds__mode_info__mode_sub_info_0_0_i1);
+	}
+	MR_r1 = MR_sv(10);
+	MR_r2 = MR_sv(30);
+	MR_np_call_localret_ent(__Unify___hlds__instmap__instmap_0_0,
+		__Unify___check_hlds__mode_info__mode_sub_info_0_0_i21);
+MR_def_label(__Unify___check_hlds__mode_info__mode_sub_info_0_0,21)
+	MR_MAYBE_INIT_LOCAL_THREAD_ENGINE_BASE
+	if (!(MR_r1)) {
+		MR_GOTO_LAB(__Unify___check_hlds__mode_info__mode_sub_info_0_0_i1);
+	}
+	if ((MR_sv(11) != MR_sv(31))) {
+		MR_GOTO_LAB(__Unify___check_hlds__mode_info__mode_sub_info_0_0_i1);
+	}
+	if ((MR_sv(12) != MR_sv(32))) {
+		MR_GOTO_LAB(__Unify___check_hlds__mode_info__mode_sub_info_0_0_i1);
+	}
+	MR_r1 = MR_sv(13);
+	MR_r2 = MR_sv(33);
+	MR_np_call_localret_ent(__Unify___hlds__instmap__instmap_0_0,
+		__Unify___check_hlds__mode_info__mode_sub_info_0_0_i23);
+MR_def_label(__Unify___check_hlds__mode_info__mode_sub_info_0_0,23)
+	MR_MAYBE_INIT_LOCAL_THREAD_ENGINE_BASE
+	if (!(MR_r1)) {
+		MR_GOTO_LAB(__Unify___check_hlds__mode_info__mode_sub_info_0_0_i1);
+	}
+	MR_r1 = (MR_Word) MR_CTOR0_ADDR(check_hlds__mode_errors, mode_warning_info);
+	MR_r2 = MR_sv(14);
+	MR_r3 = MR_sv(34);
+	MR_np_call_localret_ent(__Unify___list__list_1_0,
+		__Unify___check_hlds__mode_info__mode_sub_info_0_0_i25);
+MR_def_label(__Unify___check_hlds__mode_info__mode_sub_info_0_0,25)
+	MR_MAYBE_INIT_LOCAL_THREAD_ENGINE_BASE
+	if (!(MR_r1)) {
+		MR_GOTO_LAB(__Unify___check_hlds__mode_info__mode_sub_info_0_0_i1);
+	}
+	if ((MR_sv(15) != MR_sv(35))) {
+		MR_GOTO_LAB(__Unify___check_hlds__mode_info__mode_sub_info_0_0_i1);
+	}
+	if ((MR_sv(16) != MR_sv(36))) {
+		MR_GOTO_LAB(__Unify___check_hlds__mode_info__mode_sub_info_0_0_i1);
+	}
+	if ((MR_sv(17) != MR_sv(37))) {
+		MR_GOTO_LAB(__Unify___check_hlds__mode_info__mode_sub_info_0_0_i1);
+	}
+	if ((MR_sv(18) != MR_sv(38))) {
+		MR_GOTO_LAB(__Unify___check_hlds__mode_info__mode_sub_info_0_0_i1);
+	}
+	if ((MR_sv(19) != MR_sv(39))) {
+		MR_GOTO_LAB(__Unify___check_hlds__mode_info__mode_sub_info_0_0_i1);
+	}
+	MR_r1 = (MR_sv(20) == MR_sv(40));
+	MR_decr_sp_and_return(41);
+MR_def_label(__Unify___check_hlds__mode_info__mode_sub_info_0_0,27)
+	MR_MAYBE_INIT_LOCAL_THREAD_ENGINE_BASE
+	MR_r1 = MR_TRUE;
+	MR_proceed();
+MR_def_label(__Unify___check_hlds__mode_info__mode_sub_info_0_0,1)
+	MR_MAYBE_INIT_LOCAL_THREAD_ENGINE_BASE
+	MR_r1 = MR_FALSE;
+	MR_decr_sp_and_return(41);
+#ifdef MR_maybe_local_thread_engine_base
+	#undef MR_maybe_local_thread_engine_base
+	#define MR_maybe_local_thread_engine_base MR_thread_engine_base
+#endif
+MR_END_MODULE
+
+MR_decl_entry(__Compare___varset__varset_1_0);
+MR_decl_entry(__Compare___tree234__tree234_2_0);
+MR_decl_entry(__Compare___maybe__maybe_1_0);
+
+MR_BEGIN_MODULE(check_hlds__mode_info_module111)
+	MR_init_entry1(__Compare___check_hlds__mode_info__mode_sub_info_0_0);
+	MR_INIT_PROC_LAYOUT_ADDR(mercury____Compare___check_hlds__mode_info__mode_sub_info_0_0);
+	MR_init_label10(__Compare___check_hlds__mode_info__mode_sub_info_0_0,3,2,5,9,13,18,22,29,34,38)
+	MR_init_label10(__Compare___check_hlds__mode_info__mode_sub_info_0_0,42,46,50,54,58,62,66,70,74,78)
+	MR_init_label5(__Compare___check_hlds__mode_info__mode_sub_info_0_0,82,86,90,94,263)
+MR_BEGIN_CODE
+
+/*-------------------------------------------------------------------------*/
+/* code for '__Compare__'/3 mode 0 */
+#ifdef MR_maybe_local_thread_engine_base
+	#undef MR_maybe_local_thread_engine_base
+	#define MR_maybe_local_thread_engine_base MR_local_thread_engine_base
+#endif
+MR_def_static(__Compare___check_hlds__mode_info__mode_sub_info_0_0)
+	MR_MAYBE_INIT_LOCAL_THREAD_ENGINE_BASE
+	if ((MR_r1 == MR_r2)) {
+		MR_GOTO_LAB(__Compare___check_hlds__mode_info__mode_sub_info_0_0_i3);
+	}
+	MR_incr_sp(45);
+	MR_sv(45) = (MR_Word) MR_succip;
+	MR_sv(1) = MR_r1;
+	MR_sv(2) = MR_r2;
+	MR_GOTO_LAB(__Compare___check_hlds__mode_info__mode_sub_info_0_0_i2);
+MR_def_label(__Compare___check_hlds__mode_info__mode_sub_info_0_0,3)
+	MR_MAYBE_INIT_LOCAL_THREAD_ENGINE_BASE
+	MR_r1 = (MR_Integer) 0;
+	MR_proceed();
+MR_def_label(__Compare___check_hlds__mode_info__mode_sub_info_0_0,2)
+	MR_MAYBE_INIT_LOCAL_THREAD_ENGINE_BASE
+	{
+	MR_Word MR_tempr1, MR_tempr2, MR_tempr3, MR_tempr4, MR_tempr5, MR_tempr6;
+	MR_tempr5 = MR_sv(2);
+	MR_sv(44) = (((MR_Integer) MR_tfield(0, MR_tempr5, 14) >> (MR_Integer) 5) & (MR_Integer) 1);
+	MR_sv(43) = (((MR_Integer) MR_tfield(0, MR_tempr5, 14) >> (MR_Integer) 4) & (MR_Integer) 1);
+	MR_sv(42) = (((MR_Integer) MR_tfield(0, MR_tempr5, 14) >> (MR_Integer) 3) & (MR_Integer) 1);
+	MR_sv(41) = (((MR_Integer) MR_tfield(0, MR_tempr5, 14) >> (MR_Integer) 2) & (MR_Integer) 1);
+	MR_sv(40) = (((MR_Integer) MR_tfield(0, MR_tempr5, 14) >> (MR_Integer) 1) & (MR_Integer) 1);
+	MR_sv(39) = ((MR_Integer) MR_tfield(0, MR_tempr5, 14) & (MR_Integer) 1);
+	MR_sv(38) = MR_tfield(0, MR_tempr5, 13);
+	MR_sv(37) = MR_tfield(0, MR_tempr5, 12);
+	MR_sv(36) = (((MR_Integer) MR_tfield(0, MR_tempr5, 11) >> (MR_Integer) 1) & (MR_Integer) 1);
+	MR_sv(35) = ((MR_Integer) MR_tfield(0, MR_tempr5, 11) & (MR_Integer) 1);
+	MR_sv(34) = MR_tfield(0, MR_tempr5, 10);
+	MR_sv(33) = (((MR_Integer) MR_tfield(0, MR_tempr5, 9) >> (MR_Integer) 2) & (MR_Integer) 1);
+	MR_sv(32) = (((MR_Integer) MR_tfield(0, MR_tempr5, 9) >> (MR_Integer) 1) & (MR_Integer) 1);
+	MR_sv(31) = ((MR_Integer) MR_tfield(0, MR_tempr5, 9) & (MR_Integer) 1);
+	MR_sv(30) = MR_tfield(0, MR_tempr5, 8);
+	MR_sv(29) = MR_tfield(0, MR_tempr5, 7);
+	MR_sv(28) = MR_tfield(0, MR_tempr5, 6);
+	MR_sv(27) = MR_tfield(0, MR_tempr5, 5);
+	MR_sv(26) = MR_tfield(0, MR_tempr5, 4);
+	MR_sv(25) = MR_tfield(0, MR_tempr5, 3);
+	MR_sv(24) = MR_tfield(0, MR_tempr5, 2);
+	MR_sv(23) = MR_tfield(0, MR_tempr5, 1);
+	MR_tempr6 = MR_sv(1);
+	MR_sv(22) = (((MR_Integer) MR_tfield(0, MR_tempr6, 14) >> (MR_Integer) 5) & (MR_Integer) 1);
+	MR_sv(21) = (((MR_Integer) MR_tfield(0, MR_tempr6, 14) >> (MR_Integer) 4) & (MR_Integer) 1);
+	MR_sv(20) = (((MR_Integer) MR_tfield(0, MR_tempr6, 14) >> (MR_Integer) 3) & (MR_Integer) 1);
+	MR_sv(19) = (((MR_Integer) MR_tfield(0, MR_tempr6, 14) >> (MR_Integer) 2) & (MR_Integer) 1);
+	MR_sv(18) = (((MR_Integer) MR_tfield(0, MR_tempr6, 14) >> (MR_Integer) 1) & (MR_Integer) 1);
+	MR_sv(17) = ((MR_Integer) MR_tfield(0, MR_tempr6, 14) & (MR_Integer) 1);
+	MR_sv(16) = MR_tfield(0, MR_tempr6, 13);
+	MR_sv(15) = MR_tfield(0, MR_tempr6, 12);
+	MR_sv(14) = (((MR_Integer) MR_tfield(0, MR_tempr6, 11) >> (MR_Integer) 1) & (MR_Integer) 1);
+	MR_sv(13) = ((MR_Integer) MR_tfield(0, MR_tempr6, 11) & (MR_Integer) 1);
+	MR_sv(12) = MR_tfield(0, MR_tempr6, 10);
+	MR_sv(11) = (((MR_Integer) MR_tfield(0, MR_tempr6, 9) >> (MR_Integer) 2) & (MR_Integer) 1);
+	MR_sv(10) = (((MR_Integer) MR_tfield(0, MR_tempr6, 9) >> (MR_Integer) 1) & (MR_Integer) 1);
+	MR_sv(9) = ((MR_Integer) MR_tfield(0, MR_tempr6, 9) & (MR_Integer) 1);
+	MR_sv(8) = MR_tfield(0, MR_tempr6, 8);
+	MR_sv(7) = MR_tfield(0, MR_tempr6, 7);
+	MR_sv(6) = MR_tfield(0, MR_tempr6, 6);
+	MR_sv(5) = MR_tfield(0, MR_tempr6, 5);
+	MR_sv(4) = MR_tfield(0, MR_tempr6, 4);
+	MR_sv(3) = MR_tfield(0, MR_tempr6, 3);
+	MR_tempr1 = MR_tfield(0, MR_tempr6, 2);
+	MR_tempr2 = MR_tfield(0, MR_tempr6, 1);
+	MR_tempr3 = MR_tempr6;
+	MR_sv(1) = MR_tempr2;
+	MR_tempr4 = MR_tempr5;
+	MR_sv(2) = MR_tempr1;
+	MR_r1 = MR_tfield(0, MR_tempr3, 0);
+	MR_r2 = MR_tfield(0, MR_tempr4, 0);
+	}
+	MR_np_call_localret_ent(private_builtin__builtin_compare_int_3_0,
+		__Compare___check_hlds__mode_info__mode_sub_info_0_0_i5);
+MR_def_label(__Compare___check_hlds__mode_info__mode_sub_info_0_0,5)
+	MR_MAYBE_INIT_LOCAL_THREAD_ENGINE_BASE
+	if (MR_INT_NE(MR_r1,0)) {
+		MR_GOTO_LAB(__Compare___check_hlds__mode_info__mode_sub_info_0_0_i263);
+	}
+	MR_r1 = MR_sv(1);
+	MR_r2 = MR_sv(23);
+	MR_np_call_localret_ent(private_builtin__builtin_compare_int_3_0,
+		__Compare___check_hlds__mode_info__mode_sub_info_0_0_i9);
+MR_def_label(__Compare___check_hlds__mode_info__mode_sub_info_0_0,9)
+	MR_MAYBE_INIT_LOCAL_THREAD_ENGINE_BASE
+	if (MR_INT_NE(MR_r1,0)) {
+		MR_GOTO_LAB(__Compare___check_hlds__mode_info__mode_sub_info_0_0_i263);
+	}
+	MR_r1 = (MR_Word) MR_CTOR0_ADDR(parse_tree__prog_data, prog_var_type);
+	MR_r2 = MR_sv(2);
+	MR_r3 = MR_sv(24);
+	MR_np_call_localret_ent(__Compare___varset__varset_1_0,
+		__Compare___check_hlds__mode_info__mode_sub_info_0_0_i13);
+MR_def_label(__Compare___check_hlds__mode_info__mode_sub_info_0_0,13)
+	MR_MAYBE_INIT_LOCAL_THREAD_ENGINE_BASE
+	if (MR_INT_NE(MR_r1,0)) {
+		MR_GOTO_LAB(__Compare___check_hlds__mode_info__mode_sub_info_0_0_i263);
+	}
+	MR_r1 = (MR_Word) MR_TAG_COMMON(0,0,0);
+	MR_r2 = (MR_Word) MR_CTOR0_ADDR(parse_tree__prog_data, mer_type);
+	MR_r3 = MR_sv(3);
+	MR_r4 = MR_sv(25);
+	MR_np_call_localret_ent(__Compare___tree234__tree234_2_0,
+		__Compare___check_hlds__mode_info__mode_sub_info_0_0_i18);
+MR_def_label(__Compare___check_hlds__mode_info__mode_sub_info_0_0,18)
+	MR_MAYBE_INIT_LOCAL_THREAD_ENGINE_BASE
+	if (MR_INT_NE(MR_r1,0)) {
+		MR_GOTO_LAB(__Compare___check_hlds__mode_info__mode_sub_info_0_0_i263);
+	}
+	MR_r1 = (MR_Word) MR_CTOR0_ADDR(check_hlds__mode_info, debug_flags);
+	MR_r2 = MR_sv(4);
+	MR_r3 = MR_sv(26);
+	MR_np_call_localret_ent(__Compare___maybe__maybe_1_0,
+		__Compare___check_hlds__mode_info__mode_sub_info_0_0_i22);
+MR_def_label(__Compare___check_hlds__mode_info__mode_sub_info_0_0,22)
+	MR_MAYBE_INIT_LOCAL_THREAD_ENGINE_BASE
+	if (MR_INT_NE(MR_r1,0)) {
+		MR_GOTO_LAB(__Compare___check_hlds__mode_info__mode_sub_info_0_0_i263);
+	}
+	MR_r1 = (MR_Word) MR_TAG_COMMON(0,1,0);
+	MR_r2 = MR_sv(5);
+	MR_r3 = MR_sv(27);
+	MR_np_call_localret_ent(__Compare___list__list_1_0,
+		__Compare___check_hlds__mode_info__mode_sub_info_0_0_i29);
+MR_def_label(__Compare___check_hlds__mode_info__mode_sub_info_0_0,29)
+	MR_MAYBE_INIT_LOCAL_THREAD_ENGINE_BASE
+	if (MR_INT_NE(MR_r1,0)) {
+		MR_GOTO_LAB(__Compare___check_hlds__mode_info__mode_sub_info_0_0_i263);
+	}
+	MR_r1 = (MR_Word) MR_TAG_COMMON(0,0,0);
+	MR_r2 = MR_sv(6);
+	MR_r3 = MR_sv(28);
+	MR_np_call_localret_ent(__Compare___bag__bag_1_0,
+		__Compare___check_hlds__mode_info__mode_sub_info_0_0_i34);
+MR_def_label(__Compare___check_hlds__mode_info__mode_sub_info_0_0,34)
+	MR_MAYBE_INIT_LOCAL_THREAD_ENGINE_BASE
+	if (MR_INT_NE(MR_r1,0)) {
+		MR_GOTO_LAB(__Compare___check_hlds__mode_info__mode_sub_info_0_0_i263);
+	}
+	MR_r1 = (MR_Word) MR_CTOR0_ADDR(parse_tree__prog_data, inst_var_type);
+	MR_r2 = MR_sv(7);
+	MR_r3 = MR_sv(29);
+	MR_np_call_localret_ent(__Compare___varset__varset_1_0,
+		__Compare___check_hlds__mode_info__mode_sub_info_0_0_i38);
+MR_def_label(__Compare___check_hlds__mode_info__mode_sub_info_0_0,38)
+	MR_MAYBE_INIT_LOCAL_THREAD_ENGINE_BASE
+	if (MR_INT_NE(MR_r1,0)) {
+		MR_GOTO_LAB(__Compare___check_hlds__mode_info__mode_sub_info_0_0_i263);
+	}
+	MR_r1 = (MR_Word) MR_CTOR0_ADDR(check_hlds__mode_info, par_conj_mode_check);
+	MR_r2 = MR_sv(8);
+	MR_r3 = MR_sv(30);
+	MR_np_call_localret_ent(__Compare___list__list_1_0,
+		__Compare___check_hlds__mode_info__mode_sub_info_0_0_i42);
+MR_def_label(__Compare___check_hlds__mode_info__mode_sub_info_0_0,42)
+	MR_MAYBE_INIT_LOCAL_THREAD_ENGINE_BASE
+	if (MR_INT_NE(MR_r1,0)) {
+		MR_GOTO_LAB(__Compare___check_hlds__mode_info__mode_sub_info_0_0_i263);
+	}
+	MR_r1 = MR_sv(9);
+	MR_r2 = MR_sv(31);
+	MR_np_call_localret_ent(private_builtin__builtin_compare_int_3_0,
+		__Compare___check_hlds__mode_info__mode_sub_info_0_0_i46);
+MR_def_label(__Compare___check_hlds__mode_info__mode_sub_info_0_0,46)
+	MR_MAYBE_INIT_LOCAL_THREAD_ENGINE_BASE
+	if (MR_INT_NE(MR_r1,0)) {
+		MR_GOTO_LAB(__Compare___check_hlds__mode_info__mode_sub_info_0_0_i263);
+	}
+	MR_r1 = MR_sv(10);
+	MR_r2 = MR_sv(32);
+	MR_np_call_localret_ent(private_builtin__builtin_compare_int_3_0,
+		__Compare___check_hlds__mode_info__mode_sub_info_0_0_i50);
+MR_def_label(__Compare___check_hlds__mode_info__mode_sub_info_0_0,50)
+	MR_MAYBE_INIT_LOCAL_THREAD_ENGINE_BASE
+	if (MR_INT_NE(MR_r1,0)) {
+		MR_GOTO_LAB(__Compare___check_hlds__mode_info__mode_sub_info_0_0_i263);
+	}
+	MR_r1 = MR_sv(11);
+	MR_r2 = MR_sv(33);
+	MR_np_call_localret_ent(private_builtin__builtin_compare_int_3_0,
+		__Compare___check_hlds__mode_info__mode_sub_info_0_0_i54);
+MR_def_label(__Compare___check_hlds__mode_info__mode_sub_info_0_0,54)
+	MR_MAYBE_INIT_LOCAL_THREAD_ENGINE_BASE
+	if (MR_INT_NE(MR_r1,0)) {
+		MR_GOTO_LAB(__Compare___check_hlds__mode_info__mode_sub_info_0_0_i263);
+	}
+	MR_r1 = MR_sv(12);
+	MR_r2 = MR_sv(34);
+	MR_np_call_localret_ent(__Compare___hlds__instmap__instmap_0_0,
+		__Compare___check_hlds__mode_info__mode_sub_info_0_0_i58);
+MR_def_label(__Compare___check_hlds__mode_info__mode_sub_info_0_0,58)
+	MR_MAYBE_INIT_LOCAL_THREAD_ENGINE_BASE
+	if (MR_INT_NE(MR_r1,0)) {
+		MR_GOTO_LAB(__Compare___check_hlds__mode_info__mode_sub_info_0_0_i263);
+	}
+	MR_r1 = MR_sv(13);
+	MR_r2 = MR_sv(35);
+	MR_np_call_localret_ent(private_builtin__builtin_compare_int_3_0,
+		__Compare___check_hlds__mode_info__mode_sub_info_0_0_i62);
+MR_def_label(__Compare___check_hlds__mode_info__mode_sub_info_0_0,62)
+	MR_MAYBE_INIT_LOCAL_THREAD_ENGINE_BASE
+	if (MR_INT_NE(MR_r1,0)) {
+		MR_GOTO_LAB(__Compare___check_hlds__mode_info__mode_sub_info_0_0_i263);
+	}
+	MR_r1 = MR_sv(14);
+	MR_r2 = MR_sv(36);
+	MR_np_call_localret_ent(private_builtin__builtin_compare_int_3_0,
+		__Compare___check_hlds__mode_info__mode_sub_info_0_0_i66);
+MR_def_label(__Compare___check_hlds__mode_info__mode_sub_info_0_0,66)
+	MR_MAYBE_INIT_LOCAL_THREAD_ENGINE_BASE
+	if (MR_INT_NE(MR_r1,0)) {
+		MR_GOTO_LAB(__Compare___check_hlds__mode_info__mode_sub_info_0_0_i263);
+	}
+	MR_r1 = MR_sv(15);
+	MR_r2 = MR_sv(37);
+	MR_np_call_localret_ent(__Compare___hlds__instmap__instmap_0_0,
+		__Compare___check_hlds__mode_info__mode_sub_info_0_0_i70);
+MR_def_label(__Compare___check_hlds__mode_info__mode_sub_info_0_0,70)
+	MR_MAYBE_INIT_LOCAL_THREAD_ENGINE_BASE
+	if (MR_INT_NE(MR_r1,0)) {
+		MR_GOTO_LAB(__Compare___check_hlds__mode_info__mode_sub_info_0_0_i263);
+	}
+	MR_r1 = (MR_Word) MR_CTOR0_ADDR(check_hlds__mode_errors, mode_warning_info);
+	MR_r2 = MR_sv(16);
+	MR_r3 = MR_sv(38);
+	MR_np_call_localret_ent(__Compare___list__list_1_0,
+		__Compare___check_hlds__mode_info__mode_sub_info_0_0_i74);
+MR_def_label(__Compare___check_hlds__mode_info__mode_sub_info_0_0,74)
+	MR_MAYBE_INIT_LOCAL_THREAD_ENGINE_BASE
+	if (MR_INT_NE(MR_r1,0)) {
+		MR_GOTO_LAB(__Compare___check_hlds__mode_info__mode_sub_info_0_0_i263);
+	}
+	MR_r1 = MR_sv(17);
+	MR_r2 = MR_sv(39);
+	MR_np_call_localret_ent(private_builtin__builtin_compare_int_3_0,
+		__Compare___check_hlds__mode_info__mode_sub_info_0_0_i78);
+MR_def_label(__Compare___check_hlds__mode_info__mode_sub_info_0_0,78)
+	MR_MAYBE_INIT_LOCAL_THREAD_ENGINE_BASE
+	if (MR_INT_NE(MR_r1,0)) {
+		MR_GOTO_LAB(__Compare___check_hlds__mode_info__mode_sub_info_0_0_i263);
+	}
+	MR_r1 = MR_sv(18);
+	MR_r2 = MR_sv(40);
+	MR_np_call_localret_ent(private_builtin__builtin_compare_int_3_0,
+		__Compare___check_hlds__mode_info__mode_sub_info_0_0_i82);
+MR_def_label(__Compare___check_hlds__mode_info__mode_sub_info_0_0,82)
+	MR_MAYBE_INIT_LOCAL_THREAD_ENGINE_BASE
+	if (MR_INT_NE(MR_r1,0)) {
+		MR_GOTO_LAB(__Compare___check_hlds__mode_info__mode_sub_info_0_0_i263);
+	}
+	MR_r1 = MR_sv(19);
+	MR_r2 = MR_sv(41);
+	MR_np_call_localret_ent(private_builtin__builtin_compare_int_3_0,
+		__Compare___check_hlds__mode_info__mode_sub_info_0_0_i86);
+MR_def_label(__Compare___check_hlds__mode_info__mode_sub_info_0_0,86)
+	MR_MAYBE_INIT_LOCAL_THREAD_ENGINE_BASE
+	if (MR_INT_NE(MR_r1,0)) {
+		MR_GOTO_LAB(__Compare___check_hlds__mode_info__mode_sub_info_0_0_i263);
+	}
+	MR_r1 = MR_sv(20);
+	MR_r2 = MR_sv(42);
+	MR_np_call_localret_ent(private_builtin__builtin_compare_int_3_0,
+		__Compare___check_hlds__mode_info__mode_sub_info_0_0_i90);
+MR_def_label(__Compare___check_hlds__mode_info__mode_sub_info_0_0,90)
+	MR_MAYBE_INIT_LOCAL_THREAD_ENGINE_BASE
+	if (MR_INT_NE(MR_r1,0)) {
+		MR_GOTO_LAB(__Compare___check_hlds__mode_info__mode_sub_info_0_0_i263);
+	}
+	MR_r1 = MR_sv(21);
+	MR_r2 = MR_sv(43);
+	MR_np_call_localret_ent(private_builtin__builtin_compare_int_3_0,
+		__Compare___check_hlds__mode_info__mode_sub_info_0_0_i94);
+MR_def_label(__Compare___check_hlds__mode_info__mode_sub_info_0_0,94)
+	MR_MAYBE_INIT_LOCAL_THREAD_ENGINE_BASE
+	if (MR_INT_NE(MR_r1,0)) {
+		MR_GOTO_LAB(__Compare___check_hlds__mode_info__mode_sub_info_0_0_i263);
+	}
+	MR_r1 = MR_sv(22);
+	MR_r2 = MR_sv(44);
+	MR_succip_word = MR_sv(45);
+	MR_decr_sp(45);
+	MR_np_tailcall_ent(private_builtin__builtin_compare_int_3_0);
+MR_def_label(__Compare___check_hlds__mode_info__mode_sub_info_0_0,263)
+	MR_MAYBE_INIT_LOCAL_THREAD_ENGINE_BASE
+	MR_decr_sp_and_return(45);
+#ifdef MR_maybe_local_thread_engine_base
+	#undef MR_maybe_local_thread_engine_base
+	#define MR_maybe_local_thread_engine_base MR_thread_engine_base
+#endif
+MR_END_MODULE
+
+MR_decl_entry(__Unify___tree_bitset__tree_bitset_1_0);
+
+MR_BEGIN_MODULE(check_hlds__mode_info_module112)
+	MR_init_entry1(__Unify___check_hlds__mode_info__par_conj_mode_check_0_0);
+	MR_INIT_PROC_LAYOUT_ADDR(mercury____Unify___check_hlds__mode_info__par_conj_mode_check_0_0);
+	MR_init_label3(__Unify___check_hlds__mode_info__par_conj_mode_check_0_0,5,9,1)
+MR_BEGIN_CODE
+
+/*-------------------------------------------------------------------------*/
+/* code for '__Unify__'/2 mode 0 */
+#ifdef MR_maybe_local_thread_engine_base
+	#undef MR_maybe_local_thread_engine_base
+	#define MR_maybe_local_thread_engine_base MR_local_thread_engine_base
+#endif
+MR_define_entry(mercury____Unify___check_hlds__mode_info__par_conj_mode_check_0_0);
+	MR_MAYBE_INIT_LOCAL_THREAD_ENGINE_BASE
+	if ((MR_r1 == MR_r2)) {
+		MR_GOTO_LAB(__Unify___check_hlds__mode_info__par_conj_mode_check_0_0_i9);
+	}
+	MR_incr_sp(4);
+	MR_sv(4) = (MR_Word) MR_succip;
+	MR_sv(1) = MR_r1;
+	MR_sv(2) = MR_r2;
+	{
+	MR_Word MR_tempr1, MR_tempr2;
+	MR_tempr1 = MR_sv(1);
+	MR_sv(1) = MR_tfield(0, MR_tempr1, 1);
+	MR_tempr2 = MR_sv(2);
+	MR_sv(2) = MR_tfield(0, MR_tempr2, 1);
+	MR_sv(3) = (MR_Word) MR_TAG_COMMON(0,0,0);
+	MR_r1 = MR_sv(3);
+	MR_r2 = MR_tfield(0, MR_tempr1, 0);
+	MR_r3 = MR_tfield(0, MR_tempr2, 0);
+	}
+	MR_np_call_localret_ent(__Unify___tree_bitset__tree_bitset_1_0,
+		__Unify___check_hlds__mode_info__par_conj_mode_check_0_0_i5);
+MR_def_label(__Unify___check_hlds__mode_info__par_conj_mode_check_0_0,5)
+	MR_MAYBE_INIT_LOCAL_THREAD_ENGINE_BASE
+	if (!(MR_r1)) {
+		MR_GOTO_LAB(__Unify___check_hlds__mode_info__par_conj_mode_check_0_0_i1);
+	}
+	MR_r1 = MR_sv(3);
+	MR_r2 = MR_sv(1);
+	MR_r3 = MR_sv(2);
+	MR_succip_word = MR_sv(4);
+	MR_decr_sp(4);
+	MR_np_tailcall_ent(__Unify___tree_bitset__tree_bitset_1_0);
+MR_def_label(__Unify___check_hlds__mode_info__par_conj_mode_check_0_0,9)
+	MR_MAYBE_INIT_LOCAL_THREAD_ENGINE_BASE
+	MR_r1 = MR_TRUE;
+	MR_proceed();
+MR_def_label(__Unify___check_hlds__mode_info__par_conj_mode_check_0_0,1)
+	MR_MAYBE_INIT_LOCAL_THREAD_ENGINE_BASE
+	MR_r1 = MR_FALSE;
+	MR_decr_sp_and_return(4);
+#ifdef MR_maybe_local_thread_engine_base
+	#undef MR_maybe_local_thread_engine_base
+	#define MR_maybe_local_thread_engine_base MR_thread_engine_base
+#endif
+MR_END_MODULE
+
+MR_decl_entry(__Compare___tree_bitset__tree_bitset_1_0);
+
+MR_BEGIN_MODULE(check_hlds__mode_info_module113)
+	MR_init_entry1(__Compare___check_hlds__mode_info__par_conj_mode_check_0_0);
+	MR_INIT_PROC_LAYOUT_ADDR(mercury____Compare___check_hlds__mode_info__par_conj_mode_check_0_0);
+	MR_init_label4(__Compare___check_hlds__mode_info__par_conj_mode_check_0_0,3,2,6,29)
+MR_BEGIN_CODE
+
+/*-------------------------------------------------------------------------*/
+/* code for '__Compare__'/3 mode 0 */
+#ifdef MR_maybe_local_thread_engine_base
+	#undef MR_maybe_local_thread_engine_base
+	#define MR_maybe_local_thread_engine_base MR_local_thread_engine_base
+#endif
+MR_define_entry(mercury____Compare___check_hlds__mode_info__par_conj_mode_check_0_0);
+	MR_MAYBE_INIT_LOCAL_THREAD_ENGINE_BASE
+	if ((MR_r1 == MR_r2)) {
+		MR_GOTO_LAB(__Compare___check_hlds__mode_info__par_conj_mode_check_0_0_i3);
+	}
+	MR_incr_sp(3);
+	MR_sv(3) = (MR_Word) MR_succip;
+	MR_sv(1) = MR_r1;
+	MR_sv(2) = MR_r2;
+	MR_GOTO_LAB(__Compare___check_hlds__mode_info__par_conj_mode_check_0_0_i2);
+MR_def_label(__Compare___check_hlds__mode_info__par_conj_mode_check_0_0,3)
+	MR_MAYBE_INIT_LOCAL_THREAD_ENGINE_BASE
+	MR_r1 = (MR_Integer) 0;
+	MR_proceed();
+MR_def_label(__Compare___check_hlds__mode_info__par_conj_mode_check_0_0,2)
+	MR_MAYBE_INIT_LOCAL_THREAD_ENGINE_BASE
+	{
+	MR_Word MR_tempr1, MR_tempr2, MR_tempr3, MR_tempr4, MR_tempr5, MR_tempr6;
+	MR_tempr5 = MR_sv(2);
+	MR_tempr1 = MR_tfield(0, MR_tempr5, 1);
+	MR_tempr6 = MR_sv(1);
+	MR_tempr2 = MR_tfield(0, MR_tempr6, 1);
+	MR_tempr3 = MR_tempr6;
+	MR_sv(1) = MR_tempr2;
+	MR_tempr4 = MR_tempr5;
+	MR_sv(2) = MR_tempr1;
+	MR_r1 = (MR_Word) MR_TAG_COMMON(0,0,0);
+	MR_r2 = MR_tfield(0, MR_tempr3, 0);
+	MR_r3 = MR_tfield(0, MR_tempr4, 0);
+	}
+	MR_np_call_localret_ent(__Compare___tree_bitset__tree_bitset_1_0,
+		__Compare___check_hlds__mode_info__par_conj_mode_check_0_0_i6);
+MR_def_label(__Compare___check_hlds__mode_info__par_conj_mode_check_0_0,6)
+	MR_MAYBE_INIT_LOCAL_THREAD_ENGINE_BASE
+	if (MR_INT_NE(MR_r1,0)) {
+		MR_GOTO_LAB(__Compare___check_hlds__mode_info__par_conj_mode_check_0_0_i29);
+	}
+	MR_r1 = (MR_Word) MR_TAG_COMMON(0,0,0);
+	MR_r2 = MR_sv(1);
+	MR_r3 = MR_sv(2);
+	MR_succip_word = MR_sv(3);
+	MR_decr_sp(3);
+	MR_np_tailcall_ent(__Compare___tree_bitset__tree_bitset_1_0);
+MR_def_label(__Compare___check_hlds__mode_info__par_conj_mode_check_0_0,29)
+	MR_MAYBE_INIT_LOCAL_THREAD_ENGINE_BASE
+	MR_decr_sp_and_return(3);
+#ifdef MR_maybe_local_thread_engine_base
+	#undef MR_maybe_local_thread_engine_base
+	#define MR_maybe_local_thread_engine_base MR_thread_engine_base
+#endif
+MR_END_MODULE
+
+
+MR_BEGIN_MODULE(check_hlds__mode_info_module114)
+	MR_init_entry1(__Unify___check_hlds__mode_info__par_conj_mode_check_stack_0_0);
+	MR_INIT_PROC_LAYOUT_ADDR(mercury____Unify___check_hlds__mode_info__par_conj_mode_check_stack_0_0);
+MR_BEGIN_CODE
+
+/*-------------------------------------------------------------------------*/
+/* code for '__Unify__'/2 mode 0 */
+#ifdef MR_maybe_local_thread_engine_base
+	#undef MR_maybe_local_thread_engine_base
+	#define MR_maybe_local_thread_engine_base MR_local_thread_engine_base
+#endif
+MR_define_entry(mercury____Unify___check_hlds__mode_info__par_conj_mode_check_stack_0_0);
+	MR_MAYBE_INIT_LOCAL_THREAD_ENGINE_BASE
+	{
+	MR_Word MR_tempr1, MR_tempr2;
+	MR_tempr1 = MR_r1;
+	MR_r1 = (MR_Word) MR_CTOR0_ADDR(check_hlds__mode_info, par_conj_mode_check);
+	MR_tempr2 = MR_r2;
+	MR_r2 = MR_tempr1;
+	MR_r3 = MR_tempr2;
+	MR_np_tailcall_ent(__Unify___list__list_1_0);
+	}
+#ifdef MR_maybe_local_thread_engine_base
+	#undef MR_maybe_local_thread_engine_base
+	#define MR_maybe_local_thread_engine_base MR_thread_engine_base
+#endif
+MR_END_MODULE
+
+
+MR_BEGIN_MODULE(check_hlds__mode_info_module115)
+	MR_init_entry1(__Compare___check_hlds__mode_info__par_conj_mode_check_stack_0_0);
+	MR_INIT_PROC_LAYOUT_ADDR(mercury____Compare___check_hlds__mode_info__par_conj_mode_check_stack_0_0);
+MR_BEGIN_CODE
+
+/*-------------------------------------------------------------------------*/
+/* code for '__Compare__'/3 mode 0 */
+#ifdef MR_maybe_local_thread_engine_base
+	#undef MR_maybe_local_thread_engine_base
+	#define MR_maybe_local_thread_engine_base MR_local_thread_engine_base
+#endif
+MR_define_entry(mercury____Compare___check_hlds__mode_info__par_conj_mode_check_stack_0_0);
+	MR_MAYBE_INIT_LOCAL_THREAD_ENGINE_BASE
+	{
+	MR_Word MR_tempr1, MR_tempr2;
+	MR_tempr1 = MR_r1;
+	MR_r1 = (MR_Word) MR_CTOR0_ADDR(check_hlds__mode_info, par_conj_mode_check);
+	MR_tempr2 = MR_r2;
+	MR_r2 = MR_tempr1;
+	MR_r3 = MR_tempr2;
+	MR_np_tailcall_ent(__Compare___list__list_1_0);
+	}
+#ifdef MR_maybe_local_thread_engine_base
+	#undef MR_maybe_local_thread_engine_base
+	#define MR_maybe_local_thread_engine_base MR_thread_engine_base
+#endif
+MR_END_MODULE
+
+
+MR_BEGIN_MODULE(check_hlds__mode_info_module116)
+	MR_init_entry1(__Unify___check_hlds__mode_info__side_0_0);
+	MR_INIT_PROC_LAYOUT_ADDR(mercury____Unify___check_hlds__mode_info__side_0_0);
+MR_BEGIN_CODE
+
+/*-------------------------------------------------------------------------*/
+/* code for '__Unify__'/2 mode 0 */
+#ifdef MR_maybe_local_thread_engine_base
+	#undef MR_maybe_local_thread_engine_base
+	#define MR_maybe_local_thread_engine_base MR_local_thread_engine_base
+#endif
+MR_define_entry(mercury____Unify___check_hlds__mode_info__side_0_0);
+	MR_MAYBE_INIT_LOCAL_THREAD_ENGINE_BASE
+	MR_r1 = (MR_r1 == MR_r2);
+	MR_proceed();
+#ifdef MR_maybe_local_thread_engine_base
+	#undef MR_maybe_local_thread_engine_base
+	#define MR_maybe_local_thread_engine_base MR_thread_engine_base
+#endif
+MR_END_MODULE
+
+
+MR_BEGIN_MODULE(check_hlds__mode_info_module117)
+	MR_init_entry1(__Compare___check_hlds__mode_info__side_0_0);
+	MR_INIT_PROC_LAYOUT_ADDR(mercury____Compare___check_hlds__mode_info__side_0_0);
+MR_BEGIN_CODE
+
+/*-------------------------------------------------------------------------*/
+/* code for '__Compare__'/3 mode 0 */
+#ifdef MR_maybe_local_thread_engine_base
+	#undef MR_maybe_local_thread_engine_base
+	#define MR_maybe_local_thread_engine_base MR_local_thread_engine_base
+#endif
+MR_define_entry(mercury____Compare___check_hlds__mode_info__side_0_0);
+	MR_MAYBE_INIT_LOCAL_THREAD_ENGINE_BASE
+	MR_np_tailcall_ent(private_builtin__builtin_compare_int_3_0);
+#ifdef MR_maybe_local_thread_engine_base
+	#undef MR_maybe_local_thread_engine_base
+	#define MR_maybe_local_thread_engine_base MR_thread_engine_base
+#endif
+MR_END_MODULE
+
+
+MR_BEGIN_MODULE(check_hlds__mode_info_module118)
+	MR_init_entry1(__Unify___check_hlds__mode_info__var_lock_reason_0_0);
+	MR_INIT_PROC_LAYOUT_ADDR(mercury____Unify___check_hlds__mode_info__var_lock_reason_0_0);
+	MR_init_label7(__Unify___check_hlds__mode_info__var_lock_reason_0_0,5,6,7,8,22,9,1)
+MR_BEGIN_CODE
+
+/*-------------------------------------------------------------------------*/
+/* code for '__Unify__'/2 mode 0 */
+#ifdef MR_maybe_local_thread_engine_base
+	#undef MR_maybe_local_thread_engine_base
+	#define MR_maybe_local_thread_engine_base MR_local_thread_engine_base
+#endif
+MR_define_entry(mercury____Unify___check_hlds__mode_info__var_lock_reason_0_0);
+	MR_MAYBE_INIT_LOCAL_THREAD_ENGINE_BASE
+	MR_incr_sp(2);
+	if ((MR_r1 == MR_r2)) {
+		MR_GOTO_LAB(__Unify___check_hlds__mode_info__var_lock_reason_0_0_i22);
+	}
+	{
+	MR_Word MR_tempr1;
+	MR_tempr1 = MR_r1;
+	MR_sv(1) = MR_tempr1;
+	MR_sv(2) = MR_r2;
+	if (MR_LTAGS_TESTR(MR_tempr1,0,3)) {
+		MR_GOTO_LAB(__Unify___check_hlds__mode_info__var_lock_reason_0_0_i5);
+	}
+	MR_r1 = (MR_sv(2) == MR_tempr1);
+	MR_decr_sp(2);
+	MR_proceed();
+	}
+MR_def_label(__Unify___check_hlds__mode_info__var_lock_reason_0_0,5)
+	MR_MAYBE_INIT_LOCAL_THREAD_ENGINE_BASE
+	if (MR_LTAGS_TESTR(MR_sv(1),0,1)) {
+		MR_GOTO_LAB(__Unify___check_hlds__mode_info__var_lock_reason_0_0_i6);
+	}
+	MR_r1 = (MR_sv(2) == MR_sv(1));
+	MR_decr_sp(2);
+	MR_proceed();
+MR_def_label(__Unify___check_hlds__mode_info__var_lock_reason_0_0,6)
+	MR_MAYBE_INIT_LOCAL_THREAD_ENGINE_BASE
+	if (MR_LTAGS_TESTR(MR_sv(1),0,0)) {
+		MR_GOTO_LAB(__Unify___check_hlds__mode_info__var_lock_reason_0_0_i7);
+	}
+	MR_r1 = (MR_sv(2) == MR_sv(1));
+	MR_decr_sp(2);
+	MR_proceed();
+MR_def_label(__Unify___check_hlds__mode_info__var_lock_reason_0_0,7)
+	MR_MAYBE_INIT_LOCAL_THREAD_ENGINE_BASE
+	if (MR_LTAGS_TESTR(MR_sv(1),0,4)) {
+		MR_GOTO_LAB(__Unify___check_hlds__mode_info__var_lock_reason_0_0_i8);
+	}
+	MR_r1 = (MR_sv(2) == MR_sv(1));
+	MR_decr_sp(2);
+	MR_proceed();
+MR_def_label(__Unify___check_hlds__mode_info__var_lock_reason_0_0,8)
+	MR_MAYBE_INIT_LOCAL_THREAD_ENGINE_BASE
+	if (MR_LTAGS_TESTR(MR_sv(1),0,2)) {
+		MR_GOTO_LAB(__Unify___check_hlds__mode_info__var_lock_reason_0_0_i9);
+	}
+	MR_r1 = (MR_sv(2) == MR_sv(1));
+	MR_decr_sp(2);
+	MR_proceed();
+MR_def_label(__Unify___check_hlds__mode_info__var_lock_reason_0_0,22)
+	MR_MAYBE_INIT_LOCAL_THREAD_ENGINE_BASE
+	MR_decr_sp(2);
+	MR_r1 = MR_TRUE;
+	MR_proceed();
+MR_def_label(__Unify___check_hlds__mode_info__var_lock_reason_0_0,9)
+	MR_MAYBE_INIT_LOCAL_THREAD_ENGINE_BASE
+	if (MR_PTAG_TESTR(MR_sv(2),1)) {
+		MR_GOTO_LAB(__Unify___check_hlds__mode_info__var_lock_reason_0_0_i1);
+	}
+	MR_r1 = MR_tfield(1, MR_sv(1), 0);
+	MR_r2 = MR_tfield(1, MR_sv(2), 0);
+	MR_r1 = (MR_r1 == MR_r2);
+	MR_decr_sp(2);
+	MR_proceed();
+MR_def_label(__Unify___check_hlds__mode_info__var_lock_reason_0_0,1)
+	MR_MAYBE_INIT_LOCAL_THREAD_ENGINE_BASE
+	MR_decr_sp(2);
+	MR_r1 = MR_FALSE;
+	MR_proceed();
+#ifdef MR_maybe_local_thread_engine_base
+	#undef MR_maybe_local_thread_engine_base
+	#define MR_maybe_local_thread_engine_base MR_thread_engine_base
+#endif
+MR_END_MODULE
+
+
+MR_BEGIN_MODULE(check_hlds__mode_info_module119)
+	MR_init_entry1(__Compare___check_hlds__mode_info__var_lock_reason_0_0);
+	MR_INIT_PROC_LAYOUT_ADDR(mercury____Compare___check_hlds__mode_info__var_lock_reason_0_0);
+	MR_init_label10(__Compare___check_hlds__mode_info__var_lock_reason_0_0,7,8,9,10,5,14,15,16,17,12)
+	MR_init_label10(__Compare___check_hlds__mode_info__var_lock_reason_0_0,21,22,23,24,19,28,29,30,31,26)
+	MR_init_label10(__Compare___check_hlds__mode_info__var_lock_reason_0_0,35,36,37,38,114,33,41,42,81,43)
+	MR_init_label3(__Compare___check_hlds__mode_info__var_lock_reason_0_0,44,83,45)
+MR_BEGIN_CODE
+
+/*-------------------------------------------------------------------------*/
+/* code for '__Compare__'/3 mode 0 */
+#ifdef MR_maybe_local_thread_engine_base
+	#undef MR_maybe_local_thread_engine_base
+	#define MR_maybe_local_thread_engine_base MR_local_thread_engine_base
+#endif
+MR_define_entry(mercury____Compare___check_hlds__mode_info__var_lock_reason_0_0);
+	MR_MAYBE_INIT_LOCAL_THREAD_ENGINE_BASE
+	MR_incr_sp(3);
+	MR_sv(3) = (MR_Word) MR_succip;
+	if ((MR_r1 == MR_r2)) {
+		MR_GOTO_LAB(__Compare___check_hlds__mode_info__var_lock_reason_0_0_i114);
+	}
+	MR_sv(1) = MR_r1;
+	MR_sv(2) = MR_r2;
+	if (MR_LTAGS_TESTR(MR_sv(1),0,3)) {
+		MR_GOTO_LAB(__Compare___check_hlds__mode_info__var_lock_reason_0_0_i5);
+	}
+	if (MR_LTAGS_TESTR(MR_sv(2),0,3)) {
+		MR_GOTO_LAB(__Compare___check_hlds__mode_info__var_lock_reason_0_0_i7);
+	}
+	MR_r1 = (MR_Integer) 0;
+	MR_decr_sp(3);
+	MR_proceed();
+MR_def_label(__Compare___check_hlds__mode_info__var_lock_reason_0_0,7)
+	MR_MAYBE_INIT_LOCAL_THREAD_ENGINE_BASE
+	if (MR_LTAGS_TESTR(MR_sv(2),0,1)) {
+		MR_GOTO_LAB(__Compare___check_hlds__mode_info__var_lock_reason_0_0_i8);
+	}
+	MR_r1 = (MR_Integer) 2;
+	MR_decr_sp_and_return(3);
+MR_def_label(__Compare___check_hlds__mode_info__var_lock_reason_0_0,8)
+	MR_MAYBE_INIT_LOCAL_THREAD_ENGINE_BASE
+	if (MR_LTAGS_TESTR(MR_sv(2),0,0)) {
+		MR_GOTO_LAB(__Compare___check_hlds__mode_info__var_lock_reason_0_0_i9);
+	}
+	MR_r1 = (MR_Integer) 2;
+	MR_decr_sp_and_return(3);
+MR_def_label(__Compare___check_hlds__mode_info__var_lock_reason_0_0,9)
+	MR_MAYBE_INIT_LOCAL_THREAD_ENGINE_BASE
+	if (MR_LTAGS_TESTR(MR_sv(2),0,4)) {
+		MR_GOTO_LAB(__Compare___check_hlds__mode_info__var_lock_reason_0_0_i10);
+	}
+	MR_r1 = (MR_Integer) 1;
+	MR_decr_sp_and_return(3);
+MR_def_label(__Compare___check_hlds__mode_info__var_lock_reason_0_0,10)
+	MR_MAYBE_INIT_LOCAL_THREAD_ENGINE_BASE
+	if (MR_LTAGS_TESTR(MR_sv(2),0,2)) {
+		MR_GOTO_LAB(__Compare___check_hlds__mode_info__var_lock_reason_0_0_i81);
+	}
+	MR_r1 = (MR_Integer) 2;
+	MR_decr_sp_and_return(3);
+MR_def_label(__Compare___check_hlds__mode_info__var_lock_reason_0_0,5)
+	MR_MAYBE_INIT_LOCAL_THREAD_ENGINE_BASE
+	if (MR_LTAGS_TESTR(MR_sv(1),0,1)) {
+		MR_GOTO_LAB(__Compare___check_hlds__mode_info__var_lock_reason_0_0_i12);
+	}
+	if (MR_LTAGS_TESTR(MR_sv(2),0,3)) {
+		MR_GOTO_LAB(__Compare___check_hlds__mode_info__var_lock_reason_0_0_i14);
+	}
+	MR_r1 = (MR_Integer) 1;
+	MR_decr_sp_and_return(3);
+MR_def_label(__Compare___check_hlds__mode_info__var_lock_reason_0_0,14)
+	MR_MAYBE_INIT_LOCAL_THREAD_ENGINE_BASE
+	if (MR_LTAGS_TESTR(MR_sv(2),0,1)) {
+		MR_GOTO_LAB(__Compare___check_hlds__mode_info__var_lock_reason_0_0_i15);
+	}
+	MR_r1 = (MR_Integer) 0;
+	MR_decr_sp_and_return(3);
+MR_def_label(__Compare___check_hlds__mode_info__var_lock_reason_0_0,15)
+	MR_MAYBE_INIT_LOCAL_THREAD_ENGINE_BASE
+	if (MR_LTAGS_TESTR(MR_sv(2),0,0)) {
+		MR_GOTO_LAB(__Compare___check_hlds__mode_info__var_lock_reason_0_0_i16);
+	}
+	MR_r1 = (MR_Integer) 2;
+	MR_decr_sp_and_return(3);
+MR_def_label(__Compare___check_hlds__mode_info__var_lock_reason_0_0,16)
+	MR_MAYBE_INIT_LOCAL_THREAD_ENGINE_BASE
+	if (MR_LTAGS_TESTR(MR_sv(2),0,4)) {
+		MR_GOTO_LAB(__Compare___check_hlds__mode_info__var_lock_reason_0_0_i17);
+	}
+	MR_r1 = (MR_Integer) 1;
+	MR_decr_sp_and_return(3);
+MR_def_label(__Compare___check_hlds__mode_info__var_lock_reason_0_0,17)
+	MR_MAYBE_INIT_LOCAL_THREAD_ENGINE_BASE
+	if (MR_LTAGS_TESTR(MR_sv(2),0,2)) {
+		MR_GOTO_LAB(__Compare___check_hlds__mode_info__var_lock_reason_0_0_i83);
+	}
+	MR_r1 = (MR_Integer) 1;
+	MR_decr_sp_and_return(3);
+MR_def_label(__Compare___check_hlds__mode_info__var_lock_reason_0_0,12)
+	MR_MAYBE_INIT_LOCAL_THREAD_ENGINE_BASE
+	if (MR_LTAGS_TESTR(MR_sv(1),0,0)) {
+		MR_GOTO_LAB(__Compare___check_hlds__mode_info__var_lock_reason_0_0_i19);
+	}
+	if (MR_LTAGS_TESTR(MR_sv(2),0,3)) {
+		MR_GOTO_LAB(__Compare___check_hlds__mode_info__var_lock_reason_0_0_i21);
+	}
+	MR_r1 = (MR_Integer) 1;
+	MR_decr_sp_and_return(3);
+MR_def_label(__Compare___check_hlds__mode_info__var_lock_reason_0_0,21)
+	MR_MAYBE_INIT_LOCAL_THREAD_ENGINE_BASE
+	if (MR_LTAGS_TESTR(MR_sv(2),0,1)) {
+		MR_GOTO_LAB(__Compare___check_hlds__mode_info__var_lock_reason_0_0_i22);
+	}
+	MR_r1 = (MR_Integer) 1;
+	MR_decr_sp_and_return(3);
+MR_def_label(__Compare___check_hlds__mode_info__var_lock_reason_0_0,22)
+	MR_MAYBE_INIT_LOCAL_THREAD_ENGINE_BASE
+	if (MR_LTAGS_TESTR(MR_sv(2),0,0)) {
+		MR_GOTO_LAB(__Compare___check_hlds__mode_info__var_lock_reason_0_0_i23);
+	}
+	MR_r1 = (MR_Integer) 0;
+	MR_decr_sp_and_return(3);
+MR_def_label(__Compare___check_hlds__mode_info__var_lock_reason_0_0,23)
+	MR_MAYBE_INIT_LOCAL_THREAD_ENGINE_BASE
+	if (MR_LTAGS_TESTR(MR_sv(2),0,4)) {
+		MR_GOTO_LAB(__Compare___check_hlds__mode_info__var_lock_reason_0_0_i24);
+	}
+	MR_r1 = (MR_Integer) 1;
+	MR_decr_sp_and_return(3);
+MR_def_label(__Compare___check_hlds__mode_info__var_lock_reason_0_0,24)
+	MR_MAYBE_INIT_LOCAL_THREAD_ENGINE_BASE
+	if (MR_LTAGS_TESTR(MR_sv(2),0,2)) {
+		MR_GOTO_LAB(__Compare___check_hlds__mode_info__var_lock_reason_0_0_i83);
+	}
+	MR_r1 = (MR_Integer) 1;
+	MR_decr_sp_and_return(3);
+MR_def_label(__Compare___check_hlds__mode_info__var_lock_reason_0_0,19)
+	MR_MAYBE_INIT_LOCAL_THREAD_ENGINE_BASE
+	if (MR_LTAGS_TESTR(MR_sv(1),0,4)) {
+		MR_GOTO_LAB(__Compare___check_hlds__mode_info__var_lock_reason_0_0_i26);
+	}
+	if (MR_LTAGS_TESTR(MR_sv(2),0,3)) {
+		MR_GOTO_LAB(__Compare___check_hlds__mode_info__var_lock_reason_0_0_i28);
+	}
+	MR_r1 = (MR_Integer) 2;
+	MR_decr_sp_and_return(3);
+MR_def_label(__Compare___check_hlds__mode_info__var_lock_reason_0_0,28)
+	MR_MAYBE_INIT_LOCAL_THREAD_ENGINE_BASE
+	if (MR_LTAGS_TESTR(MR_sv(2),0,1)) {
+		MR_GOTO_LAB(__Compare___check_hlds__mode_info__var_lock_reason_0_0_i29);
+	}
+	MR_r1 = (MR_Integer) 2;
+	MR_decr_sp_and_return(3);
+MR_def_label(__Compare___check_hlds__mode_info__var_lock_reason_0_0,29)
+	MR_MAYBE_INIT_LOCAL_THREAD_ENGINE_BASE
+	if (MR_LTAGS_TESTR(MR_sv(2),0,0)) {
+		MR_GOTO_LAB(__Compare___check_hlds__mode_info__var_lock_reason_0_0_i30);
+	}
+	MR_r1 = (MR_Integer) 2;
+	MR_decr_sp_and_return(3);
+MR_def_label(__Compare___check_hlds__mode_info__var_lock_reason_0_0,30)
+	MR_MAYBE_INIT_LOCAL_THREAD_ENGINE_BASE
+	if (MR_LTAGS_TESTR(MR_sv(2),0,4)) {
+		MR_GOTO_LAB(__Compare___check_hlds__mode_info__var_lock_reason_0_0_i31);
+	}
+	MR_r1 = (MR_Integer) 0;
+	MR_decr_sp_and_return(3);
+MR_def_label(__Compare___check_hlds__mode_info__var_lock_reason_0_0,31)
+	MR_MAYBE_INIT_LOCAL_THREAD_ENGINE_BASE
+	if (MR_LTAGS_TESTR(MR_sv(2),0,2)) {
+		MR_GOTO_LAB(__Compare___check_hlds__mode_info__var_lock_reason_0_0_i81);
+	}
+	MR_r1 = (MR_Integer) 2;
+	MR_decr_sp_and_return(3);
+MR_def_label(__Compare___check_hlds__mode_info__var_lock_reason_0_0,26)
+	MR_MAYBE_INIT_LOCAL_THREAD_ENGINE_BASE
+	if (MR_LTAGS_TESTR(MR_sv(1),0,2)) {
+		MR_GOTO_LAB(__Compare___check_hlds__mode_info__var_lock_reason_0_0_i33);
+	}
+	if (MR_LTAGS_TESTR(MR_sv(2),0,3)) {
+		MR_GOTO_LAB(__Compare___check_hlds__mode_info__var_lock_reason_0_0_i35);
+	}
+	MR_r1 = (MR_Integer) 1;
+	MR_decr_sp_and_return(3);
+MR_def_label(__Compare___check_hlds__mode_info__var_lock_reason_0_0,35)
+	MR_MAYBE_INIT_LOCAL_THREAD_ENGINE_BASE
+	if (MR_LTAGS_TESTR(MR_sv(2),0,1)) {
+		MR_GOTO_LAB(__Compare___check_hlds__mode_info__var_lock_reason_0_0_i36);
+	}
+	MR_r1 = (MR_Integer) 2;
+	MR_decr_sp_and_return(3);
+MR_def_label(__Compare___check_hlds__mode_info__var_lock_reason_0_0,36)
+	MR_MAYBE_INIT_LOCAL_THREAD_ENGINE_BASE
+	if (MR_LTAGS_TESTR(MR_sv(2),0,0)) {
+		MR_GOTO_LAB(__Compare___check_hlds__mode_info__var_lock_reason_0_0_i37);
+	}
+	MR_r1 = (MR_Integer) 2;
+	MR_decr_sp_and_return(3);
+MR_def_label(__Compare___check_hlds__mode_info__var_lock_reason_0_0,37)
+	MR_MAYBE_INIT_LOCAL_THREAD_ENGINE_BASE
+	if (MR_LTAGS_TESTR(MR_sv(2),0,4)) {
+		MR_GOTO_LAB(__Compare___check_hlds__mode_info__var_lock_reason_0_0_i38);
+	}
+	MR_r1 = (MR_Integer) 1;
+	MR_decr_sp_and_return(3);
+MR_def_label(__Compare___check_hlds__mode_info__var_lock_reason_0_0,38)
+	MR_MAYBE_INIT_LOCAL_THREAD_ENGINE_BASE
+	if (MR_LTAGS_TESTR(MR_sv(2),0,2)) {
+		MR_GOTO_LAB(__Compare___check_hlds__mode_info__var_lock_reason_0_0_i81);
+	}
+MR_def_label(__Compare___check_hlds__mode_info__var_lock_reason_0_0,114)
+	MR_MAYBE_INIT_LOCAL_THREAD_ENGINE_BASE
+	MR_r1 = (MR_Integer) 0;
+	MR_decr_sp_and_return(3);
+MR_def_label(__Compare___check_hlds__mode_info__var_lock_reason_0_0,33)
+	MR_MAYBE_INIT_LOCAL_THREAD_ENGINE_BASE
+	if (MR_LTAGS_TESTR(MR_sv(2),0,3)) {
+		MR_GOTO_LAB(__Compare___check_hlds__mode_info__var_lock_reason_0_0_i41);
+	}
+	MR_r1 = (MR_Integer) 1;
+	MR_decr_sp_and_return(3);
+MR_def_label(__Compare___check_hlds__mode_info__var_lock_reason_0_0,41)
+	MR_MAYBE_INIT_LOCAL_THREAD_ENGINE_BASE
+	if (MR_LTAGS_TESTR(MR_sv(2),0,1)) {
+		MR_GOTO_LAB(__Compare___check_hlds__mode_info__var_lock_reason_0_0_i42);
+	}
+	MR_r1 = (MR_Integer) 2;
+	MR_decr_sp_and_return(3);
+MR_def_label(__Compare___check_hlds__mode_info__var_lock_reason_0_0,42)
+	MR_MAYBE_INIT_LOCAL_THREAD_ENGINE_BASE
+	if (MR_LTAGS_TESTR(MR_sv(2),0,0)) {
+		MR_GOTO_LAB(__Compare___check_hlds__mode_info__var_lock_reason_0_0_i43);
+	}
+MR_def_label(__Compare___check_hlds__mode_info__var_lock_reason_0_0,81)
+	MR_MAYBE_INIT_LOCAL_THREAD_ENGINE_BASE
+	MR_r1 = (MR_Integer) 2;
+	MR_decr_sp_and_return(3);
+MR_def_label(__Compare___check_hlds__mode_info__var_lock_reason_0_0,43)
+	MR_MAYBE_INIT_LOCAL_THREAD_ENGINE_BASE
+	if (MR_LTAGS_TESTR(MR_sv(2),0,4)) {
+		MR_GOTO_LAB(__Compare___check_hlds__mode_info__var_lock_reason_0_0_i44);
+	}
+	MR_r1 = (MR_Integer) 1;
+	MR_decr_sp_and_return(3);
+MR_def_label(__Compare___check_hlds__mode_info__var_lock_reason_0_0,44)
+	MR_MAYBE_INIT_LOCAL_THREAD_ENGINE_BASE
+	if (MR_LTAGS_TESTR(MR_sv(2),0,2)) {
+		MR_GOTO_LAB(__Compare___check_hlds__mode_info__var_lock_reason_0_0_i45);
+	}
+MR_def_label(__Compare___check_hlds__mode_info__var_lock_reason_0_0,83)
+	MR_MAYBE_INIT_LOCAL_THREAD_ENGINE_BASE
+	MR_r1 = (MR_Integer) 1;
+	MR_decr_sp_and_return(3);
+MR_def_label(__Compare___check_hlds__mode_info__var_lock_reason_0_0,45)
+	MR_MAYBE_INIT_LOCAL_THREAD_ENGINE_BASE
+	MR_r1 = MR_tfield(1, MR_sv(1), 0);
+	MR_r2 = MR_tfield(1, MR_sv(2), 0);
+	MR_succip_word = MR_sv(3);
+	MR_decr_sp(3);
+	MR_np_tailcall_ent(private_builtin__builtin_compare_int_3_0);
+#ifdef MR_maybe_local_thread_engine_base
+	#undef MR_maybe_local_thread_engine_base
+	#define MR_maybe_local_thread_engine_base MR_thread_engine_base
+#endif
+MR_END_MODULE
+
+static void mercury__check_hlds__mode_info_maybe_bunch_0(void)
+{
+	check_hlds__mode_info_module0();
+	check_hlds__mode_info_module1();
+	check_hlds__mode_info_module2();
+	check_hlds__mode_info_module3();
+	check_hlds__mode_info_module4();
+	check_hlds__mode_info_module5();
+	check_hlds__mode_info_module6();
+	check_hlds__mode_info_module7();
+	check_hlds__mode_info_module8();
+	check_hlds__mode_info_module9();
+	check_hlds__mode_info_module10();
+	check_hlds__mode_info_module11();
+	check_hlds__mode_info_module12();
+	check_hlds__mode_info_module13();
+	check_hlds__mode_info_module14();
+	check_hlds__mode_info_module15();
+	check_hlds__mode_info_module16();
+	check_hlds__mode_info_module17();
+	check_hlds__mode_info_module18();
+	check_hlds__mode_info_module19();
+	check_hlds__mode_info_module20();
+	check_hlds__mode_info_module21();
+	check_hlds__mode_info_module22();
+	check_hlds__mode_info_module23();
+	check_hlds__mode_info_module24();
+	check_hlds__mode_info_module25();
+	check_hlds__mode_info_module26();
+	check_hlds__mode_info_module27();
+	check_hlds__mode_info_module28();
+	check_hlds__mode_info_module29();
+	check_hlds__mode_info_module30();
+	check_hlds__mode_info_module31();
+	check_hlds__mode_info_module32();
+	check_hlds__mode_info_module33();
+	check_hlds__mode_info_module34();
+	check_hlds__mode_info_module35();
+	check_hlds__mode_info_module36();
+	check_hlds__mode_info_module37();
+	check_hlds__mode_info_module38();
+	check_hlds__mode_info_module39();
+}
+
+static void mercury__check_hlds__mode_info_maybe_bunch_1(void)
+{
+	check_hlds__mode_info_module40();
+	check_hlds__mode_info_module41();
+	check_hlds__mode_info_module42();
+	check_hlds__mode_info_module43();
+	check_hlds__mode_info_module44();
+	check_hlds__mode_info_module45();
+	check_hlds__mode_info_module46();
+	check_hlds__mode_info_module47();
+	check_hlds__mode_info_module48();
+	check_hlds__mode_info_module49();
+	check_hlds__mode_info_module50();
+	check_hlds__mode_info_module51();
+	check_hlds__mode_info_module52();
+	check_hlds__mode_info_module53();
+	check_hlds__mode_info_module54();
+	check_hlds__mode_info_module55();
+	check_hlds__mode_info_module56();
+	check_hlds__mode_info_module57();
+	check_hlds__mode_info_module58();
+	check_hlds__mode_info_module59();
+	check_hlds__mode_info_module60();
+	check_hlds__mode_info_module61();
+	check_hlds__mode_info_module62();
+	check_hlds__mode_info_module63();
+	check_hlds__mode_info_module64();
+	check_hlds__mode_info_module65();
+	check_hlds__mode_info_module66();
+	check_hlds__mode_info_module67();
+	check_hlds__mode_info_module68();
+	check_hlds__mode_info_module69();
+	check_hlds__mode_info_module70();
+	check_hlds__mode_info_module71();
+	check_hlds__mode_info_module72();
+	check_hlds__mode_info_module73();
+	check_hlds__mode_info_module74();
+	check_hlds__mode_info_module75();
+	check_hlds__mode_info_module76();
+	check_hlds__mode_info_module77();
+	check_hlds__mode_info_module78();
+	check_hlds__mode_info_module79();
+}
+
+static void mercury__check_hlds__mode_info_maybe_bunch_2(void)
+{
+	check_hlds__mode_info_module80();
+	check_hlds__mode_info_module81();
+	check_hlds__mode_info_module82();
+	check_hlds__mode_info_module83();
+	check_hlds__mode_info_module84();
+	check_hlds__mode_info_module85();
+	check_hlds__mode_info_module86();
+	check_hlds__mode_info_module87();
+	check_hlds__mode_info_module88();
+	check_hlds__mode_info_module89();
+	check_hlds__mode_info_module90();
+	check_hlds__mode_info_module91();
+	check_hlds__mode_info_module92();
+	check_hlds__mode_info_module93();
+	check_hlds__mode_info_module94();
+	check_hlds__mode_info_module95();
+	check_hlds__mode_info_module96();
+	check_hlds__mode_info_module97();
+	check_hlds__mode_info_module98();
+	check_hlds__mode_info_module99();
+	check_hlds__mode_info_module100();
+	check_hlds__mode_info_module101();
+	check_hlds__mode_info_module102();
+	check_hlds__mode_info_module103();
+	check_hlds__mode_info_module104();
+	check_hlds__mode_info_module105();
+	check_hlds__mode_info_module106();
+	check_hlds__mode_info_module107();
+	check_hlds__mode_info_module108();
+	check_hlds__mode_info_module109();
+	check_hlds__mode_info_module110();
+	check_hlds__mode_info_module111();
+	check_hlds__mode_info_module112();
+	check_hlds__mode_info_module113();
+	check_hlds__mode_info_module114();
+	check_hlds__mode_info_module115();
+	check_hlds__mode_info_module116();
+	check_hlds__mode_info_module117();
+	check_hlds__mode_info_module118();
+	check_hlds__mode_info_module119();
+}
+
+/* suppress gcc -Wmissing-decls warnings */
+void mercury__check_hlds__mode_info__init(void);
+void mercury__check_hlds__mode_info__init_type_tables(void);
+void mercury__check_hlds__mode_info__init_debugger(void);
+#ifdef MR_DEEP_PROFILING
+void mercury__check_hlds__mode_info__write_out_proc_statics(FILE *deep_fp, FILE *procrep_fp);
+#endif
+#ifdef MR_RECORD_TERM_SIZES
+void mercury__check_hlds__mode_info__init_complexity_procs(void);
+#endif
+#ifdef MR_THREADSCOPE
+void mercury__check_hlds__mode_info__init_threadscope_string_table(void);
+#endif
+
+void mercury__check_hlds__mode_info__init(void)
+{
+	static MR_bool done = MR_FALSE;
+	if (done) {
+		return;
+	}
+	done = MR_TRUE;
+	mercury__check_hlds__mode_info_maybe_bunch_0();
+	mercury__check_hlds__mode_info_maybe_bunch_1();
+	mercury__check_hlds__mode_info_maybe_bunch_2();
+	MR_INIT_TYPE_CTOR_INFO(
+		mercury_data_check_hlds__mode_info__type_ctor_info_call_context_0,
+		check_hlds__mode_info__call_context_0_0);
+	MR_INIT_TYPE_CTOR_INFO(
+		mercury_data_check_hlds__mode_info__type_ctor_info_debug_flags_0,
+		check_hlds__mode_info__debug_flags_0_0);
+	MR_INIT_TYPE_CTOR_INFO(
+		mercury_data_check_hlds__mode_info__type_ctor_info_had_from_ground_term_scope_0,
+		check_hlds__mode_info__had_from_ground_term_scope_0_0);
+	MR_INIT_TYPE_CTOR_INFO(
+		mercury_data_check_hlds__mode_info__type_ctor_info_how_to_check_goal_0,
+		check_hlds__mode_info__how_to_check_goal_0_0);
+	MR_INIT_TYPE_CTOR_INFO(
+		mercury_data_check_hlds__mode_info__type_ctor_info_in_dupl_for_switch_0,
+		check_hlds__mode_info__in_dupl_for_switch_0_0);
+	MR_INIT_TYPE_CTOR_INFO(
+		mercury_data_check_hlds__mode_info__type_ctor_info_in_from_ground_term_scope_0,
+		check_hlds__mode_info__in_from_ground_term_scope_0_0);
+	MR_INIT_TYPE_CTOR_INFO(
+		mercury_data_check_hlds__mode_info__type_ctor_info_in_promise_purity_scope_0,
+		check_hlds__mode_info__in_promise_purity_scope_0_0);
+	MR_INIT_TYPE_CTOR_INFO(
+		mercury_data_check_hlds__mode_info__type_ctor_info_locked_vars_0,
+		check_hlds__mode_info__locked_vars_0_0);
+	MR_INIT_TYPE_CTOR_INFO(
+		mercury_data_check_hlds__mode_info__type_ctor_info_make_ground_terms_unique_0,
+		check_hlds__mode_info__make_ground_terms_unique_0_0);
+	MR_INIT_TYPE_CTOR_INFO(
+		mercury_data_check_hlds__mode_info__type_ctor_info_may_change_called_proc_0,
+		check_hlds__mode_info__may_change_called_proc_0_0);
+	MR_INIT_TYPE_CTOR_INFO(
+		mercury_data_check_hlds__mode_info__type_ctor_info_may_init_solver_vars_0,
+		check_hlds__mode_info__may_init_solver_vars_0_0);
+	MR_INIT_TYPE_CTOR_INFO(
+		mercury_data_check_hlds__mode_info__type_ctor_info_mode_context_0,
+		check_hlds__mode_info__mode_context_0_0);
+	MR_INIT_TYPE_CTOR_INFO(
+		mercury_data_check_hlds__mode_info__type_ctor_info_mode_info_0,
+		check_hlds__mode_info__mode_info_0_0);
+	MR_INIT_TYPE_CTOR_INFO(
+		mercury_data_check_hlds__mode_info__type_ctor_info_mode_sub_info_0,
+		check_hlds__mode_info__mode_sub_info_0_0);
+	MR_INIT_TYPE_CTOR_INFO(
+		mercury_data_check_hlds__mode_info__type_ctor_info_par_conj_mode_check_0,
+		check_hlds__mode_info__par_conj_mode_check_0_0);
+	MR_INIT_TYPE_CTOR_INFO(
+		mercury_data_check_hlds__mode_info__type_ctor_info_par_conj_mode_check_stack_0,
+		check_hlds__mode_info__par_conj_mode_check_stack_0_0);
+	MR_INIT_TYPE_CTOR_INFO(
+		mercury_data_check_hlds__mode_info__type_ctor_info_side_0,
+		check_hlds__mode_info__side_0_0);
+	MR_INIT_TYPE_CTOR_INFO(
+		mercury_data_check_hlds__mode_info__type_ctor_info_var_lock_reason_0,
+		check_hlds__mode_info__var_lock_reason_0_0);
+	mercury__check_hlds__mode_info__init_debugger();
+}
+
+void mercury__check_hlds__mode_info__init_type_tables(void)
+{
+	static MR_bool done = MR_FALSE;
+	if (done) {
+		return;
+	}
+	done = MR_TRUE;
+	{
+		MR_register_type_ctor_info(
+		&mercury_data_check_hlds__mode_info__type_ctor_info_call_context_0);
+	}
+	{
+		MR_register_type_ctor_info(
+		&mercury_data_check_hlds__mode_info__type_ctor_info_debug_flags_0);
+	}
+	{
+		MR_register_type_ctor_info(
+		&mercury_data_check_hlds__mode_info__type_ctor_info_had_from_ground_term_scope_0);
+	}
+	{
+		MR_register_type_ctor_info(
+		&mercury_data_check_hlds__mode_info__type_ctor_info_how_to_check_goal_0);
+	}
+	{
+		MR_register_type_ctor_info(
+		&mercury_data_check_hlds__mode_info__type_ctor_info_in_dupl_for_switch_0);
+	}
+	{
+		MR_register_type_ctor_info(
+		&mercury_data_check_hlds__mode_info__type_ctor_info_in_from_ground_term_scope_0);
+	}
+	{
+		MR_register_type_ctor_info(
+		&mercury_data_check_hlds__mode_info__type_ctor_info_in_promise_purity_scope_0);
+	}
+	{
+		MR_register_type_ctor_info(
+		&mercury_data_check_hlds__mode_info__type_ctor_info_locked_vars_0);
+	}
+	{
+		MR_register_type_ctor_info(
+		&mercury_data_check_hlds__mode_info__type_ctor_info_make_ground_terms_unique_0);
+	}
+	{
+		MR_register_type_ctor_info(
+		&mercury_data_check_hlds__mode_info__type_ctor_info_may_change_called_proc_0);
+	}
+	{
+		MR_register_type_ctor_info(
+		&mercury_data_check_hlds__mode_info__type_ctor_info_may_init_solver_vars_0);
+	}
+	{
+		MR_register_type_ctor_info(
+		&mercury_data_check_hlds__mode_info__type_ctor_info_mode_context_0);
+	}
+	{
+		MR_register_type_ctor_info(
+		&mercury_data_check_hlds__mode_info__type_ctor_info_mode_info_0);
+	}
+	{
+		MR_register_type_ctor_info(
+		&mercury_data_check_hlds__mode_info__type_ctor_info_mode_sub_info_0);
+	}
+	{
+		MR_register_type_ctor_info(
+		&mercury_data_check_hlds__mode_info__type_ctor_info_par_conj_mode_check_0);
+	}
+	{
+		MR_register_type_ctor_info(
+		&mercury_data_check_hlds__mode_info__type_ctor_info_par_conj_mode_check_stack_0);
+	}
+	{
+		MR_register_type_ctor_info(
+		&mercury_data_check_hlds__mode_info__type_ctor_info_side_0);
+	}
+	{
+		MR_register_type_ctor_info(
+		&mercury_data_check_hlds__mode_info__type_ctor_info_var_lock_reason_0);
+	}
+}
+
+
+void mercury__check_hlds__mode_info__init_debugger(void)
+{
+	static MR_bool done = MR_FALSE;
+	if (done) {
+		return;
+	}
+	done = MR_TRUE;
+}
+
+#ifdef MR_DEEP_PROFILING
+
+void mercury__check_hlds__mode_info__write_out_proc_statics(FILE *deep_fp, FILE *procrep_fp)
+{
+	MR_write_out_module_proc_reps_start(procrep_fp, &mercury_data__module_common_layout__check_hlds__mode_info);
+	MR_write_out_module_proc_reps_end(procrep_fp);
+}
+
+#endif
+
+#ifdef MR_RECORD_TERM_SIZES
+
+void mercury__check_hlds__mode_info__init_complexity_procs(void)
+{
+}
+
+#endif
+
+#ifdef MR_THREADSCOPE
+
+void mercury__check_hlds__mode_info__init_threadscope_string_table(void)
+{
+}
+
+#endif
+
+/* ensure everything is compiled with the same grade */
+static const void *const MR_grade = &MR_GRADE_VAR;

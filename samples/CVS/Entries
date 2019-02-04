@@ -1,0 +1,25 @@
+/.cvsignore/1.6/Thu Oct 20 06:37:31 2011//
+/.nocopyright/1.2/Wed Jul  7 07:43:32 2010//
+/Mmakefile/1.6/Thu Nov  8 15:30:39 2001//
+/README/1.14/Mon Aug 29 06:18:12 2011//
+/calculator.m/1.13/Mon Jan 10 02:29:33 2011//
+/calculator2.m/1.8/Tue May  3 04:35:02 2011//
+/cat.m/1.8/Mon Jan 10 02:29:33 2011//
+/e.m/1.7/Mon Jan 10 02:29:33 2011//
+/eliza.m/1.20/Mon Jan 10 02:29:33 2011//
+/expand_terms.m/1.6/Mon Jan 10 02:29:33 2011//
+/hello.m/1.4/Fri Aug 12 04:50:37 2005//
+/interpreter.m/1.11/Thu May  5 03:58:59 2011//
+/sort.m/1.8/Mon Jan 10 02:29:33 2011//
+/ultra_sub.m/1.9/Mon Jan 10 02:29:33 2011//
+D/appengine////
+D/c_interface////
+D/concurrency////
+D/diff////
+D/java_interface////
+D/lazy_list////
+D/muz////
+D/rot13////
+D/solutions////
+D/solver_types////
+D/tests////
