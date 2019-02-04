@@ -1,0 +1,3 @@
+:- module set_bbbtree.
+:- interface.
+:- type set_bbbtree(T).

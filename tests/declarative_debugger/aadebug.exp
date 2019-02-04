@@ -1,0 +1,79 @@
+      E1:     C1 CALL pred aadebug.main/2-0 (det) aadebug.m:16
+mdb> echo on
+Command echo enabled.
+mdb> register --quiet
+mdb> break p
+ 0: + stop  interface pred aadebug.p/2-0 (nondet)
+mdb> continue
+      E2:     C2 CALL pred aadebug.p/2-0 (nondet) aadebug.m:32 (aadebug.m:17)
+mdb> finish
+      E3:     C2 EXIT pred aadebug.p/2-0 (nondet) aadebug.m:32 (aadebug.m:17)
+mdb> dd -d 3 -n 7
+p('a', 30)
+Valid? no
+q('a', 'a')
+Valid? yes
+r('a', 10)
+Valid? yes
+s(10, 30)
+Valid? yes
+Found incorrect contour:
+q('a', 'a')
+r('a', 10)
+s(10, 30)
+p('a', 30)
+Is this a bug? yes
+      E3:     C2 EXIT pred aadebug.p/2-0 (nondet) aadebug.m:32 (aadebug.m:17)
+mdb> continue
+      E4:     C2 REDO pred aadebug.p/2-0 (nondet) aadebug.m:32 (aadebug.m:17)
+mdb> finish
+      E5:     C2 EXIT pred aadebug.p/2-0 (nondet) aadebug.m:32 (aadebug.m:17)
+mdb> dd -d 3 -n 7
+p('a', 31)
+Valid? no
+Found incorrect contour:
+q('a', 'a')
+r('a', 10)
+p('a', 31)
+Is this a bug? yes
+      E5:     C2 EXIT pred aadebug.p/2-0 (nondet) aadebug.m:32 (aadebug.m:17)
+mdb> continue
+      E6:     C2 REDO pred aadebug.p/2-0 (nondet) aadebug.m:32 (aadebug.m:17)
+mdb> finish
+      E7:     C2 EXIT pred aadebug.p/2-0 (nondet) aadebug.m:32 (aadebug.m:17)
+mdb> dd -d 3 -n 7
+p('a', 32)
+Valid? no
+q('a', 'b')
+Valid? yes
+Call r('b', _)
+Unsatisfiable? yes
+Call q('b', _)
+Unsatisfiable? yes
+Found incorrect contour:
+q('a', 'b')
+p('a', 32)
+Is this a bug? yes
+      E7:     C2 EXIT pred aadebug.p/2-0 (nondet) aadebug.m:32 (aadebug.m:17)
+mdb> continue
+      E8:     C2 REDO pred aadebug.p/2-0 (nondet) aadebug.m:32 (aadebug.m:17)
+mdb> finish
+      E9:     C2 FAIL pred aadebug.p/2-0 (nondet) aadebug.m:32 (aadebug.m:17)
+mdb> dd -d 3 -n 7
+Call p('a', _)
+Solutions:
+	p('a', 30)
+	p('a', 31)
+	p('a', 32)
+Complete? no
+Call q('a', _)
+Solutions:
+	q('a', 'a')
+	q('a', 'b')
+Complete? yes
+Found partially uncovered atom:
+p('a', _)
+Is this a bug? yes
+      E9:     C2 FAIL pred aadebug.p/2-0 (nondet) aadebug.m:32 (aadebug.m:17)
+mdb> continue
+no

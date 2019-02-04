@@ -1,0 +1,16 @@
+:- module (parse_tree.parse_pragma).
+:- interface.
+:- import_module libs.
+:- import_module list.
+:- import_module mdbcomp.
+:- import_module term.
+:- import_module varset.
+:- import_module (libs.globals).
+:- import_module (mdbcomp.sym_name).
+:- import_module (parse_tree.maybe_error).
+:- import_module (parse_tree.parse_types).
+:- import_module (parse_tree.prog_data).
+:- pred parse_pragma(mdbcomp.sym_name.module_name, varset.varset, list.list(term.term), parse_tree.prog_data.prog_context, int, parse_tree.maybe_error.maybe1(parse_tree.parse_types.item_or_marker)).
+:- mode parse_pragma((builtin.in), (builtin.in), (builtin.in), (builtin.in), (builtin.in), (builtin.out)) is det.
+:- pred term_to_foreign_language(term.term, libs.globals.foreign_language).
+:- mode term_to_foreign_language((builtin.in), (builtin.out)) is semidet.
