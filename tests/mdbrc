@@ -1,0 +1,24 @@
+source /home/jfischer/work/mercury-2.git/doc/mdb_doc
+alias	s	step
+alias	g	goto
+alias	f	finish
+alias	r	retry
+alias	v	vars
+alias	p	print
+alias	P	print *
+alias	d	stack
+alias	c	continue
+alias	b	break
+alias	h	help
+alias	?	help
+alias	excp	exception
+alias	e	exception
+alias	EMPTY	step
+alias	NUMBER	step
+alias	!	shell
+alias	open	source /home/jfischer/work/mercury-2.git/scripts/mdb_open
+alias	grep	source /home/jfischer/work/mercury-2.git/scripts/mdb_grep
+alias	track	source /home/jfischer/work/mercury-2.git/scripts/mdb_track
+xml_browser_cmd ''
+xml_tmp_filename ''
+web_browser_cmd 'xdg-open'
