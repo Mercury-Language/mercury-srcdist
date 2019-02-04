@@ -1,0 +1,23179 @@
+/*
+** Automatically generated from `rtti.m'
+** by the Mercury compiler,
+** version rotd-2018-02-14
+** configured for x86_64-pc-linux-gnu.
+** Do not edit.
+**
+** The autoconfigured grade settings governing
+** the generation of this C file were
+**
+** TAG_BITS=2
+** UNBOXED_FLOAT=no
+** UNBOXED_INT64S=no
+** PREGENERATED_DIST=yes
+** HIGHLEVEL_CODE=yes
+**
+** END_OF_C_GRADE_INFO
+*/
+
+
+// :- module backend_libs.rtti.
+// :- implementation.
+
+/*
+INIT mercury__backend_libs__rtti__init
+ENDINIT
+*/
+
+#include "backend_libs.rtti.mih"
+
+
+#include "analysis.mih"
+#include "backend_libs.mih"
+#include "check_hlds.mih"
+#include "hlds.mih"
+#include "libs.mih"
+#include "mdbcomp.mih"
+#include "mode_robdd.mih"
+#include "parse_tree.mih"
+#include "recompilation.mih"
+#include "transform_hlds.mih"
+#include "backend_libs.name_mangle.mih"
+#include "check_hlds.delay_info.mih"
+#include "check_hlds.mode_constraint_robdd.mih"
+#include "check_hlds.mode_errors.mih"
+#include "check_hlds.mode_info.mih"
+#include "check_hlds.proc_requests.mih"
+#include "hlds.const_struct.mih"
+#include "hlds.hlds_args.mih"
+#include "hlds.hlds_class.mih"
+#include "hlds.hlds_clauses.mih"
+#include "hlds.hlds_data.mih"
+#include "hlds.hlds_dependency_graph.mih"
+#include "hlds.hlds_goal.mih"
+#include "hlds.hlds_inst_mode.mih"
+#include "hlds.hlds_llds.mih"
+#include "hlds.hlds_module.mih"
+#include "hlds.hlds_pred.mih"
+#include "hlds.hlds_promise.mih"
+#include "hlds.hlds_rtti.mih"
+#include "hlds.inst_graph.mih"
+#include "hlds.instmap.mih"
+#include "hlds.pred_table.mih"
+#include "hlds.special_pred.mih"
+#include "hlds.status.mih"
+#include "hlds.vartypes.mih"
+#include "libs.compiler_util.mih"
+#include "libs.dependency_graph.mih"
+#include "libs.globals.mih"
+#include "libs.lp_rational.mih"
+#include "libs.op_mode.mih"
+#include "libs.options.mih"
+#include "libs.polyhedron.mih"
+#include "libs.rat.mih"
+#include "libs.timestamp.mih"
+#include "libs.trace_params.mih"
+#include "mdbcomp.builtin_modules.mih"
+#include "mdbcomp.feedback.mih"
+#include "mdbcomp.goal_path.mih"
+#include "mdbcomp.prim_data.mih"
+#include "mdbcomp.program_representation.mih"
+#include "mdbcomp.rtti_access.mih"
+#include "mdbcomp.sym_name.mih"
+#include "mdbcomp.trace_counts.mih"
+#include "array.mih"
+#include "assoc_list.mih"
+#include "bag.mih"
+#include "bimap.mih"
+#include "bitmap.mih"
+#include "bool.mih"
+#include "builtin.mih"
+#include "char.mih"
+#include "construct.mih"
+#include "cord.mih"
+#include "deconstruct.mih"
+#include "digraph.mih"
+#include "enum.mih"
+#include "getopt_io.mih"
+#include "int.mih"
+#include "integer.mih"
+#include "io.mih"
+#include "list.mih"
+#include "map.mih"
+#include "maybe.mih"
+#include "multi_map.mih"
+#include "ops.mih"
+#include "pair.mih"
+#include "pretty_printer.mih"
+#include "private_builtin.mih"
+#include "queue.mih"
+#include "random.mih"
+#include "require.mih"
+#include "robdd.mih"
+#include "rtti_implementation.mih"
+#include "set.mih"
+#include "set_ordlist.mih"
+#include "set_tree234.mih"
+#include "sparse_bitset.mih"
+#include "stack.mih"
+#include "stream.mih"
+#include "string.mih"
+#include "table_builtin.mih"
+#include "term.mih"
+#include "time.mih"
+#include "tree234.mih"
+#include "type_desc.mih"
+#include "unit.mih"
+#include "univ.mih"
+#include "varset.mih"
+#include "mode_robdd.tfeirn.mih"
+#include "parse_tree.error_util.mih"
+#include "parse_tree.file_kind.mih"
+#include "parse_tree.maybe_error.mih"
+#include "parse_tree.module_qual.mih"
+#include "parse_tree.prog_data.mih"
+#include "parse_tree.prog_data_event.mih"
+#include "parse_tree.prog_data_foreign.mih"
+#include "parse_tree.prog_data_pragma.mih"
+#include "parse_tree.prog_data_used_modules.mih"
+#include "parse_tree.prog_foreign.mih"
+#include "parse_tree.prog_item.mih"
+#include "parse_tree.prog_rename.mih"
+#include "parse_tree.prog_type.mih"
+#include "parse_tree.set_of_var.mih"
+#include "transform_hlds.term_constr_data.mih"
+#include "transform_hlds.term_constr_errors.mih"
+#include "transform_hlds.term_constr_main_types.mih"
+#include "transform_hlds.term_errors.mih"
+#include "transform_hlds.term_norm.mih"
+#include "transform_hlds.term_util.mih"
+#include "mdbcomp.feedback.automatic_parallelism.mih"
+#include "string.format.mih"
+#include "string.parse_util.mih"
+
+
+
+
+static const MR_FA_TypeInfo_Struct1 backend_libs__rtti__list__ti_list_1hlds__hlds_rtti__type_ctor_info_rtti_proc_label_0;
+
+static const MR_PseudoTypeInfo backend_libs__rtti__backend_libs__rtti__field_types_base_typeclass_info_0_0[6];
+
+static const MR_ConstString backend_libs__rtti__backend_libs__rtti__field_names_base_typeclass_info_0_0[6];
+
+static const MR_DuFunctorDesc backend_libs__rtti__backend_libs__rtti__du_functor_desc_base_typeclass_info_0_0;
+
+static const MR_DuFunctorDescPtr backend_libs__rtti__backend_libs__rtti__du_stag_ordered_base_typeclass_info_0_0[1];
+
+static const MR_DuPtagLayout backend_libs__rtti__backend_libs__rtti__du_ptag_ordered_base_typeclass_info_0[1];
+
+static const MR_DuFunctorDescPtr backend_libs__rtti__backend_libs__rtti__du_name_ordered_base_typeclass_info_0[1];
+
+static const MR_Integer backend_libs__rtti__backend_libs__rtti__functor_number_map_base_typeclass_info_0[1];
+
+static const MR_DuFunctorDesc backend_libs__rtti__backend_libs__rtti__du_functor_desc_builtin_ctor_0_0;
+
+static const MR_DuFunctorDesc backend_libs__rtti__backend_libs__rtti__du_functor_desc_builtin_ctor_0_1;
+
+static const MR_DuFunctorDesc backend_libs__rtti__backend_libs__rtti__du_functor_desc_builtin_ctor_0_2;
+
+static const MR_DuFunctorDesc backend_libs__rtti__backend_libs__rtti__du_functor_desc_builtin_ctor_0_3;
+
+static const MR_DuFunctorDesc backend_libs__rtti__backend_libs__rtti__du_functor_desc_builtin_ctor_0_4;
+
+static const MR_DuFunctorDesc backend_libs__rtti__backend_libs__rtti__du_functor_desc_builtin_ctor_0_5;
+
+static const MR_DuFunctorDesc backend_libs__rtti__backend_libs__rtti__du_functor_desc_builtin_ctor_0_6;
+
+static const MR_DuFunctorDesc backend_libs__rtti__backend_libs__rtti__du_functor_desc_builtin_ctor_0_7;
+
+static const MR_DuFunctorDesc backend_libs__rtti__backend_libs__rtti__du_functor_desc_builtin_ctor_0_8;
+
+static const MR_DuFunctorDesc backend_libs__rtti__backend_libs__rtti__du_functor_desc_builtin_ctor_0_9;
+
+static const MR_DuFunctorDesc backend_libs__rtti__backend_libs__rtti__du_functor_desc_builtin_ctor_0_10;
+
+static const MR_DuFunctorDesc backend_libs__rtti__backend_libs__rtti__du_functor_desc_builtin_ctor_0_11;
+
+static const MR_DuFunctorDesc backend_libs__rtti__backend_libs__rtti__du_functor_desc_builtin_ctor_0_12;
+
+static const MR_DuFunctorDesc backend_libs__rtti__backend_libs__rtti__du_functor_desc_builtin_ctor_0_13;
+
+static const MR_PseudoTypeInfo backend_libs__rtti__backend_libs__rtti__field_types_builtin_ctor_0_14[1];
+
+static const MR_DuFunctorDesc backend_libs__rtti__backend_libs__rtti__du_functor_desc_builtin_ctor_0_14;
+
+static const MR_DuFunctorDesc backend_libs__rtti__backend_libs__rtti__du_functor_desc_builtin_ctor_0_15;
+
+static const MR_DuFunctorDesc backend_libs__rtti__backend_libs__rtti__du_functor_desc_builtin_ctor_0_16;
+
+static const MR_DuFunctorDesc backend_libs__rtti__backend_libs__rtti__du_functor_desc_builtin_ctor_0_17;
+
+static const MR_DuFunctorDesc backend_libs__rtti__backend_libs__rtti__du_functor_desc_builtin_ctor_0_18;
+
+static const MR_DuFunctorDesc backend_libs__rtti__backend_libs__rtti__du_functor_desc_builtin_ctor_0_19;
+
+static const MR_DuFunctorDesc backend_libs__rtti__backend_libs__rtti__du_functor_desc_builtin_ctor_0_20;
+
+static const MR_DuFunctorDesc backend_libs__rtti__backend_libs__rtti__du_functor_desc_builtin_ctor_0_21;
+
+static const MR_DuFunctorDescPtr backend_libs__rtti__backend_libs__rtti__du_stag_ordered_builtin_ctor_0_0[21];
+
+static const MR_DuFunctorDescPtr backend_libs__rtti__backend_libs__rtti__du_stag_ordered_builtin_ctor_0_1[1];
+
+static const MR_DuPtagLayout backend_libs__rtti__backend_libs__rtti__du_ptag_ordered_builtin_ctor_0[2];
+
+static const MR_DuFunctorDescPtr backend_libs__rtti__backend_libs__rtti__du_name_ordered_builtin_ctor_0[22];
+
+static const MR_Integer backend_libs__rtti__backend_libs__rtti__functor_number_map_builtin_ctor_0[22];
+
+static const MR_EnumFunctorDesc backend_libs__rtti__backend_libs__rtti__enum_functor_desc_call_or_answer_table_0_0;
+
+static const MR_EnumFunctorDesc backend_libs__rtti__backend_libs__rtti__enum_functor_desc_call_or_answer_table_0_1;
+
+static const MR_EnumFunctorDescPtr backend_libs__rtti__backend_libs__rtti__enum_value_ordered_call_or_answer_table_0[2];
+
+static const MR_EnumFunctorDescPtr backend_libs__rtti__backend_libs__rtti__enum_name_ordered_call_or_answer_table_0[2];
+
+static const MR_Integer backend_libs__rtti__backend_libs__rtti__functor_number_map_call_or_answer_table_0[2];
+
+static const MR_PseudoTypeInfo backend_libs__rtti__backend_libs__rtti__field_types_ctor_rtti_name_0_0[1];
+
+static const MR_DuFunctorDesc backend_libs__rtti__backend_libs__rtti__du_functor_desc_ctor_rtti_name_0_0;
+
+static const MR_DuFunctorDesc backend_libs__rtti__backend_libs__rtti__du_functor_desc_ctor_rtti_name_0_1;
+
+static const MR_PseudoTypeInfo backend_libs__rtti__backend_libs__rtti__field_types_ctor_rtti_name_0_2[3];
+
+static const MR_DuFunctorDesc backend_libs__rtti__backend_libs__rtti__du_functor_desc_ctor_rtti_name_0_2;
+
+static const MR_PseudoTypeInfo backend_libs__rtti__backend_libs__rtti__field_types_ctor_rtti_name_0_3[1];
+
+static const MR_DuFunctorDesc backend_libs__rtti__backend_libs__rtti__du_functor_desc_ctor_rtti_name_0_3;
+
+static const MR_PseudoTypeInfo backend_libs__rtti__backend_libs__rtti__field_types_ctor_rtti_name_0_4[1];
+
+static const MR_DuFunctorDesc backend_libs__rtti__backend_libs__rtti__du_functor_desc_ctor_rtti_name_0_4;
+
+static const MR_PseudoTypeInfo backend_libs__rtti__backend_libs__rtti__field_types_ctor_rtti_name_0_5[1];
+
+static const MR_DuFunctorDesc backend_libs__rtti__backend_libs__rtti__du_functor_desc_ctor_rtti_name_0_5;
+
+static const MR_PseudoTypeInfo backend_libs__rtti__backend_libs__rtti__field_types_ctor_rtti_name_0_6[1];
+
+static const MR_DuFunctorDesc backend_libs__rtti__backend_libs__rtti__du_functor_desc_ctor_rtti_name_0_6;
+
+static const MR_PseudoTypeInfo backend_libs__rtti__backend_libs__rtti__field_types_ctor_rtti_name_0_7[1];
+
+static const MR_DuFunctorDesc backend_libs__rtti__backend_libs__rtti__du_functor_desc_ctor_rtti_name_0_7;
+
+static const MR_PseudoTypeInfo backend_libs__rtti__backend_libs__rtti__field_types_ctor_rtti_name_0_8[1];
+
+static const MR_DuFunctorDesc backend_libs__rtti__backend_libs__rtti__du_functor_desc_ctor_rtti_name_0_8;
+
+static const MR_PseudoTypeInfo backend_libs__rtti__backend_libs__rtti__field_types_ctor_rtti_name_0_9[1];
+
+static const MR_DuFunctorDesc backend_libs__rtti__backend_libs__rtti__du_functor_desc_ctor_rtti_name_0_9;
+
+static const MR_DuFunctorDesc backend_libs__rtti__backend_libs__rtti__du_functor_desc_ctor_rtti_name_0_10;
+
+static const MR_PseudoTypeInfo backend_libs__rtti__backend_libs__rtti__field_types_ctor_rtti_name_0_11[1];
+
+static const MR_DuFunctorDesc backend_libs__rtti__backend_libs__rtti__du_functor_desc_ctor_rtti_name_0_11;
+
+static const MR_DuFunctorDesc backend_libs__rtti__backend_libs__rtti__du_functor_desc_ctor_rtti_name_0_12;
+
+static const MR_DuFunctorDesc backend_libs__rtti__backend_libs__rtti__du_functor_desc_ctor_rtti_name_0_13;
+
+static const MR_DuFunctorDesc backend_libs__rtti__backend_libs__rtti__du_functor_desc_ctor_rtti_name_0_14;
+
+static const MR_DuFunctorDesc backend_libs__rtti__backend_libs__rtti__du_functor_desc_ctor_rtti_name_0_15;
+
+static const MR_DuFunctorDesc backend_libs__rtti__backend_libs__rtti__du_functor_desc_ctor_rtti_name_0_16;
+
+static const MR_PseudoTypeInfo backend_libs__rtti__backend_libs__rtti__field_types_ctor_rtti_name_0_17[1];
+
+static const MR_DuFunctorDesc backend_libs__rtti__backend_libs__rtti__du_functor_desc_ctor_rtti_name_0_17;
+
+static const MR_DuFunctorDesc backend_libs__rtti__backend_libs__rtti__du_functor_desc_ctor_rtti_name_0_18;
+
+static const MR_PseudoTypeInfo backend_libs__rtti__backend_libs__rtti__field_types_ctor_rtti_name_0_19[1];
+
+static const MR_DuFunctorDesc backend_libs__rtti__backend_libs__rtti__du_functor_desc_ctor_rtti_name_0_19;
+
+static const MR_DuFunctorDesc backend_libs__rtti__backend_libs__rtti__du_functor_desc_ctor_rtti_name_0_20;
+
+static const MR_DuFunctorDesc backend_libs__rtti__backend_libs__rtti__du_functor_desc_ctor_rtti_name_0_21;
+
+static const MR_DuFunctorDesc backend_libs__rtti__backend_libs__rtti__du_functor_desc_ctor_rtti_name_0_22;
+
+static const MR_DuFunctorDesc backend_libs__rtti__backend_libs__rtti__du_functor_desc_ctor_rtti_name_0_23;
+
+static const MR_PseudoTypeInfo backend_libs__rtti__backend_libs__rtti__field_types_ctor_rtti_name_0_24[1];
+
+static const MR_DuFunctorDesc backend_libs__rtti__backend_libs__rtti__du_functor_desc_ctor_rtti_name_0_24;
+
+static const MR_PseudoTypeInfo backend_libs__rtti__backend_libs__rtti__field_types_ctor_rtti_name_0_25[1];
+
+static const MR_DuFunctorDesc backend_libs__rtti__backend_libs__rtti__du_functor_desc_ctor_rtti_name_0_25;
+
+static const MR_DuFunctorDesc backend_libs__rtti__backend_libs__rtti__du_functor_desc_ctor_rtti_name_0_26;
+
+static const MR_DuFunctorDescPtr backend_libs__rtti__backend_libs__rtti__du_stag_ordered_ctor_rtti_name_0_0[13];
+
+static const MR_DuFunctorDescPtr backend_libs__rtti__backend_libs__rtti__du_stag_ordered_ctor_rtti_name_0_1[1];
+
+static const MR_DuFunctorDescPtr backend_libs__rtti__backend_libs__rtti__du_stag_ordered_ctor_rtti_name_0_2[1];
+
+static const MR_DuFunctorDescPtr backend_libs__rtti__backend_libs__rtti__du_stag_ordered_ctor_rtti_name_0_3[12];
+
+static const MR_DuPtagLayout backend_libs__rtti__backend_libs__rtti__du_ptag_ordered_ctor_rtti_name_0[4];
+
+static const MR_DuFunctorDescPtr backend_libs__rtti__backend_libs__rtti__du_name_ordered_ctor_rtti_name_0[27];
+
+static const MR_Integer backend_libs__rtti__backend_libs__rtti__functor_number_map_ctor_rtti_name_0[27];
+
+static const MR_EnumFunctorDesc backend_libs__rtti__backend_libs__rtti__enum_functor_desc_curr_or_prev_table_0_0;
+
+static const MR_EnumFunctorDesc backend_libs__rtti__backend_libs__rtti__enum_functor_desc_curr_or_prev_table_0_1;
+
+static const MR_EnumFunctorDescPtr backend_libs__rtti__backend_libs__rtti__enum_value_ordered_curr_or_prev_table_0[2];
+
+static const MR_EnumFunctorDescPtr backend_libs__rtti__backend_libs__rtti__enum_name_ordered_curr_or_prev_table_0[2];
+
+static const MR_Integer backend_libs__rtti__backend_libs__rtti__functor_number_map_curr_or_prev_table_0[2];
+
+static const MR_FA_TypeInfo_Struct1 backend_libs__rtti__maybe__ti_maybe_1builtin__type_ctor_info_string_0;
+
+static const MR_PseudoTypeInfo backend_libs__rtti__backend_libs__rtti__field_types_du_arg_info_0_0[3];
+
+static const MR_ConstString backend_libs__rtti__backend_libs__rtti__field_names_du_arg_info_0_0[3];
+
+static const MR_DuFunctorDesc backend_libs__rtti__backend_libs__rtti__du_functor_desc_du_arg_info_0_0;
+
+static const MR_DuFunctorDescPtr backend_libs__rtti__backend_libs__rtti__du_stag_ordered_du_arg_info_0_0[1];
+
+static const MR_DuPtagLayout backend_libs__rtti__backend_libs__rtti__du_ptag_ordered_du_arg_info_0[1];
+
+static const MR_DuFunctorDescPtr backend_libs__rtti__backend_libs__rtti__du_name_ordered_du_arg_info_0[1];
+
+static const MR_Integer backend_libs__rtti__backend_libs__rtti__functor_number_map_du_arg_info_0[1];
+
+static const MR_FA_TypeInfo_Struct1 backend_libs__rtti__list__ti_list_1backend_libs__rtti__type_ctor_info_du_arg_info_0;
+
+static const MR_FA_TypeInfo_Struct1 backend_libs__rtti__maybe__ti_maybe_1backend_libs__rtti__type_ctor_info_exist_info_0;
+
+static const MR_PseudoTypeInfo backend_libs__rtti__backend_libs__rtti__field_types_du_functor_0_0[7];
+
+static const MR_ConstString backend_libs__rtti__backend_libs__rtti__field_names_du_functor_0_0[7];
+
+static const MR_DuFunctorDesc backend_libs__rtti__backend_libs__rtti__du_functor_desc_du_functor_0_0;
+
+static const MR_DuFunctorDescPtr backend_libs__rtti__backend_libs__rtti__du_stag_ordered_du_functor_0_0[1];
+
+static const MR_DuPtagLayout backend_libs__rtti__backend_libs__rtti__du_ptag_ordered_du_functor_0[1];
+
+static const MR_DuFunctorDescPtr backend_libs__rtti__backend_libs__rtti__du_name_ordered_du_functor_0[1];
+
+static const MR_Integer backend_libs__rtti__backend_libs__rtti__functor_number_map_du_functor_0[1];
+
+static const MR_PseudoTypeInfo backend_libs__rtti__backend_libs__rtti__field_types_du_rep_0_0[2];
+
+static const MR_ConstString backend_libs__rtti__backend_libs__rtti__field_names_du_rep_0_0[2];
+
+static const MR_DuFunctorDesc backend_libs__rtti__backend_libs__rtti__du_functor_desc_du_rep_0_0;
+
+static const MR_PseudoTypeInfo backend_libs__rtti__backend_libs__rtti__field_types_du_rep_0_1[1];
+
+static const MR_ConstString backend_libs__rtti__backend_libs__rtti__field_names_du_rep_0_1[1];
+
+static const MR_DuFunctorDesc backend_libs__rtti__backend_libs__rtti__du_functor_desc_du_rep_0_1;
+
+static const MR_DuFunctorDescPtr backend_libs__rtti__backend_libs__rtti__du_stag_ordered_du_rep_0_0[1];
+
+static const MR_DuFunctorDescPtr backend_libs__rtti__backend_libs__rtti__du_stag_ordered_du_rep_0_1[1];
+
+static const MR_DuPtagLayout backend_libs__rtti__backend_libs__rtti__du_ptag_ordered_du_rep_0[2];
+
+static const MR_DuFunctorDescPtr backend_libs__rtti__backend_libs__rtti__du_name_ordered_du_rep_0[2];
+
+static const MR_Integer backend_libs__rtti__backend_libs__rtti__functor_number_map_du_rep_0[2];
+
+static const MR_PseudoTypeInfo backend_libs__rtti__backend_libs__rtti__field_types_enum_functor_0_0[2];
+
+static const MR_ConstString backend_libs__rtti__backend_libs__rtti__field_names_enum_functor_0_0[2];
+
+static const MR_DuFunctorDesc backend_libs__rtti__backend_libs__rtti__du_functor_desc_enum_functor_0_0;
+
+static const MR_DuFunctorDescPtr backend_libs__rtti__backend_libs__rtti__du_stag_ordered_enum_functor_0_0[1];
+
+static const MR_DuPtagLayout backend_libs__rtti__backend_libs__rtti__du_ptag_ordered_enum_functor_0[1];
+
+static const MR_DuFunctorDescPtr backend_libs__rtti__backend_libs__rtti__du_name_ordered_enum_functor_0[1];
+
+static const MR_Integer backend_libs__rtti__backend_libs__rtti__functor_number_map_enum_functor_0[1];
+
+static const MR_EnumFunctorDesc backend_libs__rtti__backend_libs__rtti__enum_functor_desc_equality_axioms_0_0;
+
+static const MR_EnumFunctorDesc backend_libs__rtti__backend_libs__rtti__enum_functor_desc_equality_axioms_0_1;
+
+static const MR_EnumFunctorDescPtr backend_libs__rtti__backend_libs__rtti__enum_value_ordered_equality_axioms_0[2];
+
+static const MR_EnumFunctorDescPtr backend_libs__rtti__backend_libs__rtti__enum_name_ordered_equality_axioms_0[2];
+
+static const MR_Integer backend_libs__rtti__backend_libs__rtti__functor_number_map_equality_axioms_0[2];
+
+static const MR_FA_TypeInfo_Struct1 backend_libs__rtti__list__ti_list_1backend_libs__rtti__type_ctor_info_tc_constraint_0;
+
+static const MR_FA_TypeInfo_Struct1 backend_libs__rtti__list__ti_list_1backend_libs__rtti__type_ctor_info_exist_typeinfo_locn_0;
+
+static const MR_PseudoTypeInfo backend_libs__rtti__backend_libs__rtti__field_types_exist_info_0_0[4];
+
+static const MR_ConstString backend_libs__rtti__backend_libs__rtti__field_names_exist_info_0_0[4];
+
+static const MR_DuFunctorDesc backend_libs__rtti__backend_libs__rtti__du_functor_desc_exist_info_0_0;
+
+static const MR_DuFunctorDescPtr backend_libs__rtti__backend_libs__rtti__du_stag_ordered_exist_info_0_0[1];
+
+static const MR_DuPtagLayout backend_libs__rtti__backend_libs__rtti__du_ptag_ordered_exist_info_0[1];
+
+static const MR_DuFunctorDescPtr backend_libs__rtti__backend_libs__rtti__du_name_ordered_exist_info_0[1];
+
+static const MR_Integer backend_libs__rtti__backend_libs__rtti__functor_number_map_exist_info_0[1];
+
+static const MR_PseudoTypeInfo backend_libs__rtti__backend_libs__rtti__field_types_exist_typeinfo_locn_0_0[1];
+
+static const MR_DuFunctorDesc backend_libs__rtti__backend_libs__rtti__du_functor_desc_exist_typeinfo_locn_0_0;
+
+static const MR_PseudoTypeInfo backend_libs__rtti__backend_libs__rtti__field_types_exist_typeinfo_locn_0_1[2];
+
+static const MR_DuFunctorDesc backend_libs__rtti__backend_libs__rtti__du_functor_desc_exist_typeinfo_locn_0_1;
+
+static const MR_DuFunctorDescPtr backend_libs__rtti__backend_libs__rtti__du_stag_ordered_exist_typeinfo_locn_0_0[1];
+
+static const MR_DuFunctorDescPtr backend_libs__rtti__backend_libs__rtti__du_stag_ordered_exist_typeinfo_locn_0_1[1];
+
+static const MR_DuPtagLayout backend_libs__rtti__backend_libs__rtti__du_ptag_ordered_exist_typeinfo_locn_0[2];
+
+static const MR_DuFunctorDescPtr backend_libs__rtti__backend_libs__rtti__du_name_ordered_exist_typeinfo_locn_0[2];
+
+static const MR_Integer backend_libs__rtti__backend_libs__rtti__functor_number_map_exist_typeinfo_locn_0[2];
+
+static const MR_PseudoTypeInfo backend_libs__rtti__backend_libs__rtti__field_types_foreign_enum_functor_0_0[3];
+
+static const MR_ConstString backend_libs__rtti__backend_libs__rtti__field_names_foreign_enum_functor_0_0[3];
+
+static const MR_DuFunctorDesc backend_libs__rtti__backend_libs__rtti__du_functor_desc_foreign_enum_functor_0_0;
+
+static const MR_DuFunctorDescPtr backend_libs__rtti__backend_libs__rtti__du_stag_ordered_foreign_enum_functor_0_0[1];
+
+static const MR_DuPtagLayout backend_libs__rtti__backend_libs__rtti__du_ptag_ordered_foreign_enum_functor_0[1];
+
+static const MR_DuFunctorDescPtr backend_libs__rtti__backend_libs__rtti__du_name_ordered_foreign_enum_functor_0[1];
+
+static const MR_Integer backend_libs__rtti__backend_libs__rtti__functor_number_map_foreign_enum_functor_0[1];
+
+static const MR_EnumFunctorDesc backend_libs__rtti__backend_libs__rtti__enum_functor_desc_functor_subtype_info_0_0;
+
+static const MR_EnumFunctorDesc backend_libs__rtti__backend_libs__rtti__enum_functor_desc_functor_subtype_info_0_1;
+
+static const MR_EnumFunctorDescPtr backend_libs__rtti__backend_libs__rtti__enum_value_ordered_functor_subtype_info_0[2];
+
+static const MR_EnumFunctorDescPtr backend_libs__rtti__backend_libs__rtti__enum_name_ordered_functor_subtype_info_0[2];
+
+static const MR_Integer backend_libs__rtti__backend_libs__rtti__functor_number_map_functor_subtype_info_0[2];
+
+static const MR_EnumFunctorDesc backend_libs__rtti__backend_libs__rtti__enum_functor_desc_impl_ctor_0_0;
+
+static const MR_EnumFunctorDesc backend_libs__rtti__backend_libs__rtti__enum_functor_desc_impl_ctor_0_1;
+
+static const MR_EnumFunctorDesc backend_libs__rtti__backend_libs__rtti__enum_functor_desc_impl_ctor_0_2;
+
+static const MR_EnumFunctorDesc backend_libs__rtti__backend_libs__rtti__enum_functor_desc_impl_ctor_0_3;
+
+static const MR_EnumFunctorDesc backend_libs__rtti__backend_libs__rtti__enum_functor_desc_impl_ctor_0_4;
+
+static const MR_EnumFunctorDesc backend_libs__rtti__backend_libs__rtti__enum_functor_desc_impl_ctor_0_5;
+
+static const MR_EnumFunctorDesc backend_libs__rtti__backend_libs__rtti__enum_functor_desc_impl_ctor_0_6;
+
+static const MR_EnumFunctorDesc backend_libs__rtti__backend_libs__rtti__enum_functor_desc_impl_ctor_0_7;
+
+static const MR_EnumFunctorDesc backend_libs__rtti__backend_libs__rtti__enum_functor_desc_impl_ctor_0_8;
+
+static const MR_EnumFunctorDesc backend_libs__rtti__backend_libs__rtti__enum_functor_desc_impl_ctor_0_9;
+
+static const MR_EnumFunctorDesc backend_libs__rtti__backend_libs__rtti__enum_functor_desc_impl_ctor_0_10;
+
+static const MR_EnumFunctorDesc backend_libs__rtti__backend_libs__rtti__enum_functor_desc_impl_ctor_0_11;
+
+static const MR_EnumFunctorDesc backend_libs__rtti__backend_libs__rtti__enum_functor_desc_impl_ctor_0_12;
+
+static const MR_EnumFunctorDescPtr backend_libs__rtti__backend_libs__rtti__enum_value_ordered_impl_ctor_0[13];
+
+static const MR_EnumFunctorDescPtr backend_libs__rtti__backend_libs__rtti__enum_name_ordered_impl_ctor_0[13];
+
+static const MR_Integer backend_libs__rtti__backend_libs__rtti__functor_number_map_impl_ctor_0[13];
+
+static const MR_EnumFunctorDesc backend_libs__rtti__backend_libs__rtti__enum_functor_desc_is_array_0_0;
+
+static const MR_EnumFunctorDesc backend_libs__rtti__backend_libs__rtti__enum_functor_desc_is_array_0_1;
+
+static const MR_EnumFunctorDescPtr backend_libs__rtti__backend_libs__rtti__enum_value_ordered_is_array_0[2];
+
+static const MR_EnumFunctorDescPtr backend_libs__rtti__backend_libs__rtti__enum_name_ordered_is_array_0[2];
+
+static const MR_Integer backend_libs__rtti__backend_libs__rtti__functor_number_map_is_array_0[2];
+
+static const MR_EnumFunctorDesc backend_libs__rtti__backend_libs__rtti__enum_functor_desc_is_stable_0_0;
+
+static const MR_EnumFunctorDesc backend_libs__rtti__backend_libs__rtti__enum_functor_desc_is_stable_0_1;
+
+static const MR_EnumFunctorDescPtr backend_libs__rtti__backend_libs__rtti__enum_value_ordered_is_stable_0[2];
+
+static const MR_EnumFunctorDescPtr backend_libs__rtti__backend_libs__rtti__enum_name_ordered_is_stable_0[2];
+
+static const MR_Integer backend_libs__rtti__backend_libs__rtti__functor_number_map_is_stable_0[2];
+
+static const MR_PseudoTypeInfo backend_libs__rtti__backend_libs__rtti__field_types_notag_functor_0_0[4];
+
+static const MR_ConstString backend_libs__rtti__backend_libs__rtti__field_names_notag_functor_0_0[4];
+
+static const MR_DuFunctorDesc backend_libs__rtti__backend_libs__rtti__du_functor_desc_notag_functor_0_0;
+
+static const MR_DuFunctorDescPtr backend_libs__rtti__backend_libs__rtti__du_stag_ordered_notag_functor_0_0[1];
+
+static const MR_DuPtagLayout backend_libs__rtti__backend_libs__rtti__du_ptag_ordered_notag_functor_0[1];
+
+static const MR_DuFunctorDescPtr backend_libs__rtti__backend_libs__rtti__du_name_ordered_notag_functor_0[1];
+
+static const MR_Integer backend_libs__rtti__backend_libs__rtti__functor_number_map_notag_functor_0[1];
+
+static const MR_DuFunctorDesc backend_libs__rtti__backend_libs__rtti__du_functor_desc_proc_tabling_struct_id_0_0;
+
+static const MR_DuFunctorDesc backend_libs__rtti__backend_libs__rtti__du_functor_desc_proc_tabling_struct_id_0_1;
+
+static const MR_DuFunctorDesc backend_libs__rtti__backend_libs__rtti__du_functor_desc_proc_tabling_struct_id_0_2;
+
+static const MR_DuFunctorDesc backend_libs__rtti__backend_libs__rtti__du_functor_desc_proc_tabling_struct_id_0_3;
+
+static const MR_PseudoTypeInfo backend_libs__rtti__backend_libs__rtti__field_types_proc_tabling_struct_id_0_4[1];
+
+static const MR_DuFunctorDesc backend_libs__rtti__backend_libs__rtti__du_functor_desc_proc_tabling_struct_id_0_4;
+
+static const MR_PseudoTypeInfo backend_libs__rtti__backend_libs__rtti__field_types_proc_tabling_struct_id_0_5[2];
+
+static const MR_DuFunctorDesc backend_libs__rtti__backend_libs__rtti__du_functor_desc_proc_tabling_struct_id_0_5;
+
+static const MR_PseudoTypeInfo backend_libs__rtti__backend_libs__rtti__field_types_proc_tabling_struct_id_0_6[2];
+
+static const MR_DuFunctorDesc backend_libs__rtti__backend_libs__rtti__du_functor_desc_proc_tabling_struct_id_0_6;
+
+static const MR_DuFunctorDesc backend_libs__rtti__backend_libs__rtti__du_functor_desc_proc_tabling_struct_id_0_7;
+
+static const MR_DuFunctorDescPtr backend_libs__rtti__backend_libs__rtti__du_stag_ordered_proc_tabling_struct_id_0_0[5];
+
+static const MR_DuFunctorDescPtr backend_libs__rtti__backend_libs__rtti__du_stag_ordered_proc_tabling_struct_id_0_1[1];
+
+static const MR_DuFunctorDescPtr backend_libs__rtti__backend_libs__rtti__du_stag_ordered_proc_tabling_struct_id_0_2[1];
+
+static const MR_DuFunctorDescPtr backend_libs__rtti__backend_libs__rtti__du_stag_ordered_proc_tabling_struct_id_0_3[1];
+
+static const MR_DuPtagLayout backend_libs__rtti__backend_libs__rtti__du_ptag_ordered_proc_tabling_struct_id_0[4];
+
+static const MR_DuFunctorDescPtr backend_libs__rtti__backend_libs__rtti__du_name_ordered_proc_tabling_struct_id_0[8];
+
+static const MR_Integer backend_libs__rtti__backend_libs__rtti__functor_number_map_proc_tabling_struct_id_0[8];
+
+static const MR_FA_TypeInfo_Struct2 backend_libs__rtti__tree234__ti_tree234_2builtin__type_ctor_info_int_0backend_libs__rtti__type_ctor_info_sectag_table_0;
+
+static const MR_PseudoTypeInfo backend_libs__rtti__backend_libs__rtti__field_types_rtti_data_0_0[1];
+
+static const MR_DuFunctorDesc backend_libs__rtti__backend_libs__rtti__du_functor_desc_rtti_data_0_0;
+
+static const MR_PseudoTypeInfo backend_libs__rtti__backend_libs__rtti__field_types_rtti_data_0_1[1];
+
+static const MR_DuFunctorDesc backend_libs__rtti__backend_libs__rtti__du_functor_desc_rtti_data_0_1;
+
+static const MR_PseudoTypeInfo backend_libs__rtti__backend_libs__rtti__field_types_rtti_data_0_2[1];
+
+static const MR_DuFunctorDesc backend_libs__rtti__backend_libs__rtti__du_functor_desc_rtti_data_0_2;
+
+static const MR_PseudoTypeInfo backend_libs__rtti__backend_libs__rtti__field_types_rtti_data_0_3[4];
+
+static const MR_DuFunctorDesc backend_libs__rtti__backend_libs__rtti__du_functor_desc_rtti_data_0_3;
+
+static const MR_PseudoTypeInfo backend_libs__rtti__backend_libs__rtti__field_types_rtti_data_0_4[1];
+
+static const MR_DuFunctorDesc backend_libs__rtti__backend_libs__rtti__du_functor_desc_rtti_data_0_4;
+
+static const MR_PseudoTypeInfo backend_libs__rtti__backend_libs__rtti__field_types_rtti_data_0_5[1];
+
+static const MR_DuFunctorDesc backend_libs__rtti__backend_libs__rtti__du_functor_desc_rtti_data_0_5;
+
+static const MR_DuFunctorDescPtr backend_libs__rtti__backend_libs__rtti__du_stag_ordered_rtti_data_0_0[1];
+
+static const MR_DuFunctorDescPtr backend_libs__rtti__backend_libs__rtti__du_stag_ordered_rtti_data_0_1[1];
+
+static const MR_DuFunctorDescPtr backend_libs__rtti__backend_libs__rtti__du_stag_ordered_rtti_data_0_2[1];
+
+static const MR_DuFunctorDescPtr backend_libs__rtti__backend_libs__rtti__du_stag_ordered_rtti_data_0_3[3];
+
+static const MR_DuPtagLayout backend_libs__rtti__backend_libs__rtti__du_ptag_ordered_rtti_data_0[4];
+
+static const MR_DuFunctorDescPtr backend_libs__rtti__backend_libs__rtti__du_name_ordered_rtti_data_0[6];
+
+static const MR_Integer backend_libs__rtti__backend_libs__rtti__functor_number_map_rtti_data_0[6];
+
+static const MR_PseudoTypeInfo backend_libs__rtti__backend_libs__rtti__field_types_rtti_id_0_0[2];
+
+static const MR_DuFunctorDesc backend_libs__rtti__backend_libs__rtti__du_functor_desc_rtti_id_0_0;
+
+static const MR_PseudoTypeInfo backend_libs__rtti__backend_libs__rtti__field_types_rtti_id_0_1[2];
+
+static const MR_DuFunctorDesc backend_libs__rtti__backend_libs__rtti__du_functor_desc_rtti_id_0_1;
+
+static const MR_DuFunctorDescPtr backend_libs__rtti__backend_libs__rtti__du_stag_ordered_rtti_id_0_0[1];
+
+static const MR_DuFunctorDescPtr backend_libs__rtti__backend_libs__rtti__du_stag_ordered_rtti_id_0_1[1];
+
+static const MR_DuPtagLayout backend_libs__rtti__backend_libs__rtti__du_ptag_ordered_rtti_id_0[2];
+
+static const MR_DuFunctorDescPtr backend_libs__rtti__backend_libs__rtti__du_name_ordered_rtti_id_0[2];
+
+static const MR_Integer backend_libs__rtti__backend_libs__rtti__functor_number_map_rtti_id_0[2];
+
+static const MR_PseudoTypeInfo backend_libs__rtti__backend_libs__rtti__field_types_rtti_id_maybe_element_0_0[1];
+
+static const MR_DuFunctorDesc backend_libs__rtti__backend_libs__rtti__du_functor_desc_rtti_id_maybe_element_0_0;
+
+static const MR_PseudoTypeInfo backend_libs__rtti__backend_libs__rtti__field_types_rtti_id_maybe_element_0_1[1];
+
+static const MR_DuFunctorDesc backend_libs__rtti__backend_libs__rtti__du_functor_desc_rtti_id_maybe_element_0_1;
+
+static const MR_DuFunctorDescPtr backend_libs__rtti__backend_libs__rtti__du_stag_ordered_rtti_id_maybe_element_0_0[1];
+
+static const MR_DuFunctorDescPtr backend_libs__rtti__backend_libs__rtti__du_stag_ordered_rtti_id_maybe_element_0_1[1];
+
+static const MR_DuPtagLayout backend_libs__rtti__backend_libs__rtti__du_ptag_ordered_rtti_id_maybe_element_0[2];
+
+static const MR_DuFunctorDescPtr backend_libs__rtti__backend_libs__rtti__du_name_ordered_rtti_id_maybe_element_0[2];
+
+static const MR_Integer backend_libs__rtti__backend_libs__rtti__functor_number_map_rtti_id_maybe_element_0[2];
+
+static const MR_PseudoTypeInfo backend_libs__rtti__backend_libs__rtti__field_types_rtti_maybe_pseudo_type_info_0_0[1];
+
+static const MR_DuFunctorDesc backend_libs__rtti__backend_libs__rtti__du_functor_desc_rtti_maybe_pseudo_type_info_0_0;
+
+static const MR_PseudoTypeInfo backend_libs__rtti__backend_libs__rtti__field_types_rtti_maybe_pseudo_type_info_0_1[1];
+
+static const MR_DuFunctorDesc backend_libs__rtti__backend_libs__rtti__du_functor_desc_rtti_maybe_pseudo_type_info_0_1;
+
+static const MR_DuFunctorDescPtr backend_libs__rtti__backend_libs__rtti__du_stag_ordered_rtti_maybe_pseudo_type_info_0_0[1];
+
+static const MR_DuFunctorDescPtr backend_libs__rtti__backend_libs__rtti__du_stag_ordered_rtti_maybe_pseudo_type_info_0_1[1];
+
+static const MR_DuPtagLayout backend_libs__rtti__backend_libs__rtti__du_ptag_ordered_rtti_maybe_pseudo_type_info_0[2];
+
+static const MR_DuFunctorDescPtr backend_libs__rtti__backend_libs__rtti__du_name_ordered_rtti_maybe_pseudo_type_info_0[2];
+
+static const MR_Integer backend_libs__rtti__backend_libs__rtti__functor_number_map_rtti_maybe_pseudo_type_info_0[2];
+
+static const MR_PseudoTypeInfo backend_libs__rtti__backend_libs__rtti__field_types_rtti_maybe_pseudo_type_info_or_self_0_0[1];
+
+static const MR_DuFunctorDesc backend_libs__rtti__backend_libs__rtti__du_functor_desc_rtti_maybe_pseudo_type_info_or_self_0_0;
+
+static const MR_PseudoTypeInfo backend_libs__rtti__backend_libs__rtti__field_types_rtti_maybe_pseudo_type_info_or_self_0_1[1];
+
+static const MR_DuFunctorDesc backend_libs__rtti__backend_libs__rtti__du_functor_desc_rtti_maybe_pseudo_type_info_or_self_0_1;
+
+static const MR_DuFunctorDesc backend_libs__rtti__backend_libs__rtti__du_functor_desc_rtti_maybe_pseudo_type_info_or_self_0_2;
+
+static const MR_DuFunctorDescPtr backend_libs__rtti__backend_libs__rtti__du_stag_ordered_rtti_maybe_pseudo_type_info_or_self_0_0[1];
+
+static const MR_DuFunctorDescPtr backend_libs__rtti__backend_libs__rtti__du_stag_ordered_rtti_maybe_pseudo_type_info_or_self_0_1[1];
+
+static const MR_DuFunctorDescPtr backend_libs__rtti__backend_libs__rtti__du_stag_ordered_rtti_maybe_pseudo_type_info_or_self_0_2[1];
+
+static const MR_DuPtagLayout backend_libs__rtti__backend_libs__rtti__du_ptag_ordered_rtti_maybe_pseudo_type_info_or_self_0[3];
+
+static const MR_DuFunctorDescPtr backend_libs__rtti__backend_libs__rtti__du_name_ordered_rtti_maybe_pseudo_type_info_or_self_0[3];
+
+static const MR_Integer backend_libs__rtti__backend_libs__rtti__functor_number_map_rtti_maybe_pseudo_type_info_or_self_0[3];
+
+static const MR_PseudoTypeInfo backend_libs__rtti__backend_libs__rtti__field_types_rtti_pseudo_type_info_0_0[1];
+
+static const MR_DuFunctorDesc backend_libs__rtti__backend_libs__rtti__du_functor_desc_rtti_pseudo_type_info_0_0;
+
+static const MR_FA_TypeInfo_Struct1 backend_libs__rtti__list__ti_list_1backend_libs__rtti__type_ctor_info_rtti_maybe_pseudo_type_info_0;
+
+static const MR_PseudoTypeInfo backend_libs__rtti__backend_libs__rtti__field_types_rtti_pseudo_type_info_0_1[2];
+
+static const MR_DuFunctorDesc backend_libs__rtti__backend_libs__rtti__du_functor_desc_rtti_pseudo_type_info_0_1;
+
+static const MR_PseudoTypeInfo backend_libs__rtti__backend_libs__rtti__field_types_rtti_pseudo_type_info_0_2[2];
+
+static const MR_DuFunctorDesc backend_libs__rtti__backend_libs__rtti__du_functor_desc_rtti_pseudo_type_info_0_2;
+
+static const MR_PseudoTypeInfo backend_libs__rtti__backend_libs__rtti__field_types_rtti_pseudo_type_info_0_3[1];
+
+static const MR_DuFunctorDesc backend_libs__rtti__backend_libs__rtti__du_functor_desc_rtti_pseudo_type_info_0_3;
+
+static const MR_DuFunctorDescPtr backend_libs__rtti__backend_libs__rtti__du_stag_ordered_rtti_pseudo_type_info_0_0[1];
+
+static const MR_DuFunctorDescPtr backend_libs__rtti__backend_libs__rtti__du_stag_ordered_rtti_pseudo_type_info_0_1[1];
+
+static const MR_DuFunctorDescPtr backend_libs__rtti__backend_libs__rtti__du_stag_ordered_rtti_pseudo_type_info_0_2[1];
+
+static const MR_DuFunctorDescPtr backend_libs__rtti__backend_libs__rtti__du_stag_ordered_rtti_pseudo_type_info_0_3[1];
+
+static const MR_DuPtagLayout backend_libs__rtti__backend_libs__rtti__du_ptag_ordered_rtti_pseudo_type_info_0[4];
+
+static const MR_DuFunctorDescPtr backend_libs__rtti__backend_libs__rtti__du_name_ordered_rtti_pseudo_type_info_0[4];
+
+static const MR_Integer backend_libs__rtti__backend_libs__rtti__functor_number_map_rtti_pseudo_type_info_0[4];
+
+static const MR_PseudoTypeInfo backend_libs__rtti__backend_libs__rtti__field_types_rtti_type_ctor_0_0[3];
+
+static const MR_DuFunctorDesc backend_libs__rtti__backend_libs__rtti__du_functor_desc_rtti_type_ctor_0_0;
+
+static const MR_DuFunctorDescPtr backend_libs__rtti__backend_libs__rtti__du_stag_ordered_rtti_type_ctor_0_0[1];
+
+static const MR_DuPtagLayout backend_libs__rtti__backend_libs__rtti__du_ptag_ordered_rtti_type_ctor_0[1];
+
+static const MR_DuFunctorDescPtr backend_libs__rtti__backend_libs__rtti__du_name_ordered_rtti_type_ctor_0[1];
+
+static const MR_Integer backend_libs__rtti__backend_libs__rtti__functor_number_map_rtti_type_ctor_0[1];
+
+static const MR_PseudoTypeInfo backend_libs__rtti__backend_libs__rtti__field_types_rtti_type_info_0_0[1];
+
+static const MR_DuFunctorDesc backend_libs__rtti__backend_libs__rtti__du_functor_desc_rtti_type_info_0_0;
+
+static const MR_FA_TypeInfo_Struct1 backend_libs__rtti__list__ti_list_1backend_libs__rtti__type_ctor_info_rtti_type_info_0;
+
+static const MR_PseudoTypeInfo backend_libs__rtti__backend_libs__rtti__field_types_rtti_type_info_0_1[2];
+
+static const MR_DuFunctorDesc backend_libs__rtti__backend_libs__rtti__du_functor_desc_rtti_type_info_0_1;
+
+static const MR_PseudoTypeInfo backend_libs__rtti__backend_libs__rtti__field_types_rtti_type_info_0_2[2];
+
+static const MR_DuFunctorDesc backend_libs__rtti__backend_libs__rtti__du_functor_desc_rtti_type_info_0_2;
+
+static const MR_DuFunctorDescPtr backend_libs__rtti__backend_libs__rtti__du_stag_ordered_rtti_type_info_0_0[1];
+
+static const MR_DuFunctorDescPtr backend_libs__rtti__backend_libs__rtti__du_stag_ordered_rtti_type_info_0_1[1];
+
+static const MR_DuFunctorDescPtr backend_libs__rtti__backend_libs__rtti__du_stag_ordered_rtti_type_info_0_2[1];
+
+static const MR_DuPtagLayout backend_libs__rtti__backend_libs__rtti__du_ptag_ordered_rtti_type_info_0[3];
+
+static const MR_DuFunctorDescPtr backend_libs__rtti__backend_libs__rtti__du_name_ordered_rtti_type_info_0[3];
+
+static const MR_Integer backend_libs__rtti__backend_libs__rtti__functor_number_map_rtti_type_info_0[3];
+
+static const MR_DuFunctorDesc backend_libs__rtti__backend_libs__rtti__du_functor_desc_sectag_and_locn_0_0;
+
+static const MR_DuFunctorDesc backend_libs__rtti__backend_libs__rtti__du_functor_desc_sectag_and_locn_0_1;
+
+static const MR_PseudoTypeInfo backend_libs__rtti__backend_libs__rtti__field_types_sectag_and_locn_0_2[1];
+
+static const MR_DuFunctorDesc backend_libs__rtti__backend_libs__rtti__du_functor_desc_sectag_and_locn_0_2;
+
+static const MR_PseudoTypeInfo backend_libs__rtti__backend_libs__rtti__field_types_sectag_and_locn_0_3[1];
+
+static const MR_DuFunctorDesc backend_libs__rtti__backend_libs__rtti__du_functor_desc_sectag_and_locn_0_3;
+
+static const MR_DuFunctorDescPtr backend_libs__rtti__backend_libs__rtti__du_stag_ordered_sectag_and_locn_0_0[2];
+
+static const MR_DuFunctorDescPtr backend_libs__rtti__backend_libs__rtti__du_stag_ordered_sectag_and_locn_0_1[1];
+
+static const MR_DuFunctorDescPtr backend_libs__rtti__backend_libs__rtti__du_stag_ordered_sectag_and_locn_0_2[1];
+
+static const MR_DuPtagLayout backend_libs__rtti__backend_libs__rtti__du_ptag_ordered_sectag_and_locn_0[3];
+
+static const MR_DuFunctorDescPtr backend_libs__rtti__backend_libs__rtti__du_name_ordered_sectag_and_locn_0[4];
+
+static const MR_Integer backend_libs__rtti__backend_libs__rtti__functor_number_map_sectag_and_locn_0[4];
+
+static const MR_EnumFunctorDesc backend_libs__rtti__backend_libs__rtti__enum_functor_desc_sectag_locn_0_0;
+
+static const MR_EnumFunctorDesc backend_libs__rtti__backend_libs__rtti__enum_functor_desc_sectag_locn_0_1;
+
+static const MR_EnumFunctorDesc backend_libs__rtti__backend_libs__rtti__enum_functor_desc_sectag_locn_0_2;
+
+static const MR_EnumFunctorDesc backend_libs__rtti__backend_libs__rtti__enum_functor_desc_sectag_locn_0_3;
+
+static const MR_EnumFunctorDescPtr backend_libs__rtti__backend_libs__rtti__enum_value_ordered_sectag_locn_0[4];
+
+static const MR_EnumFunctorDescPtr backend_libs__rtti__backend_libs__rtti__enum_name_ordered_sectag_locn_0[4];
+
+static const MR_Integer backend_libs__rtti__backend_libs__rtti__functor_number_map_sectag_locn_0[4];
+
+static const MR_FA_TypeInfo_Struct2 backend_libs__rtti__tree234__ti_tree234_2builtin__type_ctor_info_int_0backend_libs__rtti__type_ctor_info_du_functor_0;
+
+static const MR_PseudoTypeInfo backend_libs__rtti__backend_libs__rtti__field_types_sectag_table_0_0[3];
+
+static const MR_ConstString backend_libs__rtti__backend_libs__rtti__field_names_sectag_table_0_0[3];
+
+static const MR_DuFunctorDesc backend_libs__rtti__backend_libs__rtti__du_functor_desc_sectag_table_0_0;
+
+static const MR_DuFunctorDescPtr backend_libs__rtti__backend_libs__rtti__du_stag_ordered_sectag_table_0_0[1];
+
+static const MR_DuPtagLayout backend_libs__rtti__backend_libs__rtti__du_ptag_ordered_sectag_table_0[1];
+
+static const MR_DuFunctorDescPtr backend_libs__rtti__backend_libs__rtti__du_name_ordered_sectag_table_0[1];
+
+static const MR_Integer backend_libs__rtti__backend_libs__rtti__functor_number_map_sectag_table_0[1];
+
+static const MR_PseudoTypeInfo backend_libs__rtti__backend_libs__rtti__field_types_target_prefixes_0_0[2];
+
+static const MR_ConstString backend_libs__rtti__backend_libs__rtti__field_names_target_prefixes_0_0[2];
+
+static const MR_DuFunctorDesc backend_libs__rtti__backend_libs__rtti__du_functor_desc_target_prefixes_0_0;
+
+static const MR_DuFunctorDescPtr backend_libs__rtti__backend_libs__rtti__du_stag_ordered_target_prefixes_0_0[1];
+
+static const MR_DuPtagLayout backend_libs__rtti__backend_libs__rtti__du_ptag_ordered_target_prefixes_0[1];
+
+static const MR_DuFunctorDescPtr backend_libs__rtti__backend_libs__rtti__du_name_ordered_target_prefixes_0[1];
+
+static const MR_Integer backend_libs__rtti__backend_libs__rtti__functor_number_map_target_prefixes_0[1];
+
+static const MR_PseudoTypeInfo backend_libs__rtti__backend_libs__rtti__field_types_tc_constraint_0_0[2];
+
+static const MR_ConstString backend_libs__rtti__backend_libs__rtti__field_names_tc_constraint_0_0[2];
+
+static const MR_DuFunctorDesc backend_libs__rtti__backend_libs__rtti__du_functor_desc_tc_constraint_0_0;
+
+static const MR_DuFunctorDescPtr backend_libs__rtti__backend_libs__rtti__du_stag_ordered_tc_constraint_0_0[1];
+
+static const MR_DuPtagLayout backend_libs__rtti__backend_libs__rtti__du_ptag_ordered_tc_constraint_0[1];
+
+static const MR_DuFunctorDescPtr backend_libs__rtti__backend_libs__rtti__du_name_ordered_tc_constraint_0[1];
+
+static const MR_Integer backend_libs__rtti__backend_libs__rtti__functor_number_map_tc_constraint_0[1];
+
+static const MR_PseudoTypeInfo backend_libs__rtti__backend_libs__rtti__field_types_tc_decl_0_0[3];
+
+static const MR_ConstString backend_libs__rtti__backend_libs__rtti__field_names_tc_decl_0_0[3];
+
+static const MR_DuFunctorDesc backend_libs__rtti__backend_libs__rtti__du_functor_desc_tc_decl_0_0;
+
+static const MR_DuFunctorDescPtr backend_libs__rtti__backend_libs__rtti__du_stag_ordered_tc_decl_0_0[1];
+
+static const MR_DuPtagLayout backend_libs__rtti__backend_libs__rtti__du_ptag_ordered_tc_decl_0[1];
+
+static const MR_DuFunctorDescPtr backend_libs__rtti__backend_libs__rtti__du_name_ordered_tc_decl_0[1];
+
+static const MR_Integer backend_libs__rtti__backend_libs__rtti__functor_number_map_tc_decl_0[1];
+
+static const MR_PseudoTypeInfo backend_libs__rtti__backend_libs__rtti__field_types_tc_dict_0_0[3];
+
+static const MR_ConstString backend_libs__rtti__backend_libs__rtti__field_names_tc_dict_0_0[3];
+
+static const MR_DuFunctorDesc backend_libs__rtti__backend_libs__rtti__du_functor_desc_tc_dict_0_0;
+
+static const MR_DuFunctorDescPtr backend_libs__rtti__backend_libs__rtti__du_stag_ordered_tc_dict_0_0[1];
+
+static const MR_DuPtagLayout backend_libs__rtti__backend_libs__rtti__du_ptag_ordered_tc_dict_0[1];
+
+static const MR_DuFunctorDescPtr backend_libs__rtti__backend_libs__rtti__du_name_ordered_tc_dict_0[1];
+
+static const MR_Integer backend_libs__rtti__backend_libs__rtti__functor_number_map_tc_dict_0[1];
+
+static const MR_FA_TypeInfo_Struct1 backend_libs__rtti__list__ti_list_1builtin__type_ctor_info_string_0;
+
+static const MR_FA_TypeInfo_Struct1 backend_libs__rtti__list__ti_list_1backend_libs__rtti__type_ctor_info_tc_method_id_0;
+
+static const MR_PseudoTypeInfo backend_libs__rtti__backend_libs__rtti__field_types_tc_id_0_0[3];
+
+static const MR_ConstString backend_libs__rtti__backend_libs__rtti__field_names_tc_id_0_0[3];
+
+static const MR_DuFunctorDesc backend_libs__rtti__backend_libs__rtti__du_functor_desc_tc_id_0_0;
+
+static const MR_DuFunctorDescPtr backend_libs__rtti__backend_libs__rtti__du_stag_ordered_tc_id_0_0[1];
+
+static const MR_DuPtagLayout backend_libs__rtti__backend_libs__rtti__du_ptag_ordered_tc_id_0[1];
+
+static const MR_DuFunctorDescPtr backend_libs__rtti__backend_libs__rtti__du_name_ordered_tc_id_0[1];
+
+static const MR_Integer backend_libs__rtti__backend_libs__rtti__functor_number_map_tc_id_0[1];
+
+static const MR_PseudoTypeInfo backend_libs__rtti__backend_libs__rtti__field_types_tc_instance_0_0[5];
+
+static const MR_ConstString backend_libs__rtti__backend_libs__rtti__field_names_tc_instance_0_0[5];
+
+static const MR_DuFunctorDesc backend_libs__rtti__backend_libs__rtti__du_functor_desc_tc_instance_0_0;
+
+static const MR_DuFunctorDescPtr backend_libs__rtti__backend_libs__rtti__du_stag_ordered_tc_instance_0_0[1];
+
+static const MR_DuPtagLayout backend_libs__rtti__backend_libs__rtti__du_ptag_ordered_tc_instance_0[1];
+
+static const MR_DuFunctorDescPtr backend_libs__rtti__backend_libs__rtti__du_name_ordered_tc_instance_0[1];
+
+static const MR_Integer backend_libs__rtti__backend_libs__rtti__functor_number_map_tc_instance_0[1];
+
+static const MR_PseudoTypeInfo backend_libs__rtti__backend_libs__rtti__field_types_tc_method_id_0_0[3];
+
+static const MR_ConstString backend_libs__rtti__backend_libs__rtti__field_names_tc_method_id_0_0[3];
+
+static const MR_DuFunctorDesc backend_libs__rtti__backend_libs__rtti__du_functor_desc_tc_method_id_0_0;
+
+static const MR_DuFunctorDescPtr backend_libs__rtti__backend_libs__rtti__du_stag_ordered_tc_method_id_0_0[1];
+
+static const MR_DuPtagLayout backend_libs__rtti__backend_libs__rtti__du_ptag_ordered_tc_method_id_0[1];
+
+static const MR_DuFunctorDescPtr backend_libs__rtti__backend_libs__rtti__du_name_ordered_tc_method_id_0[1];
+
+static const MR_Integer backend_libs__rtti__backend_libs__rtti__functor_number_map_tc_method_id_0[1];
+
+static const MR_PseudoTypeInfo backend_libs__rtti__backend_libs__rtti__field_types_tc_name_0_0[3];
+
+static const MR_ConstString backend_libs__rtti__backend_libs__rtti__field_names_tc_name_0_0[3];
+
+static const MR_DuFunctorDesc backend_libs__rtti__backend_libs__rtti__du_functor_desc_tc_name_0_0;
+
+static const MR_DuFunctorDescPtr backend_libs__rtti__backend_libs__rtti__du_stag_ordered_tc_name_0_0[1];
+
+static const MR_DuPtagLayout backend_libs__rtti__backend_libs__rtti__du_ptag_ordered_tc_name_0[1];
+
+static const MR_DuFunctorDescPtr backend_libs__rtti__backend_libs__rtti__du_name_ordered_tc_name_0[1];
+
+static const MR_Integer backend_libs__rtti__backend_libs__rtti__functor_number_map_tc_name_0[1];
+
+static const MR_PseudoTypeInfo backend_libs__rtti__backend_libs__rtti__field_types_tc_rtti_name_0_0[2];
+
+static const MR_DuFunctorDesc backend_libs__rtti__backend_libs__rtti__du_functor_desc_tc_rtti_name_0_0;
+
+static const MR_DuFunctorDesc backend_libs__rtti__backend_libs__rtti__du_functor_desc_tc_rtti_name_0_1;
+
+static const MR_DuFunctorDesc backend_libs__rtti__backend_libs__rtti__du_functor_desc_tc_rtti_name_0_2;
+
+static const MR_DuFunctorDesc backend_libs__rtti__backend_libs__rtti__du_functor_desc_tc_rtti_name_0_3;
+
+static const MR_DuFunctorDesc backend_libs__rtti__backend_libs__rtti__du_functor_desc_tc_rtti_name_0_4;
+
+static const MR_PseudoTypeInfo backend_libs__rtti__backend_libs__rtti__field_types_tc_rtti_name_0_5[2];
+
+static const MR_DuFunctorDesc backend_libs__rtti__backend_libs__rtti__du_functor_desc_tc_rtti_name_0_5;
+
+static const MR_DuFunctorDesc backend_libs__rtti__backend_libs__rtti__du_functor_desc_tc_rtti_name_0_6;
+
+static const MR_PseudoTypeInfo backend_libs__rtti__backend_libs__rtti__field_types_tc_rtti_name_0_7[1];
+
+static const MR_DuFunctorDesc backend_libs__rtti__backend_libs__rtti__du_functor_desc_tc_rtti_name_0_7;
+
+static const MR_PseudoTypeInfo backend_libs__rtti__backend_libs__rtti__field_types_tc_rtti_name_0_8[1];
+
+static const MR_DuFunctorDesc backend_libs__rtti__backend_libs__rtti__du_functor_desc_tc_rtti_name_0_8;
+
+static const MR_PseudoTypeInfo backend_libs__rtti__backend_libs__rtti__field_types_tc_rtti_name_0_9[3];
+
+static const MR_DuFunctorDesc backend_libs__rtti__backend_libs__rtti__du_functor_desc_tc_rtti_name_0_9;
+
+static const MR_PseudoTypeInfo backend_libs__rtti__backend_libs__rtti__field_types_tc_rtti_name_0_10[1];
+
+static const MR_DuFunctorDesc backend_libs__rtti__backend_libs__rtti__du_functor_desc_tc_rtti_name_0_10;
+
+static const MR_PseudoTypeInfo backend_libs__rtti__backend_libs__rtti__field_types_tc_rtti_name_0_11[1];
+
+static const MR_DuFunctorDesc backend_libs__rtti__backend_libs__rtti__du_functor_desc_tc_rtti_name_0_11;
+
+static const MR_DuFunctorDescPtr backend_libs__rtti__backend_libs__rtti__du_stag_ordered_tc_rtti_name_0_0[5];
+
+static const MR_DuFunctorDescPtr backend_libs__rtti__backend_libs__rtti__du_stag_ordered_tc_rtti_name_0_1[1];
+
+static const MR_DuFunctorDescPtr backend_libs__rtti__backend_libs__rtti__du_stag_ordered_tc_rtti_name_0_2[1];
+
+static const MR_DuFunctorDescPtr backend_libs__rtti__backend_libs__rtti__du_stag_ordered_tc_rtti_name_0_3[5];
+
+static const MR_DuPtagLayout backend_libs__rtti__backend_libs__rtti__du_ptag_ordered_tc_rtti_name_0[4];
+
+static const MR_DuFunctorDescPtr backend_libs__rtti__backend_libs__rtti__du_name_ordered_tc_rtti_name_0[12];
+
+static const MR_Integer backend_libs__rtti__backend_libs__rtti__functor_number_map_tc_rtti_name_0[12];
+
+static const MR_FA_TypeInfo_Struct1 backend_libs__rtti__set_ordlist__ti_set_ordlist_1backend_libs__rtti__type_ctor_info_type_ctor_flag_0;
+
+static const MR_PseudoTypeInfo backend_libs__rtti__backend_libs__rtti__field_types_type_ctor_data_0_0[8];
+
+static const MR_ConstString backend_libs__rtti__backend_libs__rtti__field_names_type_ctor_data_0_0[8];
+
+static const MR_DuFunctorDesc backend_libs__rtti__backend_libs__rtti__du_functor_desc_type_ctor_data_0_0;
+
+static const MR_DuFunctorDescPtr backend_libs__rtti__backend_libs__rtti__du_stag_ordered_type_ctor_data_0_0[1];
+
+static const MR_DuPtagLayout backend_libs__rtti__backend_libs__rtti__du_ptag_ordered_type_ctor_data_0[1];
+
+static const MR_DuFunctorDescPtr backend_libs__rtti__backend_libs__rtti__du_name_ordered_type_ctor_data_0[1];
+
+static const MR_Integer backend_libs__rtti__backend_libs__rtti__functor_number_map_type_ctor_data_0[1];
+
+static const MR_FA_TypeInfo_Struct1 backend_libs__rtti__list__ti_list_1backend_libs__rtti__type_ctor_info_enum_functor_0;
+
+static const MR_FA_TypeInfo_Struct2 backend_libs__rtti__tree234__ti_tree234_2builtin__type_ctor_info_int_0backend_libs__rtti__type_ctor_info_enum_functor_0;
+
+static const MR_FA_TypeInfo_Struct2 backend_libs__rtti__tree234__ti_tree234_2builtin__type_ctor_info_string_0backend_libs__rtti__type_ctor_info_enum_functor_0;
+
+static const MR_FA_TypeInfo_Struct1 backend_libs__rtti__list__ti_list_1builtin__type_ctor_info_int_0;
+
+static const MR_PseudoTypeInfo backend_libs__rtti__backend_libs__rtti__field_types_type_ctor_details_0_0[6];
+
+static const MR_ConstString backend_libs__rtti__backend_libs__rtti__field_names_type_ctor_details_0_0[6];
+
+static const MR_DuFunctorDesc backend_libs__rtti__backend_libs__rtti__du_functor_desc_type_ctor_details_0_0;
+
+static const MR_FA_TypeInfo_Struct1 backend_libs__rtti__list__ti_list_1backend_libs__rtti__type_ctor_info_foreign_enum_functor_0;
+
+static const MR_FA_TypeInfo_Struct2 backend_libs__rtti__tree234__ti_tree234_2builtin__type_ctor_info_int_0backend_libs__rtti__type_ctor_info_foreign_enum_functor_0;
+
+static const MR_FA_TypeInfo_Struct2 backend_libs__rtti__tree234__ti_tree234_2builtin__type_ctor_info_string_0backend_libs__rtti__type_ctor_info_foreign_enum_functor_0;
+
+static const MR_PseudoTypeInfo backend_libs__rtti__backend_libs__rtti__field_types_type_ctor_details_0_1[6];
+
+static const MR_ConstString backend_libs__rtti__backend_libs__rtti__field_names_type_ctor_details_0_1[6];
+
+static const MR_DuFunctorDesc backend_libs__rtti__backend_libs__rtti__du_functor_desc_type_ctor_details_0_1;
+
+static const MR_FA_TypeInfo_Struct1 backend_libs__rtti__list__ti_list_1backend_libs__rtti__type_ctor_info_du_functor_0;
+
+static const MR_FA_TypeInfo_Struct2 backend_libs__rtti__tree234__ti_tree234_2builtin__type_ctor_info_string_0tree234__ti_tree234_2builtin__type_ctor_info_int_0backend_libs__rtti__type_ctor_info_du_functor_0;
+
+static const MR_PseudoTypeInfo backend_libs__rtti__backend_libs__rtti__field_types_type_ctor_details_0_2[5];
+
+static const MR_ConstString backend_libs__rtti__backend_libs__rtti__field_names_type_ctor_details_0_2[5];
+
+static const MR_DuFunctorDesc backend_libs__rtti__backend_libs__rtti__du_functor_desc_type_ctor_details_0_2;
+
+static const MR_PseudoTypeInfo backend_libs__rtti__backend_libs__rtti__field_types_type_ctor_details_0_3[2];
+
+static const MR_ConstString backend_libs__rtti__backend_libs__rtti__field_names_type_ctor_details_0_3[2];
+
+static const MR_DuFunctorDesc backend_libs__rtti__backend_libs__rtti__du_functor_desc_type_ctor_details_0_3;
+
+static const MR_PseudoTypeInfo backend_libs__rtti__backend_libs__rtti__field_types_type_ctor_details_0_4[1];
+
+static const MR_ConstString backend_libs__rtti__backend_libs__rtti__field_names_type_ctor_details_0_4[1];
+
+static const MR_DuFunctorDesc backend_libs__rtti__backend_libs__rtti__du_functor_desc_type_ctor_details_0_4;
+
+static const MR_PseudoTypeInfo backend_libs__rtti__backend_libs__rtti__field_types_type_ctor_details_0_5[1];
+
+static const MR_ConstString backend_libs__rtti__backend_libs__rtti__field_names_type_ctor_details_0_5[1];
+
+static const MR_DuFunctorDesc backend_libs__rtti__backend_libs__rtti__du_functor_desc_type_ctor_details_0_5;
+
+static const MR_PseudoTypeInfo backend_libs__rtti__backend_libs__rtti__field_types_type_ctor_details_0_6[1];
+
+static const MR_ConstString backend_libs__rtti__backend_libs__rtti__field_names_type_ctor_details_0_6[1];
+
+static const MR_DuFunctorDesc backend_libs__rtti__backend_libs__rtti__du_functor_desc_type_ctor_details_0_6;
+
+static const MR_PseudoTypeInfo backend_libs__rtti__backend_libs__rtti__field_types_type_ctor_details_0_7[1];
+
+static const MR_ConstString backend_libs__rtti__backend_libs__rtti__field_names_type_ctor_details_0_7[1];
+
+static const MR_DuFunctorDesc backend_libs__rtti__backend_libs__rtti__du_functor_desc_type_ctor_details_0_7;
+
+static const MR_DuFunctorDescPtr backend_libs__rtti__backend_libs__rtti__du_stag_ordered_type_ctor_details_0_0[1];
+
+static const MR_DuFunctorDescPtr backend_libs__rtti__backend_libs__rtti__du_stag_ordered_type_ctor_details_0_1[1];
+
+static const MR_DuFunctorDescPtr backend_libs__rtti__backend_libs__rtti__du_stag_ordered_type_ctor_details_0_2[1];
+
+static const MR_DuFunctorDescPtr backend_libs__rtti__backend_libs__rtti__du_stag_ordered_type_ctor_details_0_3[5];
+
+static const MR_DuPtagLayout backend_libs__rtti__backend_libs__rtti__du_ptag_ordered_type_ctor_details_0[4];
+
+static const MR_DuFunctorDescPtr backend_libs__rtti__backend_libs__rtti__du_name_ordered_type_ctor_details_0[8];
+
+static const MR_Integer backend_libs__rtti__backend_libs__rtti__functor_number_map_type_ctor_details_0[8];
+
+static const MR_EnumFunctorDesc backend_libs__rtti__backend_libs__rtti__enum_functor_desc_type_ctor_flag_0_0;
+
+static const MR_EnumFunctorDesc backend_libs__rtti__backend_libs__rtti__enum_functor_desc_type_ctor_flag_0_1;
+
+static const MR_EnumFunctorDescPtr backend_libs__rtti__backend_libs__rtti__enum_value_ordered_type_ctor_flag_0[2];
+
+static const MR_EnumFunctorDescPtr backend_libs__rtti__backend_libs__rtti__enum_name_ordered_type_ctor_flag_0[2];
+
+static const MR_Integer backend_libs__rtti__backend_libs__rtti__functor_number_map_type_ctor_flag_0[2];
+
+static const MR_EnumFunctorDesc backend_libs__rtti__backend_libs__rtti__enum_functor_desc_var_arity_ctor_id_0_0;
+
+static const MR_EnumFunctorDesc backend_libs__rtti__backend_libs__rtti__enum_functor_desc_var_arity_ctor_id_0_1;
+
+static const MR_EnumFunctorDesc backend_libs__rtti__backend_libs__rtti__enum_functor_desc_var_arity_ctor_id_0_2;
+
+static const MR_EnumFunctorDescPtr backend_libs__rtti__backend_libs__rtti__enum_value_ordered_var_arity_ctor_id_0[3];
+
+static const MR_EnumFunctorDescPtr backend_libs__rtti__backend_libs__rtti__enum_name_ordered_var_arity_ctor_id_0[3];
+
+static const MR_Integer backend_libs__rtti__backend_libs__rtti__functor_number_map_var_arity_ctor_id_0[3];
+
+static MR_bool MR_CALL 
+backend_libs__rtti__IntroducedFrom__pred__type_ctor_rep_to_string__1562__1_2_p_0(
+  MR_Word TypeCtorUserEq_8,
+  MR_Word HeadVar__2_46);
+
+static MR_bool MR_CALL 
+backend_libs__rtti__IntroducedFrom__pred__rtti_id_maybe_element_has_array_type__1044__1_2_p_0(
+  MR_Word HeadVar__1_9,
+  MR_Word HeadVar__2_10);
+
+static MR_String MR_CALL 
+backend_libs__rtti__maybe_pseudo_type_info_to_string_1_f_0(
+  MR_Word HeadVar__1_1);
+
+static void MR_CALL 
+backend_libs__rtti__encode_type_ctor_flag_3_p_0(
+  MR_Word HeadVar__1_1,
+  MR_Integer STATE_VARIABLE_Encoding_0_2,
+  MR_Integer * STATE_VARIABLE_Encoding_3);
+
+static MR_bool MR_CALL 
+backend_libs__rtti__type_ctor_rep_to_string_3_p_0_1(
+  MR_Box closure_arg);
+
+static MR_Box MR_CALL 
+backend_libs__rtti__tc_name_to_string_3_p_0_5(
+  MR_Box closure_arg,
+  MR_Box wrapper_arg_1);
+
+static MR_Box MR_CALL 
+backend_libs__rtti__tc_name_to_string_3_p_0_4(
+  MR_Box closure_arg,
+  MR_Box wrapper_arg_1);
+
+static MR_Box MR_CALL 
+backend_libs__rtti__tc_name_to_string_3_p_0_3(
+  MR_Box closure_arg,
+  MR_Box wrapper_arg_1);
+
+static MR_Box MR_CALL 
+backend_libs__rtti__tc_name_to_string_3_p_0_2(
+  MR_Box closure_arg,
+  MR_Box wrapper_arg_1);
+
+static MR_Box MR_CALL 
+backend_libs__rtti__tc_name_to_string_3_p_0_1(
+  MR_Box closure_arg,
+  MR_Box wrapper_arg_1);
+
+static void MR_CALL 
+backend_libs__rtti__tc_name_to_string_3_p_0(
+  MR_Word TCName_4,
+  MR_Word TCRttiName_5,
+  MR_String * Str_6);
+
+static void MR_CALL 
+backend_libs__rtti__mangle_rtti_type_class_name_4_p_0(
+  MR_Word TCName_5,
+  MR_String * ModuleName_6,
+  MR_String * ClassName_7,
+  MR_String * ArityStr_8);
+
+static MR_Box MR_CALL 
+backend_libs__rtti__type_info_to_string_1_f_0_2(
+  MR_Box closure_arg,
+  MR_Box wrapper_arg_1);
+
+static MR_Box MR_CALL 
+backend_libs__rtti__type_info_to_string_1_f_0_1(
+  MR_Box closure_arg,
+  MR_Box wrapper_arg_1);
+
+static MR_Box MR_CALL 
+backend_libs__rtti__pseudo_type_info_to_string_1_f_0_4(
+  MR_Box closure_arg,
+  MR_Box wrapper_arg_1);
+
+static MR_Box MR_CALL 
+backend_libs__rtti__pseudo_type_info_to_string_1_f_0_3(
+  MR_Box closure_arg,
+  MR_Box wrapper_arg_1);
+
+static MR_String MR_CALL 
+backend_libs__rtti__name_to_string_2_f_0(
+  MR_Word tscc_proc_3_input_1_RttiTypeCtor_4,
+  MR_Word tscc_proc_3_input_2_RttiName_5);
+
+static void MR_CALL 
+backend_libs__rtti__mangle_rtti_type_ctor_4_p_0(
+  MR_Word RttiTypeCtor_5,
+  MR_String * ModuleName_6,
+  MR_String * TypeName_7,
+  MR_String * ArityStr_8);
+
+static MR_bool MR_CALL 
+backend_libs__rtti__rtti_id_maybe_element_has_array_type_1_f_0_1(
+  MR_Box closure_arg);
+
+static void MR_CALL 
+backend_libs__rtti__tc_rtti_name_type_3_p_0(
+  MR_Word HeadVar__1_1,
+  MR_String * HeadVar__2_2,
+  MR_Word * HeadVar__3_3);
+
+static void MR_CALL 
+backend_libs__rtti__ctor_rtti_name_type_3_p_0(
+  MR_Word HeadVar__1_1,
+  MR_String * HeadVar__2_2,
+  MR_Word * HeadVar__3_3);
+
+static void MR_CALL 
+backend_libs__rtti__encode_type_ctor_flags_1_f_0_1(
+  MR_Box closure_arg,
+  MR_Box wrapper_arg_1,
+  MR_Box wrapper_arg_2,
+  MR_Box * wrapper_arg_3);
+
+static MR_bool MR_CALL 
+backend_libs__rtti____Unify____base_typeclass_info_0_0_10001(
+  MR_Box wrapper_arg_1,
+  MR_Box wrapper_arg_2);
+
+static void MR_CALL 
+backend_libs__rtti____Compare____base_typeclass_info_0_0_10001(
+  MR_Box * wrapper_arg_1,
+  MR_Box wrapper_arg_2,
+  MR_Box wrapper_arg_3);
+
+static MR_bool MR_CALL 
+backend_libs__rtti____Unify____builtin_ctor_0_0_10001(
+  MR_Box wrapper_arg_1,
+  MR_Box wrapper_arg_2);
+
+static void MR_CALL 
+backend_libs__rtti____Compare____builtin_ctor_0_0_10001(
+  MR_Box * wrapper_arg_1,
+  MR_Box wrapper_arg_2,
+  MR_Box wrapper_arg_3);
+
+static MR_bool MR_CALL 
+backend_libs__rtti____Unify____call_or_answer_table_0_0_10001(
+  MR_Box wrapper_arg_1,
+  MR_Box wrapper_arg_2);
+
+static void MR_CALL 
+backend_libs__rtti____Compare____call_or_answer_table_0_0_10001(
+  MR_Box * wrapper_arg_1,
+  MR_Box wrapper_arg_2,
+  MR_Box wrapper_arg_3);
+
+static MR_bool MR_CALL 
+backend_libs__rtti____Unify____ctor_rtti_name_0_0_10001(
+  MR_Box wrapper_arg_1,
+  MR_Box wrapper_arg_2);
+
+static void MR_CALL 
+backend_libs__rtti____Compare____ctor_rtti_name_0_0_10001(
+  MR_Box * wrapper_arg_1,
+  MR_Box wrapper_arg_2,
+  MR_Box wrapper_arg_3);
+
+static MR_bool MR_CALL 
+backend_libs__rtti____Unify____curr_or_prev_table_0_0_10001(
+  MR_Box wrapper_arg_1,
+  MR_Box wrapper_arg_2);
+
+static void MR_CALL 
+backend_libs__rtti____Compare____curr_or_prev_table_0_0_10001(
+  MR_Box * wrapper_arg_1,
+  MR_Box wrapper_arg_2,
+  MR_Box wrapper_arg_3);
+
+static MR_bool MR_CALL 
+backend_libs__rtti____Unify____du_arg_info_0_0_10001(
+  MR_Box wrapper_arg_1,
+  MR_Box wrapper_arg_2);
+
+static void MR_CALL 
+backend_libs__rtti____Compare____du_arg_info_0_0_10001(
+  MR_Box * wrapper_arg_1,
+  MR_Box wrapper_arg_2,
+  MR_Box wrapper_arg_3);
+
+static MR_bool MR_CALL 
+backend_libs__rtti____Unify____du_functor_0_0_10001(
+  MR_Box wrapper_arg_1,
+  MR_Box wrapper_arg_2);
+
+static void MR_CALL 
+backend_libs__rtti____Compare____du_functor_0_0_10001(
+  MR_Box * wrapper_arg_1,
+  MR_Box wrapper_arg_2,
+  MR_Box wrapper_arg_3);
+
+static MR_bool MR_CALL 
+backend_libs__rtti____Unify____du_rep_0_0_10001(
+  MR_Box wrapper_arg_1,
+  MR_Box wrapper_arg_2);
+
+static void MR_CALL 
+backend_libs__rtti____Compare____du_rep_0_0_10001(
+  MR_Box * wrapper_arg_1,
+  MR_Box wrapper_arg_2,
+  MR_Box wrapper_arg_3);
+
+static MR_bool MR_CALL 
+backend_libs__rtti____Unify____enum_functor_0_0_10001(
+  MR_Box wrapper_arg_1,
+  MR_Box wrapper_arg_2);
+
+static void MR_CALL 
+backend_libs__rtti____Compare____enum_functor_0_0_10001(
+  MR_Box * wrapper_arg_1,
+  MR_Box wrapper_arg_2,
+  MR_Box wrapper_arg_3);
+
+static MR_bool MR_CALL 
+backend_libs__rtti____Unify____equality_axioms_0_0_10001(
+  MR_Box wrapper_arg_1,
+  MR_Box wrapper_arg_2);
+
+static void MR_CALL 
+backend_libs__rtti____Compare____equality_axioms_0_0_10001(
+  MR_Box * wrapper_arg_1,
+  MR_Box wrapper_arg_2,
+  MR_Box wrapper_arg_3);
+
+static MR_bool MR_CALL 
+backend_libs__rtti____Unify____exist_info_0_0_10001(
+  MR_Box wrapper_arg_1,
+  MR_Box wrapper_arg_2);
+
+static void MR_CALL 
+backend_libs__rtti____Compare____exist_info_0_0_10001(
+  MR_Box * wrapper_arg_1,
+  MR_Box wrapper_arg_2,
+  MR_Box wrapper_arg_3);
+
+static MR_bool MR_CALL 
+backend_libs__rtti____Unify____exist_typeinfo_locn_0_0_10001(
+  MR_Box wrapper_arg_1,
+  MR_Box wrapper_arg_2);
+
+static void MR_CALL 
+backend_libs__rtti____Compare____exist_typeinfo_locn_0_0_10001(
+  MR_Box * wrapper_arg_1,
+  MR_Box wrapper_arg_2,
+  MR_Box wrapper_arg_3);
+
+static MR_bool MR_CALL 
+backend_libs__rtti____Unify____foreign_enum_functor_0_0_10001(
+  MR_Box wrapper_arg_1,
+  MR_Box wrapper_arg_2);
+
+static void MR_CALL 
+backend_libs__rtti____Compare____foreign_enum_functor_0_0_10001(
+  MR_Box * wrapper_arg_1,
+  MR_Box wrapper_arg_2,
+  MR_Box wrapper_arg_3);
+
+static MR_bool MR_CALL 
+backend_libs__rtti____Unify____functor_subtype_info_0_0_10001(
+  MR_Box wrapper_arg_1,
+  MR_Box wrapper_arg_2);
+
+static void MR_CALL 
+backend_libs__rtti____Compare____functor_subtype_info_0_0_10001(
+  MR_Box * wrapper_arg_1,
+  MR_Box wrapper_arg_2,
+  MR_Box wrapper_arg_3);
+
+static MR_bool MR_CALL 
+backend_libs__rtti____Unify____impl_ctor_0_0_10001(
+  MR_Box wrapper_arg_1,
+  MR_Box wrapper_arg_2);
+
+static void MR_CALL 
+backend_libs__rtti____Compare____impl_ctor_0_0_10001(
+  MR_Box * wrapper_arg_1,
+  MR_Box wrapper_arg_2,
+  MR_Box wrapper_arg_3);
+
+static MR_bool MR_CALL 
+backend_libs__rtti____Unify____is_array_0_0_10001(
+  MR_Box wrapper_arg_1,
+  MR_Box wrapper_arg_2);
+
+static void MR_CALL 
+backend_libs__rtti____Compare____is_array_0_0_10001(
+  MR_Box * wrapper_arg_1,
+  MR_Box wrapper_arg_2,
+  MR_Box wrapper_arg_3);
+
+static MR_bool MR_CALL 
+backend_libs__rtti____Unify____is_stable_0_0_10001(
+  MR_Box wrapper_arg_1,
+  MR_Box wrapper_arg_2);
+
+static void MR_CALL 
+backend_libs__rtti____Compare____is_stable_0_0_10001(
+  MR_Box * wrapper_arg_1,
+  MR_Box wrapper_arg_2,
+  MR_Box wrapper_arg_3);
+
+static MR_bool MR_CALL 
+backend_libs__rtti____Unify____notag_functor_0_0_10001(
+  MR_Box wrapper_arg_1,
+  MR_Box wrapper_arg_2);
+
+static void MR_CALL 
+backend_libs__rtti____Compare____notag_functor_0_0_10001(
+  MR_Box * wrapper_arg_1,
+  MR_Box wrapper_arg_2,
+  MR_Box wrapper_arg_3);
+
+static MR_bool MR_CALL 
+backend_libs__rtti____Unify____proc_tabling_struct_id_0_0_10001(
+  MR_Box wrapper_arg_1,
+  MR_Box wrapper_arg_2);
+
+static void MR_CALL 
+backend_libs__rtti____Compare____proc_tabling_struct_id_0_0_10001(
+  MR_Box * wrapper_arg_1,
+  MR_Box wrapper_arg_2,
+  MR_Box wrapper_arg_3);
+
+static MR_bool MR_CALL 
+backend_libs__rtti____Unify____ptag_map_0_0_10001(
+  MR_Box wrapper_arg_1,
+  MR_Box wrapper_arg_2);
+
+static void MR_CALL 
+backend_libs__rtti____Compare____ptag_map_0_0_10001(
+  MR_Box * wrapper_arg_1,
+  MR_Box wrapper_arg_2,
+  MR_Box wrapper_arg_3);
+
+static MR_bool MR_CALL 
+backend_libs__rtti____Unify____rtti_data_0_0_10001(
+  MR_Box wrapper_arg_1,
+  MR_Box wrapper_arg_2);
+
+static void MR_CALL 
+backend_libs__rtti____Compare____rtti_data_0_0_10001(
+  MR_Box * wrapper_arg_1,
+  MR_Box wrapper_arg_2,
+  MR_Box wrapper_arg_3);
+
+static MR_bool MR_CALL 
+backend_libs__rtti____Unify____rtti_id_0_0_10001(
+  MR_Box wrapper_arg_1,
+  MR_Box wrapper_arg_2);
+
+static void MR_CALL 
+backend_libs__rtti____Compare____rtti_id_0_0_10001(
+  MR_Box * wrapper_arg_1,
+  MR_Box wrapper_arg_2,
+  MR_Box wrapper_arg_3);
+
+static MR_bool MR_CALL 
+backend_libs__rtti____Unify____rtti_id_maybe_element_0_0_10001(
+  MR_Box wrapper_arg_1,
+  MR_Box wrapper_arg_2);
+
+static void MR_CALL 
+backend_libs__rtti____Compare____rtti_id_maybe_element_0_0_10001(
+  MR_Box * wrapper_arg_1,
+  MR_Box wrapper_arg_2,
+  MR_Box wrapper_arg_3);
+
+static MR_bool MR_CALL 
+backend_libs__rtti____Unify____rtti_maybe_pseudo_type_info_0_0_10001(
+  MR_Box wrapper_arg_1,
+  MR_Box wrapper_arg_2);
+
+static void MR_CALL 
+backend_libs__rtti____Compare____rtti_maybe_pseudo_type_info_0_0_10001(
+  MR_Box * wrapper_arg_1,
+  MR_Box wrapper_arg_2,
+  MR_Box wrapper_arg_3);
+
+static MR_bool MR_CALL 
+backend_libs__rtti____Unify____rtti_maybe_pseudo_type_info_or_self_0_0_10001(
+  MR_Box wrapper_arg_1,
+  MR_Box wrapper_arg_2);
+
+static void MR_CALL 
+backend_libs__rtti____Compare____rtti_maybe_pseudo_type_info_or_self_0_0_10001(
+  MR_Box * wrapper_arg_1,
+  MR_Box wrapper_arg_2,
+  MR_Box wrapper_arg_3);
+
+static MR_bool MR_CALL 
+backend_libs__rtti____Unify____rtti_pseudo_type_info_0_0_10001(
+  MR_Box wrapper_arg_1,
+  MR_Box wrapper_arg_2);
+
+static void MR_CALL 
+backend_libs__rtti____Compare____rtti_pseudo_type_info_0_0_10001(
+  MR_Box * wrapper_arg_1,
+  MR_Box wrapper_arg_2,
+  MR_Box wrapper_arg_3);
+
+static MR_bool MR_CALL 
+backend_libs__rtti____Unify____rtti_type_ctor_0_0_10001(
+  MR_Box wrapper_arg_1,
+  MR_Box wrapper_arg_2);
+
+static void MR_CALL 
+backend_libs__rtti____Compare____rtti_type_ctor_0_0_10001(
+  MR_Box * wrapper_arg_1,
+  MR_Box wrapper_arg_2,
+  MR_Box wrapper_arg_3);
+
+static MR_bool MR_CALL 
+backend_libs__rtti____Unify____rtti_type_info_0_0_10001(
+  MR_Box wrapper_arg_1,
+  MR_Box wrapper_arg_2);
+
+static void MR_CALL 
+backend_libs__rtti____Compare____rtti_type_info_0_0_10001(
+  MR_Box * wrapper_arg_1,
+  MR_Box wrapper_arg_2,
+  MR_Box wrapper_arg_3);
+
+static MR_bool MR_CALL 
+backend_libs__rtti____Unify____sectag_and_locn_0_0_10001(
+  MR_Box wrapper_arg_1,
+  MR_Box wrapper_arg_2);
+
+static void MR_CALL 
+backend_libs__rtti____Compare____sectag_and_locn_0_0_10001(
+  MR_Box * wrapper_arg_1,
+  MR_Box wrapper_arg_2,
+  MR_Box wrapper_arg_3);
+
+static MR_bool MR_CALL 
+backend_libs__rtti____Unify____sectag_locn_0_0_10001(
+  MR_Box wrapper_arg_1,
+  MR_Box wrapper_arg_2);
+
+static void MR_CALL 
+backend_libs__rtti____Compare____sectag_locn_0_0_10001(
+  MR_Box * wrapper_arg_1,
+  MR_Box wrapper_arg_2,
+  MR_Box wrapper_arg_3);
+
+static MR_bool MR_CALL 
+backend_libs__rtti____Unify____sectag_table_0_0_10001(
+  MR_Box wrapper_arg_1,
+  MR_Box wrapper_arg_2);
+
+static void MR_CALL 
+backend_libs__rtti____Compare____sectag_table_0_0_10001(
+  MR_Box * wrapper_arg_1,
+  MR_Box wrapper_arg_2,
+  MR_Box wrapper_arg_3);
+
+static MR_bool MR_CALL 
+backend_libs__rtti____Unify____stag_map_0_0_10001(
+  MR_Box wrapper_arg_1,
+  MR_Box wrapper_arg_2);
+
+static void MR_CALL 
+backend_libs__rtti____Compare____stag_map_0_0_10001(
+  MR_Box * wrapper_arg_1,
+  MR_Box wrapper_arg_2,
+  MR_Box wrapper_arg_3);
+
+static MR_bool MR_CALL 
+backend_libs__rtti____Unify____target_prefixes_0_0_10001(
+  MR_Box wrapper_arg_1,
+  MR_Box wrapper_arg_2);
+
+static void MR_CALL 
+backend_libs__rtti____Compare____target_prefixes_0_0_10001(
+  MR_Box * wrapper_arg_1,
+  MR_Box wrapper_arg_2,
+  MR_Box wrapper_arg_3);
+
+static MR_bool MR_CALL 
+backend_libs__rtti____Unify____tc_constraint_0_0_10001(
+  MR_Box wrapper_arg_1,
+  MR_Box wrapper_arg_2);
+
+static void MR_CALL 
+backend_libs__rtti____Compare____tc_constraint_0_0_10001(
+  MR_Box * wrapper_arg_1,
+  MR_Box wrapper_arg_2,
+  MR_Box wrapper_arg_3);
+
+static MR_bool MR_CALL 
+backend_libs__rtti____Unify____tc_decl_0_0_10001(
+  MR_Box wrapper_arg_1,
+  MR_Box wrapper_arg_2);
+
+static void MR_CALL 
+backend_libs__rtti____Compare____tc_decl_0_0_10001(
+  MR_Box * wrapper_arg_1,
+  MR_Box wrapper_arg_2,
+  MR_Box wrapper_arg_3);
+
+static MR_bool MR_CALL 
+backend_libs__rtti____Unify____tc_dict_0_0_10001(
+  MR_Box wrapper_arg_1,
+  MR_Box wrapper_arg_2);
+
+static void MR_CALL 
+backend_libs__rtti____Compare____tc_dict_0_0_10001(
+  MR_Box * wrapper_arg_1,
+  MR_Box wrapper_arg_2,
+  MR_Box wrapper_arg_3);
+
+static MR_bool MR_CALL 
+backend_libs__rtti____Unify____tc_id_0_0_10001(
+  MR_Box wrapper_arg_1,
+  MR_Box wrapper_arg_2);
+
+static void MR_CALL 
+backend_libs__rtti____Compare____tc_id_0_0_10001(
+  MR_Box * wrapper_arg_1,
+  MR_Box wrapper_arg_2,
+  MR_Box wrapper_arg_3);
+
+static MR_bool MR_CALL 
+backend_libs__rtti____Unify____tc_instance_0_0_10001(
+  MR_Box wrapper_arg_1,
+  MR_Box wrapper_arg_2);
+
+static void MR_CALL 
+backend_libs__rtti____Compare____tc_instance_0_0_10001(
+  MR_Box * wrapper_arg_1,
+  MR_Box wrapper_arg_2,
+  MR_Box wrapper_arg_3);
+
+static MR_bool MR_CALL 
+backend_libs__rtti____Unify____tc_method_id_0_0_10001(
+  MR_Box wrapper_arg_1,
+  MR_Box wrapper_arg_2);
+
+static void MR_CALL 
+backend_libs__rtti____Compare____tc_method_id_0_0_10001(
+  MR_Box * wrapper_arg_1,
+  MR_Box wrapper_arg_2,
+  MR_Box wrapper_arg_3);
+
+static MR_bool MR_CALL 
+backend_libs__rtti____Unify____tc_name_0_0_10001(
+  MR_Box wrapper_arg_1,
+  MR_Box wrapper_arg_2);
+
+static void MR_CALL 
+backend_libs__rtti____Compare____tc_name_0_0_10001(
+  MR_Box * wrapper_arg_1,
+  MR_Box wrapper_arg_2,
+  MR_Box wrapper_arg_3);
+
+static MR_bool MR_CALL 
+backend_libs__rtti____Unify____tc_rtti_name_0_0_10001(
+  MR_Box wrapper_arg_1,
+  MR_Box wrapper_arg_2);
+
+static void MR_CALL 
+backend_libs__rtti____Compare____tc_rtti_name_0_0_10001(
+  MR_Box * wrapper_arg_1,
+  MR_Box wrapper_arg_2,
+  MR_Box wrapper_arg_3);
+
+static MR_bool MR_CALL 
+backend_libs__rtti____Unify____tc_type_0_0_10001(
+  MR_Box wrapper_arg_1,
+  MR_Box wrapper_arg_2);
+
+static void MR_CALL 
+backend_libs__rtti____Compare____tc_type_0_0_10001(
+  MR_Box * wrapper_arg_1,
+  MR_Box wrapper_arg_2,
+  MR_Box wrapper_arg_3);
+
+static MR_bool MR_CALL 
+backend_libs__rtti____Unify____type_ctor_data_0_0_10001(
+  MR_Box wrapper_arg_1,
+  MR_Box wrapper_arg_2);
+
+static void MR_CALL 
+backend_libs__rtti____Compare____type_ctor_data_0_0_10001(
+  MR_Box * wrapper_arg_1,
+  MR_Box wrapper_arg_2,
+  MR_Box wrapper_arg_3);
+
+static MR_bool MR_CALL 
+backend_libs__rtti____Unify____type_ctor_details_0_0_10001(
+  MR_Box wrapper_arg_1,
+  MR_Box wrapper_arg_2);
+
+static void MR_CALL 
+backend_libs__rtti____Compare____type_ctor_details_0_0_10001(
+  MR_Box * wrapper_arg_1,
+  MR_Box wrapper_arg_2,
+  MR_Box wrapper_arg_3);
+
+static MR_bool MR_CALL 
+backend_libs__rtti____Unify____type_ctor_flag_0_0_10001(
+  MR_Box wrapper_arg_1,
+  MR_Box wrapper_arg_2);
+
+static void MR_CALL 
+backend_libs__rtti____Compare____type_ctor_flag_0_0_10001(
+  MR_Box * wrapper_arg_1,
+  MR_Box wrapper_arg_2,
+  MR_Box wrapper_arg_3);
+
+static MR_bool MR_CALL 
+backend_libs__rtti____Unify____var_arity_ctor_id_0_0_10001(
+  MR_Box wrapper_arg_1,
+  MR_Box wrapper_arg_2);
+
+static void MR_CALL 
+backend_libs__rtti____Compare____var_arity_ctor_id_0_0_10001(
+  MR_Box * wrapper_arg_1,
+  MR_Box wrapper_arg_2,
+  MR_Box wrapper_arg_3);
+
+
+static /* final */ const MR_Box backend_libs__rtti_scalar_common_1[20][2];
+
+static /* final */ const MR_Box backend_libs__rtti_scalar_common_2[17][3];
+
+static /* final */ const MR_Box backend_libs__rtti_scalar_common_3[1][6];
+
+static /* final */ const MR_Box backend_libs__rtti_scalar_common_4[2][1];
+
+static /* final */ const MR_Box backend_libs__rtti_scalar_common_5[4][5];
+
+
+/* sealed */ struct backend_libs__rtti__vector_common_type_6_0_s {
+  const MR_String backend_libs__rtti__vector_common_type_6_0__vct_6_f_0;
+};
+
+static /* final */ const struct backend_libs__rtti__vector_common_type_6_0_s backend_libs__rtti_vector_common_6[17];
+
+/* sealed */ struct backend_libs__rtti__vector_common_type_7_0_s {
+  const MR_String backend_libs__rtti__vector_common_type_7_0__vct_7_f_0;
+  const MR_Word backend_libs__rtti__vector_common_type_7_0__vct_7_f_1;
+};
+
+static /* final */ const struct backend_libs__rtti__vector_common_type_7_0_s backend_libs__rtti_vector_common_7[10];
+
+
+
+static /* final */ const MR_Box backend_libs__rtti_scalar_common_1[20][2] = {
+  /* row 0 */
+  {
+    ((MR_Box) (&mercury__list__list__type_ctor_info_list_1)),
+    ((MR_Box) (&hlds__hlds_rtti__hlds__hlds_rtti__type_ctor_info_rtti_proc_label_0))
+  },
+  /* row 1 */
+  {
+    ((MR_Box) (&mercury__maybe__maybe__type_ctor_info_maybe_1)),
+    ((MR_Box) (&mercury__builtin__builtin__type_ctor_info_string_0))
+  },
+  /* row 2 */
+  {
+    ((MR_Box) (&mercury__list__list__type_ctor_info_list_1)),
+    ((MR_Box) (&backend_libs__rtti__backend_libs__rtti__type_ctor_info_du_arg_info_0))
+  },
+  /* row 3 */
+  {
+    ((MR_Box) (&mercury__maybe__maybe__type_ctor_info_maybe_1)),
+    ((MR_Box) (&backend_libs__rtti__backend_libs__rtti__type_ctor_info_exist_info_0))
+  },
+  /* row 4 */
+  {
+    ((MR_Box) (&mercury__list__list__type_ctor_info_list_1)),
+    ((MR_Box) (&backend_libs__rtti__backend_libs__rtti__type_ctor_info_tc_constraint_0))
+  },
+  /* row 5 */
+  {
+    ((MR_Box) (&mercury__list__list__type_ctor_info_list_1)),
+    ((MR_Box) (&backend_libs__rtti__backend_libs__rtti__type_ctor_info_exist_typeinfo_locn_0))
+  },
+  /* row 6 */
+  {
+    ((MR_Box) (&mercury__list__list__type_ctor_info_list_1)),
+    ((MR_Box) (&backend_libs__rtti__backend_libs__rtti__type_ctor_info_rtti_maybe_pseudo_type_info_0))
+  },
+  /* row 7 */
+  {
+    ((MR_Box) (&mercury__list__list__type_ctor_info_list_1)),
+    ((MR_Box) (&backend_libs__rtti__backend_libs__rtti__type_ctor_info_rtti_type_info_0))
+  },
+  /* row 8 */
+  {
+    ((MR_Box) (&mercury__list__list__type_ctor_info_list_1)),
+    ((MR_Box) (&mercury__builtin__builtin__type_ctor_info_string_0))
+  },
+  /* row 9 */
+  {
+    ((MR_Box) (&mercury__list__list__type_ctor_info_list_1)),
+    ((MR_Box) (&backend_libs__rtti__backend_libs__rtti__type_ctor_info_tc_method_id_0))
+  },
+  /* row 10 */
+  {
+    ((MR_Box) (&mercury__set_ordlist__set_ordlist__type_ctor_info_set_ordlist_1)),
+    ((MR_Box) (&backend_libs__rtti__backend_libs__rtti__type_ctor_info_type_ctor_flag_0))
+  },
+  /* row 11 */
+  {
+    ((MR_Box) (&mercury__list__list__type_ctor_info_list_1)),
+    ((MR_Box) (&backend_libs__rtti__backend_libs__rtti__type_ctor_info_du_functor_0))
+  },
+  /* row 12 */
+  {
+    ((MR_Box) (&mercury__list__list__type_ctor_info_list_1)),
+    ((MR_Box) (&mercury__builtin__builtin__type_ctor_info_int_0))
+  },
+  /* row 13 */
+  {
+    ((MR_Box) (&mercury__list__list__type_ctor_info_list_1)),
+    ((MR_Box) (&backend_libs__rtti__backend_libs__rtti__type_ctor_info_foreign_enum_functor_0))
+  },
+  /* row 14 */
+  {
+    ((MR_Box) (&mercury__list__list__type_ctor_info_list_1)),
+    ((MR_Box) (&backend_libs__rtti__backend_libs__rtti__type_ctor_info_enum_functor_0))
+  },
+  /* row 15 */
+  {
+    ((MR_Box) ((MR_String) "private_builtin.")),
+    ((MR_Box) ((MR_String) "runtime.Constants."))
+  },
+  /* row 16 */
+  {
+    ((MR_Box) ((MR_String) "private_builtin.")),
+    ((MR_Box) ((MR_String) "runtime.Sectag_Locn."))
+  },
+  /* row 17 */
+  {
+    ((MR_Box) ((MR_String) "private_builtin.")),
+    ((MR_Box) ((MR_String) "runtime.FunctorSubtypeInfo."))
+  },
+  /* row 18 */
+  {
+    ((MR_Box) ((MR_String) "jmercury.runtime.TypeCtorRep.")),
+    ((MR_Box) ((MR_String) "runtime.TypeCtorRep."))
+  },
+  /* row 19 */
+  {
+    ((MR_Box) (MR_Word) ((MR_Integer) 1)),
+    ((MR_Box) (MR_mkword(MR_mktag(3), &backend_libs__rtti_scalar_common_4[1])))
+  },
+};
+
+static /* final */ const MR_Box backend_libs__rtti_scalar_common_2[17][3] = {
+  /* row 0 */
+  {
+    ((MR_Box) (&mercury__tree234__tree234__type_ctor_info_tree234_2)),
+    ((MR_Box) (&mercury__builtin__builtin__type_ctor_info_int_0)),
+    ((MR_Box) (&backend_libs__rtti__backend_libs__rtti__type_ctor_info_sectag_table_0))
+  },
+  /* row 1 */
+  {
+    ((MR_Box) (&mercury__tree234__tree234__type_ctor_info_tree234_2)),
+    ((MR_Box) (&mercury__builtin__builtin__type_ctor_info_int_0)),
+    ((MR_Box) (&backend_libs__rtti__backend_libs__rtti__type_ctor_info_du_functor_0))
+  },
+  /* row 2 */
+  {
+    ((MR_Box) (&mercury__tree234__tree234__type_ctor_info_tree234_2)),
+    ((MR_Box) (&mercury__builtin__builtin__type_ctor_info_string_0)),
+    ((MR_Box) (&backend_libs__rtti_scalar_common_2[1]))
+  },
+  /* row 3 */
+  {
+    ((MR_Box) (&mercury__tree234__tree234__type_ctor_info_tree234_2)),
+    ((MR_Box) (&mercury__builtin__builtin__type_ctor_info_int_0)),
+    ((MR_Box) (&backend_libs__rtti__backend_libs__rtti__type_ctor_info_foreign_enum_functor_0))
+  },
+  /* row 4 */
+  {
+    ((MR_Box) (&mercury__tree234__tree234__type_ctor_info_tree234_2)),
+    ((MR_Box) (&mercury__builtin__builtin__type_ctor_info_string_0)),
+    ((MR_Box) (&backend_libs__rtti__backend_libs__rtti__type_ctor_info_foreign_enum_functor_0))
+  },
+  /* row 5 */
+  {
+    ((MR_Box) (&mercury__tree234__tree234__type_ctor_info_tree234_2)),
+    ((MR_Box) (&mercury__builtin__builtin__type_ctor_info_int_0)),
+    ((MR_Box) (&backend_libs__rtti__backend_libs__rtti__type_ctor_info_enum_functor_0))
+  },
+  /* row 6 */
+  {
+    ((MR_Box) (&mercury__tree234__tree234__type_ctor_info_tree234_2)),
+    ((MR_Box) (&mercury__builtin__builtin__type_ctor_info_string_0)),
+    ((MR_Box) (&backend_libs__rtti__backend_libs__rtti__type_ctor_info_enum_functor_0))
+  },
+  /* row 7 */
+  {
+    ((MR_Box) (&backend_libs__rtti_scalar_common_3[0])),
+    ((MR_Box) (backend_libs__rtti__encode_type_ctor_flags_1_f_0_1)),
+    ((MR_Box) (MR_Word) ((MR_Integer) 0))
+  },
+  /* row 8 */
+  {
+    ((MR_Box) (&backend_libs__rtti_scalar_common_5[1])),
+    ((MR_Box) (backend_libs__rtti__type_info_to_string_1_f_0_1)),
+    ((MR_Box) (MR_Word) ((MR_Integer) 0))
+  },
+  /* row 9 */
+  {
+    ((MR_Box) (&backend_libs__rtti_scalar_common_5[1])),
+    ((MR_Box) (backend_libs__rtti__type_info_to_string_1_f_0_2)),
+    ((MR_Box) (MR_Word) ((MR_Integer) 0))
+  },
+  /* row 10 */
+  {
+    ((MR_Box) (&backend_libs__rtti_scalar_common_5[2])),
+    ((MR_Box) (backend_libs__rtti__pseudo_type_info_to_string_1_f_0_3)),
+    ((MR_Box) (MR_Word) ((MR_Integer) 0))
+  },
+  /* row 11 */
+  {
+    ((MR_Box) (&backend_libs__rtti_scalar_common_5[2])),
+    ((MR_Box) (backend_libs__rtti__pseudo_type_info_to_string_1_f_0_4)),
+    ((MR_Box) (MR_Word) ((MR_Integer) 0))
+  },
+  /* row 12 */
+  {
+    ((MR_Box) (&backend_libs__rtti_scalar_common_5[2])),
+    ((MR_Box) (backend_libs__rtti__tc_name_to_string_3_p_0_1)),
+    ((MR_Box) (MR_Word) ((MR_Integer) 0))
+  },
+  /* row 13 */
+  {
+    ((MR_Box) (&backend_libs__rtti_scalar_common_5[2])),
+    ((MR_Box) (backend_libs__rtti__tc_name_to_string_3_p_0_2)),
+    ((MR_Box) (MR_Word) ((MR_Integer) 0))
+  },
+  /* row 14 */
+  {
+    ((MR_Box) (&backend_libs__rtti_scalar_common_5[2])),
+    ((MR_Box) (backend_libs__rtti__tc_name_to_string_3_p_0_3)),
+    ((MR_Box) (MR_Word) ((MR_Integer) 0))
+  },
+  /* row 15 */
+  {
+    ((MR_Box) (&backend_libs__rtti_scalar_common_5[2])),
+    ((MR_Box) (backend_libs__rtti__tc_name_to_string_3_p_0_4)),
+    ((MR_Box) (MR_Word) ((MR_Integer) 0))
+  },
+  /* row 16 */
+  {
+    ((MR_Box) (&backend_libs__rtti_scalar_common_5[2])),
+    ((MR_Box) (backend_libs__rtti__tc_name_to_string_3_p_0_5)),
+    ((MR_Box) (MR_Word) ((MR_Integer) 0))
+  },
+};
+
+static /* final */ const MR_Box backend_libs__rtti_scalar_common_3[1][6] = {
+  /* row 0 */
+  {
+    NULL,
+    ((MR_Box) (NULL)),
+    ((MR_Box) (MR_Word) ((MR_Integer) 3)),
+    ((MR_Box) (&backend_libs__rtti__backend_libs__rtti__type_ctor_info_type_ctor_flag_0)),
+    ((MR_Box) (&mercury__builtin__builtin__type_ctor_info_int_0)),
+    ((MR_Box) (&mercury__builtin__builtin__type_ctor_info_int_0))
+  },
+};
+
+static /* final */ const MR_Box backend_libs__rtti_scalar_common_4[2][1] = {
+  /* row 0 */
+  {
+    ((MR_Box) (((MR_Integer) 0 | (((((MR_Integer) 0 << (MR_Integer) 1)) | (((((MR_Integer) 0 << (MR_Integer) 2)) | (((((MR_Integer) 0 << (MR_Integer) 3)) | (((MR_Integer) 0 << (MR_Integer) 4)))))))))))
+  },
+  /* row 1 */
+  {
+    ((MR_Box) ((MR_Integer) 0))
+  },
+};
+
+static /* final */ const MR_Box backend_libs__rtti_scalar_common_5[4][5] = {
+  /* row 0 */
+  {
+    NULL,
+    ((MR_Box) (NULL)),
+    ((MR_Box) (MR_Word) ((MR_Integer) 2)),
+    ((MR_Box) (&backend_libs__rtti__backend_libs__rtti__type_ctor_info_is_array_0)),
+    ((MR_Box) (&backend_libs__rtti__backend_libs__rtti__type_ctor_info_is_array_0))
+  },
+  /* row 1 */
+  {
+    NULL,
+    ((MR_Box) (NULL)),
+    ((MR_Box) (MR_Word) ((MR_Integer) 2)),
+    ((MR_Box) (&backend_libs__rtti__backend_libs__rtti__type_ctor_info_rtti_type_info_0)),
+    ((MR_Box) (&mercury__builtin__builtin__type_ctor_info_string_0))
+  },
+  /* row 2 */
+  {
+    NULL,
+    ((MR_Box) (NULL)),
+    ((MR_Box) (MR_Word) ((MR_Integer) 2)),
+    ((MR_Box) (&backend_libs__rtti__backend_libs__rtti__type_ctor_info_rtti_maybe_pseudo_type_info_0)),
+    ((MR_Box) (&mercury__builtin__builtin__type_ctor_info_string_0))
+  },
+  /* row 3 */
+  {
+    NULL,
+    ((MR_Box) (NULL)),
+    ((MR_Box) (MR_Word) ((MR_Integer) 2)),
+    ((MR_Box) (&backend_libs__rtti__backend_libs__rtti__type_ctor_info_equality_axioms_0)),
+    ((MR_Box) (&backend_libs__rtti__backend_libs__rtti__type_ctor_info_equality_axioms_0))
+  },
+};
+
+
+static /* final */ const struct backend_libs__rtti__vector_common_type_6_0_s backend_libs__rtti_vector_common_6[17] = {
+  /* row 0 */   {     (MR_String) "MR_SECTAG_NONE" },
+  /* row 1 */   {     (MR_String) "MR_SECTAG_NONE_DIRECT_ARG" },
+  /* row 2 */   {     (MR_String) "MR_SECTAG_LOCAL" },
+  /* row 3 */   {     (MR_String) "MR_SECTAG_REMOTE" },
+  /* row 4 */   {     (MR_String) "MR_TYPECTOR_REP_HP" },
+  /* row 5 */   {     (MR_String) "MR_TYPECTOR_REP_SUCCIP" },
+  /* row 6 */   {     (MR_String) "MR_TYPECTOR_REP_MAXFR" },
+  /* row 7 */   {     (MR_String) "MR_TYPECTOR_REP_CURFR" },
+  /* row 8 */   {     (MR_String) "MR_TYPECTOR_REP_REDOFR" },
+  /* row 9 */   {     (MR_String) "MR_TYPECTOR_REP_REDOIP" },
+  /* row 10 */   {     (MR_String) "MR_TYPECTOR_REP_TICKET" },
+  /* row 11 */   {     (MR_String) "MR_TYPECTOR_REP_TRAIL_PTR" },
+  /* row 12 */   {     (MR_String) "MR_TYPECTOR_REP_TYPEINFO" },
+  /* row 13 */   {     (MR_String) "MR_TYPECTOR_REP_TYPECTORINFO" },
+  /* row 14 */   {     (MR_String) "MR_TYPECTOR_REP_TYPECLASSINFO" },
+  /* row 15 */   {     (MR_String) "MR_TYPECTOR_REP_BASETYPECLASSINFO" },
+  /* row 16 */   {     (MR_String) "MR_TYPECTOR_REP_SUBGOAL" },
+};
+
+static /* final */ const struct backend_libs__rtti__vector_common_type_7_0_s backend_libs__rtti_vector_common_7[10] = {
+  /* row 0 */
+  {
+    (MR_String) "MR_TABLE_STEP_INT",
+    (MR_Word) MR_mkword(MR_mktag(0), MR_mkbody((MR_Integer) 0))
+  },
+  /* row 1 */
+  {
+    (MR_String) "MR_TABLE_STEP_UINT",
+    (MR_Word) MR_mkword(MR_mktag(0), MR_mkbody((MR_Integer) 0))
+  },
+  /* row 2 */
+  {
+    (MR_String) "MR_TABLE_STEP_INT8",
+    (MR_Word) MR_mkword(MR_mktag(0), MR_mkbody((MR_Integer) 0))
+  },
+  /* row 3 */
+  {
+    (MR_String) "MR_TABLE_STEP_UINT8",
+    (MR_Word) MR_mkword(MR_mktag(0), MR_mkbody((MR_Integer) 0))
+  },
+  /* row 4 */
+  {
+    (MR_String) "MR_TABLE_STEP_INT16",
+    (MR_Word) MR_mkword(MR_mktag(0), MR_mkbody((MR_Integer) 0))
+  },
+  /* row 5 */
+  {
+    (MR_String) "MR_TABLE_STEP_UINT16",
+    (MR_Word) MR_mkword(MR_mktag(0), MR_mkbody((MR_Integer) 0))
+  },
+  /* row 6 */
+  {
+    (MR_String) "MR_TABLE_STEP_INT32",
+    (MR_Word) MR_mkword(MR_mktag(0), MR_mkbody((MR_Integer) 0))
+  },
+  /* row 7 */
+  {
+    (MR_String) "MR_TABLE_STEP_UINT32",
+    (MR_Word) MR_mkword(MR_mktag(0), MR_mkbody((MR_Integer) 0))
+  },
+  /* row 8 */
+  {
+    (MR_String) "MR_TABLE_STEP_INT64",
+    (MR_Word) MR_mkword(MR_mktag(0), MR_mkbody((MR_Integer) 0))
+  },
+  /* row 9 */
+  {
+    (MR_String) "MR_TABLE_STEP_UINT64",
+    (MR_Word) MR_mkword(MR_mktag(0), MR_mkbody((MR_Integer) 0))
+  },
+};
+
+
+#include "io.mh"
+#include "string.mh"
+#include "table_builtin.mh"
+#include "time.mh"
+#include "mdbcomp.rtti_access.mh"
+
+
+
+static const MR_FA_TypeInfo_Struct1 backend_libs__rtti__list__ti_list_1hlds__hlds_rtti__type_ctor_info_rtti_proc_label_0 = {
+  &mercury__list__list__type_ctor_info_list_1,
+  {
+    (MR_TypeInfo) &hlds__hlds_rtti__hlds__hlds_rtti__type_ctor_info_rtti_proc_label_0
+  }
+};
+
+static const MR_PseudoTypeInfo backend_libs__rtti__backend_libs__rtti__field_types_base_typeclass_info_0_0[6] = {
+  (MR_PseudoTypeInfo) &mercury__builtin__builtin__type_ctor_info_int_0,
+  (MR_PseudoTypeInfo) &mercury__builtin__builtin__type_ctor_info_int_0,
+  (MR_PseudoTypeInfo) &mercury__builtin__builtin__type_ctor_info_int_0,
+  (MR_PseudoTypeInfo) &mercury__builtin__builtin__type_ctor_info_int_0,
+  (MR_PseudoTypeInfo) &mercury__builtin__builtin__type_ctor_info_int_0,
+  (MR_PseudoTypeInfo) &backend_libs__rtti__list__ti_list_1hlds__hlds_rtti__type_ctor_info_rtti_proc_label_0
+};
+
+static const MR_ConstString backend_libs__rtti__backend_libs__rtti__field_names_base_typeclass_info_0_0[6] = {
+  (MR_String) "num_extra",
+  (MR_String) "num_constraints",
+  (MR_String) "num_superclasses",
+  (MR_String) "class_arity",
+  (MR_String) "num_methods",
+  (MR_String) "methods"
+};
+
+static const MR_DuFunctorDesc backend_libs__rtti__backend_libs__rtti__du_functor_desc_base_typeclass_info_0_0 = {
+  (MR_String) "base_typeclass_info",
+  (MR_Integer) 6,
+  (MR_Integer) 0,
+  MR_SECTAG_NONE,
+  (MR_Integer) 0,
+  (MR_Integer) -1,
+  (MR_Integer) 0,
+  backend_libs__rtti__backend_libs__rtti__field_types_base_typeclass_info_0_0,
+  backend_libs__rtti__backend_libs__rtti__field_names_base_typeclass_info_0_0,
+  NULL,
+  NULL,
+  MR_FUNCTOR_SUBTYPE_NONE
+};
+
+static const MR_DuFunctorDescPtr backend_libs__rtti__backend_libs__rtti__du_stag_ordered_base_typeclass_info_0_0[1] = {
+  &backend_libs__rtti__backend_libs__rtti__du_functor_desc_base_typeclass_info_0_0
+};
+
+static const MR_DuPtagLayout backend_libs__rtti__backend_libs__rtti__du_ptag_ordered_base_typeclass_info_0[1] = {
+  {
+    (MR_Integer) 1,
+    MR_SECTAG_NONE,
+    backend_libs__rtti__backend_libs__rtti__du_stag_ordered_base_typeclass_info_0_0
+  }
+};
+
+static const MR_DuFunctorDescPtr backend_libs__rtti__backend_libs__rtti__du_name_ordered_base_typeclass_info_0[1] = {
+  &backend_libs__rtti__backend_libs__rtti__du_functor_desc_base_typeclass_info_0_0
+};
+
+static const MR_Integer backend_libs__rtti__backend_libs__rtti__functor_number_map_base_typeclass_info_0[1] = {
+  (MR_Integer) 0
+};
+
+const MR_TypeCtorInfo_Struct backend_libs__rtti__backend_libs__rtti__type_ctor_info_base_typeclass_info_0 = {
+  (MR_Integer) 0,
+  (MR_Integer) 17,
+  (MR_Integer) 1,
+  MR_TYPECTOR_REP_DU,
+  ((MR_Box) (backend_libs__rtti____Unify____base_typeclass_info_0_0_10001)),
+  ((MR_Box) (backend_libs__rtti____Compare____base_typeclass_info_0_0_10001)),
+  (MR_String) "backend_libs.rtti",
+  (MR_String) "base_typeclass_info",
+  {     backend_libs__rtti__backend_libs__rtti__du_name_ordered_base_typeclass_info_0 },
+  {     backend_libs__rtti__backend_libs__rtti__du_ptag_ordered_base_typeclass_info_0 },
+  (MR_Integer) 1,
+  (MR_Integer) 4,
+  backend_libs__rtti__backend_libs__rtti__functor_number_map_base_typeclass_info_0
+};
+
+static const MR_DuFunctorDesc backend_libs__rtti__backend_libs__rtti__du_functor_desc_builtin_ctor_0_0 = {
+  (MR_String) "builtin_ctor_int",
+  (MR_Integer) 0,
+  (MR_Integer) 0,
+  MR_SECTAG_LOCAL,
+  (MR_Integer) 0,
+  (MR_Integer) 0,
+  (MR_Integer) 0,
+  NULL,
+  NULL,
+  NULL,
+  NULL,
+  MR_FUNCTOR_SUBTYPE_NONE
+};
+
+static const MR_DuFunctorDesc backend_libs__rtti__backend_libs__rtti__du_functor_desc_builtin_ctor_0_1 = {
+  (MR_String) "builtin_ctor_uint",
+  (MR_Integer) 0,
+  (MR_Integer) 0,
+  MR_SECTAG_LOCAL,
+  (MR_Integer) 0,
+  (MR_Integer) 1,
+  (MR_Integer) 1,
+  NULL,
+  NULL,
+  NULL,
+  NULL,
+  MR_FUNCTOR_SUBTYPE_NONE
+};
+
+static const MR_DuFunctorDesc backend_libs__rtti__backend_libs__rtti__du_functor_desc_builtin_ctor_0_2 = {
+  (MR_String) "builtin_ctor_int8",
+  (MR_Integer) 0,
+  (MR_Integer) 0,
+  MR_SECTAG_LOCAL,
+  (MR_Integer) 0,
+  (MR_Integer) 2,
+  (MR_Integer) 2,
+  NULL,
+  NULL,
+  NULL,
+  NULL,
+  MR_FUNCTOR_SUBTYPE_NONE
+};
+
+static const MR_DuFunctorDesc backend_libs__rtti__backend_libs__rtti__du_functor_desc_builtin_ctor_0_3 = {
+  (MR_String) "builtin_ctor_uint8",
+  (MR_Integer) 0,
+  (MR_Integer) 0,
+  MR_SECTAG_LOCAL,
+  (MR_Integer) 0,
+  (MR_Integer) 3,
+  (MR_Integer) 3,
+  NULL,
+  NULL,
+  NULL,
+  NULL,
+  MR_FUNCTOR_SUBTYPE_NONE
+};
+
+static const MR_DuFunctorDesc backend_libs__rtti__backend_libs__rtti__du_functor_desc_builtin_ctor_0_4 = {
+  (MR_String) "builtin_ctor_int16",
+  (MR_Integer) 0,
+  (MR_Integer) 0,
+  MR_SECTAG_LOCAL,
+  (MR_Integer) 0,
+  (MR_Integer) 4,
+  (MR_Integer) 4,
+  NULL,
+  NULL,
+  NULL,
+  NULL,
+  MR_FUNCTOR_SUBTYPE_NONE
+};
+
+static const MR_DuFunctorDesc backend_libs__rtti__backend_libs__rtti__du_functor_desc_builtin_ctor_0_5 = {
+  (MR_String) "builtin_ctor_uint16",
+  (MR_Integer) 0,
+  (MR_Integer) 0,
+  MR_SECTAG_LOCAL,
+  (MR_Integer) 0,
+  (MR_Integer) 5,
+  (MR_Integer) 5,
+  NULL,
+  NULL,
+  NULL,
+  NULL,
+  MR_FUNCTOR_SUBTYPE_NONE
+};
+
+static const MR_DuFunctorDesc backend_libs__rtti__backend_libs__rtti__du_functor_desc_builtin_ctor_0_6 = {
+  (MR_String) "builtin_ctor_int32",
+  (MR_Integer) 0,
+  (MR_Integer) 0,
+  MR_SECTAG_LOCAL,
+  (MR_Integer) 0,
+  (MR_Integer) 6,
+  (MR_Integer) 6,
+  NULL,
+  NULL,
+  NULL,
+  NULL,
+  MR_FUNCTOR_SUBTYPE_NONE
+};
+
+static const MR_DuFunctorDesc backend_libs__rtti__backend_libs__rtti__du_functor_desc_builtin_ctor_0_7 = {
+  (MR_String) "builtin_ctor_uint32",
+  (MR_Integer) 0,
+  (MR_Integer) 0,
+  MR_SECTAG_LOCAL,
+  (MR_Integer) 0,
+  (MR_Integer) 7,
+  (MR_Integer) 7,
+  NULL,
+  NULL,
+  NULL,
+  NULL,
+  MR_FUNCTOR_SUBTYPE_NONE
+};
+
+static const MR_DuFunctorDesc backend_libs__rtti__backend_libs__rtti__du_functor_desc_builtin_ctor_0_8 = {
+  (MR_String) "builtin_ctor_int64",
+  (MR_Integer) 0,
+  (MR_Integer) 0,
+  MR_SECTAG_LOCAL,
+  (MR_Integer) 0,
+  (MR_Integer) 8,
+  (MR_Integer) 8,
+  NULL,
+  NULL,
+  NULL,
+  NULL,
+  MR_FUNCTOR_SUBTYPE_NONE
+};
+
+static const MR_DuFunctorDesc backend_libs__rtti__backend_libs__rtti__du_functor_desc_builtin_ctor_0_9 = {
+  (MR_String) "builtin_ctor_uint64",
+  (MR_Integer) 0,
+  (MR_Integer) 0,
+  MR_SECTAG_LOCAL,
+  (MR_Integer) 0,
+  (MR_Integer) 9,
+  (MR_Integer) 9,
+  NULL,
+  NULL,
+  NULL,
+  NULL,
+  MR_FUNCTOR_SUBTYPE_NONE
+};
+
+static const MR_DuFunctorDesc backend_libs__rtti__backend_libs__rtti__du_functor_desc_builtin_ctor_0_10 = {
+  (MR_String) "builtin_ctor_float",
+  (MR_Integer) 0,
+  (MR_Integer) 0,
+  MR_SECTAG_LOCAL,
+  (MR_Integer) 0,
+  (MR_Integer) 10,
+  (MR_Integer) 10,
+  NULL,
+  NULL,
+  NULL,
+  NULL,
+  MR_FUNCTOR_SUBTYPE_NONE
+};
+
+static const MR_DuFunctorDesc backend_libs__rtti__backend_libs__rtti__du_functor_desc_builtin_ctor_0_11 = {
+  (MR_String) "builtin_ctor_char",
+  (MR_Integer) 0,
+  (MR_Integer) 0,
+  MR_SECTAG_LOCAL,
+  (MR_Integer) 0,
+  (MR_Integer) 11,
+  (MR_Integer) 11,
+  NULL,
+  NULL,
+  NULL,
+  NULL,
+  MR_FUNCTOR_SUBTYPE_NONE
+};
+
+static const MR_DuFunctorDesc backend_libs__rtti__backend_libs__rtti__du_functor_desc_builtin_ctor_0_12 = {
+  (MR_String) "builtin_ctor_string",
+  (MR_Integer) 0,
+  (MR_Integer) 0,
+  MR_SECTAG_LOCAL,
+  (MR_Integer) 0,
+  (MR_Integer) 12,
+  (MR_Integer) 12,
+  NULL,
+  NULL,
+  NULL,
+  NULL,
+  MR_FUNCTOR_SUBTYPE_NONE
+};
+
+static const MR_DuFunctorDesc backend_libs__rtti__backend_libs__rtti__du_functor_desc_builtin_ctor_0_13 = {
+  (MR_String) "builtin_ctor_void",
+  (MR_Integer) 0,
+  (MR_Integer) 0,
+  MR_SECTAG_LOCAL,
+  (MR_Integer) 0,
+  (MR_Integer) 13,
+  (MR_Integer) 13,
+  NULL,
+  NULL,
+  NULL,
+  NULL,
+  MR_FUNCTOR_SUBTYPE_NONE
+};
+
+static const MR_PseudoTypeInfo backend_libs__rtti__backend_libs__rtti__field_types_builtin_ctor_0_14[1] = {
+  (MR_PseudoTypeInfo) &backend_libs__rtti__backend_libs__rtti__type_ctor_info_is_stable_0
+};
+
+static const MR_DuFunctorDesc backend_libs__rtti__backend_libs__rtti__du_functor_desc_builtin_ctor_0_14 = {
+  (MR_String) "builtin_ctor_c_pointer",
+  (MR_Integer) 1,
+  (MR_Integer) 0,
+  MR_SECTAG_NONE,
+  (MR_Integer) 1,
+  (MR_Integer) -1,
+  (MR_Integer) 14,
+  backend_libs__rtti__backend_libs__rtti__field_types_builtin_ctor_0_14,
+  NULL,
+  NULL,
+  NULL,
+  MR_FUNCTOR_SUBTYPE_NONE
+};
+
+static const MR_DuFunctorDesc backend_libs__rtti__backend_libs__rtti__du_functor_desc_builtin_ctor_0_15 = {
+  (MR_String) "builtin_ctor_pred_ctor",
+  (MR_Integer) 0,
+  (MR_Integer) 0,
+  MR_SECTAG_LOCAL,
+  (MR_Integer) 0,
+  (MR_Integer) 14,
+  (MR_Integer) 15,
+  NULL,
+  NULL,
+  NULL,
+  NULL,
+  MR_FUNCTOR_SUBTYPE_NONE
+};
+
+static const MR_DuFunctorDesc backend_libs__rtti__backend_libs__rtti__du_functor_desc_builtin_ctor_0_16 = {
+  (MR_String) "builtin_ctor_func_ctor",
+  (MR_Integer) 0,
+  (MR_Integer) 0,
+  MR_SECTAG_LOCAL,
+  (MR_Integer) 0,
+  (MR_Integer) 15,
+  (MR_Integer) 16,
+  NULL,
+  NULL,
+  NULL,
+  NULL,
+  MR_FUNCTOR_SUBTYPE_NONE
+};
+
+static const MR_DuFunctorDesc backend_libs__rtti__backend_libs__rtti__du_functor_desc_builtin_ctor_0_17 = {
+  (MR_String) "builtin_ctor_tuple",
+  (MR_Integer) 0,
+  (MR_Integer) 0,
+  MR_SECTAG_LOCAL,
+  (MR_Integer) 0,
+  (MR_Integer) 16,
+  (MR_Integer) 17,
+  NULL,
+  NULL,
+  NULL,
+  NULL,
+  MR_FUNCTOR_SUBTYPE_NONE
+};
+
+static const MR_DuFunctorDesc backend_libs__rtti__backend_libs__rtti__du_functor_desc_builtin_ctor_0_18 = {
+  (MR_String) "builtin_ctor_ref",
+  (MR_Integer) 0,
+  (MR_Integer) 0,
+  MR_SECTAG_LOCAL,
+  (MR_Integer) 0,
+  (MR_Integer) 17,
+  (MR_Integer) 18,
+  NULL,
+  NULL,
+  NULL,
+  NULL,
+  MR_FUNCTOR_SUBTYPE_NONE
+};
+
+static const MR_DuFunctorDesc backend_libs__rtti__backend_libs__rtti__du_functor_desc_builtin_ctor_0_19 = {
+  (MR_String) "builtin_ctor_type_desc",
+  (MR_Integer) 0,
+  (MR_Integer) 0,
+  MR_SECTAG_LOCAL,
+  (MR_Integer) 0,
+  (MR_Integer) 18,
+  (MR_Integer) 19,
+  NULL,
+  NULL,
+  NULL,
+  NULL,
+  MR_FUNCTOR_SUBTYPE_NONE
+};
+
+static const MR_DuFunctorDesc backend_libs__rtti__backend_libs__rtti__du_functor_desc_builtin_ctor_0_20 = {
+  (MR_String) "builtin_ctor_pseudo_type_desc",
+  (MR_Integer) 0,
+  (MR_Integer) 0,
+  MR_SECTAG_LOCAL,
+  (MR_Integer) 0,
+  (MR_Integer) 19,
+  (MR_Integer) 20,
+  NULL,
+  NULL,
+  NULL,
+  NULL,
+  MR_FUNCTOR_SUBTYPE_NONE
+};
+
+static const MR_DuFunctorDesc backend_libs__rtti__backend_libs__rtti__du_functor_desc_builtin_ctor_0_21 = {
+  (MR_String) "builtin_ctor_type_ctor_desc",
+  (MR_Integer) 0,
+  (MR_Integer) 0,
+  MR_SECTAG_LOCAL,
+  (MR_Integer) 0,
+  (MR_Integer) 20,
+  (MR_Integer) 21,
+  NULL,
+  NULL,
+  NULL,
+  NULL,
+  MR_FUNCTOR_SUBTYPE_NONE
+};
+
+static const MR_DuFunctorDescPtr backend_libs__rtti__backend_libs__rtti__du_stag_ordered_builtin_ctor_0_0[21] = {
+  &backend_libs__rtti__backend_libs__rtti__du_functor_desc_builtin_ctor_0_0,
+  &backend_libs__rtti__backend_libs__rtti__du_functor_desc_builtin_ctor_0_1,
+  &backend_libs__rtti__backend_libs__rtti__du_functor_desc_builtin_ctor_0_2,
+  &backend_libs__rtti__backend_libs__rtti__du_functor_desc_builtin_ctor_0_3,
+  &backend_libs__rtti__backend_libs__rtti__du_functor_desc_builtin_ctor_0_4,
+  &backend_libs__rtti__backend_libs__rtti__du_functor_desc_builtin_ctor_0_5,
+  &backend_libs__rtti__backend_libs__rtti__du_functor_desc_builtin_ctor_0_6,
+  &backend_libs__rtti__backend_libs__rtti__du_functor_desc_builtin_ctor_0_7,
+  &backend_libs__rtti__backend_libs__rtti__du_functor_desc_builtin_ctor_0_8,
+  &backend_libs__rtti__backend_libs__rtti__du_functor_desc_builtin_ctor_0_9,
+  &backend_libs__rtti__backend_libs__rtti__du_functor_desc_builtin_ctor_0_10,
+  &backend_libs__rtti__backend_libs__rtti__du_functor_desc_builtin_ctor_0_11,
+  &backend_libs__rtti__backend_libs__rtti__du_functor_desc_builtin_ctor_0_12,
+  &backend_libs__rtti__backend_libs__rtti__du_functor_desc_builtin_ctor_0_13,
+  &backend_libs__rtti__backend_libs__rtti__du_functor_desc_builtin_ctor_0_15,
+  &backend_libs__rtti__backend_libs__rtti__du_functor_desc_builtin_ctor_0_16,
+  &backend_libs__rtti__backend_libs__rtti__du_functor_desc_builtin_ctor_0_17,
+  &backend_libs__rtti__backend_libs__rtti__du_functor_desc_builtin_ctor_0_18,
+  &backend_libs__rtti__backend_libs__rtti__du_functor_desc_builtin_ctor_0_19,
+  &backend_libs__rtti__backend_libs__rtti__du_functor_desc_builtin_ctor_0_20,
+  &backend_libs__rtti__backend_libs__rtti__du_functor_desc_builtin_ctor_0_21
+};
+
+static const MR_DuFunctorDescPtr backend_libs__rtti__backend_libs__rtti__du_stag_ordered_builtin_ctor_0_1[1] = {
+  &backend_libs__rtti__backend_libs__rtti__du_functor_desc_builtin_ctor_0_14
+};
+
+static const MR_DuPtagLayout backend_libs__rtti__backend_libs__rtti__du_ptag_ordered_builtin_ctor_0[2] = {
+  {
+    (MR_Integer) 21,
+    MR_SECTAG_LOCAL,
+    backend_libs__rtti__backend_libs__rtti__du_stag_ordered_builtin_ctor_0_0
+  },
+  {
+    (MR_Integer) 1,
+    MR_SECTAG_NONE,
+    backend_libs__rtti__backend_libs__rtti__du_stag_ordered_builtin_ctor_0_1
+  }
+};
+
+static const MR_DuFunctorDescPtr backend_libs__rtti__backend_libs__rtti__du_name_ordered_builtin_ctor_0[22] = {
+  &backend_libs__rtti__backend_libs__rtti__du_functor_desc_builtin_ctor_0_14,
+  &backend_libs__rtti__backend_libs__rtti__du_functor_desc_builtin_ctor_0_11,
+  &backend_libs__rtti__backend_libs__rtti__du_functor_desc_builtin_ctor_0_10,
+  &backend_libs__rtti__backend_libs__rtti__du_functor_desc_builtin_ctor_0_16,
+  &backend_libs__rtti__backend_libs__rtti__du_functor_desc_builtin_ctor_0_0,
+  &backend_libs__rtti__backend_libs__rtti__du_functor_desc_builtin_ctor_0_4,
+  &backend_libs__rtti__backend_libs__rtti__du_functor_desc_builtin_ctor_0_6,
+  &backend_libs__rtti__backend_libs__rtti__du_functor_desc_builtin_ctor_0_8,
+  &backend_libs__rtti__backend_libs__rtti__du_functor_desc_builtin_ctor_0_2,
+  &backend_libs__rtti__backend_libs__rtti__du_functor_desc_builtin_ctor_0_15,
+  &backend_libs__rtti__backend_libs__rtti__du_functor_desc_builtin_ctor_0_20,
+  &backend_libs__rtti__backend_libs__rtti__du_functor_desc_builtin_ctor_0_18,
+  &backend_libs__rtti__backend_libs__rtti__du_functor_desc_builtin_ctor_0_12,
+  &backend_libs__rtti__backend_libs__rtti__du_functor_desc_builtin_ctor_0_17,
+  &backend_libs__rtti__backend_libs__rtti__du_functor_desc_builtin_ctor_0_21,
+  &backend_libs__rtti__backend_libs__rtti__du_functor_desc_builtin_ctor_0_19,
+  &backend_libs__rtti__backend_libs__rtti__du_functor_desc_builtin_ctor_0_1,
+  &backend_libs__rtti__backend_libs__rtti__du_functor_desc_builtin_ctor_0_5,
+  &backend_libs__rtti__backend_libs__rtti__du_functor_desc_builtin_ctor_0_7,
+  &backend_libs__rtti__backend_libs__rtti__du_functor_desc_builtin_ctor_0_9,
+  &backend_libs__rtti__backend_libs__rtti__du_functor_desc_builtin_ctor_0_3,
+  &backend_libs__rtti__backend_libs__rtti__du_functor_desc_builtin_ctor_0_13
+};
+
+static const MR_Integer backend_libs__rtti__backend_libs__rtti__functor_number_map_builtin_ctor_0[22] = {
+  (MR_Integer) 4,
+  (MR_Integer) 16,
+  (MR_Integer) 8,
+  (MR_Integer) 20,
+  (MR_Integer) 5,
+  (MR_Integer) 17,
+  (MR_Integer) 6,
+  (MR_Integer) 18,
+  (MR_Integer) 7,
+  (MR_Integer) 19,
+  (MR_Integer) 2,
+  (MR_Integer) 1,
+  (MR_Integer) 12,
+  (MR_Integer) 21,
+  (MR_Integer) 0,
+  (MR_Integer) 9,
+  (MR_Integer) 3,
+  (MR_Integer) 13,
+  (MR_Integer) 11,
+  (MR_Integer) 15,
+  (MR_Integer) 10,
+  (MR_Integer) 14
+};
+
+const MR_TypeCtorInfo_Struct backend_libs__rtti__backend_libs__rtti__type_ctor_info_builtin_ctor_0 = {
+  (MR_Integer) 0,
+  (MR_Integer) 17,
+  (MR_Integer) 2,
+  MR_TYPECTOR_REP_DU,
+  ((MR_Box) (backend_libs__rtti____Unify____builtin_ctor_0_0_10001)),
+  ((MR_Box) (backend_libs__rtti____Compare____builtin_ctor_0_0_10001)),
+  (MR_String) "backend_libs.rtti",
+  (MR_String) "builtin_ctor",
+  {     backend_libs__rtti__backend_libs__rtti__du_name_ordered_builtin_ctor_0 },
+  {     backend_libs__rtti__backend_libs__rtti__du_ptag_ordered_builtin_ctor_0 },
+  (MR_Integer) 22,
+  (MR_Integer) 4,
+  backend_libs__rtti__backend_libs__rtti__functor_number_map_builtin_ctor_0
+};
+
+static const MR_EnumFunctorDesc backend_libs__rtti__backend_libs__rtti__enum_functor_desc_call_or_answer_table_0_0 = {
+  (MR_String) "call_table",
+  (MR_Integer) 0
+};
+
+static const MR_EnumFunctorDesc backend_libs__rtti__backend_libs__rtti__enum_functor_desc_call_or_answer_table_0_1 = {
+  (MR_String) "answer_table",
+  (MR_Integer) 1
+};
+
+static const MR_EnumFunctorDescPtr backend_libs__rtti__backend_libs__rtti__enum_value_ordered_call_or_answer_table_0[2] = {
+  &backend_libs__rtti__backend_libs__rtti__enum_functor_desc_call_or_answer_table_0_0,
+  &backend_libs__rtti__backend_libs__rtti__enum_functor_desc_call_or_answer_table_0_1
+};
+
+static const MR_EnumFunctorDescPtr backend_libs__rtti__backend_libs__rtti__enum_name_ordered_call_or_answer_table_0[2] = {
+  &backend_libs__rtti__backend_libs__rtti__enum_functor_desc_call_or_answer_table_0_1,
+  &backend_libs__rtti__backend_libs__rtti__enum_functor_desc_call_or_answer_table_0_0
+};
+
+static const MR_Integer backend_libs__rtti__backend_libs__rtti__functor_number_map_call_or_answer_table_0[2] = {
+  (MR_Integer) 1,
+  (MR_Integer) 0
+};
+
+const MR_TypeCtorInfo_Struct backend_libs__rtti__backend_libs__rtti__type_ctor_info_call_or_answer_table_0 = {
+  (MR_Integer) 0,
+  (MR_Integer) 17,
+  (MR_Integer) -1,
+  MR_TYPECTOR_REP_ENUM,
+  ((MR_Box) (backend_libs__rtti____Unify____call_or_answer_table_0_0_10001)),
+  ((MR_Box) (backend_libs__rtti____Compare____call_or_answer_table_0_0_10001)),
+  (MR_String) "backend_libs.rtti",
+  (MR_String) "call_or_answer_table",
+  {     backend_libs__rtti__backend_libs__rtti__enum_name_ordered_call_or_answer_table_0 },
+  {     backend_libs__rtti__backend_libs__rtti__enum_value_ordered_call_or_answer_table_0 },
+  (MR_Integer) 2,
+  (MR_Integer) 4,
+  backend_libs__rtti__backend_libs__rtti__functor_number_map_call_or_answer_table_0
+};
+
+static const MR_PseudoTypeInfo backend_libs__rtti__backend_libs__rtti__field_types_ctor_rtti_name_0_0[1] = {
+  (MR_PseudoTypeInfo) &mercury__builtin__builtin__type_ctor_info_int_0
+};
+
+static const MR_DuFunctorDesc backend_libs__rtti__backend_libs__rtti__du_functor_desc_ctor_rtti_name_0_0 = {
+  (MR_String) "type_ctor_exist_locns",
+  (MR_Integer) 1,
+  (MR_Integer) 0,
+  MR_SECTAG_NONE,
+  (MR_Integer) 1,
+  (MR_Integer) -1,
+  (MR_Integer) 0,
+  backend_libs__rtti__backend_libs__rtti__field_types_ctor_rtti_name_0_0,
+  NULL,
+  NULL,
+  NULL,
+  MR_FUNCTOR_SUBTYPE_NONE
+};
+
+static const MR_DuFunctorDesc backend_libs__rtti__backend_libs__rtti__du_functor_desc_ctor_rtti_name_0_1 = {
+  (MR_String) "type_ctor_exist_locn",
+  (MR_Integer) 0,
+  (MR_Integer) 0,
+  MR_SECTAG_LOCAL,
+  (MR_Integer) 0,
+  (MR_Integer) 0,
+  (MR_Integer) 1,
+  NULL,
+  NULL,
+  NULL,
+  NULL,
+  MR_FUNCTOR_SUBTYPE_NONE
+};
+
+static const MR_PseudoTypeInfo backend_libs__rtti__backend_libs__rtti__field_types_ctor_rtti_name_0_2[3] = {
+  (MR_PseudoTypeInfo) &mercury__builtin__builtin__type_ctor_info_int_0,
+  (MR_PseudoTypeInfo) &mercury__builtin__builtin__type_ctor_info_int_0,
+  (MR_PseudoTypeInfo) &mercury__builtin__builtin__type_ctor_info_int_0
+};
+
+static const MR_DuFunctorDesc backend_libs__rtti__backend_libs__rtti__du_functor_desc_ctor_rtti_name_0_2 = {
+  (MR_String) "type_ctor_exist_tc_constr",
+  (MR_Integer) 3,
+  (MR_Integer) 0,
+  MR_SECTAG_NONE,
+  (MR_Integer) 2,
+  (MR_Integer) -1,
+  (MR_Integer) 2,
+  backend_libs__rtti__backend_libs__rtti__field_types_ctor_rtti_name_0_2,
+  NULL,
+  NULL,
+  NULL,
+  MR_FUNCTOR_SUBTYPE_NONE
+};
+
+static const MR_PseudoTypeInfo backend_libs__rtti__backend_libs__rtti__field_types_ctor_rtti_name_0_3[1] = {
+  (MR_PseudoTypeInfo) &mercury__builtin__builtin__type_ctor_info_int_0
+};
+
+static const MR_DuFunctorDesc backend_libs__rtti__backend_libs__rtti__du_functor_desc_ctor_rtti_name_0_3 = {
+  (MR_String) "type_ctor_exist_tc_constrs",
+  (MR_Integer) 1,
+  (MR_Integer) 0,
+  MR_SECTAG_REMOTE,
+  (MR_Integer) 3,
+  (MR_Integer) 0,
+  (MR_Integer) 3,
+  backend_libs__rtti__backend_libs__rtti__field_types_ctor_rtti_name_0_3,
+  NULL,
+  NULL,
+  NULL,
+  MR_FUNCTOR_SUBTYPE_NONE
+};
+
+static const MR_PseudoTypeInfo backend_libs__rtti__backend_libs__rtti__field_types_ctor_rtti_name_0_4[1] = {
+  (MR_PseudoTypeInfo) &mercury__builtin__builtin__type_ctor_info_int_0
+};
+
+static const MR_DuFunctorDesc backend_libs__rtti__backend_libs__rtti__du_functor_desc_ctor_rtti_name_0_4 = {
+  (MR_String) "type_ctor_exist_info",
+  (MR_Integer) 1,
+  (MR_Integer) 0,
+  MR_SECTAG_REMOTE,
+  (MR_Integer) 3,
+  (MR_Integer) 1,
+  (MR_Integer) 4,
+  backend_libs__rtti__backend_libs__rtti__field_types_ctor_rtti_name_0_4,
+  NULL,
+  NULL,
+  NULL,
+  MR_FUNCTOR_SUBTYPE_NONE
+};
+
+static const MR_PseudoTypeInfo backend_libs__rtti__backend_libs__rtti__field_types_ctor_rtti_name_0_5[1] = {
+  (MR_PseudoTypeInfo) &mercury__builtin__builtin__type_ctor_info_int_0
+};
+
+static const MR_DuFunctorDesc backend_libs__rtti__backend_libs__rtti__du_functor_desc_ctor_rtti_name_0_5 = {
+  (MR_String) "type_ctor_field_names",
+  (MR_Integer) 1,
+  (MR_Integer) 0,
+  MR_SECTAG_REMOTE,
+  (MR_Integer) 3,
+  (MR_Integer) 2,
+  (MR_Integer) 5,
+  backend_libs__rtti__backend_libs__rtti__field_types_ctor_rtti_name_0_5,
+  NULL,
+  NULL,
+  NULL,
+  MR_FUNCTOR_SUBTYPE_NONE
+};
+
+static const MR_PseudoTypeInfo backend_libs__rtti__backend_libs__rtti__field_types_ctor_rtti_name_0_6[1] = {
+  (MR_PseudoTypeInfo) &mercury__builtin__builtin__type_ctor_info_int_0
+};
+
+static const MR_DuFunctorDesc backend_libs__rtti__backend_libs__rtti__du_functor_desc_ctor_rtti_name_0_6 = {
+  (MR_String) "type_ctor_field_types",
+  (MR_Integer) 1,
+  (MR_Integer) 0,
+  MR_SECTAG_REMOTE,
+  (MR_Integer) 3,
+  (MR_Integer) 3,
+  (MR_Integer) 6,
+  backend_libs__rtti__backend_libs__rtti__field_types_ctor_rtti_name_0_6,
+  NULL,
+  NULL,
+  NULL,
+  MR_FUNCTOR_SUBTYPE_NONE
+};
+
+static const MR_PseudoTypeInfo backend_libs__rtti__backend_libs__rtti__field_types_ctor_rtti_name_0_7[1] = {
+  (MR_PseudoTypeInfo) &mercury__builtin__builtin__type_ctor_info_int_0
+};
+
+static const MR_DuFunctorDesc backend_libs__rtti__backend_libs__rtti__du_functor_desc_ctor_rtti_name_0_7 = {
+  (MR_String) "type_ctor_field_locns",
+  (MR_Integer) 1,
+  (MR_Integer) 0,
+  MR_SECTAG_REMOTE,
+  (MR_Integer) 3,
+  (MR_Integer) 4,
+  (MR_Integer) 7,
+  backend_libs__rtti__backend_libs__rtti__field_types_ctor_rtti_name_0_7,
+  NULL,
+  NULL,
+  NULL,
+  MR_FUNCTOR_SUBTYPE_NONE
+};
+
+static const MR_PseudoTypeInfo backend_libs__rtti__backend_libs__rtti__field_types_ctor_rtti_name_0_8[1] = {
+  (MR_PseudoTypeInfo) &mercury__builtin__builtin__type_ctor_info_int_0
+};
+
+static const MR_DuFunctorDesc backend_libs__rtti__backend_libs__rtti__du_functor_desc_ctor_rtti_name_0_8 = {
+  (MR_String) "type_ctor_enum_functor_desc",
+  (MR_Integer) 1,
+  (MR_Integer) 0,
+  MR_SECTAG_REMOTE,
+  (MR_Integer) 3,
+  (MR_Integer) 5,
+  (MR_Integer) 8,
+  backend_libs__rtti__backend_libs__rtti__field_types_ctor_rtti_name_0_8,
+  NULL,
+  NULL,
+  NULL,
+  MR_FUNCTOR_SUBTYPE_NONE
+};
+
+static const MR_PseudoTypeInfo backend_libs__rtti__backend_libs__rtti__field_types_ctor_rtti_name_0_9[1] = {
+  (MR_PseudoTypeInfo) &mercury__builtin__builtin__type_ctor_info_int_0
+};
+
+static const MR_DuFunctorDesc backend_libs__rtti__backend_libs__rtti__du_functor_desc_ctor_rtti_name_0_9 = {
+  (MR_String) "type_ctor_foreign_enum_functor_desc",
+  (MR_Integer) 1,
+  (MR_Integer) 0,
+  MR_SECTAG_REMOTE,
+  (MR_Integer) 3,
+  (MR_Integer) 6,
+  (MR_Integer) 9,
+  backend_libs__rtti__backend_libs__rtti__field_types_ctor_rtti_name_0_9,
+  NULL,
+  NULL,
+  NULL,
+  MR_FUNCTOR_SUBTYPE_NONE
+};
+
+static const MR_DuFunctorDesc backend_libs__rtti__backend_libs__rtti__du_functor_desc_ctor_rtti_name_0_10 = {
+  (MR_String) "type_ctor_notag_functor_desc",
+  (MR_Integer) 0,
+  (MR_Integer) 0,
+  MR_SECTAG_LOCAL,
+  (MR_Integer) 0,
+  (MR_Integer) 1,
+  (MR_Integer) 10,
+  NULL,
+  NULL,
+  NULL,
+  NULL,
+  MR_FUNCTOR_SUBTYPE_NONE
+};
+
+static const MR_PseudoTypeInfo backend_libs__rtti__backend_libs__rtti__field_types_ctor_rtti_name_0_11[1] = {
+  (MR_PseudoTypeInfo) &mercury__builtin__builtin__type_ctor_info_int_0
+};
+
+static const MR_DuFunctorDesc backend_libs__rtti__backend_libs__rtti__du_functor_desc_ctor_rtti_name_0_11 = {
+  (MR_String) "type_ctor_du_functor_desc",
+  (MR_Integer) 1,
+  (MR_Integer) 0,
+  MR_SECTAG_REMOTE,
+  (MR_Integer) 3,
+  (MR_Integer) 7,
+  (MR_Integer) 11,
+  backend_libs__rtti__backend_libs__rtti__field_types_ctor_rtti_name_0_11,
+  NULL,
+  NULL,
+  NULL,
+  MR_FUNCTOR_SUBTYPE_NONE
+};
+
+static const MR_DuFunctorDesc backend_libs__rtti__backend_libs__rtti__du_functor_desc_ctor_rtti_name_0_12 = {
+  (MR_String) "type_ctor_enum_name_ordered_table",
+  (MR_Integer) 0,
+  (MR_Integer) 0,
+  MR_SECTAG_LOCAL,
+  (MR_Integer) 0,
+  (MR_Integer) 2,
+  (MR_Integer) 12,
+  NULL,
+  NULL,
+  NULL,
+  NULL,
+  MR_FUNCTOR_SUBTYPE_NONE
+};
+
+static const MR_DuFunctorDesc backend_libs__rtti__backend_libs__rtti__du_functor_desc_ctor_rtti_name_0_13 = {
+  (MR_String) "type_ctor_enum_value_ordered_table",
+  (MR_Integer) 0,
+  (MR_Integer) 0,
+  MR_SECTAG_LOCAL,
+  (MR_Integer) 0,
+  (MR_Integer) 3,
+  (MR_Integer) 13,
+  NULL,
+  NULL,
+  NULL,
+  NULL,
+  MR_FUNCTOR_SUBTYPE_NONE
+};
+
+static const MR_DuFunctorDesc backend_libs__rtti__backend_libs__rtti__du_functor_desc_ctor_rtti_name_0_14 = {
+  (MR_String) "type_ctor_foreign_enum_name_ordered_table",
+  (MR_Integer) 0,
+  (MR_Integer) 0,
+  MR_SECTAG_LOCAL,
+  (MR_Integer) 0,
+  (MR_Integer) 4,
+  (MR_Integer) 14,
+  NULL,
+  NULL,
+  NULL,
+  NULL,
+  MR_FUNCTOR_SUBTYPE_NONE
+};
+
+static const MR_DuFunctorDesc backend_libs__rtti__backend_libs__rtti__du_functor_desc_ctor_rtti_name_0_15 = {
+  (MR_String) "type_ctor_foreign_enum_ordinal_ordered_table",
+  (MR_Integer) 0,
+  (MR_Integer) 0,
+  MR_SECTAG_LOCAL,
+  (MR_Integer) 0,
+  (MR_Integer) 5,
+  (MR_Integer) 15,
+  NULL,
+  NULL,
+  NULL,
+  NULL,
+  MR_FUNCTOR_SUBTYPE_NONE
+};
+
+static const MR_DuFunctorDesc backend_libs__rtti__backend_libs__rtti__du_functor_desc_ctor_rtti_name_0_16 = {
+  (MR_String) "type_ctor_du_name_ordered_table",
+  (MR_Integer) 0,
+  (MR_Integer) 0,
+  MR_SECTAG_LOCAL,
+  (MR_Integer) 0,
+  (MR_Integer) 6,
+  (MR_Integer) 16,
+  NULL,
+  NULL,
+  NULL,
+  NULL,
+  MR_FUNCTOR_SUBTYPE_NONE
+};
+
+static const MR_PseudoTypeInfo backend_libs__rtti__backend_libs__rtti__field_types_ctor_rtti_name_0_17[1] = {
+  (MR_PseudoTypeInfo) &mercury__builtin__builtin__type_ctor_info_int_0
+};
+
+static const MR_DuFunctorDesc backend_libs__rtti__backend_libs__rtti__du_functor_desc_ctor_rtti_name_0_17 = {
+  (MR_String) "type_ctor_du_stag_ordered_table",
+  (MR_Integer) 1,
+  (MR_Integer) 0,
+  MR_SECTAG_REMOTE,
+  (MR_Integer) 3,
+  (MR_Integer) 8,
+  (MR_Integer) 17,
+  backend_libs__rtti__backend_libs__rtti__field_types_ctor_rtti_name_0_17,
+  NULL,
+  NULL,
+  NULL,
+  MR_FUNCTOR_SUBTYPE_NONE
+};
+
+static const MR_DuFunctorDesc backend_libs__rtti__backend_libs__rtti__du_functor_desc_ctor_rtti_name_0_18 = {
+  (MR_String) "type_ctor_du_ptag_ordered_table",
+  (MR_Integer) 0,
+  (MR_Integer) 0,
+  MR_SECTAG_LOCAL,
+  (MR_Integer) 0,
+  (MR_Integer) 7,
+  (MR_Integer) 18,
+  NULL,
+  NULL,
+  NULL,
+  NULL,
+  MR_FUNCTOR_SUBTYPE_NONE
+};
+
+static const MR_PseudoTypeInfo backend_libs__rtti__backend_libs__rtti__field_types_ctor_rtti_name_0_19[1] = {
+  (MR_PseudoTypeInfo) &mercury__builtin__builtin__type_ctor_info_int_0
+};
+
+static const MR_DuFunctorDesc backend_libs__rtti__backend_libs__rtti__du_functor_desc_ctor_rtti_name_0_19 = {
+  (MR_String) "type_ctor_du_ptag_layout",
+  (MR_Integer) 1,
+  (MR_Integer) 0,
+  MR_SECTAG_REMOTE,
+  (MR_Integer) 3,
+  (MR_Integer) 9,
+  (MR_Integer) 19,
+  backend_libs__rtti__backend_libs__rtti__field_types_ctor_rtti_name_0_19,
+  NULL,
+  NULL,
+  NULL,
+  MR_FUNCTOR_SUBTYPE_NONE
+};
+
+static const MR_DuFunctorDesc backend_libs__rtti__backend_libs__rtti__du_functor_desc_ctor_rtti_name_0_20 = {
+  (MR_String) "type_ctor_functor_number_map",
+  (MR_Integer) 0,
+  (MR_Integer) 0,
+  MR_SECTAG_LOCAL,
+  (MR_Integer) 0,
+  (MR_Integer) 8,
+  (MR_Integer) 20,
+  NULL,
+  NULL,
+  NULL,
+  NULL,
+  MR_FUNCTOR_SUBTYPE_NONE
+};
+
+static const MR_DuFunctorDesc backend_libs__rtti__backend_libs__rtti__du_functor_desc_ctor_rtti_name_0_21 = {
+  (MR_String) "type_ctor_type_functors",
+  (MR_Integer) 0,
+  (MR_Integer) 0,
+  MR_SECTAG_LOCAL,
+  (MR_Integer) 0,
+  (MR_Integer) 9,
+  (MR_Integer) 21,
+  NULL,
+  NULL,
+  NULL,
+  NULL,
+  MR_FUNCTOR_SUBTYPE_NONE
+};
+
+static const MR_DuFunctorDesc backend_libs__rtti__backend_libs__rtti__du_functor_desc_ctor_rtti_name_0_22 = {
+  (MR_String) "type_ctor_type_layout",
+  (MR_Integer) 0,
+  (MR_Integer) 0,
+  MR_SECTAG_LOCAL,
+  (MR_Integer) 0,
+  (MR_Integer) 10,
+  (MR_Integer) 22,
+  NULL,
+  NULL,
+  NULL,
+  NULL,
+  MR_FUNCTOR_SUBTYPE_NONE
+};
+
+static const MR_DuFunctorDesc backend_libs__rtti__backend_libs__rtti__du_functor_desc_ctor_rtti_name_0_23 = {
+  (MR_String) "type_ctor_type_ctor_info",
+  (MR_Integer) 0,
+  (MR_Integer) 0,
+  MR_SECTAG_LOCAL,
+  (MR_Integer) 0,
+  (MR_Integer) 11,
+  (MR_Integer) 23,
+  NULL,
+  NULL,
+  NULL,
+  NULL,
+  MR_FUNCTOR_SUBTYPE_NONE
+};
+
+static const MR_PseudoTypeInfo backend_libs__rtti__backend_libs__rtti__field_types_ctor_rtti_name_0_24[1] = {
+  (MR_PseudoTypeInfo) &backend_libs__rtti__backend_libs__rtti__type_ctor_info_rtti_type_info_0
+};
+
+static const MR_DuFunctorDesc backend_libs__rtti__backend_libs__rtti__du_functor_desc_ctor_rtti_name_0_24 = {
+  (MR_String) "type_ctor_type_info",
+  (MR_Integer) 1,
+  (MR_Integer) 0,
+  MR_SECTAG_REMOTE,
+  (MR_Integer) 3,
+  (MR_Integer) 10,
+  (MR_Integer) 24,
+  backend_libs__rtti__backend_libs__rtti__field_types_ctor_rtti_name_0_24,
+  NULL,
+  NULL,
+  NULL,
+  MR_FUNCTOR_SUBTYPE_NONE
+};
+
+static const MR_PseudoTypeInfo backend_libs__rtti__backend_libs__rtti__field_types_ctor_rtti_name_0_25[1] = {
+  (MR_PseudoTypeInfo) &backend_libs__rtti__backend_libs__rtti__type_ctor_info_rtti_pseudo_type_info_0
+};
+
+static const MR_DuFunctorDesc backend_libs__rtti__backend_libs__rtti__du_functor_desc_ctor_rtti_name_0_25 = {
+  (MR_String) "type_ctor_pseudo_type_info",
+  (MR_Integer) 1,
+  (MR_Integer) 0,
+  MR_SECTAG_REMOTE,
+  (MR_Integer) 3,
+  (MR_Integer) 11,
+  (MR_Integer) 25,
+  backend_libs__rtti__backend_libs__rtti__field_types_ctor_rtti_name_0_25,
+  NULL,
+  NULL,
+  NULL,
+  MR_FUNCTOR_SUBTYPE_NONE
+};
+
+static const MR_DuFunctorDesc backend_libs__rtti__backend_libs__rtti__du_functor_desc_ctor_rtti_name_0_26 = {
+  (MR_String) "type_ctor_type_hashcons_pointer",
+  (MR_Integer) 0,
+  (MR_Integer) 0,
+  MR_SECTAG_LOCAL,
+  (MR_Integer) 0,
+  (MR_Integer) 12,
+  (MR_Integer) 26,
+  NULL,
+  NULL,
+  NULL,
+  NULL,
+  MR_FUNCTOR_SUBTYPE_NONE
+};
+
+static const MR_DuFunctorDescPtr backend_libs__rtti__backend_libs__rtti__du_stag_ordered_ctor_rtti_name_0_0[13] = {
+  &backend_libs__rtti__backend_libs__rtti__du_functor_desc_ctor_rtti_name_0_1,
+  &backend_libs__rtti__backend_libs__rtti__du_functor_desc_ctor_rtti_name_0_10,
+  &backend_libs__rtti__backend_libs__rtti__du_functor_desc_ctor_rtti_name_0_12,
+  &backend_libs__rtti__backend_libs__rtti__du_functor_desc_ctor_rtti_name_0_13,
+  &backend_libs__rtti__backend_libs__rtti__du_functor_desc_ctor_rtti_name_0_14,
+  &backend_libs__rtti__backend_libs__rtti__du_functor_desc_ctor_rtti_name_0_15,
+  &backend_libs__rtti__backend_libs__rtti__du_functor_desc_ctor_rtti_name_0_16,
+  &backend_libs__rtti__backend_libs__rtti__du_functor_desc_ctor_rtti_name_0_18,
+  &backend_libs__rtti__backend_libs__rtti__du_functor_desc_ctor_rtti_name_0_20,
+  &backend_libs__rtti__backend_libs__rtti__du_functor_desc_ctor_rtti_name_0_21,
+  &backend_libs__rtti__backend_libs__rtti__du_functor_desc_ctor_rtti_name_0_22,
+  &backend_libs__rtti__backend_libs__rtti__du_functor_desc_ctor_rtti_name_0_23,
+  &backend_libs__rtti__backend_libs__rtti__du_functor_desc_ctor_rtti_name_0_26
+};
+
+static const MR_DuFunctorDescPtr backend_libs__rtti__backend_libs__rtti__du_stag_ordered_ctor_rtti_name_0_1[1] = {
+  &backend_libs__rtti__backend_libs__rtti__du_functor_desc_ctor_rtti_name_0_0
+};
+
+static const MR_DuFunctorDescPtr backend_libs__rtti__backend_libs__rtti__du_stag_ordered_ctor_rtti_name_0_2[1] = {
+  &backend_libs__rtti__backend_libs__rtti__du_functor_desc_ctor_rtti_name_0_2
+};
+
+static const MR_DuFunctorDescPtr backend_libs__rtti__backend_libs__rtti__du_stag_ordered_ctor_rtti_name_0_3[12] = {
+  &backend_libs__rtti__backend_libs__rtti__du_functor_desc_ctor_rtti_name_0_3,
+  &backend_libs__rtti__backend_libs__rtti__du_functor_desc_ctor_rtti_name_0_4,
+  &backend_libs__rtti__backend_libs__rtti__du_functor_desc_ctor_rtti_name_0_5,
+  &backend_libs__rtti__backend_libs__rtti__du_functor_desc_ctor_rtti_name_0_6,
+  &backend_libs__rtti__backend_libs__rtti__du_functor_desc_ctor_rtti_name_0_7,
+  &backend_libs__rtti__backend_libs__rtti__du_functor_desc_ctor_rtti_name_0_8,
+  &backend_libs__rtti__backend_libs__rtti__du_functor_desc_ctor_rtti_name_0_9,
+  &backend_libs__rtti__backend_libs__rtti__du_functor_desc_ctor_rtti_name_0_11,
+  &backend_libs__rtti__backend_libs__rtti__du_functor_desc_ctor_rtti_name_0_17,
+  &backend_libs__rtti__backend_libs__rtti__du_functor_desc_ctor_rtti_name_0_19,
+  &backend_libs__rtti__backend_libs__rtti__du_functor_desc_ctor_rtti_name_0_24,
+  &backend_libs__rtti__backend_libs__rtti__du_functor_desc_ctor_rtti_name_0_25
+};
+
+static const MR_DuPtagLayout backend_libs__rtti__backend_libs__rtti__du_ptag_ordered_ctor_rtti_name_0[4] = {
+  {
+    (MR_Integer) 13,
+    MR_SECTAG_LOCAL,
+    backend_libs__rtti__backend_libs__rtti__du_stag_ordered_ctor_rtti_name_0_0
+  },
+  {
+    (MR_Integer) 1,
+    MR_SECTAG_NONE,
+    backend_libs__rtti__backend_libs__rtti__du_stag_ordered_ctor_rtti_name_0_1
+  },
+  {
+    (MR_Integer) 1,
+    MR_SECTAG_NONE,
+    backend_libs__rtti__backend_libs__rtti__du_stag_ordered_ctor_rtti_name_0_2
+  },
+  {
+    (MR_Integer) 12,
+    MR_SECTAG_REMOTE,
+    backend_libs__rtti__backend_libs__rtti__du_stag_ordered_ctor_rtti_name_0_3
+  }
+};
+
+static const MR_DuFunctorDescPtr backend_libs__rtti__backend_libs__rtti__du_name_ordered_ctor_rtti_name_0[27] = {
+  &backend_libs__rtti__backend_libs__rtti__du_functor_desc_ctor_rtti_name_0_11,
+  &backend_libs__rtti__backend_libs__rtti__du_functor_desc_ctor_rtti_name_0_16,
+  &backend_libs__rtti__backend_libs__rtti__du_functor_desc_ctor_rtti_name_0_19,
+  &backend_libs__rtti__backend_libs__rtti__du_functor_desc_ctor_rtti_name_0_18,
+  &backend_libs__rtti__backend_libs__rtti__du_functor_desc_ctor_rtti_name_0_17,
+  &backend_libs__rtti__backend_libs__rtti__du_functor_desc_ctor_rtti_name_0_8,
+  &backend_libs__rtti__backend_libs__rtti__du_functor_desc_ctor_rtti_name_0_12,
+  &backend_libs__rtti__backend_libs__rtti__du_functor_desc_ctor_rtti_name_0_13,
+  &backend_libs__rtti__backend_libs__rtti__du_functor_desc_ctor_rtti_name_0_4,
+  &backend_libs__rtti__backend_libs__rtti__du_functor_desc_ctor_rtti_name_0_1,
+  &backend_libs__rtti__backend_libs__rtti__du_functor_desc_ctor_rtti_name_0_0,
+  &backend_libs__rtti__backend_libs__rtti__du_functor_desc_ctor_rtti_name_0_2,
+  &backend_libs__rtti__backend_libs__rtti__du_functor_desc_ctor_rtti_name_0_3,
+  &backend_libs__rtti__backend_libs__rtti__du_functor_desc_ctor_rtti_name_0_7,
+  &backend_libs__rtti__backend_libs__rtti__du_functor_desc_ctor_rtti_name_0_5,
+  &backend_libs__rtti__backend_libs__rtti__du_functor_desc_ctor_rtti_name_0_6,
+  &backend_libs__rtti__backend_libs__rtti__du_functor_desc_ctor_rtti_name_0_9,
+  &backend_libs__rtti__backend_libs__rtti__du_functor_desc_ctor_rtti_name_0_14,
+  &backend_libs__rtti__backend_libs__rtti__du_functor_desc_ctor_rtti_name_0_15,
+  &backend_libs__rtti__backend_libs__rtti__du_functor_desc_ctor_rtti_name_0_20,
+  &backend_libs__rtti__backend_libs__rtti__du_functor_desc_ctor_rtti_name_0_10,
+  &backend_libs__rtti__backend_libs__rtti__du_functor_desc_ctor_rtti_name_0_25,
+  &backend_libs__rtti__backend_libs__rtti__du_functor_desc_ctor_rtti_name_0_23,
+  &backend_libs__rtti__backend_libs__rtti__du_functor_desc_ctor_rtti_name_0_21,
+  &backend_libs__rtti__backend_libs__rtti__du_functor_desc_ctor_rtti_name_0_26,
+  &backend_libs__rtti__backend_libs__rtti__du_functor_desc_ctor_rtti_name_0_24,
+  &backend_libs__rtti__backend_libs__rtti__du_functor_desc_ctor_rtti_name_0_22
+};
+
+static const MR_Integer backend_libs__rtti__backend_libs__rtti__functor_number_map_ctor_rtti_name_0[27] = {
+  (MR_Integer) 10,
+  (MR_Integer) 9,
+  (MR_Integer) 11,
+  (MR_Integer) 12,
+  (MR_Integer) 8,
+  (MR_Integer) 14,
+  (MR_Integer) 15,
+  (MR_Integer) 13,
+  (MR_Integer) 5,
+  (MR_Integer) 16,
+  (MR_Integer) 20,
+  (MR_Integer) 0,
+  (MR_Integer) 6,
+  (MR_Integer) 7,
+  (MR_Integer) 17,
+  (MR_Integer) 18,
+  (MR_Integer) 1,
+  (MR_Integer) 4,
+  (MR_Integer) 3,
+  (MR_Integer) 2,
+  (MR_Integer) 19,
+  (MR_Integer) 23,
+  (MR_Integer) 26,
+  (MR_Integer) 22,
+  (MR_Integer) 25,
+  (MR_Integer) 21,
+  (MR_Integer) 24
+};
+
+const MR_TypeCtorInfo_Struct backend_libs__rtti__backend_libs__rtti__type_ctor_info_ctor_rtti_name_0 = {
+  (MR_Integer) 0,
+  (MR_Integer) 17,
+  (MR_Integer) 4,
+  MR_TYPECTOR_REP_DU,
+  ((MR_Box) (backend_libs__rtti____Unify____ctor_rtti_name_0_0_10001)),
+  ((MR_Box) (backend_libs__rtti____Compare____ctor_rtti_name_0_0_10001)),
+  (MR_String) "backend_libs.rtti",
+  (MR_String) "ctor_rtti_name",
+  {     backend_libs__rtti__backend_libs__rtti__du_name_ordered_ctor_rtti_name_0 },
+  {     backend_libs__rtti__backend_libs__rtti__du_ptag_ordered_ctor_rtti_name_0 },
+  (MR_Integer) 27,
+  (MR_Integer) 4,
+  backend_libs__rtti__backend_libs__rtti__functor_number_map_ctor_rtti_name_0
+};
+
+static const MR_EnumFunctorDesc backend_libs__rtti__backend_libs__rtti__enum_functor_desc_curr_or_prev_table_0_0 = {
+  (MR_String) "curr_table",
+  (MR_Integer) 0
+};
+
+static const MR_EnumFunctorDesc backend_libs__rtti__backend_libs__rtti__enum_functor_desc_curr_or_prev_table_0_1 = {
+  (MR_String) "prev_table",
+  (MR_Integer) 1
+};
+
+static const MR_EnumFunctorDescPtr backend_libs__rtti__backend_libs__rtti__enum_value_ordered_curr_or_prev_table_0[2] = {
+  &backend_libs__rtti__backend_libs__rtti__enum_functor_desc_curr_or_prev_table_0_0,
+  &backend_libs__rtti__backend_libs__rtti__enum_functor_desc_curr_or_prev_table_0_1
+};
+
+static const MR_EnumFunctorDescPtr backend_libs__rtti__backend_libs__rtti__enum_name_ordered_curr_or_prev_table_0[2] = {
+  &backend_libs__rtti__backend_libs__rtti__enum_functor_desc_curr_or_prev_table_0_0,
+  &backend_libs__rtti__backend_libs__rtti__enum_functor_desc_curr_or_prev_table_0_1
+};
+
+static const MR_Integer backend_libs__rtti__backend_libs__rtti__functor_number_map_curr_or_prev_table_0[2] = {
+  (MR_Integer) 0,
+  (MR_Integer) 1
+};
+
+const MR_TypeCtorInfo_Struct backend_libs__rtti__backend_libs__rtti__type_ctor_info_curr_or_prev_table_0 = {
+  (MR_Integer) 0,
+  (MR_Integer) 17,
+  (MR_Integer) -1,
+  MR_TYPECTOR_REP_ENUM,
+  ((MR_Box) (backend_libs__rtti____Unify____curr_or_prev_table_0_0_10001)),
+  ((MR_Box) (backend_libs__rtti____Compare____curr_or_prev_table_0_0_10001)),
+  (MR_String) "backend_libs.rtti",
+  (MR_String) "curr_or_prev_table",
+  {     backend_libs__rtti__backend_libs__rtti__enum_name_ordered_curr_or_prev_table_0 },
+  {     backend_libs__rtti__backend_libs__rtti__enum_value_ordered_curr_or_prev_table_0 },
+  (MR_Integer) 2,
+  (MR_Integer) 4,
+  backend_libs__rtti__backend_libs__rtti__functor_number_map_curr_or_prev_table_0
+};
+
+static const MR_FA_TypeInfo_Struct1 backend_libs__rtti__maybe__ti_maybe_1builtin__type_ctor_info_string_0 = {
+  &mercury__maybe__maybe__type_ctor_info_maybe_1,
+  {
+    (MR_TypeInfo) &mercury__builtin__builtin__type_ctor_info_string_0
+  }
+};
+
+static const MR_PseudoTypeInfo backend_libs__rtti__backend_libs__rtti__field_types_du_arg_info_0_0[3] = {
+  (MR_PseudoTypeInfo) &backend_libs__rtti__maybe__ti_maybe_1builtin__type_ctor_info_string_0,
+  (MR_PseudoTypeInfo) &backend_libs__rtti__backend_libs__rtti__type_ctor_info_rtti_maybe_pseudo_type_info_or_self_0,
+  (MR_PseudoTypeInfo) &parse_tree__prog_data__parse_tree__prog_data__type_ctor_info_arg_width_0
+};
+
+static const MR_ConstString backend_libs__rtti__backend_libs__rtti__field_names_du_arg_info_0_0[3] = {
+  (MR_String) "du_arg_name",
+  (MR_String) "du_arg_type",
+  (MR_String) "du_arg_width"
+};
+
+static const MR_DuFunctorDesc backend_libs__rtti__backend_libs__rtti__du_functor_desc_du_arg_info_0_0 = {
+  (MR_String) "du_arg_info",
+  (MR_Integer) 3,
+  (MR_Integer) 0,
+  MR_SECTAG_NONE,
+  (MR_Integer) 0,
+  (MR_Integer) -1,
+  (MR_Integer) 0,
+  backend_libs__rtti__backend_libs__rtti__field_types_du_arg_info_0_0,
+  backend_libs__rtti__backend_libs__rtti__field_names_du_arg_info_0_0,
+  NULL,
+  NULL,
+  MR_FUNCTOR_SUBTYPE_NONE
+};
+
+static const MR_DuFunctorDescPtr backend_libs__rtti__backend_libs__rtti__du_stag_ordered_du_arg_info_0_0[1] = {
+  &backend_libs__rtti__backend_libs__rtti__du_functor_desc_du_arg_info_0_0
+};
+
+static const MR_DuPtagLayout backend_libs__rtti__backend_libs__rtti__du_ptag_ordered_du_arg_info_0[1] = {
+  {
+    (MR_Integer) 1,
+    MR_SECTAG_NONE,
+    backend_libs__rtti__backend_libs__rtti__du_stag_ordered_du_arg_info_0_0
+  }
+};
+
+static const MR_DuFunctorDescPtr backend_libs__rtti__backend_libs__rtti__du_name_ordered_du_arg_info_0[1] = {
+  &backend_libs__rtti__backend_libs__rtti__du_functor_desc_du_arg_info_0_0
+};
+
+static const MR_Integer backend_libs__rtti__backend_libs__rtti__functor_number_map_du_arg_info_0[1] = {
+  (MR_Integer) 0
+};
+
+const MR_TypeCtorInfo_Struct backend_libs__rtti__backend_libs__rtti__type_ctor_info_du_arg_info_0 = {
+  (MR_Integer) 0,
+  (MR_Integer) 17,
+  (MR_Integer) 1,
+  MR_TYPECTOR_REP_DU,
+  ((MR_Box) (backend_libs__rtti____Unify____du_arg_info_0_0_10001)),
+  ((MR_Box) (backend_libs__rtti____Compare____du_arg_info_0_0_10001)),
+  (MR_String) "backend_libs.rtti",
+  (MR_String) "du_arg_info",
+  {     backend_libs__rtti__backend_libs__rtti__du_name_ordered_du_arg_info_0 },
+  {     backend_libs__rtti__backend_libs__rtti__du_ptag_ordered_du_arg_info_0 },
+  (MR_Integer) 1,
+  (MR_Integer) 4,
+  backend_libs__rtti__backend_libs__rtti__functor_number_map_du_arg_info_0
+};
+
+static const MR_FA_TypeInfo_Struct1 backend_libs__rtti__list__ti_list_1backend_libs__rtti__type_ctor_info_du_arg_info_0 = {
+  &mercury__list__list__type_ctor_info_list_1,
+  {
+    (MR_TypeInfo) &backend_libs__rtti__backend_libs__rtti__type_ctor_info_du_arg_info_0
+  }
+};
+
+static const MR_FA_TypeInfo_Struct1 backend_libs__rtti__maybe__ti_maybe_1backend_libs__rtti__type_ctor_info_exist_info_0 = {
+  &mercury__maybe__maybe__type_ctor_info_maybe_1,
+  {
+    (MR_TypeInfo) &backend_libs__rtti__backend_libs__rtti__type_ctor_info_exist_info_0
+  }
+};
+
+static const MR_PseudoTypeInfo backend_libs__rtti__backend_libs__rtti__field_types_du_functor_0_0[7] = {
+  (MR_PseudoTypeInfo) &mercury__builtin__builtin__type_ctor_info_string_0,
+  (MR_PseudoTypeInfo) &mercury__builtin__builtin__type_ctor_info_int_0,
+  (MR_PseudoTypeInfo) &mercury__builtin__builtin__type_ctor_info_int_0,
+  (MR_PseudoTypeInfo) &backend_libs__rtti__backend_libs__rtti__type_ctor_info_du_rep_0,
+  (MR_PseudoTypeInfo) &backend_libs__rtti__list__ti_list_1backend_libs__rtti__type_ctor_info_du_arg_info_0,
+  (MR_PseudoTypeInfo) &backend_libs__rtti__maybe__ti_maybe_1backend_libs__rtti__type_ctor_info_exist_info_0,
+  (MR_PseudoTypeInfo) &backend_libs__rtti__backend_libs__rtti__type_ctor_info_functor_subtype_info_0
+};
+
+static const MR_ConstString backend_libs__rtti__backend_libs__rtti__field_names_du_functor_0_0[7] = {
+  (MR_String) "du_name",
+  (MR_String) "du_orig_arity",
+  (MR_String) "du_ordinal",
+  (MR_String) "du_rep",
+  (MR_String) "du_arg_infos",
+  (MR_String) "du_exist_info",
+  (MR_String) "du_subtype_info"
+};
+
+static const MR_DuFunctorDesc backend_libs__rtti__backend_libs__rtti__du_functor_desc_du_functor_0_0 = {
+  (MR_String) "du_functor",
+  (MR_Integer) 7,
+  (MR_Integer) 0,
+  MR_SECTAG_NONE,
+  (MR_Integer) 0,
+  (MR_Integer) -1,
+  (MR_Integer) 0,
+  backend_libs__rtti__backend_libs__rtti__field_types_du_functor_0_0,
+  backend_libs__rtti__backend_libs__rtti__field_names_du_functor_0_0,
+  NULL,
+  NULL,
+  MR_FUNCTOR_SUBTYPE_NONE
+};
+
+static const MR_DuFunctorDescPtr backend_libs__rtti__backend_libs__rtti__du_stag_ordered_du_functor_0_0[1] = {
+  &backend_libs__rtti__backend_libs__rtti__du_functor_desc_du_functor_0_0
+};
+
+static const MR_DuPtagLayout backend_libs__rtti__backend_libs__rtti__du_ptag_ordered_du_functor_0[1] = {
+  {
+    (MR_Integer) 1,
+    MR_SECTAG_NONE,
+    backend_libs__rtti__backend_libs__rtti__du_stag_ordered_du_functor_0_0
+  }
+};
+
+static const MR_DuFunctorDescPtr backend_libs__rtti__backend_libs__rtti__du_name_ordered_du_functor_0[1] = {
+  &backend_libs__rtti__backend_libs__rtti__du_functor_desc_du_functor_0_0
+};
+
+static const MR_Integer backend_libs__rtti__backend_libs__rtti__functor_number_map_du_functor_0[1] = {
+  (MR_Integer) 0
+};
+
+const MR_TypeCtorInfo_Struct backend_libs__rtti__backend_libs__rtti__type_ctor_info_du_functor_0 = {
+  (MR_Integer) 0,
+  (MR_Integer) 17,
+  (MR_Integer) 1,
+  MR_TYPECTOR_REP_DU,
+  ((MR_Box) (backend_libs__rtti____Unify____du_functor_0_0_10001)),
+  ((MR_Box) (backend_libs__rtti____Compare____du_functor_0_0_10001)),
+  (MR_String) "backend_libs.rtti",
+  (MR_String) "du_functor",
+  {     backend_libs__rtti__backend_libs__rtti__du_name_ordered_du_functor_0 },
+  {     backend_libs__rtti__backend_libs__rtti__du_ptag_ordered_du_functor_0 },
+  (MR_Integer) 1,
+  (MR_Integer) 4,
+  backend_libs__rtti__backend_libs__rtti__functor_number_map_du_functor_0
+};
+
+static const MR_PseudoTypeInfo backend_libs__rtti__backend_libs__rtti__field_types_du_rep_0_0[2] = {
+  (MR_PseudoTypeInfo) &mercury__builtin__builtin__type_ctor_info_int_0,
+  (MR_PseudoTypeInfo) &backend_libs__rtti__backend_libs__rtti__type_ctor_info_sectag_and_locn_0
+};
+
+static const MR_ConstString backend_libs__rtti__backend_libs__rtti__field_names_du_rep_0_0[2] = {
+  (MR_String) "du_ll_ptag",
+  (MR_String) "du_ll_sec_tag"
+};
+
+static const MR_DuFunctorDesc backend_libs__rtti__backend_libs__rtti__du_functor_desc_du_rep_0_0 = {
+  (MR_String) "du_ll_rep",
+  (MR_Integer) 2,
+  (MR_Integer) 0,
+  MR_SECTAG_NONE,
+  (MR_Integer) 0,
+  (MR_Integer) -1,
+  (MR_Integer) 0,
+  backend_libs__rtti__backend_libs__rtti__field_types_du_rep_0_0,
+  backend_libs__rtti__backend_libs__rtti__field_names_du_rep_0_0,
+  NULL,
+  NULL,
+  MR_FUNCTOR_SUBTYPE_NONE
+};
+
+static const MR_PseudoTypeInfo backend_libs__rtti__backend_libs__rtti__field_types_du_rep_0_1[1] = {
+  (MR_PseudoTypeInfo) &mercury__builtin__builtin__type_ctor_info_int_0
+};
+
+static const MR_ConstString backend_libs__rtti__backend_libs__rtti__field_names_du_rep_0_1[1] = {
+  (MR_String) "remote_sec_tag"
+};
+
+static const MR_DuFunctorDesc backend_libs__rtti__backend_libs__rtti__du_functor_desc_du_rep_0_1 = {
+  (MR_String) "du_hl_rep",
+  (MR_Integer) 1,
+  (MR_Integer) 0,
+  MR_SECTAG_NONE,
+  (MR_Integer) 1,
+  (MR_Integer) -1,
+  (MR_Integer) 1,
+  backend_libs__rtti__backend_libs__rtti__field_types_du_rep_0_1,
+  backend_libs__rtti__backend_libs__rtti__field_names_du_rep_0_1,
+  NULL,
+  NULL,
+  MR_FUNCTOR_SUBTYPE_NONE
+};
+
+static const MR_DuFunctorDescPtr backend_libs__rtti__backend_libs__rtti__du_stag_ordered_du_rep_0_0[1] = {
+  &backend_libs__rtti__backend_libs__rtti__du_functor_desc_du_rep_0_0
+};
+
+static const MR_DuFunctorDescPtr backend_libs__rtti__backend_libs__rtti__du_stag_ordered_du_rep_0_1[1] = {
+  &backend_libs__rtti__backend_libs__rtti__du_functor_desc_du_rep_0_1
+};
+
+static const MR_DuPtagLayout backend_libs__rtti__backend_libs__rtti__du_ptag_ordered_du_rep_0[2] = {
+  {
+    (MR_Integer) 1,
+    MR_SECTAG_NONE,
+    backend_libs__rtti__backend_libs__rtti__du_stag_ordered_du_rep_0_0
+  },
+  {
+    (MR_Integer) 1,
+    MR_SECTAG_NONE,
+    backend_libs__rtti__backend_libs__rtti__du_stag_ordered_du_rep_0_1
+  }
+};
+
+static const MR_DuFunctorDescPtr backend_libs__rtti__backend_libs__rtti__du_name_ordered_du_rep_0[2] = {
+  &backend_libs__rtti__backend_libs__rtti__du_functor_desc_du_rep_0_1,
+  &backend_libs__rtti__backend_libs__rtti__du_functor_desc_du_rep_0_0
+};
+
+static const MR_Integer backend_libs__rtti__backend_libs__rtti__functor_number_map_du_rep_0[2] = {
+  (MR_Integer) 1,
+  (MR_Integer) 0
+};
+
+const MR_TypeCtorInfo_Struct backend_libs__rtti__backend_libs__rtti__type_ctor_info_du_rep_0 = {
+  (MR_Integer) 0,
+  (MR_Integer) 17,
+  (MR_Integer) 2,
+  MR_TYPECTOR_REP_DU,
+  ((MR_Box) (backend_libs__rtti____Unify____du_rep_0_0_10001)),
+  ((MR_Box) (backend_libs__rtti____Compare____du_rep_0_0_10001)),
+  (MR_String) "backend_libs.rtti",
+  (MR_String) "du_rep",
+  {     backend_libs__rtti__backend_libs__rtti__du_name_ordered_du_rep_0 },
+  {     backend_libs__rtti__backend_libs__rtti__du_ptag_ordered_du_rep_0 },
+  (MR_Integer) 2,
+  (MR_Integer) 4,
+  backend_libs__rtti__backend_libs__rtti__functor_number_map_du_rep_0
+};
+
+static const MR_PseudoTypeInfo backend_libs__rtti__backend_libs__rtti__field_types_enum_functor_0_0[2] = {
+  (MR_PseudoTypeInfo) &mercury__builtin__builtin__type_ctor_info_string_0,
+  (MR_PseudoTypeInfo) &mercury__builtin__builtin__type_ctor_info_int_0
+};
+
+static const MR_ConstString backend_libs__rtti__backend_libs__rtti__field_names_enum_functor_0_0[2] = {
+  (MR_String) "enum_name",
+  (MR_String) "enum_ordinal"
+};
+
+static const MR_DuFunctorDesc backend_libs__rtti__backend_libs__rtti__du_functor_desc_enum_functor_0_0 = {
+  (MR_String) "enum_functor",
+  (MR_Integer) 2,
+  (MR_Integer) 0,
+  MR_SECTAG_NONE,
+  (MR_Integer) 0,
+  (MR_Integer) -1,
+  (MR_Integer) 0,
+  backend_libs__rtti__backend_libs__rtti__field_types_enum_functor_0_0,
+  backend_libs__rtti__backend_libs__rtti__field_names_enum_functor_0_0,
+  NULL,
+  NULL,
+  MR_FUNCTOR_SUBTYPE_NONE
+};
+
+static const MR_DuFunctorDescPtr backend_libs__rtti__backend_libs__rtti__du_stag_ordered_enum_functor_0_0[1] = {
+  &backend_libs__rtti__backend_libs__rtti__du_functor_desc_enum_functor_0_0
+};
+
+static const MR_DuPtagLayout backend_libs__rtti__backend_libs__rtti__du_ptag_ordered_enum_functor_0[1] = {
+  {
+    (MR_Integer) 1,
+    MR_SECTAG_NONE,
+    backend_libs__rtti__backend_libs__rtti__du_stag_ordered_enum_functor_0_0
+  }
+};
+
+static const MR_DuFunctorDescPtr backend_libs__rtti__backend_libs__rtti__du_name_ordered_enum_functor_0[1] = {
+  &backend_libs__rtti__backend_libs__rtti__du_functor_desc_enum_functor_0_0
+};
+
+static const MR_Integer backend_libs__rtti__backend_libs__rtti__functor_number_map_enum_functor_0[1] = {
+  (MR_Integer) 0
+};
+
+const MR_TypeCtorInfo_Struct backend_libs__rtti__backend_libs__rtti__type_ctor_info_enum_functor_0 = {
+  (MR_Integer) 0,
+  (MR_Integer) 17,
+  (MR_Integer) 1,
+  MR_TYPECTOR_REP_DU,
+  ((MR_Box) (backend_libs__rtti____Unify____enum_functor_0_0_10001)),
+  ((MR_Box) (backend_libs__rtti____Compare____enum_functor_0_0_10001)),
+  (MR_String) "backend_libs.rtti",
+  (MR_String) "enum_functor",
+  {     backend_libs__rtti__backend_libs__rtti__du_name_ordered_enum_functor_0 },
+  {     backend_libs__rtti__backend_libs__rtti__du_ptag_ordered_enum_functor_0 },
+  (MR_Integer) 1,
+  (MR_Integer) 4,
+  backend_libs__rtti__backend_libs__rtti__functor_number_map_enum_functor_0
+};
+
+static const MR_EnumFunctorDesc backend_libs__rtti__backend_libs__rtti__enum_functor_desc_equality_axioms_0_0 = {
+  (MR_String) "standard",
+  (MR_Integer) 0
+};
+
+static const MR_EnumFunctorDesc backend_libs__rtti__backend_libs__rtti__enum_functor_desc_equality_axioms_0_1 = {
+  (MR_String) "user_defined",
+  (MR_Integer) 1
+};
+
+static const MR_EnumFunctorDescPtr backend_libs__rtti__backend_libs__rtti__enum_value_ordered_equality_axioms_0[2] = {
+  &backend_libs__rtti__backend_libs__rtti__enum_functor_desc_equality_axioms_0_0,
+  &backend_libs__rtti__backend_libs__rtti__enum_functor_desc_equality_axioms_0_1
+};
+
+static const MR_EnumFunctorDescPtr backend_libs__rtti__backend_libs__rtti__enum_name_ordered_equality_axioms_0[2] = {
+  &backend_libs__rtti__backend_libs__rtti__enum_functor_desc_equality_axioms_0_0,
+  &backend_libs__rtti__backend_libs__rtti__enum_functor_desc_equality_axioms_0_1
+};
+
+static const MR_Integer backend_libs__rtti__backend_libs__rtti__functor_number_map_equality_axioms_0[2] = {
+  (MR_Integer) 0,
+  (MR_Integer) 1
+};
+
+const MR_TypeCtorInfo_Struct backend_libs__rtti__backend_libs__rtti__type_ctor_info_equality_axioms_0 = {
+  (MR_Integer) 0,
+  (MR_Integer) 17,
+  (MR_Integer) -1,
+  MR_TYPECTOR_REP_ENUM,
+  ((MR_Box) (backend_libs__rtti____Unify____equality_axioms_0_0_10001)),
+  ((MR_Box) (backend_libs__rtti____Compare____equality_axioms_0_0_10001)),
+  (MR_String) "backend_libs.rtti",
+  (MR_String) "equality_axioms",
+  {     backend_libs__rtti__backend_libs__rtti__enum_name_ordered_equality_axioms_0 },
+  {     backend_libs__rtti__backend_libs__rtti__enum_value_ordered_equality_axioms_0 },
+  (MR_Integer) 2,
+  (MR_Integer) 4,
+  backend_libs__rtti__backend_libs__rtti__functor_number_map_equality_axioms_0
+};
+
+static const MR_FA_TypeInfo_Struct1 backend_libs__rtti__list__ti_list_1backend_libs__rtti__type_ctor_info_tc_constraint_0 = {
+  &mercury__list__list__type_ctor_info_list_1,
+  {
+    (MR_TypeInfo) &backend_libs__rtti__backend_libs__rtti__type_ctor_info_tc_constraint_0
+  }
+};
+
+static const MR_FA_TypeInfo_Struct1 backend_libs__rtti__list__ti_list_1backend_libs__rtti__type_ctor_info_exist_typeinfo_locn_0 = {
+  &mercury__list__list__type_ctor_info_list_1,
+  {
+    (MR_TypeInfo) &backend_libs__rtti__backend_libs__rtti__type_ctor_info_exist_typeinfo_locn_0
+  }
+};
+
+static const MR_PseudoTypeInfo backend_libs__rtti__backend_libs__rtti__field_types_exist_info_0_0[4] = {
+  (MR_PseudoTypeInfo) &mercury__builtin__builtin__type_ctor_info_int_0,
+  (MR_PseudoTypeInfo) &mercury__builtin__builtin__type_ctor_info_int_0,
+  (MR_PseudoTypeInfo) &backend_libs__rtti__list__ti_list_1backend_libs__rtti__type_ctor_info_tc_constraint_0,
+  (MR_PseudoTypeInfo) &backend_libs__rtti__list__ti_list_1backend_libs__rtti__type_ctor_info_exist_typeinfo_locn_0
+};
+
+static const MR_ConstString backend_libs__rtti__backend_libs__rtti__field_names_exist_info_0_0[4] = {
+  (MR_String) "exist_num_plain_typeinfos",
+  (MR_String) "exist_num_typeinfos_in_tcis",
+  (MR_String) "exist_typeclass_constraints",
+  (MR_String) "exist_typeinfo_locns"
+};
+
+static const MR_DuFunctorDesc backend_libs__rtti__backend_libs__rtti__du_functor_desc_exist_info_0_0 = {
+  (MR_String) "exist_info",
+  (MR_Integer) 4,
+  (MR_Integer) 0,
+  MR_SECTAG_NONE,
+  (MR_Integer) 0,
+  (MR_Integer) -1,
+  (MR_Integer) 0,
+  backend_libs__rtti__backend_libs__rtti__field_types_exist_info_0_0,
+  backend_libs__rtti__backend_libs__rtti__field_names_exist_info_0_0,
+  NULL,
+  NULL,
+  MR_FUNCTOR_SUBTYPE_NONE
+};
+
+static const MR_DuFunctorDescPtr backend_libs__rtti__backend_libs__rtti__du_stag_ordered_exist_info_0_0[1] = {
+  &backend_libs__rtti__backend_libs__rtti__du_functor_desc_exist_info_0_0
+};
+
+static const MR_DuPtagLayout backend_libs__rtti__backend_libs__rtti__du_ptag_ordered_exist_info_0[1] = {
+  {
+    (MR_Integer) 1,
+    MR_SECTAG_NONE,
+    backend_libs__rtti__backend_libs__rtti__du_stag_ordered_exist_info_0_0
+  }
+};
+
+static const MR_DuFunctorDescPtr backend_libs__rtti__backend_libs__rtti__du_name_ordered_exist_info_0[1] = {
+  &backend_libs__rtti__backend_libs__rtti__du_functor_desc_exist_info_0_0
+};
+
+static const MR_Integer backend_libs__rtti__backend_libs__rtti__functor_number_map_exist_info_0[1] = {
+  (MR_Integer) 0
+};
+
+const MR_TypeCtorInfo_Struct backend_libs__rtti__backend_libs__rtti__type_ctor_info_exist_info_0 = {
+  (MR_Integer) 0,
+  (MR_Integer) 17,
+  (MR_Integer) 1,
+  MR_TYPECTOR_REP_DU,
+  ((MR_Box) (backend_libs__rtti____Unify____exist_info_0_0_10001)),
+  ((MR_Box) (backend_libs__rtti____Compare____exist_info_0_0_10001)),
+  (MR_String) "backend_libs.rtti",
+  (MR_String) "exist_info",
+  {     backend_libs__rtti__backend_libs__rtti__du_name_ordered_exist_info_0 },
+  {     backend_libs__rtti__backend_libs__rtti__du_ptag_ordered_exist_info_0 },
+  (MR_Integer) 1,
+  (MR_Integer) 4,
+  backend_libs__rtti__backend_libs__rtti__functor_number_map_exist_info_0
+};
+
+static const MR_PseudoTypeInfo backend_libs__rtti__backend_libs__rtti__field_types_exist_typeinfo_locn_0_0[1] = {
+  (MR_PseudoTypeInfo) &mercury__builtin__builtin__type_ctor_info_int_0
+};
+
+static const MR_DuFunctorDesc backend_libs__rtti__backend_libs__rtti__du_functor_desc_exist_typeinfo_locn_0_0 = {
+  (MR_String) "plain_typeinfo",
+  (MR_Integer) 1,
+  (MR_Integer) 0,
+  MR_SECTAG_NONE,
+  (MR_Integer) 0,
+  (MR_Integer) -1,
+  (MR_Integer) 0,
+  backend_libs__rtti__backend_libs__rtti__field_types_exist_typeinfo_locn_0_0,
+  NULL,
+  NULL,
+  NULL,
+  MR_FUNCTOR_SUBTYPE_NONE
+};
+
+static const MR_PseudoTypeInfo backend_libs__rtti__backend_libs__rtti__field_types_exist_typeinfo_locn_0_1[2] = {
+  (MR_PseudoTypeInfo) &mercury__builtin__builtin__type_ctor_info_int_0,
+  (MR_PseudoTypeInfo) &mercury__builtin__builtin__type_ctor_info_int_0
+};
+
+static const MR_DuFunctorDesc backend_libs__rtti__backend_libs__rtti__du_functor_desc_exist_typeinfo_locn_0_1 = {
+  (MR_String) "typeinfo_in_tci",
+  (MR_Integer) 2,
+  (MR_Integer) 0,
+  MR_SECTAG_NONE,
+  (MR_Integer) 1,
+  (MR_Integer) -1,
+  (MR_Integer) 1,
+  backend_libs__rtti__backend_libs__rtti__field_types_exist_typeinfo_locn_0_1,
+  NULL,
+  NULL,
+  NULL,
+  MR_FUNCTOR_SUBTYPE_NONE
+};
+
+static const MR_DuFunctorDescPtr backend_libs__rtti__backend_libs__rtti__du_stag_ordered_exist_typeinfo_locn_0_0[1] = {
+  &backend_libs__rtti__backend_libs__rtti__du_functor_desc_exist_typeinfo_locn_0_0
+};
+
+static const MR_DuFunctorDescPtr backend_libs__rtti__backend_libs__rtti__du_stag_ordered_exist_typeinfo_locn_0_1[1] = {
+  &backend_libs__rtti__backend_libs__rtti__du_functor_desc_exist_typeinfo_locn_0_1
+};
+
+static const MR_DuPtagLayout backend_libs__rtti__backend_libs__rtti__du_ptag_ordered_exist_typeinfo_locn_0[2] = {
+  {
+    (MR_Integer) 1,
+    MR_SECTAG_NONE,
+    backend_libs__rtti__backend_libs__rtti__du_stag_ordered_exist_typeinfo_locn_0_0
+  },
+  {
+    (MR_Integer) 1,
+    MR_SECTAG_NONE,
+    backend_libs__rtti__backend_libs__rtti__du_stag_ordered_exist_typeinfo_locn_0_1
+  }
+};
+
+static const MR_DuFunctorDescPtr backend_libs__rtti__backend_libs__rtti__du_name_ordered_exist_typeinfo_locn_0[2] = {
+  &backend_libs__rtti__backend_libs__rtti__du_functor_desc_exist_typeinfo_locn_0_0,
+  &backend_libs__rtti__backend_libs__rtti__du_functor_desc_exist_typeinfo_locn_0_1
+};
+
+static const MR_Integer backend_libs__rtti__backend_libs__rtti__functor_number_map_exist_typeinfo_locn_0[2] = {
+  (MR_Integer) 0,
+  (MR_Integer) 1
+};
+
+const MR_TypeCtorInfo_Struct backend_libs__rtti__backend_libs__rtti__type_ctor_info_exist_typeinfo_locn_0 = {
+  (MR_Integer) 0,
+  (MR_Integer) 17,
+  (MR_Integer) 2,
+  MR_TYPECTOR_REP_DU,
+  ((MR_Box) (backend_libs__rtti____Unify____exist_typeinfo_locn_0_0_10001)),
+  ((MR_Box) (backend_libs__rtti____Compare____exist_typeinfo_locn_0_0_10001)),
+  (MR_String) "backend_libs.rtti",
+  (MR_String) "exist_typeinfo_locn",
+  {     backend_libs__rtti__backend_libs__rtti__du_name_ordered_exist_typeinfo_locn_0 },
+  {     backend_libs__rtti__backend_libs__rtti__du_ptag_ordered_exist_typeinfo_locn_0 },
+  (MR_Integer) 2,
+  (MR_Integer) 4,
+  backend_libs__rtti__backend_libs__rtti__functor_number_map_exist_typeinfo_locn_0
+};
+
+static const MR_PseudoTypeInfo backend_libs__rtti__backend_libs__rtti__field_types_foreign_enum_functor_0_0[3] = {
+  (MR_PseudoTypeInfo) &mercury__builtin__builtin__type_ctor_info_string_0,
+  (MR_PseudoTypeInfo) &mercury__builtin__builtin__type_ctor_info_int_0,
+  (MR_PseudoTypeInfo) &mercury__builtin__builtin__type_ctor_info_string_0
+};
+
+static const MR_ConstString backend_libs__rtti__backend_libs__rtti__field_names_foreign_enum_functor_0_0[3] = {
+  (MR_String) "foreign_enum_name",
+  (MR_String) "foreign_enum_ordinal",
+  (MR_String) "foreign_enum_value"
+};
+
+static const MR_DuFunctorDesc backend_libs__rtti__backend_libs__rtti__du_functor_desc_foreign_enum_functor_0_0 = {
+  (MR_String) "foreign_enum_functor",
+  (MR_Integer) 3,
+  (MR_Integer) 0,
+  MR_SECTAG_NONE,
+  (MR_Integer) 0,
+  (MR_Integer) -1,
+  (MR_Integer) 0,
+  backend_libs__rtti__backend_libs__rtti__field_types_foreign_enum_functor_0_0,
+  backend_libs__rtti__backend_libs__rtti__field_names_foreign_enum_functor_0_0,
+  NULL,
+  NULL,
+  MR_FUNCTOR_SUBTYPE_NONE
+};
+
+static const MR_DuFunctorDescPtr backend_libs__rtti__backend_libs__rtti__du_stag_ordered_foreign_enum_functor_0_0[1] = {
+  &backend_libs__rtti__backend_libs__rtti__du_functor_desc_foreign_enum_functor_0_0
+};
+
+static const MR_DuPtagLayout backend_libs__rtti__backend_libs__rtti__du_ptag_ordered_foreign_enum_functor_0[1] = {
+  {
+    (MR_Integer) 1,
+    MR_SECTAG_NONE,
+    backend_libs__rtti__backend_libs__rtti__du_stag_ordered_foreign_enum_functor_0_0
+  }
+};
+
+static const MR_DuFunctorDescPtr backend_libs__rtti__backend_libs__rtti__du_name_ordered_foreign_enum_functor_0[1] = {
+  &backend_libs__rtti__backend_libs__rtti__du_functor_desc_foreign_enum_functor_0_0
+};
+
+static const MR_Integer backend_libs__rtti__backend_libs__rtti__functor_number_map_foreign_enum_functor_0[1] = {
+  (MR_Integer) 0
+};
+
+const MR_TypeCtorInfo_Struct backend_libs__rtti__backend_libs__rtti__type_ctor_info_foreign_enum_functor_0 = {
+  (MR_Integer) 0,
+  (MR_Integer) 17,
+  (MR_Integer) 1,
+  MR_TYPECTOR_REP_DU,
+  ((MR_Box) (backend_libs__rtti____Unify____foreign_enum_functor_0_0_10001)),
+  ((MR_Box) (backend_libs__rtti____Compare____foreign_enum_functor_0_0_10001)),
+  (MR_String) "backend_libs.rtti",
+  (MR_String) "foreign_enum_functor",
+  {     backend_libs__rtti__backend_libs__rtti__du_name_ordered_foreign_enum_functor_0 },
+  {     backend_libs__rtti__backend_libs__rtti__du_ptag_ordered_foreign_enum_functor_0 },
+  (MR_Integer) 1,
+  (MR_Integer) 4,
+  backend_libs__rtti__backend_libs__rtti__functor_number_map_foreign_enum_functor_0
+};
+
+static const MR_EnumFunctorDesc backend_libs__rtti__backend_libs__rtti__enum_functor_desc_functor_subtype_info_0_0 = {
+  (MR_String) "functor_subtype_none",
+  (MR_Integer) 0
+};
+
+static const MR_EnumFunctorDesc backend_libs__rtti__backend_libs__rtti__enum_functor_desc_functor_subtype_info_0_1 = {
+  (MR_String) "functor_subtype_exists",
+  (MR_Integer) 1
+};
+
+static const MR_EnumFunctorDescPtr backend_libs__rtti__backend_libs__rtti__enum_value_ordered_functor_subtype_info_0[2] = {
+  &backend_libs__rtti__backend_libs__rtti__enum_functor_desc_functor_subtype_info_0_0,
+  &backend_libs__rtti__backend_libs__rtti__enum_functor_desc_functor_subtype_info_0_1
+};
+
+static const MR_EnumFunctorDescPtr backend_libs__rtti__backend_libs__rtti__enum_name_ordered_functor_subtype_info_0[2] = {
+  &backend_libs__rtti__backend_libs__rtti__enum_functor_desc_functor_subtype_info_0_1,
+  &backend_libs__rtti__backend_libs__rtti__enum_functor_desc_functor_subtype_info_0_0
+};
+
+static const MR_Integer backend_libs__rtti__backend_libs__rtti__functor_number_map_functor_subtype_info_0[2] = {
+  (MR_Integer) 1,
+  (MR_Integer) 0
+};
+
+const MR_TypeCtorInfo_Struct backend_libs__rtti__backend_libs__rtti__type_ctor_info_functor_subtype_info_0 = {
+  (MR_Integer) 0,
+  (MR_Integer) 17,
+  (MR_Integer) -1,
+  MR_TYPECTOR_REP_ENUM,
+  ((MR_Box) (backend_libs__rtti____Unify____functor_subtype_info_0_0_10001)),
+  ((MR_Box) (backend_libs__rtti____Compare____functor_subtype_info_0_0_10001)),
+  (MR_String) "backend_libs.rtti",
+  (MR_String) "functor_subtype_info",
+  {     backend_libs__rtti__backend_libs__rtti__enum_name_ordered_functor_subtype_info_0 },
+  {     backend_libs__rtti__backend_libs__rtti__enum_value_ordered_functor_subtype_info_0 },
+  (MR_Integer) 2,
+  (MR_Integer) 4,
+  backend_libs__rtti__backend_libs__rtti__functor_number_map_functor_subtype_info_0
+};
+
+static const MR_EnumFunctorDesc backend_libs__rtti__backend_libs__rtti__enum_functor_desc_impl_ctor_0_0 = {
+  (MR_String) "impl_ctor_hp",
+  (MR_Integer) 0
+};
+
+static const MR_EnumFunctorDesc backend_libs__rtti__backend_libs__rtti__enum_functor_desc_impl_ctor_0_1 = {
+  (MR_String) "impl_ctor_succip",
+  (MR_Integer) 1
+};
+
+static const MR_EnumFunctorDesc backend_libs__rtti__backend_libs__rtti__enum_functor_desc_impl_ctor_0_2 = {
+  (MR_String) "impl_ctor_maxfr",
+  (MR_Integer) 2
+};
+
+static const MR_EnumFunctorDesc backend_libs__rtti__backend_libs__rtti__enum_functor_desc_impl_ctor_0_3 = {
+  (MR_String) "impl_ctor_curfr",
+  (MR_Integer) 3
+};
+
+static const MR_EnumFunctorDesc backend_libs__rtti__backend_libs__rtti__enum_functor_desc_impl_ctor_0_4 = {
+  (MR_String) "impl_ctor_redofr",
+  (MR_Integer) 4
+};
+
+static const MR_EnumFunctorDesc backend_libs__rtti__backend_libs__rtti__enum_functor_desc_impl_ctor_0_5 = {
+  (MR_String) "impl_ctor_redoip",
+  (MR_Integer) 5
+};
+
+static const MR_EnumFunctorDesc backend_libs__rtti__backend_libs__rtti__enum_functor_desc_impl_ctor_0_6 = {
+  (MR_String) "impl_ctor_ticket",
+  (MR_Integer) 6
+};
+
+static const MR_EnumFunctorDesc backend_libs__rtti__backend_libs__rtti__enum_functor_desc_impl_ctor_0_7 = {
+  (MR_String) "impl_ctor_trail_ptr",
+  (MR_Integer) 7
+};
+
+static const MR_EnumFunctorDesc backend_libs__rtti__backend_libs__rtti__enum_functor_desc_impl_ctor_0_8 = {
+  (MR_String) "impl_ctor_type_info",
+  (MR_Integer) 8
+};
+
+static const MR_EnumFunctorDesc backend_libs__rtti__backend_libs__rtti__enum_functor_desc_impl_ctor_0_9 = {
+  (MR_String) "impl_ctor_type_ctor_info",
+  (MR_Integer) 9
+};
+
+static const MR_EnumFunctorDesc backend_libs__rtti__backend_libs__rtti__enum_functor_desc_impl_ctor_0_10 = {
+  (MR_String) "impl_ctor_typeclass_info",
+  (MR_Integer) 10
+};
+
+static const MR_EnumFunctorDesc backend_libs__rtti__backend_libs__rtti__enum_functor_desc_impl_ctor_0_11 = {
+  (MR_String) "impl_ctor_base_typeclass_info",
+  (MR_Integer) 11
+};
+
+static const MR_EnumFunctorDesc backend_libs__rtti__backend_libs__rtti__enum_functor_desc_impl_ctor_0_12 = {
+  (MR_String) "impl_ctor_subgoal",
+  (MR_Integer) 12
+};
+
+static const MR_EnumFunctorDescPtr backend_libs__rtti__backend_libs__rtti__enum_value_ordered_impl_ctor_0[13] = {
+  &backend_libs__rtti__backend_libs__rtti__enum_functor_desc_impl_ctor_0_0,
+  &backend_libs__rtti__backend_libs__rtti__enum_functor_desc_impl_ctor_0_1,
+  &backend_libs__rtti__backend_libs__rtti__enum_functor_desc_impl_ctor_0_2,
+  &backend_libs__rtti__backend_libs__rtti__enum_functor_desc_impl_ctor_0_3,
+  &backend_libs__rtti__backend_libs__rtti__enum_functor_desc_impl_ctor_0_4,
+  &backend_libs__rtti__backend_libs__rtti__enum_functor_desc_impl_ctor_0_5,
+  &backend_libs__rtti__backend_libs__rtti__enum_functor_desc_impl_ctor_0_6,
+  &backend_libs__rtti__backend_libs__rtti__enum_functor_desc_impl_ctor_0_7,
+  &backend_libs__rtti__backend_libs__rtti__enum_functor_desc_impl_ctor_0_8,
+  &backend_libs__rtti__backend_libs__rtti__enum_functor_desc_impl_ctor_0_9,
+  &backend_libs__rtti__backend_libs__rtti__enum_functor_desc_impl_ctor_0_10,
+  &backend_libs__rtti__backend_libs__rtti__enum_functor_desc_impl_ctor_0_11,
+  &backend_libs__rtti__backend_libs__rtti__enum_functor_desc_impl_ctor_0_12
+};
+
+static const MR_EnumFunctorDescPtr backend_libs__rtti__backend_libs__rtti__enum_name_ordered_impl_ctor_0[13] = {
+  &backend_libs__rtti__backend_libs__rtti__enum_functor_desc_impl_ctor_0_11,
+  &backend_libs__rtti__backend_libs__rtti__enum_functor_desc_impl_ctor_0_3,
+  &backend_libs__rtti__backend_libs__rtti__enum_functor_desc_impl_ctor_0_0,
+  &backend_libs__rtti__backend_libs__rtti__enum_functor_desc_impl_ctor_0_2,
+  &backend_libs__rtti__backend_libs__rtti__enum_functor_desc_impl_ctor_0_4,
+  &backend_libs__rtti__backend_libs__rtti__enum_functor_desc_impl_ctor_0_5,
+  &backend_libs__rtti__backend_libs__rtti__enum_functor_desc_impl_ctor_0_12,
+  &backend_libs__rtti__backend_libs__rtti__enum_functor_desc_impl_ctor_0_1,
+  &backend_libs__rtti__backend_libs__rtti__enum_functor_desc_impl_ctor_0_6,
+  &backend_libs__rtti__backend_libs__rtti__enum_functor_desc_impl_ctor_0_7,
+  &backend_libs__rtti__backend_libs__rtti__enum_functor_desc_impl_ctor_0_9,
+  &backend_libs__rtti__backend_libs__rtti__enum_functor_desc_impl_ctor_0_8,
+  &backend_libs__rtti__backend_libs__rtti__enum_functor_desc_impl_ctor_0_10
+};
+
+static const MR_Integer backend_libs__rtti__backend_libs__rtti__functor_number_map_impl_ctor_0[13] = {
+  (MR_Integer) 2,
+  (MR_Integer) 7,
+  (MR_Integer) 3,
+  (MR_Integer) 1,
+  (MR_Integer) 4,
+  (MR_Integer) 5,
+  (MR_Integer) 8,
+  (MR_Integer) 9,
+  (MR_Integer) 11,
+  (MR_Integer) 10,
+  (MR_Integer) 12,
+  (MR_Integer) 0,
+  (MR_Integer) 6
+};
+
+const MR_TypeCtorInfo_Struct backend_libs__rtti__backend_libs__rtti__type_ctor_info_impl_ctor_0 = {
+  (MR_Integer) 0,
+  (MR_Integer) 17,
+  (MR_Integer) -1,
+  MR_TYPECTOR_REP_ENUM,
+  ((MR_Box) (backend_libs__rtti____Unify____impl_ctor_0_0_10001)),
+  ((MR_Box) (backend_libs__rtti____Compare____impl_ctor_0_0_10001)),
+  (MR_String) "backend_libs.rtti",
+  (MR_String) "impl_ctor",
+  {     backend_libs__rtti__backend_libs__rtti__enum_name_ordered_impl_ctor_0 },
+  {     backend_libs__rtti__backend_libs__rtti__enum_value_ordered_impl_ctor_0 },
+  (MR_Integer) 13,
+  (MR_Integer) 4,
+  backend_libs__rtti__backend_libs__rtti__functor_number_map_impl_ctor_0
+};
+
+static const MR_EnumFunctorDesc backend_libs__rtti__backend_libs__rtti__enum_functor_desc_is_array_0_0 = {
+  (MR_String) "is_array",
+  (MR_Integer) 0
+};
+
+static const MR_EnumFunctorDesc backend_libs__rtti__backend_libs__rtti__enum_functor_desc_is_array_0_1 = {
+  (MR_String) "not_array",
+  (MR_Integer) 1
+};
+
+static const MR_EnumFunctorDescPtr backend_libs__rtti__backend_libs__rtti__enum_value_ordered_is_array_0[2] = {
+  &backend_libs__rtti__backend_libs__rtti__enum_functor_desc_is_array_0_0,
+  &backend_libs__rtti__backend_libs__rtti__enum_functor_desc_is_array_0_1
+};
+
+static const MR_EnumFunctorDescPtr backend_libs__rtti__backend_libs__rtti__enum_name_ordered_is_array_0[2] = {
+  &backend_libs__rtti__backend_libs__rtti__enum_functor_desc_is_array_0_0,
+  &backend_libs__rtti__backend_libs__rtti__enum_functor_desc_is_array_0_1
+};
+
+static const MR_Integer backend_libs__rtti__backend_libs__rtti__functor_number_map_is_array_0[2] = {
+  (MR_Integer) 0,
+  (MR_Integer) 1
+};
+
+const MR_TypeCtorInfo_Struct backend_libs__rtti__backend_libs__rtti__type_ctor_info_is_array_0 = {
+  (MR_Integer) 0,
+  (MR_Integer) 17,
+  (MR_Integer) -1,
+  MR_TYPECTOR_REP_ENUM,
+  ((MR_Box) (backend_libs__rtti____Unify____is_array_0_0_10001)),
+  ((MR_Box) (backend_libs__rtti____Compare____is_array_0_0_10001)),
+  (MR_String) "backend_libs.rtti",
+  (MR_String) "is_array",
+  {     backend_libs__rtti__backend_libs__rtti__enum_name_ordered_is_array_0 },
+  {     backend_libs__rtti__backend_libs__rtti__enum_value_ordered_is_array_0 },
+  (MR_Integer) 2,
+  (MR_Integer) 4,
+  backend_libs__rtti__backend_libs__rtti__functor_number_map_is_array_0
+};
+
+static const MR_EnumFunctorDesc backend_libs__rtti__backend_libs__rtti__enum_functor_desc_is_stable_0_0 = {
+  (MR_String) "is_stable",
+  (MR_Integer) 0
+};
+
+static const MR_EnumFunctorDesc backend_libs__rtti__backend_libs__rtti__enum_functor_desc_is_stable_0_1 = {
+  (MR_String) "is_not_stable",
+  (MR_Integer) 1
+};
+
+static const MR_EnumFunctorDescPtr backend_libs__rtti__backend_libs__rtti__enum_value_ordered_is_stable_0[2] = {
+  &backend_libs__rtti__backend_libs__rtti__enum_functor_desc_is_stable_0_0,
+  &backend_libs__rtti__backend_libs__rtti__enum_functor_desc_is_stable_0_1
+};
+
+static const MR_EnumFunctorDescPtr backend_libs__rtti__backend_libs__rtti__enum_name_ordered_is_stable_0[2] = {
+  &backend_libs__rtti__backend_libs__rtti__enum_functor_desc_is_stable_0_1,
+  &backend_libs__rtti__backend_libs__rtti__enum_functor_desc_is_stable_0_0
+};
+
+static const MR_Integer backend_libs__rtti__backend_libs__rtti__functor_number_map_is_stable_0[2] = {
+  (MR_Integer) 1,
+  (MR_Integer) 0
+};
+
+const MR_TypeCtorInfo_Struct backend_libs__rtti__backend_libs__rtti__type_ctor_info_is_stable_0 = {
+  (MR_Integer) 0,
+  (MR_Integer) 17,
+  (MR_Integer) -1,
+  MR_TYPECTOR_REP_ENUM,
+  ((MR_Box) (backend_libs__rtti____Unify____is_stable_0_0_10001)),
+  ((MR_Box) (backend_libs__rtti____Compare____is_stable_0_0_10001)),
+  (MR_String) "backend_libs.rtti",
+  (MR_String) "is_stable",
+  {     backend_libs__rtti__backend_libs__rtti__enum_name_ordered_is_stable_0 },
+  {     backend_libs__rtti__backend_libs__rtti__enum_value_ordered_is_stable_0 },
+  (MR_Integer) 2,
+  (MR_Integer) 4,
+  backend_libs__rtti__backend_libs__rtti__functor_number_map_is_stable_0
+};
+
+static const MR_PseudoTypeInfo backend_libs__rtti__backend_libs__rtti__field_types_notag_functor_0_0[4] = {
+  (MR_PseudoTypeInfo) &mercury__builtin__builtin__type_ctor_info_string_0,
+  (MR_PseudoTypeInfo) &backend_libs__rtti__backend_libs__rtti__type_ctor_info_rtti_maybe_pseudo_type_info_0,
+  (MR_PseudoTypeInfo) &backend_libs__rtti__maybe__ti_maybe_1builtin__type_ctor_info_string_0,
+  (MR_PseudoTypeInfo) &backend_libs__rtti__backend_libs__rtti__type_ctor_info_functor_subtype_info_0
+};
+
+static const MR_ConstString backend_libs__rtti__backend_libs__rtti__field_names_notag_functor_0_0[4] = {
+  (MR_String) "nt_name",
+  (MR_String) "nt_arg_type",
+  (MR_String) "nt_arg_name",
+  (MR_String) "nt_subtype_info"
+};
+
+static const MR_DuFunctorDesc backend_libs__rtti__backend_libs__rtti__du_functor_desc_notag_functor_0_0 = {
+  (MR_String) "notag_functor",
+  (MR_Integer) 4,
+  (MR_Integer) 0,
+  MR_SECTAG_NONE,
+  (MR_Integer) 0,
+  (MR_Integer) -1,
+  (MR_Integer) 0,
+  backend_libs__rtti__backend_libs__rtti__field_types_notag_functor_0_0,
+  backend_libs__rtti__backend_libs__rtti__field_names_notag_functor_0_0,
+  NULL,
+  NULL,
+  MR_FUNCTOR_SUBTYPE_NONE
+};
+
+static const MR_DuFunctorDescPtr backend_libs__rtti__backend_libs__rtti__du_stag_ordered_notag_functor_0_0[1] = {
+  &backend_libs__rtti__backend_libs__rtti__du_functor_desc_notag_functor_0_0
+};
+
+static const MR_DuPtagLayout backend_libs__rtti__backend_libs__rtti__du_ptag_ordered_notag_functor_0[1] = {
+  {
+    (MR_Integer) 1,
+    MR_SECTAG_NONE,
+    backend_libs__rtti__backend_libs__rtti__du_stag_ordered_notag_functor_0_0
+  }
+};
+
+static const MR_DuFunctorDescPtr backend_libs__rtti__backend_libs__rtti__du_name_ordered_notag_functor_0[1] = {
+  &backend_libs__rtti__backend_libs__rtti__du_functor_desc_notag_functor_0_0
+};
+
+static const MR_Integer backend_libs__rtti__backend_libs__rtti__functor_number_map_notag_functor_0[1] = {
+  (MR_Integer) 0
+};
+
+const MR_TypeCtorInfo_Struct backend_libs__rtti__backend_libs__rtti__type_ctor_info_notag_functor_0 = {
+  (MR_Integer) 0,
+  (MR_Integer) 17,
+  (MR_Integer) 1,
+  MR_TYPECTOR_REP_DU,
+  ((MR_Box) (backend_libs__rtti____Unify____notag_functor_0_0_10001)),
+  ((MR_Box) (backend_libs__rtti____Compare____notag_functor_0_0_10001)),
+  (MR_String) "backend_libs.rtti",
+  (MR_String) "notag_functor",
+  {     backend_libs__rtti__backend_libs__rtti__du_name_ordered_notag_functor_0 },
+  {     backend_libs__rtti__backend_libs__rtti__du_ptag_ordered_notag_functor_0 },
+  (MR_Integer) 1,
+  (MR_Integer) 4,
+  backend_libs__rtti__backend_libs__rtti__functor_number_map_notag_functor_0
+};
+
+static const MR_DuFunctorDesc backend_libs__rtti__backend_libs__rtti__du_functor_desc_proc_tabling_struct_id_0_0 = {
+  (MR_String) "tabling_info",
+  (MR_Integer) 0,
+  (MR_Integer) 0,
+  MR_SECTAG_LOCAL,
+  (MR_Integer) 0,
+  (MR_Integer) 0,
+  (MR_Integer) 0,
+  NULL,
+  NULL,
+  NULL,
+  NULL,
+  MR_FUNCTOR_SUBTYPE_NONE
+};
+
+static const MR_DuFunctorDesc backend_libs__rtti__backend_libs__rtti__du_functor_desc_proc_tabling_struct_id_0_1 = {
+  (MR_String) "tabling_ptis",
+  (MR_Integer) 0,
+  (MR_Integer) 0,
+  MR_SECTAG_LOCAL,
+  (MR_Integer) 0,
+  (MR_Integer) 1,
+  (MR_Integer) 1,
+  NULL,
+  NULL,
+  NULL,
+  NULL,
+  MR_FUNCTOR_SUBTYPE_NONE
+};
+
+static const MR_DuFunctorDesc backend_libs__rtti__backend_libs__rtti__du_functor_desc_proc_tabling_struct_id_0_2 = {
+  (MR_String) "tabling_type_param_locns",
+  (MR_Integer) 0,
+  (MR_Integer) 0,
+  MR_SECTAG_LOCAL,
+  (MR_Integer) 0,
+  (MR_Integer) 2,
+  (MR_Integer) 2,
+  NULL,
+  NULL,
+  NULL,
+  NULL,
+  MR_FUNCTOR_SUBTYPE_NONE
+};
+
+static const MR_DuFunctorDesc backend_libs__rtti__backend_libs__rtti__du_functor_desc_proc_tabling_struct_id_0_3 = {
+  (MR_String) "tabling_root_node",
+  (MR_Integer) 0,
+  (MR_Integer) 0,
+  MR_SECTAG_LOCAL,
+  (MR_Integer) 0,
+  (MR_Integer) 3,
+  (MR_Integer) 3,
+  NULL,
+  NULL,
+  NULL,
+  NULL,
+  MR_FUNCTOR_SUBTYPE_NONE
+};
+
+static const MR_PseudoTypeInfo backend_libs__rtti__backend_libs__rtti__field_types_proc_tabling_struct_id_0_4[1] = {
+  (MR_PseudoTypeInfo) &backend_libs__rtti__backend_libs__rtti__type_ctor_info_call_or_answer_table_0
+};
+
+static const MR_DuFunctorDesc backend_libs__rtti__backend_libs__rtti__du_functor_desc_proc_tabling_struct_id_0_4 = {
+  (MR_String) "tabling_steps_desc",
+  (MR_Integer) 1,
+  (MR_Integer) 0,
+  MR_SECTAG_NONE,
+  (MR_Integer) 1,
+  (MR_Integer) -1,
+  (MR_Integer) 4,
+  backend_libs__rtti__backend_libs__rtti__field_types_proc_tabling_struct_id_0_4,
+  NULL,
+  NULL,
+  NULL,
+  MR_FUNCTOR_SUBTYPE_NONE
+};
+
+static const MR_PseudoTypeInfo backend_libs__rtti__backend_libs__rtti__field_types_proc_tabling_struct_id_0_5[2] = {
+  (MR_PseudoTypeInfo) &backend_libs__rtti__backend_libs__rtti__type_ctor_info_call_or_answer_table_0,
+  (MR_PseudoTypeInfo) &backend_libs__rtti__backend_libs__rtti__type_ctor_info_curr_or_prev_table_0
+};
+
+static const MR_DuFunctorDesc backend_libs__rtti__backend_libs__rtti__du_functor_desc_proc_tabling_struct_id_0_5 = {
+  (MR_String) "tabling_stats",
+  (MR_Integer) 2,
+  (MR_Integer) 0,
+  MR_SECTAG_NONE,
+  (MR_Integer) 2,
+  (MR_Integer) -1,
+  (MR_Integer) 5,
+  backend_libs__rtti__backend_libs__rtti__field_types_proc_tabling_struct_id_0_5,
+  NULL,
+  NULL,
+  NULL,
+  MR_FUNCTOR_SUBTYPE_NONE
+};
+
+static const MR_PseudoTypeInfo backend_libs__rtti__backend_libs__rtti__field_types_proc_tabling_struct_id_0_6[2] = {
+  (MR_PseudoTypeInfo) &backend_libs__rtti__backend_libs__rtti__type_ctor_info_call_or_answer_table_0,
+  (MR_PseudoTypeInfo) &backend_libs__rtti__backend_libs__rtti__type_ctor_info_curr_or_prev_table_0
+};
+
+static const MR_DuFunctorDesc backend_libs__rtti__backend_libs__rtti__du_functor_desc_proc_tabling_struct_id_0_6 = {
+  (MR_String) "tabling_stat_steps",
+  (MR_Integer) 2,
+  (MR_Integer) 0,
+  MR_SECTAG_NONE,
+  (MR_Integer) 3,
+  (MR_Integer) -1,
+  (MR_Integer) 6,
+  backend_libs__rtti__backend_libs__rtti__field_types_proc_tabling_struct_id_0_6,
+  NULL,
+  NULL,
+  NULL,
+  MR_FUNCTOR_SUBTYPE_NONE
+};
+
+static const MR_DuFunctorDesc backend_libs__rtti__backend_libs__rtti__du_functor_desc_proc_tabling_struct_id_0_7 = {
+  (MR_String) "tabling_tips",
+  (MR_Integer) 0,
+  (MR_Integer) 0,
+  MR_SECTAG_LOCAL,
+  (MR_Integer) 0,
+  (MR_Integer) 4,
+  (MR_Integer) 7,
+  NULL,
+  NULL,
+  NULL,
+  NULL,
+  MR_FUNCTOR_SUBTYPE_NONE
+};
+
+static const MR_DuFunctorDescPtr backend_libs__rtti__backend_libs__rtti__du_stag_ordered_proc_tabling_struct_id_0_0[5] = {
+  &backend_libs__rtti__backend_libs__rtti__du_functor_desc_proc_tabling_struct_id_0_0,
+  &backend_libs__rtti__backend_libs__rtti__du_functor_desc_proc_tabling_struct_id_0_1,
+  &backend_libs__rtti__backend_libs__rtti__du_functor_desc_proc_tabling_struct_id_0_2,
+  &backend_libs__rtti__backend_libs__rtti__du_functor_desc_proc_tabling_struct_id_0_3,
+  &backend_libs__rtti__backend_libs__rtti__du_functor_desc_proc_tabling_struct_id_0_7
+};
+
+static const MR_DuFunctorDescPtr backend_libs__rtti__backend_libs__rtti__du_stag_ordered_proc_tabling_struct_id_0_1[1] = {
+  &backend_libs__rtti__backend_libs__rtti__du_functor_desc_proc_tabling_struct_id_0_4
+};
+
+static const MR_DuFunctorDescPtr backend_libs__rtti__backend_libs__rtti__du_stag_ordered_proc_tabling_struct_id_0_2[1] = {
+  &backend_libs__rtti__backend_libs__rtti__du_functor_desc_proc_tabling_struct_id_0_5
+};
+
+static const MR_DuFunctorDescPtr backend_libs__rtti__backend_libs__rtti__du_stag_ordered_proc_tabling_struct_id_0_3[1] = {
+  &backend_libs__rtti__backend_libs__rtti__du_functor_desc_proc_tabling_struct_id_0_6
+};
+
+static const MR_DuPtagLayout backend_libs__rtti__backend_libs__rtti__du_ptag_ordered_proc_tabling_struct_id_0[4] = {
+  {
+    (MR_Integer) 5,
+    MR_SECTAG_LOCAL,
+    backend_libs__rtti__backend_libs__rtti__du_stag_ordered_proc_tabling_struct_id_0_0
+  },
+  {
+    (MR_Integer) 1,
+    MR_SECTAG_NONE,
+    backend_libs__rtti__backend_libs__rtti__du_stag_ordered_proc_tabling_struct_id_0_1
+  },
+  {
+    (MR_Integer) 1,
+    MR_SECTAG_NONE,
+    backend_libs__rtti__backend_libs__rtti__du_stag_ordered_proc_tabling_struct_id_0_2
+  },
+  {
+    (MR_Integer) 1,
+    MR_SECTAG_NONE,
+    backend_libs__rtti__backend_libs__rtti__du_stag_ordered_proc_tabling_struct_id_0_3
+  }
+};
+
+static const MR_DuFunctorDescPtr backend_libs__rtti__backend_libs__rtti__du_name_ordered_proc_tabling_struct_id_0[8] = {
+  &backend_libs__rtti__backend_libs__rtti__du_functor_desc_proc_tabling_struct_id_0_0,
+  &backend_libs__rtti__backend_libs__rtti__du_functor_desc_proc_tabling_struct_id_0_1,
+  &backend_libs__rtti__backend_libs__rtti__du_functor_desc_proc_tabling_struct_id_0_3,
+  &backend_libs__rtti__backend_libs__rtti__du_functor_desc_proc_tabling_struct_id_0_6,
+  &backend_libs__rtti__backend_libs__rtti__du_functor_desc_proc_tabling_struct_id_0_5,
+  &backend_libs__rtti__backend_libs__rtti__du_functor_desc_proc_tabling_struct_id_0_4,
+  &backend_libs__rtti__backend_libs__rtti__du_functor_desc_proc_tabling_struct_id_0_7,
+  &backend_libs__rtti__backend_libs__rtti__du_functor_desc_proc_tabling_struct_id_0_2
+};
+
+static const MR_Integer backend_libs__rtti__backend_libs__rtti__functor_number_map_proc_tabling_struct_id_0[8] = {
+  (MR_Integer) 0,
+  (MR_Integer) 1,
+  (MR_Integer) 7,
+  (MR_Integer) 2,
+  (MR_Integer) 5,
+  (MR_Integer) 4,
+  (MR_Integer) 3,
+  (MR_Integer) 6
+};
+
+const MR_TypeCtorInfo_Struct backend_libs__rtti__backend_libs__rtti__type_ctor_info_proc_tabling_struct_id_0 = {
+  (MR_Integer) 0,
+  (MR_Integer) 17,
+  (MR_Integer) 4,
+  MR_TYPECTOR_REP_DU,
+  ((MR_Box) (backend_libs__rtti____Unify____proc_tabling_struct_id_0_0_10001)),
+  ((MR_Box) (backend_libs__rtti____Compare____proc_tabling_struct_id_0_0_10001)),
+  (MR_String) "backend_libs.rtti",
+  (MR_String) "proc_tabling_struct_id",
+  {     backend_libs__rtti__backend_libs__rtti__du_name_ordered_proc_tabling_struct_id_0 },
+  {     backend_libs__rtti__backend_libs__rtti__du_ptag_ordered_proc_tabling_struct_id_0 },
+  (MR_Integer) 8,
+  (MR_Integer) 4,
+  backend_libs__rtti__backend_libs__rtti__functor_number_map_proc_tabling_struct_id_0
+};
+
+static const MR_FA_TypeInfo_Struct2 backend_libs__rtti__tree234__ti_tree234_2builtin__type_ctor_info_int_0backend_libs__rtti__type_ctor_info_sectag_table_0 = {
+  &mercury__tree234__tree234__type_ctor_info_tree234_2,
+  {
+    (MR_TypeInfo) &mercury__builtin__builtin__type_ctor_info_int_0,
+    (MR_TypeInfo) &backend_libs__rtti__backend_libs__rtti__type_ctor_info_sectag_table_0
+  }
+};
+
+const MR_TypeCtorInfo_Struct backend_libs__rtti__backend_libs__rtti__type_ctor_info_ptag_map_0 = {
+  (MR_Integer) 0,
+  (MR_Integer) 17,
+  (MR_Integer) -1,
+  MR_TYPECTOR_REP_EQUIV_GROUND,
+  ((MR_Box) (backend_libs__rtti____Unify____ptag_map_0_0_10001)),
+  ((MR_Box) (backend_libs__rtti____Compare____ptag_map_0_0_10001)),
+  (MR_String) "backend_libs.rtti",
+  (MR_String) "ptag_map",
+  {     NULL },
+  {     (MR_PseudoTypeInfo) &backend_libs__rtti__tree234__ti_tree234_2builtin__type_ctor_info_int_0backend_libs__rtti__type_ctor_info_sectag_table_0 },
+  (MR_Integer) -1,
+  (MR_Integer) 0,
+  NULL
+};
+
+static const MR_PseudoTypeInfo backend_libs__rtti__backend_libs__rtti__field_types_rtti_data_0_0[1] = {
+  (MR_PseudoTypeInfo) &backend_libs__rtti__backend_libs__rtti__type_ctor_info_type_ctor_data_0
+};
+
+static const MR_DuFunctorDesc backend_libs__rtti__backend_libs__rtti__du_functor_desc_rtti_data_0_0 = {
+  (MR_String) "rtti_data_type_ctor_info",
+  (MR_Integer) 1,
+  (MR_Integer) 0,
+  MR_SECTAG_NONE_DIRECT_ARG,
+  (MR_Integer) 0,
+  (MR_Integer) -1,
+  (MR_Integer) 0,
+  backend_libs__rtti__backend_libs__rtti__field_types_rtti_data_0_0,
+  NULL,
+  NULL,
+  NULL,
+  MR_FUNCTOR_SUBTYPE_NONE
+};
+
+static const MR_PseudoTypeInfo backend_libs__rtti__backend_libs__rtti__field_types_rtti_data_0_1[1] = {
+  (MR_PseudoTypeInfo) &backend_libs__rtti__backend_libs__rtti__type_ctor_info_rtti_type_info_0
+};
+
+static const MR_DuFunctorDesc backend_libs__rtti__backend_libs__rtti__du_functor_desc_rtti_data_0_1 = {
+  (MR_String) "rtti_data_type_info",
+  (MR_Integer) 1,
+  (MR_Integer) 0,
+  MR_SECTAG_REMOTE,
+  (MR_Integer) 3,
+  (MR_Integer) 0,
+  (MR_Integer) 1,
+  backend_libs__rtti__backend_libs__rtti__field_types_rtti_data_0_1,
+  NULL,
+  NULL,
+  NULL,
+  MR_FUNCTOR_SUBTYPE_NONE
+};
+
+static const MR_PseudoTypeInfo backend_libs__rtti__backend_libs__rtti__field_types_rtti_data_0_2[1] = {
+  (MR_PseudoTypeInfo) &backend_libs__rtti__backend_libs__rtti__type_ctor_info_rtti_pseudo_type_info_0
+};
+
+static const MR_DuFunctorDesc backend_libs__rtti__backend_libs__rtti__du_functor_desc_rtti_data_0_2 = {
+  (MR_String) "rtti_data_pseudo_type_info",
+  (MR_Integer) 1,
+  (MR_Integer) 0,
+  MR_SECTAG_REMOTE,
+  (MR_Integer) 3,
+  (MR_Integer) 1,
+  (MR_Integer) 2,
+  backend_libs__rtti__backend_libs__rtti__field_types_rtti_data_0_2,
+  NULL,
+  NULL,
+  NULL,
+  MR_FUNCTOR_SUBTYPE_NONE
+};
+
+static const MR_PseudoTypeInfo backend_libs__rtti__backend_libs__rtti__field_types_rtti_data_0_3[4] = {
+  (MR_PseudoTypeInfo) &backend_libs__rtti__backend_libs__rtti__type_ctor_info_tc_name_0,
+  (MR_PseudoTypeInfo) &mdbcomp__sym_name__mdbcomp__sym_name__type_ctor_info_sym_name_0,
+  (MR_PseudoTypeInfo) &mercury__builtin__builtin__type_ctor_info_string_0,
+  (MR_PseudoTypeInfo) &backend_libs__rtti__backend_libs__rtti__type_ctor_info_base_typeclass_info_0
+};
+
+static const MR_DuFunctorDesc backend_libs__rtti__backend_libs__rtti__du_functor_desc_rtti_data_0_3 = {
+  (MR_String) "rtti_data_base_typeclass_info",
+  (MR_Integer) 4,
+  (MR_Integer) 0,
+  MR_SECTAG_REMOTE,
+  (MR_Integer) 3,
+  (MR_Integer) 2,
+  (MR_Integer) 3,
+  backend_libs__rtti__backend_libs__rtti__field_types_rtti_data_0_3,
+  NULL,
+  NULL,
+  NULL,
+  MR_FUNCTOR_SUBTYPE_NONE
+};
+
+static const MR_PseudoTypeInfo backend_libs__rtti__backend_libs__rtti__field_types_rtti_data_0_4[1] = {
+  (MR_PseudoTypeInfo) &backend_libs__rtti__backend_libs__rtti__type_ctor_info_tc_decl_0
+};
+
+static const MR_DuFunctorDesc backend_libs__rtti__backend_libs__rtti__du_functor_desc_rtti_data_0_4 = {
+  (MR_String) "rtti_data_type_class_decl",
+  (MR_Integer) 1,
+  (MR_Integer) 0,
+  MR_SECTAG_NONE_DIRECT_ARG,
+  (MR_Integer) 1,
+  (MR_Integer) -1,
+  (MR_Integer) 4,
+  backend_libs__rtti__backend_libs__rtti__field_types_rtti_data_0_4,
+  NULL,
+  NULL,
+  NULL,
+  MR_FUNCTOR_SUBTYPE_NONE
+};
+
+static const MR_PseudoTypeInfo backend_libs__rtti__backend_libs__rtti__field_types_rtti_data_0_5[1] = {
+  (MR_PseudoTypeInfo) &backend_libs__rtti__backend_libs__rtti__type_ctor_info_tc_instance_0
+};
+
+static const MR_DuFunctorDesc backend_libs__rtti__backend_libs__rtti__du_functor_desc_rtti_data_0_5 = {
+  (MR_String) "rtti_data_type_class_instance",
+  (MR_Integer) 1,
+  (MR_Integer) 0,
+  MR_SECTAG_NONE_DIRECT_ARG,
+  (MR_Integer) 2,
+  (MR_Integer) -1,
+  (MR_Integer) 5,
+  backend_libs__rtti__backend_libs__rtti__field_types_rtti_data_0_5,
+  NULL,
+  NULL,
+  NULL,
+  MR_FUNCTOR_SUBTYPE_NONE
+};
+
+static const MR_DuFunctorDescPtr backend_libs__rtti__backend_libs__rtti__du_stag_ordered_rtti_data_0_0[1] = {
+  &backend_libs__rtti__backend_libs__rtti__du_functor_desc_rtti_data_0_0
+};
+
+static const MR_DuFunctorDescPtr backend_libs__rtti__backend_libs__rtti__du_stag_ordered_rtti_data_0_1[1] = {
+  &backend_libs__rtti__backend_libs__rtti__du_functor_desc_rtti_data_0_4
+};
+
+static const MR_DuFunctorDescPtr backend_libs__rtti__backend_libs__rtti__du_stag_ordered_rtti_data_0_2[1] = {
+  &backend_libs__rtti__backend_libs__rtti__du_functor_desc_rtti_data_0_5
+};
+
+static const MR_DuFunctorDescPtr backend_libs__rtti__backend_libs__rtti__du_stag_ordered_rtti_data_0_3[3] = {
+  &backend_libs__rtti__backend_libs__rtti__du_functor_desc_rtti_data_0_1,
+  &backend_libs__rtti__backend_libs__rtti__du_functor_desc_rtti_data_0_2,
+  &backend_libs__rtti__backend_libs__rtti__du_functor_desc_rtti_data_0_3
+};
+
+static const MR_DuPtagLayout backend_libs__rtti__backend_libs__rtti__du_ptag_ordered_rtti_data_0[4] = {
+  {
+    (MR_Integer) 1,
+    MR_SECTAG_NONE_DIRECT_ARG,
+    backend_libs__rtti__backend_libs__rtti__du_stag_ordered_rtti_data_0_0
+  },
+  {
+    (MR_Integer) 1,
+    MR_SECTAG_NONE_DIRECT_ARG,
+    backend_libs__rtti__backend_libs__rtti__du_stag_ordered_rtti_data_0_1
+  },
+  {
+    (MR_Integer) 1,
+    MR_SECTAG_NONE_DIRECT_ARG,
+    backend_libs__rtti__backend_libs__rtti__du_stag_ordered_rtti_data_0_2
+  },
+  {
+    (MR_Integer) 3,
+    MR_SECTAG_REMOTE,
+    backend_libs__rtti__backend_libs__rtti__du_stag_ordered_rtti_data_0_3
+  }
+};
+
+static const MR_DuFunctorDescPtr backend_libs__rtti__backend_libs__rtti__du_name_ordered_rtti_data_0[6] = {
+  &backend_libs__rtti__backend_libs__rtti__du_functor_desc_rtti_data_0_3,
+  &backend_libs__rtti__backend_libs__rtti__du_functor_desc_rtti_data_0_2,
+  &backend_libs__rtti__backend_libs__rtti__du_functor_desc_rtti_data_0_4,
+  &backend_libs__rtti__backend_libs__rtti__du_functor_desc_rtti_data_0_5,
+  &backend_libs__rtti__backend_libs__rtti__du_functor_desc_rtti_data_0_0,
+  &backend_libs__rtti__backend_libs__rtti__du_functor_desc_rtti_data_0_1
+};
+
+static const MR_Integer backend_libs__rtti__backend_libs__rtti__functor_number_map_rtti_data_0[6] = {
+  (MR_Integer) 4,
+  (MR_Integer) 5,
+  (MR_Integer) 1,
+  (MR_Integer) 0,
+  (MR_Integer) 2,
+  (MR_Integer) 3
+};
+
+const MR_TypeCtorInfo_Struct backend_libs__rtti__backend_libs__rtti__type_ctor_info_rtti_data_0 = {
+  (MR_Integer) 0,
+  (MR_Integer) 17,
+  (MR_Integer) 4,
+  MR_TYPECTOR_REP_DU,
+  ((MR_Box) (backend_libs__rtti____Unify____rtti_data_0_0_10001)),
+  ((MR_Box) (backend_libs__rtti____Compare____rtti_data_0_0_10001)),
+  (MR_String) "backend_libs.rtti",
+  (MR_String) "rtti_data",
+  {     backend_libs__rtti__backend_libs__rtti__du_name_ordered_rtti_data_0 },
+  {     backend_libs__rtti__backend_libs__rtti__du_ptag_ordered_rtti_data_0 },
+  (MR_Integer) 6,
+  (MR_Integer) 4,
+  backend_libs__rtti__backend_libs__rtti__functor_number_map_rtti_data_0
+};
+
+static const MR_PseudoTypeInfo backend_libs__rtti__backend_libs__rtti__field_types_rtti_id_0_0[2] = {
+  (MR_PseudoTypeInfo) &backend_libs__rtti__backend_libs__rtti__type_ctor_info_rtti_type_ctor_0,
+  (MR_PseudoTypeInfo) &backend_libs__rtti__backend_libs__rtti__type_ctor_info_ctor_rtti_name_0
+};
+
+static const MR_DuFunctorDesc backend_libs__rtti__backend_libs__rtti__du_functor_desc_rtti_id_0_0 = {
+  (MR_String) "ctor_rtti_id",
+  (MR_Integer) 2,
+  (MR_Integer) 0,
+  MR_SECTAG_NONE,
+  (MR_Integer) 0,
+  (MR_Integer) -1,
+  (MR_Integer) 0,
+  backend_libs__rtti__backend_libs__rtti__field_types_rtti_id_0_0,
+  NULL,
+  NULL,
+  NULL,
+  MR_FUNCTOR_SUBTYPE_NONE
+};
+
+static const MR_PseudoTypeInfo backend_libs__rtti__backend_libs__rtti__field_types_rtti_id_0_1[2] = {
+  (MR_PseudoTypeInfo) &backend_libs__rtti__backend_libs__rtti__type_ctor_info_tc_name_0,
+  (MR_PseudoTypeInfo) &backend_libs__rtti__backend_libs__rtti__type_ctor_info_tc_rtti_name_0
+};
+
+static const MR_DuFunctorDesc backend_libs__rtti__backend_libs__rtti__du_functor_desc_rtti_id_0_1 = {
+  (MR_String) "tc_rtti_id",
+  (MR_Integer) 2,
+  (MR_Integer) 0,
+  MR_SECTAG_NONE,
+  (MR_Integer) 1,
+  (MR_Integer) -1,
+  (MR_Integer) 1,
+  backend_libs__rtti__backend_libs__rtti__field_types_rtti_id_0_1,
+  NULL,
+  NULL,
+  NULL,
+  MR_FUNCTOR_SUBTYPE_NONE
+};
+
+static const MR_DuFunctorDescPtr backend_libs__rtti__backend_libs__rtti__du_stag_ordered_rtti_id_0_0[1] = {
+  &backend_libs__rtti__backend_libs__rtti__du_functor_desc_rtti_id_0_0
+};
+
+static const MR_DuFunctorDescPtr backend_libs__rtti__backend_libs__rtti__du_stag_ordered_rtti_id_0_1[1] = {
+  &backend_libs__rtti__backend_libs__rtti__du_functor_desc_rtti_id_0_1
+};
+
+static const MR_DuPtagLayout backend_libs__rtti__backend_libs__rtti__du_ptag_ordered_rtti_id_0[2] = {
+  {
+    (MR_Integer) 1,
+    MR_SECTAG_NONE,
+    backend_libs__rtti__backend_libs__rtti__du_stag_ordered_rtti_id_0_0
+  },
+  {
+    (MR_Integer) 1,
+    MR_SECTAG_NONE,
+    backend_libs__rtti__backend_libs__rtti__du_stag_ordered_rtti_id_0_1
+  }
+};
+
+static const MR_DuFunctorDescPtr backend_libs__rtti__backend_libs__rtti__du_name_ordered_rtti_id_0[2] = {
+  &backend_libs__rtti__backend_libs__rtti__du_functor_desc_rtti_id_0_0,
+  &backend_libs__rtti__backend_libs__rtti__du_functor_desc_rtti_id_0_1
+};
+
+static const MR_Integer backend_libs__rtti__backend_libs__rtti__functor_number_map_rtti_id_0[2] = {
+  (MR_Integer) 0,
+  (MR_Integer) 1
+};
+
+const MR_TypeCtorInfo_Struct backend_libs__rtti__backend_libs__rtti__type_ctor_info_rtti_id_0 = {
+  (MR_Integer) 0,
+  (MR_Integer) 17,
+  (MR_Integer) 2,
+  MR_TYPECTOR_REP_DU,
+  ((MR_Box) (backend_libs__rtti____Unify____rtti_id_0_0_10001)),
+  ((MR_Box) (backend_libs__rtti____Compare____rtti_id_0_0_10001)),
+  (MR_String) "backend_libs.rtti",
+  (MR_String) "rtti_id",
+  {     backend_libs__rtti__backend_libs__rtti__du_name_ordered_rtti_id_0 },
+  {     backend_libs__rtti__backend_libs__rtti__du_ptag_ordered_rtti_id_0 },
+  (MR_Integer) 2,
+  (MR_Integer) 4,
+  backend_libs__rtti__backend_libs__rtti__functor_number_map_rtti_id_0
+};
+
+static const MR_PseudoTypeInfo backend_libs__rtti__backend_libs__rtti__field_types_rtti_id_maybe_element_0_0[1] = {
+  (MR_PseudoTypeInfo) &backend_libs__rtti__backend_libs__rtti__type_ctor_info_rtti_id_0
+};
+
+static const MR_DuFunctorDesc backend_libs__rtti__backend_libs__rtti__du_functor_desc_rtti_id_maybe_element_0_0 = {
+  (MR_String) "item_type",
+  (MR_Integer) 1,
+  (MR_Integer) 0,
+  MR_SECTAG_NONE,
+  (MR_Integer) 0,
+  (MR_Integer) -1,
+  (MR_Integer) 0,
+  backend_libs__rtti__backend_libs__rtti__field_types_rtti_id_maybe_element_0_0,
+  NULL,
+  NULL,
+  NULL,
+  MR_FUNCTOR_SUBTYPE_NONE
+};
+
+static const MR_PseudoTypeInfo backend_libs__rtti__backend_libs__rtti__field_types_rtti_id_maybe_element_0_1[1] = {
+  (MR_PseudoTypeInfo) &backend_libs__rtti__backend_libs__rtti__type_ctor_info_rtti_id_0
+};
+
+static const MR_DuFunctorDesc backend_libs__rtti__backend_libs__rtti__du_functor_desc_rtti_id_maybe_element_0_1 = {
+  (MR_String) "element_type",
+  (MR_Integer) 1,
+  (MR_Integer) 0,
+  MR_SECTAG_NONE,
+  (MR_Integer) 1,
+  (MR_Integer) -1,
+  (MR_Integer) 1,
+  backend_libs__rtti__backend_libs__rtti__field_types_rtti_id_maybe_element_0_1,
+  NULL,
+  NULL,
+  NULL,
+  MR_FUNCTOR_SUBTYPE_NONE
+};
+
+static const MR_DuFunctorDescPtr backend_libs__rtti__backend_libs__rtti__du_stag_ordered_rtti_id_maybe_element_0_0[1] = {
+  &backend_libs__rtti__backend_libs__rtti__du_functor_desc_rtti_id_maybe_element_0_0
+};
+
+static const MR_DuFunctorDescPtr backend_libs__rtti__backend_libs__rtti__du_stag_ordered_rtti_id_maybe_element_0_1[1] = {
+  &backend_libs__rtti__backend_libs__rtti__du_functor_desc_rtti_id_maybe_element_0_1
+};
+
+static const MR_DuPtagLayout backend_libs__rtti__backend_libs__rtti__du_ptag_ordered_rtti_id_maybe_element_0[2] = {
+  {
+    (MR_Integer) 1,
+    MR_SECTAG_NONE,
+    backend_libs__rtti__backend_libs__rtti__du_stag_ordered_rtti_id_maybe_element_0_0
+  },
+  {
+    (MR_Integer) 1,
+    MR_SECTAG_NONE,
+    backend_libs__rtti__backend_libs__rtti__du_stag_ordered_rtti_id_maybe_element_0_1
+  }
+};
+
+static const MR_DuFunctorDescPtr backend_libs__rtti__backend_libs__rtti__du_name_ordered_rtti_id_maybe_element_0[2] = {
+  &backend_libs__rtti__backend_libs__rtti__du_functor_desc_rtti_id_maybe_element_0_1,
+  &backend_libs__rtti__backend_libs__rtti__du_functor_desc_rtti_id_maybe_element_0_0
+};
+
+static const MR_Integer backend_libs__rtti__backend_libs__rtti__functor_number_map_rtti_id_maybe_element_0[2] = {
+  (MR_Integer) 1,
+  (MR_Integer) 0
+};
+
+const MR_TypeCtorInfo_Struct backend_libs__rtti__backend_libs__rtti__type_ctor_info_rtti_id_maybe_element_0 = {
+  (MR_Integer) 0,
+  (MR_Integer) 17,
+  (MR_Integer) 2,
+  MR_TYPECTOR_REP_DU,
+  ((MR_Box) (backend_libs__rtti____Unify____rtti_id_maybe_element_0_0_10001)),
+  ((MR_Box) (backend_libs__rtti____Compare____rtti_id_maybe_element_0_0_10001)),
+  (MR_String) "backend_libs.rtti",
+  (MR_String) "rtti_id_maybe_element",
+  {     backend_libs__rtti__backend_libs__rtti__du_name_ordered_rtti_id_maybe_element_0 },
+  {     backend_libs__rtti__backend_libs__rtti__du_ptag_ordered_rtti_id_maybe_element_0 },
+  (MR_Integer) 2,
+  (MR_Integer) 4,
+  backend_libs__rtti__backend_libs__rtti__functor_number_map_rtti_id_maybe_element_0
+};
+
+static const MR_PseudoTypeInfo backend_libs__rtti__backend_libs__rtti__field_types_rtti_maybe_pseudo_type_info_0_0[1] = {
+  (MR_PseudoTypeInfo) &backend_libs__rtti__backend_libs__rtti__type_ctor_info_rtti_pseudo_type_info_0
+};
+
+static const MR_DuFunctorDesc backend_libs__rtti__backend_libs__rtti__du_functor_desc_rtti_maybe_pseudo_type_info_0_0 = {
+  (MR_String) "pseudo",
+  (MR_Integer) 1,
+  (MR_Integer) 0,
+  MR_SECTAG_NONE,
+  (MR_Integer) 0,
+  (MR_Integer) -1,
+  (MR_Integer) 0,
+  backend_libs__rtti__backend_libs__rtti__field_types_rtti_maybe_pseudo_type_info_0_0,
+  NULL,
+  NULL,
+  NULL,
+  MR_FUNCTOR_SUBTYPE_NONE
+};
+
+static const MR_PseudoTypeInfo backend_libs__rtti__backend_libs__rtti__field_types_rtti_maybe_pseudo_type_info_0_1[1] = {
+  (MR_PseudoTypeInfo) &backend_libs__rtti__backend_libs__rtti__type_ctor_info_rtti_type_info_0
+};
+
+static const MR_DuFunctorDesc backend_libs__rtti__backend_libs__rtti__du_functor_desc_rtti_maybe_pseudo_type_info_0_1 = {
+  (MR_String) "plain",
+  (MR_Integer) 1,
+  (MR_Integer) 0,
+  MR_SECTAG_NONE,
+  (MR_Integer) 1,
+  (MR_Integer) -1,
+  (MR_Integer) 1,
+  backend_libs__rtti__backend_libs__rtti__field_types_rtti_maybe_pseudo_type_info_0_1,
+  NULL,
+  NULL,
+  NULL,
+  MR_FUNCTOR_SUBTYPE_NONE
+};
+
+static const MR_DuFunctorDescPtr backend_libs__rtti__backend_libs__rtti__du_stag_ordered_rtti_maybe_pseudo_type_info_0_0[1] = {
+  &backend_libs__rtti__backend_libs__rtti__du_functor_desc_rtti_maybe_pseudo_type_info_0_0
+};
+
+static const MR_DuFunctorDescPtr backend_libs__rtti__backend_libs__rtti__du_stag_ordered_rtti_maybe_pseudo_type_info_0_1[1] = {
+  &backend_libs__rtti__backend_libs__rtti__du_functor_desc_rtti_maybe_pseudo_type_info_0_1
+};
+
+static const MR_DuPtagLayout backend_libs__rtti__backend_libs__rtti__du_ptag_ordered_rtti_maybe_pseudo_type_info_0[2] = {
+  {
+    (MR_Integer) 1,
+    MR_SECTAG_NONE,
+    backend_libs__rtti__backend_libs__rtti__du_stag_ordered_rtti_maybe_pseudo_type_info_0_0
+  },
+  {
+    (MR_Integer) 1,
+    MR_SECTAG_NONE,
+    backend_libs__rtti__backend_libs__rtti__du_stag_ordered_rtti_maybe_pseudo_type_info_0_1
+  }
+};
+
+static const MR_DuFunctorDescPtr backend_libs__rtti__backend_libs__rtti__du_name_ordered_rtti_maybe_pseudo_type_info_0[2] = {
+  &backend_libs__rtti__backend_libs__rtti__du_functor_desc_rtti_maybe_pseudo_type_info_0_1,
+  &backend_libs__rtti__backend_libs__rtti__du_functor_desc_rtti_maybe_pseudo_type_info_0_0
+};
+
+static const MR_Integer backend_libs__rtti__backend_libs__rtti__functor_number_map_rtti_maybe_pseudo_type_info_0[2] = {
+  (MR_Integer) 1,
+  (MR_Integer) 0
+};
+
+const MR_TypeCtorInfo_Struct backend_libs__rtti__backend_libs__rtti__type_ctor_info_rtti_maybe_pseudo_type_info_0 = {
+  (MR_Integer) 0,
+  (MR_Integer) 17,
+  (MR_Integer) 2,
+  MR_TYPECTOR_REP_DU,
+  ((MR_Box) (backend_libs__rtti____Unify____rtti_maybe_pseudo_type_info_0_0_10001)),
+  ((MR_Box) (backend_libs__rtti____Compare____rtti_maybe_pseudo_type_info_0_0_10001)),
+  (MR_String) "backend_libs.rtti",
+  (MR_String) "rtti_maybe_pseudo_type_info",
+  {     backend_libs__rtti__backend_libs__rtti__du_name_ordered_rtti_maybe_pseudo_type_info_0 },
+  {     backend_libs__rtti__backend_libs__rtti__du_ptag_ordered_rtti_maybe_pseudo_type_info_0 },
+  (MR_Integer) 2,
+  (MR_Integer) 4,
+  backend_libs__rtti__backend_libs__rtti__functor_number_map_rtti_maybe_pseudo_type_info_0
+};
+
+static const MR_PseudoTypeInfo backend_libs__rtti__backend_libs__rtti__field_types_rtti_maybe_pseudo_type_info_or_self_0_0[1] = {
+  (MR_PseudoTypeInfo) &backend_libs__rtti__backend_libs__rtti__type_ctor_info_rtti_pseudo_type_info_0
+};
+
+static const MR_DuFunctorDesc backend_libs__rtti__backend_libs__rtti__du_functor_desc_rtti_maybe_pseudo_type_info_or_self_0_0 = {
+  (MR_String) "pseudo",
+  (MR_Integer) 1,
+  (MR_Integer) 0,
+  MR_SECTAG_NONE,
+  (MR_Integer) 1,
+  (MR_Integer) -1,
+  (MR_Integer) 0,
+  backend_libs__rtti__backend_libs__rtti__field_types_rtti_maybe_pseudo_type_info_or_self_0_0,
+  NULL,
+  NULL,
+  NULL,
+  MR_FUNCTOR_SUBTYPE_NONE
+};
+
+static const MR_PseudoTypeInfo backend_libs__rtti__backend_libs__rtti__field_types_rtti_maybe_pseudo_type_info_or_self_0_1[1] = {
+  (MR_PseudoTypeInfo) &backend_libs__rtti__backend_libs__rtti__type_ctor_info_rtti_type_info_0
+};
+
+static const MR_DuFunctorDesc backend_libs__rtti__backend_libs__rtti__du_functor_desc_rtti_maybe_pseudo_type_info_or_self_0_1 = {
+  (MR_String) "plain",
+  (MR_Integer) 1,
+  (MR_Integer) 0,
+  MR_SECTAG_NONE,
+  (MR_Integer) 2,
+  (MR_Integer) -1,
+  (MR_Integer) 1,
+  backend_libs__rtti__backend_libs__rtti__field_types_rtti_maybe_pseudo_type_info_or_self_0_1,
+  NULL,
+  NULL,
+  NULL,
+  MR_FUNCTOR_SUBTYPE_NONE
+};
+
+static const MR_DuFunctorDesc backend_libs__rtti__backend_libs__rtti__du_functor_desc_rtti_maybe_pseudo_type_info_or_self_0_2 = {
+  (MR_String) "self",
+  (MR_Integer) 0,
+  (MR_Integer) 0,
+  MR_SECTAG_LOCAL,
+  (MR_Integer) 0,
+  (MR_Integer) 0,
+  (MR_Integer) 2,
+  NULL,
+  NULL,
+  NULL,
+  NULL,
+  MR_FUNCTOR_SUBTYPE_NONE
+};
+
+static const MR_DuFunctorDescPtr backend_libs__rtti__backend_libs__rtti__du_stag_ordered_rtti_maybe_pseudo_type_info_or_self_0_0[1] = {
+  &backend_libs__rtti__backend_libs__rtti__du_functor_desc_rtti_maybe_pseudo_type_info_or_self_0_2
+};
+
+static const MR_DuFunctorDescPtr backend_libs__rtti__backend_libs__rtti__du_stag_ordered_rtti_maybe_pseudo_type_info_or_self_0_1[1] = {
+  &backend_libs__rtti__backend_libs__rtti__du_functor_desc_rtti_maybe_pseudo_type_info_or_self_0_0
+};
+
+static const MR_DuFunctorDescPtr backend_libs__rtti__backend_libs__rtti__du_stag_ordered_rtti_maybe_pseudo_type_info_or_self_0_2[1] = {
+  &backend_libs__rtti__backend_libs__rtti__du_functor_desc_rtti_maybe_pseudo_type_info_or_self_0_1
+};
+
+static const MR_DuPtagLayout backend_libs__rtti__backend_libs__rtti__du_ptag_ordered_rtti_maybe_pseudo_type_info_or_self_0[3] = {
+  {
+    (MR_Integer) 1,
+    MR_SECTAG_LOCAL,
+    backend_libs__rtti__backend_libs__rtti__du_stag_ordered_rtti_maybe_pseudo_type_info_or_self_0_0
+  },
+  {
+    (MR_Integer) 1,
+    MR_SECTAG_NONE,
+    backend_libs__rtti__backend_libs__rtti__du_stag_ordered_rtti_maybe_pseudo_type_info_or_self_0_1
+  },
+  {
+    (MR_Integer) 1,
+    MR_SECTAG_NONE,
+    backend_libs__rtti__backend_libs__rtti__du_stag_ordered_rtti_maybe_pseudo_type_info_or_self_0_2
+  }
+};
+
+static const MR_DuFunctorDescPtr backend_libs__rtti__backend_libs__rtti__du_name_ordered_rtti_maybe_pseudo_type_info_or_self_0[3] = {
+  &backend_libs__rtti__backend_libs__rtti__du_functor_desc_rtti_maybe_pseudo_type_info_or_self_0_1,
+  &backend_libs__rtti__backend_libs__rtti__du_functor_desc_rtti_maybe_pseudo_type_info_or_self_0_0,
+  &backend_libs__rtti__backend_libs__rtti__du_functor_desc_rtti_maybe_pseudo_type_info_or_self_0_2
+};
+
+static const MR_Integer backend_libs__rtti__backend_libs__rtti__functor_number_map_rtti_maybe_pseudo_type_info_or_self_0[3] = {
+  (MR_Integer) 1,
+  (MR_Integer) 0,
+  (MR_Integer) 2
+};
+
+const MR_TypeCtorInfo_Struct backend_libs__rtti__backend_libs__rtti__type_ctor_info_rtti_maybe_pseudo_type_info_or_self_0 = {
+  (MR_Integer) 0,
+  (MR_Integer) 17,
+  (MR_Integer) 3,
+  MR_TYPECTOR_REP_DU,
+  ((MR_Box) (backend_libs__rtti____Unify____rtti_maybe_pseudo_type_info_or_self_0_0_10001)),
+  ((MR_Box) (backend_libs__rtti____Compare____rtti_maybe_pseudo_type_info_or_self_0_0_10001)),
+  (MR_String) "backend_libs.rtti",
+  (MR_String) "rtti_maybe_pseudo_type_info_or_self",
+  {     backend_libs__rtti__backend_libs__rtti__du_name_ordered_rtti_maybe_pseudo_type_info_or_self_0 },
+  {     backend_libs__rtti__backend_libs__rtti__du_ptag_ordered_rtti_maybe_pseudo_type_info_or_self_0 },
+  (MR_Integer) 3,
+  (MR_Integer) 4,
+  backend_libs__rtti__backend_libs__rtti__functor_number_map_rtti_maybe_pseudo_type_info_or_self_0
+};
+
+static const MR_PseudoTypeInfo backend_libs__rtti__backend_libs__rtti__field_types_rtti_pseudo_type_info_0_0[1] = {
+  (MR_PseudoTypeInfo) &backend_libs__rtti__backend_libs__rtti__type_ctor_info_rtti_type_ctor_0
+};
+
+static const MR_DuFunctorDesc backend_libs__rtti__backend_libs__rtti__du_functor_desc_rtti_pseudo_type_info_0_0 = {
+  (MR_String) "plain_arity_zero_pseudo_type_info",
+  (MR_Integer) 1,
+  (MR_Integer) 0,
+  MR_SECTAG_NONE_DIRECT_ARG,
+  (MR_Integer) 0,
+  (MR_Integer) -1,
+  (MR_Integer) 0,
+  backend_libs__rtti__backend_libs__rtti__field_types_rtti_pseudo_type_info_0_0,
+  NULL,
+  NULL,
+  NULL,
+  MR_FUNCTOR_SUBTYPE_NONE
+};
+
+static const MR_FA_TypeInfo_Struct1 backend_libs__rtti__list__ti_list_1backend_libs__rtti__type_ctor_info_rtti_maybe_pseudo_type_info_0 = {
+  &mercury__list__list__type_ctor_info_list_1,
+  {
+    (MR_TypeInfo) &backend_libs__rtti__backend_libs__rtti__type_ctor_info_rtti_maybe_pseudo_type_info_0
+  }
+};
+
+static const MR_PseudoTypeInfo backend_libs__rtti__backend_libs__rtti__field_types_rtti_pseudo_type_info_0_1[2] = {
+  (MR_PseudoTypeInfo) &backend_libs__rtti__backend_libs__rtti__type_ctor_info_rtti_type_ctor_0,
+  (MR_PseudoTypeInfo) &backend_libs__rtti__list__ti_list_1backend_libs__rtti__type_ctor_info_rtti_maybe_pseudo_type_info_0
+};
+
+static const MR_DuFunctorDesc backend_libs__rtti__backend_libs__rtti__du_functor_desc_rtti_pseudo_type_info_0_1 = {
+  (MR_String) "plain_pseudo_type_info",
+  (MR_Integer) 2,
+  (MR_Integer) 0,
+  MR_SECTAG_NONE,
+  (MR_Integer) 1,
+  (MR_Integer) -1,
+  (MR_Integer) 1,
+  backend_libs__rtti__backend_libs__rtti__field_types_rtti_pseudo_type_info_0_1,
+  NULL,
+  NULL,
+  NULL,
+  MR_FUNCTOR_SUBTYPE_NONE
+};
+
+static const MR_PseudoTypeInfo backend_libs__rtti__backend_libs__rtti__field_types_rtti_pseudo_type_info_0_2[2] = {
+  (MR_PseudoTypeInfo) &backend_libs__rtti__backend_libs__rtti__type_ctor_info_var_arity_ctor_id_0,
+  (MR_PseudoTypeInfo) &backend_libs__rtti__list__ti_list_1backend_libs__rtti__type_ctor_info_rtti_maybe_pseudo_type_info_0
+};
+
+static const MR_DuFunctorDesc backend_libs__rtti__backend_libs__rtti__du_functor_desc_rtti_pseudo_type_info_0_2 = {
+  (MR_String) "var_arity_pseudo_type_info",
+  (MR_Integer) 2,
+  (MR_Integer) 0,
+  MR_SECTAG_NONE,
+  (MR_Integer) 2,
+  (MR_Integer) -1,
+  (MR_Integer) 2,
+  backend_libs__rtti__backend_libs__rtti__field_types_rtti_pseudo_type_info_0_2,
+  NULL,
+  NULL,
+  NULL,
+  MR_FUNCTOR_SUBTYPE_NONE
+};
+
+static const MR_PseudoTypeInfo backend_libs__rtti__backend_libs__rtti__field_types_rtti_pseudo_type_info_0_3[1] = {
+  (MR_PseudoTypeInfo) &mercury__builtin__builtin__type_ctor_info_int_0
+};
+
+static const MR_DuFunctorDesc backend_libs__rtti__backend_libs__rtti__du_functor_desc_rtti_pseudo_type_info_0_3 = {
+  (MR_String) "type_var",
+  (MR_Integer) 1,
+  (MR_Integer) 0,
+  MR_SECTAG_NONE,
+  (MR_Integer) 3,
+  (MR_Integer) -1,
+  (MR_Integer) 3,
+  backend_libs__rtti__backend_libs__rtti__field_types_rtti_pseudo_type_info_0_3,
+  NULL,
+  NULL,
+  NULL,
+  MR_FUNCTOR_SUBTYPE_NONE
+};
+
+static const MR_DuFunctorDescPtr backend_libs__rtti__backend_libs__rtti__du_stag_ordered_rtti_pseudo_type_info_0_0[1] = {
+  &backend_libs__rtti__backend_libs__rtti__du_functor_desc_rtti_pseudo_type_info_0_0
+};
+
+static const MR_DuFunctorDescPtr backend_libs__rtti__backend_libs__rtti__du_stag_ordered_rtti_pseudo_type_info_0_1[1] = {
+  &backend_libs__rtti__backend_libs__rtti__du_functor_desc_rtti_pseudo_type_info_0_1
+};
+
+static const MR_DuFunctorDescPtr backend_libs__rtti__backend_libs__rtti__du_stag_ordered_rtti_pseudo_type_info_0_2[1] = {
+  &backend_libs__rtti__backend_libs__rtti__du_functor_desc_rtti_pseudo_type_info_0_2
+};
+
+static const MR_DuFunctorDescPtr backend_libs__rtti__backend_libs__rtti__du_stag_ordered_rtti_pseudo_type_info_0_3[1] = {
+  &backend_libs__rtti__backend_libs__rtti__du_functor_desc_rtti_pseudo_type_info_0_3
+};
+
+static const MR_DuPtagLayout backend_libs__rtti__backend_libs__rtti__du_ptag_ordered_rtti_pseudo_type_info_0[4] = {
+  {
+    (MR_Integer) 1,
+    MR_SECTAG_NONE_DIRECT_ARG,
+    backend_libs__rtti__backend_libs__rtti__du_stag_ordered_rtti_pseudo_type_info_0_0
+  },
+  {
+    (MR_Integer) 1,
+    MR_SECTAG_NONE,
+    backend_libs__rtti__backend_libs__rtti__du_stag_ordered_rtti_pseudo_type_info_0_1
+  },
+  {
+    (MR_Integer) 1,
+    MR_SECTAG_NONE,
+    backend_libs__rtti__backend_libs__rtti__du_stag_ordered_rtti_pseudo_type_info_0_2
+  },
+  {
+    (MR_Integer) 1,
+    MR_SECTAG_NONE,
+    backend_libs__rtti__backend_libs__rtti__du_stag_ordered_rtti_pseudo_type_info_0_3
+  }
+};
+
+static const MR_DuFunctorDescPtr backend_libs__rtti__backend_libs__rtti__du_name_ordered_rtti_pseudo_type_info_0[4] = {
+  &backend_libs__rtti__backend_libs__rtti__du_functor_desc_rtti_pseudo_type_info_0_0,
+  &backend_libs__rtti__backend_libs__rtti__du_functor_desc_rtti_pseudo_type_info_0_1,
+  &backend_libs__rtti__backend_libs__rtti__du_functor_desc_rtti_pseudo_type_info_0_3,
+  &backend_libs__rtti__backend_libs__rtti__du_functor_desc_rtti_pseudo_type_info_0_2
+};
+
+static const MR_Integer backend_libs__rtti__backend_libs__rtti__functor_number_map_rtti_pseudo_type_info_0[4] = {
+  (MR_Integer) 0,
+  (MR_Integer) 1,
+  (MR_Integer) 3,
+  (MR_Integer) 2
+};
+
+const MR_TypeCtorInfo_Struct backend_libs__rtti__backend_libs__rtti__type_ctor_info_rtti_pseudo_type_info_0 = {
+  (MR_Integer) 0,
+  (MR_Integer) 17,
+  (MR_Integer) 4,
+  MR_TYPECTOR_REP_DU,
+  ((MR_Box) (backend_libs__rtti____Unify____rtti_pseudo_type_info_0_0_10001)),
+  ((MR_Box) (backend_libs__rtti____Compare____rtti_pseudo_type_info_0_0_10001)),
+  (MR_String) "backend_libs.rtti",
+  (MR_String) "rtti_pseudo_type_info",
+  {     backend_libs__rtti__backend_libs__rtti__du_name_ordered_rtti_pseudo_type_info_0 },
+  {     backend_libs__rtti__backend_libs__rtti__du_ptag_ordered_rtti_pseudo_type_info_0 },
+  (MR_Integer) 4,
+  (MR_Integer) 4,
+  backend_libs__rtti__backend_libs__rtti__functor_number_map_rtti_pseudo_type_info_0
+};
+
+static const MR_PseudoTypeInfo backend_libs__rtti__backend_libs__rtti__field_types_rtti_type_ctor_0_0[3] = {
+  (MR_PseudoTypeInfo) &mdbcomp__sym_name__mdbcomp__sym_name__type_ctor_info_sym_name_0,
+  (MR_PseudoTypeInfo) &mercury__builtin__builtin__type_ctor_info_string_0,
+  (MR_PseudoTypeInfo) &mercury__builtin__builtin__type_ctor_info_int_0
+};
+
+static const MR_DuFunctorDesc backend_libs__rtti__backend_libs__rtti__du_functor_desc_rtti_type_ctor_0_0 = {
+  (MR_String) "rtti_type_ctor",
+  (MR_Integer) 3,
+  (MR_Integer) 0,
+  MR_SECTAG_NONE,
+  (MR_Integer) 0,
+  (MR_Integer) -1,
+  (MR_Integer) 0,
+  backend_libs__rtti__backend_libs__rtti__field_types_rtti_type_ctor_0_0,
+  NULL,
+  NULL,
+  NULL,
+  MR_FUNCTOR_SUBTYPE_NONE
+};
+
+static const MR_DuFunctorDescPtr backend_libs__rtti__backend_libs__rtti__du_stag_ordered_rtti_type_ctor_0_0[1] = {
+  &backend_libs__rtti__backend_libs__rtti__du_functor_desc_rtti_type_ctor_0_0
+};
+
+static const MR_DuPtagLayout backend_libs__rtti__backend_libs__rtti__du_ptag_ordered_rtti_type_ctor_0[1] = {
+  {
+    (MR_Integer) 1,
+    MR_SECTAG_NONE,
+    backend_libs__rtti__backend_libs__rtti__du_stag_ordered_rtti_type_ctor_0_0
+  }
+};
+
+static const MR_DuFunctorDescPtr backend_libs__rtti__backend_libs__rtti__du_name_ordered_rtti_type_ctor_0[1] = {
+  &backend_libs__rtti__backend_libs__rtti__du_functor_desc_rtti_type_ctor_0_0
+};
+
+static const MR_Integer backend_libs__rtti__backend_libs__rtti__functor_number_map_rtti_type_ctor_0[1] = {
+  (MR_Integer) 0
+};
+
+const MR_TypeCtorInfo_Struct backend_libs__rtti__backend_libs__rtti__type_ctor_info_rtti_type_ctor_0 = {
+  (MR_Integer) 0,
+  (MR_Integer) 17,
+  (MR_Integer) 1,
+  MR_TYPECTOR_REP_DU,
+  ((MR_Box) (backend_libs__rtti____Unify____rtti_type_ctor_0_0_10001)),
+  ((MR_Box) (backend_libs__rtti____Compare____rtti_type_ctor_0_0_10001)),
+  (MR_String) "backend_libs.rtti",
+  (MR_String) "rtti_type_ctor",
+  {     backend_libs__rtti__backend_libs__rtti__du_name_ordered_rtti_type_ctor_0 },
+  {     backend_libs__rtti__backend_libs__rtti__du_ptag_ordered_rtti_type_ctor_0 },
+  (MR_Integer) 1,
+  (MR_Integer) 4,
+  backend_libs__rtti__backend_libs__rtti__functor_number_map_rtti_type_ctor_0
+};
+
+static const MR_PseudoTypeInfo backend_libs__rtti__backend_libs__rtti__field_types_rtti_type_info_0_0[1] = {
+  (MR_PseudoTypeInfo) &backend_libs__rtti__backend_libs__rtti__type_ctor_info_rtti_type_ctor_0
+};
+
+static const MR_DuFunctorDesc backend_libs__rtti__backend_libs__rtti__du_functor_desc_rtti_type_info_0_0 = {
+  (MR_String) "plain_arity_zero_type_info",
+  (MR_Integer) 1,
+  (MR_Integer) 0,
+  MR_SECTAG_NONE_DIRECT_ARG,
+  (MR_Integer) 0,
+  (MR_Integer) -1,
+  (MR_Integer) 0,
+  backend_libs__rtti__backend_libs__rtti__field_types_rtti_type_info_0_0,
+  NULL,
+  NULL,
+  NULL,
+  MR_FUNCTOR_SUBTYPE_NONE
+};
+
+static const MR_FA_TypeInfo_Struct1 backend_libs__rtti__list__ti_list_1backend_libs__rtti__type_ctor_info_rtti_type_info_0 = {
+  &mercury__list__list__type_ctor_info_list_1,
+  {
+    (MR_TypeInfo) &backend_libs__rtti__backend_libs__rtti__type_ctor_info_rtti_type_info_0
+  }
+};
+
+static const MR_PseudoTypeInfo backend_libs__rtti__backend_libs__rtti__field_types_rtti_type_info_0_1[2] = {
+  (MR_PseudoTypeInfo) &backend_libs__rtti__backend_libs__rtti__type_ctor_info_rtti_type_ctor_0,
+  (MR_PseudoTypeInfo) &backend_libs__rtti__list__ti_list_1backend_libs__rtti__type_ctor_info_rtti_type_info_0
+};
+
+static const MR_DuFunctorDesc backend_libs__rtti__backend_libs__rtti__du_functor_desc_rtti_type_info_0_1 = {
+  (MR_String) "plain_type_info",
+  (MR_Integer) 2,
+  (MR_Integer) 0,
+  MR_SECTAG_NONE,
+  (MR_Integer) 1,
+  (MR_Integer) -1,
+  (MR_Integer) 1,
+  backend_libs__rtti__backend_libs__rtti__field_types_rtti_type_info_0_1,
+  NULL,
+  NULL,
+  NULL,
+  MR_FUNCTOR_SUBTYPE_NONE
+};
+
+static const MR_PseudoTypeInfo backend_libs__rtti__backend_libs__rtti__field_types_rtti_type_info_0_2[2] = {
+  (MR_PseudoTypeInfo) &backend_libs__rtti__backend_libs__rtti__type_ctor_info_var_arity_ctor_id_0,
+  (MR_PseudoTypeInfo) &backend_libs__rtti__list__ti_list_1backend_libs__rtti__type_ctor_info_rtti_type_info_0
+};
+
+static const MR_DuFunctorDesc backend_libs__rtti__backend_libs__rtti__du_functor_desc_rtti_type_info_0_2 = {
+  (MR_String) "var_arity_type_info",
+  (MR_Integer) 2,
+  (MR_Integer) 0,
+  MR_SECTAG_NONE,
+  (MR_Integer) 2,
+  (MR_Integer) -1,
+  (MR_Integer) 2,
+  backend_libs__rtti__backend_libs__rtti__field_types_rtti_type_info_0_2,
+  NULL,
+  NULL,
+  NULL,
+  MR_FUNCTOR_SUBTYPE_NONE
+};
+
+static const MR_DuFunctorDescPtr backend_libs__rtti__backend_libs__rtti__du_stag_ordered_rtti_type_info_0_0[1] = {
+  &backend_libs__rtti__backend_libs__rtti__du_functor_desc_rtti_type_info_0_0
+};
+
+static const MR_DuFunctorDescPtr backend_libs__rtti__backend_libs__rtti__du_stag_ordered_rtti_type_info_0_1[1] = {
+  &backend_libs__rtti__backend_libs__rtti__du_functor_desc_rtti_type_info_0_1
+};
+
+static const MR_DuFunctorDescPtr backend_libs__rtti__backend_libs__rtti__du_stag_ordered_rtti_type_info_0_2[1] = {
+  &backend_libs__rtti__backend_libs__rtti__du_functor_desc_rtti_type_info_0_2
+};
+
+static const MR_DuPtagLayout backend_libs__rtti__backend_libs__rtti__du_ptag_ordered_rtti_type_info_0[3] = {
+  {
+    (MR_Integer) 1,
+    MR_SECTAG_NONE_DIRECT_ARG,
+    backend_libs__rtti__backend_libs__rtti__du_stag_ordered_rtti_type_info_0_0
+  },
+  {
+    (MR_Integer) 1,
+    MR_SECTAG_NONE,
+    backend_libs__rtti__backend_libs__rtti__du_stag_ordered_rtti_type_info_0_1
+  },
+  {
+    (MR_Integer) 1,
+    MR_SECTAG_NONE,
+    backend_libs__rtti__backend_libs__rtti__du_stag_ordered_rtti_type_info_0_2
+  }
+};
+
+static const MR_DuFunctorDescPtr backend_libs__rtti__backend_libs__rtti__du_name_ordered_rtti_type_info_0[3] = {
+  &backend_libs__rtti__backend_libs__rtti__du_functor_desc_rtti_type_info_0_0,
+  &backend_libs__rtti__backend_libs__rtti__du_functor_desc_rtti_type_info_0_1,
+  &backend_libs__rtti__backend_libs__rtti__du_functor_desc_rtti_type_info_0_2
+};
+
+static const MR_Integer backend_libs__rtti__backend_libs__rtti__functor_number_map_rtti_type_info_0[3] = {
+  (MR_Integer) 0,
+  (MR_Integer) 1,
+  (MR_Integer) 2
+};
+
+const MR_TypeCtorInfo_Struct backend_libs__rtti__backend_libs__rtti__type_ctor_info_rtti_type_info_0 = {
+  (MR_Integer) 0,
+  (MR_Integer) 17,
+  (MR_Integer) 3,
+  MR_TYPECTOR_REP_DU,
+  ((MR_Box) (backend_libs__rtti____Unify____rtti_type_info_0_0_10001)),
+  ((MR_Box) (backend_libs__rtti____Compare____rtti_type_info_0_0_10001)),
+  (MR_String) "backend_libs.rtti",
+  (MR_String) "rtti_type_info",
+  {     backend_libs__rtti__backend_libs__rtti__du_name_ordered_rtti_type_info_0 },
+  {     backend_libs__rtti__backend_libs__rtti__du_ptag_ordered_rtti_type_info_0 },
+  (MR_Integer) 3,
+  (MR_Integer) 4,
+  backend_libs__rtti__backend_libs__rtti__functor_number_map_rtti_type_info_0
+};
+
+static const MR_DuFunctorDesc backend_libs__rtti__backend_libs__rtti__du_functor_desc_sectag_and_locn_0_0 = {
+  (MR_String) "sectag_locn_none",
+  (MR_Integer) 0,
+  (MR_Integer) 0,
+  MR_SECTAG_LOCAL,
+  (MR_Integer) 0,
+  (MR_Integer) 0,
+  (MR_Integer) 0,
+  NULL,
+  NULL,
+  NULL,
+  NULL,
+  MR_FUNCTOR_SUBTYPE_NONE
+};
+
+static const MR_DuFunctorDesc backend_libs__rtti__backend_libs__rtti__du_functor_desc_sectag_and_locn_0_1 = {
+  (MR_String) "sectag_locn_none_direct_arg",
+  (MR_Integer) 0,
+  (MR_Integer) 0,
+  MR_SECTAG_LOCAL,
+  (MR_Integer) 0,
+  (MR_Integer) 1,
+  (MR_Integer) 1,
+  NULL,
+  NULL,
+  NULL,
+  NULL,
+  MR_FUNCTOR_SUBTYPE_NONE
+};
+
+static const MR_PseudoTypeInfo backend_libs__rtti__backend_libs__rtti__field_types_sectag_and_locn_0_2[1] = {
+  (MR_PseudoTypeInfo) &mercury__builtin__builtin__type_ctor_info_int_0
+};
+
+static const MR_DuFunctorDesc backend_libs__rtti__backend_libs__rtti__du_functor_desc_sectag_and_locn_0_2 = {
+  (MR_String) "sectag_locn_local",
+  (MR_Integer) 1,
+  (MR_Integer) 0,
+  MR_SECTAG_NONE,
+  (MR_Integer) 1,
+  (MR_Integer) -1,
+  (MR_Integer) 2,
+  backend_libs__rtti__backend_libs__rtti__field_types_sectag_and_locn_0_2,
+  NULL,
+  NULL,
+  NULL,
+  MR_FUNCTOR_SUBTYPE_NONE
+};
+
+static const MR_PseudoTypeInfo backend_libs__rtti__backend_libs__rtti__field_types_sectag_and_locn_0_3[1] = {
+  (MR_PseudoTypeInfo) &mercury__builtin__builtin__type_ctor_info_int_0
+};
+
+static const MR_DuFunctorDesc backend_libs__rtti__backend_libs__rtti__du_functor_desc_sectag_and_locn_0_3 = {
+  (MR_String) "sectag_locn_remote",
+  (MR_Integer) 1,
+  (MR_Integer) 0,
+  MR_SECTAG_NONE,
+  (MR_Integer) 2,
+  (MR_Integer) -1,
+  (MR_Integer) 3,
+  backend_libs__rtti__backend_libs__rtti__field_types_sectag_and_locn_0_3,
+  NULL,
+  NULL,
+  NULL,
+  MR_FUNCTOR_SUBTYPE_NONE
+};
+
+static const MR_DuFunctorDescPtr backend_libs__rtti__backend_libs__rtti__du_stag_ordered_sectag_and_locn_0_0[2] = {
+  &backend_libs__rtti__backend_libs__rtti__du_functor_desc_sectag_and_locn_0_0,
+  &backend_libs__rtti__backend_libs__rtti__du_functor_desc_sectag_and_locn_0_1
+};
+
+static const MR_DuFunctorDescPtr backend_libs__rtti__backend_libs__rtti__du_stag_ordered_sectag_and_locn_0_1[1] = {
+  &backend_libs__rtti__backend_libs__rtti__du_functor_desc_sectag_and_locn_0_2
+};
+
+static const MR_DuFunctorDescPtr backend_libs__rtti__backend_libs__rtti__du_stag_ordered_sectag_and_locn_0_2[1] = {
+  &backend_libs__rtti__backend_libs__rtti__du_functor_desc_sectag_and_locn_0_3
+};
+
+static const MR_DuPtagLayout backend_libs__rtti__backend_libs__rtti__du_ptag_ordered_sectag_and_locn_0[3] = {
+  {
+    (MR_Integer) 2,
+    MR_SECTAG_LOCAL,
+    backend_libs__rtti__backend_libs__rtti__du_stag_ordered_sectag_and_locn_0_0
+  },
+  {
+    (MR_Integer) 1,
+    MR_SECTAG_NONE,
+    backend_libs__rtti__backend_libs__rtti__du_stag_ordered_sectag_and_locn_0_1
+  },
+  {
+    (MR_Integer) 1,
+    MR_SECTAG_NONE,
+    backend_libs__rtti__backend_libs__rtti__du_stag_ordered_sectag_and_locn_0_2
+  }
+};
+
+static const MR_DuFunctorDescPtr backend_libs__rtti__backend_libs__rtti__du_name_ordered_sectag_and_locn_0[4] = {
+  &backend_libs__rtti__backend_libs__rtti__du_functor_desc_sectag_and_locn_0_2,
+  &backend_libs__rtti__backend_libs__rtti__du_functor_desc_sectag_and_locn_0_0,
+  &backend_libs__rtti__backend_libs__rtti__du_functor_desc_sectag_and_locn_0_1,
+  &backend_libs__rtti__backend_libs__rtti__du_functor_desc_sectag_and_locn_0_3
+};
+
+static const MR_Integer backend_libs__rtti__backend_libs__rtti__functor_number_map_sectag_and_locn_0[4] = {
+  (MR_Integer) 1,
+  (MR_Integer) 2,
+  (MR_Integer) 0,
+  (MR_Integer) 3
+};
+
+const MR_TypeCtorInfo_Struct backend_libs__rtti__backend_libs__rtti__type_ctor_info_sectag_and_locn_0 = {
+  (MR_Integer) 0,
+  (MR_Integer) 17,
+  (MR_Integer) 3,
+  MR_TYPECTOR_REP_DU,
+  ((MR_Box) (backend_libs__rtti____Unify____sectag_and_locn_0_0_10001)),
+  ((MR_Box) (backend_libs__rtti____Compare____sectag_and_locn_0_0_10001)),
+  (MR_String) "backend_libs.rtti",
+  (MR_String) "sectag_and_locn",
+  {     backend_libs__rtti__backend_libs__rtti__du_name_ordered_sectag_and_locn_0 },
+  {     backend_libs__rtti__backend_libs__rtti__du_ptag_ordered_sectag_and_locn_0 },
+  (MR_Integer) 4,
+  (MR_Integer) 4,
+  backend_libs__rtti__backend_libs__rtti__functor_number_map_sectag_and_locn_0
+};
+
+static const MR_EnumFunctorDesc backend_libs__rtti__backend_libs__rtti__enum_functor_desc_sectag_locn_0_0 = {
+  (MR_String) "sectag_none",
+  (MR_Integer) 0
+};
+
+static const MR_EnumFunctorDesc backend_libs__rtti__backend_libs__rtti__enum_functor_desc_sectag_locn_0_1 = {
+  (MR_String) "sectag_none_direct_arg",
+  (MR_Integer) 1
+};
+
+static const MR_EnumFunctorDesc backend_libs__rtti__backend_libs__rtti__enum_functor_desc_sectag_locn_0_2 = {
+  (MR_String) "sectag_local",
+  (MR_Integer) 2
+};
+
+static const MR_EnumFunctorDesc backend_libs__rtti__backend_libs__rtti__enum_functor_desc_sectag_locn_0_3 = {
+  (MR_String) "sectag_remote",
+  (MR_Integer) 3
+};
+
+static const MR_EnumFunctorDescPtr backend_libs__rtti__backend_libs__rtti__enum_value_ordered_sectag_locn_0[4] = {
+  &backend_libs__rtti__backend_libs__rtti__enum_functor_desc_sectag_locn_0_0,
+  &backend_libs__rtti__backend_libs__rtti__enum_functor_desc_sectag_locn_0_1,
+  &backend_libs__rtti__backend_libs__rtti__enum_functor_desc_sectag_locn_0_2,
+  &backend_libs__rtti__backend_libs__rtti__enum_functor_desc_sectag_locn_0_3
+};
+
+static const MR_EnumFunctorDescPtr backend_libs__rtti__backend_libs__rtti__enum_name_ordered_sectag_locn_0[4] = {
+  &backend_libs__rtti__backend_libs__rtti__enum_functor_desc_sectag_locn_0_2,
+  &backend_libs__rtti__backend_libs__rtti__enum_functor_desc_sectag_locn_0_0,
+  &backend_libs__rtti__backend_libs__rtti__enum_functor_desc_sectag_locn_0_1,
+  &backend_libs__rtti__backend_libs__rtti__enum_functor_desc_sectag_locn_0_3
+};
+
+static const MR_Integer backend_libs__rtti__backend_libs__rtti__functor_number_map_sectag_locn_0[4] = {
+  (MR_Integer) 1,
+  (MR_Integer) 2,
+  (MR_Integer) 0,
+  (MR_Integer) 3
+};
+
+const MR_TypeCtorInfo_Struct backend_libs__rtti__backend_libs__rtti__type_ctor_info_sectag_locn_0 = {
+  (MR_Integer) 0,
+  (MR_Integer) 17,
+  (MR_Integer) -1,
+  MR_TYPECTOR_REP_ENUM,
+  ((MR_Box) (backend_libs__rtti____Unify____sectag_locn_0_0_10001)),
+  ((MR_Box) (backend_libs__rtti____Compare____sectag_locn_0_0_10001)),
+  (MR_String) "backend_libs.rtti",
+  (MR_String) "sectag_locn",
+  {     backend_libs__rtti__backend_libs__rtti__enum_name_ordered_sectag_locn_0 },
+  {     backend_libs__rtti__backend_libs__rtti__enum_value_ordered_sectag_locn_0 },
+  (MR_Integer) 4,
+  (MR_Integer) 4,
+  backend_libs__rtti__backend_libs__rtti__functor_number_map_sectag_locn_0
+};
+
+static const MR_FA_TypeInfo_Struct2 backend_libs__rtti__tree234__ti_tree234_2builtin__type_ctor_info_int_0backend_libs__rtti__type_ctor_info_du_functor_0 = {
+  &mercury__tree234__tree234__type_ctor_info_tree234_2,
+  {
+    (MR_TypeInfo) &mercury__builtin__builtin__type_ctor_info_int_0,
+    (MR_TypeInfo) &backend_libs__rtti__backend_libs__rtti__type_ctor_info_du_functor_0
+  }
+};
+
+static const MR_PseudoTypeInfo backend_libs__rtti__backend_libs__rtti__field_types_sectag_table_0_0[3] = {
+  (MR_PseudoTypeInfo) &backend_libs__rtti__backend_libs__rtti__type_ctor_info_sectag_locn_0,
+  (MR_PseudoTypeInfo) &mercury__builtin__builtin__type_ctor_info_int_0,
+  (MR_PseudoTypeInfo) &backend_libs__rtti__tree234__ti_tree234_2builtin__type_ctor_info_int_0backend_libs__rtti__type_ctor_info_du_functor_0
+};
+
+static const MR_ConstString backend_libs__rtti__backend_libs__rtti__field_names_sectag_table_0_0[3] = {
+  (MR_String) "sectag_locn",
+  (MR_String) "sectag_num_sharers",
+  (MR_String) "sectag_map"
+};
+
+static const MR_DuFunctorDesc backend_libs__rtti__backend_libs__rtti__du_functor_desc_sectag_table_0_0 = {
+  (MR_String) "sectag_table",
+  (MR_Integer) 3,
+  (MR_Integer) 0,
+  MR_SECTAG_NONE,
+  (MR_Integer) 0,
+  (MR_Integer) -1,
+  (MR_Integer) 0,
+  backend_libs__rtti__backend_libs__rtti__field_types_sectag_table_0_0,
+  backend_libs__rtti__backend_libs__rtti__field_names_sectag_table_0_0,
+  NULL,
+  NULL,
+  MR_FUNCTOR_SUBTYPE_NONE
+};
+
+static const MR_DuFunctorDescPtr backend_libs__rtti__backend_libs__rtti__du_stag_ordered_sectag_table_0_0[1] = {
+  &backend_libs__rtti__backend_libs__rtti__du_functor_desc_sectag_table_0_0
+};
+
+static const MR_DuPtagLayout backend_libs__rtti__backend_libs__rtti__du_ptag_ordered_sectag_table_0[1] = {
+  {
+    (MR_Integer) 1,
+    MR_SECTAG_NONE,
+    backend_libs__rtti__backend_libs__rtti__du_stag_ordered_sectag_table_0_0
+  }
+};
+
+static const MR_DuFunctorDescPtr backend_libs__rtti__backend_libs__rtti__du_name_ordered_sectag_table_0[1] = {
+  &backend_libs__rtti__backend_libs__rtti__du_functor_desc_sectag_table_0_0
+};
+
+static const MR_Integer backend_libs__rtti__backend_libs__rtti__functor_number_map_sectag_table_0[1] = {
+  (MR_Integer) 0
+};
+
+const MR_TypeCtorInfo_Struct backend_libs__rtti__backend_libs__rtti__type_ctor_info_sectag_table_0 = {
+  (MR_Integer) 0,
+  (MR_Integer) 17,
+  (MR_Integer) 1,
+  MR_TYPECTOR_REP_DU,
+  ((MR_Box) (backend_libs__rtti____Unify____sectag_table_0_0_10001)),
+  ((MR_Box) (backend_libs__rtti____Compare____sectag_table_0_0_10001)),
+  (MR_String) "backend_libs.rtti",
+  (MR_String) "sectag_table",
+  {     backend_libs__rtti__backend_libs__rtti__du_name_ordered_sectag_table_0 },
+  {     backend_libs__rtti__backend_libs__rtti__du_ptag_ordered_sectag_table_0 },
+  (MR_Integer) 1,
+  (MR_Integer) 4,
+  backend_libs__rtti__backend_libs__rtti__functor_number_map_sectag_table_0
+};
+
+const MR_TypeCtorInfo_Struct backend_libs__rtti__backend_libs__rtti__type_ctor_info_stag_map_0 = {
+  (MR_Integer) 0,
+  (MR_Integer) 17,
+  (MR_Integer) -1,
+  MR_TYPECTOR_REP_EQUIV_GROUND,
+  ((MR_Box) (backend_libs__rtti____Unify____stag_map_0_0_10001)),
+  ((MR_Box) (backend_libs__rtti____Compare____stag_map_0_0_10001)),
+  (MR_String) "backend_libs.rtti",
+  (MR_String) "stag_map",
+  {     NULL },
+  {     (MR_PseudoTypeInfo) &backend_libs__rtti__tree234__ti_tree234_2builtin__type_ctor_info_int_0backend_libs__rtti__type_ctor_info_du_functor_0 },
+  (MR_Integer) -1,
+  (MR_Integer) 0,
+  NULL
+};
+
+static const MR_PseudoTypeInfo backend_libs__rtti__backend_libs__rtti__field_types_target_prefixes_0_0[2] = {
+  (MR_PseudoTypeInfo) &mercury__builtin__builtin__type_ctor_info_string_0,
+  (MR_PseudoTypeInfo) &mercury__builtin__builtin__type_ctor_info_string_0
+};
+
+static const MR_ConstString backend_libs__rtti__backend_libs__rtti__field_names_target_prefixes_0_0[2] = {
+  (MR_String) "java_prefix",
+  (MR_String) "csharp_prefix"
+};
+
+static const MR_DuFunctorDesc backend_libs__rtti__backend_libs__rtti__du_functor_desc_target_prefixes_0_0 = {
+  (MR_String) "target_prefixes",
+  (MR_Integer) 2,
+  (MR_Integer) 0,
+  MR_SECTAG_NONE,
+  (MR_Integer) 0,
+  (MR_Integer) -1,
+  (MR_Integer) 0,
+  backend_libs__rtti__backend_libs__rtti__field_types_target_prefixes_0_0,
+  backend_libs__rtti__backend_libs__rtti__field_names_target_prefixes_0_0,
+  NULL,
+  NULL,
+  MR_FUNCTOR_SUBTYPE_NONE
+};
+
+static const MR_DuFunctorDescPtr backend_libs__rtti__backend_libs__rtti__du_stag_ordered_target_prefixes_0_0[1] = {
+  &backend_libs__rtti__backend_libs__rtti__du_functor_desc_target_prefixes_0_0
+};
+
+static const MR_DuPtagLayout backend_libs__rtti__backend_libs__rtti__du_ptag_ordered_target_prefixes_0[1] = {
+  {
+    (MR_Integer) 1,
+    MR_SECTAG_NONE,
+    backend_libs__rtti__backend_libs__rtti__du_stag_ordered_target_prefixes_0_0
+  }
+};
+
+static const MR_DuFunctorDescPtr backend_libs__rtti__backend_libs__rtti__du_name_ordered_target_prefixes_0[1] = {
+  &backend_libs__rtti__backend_libs__rtti__du_functor_desc_target_prefixes_0_0
+};
+
+static const MR_Integer backend_libs__rtti__backend_libs__rtti__functor_number_map_target_prefixes_0[1] = {
+  (MR_Integer) 0
+};
+
+const MR_TypeCtorInfo_Struct backend_libs__rtti__backend_libs__rtti__type_ctor_info_target_prefixes_0 = {
+  (MR_Integer) 0,
+  (MR_Integer) 17,
+  (MR_Integer) 1,
+  MR_TYPECTOR_REP_DU,
+  ((MR_Box) (backend_libs__rtti____Unify____target_prefixes_0_0_10001)),
+  ((MR_Box) (backend_libs__rtti____Compare____target_prefixes_0_0_10001)),
+  (MR_String) "backend_libs.rtti",
+  (MR_String) "target_prefixes",
+  {     backend_libs__rtti__backend_libs__rtti__du_name_ordered_target_prefixes_0 },
+  {     backend_libs__rtti__backend_libs__rtti__du_ptag_ordered_target_prefixes_0 },
+  (MR_Integer) 1,
+  (MR_Integer) 4,
+  backend_libs__rtti__backend_libs__rtti__functor_number_map_target_prefixes_0
+};
+
+static const MR_PseudoTypeInfo backend_libs__rtti__backend_libs__rtti__field_types_tc_constraint_0_0[2] = {
+  (MR_PseudoTypeInfo) &backend_libs__rtti__backend_libs__rtti__type_ctor_info_tc_name_0,
+  (MR_PseudoTypeInfo) &backend_libs__rtti__list__ti_list_1backend_libs__rtti__type_ctor_info_rtti_maybe_pseudo_type_info_0
+};
+
+static const MR_ConstString backend_libs__rtti__backend_libs__rtti__field_names_tc_constraint_0_0[2] = {
+  (MR_String) "tcc_class_name",
+  (MR_String) "tcc_types"
+};
+
+static const MR_DuFunctorDesc backend_libs__rtti__backend_libs__rtti__du_functor_desc_tc_constraint_0_0 = {
+  (MR_String) "tc_constraint",
+  (MR_Integer) 2,
+  (MR_Integer) 0,
+  MR_SECTAG_NONE,
+  (MR_Integer) 0,
+  (MR_Integer) -1,
+  (MR_Integer) 0,
+  backend_libs__rtti__backend_libs__rtti__field_types_tc_constraint_0_0,
+  backend_libs__rtti__backend_libs__rtti__field_names_tc_constraint_0_0,
+  NULL,
+  NULL,
+  MR_FUNCTOR_SUBTYPE_NONE
+};
+
+static const MR_DuFunctorDescPtr backend_libs__rtti__backend_libs__rtti__du_stag_ordered_tc_constraint_0_0[1] = {
+  &backend_libs__rtti__backend_libs__rtti__du_functor_desc_tc_constraint_0_0
+};
+
+static const MR_DuPtagLayout backend_libs__rtti__backend_libs__rtti__du_ptag_ordered_tc_constraint_0[1] = {
+  {
+    (MR_Integer) 1,
+    MR_SECTAG_NONE,
+    backend_libs__rtti__backend_libs__rtti__du_stag_ordered_tc_constraint_0_0
+  }
+};
+
+static const MR_DuFunctorDescPtr backend_libs__rtti__backend_libs__rtti__du_name_ordered_tc_constraint_0[1] = {
+  &backend_libs__rtti__backend_libs__rtti__du_functor_desc_tc_constraint_0_0
+};
+
+static const MR_Integer backend_libs__rtti__backend_libs__rtti__functor_number_map_tc_constraint_0[1] = {
+  (MR_Integer) 0
+};
+
+const MR_TypeCtorInfo_Struct backend_libs__rtti__backend_libs__rtti__type_ctor_info_tc_constraint_0 = {
+  (MR_Integer) 0,
+  (MR_Integer) 17,
+  (MR_Integer) 1,
+  MR_TYPECTOR_REP_DU,
+  ((MR_Box) (backend_libs__rtti____Unify____tc_constraint_0_0_10001)),
+  ((MR_Box) (backend_libs__rtti____Compare____tc_constraint_0_0_10001)),
+  (MR_String) "backend_libs.rtti",
+  (MR_String) "tc_constraint",
+  {     backend_libs__rtti__backend_libs__rtti__du_name_ordered_tc_constraint_0 },
+  {     backend_libs__rtti__backend_libs__rtti__du_ptag_ordered_tc_constraint_0 },
+  (MR_Integer) 1,
+  (MR_Integer) 4,
+  backend_libs__rtti__backend_libs__rtti__functor_number_map_tc_constraint_0
+};
+
+static const MR_PseudoTypeInfo backend_libs__rtti__backend_libs__rtti__field_types_tc_decl_0_0[3] = {
+  (MR_PseudoTypeInfo) &backend_libs__rtti__backend_libs__rtti__type_ctor_info_tc_id_0,
+  (MR_PseudoTypeInfo) &mercury__builtin__builtin__type_ctor_info_int_0,
+  (MR_PseudoTypeInfo) &backend_libs__rtti__list__ti_list_1backend_libs__rtti__type_ctor_info_tc_constraint_0
+};
+
+static const MR_ConstString backend_libs__rtti__backend_libs__rtti__field_names_tc_decl_0_0[3] = {
+  (MR_String) "tc_decl_id",
+  (MR_String) "tc_decl_version_number",
+  (MR_String) "tc_decl_supers"
+};
+
+static const MR_DuFunctorDesc backend_libs__rtti__backend_libs__rtti__du_functor_desc_tc_decl_0_0 = {
+  (MR_String) "tc_decl",
+  (MR_Integer) 3,
+  (MR_Integer) 0,
+  MR_SECTAG_NONE,
+  (MR_Integer) 0,
+  (MR_Integer) -1,
+  (MR_Integer) 0,
+  backend_libs__rtti__backend_libs__rtti__field_types_tc_decl_0_0,
+  backend_libs__rtti__backend_libs__rtti__field_names_tc_decl_0_0,
+  NULL,
+  NULL,
+  MR_FUNCTOR_SUBTYPE_NONE
+};
+
+static const MR_DuFunctorDescPtr backend_libs__rtti__backend_libs__rtti__du_stag_ordered_tc_decl_0_0[1] = {
+  &backend_libs__rtti__backend_libs__rtti__du_functor_desc_tc_decl_0_0
+};
+
+static const MR_DuPtagLayout backend_libs__rtti__backend_libs__rtti__du_ptag_ordered_tc_decl_0[1] = {
+  {
+    (MR_Integer) 1,
+    MR_SECTAG_NONE,
+    backend_libs__rtti__backend_libs__rtti__du_stag_ordered_tc_decl_0_0
+  }
+};
+
+static const MR_DuFunctorDescPtr backend_libs__rtti__backend_libs__rtti__du_name_ordered_tc_decl_0[1] = {
+  &backend_libs__rtti__backend_libs__rtti__du_functor_desc_tc_decl_0_0
+};
+
+static const MR_Integer backend_libs__rtti__backend_libs__rtti__functor_number_map_tc_decl_0[1] = {
+  (MR_Integer) 0
+};
+
+const MR_TypeCtorInfo_Struct backend_libs__rtti__backend_libs__rtti__type_ctor_info_tc_decl_0 = {
+  (MR_Integer) 0,
+  (MR_Integer) 17,
+  (MR_Integer) 1,
+  MR_TYPECTOR_REP_DU,
+  ((MR_Box) (backend_libs__rtti____Unify____tc_decl_0_0_10001)),
+  ((MR_Box) (backend_libs__rtti____Compare____tc_decl_0_0_10001)),
+  (MR_String) "backend_libs.rtti",
+  (MR_String) "tc_decl",
+  {     backend_libs__rtti__backend_libs__rtti__du_name_ordered_tc_decl_0 },
+  {     backend_libs__rtti__backend_libs__rtti__du_ptag_ordered_tc_decl_0 },
+  (MR_Integer) 1,
+  (MR_Integer) 4,
+  backend_libs__rtti__backend_libs__rtti__functor_number_map_tc_decl_0
+};
+
+static const MR_PseudoTypeInfo backend_libs__rtti__backend_libs__rtti__field_types_tc_dict_0_0[3] = {
+  (MR_PseudoTypeInfo) &backend_libs__rtti__backend_libs__rtti__type_ctor_info_tc_name_0,
+  (MR_PseudoTypeInfo) &backend_libs__rtti__list__ti_list_1backend_libs__rtti__type_ctor_info_rtti_type_info_0,
+  (MR_PseudoTypeInfo) &backend_libs__rtti__list__ti_list_1hlds__hlds_rtti__type_ctor_info_rtti_proc_label_0
+};
+
+static const MR_ConstString backend_libs__rtti__backend_libs__rtti__field_names_tc_dict_0_0[3] = {
+  (MR_String) "tcd_class",
+  (MR_String) "tcd_types",
+  (MR_String) "tcd_methods"
+};
+
+static const MR_DuFunctorDesc backend_libs__rtti__backend_libs__rtti__du_functor_desc_tc_dict_0_0 = {
+  (MR_String) "tc_dict",
+  (MR_Integer) 3,
+  (MR_Integer) 0,
+  MR_SECTAG_NONE,
+  (MR_Integer) 0,
+  (MR_Integer) -1,
+  (MR_Integer) 0,
+  backend_libs__rtti__backend_libs__rtti__field_types_tc_dict_0_0,
+  backend_libs__rtti__backend_libs__rtti__field_names_tc_dict_0_0,
+  NULL,
+  NULL,
+  MR_FUNCTOR_SUBTYPE_NONE
+};
+
+static const MR_DuFunctorDescPtr backend_libs__rtti__backend_libs__rtti__du_stag_ordered_tc_dict_0_0[1] = {
+  &backend_libs__rtti__backend_libs__rtti__du_functor_desc_tc_dict_0_0
+};
+
+static const MR_DuPtagLayout backend_libs__rtti__backend_libs__rtti__du_ptag_ordered_tc_dict_0[1] = {
+  {
+    (MR_Integer) 1,
+    MR_SECTAG_NONE,
+    backend_libs__rtti__backend_libs__rtti__du_stag_ordered_tc_dict_0_0
+  }
+};
+
+static const MR_DuFunctorDescPtr backend_libs__rtti__backend_libs__rtti__du_name_ordered_tc_dict_0[1] = {
+  &backend_libs__rtti__backend_libs__rtti__du_functor_desc_tc_dict_0_0
+};
+
+static const MR_Integer backend_libs__rtti__backend_libs__rtti__functor_number_map_tc_dict_0[1] = {
+  (MR_Integer) 0
+};
+
+const MR_TypeCtorInfo_Struct backend_libs__rtti__backend_libs__rtti__type_ctor_info_tc_dict_0 = {
+  (MR_Integer) 0,
+  (MR_Integer) 17,
+  (MR_Integer) 1,
+  MR_TYPECTOR_REP_DU,
+  ((MR_Box) (backend_libs__rtti____Unify____tc_dict_0_0_10001)),
+  ((MR_Box) (backend_libs__rtti____Compare____tc_dict_0_0_10001)),
+  (MR_String) "backend_libs.rtti",
+  (MR_String) "tc_dict",
+  {     backend_libs__rtti__backend_libs__rtti__du_name_ordered_tc_dict_0 },
+  {     backend_libs__rtti__backend_libs__rtti__du_ptag_ordered_tc_dict_0 },
+  (MR_Integer) 1,
+  (MR_Integer) 4,
+  backend_libs__rtti__backend_libs__rtti__functor_number_map_tc_dict_0
+};
+
+static const MR_FA_TypeInfo_Struct1 backend_libs__rtti__list__ti_list_1builtin__type_ctor_info_string_0 = {
+  &mercury__list__list__type_ctor_info_list_1,
+  {
+    (MR_TypeInfo) &mercury__builtin__builtin__type_ctor_info_string_0
+  }
+};
+
+static const MR_FA_TypeInfo_Struct1 backend_libs__rtti__list__ti_list_1backend_libs__rtti__type_ctor_info_tc_method_id_0 = {
+  &mercury__list__list__type_ctor_info_list_1,
+  {
+    (MR_TypeInfo) &backend_libs__rtti__backend_libs__rtti__type_ctor_info_tc_method_id_0
+  }
+};
+
+static const MR_PseudoTypeInfo backend_libs__rtti__backend_libs__rtti__field_types_tc_id_0_0[3] = {
+  (MR_PseudoTypeInfo) &backend_libs__rtti__backend_libs__rtti__type_ctor_info_tc_name_0,
+  (MR_PseudoTypeInfo) &backend_libs__rtti__list__ti_list_1builtin__type_ctor_info_string_0,
+  (MR_PseudoTypeInfo) &backend_libs__rtti__list__ti_list_1backend_libs__rtti__type_ctor_info_tc_method_id_0
+};
+
+static const MR_ConstString backend_libs__rtti__backend_libs__rtti__field_names_tc_id_0_0[3] = {
+  (MR_String) "tc_id_name",
+  (MR_String) "tc_id_type_var_names",
+  (MR_String) "tc_id_methods"
+};
+
+static const MR_DuFunctorDesc backend_libs__rtti__backend_libs__rtti__du_functor_desc_tc_id_0_0 = {
+  (MR_String) "tc_id",
+  (MR_Integer) 3,
+  (MR_Integer) 0,
+  MR_SECTAG_NONE,
+  (MR_Integer) 0,
+  (MR_Integer) -1,
+  (MR_Integer) 0,
+  backend_libs__rtti__backend_libs__rtti__field_types_tc_id_0_0,
+  backend_libs__rtti__backend_libs__rtti__field_names_tc_id_0_0,
+  NULL,
+  NULL,
+  MR_FUNCTOR_SUBTYPE_NONE
+};
+
+static const MR_DuFunctorDescPtr backend_libs__rtti__backend_libs__rtti__du_stag_ordered_tc_id_0_0[1] = {
+  &backend_libs__rtti__backend_libs__rtti__du_functor_desc_tc_id_0_0
+};
+
+static const MR_DuPtagLayout backend_libs__rtti__backend_libs__rtti__du_ptag_ordered_tc_id_0[1] = {
+  {
+    (MR_Integer) 1,
+    MR_SECTAG_NONE,
+    backend_libs__rtti__backend_libs__rtti__du_stag_ordered_tc_id_0_0
+  }
+};
+
+static const MR_DuFunctorDescPtr backend_libs__rtti__backend_libs__rtti__du_name_ordered_tc_id_0[1] = {
+  &backend_libs__rtti__backend_libs__rtti__du_functor_desc_tc_id_0_0
+};
+
+static const MR_Integer backend_libs__rtti__backend_libs__rtti__functor_number_map_tc_id_0[1] = {
+  (MR_Integer) 0
+};
+
+const MR_TypeCtorInfo_Struct backend_libs__rtti__backend_libs__rtti__type_ctor_info_tc_id_0 = {
+  (MR_Integer) 0,
+  (MR_Integer) 17,
+  (MR_Integer) 1,
+  MR_TYPECTOR_REP_DU,
+  ((MR_Box) (backend_libs__rtti____Unify____tc_id_0_0_10001)),
+  ((MR_Box) (backend_libs__rtti____Compare____tc_id_0_0_10001)),
+  (MR_String) "backend_libs.rtti",
+  (MR_String) "tc_id",
+  {     backend_libs__rtti__backend_libs__rtti__du_name_ordered_tc_id_0 },
+  {     backend_libs__rtti__backend_libs__rtti__du_ptag_ordered_tc_id_0 },
+  (MR_Integer) 1,
+  (MR_Integer) 4,
+  backend_libs__rtti__backend_libs__rtti__functor_number_map_tc_id_0
+};
+
+static const MR_PseudoTypeInfo backend_libs__rtti__backend_libs__rtti__field_types_tc_instance_0_0[5] = {
+  (MR_PseudoTypeInfo) &backend_libs__rtti__backend_libs__rtti__type_ctor_info_tc_name_0,
+  (MR_PseudoTypeInfo) &backend_libs__rtti__list__ti_list_1backend_libs__rtti__type_ctor_info_rtti_maybe_pseudo_type_info_0,
+  (MR_PseudoTypeInfo) &mercury__builtin__builtin__type_ctor_info_int_0,
+  (MR_PseudoTypeInfo) &backend_libs__rtti__list__ti_list_1backend_libs__rtti__type_ctor_info_tc_constraint_0,
+  (MR_PseudoTypeInfo) &backend_libs__rtti__list__ti_list_1hlds__hlds_rtti__type_ctor_info_rtti_proc_label_0
+};
+
+static const MR_ConstString backend_libs__rtti__backend_libs__rtti__field_names_tc_instance_0_0[5] = {
+  (MR_String) "tci_type_class",
+  (MR_String) "tci_types",
+  (MR_String) "tci_num_type_vars",
+  (MR_String) "tci_constraints",
+  (MR_String) "tci_methods"
+};
+
+static const MR_DuFunctorDesc backend_libs__rtti__backend_libs__rtti__du_functor_desc_tc_instance_0_0 = {
+  (MR_String) "tc_instance",
+  (MR_Integer) 5,
+  (MR_Integer) 0,
+  MR_SECTAG_NONE,
+  (MR_Integer) 0,
+  (MR_Integer) -1,
+  (MR_Integer) 0,
+  backend_libs__rtti__backend_libs__rtti__field_types_tc_instance_0_0,
+  backend_libs__rtti__backend_libs__rtti__field_names_tc_instance_0_0,
+  NULL,
+  NULL,
+  MR_FUNCTOR_SUBTYPE_NONE
+};
+
+static const MR_DuFunctorDescPtr backend_libs__rtti__backend_libs__rtti__du_stag_ordered_tc_instance_0_0[1] = {
+  &backend_libs__rtti__backend_libs__rtti__du_functor_desc_tc_instance_0_0
+};
+
+static const MR_DuPtagLayout backend_libs__rtti__backend_libs__rtti__du_ptag_ordered_tc_instance_0[1] = {
+  {
+    (MR_Integer) 1,
+    MR_SECTAG_NONE,
+    backend_libs__rtti__backend_libs__rtti__du_stag_ordered_tc_instance_0_0
+  }
+};
+
+static const MR_DuFunctorDescPtr backend_libs__rtti__backend_libs__rtti__du_name_ordered_tc_instance_0[1] = {
+  &backend_libs__rtti__backend_libs__rtti__du_functor_desc_tc_instance_0_0
+};
+
+static const MR_Integer backend_libs__rtti__backend_libs__rtti__functor_number_map_tc_instance_0[1] = {
+  (MR_Integer) 0
+};
+
+const MR_TypeCtorInfo_Struct backend_libs__rtti__backend_libs__rtti__type_ctor_info_tc_instance_0 = {
+  (MR_Integer) 0,
+  (MR_Integer) 17,
+  (MR_Integer) 1,
+  MR_TYPECTOR_REP_DU,
+  ((MR_Box) (backend_libs__rtti____Unify____tc_instance_0_0_10001)),
+  ((MR_Box) (backend_libs__rtti____Compare____tc_instance_0_0_10001)),
+  (MR_String) "backend_libs.rtti",
+  (MR_String) "tc_instance",
+  {     backend_libs__rtti__backend_libs__rtti__du_name_ordered_tc_instance_0 },
+  {     backend_libs__rtti__backend_libs__rtti__du_ptag_ordered_tc_instance_0 },
+  (MR_Integer) 1,
+  (MR_Integer) 4,
+  backend_libs__rtti__backend_libs__rtti__functor_number_map_tc_instance_0
+};
+
+static const MR_PseudoTypeInfo backend_libs__rtti__backend_libs__rtti__field_types_tc_method_id_0_0[3] = {
+  (MR_PseudoTypeInfo) &mercury__builtin__builtin__type_ctor_info_string_0,
+  (MR_PseudoTypeInfo) &mercury__builtin__builtin__type_ctor_info_int_0,
+  (MR_PseudoTypeInfo) &mdbcomp__prim_data__mdbcomp__prim_data__type_ctor_info_pred_or_func_0
+};
+
+static const MR_ConstString backend_libs__rtti__backend_libs__rtti__field_names_tc_method_id_0_0[3] = {
+  (MR_String) "tcm_name",
+  (MR_String) "tcm_arity",
+  (MR_String) "tcm_pred_or_func"
+};
+
+static const MR_DuFunctorDesc backend_libs__rtti__backend_libs__rtti__du_functor_desc_tc_method_id_0_0 = {
+  (MR_String) "tc_method_id",
+  (MR_Integer) 3,
+  (MR_Integer) 0,
+  MR_SECTAG_NONE,
+  (MR_Integer) 0,
+  (MR_Integer) -1,
+  (MR_Integer) 0,
+  backend_libs__rtti__backend_libs__rtti__field_types_tc_method_id_0_0,
+  backend_libs__rtti__backend_libs__rtti__field_names_tc_method_id_0_0,
+  NULL,
+  NULL,
+  MR_FUNCTOR_SUBTYPE_NONE
+};
+
+static const MR_DuFunctorDescPtr backend_libs__rtti__backend_libs__rtti__du_stag_ordered_tc_method_id_0_0[1] = {
+  &backend_libs__rtti__backend_libs__rtti__du_functor_desc_tc_method_id_0_0
+};
+
+static const MR_DuPtagLayout backend_libs__rtti__backend_libs__rtti__du_ptag_ordered_tc_method_id_0[1] = {
+  {
+    (MR_Integer) 1,
+    MR_SECTAG_NONE,
+    backend_libs__rtti__backend_libs__rtti__du_stag_ordered_tc_method_id_0_0
+  }
+};
+
+static const MR_DuFunctorDescPtr backend_libs__rtti__backend_libs__rtti__du_name_ordered_tc_method_id_0[1] = {
+  &backend_libs__rtti__backend_libs__rtti__du_functor_desc_tc_method_id_0_0
+};
+
+static const MR_Integer backend_libs__rtti__backend_libs__rtti__functor_number_map_tc_method_id_0[1] = {
+  (MR_Integer) 0
+};
+
+const MR_TypeCtorInfo_Struct backend_libs__rtti__backend_libs__rtti__type_ctor_info_tc_method_id_0 = {
+  (MR_Integer) 0,
+  (MR_Integer) 17,
+  (MR_Integer) 1,
+  MR_TYPECTOR_REP_DU,
+  ((MR_Box) (backend_libs__rtti____Unify____tc_method_id_0_0_10001)),
+  ((MR_Box) (backend_libs__rtti____Compare____tc_method_id_0_0_10001)),
+  (MR_String) "backend_libs.rtti",
+  (MR_String) "tc_method_id",
+  {     backend_libs__rtti__backend_libs__rtti__du_name_ordered_tc_method_id_0 },
+  {     backend_libs__rtti__backend_libs__rtti__du_ptag_ordered_tc_method_id_0 },
+  (MR_Integer) 1,
+  (MR_Integer) 4,
+  backend_libs__rtti__backend_libs__rtti__functor_number_map_tc_method_id_0
+};
+
+static const MR_PseudoTypeInfo backend_libs__rtti__backend_libs__rtti__field_types_tc_name_0_0[3] = {
+  (MR_PseudoTypeInfo) &mdbcomp__sym_name__mdbcomp__sym_name__type_ctor_info_sym_name_0,
+  (MR_PseudoTypeInfo) &mercury__builtin__builtin__type_ctor_info_string_0,
+  (MR_PseudoTypeInfo) &mercury__builtin__builtin__type_ctor_info_int_0
+};
+
+static const MR_ConstString backend_libs__rtti__backend_libs__rtti__field_names_tc_name_0_0[3] = {
+  (MR_String) "tcn_module",
+  (MR_String) "tcn_name",
+  (MR_String) "tcn_arity"
+};
+
+static const MR_DuFunctorDesc backend_libs__rtti__backend_libs__rtti__du_functor_desc_tc_name_0_0 = {
+  (MR_String) "tc_name",
+  (MR_Integer) 3,
+  (MR_Integer) 0,
+  MR_SECTAG_NONE,
+  (MR_Integer) 0,
+  (MR_Integer) -1,
+  (MR_Integer) 0,
+  backend_libs__rtti__backend_libs__rtti__field_types_tc_name_0_0,
+  backend_libs__rtti__backend_libs__rtti__field_names_tc_name_0_0,
+  NULL,
+  NULL,
+  MR_FUNCTOR_SUBTYPE_NONE
+};
+
+static const MR_DuFunctorDescPtr backend_libs__rtti__backend_libs__rtti__du_stag_ordered_tc_name_0_0[1] = {
+  &backend_libs__rtti__backend_libs__rtti__du_functor_desc_tc_name_0_0
+};
+
+static const MR_DuPtagLayout backend_libs__rtti__backend_libs__rtti__du_ptag_ordered_tc_name_0[1] = {
+  {
+    (MR_Integer) 1,
+    MR_SECTAG_NONE,
+    backend_libs__rtti__backend_libs__rtti__du_stag_ordered_tc_name_0_0
+  }
+};
+
+static const MR_DuFunctorDescPtr backend_libs__rtti__backend_libs__rtti__du_name_ordered_tc_name_0[1] = {
+  &backend_libs__rtti__backend_libs__rtti__du_functor_desc_tc_name_0_0
+};
+
+static const MR_Integer backend_libs__rtti__backend_libs__rtti__functor_number_map_tc_name_0[1] = {
+  (MR_Integer) 0
+};
+
+const MR_TypeCtorInfo_Struct backend_libs__rtti__backend_libs__rtti__type_ctor_info_tc_name_0 = {
+  (MR_Integer) 0,
+  (MR_Integer) 17,
+  (MR_Integer) 1,
+  MR_TYPECTOR_REP_DU,
+  ((MR_Box) (backend_libs__rtti____Unify____tc_name_0_0_10001)),
+  ((MR_Box) (backend_libs__rtti____Compare____tc_name_0_0_10001)),
+  (MR_String) "backend_libs.rtti",
+  (MR_String) "tc_name",
+  {     backend_libs__rtti__backend_libs__rtti__du_name_ordered_tc_name_0 },
+  {     backend_libs__rtti__backend_libs__rtti__du_ptag_ordered_tc_name_0 },
+  (MR_Integer) 1,
+  (MR_Integer) 4,
+  backend_libs__rtti__backend_libs__rtti__functor_number_map_tc_name_0
+};
+
+static const MR_PseudoTypeInfo backend_libs__rtti__backend_libs__rtti__field_types_tc_rtti_name_0_0[2] = {
+  (MR_PseudoTypeInfo) &mdbcomp__sym_name__mdbcomp__sym_name__type_ctor_info_sym_name_0,
+  (MR_PseudoTypeInfo) &mercury__builtin__builtin__type_ctor_info_string_0
+};
+
+static const MR_DuFunctorDesc backend_libs__rtti__backend_libs__rtti__du_functor_desc_tc_rtti_name_0_0 = {
+  (MR_String) "type_class_base_typeclass_info",
+  (MR_Integer) 2,
+  (MR_Integer) 0,
+  MR_SECTAG_NONE,
+  (MR_Integer) 1,
+  (MR_Integer) -1,
+  (MR_Integer) 0,
+  backend_libs__rtti__backend_libs__rtti__field_types_tc_rtti_name_0_0,
+  NULL,
+  NULL,
+  NULL,
+  MR_FUNCTOR_SUBTYPE_NONE
+};
+
+static const MR_DuFunctorDesc backend_libs__rtti__backend_libs__rtti__du_functor_desc_tc_rtti_name_0_1 = {
+  (MR_String) "type_class_id",
+  (MR_Integer) 0,
+  (MR_Integer) 0,
+  MR_SECTAG_LOCAL,
+  (MR_Integer) 0,
+  (MR_Integer) 0,
+  (MR_Integer) 1,
+  NULL,
+  NULL,
+  NULL,
+  NULL,
+  MR_FUNCTOR_SUBTYPE_NONE
+};
+
+static const MR_DuFunctorDesc backend_libs__rtti__backend_libs__rtti__du_functor_desc_tc_rtti_name_0_2 = {
+  (MR_String) "type_class_id_var_names",
+  (MR_Integer) 0,
+  (MR_Integer) 0,
+  MR_SECTAG_LOCAL,
+  (MR_Integer) 0,
+  (MR_Integer) 1,
+  (MR_Integer) 2,
+  NULL,
+  NULL,
+  NULL,
+  NULL,
+  MR_FUNCTOR_SUBTYPE_NONE
+};
+
+static const MR_DuFunctorDesc backend_libs__rtti__backend_libs__rtti__du_functor_desc_tc_rtti_name_0_3 = {
+  (MR_String) "type_class_id_method_ids",
+  (MR_Integer) 0,
+  (MR_Integer) 0,
+  MR_SECTAG_LOCAL,
+  (MR_Integer) 0,
+  (MR_Integer) 2,
+  (MR_Integer) 3,
+  NULL,
+  NULL,
+  NULL,
+  NULL,
+  MR_FUNCTOR_SUBTYPE_NONE
+};
+
+static const MR_DuFunctorDesc backend_libs__rtti__backend_libs__rtti__du_functor_desc_tc_rtti_name_0_4 = {
+  (MR_String) "type_class_decl",
+  (MR_Integer) 0,
+  (MR_Integer) 0,
+  MR_SECTAG_LOCAL,
+  (MR_Integer) 0,
+  (MR_Integer) 3,
+  (MR_Integer) 4,
+  NULL,
+  NULL,
+  NULL,
+  NULL,
+  MR_FUNCTOR_SUBTYPE_NONE
+};
+
+static const MR_PseudoTypeInfo backend_libs__rtti__backend_libs__rtti__field_types_tc_rtti_name_0_5[2] = {
+  (MR_PseudoTypeInfo) &mercury__builtin__builtin__type_ctor_info_int_0,
+  (MR_PseudoTypeInfo) &mercury__builtin__builtin__type_ctor_info_int_0
+};
+
+static const MR_DuFunctorDesc backend_libs__rtti__backend_libs__rtti__du_functor_desc_tc_rtti_name_0_5 = {
+  (MR_String) "type_class_decl_super",
+  (MR_Integer) 2,
+  (MR_Integer) 0,
+  MR_SECTAG_NONE,
+  (MR_Integer) 2,
+  (MR_Integer) -1,
+  (MR_Integer) 5,
+  backend_libs__rtti__backend_libs__rtti__field_types_tc_rtti_name_0_5,
+  NULL,
+  NULL,
+  NULL,
+  MR_FUNCTOR_SUBTYPE_NONE
+};
+
+static const MR_DuFunctorDesc backend_libs__rtti__backend_libs__rtti__du_functor_desc_tc_rtti_name_0_6 = {
+  (MR_String) "type_class_decl_supers",
+  (MR_Integer) 0,
+  (MR_Integer) 0,
+  MR_SECTAG_LOCAL,
+  (MR_Integer) 0,
+  (MR_Integer) 4,
+  (MR_Integer) 6,
+  NULL,
+  NULL,
+  NULL,
+  NULL,
+  MR_FUNCTOR_SUBTYPE_NONE
+};
+
+static const MR_PseudoTypeInfo backend_libs__rtti__backend_libs__rtti__field_types_tc_rtti_name_0_7[1] = {
+  (MR_PseudoTypeInfo) &backend_libs__rtti__list__ti_list_1backend_libs__rtti__type_ctor_info_rtti_maybe_pseudo_type_info_0
+};
+
+static const MR_DuFunctorDesc backend_libs__rtti__backend_libs__rtti__du_functor_desc_tc_rtti_name_0_7 = {
+  (MR_String) "type_class_instance",
+  (MR_Integer) 1,
+  (MR_Integer) 0,
+  MR_SECTAG_REMOTE,
+  (MR_Integer) 3,
+  (MR_Integer) 0,
+  (MR_Integer) 7,
+  backend_libs__rtti__backend_libs__rtti__field_types_tc_rtti_name_0_7,
+  NULL,
+  NULL,
+  NULL,
+  MR_FUNCTOR_SUBTYPE_NONE
+};
+
+static const MR_PseudoTypeInfo backend_libs__rtti__backend_libs__rtti__field_types_tc_rtti_name_0_8[1] = {
+  (MR_PseudoTypeInfo) &backend_libs__rtti__list__ti_list_1backend_libs__rtti__type_ctor_info_rtti_maybe_pseudo_type_info_0
+};
+
+static const MR_DuFunctorDesc backend_libs__rtti__backend_libs__rtti__du_functor_desc_tc_rtti_name_0_8 = {
+  (MR_String) "type_class_instance_tc_type_vector",
+  (MR_Integer) 1,
+  (MR_Integer) 0,
+  MR_SECTAG_REMOTE,
+  (MR_Integer) 3,
+  (MR_Integer) 1,
+  (MR_Integer) 8,
+  backend_libs__rtti__backend_libs__rtti__field_types_tc_rtti_name_0_8,
+  NULL,
+  NULL,
+  NULL,
+  MR_FUNCTOR_SUBTYPE_NONE
+};
+
+static const MR_PseudoTypeInfo backend_libs__rtti__backend_libs__rtti__field_types_tc_rtti_name_0_9[3] = {
+  (MR_PseudoTypeInfo) &backend_libs__rtti__list__ti_list_1backend_libs__rtti__type_ctor_info_rtti_maybe_pseudo_type_info_0,
+  (MR_PseudoTypeInfo) &mercury__builtin__builtin__type_ctor_info_int_0,
+  (MR_PseudoTypeInfo) &mercury__builtin__builtin__type_ctor_info_int_0
+};
+
+static const MR_DuFunctorDesc backend_libs__rtti__backend_libs__rtti__du_functor_desc_tc_rtti_name_0_9 = {
+  (MR_String) "type_class_instance_constraint",
+  (MR_Integer) 3,
+  (MR_Integer) 0,
+  MR_SECTAG_REMOTE,
+  (MR_Integer) 3,
+  (MR_Integer) 2,
+  (MR_Integer) 9,
+  backend_libs__rtti__backend_libs__rtti__field_types_tc_rtti_name_0_9,
+  NULL,
+  NULL,
+  NULL,
+  MR_FUNCTOR_SUBTYPE_NONE
+};
+
+static const MR_PseudoTypeInfo backend_libs__rtti__backend_libs__rtti__field_types_tc_rtti_name_0_10[1] = {
+  (MR_PseudoTypeInfo) &backend_libs__rtti__list__ti_list_1backend_libs__rtti__type_ctor_info_rtti_maybe_pseudo_type_info_0
+};
+
+static const MR_DuFunctorDesc backend_libs__rtti__backend_libs__rtti__du_functor_desc_tc_rtti_name_0_10 = {
+  (MR_String) "type_class_instance_constraints",
+  (MR_Integer) 1,
+  (MR_Integer) 0,
+  MR_SECTAG_REMOTE,
+  (MR_Integer) 3,
+  (MR_Integer) 3,
+  (MR_Integer) 10,
+  backend_libs__rtti__backend_libs__rtti__field_types_tc_rtti_name_0_10,
+  NULL,
+  NULL,
+  NULL,
+  MR_FUNCTOR_SUBTYPE_NONE
+};
+
+static const MR_PseudoTypeInfo backend_libs__rtti__backend_libs__rtti__field_types_tc_rtti_name_0_11[1] = {
+  (MR_PseudoTypeInfo) &backend_libs__rtti__list__ti_list_1backend_libs__rtti__type_ctor_info_rtti_maybe_pseudo_type_info_0
+};
+
+static const MR_DuFunctorDesc backend_libs__rtti__backend_libs__rtti__du_functor_desc_tc_rtti_name_0_11 = {
+  (MR_String) "type_class_instance_methods",
+  (MR_Integer) 1,
+  (MR_Integer) 0,
+  MR_SECTAG_REMOTE,
+  (MR_Integer) 3,
+  (MR_Integer) 4,
+  (MR_Integer) 11,
+  backend_libs__rtti__backend_libs__rtti__field_types_tc_rtti_name_0_11,
+  NULL,
+  NULL,
+  NULL,
+  MR_FUNCTOR_SUBTYPE_NONE
+};
+
+static const MR_DuFunctorDescPtr backend_libs__rtti__backend_libs__rtti__du_stag_ordered_tc_rtti_name_0_0[5] = {
+  &backend_libs__rtti__backend_libs__rtti__du_functor_desc_tc_rtti_name_0_1,
+  &backend_libs__rtti__backend_libs__rtti__du_functor_desc_tc_rtti_name_0_2,
+  &backend_libs__rtti__backend_libs__rtti__du_functor_desc_tc_rtti_name_0_3,
+  &backend_libs__rtti__backend_libs__rtti__du_functor_desc_tc_rtti_name_0_4,
+  &backend_libs__rtti__backend_libs__rtti__du_functor_desc_tc_rtti_name_0_6
+};
+
+static const MR_DuFunctorDescPtr backend_libs__rtti__backend_libs__rtti__du_stag_ordered_tc_rtti_name_0_1[1] = {
+  &backend_libs__rtti__backend_libs__rtti__du_functor_desc_tc_rtti_name_0_0
+};
+
+static const MR_DuFunctorDescPtr backend_libs__rtti__backend_libs__rtti__du_stag_ordered_tc_rtti_name_0_2[1] = {
+  &backend_libs__rtti__backend_libs__rtti__du_functor_desc_tc_rtti_name_0_5
+};
+
+static const MR_DuFunctorDescPtr backend_libs__rtti__backend_libs__rtti__du_stag_ordered_tc_rtti_name_0_3[5] = {
+  &backend_libs__rtti__backend_libs__rtti__du_functor_desc_tc_rtti_name_0_7,
+  &backend_libs__rtti__backend_libs__rtti__du_functor_desc_tc_rtti_name_0_8,
+  &backend_libs__rtti__backend_libs__rtti__du_functor_desc_tc_rtti_name_0_9,
+  &backend_libs__rtti__backend_libs__rtti__du_functor_desc_tc_rtti_name_0_10,
+  &backend_libs__rtti__backend_libs__rtti__du_functor_desc_tc_rtti_name_0_11
+};
+
+static const MR_DuPtagLayout backend_libs__rtti__backend_libs__rtti__du_ptag_ordered_tc_rtti_name_0[4] = {
+  {
+    (MR_Integer) 5,
+    MR_SECTAG_LOCAL,
+    backend_libs__rtti__backend_libs__rtti__du_stag_ordered_tc_rtti_name_0_0
+  },
+  {
+    (MR_Integer) 1,
+    MR_SECTAG_NONE,
+    backend_libs__rtti__backend_libs__rtti__du_stag_ordered_tc_rtti_name_0_1
+  },
+  {
+    (MR_Integer) 1,
+    MR_SECTAG_NONE,
+    backend_libs__rtti__backend_libs__rtti__du_stag_ordered_tc_rtti_name_0_2
+  },
+  {
+    (MR_Integer) 5,
+    MR_SECTAG_REMOTE,
+    backend_libs__rtti__backend_libs__rtti__du_stag_ordered_tc_rtti_name_0_3
+  }
+};
+
+static const MR_DuFunctorDescPtr backend_libs__rtti__backend_libs__rtti__du_name_ordered_tc_rtti_name_0[12] = {
+  &backend_libs__rtti__backend_libs__rtti__du_functor_desc_tc_rtti_name_0_0,
+  &backend_libs__rtti__backend_libs__rtti__du_functor_desc_tc_rtti_name_0_4,
+  &backend_libs__rtti__backend_libs__rtti__du_functor_desc_tc_rtti_name_0_5,
+  &backend_libs__rtti__backend_libs__rtti__du_functor_desc_tc_rtti_name_0_6,
+  &backend_libs__rtti__backend_libs__rtti__du_functor_desc_tc_rtti_name_0_1,
+  &backend_libs__rtti__backend_libs__rtti__du_functor_desc_tc_rtti_name_0_3,
+  &backend_libs__rtti__backend_libs__rtti__du_functor_desc_tc_rtti_name_0_2,
+  &backend_libs__rtti__backend_libs__rtti__du_functor_desc_tc_rtti_name_0_7,
+  &backend_libs__rtti__backend_libs__rtti__du_functor_desc_tc_rtti_name_0_9,
+  &backend_libs__rtti__backend_libs__rtti__du_functor_desc_tc_rtti_name_0_10,
+  &backend_libs__rtti__backend_libs__rtti__du_functor_desc_tc_rtti_name_0_11,
+  &backend_libs__rtti__backend_libs__rtti__du_functor_desc_tc_rtti_name_0_8
+};
+
+static const MR_Integer backend_libs__rtti__backend_libs__rtti__functor_number_map_tc_rtti_name_0[12] = {
+  (MR_Integer) 0,
+  (MR_Integer) 4,
+  (MR_Integer) 6,
+  (MR_Integer) 5,
+  (MR_Integer) 1,
+  (MR_Integer) 2,
+  (MR_Integer) 3,
+  (MR_Integer) 7,
+  (MR_Integer) 11,
+  (MR_Integer) 8,
+  (MR_Integer) 9,
+  (MR_Integer) 10
+};
+
+const MR_TypeCtorInfo_Struct backend_libs__rtti__backend_libs__rtti__type_ctor_info_tc_rtti_name_0 = {
+  (MR_Integer) 0,
+  (MR_Integer) 17,
+  (MR_Integer) 4,
+  MR_TYPECTOR_REP_DU,
+  ((MR_Box) (backend_libs__rtti____Unify____tc_rtti_name_0_0_10001)),
+  ((MR_Box) (backend_libs__rtti____Compare____tc_rtti_name_0_0_10001)),
+  (MR_String) "backend_libs.rtti",
+  (MR_String) "tc_rtti_name",
+  {     backend_libs__rtti__backend_libs__rtti__du_name_ordered_tc_rtti_name_0 },
+  {     backend_libs__rtti__backend_libs__rtti__du_ptag_ordered_tc_rtti_name_0 },
+  (MR_Integer) 12,
+  (MR_Integer) 4,
+  backend_libs__rtti__backend_libs__rtti__functor_number_map_tc_rtti_name_0
+};
+
+const MR_TypeCtorInfo_Struct backend_libs__rtti__backend_libs__rtti__type_ctor_info_tc_type_0 = {
+  (MR_Integer) 0,
+  (MR_Integer) 17,
+  (MR_Integer) -1,
+  MR_TYPECTOR_REP_EQUIV_GROUND,
+  ((MR_Box) (backend_libs__rtti____Unify____tc_type_0_0_10001)),
+  ((MR_Box) (backend_libs__rtti____Compare____tc_type_0_0_10001)),
+  (MR_String) "backend_libs.rtti",
+  (MR_String) "tc_type",
+  {     NULL },
+  {     (MR_PseudoTypeInfo) &backend_libs__rtti__backend_libs__rtti__type_ctor_info_rtti_maybe_pseudo_type_info_0 },
+  (MR_Integer) -1,
+  (MR_Integer) 0,
+  NULL
+};
+
+static const MR_FA_TypeInfo_Struct1 backend_libs__rtti__set_ordlist__ti_set_ordlist_1backend_libs__rtti__type_ctor_info_type_ctor_flag_0 = {
+  &mercury__set_ordlist__set_ordlist__type_ctor_info_set_ordlist_1,
+  {
+    (MR_TypeInfo) &backend_libs__rtti__backend_libs__rtti__type_ctor_info_type_ctor_flag_0
+  }
+};
+
+static const MR_PseudoTypeInfo backend_libs__rtti__backend_libs__rtti__field_types_type_ctor_data_0_0[8] = {
+  (MR_PseudoTypeInfo) &mercury__builtin__builtin__type_ctor_info_int_0,
+  (MR_PseudoTypeInfo) &mdbcomp__sym_name__mdbcomp__sym_name__type_ctor_info_sym_name_0,
+  (MR_PseudoTypeInfo) &mercury__builtin__builtin__type_ctor_info_string_0,
+  (MR_PseudoTypeInfo) &mercury__builtin__builtin__type_ctor_info_int_0,
+  (MR_PseudoTypeInfo) &mercury__univ__univ__type_ctor_info_univ_0,
+  (MR_PseudoTypeInfo) &mercury__univ__univ__type_ctor_info_univ_0,
+  (MR_PseudoTypeInfo) &backend_libs__rtti__set_ordlist__ti_set_ordlist_1backend_libs__rtti__type_ctor_info_type_ctor_flag_0,
+  (MR_PseudoTypeInfo) &backend_libs__rtti__backend_libs__rtti__type_ctor_info_type_ctor_details_0
+};
+
+static const MR_ConstString backend_libs__rtti__backend_libs__rtti__field_names_type_ctor_data_0_0[8] = {
+  (MR_String) "tcr_version",
+  (MR_String) "tcr_module_name",
+  (MR_String) "tcr_type_name",
+  (MR_String) "tcr_arity",
+  (MR_String) "tcr_unify_pred",
+  (MR_String) "tcr_compare_pred",
+  (MR_String) "tcr_flags",
+  (MR_String) "tcr_rep_details"
+};
+
+static const MR_DuFunctorDesc backend_libs__rtti__backend_libs__rtti__du_functor_desc_type_ctor_data_0_0 = {
+  (MR_String) "type_ctor_data",
+  (MR_Integer) 8,
+  (MR_Integer) 0,
+  MR_SECTAG_NONE,
+  (MR_Integer) 0,
+  (MR_Integer) -1,
+  (MR_Integer) 0,
+  backend_libs__rtti__backend_libs__rtti__field_types_type_ctor_data_0_0,
+  backend_libs__rtti__backend_libs__rtti__field_names_type_ctor_data_0_0,
+  NULL,
+  NULL,
+  MR_FUNCTOR_SUBTYPE_NONE
+};
+
+static const MR_DuFunctorDescPtr backend_libs__rtti__backend_libs__rtti__du_stag_ordered_type_ctor_data_0_0[1] = {
+  &backend_libs__rtti__backend_libs__rtti__du_functor_desc_type_ctor_data_0_0
+};
+
+static const MR_DuPtagLayout backend_libs__rtti__backend_libs__rtti__du_ptag_ordered_type_ctor_data_0[1] = {
+  {
+    (MR_Integer) 1,
+    MR_SECTAG_NONE,
+    backend_libs__rtti__backend_libs__rtti__du_stag_ordered_type_ctor_data_0_0
+  }
+};
+
+static const MR_DuFunctorDescPtr backend_libs__rtti__backend_libs__rtti__du_name_ordered_type_ctor_data_0[1] = {
+  &backend_libs__rtti__backend_libs__rtti__du_functor_desc_type_ctor_data_0_0
+};
+
+static const MR_Integer backend_libs__rtti__backend_libs__rtti__functor_number_map_type_ctor_data_0[1] = {
+  (MR_Integer) 0
+};
+
+const MR_TypeCtorInfo_Struct backend_libs__rtti__backend_libs__rtti__type_ctor_info_type_ctor_data_0 = {
+  (MR_Integer) 0,
+  (MR_Integer) 17,
+  (MR_Integer) 1,
+  MR_TYPECTOR_REP_DU,
+  ((MR_Box) (backend_libs__rtti____Unify____type_ctor_data_0_0_10001)),
+  ((MR_Box) (backend_libs__rtti____Compare____type_ctor_data_0_0_10001)),
+  (MR_String) "backend_libs.rtti",
+  (MR_String) "type_ctor_data",
+  {     backend_libs__rtti__backend_libs__rtti__du_name_ordered_type_ctor_data_0 },
+  {     backend_libs__rtti__backend_libs__rtti__du_ptag_ordered_type_ctor_data_0 },
+  (MR_Integer) 1,
+  (MR_Integer) 4,
+  backend_libs__rtti__backend_libs__rtti__functor_number_map_type_ctor_data_0
+};
+
+static const MR_FA_TypeInfo_Struct1 backend_libs__rtti__list__ti_list_1backend_libs__rtti__type_ctor_info_enum_functor_0 = {
+  &mercury__list__list__type_ctor_info_list_1,
+  {
+    (MR_TypeInfo) &backend_libs__rtti__backend_libs__rtti__type_ctor_info_enum_functor_0
+  }
+};
+
+static const MR_FA_TypeInfo_Struct2 backend_libs__rtti__tree234__ti_tree234_2builtin__type_ctor_info_int_0backend_libs__rtti__type_ctor_info_enum_functor_0 = {
+  &mercury__tree234__tree234__type_ctor_info_tree234_2,
+  {
+    (MR_TypeInfo) &mercury__builtin__builtin__type_ctor_info_int_0,
+    (MR_TypeInfo) &backend_libs__rtti__backend_libs__rtti__type_ctor_info_enum_functor_0
+  }
+};
+
+static const MR_FA_TypeInfo_Struct2 backend_libs__rtti__tree234__ti_tree234_2builtin__type_ctor_info_string_0backend_libs__rtti__type_ctor_info_enum_functor_0 = {
+  &mercury__tree234__tree234__type_ctor_info_tree234_2,
+  {
+    (MR_TypeInfo) &mercury__builtin__builtin__type_ctor_info_string_0,
+    (MR_TypeInfo) &backend_libs__rtti__backend_libs__rtti__type_ctor_info_enum_functor_0
+  }
+};
+
+static const MR_FA_TypeInfo_Struct1 backend_libs__rtti__list__ti_list_1builtin__type_ctor_info_int_0 = {
+  &mercury__list__list__type_ctor_info_list_1,
+  {
+    (MR_TypeInfo) &mercury__builtin__builtin__type_ctor_info_int_0
+  }
+};
+
+static const MR_PseudoTypeInfo backend_libs__rtti__backend_libs__rtti__field_types_type_ctor_details_0_0[6] = {
+  (MR_PseudoTypeInfo) &backend_libs__rtti__backend_libs__rtti__type_ctor_info_equality_axioms_0,
+  (MR_PseudoTypeInfo) &backend_libs__rtti__list__ti_list_1backend_libs__rtti__type_ctor_info_enum_functor_0,
+  (MR_PseudoTypeInfo) &backend_libs__rtti__tree234__ti_tree234_2builtin__type_ctor_info_int_0backend_libs__rtti__type_ctor_info_enum_functor_0,
+  (MR_PseudoTypeInfo) &backend_libs__rtti__tree234__ti_tree234_2builtin__type_ctor_info_string_0backend_libs__rtti__type_ctor_info_enum_functor_0,
+  (MR_PseudoTypeInfo) &mercury__bool__bool__type_ctor_info_bool_0,
+  (MR_PseudoTypeInfo) &backend_libs__rtti__list__ti_list_1builtin__type_ctor_info_int_0
+};
+
+static const MR_ConstString backend_libs__rtti__backend_libs__rtti__field_names_type_ctor_details_0_0[6] = {
+  (MR_String) "enum_axioms",
+  (MR_String) "enum_functors",
+  (MR_String) "enum_value_table",
+  (MR_String) "enum_name_table",
+  (MR_String) "enum_is_dummy",
+  (MR_String) "enum_functor_number_mapping"
+};
+
+static const MR_DuFunctorDesc backend_libs__rtti__backend_libs__rtti__du_functor_desc_type_ctor_details_0_0 = {
+  (MR_String) "tcd_enum",
+  (MR_Integer) 6,
+  (MR_Integer) 0,
+  MR_SECTAG_NONE,
+  (MR_Integer) 0,
+  (MR_Integer) -1,
+  (MR_Integer) 0,
+  backend_libs__rtti__backend_libs__rtti__field_types_type_ctor_details_0_0,
+  backend_libs__rtti__backend_libs__rtti__field_names_type_ctor_details_0_0,
+  NULL,
+  NULL,
+  MR_FUNCTOR_SUBTYPE_NONE
+};
+
+static const MR_FA_TypeInfo_Struct1 backend_libs__rtti__list__ti_list_1backend_libs__rtti__type_ctor_info_foreign_enum_functor_0 = {
+  &mercury__list__list__type_ctor_info_list_1,
+  {
+    (MR_TypeInfo) &backend_libs__rtti__backend_libs__rtti__type_ctor_info_foreign_enum_functor_0
+  }
+};
+
+static const MR_FA_TypeInfo_Struct2 backend_libs__rtti__tree234__ti_tree234_2builtin__type_ctor_info_int_0backend_libs__rtti__type_ctor_info_foreign_enum_functor_0 = {
+  &mercury__tree234__tree234__type_ctor_info_tree234_2,
+  {
+    (MR_TypeInfo) &mercury__builtin__builtin__type_ctor_info_int_0,
+    (MR_TypeInfo) &backend_libs__rtti__backend_libs__rtti__type_ctor_info_foreign_enum_functor_0
+  }
+};
+
+static const MR_FA_TypeInfo_Struct2 backend_libs__rtti__tree234__ti_tree234_2builtin__type_ctor_info_string_0backend_libs__rtti__type_ctor_info_foreign_enum_functor_0 = {
+  &mercury__tree234__tree234__type_ctor_info_tree234_2,
+  {
+    (MR_TypeInfo) &mercury__builtin__builtin__type_ctor_info_string_0,
+    (MR_TypeInfo) &backend_libs__rtti__backend_libs__rtti__type_ctor_info_foreign_enum_functor_0
+  }
+};
+
+static const MR_PseudoTypeInfo backend_libs__rtti__backend_libs__rtti__field_types_type_ctor_details_0_1[6] = {
+  (MR_PseudoTypeInfo) &libs__globals__libs__globals__type_ctor_info_foreign_language_0,
+  (MR_PseudoTypeInfo) &backend_libs__rtti__backend_libs__rtti__type_ctor_info_equality_axioms_0,
+  (MR_PseudoTypeInfo) &backend_libs__rtti__list__ti_list_1backend_libs__rtti__type_ctor_info_foreign_enum_functor_0,
+  (MR_PseudoTypeInfo) &backend_libs__rtti__tree234__ti_tree234_2builtin__type_ctor_info_int_0backend_libs__rtti__type_ctor_info_foreign_enum_functor_0,
+  (MR_PseudoTypeInfo) &backend_libs__rtti__tree234__ti_tree234_2builtin__type_ctor_info_string_0backend_libs__rtti__type_ctor_info_foreign_enum_functor_0,
+  (MR_PseudoTypeInfo) &backend_libs__rtti__list__ti_list_1builtin__type_ctor_info_int_0
+};
+
+static const MR_ConstString backend_libs__rtti__backend_libs__rtti__field_names_type_ctor_details_0_1[6] = {
+  (MR_String) "foreign_enum_language",
+  (MR_String) "foreign_enum_axioms",
+  (MR_String) "foreign_enum_functors",
+  (MR_String) "foreign_enum_ordinal_table",
+  (MR_String) "foreign_enum_name_table",
+  (MR_String) "foreign_enum_functor_number_mapping"
+};
+
+static const MR_DuFunctorDesc backend_libs__rtti__backend_libs__rtti__du_functor_desc_type_ctor_details_0_1 = {
+  (MR_String) "tcd_foreign_enum",
+  (MR_Integer) 6,
+  (MR_Integer) 0,
+  MR_SECTAG_NONE,
+  (MR_Integer) 1,
+  (MR_Integer) -1,
+  (MR_Integer) 1,
+  backend_libs__rtti__backend_libs__rtti__field_types_type_ctor_details_0_1,
+  backend_libs__rtti__backend_libs__rtti__field_names_type_ctor_details_0_1,
+  NULL,
+  NULL,
+  MR_FUNCTOR_SUBTYPE_NONE
+};
+
+static const MR_FA_TypeInfo_Struct1 backend_libs__rtti__list__ti_list_1backend_libs__rtti__type_ctor_info_du_functor_0 = {
+  &mercury__list__list__type_ctor_info_list_1,
+  {
+    (MR_TypeInfo) &backend_libs__rtti__backend_libs__rtti__type_ctor_info_du_functor_0
+  }
+};
+
+static const MR_FA_TypeInfo_Struct2 backend_libs__rtti__tree234__ti_tree234_2builtin__type_ctor_info_string_0tree234__ti_tree234_2builtin__type_ctor_info_int_0backend_libs__rtti__type_ctor_info_du_functor_0 = {
+  &mercury__tree234__tree234__type_ctor_info_tree234_2,
+  {
+    (MR_TypeInfo) &mercury__builtin__builtin__type_ctor_info_string_0,
+    (MR_TypeInfo) &backend_libs__rtti__tree234__ti_tree234_2builtin__type_ctor_info_int_0backend_libs__rtti__type_ctor_info_du_functor_0
+  }
+};
+
+static const MR_PseudoTypeInfo backend_libs__rtti__backend_libs__rtti__field_types_type_ctor_details_0_2[5] = {
+  (MR_PseudoTypeInfo) &backend_libs__rtti__backend_libs__rtti__type_ctor_info_equality_axioms_0,
+  (MR_PseudoTypeInfo) &backend_libs__rtti__list__ti_list_1backend_libs__rtti__type_ctor_info_du_functor_0,
+  (MR_PseudoTypeInfo) &backend_libs__rtti__tree234__ti_tree234_2builtin__type_ctor_info_int_0backend_libs__rtti__type_ctor_info_sectag_table_0,
+  (MR_PseudoTypeInfo) &backend_libs__rtti__tree234__ti_tree234_2builtin__type_ctor_info_string_0tree234__ti_tree234_2builtin__type_ctor_info_int_0backend_libs__rtti__type_ctor_info_du_functor_0,
+  (MR_PseudoTypeInfo) &backend_libs__rtti__list__ti_list_1builtin__type_ctor_info_int_0
+};
+
+static const MR_ConstString backend_libs__rtti__backend_libs__rtti__field_names_type_ctor_details_0_2[5] = {
+  (MR_String) "du_axioms",
+  (MR_String) "du_functors",
+  (MR_String) "du_value_table",
+  (MR_String) "du_name_table",
+  (MR_String) "du_functor_number_mapping"
+};
+
+static const MR_DuFunctorDesc backend_libs__rtti__backend_libs__rtti__du_functor_desc_type_ctor_details_0_2 = {
+  (MR_String) "tcd_du",
+  (MR_Integer) 5,
+  (MR_Integer) 0,
+  MR_SECTAG_NONE,
+  (MR_Integer) 2,
+  (MR_Integer) -1,
+  (MR_Integer) 2,
+  backend_libs__rtti__backend_libs__rtti__field_types_type_ctor_details_0_2,
+  backend_libs__rtti__backend_libs__rtti__field_names_type_ctor_details_0_2,
+  NULL,
+  NULL,
+  MR_FUNCTOR_SUBTYPE_NONE
+};
+
+static const MR_PseudoTypeInfo backend_libs__rtti__backend_libs__rtti__field_types_type_ctor_details_0_3[2] = {
+  (MR_PseudoTypeInfo) &backend_libs__rtti__backend_libs__rtti__type_ctor_info_equality_axioms_0,
+  (MR_PseudoTypeInfo) &backend_libs__rtti__backend_libs__rtti__type_ctor_info_notag_functor_0
+};
+
+static const MR_ConstString backend_libs__rtti__backend_libs__rtti__field_names_type_ctor_details_0_3[2] = {
+  (MR_String) "notag_axioms",
+  (MR_String) "notag_functor"
+};
+
+static const MR_DuFunctorDesc backend_libs__rtti__backend_libs__rtti__du_functor_desc_type_ctor_details_0_3 = {
+  (MR_String) "tcd_notag",
+  (MR_Integer) 2,
+  (MR_Integer) 0,
+  MR_SECTAG_REMOTE,
+  (MR_Integer) 3,
+  (MR_Integer) 0,
+  (MR_Integer) 3,
+  backend_libs__rtti__backend_libs__rtti__field_types_type_ctor_details_0_3,
+  backend_libs__rtti__backend_libs__rtti__field_names_type_ctor_details_0_3,
+  NULL,
+  NULL,
+  MR_FUNCTOR_SUBTYPE_NONE
+};
+
+static const MR_PseudoTypeInfo backend_libs__rtti__backend_libs__rtti__field_types_type_ctor_details_0_4[1] = {
+  (MR_PseudoTypeInfo) &backend_libs__rtti__backend_libs__rtti__type_ctor_info_rtti_maybe_pseudo_type_info_0
+};
+
+static const MR_ConstString backend_libs__rtti__backend_libs__rtti__field_names_type_ctor_details_0_4[1] = {
+  (MR_String) "eqv_type"
+};
+
+static const MR_DuFunctorDesc backend_libs__rtti__backend_libs__rtti__du_functor_desc_type_ctor_details_0_4 = {
+  (MR_String) "tcd_eqv",
+  (MR_Integer) 1,
+  (MR_Integer) 0,
+  MR_SECTAG_REMOTE,
+  (MR_Integer) 3,
+  (MR_Integer) 1,
+  (MR_Integer) 4,
+  backend_libs__rtti__backend_libs__rtti__field_types_type_ctor_details_0_4,
+  backend_libs__rtti__backend_libs__rtti__field_names_type_ctor_details_0_4,
+  NULL,
+  NULL,
+  MR_FUNCTOR_SUBTYPE_NONE
+};
+
+static const MR_PseudoTypeInfo backend_libs__rtti__backend_libs__rtti__field_types_type_ctor_details_0_5[1] = {
+  (MR_PseudoTypeInfo) &backend_libs__rtti__backend_libs__rtti__type_ctor_info_builtin_ctor_0
+};
+
+static const MR_ConstString backend_libs__rtti__backend_libs__rtti__field_names_type_ctor_details_0_5[1] = {
+  (MR_String) "builtin_ctor"
+};
+
+static const MR_DuFunctorDesc backend_libs__rtti__backend_libs__rtti__du_functor_desc_type_ctor_details_0_5 = {
+  (MR_String) "tcd_builtin",
+  (MR_Integer) 1,
+  (MR_Integer) 0,
+  MR_SECTAG_REMOTE,
+  (MR_Integer) 3,
+  (MR_Integer) 2,
+  (MR_Integer) 5,
+  backend_libs__rtti__backend_libs__rtti__field_types_type_ctor_details_0_5,
+  backend_libs__rtti__backend_libs__rtti__field_names_type_ctor_details_0_5,
+  NULL,
+  NULL,
+  MR_FUNCTOR_SUBTYPE_NONE
+};
+
+static const MR_PseudoTypeInfo backend_libs__rtti__backend_libs__rtti__field_types_type_ctor_details_0_6[1] = {
+  (MR_PseudoTypeInfo) &backend_libs__rtti__backend_libs__rtti__type_ctor_info_impl_ctor_0
+};
+
+static const MR_ConstString backend_libs__rtti__backend_libs__rtti__field_names_type_ctor_details_0_6[1] = {
+  (MR_String) "impl_ctor"
+};
+
+static const MR_DuFunctorDesc backend_libs__rtti__backend_libs__rtti__du_functor_desc_type_ctor_details_0_6 = {
+  (MR_String) "tcd_impl_artifact",
+  (MR_Integer) 1,
+  (MR_Integer) 0,
+  MR_SECTAG_REMOTE,
+  (MR_Integer) 3,
+  (MR_Integer) 3,
+  (MR_Integer) 6,
+  backend_libs__rtti__backend_libs__rtti__field_types_type_ctor_details_0_6,
+  backend_libs__rtti__backend_libs__rtti__field_names_type_ctor_details_0_6,
+  NULL,
+  NULL,
+  MR_FUNCTOR_SUBTYPE_NONE
+};
+
+static const MR_PseudoTypeInfo backend_libs__rtti__backend_libs__rtti__field_types_type_ctor_details_0_7[1] = {
+  (MR_PseudoTypeInfo) &backend_libs__rtti__backend_libs__rtti__type_ctor_info_is_stable_0
+};
+
+static const MR_ConstString backend_libs__rtti__backend_libs__rtti__field_names_type_ctor_details_0_7[1] = {
+  (MR_String) "is_stable"
+};
+
+static const MR_DuFunctorDesc backend_libs__rtti__backend_libs__rtti__du_functor_desc_type_ctor_details_0_7 = {
+  (MR_String) "tcd_foreign",
+  (MR_Integer) 1,
+  (MR_Integer) 0,
+  MR_SECTAG_REMOTE,
+  (MR_Integer) 3,
+  (MR_Integer) 4,
+  (MR_Integer) 7,
+  backend_libs__rtti__backend_libs__rtti__field_types_type_ctor_details_0_7,
+  backend_libs__rtti__backend_libs__rtti__field_names_type_ctor_details_0_7,
+  NULL,
+  NULL,
+  MR_FUNCTOR_SUBTYPE_NONE
+};
+
+static const MR_DuFunctorDescPtr backend_libs__rtti__backend_libs__rtti__du_stag_ordered_type_ctor_details_0_0[1] = {
+  &backend_libs__rtti__backend_libs__rtti__du_functor_desc_type_ctor_details_0_0
+};
+
+static const MR_DuFunctorDescPtr backend_libs__rtti__backend_libs__rtti__du_stag_ordered_type_ctor_details_0_1[1] = {
+  &backend_libs__rtti__backend_libs__rtti__du_functor_desc_type_ctor_details_0_1
+};
+
+static const MR_DuFunctorDescPtr backend_libs__rtti__backend_libs__rtti__du_stag_ordered_type_ctor_details_0_2[1] = {
+  &backend_libs__rtti__backend_libs__rtti__du_functor_desc_type_ctor_details_0_2
+};
+
+static const MR_DuFunctorDescPtr backend_libs__rtti__backend_libs__rtti__du_stag_ordered_type_ctor_details_0_3[5] = {
+  &backend_libs__rtti__backend_libs__rtti__du_functor_desc_type_ctor_details_0_3,
+  &backend_libs__rtti__backend_libs__rtti__du_functor_desc_type_ctor_details_0_4,
+  &backend_libs__rtti__backend_libs__rtti__du_functor_desc_type_ctor_details_0_5,
+  &backend_libs__rtti__backend_libs__rtti__du_functor_desc_type_ctor_details_0_6,
+  &backend_libs__rtti__backend_libs__rtti__du_functor_desc_type_ctor_details_0_7
+};
+
+static const MR_DuPtagLayout backend_libs__rtti__backend_libs__rtti__du_ptag_ordered_type_ctor_details_0[4] = {
+  {
+    (MR_Integer) 1,
+    MR_SECTAG_NONE,
+    backend_libs__rtti__backend_libs__rtti__du_stag_ordered_type_ctor_details_0_0
+  },
+  {
+    (MR_Integer) 1,
+    MR_SECTAG_NONE,
+    backend_libs__rtti__backend_libs__rtti__du_stag_ordered_type_ctor_details_0_1
+  },
+  {
+    (MR_Integer) 1,
+    MR_SECTAG_NONE,
+    backend_libs__rtti__backend_libs__rtti__du_stag_ordered_type_ctor_details_0_2
+  },
+  {
+    (MR_Integer) 5,
+    MR_SECTAG_REMOTE,
+    backend_libs__rtti__backend_libs__rtti__du_stag_ordered_type_ctor_details_0_3
+  }
+};
+
+static const MR_DuFunctorDescPtr backend_libs__rtti__backend_libs__rtti__du_name_ordered_type_ctor_details_0[8] = {
+  &backend_libs__rtti__backend_libs__rtti__du_functor_desc_type_ctor_details_0_5,
+  &backend_libs__rtti__backend_libs__rtti__du_functor_desc_type_ctor_details_0_2,
+  &backend_libs__rtti__backend_libs__rtti__du_functor_desc_type_ctor_details_0_0,
+  &backend_libs__rtti__backend_libs__rtti__du_functor_desc_type_ctor_details_0_4,
+  &backend_libs__rtti__backend_libs__rtti__du_functor_desc_type_ctor_details_0_7,
+  &backend_libs__rtti__backend_libs__rtti__du_functor_desc_type_ctor_details_0_1,
+  &backend_libs__rtti__backend_libs__rtti__du_functor_desc_type_ctor_details_0_6,
+  &backend_libs__rtti__backend_libs__rtti__du_functor_desc_type_ctor_details_0_3
+};
+
+static const MR_Integer backend_libs__rtti__backend_libs__rtti__functor_number_map_type_ctor_details_0[8] = {
+  (MR_Integer) 2,
+  (MR_Integer) 5,
+  (MR_Integer) 1,
+  (MR_Integer) 7,
+  (MR_Integer) 3,
+  (MR_Integer) 0,
+  (MR_Integer) 6,
+  (MR_Integer) 4
+};
+
+const MR_TypeCtorInfo_Struct backend_libs__rtti__backend_libs__rtti__type_ctor_info_type_ctor_details_0 = {
+  (MR_Integer) 0,
+  (MR_Integer) 17,
+  (MR_Integer) 4,
+  MR_TYPECTOR_REP_DU,
+  ((MR_Box) (backend_libs__rtti____Unify____type_ctor_details_0_0_10001)),
+  ((MR_Box) (backend_libs__rtti____Compare____type_ctor_details_0_0_10001)),
+  (MR_String) "backend_libs.rtti",
+  (MR_String) "type_ctor_details",
+  {     backend_libs__rtti__backend_libs__rtti__du_name_ordered_type_ctor_details_0 },
+  {     backend_libs__rtti__backend_libs__rtti__du_ptag_ordered_type_ctor_details_0 },
+  (MR_Integer) 8,
+  (MR_Integer) 4,
+  backend_libs__rtti__backend_libs__rtti__functor_number_map_type_ctor_details_0
+};
+
+static const MR_EnumFunctorDesc backend_libs__rtti__backend_libs__rtti__enum_functor_desc_type_ctor_flag_0_0 = {
+  (MR_String) "variable_arity_flag",
+  (MR_Integer) 0
+};
+
+static const MR_EnumFunctorDesc backend_libs__rtti__backend_libs__rtti__enum_functor_desc_type_ctor_flag_0_1 = {
+  (MR_String) "kind_of_du_flag",
+  (MR_Integer) 1
+};
+
+static const MR_EnumFunctorDescPtr backend_libs__rtti__backend_libs__rtti__enum_value_ordered_type_ctor_flag_0[2] = {
+  &backend_libs__rtti__backend_libs__rtti__enum_functor_desc_type_ctor_flag_0_0,
+  &backend_libs__rtti__backend_libs__rtti__enum_functor_desc_type_ctor_flag_0_1
+};
+
+static const MR_EnumFunctorDescPtr backend_libs__rtti__backend_libs__rtti__enum_name_ordered_type_ctor_flag_0[2] = {
+  &backend_libs__rtti__backend_libs__rtti__enum_functor_desc_type_ctor_flag_0_1,
+  &backend_libs__rtti__backend_libs__rtti__enum_functor_desc_type_ctor_flag_0_0
+};
+
+static const MR_Integer backend_libs__rtti__backend_libs__rtti__functor_number_map_type_ctor_flag_0[2] = {
+  (MR_Integer) 1,
+  (MR_Integer) 0
+};
+
+const MR_TypeCtorInfo_Struct backend_libs__rtti__backend_libs__rtti__type_ctor_info_type_ctor_flag_0 = {
+  (MR_Integer) 0,
+  (MR_Integer) 17,
+  (MR_Integer) -1,
+  MR_TYPECTOR_REP_ENUM,
+  ((MR_Box) (backend_libs__rtti____Unify____type_ctor_flag_0_0_10001)),
+  ((MR_Box) (backend_libs__rtti____Compare____type_ctor_flag_0_0_10001)),
+  (MR_String) "backend_libs.rtti",
+  (MR_String) "type_ctor_flag",
+  {     backend_libs__rtti__backend_libs__rtti__enum_name_ordered_type_ctor_flag_0 },
+  {     backend_libs__rtti__backend_libs__rtti__enum_value_ordered_type_ctor_flag_0 },
+  (MR_Integer) 2,
+  (MR_Integer) 4,
+  backend_libs__rtti__backend_libs__rtti__functor_number_map_type_ctor_flag_0
+};
+
+static const MR_EnumFunctorDesc backend_libs__rtti__backend_libs__rtti__enum_functor_desc_var_arity_ctor_id_0_0 = {
+  (MR_String) "pred_type_info",
+  (MR_Integer) 0
+};
+
+static const MR_EnumFunctorDesc backend_libs__rtti__backend_libs__rtti__enum_functor_desc_var_arity_ctor_id_0_1 = {
+  (MR_String) "func_type_info",
+  (MR_Integer) 1
+};
+
+static const MR_EnumFunctorDesc backend_libs__rtti__backend_libs__rtti__enum_functor_desc_var_arity_ctor_id_0_2 = {
+  (MR_String) "tuple_type_info",
+  (MR_Integer) 2
+};
+
+static const MR_EnumFunctorDescPtr backend_libs__rtti__backend_libs__rtti__enum_value_ordered_var_arity_ctor_id_0[3] = {
+  &backend_libs__rtti__backend_libs__rtti__enum_functor_desc_var_arity_ctor_id_0_0,
+  &backend_libs__rtti__backend_libs__rtti__enum_functor_desc_var_arity_ctor_id_0_1,
+  &backend_libs__rtti__backend_libs__rtti__enum_functor_desc_var_arity_ctor_id_0_2
+};
+
+static const MR_EnumFunctorDescPtr backend_libs__rtti__backend_libs__rtti__enum_name_ordered_var_arity_ctor_id_0[3] = {
+  &backend_libs__rtti__backend_libs__rtti__enum_functor_desc_var_arity_ctor_id_0_1,
+  &backend_libs__rtti__backend_libs__rtti__enum_functor_desc_var_arity_ctor_id_0_0,
+  &backend_libs__rtti__backend_libs__rtti__enum_functor_desc_var_arity_ctor_id_0_2
+};
+
+static const MR_Integer backend_libs__rtti__backend_libs__rtti__functor_number_map_var_arity_ctor_id_0[3] = {
+  (MR_Integer) 1,
+  (MR_Integer) 0,
+  (MR_Integer) 2
+};
+
+const MR_TypeCtorInfo_Struct backend_libs__rtti__backend_libs__rtti__type_ctor_info_var_arity_ctor_id_0 = {
+  (MR_Integer) 0,
+  (MR_Integer) 17,
+  (MR_Integer) -1,
+  MR_TYPECTOR_REP_ENUM,
+  ((MR_Box) (backend_libs__rtti____Unify____var_arity_ctor_id_0_0_10001)),
+  ((MR_Box) (backend_libs__rtti____Compare____var_arity_ctor_id_0_0_10001)),
+  (MR_String) "backend_libs.rtti",
+  (MR_String) "var_arity_ctor_id",
+  {     backend_libs__rtti__backend_libs__rtti__enum_name_ordered_var_arity_ctor_id_0 },
+  {     backend_libs__rtti__backend_libs__rtti__enum_value_ordered_var_arity_ctor_id_0 },
+  (MR_Integer) 3,
+  (MR_Integer) 4,
+  backend_libs__rtti__backend_libs__rtti__functor_number_map_var_arity_ctor_id_0
+};
+
+static MR_bool MR_CALL 
+backend_libs__rtti__IntroducedFrom__pred__type_ctor_rep_to_string__1562__1_2_p_0(
+  MR_Word TypeCtorUserEq_8,
+  MR_Word HeadVar__2_46)
+{
+  {
+    MR_bool succeeded = (TypeCtorUserEq_8 == HeadVar__2_46);
+
+    return succeeded;
+  }
+}
+
+static MR_bool MR_CALL 
+backend_libs__rtti__IntroducedFrom__pred__rtti_id_maybe_element_has_array_type__1044__1_2_p_0(
+  MR_Word HeadVar__1_9,
+  MR_Word HeadVar__2_10)
+{
+  {
+    MR_bool succeeded = (HeadVar__1_9 == HeadVar__2_10);
+
+    return succeeded;
+  }
+}
+
+void MR_CALL 
+backend_libs__rtti____Compare____var_arity_ctor_id_0_0(
+  MR_Word * HeadVar__1_1,
+  MR_Word HeadVar__2_2,
+  MR_Word HeadVar__3_3)
+{
+  {
+    MR_Integer Cast_HeadVar1_4 = (MR_Integer) HeadVar__2_2;
+    MR_Integer Cast_HeadVar2_5 = (MR_Integer) HeadVar__3_3;
+
+    mercury__private_builtin__builtin_compare_int_3_p_0(HeadVar__1_1, Cast_HeadVar1_4, Cast_HeadVar2_5);
+  }
+}
+
+MR_bool MR_CALL 
+backend_libs__rtti____Unify____var_arity_ctor_id_0_0(
+  MR_Word HeadVar__2_1,
+  MR_Word HeadVar__2_2)
+{
+  {
+    MR_bool succeeded = (HeadVar__2_1 == HeadVar__2_2);
+
+    return succeeded;
+  }
+}
+
+void MR_CALL 
+backend_libs__rtti____Compare____type_ctor_flag_0_0(
+  MR_Word * HeadVar__1_1,
+  MR_Word HeadVar__2_2,
+  MR_Word HeadVar__3_3)
+{
+  {
+    MR_Integer Cast_HeadVar1_4 = (MR_Integer) HeadVar__2_2;
+    MR_Integer Cast_HeadVar2_5 = (MR_Integer) HeadVar__3_3;
+
+    mercury__private_builtin__builtin_compare_int_3_p_0(HeadVar__1_1, Cast_HeadVar1_4, Cast_HeadVar2_5);
+  }
+}
+
+MR_bool MR_CALL 
+backend_libs__rtti____Unify____type_ctor_flag_0_0(
+  MR_Word HeadVar__2_1,
+  MR_Word HeadVar__2_2)
+{
+  {
+    MR_bool succeeded = (HeadVar__2_1 == HeadVar__2_2);
+
+    return succeeded;
+  }
+}
+
+void MR_CALL 
+backend_libs__rtti____Compare____tc_type_0_0(
+  MR_Word * HeadVar__1_1,
+  MR_Word HeadVar__2_2,
+  MR_Word HeadVar__3_3)
+{
+  {
+    MR_Word Cast_HeadVar1_4 = HeadVar__2_2;
+    MR_Word Cast_HeadVar2_5 = HeadVar__3_3;
+
+    backend_libs__rtti____Compare____rtti_maybe_pseudo_type_info_0_0(HeadVar__1_1, Cast_HeadVar1_4, Cast_HeadVar2_5);
+  }
+}
+
+MR_bool MR_CALL 
+backend_libs__rtti____Unify____tc_type_0_0(
+  MR_Word HeadVar__1_1,
+  MR_Word HeadVar__2_2)
+{
+  {
+    MR_bool succeeded;
+    MR_Word Cast_HeadVar1_3 = HeadVar__1_1;
+    MR_Word Cast_HeadVar2_4 = HeadVar__2_2;
+
+    succeeded = backend_libs__rtti____Unify____rtti_maybe_pseudo_type_info_0_0(Cast_HeadVar1_3, Cast_HeadVar2_4);
+    return succeeded;
+  }
+}
+
+void MR_CALL 
+backend_libs__rtti____Compare____tc_method_id_0_0(
+  MR_Word * HeadVar__1_1,
+  MR_Word HeadVar__2_2,
+  MR_Word HeadVar__3_3)
+{
+  {
+    MR_bool succeeded;
+    MR_Integer CastX_12 = (MR_Integer) HeadVar__2_2;
+    MR_Integer CastY_13 = (MR_Integer) HeadVar__3_3;
+
+    succeeded = (CastX_12 == CastY_13);
+    if (succeeded)
+      *HeadVar__1_1 = (MR_Integer) 0;
+    else
+    {
+      MR_String ArgX1_4 = ((MR_String) (MR_hl_field(MR_mktag(0), HeadVar__2_2, (MR_Integer) 0)));
+      MR_String ArgY1_5 = ((MR_String) (MR_hl_field(MR_mktag(0), HeadVar__3_3, (MR_Integer) 0)));
+      MR_Integer ArgX2_6 = ((MR_Integer) (MR_hl_field(MR_mktag(0), HeadVar__2_2, (MR_Integer) 1)));
+      MR_Integer ArgY2_7 = ((MR_Integer) (MR_hl_field(MR_mktag(0), HeadVar__3_3, (MR_Integer) 1)));
+      MR_Word ArgX3_8 = ((MR_Word) (MR_hl_field(MR_mktag(0), HeadVar__2_2, (MR_Integer) 2)));
+      MR_Word ArgY3_9 = ((MR_Word) (MR_hl_field(MR_mktag(0), HeadVar__3_3, (MR_Integer) 2)));
+      MR_Word Var_10;
+
+      mercury__private_builtin__builtin_compare_string_3_p_0(&Var_10, ArgX1_4, ArgY1_5);
+      succeeded = (Var_10 == (MR_Integer) 0);
+      succeeded = !(succeeded);
+      if (succeeded)
+        *HeadVar__1_1 = Var_10;
+      else
+      {
+        MR_Word Var_11;
+
+        mercury__private_builtin__builtin_compare_int_3_p_0(&Var_11, ArgX2_6, ArgY2_7);
+        succeeded = (Var_11 == (MR_Integer) 0);
+        succeeded = !(succeeded);
+        if (succeeded)
+          *HeadVar__1_1 = Var_11;
+        else
+        {
+          MR_Integer Var_17 = (MR_Integer) ArgX3_8;
+          MR_Integer Var_18 = (MR_Integer) ArgY3_9;
+
+          mercury__private_builtin__builtin_compare_int_3_p_0(HeadVar__1_1, Var_17, Var_18);
+        }
+      }
+    }
+  }
+}
+
+MR_bool MR_CALL 
+backend_libs__rtti____Unify____tc_method_id_0_0(
+  MR_Word HeadVar__1_1,
+  MR_Word HeadVar__2_2)
+{
+  {
+    MR_bool succeeded;
+    MR_Integer CastX_9 = (MR_Integer) HeadVar__1_1;
+    MR_Integer CastY_10 = (MR_Integer) HeadVar__2_2;
+
+    succeeded = (CastX_9 == CastY_10);
+    if (succeeded)
+      succeeded = MR_TRUE;
+    else
+    {
+      MR_String ArgX1_3 = ((MR_String) (MR_hl_field(MR_mktag(0), HeadVar__1_1, (MR_Integer) 0)));
+      MR_String ArgY1_4 = ((MR_String) (MR_hl_field(MR_mktag(0), HeadVar__2_2, (MR_Integer) 0)));
+      MR_Integer ArgX2_5 = ((MR_Integer) (MR_hl_field(MR_mktag(0), HeadVar__1_1, (MR_Integer) 1)));
+      MR_Integer ArgY2_6 = ((MR_Integer) (MR_hl_field(MR_mktag(0), HeadVar__2_2, (MR_Integer) 1)));
+      MR_Word ArgX3_7 = ((MR_Word) (MR_hl_field(MR_mktag(0), HeadVar__1_1, (MR_Integer) 2)));
+      MR_Word ArgY3_8 = ((MR_Word) (MR_hl_field(MR_mktag(0), HeadVar__2_2, (MR_Integer) 2)));
+
+      succeeded = (strcmp(ArgX1_3, ArgY1_4) == 0);
+      if (succeeded)
+      {
+        succeeded = (ArgX2_5 == ArgY2_6);
+        if (succeeded)
+          succeeded = (ArgX3_7 == ArgY3_8);
+      }
+    }
+    return succeeded;
+  }
+}
+
+void MR_CALL 
+backend_libs__rtti____Compare____tc_dict_0_0(
+  MR_Word * HeadVar__1_1,
+  MR_Word HeadVar__2_2,
+  MR_Word HeadVar__3_3)
+{
+  {
+    MR_bool succeeded;
+    MR_Integer CastX_12 = (MR_Integer) HeadVar__2_2;
+    MR_Integer CastY_13 = (MR_Integer) HeadVar__3_3;
+
+    succeeded = (CastX_12 == CastY_13);
+    if (succeeded)
+      *HeadVar__1_1 = (MR_Integer) 0;
+    else
+    {
+      MR_Word ArgX1_4 = ((MR_Word) (MR_hl_field(MR_mktag(0), HeadVar__2_2, (MR_Integer) 0)));
+      MR_Word ArgY1_5 = ((MR_Word) (MR_hl_field(MR_mktag(0), HeadVar__3_3, (MR_Integer) 0)));
+      MR_Word ArgX2_6 = ((MR_Word) (MR_hl_field(MR_mktag(0), HeadVar__2_2, (MR_Integer) 1)));
+      MR_Word ArgY2_7 = ((MR_Word) (MR_hl_field(MR_mktag(0), HeadVar__3_3, (MR_Integer) 1)));
+      MR_Word ArgX3_8 = ((MR_Word) (MR_hl_field(MR_mktag(0), HeadVar__2_2, (MR_Integer) 2)));
+      MR_Word ArgY3_9 = ((MR_Word) (MR_hl_field(MR_mktag(0), HeadVar__3_3, (MR_Integer) 2)));
+      MR_Word Var_10;
+
+      backend_libs__rtti____Compare____tc_name_0_0(&Var_10, ArgX1_4, ArgY1_5);
+      succeeded = (Var_10 == (MR_Integer) 0);
+      succeeded = !(succeeded);
+      if (succeeded)
+        *HeadVar__1_1 = Var_10;
+      else
+      {
+        MR_Word Var_11;
+
+        mercury__builtin__compare_3_p_0((MR_Word) &backend_libs__rtti_scalar_common_1[7], &Var_11, ((MR_Box) (ArgX2_6)), ((MR_Box) (ArgY2_7)));
+        succeeded = (Var_11 == (MR_Integer) 0);
+        succeeded = !(succeeded);
+        if (succeeded)
+          *HeadVar__1_1 = Var_11;
+        else
+        {
+          mercury__builtin__compare_3_p_0((MR_Word) &backend_libs__rtti_scalar_common_1[0], HeadVar__1_1, ((MR_Box) (ArgX3_8)), ((MR_Box) (ArgY3_9)));
+        }
+      }
+    }
+  }
+}
+
+MR_bool MR_CALL 
+backend_libs__rtti____Unify____tc_dict_0_0(
+  MR_Word HeadVar__1_1,
+  MR_Word HeadVar__2_2)
+{
+  {
+    MR_bool succeeded;
+    MR_Integer CastX_9 = (MR_Integer) HeadVar__1_1;
+    MR_Integer CastY_10 = (MR_Integer) HeadVar__2_2;
+
+    succeeded = (CastX_9 == CastY_10);
+    if (succeeded)
+      succeeded = MR_TRUE;
+    else
+    {
+      MR_Word TypeInfo_11_11;
+      MR_Word TypeInfo_12_12;
+      MR_Word ArgX1_3 = ((MR_Word) (MR_hl_field(MR_mktag(0), HeadVar__1_1, (MR_Integer) 0)));
+      MR_Word ArgY1_4 = ((MR_Word) (MR_hl_field(MR_mktag(0), HeadVar__2_2, (MR_Integer) 0)));
+      MR_Word ArgX2_5 = ((MR_Word) (MR_hl_field(MR_mktag(0), HeadVar__1_1, (MR_Integer) 1)));
+      MR_Word ArgY2_6 = ((MR_Word) (MR_hl_field(MR_mktag(0), HeadVar__2_2, (MR_Integer) 1)));
+      MR_Word ArgX3_7 = ((MR_Word) (MR_hl_field(MR_mktag(0), HeadVar__1_1, (MR_Integer) 2)));
+      MR_Word ArgY3_8 = ((MR_Word) (MR_hl_field(MR_mktag(0), HeadVar__2_2, (MR_Integer) 2)));
+
+      succeeded = backend_libs__rtti____Unify____tc_name_0_0(ArgX1_3, ArgY1_4);
+      if (succeeded)
+      {
+        TypeInfo_11_11 = (MR_Word) &backend_libs__rtti_scalar_common_1[7];
+        succeeded = mercury__builtin__unify_2_p_0(TypeInfo_11_11, ((MR_Box) (ArgX2_5)), ((MR_Box) (ArgY2_6)));
+        if (succeeded)
+        {
+          TypeInfo_12_12 = (MR_Word) &backend_libs__rtti_scalar_common_1[0];
+          succeeded = mercury__builtin__unify_2_p_0(TypeInfo_12_12, ((MR_Box) (ArgX3_7)), ((MR_Box) (ArgY3_8)));
+        }
+      }
+    }
+    return succeeded;
+  }
+}
+
+void MR_CALL 
+backend_libs__rtti____Compare____tc_constraint_0_0(
+  MR_Word * HeadVar__1_1,
+  MR_Word HeadVar__2_2,
+  MR_Word HeadVar__3_3)
+{
+  {
+    MR_bool succeeded;
+    MR_Integer CastX_9 = (MR_Integer) HeadVar__2_2;
+    MR_Integer CastY_10 = (MR_Integer) HeadVar__3_3;
+
+    succeeded = (CastX_9 == CastY_10);
+    if (succeeded)
+      *HeadVar__1_1 = (MR_Integer) 0;
+    else
+    {
+      MR_Word ArgX1_4 = ((MR_Word) (MR_hl_field(MR_mktag(0), HeadVar__2_2, (MR_Integer) 0)));
+      MR_Word ArgY1_5 = ((MR_Word) (MR_hl_field(MR_mktag(0), HeadVar__3_3, (MR_Integer) 0)));
+      MR_Word ArgX2_6 = ((MR_Word) (MR_hl_field(MR_mktag(0), HeadVar__2_2, (MR_Integer) 1)));
+      MR_Word ArgY2_7 = ((MR_Word) (MR_hl_field(MR_mktag(0), HeadVar__3_3, (MR_Integer) 1)));
+      MR_Word Var_8;
+
+      backend_libs__rtti____Compare____tc_name_0_0(&Var_8, ArgX1_4, ArgY1_5);
+      succeeded = (Var_8 == (MR_Integer) 0);
+      succeeded = !(succeeded);
+      if (succeeded)
+        *HeadVar__1_1 = Var_8;
+      else
+      {
+        mercury__builtin__compare_3_p_0((MR_Word) &backend_libs__rtti_scalar_common_1[6], HeadVar__1_1, ((MR_Box) (ArgX2_6)), ((MR_Box) (ArgY2_7)));
+      }
+    }
+  }
+}
+
+MR_bool MR_CALL 
+backend_libs__rtti____Unify____tc_constraint_0_0(
+  MR_Word HeadVar__1_1,
+  MR_Word HeadVar__2_2)
+{
+  {
+    MR_bool succeeded;
+    MR_Integer CastX_7 = (MR_Integer) HeadVar__1_1;
+    MR_Integer CastY_8 = (MR_Integer) HeadVar__2_2;
+
+    succeeded = (CastX_7 == CastY_8);
+    if (succeeded)
+      succeeded = MR_TRUE;
+    else
+    {
+      MR_Word TypeInfo_9_9;
+      MR_Word ArgX1_3 = ((MR_Word) (MR_hl_field(MR_mktag(0), HeadVar__1_1, (MR_Integer) 0)));
+      MR_Word ArgY1_4 = ((MR_Word) (MR_hl_field(MR_mktag(0), HeadVar__2_2, (MR_Integer) 0)));
+      MR_Word ArgX2_5 = ((MR_Word) (MR_hl_field(MR_mktag(0), HeadVar__1_1, (MR_Integer) 1)));
+      MR_Word ArgY2_6 = ((MR_Word) (MR_hl_field(MR_mktag(0), HeadVar__2_2, (MR_Integer) 1)));
+
+      succeeded = backend_libs__rtti____Unify____tc_name_0_0(ArgX1_3, ArgY1_4);
+      if (succeeded)
+      {
+        TypeInfo_9_9 = (MR_Word) &backend_libs__rtti_scalar_common_1[6];
+        succeeded = mercury__builtin__unify_2_p_0(TypeInfo_9_9, ((MR_Box) (ArgX2_5)), ((MR_Box) (ArgY2_6)));
+      }
+    }
+    return succeeded;
+  }
+}
+
+void MR_CALL 
+backend_libs__rtti____Compare____target_prefixes_0_0(
+  MR_Word * HeadVar__1_1,
+  MR_Word HeadVar__2_2,
+  MR_Word HeadVar__3_3)
+{
+  {
+    MR_bool succeeded;
+    MR_Integer CastX_9 = (MR_Integer) HeadVar__2_2;
+    MR_Integer CastY_10 = (MR_Integer) HeadVar__3_3;
+
+    succeeded = (CastX_9 == CastY_10);
+    if (succeeded)
+      *HeadVar__1_1 = (MR_Integer) 0;
+    else
+    {
+      MR_String ArgX1_4 = ((MR_String) (MR_hl_field(MR_mktag(0), HeadVar__2_2, (MR_Integer) 0)));
+      MR_String ArgY1_5 = ((MR_String) (MR_hl_field(MR_mktag(0), HeadVar__3_3, (MR_Integer) 0)));
+      MR_String ArgX2_6 = ((MR_String) (MR_hl_field(MR_mktag(0), HeadVar__2_2, (MR_Integer) 1)));
+      MR_String ArgY2_7 = ((MR_String) (MR_hl_field(MR_mktag(0), HeadVar__3_3, (MR_Integer) 1)));
+      MR_Word Var_8;
+
+      mercury__private_builtin__builtin_compare_string_3_p_0(&Var_8, ArgX1_4, ArgY1_5);
+      succeeded = (Var_8 == (MR_Integer) 0);
+      succeeded = !(succeeded);
+      if (succeeded)
+        *HeadVar__1_1 = Var_8;
+      else
+        mercury__private_builtin__builtin_compare_string_3_p_0(HeadVar__1_1, ArgX2_6, ArgY2_7);
+    }
+  }
+}
+
+MR_bool MR_CALL 
+backend_libs__rtti____Unify____target_prefixes_0_0(
+  MR_Word HeadVar__1_1,
+  MR_Word HeadVar__2_2)
+{
+  {
+    MR_bool succeeded;
+    MR_Integer CastX_7 = (MR_Integer) HeadVar__1_1;
+    MR_Integer CastY_8 = (MR_Integer) HeadVar__2_2;
+
+    succeeded = (CastX_7 == CastY_8);
+    if (succeeded)
+      succeeded = MR_TRUE;
+    else
+    {
+      MR_String ArgX1_3 = ((MR_String) (MR_hl_field(MR_mktag(0), HeadVar__1_1, (MR_Integer) 0)));
+      MR_String ArgY1_4 = ((MR_String) (MR_hl_field(MR_mktag(0), HeadVar__2_2, (MR_Integer) 0)));
+      MR_String ArgX2_5 = ((MR_String) (MR_hl_field(MR_mktag(0), HeadVar__1_1, (MR_Integer) 1)));
+      MR_String ArgY2_6 = ((MR_String) (MR_hl_field(MR_mktag(0), HeadVar__2_2, (MR_Integer) 1)));
+
+      succeeded = (strcmp(ArgX1_3, ArgY1_4) == 0);
+      if (succeeded)
+        succeeded = (strcmp(ArgX2_5, ArgY2_6) == 0);
+    }
+    return succeeded;
+  }
+}
+
+void MR_CALL 
+backend_libs__rtti____Compare____stag_map_0_0(
+  MR_Word * HeadVar__1_1,
+  MR_Word HeadVar__2_2,
+  MR_Word HeadVar__3_3)
+{
+  {
+    MR_Word Cast_HeadVar1_4 = HeadVar__2_2;
+    MR_Word Cast_HeadVar2_5 = HeadVar__3_3;
+
+    mercury__builtin__compare_3_p_0((MR_Word) &backend_libs__rtti_scalar_common_2[1], HeadVar__1_1, ((MR_Box) (Cast_HeadVar1_4)), ((MR_Box) (Cast_HeadVar2_5)));
+  }
+}
+
+MR_bool MR_CALL 
+backend_libs__rtti____Unify____stag_map_0_0(
+  MR_Word HeadVar__1_1,
+  MR_Word HeadVar__2_2)
+{
+  {
+    MR_bool succeeded;
+    MR_Word Cast_HeadVar1_3 = HeadVar__1_1;
+    MR_Word Cast_HeadVar2_4 = HeadVar__2_2;
+
+    succeeded = mercury__builtin__unify_2_p_0((MR_Word) &backend_libs__rtti_scalar_common_2[1], ((MR_Box) (Cast_HeadVar1_3)), ((MR_Box) (Cast_HeadVar2_4)));
+    return succeeded;
+  }
+}
+
+void MR_CALL 
+backend_libs__rtti____Compare____sectag_table_0_0(
+  MR_Word * HeadVar__1_1,
+  MR_Word HeadVar__2_2,
+  MR_Word HeadVar__3_3)
+{
+  {
+    MR_bool succeeded;
+    MR_Integer CastX_12 = (MR_Integer) HeadVar__2_2;
+    MR_Integer CastY_13 = (MR_Integer) HeadVar__3_3;
+
+    succeeded = (CastX_12 == CastY_13);
+    if (succeeded)
+      *HeadVar__1_1 = (MR_Integer) 0;
+    else
+    {
+      MR_Word ArgX1_4 = ((MR_Word) (MR_hl_field(MR_mktag(0), HeadVar__2_2, (MR_Integer) 0)));
+      MR_Word ArgY1_5 = ((MR_Word) (MR_hl_field(MR_mktag(0), HeadVar__3_3, (MR_Integer) 0)));
+      MR_Integer ArgX2_6 = ((MR_Integer) (MR_hl_field(MR_mktag(0), HeadVar__2_2, (MR_Integer) 1)));
+      MR_Integer ArgY2_7 = ((MR_Integer) (MR_hl_field(MR_mktag(0), HeadVar__3_3, (MR_Integer) 1)));
+      MR_Word ArgX3_8 = ((MR_Word) (MR_hl_field(MR_mktag(0), HeadVar__2_2, (MR_Integer) 2)));
+      MR_Word ArgY3_9 = ((MR_Word) (MR_hl_field(MR_mktag(0), HeadVar__3_3, (MR_Integer) 2)));
+      MR_Word Var_10;
+      MR_Integer Var_17 = (MR_Integer) ArgX1_4;
+      MR_Integer Var_18 = (MR_Integer) ArgY1_5;
+
+      mercury__private_builtin__builtin_compare_int_3_p_0(&Var_10, Var_17, Var_18);
+      succeeded = (Var_10 == (MR_Integer) 0);
+      succeeded = !(succeeded);
+      if (succeeded)
+        *HeadVar__1_1 = Var_10;
+      else
+      {
+        MR_Word Var_11;
+
+        mercury__private_builtin__builtin_compare_int_3_p_0(&Var_11, ArgX2_6, ArgY2_7);
+        succeeded = (Var_11 == (MR_Integer) 0);
+        succeeded = !(succeeded);
+        if (succeeded)
+          *HeadVar__1_1 = Var_11;
+        else
+        {
+          mercury__builtin__compare_3_p_0((MR_Word) &backend_libs__rtti_scalar_common_2[1], HeadVar__1_1, ((MR_Box) (ArgX3_8)), ((MR_Box) (ArgY3_9)));
+        }
+      }
+    }
+  }
+}
+
+MR_bool MR_CALL 
+backend_libs__rtti____Unify____sectag_table_0_0(
+  MR_Word HeadVar__1_1,
+  MR_Word HeadVar__2_2)
+{
+  {
+    MR_bool succeeded;
+    MR_Integer CastX_9 = (MR_Integer) HeadVar__1_1;
+    MR_Integer CastY_10 = (MR_Integer) HeadVar__2_2;
+
+    succeeded = (CastX_9 == CastY_10);
+    if (succeeded)
+      succeeded = MR_TRUE;
+    else
+    {
+      MR_Word TypeInfo_11_11;
+      MR_Word ArgX1_3 = ((MR_Word) (MR_hl_field(MR_mktag(0), HeadVar__1_1, (MR_Integer) 0)));
+      MR_Word ArgY1_4 = ((MR_Word) (MR_hl_field(MR_mktag(0), HeadVar__2_2, (MR_Integer) 0)));
+      MR_Integer ArgX2_5 = ((MR_Integer) (MR_hl_field(MR_mktag(0), HeadVar__1_1, (MR_Integer) 1)));
+      MR_Integer ArgY2_6 = ((MR_Integer) (MR_hl_field(MR_mktag(0), HeadVar__2_2, (MR_Integer) 1)));
+      MR_Word ArgX3_7 = ((MR_Word) (MR_hl_field(MR_mktag(0), HeadVar__1_1, (MR_Integer) 2)));
+      MR_Word ArgY3_8 = ((MR_Word) (MR_hl_field(MR_mktag(0), HeadVar__2_2, (MR_Integer) 2)));
+
+      succeeded = (ArgX1_3 == ArgY1_4);
+      if (succeeded)
+      {
+        succeeded = (ArgX2_5 == ArgY2_6);
+        if (succeeded)
+        {
+          TypeInfo_11_11 = (MR_Word) &backend_libs__rtti_scalar_common_2[1];
+          succeeded = mercury__builtin__unify_2_p_0(TypeInfo_11_11, ((MR_Box) (ArgX3_7)), ((MR_Box) (ArgY3_8)));
+        }
+      }
+    }
+    return succeeded;
+  }
+}
+
+void MR_CALL 
+backend_libs__rtti____Compare____sectag_locn_0_0(
+  MR_Word * HeadVar__1_1,
+  MR_Word HeadVar__2_2,
+  MR_Word HeadVar__3_3)
+{
+  {
+    MR_Integer Cast_HeadVar1_4 = (MR_Integer) HeadVar__2_2;
+    MR_Integer Cast_HeadVar2_5 = (MR_Integer) HeadVar__3_3;
+
+    mercury__private_builtin__builtin_compare_int_3_p_0(HeadVar__1_1, Cast_HeadVar1_4, Cast_HeadVar2_5);
+  }
+}
+
+MR_bool MR_CALL 
+backend_libs__rtti____Unify____sectag_locn_0_0(
+  MR_Word HeadVar__2_1,
+  MR_Word HeadVar__2_2)
+{
+  {
+    MR_bool succeeded = (HeadVar__2_1 == HeadVar__2_2);
+
+    return succeeded;
+  }
+}
+
+void MR_CALL 
+backend_libs__rtti____Compare____rtti_id_maybe_element_0_0(
+  MR_Word * HeadVar__1_1,
+  MR_Word HeadVar__2_2,
+  MR_Word HeadVar__3_3)
+{
+  {
+    MR_bool succeeded;
+    MR_Integer CastX_12 = (MR_Integer) HeadVar__2_2;
+    MR_Integer CastY_13 = (MR_Integer) HeadVar__3_3;
+
+    succeeded = (CastX_12 == CastY_13);
+    if (succeeded)
+      *HeadVar__1_1 = (MR_Integer) 0;
+    else
+    if (((MR_tag((MR_Word) HeadVar__2_2)) == (MR_mktag((MR_Integer) 1))))
+    {
+      MR_Word Var_16 = ((MR_Word) (MR_hl_field(MR_mktag(1), HeadVar__2_2, (MR_Integer) 0)));
+
+      if (((MR_tag((MR_Word) HeadVar__3_3)) == (MR_mktag((MR_Integer) 1))))
+      {
+        MR_Word ArgY1_11 = ((MR_Word) (MR_hl_field(MR_mktag(1), HeadVar__3_3, (MR_Integer) 0)));
+
+        backend_libs__rtti____Compare____rtti_id_0_0(HeadVar__1_1, Var_16, ArgY1_11);
+      }
+      else
+        *HeadVar__1_1 = (MR_Integer) 2;
+    }
+    else
+    {
+      MR_Word Var_17 = ((MR_Word) (MR_hl_field(MR_mktag(0), HeadVar__2_2, (MR_Integer) 0)));
+
+      if (((MR_tag((MR_Word) HeadVar__3_3)) == (MR_mktag((MR_Integer) 1))))
+        *HeadVar__1_1 = (MR_Integer) 1;
+      else
+      {
+        MR_Word ArgY1_5 = ((MR_Word) (MR_hl_field(MR_mktag(0), HeadVar__3_3, (MR_Integer) 0)));
+
+        backend_libs__rtti____Compare____rtti_id_0_0(HeadVar__1_1, Var_17, ArgY1_5);
+      }
+    }
+  }
+}
+
+MR_bool MR_CALL 
+backend_libs__rtti____Unify____rtti_id_maybe_element_0_0(
+  MR_Word HeadVar__1_1,
+  MR_Word HeadVar__2_2)
+{
+  {
+    MR_bool succeeded;
+    MR_Integer CastX_7 = (MR_Integer) HeadVar__1_1;
+    MR_Integer CastY_8 = (MR_Integer) HeadVar__2_2;
+
+    succeeded = (CastX_7 == CastY_8);
+    if (succeeded)
+      succeeded = MR_TRUE;
+    else
+    if (((MR_tag((MR_Word) HeadVar__1_1)) == (MR_mktag((MR_Integer) 1))))
+    {
+      MR_Word ArgX1_5 = ((MR_Word) (MR_hl_field(MR_mktag(1), HeadVar__1_1, (MR_Integer) 0)));
+      MR_Word ArgY1_6;
+
+      succeeded = ((MR_tag((MR_Word) HeadVar__2_2)) == (MR_mktag((MR_Integer) 1)));
+      if (succeeded)
+      {
+        ArgY1_6 = ((MR_Word) (MR_hl_field(MR_mktag(1), HeadVar__2_2, (MR_Integer) 0)));
+        succeeded = backend_libs__rtti____Unify____rtti_id_0_0(ArgX1_5, ArgY1_6);
+      }
+    }
+    else
+    {
+      MR_Word ArgX1_3 = ((MR_Word) (MR_hl_field(MR_mktag(0), HeadVar__1_1, (MR_Integer) 0)));
+      MR_Word ArgY1_4;
+
+      succeeded = ((MR_tag((MR_Word) HeadVar__2_2)) == (MR_mktag((MR_Integer) 0)));
+      if (succeeded)
+      {
+        ArgY1_4 = ((MR_Word) (MR_hl_field(MR_mktag(0), HeadVar__2_2, (MR_Integer) 0)));
+        succeeded = backend_libs__rtti____Unify____rtti_id_0_0(ArgX1_3, ArgY1_4);
+      }
+    }
+    return succeeded;
+  }
+}
+
+void MR_CALL 
+backend_libs__rtti____Compare____rtti_id_0_0(
+  MR_Word * HeadVar__1_1,
+  MR_Word HeadVar__2_2,
+  MR_Word HeadVar__3_3)
+{
+  {
+    MR_bool succeeded;
+    MR_Integer CastX_22 = (MR_Integer) HeadVar__2_2;
+    MR_Integer CastY_23 = (MR_Integer) HeadVar__3_3;
+
+    succeeded = (CastX_22 == CastY_23);
+    if (succeeded)
+      *HeadVar__1_1 = (MR_Integer) 0;
+    else
+    if (((MR_tag((MR_Word) HeadVar__2_2)) == (MR_mktag((MR_Integer) 0))))
+    {
+      MR_Word Var_28 = ((MR_Word) (MR_hl_field(MR_mktag(0), HeadVar__2_2, (MR_Integer) 1)));
+      MR_Word Var_29 = ((MR_Word) (MR_hl_field(MR_mktag(0), HeadVar__2_2, (MR_Integer) 0)));
+
+      if (((MR_tag((MR_Word) HeadVar__3_3)) == (MR_mktag((MR_Integer) 0))))
+      {
+        MR_Word ArgY1_5 = ((MR_Word) (MR_hl_field(MR_mktag(0), HeadVar__3_3, (MR_Integer) 0)));
+        MR_Word ArgY2_7 = ((MR_Word) (MR_hl_field(MR_mktag(0), HeadVar__3_3, (MR_Integer) 1)));
+        MR_Word Var_8;
+
+        backend_libs__rtti____Compare____rtti_type_ctor_0_0(&Var_8, Var_29, ArgY1_5);
+        succeeded = (Var_8 == (MR_Integer) 0);
+        succeeded = !(succeeded);
+        if (succeeded)
+          *HeadVar__1_1 = Var_8;
+        else
+          backend_libs__rtti____Compare____ctor_rtti_name_0_0(HeadVar__1_1, Var_28, ArgY2_7);
+      }
+      else
+        *HeadVar__1_1 = (MR_Integer) 1;
+    }
+    else
+    {
+      MR_Word Var_30 = ((MR_Word) (MR_hl_field(MR_mktag(1), HeadVar__2_2, (MR_Integer) 1)));
+      MR_Word Var_31 = ((MR_Word) (MR_hl_field(MR_mktag(1), HeadVar__2_2, (MR_Integer) 0)));
+
+      if (((MR_tag((MR_Word) HeadVar__3_3)) == (MR_mktag((MR_Integer) 0))))
+        *HeadVar__1_1 = (MR_Integer) 2;
+      else
+      {
+        MR_Word ArgY1_18 = ((MR_Word) (MR_hl_field(MR_mktag(1), HeadVar__3_3, (MR_Integer) 0)));
+        MR_Word ArgY2_20 = ((MR_Word) (MR_hl_field(MR_mktag(1), HeadVar__3_3, (MR_Integer) 1)));
+        MR_Word Var_21;
+
+        backend_libs__rtti____Compare____tc_name_0_0(&Var_21, Var_31, ArgY1_18);
+        succeeded = (Var_21 == (MR_Integer) 0);
+        succeeded = !(succeeded);
+        if (succeeded)
+          *HeadVar__1_1 = Var_21;
+        else
+          backend_libs__rtti____Compare____tc_rtti_name_0_0(HeadVar__1_1, Var_30, ArgY2_20);
+      }
+    }
+  }
+}
+
+void MR_CALL 
+backend_libs__rtti____Compare____tc_rtti_name_0_0(
+  MR_Word * HeadVar__1_1,
+  MR_Word HeadVar__2_2,
+  MR_Word HeadVar__3_3)
+{
+  {
+    MR_bool succeeded;
+    MR_Integer CastX_272 = (MR_Integer) HeadVar__2_2;
+    MR_Integer CastY_273 = (MR_Integer) HeadVar__3_3;
+
+    succeeded = (CastX_272 == CastY_273);
+    if (succeeded)
+      *HeadVar__1_1 = (MR_Integer) 0;
+    else
+      switch (MR_tag((MR_Word) HeadVar__2_2)) {
+        default: /*NOTREACHED*/ MR_assert(0);
+        case (MR_Integer) 0:
+          switch (MR_unmkbody(HeadVar__2_2)) {
+            default: /*NOTREACHED*/ MR_assert(0);
+            case (MR_Integer) 0:
+              switch (MR_tag((MR_Word) HeadVar__3_3)) {
+                default: /*NOTREACHED*/ MR_assert(0);
+                case (MR_Integer) 0:
+                  switch (MR_unmkbody(HeadVar__3_3)) {
+                    default: /*NOTREACHED*/ MR_assert(0);
+                    case (MR_Integer) 0:
+                      *HeadVar__1_1 = (MR_Integer) 0;
+                      break;
+                    case (MR_Integer) 1:
+                      *HeadVar__1_1 = (MR_Integer) 1;
+                      break;
+                    case (MR_Integer) 2:
+                      *HeadVar__1_1 = (MR_Integer) 1;
+                      break;
+                    case (MR_Integer) 3:
+                      *HeadVar__1_1 = (MR_Integer) 1;
+                      break;
+                    case (MR_Integer) 4:
+                      *HeadVar__1_1 = (MR_Integer) 1;
+                      break;
+                  }
+                  break;
+                case (MR_Integer) 1:
+                  *HeadVar__1_1 = (MR_Integer) 2;
+                  break;
+                case (MR_Integer) 2:
+                  *HeadVar__1_1 = (MR_Integer) 1;
+                  break;
+                case (MR_Integer) 3:
+                  switch (((MR_Integer) (MR_Word) (MR_hl_field(MR_mktag(3), HeadVar__3_3, (MR_Integer) 0)))) {
+                    default: /*NOTREACHED*/ MR_assert(0);
+                    case (MR_Integer) 0:
+                      *HeadVar__1_1 = (MR_Integer) 1;
+                      break;
+                    case (MR_Integer) 1:
+                      *HeadVar__1_1 = (MR_Integer) 1;
+                      break;
+                    case (MR_Integer) 2:
+                      *HeadVar__1_1 = (MR_Integer) 1;
+                      break;
+                    case (MR_Integer) 3:
+                      *HeadVar__1_1 = (MR_Integer) 1;
+                      break;
+                    case (MR_Integer) 4:
+                      *HeadVar__1_1 = (MR_Integer) 1;
+                      break;
+                  }
+                  break;
+              }
+              break;
+            case (MR_Integer) 1:
+              switch (MR_tag((MR_Word) HeadVar__3_3)) {
+                default: /*NOTREACHED*/ MR_assert(0);
+                case (MR_Integer) 0:
+                  switch (MR_unmkbody(HeadVar__3_3)) {
+                    default: /*NOTREACHED*/ MR_assert(0);
+                    case (MR_Integer) 0:
+                      *HeadVar__1_1 = (MR_Integer) 2;
+                      break;
+                    case (MR_Integer) 1:
+                      *HeadVar__1_1 = (MR_Integer) 0;
+                      break;
+                    case (MR_Integer) 2:
+                      *HeadVar__1_1 = (MR_Integer) 1;
+                      break;
+                    case (MR_Integer) 3:
+                      *HeadVar__1_1 = (MR_Integer) 1;
+                      break;
+                    case (MR_Integer) 4:
+                      *HeadVar__1_1 = (MR_Integer) 1;
+                      break;
+                  }
+                  break;
+                case (MR_Integer) 1:
+                  *HeadVar__1_1 = (MR_Integer) 2;
+                  break;
+                case (MR_Integer) 2:
+                  *HeadVar__1_1 = (MR_Integer) 1;
+                  break;
+                case (MR_Integer) 3:
+                  switch (((MR_Integer) (MR_Word) (MR_hl_field(MR_mktag(3), HeadVar__3_3, (MR_Integer) 0)))) {
+                    default: /*NOTREACHED*/ MR_assert(0);
+                    case (MR_Integer) 0:
+                      *HeadVar__1_1 = (MR_Integer) 1;
+                      break;
+                    case (MR_Integer) 1:
+                      *HeadVar__1_1 = (MR_Integer) 1;
+                      break;
+                    case (MR_Integer) 2:
+                      *HeadVar__1_1 = (MR_Integer) 1;
+                      break;
+                    case (MR_Integer) 3:
+                      *HeadVar__1_1 = (MR_Integer) 1;
+                      break;
+                    case (MR_Integer) 4:
+                      *HeadVar__1_1 = (MR_Integer) 1;
+                      break;
+                  }
+                  break;
+              }
+              break;
+            case (MR_Integer) 2:
+              switch (MR_tag((MR_Word) HeadVar__3_3)) {
+                default: /*NOTREACHED*/ MR_assert(0);
+                case (MR_Integer) 0:
+                  switch (MR_unmkbody(HeadVar__3_3)) {
+                    default: /*NOTREACHED*/ MR_assert(0);
+                    case (MR_Integer) 0:
+                      *HeadVar__1_1 = (MR_Integer) 2;
+                      break;
+                    case (MR_Integer) 1:
+                      *HeadVar__1_1 = (MR_Integer) 2;
+                      break;
+                    case (MR_Integer) 2:
+                      *HeadVar__1_1 = (MR_Integer) 0;
+                      break;
+                    case (MR_Integer) 3:
+                      *HeadVar__1_1 = (MR_Integer) 1;
+                      break;
+                    case (MR_Integer) 4:
+                      *HeadVar__1_1 = (MR_Integer) 1;
+                      break;
+                  }
+                  break;
+                case (MR_Integer) 1:
+                  *HeadVar__1_1 = (MR_Integer) 2;
+                  break;
+                case (MR_Integer) 2:
+                  *HeadVar__1_1 = (MR_Integer) 1;
+                  break;
+                case (MR_Integer) 3:
+                  switch (((MR_Integer) (MR_Word) (MR_hl_field(MR_mktag(3), HeadVar__3_3, (MR_Integer) 0)))) {
+                    default: /*NOTREACHED*/ MR_assert(0);
+                    case (MR_Integer) 0:
+                      *HeadVar__1_1 = (MR_Integer) 1;
+                      break;
+                    case (MR_Integer) 1:
+                      *HeadVar__1_1 = (MR_Integer) 1;
+                      break;
+                    case (MR_Integer) 2:
+                      *HeadVar__1_1 = (MR_Integer) 1;
+                      break;
+                    case (MR_Integer) 3:
+                      *HeadVar__1_1 = (MR_Integer) 1;
+                      break;
+                    case (MR_Integer) 4:
+                      *HeadVar__1_1 = (MR_Integer) 1;
+                      break;
+                  }
+                  break;
+              }
+              break;
+            case (MR_Integer) 3:
+              switch (MR_tag((MR_Word) HeadVar__3_3)) {
+                default: /*NOTREACHED*/ MR_assert(0);
+                case (MR_Integer) 0:
+                  switch (MR_unmkbody(HeadVar__3_3)) {
+                    default: /*NOTREACHED*/ MR_assert(0);
+                    case (MR_Integer) 0:
+                      *HeadVar__1_1 = (MR_Integer) 2;
+                      break;
+                    case (MR_Integer) 1:
+                      *HeadVar__1_1 = (MR_Integer) 2;
+                      break;
+                    case (MR_Integer) 2:
+                      *HeadVar__1_1 = (MR_Integer) 2;
+                      break;
+                    case (MR_Integer) 3:
+                      *HeadVar__1_1 = (MR_Integer) 0;
+                      break;
+                    case (MR_Integer) 4:
+                      *HeadVar__1_1 = (MR_Integer) 1;
+                      break;
+                  }
+                  break;
+                case (MR_Integer) 1:
+                  *HeadVar__1_1 = (MR_Integer) 2;
+                  break;
+                case (MR_Integer) 2:
+                  *HeadVar__1_1 = (MR_Integer) 1;
+                  break;
+                case (MR_Integer) 3:
+                  switch (((MR_Integer) (MR_Word) (MR_hl_field(MR_mktag(3), HeadVar__3_3, (MR_Integer) 0)))) {
+                    default: /*NOTREACHED*/ MR_assert(0);
+                    case (MR_Integer) 0:
+                      *HeadVar__1_1 = (MR_Integer) 1;
+                      break;
+                    case (MR_Integer) 1:
+                      *HeadVar__1_1 = (MR_Integer) 1;
+                      break;
+                    case (MR_Integer) 2:
+                      *HeadVar__1_1 = (MR_Integer) 1;
+                      break;
+                    case (MR_Integer) 3:
+                      *HeadVar__1_1 = (MR_Integer) 1;
+                      break;
+                    case (MR_Integer) 4:
+                      *HeadVar__1_1 = (MR_Integer) 1;
+                      break;
+                  }
+                  break;
+              }
+              break;
+            case (MR_Integer) 4:
+              switch (MR_tag((MR_Word) HeadVar__3_3)) {
+                default: /*NOTREACHED*/ MR_assert(0);
+                case (MR_Integer) 0:
+                  switch (MR_unmkbody(HeadVar__3_3)) {
+                    default: /*NOTREACHED*/ MR_assert(0);
+                    case (MR_Integer) 0:
+                      *HeadVar__1_1 = (MR_Integer) 2;
+                      break;
+                    case (MR_Integer) 1:
+                      *HeadVar__1_1 = (MR_Integer) 2;
+                      break;
+                    case (MR_Integer) 2:
+                      *HeadVar__1_1 = (MR_Integer) 2;
+                      break;
+                    case (MR_Integer) 3:
+                      *HeadVar__1_1 = (MR_Integer) 2;
+                      break;
+                    case (MR_Integer) 4:
+                      *HeadVar__1_1 = (MR_Integer) 0;
+                      break;
+                  }
+                  break;
+                case (MR_Integer) 1:
+                  *HeadVar__1_1 = (MR_Integer) 2;
+                  break;
+                case (MR_Integer) 2:
+                  *HeadVar__1_1 = (MR_Integer) 2;
+                  break;
+                case (MR_Integer) 3:
+                  switch (((MR_Integer) (MR_Word) (MR_hl_field(MR_mktag(3), HeadVar__3_3, (MR_Integer) 0)))) {
+                    default: /*NOTREACHED*/ MR_assert(0);
+                    case (MR_Integer) 0:
+                      *HeadVar__1_1 = (MR_Integer) 1;
+                      break;
+                    case (MR_Integer) 1:
+                      *HeadVar__1_1 = (MR_Integer) 1;
+                      break;
+                    case (MR_Integer) 2:
+                      *HeadVar__1_1 = (MR_Integer) 1;
+                      break;
+                    case (MR_Integer) 3:
+                      *HeadVar__1_1 = (MR_Integer) 1;
+                      break;
+                    case (MR_Integer) 4:
+                      *HeadVar__1_1 = (MR_Integer) 1;
+                      break;
+                  }
+                  break;
+              }
+              break;
+          }
+          break;
+        case (MR_Integer) 1:
+          {
+            MR_String Var_285 = ((MR_String) (MR_hl_field(MR_mktag(1), HeadVar__2_2, (MR_Integer) 1)));
+            MR_Word Var_286 = ((MR_Word) (MR_hl_field(MR_mktag(1), HeadVar__2_2, (MR_Integer) 0)));
+
+            switch (MR_tag((MR_Word) HeadVar__3_3)) {
+              default: /*NOTREACHED*/ MR_assert(0);
+              case (MR_Integer) 0:
+                switch (MR_unmkbody(HeadVar__3_3)) {
+                  default: /*NOTREACHED*/ MR_assert(0);
+                  case (MR_Integer) 0:
+                    *HeadVar__1_1 = (MR_Integer) 1;
+                    break;
+                  case (MR_Integer) 1:
+                    *HeadVar__1_1 = (MR_Integer) 1;
+                    break;
+                  case (MR_Integer) 2:
+                    *HeadVar__1_1 = (MR_Integer) 1;
+                    break;
+                  case (MR_Integer) 3:
+                    *HeadVar__1_1 = (MR_Integer) 1;
+                    break;
+                  case (MR_Integer) 4:
+                    *HeadVar__1_1 = (MR_Integer) 1;
+                    break;
+                }
+                break;
+              case (MR_Integer) 1:
+                {
+                  MR_Word ArgY1_5 = ((MR_Word) (MR_hl_field(MR_mktag(1), HeadVar__3_3, (MR_Integer) 0)));
+                  MR_String ArgY2_7 = ((MR_String) (MR_hl_field(MR_mktag(1), HeadVar__3_3, (MR_Integer) 1)));
+                  MR_Word Var_8;
+
+                  mdbcomp__sym_name____Compare____sym_name_0_0(&Var_8, Var_286, ArgY1_5);
+                  succeeded = (Var_8 == (MR_Integer) 0);
+                  succeeded = !(succeeded);
+                  if (succeeded)
+                    *HeadVar__1_1 = Var_8;
+                  else
+                    mercury__private_builtin__builtin_compare_string_3_p_0(HeadVar__1_1, Var_285, ArgY2_7);
+                }
+                break;
+              case (MR_Integer) 2:
+                *HeadVar__1_1 = (MR_Integer) 1;
+                break;
+              case (MR_Integer) 3:
+                switch (((MR_Integer) (MR_Word) (MR_hl_field(MR_mktag(3), HeadVar__3_3, (MR_Integer) 0)))) {
+                  default: /*NOTREACHED*/ MR_assert(0);
+                  case (MR_Integer) 0:
+                    *HeadVar__1_1 = (MR_Integer) 1;
+                    break;
+                  case (MR_Integer) 1:
+                    *HeadVar__1_1 = (MR_Integer) 1;
+                    break;
+                  case (MR_Integer) 2:
+                    *HeadVar__1_1 = (MR_Integer) 1;
+                    break;
+                  case (MR_Integer) 3:
+                    *HeadVar__1_1 = (MR_Integer) 1;
+                    break;
+                  case (MR_Integer) 4:
+                    *HeadVar__1_1 = (MR_Integer) 1;
+                    break;
+                }
+                break;
+            }
+          }
+          break;
+        case (MR_Integer) 2:
+          {
+            MR_Integer Var_287 = ((MR_Integer) (MR_hl_field(MR_mktag(2), HeadVar__2_2, (MR_Integer) 1)));
+            MR_Integer Var_288 = ((MR_Integer) (MR_hl_field(MR_mktag(2), HeadVar__2_2, (MR_Integer) 0)));
+
+            switch (MR_tag((MR_Word) HeadVar__3_3)) {
+              default: /*NOTREACHED*/ MR_assert(0);
+              case (MR_Integer) 0:
+                switch (MR_unmkbody(HeadVar__3_3)) {
+                  default: /*NOTREACHED*/ MR_assert(0);
+                  case (MR_Integer) 0:
+                    *HeadVar__1_1 = (MR_Integer) 2;
+                    break;
+                  case (MR_Integer) 1:
+                    *HeadVar__1_1 = (MR_Integer) 2;
+                    break;
+                  case (MR_Integer) 2:
+                    *HeadVar__1_1 = (MR_Integer) 2;
+                    break;
+                  case (MR_Integer) 3:
+                    *HeadVar__1_1 = (MR_Integer) 2;
+                    break;
+                  case (MR_Integer) 4:
+                    *HeadVar__1_1 = (MR_Integer) 1;
+                    break;
+                }
+                break;
+              case (MR_Integer) 1:
+                *HeadVar__1_1 = (MR_Integer) 2;
+                break;
+              case (MR_Integer) 2:
+                {
+                  MR_Integer ArgY1_97 = ((MR_Integer) (MR_hl_field(MR_mktag(2), HeadVar__3_3, (MR_Integer) 0)));
+                  MR_Integer ArgY2_99 = ((MR_Integer) (MR_hl_field(MR_mktag(2), HeadVar__3_3, (MR_Integer) 1)));
+                  MR_Word Var_100;
+
+                  mercury__private_builtin__builtin_compare_int_3_p_0(&Var_100, Var_288, ArgY1_97);
+                  succeeded = (Var_100 == (MR_Integer) 0);
+                  succeeded = !(succeeded);
+                  if (succeeded)
+                    *HeadVar__1_1 = Var_100;
+                  else
+                    mercury__private_builtin__builtin_compare_int_3_p_0(HeadVar__1_1, Var_287, ArgY2_99);
+                }
+                break;
+              case (MR_Integer) 3:
+                switch (((MR_Integer) (MR_Word) (MR_hl_field(MR_mktag(3), HeadVar__3_3, (MR_Integer) 0)))) {
+                  default: /*NOTREACHED*/ MR_assert(0);
+                  case (MR_Integer) 0:
+                    *HeadVar__1_1 = (MR_Integer) 1;
+                    break;
+                  case (MR_Integer) 1:
+                    *HeadVar__1_1 = (MR_Integer) 1;
+                    break;
+                  case (MR_Integer) 2:
+                    *HeadVar__1_1 = (MR_Integer) 1;
+                    break;
+                  case (MR_Integer) 3:
+                    *HeadVar__1_1 = (MR_Integer) 1;
+                    break;
+                  case (MR_Integer) 4:
+                    *HeadVar__1_1 = (MR_Integer) 1;
+                    break;
+                }
+                break;
+            }
+          }
+          break;
+        case (MR_Integer) 3:
+          switch (((MR_Integer) (MR_Word) (MR_hl_field(MR_mktag(3), HeadVar__2_2, (MR_Integer) 0)))) {
+            default: /*NOTREACHED*/ MR_assert(0);
+            case (MR_Integer) 0:
+              {
+                MR_Word Var_289 = ((MR_Word) (MR_hl_field(MR_mktag(3), HeadVar__2_2, (MR_Integer) 1)));
+
+                switch (MR_tag((MR_Word) HeadVar__3_3)) {
+                  default: /*NOTREACHED*/ MR_assert(0);
+                  case (MR_Integer) 0:
+                    switch (MR_unmkbody(HeadVar__3_3)) {
+                      default: /*NOTREACHED*/ MR_assert(0);
+                      case (MR_Integer) 0:
+                        *HeadVar__1_1 = (MR_Integer) 2;
+                        break;
+                      case (MR_Integer) 1:
+                        *HeadVar__1_1 = (MR_Integer) 2;
+                        break;
+                      case (MR_Integer) 2:
+                        *HeadVar__1_1 = (MR_Integer) 2;
+                        break;
+                      case (MR_Integer) 3:
+                        *HeadVar__1_1 = (MR_Integer) 2;
+                        break;
+                      case (MR_Integer) 4:
+                        *HeadVar__1_1 = (MR_Integer) 2;
+                        break;
+                    }
+                    break;
+                  case (MR_Integer) 1:
+                    *HeadVar__1_1 = (MR_Integer) 2;
+                    break;
+                  case (MR_Integer) 2:
+                    *HeadVar__1_1 = (MR_Integer) 2;
+                    break;
+                  case (MR_Integer) 3:
+                    switch (((MR_Integer) (MR_Word) (MR_hl_field(MR_mktag(3), HeadVar__3_3, (MR_Integer) 0)))) {
+                      default: /*NOTREACHED*/ MR_assert(0);
+                      case (MR_Integer) 0:
+                        {
+                          MR_Word ArgY1_143 = ((MR_Word) (MR_hl_field(MR_mktag(3), HeadVar__3_3, (MR_Integer) 1)));
+
+                          mercury__builtin__compare_3_p_0((MR_Word) &backend_libs__rtti_scalar_common_1[6], HeadVar__1_1, ((MR_Box) (Var_289)), ((MR_Box) (ArgY1_143)));
+                        }
+                        break;
+                      case (MR_Integer) 1:
+                        *HeadVar__1_1 = (MR_Integer) 1;
+                        break;
+                      case (MR_Integer) 2:
+                        *HeadVar__1_1 = (MR_Integer) 1;
+                        break;
+                      case (MR_Integer) 3:
+                        *HeadVar__1_1 = (MR_Integer) 1;
+                        break;
+                      case (MR_Integer) 4:
+                        *HeadVar__1_1 = (MR_Integer) 1;
+                        break;
+                    }
+                    break;
+                }
+              }
+              break;
+            case (MR_Integer) 1:
+              {
+                MR_Word Var_295 = ((MR_Word) (MR_hl_field(MR_mktag(3), HeadVar__2_2, (MR_Integer) 1)));
+
+                switch (MR_tag((MR_Word) HeadVar__3_3)) {
+                  default: /*NOTREACHED*/ MR_assert(0);
+                  case (MR_Integer) 0:
+                    switch (MR_unmkbody(HeadVar__3_3)) {
+                      default: /*NOTREACHED*/ MR_assert(0);
+                      case (MR_Integer) 0:
+                        *HeadVar__1_1 = (MR_Integer) 2;
+                        break;
+                      case (MR_Integer) 1:
+                        *HeadVar__1_1 = (MR_Integer) 2;
+                        break;
+                      case (MR_Integer) 2:
+                        *HeadVar__1_1 = (MR_Integer) 2;
+                        break;
+                      case (MR_Integer) 3:
+                        *HeadVar__1_1 = (MR_Integer) 2;
+                        break;
+                      case (MR_Integer) 4:
+                        *HeadVar__1_1 = (MR_Integer) 2;
+                        break;
+                    }
+                    break;
+                  case (MR_Integer) 1:
+                    *HeadVar__1_1 = (MR_Integer) 2;
+                    break;
+                  case (MR_Integer) 2:
+                    *HeadVar__1_1 = (MR_Integer) 2;
+                    break;
+                  case (MR_Integer) 3:
+                    switch (((MR_Integer) (MR_Word) (MR_hl_field(MR_mktag(3), HeadVar__3_3, (MR_Integer) 0)))) {
+                      default: /*NOTREACHED*/ MR_assert(0);
+                      case (MR_Integer) 0:
+                        *HeadVar__1_1 = (MR_Integer) 2;
+                        break;
+                      case (MR_Integer) 1:
+                        {
+                          MR_Word ArgY1_168 = ((MR_Word) (MR_hl_field(MR_mktag(3), HeadVar__3_3, (MR_Integer) 1)));
+
+                          mercury__builtin__compare_3_p_0((MR_Word) &backend_libs__rtti_scalar_common_1[6], HeadVar__1_1, ((MR_Box) (Var_295)), ((MR_Box) (ArgY1_168)));
+                        }
+                        break;
+                      case (MR_Integer) 2:
+                        *HeadVar__1_1 = (MR_Integer) 1;
+                        break;
+                      case (MR_Integer) 3:
+                        *HeadVar__1_1 = (MR_Integer) 1;
+                        break;
+                      case (MR_Integer) 4:
+                        *HeadVar__1_1 = (MR_Integer) 1;
+                        break;
+                    }
+                    break;
+                }
+              }
+              break;
+            case (MR_Integer) 2:
+              {
+                MR_Integer Var_290 = ((MR_Integer) (MR_hl_field(MR_mktag(3), HeadVar__2_2, (MR_Integer) 3)));
+                MR_Integer Var_291 = ((MR_Integer) (MR_hl_field(MR_mktag(3), HeadVar__2_2, (MR_Integer) 2)));
+                MR_Word Var_292 = ((MR_Word) (MR_hl_field(MR_mktag(3), HeadVar__2_2, (MR_Integer) 1)));
+
+                switch (MR_tag((MR_Word) HeadVar__3_3)) {
+                  default: /*NOTREACHED*/ MR_assert(0);
+                  case (MR_Integer) 0:
+                    switch (MR_unmkbody(HeadVar__3_3)) {
+                      default: /*NOTREACHED*/ MR_assert(0);
+                      case (MR_Integer) 0:
+                        *HeadVar__1_1 = (MR_Integer) 2;
+                        break;
+                      case (MR_Integer) 1:
+                        *HeadVar__1_1 = (MR_Integer) 2;
+                        break;
+                      case (MR_Integer) 2:
+                        *HeadVar__1_1 = (MR_Integer) 2;
+                        break;
+                      case (MR_Integer) 3:
+                        *HeadVar__1_1 = (MR_Integer) 2;
+                        break;
+                      case (MR_Integer) 4:
+                        *HeadVar__1_1 = (MR_Integer) 2;
+                        break;
+                    }
+                    break;
+                  case (MR_Integer) 1:
+                    *HeadVar__1_1 = (MR_Integer) 2;
+                    break;
+                  case (MR_Integer) 2:
+                    *HeadVar__1_1 = (MR_Integer) 2;
+                    break;
+                  case (MR_Integer) 3:
+                    switch (((MR_Integer) (MR_Word) (MR_hl_field(MR_mktag(3), HeadVar__3_3, (MR_Integer) 0)))) {
+                      default: /*NOTREACHED*/ MR_assert(0);
+                      case (MR_Integer) 0:
+                        *HeadVar__1_1 = (MR_Integer) 2;
+                        break;
+                      case (MR_Integer) 1:
+                        *HeadVar__1_1 = (MR_Integer) 2;
+                        break;
+                      case (MR_Integer) 2:
+                        {
+                          MR_Word ArgY1_211 = ((MR_Word) (MR_hl_field(MR_mktag(3), HeadVar__3_3, (MR_Integer) 1)));
+                          MR_Integer ArgY2_213 = ((MR_Integer) (MR_hl_field(MR_mktag(3), HeadVar__3_3, (MR_Integer) 2)));
+                          MR_Integer ArgY3_215 = ((MR_Integer) (MR_hl_field(MR_mktag(3), HeadVar__3_3, (MR_Integer) 3)));
+                          MR_Word Var_216;
+
+                          mercury__builtin__compare_3_p_0((MR_Word) &backend_libs__rtti_scalar_common_1[6], &Var_216, ((MR_Box) (Var_292)), ((MR_Box) (ArgY1_211)));
+                          succeeded = (Var_216 == (MR_Integer) 0);
+                          succeeded = !(succeeded);
+                          if (succeeded)
+                            *HeadVar__1_1 = Var_216;
+                          else
+                          {
+                            MR_Word Var_217;
+
+                            mercury__private_builtin__builtin_compare_int_3_p_0(&Var_217, Var_291, ArgY2_213);
+                            succeeded = (Var_217 == (MR_Integer) 0);
+                            succeeded = !(succeeded);
+                            if (succeeded)
+                              *HeadVar__1_1 = Var_217;
+                            else
+                              mercury__private_builtin__builtin_compare_int_3_p_0(HeadVar__1_1, Var_290, ArgY3_215);
+                          }
+                        }
+                        break;
+                      case (MR_Integer) 3:
+                        *HeadVar__1_1 = (MR_Integer) 1;
+                        break;
+                      case (MR_Integer) 4:
+                        *HeadVar__1_1 = (MR_Integer) 1;
+                        break;
+                    }
+                    break;
+                }
+              }
+              break;
+            case (MR_Integer) 3:
+              {
+                MR_Word Var_293 = ((MR_Word) (MR_hl_field(MR_mktag(3), HeadVar__2_2, (MR_Integer) 1)));
+
+                switch (MR_tag((MR_Word) HeadVar__3_3)) {
+                  default: /*NOTREACHED*/ MR_assert(0);
+                  case (MR_Integer) 0:
+                    switch (MR_unmkbody(HeadVar__3_3)) {
+                      default: /*NOTREACHED*/ MR_assert(0);
+                      case (MR_Integer) 0:
+                        *HeadVar__1_1 = (MR_Integer) 2;
+                        break;
+                      case (MR_Integer) 1:
+                        *HeadVar__1_1 = (MR_Integer) 2;
+                        break;
+                      case (MR_Integer) 2:
+                        *HeadVar__1_1 = (MR_Integer) 2;
+                        break;
+                      case (MR_Integer) 3:
+                        *HeadVar__1_1 = (MR_Integer) 2;
+                        break;
+                      case (MR_Integer) 4:
+                        *HeadVar__1_1 = (MR_Integer) 2;
+                        break;
+                    }
+                    break;
+                  case (MR_Integer) 1:
+                    *HeadVar__1_1 = (MR_Integer) 2;
+                    break;
+                  case (MR_Integer) 2:
+                    *HeadVar__1_1 = (MR_Integer) 2;
+                    break;
+                  case (MR_Integer) 3:
+                    switch (((MR_Integer) (MR_Word) (MR_hl_field(MR_mktag(3), HeadVar__3_3, (MR_Integer) 0)))) {
+                      default: /*NOTREACHED*/ MR_assert(0);
+                      case (MR_Integer) 0:
+                        *HeadVar__1_1 = (MR_Integer) 2;
+                        break;
+                      case (MR_Integer) 1:
+                        *HeadVar__1_1 = (MR_Integer) 2;
+                        break;
+                      case (MR_Integer) 2:
+                        *HeadVar__1_1 = (MR_Integer) 2;
+                        break;
+                      case (MR_Integer) 3:
+                        {
+                          MR_Word ArgY1_246 = ((MR_Word) (MR_hl_field(MR_mktag(3), HeadVar__3_3, (MR_Integer) 1)));
+
+                          mercury__builtin__compare_3_p_0((MR_Word) &backend_libs__rtti_scalar_common_1[6], HeadVar__1_1, ((MR_Box) (Var_293)), ((MR_Box) (ArgY1_246)));
+                        }
+                        break;
+                      case (MR_Integer) 4:
+                        *HeadVar__1_1 = (MR_Integer) 1;
+                        break;
+                    }
+                    break;
+                }
+              }
+              break;
+            case (MR_Integer) 4:
+              {
+                MR_Word Var_294 = ((MR_Word) (MR_hl_field(MR_mktag(3), HeadVar__2_2, (MR_Integer) 1)));
+
+                switch (MR_tag((MR_Word) HeadVar__3_3)) {
+                  default: /*NOTREACHED*/ MR_assert(0);
+                  case (MR_Integer) 0:
+                    switch (MR_unmkbody(HeadVar__3_3)) {
+                      default: /*NOTREACHED*/ MR_assert(0);
+                      case (MR_Integer) 0:
+                        *HeadVar__1_1 = (MR_Integer) 2;
+                        break;
+                      case (MR_Integer) 1:
+                        *HeadVar__1_1 = (MR_Integer) 2;
+                        break;
+                      case (MR_Integer) 2:
+                        *HeadVar__1_1 = (MR_Integer) 2;
+                        break;
+                      case (MR_Integer) 3:
+                        *HeadVar__1_1 = (MR_Integer) 2;
+                        break;
+                      case (MR_Integer) 4:
+                        *HeadVar__1_1 = (MR_Integer) 2;
+                        break;
+                    }
+                    break;
+                  case (MR_Integer) 1:
+                    *HeadVar__1_1 = (MR_Integer) 2;
+                    break;
+                  case (MR_Integer) 2:
+                    *HeadVar__1_1 = (MR_Integer) 2;
+                    break;
+                  case (MR_Integer) 3:
+                    switch (((MR_Integer) (MR_Word) (MR_hl_field(MR_mktag(3), HeadVar__3_3, (MR_Integer) 0)))) {
+                      default: /*NOTREACHED*/ MR_assert(0);
+                      case (MR_Integer) 0:
+                        *HeadVar__1_1 = (MR_Integer) 2;
+                        break;
+                      case (MR_Integer) 1:
+                        *HeadVar__1_1 = (MR_Integer) 2;
+                        break;
+                      case (MR_Integer) 2:
+                        *HeadVar__1_1 = (MR_Integer) 2;
+                        break;
+                      case (MR_Integer) 3:
+                        *HeadVar__1_1 = (MR_Integer) 2;
+                        break;
+                      case (MR_Integer) 4:
+                        {
+                          MR_Word ArgY1_271 = ((MR_Word) (MR_hl_field(MR_mktag(3), HeadVar__3_3, (MR_Integer) 1)));
+
+                          mercury__builtin__compare_3_p_0((MR_Word) &backend_libs__rtti_scalar_common_1[6], HeadVar__1_1, ((MR_Box) (Var_294)), ((MR_Box) (ArgY1_271)));
+                        }
+                        break;
+                    }
+                    break;
+                }
+              }
+              break;
+          }
+          break;
+      }
+  }
+}
+
+MR_bool MR_CALL 
+backend_libs__rtti____Unify____rtti_id_0_0(
+  MR_Word HeadVar__1_1,
+  MR_Word HeadVar__2_2)
+{
+  {
+    MR_bool succeeded;
+    MR_Integer CastX_11 = (MR_Integer) HeadVar__1_1;
+    MR_Integer CastY_12 = (MR_Integer) HeadVar__2_2;
+
+    succeeded = (CastX_11 == CastY_12);
+    if (succeeded)
+      succeeded = MR_TRUE;
+    else
+    if (((MR_tag((MR_Word) HeadVar__1_1)) == (MR_mktag((MR_Integer) 0))))
+    {
+      MR_Word ArgX1_3 = ((MR_Word) (MR_hl_field(MR_mktag(0), HeadVar__1_1, (MR_Integer) 0)));
+      MR_Word ArgY1_4;
+      MR_Word ArgX2_5 = ((MR_Word) (MR_hl_field(MR_mktag(0), HeadVar__1_1, (MR_Integer) 1)));
+      MR_Word ArgY2_6;
+
+      succeeded = ((MR_tag((MR_Word) HeadVar__2_2)) == (MR_mktag((MR_Integer) 0)));
+      if (succeeded)
+      {
+        ArgY1_4 = ((MR_Word) (MR_hl_field(MR_mktag(0), HeadVar__2_2, (MR_Integer) 0)));
+        ArgY2_6 = ((MR_Word) (MR_hl_field(MR_mktag(0), HeadVar__2_2, (MR_Integer) 1)));
+        succeeded = backend_libs__rtti____Unify____rtti_type_ctor_0_0(ArgX1_3, ArgY1_4);
+        if (succeeded)
+          succeeded = backend_libs__rtti____Unify____ctor_rtti_name_0_0(ArgX2_5, ArgY2_6);
+      }
+    }
+    else
+    {
+      MR_Word ArgX1_7 = ((MR_Word) (MR_hl_field(MR_mktag(1), HeadVar__1_1, (MR_Integer) 0)));
+      MR_Word ArgY1_8;
+      MR_Word ArgX2_9 = ((MR_Word) (MR_hl_field(MR_mktag(1), HeadVar__1_1, (MR_Integer) 1)));
+      MR_Word ArgY2_10;
+
+      succeeded = ((MR_tag((MR_Word) HeadVar__2_2)) == (MR_mktag((MR_Integer) 1)));
+      if (succeeded)
+      {
+        ArgY1_8 = ((MR_Word) (MR_hl_field(MR_mktag(1), HeadVar__2_2, (MR_Integer) 0)));
+        ArgY2_10 = ((MR_Word) (MR_hl_field(MR_mktag(1), HeadVar__2_2, (MR_Integer) 1)));
+        succeeded = backend_libs__rtti____Unify____tc_name_0_0(ArgX1_7, ArgY1_8);
+        if (succeeded)
+          succeeded = backend_libs__rtti____Unify____tc_rtti_name_0_0(ArgX2_9, ArgY2_10);
+      }
+    }
+    return succeeded;
+  }
+}
+
+MR_bool MR_CALL 
+backend_libs__rtti____Unify____tc_rtti_name_0_0(
+  MR_Word HeadVar__1_1,
+  MR_Word HeadVar__2_2)
+{
+  {
+    MR_bool succeeded;
+    MR_Integer CastX_35 = (MR_Integer) HeadVar__1_1;
+    MR_Integer CastY_36 = (MR_Integer) HeadVar__2_2;
+
+    succeeded = (CastX_35 == CastY_36);
+    if (succeeded)
+      succeeded = MR_TRUE;
+    else
+      switch (MR_tag((MR_Word) HeadVar__1_1)) {
+        default: /*NOTREACHED*/ MR_assert(0);
+        case (MR_Integer) 0:
+          switch (MR_unmkbody(HeadVar__1_1)) {
+            default: /*NOTREACHED*/ MR_assert(0);
+            case (MR_Integer) 0:
+              {
+                MR_Integer CastX_7 = (MR_Integer) HeadVar__1_1;
+                MR_Integer CastY_8 = (MR_Integer) HeadVar__2_2;
+
+                succeeded = (CastY_8 == CastX_7);
+              }
+              break;
+            case (MR_Integer) 1:
+              {
+                MR_Integer CastX_9 = (MR_Integer) HeadVar__1_1;
+                MR_Integer CastY_10 = (MR_Integer) HeadVar__2_2;
+
+                succeeded = (CastY_10 == CastX_9);
+              }
+              break;
+            case (MR_Integer) 2:
+              {
+                MR_Integer CastX_11 = (MR_Integer) HeadVar__1_1;
+                MR_Integer CastY_12 = (MR_Integer) HeadVar__2_2;
+
+                succeeded = (CastY_12 == CastX_11);
+              }
+              break;
+            case (MR_Integer) 3:
+              {
+                MR_Integer CastX_13 = (MR_Integer) HeadVar__1_1;
+                MR_Integer CastY_14 = (MR_Integer) HeadVar__2_2;
+
+                succeeded = (CastY_14 == CastX_13);
+              }
+              break;
+            case (MR_Integer) 4:
+              {
+                MR_Integer CastX_19 = (MR_Integer) HeadVar__1_1;
+                MR_Integer CastY_20 = (MR_Integer) HeadVar__2_2;
+
+                succeeded = (CastY_20 == CastX_19);
+              }
+              break;
+          }
+          break;
+        case (MR_Integer) 1:
+          {
+            MR_Word ArgX1_3 = ((MR_Word) (MR_hl_field(MR_mktag(1), HeadVar__1_1, (MR_Integer) 0)));
+            MR_Word ArgY1_4;
+            MR_String ArgX2_5 = ((MR_String) (MR_hl_field(MR_mktag(1), HeadVar__1_1, (MR_Integer) 1)));
+            MR_String ArgY2_6;
+
+            succeeded = ((MR_tag((MR_Word) HeadVar__2_2)) == (MR_mktag((MR_Integer) 1)));
+            if (succeeded)
+            {
+              ArgY1_4 = ((MR_Word) (MR_hl_field(MR_mktag(1), HeadVar__2_2, (MR_Integer) 0)));
+              ArgY2_6 = ((MR_String) (MR_hl_field(MR_mktag(1), HeadVar__2_2, (MR_Integer) 1)));
+              succeeded = mdbcomp__sym_name____Unify____sym_name_0_0(ArgX1_3, ArgY1_4);
+              if (succeeded)
+                succeeded = (strcmp(ArgX2_5, ArgY2_6) == 0);
+            }
+          }
+          break;
+        case (MR_Integer) 2:
+          {
+            MR_Integer ArgX1_15 = ((MR_Integer) (MR_hl_field(MR_mktag(2), HeadVar__1_1, (MR_Integer) 0)));
+            MR_Integer ArgY1_16;
+            MR_Integer ArgX2_17 = ((MR_Integer) (MR_hl_field(MR_mktag(2), HeadVar__1_1, (MR_Integer) 1)));
+            MR_Integer ArgY2_18;
+
+            succeeded = ((MR_tag((MR_Word) HeadVar__2_2)) == (MR_mktag((MR_Integer) 2)));
+            if (succeeded)
+            {
+              ArgY1_16 = ((MR_Integer) (MR_hl_field(MR_mktag(2), HeadVar__2_2, (MR_Integer) 0)));
+              ArgY2_18 = ((MR_Integer) (MR_hl_field(MR_mktag(2), HeadVar__2_2, (MR_Integer) 1)));
+              succeeded = (ArgX1_15 == ArgY1_16);
+              if (succeeded)
+                succeeded = (ArgX2_17 == ArgY2_18);
+            }
+          }
+          break;
+        case (MR_Integer) 3:
+          switch (((MR_Integer) (MR_Word) (MR_hl_field(MR_mktag(3), HeadVar__1_1, (MR_Integer) 0)))) {
+            default: /*NOTREACHED*/ MR_assert(0);
+            case (MR_Integer) 0:
+              {
+                MR_Word TypeInfo_38_38;
+                MR_Word ArgX1_21 = ((MR_Word) (MR_hl_field(MR_mktag(3), HeadVar__1_1, (MR_Integer) 1)));
+                MR_Word ArgY1_22;
+
+                succeeded = ((((MR_tag((MR_Word) HeadVar__2_2)) == (MR_mktag((MR_Integer) 3)))) && (((((MR_Integer) (MR_Word) (MR_hl_field(MR_mktag(3), HeadVar__2_2, (MR_Integer) 0)))) == (MR_Integer) 0)));
+                if (succeeded)
+                {
+                  ArgY1_22 = ((MR_Word) (MR_hl_field(MR_mktag(3), HeadVar__2_2, (MR_Integer) 1)));
+                  TypeInfo_38_38 = (MR_Word) &backend_libs__rtti_scalar_common_1[6];
+                  succeeded = mercury__builtin__unify_2_p_0(TypeInfo_38_38, ((MR_Box) (ArgX1_21)), ((MR_Box) (ArgY1_22)));
+                }
+              }
+              break;
+            case (MR_Integer) 1:
+              {
+                MR_Word TypeInfo_42_42;
+                MR_Word ArgX1_23 = ((MR_Word) (MR_hl_field(MR_mktag(3), HeadVar__1_1, (MR_Integer) 1)));
+                MR_Word ArgY1_24;
+
+                succeeded = ((((MR_tag((MR_Word) HeadVar__2_2)) == (MR_mktag((MR_Integer) 3)))) && (((((MR_Integer) (MR_Word) (MR_hl_field(MR_mktag(3), HeadVar__2_2, (MR_Integer) 0)))) == (MR_Integer) 1)));
+                if (succeeded)
+                {
+                  ArgY1_24 = ((MR_Word) (MR_hl_field(MR_mktag(3), HeadVar__2_2, (MR_Integer) 1)));
+                  TypeInfo_42_42 = (MR_Word) &backend_libs__rtti_scalar_common_1[6];
+                  succeeded = mercury__builtin__unify_2_p_0(TypeInfo_42_42, ((MR_Box) (ArgX1_23)), ((MR_Box) (ArgY1_24)));
+                }
+              }
+              break;
+            case (MR_Integer) 2:
+              {
+                MR_Word TypeInfo_39_39;
+                MR_Word ArgX1_25 = ((MR_Word) (MR_hl_field(MR_mktag(3), HeadVar__1_1, (MR_Integer) 1)));
+                MR_Word ArgY1_26;
+                MR_Integer ArgX2_27 = ((MR_Integer) (MR_hl_field(MR_mktag(3), HeadVar__1_1, (MR_Integer) 2)));
+                MR_Integer ArgY2_28;
+                MR_Integer ArgX3_29 = ((MR_Integer) (MR_hl_field(MR_mktag(3), HeadVar__1_1, (MR_Integer) 3)));
+                MR_Integer ArgY3_30;
+
+                succeeded = ((((MR_tag((MR_Word) HeadVar__2_2)) == (MR_mktag((MR_Integer) 3)))) && (((((MR_Integer) (MR_Word) (MR_hl_field(MR_mktag(3), HeadVar__2_2, (MR_Integer) 0)))) == (MR_Integer) 2)));
+                if (succeeded)
+                {
+                  ArgY1_26 = ((MR_Word) (MR_hl_field(MR_mktag(3), HeadVar__2_2, (MR_Integer) 1)));
+                  ArgY2_28 = ((MR_Integer) (MR_hl_field(MR_mktag(3), HeadVar__2_2, (MR_Integer) 2)));
+                  ArgY3_30 = ((MR_Integer) (MR_hl_field(MR_mktag(3), HeadVar__2_2, (MR_Integer) 3)));
+                  TypeInfo_39_39 = (MR_Word) &backend_libs__rtti_scalar_common_1[6];
+                  succeeded = mercury__builtin__unify_2_p_0(TypeInfo_39_39, ((MR_Box) (ArgX1_25)), ((MR_Box) (ArgY1_26)));
+                  if (succeeded)
+                  {
+                    succeeded = (ArgX2_27 == ArgY2_28);
+                    if (succeeded)
+                      succeeded = (ArgX3_29 == ArgY3_30);
+                  }
+                }
+              }
+              break;
+            case (MR_Integer) 3:
+              {
+                MR_Word TypeInfo_40_40;
+                MR_Word ArgX1_31 = ((MR_Word) (MR_hl_field(MR_mktag(3), HeadVar__1_1, (MR_Integer) 1)));
+                MR_Word ArgY1_32;
+
+                succeeded = ((((MR_tag((MR_Word) HeadVar__2_2)) == (MR_mktag((MR_Integer) 3)))) && (((((MR_Integer) (MR_Word) (MR_hl_field(MR_mktag(3), HeadVar__2_2, (MR_Integer) 0)))) == (MR_Integer) 3)));
+                if (succeeded)
+                {
+                  ArgY1_32 = ((MR_Word) (MR_hl_field(MR_mktag(3), HeadVar__2_2, (MR_Integer) 1)));
+                  TypeInfo_40_40 = (MR_Word) &backend_libs__rtti_scalar_common_1[6];
+                  succeeded = mercury__builtin__unify_2_p_0(TypeInfo_40_40, ((MR_Box) (ArgX1_31)), ((MR_Box) (ArgY1_32)));
+                }
+              }
+              break;
+            case (MR_Integer) 4:
+              {
+                MR_Word TypeInfo_41_41;
+                MR_Word ArgX1_33 = ((MR_Word) (MR_hl_field(MR_mktag(3), HeadVar__1_1, (MR_Integer) 1)));
+                MR_Word ArgY1_34;
+
+                succeeded = ((((MR_tag((MR_Word) HeadVar__2_2)) == (MR_mktag((MR_Integer) 3)))) && (((((MR_Integer) (MR_Word) (MR_hl_field(MR_mktag(3), HeadVar__2_2, (MR_Integer) 0)))) == (MR_Integer) 4)));
+                if (succeeded)
+                {
+                  ArgY1_34 = ((MR_Word) (MR_hl_field(MR_mktag(3), HeadVar__2_2, (MR_Integer) 1)));
+                  TypeInfo_41_41 = (MR_Word) &backend_libs__rtti_scalar_common_1[6];
+                  succeeded = mercury__builtin__unify_2_p_0(TypeInfo_41_41, ((MR_Box) (ArgX1_33)), ((MR_Box) (ArgY1_34)));
+                }
+              }
+              break;
+          }
+          break;
+      }
+    return succeeded;
+  }
+}
+
+void MR_CALL 
+backend_libs__rtti____Compare____rtti_data_0_0(
+  MR_Word * HeadVar__1_1,
+  MR_Word HeadVar__2_2,
+  MR_Word HeadVar__3_3)
+{
+  {
+    MR_bool succeeded;
+    MR_Integer CastX_115 = (MR_Integer) HeadVar__2_2;
+    MR_Integer CastY_116 = (MR_Integer) HeadVar__3_3;
+
+    succeeded = (CastX_115 == CastY_116);
+    if (succeeded)
+      *HeadVar__1_1 = (MR_Integer) 0;
+    else
+      switch (MR_tag((MR_Word) HeadVar__2_2)) {
+        default: /*NOTREACHED*/ MR_assert(0);
+        case (MR_Integer) 0:
+          {
+            MR_Word Var_133 = (MR_Word) MR_body(((MR_Word) HeadVar__2_2), (MR_Integer) 0);
+
+            switch (MR_tag((MR_Word) HeadVar__3_3)) {
+              default: /*NOTREACHED*/ MR_assert(0);
+              case (MR_Integer) 0:
+                {
+                  MR_Word ArgY1_5 = (MR_Word) MR_body(((MR_Word) HeadVar__3_3), (MR_Integer) 0);
+
+                  backend_libs__rtti____Compare____type_ctor_data_0_0(HeadVar__1_1, Var_133, ArgY1_5);
+                }
+                break;
+              case (MR_Integer) 1:
+                *HeadVar__1_1 = (MR_Integer) 1;
+                break;
+              case (MR_Integer) 2:
+                *HeadVar__1_1 = (MR_Integer) 1;
+                break;
+              case (MR_Integer) 3:
+                switch (((MR_Integer) (MR_Word) (MR_hl_field(MR_mktag(3), HeadVar__3_3, (MR_Integer) 0)))) {
+                  default: /*NOTREACHED*/ MR_assert(0);
+                  case (MR_Integer) 0:
+                    *HeadVar__1_1 = (MR_Integer) 1;
+                    break;
+                  case (MR_Integer) 1:
+                    *HeadVar__1_1 = (MR_Integer) 1;
+                    break;
+                  case (MR_Integer) 2:
+                    *HeadVar__1_1 = (MR_Integer) 1;
+                    break;
+                }
+                break;
+            }
+          }
+          break;
+        case (MR_Integer) 1:
+          {
+            MR_Word Var_131 = (MR_Word) MR_body(((MR_Word) HeadVar__2_2), (MR_Integer) 1);
+
+            switch (MR_tag((MR_Word) HeadVar__3_3)) {
+              default: /*NOTREACHED*/ MR_assert(0);
+              case (MR_Integer) 0:
+                *HeadVar__1_1 = (MR_Integer) 2;
+                break;
+              case (MR_Integer) 1:
+                {
+                  MR_Word ArgY1_97 = (MR_Word) MR_body(((MR_Word) HeadVar__3_3), (MR_Integer) 1);
+
+                  backend_libs__rtti____Compare____tc_decl_0_0(HeadVar__1_1, Var_131, ArgY1_97);
+                }
+                break;
+              case (MR_Integer) 2:
+                *HeadVar__1_1 = (MR_Integer) 1;
+                break;
+              case (MR_Integer) 3:
+                switch (((MR_Integer) (MR_Word) (MR_hl_field(MR_mktag(3), HeadVar__3_3, (MR_Integer) 0)))) {
+                  default: /*NOTREACHED*/ MR_assert(0);
+                  case (MR_Integer) 0:
+                    *HeadVar__1_1 = (MR_Integer) 2;
+                    break;
+                  case (MR_Integer) 1:
+                    *HeadVar__1_1 = (MR_Integer) 2;
+                    break;
+                  case (MR_Integer) 2:
+                    *HeadVar__1_1 = (MR_Integer) 2;
+                    break;
+                }
+                break;
+            }
+          }
+          break;
+        case (MR_Integer) 2:
+          {
+            MR_Word Var_132 = (MR_Word) MR_body(((MR_Word) HeadVar__2_2), (MR_Integer) 2);
+
+            switch (MR_tag((MR_Word) HeadVar__3_3)) {
+              default: /*NOTREACHED*/ MR_assert(0);
+              case (MR_Integer) 0:
+                *HeadVar__1_1 = (MR_Integer) 2;
+                break;
+              case (MR_Integer) 1:
+                *HeadVar__1_1 = (MR_Integer) 2;
+                break;
+              case (MR_Integer) 2:
+                {
+                  MR_Word ArgY1_114 = (MR_Word) MR_body(((MR_Word) HeadVar__3_3), (MR_Integer) 2);
+
+                  backend_libs__rtti____Compare____tc_instance_0_0(HeadVar__1_1, Var_132, ArgY1_114);
+                }
+                break;
+              case (MR_Integer) 3:
+                switch (((MR_Integer) (MR_Word) (MR_hl_field(MR_mktag(3), HeadVar__3_3, (MR_Integer) 0)))) {
+                  default: /*NOTREACHED*/ MR_assert(0);
+                  case (MR_Integer) 0:
+                    *HeadVar__1_1 = (MR_Integer) 2;
+                    break;
+                  case (MR_Integer) 1:
+                    *HeadVar__1_1 = (MR_Integer) 2;
+                    break;
+                  case (MR_Integer) 2:
+                    *HeadVar__1_1 = (MR_Integer) 2;
+                    break;
+                }
+                break;
+            }
+          }
+          break;
+        case (MR_Integer) 3:
+          switch (((MR_Integer) (MR_Word) (MR_hl_field(MR_mktag(3), HeadVar__2_2, (MR_Integer) 0)))) {
+            default: /*NOTREACHED*/ MR_assert(0);
+            case (MR_Integer) 0:
+              {
+                MR_Word Var_134 = ((MR_Word) (MR_hl_field(MR_mktag(3), HeadVar__2_2, (MR_Integer) 1)));
+
+                switch (MR_tag((MR_Word) HeadVar__3_3)) {
+                  default: /*NOTREACHED*/ MR_assert(0);
+                  case (MR_Integer) 0:
+                    *HeadVar__1_1 = (MR_Integer) 2;
+                    break;
+                  case (MR_Integer) 1:
+                    *HeadVar__1_1 = (MR_Integer) 1;
+                    break;
+                  case (MR_Integer) 2:
+                    *HeadVar__1_1 = (MR_Integer) 1;
+                    break;
+                  case (MR_Integer) 3:
+                    switch (((MR_Integer) (MR_Word) (MR_hl_field(MR_mktag(3), HeadVar__3_3, (MR_Integer) 0)))) {
+                      default: /*NOTREACHED*/ MR_assert(0);
+                      case (MR_Integer) 0:
+                        {
+                          MR_Word ArgY1_22 = ((MR_Word) (MR_hl_field(MR_mktag(3), HeadVar__3_3, (MR_Integer) 1)));
+
+                          backend_libs__rtti____Compare____rtti_type_info_0_0(HeadVar__1_1, Var_134, ArgY1_22);
+                        }
+                        break;
+                      case (MR_Integer) 1:
+                        *HeadVar__1_1 = (MR_Integer) 1;
+                        break;
+                      case (MR_Integer) 2:
+                        *HeadVar__1_1 = (MR_Integer) 1;
+                        break;
+                    }
+                    break;
+                }
+              }
+              break;
+            case (MR_Integer) 1:
+              {
+                MR_Word Var_130 = ((MR_Word) (MR_hl_field(MR_mktag(3), HeadVar__2_2, (MR_Integer) 1)));
+
+                switch (MR_tag((MR_Word) HeadVar__3_3)) {
+                  default: /*NOTREACHED*/ MR_assert(0);
+                  case (MR_Integer) 0:
+                    *HeadVar__1_1 = (MR_Integer) 2;
+                    break;
+                  case (MR_Integer) 1:
+                    *HeadVar__1_1 = (MR_Integer) 1;
+                    break;
+                  case (MR_Integer) 2:
+                    *HeadVar__1_1 = (MR_Integer) 1;
+                    break;
+                  case (MR_Integer) 3:
+                    switch (((MR_Integer) (MR_Word) (MR_hl_field(MR_mktag(3), HeadVar__3_3, (MR_Integer) 0)))) {
+                      default: /*NOTREACHED*/ MR_assert(0);
+                      case (MR_Integer) 0:
+                        *HeadVar__1_1 = (MR_Integer) 2;
+                        break;
+                      case (MR_Integer) 1:
+                        {
+                          MR_Word ArgY1_39 = ((MR_Word) (MR_hl_field(MR_mktag(3), HeadVar__3_3, (MR_Integer) 1)));
+
+                          backend_libs__rtti____Compare____rtti_pseudo_type_info_0_0(HeadVar__1_1, Var_130, ArgY1_39);
+                        }
+                        break;
+                      case (MR_Integer) 2:
+                        *HeadVar__1_1 = (MR_Integer) 1;
+                        break;
+                    }
+                    break;
+                }
+              }
+              break;
+            case (MR_Integer) 2:
+              {
+                MR_Word Var_126 = ((MR_Word) (MR_hl_field(MR_mktag(3), HeadVar__2_2, (MR_Integer) 4)));
+                MR_String Var_127 = ((MR_String) (MR_hl_field(MR_mktag(3), HeadVar__2_2, (MR_Integer) 3)));
+                MR_Word Var_128 = ((MR_Word) (MR_hl_field(MR_mktag(3), HeadVar__2_2, (MR_Integer) 2)));
+                MR_Word Var_129 = ((MR_Word) (MR_hl_field(MR_mktag(3), HeadVar__2_2, (MR_Integer) 1)));
+
+                switch (MR_tag((MR_Word) HeadVar__3_3)) {
+                  default: /*NOTREACHED*/ MR_assert(0);
+                  case (MR_Integer) 0:
+                    *HeadVar__1_1 = (MR_Integer) 2;
+                    break;
+                  case (MR_Integer) 1:
+                    *HeadVar__1_1 = (MR_Integer) 1;
+                    break;
+                  case (MR_Integer) 2:
+                    *HeadVar__1_1 = (MR_Integer) 1;
+                    break;
+                  case (MR_Integer) 3:
+                    switch (((MR_Integer) (MR_Word) (MR_hl_field(MR_mktag(3), HeadVar__3_3, (MR_Integer) 0)))) {
+                      default: /*NOTREACHED*/ MR_assert(0);
+                      case (MR_Integer) 0:
+                        *HeadVar__1_1 = (MR_Integer) 2;
+                        break;
+                      case (MR_Integer) 1:
+                        *HeadVar__1_1 = (MR_Integer) 2;
+                        break;
+                      case (MR_Integer) 2:
+                        {
+                          MR_Word ArgY1_65 = ((MR_Word) (MR_hl_field(MR_mktag(3), HeadVar__3_3, (MR_Integer) 1)));
+                          MR_Word ArgY2_67 = ((MR_Word) (MR_hl_field(MR_mktag(3), HeadVar__3_3, (MR_Integer) 2)));
+                          MR_String ArgY3_69 = ((MR_String) (MR_hl_field(MR_mktag(3), HeadVar__3_3, (MR_Integer) 3)));
+                          MR_Word ArgY4_71 = ((MR_Word) (MR_hl_field(MR_mktag(3), HeadVar__3_3, (MR_Integer) 4)));
+                          MR_Word Var_72;
+
+                          backend_libs__rtti____Compare____tc_name_0_0(&Var_72, Var_129, ArgY1_65);
+                          succeeded = (Var_72 == (MR_Integer) 0);
+                          succeeded = !(succeeded);
+                          if (succeeded)
+                            *HeadVar__1_1 = Var_72;
+                          else
+                          {
+                            MR_Word Var_73;
+
+                            mdbcomp__sym_name____Compare____sym_name_0_0(&Var_73, Var_128, ArgY2_67);
+                            succeeded = (Var_73 == (MR_Integer) 0);
+                            succeeded = !(succeeded);
+                            if (succeeded)
+                              *HeadVar__1_1 = Var_73;
+                            else
+                            {
+                              MR_Word Var_74;
+
+                              mercury__private_builtin__builtin_compare_string_3_p_0(&Var_74, Var_127, ArgY3_69);
+                              succeeded = (Var_74 == (MR_Integer) 0);
+                              succeeded = !(succeeded);
+                              if (succeeded)
+                                *HeadVar__1_1 = Var_74;
+                              else
+                                backend_libs__rtti____Compare____base_typeclass_info_0_0(HeadVar__1_1, Var_126, ArgY4_71);
+                            }
+                          }
+                        }
+                        break;
+                    }
+                    break;
+                }
+              }
+              break;
+          }
+          break;
+      }
+  }
+}
+
+void MR_CALL 
+backend_libs__rtti____Compare____type_ctor_data_0_0(
+  MR_Word * HeadVar__1_1,
+  MR_Word HeadVar__2_2,
+  MR_Word HeadVar__3_3)
+{
+  {
+    MR_bool succeeded;
+    MR_Integer CastX_27 = (MR_Integer) HeadVar__2_2;
+    MR_Integer CastY_28 = (MR_Integer) HeadVar__3_3;
+
+    succeeded = (CastX_27 == CastY_28);
+    if (succeeded)
+      *HeadVar__1_1 = (MR_Integer) 0;
+    else
+    {
+      MR_Integer ArgX1_4 = ((MR_Integer) (MR_hl_field(MR_mktag(0), HeadVar__2_2, (MR_Integer) 0)));
+      MR_Integer ArgY1_5 = ((MR_Integer) (MR_hl_field(MR_mktag(0), HeadVar__3_3, (MR_Integer) 0)));
+      MR_Word ArgX2_6 = ((MR_Word) (MR_hl_field(MR_mktag(0), HeadVar__2_2, (MR_Integer) 1)));
+      MR_Word ArgY2_7 = ((MR_Word) (MR_hl_field(MR_mktag(0), HeadVar__3_3, (MR_Integer) 1)));
+      MR_String ArgX3_8 = ((MR_String) (MR_hl_field(MR_mktag(0), HeadVar__2_2, (MR_Integer) 2)));
+      MR_String ArgY3_9 = ((MR_String) (MR_hl_field(MR_mktag(0), HeadVar__3_3, (MR_Integer) 2)));
+      MR_Integer ArgX4_10 = ((MR_Integer) (MR_hl_field(MR_mktag(0), HeadVar__2_2, (MR_Integer) 3)));
+      MR_Integer ArgY4_11 = ((MR_Integer) (MR_hl_field(MR_mktag(0), HeadVar__3_3, (MR_Integer) 3)));
+      MR_Word ArgX5_12 = ((MR_Word) (MR_hl_field(MR_mktag(0), HeadVar__2_2, (MR_Integer) 4)));
+      MR_Word ArgY5_13 = ((MR_Word) (MR_hl_field(MR_mktag(0), HeadVar__3_3, (MR_Integer) 4)));
+      MR_Word ArgX6_14 = ((MR_Word) (MR_hl_field(MR_mktag(0), HeadVar__2_2, (MR_Integer) 5)));
+      MR_Word ArgY6_15 = ((MR_Word) (MR_hl_field(MR_mktag(0), HeadVar__3_3, (MR_Integer) 5)));
+      MR_Word ArgX7_16 = ((MR_Word) (MR_hl_field(MR_mktag(0), HeadVar__2_2, (MR_Integer) 6)));
+      MR_Word ArgY7_17 = ((MR_Word) (MR_hl_field(MR_mktag(0), HeadVar__3_3, (MR_Integer) 6)));
+      MR_Word ArgX8_18 = ((MR_Word) (MR_hl_field(MR_mktag(0), HeadVar__2_2, (MR_Integer) 7)));
+      MR_Word ArgY8_19 = ((MR_Word) (MR_hl_field(MR_mktag(0), HeadVar__3_3, (MR_Integer) 7)));
+      MR_Word Var_20;
+
+      mercury__private_builtin__builtin_compare_int_3_p_0(&Var_20, ArgX1_4, ArgY1_5);
+      succeeded = (Var_20 == (MR_Integer) 0);
+      succeeded = !(succeeded);
+      if (succeeded)
+        *HeadVar__1_1 = Var_20;
+      else
+      {
+        MR_Word Var_21;
+
+        mdbcomp__sym_name____Compare____sym_name_0_0(&Var_21, ArgX2_6, ArgY2_7);
+        succeeded = (Var_21 == (MR_Integer) 0);
+        succeeded = !(succeeded);
+        if (succeeded)
+          *HeadVar__1_1 = Var_21;
+        else
+        {
+          MR_Word Var_22;
+
+          mercury__private_builtin__builtin_compare_string_3_p_0(&Var_22, ArgX3_8, ArgY3_9);
+          succeeded = (Var_22 == (MR_Integer) 0);
+          succeeded = !(succeeded);
+          if (succeeded)
+            *HeadVar__1_1 = Var_22;
+          else
+          {
+            MR_Word Var_23;
+
+            mercury__private_builtin__builtin_compare_int_3_p_0(&Var_23, ArgX4_10, ArgY4_11);
+            succeeded = (Var_23 == (MR_Integer) 0);
+            succeeded = !(succeeded);
+            if (succeeded)
+              *HeadVar__1_1 = Var_23;
+            else
+            {
+              MR_Word Var_24;
+
+              mercury__univ____Compare____univ_0_0(&Var_24, ArgX5_12, ArgY5_13);
+              succeeded = (Var_24 == (MR_Integer) 0);
+              succeeded = !(succeeded);
+              if (succeeded)
+                *HeadVar__1_1 = Var_24;
+              else
+              {
+                MR_Word Var_25;
+
+                mercury__univ____Compare____univ_0_0(&Var_25, ArgX6_14, ArgY6_15);
+                succeeded = (Var_25 == (MR_Integer) 0);
+                succeeded = !(succeeded);
+                if (succeeded)
+                  *HeadVar__1_1 = Var_25;
+                else
+                {
+                  MR_Word Var_26;
+
+                  mercury__builtin__compare_3_p_0((MR_Word) &backend_libs__rtti_scalar_common_1[10], &Var_26, ((MR_Box) (ArgX7_16)), ((MR_Box) (ArgY7_17)));
+                  succeeded = (Var_26 == (MR_Integer) 0);
+                  succeeded = !(succeeded);
+                  if (succeeded)
+                    *HeadVar__1_1 = Var_26;
+                  else
+                    backend_libs__rtti____Compare____type_ctor_details_0_0(HeadVar__1_1, ArgX8_18, ArgY8_19);
+                }
+              }
+            }
+          }
+        }
+      }
+    }
+  }
+}
+
+void MR_CALL 
+backend_libs__rtti____Compare____type_ctor_details_0_0(
+  MR_Word * HeadVar__1_1,
+  MR_Word HeadVar__2_2,
+  MR_Word HeadVar__3_3)
+{
+  {
+    MR_bool succeeded;
+    MR_Integer CastX_387 = (MR_Integer) HeadVar__2_2;
+    MR_Integer CastY_388 = (MR_Integer) HeadVar__3_3;
+
+    succeeded = (CastX_387 == CastY_388);
+    if (succeeded)
+      *HeadVar__1_1 = (MR_Integer) 0;
+    else
+      switch (MR_tag((MR_Word) HeadVar__2_2)) {
+        default: /*NOTREACHED*/ MR_assert(0);
+        case (MR_Integer) 0:
+          {
+            MR_Word Var_418 = ((MR_Word) (MR_hl_field(MR_mktag(0), HeadVar__2_2, (MR_Integer) 5)));
+            MR_Word Var_419 = ((MR_Word) (MR_hl_field(MR_mktag(0), HeadVar__2_2, (MR_Integer) 4)));
+            MR_Word Var_420 = ((MR_Word) (MR_hl_field(MR_mktag(0), HeadVar__2_2, (MR_Integer) 3)));
+            MR_Word Var_421 = ((MR_Word) (MR_hl_field(MR_mktag(0), HeadVar__2_2, (MR_Integer) 2)));
+            MR_Word Var_422 = ((MR_Word) (MR_hl_field(MR_mktag(0), HeadVar__2_2, (MR_Integer) 1)));
+            MR_Word Var_423 = ((MR_Word) (MR_hl_field(MR_mktag(0), HeadVar__2_2, (MR_Integer) 0)));
+
+            switch (MR_tag((MR_Word) HeadVar__3_3)) {
+              default: /*NOTREACHED*/ MR_assert(0);
+              case (MR_Integer) 0:
+                {
+                  MR_Word ArgY1_5 = ((MR_Word) (MR_hl_field(MR_mktag(0), HeadVar__3_3, (MR_Integer) 0)));
+                  MR_Word ArgY2_7 = ((MR_Word) (MR_hl_field(MR_mktag(0), HeadVar__3_3, (MR_Integer) 1)));
+                  MR_Word ArgY3_9 = ((MR_Word) (MR_hl_field(MR_mktag(0), HeadVar__3_3, (MR_Integer) 2)));
+                  MR_Word ArgY4_11 = ((MR_Word) (MR_hl_field(MR_mktag(0), HeadVar__3_3, (MR_Integer) 3)));
+                  MR_Word ArgY5_13 = ((MR_Word) (MR_hl_field(MR_mktag(0), HeadVar__3_3, (MR_Integer) 4)));
+                  MR_Word ArgY6_15 = ((MR_Word) (MR_hl_field(MR_mktag(0), HeadVar__3_3, (MR_Integer) 5)));
+                  MR_Word Var_16;
+                  MR_Integer Var_437 = (MR_Integer) Var_423;
+                  MR_Integer Var_438 = (MR_Integer) ArgY1_5;
+
+                  mercury__private_builtin__builtin_compare_int_3_p_0(&Var_16, Var_437, Var_438);
+                  succeeded = (Var_16 == (MR_Integer) 0);
+                  succeeded = !(succeeded);
+                  if (succeeded)
+                    *HeadVar__1_1 = Var_16;
+                  else
+                  {
+                    MR_Word Var_17;
+
+                    mercury__builtin__compare_3_p_0((MR_Word) &backend_libs__rtti_scalar_common_1[14], &Var_17, ((MR_Box) (Var_422)), ((MR_Box) (ArgY2_7)));
+                    succeeded = (Var_17 == (MR_Integer) 0);
+                    succeeded = !(succeeded);
+                    if (succeeded)
+                      *HeadVar__1_1 = Var_17;
+                    else
+                    {
+                      MR_Word Var_18;
+
+                      mercury__builtin__compare_3_p_0((MR_Word) &backend_libs__rtti_scalar_common_2[5], &Var_18, ((MR_Box) (Var_421)), ((MR_Box) (ArgY3_9)));
+                      succeeded = (Var_18 == (MR_Integer) 0);
+                      succeeded = !(succeeded);
+                      if (succeeded)
+                        *HeadVar__1_1 = Var_18;
+                      else
+                      {
+                        MR_Word Var_19;
+
+                        mercury__builtin__compare_3_p_0((MR_Word) &backend_libs__rtti_scalar_common_2[6], &Var_19, ((MR_Box) (Var_420)), ((MR_Box) (ArgY4_11)));
+                        succeeded = (Var_19 == (MR_Integer) 0);
+                        succeeded = !(succeeded);
+                        if (succeeded)
+                          *HeadVar__1_1 = Var_19;
+                        else
+                        {
+                          MR_Word Var_20;
+                          MR_Integer Var_439 = (MR_Integer) Var_419;
+                          MR_Integer Var_440 = (MR_Integer) ArgY5_13;
+
+                          mercury__private_builtin__builtin_compare_int_3_p_0(&Var_20, Var_439, Var_440);
+                          succeeded = (Var_20 == (MR_Integer) 0);
+                          succeeded = !(succeeded);
+                          if (succeeded)
+                            *HeadVar__1_1 = Var_20;
+                          else
+                          {
+                            mercury__builtin__compare_3_p_0((MR_Word) &backend_libs__rtti_scalar_common_1[12], HeadVar__1_1, ((MR_Box) (Var_418)), ((MR_Box) (ArgY6_15)));
+                          }
+                        }
+                      }
+                    }
+                  }
+                }
+                break;
+              case (MR_Integer) 1:
+                *HeadVar__1_1 = (MR_Integer) 1;
+                break;
+              case (MR_Integer) 2:
+                *HeadVar__1_1 = (MR_Integer) 1;
+                break;
+              case (MR_Integer) 3:
+                switch (((MR_Integer) (MR_Word) (MR_hl_field(MR_mktag(3), HeadVar__3_3, (MR_Integer) 0)))) {
+                  default: /*NOTREACHED*/ MR_assert(0);
+                  case (MR_Integer) 0:
+                    *HeadVar__1_1 = (MR_Integer) 1;
+                    break;
+                  case (MR_Integer) 1:
+                    *HeadVar__1_1 = (MR_Integer) 1;
+                    break;
+                  case (MR_Integer) 2:
+                    *HeadVar__1_1 = (MR_Integer) 1;
+                    break;
+                  case (MR_Integer) 3:
+                    *HeadVar__1_1 = (MR_Integer) 1;
+                    break;
+                  case (MR_Integer) 4:
+                    *HeadVar__1_1 = (MR_Integer) 1;
+                    break;
+                }
+                break;
+            }
+          }
+          break;
+        case (MR_Integer) 1:
+          {
+            MR_Word Var_426 = ((MR_Word) (MR_hl_field(MR_mktag(1), HeadVar__2_2, (MR_Integer) 5)));
+            MR_Word Var_427 = ((MR_Word) (MR_hl_field(MR_mktag(1), HeadVar__2_2, (MR_Integer) 4)));
+            MR_Word Var_428 = ((MR_Word) (MR_hl_field(MR_mktag(1), HeadVar__2_2, (MR_Integer) 3)));
+            MR_Word Var_429 = ((MR_Word) (MR_hl_field(MR_mktag(1), HeadVar__2_2, (MR_Integer) 2)));
+            MR_Word Var_430 = ((MR_Word) (MR_hl_field(MR_mktag(1), HeadVar__2_2, (MR_Integer) 1)));
+            MR_Word Var_431 = ((MR_Word) (MR_hl_field(MR_mktag(1), HeadVar__2_2, (MR_Integer) 0)));
+
+            switch (MR_tag((MR_Word) HeadVar__3_3)) {
+              default: /*NOTREACHED*/ MR_assert(0);
+              case (MR_Integer) 0:
+                *HeadVar__1_1 = (MR_Integer) 2;
+                break;
+              case (MR_Integer) 1:
+                {
+                  MR_Word ArgY1_93 = ((MR_Word) (MR_hl_field(MR_mktag(1), HeadVar__3_3, (MR_Integer) 0)));
+                  MR_Word ArgY2_95 = ((MR_Word) (MR_hl_field(MR_mktag(1), HeadVar__3_3, (MR_Integer) 1)));
+                  MR_Word ArgY3_97 = ((MR_Word) (MR_hl_field(MR_mktag(1), HeadVar__3_3, (MR_Integer) 2)));
+                  MR_Word ArgY4_99 = ((MR_Word) (MR_hl_field(MR_mktag(1), HeadVar__3_3, (MR_Integer) 3)));
+                  MR_Word ArgY5_101 = ((MR_Word) (MR_hl_field(MR_mktag(1), HeadVar__3_3, (MR_Integer) 4)));
+                  MR_Word ArgY6_103 = ((MR_Word) (MR_hl_field(MR_mktag(1), HeadVar__3_3, (MR_Integer) 5)));
+                  MR_Word Var_104;
+                  MR_Integer Var_443 = (MR_Integer) Var_431;
+                  MR_Integer Var_444 = (MR_Integer) ArgY1_93;
+
+                  mercury__private_builtin__builtin_compare_int_3_p_0(&Var_104, Var_443, Var_444);
+                  succeeded = (Var_104 == (MR_Integer) 0);
+                  succeeded = !(succeeded);
+                  if (succeeded)
+                    *HeadVar__1_1 = Var_104;
+                  else
+                  {
+                    MR_Word Var_105;
+                    MR_Integer Var_445 = (MR_Integer) Var_430;
+                    MR_Integer Var_446 = (MR_Integer) ArgY2_95;
+
+                    mercury__private_builtin__builtin_compare_int_3_p_0(&Var_105, Var_445, Var_446);
+                    succeeded = (Var_105 == (MR_Integer) 0);
+                    succeeded = !(succeeded);
+                    if (succeeded)
+                      *HeadVar__1_1 = Var_105;
+                    else
+                    {
+                      MR_Word Var_106;
+
+                      mercury__builtin__compare_3_p_0((MR_Word) &backend_libs__rtti_scalar_common_1[13], &Var_106, ((MR_Box) (Var_429)), ((MR_Box) (ArgY3_97)));
+                      succeeded = (Var_106 == (MR_Integer) 0);
+                      succeeded = !(succeeded);
+                      if (succeeded)
+                        *HeadVar__1_1 = Var_106;
+                      else
+                      {
+                        MR_Word Var_107;
+
+                        mercury__builtin__compare_3_p_0((MR_Word) &backend_libs__rtti_scalar_common_2[3], &Var_107, ((MR_Box) (Var_428)), ((MR_Box) (ArgY4_99)));
+                        succeeded = (Var_107 == (MR_Integer) 0);
+                        succeeded = !(succeeded);
+                        if (succeeded)
+                          *HeadVar__1_1 = Var_107;
+                        else
+                        {
+                          MR_Word Var_108;
+
+                          mercury__builtin__compare_3_p_0((MR_Word) &backend_libs__rtti_scalar_common_2[4], &Var_108, ((MR_Box) (Var_427)), ((MR_Box) (ArgY5_101)));
+                          succeeded = (Var_108 == (MR_Integer) 0);
+                          succeeded = !(succeeded);
+                          if (succeeded)
+                            *HeadVar__1_1 = Var_108;
+                          else
+                          {
+                            mercury__builtin__compare_3_p_0((MR_Word) &backend_libs__rtti_scalar_common_1[12], HeadVar__1_1, ((MR_Box) (Var_426)), ((MR_Box) (ArgY6_103)));
+                          }
+                        }
+                      }
+                    }
+                  }
+                }
+                break;
+              case (MR_Integer) 2:
+                *HeadVar__1_1 = (MR_Integer) 1;
+                break;
+              case (MR_Integer) 3:
+                switch (((MR_Integer) (MR_Word) (MR_hl_field(MR_mktag(3), HeadVar__3_3, (MR_Integer) 0)))) {
+                  default: /*NOTREACHED*/ MR_assert(0);
+                  case (MR_Integer) 0:
+                    *HeadVar__1_1 = (MR_Integer) 1;
+                    break;
+                  case (MR_Integer) 1:
+                    *HeadVar__1_1 = (MR_Integer) 1;
+                    break;
+                  case (MR_Integer) 2:
+                    *HeadVar__1_1 = (MR_Integer) 1;
+                    break;
+                  case (MR_Integer) 3:
+                    *HeadVar__1_1 = (MR_Integer) 1;
+                    break;
+                  case (MR_Integer) 4:
+                    *HeadVar__1_1 = (MR_Integer) 1;
+                    break;
+                }
+                break;
+            }
+          }
+          break;
+        case (MR_Integer) 2:
+          {
+            MR_Word Var_413 = ((MR_Word) (MR_hl_field(MR_mktag(2), HeadVar__2_2, (MR_Integer) 4)));
+            MR_Word Var_414 = ((MR_Word) (MR_hl_field(MR_mktag(2), HeadVar__2_2, (MR_Integer) 3)));
+            MR_Word Var_415 = ((MR_Word) (MR_hl_field(MR_mktag(2), HeadVar__2_2, (MR_Integer) 2)));
+            MR_Word Var_416 = ((MR_Word) (MR_hl_field(MR_mktag(2), HeadVar__2_2, (MR_Integer) 1)));
+            MR_Word Var_417 = ((MR_Word) (MR_hl_field(MR_mktag(2), HeadVar__2_2, (MR_Integer) 0)));
+
+            switch (MR_tag((MR_Word) HeadVar__3_3)) {
+              default: /*NOTREACHED*/ MR_assert(0);
+              case (MR_Integer) 0:
+                *HeadVar__1_1 = (MR_Integer) 2;
+                break;
+              case (MR_Integer) 1:
+                *HeadVar__1_1 = (MR_Integer) 2;
+                break;
+              case (MR_Integer) 2:
+                {
+                  MR_Word ArgY1_179 = ((MR_Word) (MR_hl_field(MR_mktag(2), HeadVar__3_3, (MR_Integer) 0)));
+                  MR_Word ArgY2_181 = ((MR_Word) (MR_hl_field(MR_mktag(2), HeadVar__3_3, (MR_Integer) 1)));
+                  MR_Word ArgY3_183 = ((MR_Word) (MR_hl_field(MR_mktag(2), HeadVar__3_3, (MR_Integer) 2)));
+                  MR_Word ArgY4_185 = ((MR_Word) (MR_hl_field(MR_mktag(2), HeadVar__3_3, (MR_Integer) 3)));
+                  MR_Word ArgY5_187 = ((MR_Word) (MR_hl_field(MR_mktag(2), HeadVar__3_3, (MR_Integer) 4)));
+                  MR_Word Var_188;
+                  MR_Integer Var_435 = (MR_Integer) Var_417;
+                  MR_Integer Var_436 = (MR_Integer) ArgY1_179;
+
+                  mercury__private_builtin__builtin_compare_int_3_p_0(&Var_188, Var_435, Var_436);
+                  succeeded = (Var_188 == (MR_Integer) 0);
+                  succeeded = !(succeeded);
+                  if (succeeded)
+                    *HeadVar__1_1 = Var_188;
+                  else
+                  {
+                    MR_Word Var_189;
+
+                    mercury__builtin__compare_3_p_0((MR_Word) &backend_libs__rtti_scalar_common_1[11], &Var_189, ((MR_Box) (Var_416)), ((MR_Box) (ArgY2_181)));
+                    succeeded = (Var_189 == (MR_Integer) 0);
+                    succeeded = !(succeeded);
+                    if (succeeded)
+                      *HeadVar__1_1 = Var_189;
+                    else
+                    {
+                      MR_Word Var_190;
+
+                      mercury__builtin__compare_3_p_0((MR_Word) &backend_libs__rtti_scalar_common_2[0], &Var_190, ((MR_Box) (Var_415)), ((MR_Box) (ArgY3_183)));
+                      succeeded = (Var_190 == (MR_Integer) 0);
+                      succeeded = !(succeeded);
+                      if (succeeded)
+                        *HeadVar__1_1 = Var_190;
+                      else
+                      {
+                        MR_Word Var_191;
+
+                        mercury__builtin__compare_3_p_0((MR_Word) &backend_libs__rtti_scalar_common_2[2], &Var_191, ((MR_Box) (Var_414)), ((MR_Box) (ArgY4_185)));
+                        succeeded = (Var_191 == (MR_Integer) 0);
+                        succeeded = !(succeeded);
+                        if (succeeded)
+                          *HeadVar__1_1 = Var_191;
+                        else
+                        {
+                          mercury__builtin__compare_3_p_0((MR_Word) &backend_libs__rtti_scalar_common_1[12], HeadVar__1_1, ((MR_Box) (Var_413)), ((MR_Box) (ArgY5_187)));
+                        }
+                      }
+                    }
+                  }
+                }
+                break;
+              case (MR_Integer) 3:
+                switch (((MR_Integer) (MR_Word) (MR_hl_field(MR_mktag(3), HeadVar__3_3, (MR_Integer) 0)))) {
+                  default: /*NOTREACHED*/ MR_assert(0);
+                  case (MR_Integer) 0:
+                    *HeadVar__1_1 = (MR_Integer) 1;
+                    break;
+                  case (MR_Integer) 1:
+                    *HeadVar__1_1 = (MR_Integer) 1;
+                    break;
+                  case (MR_Integer) 2:
+                    *HeadVar__1_1 = (MR_Integer) 1;
+                    break;
+                  case (MR_Integer) 3:
+                    *HeadVar__1_1 = (MR_Integer) 1;
+                    break;
+                  case (MR_Integer) 4:
+                    *HeadVar__1_1 = (MR_Integer) 1;
+                    break;
+                }
+                break;
+            }
+          }
+          break;
+        case (MR_Integer) 3:
+          switch (((MR_Integer) (MR_Word) (MR_hl_field(MR_mktag(3), HeadVar__2_2, (MR_Integer) 0)))) {
+            default: /*NOTREACHED*/ MR_assert(0);
+            case (MR_Integer) 0:
+              {
+                MR_Word Var_433 = ((MR_Word) (MR_hl_field(MR_mktag(3), HeadVar__2_2, (MR_Integer) 2)));
+                MR_Word Var_434 = ((MR_Word) (MR_hl_field(MR_mktag(3), HeadVar__2_2, (MR_Integer) 1)));
+
+                switch (MR_tag((MR_Word) HeadVar__3_3)) {
+                  default: /*NOTREACHED*/ MR_assert(0);
+                  case (MR_Integer) 0:
+                    *HeadVar__1_1 = (MR_Integer) 2;
+                    break;
+                  case (MR_Integer) 1:
+                    *HeadVar__1_1 = (MR_Integer) 2;
+                    break;
+                  case (MR_Integer) 2:
+                    *HeadVar__1_1 = (MR_Integer) 2;
+                    break;
+                  case (MR_Integer) 3:
+                    switch (((MR_Integer) (MR_Word) (MR_hl_field(MR_mktag(3), HeadVar__3_3, (MR_Integer) 0)))) {
+                      default: /*NOTREACHED*/ MR_assert(0);
+                      case (MR_Integer) 0:
+                        {
+                          MR_Word ArgY1_247 = ((MR_Word) (MR_hl_field(MR_mktag(3), HeadVar__3_3, (MR_Integer) 1)));
+                          MR_Word ArgY2_249 = ((MR_Word) (MR_hl_field(MR_mktag(3), HeadVar__3_3, (MR_Integer) 2)));
+                          MR_Word Var_250;
+                          MR_Integer Var_449 = (MR_Integer) Var_434;
+                          MR_Integer Var_450 = (MR_Integer) ArgY1_247;
+
+                          mercury__private_builtin__builtin_compare_int_3_p_0(&Var_250, Var_449, Var_450);
+                          succeeded = (Var_250 == (MR_Integer) 0);
+                          succeeded = !(succeeded);
+                          if (succeeded)
+                            *HeadVar__1_1 = Var_250;
+                          else
+                            backend_libs__rtti____Compare____notag_functor_0_0(HeadVar__1_1, Var_433, ArgY2_249);
+                        }
+                        break;
+                      case (MR_Integer) 1:
+                        *HeadVar__1_1 = (MR_Integer) 1;
+                        break;
+                      case (MR_Integer) 2:
+                        *HeadVar__1_1 = (MR_Integer) 1;
+                        break;
+                      case (MR_Integer) 3:
+                        *HeadVar__1_1 = (MR_Integer) 1;
+                        break;
+                      case (MR_Integer) 4:
+                        *HeadVar__1_1 = (MR_Integer) 1;
+                        break;
+                    }
+                    break;
+                }
+              }
+              break;
+            case (MR_Integer) 1:
+              {
+                MR_Word Var_424 = ((MR_Word) (MR_hl_field(MR_mktag(3), HeadVar__2_2, (MR_Integer) 1)));
+
+                switch (MR_tag((MR_Word) HeadVar__3_3)) {
+                  default: /*NOTREACHED*/ MR_assert(0);
+                  case (MR_Integer) 0:
+                    *HeadVar__1_1 = (MR_Integer) 2;
+                    break;
+                  case (MR_Integer) 1:
+                    *HeadVar__1_1 = (MR_Integer) 2;
+                    break;
+                  case (MR_Integer) 2:
+                    *HeadVar__1_1 = (MR_Integer) 2;
+                    break;
+                  case (MR_Integer) 3:
+                    switch (((MR_Integer) (MR_Word) (MR_hl_field(MR_mktag(3), HeadVar__3_3, (MR_Integer) 0)))) {
+                      default: /*NOTREACHED*/ MR_assert(0);
+                      case (MR_Integer) 0:
+                        *HeadVar__1_1 = (MR_Integer) 2;
+                        break;
+                      case (MR_Integer) 1:
+                        {
+                          MR_Word ArgY1_287 = ((MR_Word) (MR_hl_field(MR_mktag(3), HeadVar__3_3, (MR_Integer) 1)));
+
+                          backend_libs__rtti____Compare____rtti_maybe_pseudo_type_info_0_0(HeadVar__1_1, Var_424, ArgY1_287);
+                        }
+                        break;
+                      case (MR_Integer) 2:
+                        *HeadVar__1_1 = (MR_Integer) 1;
+                        break;
+                      case (MR_Integer) 3:
+                        *HeadVar__1_1 = (MR_Integer) 1;
+                        break;
+                      case (MR_Integer) 4:
+                        *HeadVar__1_1 = (MR_Integer) 1;
+                        break;
+                    }
+                    break;
+                }
+              }
+              break;
+            case (MR_Integer) 2:
+              {
+                MR_Word Var_412 = ((MR_Word) (MR_hl_field(MR_mktag(3), HeadVar__2_2, (MR_Integer) 1)));
+
+                switch (MR_tag((MR_Word) HeadVar__3_3)) {
+                  default: /*NOTREACHED*/ MR_assert(0);
+                  case (MR_Integer) 0:
+                    *HeadVar__1_1 = (MR_Integer) 2;
+                    break;
+                  case (MR_Integer) 1:
+                    *HeadVar__1_1 = (MR_Integer) 2;
+                    break;
+                  case (MR_Integer) 2:
+                    *HeadVar__1_1 = (MR_Integer) 2;
+                    break;
+                  case (MR_Integer) 3:
+                    switch (((MR_Integer) (MR_Word) (MR_hl_field(MR_mktag(3), HeadVar__3_3, (MR_Integer) 0)))) {
+                      default: /*NOTREACHED*/ MR_assert(0);
+                      case (MR_Integer) 0:
+                        *HeadVar__1_1 = (MR_Integer) 2;
+                        break;
+                      case (MR_Integer) 1:
+                        *HeadVar__1_1 = (MR_Integer) 2;
+                        break;
+                      case (MR_Integer) 2:
+                        {
+                          MR_Word ArgY1_320 = ((MR_Word) (MR_hl_field(MR_mktag(3), HeadVar__3_3, (MR_Integer) 1)));
+
+                          backend_libs__rtti____Compare____builtin_ctor_0_0(HeadVar__1_1, Var_412, ArgY1_320);
+                        }
+                        break;
+                      case (MR_Integer) 3:
+                        *HeadVar__1_1 = (MR_Integer) 1;
+                        break;
+                      case (MR_Integer) 4:
+                        *HeadVar__1_1 = (MR_Integer) 1;
+                        break;
+                    }
+                    break;
+                }
+              }
+              break;
+            case (MR_Integer) 3:
+              {
+                MR_Word Var_432 = ((MR_Word) (MR_hl_field(MR_mktag(3), HeadVar__2_2, (MR_Integer) 1)));
+
+                switch (MR_tag((MR_Word) HeadVar__3_3)) {
+                  default: /*NOTREACHED*/ MR_assert(0);
+                  case (MR_Integer) 0:
+                    *HeadVar__1_1 = (MR_Integer) 2;
+                    break;
+                  case (MR_Integer) 1:
+                    *HeadVar__1_1 = (MR_Integer) 2;
+                    break;
+                  case (MR_Integer) 2:
+                    *HeadVar__1_1 = (MR_Integer) 2;
+                    break;
+                  case (MR_Integer) 3:
+                    switch (((MR_Integer) (MR_Word) (MR_hl_field(MR_mktag(3), HeadVar__3_3, (MR_Integer) 0)))) {
+                      default: /*NOTREACHED*/ MR_assert(0);
+                      case (MR_Integer) 0:
+                        *HeadVar__1_1 = (MR_Integer) 2;
+                        break;
+                      case (MR_Integer) 1:
+                        *HeadVar__1_1 = (MR_Integer) 2;
+                        break;
+                      case (MR_Integer) 2:
+                        *HeadVar__1_1 = (MR_Integer) 2;
+                        break;
+                      case (MR_Integer) 3:
+                        {
+                          MR_Word ArgY1_353 = ((MR_Word) (MR_hl_field(MR_mktag(3), HeadVar__3_3, (MR_Integer) 1)));
+                          MR_Integer Var_447 = (MR_Integer) Var_432;
+                          MR_Integer Var_448 = (MR_Integer) ArgY1_353;
+
+                          mercury__private_builtin__builtin_compare_int_3_p_0(HeadVar__1_1, Var_447, Var_448);
+                        }
+                        break;
+                      case (MR_Integer) 4:
+                        *HeadVar__1_1 = (MR_Integer) 1;
+                        break;
+                    }
+                    break;
+                }
+              }
+              break;
+            case (MR_Integer) 4:
+              {
+                MR_Word Var_425 = ((MR_Word) (MR_hl_field(MR_mktag(3), HeadVar__2_2, (MR_Integer) 1)));
+
+                switch (MR_tag((MR_Word) HeadVar__3_3)) {
+                  default: /*NOTREACHED*/ MR_assert(0);
+                  case (MR_Integer) 0:
+                    *HeadVar__1_1 = (MR_Integer) 2;
+                    break;
+                  case (MR_Integer) 1:
+                    *HeadVar__1_1 = (MR_Integer) 2;
+                    break;
+                  case (MR_Integer) 2:
+                    *HeadVar__1_1 = (MR_Integer) 2;
+                    break;
+                  case (MR_Integer) 3:
+                    switch (((MR_Integer) (MR_Word) (MR_hl_field(MR_mktag(3), HeadVar__3_3, (MR_Integer) 0)))) {
+                      default: /*NOTREACHED*/ MR_assert(0);
+                      case (MR_Integer) 0:
+                        *HeadVar__1_1 = (MR_Integer) 2;
+                        break;
+                      case (MR_Integer) 1:
+                        *HeadVar__1_1 = (MR_Integer) 2;
+                        break;
+                      case (MR_Integer) 2:
+                        *HeadVar__1_1 = (MR_Integer) 2;
+                        break;
+                      case (MR_Integer) 3:
+                        *HeadVar__1_1 = (MR_Integer) 2;
+                        break;
+                      case (MR_Integer) 4:
+                        {
+                          MR_Word ArgY1_386 = ((MR_Word) (MR_hl_field(MR_mktag(3), HeadVar__3_3, (MR_Integer) 1)));
+                          MR_Integer Var_441 = (MR_Integer) Var_425;
+                          MR_Integer Var_442 = (MR_Integer) ArgY1_386;
+
+                          mercury__private_builtin__builtin_compare_int_3_p_0(HeadVar__1_1, Var_441, Var_442);
+                        }
+                        break;
+                    }
+                    break;
+                }
+              }
+              break;
+          }
+          break;
+      }
+  }
+}
+
+void MR_CALL 
+backend_libs__rtti____Compare____tc_instance_0_0(
+  MR_Word * HeadVar__1_1,
+  MR_Word HeadVar__2_2,
+  MR_Word HeadVar__3_3)
+{
+  {
+    MR_bool succeeded;
+    MR_Integer CastX_18 = (MR_Integer) HeadVar__2_2;
+    MR_Integer CastY_19 = (MR_Integer) HeadVar__3_3;
+
+    succeeded = (CastX_18 == CastY_19);
+    if (succeeded)
+      *HeadVar__1_1 = (MR_Integer) 0;
+    else
+    {
+      MR_Word ArgX1_4 = ((MR_Word) (MR_hl_field(MR_mktag(0), HeadVar__2_2, (MR_Integer) 0)));
+      MR_Word ArgY1_5 = ((MR_Word) (MR_hl_field(MR_mktag(0), HeadVar__3_3, (MR_Integer) 0)));
+      MR_Word ArgX2_6 = ((MR_Word) (MR_hl_field(MR_mktag(0), HeadVar__2_2, (MR_Integer) 1)));
+      MR_Word ArgY2_7 = ((MR_Word) (MR_hl_field(MR_mktag(0), HeadVar__3_3, (MR_Integer) 1)));
+      MR_Integer ArgX3_8 = ((MR_Integer) (MR_hl_field(MR_mktag(0), HeadVar__2_2, (MR_Integer) 2)));
+      MR_Integer ArgY3_9 = ((MR_Integer) (MR_hl_field(MR_mktag(0), HeadVar__3_3, (MR_Integer) 2)));
+      MR_Word ArgX4_10 = ((MR_Word) (MR_hl_field(MR_mktag(0), HeadVar__2_2, (MR_Integer) 3)));
+      MR_Word ArgY4_11 = ((MR_Word) (MR_hl_field(MR_mktag(0), HeadVar__3_3, (MR_Integer) 3)));
+      MR_Word ArgX5_12 = ((MR_Word) (MR_hl_field(MR_mktag(0), HeadVar__2_2, (MR_Integer) 4)));
+      MR_Word ArgY5_13 = ((MR_Word) (MR_hl_field(MR_mktag(0), HeadVar__3_3, (MR_Integer) 4)));
+      MR_Word Var_14;
+
+      backend_libs__rtti____Compare____tc_name_0_0(&Var_14, ArgX1_4, ArgY1_5);
+      succeeded = (Var_14 == (MR_Integer) 0);
+      succeeded = !(succeeded);
+      if (succeeded)
+        *HeadVar__1_1 = Var_14;
+      else
+      {
+        MR_Word Var_15;
+
+        mercury__builtin__compare_3_p_0((MR_Word) &backend_libs__rtti_scalar_common_1[6], &Var_15, ((MR_Box) (ArgX2_6)), ((MR_Box) (ArgY2_7)));
+        succeeded = (Var_15 == (MR_Integer) 0);
+        succeeded = !(succeeded);
+        if (succeeded)
+          *HeadVar__1_1 = Var_15;
+        else
+        {
+          MR_Word Var_16;
+
+          mercury__private_builtin__builtin_compare_int_3_p_0(&Var_16, ArgX3_8, ArgY3_9);
+          succeeded = (Var_16 == (MR_Integer) 0);
+          succeeded = !(succeeded);
+          if (succeeded)
+            *HeadVar__1_1 = Var_16;
+          else
+          {
+            MR_Word Var_17;
+
+            mercury__builtin__compare_3_p_0((MR_Word) &backend_libs__rtti_scalar_common_1[4], &Var_17, ((MR_Box) (ArgX4_10)), ((MR_Box) (ArgY4_11)));
+            succeeded = (Var_17 == (MR_Integer) 0);
+            succeeded = !(succeeded);
+            if (succeeded)
+              *HeadVar__1_1 = Var_17;
+            else
+            {
+              mercury__builtin__compare_3_p_0((MR_Word) &backend_libs__rtti_scalar_common_1[0], HeadVar__1_1, ((MR_Box) (ArgX5_12)), ((MR_Box) (ArgY5_13)));
+            }
+          }
+        }
+      }
+    }
+  }
+}
+
+void MR_CALL 
+backend_libs__rtti____Compare____tc_decl_0_0(
+  MR_Word * HeadVar__1_1,
+  MR_Word HeadVar__2_2,
+  MR_Word HeadVar__3_3)
+{
+  {
+    MR_bool succeeded;
+    MR_Integer CastX_12 = (MR_Integer) HeadVar__2_2;
+    MR_Integer CastY_13 = (MR_Integer) HeadVar__3_3;
+
+    succeeded = (CastX_12 == CastY_13);
+    if (succeeded)
+      *HeadVar__1_1 = (MR_Integer) 0;
+    else
+    {
+      MR_Word ArgX1_4 = ((MR_Word) (MR_hl_field(MR_mktag(0), HeadVar__2_2, (MR_Integer) 0)));
+      MR_Word ArgY1_5 = ((MR_Word) (MR_hl_field(MR_mktag(0), HeadVar__3_3, (MR_Integer) 0)));
+      MR_Integer ArgX2_6 = ((MR_Integer) (MR_hl_field(MR_mktag(0), HeadVar__2_2, (MR_Integer) 1)));
+      MR_Integer ArgY2_7 = ((MR_Integer) (MR_hl_field(MR_mktag(0), HeadVar__3_3, (MR_Integer) 1)));
+      MR_Word ArgX3_8 = ((MR_Word) (MR_hl_field(MR_mktag(0), HeadVar__2_2, (MR_Integer) 2)));
+      MR_Word ArgY3_9 = ((MR_Word) (MR_hl_field(MR_mktag(0), HeadVar__3_3, (MR_Integer) 2)));
+      MR_Word Var_10;
+
+      backend_libs__rtti____Compare____tc_id_0_0(&Var_10, ArgX1_4, ArgY1_5);
+      succeeded = (Var_10 == (MR_Integer) 0);
+      succeeded = !(succeeded);
+      if (succeeded)
+        *HeadVar__1_1 = Var_10;
+      else
+      {
+        MR_Word Var_11;
+
+        mercury__private_builtin__builtin_compare_int_3_p_0(&Var_11, ArgX2_6, ArgY2_7);
+        succeeded = (Var_11 == (MR_Integer) 0);
+        succeeded = !(succeeded);
+        if (succeeded)
+          *HeadVar__1_1 = Var_11;
+        else
+        {
+          mercury__builtin__compare_3_p_0((MR_Word) &backend_libs__rtti_scalar_common_1[4], HeadVar__1_1, ((MR_Box) (ArgX3_8)), ((MR_Box) (ArgY3_9)));
+        }
+      }
+    }
+  }
+}
+
+void MR_CALL 
+backend_libs__rtti____Compare____tc_id_0_0(
+  MR_Word * HeadVar__1_1,
+  MR_Word HeadVar__2_2,
+  MR_Word HeadVar__3_3)
+{
+  {
+    MR_bool succeeded;
+    MR_Integer CastX_12 = (MR_Integer) HeadVar__2_2;
+    MR_Integer CastY_13 = (MR_Integer) HeadVar__3_3;
+
+    succeeded = (CastX_12 == CastY_13);
+    if (succeeded)
+      *HeadVar__1_1 = (MR_Integer) 0;
+    else
+    {
+      MR_Word ArgX1_4 = ((MR_Word) (MR_hl_field(MR_mktag(0), HeadVar__2_2, (MR_Integer) 0)));
+      MR_Word ArgY1_5 = ((MR_Word) (MR_hl_field(MR_mktag(0), HeadVar__3_3, (MR_Integer) 0)));
+      MR_Word ArgX2_6 = ((MR_Word) (MR_hl_field(MR_mktag(0), HeadVar__2_2, (MR_Integer) 1)));
+      MR_Word ArgY2_7 = ((MR_Word) (MR_hl_field(MR_mktag(0), HeadVar__3_3, (MR_Integer) 1)));
+      MR_Word ArgX3_8 = ((MR_Word) (MR_hl_field(MR_mktag(0), HeadVar__2_2, (MR_Integer) 2)));
+      MR_Word ArgY3_9 = ((MR_Word) (MR_hl_field(MR_mktag(0), HeadVar__3_3, (MR_Integer) 2)));
+      MR_Word Var_10;
+
+      backend_libs__rtti____Compare____tc_name_0_0(&Var_10, ArgX1_4, ArgY1_5);
+      succeeded = (Var_10 == (MR_Integer) 0);
+      succeeded = !(succeeded);
+      if (succeeded)
+        *HeadVar__1_1 = Var_10;
+      else
+      {
+        MR_Word Var_11;
+
+        mercury__builtin__compare_3_p_0((MR_Word) &backend_libs__rtti_scalar_common_1[8], &Var_11, ((MR_Box) (ArgX2_6)), ((MR_Box) (ArgY2_7)));
+        succeeded = (Var_11 == (MR_Integer) 0);
+        succeeded = !(succeeded);
+        if (succeeded)
+          *HeadVar__1_1 = Var_11;
+        else
+        {
+          mercury__builtin__compare_3_p_0((MR_Word) &backend_libs__rtti_scalar_common_1[9], HeadVar__1_1, ((MR_Box) (ArgX3_8)), ((MR_Box) (ArgY3_9)));
+        }
+      }
+    }
+  }
+}
+
+void MR_CALL 
+backend_libs__rtti____Compare____tc_name_0_0(
+  MR_Word * HeadVar__1_1,
+  MR_Word HeadVar__2_2,
+  MR_Word HeadVar__3_3)
+{
+  {
+    MR_bool succeeded;
+    MR_Integer CastX_12 = (MR_Integer) HeadVar__2_2;
+    MR_Integer CastY_13 = (MR_Integer) HeadVar__3_3;
+
+    succeeded = (CastX_12 == CastY_13);
+    if (succeeded)
+      *HeadVar__1_1 = (MR_Integer) 0;
+    else
+    {
+      MR_Word ArgX1_4 = ((MR_Word) (MR_hl_field(MR_mktag(0), HeadVar__2_2, (MR_Integer) 0)));
+      MR_Word ArgY1_5 = ((MR_Word) (MR_hl_field(MR_mktag(0), HeadVar__3_3, (MR_Integer) 0)));
+      MR_String ArgX2_6 = ((MR_String) (MR_hl_field(MR_mktag(0), HeadVar__2_2, (MR_Integer) 1)));
+      MR_String ArgY2_7 = ((MR_String) (MR_hl_field(MR_mktag(0), HeadVar__3_3, (MR_Integer) 1)));
+      MR_Integer ArgX3_8 = ((MR_Integer) (MR_hl_field(MR_mktag(0), HeadVar__2_2, (MR_Integer) 2)));
+      MR_Integer ArgY3_9 = ((MR_Integer) (MR_hl_field(MR_mktag(0), HeadVar__3_3, (MR_Integer) 2)));
+      MR_Word Var_10;
+
+      mdbcomp__sym_name____Compare____sym_name_0_0(&Var_10, ArgX1_4, ArgY1_5);
+      succeeded = (Var_10 == (MR_Integer) 0);
+      succeeded = !(succeeded);
+      if (succeeded)
+        *HeadVar__1_1 = Var_10;
+      else
+      {
+        MR_Word Var_11;
+
+        mercury__private_builtin__builtin_compare_string_3_p_0(&Var_11, ArgX2_6, ArgY2_7);
+        succeeded = (Var_11 == (MR_Integer) 0);
+        succeeded = !(succeeded);
+        if (succeeded)
+          *HeadVar__1_1 = Var_11;
+        else
+          mercury__private_builtin__builtin_compare_int_3_p_0(HeadVar__1_1, ArgX3_8, ArgY3_9);
+      }
+    }
+  }
+}
+
+MR_bool MR_CALL 
+backend_libs__rtti____Unify____rtti_data_0_0(
+  MR_Word HeadVar__1_1,
+  MR_Word HeadVar__2_2)
+{
+  {
+    MR_bool succeeded;
+    MR_Integer CastX_21 = (MR_Integer) HeadVar__1_1;
+    MR_Integer CastY_22 = (MR_Integer) HeadVar__2_2;
+
+    succeeded = (CastX_21 == CastY_22);
+    if (succeeded)
+      succeeded = MR_TRUE;
+    else
+      switch (MR_tag((MR_Word) HeadVar__1_1)) {
+        default: /*NOTREACHED*/ MR_assert(0);
+        case (MR_Integer) 0:
+          {
+            MR_Word ArgX1_3 = (MR_Word) MR_body(((MR_Word) HeadVar__1_1), (MR_Integer) 0);
+            MR_Word ArgY1_4;
+
+            succeeded = ((MR_tag((MR_Word) HeadVar__2_2)) == (MR_mktag((MR_Integer) 0)));
+            if (succeeded)
+            {
+              ArgY1_4 = (MR_Word) MR_body(((MR_Word) HeadVar__2_2), (MR_Integer) 0);
+              succeeded = backend_libs__rtti____Unify____type_ctor_data_0_0(ArgX1_3, ArgY1_4);
+            }
+          }
+          break;
+        case (MR_Integer) 1:
+          {
+            MR_Word ArgX1_17 = (MR_Word) MR_body(((MR_Word) HeadVar__1_1), (MR_Integer) 1);
+            MR_Word ArgY1_18;
+
+            succeeded = ((MR_tag((MR_Word) HeadVar__2_2)) == (MR_mktag((MR_Integer) 1)));
+            if (succeeded)
+            {
+              ArgY1_18 = (MR_Word) MR_body(((MR_Word) HeadVar__2_2), (MR_Integer) 1);
+              succeeded = backend_libs__rtti____Unify____tc_decl_0_0(ArgX1_17, ArgY1_18);
+            }
+          }
+          break;
+        case (MR_Integer) 2:
+          {
+            MR_Word ArgX1_19 = (MR_Word) MR_body(((MR_Word) HeadVar__1_1), (MR_Integer) 2);
+            MR_Word ArgY1_20;
+
+            succeeded = ((MR_tag((MR_Word) HeadVar__2_2)) == (MR_mktag((MR_Integer) 2)));
+            if (succeeded)
+            {
+              ArgY1_20 = (MR_Word) MR_body(((MR_Word) HeadVar__2_2), (MR_Integer) 2);
+              succeeded = backend_libs__rtti____Unify____tc_instance_0_0(ArgX1_19, ArgY1_20);
+            }
+          }
+          break;
+        case (MR_Integer) 3:
+          switch (((MR_Integer) (MR_Word) (MR_hl_field(MR_mktag(3), HeadVar__1_1, (MR_Integer) 0)))) {
+            default: /*NOTREACHED*/ MR_assert(0);
+            case (MR_Integer) 0:
+              {
+                MR_Word ArgX1_5 = ((MR_Word) (MR_hl_field(MR_mktag(3), HeadVar__1_1, (MR_Integer) 1)));
+                MR_Word ArgY1_6;
+
+                succeeded = ((((MR_tag((MR_Word) HeadVar__2_2)) == (MR_mktag((MR_Integer) 3)))) && (((((MR_Integer) (MR_Word) (MR_hl_field(MR_mktag(3), HeadVar__2_2, (MR_Integer) 0)))) == (MR_Integer) 0)));
+                if (succeeded)
+                {
+                  ArgY1_6 = ((MR_Word) (MR_hl_field(MR_mktag(3), HeadVar__2_2, (MR_Integer) 1)));
+                  succeeded = backend_libs__rtti____Unify____rtti_type_info_0_0(ArgX1_5, ArgY1_6);
+                }
+              }
+              break;
+            case (MR_Integer) 1:
+              {
+                MR_Word ArgX1_7 = ((MR_Word) (MR_hl_field(MR_mktag(3), HeadVar__1_1, (MR_Integer) 1)));
+                MR_Word ArgY1_8;
+
+                succeeded = ((((MR_tag((MR_Word) HeadVar__2_2)) == (MR_mktag((MR_Integer) 3)))) && (((((MR_Integer) (MR_Word) (MR_hl_field(MR_mktag(3), HeadVar__2_2, (MR_Integer) 0)))) == (MR_Integer) 1)));
+                if (succeeded)
+                {
+                  ArgY1_8 = ((MR_Word) (MR_hl_field(MR_mktag(3), HeadVar__2_2, (MR_Integer) 1)));
+                  succeeded = backend_libs__rtti____Unify____rtti_pseudo_type_info_0_0(ArgX1_7, ArgY1_8);
+                }
+              }
+              break;
+            case (MR_Integer) 2:
+              {
+                MR_Word ArgX1_9 = ((MR_Word) (MR_hl_field(MR_mktag(3), HeadVar__1_1, (MR_Integer) 1)));
+                MR_Word ArgY1_10;
+                MR_Word ArgX2_11 = ((MR_Word) (MR_hl_field(MR_mktag(3), HeadVar__1_1, (MR_Integer) 2)));
+                MR_Word ArgY2_12;
+                MR_String ArgX3_13 = ((MR_String) (MR_hl_field(MR_mktag(3), HeadVar__1_1, (MR_Integer) 3)));
+                MR_String ArgY3_14;
+                MR_Word ArgX4_15 = ((MR_Word) (MR_hl_field(MR_mktag(3), HeadVar__1_1, (MR_Integer) 4)));
+                MR_Word ArgY4_16;
+
+                succeeded = ((((MR_tag((MR_Word) HeadVar__2_2)) == (MR_mktag((MR_Integer) 3)))) && (((((MR_Integer) (MR_Word) (MR_hl_field(MR_mktag(3), HeadVar__2_2, (MR_Integer) 0)))) == (MR_Integer) 2)));
+                if (succeeded)
+                {
+                  ArgY1_10 = ((MR_Word) (MR_hl_field(MR_mktag(3), HeadVar__2_2, (MR_Integer) 1)));
+                  ArgY2_12 = ((MR_Word) (MR_hl_field(MR_mktag(3), HeadVar__2_2, (MR_Integer) 2)));
+                  ArgY3_14 = ((MR_String) (MR_hl_field(MR_mktag(3), HeadVar__2_2, (MR_Integer) 3)));
+                  ArgY4_16 = ((MR_Word) (MR_hl_field(MR_mktag(3), HeadVar__2_2, (MR_Integer) 4)));
+                  succeeded = backend_libs__rtti____Unify____tc_name_0_0(ArgX1_9, ArgY1_10);
+                  if (succeeded)
+                  {
+                    succeeded = mdbcomp__sym_name____Unify____sym_name_0_0(ArgX2_11, ArgY2_12);
+                    if (succeeded)
+                    {
+                      succeeded = (strcmp(ArgX3_13, ArgY3_14) == 0);
+                      if (succeeded)
+                        succeeded = backend_libs__rtti____Unify____base_typeclass_info_0_0(ArgX4_15, ArgY4_16);
+                    }
+                  }
+                }
+              }
+              break;
+          }
+          break;
+      }
+    return succeeded;
+  }
+}
+
+MR_bool MR_CALL 
+backend_libs__rtti____Unify____type_ctor_data_0_0(
+  MR_Word HeadVar__1_1,
+  MR_Word HeadVar__2_2)
+{
+  {
+    MR_bool succeeded;
+    MR_Integer CastX_19 = (MR_Integer) HeadVar__1_1;
+    MR_Integer CastY_20 = (MR_Integer) HeadVar__2_2;
+
+    succeeded = (CastX_19 == CastY_20);
+    if (succeeded)
+      succeeded = MR_TRUE;
+    else
+    {
+      MR_Word TypeInfo_24_24;
+      MR_Integer ArgX1_3 = ((MR_Integer) (MR_hl_field(MR_mktag(0), HeadVar__1_1, (MR_Integer) 0)));
+      MR_Integer ArgY1_4 = ((MR_Integer) (MR_hl_field(MR_mktag(0), HeadVar__2_2, (MR_Integer) 0)));
+      MR_Word ArgX2_5 = ((MR_Word) (MR_hl_field(MR_mktag(0), HeadVar__1_1, (MR_Integer) 1)));
+      MR_Word ArgY2_6 = ((MR_Word) (MR_hl_field(MR_mktag(0), HeadVar__2_2, (MR_Integer) 1)));
+      MR_String ArgX3_7 = ((MR_String) (MR_hl_field(MR_mktag(0), HeadVar__1_1, (MR_Integer) 2)));
+      MR_String ArgY3_8 = ((MR_String) (MR_hl_field(MR_mktag(0), HeadVar__2_2, (MR_Integer) 2)));
+      MR_Integer ArgX4_9 = ((MR_Integer) (MR_hl_field(MR_mktag(0), HeadVar__1_1, (MR_Integer) 3)));
+      MR_Integer ArgY4_10 = ((MR_Integer) (MR_hl_field(MR_mktag(0), HeadVar__2_2, (MR_Integer) 3)));
+      MR_Word ArgX5_11 = ((MR_Word) (MR_hl_field(MR_mktag(0), HeadVar__1_1, (MR_Integer) 4)));
+      MR_Word ArgY5_12 = ((MR_Word) (MR_hl_field(MR_mktag(0), HeadVar__2_2, (MR_Integer) 4)));
+      MR_Word ArgX6_13 = ((MR_Word) (MR_hl_field(MR_mktag(0), HeadVar__1_1, (MR_Integer) 5)));
+      MR_Word ArgY6_14 = ((MR_Word) (MR_hl_field(MR_mktag(0), HeadVar__2_2, (MR_Integer) 5)));
+      MR_Word ArgX7_15 = ((MR_Word) (MR_hl_field(MR_mktag(0), HeadVar__1_1, (MR_Integer) 6)));
+      MR_Word ArgY7_16 = ((MR_Word) (MR_hl_field(MR_mktag(0), HeadVar__2_2, (MR_Integer) 6)));
+      MR_Word ArgX8_17 = ((MR_Word) (MR_hl_field(MR_mktag(0), HeadVar__1_1, (MR_Integer) 7)));
+      MR_Word ArgY8_18 = ((MR_Word) (MR_hl_field(MR_mktag(0), HeadVar__2_2, (MR_Integer) 7)));
+
+      succeeded = (ArgX1_3 == ArgY1_4);
+      if (succeeded)
+      {
+        succeeded = mdbcomp__sym_name____Unify____sym_name_0_0(ArgX2_5, ArgY2_6);
+        if (succeeded)
+        {
+          succeeded = (strcmp(ArgX3_7, ArgY3_8) == 0);
+          if (succeeded)
+          {
+            succeeded = (ArgX4_9 == ArgY4_10);
+            if (succeeded)
+            {
+              succeeded = mercury__univ____Unify____univ_0_0(ArgX5_11, ArgY5_12);
+              if (succeeded)
+              {
+                succeeded = mercury__univ____Unify____univ_0_0(ArgX6_13, ArgY6_14);
+                if (succeeded)
+                {
+                  TypeInfo_24_24 = (MR_Word) &backend_libs__rtti_scalar_common_1[10];
+                  succeeded = mercury__builtin__unify_2_p_0(TypeInfo_24_24, ((MR_Box) (ArgX7_15)), ((MR_Box) (ArgY7_16)));
+                  if (succeeded)
+                    succeeded = backend_libs__rtti____Unify____type_ctor_details_0_0(ArgX8_17, ArgY8_18);
+                }
+              }
+            }
+          }
+        }
+      }
+    }
+    return succeeded;
+  }
+}
+
+MR_bool MR_CALL 
+backend_libs__rtti____Unify____type_ctor_details_0_0(
+  MR_Word HeadVar__1_1,
+  MR_Word HeadVar__2_2)
+{
+  {
+    MR_bool succeeded;
+    MR_Integer CastX_49 = (MR_Integer) HeadVar__1_1;
+    MR_Integer CastY_50 = (MR_Integer) HeadVar__2_2;
+
+    succeeded = (CastX_49 == CastY_50);
+    if (succeeded)
+      succeeded = MR_TRUE;
+    else
+      switch (MR_tag((MR_Word) HeadVar__1_1)) {
+        default: /*NOTREACHED*/ MR_assert(0);
+        case (MR_Integer) 0:
+          {
+            MR_Word TypeInfo_55_55;
+            MR_Word TypeInfo_56_56;
+            MR_Word TypeInfo_57_57;
+            MR_Word TypeInfo_58_58;
+            MR_Word ArgX1_3 = ((MR_Word) (MR_hl_field(MR_mktag(0), HeadVar__1_1, (MR_Integer) 0)));
+            MR_Word ArgY1_4;
+            MR_Word ArgX2_5 = ((MR_Word) (MR_hl_field(MR_mktag(0), HeadVar__1_1, (MR_Integer) 1)));
+            MR_Word ArgY2_6;
+            MR_Word ArgX3_7 = ((MR_Word) (MR_hl_field(MR_mktag(0), HeadVar__1_1, (MR_Integer) 2)));
+            MR_Word ArgY3_8;
+            MR_Word ArgX4_9 = ((MR_Word) (MR_hl_field(MR_mktag(0), HeadVar__1_1, (MR_Integer) 3)));
+            MR_Word ArgY4_10;
+            MR_Word ArgX5_11 = ((MR_Word) (MR_hl_field(MR_mktag(0), HeadVar__1_1, (MR_Integer) 4)));
+            MR_Word ArgY5_12;
+            MR_Word ArgX6_13 = ((MR_Word) (MR_hl_field(MR_mktag(0), HeadVar__1_1, (MR_Integer) 5)));
+            MR_Word ArgY6_14;
+
+            succeeded = ((MR_tag((MR_Word) HeadVar__2_2)) == (MR_mktag((MR_Integer) 0)));
+            if (succeeded)
+            {
+              ArgY1_4 = ((MR_Word) (MR_hl_field(MR_mktag(0), HeadVar__2_2, (MR_Integer) 0)));
+              ArgY2_6 = ((MR_Word) (MR_hl_field(MR_mktag(0), HeadVar__2_2, (MR_Integer) 1)));
+              ArgY3_8 = ((MR_Word) (MR_hl_field(MR_mktag(0), HeadVar__2_2, (MR_Integer) 2)));
+              ArgY4_10 = ((MR_Word) (MR_hl_field(MR_mktag(0), HeadVar__2_2, (MR_Integer) 3)));
+              ArgY5_12 = ((MR_Word) (MR_hl_field(MR_mktag(0), HeadVar__2_2, (MR_Integer) 4)));
+              ArgY6_14 = ((MR_Word) (MR_hl_field(MR_mktag(0), HeadVar__2_2, (MR_Integer) 5)));
+              succeeded = (ArgX1_3 == ArgY1_4);
+              if (succeeded)
+              {
+                TypeInfo_55_55 = (MR_Word) &backend_libs__rtti_scalar_common_1[14];
+                succeeded = mercury__builtin__unify_2_p_0(TypeInfo_55_55, ((MR_Box) (ArgX2_5)), ((MR_Box) (ArgY2_6)));
+                if (succeeded)
+                {
+                  TypeInfo_56_56 = (MR_Word) &backend_libs__rtti_scalar_common_2[5];
+                  succeeded = mercury__builtin__unify_2_p_0(TypeInfo_56_56, ((MR_Box) (ArgX3_7)), ((MR_Box) (ArgY3_8)));
+                  if (succeeded)
+                  {
+                    TypeInfo_57_57 = (MR_Word) &backend_libs__rtti_scalar_common_2[6];
+                    succeeded = mercury__builtin__unify_2_p_0(TypeInfo_57_57, ((MR_Box) (ArgX4_9)), ((MR_Box) (ArgY4_10)));
+                    if (succeeded)
+                    {
+                      succeeded = (ArgX5_11 == ArgY5_12);
+                      if (succeeded)
+                      {
+                        TypeInfo_58_58 = (MR_Word) &backend_libs__rtti_scalar_common_1[12];
+                        succeeded = mercury__builtin__unify_2_p_0(TypeInfo_58_58, ((MR_Box) (ArgX6_13)), ((MR_Box) (ArgY6_14)));
+                      }
+                    }
+                  }
+                }
+              }
+            }
+          }
+          break;
+        case (MR_Integer) 1:
+          {
+            MR_Word TypeInfo_59_59;
+            MR_Word TypeInfo_60_60;
+            MR_Word TypeInfo_61_61;
+            MR_Word TypeInfo_62_62;
+            MR_Word ArgX1_15 = ((MR_Word) (MR_hl_field(MR_mktag(1), HeadVar__1_1, (MR_Integer) 0)));
+            MR_Word ArgY1_16;
+            MR_Word ArgX2_17 = ((MR_Word) (MR_hl_field(MR_mktag(1), HeadVar__1_1, (MR_Integer) 1)));
+            MR_Word ArgY2_18;
+            MR_Word ArgX3_19 = ((MR_Word) (MR_hl_field(MR_mktag(1), HeadVar__1_1, (MR_Integer) 2)));
+            MR_Word ArgY3_20;
+            MR_Word ArgX4_21 = ((MR_Word) (MR_hl_field(MR_mktag(1), HeadVar__1_1, (MR_Integer) 3)));
+            MR_Word ArgY4_22;
+            MR_Word ArgX5_23 = ((MR_Word) (MR_hl_field(MR_mktag(1), HeadVar__1_1, (MR_Integer) 4)));
+            MR_Word ArgY5_24;
+            MR_Word ArgX6_25 = ((MR_Word) (MR_hl_field(MR_mktag(1), HeadVar__1_1, (MR_Integer) 5)));
+            MR_Word ArgY6_26;
+
+            succeeded = ((MR_tag((MR_Word) HeadVar__2_2)) == (MR_mktag((MR_Integer) 1)));
+            if (succeeded)
+            {
+              ArgY1_16 = ((MR_Word) (MR_hl_field(MR_mktag(1), HeadVar__2_2, (MR_Integer) 0)));
+              ArgY2_18 = ((MR_Word) (MR_hl_field(MR_mktag(1), HeadVar__2_2, (MR_Integer) 1)));
+              ArgY3_20 = ((MR_Word) (MR_hl_field(MR_mktag(1), HeadVar__2_2, (MR_Integer) 2)));
+              ArgY4_22 = ((MR_Word) (MR_hl_field(MR_mktag(1), HeadVar__2_2, (MR_Integer) 3)));
+              ArgY5_24 = ((MR_Word) (MR_hl_field(MR_mktag(1), HeadVar__2_2, (MR_Integer) 4)));
+              ArgY6_26 = ((MR_Word) (MR_hl_field(MR_mktag(1), HeadVar__2_2, (MR_Integer) 5)));
+              succeeded = (ArgX1_15 == ArgY1_16);
+              if (succeeded)
+              {
+                succeeded = (ArgX2_17 == ArgY2_18);
+                if (succeeded)
+                {
+                  TypeInfo_59_59 = (MR_Word) &backend_libs__rtti_scalar_common_1[13];
+                  succeeded = mercury__builtin__unify_2_p_0(TypeInfo_59_59, ((MR_Box) (ArgX3_19)), ((MR_Box) (ArgY3_20)));
+                  if (succeeded)
+                  {
+                    TypeInfo_60_60 = (MR_Word) &backend_libs__rtti_scalar_common_2[3];
+                    succeeded = mercury__builtin__unify_2_p_0(TypeInfo_60_60, ((MR_Box) (ArgX4_21)), ((MR_Box) (ArgY4_22)));
+                    if (succeeded)
+                    {
+                      TypeInfo_61_61 = (MR_Word) &backend_libs__rtti_scalar_common_2[4];
+                      succeeded = mercury__builtin__unify_2_p_0(TypeInfo_61_61, ((MR_Box) (ArgX5_23)), ((MR_Box) (ArgY5_24)));
+                      if (succeeded)
+                      {
+                        TypeInfo_62_62 = (MR_Word) &backend_libs__rtti_scalar_common_1[12];
+                        succeeded = mercury__builtin__unify_2_p_0(TypeInfo_62_62, ((MR_Box) (ArgX6_25)), ((MR_Box) (ArgY6_26)));
+                      }
+                    }
+                  }
+                }
+              }
+            }
+          }
+          break;
+        case (MR_Integer) 2:
+          {
+            MR_Word TypeInfo_51_51;
+            MR_Word TypeInfo_52_52;
+            MR_Word TypeInfo_53_53;
+            MR_Word TypeInfo_54_54;
+            MR_Word ArgX1_27 = ((MR_Word) (MR_hl_field(MR_mktag(2), HeadVar__1_1, (MR_Integer) 0)));
+            MR_Word ArgY1_28;
+            MR_Word ArgX2_29 = ((MR_Word) (MR_hl_field(MR_mktag(2), HeadVar__1_1, (MR_Integer) 1)));
+            MR_Word ArgY2_30;
+            MR_Word ArgX3_31 = ((MR_Word) (MR_hl_field(MR_mktag(2), HeadVar__1_1, (MR_Integer) 2)));
+            MR_Word ArgY3_32;
+            MR_Word ArgX4_33 = ((MR_Word) (MR_hl_field(MR_mktag(2), HeadVar__1_1, (MR_Integer) 3)));
+            MR_Word ArgY4_34;
+            MR_Word ArgX5_35 = ((MR_Word) (MR_hl_field(MR_mktag(2), HeadVar__1_1, (MR_Integer) 4)));
+            MR_Word ArgY5_36;
+
+            succeeded = ((MR_tag((MR_Word) HeadVar__2_2)) == (MR_mktag((MR_Integer) 2)));
+            if (succeeded)
+            {
+              ArgY1_28 = ((MR_Word) (MR_hl_field(MR_mktag(2), HeadVar__2_2, (MR_Integer) 0)));
+              ArgY2_30 = ((MR_Word) (MR_hl_field(MR_mktag(2), HeadVar__2_2, (MR_Integer) 1)));
+              ArgY3_32 = ((MR_Word) (MR_hl_field(MR_mktag(2), HeadVar__2_2, (MR_Integer) 2)));
+              ArgY4_34 = ((MR_Word) (MR_hl_field(MR_mktag(2), HeadVar__2_2, (MR_Integer) 3)));
+              ArgY5_36 = ((MR_Word) (MR_hl_field(MR_mktag(2), HeadVar__2_2, (MR_Integer) 4)));
+              succeeded = (ArgX1_27 == ArgY1_28);
+              if (succeeded)
+              {
+                TypeInfo_51_51 = (MR_Word) &backend_libs__rtti_scalar_common_1[11];
+                succeeded = mercury__builtin__unify_2_p_0(TypeInfo_51_51, ((MR_Box) (ArgX2_29)), ((MR_Box) (ArgY2_30)));
+                if (succeeded)
+                {
+                  TypeInfo_52_52 = (MR_Word) &backend_libs__rtti_scalar_common_2[0];
+                  succeeded = mercury__builtin__unify_2_p_0(TypeInfo_52_52, ((MR_Box) (ArgX3_31)), ((MR_Box) (ArgY3_32)));
+                  if (succeeded)
+                  {
+                    TypeInfo_53_53 = (MR_Word) &backend_libs__rtti_scalar_common_2[2];
+                    succeeded = mercury__builtin__unify_2_p_0(TypeInfo_53_53, ((MR_Box) (ArgX4_33)), ((MR_Box) (ArgY4_34)));
+                    if (succeeded)
+                    {
+                      TypeInfo_54_54 = (MR_Word) &backend_libs__rtti_scalar_common_1[12];
+                      succeeded = mercury__builtin__unify_2_p_0(TypeInfo_54_54, ((MR_Box) (ArgX5_35)), ((MR_Box) (ArgY5_36)));
+                    }
+                  }
+                }
+              }
+            }
+          }
+          break;
+        case (MR_Integer) 3:
+          switch (((MR_Integer) (MR_Word) (MR_hl_field(MR_mktag(3), HeadVar__1_1, (MR_Integer) 0)))) {
+            default: /*NOTREACHED*/ MR_assert(0);
+            case (MR_Integer) 0:
+              {
+                MR_Word ArgX1_37 = ((MR_Word) (MR_hl_field(MR_mktag(3), HeadVar__1_1, (MR_Integer) 1)));
+                MR_Word ArgY1_38;
+                MR_Word ArgX2_39 = ((MR_Word) (MR_hl_field(MR_mktag(3), HeadVar__1_1, (MR_Integer) 2)));
+                MR_Word ArgY2_40;
+
+                succeeded = ((((MR_tag((MR_Word) HeadVar__2_2)) == (MR_mktag((MR_Integer) 3)))) && (((((MR_Integer) (MR_Word) (MR_hl_field(MR_mktag(3), HeadVar__2_2, (MR_Integer) 0)))) == (MR_Integer) 0)));
+                if (succeeded)
+                {
+                  ArgY1_38 = ((MR_Word) (MR_hl_field(MR_mktag(3), HeadVar__2_2, (MR_Integer) 1)));
+                  ArgY2_40 = ((MR_Word) (MR_hl_field(MR_mktag(3), HeadVar__2_2, (MR_Integer) 2)));
+                  succeeded = (ArgX1_37 == ArgY1_38);
+                  if (succeeded)
+                    succeeded = backend_libs__rtti____Unify____notag_functor_0_0(ArgX2_39, ArgY2_40);
+                }
+              }
+              break;
+            case (MR_Integer) 1:
+              {
+                MR_Word ArgX1_41 = ((MR_Word) (MR_hl_field(MR_mktag(3), HeadVar__1_1, (MR_Integer) 1)));
+                MR_Word ArgY1_42;
+
+                succeeded = ((((MR_tag((MR_Word) HeadVar__2_2)) == (MR_mktag((MR_Integer) 3)))) && (((((MR_Integer) (MR_Word) (MR_hl_field(MR_mktag(3), HeadVar__2_2, (MR_Integer) 0)))) == (MR_Integer) 1)));
+                if (succeeded)
+                {
+                  ArgY1_42 = ((MR_Word) (MR_hl_field(MR_mktag(3), HeadVar__2_2, (MR_Integer) 1)));
+                  succeeded = backend_libs__rtti____Unify____rtti_maybe_pseudo_type_info_0_0(ArgX1_41, ArgY1_42);
+                }
+              }
+              break;
+            case (MR_Integer) 2:
+              {
+                MR_Word ArgX1_43 = ((MR_Word) (MR_hl_field(MR_mktag(3), HeadVar__1_1, (MR_Integer) 1)));
+                MR_Word ArgY1_44;
+
+                succeeded = ((((MR_tag((MR_Word) HeadVar__2_2)) == (MR_mktag((MR_Integer) 3)))) && (((((MR_Integer) (MR_Word) (MR_hl_field(MR_mktag(3), HeadVar__2_2, (MR_Integer) 0)))) == (MR_Integer) 2)));
+                if (succeeded)
+                {
+                  ArgY1_44 = ((MR_Word) (MR_hl_field(MR_mktag(3), HeadVar__2_2, (MR_Integer) 1)));
+                  succeeded = backend_libs__rtti____Unify____builtin_ctor_0_0(ArgX1_43, ArgY1_44);
+                }
+              }
+              break;
+            case (MR_Integer) 3:
+              {
+                MR_Word ArgX1_45 = ((MR_Word) (MR_hl_field(MR_mktag(3), HeadVar__1_1, (MR_Integer) 1)));
+                MR_Word ArgY1_46;
+
+                succeeded = ((((MR_tag((MR_Word) HeadVar__2_2)) == (MR_mktag((MR_Integer) 3)))) && (((((MR_Integer) (MR_Word) (MR_hl_field(MR_mktag(3), HeadVar__2_2, (MR_Integer) 0)))) == (MR_Integer) 3)));
+                if (succeeded)
+                {
+                  ArgY1_46 = ((MR_Word) (MR_hl_field(MR_mktag(3), HeadVar__2_2, (MR_Integer) 1)));
+                  succeeded = (ArgX1_45 == ArgY1_46);
+                }
+              }
+              break;
+            case (MR_Integer) 4:
+              {
+                MR_Word ArgX1_47 = ((MR_Word) (MR_hl_field(MR_mktag(3), HeadVar__1_1, (MR_Integer) 1)));
+                MR_Word ArgY1_48;
+
+                succeeded = ((((MR_tag((MR_Word) HeadVar__2_2)) == (MR_mktag((MR_Integer) 3)))) && (((((MR_Integer) (MR_Word) (MR_hl_field(MR_mktag(3), HeadVar__2_2, (MR_Integer) 0)))) == (MR_Integer) 4)));
+                if (succeeded)
+                {
+                  ArgY1_48 = ((MR_Word) (MR_hl_field(MR_mktag(3), HeadVar__2_2, (MR_Integer) 1)));
+                  succeeded = (ArgX1_47 == ArgY1_48);
+                }
+              }
+              break;
+          }
+          break;
+      }
+    return succeeded;
+  }
+}
+
+MR_bool MR_CALL 
+backend_libs__rtti____Unify____tc_instance_0_0(
+  MR_Word HeadVar__1_1,
+  MR_Word HeadVar__2_2)
+{
+  {
+    MR_bool succeeded;
+    MR_Integer CastX_13 = (MR_Integer) HeadVar__1_1;
+    MR_Integer CastY_14 = (MR_Integer) HeadVar__2_2;
+
+    succeeded = (CastX_13 == CastY_14);
+    if (succeeded)
+      succeeded = MR_TRUE;
+    else
+    {
+      MR_Word TypeInfo_15_15;
+      MR_Word TypeInfo_16_16;
+      MR_Word TypeInfo_17_17;
+      MR_Word ArgX1_3 = ((MR_Word) (MR_hl_field(MR_mktag(0), HeadVar__1_1, (MR_Integer) 0)));
+      MR_Word ArgY1_4 = ((MR_Word) (MR_hl_field(MR_mktag(0), HeadVar__2_2, (MR_Integer) 0)));
+      MR_Word ArgX2_5 = ((MR_Word) (MR_hl_field(MR_mktag(0), HeadVar__1_1, (MR_Integer) 1)));
+      MR_Word ArgY2_6 = ((MR_Word) (MR_hl_field(MR_mktag(0), HeadVar__2_2, (MR_Integer) 1)));
+      MR_Integer ArgX3_7 = ((MR_Integer) (MR_hl_field(MR_mktag(0), HeadVar__1_1, (MR_Integer) 2)));
+      MR_Integer ArgY3_8 = ((MR_Integer) (MR_hl_field(MR_mktag(0), HeadVar__2_2, (MR_Integer) 2)));
+      MR_Word ArgX4_9 = ((MR_Word) (MR_hl_field(MR_mktag(0), HeadVar__1_1, (MR_Integer) 3)));
+      MR_Word ArgY4_10 = ((MR_Word) (MR_hl_field(MR_mktag(0), HeadVar__2_2, (MR_Integer) 3)));
+      MR_Word ArgX5_11 = ((MR_Word) (MR_hl_field(MR_mktag(0), HeadVar__1_1, (MR_Integer) 4)));
+      MR_Word ArgY5_12 = ((MR_Word) (MR_hl_field(MR_mktag(0), HeadVar__2_2, (MR_Integer) 4)));
+
+      succeeded = backend_libs__rtti____Unify____tc_name_0_0(ArgX1_3, ArgY1_4);
+      if (succeeded)
+      {
+        TypeInfo_15_15 = (MR_Word) &backend_libs__rtti_scalar_common_1[6];
+        succeeded = mercury__builtin__unify_2_p_0(TypeInfo_15_15, ((MR_Box) (ArgX2_5)), ((MR_Box) (ArgY2_6)));
+        if (succeeded)
+        {
+          succeeded = (ArgX3_7 == ArgY3_8);
+          if (succeeded)
+          {
+            TypeInfo_16_16 = (MR_Word) &backend_libs__rtti_scalar_common_1[4];
+            succeeded = mercury__builtin__unify_2_p_0(TypeInfo_16_16, ((MR_Box) (ArgX4_9)), ((MR_Box) (ArgY4_10)));
+            if (succeeded)
+            {
+              TypeInfo_17_17 = (MR_Word) &backend_libs__rtti_scalar_common_1[0];
+              succeeded = mercury__builtin__unify_2_p_0(TypeInfo_17_17, ((MR_Box) (ArgX5_11)), ((MR_Box) (ArgY5_12)));
+            }
+          }
+        }
+      }
+    }
+    return succeeded;
+  }
+}
+
+MR_bool MR_CALL 
+backend_libs__rtti____Unify____tc_decl_0_0(
+  MR_Word HeadVar__1_1,
+  MR_Word HeadVar__2_2)
+{
+  {
+    MR_bool succeeded;
+    MR_Integer CastX_9 = (MR_Integer) HeadVar__1_1;
+    MR_Integer CastY_10 = (MR_Integer) HeadVar__2_2;
+
+    succeeded = (CastX_9 == CastY_10);
+    if (succeeded)
+      succeeded = MR_TRUE;
+    else
+    {
+      MR_Word TypeInfo_11_11;
+      MR_Word ArgX1_3 = ((MR_Word) (MR_hl_field(MR_mktag(0), HeadVar__1_1, (MR_Integer) 0)));
+      MR_Word ArgY1_4 = ((MR_Word) (MR_hl_field(MR_mktag(0), HeadVar__2_2, (MR_Integer) 0)));
+      MR_Integer ArgX2_5 = ((MR_Integer) (MR_hl_field(MR_mktag(0), HeadVar__1_1, (MR_Integer) 1)));
+      MR_Integer ArgY2_6 = ((MR_Integer) (MR_hl_field(MR_mktag(0), HeadVar__2_2, (MR_Integer) 1)));
+      MR_Word ArgX3_7 = ((MR_Word) (MR_hl_field(MR_mktag(0), HeadVar__1_1, (MR_Integer) 2)));
+      MR_Word ArgY3_8 = ((MR_Word) (MR_hl_field(MR_mktag(0), HeadVar__2_2, (MR_Integer) 2)));
+
+      succeeded = backend_libs__rtti____Unify____tc_id_0_0(ArgX1_3, ArgY1_4);
+      if (succeeded)
+      {
+        succeeded = (ArgX2_5 == ArgY2_6);
+        if (succeeded)
+        {
+          TypeInfo_11_11 = (MR_Word) &backend_libs__rtti_scalar_common_1[4];
+          succeeded = mercury__builtin__unify_2_p_0(TypeInfo_11_11, ((MR_Box) (ArgX3_7)), ((MR_Box) (ArgY3_8)));
+        }
+      }
+    }
+    return succeeded;
+  }
+}
+
+MR_bool MR_CALL 
+backend_libs__rtti____Unify____tc_id_0_0(
+  MR_Word HeadVar__1_1,
+  MR_Word HeadVar__2_2)
+{
+  {
+    MR_bool succeeded;
+    MR_Integer CastX_9 = (MR_Integer) HeadVar__1_1;
+    MR_Integer CastY_10 = (MR_Integer) HeadVar__2_2;
+
+    succeeded = (CastX_9 == CastY_10);
+    if (succeeded)
+      succeeded = MR_TRUE;
+    else
+    {
+      MR_Word TypeInfo_11_11;
+      MR_Word TypeInfo_12_12;
+      MR_Word ArgX1_3 = ((MR_Word) (MR_hl_field(MR_mktag(0), HeadVar__1_1, (MR_Integer) 0)));
+      MR_Word ArgY1_4 = ((MR_Word) (MR_hl_field(MR_mktag(0), HeadVar__2_2, (MR_Integer) 0)));
+      MR_Word ArgX2_5 = ((MR_Word) (MR_hl_field(MR_mktag(0), HeadVar__1_1, (MR_Integer) 1)));
+      MR_Word ArgY2_6 = ((MR_Word) (MR_hl_field(MR_mktag(0), HeadVar__2_2, (MR_Integer) 1)));
+      MR_Word ArgX3_7 = ((MR_Word) (MR_hl_field(MR_mktag(0), HeadVar__1_1, (MR_Integer) 2)));
+      MR_Word ArgY3_8 = ((MR_Word) (MR_hl_field(MR_mktag(0), HeadVar__2_2, (MR_Integer) 2)));
+
+      succeeded = backend_libs__rtti____Unify____tc_name_0_0(ArgX1_3, ArgY1_4);
+      if (succeeded)
+      {
+        TypeInfo_11_11 = (MR_Word) &backend_libs__rtti_scalar_common_1[8];
+        succeeded = mercury__builtin__unify_2_p_0(TypeInfo_11_11, ((MR_Box) (ArgX2_5)), ((MR_Box) (ArgY2_6)));
+        if (succeeded)
+        {
+          TypeInfo_12_12 = (MR_Word) &backend_libs__rtti_scalar_common_1[9];
+          succeeded = mercury__builtin__unify_2_p_0(TypeInfo_12_12, ((MR_Box) (ArgX3_7)), ((MR_Box) (ArgY3_8)));
+        }
+      }
+    }
+    return succeeded;
+  }
+}
+
+MR_bool MR_CALL 
+backend_libs__rtti____Unify____tc_name_0_0(
+  MR_Word HeadVar__1_1,
+  MR_Word HeadVar__2_2)
+{
+  {
+    MR_bool succeeded;
+    MR_Integer CastX_9 = (MR_Integer) HeadVar__1_1;
+    MR_Integer CastY_10 = (MR_Integer) HeadVar__2_2;
+
+    succeeded = (CastX_9 == CastY_10);
+    if (succeeded)
+      succeeded = MR_TRUE;
+    else
+    {
+      MR_Word ArgX1_3 = ((MR_Word) (MR_hl_field(MR_mktag(0), HeadVar__1_1, (MR_Integer) 0)));
+      MR_Word ArgY1_4 = ((MR_Word) (MR_hl_field(MR_mktag(0), HeadVar__2_2, (MR_Integer) 0)));
+      MR_String ArgX2_5 = ((MR_String) (MR_hl_field(MR_mktag(0), HeadVar__1_1, (MR_Integer) 1)));
+      MR_String ArgY2_6 = ((MR_String) (MR_hl_field(MR_mktag(0), HeadVar__2_2, (MR_Integer) 1)));
+      MR_Integer ArgX3_7 = ((MR_Integer) (MR_hl_field(MR_mktag(0), HeadVar__1_1, (MR_Integer) 2)));
+      MR_Integer ArgY3_8 = ((MR_Integer) (MR_hl_field(MR_mktag(0), HeadVar__2_2, (MR_Integer) 2)));
+
+      succeeded = mdbcomp__sym_name____Unify____sym_name_0_0(ArgX1_3, ArgY1_4);
+      if (succeeded)
+      {
+        succeeded = (strcmp(ArgX2_5, ArgY2_6) == 0);
+        if (succeeded)
+          succeeded = (ArgX3_7 == ArgY3_8);
+      }
+    }
+    return succeeded;
+  }
+}
+
+void MR_CALL 
+backend_libs__rtti____Compare____ptag_map_0_0(
+  MR_Word * HeadVar__1_1,
+  MR_Word HeadVar__2_2,
+  MR_Word HeadVar__3_3)
+{
+  {
+    MR_Word Cast_HeadVar1_4 = HeadVar__2_2;
+    MR_Word Cast_HeadVar2_5 = HeadVar__3_3;
+
+    mercury__builtin__compare_3_p_0((MR_Word) &backend_libs__rtti_scalar_common_2[0], HeadVar__1_1, ((MR_Box) (Cast_HeadVar1_4)), ((MR_Box) (Cast_HeadVar2_5)));
+  }
+}
+
+MR_bool MR_CALL 
+backend_libs__rtti____Unify____ptag_map_0_0(
+  MR_Word HeadVar__1_1,
+  MR_Word HeadVar__2_2)
+{
+  {
+    MR_bool succeeded;
+    MR_Word Cast_HeadVar1_3 = HeadVar__1_1;
+    MR_Word Cast_HeadVar2_4 = HeadVar__2_2;
+
+    succeeded = mercury__builtin__unify_2_p_0((MR_Word) &backend_libs__rtti_scalar_common_2[0], ((MR_Box) (Cast_HeadVar1_3)), ((MR_Box) (Cast_HeadVar2_4)));
+    return succeeded;
+  }
+}
+
+void MR_CALL 
+backend_libs__rtti____Compare____proc_tabling_struct_id_0_0(
+  MR_Word * HeadVar__1_1,
+  MR_Word HeadVar__2_2,
+  MR_Word HeadVar__3_3)
+{
+  {
+    MR_bool succeeded;
+    MR_Integer CastX_86 = (MR_Integer) HeadVar__2_2;
+    MR_Integer CastY_87 = (MR_Integer) HeadVar__3_3;
+
+    succeeded = (CastX_86 == CastY_87);
+    if (succeeded)
+      *HeadVar__1_1 = (MR_Integer) 0;
+    else
+      switch (MR_tag((MR_Word) HeadVar__2_2)) {
+        default: /*NOTREACHED*/ MR_assert(0);
+        case (MR_Integer) 0:
+          switch (MR_unmkbody(HeadVar__2_2)) {
+            default: /*NOTREACHED*/ MR_assert(0);
+            case (MR_Integer) 0:
+              switch (MR_tag((MR_Word) HeadVar__3_3)) {
+                default: /*NOTREACHED*/ MR_assert(0);
+                case (MR_Integer) 0:
+                  switch (MR_unmkbody(HeadVar__3_3)) {
+                    default: /*NOTREACHED*/ MR_assert(0);
+                    case (MR_Integer) 0:
+                      *HeadVar__1_1 = (MR_Integer) 0;
+                      break;
+                    case (MR_Integer) 1:
+                      *HeadVar__1_1 = (MR_Integer) 1;
+                      break;
+                    case (MR_Integer) 2:
+                      *HeadVar__1_1 = (MR_Integer) 1;
+                      break;
+                    case (MR_Integer) 3:
+                      *HeadVar__1_1 = (MR_Integer) 1;
+                      break;
+                    case (MR_Integer) 4:
+                      *HeadVar__1_1 = (MR_Integer) 1;
+                      break;
+                  }
+                  break;
+                case (MR_Integer) 1:
+                  *HeadVar__1_1 = (MR_Integer) 1;
+                  break;
+                case (MR_Integer) 2:
+                  *HeadVar__1_1 = (MR_Integer) 1;
+                  break;
+                case (MR_Integer) 3:
+                  *HeadVar__1_1 = (MR_Integer) 1;
+                  break;
+              }
+              break;
+            case (MR_Integer) 1:
+              switch (MR_tag((MR_Word) HeadVar__3_3)) {
+                default: /*NOTREACHED*/ MR_assert(0);
+                case (MR_Integer) 0:
+                  switch (MR_unmkbody(HeadVar__3_3)) {
+                    default: /*NOTREACHED*/ MR_assert(0);
+                    case (MR_Integer) 0:
+                      *HeadVar__1_1 = (MR_Integer) 2;
+                      break;
+                    case (MR_Integer) 1:
+                      *HeadVar__1_1 = (MR_Integer) 0;
+                      break;
+                    case (MR_Integer) 2:
+                      *HeadVar__1_1 = (MR_Integer) 1;
+                      break;
+                    case (MR_Integer) 3:
+                      *HeadVar__1_1 = (MR_Integer) 1;
+                      break;
+                    case (MR_Integer) 4:
+                      *HeadVar__1_1 = (MR_Integer) 1;
+                      break;
+                  }
+                  break;
+                case (MR_Integer) 1:
+                  *HeadVar__1_1 = (MR_Integer) 1;
+                  break;
+                case (MR_Integer) 2:
+                  *HeadVar__1_1 = (MR_Integer) 1;
+                  break;
+                case (MR_Integer) 3:
+                  *HeadVar__1_1 = (MR_Integer) 1;
+                  break;
+              }
+              break;
+            case (MR_Integer) 2:
+              switch (MR_tag((MR_Word) HeadVar__3_3)) {
+                default: /*NOTREACHED*/ MR_assert(0);
+                case (MR_Integer) 0:
+                  switch (MR_unmkbody(HeadVar__3_3)) {
+                    default: /*NOTREACHED*/ MR_assert(0);
+                    case (MR_Integer) 0:
+                      *HeadVar__1_1 = (MR_Integer) 2;
+                      break;
+                    case (MR_Integer) 1:
+                      *HeadVar__1_1 = (MR_Integer) 2;
+                      break;
+                    case (MR_Integer) 2:
+                      *HeadVar__1_1 = (MR_Integer) 0;
+                      break;
+                    case (MR_Integer) 3:
+                      *HeadVar__1_1 = (MR_Integer) 1;
+                      break;
+                    case (MR_Integer) 4:
+                      *HeadVar__1_1 = (MR_Integer) 1;
+                      break;
+                  }
+                  break;
+                case (MR_Integer) 1:
+                  *HeadVar__1_1 = (MR_Integer) 1;
+                  break;
+                case (MR_Integer) 2:
+                  *HeadVar__1_1 = (MR_Integer) 1;
+                  break;
+                case (MR_Integer) 3:
+                  *HeadVar__1_1 = (MR_Integer) 1;
+                  break;
+              }
+              break;
+            case (MR_Integer) 3:
+              switch (MR_tag((MR_Word) HeadVar__3_3)) {
+                default: /*NOTREACHED*/ MR_assert(0);
+                case (MR_Integer) 0:
+                  switch (MR_unmkbody(HeadVar__3_3)) {
+                    default: /*NOTREACHED*/ MR_assert(0);
+                    case (MR_Integer) 0:
+                      *HeadVar__1_1 = (MR_Integer) 2;
+                      break;
+                    case (MR_Integer) 1:
+                      *HeadVar__1_1 = (MR_Integer) 2;
+                      break;
+                    case (MR_Integer) 2:
+                      *HeadVar__1_1 = (MR_Integer) 2;
+                      break;
+                    case (MR_Integer) 3:
+                      *HeadVar__1_1 = (MR_Integer) 0;
+                      break;
+                    case (MR_Integer) 4:
+                      *HeadVar__1_1 = (MR_Integer) 1;
+                      break;
+                  }
+                  break;
+                case (MR_Integer) 1:
+                  *HeadVar__1_1 = (MR_Integer) 1;
+                  break;
+                case (MR_Integer) 2:
+                  *HeadVar__1_1 = (MR_Integer) 1;
+                  break;
+                case (MR_Integer) 3:
+                  *HeadVar__1_1 = (MR_Integer) 1;
+                  break;
+              }
+              break;
+            case (MR_Integer) 4:
+              switch (MR_tag((MR_Word) HeadVar__3_3)) {
+                default: /*NOTREACHED*/ MR_assert(0);
+                case (MR_Integer) 0:
+                  switch (MR_unmkbody(HeadVar__3_3)) {
+                    default: /*NOTREACHED*/ MR_assert(0);
+                    case (MR_Integer) 0:
+                      *HeadVar__1_1 = (MR_Integer) 2;
+                      break;
+                    case (MR_Integer) 1:
+                      *HeadVar__1_1 = (MR_Integer) 2;
+                      break;
+                    case (MR_Integer) 2:
+                      *HeadVar__1_1 = (MR_Integer) 2;
+                      break;
+                    case (MR_Integer) 3:
+                      *HeadVar__1_1 = (MR_Integer) 2;
+                      break;
+                    case (MR_Integer) 4:
+                      *HeadVar__1_1 = (MR_Integer) 0;
+                      break;
+                  }
+                  break;
+                case (MR_Integer) 1:
+                  *HeadVar__1_1 = (MR_Integer) 2;
+                  break;
+                case (MR_Integer) 2:
+                  *HeadVar__1_1 = (MR_Integer) 2;
+                  break;
+                case (MR_Integer) 3:
+                  *HeadVar__1_1 = (MR_Integer) 2;
+                  break;
+              }
+              break;
+          }
+          break;
+        case (MR_Integer) 1:
+          {
+            MR_Word Var_97 = ((MR_Word) (MR_hl_field(MR_mktag(1), HeadVar__2_2, (MR_Integer) 0)));
+
+            switch (MR_tag((MR_Word) HeadVar__3_3)) {
+              default: /*NOTREACHED*/ MR_assert(0);
+              case (MR_Integer) 0:
+                switch (MR_unmkbody(HeadVar__3_3)) {
+                  default: /*NOTREACHED*/ MR_assert(0);
+                  case (MR_Integer) 0:
+                    *HeadVar__1_1 = (MR_Integer) 2;
+                    break;
+                  case (MR_Integer) 1:
+                    *HeadVar__1_1 = (MR_Integer) 2;
+                    break;
+                  case (MR_Integer) 2:
+                    *HeadVar__1_1 = (MR_Integer) 2;
+                    break;
+                  case (MR_Integer) 3:
+                    *HeadVar__1_1 = (MR_Integer) 2;
+                    break;
+                  case (MR_Integer) 4:
+                    *HeadVar__1_1 = (MR_Integer) 1;
+                    break;
+                }
+                break;
+              case (MR_Integer) 1:
+                {
+                  MR_Word ArgY1_29 = ((MR_Word) (MR_hl_field(MR_mktag(1), HeadVar__3_3, (MR_Integer) 0)));
+                  MR_Integer Var_106 = (MR_Integer) Var_97;
+                  MR_Integer Var_107 = (MR_Integer) ArgY1_29;
+
+                  mercury__private_builtin__builtin_compare_int_3_p_0(HeadVar__1_1, Var_106, Var_107);
+                }
+                break;
+              case (MR_Integer) 2:
+                *HeadVar__1_1 = (MR_Integer) 1;
+                break;
+              case (MR_Integer) 3:
+                *HeadVar__1_1 = (MR_Integer) 1;
+                break;
+            }
+          }
+          break;
+        case (MR_Integer) 2:
+          {
+            MR_Word Var_95 = ((MR_Word) (MR_hl_field(MR_mktag(2), HeadVar__2_2, (MR_Integer) 1)));
+            MR_Word Var_96 = ((MR_Word) (MR_hl_field(MR_mktag(2), HeadVar__2_2, (MR_Integer) 0)));
+
+            switch (MR_tag((MR_Word) HeadVar__3_3)) {
+              default: /*NOTREACHED*/ MR_assert(0);
+              case (MR_Integer) 0:
+                switch (MR_unmkbody(HeadVar__3_3)) {
+                  default: /*NOTREACHED*/ MR_assert(0);
+                  case (MR_Integer) 0:
+                    *HeadVar__1_1 = (MR_Integer) 2;
+                    break;
+                  case (MR_Integer) 1:
+                    *HeadVar__1_1 = (MR_Integer) 2;
+                    break;
+                  case (MR_Integer) 2:
+                    *HeadVar__1_1 = (MR_Integer) 2;
+                    break;
+                  case (MR_Integer) 3:
+                    *HeadVar__1_1 = (MR_Integer) 2;
+                    break;
+                  case (MR_Integer) 4:
+                    *HeadVar__1_1 = (MR_Integer) 1;
+                    break;
+                }
+                break;
+              case (MR_Integer) 1:
+                *HeadVar__1_1 = (MR_Integer) 2;
+                break;
+              case (MR_Integer) 2:
+                {
+                  MR_Word ArgY1_49 = ((MR_Word) (MR_hl_field(MR_mktag(2), HeadVar__3_3, (MR_Integer) 0)));
+                  MR_Word ArgY2_51 = ((MR_Word) (MR_hl_field(MR_mktag(2), HeadVar__3_3, (MR_Integer) 1)));
+                  MR_Word Var_52;
+                  MR_Integer Var_102 = (MR_Integer) Var_96;
+                  MR_Integer Var_103 = (MR_Integer) ArgY1_49;
+
+                  mercury__private_builtin__builtin_compare_int_3_p_0(&Var_52, Var_102, Var_103);
+                  succeeded = (Var_52 == (MR_Integer) 0);
+                  succeeded = !(succeeded);
+                  if (succeeded)
+                    *HeadVar__1_1 = Var_52;
+                  else
+                  {
+                    MR_Integer Var_104 = (MR_Integer) Var_95;
+                    MR_Integer Var_105 = (MR_Integer) ArgY2_51;
+
+                    mercury__private_builtin__builtin_compare_int_3_p_0(HeadVar__1_1, Var_104, Var_105);
+                  }
+                }
+                break;
+              case (MR_Integer) 3:
+                *HeadVar__1_1 = (MR_Integer) 1;
+                break;
+            }
+          }
+          break;
+        case (MR_Integer) 3:
+          {
+            MR_Word Var_93 = ((MR_Word) (MR_hl_field(MR_mktag(3), HeadVar__2_2, (MR_Integer) 1)));
+            MR_Word Var_94 = ((MR_Word) (MR_hl_field(MR_mktag(3), HeadVar__2_2, (MR_Integer) 0)));
+
+            switch (MR_tag((MR_Word) HeadVar__3_3)) {
+              default: /*NOTREACHED*/ MR_assert(0);
+              case (MR_Integer) 0:
+                switch (MR_unmkbody(HeadVar__3_3)) {
+                  default: /*NOTREACHED*/ MR_assert(0);
+                  case (MR_Integer) 0:
+                    *HeadVar__1_1 = (MR_Integer) 2;
+                    break;
+                  case (MR_Integer) 1:
+                    *HeadVar__1_1 = (MR_Integer) 2;
+                    break;
+                  case (MR_Integer) 2:
+                    *HeadVar__1_1 = (MR_Integer) 2;
+                    break;
+                  case (MR_Integer) 3:
+                    *HeadVar__1_1 = (MR_Integer) 2;
+                    break;
+                  case (MR_Integer) 4:
+                    *HeadVar__1_1 = (MR_Integer) 1;
+                    break;
+                }
+                break;
+              case (MR_Integer) 1:
+                *HeadVar__1_1 = (MR_Integer) 2;
+                break;
+              case (MR_Integer) 2:
+                *HeadVar__1_1 = (MR_Integer) 2;
+                break;
+              case (MR_Integer) 3:
+                {
+                  MR_Word ArgY1_75 = ((MR_Word) (MR_hl_field(MR_mktag(3), HeadVar__3_3, (MR_Integer) 0)));
+                  MR_Word ArgY2_77 = ((MR_Word) (MR_hl_field(MR_mktag(3), HeadVar__3_3, (MR_Integer) 1)));
+                  MR_Word Var_78;
+                  MR_Integer Var_98 = (MR_Integer) Var_94;
+                  MR_Integer Var_99 = (MR_Integer) ArgY1_75;
+
+                  mercury__private_builtin__builtin_compare_int_3_p_0(&Var_78, Var_98, Var_99);
+                  succeeded = (Var_78 == (MR_Integer) 0);
+                  succeeded = !(succeeded);
+                  if (succeeded)
+                    *HeadVar__1_1 = Var_78;
+                  else
+                  {
+                    MR_Integer Var_100 = (MR_Integer) Var_93;
+                    MR_Integer Var_101 = (MR_Integer) ArgY2_77;
+
+                    mercury__private_builtin__builtin_compare_int_3_p_0(HeadVar__1_1, Var_100, Var_101);
+                  }
+                }
+                break;
+            }
+          }
+          break;
+      }
+  }
+}
+
+MR_bool MR_CALL 
+backend_libs__rtti____Unify____proc_tabling_struct_id_0_0(
+  MR_Word HeadVar__1_1,
+  MR_Word HeadVar__2_2)
+{
+  {
+    MR_bool succeeded;
+    MR_Integer CastX_23 = (MR_Integer) HeadVar__1_1;
+    MR_Integer CastY_24 = (MR_Integer) HeadVar__2_2;
+
+    succeeded = (CastX_23 == CastY_24);
+    if (succeeded)
+      succeeded = MR_TRUE;
+    else
+      switch (MR_tag((MR_Word) HeadVar__1_1)) {
+        default: /*NOTREACHED*/ MR_assert(0);
+        case (MR_Integer) 0:
+          switch (MR_unmkbody(HeadVar__1_1)) {
+            default: /*NOTREACHED*/ MR_assert(0);
+            case (MR_Integer) 0:
+              {
+                MR_Integer CastX_3 = (MR_Integer) HeadVar__1_1;
+                MR_Integer CastY_4 = (MR_Integer) HeadVar__2_2;
+
+                succeeded = (CastY_4 == CastX_3);
+              }
+              break;
+            case (MR_Integer) 1:
+              {
+                MR_Integer CastX_5 = (MR_Integer) HeadVar__1_1;
+                MR_Integer CastY_6 = (MR_Integer) HeadVar__2_2;
+
+                succeeded = (CastY_6 == CastX_5);
+              }
+              break;
+            case (MR_Integer) 2:
+              {
+                MR_Integer CastX_7 = (MR_Integer) HeadVar__1_1;
+                MR_Integer CastY_8 = (MR_Integer) HeadVar__2_2;
+
+                succeeded = (CastY_8 == CastX_7);
+              }
+              break;
+            case (MR_Integer) 3:
+              {
+                MR_Integer CastX_9 = (MR_Integer) HeadVar__1_1;
+                MR_Integer CastY_10 = (MR_Integer) HeadVar__2_2;
+
+                succeeded = (CastY_10 == CastX_9);
+              }
+              break;
+            case (MR_Integer) 4:
+              {
+                MR_Integer CastX_21 = (MR_Integer) HeadVar__1_1;
+                MR_Integer CastY_22 = (MR_Integer) HeadVar__2_2;
+
+                succeeded = (CastY_22 == CastX_21);
+              }
+              break;
+          }
+          break;
+        case (MR_Integer) 1:
+          {
+            MR_Word ArgX1_11 = ((MR_Word) (MR_hl_field(MR_mktag(1), HeadVar__1_1, (MR_Integer) 0)));
+            MR_Word ArgY1_12;
+
+            succeeded = ((MR_tag((MR_Word) HeadVar__2_2)) == (MR_mktag((MR_Integer) 1)));
+            if (succeeded)
+            {
+              ArgY1_12 = ((MR_Word) (MR_hl_field(MR_mktag(1), HeadVar__2_2, (MR_Integer) 0)));
+              succeeded = (ArgX1_11 == ArgY1_12);
+            }
+          }
+          break;
+        case (MR_Integer) 2:
+          {
+            MR_Word ArgX1_13 = ((MR_Word) (MR_hl_field(MR_mktag(2), HeadVar__1_1, (MR_Integer) 0)));
+            MR_Word ArgY1_14;
+            MR_Word ArgX2_15 = ((MR_Word) (MR_hl_field(MR_mktag(2), HeadVar__1_1, (MR_Integer) 1)));
+            MR_Word ArgY2_16;
+
+            succeeded = ((MR_tag((MR_Word) HeadVar__2_2)) == (MR_mktag((MR_Integer) 2)));
+            if (succeeded)
+            {
+              ArgY1_14 = ((MR_Word) (MR_hl_field(MR_mktag(2), HeadVar__2_2, (MR_Integer) 0)));
+              ArgY2_16 = ((MR_Word) (MR_hl_field(MR_mktag(2), HeadVar__2_2, (MR_Integer) 1)));
+              succeeded = (ArgX1_13 == ArgY1_14);
+              if (succeeded)
+                succeeded = (ArgX2_15 == ArgY2_16);
+            }
+          }
+          break;
+        case (MR_Integer) 3:
+          {
+            MR_Word ArgX1_17 = ((MR_Word) (MR_hl_field(MR_mktag(3), HeadVar__1_1, (MR_Integer) 0)));
+            MR_Word ArgY1_18;
+            MR_Word ArgX2_19 = ((MR_Word) (MR_hl_field(MR_mktag(3), HeadVar__1_1, (MR_Integer) 1)));
+            MR_Word ArgY2_20;
+
+            succeeded = ((MR_tag((MR_Word) HeadVar__2_2)) == (MR_mktag((MR_Integer) 3)));
+            if (succeeded)
+            {
+              ArgY1_18 = ((MR_Word) (MR_hl_field(MR_mktag(3), HeadVar__2_2, (MR_Integer) 0)));
+              ArgY2_20 = ((MR_Word) (MR_hl_field(MR_mktag(3), HeadVar__2_2, (MR_Integer) 1)));
+              succeeded = (ArgX1_17 == ArgY1_18);
+              if (succeeded)
+                succeeded = (ArgX2_19 == ArgY2_20);
+            }
+          }
+          break;
+      }
+    return succeeded;
+  }
+}
+
+void MR_CALL 
+backend_libs__rtti____Compare____notag_functor_0_0(
+  MR_Word * HeadVar__1_1,
+  MR_Word HeadVar__2_2,
+  MR_Word HeadVar__3_3)
+{
+  {
+    MR_bool succeeded;
+    MR_Integer CastX_15 = (MR_Integer) HeadVar__2_2;
+    MR_Integer CastY_16 = (MR_Integer) HeadVar__3_3;
+
+    succeeded = (CastX_15 == CastY_16);
+    if (succeeded)
+      *HeadVar__1_1 = (MR_Integer) 0;
+    else
+    {
+      MR_String ArgX1_4 = ((MR_String) (MR_hl_field(MR_mktag(0), HeadVar__2_2, (MR_Integer) 0)));
+      MR_String ArgY1_5 = ((MR_String) (MR_hl_field(MR_mktag(0), HeadVar__3_3, (MR_Integer) 0)));
+      MR_Word ArgX2_6 = ((MR_Word) (MR_hl_field(MR_mktag(0), HeadVar__2_2, (MR_Integer) 1)));
+      MR_Word ArgY2_7 = ((MR_Word) (MR_hl_field(MR_mktag(0), HeadVar__3_3, (MR_Integer) 1)));
+      MR_Word ArgX3_8 = ((MR_Word) (MR_hl_field(MR_mktag(0), HeadVar__2_2, (MR_Integer) 2)));
+      MR_Word ArgY3_9 = ((MR_Word) (MR_hl_field(MR_mktag(0), HeadVar__3_3, (MR_Integer) 2)));
+      MR_Word ArgX4_10 = ((MR_Word) (MR_hl_field(MR_mktag(0), HeadVar__2_2, (MR_Integer) 3)));
+      MR_Word ArgY4_11 = ((MR_Word) (MR_hl_field(MR_mktag(0), HeadVar__3_3, (MR_Integer) 3)));
+      MR_Word Var_12;
+
+      mercury__private_builtin__builtin_compare_string_3_p_0(&Var_12, ArgX1_4, ArgY1_5);
+      succeeded = (Var_12 == (MR_Integer) 0);
+      succeeded = !(succeeded);
+      if (succeeded)
+        *HeadVar__1_1 = Var_12;
+      else
+      {
+        MR_Word Var_13;
+
+        backend_libs__rtti____Compare____rtti_maybe_pseudo_type_info_0_0(&Var_13, ArgX2_6, ArgY2_7);
+        succeeded = (Var_13 == (MR_Integer) 0);
+        succeeded = !(succeeded);
+        if (succeeded)
+          *HeadVar__1_1 = Var_13;
+        else
+        {
+          MR_Word Var_14;
+
+          mercury__builtin__compare_3_p_0((MR_Word) &backend_libs__rtti_scalar_common_1[1], &Var_14, ((MR_Box) (ArgX3_8)), ((MR_Box) (ArgY3_9)));
+          succeeded = (Var_14 == (MR_Integer) 0);
+          succeeded = !(succeeded);
+          if (succeeded)
+            *HeadVar__1_1 = Var_14;
+          else
+          {
+            MR_Integer Var_21 = (MR_Integer) ArgX4_10;
+            MR_Integer Var_22 = (MR_Integer) ArgY4_11;
+
+            mercury__private_builtin__builtin_compare_int_3_p_0(HeadVar__1_1, Var_21, Var_22);
+          }
+        }
+      }
+    }
+  }
+}
+
+void MR_CALL 
+backend_libs__rtti____Compare____rtti_maybe_pseudo_type_info_0_0(
+  MR_Word * HeadVar__1_1,
+  MR_Word HeadVar__2_2,
+  MR_Word HeadVar__3_3)
+{
+  {
+    MR_bool succeeded;
+    MR_Integer CastX_12 = (MR_Integer) HeadVar__2_2;
+    MR_Integer CastY_13 = (MR_Integer) HeadVar__3_3;
+
+    succeeded = (CastX_12 == CastY_13);
+    if (succeeded)
+      *HeadVar__1_1 = (MR_Integer) 0;
+    else
+    if (((MR_tag((MR_Word) HeadVar__2_2)) == (MR_mktag((MR_Integer) 1))))
+    {
+      MR_Word Var_16 = ((MR_Word) (MR_hl_field(MR_mktag(1), HeadVar__2_2, (MR_Integer) 0)));
+
+      if (((MR_tag((MR_Word) HeadVar__3_3)) == (MR_mktag((MR_Integer) 1))))
+      {
+        MR_Word ArgY1_11 = ((MR_Word) (MR_hl_field(MR_mktag(1), HeadVar__3_3, (MR_Integer) 0)));
+
+        backend_libs__rtti____Compare____rtti_type_info_0_0(HeadVar__1_1, Var_16, ArgY1_11);
+      }
+      else
+        *HeadVar__1_1 = (MR_Integer) 2;
+    }
+    else
+    {
+      MR_Word Var_17 = ((MR_Word) (MR_hl_field(MR_mktag(0), HeadVar__2_2, (MR_Integer) 0)));
+
+      if (((MR_tag((MR_Word) HeadVar__3_3)) == (MR_mktag((MR_Integer) 1))))
+        *HeadVar__1_1 = (MR_Integer) 1;
+      else
+      {
+        MR_Word ArgY1_5 = ((MR_Word) (MR_hl_field(MR_mktag(0), HeadVar__3_3, (MR_Integer) 0)));
+
+        backend_libs__rtti____Compare____rtti_pseudo_type_info_0_0(HeadVar__1_1, Var_17, ArgY1_5);
+      }
+    }
+  }
+}
+
+MR_bool MR_CALL 
+backend_libs__rtti____Unify____notag_functor_0_0(
+  MR_Word HeadVar__1_1,
+  MR_Word HeadVar__2_2)
+{
+  {
+    MR_bool succeeded;
+    MR_Integer CastX_11 = (MR_Integer) HeadVar__1_1;
+    MR_Integer CastY_12 = (MR_Integer) HeadVar__2_2;
+
+    succeeded = (CastX_11 == CastY_12);
+    if (succeeded)
+      succeeded = MR_TRUE;
+    else
+    {
+      MR_Word TypeInfo_13_13;
+      MR_String ArgX1_3 = ((MR_String) (MR_hl_field(MR_mktag(0), HeadVar__1_1, (MR_Integer) 0)));
+      MR_String ArgY1_4 = ((MR_String) (MR_hl_field(MR_mktag(0), HeadVar__2_2, (MR_Integer) 0)));
+      MR_Word ArgX2_5 = ((MR_Word) (MR_hl_field(MR_mktag(0), HeadVar__1_1, (MR_Integer) 1)));
+      MR_Word ArgY2_6 = ((MR_Word) (MR_hl_field(MR_mktag(0), HeadVar__2_2, (MR_Integer) 1)));
+      MR_Word ArgX3_7 = ((MR_Word) (MR_hl_field(MR_mktag(0), HeadVar__1_1, (MR_Integer) 2)));
+      MR_Word ArgY3_8 = ((MR_Word) (MR_hl_field(MR_mktag(0), HeadVar__2_2, (MR_Integer) 2)));
+      MR_Word ArgX4_9 = ((MR_Word) (MR_hl_field(MR_mktag(0), HeadVar__1_1, (MR_Integer) 3)));
+      MR_Word ArgY4_10 = ((MR_Word) (MR_hl_field(MR_mktag(0), HeadVar__2_2, (MR_Integer) 3)));
+
+      succeeded = (strcmp(ArgX1_3, ArgY1_4) == 0);
+      if (succeeded)
+      {
+        succeeded = backend_libs__rtti____Unify____rtti_maybe_pseudo_type_info_0_0(ArgX2_5, ArgY2_6);
+        if (succeeded)
+        {
+          TypeInfo_13_13 = (MR_Word) &backend_libs__rtti_scalar_common_1[1];
+          succeeded = mercury__builtin__unify_2_p_0(TypeInfo_13_13, ((MR_Box) (ArgX3_7)), ((MR_Box) (ArgY3_8)));
+          if (succeeded)
+            succeeded = (ArgX4_9 == ArgY4_10);
+        }
+      }
+    }
+    return succeeded;
+  }
+}
+
+MR_bool MR_CALL 
+backend_libs__rtti____Unify____rtti_maybe_pseudo_type_info_0_0(
+  MR_Word HeadVar__1_1,
+  MR_Word HeadVar__2_2)
+{
+  {
+    MR_bool succeeded;
+    MR_Integer CastX_7 = (MR_Integer) HeadVar__1_1;
+    MR_Integer CastY_8 = (MR_Integer) HeadVar__2_2;
+
+    succeeded = (CastX_7 == CastY_8);
+    if (succeeded)
+      succeeded = MR_TRUE;
+    else
+    if (((MR_tag((MR_Word) HeadVar__1_1)) == (MR_mktag((MR_Integer) 1))))
+    {
+      MR_Word ArgX1_5 = ((MR_Word) (MR_hl_field(MR_mktag(1), HeadVar__1_1, (MR_Integer) 0)));
+      MR_Word ArgY1_6;
+
+      succeeded = ((MR_tag((MR_Word) HeadVar__2_2)) == (MR_mktag((MR_Integer) 1)));
+      if (succeeded)
+      {
+        ArgY1_6 = ((MR_Word) (MR_hl_field(MR_mktag(1), HeadVar__2_2, (MR_Integer) 0)));
+        succeeded = backend_libs__rtti____Unify____rtti_type_info_0_0(ArgX1_5, ArgY1_6);
+      }
+    }
+    else
+    {
+      MR_Word ArgX1_3 = ((MR_Word) (MR_hl_field(MR_mktag(0), HeadVar__1_1, (MR_Integer) 0)));
+      MR_Word ArgY1_4;
+
+      succeeded = ((MR_tag((MR_Word) HeadVar__2_2)) == (MR_mktag((MR_Integer) 0)));
+      if (succeeded)
+      {
+        ArgY1_4 = ((MR_Word) (MR_hl_field(MR_mktag(0), HeadVar__2_2, (MR_Integer) 0)));
+        succeeded = backend_libs__rtti____Unify____rtti_pseudo_type_info_0_0(ArgX1_3, ArgY1_4);
+      }
+    }
+    return succeeded;
+  }
+}
+
+void MR_CALL 
+backend_libs__rtti____Compare____is_stable_0_0(
+  MR_Word * HeadVar__1_1,
+  MR_Word HeadVar__2_2,
+  MR_Word HeadVar__3_3)
+{
+  {
+    MR_Integer Cast_HeadVar1_4 = (MR_Integer) HeadVar__2_2;
+    MR_Integer Cast_HeadVar2_5 = (MR_Integer) HeadVar__3_3;
+
+    mercury__private_builtin__builtin_compare_int_3_p_0(HeadVar__1_1, Cast_HeadVar1_4, Cast_HeadVar2_5);
+  }
+}
+
+MR_bool MR_CALL 
+backend_libs__rtti____Unify____is_stable_0_0(
+  MR_Word HeadVar__2_1,
+  MR_Word HeadVar__2_2)
+{
+  {
+    MR_bool succeeded = (HeadVar__2_1 == HeadVar__2_2);
+
+    return succeeded;
+  }
+}
+
+void MR_CALL 
+backend_libs__rtti____Compare____is_array_0_0(
+  MR_Word * HeadVar__1_1,
+  MR_Word HeadVar__2_2,
+  MR_Word HeadVar__3_3)
+{
+  {
+    MR_Integer Cast_HeadVar1_4 = (MR_Integer) HeadVar__2_2;
+    MR_Integer Cast_HeadVar2_5 = (MR_Integer) HeadVar__3_3;
+
+    mercury__private_builtin__builtin_compare_int_3_p_0(HeadVar__1_1, Cast_HeadVar1_4, Cast_HeadVar2_5);
+  }
+}
+
+MR_bool MR_CALL 
+backend_libs__rtti____Unify____is_array_0_0(
+  MR_Word HeadVar__2_1,
+  MR_Word HeadVar__2_2)
+{
+  {
+    MR_bool succeeded = (HeadVar__2_1 == HeadVar__2_2);
+
+    return succeeded;
+  }
+}
+
+void MR_CALL 
+backend_libs__rtti____Compare____impl_ctor_0_0(
+  MR_Word * HeadVar__1_1,
+  MR_Word HeadVar__2_2,
+  MR_Word HeadVar__3_3)
+{
+  {
+    MR_Integer Cast_HeadVar1_4 = (MR_Integer) HeadVar__2_2;
+    MR_Integer Cast_HeadVar2_5 = (MR_Integer) HeadVar__3_3;
+
+    mercury__private_builtin__builtin_compare_int_3_p_0(HeadVar__1_1, Cast_HeadVar1_4, Cast_HeadVar2_5);
+  }
+}
+
+MR_bool MR_CALL 
+backend_libs__rtti____Unify____impl_ctor_0_0(
+  MR_Word HeadVar__2_1,
+  MR_Word HeadVar__2_2)
+{
+  {
+    MR_bool succeeded = (HeadVar__2_1 == HeadVar__2_2);
+
+    return succeeded;
+  }
+}
+
+void MR_CALL 
+backend_libs__rtti____Compare____functor_subtype_info_0_0(
+  MR_Word * HeadVar__1_1,
+  MR_Word HeadVar__2_2,
+  MR_Word HeadVar__3_3)
+{
+  {
+    MR_Integer Cast_HeadVar1_4 = (MR_Integer) HeadVar__2_2;
+    MR_Integer Cast_HeadVar2_5 = (MR_Integer) HeadVar__3_3;
+
+    mercury__private_builtin__builtin_compare_int_3_p_0(HeadVar__1_1, Cast_HeadVar1_4, Cast_HeadVar2_5);
+  }
+}
+
+MR_bool MR_CALL 
+backend_libs__rtti____Unify____functor_subtype_info_0_0(
+  MR_Word HeadVar__2_1,
+  MR_Word HeadVar__2_2)
+{
+  {
+    MR_bool succeeded = (HeadVar__2_1 == HeadVar__2_2);
+
+    return succeeded;
+  }
+}
+
+void MR_CALL 
+backend_libs__rtti____Compare____foreign_enum_functor_0_0(
+  MR_Word * HeadVar__1_1,
+  MR_Word HeadVar__2_2,
+  MR_Word HeadVar__3_3)
+{
+  {
+    MR_bool succeeded;
+    MR_Integer CastX_12 = (MR_Integer) HeadVar__2_2;
+    MR_Integer CastY_13 = (MR_Integer) HeadVar__3_3;
+
+    succeeded = (CastX_12 == CastY_13);
+    if (succeeded)
+      *HeadVar__1_1 = (MR_Integer) 0;
+    else
+    {
+      MR_String ArgX1_4 = ((MR_String) (MR_hl_field(MR_mktag(0), HeadVar__2_2, (MR_Integer) 0)));
+      MR_String ArgY1_5 = ((MR_String) (MR_hl_field(MR_mktag(0), HeadVar__3_3, (MR_Integer) 0)));
+      MR_Integer ArgX2_6 = ((MR_Integer) (MR_hl_field(MR_mktag(0), HeadVar__2_2, (MR_Integer) 1)));
+      MR_Integer ArgY2_7 = ((MR_Integer) (MR_hl_field(MR_mktag(0), HeadVar__3_3, (MR_Integer) 1)));
+      MR_String ArgX3_8 = ((MR_String) (MR_hl_field(MR_mktag(0), HeadVar__2_2, (MR_Integer) 2)));
+      MR_String ArgY3_9 = ((MR_String) (MR_hl_field(MR_mktag(0), HeadVar__3_3, (MR_Integer) 2)));
+      MR_Word Var_10;
+
+      mercury__private_builtin__builtin_compare_string_3_p_0(&Var_10, ArgX1_4, ArgY1_5);
+      succeeded = (Var_10 == (MR_Integer) 0);
+      succeeded = !(succeeded);
+      if (succeeded)
+        *HeadVar__1_1 = Var_10;
+      else
+      {
+        MR_Word Var_11;
+
+        mercury__private_builtin__builtin_compare_int_3_p_0(&Var_11, ArgX2_6, ArgY2_7);
+        succeeded = (Var_11 == (MR_Integer) 0);
+        succeeded = !(succeeded);
+        if (succeeded)
+          *HeadVar__1_1 = Var_11;
+        else
+          mercury__private_builtin__builtin_compare_string_3_p_0(HeadVar__1_1, ArgX3_8, ArgY3_9);
+      }
+    }
+  }
+}
+
+MR_bool MR_CALL 
+backend_libs__rtti____Unify____foreign_enum_functor_0_0(
+  MR_Word HeadVar__1_1,
+  MR_Word HeadVar__2_2)
+{
+  {
+    MR_bool succeeded;
+    MR_Integer CastX_9 = (MR_Integer) HeadVar__1_1;
+    MR_Integer CastY_10 = (MR_Integer) HeadVar__2_2;
+
+    succeeded = (CastX_9 == CastY_10);
+    if (succeeded)
+      succeeded = MR_TRUE;
+    else
+    {
+      MR_String ArgX1_3 = ((MR_String) (MR_hl_field(MR_mktag(0), HeadVar__1_1, (MR_Integer) 0)));
+      MR_String ArgY1_4 = ((MR_String) (MR_hl_field(MR_mktag(0), HeadVar__2_2, (MR_Integer) 0)));
+      MR_Integer ArgX2_5 = ((MR_Integer) (MR_hl_field(MR_mktag(0), HeadVar__1_1, (MR_Integer) 1)));
+      MR_Integer ArgY2_6 = ((MR_Integer) (MR_hl_field(MR_mktag(0), HeadVar__2_2, (MR_Integer) 1)));
+      MR_String ArgX3_7 = ((MR_String) (MR_hl_field(MR_mktag(0), HeadVar__1_1, (MR_Integer) 2)));
+      MR_String ArgY3_8 = ((MR_String) (MR_hl_field(MR_mktag(0), HeadVar__2_2, (MR_Integer) 2)));
+
+      succeeded = (strcmp(ArgX1_3, ArgY1_4) == 0);
+      if (succeeded)
+      {
+        succeeded = (ArgX2_5 == ArgY2_6);
+        if (succeeded)
+          succeeded = (strcmp(ArgX3_7, ArgY3_8) == 0);
+      }
+    }
+    return succeeded;
+  }
+}
+
+void MR_CALL 
+backend_libs__rtti____Compare____exist_typeinfo_locn_0_0(
+  MR_Word * HeadVar__1_1,
+  MR_Word HeadVar__2_2,
+  MR_Word HeadVar__3_3)
+{
+  {
+    MR_bool succeeded;
+    MR_Integer CastX_17 = (MR_Integer) HeadVar__2_2;
+    MR_Integer CastY_18 = (MR_Integer) HeadVar__3_3;
+
+    succeeded = (CastX_17 == CastY_18);
+    if (succeeded)
+      *HeadVar__1_1 = (MR_Integer) 0;
+    else
+    if (((MR_tag((MR_Word) HeadVar__2_2)) == (MR_mktag((MR_Integer) 0))))
+    {
+      MR_Integer Var_22 = ((MR_Integer) (MR_hl_field(MR_mktag(0), HeadVar__2_2, (MR_Integer) 0)));
+
+      if (((MR_tag((MR_Word) HeadVar__3_3)) == (MR_mktag((MR_Integer) 0))))
+      {
+        MR_Integer ArgY1_5 = ((MR_Integer) (MR_hl_field(MR_mktag(0), HeadVar__3_3, (MR_Integer) 0)));
+
+        mercury__private_builtin__builtin_compare_int_3_p_0(HeadVar__1_1, Var_22, ArgY1_5);
+      }
+      else
+        *HeadVar__1_1 = (MR_Integer) 1;
+    }
+    else
+    {
+      MR_Integer Var_23 = ((MR_Integer) (MR_hl_field(MR_mktag(1), HeadVar__2_2, (MR_Integer) 1)));
+      MR_Integer Var_24 = ((MR_Integer) (MR_hl_field(MR_mktag(1), HeadVar__2_2, (MR_Integer) 0)));
+
+      if (((MR_tag((MR_Word) HeadVar__3_3)) == (MR_mktag((MR_Integer) 0))))
+        *HeadVar__1_1 = (MR_Integer) 2;
+      else
+      {
+        MR_Integer ArgY1_13 = ((MR_Integer) (MR_hl_field(MR_mktag(1), HeadVar__3_3, (MR_Integer) 0)));
+        MR_Integer ArgY2_15 = ((MR_Integer) (MR_hl_field(MR_mktag(1), HeadVar__3_3, (MR_Integer) 1)));
+        MR_Word Var_16;
+
+        mercury__private_builtin__builtin_compare_int_3_p_0(&Var_16, Var_24, ArgY1_13);
+        succeeded = (Var_16 == (MR_Integer) 0);
+        succeeded = !(succeeded);
+        if (succeeded)
+          *HeadVar__1_1 = Var_16;
+        else
+          mercury__private_builtin__builtin_compare_int_3_p_0(HeadVar__1_1, Var_23, ArgY2_15);
+      }
+    }
+  }
+}
+
+MR_bool MR_CALL 
+backend_libs__rtti____Unify____exist_typeinfo_locn_0_0(
+  MR_Word HeadVar__1_1,
+  MR_Word HeadVar__2_2)
+{
+  {
+    MR_bool succeeded;
+    MR_Integer CastX_9 = (MR_Integer) HeadVar__1_1;
+    MR_Integer CastY_10 = (MR_Integer) HeadVar__2_2;
+
+    succeeded = (CastX_9 == CastY_10);
+    if (succeeded)
+      succeeded = MR_TRUE;
+    else
+    if (((MR_tag((MR_Word) HeadVar__1_1)) == (MR_mktag((MR_Integer) 0))))
+    {
+      MR_Integer ArgX1_3 = ((MR_Integer) (MR_hl_field(MR_mktag(0), HeadVar__1_1, (MR_Integer) 0)));
+      MR_Integer ArgY1_4;
+
+      succeeded = ((MR_tag((MR_Word) HeadVar__2_2)) == (MR_mktag((MR_Integer) 0)));
+      if (succeeded)
+      {
+        ArgY1_4 = ((MR_Integer) (MR_hl_field(MR_mktag(0), HeadVar__2_2, (MR_Integer) 0)));
+        succeeded = (ArgX1_3 == ArgY1_4);
+      }
+    }
+    else
+    {
+      MR_Integer ArgX1_5 = ((MR_Integer) (MR_hl_field(MR_mktag(1), HeadVar__1_1, (MR_Integer) 0)));
+      MR_Integer ArgY1_6;
+      MR_Integer ArgX2_7 = ((MR_Integer) (MR_hl_field(MR_mktag(1), HeadVar__1_1, (MR_Integer) 1)));
+      MR_Integer ArgY2_8;
+
+      succeeded = ((MR_tag((MR_Word) HeadVar__2_2)) == (MR_mktag((MR_Integer) 1)));
+      if (succeeded)
+      {
+        ArgY1_6 = ((MR_Integer) (MR_hl_field(MR_mktag(1), HeadVar__2_2, (MR_Integer) 0)));
+        ArgY2_8 = ((MR_Integer) (MR_hl_field(MR_mktag(1), HeadVar__2_2, (MR_Integer) 1)));
+        succeeded = (ArgX1_5 == ArgY1_6);
+        if (succeeded)
+          succeeded = (ArgX2_7 == ArgY2_8);
+      }
+    }
+    return succeeded;
+  }
+}
+
+void MR_CALL 
+backend_libs__rtti____Compare____exist_info_0_0(
+  MR_Word * HeadVar__1_1,
+  MR_Word HeadVar__2_2,
+  MR_Word HeadVar__3_3)
+{
+  {
+    MR_bool succeeded;
+    MR_Integer CastX_15 = (MR_Integer) HeadVar__2_2;
+    MR_Integer CastY_16 = (MR_Integer) HeadVar__3_3;
+
+    succeeded = (CastX_15 == CastY_16);
+    if (succeeded)
+      *HeadVar__1_1 = (MR_Integer) 0;
+    else
+    {
+      MR_Integer ArgX1_4 = ((MR_Integer) (MR_hl_field(MR_mktag(0), HeadVar__2_2, (MR_Integer) 0)));
+      MR_Integer ArgY1_5 = ((MR_Integer) (MR_hl_field(MR_mktag(0), HeadVar__3_3, (MR_Integer) 0)));
+      MR_Integer ArgX2_6 = ((MR_Integer) (MR_hl_field(MR_mktag(0), HeadVar__2_2, (MR_Integer) 1)));
+      MR_Integer ArgY2_7 = ((MR_Integer) (MR_hl_field(MR_mktag(0), HeadVar__3_3, (MR_Integer) 1)));
+      MR_Word ArgX3_8 = ((MR_Word) (MR_hl_field(MR_mktag(0), HeadVar__2_2, (MR_Integer) 2)));
+      MR_Word ArgY3_9 = ((MR_Word) (MR_hl_field(MR_mktag(0), HeadVar__3_3, (MR_Integer) 2)));
+      MR_Word ArgX4_10 = ((MR_Word) (MR_hl_field(MR_mktag(0), HeadVar__2_2, (MR_Integer) 3)));
+      MR_Word ArgY4_11 = ((MR_Word) (MR_hl_field(MR_mktag(0), HeadVar__3_3, (MR_Integer) 3)));
+      MR_Word Var_12;
+
+      mercury__private_builtin__builtin_compare_int_3_p_0(&Var_12, ArgX1_4, ArgY1_5);
+      succeeded = (Var_12 == (MR_Integer) 0);
+      succeeded = !(succeeded);
+      if (succeeded)
+        *HeadVar__1_1 = Var_12;
+      else
+      {
+        MR_Word Var_13;
+
+        mercury__private_builtin__builtin_compare_int_3_p_0(&Var_13, ArgX2_6, ArgY2_7);
+        succeeded = (Var_13 == (MR_Integer) 0);
+        succeeded = !(succeeded);
+        if (succeeded)
+          *HeadVar__1_1 = Var_13;
+        else
+        {
+          MR_Word Var_14;
+
+          mercury__builtin__compare_3_p_0((MR_Word) &backend_libs__rtti_scalar_common_1[4], &Var_14, ((MR_Box) (ArgX3_8)), ((MR_Box) (ArgY3_9)));
+          succeeded = (Var_14 == (MR_Integer) 0);
+          succeeded = !(succeeded);
+          if (succeeded)
+            *HeadVar__1_1 = Var_14;
+          else
+          {
+            mercury__builtin__compare_3_p_0((MR_Word) &backend_libs__rtti_scalar_common_1[5], HeadVar__1_1, ((MR_Box) (ArgX4_10)), ((MR_Box) (ArgY4_11)));
+          }
+        }
+      }
+    }
+  }
+}
+
+MR_bool MR_CALL 
+backend_libs__rtti____Unify____exist_info_0_0(
+  MR_Word HeadVar__1_1,
+  MR_Word HeadVar__2_2)
+{
+  {
+    MR_bool succeeded;
+    MR_Integer CastX_11 = (MR_Integer) HeadVar__1_1;
+    MR_Integer CastY_12 = (MR_Integer) HeadVar__2_2;
+
+    succeeded = (CastX_11 == CastY_12);
+    if (succeeded)
+      succeeded = MR_TRUE;
+    else
+    {
+      MR_Word TypeInfo_13_13;
+      MR_Word TypeInfo_14_14;
+      MR_Integer ArgX1_3 = ((MR_Integer) (MR_hl_field(MR_mktag(0), HeadVar__1_1, (MR_Integer) 0)));
+      MR_Integer ArgY1_4 = ((MR_Integer) (MR_hl_field(MR_mktag(0), HeadVar__2_2, (MR_Integer) 0)));
+      MR_Integer ArgX2_5 = ((MR_Integer) (MR_hl_field(MR_mktag(0), HeadVar__1_1, (MR_Integer) 1)));
+      MR_Integer ArgY2_6 = ((MR_Integer) (MR_hl_field(MR_mktag(0), HeadVar__2_2, (MR_Integer) 1)));
+      MR_Word ArgX3_7 = ((MR_Word) (MR_hl_field(MR_mktag(0), HeadVar__1_1, (MR_Integer) 2)));
+      MR_Word ArgY3_8 = ((MR_Word) (MR_hl_field(MR_mktag(0), HeadVar__2_2, (MR_Integer) 2)));
+      MR_Word ArgX4_9 = ((MR_Word) (MR_hl_field(MR_mktag(0), HeadVar__1_1, (MR_Integer) 3)));
+      MR_Word ArgY4_10 = ((MR_Word) (MR_hl_field(MR_mktag(0), HeadVar__2_2, (MR_Integer) 3)));
+
+      succeeded = (ArgX1_3 == ArgY1_4);
+      if (succeeded)
+      {
+        succeeded = (ArgX2_5 == ArgY2_6);
+        if (succeeded)
+        {
+          TypeInfo_13_13 = (MR_Word) &backend_libs__rtti_scalar_common_1[4];
+          succeeded = mercury__builtin__unify_2_p_0(TypeInfo_13_13, ((MR_Box) (ArgX3_7)), ((MR_Box) (ArgY3_8)));
+          if (succeeded)
+          {
+            TypeInfo_14_14 = (MR_Word) &backend_libs__rtti_scalar_common_1[5];
+            succeeded = mercury__builtin__unify_2_p_0(TypeInfo_14_14, ((MR_Box) (ArgX4_9)), ((MR_Box) (ArgY4_10)));
+          }
+        }
+      }
+    }
+    return succeeded;
+  }
+}
+
+void MR_CALL 
+backend_libs__rtti____Compare____equality_axioms_0_0(
+  MR_Word * HeadVar__1_1,
+  MR_Word HeadVar__2_2,
+  MR_Word HeadVar__3_3)
+{
+  {
+    MR_Integer Cast_HeadVar1_4 = (MR_Integer) HeadVar__2_2;
+    MR_Integer Cast_HeadVar2_5 = (MR_Integer) HeadVar__3_3;
+
+    mercury__private_builtin__builtin_compare_int_3_p_0(HeadVar__1_1, Cast_HeadVar1_4, Cast_HeadVar2_5);
+  }
+}
+
+MR_bool MR_CALL 
+backend_libs__rtti____Unify____equality_axioms_0_0(
+  MR_Word HeadVar__2_1,
+  MR_Word HeadVar__2_2)
+{
+  {
+    MR_bool succeeded = (HeadVar__2_1 == HeadVar__2_2);
+
+    return succeeded;
+  }
+}
+
+void MR_CALL 
+backend_libs__rtti____Compare____enum_functor_0_0(
+  MR_Word * HeadVar__1_1,
+  MR_Word HeadVar__2_2,
+  MR_Word HeadVar__3_3)
+{
+  {
+    MR_bool succeeded;
+    MR_Integer CastX_9 = (MR_Integer) HeadVar__2_2;
+    MR_Integer CastY_10 = (MR_Integer) HeadVar__3_3;
+
+    succeeded = (CastX_9 == CastY_10);
+    if (succeeded)
+      *HeadVar__1_1 = (MR_Integer) 0;
+    else
+    {
+      MR_String ArgX1_4 = ((MR_String) (MR_hl_field(MR_mktag(0), HeadVar__2_2, (MR_Integer) 0)));
+      MR_String ArgY1_5 = ((MR_String) (MR_hl_field(MR_mktag(0), HeadVar__3_3, (MR_Integer) 0)));
+      MR_Integer ArgX2_6 = ((MR_Integer) (MR_hl_field(MR_mktag(0), HeadVar__2_2, (MR_Integer) 1)));
+      MR_Integer ArgY2_7 = ((MR_Integer) (MR_hl_field(MR_mktag(0), HeadVar__3_3, (MR_Integer) 1)));
+      MR_Word Var_8;
+
+      mercury__private_builtin__builtin_compare_string_3_p_0(&Var_8, ArgX1_4, ArgY1_5);
+      succeeded = (Var_8 == (MR_Integer) 0);
+      succeeded = !(succeeded);
+      if (succeeded)
+        *HeadVar__1_1 = Var_8;
+      else
+        mercury__private_builtin__builtin_compare_int_3_p_0(HeadVar__1_1, ArgX2_6, ArgY2_7);
+    }
+  }
+}
+
+MR_bool MR_CALL 
+backend_libs__rtti____Unify____enum_functor_0_0(
+  MR_Word HeadVar__1_1,
+  MR_Word HeadVar__2_2)
+{
+  {
+    MR_bool succeeded;
+    MR_Integer CastX_7 = (MR_Integer) HeadVar__1_1;
+    MR_Integer CastY_8 = (MR_Integer) HeadVar__2_2;
+
+    succeeded = (CastX_7 == CastY_8);
+    if (succeeded)
+      succeeded = MR_TRUE;
+    else
+    {
+      MR_String ArgX1_3 = ((MR_String) (MR_hl_field(MR_mktag(0), HeadVar__1_1, (MR_Integer) 0)));
+      MR_String ArgY1_4 = ((MR_String) (MR_hl_field(MR_mktag(0), HeadVar__2_2, (MR_Integer) 0)));
+      MR_Integer ArgX2_5 = ((MR_Integer) (MR_hl_field(MR_mktag(0), HeadVar__1_1, (MR_Integer) 1)));
+      MR_Integer ArgY2_6 = ((MR_Integer) (MR_hl_field(MR_mktag(0), HeadVar__2_2, (MR_Integer) 1)));
+
+      succeeded = (strcmp(ArgX1_3, ArgY1_4) == 0);
+      if (succeeded)
+        succeeded = (ArgX2_5 == ArgY2_6);
+    }
+    return succeeded;
+  }
+}
+
+void MR_CALL 
+backend_libs__rtti____Compare____du_functor_0_0(
+  MR_Word * HeadVar__1_1,
+  MR_Word HeadVar__2_2,
+  MR_Word HeadVar__3_3)
+{
+  {
+    MR_bool succeeded;
+    MR_Integer CastX_24 = (MR_Integer) HeadVar__2_2;
+    MR_Integer CastY_25 = (MR_Integer) HeadVar__3_3;
+
+    succeeded = (CastX_24 == CastY_25);
+    if (succeeded)
+      *HeadVar__1_1 = (MR_Integer) 0;
+    else
+    {
+      MR_String ArgX1_4 = ((MR_String) (MR_hl_field(MR_mktag(0), HeadVar__2_2, (MR_Integer) 0)));
+      MR_String ArgY1_5 = ((MR_String) (MR_hl_field(MR_mktag(0), HeadVar__3_3, (MR_Integer) 0)));
+      MR_Integer ArgX2_6 = ((MR_Integer) (MR_hl_field(MR_mktag(0), HeadVar__2_2, (MR_Integer) 1)));
+      MR_Integer ArgY2_7 = ((MR_Integer) (MR_hl_field(MR_mktag(0), HeadVar__3_3, (MR_Integer) 1)));
+      MR_Integer ArgX3_8 = ((MR_Integer) (MR_hl_field(MR_mktag(0), HeadVar__2_2, (MR_Integer) 2)));
+      MR_Integer ArgY3_9 = ((MR_Integer) (MR_hl_field(MR_mktag(0), HeadVar__3_3, (MR_Integer) 2)));
+      MR_Word ArgX4_10 = ((MR_Word) (MR_hl_field(MR_mktag(0), HeadVar__2_2, (MR_Integer) 3)));
+      MR_Word ArgY4_11 = ((MR_Word) (MR_hl_field(MR_mktag(0), HeadVar__3_3, (MR_Integer) 3)));
+      MR_Word ArgX5_12 = ((MR_Word) (MR_hl_field(MR_mktag(0), HeadVar__2_2, (MR_Integer) 4)));
+      MR_Word ArgY5_13 = ((MR_Word) (MR_hl_field(MR_mktag(0), HeadVar__3_3, (MR_Integer) 4)));
+      MR_Word ArgX6_14 = ((MR_Word) (MR_hl_field(MR_mktag(0), HeadVar__2_2, (MR_Integer) 5)));
+      MR_Word ArgY6_15 = ((MR_Word) (MR_hl_field(MR_mktag(0), HeadVar__3_3, (MR_Integer) 5)));
+      MR_Word ArgX7_16 = ((MR_Word) (MR_hl_field(MR_mktag(0), HeadVar__2_2, (MR_Integer) 6)));
+      MR_Word ArgY7_17 = ((MR_Word) (MR_hl_field(MR_mktag(0), HeadVar__3_3, (MR_Integer) 6)));
+      MR_Word Var_18;
+
+      mercury__private_builtin__builtin_compare_string_3_p_0(&Var_18, ArgX1_4, ArgY1_5);
+      succeeded = (Var_18 == (MR_Integer) 0);
+      succeeded = !(succeeded);
+      if (succeeded)
+        *HeadVar__1_1 = Var_18;
+      else
+      {
+        MR_Word Var_19;
+
+        mercury__private_builtin__builtin_compare_int_3_p_0(&Var_19, ArgX2_6, ArgY2_7);
+        succeeded = (Var_19 == (MR_Integer) 0);
+        succeeded = !(succeeded);
+        if (succeeded)
+          *HeadVar__1_1 = Var_19;
+        else
+        {
+          MR_Word Var_20;
+
+          mercury__private_builtin__builtin_compare_int_3_p_0(&Var_20, ArgX3_8, ArgY3_9);
+          succeeded = (Var_20 == (MR_Integer) 0);
+          succeeded = !(succeeded);
+          if (succeeded)
+            *HeadVar__1_1 = Var_20;
+          else
+          {
+            MR_Word Var_21;
+
+            backend_libs__rtti____Compare____du_rep_0_0(&Var_21, ArgX4_10, ArgY4_11);
+            succeeded = (Var_21 == (MR_Integer) 0);
+            succeeded = !(succeeded);
+            if (succeeded)
+              *HeadVar__1_1 = Var_21;
+            else
+            {
+              MR_Word Var_22;
+
+              mercury__builtin__compare_3_p_0((MR_Word) &backend_libs__rtti_scalar_common_1[2], &Var_22, ((MR_Box) (ArgX5_12)), ((MR_Box) (ArgY5_13)));
+              succeeded = (Var_22 == (MR_Integer) 0);
+              succeeded = !(succeeded);
+              if (succeeded)
+                *HeadVar__1_1 = Var_22;
+              else
+              {
+                MR_Word Var_23;
+
+                mercury__builtin__compare_3_p_0((MR_Word) &backend_libs__rtti_scalar_common_1[3], &Var_23, ((MR_Box) (ArgX6_14)), ((MR_Box) (ArgY6_15)));
+                succeeded = (Var_23 == (MR_Integer) 0);
+                succeeded = !(succeeded);
+                if (succeeded)
+                  *HeadVar__1_1 = Var_23;
+                else
+                {
+                  MR_Integer Var_33 = (MR_Integer) ArgX7_16;
+                  MR_Integer Var_34 = (MR_Integer) ArgY7_17;
+
+                  mercury__private_builtin__builtin_compare_int_3_p_0(HeadVar__1_1, Var_33, Var_34);
+                }
+              }
+            }
+          }
+        }
+      }
+    }
+  }
+}
+
+void MR_CALL 
+backend_libs__rtti____Compare____du_rep_0_0(
+  MR_Word * HeadVar__1_1,
+  MR_Word HeadVar__2_2,
+  MR_Word HeadVar__3_3)
+{
+  {
+    MR_bool succeeded;
+    MR_Integer CastX_17 = (MR_Integer) HeadVar__2_2;
+    MR_Integer CastY_18 = (MR_Integer) HeadVar__3_3;
+
+    succeeded = (CastX_17 == CastY_18);
+    if (succeeded)
+      *HeadVar__1_1 = (MR_Integer) 0;
+    else
+    if (((MR_tag((MR_Word) HeadVar__2_2)) == (MR_mktag((MR_Integer) 1))))
+    {
+      MR_Integer Var_22 = ((MR_Integer) (MR_hl_field(MR_mktag(1), HeadVar__2_2, (MR_Integer) 0)));
+
+      if (((MR_tag((MR_Word) HeadVar__3_3)) == (MR_mktag((MR_Integer) 1))))
+      {
+        MR_Integer ArgY1_16 = ((MR_Integer) (MR_hl_field(MR_mktag(1), HeadVar__3_3, (MR_Integer) 0)));
+
+        mercury__private_builtin__builtin_compare_int_3_p_0(HeadVar__1_1, Var_22, ArgY1_16);
+      }
+      else
+        *HeadVar__1_1 = (MR_Integer) 2;
+    }
+    else
+    {
+      MR_Word Var_23 = ((MR_Word) (MR_hl_field(MR_mktag(0), HeadVar__2_2, (MR_Integer) 1)));
+      MR_Integer Var_24 = ((MR_Integer) (MR_hl_field(MR_mktag(0), HeadVar__2_2, (MR_Integer) 0)));
+
+      if (((MR_tag((MR_Word) HeadVar__3_3)) == (MR_mktag((MR_Integer) 1))))
+        *HeadVar__1_1 = (MR_Integer) 1;
+      else
+      {
+        MR_Integer ArgY1_5 = ((MR_Integer) (MR_hl_field(MR_mktag(0), HeadVar__3_3, (MR_Integer) 0)));
+        MR_Word ArgY2_7 = ((MR_Word) (MR_hl_field(MR_mktag(0), HeadVar__3_3, (MR_Integer) 1)));
+        MR_Word Var_8;
+
+        mercury__private_builtin__builtin_compare_int_3_p_0(&Var_8, Var_24, ArgY1_5);
+        succeeded = (Var_8 == (MR_Integer) 0);
+        succeeded = !(succeeded);
+        if (succeeded)
+          *HeadVar__1_1 = Var_8;
+        else
+          backend_libs__rtti____Compare____sectag_and_locn_0_0(HeadVar__1_1, Var_23, ArgY2_7);
+      }
+    }
+  }
+}
+
+void MR_CALL 
+backend_libs__rtti____Compare____sectag_and_locn_0_0(
+  MR_Word * HeadVar__1_1,
+  MR_Word HeadVar__2_2,
+  MR_Word HeadVar__3_3)
+{
+  {
+    MR_bool succeeded;
+    MR_Integer CastX_20 = (MR_Integer) HeadVar__2_2;
+    MR_Integer CastY_21 = (MR_Integer) HeadVar__3_3;
+
+    succeeded = (CastX_20 == CastY_21);
+    if (succeeded)
+      *HeadVar__1_1 = (MR_Integer) 0;
+    else
+      switch (MR_tag((MR_Word) HeadVar__2_2)) {
+        default: /*NOTREACHED*/ MR_assert(0);
+        case (MR_Integer) 0:
+          switch (MR_unmkbody(HeadVar__2_2)) {
+            default: /*NOTREACHED*/ MR_assert(0);
+            case (MR_Integer) 0:
+              switch (MR_tag((MR_Word) HeadVar__3_3)) {
+                default: /*NOTREACHED*/ MR_assert(0);
+                case (MR_Integer) 0:
+                  switch (MR_unmkbody(HeadVar__3_3)) {
+                    default: /*NOTREACHED*/ MR_assert(0);
+                    case (MR_Integer) 0:
+                      *HeadVar__1_1 = (MR_Integer) 0;
+                      break;
+                    case (MR_Integer) 1:
+                      *HeadVar__1_1 = (MR_Integer) 1;
+                      break;
+                  }
+                  break;
+                case (MR_Integer) 1:
+                  *HeadVar__1_1 = (MR_Integer) 1;
+                  break;
+                case (MR_Integer) 2:
+                  *HeadVar__1_1 = (MR_Integer) 1;
+                  break;
+              }
+              break;
+            case (MR_Integer) 1:
+              switch (MR_tag((MR_Word) HeadVar__3_3)) {
+                default: /*NOTREACHED*/ MR_assert(0);
+                case (MR_Integer) 0:
+                  switch (MR_unmkbody(HeadVar__3_3)) {
+                    default: /*NOTREACHED*/ MR_assert(0);
+                    case (MR_Integer) 0:
+                      *HeadVar__1_1 = (MR_Integer) 2;
+                      break;
+                    case (MR_Integer) 1:
+                      *HeadVar__1_1 = (MR_Integer) 0;
+                      break;
+                  }
+                  break;
+                case (MR_Integer) 1:
+                  *HeadVar__1_1 = (MR_Integer) 1;
+                  break;
+                case (MR_Integer) 2:
+                  *HeadVar__1_1 = (MR_Integer) 1;
+                  break;
+              }
+              break;
+          }
+          break;
+        case (MR_Integer) 1:
+          {
+            MR_Integer Var_24 = ((MR_Integer) (MR_hl_field(MR_mktag(1), HeadVar__2_2, (MR_Integer) 0)));
+
+            switch (MR_tag((MR_Word) HeadVar__3_3)) {
+              default: /*NOTREACHED*/ MR_assert(0);
+              case (MR_Integer) 0:
+                switch (MR_unmkbody(HeadVar__3_3)) {
+                  default: /*NOTREACHED*/ MR_assert(0);
+                  case (MR_Integer) 0:
+                    *HeadVar__1_1 = (MR_Integer) 2;
+                    break;
+                  case (MR_Integer) 1:
+                    *HeadVar__1_1 = (MR_Integer) 2;
+                    break;
+                }
+                break;
+              case (MR_Integer) 1:
+                {
+                  MR_Integer ArgY1_11 = ((MR_Integer) (MR_hl_field(MR_mktag(1), HeadVar__3_3, (MR_Integer) 0)));
+
+                  mercury__private_builtin__builtin_compare_int_3_p_0(HeadVar__1_1, Var_24, ArgY1_11);
+                }
+                break;
+              case (MR_Integer) 2:
+                *HeadVar__1_1 = (MR_Integer) 1;
+                break;
+            }
+          }
+          break;
+        case (MR_Integer) 2:
+          {
+            MR_Integer Var_25 = ((MR_Integer) (MR_hl_field(MR_mktag(2), HeadVar__2_2, (MR_Integer) 0)));
+
+            switch (MR_tag((MR_Word) HeadVar__3_3)) {
+              default: /*NOTREACHED*/ MR_assert(0);
+              case (MR_Integer) 0:
+                switch (MR_unmkbody(HeadVar__3_3)) {
+                  default: /*NOTREACHED*/ MR_assert(0);
+                  case (MR_Integer) 0:
+                    *HeadVar__1_1 = (MR_Integer) 2;
+                    break;
+                  case (MR_Integer) 1:
+                    *HeadVar__1_1 = (MR_Integer) 2;
+                    break;
+                }
+                break;
+              case (MR_Integer) 1:
+                *HeadVar__1_1 = (MR_Integer) 2;
+                break;
+              case (MR_Integer) 2:
+                {
+                  MR_Integer ArgY1_19 = ((MR_Integer) (MR_hl_field(MR_mktag(2), HeadVar__3_3, (MR_Integer) 0)));
+
+                  mercury__private_builtin__builtin_compare_int_3_p_0(HeadVar__1_1, Var_25, ArgY1_19);
+                }
+                break;
+            }
+          }
+          break;
+      }
+  }
+}
+
+MR_bool MR_CALL 
+backend_libs__rtti____Unify____du_functor_0_0(
+  MR_Word HeadVar__1_1,
+  MR_Word HeadVar__2_2)
+{
+  {
+    MR_bool succeeded;
+    MR_Integer CastX_17 = (MR_Integer) HeadVar__1_1;
+    MR_Integer CastY_18 = (MR_Integer) HeadVar__2_2;
+
+    succeeded = (CastX_17 == CastY_18);
+    if (succeeded)
+      succeeded = MR_TRUE;
+    else
+    {
+      MR_Word TypeInfo_19_19;
+      MR_Word TypeInfo_20_20;
+      MR_String ArgX1_3 = ((MR_String) (MR_hl_field(MR_mktag(0), HeadVar__1_1, (MR_Integer) 0)));
+      MR_String ArgY1_4 = ((MR_String) (MR_hl_field(MR_mktag(0), HeadVar__2_2, (MR_Integer) 0)));
+      MR_Integer ArgX2_5 = ((MR_Integer) (MR_hl_field(MR_mktag(0), HeadVar__1_1, (MR_Integer) 1)));
+      MR_Integer ArgY2_6 = ((MR_Integer) (MR_hl_field(MR_mktag(0), HeadVar__2_2, (MR_Integer) 1)));
+      MR_Integer ArgX3_7 = ((MR_Integer) (MR_hl_field(MR_mktag(0), HeadVar__1_1, (MR_Integer) 2)));
+      MR_Integer ArgY3_8 = ((MR_Integer) (MR_hl_field(MR_mktag(0), HeadVar__2_2, (MR_Integer) 2)));
+      MR_Word ArgX4_9 = ((MR_Word) (MR_hl_field(MR_mktag(0), HeadVar__1_1, (MR_Integer) 3)));
+      MR_Word ArgY4_10 = ((MR_Word) (MR_hl_field(MR_mktag(0), HeadVar__2_2, (MR_Integer) 3)));
+      MR_Word ArgX5_11 = ((MR_Word) (MR_hl_field(MR_mktag(0), HeadVar__1_1, (MR_Integer) 4)));
+      MR_Word ArgY5_12 = ((MR_Word) (MR_hl_field(MR_mktag(0), HeadVar__2_2, (MR_Integer) 4)));
+      MR_Word ArgX6_13 = ((MR_Word) (MR_hl_field(MR_mktag(0), HeadVar__1_1, (MR_Integer) 5)));
+      MR_Word ArgY6_14 = ((MR_Word) (MR_hl_field(MR_mktag(0), HeadVar__2_2, (MR_Integer) 5)));
+      MR_Word ArgX7_15 = ((MR_Word) (MR_hl_field(MR_mktag(0), HeadVar__1_1, (MR_Integer) 6)));
+      MR_Word ArgY7_16 = ((MR_Word) (MR_hl_field(MR_mktag(0), HeadVar__2_2, (MR_Integer) 6)));
+
+      succeeded = (strcmp(ArgX1_3, ArgY1_4) == 0);
+      if (succeeded)
+      {
+        succeeded = (ArgX2_5 == ArgY2_6);
+        if (succeeded)
+        {
+          succeeded = (ArgX3_7 == ArgY3_8);
+          if (succeeded)
+          {
+            succeeded = backend_libs__rtti____Unify____du_rep_0_0(ArgX4_9, ArgY4_10);
+            if (succeeded)
+            {
+              TypeInfo_19_19 = (MR_Word) &backend_libs__rtti_scalar_common_1[2];
+              succeeded = mercury__builtin__unify_2_p_0(TypeInfo_19_19, ((MR_Box) (ArgX5_11)), ((MR_Box) (ArgY5_12)));
+              if (succeeded)
+              {
+                TypeInfo_20_20 = (MR_Word) &backend_libs__rtti_scalar_common_1[3];
+                succeeded = mercury__builtin__unify_2_p_0(TypeInfo_20_20, ((MR_Box) (ArgX6_13)), ((MR_Box) (ArgY6_14)));
+                if (succeeded)
+                  succeeded = (ArgX7_15 == ArgY7_16);
+              }
+            }
+          }
+        }
+      }
+    }
+    return succeeded;
+  }
+}
+
+MR_bool MR_CALL 
+backend_libs__rtti____Unify____du_rep_0_0(
+  MR_Word HeadVar__1_1,
+  MR_Word HeadVar__2_2)
+{
+  {
+    MR_bool succeeded;
+    MR_Integer CastX_9 = (MR_Integer) HeadVar__1_1;
+    MR_Integer CastY_10 = (MR_Integer) HeadVar__2_2;
+
+    succeeded = (CastX_9 == CastY_10);
+    if (succeeded)
+      succeeded = MR_TRUE;
+    else
+    if (((MR_tag((MR_Word) HeadVar__1_1)) == (MR_mktag((MR_Integer) 1))))
+    {
+      MR_Integer ArgX1_7 = ((MR_Integer) (MR_hl_field(MR_mktag(1), HeadVar__1_1, (MR_Integer) 0)));
+      MR_Integer ArgY1_8;
+
+      succeeded = ((MR_tag((MR_Word) HeadVar__2_2)) == (MR_mktag((MR_Integer) 1)));
+      if (succeeded)
+      {
+        ArgY1_8 = ((MR_Integer) (MR_hl_field(MR_mktag(1), HeadVar__2_2, (MR_Integer) 0)));
+        succeeded = (ArgX1_7 == ArgY1_8);
+      }
+    }
+    else
+    {
+      MR_Integer ArgX1_3 = ((MR_Integer) (MR_hl_field(MR_mktag(0), HeadVar__1_1, (MR_Integer) 0)));
+      MR_Integer ArgY1_4;
+      MR_Word ArgX2_5 = ((MR_Word) (MR_hl_field(MR_mktag(0), HeadVar__1_1, (MR_Integer) 1)));
+      MR_Word ArgY2_6;
+
+      succeeded = ((MR_tag((MR_Word) HeadVar__2_2)) == (MR_mktag((MR_Integer) 0)));
+      if (succeeded)
+      {
+        ArgY1_4 = ((MR_Integer) (MR_hl_field(MR_mktag(0), HeadVar__2_2, (MR_Integer) 0)));
+        ArgY2_6 = ((MR_Word) (MR_hl_field(MR_mktag(0), HeadVar__2_2, (MR_Integer) 1)));
+        succeeded = (ArgX1_3 == ArgY1_4);
+        if (succeeded)
+          succeeded = backend_libs__rtti____Unify____sectag_and_locn_0_0(ArgX2_5, ArgY2_6);
+      }
+    }
+    return succeeded;
+  }
+}
+
+MR_bool MR_CALL 
+backend_libs__rtti____Unify____sectag_and_locn_0_0(
+  MR_Word HeadVar__1_1,
+  MR_Word HeadVar__2_2)
+{
+  {
+    MR_bool succeeded;
+    MR_Integer CastX_11 = (MR_Integer) HeadVar__1_1;
+    MR_Integer CastY_12 = (MR_Integer) HeadVar__2_2;
+
+    succeeded = (CastX_11 == CastY_12);
+    if (succeeded)
+      succeeded = MR_TRUE;
+    else
+      switch (MR_tag((MR_Word) HeadVar__1_1)) {
+        default: /*NOTREACHED*/ MR_assert(0);
+        case (MR_Integer) 0:
+          switch (MR_unmkbody(HeadVar__1_1)) {
+            default: /*NOTREACHED*/ MR_assert(0);
+            case (MR_Integer) 0:
+              {
+                MR_Integer CastX_3 = (MR_Integer) HeadVar__1_1;
+                MR_Integer CastY_4 = (MR_Integer) HeadVar__2_2;
+
+                succeeded = (CastY_4 == CastX_3);
+              }
+              break;
+            case (MR_Integer) 1:
+              {
+                MR_Integer CastX_5 = (MR_Integer) HeadVar__1_1;
+                MR_Integer CastY_6 = (MR_Integer) HeadVar__2_2;
+
+                succeeded = (CastY_6 == CastX_5);
+              }
+              break;
+          }
+          break;
+        case (MR_Integer) 1:
+          {
+            MR_Integer ArgX1_7 = ((MR_Integer) (MR_hl_field(MR_mktag(1), HeadVar__1_1, (MR_Integer) 0)));
+            MR_Integer ArgY1_8;
+
+            succeeded = ((MR_tag((MR_Word) HeadVar__2_2)) == (MR_mktag((MR_Integer) 1)));
+            if (succeeded)
+            {
+              ArgY1_8 = ((MR_Integer) (MR_hl_field(MR_mktag(1), HeadVar__2_2, (MR_Integer) 0)));
+              succeeded = (ArgX1_7 == ArgY1_8);
+            }
+          }
+          break;
+        case (MR_Integer) 2:
+          {
+            MR_Integer ArgX1_9 = ((MR_Integer) (MR_hl_field(MR_mktag(2), HeadVar__1_1, (MR_Integer) 0)));
+            MR_Integer ArgY1_10;
+
+            succeeded = ((MR_tag((MR_Word) HeadVar__2_2)) == (MR_mktag((MR_Integer) 2)));
+            if (succeeded)
+            {
+              ArgY1_10 = ((MR_Integer) (MR_hl_field(MR_mktag(2), HeadVar__2_2, (MR_Integer) 0)));
+              succeeded = (ArgX1_9 == ArgY1_10);
+            }
+          }
+          break;
+      }
+    return succeeded;
+  }
+}
+
+void MR_CALL 
+backend_libs__rtti____Compare____du_arg_info_0_0(
+  MR_Word * HeadVar__1_1,
+  MR_Word HeadVar__2_2,
+  MR_Word HeadVar__3_3)
+{
+  {
+    MR_bool succeeded;
+    MR_Integer CastX_12 = (MR_Integer) HeadVar__2_2;
+    MR_Integer CastY_13 = (MR_Integer) HeadVar__3_3;
+
+    succeeded = (CastX_12 == CastY_13);
+    if (succeeded)
+      *HeadVar__1_1 = (MR_Integer) 0;
+    else
+    {
+      MR_Word ArgX1_4 = ((MR_Word) (MR_hl_field(MR_mktag(0), HeadVar__2_2, (MR_Integer) 0)));
+      MR_Word ArgY1_5 = ((MR_Word) (MR_hl_field(MR_mktag(0), HeadVar__3_3, (MR_Integer) 0)));
+      MR_Word ArgX2_6 = ((MR_Word) (MR_hl_field(MR_mktag(0), HeadVar__2_2, (MR_Integer) 1)));
+      MR_Word ArgY2_7 = ((MR_Word) (MR_hl_field(MR_mktag(0), HeadVar__3_3, (MR_Integer) 1)));
+      MR_Word ArgX3_8 = ((MR_Word) (MR_hl_field(MR_mktag(0), HeadVar__2_2, (MR_Integer) 2)));
+      MR_Word ArgY3_9 = ((MR_Word) (MR_hl_field(MR_mktag(0), HeadVar__3_3, (MR_Integer) 2)));
+      MR_Word Var_10;
+
+      mercury__builtin__compare_3_p_0((MR_Word) &backend_libs__rtti_scalar_common_1[1], &Var_10, ((MR_Box) (ArgX1_4)), ((MR_Box) (ArgY1_5)));
+      succeeded = (Var_10 == (MR_Integer) 0);
+      succeeded = !(succeeded);
+      if (succeeded)
+        *HeadVar__1_1 = Var_10;
+      else
+      {
+        MR_Word Var_11;
+
+        backend_libs__rtti____Compare____rtti_maybe_pseudo_type_info_or_self_0_0(&Var_11, ArgX2_6, ArgY2_7);
+        succeeded = (Var_11 == (MR_Integer) 0);
+        succeeded = !(succeeded);
+        if (succeeded)
+          *HeadVar__1_1 = Var_11;
+        else
+          parse_tree__prog_data____Compare____arg_width_0_0(HeadVar__1_1, ArgX3_8, ArgY3_9);
+      }
+    }
+  }
+}
+
+void MR_CALL 
+backend_libs__rtti____Compare____rtti_maybe_pseudo_type_info_or_self_0_0(
+  MR_Word * HeadVar__1_1,
+  MR_Word HeadVar__2_2,
+  MR_Word HeadVar__3_3)
+{
+  {
+    MR_bool succeeded;
+    MR_Integer CastX_16 = (MR_Integer) HeadVar__2_2;
+    MR_Integer CastY_17 = (MR_Integer) HeadVar__3_3;
+
+    succeeded = (CastX_16 == CastY_17);
+    if (succeeded)
+      *HeadVar__1_1 = (MR_Integer) 0;
+    else
+      switch (MR_tag((MR_Word) HeadVar__2_2)) {
+        default: /*NOTREACHED*/ MR_assert(0);
+        case (MR_Integer) 0:
+          switch (MR_tag((MR_Word) HeadVar__3_3)) {
+            default: /*NOTREACHED*/ MR_assert(0);
+            case (MR_Integer) 0:
+              *HeadVar__1_1 = (MR_Integer) 0;
+              break;
+            case (MR_Integer) 1:
+              *HeadVar__1_1 = (MR_Integer) 2;
+              break;
+            case (MR_Integer) 2:
+              *HeadVar__1_1 = (MR_Integer) 2;
+              break;
+          }
+          break;
+        case (MR_Integer) 1:
+          {
+            MR_Word Var_21 = ((MR_Word) (MR_hl_field(MR_mktag(1), HeadVar__2_2, (MR_Integer) 0)));
+
+            switch (MR_tag((MR_Word) HeadVar__3_3)) {
+              default: /*NOTREACHED*/ MR_assert(0);
+              case (MR_Integer) 0:
+                *HeadVar__1_1 = (MR_Integer) 1;
+                break;
+              case (MR_Integer) 1:
+                {
+                  MR_Word ArgY1_5 = ((MR_Word) (MR_hl_field(MR_mktag(1), HeadVar__3_3, (MR_Integer) 0)));
+
+                  backend_libs__rtti____Compare____rtti_pseudo_type_info_0_0(HeadVar__1_1, Var_21, ArgY1_5);
+                }
+                break;
+              case (MR_Integer) 2:
+                *HeadVar__1_1 = (MR_Integer) 1;
+                break;
+            }
+          }
+          break;
+        case (MR_Integer) 2:
+          {
+            MR_Word Var_20 = ((MR_Word) (MR_hl_field(MR_mktag(2), HeadVar__2_2, (MR_Integer) 0)));
+
+            switch (MR_tag((MR_Word) HeadVar__3_3)) {
+              default: /*NOTREACHED*/ MR_assert(0);
+              case (MR_Integer) 0:
+                *HeadVar__1_1 = (MR_Integer) 1;
+                break;
+              case (MR_Integer) 1:
+                *HeadVar__1_1 = (MR_Integer) 2;
+                break;
+              case (MR_Integer) 2:
+                {
+                  MR_Word ArgY1_12 = ((MR_Word) (MR_hl_field(MR_mktag(2), HeadVar__3_3, (MR_Integer) 0)));
+
+                  backend_libs__rtti____Compare____rtti_type_info_0_0(HeadVar__1_1, Var_20, ArgY1_12);
+                }
+                break;
+            }
+          }
+          break;
+      }
+  }
+}
+
+MR_bool MR_CALL 
+backend_libs__rtti____Unify____du_arg_info_0_0(
+  MR_Word HeadVar__1_1,
+  MR_Word HeadVar__2_2)
+{
+  {
+    MR_bool succeeded;
+    MR_Integer CastX_9 = (MR_Integer) HeadVar__1_1;
+    MR_Integer CastY_10 = (MR_Integer) HeadVar__2_2;
+
+    succeeded = (CastX_9 == CastY_10);
+    if (succeeded)
+      succeeded = MR_TRUE;
+    else
+    {
+      MR_Word ArgX1_3 = ((MR_Word) (MR_hl_field(MR_mktag(0), HeadVar__1_1, (MR_Integer) 0)));
+      MR_Word ArgY1_4 = ((MR_Word) (MR_hl_field(MR_mktag(0), HeadVar__2_2, (MR_Integer) 0)));
+      MR_Word ArgX2_5 = ((MR_Word) (MR_hl_field(MR_mktag(0), HeadVar__1_1, (MR_Integer) 1)));
+      MR_Word ArgY2_6 = ((MR_Word) (MR_hl_field(MR_mktag(0), HeadVar__2_2, (MR_Integer) 1)));
+      MR_Word ArgX3_7 = ((MR_Word) (MR_hl_field(MR_mktag(0), HeadVar__1_1, (MR_Integer) 2)));
+      MR_Word ArgY3_8 = ((MR_Word) (MR_hl_field(MR_mktag(0), HeadVar__2_2, (MR_Integer) 2)));
+
+      succeeded = mercury__builtin__unify_2_p_0((MR_Word) &backend_libs__rtti_scalar_common_1[1], ((MR_Box) (ArgX1_3)), ((MR_Box) (ArgY1_4)));
+      if (succeeded)
+      {
+        succeeded = backend_libs__rtti____Unify____rtti_maybe_pseudo_type_info_or_self_0_0(ArgX2_5, ArgY2_6);
+        if (succeeded)
+          succeeded = parse_tree__prog_data____Unify____arg_width_0_0(ArgX3_7, ArgY3_8);
+      }
+    }
+    return succeeded;
+  }
+}
+
+MR_bool MR_CALL 
+backend_libs__rtti____Unify____rtti_maybe_pseudo_type_info_or_self_0_0(
+  MR_Word HeadVar__1_1,
+  MR_Word HeadVar__2_2)
+{
+  {
+    MR_bool succeeded;
+    MR_Integer CastX_9 = (MR_Integer) HeadVar__1_1;
+    MR_Integer CastY_10 = (MR_Integer) HeadVar__2_2;
+
+    succeeded = (CastX_9 == CastY_10);
+    if (succeeded)
+      succeeded = MR_TRUE;
+    else
+      switch (MR_tag((MR_Word) HeadVar__1_1)) {
+        default: /*NOTREACHED*/ MR_assert(0);
+        case (MR_Integer) 0:
+          {
+            MR_Integer CastX_7 = (MR_Integer) HeadVar__1_1;
+            MR_Integer CastY_8 = (MR_Integer) HeadVar__2_2;
+
+            succeeded = (CastY_8 == CastX_7);
+          }
+          break;
+        case (MR_Integer) 1:
+          {
+            MR_Word ArgX1_3 = ((MR_Word) (MR_hl_field(MR_mktag(1), HeadVar__1_1, (MR_Integer) 0)));
+            MR_Word ArgY1_4;
+
+            succeeded = ((MR_tag((MR_Word) HeadVar__2_2)) == (MR_mktag((MR_Integer) 1)));
+            if (succeeded)
+            {
+              ArgY1_4 = ((MR_Word) (MR_hl_field(MR_mktag(1), HeadVar__2_2, (MR_Integer) 0)));
+              succeeded = backend_libs__rtti____Unify____rtti_pseudo_type_info_0_0(ArgX1_3, ArgY1_4);
+            }
+          }
+          break;
+        case (MR_Integer) 2:
+          {
+            MR_Word ArgX1_5 = ((MR_Word) (MR_hl_field(MR_mktag(2), HeadVar__1_1, (MR_Integer) 0)));
+            MR_Word ArgY1_6;
+
+            succeeded = ((MR_tag((MR_Word) HeadVar__2_2)) == (MR_mktag((MR_Integer) 2)));
+            if (succeeded)
+            {
+              ArgY1_6 = ((MR_Word) (MR_hl_field(MR_mktag(2), HeadVar__2_2, (MR_Integer) 0)));
+              succeeded = backend_libs__rtti____Unify____rtti_type_info_0_0(ArgX1_5, ArgY1_6);
+            }
+          }
+          break;
+      }
+    return succeeded;
+  }
+}
+
+void MR_CALL 
+backend_libs__rtti____Compare____curr_or_prev_table_0_0(
+  MR_Word * HeadVar__1_1,
+  MR_Word HeadVar__2_2,
+  MR_Word HeadVar__3_3)
+{
+  {
+    MR_Integer Cast_HeadVar1_4 = (MR_Integer) HeadVar__2_2;
+    MR_Integer Cast_HeadVar2_5 = (MR_Integer) HeadVar__3_3;
+
+    mercury__private_builtin__builtin_compare_int_3_p_0(HeadVar__1_1, Cast_HeadVar1_4, Cast_HeadVar2_5);
+  }
+}
+
+MR_bool MR_CALL 
+backend_libs__rtti____Unify____curr_or_prev_table_0_0(
+  MR_Word HeadVar__2_1,
+  MR_Word HeadVar__2_2)
+{
+  {
+    MR_bool succeeded = (HeadVar__2_1 == HeadVar__2_2);
+
+    return succeeded;
+  }
+}
+
+void MR_CALL 
+backend_libs__rtti____Compare____ctor_rtti_name_0_0(
+  MR_Word * HeadVar__1_1,
+  MR_Word HeadVar__2_2,
+  MR_Word HeadVar__3_3)
+{
+  {
+    MR_bool succeeded;
+    MR_Integer CastX_41 = (MR_Integer) HeadVar__2_2;
+    MR_Integer CastY_42 = (MR_Integer) HeadVar__3_3;
+
+    succeeded = (CastX_41 == CastY_42);
+    if (succeeded)
+      *HeadVar__1_1 = (MR_Integer) 0;
+    else
+    {
+      MR_Integer Var_4;
+      MR_Integer Var_5;
+
+      backend_libs__rtti____Index____ctor_rtti_name_0_0(HeadVar__2_2, &Var_4);
+      backend_libs__rtti____Index____ctor_rtti_name_0_0(HeadVar__3_3, &Var_5);
+      succeeded = (Var_4 < Var_5);
+      if (succeeded)
+        *HeadVar__1_1 = (MR_Integer) 1;
+      else
+      {
+        succeeded = (Var_4 > Var_5);
+        if (succeeded)
+          *HeadVar__1_1 = (MR_Integer) 2;
+        else
+        {
+          MR_Word Var_6;
+
+          switch (MR_tag((MR_Word) HeadVar__2_2)) {
+            default: /*NOTREACHED*/ MR_assert(0);
+            case (MR_Integer) 0:
+              switch (MR_unmkbody(HeadVar__2_2)) {
+                default: /*NOTREACHED*/ MR_assert(0);
+                case (MR_Integer) 0:
+                  {
+                    Var_6 = (MR_Integer) 0;
+                    succeeded = MR_TRUE;
+                  }
+                  break;
+                case (MR_Integer) 1:
+                  {
+                    Var_6 = (MR_Integer) 0;
+                    succeeded = MR_TRUE;
+                  }
+                  break;
+                case (MR_Integer) 2:
+                  {
+                    Var_6 = (MR_Integer) 0;
+                    succeeded = MR_TRUE;
+                  }
+                  break;
+                case (MR_Integer) 3:
+                  {
+                    Var_6 = (MR_Integer) 0;
+                    succeeded = MR_TRUE;
+                  }
+                  break;
+                case (MR_Integer) 4:
+                  {
+                    Var_6 = (MR_Integer) 0;
+                    succeeded = MR_TRUE;
+                  }
+                  break;
+                case (MR_Integer) 5:
+                  {
+                    Var_6 = (MR_Integer) 0;
+                    succeeded = MR_TRUE;
+                  }
+                  break;
+                case (MR_Integer) 6:
+                  {
+                    Var_6 = (MR_Integer) 0;
+                    succeeded = MR_TRUE;
+                  }
+                  break;
+                case (MR_Integer) 7:
+                  {
+                    Var_6 = (MR_Integer) 0;
+                    succeeded = MR_TRUE;
+                  }
+                  break;
+                case (MR_Integer) 8:
+                  {
+                    Var_6 = (MR_Integer) 0;
+                    succeeded = MR_TRUE;
+                  }
+                  break;
+                case (MR_Integer) 9:
+                  {
+                    Var_6 = (MR_Integer) 0;
+                    succeeded = MR_TRUE;
+                  }
+                  break;
+                case (MR_Integer) 10:
+                  {
+                    Var_6 = (MR_Integer) 0;
+                    succeeded = MR_TRUE;
+                  }
+                  break;
+                case (MR_Integer) 11:
+                  {
+                    Var_6 = (MR_Integer) 0;
+                    succeeded = MR_TRUE;
+                  }
+                  break;
+                case (MR_Integer) 12:
+                  {
+                    Var_6 = (MR_Integer) 0;
+                    succeeded = MR_TRUE;
+                  }
+                  break;
+              }
+              break;
+            case (MR_Integer) 1:
+              {
+                MR_Integer ArgX1_7 = ((MR_Integer) (MR_hl_field(MR_mktag(1), HeadVar__2_2, (MR_Integer) 0)));
+                MR_Integer ArgY1_8;
+
+                succeeded = ((MR_tag((MR_Word) HeadVar__3_3)) == (MR_mktag((MR_Integer) 1)));
+                if (succeeded)
+                {
+                  ArgY1_8 = ((MR_Integer) (MR_hl_field(MR_mktag(1), HeadVar__3_3, (MR_Integer) 0)));
+                  mercury__private_builtin__builtin_compare_int_3_p_0(&Var_6, ArgX1_7, ArgY1_8);
+                  succeeded = MR_TRUE;
+                }
+              }
+              break;
+            case (MR_Integer) 2:
+              {
+                MR_Integer ArgX1_9 = ((MR_Integer) (MR_hl_field(MR_mktag(2), HeadVar__2_2, (MR_Integer) 0)));
+                MR_Integer ArgY1_10;
+                MR_Integer ArgX2_11 = ((MR_Integer) (MR_hl_field(MR_mktag(2), HeadVar__2_2, (MR_Integer) 1)));
+                MR_Integer ArgY2_12;
+                MR_Integer ArgX3_13 = ((MR_Integer) (MR_hl_field(MR_mktag(2), HeadVar__2_2, (MR_Integer) 2)));
+                MR_Integer ArgY3_14;
+                MR_Word Var_15;
+
+                succeeded = ((MR_tag((MR_Word) HeadVar__3_3)) == (MR_mktag((MR_Integer) 2)));
+                if (succeeded)
+                {
+                  ArgY1_10 = ((MR_Integer) (MR_hl_field(MR_mktag(2), HeadVar__3_3, (MR_Integer) 0)));
+                  ArgY2_12 = ((MR_Integer) (MR_hl_field(MR_mktag(2), HeadVar__3_3, (MR_Integer) 1)));
+                  ArgY3_14 = ((MR_Integer) (MR_hl_field(MR_mktag(2), HeadVar__3_3, (MR_Integer) 2)));
+                  mercury__private_builtin__builtin_compare_int_3_p_0(&Var_15, ArgX1_9, ArgY1_10);
+                  succeeded = (Var_15 == (MR_Integer) 0);
+                  succeeded = !(succeeded);
+                  if (succeeded)
+                    Var_6 = Var_15;
+                  else
+                  {
+                    MR_Word Var_16;
+
+                    mercury__private_builtin__builtin_compare_int_3_p_0(&Var_16, ArgX2_11, ArgY2_12);
+                    succeeded = (Var_16 == (MR_Integer) 0);
+                    succeeded = !(succeeded);
+                    if (succeeded)
+                      Var_6 = Var_16;
+                    else
+                      mercury__private_builtin__builtin_compare_int_3_p_0(&Var_6, ArgX3_13, ArgY3_14);
+                  }
+                  succeeded = MR_TRUE;
+                }
+              }
+              break;
+            case (MR_Integer) 3:
+              switch (((MR_Integer) (MR_Word) (MR_hl_field(MR_mktag(3), HeadVar__2_2, (MR_Integer) 0)))) {
+                default: /*NOTREACHED*/ MR_assert(0);
+                case (MR_Integer) 0:
+                  {
+                    MR_Integer ArgX1_17 = ((MR_Integer) (MR_hl_field(MR_mktag(3), HeadVar__2_2, (MR_Integer) 1)));
+                    MR_Integer ArgY1_18;
+
+                    succeeded = ((((MR_tag((MR_Word) HeadVar__3_3)) == (MR_mktag((MR_Integer) 3)))) && (((((MR_Integer) (MR_Word) (MR_hl_field(MR_mktag(3), HeadVar__3_3, (MR_Integer) 0)))) == (MR_Integer) 0)));
+                    if (succeeded)
+                    {
+                      ArgY1_18 = ((MR_Integer) (MR_hl_field(MR_mktag(3), HeadVar__3_3, (MR_Integer) 1)));
+                      mercury__private_builtin__builtin_compare_int_3_p_0(&Var_6, ArgX1_17, ArgY1_18);
+                      succeeded = MR_TRUE;
+                    }
+                  }
+                  break;
+                case (MR_Integer) 1:
+                  {
+                    MR_Integer ArgX1_19 = ((MR_Integer) (MR_hl_field(MR_mktag(3), HeadVar__2_2, (MR_Integer) 1)));
+                    MR_Integer ArgY1_20;
+
+                    succeeded = ((((MR_tag((MR_Word) HeadVar__3_3)) == (MR_mktag((MR_Integer) 3)))) && (((((MR_Integer) (MR_Word) (MR_hl_field(MR_mktag(3), HeadVar__3_3, (MR_Integer) 0)))) == (MR_Integer) 1)));
+                    if (succeeded)
+                    {
+                      ArgY1_20 = ((MR_Integer) (MR_hl_field(MR_mktag(3), HeadVar__3_3, (MR_Integer) 1)));
+                      mercury__private_builtin__builtin_compare_int_3_p_0(&Var_6, ArgX1_19, ArgY1_20);
+                      succeeded = MR_TRUE;
+                    }
+                  }
+                  break;
+                case (MR_Integer) 2:
+                  {
+                    MR_Integer ArgX1_21 = ((MR_Integer) (MR_hl_field(MR_mktag(3), HeadVar__2_2, (MR_Integer) 1)));
+                    MR_Integer ArgY1_22;
+
+                    succeeded = ((((MR_tag((MR_Word) HeadVar__3_3)) == (MR_mktag((MR_Integer) 3)))) && (((((MR_Integer) (MR_Word) (MR_hl_field(MR_mktag(3), HeadVar__3_3, (MR_Integer) 0)))) == (MR_Integer) 2)));
+                    if (succeeded)
+                    {
+                      ArgY1_22 = ((MR_Integer) (MR_hl_field(MR_mktag(3), HeadVar__3_3, (MR_Integer) 1)));
+                      mercury__private_builtin__builtin_compare_int_3_p_0(&Var_6, ArgX1_21, ArgY1_22);
+                      succeeded = MR_TRUE;
+                    }
+                  }
+                  break;
+                case (MR_Integer) 3:
+                  {
+                    MR_Integer ArgX1_23 = ((MR_Integer) (MR_hl_field(MR_mktag(3), HeadVar__2_2, (MR_Integer) 1)));
+                    MR_Integer ArgY1_24;
+
+                    succeeded = ((((MR_tag((MR_Word) HeadVar__3_3)) == (MR_mktag((MR_Integer) 3)))) && (((((MR_Integer) (MR_Word) (MR_hl_field(MR_mktag(3), HeadVar__3_3, (MR_Integer) 0)))) == (MR_Integer) 3)));
+                    if (succeeded)
+                    {
+                      ArgY1_24 = ((MR_Integer) (MR_hl_field(MR_mktag(3), HeadVar__3_3, (MR_Integer) 1)));
+                      mercury__private_builtin__builtin_compare_int_3_p_0(&Var_6, ArgX1_23, ArgY1_24);
+                      succeeded = MR_TRUE;
+                    }
+                  }
+                  break;
+                case (MR_Integer) 4:
+                  {
+                    MR_Integer ArgX1_25 = ((MR_Integer) (MR_hl_field(MR_mktag(3), HeadVar__2_2, (MR_Integer) 1)));
+                    MR_Integer ArgY1_26;
+
+                    succeeded = ((((MR_tag((MR_Word) HeadVar__3_3)) == (MR_mktag((MR_Integer) 3)))) && (((((MR_Integer) (MR_Word) (MR_hl_field(MR_mktag(3), HeadVar__3_3, (MR_Integer) 0)))) == (MR_Integer) 4)));
+                    if (succeeded)
+                    {
+                      ArgY1_26 = ((MR_Integer) (MR_hl_field(MR_mktag(3), HeadVar__3_3, (MR_Integer) 1)));
+                      mercury__private_builtin__builtin_compare_int_3_p_0(&Var_6, ArgX1_25, ArgY1_26);
+                      succeeded = MR_TRUE;
+                    }
+                  }
+                  break;
+                case (MR_Integer) 5:
+                  {
+                    MR_Integer ArgX1_27 = ((MR_Integer) (MR_hl_field(MR_mktag(3), HeadVar__2_2, (MR_Integer) 1)));
+                    MR_Integer ArgY1_28;
+
+                    succeeded = ((((MR_tag((MR_Word) HeadVar__3_3)) == (MR_mktag((MR_Integer) 3)))) && (((((MR_Integer) (MR_Word) (MR_hl_field(MR_mktag(3), HeadVar__3_3, (MR_Integer) 0)))) == (MR_Integer) 5)));
+                    if (succeeded)
+                    {
+                      ArgY1_28 = ((MR_Integer) (MR_hl_field(MR_mktag(3), HeadVar__3_3, (MR_Integer) 1)));
+                      mercury__private_builtin__builtin_compare_int_3_p_0(&Var_6, ArgX1_27, ArgY1_28);
+                      succeeded = MR_TRUE;
+                    }
+                  }
+                  break;
+                case (MR_Integer) 6:
+                  {
+                    MR_Integer ArgX1_29 = ((MR_Integer) (MR_hl_field(MR_mktag(3), HeadVar__2_2, (MR_Integer) 1)));
+                    MR_Integer ArgY1_30;
+
+                    succeeded = ((((MR_tag((MR_Word) HeadVar__3_3)) == (MR_mktag((MR_Integer) 3)))) && (((((MR_Integer) (MR_Word) (MR_hl_field(MR_mktag(3), HeadVar__3_3, (MR_Integer) 0)))) == (MR_Integer) 6)));
+                    if (succeeded)
+                    {
+                      ArgY1_30 = ((MR_Integer) (MR_hl_field(MR_mktag(3), HeadVar__3_3, (MR_Integer) 1)));
+                      mercury__private_builtin__builtin_compare_int_3_p_0(&Var_6, ArgX1_29, ArgY1_30);
+                      succeeded = MR_TRUE;
+                    }
+                  }
+                  break;
+                case (MR_Integer) 7:
+                  {
+                    MR_Integer ArgX1_31 = ((MR_Integer) (MR_hl_field(MR_mktag(3), HeadVar__2_2, (MR_Integer) 1)));
+                    MR_Integer ArgY1_32;
+
+                    succeeded = ((((MR_tag((MR_Word) HeadVar__3_3)) == (MR_mktag((MR_Integer) 3)))) && (((((MR_Integer) (MR_Word) (MR_hl_field(MR_mktag(3), HeadVar__3_3, (MR_Integer) 0)))) == (MR_Integer) 7)));
+                    if (succeeded)
+                    {
+                      ArgY1_32 = ((MR_Integer) (MR_hl_field(MR_mktag(3), HeadVar__3_3, (MR_Integer) 1)));
+                      mercury__private_builtin__builtin_compare_int_3_p_0(&Var_6, ArgX1_31, ArgY1_32);
+                      succeeded = MR_TRUE;
+                    }
+                  }
+                  break;
+                case (MR_Integer) 8:
+                  {
+                    MR_Integer ArgX1_33 = ((MR_Integer) (MR_hl_field(MR_mktag(3), HeadVar__2_2, (MR_Integer) 1)));
+                    MR_Integer ArgY1_34;
+
+                    succeeded = ((((MR_tag((MR_Word) HeadVar__3_3)) == (MR_mktag((MR_Integer) 3)))) && (((((MR_Integer) (MR_Word) (MR_hl_field(MR_mktag(3), HeadVar__3_3, (MR_Integer) 0)))) == (MR_Integer) 8)));
+                    if (succeeded)
+                    {
+                      ArgY1_34 = ((MR_Integer) (MR_hl_field(MR_mktag(3), HeadVar__3_3, (MR_Integer) 1)));
+                      mercury__private_builtin__builtin_compare_int_3_p_0(&Var_6, ArgX1_33, ArgY1_34);
+                      succeeded = MR_TRUE;
+                    }
+                  }
+                  break;
+                case (MR_Integer) 9:
+                  {
+                    MR_Integer ArgX1_35 = ((MR_Integer) (MR_hl_field(MR_mktag(3), HeadVar__2_2, (MR_Integer) 1)));
+                    MR_Integer ArgY1_36;
+
+                    succeeded = ((((MR_tag((MR_Word) HeadVar__3_3)) == (MR_mktag((MR_Integer) 3)))) && (((((MR_Integer) (MR_Word) (MR_hl_field(MR_mktag(3), HeadVar__3_3, (MR_Integer) 0)))) == (MR_Integer) 9)));
+                    if (succeeded)
+                    {
+                      ArgY1_36 = ((MR_Integer) (MR_hl_field(MR_mktag(3), HeadVar__3_3, (MR_Integer) 1)));
+                      mercury__private_builtin__builtin_compare_int_3_p_0(&Var_6, ArgX1_35, ArgY1_36);
+                      succeeded = MR_TRUE;
+                    }
+                  }
+                  break;
+                case (MR_Integer) 10:
+                  {
+                    MR_Word ArgX1_37 = ((MR_Word) (MR_hl_field(MR_mktag(3), HeadVar__2_2, (MR_Integer) 1)));
+                    MR_Word ArgY1_38;
+
+                    succeeded = ((((MR_tag((MR_Word) HeadVar__3_3)) == (MR_mktag((MR_Integer) 3)))) && (((((MR_Integer) (MR_Word) (MR_hl_field(MR_mktag(3), HeadVar__3_3, (MR_Integer) 0)))) == (MR_Integer) 10)));
+                    if (succeeded)
+                    {
+                      ArgY1_38 = ((MR_Word) (MR_hl_field(MR_mktag(3), HeadVar__3_3, (MR_Integer) 1)));
+                      backend_libs__rtti____Compare____rtti_type_info_0_0(&Var_6, ArgX1_37, ArgY1_38);
+                      succeeded = MR_TRUE;
+                    }
+                  }
+                  break;
+                case (MR_Integer) 11:
+                  {
+                    MR_Word ArgX1_39 = ((MR_Word) (MR_hl_field(MR_mktag(3), HeadVar__2_2, (MR_Integer) 1)));
+                    MR_Word ArgY1_40;
+
+                    succeeded = ((((MR_tag((MR_Word) HeadVar__3_3)) == (MR_mktag((MR_Integer) 3)))) && (((((MR_Integer) (MR_Word) (MR_hl_field(MR_mktag(3), HeadVar__3_3, (MR_Integer) 0)))) == (MR_Integer) 11)));
+                    if (succeeded)
+                    {
+                      ArgY1_40 = ((MR_Word) (MR_hl_field(MR_mktag(3), HeadVar__3_3, (MR_Integer) 1)));
+                      backend_libs__rtti____Compare____rtti_pseudo_type_info_0_0(&Var_6, ArgX1_39, ArgY1_40);
+                      succeeded = MR_TRUE;
+                    }
+                  }
+                  break;
+              }
+              break;
+          }
+          if (succeeded)
+            *HeadVar__1_1 = Var_6;
+          else
+            {
+              mercury__private_builtin__compare_error_0_p_0();
+              return;
+            }
+        }
+      }
+    }
+  }
+}
+
+void MR_CALL 
+backend_libs__rtti____Compare____rtti_type_info_0_0(
+  MR_Word * HeadVar__1_1,
+  MR_Word HeadVar__2_2,
+  MR_Word HeadVar__3_3)
+{
+  {
+    MR_bool succeeded;
+    MR_Integer CastX_36 = (MR_Integer) HeadVar__2_2;
+    MR_Integer CastY_37 = (MR_Integer) HeadVar__3_3;
+
+    succeeded = (CastX_36 == CastY_37);
+    if (succeeded)
+      *HeadVar__1_1 = (MR_Integer) 0;
+    else
+      switch (MR_tag((MR_Word) HeadVar__2_2)) {
+        default: /*NOTREACHED*/ MR_assert(0);
+        case (MR_Integer) 0:
+          {
+            MR_Word Var_43 = (MR_Word) MR_body(((MR_Word) HeadVar__2_2), (MR_Integer) 0);
+
+            switch (MR_tag((MR_Word) HeadVar__3_3)) {
+              default: /*NOTREACHED*/ MR_assert(0);
+              case (MR_Integer) 0:
+                {
+                  MR_Word ArgY1_5 = (MR_Word) MR_body(((MR_Word) HeadVar__3_3), (MR_Integer) 0);
+
+                  backend_libs__rtti____Compare____rtti_type_ctor_0_0(HeadVar__1_1, Var_43, ArgY1_5);
+                }
+                break;
+              case (MR_Integer) 1:
+                *HeadVar__1_1 = (MR_Integer) 1;
+                break;
+              case (MR_Integer) 2:
+                *HeadVar__1_1 = (MR_Integer) 1;
+                break;
+            }
+          }
+          break;
+        case (MR_Integer) 1:
+          {
+            MR_Word Var_44 = ((MR_Word) (MR_hl_field(MR_mktag(1), HeadVar__2_2, (MR_Integer) 1)));
+            MR_Word Var_45 = ((MR_Word) (MR_hl_field(MR_mktag(1), HeadVar__2_2, (MR_Integer) 0)));
+
+            switch (MR_tag((MR_Word) HeadVar__3_3)) {
+              default: /*NOTREACHED*/ MR_assert(0);
+              case (MR_Integer) 0:
+                *HeadVar__1_1 = (MR_Integer) 2;
+                break;
+              case (MR_Integer) 1:
+                {
+                  MR_Word ArgY1_16 = ((MR_Word) (MR_hl_field(MR_mktag(1), HeadVar__3_3, (MR_Integer) 0)));
+                  MR_Word ArgY2_18 = ((MR_Word) (MR_hl_field(MR_mktag(1), HeadVar__3_3, (MR_Integer) 1)));
+                  MR_Word Var_19;
+
+                  backend_libs__rtti____Compare____rtti_type_ctor_0_0(&Var_19, Var_45, ArgY1_16);
+                  succeeded = (Var_19 == (MR_Integer) 0);
+                  succeeded = !(succeeded);
+                  if (succeeded)
+                    *HeadVar__1_1 = Var_19;
+                  else
+                  {
+                    mercury__builtin__compare_3_p_0((MR_Word) &backend_libs__rtti_scalar_common_1[7], HeadVar__1_1, ((MR_Box) (Var_44)), ((MR_Box) (ArgY2_18)));
+                  }
+                }
+                break;
+              case (MR_Integer) 2:
+                *HeadVar__1_1 = (MR_Integer) 1;
+                break;
+            }
+          }
+          break;
+        case (MR_Integer) 2:
+          {
+            MR_Word Var_46 = ((MR_Word) (MR_hl_field(MR_mktag(2), HeadVar__2_2, (MR_Integer) 1)));
+            MR_Word Var_47 = ((MR_Word) (MR_hl_field(MR_mktag(2), HeadVar__2_2, (MR_Integer) 0)));
+
+            switch (MR_tag((MR_Word) HeadVar__3_3)) {
+              default: /*NOTREACHED*/ MR_assert(0);
+              case (MR_Integer) 0:
+                *HeadVar__1_1 = (MR_Integer) 2;
+                break;
+              case (MR_Integer) 1:
+                *HeadVar__1_1 = (MR_Integer) 2;
+                break;
+              case (MR_Integer) 2:
+                {
+                  MR_Word ArgY1_32 = ((MR_Word) (MR_hl_field(MR_mktag(2), HeadVar__3_3, (MR_Integer) 0)));
+                  MR_Word ArgY2_34 = ((MR_Word) (MR_hl_field(MR_mktag(2), HeadVar__3_3, (MR_Integer) 1)));
+                  MR_Word Var_35;
+                  MR_Integer Var_48 = (MR_Integer) Var_47;
+                  MR_Integer Var_49 = (MR_Integer) ArgY1_32;
+
+                  mercury__private_builtin__builtin_compare_int_3_p_0(&Var_35, Var_48, Var_49);
+                  succeeded = (Var_35 == (MR_Integer) 0);
+                  succeeded = !(succeeded);
+                  if (succeeded)
+                    *HeadVar__1_1 = Var_35;
+                  else
+                  {
+                    mercury__builtin__compare_3_p_0((MR_Word) &backend_libs__rtti_scalar_common_1[7], HeadVar__1_1, ((MR_Box) (Var_46)), ((MR_Box) (ArgY2_34)));
+                  }
+                }
+                break;
+            }
+          }
+          break;
+      }
+  }
+}
+
+void MR_CALL 
+backend_libs__rtti____Compare____rtti_pseudo_type_info_0_0(
+  MR_Word * HeadVar__1_1,
+  MR_Word HeadVar__2_2,
+  MR_Word HeadVar__3_3)
+{
+  {
+    MR_bool succeeded;
+    MR_Integer CastX_54 = (MR_Integer) HeadVar__2_2;
+    MR_Integer CastY_55 = (MR_Integer) HeadVar__3_3;
+
+    succeeded = (CastX_54 == CastY_55);
+    if (succeeded)
+      *HeadVar__1_1 = (MR_Integer) 0;
+    else
+      switch (MR_tag((MR_Word) HeadVar__2_2)) {
+        default: /*NOTREACHED*/ MR_assert(0);
+        case (MR_Integer) 0:
+          {
+            MR_Word Var_62 = (MR_Word) MR_body(((MR_Word) HeadVar__2_2), (MR_Integer) 0);
+
+            switch (MR_tag((MR_Word) HeadVar__3_3)) {
+              default: /*NOTREACHED*/ MR_assert(0);
+              case (MR_Integer) 0:
+                {
+                  MR_Word ArgY1_5 = (MR_Word) MR_body(((MR_Word) HeadVar__3_3), (MR_Integer) 0);
+
+                  backend_libs__rtti____Compare____rtti_type_ctor_0_0(HeadVar__1_1, Var_62, ArgY1_5);
+                }
+                break;
+              case (MR_Integer) 1:
+                *HeadVar__1_1 = (MR_Integer) 1;
+                break;
+              case (MR_Integer) 2:
+                *HeadVar__1_1 = (MR_Integer) 1;
+                break;
+              case (MR_Integer) 3:
+                *HeadVar__1_1 = (MR_Integer) 1;
+                break;
+            }
+          }
+          break;
+        case (MR_Integer) 1:
+          {
+            MR_Word Var_63 = ((MR_Word) (MR_hl_field(MR_mktag(1), HeadVar__2_2, (MR_Integer) 1)));
+            MR_Word Var_64 = ((MR_Word) (MR_hl_field(MR_mktag(1), HeadVar__2_2, (MR_Integer) 0)));
+
+            switch (MR_tag((MR_Word) HeadVar__3_3)) {
+              default: /*NOTREACHED*/ MR_assert(0);
+              case (MR_Integer) 0:
+                *HeadVar__1_1 = (MR_Integer) 2;
+                break;
+              case (MR_Integer) 1:
+                {
+                  MR_Word ArgY1_18 = ((MR_Word) (MR_hl_field(MR_mktag(1), HeadVar__3_3, (MR_Integer) 0)));
+                  MR_Word ArgY2_20 = ((MR_Word) (MR_hl_field(MR_mktag(1), HeadVar__3_3, (MR_Integer) 1)));
+                  MR_Word Var_21;
+
+                  backend_libs__rtti____Compare____rtti_type_ctor_0_0(&Var_21, Var_64, ArgY1_18);
+                  succeeded = (Var_21 == (MR_Integer) 0);
+                  succeeded = !(succeeded);
+                  if (succeeded)
+                    *HeadVar__1_1 = Var_21;
+                  else
+                  {
+                    mercury__builtin__compare_3_p_0((MR_Word) &backend_libs__rtti_scalar_common_1[6], HeadVar__1_1, ((MR_Box) (Var_63)), ((MR_Box) (ArgY2_20)));
+                  }
+                }
+                break;
+              case (MR_Integer) 2:
+                *HeadVar__1_1 = (MR_Integer) 1;
+                break;
+              case (MR_Integer) 3:
+                *HeadVar__1_1 = (MR_Integer) 1;
+                break;
+            }
+          }
+          break;
+        case (MR_Integer) 2:
+          {
+            MR_Word Var_66 = ((MR_Word) (MR_hl_field(MR_mktag(2), HeadVar__2_2, (MR_Integer) 1)));
+            MR_Word Var_67 = ((MR_Word) (MR_hl_field(MR_mktag(2), HeadVar__2_2, (MR_Integer) 0)));
+
+            switch (MR_tag((MR_Word) HeadVar__3_3)) {
+              default: /*NOTREACHED*/ MR_assert(0);
+              case (MR_Integer) 0:
+                *HeadVar__1_1 = (MR_Integer) 2;
+                break;
+              case (MR_Integer) 1:
+                *HeadVar__1_1 = (MR_Integer) 2;
+                break;
+              case (MR_Integer) 2:
+                {
+                  MR_Word ArgY1_37 = ((MR_Word) (MR_hl_field(MR_mktag(2), HeadVar__3_3, (MR_Integer) 0)));
+                  MR_Word ArgY2_39 = ((MR_Word) (MR_hl_field(MR_mktag(2), HeadVar__3_3, (MR_Integer) 1)));
+                  MR_Word Var_40;
+                  MR_Integer Var_68 = (MR_Integer) Var_67;
+                  MR_Integer Var_69 = (MR_Integer) ArgY1_37;
+
+                  mercury__private_builtin__builtin_compare_int_3_p_0(&Var_40, Var_68, Var_69);
+                  succeeded = (Var_40 == (MR_Integer) 0);
+                  succeeded = !(succeeded);
+                  if (succeeded)
+                    *HeadVar__1_1 = Var_40;
+                  else
+                  {
+                    mercury__builtin__compare_3_p_0((MR_Word) &backend_libs__rtti_scalar_common_1[6], HeadVar__1_1, ((MR_Box) (Var_66)), ((MR_Box) (ArgY2_39)));
+                  }
+                }
+                break;
+              case (MR_Integer) 3:
+                *HeadVar__1_1 = (MR_Integer) 1;
+                break;
+            }
+          }
+          break;
+        case (MR_Integer) 3:
+          {
+            MR_Integer Var_65 = ((MR_Integer) (MR_hl_field(MR_mktag(3), HeadVar__2_2, (MR_Integer) 0)));
+
+            switch (MR_tag((MR_Word) HeadVar__3_3)) {
+              default: /*NOTREACHED*/ MR_assert(0);
+              case (MR_Integer) 0:
+                *HeadVar__1_1 = (MR_Integer) 2;
+                break;
+              case (MR_Integer) 1:
+                *HeadVar__1_1 = (MR_Integer) 2;
+                break;
+              case (MR_Integer) 2:
+                *HeadVar__1_1 = (MR_Integer) 2;
+                break;
+              case (MR_Integer) 3:
+                {
+                  MR_Integer ArgY1_53 = ((MR_Integer) (MR_hl_field(MR_mktag(3), HeadVar__3_3, (MR_Integer) 0)));
+
+                  mercury__private_builtin__builtin_compare_int_3_p_0(HeadVar__1_1, Var_65, ArgY1_53);
+                }
+                break;
+            }
+          }
+          break;
+      }
+  }
+}
+
+void MR_CALL 
+backend_libs__rtti____Compare____rtti_type_ctor_0_0(
+  MR_Word * HeadVar__1_1,
+  MR_Word HeadVar__2_2,
+  MR_Word HeadVar__3_3)
+{
+  {
+    MR_bool succeeded;
+    MR_Integer CastX_12 = (MR_Integer) HeadVar__2_2;
+    MR_Integer CastY_13 = (MR_Integer) HeadVar__3_3;
+
+    succeeded = (CastX_12 == CastY_13);
+    if (succeeded)
+      *HeadVar__1_1 = (MR_Integer) 0;
+    else
+    {
+      MR_Word ArgX1_4 = ((MR_Word) (MR_hl_field(MR_mktag(0), HeadVar__2_2, (MR_Integer) 0)));
+      MR_Word ArgY1_5 = ((MR_Word) (MR_hl_field(MR_mktag(0), HeadVar__3_3, (MR_Integer) 0)));
+      MR_String ArgX2_6 = ((MR_String) (MR_hl_field(MR_mktag(0), HeadVar__2_2, (MR_Integer) 1)));
+      MR_String ArgY2_7 = ((MR_String) (MR_hl_field(MR_mktag(0), HeadVar__3_3, (MR_Integer) 1)));
+      MR_Integer ArgX3_8 = ((MR_Integer) (MR_hl_field(MR_mktag(0), HeadVar__2_2, (MR_Integer) 2)));
+      MR_Integer ArgY3_9 = ((MR_Integer) (MR_hl_field(MR_mktag(0), HeadVar__3_3, (MR_Integer) 2)));
+      MR_Word Var_10;
+
+      mdbcomp__sym_name____Compare____sym_name_0_0(&Var_10, ArgX1_4, ArgY1_5);
+      succeeded = (Var_10 == (MR_Integer) 0);
+      succeeded = !(succeeded);
+      if (succeeded)
+        *HeadVar__1_1 = Var_10;
+      else
+      {
+        MR_Word Var_11;
+
+        mercury__private_builtin__builtin_compare_string_3_p_0(&Var_11, ArgX2_6, ArgY2_7);
+        succeeded = (Var_11 == (MR_Integer) 0);
+        succeeded = !(succeeded);
+        if (succeeded)
+          *HeadVar__1_1 = Var_11;
+        else
+          mercury__private_builtin__builtin_compare_int_3_p_0(HeadVar__1_1, ArgX3_8, ArgY3_9);
+      }
+    }
+  }
+}
+
+void MR_CALL 
+backend_libs__rtti____Index____ctor_rtti_name_0_0(
+  MR_Word HeadVar__1_1,
+  MR_Integer * HeadVar__2_2)
+{
+  switch (MR_tag((MR_Word) HeadVar__1_1)) {
+    default: /*NOTREACHED*/ MR_assert(0);
+    case (MR_Integer) 0:
+      switch (MR_unmkbody(HeadVar__1_1)) {
+        default: /*NOTREACHED*/ MR_assert(0);
+        case (MR_Integer) 0:
+          *HeadVar__2_2 = (MR_Integer) 1;
+          break;
+        case (MR_Integer) 1:
+          *HeadVar__2_2 = (MR_Integer) 10;
+          break;
+        case (MR_Integer) 2:
+          *HeadVar__2_2 = (MR_Integer) 12;
+          break;
+        case (MR_Integer) 3:
+          *HeadVar__2_2 = (MR_Integer) 13;
+          break;
+        case (MR_Integer) 4:
+          *HeadVar__2_2 = (MR_Integer) 14;
+          break;
+        case (MR_Integer) 5:
+          *HeadVar__2_2 = (MR_Integer) 15;
+          break;
+        case (MR_Integer) 6:
+          *HeadVar__2_2 = (MR_Integer) 16;
+          break;
+        case (MR_Integer) 7:
+          *HeadVar__2_2 = (MR_Integer) 18;
+          break;
+        case (MR_Integer) 8:
+          *HeadVar__2_2 = (MR_Integer) 20;
+          break;
+        case (MR_Integer) 9:
+          *HeadVar__2_2 = (MR_Integer) 21;
+          break;
+        case (MR_Integer) 10:
+          *HeadVar__2_2 = (MR_Integer) 22;
+          break;
+        case (MR_Integer) 11:
+          *HeadVar__2_2 = (MR_Integer) 23;
+          break;
+        case (MR_Integer) 12:
+          *HeadVar__2_2 = (MR_Integer) 26;
+          break;
+      }
+      break;
+    case (MR_Integer) 1:
+      *HeadVar__2_2 = (MR_Integer) 0;
+      break;
+    case (MR_Integer) 2:
+      *HeadVar__2_2 = (MR_Integer) 2;
+      break;
+    case (MR_Integer) 3:
+      switch (((MR_Integer) (MR_Word) (MR_hl_field(MR_mktag(3), HeadVar__1_1, (MR_Integer) 0)))) {
+        default: /*NOTREACHED*/ MR_assert(0);
+        case (MR_Integer) 0:
+          *HeadVar__2_2 = (MR_Integer) 3;
+          break;
+        case (MR_Integer) 1:
+          *HeadVar__2_2 = (MR_Integer) 4;
+          break;
+        case (MR_Integer) 2:
+          *HeadVar__2_2 = (MR_Integer) 5;
+          break;
+        case (MR_Integer) 3:
+          *HeadVar__2_2 = (MR_Integer) 6;
+          break;
+        case (MR_Integer) 4:
+          *HeadVar__2_2 = (MR_Integer) 7;
+          break;
+        case (MR_Integer) 5:
+          *HeadVar__2_2 = (MR_Integer) 8;
+          break;
+        case (MR_Integer) 6:
+          *HeadVar__2_2 = (MR_Integer) 9;
+          break;
+        case (MR_Integer) 7:
+          *HeadVar__2_2 = (MR_Integer) 11;
+          break;
+        case (MR_Integer) 8:
+          *HeadVar__2_2 = (MR_Integer) 17;
+          break;
+        case (MR_Integer) 9:
+          *HeadVar__2_2 = (MR_Integer) 19;
+          break;
+        case (MR_Integer) 10:
+          *HeadVar__2_2 = (MR_Integer) 24;
+          break;
+        case (MR_Integer) 11:
+          *HeadVar__2_2 = (MR_Integer) 25;
+          break;
+      }
+      break;
+  }
+}
+
+MR_bool MR_CALL 
+backend_libs__rtti____Unify____ctor_rtti_name_0_0(
+  MR_Word HeadVar__1_1,
+  MR_Word HeadVar__2_2)
+{
+  {
+    MR_bool succeeded;
+    MR_Integer CastX_61 = (MR_Integer) HeadVar__1_1;
+    MR_Integer CastY_62 = (MR_Integer) HeadVar__2_2;
+
+    succeeded = (CastX_61 == CastY_62);
+    if (succeeded)
+      succeeded = MR_TRUE;
+    else
+      switch (MR_tag((MR_Word) HeadVar__1_1)) {
+        default: /*NOTREACHED*/ MR_assert(0);
+        case (MR_Integer) 0:
+          switch (MR_unmkbody(HeadVar__1_1)) {
+            default: /*NOTREACHED*/ MR_assert(0);
+            case (MR_Integer) 0:
+              {
+                MR_Integer CastX_5 = (MR_Integer) HeadVar__1_1;
+                MR_Integer CastY_6 = (MR_Integer) HeadVar__2_2;
+
+                succeeded = (CastY_6 == CastX_5);
+              }
+              break;
+            case (MR_Integer) 1:
+              {
+                MR_Integer CastX_27 = (MR_Integer) HeadVar__1_1;
+                MR_Integer CastY_28 = (MR_Integer) HeadVar__2_2;
+
+                succeeded = (CastY_28 == CastX_27);
+              }
+              break;
+            case (MR_Integer) 2:
+              {
+                MR_Integer CastX_31 = (MR_Integer) HeadVar__1_1;
+                MR_Integer CastY_32 = (MR_Integer) HeadVar__2_2;
+
+                succeeded = (CastY_32 == CastX_31);
+              }
+              break;
+            case (MR_Integer) 3:
+              {
+                MR_Integer CastX_33 = (MR_Integer) HeadVar__1_1;
+                MR_Integer CastY_34 = (MR_Integer) HeadVar__2_2;
+
+                succeeded = (CastY_34 == CastX_33);
+              }
+              break;
+            case (MR_Integer) 4:
+              {
+                MR_Integer CastX_35 = (MR_Integer) HeadVar__1_1;
+                MR_Integer CastY_36 = (MR_Integer) HeadVar__2_2;
+
+                succeeded = (CastY_36 == CastX_35);
+              }
+              break;
+            case (MR_Integer) 5:
+              {
+                MR_Integer CastX_37 = (MR_Integer) HeadVar__1_1;
+                MR_Integer CastY_38 = (MR_Integer) HeadVar__2_2;
+
+                succeeded = (CastY_38 == CastX_37);
+              }
+              break;
+            case (MR_Integer) 6:
+              {
+                MR_Integer CastX_39 = (MR_Integer) HeadVar__1_1;
+                MR_Integer CastY_40 = (MR_Integer) HeadVar__2_2;
+
+                succeeded = (CastY_40 == CastX_39);
+              }
+              break;
+            case (MR_Integer) 7:
+              {
+                MR_Integer CastX_43 = (MR_Integer) HeadVar__1_1;
+                MR_Integer CastY_44 = (MR_Integer) HeadVar__2_2;
+
+                succeeded = (CastY_44 == CastX_43);
+              }
+              break;
+            case (MR_Integer) 8:
+              {
+                MR_Integer CastX_47 = (MR_Integer) HeadVar__1_1;
+                MR_Integer CastY_48 = (MR_Integer) HeadVar__2_2;
+
+                succeeded = (CastY_48 == CastX_47);
+              }
+              break;
+            case (MR_Integer) 9:
+              {
+                MR_Integer CastX_49 = (MR_Integer) HeadVar__1_1;
+                MR_Integer CastY_50 = (MR_Integer) HeadVar__2_2;
+
+                succeeded = (CastY_50 == CastX_49);
+              }
+              break;
+            case (MR_Integer) 10:
+              {
+                MR_Integer CastX_51 = (MR_Integer) HeadVar__1_1;
+                MR_Integer CastY_52 = (MR_Integer) HeadVar__2_2;
+
+                succeeded = (CastY_52 == CastX_51);
+              }
+              break;
+            case (MR_Integer) 11:
+              {
+                MR_Integer CastX_53 = (MR_Integer) HeadVar__1_1;
+                MR_Integer CastY_54 = (MR_Integer) HeadVar__2_2;
+
+                succeeded = (CastY_54 == CastX_53);
+              }
+              break;
+            case (MR_Integer) 12:
+              {
+                MR_Integer CastX_59 = (MR_Integer) HeadVar__1_1;
+                MR_Integer CastY_60 = (MR_Integer) HeadVar__2_2;
+
+                succeeded = (CastY_60 == CastX_59);
+              }
+              break;
+          }
+          break;
+        case (MR_Integer) 1:
+          {
+            MR_Integer ArgX1_3 = ((MR_Integer) (MR_hl_field(MR_mktag(1), HeadVar__1_1, (MR_Integer) 0)));
+            MR_Integer ArgY1_4;
+
+            succeeded = ((MR_tag((MR_Word) HeadVar__2_2)) == (MR_mktag((MR_Integer) 1)));
+            if (succeeded)
+            {
+              ArgY1_4 = ((MR_Integer) (MR_hl_field(MR_mktag(1), HeadVar__2_2, (MR_Integer) 0)));
+              succeeded = (ArgX1_3 == ArgY1_4);
+            }
+          }
+          break;
+        case (MR_Integer) 2:
+          {
+            MR_Integer ArgX1_7 = ((MR_Integer) (MR_hl_field(MR_mktag(2), HeadVar__1_1, (MR_Integer) 0)));
+            MR_Integer ArgY1_8;
+            MR_Integer ArgX2_9 = ((MR_Integer) (MR_hl_field(MR_mktag(2), HeadVar__1_1, (MR_Integer) 1)));
+            MR_Integer ArgY2_10;
+            MR_Integer ArgX3_11 = ((MR_Integer) (MR_hl_field(MR_mktag(2), HeadVar__1_1, (MR_Integer) 2)));
+            MR_Integer ArgY3_12;
+
+            succeeded = ((MR_tag((MR_Word) HeadVar__2_2)) == (MR_mktag((MR_Integer) 2)));
+            if (succeeded)
+            {
+              ArgY1_8 = ((MR_Integer) (MR_hl_field(MR_mktag(2), HeadVar__2_2, (MR_Integer) 0)));
+              ArgY2_10 = ((MR_Integer) (MR_hl_field(MR_mktag(2), HeadVar__2_2, (MR_Integer) 1)));
+              ArgY3_12 = ((MR_Integer) (MR_hl_field(MR_mktag(2), HeadVar__2_2, (MR_Integer) 2)));
+              succeeded = (ArgX1_7 == ArgY1_8);
+              if (succeeded)
+              {
+                succeeded = (ArgX2_9 == ArgY2_10);
+                if (succeeded)
+                  succeeded = (ArgX3_11 == ArgY3_12);
+              }
+            }
+          }
+          break;
+        case (MR_Integer) 3:
+          switch (((MR_Integer) (MR_Word) (MR_hl_field(MR_mktag(3), HeadVar__1_1, (MR_Integer) 0)))) {
+            default: /*NOTREACHED*/ MR_assert(0);
+            case (MR_Integer) 0:
+              {
+                MR_Integer ArgX1_13 = ((MR_Integer) (MR_hl_field(MR_mktag(3), HeadVar__1_1, (MR_Integer) 1)));
+                MR_Integer ArgY1_14;
+
+                succeeded = ((((MR_tag((MR_Word) HeadVar__2_2)) == (MR_mktag((MR_Integer) 3)))) && (((((MR_Integer) (MR_Word) (MR_hl_field(MR_mktag(3), HeadVar__2_2, (MR_Integer) 0)))) == (MR_Integer) 0)));
+                if (succeeded)
+                {
+                  ArgY1_14 = ((MR_Integer) (MR_hl_field(MR_mktag(3), HeadVar__2_2, (MR_Integer) 1)));
+                  succeeded = (ArgX1_13 == ArgY1_14);
+                }
+              }
+              break;
+            case (MR_Integer) 1:
+              {
+                MR_Integer ArgX1_15 = ((MR_Integer) (MR_hl_field(MR_mktag(3), HeadVar__1_1, (MR_Integer) 1)));
+                MR_Integer ArgY1_16;
+
+                succeeded = ((((MR_tag((MR_Word) HeadVar__2_2)) == (MR_mktag((MR_Integer) 3)))) && (((((MR_Integer) (MR_Word) (MR_hl_field(MR_mktag(3), HeadVar__2_2, (MR_Integer) 0)))) == (MR_Integer) 1)));
+                if (succeeded)
+                {
+                  ArgY1_16 = ((MR_Integer) (MR_hl_field(MR_mktag(3), HeadVar__2_2, (MR_Integer) 1)));
+                  succeeded = (ArgX1_15 == ArgY1_16);
+                }
+              }
+              break;
+            case (MR_Integer) 2:
+              {
+                MR_Integer ArgX1_17 = ((MR_Integer) (MR_hl_field(MR_mktag(3), HeadVar__1_1, (MR_Integer) 1)));
+                MR_Integer ArgY1_18;
+
+                succeeded = ((((MR_tag((MR_Word) HeadVar__2_2)) == (MR_mktag((MR_Integer) 3)))) && (((((MR_Integer) (MR_Word) (MR_hl_field(MR_mktag(3), HeadVar__2_2, (MR_Integer) 0)))) == (MR_Integer) 2)));
+                if (succeeded)
+                {
+                  ArgY1_18 = ((MR_Integer) (MR_hl_field(MR_mktag(3), HeadVar__2_2, (MR_Integer) 1)));
+                  succeeded = (ArgX1_17 == ArgY1_18);
+                }
+              }
+              break;
+            case (MR_Integer) 3:
+              {
+                MR_Integer ArgX1_19 = ((MR_Integer) (MR_hl_field(MR_mktag(3), HeadVar__1_1, (MR_Integer) 1)));
+                MR_Integer ArgY1_20;
+
+                succeeded = ((((MR_tag((MR_Word) HeadVar__2_2)) == (MR_mktag((MR_Integer) 3)))) && (((((MR_Integer) (MR_Word) (MR_hl_field(MR_mktag(3), HeadVar__2_2, (MR_Integer) 0)))) == (MR_Integer) 3)));
+                if (succeeded)
+                {
+                  ArgY1_20 = ((MR_Integer) (MR_hl_field(MR_mktag(3), HeadVar__2_2, (MR_Integer) 1)));
+                  succeeded = (ArgX1_19 == ArgY1_20);
+                }
+              }
+              break;
+            case (MR_Integer) 4:
+              {
+                MR_Integer ArgX1_21 = ((MR_Integer) (MR_hl_field(MR_mktag(3), HeadVar__1_1, (MR_Integer) 1)));
+                MR_Integer ArgY1_22;
+
+                succeeded = ((((MR_tag((MR_Word) HeadVar__2_2)) == (MR_mktag((MR_Integer) 3)))) && (((((MR_Integer) (MR_Word) (MR_hl_field(MR_mktag(3), HeadVar__2_2, (MR_Integer) 0)))) == (MR_Integer) 4)));
+                if (succeeded)
+                {
+                  ArgY1_22 = ((MR_Integer) (MR_hl_field(MR_mktag(3), HeadVar__2_2, (MR_Integer) 1)));
+                  succeeded = (ArgX1_21 == ArgY1_22);
+                }
+              }
+              break;
+            case (MR_Integer) 5:
+              {
+                MR_Integer ArgX1_23 = ((MR_Integer) (MR_hl_field(MR_mktag(3), HeadVar__1_1, (MR_Integer) 1)));
+                MR_Integer ArgY1_24;
+
+                succeeded = ((((MR_tag((MR_Word) HeadVar__2_2)) == (MR_mktag((MR_Integer) 3)))) && (((((MR_Integer) (MR_Word) (MR_hl_field(MR_mktag(3), HeadVar__2_2, (MR_Integer) 0)))) == (MR_Integer) 5)));
+                if (succeeded)
+                {
+                  ArgY1_24 = ((MR_Integer) (MR_hl_field(MR_mktag(3), HeadVar__2_2, (MR_Integer) 1)));
+                  succeeded = (ArgX1_23 == ArgY1_24);
+                }
+              }
+              break;
+            case (MR_Integer) 6:
+              {
+                MR_Integer ArgX1_25 = ((MR_Integer) (MR_hl_field(MR_mktag(3), HeadVar__1_1, (MR_Integer) 1)));
+                MR_Integer ArgY1_26;
+
+                succeeded = ((((MR_tag((MR_Word) HeadVar__2_2)) == (MR_mktag((MR_Integer) 3)))) && (((((MR_Integer) (MR_Word) (MR_hl_field(MR_mktag(3), HeadVar__2_2, (MR_Integer) 0)))) == (MR_Integer) 6)));
+                if (succeeded)
+                {
+                  ArgY1_26 = ((MR_Integer) (MR_hl_field(MR_mktag(3), HeadVar__2_2, (MR_Integer) 1)));
+                  succeeded = (ArgX1_25 == ArgY1_26);
+                }
+              }
+              break;
+            case (MR_Integer) 7:
+              {
+                MR_Integer ArgX1_29 = ((MR_Integer) (MR_hl_field(MR_mktag(3), HeadVar__1_1, (MR_Integer) 1)));
+                MR_Integer ArgY1_30;
+
+                succeeded = ((((MR_tag((MR_Word) HeadVar__2_2)) == (MR_mktag((MR_Integer) 3)))) && (((((MR_Integer) (MR_Word) (MR_hl_field(MR_mktag(3), HeadVar__2_2, (MR_Integer) 0)))) == (MR_Integer) 7)));
+                if (succeeded)
+                {
+                  ArgY1_30 = ((MR_Integer) (MR_hl_field(MR_mktag(3), HeadVar__2_2, (MR_Integer) 1)));
+                  succeeded = (ArgX1_29 == ArgY1_30);
+                }
+              }
+              break;
+            case (MR_Integer) 8:
+              {
+                MR_Integer ArgX1_41 = ((MR_Integer) (MR_hl_field(MR_mktag(3), HeadVar__1_1, (MR_Integer) 1)));
+                MR_Integer ArgY1_42;
+
+                succeeded = ((((MR_tag((MR_Word) HeadVar__2_2)) == (MR_mktag((MR_Integer) 3)))) && (((((MR_Integer) (MR_Word) (MR_hl_field(MR_mktag(3), HeadVar__2_2, (MR_Integer) 0)))) == (MR_Integer) 8)));
+                if (succeeded)
+                {
+                  ArgY1_42 = ((MR_Integer) (MR_hl_field(MR_mktag(3), HeadVar__2_2, (MR_Integer) 1)));
+                  succeeded = (ArgX1_41 == ArgY1_42);
+                }
+              }
+              break;
+            case (MR_Integer) 9:
+              {
+                MR_Integer ArgX1_45 = ((MR_Integer) (MR_hl_field(MR_mktag(3), HeadVar__1_1, (MR_Integer) 1)));
+                MR_Integer ArgY1_46;
+
+                succeeded = ((((MR_tag((MR_Word) HeadVar__2_2)) == (MR_mktag((MR_Integer) 3)))) && (((((MR_Integer) (MR_Word) (MR_hl_field(MR_mktag(3), HeadVar__2_2, (MR_Integer) 0)))) == (MR_Integer) 9)));
+                if (succeeded)
+                {
+                  ArgY1_46 = ((MR_Integer) (MR_hl_field(MR_mktag(3), HeadVar__2_2, (MR_Integer) 1)));
+                  succeeded = (ArgX1_45 == ArgY1_46);
+                }
+              }
+              break;
+            case (MR_Integer) 10:
+              {
+                MR_Word ArgX1_55 = ((MR_Word) (MR_hl_field(MR_mktag(3), HeadVar__1_1, (MR_Integer) 1)));
+                MR_Word ArgY1_56;
+
+                succeeded = ((((MR_tag((MR_Word) HeadVar__2_2)) == (MR_mktag((MR_Integer) 3)))) && (((((MR_Integer) (MR_Word) (MR_hl_field(MR_mktag(3), HeadVar__2_2, (MR_Integer) 0)))) == (MR_Integer) 10)));
+                if (succeeded)
+                {
+                  ArgY1_56 = ((MR_Word) (MR_hl_field(MR_mktag(3), HeadVar__2_2, (MR_Integer) 1)));
+                  succeeded = backend_libs__rtti____Unify____rtti_type_info_0_0(ArgX1_55, ArgY1_56);
+                }
+              }
+              break;
+            case (MR_Integer) 11:
+              {
+                MR_Word ArgX1_57 = ((MR_Word) (MR_hl_field(MR_mktag(3), HeadVar__1_1, (MR_Integer) 1)));
+                MR_Word ArgY1_58;
+
+                succeeded = ((((MR_tag((MR_Word) HeadVar__2_2)) == (MR_mktag((MR_Integer) 3)))) && (((((MR_Integer) (MR_Word) (MR_hl_field(MR_mktag(3), HeadVar__2_2, (MR_Integer) 0)))) == (MR_Integer) 11)));
+                if (succeeded)
+                {
+                  ArgY1_58 = ((MR_Word) (MR_hl_field(MR_mktag(3), HeadVar__2_2, (MR_Integer) 1)));
+                  succeeded = backend_libs__rtti____Unify____rtti_pseudo_type_info_0_0(ArgX1_57, ArgY1_58);
+                }
+              }
+              break;
+          }
+          break;
+      }
+    return succeeded;
+  }
+}
+
+MR_bool MR_CALL 
+backend_libs__rtti____Unify____rtti_type_info_0_0(
+  MR_Word HeadVar__1_1,
+  MR_Word HeadVar__2_2)
+{
+  {
+    MR_bool succeeded;
+    MR_Integer CastX_13 = (MR_Integer) HeadVar__1_1;
+    MR_Integer CastY_14 = (MR_Integer) HeadVar__2_2;
+
+    succeeded = (CastX_13 == CastY_14);
+    if (succeeded)
+      succeeded = MR_TRUE;
+    else
+      switch (MR_tag((MR_Word) HeadVar__1_1)) {
+        default: /*NOTREACHED*/ MR_assert(0);
+        case (MR_Integer) 0:
+          {
+            MR_Word ArgX1_3 = (MR_Word) MR_body(((MR_Word) HeadVar__1_1), (MR_Integer) 0);
+            MR_Word ArgY1_4;
+
+            succeeded = ((MR_tag((MR_Word) HeadVar__2_2)) == (MR_mktag((MR_Integer) 0)));
+            if (succeeded)
+            {
+              ArgY1_4 = (MR_Word) MR_body(((MR_Word) HeadVar__2_2), (MR_Integer) 0);
+              succeeded = backend_libs__rtti____Unify____rtti_type_ctor_0_0(ArgX1_3, ArgY1_4);
+            }
+          }
+          break;
+        case (MR_Integer) 1:
+          {
+            MR_Word TypeInfo_15_15;
+            MR_Word ArgX1_5 = ((MR_Word) (MR_hl_field(MR_mktag(1), HeadVar__1_1, (MR_Integer) 0)));
+            MR_Word ArgY1_6;
+            MR_Word ArgX2_7 = ((MR_Word) (MR_hl_field(MR_mktag(1), HeadVar__1_1, (MR_Integer) 1)));
+            MR_Word ArgY2_8;
+
+            succeeded = ((MR_tag((MR_Word) HeadVar__2_2)) == (MR_mktag((MR_Integer) 1)));
+            if (succeeded)
+            {
+              ArgY1_6 = ((MR_Word) (MR_hl_field(MR_mktag(1), HeadVar__2_2, (MR_Integer) 0)));
+              ArgY2_8 = ((MR_Word) (MR_hl_field(MR_mktag(1), HeadVar__2_2, (MR_Integer) 1)));
+              succeeded = backend_libs__rtti____Unify____rtti_type_ctor_0_0(ArgX1_5, ArgY1_6);
+              if (succeeded)
+              {
+                TypeInfo_15_15 = (MR_Word) &backend_libs__rtti_scalar_common_1[7];
+                succeeded = mercury__builtin__unify_2_p_0(TypeInfo_15_15, ((MR_Box) (ArgX2_7)), ((MR_Box) (ArgY2_8)));
+              }
+            }
+          }
+          break;
+        case (MR_Integer) 2:
+          {
+            MR_Word TypeInfo_16_16;
+            MR_Word ArgX1_9 = ((MR_Word) (MR_hl_field(MR_mktag(2), HeadVar__1_1, (MR_Integer) 0)));
+            MR_Word ArgY1_10;
+            MR_Word ArgX2_11 = ((MR_Word) (MR_hl_field(MR_mktag(2), HeadVar__1_1, (MR_Integer) 1)));
+            MR_Word ArgY2_12;
+
+            succeeded = ((MR_tag((MR_Word) HeadVar__2_2)) == (MR_mktag((MR_Integer) 2)));
+            if (succeeded)
+            {
+              ArgY1_10 = ((MR_Word) (MR_hl_field(MR_mktag(2), HeadVar__2_2, (MR_Integer) 0)));
+              ArgY2_12 = ((MR_Word) (MR_hl_field(MR_mktag(2), HeadVar__2_2, (MR_Integer) 1)));
+              succeeded = (ArgX1_9 == ArgY1_10);
+              if (succeeded)
+              {
+                TypeInfo_16_16 = (MR_Word) &backend_libs__rtti_scalar_common_1[7];
+                succeeded = mercury__builtin__unify_2_p_0(TypeInfo_16_16, ((MR_Box) (ArgX2_11)), ((MR_Box) (ArgY2_12)));
+              }
+            }
+          }
+          break;
+      }
+    return succeeded;
+  }
+}
+
+MR_bool MR_CALL 
+backend_libs__rtti____Unify____rtti_pseudo_type_info_0_0(
+  MR_Word HeadVar__1_1,
+  MR_Word HeadVar__2_2)
+{
+  {
+    MR_bool succeeded;
+    MR_Integer CastX_15 = (MR_Integer) HeadVar__1_1;
+    MR_Integer CastY_16 = (MR_Integer) HeadVar__2_2;
+
+    succeeded = (CastX_15 == CastY_16);
+    if (succeeded)
+      succeeded = MR_TRUE;
+    else
+      switch (MR_tag((MR_Word) HeadVar__1_1)) {
+        default: /*NOTREACHED*/ MR_assert(0);
+        case (MR_Integer) 0:
+          {
+            MR_Word ArgX1_3 = (MR_Word) MR_body(((MR_Word) HeadVar__1_1), (MR_Integer) 0);
+            MR_Word ArgY1_4;
+
+            succeeded = ((MR_tag((MR_Word) HeadVar__2_2)) == (MR_mktag((MR_Integer) 0)));
+            if (succeeded)
+            {
+              ArgY1_4 = (MR_Word) MR_body(((MR_Word) HeadVar__2_2), (MR_Integer) 0);
+              succeeded = backend_libs__rtti____Unify____rtti_type_ctor_0_0(ArgX1_3, ArgY1_4);
+            }
+          }
+          break;
+        case (MR_Integer) 1:
+          {
+            MR_Word TypeInfo_17_17;
+            MR_Word ArgX1_5 = ((MR_Word) (MR_hl_field(MR_mktag(1), HeadVar__1_1, (MR_Integer) 0)));
+            MR_Word ArgY1_6;
+            MR_Word ArgX2_7 = ((MR_Word) (MR_hl_field(MR_mktag(1), HeadVar__1_1, (MR_Integer) 1)));
+            MR_Word ArgY2_8;
+
+            succeeded = ((MR_tag((MR_Word) HeadVar__2_2)) == (MR_mktag((MR_Integer) 1)));
+            if (succeeded)
+            {
+              ArgY1_6 = ((MR_Word) (MR_hl_field(MR_mktag(1), HeadVar__2_2, (MR_Integer) 0)));
+              ArgY2_8 = ((MR_Word) (MR_hl_field(MR_mktag(1), HeadVar__2_2, (MR_Integer) 1)));
+              succeeded = backend_libs__rtti____Unify____rtti_type_ctor_0_0(ArgX1_5, ArgY1_6);
+              if (succeeded)
+              {
+                TypeInfo_17_17 = (MR_Word) &backend_libs__rtti_scalar_common_1[6];
+                succeeded = mercury__builtin__unify_2_p_0(TypeInfo_17_17, ((MR_Box) (ArgX2_7)), ((MR_Box) (ArgY2_8)));
+              }
+            }
+          }
+          break;
+        case (MR_Integer) 2:
+          {
+            MR_Word TypeInfo_18_18;
+            MR_Word ArgX1_9 = ((MR_Word) (MR_hl_field(MR_mktag(2), HeadVar__1_1, (MR_Integer) 0)));
+            MR_Word ArgY1_10;
+            MR_Word ArgX2_11 = ((MR_Word) (MR_hl_field(MR_mktag(2), HeadVar__1_1, (MR_Integer) 1)));
+            MR_Word ArgY2_12;
+
+            succeeded = ((MR_tag((MR_Word) HeadVar__2_2)) == (MR_mktag((MR_Integer) 2)));
+            if (succeeded)
+            {
+              ArgY1_10 = ((MR_Word) (MR_hl_field(MR_mktag(2), HeadVar__2_2, (MR_Integer) 0)));
+              ArgY2_12 = ((MR_Word) (MR_hl_field(MR_mktag(2), HeadVar__2_2, (MR_Integer) 1)));
+              succeeded = (ArgX1_9 == ArgY1_10);
+              if (succeeded)
+              {
+                TypeInfo_18_18 = (MR_Word) &backend_libs__rtti_scalar_common_1[6];
+                succeeded = mercury__builtin__unify_2_p_0(TypeInfo_18_18, ((MR_Box) (ArgX2_11)), ((MR_Box) (ArgY2_12)));
+              }
+            }
+          }
+          break;
+        case (MR_Integer) 3:
+          {
+            MR_Integer ArgX1_13 = ((MR_Integer) (MR_hl_field(MR_mktag(3), HeadVar__1_1, (MR_Integer) 0)));
+            MR_Integer ArgY1_14;
+
+            succeeded = ((MR_tag((MR_Word) HeadVar__2_2)) == (MR_mktag((MR_Integer) 3)));
+            if (succeeded)
+            {
+              ArgY1_14 = ((MR_Integer) (MR_hl_field(MR_mktag(3), HeadVar__2_2, (MR_Integer) 0)));
+              succeeded = (ArgX1_13 == ArgY1_14);
+            }
+          }
+          break;
+      }
+    return succeeded;
+  }
+}
+
+MR_bool MR_CALL 
+backend_libs__rtti____Unify____rtti_type_ctor_0_0(
+  MR_Word HeadVar__1_1,
+  MR_Word HeadVar__2_2)
+{
+  {
+    MR_bool succeeded;
+    MR_Integer CastX_9 = (MR_Integer) HeadVar__1_1;
+    MR_Integer CastY_10 = (MR_Integer) HeadVar__2_2;
+
+    succeeded = (CastX_9 == CastY_10);
+    if (succeeded)
+      succeeded = MR_TRUE;
+    else
+    {
+      MR_Word ArgX1_3 = ((MR_Word) (MR_hl_field(MR_mktag(0), HeadVar__1_1, (MR_Integer) 0)));
+      MR_Word ArgY1_4 = ((MR_Word) (MR_hl_field(MR_mktag(0), HeadVar__2_2, (MR_Integer) 0)));
+      MR_String ArgX2_5 = ((MR_String) (MR_hl_field(MR_mktag(0), HeadVar__1_1, (MR_Integer) 1)));
+      MR_String ArgY2_6 = ((MR_String) (MR_hl_field(MR_mktag(0), HeadVar__2_2, (MR_Integer) 1)));
+      MR_Integer ArgX3_7 = ((MR_Integer) (MR_hl_field(MR_mktag(0), HeadVar__1_1, (MR_Integer) 2)));
+      MR_Integer ArgY3_8 = ((MR_Integer) (MR_hl_field(MR_mktag(0), HeadVar__2_2, (MR_Integer) 2)));
+
+      succeeded = mdbcomp__sym_name____Unify____sym_name_0_0(ArgX1_3, ArgY1_4);
+      if (succeeded)
+      {
+        succeeded = (strcmp(ArgX2_5, ArgY2_6) == 0);
+        if (succeeded)
+          succeeded = (ArgX3_7 == ArgY3_8);
+      }
+    }
+    return succeeded;
+  }
+}
+
+void MR_CALL 
+backend_libs__rtti____Compare____call_or_answer_table_0_0(
+  MR_Word * HeadVar__1_1,
+  MR_Word HeadVar__2_2,
+  MR_Word HeadVar__3_3)
+{
+  {
+    MR_Integer Cast_HeadVar1_4 = (MR_Integer) HeadVar__2_2;
+    MR_Integer Cast_HeadVar2_5 = (MR_Integer) HeadVar__3_3;
+
+    mercury__private_builtin__builtin_compare_int_3_p_0(HeadVar__1_1, Cast_HeadVar1_4, Cast_HeadVar2_5);
+  }
+}
+
+MR_bool MR_CALL 
+backend_libs__rtti____Unify____call_or_answer_table_0_0(
+  MR_Word HeadVar__2_1,
+  MR_Word HeadVar__2_2)
+{
+  {
+    MR_bool succeeded = (HeadVar__2_1 == HeadVar__2_2);
+
+    return succeeded;
+  }
+}
+
+void MR_CALL 
+backend_libs__rtti____Compare____builtin_ctor_0_0(
+  MR_Word * HeadVar__1_1,
+  MR_Word HeadVar__2_2,
+  MR_Word HeadVar__3_3)
+{
+  {
+    MR_bool succeeded;
+    MR_Integer CastX_9 = (MR_Integer) HeadVar__2_2;
+    MR_Integer CastY_10 = (MR_Integer) HeadVar__3_3;
+
+    succeeded = (CastX_9 == CastY_10);
+    if (succeeded)
+      *HeadVar__1_1 = (MR_Integer) 0;
+    else
+    {
+      MR_Integer Var_4;
+      MR_Integer Var_5;
+
+      backend_libs__rtti____Index____builtin_ctor_0_0(HeadVar__2_2, &Var_4);
+      backend_libs__rtti____Index____builtin_ctor_0_0(HeadVar__3_3, &Var_5);
+      succeeded = (Var_4 < Var_5);
+      if (succeeded)
+        *HeadVar__1_1 = (MR_Integer) 1;
+      else
+      {
+        succeeded = (Var_4 > Var_5);
+        if (succeeded)
+          *HeadVar__1_1 = (MR_Integer) 2;
+        else
+        {
+          MR_Word Var_6;
+
+          switch (MR_tag((MR_Word) HeadVar__2_2)) {
+            default: /*NOTREACHED*/ MR_assert(0);
+            case (MR_Integer) 0:
+              switch (MR_unmkbody(HeadVar__2_2)) {
+                default: /*NOTREACHED*/ MR_assert(0);
+                case (MR_Integer) 0:
+                  {
+                    Var_6 = (MR_Integer) 0;
+                    succeeded = MR_TRUE;
+                  }
+                  break;
+                case (MR_Integer) 1:
+                  {
+                    Var_6 = (MR_Integer) 0;
+                    succeeded = MR_TRUE;
+                  }
+                  break;
+                case (MR_Integer) 2:
+                  {
+                    Var_6 = (MR_Integer) 0;
+                    succeeded = MR_TRUE;
+                  }
+                  break;
+                case (MR_Integer) 3:
+                  {
+                    Var_6 = (MR_Integer) 0;
+                    succeeded = MR_TRUE;
+                  }
+                  break;
+                case (MR_Integer) 4:
+                  {
+                    Var_6 = (MR_Integer) 0;
+                    succeeded = MR_TRUE;
+                  }
+                  break;
+                case (MR_Integer) 5:
+                  {
+                    Var_6 = (MR_Integer) 0;
+                    succeeded = MR_TRUE;
+                  }
+                  break;
+                case (MR_Integer) 6:
+                  {
+                    Var_6 = (MR_Integer) 0;
+                    succeeded = MR_TRUE;
+                  }
+                  break;
+                case (MR_Integer) 7:
+                  {
+                    Var_6 = (MR_Integer) 0;
+                    succeeded = MR_TRUE;
+                  }
+                  break;
+                case (MR_Integer) 8:
+                  {
+                    Var_6 = (MR_Integer) 0;
+                    succeeded = MR_TRUE;
+                  }
+                  break;
+                case (MR_Integer) 9:
+                  {
+                    Var_6 = (MR_Integer) 0;
+                    succeeded = MR_TRUE;
+                  }
+                  break;
+                case (MR_Integer) 10:
+                  {
+                    Var_6 = (MR_Integer) 0;
+                    succeeded = MR_TRUE;
+                  }
+                  break;
+                case (MR_Integer) 11:
+                  {
+                    Var_6 = (MR_Integer) 0;
+                    succeeded = MR_TRUE;
+                  }
+                  break;
+                case (MR_Integer) 12:
+                  {
+                    Var_6 = (MR_Integer) 0;
+                    succeeded = MR_TRUE;
+                  }
+                  break;
+                case (MR_Integer) 13:
+                  {
+                    Var_6 = (MR_Integer) 0;
+                    succeeded = MR_TRUE;
+                  }
+                  break;
+                case (MR_Integer) 14:
+                  {
+                    Var_6 = (MR_Integer) 0;
+                    succeeded = MR_TRUE;
+                  }
+                  break;
+                case (MR_Integer) 15:
+                  {
+                    Var_6 = (MR_Integer) 0;
+                    succeeded = MR_TRUE;
+                  }
+                  break;
+                case (MR_Integer) 16:
+                  {
+                    Var_6 = (MR_Integer) 0;
+                    succeeded = MR_TRUE;
+                  }
+                  break;
+                case (MR_Integer) 17:
+                  {
+                    Var_6 = (MR_Integer) 0;
+                    succeeded = MR_TRUE;
+                  }
+                  break;
+                case (MR_Integer) 18:
+                  {
+                    Var_6 = (MR_Integer) 0;
+                    succeeded = MR_TRUE;
+                  }
+                  break;
+                case (MR_Integer) 19:
+                  {
+                    Var_6 = (MR_Integer) 0;
+                    succeeded = MR_TRUE;
+                  }
+                  break;
+                case (MR_Integer) 20:
+                  {
+                    Var_6 = (MR_Integer) 0;
+                    succeeded = MR_TRUE;
+                  }
+                  break;
+              }
+              break;
+            case (MR_Integer) 1:
+              {
+                MR_Word ArgX1_7 = ((MR_Word) (MR_hl_field(MR_mktag(1), HeadVar__2_2, (MR_Integer) 0)));
+                MR_Word ArgY1_8;
+                MR_Integer Var_12;
+                MR_Integer Var_13;
+
+                succeeded = ((MR_tag((MR_Word) HeadVar__3_3)) == (MR_mktag((MR_Integer) 1)));
+                if (succeeded)
+                {
+                  ArgY1_8 = ((MR_Word) (MR_hl_field(MR_mktag(1), HeadVar__3_3, (MR_Integer) 0)));
+                  Var_12 = (MR_Integer) ArgX1_7;
+                  Var_13 = (MR_Integer) ArgY1_8;
+                  mercury__private_builtin__builtin_compare_int_3_p_0(&Var_6, Var_12, Var_13);
+                  succeeded = MR_TRUE;
+                }
+              }
+              break;
+          }
+          if (succeeded)
+            *HeadVar__1_1 = Var_6;
+          else
+            {
+              mercury__private_builtin__compare_error_0_p_0();
+              return;
+            }
+        }
+      }
+    }
+  }
+}
+
+void MR_CALL 
+backend_libs__rtti____Index____builtin_ctor_0_0(
+  MR_Word HeadVar__1_1,
+  MR_Integer * HeadVar__2_2)
+{
+  switch (MR_tag((MR_Word) HeadVar__1_1)) {
+    default: /*NOTREACHED*/ MR_assert(0);
+    case (MR_Integer) 0:
+      switch (MR_unmkbody(HeadVar__1_1)) {
+        default: /*NOTREACHED*/ MR_assert(0);
+        case (MR_Integer) 0:
+          *HeadVar__2_2 = (MR_Integer) 0;
+          break;
+        case (MR_Integer) 1:
+          *HeadVar__2_2 = (MR_Integer) 1;
+          break;
+        case (MR_Integer) 2:
+          *HeadVar__2_2 = (MR_Integer) 2;
+          break;
+        case (MR_Integer) 3:
+          *HeadVar__2_2 = (MR_Integer) 3;
+          break;
+        case (MR_Integer) 4:
+          *HeadVar__2_2 = (MR_Integer) 4;
+          break;
+        case (MR_Integer) 5:
+          *HeadVar__2_2 = (MR_Integer) 5;
+          break;
+        case (MR_Integer) 6:
+          *HeadVar__2_2 = (MR_Integer) 6;
+          break;
+        case (MR_Integer) 7:
+          *HeadVar__2_2 = (MR_Integer) 7;
+          break;
+        case (MR_Integer) 8:
+          *HeadVar__2_2 = (MR_Integer) 8;
+          break;
+        case (MR_Integer) 9:
+          *HeadVar__2_2 = (MR_Integer) 9;
+          break;
+        case (MR_Integer) 10:
+          *HeadVar__2_2 = (MR_Integer) 10;
+          break;
+        case (MR_Integer) 11:
+          *HeadVar__2_2 = (MR_Integer) 11;
+          break;
+        case (MR_Integer) 12:
+          *HeadVar__2_2 = (MR_Integer) 12;
+          break;
+        case (MR_Integer) 13:
+          *HeadVar__2_2 = (MR_Integer) 13;
+          break;
+        case (MR_Integer) 14:
+          *HeadVar__2_2 = (MR_Integer) 15;
+          break;
+        case (MR_Integer) 15:
+          *HeadVar__2_2 = (MR_Integer) 16;
+          break;
+        case (MR_Integer) 16:
+          *HeadVar__2_2 = (MR_Integer) 17;
+          break;
+        case (MR_Integer) 17:
+          *HeadVar__2_2 = (MR_Integer) 18;
+          break;
+        case (MR_Integer) 18:
+          *HeadVar__2_2 = (MR_Integer) 19;
+          break;
+        case (MR_Integer) 19:
+          *HeadVar__2_2 = (MR_Integer) 20;
+          break;
+        case (MR_Integer) 20:
+          *HeadVar__2_2 = (MR_Integer) 21;
+          break;
+      }
+      break;
+    case (MR_Integer) 1:
+      *HeadVar__2_2 = (MR_Integer) 14;
+      break;
+  }
+}
+
+MR_bool MR_CALL 
+backend_libs__rtti____Unify____builtin_ctor_0_0(
+  MR_Word HeadVar__1_1,
+  MR_Word HeadVar__2_2)
+{
+  {
+    MR_bool succeeded;
+    MR_Integer CastX_47 = (MR_Integer) HeadVar__1_1;
+    MR_Integer CastY_48 = (MR_Integer) HeadVar__2_2;
+
+    succeeded = (CastX_47 == CastY_48);
+    if (succeeded)
+      succeeded = MR_TRUE;
+    else
+      switch (MR_tag((MR_Word) HeadVar__1_1)) {
+        default: /*NOTREACHED*/ MR_assert(0);
+        case (MR_Integer) 0:
+          switch (MR_unmkbody(HeadVar__1_1)) {
+            default: /*NOTREACHED*/ MR_assert(0);
+            case (MR_Integer) 0:
+              {
+                MR_Integer CastX_3 = (MR_Integer) HeadVar__1_1;
+                MR_Integer CastY_4 = (MR_Integer) HeadVar__2_2;
+
+                succeeded = (CastY_4 == CastX_3);
+              }
+              break;
+            case (MR_Integer) 1:
+              {
+                MR_Integer CastX_5 = (MR_Integer) HeadVar__1_1;
+                MR_Integer CastY_6 = (MR_Integer) HeadVar__2_2;
+
+                succeeded = (CastY_6 == CastX_5);
+              }
+              break;
+            case (MR_Integer) 2:
+              {
+                MR_Integer CastX_7 = (MR_Integer) HeadVar__1_1;
+                MR_Integer CastY_8 = (MR_Integer) HeadVar__2_2;
+
+                succeeded = (CastY_8 == CastX_7);
+              }
+              break;
+            case (MR_Integer) 3:
+              {
+                MR_Integer CastX_9 = (MR_Integer) HeadVar__1_1;
+                MR_Integer CastY_10 = (MR_Integer) HeadVar__2_2;
+
+                succeeded = (CastY_10 == CastX_9);
+              }
+              break;
+            case (MR_Integer) 4:
+              {
+                MR_Integer CastX_11 = (MR_Integer) HeadVar__1_1;
+                MR_Integer CastY_12 = (MR_Integer) HeadVar__2_2;
+
+                succeeded = (CastY_12 == CastX_11);
+              }
+              break;
+            case (MR_Integer) 5:
+              {
+                MR_Integer CastX_13 = (MR_Integer) HeadVar__1_1;
+                MR_Integer CastY_14 = (MR_Integer) HeadVar__2_2;
+
+                succeeded = (CastY_14 == CastX_13);
+              }
+              break;
+            case (MR_Integer) 6:
+              {
+                MR_Integer CastX_15 = (MR_Integer) HeadVar__1_1;
+                MR_Integer CastY_16 = (MR_Integer) HeadVar__2_2;
+
+                succeeded = (CastY_16 == CastX_15);
+              }
+              break;
+            case (MR_Integer) 7:
+              {
+                MR_Integer CastX_17 = (MR_Integer) HeadVar__1_1;
+                MR_Integer CastY_18 = (MR_Integer) HeadVar__2_2;
+
+                succeeded = (CastY_18 == CastX_17);
+              }
+              break;
+            case (MR_Integer) 8:
+              {
+                MR_Integer CastX_19 = (MR_Integer) HeadVar__1_1;
+                MR_Integer CastY_20 = (MR_Integer) HeadVar__2_2;
+
+                succeeded = (CastY_20 == CastX_19);
+              }
+              break;
+            case (MR_Integer) 9:
+              {
+                MR_Integer CastX_21 = (MR_Integer) HeadVar__1_1;
+                MR_Integer CastY_22 = (MR_Integer) HeadVar__2_2;
+
+                succeeded = (CastY_22 == CastX_21);
+              }
+              break;
+            case (MR_Integer) 10:
+              {
+                MR_Integer CastX_23 = (MR_Integer) HeadVar__1_1;
+                MR_Integer CastY_24 = (MR_Integer) HeadVar__2_2;
+
+                succeeded = (CastY_24 == CastX_23);
+              }
+              break;
+            case (MR_Integer) 11:
+              {
+                MR_Integer CastX_25 = (MR_Integer) HeadVar__1_1;
+                MR_Integer CastY_26 = (MR_Integer) HeadVar__2_2;
+
+                succeeded = (CastY_26 == CastX_25);
+              }
+              break;
+            case (MR_Integer) 12:
+              {
+                MR_Integer CastX_27 = (MR_Integer) HeadVar__1_1;
+                MR_Integer CastY_28 = (MR_Integer) HeadVar__2_2;
+
+                succeeded = (CastY_28 == CastX_27);
+              }
+              break;
+            case (MR_Integer) 13:
+              {
+                MR_Integer CastX_29 = (MR_Integer) HeadVar__1_1;
+                MR_Integer CastY_30 = (MR_Integer) HeadVar__2_2;
+
+                succeeded = (CastY_30 == CastX_29);
+              }
+              break;
+            case (MR_Integer) 14:
+              {
+                MR_Integer CastX_33 = (MR_Integer) HeadVar__1_1;
+                MR_Integer CastY_34 = (MR_Integer) HeadVar__2_2;
+
+                succeeded = (CastY_34 == CastX_33);
+              }
+              break;
+            case (MR_Integer) 15:
+              {
+                MR_Integer CastX_35 = (MR_Integer) HeadVar__1_1;
+                MR_Integer CastY_36 = (MR_Integer) HeadVar__2_2;
+
+                succeeded = (CastY_36 == CastX_35);
+              }
+              break;
+            case (MR_Integer) 16:
+              {
+                MR_Integer CastX_37 = (MR_Integer) HeadVar__1_1;
+                MR_Integer CastY_38 = (MR_Integer) HeadVar__2_2;
+
+                succeeded = (CastY_38 == CastX_37);
+              }
+              break;
+            case (MR_Integer) 17:
+              {
+                MR_Integer CastX_39 = (MR_Integer) HeadVar__1_1;
+                MR_Integer CastY_40 = (MR_Integer) HeadVar__2_2;
+
+                succeeded = (CastY_40 == CastX_39);
+              }
+              break;
+            case (MR_Integer) 18:
+              {
+                MR_Integer CastX_41 = (MR_Integer) HeadVar__1_1;
+                MR_Integer CastY_42 = (MR_Integer) HeadVar__2_2;
+
+                succeeded = (CastY_42 == CastX_41);
+              }
+              break;
+            case (MR_Integer) 19:
+              {
+                MR_Integer CastX_43 = (MR_Integer) HeadVar__1_1;
+                MR_Integer CastY_44 = (MR_Integer) HeadVar__2_2;
+
+                succeeded = (CastY_44 == CastX_43);
+              }
+              break;
+            case (MR_Integer) 20:
+              {
+                MR_Integer CastX_45 = (MR_Integer) HeadVar__1_1;
+                MR_Integer CastY_46 = (MR_Integer) HeadVar__2_2;
+
+                succeeded = (CastY_46 == CastX_45);
+              }
+              break;
+          }
+          break;
+        case (MR_Integer) 1:
+          {
+            MR_Word ArgX1_31 = ((MR_Word) (MR_hl_field(MR_mktag(1), HeadVar__1_1, (MR_Integer) 0)));
+            MR_Word ArgY1_32;
+
+            succeeded = ((MR_tag((MR_Word) HeadVar__2_2)) == (MR_mktag((MR_Integer) 1)));
+            if (succeeded)
+            {
+              ArgY1_32 = ((MR_Word) (MR_hl_field(MR_mktag(1), HeadVar__2_2, (MR_Integer) 0)));
+              succeeded = (ArgX1_31 == ArgY1_32);
+            }
+          }
+          break;
+      }
+    return succeeded;
+  }
+}
+
+void MR_CALL 
+backend_libs__rtti____Compare____base_typeclass_info_0_0(
+  MR_Word * HeadVar__1_1,
+  MR_Word HeadVar__2_2,
+  MR_Word HeadVar__3_3)
+{
+  {
+    MR_bool succeeded;
+    MR_Integer CastX_21 = (MR_Integer) HeadVar__2_2;
+    MR_Integer CastY_22 = (MR_Integer) HeadVar__3_3;
+
+    succeeded = (CastX_21 == CastY_22);
+    if (succeeded)
+      *HeadVar__1_1 = (MR_Integer) 0;
+    else
+    {
+      MR_Integer ArgX1_4 = ((MR_Integer) (MR_hl_field(MR_mktag(0), HeadVar__2_2, (MR_Integer) 0)));
+      MR_Integer ArgY1_5 = ((MR_Integer) (MR_hl_field(MR_mktag(0), HeadVar__3_3, (MR_Integer) 0)));
+      MR_Integer ArgX2_6 = ((MR_Integer) (MR_hl_field(MR_mktag(0), HeadVar__2_2, (MR_Integer) 1)));
+      MR_Integer ArgY2_7 = ((MR_Integer) (MR_hl_field(MR_mktag(0), HeadVar__3_3, (MR_Integer) 1)));
+      MR_Integer ArgX3_8 = ((MR_Integer) (MR_hl_field(MR_mktag(0), HeadVar__2_2, (MR_Integer) 2)));
+      MR_Integer ArgY3_9 = ((MR_Integer) (MR_hl_field(MR_mktag(0), HeadVar__3_3, (MR_Integer) 2)));
+      MR_Integer ArgX4_10 = ((MR_Integer) (MR_hl_field(MR_mktag(0), HeadVar__2_2, (MR_Integer) 3)));
+      MR_Integer ArgY4_11 = ((MR_Integer) (MR_hl_field(MR_mktag(0), HeadVar__3_3, (MR_Integer) 3)));
+      MR_Integer ArgX5_12 = ((MR_Integer) (MR_hl_field(MR_mktag(0), HeadVar__2_2, (MR_Integer) 4)));
+      MR_Integer ArgY5_13 = ((MR_Integer) (MR_hl_field(MR_mktag(0), HeadVar__3_3, (MR_Integer) 4)));
+      MR_Word ArgX6_14 = ((MR_Word) (MR_hl_field(MR_mktag(0), HeadVar__2_2, (MR_Integer) 5)));
+      MR_Word ArgY6_15 = ((MR_Word) (MR_hl_field(MR_mktag(0), HeadVar__3_3, (MR_Integer) 5)));
+      MR_Word Var_16;
+
+      mercury__private_builtin__builtin_compare_int_3_p_0(&Var_16, ArgX1_4, ArgY1_5);
+      succeeded = (Var_16 == (MR_Integer) 0);
+      succeeded = !(succeeded);
+      if (succeeded)
+        *HeadVar__1_1 = Var_16;
+      else
+      {
+        MR_Word Var_17;
+
+        mercury__private_builtin__builtin_compare_int_3_p_0(&Var_17, ArgX2_6, ArgY2_7);
+        succeeded = (Var_17 == (MR_Integer) 0);
+        succeeded = !(succeeded);
+        if (succeeded)
+          *HeadVar__1_1 = Var_17;
+        else
+        {
+          MR_Word Var_18;
+
+          mercury__private_builtin__builtin_compare_int_3_p_0(&Var_18, ArgX3_8, ArgY3_9);
+          succeeded = (Var_18 == (MR_Integer) 0);
+          succeeded = !(succeeded);
+          if (succeeded)
+            *HeadVar__1_1 = Var_18;
+          else
+          {
+            MR_Word Var_19;
+
+            mercury__private_builtin__builtin_compare_int_3_p_0(&Var_19, ArgX4_10, ArgY4_11);
+            succeeded = (Var_19 == (MR_Integer) 0);
+            succeeded = !(succeeded);
+            if (succeeded)
+              *HeadVar__1_1 = Var_19;
+            else
+            {
+              MR_Word Var_20;
+
+              mercury__private_builtin__builtin_compare_int_3_p_0(&Var_20, ArgX5_12, ArgY5_13);
+              succeeded = (Var_20 == (MR_Integer) 0);
+              succeeded = !(succeeded);
+              if (succeeded)
+                *HeadVar__1_1 = Var_20;
+              else
+              {
+                mercury__builtin__compare_3_p_0((MR_Word) &backend_libs__rtti_scalar_common_1[0], HeadVar__1_1, ((MR_Box) (ArgX6_14)), ((MR_Box) (ArgY6_15)));
+              }
+            }
+          }
+        }
+      }
+    }
+  }
+}
+
+MR_bool MR_CALL 
+backend_libs__rtti____Unify____base_typeclass_info_0_0(
+  MR_Word HeadVar__1_1,
+  MR_Word HeadVar__2_2)
+{
+  {
+    MR_bool succeeded;
+    MR_Integer CastX_15 = (MR_Integer) HeadVar__1_1;
+    MR_Integer CastY_16 = (MR_Integer) HeadVar__2_2;
+
+    succeeded = (CastX_15 == CastY_16);
+    if (succeeded)
+      succeeded = MR_TRUE;
+    else
+    {
+      MR_Word TypeInfo_17_17;
+      MR_Integer ArgX1_3 = ((MR_Integer) (MR_hl_field(MR_mktag(0), HeadVar__1_1, (MR_Integer) 0)));
+      MR_Integer ArgY1_4 = ((MR_Integer) (MR_hl_field(MR_mktag(0), HeadVar__2_2, (MR_Integer) 0)));
+      MR_Integer ArgX2_5 = ((MR_Integer) (MR_hl_field(MR_mktag(0), HeadVar__1_1, (MR_Integer) 1)));
+      MR_Integer ArgY2_6 = ((MR_Integer) (MR_hl_field(MR_mktag(0), HeadVar__2_2, (MR_Integer) 1)));
+      MR_Integer ArgX3_7 = ((MR_Integer) (MR_hl_field(MR_mktag(0), HeadVar__1_1, (MR_Integer) 2)));
+      MR_Integer ArgY3_8 = ((MR_Integer) (MR_hl_field(MR_mktag(0), HeadVar__2_2, (MR_Integer) 2)));
+      MR_Integer ArgX4_9 = ((MR_Integer) (MR_hl_field(MR_mktag(0), HeadVar__1_1, (MR_Integer) 3)));
+      MR_Integer ArgY4_10 = ((MR_Integer) (MR_hl_field(MR_mktag(0), HeadVar__2_2, (MR_Integer) 3)));
+      MR_Integer ArgX5_11 = ((MR_Integer) (MR_hl_field(MR_mktag(0), HeadVar__1_1, (MR_Integer) 4)));
+      MR_Integer ArgY5_12 = ((MR_Integer) (MR_hl_field(MR_mktag(0), HeadVar__2_2, (MR_Integer) 4)));
+      MR_Word ArgX6_13 = ((MR_Word) (MR_hl_field(MR_mktag(0), HeadVar__1_1, (MR_Integer) 5)));
+      MR_Word ArgY6_14 = ((MR_Word) (MR_hl_field(MR_mktag(0), HeadVar__2_2, (MR_Integer) 5)));
+
+      succeeded = (ArgX1_3 == ArgY1_4);
+      if (succeeded)
+      {
+        succeeded = (ArgX2_5 == ArgY2_6);
+        if (succeeded)
+        {
+          succeeded = (ArgX3_7 == ArgY3_8);
+          if (succeeded)
+          {
+            succeeded = (ArgX4_9 == ArgY4_10);
+            if (succeeded)
+            {
+              succeeded = (ArgX5_11 == ArgY5_12);
+              if (succeeded)
+              {
+                TypeInfo_17_17 = (MR_Word) &backend_libs__rtti_scalar_common_1[0];
+                succeeded = mercury__builtin__unify_2_p_0(TypeInfo_17_17, ((MR_Box) (ArgX6_13)), ((MR_Box) (ArgY6_14)));
+              }
+            }
+          }
+        }
+      }
+    }
+    return succeeded;
+  }
+}
+
+static MR_String MR_CALL 
+backend_libs__rtti__maybe_pseudo_type_info_to_string_1_f_0(
+  MR_Word HeadVar__1_1)
+{
+  {
+    MR_String HeadVar__2_2;
+
+    if (((MR_tag((MR_Word) HeadVar__1_1)) == (MR_mktag((MR_Integer) 1))))
+    {
+      MR_Word TypeInfo_3 = ((MR_Word) (MR_hl_field(MR_mktag(1), HeadVar__1_1, (MR_Integer) 0)));
+      MR_String Var_5;
+
+      Var_5 = backend_libs__rtti__type_info_to_string_1_f_0(TypeInfo_3);
+      HeadVar__2_2 = mercury__string__f_43_43_2_f_0((MR_String) "__plain_", Var_5);
+    }
+    else
+    {
+      MR_Word PseudoTypeInfo_6 = ((MR_Word) (MR_hl_field(MR_mktag(0), HeadVar__1_1, (MR_Integer) 0)));
+      MR_String Var_8;
+
+      Var_8 = backend_libs__rtti__pseudo_type_info_to_string_1_f_0(PseudoTypeInfo_6);
+      HeadVar__2_2 = mercury__string__f_43_43_2_f_0((MR_String) "__pseudo_", Var_8);
+    }
+    return HeadVar__2_2;
+  }
+}
+
+static void MR_CALL 
+backend_libs__rtti__encode_type_ctor_flag_3_p_0(
+  MR_Word HeadVar__1_1,
+  MR_Integer STATE_VARIABLE_Encoding_0_2,
+  MR_Integer * STATE_VARIABLE_Encoding_3)
+{
+  switch (HeadVar__1_1) {
+    default: /*NOTREACHED*/ MR_assert(0);
+    case (MR_Integer) 1:
+      {
+        *STATE_VARIABLE_Encoding_3 = (STATE_VARIABLE_Encoding_0_2 + (MR_Integer) 4);
+      }
+      break;
+    case (MR_Integer) 0:
+      {
+        *STATE_VARIABLE_Encoding_3 = (STATE_VARIABLE_Encoding_0_2 + (MR_Integer) 2);
+      }
+      break;
+  }
+}
+
+void MR_CALL 
+backend_libs__rtti__table_trie_step_to_c_3_p_0(
+  MR_Word HeadVar__1_1,
+  MR_String * HeadVar__2_2,
+  MR_Word * HeadVar__3_3)
+{
+  switch (MR_tag((MR_Word) HeadVar__1_1)) {
+    default: /*NOTREACHED*/ MR_assert(0);
+    case (MR_Integer) 0:
+      switch (MR_unmkbody(HeadVar__1_1)) {
+        default: /*NOTREACHED*/ MR_assert(0);
+        case (MR_Integer) 0:
+          {
+            *HeadVar__2_2 = (MR_String) "MR_TABLE_STEP_DUMMY";
+            *HeadVar__3_3 = (MR_Word) MR_mkword(MR_mktag(0), MR_mkbody((MR_Integer) 0));
+          }
+          break;
+        case (MR_Integer) 1:
+          {
+            *HeadVar__2_2 = (MR_String) "MR_TABLE_STEP_CHAR";
+            *HeadVar__3_3 = (MR_Word) MR_mkword(MR_mktag(0), MR_mkbody((MR_Integer) 0));
+          }
+          break;
+        case (MR_Integer) 2:
+          {
+            *HeadVar__2_2 = (MR_String) "MR_TABLE_STEP_STRING";
+            *HeadVar__3_3 = (MR_Word) MR_mkword(MR_mktag(0), MR_mkbody((MR_Integer) 0));
+          }
+          break;
+        case (MR_Integer) 3:
+          {
+            *HeadVar__2_2 = (MR_String) "MR_TABLE_STEP_FLOAT";
+            *HeadVar__3_3 = (MR_Word) MR_mkword(MR_mktag(0), MR_mkbody((MR_Integer) 0));
+          }
+          break;
+        case (MR_Integer) 4:
+          {
+            *HeadVar__2_2 = (MR_String) "MR_TABLE_STEP_FOREIGN_ENUM";
+            *HeadVar__3_3 = (MR_Word) MR_mkword(MR_mktag(0), MR_mkbody((MR_Integer) 0));
+          }
+          break;
+        case (MR_Integer) 5:
+          {
+            *HeadVar__2_2 = (MR_String) "MR_TABLE_STEP_TYPEINFO";
+            *HeadVar__3_3 = (MR_Word) MR_mkword(MR_mktag(0), MR_mkbody((MR_Integer) 0));
+          }
+          break;
+        case (MR_Integer) 6:
+          {
+            *HeadVar__2_2 = (MR_String) "MR_TABLE_STEP_TYPECLASSINFO";
+            *HeadVar__3_3 = (MR_Word) MR_mkword(MR_mktag(0), MR_mkbody((MR_Integer) 0));
+          }
+          break;
+        case (MR_Integer) 7:
+          {
+            *HeadVar__2_2 = (MR_String) "MR_TABLE_STEP_PROMISE_IMPLIED";
+            *HeadVar__3_3 = (MR_Word) MR_mkword(MR_mktag(0), MR_mkbody((MR_Integer) 0));
+          }
+          break;
+      }
+      break;
+    case (MR_Integer) 1:
+      {
+        MR_Word Var_30 = ((MR_Word) (MR_hl_field(MR_mktag(1), HeadVar__1_1, (MR_Integer) 0)));
+
+        *HeadVar__2_2 = ((&backend_libs__rtti_vector_common_7[0 + Var_30]))->backend_libs__rtti__vector_common_type_7_0__vct_7_f_0;
+        *HeadVar__3_3 = ((&backend_libs__rtti_vector_common_7[0 + Var_30]))->backend_libs__rtti__vector_common_type_7_0__vct_7_f_1;
+      }
+      break;
+    case (MR_Integer) 2:
+      {
+        MR_Integer EnumRange_14 = ((MR_Integer) (MR_hl_field(MR_mktag(2), HeadVar__1_1, (MR_Integer) 0)));
+
+        *HeadVar__2_2 = (MR_String) "MR_TABLE_STEP_ENUM";
+        {
+          MR_Word base;
+          base = (MR_Word) MR_mkword(MR_mktag(1), MR_new_object(MR_Word, ((MR_Integer) 1 * sizeof(MR_Word)), NULL, NULL));
+          *HeadVar__3_3 = base;
+          MR_hl_field(MR_mktag(1), base, 0) = ((MR_Box) (EnumRange_14));
+        }
+      }
+      break;
+    case (MR_Integer) 3:
+      {
+        MR_Word Var_27 = ((((((MR_Word) (MR_hl_field(MR_mktag(3), HeadVar__1_1, (MR_Integer) 1)))) >> (MR_Integer) 1)) & (MR_Integer) 1);
+        MR_Word Var_28 = ((((MR_Word) (MR_hl_field(MR_mktag(3), HeadVar__1_1, (MR_Integer) 1)))) & (MR_Integer) 1);
+        MR_Word Var_29 = ((MR_Word) (MR_hl_field(MR_mktag(3), HeadVar__1_1, (MR_Integer) 0)));
+
+        switch (Var_27) {
+          default: /*NOTREACHED*/ MR_assert(0);
+          case (MR_Integer) 1:
+            switch (Var_28) {
+              default: /*NOTREACHED*/ MR_assert(0);
+              case (MR_Integer) 0:
+                {
+                  *HeadVar__2_2 = (MR_String) "MR_TABLE_STEP_GEN_ADDR";
+                  *HeadVar__3_3 = (MR_Word) MR_mkword(MR_mktag(0), MR_mkbody((MR_Integer) 0));
+                }
+                break;
+              case (MR_Integer) 1:
+                {
+                  *HeadVar__2_2 = (MR_String) "MR_TABLE_STEP_GEN_POLY_ADDR";
+                  *HeadVar__3_3 = (MR_Word) MR_mkword(MR_mktag(0), MR_mkbody((MR_Integer) 0));
+                }
+                break;
+            }
+            break;
+          case (MR_Integer) 0:
+            switch (Var_28) {
+              default: /*NOTREACHED*/ MR_assert(0);
+              case (MR_Integer) 0:
+                {
+                  *HeadVar__2_2 = (MR_String) "MR_TABLE_STEP_GEN";
+                  *HeadVar__3_3 = (MR_Word) MR_mkword(MR_mktag(0), MR_mkbody((MR_Integer) 0));
+                }
+                break;
+              case (MR_Integer) 1:
+                {
+                  *HeadVar__2_2 = (MR_String) "MR_TABLE_STEP_GEN_POLY";
+                  *HeadVar__3_3 = (MR_Word) MR_mkword(MR_mktag(0), MR_mkbody((MR_Integer) 0));
+                }
+                break;
+            }
+            break;
+        }
+      }
+      break;
+  }
+}
+
+MR_Word MR_CALL 
+backend_libs__rtti__tabling_id_has_array_type_1_f_0(
+  MR_Word Id_3)
+{
+  {
+    MR_Word IsArray_4;
+
+    switch (MR_tag((MR_Word) Id_3)) {
+      default: /*NOTREACHED*/ MR_assert(0);
+      case (MR_Integer) 0:
+        switch (MR_unmkbody(Id_3)) {
+          default: /*NOTREACHED*/ MR_assert(0);
+          case (MR_Integer) 0:
+            IsArray_4 = (MR_Integer) 1;
+            break;
+          case (MR_Integer) 1:
+            IsArray_4 = (MR_Integer) 0;
+            break;
+          case (MR_Integer) 2:
+            IsArray_4 = (MR_Integer) 0;
+            break;
+          case (MR_Integer) 3:
+            IsArray_4 = (MR_Integer) 1;
+            break;
+          case (MR_Integer) 4:
+            IsArray_4 = (MR_Integer) 0;
+            break;
+        }
+        break;
+      case (MR_Integer) 1:
+        IsArray_4 = (MR_Integer) 0;
+        break;
+      case (MR_Integer) 2:
+        IsArray_4 = (MR_Integer) 1;
+        break;
+      case (MR_Integer) 3:
+        IsArray_4 = (MR_Integer) 0;
+        break;
+    }
+    return IsArray_4;
+  }
+}
+
+void MR_CALL 
+backend_libs__rtti__tabling_id_java_type_3_p_0(
+  MR_Word Id_4,
+  MR_String * JavaTypeName_5,
+  MR_Word * IsArray_6)
+{
+  {
+    MR_String CTypeName_7;
+
+    switch (MR_tag((MR_Word) Id_4)) {
+      default: /*NOTREACHED*/ MR_assert(0);
+      case (MR_Integer) 0:
+        switch (MR_unmkbody(Id_4)) {
+          default: /*NOTREACHED*/ MR_assert(0);
+          case (MR_Integer) 0:
+            {
+              CTypeName_7 = (MR_String) "ProcTableInfo";
+              *IsArray_6 = (MR_Integer) 1;
+            }
+            break;
+          case (MR_Integer) 1:
+            {
+              CTypeName_7 = (MR_String) "PseudoTypeInfo";
+              *IsArray_6 = (MR_Integer) 0;
+            }
+            break;
+          case (MR_Integer) 2:
+            {
+              CTypeName_7 = (MR_String) "TypeParamLocns";
+              *IsArray_6 = (MR_Integer) 0;
+            }
+            break;
+          case (MR_Integer) 3:
+            {
+              CTypeName_7 = (MR_String) "TableNode";
+              *IsArray_6 = (MR_Integer) 1;
+            }
+            break;
+          case (MR_Integer) 4:
+            {
+              CTypeName_7 = (MR_String) "TrieNode";
+              *IsArray_6 = (MR_Integer) 0;
+            }
+            break;
+        }
+        break;
+      case (MR_Integer) 1:
+        {
+          CTypeName_7 = (MR_String) "TableStepDesc";
+          *IsArray_6 = (MR_Integer) 0;
+        }
+        break;
+      case (MR_Integer) 2:
+        {
+          CTypeName_7 = (MR_String) "TableStats";
+          *IsArray_6 = (MR_Integer) 1;
+        }
+        break;
+      case (MR_Integer) 3:
+        {
+          CTypeName_7 = (MR_String) "TableStepStats";
+          *IsArray_6 = (MR_Integer) 0;
+        }
+        break;
+    }
+    *JavaTypeName_5 = mercury__string__f_43_43_2_f_0((MR_String) "jmercury.runtime.", CTypeName_7);
+  }
+}
+
+void MR_CALL 
+backend_libs__rtti__tabling_id_c_type_3_p_0(
+  MR_Word Id_4,
+  MR_String * JavaTypeName_5,
+  MR_Word * IsArray_6)
+{
+  {
+    MR_String CTypeName_7;
+
+    switch (MR_tag((MR_Word) Id_4)) {
+      default: /*NOTREACHED*/ MR_assert(0);
+      case (MR_Integer) 0:
+        switch (MR_unmkbody(Id_4)) {
+          default: /*NOTREACHED*/ MR_assert(0);
+          case (MR_Integer) 0:
+            {
+              CTypeName_7 = (MR_String) "ProcTableInfo";
+              *IsArray_6 = (MR_Integer) 1;
+            }
+            break;
+          case (MR_Integer) 1:
+            {
+              CTypeName_7 = (MR_String) "PseudoTypeInfo";
+              *IsArray_6 = (MR_Integer) 0;
+            }
+            break;
+          case (MR_Integer) 2:
+            {
+              CTypeName_7 = (MR_String) "TypeParamLocns";
+              *IsArray_6 = (MR_Integer) 0;
+            }
+            break;
+          case (MR_Integer) 3:
+            {
+              CTypeName_7 = (MR_String) "TableNode";
+              *IsArray_6 = (MR_Integer) 1;
+            }
+            break;
+          case (MR_Integer) 4:
+            {
+              CTypeName_7 = (MR_String) "TrieNode";
+              *IsArray_6 = (MR_Integer) 0;
+            }
+            break;
+        }
+        break;
+      case (MR_Integer) 1:
+        {
+          CTypeName_7 = (MR_String) "TableStepDesc";
+          *IsArray_6 = (MR_Integer) 0;
+        }
+        break;
+      case (MR_Integer) 2:
+        {
+          CTypeName_7 = (MR_String) "TableStats";
+          *IsArray_6 = (MR_Integer) 1;
+        }
+        break;
+      case (MR_Integer) 3:
+        {
+          CTypeName_7 = (MR_String) "TableStepStats";
+          *IsArray_6 = (MR_Integer) 0;
+        }
+        break;
+    }
+    *JavaTypeName_5 = mercury__string__f_43_43_2_f_0((MR_String) "MR_", CTypeName_7);
+  }
+}
+
+MR_String MR_CALL 
+backend_libs__rtti__tabling_info_id_str_1_f_0(
+  MR_Word HeadVar__1_1)
+{
+  {
+    MR_String HeadVar__2_2;
+
+    switch (MR_tag((MR_Word) HeadVar__1_1)) {
+      default: /*NOTREACHED*/ MR_assert(0);
+      case (MR_Integer) 0:
+        switch (MR_unmkbody(HeadVar__1_1)) {
+          default: /*NOTREACHED*/ MR_assert(0);
+          case (MR_Integer) 0:
+            HeadVar__2_2 = (MR_String) "table_info";
+            break;
+          case (MR_Integer) 1:
+            HeadVar__2_2 = (MR_String) "table_ptis";
+            break;
+          case (MR_Integer) 2:
+            HeadVar__2_2 = (MR_String) "tabling_type_param_locns";
+            break;
+          case (MR_Integer) 3:
+            HeadVar__2_2 = (MR_String) "table_root_node";
+            break;
+          case (MR_Integer) 4:
+            HeadVar__2_2 = (MR_String) "table_tips";
+            break;
+        }
+        break;
+      case (MR_Integer) 1:
+        {
+          MR_Word Var_25 = ((MR_Word) (MR_hl_field(MR_mktag(1), HeadVar__1_1, (MR_Integer) 0)));
+
+          switch (Var_25) {
+            default: /*NOTREACHED*/ MR_assert(0);
+            case (MR_Integer) 1:
+              HeadVar__2_2 = (MR_String) "table_output_steps";
+              break;
+            case (MR_Integer) 0:
+              HeadVar__2_2 = (MR_String) "table_input_steps";
+              break;
+          }
+        }
+        break;
+      case (MR_Integer) 2:
+        {
+          MR_Word Var_23 = ((MR_Word) (MR_hl_field(MR_mktag(2), HeadVar__1_1, (MR_Integer) 1)));
+          MR_Word Var_24 = ((MR_Word) (MR_hl_field(MR_mktag(2), HeadVar__1_1, (MR_Integer) 0)));
+
+          switch (Var_23) {
+            default: /*NOTREACHED*/ MR_assert(0);
+            case (MR_Integer) 0:
+              switch (Var_24) {
+                default: /*NOTREACHED*/ MR_assert(0);
+                case (MR_Integer) 1:
+                  HeadVar__2_2 = (MR_String) "table_answer_stats";
+                  break;
+                case (MR_Integer) 0:
+                  HeadVar__2_2 = (MR_String) "table_call_stats";
+                  break;
+              }
+              break;
+            case (MR_Integer) 1:
+              switch (Var_24) {
+                default: /*NOTREACHED*/ MR_assert(0);
+                case (MR_Integer) 1:
+                  HeadVar__2_2 = (MR_String) "table_prev_answer_stats";
+                  break;
+                case (MR_Integer) 0:
+                  HeadVar__2_2 = (MR_String) "table_prev_call_stats";
+                  break;
+              }
+              break;
+          }
+        }
+        break;
+      case (MR_Integer) 3:
+        {
+          MR_Word Var_21 = ((MR_Word) (MR_hl_field(MR_mktag(3), HeadVar__1_1, (MR_Integer) 1)));
+          MR_Word Var_22 = ((MR_Word) (MR_hl_field(MR_mktag(3), HeadVar__1_1, (MR_Integer) 0)));
+
+          switch (Var_21) {
+            default: /*NOTREACHED*/ MR_assert(0);
+            case (MR_Integer) 0:
+              switch (Var_22) {
+                default: /*NOTREACHED*/ MR_assert(0);
+                case (MR_Integer) 1:
+                  HeadVar__2_2 = (MR_String) "table_answer_step_stats";
+                  break;
+                case (MR_Integer) 0:
+                  HeadVar__2_2 = (MR_String) "table_call_step_stats";
+                  break;
+              }
+              break;
+            case (MR_Integer) 1:
+              switch (Var_22) {
+                default: /*NOTREACHED*/ MR_assert(0);
+                case (MR_Integer) 1:
+                  HeadVar__2_2 = (MR_String) "table_prev_answer_step_stats";
+                  break;
+                case (MR_Integer) 0:
+                  HeadVar__2_2 = (MR_String) "table_prev_call_step_stats";
+                  break;
+              }
+              break;
+          }
+        }
+        break;
+    }
+    return HeadVar__2_2;
+  }
+}
+
+MR_bool MR_CALL 
+backend_libs__rtti__rtti_id_emits_type_ctor_info_2_p_0(
+  MR_Word RttiId_3,
+  MR_Word * TypeCtor_4)
+{
+  {
+    MR_bool succeeded = ((MR_tag((MR_Word) RttiId_3)) == (MR_mktag((MR_Integer) 0)));
+    MR_Word RttiTypeCtor_5;
+    MR_Word RttiName_6;
+
+    if (succeeded)
+    {
+      RttiTypeCtor_5 = ((MR_Word) (MR_hl_field(MR_mktag(0), RttiId_3, (MR_Integer) 0)));
+      RttiName_6 = ((MR_Word) (MR_hl_field(MR_mktag(0), RttiId_3, (MR_Integer) 1)));
+      switch (MR_tag((MR_Word) RttiName_6)) {
+        default:
+          succeeded = MR_FALSE;
+          break;
+        case (MR_Integer) 0:
+          switch (MR_unmkbody(RttiName_6)) {
+            default:
+              succeeded = MR_FALSE;
+              break;
+            case (MR_Integer) 11:
+              {
+                *TypeCtor_4 = RttiTypeCtor_5;
+                succeeded = MR_TRUE;
+              }
+              break;
+          }
+          break;
+        case (MR_Integer) 3:
+          switch (((MR_Integer) (MR_Word) (MR_hl_field(MR_mktag(3), RttiName_6, (MR_Integer) 0)))) {
+            default:
+              succeeded = MR_FALSE;
+              break;
+            case (MR_Integer) 10:
+              {
+                MR_Word TypeInfo_7 = ((MR_Word) (MR_hl_field(MR_mktag(3), RttiName_6, (MR_Integer) 1)));
+
+                succeeded = ((MR_tag((MR_Word) TypeInfo_7)) == (MR_mktag((MR_Integer) 0)));
+                if (succeeded)
+                  *TypeCtor_4 = (MR_Word) MR_body(((MR_Word) TypeInfo_7), (MR_Integer) 0);
+              }
+              break;
+            case (MR_Integer) 11:
+              {
+                MR_Word PseudoTypeInfo_8 = ((MR_Word) (MR_hl_field(MR_mktag(3), RttiName_6, (MR_Integer) 1)));
+
+                succeeded = ((MR_tag((MR_Word) PseudoTypeInfo_8)) == (MR_mktag((MR_Integer) 0)));
+                if (succeeded)
+                  *TypeCtor_4 = (MR_Word) MR_body(((MR_Word) PseudoTypeInfo_8), (MR_Integer) 0);
+              }
+              break;
+          }
+          break;
+      }
+    }
+    return succeeded;
+  }
+}
+
+MR_Word MR_CALL 
+backend_libs__rtti__module_qualify_name_of_tc_rtti_name_1_f_0(
+  MR_Word TCRttiName_3)
+{
+  {
+    MR_Word ModuleQualify_4;
+
+    switch (MR_tag((MR_Word) TCRttiName_3)) {
+      default: /*NOTREACHED*/ MR_assert(0);
+      case (MR_Integer) 0:
+        ModuleQualify_4 = (MR_Integer) 1;
+        break;
+      case (MR_Integer) 1:
+        ModuleQualify_4 = (MR_Integer) 0;
+        break;
+      case (MR_Integer) 2:
+        ModuleQualify_4 = (MR_Integer) 1;
+        break;
+      case (MR_Integer) 3:
+        ModuleQualify_4 = (MR_Integer) 1;
+        break;
+    }
+    return ModuleQualify_4;
+  }
+}
+
+MR_Word MR_CALL 
+backend_libs__rtti__module_qualify_name_of_ctor_rtti_name_1_f_0(
+  MR_Word HeadVar__1_3)
+{
+  {
+    MR_Word HeadVar__2_2;
+
+    HeadVar__2_2 = backend_libs__rtti__f_85_110_117_115_101_100_65_114_103_115_95_95_102_117_110_99_95_95_109_111_100_117_108_101_95_113_117_97_108_105_102_121_95_110_97_109_101_95_111_102_95_99_116_111_114_95_114_116_116_105_95_110_97_109_101_95_95_91_49_93_95_48_1_f_0();
+    return HeadVar__2_2;
+  }
+}
+
+MR_Word MR_CALL 
+backend_libs__rtti__f_85_110_117_115_101_100_65_114_103_115_95_95_102_117_110_99_95_95_109_111_100_117_108_101_95_113_117_97_108_105_102_121_95_110_97_109_101_95_111_102_95_99_116_111_114_95_114_116_116_105_95_110_97_109_101_95_95_91_49_93_95_48_1_f_0(void)
+{
+  {
+    return (MR_Integer) 1;
+  }
+}
+
+MR_Word MR_CALL 
+backend_libs__rtti__module_qualify_name_of_rtti_id_1_f_0(
+  MR_Word RttiId_3)
+{
+  {
+    MR_Word ShouldModuleQualify_4;
+
+    if (((MR_tag((MR_Word) RttiId_3)) == (MR_mktag((MR_Integer) 0))))
+      ShouldModuleQualify_4 = (MR_Integer) 1;
+    else
+    {
+      MR_Word TCRttiName_8 = ((MR_Word) (MR_hl_field(MR_mktag(1), RttiId_3, (MR_Integer) 1)));
+      MR_Word Var_7 = ((MR_Word) (MR_hl_field(MR_mktag(1), RttiId_3, (MR_Integer) 0)));
+
+      switch (MR_tag((MR_Word) TCRttiName_8)) {
+        default: /*NOTREACHED*/ MR_assert(0);
+        case (MR_Integer) 0:
+          ShouldModuleQualify_4 = (MR_Integer) 1;
+          break;
+        case (MR_Integer) 1:
+          ShouldModuleQualify_4 = (MR_Integer) 0;
+          break;
+        case (MR_Integer) 2:
+          ShouldModuleQualify_4 = (MR_Integer) 1;
+          break;
+        case (MR_Integer) 3:
+          ShouldModuleQualify_4 = (MR_Integer) 1;
+          break;
+      }
+    }
+    return ShouldModuleQualify_4;
+  }
+}
+
+MR_String MR_CALL 
+backend_libs__rtti__encode_tc_instance_type_1_f_0(
+  MR_Word TCType_3)
+{
+  {
+    MR_String Str_4;
+    MR_Word RttiTypeCtor_6;
+    MR_Integer Arity_9;
+    MR_Word ModuleName_13;
+    MR_String TypeName_14;
+    MR_String TypeStr_16;
+    MR_Word Var_20;
+    MR_String Var_22;
+    MR_String Var_24;
+    MR_String Var_25;
+    MR_Integer _CtorArity_15;
+
+    if (((MR_tag((MR_Word) TCType_3)) == (MR_mktag((MR_Integer) 1))))
+    {
+      MR_Word TI_5 = ((MR_Word) (MR_hl_field(MR_mktag(1), TCType_3, (MR_Integer) 0)));
+      MR_Word ArgTIs_7;
+
+      switch (MR_tag((MR_Word) TI_5)) {
+        default: /*NOTREACHED*/ MR_assert(0);
+        case (MR_Integer) 0:
+          {
+            RttiTypeCtor_6 = (MR_Word) MR_body(((MR_Word) TI_5), (MR_Integer) 0);
+            ArgTIs_7 = (MR_Word) MR_mkword(MR_mktag(0), MR_mkbody((MR_Integer) 0));
+          }
+          break;
+        case (MR_Integer) 1:
+          {
+            RttiTypeCtor_6 = ((MR_Word) (MR_hl_field(MR_mktag(1), TI_5, (MR_Integer) 0)));
+            ArgTIs_7 = ((MR_Word) (MR_hl_field(MR_mktag(1), TI_5, (MR_Integer) 1)));
+          }
+          break;
+        case (MR_Integer) 2:
+          {
+            MR_Word VarArityId_8 = ((MR_Word) (MR_hl_field(MR_mktag(2), TI_5, (MR_Integer) 0)));
+
+            ArgTIs_7 = ((MR_Word) (MR_hl_field(MR_mktag(2), TI_5, (MR_Integer) 1)));
+            RttiTypeCtor_6 = backend_libs__rtti__var_arity_id_to_rtti_type_ctor_1_f_0(VarArityId_8);
+          }
+          break;
+      }
+      Arity_9 = mercury__list__length_1_f_0((MR_Word) &backend_libs__rtti__backend_libs__rtti__type_ctor_info_rtti_type_info_0, ArgTIs_7);
+    }
+    else
+    {
+      MR_Word PTI_10 = ((MR_Word) (MR_hl_field(MR_mktag(0), TCType_3, (MR_Integer) 0)));
+      MR_Word ArgPTIs_11;
+
+      switch (MR_tag((MR_Word) PTI_10)) {
+        default: /*NOTREACHED*/ MR_assert(0);
+        case (MR_Integer) 0:
+          {
+            RttiTypeCtor_6 = (MR_Word) MR_body(((MR_Word) PTI_10), (MR_Integer) 0);
+            ArgPTIs_11 = (MR_Word) MR_mkword(MR_mktag(0), MR_mkbody((MR_Integer) 0));
+          }
+          break;
+        case (MR_Integer) 1:
+          {
+            RttiTypeCtor_6 = ((MR_Word) (MR_hl_field(MR_mktag(1), PTI_10, (MR_Integer) 0)));
+            ArgPTIs_11 = ((MR_Word) (MR_hl_field(MR_mktag(1), PTI_10, (MR_Integer) 1)));
+          }
+          break;
+        case (MR_Integer) 2:
+          {
+            MR_Word VarArityId_27 = ((MR_Word) (MR_hl_field(MR_mktag(2), PTI_10, (MR_Integer) 0)));
+
+            ArgPTIs_11 = ((MR_Word) (MR_hl_field(MR_mktag(2), PTI_10, (MR_Integer) 1)));
+            RttiTypeCtor_6 = backend_libs__rtti__var_arity_id_to_rtti_type_ctor_1_f_0(VarArityId_27);
+          }
+          break;
+        case (MR_Integer) 3:
+          {
+            mercury__require__unexpected_3_p_0((MR_String) "backend_libs.rtti", (MR_String) "function \140backend_libs.rtti.encode_tc_instance_type\'/1", (MR_String) "type_var");
+          }
+          break;
+      }
+      Arity_9 = mercury__list__length_1_f_0((MR_Word) &backend_libs__rtti__backend_libs__rtti__type_ctor_info_rtti_maybe_pseudo_type_info_0, ArgPTIs_11);
+    }
+    ModuleName_13 = ((MR_Word) (MR_hl_field(MR_mktag(0), RttiTypeCtor_6, (MR_Integer) 0)));
+    TypeName_14 = ((MR_String) (MR_hl_field(MR_mktag(0), RttiTypeCtor_6, (MR_Integer) 1)));
+    _CtorArity_15 = ((MR_Integer) (MR_hl_field(MR_mktag(0), RttiTypeCtor_6, (MR_Integer) 2)));
+    {
+      Var_20 = (MR_Word) MR_mkword(MR_mktag(1), MR_new_object(MR_Word, ((MR_Integer) 2 * sizeof(MR_Word)), NULL, NULL));
+      MR_hl_field(MR_mktag(1), Var_20, 0) = ((MR_Box) (ModuleName_13));
+      MR_hl_field(MR_mktag(1), Var_20, 1) = ((MR_Box) (TypeName_14));
+    }
+    TypeStr_16 = mdbcomp__sym_name__sym_name_to_string_sep_2_f_0(Var_20, (MR_String) "__");
+    Var_25 = mercury__string__int_to_string_1_f_0(Arity_9);
+    Var_24 = mercury__string__f_43_43_2_f_0(Var_25, (MR_String) "__");
+    Var_22 = mercury__string__f_43_43_2_f_0((MR_String) "__arity", Var_24);
+    Str_4 = mercury__string__f_43_43_2_f_0(TypeStr_16, Var_22);
+    return Str_4;
+  }
+}
+
+void MR_CALL 
+backend_libs__rtti__rtti_id_csharp_type_3_p_0(
+  MR_Word HeadVar__1_1,
+  MR_String * CsharpTypeName_2,
+  MR_Word * IsArray_3)
+{
+  if (((MR_tag((MR_Word) HeadVar__1_1)) == (MR_mktag((MR_Integer) 0))))
+  {
+    MR_Word RttiName_5 = ((MR_Word) (MR_hl_field(MR_mktag(0), HeadVar__1_1, (MR_Integer) 1)));
+    MR_Word Var_4 = ((MR_Word) (MR_hl_field(MR_mktag(0), HeadVar__1_1, (MR_Integer) 0)));
+
+    backend_libs__rtti__ctor_rtti_name_csharp_type_3_p_0(RttiName_5, CsharpTypeName_2, IsArray_3);
+  }
+  else
+  {
+    MR_Word TCRttiName_9 = ((MR_Word) (MR_hl_field(MR_mktag(1), HeadVar__1_1, (MR_Integer) 1)));
+    MR_Word Var_8 = ((MR_Word) (MR_hl_field(MR_mktag(1), HeadVar__1_1, (MR_Integer) 0)));
+
+    backend_libs__rtti__tc_rtti_name_csharp_type_3_p_0(TCRttiName_9, CsharpTypeName_2, IsArray_3);
+  }
+}
+
+void MR_CALL 
+backend_libs__rtti__rtti_id_maybe_element_csharp_type_3_p_0(
+  MR_Word HeadVar__1_1,
+  MR_String * CTypeName_2,
+  MR_Word * IsArray_3)
+{
+  if (((MR_tag((MR_Word) HeadVar__1_1)) == (MR_mktag((MR_Integer) 1))))
+  {
+    MR_Word RttiId_7 = ((MR_Word) (MR_hl_field(MR_mktag(1), HeadVar__1_1, (MR_Integer) 0)));
+    MR_Word IsArray0_10;
+
+    if (((MR_tag((MR_Word) RttiId_7)) == (MR_mktag((MR_Integer) 0))))
+    {
+      MR_Word RttiName_15 = ((MR_Word) (MR_hl_field(MR_mktag(0), RttiId_7, (MR_Integer) 1)));
+      MR_Word Var_14 = ((MR_Word) (MR_hl_field(MR_mktag(0), RttiId_7, (MR_Integer) 0)));
+
+      backend_libs__rtti__ctor_rtti_name_csharp_type_3_p_0(RttiName_15, CTypeName_2, &IsArray0_10);
+    }
+    else
+    {
+      MR_Word TCRttiName_19 = ((MR_Word) (MR_hl_field(MR_mktag(1), RttiId_7, (MR_Integer) 1)));
+      MR_Word Var_18 = ((MR_Word) (MR_hl_field(MR_mktag(1), RttiId_7, (MR_Integer) 0)));
+
+      backend_libs__rtti__tc_rtti_name_csharp_type_3_p_0(TCRttiName_19, CTypeName_2, &IsArray0_10);
+    }
+    switch (IsArray0_10) {
+      default: /*NOTREACHED*/ MR_assert(0);
+      case (MR_Integer) 0:
+        *IsArray_3 = (MR_Integer) 1;
+        break;
+      case (MR_Integer) 1:
+        {
+          {
+            mercury__require__unexpected_3_p_0((MR_String) "backend_libs.rtti", (MR_String) "predicate \140backend_libs.rtti.rtti_id_maybe_element_csharp_type\'/3", (MR_String) "base is not array");
+            return;
+          }
+        }
+        break;
+    }
+  }
+  else
+  {
+    MR_Word RttiId_4 = ((MR_Word) (MR_hl_field(MR_mktag(0), HeadVar__1_1, (MR_Integer) 0)));
+
+    if (((MR_tag((MR_Word) RttiId_4)) == (MR_mktag((MR_Integer) 0))))
+    {
+      MR_Word RttiName_23 = ((MR_Word) (MR_hl_field(MR_mktag(0), RttiId_4, (MR_Integer) 1)));
+      MR_Word Var_22 = ((MR_Word) (MR_hl_field(MR_mktag(0), RttiId_4, (MR_Integer) 0)));
+
+      backend_libs__rtti__ctor_rtti_name_csharp_type_3_p_0(RttiName_23, CTypeName_2, IsArray_3);
+    }
+    else
+    {
+      MR_Word TCRttiName_27 = ((MR_Word) (MR_hl_field(MR_mktag(1), RttiId_4, (MR_Integer) 1)));
+      MR_Word Var_26 = ((MR_Word) (MR_hl_field(MR_mktag(1), RttiId_4, (MR_Integer) 0)));
+
+      backend_libs__rtti__tc_rtti_name_csharp_type_3_p_0(TCRttiName_27, CTypeName_2, IsArray_3);
+    }
+  }
+}
+
+void MR_CALL 
+backend_libs__rtti__tc_rtti_name_csharp_type_3_p_0(
+  MR_Word TCRttiName_4,
+  MR_String * CsharpTypeName_5,
+  MR_Word * IsArray_6)
+{
+  {
+    MR_bool succeeded;
+    MR_String GenTypeName_7;
+
+    backend_libs__rtti__tc_rtti_name_type_3_p_0(TCRttiName_4, &GenTypeName_7, IsArray_6);
+    succeeded = (strcmp(GenTypeName_7, (MR_String) "BaseTypeclassInfo") == 0);
+    if (succeeded)
+      *CsharpTypeName_5 = (MR_String) "object";
+    else
+    {
+      succeeded = (strcmp(GenTypeName_7, (MR_String) "ConstString") == 0);
+      if (succeeded)
+        *CsharpTypeName_5 = (MR_String) "string";
+      else
+      {
+        succeeded = mercury__string__prefix_2_p_0(GenTypeName_7, (MR_String) "TypeClassConstraint_");
+        if (succeeded)
+          *CsharpTypeName_5 = (MR_String) "runtime.TypeClassConstraint";
+        else
+        {
+          *CsharpTypeName_5 = mercury__string__f_43_43_2_f_0((MR_String) "runtime.", GenTypeName_7);
+        }
+      }
+    }
+  }
+}
+
+void MR_CALL 
+backend_libs__rtti__ctor_rtti_name_csharp_type_3_p_0(
+  MR_Word RttiName_4,
+  MR_String * CsharpTypeName_5,
+  MR_Word * IsArray_6)
+{
+  {
+    MR_bool succeeded;
+    MR_String GenTypeName0_7;
+
+    backend_libs__rtti__ctor_rtti_name_type_3_p_0(RttiName_4, &GenTypeName0_7, IsArray_6);
+    succeeded = (strcmp(GenTypeName0_7, (MR_String) "ConstString") == 0);
+    if (succeeded)
+      *CsharpTypeName_5 = (MR_String) "string";
+    else
+    {
+      succeeded = (strcmp(GenTypeName0_7, (MR_String) "Integer") == 0);
+      if (succeeded)
+        *CsharpTypeName_5 = (MR_String) "int";
+      else
+      {
+        MR_String GenTypeName1_8;
+
+        succeeded = mercury__string__remove_suffix_3_p_0(GenTypeName0_7, (MR_String) "Ptr", &GenTypeName1_8);
+        if (succeeded)
+        {
+          *CsharpTypeName_5 = mercury__string__f_43_43_2_f_0((MR_String) "runtime.", GenTypeName1_8);
+        }
+        else
+        {
+          succeeded = mercury__string__prefix_2_p_0(GenTypeName0_7, (MR_String) "TypeClassConstraint_");
+          if (succeeded)
+            *CsharpTypeName_5 = (MR_String) "runtime.TypeClassConstraint";
+          else
+          {
+            succeeded = mercury__string__prefix_2_p_0(GenTypeName0_7, (MR_String) "FA_PseudoTypeInfo_Struct");
+            if (!(succeeded))
+            {
+              succeeded = mercury__string__prefix_2_p_0(GenTypeName0_7, (MR_String) "FA_TypeInfo_Struct");
+              if (!(succeeded))
+              {
+                succeeded = mercury__string__prefix_2_p_0(GenTypeName0_7, (MR_String) "VA_PseudoTypeInfo_Struct");
+                if (!(succeeded))
+                {
+                  succeeded = mercury__string__prefix_2_p_0(GenTypeName0_7, (MR_String) "VA_TypeInfo_Struct");
+                }
+              }
+            }
+            if (succeeded)
+              *CsharpTypeName_5 = (MR_String) "runtime.TypeInfo_Struct";
+            else
+            {
+              *CsharpTypeName_5 = mercury__string__f_43_43_2_f_0((MR_String) "runtime.", GenTypeName0_7);
+            }
+          }
+        }
+      }
+    }
+  }
+}
+
+void MR_CALL 
+backend_libs__rtti__rtti_id_java_type_3_p_0(
+  MR_Word HeadVar__1_1,
+  MR_String * JavaTypeName_2,
+  MR_Word * IsArray_3)
+{
+  if (((MR_tag((MR_Word) HeadVar__1_1)) == (MR_mktag((MR_Integer) 0))))
+  {
+    MR_Word RttiName_5 = ((MR_Word) (MR_hl_field(MR_mktag(0), HeadVar__1_1, (MR_Integer) 1)));
+    MR_Word Var_4 = ((MR_Word) (MR_hl_field(MR_mktag(0), HeadVar__1_1, (MR_Integer) 0)));
+
+    backend_libs__rtti__ctor_rtti_name_java_type_3_p_0(RttiName_5, JavaTypeName_2, IsArray_3);
+  }
+  else
+  {
+    MR_Word TCRttiName_9 = ((MR_Word) (MR_hl_field(MR_mktag(1), HeadVar__1_1, (MR_Integer) 1)));
+    MR_Word Var_8 = ((MR_Word) (MR_hl_field(MR_mktag(1), HeadVar__1_1, (MR_Integer) 0)));
+
+    backend_libs__rtti__tc_rtti_name_java_type_3_p_0(TCRttiName_9, JavaTypeName_2, IsArray_3);
+  }
+}
+
+void MR_CALL 
+backend_libs__rtti__rtti_id_maybe_element_java_type_3_p_0(
+  MR_Word HeadVar__1_1,
+  MR_String * CTypeName_2,
+  MR_Word * IsArray_3)
+{
+  if (((MR_tag((MR_Word) HeadVar__1_1)) == (MR_mktag((MR_Integer) 1))))
+  {
+    MR_Word RttiId_7 = ((MR_Word) (MR_hl_field(MR_mktag(1), HeadVar__1_1, (MR_Integer) 0)));
+    MR_Word IsArray0_10;
+
+    if (((MR_tag((MR_Word) RttiId_7)) == (MR_mktag((MR_Integer) 0))))
+    {
+      MR_Word RttiName_15 = ((MR_Word) (MR_hl_field(MR_mktag(0), RttiId_7, (MR_Integer) 1)));
+      MR_Word Var_14 = ((MR_Word) (MR_hl_field(MR_mktag(0), RttiId_7, (MR_Integer) 0)));
+
+      backend_libs__rtti__ctor_rtti_name_java_type_3_p_0(RttiName_15, CTypeName_2, &IsArray0_10);
+    }
+    else
+    {
+      MR_Word TCRttiName_19 = ((MR_Word) (MR_hl_field(MR_mktag(1), RttiId_7, (MR_Integer) 1)));
+      MR_Word Var_18 = ((MR_Word) (MR_hl_field(MR_mktag(1), RttiId_7, (MR_Integer) 0)));
+
+      backend_libs__rtti__tc_rtti_name_java_type_3_p_0(TCRttiName_19, CTypeName_2, &IsArray0_10);
+    }
+    switch (IsArray0_10) {
+      default: /*NOTREACHED*/ MR_assert(0);
+      case (MR_Integer) 0:
+        *IsArray_3 = (MR_Integer) 1;
+        break;
+      case (MR_Integer) 1:
+        {
+          {
+            mercury__require__unexpected_3_p_0((MR_String) "backend_libs.rtti", (MR_String) "predicate \140backend_libs.rtti.rtti_id_maybe_element_java_type\'/3", (MR_String) "base is not array");
+            return;
+          }
+        }
+        break;
+    }
+  }
+  else
+  {
+    MR_Word RttiId_4 = ((MR_Word) (MR_hl_field(MR_mktag(0), HeadVar__1_1, (MR_Integer) 0)));
+
+    if (((MR_tag((MR_Word) RttiId_4)) == (MR_mktag((MR_Integer) 0))))
+    {
+      MR_Word RttiName_23 = ((MR_Word) (MR_hl_field(MR_mktag(0), RttiId_4, (MR_Integer) 1)));
+      MR_Word Var_22 = ((MR_Word) (MR_hl_field(MR_mktag(0), RttiId_4, (MR_Integer) 0)));
+
+      backend_libs__rtti__ctor_rtti_name_java_type_3_p_0(RttiName_23, CTypeName_2, IsArray_3);
+    }
+    else
+    {
+      MR_Word TCRttiName_27 = ((MR_Word) (MR_hl_field(MR_mktag(1), RttiId_4, (MR_Integer) 1)));
+      MR_Word Var_26 = ((MR_Word) (MR_hl_field(MR_mktag(1), RttiId_4, (MR_Integer) 0)));
+
+      backend_libs__rtti__tc_rtti_name_java_type_3_p_0(TCRttiName_27, CTypeName_2, IsArray_3);
+    }
+  }
+}
+
+void MR_CALL 
+backend_libs__rtti__tc_rtti_name_java_type_3_p_0(
+  MR_Word TCRttiName_4,
+  MR_String * JavaTypeName_5,
+  MR_Word * IsArray_6)
+{
+  {
+    MR_bool succeeded;
+    MR_String GenTypeName_7;
+
+    backend_libs__rtti__tc_rtti_name_type_3_p_0(TCRttiName_4, &GenTypeName_7, IsArray_6);
+    succeeded = (strcmp(GenTypeName_7, (MR_String) "BaseTypeclassInfo") == 0);
+    if (succeeded)
+      *JavaTypeName_5 = (MR_String) "java.lang.Object";
+    else
+    {
+      succeeded = (strcmp(GenTypeName_7, (MR_String) "ConstString") == 0);
+      if (succeeded)
+        *JavaTypeName_5 = (MR_String) "java.lang.String";
+      else
+      {
+        succeeded = mercury__string__prefix_2_p_0(GenTypeName_7, (MR_String) "TypeClassConstraint_");
+        if (succeeded)
+          *JavaTypeName_5 = (MR_String) "jmercury.runtime.TypeClassConstraint";
+        else
+        {
+          *JavaTypeName_5 = mercury__string__f_43_43_2_f_0((MR_String) "jmercury.runtime.", GenTypeName_7);
+        }
+      }
+    }
+  }
+}
+
+void MR_CALL 
+backend_libs__rtti__ctor_rtti_name_java_type_3_p_0(
+  MR_Word RttiName_4,
+  MR_String * JavaTypeName_5,
+  MR_Word * IsArray_6)
+{
+  {
+    MR_bool succeeded;
+    MR_String GenTypeName0_7;
+
+    backend_libs__rtti__ctor_rtti_name_type_3_p_0(RttiName_4, &GenTypeName0_7, IsArray_6);
+    succeeded = (strcmp(GenTypeName0_7, (MR_String) "ConstString") == 0);
+    if (succeeded)
+      *JavaTypeName_5 = (MR_String) "java.lang.String";
+    else
+    {
+      succeeded = (strcmp(GenTypeName0_7, (MR_String) "Integer") == 0);
+      if (succeeded)
+        *JavaTypeName_5 = (MR_String) "int";
+      else
+      {
+        MR_String GenTypeName1_8;
+
+        succeeded = mercury__string__remove_suffix_3_p_0(GenTypeName0_7, (MR_String) "Ptr", &GenTypeName1_8);
+        if (succeeded)
+        {
+          *JavaTypeName_5 = mercury__string__f_43_43_2_f_0((MR_String) "jmercury.runtime.", GenTypeName1_8);
+        }
+        else
+        {
+          succeeded = mercury__string__prefix_2_p_0(GenTypeName0_7, (MR_String) "TypeClassConstraint_");
+          if (succeeded)
+            *JavaTypeName_5 = (MR_String) "jmercury.runtime.TypeClassConstraint";
+          else
+          {
+            succeeded = mercury__string__prefix_2_p_0(GenTypeName0_7, (MR_String) "FA_PseudoTypeInfo_Struct");
+            if (!(succeeded))
+            {
+              succeeded = mercury__string__prefix_2_p_0(GenTypeName0_7, (MR_String) "FA_TypeInfo_Struct");
+              if (!(succeeded))
+              {
+                succeeded = mercury__string__prefix_2_p_0(GenTypeName0_7, (MR_String) "VA_PseudoTypeInfo_Struct");
+                if (!(succeeded))
+                {
+                  succeeded = mercury__string__prefix_2_p_0(GenTypeName0_7, (MR_String) "VA_TypeInfo_Struct");
+                }
+              }
+            }
+            if (succeeded)
+              *JavaTypeName_5 = (MR_String) "jmercury.runtime.TypeInfo_Struct";
+            else
+            {
+              *JavaTypeName_5 = mercury__string__f_43_43_2_f_0((MR_String) "jmercury.runtime.", GenTypeName0_7);
+            }
+          }
+        }
+      }
+    }
+  }
+}
+
+void MR_CALL 
+backend_libs__rtti__tc_rtti_name_c_type_3_p_0(
+  MR_Word TCRttiName_4,
+  MR_String * CTypeName_5,
+  MR_Word * IsArray_6)
+{
+  {
+    MR_String GenTypeName_7;
+
+    backend_libs__rtti__tc_rtti_name_type_3_p_0(TCRttiName_4, &GenTypeName_7, IsArray_6);
+    *CTypeName_5 = mercury__string__append_2_f_0((MR_String) "MR_", GenTypeName_7);
+  }
+}
+
+void MR_CALL 
+backend_libs__rtti__ctor_rtti_name_c_type_3_p_0(
+  MR_Word RttiName_4,
+  MR_String * CTypeName_5,
+  MR_Word * IsArray_6)
+{
+  {
+    MR_String GenTypeName_7;
+
+    backend_libs__rtti__ctor_rtti_name_type_3_p_0(RttiName_4, &GenTypeName_7, IsArray_6);
+    *CTypeName_5 = mercury__string__f_43_43_2_f_0((MR_String) "MR_", GenTypeName_7);
+  }
+}
+
+void MR_CALL 
+backend_libs__rtti__rtti_id_maybe_element_c_type_3_p_0(
+  MR_Word HeadVar__1_1,
+  MR_String * CTypeName_2,
+  MR_Word * IsArray_3)
+{
+  if (((MR_tag((MR_Word) HeadVar__1_1)) == (MR_mktag((MR_Integer) 1))))
+  {
+    MR_Word RttiId_7 = ((MR_Word) (MR_hl_field(MR_mktag(1), HeadVar__1_1, (MR_Integer) 0)));
+    MR_Word IsArray0_10;
+
+    backend_libs__rtti__rtti_id_c_type_3_p_0(RttiId_7, CTypeName_2, &IsArray0_10);
+    switch (IsArray0_10) {
+      default: /*NOTREACHED*/ MR_assert(0);
+      case (MR_Integer) 0:
+        *IsArray_3 = (MR_Integer) 1;
+        break;
+      case (MR_Integer) 1:
+        {
+          {
+            mercury__require__unexpected_3_p_0((MR_String) "backend_libs.rtti", (MR_String) "predicate \140backend_libs.rtti.rtti_id_maybe_element_c_type\'/3", (MR_String) "base is not array");
+            return;
+          }
+        }
+        break;
+    }
+  }
+  else
+  {
+    MR_Word RttiId_4 = ((MR_Word) (MR_hl_field(MR_mktag(0), HeadVar__1_1, (MR_Integer) 0)));
+
+    backend_libs__rtti__rtti_id_c_type_3_p_0(RttiId_4, CTypeName_2, IsArray_3);
+  }
+}
+
+void MR_CALL 
+backend_libs__rtti__rtti_id_c_type_3_p_0(
+  MR_Word HeadVar__1_1,
+  MR_String * CTypeName_2,
+  MR_Word * IsArray_3)
+{
+  if (((MR_tag((MR_Word) HeadVar__1_1)) == (MR_mktag((MR_Integer) 0))))
+  {
+    MR_Word RttiName_5 = ((MR_Word) (MR_hl_field(MR_mktag(0), HeadVar__1_1, (MR_Integer) 1)));
+    MR_String GenTypeName_15;
+    MR_Word Var_4 = ((MR_Word) (MR_hl_field(MR_mktag(0), HeadVar__1_1, (MR_Integer) 0)));
+
+    backend_libs__rtti__ctor_rtti_name_type_3_p_0(RttiName_5, &GenTypeName_15, IsArray_3);
+    *CTypeName_2 = mercury__string__f_43_43_2_f_0((MR_String) "MR_", GenTypeName_15);
+  }
+  else
+  {
+    MR_Word TCRttiName_9 = ((MR_Word) (MR_hl_field(MR_mktag(1), HeadVar__1_1, (MR_Integer) 1)));
+    MR_String GenTypeName_20;
+    MR_Word Var_8 = ((MR_Word) (MR_hl_field(MR_mktag(1), HeadVar__1_1, (MR_Integer) 0)));
+
+    backend_libs__rtti__tc_rtti_name_type_3_p_0(TCRttiName_9, &GenTypeName_20, IsArray_3);
+    *CTypeName_2 = mercury__string__append_2_f_0((MR_String) "MR_", GenTypeName_20);
+  }
+}
+
+MR_Word MR_CALL 
+backend_libs__rtti__pseudo_type_info_would_incl_code_addr_1_f_0(
+  MR_Word PseudoTypeInfo_3)
+{
+  {
+    MR_Word InclCodeAddr_4;
+
+    switch (MR_tag((MR_Word) PseudoTypeInfo_3)) {
+      default: /*NOTREACHED*/ MR_assert(0);
+      case (MR_Integer) 0:
+        InclCodeAddr_4 = (MR_Integer) 1;
+        break;
+      case (MR_Integer) 1:
+      case (MR_Integer) 2:
+      case (MR_Integer) 3:
+        InclCodeAddr_4 = (MR_Integer) 0;
+        break;
+    }
+    return InclCodeAddr_4;
+  }
+}
+
+MR_Word MR_CALL 
+backend_libs__rtti__type_info_would_incl_code_addr_1_f_0(
+  MR_Word TypeInfo_3)
+{
+  {
+    MR_Word InclCodeAddr_4;
+
+    switch (MR_tag((MR_Word) TypeInfo_3)) {
+      default: /*NOTREACHED*/ MR_assert(0);
+      case (MR_Integer) 0:
+        InclCodeAddr_4 = (MR_Integer) 1;
+        break;
+      case (MR_Integer) 1:
+      case (MR_Integer) 2:
+        InclCodeAddr_4 = (MR_Integer) 0;
+        break;
+    }
+    return InclCodeAddr_4;
+  }
+}
+
+MR_Word MR_CALL 
+backend_libs__rtti__tc_rtti_name_would_include_code_addr_1_f_0(
+  MR_Word TCName_3)
+{
+  {
+    MR_Word InclCodeAddr_4;
+
+    switch (MR_tag((MR_Word) TCName_3)) {
+      default: /*NOTREACHED*/ MR_assert(0);
+      case (MR_Integer) 0:
+        InclCodeAddr_4 = (MR_Integer) 0;
+        break;
+      case (MR_Integer) 1:
+        InclCodeAddr_4 = (MR_Integer) 1;
+        break;
+      case (MR_Integer) 2:
+        InclCodeAddr_4 = (MR_Integer) 0;
+        break;
+      case (MR_Integer) 3:
+        InclCodeAddr_4 = (MR_Integer) 0;
+        break;
+    }
+    return InclCodeAddr_4;
+  }
+}
+
+MR_Word MR_CALL 
+backend_libs__rtti__rtti_id_would_include_code_addr_1_f_0(
+  MR_Word HeadVar__1_1)
+{
+  {
+    MR_Word HeadVar__2_2;
+
+    if (((MR_tag((MR_Word) HeadVar__1_1)) == (MR_mktag((MR_Integer) 0))))
+    {
+      MR_Word RttiName_4 = ((MR_Word) (MR_hl_field(MR_mktag(0), HeadVar__1_1, (MR_Integer) 1)));
+      MR_Word Var_3 = ((MR_Word) (MR_hl_field(MR_mktag(0), HeadVar__1_1, (MR_Integer) 0)));
+
+      HeadVar__2_2 = backend_libs__rtti__ctor_rtti_name_would_include_code_addr_1_f_0(RttiName_4);
+    }
+    else
+    {
+      MR_Word TCRttiName_6 = ((MR_Word) (MR_hl_field(MR_mktag(1), HeadVar__1_1, (MR_Integer) 1)));
+      MR_Word Var_5 = ((MR_Word) (MR_hl_field(MR_mktag(1), HeadVar__1_1, (MR_Integer) 0)));
+
+      switch (MR_tag((MR_Word) TCRttiName_6)) {
+        default: /*NOTREACHED*/ MR_assert(0);
+        case (MR_Integer) 0:
+          HeadVar__2_2 = (MR_Integer) 0;
+          break;
+        case (MR_Integer) 1:
+          HeadVar__2_2 = (MR_Integer) 1;
+          break;
+        case (MR_Integer) 2:
+          HeadVar__2_2 = (MR_Integer) 0;
+          break;
+        case (MR_Integer) 3:
+          HeadVar__2_2 = (MR_Integer) 0;
+          break;
+      }
+    }
+    return HeadVar__2_2;
+  }
+}
+
+MR_Word MR_CALL 
+backend_libs__rtti__ctor_rtti_name_would_include_code_addr_1_f_0(
+  MR_Word RttiName_3)
+{
+  {
+    MR_Word InclCodeAddr_4;
+
+    switch (MR_tag((MR_Word) RttiName_3)) {
+      default: /*NOTREACHED*/ MR_assert(0);
+      case (MR_Integer) 0:
+        switch (MR_unmkbody(RttiName_3)) {
+          default: /*NOTREACHED*/ MR_assert(0);
+          case (MR_Integer) 0:
+          case (MR_Integer) 1:
+          case (MR_Integer) 2:
+          case (MR_Integer) 3:
+          case (MR_Integer) 4:
+          case (MR_Integer) 5:
+          case (MR_Integer) 6:
+          case (MR_Integer) 7:
+          case (MR_Integer) 8:
+          case (MR_Integer) 9:
+          case (MR_Integer) 10:
+          case (MR_Integer) 12:
+            InclCodeAddr_4 = (MR_Integer) 0;
+            break;
+          case (MR_Integer) 11:
+            InclCodeAddr_4 = (MR_Integer) 1;
+            break;
+        }
+        break;
+      case (MR_Integer) 1:
+      case (MR_Integer) 2:
+        InclCodeAddr_4 = (MR_Integer) 0;
+        break;
+      case (MR_Integer) 3:
+        switch (((MR_Integer) (MR_Word) (MR_hl_field(MR_mktag(3), RttiName_3, (MR_Integer) 0)))) {
+          default: /*NOTREACHED*/ MR_assert(0);
+          case (MR_Integer) 0:
+          case (MR_Integer) 1:
+          case (MR_Integer) 2:
+          case (MR_Integer) 3:
+          case (MR_Integer) 4:
+          case (MR_Integer) 5:
+          case (MR_Integer) 6:
+          case (MR_Integer) 7:
+          case (MR_Integer) 8:
+          case (MR_Integer) 9:
+            InclCodeAddr_4 = (MR_Integer) 0;
+            break;
+          case (MR_Integer) 10:
+            {
+              MR_Word TypeInfo_19 = ((MR_Word) (MR_hl_field(MR_mktag(3), RttiName_3, (MR_Integer) 1)));
+
+              switch (MR_tag((MR_Word) TypeInfo_19)) {
+                default: /*NOTREACHED*/ MR_assert(0);
+                case (MR_Integer) 0:
+                  InclCodeAddr_4 = (MR_Integer) 1;
+                  break;
+                case (MR_Integer) 1:
+                case (MR_Integer) 2:
+                  InclCodeAddr_4 = (MR_Integer) 0;
+                  break;
+              }
+            }
+            break;
+          case (MR_Integer) 11:
+            {
+              MR_Word PseudoTypeInfo_20 = ((MR_Word) (MR_hl_field(MR_mktag(3), RttiName_3, (MR_Integer) 1)));
+
+              switch (MR_tag((MR_Word) PseudoTypeInfo_20)) {
+                default: /*NOTREACHED*/ MR_assert(0);
+                case (MR_Integer) 0:
+                  InclCodeAddr_4 = (MR_Integer) 1;
+                  break;
+                case (MR_Integer) 1:
+                case (MR_Integer) 2:
+                case (MR_Integer) 3:
+                  InclCodeAddr_4 = (MR_Integer) 0;
+                  break;
+              }
+            }
+            break;
+        }
+        break;
+    }
+    return InclCodeAddr_4;
+  }
+}
+
+MR_Word MR_CALL 
+backend_libs__rtti__du_functor_rtti_name_1_f_0(
+  MR_Word DuFunctor_3)
+{
+  {
+    MR_Word HeadVar__2_2;
+    MR_Integer Var_4 = ((MR_Integer) (MR_hl_field(MR_mktag(0), DuFunctor_3, (MR_Integer) 2)));
+    MR_String Var_5 = ((MR_String) (MR_hl_field(MR_mktag(0), DuFunctor_3, (MR_Integer) 0)));
+    MR_Integer Var_6 = ((MR_Integer) (MR_hl_field(MR_mktag(0), DuFunctor_3, (MR_Integer) 1)));
+    MR_Word Var_7 = ((MR_Word) (MR_hl_field(MR_mktag(0), DuFunctor_3, (MR_Integer) 3)));
+    MR_Word Var_8 = ((MR_Word) (MR_hl_field(MR_mktag(0), DuFunctor_3, (MR_Integer) 4)));
+    MR_Word Var_9 = ((MR_Word) (MR_hl_field(MR_mktag(0), DuFunctor_3, (MR_Integer) 5)));
+    MR_Word Var_10 = ((MR_Word) (MR_hl_field(MR_mktag(0), DuFunctor_3, (MR_Integer) 6)));
+
+    {
+      HeadVar__2_2 = (MR_Word) MR_mkword(MR_mktag(3), MR_new_object(MR_Word, ((MR_Integer) 2 * sizeof(MR_Word)), NULL, NULL));
+      MR_hl_field(MR_mktag(3), HeadVar__2_2, 0) = ((MR_Box) (MR_Word) ((MR_Integer) 7));
+      MR_hl_field(MR_mktag(3), HeadVar__2_2, 1) = ((MR_Box) (Var_4));
+    }
+    return HeadVar__2_2;
+  }
+}
+
+MR_Word MR_CALL 
+backend_libs__rtti__foreign_enum_functor_rtti_name_1_f_0(
+  MR_Word EnumFunctor_3)
+{
+  {
+    MR_Word HeadVar__2_2;
+    MR_Integer Var_4 = ((MR_Integer) (MR_hl_field(MR_mktag(0), EnumFunctor_3, (MR_Integer) 1)));
+    MR_String Var_5 = ((MR_String) (MR_hl_field(MR_mktag(0), EnumFunctor_3, (MR_Integer) 0)));
+    MR_String Var_6 = ((MR_String) (MR_hl_field(MR_mktag(0), EnumFunctor_3, (MR_Integer) 2)));
+
+    {
+      HeadVar__2_2 = (MR_Word) MR_mkword(MR_mktag(3), MR_new_object(MR_Word, ((MR_Integer) 2 * sizeof(MR_Word)), NULL, NULL));
+      MR_hl_field(MR_mktag(3), HeadVar__2_2, 0) = ((MR_Box) (MR_Word) ((MR_Integer) 6));
+      MR_hl_field(MR_mktag(3), HeadVar__2_2, 1) = ((MR_Box) (Var_4));
+    }
+    return HeadVar__2_2;
+  }
+}
+
+MR_Word MR_CALL 
+backend_libs__rtti__enum_functor_rtti_name_1_f_0(
+  MR_Word EnumFunctor_3)
+{
+  {
+    MR_Word HeadVar__2_2;
+    MR_Integer Var_4 = ((MR_Integer) (MR_hl_field(MR_mktag(0), EnumFunctor_3, (MR_Integer) 1)));
+    MR_String Var_5 = ((MR_String) (MR_hl_field(MR_mktag(0), EnumFunctor_3, (MR_Integer) 0)));
+
+    {
+      HeadVar__2_2 = (MR_Word) MR_mkword(MR_mktag(3), MR_new_object(MR_Word, ((MR_Integer) 2 * sizeof(MR_Word)), NULL, NULL));
+      MR_hl_field(MR_mktag(3), HeadVar__2_2, 0) = ((MR_Box) (MR_Word) ((MR_Integer) 5));
+      MR_hl_field(MR_mktag(3), HeadVar__2_2, 1) = ((MR_Box) (Var_4));
+    }
+    return HeadVar__2_2;
+  }
+}
+
+MR_Word MR_CALL 
+backend_libs__rtti__du_arg_info_width_1_f_0(
+  MR_Word ArgInfo_3)
+{
+  {
+    MR_Word HeadVar__2_2 = ((MR_Word) (MR_hl_field(MR_mktag(0), ArgInfo_3, (MR_Integer) 2)));
+    MR_Word Var_4 = ((MR_Word) (MR_hl_field(MR_mktag(0), ArgInfo_3, (MR_Integer) 0)));
+    MR_Word Var_5 = ((MR_Word) (MR_hl_field(MR_mktag(0), ArgInfo_3, (MR_Integer) 1)));
+
+    return HeadVar__2_2;
+  }
+}
+
+MR_Word MR_CALL 
+backend_libs__rtti__du_arg_info_type_1_f_0(
+  MR_Word ArgInfo_3)
+{
+  {
+    MR_Word HeadVar__2_2 = ((MR_Word) (MR_hl_field(MR_mktag(0), ArgInfo_3, (MR_Integer) 1)));
+    MR_Word Var_4 = ((MR_Word) (MR_hl_field(MR_mktag(0), ArgInfo_3, (MR_Integer) 0)));
+    MR_Word Var_5 = ((MR_Word) (MR_hl_field(MR_mktag(0), ArgInfo_3, (MR_Integer) 2)));
+
+    return HeadVar__2_2;
+  }
+}
+
+MR_Word MR_CALL 
+backend_libs__rtti__du_arg_info_name_1_f_0(
+  MR_Word ArgInfo_3)
+{
+  {
+    MR_Word HeadVar__2_2 = ((MR_Word) (MR_hl_field(MR_mktag(0), ArgInfo_3, (MR_Integer) 0)));
+    MR_Word Var_4 = ((MR_Word) (MR_hl_field(MR_mktag(0), ArgInfo_3, (MR_Integer) 1)));
+    MR_Word Var_5 = ((MR_Word) (MR_hl_field(MR_mktag(0), ArgInfo_3, (MR_Integer) 2)));
+
+    return HeadVar__2_2;
+  }
+}
+
+MR_Integer MR_CALL 
+backend_libs__rtti__type_ctor_details_num_functors_1_f_0(
+  MR_Word TypeCtorDetails_3)
+{
+  {
+    MR_Integer NumFunctors_4;
+
+    switch (MR_tag((MR_Word) TypeCtorDetails_3)) {
+      default: /*NOTREACHED*/ MR_assert(0);
+      case (MR_Integer) 0:
+        {
+          MR_Word EnumFunctors_6 = ((MR_Word) (MR_hl_field(MR_mktag(0), TypeCtorDetails_3, (MR_Integer) 1)));
+          MR_Word Var_5 = ((MR_Word) (MR_hl_field(MR_mktag(0), TypeCtorDetails_3, (MR_Integer) 0)));
+          MR_Word Var_7 = ((MR_Word) (MR_hl_field(MR_mktag(0), TypeCtorDetails_3, (MR_Integer) 2)));
+          MR_Word Var_8 = ((MR_Word) (MR_hl_field(MR_mktag(0), TypeCtorDetails_3, (MR_Integer) 3)));
+          MR_Word Var_9 = ((MR_Word) (MR_hl_field(MR_mktag(0), TypeCtorDetails_3, (MR_Integer) 4)));
+          MR_Word Var_10 = ((MR_Word) (MR_hl_field(MR_mktag(0), TypeCtorDetails_3, (MR_Integer) 5)));
+
+          mercury__list__length_2_p_0((MR_Word) &backend_libs__rtti__backend_libs__rtti__type_ctor_info_enum_functor_0, EnumFunctors_6, &NumFunctors_4);
+        }
+        break;
+      case (MR_Integer) 1:
+        {
+          MR_Word ForeignFunctors_13 = ((MR_Word) (MR_hl_field(MR_mktag(1), TypeCtorDetails_3, (MR_Integer) 2)));
+          MR_Word Var_11 = ((MR_Word) (MR_hl_field(MR_mktag(1), TypeCtorDetails_3, (MR_Integer) 0)));
+          MR_Word Var_12 = ((MR_Word) (MR_hl_field(MR_mktag(1), TypeCtorDetails_3, (MR_Integer) 1)));
+          MR_Word Var_14 = ((MR_Word) (MR_hl_field(MR_mktag(1), TypeCtorDetails_3, (MR_Integer) 3)));
+          MR_Word Var_15 = ((MR_Word) (MR_hl_field(MR_mktag(1), TypeCtorDetails_3, (MR_Integer) 4)));
+          MR_Word Var_16 = ((MR_Word) (MR_hl_field(MR_mktag(1), TypeCtorDetails_3, (MR_Integer) 5)));
+
+          mercury__list__length_2_p_0((MR_Word) &backend_libs__rtti__backend_libs__rtti__type_ctor_info_foreign_enum_functor_0, ForeignFunctors_13, &NumFunctors_4);
+        }
+        break;
+      case (MR_Integer) 2:
+        {
+          MR_Word DuFunctors_18 = ((MR_Word) (MR_hl_field(MR_mktag(2), TypeCtorDetails_3, (MR_Integer) 1)));
+          MR_Word Var_17 = ((MR_Word) (MR_hl_field(MR_mktag(2), TypeCtorDetails_3, (MR_Integer) 0)));
+          MR_Word Var_19 = ((MR_Word) (MR_hl_field(MR_mktag(2), TypeCtorDetails_3, (MR_Integer) 2)));
+          MR_Word Var_20 = ((MR_Word) (MR_hl_field(MR_mktag(2), TypeCtorDetails_3, (MR_Integer) 3)));
+          MR_Word Var_21 = ((MR_Word) (MR_hl_field(MR_mktag(2), TypeCtorDetails_3, (MR_Integer) 4)));
+
+          mercury__list__length_2_p_0((MR_Word) &backend_libs__rtti__backend_libs__rtti__type_ctor_info_du_functor_0, DuFunctors_18, &NumFunctors_4);
+        }
+        break;
+      case (MR_Integer) 3:
+        switch (((MR_Integer) (MR_Word) (MR_hl_field(MR_mktag(3), TypeCtorDetails_3, (MR_Integer) 0)))) {
+          default: /*NOTREACHED*/ MR_assert(0);
+          case (MR_Integer) 0:
+            NumFunctors_4 = (MR_Integer) 1;
+            break;
+          case (MR_Integer) 1:
+          case (MR_Integer) 2:
+          case (MR_Integer) 3:
+          case (MR_Integer) 4:
+            NumFunctors_4 = (MR_Integer) -1;
+            break;
+        }
+        break;
+    }
+    return NumFunctors_4;
+  }
+}
+
+MR_Integer MR_CALL 
+backend_libs__rtti__type_ctor_details_num_ptags_1_f_0(
+  MR_Word TypeCtorDetails_3)
+{
+  {
+    MR_Integer NumPtags_4;
+
+    switch (MR_tag((MR_Word) TypeCtorDetails_3)) {
+      default: /*NOTREACHED*/ MR_assert(0);
+      case (MR_Integer) 0:
+      case (MR_Integer) 1:
+        NumPtags_4 = (MR_Integer) -1;
+        break;
+      case (MR_Integer) 2:
+        {
+          MR_Word TypeCtorInfo_31_31 = (MR_Word) &mercury__builtin__builtin__type_ctor_info_int_0;
+          MR_Word PtagMap_25 = ((MR_Word) (MR_hl_field(MR_mktag(2), TypeCtorDetails_3, (MR_Integer) 2)));
+          MR_Word Ptags_28;
+          MR_Integer LastPtag_29;
+          MR_Word Var_23 = ((MR_Word) (MR_hl_field(MR_mktag(2), TypeCtorDetails_3, (MR_Integer) 0)));
+          MR_Word Var_24 = ((MR_Word) (MR_hl_field(MR_mktag(2), TypeCtorDetails_3, (MR_Integer) 1)));
+          MR_Word Var_26 = ((MR_Word) (MR_hl_field(MR_mktag(2), TypeCtorDetails_3, (MR_Integer) 3)));
+          MR_Word Var_27 = ((MR_Word) (MR_hl_field(MR_mktag(2), TypeCtorDetails_3, (MR_Integer) 4)));
+          MR_Box conv0_LastPtag_29;
+
+          mercury__map__keys_2_p_0(TypeCtorInfo_31_31, (MR_Word) &backend_libs__rtti__backend_libs__rtti__type_ctor_info_sectag_table_0, PtagMap_25, &Ptags_28);
+          mercury__list__det_last_2_p_0(TypeCtorInfo_31_31, Ptags_28, &conv0_LastPtag_29);
+          LastPtag_29 = ((MR_Integer) conv0_LastPtag_29);
+          NumPtags_4 = (LastPtag_29 + (MR_Integer) 1);
+        }
+        break;
+      case (MR_Integer) 3:
+        NumPtags_4 = (MR_Integer) -1;
+        break;
+    }
+    return NumPtags_4;
+  }
+}
+
+MR_Word MR_CALL 
+backend_libs__rtti__maybe_pseudo_type_info_or_self_to_rtti_data_1_f_0(
+  MR_Word HeadVar__1_1)
+{
+  {
+    MR_Word HeadVar__2_2;
+
+    switch (MR_tag((MR_Word) HeadVar__1_1)) {
+      default: /*NOTREACHED*/ MR_assert(0);
+      case (MR_Integer) 0:
+        {
+          HeadVar__2_2 = (MR_Word) MR_mkword(MR_mktag(3), &backend_libs__rtti_scalar_common_1[19]);
+        }
+        break;
+      case (MR_Integer) 1:
+        {
+          MR_Word PseudoTypeInfo_3 = ((MR_Word) (MR_hl_field(MR_mktag(1), HeadVar__1_1, (MR_Integer) 0)));
+
+          {
+            HeadVar__2_2 = (MR_Word) MR_mkword(MR_mktag(3), MR_new_object(MR_Word, ((MR_Integer) 2 * sizeof(MR_Word)), NULL, NULL));
+            MR_hl_field(MR_mktag(3), HeadVar__2_2, 0) = ((MR_Box) (MR_Word) ((MR_Integer) 1));
+            MR_hl_field(MR_mktag(3), HeadVar__2_2, 1) = ((MR_Box) (PseudoTypeInfo_3));
+          }
+        }
+        break;
+      case (MR_Integer) 2:
+        {
+          MR_Word TypeInfo_4 = ((MR_Word) (MR_hl_field(MR_mktag(2), HeadVar__1_1, (MR_Integer) 0)));
+
+          {
+            HeadVar__2_2 = (MR_Word) MR_mkword(MR_mktag(3), MR_new_object(MR_Word, ((MR_Integer) 2 * sizeof(MR_Word)), NULL, NULL));
+            MR_hl_field(MR_mktag(3), HeadVar__2_2, 0) = ((MR_Box) (MR_Word) ((MR_Integer) 0));
+            MR_hl_field(MR_mktag(3), HeadVar__2_2, 1) = ((MR_Box) (TypeInfo_4));
+          }
+        }
+        break;
+    }
+    return HeadVar__2_2;
+  }
+}
+
+MR_Word MR_CALL 
+backend_libs__rtti__maybe_pseudo_type_info_to_rtti_data_1_f_0(
+  MR_Word HeadVar__1_1)
+{
+  {
+    MR_Word HeadVar__2_2;
+
+    if (((MR_tag((MR_Word) HeadVar__1_1)) == (MR_mktag((MR_Integer) 1))))
+    {
+      MR_Word TypeInfo_4 = ((MR_Word) (MR_hl_field(MR_mktag(1), HeadVar__1_1, (MR_Integer) 0)));
+
+      {
+        HeadVar__2_2 = (MR_Word) MR_mkword(MR_mktag(3), MR_new_object(MR_Word, ((MR_Integer) 2 * sizeof(MR_Word)), NULL, NULL));
+        MR_hl_field(MR_mktag(3), HeadVar__2_2, 0) = ((MR_Box) (MR_Word) ((MR_Integer) 0));
+        MR_hl_field(MR_mktag(3), HeadVar__2_2, 1) = ((MR_Box) (TypeInfo_4));
+      }
+    }
+    else
+    {
+      MR_Word PseudoTypeInfo_3 = ((MR_Word) (MR_hl_field(MR_mktag(0), HeadVar__1_1, (MR_Integer) 0)));
+
+      {
+        HeadVar__2_2 = (MR_Word) MR_mkword(MR_mktag(3), MR_new_object(MR_Word, ((MR_Integer) 2 * sizeof(MR_Word)), NULL, NULL));
+        MR_hl_field(MR_mktag(3), HeadVar__2_2, 0) = ((MR_Box) (MR_Word) ((MR_Integer) 1));
+        MR_hl_field(MR_mktag(3), HeadVar__2_2, 1) = ((MR_Box) (PseudoTypeInfo_3));
+      }
+    }
+    return HeadVar__2_2;
+  }
+}
+
+MR_Word MR_CALL 
+backend_libs__rtti__type_info_to_rtti_data_1_f_0(
+  MR_Word TypeInfo_3)
+{
+  {
+    MR_Word HeadVar__2_2;
+
+    {
+      HeadVar__2_2 = (MR_Word) MR_mkword(MR_mktag(3), MR_new_object(MR_Word, ((MR_Integer) 2 * sizeof(MR_Word)), NULL, NULL));
+      MR_hl_field(MR_mktag(3), HeadVar__2_2, 0) = ((MR_Box) (MR_Word) ((MR_Integer) 0));
+      MR_hl_field(MR_mktag(3), HeadVar__2_2, 1) = ((MR_Box) (TypeInfo_3));
+    }
+    return HeadVar__2_2;
+  }
+}
+
+static MR_bool MR_CALL 
+backend_libs__rtti__type_ctor_rep_to_string_3_p_0_1(
+  MR_Box closure_arg)
+{
+  {
+    MR_bool succeeded;
+    MR_Box closure = closure_arg;
+
+    succeeded = backend_libs__rtti__IntroducedFrom__pred__type_ctor_rep_to_string__1562__1_2_p_0(((MR_Word) (MR_hl_field(MR_mktag(0), closure, (MR_Integer) 3))), ((MR_Word) (MR_hl_field(MR_mktag(0), closure, (MR_Integer) 4))));
+    return succeeded;
+  }
+}
+
+void MR_CALL 
+backend_libs__rtti__type_ctor_rep_to_string_3_p_0(
+  MR_Word TypeCtorData_4,
+  MR_Word * TargetPrefixes_5,
+  MR_String * RepStr_6)
+{
+  {
+    MR_bool succeeded;
+    MR_Word TypeCtorDetails_7;
+    MR_Word Var_51;
+    MR_String Var_52;
+    MR_Integer Var_53;
+    MR_Integer Var_50;
+    MR_Word Var_54;
+    MR_Word Var_55;
+    MR_Word Var_56;
+
+    *TargetPrefixes_5 = (MR_Word) &backend_libs__rtti_scalar_common_1[18];
+    Var_50 = ((MR_Integer) (MR_hl_field(MR_mktag(0), TypeCtorData_4, (MR_Integer) 0)));
+    Var_51 = ((MR_Word) (MR_hl_field(MR_mktag(0), TypeCtorData_4, (MR_Integer) 1)));
+    Var_52 = ((MR_String) (MR_hl_field(MR_mktag(0), TypeCtorData_4, (MR_Integer) 2)));
+    Var_53 = ((MR_Integer) (MR_hl_field(MR_mktag(0), TypeCtorData_4, (MR_Integer) 3)));
+    Var_54 = ((MR_Word) (MR_hl_field(MR_mktag(0), TypeCtorData_4, (MR_Integer) 4)));
+    Var_55 = ((MR_Word) (MR_hl_field(MR_mktag(0), TypeCtorData_4, (MR_Integer) 5)));
+    Var_56 = ((MR_Word) (MR_hl_field(MR_mktag(0), TypeCtorData_4, (MR_Integer) 6)));
+    TypeCtorDetails_7 = ((MR_Word) (MR_hl_field(MR_mktag(0), TypeCtorData_4, (MR_Integer) 7)));
+    switch (MR_tag((MR_Word) TypeCtorDetails_7)) {
+      default: /*NOTREACHED*/ MR_assert(0);
+      case (MR_Integer) 0:
+        {
+          MR_Word TypeCtorUserEq_8 = ((MR_Word) (MR_hl_field(MR_mktag(0), TypeCtorDetails_7, (MR_Integer) 0)));
+          MR_Word IsDummy_12 = ((MR_Word) (MR_hl_field(MR_mktag(0), TypeCtorDetails_7, (MR_Integer) 4)));
+          MR_Word Var_9 = ((MR_Word) (MR_hl_field(MR_mktag(0), TypeCtorDetails_7, (MR_Integer) 1)));
+          MR_Word Var_10 = ((MR_Word) (MR_hl_field(MR_mktag(0), TypeCtorDetails_7, (MR_Integer) 2)));
+          MR_Word Var_11 = ((MR_Word) (MR_hl_field(MR_mktag(0), TypeCtorDetails_7, (MR_Integer) 3)));
+          MR_Word Var_13 = ((MR_Word) (MR_hl_field(MR_mktag(0), TypeCtorDetails_7, (MR_Integer) 5)));
+
+          switch (IsDummy_12) {
+            default: /*NOTREACHED*/ MR_assert(0);
+            case (MR_Integer) 0:
+              switch (TypeCtorUserEq_8) {
+                default: /*NOTREACHED*/ MR_assert(0);
+                case (MR_Integer) 0:
+                  *RepStr_6 = (MR_String) "MR_TYPECTOR_REP_ENUM";
+                  break;
+                case (MR_Integer) 1:
+                  *RepStr_6 = (MR_String) "MR_TYPECTOR_REP_ENUM_USEREQ";
+                  break;
+              }
+              break;
+            case (MR_Integer) 1:
+              {
+                MR_Word Var_42;
+
+                {
+                  Var_42 = (MR_Word) MR_new_object(MR_Word, ((MR_Integer) 5 * sizeof(MR_Word)), NULL, NULL);
+                  MR_hl_field(MR_mktag(0), Var_42, 0) = ((MR_Box) (&backend_libs__rtti_scalar_common_5[3]));
+                  MR_hl_field(MR_mktag(0), Var_42, 1) = ((MR_Box) (backend_libs__rtti__type_ctor_rep_to_string_3_p_0_1));
+                  MR_hl_field(MR_mktag(0), Var_42, 2) = ((MR_Box) (MR_Word) ((MR_Integer) 2));
+                  MR_hl_field(MR_mktag(0), Var_42, 3) = ((MR_Box) (TypeCtorUserEq_8));
+                  MR_hl_field(MR_mktag(0), Var_42, 4) = ((MR_Box) ((MR_Integer) 0));
+                }
+                mercury__require__expect_4_p_0(Var_42, (MR_String) "backend_libs.rtti", (MR_String) "predicate \140backend_libs.rtti.type_ctor_rep_to_string\'/3", (MR_String) "dummy type with user equality");
+                *RepStr_6 = (MR_String) "MR_TYPECTOR_REP_DUMMY";
+              }
+              break;
+          }
+        }
+        break;
+      case (MR_Integer) 1:
+        {
+          MR_Word TypeCtorUserEq_47 = ((MR_Word) (MR_hl_field(MR_mktag(1), TypeCtorDetails_7, (MR_Integer) 1)));
+          MR_Word Var_14 = ((MR_Word) (MR_hl_field(MR_mktag(1), TypeCtorDetails_7, (MR_Integer) 0)));
+          MR_Word Var_15 = ((MR_Word) (MR_hl_field(MR_mktag(1), TypeCtorDetails_7, (MR_Integer) 2)));
+          MR_Word Var_16 = ((MR_Word) (MR_hl_field(MR_mktag(1), TypeCtorDetails_7, (MR_Integer) 3)));
+          MR_Word Var_17 = ((MR_Word) (MR_hl_field(MR_mktag(1), TypeCtorDetails_7, (MR_Integer) 4)));
+          MR_Word Var_18 = ((MR_Word) (MR_hl_field(MR_mktag(1), TypeCtorDetails_7, (MR_Integer) 5)));
+
+          switch (TypeCtorUserEq_47) {
+            default: /*NOTREACHED*/ MR_assert(0);
+            case (MR_Integer) 0:
+              *RepStr_6 = (MR_String) "MR_TYPECTOR_REP_FOREIGN_ENUM";
+              break;
+            case (MR_Integer) 1:
+              *RepStr_6 = (MR_String) "MR_TYPECTOR_REP_FOREIGN_ENUM_USEREQ";
+              break;
+          }
+        }
+        break;
+      case (MR_Integer) 2:
+        {
+          MR_Word TypeCtorUserEq_48 = ((MR_Word) (MR_hl_field(MR_mktag(2), TypeCtorDetails_7, (MR_Integer) 0)));
+          MR_Word Var_19 = ((MR_Word) (MR_hl_field(MR_mktag(2), TypeCtorDetails_7, (MR_Integer) 1)));
+          MR_Word Var_20 = ((MR_Word) (MR_hl_field(MR_mktag(2), TypeCtorDetails_7, (MR_Integer) 2)));
+          MR_Word Var_21 = ((MR_Word) (MR_hl_field(MR_mktag(2), TypeCtorDetails_7, (MR_Integer) 3)));
+          MR_Word Var_22 = ((MR_Word) (MR_hl_field(MR_mktag(2), TypeCtorDetails_7, (MR_Integer) 4)));
+
+          switch (TypeCtorUserEq_48) {
+            default: /*NOTREACHED*/ MR_assert(0);
+            case (MR_Integer) 0:
+              *RepStr_6 = (MR_String) "MR_TYPECTOR_REP_DU";
+              break;
+            case (MR_Integer) 1:
+              *RepStr_6 = (MR_String) "MR_TYPECTOR_REP_DU_USEREQ";
+              break;
+          }
+        }
+        break;
+      case (MR_Integer) 3:
+        switch (((MR_Integer) (MR_Word) (MR_hl_field(MR_mktag(3), TypeCtorDetails_7, (MR_Integer) 0)))) {
+          default: /*NOTREACHED*/ MR_assert(0);
+          case (MR_Integer) 0:
+            {
+              MR_Word NotagFunctor_23 = ((MR_Word) (MR_hl_field(MR_mktag(3), TypeCtorDetails_7, (MR_Integer) 2)));
+              MR_Word NotagEqvType_24 = ((MR_Word) (MR_hl_field(MR_mktag(0), NotagFunctor_23, (MR_Integer) 1)));
+              MR_Word TypeCtorUserEq_49 = ((MR_Word) (MR_hl_field(MR_mktag(3), TypeCtorDetails_7, (MR_Integer) 1)));
+              MR_String Var_57 = ((MR_String) (MR_hl_field(MR_mktag(0), NotagFunctor_23, (MR_Integer) 0)));
+              MR_Word Var_58 = ((MR_Word) (MR_hl_field(MR_mktag(0), NotagFunctor_23, (MR_Integer) 2)));
+              MR_Word Var_59 = ((MR_Word) (MR_hl_field(MR_mktag(0), NotagFunctor_23, (MR_Integer) 3)));
+
+              if (((MR_tag((MR_Word) NotagEqvType_24)) == (MR_mktag((MR_Integer) 1))))
+                switch (TypeCtorUserEq_49) {
+                  default: /*NOTREACHED*/ MR_assert(0);
+                  case (MR_Integer) 0:
+                    *RepStr_6 = (MR_String) "MR_TYPECTOR_REP_NOTAG_GROUND";
+                    break;
+                  case (MR_Integer) 1:
+                    *RepStr_6 = (MR_String) "MR_TYPECTOR_REP_NOTAG_GROUND_USEREQ";
+                    break;
+                }
+              else
+                switch (TypeCtorUserEq_49) {
+                  default: /*NOTREACHED*/ MR_assert(0);
+                  case (MR_Integer) 0:
+                    *RepStr_6 = (MR_String) "MR_TYPECTOR_REP_NOTAG";
+                    break;
+                  case (MR_Integer) 1:
+                    *RepStr_6 = (MR_String) "MR_TYPECTOR_REP_NOTAG_USEREQ";
+                    break;
+                }
+            }
+            break;
+          case (MR_Integer) 1:
+            {
+              MR_Word EqvType_29 = ((MR_Word) (MR_hl_field(MR_mktag(3), TypeCtorDetails_7, (MR_Integer) 1)));
+
+              if (((MR_tag((MR_Word) EqvType_29)) == (MR_mktag((MR_Integer) 1))))
+                *RepStr_6 = (MR_String) "MR_TYPECTOR_REP_EQUIV_GROUND";
+              else
+                *RepStr_6 = (MR_String) "MR_TYPECTOR_REP_EQUIV";
+            }
+            break;
+          case (MR_Integer) 2:
+            {
+              MR_Word BuiltinCtor_32 = ((MR_Word) (MR_hl_field(MR_mktag(3), TypeCtorDetails_7, (MR_Integer) 1)));
+
+              switch (MR_tag((MR_Word) BuiltinCtor_32)) {
+                default: /*NOTREACHED*/ MR_assert(0);
+                case (MR_Integer) 0:
+                  switch (MR_unmkbody(BuiltinCtor_32)) {
+                    default: /*NOTREACHED*/ MR_assert(0);
+                    case (MR_Integer) 0:
+                      *RepStr_6 = (MR_String) "MR_TYPECTOR_REP_INT";
+                      break;
+                    case (MR_Integer) 1:
+                      *RepStr_6 = (MR_String) "MR_TYPECTOR_REP_UINT";
+                      break;
+                    case (MR_Integer) 2:
+                      *RepStr_6 = (MR_String) "MR_TYPECTOR_REP_INT8";
+                      break;
+                    case (MR_Integer) 3:
+                      *RepStr_6 = (MR_String) "MR_TYPECTOR_REP_UINT8";
+                      break;
+                    case (MR_Integer) 4:
+                      *RepStr_6 = (MR_String) "MR_TYPECTOR_REP_INT16";
+                      break;
+                    case (MR_Integer) 5:
+                      *RepStr_6 = (MR_String) "MR_TYPECTOR_REP_UINT16";
+                      break;
+                    case (MR_Integer) 6:
+                      *RepStr_6 = (MR_String) "MR_TYPECTOR_REP_INT32";
+                      break;
+                    case (MR_Integer) 7:
+                      *RepStr_6 = (MR_String) "MR_TYPECTOR_REP_UINT32";
+                      break;
+                    case (MR_Integer) 8:
+                      *RepStr_6 = (MR_String) "MR_TYPECTOR_REP_INT64";
+                      break;
+                    case (MR_Integer) 9:
+                      *RepStr_6 = (MR_String) "MR_TYPECTOR_REP_UINT64";
+                      break;
+                    case (MR_Integer) 10:
+                      *RepStr_6 = (MR_String) "MR_TYPECTOR_REP_FLOAT";
+                      break;
+                    case (MR_Integer) 11:
+                      *RepStr_6 = (MR_String) "MR_TYPECTOR_REP_CHAR";
+                      break;
+                    case (MR_Integer) 12:
+                      *RepStr_6 = (MR_String) "MR_TYPECTOR_REP_STRING";
+                      break;
+                    case (MR_Integer) 13:
+                      *RepStr_6 = (MR_String) "MR_TYPECTOR_REP_VOID";
+                      break;
+                    case (MR_Integer) 14:
+                      *RepStr_6 = (MR_String) "MR_TYPECTOR_REP_PRED";
+                      break;
+                    case (MR_Integer) 15:
+                      *RepStr_6 = (MR_String) "MR_TYPECTOR_REP_FUNC";
+                      break;
+                    case (MR_Integer) 16:
+                      *RepStr_6 = (MR_String) "MR_TYPECTOR_REP_TUPLE";
+                      break;
+                    case (MR_Integer) 17:
+                      *RepStr_6 = (MR_String) "MR_TYPECTOR_REP_REFERENCE";
+                      break;
+                    case (MR_Integer) 18:
+                      *RepStr_6 = (MR_String) "MR_TYPECTOR_REP_TYPEDESC";
+                      break;
+                    case (MR_Integer) 19:
+                      *RepStr_6 = (MR_String) "MR_TYPECTOR_REP_PSEUDOTYPEDESC";
+                      break;
+                    case (MR_Integer) 20:
+                      *RepStr_6 = (MR_String) "MR_TYPECTOR_REP_TYPECTORDESC";
+                      break;
+                  }
+                  break;
+                case (MR_Integer) 1:
+                  {
+                    MR_Word Var_86 = ((MR_Word) (MR_hl_field(MR_mktag(1), BuiltinCtor_32, (MR_Integer) 0)));
+
+                    switch (Var_86) {
+                      default: /*NOTREACHED*/ MR_assert(0);
+                      case (MR_Integer) 1:
+                        *RepStr_6 = (MR_String) "MR_TYPECTOR_REP_C_POINTER";
+                        break;
+                      case (MR_Integer) 0:
+                        *RepStr_6 = (MR_String) "MR_TYPECTOR_REP_STABLE_C_POINTER";
+                        break;
+                    }
+                  }
+                  break;
+              }
+            }
+            break;
+          case (MR_Integer) 3:
+            {
+              MR_Word ImplCtor_33 = ((MR_Word) (MR_hl_field(MR_mktag(3), TypeCtorDetails_7, (MR_Integer) 1)));
+
+              *RepStr_6 = ((&backend_libs__rtti_vector_common_6[4 + ImplCtor_33]))->backend_libs__rtti__vector_common_type_6_0__vct_6_f_0;
+            }
+            break;
+          case (MR_Integer) 4:
+            {
+              MR_Word IsStable_34 = ((MR_Word) (MR_hl_field(MR_mktag(3), TypeCtorDetails_7, (MR_Integer) 1)));
+              MR_Word TypeCtor_38;
+              MR_Word Var_41;
+
+              {
+                Var_41 = (MR_Word) MR_mkword(MR_mktag(1), MR_new_object(MR_Word, ((MR_Integer) 2 * sizeof(MR_Word)), NULL, NULL));
+                MR_hl_field(MR_mktag(1), Var_41, 0) = ((MR_Box) (Var_51));
+                MR_hl_field(MR_mktag(1), Var_41, 1) = ((MR_Box) (Var_52));
+              }
+              {
+                TypeCtor_38 = (MR_Word) MR_new_object(MR_Word, ((MR_Integer) 2 * sizeof(MR_Word)), NULL, NULL);
+                MR_hl_field(MR_mktag(0), TypeCtor_38, 0) = ((MR_Box) (Var_41));
+                MR_hl_field(MR_mktag(0), TypeCtor_38, 1) = ((MR_Box) (Var_53));
+              }
+              succeeded = parse_tree__prog_type__type_ctor_is_array_1_p_0(TypeCtor_38);
+              if (succeeded)
+                *RepStr_6 = (MR_String) "MR_TYPECTOR_REP_ARRAY";
+              else
+              {
+                succeeded = parse_tree__prog_type__type_ctor_is_bitmap_1_p_0(TypeCtor_38);
+                if (succeeded)
+                  *RepStr_6 = (MR_String) "MR_TYPECTOR_REP_BITMAP";
+                else
+                  switch (IsStable_34) {
+                    default: /*NOTREACHED*/ MR_assert(0);
+                    case (MR_Integer) 1:
+                      *RepStr_6 = (MR_String) "MR_TYPECTOR_REP_FOREIGN";
+                      break;
+                    case (MR_Integer) 0:
+                      *RepStr_6 = (MR_String) "MR_TYPECTOR_REP_STABLE_FOREIGN";
+                      break;
+                  }
+              }
+            }
+            break;
+        }
+        break;
+    }
+  }
+}
+
+void MR_CALL 
+backend_libs__rtti__functor_subtype_info_to_string_3_p_0(
+  MR_Word FunctorSubtypeInfo_4,
+  MR_Word * TargetPrefixes_5,
+  MR_String * String_6)
+{
+  {
+    *TargetPrefixes_5 = (MR_Word) &backend_libs__rtti_scalar_common_1[17];
+    switch (FunctorSubtypeInfo_4) {
+      default: /*NOTREACHED*/ MR_assert(0);
+      case (MR_Integer) 1:
+        *String_6 = (MR_String) "MR_FUNCTOR_SUBTYPE_EXISTS";
+        break;
+      case (MR_Integer) 0:
+        *String_6 = (MR_String) "MR_FUNCTOR_SUBTYPE_NONE";
+        break;
+    }
+  }
+}
+
+void MR_CALL 
+backend_libs__rtti__sectag_and_locn_to_locn_string_3_p_0(
+  MR_Word SecTag_4,
+  MR_Word * TargetPrefixes_5,
+  MR_String * String_6)
+{
+  {
+    *TargetPrefixes_5 = (MR_Word) &backend_libs__rtti_scalar_common_1[16];
+    switch (MR_tag((MR_Word) SecTag_4)) {
+      default: /*NOTREACHED*/ MR_assert(0);
+      case (MR_Integer) 0:
+        switch (MR_unmkbody(SecTag_4)) {
+          default: /*NOTREACHED*/ MR_assert(0);
+          case (MR_Integer) 0:
+            *String_6 = (MR_String) "MR_SECTAG_NONE";
+            break;
+          case (MR_Integer) 1:
+            *String_6 = (MR_String) "MR_SECTAG_NONE_DIRECT_ARG";
+            break;
+        }
+        break;
+      case (MR_Integer) 1:
+        *String_6 = (MR_String) "MR_SECTAG_LOCAL";
+        break;
+      case (MR_Integer) 2:
+        *String_6 = (MR_String) "MR_SECTAG_REMOTE";
+        break;
+    }
+  }
+}
+
+void MR_CALL 
+backend_libs__rtti__sectag_locn_to_string_3_p_0(
+  MR_Word SecTag_4,
+  MR_Word * TargetPrefixes_5,
+  MR_String * String_6)
+{
+  {
+    *TargetPrefixes_5 = (MR_Word) &backend_libs__rtti_scalar_common_1[16];
+    *String_6 = ((&backend_libs__rtti_vector_common_6[0 + SecTag_4]))->backend_libs__rtti__vector_common_type_6_0__vct_6_f_0;
+  }
+}
+
+void MR_CALL 
+backend_libs__rtti__pred_or_func_to_string_3_p_0(
+  MR_Word PredOrFunc_4,
+  MR_Word * TargetPrefixes_5,
+  MR_String * String_6)
+{
+  {
+    *TargetPrefixes_5 = (MR_Word) &backend_libs__rtti_scalar_common_1[15];
+    switch (PredOrFunc_4) {
+      default: /*NOTREACHED*/ MR_assert(0);
+      case (MR_Integer) 1:
+        *String_6 = (MR_String) "MR_FUNCTION";
+        break;
+      case (MR_Integer) 0:
+        *String_6 = (MR_String) "MR_PREDICATE";
+        break;
+    }
+  }
+}
+
+void MR_CALL 
+backend_libs__rtti__id_to_c_identifier_2_p_0(
+  MR_Word HeadVar__1_1,
+  MR_String * Str_2)
+{
+  if (((MR_tag((MR_Word) HeadVar__1_1)) == (MR_mktag((MR_Integer) 0))))
+  {
+    MR_Word RttiTypeCtor_3 = ((MR_Word) (MR_hl_field(MR_mktag(0), HeadVar__1_1, (MR_Integer) 0)));
+    MR_Word RttiName_4 = ((MR_Word) (MR_hl_field(MR_mktag(0), HeadVar__1_1, (MR_Integer) 1)));
+
+    *Str_2 = backend_libs__rtti__name_to_string_2_f_0(RttiTypeCtor_3, RttiName_4);
+  }
+  else
+  {
+    MR_Word TCName_6 = ((MR_Word) (MR_hl_field(MR_mktag(1), HeadVar__1_1, (MR_Integer) 0)));
+    MR_Word TCRttiName_7 = ((MR_Word) (MR_hl_field(MR_mktag(1), HeadVar__1_1, (MR_Integer) 1)));
+
+    backend_libs__rtti__tc_name_to_string_3_p_0(TCName_6, TCRttiName_7, Str_2);
+  }
+}
+
+static MR_Box MR_CALL 
+backend_libs__rtti__tc_name_to_string_3_p_0_5(
+  MR_Box closure_arg,
+  MR_Box wrapper_arg_1)
+{
+  {
+    MR_Box wrapper_arg_2;
+    MR_Box closure = closure_arg;
+    MR_String conv4_Str_4;
+
+    conv4_Str_4 = backend_libs__rtti__encode_tc_instance_type_1_f_0(((MR_Word) wrapper_arg_1));
+    wrapper_arg_2 = ((MR_Box) (conv4_Str_4));
+    return wrapper_arg_2;
+  }
+}
+
+static MR_Box MR_CALL 
+backend_libs__rtti__tc_name_to_string_3_p_0_4(
+  MR_Box closure_arg,
+  MR_Box wrapper_arg_1)
+{
+  {
+    MR_Box wrapper_arg_2;
+    MR_Box closure = closure_arg;
+    MR_String conv3_Str_4;
+
+    conv3_Str_4 = backend_libs__rtti__encode_tc_instance_type_1_f_0(((MR_Word) wrapper_arg_1));
+    wrapper_arg_2 = ((MR_Box) (conv3_Str_4));
+    return wrapper_arg_2;
+  }
+}
+
+static MR_Box MR_CALL 
+backend_libs__rtti__tc_name_to_string_3_p_0_3(
+  MR_Box closure_arg,
+  MR_Box wrapper_arg_1)
+{
+  {
+    MR_Box wrapper_arg_2;
+    MR_Box closure = closure_arg;
+    MR_String conv2_Str_4;
+
+    conv2_Str_4 = backend_libs__rtti__encode_tc_instance_type_1_f_0(((MR_Word) wrapper_arg_1));
+    wrapper_arg_2 = ((MR_Box) (conv2_Str_4));
+    return wrapper_arg_2;
+  }
+}
+
+static MR_Box MR_CALL 
+backend_libs__rtti__tc_name_to_string_3_p_0_2(
+  MR_Box closure_arg,
+  MR_Box wrapper_arg_1)
+{
+  {
+    MR_Box wrapper_arg_2;
+    MR_Box closure = closure_arg;
+    MR_String conv1_Str_4;
+
+    conv1_Str_4 = backend_libs__rtti__encode_tc_instance_type_1_f_0(((MR_Word) wrapper_arg_1));
+    wrapper_arg_2 = ((MR_Box) (conv1_Str_4));
+    return wrapper_arg_2;
+  }
+}
+
+static MR_Box MR_CALL 
+backend_libs__rtti__tc_name_to_string_3_p_0_1(
+  MR_Box closure_arg,
+  MR_Box wrapper_arg_1)
+{
+  {
+    MR_Box wrapper_arg_2;
+    MR_Box closure = closure_arg;
+    MR_String conv0_Str_4;
+
+    conv0_Str_4 = backend_libs__rtti__encode_tc_instance_type_1_f_0(((MR_Word) wrapper_arg_1));
+    wrapper_arg_2 = ((MR_Box) (conv0_Str_4));
+    return wrapper_arg_2;
+  }
+}
+
+static void MR_CALL 
+backend_libs__rtti__tc_name_to_string_3_p_0(
+  MR_Word TCName_4,
+  MR_Word TCRttiName_5,
+  MR_String * Str_6)
+{
+  switch (MR_tag((MR_Word) TCRttiName_5)) {
+    default: /*NOTREACHED*/ MR_assert(0);
+    case (MR_Integer) 0:
+      switch (MR_unmkbody(TCRttiName_5)) {
+        default: /*NOTREACHED*/ MR_assert(0);
+        case (MR_Integer) 0:
+          {
+            MR_String ModuleName_9;
+            MR_String ClassName_10;
+            MR_String ArityStr_11;
+            MR_String Var_95;
+            MR_String Var_97;
+            MR_String Var_98;
+
+            backend_libs__rtti__mangle_rtti_type_class_name_4_p_0(TCName_4, &ModuleName_9, &ClassName_10, &ArityStr_11);
+            Var_98 = mercury__string__f_43_43_2_f_0((MR_String) "_", ArityStr_11);
+            Var_97 = mercury__string__f_43_43_2_f_0(ClassName_10, Var_98);
+            Var_95 = mercury__string__f_43_43_2_f_0((MR_String) "__type_class_id_", Var_97);
+            *Str_6 = mercury__string__f_43_43_2_f_0(ModuleName_9, Var_95);
+          }
+          break;
+        case (MR_Integer) 1:
+          {
+            MR_String Var_85;
+            MR_String Var_87;
+            MR_String Var_88;
+            MR_String ModuleName_103;
+            MR_String ClassName_104;
+            MR_String ArityStr_105;
+
+            backend_libs__rtti__mangle_rtti_type_class_name_4_p_0(TCName_4, &ModuleName_103, &ClassName_104, &ArityStr_105);
+            Var_88 = mercury__string__f_43_43_2_f_0((MR_String) "_", ArityStr_105);
+            Var_87 = mercury__string__f_43_43_2_f_0(ClassName_104, Var_88);
+            Var_85 = mercury__string__f_43_43_2_f_0((MR_String) "__type_class_id_var_names_", Var_87);
+            *Str_6 = mercury__string__f_43_43_2_f_0(ModuleName_103, Var_85);
+          }
+          break;
+        case (MR_Integer) 2:
+          {
+            MR_String Var_90;
+            MR_String Var_92;
+            MR_String Var_93;
+            MR_String ModuleName_100;
+            MR_String ClassName_101;
+            MR_String ArityStr_102;
+
+            backend_libs__rtti__mangle_rtti_type_class_name_4_p_0(TCName_4, &ModuleName_100, &ClassName_101, &ArityStr_102);
+            Var_93 = mercury__string__f_43_43_2_f_0((MR_String) "_", ArityStr_102);
+            Var_92 = mercury__string__f_43_43_2_f_0(ClassName_101, Var_93);
+            Var_90 = mercury__string__f_43_43_2_f_0((MR_String) "__type_class_id_method_ids_", Var_92);
+            *Str_6 = mercury__string__f_43_43_2_f_0(ModuleName_100, Var_90);
+          }
+          break;
+        case (MR_Integer) 3:
+          {
+            MR_String Var_80;
+            MR_String Var_82;
+            MR_String Var_83;
+            MR_String ModuleName_106;
+            MR_String ClassName_107;
+            MR_String ArityStr_108;
+
+            backend_libs__rtti__mangle_rtti_type_class_name_4_p_0(TCName_4, &ModuleName_106, &ClassName_107, &ArityStr_108);
+            Var_83 = mercury__string__f_43_43_2_f_0((MR_String) "_", ArityStr_108);
+            Var_82 = mercury__string__f_43_43_2_f_0(ClassName_107, Var_83);
+            Var_80 = mercury__string__f_43_43_2_f_0((MR_String) "__type_class_decl_", Var_82);
+            *Str_6 = mercury__string__f_43_43_2_f_0(ModuleName_106, Var_80);
+          }
+          break;
+        case (MR_Integer) 4:
+          {
+            MR_String Var_75;
+            MR_String Var_77;
+            MR_String Var_78;
+            MR_String ModuleName_109;
+            MR_String ClassName_110;
+            MR_String ArityStr_111;
+
+            backend_libs__rtti__mangle_rtti_type_class_name_4_p_0(TCName_4, &ModuleName_109, &ClassName_110, &ArityStr_111);
+            Var_78 = mercury__string__f_43_43_2_f_0((MR_String) "_", ArityStr_111);
+            Var_77 = mercury__string__f_43_43_2_f_0(ClassName_110, Var_78);
+            Var_75 = mercury__string__f_43_43_2_f_0((MR_String) "__type_class_decl_supers_", Var_77);
+            *Str_6 = mercury__string__f_43_43_2_f_0(ModuleName_109, Var_75);
+          }
+          break;
+      }
+      break;
+    case (MR_Integer) 1:
+      {
+        MR_String InstanceStr_8 = ((MR_String) (MR_hl_field(MR_mktag(1), TCRttiName_5, (MR_Integer) 1)));
+        MR_Word _ModuleName_7 = ((MR_Word) (MR_hl_field(MR_mktag(1), TCRttiName_5, (MR_Integer) 0)));
+
+        *Str_6 = backend_libs__name_mangle__make_base_typeclass_info_name_2_f_0(TCName_4, InstanceStr_8);
+      }
+      break;
+    case (MR_Integer) 2:
+      {
+        MR_Integer Ordinal_12 = ((MR_Integer) (MR_hl_field(MR_mktag(2), TCRttiName_5, (MR_Integer) 0)));
+        MR_String OrdinalStr_14;
+        MR_String Var_67;
+        MR_String Var_69;
+        MR_String Var_70;
+        MR_String Var_72;
+        MR_String Var_73;
+        MR_String ModuleName_112;
+        MR_String ClassName_113;
+        MR_String ArityStr_114;
+        MR_Integer Var_13 = ((MR_Integer) (MR_hl_field(MR_mktag(2), TCRttiName_5, (MR_Integer) 1)));
+
+        backend_libs__rtti__mangle_rtti_type_class_name_4_p_0(TCName_4, &ModuleName_112, &ClassName_113, &ArityStr_114);
+        mercury__string__int_to_string_2_p_0(Ordinal_12, &OrdinalStr_14);
+        Var_73 = mercury__string__f_43_43_2_f_0((MR_String) "_", OrdinalStr_14);
+        Var_72 = mercury__string__f_43_43_2_f_0(ArityStr_114, Var_73);
+        Var_70 = mercury__string__f_43_43_2_f_0((MR_String) "_", Var_72);
+        Var_69 = mercury__string__f_43_43_2_f_0(ClassName_113, Var_70);
+        Var_67 = mercury__string__f_43_43_2_f_0((MR_String) "__type_class_decl_super_", Var_69);
+        *Str_6 = mercury__string__f_43_43_2_f_0(ModuleName_112, Var_67);
+      }
+      break;
+    case (MR_Integer) 3:
+      switch (((MR_Integer) (MR_Word) (MR_hl_field(MR_mktag(3), TCRttiName_5, (MR_Integer) 0)))) {
+        default: /*NOTREACHED*/ MR_assert(0);
+        case (MR_Integer) 0:
+          {
+            MR_Word TCTypes_15 = ((MR_Word) (MR_hl_field(MR_mktag(3), TCRttiName_5, (MR_Integer) 1)));
+            MR_Word TypeStrs_16;
+            MR_String TypeVectorStr_17;
+            MR_String Var_59;
+            MR_String Var_61;
+            MR_String Var_62;
+            MR_String Var_64;
+            MR_String Var_65;
+            MR_String ModuleName_115;
+            MR_String ClassName_116;
+            MR_String ArityStr_117;
+
+            backend_libs__rtti__mangle_rtti_type_class_name_4_p_0(TCName_4, &ModuleName_115, &ClassName_116, &ArityStr_117);
+            TypeStrs_16 = mercury__list__map_2_f_0((MR_Word) &backend_libs__rtti__backend_libs__rtti__type_ctor_info_rtti_maybe_pseudo_type_info_0, (MR_Word) &mercury__builtin__builtin__type_ctor_info_string_0, (MR_Word) &backend_libs__rtti_scalar_common_2[12], TCTypes_15);
+            TypeVectorStr_17 = mercury__string__append_list_1_f_0(TypeStrs_16);
+            Var_65 = mercury__string__f_43_43_2_f_0((MR_String) "_", TypeVectorStr_17);
+            Var_64 = mercury__string__f_43_43_2_f_0(ArityStr_117, Var_65);
+            Var_62 = mercury__string__f_43_43_2_f_0((MR_String) "_", Var_64);
+            Var_61 = mercury__string__f_43_43_2_f_0(ClassName_116, Var_62);
+            Var_59 = mercury__string__f_43_43_2_f_0((MR_String) "__type_class_instance_", Var_61);
+            *Str_6 = mercury__string__f_43_43_2_f_0(ModuleName_115, Var_59);
+          }
+          break;
+        case (MR_Integer) 1:
+          {
+            MR_String Var_50;
+            MR_String Var_52;
+            MR_String Var_53;
+            MR_String Var_55;
+            MR_String Var_56;
+            MR_String ModuleName_118;
+            MR_String ClassName_119;
+            MR_String ArityStr_120;
+            MR_Word TCTypes_121 = ((MR_Word) (MR_hl_field(MR_mktag(3), TCRttiName_5, (MR_Integer) 1)));
+            MR_Word TypeStrs_122;
+            MR_String TypeVectorStr_123;
+
+            backend_libs__rtti__mangle_rtti_type_class_name_4_p_0(TCName_4, &ModuleName_118, &ClassName_119, &ArityStr_120);
+            TypeStrs_122 = mercury__list__map_2_f_0((MR_Word) &backend_libs__rtti__backend_libs__rtti__type_ctor_info_rtti_maybe_pseudo_type_info_0, (MR_Word) &mercury__builtin__builtin__type_ctor_info_string_0, (MR_Word) &backend_libs__rtti_scalar_common_2[16], TCTypes_121);
+            TypeVectorStr_123 = mercury__string__append_list_1_f_0(TypeStrs_122);
+            Var_56 = mercury__string__f_43_43_2_f_0((MR_String) "_", TypeVectorStr_123);
+            Var_55 = mercury__string__f_43_43_2_f_0(ArityStr_120, Var_56);
+            Var_53 = mercury__string__f_43_43_2_f_0((MR_String) "_", Var_55);
+            Var_52 = mercury__string__f_43_43_2_f_0(ClassName_119, Var_53);
+            Var_50 = mercury__string__f_43_43_2_f_0((MR_String) "__type_class_instance_tc_type_vector_", Var_52);
+            *Str_6 = mercury__string__f_43_43_2_f_0(ModuleName_118, Var_50);
+          }
+          break;
+        case (MR_Integer) 2:
+          {
+            MR_String Var_38;
+            MR_String Var_40;
+            MR_String Var_41;
+            MR_String Var_43;
+            MR_String Var_44;
+            MR_String Var_46;
+            MR_String Var_47;
+            MR_String ModuleName_124;
+            MR_String ClassName_125;
+            MR_String ArityStr_126;
+            MR_Integer Ordinal_127 = ((MR_Integer) (MR_hl_field(MR_mktag(3), TCRttiName_5, (MR_Integer) 2)));
+            MR_String OrdinalStr_128;
+            MR_Word TCTypes_129 = ((MR_Word) (MR_hl_field(MR_mktag(3), TCRttiName_5, (MR_Integer) 1)));
+            MR_Word TypeStrs_130;
+            MR_String TypeVectorStr_131;
+            MR_Integer Var_18 = ((MR_Integer) (MR_hl_field(MR_mktag(3), TCRttiName_5, (MR_Integer) 3)));
+
+            backend_libs__rtti__mangle_rtti_type_class_name_4_p_0(TCName_4, &ModuleName_124, &ClassName_125, &ArityStr_126);
+            TypeStrs_130 = mercury__list__map_2_f_0((MR_Word) &backend_libs__rtti__backend_libs__rtti__type_ctor_info_rtti_maybe_pseudo_type_info_0, (MR_Word) &mercury__builtin__builtin__type_ctor_info_string_0, (MR_Word) &backend_libs__rtti_scalar_common_2[13], TCTypes_129);
+            TypeVectorStr_131 = mercury__string__append_list_1_f_0(TypeStrs_130);
+            mercury__string__int_to_string_2_p_0(Ordinal_127, &OrdinalStr_128);
+            Var_47 = mercury__string__f_43_43_2_f_0((MR_String) "_", TypeVectorStr_131);
+            Var_46 = mercury__string__f_43_43_2_f_0(OrdinalStr_128, Var_47);
+            Var_44 = mercury__string__f_43_43_2_f_0((MR_String) "_", Var_46);
+            Var_43 = mercury__string__f_43_43_2_f_0(ArityStr_126, Var_44);
+            Var_41 = mercury__string__f_43_43_2_f_0((MR_String) "_", Var_43);
+            Var_40 = mercury__string__f_43_43_2_f_0(ClassName_125, Var_41);
+            Var_38 = mercury__string__f_43_43_2_f_0((MR_String) "__type_class_instance_constraint_", Var_40);
+            *Str_6 = mercury__string__f_43_43_2_f_0(ModuleName_124, Var_38);
+          }
+          break;
+        case (MR_Integer) 3:
+          {
+            MR_String Var_29;
+            MR_String Var_31;
+            MR_String Var_32;
+            MR_String Var_34;
+            MR_String Var_35;
+            MR_String ModuleName_132;
+            MR_String ClassName_133;
+            MR_String ArityStr_134;
+            MR_Word TCTypes_135 = ((MR_Word) (MR_hl_field(MR_mktag(3), TCRttiName_5, (MR_Integer) 1)));
+            MR_Word TypeStrs_136;
+            MR_String TypeVectorStr_137;
+
+            backend_libs__rtti__mangle_rtti_type_class_name_4_p_0(TCName_4, &ModuleName_132, &ClassName_133, &ArityStr_134);
+            TypeStrs_136 = mercury__list__map_2_f_0((MR_Word) &backend_libs__rtti__backend_libs__rtti__type_ctor_info_rtti_maybe_pseudo_type_info_0, (MR_Word) &mercury__builtin__builtin__type_ctor_info_string_0, (MR_Word) &backend_libs__rtti_scalar_common_2[14], TCTypes_135);
+            TypeVectorStr_137 = mercury__string__append_list_1_f_0(TypeStrs_136);
+            Var_35 = mercury__string__f_43_43_2_f_0((MR_String) "_", TypeVectorStr_137);
+            Var_34 = mercury__string__f_43_43_2_f_0(ArityStr_134, Var_35);
+            Var_32 = mercury__string__f_43_43_2_f_0((MR_String) "_", Var_34);
+            Var_31 = mercury__string__f_43_43_2_f_0(ClassName_133, Var_32);
+            Var_29 = mercury__string__f_43_43_2_f_0((MR_String) "__type_class_instance_constraints_", Var_31);
+            *Str_6 = mercury__string__f_43_43_2_f_0(ModuleName_132, Var_29);
+          }
+          break;
+        case (MR_Integer) 4:
+          {
+            MR_String Var_20;
+            MR_String Var_22;
+            MR_String Var_23;
+            MR_String Var_25;
+            MR_String Var_26;
+            MR_String ModuleName_138;
+            MR_String ClassName_139;
+            MR_String ArityStr_140;
+            MR_Word TCTypes_141 = ((MR_Word) (MR_hl_field(MR_mktag(3), TCRttiName_5, (MR_Integer) 1)));
+            MR_Word TypeStrs_142;
+            MR_String TypeVectorStr_143;
+
+            backend_libs__rtti__mangle_rtti_type_class_name_4_p_0(TCName_4, &ModuleName_138, &ClassName_139, &ArityStr_140);
+            TypeStrs_142 = mercury__list__map_2_f_0((MR_Word) &backend_libs__rtti__backend_libs__rtti__type_ctor_info_rtti_maybe_pseudo_type_info_0, (MR_Word) &mercury__builtin__builtin__type_ctor_info_string_0, (MR_Word) &backend_libs__rtti_scalar_common_2[15], TCTypes_141);
+            TypeVectorStr_143 = mercury__string__append_list_1_f_0(TypeStrs_142);
+            Var_26 = mercury__string__f_43_43_2_f_0((MR_String) "_", TypeVectorStr_143);
+            Var_25 = mercury__string__f_43_43_2_f_0(ArityStr_140, Var_26);
+            Var_23 = mercury__string__f_43_43_2_f_0((MR_String) "_", Var_25);
+            Var_22 = mercury__string__f_43_43_2_f_0(ClassName_139, Var_23);
+            Var_20 = mercury__string__f_43_43_2_f_0((MR_String) "__type_class_instance_methods_", Var_22);
+            *Str_6 = mercury__string__f_43_43_2_f_0(ModuleName_138, Var_20);
+          }
+          break;
+      }
+      break;
+  }
+}
+
+static void MR_CALL 
+backend_libs__rtti__mangle_rtti_type_class_name_4_p_0(
+  MR_Word TCName_5,
+  MR_String * ModuleName_6,
+  MR_String * ClassName_7,
+  MR_String * ArityStr_8)
+{
+  {
+    MR_Word ModuleNameSym_9 = ((MR_Word) (MR_hl_field(MR_mktag(0), TCName_5, (MR_Integer) 0)));
+    MR_String ClassName0_10 = ((MR_String) (MR_hl_field(MR_mktag(0), TCName_5, (MR_Integer) 1)));
+    MR_Integer Arity_11 = ((MR_Integer) (MR_hl_field(MR_mktag(0), TCName_5, (MR_Integer) 2)));
+
+    *ModuleName_6 = parse_tree__prog_foreign__sym_name_mangle_1_f_0(ModuleNameSym_9);
+    *ClassName_7 = parse_tree__prog_foreign__name_mangle_1_f_0(ClassName0_10);
+    mercury__string__int_to_string_2_p_0(Arity_11, ArityStr_8);
+  }
+}
+
+static MR_Box MR_CALL 
+backend_libs__rtti__type_info_to_string_1_f_0_2(
+  MR_Box closure_arg,
+  MR_Box wrapper_arg_1)
+{
+  {
+    MR_Box wrapper_arg_2;
+    MR_Box closure = closure_arg;
+    MR_String conv1_Str_4;
+
+    conv1_Str_4 = backend_libs__rtti__type_info_to_string_1_f_0(((MR_Word) wrapper_arg_1));
+    wrapper_arg_2 = ((MR_Box) (conv1_Str_4));
+    return wrapper_arg_2;
+  }
+}
+
+static MR_Box MR_CALL 
+backend_libs__rtti__type_info_to_string_1_f_0_1(
+  MR_Box closure_arg,
+  MR_Box wrapper_arg_1)
+{
+  {
+    MR_Box wrapper_arg_2;
+    MR_Box closure = closure_arg;
+    MR_String conv0_Str_4;
+
+    conv0_Str_4 = backend_libs__rtti__type_info_to_string_1_f_0(((MR_Word) wrapper_arg_1));
+    wrapper_arg_2 = ((MR_Box) (conv0_Str_4));
+    return wrapper_arg_2;
+  }
+}
+
+static MR_Box MR_CALL 
+backend_libs__rtti__pseudo_type_info_to_string_1_f_0_4(
+  MR_Box closure_arg,
+  MR_Box wrapper_arg_1)
+{
+  {
+    MR_Box wrapper_arg_2;
+    MR_Box closure = closure_arg;
+    MR_String conv3_HeadVar__2_2;
+
+    conv3_HeadVar__2_2 = backend_libs__rtti__maybe_pseudo_type_info_to_string_1_f_0(((MR_Word) wrapper_arg_1));
+    wrapper_arg_2 = ((MR_Box) (conv3_HeadVar__2_2));
+    return wrapper_arg_2;
+  }
+}
+
+static MR_Box MR_CALL 
+backend_libs__rtti__pseudo_type_info_to_string_1_f_0_3(
+  MR_Box closure_arg,
+  MR_Box wrapper_arg_1)
+{
+  {
+    MR_Box wrapper_arg_2;
+    MR_Box closure = closure_arg;
+    MR_String conv2_HeadVar__2_2;
+
+    conv2_HeadVar__2_2 = backend_libs__rtti__maybe_pseudo_type_info_to_string_1_f_0(((MR_Word) wrapper_arg_1));
+    wrapper_arg_2 = ((MR_Box) (conv2_HeadVar__2_2));
+    return wrapper_arg_2;
+  }
+}
+
+MR_String MR_CALL 
+backend_libs__rtti__type_info_to_string_1_f_0(
+  MR_Word tscc_proc_1_input_1_TypeInfo_3)
+{
+  {
+    MR_Word tscc_proc_2_input_1_PseudoTypeInfo_3;
+    MR_Word tscc_proc_3_input_1_RttiTypeCtor_4;
+    MR_Word tscc_proc_3_input_2_RttiName_5;
+    MR_String tscc_output_1_Str_4;
+
+    // The code for TSCC PROC 1: func backend_libs.rtti.type_info_to_string/1-0.
+    // Setup for mutual tailcalls optimized into a loop.
+    // The mutually recursive procedures are:
+
+    // proc 1 in TSCC: func backend_libs.rtti.type_info_to_string/1-0
+    // proc 2 in TSCC: func backend_libs.rtti.pseudo_type_info_to_string/1-0
+    // proc 3 in TSCC: func backend_libs.rtti.name_to_string/2-0
+
+    goto top_of_proc_1;
+  top_of_proc_1:;
+    {
+      MR_Word TypeInfo_3 = tscc_proc_1_input_1_TypeInfo_3;
+      MR_String Str_4;
+      MR_bool succeeded;
+
+      switch (MR_tag((MR_Word) TypeInfo_3)) {
+        default: /*NOTREACHED*/ MR_assert(0);
+        case (MR_Integer) 0:
+          {
+            MR_Word RttiTypeCtor_32 = (MR_Word) MR_body(((MR_Word) TypeInfo_3), (MR_Integer) 0);
+            MR_Word next_value_of_tscc_proc_3_input_1_RttiTypeCtor_4 = RttiTypeCtor_32;
+
+            // direct tailcall eliminated
+            tscc_proc_3_input_1_RttiTypeCtor_4 = next_value_of_tscc_proc_3_input_1_RttiTypeCtor_4;
+            tscc_proc_3_input_2_RttiName_5 = (MR_Word) MR_mkword(MR_mktag(0), MR_mkbody((MR_Integer) 11));
+            goto top_of_proc_3;
+          }
+          break;
+        case (MR_Integer) 1:
+          {
+            MR_Word Args_7 = ((MR_Word) (MR_hl_field(MR_mktag(1), TypeInfo_3, (MR_Integer) 1)));
+            MR_String ModuleName_8;
+            MR_String TypeName_9;
+            MR_String ArityStr_10;
+            MR_String ArgsStr_11;
+            MR_String Var_21;
+            MR_String Var_23;
+            MR_String Var_24;
+            MR_String Var_26;
+            MR_Word RttiTypeCtor_28 = ((MR_Word) (MR_hl_field(MR_mktag(1), TypeInfo_3, (MR_Integer) 0)));
+            MR_Word ModuleNameSym0_42 = ((MR_Word) (MR_hl_field(MR_mktag(0), RttiTypeCtor_28, (MR_Integer) 0)));
+            MR_String TypeName0_43 = ((MR_String) (MR_hl_field(MR_mktag(0), RttiTypeCtor_28, (MR_Integer) 1)));
+            MR_Integer TypeArity_44 = ((MR_Integer) (MR_hl_field(MR_mktag(0), RttiTypeCtor_28, (MR_Integer) 2)));
+            MR_Word ModuleNameSym_45;
+            MR_Word Var_48;
+            MR_String Var_46;
+
+            succeeded = ((MR_tag((MR_Word) ModuleNameSym0_42)) == (MR_mktag((MR_Integer) 0)));
+            if (succeeded)
+            {
+              Var_46 = ((MR_String) (MR_hl_field(MR_mktag(0), ModuleNameSym0_42, (MR_Integer) 0)));
+              succeeded = (strcmp(Var_46, (MR_String) "") == 0);
+            }
+            if (succeeded)
+              ModuleNameSym_45 = mdbcomp__builtin_modules__mercury_public_builtin_module_0_f_0();
+            else
+              ModuleNameSym_45 = ModuleNameSym0_42;
+            ModuleName_8 = parse_tree__prog_foreign__sym_name_mangle_1_f_0(ModuleNameSym_45);
+            TypeName_9 = parse_tree__prog_foreign__name_mangle_1_f_0(TypeName0_43);
+            mercury__string__int_to_string_2_p_0(TypeArity_44, &ArityStr_10);
+            Var_48 = mercury__list__map_2_f_0((MR_Word) &backend_libs__rtti__backend_libs__rtti__type_ctor_info_rtti_type_info_0, (MR_Word) &mercury__builtin__builtin__type_ctor_info_string_0, (MR_Word) &backend_libs__rtti_scalar_common_2[8], Args_7);
+            ArgsStr_11 = mercury__string__append_list_1_f_0(Var_48);
+            Var_26 = mercury__string__f_43_43_2_f_0(ArityStr_10, ArgsStr_11);
+            Var_24 = mercury__string__f_43_43_2_f_0((MR_String) "_", Var_26);
+            Var_23 = mercury__string__f_43_43_2_f_0(TypeName_9, Var_24);
+            Var_21 = mercury__string__f_43_43_2_f_0((MR_String) "__ti_", Var_23);
+            Str_4 = mercury__string__f_43_43_2_f_0(ModuleName_8, Var_21);
+          }
+          break;
+        case (MR_Integer) 2:
+          {
+            MR_Word VarArityId_12 = ((MR_Word) (MR_hl_field(MR_mktag(2), TypeInfo_3, (MR_Integer) 0)));
+            MR_Integer RealArity_13;
+            MR_String IdStr_14;
+            MR_String Var_16;
+            MR_String Var_17;
+            MR_String Var_19;
+            MR_String Var_20;
+            MR_Word Args_29 = ((MR_Word) (MR_hl_field(MR_mktag(2), TypeInfo_3, (MR_Integer) 1)));
+            MR_String ArgsStr_30;
+            MR_Word Var_55;
+
+            RealArity_13 = mercury__list__length_1_f_0((MR_Word) &backend_libs__rtti__backend_libs__rtti__type_ctor_info_rtti_type_info_0, Args_29);
+            Var_55 = mercury__list__map_2_f_0((MR_Word) &backend_libs__rtti__backend_libs__rtti__type_ctor_info_rtti_type_info_0, (MR_Word) &mercury__builtin__builtin__type_ctor_info_string_0, (MR_Word) &backend_libs__rtti_scalar_common_2[9], Args_29);
+            ArgsStr_30 = mercury__string__append_list_1_f_0(Var_55);
+            switch (VarArityId_12) {
+              default: /*NOTREACHED*/ MR_assert(0);
+              case (MR_Integer) 1:
+                IdStr_14 = (MR_String) "func";
+                break;
+              case (MR_Integer) 0:
+                IdStr_14 = (MR_String) "pred";
+                break;
+              case (MR_Integer) 2:
+                IdStr_14 = (MR_String) "tuple";
+                break;
+            }
+            Var_20 = mercury__string__int_to_string_1_f_0(RealArity_13);
+            Var_19 = mercury__string__f_43_43_2_f_0(Var_20, ArgsStr_30);
+            Var_17 = mercury__string__f_43_43_2_f_0((MR_String) "_", Var_19);
+            Var_16 = mercury__string__f_43_43_2_f_0(IdStr_14, Var_17);
+            Str_4 = mercury__string__f_43_43_2_f_0((MR_String) "__vti_", Var_16);
+          }
+          break;
+      }
+      tscc_output_1_Str_4 = Str_4;
+      goto tscc_end;
+    }
+  top_of_proc_2:;
+    {
+      MR_Word PseudoTypeInfo_3 = tscc_proc_2_input_1_PseudoTypeInfo_3;
+      MR_String Str_4;
+      MR_bool succeeded;
+
+      switch (MR_tag((MR_Word) PseudoTypeInfo_3)) {
+        default: /*NOTREACHED*/ MR_assert(0);
+        case (MR_Integer) 0:
+          {
+            MR_Word RttiTypeCtor_33 = (MR_Word) MR_body(((MR_Word) PseudoTypeInfo_3), (MR_Integer) 0);
+            MR_Word next_value_of_tscc_proc_3_input_1_RttiTypeCtor_4 = RttiTypeCtor_33;
+
+            // direct tailcall eliminated
+            tscc_proc_3_input_1_RttiTypeCtor_4 = next_value_of_tscc_proc_3_input_1_RttiTypeCtor_4;
+            tscc_proc_3_input_2_RttiName_5 = (MR_Word) MR_mkword(MR_mktag(0), MR_mkbody((MR_Integer) 11));
+            goto top_of_proc_3;
+          }
+          break;
+        case (MR_Integer) 1:
+          {
+            MR_Word Args_7 = ((MR_Word) (MR_hl_field(MR_mktag(1), PseudoTypeInfo_3, (MR_Integer) 1)));
+            MR_String ModuleName_8;
+            MR_String TypeName_9;
+            MR_String ArityStr_10;
+            MR_String ArgsStr_11;
+            MR_String Var_22;
+            MR_String Var_24;
+            MR_String Var_25;
+            MR_String Var_27;
+            MR_Word RttiTypeCtor_29 = ((MR_Word) (MR_hl_field(MR_mktag(1), PseudoTypeInfo_3, (MR_Integer) 0)));
+            MR_Word ModuleNameSym0_43 = ((MR_Word) (MR_hl_field(MR_mktag(0), RttiTypeCtor_29, (MR_Integer) 0)));
+            MR_String TypeName0_44 = ((MR_String) (MR_hl_field(MR_mktag(0), RttiTypeCtor_29, (MR_Integer) 1)));
+            MR_Integer TypeArity_45 = ((MR_Integer) (MR_hl_field(MR_mktag(0), RttiTypeCtor_29, (MR_Integer) 2)));
+            MR_Word ModuleNameSym_46;
+            MR_Word Var_49;
+            MR_String Var_47;
+
+            succeeded = ((MR_tag((MR_Word) ModuleNameSym0_43)) == (MR_mktag((MR_Integer) 0)));
+            if (succeeded)
+            {
+              Var_47 = ((MR_String) (MR_hl_field(MR_mktag(0), ModuleNameSym0_43, (MR_Integer) 0)));
+              succeeded = (strcmp(Var_47, (MR_String) "") == 0);
+            }
+            if (succeeded)
+              ModuleNameSym_46 = mdbcomp__builtin_modules__mercury_public_builtin_module_0_f_0();
+            else
+              ModuleNameSym_46 = ModuleNameSym0_43;
+            ModuleName_8 = parse_tree__prog_foreign__sym_name_mangle_1_f_0(ModuleNameSym_46);
+            TypeName_9 = parse_tree__prog_foreign__name_mangle_1_f_0(TypeName0_44);
+            mercury__string__int_to_string_2_p_0(TypeArity_45, &ArityStr_10);
+            Var_49 = mercury__list__map_2_f_0((MR_Word) &backend_libs__rtti__backend_libs__rtti__type_ctor_info_rtti_maybe_pseudo_type_info_0, (MR_Word) &mercury__builtin__builtin__type_ctor_info_string_0, (MR_Word) &backend_libs__rtti_scalar_common_2[10], Args_7);
+            ArgsStr_11 = mercury__string__append_list_1_f_0(Var_49);
+            Var_27 = mercury__string__f_43_43_2_f_0(ArityStr_10, ArgsStr_11);
+            Var_25 = mercury__string__f_43_43_2_f_0((MR_String) "_", Var_27);
+            Var_24 = mercury__string__f_43_43_2_f_0(TypeName_9, Var_25);
+            Var_22 = mercury__string__f_43_43_2_f_0((MR_String) "__pti_", Var_24);
+            Str_4 = mercury__string__f_43_43_2_f_0(ModuleName_8, Var_22);
+          }
+          break;
+        case (MR_Integer) 2:
+          {
+            MR_Word VarArityId_12 = ((MR_Word) (MR_hl_field(MR_mktag(2), PseudoTypeInfo_3, (MR_Integer) 0)));
+            MR_Integer RealArity_13;
+            MR_String IdStr_14;
+            MR_String Var_17;
+            MR_String Var_18;
+            MR_String Var_20;
+            MR_String Var_21;
+            MR_Word Args_30 = ((MR_Word) (MR_hl_field(MR_mktag(2), PseudoTypeInfo_3, (MR_Integer) 1)));
+            MR_String ArgsStr_31;
+            MR_Word Var_56;
+
+            RealArity_13 = mercury__list__length_1_f_0((MR_Word) &backend_libs__rtti__backend_libs__rtti__type_ctor_info_rtti_maybe_pseudo_type_info_0, Args_30);
+            Var_56 = mercury__list__map_2_f_0((MR_Word) &backend_libs__rtti__backend_libs__rtti__type_ctor_info_rtti_maybe_pseudo_type_info_0, (MR_Word) &mercury__builtin__builtin__type_ctor_info_string_0, (MR_Word) &backend_libs__rtti_scalar_common_2[11], Args_30);
+            ArgsStr_31 = mercury__string__append_list_1_f_0(Var_56);
+            switch (VarArityId_12) {
+              default: /*NOTREACHED*/ MR_assert(0);
+              case (MR_Integer) 1:
+                IdStr_14 = (MR_String) "func";
+                break;
+              case (MR_Integer) 0:
+                IdStr_14 = (MR_String) "pred";
+                break;
+              case (MR_Integer) 2:
+                IdStr_14 = (MR_String) "tuple";
+                break;
+            }
+            Var_21 = mercury__string__int_to_string_1_f_0(RealArity_13);
+            Var_20 = mercury__string__f_43_43_2_f_0(Var_21, ArgsStr_31);
+            Var_18 = mercury__string__f_43_43_2_f_0((MR_String) "_", Var_20);
+            Var_17 = mercury__string__f_43_43_2_f_0(IdStr_14, Var_18);
+            Str_4 = mercury__string__f_43_43_2_f_0((MR_String) "__vpti_", Var_17);
+          }
+          break;
+        case (MR_Integer) 3:
+          {
+            MR_Integer VarNum_15 = ((MR_Integer) (MR_hl_field(MR_mktag(3), PseudoTypeInfo_3, (MR_Integer) 0)));
+
+            mercury__string__int_to_string_2_p_0(VarNum_15, &Str_4);
+          }
+          break;
+      }
+      tscc_output_1_Str_4 = Str_4;
+      goto tscc_end;
+    }
+  top_of_proc_3:;
+    {
+      MR_Word RttiTypeCtor_4 = tscc_proc_3_input_1_RttiTypeCtor_4;
+      MR_Word RttiName_5 = tscc_proc_3_input_2_RttiName_5;
+      MR_String Str_6;
+      MR_String ModuleName_7;
+      MR_String TypeName_8;
+      MR_String A_str_9;
+
+      backend_libs__rtti__mangle_rtti_type_ctor_4_p_0(RttiTypeCtor_4, &ModuleName_7, &TypeName_8, &A_str_9);
+      switch (MR_tag((MR_Word) RttiName_5)) {
+        default: /*NOTREACHED*/ MR_assert(0);
+        case (MR_Integer) 0:
+          switch (MR_unmkbody(RttiName_5)) {
+            default: /*NOTREACHED*/ MR_assert(0);
+            case (MR_Integer) 0:
+              {
+                MR_Word Var_239;
+                MR_Word Var_240;
+                MR_Word Var_242;
+                MR_Word Var_243;
+                MR_Word Var_245;
+
+                {
+                  Var_245 = (MR_Word) MR_mkword(MR_mktag(1), MR_new_object(MR_Word, ((MR_Integer) 2 * sizeof(MR_Word)), NULL, NULL));
+                  MR_hl_field(MR_mktag(1), Var_245, 0) = ((MR_Box) (A_str_9));
+                  MR_hl_field(MR_mktag(1), Var_245, 1) = ((MR_Box) (MR_mkword(MR_mktag(0), MR_mkbody((MR_Integer) 0))));
+                }
+                {
+                  Var_243 = (MR_Word) MR_mkword(MR_mktag(1), MR_new_object(MR_Word, ((MR_Integer) 2 * sizeof(MR_Word)), NULL, NULL));
+                  MR_hl_field(MR_mktag(1), Var_243, 0) = ((MR_Box) ((MR_String) "_"));
+                  MR_hl_field(MR_mktag(1), Var_243, 1) = ((MR_Box) (Var_245));
+                }
+                {
+                  Var_242 = (MR_Word) MR_mkword(MR_mktag(1), MR_new_object(MR_Word, ((MR_Integer) 2 * sizeof(MR_Word)), NULL, NULL));
+                  MR_hl_field(MR_mktag(1), Var_242, 0) = ((MR_Box) (TypeName_8));
+                  MR_hl_field(MR_mktag(1), Var_242, 1) = ((MR_Box) (Var_243));
+                }
+                {
+                  Var_240 = (MR_Word) MR_mkword(MR_mktag(1), MR_new_object(MR_Word, ((MR_Integer) 2 * sizeof(MR_Word)), NULL, NULL));
+                  MR_hl_field(MR_mktag(1), Var_240, 0) = ((MR_Box) ((MR_String) "__exist_locn_"));
+                  MR_hl_field(MR_mktag(1), Var_240, 1) = ((MR_Box) (Var_242));
+                }
+                {
+                  Var_239 = (MR_Word) MR_mkword(MR_mktag(1), MR_new_object(MR_Word, ((MR_Integer) 2 * sizeof(MR_Word)), NULL, NULL));
+                  MR_hl_field(MR_mktag(1), Var_239, 0) = ((MR_Box) (ModuleName_7));
+                  MR_hl_field(MR_mktag(1), Var_239, 1) = ((MR_Box) (Var_240));
+                }
+                mercury__string__append_list_2_p_0(Var_239, &Str_6);
+              }
+              break;
+            case (MR_Integer) 1:
+              {
+                MR_Word Var_140;
+                MR_Word Var_141;
+                MR_Word Var_143;
+                MR_Word Var_144;
+                MR_Word Var_146;
+
+                {
+                  Var_146 = (MR_Word) MR_mkword(MR_mktag(1), MR_new_object(MR_Word, ((MR_Integer) 2 * sizeof(MR_Word)), NULL, NULL));
+                  MR_hl_field(MR_mktag(1), Var_146, 0) = ((MR_Box) (A_str_9));
+                  MR_hl_field(MR_mktag(1), Var_146, 1) = ((MR_Box) (MR_mkword(MR_mktag(0), MR_mkbody((MR_Integer) 0))));
+                }
+                {
+                  Var_144 = (MR_Word) MR_mkword(MR_mktag(1), MR_new_object(MR_Word, ((MR_Integer) 2 * sizeof(MR_Word)), NULL, NULL));
+                  MR_hl_field(MR_mktag(1), Var_144, 0) = ((MR_Box) ((MR_String) "_"));
+                  MR_hl_field(MR_mktag(1), Var_144, 1) = ((MR_Box) (Var_146));
+                }
+                {
+                  Var_143 = (MR_Word) MR_mkword(MR_mktag(1), MR_new_object(MR_Word, ((MR_Integer) 2 * sizeof(MR_Word)), NULL, NULL));
+                  MR_hl_field(MR_mktag(1), Var_143, 0) = ((MR_Box) (TypeName_8));
+                  MR_hl_field(MR_mktag(1), Var_143, 1) = ((MR_Box) (Var_144));
+                }
+                {
+                  Var_141 = (MR_Word) MR_mkword(MR_mktag(1), MR_new_object(MR_Word, ((MR_Integer) 2 * sizeof(MR_Word)), NULL, NULL));
+                  MR_hl_field(MR_mktag(1), Var_141, 0) = ((MR_Box) ((MR_String) "__notag_functor_desc_"));
+                  MR_hl_field(MR_mktag(1), Var_141, 1) = ((MR_Box) (Var_143));
+                }
+                {
+                  Var_140 = (MR_Word) MR_mkword(MR_mktag(1), MR_new_object(MR_Word, ((MR_Integer) 2 * sizeof(MR_Word)), NULL, NULL));
+                  MR_hl_field(MR_mktag(1), Var_140, 0) = ((MR_Box) (ModuleName_7));
+                  MR_hl_field(MR_mktag(1), Var_140, 1) = ((MR_Box) (Var_141));
+                }
+                mercury__string__append_list_2_p_0(Var_140, &Str_6);
+              }
+              break;
+            case (MR_Integer) 2:
+              {
+                MR_Word Var_121;
+                MR_Word Var_122;
+                MR_Word Var_124;
+                MR_Word Var_125;
+                MR_Word Var_127;
+
+                {
+                  Var_127 = (MR_Word) MR_mkword(MR_mktag(1), MR_new_object(MR_Word, ((MR_Integer) 2 * sizeof(MR_Word)), NULL, NULL));
+                  MR_hl_field(MR_mktag(1), Var_127, 0) = ((MR_Box) (A_str_9));
+                  MR_hl_field(MR_mktag(1), Var_127, 1) = ((MR_Box) (MR_mkword(MR_mktag(0), MR_mkbody((MR_Integer) 0))));
+                }
+                {
+                  Var_125 = (MR_Word) MR_mkword(MR_mktag(1), MR_new_object(MR_Word, ((MR_Integer) 2 * sizeof(MR_Word)), NULL, NULL));
+                  MR_hl_field(MR_mktag(1), Var_125, 0) = ((MR_Box) ((MR_String) "_"));
+                  MR_hl_field(MR_mktag(1), Var_125, 1) = ((MR_Box) (Var_127));
+                }
+                {
+                  Var_124 = (MR_Word) MR_mkword(MR_mktag(1), MR_new_object(MR_Word, ((MR_Integer) 2 * sizeof(MR_Word)), NULL, NULL));
+                  MR_hl_field(MR_mktag(1), Var_124, 0) = ((MR_Box) (TypeName_8));
+                  MR_hl_field(MR_mktag(1), Var_124, 1) = ((MR_Box) (Var_125));
+                }
+                {
+                  Var_122 = (MR_Word) MR_mkword(MR_mktag(1), MR_new_object(MR_Word, ((MR_Integer) 2 * sizeof(MR_Word)), NULL, NULL));
+                  MR_hl_field(MR_mktag(1), Var_122, 0) = ((MR_Box) ((MR_String) "__enum_name_ordered_"));
+                  MR_hl_field(MR_mktag(1), Var_122, 1) = ((MR_Box) (Var_124));
+                }
+                {
+                  Var_121 = (MR_Word) MR_mkword(MR_mktag(1), MR_new_object(MR_Word, ((MR_Integer) 2 * sizeof(MR_Word)), NULL, NULL));
+                  MR_hl_field(MR_mktag(1), Var_121, 0) = ((MR_Box) (ModuleName_7));
+                  MR_hl_field(MR_mktag(1), Var_121, 1) = ((MR_Box) (Var_122));
+                }
+                mercury__string__append_list_2_p_0(Var_121, &Str_6);
+              }
+              break;
+            case (MR_Integer) 3:
+              {
+                MR_Word Var_113;
+                MR_Word Var_114;
+                MR_Word Var_116;
+                MR_Word Var_117;
+                MR_Word Var_119;
+
+                {
+                  Var_119 = (MR_Word) MR_mkword(MR_mktag(1), MR_new_object(MR_Word, ((MR_Integer) 2 * sizeof(MR_Word)), NULL, NULL));
+                  MR_hl_field(MR_mktag(1), Var_119, 0) = ((MR_Box) (A_str_9));
+                  MR_hl_field(MR_mktag(1), Var_119, 1) = ((MR_Box) (MR_mkword(MR_mktag(0), MR_mkbody((MR_Integer) 0))));
+                }
+                {
+                  Var_117 = (MR_Word) MR_mkword(MR_mktag(1), MR_new_object(MR_Word, ((MR_Integer) 2 * sizeof(MR_Word)), NULL, NULL));
+                  MR_hl_field(MR_mktag(1), Var_117, 0) = ((MR_Box) ((MR_String) "_"));
+                  MR_hl_field(MR_mktag(1), Var_117, 1) = ((MR_Box) (Var_119));
+                }
+                {
+                  Var_116 = (MR_Word) MR_mkword(MR_mktag(1), MR_new_object(MR_Word, ((MR_Integer) 2 * sizeof(MR_Word)), NULL, NULL));
+                  MR_hl_field(MR_mktag(1), Var_116, 0) = ((MR_Box) (TypeName_8));
+                  MR_hl_field(MR_mktag(1), Var_116, 1) = ((MR_Box) (Var_117));
+                }
+                {
+                  Var_114 = (MR_Word) MR_mkword(MR_mktag(1), MR_new_object(MR_Word, ((MR_Integer) 2 * sizeof(MR_Word)), NULL, NULL));
+                  MR_hl_field(MR_mktag(1), Var_114, 0) = ((MR_Box) ((MR_String) "__enum_value_ordered_"));
+                  MR_hl_field(MR_mktag(1), Var_114, 1) = ((MR_Box) (Var_116));
+                }
+                {
+                  Var_113 = (MR_Word) MR_mkword(MR_mktag(1), MR_new_object(MR_Word, ((MR_Integer) 2 * sizeof(MR_Word)), NULL, NULL));
+                  MR_hl_field(MR_mktag(1), Var_113, 0) = ((MR_Box) (ModuleName_7));
+                  MR_hl_field(MR_mktag(1), Var_113, 1) = ((MR_Box) (Var_114));
+                }
+                mercury__string__append_list_2_p_0(Var_113, &Str_6);
+              }
+              break;
+            case (MR_Integer) 4:
+              {
+                MR_Word Var_105;
+                MR_Word Var_106;
+                MR_Word Var_108;
+                MR_Word Var_109;
+                MR_Word Var_111;
+
+                {
+                  Var_111 = (MR_Word) MR_mkword(MR_mktag(1), MR_new_object(MR_Word, ((MR_Integer) 2 * sizeof(MR_Word)), NULL, NULL));
+                  MR_hl_field(MR_mktag(1), Var_111, 0) = ((MR_Box) (A_str_9));
+                  MR_hl_field(MR_mktag(1), Var_111, 1) = ((MR_Box) (MR_mkword(MR_mktag(0), MR_mkbody((MR_Integer) 0))));
+                }
+                {
+                  Var_109 = (MR_Word) MR_mkword(MR_mktag(1), MR_new_object(MR_Word, ((MR_Integer) 2 * sizeof(MR_Word)), NULL, NULL));
+                  MR_hl_field(MR_mktag(1), Var_109, 0) = ((MR_Box) ((MR_String) "_"));
+                  MR_hl_field(MR_mktag(1), Var_109, 1) = ((MR_Box) (Var_111));
+                }
+                {
+                  Var_108 = (MR_Word) MR_mkword(MR_mktag(1), MR_new_object(MR_Word, ((MR_Integer) 2 * sizeof(MR_Word)), NULL, NULL));
+                  MR_hl_field(MR_mktag(1), Var_108, 0) = ((MR_Box) (TypeName_8));
+                  MR_hl_field(MR_mktag(1), Var_108, 1) = ((MR_Box) (Var_109));
+                }
+                {
+                  Var_106 = (MR_Word) MR_mkword(MR_mktag(1), MR_new_object(MR_Word, ((MR_Integer) 2 * sizeof(MR_Word)), NULL, NULL));
+                  MR_hl_field(MR_mktag(1), Var_106, 0) = ((MR_Box) ((MR_String) "__foreign_enum_name_ordered_"));
+                  MR_hl_field(MR_mktag(1), Var_106, 1) = ((MR_Box) (Var_108));
+                }
+                {
+                  Var_105 = (MR_Word) MR_mkword(MR_mktag(1), MR_new_object(MR_Word, ((MR_Integer) 2 * sizeof(MR_Word)), NULL, NULL));
+                  MR_hl_field(MR_mktag(1), Var_105, 0) = ((MR_Box) (ModuleName_7));
+                  MR_hl_field(MR_mktag(1), Var_105, 1) = ((MR_Box) (Var_106));
+                }
+                mercury__string__append_list_2_p_0(Var_105, &Str_6);
+              }
+              break;
+            case (MR_Integer) 5:
+              {
+                MR_Word Var_97;
+                MR_Word Var_98;
+                MR_Word Var_100;
+                MR_Word Var_101;
+                MR_Word Var_103;
+
+                {
+                  Var_103 = (MR_Word) MR_mkword(MR_mktag(1), MR_new_object(MR_Word, ((MR_Integer) 2 * sizeof(MR_Word)), NULL, NULL));
+                  MR_hl_field(MR_mktag(1), Var_103, 0) = ((MR_Box) (A_str_9));
+                  MR_hl_field(MR_mktag(1), Var_103, 1) = ((MR_Box) (MR_mkword(MR_mktag(0), MR_mkbody((MR_Integer) 0))));
+                }
+                {
+                  Var_101 = (MR_Word) MR_mkword(MR_mktag(1), MR_new_object(MR_Word, ((MR_Integer) 2 * sizeof(MR_Word)), NULL, NULL));
+                  MR_hl_field(MR_mktag(1), Var_101, 0) = ((MR_Box) ((MR_String) "_"));
+                  MR_hl_field(MR_mktag(1), Var_101, 1) = ((MR_Box) (Var_103));
+                }
+                {
+                  Var_100 = (MR_Word) MR_mkword(MR_mktag(1), MR_new_object(MR_Word, ((MR_Integer) 2 * sizeof(MR_Word)), NULL, NULL));
+                  MR_hl_field(MR_mktag(1), Var_100, 0) = ((MR_Box) (TypeName_8));
+                  MR_hl_field(MR_mktag(1), Var_100, 1) = ((MR_Box) (Var_101));
+                }
+                {
+                  Var_98 = (MR_Word) MR_mkword(MR_mktag(1), MR_new_object(MR_Word, ((MR_Integer) 2 * sizeof(MR_Word)), NULL, NULL));
+                  MR_hl_field(MR_mktag(1), Var_98, 0) = ((MR_Box) ((MR_String) "__foreign_enum_ordinal_ordered_"));
+                  MR_hl_field(MR_mktag(1), Var_98, 1) = ((MR_Box) (Var_100));
+                }
+                {
+                  Var_97 = (MR_Word) MR_mkword(MR_mktag(1), MR_new_object(MR_Word, ((MR_Integer) 2 * sizeof(MR_Word)), NULL, NULL));
+                  MR_hl_field(MR_mktag(1), Var_97, 0) = ((MR_Box) (ModuleName_7));
+                  MR_hl_field(MR_mktag(1), Var_97, 1) = ((MR_Box) (Var_98));
+                }
+                mercury__string__append_list_2_p_0(Var_97, &Str_6);
+              }
+              break;
+            case (MR_Integer) 6:
+              {
+                MR_Word Var_89;
+                MR_Word Var_90;
+                MR_Word Var_92;
+                MR_Word Var_93;
+                MR_Word Var_95;
+
+                {
+                  Var_95 = (MR_Word) MR_mkword(MR_mktag(1), MR_new_object(MR_Word, ((MR_Integer) 2 * sizeof(MR_Word)), NULL, NULL));
+                  MR_hl_field(MR_mktag(1), Var_95, 0) = ((MR_Box) (A_str_9));
+                  MR_hl_field(MR_mktag(1), Var_95, 1) = ((MR_Box) (MR_mkword(MR_mktag(0), MR_mkbody((MR_Integer) 0))));
+                }
+                {
+                  Var_93 = (MR_Word) MR_mkword(MR_mktag(1), MR_new_object(MR_Word, ((MR_Integer) 2 * sizeof(MR_Word)), NULL, NULL));
+                  MR_hl_field(MR_mktag(1), Var_93, 0) = ((MR_Box) ((MR_String) "_"));
+                  MR_hl_field(MR_mktag(1), Var_93, 1) = ((MR_Box) (Var_95));
+                }
+                {
+                  Var_92 = (MR_Word) MR_mkword(MR_mktag(1), MR_new_object(MR_Word, ((MR_Integer) 2 * sizeof(MR_Word)), NULL, NULL));
+                  MR_hl_field(MR_mktag(1), Var_92, 0) = ((MR_Box) (TypeName_8));
+                  MR_hl_field(MR_mktag(1), Var_92, 1) = ((MR_Box) (Var_93));
+                }
+                {
+                  Var_90 = (MR_Word) MR_mkword(MR_mktag(1), MR_new_object(MR_Word, ((MR_Integer) 2 * sizeof(MR_Word)), NULL, NULL));
+                  MR_hl_field(MR_mktag(1), Var_90, 0) = ((MR_Box) ((MR_String) "__du_name_ordered_"));
+                  MR_hl_field(MR_mktag(1), Var_90, 1) = ((MR_Box) (Var_92));
+                }
+                {
+                  Var_89 = (MR_Word) MR_mkword(MR_mktag(1), MR_new_object(MR_Word, ((MR_Integer) 2 * sizeof(MR_Word)), NULL, NULL));
+                  MR_hl_field(MR_mktag(1), Var_89, 0) = ((MR_Box) (ModuleName_7));
+                  MR_hl_field(MR_mktag(1), Var_89, 1) = ((MR_Box) (Var_90));
+                }
+                mercury__string__append_list_2_p_0(Var_89, &Str_6);
+              }
+              break;
+            case (MR_Integer) 7:
+              {
+                MR_Word Var_70;
+                MR_Word Var_71;
+                MR_Word Var_73;
+                MR_Word Var_74;
+                MR_Word Var_76;
+
+                {
+                  Var_76 = (MR_Word) MR_mkword(MR_mktag(1), MR_new_object(MR_Word, ((MR_Integer) 2 * sizeof(MR_Word)), NULL, NULL));
+                  MR_hl_field(MR_mktag(1), Var_76, 0) = ((MR_Box) (A_str_9));
+                  MR_hl_field(MR_mktag(1), Var_76, 1) = ((MR_Box) (MR_mkword(MR_mktag(0), MR_mkbody((MR_Integer) 0))));
+                }
+                {
+                  Var_74 = (MR_Word) MR_mkword(MR_mktag(1), MR_new_object(MR_Word, ((MR_Integer) 2 * sizeof(MR_Word)), NULL, NULL));
+                  MR_hl_field(MR_mktag(1), Var_74, 0) = ((MR_Box) ((MR_String) "_"));
+                  MR_hl_field(MR_mktag(1), Var_74, 1) = ((MR_Box) (Var_76));
+                }
+                {
+                  Var_73 = (MR_Word) MR_mkword(MR_mktag(1), MR_new_object(MR_Word, ((MR_Integer) 2 * sizeof(MR_Word)), NULL, NULL));
+                  MR_hl_field(MR_mktag(1), Var_73, 0) = ((MR_Box) (TypeName_8));
+                  MR_hl_field(MR_mktag(1), Var_73, 1) = ((MR_Box) (Var_74));
+                }
+                {
+                  Var_71 = (MR_Word) MR_mkword(MR_mktag(1), MR_new_object(MR_Word, ((MR_Integer) 2 * sizeof(MR_Word)), NULL, NULL));
+                  MR_hl_field(MR_mktag(1), Var_71, 0) = ((MR_Box) ((MR_String) "__du_ptag_ordered_"));
+                  MR_hl_field(MR_mktag(1), Var_71, 1) = ((MR_Box) (Var_73));
+                }
+                {
+                  Var_70 = (MR_Word) MR_mkword(MR_mktag(1), MR_new_object(MR_Word, ((MR_Integer) 2 * sizeof(MR_Word)), NULL, NULL));
+                  MR_hl_field(MR_mktag(1), Var_70, 0) = ((MR_Box) (ModuleName_7));
+                  MR_hl_field(MR_mktag(1), Var_70, 1) = ((MR_Box) (Var_71));
+                }
+                mercury__string__append_list_2_p_0(Var_70, &Str_6);
+              }
+              break;
+            case (MR_Integer) 8:
+              {
+                MR_Word Var_51;
+                MR_Word Var_52;
+                MR_Word Var_54;
+                MR_Word Var_55;
+                MR_Word Var_57;
+
+                {
+                  Var_57 = (MR_Word) MR_mkword(MR_mktag(1), MR_new_object(MR_Word, ((MR_Integer) 2 * sizeof(MR_Word)), NULL, NULL));
+                  MR_hl_field(MR_mktag(1), Var_57, 0) = ((MR_Box) (A_str_9));
+                  MR_hl_field(MR_mktag(1), Var_57, 1) = ((MR_Box) (MR_mkword(MR_mktag(0), MR_mkbody((MR_Integer) 0))));
+                }
+                {
+                  Var_55 = (MR_Word) MR_mkword(MR_mktag(1), MR_new_object(MR_Word, ((MR_Integer) 2 * sizeof(MR_Word)), NULL, NULL));
+                  MR_hl_field(MR_mktag(1), Var_55, 0) = ((MR_Box) ((MR_String) "_"));
+                  MR_hl_field(MR_mktag(1), Var_55, 1) = ((MR_Box) (Var_57));
+                }
+                {
+                  Var_54 = (MR_Word) MR_mkword(MR_mktag(1), MR_new_object(MR_Word, ((MR_Integer) 2 * sizeof(MR_Word)), NULL, NULL));
+                  MR_hl_field(MR_mktag(1), Var_54, 0) = ((MR_Box) (TypeName_8));
+                  MR_hl_field(MR_mktag(1), Var_54, 1) = ((MR_Box) (Var_55));
+                }
+                {
+                  Var_52 = (MR_Word) MR_mkword(MR_mktag(1), MR_new_object(MR_Word, ((MR_Integer) 2 * sizeof(MR_Word)), NULL, NULL));
+                  MR_hl_field(MR_mktag(1), Var_52, 0) = ((MR_Box) ((MR_String) "__functor_number_map_"));
+                  MR_hl_field(MR_mktag(1), Var_52, 1) = ((MR_Box) (Var_54));
+                }
+                {
+                  Var_51 = (MR_Word) MR_mkword(MR_mktag(1), MR_new_object(MR_Word, ((MR_Integer) 2 * sizeof(MR_Word)), NULL, NULL));
+                  MR_hl_field(MR_mktag(1), Var_51, 0) = ((MR_Box) (ModuleName_7));
+                  MR_hl_field(MR_mktag(1), Var_51, 1) = ((MR_Box) (Var_52));
+                }
+                mercury__string__append_list_2_p_0(Var_51, &Str_6);
+              }
+              break;
+            case (MR_Integer) 9:
+              {
+                MR_Word Var_43;
+                MR_Word Var_44;
+                MR_Word Var_46;
+                MR_Word Var_47;
+                MR_Word Var_49;
+
+                {
+                  Var_49 = (MR_Word) MR_mkword(MR_mktag(1), MR_new_object(MR_Word, ((MR_Integer) 2 * sizeof(MR_Word)), NULL, NULL));
+                  MR_hl_field(MR_mktag(1), Var_49, 0) = ((MR_Box) (A_str_9));
+                  MR_hl_field(MR_mktag(1), Var_49, 1) = ((MR_Box) (MR_mkword(MR_mktag(0), MR_mkbody((MR_Integer) 0))));
+                }
+                {
+                  Var_47 = (MR_Word) MR_mkword(MR_mktag(1), MR_new_object(MR_Word, ((MR_Integer) 2 * sizeof(MR_Word)), NULL, NULL));
+                  MR_hl_field(MR_mktag(1), Var_47, 0) = ((MR_Box) ((MR_String) "_"));
+                  MR_hl_field(MR_mktag(1), Var_47, 1) = ((MR_Box) (Var_49));
+                }
+                {
+                  Var_46 = (MR_Word) MR_mkword(MR_mktag(1), MR_new_object(MR_Word, ((MR_Integer) 2 * sizeof(MR_Word)), NULL, NULL));
+                  MR_hl_field(MR_mktag(1), Var_46, 0) = ((MR_Box) (TypeName_8));
+                  MR_hl_field(MR_mktag(1), Var_46, 1) = ((MR_Box) (Var_47));
+                }
+                {
+                  Var_44 = (MR_Word) MR_mkword(MR_mktag(1), MR_new_object(MR_Word, ((MR_Integer) 2 * sizeof(MR_Word)), NULL, NULL));
+                  MR_hl_field(MR_mktag(1), Var_44, 0) = ((MR_Box) ((MR_String) "__type_functors"));
+                  MR_hl_field(MR_mktag(1), Var_44, 1) = ((MR_Box) (Var_46));
+                }
+                {
+                  Var_43 = (MR_Word) MR_mkword(MR_mktag(1), MR_new_object(MR_Word, ((MR_Integer) 2 * sizeof(MR_Word)), NULL, NULL));
+                  MR_hl_field(MR_mktag(1), Var_43, 0) = ((MR_Box) (ModuleName_7));
+                  MR_hl_field(MR_mktag(1), Var_43, 1) = ((MR_Box) (Var_44));
+                }
+                mercury__string__append_list_2_p_0(Var_43, &Str_6);
+              }
+              break;
+            case (MR_Integer) 10:
+              {
+                MR_Word Var_35;
+                MR_Word Var_36;
+                MR_Word Var_38;
+                MR_Word Var_39;
+                MR_Word Var_41;
+
+                {
+                  Var_41 = (MR_Word) MR_mkword(MR_mktag(1), MR_new_object(MR_Word, ((MR_Integer) 2 * sizeof(MR_Word)), NULL, NULL));
+                  MR_hl_field(MR_mktag(1), Var_41, 0) = ((MR_Box) (A_str_9));
+                  MR_hl_field(MR_mktag(1), Var_41, 1) = ((MR_Box) (MR_mkword(MR_mktag(0), MR_mkbody((MR_Integer) 0))));
+                }
+                {
+                  Var_39 = (MR_Word) MR_mkword(MR_mktag(1), MR_new_object(MR_Word, ((MR_Integer) 2 * sizeof(MR_Word)), NULL, NULL));
+                  MR_hl_field(MR_mktag(1), Var_39, 0) = ((MR_Box) ((MR_String) "_"));
+                  MR_hl_field(MR_mktag(1), Var_39, 1) = ((MR_Box) (Var_41));
+                }
+                {
+                  Var_38 = (MR_Word) MR_mkword(MR_mktag(1), MR_new_object(MR_Word, ((MR_Integer) 2 * sizeof(MR_Word)), NULL, NULL));
+                  MR_hl_field(MR_mktag(1), Var_38, 0) = ((MR_Box) (TypeName_8));
+                  MR_hl_field(MR_mktag(1), Var_38, 1) = ((MR_Box) (Var_39));
+                }
+                {
+                  Var_36 = (MR_Word) MR_mkword(MR_mktag(1), MR_new_object(MR_Word, ((MR_Integer) 2 * sizeof(MR_Word)), NULL, NULL));
+                  MR_hl_field(MR_mktag(1), Var_36, 0) = ((MR_Box) ((MR_String) "__type_layout"));
+                  MR_hl_field(MR_mktag(1), Var_36, 1) = ((MR_Box) (Var_38));
+                }
+                {
+                  Var_35 = (MR_Word) MR_mkword(MR_mktag(1), MR_new_object(MR_Word, ((MR_Integer) 2 * sizeof(MR_Word)), NULL, NULL));
+                  MR_hl_field(MR_mktag(1), Var_35, 0) = ((MR_Box) (ModuleName_7));
+                  MR_hl_field(MR_mktag(1), Var_35, 1) = ((MR_Box) (Var_36));
+                }
+                mercury__string__append_list_2_p_0(Var_35, &Str_6);
+              }
+              break;
+            case (MR_Integer) 11:
+              {
+                MR_Word Var_27;
+                MR_Word Var_28;
+                MR_Word Var_30;
+                MR_Word Var_31;
+                MR_Word Var_33;
+
+                {
+                  Var_33 = (MR_Word) MR_mkword(MR_mktag(1), MR_new_object(MR_Word, ((MR_Integer) 2 * sizeof(MR_Word)), NULL, NULL));
+                  MR_hl_field(MR_mktag(1), Var_33, 0) = ((MR_Box) (A_str_9));
+                  MR_hl_field(MR_mktag(1), Var_33, 1) = ((MR_Box) (MR_mkword(MR_mktag(0), MR_mkbody((MR_Integer) 0))));
+                }
+                {
+                  Var_31 = (MR_Word) MR_mkword(MR_mktag(1), MR_new_object(MR_Word, ((MR_Integer) 2 * sizeof(MR_Word)), NULL, NULL));
+                  MR_hl_field(MR_mktag(1), Var_31, 0) = ((MR_Box) ((MR_String) "_"));
+                  MR_hl_field(MR_mktag(1), Var_31, 1) = ((MR_Box) (Var_33));
+                }
+                {
+                  Var_30 = (MR_Word) MR_mkword(MR_mktag(1), MR_new_object(MR_Word, ((MR_Integer) 2 * sizeof(MR_Word)), NULL, NULL));
+                  MR_hl_field(MR_mktag(1), Var_30, 0) = ((MR_Box) (TypeName_8));
+                  MR_hl_field(MR_mktag(1), Var_30, 1) = ((MR_Box) (Var_31));
+                }
+                {
+                  Var_28 = (MR_Word) MR_mkword(MR_mktag(1), MR_new_object(MR_Word, ((MR_Integer) 2 * sizeof(MR_Word)), NULL, NULL));
+                  MR_hl_field(MR_mktag(1), Var_28, 0) = ((MR_Box) ((MR_String) "__type_ctor_info_"));
+                  MR_hl_field(MR_mktag(1), Var_28, 1) = ((MR_Box) (Var_30));
+                }
+                {
+                  Var_27 = (MR_Word) MR_mkword(MR_mktag(1), MR_new_object(MR_Word, ((MR_Integer) 2 * sizeof(MR_Word)), NULL, NULL));
+                  MR_hl_field(MR_mktag(1), Var_27, 0) = ((MR_Box) (ModuleName_7));
+                  MR_hl_field(MR_mktag(1), Var_27, 1) = ((MR_Box) (Var_28));
+                }
+                mercury__string__append_list_2_p_0(Var_27, &Str_6);
+              }
+              break;
+            case (MR_Integer) 12:
+              {
+                MR_Word Var_19;
+                MR_Word Var_20;
+                MR_Word Var_22;
+                MR_Word Var_23;
+                MR_Word Var_25;
+
+                {
+                  Var_25 = (MR_Word) MR_mkword(MR_mktag(1), MR_new_object(MR_Word, ((MR_Integer) 2 * sizeof(MR_Word)), NULL, NULL));
+                  MR_hl_field(MR_mktag(1), Var_25, 0) = ((MR_Box) (A_str_9));
+                  MR_hl_field(MR_mktag(1), Var_25, 1) = ((MR_Box) (MR_mkword(MR_mktag(0), MR_mkbody((MR_Integer) 0))));
+                }
+                {
+                  Var_23 = (MR_Word) MR_mkword(MR_mktag(1), MR_new_object(MR_Word, ((MR_Integer) 2 * sizeof(MR_Word)), NULL, NULL));
+                  MR_hl_field(MR_mktag(1), Var_23, 0) = ((MR_Box) ((MR_String) "_"));
+                  MR_hl_field(MR_mktag(1), Var_23, 1) = ((MR_Box) (Var_25));
+                }
+                {
+                  Var_22 = (MR_Word) MR_mkword(MR_mktag(1), MR_new_object(MR_Word, ((MR_Integer) 2 * sizeof(MR_Word)), NULL, NULL));
+                  MR_hl_field(MR_mktag(1), Var_22, 0) = ((MR_Box) (TypeName_8));
+                  MR_hl_field(MR_mktag(1), Var_22, 1) = ((MR_Box) (Var_23));
+                }
+                {
+                  Var_20 = (MR_Word) MR_mkword(MR_mktag(1), MR_new_object(MR_Word, ((MR_Integer) 2 * sizeof(MR_Word)), NULL, NULL));
+                  MR_hl_field(MR_mktag(1), Var_20, 0) = ((MR_Box) ((MR_String) "__hashcons_ptr_"));
+                  MR_hl_field(MR_mktag(1), Var_20, 1) = ((MR_Box) (Var_22));
+                }
+                {
+                  Var_19 = (MR_Word) MR_mkword(MR_mktag(1), MR_new_object(MR_Word, ((MR_Integer) 2 * sizeof(MR_Word)), NULL, NULL));
+                  MR_hl_field(MR_mktag(1), Var_19, 0) = ((MR_Box) (ModuleName_7));
+                  MR_hl_field(MR_mktag(1), Var_19, 1) = ((MR_Box) (Var_20));
+                }
+                mercury__string__append_list_2_p_0(Var_19, &Str_6);
+              }
+              break;
+          }
+          break;
+        case (MR_Integer) 1:
+          {
+            MR_Integer Ordinal_10 = ((MR_Integer) (MR_hl_field(MR_mktag(1), RttiName_5, (MR_Integer) 0)));
+            MR_String O_str_11;
+            MR_Word Var_247;
+            MR_Word Var_248;
+            MR_Word Var_250;
+            MR_Word Var_251;
+            MR_Word Var_253;
+            MR_Word Var_254;
+            MR_Word Var_256;
+
+            mercury__string__int_to_string_2_p_0(Ordinal_10, &O_str_11);
+            {
+              Var_256 = (MR_Word) MR_mkword(MR_mktag(1), MR_new_object(MR_Word, ((MR_Integer) 2 * sizeof(MR_Word)), NULL, NULL));
+              MR_hl_field(MR_mktag(1), Var_256, 0) = ((MR_Box) (O_str_11));
+              MR_hl_field(MR_mktag(1), Var_256, 1) = ((MR_Box) (MR_mkword(MR_mktag(0), MR_mkbody((MR_Integer) 0))));
+            }
+            {
+              Var_254 = (MR_Word) MR_mkword(MR_mktag(1), MR_new_object(MR_Word, ((MR_Integer) 2 * sizeof(MR_Word)), NULL, NULL));
+              MR_hl_field(MR_mktag(1), Var_254, 0) = ((MR_Box) ((MR_String) "_"));
+              MR_hl_field(MR_mktag(1), Var_254, 1) = ((MR_Box) (Var_256));
+            }
+            {
+              Var_253 = (MR_Word) MR_mkword(MR_mktag(1), MR_new_object(MR_Word, ((MR_Integer) 2 * sizeof(MR_Word)), NULL, NULL));
+              MR_hl_field(MR_mktag(1), Var_253, 0) = ((MR_Box) (A_str_9));
+              MR_hl_field(MR_mktag(1), Var_253, 1) = ((MR_Box) (Var_254));
+            }
+            {
+              Var_251 = (MR_Word) MR_mkword(MR_mktag(1), MR_new_object(MR_Word, ((MR_Integer) 2 * sizeof(MR_Word)), NULL, NULL));
+              MR_hl_field(MR_mktag(1), Var_251, 0) = ((MR_Box) ((MR_String) "_"));
+              MR_hl_field(MR_mktag(1), Var_251, 1) = ((MR_Box) (Var_253));
+            }
+            {
+              Var_250 = (MR_Word) MR_mkword(MR_mktag(1), MR_new_object(MR_Word, ((MR_Integer) 2 * sizeof(MR_Word)), NULL, NULL));
+              MR_hl_field(MR_mktag(1), Var_250, 0) = ((MR_Box) (TypeName_8));
+              MR_hl_field(MR_mktag(1), Var_250, 1) = ((MR_Box) (Var_251));
+            }
+            {
+              Var_248 = (MR_Word) MR_mkword(MR_mktag(1), MR_new_object(MR_Word, ((MR_Integer) 2 * sizeof(MR_Word)), NULL, NULL));
+              MR_hl_field(MR_mktag(1), Var_248, 0) = ((MR_Box) ((MR_String) "__exist_locns_"));
+              MR_hl_field(MR_mktag(1), Var_248, 1) = ((MR_Box) (Var_250));
+            }
+            {
+              Var_247 = (MR_Word) MR_mkword(MR_mktag(1), MR_new_object(MR_Word, ((MR_Integer) 2 * sizeof(MR_Word)), NULL, NULL));
+              MR_hl_field(MR_mktag(1), Var_247, 0) = ((MR_Box) (ModuleName_7));
+              MR_hl_field(MR_mktag(1), Var_247, 1) = ((MR_Box) (Var_248));
+            }
+            mercury__string__append_list_2_p_0(Var_247, &Str_6);
+          }
+          break;
+        case (MR_Integer) 2:
+          {
+            MR_Integer TCCNum_12 = ((MR_Integer) (MR_hl_field(MR_mktag(2), RttiName_5, (MR_Integer) 1)));
+            MR_String N_str_14;
+            MR_Word Var_225;
+            MR_Word Var_226;
+            MR_Word Var_228;
+            MR_Word Var_229;
+            MR_Word Var_231;
+            MR_Word Var_232;
+            MR_Word Var_234;
+            MR_Word Var_235;
+            MR_Word Var_237;
+            MR_Integer Ordinal_258 = ((MR_Integer) (MR_hl_field(MR_mktag(2), RttiName_5, (MR_Integer) 0)));
+            MR_String O_str_259;
+            MR_Integer Var_13 = ((MR_Integer) (MR_hl_field(MR_mktag(2), RttiName_5, (MR_Integer) 2)));
+
+            mercury__string__int_to_string_2_p_0(Ordinal_258, &O_str_259);
+            mercury__string__int_to_string_2_p_0(TCCNum_12, &N_str_14);
+            {
+              Var_237 = (MR_Word) MR_mkword(MR_mktag(1), MR_new_object(MR_Word, ((MR_Integer) 2 * sizeof(MR_Word)), NULL, NULL));
+              MR_hl_field(MR_mktag(1), Var_237, 0) = ((MR_Box) (N_str_14));
+              MR_hl_field(MR_mktag(1), Var_237, 1) = ((MR_Box) (MR_mkword(MR_mktag(0), MR_mkbody((MR_Integer) 0))));
+            }
+            {
+              Var_235 = (MR_Word) MR_mkword(MR_mktag(1), MR_new_object(MR_Word, ((MR_Integer) 2 * sizeof(MR_Word)), NULL, NULL));
+              MR_hl_field(MR_mktag(1), Var_235, 0) = ((MR_Box) ((MR_String) "_"));
+              MR_hl_field(MR_mktag(1), Var_235, 1) = ((MR_Box) (Var_237));
+            }
+            {
+              Var_234 = (MR_Word) MR_mkword(MR_mktag(1), MR_new_object(MR_Word, ((MR_Integer) 2 * sizeof(MR_Word)), NULL, NULL));
+              MR_hl_field(MR_mktag(1), Var_234, 0) = ((MR_Box) (O_str_259));
+              MR_hl_field(MR_mktag(1), Var_234, 1) = ((MR_Box) (Var_235));
+            }
+            {
+              Var_232 = (MR_Word) MR_mkword(MR_mktag(1), MR_new_object(MR_Word, ((MR_Integer) 2 * sizeof(MR_Word)), NULL, NULL));
+              MR_hl_field(MR_mktag(1), Var_232, 0) = ((MR_Box) ((MR_String) "_"));
+              MR_hl_field(MR_mktag(1), Var_232, 1) = ((MR_Box) (Var_234));
+            }
+            {
+              Var_231 = (MR_Word) MR_mkword(MR_mktag(1), MR_new_object(MR_Word, ((MR_Integer) 2 * sizeof(MR_Word)), NULL, NULL));
+              MR_hl_field(MR_mktag(1), Var_231, 0) = ((MR_Box) (A_str_9));
+              MR_hl_field(MR_mktag(1), Var_231, 1) = ((MR_Box) (Var_232));
+            }
+            {
+              Var_229 = (MR_Word) MR_mkword(MR_mktag(1), MR_new_object(MR_Word, ((MR_Integer) 2 * sizeof(MR_Word)), NULL, NULL));
+              MR_hl_field(MR_mktag(1), Var_229, 0) = ((MR_Box) ((MR_String) "_"));
+              MR_hl_field(MR_mktag(1), Var_229, 1) = ((MR_Box) (Var_231));
+            }
+            {
+              Var_228 = (MR_Word) MR_mkword(MR_mktag(1), MR_new_object(MR_Word, ((MR_Integer) 2 * sizeof(MR_Word)), NULL, NULL));
+              MR_hl_field(MR_mktag(1), Var_228, 0) = ((MR_Box) (TypeName_8));
+              MR_hl_field(MR_mktag(1), Var_228, 1) = ((MR_Box) (Var_229));
+            }
+            {
+              Var_226 = (MR_Word) MR_mkword(MR_mktag(1), MR_new_object(MR_Word, ((MR_Integer) 2 * sizeof(MR_Word)), NULL, NULL));
+              MR_hl_field(MR_mktag(1), Var_226, 0) = ((MR_Box) ((MR_String) "__exist_tc_constr_"));
+              MR_hl_field(MR_mktag(1), Var_226, 1) = ((MR_Box) (Var_228));
+            }
+            {
+              Var_225 = (MR_Word) MR_mkword(MR_mktag(1), MR_new_object(MR_Word, ((MR_Integer) 2 * sizeof(MR_Word)), NULL, NULL));
+              MR_hl_field(MR_mktag(1), Var_225, 0) = ((MR_Box) (ModuleName_7));
+              MR_hl_field(MR_mktag(1), Var_225, 1) = ((MR_Box) (Var_226));
+            }
+            mercury__string__append_list_2_p_0(Var_225, &Str_6);
+          }
+          break;
+        case (MR_Integer) 3:
+          switch (((MR_Integer) (MR_Word) (MR_hl_field(MR_mktag(3), RttiName_5, (MR_Integer) 0)))) {
+            default: /*NOTREACHED*/ MR_assert(0);
+            case (MR_Integer) 0:
+              {
+                MR_Word Var_214;
+                MR_Word Var_215;
+                MR_Word Var_217;
+                MR_Word Var_218;
+                MR_Word Var_220;
+                MR_Word Var_221;
+                MR_Word Var_223;
+                MR_Integer Ordinal_260 = ((MR_Integer) (MR_hl_field(MR_mktag(3), RttiName_5, (MR_Integer) 1)));
+                MR_String O_str_261;
+
+                mercury__string__int_to_string_2_p_0(Ordinal_260, &O_str_261);
+                {
+                  Var_223 = (MR_Word) MR_mkword(MR_mktag(1), MR_new_object(MR_Word, ((MR_Integer) 2 * sizeof(MR_Word)), NULL, NULL));
+                  MR_hl_field(MR_mktag(1), Var_223, 0) = ((MR_Box) (O_str_261));
+                  MR_hl_field(MR_mktag(1), Var_223, 1) = ((MR_Box) (MR_mkword(MR_mktag(0), MR_mkbody((MR_Integer) 0))));
+                }
+                {
+                  Var_221 = (MR_Word) MR_mkword(MR_mktag(1), MR_new_object(MR_Word, ((MR_Integer) 2 * sizeof(MR_Word)), NULL, NULL));
+                  MR_hl_field(MR_mktag(1), Var_221, 0) = ((MR_Box) ((MR_String) "_"));
+                  MR_hl_field(MR_mktag(1), Var_221, 1) = ((MR_Box) (Var_223));
+                }
+                {
+                  Var_220 = (MR_Word) MR_mkword(MR_mktag(1), MR_new_object(MR_Word, ((MR_Integer) 2 * sizeof(MR_Word)), NULL, NULL));
+                  MR_hl_field(MR_mktag(1), Var_220, 0) = ((MR_Box) (A_str_9));
+                  MR_hl_field(MR_mktag(1), Var_220, 1) = ((MR_Box) (Var_221));
+                }
+                {
+                  Var_218 = (MR_Word) MR_mkword(MR_mktag(1), MR_new_object(MR_Word, ((MR_Integer) 2 * sizeof(MR_Word)), NULL, NULL));
+                  MR_hl_field(MR_mktag(1), Var_218, 0) = ((MR_Box) ((MR_String) "_"));
+                  MR_hl_field(MR_mktag(1), Var_218, 1) = ((MR_Box) (Var_220));
+                }
+                {
+                  Var_217 = (MR_Word) MR_mkword(MR_mktag(1), MR_new_object(MR_Word, ((MR_Integer) 2 * sizeof(MR_Word)), NULL, NULL));
+                  MR_hl_field(MR_mktag(1), Var_217, 0) = ((MR_Box) (TypeName_8));
+                  MR_hl_field(MR_mktag(1), Var_217, 1) = ((MR_Box) (Var_218));
+                }
+                {
+                  Var_215 = (MR_Word) MR_mkword(MR_mktag(1), MR_new_object(MR_Word, ((MR_Integer) 2 * sizeof(MR_Word)), NULL, NULL));
+                  MR_hl_field(MR_mktag(1), Var_215, 0) = ((MR_Box) ((MR_String) "__exist_tc_constrs_"));
+                  MR_hl_field(MR_mktag(1), Var_215, 1) = ((MR_Box) (Var_217));
+                }
+                {
+                  Var_214 = (MR_Word) MR_mkword(MR_mktag(1), MR_new_object(MR_Word, ((MR_Integer) 2 * sizeof(MR_Word)), NULL, NULL));
+                  MR_hl_field(MR_mktag(1), Var_214, 0) = ((MR_Box) (ModuleName_7));
+                  MR_hl_field(MR_mktag(1), Var_214, 1) = ((MR_Box) (Var_215));
+                }
+                mercury__string__append_list_2_p_0(Var_214, &Str_6);
+              }
+              break;
+            case (MR_Integer) 1:
+              {
+                MR_Word Var_203;
+                MR_Word Var_204;
+                MR_Word Var_206;
+                MR_Word Var_207;
+                MR_Word Var_209;
+                MR_Word Var_210;
+                MR_Word Var_212;
+                MR_Integer Ordinal_262 = ((MR_Integer) (MR_hl_field(MR_mktag(3), RttiName_5, (MR_Integer) 1)));
+                MR_String O_str_263;
+
+                mercury__string__int_to_string_2_p_0(Ordinal_262, &O_str_263);
+                {
+                  Var_212 = (MR_Word) MR_mkword(MR_mktag(1), MR_new_object(MR_Word, ((MR_Integer) 2 * sizeof(MR_Word)), NULL, NULL));
+                  MR_hl_field(MR_mktag(1), Var_212, 0) = ((MR_Box) (O_str_263));
+                  MR_hl_field(MR_mktag(1), Var_212, 1) = ((MR_Box) (MR_mkword(MR_mktag(0), MR_mkbody((MR_Integer) 0))));
+                }
+                {
+                  Var_210 = (MR_Word) MR_mkword(MR_mktag(1), MR_new_object(MR_Word, ((MR_Integer) 2 * sizeof(MR_Word)), NULL, NULL));
+                  MR_hl_field(MR_mktag(1), Var_210, 0) = ((MR_Box) ((MR_String) "_"));
+                  MR_hl_field(MR_mktag(1), Var_210, 1) = ((MR_Box) (Var_212));
+                }
+                {
+                  Var_209 = (MR_Word) MR_mkword(MR_mktag(1), MR_new_object(MR_Word, ((MR_Integer) 2 * sizeof(MR_Word)), NULL, NULL));
+                  MR_hl_field(MR_mktag(1), Var_209, 0) = ((MR_Box) (A_str_9));
+                  MR_hl_field(MR_mktag(1), Var_209, 1) = ((MR_Box) (Var_210));
+                }
+                {
+                  Var_207 = (MR_Word) MR_mkword(MR_mktag(1), MR_new_object(MR_Word, ((MR_Integer) 2 * sizeof(MR_Word)), NULL, NULL));
+                  MR_hl_field(MR_mktag(1), Var_207, 0) = ((MR_Box) ((MR_String) "_"));
+                  MR_hl_field(MR_mktag(1), Var_207, 1) = ((MR_Box) (Var_209));
+                }
+                {
+                  Var_206 = (MR_Word) MR_mkword(MR_mktag(1), MR_new_object(MR_Word, ((MR_Integer) 2 * sizeof(MR_Word)), NULL, NULL));
+                  MR_hl_field(MR_mktag(1), Var_206, 0) = ((MR_Box) (TypeName_8));
+                  MR_hl_field(MR_mktag(1), Var_206, 1) = ((MR_Box) (Var_207));
+                }
+                {
+                  Var_204 = (MR_Word) MR_mkword(MR_mktag(1), MR_new_object(MR_Word, ((MR_Integer) 2 * sizeof(MR_Word)), NULL, NULL));
+                  MR_hl_field(MR_mktag(1), Var_204, 0) = ((MR_Box) ((MR_String) "__exist_info_"));
+                  MR_hl_field(MR_mktag(1), Var_204, 1) = ((MR_Box) (Var_206));
+                }
+                {
+                  Var_203 = (MR_Word) MR_mkword(MR_mktag(1), MR_new_object(MR_Word, ((MR_Integer) 2 * sizeof(MR_Word)), NULL, NULL));
+                  MR_hl_field(MR_mktag(1), Var_203, 0) = ((MR_Box) (ModuleName_7));
+                  MR_hl_field(MR_mktag(1), Var_203, 1) = ((MR_Box) (Var_204));
+                }
+                mercury__string__append_list_2_p_0(Var_203, &Str_6);
+              }
+              break;
+            case (MR_Integer) 2:
+              {
+                MR_Word Var_192;
+                MR_Word Var_193;
+                MR_Word Var_195;
+                MR_Word Var_196;
+                MR_Word Var_198;
+                MR_Word Var_199;
+                MR_Word Var_201;
+                MR_Integer Ordinal_264 = ((MR_Integer) (MR_hl_field(MR_mktag(3), RttiName_5, (MR_Integer) 1)));
+                MR_String O_str_265;
+
+                mercury__string__int_to_string_2_p_0(Ordinal_264, &O_str_265);
+                {
+                  Var_201 = (MR_Word) MR_mkword(MR_mktag(1), MR_new_object(MR_Word, ((MR_Integer) 2 * sizeof(MR_Word)), NULL, NULL));
+                  MR_hl_field(MR_mktag(1), Var_201, 0) = ((MR_Box) (O_str_265));
+                  MR_hl_field(MR_mktag(1), Var_201, 1) = ((MR_Box) (MR_mkword(MR_mktag(0), MR_mkbody((MR_Integer) 0))));
+                }
+                {
+                  Var_199 = (MR_Word) MR_mkword(MR_mktag(1), MR_new_object(MR_Word, ((MR_Integer) 2 * sizeof(MR_Word)), NULL, NULL));
+                  MR_hl_field(MR_mktag(1), Var_199, 0) = ((MR_Box) ((MR_String) "_"));
+                  MR_hl_field(MR_mktag(1), Var_199, 1) = ((MR_Box) (Var_201));
+                }
+                {
+                  Var_198 = (MR_Word) MR_mkword(MR_mktag(1), MR_new_object(MR_Word, ((MR_Integer) 2 * sizeof(MR_Word)), NULL, NULL));
+                  MR_hl_field(MR_mktag(1), Var_198, 0) = ((MR_Box) (A_str_9));
+                  MR_hl_field(MR_mktag(1), Var_198, 1) = ((MR_Box) (Var_199));
+                }
+                {
+                  Var_196 = (MR_Word) MR_mkword(MR_mktag(1), MR_new_object(MR_Word, ((MR_Integer) 2 * sizeof(MR_Word)), NULL, NULL));
+                  MR_hl_field(MR_mktag(1), Var_196, 0) = ((MR_Box) ((MR_String) "_"));
+                  MR_hl_field(MR_mktag(1), Var_196, 1) = ((MR_Box) (Var_198));
+                }
+                {
+                  Var_195 = (MR_Word) MR_mkword(MR_mktag(1), MR_new_object(MR_Word, ((MR_Integer) 2 * sizeof(MR_Word)), NULL, NULL));
+                  MR_hl_field(MR_mktag(1), Var_195, 0) = ((MR_Box) (TypeName_8));
+                  MR_hl_field(MR_mktag(1), Var_195, 1) = ((MR_Box) (Var_196));
+                }
+                {
+                  Var_193 = (MR_Word) MR_mkword(MR_mktag(1), MR_new_object(MR_Word, ((MR_Integer) 2 * sizeof(MR_Word)), NULL, NULL));
+                  MR_hl_field(MR_mktag(1), Var_193, 0) = ((MR_Box) ((MR_String) "__field_names_"));
+                  MR_hl_field(MR_mktag(1), Var_193, 1) = ((MR_Box) (Var_195));
+                }
+                {
+                  Var_192 = (MR_Word) MR_mkword(MR_mktag(1), MR_new_object(MR_Word, ((MR_Integer) 2 * sizeof(MR_Word)), NULL, NULL));
+                  MR_hl_field(MR_mktag(1), Var_192, 0) = ((MR_Box) (ModuleName_7));
+                  MR_hl_field(MR_mktag(1), Var_192, 1) = ((MR_Box) (Var_193));
+                }
+                mercury__string__append_list_2_p_0(Var_192, &Str_6);
+              }
+              break;
+            case (MR_Integer) 3:
+              {
+                MR_Word Var_181;
+                MR_Word Var_182;
+                MR_Word Var_184;
+                MR_Word Var_185;
+                MR_Word Var_187;
+                MR_Word Var_188;
+                MR_Word Var_190;
+                MR_Integer Ordinal_266 = ((MR_Integer) (MR_hl_field(MR_mktag(3), RttiName_5, (MR_Integer) 1)));
+                MR_String O_str_267;
+
+                mercury__string__int_to_string_2_p_0(Ordinal_266, &O_str_267);
+                {
+                  Var_190 = (MR_Word) MR_mkword(MR_mktag(1), MR_new_object(MR_Word, ((MR_Integer) 2 * sizeof(MR_Word)), NULL, NULL));
+                  MR_hl_field(MR_mktag(1), Var_190, 0) = ((MR_Box) (O_str_267));
+                  MR_hl_field(MR_mktag(1), Var_190, 1) = ((MR_Box) (MR_mkword(MR_mktag(0), MR_mkbody((MR_Integer) 0))));
+                }
+                {
+                  Var_188 = (MR_Word) MR_mkword(MR_mktag(1), MR_new_object(MR_Word, ((MR_Integer) 2 * sizeof(MR_Word)), NULL, NULL));
+                  MR_hl_field(MR_mktag(1), Var_188, 0) = ((MR_Box) ((MR_String) "_"));
+                  MR_hl_field(MR_mktag(1), Var_188, 1) = ((MR_Box) (Var_190));
+                }
+                {
+                  Var_187 = (MR_Word) MR_mkword(MR_mktag(1), MR_new_object(MR_Word, ((MR_Integer) 2 * sizeof(MR_Word)), NULL, NULL));
+                  MR_hl_field(MR_mktag(1), Var_187, 0) = ((MR_Box) (A_str_9));
+                  MR_hl_field(MR_mktag(1), Var_187, 1) = ((MR_Box) (Var_188));
+                }
+                {
+                  Var_185 = (MR_Word) MR_mkword(MR_mktag(1), MR_new_object(MR_Word, ((MR_Integer) 2 * sizeof(MR_Word)), NULL, NULL));
+                  MR_hl_field(MR_mktag(1), Var_185, 0) = ((MR_Box) ((MR_String) "_"));
+                  MR_hl_field(MR_mktag(1), Var_185, 1) = ((MR_Box) (Var_187));
+                }
+                {
+                  Var_184 = (MR_Word) MR_mkword(MR_mktag(1), MR_new_object(MR_Word, ((MR_Integer) 2 * sizeof(MR_Word)), NULL, NULL));
+                  MR_hl_field(MR_mktag(1), Var_184, 0) = ((MR_Box) (TypeName_8));
+                  MR_hl_field(MR_mktag(1), Var_184, 1) = ((MR_Box) (Var_185));
+                }
+                {
+                  Var_182 = (MR_Word) MR_mkword(MR_mktag(1), MR_new_object(MR_Word, ((MR_Integer) 2 * sizeof(MR_Word)), NULL, NULL));
+                  MR_hl_field(MR_mktag(1), Var_182, 0) = ((MR_Box) ((MR_String) "__field_types_"));
+                  MR_hl_field(MR_mktag(1), Var_182, 1) = ((MR_Box) (Var_184));
+                }
+                {
+                  Var_181 = (MR_Word) MR_mkword(MR_mktag(1), MR_new_object(MR_Word, ((MR_Integer) 2 * sizeof(MR_Word)), NULL, NULL));
+                  MR_hl_field(MR_mktag(1), Var_181, 0) = ((MR_Box) (ModuleName_7));
+                  MR_hl_field(MR_mktag(1), Var_181, 1) = ((MR_Box) (Var_182));
+                }
+                mercury__string__append_list_2_p_0(Var_181, &Str_6);
+              }
+              break;
+            case (MR_Integer) 4:
+              {
+                MR_Word Var_170;
+                MR_Word Var_171;
+                MR_Word Var_173;
+                MR_Word Var_174;
+                MR_Word Var_176;
+                MR_Word Var_177;
+                MR_Word Var_179;
+                MR_Integer Ordinal_268 = ((MR_Integer) (MR_hl_field(MR_mktag(3), RttiName_5, (MR_Integer) 1)));
+                MR_String O_str_269;
+
+                mercury__string__int_to_string_2_p_0(Ordinal_268, &O_str_269);
+                {
+                  Var_179 = (MR_Word) MR_mkword(MR_mktag(1), MR_new_object(MR_Word, ((MR_Integer) 2 * sizeof(MR_Word)), NULL, NULL));
+                  MR_hl_field(MR_mktag(1), Var_179, 0) = ((MR_Box) (O_str_269));
+                  MR_hl_field(MR_mktag(1), Var_179, 1) = ((MR_Box) (MR_mkword(MR_mktag(0), MR_mkbody((MR_Integer) 0))));
+                }
+                {
+                  Var_177 = (MR_Word) MR_mkword(MR_mktag(1), MR_new_object(MR_Word, ((MR_Integer) 2 * sizeof(MR_Word)), NULL, NULL));
+                  MR_hl_field(MR_mktag(1), Var_177, 0) = ((MR_Box) ((MR_String) "_"));
+                  MR_hl_field(MR_mktag(1), Var_177, 1) = ((MR_Box) (Var_179));
+                }
+                {
+                  Var_176 = (MR_Word) MR_mkword(MR_mktag(1), MR_new_object(MR_Word, ((MR_Integer) 2 * sizeof(MR_Word)), NULL, NULL));
+                  MR_hl_field(MR_mktag(1), Var_176, 0) = ((MR_Box) (A_str_9));
+                  MR_hl_field(MR_mktag(1), Var_176, 1) = ((MR_Box) (Var_177));
+                }
+                {
+                  Var_174 = (MR_Word) MR_mkword(MR_mktag(1), MR_new_object(MR_Word, ((MR_Integer) 2 * sizeof(MR_Word)), NULL, NULL));
+                  MR_hl_field(MR_mktag(1), Var_174, 0) = ((MR_Box) ((MR_String) "_"));
+                  MR_hl_field(MR_mktag(1), Var_174, 1) = ((MR_Box) (Var_176));
+                }
+                {
+                  Var_173 = (MR_Word) MR_mkword(MR_mktag(1), MR_new_object(MR_Word, ((MR_Integer) 2 * sizeof(MR_Word)), NULL, NULL));
+                  MR_hl_field(MR_mktag(1), Var_173, 0) = ((MR_Box) (TypeName_8));
+                  MR_hl_field(MR_mktag(1), Var_173, 1) = ((MR_Box) (Var_174));
+                }
+                {
+                  Var_171 = (MR_Word) MR_mkword(MR_mktag(1), MR_new_object(MR_Word, ((MR_Integer) 2 * sizeof(MR_Word)), NULL, NULL));
+                  MR_hl_field(MR_mktag(1), Var_171, 0) = ((MR_Box) ((MR_String) "__field_locns_"));
+                  MR_hl_field(MR_mktag(1), Var_171, 1) = ((MR_Box) (Var_173));
+                }
+                {
+                  Var_170 = (MR_Word) MR_mkword(MR_mktag(1), MR_new_object(MR_Word, ((MR_Integer) 2 * sizeof(MR_Word)), NULL, NULL));
+                  MR_hl_field(MR_mktag(1), Var_170, 0) = ((MR_Box) (ModuleName_7));
+                  MR_hl_field(MR_mktag(1), Var_170, 1) = ((MR_Box) (Var_171));
+                }
+                mercury__string__append_list_2_p_0(Var_170, &Str_6);
+              }
+              break;
+            case (MR_Integer) 5:
+              {
+                MR_Word Var_159;
+                MR_Word Var_160;
+                MR_Word Var_162;
+                MR_Word Var_163;
+                MR_Word Var_165;
+                MR_Word Var_166;
+                MR_Word Var_168;
+                MR_Integer Ordinal_270 = ((MR_Integer) (MR_hl_field(MR_mktag(3), RttiName_5, (MR_Integer) 1)));
+                MR_String O_str_271;
+
+                mercury__string__int_to_string_2_p_0(Ordinal_270, &O_str_271);
+                {
+                  Var_168 = (MR_Word) MR_mkword(MR_mktag(1), MR_new_object(MR_Word, ((MR_Integer) 2 * sizeof(MR_Word)), NULL, NULL));
+                  MR_hl_field(MR_mktag(1), Var_168, 0) = ((MR_Box) (O_str_271));
+                  MR_hl_field(MR_mktag(1), Var_168, 1) = ((MR_Box) (MR_mkword(MR_mktag(0), MR_mkbody((MR_Integer) 0))));
+                }
+                {
+                  Var_166 = (MR_Word) MR_mkword(MR_mktag(1), MR_new_object(MR_Word, ((MR_Integer) 2 * sizeof(MR_Word)), NULL, NULL));
+                  MR_hl_field(MR_mktag(1), Var_166, 0) = ((MR_Box) ((MR_String) "_"));
+                  MR_hl_field(MR_mktag(1), Var_166, 1) = ((MR_Box) (Var_168));
+                }
+                {
+                  Var_165 = (MR_Word) MR_mkword(MR_mktag(1), MR_new_object(MR_Word, ((MR_Integer) 2 * sizeof(MR_Word)), NULL, NULL));
+                  MR_hl_field(MR_mktag(1), Var_165, 0) = ((MR_Box) (A_str_9));
+                  MR_hl_field(MR_mktag(1), Var_165, 1) = ((MR_Box) (Var_166));
+                }
+                {
+                  Var_163 = (MR_Word) MR_mkword(MR_mktag(1), MR_new_object(MR_Word, ((MR_Integer) 2 * sizeof(MR_Word)), NULL, NULL));
+                  MR_hl_field(MR_mktag(1), Var_163, 0) = ((MR_Box) ((MR_String) "_"));
+                  MR_hl_field(MR_mktag(1), Var_163, 1) = ((MR_Box) (Var_165));
+                }
+                {
+                  Var_162 = (MR_Word) MR_mkword(MR_mktag(1), MR_new_object(MR_Word, ((MR_Integer) 2 * sizeof(MR_Word)), NULL, NULL));
+                  MR_hl_field(MR_mktag(1), Var_162, 0) = ((MR_Box) (TypeName_8));
+                  MR_hl_field(MR_mktag(1), Var_162, 1) = ((MR_Box) (Var_163));
+                }
+                {
+                  Var_160 = (MR_Word) MR_mkword(MR_mktag(1), MR_new_object(MR_Word, ((MR_Integer) 2 * sizeof(MR_Word)), NULL, NULL));
+                  MR_hl_field(MR_mktag(1), Var_160, 0) = ((MR_Box) ((MR_String) "__enum_functor_desc_"));
+                  MR_hl_field(MR_mktag(1), Var_160, 1) = ((MR_Box) (Var_162));
+                }
+                {
+                  Var_159 = (MR_Word) MR_mkword(MR_mktag(1), MR_new_object(MR_Word, ((MR_Integer) 2 * sizeof(MR_Word)), NULL, NULL));
+                  MR_hl_field(MR_mktag(1), Var_159, 0) = ((MR_Box) (ModuleName_7));
+                  MR_hl_field(MR_mktag(1), Var_159, 1) = ((MR_Box) (Var_160));
+                }
+                mercury__string__append_list_2_p_0(Var_159, &Str_6);
+              }
+              break;
+            case (MR_Integer) 6:
+              {
+                MR_Word Var_148;
+                MR_Word Var_149;
+                MR_Word Var_151;
+                MR_Word Var_152;
+                MR_Word Var_154;
+                MR_Word Var_155;
+                MR_Word Var_157;
+                MR_Integer Ordinal_272 = ((MR_Integer) (MR_hl_field(MR_mktag(3), RttiName_5, (MR_Integer) 1)));
+                MR_String O_str_273;
+
+                mercury__string__int_to_string_2_p_0(Ordinal_272, &O_str_273);
+                {
+                  Var_157 = (MR_Word) MR_mkword(MR_mktag(1), MR_new_object(MR_Word, ((MR_Integer) 2 * sizeof(MR_Word)), NULL, NULL));
+                  MR_hl_field(MR_mktag(1), Var_157, 0) = ((MR_Box) (O_str_273));
+                  MR_hl_field(MR_mktag(1), Var_157, 1) = ((MR_Box) (MR_mkword(MR_mktag(0), MR_mkbody((MR_Integer) 0))));
+                }
+                {
+                  Var_155 = (MR_Word) MR_mkword(MR_mktag(1), MR_new_object(MR_Word, ((MR_Integer) 2 * sizeof(MR_Word)), NULL, NULL));
+                  MR_hl_field(MR_mktag(1), Var_155, 0) = ((MR_Box) ((MR_String) "_"));
+                  MR_hl_field(MR_mktag(1), Var_155, 1) = ((MR_Box) (Var_157));
+                }
+                {
+                  Var_154 = (MR_Word) MR_mkword(MR_mktag(1), MR_new_object(MR_Word, ((MR_Integer) 2 * sizeof(MR_Word)), NULL, NULL));
+                  MR_hl_field(MR_mktag(1), Var_154, 0) = ((MR_Box) (A_str_9));
+                  MR_hl_field(MR_mktag(1), Var_154, 1) = ((MR_Box) (Var_155));
+                }
+                {
+                  Var_152 = (MR_Word) MR_mkword(MR_mktag(1), MR_new_object(MR_Word, ((MR_Integer) 2 * sizeof(MR_Word)), NULL, NULL));
+                  MR_hl_field(MR_mktag(1), Var_152, 0) = ((MR_Box) ((MR_String) "_"));
+                  MR_hl_field(MR_mktag(1), Var_152, 1) = ((MR_Box) (Var_154));
+                }
+                {
+                  Var_151 = (MR_Word) MR_mkword(MR_mktag(1), MR_new_object(MR_Word, ((MR_Integer) 2 * sizeof(MR_Word)), NULL, NULL));
+                  MR_hl_field(MR_mktag(1), Var_151, 0) = ((MR_Box) (TypeName_8));
+                  MR_hl_field(MR_mktag(1), Var_151, 1) = ((MR_Box) (Var_152));
+                }
+                {
+                  Var_149 = (MR_Word) MR_mkword(MR_mktag(1), MR_new_object(MR_Word, ((MR_Integer) 2 * sizeof(MR_Word)), NULL, NULL));
+                  MR_hl_field(MR_mktag(1), Var_149, 0) = ((MR_Box) ((MR_String) "__foreign_enum_functor_desc_"));
+                  MR_hl_field(MR_mktag(1), Var_149, 1) = ((MR_Box) (Var_151));
+                }
+                {
+                  Var_148 = (MR_Word) MR_mkword(MR_mktag(1), MR_new_object(MR_Word, ((MR_Integer) 2 * sizeof(MR_Word)), NULL, NULL));
+                  MR_hl_field(MR_mktag(1), Var_148, 0) = ((MR_Box) (ModuleName_7));
+                  MR_hl_field(MR_mktag(1), Var_148, 1) = ((MR_Box) (Var_149));
+                }
+                mercury__string__append_list_2_p_0(Var_148, &Str_6);
+              }
+              break;
+            case (MR_Integer) 7:
+              {
+                MR_Word Var_129;
+                MR_Word Var_130;
+                MR_Word Var_132;
+                MR_Word Var_133;
+                MR_Word Var_135;
+                MR_Word Var_136;
+                MR_Word Var_138;
+                MR_Integer Ordinal_274 = ((MR_Integer) (MR_hl_field(MR_mktag(3), RttiName_5, (MR_Integer) 1)));
+                MR_String O_str_275;
+
+                mercury__string__int_to_string_2_p_0(Ordinal_274, &O_str_275);
+                {
+                  Var_138 = (MR_Word) MR_mkword(MR_mktag(1), MR_new_object(MR_Word, ((MR_Integer) 2 * sizeof(MR_Word)), NULL, NULL));
+                  MR_hl_field(MR_mktag(1), Var_138, 0) = ((MR_Box) (O_str_275));
+                  MR_hl_field(MR_mktag(1), Var_138, 1) = ((MR_Box) (MR_mkword(MR_mktag(0), MR_mkbody((MR_Integer) 0))));
+                }
+                {
+                  Var_136 = (MR_Word) MR_mkword(MR_mktag(1), MR_new_object(MR_Word, ((MR_Integer) 2 * sizeof(MR_Word)), NULL, NULL));
+                  MR_hl_field(MR_mktag(1), Var_136, 0) = ((MR_Box) ((MR_String) "_"));
+                  MR_hl_field(MR_mktag(1), Var_136, 1) = ((MR_Box) (Var_138));
+                }
+                {
+                  Var_135 = (MR_Word) MR_mkword(MR_mktag(1), MR_new_object(MR_Word, ((MR_Integer) 2 * sizeof(MR_Word)), NULL, NULL));
+                  MR_hl_field(MR_mktag(1), Var_135, 0) = ((MR_Box) (A_str_9));
+                  MR_hl_field(MR_mktag(1), Var_135, 1) = ((MR_Box) (Var_136));
+                }
+                {
+                  Var_133 = (MR_Word) MR_mkword(MR_mktag(1), MR_new_object(MR_Word, ((MR_Integer) 2 * sizeof(MR_Word)), NULL, NULL));
+                  MR_hl_field(MR_mktag(1), Var_133, 0) = ((MR_Box) ((MR_String) "_"));
+                  MR_hl_field(MR_mktag(1), Var_133, 1) = ((MR_Box) (Var_135));
+                }
+                {
+                  Var_132 = (MR_Word) MR_mkword(MR_mktag(1), MR_new_object(MR_Word, ((MR_Integer) 2 * sizeof(MR_Word)), NULL, NULL));
+                  MR_hl_field(MR_mktag(1), Var_132, 0) = ((MR_Box) (TypeName_8));
+                  MR_hl_field(MR_mktag(1), Var_132, 1) = ((MR_Box) (Var_133));
+                }
+                {
+                  Var_130 = (MR_Word) MR_mkword(MR_mktag(1), MR_new_object(MR_Word, ((MR_Integer) 2 * sizeof(MR_Word)), NULL, NULL));
+                  MR_hl_field(MR_mktag(1), Var_130, 0) = ((MR_Box) ((MR_String) "__du_functor_desc_"));
+                  MR_hl_field(MR_mktag(1), Var_130, 1) = ((MR_Box) (Var_132));
+                }
+                {
+                  Var_129 = (MR_Word) MR_mkword(MR_mktag(1), MR_new_object(MR_Word, ((MR_Integer) 2 * sizeof(MR_Word)), NULL, NULL));
+                  MR_hl_field(MR_mktag(1), Var_129, 0) = ((MR_Box) (ModuleName_7));
+                  MR_hl_field(MR_mktag(1), Var_129, 1) = ((MR_Box) (Var_130));
+                }
+                mercury__string__append_list_2_p_0(Var_129, &Str_6);
+              }
+              break;
+            case (MR_Integer) 8:
+              {
+                MR_Integer Ptag_15 = ((MR_Integer) (MR_hl_field(MR_mktag(3), RttiName_5, (MR_Integer) 1)));
+                MR_String P_str_16;
+                MR_Word Var_78;
+                MR_Word Var_79;
+                MR_Word Var_81;
+                MR_Word Var_82;
+                MR_Word Var_84;
+                MR_Word Var_85;
+                MR_Word Var_87;
+
+                mercury__string__int_to_string_2_p_0(Ptag_15, &P_str_16);
+                {
+                  Var_87 = (MR_Word) MR_mkword(MR_mktag(1), MR_new_object(MR_Word, ((MR_Integer) 2 * sizeof(MR_Word)), NULL, NULL));
+                  MR_hl_field(MR_mktag(1), Var_87, 0) = ((MR_Box) (P_str_16));
+                  MR_hl_field(MR_mktag(1), Var_87, 1) = ((MR_Box) (MR_mkword(MR_mktag(0), MR_mkbody((MR_Integer) 0))));
+                }
+                {
+                  Var_85 = (MR_Word) MR_mkword(MR_mktag(1), MR_new_object(MR_Word, ((MR_Integer) 2 * sizeof(MR_Word)), NULL, NULL));
+                  MR_hl_field(MR_mktag(1), Var_85, 0) = ((MR_Box) ((MR_String) "_"));
+                  MR_hl_field(MR_mktag(1), Var_85, 1) = ((MR_Box) (Var_87));
+                }
+                {
+                  Var_84 = (MR_Word) MR_mkword(MR_mktag(1), MR_new_object(MR_Word, ((MR_Integer) 2 * sizeof(MR_Word)), NULL, NULL));
+                  MR_hl_field(MR_mktag(1), Var_84, 0) = ((MR_Box) (A_str_9));
+                  MR_hl_field(MR_mktag(1), Var_84, 1) = ((MR_Box) (Var_85));
+                }
+                {
+                  Var_82 = (MR_Word) MR_mkword(MR_mktag(1), MR_new_object(MR_Word, ((MR_Integer) 2 * sizeof(MR_Word)), NULL, NULL));
+                  MR_hl_field(MR_mktag(1), Var_82, 0) = ((MR_Box) ((MR_String) "_"));
+                  MR_hl_field(MR_mktag(1), Var_82, 1) = ((MR_Box) (Var_84));
+                }
+                {
+                  Var_81 = (MR_Word) MR_mkword(MR_mktag(1), MR_new_object(MR_Word, ((MR_Integer) 2 * sizeof(MR_Word)), NULL, NULL));
+                  MR_hl_field(MR_mktag(1), Var_81, 0) = ((MR_Box) (TypeName_8));
+                  MR_hl_field(MR_mktag(1), Var_81, 1) = ((MR_Box) (Var_82));
+                }
+                {
+                  Var_79 = (MR_Word) MR_mkword(MR_mktag(1), MR_new_object(MR_Word, ((MR_Integer) 2 * sizeof(MR_Word)), NULL, NULL));
+                  MR_hl_field(MR_mktag(1), Var_79, 0) = ((MR_Box) ((MR_String) "__du_stag_ordered_"));
+                  MR_hl_field(MR_mktag(1), Var_79, 1) = ((MR_Box) (Var_81));
+                }
+                {
+                  Var_78 = (MR_Word) MR_mkword(MR_mktag(1), MR_new_object(MR_Word, ((MR_Integer) 2 * sizeof(MR_Word)), NULL, NULL));
+                  MR_hl_field(MR_mktag(1), Var_78, 0) = ((MR_Box) (ModuleName_7));
+                  MR_hl_field(MR_mktag(1), Var_78, 1) = ((MR_Box) (Var_79));
+                }
+                mercury__string__append_list_2_p_0(Var_78, &Str_6);
+              }
+              break;
+            case (MR_Integer) 9:
+              {
+                MR_Word Var_59;
+                MR_Word Var_60;
+                MR_Word Var_62;
+                MR_Word Var_63;
+                MR_Word Var_65;
+                MR_Word Var_66;
+                MR_Word Var_68;
+                MR_Integer Ptag_276 = ((MR_Integer) (MR_hl_field(MR_mktag(3), RttiName_5, (MR_Integer) 1)));
+                MR_String P_str_277;
+
+                mercury__string__int_to_string_2_p_0(Ptag_276, &P_str_277);
+                {
+                  Var_68 = (MR_Word) MR_mkword(MR_mktag(1), MR_new_object(MR_Word, ((MR_Integer) 2 * sizeof(MR_Word)), NULL, NULL));
+                  MR_hl_field(MR_mktag(1), Var_68, 0) = ((MR_Box) (P_str_277));
+                  MR_hl_field(MR_mktag(1), Var_68, 1) = ((MR_Box) (MR_mkword(MR_mktag(0), MR_mkbody((MR_Integer) 0))));
+                }
+                {
+                  Var_66 = (MR_Word) MR_mkword(MR_mktag(1), MR_new_object(MR_Word, ((MR_Integer) 2 * sizeof(MR_Word)), NULL, NULL));
+                  MR_hl_field(MR_mktag(1), Var_66, 0) = ((MR_Box) ((MR_String) "_"));
+                  MR_hl_field(MR_mktag(1), Var_66, 1) = ((MR_Box) (Var_68));
+                }
+                {
+                  Var_65 = (MR_Word) MR_mkword(MR_mktag(1), MR_new_object(MR_Word, ((MR_Integer) 2 * sizeof(MR_Word)), NULL, NULL));
+                  MR_hl_field(MR_mktag(1), Var_65, 0) = ((MR_Box) (A_str_9));
+                  MR_hl_field(MR_mktag(1), Var_65, 1) = ((MR_Box) (Var_66));
+                }
+                {
+                  Var_63 = (MR_Word) MR_mkword(MR_mktag(1), MR_new_object(MR_Word, ((MR_Integer) 2 * sizeof(MR_Word)), NULL, NULL));
+                  MR_hl_field(MR_mktag(1), Var_63, 0) = ((MR_Box) ((MR_String) "_"));
+                  MR_hl_field(MR_mktag(1), Var_63, 1) = ((MR_Box) (Var_65));
+                }
+                {
+                  Var_62 = (MR_Word) MR_mkword(MR_mktag(1), MR_new_object(MR_Word, ((MR_Integer) 2 * sizeof(MR_Word)), NULL, NULL));
+                  MR_hl_field(MR_mktag(1), Var_62, 0) = ((MR_Box) (TypeName_8));
+                  MR_hl_field(MR_mktag(1), Var_62, 1) = ((MR_Box) (Var_63));
+                }
+                {
+                  Var_60 = (MR_Word) MR_mkword(MR_mktag(1), MR_new_object(MR_Word, ((MR_Integer) 2 * sizeof(MR_Word)), NULL, NULL));
+                  MR_hl_field(MR_mktag(1), Var_60, 0) = ((MR_Box) ((MR_String) "__du_ptag_layout_"));
+                  MR_hl_field(MR_mktag(1), Var_60, 1) = ((MR_Box) (Var_62));
+                }
+                {
+                  Var_59 = (MR_Word) MR_mkword(MR_mktag(1), MR_new_object(MR_Word, ((MR_Integer) 2 * sizeof(MR_Word)), NULL, NULL));
+                  MR_hl_field(MR_mktag(1), Var_59, 0) = ((MR_Box) (ModuleName_7));
+                  MR_hl_field(MR_mktag(1), Var_59, 1) = ((MR_Box) (Var_60));
+                }
+                mercury__string__append_list_2_p_0(Var_59, &Str_6);
+              }
+              break;
+            case (MR_Integer) 10:
+              {
+                MR_Word TypeInfo_17 = ((MR_Word) (MR_hl_field(MR_mktag(3), RttiName_5, (MR_Integer) 1)));
+                MR_Word next_value_of_tscc_proc_1_input_1_TypeInfo_3 = TypeInfo_17;
+
+                // direct tailcall eliminated
+                tscc_proc_1_input_1_TypeInfo_3 = next_value_of_tscc_proc_1_input_1_TypeInfo_3;
+                goto top_of_proc_1;
+              }
+              break;
+            case (MR_Integer) 11:
+              {
+                MR_Word PseudoTypeInfo_18 = ((MR_Word) (MR_hl_field(MR_mktag(3), RttiName_5, (MR_Integer) 1)));
+                MR_Word next_value_of_tscc_proc_2_input_1_PseudoTypeInfo_3 = PseudoTypeInfo_18;
+
+                // direct tailcall eliminated
+                tscc_proc_2_input_1_PseudoTypeInfo_3 = next_value_of_tscc_proc_2_input_1_PseudoTypeInfo_3;
+                goto top_of_proc_2;
+              }
+              break;
+          }
+          break;
+      }
+      tscc_output_1_Str_4 = Str_6;
+      goto tscc_end;
+    }
+  tscc_end:;
+    return tscc_output_1_Str_4;
+  }
+}
+
+MR_String MR_CALL 
+backend_libs__rtti__pseudo_type_info_to_string_1_f_0(
+  MR_Word tscc_proc_2_input_1_PseudoTypeInfo_3)
+{
+  {
+    MR_Word tscc_proc_1_input_1_TypeInfo_3;
+    MR_Word tscc_proc_3_input_1_RttiTypeCtor_4;
+    MR_Word tscc_proc_3_input_2_RttiName_5;
+    MR_String tscc_output_1_Str_4;
+
+    // The code for TSCC PROC 2: func backend_libs.rtti.pseudo_type_info_to_string/1-0.
+    // Setup for mutual tailcalls optimized into a loop.
+    // The mutually recursive procedures are:
+
+    // proc 1 in TSCC: func backend_libs.rtti.type_info_to_string/1-0
+    // proc 2 in TSCC: func backend_libs.rtti.pseudo_type_info_to_string/1-0
+    // proc 3 in TSCC: func backend_libs.rtti.name_to_string/2-0
+
+    goto top_of_proc_2;
+  top_of_proc_1:;
+    {
+      MR_Word TypeInfo_3 = tscc_proc_1_input_1_TypeInfo_3;
+      MR_String Str_4;
+      MR_bool succeeded;
+
+      switch (MR_tag((MR_Word) TypeInfo_3)) {
+        default: /*NOTREACHED*/ MR_assert(0);
+        case (MR_Integer) 0:
+          {
+            MR_Word RttiTypeCtor_32 = (MR_Word) MR_body(((MR_Word) TypeInfo_3), (MR_Integer) 0);
+            MR_Word next_value_of_tscc_proc_3_input_1_RttiTypeCtor_4 = RttiTypeCtor_32;
+
+            // direct tailcall eliminated
+            tscc_proc_3_input_1_RttiTypeCtor_4 = next_value_of_tscc_proc_3_input_1_RttiTypeCtor_4;
+            tscc_proc_3_input_2_RttiName_5 = (MR_Word) MR_mkword(MR_mktag(0), MR_mkbody((MR_Integer) 11));
+            goto top_of_proc_3;
+          }
+          break;
+        case (MR_Integer) 1:
+          {
+            MR_Word Args_7 = ((MR_Word) (MR_hl_field(MR_mktag(1), TypeInfo_3, (MR_Integer) 1)));
+            MR_String ModuleName_8;
+            MR_String TypeName_9;
+            MR_String ArityStr_10;
+            MR_String ArgsStr_11;
+            MR_String Var_21;
+            MR_String Var_23;
+            MR_String Var_24;
+            MR_String Var_26;
+            MR_Word RttiTypeCtor_28 = ((MR_Word) (MR_hl_field(MR_mktag(1), TypeInfo_3, (MR_Integer) 0)));
+            MR_Word ModuleNameSym0_42 = ((MR_Word) (MR_hl_field(MR_mktag(0), RttiTypeCtor_28, (MR_Integer) 0)));
+            MR_String TypeName0_43 = ((MR_String) (MR_hl_field(MR_mktag(0), RttiTypeCtor_28, (MR_Integer) 1)));
+            MR_Integer TypeArity_44 = ((MR_Integer) (MR_hl_field(MR_mktag(0), RttiTypeCtor_28, (MR_Integer) 2)));
+            MR_Word ModuleNameSym_45;
+            MR_Word Var_48;
+            MR_String Var_46;
+
+            succeeded = ((MR_tag((MR_Word) ModuleNameSym0_42)) == (MR_mktag((MR_Integer) 0)));
+            if (succeeded)
+            {
+              Var_46 = ((MR_String) (MR_hl_field(MR_mktag(0), ModuleNameSym0_42, (MR_Integer) 0)));
+              succeeded = (strcmp(Var_46, (MR_String) "") == 0);
+            }
+            if (succeeded)
+              ModuleNameSym_45 = mdbcomp__builtin_modules__mercury_public_builtin_module_0_f_0();
+            else
+              ModuleNameSym_45 = ModuleNameSym0_42;
+            ModuleName_8 = parse_tree__prog_foreign__sym_name_mangle_1_f_0(ModuleNameSym_45);
+            TypeName_9 = parse_tree__prog_foreign__name_mangle_1_f_0(TypeName0_43);
+            mercury__string__int_to_string_2_p_0(TypeArity_44, &ArityStr_10);
+            Var_48 = mercury__list__map_2_f_0((MR_Word) &backend_libs__rtti__backend_libs__rtti__type_ctor_info_rtti_type_info_0, (MR_Word) &mercury__builtin__builtin__type_ctor_info_string_0, (MR_Word) &backend_libs__rtti_scalar_common_2[8], Args_7);
+            ArgsStr_11 = mercury__string__append_list_1_f_0(Var_48);
+            Var_26 = mercury__string__f_43_43_2_f_0(ArityStr_10, ArgsStr_11);
+            Var_24 = mercury__string__f_43_43_2_f_0((MR_String) "_", Var_26);
+            Var_23 = mercury__string__f_43_43_2_f_0(TypeName_9, Var_24);
+            Var_21 = mercury__string__f_43_43_2_f_0((MR_String) "__ti_", Var_23);
+            Str_4 = mercury__string__f_43_43_2_f_0(ModuleName_8, Var_21);
+          }
+          break;
+        case (MR_Integer) 2:
+          {
+            MR_Word VarArityId_12 = ((MR_Word) (MR_hl_field(MR_mktag(2), TypeInfo_3, (MR_Integer) 0)));
+            MR_Integer RealArity_13;
+            MR_String IdStr_14;
+            MR_String Var_16;
+            MR_String Var_17;
+            MR_String Var_19;
+            MR_String Var_20;
+            MR_Word Args_29 = ((MR_Word) (MR_hl_field(MR_mktag(2), TypeInfo_3, (MR_Integer) 1)));
+            MR_String ArgsStr_30;
+            MR_Word Var_55;
+
+            RealArity_13 = mercury__list__length_1_f_0((MR_Word) &backend_libs__rtti__backend_libs__rtti__type_ctor_info_rtti_type_info_0, Args_29);
+            Var_55 = mercury__list__map_2_f_0((MR_Word) &backend_libs__rtti__backend_libs__rtti__type_ctor_info_rtti_type_info_0, (MR_Word) &mercury__builtin__builtin__type_ctor_info_string_0, (MR_Word) &backend_libs__rtti_scalar_common_2[9], Args_29);
+            ArgsStr_30 = mercury__string__append_list_1_f_0(Var_55);
+            switch (VarArityId_12) {
+              default: /*NOTREACHED*/ MR_assert(0);
+              case (MR_Integer) 1:
+                IdStr_14 = (MR_String) "func";
+                break;
+              case (MR_Integer) 0:
+                IdStr_14 = (MR_String) "pred";
+                break;
+              case (MR_Integer) 2:
+                IdStr_14 = (MR_String) "tuple";
+                break;
+            }
+            Var_20 = mercury__string__int_to_string_1_f_0(RealArity_13);
+            Var_19 = mercury__string__f_43_43_2_f_0(Var_20, ArgsStr_30);
+            Var_17 = mercury__string__f_43_43_2_f_0((MR_String) "_", Var_19);
+            Var_16 = mercury__string__f_43_43_2_f_0(IdStr_14, Var_17);
+            Str_4 = mercury__string__f_43_43_2_f_0((MR_String) "__vti_", Var_16);
+          }
+          break;
+      }
+      tscc_output_1_Str_4 = Str_4;
+      goto tscc_end;
+    }
+  top_of_proc_2:;
+    {
+      MR_Word PseudoTypeInfo_3 = tscc_proc_2_input_1_PseudoTypeInfo_3;
+      MR_String Str_4;
+      MR_bool succeeded;
+
+      switch (MR_tag((MR_Word) PseudoTypeInfo_3)) {
+        default: /*NOTREACHED*/ MR_assert(0);
+        case (MR_Integer) 0:
+          {
+            MR_Word RttiTypeCtor_33 = (MR_Word) MR_body(((MR_Word) PseudoTypeInfo_3), (MR_Integer) 0);
+            MR_Word next_value_of_tscc_proc_3_input_1_RttiTypeCtor_4 = RttiTypeCtor_33;
+
+            // direct tailcall eliminated
+            tscc_proc_3_input_1_RttiTypeCtor_4 = next_value_of_tscc_proc_3_input_1_RttiTypeCtor_4;
+            tscc_proc_3_input_2_RttiName_5 = (MR_Word) MR_mkword(MR_mktag(0), MR_mkbody((MR_Integer) 11));
+            goto top_of_proc_3;
+          }
+          break;
+        case (MR_Integer) 1:
+          {
+            MR_Word Args_7 = ((MR_Word) (MR_hl_field(MR_mktag(1), PseudoTypeInfo_3, (MR_Integer) 1)));
+            MR_String ModuleName_8;
+            MR_String TypeName_9;
+            MR_String ArityStr_10;
+            MR_String ArgsStr_11;
+            MR_String Var_22;
+            MR_String Var_24;
+            MR_String Var_25;
+            MR_String Var_27;
+            MR_Word RttiTypeCtor_29 = ((MR_Word) (MR_hl_field(MR_mktag(1), PseudoTypeInfo_3, (MR_Integer) 0)));
+            MR_Word ModuleNameSym0_43 = ((MR_Word) (MR_hl_field(MR_mktag(0), RttiTypeCtor_29, (MR_Integer) 0)));
+            MR_String TypeName0_44 = ((MR_String) (MR_hl_field(MR_mktag(0), RttiTypeCtor_29, (MR_Integer) 1)));
+            MR_Integer TypeArity_45 = ((MR_Integer) (MR_hl_field(MR_mktag(0), RttiTypeCtor_29, (MR_Integer) 2)));
+            MR_Word ModuleNameSym_46;
+            MR_Word Var_49;
+            MR_String Var_47;
+
+            succeeded = ((MR_tag((MR_Word) ModuleNameSym0_43)) == (MR_mktag((MR_Integer) 0)));
+            if (succeeded)
+            {
+              Var_47 = ((MR_String) (MR_hl_field(MR_mktag(0), ModuleNameSym0_43, (MR_Integer) 0)));
+              succeeded = (strcmp(Var_47, (MR_String) "") == 0);
+            }
+            if (succeeded)
+              ModuleNameSym_46 = mdbcomp__builtin_modules__mercury_public_builtin_module_0_f_0();
+            else
+              ModuleNameSym_46 = ModuleNameSym0_43;
+            ModuleName_8 = parse_tree__prog_foreign__sym_name_mangle_1_f_0(ModuleNameSym_46);
+            TypeName_9 = parse_tree__prog_foreign__name_mangle_1_f_0(TypeName0_44);
+            mercury__string__int_to_string_2_p_0(TypeArity_45, &ArityStr_10);
+            Var_49 = mercury__list__map_2_f_0((MR_Word) &backend_libs__rtti__backend_libs__rtti__type_ctor_info_rtti_maybe_pseudo_type_info_0, (MR_Word) &mercury__builtin__builtin__type_ctor_info_string_0, (MR_Word) &backend_libs__rtti_scalar_common_2[10], Args_7);
+            ArgsStr_11 = mercury__string__append_list_1_f_0(Var_49);
+            Var_27 = mercury__string__f_43_43_2_f_0(ArityStr_10, ArgsStr_11);
+            Var_25 = mercury__string__f_43_43_2_f_0((MR_String) "_", Var_27);
+            Var_24 = mercury__string__f_43_43_2_f_0(TypeName_9, Var_25);
+            Var_22 = mercury__string__f_43_43_2_f_0((MR_String) "__pti_", Var_24);
+            Str_4 = mercury__string__f_43_43_2_f_0(ModuleName_8, Var_22);
+          }
+          break;
+        case (MR_Integer) 2:
+          {
+            MR_Word VarArityId_12 = ((MR_Word) (MR_hl_field(MR_mktag(2), PseudoTypeInfo_3, (MR_Integer) 0)));
+            MR_Integer RealArity_13;
+            MR_String IdStr_14;
+            MR_String Var_17;
+            MR_String Var_18;
+            MR_String Var_20;
+            MR_String Var_21;
+            MR_Word Args_30 = ((MR_Word) (MR_hl_field(MR_mktag(2), PseudoTypeInfo_3, (MR_Integer) 1)));
+            MR_String ArgsStr_31;
+            MR_Word Var_56;
+
+            RealArity_13 = mercury__list__length_1_f_0((MR_Word) &backend_libs__rtti__backend_libs__rtti__type_ctor_info_rtti_maybe_pseudo_type_info_0, Args_30);
+            Var_56 = mercury__list__map_2_f_0((MR_Word) &backend_libs__rtti__backend_libs__rtti__type_ctor_info_rtti_maybe_pseudo_type_info_0, (MR_Word) &mercury__builtin__builtin__type_ctor_info_string_0, (MR_Word) &backend_libs__rtti_scalar_common_2[11], Args_30);
+            ArgsStr_31 = mercury__string__append_list_1_f_0(Var_56);
+            switch (VarArityId_12) {
+              default: /*NOTREACHED*/ MR_assert(0);
+              case (MR_Integer) 1:
+                IdStr_14 = (MR_String) "func";
+                break;
+              case (MR_Integer) 0:
+                IdStr_14 = (MR_String) "pred";
+                break;
+              case (MR_Integer) 2:
+                IdStr_14 = (MR_String) "tuple";
+                break;
+            }
+            Var_21 = mercury__string__int_to_string_1_f_0(RealArity_13);
+            Var_20 = mercury__string__f_43_43_2_f_0(Var_21, ArgsStr_31);
+            Var_18 = mercury__string__f_43_43_2_f_0((MR_String) "_", Var_20);
+            Var_17 = mercury__string__f_43_43_2_f_0(IdStr_14, Var_18);
+            Str_4 = mercury__string__f_43_43_2_f_0((MR_String) "__vpti_", Var_17);
+          }
+          break;
+        case (MR_Integer) 3:
+          {
+            MR_Integer VarNum_15 = ((MR_Integer) (MR_hl_field(MR_mktag(3), PseudoTypeInfo_3, (MR_Integer) 0)));
+
+            mercury__string__int_to_string_2_p_0(VarNum_15, &Str_4);
+          }
+          break;
+      }
+      tscc_output_1_Str_4 = Str_4;
+      goto tscc_end;
+    }
+  top_of_proc_3:;
+    {
+      MR_Word RttiTypeCtor_4 = tscc_proc_3_input_1_RttiTypeCtor_4;
+      MR_Word RttiName_5 = tscc_proc_3_input_2_RttiName_5;
+      MR_String Str_6;
+      MR_String ModuleName_7;
+      MR_String TypeName_8;
+      MR_String A_str_9;
+
+      backend_libs__rtti__mangle_rtti_type_ctor_4_p_0(RttiTypeCtor_4, &ModuleName_7, &TypeName_8, &A_str_9);
+      switch (MR_tag((MR_Word) RttiName_5)) {
+        default: /*NOTREACHED*/ MR_assert(0);
+        case (MR_Integer) 0:
+          switch (MR_unmkbody(RttiName_5)) {
+            default: /*NOTREACHED*/ MR_assert(0);
+            case (MR_Integer) 0:
+              {
+                MR_Word Var_239;
+                MR_Word Var_240;
+                MR_Word Var_242;
+                MR_Word Var_243;
+                MR_Word Var_245;
+
+                {
+                  Var_245 = (MR_Word) MR_mkword(MR_mktag(1), MR_new_object(MR_Word, ((MR_Integer) 2 * sizeof(MR_Word)), NULL, NULL));
+                  MR_hl_field(MR_mktag(1), Var_245, 0) = ((MR_Box) (A_str_9));
+                  MR_hl_field(MR_mktag(1), Var_245, 1) = ((MR_Box) (MR_mkword(MR_mktag(0), MR_mkbody((MR_Integer) 0))));
+                }
+                {
+                  Var_243 = (MR_Word) MR_mkword(MR_mktag(1), MR_new_object(MR_Word, ((MR_Integer) 2 * sizeof(MR_Word)), NULL, NULL));
+                  MR_hl_field(MR_mktag(1), Var_243, 0) = ((MR_Box) ((MR_String) "_"));
+                  MR_hl_field(MR_mktag(1), Var_243, 1) = ((MR_Box) (Var_245));
+                }
+                {
+                  Var_242 = (MR_Word) MR_mkword(MR_mktag(1), MR_new_object(MR_Word, ((MR_Integer) 2 * sizeof(MR_Word)), NULL, NULL));
+                  MR_hl_field(MR_mktag(1), Var_242, 0) = ((MR_Box) (TypeName_8));
+                  MR_hl_field(MR_mktag(1), Var_242, 1) = ((MR_Box) (Var_243));
+                }
+                {
+                  Var_240 = (MR_Word) MR_mkword(MR_mktag(1), MR_new_object(MR_Word, ((MR_Integer) 2 * sizeof(MR_Word)), NULL, NULL));
+                  MR_hl_field(MR_mktag(1), Var_240, 0) = ((MR_Box) ((MR_String) "__exist_locn_"));
+                  MR_hl_field(MR_mktag(1), Var_240, 1) = ((MR_Box) (Var_242));
+                }
+                {
+                  Var_239 = (MR_Word) MR_mkword(MR_mktag(1), MR_new_object(MR_Word, ((MR_Integer) 2 * sizeof(MR_Word)), NULL, NULL));
+                  MR_hl_field(MR_mktag(1), Var_239, 0) = ((MR_Box) (ModuleName_7));
+                  MR_hl_field(MR_mktag(1), Var_239, 1) = ((MR_Box) (Var_240));
+                }
+                mercury__string__append_list_2_p_0(Var_239, &Str_6);
+              }
+              break;
+            case (MR_Integer) 1:
+              {
+                MR_Word Var_140;
+                MR_Word Var_141;
+                MR_Word Var_143;
+                MR_Word Var_144;
+                MR_Word Var_146;
+
+                {
+                  Var_146 = (MR_Word) MR_mkword(MR_mktag(1), MR_new_object(MR_Word, ((MR_Integer) 2 * sizeof(MR_Word)), NULL, NULL));
+                  MR_hl_field(MR_mktag(1), Var_146, 0) = ((MR_Box) (A_str_9));
+                  MR_hl_field(MR_mktag(1), Var_146, 1) = ((MR_Box) (MR_mkword(MR_mktag(0), MR_mkbody((MR_Integer) 0))));
+                }
+                {
+                  Var_144 = (MR_Word) MR_mkword(MR_mktag(1), MR_new_object(MR_Word, ((MR_Integer) 2 * sizeof(MR_Word)), NULL, NULL));
+                  MR_hl_field(MR_mktag(1), Var_144, 0) = ((MR_Box) ((MR_String) "_"));
+                  MR_hl_field(MR_mktag(1), Var_144, 1) = ((MR_Box) (Var_146));
+                }
+                {
+                  Var_143 = (MR_Word) MR_mkword(MR_mktag(1), MR_new_object(MR_Word, ((MR_Integer) 2 * sizeof(MR_Word)), NULL, NULL));
+                  MR_hl_field(MR_mktag(1), Var_143, 0) = ((MR_Box) (TypeName_8));
+                  MR_hl_field(MR_mktag(1), Var_143, 1) = ((MR_Box) (Var_144));
+                }
+                {
+                  Var_141 = (MR_Word) MR_mkword(MR_mktag(1), MR_new_object(MR_Word, ((MR_Integer) 2 * sizeof(MR_Word)), NULL, NULL));
+                  MR_hl_field(MR_mktag(1), Var_141, 0) = ((MR_Box) ((MR_String) "__notag_functor_desc_"));
+                  MR_hl_field(MR_mktag(1), Var_141, 1) = ((MR_Box) (Var_143));
+                }
+                {
+                  Var_140 = (MR_Word) MR_mkword(MR_mktag(1), MR_new_object(MR_Word, ((MR_Integer) 2 * sizeof(MR_Word)), NULL, NULL));
+                  MR_hl_field(MR_mktag(1), Var_140, 0) = ((MR_Box) (ModuleName_7));
+                  MR_hl_field(MR_mktag(1), Var_140, 1) = ((MR_Box) (Var_141));
+                }
+                mercury__string__append_list_2_p_0(Var_140, &Str_6);
+              }
+              break;
+            case (MR_Integer) 2:
+              {
+                MR_Word Var_121;
+                MR_Word Var_122;
+                MR_Word Var_124;
+                MR_Word Var_125;
+                MR_Word Var_127;
+
+                {
+                  Var_127 = (MR_Word) MR_mkword(MR_mktag(1), MR_new_object(MR_Word, ((MR_Integer) 2 * sizeof(MR_Word)), NULL, NULL));
+                  MR_hl_field(MR_mktag(1), Var_127, 0) = ((MR_Box) (A_str_9));
+                  MR_hl_field(MR_mktag(1), Var_127, 1) = ((MR_Box) (MR_mkword(MR_mktag(0), MR_mkbody((MR_Integer) 0))));
+                }
+                {
+                  Var_125 = (MR_Word) MR_mkword(MR_mktag(1), MR_new_object(MR_Word, ((MR_Integer) 2 * sizeof(MR_Word)), NULL, NULL));
+                  MR_hl_field(MR_mktag(1), Var_125, 0) = ((MR_Box) ((MR_String) "_"));
+                  MR_hl_field(MR_mktag(1), Var_125, 1) = ((MR_Box) (Var_127));
+                }
+                {
+                  Var_124 = (MR_Word) MR_mkword(MR_mktag(1), MR_new_object(MR_Word, ((MR_Integer) 2 * sizeof(MR_Word)), NULL, NULL));
+                  MR_hl_field(MR_mktag(1), Var_124, 0) = ((MR_Box) (TypeName_8));
+                  MR_hl_field(MR_mktag(1), Var_124, 1) = ((MR_Box) (Var_125));
+                }
+                {
+                  Var_122 = (MR_Word) MR_mkword(MR_mktag(1), MR_new_object(MR_Word, ((MR_Integer) 2 * sizeof(MR_Word)), NULL, NULL));
+                  MR_hl_field(MR_mktag(1), Var_122, 0) = ((MR_Box) ((MR_String) "__enum_name_ordered_"));
+                  MR_hl_field(MR_mktag(1), Var_122, 1) = ((MR_Box) (Var_124));
+                }
+                {
+                  Var_121 = (MR_Word) MR_mkword(MR_mktag(1), MR_new_object(MR_Word, ((MR_Integer) 2 * sizeof(MR_Word)), NULL, NULL));
+                  MR_hl_field(MR_mktag(1), Var_121, 0) = ((MR_Box) (ModuleName_7));
+                  MR_hl_field(MR_mktag(1), Var_121, 1) = ((MR_Box) (Var_122));
+                }
+                mercury__string__append_list_2_p_0(Var_121, &Str_6);
+              }
+              break;
+            case (MR_Integer) 3:
+              {
+                MR_Word Var_113;
+                MR_Word Var_114;
+                MR_Word Var_116;
+                MR_Word Var_117;
+                MR_Word Var_119;
+
+                {
+                  Var_119 = (MR_Word) MR_mkword(MR_mktag(1), MR_new_object(MR_Word, ((MR_Integer) 2 * sizeof(MR_Word)), NULL, NULL));
+                  MR_hl_field(MR_mktag(1), Var_119, 0) = ((MR_Box) (A_str_9));
+                  MR_hl_field(MR_mktag(1), Var_119, 1) = ((MR_Box) (MR_mkword(MR_mktag(0), MR_mkbody((MR_Integer) 0))));
+                }
+                {
+                  Var_117 = (MR_Word) MR_mkword(MR_mktag(1), MR_new_object(MR_Word, ((MR_Integer) 2 * sizeof(MR_Word)), NULL, NULL));
+                  MR_hl_field(MR_mktag(1), Var_117, 0) = ((MR_Box) ((MR_String) "_"));
+                  MR_hl_field(MR_mktag(1), Var_117, 1) = ((MR_Box) (Var_119));
+                }
+                {
+                  Var_116 = (MR_Word) MR_mkword(MR_mktag(1), MR_new_object(MR_Word, ((MR_Integer) 2 * sizeof(MR_Word)), NULL, NULL));
+                  MR_hl_field(MR_mktag(1), Var_116, 0) = ((MR_Box) (TypeName_8));
+                  MR_hl_field(MR_mktag(1), Var_116, 1) = ((MR_Box) (Var_117));
+                }
+                {
+                  Var_114 = (MR_Word) MR_mkword(MR_mktag(1), MR_new_object(MR_Word, ((MR_Integer) 2 * sizeof(MR_Word)), NULL, NULL));
+                  MR_hl_field(MR_mktag(1), Var_114, 0) = ((MR_Box) ((MR_String) "__enum_value_ordered_"));
+                  MR_hl_field(MR_mktag(1), Var_114, 1) = ((MR_Box) (Var_116));
+                }
+                {
+                  Var_113 = (MR_Word) MR_mkword(MR_mktag(1), MR_new_object(MR_Word, ((MR_Integer) 2 * sizeof(MR_Word)), NULL, NULL));
+                  MR_hl_field(MR_mktag(1), Var_113, 0) = ((MR_Box) (ModuleName_7));
+                  MR_hl_field(MR_mktag(1), Var_113, 1) = ((MR_Box) (Var_114));
+                }
+                mercury__string__append_list_2_p_0(Var_113, &Str_6);
+              }
+              break;
+            case (MR_Integer) 4:
+              {
+                MR_Word Var_105;
+                MR_Word Var_106;
+                MR_Word Var_108;
+                MR_Word Var_109;
+                MR_Word Var_111;
+
+                {
+                  Var_111 = (MR_Word) MR_mkword(MR_mktag(1), MR_new_object(MR_Word, ((MR_Integer) 2 * sizeof(MR_Word)), NULL, NULL));
+                  MR_hl_field(MR_mktag(1), Var_111, 0) = ((MR_Box) (A_str_9));
+                  MR_hl_field(MR_mktag(1), Var_111, 1) = ((MR_Box) (MR_mkword(MR_mktag(0), MR_mkbody((MR_Integer) 0))));
+                }
+                {
+                  Var_109 = (MR_Word) MR_mkword(MR_mktag(1), MR_new_object(MR_Word, ((MR_Integer) 2 * sizeof(MR_Word)), NULL, NULL));
+                  MR_hl_field(MR_mktag(1), Var_109, 0) = ((MR_Box) ((MR_String) "_"));
+                  MR_hl_field(MR_mktag(1), Var_109, 1) = ((MR_Box) (Var_111));
+                }
+                {
+                  Var_108 = (MR_Word) MR_mkword(MR_mktag(1), MR_new_object(MR_Word, ((MR_Integer) 2 * sizeof(MR_Word)), NULL, NULL));
+                  MR_hl_field(MR_mktag(1), Var_108, 0) = ((MR_Box) (TypeName_8));
+                  MR_hl_field(MR_mktag(1), Var_108, 1) = ((MR_Box) (Var_109));
+                }
+                {
+                  Var_106 = (MR_Word) MR_mkword(MR_mktag(1), MR_new_object(MR_Word, ((MR_Integer) 2 * sizeof(MR_Word)), NULL, NULL));
+                  MR_hl_field(MR_mktag(1), Var_106, 0) = ((MR_Box) ((MR_String) "__foreign_enum_name_ordered_"));
+                  MR_hl_field(MR_mktag(1), Var_106, 1) = ((MR_Box) (Var_108));
+                }
+                {
+                  Var_105 = (MR_Word) MR_mkword(MR_mktag(1), MR_new_object(MR_Word, ((MR_Integer) 2 * sizeof(MR_Word)), NULL, NULL));
+                  MR_hl_field(MR_mktag(1), Var_105, 0) = ((MR_Box) (ModuleName_7));
+                  MR_hl_field(MR_mktag(1), Var_105, 1) = ((MR_Box) (Var_106));
+                }
+                mercury__string__append_list_2_p_0(Var_105, &Str_6);
+              }
+              break;
+            case (MR_Integer) 5:
+              {
+                MR_Word Var_97;
+                MR_Word Var_98;
+                MR_Word Var_100;
+                MR_Word Var_101;
+                MR_Word Var_103;
+
+                {
+                  Var_103 = (MR_Word) MR_mkword(MR_mktag(1), MR_new_object(MR_Word, ((MR_Integer) 2 * sizeof(MR_Word)), NULL, NULL));
+                  MR_hl_field(MR_mktag(1), Var_103, 0) = ((MR_Box) (A_str_9));
+                  MR_hl_field(MR_mktag(1), Var_103, 1) = ((MR_Box) (MR_mkword(MR_mktag(0), MR_mkbody((MR_Integer) 0))));
+                }
+                {
+                  Var_101 = (MR_Word) MR_mkword(MR_mktag(1), MR_new_object(MR_Word, ((MR_Integer) 2 * sizeof(MR_Word)), NULL, NULL));
+                  MR_hl_field(MR_mktag(1), Var_101, 0) = ((MR_Box) ((MR_String) "_"));
+                  MR_hl_field(MR_mktag(1), Var_101, 1) = ((MR_Box) (Var_103));
+                }
+                {
+                  Var_100 = (MR_Word) MR_mkword(MR_mktag(1), MR_new_object(MR_Word, ((MR_Integer) 2 * sizeof(MR_Word)), NULL, NULL));
+                  MR_hl_field(MR_mktag(1), Var_100, 0) = ((MR_Box) (TypeName_8));
+                  MR_hl_field(MR_mktag(1), Var_100, 1) = ((MR_Box) (Var_101));
+                }
+                {
+                  Var_98 = (MR_Word) MR_mkword(MR_mktag(1), MR_new_object(MR_Word, ((MR_Integer) 2 * sizeof(MR_Word)), NULL, NULL));
+                  MR_hl_field(MR_mktag(1), Var_98, 0) = ((MR_Box) ((MR_String) "__foreign_enum_ordinal_ordered_"));
+                  MR_hl_field(MR_mktag(1), Var_98, 1) = ((MR_Box) (Var_100));
+                }
+                {
+                  Var_97 = (MR_Word) MR_mkword(MR_mktag(1), MR_new_object(MR_Word, ((MR_Integer) 2 * sizeof(MR_Word)), NULL, NULL));
+                  MR_hl_field(MR_mktag(1), Var_97, 0) = ((MR_Box) (ModuleName_7));
+                  MR_hl_field(MR_mktag(1), Var_97, 1) = ((MR_Box) (Var_98));
+                }
+                mercury__string__append_list_2_p_0(Var_97, &Str_6);
+              }
+              break;
+            case (MR_Integer) 6:
+              {
+                MR_Word Var_89;
+                MR_Word Var_90;
+                MR_Word Var_92;
+                MR_Word Var_93;
+                MR_Word Var_95;
+
+                {
+                  Var_95 = (MR_Word) MR_mkword(MR_mktag(1), MR_new_object(MR_Word, ((MR_Integer) 2 * sizeof(MR_Word)), NULL, NULL));
+                  MR_hl_field(MR_mktag(1), Var_95, 0) = ((MR_Box) (A_str_9));
+                  MR_hl_field(MR_mktag(1), Var_95, 1) = ((MR_Box) (MR_mkword(MR_mktag(0), MR_mkbody((MR_Integer) 0))));
+                }
+                {
+                  Var_93 = (MR_Word) MR_mkword(MR_mktag(1), MR_new_object(MR_Word, ((MR_Integer) 2 * sizeof(MR_Word)), NULL, NULL));
+                  MR_hl_field(MR_mktag(1), Var_93, 0) = ((MR_Box) ((MR_String) "_"));
+                  MR_hl_field(MR_mktag(1), Var_93, 1) = ((MR_Box) (Var_95));
+                }
+                {
+                  Var_92 = (MR_Word) MR_mkword(MR_mktag(1), MR_new_object(MR_Word, ((MR_Integer) 2 * sizeof(MR_Word)), NULL, NULL));
+                  MR_hl_field(MR_mktag(1), Var_92, 0) = ((MR_Box) (TypeName_8));
+                  MR_hl_field(MR_mktag(1), Var_92, 1) = ((MR_Box) (Var_93));
+                }
+                {
+                  Var_90 = (MR_Word) MR_mkword(MR_mktag(1), MR_new_object(MR_Word, ((MR_Integer) 2 * sizeof(MR_Word)), NULL, NULL));
+                  MR_hl_field(MR_mktag(1), Var_90, 0) = ((MR_Box) ((MR_String) "__du_name_ordered_"));
+                  MR_hl_field(MR_mktag(1), Var_90, 1) = ((MR_Box) (Var_92));
+                }
+                {
+                  Var_89 = (MR_Word) MR_mkword(MR_mktag(1), MR_new_object(MR_Word, ((MR_Integer) 2 * sizeof(MR_Word)), NULL, NULL));
+                  MR_hl_field(MR_mktag(1), Var_89, 0) = ((MR_Box) (ModuleName_7));
+                  MR_hl_field(MR_mktag(1), Var_89, 1) = ((MR_Box) (Var_90));
+                }
+                mercury__string__append_list_2_p_0(Var_89, &Str_6);
+              }
+              break;
+            case (MR_Integer) 7:
+              {
+                MR_Word Var_70;
+                MR_Word Var_71;
+                MR_Word Var_73;
+                MR_Word Var_74;
+                MR_Word Var_76;
+
+                {
+                  Var_76 = (MR_Word) MR_mkword(MR_mktag(1), MR_new_object(MR_Word, ((MR_Integer) 2 * sizeof(MR_Word)), NULL, NULL));
+                  MR_hl_field(MR_mktag(1), Var_76, 0) = ((MR_Box) (A_str_9));
+                  MR_hl_field(MR_mktag(1), Var_76, 1) = ((MR_Box) (MR_mkword(MR_mktag(0), MR_mkbody((MR_Integer) 0))));
+                }
+                {
+                  Var_74 = (MR_Word) MR_mkword(MR_mktag(1), MR_new_object(MR_Word, ((MR_Integer) 2 * sizeof(MR_Word)), NULL, NULL));
+                  MR_hl_field(MR_mktag(1), Var_74, 0) = ((MR_Box) ((MR_String) "_"));
+                  MR_hl_field(MR_mktag(1), Var_74, 1) = ((MR_Box) (Var_76));
+                }
+                {
+                  Var_73 = (MR_Word) MR_mkword(MR_mktag(1), MR_new_object(MR_Word, ((MR_Integer) 2 * sizeof(MR_Word)), NULL, NULL));
+                  MR_hl_field(MR_mktag(1), Var_73, 0) = ((MR_Box) (TypeName_8));
+                  MR_hl_field(MR_mktag(1), Var_73, 1) = ((MR_Box) (Var_74));
+                }
+                {
+                  Var_71 = (MR_Word) MR_mkword(MR_mktag(1), MR_new_object(MR_Word, ((MR_Integer) 2 * sizeof(MR_Word)), NULL, NULL));
+                  MR_hl_field(MR_mktag(1), Var_71, 0) = ((MR_Box) ((MR_String) "__du_ptag_ordered_"));
+                  MR_hl_field(MR_mktag(1), Var_71, 1) = ((MR_Box) (Var_73));
+                }
+                {
+                  Var_70 = (MR_Word) MR_mkword(MR_mktag(1), MR_new_object(MR_Word, ((MR_Integer) 2 * sizeof(MR_Word)), NULL, NULL));
+                  MR_hl_field(MR_mktag(1), Var_70, 0) = ((MR_Box) (ModuleName_7));
+                  MR_hl_field(MR_mktag(1), Var_70, 1) = ((MR_Box) (Var_71));
+                }
+                mercury__string__append_list_2_p_0(Var_70, &Str_6);
+              }
+              break;
+            case (MR_Integer) 8:
+              {
+                MR_Word Var_51;
+                MR_Word Var_52;
+                MR_Word Var_54;
+                MR_Word Var_55;
+                MR_Word Var_57;
+
+                {
+                  Var_57 = (MR_Word) MR_mkword(MR_mktag(1), MR_new_object(MR_Word, ((MR_Integer) 2 * sizeof(MR_Word)), NULL, NULL));
+                  MR_hl_field(MR_mktag(1), Var_57, 0) = ((MR_Box) (A_str_9));
+                  MR_hl_field(MR_mktag(1), Var_57, 1) = ((MR_Box) (MR_mkword(MR_mktag(0), MR_mkbody((MR_Integer) 0))));
+                }
+                {
+                  Var_55 = (MR_Word) MR_mkword(MR_mktag(1), MR_new_object(MR_Word, ((MR_Integer) 2 * sizeof(MR_Word)), NULL, NULL));
+                  MR_hl_field(MR_mktag(1), Var_55, 0) = ((MR_Box) ((MR_String) "_"));
+                  MR_hl_field(MR_mktag(1), Var_55, 1) = ((MR_Box) (Var_57));
+                }
+                {
+                  Var_54 = (MR_Word) MR_mkword(MR_mktag(1), MR_new_object(MR_Word, ((MR_Integer) 2 * sizeof(MR_Word)), NULL, NULL));
+                  MR_hl_field(MR_mktag(1), Var_54, 0) = ((MR_Box) (TypeName_8));
+                  MR_hl_field(MR_mktag(1), Var_54, 1) = ((MR_Box) (Var_55));
+                }
+                {
+                  Var_52 = (MR_Word) MR_mkword(MR_mktag(1), MR_new_object(MR_Word, ((MR_Integer) 2 * sizeof(MR_Word)), NULL, NULL));
+                  MR_hl_field(MR_mktag(1), Var_52, 0) = ((MR_Box) ((MR_String) "__functor_number_map_"));
+                  MR_hl_field(MR_mktag(1), Var_52, 1) = ((MR_Box) (Var_54));
+                }
+                {
+                  Var_51 = (MR_Word) MR_mkword(MR_mktag(1), MR_new_object(MR_Word, ((MR_Integer) 2 * sizeof(MR_Word)), NULL, NULL));
+                  MR_hl_field(MR_mktag(1), Var_51, 0) = ((MR_Box) (ModuleName_7));
+                  MR_hl_field(MR_mktag(1), Var_51, 1) = ((MR_Box) (Var_52));
+                }
+                mercury__string__append_list_2_p_0(Var_51, &Str_6);
+              }
+              break;
+            case (MR_Integer) 9:
+              {
+                MR_Word Var_43;
+                MR_Word Var_44;
+                MR_Word Var_46;
+                MR_Word Var_47;
+                MR_Word Var_49;
+
+                {
+                  Var_49 = (MR_Word) MR_mkword(MR_mktag(1), MR_new_object(MR_Word, ((MR_Integer) 2 * sizeof(MR_Word)), NULL, NULL));
+                  MR_hl_field(MR_mktag(1), Var_49, 0) = ((MR_Box) (A_str_9));
+                  MR_hl_field(MR_mktag(1), Var_49, 1) = ((MR_Box) (MR_mkword(MR_mktag(0), MR_mkbody((MR_Integer) 0))));
+                }
+                {
+                  Var_47 = (MR_Word) MR_mkword(MR_mktag(1), MR_new_object(MR_Word, ((MR_Integer) 2 * sizeof(MR_Word)), NULL, NULL));
+                  MR_hl_field(MR_mktag(1), Var_47, 0) = ((MR_Box) ((MR_String) "_"));
+                  MR_hl_field(MR_mktag(1), Var_47, 1) = ((MR_Box) (Var_49));
+                }
+                {
+                  Var_46 = (MR_Word) MR_mkword(MR_mktag(1), MR_new_object(MR_Word, ((MR_Integer) 2 * sizeof(MR_Word)), NULL, NULL));
+                  MR_hl_field(MR_mktag(1), Var_46, 0) = ((MR_Box) (TypeName_8));
+                  MR_hl_field(MR_mktag(1), Var_46, 1) = ((MR_Box) (Var_47));
+                }
+                {
+                  Var_44 = (MR_Word) MR_mkword(MR_mktag(1), MR_new_object(MR_Word, ((MR_Integer) 2 * sizeof(MR_Word)), NULL, NULL));
+                  MR_hl_field(MR_mktag(1), Var_44, 0) = ((MR_Box) ((MR_String) "__type_functors"));
+                  MR_hl_field(MR_mktag(1), Var_44, 1) = ((MR_Box) (Var_46));
+                }
+                {
+                  Var_43 = (MR_Word) MR_mkword(MR_mktag(1), MR_new_object(MR_Word, ((MR_Integer) 2 * sizeof(MR_Word)), NULL, NULL));
+                  MR_hl_field(MR_mktag(1), Var_43, 0) = ((MR_Box) (ModuleName_7));
+                  MR_hl_field(MR_mktag(1), Var_43, 1) = ((MR_Box) (Var_44));
+                }
+                mercury__string__append_list_2_p_0(Var_43, &Str_6);
+              }
+              break;
+            case (MR_Integer) 10:
+              {
+                MR_Word Var_35;
+                MR_Word Var_36;
+                MR_Word Var_38;
+                MR_Word Var_39;
+                MR_Word Var_41;
+
+                {
+                  Var_41 = (MR_Word) MR_mkword(MR_mktag(1), MR_new_object(MR_Word, ((MR_Integer) 2 * sizeof(MR_Word)), NULL, NULL));
+                  MR_hl_field(MR_mktag(1), Var_41, 0) = ((MR_Box) (A_str_9));
+                  MR_hl_field(MR_mktag(1), Var_41, 1) = ((MR_Box) (MR_mkword(MR_mktag(0), MR_mkbody((MR_Integer) 0))));
+                }
+                {
+                  Var_39 = (MR_Word) MR_mkword(MR_mktag(1), MR_new_object(MR_Word, ((MR_Integer) 2 * sizeof(MR_Word)), NULL, NULL));
+                  MR_hl_field(MR_mktag(1), Var_39, 0) = ((MR_Box) ((MR_String) "_"));
+                  MR_hl_field(MR_mktag(1), Var_39, 1) = ((MR_Box) (Var_41));
+                }
+                {
+                  Var_38 = (MR_Word) MR_mkword(MR_mktag(1), MR_new_object(MR_Word, ((MR_Integer) 2 * sizeof(MR_Word)), NULL, NULL));
+                  MR_hl_field(MR_mktag(1), Var_38, 0) = ((MR_Box) (TypeName_8));
+                  MR_hl_field(MR_mktag(1), Var_38, 1) = ((MR_Box) (Var_39));
+                }
+                {
+                  Var_36 = (MR_Word) MR_mkword(MR_mktag(1), MR_new_object(MR_Word, ((MR_Integer) 2 * sizeof(MR_Word)), NULL, NULL));
+                  MR_hl_field(MR_mktag(1), Var_36, 0) = ((MR_Box) ((MR_String) "__type_layout"));
+                  MR_hl_field(MR_mktag(1), Var_36, 1) = ((MR_Box) (Var_38));
+                }
+                {
+                  Var_35 = (MR_Word) MR_mkword(MR_mktag(1), MR_new_object(MR_Word, ((MR_Integer) 2 * sizeof(MR_Word)), NULL, NULL));
+                  MR_hl_field(MR_mktag(1), Var_35, 0) = ((MR_Box) (ModuleName_7));
+                  MR_hl_field(MR_mktag(1), Var_35, 1) = ((MR_Box) (Var_36));
+                }
+                mercury__string__append_list_2_p_0(Var_35, &Str_6);
+              }
+              break;
+            case (MR_Integer) 11:
+              {
+                MR_Word Var_27;
+                MR_Word Var_28;
+                MR_Word Var_30;
+                MR_Word Var_31;
+                MR_Word Var_33;
+
+                {
+                  Var_33 = (MR_Word) MR_mkword(MR_mktag(1), MR_new_object(MR_Word, ((MR_Integer) 2 * sizeof(MR_Word)), NULL, NULL));
+                  MR_hl_field(MR_mktag(1), Var_33, 0) = ((MR_Box) (A_str_9));
+                  MR_hl_field(MR_mktag(1), Var_33, 1) = ((MR_Box) (MR_mkword(MR_mktag(0), MR_mkbody((MR_Integer) 0))));
+                }
+                {
+                  Var_31 = (MR_Word) MR_mkword(MR_mktag(1), MR_new_object(MR_Word, ((MR_Integer) 2 * sizeof(MR_Word)), NULL, NULL));
+                  MR_hl_field(MR_mktag(1), Var_31, 0) = ((MR_Box) ((MR_String) "_"));
+                  MR_hl_field(MR_mktag(1), Var_31, 1) = ((MR_Box) (Var_33));
+                }
+                {
+                  Var_30 = (MR_Word) MR_mkword(MR_mktag(1), MR_new_object(MR_Word, ((MR_Integer) 2 * sizeof(MR_Word)), NULL, NULL));
+                  MR_hl_field(MR_mktag(1), Var_30, 0) = ((MR_Box) (TypeName_8));
+                  MR_hl_field(MR_mktag(1), Var_30, 1) = ((MR_Box) (Var_31));
+                }
+                {
+                  Var_28 = (MR_Word) MR_mkword(MR_mktag(1), MR_new_object(MR_Word, ((MR_Integer) 2 * sizeof(MR_Word)), NULL, NULL));
+                  MR_hl_field(MR_mktag(1), Var_28, 0) = ((MR_Box) ((MR_String) "__type_ctor_info_"));
+                  MR_hl_field(MR_mktag(1), Var_28, 1) = ((MR_Box) (Var_30));
+                }
+                {
+                  Var_27 = (MR_Word) MR_mkword(MR_mktag(1), MR_new_object(MR_Word, ((MR_Integer) 2 * sizeof(MR_Word)), NULL, NULL));
+                  MR_hl_field(MR_mktag(1), Var_27, 0) = ((MR_Box) (ModuleName_7));
+                  MR_hl_field(MR_mktag(1), Var_27, 1) = ((MR_Box) (Var_28));
+                }
+                mercury__string__append_list_2_p_0(Var_27, &Str_6);
+              }
+              break;
+            case (MR_Integer) 12:
+              {
+                MR_Word Var_19;
+                MR_Word Var_20;
+                MR_Word Var_22;
+                MR_Word Var_23;
+                MR_Word Var_25;
+
+                {
+                  Var_25 = (MR_Word) MR_mkword(MR_mktag(1), MR_new_object(MR_Word, ((MR_Integer) 2 * sizeof(MR_Word)), NULL, NULL));
+                  MR_hl_field(MR_mktag(1), Var_25, 0) = ((MR_Box) (A_str_9));
+                  MR_hl_field(MR_mktag(1), Var_25, 1) = ((MR_Box) (MR_mkword(MR_mktag(0), MR_mkbody((MR_Integer) 0))));
+                }
+                {
+                  Var_23 = (MR_Word) MR_mkword(MR_mktag(1), MR_new_object(MR_Word, ((MR_Integer) 2 * sizeof(MR_Word)), NULL, NULL));
+                  MR_hl_field(MR_mktag(1), Var_23, 0) = ((MR_Box) ((MR_String) "_"));
+                  MR_hl_field(MR_mktag(1), Var_23, 1) = ((MR_Box) (Var_25));
+                }
+                {
+                  Var_22 = (MR_Word) MR_mkword(MR_mktag(1), MR_new_object(MR_Word, ((MR_Integer) 2 * sizeof(MR_Word)), NULL, NULL));
+                  MR_hl_field(MR_mktag(1), Var_22, 0) = ((MR_Box) (TypeName_8));
+                  MR_hl_field(MR_mktag(1), Var_22, 1) = ((MR_Box) (Var_23));
+                }
+                {
+                  Var_20 = (MR_Word) MR_mkword(MR_mktag(1), MR_new_object(MR_Word, ((MR_Integer) 2 * sizeof(MR_Word)), NULL, NULL));
+                  MR_hl_field(MR_mktag(1), Var_20, 0) = ((MR_Box) ((MR_String) "__hashcons_ptr_"));
+                  MR_hl_field(MR_mktag(1), Var_20, 1) = ((MR_Box) (Var_22));
+                }
+                {
+                  Var_19 = (MR_Word) MR_mkword(MR_mktag(1), MR_new_object(MR_Word, ((MR_Integer) 2 * sizeof(MR_Word)), NULL, NULL));
+                  MR_hl_field(MR_mktag(1), Var_19, 0) = ((MR_Box) (ModuleName_7));
+                  MR_hl_field(MR_mktag(1), Var_19, 1) = ((MR_Box) (Var_20));
+                }
+                mercury__string__append_list_2_p_0(Var_19, &Str_6);
+              }
+              break;
+          }
+          break;
+        case (MR_Integer) 1:
+          {
+            MR_Integer Ordinal_10 = ((MR_Integer) (MR_hl_field(MR_mktag(1), RttiName_5, (MR_Integer) 0)));
+            MR_String O_str_11;
+            MR_Word Var_247;
+            MR_Word Var_248;
+            MR_Word Var_250;
+            MR_Word Var_251;
+            MR_Word Var_253;
+            MR_Word Var_254;
+            MR_Word Var_256;
+
+            mercury__string__int_to_string_2_p_0(Ordinal_10, &O_str_11);
+            {
+              Var_256 = (MR_Word) MR_mkword(MR_mktag(1), MR_new_object(MR_Word, ((MR_Integer) 2 * sizeof(MR_Word)), NULL, NULL));
+              MR_hl_field(MR_mktag(1), Var_256, 0) = ((MR_Box) (O_str_11));
+              MR_hl_field(MR_mktag(1), Var_256, 1) = ((MR_Box) (MR_mkword(MR_mktag(0), MR_mkbody((MR_Integer) 0))));
+            }
+            {
+              Var_254 = (MR_Word) MR_mkword(MR_mktag(1), MR_new_object(MR_Word, ((MR_Integer) 2 * sizeof(MR_Word)), NULL, NULL));
+              MR_hl_field(MR_mktag(1), Var_254, 0) = ((MR_Box) ((MR_String) "_"));
+              MR_hl_field(MR_mktag(1), Var_254, 1) = ((MR_Box) (Var_256));
+            }
+            {
+              Var_253 = (MR_Word) MR_mkword(MR_mktag(1), MR_new_object(MR_Word, ((MR_Integer) 2 * sizeof(MR_Word)), NULL, NULL));
+              MR_hl_field(MR_mktag(1), Var_253, 0) = ((MR_Box) (A_str_9));
+              MR_hl_field(MR_mktag(1), Var_253, 1) = ((MR_Box) (Var_254));
+            }
+            {
+              Var_251 = (MR_Word) MR_mkword(MR_mktag(1), MR_new_object(MR_Word, ((MR_Integer) 2 * sizeof(MR_Word)), NULL, NULL));
+              MR_hl_field(MR_mktag(1), Var_251, 0) = ((MR_Box) ((MR_String) "_"));
+              MR_hl_field(MR_mktag(1), Var_251, 1) = ((MR_Box) (Var_253));
+            }
+            {
+              Var_250 = (MR_Word) MR_mkword(MR_mktag(1), MR_new_object(MR_Word, ((MR_Integer) 2 * sizeof(MR_Word)), NULL, NULL));
+              MR_hl_field(MR_mktag(1), Var_250, 0) = ((MR_Box) (TypeName_8));
+              MR_hl_field(MR_mktag(1), Var_250, 1) = ((MR_Box) (Var_251));
+            }
+            {
+              Var_248 = (MR_Word) MR_mkword(MR_mktag(1), MR_new_object(MR_Word, ((MR_Integer) 2 * sizeof(MR_Word)), NULL, NULL));
+              MR_hl_field(MR_mktag(1), Var_248, 0) = ((MR_Box) ((MR_String) "__exist_locns_"));
+              MR_hl_field(MR_mktag(1), Var_248, 1) = ((MR_Box) (Var_250));
+            }
+            {
+              Var_247 = (MR_Word) MR_mkword(MR_mktag(1), MR_new_object(MR_Word, ((MR_Integer) 2 * sizeof(MR_Word)), NULL, NULL));
+              MR_hl_field(MR_mktag(1), Var_247, 0) = ((MR_Box) (ModuleName_7));
+              MR_hl_field(MR_mktag(1), Var_247, 1) = ((MR_Box) (Var_248));
+            }
+            mercury__string__append_list_2_p_0(Var_247, &Str_6);
+          }
+          break;
+        case (MR_Integer) 2:
+          {
+            MR_Integer TCCNum_12 = ((MR_Integer) (MR_hl_field(MR_mktag(2), RttiName_5, (MR_Integer) 1)));
+            MR_String N_str_14;
+            MR_Word Var_225;
+            MR_Word Var_226;
+            MR_Word Var_228;
+            MR_Word Var_229;
+            MR_Word Var_231;
+            MR_Word Var_232;
+            MR_Word Var_234;
+            MR_Word Var_235;
+            MR_Word Var_237;
+            MR_Integer Ordinal_258 = ((MR_Integer) (MR_hl_field(MR_mktag(2), RttiName_5, (MR_Integer) 0)));
+            MR_String O_str_259;
+            MR_Integer Var_13 = ((MR_Integer) (MR_hl_field(MR_mktag(2), RttiName_5, (MR_Integer) 2)));
+
+            mercury__string__int_to_string_2_p_0(Ordinal_258, &O_str_259);
+            mercury__string__int_to_string_2_p_0(TCCNum_12, &N_str_14);
+            {
+              Var_237 = (MR_Word) MR_mkword(MR_mktag(1), MR_new_object(MR_Word, ((MR_Integer) 2 * sizeof(MR_Word)), NULL, NULL));
+              MR_hl_field(MR_mktag(1), Var_237, 0) = ((MR_Box) (N_str_14));
+              MR_hl_field(MR_mktag(1), Var_237, 1) = ((MR_Box) (MR_mkword(MR_mktag(0), MR_mkbody((MR_Integer) 0))));
+            }
+            {
+              Var_235 = (MR_Word) MR_mkword(MR_mktag(1), MR_new_object(MR_Word, ((MR_Integer) 2 * sizeof(MR_Word)), NULL, NULL));
+              MR_hl_field(MR_mktag(1), Var_235, 0) = ((MR_Box) ((MR_String) "_"));
+              MR_hl_field(MR_mktag(1), Var_235, 1) = ((MR_Box) (Var_237));
+            }
+            {
+              Var_234 = (MR_Word) MR_mkword(MR_mktag(1), MR_new_object(MR_Word, ((MR_Integer) 2 * sizeof(MR_Word)), NULL, NULL));
+              MR_hl_field(MR_mktag(1), Var_234, 0) = ((MR_Box) (O_str_259));
+              MR_hl_field(MR_mktag(1), Var_234, 1) = ((MR_Box) (Var_235));
+            }
+            {
+              Var_232 = (MR_Word) MR_mkword(MR_mktag(1), MR_new_object(MR_Word, ((MR_Integer) 2 * sizeof(MR_Word)), NULL, NULL));
+              MR_hl_field(MR_mktag(1), Var_232, 0) = ((MR_Box) ((MR_String) "_"));
+              MR_hl_field(MR_mktag(1), Var_232, 1) = ((MR_Box) (Var_234));
+            }
+            {
+              Var_231 = (MR_Word) MR_mkword(MR_mktag(1), MR_new_object(MR_Word, ((MR_Integer) 2 * sizeof(MR_Word)), NULL, NULL));
+              MR_hl_field(MR_mktag(1), Var_231, 0) = ((MR_Box) (A_str_9));
+              MR_hl_field(MR_mktag(1), Var_231, 1) = ((MR_Box) (Var_232));
+            }
+            {
+              Var_229 = (MR_Word) MR_mkword(MR_mktag(1), MR_new_object(MR_Word, ((MR_Integer) 2 * sizeof(MR_Word)), NULL, NULL));
+              MR_hl_field(MR_mktag(1), Var_229, 0) = ((MR_Box) ((MR_String) "_"));
+              MR_hl_field(MR_mktag(1), Var_229, 1) = ((MR_Box) (Var_231));
+            }
+            {
+              Var_228 = (MR_Word) MR_mkword(MR_mktag(1), MR_new_object(MR_Word, ((MR_Integer) 2 * sizeof(MR_Word)), NULL, NULL));
+              MR_hl_field(MR_mktag(1), Var_228, 0) = ((MR_Box) (TypeName_8));
+              MR_hl_field(MR_mktag(1), Var_228, 1) = ((MR_Box) (Var_229));
+            }
+            {
+              Var_226 = (MR_Word) MR_mkword(MR_mktag(1), MR_new_object(MR_Word, ((MR_Integer) 2 * sizeof(MR_Word)), NULL, NULL));
+              MR_hl_field(MR_mktag(1), Var_226, 0) = ((MR_Box) ((MR_String) "__exist_tc_constr_"));
+              MR_hl_field(MR_mktag(1), Var_226, 1) = ((MR_Box) (Var_228));
+            }
+            {
+              Var_225 = (MR_Word) MR_mkword(MR_mktag(1), MR_new_object(MR_Word, ((MR_Integer) 2 * sizeof(MR_Word)), NULL, NULL));
+              MR_hl_field(MR_mktag(1), Var_225, 0) = ((MR_Box) (ModuleName_7));
+              MR_hl_field(MR_mktag(1), Var_225, 1) = ((MR_Box) (Var_226));
+            }
+            mercury__string__append_list_2_p_0(Var_225, &Str_6);
+          }
+          break;
+        case (MR_Integer) 3:
+          switch (((MR_Integer) (MR_Word) (MR_hl_field(MR_mktag(3), RttiName_5, (MR_Integer) 0)))) {
+            default: /*NOTREACHED*/ MR_assert(0);
+            case (MR_Integer) 0:
+              {
+                MR_Word Var_214;
+                MR_Word Var_215;
+                MR_Word Var_217;
+                MR_Word Var_218;
+                MR_Word Var_220;
+                MR_Word Var_221;
+                MR_Word Var_223;
+                MR_Integer Ordinal_260 = ((MR_Integer) (MR_hl_field(MR_mktag(3), RttiName_5, (MR_Integer) 1)));
+                MR_String O_str_261;
+
+                mercury__string__int_to_string_2_p_0(Ordinal_260, &O_str_261);
+                {
+                  Var_223 = (MR_Word) MR_mkword(MR_mktag(1), MR_new_object(MR_Word, ((MR_Integer) 2 * sizeof(MR_Word)), NULL, NULL));
+                  MR_hl_field(MR_mktag(1), Var_223, 0) = ((MR_Box) (O_str_261));
+                  MR_hl_field(MR_mktag(1), Var_223, 1) = ((MR_Box) (MR_mkword(MR_mktag(0), MR_mkbody((MR_Integer) 0))));
+                }
+                {
+                  Var_221 = (MR_Word) MR_mkword(MR_mktag(1), MR_new_object(MR_Word, ((MR_Integer) 2 * sizeof(MR_Word)), NULL, NULL));
+                  MR_hl_field(MR_mktag(1), Var_221, 0) = ((MR_Box) ((MR_String) "_"));
+                  MR_hl_field(MR_mktag(1), Var_221, 1) = ((MR_Box) (Var_223));
+                }
+                {
+                  Var_220 = (MR_Word) MR_mkword(MR_mktag(1), MR_new_object(MR_Word, ((MR_Integer) 2 * sizeof(MR_Word)), NULL, NULL));
+                  MR_hl_field(MR_mktag(1), Var_220, 0) = ((MR_Box) (A_str_9));
+                  MR_hl_field(MR_mktag(1), Var_220, 1) = ((MR_Box) (Var_221));
+                }
+                {
+                  Var_218 = (MR_Word) MR_mkword(MR_mktag(1), MR_new_object(MR_Word, ((MR_Integer) 2 * sizeof(MR_Word)), NULL, NULL));
+                  MR_hl_field(MR_mktag(1), Var_218, 0) = ((MR_Box) ((MR_String) "_"));
+                  MR_hl_field(MR_mktag(1), Var_218, 1) = ((MR_Box) (Var_220));
+                }
+                {
+                  Var_217 = (MR_Word) MR_mkword(MR_mktag(1), MR_new_object(MR_Word, ((MR_Integer) 2 * sizeof(MR_Word)), NULL, NULL));
+                  MR_hl_field(MR_mktag(1), Var_217, 0) = ((MR_Box) (TypeName_8));
+                  MR_hl_field(MR_mktag(1), Var_217, 1) = ((MR_Box) (Var_218));
+                }
+                {
+                  Var_215 = (MR_Word) MR_mkword(MR_mktag(1), MR_new_object(MR_Word, ((MR_Integer) 2 * sizeof(MR_Word)), NULL, NULL));
+                  MR_hl_field(MR_mktag(1), Var_215, 0) = ((MR_Box) ((MR_String) "__exist_tc_constrs_"));
+                  MR_hl_field(MR_mktag(1), Var_215, 1) = ((MR_Box) (Var_217));
+                }
+                {
+                  Var_214 = (MR_Word) MR_mkword(MR_mktag(1), MR_new_object(MR_Word, ((MR_Integer) 2 * sizeof(MR_Word)), NULL, NULL));
+                  MR_hl_field(MR_mktag(1), Var_214, 0) = ((MR_Box) (ModuleName_7));
+                  MR_hl_field(MR_mktag(1), Var_214, 1) = ((MR_Box) (Var_215));
+                }
+                mercury__string__append_list_2_p_0(Var_214, &Str_6);
+              }
+              break;
+            case (MR_Integer) 1:
+              {
+                MR_Word Var_203;
+                MR_Word Var_204;
+                MR_Word Var_206;
+                MR_Word Var_207;
+                MR_Word Var_209;
+                MR_Word Var_210;
+                MR_Word Var_212;
+                MR_Integer Ordinal_262 = ((MR_Integer) (MR_hl_field(MR_mktag(3), RttiName_5, (MR_Integer) 1)));
+                MR_String O_str_263;
+
+                mercury__string__int_to_string_2_p_0(Ordinal_262, &O_str_263);
+                {
+                  Var_212 = (MR_Word) MR_mkword(MR_mktag(1), MR_new_object(MR_Word, ((MR_Integer) 2 * sizeof(MR_Word)), NULL, NULL));
+                  MR_hl_field(MR_mktag(1), Var_212, 0) = ((MR_Box) (O_str_263));
+                  MR_hl_field(MR_mktag(1), Var_212, 1) = ((MR_Box) (MR_mkword(MR_mktag(0), MR_mkbody((MR_Integer) 0))));
+                }
+                {
+                  Var_210 = (MR_Word) MR_mkword(MR_mktag(1), MR_new_object(MR_Word, ((MR_Integer) 2 * sizeof(MR_Word)), NULL, NULL));
+                  MR_hl_field(MR_mktag(1), Var_210, 0) = ((MR_Box) ((MR_String) "_"));
+                  MR_hl_field(MR_mktag(1), Var_210, 1) = ((MR_Box) (Var_212));
+                }
+                {
+                  Var_209 = (MR_Word) MR_mkword(MR_mktag(1), MR_new_object(MR_Word, ((MR_Integer) 2 * sizeof(MR_Word)), NULL, NULL));
+                  MR_hl_field(MR_mktag(1), Var_209, 0) = ((MR_Box) (A_str_9));
+                  MR_hl_field(MR_mktag(1), Var_209, 1) = ((MR_Box) (Var_210));
+                }
+                {
+                  Var_207 = (MR_Word) MR_mkword(MR_mktag(1), MR_new_object(MR_Word, ((MR_Integer) 2 * sizeof(MR_Word)), NULL, NULL));
+                  MR_hl_field(MR_mktag(1), Var_207, 0) = ((MR_Box) ((MR_String) "_"));
+                  MR_hl_field(MR_mktag(1), Var_207, 1) = ((MR_Box) (Var_209));
+                }
+                {
+                  Var_206 = (MR_Word) MR_mkword(MR_mktag(1), MR_new_object(MR_Word, ((MR_Integer) 2 * sizeof(MR_Word)), NULL, NULL));
+                  MR_hl_field(MR_mktag(1), Var_206, 0) = ((MR_Box) (TypeName_8));
+                  MR_hl_field(MR_mktag(1), Var_206, 1) = ((MR_Box) (Var_207));
+                }
+                {
+                  Var_204 = (MR_Word) MR_mkword(MR_mktag(1), MR_new_object(MR_Word, ((MR_Integer) 2 * sizeof(MR_Word)), NULL, NULL));
+                  MR_hl_field(MR_mktag(1), Var_204, 0) = ((MR_Box) ((MR_String) "__exist_info_"));
+                  MR_hl_field(MR_mktag(1), Var_204, 1) = ((MR_Box) (Var_206));
+                }
+                {
+                  Var_203 = (MR_Word) MR_mkword(MR_mktag(1), MR_new_object(MR_Word, ((MR_Integer) 2 * sizeof(MR_Word)), NULL, NULL));
+                  MR_hl_field(MR_mktag(1), Var_203, 0) = ((MR_Box) (ModuleName_7));
+                  MR_hl_field(MR_mktag(1), Var_203, 1) = ((MR_Box) (Var_204));
+                }
+                mercury__string__append_list_2_p_0(Var_203, &Str_6);
+              }
+              break;
+            case (MR_Integer) 2:
+              {
+                MR_Word Var_192;
+                MR_Word Var_193;
+                MR_Word Var_195;
+                MR_Word Var_196;
+                MR_Word Var_198;
+                MR_Word Var_199;
+                MR_Word Var_201;
+                MR_Integer Ordinal_264 = ((MR_Integer) (MR_hl_field(MR_mktag(3), RttiName_5, (MR_Integer) 1)));
+                MR_String O_str_265;
+
+                mercury__string__int_to_string_2_p_0(Ordinal_264, &O_str_265);
+                {
+                  Var_201 = (MR_Word) MR_mkword(MR_mktag(1), MR_new_object(MR_Word, ((MR_Integer) 2 * sizeof(MR_Word)), NULL, NULL));
+                  MR_hl_field(MR_mktag(1), Var_201, 0) = ((MR_Box) (O_str_265));
+                  MR_hl_field(MR_mktag(1), Var_201, 1) = ((MR_Box) (MR_mkword(MR_mktag(0), MR_mkbody((MR_Integer) 0))));
+                }
+                {
+                  Var_199 = (MR_Word) MR_mkword(MR_mktag(1), MR_new_object(MR_Word, ((MR_Integer) 2 * sizeof(MR_Word)), NULL, NULL));
+                  MR_hl_field(MR_mktag(1), Var_199, 0) = ((MR_Box) ((MR_String) "_"));
+                  MR_hl_field(MR_mktag(1), Var_199, 1) = ((MR_Box) (Var_201));
+                }
+                {
+                  Var_198 = (MR_Word) MR_mkword(MR_mktag(1), MR_new_object(MR_Word, ((MR_Integer) 2 * sizeof(MR_Word)), NULL, NULL));
+                  MR_hl_field(MR_mktag(1), Var_198, 0) = ((MR_Box) (A_str_9));
+                  MR_hl_field(MR_mktag(1), Var_198, 1) = ((MR_Box) (Var_199));
+                }
+                {
+                  Var_196 = (MR_Word) MR_mkword(MR_mktag(1), MR_new_object(MR_Word, ((MR_Integer) 2 * sizeof(MR_Word)), NULL, NULL));
+                  MR_hl_field(MR_mktag(1), Var_196, 0) = ((MR_Box) ((MR_String) "_"));
+                  MR_hl_field(MR_mktag(1), Var_196, 1) = ((MR_Box) (Var_198));
+                }
+                {
+                  Var_195 = (MR_Word) MR_mkword(MR_mktag(1), MR_new_object(MR_Word, ((MR_Integer) 2 * sizeof(MR_Word)), NULL, NULL));
+                  MR_hl_field(MR_mktag(1), Var_195, 0) = ((MR_Box) (TypeName_8));
+                  MR_hl_field(MR_mktag(1), Var_195, 1) = ((MR_Box) (Var_196));
+                }
+                {
+                  Var_193 = (MR_Word) MR_mkword(MR_mktag(1), MR_new_object(MR_Word, ((MR_Integer) 2 * sizeof(MR_Word)), NULL, NULL));
+                  MR_hl_field(MR_mktag(1), Var_193, 0) = ((MR_Box) ((MR_String) "__field_names_"));
+                  MR_hl_field(MR_mktag(1), Var_193, 1) = ((MR_Box) (Var_195));
+                }
+                {
+                  Var_192 = (MR_Word) MR_mkword(MR_mktag(1), MR_new_object(MR_Word, ((MR_Integer) 2 * sizeof(MR_Word)), NULL, NULL));
+                  MR_hl_field(MR_mktag(1), Var_192, 0) = ((MR_Box) (ModuleName_7));
+                  MR_hl_field(MR_mktag(1), Var_192, 1) = ((MR_Box) (Var_193));
+                }
+                mercury__string__append_list_2_p_0(Var_192, &Str_6);
+              }
+              break;
+            case (MR_Integer) 3:
+              {
+                MR_Word Var_181;
+                MR_Word Var_182;
+                MR_Word Var_184;
+                MR_Word Var_185;
+                MR_Word Var_187;
+                MR_Word Var_188;
+                MR_Word Var_190;
+                MR_Integer Ordinal_266 = ((MR_Integer) (MR_hl_field(MR_mktag(3), RttiName_5, (MR_Integer) 1)));
+                MR_String O_str_267;
+
+                mercury__string__int_to_string_2_p_0(Ordinal_266, &O_str_267);
+                {
+                  Var_190 = (MR_Word) MR_mkword(MR_mktag(1), MR_new_object(MR_Word, ((MR_Integer) 2 * sizeof(MR_Word)), NULL, NULL));
+                  MR_hl_field(MR_mktag(1), Var_190, 0) = ((MR_Box) (O_str_267));
+                  MR_hl_field(MR_mktag(1), Var_190, 1) = ((MR_Box) (MR_mkword(MR_mktag(0), MR_mkbody((MR_Integer) 0))));
+                }
+                {
+                  Var_188 = (MR_Word) MR_mkword(MR_mktag(1), MR_new_object(MR_Word, ((MR_Integer) 2 * sizeof(MR_Word)), NULL, NULL));
+                  MR_hl_field(MR_mktag(1), Var_188, 0) = ((MR_Box) ((MR_String) "_"));
+                  MR_hl_field(MR_mktag(1), Var_188, 1) = ((MR_Box) (Var_190));
+                }
+                {
+                  Var_187 = (MR_Word) MR_mkword(MR_mktag(1), MR_new_object(MR_Word, ((MR_Integer) 2 * sizeof(MR_Word)), NULL, NULL));
+                  MR_hl_field(MR_mktag(1), Var_187, 0) = ((MR_Box) (A_str_9));
+                  MR_hl_field(MR_mktag(1), Var_187, 1) = ((MR_Box) (Var_188));
+                }
+                {
+                  Var_185 = (MR_Word) MR_mkword(MR_mktag(1), MR_new_object(MR_Word, ((MR_Integer) 2 * sizeof(MR_Word)), NULL, NULL));
+                  MR_hl_field(MR_mktag(1), Var_185, 0) = ((MR_Box) ((MR_String) "_"));
+                  MR_hl_field(MR_mktag(1), Var_185, 1) = ((MR_Box) (Var_187));
+                }
+                {
+                  Var_184 = (MR_Word) MR_mkword(MR_mktag(1), MR_new_object(MR_Word, ((MR_Integer) 2 * sizeof(MR_Word)), NULL, NULL));
+                  MR_hl_field(MR_mktag(1), Var_184, 0) = ((MR_Box) (TypeName_8));
+                  MR_hl_field(MR_mktag(1), Var_184, 1) = ((MR_Box) (Var_185));
+                }
+                {
+                  Var_182 = (MR_Word) MR_mkword(MR_mktag(1), MR_new_object(MR_Word, ((MR_Integer) 2 * sizeof(MR_Word)), NULL, NULL));
+                  MR_hl_field(MR_mktag(1), Var_182, 0) = ((MR_Box) ((MR_String) "__field_types_"));
+                  MR_hl_field(MR_mktag(1), Var_182, 1) = ((MR_Box) (Var_184));
+                }
+                {
+                  Var_181 = (MR_Word) MR_mkword(MR_mktag(1), MR_new_object(MR_Word, ((MR_Integer) 2 * sizeof(MR_Word)), NULL, NULL));
+                  MR_hl_field(MR_mktag(1), Var_181, 0) = ((MR_Box) (ModuleName_7));
+                  MR_hl_field(MR_mktag(1), Var_181, 1) = ((MR_Box) (Var_182));
+                }
+                mercury__string__append_list_2_p_0(Var_181, &Str_6);
+              }
+              break;
+            case (MR_Integer) 4:
+              {
+                MR_Word Var_170;
+                MR_Word Var_171;
+                MR_Word Var_173;
+                MR_Word Var_174;
+                MR_Word Var_176;
+                MR_Word Var_177;
+                MR_Word Var_179;
+                MR_Integer Ordinal_268 = ((MR_Integer) (MR_hl_field(MR_mktag(3), RttiName_5, (MR_Integer) 1)));
+                MR_String O_str_269;
+
+                mercury__string__int_to_string_2_p_0(Ordinal_268, &O_str_269);
+                {
+                  Var_179 = (MR_Word) MR_mkword(MR_mktag(1), MR_new_object(MR_Word, ((MR_Integer) 2 * sizeof(MR_Word)), NULL, NULL));
+                  MR_hl_field(MR_mktag(1), Var_179, 0) = ((MR_Box) (O_str_269));
+                  MR_hl_field(MR_mktag(1), Var_179, 1) = ((MR_Box) (MR_mkword(MR_mktag(0), MR_mkbody((MR_Integer) 0))));
+                }
+                {
+                  Var_177 = (MR_Word) MR_mkword(MR_mktag(1), MR_new_object(MR_Word, ((MR_Integer) 2 * sizeof(MR_Word)), NULL, NULL));
+                  MR_hl_field(MR_mktag(1), Var_177, 0) = ((MR_Box) ((MR_String) "_"));
+                  MR_hl_field(MR_mktag(1), Var_177, 1) = ((MR_Box) (Var_179));
+                }
+                {
+                  Var_176 = (MR_Word) MR_mkword(MR_mktag(1), MR_new_object(MR_Word, ((MR_Integer) 2 * sizeof(MR_Word)), NULL, NULL));
+                  MR_hl_field(MR_mktag(1), Var_176, 0) = ((MR_Box) (A_str_9));
+                  MR_hl_field(MR_mktag(1), Var_176, 1) = ((MR_Box) (Var_177));
+                }
+                {
+                  Var_174 = (MR_Word) MR_mkword(MR_mktag(1), MR_new_object(MR_Word, ((MR_Integer) 2 * sizeof(MR_Word)), NULL, NULL));
+                  MR_hl_field(MR_mktag(1), Var_174, 0) = ((MR_Box) ((MR_String) "_"));
+                  MR_hl_field(MR_mktag(1), Var_174, 1) = ((MR_Box) (Var_176));
+                }
+                {
+                  Var_173 = (MR_Word) MR_mkword(MR_mktag(1), MR_new_object(MR_Word, ((MR_Integer) 2 * sizeof(MR_Word)), NULL, NULL));
+                  MR_hl_field(MR_mktag(1), Var_173, 0) = ((MR_Box) (TypeName_8));
+                  MR_hl_field(MR_mktag(1), Var_173, 1) = ((MR_Box) (Var_174));
+                }
+                {
+                  Var_171 = (MR_Word) MR_mkword(MR_mktag(1), MR_new_object(MR_Word, ((MR_Integer) 2 * sizeof(MR_Word)), NULL, NULL));
+                  MR_hl_field(MR_mktag(1), Var_171, 0) = ((MR_Box) ((MR_String) "__field_locns_"));
+                  MR_hl_field(MR_mktag(1), Var_171, 1) = ((MR_Box) (Var_173));
+                }
+                {
+                  Var_170 = (MR_Word) MR_mkword(MR_mktag(1), MR_new_object(MR_Word, ((MR_Integer) 2 * sizeof(MR_Word)), NULL, NULL));
+                  MR_hl_field(MR_mktag(1), Var_170, 0) = ((MR_Box) (ModuleName_7));
+                  MR_hl_field(MR_mktag(1), Var_170, 1) = ((MR_Box) (Var_171));
+                }
+                mercury__string__append_list_2_p_0(Var_170, &Str_6);
+              }
+              break;
+            case (MR_Integer) 5:
+              {
+                MR_Word Var_159;
+                MR_Word Var_160;
+                MR_Word Var_162;
+                MR_Word Var_163;
+                MR_Word Var_165;
+                MR_Word Var_166;
+                MR_Word Var_168;
+                MR_Integer Ordinal_270 = ((MR_Integer) (MR_hl_field(MR_mktag(3), RttiName_5, (MR_Integer) 1)));
+                MR_String O_str_271;
+
+                mercury__string__int_to_string_2_p_0(Ordinal_270, &O_str_271);
+                {
+                  Var_168 = (MR_Word) MR_mkword(MR_mktag(1), MR_new_object(MR_Word, ((MR_Integer) 2 * sizeof(MR_Word)), NULL, NULL));
+                  MR_hl_field(MR_mktag(1), Var_168, 0) = ((MR_Box) (O_str_271));
+                  MR_hl_field(MR_mktag(1), Var_168, 1) = ((MR_Box) (MR_mkword(MR_mktag(0), MR_mkbody((MR_Integer) 0))));
+                }
+                {
+                  Var_166 = (MR_Word) MR_mkword(MR_mktag(1), MR_new_object(MR_Word, ((MR_Integer) 2 * sizeof(MR_Word)), NULL, NULL));
+                  MR_hl_field(MR_mktag(1), Var_166, 0) = ((MR_Box) ((MR_String) "_"));
+                  MR_hl_field(MR_mktag(1), Var_166, 1) = ((MR_Box) (Var_168));
+                }
+                {
+                  Var_165 = (MR_Word) MR_mkword(MR_mktag(1), MR_new_object(MR_Word, ((MR_Integer) 2 * sizeof(MR_Word)), NULL, NULL));
+                  MR_hl_field(MR_mktag(1), Var_165, 0) = ((MR_Box) (A_str_9));
+                  MR_hl_field(MR_mktag(1), Var_165, 1) = ((MR_Box) (Var_166));
+                }
+                {
+                  Var_163 = (MR_Word) MR_mkword(MR_mktag(1), MR_new_object(MR_Word, ((MR_Integer) 2 * sizeof(MR_Word)), NULL, NULL));
+                  MR_hl_field(MR_mktag(1), Var_163, 0) = ((MR_Box) ((MR_String) "_"));
+                  MR_hl_field(MR_mktag(1), Var_163, 1) = ((MR_Box) (Var_165));
+                }
+                {
+                  Var_162 = (MR_Word) MR_mkword(MR_mktag(1), MR_new_object(MR_Word, ((MR_Integer) 2 * sizeof(MR_Word)), NULL, NULL));
+                  MR_hl_field(MR_mktag(1), Var_162, 0) = ((MR_Box) (TypeName_8));
+                  MR_hl_field(MR_mktag(1), Var_162, 1) = ((MR_Box) (Var_163));
+                }
+                {
+                  Var_160 = (MR_Word) MR_mkword(MR_mktag(1), MR_new_object(MR_Word, ((MR_Integer) 2 * sizeof(MR_Word)), NULL, NULL));
+                  MR_hl_field(MR_mktag(1), Var_160, 0) = ((MR_Box) ((MR_String) "__enum_functor_desc_"));
+                  MR_hl_field(MR_mktag(1), Var_160, 1) = ((MR_Box) (Var_162));
+                }
+                {
+                  Var_159 = (MR_Word) MR_mkword(MR_mktag(1), MR_new_object(MR_Word, ((MR_Integer) 2 * sizeof(MR_Word)), NULL, NULL));
+                  MR_hl_field(MR_mktag(1), Var_159, 0) = ((MR_Box) (ModuleName_7));
+                  MR_hl_field(MR_mktag(1), Var_159, 1) = ((MR_Box) (Var_160));
+                }
+                mercury__string__append_list_2_p_0(Var_159, &Str_6);
+              }
+              break;
+            case (MR_Integer) 6:
+              {
+                MR_Word Var_148;
+                MR_Word Var_149;
+                MR_Word Var_151;
+                MR_Word Var_152;
+                MR_Word Var_154;
+                MR_Word Var_155;
+                MR_Word Var_157;
+                MR_Integer Ordinal_272 = ((MR_Integer) (MR_hl_field(MR_mktag(3), RttiName_5, (MR_Integer) 1)));
+                MR_String O_str_273;
+
+                mercury__string__int_to_string_2_p_0(Ordinal_272, &O_str_273);
+                {
+                  Var_157 = (MR_Word) MR_mkword(MR_mktag(1), MR_new_object(MR_Word, ((MR_Integer) 2 * sizeof(MR_Word)), NULL, NULL));
+                  MR_hl_field(MR_mktag(1), Var_157, 0) = ((MR_Box) (O_str_273));
+                  MR_hl_field(MR_mktag(1), Var_157, 1) = ((MR_Box) (MR_mkword(MR_mktag(0), MR_mkbody((MR_Integer) 0))));
+                }
+                {
+                  Var_155 = (MR_Word) MR_mkword(MR_mktag(1), MR_new_object(MR_Word, ((MR_Integer) 2 * sizeof(MR_Word)), NULL, NULL));
+                  MR_hl_field(MR_mktag(1), Var_155, 0) = ((MR_Box) ((MR_String) "_"));
+                  MR_hl_field(MR_mktag(1), Var_155, 1) = ((MR_Box) (Var_157));
+                }
+                {
+                  Var_154 = (MR_Word) MR_mkword(MR_mktag(1), MR_new_object(MR_Word, ((MR_Integer) 2 * sizeof(MR_Word)), NULL, NULL));
+                  MR_hl_field(MR_mktag(1), Var_154, 0) = ((MR_Box) (A_str_9));
+                  MR_hl_field(MR_mktag(1), Var_154, 1) = ((MR_Box) (Var_155));
+                }
+                {
+                  Var_152 = (MR_Word) MR_mkword(MR_mktag(1), MR_new_object(MR_Word, ((MR_Integer) 2 * sizeof(MR_Word)), NULL, NULL));
+                  MR_hl_field(MR_mktag(1), Var_152, 0) = ((MR_Box) ((MR_String) "_"));
+                  MR_hl_field(MR_mktag(1), Var_152, 1) = ((MR_Box) (Var_154));
+                }
+                {
+                  Var_151 = (MR_Word) MR_mkword(MR_mktag(1), MR_new_object(MR_Word, ((MR_Integer) 2 * sizeof(MR_Word)), NULL, NULL));
+                  MR_hl_field(MR_mktag(1), Var_151, 0) = ((MR_Box) (TypeName_8));
+                  MR_hl_field(MR_mktag(1), Var_151, 1) = ((MR_Box) (Var_152));
+                }
+                {
+                  Var_149 = (MR_Word) MR_mkword(MR_mktag(1), MR_new_object(MR_Word, ((MR_Integer) 2 * sizeof(MR_Word)), NULL, NULL));
+                  MR_hl_field(MR_mktag(1), Var_149, 0) = ((MR_Box) ((MR_String) "__foreign_enum_functor_desc_"));
+                  MR_hl_field(MR_mktag(1), Var_149, 1) = ((MR_Box) (Var_151));
+                }
+                {
+                  Var_148 = (MR_Word) MR_mkword(MR_mktag(1), MR_new_object(MR_Word, ((MR_Integer) 2 * sizeof(MR_Word)), NULL, NULL));
+                  MR_hl_field(MR_mktag(1), Var_148, 0) = ((MR_Box) (ModuleName_7));
+                  MR_hl_field(MR_mktag(1), Var_148, 1) = ((MR_Box) (Var_149));
+                }
+                mercury__string__append_list_2_p_0(Var_148, &Str_6);
+              }
+              break;
+            case (MR_Integer) 7:
+              {
+                MR_Word Var_129;
+                MR_Word Var_130;
+                MR_Word Var_132;
+                MR_Word Var_133;
+                MR_Word Var_135;
+                MR_Word Var_136;
+                MR_Word Var_138;
+                MR_Integer Ordinal_274 = ((MR_Integer) (MR_hl_field(MR_mktag(3), RttiName_5, (MR_Integer) 1)));
+                MR_String O_str_275;
+
+                mercury__string__int_to_string_2_p_0(Ordinal_274, &O_str_275);
+                {
+                  Var_138 = (MR_Word) MR_mkword(MR_mktag(1), MR_new_object(MR_Word, ((MR_Integer) 2 * sizeof(MR_Word)), NULL, NULL));
+                  MR_hl_field(MR_mktag(1), Var_138, 0) = ((MR_Box) (O_str_275));
+                  MR_hl_field(MR_mktag(1), Var_138, 1) = ((MR_Box) (MR_mkword(MR_mktag(0), MR_mkbody((MR_Integer) 0))));
+                }
+                {
+                  Var_136 = (MR_Word) MR_mkword(MR_mktag(1), MR_new_object(MR_Word, ((MR_Integer) 2 * sizeof(MR_Word)), NULL, NULL));
+                  MR_hl_field(MR_mktag(1), Var_136, 0) = ((MR_Box) ((MR_String) "_"));
+                  MR_hl_field(MR_mktag(1), Var_136, 1) = ((MR_Box) (Var_138));
+                }
+                {
+                  Var_135 = (MR_Word) MR_mkword(MR_mktag(1), MR_new_object(MR_Word, ((MR_Integer) 2 * sizeof(MR_Word)), NULL, NULL));
+                  MR_hl_field(MR_mktag(1), Var_135, 0) = ((MR_Box) (A_str_9));
+                  MR_hl_field(MR_mktag(1), Var_135, 1) = ((MR_Box) (Var_136));
+                }
+                {
+                  Var_133 = (MR_Word) MR_mkword(MR_mktag(1), MR_new_object(MR_Word, ((MR_Integer) 2 * sizeof(MR_Word)), NULL, NULL));
+                  MR_hl_field(MR_mktag(1), Var_133, 0) = ((MR_Box) ((MR_String) "_"));
+                  MR_hl_field(MR_mktag(1), Var_133, 1) = ((MR_Box) (Var_135));
+                }
+                {
+                  Var_132 = (MR_Word) MR_mkword(MR_mktag(1), MR_new_object(MR_Word, ((MR_Integer) 2 * sizeof(MR_Word)), NULL, NULL));
+                  MR_hl_field(MR_mktag(1), Var_132, 0) = ((MR_Box) (TypeName_8));
+                  MR_hl_field(MR_mktag(1), Var_132, 1) = ((MR_Box) (Var_133));
+                }
+                {
+                  Var_130 = (MR_Word) MR_mkword(MR_mktag(1), MR_new_object(MR_Word, ((MR_Integer) 2 * sizeof(MR_Word)), NULL, NULL));
+                  MR_hl_field(MR_mktag(1), Var_130, 0) = ((MR_Box) ((MR_String) "__du_functor_desc_"));
+                  MR_hl_field(MR_mktag(1), Var_130, 1) = ((MR_Box) (Var_132));
+                }
+                {
+                  Var_129 = (MR_Word) MR_mkword(MR_mktag(1), MR_new_object(MR_Word, ((MR_Integer) 2 * sizeof(MR_Word)), NULL, NULL));
+                  MR_hl_field(MR_mktag(1), Var_129, 0) = ((MR_Box) (ModuleName_7));
+                  MR_hl_field(MR_mktag(1), Var_129, 1) = ((MR_Box) (Var_130));
+                }
+                mercury__string__append_list_2_p_0(Var_129, &Str_6);
+              }
+              break;
+            case (MR_Integer) 8:
+              {
+                MR_Integer Ptag_15 = ((MR_Integer) (MR_hl_field(MR_mktag(3), RttiName_5, (MR_Integer) 1)));
+                MR_String P_str_16;
+                MR_Word Var_78;
+                MR_Word Var_79;
+                MR_Word Var_81;
+                MR_Word Var_82;
+                MR_Word Var_84;
+                MR_Word Var_85;
+                MR_Word Var_87;
+
+                mercury__string__int_to_string_2_p_0(Ptag_15, &P_str_16);
+                {
+                  Var_87 = (MR_Word) MR_mkword(MR_mktag(1), MR_new_object(MR_Word, ((MR_Integer) 2 * sizeof(MR_Word)), NULL, NULL));
+                  MR_hl_field(MR_mktag(1), Var_87, 0) = ((MR_Box) (P_str_16));
+                  MR_hl_field(MR_mktag(1), Var_87, 1) = ((MR_Box) (MR_mkword(MR_mktag(0), MR_mkbody((MR_Integer) 0))));
+                }
+                {
+                  Var_85 = (MR_Word) MR_mkword(MR_mktag(1), MR_new_object(MR_Word, ((MR_Integer) 2 * sizeof(MR_Word)), NULL, NULL));
+                  MR_hl_field(MR_mktag(1), Var_85, 0) = ((MR_Box) ((MR_String) "_"));
+                  MR_hl_field(MR_mktag(1), Var_85, 1) = ((MR_Box) (Var_87));
+                }
+                {
+                  Var_84 = (MR_Word) MR_mkword(MR_mktag(1), MR_new_object(MR_Word, ((MR_Integer) 2 * sizeof(MR_Word)), NULL, NULL));
+                  MR_hl_field(MR_mktag(1), Var_84, 0) = ((MR_Box) (A_str_9));
+                  MR_hl_field(MR_mktag(1), Var_84, 1) = ((MR_Box) (Var_85));
+                }
+                {
+                  Var_82 = (MR_Word) MR_mkword(MR_mktag(1), MR_new_object(MR_Word, ((MR_Integer) 2 * sizeof(MR_Word)), NULL, NULL));
+                  MR_hl_field(MR_mktag(1), Var_82, 0) = ((MR_Box) ((MR_String) "_"));
+                  MR_hl_field(MR_mktag(1), Var_82, 1) = ((MR_Box) (Var_84));
+                }
+                {
+                  Var_81 = (MR_Word) MR_mkword(MR_mktag(1), MR_new_object(MR_Word, ((MR_Integer) 2 * sizeof(MR_Word)), NULL, NULL));
+                  MR_hl_field(MR_mktag(1), Var_81, 0) = ((MR_Box) (TypeName_8));
+                  MR_hl_field(MR_mktag(1), Var_81, 1) = ((MR_Box) (Var_82));
+                }
+                {
+                  Var_79 = (MR_Word) MR_mkword(MR_mktag(1), MR_new_object(MR_Word, ((MR_Integer) 2 * sizeof(MR_Word)), NULL, NULL));
+                  MR_hl_field(MR_mktag(1), Var_79, 0) = ((MR_Box) ((MR_String) "__du_stag_ordered_"));
+                  MR_hl_field(MR_mktag(1), Var_79, 1) = ((MR_Box) (Var_81));
+                }
+                {
+                  Var_78 = (MR_Word) MR_mkword(MR_mktag(1), MR_new_object(MR_Word, ((MR_Integer) 2 * sizeof(MR_Word)), NULL, NULL));
+                  MR_hl_field(MR_mktag(1), Var_78, 0) = ((MR_Box) (ModuleName_7));
+                  MR_hl_field(MR_mktag(1), Var_78, 1) = ((MR_Box) (Var_79));
+                }
+                mercury__string__append_list_2_p_0(Var_78, &Str_6);
+              }
+              break;
+            case (MR_Integer) 9:
+              {
+                MR_Word Var_59;
+                MR_Word Var_60;
+                MR_Word Var_62;
+                MR_Word Var_63;
+                MR_Word Var_65;
+                MR_Word Var_66;
+                MR_Word Var_68;
+                MR_Integer Ptag_276 = ((MR_Integer) (MR_hl_field(MR_mktag(3), RttiName_5, (MR_Integer) 1)));
+                MR_String P_str_277;
+
+                mercury__string__int_to_string_2_p_0(Ptag_276, &P_str_277);
+                {
+                  Var_68 = (MR_Word) MR_mkword(MR_mktag(1), MR_new_object(MR_Word, ((MR_Integer) 2 * sizeof(MR_Word)), NULL, NULL));
+                  MR_hl_field(MR_mktag(1), Var_68, 0) = ((MR_Box) (P_str_277));
+                  MR_hl_field(MR_mktag(1), Var_68, 1) = ((MR_Box) (MR_mkword(MR_mktag(0), MR_mkbody((MR_Integer) 0))));
+                }
+                {
+                  Var_66 = (MR_Word) MR_mkword(MR_mktag(1), MR_new_object(MR_Word, ((MR_Integer) 2 * sizeof(MR_Word)), NULL, NULL));
+                  MR_hl_field(MR_mktag(1), Var_66, 0) = ((MR_Box) ((MR_String) "_"));
+                  MR_hl_field(MR_mktag(1), Var_66, 1) = ((MR_Box) (Var_68));
+                }
+                {
+                  Var_65 = (MR_Word) MR_mkword(MR_mktag(1), MR_new_object(MR_Word, ((MR_Integer) 2 * sizeof(MR_Word)), NULL, NULL));
+                  MR_hl_field(MR_mktag(1), Var_65, 0) = ((MR_Box) (A_str_9));
+                  MR_hl_field(MR_mktag(1), Var_65, 1) = ((MR_Box) (Var_66));
+                }
+                {
+                  Var_63 = (MR_Word) MR_mkword(MR_mktag(1), MR_new_object(MR_Word, ((MR_Integer) 2 * sizeof(MR_Word)), NULL, NULL));
+                  MR_hl_field(MR_mktag(1), Var_63, 0) = ((MR_Box) ((MR_String) "_"));
+                  MR_hl_field(MR_mktag(1), Var_63, 1) = ((MR_Box) (Var_65));
+                }
+                {
+                  Var_62 = (MR_Word) MR_mkword(MR_mktag(1), MR_new_object(MR_Word, ((MR_Integer) 2 * sizeof(MR_Word)), NULL, NULL));
+                  MR_hl_field(MR_mktag(1), Var_62, 0) = ((MR_Box) (TypeName_8));
+                  MR_hl_field(MR_mktag(1), Var_62, 1) = ((MR_Box) (Var_63));
+                }
+                {
+                  Var_60 = (MR_Word) MR_mkword(MR_mktag(1), MR_new_object(MR_Word, ((MR_Integer) 2 * sizeof(MR_Word)), NULL, NULL));
+                  MR_hl_field(MR_mktag(1), Var_60, 0) = ((MR_Box) ((MR_String) "__du_ptag_layout_"));
+                  MR_hl_field(MR_mktag(1), Var_60, 1) = ((MR_Box) (Var_62));
+                }
+                {
+                  Var_59 = (MR_Word) MR_mkword(MR_mktag(1), MR_new_object(MR_Word, ((MR_Integer) 2 * sizeof(MR_Word)), NULL, NULL));
+                  MR_hl_field(MR_mktag(1), Var_59, 0) = ((MR_Box) (ModuleName_7));
+                  MR_hl_field(MR_mktag(1), Var_59, 1) = ((MR_Box) (Var_60));
+                }
+                mercury__string__append_list_2_p_0(Var_59, &Str_6);
+              }
+              break;
+            case (MR_Integer) 10:
+              {
+                MR_Word TypeInfo_17 = ((MR_Word) (MR_hl_field(MR_mktag(3), RttiName_5, (MR_Integer) 1)));
+                MR_Word next_value_of_tscc_proc_1_input_1_TypeInfo_3 = TypeInfo_17;
+
+                // direct tailcall eliminated
+                tscc_proc_1_input_1_TypeInfo_3 = next_value_of_tscc_proc_1_input_1_TypeInfo_3;
+                goto top_of_proc_1;
+              }
+              break;
+            case (MR_Integer) 11:
+              {
+                MR_Word PseudoTypeInfo_18 = ((MR_Word) (MR_hl_field(MR_mktag(3), RttiName_5, (MR_Integer) 1)));
+                MR_Word next_value_of_tscc_proc_2_input_1_PseudoTypeInfo_3 = PseudoTypeInfo_18;
+
+                // direct tailcall eliminated
+                tscc_proc_2_input_1_PseudoTypeInfo_3 = next_value_of_tscc_proc_2_input_1_PseudoTypeInfo_3;
+                goto top_of_proc_2;
+              }
+              break;
+          }
+          break;
+      }
+      tscc_output_1_Str_4 = Str_6;
+      goto tscc_end;
+    }
+  tscc_end:;
+    return tscc_output_1_Str_4;
+  }
+}
+
+static MR_String MR_CALL 
+backend_libs__rtti__name_to_string_2_f_0(
+  MR_Word tscc_proc_3_input_1_RttiTypeCtor_4,
+  MR_Word tscc_proc_3_input_2_RttiName_5)
+{
+  {
+    MR_Word tscc_proc_1_input_1_TypeInfo_3;
+    MR_Word tscc_proc_2_input_1_PseudoTypeInfo_3;
+    MR_String tscc_output_1_Str_4;
+
+    // The code for TSCC PROC 3: func backend_libs.rtti.name_to_string/2-0.
+    // Setup for mutual tailcalls optimized into a loop.
+    // The mutually recursive procedures are:
+
+    // proc 1 in TSCC: func backend_libs.rtti.type_info_to_string/1-0
+    // proc 2 in TSCC: func backend_libs.rtti.pseudo_type_info_to_string/1-0
+    // proc 3 in TSCC: func backend_libs.rtti.name_to_string/2-0
+
+    goto top_of_proc_3;
+  top_of_proc_1:;
+    {
+      MR_Word TypeInfo_3 = tscc_proc_1_input_1_TypeInfo_3;
+      MR_String Str_4;
+      MR_bool succeeded;
+
+      switch (MR_tag((MR_Word) TypeInfo_3)) {
+        default: /*NOTREACHED*/ MR_assert(0);
+        case (MR_Integer) 0:
+          {
+            MR_Word RttiTypeCtor_32 = (MR_Word) MR_body(((MR_Word) TypeInfo_3), (MR_Integer) 0);
+            MR_Word next_value_of_tscc_proc_3_input_1_RttiTypeCtor_4 = RttiTypeCtor_32;
+
+            // direct tailcall eliminated
+            tscc_proc_3_input_1_RttiTypeCtor_4 = next_value_of_tscc_proc_3_input_1_RttiTypeCtor_4;
+            tscc_proc_3_input_2_RttiName_5 = (MR_Word) MR_mkword(MR_mktag(0), MR_mkbody((MR_Integer) 11));
+            goto top_of_proc_3;
+          }
+          break;
+        case (MR_Integer) 1:
+          {
+            MR_Word Args_7 = ((MR_Word) (MR_hl_field(MR_mktag(1), TypeInfo_3, (MR_Integer) 1)));
+            MR_String ModuleName_8;
+            MR_String TypeName_9;
+            MR_String ArityStr_10;
+            MR_String ArgsStr_11;
+            MR_String Var_21;
+            MR_String Var_23;
+            MR_String Var_24;
+            MR_String Var_26;
+            MR_Word RttiTypeCtor_28 = ((MR_Word) (MR_hl_field(MR_mktag(1), TypeInfo_3, (MR_Integer) 0)));
+            MR_Word ModuleNameSym0_42 = ((MR_Word) (MR_hl_field(MR_mktag(0), RttiTypeCtor_28, (MR_Integer) 0)));
+            MR_String TypeName0_43 = ((MR_String) (MR_hl_field(MR_mktag(0), RttiTypeCtor_28, (MR_Integer) 1)));
+            MR_Integer TypeArity_44 = ((MR_Integer) (MR_hl_field(MR_mktag(0), RttiTypeCtor_28, (MR_Integer) 2)));
+            MR_Word ModuleNameSym_45;
+            MR_Word Var_48;
+            MR_String Var_46;
+
+            succeeded = ((MR_tag((MR_Word) ModuleNameSym0_42)) == (MR_mktag((MR_Integer) 0)));
+            if (succeeded)
+            {
+              Var_46 = ((MR_String) (MR_hl_field(MR_mktag(0), ModuleNameSym0_42, (MR_Integer) 0)));
+              succeeded = (strcmp(Var_46, (MR_String) "") == 0);
+            }
+            if (succeeded)
+              ModuleNameSym_45 = mdbcomp__builtin_modules__mercury_public_builtin_module_0_f_0();
+            else
+              ModuleNameSym_45 = ModuleNameSym0_42;
+            ModuleName_8 = parse_tree__prog_foreign__sym_name_mangle_1_f_0(ModuleNameSym_45);
+            TypeName_9 = parse_tree__prog_foreign__name_mangle_1_f_0(TypeName0_43);
+            mercury__string__int_to_string_2_p_0(TypeArity_44, &ArityStr_10);
+            Var_48 = mercury__list__map_2_f_0((MR_Word) &backend_libs__rtti__backend_libs__rtti__type_ctor_info_rtti_type_info_0, (MR_Word) &mercury__builtin__builtin__type_ctor_info_string_0, (MR_Word) &backend_libs__rtti_scalar_common_2[8], Args_7);
+            ArgsStr_11 = mercury__string__append_list_1_f_0(Var_48);
+            Var_26 = mercury__string__f_43_43_2_f_0(ArityStr_10, ArgsStr_11);
+            Var_24 = mercury__string__f_43_43_2_f_0((MR_String) "_", Var_26);
+            Var_23 = mercury__string__f_43_43_2_f_0(TypeName_9, Var_24);
+            Var_21 = mercury__string__f_43_43_2_f_0((MR_String) "__ti_", Var_23);
+            Str_4 = mercury__string__f_43_43_2_f_0(ModuleName_8, Var_21);
+          }
+          break;
+        case (MR_Integer) 2:
+          {
+            MR_Word VarArityId_12 = ((MR_Word) (MR_hl_field(MR_mktag(2), TypeInfo_3, (MR_Integer) 0)));
+            MR_Integer RealArity_13;
+            MR_String IdStr_14;
+            MR_String Var_16;
+            MR_String Var_17;
+            MR_String Var_19;
+            MR_String Var_20;
+            MR_Word Args_29 = ((MR_Word) (MR_hl_field(MR_mktag(2), TypeInfo_3, (MR_Integer) 1)));
+            MR_String ArgsStr_30;
+            MR_Word Var_55;
+
+            RealArity_13 = mercury__list__length_1_f_0((MR_Word) &backend_libs__rtti__backend_libs__rtti__type_ctor_info_rtti_type_info_0, Args_29);
+            Var_55 = mercury__list__map_2_f_0((MR_Word) &backend_libs__rtti__backend_libs__rtti__type_ctor_info_rtti_type_info_0, (MR_Word) &mercury__builtin__builtin__type_ctor_info_string_0, (MR_Word) &backend_libs__rtti_scalar_common_2[9], Args_29);
+            ArgsStr_30 = mercury__string__append_list_1_f_0(Var_55);
+            switch (VarArityId_12) {
+              default: /*NOTREACHED*/ MR_assert(0);
+              case (MR_Integer) 1:
+                IdStr_14 = (MR_String) "func";
+                break;
+              case (MR_Integer) 0:
+                IdStr_14 = (MR_String) "pred";
+                break;
+              case (MR_Integer) 2:
+                IdStr_14 = (MR_String) "tuple";
+                break;
+            }
+            Var_20 = mercury__string__int_to_string_1_f_0(RealArity_13);
+            Var_19 = mercury__string__f_43_43_2_f_0(Var_20, ArgsStr_30);
+            Var_17 = mercury__string__f_43_43_2_f_0((MR_String) "_", Var_19);
+            Var_16 = mercury__string__f_43_43_2_f_0(IdStr_14, Var_17);
+            Str_4 = mercury__string__f_43_43_2_f_0((MR_String) "__vti_", Var_16);
+          }
+          break;
+      }
+      tscc_output_1_Str_4 = Str_4;
+      goto tscc_end;
+    }
+  top_of_proc_2:;
+    {
+      MR_Word PseudoTypeInfo_3 = tscc_proc_2_input_1_PseudoTypeInfo_3;
+      MR_String Str_4;
+      MR_bool succeeded;
+
+      switch (MR_tag((MR_Word) PseudoTypeInfo_3)) {
+        default: /*NOTREACHED*/ MR_assert(0);
+        case (MR_Integer) 0:
+          {
+            MR_Word RttiTypeCtor_33 = (MR_Word) MR_body(((MR_Word) PseudoTypeInfo_3), (MR_Integer) 0);
+            MR_Word next_value_of_tscc_proc_3_input_1_RttiTypeCtor_4 = RttiTypeCtor_33;
+
+            // direct tailcall eliminated
+            tscc_proc_3_input_1_RttiTypeCtor_4 = next_value_of_tscc_proc_3_input_1_RttiTypeCtor_4;
+            tscc_proc_3_input_2_RttiName_5 = (MR_Word) MR_mkword(MR_mktag(0), MR_mkbody((MR_Integer) 11));
+            goto top_of_proc_3;
+          }
+          break;
+        case (MR_Integer) 1:
+          {
+            MR_Word Args_7 = ((MR_Word) (MR_hl_field(MR_mktag(1), PseudoTypeInfo_3, (MR_Integer) 1)));
+            MR_String ModuleName_8;
+            MR_String TypeName_9;
+            MR_String ArityStr_10;
+            MR_String ArgsStr_11;
+            MR_String Var_22;
+            MR_String Var_24;
+            MR_String Var_25;
+            MR_String Var_27;
+            MR_Word RttiTypeCtor_29 = ((MR_Word) (MR_hl_field(MR_mktag(1), PseudoTypeInfo_3, (MR_Integer) 0)));
+            MR_Word ModuleNameSym0_43 = ((MR_Word) (MR_hl_field(MR_mktag(0), RttiTypeCtor_29, (MR_Integer) 0)));
+            MR_String TypeName0_44 = ((MR_String) (MR_hl_field(MR_mktag(0), RttiTypeCtor_29, (MR_Integer) 1)));
+            MR_Integer TypeArity_45 = ((MR_Integer) (MR_hl_field(MR_mktag(0), RttiTypeCtor_29, (MR_Integer) 2)));
+            MR_Word ModuleNameSym_46;
+            MR_Word Var_49;
+            MR_String Var_47;
+
+            succeeded = ((MR_tag((MR_Word) ModuleNameSym0_43)) == (MR_mktag((MR_Integer) 0)));
+            if (succeeded)
+            {
+              Var_47 = ((MR_String) (MR_hl_field(MR_mktag(0), ModuleNameSym0_43, (MR_Integer) 0)));
+              succeeded = (strcmp(Var_47, (MR_String) "") == 0);
+            }
+            if (succeeded)
+              ModuleNameSym_46 = mdbcomp__builtin_modules__mercury_public_builtin_module_0_f_0();
+            else
+              ModuleNameSym_46 = ModuleNameSym0_43;
+            ModuleName_8 = parse_tree__prog_foreign__sym_name_mangle_1_f_0(ModuleNameSym_46);
+            TypeName_9 = parse_tree__prog_foreign__name_mangle_1_f_0(TypeName0_44);
+            mercury__string__int_to_string_2_p_0(TypeArity_45, &ArityStr_10);
+            Var_49 = mercury__list__map_2_f_0((MR_Word) &backend_libs__rtti__backend_libs__rtti__type_ctor_info_rtti_maybe_pseudo_type_info_0, (MR_Word) &mercury__builtin__builtin__type_ctor_info_string_0, (MR_Word) &backend_libs__rtti_scalar_common_2[10], Args_7);
+            ArgsStr_11 = mercury__string__append_list_1_f_0(Var_49);
+            Var_27 = mercury__string__f_43_43_2_f_0(ArityStr_10, ArgsStr_11);
+            Var_25 = mercury__string__f_43_43_2_f_0((MR_String) "_", Var_27);
+            Var_24 = mercury__string__f_43_43_2_f_0(TypeName_9, Var_25);
+            Var_22 = mercury__string__f_43_43_2_f_0((MR_String) "__pti_", Var_24);
+            Str_4 = mercury__string__f_43_43_2_f_0(ModuleName_8, Var_22);
+          }
+          break;
+        case (MR_Integer) 2:
+          {
+            MR_Word VarArityId_12 = ((MR_Word) (MR_hl_field(MR_mktag(2), PseudoTypeInfo_3, (MR_Integer) 0)));
+            MR_Integer RealArity_13;
+            MR_String IdStr_14;
+            MR_String Var_17;
+            MR_String Var_18;
+            MR_String Var_20;
+            MR_String Var_21;
+            MR_Word Args_30 = ((MR_Word) (MR_hl_field(MR_mktag(2), PseudoTypeInfo_3, (MR_Integer) 1)));
+            MR_String ArgsStr_31;
+            MR_Word Var_56;
+
+            RealArity_13 = mercury__list__length_1_f_0((MR_Word) &backend_libs__rtti__backend_libs__rtti__type_ctor_info_rtti_maybe_pseudo_type_info_0, Args_30);
+            Var_56 = mercury__list__map_2_f_0((MR_Word) &backend_libs__rtti__backend_libs__rtti__type_ctor_info_rtti_maybe_pseudo_type_info_0, (MR_Word) &mercury__builtin__builtin__type_ctor_info_string_0, (MR_Word) &backend_libs__rtti_scalar_common_2[11], Args_30);
+            ArgsStr_31 = mercury__string__append_list_1_f_0(Var_56);
+            switch (VarArityId_12) {
+              default: /*NOTREACHED*/ MR_assert(0);
+              case (MR_Integer) 1:
+                IdStr_14 = (MR_String) "func";
+                break;
+              case (MR_Integer) 0:
+                IdStr_14 = (MR_String) "pred";
+                break;
+              case (MR_Integer) 2:
+                IdStr_14 = (MR_String) "tuple";
+                break;
+            }
+            Var_21 = mercury__string__int_to_string_1_f_0(RealArity_13);
+            Var_20 = mercury__string__f_43_43_2_f_0(Var_21, ArgsStr_31);
+            Var_18 = mercury__string__f_43_43_2_f_0((MR_String) "_", Var_20);
+            Var_17 = mercury__string__f_43_43_2_f_0(IdStr_14, Var_18);
+            Str_4 = mercury__string__f_43_43_2_f_0((MR_String) "__vpti_", Var_17);
+          }
+          break;
+        case (MR_Integer) 3:
+          {
+            MR_Integer VarNum_15 = ((MR_Integer) (MR_hl_field(MR_mktag(3), PseudoTypeInfo_3, (MR_Integer) 0)));
+
+            mercury__string__int_to_string_2_p_0(VarNum_15, &Str_4);
+          }
+          break;
+      }
+      tscc_output_1_Str_4 = Str_4;
+      goto tscc_end;
+    }
+  top_of_proc_3:;
+    {
+      MR_Word RttiTypeCtor_4 = tscc_proc_3_input_1_RttiTypeCtor_4;
+      MR_Word RttiName_5 = tscc_proc_3_input_2_RttiName_5;
+      MR_String Str_6;
+      MR_String ModuleName_7;
+      MR_String TypeName_8;
+      MR_String A_str_9;
+
+      backend_libs__rtti__mangle_rtti_type_ctor_4_p_0(RttiTypeCtor_4, &ModuleName_7, &TypeName_8, &A_str_9);
+      switch (MR_tag((MR_Word) RttiName_5)) {
+        default: /*NOTREACHED*/ MR_assert(0);
+        case (MR_Integer) 0:
+          switch (MR_unmkbody(RttiName_5)) {
+            default: /*NOTREACHED*/ MR_assert(0);
+            case (MR_Integer) 0:
+              {
+                MR_Word Var_239;
+                MR_Word Var_240;
+                MR_Word Var_242;
+                MR_Word Var_243;
+                MR_Word Var_245;
+
+                {
+                  Var_245 = (MR_Word) MR_mkword(MR_mktag(1), MR_new_object(MR_Word, ((MR_Integer) 2 * sizeof(MR_Word)), NULL, NULL));
+                  MR_hl_field(MR_mktag(1), Var_245, 0) = ((MR_Box) (A_str_9));
+                  MR_hl_field(MR_mktag(1), Var_245, 1) = ((MR_Box) (MR_mkword(MR_mktag(0), MR_mkbody((MR_Integer) 0))));
+                }
+                {
+                  Var_243 = (MR_Word) MR_mkword(MR_mktag(1), MR_new_object(MR_Word, ((MR_Integer) 2 * sizeof(MR_Word)), NULL, NULL));
+                  MR_hl_field(MR_mktag(1), Var_243, 0) = ((MR_Box) ((MR_String) "_"));
+                  MR_hl_field(MR_mktag(1), Var_243, 1) = ((MR_Box) (Var_245));
+                }
+                {
+                  Var_242 = (MR_Word) MR_mkword(MR_mktag(1), MR_new_object(MR_Word, ((MR_Integer) 2 * sizeof(MR_Word)), NULL, NULL));
+                  MR_hl_field(MR_mktag(1), Var_242, 0) = ((MR_Box) (TypeName_8));
+                  MR_hl_field(MR_mktag(1), Var_242, 1) = ((MR_Box) (Var_243));
+                }
+                {
+                  Var_240 = (MR_Word) MR_mkword(MR_mktag(1), MR_new_object(MR_Word, ((MR_Integer) 2 * sizeof(MR_Word)), NULL, NULL));
+                  MR_hl_field(MR_mktag(1), Var_240, 0) = ((MR_Box) ((MR_String) "__exist_locn_"));
+                  MR_hl_field(MR_mktag(1), Var_240, 1) = ((MR_Box) (Var_242));
+                }
+                {
+                  Var_239 = (MR_Word) MR_mkword(MR_mktag(1), MR_new_object(MR_Word, ((MR_Integer) 2 * sizeof(MR_Word)), NULL, NULL));
+                  MR_hl_field(MR_mktag(1), Var_239, 0) = ((MR_Box) (ModuleName_7));
+                  MR_hl_field(MR_mktag(1), Var_239, 1) = ((MR_Box) (Var_240));
+                }
+                mercury__string__append_list_2_p_0(Var_239, &Str_6);
+              }
+              break;
+            case (MR_Integer) 1:
+              {
+                MR_Word Var_140;
+                MR_Word Var_141;
+                MR_Word Var_143;
+                MR_Word Var_144;
+                MR_Word Var_146;
+
+                {
+                  Var_146 = (MR_Word) MR_mkword(MR_mktag(1), MR_new_object(MR_Word, ((MR_Integer) 2 * sizeof(MR_Word)), NULL, NULL));
+                  MR_hl_field(MR_mktag(1), Var_146, 0) = ((MR_Box) (A_str_9));
+                  MR_hl_field(MR_mktag(1), Var_146, 1) = ((MR_Box) (MR_mkword(MR_mktag(0), MR_mkbody((MR_Integer) 0))));
+                }
+                {
+                  Var_144 = (MR_Word) MR_mkword(MR_mktag(1), MR_new_object(MR_Word, ((MR_Integer) 2 * sizeof(MR_Word)), NULL, NULL));
+                  MR_hl_field(MR_mktag(1), Var_144, 0) = ((MR_Box) ((MR_String) "_"));
+                  MR_hl_field(MR_mktag(1), Var_144, 1) = ((MR_Box) (Var_146));
+                }
+                {
+                  Var_143 = (MR_Word) MR_mkword(MR_mktag(1), MR_new_object(MR_Word, ((MR_Integer) 2 * sizeof(MR_Word)), NULL, NULL));
+                  MR_hl_field(MR_mktag(1), Var_143, 0) = ((MR_Box) (TypeName_8));
+                  MR_hl_field(MR_mktag(1), Var_143, 1) = ((MR_Box) (Var_144));
+                }
+                {
+                  Var_141 = (MR_Word) MR_mkword(MR_mktag(1), MR_new_object(MR_Word, ((MR_Integer) 2 * sizeof(MR_Word)), NULL, NULL));
+                  MR_hl_field(MR_mktag(1), Var_141, 0) = ((MR_Box) ((MR_String) "__notag_functor_desc_"));
+                  MR_hl_field(MR_mktag(1), Var_141, 1) = ((MR_Box) (Var_143));
+                }
+                {
+                  Var_140 = (MR_Word) MR_mkword(MR_mktag(1), MR_new_object(MR_Word, ((MR_Integer) 2 * sizeof(MR_Word)), NULL, NULL));
+                  MR_hl_field(MR_mktag(1), Var_140, 0) = ((MR_Box) (ModuleName_7));
+                  MR_hl_field(MR_mktag(1), Var_140, 1) = ((MR_Box) (Var_141));
+                }
+                mercury__string__append_list_2_p_0(Var_140, &Str_6);
+              }
+              break;
+            case (MR_Integer) 2:
+              {
+                MR_Word Var_121;
+                MR_Word Var_122;
+                MR_Word Var_124;
+                MR_Word Var_125;
+                MR_Word Var_127;
+
+                {
+                  Var_127 = (MR_Word) MR_mkword(MR_mktag(1), MR_new_object(MR_Word, ((MR_Integer) 2 * sizeof(MR_Word)), NULL, NULL));
+                  MR_hl_field(MR_mktag(1), Var_127, 0) = ((MR_Box) (A_str_9));
+                  MR_hl_field(MR_mktag(1), Var_127, 1) = ((MR_Box) (MR_mkword(MR_mktag(0), MR_mkbody((MR_Integer) 0))));
+                }
+                {
+                  Var_125 = (MR_Word) MR_mkword(MR_mktag(1), MR_new_object(MR_Word, ((MR_Integer) 2 * sizeof(MR_Word)), NULL, NULL));
+                  MR_hl_field(MR_mktag(1), Var_125, 0) = ((MR_Box) ((MR_String) "_"));
+                  MR_hl_field(MR_mktag(1), Var_125, 1) = ((MR_Box) (Var_127));
+                }
+                {
+                  Var_124 = (MR_Word) MR_mkword(MR_mktag(1), MR_new_object(MR_Word, ((MR_Integer) 2 * sizeof(MR_Word)), NULL, NULL));
+                  MR_hl_field(MR_mktag(1), Var_124, 0) = ((MR_Box) (TypeName_8));
+                  MR_hl_field(MR_mktag(1), Var_124, 1) = ((MR_Box) (Var_125));
+                }
+                {
+                  Var_122 = (MR_Word) MR_mkword(MR_mktag(1), MR_new_object(MR_Word, ((MR_Integer) 2 * sizeof(MR_Word)), NULL, NULL));
+                  MR_hl_field(MR_mktag(1), Var_122, 0) = ((MR_Box) ((MR_String) "__enum_name_ordered_"));
+                  MR_hl_field(MR_mktag(1), Var_122, 1) = ((MR_Box) (Var_124));
+                }
+                {
+                  Var_121 = (MR_Word) MR_mkword(MR_mktag(1), MR_new_object(MR_Word, ((MR_Integer) 2 * sizeof(MR_Word)), NULL, NULL));
+                  MR_hl_field(MR_mktag(1), Var_121, 0) = ((MR_Box) (ModuleName_7));
+                  MR_hl_field(MR_mktag(1), Var_121, 1) = ((MR_Box) (Var_122));
+                }
+                mercury__string__append_list_2_p_0(Var_121, &Str_6);
+              }
+              break;
+            case (MR_Integer) 3:
+              {
+                MR_Word Var_113;
+                MR_Word Var_114;
+                MR_Word Var_116;
+                MR_Word Var_117;
+                MR_Word Var_119;
+
+                {
+                  Var_119 = (MR_Word) MR_mkword(MR_mktag(1), MR_new_object(MR_Word, ((MR_Integer) 2 * sizeof(MR_Word)), NULL, NULL));
+                  MR_hl_field(MR_mktag(1), Var_119, 0) = ((MR_Box) (A_str_9));
+                  MR_hl_field(MR_mktag(1), Var_119, 1) = ((MR_Box) (MR_mkword(MR_mktag(0), MR_mkbody((MR_Integer) 0))));
+                }
+                {
+                  Var_117 = (MR_Word) MR_mkword(MR_mktag(1), MR_new_object(MR_Word, ((MR_Integer) 2 * sizeof(MR_Word)), NULL, NULL));
+                  MR_hl_field(MR_mktag(1), Var_117, 0) = ((MR_Box) ((MR_String) "_"));
+                  MR_hl_field(MR_mktag(1), Var_117, 1) = ((MR_Box) (Var_119));
+                }
+                {
+                  Var_116 = (MR_Word) MR_mkword(MR_mktag(1), MR_new_object(MR_Word, ((MR_Integer) 2 * sizeof(MR_Word)), NULL, NULL));
+                  MR_hl_field(MR_mktag(1), Var_116, 0) = ((MR_Box) (TypeName_8));
+                  MR_hl_field(MR_mktag(1), Var_116, 1) = ((MR_Box) (Var_117));
+                }
+                {
+                  Var_114 = (MR_Word) MR_mkword(MR_mktag(1), MR_new_object(MR_Word, ((MR_Integer) 2 * sizeof(MR_Word)), NULL, NULL));
+                  MR_hl_field(MR_mktag(1), Var_114, 0) = ((MR_Box) ((MR_String) "__enum_value_ordered_"));
+                  MR_hl_field(MR_mktag(1), Var_114, 1) = ((MR_Box) (Var_116));
+                }
+                {
+                  Var_113 = (MR_Word) MR_mkword(MR_mktag(1), MR_new_object(MR_Word, ((MR_Integer) 2 * sizeof(MR_Word)), NULL, NULL));
+                  MR_hl_field(MR_mktag(1), Var_113, 0) = ((MR_Box) (ModuleName_7));
+                  MR_hl_field(MR_mktag(1), Var_113, 1) = ((MR_Box) (Var_114));
+                }
+                mercury__string__append_list_2_p_0(Var_113, &Str_6);
+              }
+              break;
+            case (MR_Integer) 4:
+              {
+                MR_Word Var_105;
+                MR_Word Var_106;
+                MR_Word Var_108;
+                MR_Word Var_109;
+                MR_Word Var_111;
+
+                {
+                  Var_111 = (MR_Word) MR_mkword(MR_mktag(1), MR_new_object(MR_Word, ((MR_Integer) 2 * sizeof(MR_Word)), NULL, NULL));
+                  MR_hl_field(MR_mktag(1), Var_111, 0) = ((MR_Box) (A_str_9));
+                  MR_hl_field(MR_mktag(1), Var_111, 1) = ((MR_Box) (MR_mkword(MR_mktag(0), MR_mkbody((MR_Integer) 0))));
+                }
+                {
+                  Var_109 = (MR_Word) MR_mkword(MR_mktag(1), MR_new_object(MR_Word, ((MR_Integer) 2 * sizeof(MR_Word)), NULL, NULL));
+                  MR_hl_field(MR_mktag(1), Var_109, 0) = ((MR_Box) ((MR_String) "_"));
+                  MR_hl_field(MR_mktag(1), Var_109, 1) = ((MR_Box) (Var_111));
+                }
+                {
+                  Var_108 = (MR_Word) MR_mkword(MR_mktag(1), MR_new_object(MR_Word, ((MR_Integer) 2 * sizeof(MR_Word)), NULL, NULL));
+                  MR_hl_field(MR_mktag(1), Var_108, 0) = ((MR_Box) (TypeName_8));
+                  MR_hl_field(MR_mktag(1), Var_108, 1) = ((MR_Box) (Var_109));
+                }
+                {
+                  Var_106 = (MR_Word) MR_mkword(MR_mktag(1), MR_new_object(MR_Word, ((MR_Integer) 2 * sizeof(MR_Word)), NULL, NULL));
+                  MR_hl_field(MR_mktag(1), Var_106, 0) = ((MR_Box) ((MR_String) "__foreign_enum_name_ordered_"));
+                  MR_hl_field(MR_mktag(1), Var_106, 1) = ((MR_Box) (Var_108));
+                }
+                {
+                  Var_105 = (MR_Word) MR_mkword(MR_mktag(1), MR_new_object(MR_Word, ((MR_Integer) 2 * sizeof(MR_Word)), NULL, NULL));
+                  MR_hl_field(MR_mktag(1), Var_105, 0) = ((MR_Box) (ModuleName_7));
+                  MR_hl_field(MR_mktag(1), Var_105, 1) = ((MR_Box) (Var_106));
+                }
+                mercury__string__append_list_2_p_0(Var_105, &Str_6);
+              }
+              break;
+            case (MR_Integer) 5:
+              {
+                MR_Word Var_97;
+                MR_Word Var_98;
+                MR_Word Var_100;
+                MR_Word Var_101;
+                MR_Word Var_103;
+
+                {
+                  Var_103 = (MR_Word) MR_mkword(MR_mktag(1), MR_new_object(MR_Word, ((MR_Integer) 2 * sizeof(MR_Word)), NULL, NULL));
+                  MR_hl_field(MR_mktag(1), Var_103, 0) = ((MR_Box) (A_str_9));
+                  MR_hl_field(MR_mktag(1), Var_103, 1) = ((MR_Box) (MR_mkword(MR_mktag(0), MR_mkbody((MR_Integer) 0))));
+                }
+                {
+                  Var_101 = (MR_Word) MR_mkword(MR_mktag(1), MR_new_object(MR_Word, ((MR_Integer) 2 * sizeof(MR_Word)), NULL, NULL));
+                  MR_hl_field(MR_mktag(1), Var_101, 0) = ((MR_Box) ((MR_String) "_"));
+                  MR_hl_field(MR_mktag(1), Var_101, 1) = ((MR_Box) (Var_103));
+                }
+                {
+                  Var_100 = (MR_Word) MR_mkword(MR_mktag(1), MR_new_object(MR_Word, ((MR_Integer) 2 * sizeof(MR_Word)), NULL, NULL));
+                  MR_hl_field(MR_mktag(1), Var_100, 0) = ((MR_Box) (TypeName_8));
+                  MR_hl_field(MR_mktag(1), Var_100, 1) = ((MR_Box) (Var_101));
+                }
+                {
+                  Var_98 = (MR_Word) MR_mkword(MR_mktag(1), MR_new_object(MR_Word, ((MR_Integer) 2 * sizeof(MR_Word)), NULL, NULL));
+                  MR_hl_field(MR_mktag(1), Var_98, 0) = ((MR_Box) ((MR_String) "__foreign_enum_ordinal_ordered_"));
+                  MR_hl_field(MR_mktag(1), Var_98, 1) = ((MR_Box) (Var_100));
+                }
+                {
+                  Var_97 = (MR_Word) MR_mkword(MR_mktag(1), MR_new_object(MR_Word, ((MR_Integer) 2 * sizeof(MR_Word)), NULL, NULL));
+                  MR_hl_field(MR_mktag(1), Var_97, 0) = ((MR_Box) (ModuleName_7));
+                  MR_hl_field(MR_mktag(1), Var_97, 1) = ((MR_Box) (Var_98));
+                }
+                mercury__string__append_list_2_p_0(Var_97, &Str_6);
+              }
+              break;
+            case (MR_Integer) 6:
+              {
+                MR_Word Var_89;
+                MR_Word Var_90;
+                MR_Word Var_92;
+                MR_Word Var_93;
+                MR_Word Var_95;
+
+                {
+                  Var_95 = (MR_Word) MR_mkword(MR_mktag(1), MR_new_object(MR_Word, ((MR_Integer) 2 * sizeof(MR_Word)), NULL, NULL));
+                  MR_hl_field(MR_mktag(1), Var_95, 0) = ((MR_Box) (A_str_9));
+                  MR_hl_field(MR_mktag(1), Var_95, 1) = ((MR_Box) (MR_mkword(MR_mktag(0), MR_mkbody((MR_Integer) 0))));
+                }
+                {
+                  Var_93 = (MR_Word) MR_mkword(MR_mktag(1), MR_new_object(MR_Word, ((MR_Integer) 2 * sizeof(MR_Word)), NULL, NULL));
+                  MR_hl_field(MR_mktag(1), Var_93, 0) = ((MR_Box) ((MR_String) "_"));
+                  MR_hl_field(MR_mktag(1), Var_93, 1) = ((MR_Box) (Var_95));
+                }
+                {
+                  Var_92 = (MR_Word) MR_mkword(MR_mktag(1), MR_new_object(MR_Word, ((MR_Integer) 2 * sizeof(MR_Word)), NULL, NULL));
+                  MR_hl_field(MR_mktag(1), Var_92, 0) = ((MR_Box) (TypeName_8));
+                  MR_hl_field(MR_mktag(1), Var_92, 1) = ((MR_Box) (Var_93));
+                }
+                {
+                  Var_90 = (MR_Word) MR_mkword(MR_mktag(1), MR_new_object(MR_Word, ((MR_Integer) 2 * sizeof(MR_Word)), NULL, NULL));
+                  MR_hl_field(MR_mktag(1), Var_90, 0) = ((MR_Box) ((MR_String) "__du_name_ordered_"));
+                  MR_hl_field(MR_mktag(1), Var_90, 1) = ((MR_Box) (Var_92));
+                }
+                {
+                  Var_89 = (MR_Word) MR_mkword(MR_mktag(1), MR_new_object(MR_Word, ((MR_Integer) 2 * sizeof(MR_Word)), NULL, NULL));
+                  MR_hl_field(MR_mktag(1), Var_89, 0) = ((MR_Box) (ModuleName_7));
+                  MR_hl_field(MR_mktag(1), Var_89, 1) = ((MR_Box) (Var_90));
+                }
+                mercury__string__append_list_2_p_0(Var_89, &Str_6);
+              }
+              break;
+            case (MR_Integer) 7:
+              {
+                MR_Word Var_70;
+                MR_Word Var_71;
+                MR_Word Var_73;
+                MR_Word Var_74;
+                MR_Word Var_76;
+
+                {
+                  Var_76 = (MR_Word) MR_mkword(MR_mktag(1), MR_new_object(MR_Word, ((MR_Integer) 2 * sizeof(MR_Word)), NULL, NULL));
+                  MR_hl_field(MR_mktag(1), Var_76, 0) = ((MR_Box) (A_str_9));
+                  MR_hl_field(MR_mktag(1), Var_76, 1) = ((MR_Box) (MR_mkword(MR_mktag(0), MR_mkbody((MR_Integer) 0))));
+                }
+                {
+                  Var_74 = (MR_Word) MR_mkword(MR_mktag(1), MR_new_object(MR_Word, ((MR_Integer) 2 * sizeof(MR_Word)), NULL, NULL));
+                  MR_hl_field(MR_mktag(1), Var_74, 0) = ((MR_Box) ((MR_String) "_"));
+                  MR_hl_field(MR_mktag(1), Var_74, 1) = ((MR_Box) (Var_76));
+                }
+                {
+                  Var_73 = (MR_Word) MR_mkword(MR_mktag(1), MR_new_object(MR_Word, ((MR_Integer) 2 * sizeof(MR_Word)), NULL, NULL));
+                  MR_hl_field(MR_mktag(1), Var_73, 0) = ((MR_Box) (TypeName_8));
+                  MR_hl_field(MR_mktag(1), Var_73, 1) = ((MR_Box) (Var_74));
+                }
+                {
+                  Var_71 = (MR_Word) MR_mkword(MR_mktag(1), MR_new_object(MR_Word, ((MR_Integer) 2 * sizeof(MR_Word)), NULL, NULL));
+                  MR_hl_field(MR_mktag(1), Var_71, 0) = ((MR_Box) ((MR_String) "__du_ptag_ordered_"));
+                  MR_hl_field(MR_mktag(1), Var_71, 1) = ((MR_Box) (Var_73));
+                }
+                {
+                  Var_70 = (MR_Word) MR_mkword(MR_mktag(1), MR_new_object(MR_Word, ((MR_Integer) 2 * sizeof(MR_Word)), NULL, NULL));
+                  MR_hl_field(MR_mktag(1), Var_70, 0) = ((MR_Box) (ModuleName_7));
+                  MR_hl_field(MR_mktag(1), Var_70, 1) = ((MR_Box) (Var_71));
+                }
+                mercury__string__append_list_2_p_0(Var_70, &Str_6);
+              }
+              break;
+            case (MR_Integer) 8:
+              {
+                MR_Word Var_51;
+                MR_Word Var_52;
+                MR_Word Var_54;
+                MR_Word Var_55;
+                MR_Word Var_57;
+
+                {
+                  Var_57 = (MR_Word) MR_mkword(MR_mktag(1), MR_new_object(MR_Word, ((MR_Integer) 2 * sizeof(MR_Word)), NULL, NULL));
+                  MR_hl_field(MR_mktag(1), Var_57, 0) = ((MR_Box) (A_str_9));
+                  MR_hl_field(MR_mktag(1), Var_57, 1) = ((MR_Box) (MR_mkword(MR_mktag(0), MR_mkbody((MR_Integer) 0))));
+                }
+                {
+                  Var_55 = (MR_Word) MR_mkword(MR_mktag(1), MR_new_object(MR_Word, ((MR_Integer) 2 * sizeof(MR_Word)), NULL, NULL));
+                  MR_hl_field(MR_mktag(1), Var_55, 0) = ((MR_Box) ((MR_String) "_"));
+                  MR_hl_field(MR_mktag(1), Var_55, 1) = ((MR_Box) (Var_57));
+                }
+                {
+                  Var_54 = (MR_Word) MR_mkword(MR_mktag(1), MR_new_object(MR_Word, ((MR_Integer) 2 * sizeof(MR_Word)), NULL, NULL));
+                  MR_hl_field(MR_mktag(1), Var_54, 0) = ((MR_Box) (TypeName_8));
+                  MR_hl_field(MR_mktag(1), Var_54, 1) = ((MR_Box) (Var_55));
+                }
+                {
+                  Var_52 = (MR_Word) MR_mkword(MR_mktag(1), MR_new_object(MR_Word, ((MR_Integer) 2 * sizeof(MR_Word)), NULL, NULL));
+                  MR_hl_field(MR_mktag(1), Var_52, 0) = ((MR_Box) ((MR_String) "__functor_number_map_"));
+                  MR_hl_field(MR_mktag(1), Var_52, 1) = ((MR_Box) (Var_54));
+                }
+                {
+                  Var_51 = (MR_Word) MR_mkword(MR_mktag(1), MR_new_object(MR_Word, ((MR_Integer) 2 * sizeof(MR_Word)), NULL, NULL));
+                  MR_hl_field(MR_mktag(1), Var_51, 0) = ((MR_Box) (ModuleName_7));
+                  MR_hl_field(MR_mktag(1), Var_51, 1) = ((MR_Box) (Var_52));
+                }
+                mercury__string__append_list_2_p_0(Var_51, &Str_6);
+              }
+              break;
+            case (MR_Integer) 9:
+              {
+                MR_Word Var_43;
+                MR_Word Var_44;
+                MR_Word Var_46;
+                MR_Word Var_47;
+                MR_Word Var_49;
+
+                {
+                  Var_49 = (MR_Word) MR_mkword(MR_mktag(1), MR_new_object(MR_Word, ((MR_Integer) 2 * sizeof(MR_Word)), NULL, NULL));
+                  MR_hl_field(MR_mktag(1), Var_49, 0) = ((MR_Box) (A_str_9));
+                  MR_hl_field(MR_mktag(1), Var_49, 1) = ((MR_Box) (MR_mkword(MR_mktag(0), MR_mkbody((MR_Integer) 0))));
+                }
+                {
+                  Var_47 = (MR_Word) MR_mkword(MR_mktag(1), MR_new_object(MR_Word, ((MR_Integer) 2 * sizeof(MR_Word)), NULL, NULL));
+                  MR_hl_field(MR_mktag(1), Var_47, 0) = ((MR_Box) ((MR_String) "_"));
+                  MR_hl_field(MR_mktag(1), Var_47, 1) = ((MR_Box) (Var_49));
+                }
+                {
+                  Var_46 = (MR_Word) MR_mkword(MR_mktag(1), MR_new_object(MR_Word, ((MR_Integer) 2 * sizeof(MR_Word)), NULL, NULL));
+                  MR_hl_field(MR_mktag(1), Var_46, 0) = ((MR_Box) (TypeName_8));
+                  MR_hl_field(MR_mktag(1), Var_46, 1) = ((MR_Box) (Var_47));
+                }
+                {
+                  Var_44 = (MR_Word) MR_mkword(MR_mktag(1), MR_new_object(MR_Word, ((MR_Integer) 2 * sizeof(MR_Word)), NULL, NULL));
+                  MR_hl_field(MR_mktag(1), Var_44, 0) = ((MR_Box) ((MR_String) "__type_functors"));
+                  MR_hl_field(MR_mktag(1), Var_44, 1) = ((MR_Box) (Var_46));
+                }
+                {
+                  Var_43 = (MR_Word) MR_mkword(MR_mktag(1), MR_new_object(MR_Word, ((MR_Integer) 2 * sizeof(MR_Word)), NULL, NULL));
+                  MR_hl_field(MR_mktag(1), Var_43, 0) = ((MR_Box) (ModuleName_7));
+                  MR_hl_field(MR_mktag(1), Var_43, 1) = ((MR_Box) (Var_44));
+                }
+                mercury__string__append_list_2_p_0(Var_43, &Str_6);
+              }
+              break;
+            case (MR_Integer) 10:
+              {
+                MR_Word Var_35;
+                MR_Word Var_36;
+                MR_Word Var_38;
+                MR_Word Var_39;
+                MR_Word Var_41;
+
+                {
+                  Var_41 = (MR_Word) MR_mkword(MR_mktag(1), MR_new_object(MR_Word, ((MR_Integer) 2 * sizeof(MR_Word)), NULL, NULL));
+                  MR_hl_field(MR_mktag(1), Var_41, 0) = ((MR_Box) (A_str_9));
+                  MR_hl_field(MR_mktag(1), Var_41, 1) = ((MR_Box) (MR_mkword(MR_mktag(0), MR_mkbody((MR_Integer) 0))));
+                }
+                {
+                  Var_39 = (MR_Word) MR_mkword(MR_mktag(1), MR_new_object(MR_Word, ((MR_Integer) 2 * sizeof(MR_Word)), NULL, NULL));
+                  MR_hl_field(MR_mktag(1), Var_39, 0) = ((MR_Box) ((MR_String) "_"));
+                  MR_hl_field(MR_mktag(1), Var_39, 1) = ((MR_Box) (Var_41));
+                }
+                {
+                  Var_38 = (MR_Word) MR_mkword(MR_mktag(1), MR_new_object(MR_Word, ((MR_Integer) 2 * sizeof(MR_Word)), NULL, NULL));
+                  MR_hl_field(MR_mktag(1), Var_38, 0) = ((MR_Box) (TypeName_8));
+                  MR_hl_field(MR_mktag(1), Var_38, 1) = ((MR_Box) (Var_39));
+                }
+                {
+                  Var_36 = (MR_Word) MR_mkword(MR_mktag(1), MR_new_object(MR_Word, ((MR_Integer) 2 * sizeof(MR_Word)), NULL, NULL));
+                  MR_hl_field(MR_mktag(1), Var_36, 0) = ((MR_Box) ((MR_String) "__type_layout"));
+                  MR_hl_field(MR_mktag(1), Var_36, 1) = ((MR_Box) (Var_38));
+                }
+                {
+                  Var_35 = (MR_Word) MR_mkword(MR_mktag(1), MR_new_object(MR_Word, ((MR_Integer) 2 * sizeof(MR_Word)), NULL, NULL));
+                  MR_hl_field(MR_mktag(1), Var_35, 0) = ((MR_Box) (ModuleName_7));
+                  MR_hl_field(MR_mktag(1), Var_35, 1) = ((MR_Box) (Var_36));
+                }
+                mercury__string__append_list_2_p_0(Var_35, &Str_6);
+              }
+              break;
+            case (MR_Integer) 11:
+              {
+                MR_Word Var_27;
+                MR_Word Var_28;
+                MR_Word Var_30;
+                MR_Word Var_31;
+                MR_Word Var_33;
+
+                {
+                  Var_33 = (MR_Word) MR_mkword(MR_mktag(1), MR_new_object(MR_Word, ((MR_Integer) 2 * sizeof(MR_Word)), NULL, NULL));
+                  MR_hl_field(MR_mktag(1), Var_33, 0) = ((MR_Box) (A_str_9));
+                  MR_hl_field(MR_mktag(1), Var_33, 1) = ((MR_Box) (MR_mkword(MR_mktag(0), MR_mkbody((MR_Integer) 0))));
+                }
+                {
+                  Var_31 = (MR_Word) MR_mkword(MR_mktag(1), MR_new_object(MR_Word, ((MR_Integer) 2 * sizeof(MR_Word)), NULL, NULL));
+                  MR_hl_field(MR_mktag(1), Var_31, 0) = ((MR_Box) ((MR_String) "_"));
+                  MR_hl_field(MR_mktag(1), Var_31, 1) = ((MR_Box) (Var_33));
+                }
+                {
+                  Var_30 = (MR_Word) MR_mkword(MR_mktag(1), MR_new_object(MR_Word, ((MR_Integer) 2 * sizeof(MR_Word)), NULL, NULL));
+                  MR_hl_field(MR_mktag(1), Var_30, 0) = ((MR_Box) (TypeName_8));
+                  MR_hl_field(MR_mktag(1), Var_30, 1) = ((MR_Box) (Var_31));
+                }
+                {
+                  Var_28 = (MR_Word) MR_mkword(MR_mktag(1), MR_new_object(MR_Word, ((MR_Integer) 2 * sizeof(MR_Word)), NULL, NULL));
+                  MR_hl_field(MR_mktag(1), Var_28, 0) = ((MR_Box) ((MR_String) "__type_ctor_info_"));
+                  MR_hl_field(MR_mktag(1), Var_28, 1) = ((MR_Box) (Var_30));
+                }
+                {
+                  Var_27 = (MR_Word) MR_mkword(MR_mktag(1), MR_new_object(MR_Word, ((MR_Integer) 2 * sizeof(MR_Word)), NULL, NULL));
+                  MR_hl_field(MR_mktag(1), Var_27, 0) = ((MR_Box) (ModuleName_7));
+                  MR_hl_field(MR_mktag(1), Var_27, 1) = ((MR_Box) (Var_28));
+                }
+                mercury__string__append_list_2_p_0(Var_27, &Str_6);
+              }
+              break;
+            case (MR_Integer) 12:
+              {
+                MR_Word Var_19;
+                MR_Word Var_20;
+                MR_Word Var_22;
+                MR_Word Var_23;
+                MR_Word Var_25;
+
+                {
+                  Var_25 = (MR_Word) MR_mkword(MR_mktag(1), MR_new_object(MR_Word, ((MR_Integer) 2 * sizeof(MR_Word)), NULL, NULL));
+                  MR_hl_field(MR_mktag(1), Var_25, 0) = ((MR_Box) (A_str_9));
+                  MR_hl_field(MR_mktag(1), Var_25, 1) = ((MR_Box) (MR_mkword(MR_mktag(0), MR_mkbody((MR_Integer) 0))));
+                }
+                {
+                  Var_23 = (MR_Word) MR_mkword(MR_mktag(1), MR_new_object(MR_Word, ((MR_Integer) 2 * sizeof(MR_Word)), NULL, NULL));
+                  MR_hl_field(MR_mktag(1), Var_23, 0) = ((MR_Box) ((MR_String) "_"));
+                  MR_hl_field(MR_mktag(1), Var_23, 1) = ((MR_Box) (Var_25));
+                }
+                {
+                  Var_22 = (MR_Word) MR_mkword(MR_mktag(1), MR_new_object(MR_Word, ((MR_Integer) 2 * sizeof(MR_Word)), NULL, NULL));
+                  MR_hl_field(MR_mktag(1), Var_22, 0) = ((MR_Box) (TypeName_8));
+                  MR_hl_field(MR_mktag(1), Var_22, 1) = ((MR_Box) (Var_23));
+                }
+                {
+                  Var_20 = (MR_Word) MR_mkword(MR_mktag(1), MR_new_object(MR_Word, ((MR_Integer) 2 * sizeof(MR_Word)), NULL, NULL));
+                  MR_hl_field(MR_mktag(1), Var_20, 0) = ((MR_Box) ((MR_String) "__hashcons_ptr_"));
+                  MR_hl_field(MR_mktag(1), Var_20, 1) = ((MR_Box) (Var_22));
+                }
+                {
+                  Var_19 = (MR_Word) MR_mkword(MR_mktag(1), MR_new_object(MR_Word, ((MR_Integer) 2 * sizeof(MR_Word)), NULL, NULL));
+                  MR_hl_field(MR_mktag(1), Var_19, 0) = ((MR_Box) (ModuleName_7));
+                  MR_hl_field(MR_mktag(1), Var_19, 1) = ((MR_Box) (Var_20));
+                }
+                mercury__string__append_list_2_p_0(Var_19, &Str_6);
+              }
+              break;
+          }
+          break;
+        case (MR_Integer) 1:
+          {
+            MR_Integer Ordinal_10 = ((MR_Integer) (MR_hl_field(MR_mktag(1), RttiName_5, (MR_Integer) 0)));
+            MR_String O_str_11;
+            MR_Word Var_247;
+            MR_Word Var_248;
+            MR_Word Var_250;
+            MR_Word Var_251;
+            MR_Word Var_253;
+            MR_Word Var_254;
+            MR_Word Var_256;
+
+            mercury__string__int_to_string_2_p_0(Ordinal_10, &O_str_11);
+            {
+              Var_256 = (MR_Word) MR_mkword(MR_mktag(1), MR_new_object(MR_Word, ((MR_Integer) 2 * sizeof(MR_Word)), NULL, NULL));
+              MR_hl_field(MR_mktag(1), Var_256, 0) = ((MR_Box) (O_str_11));
+              MR_hl_field(MR_mktag(1), Var_256, 1) = ((MR_Box) (MR_mkword(MR_mktag(0), MR_mkbody((MR_Integer) 0))));
+            }
+            {
+              Var_254 = (MR_Word) MR_mkword(MR_mktag(1), MR_new_object(MR_Word, ((MR_Integer) 2 * sizeof(MR_Word)), NULL, NULL));
+              MR_hl_field(MR_mktag(1), Var_254, 0) = ((MR_Box) ((MR_String) "_"));
+              MR_hl_field(MR_mktag(1), Var_254, 1) = ((MR_Box) (Var_256));
+            }
+            {
+              Var_253 = (MR_Word) MR_mkword(MR_mktag(1), MR_new_object(MR_Word, ((MR_Integer) 2 * sizeof(MR_Word)), NULL, NULL));
+              MR_hl_field(MR_mktag(1), Var_253, 0) = ((MR_Box) (A_str_9));
+              MR_hl_field(MR_mktag(1), Var_253, 1) = ((MR_Box) (Var_254));
+            }
+            {
+              Var_251 = (MR_Word) MR_mkword(MR_mktag(1), MR_new_object(MR_Word, ((MR_Integer) 2 * sizeof(MR_Word)), NULL, NULL));
+              MR_hl_field(MR_mktag(1), Var_251, 0) = ((MR_Box) ((MR_String) "_"));
+              MR_hl_field(MR_mktag(1), Var_251, 1) = ((MR_Box) (Var_253));
+            }
+            {
+              Var_250 = (MR_Word) MR_mkword(MR_mktag(1), MR_new_object(MR_Word, ((MR_Integer) 2 * sizeof(MR_Word)), NULL, NULL));
+              MR_hl_field(MR_mktag(1), Var_250, 0) = ((MR_Box) (TypeName_8));
+              MR_hl_field(MR_mktag(1), Var_250, 1) = ((MR_Box) (Var_251));
+            }
+            {
+              Var_248 = (MR_Word) MR_mkword(MR_mktag(1), MR_new_object(MR_Word, ((MR_Integer) 2 * sizeof(MR_Word)), NULL, NULL));
+              MR_hl_field(MR_mktag(1), Var_248, 0) = ((MR_Box) ((MR_String) "__exist_locns_"));
+              MR_hl_field(MR_mktag(1), Var_248, 1) = ((MR_Box) (Var_250));
+            }
+            {
+              Var_247 = (MR_Word) MR_mkword(MR_mktag(1), MR_new_object(MR_Word, ((MR_Integer) 2 * sizeof(MR_Word)), NULL, NULL));
+              MR_hl_field(MR_mktag(1), Var_247, 0) = ((MR_Box) (ModuleName_7));
+              MR_hl_field(MR_mktag(1), Var_247, 1) = ((MR_Box) (Var_248));
+            }
+            mercury__string__append_list_2_p_0(Var_247, &Str_6);
+          }
+          break;
+        case (MR_Integer) 2:
+          {
+            MR_Integer TCCNum_12 = ((MR_Integer) (MR_hl_field(MR_mktag(2), RttiName_5, (MR_Integer) 1)));
+            MR_String N_str_14;
+            MR_Word Var_225;
+            MR_Word Var_226;
+            MR_Word Var_228;
+            MR_Word Var_229;
+            MR_Word Var_231;
+            MR_Word Var_232;
+            MR_Word Var_234;
+            MR_Word Var_235;
+            MR_Word Var_237;
+            MR_Integer Ordinal_258 = ((MR_Integer) (MR_hl_field(MR_mktag(2), RttiName_5, (MR_Integer) 0)));
+            MR_String O_str_259;
+            MR_Integer Var_13 = ((MR_Integer) (MR_hl_field(MR_mktag(2), RttiName_5, (MR_Integer) 2)));
+
+            mercury__string__int_to_string_2_p_0(Ordinal_258, &O_str_259);
+            mercury__string__int_to_string_2_p_0(TCCNum_12, &N_str_14);
+            {
+              Var_237 = (MR_Word) MR_mkword(MR_mktag(1), MR_new_object(MR_Word, ((MR_Integer) 2 * sizeof(MR_Word)), NULL, NULL));
+              MR_hl_field(MR_mktag(1), Var_237, 0) = ((MR_Box) (N_str_14));
+              MR_hl_field(MR_mktag(1), Var_237, 1) = ((MR_Box) (MR_mkword(MR_mktag(0), MR_mkbody((MR_Integer) 0))));
+            }
+            {
+              Var_235 = (MR_Word) MR_mkword(MR_mktag(1), MR_new_object(MR_Word, ((MR_Integer) 2 * sizeof(MR_Word)), NULL, NULL));
+              MR_hl_field(MR_mktag(1), Var_235, 0) = ((MR_Box) ((MR_String) "_"));
+              MR_hl_field(MR_mktag(1), Var_235, 1) = ((MR_Box) (Var_237));
+            }
+            {
+              Var_234 = (MR_Word) MR_mkword(MR_mktag(1), MR_new_object(MR_Word, ((MR_Integer) 2 * sizeof(MR_Word)), NULL, NULL));
+              MR_hl_field(MR_mktag(1), Var_234, 0) = ((MR_Box) (O_str_259));
+              MR_hl_field(MR_mktag(1), Var_234, 1) = ((MR_Box) (Var_235));
+            }
+            {
+              Var_232 = (MR_Word) MR_mkword(MR_mktag(1), MR_new_object(MR_Word, ((MR_Integer) 2 * sizeof(MR_Word)), NULL, NULL));
+              MR_hl_field(MR_mktag(1), Var_232, 0) = ((MR_Box) ((MR_String) "_"));
+              MR_hl_field(MR_mktag(1), Var_232, 1) = ((MR_Box) (Var_234));
+            }
+            {
+              Var_231 = (MR_Word) MR_mkword(MR_mktag(1), MR_new_object(MR_Word, ((MR_Integer) 2 * sizeof(MR_Word)), NULL, NULL));
+              MR_hl_field(MR_mktag(1), Var_231, 0) = ((MR_Box) (A_str_9));
+              MR_hl_field(MR_mktag(1), Var_231, 1) = ((MR_Box) (Var_232));
+            }
+            {
+              Var_229 = (MR_Word) MR_mkword(MR_mktag(1), MR_new_object(MR_Word, ((MR_Integer) 2 * sizeof(MR_Word)), NULL, NULL));
+              MR_hl_field(MR_mktag(1), Var_229, 0) = ((MR_Box) ((MR_String) "_"));
+              MR_hl_field(MR_mktag(1), Var_229, 1) = ((MR_Box) (Var_231));
+            }
+            {
+              Var_228 = (MR_Word) MR_mkword(MR_mktag(1), MR_new_object(MR_Word, ((MR_Integer) 2 * sizeof(MR_Word)), NULL, NULL));
+              MR_hl_field(MR_mktag(1), Var_228, 0) = ((MR_Box) (TypeName_8));
+              MR_hl_field(MR_mktag(1), Var_228, 1) = ((MR_Box) (Var_229));
+            }
+            {
+              Var_226 = (MR_Word) MR_mkword(MR_mktag(1), MR_new_object(MR_Word, ((MR_Integer) 2 * sizeof(MR_Word)), NULL, NULL));
+              MR_hl_field(MR_mktag(1), Var_226, 0) = ((MR_Box) ((MR_String) "__exist_tc_constr_"));
+              MR_hl_field(MR_mktag(1), Var_226, 1) = ((MR_Box) (Var_228));
+            }
+            {
+              Var_225 = (MR_Word) MR_mkword(MR_mktag(1), MR_new_object(MR_Word, ((MR_Integer) 2 * sizeof(MR_Word)), NULL, NULL));
+              MR_hl_field(MR_mktag(1), Var_225, 0) = ((MR_Box) (ModuleName_7));
+              MR_hl_field(MR_mktag(1), Var_225, 1) = ((MR_Box) (Var_226));
+            }
+            mercury__string__append_list_2_p_0(Var_225, &Str_6);
+          }
+          break;
+        case (MR_Integer) 3:
+          switch (((MR_Integer) (MR_Word) (MR_hl_field(MR_mktag(3), RttiName_5, (MR_Integer) 0)))) {
+            default: /*NOTREACHED*/ MR_assert(0);
+            case (MR_Integer) 0:
+              {
+                MR_Word Var_214;
+                MR_Word Var_215;
+                MR_Word Var_217;
+                MR_Word Var_218;
+                MR_Word Var_220;
+                MR_Word Var_221;
+                MR_Word Var_223;
+                MR_Integer Ordinal_260 = ((MR_Integer) (MR_hl_field(MR_mktag(3), RttiName_5, (MR_Integer) 1)));
+                MR_String O_str_261;
+
+                mercury__string__int_to_string_2_p_0(Ordinal_260, &O_str_261);
+                {
+                  Var_223 = (MR_Word) MR_mkword(MR_mktag(1), MR_new_object(MR_Word, ((MR_Integer) 2 * sizeof(MR_Word)), NULL, NULL));
+                  MR_hl_field(MR_mktag(1), Var_223, 0) = ((MR_Box) (O_str_261));
+                  MR_hl_field(MR_mktag(1), Var_223, 1) = ((MR_Box) (MR_mkword(MR_mktag(0), MR_mkbody((MR_Integer) 0))));
+                }
+                {
+                  Var_221 = (MR_Word) MR_mkword(MR_mktag(1), MR_new_object(MR_Word, ((MR_Integer) 2 * sizeof(MR_Word)), NULL, NULL));
+                  MR_hl_field(MR_mktag(1), Var_221, 0) = ((MR_Box) ((MR_String) "_"));
+                  MR_hl_field(MR_mktag(1), Var_221, 1) = ((MR_Box) (Var_223));
+                }
+                {
+                  Var_220 = (MR_Word) MR_mkword(MR_mktag(1), MR_new_object(MR_Word, ((MR_Integer) 2 * sizeof(MR_Word)), NULL, NULL));
+                  MR_hl_field(MR_mktag(1), Var_220, 0) = ((MR_Box) (A_str_9));
+                  MR_hl_field(MR_mktag(1), Var_220, 1) = ((MR_Box) (Var_221));
+                }
+                {
+                  Var_218 = (MR_Word) MR_mkword(MR_mktag(1), MR_new_object(MR_Word, ((MR_Integer) 2 * sizeof(MR_Word)), NULL, NULL));
+                  MR_hl_field(MR_mktag(1), Var_218, 0) = ((MR_Box) ((MR_String) "_"));
+                  MR_hl_field(MR_mktag(1), Var_218, 1) = ((MR_Box) (Var_220));
+                }
+                {
+                  Var_217 = (MR_Word) MR_mkword(MR_mktag(1), MR_new_object(MR_Word, ((MR_Integer) 2 * sizeof(MR_Word)), NULL, NULL));
+                  MR_hl_field(MR_mktag(1), Var_217, 0) = ((MR_Box) (TypeName_8));
+                  MR_hl_field(MR_mktag(1), Var_217, 1) = ((MR_Box) (Var_218));
+                }
+                {
+                  Var_215 = (MR_Word) MR_mkword(MR_mktag(1), MR_new_object(MR_Word, ((MR_Integer) 2 * sizeof(MR_Word)), NULL, NULL));
+                  MR_hl_field(MR_mktag(1), Var_215, 0) = ((MR_Box) ((MR_String) "__exist_tc_constrs_"));
+                  MR_hl_field(MR_mktag(1), Var_215, 1) = ((MR_Box) (Var_217));
+                }
+                {
+                  Var_214 = (MR_Word) MR_mkword(MR_mktag(1), MR_new_object(MR_Word, ((MR_Integer) 2 * sizeof(MR_Word)), NULL, NULL));
+                  MR_hl_field(MR_mktag(1), Var_214, 0) = ((MR_Box) (ModuleName_7));
+                  MR_hl_field(MR_mktag(1), Var_214, 1) = ((MR_Box) (Var_215));
+                }
+                mercury__string__append_list_2_p_0(Var_214, &Str_6);
+              }
+              break;
+            case (MR_Integer) 1:
+              {
+                MR_Word Var_203;
+                MR_Word Var_204;
+                MR_Word Var_206;
+                MR_Word Var_207;
+                MR_Word Var_209;
+                MR_Word Var_210;
+                MR_Word Var_212;
+                MR_Integer Ordinal_262 = ((MR_Integer) (MR_hl_field(MR_mktag(3), RttiName_5, (MR_Integer) 1)));
+                MR_String O_str_263;
+
+                mercury__string__int_to_string_2_p_0(Ordinal_262, &O_str_263);
+                {
+                  Var_212 = (MR_Word) MR_mkword(MR_mktag(1), MR_new_object(MR_Word, ((MR_Integer) 2 * sizeof(MR_Word)), NULL, NULL));
+                  MR_hl_field(MR_mktag(1), Var_212, 0) = ((MR_Box) (O_str_263));
+                  MR_hl_field(MR_mktag(1), Var_212, 1) = ((MR_Box) (MR_mkword(MR_mktag(0), MR_mkbody((MR_Integer) 0))));
+                }
+                {
+                  Var_210 = (MR_Word) MR_mkword(MR_mktag(1), MR_new_object(MR_Word, ((MR_Integer) 2 * sizeof(MR_Word)), NULL, NULL));
+                  MR_hl_field(MR_mktag(1), Var_210, 0) = ((MR_Box) ((MR_String) "_"));
+                  MR_hl_field(MR_mktag(1), Var_210, 1) = ((MR_Box) (Var_212));
+                }
+                {
+                  Var_209 = (MR_Word) MR_mkword(MR_mktag(1), MR_new_object(MR_Word, ((MR_Integer) 2 * sizeof(MR_Word)), NULL, NULL));
+                  MR_hl_field(MR_mktag(1), Var_209, 0) = ((MR_Box) (A_str_9));
+                  MR_hl_field(MR_mktag(1), Var_209, 1) = ((MR_Box) (Var_210));
+                }
+                {
+                  Var_207 = (MR_Word) MR_mkword(MR_mktag(1), MR_new_object(MR_Word, ((MR_Integer) 2 * sizeof(MR_Word)), NULL, NULL));
+                  MR_hl_field(MR_mktag(1), Var_207, 0) = ((MR_Box) ((MR_String) "_"));
+                  MR_hl_field(MR_mktag(1), Var_207, 1) = ((MR_Box) (Var_209));
+                }
+                {
+                  Var_206 = (MR_Word) MR_mkword(MR_mktag(1), MR_new_object(MR_Word, ((MR_Integer) 2 * sizeof(MR_Word)), NULL, NULL));
+                  MR_hl_field(MR_mktag(1), Var_206, 0) = ((MR_Box) (TypeName_8));
+                  MR_hl_field(MR_mktag(1), Var_206, 1) = ((MR_Box) (Var_207));
+                }
+                {
+                  Var_204 = (MR_Word) MR_mkword(MR_mktag(1), MR_new_object(MR_Word, ((MR_Integer) 2 * sizeof(MR_Word)), NULL, NULL));
+                  MR_hl_field(MR_mktag(1), Var_204, 0) = ((MR_Box) ((MR_String) "__exist_info_"));
+                  MR_hl_field(MR_mktag(1), Var_204, 1) = ((MR_Box) (Var_206));
+                }
+                {
+                  Var_203 = (MR_Word) MR_mkword(MR_mktag(1), MR_new_object(MR_Word, ((MR_Integer) 2 * sizeof(MR_Word)), NULL, NULL));
+                  MR_hl_field(MR_mktag(1), Var_203, 0) = ((MR_Box) (ModuleName_7));
+                  MR_hl_field(MR_mktag(1), Var_203, 1) = ((MR_Box) (Var_204));
+                }
+                mercury__string__append_list_2_p_0(Var_203, &Str_6);
+              }
+              break;
+            case (MR_Integer) 2:
+              {
+                MR_Word Var_192;
+                MR_Word Var_193;
+                MR_Word Var_195;
+                MR_Word Var_196;
+                MR_Word Var_198;
+                MR_Word Var_199;
+                MR_Word Var_201;
+                MR_Integer Ordinal_264 = ((MR_Integer) (MR_hl_field(MR_mktag(3), RttiName_5, (MR_Integer) 1)));
+                MR_String O_str_265;
+
+                mercury__string__int_to_string_2_p_0(Ordinal_264, &O_str_265);
+                {
+                  Var_201 = (MR_Word) MR_mkword(MR_mktag(1), MR_new_object(MR_Word, ((MR_Integer) 2 * sizeof(MR_Word)), NULL, NULL));
+                  MR_hl_field(MR_mktag(1), Var_201, 0) = ((MR_Box) (O_str_265));
+                  MR_hl_field(MR_mktag(1), Var_201, 1) = ((MR_Box) (MR_mkword(MR_mktag(0), MR_mkbody((MR_Integer) 0))));
+                }
+                {
+                  Var_199 = (MR_Word) MR_mkword(MR_mktag(1), MR_new_object(MR_Word, ((MR_Integer) 2 * sizeof(MR_Word)), NULL, NULL));
+                  MR_hl_field(MR_mktag(1), Var_199, 0) = ((MR_Box) ((MR_String) "_"));
+                  MR_hl_field(MR_mktag(1), Var_199, 1) = ((MR_Box) (Var_201));
+                }
+                {
+                  Var_198 = (MR_Word) MR_mkword(MR_mktag(1), MR_new_object(MR_Word, ((MR_Integer) 2 * sizeof(MR_Word)), NULL, NULL));
+                  MR_hl_field(MR_mktag(1), Var_198, 0) = ((MR_Box) (A_str_9));
+                  MR_hl_field(MR_mktag(1), Var_198, 1) = ((MR_Box) (Var_199));
+                }
+                {
+                  Var_196 = (MR_Word) MR_mkword(MR_mktag(1), MR_new_object(MR_Word, ((MR_Integer) 2 * sizeof(MR_Word)), NULL, NULL));
+                  MR_hl_field(MR_mktag(1), Var_196, 0) = ((MR_Box) ((MR_String) "_"));
+                  MR_hl_field(MR_mktag(1), Var_196, 1) = ((MR_Box) (Var_198));
+                }
+                {
+                  Var_195 = (MR_Word) MR_mkword(MR_mktag(1), MR_new_object(MR_Word, ((MR_Integer) 2 * sizeof(MR_Word)), NULL, NULL));
+                  MR_hl_field(MR_mktag(1), Var_195, 0) = ((MR_Box) (TypeName_8));
+                  MR_hl_field(MR_mktag(1), Var_195, 1) = ((MR_Box) (Var_196));
+                }
+                {
+                  Var_193 = (MR_Word) MR_mkword(MR_mktag(1), MR_new_object(MR_Word, ((MR_Integer) 2 * sizeof(MR_Word)), NULL, NULL));
+                  MR_hl_field(MR_mktag(1), Var_193, 0) = ((MR_Box) ((MR_String) "__field_names_"));
+                  MR_hl_field(MR_mktag(1), Var_193, 1) = ((MR_Box) (Var_195));
+                }
+                {
+                  Var_192 = (MR_Word) MR_mkword(MR_mktag(1), MR_new_object(MR_Word, ((MR_Integer) 2 * sizeof(MR_Word)), NULL, NULL));
+                  MR_hl_field(MR_mktag(1), Var_192, 0) = ((MR_Box) (ModuleName_7));
+                  MR_hl_field(MR_mktag(1), Var_192, 1) = ((MR_Box) (Var_193));
+                }
+                mercury__string__append_list_2_p_0(Var_192, &Str_6);
+              }
+              break;
+            case (MR_Integer) 3:
+              {
+                MR_Word Var_181;
+                MR_Word Var_182;
+                MR_Word Var_184;
+                MR_Word Var_185;
+                MR_Word Var_187;
+                MR_Word Var_188;
+                MR_Word Var_190;
+                MR_Integer Ordinal_266 = ((MR_Integer) (MR_hl_field(MR_mktag(3), RttiName_5, (MR_Integer) 1)));
+                MR_String O_str_267;
+
+                mercury__string__int_to_string_2_p_0(Ordinal_266, &O_str_267);
+                {
+                  Var_190 = (MR_Word) MR_mkword(MR_mktag(1), MR_new_object(MR_Word, ((MR_Integer) 2 * sizeof(MR_Word)), NULL, NULL));
+                  MR_hl_field(MR_mktag(1), Var_190, 0) = ((MR_Box) (O_str_267));
+                  MR_hl_field(MR_mktag(1), Var_190, 1) = ((MR_Box) (MR_mkword(MR_mktag(0), MR_mkbody((MR_Integer) 0))));
+                }
+                {
+                  Var_188 = (MR_Word) MR_mkword(MR_mktag(1), MR_new_object(MR_Word, ((MR_Integer) 2 * sizeof(MR_Word)), NULL, NULL));
+                  MR_hl_field(MR_mktag(1), Var_188, 0) = ((MR_Box) ((MR_String) "_"));
+                  MR_hl_field(MR_mktag(1), Var_188, 1) = ((MR_Box) (Var_190));
+                }
+                {
+                  Var_187 = (MR_Word) MR_mkword(MR_mktag(1), MR_new_object(MR_Word, ((MR_Integer) 2 * sizeof(MR_Word)), NULL, NULL));
+                  MR_hl_field(MR_mktag(1), Var_187, 0) = ((MR_Box) (A_str_9));
+                  MR_hl_field(MR_mktag(1), Var_187, 1) = ((MR_Box) (Var_188));
+                }
+                {
+                  Var_185 = (MR_Word) MR_mkword(MR_mktag(1), MR_new_object(MR_Word, ((MR_Integer) 2 * sizeof(MR_Word)), NULL, NULL));
+                  MR_hl_field(MR_mktag(1), Var_185, 0) = ((MR_Box) ((MR_String) "_"));
+                  MR_hl_field(MR_mktag(1), Var_185, 1) = ((MR_Box) (Var_187));
+                }
+                {
+                  Var_184 = (MR_Word) MR_mkword(MR_mktag(1), MR_new_object(MR_Word, ((MR_Integer) 2 * sizeof(MR_Word)), NULL, NULL));
+                  MR_hl_field(MR_mktag(1), Var_184, 0) = ((MR_Box) (TypeName_8));
+                  MR_hl_field(MR_mktag(1), Var_184, 1) = ((MR_Box) (Var_185));
+                }
+                {
+                  Var_182 = (MR_Word) MR_mkword(MR_mktag(1), MR_new_object(MR_Word, ((MR_Integer) 2 * sizeof(MR_Word)), NULL, NULL));
+                  MR_hl_field(MR_mktag(1), Var_182, 0) = ((MR_Box) ((MR_String) "__field_types_"));
+                  MR_hl_field(MR_mktag(1), Var_182, 1) = ((MR_Box) (Var_184));
+                }
+                {
+                  Var_181 = (MR_Word) MR_mkword(MR_mktag(1), MR_new_object(MR_Word, ((MR_Integer) 2 * sizeof(MR_Word)), NULL, NULL));
+                  MR_hl_field(MR_mktag(1), Var_181, 0) = ((MR_Box) (ModuleName_7));
+                  MR_hl_field(MR_mktag(1), Var_181, 1) = ((MR_Box) (Var_182));
+                }
+                mercury__string__append_list_2_p_0(Var_181, &Str_6);
+              }
+              break;
+            case (MR_Integer) 4:
+              {
+                MR_Word Var_170;
+                MR_Word Var_171;
+                MR_Word Var_173;
+                MR_Word Var_174;
+                MR_Word Var_176;
+                MR_Word Var_177;
+                MR_Word Var_179;
+                MR_Integer Ordinal_268 = ((MR_Integer) (MR_hl_field(MR_mktag(3), RttiName_5, (MR_Integer) 1)));
+                MR_String O_str_269;
+
+                mercury__string__int_to_string_2_p_0(Ordinal_268, &O_str_269);
+                {
+                  Var_179 = (MR_Word) MR_mkword(MR_mktag(1), MR_new_object(MR_Word, ((MR_Integer) 2 * sizeof(MR_Word)), NULL, NULL));
+                  MR_hl_field(MR_mktag(1), Var_179, 0) = ((MR_Box) (O_str_269));
+                  MR_hl_field(MR_mktag(1), Var_179, 1) = ((MR_Box) (MR_mkword(MR_mktag(0), MR_mkbody((MR_Integer) 0))));
+                }
+                {
+                  Var_177 = (MR_Word) MR_mkword(MR_mktag(1), MR_new_object(MR_Word, ((MR_Integer) 2 * sizeof(MR_Word)), NULL, NULL));
+                  MR_hl_field(MR_mktag(1), Var_177, 0) = ((MR_Box) ((MR_String) "_"));
+                  MR_hl_field(MR_mktag(1), Var_177, 1) = ((MR_Box) (Var_179));
+                }
+                {
+                  Var_176 = (MR_Word) MR_mkword(MR_mktag(1), MR_new_object(MR_Word, ((MR_Integer) 2 * sizeof(MR_Word)), NULL, NULL));
+                  MR_hl_field(MR_mktag(1), Var_176, 0) = ((MR_Box) (A_str_9));
+                  MR_hl_field(MR_mktag(1), Var_176, 1) = ((MR_Box) (Var_177));
+                }
+                {
+                  Var_174 = (MR_Word) MR_mkword(MR_mktag(1), MR_new_object(MR_Word, ((MR_Integer) 2 * sizeof(MR_Word)), NULL, NULL));
+                  MR_hl_field(MR_mktag(1), Var_174, 0) = ((MR_Box) ((MR_String) "_"));
+                  MR_hl_field(MR_mktag(1), Var_174, 1) = ((MR_Box) (Var_176));
+                }
+                {
+                  Var_173 = (MR_Word) MR_mkword(MR_mktag(1), MR_new_object(MR_Word, ((MR_Integer) 2 * sizeof(MR_Word)), NULL, NULL));
+                  MR_hl_field(MR_mktag(1), Var_173, 0) = ((MR_Box) (TypeName_8));
+                  MR_hl_field(MR_mktag(1), Var_173, 1) = ((MR_Box) (Var_174));
+                }
+                {
+                  Var_171 = (MR_Word) MR_mkword(MR_mktag(1), MR_new_object(MR_Word, ((MR_Integer) 2 * sizeof(MR_Word)), NULL, NULL));
+                  MR_hl_field(MR_mktag(1), Var_171, 0) = ((MR_Box) ((MR_String) "__field_locns_"));
+                  MR_hl_field(MR_mktag(1), Var_171, 1) = ((MR_Box) (Var_173));
+                }
+                {
+                  Var_170 = (MR_Word) MR_mkword(MR_mktag(1), MR_new_object(MR_Word, ((MR_Integer) 2 * sizeof(MR_Word)), NULL, NULL));
+                  MR_hl_field(MR_mktag(1), Var_170, 0) = ((MR_Box) (ModuleName_7));
+                  MR_hl_field(MR_mktag(1), Var_170, 1) = ((MR_Box) (Var_171));
+                }
+                mercury__string__append_list_2_p_0(Var_170, &Str_6);
+              }
+              break;
+            case (MR_Integer) 5:
+              {
+                MR_Word Var_159;
+                MR_Word Var_160;
+                MR_Word Var_162;
+                MR_Word Var_163;
+                MR_Word Var_165;
+                MR_Word Var_166;
+                MR_Word Var_168;
+                MR_Integer Ordinal_270 = ((MR_Integer) (MR_hl_field(MR_mktag(3), RttiName_5, (MR_Integer) 1)));
+                MR_String O_str_271;
+
+                mercury__string__int_to_string_2_p_0(Ordinal_270, &O_str_271);
+                {
+                  Var_168 = (MR_Word) MR_mkword(MR_mktag(1), MR_new_object(MR_Word, ((MR_Integer) 2 * sizeof(MR_Word)), NULL, NULL));
+                  MR_hl_field(MR_mktag(1), Var_168, 0) = ((MR_Box) (O_str_271));
+                  MR_hl_field(MR_mktag(1), Var_168, 1) = ((MR_Box) (MR_mkword(MR_mktag(0), MR_mkbody((MR_Integer) 0))));
+                }
+                {
+                  Var_166 = (MR_Word) MR_mkword(MR_mktag(1), MR_new_object(MR_Word, ((MR_Integer) 2 * sizeof(MR_Word)), NULL, NULL));
+                  MR_hl_field(MR_mktag(1), Var_166, 0) = ((MR_Box) ((MR_String) "_"));
+                  MR_hl_field(MR_mktag(1), Var_166, 1) = ((MR_Box) (Var_168));
+                }
+                {
+                  Var_165 = (MR_Word) MR_mkword(MR_mktag(1), MR_new_object(MR_Word, ((MR_Integer) 2 * sizeof(MR_Word)), NULL, NULL));
+                  MR_hl_field(MR_mktag(1), Var_165, 0) = ((MR_Box) (A_str_9));
+                  MR_hl_field(MR_mktag(1), Var_165, 1) = ((MR_Box) (Var_166));
+                }
+                {
+                  Var_163 = (MR_Word) MR_mkword(MR_mktag(1), MR_new_object(MR_Word, ((MR_Integer) 2 * sizeof(MR_Word)), NULL, NULL));
+                  MR_hl_field(MR_mktag(1), Var_163, 0) = ((MR_Box) ((MR_String) "_"));
+                  MR_hl_field(MR_mktag(1), Var_163, 1) = ((MR_Box) (Var_165));
+                }
+                {
+                  Var_162 = (MR_Word) MR_mkword(MR_mktag(1), MR_new_object(MR_Word, ((MR_Integer) 2 * sizeof(MR_Word)), NULL, NULL));
+                  MR_hl_field(MR_mktag(1), Var_162, 0) = ((MR_Box) (TypeName_8));
+                  MR_hl_field(MR_mktag(1), Var_162, 1) = ((MR_Box) (Var_163));
+                }
+                {
+                  Var_160 = (MR_Word) MR_mkword(MR_mktag(1), MR_new_object(MR_Word, ((MR_Integer) 2 * sizeof(MR_Word)), NULL, NULL));
+                  MR_hl_field(MR_mktag(1), Var_160, 0) = ((MR_Box) ((MR_String) "__enum_functor_desc_"));
+                  MR_hl_field(MR_mktag(1), Var_160, 1) = ((MR_Box) (Var_162));
+                }
+                {
+                  Var_159 = (MR_Word) MR_mkword(MR_mktag(1), MR_new_object(MR_Word, ((MR_Integer) 2 * sizeof(MR_Word)), NULL, NULL));
+                  MR_hl_field(MR_mktag(1), Var_159, 0) = ((MR_Box) (ModuleName_7));
+                  MR_hl_field(MR_mktag(1), Var_159, 1) = ((MR_Box) (Var_160));
+                }
+                mercury__string__append_list_2_p_0(Var_159, &Str_6);
+              }
+              break;
+            case (MR_Integer) 6:
+              {
+                MR_Word Var_148;
+                MR_Word Var_149;
+                MR_Word Var_151;
+                MR_Word Var_152;
+                MR_Word Var_154;
+                MR_Word Var_155;
+                MR_Word Var_157;
+                MR_Integer Ordinal_272 = ((MR_Integer) (MR_hl_field(MR_mktag(3), RttiName_5, (MR_Integer) 1)));
+                MR_String O_str_273;
+
+                mercury__string__int_to_string_2_p_0(Ordinal_272, &O_str_273);
+                {
+                  Var_157 = (MR_Word) MR_mkword(MR_mktag(1), MR_new_object(MR_Word, ((MR_Integer) 2 * sizeof(MR_Word)), NULL, NULL));
+                  MR_hl_field(MR_mktag(1), Var_157, 0) = ((MR_Box) (O_str_273));
+                  MR_hl_field(MR_mktag(1), Var_157, 1) = ((MR_Box) (MR_mkword(MR_mktag(0), MR_mkbody((MR_Integer) 0))));
+                }
+                {
+                  Var_155 = (MR_Word) MR_mkword(MR_mktag(1), MR_new_object(MR_Word, ((MR_Integer) 2 * sizeof(MR_Word)), NULL, NULL));
+                  MR_hl_field(MR_mktag(1), Var_155, 0) = ((MR_Box) ((MR_String) "_"));
+                  MR_hl_field(MR_mktag(1), Var_155, 1) = ((MR_Box) (Var_157));
+                }
+                {
+                  Var_154 = (MR_Word) MR_mkword(MR_mktag(1), MR_new_object(MR_Word, ((MR_Integer) 2 * sizeof(MR_Word)), NULL, NULL));
+                  MR_hl_field(MR_mktag(1), Var_154, 0) = ((MR_Box) (A_str_9));
+                  MR_hl_field(MR_mktag(1), Var_154, 1) = ((MR_Box) (Var_155));
+                }
+                {
+                  Var_152 = (MR_Word) MR_mkword(MR_mktag(1), MR_new_object(MR_Word, ((MR_Integer) 2 * sizeof(MR_Word)), NULL, NULL));
+                  MR_hl_field(MR_mktag(1), Var_152, 0) = ((MR_Box) ((MR_String) "_"));
+                  MR_hl_field(MR_mktag(1), Var_152, 1) = ((MR_Box) (Var_154));
+                }
+                {
+                  Var_151 = (MR_Word) MR_mkword(MR_mktag(1), MR_new_object(MR_Word, ((MR_Integer) 2 * sizeof(MR_Word)), NULL, NULL));
+                  MR_hl_field(MR_mktag(1), Var_151, 0) = ((MR_Box) (TypeName_8));
+                  MR_hl_field(MR_mktag(1), Var_151, 1) = ((MR_Box) (Var_152));
+                }
+                {
+                  Var_149 = (MR_Word) MR_mkword(MR_mktag(1), MR_new_object(MR_Word, ((MR_Integer) 2 * sizeof(MR_Word)), NULL, NULL));
+                  MR_hl_field(MR_mktag(1), Var_149, 0) = ((MR_Box) ((MR_String) "__foreign_enum_functor_desc_"));
+                  MR_hl_field(MR_mktag(1), Var_149, 1) = ((MR_Box) (Var_151));
+                }
+                {
+                  Var_148 = (MR_Word) MR_mkword(MR_mktag(1), MR_new_object(MR_Word, ((MR_Integer) 2 * sizeof(MR_Word)), NULL, NULL));
+                  MR_hl_field(MR_mktag(1), Var_148, 0) = ((MR_Box) (ModuleName_7));
+                  MR_hl_field(MR_mktag(1), Var_148, 1) = ((MR_Box) (Var_149));
+                }
+                mercury__string__append_list_2_p_0(Var_148, &Str_6);
+              }
+              break;
+            case (MR_Integer) 7:
+              {
+                MR_Word Var_129;
+                MR_Word Var_130;
+                MR_Word Var_132;
+                MR_Word Var_133;
+                MR_Word Var_135;
+                MR_Word Var_136;
+                MR_Word Var_138;
+                MR_Integer Ordinal_274 = ((MR_Integer) (MR_hl_field(MR_mktag(3), RttiName_5, (MR_Integer) 1)));
+                MR_String O_str_275;
+
+                mercury__string__int_to_string_2_p_0(Ordinal_274, &O_str_275);
+                {
+                  Var_138 = (MR_Word) MR_mkword(MR_mktag(1), MR_new_object(MR_Word, ((MR_Integer) 2 * sizeof(MR_Word)), NULL, NULL));
+                  MR_hl_field(MR_mktag(1), Var_138, 0) = ((MR_Box) (O_str_275));
+                  MR_hl_field(MR_mktag(1), Var_138, 1) = ((MR_Box) (MR_mkword(MR_mktag(0), MR_mkbody((MR_Integer) 0))));
+                }
+                {
+                  Var_136 = (MR_Word) MR_mkword(MR_mktag(1), MR_new_object(MR_Word, ((MR_Integer) 2 * sizeof(MR_Word)), NULL, NULL));
+                  MR_hl_field(MR_mktag(1), Var_136, 0) = ((MR_Box) ((MR_String) "_"));
+                  MR_hl_field(MR_mktag(1), Var_136, 1) = ((MR_Box) (Var_138));
+                }
+                {
+                  Var_135 = (MR_Word) MR_mkword(MR_mktag(1), MR_new_object(MR_Word, ((MR_Integer) 2 * sizeof(MR_Word)), NULL, NULL));
+                  MR_hl_field(MR_mktag(1), Var_135, 0) = ((MR_Box) (A_str_9));
+                  MR_hl_field(MR_mktag(1), Var_135, 1) = ((MR_Box) (Var_136));
+                }
+                {
+                  Var_133 = (MR_Word) MR_mkword(MR_mktag(1), MR_new_object(MR_Word, ((MR_Integer) 2 * sizeof(MR_Word)), NULL, NULL));
+                  MR_hl_field(MR_mktag(1), Var_133, 0) = ((MR_Box) ((MR_String) "_"));
+                  MR_hl_field(MR_mktag(1), Var_133, 1) = ((MR_Box) (Var_135));
+                }
+                {
+                  Var_132 = (MR_Word) MR_mkword(MR_mktag(1), MR_new_object(MR_Word, ((MR_Integer) 2 * sizeof(MR_Word)), NULL, NULL));
+                  MR_hl_field(MR_mktag(1), Var_132, 0) = ((MR_Box) (TypeName_8));
+                  MR_hl_field(MR_mktag(1), Var_132, 1) = ((MR_Box) (Var_133));
+                }
+                {
+                  Var_130 = (MR_Word) MR_mkword(MR_mktag(1), MR_new_object(MR_Word, ((MR_Integer) 2 * sizeof(MR_Word)), NULL, NULL));
+                  MR_hl_field(MR_mktag(1), Var_130, 0) = ((MR_Box) ((MR_String) "__du_functor_desc_"));
+                  MR_hl_field(MR_mktag(1), Var_130, 1) = ((MR_Box) (Var_132));
+                }
+                {
+                  Var_129 = (MR_Word) MR_mkword(MR_mktag(1), MR_new_object(MR_Word, ((MR_Integer) 2 * sizeof(MR_Word)), NULL, NULL));
+                  MR_hl_field(MR_mktag(1), Var_129, 0) = ((MR_Box) (ModuleName_7));
+                  MR_hl_field(MR_mktag(1), Var_129, 1) = ((MR_Box) (Var_130));
+                }
+                mercury__string__append_list_2_p_0(Var_129, &Str_6);
+              }
+              break;
+            case (MR_Integer) 8:
+              {
+                MR_Integer Ptag_15 = ((MR_Integer) (MR_hl_field(MR_mktag(3), RttiName_5, (MR_Integer) 1)));
+                MR_String P_str_16;
+                MR_Word Var_78;
+                MR_Word Var_79;
+                MR_Word Var_81;
+                MR_Word Var_82;
+                MR_Word Var_84;
+                MR_Word Var_85;
+                MR_Word Var_87;
+
+                mercury__string__int_to_string_2_p_0(Ptag_15, &P_str_16);
+                {
+                  Var_87 = (MR_Word) MR_mkword(MR_mktag(1), MR_new_object(MR_Word, ((MR_Integer) 2 * sizeof(MR_Word)), NULL, NULL));
+                  MR_hl_field(MR_mktag(1), Var_87, 0) = ((MR_Box) (P_str_16));
+                  MR_hl_field(MR_mktag(1), Var_87, 1) = ((MR_Box) (MR_mkword(MR_mktag(0), MR_mkbody((MR_Integer) 0))));
+                }
+                {
+                  Var_85 = (MR_Word) MR_mkword(MR_mktag(1), MR_new_object(MR_Word, ((MR_Integer) 2 * sizeof(MR_Word)), NULL, NULL));
+                  MR_hl_field(MR_mktag(1), Var_85, 0) = ((MR_Box) ((MR_String) "_"));
+                  MR_hl_field(MR_mktag(1), Var_85, 1) = ((MR_Box) (Var_87));
+                }
+                {
+                  Var_84 = (MR_Word) MR_mkword(MR_mktag(1), MR_new_object(MR_Word, ((MR_Integer) 2 * sizeof(MR_Word)), NULL, NULL));
+                  MR_hl_field(MR_mktag(1), Var_84, 0) = ((MR_Box) (A_str_9));
+                  MR_hl_field(MR_mktag(1), Var_84, 1) = ((MR_Box) (Var_85));
+                }
+                {
+                  Var_82 = (MR_Word) MR_mkword(MR_mktag(1), MR_new_object(MR_Word, ((MR_Integer) 2 * sizeof(MR_Word)), NULL, NULL));
+                  MR_hl_field(MR_mktag(1), Var_82, 0) = ((MR_Box) ((MR_String) "_"));
+                  MR_hl_field(MR_mktag(1), Var_82, 1) = ((MR_Box) (Var_84));
+                }
+                {
+                  Var_81 = (MR_Word) MR_mkword(MR_mktag(1), MR_new_object(MR_Word, ((MR_Integer) 2 * sizeof(MR_Word)), NULL, NULL));
+                  MR_hl_field(MR_mktag(1), Var_81, 0) = ((MR_Box) (TypeName_8));
+                  MR_hl_field(MR_mktag(1), Var_81, 1) = ((MR_Box) (Var_82));
+                }
+                {
+                  Var_79 = (MR_Word) MR_mkword(MR_mktag(1), MR_new_object(MR_Word, ((MR_Integer) 2 * sizeof(MR_Word)), NULL, NULL));
+                  MR_hl_field(MR_mktag(1), Var_79, 0) = ((MR_Box) ((MR_String) "__du_stag_ordered_"));
+                  MR_hl_field(MR_mktag(1), Var_79, 1) = ((MR_Box) (Var_81));
+                }
+                {
+                  Var_78 = (MR_Word) MR_mkword(MR_mktag(1), MR_new_object(MR_Word, ((MR_Integer) 2 * sizeof(MR_Word)), NULL, NULL));
+                  MR_hl_field(MR_mktag(1), Var_78, 0) = ((MR_Box) (ModuleName_7));
+                  MR_hl_field(MR_mktag(1), Var_78, 1) = ((MR_Box) (Var_79));
+                }
+                mercury__string__append_list_2_p_0(Var_78, &Str_6);
+              }
+              break;
+            case (MR_Integer) 9:
+              {
+                MR_Word Var_59;
+                MR_Word Var_60;
+                MR_Word Var_62;
+                MR_Word Var_63;
+                MR_Word Var_65;
+                MR_Word Var_66;
+                MR_Word Var_68;
+                MR_Integer Ptag_276 = ((MR_Integer) (MR_hl_field(MR_mktag(3), RttiName_5, (MR_Integer) 1)));
+                MR_String P_str_277;
+
+                mercury__string__int_to_string_2_p_0(Ptag_276, &P_str_277);
+                {
+                  Var_68 = (MR_Word) MR_mkword(MR_mktag(1), MR_new_object(MR_Word, ((MR_Integer) 2 * sizeof(MR_Word)), NULL, NULL));
+                  MR_hl_field(MR_mktag(1), Var_68, 0) = ((MR_Box) (P_str_277));
+                  MR_hl_field(MR_mktag(1), Var_68, 1) = ((MR_Box) (MR_mkword(MR_mktag(0), MR_mkbody((MR_Integer) 0))));
+                }
+                {
+                  Var_66 = (MR_Word) MR_mkword(MR_mktag(1), MR_new_object(MR_Word, ((MR_Integer) 2 * sizeof(MR_Word)), NULL, NULL));
+                  MR_hl_field(MR_mktag(1), Var_66, 0) = ((MR_Box) ((MR_String) "_"));
+                  MR_hl_field(MR_mktag(1), Var_66, 1) = ((MR_Box) (Var_68));
+                }
+                {
+                  Var_65 = (MR_Word) MR_mkword(MR_mktag(1), MR_new_object(MR_Word, ((MR_Integer) 2 * sizeof(MR_Word)), NULL, NULL));
+                  MR_hl_field(MR_mktag(1), Var_65, 0) = ((MR_Box) (A_str_9));
+                  MR_hl_field(MR_mktag(1), Var_65, 1) = ((MR_Box) (Var_66));
+                }
+                {
+                  Var_63 = (MR_Word) MR_mkword(MR_mktag(1), MR_new_object(MR_Word, ((MR_Integer) 2 * sizeof(MR_Word)), NULL, NULL));
+                  MR_hl_field(MR_mktag(1), Var_63, 0) = ((MR_Box) ((MR_String) "_"));
+                  MR_hl_field(MR_mktag(1), Var_63, 1) = ((MR_Box) (Var_65));
+                }
+                {
+                  Var_62 = (MR_Word) MR_mkword(MR_mktag(1), MR_new_object(MR_Word, ((MR_Integer) 2 * sizeof(MR_Word)), NULL, NULL));
+                  MR_hl_field(MR_mktag(1), Var_62, 0) = ((MR_Box) (TypeName_8));
+                  MR_hl_field(MR_mktag(1), Var_62, 1) = ((MR_Box) (Var_63));
+                }
+                {
+                  Var_60 = (MR_Word) MR_mkword(MR_mktag(1), MR_new_object(MR_Word, ((MR_Integer) 2 * sizeof(MR_Word)), NULL, NULL));
+                  MR_hl_field(MR_mktag(1), Var_60, 0) = ((MR_Box) ((MR_String) "__du_ptag_layout_"));
+                  MR_hl_field(MR_mktag(1), Var_60, 1) = ((MR_Box) (Var_62));
+                }
+                {
+                  Var_59 = (MR_Word) MR_mkword(MR_mktag(1), MR_new_object(MR_Word, ((MR_Integer) 2 * sizeof(MR_Word)), NULL, NULL));
+                  MR_hl_field(MR_mktag(1), Var_59, 0) = ((MR_Box) (ModuleName_7));
+                  MR_hl_field(MR_mktag(1), Var_59, 1) = ((MR_Box) (Var_60));
+                }
+                mercury__string__append_list_2_p_0(Var_59, &Str_6);
+              }
+              break;
+            case (MR_Integer) 10:
+              {
+                MR_Word TypeInfo_17 = ((MR_Word) (MR_hl_field(MR_mktag(3), RttiName_5, (MR_Integer) 1)));
+                MR_Word next_value_of_tscc_proc_1_input_1_TypeInfo_3 = TypeInfo_17;
+
+                // direct tailcall eliminated
+                tscc_proc_1_input_1_TypeInfo_3 = next_value_of_tscc_proc_1_input_1_TypeInfo_3;
+                goto top_of_proc_1;
+              }
+              break;
+            case (MR_Integer) 11:
+              {
+                MR_Word PseudoTypeInfo_18 = ((MR_Word) (MR_hl_field(MR_mktag(3), RttiName_5, (MR_Integer) 1)));
+                MR_Word next_value_of_tscc_proc_2_input_1_PseudoTypeInfo_3 = PseudoTypeInfo_18;
+
+                // direct tailcall eliminated
+                tscc_proc_2_input_1_PseudoTypeInfo_3 = next_value_of_tscc_proc_2_input_1_PseudoTypeInfo_3;
+                goto top_of_proc_2;
+              }
+              break;
+          }
+          break;
+      }
+      tscc_output_1_Str_4 = Str_6;
+      goto tscc_end;
+    }
+  tscc_end:;
+    return tscc_output_1_Str_4;
+  }
+}
+
+static void MR_CALL 
+backend_libs__rtti__mangle_rtti_type_ctor_4_p_0(
+  MR_Word RttiTypeCtor_5,
+  MR_String * ModuleName_6,
+  MR_String * TypeName_7,
+  MR_String * ArityStr_8)
+{
+  {
+    MR_bool succeeded;
+    MR_Word ModuleNameSym0_9 = ((MR_Word) (MR_hl_field(MR_mktag(0), RttiTypeCtor_5, (MR_Integer) 0)));
+    MR_String TypeName0_10 = ((MR_String) (MR_hl_field(MR_mktag(0), RttiTypeCtor_5, (MR_Integer) 1)));
+    MR_Integer TypeArity_11 = ((MR_Integer) (MR_hl_field(MR_mktag(0), RttiTypeCtor_5, (MR_Integer) 2)));
+    MR_Word ModuleNameSym_12;
+    MR_String Var_13;
+
+    succeeded = ((MR_tag((MR_Word) ModuleNameSym0_9)) == (MR_mktag((MR_Integer) 0)));
+    if (succeeded)
+    {
+      Var_13 = ((MR_String) (MR_hl_field(MR_mktag(0), ModuleNameSym0_9, (MR_Integer) 0)));
+      succeeded = (strcmp(Var_13, (MR_String) "") == 0);
+    }
+    if (succeeded)
+      ModuleNameSym_12 = mdbcomp__builtin_modules__mercury_public_builtin_module_0_f_0();
+    else
+      ModuleNameSym_12 = ModuleNameSym0_9;
+    *ModuleName_6 = parse_tree__prog_foreign__sym_name_mangle_1_f_0(ModuleNameSym_12);
+    *TypeName_7 = parse_tree__prog_foreign__name_mangle_1_f_0(TypeName0_10);
+    mercury__string__int_to_string_2_p_0(TypeArity_11, ArityStr_8);
+  }
+}
+
+MR_Word MR_CALL 
+backend_libs__rtti__tc_rtti_name_is_exported_1_f_0(
+  MR_Word TCName_3)
+{
+  {
+    MR_Word IsExported_4;
+
+    switch (MR_tag((MR_Word) TCName_3)) {
+      default: /*NOTREACHED*/ MR_assert(0);
+      case (MR_Integer) 0:
+        switch (MR_unmkbody(TCName_3)) {
+          default: /*NOTREACHED*/ MR_assert(0);
+          case (MR_Integer) 0:
+          case (MR_Integer) 1:
+          case (MR_Integer) 2:
+          case (MR_Integer) 4:
+            IsExported_4 = (MR_Integer) 0;
+            break;
+          case (MR_Integer) 3:
+            IsExported_4 = (MR_Integer) 1;
+            break;
+        }
+        break;
+      case (MR_Integer) 1:
+        IsExported_4 = (MR_Integer) 1;
+        break;
+      case (MR_Integer) 2:
+        IsExported_4 = (MR_Integer) 0;
+        break;
+      case (MR_Integer) 3:
+        switch (((MR_Integer) (MR_Word) (MR_hl_field(MR_mktag(3), TCName_3, (MR_Integer) 0)))) {
+          default: /*NOTREACHED*/ MR_assert(0);
+          case (MR_Integer) 0:
+            IsExported_4 = (MR_Integer) 1;
+            break;
+          case (MR_Integer) 1:
+          case (MR_Integer) 2:
+          case (MR_Integer) 3:
+          case (MR_Integer) 4:
+            IsExported_4 = (MR_Integer) 0;
+            break;
+        }
+        break;
+    }
+    return IsExported_4;
+  }
+}
+
+MR_Word MR_CALL 
+backend_libs__rtti__rtti_id_is_exported_1_f_0(
+  MR_Word HeadVar__1_1)
+{
+  {
+    MR_Word HeadVar__2_2;
+
+    if (((MR_tag((MR_Word) HeadVar__1_1)) == (MR_mktag((MR_Integer) 0))))
+    {
+      MR_Word RttiName_4 = ((MR_Word) (MR_hl_field(MR_mktag(0), HeadVar__1_1, (MR_Integer) 1)));
+      MR_Word Var_3 = ((MR_Word) (MR_hl_field(MR_mktag(0), HeadVar__1_1, (MR_Integer) 0)));
+
+      HeadVar__2_2 = backend_libs__rtti__ctor_rtti_name_is_exported_1_f_0(RttiName_4);
+    }
+    else
+    {
+      MR_Word TCRttiName_6 = ((MR_Word) (MR_hl_field(MR_mktag(1), HeadVar__1_1, (MR_Integer) 1)));
+      MR_Word Var_5 = ((MR_Word) (MR_hl_field(MR_mktag(1), HeadVar__1_1, (MR_Integer) 0)));
+
+      switch (MR_tag((MR_Word) TCRttiName_6)) {
+        default: /*NOTREACHED*/ MR_assert(0);
+        case (MR_Integer) 0:
+          switch (MR_unmkbody(TCRttiName_6)) {
+            default: /*NOTREACHED*/ MR_assert(0);
+            case (MR_Integer) 0:
+            case (MR_Integer) 1:
+            case (MR_Integer) 2:
+            case (MR_Integer) 4:
+              HeadVar__2_2 = (MR_Integer) 0;
+              break;
+            case (MR_Integer) 3:
+              HeadVar__2_2 = (MR_Integer) 1;
+              break;
+          }
+          break;
+        case (MR_Integer) 1:
+          HeadVar__2_2 = (MR_Integer) 1;
+          break;
+        case (MR_Integer) 2:
+          HeadVar__2_2 = (MR_Integer) 0;
+          break;
+        case (MR_Integer) 3:
+          switch (((MR_Integer) (MR_Word) (MR_hl_field(MR_mktag(3), TCRttiName_6, (MR_Integer) 0)))) {
+            default: /*NOTREACHED*/ MR_assert(0);
+            case (MR_Integer) 0:
+              HeadVar__2_2 = (MR_Integer) 1;
+              break;
+            case (MR_Integer) 1:
+            case (MR_Integer) 2:
+            case (MR_Integer) 3:
+            case (MR_Integer) 4:
+              HeadVar__2_2 = (MR_Integer) 0;
+              break;
+          }
+          break;
+      }
+    }
+    return HeadVar__2_2;
+  }
+}
+
+MR_Word MR_CALL 
+backend_libs__rtti__ctor_rtti_name_is_exported_1_f_0(
+  MR_Word CtorRttiName_3)
+{
+  {
+    MR_Word IsExported_4;
+
+    switch (MR_tag((MR_Word) CtorRttiName_3)) {
+      default: /*NOTREACHED*/ MR_assert(0);
+      case (MR_Integer) 0:
+        switch (MR_unmkbody(CtorRttiName_3)) {
+          default: /*NOTREACHED*/ MR_assert(0);
+          case (MR_Integer) 0:
+          case (MR_Integer) 1:
+          case (MR_Integer) 2:
+          case (MR_Integer) 3:
+          case (MR_Integer) 4:
+          case (MR_Integer) 5:
+          case (MR_Integer) 6:
+          case (MR_Integer) 7:
+          case (MR_Integer) 8:
+          case (MR_Integer) 9:
+          case (MR_Integer) 10:
+          case (MR_Integer) 12:
+            IsExported_4 = (MR_Integer) 0;
+            break;
+          case (MR_Integer) 11:
+            IsExported_4 = (MR_Integer) 1;
+            break;
+        }
+        break;
+      case (MR_Integer) 1:
+      case (MR_Integer) 2:
+        IsExported_4 = (MR_Integer) 0;
+        break;
+      case (MR_Integer) 3:
+        switch (((MR_Integer) (MR_Word) (MR_hl_field(MR_mktag(3), CtorRttiName_3, (MR_Integer) 0)))) {
+          default: /*NOTREACHED*/ MR_assert(0);
+          case (MR_Integer) 0:
+          case (MR_Integer) 1:
+          case (MR_Integer) 2:
+          case (MR_Integer) 3:
+          case (MR_Integer) 4:
+          case (MR_Integer) 5:
+          case (MR_Integer) 6:
+          case (MR_Integer) 7:
+          case (MR_Integer) 8:
+          case (MR_Integer) 9:
+            IsExported_4 = (MR_Integer) 0;
+            break;
+          case (MR_Integer) 10:
+            {
+              MR_Word TypeInfo_19 = ((MR_Word) (MR_hl_field(MR_mktag(3), CtorRttiName_3, (MR_Integer) 1)));
+
+              switch (MR_tag((MR_Word) TypeInfo_19)) {
+                default: /*NOTREACHED*/ MR_assert(0);
+                case (MR_Integer) 0:
+                  IsExported_4 = (MR_Integer) 1;
+                  break;
+                case (MR_Integer) 1:
+                case (MR_Integer) 2:
+                  IsExported_4 = (MR_Integer) 0;
+                  break;
+              }
+            }
+            break;
+          case (MR_Integer) 11:
+            {
+              MR_Word PseudoTypeInfo_20 = ((MR_Word) (MR_hl_field(MR_mktag(3), CtorRttiName_3, (MR_Integer) 1)));
+
+              switch (MR_tag((MR_Word) PseudoTypeInfo_20)) {
+                default: /*NOTREACHED*/ MR_assert(0);
+                case (MR_Integer) 0:
+                  IsExported_4 = (MR_Integer) 1;
+                  break;
+                case (MR_Integer) 1:
+                case (MR_Integer) 2:
+                case (MR_Integer) 3:
+                  IsExported_4 = (MR_Integer) 0;
+                  break;
+              }
+            }
+            break;
+        }
+        break;
+    }
+    return IsExported_4;
+  }
+}
+
+MR_Word MR_CALL 
+backend_libs__rtti__tc_rtti_name_has_array_type_1_f_0(
+  MR_Word TCRttiName_3)
+{
+  {
+    MR_Word IsArray_4;
+    MR_String Var_5;
+
+    backend_libs__rtti__tc_rtti_name_type_3_p_0(TCRttiName_3, &Var_5, &IsArray_4);
+    return IsArray_4;
+  }
+}
+
+MR_Word MR_CALL 
+backend_libs__rtti__ctor_rtti_name_has_array_type_1_f_0(
+  MR_Word RttiName_3)
+{
+  {
+    MR_Word IsArray_4;
+    MR_String Var_5;
+
+    backend_libs__rtti__ctor_rtti_name_type_3_p_0(RttiName_3, &Var_5, &IsArray_4);
+    return IsArray_4;
+  }
+}
+
+MR_Word MR_CALL 
+backend_libs__rtti__rtti_id_has_array_type_1_f_0(
+  MR_Word HeadVar__1_1)
+{
+  {
+    MR_Word HeadVar__2_2;
+
+    if (((MR_tag((MR_Word) HeadVar__1_1)) == (MR_mktag((MR_Integer) 0))))
+    {
+      MR_Word RttiName_4 = ((MR_Word) (MR_hl_field(MR_mktag(0), HeadVar__1_1, (MR_Integer) 1)));
+      MR_Word Var_3 = ((MR_Word) (MR_hl_field(MR_mktag(0), HeadVar__1_1, (MR_Integer) 0)));
+      MR_String Var_9;
+
+      backend_libs__rtti__ctor_rtti_name_type_3_p_0(RttiName_4, &Var_9, &HeadVar__2_2);
+    }
+    else
+    {
+      MR_Word TCRttiName_6 = ((MR_Word) (MR_hl_field(MR_mktag(1), HeadVar__1_1, (MR_Integer) 1)));
+      MR_Word Var_5 = ((MR_Word) (MR_hl_field(MR_mktag(1), HeadVar__1_1, (MR_Integer) 0)));
+      MR_String Var_12;
+
+      backend_libs__rtti__tc_rtti_name_type_3_p_0(TCRttiName_6, &Var_12, &HeadVar__2_2);
+    }
+    return HeadVar__2_2;
+  }
+}
+
+static MR_bool MR_CALL 
+backend_libs__rtti__rtti_id_maybe_element_has_array_type_1_f_0_1(
+  MR_Box closure_arg)
+{
+  {
+    MR_bool succeeded;
+    MR_Box closure = closure_arg;
+
+    succeeded = backend_libs__rtti__IntroducedFrom__pred__rtti_id_maybe_element_has_array_type__1044__1_2_p_0(((MR_Word) (MR_hl_field(MR_mktag(0), closure, (MR_Integer) 3))), ((MR_Word) (MR_hl_field(MR_mktag(0), closure, (MR_Integer) 4))));
+    return succeeded;
+  }
+}
+
+MR_Word MR_CALL 
+backend_libs__rtti__rtti_id_maybe_element_has_array_type_1_f_0(
+  MR_Word HeadVar__1_1)
+{
+  {
+    MR_bool succeeded;
+    MR_Word HeadVar__2_2;
+
+    if (((MR_tag((MR_Word) HeadVar__1_1)) == (MR_mktag((MR_Integer) 1))))
+    {
+      MR_Word RttiId_4 = ((MR_Word) (MR_hl_field(MR_mktag(1), HeadVar__1_1, (MR_Integer) 0)));
+      MR_Word Var_5;
+      MR_Word Var_9;
+
+      HeadVar__2_2 = (MR_Integer) 1;
+      if (((MR_tag((MR_Word) RttiId_4)) == (MR_mktag((MR_Integer) 0))))
+      {
+        MR_Word RttiName_13 = ((MR_Word) (MR_hl_field(MR_mktag(0), RttiId_4, (MR_Integer) 1)));
+        MR_Word Var_12 = ((MR_Word) (MR_hl_field(MR_mktag(0), RttiId_4, (MR_Integer) 0)));
+        MR_String Var_18;
+
+        backend_libs__rtti__ctor_rtti_name_type_3_p_0(RttiName_13, &Var_18, &Var_9);
+      }
+      else
+      {
+        MR_Word TCRttiName_15 = ((MR_Word) (MR_hl_field(MR_mktag(1), RttiId_4, (MR_Integer) 1)));
+        MR_Word Var_14 = ((MR_Word) (MR_hl_field(MR_mktag(1), RttiId_4, (MR_Integer) 0)));
+        MR_String Var_21;
+
+        backend_libs__rtti__tc_rtti_name_type_3_p_0(TCRttiName_15, &Var_21, &Var_9);
+      }
+      {
+        Var_5 = (MR_Word) MR_new_object(MR_Word, ((MR_Integer) 5 * sizeof(MR_Word)), NULL, NULL);
+        MR_hl_field(MR_mktag(0), Var_5, 0) = ((MR_Box) (&backend_libs__rtti_scalar_common_5[0]));
+        MR_hl_field(MR_mktag(0), Var_5, 1) = ((MR_Box) (backend_libs__rtti__rtti_id_maybe_element_has_array_type_1_f_0_1));
+        MR_hl_field(MR_mktag(0), Var_5, 2) = ((MR_Box) (MR_Word) ((MR_Integer) 2));
+        MR_hl_field(MR_mktag(0), Var_5, 3) = ((MR_Box) (Var_9));
+        MR_hl_field(MR_mktag(0), Var_5, 4) = ((MR_Box) ((MR_Integer) 0));
+      }
+      mercury__require__expect_4_p_0(Var_5, (MR_String) "backend_libs.rtti", (MR_String) "function \140backend_libs.rtti.rtti_id_maybe_element_has_array_type\'/1", (MR_String) "base is not array");
+    }
+    else
+    {
+      MR_Word RttiId_3 = ((MR_Word) (MR_hl_field(MR_mktag(0), HeadVar__1_1, (MR_Integer) 0)));
+
+      if (((MR_tag((MR_Word) RttiId_3)) == (MR_mktag((MR_Integer) 0))))
+      {
+        MR_Word RttiName_23 = ((MR_Word) (MR_hl_field(MR_mktag(0), RttiId_3, (MR_Integer) 1)));
+        MR_Word Var_22 = ((MR_Word) (MR_hl_field(MR_mktag(0), RttiId_3, (MR_Integer) 0)));
+        MR_String Var_28;
+
+        backend_libs__rtti__ctor_rtti_name_type_3_p_0(RttiName_23, &Var_28, &HeadVar__2_2);
+      }
+      else
+      {
+        MR_Word TCRttiName_25 = ((MR_Word) (MR_hl_field(MR_mktag(1), RttiId_3, (MR_Integer) 1)));
+        MR_Word Var_24 = ((MR_Word) (MR_hl_field(MR_mktag(1), RttiId_3, (MR_Integer) 0)));
+        MR_String Var_31;
+
+        backend_libs__rtti__tc_rtti_name_type_3_p_0(TCRttiName_25, &Var_31, &HeadVar__2_2);
+      }
+    }
+    return HeadVar__2_2;
+  }
+}
+
+static void MR_CALL 
+backend_libs__rtti__tc_rtti_name_type_3_p_0(
+  MR_Word HeadVar__1_1,
+  MR_String * HeadVar__2_2,
+  MR_Word * HeadVar__3_3)
+{
+  switch (MR_tag((MR_Word) HeadVar__1_1)) {
+    default: /*NOTREACHED*/ MR_assert(0);
+    case (MR_Integer) 0:
+      switch (MR_unmkbody(HeadVar__1_1)) {
+        default: /*NOTREACHED*/ MR_assert(0);
+        case (MR_Integer) 0:
+          {
+            *HeadVar__2_2 = (MR_String) "TypeClassId";
+            *HeadVar__3_3 = (MR_Integer) 1;
+          }
+          break;
+        case (MR_Integer) 1:
+          {
+            *HeadVar__2_2 = (MR_String) "ConstString";
+            *HeadVar__3_3 = (MR_Integer) 0;
+          }
+          break;
+        case (MR_Integer) 2:
+          {
+            *HeadVar__2_2 = (MR_String) "TypeClassMethod";
+            *HeadVar__3_3 = (MR_Integer) 0;
+          }
+          break;
+        case (MR_Integer) 3:
+          {
+            *HeadVar__2_2 = (MR_String) "TypeClassDeclStruct";
+            *HeadVar__3_3 = (MR_Integer) 1;
+          }
+          break;
+        case (MR_Integer) 4:
+          {
+            *HeadVar__2_2 = (MR_String) "TypeClassConstraint";
+            *HeadVar__3_3 = (MR_Integer) 0;
+          }
+          break;
+      }
+      break;
+    case (MR_Integer) 1:
+      {
+        *HeadVar__2_2 = (MR_String) "BaseTypeclassInfo";
+        *HeadVar__3_3 = (MR_Integer) 0;
+      }
+      break;
+    case (MR_Integer) 2:
+      {
+        MR_Integer N_7 = ((MR_Integer) (MR_hl_field(MR_mktag(2), HeadVar__1_1, (MR_Integer) 1)));
+        MR_String Var_19;
+        MR_String Var_20;
+        MR_Integer Var_6 = ((MR_Integer) (MR_hl_field(MR_mktag(2), HeadVar__1_1, (MR_Integer) 0)));
+
+        *HeadVar__3_3 = (MR_Integer) 1;
+        Var_20 = mercury__string__int_to_string_1_f_0(N_7);
+        Var_19 = mercury__string__f_43_43_2_f_0(Var_20, (MR_String) "Struct");
+        *HeadVar__2_2 = mercury__string__f_43_43_2_f_0((MR_String) "TypeClassConstraint_", Var_19);
+      }
+      break;
+    case (MR_Integer) 3:
+      switch (((MR_Integer) (MR_Word) (MR_hl_field(MR_mktag(3), HeadVar__1_1, (MR_Integer) 0)))) {
+        default: /*NOTREACHED*/ MR_assert(0);
+        case (MR_Integer) 0:
+          {
+            *HeadVar__2_2 = (MR_String) "InstanceStruct";
+            *HeadVar__3_3 = (MR_Integer) 1;
+          }
+          break;
+        case (MR_Integer) 1:
+          {
+            *HeadVar__2_2 = (MR_String) "PseudoTypeInfo";
+            *HeadVar__3_3 = (MR_Integer) 0;
+          }
+          break;
+        case (MR_Integer) 2:
+          {
+            MR_Integer N_13 = ((MR_Integer) (MR_hl_field(MR_mktag(3), HeadVar__1_1, (MR_Integer) 3)));
+            MR_String Var_24;
+            MR_String Var_25;
+            MR_Word Var_11 = ((MR_Word) (MR_hl_field(MR_mktag(3), HeadVar__1_1, (MR_Integer) 1)));
+            MR_Integer Var_12 = ((MR_Integer) (MR_hl_field(MR_mktag(3), HeadVar__1_1, (MR_Integer) 2)));
+
+            *HeadVar__3_3 = (MR_Integer) 1;
+            Var_25 = mercury__string__int_to_string_1_f_0(N_13);
+            Var_24 = mercury__string__f_43_43_2_f_0(Var_25, (MR_String) "Struct");
+            *HeadVar__2_2 = mercury__string__f_43_43_2_f_0((MR_String) "TypeClassConstraint_", Var_24);
+          }
+          break;
+        case (MR_Integer) 3:
+          {
+            *HeadVar__2_2 = (MR_String) "TypeClassConstraint";
+            *HeadVar__3_3 = (MR_Integer) 0;
+          }
+          break;
+        case (MR_Integer) 4:
+          {
+            *HeadVar__2_2 = (MR_String) "CodePtr";
+            *HeadVar__3_3 = (MR_Integer) 0;
+          }
+          break;
+      }
+      break;
+  }
+}
+
+static void MR_CALL 
+backend_libs__rtti__ctor_rtti_name_type_3_p_0(
+  MR_Word HeadVar__1_1,
+  MR_String * HeadVar__2_2,
+  MR_Word * HeadVar__3_3)
+{
+  switch (MR_tag((MR_Word) HeadVar__1_1)) {
+    default: /*NOTREACHED*/ MR_assert(0);
+    case (MR_Integer) 0:
+      switch (MR_unmkbody(HeadVar__1_1)) {
+        default: /*NOTREACHED*/ MR_assert(0);
+        case (MR_Integer) 0:
+          {
+            *HeadVar__2_2 = (MR_String) "DuExistLocn";
+            *HeadVar__3_3 = (MR_Integer) 1;
+          }
+          break;
+        case (MR_Integer) 1:
+          {
+            *HeadVar__2_2 = (MR_String) "NotagFunctorDesc";
+            *HeadVar__3_3 = (MR_Integer) 1;
+          }
+          break;
+        case (MR_Integer) 2:
+          {
+            *HeadVar__2_2 = (MR_String) "EnumFunctorDescPtr";
+            *HeadVar__3_3 = (MR_Integer) 0;
+          }
+          break;
+        case (MR_Integer) 3:
+          {
+            *HeadVar__2_2 = (MR_String) "EnumFunctorDescPtr";
+            *HeadVar__3_3 = (MR_Integer) 0;
+          }
+          break;
+        case (MR_Integer) 4:
+          {
+            *HeadVar__2_2 = (MR_String) "ForeignEnumFunctorDescPtr";
+            *HeadVar__3_3 = (MR_Integer) 0;
+          }
+          break;
+        case (MR_Integer) 5:
+          {
+            *HeadVar__2_2 = (MR_String) "ForeignEnumFunctorDescPtr";
+            *HeadVar__3_3 = (MR_Integer) 0;
+          }
+          break;
+        case (MR_Integer) 6:
+          {
+            *HeadVar__2_2 = (MR_String) "DuFunctorDescPtr";
+            *HeadVar__3_3 = (MR_Integer) 0;
+          }
+          break;
+        case (MR_Integer) 7:
+          {
+            *HeadVar__2_2 = (MR_String) "DuPtagLayout";
+            *HeadVar__3_3 = (MR_Integer) 0;
+          }
+          break;
+        case (MR_Integer) 8:
+          {
+            *HeadVar__2_2 = (MR_String) "Integer";
+            *HeadVar__3_3 = (MR_Integer) 0;
+          }
+          break;
+        case (MR_Integer) 9:
+          {
+            *HeadVar__2_2 = (MR_String) "TypeFunctors";
+            *HeadVar__3_3 = (MR_Integer) 1;
+          }
+          break;
+        case (MR_Integer) 10:
+          {
+            *HeadVar__2_2 = (MR_String) "TypeLayout";
+            *HeadVar__3_3 = (MR_Integer) 1;
+          }
+          break;
+        case (MR_Integer) 11:
+          {
+            *HeadVar__2_2 = (MR_String) "TypeCtorInfo_Struct";
+            *HeadVar__3_3 = (MR_Integer) 1;
+          }
+          break;
+        case (MR_Integer) 12:
+          {
+            *HeadVar__2_2 = (MR_String) "TrieNodePtr";
+            *HeadVar__3_3 = (MR_Integer) 1;
+          }
+          break;
+      }
+      break;
+    case (MR_Integer) 1:
+      {
+        *HeadVar__2_2 = (MR_String) "DuExistLocn";
+        *HeadVar__3_3 = (MR_Integer) 0;
+      }
+      break;
+    case (MR_Integer) 2:
+      {
+        MR_Integer N_7 = ((MR_Integer) (MR_hl_field(MR_mktag(2), HeadVar__1_1, (MR_Integer) 2)));
+        MR_String Var_22;
+        MR_String Var_23;
+        MR_Integer Var_5 = ((MR_Integer) (MR_hl_field(MR_mktag(2), HeadVar__1_1, (MR_Integer) 0)));
+        MR_Integer Var_6 = ((MR_Integer) (MR_hl_field(MR_mktag(2), HeadVar__1_1, (MR_Integer) 1)));
+
+        Var_23 = mercury__string__int_to_string_1_f_0(N_7);
+        Var_22 = mercury__string__f_43_43_2_f_0(Var_23, (MR_String) "Struct");
+        *HeadVar__2_2 = mercury__string__f_43_43_2_f_0((MR_String) "TypeClassConstraint_", Var_22);
+        *HeadVar__3_3 = (MR_Integer) 1;
+      }
+      break;
+    case (MR_Integer) 3:
+      switch (((MR_Integer) (MR_Word) (MR_hl_field(MR_mktag(3), HeadVar__1_1, (MR_Integer) 0)))) {
+        default: /*NOTREACHED*/ MR_assert(0);
+        case (MR_Integer) 0:
+          {
+            *HeadVar__2_2 = (MR_String) "TypeClassConstraint";
+            *HeadVar__3_3 = (MR_Integer) 0;
+          }
+          break;
+        case (MR_Integer) 1:
+          {
+            *HeadVar__2_2 = (MR_String) "DuExistInfo";
+            *HeadVar__3_3 = (MR_Integer) 1;
+          }
+          break;
+        case (MR_Integer) 2:
+          {
+            *HeadVar__2_2 = (MR_String) "ConstString";
+            *HeadVar__3_3 = (MR_Integer) 0;
+          }
+          break;
+        case (MR_Integer) 3:
+          {
+            *HeadVar__2_2 = (MR_String) "PseudoTypeInfo";
+            *HeadVar__3_3 = (MR_Integer) 0;
+          }
+          break;
+        case (MR_Integer) 4:
+          {
+            *HeadVar__2_2 = (MR_String) "DuArgLocn";
+            *HeadVar__3_3 = (MR_Integer) 0;
+          }
+          break;
+        case (MR_Integer) 5:
+          {
+            *HeadVar__2_2 = (MR_String) "EnumFunctorDesc";
+            *HeadVar__3_3 = (MR_Integer) 1;
+          }
+          break;
+        case (MR_Integer) 6:
+          {
+            *HeadVar__2_2 = (MR_String) "ForeignEnumFunctorDesc";
+            *HeadVar__3_3 = (MR_Integer) 1;
+          }
+          break;
+        case (MR_Integer) 7:
+          {
+            *HeadVar__2_2 = (MR_String) "DuFunctorDesc";
+            *HeadVar__3_3 = (MR_Integer) 1;
+          }
+          break;
+        case (MR_Integer) 8:
+          {
+            *HeadVar__2_2 = (MR_String) "DuFunctorDescPtr";
+            *HeadVar__3_3 = (MR_Integer) 0;
+          }
+          break;
+        case (MR_Integer) 9:
+          {
+            *HeadVar__2_2 = (MR_String) "DuPtagLayout";
+            *HeadVar__3_3 = (MR_Integer) 1;
+          }
+          break;
+        case (MR_Integer) 10:
+          {
+            MR_Word TypeInfo_18 = ((MR_Word) (MR_hl_field(MR_mktag(3), HeadVar__1_1, (MR_Integer) 1)));
+
+            switch (MR_tag((MR_Word) TypeInfo_18)) {
+              default: /*NOTREACHED*/ MR_assert(0);
+              case (MR_Integer) 0:
+                *HeadVar__2_2 = (MR_String) "TypeCtorInfo_Struct";
+                break;
+              case (MR_Integer) 1:
+                {
+                  MR_Word ArgTypes_65 = ((MR_Word) (MR_hl_field(MR_mktag(1), TypeInfo_18, (MR_Integer) 1)));
+                  MR_Integer Var_69;
+                  MR_String Var_88;
+                  MR_Word Var_64 = ((MR_Word) (MR_hl_field(MR_mktag(1), TypeInfo_18, (MR_Integer) 0)));
+
+                  Var_69 = mercury__list__length_1_f_0((MR_Word) &backend_libs__rtti__backend_libs__rtti__type_ctor_info_rtti_type_info_0, ArgTypes_65);
+                  mercury__string__format__format_signed_int_component_nowidth_noprec_3_p_0((MR_Word) &backend_libs__rtti_scalar_common_4[0], Var_69, &Var_88);
+                  *HeadVar__2_2 = mercury__string__f_43_43_2_f_0((MR_String) "FA_TypeInfo_Struct", Var_88);
+                }
+                break;
+              case (MR_Integer) 2:
+                {
+                  MR_Word ArgTypes_72 = ((MR_Word) (MR_hl_field(MR_mktag(2), TypeInfo_18, (MR_Integer) 1)));
+                  MR_Integer Var_76;
+                  MR_String Var_80;
+                  MR_Word Var_71 = ((MR_Word) (MR_hl_field(MR_mktag(2), TypeInfo_18, (MR_Integer) 0)));
+
+                  Var_76 = mercury__list__length_1_f_0((MR_Word) &backend_libs__rtti__backend_libs__rtti__type_ctor_info_rtti_type_info_0, ArgTypes_72);
+                  mercury__string__format__format_signed_int_component_nowidth_noprec_3_p_0((MR_Word) &backend_libs__rtti_scalar_common_4[0], Var_76, &Var_80);
+                  *HeadVar__2_2 = mercury__string__f_43_43_2_f_0((MR_String) "VA_TypeInfo_Struct", Var_80);
+                }
+                break;
+            }
+            *HeadVar__3_3 = (MR_Integer) 1;
+          }
+          break;
+        case (MR_Integer) 11:
+          {
+            MR_Word PseudoTypeInfo_19 = ((MR_Word) (MR_hl_field(MR_mktag(3), HeadVar__1_1, (MR_Integer) 1)));
+
+            switch (MR_tag((MR_Word) PseudoTypeInfo_19)) {
+              default: /*NOTREACHED*/ MR_assert(0);
+              case (MR_Integer) 0:
+                *HeadVar__2_2 = (MR_String) "TypeCtorInfo_Struct";
+                break;
+              case (MR_Integer) 1:
+                {
+                  MR_Word ArgTypes_27 = ((MR_Word) (MR_hl_field(MR_mktag(1), PseudoTypeInfo_19, (MR_Integer) 1)));
+                  MR_Integer Var_31;
+                  MR_String Var_55;
+                  MR_Word _TypeCtor_26 = ((MR_Word) (MR_hl_field(MR_mktag(1), PseudoTypeInfo_19, (MR_Integer) 0)));
+
+                  Var_31 = mercury__list__length_1_f_0((MR_Word) &backend_libs__rtti__backend_libs__rtti__type_ctor_info_rtti_maybe_pseudo_type_info_0, ArgTypes_27);
+                  mercury__string__format__format_signed_int_component_nowidth_noprec_3_p_0((MR_Word) &backend_libs__rtti_scalar_common_4[0], Var_31, &Var_55);
+                  *HeadVar__2_2 = mercury__string__f_43_43_2_f_0((MR_String) "FA_PseudoTypeInfo_Struct", Var_55);
+                }
+                break;
+              case (MR_Integer) 2:
+                {
+                  MR_Word ArgTypes_34 = ((MR_Word) (MR_hl_field(MR_mktag(2), PseudoTypeInfo_19, (MR_Integer) 1)));
+                  MR_Integer Var_38;
+                  MR_String Var_47;
+                  MR_Word _TypeCtor_33 = ((MR_Word) (MR_hl_field(MR_mktag(2), PseudoTypeInfo_19, (MR_Integer) 0)));
+
+                  Var_38 = mercury__list__length_1_f_0((MR_Word) &backend_libs__rtti__backend_libs__rtti__type_ctor_info_rtti_maybe_pseudo_type_info_0, ArgTypes_34);
+                  mercury__string__format__format_signed_int_component_nowidth_noprec_3_p_0((MR_Word) &backend_libs__rtti_scalar_common_4[0], Var_38, &Var_47);
+                  *HeadVar__2_2 = mercury__string__f_43_43_2_f_0((MR_String) "VA_PseudoTypeInfo_Struct", Var_47);
+                }
+                break;
+              case (MR_Integer) 3:
+                {
+                  {
+                    mercury__require__unexpected_3_p_0((MR_String) "backend_libs.rtti", (MR_String) "function \140backend_libs.rtti.pseudo_type_info_name_type\'/1", (MR_String) "type_var");
+                    return;
+                  }
+                }
+                break;
+            }
+            *HeadVar__3_3 = (MR_Integer) 1;
+          }
+          break;
+      }
+      break;
+  }
+}
+
+void MR_CALL 
+backend_libs__rtti__rtti_data_to_id_2_p_0(
+  MR_Word RttiData_3,
+  MR_Word * RttiId_4)
+{
+  switch (MR_tag((MR_Word) RttiData_3)) {
+    default: /*NOTREACHED*/ MR_assert(0);
+    case (MR_Integer) 0:
+      {
+        MR_Word TypeCtorData_5 = (MR_Word) MR_body(((MR_Word) RttiData_3), (MR_Integer) 0);
+        MR_Word RttiTypeCtor_6;
+        MR_Word ModuleName_46 = ((MR_Word) (MR_hl_field(MR_mktag(0), TypeCtorData_5, (MR_Integer) 1)));
+        MR_String TypeName_47 = ((MR_String) (MR_hl_field(MR_mktag(0), TypeCtorData_5, (MR_Integer) 2)));
+        MR_Integer Arity_48 = ((MR_Integer) (MR_hl_field(MR_mktag(0), TypeCtorData_5, (MR_Integer) 3)));
+        MR_Integer Var_49 = ((MR_Integer) (MR_hl_field(MR_mktag(0), TypeCtorData_5, (MR_Integer) 0)));
+        MR_Word Var_52 = ((MR_Word) (MR_hl_field(MR_mktag(0), TypeCtorData_5, (MR_Integer) 4)));
+        MR_Word Var_53 = ((MR_Word) (MR_hl_field(MR_mktag(0), TypeCtorData_5, (MR_Integer) 5)));
+        MR_Word Var_54 = ((MR_Word) (MR_hl_field(MR_mktag(0), TypeCtorData_5, (MR_Integer) 6)));
+        MR_Word Var_55 = ((MR_Word) (MR_hl_field(MR_mktag(0), TypeCtorData_5, (MR_Integer) 7)));
+
+        {
+          RttiTypeCtor_6 = (MR_Word) MR_new_object(MR_Word, ((MR_Integer) 3 * sizeof(MR_Word)), NULL, NULL);
+          MR_hl_field(MR_mktag(0), RttiTypeCtor_6, 0) = ((MR_Box) (ModuleName_46));
+          MR_hl_field(MR_mktag(0), RttiTypeCtor_6, 1) = ((MR_Box) (TypeName_47));
+          MR_hl_field(MR_mktag(0), RttiTypeCtor_6, 2) = ((MR_Box) (Arity_48));
+        }
+        {
+          MR_Word base;
+          base = (MR_Word) MR_new_object(MR_Word, ((MR_Integer) 2 * sizeof(MR_Word)), NULL, NULL);
+          *RttiId_4 = base;
+          MR_hl_field(MR_mktag(0), base, 0) = ((MR_Box) (RttiTypeCtor_6));
+          MR_hl_field(MR_mktag(0), base, 1) = ((MR_Box) (MR_mkword(MR_mktag(0), MR_mkbody((MR_Integer) 11))));
+        }
+      }
+      break;
+    case (MR_Integer) 1:
+      {
+        MR_Word Var_24 = (MR_Word) MR_body(((MR_Word) RttiData_3), (MR_Integer) 1);
+        MR_Word TCName_31;
+        MR_Word TCId_32 = ((MR_Word) (MR_hl_field(MR_mktag(0), Var_24, (MR_Integer) 0)));
+        MR_Integer Var_14 = ((MR_Integer) (MR_hl_field(MR_mktag(0), Var_24, (MR_Integer) 1)));
+        MR_Word Var_15 = ((MR_Word) (MR_hl_field(MR_mktag(0), Var_24, (MR_Integer) 2)));
+        MR_Word Var_16;
+        MR_Word Var_17;
+
+        TCName_31 = ((MR_Word) (MR_hl_field(MR_mktag(0), TCId_32, (MR_Integer) 0)));
+        Var_16 = ((MR_Word) (MR_hl_field(MR_mktag(0), TCId_32, (MR_Integer) 1)));
+        Var_17 = ((MR_Word) (MR_hl_field(MR_mktag(0), TCId_32, (MR_Integer) 2)));
+        {
+          MR_Word base;
+          base = (MR_Word) MR_mkword(MR_mktag(1), MR_new_object(MR_Word, ((MR_Integer) 2 * sizeof(MR_Word)), NULL, NULL));
+          *RttiId_4 = base;
+          MR_hl_field(MR_mktag(1), base, 0) = ((MR_Box) (TCName_31));
+          MR_hl_field(MR_mktag(1), base, 1) = ((MR_Box) (MR_mkword(MR_mktag(0), MR_mkbody((MR_Integer) 3))));
+        }
+      }
+      break;
+    case (MR_Integer) 2:
+      {
+        MR_Word TCTypes_18;
+        MR_Word Var_22 = (MR_Word) MR_body(((MR_Word) RttiData_3), (MR_Integer) 2);
+        MR_Word Var_23;
+        MR_Word TCName_33 = ((MR_Word) (MR_hl_field(MR_mktag(0), Var_22, (MR_Integer) 0)));
+        MR_Integer Var_19;
+        MR_Word Var_20;
+        MR_Word Var_21;
+
+        TCTypes_18 = ((MR_Word) (MR_hl_field(MR_mktag(0), Var_22, (MR_Integer) 1)));
+        Var_19 = ((MR_Integer) (MR_hl_field(MR_mktag(0), Var_22, (MR_Integer) 2)));
+        Var_20 = ((MR_Word) (MR_hl_field(MR_mktag(0), Var_22, (MR_Integer) 3)));
+        Var_21 = ((MR_Word) (MR_hl_field(MR_mktag(0), Var_22, (MR_Integer) 4)));
+        {
+          Var_23 = (MR_Word) MR_mkword(MR_mktag(3), MR_new_object(MR_Word, ((MR_Integer) 2 * sizeof(MR_Word)), NULL, NULL));
+          MR_hl_field(MR_mktag(3), Var_23, 0) = ((MR_Box) (MR_Word) ((MR_Integer) 0));
+          MR_hl_field(MR_mktag(3), Var_23, 1) = ((MR_Box) (TCTypes_18));
+        }
+        {
+          MR_Word base;
+          base = (MR_Word) MR_mkword(MR_mktag(1), MR_new_object(MR_Word, ((MR_Integer) 2 * sizeof(MR_Word)), NULL, NULL));
+          *RttiId_4 = base;
+          MR_hl_field(MR_mktag(1), base, 0) = ((MR_Box) (TCName_33));
+          MR_hl_field(MR_mktag(1), base, 1) = ((MR_Box) (Var_23));
+        }
+      }
+      break;
+    case (MR_Integer) 3:
+      switch (((MR_Integer) (MR_Word) (MR_hl_field(MR_mktag(3), RttiData_3, (MR_Integer) 0)))) {
+        default: /*NOTREACHED*/ MR_assert(0);
+        case (MR_Integer) 0:
+          {
+            MR_Word TypeInfo_7 = ((MR_Word) (MR_hl_field(MR_mktag(3), RttiData_3, (MR_Integer) 1)));
+            MR_Word Var_27;
+            MR_Word RttiTypeCtor_29;
+
+            switch (MR_tag((MR_Word) TypeInfo_7)) {
+              default: /*NOTREACHED*/ MR_assert(0);
+              case (MR_Integer) 0:
+                RttiTypeCtor_29 = (MR_Word) MR_body(((MR_Word) TypeInfo_7), (MR_Integer) 0);
+                break;
+              case (MR_Integer) 1:
+                {
+                  MR_Word Var_72;
+
+                  RttiTypeCtor_29 = ((MR_Word) (MR_hl_field(MR_mktag(1), TypeInfo_7, (MR_Integer) 0)));
+                  Var_72 = ((MR_Word) (MR_hl_field(MR_mktag(1), TypeInfo_7, (MR_Integer) 1)));
+                }
+                break;
+              case (MR_Integer) 2:
+                {
+                  MR_Word RttiVarArityId_73 = ((MR_Word) (MR_hl_field(MR_mktag(2), TypeInfo_7, (MR_Integer) 0)));
+                  MR_Word Var_74 = ((MR_Word) (MR_hl_field(MR_mktag(2), TypeInfo_7, (MR_Integer) 1)));
+
+                  RttiTypeCtor_29 = backend_libs__rtti__var_arity_id_to_rtti_type_ctor_1_f_0(RttiVarArityId_73);
+                }
+                break;
+            }
+            {
+              Var_27 = (MR_Word) MR_mkword(MR_mktag(3), MR_new_object(MR_Word, ((MR_Integer) 2 * sizeof(MR_Word)), NULL, NULL));
+              MR_hl_field(MR_mktag(3), Var_27, 0) = ((MR_Box) (MR_Word) ((MR_Integer) 10));
+              MR_hl_field(MR_mktag(3), Var_27, 1) = ((MR_Box) (TypeInfo_7));
+            }
+            {
+              MR_Word base;
+              base = (MR_Word) MR_new_object(MR_Word, ((MR_Integer) 2 * sizeof(MR_Word)), NULL, NULL);
+              *RttiId_4 = base;
+              MR_hl_field(MR_mktag(0), base, 0) = ((MR_Box) (RttiTypeCtor_29));
+              MR_hl_field(MR_mktag(0), base, 1) = ((MR_Box) (Var_27));
+            }
+          }
+          break;
+        case (MR_Integer) 1:
+          {
+            MR_Word PseudoTypeInfo_8 = ((MR_Word) (MR_hl_field(MR_mktag(3), RttiData_3, (MR_Integer) 1)));
+            MR_Word Var_26;
+            MR_Word RttiTypeCtor_30;
+
+            switch (MR_tag((MR_Word) PseudoTypeInfo_8)) {
+              default: /*NOTREACHED*/ MR_assert(0);
+              case (MR_Integer) 0:
+                RttiTypeCtor_30 = (MR_Word) MR_body(((MR_Word) PseudoTypeInfo_8), (MR_Integer) 0);
+                break;
+              case (MR_Integer) 1:
+                {
+                  MR_Word Var_36;
+
+                  RttiTypeCtor_30 = ((MR_Word) (MR_hl_field(MR_mktag(1), PseudoTypeInfo_8, (MR_Integer) 0)));
+                  Var_36 = ((MR_Word) (MR_hl_field(MR_mktag(1), PseudoTypeInfo_8, (MR_Integer) 1)));
+                }
+                break;
+              case (MR_Integer) 2:
+                {
+                  MR_Word RttiVarArityId_37 = ((MR_Word) (MR_hl_field(MR_mktag(2), PseudoTypeInfo_8, (MR_Integer) 0)));
+                  MR_Word Var_38 = ((MR_Word) (MR_hl_field(MR_mktag(2), PseudoTypeInfo_8, (MR_Integer) 1)));
+
+                  RttiTypeCtor_30 = backend_libs__rtti__var_arity_id_to_rtti_type_ctor_1_f_0(RttiVarArityId_37);
+                }
+                break;
+              case (MR_Integer) 3:
+                {
+                  {
+                    mercury__require__unexpected_3_p_0((MR_String) "backend_libs.rtti", (MR_String) "function \140backend_libs.rtti.pti_get_rtti_type_ctor\'/1", (MR_String) "type_var");
+                    return;
+                  }
+                }
+                break;
+            }
+            {
+              Var_26 = (MR_Word) MR_mkword(MR_mktag(3), MR_new_object(MR_Word, ((MR_Integer) 2 * sizeof(MR_Word)), NULL, NULL));
+              MR_hl_field(MR_mktag(3), Var_26, 0) = ((MR_Box) (MR_Word) ((MR_Integer) 11));
+              MR_hl_field(MR_mktag(3), Var_26, 1) = ((MR_Box) (PseudoTypeInfo_8));
+            }
+            {
+              MR_Word base;
+              base = (MR_Word) MR_new_object(MR_Word, ((MR_Integer) 2 * sizeof(MR_Word)), NULL, NULL);
+              *RttiId_4 = base;
+              MR_hl_field(MR_mktag(0), base, 0) = ((MR_Box) (RttiTypeCtor_30));
+              MR_hl_field(MR_mktag(0), base, 1) = ((MR_Box) (Var_26));
+            }
+          }
+          break;
+        case (MR_Integer) 2:
+          {
+            MR_Word TCName_9 = ((MR_Word) (MR_hl_field(MR_mktag(3), RttiData_3, (MR_Integer) 1)));
+            MR_Word Module_10 = ((MR_Word) (MR_hl_field(MR_mktag(3), RttiData_3, (MR_Integer) 2)));
+            MR_String Instance_11 = ((MR_String) (MR_hl_field(MR_mktag(3), RttiData_3, (MR_Integer) 3)));
+            MR_Word TCId_13;
+            MR_Word Var_12 = ((MR_Word) (MR_hl_field(MR_mktag(3), RttiData_3, (MR_Integer) 4)));
+
+            {
+              TCId_13 = (MR_Word) MR_mkword(MR_mktag(1), MR_new_object(MR_Word, ((MR_Integer) 2 * sizeof(MR_Word)), NULL, NULL));
+              MR_hl_field(MR_mktag(1), TCId_13, 0) = ((MR_Box) (Module_10));
+              MR_hl_field(MR_mktag(1), TCId_13, 1) = ((MR_Box) (Instance_11));
+            }
+            {
+              MR_Word base;
+              base = (MR_Word) MR_mkword(MR_mktag(1), MR_new_object(MR_Word, ((MR_Integer) 2 * sizeof(MR_Word)), NULL, NULL));
+              *RttiId_4 = base;
+              MR_hl_field(MR_mktag(1), base, 0) = ((MR_Box) (TCName_9));
+              MR_hl_field(MR_mktag(1), base, 1) = ((MR_Box) (TCId_13));
+            }
+          }
+          break;
+      }
+      break;
+  }
+}
+
+MR_Word MR_CALL 
+backend_libs__rtti__var_arity_id_to_rtti_type_ctor_1_f_0(
+  MR_Word HeadVar__1_1)
+{
+  {
+    MR_Word Ctor_2;
+
+    switch (HeadVar__1_1) {
+      default: /*NOTREACHED*/ MR_assert(0);
+      case (MR_Integer) 1:
+        {
+          MR_Word Builtin_8;
+
+          Builtin_8 = mdbcomp__builtin_modules__mercury_public_builtin_module_0_f_0();
+          {
+            Ctor_2 = (MR_Word) MR_new_object(MR_Word, ((MR_Integer) 3 * sizeof(MR_Word)), NULL, NULL);
+            MR_hl_field(MR_mktag(0), Ctor_2, 0) = ((MR_Box) (Builtin_8));
+            MR_hl_field(MR_mktag(0), Ctor_2, 1) = ((MR_Box) ((MR_String) "func"));
+            MR_hl_field(MR_mktag(0), Ctor_2, 2) = ((MR_Box) ((MR_Integer) 0));
+          }
+        }
+        break;
+      case (MR_Integer) 0:
+        {
+          MR_Word Builtin_4;
+
+          Builtin_4 = mdbcomp__builtin_modules__mercury_public_builtin_module_0_f_0();
+          {
+            Ctor_2 = (MR_Word) MR_new_object(MR_Word, ((MR_Integer) 3 * sizeof(MR_Word)), NULL, NULL);
+            MR_hl_field(MR_mktag(0), Ctor_2, 0) = ((MR_Box) (Builtin_4));
+            MR_hl_field(MR_mktag(0), Ctor_2, 1) = ((MR_Box) ((MR_String) "pred"));
+            MR_hl_field(MR_mktag(0), Ctor_2, 2) = ((MR_Box) ((MR_Integer) 0));
+          }
+        }
+        break;
+      case (MR_Integer) 2:
+        {
+          MR_Word Builtin_12;
+
+          Builtin_12 = mdbcomp__builtin_modules__mercury_public_builtin_module_0_f_0();
+          {
+            Ctor_2 = (MR_Word) MR_new_object(MR_Word, ((MR_Integer) 3 * sizeof(MR_Word)), NULL, NULL);
+            MR_hl_field(MR_mktag(0), Ctor_2, 0) = ((MR_Box) (Builtin_12));
+            MR_hl_field(MR_mktag(0), Ctor_2, 1) = ((MR_Box) ((MR_String) "tuple"));
+            MR_hl_field(MR_mktag(0), Ctor_2, 2) = ((MR_Box) ((MR_Integer) 0));
+          }
+        }
+        break;
+    }
+    return Ctor_2;
+  }
+}
+
+MR_Word MR_CALL 
+backend_libs__rtti__tcd_get_rtti_type_ctor_1_f_0(
+  MR_Word TypeCtorData_3)
+{
+  {
+    MR_Word RttiTypeCtor_4;
+    MR_Word ModuleName_5 = ((MR_Word) (MR_hl_field(MR_mktag(0), TypeCtorData_3, (MR_Integer) 1)));
+    MR_String TypeName_6 = ((MR_String) (MR_hl_field(MR_mktag(0), TypeCtorData_3, (MR_Integer) 2)));
+    MR_Integer Arity_7 = ((MR_Integer) (MR_hl_field(MR_mktag(0), TypeCtorData_3, (MR_Integer) 3)));
+    MR_Integer Var_8 = ((MR_Integer) (MR_hl_field(MR_mktag(0), TypeCtorData_3, (MR_Integer) 0)));
+    MR_Word Var_11 = ((MR_Word) (MR_hl_field(MR_mktag(0), TypeCtorData_3, (MR_Integer) 4)));
+    MR_Word Var_12 = ((MR_Word) (MR_hl_field(MR_mktag(0), TypeCtorData_3, (MR_Integer) 5)));
+    MR_Word Var_13 = ((MR_Word) (MR_hl_field(MR_mktag(0), TypeCtorData_3, (MR_Integer) 6)));
+    MR_Word Var_14 = ((MR_Word) (MR_hl_field(MR_mktag(0), TypeCtorData_3, (MR_Integer) 7)));
+
+    {
+      RttiTypeCtor_4 = (MR_Word) MR_new_object(MR_Word, ((MR_Integer) 3 * sizeof(MR_Word)), NULL, NULL);
+      MR_hl_field(MR_mktag(0), RttiTypeCtor_4, 0) = ((MR_Box) (ModuleName_5));
+      MR_hl_field(MR_mktag(0), RttiTypeCtor_4, 1) = ((MR_Box) (TypeName_6));
+      MR_hl_field(MR_mktag(0), RttiTypeCtor_4, 2) = ((MR_Box) (Arity_7));
+    }
+    return RttiTypeCtor_4;
+  }
+}
+
+static void MR_CALL 
+backend_libs__rtti__encode_type_ctor_flags_1_f_0_1(
+  MR_Box closure_arg,
+  MR_Box wrapper_arg_1,
+  MR_Box wrapper_arg_2,
+  MR_Box * wrapper_arg_3)
+{
+  {
+    MR_Box closure = closure_arg;
+    MR_Integer conv0_STATE_VARIABLE_Encoding_3;
+
+    backend_libs__rtti__encode_type_ctor_flag_3_p_0(((MR_Word) wrapper_arg_1), ((MR_Integer) wrapper_arg_2), &conv0_STATE_VARIABLE_Encoding_3);
+    *wrapper_arg_3 = ((MR_Box) (conv0_STATE_VARIABLE_Encoding_3));
+  }
+}
+
+MR_Integer MR_CALL 
+backend_libs__rtti__encode_type_ctor_flags_1_f_0(
+  MR_Word FlagSet_3)
+{
+  {
+    MR_Integer Encoding_4;
+    MR_Word TypeCtorInfo_8_8 = (MR_Word) &backend_libs__rtti__backend_libs__rtti__type_ctor_info_type_ctor_flag_0;
+    MR_Word FlagList_5;
+    MR_Box conv1_Encoding_4;
+
+    mercury__set__to_sorted_list_2_p_0(TypeCtorInfo_8_8, FlagSet_3, &FlagList_5);
+    mercury__list__foldl_4_p_0(TypeCtorInfo_8_8, (MR_Word) &mercury__builtin__builtin__type_ctor_info_int_0, (MR_Word) &backend_libs__rtti_scalar_common_2[7], FlagList_5, ((MR_Box) ((MR_Integer) 0)), &conv1_Encoding_4);
+    Encoding_4 = ((MR_Integer) conv1_Encoding_4);
+    return Encoding_4;
+  }
+}
+
+static MR_bool MR_CALL 
+backend_libs__rtti____Unify____base_typeclass_info_0_0_10001(
+  MR_Box wrapper_arg_1,
+  MR_Box wrapper_arg_2)
+{
+  {
+    MR_bool succeeded;
+
+    succeeded = backend_libs__rtti____Unify____base_typeclass_info_0_0(((MR_Word) wrapper_arg_1), ((MR_Word) wrapper_arg_2));
+    return succeeded;
+  }
+}
+
+static void MR_CALL 
+backend_libs__rtti____Compare____base_typeclass_info_0_0_10001(
+  MR_Box * wrapper_arg_1,
+  MR_Box wrapper_arg_2,
+  MR_Box wrapper_arg_3)
+{
+  {
+    MR_Word conv0_HeadVar__1_1;
+
+    backend_libs__rtti____Compare____base_typeclass_info_0_0(&conv0_HeadVar__1_1, ((MR_Word) wrapper_arg_2), ((MR_Word) wrapper_arg_3));
+    *wrapper_arg_1 = ((MR_Box) (conv0_HeadVar__1_1));
+  }
+}
+
+static MR_bool MR_CALL 
+backend_libs__rtti____Unify____builtin_ctor_0_0_10001(
+  MR_Box wrapper_arg_1,
+  MR_Box wrapper_arg_2)
+{
+  {
+    MR_bool succeeded;
+
+    succeeded = backend_libs__rtti____Unify____builtin_ctor_0_0(((MR_Word) wrapper_arg_1), ((MR_Word) wrapper_arg_2));
+    return succeeded;
+  }
+}
+
+static void MR_CALL 
+backend_libs__rtti____Compare____builtin_ctor_0_0_10001(
+  MR_Box * wrapper_arg_1,
+  MR_Box wrapper_arg_2,
+  MR_Box wrapper_arg_3)
+{
+  {
+    MR_Word conv0_HeadVar__1_1;
+
+    backend_libs__rtti____Compare____builtin_ctor_0_0(&conv0_HeadVar__1_1, ((MR_Word) wrapper_arg_2), ((MR_Word) wrapper_arg_3));
+    *wrapper_arg_1 = ((MR_Box) (conv0_HeadVar__1_1));
+  }
+}
+
+static MR_bool MR_CALL 
+backend_libs__rtti____Unify____call_or_answer_table_0_0_10001(
+  MR_Box wrapper_arg_1,
+  MR_Box wrapper_arg_2)
+{
+  {
+    MR_bool succeeded;
+
+    succeeded = backend_libs__rtti____Unify____call_or_answer_table_0_0(((MR_Word) wrapper_arg_1), ((MR_Word) wrapper_arg_2));
+    return succeeded;
+  }
+}
+
+static void MR_CALL 
+backend_libs__rtti____Compare____call_or_answer_table_0_0_10001(
+  MR_Box * wrapper_arg_1,
+  MR_Box wrapper_arg_2,
+  MR_Box wrapper_arg_3)
+{
+  {
+    MR_Word conv0_HeadVar__1_1;
+
+    backend_libs__rtti____Compare____call_or_answer_table_0_0(&conv0_HeadVar__1_1, ((MR_Word) wrapper_arg_2), ((MR_Word) wrapper_arg_3));
+    *wrapper_arg_1 = ((MR_Box) (conv0_HeadVar__1_1));
+  }
+}
+
+static MR_bool MR_CALL 
+backend_libs__rtti____Unify____ctor_rtti_name_0_0_10001(
+  MR_Box wrapper_arg_1,
+  MR_Box wrapper_arg_2)
+{
+  {
+    MR_bool succeeded;
+
+    succeeded = backend_libs__rtti____Unify____ctor_rtti_name_0_0(((MR_Word) wrapper_arg_1), ((MR_Word) wrapper_arg_2));
+    return succeeded;
+  }
+}
+
+static void MR_CALL 
+backend_libs__rtti____Compare____ctor_rtti_name_0_0_10001(
+  MR_Box * wrapper_arg_1,
+  MR_Box wrapper_arg_2,
+  MR_Box wrapper_arg_3)
+{
+  {
+    MR_Word conv0_HeadVar__1_1;
+
+    backend_libs__rtti____Compare____ctor_rtti_name_0_0(&conv0_HeadVar__1_1, ((MR_Word) wrapper_arg_2), ((MR_Word) wrapper_arg_3));
+    *wrapper_arg_1 = ((MR_Box) (conv0_HeadVar__1_1));
+  }
+}
+
+static MR_bool MR_CALL 
+backend_libs__rtti____Unify____curr_or_prev_table_0_0_10001(
+  MR_Box wrapper_arg_1,
+  MR_Box wrapper_arg_2)
+{
+  {
+    MR_bool succeeded;
+
+    succeeded = backend_libs__rtti____Unify____curr_or_prev_table_0_0(((MR_Word) wrapper_arg_1), ((MR_Word) wrapper_arg_2));
+    return succeeded;
+  }
+}
+
+static void MR_CALL 
+backend_libs__rtti____Compare____curr_or_prev_table_0_0_10001(
+  MR_Box * wrapper_arg_1,
+  MR_Box wrapper_arg_2,
+  MR_Box wrapper_arg_3)
+{
+  {
+    MR_Word conv0_HeadVar__1_1;
+
+    backend_libs__rtti____Compare____curr_or_prev_table_0_0(&conv0_HeadVar__1_1, ((MR_Word) wrapper_arg_2), ((MR_Word) wrapper_arg_3));
+    *wrapper_arg_1 = ((MR_Box) (conv0_HeadVar__1_1));
+  }
+}
+
+static MR_bool MR_CALL 
+backend_libs__rtti____Unify____du_arg_info_0_0_10001(
+  MR_Box wrapper_arg_1,
+  MR_Box wrapper_arg_2)
+{
+  {
+    MR_bool succeeded;
+
+    succeeded = backend_libs__rtti____Unify____du_arg_info_0_0(((MR_Word) wrapper_arg_1), ((MR_Word) wrapper_arg_2));
+    return succeeded;
+  }
+}
+
+static void MR_CALL 
+backend_libs__rtti____Compare____du_arg_info_0_0_10001(
+  MR_Box * wrapper_arg_1,
+  MR_Box wrapper_arg_2,
+  MR_Box wrapper_arg_3)
+{
+  {
+    MR_Word conv0_HeadVar__1_1;
+
+    backend_libs__rtti____Compare____du_arg_info_0_0(&conv0_HeadVar__1_1, ((MR_Word) wrapper_arg_2), ((MR_Word) wrapper_arg_3));
+    *wrapper_arg_1 = ((MR_Box) (conv0_HeadVar__1_1));
+  }
+}
+
+static MR_bool MR_CALL 
+backend_libs__rtti____Unify____du_functor_0_0_10001(
+  MR_Box wrapper_arg_1,
+  MR_Box wrapper_arg_2)
+{
+  {
+    MR_bool succeeded;
+
+    succeeded = backend_libs__rtti____Unify____du_functor_0_0(((MR_Word) wrapper_arg_1), ((MR_Word) wrapper_arg_2));
+    return succeeded;
+  }
+}
+
+static void MR_CALL 
+backend_libs__rtti____Compare____du_functor_0_0_10001(
+  MR_Box * wrapper_arg_1,
+  MR_Box wrapper_arg_2,
+  MR_Box wrapper_arg_3)
+{
+  {
+    MR_Word conv0_HeadVar__1_1;
+
+    backend_libs__rtti____Compare____du_functor_0_0(&conv0_HeadVar__1_1, ((MR_Word) wrapper_arg_2), ((MR_Word) wrapper_arg_3));
+    *wrapper_arg_1 = ((MR_Box) (conv0_HeadVar__1_1));
+  }
+}
+
+static MR_bool MR_CALL 
+backend_libs__rtti____Unify____du_rep_0_0_10001(
+  MR_Box wrapper_arg_1,
+  MR_Box wrapper_arg_2)
+{
+  {
+    MR_bool succeeded;
+
+    succeeded = backend_libs__rtti____Unify____du_rep_0_0(((MR_Word) wrapper_arg_1), ((MR_Word) wrapper_arg_2));
+    return succeeded;
+  }
+}
+
+static void MR_CALL 
+backend_libs__rtti____Compare____du_rep_0_0_10001(
+  MR_Box * wrapper_arg_1,
+  MR_Box wrapper_arg_2,
+  MR_Box wrapper_arg_3)
+{
+  {
+    MR_Word conv0_HeadVar__1_1;
+
+    backend_libs__rtti____Compare____du_rep_0_0(&conv0_HeadVar__1_1, ((MR_Word) wrapper_arg_2), ((MR_Word) wrapper_arg_3));
+    *wrapper_arg_1 = ((MR_Box) (conv0_HeadVar__1_1));
+  }
+}
+
+static MR_bool MR_CALL 
+backend_libs__rtti____Unify____enum_functor_0_0_10001(
+  MR_Box wrapper_arg_1,
+  MR_Box wrapper_arg_2)
+{
+  {
+    MR_bool succeeded;
+
+    succeeded = backend_libs__rtti____Unify____enum_functor_0_0(((MR_Word) wrapper_arg_1), ((MR_Word) wrapper_arg_2));
+    return succeeded;
+  }
+}
+
+static void MR_CALL 
+backend_libs__rtti____Compare____enum_functor_0_0_10001(
+  MR_Box * wrapper_arg_1,
+  MR_Box wrapper_arg_2,
+  MR_Box wrapper_arg_3)
+{
+  {
+    MR_Word conv0_HeadVar__1_1;
+
+    backend_libs__rtti____Compare____enum_functor_0_0(&conv0_HeadVar__1_1, ((MR_Word) wrapper_arg_2), ((MR_Word) wrapper_arg_3));
+    *wrapper_arg_1 = ((MR_Box) (conv0_HeadVar__1_1));
+  }
+}
+
+static MR_bool MR_CALL 
+backend_libs__rtti____Unify____equality_axioms_0_0_10001(
+  MR_Box wrapper_arg_1,
+  MR_Box wrapper_arg_2)
+{
+  {
+    MR_bool succeeded;
+
+    succeeded = backend_libs__rtti____Unify____equality_axioms_0_0(((MR_Word) wrapper_arg_1), ((MR_Word) wrapper_arg_2));
+    return succeeded;
+  }
+}
+
+static void MR_CALL 
+backend_libs__rtti____Compare____equality_axioms_0_0_10001(
+  MR_Box * wrapper_arg_1,
+  MR_Box wrapper_arg_2,
+  MR_Box wrapper_arg_3)
+{
+  {
+    MR_Word conv0_HeadVar__1_1;
+
+    backend_libs__rtti____Compare____equality_axioms_0_0(&conv0_HeadVar__1_1, ((MR_Word) wrapper_arg_2), ((MR_Word) wrapper_arg_3));
+    *wrapper_arg_1 = ((MR_Box) (conv0_HeadVar__1_1));
+  }
+}
+
+static MR_bool MR_CALL 
+backend_libs__rtti____Unify____exist_info_0_0_10001(
+  MR_Box wrapper_arg_1,
+  MR_Box wrapper_arg_2)
+{
+  {
+    MR_bool succeeded;
+
+    succeeded = backend_libs__rtti____Unify____exist_info_0_0(((MR_Word) wrapper_arg_1), ((MR_Word) wrapper_arg_2));
+    return succeeded;
+  }
+}
+
+static void MR_CALL 
+backend_libs__rtti____Compare____exist_info_0_0_10001(
+  MR_Box * wrapper_arg_1,
+  MR_Box wrapper_arg_2,
+  MR_Box wrapper_arg_3)
+{
+  {
+    MR_Word conv0_HeadVar__1_1;
+
+    backend_libs__rtti____Compare____exist_info_0_0(&conv0_HeadVar__1_1, ((MR_Word) wrapper_arg_2), ((MR_Word) wrapper_arg_3));
+    *wrapper_arg_1 = ((MR_Box) (conv0_HeadVar__1_1));
+  }
+}
+
+static MR_bool MR_CALL 
+backend_libs__rtti____Unify____exist_typeinfo_locn_0_0_10001(
+  MR_Box wrapper_arg_1,
+  MR_Box wrapper_arg_2)
+{
+  {
+    MR_bool succeeded;
+
+    succeeded = backend_libs__rtti____Unify____exist_typeinfo_locn_0_0(((MR_Word) wrapper_arg_1), ((MR_Word) wrapper_arg_2));
+    return succeeded;
+  }
+}
+
+static void MR_CALL 
+backend_libs__rtti____Compare____exist_typeinfo_locn_0_0_10001(
+  MR_Box * wrapper_arg_1,
+  MR_Box wrapper_arg_2,
+  MR_Box wrapper_arg_3)
+{
+  {
+    MR_Word conv0_HeadVar__1_1;
+
+    backend_libs__rtti____Compare____exist_typeinfo_locn_0_0(&conv0_HeadVar__1_1, ((MR_Word) wrapper_arg_2), ((MR_Word) wrapper_arg_3));
+    *wrapper_arg_1 = ((MR_Box) (conv0_HeadVar__1_1));
+  }
+}
+
+static MR_bool MR_CALL 
+backend_libs__rtti____Unify____foreign_enum_functor_0_0_10001(
+  MR_Box wrapper_arg_1,
+  MR_Box wrapper_arg_2)
+{
+  {
+    MR_bool succeeded;
+
+    succeeded = backend_libs__rtti____Unify____foreign_enum_functor_0_0(((MR_Word) wrapper_arg_1), ((MR_Word) wrapper_arg_2));
+    return succeeded;
+  }
+}
+
+static void MR_CALL 
+backend_libs__rtti____Compare____foreign_enum_functor_0_0_10001(
+  MR_Box * wrapper_arg_1,
+  MR_Box wrapper_arg_2,
+  MR_Box wrapper_arg_3)
+{
+  {
+    MR_Word conv0_HeadVar__1_1;
+
+    backend_libs__rtti____Compare____foreign_enum_functor_0_0(&conv0_HeadVar__1_1, ((MR_Word) wrapper_arg_2), ((MR_Word) wrapper_arg_3));
+    *wrapper_arg_1 = ((MR_Box) (conv0_HeadVar__1_1));
+  }
+}
+
+static MR_bool MR_CALL 
+backend_libs__rtti____Unify____functor_subtype_info_0_0_10001(
+  MR_Box wrapper_arg_1,
+  MR_Box wrapper_arg_2)
+{
+  {
+    MR_bool succeeded;
+
+    succeeded = backend_libs__rtti____Unify____functor_subtype_info_0_0(((MR_Word) wrapper_arg_1), ((MR_Word) wrapper_arg_2));
+    return succeeded;
+  }
+}
+
+static void MR_CALL 
+backend_libs__rtti____Compare____functor_subtype_info_0_0_10001(
+  MR_Box * wrapper_arg_1,
+  MR_Box wrapper_arg_2,
+  MR_Box wrapper_arg_3)
+{
+  {
+    MR_Word conv0_HeadVar__1_1;
+
+    backend_libs__rtti____Compare____functor_subtype_info_0_0(&conv0_HeadVar__1_1, ((MR_Word) wrapper_arg_2), ((MR_Word) wrapper_arg_3));
+    *wrapper_arg_1 = ((MR_Box) (conv0_HeadVar__1_1));
+  }
+}
+
+static MR_bool MR_CALL 
+backend_libs__rtti____Unify____impl_ctor_0_0_10001(
+  MR_Box wrapper_arg_1,
+  MR_Box wrapper_arg_2)
+{
+  {
+    MR_bool succeeded;
+
+    succeeded = backend_libs__rtti____Unify____impl_ctor_0_0(((MR_Word) wrapper_arg_1), ((MR_Word) wrapper_arg_2));
+    return succeeded;
+  }
+}
+
+static void MR_CALL 
+backend_libs__rtti____Compare____impl_ctor_0_0_10001(
+  MR_Box * wrapper_arg_1,
+  MR_Box wrapper_arg_2,
+  MR_Box wrapper_arg_3)
+{
+  {
+    MR_Word conv0_HeadVar__1_1;
+
+    backend_libs__rtti____Compare____impl_ctor_0_0(&conv0_HeadVar__1_1, ((MR_Word) wrapper_arg_2), ((MR_Word) wrapper_arg_3));
+    *wrapper_arg_1 = ((MR_Box) (conv0_HeadVar__1_1));
+  }
+}
+
+static MR_bool MR_CALL 
+backend_libs__rtti____Unify____is_array_0_0_10001(
+  MR_Box wrapper_arg_1,
+  MR_Box wrapper_arg_2)
+{
+  {
+    MR_bool succeeded;
+
+    succeeded = backend_libs__rtti____Unify____is_array_0_0(((MR_Word) wrapper_arg_1), ((MR_Word) wrapper_arg_2));
+    return succeeded;
+  }
+}
+
+static void MR_CALL 
+backend_libs__rtti____Compare____is_array_0_0_10001(
+  MR_Box * wrapper_arg_1,
+  MR_Box wrapper_arg_2,
+  MR_Box wrapper_arg_3)
+{
+  {
+    MR_Word conv0_HeadVar__1_1;
+
+    backend_libs__rtti____Compare____is_array_0_0(&conv0_HeadVar__1_1, ((MR_Word) wrapper_arg_2), ((MR_Word) wrapper_arg_3));
+    *wrapper_arg_1 = ((MR_Box) (conv0_HeadVar__1_1));
+  }
+}
+
+static MR_bool MR_CALL 
+backend_libs__rtti____Unify____is_stable_0_0_10001(
+  MR_Box wrapper_arg_1,
+  MR_Box wrapper_arg_2)
+{
+  {
+    MR_bool succeeded;
+
+    succeeded = backend_libs__rtti____Unify____is_stable_0_0(((MR_Word) wrapper_arg_1), ((MR_Word) wrapper_arg_2));
+    return succeeded;
+  }
+}
+
+static void MR_CALL 
+backend_libs__rtti____Compare____is_stable_0_0_10001(
+  MR_Box * wrapper_arg_1,
+  MR_Box wrapper_arg_2,
+  MR_Box wrapper_arg_3)
+{
+  {
+    MR_Word conv0_HeadVar__1_1;
+
+    backend_libs__rtti____Compare____is_stable_0_0(&conv0_HeadVar__1_1, ((MR_Word) wrapper_arg_2), ((MR_Word) wrapper_arg_3));
+    *wrapper_arg_1 = ((MR_Box) (conv0_HeadVar__1_1));
+  }
+}
+
+static MR_bool MR_CALL 
+backend_libs__rtti____Unify____notag_functor_0_0_10001(
+  MR_Box wrapper_arg_1,
+  MR_Box wrapper_arg_2)
+{
+  {
+    MR_bool succeeded;
+
+    succeeded = backend_libs__rtti____Unify____notag_functor_0_0(((MR_Word) wrapper_arg_1), ((MR_Word) wrapper_arg_2));
+    return succeeded;
+  }
+}
+
+static void MR_CALL 
+backend_libs__rtti____Compare____notag_functor_0_0_10001(
+  MR_Box * wrapper_arg_1,
+  MR_Box wrapper_arg_2,
+  MR_Box wrapper_arg_3)
+{
+  {
+    MR_Word conv0_HeadVar__1_1;
+
+    backend_libs__rtti____Compare____notag_functor_0_0(&conv0_HeadVar__1_1, ((MR_Word) wrapper_arg_2), ((MR_Word) wrapper_arg_3));
+    *wrapper_arg_1 = ((MR_Box) (conv0_HeadVar__1_1));
+  }
+}
+
+static MR_bool MR_CALL 
+backend_libs__rtti____Unify____proc_tabling_struct_id_0_0_10001(
+  MR_Box wrapper_arg_1,
+  MR_Box wrapper_arg_2)
+{
+  {
+    MR_bool succeeded;
+
+    succeeded = backend_libs__rtti____Unify____proc_tabling_struct_id_0_0(((MR_Word) wrapper_arg_1), ((MR_Word) wrapper_arg_2));
+    return succeeded;
+  }
+}
+
+static void MR_CALL 
+backend_libs__rtti____Compare____proc_tabling_struct_id_0_0_10001(
+  MR_Box * wrapper_arg_1,
+  MR_Box wrapper_arg_2,
+  MR_Box wrapper_arg_3)
+{
+  {
+    MR_Word conv0_HeadVar__1_1;
+
+    backend_libs__rtti____Compare____proc_tabling_struct_id_0_0(&conv0_HeadVar__1_1, ((MR_Word) wrapper_arg_2), ((MR_Word) wrapper_arg_3));
+    *wrapper_arg_1 = ((MR_Box) (conv0_HeadVar__1_1));
+  }
+}
+
+static MR_bool MR_CALL 
+backend_libs__rtti____Unify____ptag_map_0_0_10001(
+  MR_Box wrapper_arg_1,
+  MR_Box wrapper_arg_2)
+{
+  {
+    MR_bool succeeded;
+
+    succeeded = backend_libs__rtti____Unify____ptag_map_0_0(((MR_Word) wrapper_arg_1), ((MR_Word) wrapper_arg_2));
+    return succeeded;
+  }
+}
+
+static void MR_CALL 
+backend_libs__rtti____Compare____ptag_map_0_0_10001(
+  MR_Box * wrapper_arg_1,
+  MR_Box wrapper_arg_2,
+  MR_Box wrapper_arg_3)
+{
+  {
+    MR_Word conv0_HeadVar__1_1;
+
+    backend_libs__rtti____Compare____ptag_map_0_0(&conv0_HeadVar__1_1, ((MR_Word) wrapper_arg_2), ((MR_Word) wrapper_arg_3));
+    *wrapper_arg_1 = ((MR_Box) (conv0_HeadVar__1_1));
+  }
+}
+
+static MR_bool MR_CALL 
+backend_libs__rtti____Unify____rtti_data_0_0_10001(
+  MR_Box wrapper_arg_1,
+  MR_Box wrapper_arg_2)
+{
+  {
+    MR_bool succeeded;
+
+    succeeded = backend_libs__rtti____Unify____rtti_data_0_0(((MR_Word) wrapper_arg_1), ((MR_Word) wrapper_arg_2));
+    return succeeded;
+  }
+}
+
+static void MR_CALL 
+backend_libs__rtti____Compare____rtti_data_0_0_10001(
+  MR_Box * wrapper_arg_1,
+  MR_Box wrapper_arg_2,
+  MR_Box wrapper_arg_3)
+{
+  {
+    MR_Word conv0_HeadVar__1_1;
+
+    backend_libs__rtti____Compare____rtti_data_0_0(&conv0_HeadVar__1_1, ((MR_Word) wrapper_arg_2), ((MR_Word) wrapper_arg_3));
+    *wrapper_arg_1 = ((MR_Box) (conv0_HeadVar__1_1));
+  }
+}
+
+static MR_bool MR_CALL 
+backend_libs__rtti____Unify____rtti_id_0_0_10001(
+  MR_Box wrapper_arg_1,
+  MR_Box wrapper_arg_2)
+{
+  {
+    MR_bool succeeded;
+
+    succeeded = backend_libs__rtti____Unify____rtti_id_0_0(((MR_Word) wrapper_arg_1), ((MR_Word) wrapper_arg_2));
+    return succeeded;
+  }
+}
+
+static void MR_CALL 
+backend_libs__rtti____Compare____rtti_id_0_0_10001(
+  MR_Box * wrapper_arg_1,
+  MR_Box wrapper_arg_2,
+  MR_Box wrapper_arg_3)
+{
+  {
+    MR_Word conv0_HeadVar__1_1;
+
+    backend_libs__rtti____Compare____rtti_id_0_0(&conv0_HeadVar__1_1, ((MR_Word) wrapper_arg_2), ((MR_Word) wrapper_arg_3));
+    *wrapper_arg_1 = ((MR_Box) (conv0_HeadVar__1_1));
+  }
+}
+
+static MR_bool MR_CALL 
+backend_libs__rtti____Unify____rtti_id_maybe_element_0_0_10001(
+  MR_Box wrapper_arg_1,
+  MR_Box wrapper_arg_2)
+{
+  {
+    MR_bool succeeded;
+
+    succeeded = backend_libs__rtti____Unify____rtti_id_maybe_element_0_0(((MR_Word) wrapper_arg_1), ((MR_Word) wrapper_arg_2));
+    return succeeded;
+  }
+}
+
+static void MR_CALL 
+backend_libs__rtti____Compare____rtti_id_maybe_element_0_0_10001(
+  MR_Box * wrapper_arg_1,
+  MR_Box wrapper_arg_2,
+  MR_Box wrapper_arg_3)
+{
+  {
+    MR_Word conv0_HeadVar__1_1;
+
+    backend_libs__rtti____Compare____rtti_id_maybe_element_0_0(&conv0_HeadVar__1_1, ((MR_Word) wrapper_arg_2), ((MR_Word) wrapper_arg_3));
+    *wrapper_arg_1 = ((MR_Box) (conv0_HeadVar__1_1));
+  }
+}
+
+static MR_bool MR_CALL 
+backend_libs__rtti____Unify____rtti_maybe_pseudo_type_info_0_0_10001(
+  MR_Box wrapper_arg_1,
+  MR_Box wrapper_arg_2)
+{
+  {
+    MR_bool succeeded;
+
+    succeeded = backend_libs__rtti____Unify____rtti_maybe_pseudo_type_info_0_0(((MR_Word) wrapper_arg_1), ((MR_Word) wrapper_arg_2));
+    return succeeded;
+  }
+}
+
+static void MR_CALL 
+backend_libs__rtti____Compare____rtti_maybe_pseudo_type_info_0_0_10001(
+  MR_Box * wrapper_arg_1,
+  MR_Box wrapper_arg_2,
+  MR_Box wrapper_arg_3)
+{
+  {
+    MR_Word conv0_HeadVar__1_1;
+
+    backend_libs__rtti____Compare____rtti_maybe_pseudo_type_info_0_0(&conv0_HeadVar__1_1, ((MR_Word) wrapper_arg_2), ((MR_Word) wrapper_arg_3));
+    *wrapper_arg_1 = ((MR_Box) (conv0_HeadVar__1_1));
+  }
+}
+
+static MR_bool MR_CALL 
+backend_libs__rtti____Unify____rtti_maybe_pseudo_type_info_or_self_0_0_10001(
+  MR_Box wrapper_arg_1,
+  MR_Box wrapper_arg_2)
+{
+  {
+    MR_bool succeeded;
+
+    succeeded = backend_libs__rtti____Unify____rtti_maybe_pseudo_type_info_or_self_0_0(((MR_Word) wrapper_arg_1), ((MR_Word) wrapper_arg_2));
+    return succeeded;
+  }
+}
+
+static void MR_CALL 
+backend_libs__rtti____Compare____rtti_maybe_pseudo_type_info_or_self_0_0_10001(
+  MR_Box * wrapper_arg_1,
+  MR_Box wrapper_arg_2,
+  MR_Box wrapper_arg_3)
+{
+  {
+    MR_Word conv0_HeadVar__1_1;
+
+    backend_libs__rtti____Compare____rtti_maybe_pseudo_type_info_or_self_0_0(&conv0_HeadVar__1_1, ((MR_Word) wrapper_arg_2), ((MR_Word) wrapper_arg_3));
+    *wrapper_arg_1 = ((MR_Box) (conv0_HeadVar__1_1));
+  }
+}
+
+static MR_bool MR_CALL 
+backend_libs__rtti____Unify____rtti_pseudo_type_info_0_0_10001(
+  MR_Box wrapper_arg_1,
+  MR_Box wrapper_arg_2)
+{
+  {
+    MR_bool succeeded;
+
+    succeeded = backend_libs__rtti____Unify____rtti_pseudo_type_info_0_0(((MR_Word) wrapper_arg_1), ((MR_Word) wrapper_arg_2));
+    return succeeded;
+  }
+}
+
+static void MR_CALL 
+backend_libs__rtti____Compare____rtti_pseudo_type_info_0_0_10001(
+  MR_Box * wrapper_arg_1,
+  MR_Box wrapper_arg_2,
+  MR_Box wrapper_arg_3)
+{
+  {
+    MR_Word conv0_HeadVar__1_1;
+
+    backend_libs__rtti____Compare____rtti_pseudo_type_info_0_0(&conv0_HeadVar__1_1, ((MR_Word) wrapper_arg_2), ((MR_Word) wrapper_arg_3));
+    *wrapper_arg_1 = ((MR_Box) (conv0_HeadVar__1_1));
+  }
+}
+
+static MR_bool MR_CALL 
+backend_libs__rtti____Unify____rtti_type_ctor_0_0_10001(
+  MR_Box wrapper_arg_1,
+  MR_Box wrapper_arg_2)
+{
+  {
+    MR_bool succeeded;
+
+    succeeded = backend_libs__rtti____Unify____rtti_type_ctor_0_0(((MR_Word) wrapper_arg_1), ((MR_Word) wrapper_arg_2));
+    return succeeded;
+  }
+}
+
+static void MR_CALL 
+backend_libs__rtti____Compare____rtti_type_ctor_0_0_10001(
+  MR_Box * wrapper_arg_1,
+  MR_Box wrapper_arg_2,
+  MR_Box wrapper_arg_3)
+{
+  {
+    MR_Word conv0_HeadVar__1_1;
+
+    backend_libs__rtti____Compare____rtti_type_ctor_0_0(&conv0_HeadVar__1_1, ((MR_Word) wrapper_arg_2), ((MR_Word) wrapper_arg_3));
+    *wrapper_arg_1 = ((MR_Box) (conv0_HeadVar__1_1));
+  }
+}
+
+static MR_bool MR_CALL 
+backend_libs__rtti____Unify____rtti_type_info_0_0_10001(
+  MR_Box wrapper_arg_1,
+  MR_Box wrapper_arg_2)
+{
+  {
+    MR_bool succeeded;
+
+    succeeded = backend_libs__rtti____Unify____rtti_type_info_0_0(((MR_Word) wrapper_arg_1), ((MR_Word) wrapper_arg_2));
+    return succeeded;
+  }
+}
+
+static void MR_CALL 
+backend_libs__rtti____Compare____rtti_type_info_0_0_10001(
+  MR_Box * wrapper_arg_1,
+  MR_Box wrapper_arg_2,
+  MR_Box wrapper_arg_3)
+{
+  {
+    MR_Word conv0_HeadVar__1_1;
+
+    backend_libs__rtti____Compare____rtti_type_info_0_0(&conv0_HeadVar__1_1, ((MR_Word) wrapper_arg_2), ((MR_Word) wrapper_arg_3));
+    *wrapper_arg_1 = ((MR_Box) (conv0_HeadVar__1_1));
+  }
+}
+
+static MR_bool MR_CALL 
+backend_libs__rtti____Unify____sectag_and_locn_0_0_10001(
+  MR_Box wrapper_arg_1,
+  MR_Box wrapper_arg_2)
+{
+  {
+    MR_bool succeeded;
+
+    succeeded = backend_libs__rtti____Unify____sectag_and_locn_0_0(((MR_Word) wrapper_arg_1), ((MR_Word) wrapper_arg_2));
+    return succeeded;
+  }
+}
+
+static void MR_CALL 
+backend_libs__rtti____Compare____sectag_and_locn_0_0_10001(
+  MR_Box * wrapper_arg_1,
+  MR_Box wrapper_arg_2,
+  MR_Box wrapper_arg_3)
+{
+  {
+    MR_Word conv0_HeadVar__1_1;
+
+    backend_libs__rtti____Compare____sectag_and_locn_0_0(&conv0_HeadVar__1_1, ((MR_Word) wrapper_arg_2), ((MR_Word) wrapper_arg_3));
+    *wrapper_arg_1 = ((MR_Box) (conv0_HeadVar__1_1));
+  }
+}
+
+static MR_bool MR_CALL 
+backend_libs__rtti____Unify____sectag_locn_0_0_10001(
+  MR_Box wrapper_arg_1,
+  MR_Box wrapper_arg_2)
+{
+  {
+    MR_bool succeeded;
+
+    succeeded = backend_libs__rtti____Unify____sectag_locn_0_0(((MR_Word) wrapper_arg_1), ((MR_Word) wrapper_arg_2));
+    return succeeded;
+  }
+}
+
+static void MR_CALL 
+backend_libs__rtti____Compare____sectag_locn_0_0_10001(
+  MR_Box * wrapper_arg_1,
+  MR_Box wrapper_arg_2,
+  MR_Box wrapper_arg_3)
+{
+  {
+    MR_Word conv0_HeadVar__1_1;
+
+    backend_libs__rtti____Compare____sectag_locn_0_0(&conv0_HeadVar__1_1, ((MR_Word) wrapper_arg_2), ((MR_Word) wrapper_arg_3));
+    *wrapper_arg_1 = ((MR_Box) (conv0_HeadVar__1_1));
+  }
+}
+
+static MR_bool MR_CALL 
+backend_libs__rtti____Unify____sectag_table_0_0_10001(
+  MR_Box wrapper_arg_1,
+  MR_Box wrapper_arg_2)
+{
+  {
+    MR_bool succeeded;
+
+    succeeded = backend_libs__rtti____Unify____sectag_table_0_0(((MR_Word) wrapper_arg_1), ((MR_Word) wrapper_arg_2));
+    return succeeded;
+  }
+}
+
+static void MR_CALL 
+backend_libs__rtti____Compare____sectag_table_0_0_10001(
+  MR_Box * wrapper_arg_1,
+  MR_Box wrapper_arg_2,
+  MR_Box wrapper_arg_3)
+{
+  {
+    MR_Word conv0_HeadVar__1_1;
+
+    backend_libs__rtti____Compare____sectag_table_0_0(&conv0_HeadVar__1_1, ((MR_Word) wrapper_arg_2), ((MR_Word) wrapper_arg_3));
+    *wrapper_arg_1 = ((MR_Box) (conv0_HeadVar__1_1));
+  }
+}
+
+static MR_bool MR_CALL 
+backend_libs__rtti____Unify____stag_map_0_0_10001(
+  MR_Box wrapper_arg_1,
+  MR_Box wrapper_arg_2)
+{
+  {
+    MR_bool succeeded;
+
+    succeeded = backend_libs__rtti____Unify____stag_map_0_0(((MR_Word) wrapper_arg_1), ((MR_Word) wrapper_arg_2));
+    return succeeded;
+  }
+}
+
+static void MR_CALL 
+backend_libs__rtti____Compare____stag_map_0_0_10001(
+  MR_Box * wrapper_arg_1,
+  MR_Box wrapper_arg_2,
+  MR_Box wrapper_arg_3)
+{
+  {
+    MR_Word conv0_HeadVar__1_1;
+
+    backend_libs__rtti____Compare____stag_map_0_0(&conv0_HeadVar__1_1, ((MR_Word) wrapper_arg_2), ((MR_Word) wrapper_arg_3));
+    *wrapper_arg_1 = ((MR_Box) (conv0_HeadVar__1_1));
+  }
+}
+
+static MR_bool MR_CALL 
+backend_libs__rtti____Unify____target_prefixes_0_0_10001(
+  MR_Box wrapper_arg_1,
+  MR_Box wrapper_arg_2)
+{
+  {
+    MR_bool succeeded;
+
+    succeeded = backend_libs__rtti____Unify____target_prefixes_0_0(((MR_Word) wrapper_arg_1), ((MR_Word) wrapper_arg_2));
+    return succeeded;
+  }
+}
+
+static void MR_CALL 
+backend_libs__rtti____Compare____target_prefixes_0_0_10001(
+  MR_Box * wrapper_arg_1,
+  MR_Box wrapper_arg_2,
+  MR_Box wrapper_arg_3)
+{
+  {
+    MR_Word conv0_HeadVar__1_1;
+
+    backend_libs__rtti____Compare____target_prefixes_0_0(&conv0_HeadVar__1_1, ((MR_Word) wrapper_arg_2), ((MR_Word) wrapper_arg_3));
+    *wrapper_arg_1 = ((MR_Box) (conv0_HeadVar__1_1));
+  }
+}
+
+static MR_bool MR_CALL 
+backend_libs__rtti____Unify____tc_constraint_0_0_10001(
+  MR_Box wrapper_arg_1,
+  MR_Box wrapper_arg_2)
+{
+  {
+    MR_bool succeeded;
+
+    succeeded = backend_libs__rtti____Unify____tc_constraint_0_0(((MR_Word) wrapper_arg_1), ((MR_Word) wrapper_arg_2));
+    return succeeded;
+  }
+}
+
+static void MR_CALL 
+backend_libs__rtti____Compare____tc_constraint_0_0_10001(
+  MR_Box * wrapper_arg_1,
+  MR_Box wrapper_arg_2,
+  MR_Box wrapper_arg_3)
+{
+  {
+    MR_Word conv0_HeadVar__1_1;
+
+    backend_libs__rtti____Compare____tc_constraint_0_0(&conv0_HeadVar__1_1, ((MR_Word) wrapper_arg_2), ((MR_Word) wrapper_arg_3));
+    *wrapper_arg_1 = ((MR_Box) (conv0_HeadVar__1_1));
+  }
+}
+
+static MR_bool MR_CALL 
+backend_libs__rtti____Unify____tc_decl_0_0_10001(
+  MR_Box wrapper_arg_1,
+  MR_Box wrapper_arg_2)
+{
+  {
+    MR_bool succeeded;
+
+    succeeded = backend_libs__rtti____Unify____tc_decl_0_0(((MR_Word) wrapper_arg_1), ((MR_Word) wrapper_arg_2));
+    return succeeded;
+  }
+}
+
+static void MR_CALL 
+backend_libs__rtti____Compare____tc_decl_0_0_10001(
+  MR_Box * wrapper_arg_1,
+  MR_Box wrapper_arg_2,
+  MR_Box wrapper_arg_3)
+{
+  {
+    MR_Word conv0_HeadVar__1_1;
+
+    backend_libs__rtti____Compare____tc_decl_0_0(&conv0_HeadVar__1_1, ((MR_Word) wrapper_arg_2), ((MR_Word) wrapper_arg_3));
+    *wrapper_arg_1 = ((MR_Box) (conv0_HeadVar__1_1));
+  }
+}
+
+static MR_bool MR_CALL 
+backend_libs__rtti____Unify____tc_dict_0_0_10001(
+  MR_Box wrapper_arg_1,
+  MR_Box wrapper_arg_2)
+{
+  {
+    MR_bool succeeded;
+
+    succeeded = backend_libs__rtti____Unify____tc_dict_0_0(((MR_Word) wrapper_arg_1), ((MR_Word) wrapper_arg_2));
+    return succeeded;
+  }
+}
+
+static void MR_CALL 
+backend_libs__rtti____Compare____tc_dict_0_0_10001(
+  MR_Box * wrapper_arg_1,
+  MR_Box wrapper_arg_2,
+  MR_Box wrapper_arg_3)
+{
+  {
+    MR_Word conv0_HeadVar__1_1;
+
+    backend_libs__rtti____Compare____tc_dict_0_0(&conv0_HeadVar__1_1, ((MR_Word) wrapper_arg_2), ((MR_Word) wrapper_arg_3));
+    *wrapper_arg_1 = ((MR_Box) (conv0_HeadVar__1_1));
+  }
+}
+
+static MR_bool MR_CALL 
+backend_libs__rtti____Unify____tc_id_0_0_10001(
+  MR_Box wrapper_arg_1,
+  MR_Box wrapper_arg_2)
+{
+  {
+    MR_bool succeeded;
+
+    succeeded = backend_libs__rtti____Unify____tc_id_0_0(((MR_Word) wrapper_arg_1), ((MR_Word) wrapper_arg_2));
+    return succeeded;
+  }
+}
+
+static void MR_CALL 
+backend_libs__rtti____Compare____tc_id_0_0_10001(
+  MR_Box * wrapper_arg_1,
+  MR_Box wrapper_arg_2,
+  MR_Box wrapper_arg_3)
+{
+  {
+    MR_Word conv0_HeadVar__1_1;
+
+    backend_libs__rtti____Compare____tc_id_0_0(&conv0_HeadVar__1_1, ((MR_Word) wrapper_arg_2), ((MR_Word) wrapper_arg_3));
+    *wrapper_arg_1 = ((MR_Box) (conv0_HeadVar__1_1));
+  }
+}
+
+static MR_bool MR_CALL 
+backend_libs__rtti____Unify____tc_instance_0_0_10001(
+  MR_Box wrapper_arg_1,
+  MR_Box wrapper_arg_2)
+{
+  {
+    MR_bool succeeded;
+
+    succeeded = backend_libs__rtti____Unify____tc_instance_0_0(((MR_Word) wrapper_arg_1), ((MR_Word) wrapper_arg_2));
+    return succeeded;
+  }
+}
+
+static void MR_CALL 
+backend_libs__rtti____Compare____tc_instance_0_0_10001(
+  MR_Box * wrapper_arg_1,
+  MR_Box wrapper_arg_2,
+  MR_Box wrapper_arg_3)
+{
+  {
+    MR_Word conv0_HeadVar__1_1;
+
+    backend_libs__rtti____Compare____tc_instance_0_0(&conv0_HeadVar__1_1, ((MR_Word) wrapper_arg_2), ((MR_Word) wrapper_arg_3));
+    *wrapper_arg_1 = ((MR_Box) (conv0_HeadVar__1_1));
+  }
+}
+
+static MR_bool MR_CALL 
+backend_libs__rtti____Unify____tc_method_id_0_0_10001(
+  MR_Box wrapper_arg_1,
+  MR_Box wrapper_arg_2)
+{
+  {
+    MR_bool succeeded;
+
+    succeeded = backend_libs__rtti____Unify____tc_method_id_0_0(((MR_Word) wrapper_arg_1), ((MR_Word) wrapper_arg_2));
+    return succeeded;
+  }
+}
+
+static void MR_CALL 
+backend_libs__rtti____Compare____tc_method_id_0_0_10001(
+  MR_Box * wrapper_arg_1,
+  MR_Box wrapper_arg_2,
+  MR_Box wrapper_arg_3)
+{
+  {
+    MR_Word conv0_HeadVar__1_1;
+
+    backend_libs__rtti____Compare____tc_method_id_0_0(&conv0_HeadVar__1_1, ((MR_Word) wrapper_arg_2), ((MR_Word) wrapper_arg_3));
+    *wrapper_arg_1 = ((MR_Box) (conv0_HeadVar__1_1));
+  }
+}
+
+static MR_bool MR_CALL 
+backend_libs__rtti____Unify____tc_name_0_0_10001(
+  MR_Box wrapper_arg_1,
+  MR_Box wrapper_arg_2)
+{
+  {
+    MR_bool succeeded;
+
+    succeeded = backend_libs__rtti____Unify____tc_name_0_0(((MR_Word) wrapper_arg_1), ((MR_Word) wrapper_arg_2));
+    return succeeded;
+  }
+}
+
+static void MR_CALL 
+backend_libs__rtti____Compare____tc_name_0_0_10001(
+  MR_Box * wrapper_arg_1,
+  MR_Box wrapper_arg_2,
+  MR_Box wrapper_arg_3)
+{
+  {
+    MR_Word conv0_HeadVar__1_1;
+
+    backend_libs__rtti____Compare____tc_name_0_0(&conv0_HeadVar__1_1, ((MR_Word) wrapper_arg_2), ((MR_Word) wrapper_arg_3));
+    *wrapper_arg_1 = ((MR_Box) (conv0_HeadVar__1_1));
+  }
+}
+
+static MR_bool MR_CALL 
+backend_libs__rtti____Unify____tc_rtti_name_0_0_10001(
+  MR_Box wrapper_arg_1,
+  MR_Box wrapper_arg_2)
+{
+  {
+    MR_bool succeeded;
+
+    succeeded = backend_libs__rtti____Unify____tc_rtti_name_0_0(((MR_Word) wrapper_arg_1), ((MR_Word) wrapper_arg_2));
+    return succeeded;
+  }
+}
+
+static void MR_CALL 
+backend_libs__rtti____Compare____tc_rtti_name_0_0_10001(
+  MR_Box * wrapper_arg_1,
+  MR_Box wrapper_arg_2,
+  MR_Box wrapper_arg_3)
+{
+  {
+    MR_Word conv0_HeadVar__1_1;
+
+    backend_libs__rtti____Compare____tc_rtti_name_0_0(&conv0_HeadVar__1_1, ((MR_Word) wrapper_arg_2), ((MR_Word) wrapper_arg_3));
+    *wrapper_arg_1 = ((MR_Box) (conv0_HeadVar__1_1));
+  }
+}
+
+static MR_bool MR_CALL 
+backend_libs__rtti____Unify____tc_type_0_0_10001(
+  MR_Box wrapper_arg_1,
+  MR_Box wrapper_arg_2)
+{
+  {
+    MR_bool succeeded;
+
+    succeeded = backend_libs__rtti____Unify____tc_type_0_0(((MR_Word) wrapper_arg_1), ((MR_Word) wrapper_arg_2));
+    return succeeded;
+  }
+}
+
+static void MR_CALL 
+backend_libs__rtti____Compare____tc_type_0_0_10001(
+  MR_Box * wrapper_arg_1,
+  MR_Box wrapper_arg_2,
+  MR_Box wrapper_arg_3)
+{
+  {
+    MR_Word conv0_HeadVar__1_1;
+
+    backend_libs__rtti____Compare____tc_type_0_0(&conv0_HeadVar__1_1, ((MR_Word) wrapper_arg_2), ((MR_Word) wrapper_arg_3));
+    *wrapper_arg_1 = ((MR_Box) (conv0_HeadVar__1_1));
+  }
+}
+
+static MR_bool MR_CALL 
+backend_libs__rtti____Unify____type_ctor_data_0_0_10001(
+  MR_Box wrapper_arg_1,
+  MR_Box wrapper_arg_2)
+{
+  {
+    MR_bool succeeded;
+
+    succeeded = backend_libs__rtti____Unify____type_ctor_data_0_0(((MR_Word) wrapper_arg_1), ((MR_Word) wrapper_arg_2));
+    return succeeded;
+  }
+}
+
+static void MR_CALL 
+backend_libs__rtti____Compare____type_ctor_data_0_0_10001(
+  MR_Box * wrapper_arg_1,
+  MR_Box wrapper_arg_2,
+  MR_Box wrapper_arg_3)
+{
+  {
+    MR_Word conv0_HeadVar__1_1;
+
+    backend_libs__rtti____Compare____type_ctor_data_0_0(&conv0_HeadVar__1_1, ((MR_Word) wrapper_arg_2), ((MR_Word) wrapper_arg_3));
+    *wrapper_arg_1 = ((MR_Box) (conv0_HeadVar__1_1));
+  }
+}
+
+static MR_bool MR_CALL 
+backend_libs__rtti____Unify____type_ctor_details_0_0_10001(
+  MR_Box wrapper_arg_1,
+  MR_Box wrapper_arg_2)
+{
+  {
+    MR_bool succeeded;
+
+    succeeded = backend_libs__rtti____Unify____type_ctor_details_0_0(((MR_Word) wrapper_arg_1), ((MR_Word) wrapper_arg_2));
+    return succeeded;
+  }
+}
+
+static void MR_CALL 
+backend_libs__rtti____Compare____type_ctor_details_0_0_10001(
+  MR_Box * wrapper_arg_1,
+  MR_Box wrapper_arg_2,
+  MR_Box wrapper_arg_3)
+{
+  {
+    MR_Word conv0_HeadVar__1_1;
+
+    backend_libs__rtti____Compare____type_ctor_details_0_0(&conv0_HeadVar__1_1, ((MR_Word) wrapper_arg_2), ((MR_Word) wrapper_arg_3));
+    *wrapper_arg_1 = ((MR_Box) (conv0_HeadVar__1_1));
+  }
+}
+
+static MR_bool MR_CALL 
+backend_libs__rtti____Unify____type_ctor_flag_0_0_10001(
+  MR_Box wrapper_arg_1,
+  MR_Box wrapper_arg_2)
+{
+  {
+    MR_bool succeeded;
+
+    succeeded = backend_libs__rtti____Unify____type_ctor_flag_0_0(((MR_Word) wrapper_arg_1), ((MR_Word) wrapper_arg_2));
+    return succeeded;
+  }
+}
+
+static void MR_CALL 
+backend_libs__rtti____Compare____type_ctor_flag_0_0_10001(
+  MR_Box * wrapper_arg_1,
+  MR_Box wrapper_arg_2,
+  MR_Box wrapper_arg_3)
+{
+  {
+    MR_Word conv0_HeadVar__1_1;
+
+    backend_libs__rtti____Compare____type_ctor_flag_0_0(&conv0_HeadVar__1_1, ((MR_Word) wrapper_arg_2), ((MR_Word) wrapper_arg_3));
+    *wrapper_arg_1 = ((MR_Box) (conv0_HeadVar__1_1));
+  }
+}
+
+static MR_bool MR_CALL 
+backend_libs__rtti____Unify____var_arity_ctor_id_0_0_10001(
+  MR_Box wrapper_arg_1,
+  MR_Box wrapper_arg_2)
+{
+  {
+    MR_bool succeeded;
+
+    succeeded = backend_libs__rtti____Unify____var_arity_ctor_id_0_0(((MR_Word) wrapper_arg_1), ((MR_Word) wrapper_arg_2));
+    return succeeded;
+  }
+}
+
+static void MR_CALL 
+backend_libs__rtti____Compare____var_arity_ctor_id_0_0_10001(
+  MR_Box * wrapper_arg_1,
+  MR_Box wrapper_arg_2,
+  MR_Box wrapper_arg_3)
+{
+  {
+    MR_Word conv0_HeadVar__1_1;
+
+    backend_libs__rtti____Compare____var_arity_ctor_id_0_0(&conv0_HeadVar__1_1, ((MR_Word) wrapper_arg_2), ((MR_Word) wrapper_arg_3));
+    *wrapper_arg_1 = ((MR_Box) (conv0_HeadVar__1_1));
+  }
+}
+
+void mercury__backend_libs__rtti__init(void)
+{
+}
+
+void mercury__backend_libs__rtti__init_type_tables(void)
+{
+	static MR_bool initialised = MR_FALSE;
+	if (initialised) return;
+	initialised = MR_TRUE;
+
+	MR_register_type_ctor_info(&backend_libs__rtti__backend_libs__rtti__type_ctor_info_base_typeclass_info_0);
+	MR_register_type_ctor_info(&backend_libs__rtti__backend_libs__rtti__type_ctor_info_builtin_ctor_0);
+	MR_register_type_ctor_info(&backend_libs__rtti__backend_libs__rtti__type_ctor_info_call_or_answer_table_0);
+	MR_register_type_ctor_info(&backend_libs__rtti__backend_libs__rtti__type_ctor_info_ctor_rtti_name_0);
+	MR_register_type_ctor_info(&backend_libs__rtti__backend_libs__rtti__type_ctor_info_curr_or_prev_table_0);
+	MR_register_type_ctor_info(&backend_libs__rtti__backend_libs__rtti__type_ctor_info_du_arg_info_0);
+	MR_register_type_ctor_info(&backend_libs__rtti__backend_libs__rtti__type_ctor_info_du_functor_0);
+	MR_register_type_ctor_info(&backend_libs__rtti__backend_libs__rtti__type_ctor_info_du_rep_0);
+	MR_register_type_ctor_info(&backend_libs__rtti__backend_libs__rtti__type_ctor_info_enum_functor_0);
+	MR_register_type_ctor_info(&backend_libs__rtti__backend_libs__rtti__type_ctor_info_equality_axioms_0);
+	MR_register_type_ctor_info(&backend_libs__rtti__backend_libs__rtti__type_ctor_info_exist_info_0);
+	MR_register_type_ctor_info(&backend_libs__rtti__backend_libs__rtti__type_ctor_info_exist_typeinfo_locn_0);
+	MR_register_type_ctor_info(&backend_libs__rtti__backend_libs__rtti__type_ctor_info_foreign_enum_functor_0);
+	MR_register_type_ctor_info(&backend_libs__rtti__backend_libs__rtti__type_ctor_info_functor_subtype_info_0);
+	MR_register_type_ctor_info(&backend_libs__rtti__backend_libs__rtti__type_ctor_info_impl_ctor_0);
+	MR_register_type_ctor_info(&backend_libs__rtti__backend_libs__rtti__type_ctor_info_is_array_0);
+	MR_register_type_ctor_info(&backend_libs__rtti__backend_libs__rtti__type_ctor_info_is_stable_0);
+	MR_register_type_ctor_info(&backend_libs__rtti__backend_libs__rtti__type_ctor_info_notag_functor_0);
+	MR_register_type_ctor_info(&backend_libs__rtti__backend_libs__rtti__type_ctor_info_proc_tabling_struct_id_0);
+	MR_register_type_ctor_info(&backend_libs__rtti__backend_libs__rtti__type_ctor_info_ptag_map_0);
+	MR_register_type_ctor_info(&backend_libs__rtti__backend_libs__rtti__type_ctor_info_rtti_data_0);
+	MR_register_type_ctor_info(&backend_libs__rtti__backend_libs__rtti__type_ctor_info_rtti_id_0);
+	MR_register_type_ctor_info(&backend_libs__rtti__backend_libs__rtti__type_ctor_info_rtti_id_maybe_element_0);
+	MR_register_type_ctor_info(&backend_libs__rtti__backend_libs__rtti__type_ctor_info_rtti_maybe_pseudo_type_info_0);
+	MR_register_type_ctor_info(&backend_libs__rtti__backend_libs__rtti__type_ctor_info_rtti_maybe_pseudo_type_info_or_self_0);
+	MR_register_type_ctor_info(&backend_libs__rtti__backend_libs__rtti__type_ctor_info_rtti_pseudo_type_info_0);
+	MR_register_type_ctor_info(&backend_libs__rtti__backend_libs__rtti__type_ctor_info_rtti_type_ctor_0);
+	MR_register_type_ctor_info(&backend_libs__rtti__backend_libs__rtti__type_ctor_info_rtti_type_info_0);
+	MR_register_type_ctor_info(&backend_libs__rtti__backend_libs__rtti__type_ctor_info_sectag_and_locn_0);
+	MR_register_type_ctor_info(&backend_libs__rtti__backend_libs__rtti__type_ctor_info_sectag_locn_0);
+	MR_register_type_ctor_info(&backend_libs__rtti__backend_libs__rtti__type_ctor_info_sectag_table_0);
+	MR_register_type_ctor_info(&backend_libs__rtti__backend_libs__rtti__type_ctor_info_stag_map_0);
+	MR_register_type_ctor_info(&backend_libs__rtti__backend_libs__rtti__type_ctor_info_target_prefixes_0);
+	MR_register_type_ctor_info(&backend_libs__rtti__backend_libs__rtti__type_ctor_info_tc_constraint_0);
+	MR_register_type_ctor_info(&backend_libs__rtti__backend_libs__rtti__type_ctor_info_tc_decl_0);
+	MR_register_type_ctor_info(&backend_libs__rtti__backend_libs__rtti__type_ctor_info_tc_dict_0);
+	MR_register_type_ctor_info(&backend_libs__rtti__backend_libs__rtti__type_ctor_info_tc_id_0);
+	MR_register_type_ctor_info(&backend_libs__rtti__backend_libs__rtti__type_ctor_info_tc_instance_0);
+	MR_register_type_ctor_info(&backend_libs__rtti__backend_libs__rtti__type_ctor_info_tc_method_id_0);
+	MR_register_type_ctor_info(&backend_libs__rtti__backend_libs__rtti__type_ctor_info_tc_name_0);
+	MR_register_type_ctor_info(&backend_libs__rtti__backend_libs__rtti__type_ctor_info_tc_rtti_name_0);
+	MR_register_type_ctor_info(&backend_libs__rtti__backend_libs__rtti__type_ctor_info_tc_type_0);
+	MR_register_type_ctor_info(&backend_libs__rtti__backend_libs__rtti__type_ctor_info_type_ctor_data_0);
+	MR_register_type_ctor_info(&backend_libs__rtti__backend_libs__rtti__type_ctor_info_type_ctor_details_0);
+	MR_register_type_ctor_info(&backend_libs__rtti__backend_libs__rtti__type_ctor_info_type_ctor_flag_0);
+	MR_register_type_ctor_info(&backend_libs__rtti__backend_libs__rtti__type_ctor_info_var_arity_ctor_id_0);
+}
+
+void mercury__backend_libs__rtti__init_debugger(void)
+{
+	MR_fatal_error("debugger initialization in MLDS grade");
+}
+
+// Ensure everything is compiled with the same grade.
+const char *mercury__backend_libs__rtti__grade_check(void)
+{
+    return &MR_GRADE_VAR;
+}
+
+// :- end_module backend_libs.rtti.

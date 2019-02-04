@@ -1,0 +1,4 @@
+:- module ((transform_hlds.rbmm).region_transformation).
+:- interface.
+:- type name_to_prog_var.
+:- type name_to_prog_var_table.
