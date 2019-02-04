@@ -1,0 +1,13 @@
+module(1, "pqueue.m",
+	pqueue,
+	{},
+	{builtin, assoc_list, private_builtin},
+	{builtin, assoc_list, int, list, pair, require, private_builtin},
+	{},
+	{},
+	{},
+	{},
+	{},
+	no_foreign_export,
+	no_main
+).

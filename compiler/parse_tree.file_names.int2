@@ -1,0 +1,12 @@
+:- module (parse_tree.file_names).
+:- interface.
+:- import_module io.
+:- import_module (libs.file_util).
+:- import_module (libs.globals).
+:- import_module (mdbcomp.prim_data).
+:- type maybe_create_dirs
+	--->	do_create_dirs 
+	;	do_not_create_dirs .
+:- type maybe_search
+	--->	do_search 
+	;	do_not_search .

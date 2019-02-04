@@ -1,0 +1,7 @@
+:- module svbimap.
+:- pragma termination_info(svbimap.insert((builtin.in), (builtin.in), (builtin.in), (builtin.out)), infinite, cannot_loop).
+:- pragma termination_info(svbimap.det_insert((builtin.in), (builtin.in), (builtin.in), (builtin.out)), infinite, can_loop).
+:- pragma termination_info(svbimap.set((builtin.in), (builtin.in), (builtin.in), (builtin.out)), infinite, can_loop).
+:- pragma exceptions(predicate, (svbimap.insert), 4, 0, may_throw(type_exception)).
+:- pragma exceptions(predicate, (svbimap.det_insert), 4, 0, may_throw(user_exception)).
+:- pragma exceptions(predicate, (svbimap.set), 4, 0, may_throw(user_exception)).

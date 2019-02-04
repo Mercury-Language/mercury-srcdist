@@ -1,0 +1,58 @@
+:- module svmap.
+:- use_module assoc_list, builtin, list, map, private_builtin, term.
+svmap.insert(K_5, V_6, STATE_VARIABLE_Map_0_8, STATE_VARIABLE_Map_9) :-
+    map.insert(K_5, V_6, STATE_VARIABLE_Map_0_8, STATE_VARIABLE_Map_9).
+svmap.det_insert(K_5, V_6, STATE_VARIABLE_Map_0_8, STATE_VARIABLE_Map_9) :-
+    map.det_insert(K_5, V_6, STATE_VARIABLE_Map_0_8, STATE_VARIABLE_Map_9).
+svmap.det_insert_from_corresponding_lists(Ks_5, Vs_6, STATE_VARIABLE_Map_0_8, STATE_VARIABLE_Map_9) :-
+    map.det_insert_from_corresponding_lists(Ks_5, Vs_6, STATE_VARIABLE_Map_0_8, STATE_VARIABLE_Map_9).
+svmap.det_insert_from_assoc_list(As_4, STATE_VARIABLE_Map_0_6, STATE_VARIABLE_Map_7) :-
+    map.det_insert_from_assoc_list(As_4, STATE_VARIABLE_Map_0_6, STATE_VARIABLE_Map_7).
+svmap.set_from_corresponding_lists(Ks_5, Vs_6, STATE_VARIABLE_Map_0_8, STATE_VARIABLE_Map_9) :-
+    map.set_from_corresponding_lists(Ks_5, Vs_6, STATE_VARIABLE_Map_0_8, STATE_VARIABLE_Map_9).
+svmap.set_from_assoc_list(As_4, STATE_VARIABLE_Map_0_6, STATE_VARIABLE_Map_7) :-
+    map.set_from_assoc_list(As_4, STATE_VARIABLE_Map_0_6, STATE_VARIABLE_Map_7).
+svmap.update(K_5, V_6, STATE_VARIABLE_Map_0_8, STATE_VARIABLE_Map_9) :-
+    map.update(K_5, V_6, STATE_VARIABLE_Map_0_8, STATE_VARIABLE_Map_9).
+svmap.det_update(K_5, V_6, STATE_VARIABLE_Map_0_8, STATE_VARIABLE_Map_9) :-
+    map.det_update(K_5, V_6, STATE_VARIABLE_Map_0_8, STATE_VARIABLE_Map_9).
+svmap.set(K_5, V_6, STATE_VARIABLE_Map_0_8, STATE_VARIABLE_Map_9) :-
+    map.set(K_5, V_6, STATE_VARIABLE_Map_0_8, STATE_VARIABLE_Map_9).
+svmap.delete(Key_4, STATE_VARIABLE_Map_0_6, STATE_VARIABLE_Map_7) :-
+    map.delete(Key_4, STATE_VARIABLE_Map_0_6, STATE_VARIABLE_Map_7).
+svmap.delete_list(Keys_4, STATE_VARIABLE_Map_0_6, STATE_VARIABLE_Map_7) :-
+    map.delete_list(Keys_4, STATE_VARIABLE_Map_0_6, STATE_VARIABLE_Map_7).
+svmap.remove(Key_5, Value_6, STATE_VARIABLE_Map_0_8, STATE_VARIABLE_Map_9) :-
+    map.remove(Key_5, Value_6, STATE_VARIABLE_Map_0_8, STATE_VARIABLE_Map_9).
+svmap.det_remove(Key_5, Value_6, STATE_VARIABLE_Map_0_8, STATE_VARIABLE_Map_9) :-
+    map.det_remove(Key_5, Value_6, STATE_VARIABLE_Map_0_8, STATE_VARIABLE_Map_9).
+svmap.remove_smallest(K_5, V_6, STATE_VARIABLE_Map_0_8, STATE_VARIABLE_Map_9) :-
+    map.remove_smallest(K_5, V_6, STATE_VARIABLE_Map_0_8, STATE_VARIABLE_Map_9).
+:- pragma exceptions(predicate, (svmap.insert), 4, 0, may_throw(user_exception)).
+:- pragma exceptions(predicate, (svmap.det_insert), 4, 0, may_throw(user_exception)).
+:- pragma exceptions(predicate, (svmap.det_insert_from_corresponding_lists), 4, 0, may_throw(user_exception)).
+:- pragma exceptions(predicate, (svmap.det_insert_from_assoc_list), 3, 0, may_throw(user_exception)).
+:- pragma exceptions(predicate, (svmap.set_from_corresponding_lists), 4, 0, may_throw(user_exception)).
+:- pragma exceptions(predicate, (svmap.set_from_assoc_list), 3, 0, may_throw(user_exception)).
+:- pragma exceptions(predicate, (svmap.update), 4, 0, may_throw(user_exception)).
+:- pragma exceptions(predicate, (svmap.det_update), 4, 0, may_throw(user_exception)).
+:- pragma exceptions(predicate, (svmap.set), 4, 0, may_throw(user_exception)).
+:- pragma exceptions(predicate, (svmap.delete), 3, 0, may_throw(user_exception)).
+:- pragma exceptions(predicate, (svmap.delete_list), 3, 0, may_throw(user_exception)).
+:- pragma exceptions(predicate, (svmap.remove), 4, 0, may_throw(user_exception)).
+:- pragma exceptions(predicate, (svmap.det_remove), 4, 0, may_throw(user_exception)).
+:- pragma exceptions(predicate, (svmap.remove_smallest), 4, 0, may_throw(user_exception)).
+:- pragma termination_info(svmap.insert((builtin.in), (builtin.in), (builtin.in), (builtin.out)), infinite, can_loop).
+:- pragma termination_info(svmap.det_insert((builtin.in), (builtin.in), (builtin.in), (builtin.out)), infinite, can_loop).
+:- pragma termination_info(svmap.det_insert_from_corresponding_lists((builtin.in), (builtin.in), (builtin.in), (builtin.out)), infinite, can_loop).
+:- pragma termination_info(svmap.det_insert_from_assoc_list((builtin.in), (builtin.in), (builtin.out)), infinite, can_loop).
+:- pragma termination_info(svmap.set_from_corresponding_lists((builtin.in), (builtin.in), (builtin.in), (builtin.out)), infinite, can_loop).
+:- pragma termination_info(svmap.set_from_assoc_list((builtin.in), (builtin.in), (builtin.out)), infinite, can_loop).
+:- pragma termination_info(svmap.update((builtin.in), (builtin.in), (builtin.in), (builtin.out)), infinite, can_loop).
+:- pragma termination_info(svmap.det_update((builtin.in), (builtin.in), (builtin.in), (builtin.out)), infinite, can_loop).
+:- pragma termination_info(svmap.set((builtin.in), (builtin.in), (builtin.in), (builtin.out)), infinite, can_loop).
+:- pragma termination_info(svmap.delete((builtin.in), (builtin.in), (builtin.out)), infinite, can_loop).
+:- pragma termination_info(svmap.delete_list((builtin.in), (builtin.in), (builtin.out)), infinite, can_loop).
+:- pragma termination_info(svmap.remove((builtin.in), (builtin.out), (builtin.in), (builtin.out)), infinite, can_loop).
+:- pragma termination_info(svmap.det_remove((builtin.in), (builtin.out), (builtin.in), (builtin.out)), infinite, can_loop).
+:- pragma termination_info(svmap.remove_smallest((builtin.out), (builtin.out), (builtin.in), (builtin.out)), infinite, can_loop).

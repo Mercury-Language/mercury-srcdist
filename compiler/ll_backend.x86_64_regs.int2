@@ -1,0 +1,9 @@
+:- module (ll_backend.x86_64_regs).
+:- interface.
+:- import_module assoc_list.
+:- import_module (ll_backend.llds).
+:- import_module (ll_backend.x86_64_instrs).
+:- type reg_locn
+	--->	actual(ll_backend.x86_64_instrs.x86_64_reg)
+	;	virtual(int).
+:- type reg_map.

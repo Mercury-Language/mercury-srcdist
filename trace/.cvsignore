@@ -1,0 +1,12 @@
+*.pic_o
+*.ilk
+*.pdb
+libmer_trace.lib
+libmer_trace.dylib
+libmer_eventspec.lib
+libmer_eventspec.dylib
+mercury_event_parser.c
+mercury_event_parser.h
+mercury_event_parser.output
+mercury_event_scanner.c
+mercury_event_scanner.h

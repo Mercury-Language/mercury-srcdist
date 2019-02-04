@@ -1,0 +1,4 @@
+:- module (check_hlds.modes).
+:- interface.
+:- type modes_safe_to_continue
+	where	type_is_abstract_enum(1).
