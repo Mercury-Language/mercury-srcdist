@@ -1,0 +1,20 @@
+:- module backend_libs.
+:- interface.
+:- include_module (backend_libs.arg_pack).
+:- include_module (backend_libs.base_typeclass_info).
+:- include_module (backend_libs.builtin_ops).
+:- include_module (backend_libs.bytecode_data).
+:- include_module (backend_libs.c_util).
+:- include_module (backend_libs.compile_target_code).
+:- include_module (backend_libs.erlang_rtti).
+:- include_module (backend_libs.export).
+:- include_module (backend_libs.foreign).
+:- include_module (backend_libs.interval).
+:- include_module (backend_libs.matching).
+:- include_module (backend_libs.name_mangle).
+:- include_module (backend_libs.proc_label).
+:- include_module (backend_libs.pseudo_type_info).
+:- include_module (backend_libs.rtti).
+:- include_module (backend_libs.switch_util).
+:- include_module (backend_libs.type_ctor_info).
+:- include_module (backend_libs.type_class_info).

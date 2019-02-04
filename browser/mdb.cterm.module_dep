@@ -1,0 +1,13 @@
+module(1, "cterm.m",
+	(mdb.cterm),
+	{mdb},
+	{builtin, bool, private_builtin},
+	{builtin, bool, deconstruct, list, univ, private_builtin},
+	{},
+	{},
+	{},
+	{"C"},
+	{"C" - (mdb.cterm), "Java" - (mdb.cterm), "C" - (mdb.cterm)},
+	contains_foreign_export,
+	no_main
+).

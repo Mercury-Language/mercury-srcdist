@@ -1,0 +1,27 @@
+:- module (check_hlds.det_util).
+:- interface.
+:- import_module bool.
+:- import_module hlds.
+:- import_module list.
+:- import_module parse_tree.
+:- import_module (hlds.hlds_data).
+:- import_module (hlds.hlds_goal).
+:- import_module (hlds.hlds_module).
+:- import_module (hlds.hlds_pred).
+:- import_module (hlds.instmap).
+:- import_module (parse_tree.error_util).
+:- import_module (parse_tree.prog_data).
+:- import_module (parse_tree.set_of_var).
+:- type contains_format_call
+	--->	does_not_contain_format_call 
+	;	contains_format_call .
+:- type contains_require_scope
+	--->	does_not_contain_require_scope 
+	;	contains_require_scope .
+:- type det_info.
+:- type maybe_changed
+	--->	changed 
+	;	unchanged .
+:- type report_pess_extra_vars
+	--->	pess_extra_vars_report 
+	;	pess_extra_vars_ignore .

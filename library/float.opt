@@ -1,0 +1,249 @@
+:- module float.
+:- use_module builtin, exception, int, math, pretty_printer, private_builtin, string.
+:- pragma foreign_import_module("C", float).
+:- pragma foreign_import_module("C#", float).
+:- pragma foreign_import_module("Java", float).
+:- pragma foreign_import_module("IL", float).
+:- pragma foreign_import_module("Erlang", float).
+:- pragma foreign_import_module("C", io).
+:- pragma foreign_import_module("C#", io).
+:- pragma foreign_import_module("Java", io).
+:- pragma foreign_import_module("IL", io).
+:- pragma foreign_import_module("Erlang", io).
+:- pragma foreign_import_module("C", io).
+:- pragma foreign_import_module("C#", io).
+:- pragma foreign_import_module("Java", io).
+:- pragma foreign_import_module("IL", io).
+:- pragma foreign_import_module("Erlang", io).
+:- pragma foreign_import_module("C", time).
+:- pragma foreign_import_module("C", string).
+:- pragma foreign_import_module("C", bitmap).
+:- pragma foreign_import_module("C#", bitmap).
+:- pragma foreign_import_module("Java", bitmap).
+:- pragma foreign_import_module("IL", bitmap).
+:- pragma foreign_import_module("Erlang", bitmap).
+:- pragma foreign_import_module("C", bitmap).
+:- pragma foreign_import_module("C#", bitmap).
+:- pragma foreign_import_module("Java", bitmap).
+:- pragma foreign_import_module("IL", bitmap).
+:- pragma foreign_import_module("Erlang", bitmap).
+:- pragma foreign_import_module("C", time).
+:- pragma foreign_import_module("C#", time).
+:- pragma foreign_import_module("Java", time).
+:- pragma foreign_import_module("IL", time).
+:- pragma foreign_import_module("Erlang", time).
+:- pragma foreign_import_module("C", time).
+:- pragma foreign_import_module("C#", time).
+:- pragma foreign_import_module("Java", time).
+:- pragma foreign_import_module("IL", time).
+:- pragma foreign_import_module("Erlang", time).
+:- pragma foreign_import_module("C#", rtti_implementation).
+:- pragma foreign_import_module("Java", rtti_implementation).
+:- pragma foreign_import_module("C#", rtti_implementation).
+:- pragma foreign_import_module("Java", rtti_implementation).
+:- pragma foreign_import_module("C", stm_builtin).
+:- pragma foreign_import_module("C", stm_builtin).
+:- pragma foreign_import_module("C", store).
+:- pragma foreign_import_module("C#", store).
+:- pragma foreign_import_module("Java", store).
+:- pragma foreign_import_module("IL", store).
+:- pragma foreign_import_module("Erlang", store).
+:- pragma foreign_import_module("C", store).
+:- pragma foreign_import_module("C#", store).
+:- pragma foreign_import_module("Java", store).
+:- pragma foreign_import_module("IL", store).
+:- pragma foreign_import_module("Erlang", store).
+:- pragma foreign_import_module("C", array).
+:- pragma foreign_import_module("C#", array).
+:- pragma foreign_import_module("Java", array).
+:- pragma foreign_import_module("IL", array).
+:- pragma foreign_import_module("Erlang", array).
+:- pragma foreign_import_module("C", array).
+:- pragma foreign_import_module("C#", array).
+:- pragma foreign_import_module("Java", array).
+:- pragma foreign_import_module("IL", array).
+:- pragma foreign_import_module("Erlang", array).
+:- pred (float.float_domain_checks).
+:- mode (float.float_domain_checks) is semidet.
+:- pragma inline((float.float_domain_checks)/0).
+:- pragma inline((float.(/))/2).
+float.(X_4 / Y_5) = Z_6 :-
+    (if
+      float.float_domain_checks,
+      Y_5 = 0.0 : float
+    then
+      V_7 = math.domain_error(V_8) : math.domain_error,
+      V_8 = "float.\'/\': division by zero" : string,
+      exception.throw(V_7)
+    else
+      Z_6 = float.unchecked_quotient(X_4, Y_5)
+    ).
+:- pragma foreign_proc("C", float.float(IntVal :: (builtin.in)) = (FloatVal :: (builtin.out)), [will_not_call_mercury, thread_safe, not_tabled_for_io, promise_pure, will_not_modify_trail, doesnt_affect_liveness], "
+	FloatVal = IntVal;
+").
+:- pragma foreign_proc("C", float.ceiling_to_int(X :: (builtin.in)) = (Ceil :: (builtin.out)), [will_not_call_mercury, thread_safe, not_tabled_for_io, promise_pure, may_modify_trail, doesnt_affect_liveness], "
+	Ceil = (MR_Integer) ceil(X);
+").
+:- pragma foreign_proc("C", float.floor_to_int(X :: (builtin.in)) = (Floor :: (builtin.out)), [will_not_call_mercury, thread_safe, not_tabled_for_io, promise_pure, will_not_modify_trail, doesnt_affect_liveness], "
+	Floor = (MR_Integer) floor(X);
+").
+:- pragma foreign_proc("C", float.round_to_int(X :: (builtin.in)) = (Round :: (builtin.out)), [will_not_call_mercury, thread_safe, not_tabled_for_io, promise_pure, will_not_modify_trail, doesnt_affect_liveness], "
+	Round = (MR_Integer) floor(X + 0.5);
+").
+:- pragma foreign_proc("C", float.truncate_to_int(X :: (builtin.in)) = (Trunc :: (builtin.out)), [will_not_call_mercury, thread_safe, not_tabled_for_io, promise_pure, will_not_modify_trail, doesnt_affect_liveness], "
+	Trunc = (MR_Integer) X;
+").
+float.max(X_4, Y_5) = Max_6 :-
+    (if
+      float.(X_4 >= Y_5)
+    then
+      Max_6 = X_4
+    else
+      Max_6 = Y_5
+    ).
+float.min(X_4, Y_5) = Min_6 :-
+    (if
+      float.(X_4 =< Y_5)
+    then
+      Min_6 = X_4
+    else
+      Min_6 = Y_5
+    ).
+:- pragma foreign_proc("C", float.hash(F :: (builtin.in)) = (H :: (builtin.out)), [will_not_call_mercury, thread_safe, not_tabled_for_io, promise_pure, will_not_modify_trail, doesnt_affect_liveness], "
+	H = MR_hash_float(F);
+").
+float.is_nan_or_inf(Float_2) :-
+    ( % disjunction
+      float.is_nan(Float_2)
+    ;
+      float.is_inf(Float_2)
+    ).
+:- pragma foreign_proc("C", float.is_nan(Flt :: (builtin.in)), [will_not_call_mercury, thread_safe, not_tabled_for_io, promise_pure, will_not_modify_trail, doesnt_affect_liveness], "
+	SUCCESS_INDICATOR = MR_is_nan(Flt);
+").
+:- pragma foreign_proc("C", float.is_inf(Flt :: (builtin.in)), [will_not_call_mercury, thread_safe, not_tabled_for_io, promise_pure, will_not_modify_trail, doesnt_affect_liveness], "
+	SUCCESS_INDICATOR = MR_is_inf(Flt);
+").
+:- pragma foreign_proc("C", float.max = (Max :: (builtin.out)), [will_not_call_mercury, thread_safe, not_tabled_for_io, promise_pure, will_not_modify_trail, doesnt_affect_liveness], "
+	Max = ML_FLOAT_MAX;
+").
+:- pragma foreign_proc("C", float.min = (Min :: (builtin.out)), [will_not_call_mercury, thread_safe, not_tabled_for_io, promise_pure, will_not_modify_trail, doesnt_affect_liveness], "
+	Min = ML_FLOAT_MIN;
+").
+:- pragma foreign_proc("C", float.epsilon = (Eps :: (builtin.out)), [will_not_call_mercury, thread_safe, not_tabled_for_io, promise_pure, will_not_modify_trail, doesnt_affect_liveness], "
+	Eps = ML_FLOAT_EPSILON;
+").
+:- pragma foreign_proc("C", float.radix = (Radix :: (builtin.out)), [will_not_call_mercury, thread_safe, not_tabled_for_io, promise_pure, will_not_modify_trail, doesnt_affect_liveness], "
+	Radix = ML_FLOAT_RADIX;
+").
+:- pragma foreign_proc("C", float.mantissa_digits = (MantDig :: (builtin.out)), [will_not_call_mercury, thread_safe, not_tabled_for_io, promise_pure, will_not_modify_trail, doesnt_affect_liveness], "
+	MantDig = ML_FLOAT_MANT_DIG;
+").
+:- pragma foreign_proc("C", float.min_exponent = (MinExp :: (builtin.out)), [will_not_call_mercury, thread_safe, not_tabled_for_io, promise_pure, will_not_modify_trail, doesnt_affect_liveness], "
+	MinExp = ML_FLOAT_MIN_EXP;
+").
+:- pragma foreign_proc("C", float.max_exponent = (MaxExp :: (builtin.out)), [will_not_call_mercury, thread_safe, not_tabled_for_io, promise_pure, will_not_modify_trail, doesnt_affect_liveness], "
+	MaxExp = ML_FLOAT_MAX_EXP;
+").
+float.float_to_doc(X_3) = pretty_printer.str(V_4) :-
+    V_4 = string.float_to_string(X_3).
+:- pragma foreign_proc("C", float.float32_bits_string(Flt :: (builtin.in)) = (Str :: (builtin.uo)), [will_not_call_mercury, thread_safe, not_tabled_for_io, promise_pure, may_modify_trail], "
+    union {
+        float f;
+        MR_int_least32_t i;
+    } u;
+    char buf[64];
+
+    u.f = (float) Flt;
+    sprintf(buf, \"%d\", u.i);
+    MR_make_aligned_string_copy(Str, buf);
+").
+:- pragma foreign_proc("C", float.float64_bits_string(Flt :: (builtin.in)) = (Str :: (builtin.uo)), [will_not_call_mercury, thread_safe, not_tabled_for_io, promise_pure, may_modify_trail], "
+    union {
+        double f;
+        MR_int_least64_t i;
+    } u;
+    char buf[64];
+
+    u.f = (double) Flt;
+    sprintf(buf, \"%ld\", u.i);
+    MR_make_aligned_string_copy(Str, buf);
+").
+:- pragma inline((float.float_domain_checks)/0).
+:- pragma foreign_proc("C", float.float_domain_checks, [will_not_call_mercury, thread_safe, not_tabled_for_io, promise_pure, will_not_modify_trail, doesnt_affect_liveness], "
+#ifdef ML_OMIT_MATH_DOMAIN_CHECKS
+	SUCCESS_INDICATOR = MR_FALSE;
+#else
+	SUCCESS_INDICATOR = MR_TRUE;
+#endif
+").
+:- pragma exceptions(function, (float.(+)), 3, 0, will_not_throw).
+:- pragma exceptions(function, (float.(-)), 3, 0, will_not_throw).
+:- pragma exceptions(function, (float.(*)), 3, 0, will_not_throw).
+:- pragma exceptions(function, (float.(/)), 3, 0, may_throw(user_exception)).
+:- pragma exceptions(function, (float.unchecked_quotient), 3, 0, will_not_throw).
+:- pragma exceptions(function, (float.(+)), 2, 0, will_not_throw).
+:- pragma exceptions(function, (float.(-)), 2, 0, will_not_throw).
+:- pragma exceptions(predicate, (float.(<)), 2, 0, will_not_throw).
+:- pragma exceptions(predicate, (float.(=<)), 2, 0, will_not_throw).
+:- pragma exceptions(predicate, (float.(>=)), 2, 0, will_not_throw).
+:- pragma exceptions(predicate, (float.(>)), 2, 0, will_not_throw).
+:- pragma exceptions(function, (float.float), 2, 0, will_not_throw).
+:- pragma exceptions(function, (float.ceiling_to_int), 2, 0, will_not_throw).
+:- pragma exceptions(function, (float.floor_to_int), 2, 0, will_not_throw).
+:- pragma exceptions(function, (float.round_to_int), 2, 0, will_not_throw).
+:- pragma exceptions(function, (float.truncate_to_int), 2, 0, will_not_throw).
+:- pragma exceptions(function, (float.abs), 2, 0, will_not_throw).
+:- pragma exceptions(function, (float.max), 3, 0, will_not_throw).
+:- pragma exceptions(function, (float.min), 3, 0, will_not_throw).
+:- pragma exceptions(function, (float.pow), 3, 0, may_throw(user_exception)).
+:- pragma exceptions(function, (float.hash), 2, 0, will_not_throw).
+:- pragma exceptions(predicate, (float.is_nan_or_inf), 1, 0, will_not_throw).
+:- pragma exceptions(predicate, (float.is_nan), 1, 0, will_not_throw).
+:- pragma exceptions(predicate, (float.is_inf), 1, 0, will_not_throw).
+:- pragma exceptions(function, (float.max), 1, 0, will_not_throw).
+:- pragma exceptions(function, (float.min), 1, 0, will_not_throw).
+:- pragma exceptions(function, (float.epsilon), 1, 0, will_not_throw).
+:- pragma exceptions(function, (float.radix), 1, 0, will_not_throw).
+:- pragma exceptions(function, (float.mantissa_digits), 1, 0, will_not_throw).
+:- pragma exceptions(function, (float.min_exponent), 1, 0, will_not_throw).
+:- pragma exceptions(function, (float.max_exponent), 1, 0, will_not_throw).
+:- pragma exceptions(function, (float.float_to_doc), 2, 0, may_throw(user_exception)).
+:- pragma exceptions(function, (float.float32_bits_string), 2, 0, will_not_throw).
+:- pragma exceptions(function, (float.float64_bits_string), 2, 0, will_not_throw).
+:- pragma exceptions(predicate, (float.float_domain_checks), 0, 0, will_not_throw).
+:- pragma termination_info(float.'+'((builtin.in), (builtin.in)) = (builtin.uo), finite(0, [no, no, no]), cannot_loop).
+:- pragma termination_info(float.'-'((builtin.in), (builtin.in)) = (builtin.uo), finite(0, [no, no, no]), cannot_loop).
+:- pragma termination_info(float.'*'((builtin.in), (builtin.in)) = (builtin.uo), finite(0, [no, no, no]), cannot_loop).
+:- pragma termination_info(float.'/'((builtin.in), (builtin.in)) = (builtin.uo), finite(0, [no, no, no]), can_loop).
+:- pragma termination_info(float.unchecked_quotient((builtin.in), (builtin.in)) = (builtin.uo), finite(0, [no, no, no]), cannot_loop).
+:- pragma termination_info(float.'+'((builtin.in)) = (builtin.uo), finite(0, [no, no]), cannot_loop).
+:- pragma termination_info(float.'-'((builtin.in)) = (builtin.uo), finite(0, [no, no]), cannot_loop).
+:- pragma termination_info(float.'<'((builtin.in), (builtin.in)), finite(0, [no, no]), cannot_loop).
+:- pragma termination_info(float.'=<'((builtin.in), (builtin.in)), finite(0, [no, no]), cannot_loop).
+:- pragma termination_info(float.'>='((builtin.in), (builtin.in)), finite(0, [no, no]), cannot_loop).
+:- pragma termination_info(float.'>'((builtin.in), (builtin.in)), finite(0, [no, no]), cannot_loop).
+:- pragma termination_info(float.float((builtin.in)) = (builtin.out), infinite, cannot_loop).
+:- pragma termination_info(float.ceiling_to_int((builtin.in)) = (builtin.out), infinite, cannot_loop).
+:- pragma termination_info(float.floor_to_int((builtin.in)) = (builtin.out), infinite, cannot_loop).
+:- pragma termination_info(float.round_to_int((builtin.in)) = (builtin.out), infinite, cannot_loop).
+:- pragma termination_info(float.truncate_to_int((builtin.in)) = (builtin.out), infinite, cannot_loop).
+:- pragma termination_info(float.abs((builtin.in)) = (builtin.out), finite(0, [yes, no]), cannot_loop).
+:- pragma termination_info(float.max((builtin.in), (builtin.in)) = (builtin.out), finite(0, [yes, yes, no]), cannot_loop).
+:- pragma termination_info(float.min((builtin.in), (builtin.in)) = (builtin.out), finite(0, [yes, yes, no]), cannot_loop).
+:- pragma termination_info(float.pow((builtin.in), (builtin.in)) = (builtin.out), finite(0, [no, no, no]), can_loop).
+:- pragma termination_info(float.hash((builtin.in)) = (builtin.out), infinite, cannot_loop).
+:- pragma termination_info(float.is_nan_or_inf((builtin.in)), finite(0, [no]), cannot_loop).
+:- pragma termination_info(float.is_nan((builtin.in)), finite(0, [no]), cannot_loop).
+:- pragma termination_info(float.is_inf((builtin.in)), finite(0, [no]), cannot_loop).
+:- pragma termination_info((float.max) = (builtin.out), infinite, cannot_loop).
+:- pragma termination_info((float.min) = (builtin.out), infinite, cannot_loop).
+:- pragma termination_info((float.epsilon) = (builtin.out), infinite, cannot_loop).
+:- pragma termination_info((float.radix) = (builtin.out), infinite, cannot_loop).
+:- pragma termination_info((float.mantissa_digits) = (builtin.out), infinite, cannot_loop).
+:- pragma termination_info((float.min_exponent) = (builtin.out), infinite, cannot_loop).
+:- pragma termination_info((float.max_exponent) = (builtin.out), infinite, cannot_loop).
+:- pragma termination_info(float.float_to_doc((builtin.in)) = (builtin.out), infinite, can_loop).
+:- pragma termination_info(float.float32_bits_string((builtin.in)) = (builtin.uo), infinite, cannot_loop).
+:- pragma termination_info(float.float64_bits_string((builtin.in)) = (builtin.uo), infinite, cannot_loop).
+:- pragma termination_info((float.float_domain_checks), finite(0, []), cannot_loop).

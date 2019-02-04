@@ -1,0 +1,27 @@
+:- module (top_level.mercury_compile_mlds_back_end).
+:- interface.
+:- import_module bool.
+:- import_module hlds.
+:- import_module io.
+:- import_module libs.
+:- import_module parse_tree.
+:- import_module (hlds.hlds_module).
+:- import_module (hlds.passes_aux).
+:- import_module (libs.globals).
+:- import_module (ml_backend.mlds).
+:- import_module (parse_tree.prog_data).
+:- pred maybe_mark_static_terms(bool.bool, bool.bool, hlds.hlds_module.module_info, hlds.hlds_module.module_info, io.io, io.io).
+:- mode maybe_mark_static_terms((builtin.in), (builtin.in), (builtin.in), (builtin.out), (builtin.di), (builtin.uo)) is det.
+:- pred maybe_mlds_to_gcc(libs.globals.globals, ml_backend.mlds.mlds, bool.bool, io.io, io.io).
+:- mode maybe_mlds_to_gcc((builtin.in), (builtin.in), (builtin.out), (builtin.di), (builtin.uo)) is det.
+:- pred mlds_backend(hlds.hlds_module.module_info, hlds.hlds_module.module_info, ml_backend.mlds.mlds, hlds.passes_aux.dump_info, hlds.passes_aux.dump_info, io.io, io.io).
+:- mode mlds_backend((builtin.in), (builtin.out), (builtin.out), (builtin.in), (builtin.out), (builtin.di), (builtin.uo)) is det.
+:- func mlds_has_main(ml_backend.mlds.mlds) = parse_tree.prog_data.has_main.
+:- pred mlds_to_csharp(hlds.hlds_module.module_info, ml_backend.mlds.mlds, io.io, io.io).
+:- mode mlds_to_csharp((builtin.in), (builtin.in), (builtin.di), (builtin.uo)) is det.
+:- pred mlds_to_high_level_c(libs.globals.globals, ml_backend.mlds.mlds, io.io, io.io).
+:- mode mlds_to_high_level_c((builtin.in), (builtin.in), (builtin.di), (builtin.uo)) is det.
+:- pred mlds_to_il_assembler(libs.globals.globals, ml_backend.mlds.mlds, io.io, io.io).
+:- mode mlds_to_il_assembler((builtin.in), (builtin.in), (builtin.di), (builtin.uo)) is det.
+:- pred mlds_to_java(hlds.hlds_module.module_info, ml_backend.mlds.mlds, io.io, io.io).
+:- mode mlds_to_java((builtin.in), (builtin.in), (builtin.di), (builtin.uo)) is det.

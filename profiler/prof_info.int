@@ -1,0 +1,79 @@
+:- module prof_info.
+:- interface.
+:- import_module list.
+:- import_module map.
+:- type addrdecl == map.map(string, int).
+:- type cycle_map == map.map(string, int).
+:- type pred_info.
+:- type prof.
+:- type prof_node.
+:- type prof_node_map == map.map(int, prof_info.prof_node).
+:- type prof_node_type
+	--->	predicate 
+	;	cycle .
+:- pred get_prof_node(string, prof_info.addrdecl, prof_info.prof_node_map, prof_info.prof_node).
+:- mode get_prof_node((builtin.in), (builtin.in), (builtin.in), (builtin.out)) is det.
+:- pred pred_info_get_counts(prof_info.pred_info, int).
+:- mode pred_info_get_counts((builtin.in), (builtin.out)) is det.
+:- pred pred_info_get_entire(prof_info.pred_info, string, int).
+:- mode pred_info_get_entire((builtin.in), (builtin.out), (builtin.out)) is det.
+:- pred pred_info_get_pred_name(prof_info.pred_info, string).
+:- mode pred_info_get_pred_name((builtin.in), (builtin.out)) is det.
+:- pred pred_info_init(string, int, prof_info.pred_info).
+:- mode pred_info_init((builtin.in), (builtin.in), (builtin.out)) is det.
+:- pred prof_get_addrdeclmap(prof_info.prof, prof_info.addrdecl).
+:- mode prof_get_addrdeclmap((builtin.in), (builtin.out)) is det.
+:- pred prof_get_entire(prof_info.prof, float, string, int, prof_info.addrdecl, prof_info.prof_node_map, prof_info.cycle_map).
+:- mode prof_get_entire((builtin.in), (builtin.out), (builtin.out), (builtin.out), (builtin.out), (builtin.out), (builtin.out)) is det.
+:- pred prof_get_profnodemap(prof_info.prof, prof_info.prof_node_map).
+:- mode prof_get_profnodemap((builtin.in), (builtin.out)) is det.
+:- pred prof_node_concat_to_child(string, int, prof_info.prof_node, prof_info.prof_node).
+:- mode prof_node_concat_to_child((builtin.in), (builtin.in), (builtin.in), (builtin.out)) is det.
+:- pred prof_node_concat_to_member(string, int, prof_info.prof_node, prof_info.prof_node).
+:- mode prof_node_concat_to_member((builtin.in), (builtin.in), (builtin.in), (builtin.out)) is det.
+:- pred prof_node_concat_to_name_list(string, prof_info.prof_node, prof_info.prof_node).
+:- mode prof_node_concat_to_name_list((builtin.in), (builtin.in), (builtin.out)) is det.
+:- pred prof_node_concat_to_parent(string, int, prof_info.prof_node, prof_info.prof_node).
+:- mode prof_node_concat_to_parent((builtin.in), (builtin.in), (builtin.in), (builtin.out)) is det.
+:- pred prof_node_get_child_list(prof_info.prof_node, list.list(prof_info.pred_info)).
+:- mode prof_node_get_child_list((builtin.in), (builtin.out)) is det.
+:- pred prof_node_get_cycle_number(prof_info.prof_node, int).
+:- mode prof_node_get_cycle_number((builtin.in), (builtin.out)) is det.
+:- pred prof_node_get_entire_cycle(prof_info.prof_node, string, int, int, float, list.list(prof_info.pred_info), int, int).
+:- mode prof_node_get_entire_cycle((builtin.in), (builtin.out), (builtin.out), (builtin.out), (builtin.out), (builtin.out), (builtin.out), (builtin.out)) is det.
+:- pred prof_node_get_entire_pred(prof_info.prof_node, string, int, int, float, list.list(prof_info.pred_info), list.list(prof_info.pred_info), int, int, list.list(string)).
+:- mode prof_node_get_entire_pred((builtin.in), (builtin.out), (builtin.out), (builtin.out), (builtin.out), (builtin.out), (builtin.out), (builtin.out), (builtin.out), (builtin.out)) is det.
+:- pred prof_node_get_initial_counts(prof_info.prof_node, int).
+:- mode prof_node_get_initial_counts((builtin.in), (builtin.out)) is det.
+:- pred prof_node_get_parent_list(prof_info.prof_node, list.list(prof_info.pred_info)).
+:- mode prof_node_get_parent_list((builtin.in), (builtin.out)) is det.
+:- pred prof_node_get_pred_name(prof_info.prof_node, string).
+:- mode prof_node_get_pred_name((builtin.in), (builtin.out)) is det.
+:- pred prof_node_get_propagated_counts(prof_info.prof_node, float).
+:- mode prof_node_get_propagated_counts((builtin.in), (builtin.out)) is det.
+:- pred prof_node_get_self_calls(prof_info.prof_node, int).
+:- mode prof_node_get_self_calls((builtin.in), (builtin.out)) is det.
+:- pred prof_node_get_total_calls(prof_info.prof_node, int).
+:- mode prof_node_get_total_calls((builtin.in), (builtin.out)) is det.
+:- func prof_node_init(string) = prof_info.prof_node.
+:- func prof_node_init_cycle(string, int, int, float, list.list(prof_info.pred_info), int, int) = prof_info.prof_node.
+:- pred prof_node_set_cycle_num(int, prof_info.prof_node, prof_info.prof_node).
+:- mode prof_node_set_cycle_num((builtin.in), (builtin.in), (builtin.out)) is det.
+:- pred prof_node_set_initial_counts(int, prof_info.prof_node, prof_info.prof_node).
+:- mode prof_node_set_initial_counts((builtin.in), (builtin.in), (builtin.out)) is det.
+:- pred prof_node_set_propagated_counts(float, prof_info.prof_node, prof_info.prof_node).
+:- mode prof_node_set_propagated_counts((builtin.in), (builtin.in), (builtin.out)) is det.
+:- pred prof_node_set_self_calls(int, prof_info.prof_node, prof_info.prof_node).
+:- mode prof_node_set_self_calls((builtin.in), (builtin.in), (builtin.out)) is det.
+:- pred prof_node_set_total_calls(int, prof_info.prof_node, prof_info.prof_node).
+:- mode prof_node_set_total_calls((builtin.in), (builtin.in), (builtin.out)) is det.
+:- pred prof_node_type(prof_info.prof_node, prof_info.prof_node_type).
+:- mode prof_node_type((builtin.in), (builtin.out)) is det.
+:- pred prof_set_cyclemap(prof_info.cycle_map, prof_info.prof, prof_info.prof).
+:- mode prof_set_cyclemap((builtin.in), (builtin.in), (builtin.out)) is det.
+:- pred prof_set_entire(float, string, int, prof_info.addrdecl, prof_info.prof_node_map, prof_info.cycle_map, prof_info.prof).
+:- mode prof_set_entire((builtin.in), (builtin.in), (builtin.in), (builtin.in), (builtin.in), (builtin.in), (builtin.out)) is det.
+:- pred prof_set_profnodemap(prof_info.prof_node_map, prof_info.prof, prof_info.prof).
+:- mode prof_set_profnodemap((builtin.in), (builtin.in), (builtin.out)) is det.
+:- pred update_prof_node(string, prof_info.prof_node, prof_info.addrdecl, prof_info.prof_node_map, prof_info.prof_node_map).
+:- mode update_prof_node((builtin.in), (builtin.in), (builtin.in), (builtin.in), (builtin.out)) is det.

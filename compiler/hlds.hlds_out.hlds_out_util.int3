@@ -1,0 +1,11 @@
+:- module ((hlds.hlds_out).hlds_out_util).
+:- interface.
+:- type hlds_out_info.
+:- type is_first
+	where	type_is_abstract_enum(1).
+:- type is_last
+	where	type_is_abstract_enum(1).
+:- type maybe_qualify_cons_id
+	where	type_is_abstract_enum(1).
+:- type output_lang
+	where	type_is_abstract_enum(1).

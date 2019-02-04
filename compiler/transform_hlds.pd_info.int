@@ -1,0 +1,143 @@
+:- module (transform_hlds.pd_info).
+:- interface.
+:- import_module bool.
+:- import_module counter.
+:- import_module list.
+:- import_module map.
+:- import_module maybe.
+:- import_module pair.
+:- import_module set.
+:- import_module (hlds.hlds_goal).
+:- import_module (hlds.hlds_module).
+:- import_module (hlds.hlds_pred).
+:- import_module (hlds.instmap).
+:- import_module (parse_tree.prog_data).
+:- import_module (transform_hlds.pd_term).
+:- type goal_version_index == map.map(list.list(hlds.hlds_pred.pred_proc_id), list.list(hlds.hlds_pred.pred_proc_id)).
+:- type maybe_version
+	--->	no_version 
+	;	version(((transform_hlds.pd_info).mv_is_exact) :: transform_hlds.pd_info.version_is_exact, ((transform_hlds.pd_info).mv_ppid) :: hlds.hlds_pred.pred_proc_id, ((transform_hlds.pd_info).mv_version) :: transform_hlds.pd_info.version_info, ((transform_hlds.pd_info).mv_renaming) :: map.map(parse_tree.prog_data.prog_var, parse_tree.prog_data.prog_var), ((transform_hlds.pd_info).mv_tsubst) :: parse_tree.prog_data.tsubst).
+:- type pd_arg_info == map.map(hlds.hlds_pred.pred_proc_id, transform_hlds.pd_info.pd_proc_arg_info).
+:- type pd_info
+	--->	pd_info(((transform_hlds.pd_info).pdi_module_info) :: hlds.hlds_module.module_info, ((transform_hlds.pd_info).pdi_maybe_unfold_info) :: maybe.maybe(transform_hlds.pd_info.unfold_info), ((transform_hlds.pd_info).pdi_goal_version_index) :: transform_hlds.pd_info.goal_version_index, ((transform_hlds.pd_info).pdi_versions) :: transform_hlds.pd_info.version_index, ((transform_hlds.pd_info).pdi_proc_arg_info) :: transform_hlds.pd_info.pd_arg_info, ((transform_hlds.pd_info).pdi_counter) :: counter.counter, ((transform_hlds.pd_info).pdi_global_term_info) :: transform_hlds.pd_term.global_term_info, ((transform_hlds.pd_info).pdi_parent_versions) :: set.set(hlds.hlds_pred.pred_proc_id), ((transform_hlds.pd_info).pdi_depth) :: int, ((transform_hlds.pd_info).pdi_created_versions) :: set.set(hlds.hlds_pred.pred_proc_id), ((transform_hlds.pd_info).pdi_useless_versions) :: transform_hlds.pd_info.useless_versions).
+:- type pd_proc_arg_info == transform_hlds.pd_info.pd_branch_info(int).
+:- type unfold_info
+	--->	unfold_info(((transform_hlds.pd_info).ufi_proc_info) :: hlds.hlds_pred.proc_info, ((transform_hlds.pd_info).ufi_instmap) :: hlds.instmap.instmap, ((transform_hlds.pd_info).ufi_cost_delta) :: int, ((transform_hlds.pd_info).ufi_local_term_info) :: transform_hlds.pd_term.local_term_info, ((transform_hlds.pd_info).ufi_pred_info) :: hlds.hlds_pred.pred_info, ((transform_hlds.pd_info).ufi_parents) :: set.set(hlds.hlds_pred.pred_proc_id), ((transform_hlds.pd_info).ufi_pred_proc_id) :: hlds.hlds_pred.pred_proc_id, ((transform_hlds.pd_info).ufi_changed) :: bool.bool, ((transform_hlds.pd_info).ufi_size_delta) :: int, ((transform_hlds.pd_info).ufi_rerun_det) :: bool.bool).
+:- type useless_versions == set.set(pair.pair(hlds.hlds_pred.pred_proc_id)).
+:- type version_index == map.map(hlds.hlds_pred.pred_proc_id, transform_hlds.pd_info.version_info).
+:- type version_info
+	--->	version_info(((transform_hlds.pd_info).version_orig_goal) :: hlds.hlds_goal.hlds_goal, ((transform_hlds.pd_info).version_deforest_calls) :: list.list(hlds.hlds_pred.pred_proc_id), ((transform_hlds.pd_info).version_arg_vars) :: list.list(parse_tree.prog_data.prog_var), ((transform_hlds.pd_info).version_arg_types) :: list.list(parse_tree.prog_data.mer_type), ((transform_hlds.pd_info).version_init_insts) :: hlds.instmap.instmap, ((transform_hlds.pd_info).version_orig_cost) :: int, ((transform_hlds.pd_info).version_cost_improv) :: int, ((transform_hlds.pd_info).version_parents) :: set.set(hlds.hlds_pred.pred_proc_id), ((transform_hlds.pd_info).version_source) :: maybe.maybe(hlds.hlds_pred.pred_proc_id)).
+:- type version_is_exact
+	--->	exact 
+	;	more_general .
+:- type branch_info_map(T) == map.map(T, set.set(int)).
+:- type pd_branch_info(T)
+	--->	pd_branch_info(transform_hlds.pd_info.branch_info_map(T), set.set(T), set.set(T)).
+:- pred define_new_pred(hlds.hlds_pred.pred_origin, hlds.hlds_goal.hlds_goal, hlds.hlds_pred.pred_proc_id, hlds.hlds_goal.hlds_goal, transform_hlds.pd_info.pd_info, transform_hlds.pd_info.pd_info).
+:- mode define_new_pred((builtin.in), (builtin.in), (builtin.out), (builtin.out), (builtin.in), (builtin.out)) is det.
+:- pred invalidate_version(hlds.hlds_pred.pred_proc_id, transform_hlds.pd_info.pd_info, transform_hlds.pd_info.pd_info).
+:- mode invalidate_version((builtin.in), (builtin.in), (builtin.out)) is det.
+:- pred pd_info_bind_var_to_functors(parse_tree.prog_data.prog_var, parse_tree.prog_data.cons_id, list.list(parse_tree.prog_data.cons_id), transform_hlds.pd_info.pd_info, transform_hlds.pd_info.pd_info).
+:- mode pd_info_bind_var_to_functors((builtin.in), (builtin.in), (builtin.in), (builtin.in), (builtin.out)) is det.
+:- pred pd_info_get_changed(transform_hlds.pd_info.pd_info, bool.bool).
+:- mode pd_info_get_changed((builtin.in), (builtin.out)) is det.
+:- pred pd_info_get_cost_delta(transform_hlds.pd_info.pd_info, int).
+:- mode pd_info_get_cost_delta((builtin.in), (builtin.out)) is det.
+:- pred pd_info_get_counter(transform_hlds.pd_info.pd_info, counter.counter).
+:- mode pd_info_get_counter((builtin.in), (builtin.out)) is det.
+:- pred pd_info_get_created_versions(transform_hlds.pd_info.pd_info, set.set(hlds.hlds_pred.pred_proc_id)).
+:- mode pd_info_get_created_versions((builtin.in), (builtin.out)) is det.
+:- pred pd_info_get_depth(transform_hlds.pd_info.pd_info, int).
+:- mode pd_info_get_depth((builtin.in), (builtin.out)) is det.
+:- pred pd_info_get_global_term_info(transform_hlds.pd_info.pd_info, transform_hlds.pd_term.global_term_info).
+:- mode pd_info_get_global_term_info((builtin.in), (builtin.out)) is det.
+:- pred pd_info_get_goal_version_index(transform_hlds.pd_info.pd_info, transform_hlds.pd_info.goal_version_index).
+:- mode pd_info_get_goal_version_index((builtin.in), (builtin.out)) is det.
+:- pred pd_info_get_instmap(transform_hlds.pd_info.pd_info, hlds.instmap.instmap).
+:- mode pd_info_get_instmap((builtin.in), (builtin.out)) is det.
+:- pred pd_info_get_local_term_info(transform_hlds.pd_info.pd_info, transform_hlds.pd_term.local_term_info).
+:- mode pd_info_get_local_term_info((builtin.in), (builtin.out)) is det.
+:- pred pd_info_get_module_info(transform_hlds.pd_info.pd_info, hlds.hlds_module.module_info).
+:- mode pd_info_get_module_info((builtin.in), (builtin.out)) is det.
+:- pred pd_info_get_parent_versions(transform_hlds.pd_info.pd_info, set.set(hlds.hlds_pred.pred_proc_id)).
+:- mode pd_info_get_parent_versions((builtin.in), (builtin.out)) is det.
+:- pred pd_info_get_parents(transform_hlds.pd_info.pd_info, set.set(hlds.hlds_pred.pred_proc_id)).
+:- mode pd_info_get_parents((builtin.in), (builtin.out)) is det.
+:- pred pd_info_get_pred_info(transform_hlds.pd_info.pd_info, hlds.hlds_pred.pred_info).
+:- mode pd_info_get_pred_info((builtin.in), (builtin.out)) is det.
+:- pred pd_info_get_pred_proc_id(transform_hlds.pd_info.pd_info, hlds.hlds_pred.pred_proc_id).
+:- mode pd_info_get_pred_proc_id((builtin.in), (builtin.out)) is det.
+:- pred pd_info_get_proc_arg_info(transform_hlds.pd_info.pd_info, transform_hlds.pd_info.pd_arg_info).
+:- mode pd_info_get_proc_arg_info((builtin.in), (builtin.out)) is det.
+:- pred pd_info_get_proc_info(transform_hlds.pd_info.pd_info, hlds.hlds_pred.proc_info).
+:- mode pd_info_get_proc_info((builtin.in), (builtin.out)) is det.
+:- pred pd_info_get_rerun_det(transform_hlds.pd_info.pd_info, bool.bool).
+:- mode pd_info_get_rerun_det((builtin.in), (builtin.out)) is det.
+:- pred pd_info_get_size_delta(transform_hlds.pd_info.pd_info, int).
+:- mode pd_info_get_size_delta((builtin.in), (builtin.out)) is det.
+:- pred pd_info_get_unfold_info(transform_hlds.pd_info.pd_info, transform_hlds.pd_info.unfold_info).
+:- mode pd_info_get_unfold_info((builtin.in), (builtin.out)) is det.
+:- pred pd_info_get_useless_versions(transform_hlds.pd_info.pd_info, transform_hlds.pd_info.useless_versions).
+:- mode pd_info_get_useless_versions((builtin.in), (builtin.out)) is det.
+:- pred pd_info_get_versions(transform_hlds.pd_info.pd_info, transform_hlds.pd_info.version_index).
+:- mode pd_info_get_versions((builtin.in), (builtin.out)) is det.
+:- pred pd_info_incr_cost_delta(int, transform_hlds.pd_info.pd_info, transform_hlds.pd_info.pd_info).
+:- mode pd_info_incr_cost_delta((builtin.in), (builtin.in), (builtin.out)) is det.
+:- pred pd_info_incr_size_delta(int, transform_hlds.pd_info.pd_info, transform_hlds.pd_info.pd_info).
+:- mode pd_info_incr_size_delta((builtin.in), (builtin.in), (builtin.out)) is det.
+:- pred pd_info_init(hlds.hlds_module.module_info, transform_hlds.pd_info.pd_arg_info, transform_hlds.pd_info.pd_info).
+:- mode pd_info_init((builtin.in), (builtin.in), (builtin.out)) is det.
+:- pred pd_info_init_unfold_info(hlds.hlds_pred.pred_proc_id, hlds.hlds_pred.pred_info, hlds.hlds_pred.proc_info, transform_hlds.pd_info.pd_info, transform_hlds.pd_info.pd_info).
+:- mode pd_info_init_unfold_info((builtin.in), (builtin.in), (builtin.in), (builtin.in), (builtin.out)) is det.
+:- pred pd_info_set_changed(bool.bool, transform_hlds.pd_info.pd_info, transform_hlds.pd_info.pd_info).
+:- mode pd_info_set_changed((builtin.in), (builtin.in), (builtin.out)) is det.
+:- pred pd_info_set_cost_delta(int, transform_hlds.pd_info.pd_info, transform_hlds.pd_info.pd_info).
+:- mode pd_info_set_cost_delta((builtin.in), (builtin.in), (builtin.out)) is det.
+:- pred pd_info_set_counter(counter.counter, transform_hlds.pd_info.pd_info, transform_hlds.pd_info.pd_info).
+:- mode pd_info_set_counter((builtin.in), (builtin.in), (builtin.out)) is det.
+:- pred pd_info_set_created_versions(set.set(hlds.hlds_pred.pred_proc_id), transform_hlds.pd_info.pd_info, transform_hlds.pd_info.pd_info).
+:- mode pd_info_set_created_versions((builtin.in), (builtin.in), (builtin.out)) is det.
+:- pred pd_info_set_depth(int, transform_hlds.pd_info.pd_info, transform_hlds.pd_info.pd_info).
+:- mode pd_info_set_depth((builtin.in), (builtin.in), (builtin.out)) is det.
+:- pred pd_info_set_global_term_info(transform_hlds.pd_term.global_term_info, transform_hlds.pd_info.pd_info, transform_hlds.pd_info.pd_info).
+:- mode pd_info_set_global_term_info((builtin.in), (builtin.in), (builtin.out)) is det.
+:- pred pd_info_set_goal_version_index(transform_hlds.pd_info.goal_version_index, transform_hlds.pd_info.pd_info, transform_hlds.pd_info.pd_info).
+:- mode pd_info_set_goal_version_index((builtin.in), (builtin.in), (builtin.out)) is det.
+:- pred pd_info_set_instmap(hlds.instmap.instmap, transform_hlds.pd_info.pd_info, transform_hlds.pd_info.pd_info).
+:- mode pd_info_set_instmap((builtin.in), (builtin.in), (builtin.out)) is det.
+:- pred pd_info_set_local_term_info(transform_hlds.pd_term.local_term_info, transform_hlds.pd_info.pd_info, transform_hlds.pd_info.pd_info).
+:- mode pd_info_set_local_term_info((builtin.in), (builtin.in), (builtin.out)) is det.
+:- pred pd_info_set_module_info(hlds.hlds_module.module_info, transform_hlds.pd_info.pd_info, transform_hlds.pd_info.pd_info).
+:- mode pd_info_set_module_info((builtin.in), (builtin.in), (builtin.out)) is det.
+:- pred pd_info_set_parent_versions(set.set(hlds.hlds_pred.pred_proc_id), transform_hlds.pd_info.pd_info, transform_hlds.pd_info.pd_info).
+:- mode pd_info_set_parent_versions((builtin.in), (builtin.in), (builtin.out)) is det.
+:- pred pd_info_set_parents(set.set(hlds.hlds_pred.pred_proc_id), transform_hlds.pd_info.pd_info, transform_hlds.pd_info.pd_info).
+:- mode pd_info_set_parents((builtin.in), (builtin.in), (builtin.out)) is det.
+:- pred pd_info_set_pred_info(hlds.hlds_pred.pred_info, transform_hlds.pd_info.pd_info, transform_hlds.pd_info.pd_info).
+:- mode pd_info_set_pred_info((builtin.in), (builtin.in), (builtin.out)) is det.
+:- pred pd_info_set_pred_proc_id(hlds.hlds_pred.pred_proc_id, transform_hlds.pd_info.pd_info, transform_hlds.pd_info.pd_info).
+:- mode pd_info_set_pred_proc_id((builtin.in), (builtin.in), (builtin.out)) is det.
+:- pred pd_info_set_proc_arg_info(transform_hlds.pd_info.pd_arg_info, transform_hlds.pd_info.pd_info, transform_hlds.pd_info.pd_info).
+:- mode pd_info_set_proc_arg_info((builtin.in), (builtin.in), (builtin.out)) is det.
+:- pred pd_info_set_proc_info(hlds.hlds_pred.proc_info, transform_hlds.pd_info.pd_info, transform_hlds.pd_info.pd_info).
+:- mode pd_info_set_proc_info((builtin.in), (builtin.in), (builtin.out)) is det.
+:- pred pd_info_set_rerun_det(bool.bool, transform_hlds.pd_info.pd_info, transform_hlds.pd_info.pd_info).
+:- mode pd_info_set_rerun_det((builtin.in), (builtin.in), (builtin.out)) is det.
+:- pred pd_info_set_size_delta(int, transform_hlds.pd_info.pd_info, transform_hlds.pd_info.pd_info).
+:- mode pd_info_set_size_delta((builtin.in), (builtin.in), (builtin.out)) is det.
+:- pred pd_info_set_unfold_info(transform_hlds.pd_info.unfold_info, transform_hlds.pd_info.pd_info, transform_hlds.pd_info.pd_info).
+:- mode pd_info_set_unfold_info((builtin.in), (builtin.in), (builtin.out)) is det.
+:- pred pd_info_set_useless_versions(transform_hlds.pd_info.useless_versions, transform_hlds.pd_info.pd_info, transform_hlds.pd_info.pd_info).
+:- mode pd_info_set_useless_versions((builtin.in), (builtin.in), (builtin.out)) is det.
+:- pred pd_info_set_versions(transform_hlds.pd_info.version_index, transform_hlds.pd_info.pd_info, transform_hlds.pd_info.pd_info).
+:- mode pd_info_set_versions((builtin.in), (builtin.in), (builtin.out)) is det.
+:- pred pd_info_unset_unfold_info(transform_hlds.pd_info.pd_info, transform_hlds.pd_info.pd_info).
+:- mode pd_info_unset_unfold_info((builtin.in), (builtin.out)) is det.
+:- pred pd_info_update_goal(hlds.hlds_goal.hlds_goal, transform_hlds.pd_info.pd_info, transform_hlds.pd_info.pd_info).
+:- mode pd_info_update_goal((builtin.in), (builtin.in), (builtin.out)) is det.
+:- pred register_version(hlds.hlds_pred.pred_proc_id, transform_hlds.pd_info.version_info, transform_hlds.pd_info.pd_info, transform_hlds.pd_info.pd_info).
+:- mode register_version((builtin.in), (builtin.in), (builtin.in), (builtin.out)) is det.
+:- pred remove_version(hlds.hlds_pred.pred_proc_id, transform_hlds.pd_info.pd_info, transform_hlds.pd_info.pd_info).
+:- mode remove_version((builtin.in), (builtin.in), (builtin.out)) is det.
+:- pred search_version(transform_hlds.pd_info.pd_info, hlds.hlds_goal.hlds_goal, transform_hlds.pd_info.maybe_version).
+:- mode search_version((builtin.in), (builtin.in), (builtin.out)) is det.

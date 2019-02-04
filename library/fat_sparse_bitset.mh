@@ -1,0 +1,34 @@
+/*
+** Automatically generated from `fat_sparse_bitset.m'
+** by the Mercury compiler,
+** version rotd-2012-07-13, configured for x86_64-unknown-linux-gnu.
+** Do not edit.
+*/
+#ifndef FAT_SPARSE_BITSET_MH
+#define FAT_SPARSE_BITSET_MH
+
+#ifdef __cplusplus
+extern "C" {
+#endif
+
+#ifdef MR_HIGHLEVEL_CODE
+#include "mercury.h"
+#else
+  #ifndef MERCURY_HDR_EXCLUDE_IMP_H
+  #include "mercury_imp.h"
+  #endif
+#endif
+#ifdef MR_DEEP_PROFILING
+#include "mercury_deep_profiling.h"
+#endif
+
+#ifndef FAT_SPARSE_BITSET_DECL_GUARD
+#define FAT_SPARSE_BITSET_DECL_GUARD
+
+#endif
+
+#ifdef __cplusplus
+}
+#endif
+
+#endif /* FAT_SPARSE_BITSET_MH */
