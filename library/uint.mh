@@ -1,0 +1,40 @@
+/*
+** Automatically generated from `uint.m'
+** by the Mercury compiler,
+** version rotd-2018-08-08
+** configured for x86_64-pc-linux-gnu.
+** Do not edit.
+*/
+#ifndef UINT_MH
+#define UINT_MH
+
+#ifdef __cplusplus
+extern "C" {
+#endif
+
+#ifdef MR_HIGHLEVEL_CODE
+#include "mercury.h"
+#else
+  #ifndef MERCURY_HDR_EXCLUDE_IMP_H
+  #include "mercury_imp.h"
+  #endif
+#endif
+#ifdef MR_DEEP_PROFILING
+#include "mercury_deep_profiling.h"
+#endif
+
+#ifndef UINT_DECL_GUARD
+#define UINT_DECL_GUARD
+
+    #include <limits.h>
+
+    #define ML_BITS_PER_UINT     (sizeof(MR_Unsigned) * CHAR_BIT)
+
+
+#endif
+
+#ifdef __cplusplus
+}
+#endif
+
+#endif /* UINT_MH */

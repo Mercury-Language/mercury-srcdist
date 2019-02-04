@@ -1,0 +1,13 @@
+module(1, "construct.m",
+	construct,
+	{},
+	{builtin, list, maybe, private_builtin, type_desc, univ},
+	{builtin, erlang_rtti_implementation, int, list, maybe, private_builtin, require, rtti_implementation, type_desc, univ},
+	{},
+	{},
+	{},
+	{"C"},
+	{"C" - construct, "C#" - construct, "Java" - construct, "Erlang" - construct},
+	no_foreign_export,
+	no_main
+).
