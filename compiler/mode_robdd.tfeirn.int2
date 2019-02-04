@@ -1,0 +1,17 @@
+:- module (mode_robdd.tfeirn).
+:- interface.
+:- import_module bool.
+:- import_module check_hlds.
+:- import_module robdd.
+:- import_module term.
+:- import_module (check_hlds.mode_constraint_robdd).
+:- type tfeirn == mode_robdd.tfeirn.tfeirn(term.generic).
+:- type tfeirn(T).
+:- type tfeirn(T)
+    --->    mode_robdd(((mode_robdd.tfeirn).true_vars) :: robdd.vars(T), ((mode_robdd.tfeirn).false_vars) :: robdd.vars(T), ((mode_robdd.tfeirn).equiv_vars) :: robdd.equiv_vars(T), ((mode_robdd.tfeirn).imp_vars) :: robdd.imp_vars(T), ((mode_robdd.tfeirn).robdd) :: robdd.robdd(T), ((mode_robdd.tfeirn).normalised) :: bool.bool).
+:- inst (norm_tfeirn) for (mode_robdd.tfeirn).tfeirn/1 == bound(mode_robdd(ground, ground, ground, ground, ground, bound(yes))).
+:- inst (tfeirn) == ground.
+:- mode (di_tfeirn) == (builtin.in).
+:- mode (ni_tfeirn) == builtin.in(((mode_robdd.tfeirn).norm_tfeirn)).
+:- mode (no_tfeirn) == builtin.out(((mode_robdd.tfeirn).norm_tfeirn)).
+:- mode (uo_tfeirn) == (builtin.out).
