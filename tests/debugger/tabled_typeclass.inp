@@ -1,0 +1,11 @@
+echo on
+context none
+register --quiet
+table_io allow
+table_io start
+finish
+print io limits
+print io 0-5
+print io 6-29
+retry -f
+continue

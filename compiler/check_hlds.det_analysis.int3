@@ -1,0 +1,5 @@
+:- module (check_hlds.det_analysis).
+:- interface.
+:- type pess_info.
+:- type soln_context
+	where	type_is_abstract_enum(1).

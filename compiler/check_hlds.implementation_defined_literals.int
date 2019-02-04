@@ -1,0 +1,5 @@
+:- module (check_hlds.implementation_defined_literals).
+:- interface.
+:- import_module (hlds.hlds_module).
+:- pred subst_impl_defined_literals(hlds.hlds_module.module_info, hlds.hlds_module.module_info).
+:- mode subst_impl_defined_literals((builtin.in), (builtin.out)) is det.
