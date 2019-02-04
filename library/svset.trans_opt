@@ -1,0 +1,15 @@
+:- module svset.
+:- pragma termination_info(svset.insert((builtin.in), (builtin.in), (builtin.out)), infinite, can_loop).
+:- pragma termination_info(svset.insert_list((builtin.in), (builtin.in), (builtin.out)), infinite, can_loop).
+:- pragma termination_info(svset.delete((builtin.in), (builtin.in), (builtin.out)), infinite, can_loop).
+:- pragma termination_info(svset.delete_list((builtin.in), (builtin.in), (builtin.out)), infinite, can_loop).
+:- pragma termination_info(svset.remove((builtin.in), (builtin.in), (builtin.out)), infinite, can_loop).
+:- pragma termination_info(svset.remove_list((builtin.in), (builtin.in), (builtin.out)), infinite, can_loop).
+:- pragma termination_info(svset.remove_least((builtin.out), (builtin.in), (builtin.out)), infinite, can_loop).
+:- pragma exceptions(predicate, (svset.insert), 3, 0, conditional).
+:- pragma exceptions(predicate, (svset.insert_list), 3, 0, may_throw(user_exception)).
+:- pragma exceptions(predicate, (svset.delete), 3, 0, conditional).
+:- pragma exceptions(predicate, (svset.delete_list), 3, 0, may_throw(user_exception)).
+:- pragma exceptions(predicate, (svset.remove), 3, 0, conditional).
+:- pragma exceptions(predicate, (svset.remove_list), 3, 0, may_throw(user_exception)).
+:- pragma exceptions(predicate, (svset.remove_least), 3, 0, will_not_throw).

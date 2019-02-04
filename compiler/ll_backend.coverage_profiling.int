@@ -1,0 +1,14 @@
+:- module (ll_backend.coverage_profiling).
+:- interface.
+:- import_module list.
+:- import_module maybe.
+:- import_module (hlds.hlds_goal).
+:- import_module (hlds.hlds_module).
+:- import_module (hlds.hlds_pred).
+:- import_module (mdbcomp.program_representation).
+:- import_module (parse_tree.prog_data).
+:- type proc_coverage_info.
+:- pred coverage_prof_transform_goal(hlds.hlds_module.module_info, hlds.hlds_pred.pred_proc_id, maybe.maybe(hlds.hlds_pred.deep_recursion_info), hlds.hlds_goal.hlds_goal, hlds.hlds_goal.hlds_goal, parse_tree.prog_data.prog_var_set_types, parse_tree.prog_data.prog_var_set_types, list.list(mdbcomp.program_representation.coverage_point_info)).
+:- mode coverage_prof_transform_goal((builtin.in), (builtin.in), (builtin.in), (builtin.in), (builtin.out), (builtin.in), (builtin.out), (builtin.out)) is det.
+:- pred coverage_profiling_options(hlds.hlds_module.module_info, ll_backend.coverage_profiling.coverage_profiling_options).
+:- mode coverage_profiling_options((builtin.in), (builtin.out)) is det.

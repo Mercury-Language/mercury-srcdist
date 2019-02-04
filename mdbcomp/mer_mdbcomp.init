@@ -1,0 +1,9 @@
+
+INIT mercury__mdbcomp__init
+INIT mercury__mdbcomp__feedback__init
+INIT mercury__mdbcomp__prim_data__init
+INIT mercury__mdbcomp__program_representation__init
+INIT mercury__mdbcomp__rtti_access__init
+INIT mercury__mdbcomp__slice_and_dice__init
+INIT mercury__mdbcomp__trace_counts__init
+INIT mercury__mer_mdbcomp__init

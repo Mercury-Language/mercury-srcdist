@@ -1,0 +1,14 @@
+:- module (parse_tree.java_names).
+:- interface.
+:- import_module (mdbcomp.prim_data).
+:- type java_qual_kind
+	--->	module_qual 
+	;	type_qual .
+:- func flip_initial_case(string) = string.
+:- func flip_initial_case_of_final_part(mdbcomp.prim_data.sym_name) = mdbcomp.prim_data.sym_name.
+:- pred java_is_keyword(string).
+:- mode java_is_keyword((builtin.in)) is semidet.
+:- pred mangle_sym_name_for_java(mdbcomp.prim_data.sym_name, parse_tree.java_names.java_qual_kind, string, string).
+:- mode mangle_sym_name_for_java((builtin.in), (builtin.in), (builtin.in), (builtin.out)) is det.
+:- func mercury_runtime_package_name = mdbcomp.prim_data.sym_name.
+:- func valid_java_symbol_name(string) = string.

@@ -1,0 +1,4 @@
+:- module version_types.
+:- interface.
+:- type prevent_warning_about_empty_interface
+	--->	dummy .

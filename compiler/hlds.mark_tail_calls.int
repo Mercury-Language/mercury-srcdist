@@ -1,0 +1,7 @@
+:- module (hlds.mark_tail_calls).
+:- interface.
+:- import_module (hlds.hlds_goal).
+:- import_module (hlds.hlds_module).
+:- import_module (hlds.hlds_pred).
+:- pred mark_tail_calls(hlds.hlds_goal.goal_feature, hlds.hlds_pred.pred_id, hlds.hlds_pred.proc_id, hlds.hlds_module.module_info, hlds.hlds_pred.pred_info, hlds.hlds_pred.proc_info, hlds.hlds_pred.proc_info).
+:- mode mark_tail_calls((builtin.in), (builtin.in), (builtin.in), (builtin.in), (builtin.in), (builtin.in), (builtin.out)) is det.

@@ -1,0 +1,8 @@
+:- module (backend_libs.erlang_rtti).
+:- interface.
+:- type erlang_atom_raw.
+:- type erlang_du_functor.
+:- type erlang_impl_ctor.
+:- type erlang_rtti_data.
+:- type erlang_type_ctor_data.
+:- type erlang_type_ctor_details.

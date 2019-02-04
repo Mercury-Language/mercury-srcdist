@@ -1,0 +1,15 @@
+:- module ((hlds.make_hlds).add_special_pred).
+:- interface.
+:- import_module (hlds.hlds_data).
+:- import_module (hlds.hlds_module).
+:- import_module (hlds.hlds_pred).
+:- import_module (mdbcomp.prim_data).
+:- import_module (parse_tree.prog_data).
+:- pred add_special_preds(parse_tree.prog_data.tvarset, parse_tree.prog_data.mer_type, parse_tree.prog_data.type_ctor, hlds.hlds_data.hlds_type_body, parse_tree.prog_data.prog_context, hlds.hlds_pred.import_status, hlds.hlds_module.module_info, hlds.hlds_module.module_info).
+:- mode add_special_preds((builtin.in), (builtin.in), (builtin.in), (builtin.in), (builtin.in), (builtin.in), (builtin.in), (builtin.out)) is det.
+:- pred do_add_special_pred_decl_for_real(mdbcomp.prim_data.special_pred_id, parse_tree.prog_data.tvarset, parse_tree.prog_data.mer_type, parse_tree.prog_data.type_ctor, parse_tree.prog_data.prog_context, hlds.hlds_pred.import_status, hlds.hlds_module.module_info, hlds.hlds_module.module_info).
+:- mode do_add_special_pred_decl_for_real((builtin.in), (builtin.in), (builtin.in), (builtin.in), (builtin.in), (builtin.in), (builtin.in), (builtin.out)) is det.
+:- pred do_add_special_pred_for_real(mdbcomp.prim_data.special_pred_id, parse_tree.prog_data.tvarset, parse_tree.prog_data.mer_type, parse_tree.prog_data.type_ctor, hlds.hlds_data.hlds_type_body, parse_tree.prog_data.prog_context, hlds.hlds_pred.import_status, hlds.hlds_module.module_info, hlds.hlds_module.module_info).
+:- mode do_add_special_pred_for_real((builtin.in), (builtin.in), (builtin.in), (builtin.in), (builtin.in), (builtin.in), (builtin.in), (builtin.in), (builtin.out)) is det.
+:- pred eagerly_add_special_preds(parse_tree.prog_data.tvarset, parse_tree.prog_data.mer_type, parse_tree.prog_data.type_ctor, hlds.hlds_data.hlds_type_body, parse_tree.prog_data.prog_context, hlds.hlds_pred.import_status, hlds.hlds_module.module_info, hlds.hlds_module.module_info).
+:- mode eagerly_add_special_preds((builtin.in), (builtin.in), (builtin.in), (builtin.in), (builtin.in), (builtin.in), (builtin.in), (builtin.out)) is det.

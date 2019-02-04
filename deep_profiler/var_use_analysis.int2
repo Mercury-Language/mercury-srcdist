@@ -1,0 +1,18 @@
+:- module var_use_analysis.
+:- interface.
+:- import_module list.
+:- import_module maybe.
+:- import_module mdbcomp.
+:- import_module profile.
+:- import_module report.
+:- import_module set.
+:- import_module (mdbcomp.program_representation).
+:- type cost_until_var_use
+	--->	cost_since_proc_start(float)
+	;	cost_before_proc_end(float).
+:- type var_use_info
+	--->	var_use_info((var_use_analysis.vui_cost_until_use) :: var_use_analysis.cost_until_var_use, (var_use_analysis.vui_use_type) :: var_use_analysis.var_use_type).
+:- type var_use_type
+	--->	var_use_production 
+	;	var_use_consumption 
+	;	var_use_other .

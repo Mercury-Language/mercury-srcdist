@@ -1,0 +1,28 @@
+:- module stream.
+:- interface.
+:- import_module bool.
+:- import_module char.
+:- import_module list.
+:- import_module string.
+:- include_module (stream.string_writer).
+:- type name.
+:- type whence.
+:- type res(Error).
+:- type result(Error).
+:- type maybe_partial_res(T, Error).
+:- type res(T, Error).
+:- type result(T, Error).
+:- mode (bulk_get_di) == in.
+:- mode (bulk_get_uo) == out.
+:- typeclass error(Error).
+:- typeclass stream(Stream, State) <= ((Stream -> State)).
+:- typeclass input(Stream, State) <= (stream.stream(Stream, State)).
+:- typeclass line_oriented(Stream, State) <= (stream.stream(Stream, State)).
+:- typeclass output(Stream, State) <= (stream.stream(Stream, State)).
+:- typeclass seekable(Stream, State) <= (stream.stream(Stream, State)).
+:- typeclass duplex(Stream, State) <= (stream.input(Stream, State), stream.output(Stream, State)).
+:- typeclass reader(Stream, Unit, State, Error) <= ((Stream, Unit -> Error), stream.input(Stream, State), stream.error(Error)).
+:- typeclass bulk_reader(Stream, Index, Store, State, Error) <= ((Stream, Index, Store -> Error), stream.input(Stream, State), stream.error(Error)).
+:- typeclass writer(Stream, Unit, State) <= (stream.output(Stream, State)).
+:- typeclass unbounded_putback(Stream, Unit, State, Error) <= (stream.putback(Stream, Unit, State, Error)).
+:- typeclass putback(Stream, Unit, State, Error) <= (stream.reader(Stream, Unit, State, Error)).

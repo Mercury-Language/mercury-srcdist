@@ -1,0 +1,13 @@
+:- module svarray.
+:- pragma termination_info(svarray.set((builtin.in), (builtin.in), (array.array_di), (array.array_uo)), infinite, can_loop).
+:- pragma termination_info(svarray.semidet_set((builtin.in), (builtin.in), (array.array_di), (array.array_uo)), infinite, cannot_loop).
+:- pragma termination_info(svarray.slow_set((builtin.in), (builtin.in), (builtin.in), (array.array_uo)), infinite, can_loop).
+:- pragma termination_info(svarray.semidet_slow_set((builtin.in), (builtin.in), (builtin.in), (array.array_uo)), infinite, can_loop).
+:- pragma termination_info(svarray.resize((builtin.in), (builtin.in), (array.array_di), (array.array_uo)), infinite, cannot_loop).
+:- pragma termination_info(svarray.shrink((builtin.in), (array.array_di), (array.array_uo)), infinite, cannot_loop).
+:- pragma exceptions(predicate, (svarray.set), 4, 0, may_throw(user_exception)).
+:- pragma exceptions(predicate, (svarray.semidet_set), 4, 0, will_not_throw).
+:- pragma exceptions(predicate, (svarray.slow_set), 4, 0, may_throw(user_exception)).
+:- pragma exceptions(predicate, (svarray.semidet_slow_set), 4, 0, may_throw(user_exception)).
+:- pragma exceptions(predicate, (svarray.resize), 4, 0, will_not_throw).
+:- pragma exceptions(predicate, (svarray.shrink), 3, 0, may_throw(user_exception)).
