@@ -1,0 +1,20 @@
+:- module (transform_hlds.term_constr_errors).
+:- interface.
+:- import_module hlds.
+:- import_module list.
+:- import_module parse_tree.
+:- import_module (hlds.hlds_module).
+:- import_module (hlds.hlds_pred).
+:- import_module (parse_tree.error_util).
+:- import_module (parse_tree.prog_data).
+:- type term2_error
+    --->    term2_error(parse_tree.prog_data.prog_context, transform_hlds.term_constr_errors.term2_error_kind).
+:- type term2_error_kind
+    --->    imported_pred 
+    ;       can_loop_proc_called(hlds.hlds_pred.pred_proc_id, hlds.hlds_pred.pred_proc_id)
+    ;       cond_not_satisfied 
+    ;       horder_call 
+    ;       does_not_term_pragma(hlds.hlds_pred.pred_id)
+    ;       foreign_proc_called(hlds.hlds_pred.pred_proc_id).
+:- pred maybe_report_term2_errors(hlds.hlds_module.module_info, hlds.hlds_pred.scc, list.list(transform_hlds.term_constr_errors.term2_error), list.list(parse_tree.error_util.error_spec), list.list(parse_tree.error_util.error_spec)).
+:- mode maybe_report_term2_errors((builtin.in), (builtin.in), (builtin.in), (builtin.in), (builtin.out)) is det.
