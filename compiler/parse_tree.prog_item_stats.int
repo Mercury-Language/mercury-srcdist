@@ -1,0 +1,6 @@
+:- module (parse_tree.prog_item_stats).
+:- interface.
+:- import_module io.
+:- import_module (parse_tree.prog_item).
+:- pred gather_and_write_item_stats(io.output_stream, parse_tree.prog_item.aug_compilation_unit, io.io, io.io).
+:- mode gather_and_write_item_stats((builtin.in), (builtin.in), (builtin.di), (builtin.uo)) is det.
