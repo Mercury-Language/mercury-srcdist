@@ -1,0 +1,57 @@
+:- module stm_builtin.
+:- interface.
+:- import_module io.
+:- type rollback_exception
+    --->    rollback_invalid_transaction 
+    ;       rollback_retry .
+:- type stm.
+:- type stm_dummy_output
+    --->    stm_dummy_output .
+:- type stm_validation_result
+    --->    stm_transaction_valid 
+    ;       stm_transaction_invalid .
+:- type stm_var(T).
+:- pred atomic_transaction(pred(T, stm_builtin.stm, stm_builtin.stm), T, io.io, io.io).
+:- mode atomic_transaction(builtin.in((pred((builtin.out), (builtin.di), (builtin.uo)) is det)), (builtin.out), (builtin.di), (builtin.uo)) is det.
+:- pred new_stm_var(T, stm_builtin.stm_var(T), io.io, io.io).
+:- mode new_stm_var((builtin.in), (builtin.out), (builtin.di), (builtin.uo)) is det.
+:- pred new_stm_var_atomic(T, stm_builtin.stm_var(T), stm_builtin.stm, stm_builtin.stm).
+:- mode new_stm_var_atomic((builtin.in), (builtin.out), (builtin.di), (builtin.uo)) is det.
+:- pred or_else(pred(T, stm_builtin.stm, stm_builtin.stm), pred(T, stm_builtin.stm, stm_builtin.stm), T, stm_builtin.stm, stm_builtin.stm).
+:- mode or_else(builtin.in((pred((builtin.out), (builtin.di), (builtin.uo)) is det)), builtin.in((pred((builtin.out), (builtin.di), (builtin.uo)) is det)), (builtin.out), (builtin.di), (builtin.uo)) is det.
+:- pred read_stm_var(stm_builtin.stm_var(T), T, stm_builtin.stm, stm_builtin.stm).
+:- mode read_stm_var((builtin.in), (builtin.out), (builtin.di), (builtin.uo)) is det.
+:- pred retry(stm_builtin.stm).
+:- mode retry((builtin.ui)) is erroneous.
+:- impure pred stm_block(stm_builtin.stm).
+:- mode stm_block((builtin.ui)) is det.
+:- impure pred stm_commit(stm_builtin.stm).
+:- mode stm_commit((builtin.ui)) is det.
+:- impure pred stm_create_nested_transaction_log(stm_builtin.stm, stm_builtin.stm).
+:- mode stm_create_nested_transaction_log((builtin.ui), (builtin.uo)) is det.
+:- impure pred stm_create_transaction_log(stm_builtin.stm).
+:- mode stm_create_transaction_log((builtin.uo)) is det.
+:- impure pred stm_discard_transaction_log(stm_builtin.stm).
+:- mode stm_discard_transaction_log((builtin.di)) is det.
+:- pred stm_from_inner_to_outer(stm_builtin.stm, T).
+:- mode stm_from_inner_to_outer((builtin.di), (builtin.uo)) is det.
+:- pred stm_from_outer_to_inner(T, stm_builtin.stm).
+:- mode stm_from_outer_to_inner((builtin.di), (builtin.uo)) is det.
+:- impure pred stm_lock is det.
+:- impure pred stm_merge_nested_logs(stm_builtin.stm, stm_builtin.stm, stm_builtin.stm).
+:- mode stm_merge_nested_logs((builtin.di), (builtin.di), (builtin.uo)) is det.
+:- impure pred stm_unlock is det.
+:- impure pred stm_validate(stm_builtin.stm, stm_builtin.stm_validation_result).
+:- mode stm_validate((builtin.ui), (builtin.out)) is det.
+:- pred unsafe_write_stm_var(stm_builtin.stm_var(T), T, stm_builtin.stm, stm_builtin.stm).
+:- mode unsafe_write_stm_var((builtin.in), (builtin.in), (builtin.di), (builtin.uo)) is det.
+:- pred write_stm_var(stm_builtin.stm_var(T), T, stm_builtin.stm, stm_builtin.stm).
+:- mode write_stm_var((builtin.in), (builtin.in), (builtin.di), (builtin.uo)) is det.
+:- pragma foreign_import_module("C", stm_builtin).
+:- implementation.
+:- pragma foreign_type(c, stm, "MR_STM_TransLog *", [can_pass_as_mercury_type]).
+:- type stm
+    --->    stm(builtin.c_pointer).
+:- pragma foreign_type(c, stm_var(T), "MR_STM_Var *", [can_pass_as_mercury_type, stable]).
+:- type stm_var(T)
+    --->    tvar(builtin.c_pointer).
