@@ -1,0 +1,10 @@
+:- module (string.builder).
+:- interface.
+:- import_module char.
+:- import_module stream.
+:- type handle.
+:- type state.
+:- instance (stream.output(string.builder.handle, string.builder.state)).
+:- instance (stream.stream(string.builder.handle, string.builder.state)).
+:- instance (stream.writer(string.builder.handle, char, string.builder.state)).
+:- instance (stream.writer(string.builder.handle, string, string.builder.state)).

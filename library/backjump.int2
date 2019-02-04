@@ -1,0 +1,5 @@
+:- module backjump.
+:- interface.
+:- type choice_id.
+:- implementation.
+:- type choice_id == int.

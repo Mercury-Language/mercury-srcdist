@@ -1,0 +1,15 @@
+:- module (parse_tree.source_file_map).
+:- interface.
+:- import_module bool.
+:- import_module io.
+:- import_module list.
+:- import_module (libs.file_util).
+:- import_module (libs.globals).
+:- import_module (mdbcomp.prim_data).
+:- func default_source_file(mdbcomp.prim_data.module_name) = libs.file_util.file_name.
+:- pred have_source_file_map(bool.bool, io.io, io.io).
+:- mode have_source_file_map((builtin.out), (builtin.di), (builtin.uo)) is det.
+:- pred lookup_module_source_file(mdbcomp.prim_data.module_name, libs.file_util.file_name, io.io, io.io).
+:- mode lookup_module_source_file((builtin.in), (builtin.out), (builtin.di), (builtin.uo)) is det.
+:- pred write_source_file_map(libs.globals.globals, list.list(string), io.io, io.io).
+:- mode write_source_file_map((builtin.in), (builtin.in), (builtin.di), (builtin.uo)) is det.
