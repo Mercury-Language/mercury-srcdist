@@ -1,0 +1,7 @@
+echo on
+register --quiet
+context nextline
+break loopcheck.main
+break loopcheck.loop
+finish
+continue
