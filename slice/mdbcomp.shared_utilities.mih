@@ -1,0 +1,68 @@
+/*
+** Automatically generated from `mdbcomp.shared_utilities.m'
+** by the Mercury compiler,
+** version rotd-2018-12-17
+** configured for x86_64-pc-linux-gnu.
+** Do not edit.
+**
+** The autoconfigured grade settings governing
+** the generation of this C file were
+**
+** TAG_BITS=2
+** UNBOXED_FLOAT=no
+** UNBOXED_INT64S=no
+** PREGENERATED_DIST=yes
+** HIGHLEVEL_CODE=yes
+**
+** END_OF_C_GRADE_INFO
+*/
+
+
+// :- module mdbcomp.shared_utilities.
+// :- interface.
+
+#ifndef MR_HEADER_GUARD_mdbcomp__shared_utilities
+#define MR_HEADER_GUARD_mdbcomp__shared_utilities
+
+#ifdef __cplusplus
+extern "C" {
+#endif
+
+#include "mercury.h"
+
+
+#ifndef MDBCOMP__SHARED_UTILITIES_DECL_GUARD
+#define MDBCOMP__SHARED_UTILITIES_DECL_GUARD
+#include "mdbcomp.mih"
+
+
+/*
+** On some systems (e.g. Mac OS X 10.3) RLIMIT_STACK is defined in the
+** header sys/resource.h.
+*/
+#if defined(MR_HAVE_SYS_RESOURCE_H)
+    #include <sys/resource.h>
+#endif
+
+
+
+#endif
+
+
+
+
+void MR_CALL 
+mdbcomp__shared_utilities__unlimit_stack_2_p_0(void);
+
+void mercury__mdbcomp__shared_utilities__init(void);
+void mercury__mdbcomp__shared_utilities__init_type_tables(void);
+void mercury__mdbcomp__shared_utilities__init_debugger(void);
+const char *mercury__mdbcomp__shared_utilities__grade_check(void);
+
+#ifdef __cplusplus
+}
+#endif
+
+#endif // MR_HEADER_GUARD_mdbcomp.shared_utilities
+
+// :- end_interface mdbcomp.shared_utilities.

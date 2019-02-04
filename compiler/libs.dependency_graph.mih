@@ -1,0 +1,175 @@
+/*
+** Automatically generated from `dependency_graph.m'
+** by the Mercury compiler,
+** version rotd-2018-12-17
+** configured for x86_64-pc-linux-gnu.
+** Do not edit.
+**
+** The autoconfigured grade settings governing
+** the generation of this C file were
+**
+** TAG_BITS=2
+** UNBOXED_FLOAT=no
+** UNBOXED_INT64S=no
+** PREGENERATED_DIST=yes
+** HIGHLEVEL_CODE=yes
+**
+** END_OF_C_GRADE_INFO
+*/
+
+
+// :- module libs.dependency_graph.
+// :- interface.
+
+#ifndef MR_HEADER_GUARD_libs__dependency_graph
+#define MR_HEADER_GUARD_libs__dependency_graph
+
+#ifdef __cplusplus
+extern "C" {
+#endif
+
+#include "mercury.h"
+
+
+#ifndef LIBS__DEPENDENCY_GRAPH_DECL_GUARD
+#define LIBS__DEPENDENCY_GRAPH_DECL_GUARD
+#include "libs.mih"
+
+#endif
+
+
+
+
+extern const MR_TypeCtorInfo_Struct libs__dependency_graph__libs__dependency_graph__type_ctor_info_bottom_up_dependency_sccs_1;
+
+extern const MR_TypeCtorInfo_Struct libs__dependency_graph__libs__dependency_graph__type_ctor_info_dependency_arcs_1;
+
+extern const MR_TypeCtorInfo_Struct libs__dependency_graph__libs__dependency_graph__type_ctor_info_dependency_graph_1;
+
+extern const MR_TypeCtorInfo_Struct libs__dependency_graph__libs__dependency_graph__type_ctor_info_dependency_graph_key_1;
+
+extern const MR_TypeCtorInfo_Struct libs__dependency_graph__libs__dependency_graph__type_ctor_info_dependency_info_1;
+
+extern const MR_TypeCtorInfo_Struct libs__dependency_graph__libs__dependency_graph__type_ctor_info_scc_map_1;
+
+MR_Word MR_CALL 
+libs__dependency_graph__dependency_info_get_arcs_1_f_0(
+  MR_Word param_1,
+  MR_Word param_2);
+
+MR_Word MR_CALL 
+libs__dependency_graph__dependency_info_get_bottom_up_sccs_1_f_0(
+  MR_Word param_1,
+  MR_Word param_2);
+
+MR_Word MR_CALL 
+libs__dependency_graph__dependency_info_get_condensed_bottom_up_sccs_1_f_0(
+  MR_Word param_1,
+  MR_Word param_2);
+
+MR_Word MR_CALL 
+libs__dependency_graph__dependency_info_get_graph_1_f_0(
+  MR_Word param_1,
+  MR_Word param_2);
+
+MR_Word MR_CALL 
+libs__dependency_graph__dependency_info_make_scc_map_1_f_0(
+  MR_Word param_1,
+  MR_Word param_2);
+
+MR_Word MR_CALL 
+libs__dependency_graph__make_dependency_info_2_f_0(
+  MR_Word param_1,
+  MR_Word param_2,
+  MR_Word param_3);
+
+void MR_CALL 
+libs__dependency_graph____Compare____bottom_up_dependency_sccs_1_0(
+  MR_Word param_1,
+  MR_Word * param_2,
+  MR_Word param_3,
+  MR_Word param_4);
+
+void MR_CALL 
+libs__dependency_graph____Compare____dependency_arcs_1_0(
+  MR_Word param_1,
+  MR_Word * param_2,
+  MR_Word param_3,
+  MR_Word param_4);
+
+void MR_CALL 
+libs__dependency_graph____Compare____dependency_graph_1_0(
+  MR_Word param_1,
+  MR_Word * param_2,
+  MR_Word param_3,
+  MR_Word param_4);
+
+void MR_CALL 
+libs__dependency_graph____Compare____dependency_graph_key_1_0(
+  MR_Word param_1,
+  MR_Word * param_2,
+  MR_Word param_3,
+  MR_Word param_4);
+
+void MR_CALL 
+libs__dependency_graph____Compare____dependency_info_1_0(
+  MR_Word param_1,
+  MR_Word * param_2,
+  MR_Word param_3,
+  MR_Word param_4);
+
+void MR_CALL 
+libs__dependency_graph____Compare____scc_map_1_0(
+  MR_Word param_1,
+  MR_Word * param_2,
+  MR_Word param_3,
+  MR_Word param_4);
+
+MR_bool MR_CALL 
+libs__dependency_graph____Unify____bottom_up_dependency_sccs_1_0(
+  MR_Word param_1,
+  MR_Word param_2,
+  MR_Word param_3);
+
+MR_bool MR_CALL 
+libs__dependency_graph____Unify____dependency_arcs_1_0(
+  MR_Word param_1,
+  MR_Word param_2,
+  MR_Word param_3);
+
+MR_bool MR_CALL 
+libs__dependency_graph____Unify____dependency_graph_1_0(
+  MR_Word param_1,
+  MR_Word param_2,
+  MR_Word param_3);
+
+MR_bool MR_CALL 
+libs__dependency_graph____Unify____dependency_graph_key_1_0(
+  MR_Word param_1,
+  MR_Word param_2,
+  MR_Word param_3);
+
+MR_bool MR_CALL 
+libs__dependency_graph____Unify____dependency_info_1_0(
+  MR_Word param_1,
+  MR_Word param_2,
+  MR_Word param_3);
+
+MR_bool MR_CALL 
+libs__dependency_graph____Unify____scc_map_1_0(
+  MR_Word param_1,
+  MR_Word param_2,
+  MR_Word param_3);
+
+void mercury__libs__dependency_graph__init(void);
+void mercury__libs__dependency_graph__init_type_tables(void);
+void mercury__libs__dependency_graph__init_debugger(void);
+const char *mercury__libs__dependency_graph__grade_check(void);
+
+#ifdef __cplusplus
+}
+#endif
+
+#endif // MR_HEADER_GUARD_libs.dependency_graph
+
+// :- end_interface libs.dependency_graph.

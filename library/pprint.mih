@@ -1,0 +1,510 @@
+/*
+** Automatically generated from `pprint.m'
+** by the Mercury compiler,
+** version rotd-2018-12-17
+** configured for x86_64-pc-linux-gnu.
+** Do not edit.
+**
+** The autoconfigured grade settings governing
+** the generation of this C file were
+**
+** TAG_BITS=2
+** UNBOXED_FLOAT=no
+** UNBOXED_INT64S=no
+** PREGENERATED_DIST=yes
+** HIGHLEVEL_CODE=yes
+**
+** END_OF_C_GRADE_INFO
+*/
+
+
+// :- module pprint.
+// :- interface.
+
+#ifndef MR_HEADER_GUARD_pprint
+#define MR_HEADER_GUARD_pprint
+
+#ifdef __cplusplus
+extern "C" {
+#endif
+
+#include "mercury.h"
+
+
+#ifndef PPRINT_DECL_GUARD
+#define PPRINT_DECL_GUARD
+
+#endif
+
+
+
+
+extern const MR_TypeCtorInfo_Struct mercury__pprint__pprint__type_ctor_info_depth_0;
+
+extern const MR_TypeCtorInfo_Struct mercury__pprint__pprint__type_ctor_info_doc_0;
+
+extern const MR_TypeCtorInfo_Struct mercury__pprint__pprint__type_ctor_info_map_pair_2;
+
+extern const MR_BaseTypeclassInfo base_typeclass_info_pprint__doc__arity1__character__arity0__[6];
+
+extern const MR_BaseTypeclassInfo base_typeclass_info_pprint__doc__arity1__float__arity0__[6];
+
+extern const MR_BaseTypeclassInfo base_typeclass_info_pprint__doc__arity1__int16__arity0__[6];
+
+extern const MR_BaseTypeclassInfo base_typeclass_info_pprint__doc__arity1__int32__arity0__[6];
+
+extern const MR_BaseTypeclassInfo base_typeclass_info_pprint__doc__arity1__int64__arity0__[6];
+
+extern const MR_BaseTypeclassInfo base_typeclass_info_pprint__doc__arity1__int8__arity0__[6];
+
+extern const MR_BaseTypeclassInfo base_typeclass_info_pprint__doc__arity1__int__arity0__[6];
+
+extern const MR_BaseTypeclassInfo base_typeclass_info_pprint__doc__arity1__pprint__doc__arity0__[6];
+
+extern const MR_BaseTypeclassInfo base_typeclass_info_pprint__doc__arity1__string__arity0__[6];
+
+extern const MR_BaseTypeclassInfo base_typeclass_info_pprint__doc__arity1__uint16__arity0__[6];
+
+extern const MR_BaseTypeclassInfo base_typeclass_info_pprint__doc__arity1__uint32__arity0__[6];
+
+extern const MR_BaseTypeclassInfo base_typeclass_info_pprint__doc__arity1__uint64__arity0__[6];
+
+extern const MR_BaseTypeclassInfo base_typeclass_info_pprint__doc__arity1__uint8__arity0__[6];
+
+extern const MR_BaseTypeclassInfo base_typeclass_info_pprint__doc__arity1__uint__arity0__[6];
+
+extern const MR_TypeClassDeclStruct mercury__pprint__pprint__type_class_decl_doc_1;
+
+void MR_CALL 
+mercury__pprint__layout_best_5_p_0(
+  MR_Word param_1,
+  MR_Word param_2,
+  MR_Integer param_3,
+  MR_Word param_4,
+  MR_Box param_5,
+  MR_Box * param_6);
+
+void MR_CALL 
+mercury__pprint__layout_best_5_p_1(
+  MR_Word param_1,
+  MR_Word param_2,
+  MR_Integer param_3,
+  MR_Word param_4,
+  MR_Box param_5,
+  MR_Box * param_6);
+
+void MR_CALL 
+mercury__pprint__lb_8_p_0(
+  MR_Word param_1,
+  MR_Word param_2,
+  MR_Integer param_3,
+  MR_Integer param_4,
+  MR_Integer * param_5,
+  MR_String param_6,
+  MR_Word param_7,
+  MR_Box param_8,
+  MR_Box * param_9);
+
+void MR_CALL 
+mercury__pprint__lb_8_p_1(
+  MR_Word param_1,
+  MR_Word param_2,
+  MR_Integer param_3,
+  MR_Integer param_4,
+  MR_Integer * param_5,
+  MR_String param_6,
+  MR_Word param_7,
+  MR_Box param_8,
+  MR_Box * param_9);
+
+void MR_CALL 
+mercury__pprint__write_4_p_0(
+  MR_Word param_1,
+  MR_Integer param_2,
+  MR_Box param_3);
+
+void MR_CALL 
+mercury__pprint__write_5_p_0(
+  MR_Word param_1,
+  MR_Word param_2,
+  MR_Box param_3,
+  MR_Integer param_4,
+  MR_Box param_5,
+  MR_Box param_6,
+  MR_Box * param_7);
+
+MR_Word MR_CALL 
+mercury__pprint__f_43_43_2_f_0(
+  MR_Word param_1,
+  MR_Word param_2,
+  MR_Box param_3,
+  MR_Box param_4);
+
+MR_Word MR_CALL 
+mercury__pprint__f_60_47_62_2_f_0(
+  MR_Word param_1,
+  MR_Word param_2);
+
+MR_Word MR_CALL 
+mercury__pprint__f_60_62_2_f_0(
+  MR_Word param_1,
+  MR_Word param_2);
+
+MR_Word MR_CALL 
+mercury__pprint__ClassMethod_for_pprint__doc____character__arity0______pprint__doc_2_2_f_0(
+  MR_Integer param_1,
+  MR_Char param_2);
+
+MR_Word MR_CALL 
+mercury__pprint__ClassMethod_for_pprint__doc____float__arity0______pprint__doc_2_2_f_0(
+  MR_Integer param_1,
+  MR_Float param_2);
+
+MR_Word MR_CALL 
+mercury__pprint__ClassMethod_for_pprint__doc____int16__arity0______pprint__doc_2_2_f_0(
+  MR_Integer param_1,
+  int16_t param_2);
+
+MR_Word MR_CALL 
+mercury__pprint__ClassMethod_for_pprint__doc____int32__arity0______pprint__doc_2_2_f_0(
+  MR_Integer param_1,
+  int32_t param_2);
+
+MR_Word MR_CALL 
+mercury__pprint__ClassMethod_for_pprint__doc____int64__arity0______pprint__doc_2_2_f_0(
+  MR_Integer param_1,
+  int64_t param_2);
+
+MR_Word MR_CALL 
+mercury__pprint__ClassMethod_for_pprint__doc____int8__arity0______pprint__doc_2_2_f_0(
+  MR_Integer param_1,
+  int8_t param_2);
+
+MR_Word MR_CALL 
+mercury__pprint__ClassMethod_for_pprint__doc____int__arity0______pprint__doc_2_2_f_0(
+  MR_Integer param_1,
+  MR_Integer param_2);
+
+MR_Word MR_CALL 
+mercury__pprint__ClassMethod_for_pprint__doc____pprint__doc__arity0______pprint__doc_2_2_f_0(
+  MR_Integer param_1,
+  MR_Word param_2);
+
+MR_Word MR_CALL 
+mercury__pprint__ClassMethod_for_pprint__doc____string__arity0______pprint__doc_2_2_f_0(
+  MR_Integer param_1,
+  MR_String param_2);
+
+MR_Word MR_CALL 
+mercury__pprint__ClassMethod_for_pprint__doc____uint16__arity0______pprint__doc_2_2_f_0(
+  MR_Integer param_1,
+  uint16_t param_2);
+
+MR_Word MR_CALL 
+mercury__pprint__ClassMethod_for_pprint__doc____uint32__arity0______pprint__doc_2_2_f_0(
+  MR_Integer param_1,
+  uint32_t param_2);
+
+MR_Word MR_CALL 
+mercury__pprint__ClassMethod_for_pprint__doc____uint64__arity0______pprint__doc_2_2_f_0(
+  MR_Integer param_1,
+  uint64_t param_2);
+
+MR_Word MR_CALL 
+mercury__pprint__ClassMethod_for_pprint__doc____uint8__arity0______pprint__doc_2_2_f_0(
+  MR_Integer param_1,
+  uint8_t param_2);
+
+MR_Word MR_CALL 
+mercury__pprint__ClassMethod_for_pprint__doc____uint__arity0______pprint__doc_2_2_f_0(
+  MR_Integer param_1,
+  MR_Unsigned param_2);
+
+MR_Word MR_CALL 
+mercury__pprint__f_85_110_117_115_101_100_65_114_103_115_95_95_102_117_110_99_95_95_67_108_97_115_115_77_101_116_104_111_100_95_102_111_114_95_112_112_114_105_110_116_95_95_100_111_99_95_95_95_95_99_104_97_114_97_99_116_101_114_95_95_97_114_105_116_121_48_95_95_95_95_95_95_112_112_114_105_110_116_95_95_100_111_99_95_50_95_95_91_49_93_95_48_2_f_0(
+  MR_Char param_1);
+
+MR_Word MR_CALL 
+mercury__pprint__f_85_110_117_115_101_100_65_114_103_115_95_95_102_117_110_99_95_95_67_108_97_115_115_77_101_116_104_111_100_95_102_111_114_95_112_112_114_105_110_116_95_95_100_111_99_95_95_95_95_102_108_111_97_116_95_95_97_114_105_116_121_48_95_95_95_95_95_95_112_112_114_105_110_116_95_95_100_111_99_95_50_95_95_91_49_93_95_48_2_f_0(
+  MR_Float param_1);
+
+MR_Word MR_CALL 
+mercury__pprint__f_85_110_117_115_101_100_65_114_103_115_95_95_102_117_110_99_95_95_67_108_97_115_115_77_101_116_104_111_100_95_102_111_114_95_112_112_114_105_110_116_95_95_100_111_99_95_95_95_95_105_110_116_49_54_95_95_97_114_105_116_121_48_95_95_95_95_95_95_112_112_114_105_110_116_95_95_100_111_99_95_50_95_95_91_49_93_95_48_2_f_0(
+  int16_t param_1);
+
+MR_Word MR_CALL 
+mercury__pprint__f_85_110_117_115_101_100_65_114_103_115_95_95_102_117_110_99_95_95_67_108_97_115_115_77_101_116_104_111_100_95_102_111_114_95_112_112_114_105_110_116_95_95_100_111_99_95_95_95_95_105_110_116_51_50_95_95_97_114_105_116_121_48_95_95_95_95_95_95_112_112_114_105_110_116_95_95_100_111_99_95_50_95_95_91_49_93_95_48_2_f_0(
+  int32_t param_1);
+
+MR_Word MR_CALL 
+mercury__pprint__f_85_110_117_115_101_100_65_114_103_115_95_95_102_117_110_99_95_95_67_108_97_115_115_77_101_116_104_111_100_95_102_111_114_95_112_112_114_105_110_116_95_95_100_111_99_95_95_95_95_105_110_116_54_52_95_95_97_114_105_116_121_48_95_95_95_95_95_95_112_112_114_105_110_116_95_95_100_111_99_95_50_95_95_91_49_93_95_48_2_f_0(
+  int64_t param_1);
+
+MR_Word MR_CALL 
+mercury__pprint__f_85_110_117_115_101_100_65_114_103_115_95_95_102_117_110_99_95_95_67_108_97_115_115_77_101_116_104_111_100_95_102_111_114_95_112_112_114_105_110_116_95_95_100_111_99_95_95_95_95_105_110_116_56_95_95_97_114_105_116_121_48_95_95_95_95_95_95_112_112_114_105_110_116_95_95_100_111_99_95_50_95_95_91_49_93_95_48_2_f_0(
+  int8_t param_1);
+
+MR_Word MR_CALL 
+mercury__pprint__f_85_110_117_115_101_100_65_114_103_115_95_95_102_117_110_99_95_95_67_108_97_115_115_77_101_116_104_111_100_95_102_111_114_95_112_112_114_105_110_116_95_95_100_111_99_95_95_95_95_105_110_116_95_95_97_114_105_116_121_48_95_95_95_95_95_95_112_112_114_105_110_116_95_95_100_111_99_95_50_95_95_91_49_93_95_48_2_f_0(
+  MR_Integer param_1);
+
+MR_Word MR_CALL 
+mercury__pprint__f_85_110_117_115_101_100_65_114_103_115_95_95_102_117_110_99_95_95_67_108_97_115_115_77_101_116_104_111_100_95_102_111_114_95_112_112_114_105_110_116_95_95_100_111_99_95_95_95_95_112_112_114_105_110_116_95_95_100_111_99_95_95_97_114_105_116_121_48_95_95_95_95_95_95_112_112_114_105_110_116_95_95_100_111_99_95_50_95_95_91_49_93_95_48_2_f_0(
+  MR_Word param_1);
+
+MR_Word MR_CALL 
+mercury__pprint__f_85_110_117_115_101_100_65_114_103_115_95_95_102_117_110_99_95_95_67_108_97_115_115_77_101_116_104_111_100_95_102_111_114_95_112_112_114_105_110_116_95_95_100_111_99_95_95_95_95_115_116_114_105_110_103_95_95_97_114_105_116_121_48_95_95_95_95_95_95_112_112_114_105_110_116_95_95_100_111_99_95_50_95_95_91_49_93_95_48_2_f_0(
+  MR_String param_1);
+
+MR_Word MR_CALL 
+mercury__pprint__f_85_110_117_115_101_100_65_114_103_115_95_95_102_117_110_99_95_95_67_108_97_115_115_77_101_116_104_111_100_95_102_111_114_95_112_112_114_105_110_116_95_95_100_111_99_95_95_95_95_117_105_110_116_49_54_95_95_97_114_105_116_121_48_95_95_95_95_95_95_112_112_114_105_110_116_95_95_100_111_99_95_50_95_95_91_49_93_95_48_2_f_0(
+  uint16_t param_1);
+
+MR_Word MR_CALL 
+mercury__pprint__f_85_110_117_115_101_100_65_114_103_115_95_95_102_117_110_99_95_95_67_108_97_115_115_77_101_116_104_111_100_95_102_111_114_95_112_112_114_105_110_116_95_95_100_111_99_95_95_95_95_117_105_110_116_51_50_95_95_97_114_105_116_121_48_95_95_95_95_95_95_112_112_114_105_110_116_95_95_100_111_99_95_50_95_95_91_49_93_95_48_2_f_0(
+  uint32_t param_1);
+
+MR_Word MR_CALL 
+mercury__pprint__f_85_110_117_115_101_100_65_114_103_115_95_95_102_117_110_99_95_95_67_108_97_115_115_77_101_116_104_111_100_95_102_111_114_95_112_112_114_105_110_116_95_95_100_111_99_95_95_95_95_117_105_110_116_54_52_95_95_97_114_105_116_121_48_95_95_95_95_95_95_112_112_114_105_110_116_95_95_100_111_99_95_50_95_95_91_49_93_95_48_2_f_0(
+  uint64_t param_1);
+
+MR_Word MR_CALL 
+mercury__pprint__f_85_110_117_115_101_100_65_114_103_115_95_95_102_117_110_99_95_95_67_108_97_115_115_77_101_116_104_111_100_95_102_111_114_95_112_112_114_105_110_116_95_95_100_111_99_95_95_95_95_117_105_110_116_56_95_95_97_114_105_116_121_48_95_95_95_95_95_95_112_112_114_105_110_116_95_95_100_111_99_95_50_95_95_91_49_93_95_48_2_f_0(
+  uint8_t param_1);
+
+MR_Word MR_CALL 
+mercury__pprint__f_85_110_117_115_101_100_65_114_103_115_95_95_102_117_110_99_95_95_67_108_97_115_115_77_101_116_104_111_100_95_102_111_114_95_112_112_114_105_110_116_95_95_100_111_99_95_95_95_95_117_105_110_116_95_95_97_114_105_116_121_48_95_95_95_95_95_95_112_112_114_105_110_116_95_95_100_111_99_95_50_95_95_91_49_93_95_48_2_f_0(
+  MR_Unsigned param_1);
+
+MR_Word MR_CALL 
+mercury__pprint__braces_1_f_0(
+  MR_Word param_1,
+  MR_Box param_2);
+
+MR_Word MR_CALL 
+mercury__pprint__bracketed_3_f_0(
+  MR_Word param_1,
+  MR_Word param_2,
+  MR_Word param_3,
+  MR_Box param_4,
+  MR_Box param_5,
+  MR_Box param_6);
+
+MR_Word MR_CALL 
+mercury__pprint__brackets_1_f_0(
+  MR_Word param_1,
+  MR_Box param_2);
+
+MR_Word MR_CALL 
+mercury__pprint__colon_0_f_0(void);
+
+MR_Word MR_CALL 
+mercury__pprint__colon_line_0_f_0(void);
+
+MR_Word MR_CALL 
+mercury__pprint__colon_space_0_f_0(void);
+
+MR_Word MR_CALL 
+mercury__pprint__colon_space_line_0_f_0(void);
+
+MR_Word MR_CALL 
+mercury__pprint__comma_0_f_0(void);
+
+MR_Word MR_CALL 
+mercury__pprint__comma_line_0_f_0(void);
+
+MR_Word MR_CALL 
+mercury__pprint__comma_space_0_f_0(void);
+
+MR_Word MR_CALL 
+mercury__pprint__comma_space_line_0_f_0(void);
+
+MR_Word MR_CALL 
+mercury__pprint__doc_1_f_0(
+  MR_Word param_1,
+  MR_Box param_2);
+
+MR_Word MR_CALL 
+mercury__pprint__doc_2_f_0(
+  MR_Word param_1,
+  MR_Integer param_2,
+  MR_Box param_3);
+
+MR_Word MR_CALL 
+mercury__pprint__ellipsis_0_f_0(void);
+
+MR_Word MR_CALL 
+mercury__pprint__group_1_f_0(
+  MR_Word param_1,
+  MR_Box param_2);
+
+MR_Word MR_CALL 
+mercury__pprint__label_2_f_0(
+  MR_Word param_1,
+  MR_String param_2,
+  MR_Box param_3);
+
+MR_Word MR_CALL 
+mercury__pprint__line_0_f_0(void);
+
+MR_Word MR_CALL 
+mercury__pprint__nest_2_f_0(
+  MR_Word param_1,
+  MR_Integer param_2,
+  MR_Box param_3);
+
+MR_Word MR_CALL 
+mercury__pprint__nil_0_f_0(void);
+
+MR_Word MR_CALL 
+mercury__pprint__packed_2_f_0(
+  MR_Word param_1,
+  MR_Word param_2,
+  MR_Box param_3,
+  MR_Word param_4);
+
+MR_Word MR_CALL 
+mercury__pprint__packed_3_f_0(
+  MR_Word param_1,
+  MR_Word param_2,
+  MR_Integer param_3,
+  MR_Box param_4,
+  MR_Word param_5);
+
+MR_Word MR_CALL 
+mercury__pprint__packed_cs_1_f_0(
+  MR_Word param_1,
+  MR_Word param_2);
+
+MR_Word MR_CALL 
+mercury__pprint__packed_cs_2_f_0(
+  MR_Word param_1,
+  MR_Integer param_2,
+  MR_Word param_3);
+
+MR_Word MR_CALL 
+mercury__pprint__packed_cs_to_depth_2_f_0(
+  MR_Word param_1,
+  MR_Integer param_2,
+  MR_Word param_3);
+
+MR_Word MR_CALL 
+mercury__pprint__packed_cs_univ_args_2_f_0(
+  MR_Integer param_1,
+  MR_Word param_2);
+
+MR_Word MR_CALL 
+mercury__pprint__parentheses_1_f_0(
+  MR_Word param_1,
+  MR_Box param_2);
+
+MR_Word MR_CALL 
+mercury__pprint__poly_1_f_0(
+  MR_Word param_1);
+
+MR_Word MR_CALL 
+mercury__pprint__semic_0_f_0(void);
+
+MR_Word MR_CALL 
+mercury__pprint__semic_line_0_f_0(void);
+
+MR_Word MR_CALL 
+mercury__pprint__semic_space_0_f_0(void);
+
+MR_Word MR_CALL 
+mercury__pprint__semic_space_line_0_f_0(void);
+
+MR_Word MR_CALL 
+mercury__pprint__separated_3_f_0(
+  MR_Word param_1,
+  MR_Word param_2,
+  MR_Word param_3,
+  MR_Box param_4,
+  MR_Word param_5);
+
+MR_Word MR_CALL 
+mercury__pprint__space_0_f_0(void);
+
+MR_Word MR_CALL 
+mercury__pprint__space_line_0_f_0(void);
+
+MR_Word MR_CALL 
+mercury__pprint__text_1_f_0(
+  MR_String param_1);
+
+MR_Word MR_CALL 
+mercury__pprint__to_doc_1_f_0(
+  MR_Word param_1,
+  MR_Box param_2);
+
+MR_Word MR_CALL 
+mercury__pprint__to_doc_2_f_0(
+  MR_Word param_1,
+  MR_Integer param_2,
+  MR_Box param_3);
+
+MR_Word MR_CALL 
+mercury__pprint__to_doc_3_f_0(
+  MR_Word param_1,
+  MR_Integer param_2,
+  MR_Integer param_3,
+  MR_Box param_4);
+
+MR_String MR_CALL 
+mercury__pprint__to_string_2_f_0(
+  MR_Integer param_1,
+  MR_Word param_2);
+
+MR_Word MR_CALL 
+mercury__pprint__word_wrapped_1_f_0(
+  MR_String param_1);
+
+void MR_CALL 
+mercury__pprint____Compare____depth_0_0(
+  MR_Word * param_1,
+  MR_Integer param_2,
+  MR_Integer param_3);
+
+void MR_CALL 
+mercury__pprint____Compare____doc_0_0(
+  MR_Word * param_1,
+  MR_Word param_2,
+  MR_Word param_3);
+
+void MR_CALL 
+mercury__pprint____Compare____map_pair_2_0(
+  MR_Word param_1,
+  MR_Word param_2,
+  MR_Word * param_3,
+  MR_Word param_4,
+  MR_Word param_5);
+
+MR_bool MR_CALL 
+mercury__pprint____Unify____depth_0_0(
+  MR_Integer param_1,
+  MR_Integer param_2);
+
+MR_bool MR_CALL 
+mercury__pprint____Unify____doc_0_0(
+  MR_Word param_1,
+  MR_Word param_2);
+
+MR_bool MR_CALL 
+mercury__pprint____Unify____map_pair_2_0(
+  MR_Word param_1,
+  MR_Word param_2,
+  MR_Word param_3,
+  MR_Word param_4);
+
+void mercury__pprint__init(void);
+void mercury__pprint__init_type_tables(void);
+void mercury__pprint__init_debugger(void);
+const char *mercury__pprint__grade_check(void);
+
+#ifdef __cplusplus
+}
+#endif
+
+#endif // MR_HEADER_GUARD_pprint
+
+// :- end_interface pprint.
