@@ -1,0 +1,13 @@
+:- module recursion_patterns.
+:- interface.
+:- import_module maybe.
+:- import_module measurements.
+:- import_module profile.
+:- import_module report.
+:- pred create_clique_recursion_costs_report(profile.deep, profile.clique_ptr, maybe.maybe_error(report.clique_recursion_report)).
+:- mode create_clique_recursion_costs_report((builtin.in), (builtin.in), (builtin.out)) is det.
+:- pred create_recursion_types_frequency_report(profile.deep, maybe.maybe_error(report.recursion_types_frequency_report)).
+:- mode create_recursion_types_frequency_report((builtin.in), (builtin.out)) is det.
+:- pred recursion_type_get_maybe_avg_max_depth(report.recursion_type, maybe.maybe(measurements.recursion_depth)).
+:- mode recursion_type_get_maybe_avg_max_depth(builtin.in((report.recursion_type_known_costs)), builtin.out(maybe.maybe_yes(ground))) is det.
+:- mode recursion_type_get_maybe_avg_max_depth((builtin.in), (builtin.out)) is det.
