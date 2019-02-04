@@ -1,0 +1,46 @@
+echo on
+register --quiet
+goto 3
+dd -d 3 -n 7
+browse 1
+quit
+step
+finish
+format_param depth 20
+format_param size 201
+format raw_pretty
+p proc_body
+dd -d 3 -n 7
+browse 1
+^1
+mark
+quit
+dd -d 3 -n 7
+browse 1
+^2^1
+mark
+browse 2
+print
+mark
+quit
+dd -d 3 -n 7
+browse 1
+^2^2^1
+mark
+quit
+dd -d 3 -n 7
+browse 1
+^2^2^2^1
+mark
+quit
+dd -d 3 -n 7
+browse 1
+^2^2^2^2^1
+mark
+quit
+dd -d 3 -n 7
+browse 1
+^2^2^2^2^2
+mark
+quit
+continue
