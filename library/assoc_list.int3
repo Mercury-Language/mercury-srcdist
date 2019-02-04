@@ -1,0 +1,4 @@
+:- module assoc_list.
+:- interface.
+:- type assoc_list(T).
+:- type assoc_list(K, V).

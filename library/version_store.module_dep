@@ -1,0 +1,13 @@
+module(1, "version_store.m",
+	version_store,
+	{},
+	{builtin, private_builtin},
+	{builtin, counter, int, private_builtin, unit, univ, version_array},
+	{},
+	{},
+	{},
+	{},
+	{},
+	no_foreign_export,
+	no_main
+).

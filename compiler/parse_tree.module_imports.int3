@@ -1,0 +1,5 @@
+:- module (parse_tree.module_imports).
+:- interface.
+:- type module_and_imports.
+:- type module_timestamp.
+:- type module_timestamp_map.
