@@ -1,0 +1,26 @@
+:- module (transform_hlds.goal_store).
+:- interface.
+:- import_module bool.
+:- import_module hlds.
+:- import_module set.
+:- import_module (hlds.hlds_goal).
+:- import_module (hlds.hlds_module).
+:- import_module (hlds.instmap).
+:- import_module (hlds.vartypes).
+:- type goal_store(T).
+:- type stored_goal
+    --->    stored_goal(hlds.hlds_goal.hlds_goal, hlds.instmap.instmap).
+:- pred goal_store_all_ancestors(transform_hlds.goal_store.goal_store(T), T, hlds.vartypes.vartypes, hlds.hlds_module.module_info, bool.bool, set.set(T)).
+:- mode goal_store_all_ancestors((builtin.in), (builtin.in), (builtin.in), (builtin.in), (builtin.in), (builtin.out)) is det.
+:- pred goal_store_det_insert(T, transform_hlds.goal_store.stored_goal, transform_hlds.goal_store.goal_store(T), transform_hlds.goal_store.goal_store(T)).
+:- mode goal_store_det_insert((builtin.in), (builtin.in), (builtin.in), (builtin.out)) is det.
+:- pred goal_store_init(transform_hlds.goal_store.goal_store(T)).
+:- mode goal_store_init((builtin.out)) is det.
+:- func goal_store_init = transform_hlds.goal_store.goal_store(T).
+:- pred goal_store_lookup(transform_hlds.goal_store.goal_store(T), T, transform_hlds.goal_store.stored_goal).
+:- mode goal_store_lookup((builtin.in), (builtin.in), (builtin.out)) is det.
+:- pred goal_store_member(transform_hlds.goal_store.goal_store(T), T, transform_hlds.goal_store.stored_goal).
+:- mode goal_store_member((builtin.in), (builtin.out), (builtin.out)) is nondet.
+:- implementation.
+:- import_module map.
+:- type goal_store(T) == map.map(T, transform_hlds.goal_store.stored_goal).

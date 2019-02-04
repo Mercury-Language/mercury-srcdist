@@ -1,0 +1,56 @@
+:- module term_conversion.
+:- use_module array.
+:- use_module bitmap.
+:- use_module builtin.
+:- use_module construct.
+:- use_module deconstruct.
+:- use_module int.
+:- use_module integer.
+:- use_module list.
+:- use_module private_builtin.
+:- use_module require.
+:- use_module string.
+:- use_module term.
+:- use_module type_desc.
+:- use_module univ.
+:- use_module version_array.
+
+term_conversion.det_term_to_type(V_3) = V_4 :-
+    term_conversion.det_term_to_type(V_3, V_4).
+
+term_conversion.term_to_type(V_3, V_4) :-
+    V_5 = term_conversion.ok(V_4) : term_conversion.term_to_type_result(T_2, U_1),
+    term_conversion.try_term_to_type(V_3, V_5).
+
+term_conversion.try_term_to_type(V_3) = V_4 :-
+    term_conversion.try_term_to_type(V_3, V_4).
+
+term_conversion.type_to_term(V_3, V_4) :-
+    univ.type_to_univ(V_3, V_5),
+    term_conversion.univ_to_term(V_5, V_4).
+
+term_conversion.type_to_term(V_3) = V_4 :-
+    term_conversion.type_to_term(V_3, V_4).
+
+term_conversion.univ_to_term(V_3) = V_4 :-
+    term_conversion.univ_to_term(V_3, V_4).
+
+:- pragma exceptions(predicate, (term_conversion.det_term_to_type), 2, 0, may_throw(user_exception)).
+:- pragma exceptions(function, (term_conversion.det_term_to_type), 2, 0, may_throw(user_exception)).
+:- pragma exceptions(predicate, (term_conversion.term_to_type), 2, 0, may_throw(user_exception)).
+:- pragma exceptions(predicate, (term_conversion.try_term_to_type), 2, 0, may_throw(user_exception)).
+:- pragma exceptions(function, (term_conversion.try_term_to_type), 2, 0, may_throw(user_exception)).
+:- pragma exceptions(predicate, (term_conversion.type_to_term), 2, 0, may_throw(user_exception)).
+:- pragma exceptions(function, (term_conversion.type_to_term), 2, 0, may_throw(user_exception)).
+:- pragma exceptions(predicate, (term_conversion.univ_to_term), 2, 0, may_throw(user_exception)).
+:- pragma exceptions(function, (term_conversion.univ_to_term), 2, 0, may_throw(user_exception)).
+
+:- pragma termination_info(term_conversion.det_term_to_type((builtin.in), (builtin.out)), infinite, can_loop).
+:- pragma termination_info(term_conversion.det_term_to_type((builtin.in)) = (builtin.out), infinite, can_loop).
+:- pragma termination_info(term_conversion.term_to_type((builtin.in), (builtin.out)), infinite, can_loop).
+:- pragma termination_info(term_conversion.try_term_to_type((builtin.in), (builtin.out)), infinite, can_loop).
+:- pragma termination_info(term_conversion.try_term_to_type((builtin.in)) = (builtin.out), infinite, can_loop).
+:- pragma termination_info(term_conversion.type_to_term((builtin.in), (builtin.out)), infinite, can_loop).
+:- pragma termination_info(term_conversion.type_to_term((builtin.in)) = (builtin.out), infinite, can_loop).
+:- pragma termination_info(term_conversion.univ_to_term((builtin.in), (builtin.out)), infinite, can_loop).
+:- pragma termination_info(term_conversion.univ_to_term((builtin.in)) = (builtin.out), infinite, can_loop).
