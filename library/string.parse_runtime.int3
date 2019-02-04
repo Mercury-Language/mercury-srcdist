@@ -1,0 +1,3 @@
+:- module (string.parse_runtime).
+:- interface.
+:- type string_format_spec.
