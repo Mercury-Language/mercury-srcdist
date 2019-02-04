@@ -1,0 +1,13 @@
+:- module (parse_tree.prog_detism).
+:- interface.
+:- import_module maybe.
+:- import_module (parse_tree.prog_data).
+:- type det_comparison
+    --->    first_detism_tighter_than 
+    ;       first_detism_same_as 
+    ;       first_detism_looser_than 
+    ;       first_detism_incomparable .
+:- type det_component_comparison
+    --->    first_tighter_than 
+    ;       first_same_as 
+    ;       first_looser_than .

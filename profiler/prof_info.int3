@@ -1,0 +1,10 @@
+:- module prof_info.
+:- interface.
+:- type addrdecl.
+:- type cycle_map.
+:- type pred_info.
+:- type prof.
+:- type prof_node.
+:- type prof_node_map.
+:- type prof_node_type
+	where	type_is_abstract_enum(1).

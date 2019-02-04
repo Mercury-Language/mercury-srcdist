@@ -1,0 +1,35 @@
+:- module (libs.process_util).
+:- interface.
+:- import_module bool.
+:- import_module io.
+:- import_module maybe.
+:- type build0(Info) == pred(bool.bool, Info, Info, io.io, io.io).
+:- type io_pred == pred(bool.bool, io.io, io.io).
+:- type pid == int.
+:- type post_signal_cleanup(Info) == pred(Info, Info, io.io, io.io).
+:- inst (build0) == (pred((builtin.out), (builtin.in), (builtin.out), (builtin.di), (builtin.uo)) is det).
+:- inst (io_pred) == (pred((builtin.out), (builtin.di), (builtin.uo)) is det).
+:- inst (post_signal_cleanup) == (pred((builtin.in), (builtin.out), (builtin.di), (builtin.uo)) is det).
+:- pred build_with_check_for_interrupt(bool.bool, libs.process_util.build0(Info), libs.process_util.post_signal_cleanup(Info), bool.bool, Info, Info, io.io, io.io).
+:- mode build_with_check_for_interrupt((builtin.in), builtin.in(((libs.process_util).build0)), builtin.in(((libs.process_util).post_signal_cleanup)), (builtin.out), (builtin.in), (builtin.out), (builtin.di), (builtin.uo)) is det.
+:- pred call_in_forked_process(libs.process_util.io_pred, bool.bool, io.io, io.io).
+:- mode call_in_forked_process(builtin.in(((libs.process_util).io_pred)), (builtin.out), (builtin.di), (builtin.uo)) is det.
+:- pred call_in_forked_process_with_backup(libs.process_util.io_pred, libs.process_util.io_pred, bool.bool, io.io, io.io).
+:- mode call_in_forked_process_with_backup(builtin.in(((libs.process_util).io_pred)), builtin.in(((libs.process_util).io_pred)), (builtin.out), (builtin.di), (builtin.uo)) is det.
+:- pred can_fork is semidet.
+:- pred raise_signal(int, io.io, io.io).
+:- mode raise_signal((builtin.in), (builtin.di), (builtin.uo)) is det.
+:- pred send_signal(int, libs.process_util.pid, io.io, io.io).
+:- mode send_signal((builtin.in), (builtin.in), (builtin.di), (builtin.uo)) is det.
+:- func sigint = int.
+:- pred start_in_forked_process(libs.process_util.io_pred, maybe.maybe(libs.process_util.pid), io.io, io.io).
+:- mode start_in_forked_process(builtin.in(((libs.process_util).io_pred)), (builtin.out), (builtin.di), (builtin.uo)) is det.
+:- pred wait_any(libs.process_util.pid, io.res(io.system_result), io.io, io.io).
+:- mode wait_any((builtin.out), (builtin.out), (builtin.di), (builtin.uo)) is det.
+:- pred wait_pid(libs.process_util.pid, io.res(io.system_result), io.io, io.io).
+:- mode wait_pid((builtin.in), (builtin.out), (builtin.di), (builtin.uo)) is det.
+:- pragma foreign_import_module("C", (libs.process_util)).
+:- implementation.
+:- type signal_action
+    --->    signal_action .
+:- pragma foreign_type(c, signal_action, "MR_signal_action").
