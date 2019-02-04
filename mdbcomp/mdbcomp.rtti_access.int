@@ -1,0 +1,99 @@
+:- module (mdbcomp.rtti_access).
+:- interface.
+:- import_module list.
+:- import_module maybe.
+:- import_module (mdbcomp.goal_path).
+:- import_module (mdbcomp.prim_data).
+:- import_module (mdbcomp.trace_counts).
+:- type bytecode
+    --->    bytecode(mdbcomp.rtti_access.bytecode_bytes, int).
+:- type bytecode_bytes
+    --->    dummy_bytecode_bytes .
+:- pragma foreign_type(c, bytecode_bytes, "const MR_uint_least8_t *", [can_pass_as_mercury_type, stable]).
+:- pragma foreign_type(csharp, bytecode_bytes, "object").
+:- pragma foreign_type(java, bytecode_bytes, "java.lang.Object").
+:- pragma foreign_type(erlang, bytecode_bytes, "").
+:- type label_layout.
+:- type module_layout.
+:- type proc_layout.
+:- type string_table
+    --->    string_table(mdbcomp.rtti_access.string_table_chars, int).
+:- type string_table_chars.
+:- pred containing_module_layout(mdbcomp.rtti_access.proc_layout, mdbcomp.rtti_access.module_layout).
+:- mode containing_module_layout((builtin.in), (builtin.out)) is semidet.
+:- func containing_proc_layout(mdbcomp.rtti_access.label_layout) = mdbcomp.rtti_access.proc_layout.
+:- pred encode_byte(int, list.list(int)).
+:- mode encode_byte((builtin.in), (builtin.out)) is semidet.
+:- pred encode_byte_det(int, list.list(int)).
+:- mode encode_byte_det((builtin.in), (builtin.out)) is det.
+:- func encode_byte_func(int) = list.list(int).
+:- pred encode_int32(int, list.list(int)).
+:- mode encode_int32((builtin.in), (builtin.out)) is semidet.
+:- pred encode_int32_det(int, list.list(int)).
+:- mode encode_int32_det((builtin.in), (builtin.out)) is det.
+:- func encode_int32_func(int) = list.list(int).
+:- pred encode_len_string(string, list.list(int)).
+:- mode encode_len_string((builtin.in), (builtin.out)) is det.
+:- func encode_len_string_func(string) = list.list(int).
+:- pred encode_num(int, list.list(int)).
+:- mode encode_num((builtin.in), (builtin.out)) is semidet.
+:- pred encode_num_det(int, list.list(int)).
+:- mode encode_num_det((builtin.in), (builtin.out)) is det.
+:- func encode_num_func(int) = list.list(int).
+:- pred encode_short(int, list.list(int)).
+:- mode encode_short((builtin.in), (builtin.out)) is semidet.
+:- pred encode_short_det(int, list.list(int)).
+:- mode encode_short_det((builtin.in), (builtin.out)) is det.
+:- func encode_short_func(int) = list.list(int).
+:- pred find_initial_version_arg_num(mdbcomp.rtti_access.proc_layout, int, int).
+:- mode find_initial_version_arg_num((builtin.in), (builtin.in), (builtin.out)) is semidet.
+:- func get_all_modes_for_layout(mdbcomp.rtti_access.proc_layout) = list.list(mdbcomp.rtti_access.proc_layout).
+:- pred get_context_from_label_layout(mdbcomp.rtti_access.label_layout, string, int).
+:- mode get_context_from_label_layout((builtin.in), (builtin.out), (builtin.out)) is semidet.
+:- func get_goal_path_from_label_layout(mdbcomp.rtti_access.label_layout) = mdbcomp.goal_path.goal_path_string.
+:- func get_goal_path_from_maybe_label(maybe.maybe(mdbcomp.rtti_access.label_layout)) = mdbcomp.goal_path.goal_path_string.
+:- func get_path_port_from_label_layout(mdbcomp.rtti_access.label_layout) = mdbcomp.trace_counts.path_port.
+:- func get_port_from_label_layout(mdbcomp.rtti_access.label_layout) = mdbcomp.prim_data.trace_port.
+:- func get_proc_label_from_layout(mdbcomp.rtti_access.proc_layout) = mdbcomp.prim_data.proc_label.
+:- func get_proc_layout_from_label_layout(mdbcomp.rtti_access.label_layout) = mdbcomp.rtti_access.proc_layout.
+:- func get_proc_name(mdbcomp.prim_data.proc_label) = string.
+:- func lookup_string_table(mdbcomp.rtti_access.string_table, int) = string.
+:- func module_string_table(mdbcomp.rtti_access.module_layout) = mdbcomp.rtti_access.string_table.
+:- func proc_bytecode_bytes(mdbcomp.rtti_access.proc_layout) = mdbcomp.rtti_access.bytecode_bytes.
+:- pred read_byte(mdbcomp.rtti_access.bytecode, int, int, int).
+:- mode read_byte((builtin.in), (builtin.out), (builtin.in), (builtin.out)) is semidet.
+:- pred read_int32(mdbcomp.rtti_access.bytecode, int, int, int).
+:- mode read_int32((builtin.in), (builtin.out), (builtin.in), (builtin.out)) is semidet.
+:- pred read_len_string(mdbcomp.rtti_access.bytecode, string, int, int).
+:- mode read_len_string((builtin.in), (builtin.out), (builtin.in), (builtin.out)) is semidet.
+:- pred read_line(mdbcomp.rtti_access.bytecode, string, int, int).
+:- mode read_line((builtin.in), (builtin.out), (builtin.in), (builtin.out)) is semidet.
+:- pred read_num(mdbcomp.rtti_access.bytecode, int, int, int).
+:- mode read_num((builtin.in), (builtin.out), (builtin.in), (builtin.out)) is semidet.
+:- pred read_short(mdbcomp.rtti_access.bytecode, int, int, int).
+:- mode read_short((builtin.in), (builtin.out), (builtin.in), (builtin.out)) is semidet.
+:- pred read_string_table(mdbcomp.rtti_access.bytecode, mdbcomp.rtti_access.string_table, int, int).
+:- mode read_string_table((builtin.in), (builtin.out), (builtin.in), (builtin.out)) is semidet.
+:- pred read_string_via_offset(mdbcomp.rtti_access.bytecode, mdbcomp.rtti_access.string_table, string, int, int).
+:- mode read_string_via_offset((builtin.in), (builtin.in), (builtin.out), (builtin.in), (builtin.out)) is semidet.
+:- pragma foreign_import_module("C", (mdbcomp.rtti_access)).
+:- pragma foreign_import_module("C#", (mdbcomp.rtti_access)).
+:- pragma foreign_import_module("Java", (mdbcomp.rtti_access)).
+:- pragma foreign_import_module("Erlang", (mdbcomp.rtti_access)).
+:- implementation.
+:- pragma foreign_type(c, label_layout, "const MR_LabelLayout *", [can_pass_as_mercury_type, stable]).
+:- pragma foreign_type(csharp, label_layout, "object").
+:- pragma foreign_type(java, label_layout, "java.lang.Object").
+:- pragma foreign_type(erlang, label_layout, "").
+:- pragma foreign_type(c, module_layout, "const MR_ModuleLayout *", [can_pass_as_mercury_type, stable]).
+:- pragma foreign_type(csharp, module_layout, "object").
+:- pragma foreign_type(java, module_layout, "java.lang.Object").
+:- pragma foreign_type(erlang, module_layout, "").
+:- pragma foreign_type(c, proc_layout, "const MR_ProcLayout *", [can_pass_as_mercury_type, stable]).
+:- pragma foreign_type(csharp, proc_layout, "object").
+:- pragma foreign_type(java, proc_layout, "java.lang.Object").
+:- pragma foreign_type(erlang, proc_layout, "").
+:- pragma foreign_type(c, string_table_chars, "MR_ConstString", [can_pass_as_mercury_type, stable]).
+:- pragma foreign_type(csharp, string_table_chars, "object").
+:- pragma foreign_type(java, string_table_chars, "java.lang.Object").
+:- pragma foreign_type(erlang, string_table_chars, "").
