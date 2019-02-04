@@ -1,0 +1,99 @@
+:- module (backend_libs.builtin_ops).
+:- interface.
+:- import_module hlds.
+:- import_module list.
+:- import_module mdbcomp.
+:- import_module parse_tree.
+:- import_module (hlds.hlds_pred).
+:- import_module (mdbcomp.sym_name).
+:- import_module (parse_tree.prog_data).
+:- type array_elem_type
+    --->    array_elem_scalar(backend_libs.builtin_ops.scalar_array_elem_type)
+    ;       array_elem_struct(list.list(backend_libs.builtin_ops.scalar_array_elem_type)).
+:- type binary_op
+    --->    int_add(parse_tree.prog_data.int_type)
+    ;       int_sub(parse_tree.prog_data.int_type)
+    ;       int_mul(parse_tree.prog_data.int_type)
+    ;       int_div(parse_tree.prog_data.int_type)
+    ;       int_mod(parse_tree.prog_data.int_type)
+    ;       unchecked_left_shift(parse_tree.prog_data.int_type)
+    ;       unchecked_right_shift(parse_tree.prog_data.int_type)
+    ;       bitwise_and(parse_tree.prog_data.int_type)
+    ;       bitwise_or(parse_tree.prog_data.int_type)
+    ;       bitwise_xor(parse_tree.prog_data.int_type)
+    ;       logical_and 
+    ;       logical_or 
+    ;       eq(parse_tree.prog_data.int_type)
+    ;       ne(parse_tree.prog_data.int_type)
+    ;       body 
+    ;       array_index(backend_libs.builtin_ops.array_elem_type)
+    ;       string_unsafe_index_code_unit 
+    ;       str_eq 
+    ;       str_ne 
+    ;       str_lt 
+    ;       str_gt 
+    ;       str_le 
+    ;       str_ge 
+    ;       str_cmp 
+    ;       offset_str_eq(int)
+    ;       int_lt(parse_tree.prog_data.int_type)
+    ;       int_gt(parse_tree.prog_data.int_type)
+    ;       int_le(parse_tree.prog_data.int_type)
+    ;       int_ge(parse_tree.prog_data.int_type)
+    ;       unsigned_le 
+    ;       float_plus 
+    ;       float_minus 
+    ;       float_times 
+    ;       float_divide 
+    ;       float_eq 
+    ;       float_ne 
+    ;       float_lt 
+    ;       float_gt 
+    ;       float_le 
+    ;       float_ge 
+    ;       float_word_bits 
+    ;       float_from_dword 
+    ;       pointer_equal_conservative 
+    ;       compound_eq 
+    ;       compound_lt .
+:- type scalar_array_elem_type
+    --->    scalar_elem_string 
+    ;       scalar_elem_int 
+    ;       scalar_elem_generic .
+:- type simple_code(T)
+    --->    assign(T, backend_libs.builtin_ops.simple_expr(T))
+    ;       ref_assign(T, T)
+    ;       test(backend_libs.builtin_ops.simple_expr(T))
+    ;       noop(list.list(T)).
+:- type simple_expr(T)
+    --->    leaf(T)
+    ;       int_const(int)
+    ;       uint_const(uint)
+    ;       int8_const(int)
+    ;       uint8_const(int)
+    ;       int16_const(int)
+    ;       uint16_const(int)
+    ;       int32_const(int)
+    ;       uint32_const(int)
+    ;       float_const(float)
+    ;       unary(backend_libs.builtin_ops.unary_op, backend_libs.builtin_ops.simple_expr(T))
+    ;       binary(backend_libs.builtin_ops.binary_op, backend_libs.builtin_ops.simple_expr(T), backend_libs.builtin_ops.simple_expr(T)).
+:- type unary_op
+    --->    mktag 
+    ;       tag 
+    ;       unmktag 
+    ;       strip_tag 
+    ;       mkbody 
+    ;       unmkbody 
+    ;       bitwise_complement(parse_tree.prog_data.int_type)
+    ;       logical_not 
+    ;       hash_string 
+    ;       hash_string2 
+    ;       hash_string3 
+    ;       hash_string4 
+    ;       hash_string5 
+    ;       hash_string6 .
+:- inst (simple_arg_expr) == bound(float_const(ground) ; int_const(ground) ; leaf(ground)).
+:- inst (simple_assign_expr) == bound(binary(ground, ((backend_libs.builtin_ops).simple_arg_expr), ((backend_libs.builtin_ops).simple_arg_expr)) ; leaf(ground) ; unary(ground, ((backend_libs.builtin_ops).simple_arg_expr))).
+:- inst (simple_code) == bound(assign(ground, ((backend_libs.builtin_ops).simple_assign_expr)) ; noop(ground) ; ref_assign(ground, ground) ; test(((backend_libs.builtin_ops).simple_test_expr))).
+:- inst (simple_test_expr) == bound(binary(ground, ((backend_libs.builtin_ops).simple_arg_expr), ((backend_libs.builtin_ops).simple_arg_expr)) ; unary(ground, ((backend_libs.builtin_ops).simple_arg_expr))).

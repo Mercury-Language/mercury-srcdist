@@ -1,0 +1,3 @@
+:- module uint16.
+:- interface.
+:- type placeholder_uint16.

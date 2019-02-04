@@ -1,0 +1,2 @@
+exception.m:655: In predicate `catch_impl'/3:
+exception.m:655:   warning: unnecessary `promise_pure' pragma.
