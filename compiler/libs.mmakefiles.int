@@ -1,0 +1,45 @@
+:- module (libs.mmakefiles).
+:- interface.
+:- import_module cord.
+:- import_module io.
+:- import_module list.
+:- type is_mmake_rule_phony
+    --->    mmake_rule_is_not_phony 
+    ;       mmake_rule_is_phony .
+:- type mmake_action == string.
+:- type mmake_condition
+    --->    mmake_cond_grade_has_component(libs.mmakefiles.mmake_grade_component)
+    ;       mmake_cond_strings_equal(string, string)
+    ;       mmake_cond_strings_not_equal(string, string).
+:- type mmake_entry
+    --->    mmake_block_comment(((libs.mmakefiles).mbc_comments) :: list.list(string))
+    ;       mmake_var_defn(((libs.mmakefiles).mvd_var_name) :: string, ((libs.mmakefiles).mvd_var_value) :: string)
+    ;       mmake_var_defn_list(((libs.mmakefiles).mvdl_var_name) :: string, ((libs.mmakefiles).mvdl_var_value) :: list.list(string))
+    ;       mmake_simple_rule(((libs.mmakefiles).msr_rule_name) :: string, ((libs.mmakefiles).msr_flags) :: libs.mmakefiles.is_mmake_rule_phony, ((libs.mmakefiles).msr_targets) :: libs.mmakefiles.mmake_file_name, ((libs.mmakefiles).msr_sources) :: list.list(libs.mmakefiles.mmake_file_name), ((libs.mmakefiles).msr_actions) :: list.list(libs.mmakefiles.mmake_action))
+    ;       mmake_flat_rule(((libs.mmakefiles).mfr_rule_name) :: string, ((libs.mmakefiles).mfr_flags) :: libs.mmakefiles.is_mmake_rule_phony, ((libs.mmakefiles).mfr_targets) :: list.one_or_more(libs.mmakefiles.mmake_file_name), ((libs.mmakefiles).mfr_sources) :: list.list(libs.mmakefiles.mmake_file_name), ((libs.mmakefiles).mfr_actions) :: list.list(libs.mmakefiles.mmake_action))
+    ;       mmake_deep_rule(((libs.mmakefiles).mdr_rule_name) :: string, ((libs.mmakefiles).mdr_flags) :: libs.mmakefiles.is_mmake_rule_phony, ((libs.mmakefiles).mdr_targets) :: libs.mmakefiles.mmake_file_name, ((libs.mmakefiles).mdr_sources) :: list.list(libs.mmakefiles.mmake_file_name_group), ((libs.mmakefiles).mdr_actions) :: list.list(libs.mmakefiles.mmake_action))
+    ;       mmake_general_rule(((libs.mmakefiles).mgr_rule_name) :: string, ((libs.mmakefiles).mgr_flags) :: libs.mmakefiles.is_mmake_rule_phony, ((libs.mmakefiles).mgr_targets) :: list.one_or_more(libs.mmakefiles.mmake_file_name_group), ((libs.mmakefiles).mgr_sources) :: list.list(libs.mmakefiles.mmake_file_name_group), ((libs.mmakefiles).mgr_actions) :: list.list(libs.mmakefiles.mmake_action)).
+:- type mmake_file_name == string.
+:- type mmake_file_name_group
+    --->    mmake_file_name_group(((libs.mmakefiles).fng_group_name) :: string, ((libs.mmakefiles).fng_file_names) :: list.one_or_more(libs.mmakefiles.mmake_file_name)).
+:- type mmake_fragment
+    --->    mmf_entry(libs.mmakefiles.mmake_entry)
+    ;       mmf_conditional_entry(((libs.mmakefiles).mmfce_test) :: libs.mmakefiles.mmake_condition, ((libs.mmakefiles).mmfce_if_true) :: libs.mmakefiles.mmake_entry, ((libs.mmakefiles).mmfce_if_false) :: libs.mmakefiles.mmake_entry)
+    ;       mmf_conditional_fragments(((libs.mmakefiles).mmfcfs_test) :: libs.mmakefiles.mmake_condition, ((libs.mmakefiles).mmfcfs_if_true) :: list.list(libs.mmakefiles.mmake_fragment), ((libs.mmakefiles).mmfcfs_if_false) :: list.list(libs.mmakefiles.mmake_fragment)).
+:- type mmake_grade_component == string.
+:- type mmakefile == cord.cord(libs.mmakefiles.mmake_fragment).
+:- pred end_mmakefile(io.text_output_stream, libs.mmakefiles.mmakefile, io.io, io.io).
+:- mode end_mmakefile((builtin.in), (builtin.in), (builtin.di), (builtin.uo)) is det.
+:- pred gather_mmake_entries(io.text_output_stream, list.list(libs.mmakefiles.mmake_entry), libs.mmakefiles.mmakefile, libs.mmakefiles.mmakefile, io.io, io.io).
+:- mode gather_mmake_entries((builtin.in), (builtin.in), (builtin.in), (builtin.out), (builtin.di), (builtin.uo)) is det.
+:- pred gather_mmake_entry(io.text_output_stream, libs.mmakefiles.mmake_entry, libs.mmakefiles.mmakefile, libs.mmakefiles.mmakefile, io.io, io.io).
+:- mode gather_mmake_entry((builtin.in), (builtin.in), (builtin.in), (builtin.out), (builtin.di), (builtin.uo)) is det.
+:- pred gather_mmake_fragment(io.text_output_stream, libs.mmakefiles.mmake_fragment, libs.mmakefiles.mmakefile, libs.mmakefiles.mmakefile, io.io, io.io).
+:- mode gather_mmake_fragment((builtin.in), (builtin.in), (builtin.in), (builtin.out), (builtin.di), (builtin.uo)) is det.
+:- pred gather_mmake_fragments(io.text_output_stream, list.list(libs.mmakefiles.mmake_fragment), libs.mmakefiles.mmakefile, libs.mmakefiles.mmakefile, io.io, io.io).
+:- mode gather_mmake_fragments((builtin.in), (builtin.in), (builtin.in), (builtin.out), (builtin.di), (builtin.uo)) is det.
+:- func make_file_name_group(string, list.list(libs.mmakefiles.mmake_file_name)) = list.list(libs.mmakefiles.mmake_file_name_group).
+:- func make_singleton_file_name_group(libs.mmakefiles.mmake_file_name) = libs.mmakefiles.mmake_file_name_group.
+:- func silent_noop_action = string.
+:- pred start_mmakefile(io.text_output_stream, libs.mmakefiles.mmakefile, io.io, io.io).
+:- mode start_mmakefile((builtin.in), (builtin.out), (builtin.di), (builtin.uo)) is det.

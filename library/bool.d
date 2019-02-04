@@ -1,0 +1,617 @@
+# vim: ts=8 sw=8 noexpandtab ft=make
+
+
+
+bool.optdate bool.trans_opt_date bool.err bool.c_date bool.java_date : bool.m \
+	builtin.int \
+	enum.int \
+	list.int \
+	private_builtin.int \
+	array.int2 \
+	assoc_list.int2 \
+	bitmap.int2 \
+	char.int2 \
+	construct.int2 \
+	deconstruct.int2 \
+	integer.int2 \
+	io.int2 \
+	map.int2 \
+	maybe.int2 \
+	ops.int2 \
+	pair.int2 \
+	pretty_printer.int2 \
+	random.int2 \
+	rtti_implementation.int2 \
+	set.int2 \
+	set_ordlist.int2 \
+	stream.int2 \
+	string.int2 \
+	term.int2 \
+	time.int2 \
+	tree234.int2 \
+	type_desc.int2 \
+	univ.int2
+
+ifeq (x,y)
+# RULE date_file_deps
+# source group names:
+#   (unnamed)
+#   long deps
+#   short deps
+bool.optdate bool.trans_opt_date bool.err bool.c_date bool.java_date : \
+		bool.m \
+	\
+		builtin.int \
+		enum.int \
+		list.int \
+		private_builtin.int \
+	\
+		array.int2 \
+		assoc_list.int2 \
+		bitmap.int2 \
+		char.int2 \
+		construct.int2 \
+		deconstruct.int2 \
+		integer.int2 \
+		io.int2 \
+		map.int2 \
+		maybe.int2 \
+		ops.int2 \
+		pair.int2 \
+		pretty_printer.int2 \
+		random.int2 \
+		rtti_implementation.int2 \
+		set.int2 \
+		set_ordlist.int2 \
+		stream.int2 \
+		string.int2 \
+		term.int2 \
+		time.int2 \
+		tree234.int2 \
+		type_desc.int2 \
+		univ.int2
+endif
+
+
+
+bool.$O :  \
+	array.mh \
+	assoc_list.mh \
+	benchmarking.mh \
+	bitmap.mh \
+	bool.mh \
+	builtin.mh \
+	calendar.mh \
+	char.mh \
+	construct.mh \
+	cord.mh \
+	deconstruct.mh \
+	dir.mh \
+	enum.mh \
+	erlang_rtti_implementation.mh \
+	exception.mh \
+	float.mh \
+	int.mh \
+	integer.mh \
+	io.mh \
+	lexer.mh \
+	list.mh \
+	map.mh \
+	math.mh \
+	maybe.mh \
+	mutvar.mh \
+	ops.mh \
+	pair.mh \
+	parser.mh \
+	pretty_printer.mh \
+	private_builtin.mh \
+	random.mh \
+	require.mh \
+	rtti_implementation.mh \
+	set.mh \
+	set_ordlist.mh \
+	set_tree234.mh \
+	solutions.mh \
+	std_util.mh \
+	stm_builtin.mh \
+	store.mh \
+	stream.mh \
+	string.mh \
+	table_builtin.mh \
+	term.mh \
+	term_conversion.mh \
+	term_io.mh \
+	time.mh \
+	tree234.mh \
+	type_desc.mh \
+	uint.mh \
+	unit.mh \
+	univ.mh \
+	varset.mh \
+	version_array.mh \
+	stream.string_writer.mh \
+	string.format.mh \
+	string.parse_runtime.mh \
+	string.parse_util.mh \
+	string.to_string.mh
+
+ifeq (x,y)
+# RULE machine_dependent_header_deps
+bool.$O : \
+		array.mh \
+		assoc_list.mh \
+		benchmarking.mh \
+		bitmap.mh \
+		bool.mh \
+		builtin.mh \
+		calendar.mh \
+		char.mh \
+		construct.mh \
+		cord.mh \
+		deconstruct.mh \
+		dir.mh \
+		enum.mh \
+		erlang_rtti_implementation.mh \
+		exception.mh \
+		float.mh \
+		int.mh \
+		integer.mh \
+		io.mh \
+		lexer.mh \
+		list.mh \
+		map.mh \
+		math.mh \
+		maybe.mh \
+		mutvar.mh \
+		ops.mh \
+		pair.mh \
+		parser.mh \
+		pretty_printer.mh \
+		private_builtin.mh \
+		random.mh \
+		require.mh \
+		rtti_implementation.mh \
+		set.mh \
+		set_ordlist.mh \
+		set_tree234.mh \
+		solutions.mh \
+		std_util.mh \
+		stm_builtin.mh \
+		store.mh \
+		stream.mh \
+		string.mh \
+		table_builtin.mh \
+		term.mh \
+		term_conversion.mh \
+		term_io.mh \
+		time.mh \
+		tree234.mh \
+		type_desc.mh \
+		uint.mh \
+		unit.mh \
+		univ.mh \
+		varset.mh \
+		version_array.mh \
+		stream.string_writer.mh \
+		string.format.mh \
+		string.parse_runtime.mh \
+		string.parse_util.mh \
+		string.to_string.mh
+endif
+
+
+
+bool.trans_opt_date bool.err bool.c_date bool.java_date :  \
+	bool.opt \
+	builtin.opt \
+	enum.opt \
+	list.opt \
+	private_builtin.opt
+
+ifeq (x,y)
+# RULE dates_on_opts_and_int0s
+bool.trans_opt_date bool.err bool.c_date bool.java_date : \
+		bool.opt \
+		builtin.opt \
+		enum.opt \
+		list.opt \
+		private_builtin.opt
+endif
+
+
+
+bool.err bool.c_date bool.java_date :  \
+	bool.trans_opt \
+	builtin.trans_opt \
+	enum.trans_opt \
+	list.trans_opt \
+	private_builtin.trans_opt
+
+ifeq (x,y)
+# RULE dates_on_trans_opts'_opts
+bool.err bool.c_date bool.java_date : \
+		bool.trans_opt \
+		builtin.trans_opt \
+		enum.trans_opt \
+		list.trans_opt \
+		private_builtin.trans_opt
+endif
+
+
+
+bool.pic_o bool.$O : \
+	array.mih \
+	assoc_list.mih \
+	benchmarking.mih \
+	bitmap.mih \
+	bool.mih \
+	builtin.mih \
+	calendar.mih \
+	char.mih \
+	construct.mih \
+	cord.mih \
+	deconstruct.mih \
+	dir.mih \
+	enum.mih \
+	erlang_rtti_implementation.mih \
+	exception.mih \
+	float.mih \
+	int.mih \
+	integer.mih \
+	io.mih \
+	lexer.mih \
+	list.mih \
+	map.mih \
+	math.mih \
+	maybe.mih \
+	mutvar.mih \
+	ops.mih \
+	pair.mih \
+	parser.mih \
+	pretty_printer.mih \
+	private_builtin.mih \
+	random.mih \
+	require.mih \
+	rtti_implementation.mih \
+	set.mih \
+	set_ordlist.mih \
+	set_tree234.mih \
+	solutions.mih \
+	std_util.mih \
+	stm_builtin.mih \
+	store.mih \
+	stream.mih \
+	string.mih \
+	table_builtin.mih \
+	term.mih \
+	term_conversion.mih \
+	term_io.mih \
+	time.mih \
+	tree234.mih \
+	type_desc.mih \
+	uint.mih \
+	unit.mih \
+	univ.mih \
+	varset.mih \
+	version_array.mih \
+	stream.string_writer.mih \
+	string.format.mih \
+	string.parse_runtime.mih \
+	string.parse_util.mih \
+	string.to_string.mih
+
+ifeq (x,y)
+# RULE objs_on_mihs
+bool.pic_o bool.$O : \
+		array.mih \
+		assoc_list.mih \
+		benchmarking.mih \
+		bitmap.mih \
+		bool.mih \
+		builtin.mih \
+		calendar.mih \
+		char.mih \
+		construct.mih \
+		cord.mih \
+		deconstruct.mih \
+		dir.mih \
+		enum.mih \
+		erlang_rtti_implementation.mih \
+		exception.mih \
+		float.mih \
+		int.mih \
+		integer.mih \
+		io.mih \
+		lexer.mih \
+		list.mih \
+		map.mih \
+		math.mih \
+		maybe.mih \
+		mutvar.mih \
+		ops.mih \
+		pair.mih \
+		parser.mih \
+		pretty_printer.mih \
+		private_builtin.mih \
+		random.mih \
+		require.mih \
+		rtti_implementation.mih \
+		set.mih \
+		set_ordlist.mih \
+		set_tree234.mih \
+		solutions.mih \
+		std_util.mih \
+		stm_builtin.mih \
+		store.mih \
+		stream.mih \
+		string.mih \
+		table_builtin.mih \
+		term.mih \
+		term_conversion.mih \
+		term_io.mih \
+		time.mih \
+		tree234.mih \
+		type_desc.mih \
+		uint.mih \
+		unit.mih \
+		univ.mih \
+		varset.mih \
+		version_array.mih \
+		stream.string_writer.mih \
+		string.format.mih \
+		string.parse_runtime.mih \
+		string.parse_util.mih \
+		string.to_string.mih
+endif
+
+
+
+bool.mh bool.mih : bool.c
+
+ifeq (x,y)
+# RULE mh_and_mih_on_c
+bool.mh bool.mih : bool.c
+endif
+
+
+
+ifeq ($(findstring java,$(GRADE)),java)
+bool.module_dep : jmercury/bool.java
+else
+bool.module_dep : bool.c
+endif
+
+ifeq ($(findstring java,$(GRADE)),java)
+
+ifeq (x,y)
+# RULE module_dep_on_java
+bool.module_dep : jmercury/bool.java
+endif
+
+else
+
+ifeq (x,y)
+# RULE module_dep_on_c
+bool.module_dep : bool.c
+endif
+
+endif # conditional fragment
+
+
+
+bool.date bool.date0 : bool.m \
+	builtin.int3 \
+	enum.int3 \
+	list.int3 \
+	private_builtin.int3 \
+	array.int3 \
+	assoc_list.int3 \
+	bitmap.int3 \
+	char.int3 \
+	construct.int3 \
+	deconstruct.int3 \
+	integer.int3 \
+	io.int3 \
+	map.int3 \
+	maybe.int3 \
+	ops.int3 \
+	pair.int3 \
+	pretty_printer.int3 \
+	random.int3 \
+	rtti_implementation.int3 \
+	set.int3 \
+	set_ordlist.int3 \
+	stream.int3 \
+	string.int3 \
+	term.int3 \
+	time.int3 \
+	tree234.int3 \
+	type_desc.int3 \
+	univ.int3
+
+ifeq (x,y)
+# RULE self_and_parent_date_deps
+# source group names:
+#   (unnamed)
+#   long dep int3s
+#   short dep int3s
+bool.date bool.date0 : \
+		bool.m \
+	\
+		builtin.int3 \
+		enum.int3 \
+		list.int3 \
+		private_builtin.int3 \
+	\
+		array.int3 \
+		assoc_list.int3 \
+		bitmap.int3 \
+		char.int3 \
+		construct.int3 \
+		deconstruct.int3 \
+		integer.int3 \
+		io.int3 \
+		map.int3 \
+		maybe.int3 \
+		ops.int3 \
+		pair.int3 \
+		pretty_printer.int3 \
+		random.int3 \
+		rtti_implementation.int3 \
+		set.int3 \
+		set_ordlist.int3 \
+		stream.int3 \
+		string.int3 \
+		term.int3 \
+		time.int3 \
+		tree234.int3 \
+		type_desc.int3 \
+		univ.int3
+endif
+
+
+
+bool.date0 : bool.m \
+	builtin.int3 \
+	enum.int3 \
+	list.int3 \
+	private_builtin.int3 \
+	array.int3 \
+	assoc_list.int3 \
+	bitmap.int3 \
+	char.int3 \
+	construct.int3 \
+	deconstruct.int3 \
+	integer.int3 \
+	io.int3 \
+	map.int3 \
+	maybe.int3 \
+	ops.int3 \
+	pair.int3 \
+	pretty_printer.int3 \
+	random.int3 \
+	rtti_implementation.int3 \
+	set.int3 \
+	set_ordlist.int3 \
+	stream.int3 \
+	string.int3 \
+	term.int3 \
+	time.int3 \
+	tree234.int3 \
+	type_desc.int3 \
+	univ.int3
+
+ifeq (x,y)
+# RULE self_and_parent_date0_deps
+# source group names:
+#   (unnamed)
+#   long dep int3s
+#   short dep int3s
+bool.date0 : \
+		bool.m \
+	\
+		builtin.int3 \
+		enum.int3 \
+		list.int3 \
+		private_builtin.int3 \
+	\
+		array.int3 \
+		assoc_list.int3 \
+		bitmap.int3 \
+		char.int3 \
+		construct.int3 \
+		deconstruct.int3 \
+		integer.int3 \
+		io.int3 \
+		map.int3 \
+		maybe.int3 \
+		ops.int3 \
+		pair.int3 \
+		pretty_printer.int3 \
+		random.int3 \
+		rtti_implementation.int3 \
+		set.int3 \
+		set_ordlist.int3 \
+		stream.int3 \
+		string.int3 \
+		term.int3 \
+		time.int3 \
+		tree234.int3 \
+		type_desc.int3 \
+		univ.int3
+endif
+
+
+
+bool.$O :  \
+	io.mh \
+	string.mh \
+	time.mh
+
+
+
+bool.pic_o :  \
+	io.mh \
+	string.mh \
+	time.mh
+
+ifeq (x,y)
+# RULE foreign_deps_for_.mh
+bool.$O : \
+		io.mh \
+		string.mh \
+		time.mh
+endif
+
+ifeq (x,y)
+# RULE foreign_deps_for_.mh
+bool.pic_o : \
+		io.mh \
+		string.mh \
+		time.mh
+endif
+
+
+bool.int0 : bool.date0
+	@:
+bool.int : bool.date
+	@:
+bool.int2 : bool.date
+	@:
+bool.int3 : bool.date3
+	@:
+bool.opt : bool.optdate
+	@:
+bool.trans_opt : bool.trans_opt_date
+	@:
+
+ifeq (x,y)
+bool.int0 : bool.date0
+	@:
+endif
+
+ifeq (x,y)
+bool.int : bool.date
+	@:
+endif
+
+ifeq (x,y)
+bool.int2 : bool.date
+	@:
+endif
+
+ifeq (x,y)
+bool.int3 : bool.date3
+	@:
+endif
+
+ifeq (x,y)
+bool.opt : bool.optdate
+	@:
+endif
+
+ifeq (x,y)
+bool.trans_opt : bool.trans_opt_date
+	@:
+endif
+

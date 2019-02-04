@@ -1,0 +1,149 @@
+# vim: ts=8 sw=8 noexpandtab ft=make
+
+
+
+mdprof_fb.optdate mdprof_fb.trans_opt_date mdprof_fb.err mdprof_fb.c_date mdprof_fb.java_date : mdprof_fb.m mdprof_fb.int0 \
+	builtin.int \
+	private_builtin.int
+
+ifeq (x,y)
+# RULE date_file_deps
+# source group names:
+#   (unnamed)
+#   (unnamed)
+#   long deps
+mdprof_fb.optdate mdprof_fb.trans_opt_date mdprof_fb.err mdprof_fb.c_date mdprof_fb.java_date : \
+		mdprof_fb.m \
+	\
+		mdprof_fb.int0 \
+	\
+		builtin.int \
+		private_builtin.int
+endif
+
+
+
+mdprof_fb.pic_o mdprof_fb.$O : \
+	builtin.mih \
+	private_builtin.mih
+
+ifeq (x,y)
+# RULE objs_on_mihs
+mdprof_fb.pic_o mdprof_fb.$O : \
+		builtin.mih \
+		private_builtin.mih
+endif
+
+
+
+mdprof_fb.mh mdprof_fb.mih : mdprof_fb.c
+
+ifeq (x,y)
+# RULE mh_and_mih_on_c
+mdprof_fb.mh mdprof_fb.mih : mdprof_fb.c
+endif
+
+
+
+ifeq ($(findstring java,$(GRADE)),java)
+mdprof_fb.module_dep : jmercury/mdprof_fb.java
+else
+mdprof_fb.module_dep : mdprof_fb.c
+endif
+
+ifeq ($(findstring java,$(GRADE)),java)
+
+ifeq (x,y)
+# RULE module_dep_on_java
+mdprof_fb.module_dep : jmercury/mdprof_fb.java
+endif
+
+else
+
+ifeq (x,y)
+# RULE module_dep_on_c
+mdprof_fb.module_dep : mdprof_fb.c
+endif
+
+endif # conditional fragment
+
+
+
+mdprof_fb.date mdprof_fb.date0 : mdprof_fb.m \
+	builtin.int3 \
+	private_builtin.int3
+
+ifeq (x,y)
+# RULE self_and_parent_date_deps
+# source group names:
+#   (unnamed)
+#   long dep int3s
+mdprof_fb.date mdprof_fb.date0 : \
+		mdprof_fb.m \
+	\
+		builtin.int3 \
+		private_builtin.int3
+endif
+
+
+
+mdprof_fb.date0 : mdprof_fb.m \
+	builtin.int3 \
+	private_builtin.int3
+
+ifeq (x,y)
+# RULE self_and_parent_date0_deps
+# source group names:
+#   (unnamed)
+#   long dep int3s
+mdprof_fb.date0 : \
+		mdprof_fb.m \
+	\
+		builtin.int3 \
+		private_builtin.int3
+endif
+
+
+mdprof_fb.int0 : mdprof_fb.date0
+	@:
+mdprof_fb.int : mdprof_fb.date
+	@:
+mdprof_fb.int2 : mdprof_fb.date
+	@:
+mdprof_fb.int3 : mdprof_fb.date3
+	@:
+mdprof_fb.opt : mdprof_fb.optdate
+	@:
+mdprof_fb.trans_opt : mdprof_fb.trans_opt_date
+	@:
+
+ifeq (x,y)
+mdprof_fb.int0 : mdprof_fb.date0
+	@:
+endif
+
+ifeq (x,y)
+mdprof_fb.int : mdprof_fb.date
+	@:
+endif
+
+ifeq (x,y)
+mdprof_fb.int2 : mdprof_fb.date
+	@:
+endif
+
+ifeq (x,y)
+mdprof_fb.int3 : mdprof_fb.date3
+	@:
+endif
+
+ifeq (x,y)
+mdprof_fb.opt : mdprof_fb.optdate
+	@:
+endif
+
+ifeq (x,y)
+mdprof_fb.trans_opt : mdprof_fb.trans_opt_date
+	@:
+endif
+

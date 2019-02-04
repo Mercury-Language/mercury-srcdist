@@ -1,0 +1,149 @@
+# vim: ts=8 sw=8 noexpandtab ft=make
+
+
+
+transform_hlds.optdate transform_hlds.trans_opt_date transform_hlds.err transform_hlds.c_date transform_hlds.java_date : transform_hlds.m transform_hlds.int0 \
+	builtin.int \
+	private_builtin.int
+
+ifeq (x,y)
+# RULE date_file_deps
+# source group names:
+#   (unnamed)
+#   (unnamed)
+#   long deps
+transform_hlds.optdate transform_hlds.trans_opt_date transform_hlds.err transform_hlds.c_date transform_hlds.java_date : \
+		transform_hlds.m \
+	\
+		transform_hlds.int0 \
+	\
+		builtin.int \
+		private_builtin.int
+endif
+
+
+
+transform_hlds.pic_o transform_hlds.$O : \
+	builtin.mih \
+	private_builtin.mih
+
+ifeq (x,y)
+# RULE objs_on_mihs
+transform_hlds.pic_o transform_hlds.$O : \
+		builtin.mih \
+		private_builtin.mih
+endif
+
+
+
+transform_hlds.mh transform_hlds.mih : transform_hlds.c
+
+ifeq (x,y)
+# RULE mh_and_mih_on_c
+transform_hlds.mh transform_hlds.mih : transform_hlds.c
+endif
+
+
+
+ifeq ($(findstring java,$(GRADE)),java)
+transform_hlds.module_dep : jmercury/transform_hlds.java
+else
+transform_hlds.module_dep : transform_hlds.c
+endif
+
+ifeq ($(findstring java,$(GRADE)),java)
+
+ifeq (x,y)
+# RULE module_dep_on_java
+transform_hlds.module_dep : jmercury/transform_hlds.java
+endif
+
+else
+
+ifeq (x,y)
+# RULE module_dep_on_c
+transform_hlds.module_dep : transform_hlds.c
+endif
+
+endif # conditional fragment
+
+
+
+transform_hlds.date transform_hlds.date0 : transform_hlds.m \
+	builtin.int3 \
+	private_builtin.int3
+
+ifeq (x,y)
+# RULE self_and_parent_date_deps
+# source group names:
+#   (unnamed)
+#   long dep int3s
+transform_hlds.date transform_hlds.date0 : \
+		transform_hlds.m \
+	\
+		builtin.int3 \
+		private_builtin.int3
+endif
+
+
+
+transform_hlds.date0 : transform_hlds.m \
+	builtin.int3 \
+	private_builtin.int3
+
+ifeq (x,y)
+# RULE self_and_parent_date0_deps
+# source group names:
+#   (unnamed)
+#   long dep int3s
+transform_hlds.date0 : \
+		transform_hlds.m \
+	\
+		builtin.int3 \
+		private_builtin.int3
+endif
+
+
+transform_hlds.int0 : transform_hlds.date0
+	@:
+transform_hlds.int : transform_hlds.date
+	@:
+transform_hlds.int2 : transform_hlds.date
+	@:
+transform_hlds.int3 : transform_hlds.date3
+	@:
+transform_hlds.opt : transform_hlds.optdate
+	@:
+transform_hlds.trans_opt : transform_hlds.trans_opt_date
+	@:
+
+ifeq (x,y)
+transform_hlds.int0 : transform_hlds.date0
+	@:
+endif
+
+ifeq (x,y)
+transform_hlds.int : transform_hlds.date
+	@:
+endif
+
+ifeq (x,y)
+transform_hlds.int2 : transform_hlds.date
+	@:
+endif
+
+ifeq (x,y)
+transform_hlds.int3 : transform_hlds.date3
+	@:
+endif
+
+ifeq (x,y)
+transform_hlds.opt : transform_hlds.optdate
+	@:
+endif
+
+ifeq (x,y)
+transform_hlds.trans_opt : transform_hlds.trans_opt_date
+	@:
+endif
+
