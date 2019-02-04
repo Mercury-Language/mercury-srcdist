@@ -1,0 +1,9 @@
+:- module backjump.
+
+:- pragma termination_info(backjump.backjump((builtin.in)), infinite, cannot_loop).
+:- pragma termination_info(backjump.get_choice_id((builtin.out)), infinite, cannot_loop).
+:- pragma termination_info(backjump.to_int((builtin.in)) = (builtin.out), finite(0, [yes, no]), cannot_loop).
+
+:- pragma exceptions(predicate, (backjump.backjump), 1, 0, may_throw(user_exception)).
+:- pragma exceptions(predicate, (backjump.get_choice_id), 1, 0, may_throw(user_exception)).
+:- pragma exceptions(function, (backjump.to_int), 2, 0, will_not_throw).

@@ -1,0 +1,3 @@
+:- module (make.options_file).
+:- interface.
+:- type options_variables.
