@@ -1,0 +1,14 @@
+:- module par_builtin.
+:- interface.
+:- import_module io.
+:- type future(T).
+:- type loop_control.
+:- implementation.
+:- pragma foreign_type(c, future(T), "MR_Future *", [can_pass_as_mercury_type]).
+:- pragma foreign_type(erlang, future(T), "").
+:- pragma foreign_type(csharp, future(T), "object").
+:- pragma foreign_type(java, future(T), "java.lang.Object").
+:- pragma foreign_type(c, loop_control, "MR_LoopControl *", [can_pass_as_mercury_type]).
+:- pragma foreign_type(erlang, loop_control, "").
+:- pragma foreign_type(csharp, loop_control, "object").
+:- pragma foreign_type(java, loop_control, "java.lang.Object").
