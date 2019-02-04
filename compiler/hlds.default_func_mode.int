@@ -1,0 +1,10 @@
+:- module (hlds.default_func_mode).
+:- interface.
+:- import_module list.
+:- import_module maybe.
+:- import_module (hlds.hlds_pred).
+:- import_module (hlds.pred_table).
+:- pred maybe_add_default_func_mode(hlds.hlds_pred.pred_info, hlds.hlds_pred.pred_info, maybe.maybe(hlds.hlds_pred.proc_id)).
+:- mode maybe_add_default_func_mode((builtin.in), (builtin.out), (builtin.out)) is det.
+:- pred maybe_add_default_func_modes(list.list(hlds.hlds_pred.pred_id), hlds.pred_table.pred_table, hlds.pred_table.pred_table).
+:- mode maybe_add_default_func_modes((builtin.in), (builtin.in), (builtin.out)) is det.
