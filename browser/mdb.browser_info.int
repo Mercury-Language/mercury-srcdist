@@ -1,0 +1,132 @@
+:- module (mdb.browser_info).
+:- interface.
+:- import_module bool.
+:- import_module getopt.
+:- import_module io.
+:- import_module list.
+:- import_module maybe.
+:- import_module stream.
+:- import_module univ.
+:- import_module (mdb.browser_term).
+:- import_module (mdb.parse).
+:- import_module (mdb.term_rep).
+:- import_module (mdbcomp.program_representation).
+:- type browse_caller_type
+	--->	print 
+	;	browse 
+	;	print_all .
+:- type browser_db
+	--->	browser_db(((mdb.browser_info).browser_stream_db) :: (io.stream_db)).
+:- type browser_info
+	--->	browser_info(((mdb.browser_info).term) :: ((mdb.browser_term).browser_term), ((mdb.browser_info).dirs) :: (list.list(((mdb.browser_info).dir))), ((mdb.browser_info).caller_type) :: ((mdb.browser_info).browse_caller_type), ((mdb.browser_info).format) :: (maybe.maybe(((mdb.browser_info).portray_format))), ((mdb.browser_info).state) :: ((mdb.browser_info).browser_persistent_state), ((mdb.browser_info).maybe_track) :: ((mdb.browser_info).maybe_track_subterm((list.list(((mdb.browser_info).dir))))), ((mdb.browser_info).maybe_mode_func) :: (maybe.maybe(((mdb.browser_info).browser_mode_func)))).
+:- type browser_mode_func == ((func (list.list(((mdb.browser_info).dir)))) = ((mdb.browser_info).browser_term_mode)).
+:- type browser_persistent_state.
+:- type browser_term_mode
+	--->	input 
+	;	output 
+	;	unbound 
+	;	not_applicable .
+:- type debugger
+	--->	internal 
+	;	external .
+:- type dir
+	--->	parent 
+	;	child_num(int)
+	;	child_name(string).
+:- type format_params
+	--->	format_params(((mdb.browser_info).depth) :: int, ((mdb.browser_info).size) :: int, ((mdb.browser_info).width) :: int, ((mdb.browser_info).lines) :: int).
+:- type how_track_subterm
+	--->	track_accurate 
+	;	track_fast .
+:- type param_cmd
+	--->	format((getopt.maybe_option_table(((mdb.parse).setting_option))), ((mdb.browser_info).setting))
+	;	format_param((getopt.maybe_option_table(((mdb.parse).setting_option))), ((mdb.browser_info).setting))
+	;	num_io_actions(int)
+	;	print_params .
+:- type portray_format
+	--->	flat 
+	;	raw_pretty 
+	;	verbose 
+	;	pretty .
+:- type setting
+	--->	setting_depth(int)
+	;	setting_size(int)
+	;	setting_width(int)
+	;	setting_lines(int)
+	;	setting_format(((mdb.browser_info).portray_format)).
+:- type should_assert_invalid
+	--->	assert_invalid 
+	;	no_assert_invalid .
+:- type term_browser_response
+	--->	browser_str(string)
+	;	browser_int(int)
+	;	browser_nl 
+	;	browser_end_command 
+	;	browser_quit .
+:- type maybe_track_subterm(P)
+	--->	no_track 
+	;	track(((mdb.browser_info).how_track_subterm), ((mdb.browser_info).should_assert_invalid), P).
+:- inst (dir_no_parent) == bound(child_name(ground) ; child_num(ground)).
+:- inst (simplified_dirs) == list.list_skel(((mdb.browser_info).dir_no_parent)).
+:- instance (stream.output(((mdb.browser_info).debugger), (io.io))).
+:- instance (stream.stream(((mdb.browser_info).debugger), (io.io))).
+:- instance (stream.writer(((mdb.browser_info).debugger), int, (io.io))).
+:- instance (stream.writer(((mdb.browser_info).debugger), string, (io.io))).
+:- pred browser_params_to_string(((mdb.browser_info).browser_persistent_state), (bool.bool), string).
+:- mode browser_params_to_string((builtin.in), (builtin.in), (builtin.out)) is det.
+:- pred convert_dirs_to_term_path(((mdb.term_rep).term_rep), (list.list(((mdb.browser_info).dir))), ((mdbcomp.program_representation).term_path)).
+:- mode convert_dirs_to_term_path((builtin.in), builtin.in(((mdb.browser_info).simplified_dirs)), (builtin.out)) is det.
+:- pred deconstruct_browser_term_cc(((mdb.browser_info).browser_db), ((mdb.browser_term).browser_term), string, int, (list.list((univ.univ))), (maybe.maybe((univ.univ)))).
+:- mode deconstruct_browser_term_cc((builtin.in), (builtin.in), (builtin.out), (builtin.out), (builtin.out), (builtin.out)) is cc_multi.
+:- pred functor_browser_term_cc(((mdb.browser_info).browser_db), ((mdb.browser_term).browser_term), string, int, (bool.bool)).
+:- mode functor_browser_term_cc((builtin.in), (builtin.in), (builtin.out), (builtin.out), (builtin.out)) is cc_multi.
+:- pred get_format(((mdb.browser_info).browser_info), ((mdb.browser_info).browse_caller_type), (maybe.maybe(((mdb.browser_info).portray_format))), ((mdb.browser_info).portray_format)).
+:- mode get_format((builtin.in), (builtin.in), (builtin.in), (builtin.out)) is det.
+:- pred get_format_params(((mdb.browser_info).browser_info), ((mdb.browser_info).browse_caller_type), ((mdb.browser_info).portray_format), ((mdb.browser_info).format_params)).
+:- mode get_format_params((builtin.in), (builtin.in), (builtin.in), (builtin.out)) is det.
+:- pred get_num_io_actions(((mdb.browser_info).browser_persistent_state), int).
+:- mode get_num_io_actions((builtin.in), (builtin.out)) is det.
+:- func get_num_printed_io_actions(((mdb.browser_info).browser_persistent_state)) = int.
+:- pred info_set_browse_param((getopt.option_table(((mdb.parse).setting_option))), ((mdb.browser_info).setting), ((mdb.browser_info).browser_info), ((mdb.browser_info).browser_info)).
+:- mode info_set_browse_param((builtin.in), (builtin.in), (builtin.in), (builtin.out)) is det.
+:- pred info_set_num_io_actions(int, ((mdb.browser_info).browser_info), ((mdb.browser_info).browser_info)).
+:- mode info_set_num_io_actions((builtin.in), (builtin.in), (builtin.out)) is det.
+:- pred info_set_xml_browser_cmd(string, ((mdb.browser_info).browser_info), ((mdb.browser_info).browser_info)).
+:- mode info_set_xml_browser_cmd((builtin.in), (builtin.in), (builtin.out)) is det.
+:- pred info_set_xml_tmp_filename(string, ((mdb.browser_info).browser_info), ((mdb.browser_info).browser_info)).
+:- mode info_set_xml_tmp_filename((builtin.in), (builtin.in), (builtin.out)) is det.
+:- func init(((mdb.browser_term).browser_term), ((mdb.browser_info).browse_caller_type), (maybe.maybe(((mdb.browser_info).portray_format))), (maybe.maybe(((mdb.browser_info).browser_mode_func))), ((mdb.browser_info).browser_persistent_state)) = ((mdb.browser_info).browser_info).
+:- pred init_persistent_state(((mdb.browser_info).browser_persistent_state)).
+:- mode init_persistent_state((builtin.out)) is det.
+:- pred limited_deconstruct_browser_term_cc(((mdb.browser_info).browser_db), ((mdb.browser_term).browser_term), int, (maybe.maybe({string, int, (list.list((univ.univ)))})), (maybe.maybe((univ.univ)))).
+:- mode limited_deconstruct_browser_term_cc((builtin.in), (builtin.in), (builtin.in), (builtin.out), (builtin.out)) is cc_multi.
+:- pred nl_debugger(((mdb.browser_info).debugger), (io.io), (io.io)).
+:- mode nl_debugger((builtin.in), (builtin.di), (builtin.uo)) is det.
+:- pred print_format_debugger(((mdb.browser_info).debugger), ((mdb.browser_info).portray_format), (io.io), (io.io)).
+:- mode print_format_debugger((builtin.in), (builtin.in), (builtin.di), (builtin.uo)) is det.
+:- pred run_param_command(((mdb.browser_info).debugger), ((mdb.browser_info).param_cmd), (bool.bool), ((mdb.browser_info).browser_info), ((mdb.browser_info).browser_info), (io.io), (io.io)).
+:- mode run_param_command((builtin.in), (builtin.in), (builtin.in), (builtin.in), (builtin.out), (builtin.di), (builtin.uo)) is det.
+:- pred send_term_to_socket(((mdb.browser_info).term_browser_response), (io.io), (io.io)).
+:- mode send_term_to_socket((builtin.in), (builtin.di), (builtin.uo)) is det.
+:- pred set_browser_param((bool.bool), (bool.bool), (bool.bool), (bool.bool), (bool.bool), (bool.bool), (bool.bool), (bool.bool), ((mdb.browser_info).setting), ((mdb.browser_info).browser_persistent_state), ((mdb.browser_info).browser_persistent_state)).
+:- mode set_browser_param((builtin.in), (builtin.in), (builtin.in), (builtin.in), (builtin.in), (builtin.in), (builtin.in), (builtin.in), (builtin.in), (builtin.in), (builtin.out)) is det.
+:- pred set_browser_param_from_option_table(((mdb.browser_info).browse_caller_type), (getopt.option_table(((mdb.parse).setting_option))), ((mdb.browser_info).setting), ((mdb.browser_info).browser_persistent_state), ((mdb.browser_info).browser_persistent_state)).
+:- mode set_browser_param_from_option_table((builtin.in), (builtin.in), (builtin.in), (builtin.in), (builtin.out)) is det.
+:- pred set_browser_param_maybe_caller_type((bool.bool), (maybe.maybe(((mdb.browser_info).browse_caller_type))), (bool.bool), (bool.bool), (bool.bool), (bool.bool), ((mdb.browser_info).setting), ((mdb.browser_info).browser_persistent_state), ((mdb.browser_info).browser_persistent_state)).
+:- mode set_browser_param_maybe_caller_type((builtin.in), (builtin.in), (builtin.in), (builtin.in), (builtin.in), (builtin.in), (builtin.in), (builtin.in), (builtin.out)) is det.
+:- pred set_browser_param_with_caller_type(((mdb.browser_info).browse_caller_type), (bool.bool), (bool.bool), (bool.bool), (bool.bool), (bool.bool), (bool.bool), (bool.bool), ((mdb.browser_info).setting), ((mdb.browser_info).browser_persistent_state), ((mdb.browser_info).browser_persistent_state)).
+:- mode set_browser_param_with_caller_type((builtin.in), (builtin.in), (builtin.in), (builtin.in), (builtin.in), (builtin.in), (builtin.in), (builtin.in), (builtin.in), (builtin.in), (builtin.out)) is det.
+:- pred set_num_io_actions(int, ((mdb.browser_info).browser_persistent_state), ((mdb.browser_info).browser_persistent_state)).
+:- mode set_num_io_actions((builtin.in), (builtin.in), (builtin.out)) is det.
+:- pred show_settings(((mdb.browser_info).debugger), (bool.bool), ((mdb.browser_info).browser_info), (io.io), (io.io)).
+:- mode show_settings((builtin.in), (builtin.in), (builtin.in), (builtin.di), (builtin.uo)) is det.
+:- pred write_int_debugger(((mdb.browser_info).debugger), int, (io.io), (io.io)).
+:- mode write_int_debugger((builtin.in), (builtin.in), (builtin.di), (builtin.uo)) is det.
+:- pred write_path(((mdb.browser_info).debugger), (list.list(((mdb.browser_info).dir))), (io.io), (io.io)).
+:- mode write_path((builtin.in), (builtin.in), (builtin.di), (builtin.uo)) is det.
+:- pred write_string_debugger(((mdb.browser_info).debugger), string, (io.io), (io.io)).
+:- mode write_string_debugger((builtin.in), (builtin.in), (builtin.di), (builtin.uo)) is det.
+:- func xml_browser_cmd(((mdb.browser_info).browser_persistent_state)) = (maybe.maybe(string)).
+:- func 'xml_browser_cmd :='(((mdb.browser_info).browser_persistent_state), (maybe.maybe(string))) = ((mdb.browser_info).browser_persistent_state).
+:- func xml_tmp_filename(((mdb.browser_info).browser_persistent_state)) = (maybe.maybe(string)).
+:- func 'xml_tmp_filename :='(((mdb.browser_info).browser_persistent_state), (maybe.maybe(string))) = ((mdb.browser_info).browser_persistent_state).

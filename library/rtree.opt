@@ -1,0 +1,422 @@
+:- module rtree.
+:- use_module builtin, float, int, list, private_builtin, require.
+:- type (rtree.rtree_2(K, V))
+	--->	leaf(V)
+	;	two(K, (rtree.rtree_2(K, V)), K, (rtree.rtree_2(K, V)))
+	;	three(K, (rtree.rtree_2(K, V)), K, (rtree.rtree_2(K, V)), K, (rtree.rtree_2(K, V)))
+	;	four(K, (rtree.rtree_2(K, V)), K, (rtree.rtree_2(K, V)), K, (rtree.rtree_2(K, V)), K, (rtree.rtree_2(K, V))).
+:- type (rtree.rtree(K, V))
+	--->	empty 
+	;	one(K, V)
+	;	rtree((rtree.rtree_2(K, V))).
+:- type (rtree.orphans(K, V)) == (list.list((rtree.orphan(K, V)))).
+:- type (rtree.orphan(K, V))
+	--->	orphan(K, (rtree.rtree_2(K, V))).
+:- type (rtree.min_of_two_result)
+	--->	min2_first 
+	;	min2_second .
+:- type (rtree.min_of_three_result)
+	--->	min3_first 
+	;	min3_second 
+	;	min3_third .
+:- type (rtree.min_of_four_result)
+	--->	min4_first 
+	;	min4_second 
+	;	min4_third 
+	;	min4_fourth .
+:- type (rtree.delete_info(K, V))
+	--->	deleting((list.list((rtree.orphan(K, V)))))
+	;	finished(int, (list.list((rtree.orphan(K, V))))).
+:- inst ((rtree.four)) == bound(four(ground, ground, ground, ground, ground, ground, ground, ground)).
+:- instance (rtree.region((rtree.box3d))) where [
+	pred((rtree.intersects)/2) is (rtree.box3d_intersects),
+	pred((rtree.contains)/2) is (rtree.box3d_contains),
+	func((rtree.size)/1) is (rtree.box3d_volume),
+	func((rtree.bounding_region)/2) is (rtree.box3d_bounding_region),
+	func((rtree.bounding_region_size)/2) is (rtree.box3d_bounding_region_volume)
+].
+:- instance (rtree.region((rtree.box))) where [
+	pred((rtree.intersects)/2) is (rtree.box_intersects),
+	pred((rtree.contains)/2) is (rtree.box_contains),
+	func((rtree.size)/1) is (rtree.box_area),
+	func((rtree.bounding_region)/2) is (rtree.box_bounding_region),
+	func((rtree.bounding_region_size)/2) is (rtree.box_bounding_region_area)
+].
+:- instance (rtree.region((rtree.interval))) where [
+	pred((rtree.intersects)/2) is (rtree.interval_intersects),
+	pred((rtree.contains)/2) is (rtree.interval_contains),
+	func((rtree.size)/1) is (rtree.interval_length),
+	func((rtree.bounding_region)/2) is (rtree.interval_bounding_region),
+	func((rtree.bounding_region_size)/2) is (rtree.interval_bounding_region_length)
+].
+:- pred rtree.search_general_2((rtree.rtree_2(K_1, V_2)), (pred K_1), (pred V_2), (list.list(V_2)), (list.list(V_2))).
+:- mode rtree.search_general_2((builtin.in), builtin.in((pred((builtin.in)) is semidet)), builtin.in((pred((builtin.in)) is semidet)), (builtin.in), (builtin.out)) is det.
+:- pred rtree.search_general_subtree(K_1, (rtree.rtree_2(K_1, V_2)), (pred K_1), (pred V_2), (list.list(V_2)), (list.list(V_2))).
+:- mode rtree.search_general_subtree((builtin.in), (builtin.in), builtin.in((pred((builtin.in)) is semidet)), builtin.in((pred((builtin.in)) is semidet)), (builtin.in), (builtin.out)) is det.
+:- pred rtree.maybe_limit(K_1, pred(K_1, E_2), E_2, E_2).
+:- mode rtree.maybe_limit((builtin.in), builtin.in((pred((builtin.in), (builtin.out)) is semidet)), (builtin.in), (builtin.out)) is semidet.
+:- pred rtree.search_first_2((rtree.rtree_2(K_1, V_2)), pred(K_1, E_3), pred(V_2, E_3), E_3, V_2, E_3).
+:- mode rtree.search_first_2((builtin.in), (pred((builtin.in), (builtin.out)) is semidet), (pred((builtin.in), (builtin.out)) is semidet), (builtin.in), (builtin.out), (builtin.out)) is semidet.
+:- pred rtree.search_general_fold_2((rtree.rtree_2(K_1, V_2)), (pred K_1), pred(K_1, V_2, A_3, A_3), A_3, A_3).
+:- mode rtree.search_general_fold_2((builtin.in), (pred((builtin.in)) is semidet), (pred((builtin.in), (builtin.in), (builtin.in), (builtin.out)) is det), (builtin.in), (builtin.out)) is det.
+:- mode rtree.search_general_fold_2((builtin.in), (pred((builtin.in)) is semidet), (pred((builtin.in), (builtin.in), (builtin.di), (builtin.uo)) is det), (builtin.di), (builtin.uo)) is det.
+:- pred rtree.search_general_fold_subtree(K_1, (rtree.rtree_2(K_1, V_2)), (pred K_1), pred(K_1, V_2, A_3, A_3), A_3, A_3).
+:- mode rtree.search_general_fold_subtree((builtin.in), (builtin.in), builtin.in((pred((builtin.in)) is semidet)), builtin.in((pred((builtin.in), (builtin.in), (builtin.in), (builtin.out)) is det)), (builtin.in), (builtin.out)) is det.
+:- mode rtree.search_general_fold_subtree((builtin.in), (builtin.in), builtin.in((pred((builtin.in)) is semidet)), builtin.in((pred((builtin.in), (builtin.in), (builtin.di), (builtin.uo)) is det)), (builtin.di), (builtin.uo)) is det.
+:- pred rtree.fold_2(pred(K_1, V_2, A_3, A_3), (rtree.rtree_2(K_1, V_2)), A_3, A_3).
+:- mode rtree.fold_2((pred((builtin.in), (builtin.in), (builtin.in), (builtin.out)) is det), (builtin.in), (builtin.in), (builtin.out)) is det.
+:- mode rtree.fold_2((pred((builtin.in), (builtin.in), (builtin.di), (builtin.uo)) is det), (builtin.in), (builtin.di), (builtin.uo)) is det.
+:- mode rtree.fold_2((pred((builtin.in), (builtin.in), (builtin.in), (builtin.out)) is semidet), (builtin.in), (builtin.in), (builtin.out)) is semidet.
+:- pred rtree.fold_subtree(pred(K_1, V_2, A_3, A_3), K_1, (rtree.rtree_2(K_1, V_2)), A_3, A_3).
+:- mode rtree.fold_subtree((pred((builtin.in), (builtin.in), (builtin.in), (builtin.out)) is det), (builtin.in), (builtin.in), (builtin.in), (builtin.out)) is det.
+:- mode rtree.fold_subtree((pred((builtin.in), (builtin.in), (builtin.di), (builtin.uo)) is det), (builtin.in), (builtin.in), (builtin.di), (builtin.uo)) is det.
+:- mode rtree.fold_subtree((pred((builtin.in), (builtin.in), (builtin.in), (builtin.out)) is semidet), (builtin.in), (builtin.in), (builtin.in), (builtin.out)) is semidet.
+:- pred rtree.map_values_2(pred(K_1, V_2, W_3), (rtree.rtree_2(K_1, V_2)), (rtree.rtree_2(K_1, W_3))).
+:- mode rtree.map_values_2((pred((builtin.in), (builtin.in), (builtin.out)) is det), (builtin.in), (builtin.out)) is det.
+:- mode rtree.map_values_2((pred((builtin.in), (builtin.in), (builtin.out)) is semidet), (builtin.in), (builtin.out)) is semidet.
+:- pred rtree.map_values_key_2(pred(K_1, V_2, W_3), K_1, (rtree.rtree_2(K_1, V_2)), (rtree.rtree_2(K_1, W_3))).
+:- mode rtree.map_values_key_2((pred((builtin.in), (builtin.in), (builtin.out)) is det), (builtin.in), (builtin.in), (builtin.out)) is det.
+:- mode rtree.map_values_key_2((pred((builtin.in), (builtin.in), (builtin.out)) is semidet), (builtin.in), (builtin.in), (builtin.out)) is semidet.
+:- pred rtree.box3d_intersects((rtree.box3d), (rtree.box3d)).
+:- mode rtree.box3d_intersects((builtin.in), (builtin.in)) is semidet.
+:- pred rtree.box3d_contains((rtree.box3d), (rtree.box3d)).
+:- mode rtree.box3d_contains((builtin.in), (builtin.in)) is semidet.
+:- func rtree.box3d_volume((rtree.box3d)) = float.
+:- mode rtree.box3d_volume((builtin.in)) = (builtin.out) is det.
+:- func rtree.box3d_bounding_region((rtree.box3d), (rtree.box3d)) = (rtree.box3d).
+:- mode rtree.box3d_bounding_region((builtin.in), (builtin.in)) = (builtin.out) is det.
+:- func rtree.box3d_bounding_region_volume((rtree.box3d), (rtree.box3d)) = float.
+:- mode rtree.box3d_bounding_region_volume((builtin.in), (builtin.in)) = (builtin.out) is det.
+:- pred rtree.box_intersects((rtree.box), (rtree.box)).
+:- mode rtree.box_intersects((builtin.in), (builtin.in)) is semidet.
+:- pred rtree.box_contains((rtree.box), (rtree.box)).
+:- mode rtree.box_contains((builtin.in), (builtin.in)) is semidet.
+:- func rtree.box_area((rtree.box)) = float.
+:- mode rtree.box_area((builtin.in)) = (builtin.out) is det.
+:- func rtree.box_bounding_region((rtree.box), (rtree.box)) = (rtree.box).
+:- mode rtree.box_bounding_region((builtin.in), (builtin.in)) = (builtin.out) is det.
+:- func rtree.box_bounding_region_area((rtree.box), (rtree.box)) = float.
+:- mode rtree.box_bounding_region_area((builtin.in), (builtin.in)) = (builtin.out) is det.
+:- pred rtree.interval_intersects((rtree.interval), (rtree.interval)).
+:- mode rtree.interval_intersects((builtin.in), (builtin.in)) is semidet.
+:- pred rtree.interval_contains((rtree.interval), (rtree.interval)).
+:- mode rtree.interval_contains((builtin.in), (builtin.in)) is semidet.
+:- func rtree.interval_length((rtree.interval)) = float.
+:- mode rtree.interval_length((builtin.in)) = (builtin.out) is det.
+:- func rtree.interval_bounding_region((rtree.interval), (rtree.interval)) = (rtree.interval).
+:- mode rtree.interval_bounding_region((builtin.in), (builtin.in)) = (builtin.out) is det.
+:- func rtree.interval_bounding_region_length((rtree.interval), (rtree.interval)) = float.
+:- mode rtree.interval_bounding_region_length((builtin.in), (builtin.in)) = (builtin.out) is det.
+rtree.init = (rtree.empty).
+rtree.is_empty((rtree.empty)).
+rtree.insert(K_5, V_6, STATE_VARIABLE_Tree_0_8) = STATE_VARIABLE_Tree_9 :-
+    rtree.insert(K_5, V_6, STATE_VARIABLE_Tree_0_8, STATE_VARIABLE_Tree_1_10),
+    STATE_VARIABLE_Tree_9 = STATE_VARIABLE_Tree_1_10.
+rtree.search_general(_KeyTest_5, _ValueTest_6, (rtree.empty)) = (list.[]).
+rtree.search_general(KeyTest_7, ValueTest_8, (rtree.one(K_9, V_10))) = HeadVar__4_4 :-
+    (if
+      call(KeyTest_7, K_9),
+      call(ValueTest_8, V_10)
+    then
+      HeadVar__4_4 = list.[V_10 | V_11] : (list.list(V_2)),
+      V_11 = list.[] : (list.list(V_2))
+    else
+      HeadVar__4_4 = list.[] : (list.list(V_2))
+    ).
+rtree.search_general(KeyTest_12, ValueTest_13, (rtree.rtree(T_14))) = Values_15 :-
+    V_16 = list.[] : (list.list(V_2)),
+    rtree.search_general_2(T_14, KeyTest_12, ValueTest_13, V_16, Values_15).
+rtree.search_first(P_7, C_8, (rtree.one(K0_9, V0_10)), L_11, V0_10, E0_12) :-
+    rtree.maybe_limit(K0_9, P_7, L_11, V_13),
+    rtree.maybe_limit(V0_10, C_8, L_11, E0_12).
+rtree.search_first(P_14, C_15, (rtree.rtree(T_16)), L_17, V_18, E_19) :-
+    rtree.search_first_2(T_16, P_14, C_15, L_17, V_18, E_19).
+rtree.search_general_fold(V_6, V_7, (rtree.empty), STATE_VARIABLE_Acc_0_9, STATE_VARIABLE_Acc_10) :-
+    STATE_VARIABLE_Acc_10 = STATE_VARIABLE_Acc_0_9.
+rtree.search_general_fold(KTest_12, VPred_13, (rtree.one(K_14, V_15)), STATE_VARIABLE_Acc_0_17, STATE_VARIABLE_Acc_18) :-
+    (if
+      call(KTest_12, K_14)
+    then
+      call(VPred_13, K_14, V_15, STATE_VARIABLE_Acc_0_17, STATE_VARIABLE_Acc_1_19)
+    else
+      STATE_VARIABLE_Acc_1_19 = STATE_VARIABLE_Acc_0_17
+    ),
+    STATE_VARIABLE_Acc_18 = STATE_VARIABLE_Acc_1_19.
+rtree.search_general_fold(KTest_21, VPred_22, (rtree.rtree(T_23)), STATE_VARIABLE_Acc_0_25, STATE_VARIABLE_Acc_26) :-
+    rtree.search_general_fold_2(T_23, KTest_21, VPred_22, STATE_VARIABLE_Acc_0_25, STATE_VARIABLE_Acc_1_27),
+    STATE_VARIABLE_Acc_26 = STATE_VARIABLE_Acc_1_27.
+rtree.fold(_P_5, (rtree.empty), STATE_VARIABLE_Acc_0_7, STATE_VARIABLE_Acc_8) :-
+    STATE_VARIABLE_Acc_8 = STATE_VARIABLE_Acc_0_7.
+rtree.fold(P_10, (rtree.one(K_11, V_12)), STATE_VARIABLE_Acc_0_14, STATE_VARIABLE_Acc_15) :-
+    call(P_10, K_11, V_12, STATE_VARIABLE_Acc_0_14, STATE_VARIABLE_Acc_1_16),
+    STATE_VARIABLE_Acc_15 = STATE_VARIABLE_Acc_1_16.
+rtree.fold(P_18, (rtree.rtree(T_19)), STATE_VARIABLE_Acc_0_21, STATE_VARIABLE_Acc_22) :-
+    rtree.fold_2(P_18, T_19, STATE_VARIABLE_Acc_0_21, STATE_VARIABLE_Acc_1_23),
+    STATE_VARIABLE_Acc_22 = STATE_VARIABLE_Acc_1_23.
+rtree.map_values(V_4, (rtree.empty), (rtree.empty)).
+rtree.map_values(P_5, (rtree.one(K_6, V_7)), (rtree.one(K_6, W_8))) :-
+    call(P_5, K_6, V_7, W_8).
+rtree.map_values(P_9, (rtree.rtree(T_10)), (rtree.rtree(U_11))) :-
+    rtree.map_values_2(P_9, T_10, U_11).
+rtree.search_general_2((rtree.leaf(Value_6)), V_7, ValueTest_8, STATE_VARIABLE_Values_0_10, STATE_VARIABLE_Values_11) :-
+    (if
+      call(ValueTest_8, Value_6)
+    then
+      STATE_VARIABLE_Values_1_12 = list.[Value_6 | STATE_VARIABLE_Values_0_10] : (list.list(V_2))
+    else
+      STATE_VARIABLE_Values_1_12 = STATE_VARIABLE_Values_0_10
+    ),
+    STATE_VARIABLE_Values_11 = STATE_VARIABLE_Values_1_12.
+rtree.search_general_2(Node_14, KeyTest_15, ValueTest_16, STATE_VARIABLE_Values_0_22, STATE_VARIABLE_Values_23) :-
+    Node_14 = rtree.two(K0_18, T0_19, K1_20, T1_21) : (rtree.rtree_2(K_1, V_2)),
+    rtree.search_general_subtree(K0_18, T0_19, KeyTest_15, ValueTest_16, STATE_VARIABLE_Values_0_22, STATE_VARIABLE_Values_1_24),
+    rtree.search_general_subtree(K1_20, T1_21, KeyTest_15, ValueTest_16, STATE_VARIABLE_Values_1_24, STATE_VARIABLE_Values_3_25),
+    STATE_VARIABLE_Values_23 = STATE_VARIABLE_Values_3_25.
+rtree.search_general_2(Node_27, KeyTest_28, ValueTest_29, STATE_VARIABLE_Values_0_37, STATE_VARIABLE_Values_38) :-
+    Node_27 = rtree.three(K0_31, T0_32, K1_33, T1_34, K2_35, T2_36) : (rtree.rtree_2(K_1, V_2)),
+    rtree.search_general_subtree(K0_31, T0_32, KeyTest_28, ValueTest_29, STATE_VARIABLE_Values_0_37, STATE_VARIABLE_Values_1_39),
+    rtree.search_general_subtree(K1_33, T1_34, KeyTest_28, ValueTest_29, STATE_VARIABLE_Values_1_39, STATE_VARIABLE_Values_3_40),
+    rtree.search_general_subtree(K2_35, T2_36, KeyTest_28, ValueTest_29, STATE_VARIABLE_Values_3_40, STATE_VARIABLE_Values_4_41),
+    STATE_VARIABLE_Values_38 = STATE_VARIABLE_Values_4_41.
+rtree.search_general_2(Node_43, KeyTest_44, ValueTest_45, STATE_VARIABLE_Values_0_55, STATE_VARIABLE_Values_56) :-
+    Node_43 = rtree.four(K0_47, T0_48, K1_49, T1_50, K2_51, T2_52, K3_53, T3_54) : (rtree.rtree_2(K_1, V_2)),
+    rtree.search_general_subtree(K0_47, T0_48, KeyTest_44, ValueTest_45, STATE_VARIABLE_Values_0_55, STATE_VARIABLE_Values_1_57),
+    rtree.search_general_subtree(K1_49, T1_50, KeyTest_44, ValueTest_45, STATE_VARIABLE_Values_1_57, STATE_VARIABLE_Values_3_58),
+    rtree.search_general_subtree(K2_51, T2_52, KeyTest_44, ValueTest_45, STATE_VARIABLE_Values_3_58, STATE_VARIABLE_Values_4_59),
+    rtree.search_general_subtree(K3_53, T3_54, KeyTest_44, ValueTest_45, STATE_VARIABLE_Values_4_59, STATE_VARIABLE_Values_5_60),
+    STATE_VARIABLE_Values_56 = STATE_VARIABLE_Values_5_60.
+rtree.search_general_subtree(K_7, T_8, KeyTest_9, ValueTest_10, STATE_VARIABLE_Values_0_12, STATE_VARIABLE_Values_13) :-
+    (if
+      call(KeyTest_9, K_7)
+    then
+      rtree.search_general_2(T_8, KeyTest_9, ValueTest_10, STATE_VARIABLE_Values_0_12, STATE_VARIABLE_Values_1_14)
+    else
+      STATE_VARIABLE_Values_1_14 = STATE_VARIABLE_Values_0_12
+    ),
+    STATE_VARIABLE_Values_13 = STATE_VARIABLE_Values_1_14.
+rtree.maybe_limit(K_5, P_6, L_7, E_8) :-
+    call(P_6, K_5, E_8),
+    V_9 = builtin.(<) : (builtin.comparison_result),
+    builtin.compare(V_9, E_8, L_7).
+rtree.search_general_fold_2((rtree.leaf(V_6)), V_7, V_8, V_9, V_10) :-
+    V_11 = "search_general_fold_2: unexpected leaf node" : string,
+    require.error(V_11).
+rtree.search_general_fold_2(Node_12, KTest_13, VPred_14, STATE_VARIABLE_Acc_0_20, STATE_VARIABLE_Acc_21) :-
+    Node_12 = rtree.two(K0_16, T0_17, K1_18, T1_19) : (rtree.rtree_2(K_1, V_2)),
+    rtree.search_general_fold_subtree(K0_16, T0_17, KTest_13, VPred_14, STATE_VARIABLE_Acc_0_20, STATE_VARIABLE_Acc_1_22),
+    rtree.search_general_fold_subtree(K1_18, T1_19, KTest_13, VPred_14, STATE_VARIABLE_Acc_1_22, STATE_VARIABLE_Acc_3_23),
+    STATE_VARIABLE_Acc_21 = STATE_VARIABLE_Acc_3_23.
+rtree.search_general_fold_2(Node_25, KTest_26, VPred_27, STATE_VARIABLE_Acc_0_35, STATE_VARIABLE_Acc_36) :-
+    Node_25 = rtree.three(K0_29, T0_30, K1_31, T1_32, K2_33, T2_34) : (rtree.rtree_2(K_1, V_2)),
+    rtree.search_general_fold_subtree(K0_29, T0_30, KTest_26, VPred_27, STATE_VARIABLE_Acc_0_35, STATE_VARIABLE_Acc_1_37),
+    rtree.search_general_fold_subtree(K1_31, T1_32, KTest_26, VPred_27, STATE_VARIABLE_Acc_1_37, STATE_VARIABLE_Acc_3_38),
+    rtree.search_general_fold_subtree(K2_33, T2_34, KTest_26, VPred_27, STATE_VARIABLE_Acc_3_38, STATE_VARIABLE_Acc_4_39),
+    STATE_VARIABLE_Acc_36 = STATE_VARIABLE_Acc_4_39.
+rtree.search_general_fold_2(Node_41, KTest_42, VPred_43, STATE_VARIABLE_Acc_0_53, STATE_VARIABLE_Acc_54) :-
+    Node_41 = rtree.four(K0_45, T0_46, K1_47, T1_48, K2_49, T2_50, K3_51, T3_52) : (rtree.rtree_2(K_1, V_2)),
+    rtree.search_general_fold_subtree(K0_45, T0_46, KTest_42, VPred_43, STATE_VARIABLE_Acc_0_53, STATE_VARIABLE_Acc_1_55),
+    rtree.search_general_fold_subtree(K1_47, T1_48, KTest_42, VPred_43, STATE_VARIABLE_Acc_1_55, STATE_VARIABLE_Acc_3_56),
+    rtree.search_general_fold_subtree(K2_49, T2_50, KTest_42, VPred_43, STATE_VARIABLE_Acc_3_56, STATE_VARIABLE_Acc_4_57),
+    rtree.search_general_fold_subtree(K3_51, T3_52, KTest_42, VPred_43, STATE_VARIABLE_Acc_4_57, STATE_VARIABLE_Acc_5_58),
+    STATE_VARIABLE_Acc_54 = STATE_VARIABLE_Acc_5_58.
+rtree.search_general_fold_subtree(K_7, T_8, KTest_9, VPred_10, STATE_VARIABLE_Acc_0_13, STATE_VARIABLE_Acc_14) :-
+    (if
+      call(KTest_9, K_7)
+    then
+      (if
+        T_8 = rtree.leaf(V_12) : (rtree.rtree_2(K_1, V_2))
+      then
+        call(VPred_10, K_7, V_12, STATE_VARIABLE_Acc_0_13, STATE_VARIABLE_Acc_1_15)
+      else
+        rtree.search_general_fold_2(T_8, KTest_9, VPred_10, STATE_VARIABLE_Acc_0_13, STATE_VARIABLE_Acc_1_15)
+      )
+    else
+      STATE_VARIABLE_Acc_1_15 = STATE_VARIABLE_Acc_0_13
+    ),
+    STATE_VARIABLE_Acc_14 = STATE_VARIABLE_Acc_1_15.
+rtree.fold_2(V_5, (rtree.leaf(V_6)), V_7, V_8) :-
+    V_9 = "fold: leaf unexpected" : string,
+    require.error(V_9).
+rtree.fold_2(P_10, (rtree.two(K0_11, T0_12, K1_13, T1_14)), STATE_VARIABLE_Acc_0_16, STATE_VARIABLE_Acc_17) :-
+    rtree.fold_subtree(P_10, K0_11, T0_12, STATE_VARIABLE_Acc_0_16, STATE_VARIABLE_Acc_1_18),
+    rtree.fold_subtree(P_10, K1_13, T1_14, STATE_VARIABLE_Acc_1_18, STATE_VARIABLE_Acc_2_19),
+    STATE_VARIABLE_Acc_17 = STATE_VARIABLE_Acc_2_19.
+rtree.fold_2(P_21, (rtree.three(K0_22, T0_23, K1_24, T1_25, K2_26, T2_27)), STATE_VARIABLE_Acc_0_29, STATE_VARIABLE_Acc_30) :-
+    rtree.fold_subtree(P_21, K0_22, T0_23, STATE_VARIABLE_Acc_0_29, STATE_VARIABLE_Acc_1_31),
+    rtree.fold_subtree(P_21, K1_24, T1_25, STATE_VARIABLE_Acc_1_31, STATE_VARIABLE_Acc_2_32),
+    rtree.fold_subtree(P_21, K2_26, T2_27, STATE_VARIABLE_Acc_2_32, STATE_VARIABLE_Acc_3_33),
+    STATE_VARIABLE_Acc_30 = STATE_VARIABLE_Acc_3_33.
+rtree.fold_2(P_35, (rtree.four(K0_36, T0_37, K1_38, T1_39, K2_40, T2_41, K3_42, T3_43)), STATE_VARIABLE_Acc_0_45, STATE_VARIABLE_Acc_46) :-
+    rtree.fold_subtree(P_35, K0_36, T0_37, STATE_VARIABLE_Acc_0_45, STATE_VARIABLE_Acc_1_47),
+    rtree.fold_subtree(P_35, K1_38, T1_39, STATE_VARIABLE_Acc_1_47, STATE_VARIABLE_Acc_2_48),
+    rtree.fold_subtree(P_35, K2_40, T2_41, STATE_VARIABLE_Acc_2_48, STATE_VARIABLE_Acc_3_49),
+    rtree.fold_subtree(P_35, K3_42, T3_43, STATE_VARIABLE_Acc_3_49, STATE_VARIABLE_Acc_4_50),
+    STATE_VARIABLE_Acc_46 = STATE_VARIABLE_Acc_4_50.
+rtree.fold_subtree(P_6, K_7, T_8, STATE_VARIABLE_Acc_0_29, STATE_VARIABLE_Acc_30) :-
+    ( % disjunction
+      T_8 = rtree.leaf(V_10) : (rtree.rtree_2(K_1, V_2)),
+      call(P_6, K_7, V_10, STATE_VARIABLE_Acc_0_29, STATE_VARIABLE_Acc_1_31)
+    ;
+      ( % disjunction
+        T_8 = rtree.two(V_11, V_12, V_13, V_14) : (rtree.rtree_2(K_1, V_2))
+      ;
+        T_8 = rtree.three(V_15, V_16, V_17, V_18, V_19, V_20) : (rtree.rtree_2(K_1, V_2))
+      ;
+        T_8 = rtree.four(V_21, V_22, V_23, V_24, V_25, V_26, V_27, V_28) : (rtree.rtree_2(K_1, V_2))
+      ),
+      rtree.fold_2(P_6, T_8, STATE_VARIABLE_Acc_0_29, STATE_VARIABLE_Acc_1_31)
+    ),
+    STATE_VARIABLE_Acc_30 = STATE_VARIABLE_Acc_1_31.
+rtree.map_values_2(V_4, (rtree.leaf(V_5)), V_6) :-
+    V_7 = "map_values_2: unexpected leaf." : string,
+    require.error(V_7).
+rtree.map_values_2(P_8, (rtree.two(K0_9, T0_10, K1_11, T1_12)), (rtree.two(K0_9, U0_13, K1_11, U1_14))) :-
+    rtree.map_values_key_2(P_8, K0_9, T0_10, U0_13),
+    rtree.map_values_key_2(P_8, K1_11, T1_12, U1_14).
+rtree.map_values_2(P_15, (rtree.three(K0_16, T0_17, K1_18, T1_19, K2_20, T2_21)), (rtree.three(K0_16, U0_22, K1_18, U1_23, K2_20, U2_24))) :-
+    rtree.map_values_key_2(P_15, K0_16, T0_17, U0_22),
+    rtree.map_values_key_2(P_15, K1_18, T1_19, U1_23),
+    rtree.map_values_key_2(P_15, K2_20, T2_21, U2_24).
+rtree.map_values_2(P_25, (rtree.four(K0_26, T0_27, K1_28, T1_29, K2_30, T2_31, K3_32, T3_33)), (rtree.four(K0_26, U0_34, K1_28, U1_35, K2_30, U2_36, K3_32, U3_37))) :-
+    rtree.map_values_key_2(P_25, K0_26, T0_27, U0_34),
+    rtree.map_values_key_2(P_25, K1_28, T1_29, U1_35),
+    rtree.map_values_key_2(P_25, K2_30, T2_31, U2_36),
+    rtree.map_values_key_2(P_25, K3_32, T3_33, U3_37).
+rtree.map_values_key_2(P_5, K_6, T_7, U_8) :-
+    ( % disjunction
+      T_7 = rtree.leaf(V_9) : (rtree.rtree_2(K_1, V_2)),
+      call(P_5, K_6, V_9, W_10),
+      U_8 = rtree.leaf(W_10) : (rtree.rtree_2(K_1, W_3))
+    ;
+      ( % disjunction
+        T_7 = rtree.two(V_11, V_12, V_13, V_14) : (rtree.rtree_2(K_1, V_2))
+      ;
+        T_7 = rtree.three(V_15, V_16, V_17, V_18, V_19, V_20) : (rtree.rtree_2(K_1, V_2))
+      ;
+        T_7 = rtree.four(V_21, V_22, V_23, V_24, V_25, V_26, V_27, V_28) : (rtree.rtree_2(K_1, V_2))
+      ),
+      rtree.map_values_2(P_5, T_7, U_8)
+    ).
+:- pragma exceptions(predicate, (rtree.intersects), 2, 0, may_throw(user_exception)).
+:- pragma exceptions(predicate, (rtree.contains), 2, 0, may_throw(user_exception)).
+:- pragma exceptions(function, (rtree.size), 2, 0, may_throw(user_exception)).
+:- pragma exceptions(function, (rtree.bounding_region), 3, 0, may_throw(user_exception)).
+:- pragma exceptions(function, (rtree.bounding_region_size), 3, 0, may_throw(user_exception)).
+:- pragma exceptions(function, (rtree.init), 1, 0, will_not_throw).
+:- pragma exceptions(predicate, (rtree.is_empty), 1, 0, will_not_throw).
+:- pragma exceptions(function, (rtree.insert), 4, 0, may_throw(user_exception)).
+:- pragma exceptions(predicate, (rtree.insert), 4, 0, may_throw(user_exception)).
+:- pragma exceptions(predicate, (rtree.delete), 4, 0, may_throw(user_exception)).
+:- pragma exceptions(function, (rtree.search_intersects), 3, 0, may_throw(user_exception)).
+:- pragma exceptions(function, (rtree.search_contains), 3, 0, may_throw(user_exception)).
+:- pragma exceptions(function, (rtree.search_general), 4, 0, may_throw(user_exception)).
+:- pragma exceptions(predicate, (rtree.search_first), 6, 0, may_throw(user_exception)).
+:- pragma exceptions(predicate, (rtree.search_general_fold), 5, 0, may_throw(user_exception)).
+:- pragma exceptions(predicate, (rtree.search_general_fold), 5, 1, may_throw(user_exception)).
+:- pragma exceptions(predicate, (rtree.fold), 4, 0, may_throw(user_exception)).
+:- pragma exceptions(predicate, (rtree.fold), 4, 1, may_throw(user_exception)).
+:- pragma exceptions(predicate, (rtree.fold), 4, 2, may_throw(user_exception)).
+:- pragma exceptions(predicate, (rtree.map_values), 3, 0, may_throw(user_exception)).
+:- pragma exceptions(predicate, (rtree.map_values), 3, 1, may_throw(user_exception)).
+:- pragma exceptions(predicate, (rtree.search_general_2), 5, 0, may_throw(user_exception)).
+:- pragma exceptions(predicate, (rtree.search_general_subtree), 6, 0, may_throw(user_exception)).
+:- pragma exceptions(predicate, (rtree.maybe_limit), 4, 0, may_throw(user_exception)).
+:- pragma exceptions(predicate, (rtree.search_first_2), 6, 0, may_throw(user_exception)).
+:- pragma exceptions(predicate, (rtree.search_general_fold_2), 5, 0, may_throw(user_exception)).
+:- pragma exceptions(predicate, (rtree.search_general_fold_2), 5, 1, may_throw(user_exception)).
+:- pragma exceptions(predicate, (rtree.search_general_fold_subtree), 6, 0, may_throw(user_exception)).
+:- pragma exceptions(predicate, (rtree.search_general_fold_subtree), 6, 1, may_throw(user_exception)).
+:- pragma exceptions(predicate, (rtree.fold_2), 4, 0, may_throw(user_exception)).
+:- pragma exceptions(predicate, (rtree.fold_2), 4, 1, may_throw(user_exception)).
+:- pragma exceptions(predicate, (rtree.fold_2), 4, 2, may_throw(user_exception)).
+:- pragma exceptions(predicate, (rtree.fold_subtree), 5, 0, may_throw(user_exception)).
+:- pragma exceptions(predicate, (rtree.fold_subtree), 5, 1, may_throw(user_exception)).
+:- pragma exceptions(predicate, (rtree.fold_subtree), 5, 2, may_throw(user_exception)).
+:- pragma exceptions(predicate, (rtree.map_values_2), 3, 0, may_throw(user_exception)).
+:- pragma exceptions(predicate, (rtree.map_values_2), 3, 1, may_throw(user_exception)).
+:- pragma exceptions(predicate, (rtree.map_values_key_2), 4, 0, may_throw(user_exception)).
+:- pragma exceptions(predicate, (rtree.map_values_key_2), 4, 1, may_throw(user_exception)).
+:- pragma exceptions(predicate, (rtree.box3d_intersects), 2, 0, will_not_throw).
+:- pragma exceptions(predicate, (rtree.box3d_contains), 2, 0, will_not_throw).
+:- pragma exceptions(function, (rtree.box3d_volume), 2, 0, will_not_throw).
+:- pragma exceptions(function, (rtree.box3d_bounding_region), 3, 0, may_throw(user_exception)).
+:- pragma exceptions(function, (rtree.box3d_bounding_region_volume), 3, 0, may_throw(user_exception)).
+:- pragma exceptions(predicate, (rtree.box_intersects), 2, 0, will_not_throw).
+:- pragma exceptions(predicate, (rtree.box_contains), 2, 0, will_not_throw).
+:- pragma exceptions(function, (rtree.box_area), 2, 0, will_not_throw).
+:- pragma exceptions(function, (rtree.box_bounding_region), 3, 0, may_throw(user_exception)).
+:- pragma exceptions(function, (rtree.box_bounding_region_area), 3, 0, may_throw(user_exception)).
+:- pragma exceptions(predicate, (rtree.interval_intersects), 2, 0, will_not_throw).
+:- pragma exceptions(predicate, (rtree.interval_contains), 2, 0, will_not_throw).
+:- pragma exceptions(function, (rtree.interval_length), 2, 0, will_not_throw).
+:- pragma exceptions(function, (rtree.interval_bounding_region), 3, 0, may_throw(user_exception)).
+:- pragma exceptions(function, (rtree.interval_bounding_region_length), 3, 0, may_throw(user_exception)).
+:- pragma termination_info(rtree.intersects((builtin.in), (builtin.in)), infinite, can_loop).
+:- pragma termination_info(rtree.contains((builtin.in), (builtin.in)), infinite, can_loop).
+:- pragma termination_info(rtree.size((builtin.in)) = (builtin.out), infinite, can_loop).
+:- pragma termination_info(rtree.bounding_region((builtin.in), (builtin.in)) = (builtin.out), infinite, can_loop).
+:- pragma termination_info(rtree.bounding_region_size((builtin.in), (builtin.in)) = (builtin.out), infinite, can_loop).
+:- pragma termination_info((rtree.init) = (builtin.uo), finite(0, [no, no, no]), cannot_loop).
+:- pragma termination_info(rtree.is_empty((builtin.in)), finite(0, [no, no, no]), cannot_loop).
+:- pragma termination_info(rtree.insert((builtin.in), (builtin.in), (builtin.in)) = (builtin.out), infinite, can_loop).
+:- pragma termination_info(rtree.insert((builtin.in), (builtin.in), (builtin.in), (builtin.out)), infinite, can_loop).
+:- pragma termination_info(rtree.delete((builtin.in), (builtin.in), (builtin.in), (builtin.out)), infinite, can_loop).
+:- pragma termination_info(rtree.search_intersects((builtin.in), (builtin.in)) = (builtin.out), finite(0, [no, no, yes, no, no]), can_loop).
+:- pragma termination_info(rtree.search_contains((builtin.in), (builtin.in)) = (builtin.out), finite(0, [no, no, yes, no, no]), can_loop).
+:- pragma termination_info(rtree.search_general(builtin.in((pred((builtin.in)) is semidet)), builtin.in((pred((builtin.in)) is semidet)), (builtin.in)) = (builtin.out), infinite, can_loop).
+:- pragma termination_info(rtree.search_first((pred((builtin.in), (builtin.out)) is semidet), (pred((builtin.in), (builtin.out)) is semidet), (builtin.in), (builtin.in), (builtin.out), (builtin.out)), infinite, can_loop).
+:- pragma termination_info(rtree.search_general_fold((pred((builtin.in)) is semidet), (pred((builtin.in), (builtin.in), (builtin.in), (builtin.out)) is det), (builtin.in), (builtin.in), (builtin.out)), infinite, can_loop).
+:- pragma termination_info(rtree.search_general_fold((pred((builtin.in)) is semidet), (pred((builtin.in), (builtin.in), (builtin.di), (builtin.uo)) is det), (builtin.in), (builtin.di), (builtin.uo)), infinite, can_loop).
+:- pragma termination_info(rtree.fold((pred((builtin.in), (builtin.in), (builtin.in), (builtin.out)) is det), (builtin.in), (builtin.in), (builtin.out)), infinite, can_loop).
+:- pragma termination_info(rtree.fold((pred((builtin.in), (builtin.in), (builtin.di), (builtin.uo)) is det), (builtin.in), (builtin.di), (builtin.uo)), infinite, can_loop).
+:- pragma termination_info(rtree.fold((pred((builtin.in), (builtin.in), (builtin.in), (builtin.out)) is semidet), (builtin.in), (builtin.in), (builtin.out)), infinite, can_loop).
+:- pragma termination_info(rtree.map_values((pred((builtin.in), (builtin.in), (builtin.out)) is det), (builtin.in), (builtin.out)), infinite, can_loop).
+:- pragma termination_info(rtree.map_values((pred((builtin.in), (builtin.in), (builtin.out)) is semidet), (builtin.in), (builtin.out)), infinite, can_loop).
+:- pragma termination_info(rtree.search_general_2((builtin.in), builtin.in((pred((builtin.in)) is semidet)), builtin.in((pred((builtin.in)) is semidet)), (builtin.in), (builtin.out)), infinite, can_loop).
+:- pragma termination_info(rtree.search_general_subtree((builtin.in), (builtin.in), builtin.in((pred((builtin.in)) is semidet)), builtin.in((pred((builtin.in)) is semidet)), (builtin.in), (builtin.out)), infinite, can_loop).
+:- pragma termination_info(rtree.maybe_limit((builtin.in), builtin.in((pred((builtin.in), (builtin.out)) is semidet)), (builtin.in), (builtin.out)), infinite, can_loop).
+:- pragma termination_info(rtree.search_first_2((builtin.in), (pred((builtin.in), (builtin.out)) is semidet), (pred((builtin.in), (builtin.out)) is semidet), (builtin.in), (builtin.out), (builtin.out)), infinite, can_loop).
+:- pragma termination_info(rtree.search_general_fold_2((builtin.in), (pred((builtin.in)) is semidet), (pred((builtin.in), (builtin.in), (builtin.in), (builtin.out)) is det), (builtin.in), (builtin.out)), infinite, can_loop).
+:- pragma termination_info(rtree.search_general_fold_2((builtin.in), (pred((builtin.in)) is semidet), (pred((builtin.in), (builtin.in), (builtin.di), (builtin.uo)) is det), (builtin.di), (builtin.uo)), infinite, can_loop).
+:- pragma termination_info(rtree.search_general_fold_subtree((builtin.in), (builtin.in), builtin.in((pred((builtin.in)) is semidet)), builtin.in((pred((builtin.in), (builtin.in), (builtin.in), (builtin.out)) is det)), (builtin.in), (builtin.out)), infinite, can_loop).
+:- pragma termination_info(rtree.search_general_fold_subtree((builtin.in), (builtin.in), builtin.in((pred((builtin.in)) is semidet)), builtin.in((pred((builtin.in), (builtin.in), (builtin.di), (builtin.uo)) is det)), (builtin.di), (builtin.uo)), infinite, can_loop).
+:- pragma termination_info(rtree.fold_2((pred((builtin.in), (builtin.in), (builtin.in), (builtin.out)) is det), (builtin.in), (builtin.in), (builtin.out)), infinite, can_loop).
+:- pragma termination_info(rtree.fold_2((pred((builtin.in), (builtin.in), (builtin.di), (builtin.uo)) is det), (builtin.in), (builtin.di), (builtin.uo)), infinite, can_loop).
+:- pragma termination_info(rtree.fold_2((pred((builtin.in), (builtin.in), (builtin.in), (builtin.out)) is semidet), (builtin.in), (builtin.in), (builtin.out)), infinite, can_loop).
+:- pragma termination_info(rtree.fold_subtree((pred((builtin.in), (builtin.in), (builtin.in), (builtin.out)) is det), (builtin.in), (builtin.in), (builtin.in), (builtin.out)), infinite, can_loop).
+:- pragma termination_info(rtree.fold_subtree((pred((builtin.in), (builtin.in), (builtin.di), (builtin.uo)) is det), (builtin.in), (builtin.in), (builtin.di), (builtin.uo)), infinite, can_loop).
+:- pragma termination_info(rtree.fold_subtree((pred((builtin.in), (builtin.in), (builtin.in), (builtin.out)) is semidet), (builtin.in), (builtin.in), (builtin.in), (builtin.out)), infinite, can_loop).
+:- pragma termination_info(rtree.map_values_2((pred((builtin.in), (builtin.in), (builtin.out)) is det), (builtin.in), (builtin.out)), infinite, can_loop).
+:- pragma termination_info(rtree.map_values_2((pred((builtin.in), (builtin.in), (builtin.out)) is semidet), (builtin.in), (builtin.out)), infinite, can_loop).
+:- pragma termination_info(rtree.map_values_key_2((pred((builtin.in), (builtin.in), (builtin.out)) is det), (builtin.in), (builtin.in), (builtin.out)), infinite, can_loop).
+:- pragma termination_info(rtree.map_values_key_2((pred((builtin.in), (builtin.in), (builtin.out)) is semidet), (builtin.in), (builtin.in), (builtin.out)), infinite, can_loop).
+:- pragma termination_info(rtree.box3d_intersects((builtin.in), (builtin.in)), finite(0, [no, no]), cannot_loop).
+:- pragma termination_info(rtree.box3d_contains((builtin.in), (builtin.in)), finite(0, [no, no]), cannot_loop).
+:- pragma termination_info(rtree.box3d_volume((builtin.in)) = (builtin.out), finite(0, [no, no]), cannot_loop).
+:- pragma termination_info(rtree.box3d_bounding_region((builtin.in), (builtin.in)) = (builtin.out), infinite, can_loop).
+:- pragma termination_info(rtree.box3d_bounding_region_volume((builtin.in), (builtin.in)) = (builtin.out), finite(0, [no, no, no]), can_loop).
+:- pragma termination_info(rtree.box_intersects((builtin.in), (builtin.in)), finite(0, [no, no]), cannot_loop).
+:- pragma termination_info(rtree.box_contains((builtin.in), (builtin.in)), finite(0, [no, no]), cannot_loop).
+:- pragma termination_info(rtree.box_area((builtin.in)) = (builtin.out), finite(0, [no, no]), cannot_loop).
+:- pragma termination_info(rtree.box_bounding_region((builtin.in), (builtin.in)) = (builtin.out), infinite, can_loop).
+:- pragma termination_info(rtree.box_bounding_region_area((builtin.in), (builtin.in)) = (builtin.out), finite(0, [no, no, no]), can_loop).
+:- pragma termination_info(rtree.interval_intersects((builtin.in), (builtin.in)), finite(0, [no, no]), cannot_loop).
+:- pragma termination_info(rtree.interval_contains((builtin.in), (builtin.in)), finite(0, [no, no]), cannot_loop).
+:- pragma termination_info(rtree.interval_length((builtin.in)) = (builtin.out), finite(0, [no, no]), cannot_loop).
+:- pragma termination_info(rtree.interval_bounding_region((builtin.in), (builtin.in)) = (builtin.out), infinite, can_loop).
+:- pragma termination_info(rtree.interval_bounding_region_length((builtin.in), (builtin.in)) = (builtin.out), finite(0, [no, no, no]), can_loop).
+:- pragma termination_info(rtree.'ClassMethod_for_rtree__region____rtree__interval__arity0______rtree__intersects_2'((builtin.in), (builtin.in)), finite(0, [no, no]), cannot_loop).
+:- pragma termination_info(rtree.'ClassMethod_for_rtree__region____rtree__interval__arity0______rtree__contains_2'((builtin.in), (builtin.in)), finite(0, [no, no]), cannot_loop).
+:- pragma termination_info(rtree.'ClassMethod_for_rtree__region____rtree__interval__arity0______rtree__size_1'((builtin.in)) = (builtin.out), finite(0, [no, no]), cannot_loop).
+:- pragma termination_info(rtree.'ClassMethod_for_rtree__region____rtree__interval__arity0______rtree__bounding_region_2'((builtin.in), (builtin.in)) = (builtin.out), infinite, can_loop).
+:- pragma termination_info(rtree.'ClassMethod_for_rtree__region____rtree__interval__arity0______rtree__bounding_region_size_2'((builtin.in), (builtin.in)) = (builtin.out), finite(0, [no, no, no]), can_loop).
+:- pragma termination_info(rtree.'ClassMethod_for_rtree__region____rtree__box__arity0______rtree__intersects_2'((builtin.in), (builtin.in)), finite(0, [no, no]), cannot_loop).
+:- pragma termination_info(rtree.'ClassMethod_for_rtree__region____rtree__box__arity0______rtree__contains_2'((builtin.in), (builtin.in)), finite(0, [no, no]), cannot_loop).
+:- pragma termination_info(rtree.'ClassMethod_for_rtree__region____rtree__box__arity0______rtree__size_1'((builtin.in)) = (builtin.out), finite(0, [no, no]), cannot_loop).
+:- pragma termination_info(rtree.'ClassMethod_for_rtree__region____rtree__box__arity0______rtree__bounding_region_2'((builtin.in), (builtin.in)) = (builtin.out), infinite, can_loop).
+:- pragma termination_info(rtree.'ClassMethod_for_rtree__region____rtree__box__arity0______rtree__bounding_region_size_2'((builtin.in), (builtin.in)) = (builtin.out), finite(0, [no, no, no]), can_loop).
+:- pragma termination_info(rtree.'ClassMethod_for_rtree__region____rtree__box3d__arity0______rtree__intersects_2'((builtin.in), (builtin.in)), finite(0, [no, no]), cannot_loop).
+:- pragma termination_info(rtree.'ClassMethod_for_rtree__region____rtree__box3d__arity0______rtree__contains_2'((builtin.in), (builtin.in)), finite(0, [no, no]), cannot_loop).
+:- pragma termination_info(rtree.'ClassMethod_for_rtree__region____rtree__box3d__arity0______rtree__size_1'((builtin.in)) = (builtin.out), finite(0, [no, no]), cannot_loop).
+:- pragma termination_info(rtree.'ClassMethod_for_rtree__region____rtree__box3d__arity0______rtree__bounding_region_2'((builtin.in), (builtin.in)) = (builtin.out), infinite, can_loop).
+:- pragma termination_info(rtree.'ClassMethod_for_rtree__region____rtree__box3d__arity0______rtree__bounding_region_size_2'((builtin.in), (builtin.in)) = (builtin.out), finite(0, [no, no, no]), can_loop).

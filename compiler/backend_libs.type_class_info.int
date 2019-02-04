@@ -1,0 +1,13 @@
+:- module (backend_libs.type_class_info).
+:- interface.
+:- import_module bool.
+:- import_module hlds.
+:- import_module list.
+:- import_module parse_tree.
+:- import_module (backend_libs.rtti).
+:- import_module (hlds.hlds_module).
+:- import_module (parse_tree.prog_data).
+:- func generate_class_constraint(((parse_tree.prog_data).prog_constraint)) = ((backend_libs.rtti).tc_constraint).
+:- func generate_class_name(((parse_tree.prog_data).class_id)) = ((backend_libs.rtti).tc_name).
+:- pred generate_type_class_info_rtti(((hlds.hlds_module).module_info), (bool.bool), (list.list(((backend_libs.rtti).rtti_data)))).
+:- mode generate_type_class_info_rtti((builtin.in), (builtin.in), (builtin.out)) is det.

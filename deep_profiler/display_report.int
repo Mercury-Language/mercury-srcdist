@@ -1,0 +1,8 @@
+:- module display_report.
+:- interface.
+:- import_module display.
+:- import_module profile.
+:- import_module query.
+:- import_module report.
+:- pred display_report((profile.deep), (query.preferences), (report.deep_report), (display.display)).
+:- mode display_report((builtin.in), (builtin.in), (builtin.in), (builtin.out)) is det.

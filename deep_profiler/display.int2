@@ -1,0 +1,57 @@
+:- module display.
+:- interface.
+:- import_module list.
+:- import_module maybe.
+:- import_module measurement_units.
+:- import_module query.
+:- import_module string.
+:- type deep_link
+	--->	deep_link((query.cmd), (maybe.maybe((query.preferences))), string, (display.link_class)).
+:- type display
+	--->	display((display.title) :: (maybe.maybe(string)), (display.content) :: (list.list((display.display_item)))).
+:- type display_item
+	--->	display_message(string)
+	;	display_table((display.table))
+	;	display_list((display.list_class), (maybe.maybe(string)), (list.list((display.display_item))))
+	;	display_command_link((display.deep_link)).
+:- type link_class
+	--->	link_class_link 
+	;	link_class_control .
+:- type list_class
+	--->	list_class_vertical_no_bullets 
+	;	list_class_vertical_bullets 
+	;	list_class_horizontal .
+:- type table
+	--->	table((display.table_class) :: (display.table_class), (display.table_num_cols) :: int, (display.table_header) :: (maybe.maybe((display.table_header))), (display.table_rows) :: (list.list((display.table_row)))).
+:- type table_cell
+	--->	table_cell((display.tc_text) :: (display.table_data))
+	;	table_empty_cell .
+:- type table_class
+	--->	table_class_menu 
+	;	table_class_top_procs .
+:- type table_col_class
+	--->	table_col_class_allocations 
+	;	table_col_class_callseqs 
+	;	table_col_class_memory 
+	;	table_col_class_no_class 
+	;	table_col_class_number 
+	;	table_col_class_ordinal_rank 
+	;	table_col_class_port_counts 
+	;	table_col_class_proc 
+	;	table_col_class_ticks_and_times .
+:- type table_data
+	--->	f(float)
+	;	i(int)
+	;	l((display.deep_link))
+	;	m((measurement_units.memory), (measurement_units.memory_units), int)
+	;	p((measurement_units.percent))
+	;	s(string)
+	;	t((measurement_units.time)).
+:- type table_header
+	--->	table_header((display.th_cells) :: (list.list((display.table_header_cell)))).
+:- type table_header_cell
+	--->	table_header_cell((display.thc_contents) :: (display.table_data), (display.thc_class) :: (display.table_col_class))
+	;	table_header_group((display.thg_title) :: string, (display.thg_subtitles) :: (list.list((display.table_data))), (display.thg_class) :: (display.table_col_class)).
+:- type table_row
+	--->	table_row((display.tr_cells) :: (list.list((display.table_cell))))
+	;	table_section_header((display.tsh_text) :: (display.table_data)).

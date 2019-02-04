@@ -1,0 +1,11 @@
+:- module mdbcomp.
+:- interface.
+:- pragma foreign_import_module("C", mdbcomp).
+:- pred version(string).
+:- mode version((builtin.out)) is det.
+:- include_module (mdbcomp.feedback).
+:- include_module (mdbcomp.prim_data).
+:- include_module (mdbcomp.program_representation).
+:- include_module (mdbcomp.rtti_access).
+:- include_module (mdbcomp.slice_and_dice).
+:- include_module (mdbcomp.trace_counts).

@@ -1,0 +1,45 @@
+:- module (transform_hlds.pd_util).
+:- interface.
+:- import_module bool.
+:- import_module io.
+:- import_module list.
+:- import_module map.
+:- import_module maybe.
+:- import_module set.
+:- import_module (check_hlds.mode_errors).
+:- import_module (check_hlds.simplify).
+:- import_module (hlds.hlds_goal).
+:- import_module (hlds.hlds_module).
+:- import_module (hlds.hlds_pred).
+:- import_module (parse_tree.prog_data).
+:- import_module (transform_hlds.pd_info).
+:- pred convert_branch_info(((transform_hlds.pd_info).pd_branch_info(int)), ((parse_tree.prog_data).prog_vars), ((transform_hlds.pd_info).pd_branch_info(((parse_tree.prog_data).prog_var)))).
+:- mode convert_branch_info((builtin.in), (builtin.in), (builtin.out)) is det.
+:- pred get_branch_vars_goal(((hlds.hlds_goal).hlds_goal), (maybe.maybe(((transform_hlds.pd_info).pd_branch_info(((parse_tree.prog_data).prog_var))))), ((transform_hlds.pd_info).pd_info), ((transform_hlds.pd_info).pd_info)).
+:- mode get_branch_vars_goal((builtin.in), (builtin.out), (builtin.in), (builtin.out)) is det.
+:- pred get_branch_vars_proc(((hlds.hlds_pred).pred_proc_id), ((hlds.hlds_pred).proc_info), ((transform_hlds.pd_info).pd_arg_info), ((transform_hlds.pd_info).pd_arg_info), ((hlds.hlds_module).module_info), ((hlds.hlds_module).module_info)).
+:- mode get_branch_vars_proc((builtin.in), (builtin.in), (builtin.in), (builtin.out), (builtin.in), (builtin.out)) is det.
+:- pred goal_get_calls(((hlds.hlds_goal).hlds_goal), (list.list(((hlds.hlds_pred).pred_proc_id)))).
+:- mode goal_get_calls((builtin.in), (builtin.out)) is det.
+:- pred goals_match(((hlds.hlds_module).module_info), ((hlds.hlds_goal).hlds_goal), ((parse_tree.prog_data).prog_vars), (list.list(((parse_tree.prog_data).mer_type))), ((hlds.hlds_goal).hlds_goal), ((parse_tree.prog_data).vartypes), (map.map(((parse_tree.prog_data).prog_var), ((parse_tree.prog_data).prog_var))), ((parse_tree.prog_data).tsubst)).
+:- mode goals_match((builtin.in), (builtin.in), (builtin.in), (builtin.in), (builtin.in), (builtin.in), (builtin.out), (builtin.out)) is semidet.
+:- pred inst_MSG(((parse_tree.prog_data).mer_inst), ((parse_tree.prog_data).mer_inst), ((hlds.hlds_module).module_info), ((parse_tree.prog_data).mer_inst)).
+:- mode inst_MSG((builtin.in), (builtin.in), (builtin.in), (builtin.out)) is semidet.
+:- pred inst_list_size(((hlds.hlds_module).module_info), (list.list(((parse_tree.prog_data).mer_inst))), int).
+:- mode inst_list_size((builtin.in), (builtin.in), (builtin.out)) is det.
+:- pred inst_size(((hlds.hlds_module).module_info), ((parse_tree.prog_data).mer_inst), int).
+:- mode inst_size((builtin.in), (builtin.in), (builtin.out)) is det.
+:- pred pd_can_reorder_goals(((hlds.hlds_module).module_info), (bool.bool), ((hlds.hlds_goal).hlds_goal), ((hlds.hlds_goal).hlds_goal)).
+:- mode pd_can_reorder_goals((builtin.in), (builtin.in), (builtin.in), (builtin.in)) is semidet.
+:- pred pd_simplify_goal(((check_hlds.simplify).simplifications), ((hlds.hlds_goal).hlds_goal), ((hlds.hlds_goal).hlds_goal), ((transform_hlds.pd_info).pd_info), ((transform_hlds.pd_info).pd_info)).
+:- mode pd_simplify_goal((builtin.in), (builtin.in), (builtin.out), (builtin.in), (builtin.out)) is det.
+:- pred propagate_constraints(((hlds.hlds_goal).hlds_goal), ((hlds.hlds_goal).hlds_goal), ((transform_hlds.pd_info).pd_info), ((transform_hlds.pd_info).pd_info), (io.io), (io.io)).
+:- mode propagate_constraints((builtin.in), (builtin.out), (builtin.in), (builtin.out), (builtin.di), (builtin.uo)) is det.
+:- pred recompute_instmap_delta(((hlds.hlds_goal).hlds_goal), ((hlds.hlds_goal).hlds_goal), ((transform_hlds.pd_info).pd_info), ((transform_hlds.pd_info).pd_info)).
+:- mode recompute_instmap_delta((builtin.in), (builtin.out), (builtin.in), (builtin.out)) is det.
+:- pred requantify_goal((set.set(((parse_tree.prog_data).prog_var))), ((hlds.hlds_goal).hlds_goal), ((hlds.hlds_goal).hlds_goal), ((transform_hlds.pd_info).pd_info), ((transform_hlds.pd_info).pd_info)).
+:- mode requantify_goal((builtin.in), (builtin.in), (builtin.out), (builtin.in), (builtin.out)) is det.
+:- pred unique_modecheck_goal(((hlds.hlds_goal).hlds_goal), ((hlds.hlds_goal).hlds_goal), (list.list(((check_hlds.mode_errors).mode_error_info))), ((transform_hlds.pd_info).pd_info), ((transform_hlds.pd_info).pd_info), (io.io), (io.io)).
+:- mode unique_modecheck_goal((builtin.in), (builtin.out), (builtin.out), (builtin.in), (builtin.out), (builtin.di), (builtin.uo)) is det.
+:- pred unique_modecheck_goal((set.set(((parse_tree.prog_data).prog_var))), ((hlds.hlds_goal).hlds_goal), ((hlds.hlds_goal).hlds_goal), (list.list(((check_hlds.mode_errors).mode_error_info))), ((transform_hlds.pd_info).pd_info), ((transform_hlds.pd_info).pd_info), (io.io), (io.io)).
+:- mode unique_modecheck_goal((builtin.in), (builtin.in), (builtin.out), (builtin.out), (builtin.in), (builtin.out), (builtin.di), (builtin.uo)) is det.

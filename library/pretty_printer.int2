@@ -1,0 +1,30 @@
+:- module pretty_printer.
+:- interface.
+:- import_module deconstruct.
+:- import_module io.
+:- import_module list.
+:- import_module stream.
+:- import_module string.
+:- import_module type_desc.
+:- import_module univ.
+:- type doc
+	--->	str(string)
+	;	nl 
+	;	docs((pretty_printer.docs))
+	;	format_univ((univ.univ))
+	;	format_list((list.list((univ.univ))), (pretty_printer.doc))
+	;	format_term(string, (list.list((univ.univ))))
+	;	format_susp(((func) = (pretty_printer.doc)))
+	;	pp_internal((pretty_printer.pp_internal)).
+:- type docs == (list.list((pretty_printer.doc))).
+:- type formatter == (func((univ.univ), (list.list((type_desc.type_desc)))) = (pretty_printer.doc)).
+:- type formatter_map.
+:- type formatting_limit
+	--->	linear(int)
+	;	triangular(int).
+:- type pp_internal.
+:- type pp_params
+	--->	pp_params((pretty_printer.pp_line_width) :: int, (pretty_printer.pp_max_lines) :: int, (pretty_printer.pp_limit) :: (pretty_printer.formatting_limit)).
+:- implementation.
+:- import_module map.
+:- type formatter_map == (map.map(string, (map.map(string, (map.map(int, (pretty_printer.formatter))))))).

@@ -1,0 +1,5 @@
+:- module (hlds.instmap).
+:- interface.
+:- type instmap.
+:- type instmap_delta.
+:- type overlay_how.

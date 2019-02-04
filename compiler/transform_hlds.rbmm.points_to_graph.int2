@@ -1,0 +1,23 @@
+:- module ((transform_hlds.rbmm).points_to_graph).
+:- interface.
+:- import_module hlds.
+:- import_module int.
+:- import_module list.
+:- import_module map.
+:- import_module parse_tree.
+:- import_module set.
+:- import_module string.
+:- import_module (hlds.hlds_module).
+:- import_module (hlds.hlds_pred).
+:- import_module (parse_tree.prog_data).
+:- type rpt_graph.
+:- type rptg_arc
+	--->	rptg_arc(int).
+:- type rptg_arc_content
+	--->	rptg_arc_content((((transform_hlds.rbmm).points_to_graph).rptg_ac_label) :: ((parse_tree.prog_data).selector)).
+:- type rptg_arc_info
+	--->	rptg_arc_info((((transform_hlds.rbmm).points_to_graph).rptg_ai_from_node) :: (((transform_hlds.rbmm).points_to_graph).rptg_node), (((transform_hlds.rbmm).points_to_graph).rptg_ai_to_node) :: (((transform_hlds.rbmm).points_to_graph).rptg_node), (((transform_hlds.rbmm).points_to_graph).rptg_ai_label) :: (((transform_hlds.rbmm).points_to_graph).rptg_arc_content)).
+:- type rptg_node
+	--->	rptg_node(int).
+:- type rptg_node_content
+	--->	rptg_node_content((((transform_hlds.rbmm).points_to_graph).rptg_nc_vars) :: (set.set(((parse_tree.prog_data).prog_var))), (((transform_hlds.rbmm).points_to_graph).rptg_nc_reg_var_name) :: string, (((transform_hlds.rbmm).points_to_graph).rptg_nc_merged_from) :: (set.set((((transform_hlds.rbmm).points_to_graph).rptg_node))), (((transform_hlds.rbmm).points_to_graph).rptg_nc_node_type) :: ((parse_tree.prog_data).mer_type)).

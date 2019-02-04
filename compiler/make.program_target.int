@@ -1,0 +1,6 @@
+:- module (make.program_target).
+:- interface.
+:- pred make_linked_target((make.linked_target_file), (bool.bool), (make.make_info), (make.make_info), (io.io), (io.io)).
+:- mode make_linked_target((builtin.in), (builtin.out), (builtin.in), (builtin.out), (builtin.di), (builtin.uo)) is det.
+:- pred make_misc_target((pair.pair(((mdbcomp.prim_data).module_name), (make.misc_target_type))), (bool.bool), (make.make_info), (make.make_info), (io.io), (io.io)).
+:- mode make_misc_target((builtin.in), (builtin.out), (builtin.in), (builtin.out), (builtin.di), (builtin.uo)) is det.

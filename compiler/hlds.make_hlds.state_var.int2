@@ -1,0 +1,23 @@
+:- module ((hlds.make_hlds).state_var).
+:- interface.
+:- import_module list.
+:- import_module map.
+:- import_module set.
+:- import_module (hlds.hlds_goal).
+:- import_module (mdbcomp.prim_data).
+:- import_module (parse_tree.error_util).
+:- import_module (parse_tree.prog_data).
+:- type hlds_goal_svar_info == {((hlds.hlds_goal).hlds_goal), (((hlds.make_hlds).state_var).svar_info)}.
+:- type hlds_goal_svar_infos == (list.list((((hlds.make_hlds).state_var).hlds_goal_svar_info))).
+:- type svar == ((parse_tree.prog_data).prog_var).
+:- type svar_ctxt
+	--->	in_head 
+	;	in_body 
+	;	in_atom((((hlds.make_hlds).state_var).had_colon_reference) :: (((hlds.make_hlds).state_var).svar_set), (((hlds.make_hlds).state_var).parent_svar_info) :: (((hlds.make_hlds).state_var).svar_info)).
+:- type svar_info
+	--->	svar_info((((hlds.make_hlds).state_var).svar_ctxt) :: (((hlds.make_hlds).state_var).svar_ctxt), (((hlds.make_hlds).state_var).svar_num) :: int, (((hlds.make_hlds).state_var).svar_readonly_dot) :: (((hlds.make_hlds).state_var).svar_map), (((hlds.make_hlds).state_var).svar_dot) :: (((hlds.make_hlds).state_var).svar_map), (((hlds.make_hlds).state_var).svar_colon) :: (((hlds.make_hlds).state_var).svar_map)).
+:- type svar_inner_atomic_scope_info.
+:- type svar_map == (map.map((((hlds.make_hlds).state_var).svar), ((parse_tree.prog_data).prog_var))).
+:- type svar_outer_atomic_scope_info.
+:- type svar_set == (set.set((((hlds.make_hlds).state_var).svar))).
+:- type svars == (list.list((((hlds.make_hlds).state_var).svar))).

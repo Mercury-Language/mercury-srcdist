@@ -1,0 +1,8 @@
+:- module ((transform_hlds.ctgc).selector).
+:- interface.
+:- import_module list.
+:- import_module (hlds.hlds_module).
+:- import_module (parse_tree.prog_data).
+:- type normalization
+	--->	need_normalization 
+	;	already_normalized .

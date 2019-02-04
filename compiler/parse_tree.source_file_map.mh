@@ -1,0 +1,34 @@
+/*
+** Automatically generated from `source_file_map.m'
+** by the Mercury compiler,
+** version rotd-2008-08-03, configured for i686-pc-linux-gnu.
+** Do not edit.
+*/
+#ifndef PARSE_TREE__SOURCE_FILE_MAP_MH
+#define PARSE_TREE__SOURCE_FILE_MAP_MH
+
+#ifdef __cplusplus
+extern "C" {
+#endif
+
+#ifdef MR_HIGHLEVEL_CODE
+#include "mercury.h"
+#else
+  #ifndef MERCURY_HDR_EXCLUDE_IMP_H
+  #include "mercury_imp.h"
+  #endif
+#endif
+#ifdef MR_DEEP_PROFILING
+#include "mercury_deep_profiling.h"
+#endif
+
+#ifndef PARSE_TREE__SOURCE_FILE_MAP_DECL_GUARD
+#define PARSE_TREE__SOURCE_FILE_MAP_DECL_GUARD
+
+#endif
+
+#ifdef __cplusplus
+}
+#endif
+
+#endif /* PARSE_TREE__SOURCE_FILE_MAP_MH */

@@ -1,0 +1,41 @@
+:- module (check_hlds.abstract_mode_constraints).
+:- interface.
+:- import_module assoc_list.
+:- import_module bool.
+:- import_module hlds.
+:- import_module io.
+:- import_module list.
+:- import_module map.
+:- import_module multi_map.
+:- import_module pair.
+:- import_module parse_tree.
+:- import_module set.
+:- import_module term.
+:- import_module varset.
+:- import_module (hlds.hlds_pred).
+:- import_module (parse_tree.prog_data).
+:- type constraint_and_annotation == (pair.pair(((check_hlds.abstract_mode_constraints).constraint_formula), ((check_hlds.abstract_mode_constraints).constraint_annotation))).
+:- type constraint_annotation
+	--->	constraint_annotation(((check_hlds.abstract_mode_constraints).context) :: ((parse_tree.prog_data).prog_context)).
+:- type constraint_formula
+	--->	atomic_constraint(((check_hlds.abstract_mode_constraints).var_constraint))
+	;	disj(((check_hlds.abstract_mode_constraints).constraint_formulae))
+	;	conj(((check_hlds.abstract_mode_constraints).constraint_formulae)).
+:- type constraint_formulae == (list.list(((check_hlds.abstract_mode_constraints).constraint_formula))).
+:- type mc_bindings == (map.map(((check_hlds.abstract_mode_constraints).mc_var), (bool.bool))).
+:- type mc_type.
+:- type mc_var == (term.var(((check_hlds.abstract_mode_constraints).mc_type))).
+:- type mc_varset == (varset.varset(((check_hlds.abstract_mode_constraints).mc_type))).
+:- type pred_p_c_constraints
+	--->	pred_constraints(((check_hlds.abstract_mode_constraints).proc_constraints) :: (multi_map.multi_map(((hlds.hlds_pred).proc_id), ((check_hlds.abstract_mode_constraints).constraint_and_annotation))), ((check_hlds.abstract_mode_constraints).pred_constraints) :: (assoc_list.assoc_list(((check_hlds.abstract_mode_constraints).constraint_formula), ((check_hlds.abstract_mode_constraints).constraint_annotation))), ((check_hlds.abstract_mode_constraints).mode_infer_callees) :: (set.set(((hlds.hlds_pred).pred_id)))).
+:- type var_constraint == ((check_hlds.abstract_mode_constraints).var_constraint(((check_hlds.abstract_mode_constraints).mc_type))).
+:- type var_constraint(T)
+	--->	equiv_bool((term.var(T)), (bool.bool))
+	;	equivalent((list.list((term.var(T)))))
+	;	implies((term.var(T)), (term.var(T)))
+	;	equiv_disj((term.var(T)), (list.list((term.var(T)))))
+	;	at_most_one((list.list((term.var(T)))))
+	;	exactly_one((list.list((term.var(T))))).
+:- implementation.
+:- type mc_type
+	--->	mc_type .

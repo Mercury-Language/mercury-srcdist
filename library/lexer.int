@@ -1,0 +1,41 @@
+:- module lexer.
+:- interface.
+:- import_module char.
+:- import_module io.
+:- type offset == int.
+:- type token
+	--->	name(string)
+	;	variable(string)
+	;	integer(int)
+	;	float(float)
+	;	string(string)
+	;	implementation_defined(string)
+	;	open 
+	;	open_ct 
+	;	close 
+	;	open_list 
+	;	close_list 
+	;	open_curly 
+	;	close_curly 
+	;	ht_sep 
+	;	comma 
+	;	end 
+	;	junk((char.char))
+	;	error(string)
+	;	io_error((io.error))
+	;	eof 
+	;	integer_dot(int).
+:- type token_context == int.
+:- type token_list
+	--->	token_cons((lexer.token), (lexer.token_context), (lexer.token_list))
+	;	token_nil .
+:- pred get_token_list((lexer.token_list), (io.io), (io.io)).
+:- mode get_token_list((builtin.out), (builtin.di), (builtin.uo)) is det.
+:- pred graphic_token_char((char.char)).
+:- mode graphic_token_char((builtin.in)) is semidet.
+:- pred string_get_token_list(string, (lexer.token_list), (io.posn), (io.posn)).
+:- mode string_get_token_list((builtin.in), (builtin.out), (builtin.in), (builtin.out)) is det.
+:- pred string_get_token_list_max(string, (lexer.offset), (lexer.token_list), (io.posn), (io.posn)).
+:- mode string_get_token_list_max((builtin.in), (builtin.in), (builtin.out), (builtin.in), (builtin.out)) is det.
+:- pred token_to_string((lexer.token), string).
+:- mode token_to_string((builtin.in), (builtin.out)) is det.

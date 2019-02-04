@@ -1,0 +1,54 @@
+:- module (ll_backend.opt_debug).
+:- interface.
+:- import_module assoc_list.
+:- import_module bool.
+:- import_module io.
+:- import_module list.
+:- import_module maybe.
+:- import_module pair.
+:- import_module (backend_libs.builtin_ops).
+:- import_module (backend_libs.rtti).
+:- import_module (hlds.code_model).
+:- import_module (ll_backend.layout).
+:- import_module (ll_backend.livemap).
+:- import_module (ll_backend.llds).
+:- import_module (mdbcomp.prim_data).
+:- func dump_binop(((backend_libs.builtin_ops).binary_op)) = string.
+:- func dump_bool((bool.bool)) = string.
+:- func dump_code_addr((maybe.maybe(((mdbcomp.prim_data).proc_label))), ((ll_backend.llds).code_addr)) = string.
+:- func dump_code_addrs((maybe.maybe(((mdbcomp.prim_data).proc_label))), (list.list(((ll_backend.llds).code_addr)))) = string.
+:- func dump_code_model(((hlds.code_model).code_model)) = string.
+:- func dump_const((maybe.maybe(((mdbcomp.prim_data).proc_label))), ((ll_backend.llds).rval_const)) = string.
+:- func dump_data_addr(((ll_backend.llds).data_addr)) = string.
+:- func dump_data_name(((ll_backend.llds).data_name)) = string.
+:- func dump_fullinstr(((mdbcomp.prim_data).proc_label), (bool.bool), ((ll_backend.llds).instruction)) = string.
+:- func dump_fullinstrs(((mdbcomp.prim_data).proc_label), (bool.bool), (list.list(((ll_backend.llds).instruction)))) = string.
+:- func dump_instr(((mdbcomp.prim_data).proc_label), (bool.bool), ((ll_backend.llds).instr)) = string.
+:- func dump_intlist((list.list(int))) = string.
+:- func dump_label((maybe.maybe(((mdbcomp.prim_data).proc_label))), ((ll_backend.llds).label)) = string.
+:- func dump_label_pairs((maybe.maybe(((mdbcomp.prim_data).proc_label))), (list.list((pair.pair(((ll_backend.llds).label)))))) = string.
+:- func dump_labels((maybe.maybe(((mdbcomp.prim_data).proc_label))), (list.list(((ll_backend.llds).label)))) = string.
+:- func dump_labels_or_not_reached((maybe.maybe(((mdbcomp.prim_data).proc_label))), (list.list((maybe.maybe(((ll_backend.llds).label)))))) = string.
+:- func dump_layout_name(((ll_backend.layout).layout_name)) = string.
+:- func dump_livelist((maybe.maybe(((mdbcomp.prim_data).proc_label))), (list.list(((ll_backend.llds).lval)))) = string.
+:- func dump_livemap((maybe.maybe(((mdbcomp.prim_data).proc_label))), ((ll_backend.livemap).livemap)) = string.
+:- func dump_livemaplist((maybe.maybe(((mdbcomp.prim_data).proc_label))), (assoc_list.assoc_list(((ll_backend.llds).label), ((ll_backend.livemap).lvalset)))) = string.
+:- func dump_livevals((maybe.maybe(((mdbcomp.prim_data).proc_label))), ((ll_backend.livemap).lvalset)) = string.
+:- func dump_lval((maybe.maybe(((mdbcomp.prim_data).proc_label))), ((ll_backend.llds).lval)) = string.
+:- func dump_maybe_rvals((maybe.maybe(((mdbcomp.prim_data).proc_label))), (list.list((maybe.maybe(((ll_backend.llds).rval))))), int) = string.
+:- func dump_mem_ref((maybe.maybe(((mdbcomp.prim_data).proc_label))), ((ll_backend.llds).mem_ref)) = string.
+:- func dump_proclabel(((mdbcomp.prim_data).proc_label)) = string.
+:- func dump_reg(((ll_backend.llds).reg_type), int) = string.
+:- func dump_rtti_name(((backend_libs.rtti).ctor_rtti_name)) = string.
+:- func dump_rtti_type_class_instance_types((list.list(((backend_libs.rtti).tc_type)))) = string.
+:- func dump_rtti_type_class_name(((backend_libs.rtti).tc_name)) = string.
+:- func dump_rtti_type_ctor(((backend_libs.rtti).rtti_type_ctor)) = string.
+:- func dump_rval((maybe.maybe(((mdbcomp.prim_data).proc_label))), ((ll_backend.llds).rval)) = string.
+:- func dump_rvals((maybe.maybe(((mdbcomp.prim_data).proc_label))), (list.list(((ll_backend.llds).rval)))) = string.
+:- func dump_stack_incr_kind(((ll_backend.llds).stack_incr_kind)) = string.
+:- func dump_tc_rtti_name(((backend_libs.rtti).tc_rtti_name)) = string.
+:- func dump_unop(((backend_libs.builtin_ops).unary_op)) = string.
+:- pred maybe_dump_instrs((bool.bool), ((mdbcomp.prim_data).proc_label), (list.list(((ll_backend.llds).instruction))), (io.io), (io.io)).
+:- mode maybe_dump_instrs((builtin.in), (builtin.in), (builtin.in), (builtin.di), (builtin.uo)) is det.
+:- pred msg((bool.bool), int, string, (io.io), (io.io)).
+:- mode msg((builtin.in), (builtin.in), (builtin.in), (builtin.di), (builtin.uo)) is det.

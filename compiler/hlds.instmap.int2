@@ -1,0 +1,18 @@
+:- module (hlds.instmap).
+:- interface.
+:- import_module assoc_list.
+:- import_module list.
+:- import_module map.
+:- import_module set.
+:- import_module (check_hlds.mode_errors).
+:- import_module (check_hlds.mode_info).
+:- import_module (hlds.hlds_module).
+:- import_module (parse_tree.prog_data).
+:- type instmap.
+:- type instmap_delta.
+:- type overlay_how
+	--->	large_base 
+	;	large_overlay 
+	;	test_size .
+:- implementation.
+:- type instmap_delta == ((hlds.instmap).instmap).

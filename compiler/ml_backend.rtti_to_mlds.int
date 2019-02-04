@@ -1,0 +1,7 @@
+:- module (ml_backend.rtti_to_mlds).
+:- interface.
+:- import_module list.
+:- import_module (backend_libs.rtti).
+:- import_module (hlds.hlds_module).
+:- import_module (ml_backend.mlds).
+:- func rtti_data_list_to_mlds(((hlds.hlds_module).module_info), (list.list(((backend_libs.rtti).rtti_data)))) = ((ml_backend.mlds).mlds_defns).

@@ -1,0 +1,33 @@
+:- module ((transform_hlds.ctgc).livedata).
+:- interface.
+:- import_module list.
+:- import_module (hlds.hlds_goal).
+:- import_module (hlds.hlds_module).
+:- import_module (hlds.hlds_pred).
+:- import_module (parse_tree.prog_data).
+:- import_module ((transform_hlds.ctgc).structure_sharing).
+:- import_module (((transform_hlds.ctgc).structure_sharing).domain).
+:- type livedata.
+:- type nodes_are_not_live_result
+	--->	nodes_all_live 
+	;	nodes_are_live((list.list(((parse_tree.prog_data).datastruct)))).
+:- func livedata_add_liveness(((hlds.hlds_module).module_info), ((hlds.hlds_pred).proc_info), ((parse_tree.prog_data).live_datastructs), ((((transform_hlds.ctgc).structure_sharing).domain).sharing_as), (((transform_hlds.ctgc).livedata).livedata)) = (((transform_hlds.ctgc).livedata).livedata).
+:- func livedata_get_datastructs((((transform_hlds.ctgc).livedata).livedata)) = (list.list(((parse_tree.prog_data).datastruct))).
+:- func livedata_init = (((transform_hlds.ctgc).livedata).livedata).
+:- func livedata_init_as_top = (((transform_hlds.ctgc).livedata).livedata).
+:- func livedata_init_at_goal(((hlds.hlds_module).module_info), ((hlds.hlds_pred).proc_info), ((hlds.hlds_goal).hlds_goal_info), ((((transform_hlds.ctgc).structure_sharing).domain).sharing_as)) = (((transform_hlds.ctgc).livedata).livedata).
+:- func livedata_init_from_datastructs(((parse_tree.prog_data).live_datastructs)) = (((transform_hlds.ctgc).livedata).livedata).
+:- func livedata_init_from_vars(((parse_tree.prog_data).live_vars)) = (((transform_hlds.ctgc).livedata).livedata).
+:- pred livedata_is_bottom((((transform_hlds.ctgc).livedata).livedata)).
+:- mode livedata_is_bottom((builtin.in)) is semidet.
+:- pred livedata_is_top((((transform_hlds.ctgc).livedata).livedata)).
+:- mode livedata_is_top((builtin.in)) is semidet.
+:- func livedata_least_upper_bound(((hlds.hlds_module).module_info), ((hlds.hlds_pred).proc_info), (((transform_hlds.ctgc).livedata).livedata), (((transform_hlds.ctgc).livedata).livedata)) = (((transform_hlds.ctgc).livedata).livedata).
+:- func livedata_least_upper_bound_list(((hlds.hlds_module).module_info), ((hlds.hlds_pred).proc_info), (list.list((((transform_hlds.ctgc).livedata).livedata)))) = (((transform_hlds.ctgc).livedata).livedata).
+:- func livedata_project((list.list(((parse_tree.prog_data).prog_var))), (((transform_hlds.ctgc).livedata).livedata)) = (((transform_hlds.ctgc).livedata).livedata).
+:- pred livedata_subsumes_datastruct(((hlds.hlds_module).module_info), ((hlds.hlds_pred).proc_info), (((transform_hlds.ctgc).livedata).livedata), ((parse_tree.prog_data).datastruct)).
+:- mode livedata_subsumes_datastruct((builtin.in), (builtin.in), (builtin.in), (builtin.in)) is semidet.
+:- pred livedata_subsumes_prog_var((((transform_hlds.ctgc).livedata).livedata), ((parse_tree.prog_data).prog_var)).
+:- mode livedata_subsumes_prog_var((builtin.in), (builtin.in)) is semidet.
+:- pred nodes_are_not_live(((hlds.hlds_module).module_info), ((hlds.hlds_pred).proc_info), (list.list(((parse_tree.prog_data).datastruct))), (((transform_hlds.ctgc).livedata).livedata), (((transform_hlds.ctgc).livedata).nodes_are_not_live_result)).
+:- mode nodes_are_not_live((builtin.in), (builtin.in), (builtin.in), (builtin.in), (builtin.out)) is det.

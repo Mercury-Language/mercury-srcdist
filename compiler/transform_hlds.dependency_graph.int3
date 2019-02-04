@@ -1,0 +1,3 @@
+:- module (transform_hlds.dependency_graph).
+:- interface.
+:- type include_imported.

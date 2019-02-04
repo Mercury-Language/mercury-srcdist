@@ -1,0 +1,3 @@
+:- module (libs.timestamp).
+:- interface.
+:- type timestamp.

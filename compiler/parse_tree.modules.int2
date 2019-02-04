@@ -1,0 +1,21 @@
+:- module (parse_tree.modules).
+:- interface.
+:- import_module assoc_list.
+:- import_module bool.
+:- import_module digraph.
+:- import_module io.
+:- import_module list.
+:- import_module maybe.
+:- import_module (libs.file_util).
+:- import_module (libs.globals).
+:- import_module (libs.timestamp).
+:- import_module (mdbcomp.prim_data).
+:- import_module (parse_tree.error_util).
+:- import_module (parse_tree.module_imports).
+:- import_module (parse_tree.prog_data).
+:- import_module (parse_tree.prog_io).
+:- import_module (parse_tree.prog_item).
+:- import_module (parse_tree.read_modules).
+:- type lookup_module_imports == ((func ((mdbcomp.prim_data).module_name)) = ((parse_tree.module_imports).module_imports)).
+:- type module_list == (assoc_list.assoc_list(((mdbcomp.prim_data).module_name), (list.list(((parse_tree.prog_item).item))))).
+:- mode (lookup_module_imports) == builtin.in((func((builtin.in)) = (builtin.out) is det)).

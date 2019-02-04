@@ -1,0 +1,24 @@
+:- module (parse_tree.prog_io_util).
+:- interface.
+:- import_module list.
+:- import_module map.
+:- import_module maybe.
+:- import_module pair.
+:- import_module term.
+:- import_module varset.
+:- import_module (mdbcomp.prim_data).
+:- import_module (mdbcomp.prim_data).
+:- import_module (parse_tree.error_util).
+:- import_module (parse_tree.prog_data).
+:- type allow_constrained_inst_var.
+:- type maybe_functor.
+:- type var2pvar.
+:- type var2tvar.
+:- type maybe_functor(T).
+:- type maybe_pred_or_func(T).
+:- type parser(T).
+:- type maybe1(T1).
+:- type maybe2(T1, T2).
+:- type maybe3(T1, T2, T3).
+:- type maybe4(T1, T2, T3, T4).
+:- mode (parser) == (pred(in, out) is det).

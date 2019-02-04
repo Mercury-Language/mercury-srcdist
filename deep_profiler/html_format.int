@@ -1,0 +1,73 @@
+:- module html_format.
+:- interface.
+:- import_module bool.
+:- import_module display.
+:- import_module list.
+:- import_module measurements.
+:- import_module profile.
+:- import_module query.
+:- import_module top_procs.
+:- import_module unit.
+:- type header_wrap_func == (func(string, (query.order_criteria)) = string).
+:- type id_fields
+	--->	source_proc 
+	;	rank_module 
+	;	rank_proc 
+	;	proc .
+:- type one_id
+	--->	one_id .
+:- type one_id_line == (top_procs.line_group((html_format.one_id), (unit.unit))).
+:- type one_id_line_group == (top_procs.line_group((html_format.one_id), (html_format.one_id_sub_lines))).
+:- type one_id_sub_lines == (html_format.sub_lines((html_format.one_id))).
+:- type one_two_id_line_group == (top_procs.line_group((html_format.one_id), (html_format.two_id_sub_lines))).
+:- type totals_disposition
+	--->	totals_meaningful 
+	;	totals_not_meaningful .
+:- type two_id
+	--->	two_id .
+:- type two_id_line == (top_procs.line_group((html_format.two_id), (unit.unit))).
+:- type two_id_line_group == (top_procs.line_group((html_format.two_id), (html_format.two_id_sub_lines))).
+:- type two_id_sub_lines == (html_format.sub_lines((html_format.two_id))).
+:- type sub_lines(T)
+	--->	sub_lines((html_format.sub_line_type) :: T, (html_format.sub_line_list) :: (list.list((top_procs.line_group(T, (unit.unit)))))).
+:- func add_context(string, (top_procs.line_group((html_format.one_id), LL))) = (top_procs.line_group((html_format.two_id), LL)).
+:- func add_ranks((list.list((top_procs.line_group((html_format.one_id), LL))))) = (list.list((top_procs.line_group((html_format.two_id), LL)))).
+:- func add_self_context((top_procs.line_group((html_format.one_id), LL))) = (top_procs.line_group((html_format.two_id), LL)).
+:- pred call_site_context((profile.deep), (profile.call_site_static_ptr), string, int).
+:- mode call_site_context((builtin.in), (builtin.in), (builtin.out), (builtin.out)) is det.
+:- func clique_ptr_to_html_ref((query.preferences), (profile.deep), string, (profile.clique_ptr)) = string.
+:- func cost_criteria_to_description((query.cost_kind), (query.include_descendants), (query.measurement_scope)) = string.
+:- func criteria_to_description((query.order_criteria)) = string.
+:- func deep_cmd_pref_to_url((query.preferences), (profile.deep), (query.cmd)) = string.
+:- func escape_break_html_string(string) = string.
+:- func escape_html_string(string) = string.
+:- func fields_header((query.preferences), (html_format.id_fields), (html_format.totals_disposition), (html_format.header_wrap_func)) = string.
+:- func header_row(string, (query.preferences), (html_format.id_fields), (html_format.totals_disposition)) = string.
+:- pred htmlize_display((profile.deep), (display.display), string).
+:- mode htmlize_display((builtin.in), (builtin.in), (builtin.out)) is det.
+:- func line_to_one_id_subline_group((top_procs.line_group(FL, (unit.unit)))) = (top_procs.line_group(FL, (html_format.one_id_sub_lines))).
+:- func line_to_two_id_subline_group((top_procs.line_group(FL, (unit.unit)))) = (top_procs.line_group(FL, (html_format.two_id_sub_lines))).
+:- pred lookup_ticks_per_sec((profile.profile_stats), int, (bool.bool)).
+:- mode lookup_ticks_per_sec((builtin.in), (builtin.out), (builtin.out)) is det.
+:- func module_name_to_html_ref((query.preferences), (profile.deep), string) = string.
+:- func one_id_line_group_to_html((query.preferences), (profile.deep), (html_format.totals_disposition), (html_format.one_id_line_group)) = string.
+:- func one_id_line_to_html((query.preferences), (profile.deep), (html_format.totals_disposition), (html_format.one_id_line)) = string.
+:- func own_and_desc_to_html((measurements.own_prof_info), (measurements.inherit_prof_info), (query.preferences), (profile.deep), (html_format.totals_disposition)) = string.
+:- func page_banner((query.cmd), (query.preferences)) = string.
+:- func page_footer((query.cmd), (query.preferences), (profile.deep)) = string.
+:- func plural(int) = string.
+:- pred proc_dynamic_context((profile.deep), (profile.proc_dynamic_ptr), string, int).
+:- mode proc_dynamic_context((builtin.in), (builtin.in), (builtin.out), (builtin.out)) is det.
+:- func proc_dynamic_name((profile.deep), (profile.proc_dynamic_ptr)) = string.
+:- pred proc_static_context((profile.deep), (profile.proc_static_ptr), string, int).
+:- mode proc_static_context((builtin.in), (builtin.in), (builtin.out), (builtin.out)) is det.
+:- func proc_static_name((profile.deep), (profile.proc_static_ptr)) = string.
+:- func proc_static_to_html_ref((query.preferences), (profile.deep), (profile.proc_static_ptr)) = string.
+:- pred proc_static_to_line_group_info((query.preferences), (profile.deep), (profile.proc_static_ptr), string, int, string, string).
+:- mode proc_static_to_line_group_info((builtin.in), (builtin.in), (builtin.in), (builtin.out), (builtin.out), (builtin.out), (builtin.out)) is det.
+:- func separator_row((query.preferences), (html_format.id_fields), (html_format.totals_disposition)) = string.
+:- func table_end((query.preferences)) = string.
+:- func table_start((query.preferences)) = string.
+:- func toggle_cost_criteria_in_top_procs_cmd((query.preferences), (profile.deep), (query.display_limit), (query.cost_kind), (query.include_descendants), (query.measurement_scope)) = string.
+:- func two_id_line_group_to_html((query.preferences), (profile.deep), (html_format.totals_disposition), (html_format.two_id_line_group)) = string.
+:- func two_id_line_to_html((query.preferences), (profile.deep), (html_format.totals_disposition), (html_format.two_id_line)) = string.

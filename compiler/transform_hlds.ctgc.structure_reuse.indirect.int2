@@ -1,0 +1,9 @@
+:- module (((transform_hlds.ctgc).structure_reuse).indirect).
+:- interface.
+:- import_module set.
+:- import_module (hlds.hlds_module).
+:- import_module (hlds.hlds_pred).
+:- import_module (((transform_hlds.ctgc).structure_reuse).domain).
+:- import_module (((transform_hlds.ctgc).structure_sharing).domain).
+:- type sr_request
+	--->	sr_request(((((transform_hlds.ctgc).structure_reuse).indirect).srreq_ppid) :: ((hlds.hlds_pred).pred_proc_id), ((((transform_hlds.ctgc).structure_reuse).indirect).srreq_args) :: ((((transform_hlds.ctgc).structure_reuse).domain).no_clobber_args)).

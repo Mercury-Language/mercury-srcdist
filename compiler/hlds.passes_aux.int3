@@ -1,0 +1,16 @@
+:- module (hlds.passes_aux).
+:- interface.
+:- import_module io.
+:- import_module list.
+:- import_module maybe.
+:- import_module univ.
+:- import_module (hlds.hlds_module).
+:- import_module (hlds.hlds_pred).
+:- import_module (mdbcomp.prim_data).
+:- import_module (parse_tree.error_util).
+:- import_module (parse_tree.prog_data).
+:- type pred_error_task.
+:- type task.
+:- inst (pred_error_task) == (pred(in, in, out, in, out, in, out, di, uo) is det).
+:- inst (task) == bound(update_module((pred(in, in, in, in, out, in, out) is det)) ; update_module_cookie((pred(in, in, in, out, in, out, in, out) is det), ground) ; update_module_io((pred(in, in, in, out, in, out, di, uo) is det)) ; update_pred_error((pred(in, in, out, in, out, in, out, di, uo) is det)) ; update_proc((pred(in, in, out) is det)) ; update_proc_error((pred(in, in, in, out, in, out, out, out, di, uo) is det)) ; update_proc_io((pred(in, in, in, in, out, di, uo) is det)) ; update_proc_predid((pred(in, in, in, out) is det)) ; update_proc_predprocid((pred(in, in, in, in, out) is det))).
+:- mode (task) == (((hlds.passes_aux).task) >> ((hlds.passes_aux).task)).

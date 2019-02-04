@@ -1,0 +1,23 @@
+:- module (analysis.file).
+:- interface.
+:- pred empty_request_file((analysis.analysis_info), ((mdbcomp.prim_data).module_name), (io.io), (io.io)).
+:- mode empty_request_file((builtin.in), (builtin.in), (builtin.di), (builtin.uo)) is det.
+:- pred read_module_analysis_requests((analysis.analysis_info), ((mdbcomp.prim_data).module_name), (analysis.module_analysis_map((analysis.analysis_request))), (io.io), (io.io)).
+:- mode read_module_analysis_requests((builtin.in), (builtin.in), (builtin.out), (builtin.di), (builtin.uo)) is det.
+:- pred read_module_analysis_results((analysis.analysis_info), ((mdbcomp.prim_data).module_name), (analysis.module_analysis_map((analysis.some_analysis_result))), (io.io), (io.io)).
+:- mode read_module_analysis_results((builtin.in), (builtin.in), (builtin.out), (builtin.di), (builtin.uo)) is det.
+:- pred read_module_imdg((analysis.analysis_info), ((mdbcomp.prim_data).module_name), (analysis.module_analysis_map((analysis.imdg_arc))), (io.io), (io.io)).
+:- mode read_module_imdg((builtin.in), (builtin.in), (builtin.out), (builtin.di), (builtin.uo)) is det.
+:- pred read_module_overall_status(Compiler, ((mdbcomp.prim_data).module_name), (analysis.analysis_status), (io.io), (io.io)) <= (analysis.compiler(Compiler)).
+:- mode read_module_overall_status((builtin.in), (builtin.in), (builtin.out), (builtin.di), (builtin.uo)) is det.
+:- pred write_module_analysis_requests((analysis.analysis_info), ((mdbcomp.prim_data).module_name), (analysis.module_analysis_map((analysis.analysis_request))), (io.io), (io.io)).
+:- mode write_module_analysis_requests((builtin.in), (builtin.in), (builtin.in), (builtin.di), (builtin.uo)) is det.
+:- pred write_module_analysis_results((analysis.analysis_info), ((mdbcomp.prim_data).module_name), (analysis.module_analysis_map((analysis.some_analysis_result))), (io.io), (io.io)).
+:- mode write_module_analysis_results((builtin.in), (builtin.in), (builtin.in), (builtin.di), (builtin.uo)) is det.
+:- pred write_module_imdg((analysis.analysis_info), ((mdbcomp.prim_data).module_name), (analysis.module_analysis_map((analysis.imdg_arc))), (io.io), (io.io)).
+:- mode write_module_imdg((builtin.in), (builtin.in), (builtin.in), (builtin.di), (builtin.uo)) is det.
+:- pred write_module_overall_status((analysis.analysis_info), ((mdbcomp.prim_data).module_name), (analysis.analysis_status), (io.io), (io.io)).
+:- mode write_module_overall_status((builtin.in), (builtin.in), (builtin.in), (builtin.di), (builtin.uo)) is det.
+:- implementation.
+:- type dummy_answer
+	--->	dummy_answer .

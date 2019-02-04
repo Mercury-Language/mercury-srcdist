@@ -1,0 +1,8 @@
+:- module (transform_hlds.lambda).
+:- interface.
+:- import_module (hlds.hlds_module).
+:- import_module (hlds.hlds_pred).
+:- pred lambda_process_module(((hlds.hlds_module).module_info), ((hlds.hlds_module).module_info)).
+:- mode lambda_process_module((builtin.in), (builtin.out)) is det.
+:- pred lambda_process_pred(((hlds.hlds_pred).pred_id), ((hlds.hlds_module).module_info), ((hlds.hlds_module).module_info)).
+:- mode lambda_process_pred((builtin.in), (builtin.in), (builtin.out)) is det.

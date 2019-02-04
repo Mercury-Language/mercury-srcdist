@@ -1,0 +1,25 @@
+:- module (hlds.hlds_out).
+:- interface.
+:- import_module bool.
+:- import_module io.
+:- import_module list.
+:- import_module term.
+:- import_module (hlds.hlds_args).
+:- import_module (hlds.hlds_clauses).
+:- import_module (hlds.hlds_data).
+:- import_module (hlds.hlds_goal).
+:- import_module (hlds.hlds_module).
+:- import_module (hlds.hlds_pred).
+:- import_module (hlds.instmap).
+:- import_module (mdbcomp.prim_data).
+:- import_module (parse_tree.error_util).
+:- import_module (parse_tree.prog_data).
+:- type is_first
+	--->	is_first 
+	;	is_not_first .
+:- type is_last
+	--->	is_last 
+	;	is_not_last .
+:- type maybe_vartypes
+	--->	varset_vartypes(((parse_tree.prog_data).tvarset), ((parse_tree.prog_data).vartypes))
+	;	no_varset_vartypes .

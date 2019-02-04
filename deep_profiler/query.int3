@@ -1,0 +1,26 @@
+:- module query.
+:- interface.
+:- type alloc_fields.
+:- type box.
+:- type caller_groups.
+:- type callseqs_fields.
+:- type cmd.
+:- type cmd_pref.
+:- type colour_scheme.
+:- type contour.
+:- type cost_kind.
+:- type display_limit.
+:- type fields.
+:- type inactive_items.
+:- type inactive_status.
+:- type include_descendants.
+:- type measurement_scope.
+:- type memory_fields.
+:- type order_criteria.
+:- type port_fields.
+:- type preferences.
+:- type preferences_indication.
+:- type resp.
+:- type summarize.
+:- type time_fields.
+:- type time_format.

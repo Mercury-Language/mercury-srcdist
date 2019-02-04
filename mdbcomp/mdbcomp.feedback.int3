@@ -1,0 +1,9 @@
+:- module (mdbcomp.feedback).
+:- interface.
+:- type feedback_data.
+:- type feedback_info.
+:- type feedback_read_error.
+:- type feedback_type.
+:- type feedback_write_result.
+:- type stat_measure.
+:- type feedback_read_result(T).

@@ -1,0 +1,65 @@
+:- module (check_hlds.mode_util).
+:- interface.
+:- import_module hlds.
+:- import_module list.
+:- import_module parse_tree.
+:- import_module (hlds.hlds_goal).
+:- import_module (hlds.hlds_module).
+:- import_module (hlds.hlds_pred).
+:- import_module (hlds.instmap).
+:- import_module (parse_tree.prog_data).
+:- type recompute_atomic_instmap_deltas
+	--->	recompute_atomic_instmap_deltas 
+	;	do_not_recompute_atomic_instmap_deltas .
+:- pred constructors_to_bound_any_insts(((hlds.hlds_module).module_info), ((parse_tree.prog_data).uniqueness), (list.list(((parse_tree.prog_data).constructor))), (list.list(((parse_tree.prog_data).bound_inst)))).
+:- mode constructors_to_bound_any_insts((builtin.in), (builtin.in), (builtin.in), (builtin.out)) is det.
+:- pred constructors_to_bound_insts(((hlds.hlds_module).module_info), ((parse_tree.prog_data).uniqueness), (list.list(((parse_tree.prog_data).constructor))), (list.list(((parse_tree.prog_data).bound_inst)))).
+:- mode constructors_to_bound_insts((builtin.in), (builtin.in), (builtin.in), (builtin.out)) is det.
+:- pred fixup_switch_var(((parse_tree.prog_data).prog_var), ((hlds.instmap).instmap), ((hlds.instmap).instmap), ((hlds.hlds_goal).hlds_goal), ((hlds.hlds_goal).hlds_goal)).
+:- mode fixup_switch_var((builtin.in), (builtin.in), (builtin.in), (builtin.in), (builtin.out)) is det.
+:- pred get_arg_lives(((hlds.hlds_module).module_info), (list.list(((parse_tree.prog_data).mer_mode))), (list.list(((parse_tree.prog_data).is_live)))).
+:- mode get_arg_lives((builtin.in), (builtin.in), (builtin.out)) is det.
+:- pred inst_lookup(((hlds.hlds_module).module_info), ((parse_tree.prog_data).inst_name), ((parse_tree.prog_data).mer_inst)).
+:- mode inst_lookup((builtin.in), (builtin.in), (builtin.out)) is det.
+:- func mode_get_final_inst(((hlds.hlds_module).module_info), ((parse_tree.prog_data).mer_mode)) = ((parse_tree.prog_data).mer_inst).
+:- func mode_get_initial_inst(((hlds.hlds_module).module_info), ((parse_tree.prog_data).mer_mode)) = ((parse_tree.prog_data).mer_inst).
+:- pred mode_get_insts(((hlds.hlds_module).module_info), ((parse_tree.prog_data).mer_mode), ((parse_tree.prog_data).mer_inst), ((parse_tree.prog_data).mer_inst)).
+:- mode mode_get_insts((builtin.in), (builtin.in), (builtin.out), (builtin.out)) is det.
+:- pred mode_get_insts_semidet(((hlds.hlds_module).module_info), ((parse_tree.prog_data).mer_mode), ((parse_tree.prog_data).mer_inst), ((parse_tree.prog_data).mer_inst)).
+:- mode mode_get_insts_semidet((builtin.in), (builtin.in), (builtin.out), (builtin.out)) is semidet.
+:- pred mode_is_fully_input(((hlds.hlds_module).module_info), ((parse_tree.prog_data).mer_mode)).
+:- mode mode_is_fully_input((builtin.in), (builtin.in)) is semidet.
+:- pred mode_is_fully_output(((hlds.hlds_module).module_info), ((parse_tree.prog_data).mer_mode)).
+:- mode mode_is_fully_output((builtin.in), (builtin.in)) is semidet.
+:- pred mode_is_input(((hlds.hlds_module).module_info), ((parse_tree.prog_data).mer_mode)).
+:- mode mode_is_input((builtin.in), (builtin.in)) is semidet.
+:- pred mode_is_output(((hlds.hlds_module).module_info), ((parse_tree.prog_data).mer_mode)).
+:- mode mode_is_output((builtin.in), (builtin.in)) is semidet.
+:- pred mode_is_undefined(((hlds.hlds_module).module_info), ((parse_tree.prog_data).mer_mode)).
+:- mode mode_is_undefined((builtin.in), (builtin.in)) is semidet.
+:- pred mode_is_unused(((hlds.hlds_module).module_info), ((parse_tree.prog_data).mer_mode)).
+:- mode mode_is_unused((builtin.in), (builtin.in)) is semidet.
+:- pred mode_list_get_final_insts(((hlds.hlds_module).module_info), (list.list(((parse_tree.prog_data).mer_mode))), (list.list(((parse_tree.prog_data).mer_inst)))).
+:- mode mode_list_get_final_insts((builtin.in), (builtin.in), (builtin.out)) is det.
+:- pred mode_list_get_initial_insts(((hlds.hlds_module).module_info), (list.list(((parse_tree.prog_data).mer_mode))), (list.list(((parse_tree.prog_data).mer_inst)))).
+:- mode mode_list_get_initial_insts((builtin.in), (builtin.in), (builtin.out)) is det.
+:- pred mode_to_arg_mode(((hlds.hlds_module).module_info), ((parse_tree.prog_data).mer_mode), ((parse_tree.prog_data).mer_type), ((hlds.hlds_pred).arg_mode)).
+:- mode mode_to_arg_mode((builtin.in), (builtin.in), (builtin.in), (builtin.out)) is det.
+:- pred modes_to_arg_modes(((hlds.hlds_module).module_info), (list.list(((parse_tree.prog_data).mer_mode))), (list.list(((parse_tree.prog_data).mer_type))), (list.list(((hlds.hlds_pred).arg_mode)))).
+:- mode modes_to_arg_modes((builtin.in), (builtin.in), (builtin.in), (builtin.out)) is det.
+:- pred modes_to_uni_modes(((hlds.hlds_module).module_info), (list.list(((parse_tree.prog_data).mer_mode))), (list.list(((parse_tree.prog_data).mer_mode))), (list.list(((hlds.hlds_goal).uni_mode)))).
+:- mode modes_to_uni_modes((builtin.in), (builtin.in), (builtin.in), (builtin.out)) is det.
+:- pred normalise_inst(((hlds.hlds_module).module_info), ((parse_tree.prog_data).mer_type), ((parse_tree.prog_data).mer_inst), ((parse_tree.prog_data).mer_inst)).
+:- mode normalise_inst((builtin.in), (builtin.in), (builtin.in), (builtin.out)) is det.
+:- pred normalise_insts(((hlds.hlds_module).module_info), (list.list(((parse_tree.prog_data).mer_type))), (list.list(((parse_tree.prog_data).mer_inst))), (list.list(((parse_tree.prog_data).mer_inst)))).
+:- mode normalise_insts((builtin.in), (builtin.in), (builtin.in), (builtin.out)) is det.
+:- pred partition_args(((hlds.hlds_module).module_info), (list.list(((parse_tree.prog_data).mer_mode))), (list.list(T)), (list.list(T)), (list.list(T))).
+:- mode partition_args((builtin.in), (builtin.in), (builtin.in), (builtin.out), (builtin.out)) is det.
+:- pred propagate_types_into_inst_list(((hlds.hlds_module).module_info), ((parse_tree.prog_data).tsubst), (list.list(((parse_tree.prog_data).mer_type))), (list.list(((parse_tree.prog_data).mer_inst))), (list.list(((parse_tree.prog_data).mer_inst)))).
+:- mode propagate_types_into_inst_list((builtin.in), (builtin.in), (builtin.in), (builtin.in), (builtin.out)) is det.
+:- pred propagate_types_into_mode_list(((hlds.hlds_module).module_info), (list.list(((parse_tree.prog_data).mer_type))), (list.list(((parse_tree.prog_data).mer_mode))), (list.list(((parse_tree.prog_data).mer_mode)))).
+:- mode propagate_types_into_mode_list((builtin.in), (builtin.in), (builtin.in), (builtin.out)) is det.
+:- pred recompute_instmap_delta(((check_hlds.mode_util).recompute_atomic_instmap_deltas), ((hlds.hlds_goal).hlds_goal), ((hlds.hlds_goal).hlds_goal), ((parse_tree.prog_data).vartypes), ((parse_tree.prog_data).inst_varset), ((hlds.instmap).instmap), ((hlds.hlds_module).module_info), ((hlds.hlds_module).module_info)).
+:- mode recompute_instmap_delta((builtin.in), (builtin.in), (builtin.out), (builtin.in), (builtin.in), (builtin.in), (builtin.in), (builtin.out)) is det.
+:- pred recompute_instmap_delta_proc(((check_hlds.mode_util).recompute_atomic_instmap_deltas), ((hlds.hlds_pred).proc_info), ((hlds.hlds_pred).proc_info), ((hlds.hlds_module).module_info), ((hlds.hlds_module).module_info)).
+:- mode recompute_instmap_delta_proc((builtin.in), (builtin.in), (builtin.out), (builtin.in), (builtin.out)) is det.

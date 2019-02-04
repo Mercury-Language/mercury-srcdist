@@ -1,0 +1,13 @@
+:- module exclude.
+:- interface.
+:- import_module io.
+:- import_module maybe.
+:- import_module profile.
+:- type exclude_file.
+:- func apply_contour_exclusion((profile.deep), (exclude.exclude_file), (profile.call_site_dynamic_ptr)) = (profile.call_site_dynamic_ptr).
+:- pred read_exclude_file(string, (profile.deep), (maybe.maybe_error((exclude.exclude_file))), (io.io), (io.io)).
+:- mode read_exclude_file((builtin.in), (builtin.in), (builtin.out), (builtin.di), (builtin.uo)) is det.
+:- implementation.
+:- import_module set.
+:- type exclude_file == (set.set((exclude.exclude_spec))).
+:- type exclude_spec.

@@ -1,0 +1,73 @@
+:- module (check_hlds.abstract_mode_constraints).
+:- interface.
+:- import_module assoc_list.
+:- import_module bool.
+:- import_module hlds.
+:- import_module io.
+:- import_module list.
+:- import_module map.
+:- import_module multi_map.
+:- import_module pair.
+:- import_module parse_tree.
+:- import_module set.
+:- import_module term.
+:- import_module varset.
+:- import_module (hlds.hlds_pred).
+:- import_module (parse_tree.prog_data).
+:- type constraint_and_annotation == (pair.pair(((check_hlds.abstract_mode_constraints).constraint_formula), ((check_hlds.abstract_mode_constraints).constraint_annotation))).
+:- type constraint_annotation
+	--->	constraint_annotation(((check_hlds.abstract_mode_constraints).context) :: ((parse_tree.prog_data).prog_context)).
+:- type constraint_formula
+	--->	atomic_constraint(((check_hlds.abstract_mode_constraints).var_constraint))
+	;	disj(((check_hlds.abstract_mode_constraints).constraint_formulae))
+	;	conj(((check_hlds.abstract_mode_constraints).constraint_formulae)).
+:- type constraint_formulae == (list.list(((check_hlds.abstract_mode_constraints).constraint_formula))).
+:- type mc_bindings == (map.map(((check_hlds.abstract_mode_constraints).mc_var), (bool.bool))).
+:- type mc_type.
+:- type mc_var == (term.var(((check_hlds.abstract_mode_constraints).mc_type))).
+:- type mc_varset == (varset.varset(((check_hlds.abstract_mode_constraints).mc_type))).
+:- type pred_p_c_constraints
+	--->	pred_constraints(((check_hlds.abstract_mode_constraints).proc_constraints) :: (multi_map.multi_map(((hlds.hlds_pred).proc_id), ((check_hlds.abstract_mode_constraints).constraint_and_annotation))), ((check_hlds.abstract_mode_constraints).pred_constraints) :: (assoc_list.assoc_list(((check_hlds.abstract_mode_constraints).constraint_formula), ((check_hlds.abstract_mode_constraints).constraint_annotation))), ((check_hlds.abstract_mode_constraints).mode_infer_callees) :: (set.set(((hlds.hlds_pred).pred_id)))).
+:- type var_constraint == ((check_hlds.abstract_mode_constraints).var_constraint(((check_hlds.abstract_mode_constraints).mc_type))).
+:- type var_constraint(T)
+	--->	equiv_bool((term.var(T)), (bool.bool))
+	;	equivalent((list.list((term.var(T)))))
+	;	implies((term.var(T)), (term.var(T)))
+	;	equiv_disj((term.var(T)), (list.list((term.var(T)))))
+	;	at_most_one((list.list((term.var(T)))))
+	;	exactly_one((list.list((term.var(T))))).
+:- pred add_constraint(((parse_tree.prog_data).prog_context), ((check_hlds.abstract_mode_constraints).constraint_formula), ((check_hlds.abstract_mode_constraints).pred_p_c_constraints), ((check_hlds.abstract_mode_constraints).pred_p_c_constraints)).
+:- mode add_constraint((builtin.in), (builtin.in), (builtin.in), (builtin.out)) is det.
+:- pred add_mode_infer_callee(((hlds.hlds_pred).pred_id), ((check_hlds.abstract_mode_constraints).pred_p_c_constraints), ((check_hlds.abstract_mode_constraints).pred_p_c_constraints)).
+:- mode add_mode_infer_callee((builtin.in), (builtin.in), (builtin.out)) is det.
+:- pred add_proc_specific_constraint(((parse_tree.prog_data).prog_context), ((hlds.hlds_pred).proc_id), ((check_hlds.abstract_mode_constraints).constraint_formula), ((check_hlds.abstract_mode_constraints).pred_p_c_constraints), ((check_hlds.abstract_mode_constraints).pred_p_c_constraints)).
+:- mode add_proc_specific_constraint((builtin.in), (builtin.in), (builtin.in), (builtin.in), (builtin.out)) is det.
+:- pred at_most_one(((parse_tree.prog_data).prog_context), (list.list(((check_hlds.abstract_mode_constraints).mc_var))), ((check_hlds.abstract_mode_constraints).pred_p_c_constraints), ((check_hlds.abstract_mode_constraints).pred_p_c_constraints)).
+:- mode at_most_one((builtin.in), (builtin.in), (builtin.in), (builtin.out)) is det.
+:- pred dump_constraints_and_annotations(((check_hlds.abstract_mode_constraints).mc_varset), (assoc_list.assoc_list(((check_hlds.abstract_mode_constraints).constraint_formula), ((check_hlds.abstract_mode_constraints).constraint_annotation))), (io.io), (io.io)).
+:- mode dump_constraints_and_annotations((builtin.in), (builtin.in), (builtin.di), (builtin.uo)) is det.
+:- pred equiv_disj(((parse_tree.prog_data).prog_context), ((check_hlds.abstract_mode_constraints).mc_var), (list.list(((check_hlds.abstract_mode_constraints).mc_var))), ((check_hlds.abstract_mode_constraints).pred_p_c_constraints), ((check_hlds.abstract_mode_constraints).pred_p_c_constraints)).
+:- mode equiv_disj((builtin.in), (builtin.in), (builtin.in), (builtin.in), (builtin.out)) is det.
+:- pred equiv_no(((parse_tree.prog_data).prog_context), ((check_hlds.abstract_mode_constraints).mc_var), ((check_hlds.abstract_mode_constraints).pred_p_c_constraints), ((check_hlds.abstract_mode_constraints).pred_p_c_constraints)).
+:- mode equiv_no((builtin.in), (builtin.in), (builtin.in), (builtin.out)) is det.
+:- pred equivalent(((parse_tree.prog_data).prog_context), (list.list(((check_hlds.abstract_mode_constraints).mc_var))), ((check_hlds.abstract_mode_constraints).pred_p_c_constraints), ((check_hlds.abstract_mode_constraints).pred_p_c_constraints)).
+:- mode equivalent((builtin.in), (builtin.in), (builtin.in), (builtin.out)) is det.
+:- pred exactly_one(((parse_tree.prog_data).prog_context), (list.list(((check_hlds.abstract_mode_constraints).mc_var))), ((check_hlds.abstract_mode_constraints).pred_p_c_constraints), ((check_hlds.abstract_mode_constraints).pred_p_c_constraints)).
+:- mode exactly_one((builtin.in), (builtin.in), (builtin.in), (builtin.out)) is det.
+:- func init = ((check_hlds.abstract_mode_constraints).pred_p_c_constraints).
+:- pred not_both(((parse_tree.prog_data).prog_context), ((check_hlds.abstract_mode_constraints).mc_var), ((check_hlds.abstract_mode_constraints).mc_var), ((check_hlds.abstract_mode_constraints).pred_p_c_constraints), ((check_hlds.abstract_mode_constraints).pred_p_c_constraints)).
+:- mode not_both((builtin.in), (builtin.in), (builtin.in), (builtin.in), (builtin.out)) is det.
+:- func pred_constraints_for_proc_to_formulae(((hlds.hlds_pred).proc_id), ((check_hlds.abstract_mode_constraints).pred_p_c_constraints)) = ((check_hlds.abstract_mode_constraints).constraint_formulae).
+:- func pred_constraints_for_proc_to_formulae_and_annotations(((hlds.hlds_pred).proc_id), ((check_hlds.abstract_mode_constraints).pred_p_c_constraints)) = (assoc_list.assoc_list(((check_hlds.abstract_mode_constraints).constraint_formula), ((check_hlds.abstract_mode_constraints).constraint_annotation))).
+:- func pred_constraints_to_formulae(((check_hlds.abstract_mode_constraints).pred_p_c_constraints)) = ((check_hlds.abstract_mode_constraints).constraint_formulae).
+:- func pred_constraints_to_formulae_and_annotations(((check_hlds.abstract_mode_constraints).pred_p_c_constraints)) = (assoc_list.assoc_list(((check_hlds.abstract_mode_constraints).constraint_formula), ((check_hlds.abstract_mode_constraints).constraint_annotation))).
+:- pred pretty_print_constraints(((check_hlds.abstract_mode_constraints).mc_varset), ((check_hlds.abstract_mode_constraints).constraint_formulae), (io.io), (io.io)).
+:- mode pretty_print_constraints((builtin.in), (builtin.in), (builtin.di), (builtin.uo)) is det.
+:- pred pretty_print_solutions(((check_hlds.abstract_mode_constraints).mc_varset), (list.list(((check_hlds.abstract_mode_constraints).mc_bindings))), (io.io), (io.io)).
+:- mode pretty_print_solutions((builtin.in), (builtin.in), (builtin.di), (builtin.uo)) is det.
+:- func proc_constraints_to_formulae_and_annotations(((hlds.hlds_pred).proc_id), ((check_hlds.abstract_mode_constraints).pred_p_c_constraints)) = (assoc_list.assoc_list(((check_hlds.abstract_mode_constraints).constraint_formula), ((check_hlds.abstract_mode_constraints).constraint_annotation))).
+:- pred xor(((parse_tree.prog_data).prog_context), ((check_hlds.abstract_mode_constraints).mc_var), ((check_hlds.abstract_mode_constraints).mc_var), ((check_hlds.abstract_mode_constraints).pred_p_c_constraints), ((check_hlds.abstract_mode_constraints).pred_p_c_constraints)).
+:- mode xor((builtin.in), (builtin.in), (builtin.in), (builtin.in), (builtin.out)) is det.
+:- implementation.
+:- type mc_type
+	--->	mc_type .

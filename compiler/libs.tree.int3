@@ -1,0 +1,3 @@
+:- module (libs.tree).
+:- interface.
+:- type tree(T).

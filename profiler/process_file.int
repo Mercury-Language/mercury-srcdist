@@ -1,0 +1,7 @@
+:- module process_file.
+:- interface.
+:- import_module digraph.
+:- import_module io.
+:- import_module prof_info.
+:- pred process_profiling_data_files((prof_info.prof), (digraph.digraph(string)), (io.io), (io.io)).
+:- mode process_profiling_data_files((builtin.out), (builtin.out), (builtin.di), (builtin.uo)) is det.

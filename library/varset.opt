@@ -1,0 +1,239 @@
+:- module varset.
+:- use_module assoc_list, bool, builtin, int, list, map, maybe, pair, private_builtin, require, set, string, term.
+:- type (varset.varset(T))
+	--->	varset((varset.var_supply) :: (term.var_supply(T)), (varset.var_names) :: (tree234.tree234((term.var(T)), string)), (varset.var_values) :: (tree234.tree234((term.var(T)), (term.term(T))))).
+:- pred varset.new_vars_2((varset.varset(T_1)), int, (list.list((term.var(T_1)))), (list.list((term.var(T_1)))), (varset.varset(T_1))).
+:- mode varset.new_vars_2((builtin.in), (builtin.in), (builtin.in), (builtin.out), (builtin.out)) is det.
+:- pred varset.bind_vars_2((list.list((pair.pair((term.var(T_1)), (term.term(T_1)))))), (varset.varset(T_1)), (varset.varset(T_1))).
+:- mode varset.bind_vars_2((builtin.in), (builtin.in), (builtin.out)) is det.
+:- pred varset.merge_renaming_inc((bool.bool), (varset.varset(T_1)), (varset.varset(T_1)), (varset.varset(T_1)), (tree234.tree234((term.var(T_1)), (term.var(T_1))))).
+:- mode varset.merge_renaming_inc((builtin.in), (builtin.in), (builtin.in), (builtin.out), (builtin.out)) is det.
+:- pred varset.merge_renaming_inc_2((bool.bool), (term.var_supply(T_1)), (term.var_supply(T_1)), (tree234.tree234((term.var(T_1)), string)), (tree234.tree234((term.var(T_1)), (term.term(T_1)))), (varset.varset(T_1)), (varset.varset(T_1)), (tree234.tree234((term.var(T_1)), (term.var(T_1)))), (tree234.tree234((term.var(T_1)), (term.var(T_1))))).
+:- mode varset.merge_renaming_inc_2((builtin.in), (builtin.in), (builtin.in), (builtin.in), (builtin.in), (builtin.in), (builtin.out), (builtin.in), (builtin.out)) is det.
+:- pred varset.merge_subst_inc((bool.bool), (varset.varset(T_1)), (varset.varset(T_1)), (varset.varset(T_1)), (tree234.tree234((term.var(T_1)), (term.term(T_1))))).
+:- mode varset.merge_subst_inc((builtin.in), (builtin.in), (builtin.in), (builtin.out), (builtin.out)) is det.
+:- pred varset.merge_subst_inc_2((bool.bool), (term.var_supply(T_1)), (term.var_supply(T_1)), (tree234.tree234((term.var(T_1)), string)), (tree234.tree234((term.var(T_1)), (term.term(T_1)))), (varset.varset(T_1)), (varset.varset(T_1)), (tree234.tree234((term.var(T_1)), (term.term(T_1)))), (tree234.tree234((term.var(T_1)), (term.term(T_1))))).
+:- mode varset.merge_subst_inc_2((builtin.in), (builtin.in), (builtin.in), (builtin.in), (builtin.in), (builtin.in), (builtin.out), (builtin.in), (builtin.out)) is det.
+varset.init = VS_2 :-
+    varset.init(VS_2).
+varset.init((varset.varset(VarSupply_2, Names_3, Values_4))) :-
+    term.init_var_supply(VarSupply_2),
+    map.init(Names_3),
+    map.init(Values_4).
+varset.is_empty((varset.varset(VarSupply_2, V_3, V_4))) :-
+    term.init_var_supply(VarSupply_2).
+varset.new_named_var((varset.varset(MaxId0_5, Names0_6, Values_7)), Name_8, Var_9, (varset.varset(MaxId_10, Names_11, Values_7))) :-
+    term.create_var(MaxId0_5, Var_9, MaxId_10),
+    map.set(Names0_6, Var_9, Name_8, Names_11).
+varset.new_vars(VarSet0_5, NumVars_6, NewVars_7, VarSet_8) :-
+    V_9 = list.[] : (list.list((term.var(T_1)))),
+    varset.new_vars_2(VarSet0_5, NumVars_6, V_9, NewVars_7, VarSet_8).
+varset.delete_var(VS1_4, V_5) = VS2_6 :-
+    varset.delete_var(VS1_4, V_5, VS2_6).
+varset.delete_var((varset.varset(MaxId_4, Names0_5, Values0_6)), Var_7, (varset.varset(MaxId_4, Names_8, Values_9))) :-
+    map.delete(Names0_5, Var_7, Names_8),
+    map.delete(Values0_6, Var_7, Values_9).
+varset.delete_vars(VS1_4, Vs_5) = VS2_6 :-
+    varset.delete_vars(VS1_4, Vs_5, VS2_6).
+varset.vars(VS_3) = Vs_4 :-
+    varset.vars(VS_3, Vs_4).
+varset.name_var(VS1_5, V_6, S_7) = VS2_8 :-
+    varset.name_var(VS1_5, V_6, S_7, VS2_8).
+varset.lookup_name(VS_4, V_5) = S_6 :-
+    varset.lookup_name(VS_4, V_5, S_6).
+varset.lookup_name(VS1_5, V_6, S_7) = S2_8 :-
+    varset.lookup_name(VS1_5, V_6, S_7, S2_8).
+varset.search_name((varset.varset(V_4, Names_5, V_6)), Id_7, Name_8) :-
+    map.search(Names_5, Id_7, Name0_9),
+    Name_8 = Name0_9.
+varset.bind_var(VS1_5, V_6, T_7) = VS2_8 :-
+    varset.bind_var(VS1_5, V_6, T_7, VS2_8).
+varset.bind_vars(VS1_4, S_5) = VS2_6 :-
+    varset.bind_vars(VS1_4, S_5, VS2_6).
+varset.bind_vars(VarSet0_4, Subst_5, VarSet_6) :-
+    map.to_assoc_list(Subst_5, VarTermList_7),
+    varset.bind_vars_2(VarTermList_7, VarSet0_4, VarSet_6).
+varset.search_var(VarSet_4, Id_5, Val_6) :-
+    VarSet_4 = varset.varset(V_9, V_8, Values_7) : (varset.varset(T_1)),
+    map.search(Values_7, Id_5, Val_6).
+varset.lookup_vars(VS_3) = S_4 :-
+    varset.lookup_vars(VS_3, S_4).
+varset.lookup_vars(VarSet_3, HeadVar__2_2) :-
+    VarSet_3 = varset.varset(V_5, V_4, HeadVar__2_2) : (varset.varset(T_1)).
+varset.merge_renaming(VarSetA_5, VarSetB_6, VarSet_7, Subst_8) :-
+    IncludeNames_9 = bool.yes : (bool.bool),
+    varset.merge_renaming_inc(IncludeNames_9, VarSetA_5, VarSetB_6, VarSet_7, Subst_8).
+varset.merge_subst(VarSetA_5, VarSetB_6, VarSet_7, Subst_8) :-
+    IncludeNames_9 = bool.yes : (bool.bool),
+    varset.merge_subst_inc(IncludeNames_9, VarSetA_5, VarSetB_6, VarSet_7, Subst_8).
+varset.merge(VarSetA_6, VarSetB_7, TermList0_8, VarSet_9, TermList_10) :-
+    IncludeNames_11 = bool.yes : (bool.bool),
+    varset.merge_subst_inc(IncludeNames_11, VarSetA_6, VarSetB_7, VarSet_9, Subst_12),
+    term.apply_substitution_to_list(TermList0_8, Subst_12, TermList_10).
+varset.merge_renaming_without_names(VarSetA_5, VarSetB_6, VarSet_7, Subst_8) :-
+    IncludeNames_9 = bool.no : (bool.bool),
+    varset.merge_renaming_inc(IncludeNames_9, VarSetA_5, VarSetB_6, VarSet_7, Subst_8).
+varset.merge_subst_without_names(VarSetA_5, VarSetB_6, VarSet_7, Subst_8) :-
+    IncludeNames_9 = bool.no : (bool.bool),
+    varset.merge_subst_inc(IncludeNames_9, VarSetA_5, VarSetB_6, VarSet_7, Subst_8).
+varset.merge_without_names(VarSetA_6, VarSetB_7, TermList0_8, VarSet_9, TermList_10) :-
+    IncludeNames_11 = bool.no : (bool.bool),
+    varset.merge_subst_inc(IncludeNames_11, VarSetA_6, VarSetB_7, VarSet_9, Subst_12),
+    term.apply_substitution_to_list(TermList0_8, Subst_12, TermList_10).
+varset.get_bindings(VS_3) = S_4 :-
+    varset.get_bindings(VS_3, S_4).
+varset.get_bindings(VarSet_3, HeadVar__2_2) :-
+    VarSet_3 = varset.varset(V_5, V_4, HeadVar__2_2) : (varset.varset(T_1)).
+varset.set_bindings(VS1_4, S_5) = VS2_6 :-
+    varset.set_bindings(VS1_4, S_5, VS2_6).
+varset.set_bindings(VarSet_4, Values_5, HeadVar__3_3) :-
+    (
+    % barrier(removable)
+      VarSet_4 = varset.varset(V_7, V_6, V_8) : (varset.varset(T_1)),
+      HeadVar__3_3 = varset.varset(V_7, V_6, Values_5) : (varset.varset(T_1))
+    ).
+varset.create_name_var_map(VS_3) = M_4 :-
+    varset.create_name_var_map(VS_3, M_4).
+varset.create_name_var_map(VarSet_3, NameVars_4) :-
+    VarSet_3 = varset.varset(V_8, VarNames_5, V_9) : (varset.varset(T_1)),
+    map.keys(VarNames_5, Vars_6),
+    map.values(VarNames_5, Names_7),
+    map.from_corresponding_lists(Names_7, Vars_6, NameVars_4).
+varset.var_name_list(VS_3) = AL_4 :-
+    varset.var_name_list(VS_3, AL_4).
+varset.var_name_list(VarSet_3, VarNameList_4) :-
+    VarSet_3 = varset.varset(V_6, VarNames_5, V_7) : (varset.varset(T_1)),
+    map.to_assoc_list(VarNames_5, VarNameList_4).
+varset.ensure_unique_names(Vs_5, S1_6, VS1_7) = VS2_8 :-
+    varset.ensure_unique_names(Vs_5, S1_6, VS1_7, VS2_8).
+varset.select(VS1_4, S_5) = VS2_6 :-
+    varset.select(VS1_4, S_5, VS2_6).
+varset.select((varset.varset(Supply_4, VarNameMap0_5, Values0_6)), Vars_7, (varset.varset(Supply_4, VarNameMap_8, Values_9))) :-
+    map.select(VarNameMap0_5, Vars_7, VarNameMap_8),
+    map.select(Values0_6, Vars_7, Values_9).
+varset.coerce(VS1_3) = VS2_4 :-
+    varset.coerce(VS1_3, VS2_4).
+varset.max_var((varset.varset(VarSupply_3, V_4, V_5))) = HeadVar__2_2 :-
+    HeadVar__2_2 = term.var_supply_max_var(VarSupply_3).
+varset.merge_renaming_inc(IncludeNames_6, VarSetA_7, VarSetB_8, VarSet_9, Renaming_10) :-
+    VarSetB_8 = varset.varset(MaxId_11, Names_12, Values_13) : (varset.varset(T_1)),
+    term.init_var_supply(N_14),
+    map.init(Renaming0_15),
+    varset.merge_renaming_inc_2(IncludeNames_6, N_14, MaxId_11, Names_12, Values_13, VarSetA_7, VarSet_9, Renaming0_15, Renaming_10).
+varset.merge_subst_inc(IncludeNames_6, VarSetA_7, VarSetB_8, VarSet_9, Subst_10) :-
+    VarSetB_8 = varset.varset(MaxId_11, Names_12, Values_13) : (varset.varset(T_1)),
+    term.init_var_supply(N_14),
+    map.init(Subst0_15),
+    varset.merge_subst_inc_2(IncludeNames_6, N_14, MaxId_11, Names_12, Values_13, VarSetA_7, VarSet_9, Subst0_15, Subst_10).
+:- pragma exceptions(function, (varset.init), 1, 0, may_throw(user_exception)).
+:- pragma exceptions(predicate, (varset.init), 1, 0, may_throw(user_exception)).
+:- pragma exceptions(predicate, (varset.is_empty), 1, 0, may_throw(user_exception)).
+:- pragma exceptions(predicate, (varset.new_var), 3, 0, may_throw(user_exception)).
+:- pragma exceptions(predicate, (varset.new_named_var), 4, 0, may_throw(user_exception)).
+:- pragma exceptions(predicate, (varset.new_uniquely_named_var), 4, 0, may_throw(user_exception)).
+:- pragma exceptions(predicate, (varset.new_maybe_named_var), 4, 0, may_throw(user_exception)).
+:- pragma exceptions(predicate, (varset.new_vars), 4, 0, may_throw(user_exception)).
+:- pragma exceptions(function, (varset.delete_var), 3, 0, may_throw(user_exception)).
+:- pragma exceptions(predicate, (varset.delete_var), 3, 0, may_throw(user_exception)).
+:- pragma exceptions(function, (varset.delete_vars), 3, 0, may_throw(user_exception)).
+:- pragma exceptions(predicate, (varset.delete_vars), 3, 0, may_throw(user_exception)).
+:- pragma exceptions(function, (varset.vars), 2, 0, may_throw(user_exception)).
+:- pragma exceptions(predicate, (varset.vars), 2, 0, may_throw(user_exception)).
+:- pragma exceptions(function, (varset.name_var), 4, 0, may_throw(user_exception)).
+:- pragma exceptions(predicate, (varset.name_var), 4, 0, may_throw(user_exception)).
+:- pragma exceptions(function, (varset.lookup_name), 3, 0, may_throw(user_exception)).
+:- pragma exceptions(predicate, (varset.lookup_name), 3, 0, may_throw(user_exception)).
+:- pragma exceptions(function, (varset.lookup_name), 4, 0, may_throw(user_exception)).
+:- pragma exceptions(predicate, (varset.lookup_name), 4, 0, may_throw(user_exception)).
+:- pragma exceptions(predicate, (varset.search_name), 3, 0, may_throw(user_exception)).
+:- pragma exceptions(function, (varset.bind_var), 4, 0, may_throw(user_exception)).
+:- pragma exceptions(predicate, (varset.bind_var), 4, 0, may_throw(user_exception)).
+:- pragma exceptions(function, (varset.bind_vars), 3, 0, may_throw(user_exception)).
+:- pragma exceptions(predicate, (varset.bind_vars), 3, 0, may_throw(user_exception)).
+:- pragma exceptions(predicate, (varset.search_var), 3, 0, may_throw(user_exception)).
+:- pragma exceptions(function, (varset.lookup_vars), 2, 0, will_not_throw).
+:- pragma exceptions(predicate, (varset.lookup_vars), 2, 0, will_not_throw).
+:- pragma exceptions(predicate, (varset.merge_renaming), 4, 0, may_throw(user_exception)).
+:- pragma exceptions(predicate, (varset.merge_subst), 4, 0, may_throw(user_exception)).
+:- pragma exceptions(predicate, (varset.merge), 5, 0, may_throw(user_exception)).
+:- pragma exceptions(predicate, (varset.merge_renaming_without_names), 4, 0, may_throw(user_exception)).
+:- pragma exceptions(predicate, (varset.merge_subst_without_names), 4, 0, may_throw(user_exception)).
+:- pragma exceptions(predicate, (varset.merge_without_names), 5, 0, may_throw(user_exception)).
+:- pragma exceptions(function, (varset.get_bindings), 2, 0, will_not_throw).
+:- pragma exceptions(predicate, (varset.get_bindings), 2, 0, will_not_throw).
+:- pragma exceptions(function, (varset.set_bindings), 3, 0, will_not_throw).
+:- pragma exceptions(predicate, (varset.set_bindings), 3, 0, will_not_throw).
+:- pragma exceptions(function, (varset.create_name_var_map), 2, 0, may_throw(user_exception)).
+:- pragma exceptions(predicate, (varset.create_name_var_map), 2, 0, may_throw(user_exception)).
+:- pragma exceptions(function, (varset.var_name_list), 2, 0, may_throw(user_exception)).
+:- pragma exceptions(predicate, (varset.var_name_list), 2, 0, may_throw(user_exception)).
+:- pragma exceptions(function, (varset.ensure_unique_names), 4, 0, may_throw(user_exception)).
+:- pragma exceptions(predicate, (varset.ensure_unique_names), 4, 0, may_throw(user_exception)).
+:- pragma exceptions(function, (varset.select), 3, 0, may_throw(user_exception)).
+:- pragma exceptions(predicate, (varset.select), 3, 0, may_throw(user_exception)).
+:- pragma exceptions(predicate, (varset.squash), 4, 0, may_throw(user_exception)).
+:- pragma exceptions(function, (varset.coerce), 2, 0, will_not_throw).
+:- pragma exceptions(predicate, (varset.coerce), 2, 0, will_not_throw).
+:- pragma exceptions(function, (varset.max_var), 2, 0, may_throw(user_exception)).
+:- pragma exceptions(predicate, (varset.new_vars_2), 5, 0, may_throw(user_exception)).
+:- pragma exceptions(predicate, (varset.bind_vars_2), 3, 0, may_throw(user_exception)).
+:- pragma exceptions(predicate, (varset.merge_renaming_inc), 5, 0, may_throw(user_exception)).
+:- pragma exceptions(predicate, (varset.merge_renaming_inc_2), 9, 0, may_throw(user_exception)).
+:- pragma exceptions(predicate, (varset.merge_subst_inc), 5, 0, may_throw(user_exception)).
+:- pragma exceptions(predicate, (varset.merge_subst_inc_2), 9, 0, may_throw(user_exception)).
+:- pragma termination_info((varset.init) = (builtin.out), infinite, can_loop).
+:- pragma termination_info(varset.init((builtin.out)), infinite, can_loop).
+:- pragma termination_info(varset.is_empty((builtin.in)), finite(0, [no, no]), can_loop).
+:- pragma termination_info(varset.new_var((builtin.in), (builtin.out), (builtin.out)), infinite, can_loop).
+:- pragma termination_info(varset.new_named_var((builtin.in), (builtin.in), (builtin.out), (builtin.out)), infinite, can_loop).
+:- pragma termination_info(varset.new_uniquely_named_var((builtin.in), (builtin.in), (builtin.out), (builtin.out)), infinite, can_loop).
+:- pragma termination_info(varset.new_maybe_named_var((builtin.in), (builtin.in), (builtin.out), (builtin.out)), infinite, can_loop).
+:- pragma termination_info(varset.new_vars((builtin.in), (builtin.in), (builtin.out), (builtin.out)), infinite, can_loop).
+:- pragma termination_info(varset.delete_var((builtin.in), (builtin.in)) = (builtin.out), infinite, can_loop).
+:- pragma termination_info(varset.delete_var((builtin.in), (builtin.in), (builtin.out)), infinite, can_loop).
+:- pragma termination_info(varset.delete_vars((builtin.in), (builtin.in)) = (builtin.out), infinite, can_loop).
+:- pragma termination_info(varset.delete_vars((builtin.in), (builtin.in), (builtin.out)), infinite, can_loop).
+:- pragma termination_info(varset.vars((builtin.in)) = (builtin.out), infinite, can_loop).
+:- pragma termination_info(varset.vars((builtin.in), (builtin.out)), infinite, can_loop).
+:- pragma termination_info(varset.name_var((builtin.in), (builtin.in), (builtin.in)) = (builtin.out), infinite, can_loop).
+:- pragma termination_info(varset.name_var((builtin.in), (builtin.in), (builtin.in), (builtin.out)), infinite, can_loop).
+:- pragma termination_info(varset.lookup_name((builtin.in), (builtin.in)) = (builtin.out), infinite, can_loop).
+:- pragma termination_info(varset.lookup_name((builtin.in), (builtin.in), (builtin.out)), infinite, can_loop).
+:- pragma termination_info(varset.lookup_name((builtin.in), (builtin.in), (builtin.in)) = (builtin.out), infinite, can_loop).
+:- pragma termination_info(varset.lookup_name((builtin.in), (builtin.in), (builtin.in), (builtin.out)), infinite, can_loop).
+:- pragma termination_info(varset.search_name((builtin.in), (builtin.in), (builtin.out)), infinite, can_loop).
+:- pragma termination_info(varset.bind_var((builtin.in), (builtin.in), (builtin.in)) = (builtin.out), infinite, can_loop).
+:- pragma termination_info(varset.bind_var((builtin.in), (builtin.in), (builtin.in), (builtin.out)), infinite, can_loop).
+:- pragma termination_info(varset.bind_vars((builtin.in), (builtin.in)) = (builtin.out), infinite, can_loop).
+:- pragma termination_info(varset.bind_vars((builtin.in), (builtin.in), (builtin.out)), infinite, can_loop).
+:- pragma termination_info(varset.search_var((builtin.in), (builtin.in), (builtin.out)), infinite, can_loop).
+:- pragma termination_info(varset.lookup_vars((builtin.in)) = (builtin.out), finite(-3, [no, yes, no]), cannot_loop).
+:- pragma termination_info(varset.lookup_vars((builtin.in), (builtin.out)), finite(-3, [no, yes, no]), cannot_loop).
+:- pragma termination_info(varset.merge_renaming((builtin.in), (builtin.in), (builtin.out), (builtin.out)), infinite, can_loop).
+:- pragma termination_info(varset.merge_subst((builtin.in), (builtin.in), (builtin.out), (builtin.out)), infinite, can_loop).
+:- pragma termination_info(varset.merge((builtin.in), (builtin.in), (builtin.in), (builtin.out), (builtin.out)), infinite, can_loop).
+:- pragma termination_info(varset.merge_renaming_without_names((builtin.in), (builtin.in), (builtin.out), (builtin.out)), infinite, can_loop).
+:- pragma termination_info(varset.merge_subst_without_names((builtin.in), (builtin.in), (builtin.out), (builtin.out)), infinite, can_loop).
+:- pragma termination_info(varset.merge_without_names((builtin.in), (builtin.in), (builtin.in), (builtin.out), (builtin.out)), infinite, can_loop).
+:- pragma termination_info(varset.get_bindings((builtin.in)) = (builtin.out), finite(-3, [no, yes, no]), cannot_loop).
+:- pragma termination_info(varset.get_bindings((builtin.in), (builtin.out)), finite(-3, [no, yes, no]), cannot_loop).
+:- pragma termination_info(varset.set_bindings((builtin.in), (builtin.in)) = (builtin.out), finite(0, [no, yes, yes, no]), cannot_loop).
+:- pragma termination_info(varset.set_bindings((builtin.in), (builtin.in), (builtin.out)), finite(0, [no, yes, yes, no]), cannot_loop).
+:- pragma termination_info(varset.create_name_var_map((builtin.in)) = (builtin.out), infinite, can_loop).
+:- pragma termination_info(varset.create_name_var_map((builtin.in), (builtin.out)), infinite, can_loop).
+:- pragma termination_info(varset.var_name_list((builtin.in)) = (builtin.out), infinite, can_loop).
+:- pragma termination_info(varset.var_name_list((builtin.in), (builtin.out)), infinite, can_loop).
+:- pragma termination_info(varset.ensure_unique_names((builtin.in), (builtin.in), (builtin.in)) = (builtin.out), infinite, can_loop).
+:- pragma termination_info(varset.ensure_unique_names((builtin.in), (builtin.in), (builtin.in), (builtin.out)), infinite, can_loop).
+:- pragma termination_info(varset.select((builtin.in), (builtin.in)) = (builtin.out), infinite, can_loop).
+:- pragma termination_info(varset.select((builtin.in), (builtin.in), (builtin.out)), infinite, can_loop).
+:- pragma termination_info(varset.squash((builtin.in), (builtin.in), (builtin.out), (builtin.out)), infinite, can_loop).
+:- pragma termination_info(varset.coerce((builtin.in)) = (builtin.out), infinite, cannot_loop).
+:- pragma termination_info(varset.coerce((builtin.in), (builtin.out)), infinite, cannot_loop).
+:- pragma termination_info(varset.max_var((builtin.in)) = (builtin.out), infinite, can_loop).
+:- pragma termination_info(varset.new_vars_2((builtin.in), (builtin.in), (builtin.in), (builtin.out), (builtin.out)), infinite, can_loop).
+:- pragma termination_info(varset.bind_vars_2((builtin.in), (builtin.in), (builtin.out)), infinite, can_loop).
+:- pragma termination_info(varset.merge_renaming_inc((builtin.in), (builtin.in), (builtin.in), (builtin.out), (builtin.out)), infinite, can_loop).
+:- pragma termination_info(varset.merge_renaming_inc_2((builtin.in), (builtin.in), (builtin.in), (builtin.in), (builtin.in), (builtin.in), (builtin.out), (builtin.in), (builtin.out)), infinite, can_loop).
+:- pragma termination_info(varset.merge_subst_inc((builtin.in), (builtin.in), (builtin.in), (builtin.out), (builtin.out)), infinite, can_loop).
+:- pragma termination_info(varset.merge_subst_inc_2((builtin.in), (builtin.in), (builtin.in), (builtin.in), (builtin.in), (builtin.in), (builtin.out), (builtin.in), (builtin.out)), infinite, can_loop).

@@ -1,0 +1,16 @@
+:- module svrelation.
+:- interface.
+:- import_module assoc_list.
+:- import_module relation.
+:- pred add((relation.relation_key), (relation.relation_key), (relation.relation(T)), (relation.relation(T))).
+:- mode add((builtin.in), (builtin.in), (builtin.in), (builtin.out)) is det.
+:- pred add_assoc_list((assoc_list.assoc_list((relation.relation_key), (relation.relation_key))), (relation.relation(T)), (relation.relation(T))).
+:- mode add_assoc_list((builtin.in), (builtin.in), (builtin.out)) is det.
+:- pred add_element(T, (relation.relation_key), (relation.relation(T)), (relation.relation(T))).
+:- mode add_element((builtin.in), (builtin.out), (builtin.in), (builtin.out)) is det.
+:- pred add_values(T, T, (relation.relation(T)), (relation.relation(T))).
+:- mode add_values((builtin.in), (builtin.in), (builtin.in), (builtin.out)) is det.
+:- pred remove((relation.relation_key), (relation.relation_key), (relation.relation(T)), (relation.relation(T))).
+:- mode remove((builtin.in), (builtin.in), (builtin.in), (builtin.out)) is det.
+:- pred remove_assoc_list((assoc_list.assoc_list((relation.relation_key), (relation.relation_key))), (relation.relation(T)), (relation.relation(T))).
+:- mode remove_assoc_list((builtin.in), (builtin.in), (builtin.out)) is det.

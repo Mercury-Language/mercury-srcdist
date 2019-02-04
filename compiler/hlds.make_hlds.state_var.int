@@ -1,0 +1,90 @@
+:- module ((hlds.make_hlds).state_var).
+:- interface.
+:- import_module list.
+:- import_module map.
+:- import_module set.
+:- import_module (hlds.hlds_goal).
+:- import_module (mdbcomp.prim_data).
+:- import_module (parse_tree.error_util).
+:- import_module (parse_tree.prog_data).
+:- type hlds_goal_svar_info == {((hlds.hlds_goal).hlds_goal), (((hlds.make_hlds).state_var).svar_info)}.
+:- type hlds_goal_svar_infos == (list.list((((hlds.make_hlds).state_var).hlds_goal_svar_info))).
+:- type svar == ((parse_tree.prog_data).prog_var).
+:- type svar_ctxt
+	--->	in_head 
+	;	in_body 
+	;	in_atom((((hlds.make_hlds).state_var).had_colon_reference) :: (((hlds.make_hlds).state_var).svar_set), (((hlds.make_hlds).state_var).parent_svar_info) :: (((hlds.make_hlds).state_var).svar_info)).
+:- type svar_info
+	--->	svar_info((((hlds.make_hlds).state_var).svar_ctxt) :: (((hlds.make_hlds).state_var).svar_ctxt), (((hlds.make_hlds).state_var).svar_num) :: int, (((hlds.make_hlds).state_var).svar_readonly_dot) :: (((hlds.make_hlds).state_var).svar_map), (((hlds.make_hlds).state_var).svar_dot) :: (((hlds.make_hlds).state_var).svar_map), (((hlds.make_hlds).state_var).svar_colon) :: (((hlds.make_hlds).state_var).svar_map)).
+:- type svar_inner_atomic_scope_info.
+:- type svar_map == (map.map((((hlds.make_hlds).state_var).svar), ((parse_tree.prog_data).prog_var))).
+:- type svar_outer_atomic_scope_info.
+:- type svar_set == (set.set((((hlds.make_hlds).state_var).svar))).
+:- type svars == (list.list((((hlds.make_hlds).state_var).svar))).
+:- func expand_bang_state_var_args((list.list(((parse_tree.prog_data).prog_term)))) = (list.list(((parse_tree.prog_data).prog_term))).
+:- func expand_bang_state_var_args_in_instance_method_heads(((parse_tree.prog_data).instance_body)) = ((parse_tree.prog_data).instance_body).
+:- pred finish_local_state_vars((((hlds.make_hlds).state_var).svars), ((parse_tree.prog_data).prog_vars), (((hlds.make_hlds).state_var).svar_info), (((hlds.make_hlds).state_var).svar_info), (((hlds.make_hlds).state_var).svar_info)).
+:- mode finish_local_state_vars((builtin.in), (builtin.out), (builtin.in), (builtin.in), (builtin.out)) is det.
+:- pred illegal_state_var_func_result(((mdbcomp.prim_data).pred_or_func), (list.list(((parse_tree.prog_data).prog_term))), (((hlds.make_hlds).state_var).svar)).
+:- mode illegal_state_var_func_result((builtin.in), (builtin.in), (builtin.out)) is semidet.
+:- pred lambda_args_contain_bang_state_var((list.list(((parse_tree.prog_data).prog_term))), ((parse_tree.prog_data).prog_var)).
+:- mode lambda_args_contain_bang_state_var((builtin.in), (builtin.out)) is semidet.
+:- func new_svar_info = (((hlds.make_hlds).state_var).svar_info).
+:- pred prepare_for_local_state_vars((((hlds.make_hlds).state_var).svars), ((parse_tree.prog_data).prog_varset), ((parse_tree.prog_data).prog_varset), (((hlds.make_hlds).state_var).svar_info), (((hlds.make_hlds).state_var).svar_info)).
+:- mode prepare_for_local_state_vars((builtin.in), (builtin.in), (builtin.out), (builtin.in), (builtin.out)) is det.
+:- pred report_illegal_bang_svar_lambda_arg(((parse_tree.prog_data).prog_context), ((parse_tree.prog_data).prog_varset), (((hlds.make_hlds).state_var).svar), (list.list(((parse_tree.error_util).error_spec))), (list.list(((parse_tree.error_util).error_spec)))).
+:- mode report_illegal_bang_svar_lambda_arg((builtin.in), (builtin.in), (builtin.in), (builtin.in), (builtin.out)) is det.
+:- pred report_illegal_func_svar_result(((parse_tree.prog_data).prog_context), ((parse_tree.prog_data).prog_varset), (((hlds.make_hlds).state_var).svar), (list.list(((parse_tree.error_util).error_spec))), (list.list(((parse_tree.error_util).error_spec)))).
+:- mode report_illegal_func_svar_result((builtin.in), (builtin.in), (builtin.in), (builtin.in), (builtin.out)) is det.
+:- pred report_illegal_state_var_update(((parse_tree.prog_data).prog_context), ((parse_tree.prog_data).prog_varset), (((hlds.make_hlds).state_var).svar), (list.list(((parse_tree.error_util).error_spec))), (list.list(((parse_tree.error_util).error_spec)))).
+:- mode report_illegal_state_var_update((builtin.in), (builtin.in), (builtin.in), (builtin.in), (builtin.out)) is det.
+:- pred substitute_state_var_mapping(((parse_tree.prog_data).prog_term), ((parse_tree.prog_data).prog_term), ((parse_tree.prog_data).prog_varset), ((parse_tree.prog_data).prog_varset), (((hlds.make_hlds).state_var).svar_info), (((hlds.make_hlds).state_var).svar_info), (list.list(((parse_tree.error_util).error_spec))), (list.list(((parse_tree.error_util).error_spec)))).
+:- mode substitute_state_var_mapping((builtin.in), (builtin.out), (builtin.in), (builtin.out), (builtin.in), (builtin.out), (builtin.in), (builtin.out)) is det.
+:- pred substitute_state_var_mappings((list.list(((parse_tree.prog_data).prog_term))), (list.list(((parse_tree.prog_data).prog_term))), ((parse_tree.prog_data).prog_varset), ((parse_tree.prog_data).prog_varset), (((hlds.make_hlds).state_var).svar_info), (((hlds.make_hlds).state_var).svar_info), (list.list(((parse_tree.error_util).error_spec))), (list.list(((parse_tree.error_util).error_spec)))).
+:- mode substitute_state_var_mappings((builtin.in), (builtin.out), (builtin.in), (builtin.out), (builtin.in), (builtin.out), (builtin.in), (builtin.out)) is det.
+:- pred svar_colon(((parse_tree.prog_data).prog_context), (((hlds.make_hlds).state_var).svar), ((parse_tree.prog_data).prog_var), ((parse_tree.prog_data).prog_varset), ((parse_tree.prog_data).prog_varset), (((hlds.make_hlds).state_var).svar_info), (((hlds.make_hlds).state_var).svar_info), (list.list(((parse_tree.error_util).error_spec))), (list.list(((parse_tree.error_util).error_spec)))).
+:- mode svar_colon((builtin.in), (builtin.in), (builtin.out), (builtin.in), (builtin.out), (builtin.in), (builtin.out), (builtin.in), (builtin.out)) is det.
+:- pred svar_dot(((parse_tree.prog_data).prog_context), (((hlds.make_hlds).state_var).svar), ((parse_tree.prog_data).prog_var), ((parse_tree.prog_data).prog_varset), ((parse_tree.prog_data).prog_varset), (((hlds.make_hlds).state_var).svar_info), (((hlds.make_hlds).state_var).svar_info), (list.list(((parse_tree.error_util).error_spec))), (list.list(((parse_tree.error_util).error_spec)))).
+:- mode svar_dot((builtin.in), (builtin.in), (builtin.out), (builtin.in), (builtin.out), (builtin.in), (builtin.out), (builtin.in), (builtin.out)) is det.
+:- pred svar_finish_call(((parse_tree.prog_data).prog_varset), ((parse_tree.prog_data).prog_varset), (((hlds.make_hlds).state_var).svar_info), (((hlds.make_hlds).state_var).svar_info)).
+:- mode svar_finish_call((builtin.in), (builtin.out), (builtin.in), (builtin.out)) is det.
+:- pred svar_finish_disjunction(((parse_tree.prog_data).prog_context), ((parse_tree.prog_data).prog_varset), (((hlds.make_hlds).state_var).hlds_goal_svar_infos), (list.list(((hlds.hlds_goal).hlds_goal))), (((hlds.make_hlds).state_var).svar_info)).
+:- mode svar_finish_disjunction((builtin.in), (builtin.in), (builtin.in), (builtin.out), (builtin.out)) is det.
+:- pred svar_finish_equivalence((((hlds.make_hlds).state_var).svar_info), (((hlds.make_hlds).state_var).svar_info), (((hlds.make_hlds).state_var).svar_info)).
+:- mode svar_finish_equivalence((builtin.in), (builtin.in), (builtin.out)) is det.
+:- pred svar_finish_goals(((parse_tree.prog_data).prog_context), (((hlds.make_hlds).state_var).svar_map), (list.list(((hlds.hlds_goal).hlds_goal))), ((hlds.hlds_goal).hlds_goal), (((hlds.make_hlds).state_var).svar_info)).
+:- mode svar_finish_goals((builtin.in), (builtin.in), (builtin.in), (builtin.out), (builtin.in)) is det.
+:- pred svar_finish_if_then_else(((parse_tree.prog_data).prog_context), ((hlds.hlds_goal).hlds_goal), ((hlds.hlds_goal).hlds_goal), ((hlds.hlds_goal).hlds_goal), ((hlds.hlds_goal).hlds_goal), (((hlds.make_hlds).state_var).svar_info), (((hlds.make_hlds).state_var).svar_info), (((hlds.make_hlds).state_var).svar_info), (((hlds.make_hlds).state_var).svar_info), (((hlds.make_hlds).state_var).svar_info), ((parse_tree.prog_data).prog_varset), ((parse_tree.prog_data).prog_varset)).
+:- mode svar_finish_if_then_else((builtin.in), (builtin.in), (builtin.out), (builtin.in), (builtin.out), (builtin.in), (builtin.in), (builtin.in), (builtin.in), (builtin.out), (builtin.in), (builtin.out)) is det.
+:- pred svar_finish_if_then_else_expr_condition((((hlds.make_hlds).state_var).svar_info), (((hlds.make_hlds).state_var).svar_info), (((hlds.make_hlds).state_var).svar_info)).
+:- mode svar_finish_if_then_else_expr_condition((builtin.in), (builtin.in), (builtin.out)) is det.
+:- pred svar_finish_if_then_else_expr_then_goal((((hlds.make_hlds).state_var).svars), (((hlds.make_hlds).state_var).svar_info), (((hlds.make_hlds).state_var).svar_info), (((hlds.make_hlds).state_var).svar_info)).
+:- mode svar_finish_if_then_else_expr_then_goal((builtin.in), (builtin.in), (builtin.in), (builtin.out)) is det.
+:- pred svar_finish_if_then_else_goal_condition((((hlds.make_hlds).state_var).svars), (((hlds.make_hlds).state_var).svar_info), (((hlds.make_hlds).state_var).svar_info), (((hlds.make_hlds).state_var).svar_info), (((hlds.make_hlds).state_var).svar_info)).
+:- mode svar_finish_if_then_else_goal_condition((builtin.in), (builtin.in), (builtin.in), (builtin.out), (builtin.out)) is det.
+:- pred svar_finish_if_then_else_goal_then_goal((((hlds.make_hlds).state_var).svars), (((hlds.make_hlds).state_var).svar_info), (((hlds.make_hlds).state_var).svar_info), (((hlds.make_hlds).state_var).svar_info)).
+:- mode svar_finish_if_then_else_goal_then_goal((builtin.in), (builtin.in), (builtin.in), (builtin.out)) is det.
+:- pred svar_finish_inner_atomic_scope(((parse_tree.prog_data).prog_context), (((hlds.make_hlds).state_var).svar_inner_atomic_scope_info), ((parse_tree.prog_data).prog_var), ((parse_tree.prog_data).prog_var), ((parse_tree.prog_data).prog_varset), ((parse_tree.prog_data).prog_varset), (((hlds.make_hlds).state_var).svar_info), (((hlds.make_hlds).state_var).svar_info), (list.list(((parse_tree.error_util).error_spec))), (list.list(((parse_tree.error_util).error_spec)))).
+:- mode svar_finish_inner_atomic_scope((builtin.in), (builtin.in), (builtin.out), (builtin.out), (builtin.in), (builtin.out), (builtin.in), (builtin.out), (builtin.in), (builtin.out)) is det.
+:- pred svar_finish_negation((((hlds.make_hlds).state_var).svar_info), (((hlds.make_hlds).state_var).svar_info), (((hlds.make_hlds).state_var).svar_info)).
+:- mode svar_finish_negation((builtin.in), (builtin.in), (builtin.out)) is det.
+:- pred svar_finish_outer_atomic_scope((((hlds.make_hlds).state_var).svar_outer_atomic_scope_info), (((hlds.make_hlds).state_var).svar_info), (((hlds.make_hlds).state_var).svar_info)).
+:- mode svar_finish_outer_atomic_scope((builtin.in), (builtin.in), (builtin.out)) is det.
+:- pred svar_prepare_for_body((((hlds.make_hlds).state_var).svar_map), ((parse_tree.prog_data).prog_varset), ((parse_tree.prog_data).prog_varset), (((hlds.make_hlds).state_var).svar_info), (((hlds.make_hlds).state_var).svar_info)).
+:- mode svar_prepare_for_body((builtin.out), (builtin.in), (builtin.out), (builtin.in), (builtin.out)) is det.
+:- pred svar_prepare_for_call((((hlds.make_hlds).state_var).svar_info), (((hlds.make_hlds).state_var).svar_info)).
+:- mode svar_prepare_for_call((builtin.in), (builtin.out)) is det.
+:- pred svar_prepare_for_head((((hlds.make_hlds).state_var).svar_info)).
+:- mode svar_prepare_for_head((builtin.out)) is det.
+:- pred svar_prepare_for_if_then_else_expr((((hlds.make_hlds).state_var).svars), ((parse_tree.prog_data).prog_varset), ((parse_tree.prog_data).prog_varset), (((hlds.make_hlds).state_var).svar_info), (((hlds.make_hlds).state_var).svar_info)).
+:- mode svar_prepare_for_if_then_else_expr((builtin.in), (builtin.in), (builtin.out), (builtin.in), (builtin.out)) is det.
+:- pred svar_prepare_for_if_then_else_goal((((hlds.make_hlds).state_var).svars), ((parse_tree.prog_data).prog_varset), ((parse_tree.prog_data).prog_varset), (((hlds.make_hlds).state_var).svar_info), (((hlds.make_hlds).state_var).svar_info)).
+:- mode svar_prepare_for_if_then_else_goal((builtin.in), (builtin.in), (builtin.out), (builtin.in), (builtin.out)) is det.
+:- pred svar_prepare_for_lambda((((hlds.make_hlds).state_var).svar_info), (((hlds.make_hlds).state_var).svar_info)).
+:- mode svar_prepare_for_lambda((builtin.in), (builtin.out)) is det.
+:- pred svar_prepare_for_next_conjunct((((hlds.make_hlds).state_var).svar_set), ((parse_tree.prog_data).prog_varset), ((parse_tree.prog_data).prog_varset), (((hlds.make_hlds).state_var).svar_info), (((hlds.make_hlds).state_var).svar_info)).
+:- mode svar_prepare_for_next_conjunct((builtin.in), (builtin.in), (builtin.out), (builtin.in), (builtin.out)) is det.
+:- pred svar_start_inner_atomic_scope(((parse_tree.prog_data).prog_context), ((parse_tree.prog_data).prog_var), (((hlds.make_hlds).state_var).svar_inner_atomic_scope_info), ((parse_tree.prog_data).prog_varset), ((parse_tree.prog_data).prog_varset), (((hlds.make_hlds).state_var).svar_info), (((hlds.make_hlds).state_var).svar_info), (list.list(((parse_tree.error_util).error_spec))), (list.list(((parse_tree.error_util).error_spec)))).
+:- mode svar_start_inner_atomic_scope((builtin.in), (builtin.in), (builtin.out), (builtin.in), (builtin.out), (builtin.in), (builtin.out), (builtin.in), (builtin.out)) is det.
+:- pred svar_start_outer_atomic_scope(((parse_tree.prog_data).prog_context), ((parse_tree.prog_data).prog_var), ((parse_tree.prog_data).prog_var), ((parse_tree.prog_data).prog_var), (((hlds.make_hlds).state_var).svar_outer_atomic_scope_info), ((parse_tree.prog_data).prog_varset), ((parse_tree.prog_data).prog_varset), (((hlds.make_hlds).state_var).svar_info), (((hlds.make_hlds).state_var).svar_info), (list.list(((parse_tree.error_util).error_spec))), (list.list(((parse_tree.error_util).error_spec)))).
+:- mode svar_start_outer_atomic_scope((builtin.in), (builtin.in), (builtin.out), (builtin.out), (builtin.out), (builtin.in), (builtin.out), (builtin.in), (builtin.out), (builtin.in), (builtin.out)) is det.

@@ -1,0 +1,6 @@
+:- module report.
+:- interface.
+:- type deep_report.
+:- type report_ordering.
+:- type report_proc.
+:- type row_data(T).

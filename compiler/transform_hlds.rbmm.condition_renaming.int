@@ -1,0 +1,23 @@
+:- module ((transform_hlds.rbmm).condition_renaming).
+:- interface.
+:- import_module hlds.
+:- import_module map.
+:- import_module mdbcomp.
+:- import_module set.
+:- import_module string.
+:- import_module (hlds.hlds_module).
+:- import_module (hlds.hlds_pred).
+:- import_module (mdbcomp.program_representation).
+:- import_module ((transform_hlds.rbmm).points_to_info).
+:- import_module ((transform_hlds.rbmm).region_liveness_info).
+:- import_module ((transform_hlds.rbmm).region_resurrection_renaming).
+:- type goal_path_regions_table == (map.map(((mdbcomp.program_representation).goal_path), (set.set(string)))).
+:- type proc_goal_path_regions_table == (map.map(((hlds.hlds_pred).pred_proc_id), (((transform_hlds.rbmm).condition_renaming).goal_path_regions_table))).
+:- pred collect_ite_annotation((((transform_hlds.rbmm).condition_renaming).proc_goal_path_regions_table), (((transform_hlds.rbmm).region_liveness_info).execution_path_table), (((transform_hlds.rbmm).points_to_info).rpta_info_table), (((transform_hlds.rbmm).region_resurrection_renaming).renaming_table), (((transform_hlds.rbmm).region_resurrection_renaming).renaming_table), (((transform_hlds.rbmm).region_resurrection_renaming).renaming_annotation_table)).
+:- mode collect_ite_annotation((builtin.in), (builtin.in), (builtin.in), (builtin.in), (builtin.out), (builtin.out)) is det.
+:- pred collect_ite_renamed_regions((((transform_hlds.rbmm).condition_renaming).proc_goal_path_regions_table), (((transform_hlds.rbmm).condition_renaming).proc_goal_path_regions_table), (((transform_hlds.rbmm).condition_renaming).proc_goal_path_regions_table)).
+:- mode collect_ite_renamed_regions((builtin.in), (builtin.in), (builtin.out)) is det.
+:- pred collect_ite_renaming(((hlds.hlds_module).module_info), (((transform_hlds.rbmm).points_to_info).rpta_info_table), (((transform_hlds.rbmm).condition_renaming).proc_goal_path_regions_table), (((transform_hlds.rbmm).region_resurrection_renaming).renaming_table)).
+:- mode collect_ite_renaming((builtin.in), (builtin.in), (builtin.in), (builtin.out)) is det.
+:- pred collect_non_local_and_in_cond_regions(((hlds.hlds_module).module_info), (((transform_hlds.rbmm).points_to_info).rpta_info_table), (((transform_hlds.rbmm).region_liveness_info).proc_pp_region_set_table), (((transform_hlds.rbmm).region_liveness_info).proc_pp_region_set_table), (((transform_hlds.rbmm).region_resurrection_renaming).renaming_table), (((transform_hlds.rbmm).region_resurrection_renaming).renaming_annotation_table), (((transform_hlds.rbmm).condition_renaming).proc_goal_path_regions_table), (((transform_hlds.rbmm).condition_renaming).proc_goal_path_regions_table)).
+:- mode collect_non_local_and_in_cond_regions((builtin.in), (builtin.in), (builtin.in), (builtin.in), (builtin.in), (builtin.in), (builtin.out), (builtin.out)) is det.

@@ -1,0 +1,31 @@
+:- module (mdbcomp.feedback).
+:- interface.
+:- import_module int.
+:- import_module io.
+:- import_module list.
+:- import_module maybe.
+:- import_module string.
+:- import_module (mdbcomp.program_representation).
+:- type feedback_data
+	--->	feedback_data_calls_above_threshold_sorted(((mdbcomp.feedback).threshold) :: int, ((mdbcomp.feedback).stat_measure) :: ((mdbcomp.feedback).stat_measure), ((mdbcomp.feedback).calls) :: (list.list(((mdbcomp.program_representation).call_site)))).
+:- type feedback_info.
+:- type feedback_read_error
+	--->	open_error((io.error))
+	;	read_error((io.error))
+	;	parse_error(((mdbcomp.feedback).message) :: string, ((mdbcomp.feedback).line_no) :: int)
+	;	unexpected_eof 
+	;	incorrect_version 
+	;	incorrect_first_line 
+	;	incorrect_program_name .
+:- type feedback_type
+	--->	feedback_type_calls_above_threshold_sorted .
+:- type feedback_write_result
+	--->	ok 
+	;	open_error((io.error))
+	;	write_error((io.error)).
+:- type stat_measure
+	--->	stat_mean 
+	;	stat_median .
+:- type feedback_read_result(T)
+	--->	ok(T)
+	;	error(((mdbcomp.feedback).feedback_read_error)).

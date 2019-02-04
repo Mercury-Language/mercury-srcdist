@@ -1,0 +1,4 @@
+:- module measurements.
+:- interface.
+:- type inherit_prof_info.
+:- type own_prof_info.

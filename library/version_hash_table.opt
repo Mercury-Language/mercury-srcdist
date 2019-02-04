@@ -1,0 +1,219 @@
+:- module version_hash_table.
+:- use_module array, assoc_list, builtin, char, deconstruct, exception, float, int, list, pair, private_builtin, require, string, type_desc, univ, version_array.
+:- type (version_hash_table.version_hash_table(K, V))
+	--->	ht((version_hash_table.num_buckets) :: int, (version_hash_table.num_occupants) :: int, (version_hash_table.max_occupants) :: int, (version_hash_table.hash_pred) :: pred(K, int, int), (version_hash_table.buckets) :: (version_array.version_array((version_hash_table.bucket(K, V))))).
+:- type (version_hash_table.buckets(K, V)) == (version_array.version_array((version_hash_table.bucket(K, V)))).
+:- type (version_hash_table.bucket(K, V))
+	--->	empty 
+	;	full(K, V).
+:- pragma foreign_import_module("C", version_hash_table).
+:- pragma foreign_import_module("C", array).
+:- pragma foreign_import_module("Java", array).
+:- pragma foreign_import_module("IL", array).
+:- pragma foreign_import_module("Erlang", array).
+:- pragma foreign_import_module("C", array).
+:- pragma foreign_import_module("Java", array).
+:- pragma foreign_import_module("IL", array).
+:- pragma foreign_import_module("Erlang", array).
+:- pragma foreign_import_module("C", version_array).
+:- pragma foreign_import_module("C", version_array).
+:- pragma foreign_import_module("C", io).
+:- pragma foreign_import_module("Java", io).
+:- pragma foreign_import_module("IL", io).
+:- pragma foreign_import_module("Erlang", io).
+:- pragma foreign_import_module("C", io).
+:- pragma foreign_import_module("Java", io).
+:- pragma foreign_import_module("IL", io).
+:- pragma foreign_import_module("Erlang", io).
+:- pragma foreign_import_module("C", string).
+:- pragma foreign_import_module("C", bitmap).
+:- pragma foreign_import_module("Java", bitmap).
+:- pragma foreign_import_module("IL", bitmap).
+:- pragma foreign_import_module("Erlang", bitmap).
+:- pragma foreign_import_module("C", bitmap).
+:- pragma foreign_import_module("Java", bitmap).
+:- pragma foreign_import_module("IL", bitmap).
+:- pragma foreign_import_module("Erlang", bitmap).
+:- pragma foreign_import_module("C", time).
+:- pragma foreign_import_module("Java", time).
+:- pragma foreign_import_module("IL", time).
+:- pragma foreign_import_module("Erlang", time).
+:- pragma foreign_import_module("C", time).
+:- pragma foreign_import_module("Java", time).
+:- pragma foreign_import_module("IL", time).
+:- pragma foreign_import_module("Erlang", time).
+:- pragma foreign_import_module("C", stm_builtin).
+:- pragma foreign_import_module("C", stm_builtin).
+:- pragma foreign_import_module("Java", store).
+:- pragma foreign_import_module("Erlang", store).
+:- pragma foreign_import_module("Java", store).
+:- pragma foreign_import_module("Erlang", store).
+:- func version_hash_table.find_slot((version_hash_table.version_hash_table(K_1, V_2)), K_1) = int.
+:- mode version_hash_table.find_slot((builtin.in), (builtin.in)) = (builtin.out) is det.
+:- func version_hash_table.apply_k_v((func(K_1, V_2, T_3) = T_3), (version_array.version_array((version_hash_table.bucket(K_1, V_2)))), int, T_3) = T_3.
+:- mode version_hash_table.apply_k_v((builtin.in), (builtin.in), (builtin.in), (builtin.in)) = (builtin.out) is det.
+version_hash_table.new(HashPred_5, N_6, MaxOccupancy_7) = HT_8 :-
+    (if
+      V_12 = 1 : int,
+      int.(N_6 =< V_12)
+    then
+      V_13 = exception.software_error(V_14) : (exception.software_error),
+      V_14 = "version_hash_table.new: N =< 1" : string,
+      exception.throw(V_13)
+    else
+      (if
+        V_15 = int.bits_per_int,
+        int.(N_6 >= V_15)
+      then
+        V_16 = exception.software_error(V_17) : (exception.software_error),
+        V_17 = "version_hash_table.new: N >= int.bits_per_int" : string,
+        exception.throw(V_16)
+      else
+        (if
+          ( % disjunction
+            V_19 = 0.0 : float,
+            float.(MaxOccupancy_7 =< V_19)
+          ;
+            V_18 = 1.0 : float,
+            float.(V_18 =< MaxOccupancy_7)
+          )
+        then
+          V_20 = exception.software_error(V_21) : (exception.software_error),
+          V_21 = "version_hash_table.new: MaxOccupancy not in (0.0, 1.0)" : string,
+          exception.throw(V_20)
+        else
+          NumBuckets_9 = int.(V_22 << N_6),
+          V_22 = 1 : int,
+          MaxOccupants_10 = float.ceiling_to_int(V_23),
+          V_23 = float.(V_24 * MaxOccupancy_7),
+          V_24 = float.float(NumBuckets_9),
+          VArray_11 = version_array.init(NumBuckets_9, V_25),
+          V_25 = version_hash_table.empty : (version_hash_table.bucket(K_1, V_2)),
+          HT_8 = version_hash_table.ht(NumBuckets_9, V_26, MaxOccupants_10, HashPred_5, VArray_11) : (version_hash_table.version_hash_table(K_1, V_2)),
+          V_26 = 0 : int
+        )
+      )
+    ).
+version_hash_table.new_default(HashPred_3) = HeadVar__2_2 :-
+    HeadVar__2_2 = version_hash_table.new(HashPred_3, V_4, V_5),
+    V_4 = 7 : int,
+    V_5 = 0.9 : float.
+version_hash_table.string_double_hash(S_4, H1_5, H2_6) :-
+    H1_5 = string.hash(S_4),
+    H2_6 = string.foldl(V_9, S_4, V_10),
+    V_9 = (func(V_13::(builtin.in), V_12::(builtin.in)) = (V_11::(builtin.out)) is det :-
+      some [] (
+        V_13 = C_15,
+        V_12 = N_16,
+        V_11 = int.(V_14 + N_16),
+        V_14 = char.to_int(C_15)
+      )
+    ) : (func(character, int) = int),
+    V_10 = 0 : int.
+version_hash_table.char_double_hash(C_4, H1_5, H2_6) :-
+    V_7 = char.to_int(C_4),
+    version_hash_table.int_double_hash(V_7, H1_5, H2_6).
+version_hash_table.float_double_hash(F_4, H1_5, H2_6) :-
+    H1_5 = float.hash(F_4),
+    H2_6 = float.hash(V_7),
+    V_7 = float.(F_4 * V_8),
+    V_8 = F_4.
+version_hash_table.num_buckets((version_hash_table.ht(HeadVar__2_2, V_6, V_5, V_4, V_3))) = HeadVar__2_2.
+version_hash_table.num_occupants((version_hash_table.ht(V_3, HeadVar__2_2, V_6, V_5, V_4))) = HeadVar__2_2.
+version_hash_table.set(K_5, V_6, HT_7, HeadVar__4_4) :-
+    HeadVar__4_4 = version_hash_table.set(HT_7, K_5, V_6).
+version_hash_table.'elem :='(K_5, HT_6, V_7) = HeadVar__4_4 :-
+    HeadVar__4_4 = version_hash_table.set(HT_6, K_5, V_7).
+version_hash_table.det_insert(K_5, V_6, HT_7, HeadVar__4_4) :-
+    HeadVar__4_4 = version_hash_table.det_insert(HT_7, K_5, V_6).
+version_hash_table.det_update(K_5, V_6, HT_7, HeadVar__4_4) :-
+    HeadVar__4_4 = version_hash_table.det_update(HT_7, K_5, V_6).
+version_hash_table.delete(K_4, HT_5, HeadVar__3_3) :-
+    HeadVar__3_3 = version_hash_table.delete(HT_5, K_4).
+version_hash_table.lookup(HT_4, K_5) = HeadVar__3_3 :-
+    (if
+      V_6 = version_hash_table.search(HT_4, K_5)
+    then
+      HeadVar__3_3 = V_6
+    else
+      HeadVar__3_3 = require.func_error(V_7),
+      V_7 = "version_hash_table.lookup: key not found" : string
+    ).
+version_hash_table.elem(K_5, HT_4) = HeadVar__3_3 :-
+    HeadVar__3_3 = version_hash_table.lookup(HT_4, K_5).
+version_hash_table.search(HT_4, K_5) = V_6 :-
+    H_7 = version_hash_table.find_slot(HT_4, K_5),
+    HT_4 = version_hash_table.ht(V_13, V_12, V_11, V_10, V_9) : (version_hash_table.version_hash_table(K_1, V_2)),
+    V_8 = version_array.elem(H_7, V_9),
+    V_8 = version_hash_table.full(K_5, V_6) : (version_hash_table.bucket(K_1, V_2)).
+version_hash_table.search(HT_4, K_5, HeadVar__3_3) :-
+    HeadVar__3_3 = version_hash_table.search(HT_4, K_5).
+version_hash_table.fold(Fn_5, HT_6, X_7) = HeadVar__4_4 :-
+    HeadVar__4_4 = int.fold_up(V_8, V_9, V_10, X_7),
+    V_8 = version_hash_table.apply_k_v(Fn_5, V_11) : (func(int, T_3) = T_3),
+    HT_6 = version_hash_table.ht(V_17, V_16, V_15, V_14, V_11) : (version_hash_table.version_hash_table(K_1, V_2)),
+    V_9 = 0 : int,
+    V_10 = int.(V_12 - V_13),
+    V_12 = version_hash_table.num_buckets(HT_6),
+    V_13 = 1 : int.
+version_hash_table.apply_k_v(Fn_6, Bs_7, I_8, A_9) = HeadVar__5_5 :-
+    (if
+      V_12 = version_array.elem(I_8, Bs_7),
+      V_12 = version_hash_table.full(K_10, V_11) : (version_hash_table.bucket(K_1, V_2))
+    then
+      HeadVar__5_5 = apply(Fn_6, K_10, V_11, A_9)
+    else
+      HeadVar__5_5 = A_9
+    ).
+:- pragma exceptions(function, (version_hash_table.new), 4, 0, may_throw(user_exception)).
+:- pragma exceptions(function, (version_hash_table.new_default), 2, 0, may_throw(user_exception)).
+:- pragma exceptions(predicate, (version_hash_table.int_double_hash), 3, 0, will_not_throw).
+:- pragma exceptions(predicate, (version_hash_table.string_double_hash), 3, 0, may_throw(user_exception)).
+:- pragma exceptions(predicate, (version_hash_table.char_double_hash), 3, 0, may_throw(user_exception)).
+:- pragma exceptions(predicate, (version_hash_table.float_double_hash), 3, 0, may_throw(user_exception)).
+:- pragma exceptions(predicate, (version_hash_table.generic_double_hash), 3, 0, may_throw(user_exception)).
+:- pragma exceptions(function, (version_hash_table.num_buckets), 2, 0, will_not_throw).
+:- pragma exceptions(function, (version_hash_table.num_occupants), 2, 0, will_not_throw).
+:- pragma exceptions(function, (version_hash_table.set), 4, 0, may_throw(user_exception)).
+:- pragma exceptions(predicate, (version_hash_table.set), 4, 0, may_throw(user_exception)).
+:- pragma exceptions(function, (version_hash_table.'elem :='), 4, 0, may_throw(user_exception)).
+:- pragma exceptions(function, (version_hash_table.det_insert), 4, 0, may_throw(user_exception)).
+:- pragma exceptions(predicate, (version_hash_table.det_insert), 4, 0, may_throw(user_exception)).
+:- pragma exceptions(function, (version_hash_table.det_update), 4, 0, may_throw(user_exception)).
+:- pragma exceptions(predicate, (version_hash_table.det_update), 4, 0, may_throw(user_exception)).
+:- pragma exceptions(function, (version_hash_table.delete), 3, 0, may_throw(user_exception)).
+:- pragma exceptions(predicate, (version_hash_table.delete), 3, 0, may_throw(user_exception)).
+:- pragma exceptions(function, (version_hash_table.lookup), 3, 0, may_throw(user_exception)).
+:- pragma exceptions(function, (version_hash_table.elem), 3, 0, may_throw(user_exception)).
+:- pragma exceptions(function, (version_hash_table.search), 3, 0, may_throw(user_exception)).
+:- pragma exceptions(predicate, (version_hash_table.search), 3, 0, may_throw(user_exception)).
+:- pragma exceptions(function, (version_hash_table.to_assoc_list), 2, 0, may_throw(user_exception)).
+:- pragma exceptions(function, (version_hash_table.fold), 4, 0, may_throw(user_exception)).
+:- pragma exceptions(function, (version_hash_table.find_slot), 3, 0, may_throw(user_exception)).
+:- pragma exceptions(function, (version_hash_table.apply_k_v), 5, 0, may_throw(user_exception)).
+:- pragma termination_info(version_hash_table.new(builtin.in((version_hash_table.hash_pred)), (builtin.in), (builtin.in)) = (builtin.out), infinite, can_loop).
+:- pragma termination_info(version_hash_table.new_default(builtin.in((version_hash_table.hash_pred))) = (builtin.out), infinite, can_loop).
+:- pragma termination_info(version_hash_table.int_double_hash((builtin.in), (builtin.out), (builtin.out)), finite(0, [no, no, no]), cannot_loop).
+:- pragma termination_info(version_hash_table.string_double_hash((builtin.in), (builtin.out), (builtin.out)), infinite, can_loop).
+:- pragma termination_info(version_hash_table.char_double_hash((builtin.in), (builtin.out), (builtin.out)), finite(0, [no, no, no]), can_loop).
+:- pragma termination_info(version_hash_table.float_double_hash((builtin.in), (builtin.out), (builtin.out)), infinite, can_loop).
+:- pragma termination_info(version_hash_table.generic_double_hash((builtin.in), (builtin.out), (builtin.out)), infinite, can_loop).
+:- pragma termination_info(version_hash_table.num_buckets((builtin.in)) = (builtin.out), finite(-5, [no, no, yes, no]), cannot_loop).
+:- pragma termination_info(version_hash_table.num_occupants((builtin.in)) = (builtin.out), finite(-5, [no, no, yes, no]), cannot_loop).
+:- pragma termination_info(version_hash_table.set((builtin.in), (builtin.in), (builtin.in)) = (builtin.out), infinite, can_loop).
+:- pragma termination_info(version_hash_table.set((builtin.in), (builtin.in), (builtin.in), (builtin.out)), infinite, can_loop).
+:- pragma termination_info(version_hash_table.'elem :='((builtin.in), (builtin.in), (builtin.in)) = (builtin.out), infinite, can_loop).
+:- pragma termination_info(version_hash_table.det_insert((builtin.in), (builtin.in), (builtin.in)) = (builtin.out), infinite, can_loop).
+:- pragma termination_info(version_hash_table.det_insert((builtin.in), (builtin.in), (builtin.in), (builtin.out)), infinite, can_loop).
+:- pragma termination_info(version_hash_table.det_update((builtin.in), (builtin.in), (builtin.in)) = (builtin.out), infinite, can_loop).
+:- pragma termination_info(version_hash_table.det_update((builtin.in), (builtin.in), (builtin.in), (builtin.out)), infinite, can_loop).
+:- pragma termination_info(version_hash_table.delete((builtin.in), (builtin.in)) = (builtin.out), infinite, can_loop).
+:- pragma termination_info(version_hash_table.delete((builtin.in), (builtin.in), (builtin.out)), infinite, can_loop).
+:- pragma termination_info(version_hash_table.lookup((builtin.in), (builtin.in)) = (builtin.out), infinite, can_loop).
+:- pragma termination_info(version_hash_table.elem((builtin.in), (builtin.in)) = (builtin.out), infinite, can_loop).
+:- pragma termination_info(version_hash_table.search((builtin.in), (builtin.in)) = (builtin.out), infinite, can_loop).
+:- pragma termination_info(version_hash_table.search((builtin.in), (builtin.in), (builtin.out)), infinite, can_loop).
+:- pragma termination_info(version_hash_table.to_assoc_list((builtin.in)) = (builtin.out), infinite, can_loop).
+:- pragma termination_info(version_hash_table.fold((builtin.in), (builtin.in), (builtin.in)) = (builtin.out), infinite, can_loop).
+:- pragma termination_info(version_hash_table.find_slot((builtin.in), (builtin.in)) = (builtin.out), infinite, can_loop).
+:- pragma termination_info(version_hash_table.apply_k_v((builtin.in), (builtin.in), (builtin.in), (builtin.in)) = (builtin.out), infinite, can_loop).

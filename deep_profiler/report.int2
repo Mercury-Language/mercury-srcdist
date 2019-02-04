@@ -1,0 +1,17 @@
+:- module report.
+:- interface.
+:- import_module list.
+:- import_module measurement_units.
+:- import_module profile.
+:- import_module query.
+:- import_module string.
+:- type deep_report
+	--->	report_message(string)
+	;	report_menu((report.quanta_per_sec) :: int, (report.user_quanta) :: int, (report.inst_quanta) :: int, (report.num_callsequs) :: int, (report.num_csd) :: int, (report.num_css) :: int, (report.num_pd) :: int, (report.num_ps) :: int, (report.num_clique) :: int)
+	;	report_top_procs((report.ordering) :: (report.report_ordering), (report.top_procs) :: (list.list((report.row_data((report.report_proc)))))).
+:- type report_ordering
+	--->	report_ordering((report.display_limit) :: (query.display_limit), (report.cost_kind) :: (query.cost_kind), (report.incl_desc) :: (query.include_descendants), (report.scope) :: (query.measurement_scope)).
+:- type report_proc
+	--->	report_proc((report.proc_static_ptr) :: (profile.proc_static_ptr), (report.proc_filename) :: string, (report.proc_linenumber) :: int, (report.proc_name) :: string).
+:- type row_data(T)
+	--->	row_data((report.subject) :: T, (report.calls) :: int, (report.exits) :: int, (report.fails) :: int, (report.redos) :: int, (report.excps) :: int, (report.self_ticks) :: int, (report.self_time) :: (measurement_units.time), (report.self_time_percent) :: (measurement_units.percent), (report.self_time_percall) :: (measurement_units.time), (report.ticks) :: int, (report.time) :: (measurement_units.time), (report.time_percent) :: (measurement_units.percent), (report.time_percall) :: (measurement_units.time), (report.self_callseqs) :: int, (report.self_callseqs_percent) :: (measurement_units.percent), (report.self_callseqs_percall) :: float, (report.callseqs) :: int, (report.callseqs_percent) :: (measurement_units.percent), (report.callseqs_percall) :: float, (report.self_allocs) :: int, (report.self_allocs_percent) :: (measurement_units.percent), (report.self_allocs_percall) :: float, (report.allocs) :: int, (report.allocs_percent) :: (measurement_units.percent), (report.allocs_percall) :: float, (report.bytes_per_word) :: int, (report.self_mem) :: (measurement_units.memory), (report.self_mem_percent) :: (measurement_units.percent), (report.self_mem_percall) :: (measurement_units.memory), (report.mem) :: (measurement_units.memory), (report.mem_percent) :: (measurement_units.percent), (report.mem_percall) :: (measurement_units.memory)).

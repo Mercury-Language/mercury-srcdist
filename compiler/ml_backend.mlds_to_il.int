@@ -1,0 +1,29 @@
+:- module (ml_backend.mlds_to_il).
+:- interface.
+:- import_module bool.
+:- import_module io.
+:- import_module list.
+:- import_module maybe.
+:- import_module set.
+:- import_module (hlds.hlds_pred).
+:- import_module (libs.globals).
+:- import_module (ml_backend.ilasm).
+:- import_module (ml_backend.ilds).
+:- import_module (ml_backend.mlds).
+:- type il_data_rep
+	--->	il_data_rep(((ml_backend.mlds_to_il).highlevel_data) :: (bool.bool), ((ml_backend.mlds_to_il).il_envptr_type) :: ((ml_backend.ilds).il_type)).
+:- func class_name(((ml_backend.mlds).mlds_module_name), string) = ((ml_backend.ilds).class_name).
+:- pred generate_il(((ml_backend.mlds).mlds), (list.list(((ml_backend.ilasm).decl))), (set.set(((libs.globals).foreign_language))), (io.io), (io.io)).
+:- mode generate_il((builtin.in), (builtin.out), (builtin.out), (builtin.di), (builtin.uo)) is det.
+:- pred get_il_data_rep(((ml_backend.mlds_to_il).il_data_rep), (io.io), (io.io)).
+:- mode get_il_data_rep((builtin.out), (builtin.di), (builtin.uo)) is det.
+:- func il_generic_class_name = ((ml_backend.ilds).class_name).
+:- pred mangle_mlds_proc_label(((ml_backend.mlds).mlds_qualified_proc_label), (maybe.maybe(((ml_backend.mlds).mlds_func_sequence_num))), ((ml_backend.ilds).class_name), ((ml_backend.ilds).id)).
+:- mode mangle_mlds_proc_label((builtin.in), (builtin.in), (builtin.out), (builtin.out)) is det.
+:- pred mangle_mlds_var(((ml_backend.mlds).mlds_var), ((ml_backend.ilds).id)).
+:- mode mangle_mlds_var((builtin.in), (builtin.out)) is det.
+:- func mlds_type_to_ilds_class_name(((ml_backend.mlds_to_il).il_data_rep), ((ml_backend.mlds).mlds_type)) = ((ml_backend.ilds).class_name).
+:- func mlds_type_to_ilds_type(((ml_backend.mlds_to_il).il_data_rep), ((ml_backend.mlds).mlds_type)) = ((ml_backend.ilds).il_type).
+:- func params_to_il_signature(((ml_backend.mlds_to_il).il_data_rep), ((ml_backend.mlds).mlds_module_name), ((ml_backend.mlds).mlds_func_params)) = ((ml_backend.ilds).signature).
+:- pred predlabel_to_csharp_id(((ml_backend.mlds).mlds_pred_label), ((hlds.hlds_pred).proc_id), (maybe.maybe(((ml_backend.mlds).mlds_func_sequence_num))), ((ml_backend.ilds).id)).
+:- mode predlabel_to_csharp_id((builtin.in), (builtin.in), (builtin.in), (builtin.out)) is det.

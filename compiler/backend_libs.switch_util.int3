@@ -1,0 +1,12 @@
+:- module (backend_libs.switch_util).
+:- interface.
+:- type maybe_int_switch_info.
+:- type ptag_count_list.
+:- type ptag_count_map.
+:- type switch_category.
+:- type ptag_case(CaseRep).
+:- type ptag_case_list(CaseRep).
+:- type ptag_case_map(CaseRep).
+:- type stag_goal_list(CaseRep).
+:- type stag_goal_map(CaseRep).
+:- type string_hash_slot(CaseRep).

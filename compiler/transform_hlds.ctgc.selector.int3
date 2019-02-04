@@ -1,0 +1,3 @@
+:- module ((transform_hlds.ctgc).selector).
+:- interface.
+:- type normalization.

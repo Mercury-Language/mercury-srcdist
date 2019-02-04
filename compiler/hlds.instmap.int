@@ -1,0 +1,114 @@
+:- module (hlds.instmap).
+:- interface.
+:- import_module assoc_list.
+:- import_module list.
+:- import_module map.
+:- import_module set.
+:- import_module (check_hlds.mode_errors).
+:- import_module (check_hlds.mode_info).
+:- import_module (hlds.hlds_module).
+:- import_module (parse_tree.prog_data).
+:- type instmap.
+:- type instmap_delta.
+:- type overlay_how
+	--->	large_base 
+	;	large_overlay 
+	;	test_size .
+:- pred apply_instmap_delta(((hlds.instmap).instmap), ((hlds.instmap).instmap_delta), ((hlds.instmap).instmap)).
+:- mode apply_instmap_delta((builtin.in), (builtin.in), (builtin.out)) is det.
+:- pred apply_sub(((parse_tree.prog_data).must_rename), (map.map(((parse_tree.prog_data).prog_var), ((parse_tree.prog_data).prog_var))), ((hlds.instmap).instmap), ((hlds.instmap).instmap)).
+:- mode apply_sub((builtin.in), (builtin.in), (builtin.in), (builtin.out)) is det.
+:- pred bind_var_to_functor(((parse_tree.prog_data).prog_var), ((parse_tree.prog_data).mer_type), ((parse_tree.prog_data).cons_id), ((hlds.instmap).instmap), ((hlds.instmap).instmap), ((hlds.hlds_module).module_info), ((hlds.hlds_module).module_info)).
+:- mode bind_var_to_functor((builtin.in), (builtin.in), (builtin.in), (builtin.in), (builtin.out), (builtin.in), (builtin.out)) is det.
+:- pred bind_var_to_functors(((parse_tree.prog_data).prog_var), ((parse_tree.prog_data).mer_type), ((parse_tree.prog_data).cons_id), (list.list(((parse_tree.prog_data).cons_id))), ((hlds.instmap).instmap), ((hlds.instmap).instmap), ((hlds.hlds_module).module_info), ((hlds.hlds_module).module_info)).
+:- mode bind_var_to_functors((builtin.in), (builtin.in), (builtin.in), (builtin.in), (builtin.in), (builtin.out), (builtin.in), (builtin.out)) is det.
+:- pred compute_instmap_delta(((hlds.instmap).instmap), ((hlds.instmap).instmap), (set.set(((parse_tree.prog_data).prog_var))), ((hlds.instmap).instmap_delta)).
+:- mode compute_instmap_delta((builtin.in), (builtin.in), (builtin.in), (builtin.out)) is det.
+:- pred from_assoc_list((assoc_list.assoc_list(((parse_tree.prog_data).prog_var), ((parse_tree.prog_data).mer_inst))), ((hlds.instmap).instmap)).
+:- mode from_assoc_list((builtin.in), (builtin.out)) is det.
+:- pred init_reachable(((hlds.instmap).instmap)).
+:- mode init_reachable((builtin.out)) is det.
+:- pred init_unreachable(((hlds.instmap).instmap)).
+:- mode init_unreachable((builtin.out)) is det.
+:- pred instmap_bound_vars(((hlds.instmap).instmap), ((hlds.hlds_module).module_info), (set.set(((parse_tree.prog_data).prog_var)))).
+:- mode instmap_bound_vars((builtin.in), (builtin.in), (builtin.out)) is det.
+:- pred instmap_changed_vars(((hlds.instmap).instmap), ((hlds.instmap).instmap), ((parse_tree.prog_data).vartypes), ((hlds.hlds_module).module_info), (set.set(((parse_tree.prog_data).prog_var)))).
+:- mode instmap_changed_vars((builtin.in), (builtin.in), (builtin.in), (builtin.in), (builtin.out)) is det.
+:- pred instmap_delta_apply_instmap_delta(((hlds.instmap).instmap_delta), ((hlds.instmap).instmap_delta), ((hlds.instmap).overlay_how), ((hlds.instmap).instmap_delta)).
+:- mode instmap_delta_apply_instmap_delta((builtin.in), (builtin.in), (builtin.in), (builtin.out)) is det.
+:- pred instmap_delta_apply_sub(((parse_tree.prog_data).must_rename), (map.map(((parse_tree.prog_data).prog_var), ((parse_tree.prog_data).prog_var))), ((hlds.instmap).instmap_delta), ((hlds.instmap).instmap_delta)).
+:- mode instmap_delta_apply_sub((builtin.in), (builtin.in), (builtin.in), (builtin.out)) is det.
+:- pred instmap_delta_bind_var_to_functor(((parse_tree.prog_data).prog_var), ((parse_tree.prog_data).mer_type), ((parse_tree.prog_data).cons_id), ((hlds.instmap).instmap), ((hlds.instmap).instmap_delta), ((hlds.instmap).instmap_delta), ((hlds.hlds_module).module_info), ((hlds.hlds_module).module_info)).
+:- mode instmap_delta_bind_var_to_functor((builtin.in), (builtin.in), (builtin.in), (builtin.in), (builtin.in), (builtin.out), (builtin.in), (builtin.out)) is det.
+:- pred instmap_delta_bind_var_to_functors(((parse_tree.prog_data).prog_var), ((parse_tree.prog_data).mer_type), ((parse_tree.prog_data).cons_id), (list.list(((parse_tree.prog_data).cons_id))), ((hlds.instmap).instmap), ((hlds.instmap).instmap_delta), ((hlds.instmap).instmap_delta), ((hlds.hlds_module).module_info), ((hlds.hlds_module).module_info)).
+:- mode instmap_delta_bind_var_to_functors((builtin.in), (builtin.in), (builtin.in), (builtin.in), (builtin.in), (builtin.in), (builtin.out), (builtin.in), (builtin.out)) is det.
+:- pred instmap_delta_changed_vars(((hlds.instmap).instmap_delta), (set.set(((parse_tree.prog_data).prog_var)))).
+:- mode instmap_delta_changed_vars((builtin.in), (builtin.out)) is det.
+:- pred instmap_delta_delete_vars((list.list(((parse_tree.prog_data).prog_var))), ((hlds.instmap).instmap_delta), ((hlds.instmap).instmap_delta)).
+:- mode instmap_delta_delete_vars((builtin.in), (builtin.in), (builtin.out)) is det.
+:- pred instmap_delta_from_assoc_list((assoc_list.assoc_list(((parse_tree.prog_data).prog_var), ((parse_tree.prog_data).mer_inst))), ((hlds.instmap).instmap_delta)).
+:- mode instmap_delta_from_assoc_list((builtin.in), (builtin.out)) is det.
+:- pred instmap_delta_from_mode_list((list.list(((parse_tree.prog_data).prog_var))), (list.list(((parse_tree.prog_data).mer_mode))), ((hlds.hlds_module).module_info), ((hlds.instmap).instmap_delta)).
+:- mode instmap_delta_from_mode_list((builtin.in), (builtin.in), (builtin.in), (builtin.out)) is det.
+:- pred instmap_delta_init_reachable(((hlds.instmap).instmap_delta)).
+:- mode instmap_delta_init_reachable((builtin.out)) is det.
+:- pred instmap_delta_init_unreachable(((hlds.instmap).instmap_delta)).
+:- mode instmap_delta_init_unreachable((builtin.out)) is det.
+:- pred instmap_delta_insert(((parse_tree.prog_data).prog_var), ((parse_tree.prog_data).mer_inst), ((hlds.instmap).instmap_delta), ((hlds.instmap).instmap_delta)).
+:- mode instmap_delta_insert((builtin.in), (builtin.in), (builtin.in), (builtin.out)) is det.
+:- pred instmap_delta_is_reachable(((hlds.instmap).instmap_delta)).
+:- mode instmap_delta_is_reachable((builtin.in)) is semidet.
+:- pred instmap_delta_is_unreachable(((hlds.instmap).instmap_delta)).
+:- mode instmap_delta_is_unreachable((builtin.in)) is semidet.
+:- pred instmap_delta_map_foldl(pred(((parse_tree.prog_data).prog_var), ((parse_tree.prog_data).mer_inst), ((parse_tree.prog_data).mer_inst), T, T), ((hlds.instmap).instmap_delta), ((hlds.instmap).instmap_delta), T, T).
+:- mode instmap_delta_map_foldl(builtin.in((pred((builtin.in), (builtin.in), (builtin.out), (builtin.in), (builtin.out)) is det)), (builtin.in), (builtin.out), (builtin.in), (builtin.out)) is det.
+:- pred instmap_delta_restrict((set.set(((parse_tree.prog_data).prog_var))), ((hlds.instmap).instmap_delta), ((hlds.instmap).instmap_delta)).
+:- mode instmap_delta_restrict((builtin.in), (builtin.in), (builtin.out)) is det.
+:- pred instmap_delta_search_var(((hlds.instmap).instmap_delta), ((parse_tree.prog_data).prog_var), ((parse_tree.prog_data).mer_inst)).
+:- mode instmap_delta_search_var((builtin.in), (builtin.in), (builtin.out)) is semidet.
+:- pred instmap_delta_set(((parse_tree.prog_data).prog_var), ((parse_tree.prog_data).mer_inst), ((hlds.instmap).instmap_delta), ((hlds.instmap).instmap_delta)).
+:- mode instmap_delta_set((builtin.in), (builtin.in), (builtin.in), (builtin.out)) is det.
+:- pred instmap_delta_to_assoc_list(((hlds.instmap).instmap_delta), (assoc_list.assoc_list(((parse_tree.prog_data).prog_var), ((parse_tree.prog_data).mer_inst)))).
+:- mode instmap_delta_to_assoc_list((builtin.in), (builtin.out)) is det.
+:- pred instmap_merge((set.set(((parse_tree.prog_data).prog_var))), (list.list(((hlds.instmap).instmap))), ((check_hlds.mode_errors).merge_context), ((check_hlds.mode_info).mode_info), ((check_hlds.mode_info).mode_info)).
+:- mode instmap_merge((builtin.in), (builtin.in), (builtin.in), (builtin.in), (builtin.out)) is det.
+:- pred instmap_restrict((set.set(((parse_tree.prog_data).prog_var))), ((hlds.instmap).instmap), ((hlds.instmap).instmap)).
+:- mode instmap_restrict((builtin.in), (builtin.in), (builtin.out)) is det.
+:- pred instmap_unify((set.set(((parse_tree.prog_data).prog_var))), (assoc_list.assoc_list(((hlds.instmap).instmap), (set.set(((parse_tree.prog_data).prog_var))))), ((check_hlds.mode_info).mode_info), ((check_hlds.mode_info).mode_info)).
+:- mode instmap_unify((builtin.in), (builtin.in), (builtin.in), (builtin.out)) is det.
+:- pred is_reachable(((hlds.instmap).instmap)).
+:- mode is_reachable((builtin.in)) is semidet.
+:- pred is_unreachable(((hlds.instmap).instmap)).
+:- mode is_unreachable((builtin.in)) is semidet.
+:- pred lookup_var(((hlds.instmap).instmap), ((parse_tree.prog_data).prog_var), ((parse_tree.prog_data).mer_inst)).
+:- mode lookup_var((builtin.in), (builtin.in), (builtin.out)) is det.
+:- pred lookup_vars((list.list(((parse_tree.prog_data).prog_var))), ((hlds.instmap).instmap), (list.list(((parse_tree.prog_data).mer_inst)))).
+:- mode lookup_vars((builtin.in), (builtin.in), (builtin.out)) is det.
+:- pred merge_instmap_delta(((hlds.instmap).instmap), (set.set(((parse_tree.prog_data).prog_var))), ((parse_tree.prog_data).vartypes), ((hlds.instmap).instmap_delta), ((hlds.instmap).instmap_delta), ((hlds.instmap).instmap_delta), ((hlds.hlds_module).module_info), ((hlds.hlds_module).module_info)).
+:- mode merge_instmap_delta((builtin.in), (builtin.in), (builtin.in), (builtin.in), (builtin.in), (builtin.out), (builtin.in), (builtin.out)) is det.
+:- pred merge_instmap_deltas(((hlds.instmap).instmap), (set.set(((parse_tree.prog_data).prog_var))), ((parse_tree.prog_data).vartypes), (list.list(((hlds.instmap).instmap_delta))), ((hlds.instmap).instmap_delta), ((hlds.hlds_module).module_info), ((hlds.hlds_module).module_info)).
+:- mode merge_instmap_deltas((builtin.in), (builtin.in), (builtin.in), (builtin.in), (builtin.out), (builtin.in), (builtin.out)) is det.
+:- pred no_output_vars(((hlds.instmap).instmap), ((hlds.instmap).instmap_delta), (set.set(((parse_tree.prog_data).prog_var))), ((parse_tree.prog_data).vartypes), ((hlds.hlds_module).module_info)).
+:- mode no_output_vars((builtin.in), (builtin.in), (builtin.in), (builtin.in), (builtin.in)) is semidet.
+:- pred pre_lambda_update(((hlds.hlds_module).module_info), (list.list(((parse_tree.prog_data).prog_var))), (list.list(((parse_tree.prog_data).mer_mode))), ((hlds.instmap).instmap), ((hlds.instmap).instmap)).
+:- mode pre_lambda_update((builtin.in), (builtin.in), (builtin.in), (builtin.in), (builtin.out)) is det.
+:- pred set(((parse_tree.prog_data).prog_var), ((parse_tree.prog_data).mer_inst), ((hlds.instmap).instmap), ((hlds.instmap).instmap)).
+:- mode set((builtin.in), (builtin.in), (builtin.in), (builtin.out)) is det.
+:- pred set_vars((list.list(((parse_tree.prog_data).prog_var))), (list.list(((parse_tree.prog_data).mer_inst))), ((hlds.instmap).instmap), ((hlds.instmap).instmap)).
+:- mode set_vars((builtin.in), (builtin.in), (builtin.in), (builtin.out)) is det.
+:- pred to_assoc_list(((hlds.instmap).instmap), (assoc_list.assoc_list(((parse_tree.prog_data).prog_var), ((parse_tree.prog_data).mer_inst)))).
+:- mode to_assoc_list((builtin.in), (builtin.out)) is det.
+:- pred unify_instmap_delta(((hlds.instmap).instmap), (set.set(((parse_tree.prog_data).prog_var))), ((hlds.instmap).instmap_delta), ((hlds.instmap).instmap_delta), ((hlds.instmap).instmap_delta), ((hlds.hlds_module).module_info), ((hlds.hlds_module).module_info)).
+:- mode unify_instmap_delta((builtin.in), (builtin.in), (builtin.in), (builtin.in), (builtin.out), (builtin.in), (builtin.out)) is det.
+:- pred var_is_any_in_instmap(((hlds.hlds_module).module_info), ((hlds.instmap).instmap), ((parse_tree.prog_data).prog_var)).
+:- mode var_is_any_in_instmap((builtin.in), (builtin.in), (builtin.in)) is semidet.
+:- pred var_is_bound_in_instmap_delta(((hlds.hlds_module).module_info), ((hlds.instmap).instmap), ((hlds.instmap).instmap_delta), ((parse_tree.prog_data).prog_var)).
+:- mode var_is_bound_in_instmap_delta((builtin.in), (builtin.in), (builtin.in), (builtin.in)) is semidet.
+:- pred var_is_ground_in_instmap(((hlds.hlds_module).module_info), ((hlds.instmap).instmap), ((parse_tree.prog_data).prog_var)).
+:- mode var_is_ground_in_instmap((builtin.in), (builtin.in), (builtin.in)) is semidet.
+:- pred vars(((hlds.instmap).instmap), (set.set(((parse_tree.prog_data).prog_var)))).
+:- mode vars((builtin.in), (builtin.out)) is det.
+:- pred vars_list(((hlds.instmap).instmap), (list.list(((parse_tree.prog_data).prog_var)))).
+:- mode vars_list((builtin.in), (builtin.out)) is det.
+:- implementation.
+:- type instmap_delta == ((hlds.instmap).instmap).

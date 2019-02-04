@@ -1,0 +1,12 @@
+:- module startup.
+:- interface.
+:- import_module bool.
+:- import_module dump.
+:- import_module io.
+:- import_module list.
+:- import_module maybe.
+:- import_module profile.
+:- pred read_and_startup(string, string, (list.list(string)), (bool.bool), (maybe.maybe((io.output_stream))), (list.list(string)), (maybe.maybe_error((profile.deep))), (io.io), (io.io)).
+:- mode read_and_startup((builtin.in), (builtin.in), (builtin.in), (builtin.in), (builtin.in), (builtin.in), (builtin.out), (builtin.di), (builtin.uo)) is det.
+:- pred read_and_startup(string, string, (list.list(string)), (bool.bool), (maybe.maybe((io.output_stream))), (list.list(string)), (dump.dump_options), (maybe.maybe_error((profile.deep))), (io.io), (io.io)).
+:- mode read_and_startup((builtin.in), (builtin.in), (builtin.in), (builtin.in), (builtin.in), (builtin.in), (builtin.in), (builtin.out), (builtin.di), (builtin.uo)) is det.

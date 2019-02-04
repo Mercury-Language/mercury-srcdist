@@ -1,0 +1,7 @@
+:- module create_report.
+:- interface.
+:- import_module profile.
+:- import_module query.
+:- import_module report.
+:- pred create_report((query.cmd), (profile.deep), (report.deep_report)).
+:- mode create_report((builtin.in), (builtin.in), (builtin.out)) is det.

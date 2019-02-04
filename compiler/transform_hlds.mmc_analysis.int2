@@ -1,0 +1,9 @@
+:- module (transform_hlds.mmc_analysis).
+:- interface.
+:- import_module analysis.
+:- import_module (hlds.hlds_module).
+:- import_module (hlds.hlds_pred).
+:- import_module (mdbcomp.prim_data).
+:- type mmc
+	--->	mmc .
+:- instance (analysis.compiler(((transform_hlds.mmc_analysis).mmc))).

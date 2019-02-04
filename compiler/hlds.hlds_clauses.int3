@@ -1,0 +1,5 @@
+:- module (hlds.hlds_clauses).
+:- interface.
+:- type clause.
+:- type clauses_info.
+:- type clauses_rep.

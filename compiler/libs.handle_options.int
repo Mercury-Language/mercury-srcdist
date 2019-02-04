@@ -1,0 +1,26 @@
+:- module (libs.handle_options).
+:- interface.
+:- import_module bool.
+:- import_module getopt_io.
+:- import_module io.
+:- import_module list.
+:- import_module (libs.globals).
+:- import_module (libs.options).
+:- pred compute_grade(((libs.globals).globals), string).
+:- mode compute_grade((builtin.in), (builtin.out)) is det.
+:- pred convert_grade_option(string, ((libs.options).option_table), ((libs.options).option_table)).
+:- mode convert_grade_option((builtin.in), (builtin.in), (builtin.out)) is semidet.
+:- pred display_compiler_version((io.io), (io.io)).
+:- mode display_compiler_version((builtin.di), (builtin.uo)) is det.
+:- pred grade_directory_component(((libs.globals).globals), string).
+:- mode grade_directory_component((builtin.in), (builtin.out)) is det.
+:- pred handle_options((list.list(string)), (list.list(string)), (list.list(string)), (list.list(string)), (bool.bool), (io.io), (io.io)).
+:- mode handle_options((builtin.in), (builtin.out), (builtin.out), (builtin.out), (builtin.out), (builtin.di), (builtin.uo)) is det.
+:- pred long_usage((io.io), (io.io)).
+:- mode long_usage((builtin.di), (builtin.uo)) is det.
+:- pred process_options((list.list(string)), (list.list(string)), (list.list(string)), (getopt_io.maybe_option_table(((libs.options).option))), (io.io), (io.io)).
+:- mode process_options((builtin.in), (builtin.out), (builtin.out), (builtin.out), (builtin.di), (builtin.uo)) is det.
+:- pred usage((io.io), (io.io)).
+:- mode usage((builtin.di), (builtin.uo)) is det.
+:- pred usage_errors((list.list(string)), (io.io), (io.io)).
+:- mode usage_errors((builtin.in), (builtin.di), (builtin.uo)) is det.
