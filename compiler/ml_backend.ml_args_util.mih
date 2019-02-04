@@ -1,0 +1,184 @@
+/*
+** Automatically generated from `ml_args_util.m'
+** by the Mercury compiler,
+** version rotd-2017-09-02
+** configured for x86_64-apple-darwin13.4.0.
+** Do not edit.
+**
+** The autoconfigured grade settings governing
+** the generation of this C file were
+**
+** TAG_BITS=2
+** UNBOXED_FLOAT=no
+** PREGENERATED_DIST=yes
+** HIGHLEVEL_CODE=yes
+**
+** END_OF_C_GRADE_INFO
+*/
+
+
+/* :- module ml_backend.ml_args_util. */
+/* :- interface. */
+
+#ifndef MR_HEADER_GUARD_ml_backend__ml_args_util
+#define MR_HEADER_GUARD_ml_backend__ml_args_util
+
+#ifdef __cplusplus
+extern "C" {
+#endif
+
+#include "mercury.h"
+
+
+#ifndef ML_BACKEND__ML_ARGS_UTIL_DECL_GUARD
+#define ML_BACKEND__ML_ARGS_UTIL_DECL_GUARD
+#include "ml_backend.mih"
+
+#endif
+
+
+
+
+extern const MR_TypeCtorInfo_Struct ml_backend__ml_args_util__ml_backend__ml_args_util__type_ctor_info_what_params_0;
+
+void MR_CALL 
+ml_backend__ml_args_util__f_85_110_117_115_101_100_65_114_103_115_95_95_112_114_101_100_95_95_109_108_95_103_101_110_95_116_115_99_99_95_97_114_103_95_100_101_99_108_115_95_95_91_53_93_95_48_17_p_0(
+  MR_Word param_1,
+  MR_Word param_2,
+  MR_Word param_3,
+  MR_Word param_4,
+  MR_Word param_5,
+  MR_Word param_6,
+  MR_Integer param_7,
+  MR_Integer param_8,
+  MR_Integer * param_9,
+  MR_Word param_10,
+  MR_Word * param_11,
+  MR_Word * param_12,
+  MR_Word * param_13,
+  MR_Word * param_14,
+  MR_Word * param_15,
+  MR_Word * param_16);
+
+void MR_CALL 
+ml_backend__ml_args_util__ml_append_return_statement_8_p_0(
+  MR_Word param_1,
+  MR_Word param_2,
+  MR_Word param_3,
+  MR_Word param_4,
+  MR_Word param_5,
+  MR_Word * param_6,
+  MR_Word param_7,
+  MR_Word * param_8);
+
+void MR_CALL 
+ml_backend__ml_args_util__ml_gen_args_18_p_0(
+  MR_Word param_1,
+  MR_Word param_2,
+  MR_Word param_3,
+  MR_Word param_4,
+  MR_Word param_5,
+  MR_Word param_6,
+  MR_Word param_7,
+  MR_Word param_8,
+  MR_Word param_9,
+  MR_Word param_10,
+  MR_Integer param_11,
+  MR_Word * param_12,
+  MR_Word * param_13,
+  MR_Word * param_14,
+  MR_Word * param_15,
+  MR_Word * param_16,
+  MR_Word param_17,
+  MR_Word * param_18);
+
+void MR_CALL 
+ml_backend__ml_args_util__ml_gen_info_params_8_p_0(
+  MR_Word param_1,
+  MR_Word param_2,
+  MR_Word param_3,
+  MR_Word param_4,
+  MR_Word param_5,
+  MR_Word * param_6,
+  MR_Word param_7,
+  MR_Word * param_8);
+
+void MR_CALL 
+ml_backend__ml_args_util__ml_gen_info_proc_params_4_p_0(
+  MR_Word param_1,
+  MR_Word * param_2,
+  MR_Word param_3,
+  MR_Word * param_4);
+
+void MR_CALL 
+ml_backend__ml_args_util__ml_gen_tscc_arg_decls_17_p_0(
+  MR_Word param_1,
+  MR_Word param_2,
+  MR_Word param_3,
+  MR_Word param_4,
+  MR_Word param_5,
+  MR_Word param_6,
+  MR_Word param_7,
+  MR_Integer param_8,
+  MR_Integer param_9,
+  MR_Integer * param_10,
+  MR_Word param_11,
+  MR_Word * param_12,
+  MR_Word * param_13,
+  MR_Word * param_14,
+  MR_Word * param_15,
+  MR_Word * param_16,
+  MR_Word * param_17);
+
+MR_Word MR_CALL 
+ml_backend__ml_args_util__get_copy_out_option_2_f_0(
+  MR_Word param_1,
+  MR_Word param_2);
+
+MR_Word MR_CALL 
+ml_backend__ml_args_util__ml_gen_params_no_gc_stmts_6_f_0(
+  MR_Word param_1,
+  MR_Word param_2,
+  MR_Word param_3,
+  MR_Word param_4,
+  MR_Word param_5,
+  MR_Word param_6);
+
+MR_Word MR_CALL 
+ml_backend__ml_args_util__ml_gen_proc_params_from_rtti_no_gc_stmts_2_f_0(
+  MR_Word param_1,
+  MR_Word param_2);
+
+MR_Word MR_CALL 
+ml_backend__ml_args_util__ml_gen_proc_params_inputs_only_no_gc_stmts_2_f_0(
+  MR_Word param_1,
+  MR_Word param_2);
+
+MR_Word MR_CALL 
+ml_backend__ml_args_util__ml_gen_proc_params_no_gc_stmts_2_f_0(
+  MR_Word param_1,
+  MR_Word param_2);
+
+void MR_CALL 
+ml_backend__ml_args_util____Compare____what_params_0_0(
+  MR_Word * param_1,
+  MR_Word param_2,
+  MR_Word param_3);
+
+MR_bool MR_CALL 
+ml_backend__ml_args_util____Unify____what_params_0_0(
+  MR_Word param_1,
+  MR_Word param_2);
+
+void mercury__ml_backend__ml_args_util__init(void);
+void mercury__ml_backend__ml_args_util__init_type_tables(void);
+void mercury__ml_backend__ml_args_util__init_debugger(void);
+const char *mercury__ml_backend__ml_args_util__grade_check(void);
+
+#ifdef __cplusplus
+}
+#endif
+
+#endif /* MR_HEADER_GUARD_ml_backend.ml_args_util */
+
+/* :- end_interface ml_backend.ml_args_util. */

@@ -1,0 +1,24 @@
+:- module (ml_backend.ml_gen_info).
+:- interface.
+:- type cond_seq.
+:- type conv_seq.
+:- type have_we_done_mutual_tail_rec
+	where	type_is_abstract_enum(1).
+:- type have_we_done_nontail_rec
+	where	type_is_abstract_enum(1).
+:- type have_we_done_self_tail_rec
+	where	type_is_abstract_enum(1).
+:- type label_num.
+:- type ml_const_struct_map.
+:- type ml_gen_info.
+:- type ml_gen_tscc_info.
+:- type ml_ground_term.
+:- type ml_ground_term_map.
+:- type success_cont.
+:- type tail_rec_info.
+:- type tail_rec_loop_kind
+	where	type_is_abstract_enum(1).
+:- type tail_rec_target_info.
+:- type tail_rec_target_map.
+:- type tscc_kind
+	where	type_is_abstract_enum(1).
