@@ -1,0 +1,3 @@
+:- module (((transform_hlds.ctgc).structure_reuse).indirect).
+:- interface.
+:- type sr_request.
