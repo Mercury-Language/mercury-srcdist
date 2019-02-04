@@ -1,0 +1,4 @@
+:- module (transform_hlds.tupling).
+:- implementation.
+:- type opt_tuple_alloc
+    --->    opt_tuple_alloc .

@@ -1,0 +1,223 @@
+:- module (backend_libs.rtti).
+:- interface.
+:- import_module bool.
+:- import_module hlds.
+:- import_module libs.
+:- import_module list.
+:- import_module map.
+:- import_module maybe.
+:- import_module mdbcomp.
+:- import_module parse_tree.
+:- import_module set.
+:- import_module univ.
+:- import_module (hlds.hlds_pred).
+:- import_module (hlds.hlds_rtti).
+:- import_module (libs.globals).
+:- import_module (mdbcomp.prim_data).
+:- import_module (mdbcomp.sym_name).
+:- import_module (parse_tree.prog_data).
+:- type base_typeclass_info
+    --->    base_typeclass_info(((backend_libs.rtti).num_extra) :: int, ((backend_libs.rtti).num_constraints) :: int, ((backend_libs.rtti).num_superclasses) :: int, ((backend_libs.rtti).class_arity) :: int, ((backend_libs.rtti).num_methods) :: int, ((backend_libs.rtti).methods) :: list.list(hlds.hlds_rtti.rtti_proc_label)).
+:- type builtin_ctor
+    --->    builtin_ctor_int 
+    ;       builtin_ctor_uint 
+    ;       builtin_ctor_int8 
+    ;       builtin_ctor_uint8 
+    ;       builtin_ctor_int16 
+    ;       builtin_ctor_uint16 
+    ;       builtin_ctor_int32 
+    ;       builtin_ctor_uint32 
+    ;       builtin_ctor_int64 
+    ;       builtin_ctor_uint64 
+    ;       builtin_ctor_float 
+    ;       builtin_ctor_char 
+    ;       builtin_ctor_string 
+    ;       builtin_ctor_void 
+    ;       builtin_ctor_c_pointer(backend_libs.rtti.is_stable)
+    ;       builtin_ctor_pred_ctor 
+    ;       builtin_ctor_func_ctor 
+    ;       builtin_ctor_tuple 
+    ;       builtin_ctor_ref 
+    ;       builtin_ctor_type_desc 
+    ;       builtin_ctor_pseudo_type_desc 
+    ;       builtin_ctor_type_ctor_desc .
+:- type call_or_answer_table
+    --->    call_table 
+    ;       answer_table .
+:- type ctor_rtti_name
+    --->    type_ctor_exist_locns(int)
+    ;       type_ctor_exist_locn 
+    ;       type_ctor_exist_tc_constr(int, int, int)
+    ;       type_ctor_exist_tc_constrs(int)
+    ;       type_ctor_exist_info(int)
+    ;       type_ctor_field_names(int)
+    ;       type_ctor_field_types(int)
+    ;       type_ctor_field_locns(int)
+    ;       type_ctor_enum_functor_desc(int)
+    ;       type_ctor_foreign_enum_functor_desc(int)
+    ;       type_ctor_notag_functor_desc 
+    ;       type_ctor_du_functor_desc(int)
+    ;       type_ctor_enum_name_ordered_table 
+    ;       type_ctor_enum_value_ordered_table 
+    ;       type_ctor_foreign_enum_name_ordered_table 
+    ;       type_ctor_foreign_enum_ordinal_ordered_table 
+    ;       type_ctor_du_name_ordered_table 
+    ;       type_ctor_du_stag_ordered_table(int)
+    ;       type_ctor_du_ptag_ordered_table 
+    ;       type_ctor_du_ptag_layout(int)
+    ;       type_ctor_functor_number_map 
+    ;       type_ctor_type_functors 
+    ;       type_ctor_type_layout 
+    ;       type_ctor_type_ctor_info 
+    ;       type_ctor_type_info(backend_libs.rtti.rtti_type_info)
+    ;       type_ctor_pseudo_type_info(backend_libs.rtti.rtti_pseudo_type_info)
+    ;       type_ctor_type_hashcons_pointer .
+:- type curr_or_prev_table
+    --->    curr_table 
+    ;       prev_table .
+:- type du_arg_info
+    --->    du_arg_info(((backend_libs.rtti).du_arg_name) :: maybe.maybe(string), ((backend_libs.rtti).du_arg_type) :: backend_libs.rtti.rtti_maybe_pseudo_type_info_or_self, ((backend_libs.rtti).du_arg_width) :: parse_tree.prog_data.arg_width).
+:- type du_functor
+    --->    du_functor(((backend_libs.rtti).du_name) :: string, ((backend_libs.rtti).du_orig_arity) :: int, ((backend_libs.rtti).du_ordinal) :: int, ((backend_libs.rtti).du_rep) :: backend_libs.rtti.du_rep, ((backend_libs.rtti).du_arg_infos) :: list.list(backend_libs.rtti.du_arg_info), ((backend_libs.rtti).du_exist_info) :: maybe.maybe(backend_libs.rtti.exist_info), ((backend_libs.rtti).du_subtype_info) :: backend_libs.rtti.functor_subtype_info).
+:- type du_rep
+    --->    du_ll_rep(((backend_libs.rtti).du_ll_ptag) :: int, ((backend_libs.rtti).du_ll_sec_tag) :: backend_libs.rtti.sectag_and_locn)
+    ;       du_hl_rep(((backend_libs.rtti).remote_sec_tag) :: int).
+:- type enum_functor
+    --->    enum_functor(((backend_libs.rtti).enum_name) :: string, ((backend_libs.rtti).enum_ordinal) :: int).
+:- type equality_axioms
+    --->    standard 
+    ;       user_defined .
+:- type exist_info
+    --->    exist_info(((backend_libs.rtti).exist_num_plain_typeinfos) :: int, ((backend_libs.rtti).exist_num_typeinfos_in_tcis) :: int, ((backend_libs.rtti).exist_typeclass_constraints) :: list.list(backend_libs.rtti.tc_constraint), ((backend_libs.rtti).exist_typeinfo_locns) :: list.list(backend_libs.rtti.exist_typeinfo_locn)).
+:- type exist_typeinfo_locn
+    --->    plain_typeinfo(int)
+    ;       typeinfo_in_tci(int, int).
+:- type foreign_enum_functor
+    --->    foreign_enum_functor(((backend_libs.rtti).foreign_enum_name) :: string, ((backend_libs.rtti).foreign_enum_ordinal) :: int, ((backend_libs.rtti).foreign_enum_value) :: string).
+:- type functor_subtype_info
+    --->    functor_subtype_none 
+    ;       functor_subtype_exists .
+:- type impl_ctor
+    --->    impl_ctor_hp 
+    ;       impl_ctor_succip 
+    ;       impl_ctor_maxfr 
+    ;       impl_ctor_curfr 
+    ;       impl_ctor_redofr 
+    ;       impl_ctor_redoip 
+    ;       impl_ctor_ticket 
+    ;       impl_ctor_trail_ptr 
+    ;       impl_ctor_type_info 
+    ;       impl_ctor_type_ctor_info 
+    ;       impl_ctor_typeclass_info 
+    ;       impl_ctor_base_typeclass_info 
+    ;       impl_ctor_subgoal .
+:- type is_array
+    --->    is_array 
+    ;       not_array .
+:- type is_stable
+    --->    is_stable 
+    ;       is_not_stable .
+:- type notag_functor
+    --->    notag_functor(((backend_libs.rtti).nt_name) :: string, ((backend_libs.rtti).nt_arg_type) :: backend_libs.rtti.rtti_maybe_pseudo_type_info, ((backend_libs.rtti).nt_arg_name) :: maybe.maybe(string), ((backend_libs.rtti).nt_subtype_info) :: backend_libs.rtti.functor_subtype_info).
+:- type proc_tabling_struct_id
+    --->    tabling_info 
+    ;       tabling_ptis 
+    ;       tabling_type_param_locns 
+    ;       tabling_root_node 
+    ;       tabling_steps_desc(backend_libs.rtti.call_or_answer_table)
+    ;       tabling_stats(backend_libs.rtti.call_or_answer_table, backend_libs.rtti.curr_or_prev_table)
+    ;       tabling_stat_steps(backend_libs.rtti.call_or_answer_table, backend_libs.rtti.curr_or_prev_table)
+    ;       tabling_tips .
+:- type ptag_map == map.map(int, backend_libs.rtti.sectag_table).
+:- type rtti_data
+    --->    rtti_data_type_ctor_info(backend_libs.rtti.type_ctor_data)
+    ;       rtti_data_type_info(backend_libs.rtti.rtti_type_info)
+    ;       rtti_data_pseudo_type_info(backend_libs.rtti.rtti_pseudo_type_info)
+    ;       rtti_data_base_typeclass_info(backend_libs.rtti.tc_name, mdbcomp.sym_name.module_name, string, backend_libs.rtti.base_typeclass_info)
+    ;       rtti_data_type_class_decl(backend_libs.rtti.tc_decl)
+    ;       rtti_data_type_class_instance(backend_libs.rtti.tc_instance).
+:- type rtti_id
+    --->    ctor_rtti_id(backend_libs.rtti.rtti_type_ctor, backend_libs.rtti.ctor_rtti_name)
+    ;       tc_rtti_id(backend_libs.rtti.tc_name, backend_libs.rtti.tc_rtti_name).
+:- type rtti_id_maybe_element
+    --->    item_type(backend_libs.rtti.rtti_id)
+    ;       element_type(backend_libs.rtti.rtti_id).
+:- type rtti_maybe_pseudo_type_info
+    --->    pseudo(backend_libs.rtti.rtti_pseudo_type_info)
+    ;       plain(backend_libs.rtti.rtti_type_info).
+:- type rtti_maybe_pseudo_type_info_or_self
+    --->    pseudo(backend_libs.rtti.rtti_pseudo_type_info)
+    ;       plain(backend_libs.rtti.rtti_type_info)
+    ;       self .
+:- type rtti_pseudo_type_info
+    --->    plain_arity_zero_pseudo_type_info(backend_libs.rtti.rtti_type_ctor)
+    ;       plain_pseudo_type_info(backend_libs.rtti.rtti_type_ctor, list.list(backend_libs.rtti.rtti_maybe_pseudo_type_info))
+    ;       var_arity_pseudo_type_info(backend_libs.rtti.var_arity_ctor_id, list.list(backend_libs.rtti.rtti_maybe_pseudo_type_info))
+    ;       type_var(int).
+:- type rtti_type_ctor
+    --->    rtti_type_ctor(mdbcomp.sym_name.module_name, string, parse_tree.prog_data.arity).
+:- type rtti_type_info
+    --->    plain_arity_zero_type_info(backend_libs.rtti.rtti_type_ctor)
+    ;       plain_type_info(backend_libs.rtti.rtti_type_ctor, list.list(backend_libs.rtti.rtti_type_info))
+    ;       var_arity_type_info(backend_libs.rtti.var_arity_ctor_id, list.list(backend_libs.rtti.rtti_type_info)).
+:- type sectag_and_locn
+    --->    sectag_locn_none 
+    ;       sectag_locn_none_direct_arg 
+    ;       sectag_locn_local(int)
+    ;       sectag_locn_remote(int).
+:- type sectag_locn
+    --->    sectag_none 
+    ;       sectag_none_direct_arg 
+    ;       sectag_local 
+    ;       sectag_remote .
+:- type sectag_table
+    --->    sectag_table(((backend_libs.rtti).sectag_locn) :: backend_libs.rtti.sectag_locn, ((backend_libs.rtti).sectag_num_sharers) :: int, ((backend_libs.rtti).sectag_map) :: backend_libs.rtti.stag_map).
+:- type stag_map == map.map(int, backend_libs.rtti.du_functor).
+:- type target_prefixes
+    --->    target_prefixes(((backend_libs.rtti).java_prefix) :: string, ((backend_libs.rtti).csharp_prefix) :: string).
+:- type tc_constraint
+    --->    tc_constraint(((backend_libs.rtti).tcc_class_name) :: backend_libs.rtti.tc_name, ((backend_libs.rtti).tcc_types) :: list.list(backend_libs.rtti.tc_type)).
+:- type tc_decl
+    --->    tc_decl(((backend_libs.rtti).tc_decl_id) :: backend_libs.rtti.tc_id, ((backend_libs.rtti).tc_decl_version_number) :: int, ((backend_libs.rtti).tc_decl_supers) :: list.list(backend_libs.rtti.tc_constraint)).
+:- type tc_dict
+    --->    tc_dict(((backend_libs.rtti).tcd_class) :: backend_libs.rtti.tc_name, ((backend_libs.rtti).tcd_types) :: list.list(backend_libs.rtti.rtti_type_info), ((backend_libs.rtti).tcd_methods) :: list.list(hlds.hlds_rtti.rtti_proc_label)).
+:- type tc_id
+    --->    tc_id(((backend_libs.rtti).tc_id_name) :: backend_libs.rtti.tc_name, ((backend_libs.rtti).tc_id_type_var_names) :: list.list(string), ((backend_libs.rtti).tc_id_methods) :: list.list(backend_libs.rtti.tc_method_id)).
+:- type tc_instance
+    --->    tc_instance(((backend_libs.rtti).tci_type_class) :: backend_libs.rtti.tc_name, ((backend_libs.rtti).tci_types) :: list.list(backend_libs.rtti.tc_type), ((backend_libs.rtti).tci_num_type_vars) :: int, ((backend_libs.rtti).tci_constraints) :: list.list(backend_libs.rtti.tc_constraint), ((backend_libs.rtti).tci_methods) :: list.list(hlds.hlds_rtti.rtti_proc_label)).
+:- type tc_method_id
+    --->    tc_method_id(((backend_libs.rtti).tcm_name) :: string, ((backend_libs.rtti).tcm_arity) :: int, ((backend_libs.rtti).tcm_pred_or_func) :: mdbcomp.prim_data.pred_or_func).
+:- type tc_name
+    --->    tc_name(((backend_libs.rtti).tcn_module) :: mdbcomp.sym_name.module_name, ((backend_libs.rtti).tcn_name) :: string, ((backend_libs.rtti).tcn_arity) :: int).
+:- type tc_rtti_name
+    --->    type_class_base_typeclass_info(mdbcomp.sym_name.module_name, string)
+    ;       type_class_id 
+    ;       type_class_id_var_names 
+    ;       type_class_id_method_ids 
+    ;       type_class_decl 
+    ;       type_class_decl_super(int, int)
+    ;       type_class_decl_supers 
+    ;       type_class_instance(list.list(backend_libs.rtti.tc_type))
+    ;       type_class_instance_tc_type_vector(list.list(backend_libs.rtti.tc_type))
+    ;       type_class_instance_constraint(list.list(backend_libs.rtti.tc_type), int, int)
+    ;       type_class_instance_constraints(list.list(backend_libs.rtti.tc_type))
+    ;       type_class_instance_methods(list.list(backend_libs.rtti.tc_type)).
+:- type tc_type == backend_libs.rtti.rtti_maybe_pseudo_type_info.
+:- type type_ctor_data
+    --->    type_ctor_data(((backend_libs.rtti).tcr_version) :: int, ((backend_libs.rtti).tcr_module_name) :: mdbcomp.sym_name.module_name, ((backend_libs.rtti).tcr_type_name) :: string, ((backend_libs.rtti).tcr_arity) :: int, ((backend_libs.rtti).tcr_unify_pred) :: univ.univ, ((backend_libs.rtti).tcr_compare_pred) :: univ.univ, ((backend_libs.rtti).tcr_flags) :: set.set(backend_libs.rtti.type_ctor_flag), ((backend_libs.rtti).tcr_rep_details) :: backend_libs.rtti.type_ctor_details).
+:- type type_ctor_details
+    --->    tcd_enum(((backend_libs.rtti).enum_axioms) :: backend_libs.rtti.equality_axioms, ((backend_libs.rtti).enum_functors) :: list.list(backend_libs.rtti.enum_functor), ((backend_libs.rtti).enum_value_table) :: map.map(int, backend_libs.rtti.enum_functor), ((backend_libs.rtti).enum_name_table) :: map.map(string, backend_libs.rtti.enum_functor), ((backend_libs.rtti).enum_is_dummy) :: bool.bool, ((backend_libs.rtti).enum_functor_number_mapping) :: list.list(int))
+    ;       tcd_foreign_enum(((backend_libs.rtti).foreign_enum_language) :: libs.globals.foreign_language, ((backend_libs.rtti).foreign_enum_axioms) :: backend_libs.rtti.equality_axioms, ((backend_libs.rtti).foreign_enum_functors) :: list.list(backend_libs.rtti.foreign_enum_functor), ((backend_libs.rtti).foreign_enum_ordinal_table) :: map.map(int, backend_libs.rtti.foreign_enum_functor), ((backend_libs.rtti).foreign_enum_name_table) :: map.map(string, backend_libs.rtti.foreign_enum_functor), ((backend_libs.rtti).foreign_enum_functor_number_mapping) :: list.list(int))
+    ;       tcd_du(((backend_libs.rtti).du_axioms) :: backend_libs.rtti.equality_axioms, ((backend_libs.rtti).du_functors) :: list.list(backend_libs.rtti.du_functor), ((backend_libs.rtti).du_value_table) :: backend_libs.rtti.ptag_map, ((backend_libs.rtti).du_name_table) :: map.map(string, map.map(int, backend_libs.rtti.du_functor)), ((backend_libs.rtti).du_functor_number_mapping) :: list.list(int))
+    ;       tcd_notag(((backend_libs.rtti).notag_axioms) :: backend_libs.rtti.equality_axioms, ((backend_libs.rtti).notag_functor) :: backend_libs.rtti.notag_functor)
+    ;       tcd_eqv(((backend_libs.rtti).eqv_type) :: backend_libs.rtti.rtti_maybe_pseudo_type_info)
+    ;       tcd_builtin(((backend_libs.rtti).builtin_ctor) :: backend_libs.rtti.builtin_ctor)
+    ;       tcd_impl_artifact(((backend_libs.rtti).impl_ctor) :: backend_libs.rtti.impl_ctor)
+    ;       tcd_foreign(((backend_libs.rtti).is_stable) :: backend_libs.rtti.is_stable).
+:- type type_ctor_flag
+    --->    variable_arity_flag 
+    ;       kind_of_du_flag .
+:- type var_arity_ctor_id
+    --->    pred_type_info 
+    ;       func_type_info 
+    ;       tuple_type_info .

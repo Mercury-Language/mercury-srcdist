@@ -1,0 +1,4 @@
+:- module ((transform_hlds.rbmm).condition_renaming).
+:- interface.
+:- type goal_path_regions_table.
+:- type proc_goal_path_regions_table.
