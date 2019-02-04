@@ -1,0 +1,5 @@
+:- module (check_hlds.simplify).
+:- interface.
+:- type simplification.
+:- type simplifications.
+:- type simplify_info.

@@ -1,0 +1,4 @@
+:- module (parse_tree.file_names).
+:- interface.
+:- type maybe_create_dirs.
+:- type maybe_search.

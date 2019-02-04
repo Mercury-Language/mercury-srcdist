@@ -1,0 +1,13 @@
+module(1, "svqueue.m",
+	svqueue,
+	{},
+	{builtin, list, queue, private_builtin},
+	{builtin, list, queue, private_builtin},
+	{},
+	{},
+	{},
+	{},
+	{},
+	no_foreign_export,
+	no_main
+).

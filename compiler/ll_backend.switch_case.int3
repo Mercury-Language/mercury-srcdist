@@ -1,0 +1,6 @@
+:- module (ll_backend.switch_case).
+:- interface.
+:- type case_code_included.
+:- type case_label_info.
+:- type case_label_map.
+:- type represent_params.

@@ -1,0 +1,18 @@
+:- module ((mdbcomp.feedback).automatic_parallelism).
+:- interface.
+:- type best_par_algorithm.
+:- type callee_rep.
+:- type candidate_par_conjunctions_params.
+:- type candidate_par_conjunctions_proc.
+:- type conjuncts_are_dependent.
+:- type cost_above_par_threshold.
+:- type parallel_exec_metrics.
+:- type parallelise_dep_conjs.
+:- type pard_goal.
+:- type pard_goal_annotation.
+:- type push_goal.
+:- type speedup_estimate_alg.
+:- type stat_measure.
+:- type candidate_par_conjunction(GoalType).
+:- type candidate_par_conjunctions_proc(GoalType).
+:- type seq_conj(GoalType).

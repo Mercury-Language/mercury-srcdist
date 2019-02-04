@@ -1,0 +1,13 @@
+module(1, "feedback.automatic_parallelism.m",
+	((mdbcomp.feedback).automatic_parallelism),
+	{mdbcomp, (mdbcomp.feedback)},
+	{builtin, bool, list, maybe, set, string, (mdbcomp.goal_path), (mdbcomp.program_representation), private_builtin},
+	{builtin, bool, list, maybe, set, string, (mdbcomp.goal_path), (mdbcomp.program_representation), exception, float, map, require, unit, univ, private_builtin},
+	{},
+	{},
+	{},
+	{},
+	{},
+	no_foreign_export,
+	no_main
+).

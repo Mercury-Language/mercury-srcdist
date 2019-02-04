@@ -1,0 +1,12405 @@
+/*
+** Automatically generated from `recompilation.usage.m'
+** by the Mercury compiler,
+** version rotd-2011-05-29, configured for x86_64-unknown-linux-gnu.
+** Do not edit.
+**
+** The autoconfigured grade settings governing
+** the generation of this C file were
+**
+** TAG_BITS=2
+** UNBOXED_FLOAT=no
+** HIGHLEVEL_CODE=no
+**
+** END_OF_C_GRADE_INFO
+*/
+
+/*
+INIT mercury__recompilation__usage__init
+ENDINIT
+*/
+
+#define MR_ALLOW_RESET
+#include "mercury_imp.h"
+#line 526 "../library/io.int"
+#include "io.mh"
+
+#line 28 "recompilation.usage.c"
+#line 536 "../library/io.int"
+#include "string.mh"
+
+#line 32 "recompilation.usage.c"
+#line 45 "../library/time.int"
+#include "time.mh"
+
+#line 36 "recompilation.usage.c"
+#line 31 "../library/bitmap.int2"
+#include "bitmap.mh"
+
+#line 40 "recompilation.usage.c"
+#line 33 "../library/array.int2"
+#include "array.mh"
+
+#line 44 "recompilation.usage.c"
+#line 39 "../mdbcomp/mdbcomp.rtti_access.int2"
+#include "mdbcomp.rtti_access.mh"
+
+#line 48 "recompilation.usage.c"
+#line 49 "recompilation.usage.c"
+#include "recompilation.usage.mh"
+
+#line 52 "recompilation.usage.c"
+#line 53 "recompilation.usage.c"
+#ifndef RECOMPILATION__USAGE_DECL_GUARD
+#define RECOMPILATION__USAGE_DECL_GUARD
+
+#line 57 "recompilation.usage.c"
+#line 58 "recompilation.usage.c"
+
+#endif
+#line 61 "recompilation.usage.c"
+
+#ifdef _MSC_VER
+#define MR_STATIC_LINKAGE extern
+#else
+#define MR_STATIC_LINKAGE static
+#endif
+
+struct mercury_type_0 {
+	MR_Word * f1[3];
+};
+MR_STATIC_LINKAGE const struct mercury_type_0 mercury_common_0[];
+
+struct mercury_type_1 {
+	MR_Word * f1[2];
+};
+MR_STATIC_LINKAGE const struct mercury_type_1 mercury_common_1[];
+
+struct mercury_type_2 {
+	MR_Word * f1[2];
+	MR_Integer f2;
+	MR_Word * f3[3];
+};
+MR_STATIC_LINKAGE const struct mercury_type_2 mercury_common_2[];
+
+struct mercury_type_3 {
+	MR_Word * f1;
+	MR_Code * f2;
+	MR_Integer f3;
+};
+MR_STATIC_LINKAGE const struct mercury_type_3 mercury_common_3[];
+
+struct mercury_type_4 {
+	MR_Word * f1;
+	MR_Word * f2;
+	MR_Integer f3;
+};
+MR_STATIC_LINKAGE const struct mercury_type_4 mercury_common_4[];
+
+struct mercury_type_5 {
+	MR_Word * f1;
+	MR_Integer f2;
+	MR_Word * f3;
+	MR_Word * f4;
+	MR_Word * f5;
+};
+MR_STATIC_LINKAGE const struct mercury_type_5 mercury_common_5[];
+
+struct mercury_type_6 {
+	MR_Unsigned f1[2];
+};
+MR_STATIC_LINKAGE const struct mercury_type_6 mercury_common_6[];
+
+struct mercury_type_7 {
+	MR_Word * f1[2];
+	MR_Integer f2;
+	MR_Word * f3[5];
+};
+MR_STATIC_LINKAGE const struct mercury_type_7 mercury_common_7[];
+
+struct mercury_type_8 {
+	MR_Word * f1;
+	MR_Code * f2;
+	MR_Integer f3;
+	MR_Word * f4;
+	MR_Word * f5;
+};
+MR_STATIC_LINKAGE const struct mercury_type_8 mercury_common_8[];
+
+struct mercury_type_9 {
+	MR_Word * f1[4];
+};
+MR_STATIC_LINKAGE const struct mercury_type_9 mercury_common_9[];
+
+struct mercury_type_10 {
+	MR_Word * f1[2];
+	MR_Integer f2;
+	MR_Word * f3[4];
+};
+MR_STATIC_LINKAGE const struct mercury_type_10 mercury_common_10[];
+
+struct mercury_type_11 {
+	MR_Word * f1;
+	MR_Word * f2;
+	MR_Integer f3;
+	MR_Word * f4;
+	MR_Word * f5;
+};
+MR_STATIC_LINKAGE const struct mercury_type_11 mercury_common_11[];
+
+struct mercury_type_12 {
+	MR_Word * f1[2];
+	MR_Integer f2;
+	MR_Word * f3[7];
+};
+MR_STATIC_LINKAGE const struct mercury_type_12 mercury_common_12[];
+
+struct mercury_type_13 {
+	MR_Word * f1[2];
+	MR_Integer f2;
+	MR_Word * f3[6];
+};
+MR_STATIC_LINKAGE const struct mercury_type_13 mercury_common_13[];
+
+extern const MR_TypeCtorInfo_Struct
+	mercury_data_recompilation__usage__type_ctor_info_imported_item_set_0,
+	mercury_data_recompilation__usage__type_ctor_info_imported_items_0,
+	mercury_data_recompilation__usage__type_ctor_info_module_imported_items_0,
+	mercury_data_recompilation__usage__type_ctor_info_recompilation_usage_info_0,
+	mercury_data_recompilation__usage__type_ctor_info_record_resolved_item_1,
+	mercury_data_recompilation__usage__type_ctor_info_resolved_functor_0,
+	mercury_data_recompilation__usage__type_ctor_info_resolved_functor_map_0,
+	mercury_data_recompilation__usage__type_ctor_info_resolved_functor_set_0,
+	mercury_data_recompilation__usage__type_ctor_info_resolved_item_list_1,
+	mercury_data_recompilation__usage__type_ctor_info_resolved_item_map_1;
+
+extern const MR_TypeCtorInfo_Struct
+	mercury_data_recompilation__usage__type_ctor_info_resolved_item_set_1,
+	mercury_data_recompilation__usage__type_ctor_info_resolved_pred_or_func_map_0,
+	mercury_data_recompilation__usage__type_ctor_info_resolved_pred_or_func_set_0,
+	mercury_data_recompilation__usage__type_ctor_info_resolved_used_items_0,
+	mercury_data_recompilation__usage__type_ctor_info_write_resolved_item_1;
+MR_decl_label2(f_114_101_99_111_109_112_105_108_97_116_105_111_110_95_95_117_115_97_103_101_95_95_85_110_117_115_101_100_65_114_103_115_95_95_112_114_101_100_95_95_102_105_110_100_95_105_116_101_109_115_95_117_115_101_100_95_98_121_95_102_117_110_99_116_111_114_95_95_91_50_93_95_48_5_0, 3,5)
+MR_decl_label2(f_114_101_99_111_109_112_105_108_97_116_105_111_110_95_95_117_115_97_103_101_95_95_85_110_117_115_101_100_65_114_103_115_95_95_112_114_101_100_95_95_102_105_110_100_95_105_116_101_109_115_95_117_115_101_100_95_98_121_95_102_117_110_99_116_111_114_115_95_51_95_95_91_52_93_95_48_6_0, 2,3)
+MR_decl_label5(f_114_101_99_111_109_112_105_108_97_116_105_111_110_95_95_117_115_97_103_101_95_95_85_110_117_115_101_100_65_114_103_115_95_95_112_114_101_100_95_95_102_105_110_100_95_105_116_101_109_115_95_117_115_101_100_95_98_121_95_112_114_101_100_115_95_51_95_95_91_53_93_95_48_7_0, 2,4,19,20,21)
+MR_decl_label1(f_114_101_99_111_109_112_105_108_97_116_105_111_110_95_95_117_115_97_103_101_95_95_85_110_117_115_101_100_65_114_103_115_95_95_112_114_101_100_95_95_102_105_110_100_95_105_116_101_109_115_95_117_115_101_100_95_98_121_95_112_114_111_99_95_97_114_103_95_109_111_100_101_115_95_95_91_49_93_95_48_4_0, 2)
+MR_decl_label10(f_114_101_99_111_109_112_105_108_97_116_105_111_110_95_95_117_115_97_103_101_95_95_85_110_117_115_101_100_65_114_103_115_95_95_112_114_101_100_95_95_114_101_99_111_114_100_95_114_101_115_111_108_118_101_100_95_105_116_101_109_95_50_95_95_104_111_53_95_95_91_53_93_95_48_9_0, 6,8,7,10,12,5,17,18,20,16)
+MR_decl_label5(f_114_101_99_111_109_112_105_108_97_116_105_111_110_95_95_117_115_97_103_101_95_95_85_110_117_115_101_100_65_114_103_115_95_95_112_114_101_100_95_95_114_101_99_111_114_100_95_114_101_115_111_108_118_101_100_95_105_116_101_109_95_50_95_95_104_111_53_95_95_91_53_93_95_48_9_0, 24,26,23,29,31)
+MR_decl_label2(f_114_101_99_111_109_112_105_108_97_116_105_111_110_95_95_117_115_97_103_101_95_95_85_110_117_115_101_100_65_114_103_115_95_95_112_114_101_100_95_95_114_101_99_111_114_100_95_114_101_115_111_108_118_101_100_95_105_116_101_109_95_51_95_95_104_111_56_95_95_91_53_93_95_48_9_0, 5,4)
+MR_decl_label7(f_114_101_99_111_109_112_105_108_97_116_105_111_110_95_95_117_115_97_103_101_95_95_85_110_117_115_101_100_65_114_103_115_95_95_112_114_101_100_95_95_114_101_99_111_114_100_95_114_101_115_111_108_118_101_100_95_105_116_101_109_95_95_104_111_50_95_95_91_52_93_95_48_7_0, 4,5,10,6,13,15,19)
+MR_decl_label6(recompilation__usage__do_record_used_functor_8_0, 2,3,5,8,6,11)
+MR_decl_label9(recompilation__usage__do_record_used_pred_or_func_9_0, 3,4,5,9,10,12,13,16,2)
+MR_decl_label10(recompilation__usage__find_all_used_imported_items_7_0, 5,9,10,12,13,18,24,25,26,27)
+MR_decl_label1(recompilation__usage__find_all_used_imported_items_7_0, 30)
+MR_decl_label10(recompilation__usage__find_all_used_imported_items_2_3_0, 2,5,6,7,8,9,10,11,12,13)
+MR_decl_label2(recompilation__usage__find_items_used_by_bound_inst_3_0, 4,2)
+MR_decl_label2(recompilation__usage__find_items_used_by_class_constraint_3_0, 2,4)
+MR_decl_label1(recompilation__usage__find_items_used_by_class_context_3_0, 3)
+MR_decl_label3(recompilation__usage__find_items_used_by_class_method_3_0, 5,7,3)
+MR_decl_label1(recompilation__usage__find_items_used_by_ctor_3_0, 3)
+MR_decl_label10(recompilation__usage__find_items_used_by_inst_3_0, 90,3,4,7,5,10,12,14,11,17)
+MR_decl_label4(recompilation__usage__find_items_used_by_inst_3_0, 20,22,38,26)
+MR_decl_label1(recompilation__usage__find_items_used_by_inst_defn_3_0, 3)
+MR_decl_label10(recompilation__usage__find_items_used_by_inst_name_3_0, 76,3,7,6,10,12,9,15,17,19)
+MR_decl_label3(recompilation__usage__find_items_used_by_inst_name_3_0, 21,23,25)
+MR_decl_label10(recompilation__usage__find_items_used_by_instance_4_0, 3,4,2,7,9,12,10,14,15,16)
+MR_decl_label1(recompilation__usage__find_items_used_by_instance_4_0, 18)
+MR_decl_label8(recompilation__usage__find_items_used_by_instances_4_0, 6,7,12,14,16,9,3,4)
+MR_decl_label10(recompilation__usage__find_items_used_by_item_4_0, 3,4,7,8,9,10,11,6,14,15)
+MR_decl_label10(recompilation__usage__find_items_used_by_item_4_0, 16,17,13,19,20,23,24,25,26,22)
+MR_decl_label10(recompilation__usage__find_items_used_by_item_4_0, 32,33,34,35,31,39,40,41,65,43)
+MR_decl_label4(recompilation__usage__find_items_used_by_item_4_0, 46,49,47,37)
+MR_decl_label4(recompilation__usage__find_items_used_by_mode_3_0, 4,3,6,8)
+MR_decl_label10(recompilation__usage__find_items_used_by_pred_5_0, 2,3,11,9,14,15,4,5,18,19)
+MR_decl_label10(recompilation__usage__find_items_used_by_pred_5_0, 21,24,22,27,17,31,32,33,34,35)
+MR_decl_label6(recompilation__usage__find_items_used_by_pred_5_0, 37,38,39,40,43,41)
+MR_decl_label7(recompilation__usage__find_items_used_by_type_3_0, 4,11,13,14,6,7,2)
+MR_decl_label2(recompilation__usage__find_items_used_by_type_and_mode_3_0, 4,3)
+MR_decl_label2(recompilation__usage__find_items_used_by_type_body_3_0, 3,6)
+MR_decl_label4(recompilation__usage__find_items_used_by_type_spec_3_0, 5,7,9,2)
+MR_decl_label10(recompilation__usage__find_matching_functors_4_0, 2,3,7,5,9,11,13,16,18,10)
+MR_decl_label10(recompilation__usage__find_matching_functors_4_0, 21,22,23,25,28,24,29,31,33,35)
+MR_decl_label4(recompilation__usage__find_matching_functors_4_0, 38,30,45,46)
+MR_decl_label2(recompilation__usage__insert_into_imported_items_map_3_0, 4,5)
+MR_decl_label3(recompilation__usage__item_is_recorded_used_3_0, 6,8,1)
+MR_decl_label10(recompilation__usage__maybe_record_item_to_process_4_0, 4,2,6,13,15,17,8,22,23,20)
+MR_decl_label2(recompilation__usage__maybe_record_item_to_process_4_0, 26,28)
+MR_decl_label5(recompilation__usage__process_imported_item_queue_2_0, 15,2,4,7,5)
+MR_decl_label4(recompilation__usage__process_imported_item_queue_2_3_0, 13,3,5,2)
+MR_decl_label3(recompilation__usage__record_expanded_items_used_by_item_4_0, 5,7,2)
+MR_decl_label10(recompilation__usage__record_imported_item_4_0, 2,5,10,6,14,15,16,17,19,20)
+MR_decl_label1(recompilation__usage__record_imported_item_4_0, 22)
+MR_decl_label10(recompilation__usage__record_resolved_item_2__ho6_9_0, 5,6,8,4,12,13,15,11,19,21)
+MR_decl_label3(recompilation__usage__record_resolved_item_2__ho6_9_0, 18,24,26)
+MR_decl_label2(recompilation__usage__record_resolved_item_3__ho7_9_0, 4,3)
+MR_decl_label7(recompilation__usage__record_resolved_item__ho1_7_0, 3,4,9,5,12,14,18)
+MR_decl_label4(recompilation__usage__record_used_pred_or_func_4_0, 2,17,18,19)
+MR_decl_label3(recompilation__usage__visible_modules_2_0, 1,3,4)
+MR_decl_label2(recompilation__usage__write_classname_and_arity_3_0, 2,3)
+MR_decl_label10(recompilation__usage__write_functor_matches_5_0, 7,2,28,10,14,15,16,20,24,25)
+MR_decl_label4(recompilation__usage__write_functor_matches_2_3_0, 2,3,4,6)
+MR_decl_label10(recompilation__usage__write_module_name_and_used_items_7_0, 2,3,4,5,6,7,8,9,11,13)
+MR_decl_label9(recompilation__usage__write_module_name_and_used_items_7_0, 18,20,25,26,29,27,32,34,15)
+MR_decl_label6(recompilation__usage__write_pred_or_func_matches_6_0, 16,19,17,22,23,24)
+MR_decl_label5(recompilation__usage__write_pred_or_func_matches_2_4_0, 4,5,6,10,14)
+MR_decl_label8(recompilation__usage__write_pred_or_func_matches_3_3_0, 3,4,5,9,7,12,14,16)
+MR_decl_label10(recompilation__usage__write_resolved_functor_3_0, 4,5,6,3,10,11,12,13,14,15)
+MR_decl_label7(recompilation__usage__write_resolved_functor_3_0, 16,9,19,20,21,22,23)
+MR_decl_label3(recompilation__usage__write_resolved_item_set_2_4_0, 3,4,8)
+MR_decl_label4(recompilation__usage__write_resolved_item_set_3_4_0, 2,3,4,6)
+MR_decl_label10(recompilation__usage__write_simple_item_matches_6_0, 16,19,17,22,23,24,25,26,27,30)
+MR_decl_label1(recompilation__usage__write_simple_item_matches_6_0, 31)
+MR_decl_label6(recompilation__usage__write_simple_item_matches_3_3_0, 3,4,5,6,7,10)
+MR_decl_label4(recompilation__usage__write_simple_item_matches_4_3_0, 2,5,7,9)
+MR_decl_label10(recompilation__usage__write_usage_file_5_0, 2,6,7,8,9,10,11,14,15,16)
+MR_decl_label8(recompilation__usage__write_usage_file_5_0, 17,18,19,13,21,22,23,25)
+MR_decl_label10(recompilation__usage__write_usage_file_2_6_0, 2,3,4,5,6,7,8,9,10,11)
+MR_decl_label10(recompilation__usage__write_usage_file_2_6_0, 12,13,14,16,18,20,21,22,24,28)
+MR_decl_label10(recompilation__usage__write_usage_file_2_6_0, 23,31,32,33,34,35,36,37,38,39)
+MR_decl_label10(recompilation__usage__write_usage_file_2_6_0, 40,43,45,42,50,51,53,54,60,61)
+MR_decl_label2(fn__recompilation__usage__IntroducedFrom__func__do_record_used_pred_or_func__679__1_2_0, 2,3)
+MR_decl_label1(fn__recompilation__usage__IntroducedFrom__func__find_matching_functors__748__1_1_0, 2)
+MR_decl_label2(fn__recompilation__usage__IntroducedFrom__func__find_matching_functors__776__1_1_0, 4,2)
+MR_decl_label1(fn__recompilation__usage__IntroducedFrom__func__write_module_name_and_used_items__261__1_3_0, 4)
+MR_decl_label9(fn__f_114_101_99_111_109_112_105_108_97_116_105_111_110_95_95_117_115_97_103_101_95_95_85_110_117_115_101_100_65_114_103_115_95_95_102_117_110_99_95_95_103_101_116_95_112_114_101_100_95_111_114_95_102_117_110_99_95_99_116_111_114_115_95_95_91_50_93_95_48_4_0, 2,3,4,5,6,7,10,9,1)
+MR_decl_label8(__Unify___recompilation__usage__recompilation_usage_info_0_0, 4,6,11,14,17,32,36,1)
+MR_decl_label6(__Unify___recompilation__usage__resolved_functor_0_0, 5,11,26,9,16,1)
+MR_decl_label9(__Compare___recompilation__usage__recompilation_usage_info_0_0, 3,2,5,9,16,21,26,44,101)
+MR_decl_label10(__Compare___recompilation__usage__resolved_functor_0_0, 3,2,7,5,58,12,15,10,21,22)
+MR_decl_label4(__Compare___recompilation__usage__resolved_functor_0_0, 24,28,32,112)
+MR_def_extern_entry(fn__recompilation__usage__usage_file_version_number_0_0)
+MR_decl_static(recompilation__usage__write_simple_item_matches_6_0)
+MR_decl_static(recompilation__usage__write_pred_or_func_matches_2_4_0)
+MR_decl_static(recompilation__usage__write_pred_or_func_matches_6_0)
+MR_decl_static(recompilation__usage__write_functor_matches_5_0)
+MR_decl_static(recompilation__usage__record_used_pred_or_func_4_0)
+MR_decl_static(recompilation__usage__find_items_used_by_types_3_0)
+MR_decl_static(recompilation__usage__item_is_recorded_used_3_0)
+MR_decl_static(recompilation__usage__record_imported_item_4_0)
+MR_decl_static(recompilation__usage__record_expanded_items_used_by_item_4_0)
+MR_decl_static(recompilation__usage__maybe_record_item_to_process_4_0)
+MR_decl_static(recompilation__usage__find_items_used_by_type_3_0)
+MR_decl_static(recompilation__usage__find_items_used_by_type_body_3_0)
+MR_decl_static(recompilation__usage__find_items_used_by_insts_3_0)
+MR_decl_static(recompilation__usage__find_items_used_by_modes_3_0)
+MR_decl_static(recompilation__usage__find_items_used_by_inst_3_0)
+MR_decl_static(recompilation__usage__find_items_used_by_inst_name_3_0)
+MR_decl_static(recompilation__usage__find_items_used_by_mode_3_0)
+MR_decl_static(recompilation__usage__find_items_used_by_mode_defn_3_0)
+MR_decl_static(recompilation__usage__find_items_used_by_inst_defn_3_0)
+MR_decl_static(recompilation__usage__find_items_used_by_class_constraints_3_0)
+MR_decl_static(recompilation__usage__find_items_used_by_item_4_0)
+MR_decl_static(recompilation__usage__process_imported_item_queue_2_3_0)
+MR_decl_static(recompilation__usage__process_imported_item_queue_2_0)
+MR_decl_static(recompilation__usage__find_items_used_by_preds_4_0)
+MR_decl_static(recompilation__usage__find_items_used_by_functors_3_0)
+MR_decl_static(recompilation__usage__find_items_used_by_simple_item_set_4_0)
+MR_decl_static(recompilation__usage__find_all_used_imported_items_2_3_0)
+MR_decl_static(recompilation__usage__find_all_used_imported_items_7_0)
+MR_decl_static(recompilation__usage__write_usage_file_2_6_0)
+MR_def_extern_entry(recompilation__usage__write_usage_file_5_0)
+MR_decl_static(recompilation__usage__write_module_name_and_used_items_7_0)
+MR_decl_static(recompilation__usage__write_classname_and_arity_3_0)
+MR_decl_static(recompilation__usage__write_simple_item_matches_3_3_0)
+MR_decl_static(recompilation__usage__write_simple_item_matches_4_3_0)
+MR_decl_static(recompilation__usage__write_pred_or_func_matches_3_3_0)
+MR_decl_static(recompilation__usage__write_functor_matches_2_3_0)
+MR_decl_static(recompilation__usage__write_resolved_item_set_2_4_0)
+MR_decl_static(recompilation__usage__write_resolved_item_set_3_4_0)
+MR_decl_static(recompilation__usage__write_resolved_functor_3_0)
+MR_decl_static(recompilation__usage__visible_modules_2_0)
+MR_decl_static(recompilation__usage__insert_into_imported_items_map_3_0)
+MR_decl_static(recompilation__usage__do_record_used_pred_or_func_9_0)
+MR_decl_static(recompilation__usage__find_matching_functors_4_0)
+MR_decl_static(recompilation__usage__do_record_used_functor_8_0)
+MR_decl_static(fn__recompilation__usage__get_pred_or_func_ctors_4_0)
+MR_decl_static(recompilation__usage__find_items_used_by_instances_4_0)
+MR_decl_static(recompilation__usage__find_items_used_by_instance_4_0)
+MR_decl_static(recompilation__usage__find_items_used_by_class_context_3_0)
+MR_decl_static(recompilation__usage__find_items_used_by_class_method_3_0)
+MR_decl_static(recompilation__usage__find_items_used_by_type_and_mode_3_0)
+MR_decl_static(recompilation__usage__find_items_used_by_ctor_3_0)
+MR_decl_static(recompilation__usage__find_items_used_by_ctor_arg_3_0)
+MR_decl_static(recompilation__usage__find_items_used_by_preds_2_5_0)
+MR_decl_static(recompilation__usage__find_items_used_by_preds_3_7_0)
+MR_decl_static(recompilation__usage__find_items_used_by_pred_5_0)
+MR_decl_static(recompilation__usage__find_items_used_by_proc_arg_modes_4_0)
+MR_decl_static(recompilation__usage__find_items_used_by_type_spec_3_0)
+MR_decl_static(recompilation__usage__find_items_used_by_functors_2_4_0)
+MR_decl_static(recompilation__usage__find_items_used_by_functors_3_6_0)
+MR_decl_static(recompilation__usage__find_items_used_by_functor_5_0)
+MR_decl_static(recompilation__usage__find_items_used_by_simple_item_set_2_5_0)
+MR_decl_static(recompilation__usage__find_items_used_by_simple_item_set_3_7_0)
+MR_decl_static(recompilation__usage__find_items_used_by_bound_inst_3_0)
+MR_decl_static(recompilation__usage__find_items_used_by_class_constraint_3_0)
+MR_decl_static(recompilation__usage__record_expanded_items_used_by_item_2_3_0)
+MR_decl_static(__Unify___recompilation__usage__imported_item_set_0_0)
+MR_decl_static(__Compare___recompilation__usage__imported_item_set_0_0)
+MR_decl_static(__Unify___recompilation__usage__imported_items_0_0)
+MR_decl_static(__Compare___recompilation__usage__imported_items_0_0)
+MR_decl_static(__Unify___recompilation__usage__module_imported_items_0_0)
+MR_decl_static(__Compare___recompilation__usage__module_imported_items_0_0)
+MR_decl_static(__Unify___recompilation__usage__recompilation_usage_info_0_0)
+MR_decl_static(__Compare___recompilation__usage__recompilation_usage_info_0_0)
+MR_decl_static(__Unify___recompilation__usage__record_resolved_item_1_0)
+MR_decl_static(__Compare___recompilation__usage__record_resolved_item_1_0)
+MR_def_extern_entry(__Unify___recompilation__usage__resolved_functor_0_0)
+MR_def_extern_entry(__Compare___recompilation__usage__resolved_functor_0_0)
+MR_def_extern_entry(__Unify___recompilation__usage__resolved_functor_map_0_0)
+MR_def_extern_entry(__Compare___recompilation__usage__resolved_functor_map_0_0)
+MR_def_extern_entry(__Unify___recompilation__usage__resolved_functor_set_0_0)
+MR_def_extern_entry(__Compare___recompilation__usage__resolved_functor_set_0_0)
+MR_def_extern_entry(__Unify___recompilation__usage__resolved_item_list_1_0)
+MR_def_extern_entry(__Compare___recompilation__usage__resolved_item_list_1_0)
+MR_def_extern_entry(__Unify___recompilation__usage__resolved_item_map_1_0)
+MR_def_extern_entry(__Compare___recompilation__usage__resolved_item_map_1_0)
+MR_def_extern_entry(__Unify___recompilation__usage__resolved_item_set_1_0)
+MR_def_extern_entry(__Compare___recompilation__usage__resolved_item_set_1_0)
+MR_def_extern_entry(__Unify___recompilation__usage__resolved_pred_or_func_map_0_0)
+MR_def_extern_entry(__Compare___recompilation__usage__resolved_pred_or_func_map_0_0)
+MR_def_extern_entry(__Unify___recompilation__usage__resolved_pred_or_func_set_0_0)
+MR_def_extern_entry(__Compare___recompilation__usage__resolved_pred_or_func_set_0_0)
+MR_def_extern_entry(__Unify___recompilation__usage__resolved_used_items_0_0)
+MR_def_extern_entry(__Compare___recompilation__usage__resolved_used_items_0_0)
+MR_decl_static(__Unify___recompilation__usage__write_resolved_item_1_0)
+MR_decl_static(__Compare___recompilation__usage__write_resolved_item_1_0)
+MR_decl_static(fn__recompilation__usage__IntroducedFrom__func__write_module_name_and_used_items__261__1_3_0)
+MR_decl_static(fn__recompilation__usage__IntroducedFrom__func__do_record_used_pred_or_func__679__1_2_0)
+MR_decl_static(fn__recompilation__usage__IntroducedFrom__func__find_matching_functors__748__1_1_0)
+MR_decl_static(fn__recompilation__usage__IntroducedFrom__func__find_matching_functors__776__1_1_0)
+MR_decl_static(recompilation__usage__record_resolved_item__ho1_7_0)
+MR_decl_static(recompilation__usage__record_resolved_item_2__ho6_9_0)
+MR_decl_static(recompilation__usage__record_resolved_item_3__ho7_9_0)
+MR_decl_static(fn__f_114_101_99_111_109_112_105_108_97_116_105_111_110_95_95_117_115_97_103_101_95_95_85_110_117_115_101_100_65_114_103_115_95_95_102_117_110_99_95_95_103_101_116_95_112_114_101_100_95_111_114_95_102_117_110_99_95_99_116_111_114_115_95_95_91_50_93_95_48_4_0)
+MR_decl_static(f_114_101_99_111_109_112_105_108_97_116_105_111_110_95_95_117_115_97_103_101_95_95_85_110_117_115_101_100_65_114_103_115_95_95_112_114_101_100_95_95_102_105_110_100_95_105_116_101_109_115_95_117_115_101_100_95_98_121_95_112_114_101_100_115_95_51_95_95_91_53_93_95_48_7_0)
+MR_decl_static(f_114_101_99_111_109_112_105_108_97_116_105_111_110_95_95_117_115_97_103_101_95_95_85_110_117_115_101_100_65_114_103_115_95_95_112_114_101_100_95_95_102_105_110_100_95_105_116_101_109_115_95_117_115_101_100_95_98_121_95_112_114_111_99_95_97_114_103_95_109_111_100_101_115_95_95_91_49_93_95_48_4_0)
+MR_decl_static(f_114_101_99_111_109_112_105_108_97_116_105_111_110_95_95_117_115_97_103_101_95_95_85_110_117_115_101_100_65_114_103_115_95_95_112_114_101_100_95_95_102_105_110_100_95_105_116_101_109_115_95_117_115_101_100_95_98_121_95_102_117_110_99_116_111_114_115_95_51_95_95_91_52_93_95_48_6_0)
+MR_decl_static(f_114_101_99_111_109_112_105_108_97_116_105_111_110_95_95_117_115_97_103_101_95_95_85_110_117_115_101_100_65_114_103_115_95_95_112_114_101_100_95_95_102_105_110_100_95_105_116_101_109_115_95_117_115_101_100_95_98_121_95_102_117_110_99_116_111_114_95_95_91_50_93_95_48_5_0)
+MR_decl_static(f_114_101_99_111_109_112_105_108_97_116_105_111_110_95_95_117_115_97_103_101_95_95_85_110_117_115_101_100_65_114_103_115_95_95_112_114_101_100_95_95_102_105_110_100_95_105_116_101_109_115_95_117_115_101_100_95_98_121_95_115_105_109_112_108_101_95_105_116_101_109_95_115_101_116_95_51_95_95_91_52_93_95_48_7_0)
+MR_decl_static(f_114_101_99_111_109_112_105_108_97_116_105_111_110_95_95_117_115_97_103_101_95_95_85_110_117_115_101_100_65_114_103_115_95_95_112_114_101_100_95_95_95_95_85_110_105_102_121_95_95_95_114_101_99_111_109_112_105_108_97_116_105_111_110_95_95_117_115_97_103_101_95_95_114_101_99_111_114_100_95_114_101_115_111_108_118_101_100_95_105_116_101_109_95_49_95_95_91_49_93_95_48_2_0)
+MR_decl_static(f_114_101_99_111_109_112_105_108_97_116_105_111_110_95_95_117_115_97_103_101_95_95_85_110_117_115_101_100_65_114_103_115_95_95_112_114_101_100_95_95_95_95_67_111_109_112_97_114_101_95_95_95_114_101_99_111_109_112_105_108_97_116_105_111_110_95_95_117_115_97_103_101_95_95_114_101_99_111_114_100_95_114_101_115_111_108_118_101_100_95_105_116_101_109_95_49_95_95_91_49_93_95_48_3_0)
+MR_decl_static(f_114_101_99_111_109_112_105_108_97_116_105_111_110_95_95_117_115_97_103_101_95_95_85_110_117_115_101_100_65_114_103_115_95_95_112_114_101_100_95_95_95_95_85_110_105_102_121_95_95_95_114_101_99_111_109_112_105_108_97_116_105_111_110_95_95_117_115_97_103_101_95_95_119_114_105_116_101_95_114_101_115_111_108_118_101_100_95_105_116_101_109_95_49_95_95_91_49_93_95_48_2_0)
+MR_decl_static(f_114_101_99_111_109_112_105_108_97_116_105_111_110_95_95_117_115_97_103_101_95_95_85_110_117_115_101_100_65_114_103_115_95_95_112_114_101_100_95_95_95_95_67_111_109_112_97_114_101_95_95_95_114_101_99_111_109_112_105_108_97_116_105_111_110_95_95_117_115_97_103_101_95_95_119_114_105_116_101_95_114_101_115_111_108_118_101_100_95_105_116_101_109_95_49_95_95_91_49_93_95_48_3_0)
+MR_decl_static(f_114_101_99_111_109_112_105_108_97_116_105_111_110_95_95_117_115_97_103_101_95_95_85_110_117_115_101_100_65_114_103_115_95_95_112_114_101_100_95_95_114_101_99_111_114_100_95_114_101_115_111_108_118_101_100_95_105_116_101_109_95_95_104_111_50_95_95_91_52_93_95_48_7_0)
+MR_decl_static(f_114_101_99_111_109_112_105_108_97_116_105_111_110_95_95_117_115_97_103_101_95_95_85_110_117_115_101_100_65_114_103_115_95_95_112_114_101_100_95_95_114_101_99_111_114_100_95_114_101_115_111_108_118_101_100_95_105_116_101_109_95_50_95_95_104_111_53_95_95_91_53_93_95_48_9_0)
+MR_decl_static(f_114_101_99_111_109_112_105_108_97_116_105_111_110_95_95_117_115_97_103_101_95_95_85_110_117_115_101_100_65_114_103_115_95_95_112_114_101_100_95_95_114_101_99_111_114_100_95_114_101_115_111_108_118_101_100_95_105_116_101_109_95_51_95_95_104_111_56_95_95_91_53_93_95_48_9_0)
+
+extern const MR_TypeCtorInfo_Struct mercury_data_pair__type_ctor_info_pair_2;
+extern const MR_TypeCtorInfo_Struct mercury_data_builtin__type_ctor_info_string_0;
+extern const MR_TypeCtorInfo_Struct mercury_data_builtin__type_ctor_info_int_0;
+extern const MR_TypeCtorInfo_Struct mercury_data_tree234__type_ctor_info_tree234_2;
+extern const MR_TypeCtorInfo_Struct mercury_data_mdbcomp__prim_data__type_ctor_info_sym_name_0;
+extern const MR_TypeCtorInfo_Struct mercury_data_hlds__hlds_pred__type_ctor_info_pred_id_0;
+extern const MR_TypeCtorInfo_Struct mercury_data_pair__type_ctor_info_pair_2;
+extern const MR_TypeCtorInfo_Struct mercury_data_builtin__type_ctor_info_string_0;
+extern const MR_TypeCtorInfo_Struct mercury_data_builtin__type_ctor_info_int_0;
+extern const MR_TypeCtorInfo_Struct mercury_data_tree234__type_ctor_info_tree234_2;
+extern const MR_TypeCtorInfo_Struct mercury_data_mdbcomp__prim_data__type_ctor_info_sym_name_0;
+extern const MR_TypeCtorInfo_Struct mercury_data_parse_tree__module_imports__type_ctor_info_module_timestamp_0;
+extern const MR_TypeCtorInfo_Struct mercury_data_libs__timestamp__type_ctor_info_timestamp_0;
+extern const MR_TypeCtorInfo_Struct mercury_data_libs__timestamp__type_ctor_info_timestamp_0;
+static const struct mercury_type_0 mercury_common_0[30] =
+{
+{
+{
+MR_CTOR_ADDR(pair, pair, 2),
+MR_STRING_CTOR_ADDR,
+MR_INT_CTOR_ADDR
+}
+},
+{
+{
+MR_CTOR_ADDR(tree234, tree234, 2),
+MR_CTOR0_ADDR(mdbcomp__prim_data, sym_name),
+MR_CTOR0_ADDR(mdbcomp__prim_data, sym_name)
+}
+},
+{
+{
+MR_CTOR_ADDR(tree234, tree234, 2),
+MR_TAG_COMMON(0,0,0),
+MR_TAG_COMMON(0,0,1)
+}
+},
+{
+{
+MR_CTOR_ADDR(pair, pair, 2),
+MR_CTOR0_ADDR(hlds__hlds_pred, pred_id),
+MR_CTOR0_ADDR(mdbcomp__prim_data, sym_name)
+}
+},
+{
+{
+MR_CTOR_ADDR(tree234, tree234, 2),
+MR_CTOR0_ADDR(mdbcomp__prim_data, sym_name),
+MR_TAG_COMMON(0,1,0)
+}
+},
+{
+{
+MR_CTOR_ADDR(pair, pair, 2),
+MR_INT_CTOR_ADDR,
+MR_TAG_COMMON(0,0,4)
+}
+},
+{
+{
+MR_CTOR_ADDR(tree234, tree234, 2),
+MR_STRING_CTOR_ADDR,
+MR_TAG_COMMON(0,1,1)
+}
+},
+{
+{
+MR_CTOR_ADDR(tree234, tree234, 2),
+MR_CTOR0_ADDR(mdbcomp__prim_data, sym_name),
+MR_TAG_COMMON(0,1,2)
+}
+},
+{
+{
+MR_CTOR_ADDR(pair, pair, 2),
+MR_INT_CTOR_ADDR,
+MR_TAG_COMMON(0,0,7)
+}
+},
+{
+{
+MR_CTOR_ADDR(tree234, tree234, 2),
+MR_STRING_CTOR_ADDR,
+MR_TAG_COMMON(0,1,3)
+}
+},
+{
+{
+MR_CTOR_ADDR(pair, pair, 2),
+MR_STRING_CTOR_ADDR,
+MR_INT_CTOR_ADDR
+}
+},
+{
+{
+MR_CTOR_ADDR(tree234, tree234, 2),
+MR_CTOR0_ADDR(mdbcomp__prim_data, sym_name),
+MR_CTOR0_ADDR(mdbcomp__prim_data, sym_name)
+}
+},
+{
+{
+MR_CTOR_ADDR(pair, pair, 2),
+MR_COMMON(0,10),
+MR_COMMON(0,11)
+}
+},
+{
+{
+MR_CTOR_ADDR(pair, pair, 2),
+MR_INT_CTOR_ADDR,
+MR_CTOR0_ADDR(mdbcomp__prim_data, sym_name)
+}
+},
+{
+{
+MR_CTOR_ADDR(pair, pair, 2),
+MR_CTOR0_ADDR(mdbcomp__prim_data, sym_name),
+MR_COMMON(1,4)
+}
+},
+{
+{
+MR_CTOR_ADDR(pair, pair, 2),
+MR_INT_CTOR_ADDR,
+MR_COMMON(4,1)
+}
+},
+{
+{
+MR_CTOR_ADDR(pair, pair, 2),
+MR_STRING_CTOR_ADDR,
+MR_COMMON(1,5)
+}
+},
+{
+{
+MR_CTOR_ADDR(pair, pair, 2),
+MR_STRING_CTOR_ADDR,
+MR_TAG_COMMON(0,1,1)
+}
+},
+{
+{
+MR_CTOR_ADDR(pair, pair, 2),
+MR_CTOR0_ADDR(mdbcomp__prim_data, sym_name),
+MR_COMMON(1,6)
+}
+},
+{
+{
+MR_CTOR_ADDR(pair, pair, 2),
+MR_STRING_CTOR_ADDR,
+MR_INT_CTOR_ADDR
+}
+},
+{
+{
+MR_CTOR_ADDR(tree234, tree234, 2),
+MR_CTOR0_ADDR(mdbcomp__prim_data, sym_name),
+MR_CTOR0_ADDR(mdbcomp__prim_data, sym_name)
+}
+},
+{
+{
+MR_CTOR_ADDR(tree234, tree234, 2),
+MR_CTOR0_ADDR(mdbcomp__prim_data, sym_name),
+MR_TAG_COMMON(0,9,0)
+}
+},
+{
+{
+MR_CTOR_ADDR(tree234, tree234, 2),
+MR_CTOR0_ADDR(mdbcomp__prim_data, sym_name),
+MR_COMMON(9,1)
+}
+},
+{
+{
+MR_CTOR_ADDR(tree234, tree234, 2),
+MR_CTOR0_ADDR(mdbcomp__prim_data, sym_name),
+MR_CTOR0_ADDR(parse_tree__module_imports, module_timestamp)
+}
+},
+{
+{
+MR_CTOR_ADDR(tree234, tree234, 2),
+MR_CTOR0_ADDR(mdbcomp__prim_data, sym_name),
+MR_COMMON(1,13)
+}
+},
+{
+{
+MR_CTOR_ADDR(tree234, tree234, 2),
+MR_TAG_COMMON(0,0,0),
+MR_CTOR0_ADDR(libs__timestamp, timestamp)
+}
+},
+{
+{
+MR_CTOR_ADDR(tree234, tree234, 2),
+MR_COMMON(0,10),
+MR_CTOR0_ADDR(libs__timestamp, timestamp)
+}
+},
+{
+{
+MR_CTOR_ADDR(pair, pair, 2),
+MR_CTOR0_ADDR(mdbcomp__prim_data, sym_name),
+MR_CTOR0_ADDR(mdbcomp__prim_data, sym_name)
+}
+},
+{
+{
+MR_CTOR_ADDR(pair, pair, 2),
+MR_CTOR0_ADDR(mdbcomp__prim_data, sym_name),
+MR_CTOR0_ADDR(mdbcomp__prim_data, sym_name)
+}
+},
+{
+{
+MR_CTOR_ADDR(pair, pair, 2),
+MR_INT_CTOR_ADDR,
+MR_CTOR0_ADDR(mdbcomp__prim_data, sym_name)
+}
+},
+};
+
+extern const MR_TypeCtorInfo_Struct mercury_data_set_ordlist__type_ctor_info_set_ordlist_1;
+extern const MR_TypeCtorInfo_Struct mercury_data_list__type_ctor_info_list_1;
+extern const MR_TypeCtorInfo_Struct mercury_data_set_ordlist__type_ctor_info_set_ordlist_1;
+extern const MR_TypeCtorInfo_Struct mercury_data_recompilation__usage__type_ctor_info_resolved_functor_0;
+extern const MR_TypeCtorInfo_Struct mercury_data_recompilation__type_ctor_info_item_id_0;
+extern const MR_TypeCtorInfo_Struct mercury_data_hlds__hlds_data__type_ctor_info_hlds_instance_defn_0;
+extern const MR_TypeCtorInfo_Struct mercury_data_hlds__hlds_data__type_ctor_info_hlds_instance_defn_0;
+extern const MR_TypeCtorInfo_Struct mercury_data_recompilation__type_ctor_info_item_name_0;
+extern const MR_TypeCtorInfo_Struct mercury_data_recompilation__type_ctor_info_item_name_0;
+extern const MR_TypeCtorInfo_Struct mercury_data_hlds__hlds_data__type_ctor_info_hlds_cons_defn_0;
+extern const MR_TypeCtorInfo_Struct mercury_data_hlds__hlds_data__type_ctor_info_hlds_ctor_field_defn_0;
+extern const MR_TypeCtorInfo_Struct mercury_data_parse_tree__prog_item__type_ctor_info_pragma_type_0;
+extern const MR_TypeCtorInfo_Struct mercury_data_term__type_ctor_info_var_1;
+extern const MR_TypeCtorInfo_Struct mercury_data_parse_tree__prog_data__type_ctor_info_tvar_type_0;
+static const struct mercury_type_1 mercury_common_1[19] =
+{
+{
+{
+MR_CTOR1_ADDR(set_ordlist, set_ordlist),
+MR_TAG_COMMON(0,0,3)
+}
+},
+{
+{
+MR_LIST_CTOR_ADDR,
+MR_TAG_COMMON(0,0,5)
+}
+},
+{
+{
+MR_CTOR1_ADDR(set_ordlist, set_ordlist),
+MR_CTOR0_ADDR(recompilation__usage, resolved_functor)
+}
+},
+{
+{
+MR_LIST_CTOR_ADDR,
+MR_TAG_COMMON(0,0,8)
+}
+},
+{
+{
+MR_CTOR1_ADDR(set_ordlist, set_ordlist),
+MR_COMMON(0,13)
+}
+},
+{
+{
+MR_LIST_CTOR_ADDR,
+MR_COMMON(0,15)
+}
+},
+{
+{
+MR_CTOR1_ADDR(set_ordlist, set_ordlist),
+MR_CTOR0_ADDR(recompilation__usage, resolved_functor)
+}
+},
+{
+{
+MR_CTOR1_ADDR(set_ordlist, set_ordlist),
+MR_TAG_COMMON(0,0,0)
+}
+},
+{
+{
+MR_CTOR1_ADDR(set_ordlist, set_ordlist),
+MR_CTOR0_ADDR(recompilation, item_id)
+}
+},
+{
+{
+MR_LIST_CTOR_ADDR,
+MR_CTOR0_ADDR(hlds__hlds_data, hlds_instance_defn)
+}
+},
+{
+{
+MR_LIST_CTOR_ADDR,
+MR_CTOR0_ADDR(hlds__hlds_data, hlds_instance_defn)
+}
+},
+{
+{
+MR_CTOR1_ADDR(set_ordlist, set_ordlist),
+MR_COMMON(0,10)
+}
+},
+{
+{
+MR_CTOR1_ADDR(set_ordlist, set_ordlist),
+MR_CTOR0_ADDR(recompilation, item_name)
+}
+},
+{
+{
+MR_CTOR1_ADDR(set_ordlist, set_ordlist),
+MR_CTOR0_ADDR(recompilation, item_name)
+}
+},
+{
+{
+MR_LIST_CTOR_ADDR,
+MR_CTOR0_ADDR(hlds__hlds_data, hlds_cons_defn)
+}
+},
+{
+{
+MR_LIST_CTOR_ADDR,
+MR_CTOR0_ADDR(hlds__hlds_data, hlds_ctor_field_defn)
+}
+},
+{
+{
+MR_tbmkword(0, 0),
+MR_tbmkword(0, 0)
+}
+},
+{
+{
+MR_LIST_CTOR_ADDR,
+MR_CTOR0_ADDR(parse_tree__prog_item, pragma_type)
+}
+},
+{
+{
+MR_CTOR1_ADDR(term, var),
+MR_CTOR0_ADDR(parse_tree__prog_data, tvar_type)
+}
+},
+};
+
+static const MR_UserClosureId
+mercury_data__closure_layout__recompilation__usage__write_simple_item_matches_6_0_1;
+extern const MR_TypeCtorInfo_Struct mercury_data_io__type_ctor_info_state_0;
+static const MR_UserClosureId
+mercury_data__closure_layout__recompilation__usage__write_pred_or_func_matches_2_4_0_1;
+static const MR_UserClosureId
+mercury_data__closure_layout__recompilation__usage__write_functor_matches_5_0_1;
+static const MR_UserClosureId
+mercury_data__closure_layout__recompilation__usage__find_items_used_by_types_3_0_1;
+extern const MR_TypeCtorInfo_Struct mercury_data_parse_tree__prog_data__type_ctor_info_mer_type_0;
+extern const MR_TypeCtorInfo_Struct mercury_data_recompilation__usage__type_ctor_info_recompilation_usage_info_0;
+static const MR_UserClosureId
+mercury_data__closure_layout__recompilation__usage__record_expanded_items_used_by_item_4_0_1;
+extern const MR_TypeCtorInfo_Struct mercury_data_recompilation__type_ctor_info_item_id_0;
+static const MR_UserClosureId
+mercury_data__closure_layout__recompilation__usage__find_items_used_by_type_3_0_1;
+static const MR_UserClosureId
+mercury_data__closure_layout__recompilation__usage__find_items_used_by_type_3_0_2;
+static const MR_UserClosureId
+mercury_data__closure_layout__recompilation__usage__find_items_used_by_type_body_3_0_1;
+extern const MR_TypeCtorInfo_Struct mercury_data_parse_tree__prog_data__type_ctor_info_constructor_0;
+static const MR_UserClosureId
+mercury_data__closure_layout__recompilation__usage__find_items_used_by_insts_3_0_1;
+extern const MR_TypeCtorInfo_Struct mercury_data_parse_tree__prog_data__type_ctor_info_mer_inst_0;
+static const MR_UserClosureId
+mercury_data__closure_layout__recompilation__usage__find_items_used_by_modes_3_0_1;
+extern const MR_TypeCtorInfo_Struct mercury_data_parse_tree__prog_data__type_ctor_info_mer_mode_0;
+static const MR_UserClosureId
+mercury_data__closure_layout__recompilation__usage__find_items_used_by_inst_3_0_1;
+static const MR_UserClosureId
+mercury_data__closure_layout__recompilation__usage__find_items_used_by_inst_3_0_2;
+static const MR_UserClosureId
+mercury_data__closure_layout__recompilation__usage__find_items_used_by_inst_3_0_3;
+extern const MR_TypeCtorInfo_Struct mercury_data_parse_tree__prog_data__type_ctor_info_bound_inst_0;
+static const MR_UserClosureId
+mercury_data__closure_layout__recompilation__usage__find_items_used_by_inst_name_3_0_1;
+static const MR_UserClosureId
+mercury_data__closure_layout__recompilation__usage__find_items_used_by_class_constraints_3_0_1;
+extern const MR_TypeCtorInfo_Struct mercury_data_parse_tree__prog_data__type_ctor_info_prog_constraint_0;
+static const MR_UserClosureId
+mercury_data__closure_layout__recompilation__usage__find_items_used_by_item_4_0_1;
+extern const MR_TypeCtorInfo_Struct mercury_data_parse_tree__prog_item__type_ctor_info_class_method_0;
+static const MR_UserClosureId
+mercury_data__closure_layout__recompilation__usage__find_all_used_imported_items_7_0_2;
+extern const MR_TypeCtorInfo_Struct mercury_data_mdbcomp__prim_data__type_ctor_info_sym_name_0;
+static const MR_UserClosureId
+mercury_data__closure_layout__recompilation__usage__write_usage_file_2_6_0_1;
+static const MR_UserClosureId
+mercury_data__closure_layout__recompilation__usage__write_usage_file_2_6_0_3;
+extern const MR_TypeCtorInfo_Struct mercury_data_recompilation__type_ctor_info_item_name_0;
+static const MR_UserClosureId
+mercury_data__closure_layout__recompilation__usage__write_simple_item_matches_3_3_0_1;
+static const MR_UserClosureId
+mercury_data__closure_layout__recompilation__usage__write_pred_or_func_matches_3_3_0_1;
+static const MR_UserClosureId
+mercury_data__closure_layout__recompilation__usage__write_functor_matches_2_3_0_1;
+extern const MR_TypeCtorInfo_Struct mercury_data_recompilation__usage__type_ctor_info_resolved_functor_0;
+static const MR_UserClosureId
+mercury_data__closure_layout__recompilation__usage__do_record_used_pred_or_func_9_0_1;
+extern const MR_TypeCtorInfo_Struct mercury_data_hlds__hlds_module__type_ctor_info_module_info_0;
+extern const MR_TypeCtorInfo_Struct mercury_data_builtin__type_ctor_info_int_0;
+static const MR_UserClosureId
+mercury_data__closure_layout__recompilation__usage__find_items_used_by_instances_4_0_1;
+static const MR_UserClosureId
+mercury_data__closure_layout__recompilation__usage__find_items_used_by_instance_4_0_1;
+static const MR_UserClosureId
+mercury_data__closure_layout__recompilation__usage__find_items_used_by_instance_4_0_2;
+static const MR_UserClosureId
+mercury_data__closure_layout__recompilation__usage__find_items_used_by_class_context_3_0_1;
+static const MR_UserClosureId
+mercury_data__closure_layout__recompilation__usage__find_items_used_by_class_context_3_0_2;
+static const MR_UserClosureId
+mercury_data__closure_layout__recompilation__usage__find_items_used_by_class_method_3_0_1;
+static const MR_UserClosureId
+mercury_data__closure_layout__recompilation__usage__find_items_used_by_class_method_3_0_2;
+static const MR_UserClosureId
+mercury_data__closure_layout__recompilation__usage__find_items_used_by_class_method_3_0_3;
+extern const MR_TypeCtorInfo_Struct mercury_data_parse_tree__prog_data__type_ctor_info_type_and_mode_0;
+static const MR_UserClosureId
+mercury_data__closure_layout__recompilation__usage__find_items_used_by_class_method_3_0_4;
+static const MR_UserClosureId
+mercury_data__closure_layout__recompilation__usage__find_items_used_by_ctor_3_0_1;
+static const MR_UserClosureId
+mercury_data__closure_layout__recompilation__usage__find_items_used_by_ctor_3_0_2;
+extern const MR_TypeCtorInfo_Struct mercury_data_parse_tree__prog_data__type_ctor_info_constructor_arg_0;
+static const MR_UserClosureId
+mercury_data__closure_layout__recompilation__usage__find_items_used_by_pred_5_0_2;
+extern const MR_TypeCtorInfo_Struct mercury_data_parse_tree__prog_item__type_ctor_info_pragma_type_0;
+static const MR_UserClosureId
+mercury_data__closure_layout__recompilation__usage__find_items_used_by_type_spec_3_0_1;
+static const MR_UserClosureId
+mercury_data__closure_layout__recompilation__usage__find_items_used_by_bound_inst_3_0_1;
+static const MR_UserClosureId
+mercury_data__closure_layout__recompilation__usage__find_items_used_by_bound_inst_3_0_2;
+static const MR_UserClosureId
+mercury_data__closure_layout__recompilation__usage__find_items_used_by_class_constraint_3_0_1;
+static const struct mercury_type_2 mercury_common_2[39] =
+{
+{
+{
+(MR_Word *) &mercury_data__closure_layout__recompilation__usage__write_simple_item_matches_6_0_1,
+(MR_Word *) (MR_Integer) 0
+},
+3,
+{
+MR_COMMON(0,12),
+MR_IO_CTOR_ADDR,
+MR_IO_CTOR_ADDR
+}
+},
+{
+{
+(MR_Word *) &mercury_data__closure_layout__recompilation__usage__write_pred_or_func_matches_2_4_0_1,
+(MR_Word *) (MR_Integer) 0
+},
+3,
+{
+MR_COMMON(0,14),
+MR_IO_CTOR_ADDR,
+MR_IO_CTOR_ADDR
+}
+},
+{
+{
+(MR_Word *) &mercury_data__closure_layout__recompilation__usage__write_functor_matches_5_0_1,
+(MR_Word *) (MR_Integer) 0
+},
+3,
+{
+MR_COMMON(0,18),
+MR_IO_CTOR_ADDR,
+MR_IO_CTOR_ADDR
+}
+},
+{
+{
+(MR_Word *) &mercury_data__closure_layout__recompilation__usage__find_items_used_by_types_3_0_1,
+(MR_Word *) (MR_Integer) 0
+},
+3,
+{
+MR_CTOR0_ADDR(parse_tree__prog_data, mer_type),
+MR_CTOR0_ADDR(recompilation__usage, recompilation_usage_info),
+MR_CTOR0_ADDR(recompilation__usage, recompilation_usage_info)
+}
+},
+{
+{
+(MR_Word *) &mercury_data__closure_layout__recompilation__usage__record_expanded_items_used_by_item_4_0_1,
+(MR_Word *) (MR_Integer) 0
+},
+3,
+{
+MR_CTOR0_ADDR(recompilation, item_id),
+MR_CTOR0_ADDR(recompilation__usage, recompilation_usage_info),
+MR_CTOR0_ADDR(recompilation__usage, recompilation_usage_info)
+}
+},
+{
+{
+(MR_Word *) &mercury_data__closure_layout__recompilation__usage__find_items_used_by_type_3_0_1,
+(MR_Word *) (MR_Integer) 0
+},
+3,
+{
+MR_CTOR0_ADDR(parse_tree__prog_data, mer_type),
+MR_CTOR0_ADDR(recompilation__usage, recompilation_usage_info),
+MR_CTOR0_ADDR(recompilation__usage, recompilation_usage_info)
+}
+},
+{
+{
+(MR_Word *) &mercury_data__closure_layout__recompilation__usage__find_items_used_by_type_3_0_2,
+(MR_Word *) (MR_Integer) 0
+},
+3,
+{
+MR_CTOR0_ADDR(parse_tree__prog_data, mer_type),
+MR_CTOR0_ADDR(recompilation__usage, recompilation_usage_info),
+MR_CTOR0_ADDR(recompilation__usage, recompilation_usage_info)
+}
+},
+{
+{
+(MR_Word *) &mercury_data__closure_layout__recompilation__usage__find_items_used_by_type_body_3_0_1,
+(MR_Word *) (MR_Integer) 0
+},
+3,
+{
+MR_CTOR0_ADDR(parse_tree__prog_data, constructor),
+MR_CTOR0_ADDR(recompilation__usage, recompilation_usage_info),
+MR_CTOR0_ADDR(recompilation__usage, recompilation_usage_info)
+}
+},
+{
+{
+(MR_Word *) &mercury_data__closure_layout__recompilation__usage__find_items_used_by_insts_3_0_1,
+(MR_Word *) (MR_Integer) 0
+},
+3,
+{
+MR_CTOR0_ADDR(parse_tree__prog_data, mer_inst),
+MR_CTOR0_ADDR(recompilation__usage, recompilation_usage_info),
+MR_CTOR0_ADDR(recompilation__usage, recompilation_usage_info)
+}
+},
+{
+{
+(MR_Word *) &mercury_data__closure_layout__recompilation__usage__find_items_used_by_modes_3_0_1,
+(MR_Word *) (MR_Integer) 0
+},
+3,
+{
+MR_CTOR0_ADDR(parse_tree__prog_data, mer_mode),
+MR_CTOR0_ADDR(recompilation__usage, recompilation_usage_info),
+MR_CTOR0_ADDR(recompilation__usage, recompilation_usage_info)
+}
+},
+{
+{
+(MR_Word *) &mercury_data__closure_layout__recompilation__usage__find_items_used_by_inst_3_0_1,
+(MR_Word *) (MR_Integer) 0
+},
+3,
+{
+MR_CTOR0_ADDR(parse_tree__prog_data, mer_mode),
+MR_CTOR0_ADDR(recompilation__usage, recompilation_usage_info),
+MR_CTOR0_ADDR(recompilation__usage, recompilation_usage_info)
+}
+},
+{
+{
+(MR_Word *) &mercury_data__closure_layout__recompilation__usage__find_items_used_by_inst_3_0_2,
+(MR_Word *) (MR_Integer) 0
+},
+3,
+{
+MR_CTOR0_ADDR(parse_tree__prog_data, mer_inst),
+MR_CTOR0_ADDR(recompilation__usage, recompilation_usage_info),
+MR_CTOR0_ADDR(recompilation__usage, recompilation_usage_info)
+}
+},
+{
+{
+(MR_Word *) &mercury_data__closure_layout__recompilation__usage__find_items_used_by_inst_3_0_3,
+(MR_Word *) (MR_Integer) 0
+},
+3,
+{
+MR_CTOR0_ADDR(parse_tree__prog_data, bound_inst),
+MR_CTOR0_ADDR(recompilation__usage, recompilation_usage_info),
+MR_CTOR0_ADDR(recompilation__usage, recompilation_usage_info)
+}
+},
+{
+{
+(MR_Word *) &mercury_data__closure_layout__recompilation__usage__find_items_used_by_inst_name_3_0_1,
+(MR_Word *) (MR_Integer) 0
+},
+3,
+{
+MR_CTOR0_ADDR(parse_tree__prog_data, mer_inst),
+MR_CTOR0_ADDR(recompilation__usage, recompilation_usage_info),
+MR_CTOR0_ADDR(recompilation__usage, recompilation_usage_info)
+}
+},
+{
+{
+(MR_Word *) &mercury_data__closure_layout__recompilation__usage__find_items_used_by_class_constraints_3_0_1,
+(MR_Word *) (MR_Integer) 0
+},
+3,
+{
+MR_CTOR0_ADDR(parse_tree__prog_data, prog_constraint),
+MR_CTOR0_ADDR(recompilation__usage, recompilation_usage_info),
+MR_CTOR0_ADDR(recompilation__usage, recompilation_usage_info)
+}
+},
+{
+{
+(MR_Word *) &mercury_data__closure_layout__recompilation__usage__find_items_used_by_item_4_0_1,
+(MR_Word *) (MR_Integer) 0
+},
+3,
+{
+MR_CTOR0_ADDR(parse_tree__prog_item, class_method),
+MR_CTOR0_ADDR(recompilation__usage, recompilation_usage_info),
+MR_CTOR0_ADDR(recompilation__usage, recompilation_usage_info)
+}
+},
+{
+{
+(MR_Word *) &mercury_data__closure_layout__recompilation__usage__find_all_used_imported_items_7_0_2,
+(MR_Word *) (MR_Integer) 0
+},
+3,
+{
+MR_CTOR0_ADDR(mdbcomp__prim_data, sym_name),
+MR_COMMON(0,22),
+MR_COMMON(0,22)
+}
+},
+{
+{
+(MR_Word *) &mercury_data__closure_layout__recompilation__usage__write_usage_file_2_6_0_1,
+(MR_Word *) (MR_Integer) 0
+},
+3,
+{
+MR_CTOR0_ADDR(mdbcomp__prim_data, sym_name),
+MR_IO_CTOR_ADDR,
+MR_IO_CTOR_ADDR
+}
+},
+{
+{
+(MR_Word *) &mercury_data__closure_layout__recompilation__usage__write_usage_file_2_6_0_3,
+(MR_Word *) (MR_Integer) 0
+},
+3,
+{
+MR_CTOR0_ADDR(recompilation, item_name),
+MR_IO_CTOR_ADDR,
+MR_IO_CTOR_ADDR
+}
+},
+{
+{
+(MR_Word *) &mercury_data__closure_layout__recompilation__usage__write_simple_item_matches_3_3_0_1,
+(MR_Word *) (MR_Integer) 0
+},
+3,
+{
+MR_COMMON(0,28),
+MR_IO_CTOR_ADDR,
+MR_IO_CTOR_ADDR
+}
+},
+{
+{
+(MR_Word *) &mercury_data__closure_layout__recompilation__usage__write_pred_or_func_matches_3_3_0_1,
+(MR_Word *) (MR_Integer) 0
+},
+3,
+{
+MR_CTOR0_ADDR(mdbcomp__prim_data, sym_name),
+MR_IO_CTOR_ADDR,
+MR_IO_CTOR_ADDR
+}
+},
+{
+{
+(MR_Word *) &mercury_data__closure_layout__recompilation__usage__write_functor_matches_2_3_0_1,
+(MR_Word *) (MR_Integer) 0
+},
+3,
+{
+MR_CTOR0_ADDR(recompilation__usage, resolved_functor),
+MR_IO_CTOR_ADDR,
+MR_IO_CTOR_ADDR
+}
+},
+{
+{
+(MR_Word *) &mercury_data__closure_layout__recompilation__usage__do_record_used_pred_or_func_9_0_1,
+(MR_Word *) (MR_Integer) 0
+},
+3,
+{
+MR_CTOR0_ADDR(hlds__hlds_module, module_info),
+MR_INT_CTOR_ADDR,
+MR_COMMON(0,29)
+}
+},
+{
+{
+(MR_Word *) &mercury_data__closure_layout__recompilation__usage__find_items_used_by_instances_4_0_1,
+(MR_Word *) (MR_Integer) 0
+},
+3,
+{
+MR_CTOR0_ADDR(recompilation, item_id),
+MR_CTOR0_ADDR(recompilation__usage, recompilation_usage_info),
+MR_CTOR0_ADDR(recompilation__usage, recompilation_usage_info)
+}
+},
+{
+{
+(MR_Word *) &mercury_data__closure_layout__recompilation__usage__find_items_used_by_instance_4_0_1,
+(MR_Word *) (MR_Integer) 0
+},
+3,
+{
+MR_CTOR0_ADDR(parse_tree__prog_data, prog_constraint),
+MR_CTOR0_ADDR(recompilation__usage, recompilation_usage_info),
+MR_CTOR0_ADDR(recompilation__usage, recompilation_usage_info)
+}
+},
+{
+{
+(MR_Word *) &mercury_data__closure_layout__recompilation__usage__find_items_used_by_instance_4_0_2,
+(MR_Word *) (MR_Integer) 0
+},
+3,
+{
+MR_CTOR0_ADDR(parse_tree__prog_data, mer_type),
+MR_CTOR0_ADDR(recompilation__usage, recompilation_usage_info),
+MR_CTOR0_ADDR(recompilation__usage, recompilation_usage_info)
+}
+},
+{
+{
+(MR_Word *) &mercury_data__closure_layout__recompilation__usage__find_items_used_by_class_context_3_0_1,
+(MR_Word *) (MR_Integer) 0
+},
+3,
+{
+MR_CTOR0_ADDR(parse_tree__prog_data, prog_constraint),
+MR_CTOR0_ADDR(recompilation__usage, recompilation_usage_info),
+MR_CTOR0_ADDR(recompilation__usage, recompilation_usage_info)
+}
+},
+{
+{
+(MR_Word *) &mercury_data__closure_layout__recompilation__usage__find_items_used_by_class_context_3_0_2,
+(MR_Word *) (MR_Integer) 0
+},
+3,
+{
+MR_CTOR0_ADDR(parse_tree__prog_data, prog_constraint),
+MR_CTOR0_ADDR(recompilation__usage, recompilation_usage_info),
+MR_CTOR0_ADDR(recompilation__usage, recompilation_usage_info)
+}
+},
+{
+{
+(MR_Word *) &mercury_data__closure_layout__recompilation__usage__find_items_used_by_class_method_3_0_1,
+(MR_Word *) (MR_Integer) 0
+},
+3,
+{
+MR_CTOR0_ADDR(parse_tree__prog_data, prog_constraint),
+MR_CTOR0_ADDR(recompilation__usage, recompilation_usage_info),
+MR_CTOR0_ADDR(recompilation__usage, recompilation_usage_info)
+}
+},
+{
+{
+(MR_Word *) &mercury_data__closure_layout__recompilation__usage__find_items_used_by_class_method_3_0_2,
+(MR_Word *) (MR_Integer) 0
+},
+3,
+{
+MR_CTOR0_ADDR(parse_tree__prog_data, prog_constraint),
+MR_CTOR0_ADDR(recompilation__usage, recompilation_usage_info),
+MR_CTOR0_ADDR(recompilation__usage, recompilation_usage_info)
+}
+},
+{
+{
+(MR_Word *) &mercury_data__closure_layout__recompilation__usage__find_items_used_by_class_method_3_0_3,
+(MR_Word *) (MR_Integer) 0
+},
+3,
+{
+MR_CTOR0_ADDR(parse_tree__prog_data, type_and_mode),
+MR_CTOR0_ADDR(recompilation__usage, recompilation_usage_info),
+MR_CTOR0_ADDR(recompilation__usage, recompilation_usage_info)
+}
+},
+{
+{
+(MR_Word *) &mercury_data__closure_layout__recompilation__usage__find_items_used_by_class_method_3_0_4,
+(MR_Word *) (MR_Integer) 0
+},
+3,
+{
+MR_CTOR0_ADDR(parse_tree__prog_data, mer_mode),
+MR_CTOR0_ADDR(recompilation__usage, recompilation_usage_info),
+MR_CTOR0_ADDR(recompilation__usage, recompilation_usage_info)
+}
+},
+{
+{
+(MR_Word *) &mercury_data__closure_layout__recompilation__usage__find_items_used_by_ctor_3_0_1,
+(MR_Word *) (MR_Integer) 0
+},
+3,
+{
+MR_CTOR0_ADDR(parse_tree__prog_data, prog_constraint),
+MR_CTOR0_ADDR(recompilation__usage, recompilation_usage_info),
+MR_CTOR0_ADDR(recompilation__usage, recompilation_usage_info)
+}
+},
+{
+{
+(MR_Word *) &mercury_data__closure_layout__recompilation__usage__find_items_used_by_ctor_3_0_2,
+(MR_Word *) (MR_Integer) 0
+},
+3,
+{
+MR_CTOR0_ADDR(parse_tree__prog_data, constructor_arg),
+MR_CTOR0_ADDR(recompilation__usage, recompilation_usage_info),
+MR_CTOR0_ADDR(recompilation__usage, recompilation_usage_info)
+}
+},
+{
+{
+(MR_Word *) &mercury_data__closure_layout__recompilation__usage__find_items_used_by_pred_5_0_2,
+(MR_Word *) (MR_Integer) 0
+},
+3,
+{
+MR_CTOR0_ADDR(parse_tree__prog_item, pragma_type),
+MR_CTOR0_ADDR(recompilation__usage, recompilation_usage_info),
+MR_CTOR0_ADDR(recompilation__usage, recompilation_usage_info)
+}
+},
+{
+{
+(MR_Word *) &mercury_data__closure_layout__recompilation__usage__find_items_used_by_type_spec_3_0_1,
+(MR_Word *) (MR_Integer) 0
+},
+3,
+{
+MR_CTOR0_ADDR(parse_tree__prog_data, mer_type),
+MR_CTOR0_ADDR(recompilation__usage, recompilation_usage_info),
+MR_CTOR0_ADDR(recompilation__usage, recompilation_usage_info)
+}
+},
+{
+{
+(MR_Word *) &mercury_data__closure_layout__recompilation__usage__find_items_used_by_bound_inst_3_0_1,
+(MR_Word *) (MR_Integer) 0
+},
+3,
+{
+MR_CTOR0_ADDR(parse_tree__prog_data, mer_inst),
+MR_CTOR0_ADDR(recompilation__usage, recompilation_usage_info),
+MR_CTOR0_ADDR(recompilation__usage, recompilation_usage_info)
+}
+},
+{
+{
+(MR_Word *) &mercury_data__closure_layout__recompilation__usage__find_items_used_by_bound_inst_3_0_2,
+(MR_Word *) (MR_Integer) 0
+},
+3,
+{
+MR_CTOR0_ADDR(parse_tree__prog_data, mer_inst),
+MR_CTOR0_ADDR(recompilation__usage, recompilation_usage_info),
+MR_CTOR0_ADDR(recompilation__usage, recompilation_usage_info)
+}
+},
+{
+{
+(MR_Word *) &mercury_data__closure_layout__recompilation__usage__find_items_used_by_class_constraint_3_0_1,
+(MR_Word *) (MR_Integer) 0
+},
+3,
+{
+MR_CTOR0_ADDR(parse_tree__prog_data, mer_type),
+MR_CTOR0_ADDR(recompilation__usage, recompilation_usage_info),
+MR_CTOR0_ADDR(recompilation__usage, recompilation_usage_info)
+}
+},
+};
+
+MR_decl_entry(parse_tree__mercury_to_mercury__mercury_output_bracketed_sym_name_3_0);
+static const struct mercury_type_3 mercury_common_3[44] =
+{
+{
+MR_COMMON(2,0),
+MR_ENTRY_AP(recompilation__usage__write_simple_item_matches_3_3_0),
+0
+},
+{
+MR_COMMON(2,1),
+MR_ENTRY_AP(recompilation__usage__write_pred_or_func_matches_3_3_0),
+0
+},
+{
+MR_COMMON(2,2),
+MR_ENTRY_AP(recompilation__usage__write_functor_matches_2_3_0),
+0
+},
+{
+MR_COMMON(2,3),
+MR_ENTRY_AP(recompilation__usage__find_items_used_by_type_3_0),
+0
+},
+{
+MR_COMMON(2,4),
+MR_ENTRY_AP(recompilation__usage__record_expanded_items_used_by_item_2_3_0),
+0
+},
+{
+MR_COMMON(2,5),
+MR_ENTRY_AP(recompilation__usage__find_items_used_by_type_3_0),
+0
+},
+{
+MR_COMMON(2,6),
+MR_ENTRY_AP(recompilation__usage__find_items_used_by_type_3_0),
+0
+},
+{
+MR_COMMON(2,7),
+MR_ENTRY_AP(recompilation__usage__find_items_used_by_ctor_3_0),
+0
+},
+{
+MR_COMMON(2,8),
+MR_ENTRY_AP(recompilation__usage__find_items_used_by_inst_3_0),
+0
+},
+{
+MR_COMMON(2,9),
+MR_ENTRY_AP(recompilation__usage__find_items_used_by_mode_3_0),
+0
+},
+{
+MR_COMMON(2,10),
+MR_ENTRY_AP(recompilation__usage__find_items_used_by_mode_3_0),
+0
+},
+{
+MR_COMMON(2,11),
+MR_ENTRY_AP(recompilation__usage__find_items_used_by_inst_3_0),
+0
+},
+{
+MR_COMMON(2,12),
+MR_ENTRY_AP(recompilation__usage__find_items_used_by_bound_inst_3_0),
+0
+},
+{
+MR_COMMON(2,13),
+MR_ENTRY_AP(recompilation__usage__find_items_used_by_inst_3_0),
+0
+},
+{
+MR_COMMON(2,14),
+MR_ENTRY_AP(recompilation__usage__find_items_used_by_class_constraint_3_0),
+0
+},
+{
+MR_COMMON(2,15),
+MR_ENTRY_AP(recompilation__usage__find_items_used_by_class_method_3_0),
+0
+},
+{
+MR_COMMON(10,1),
+MR_ENTRY_AP(recompilation__usage__find_items_used_by_functors_2_4_0),
+0
+},
+{
+MR_COMMON(10,2),
+MR_ENTRY_AP(recompilation__usage__find_items_used_by_instances_4_0),
+0
+},
+{
+MR_COMMON(2,16),
+MR_ENTRY_AP(recompilation__usage__insert_into_imported_items_map_3_0),
+0
+},
+{
+MR_COMMON(2,17),
+MR_ENTRY_AP(parse_tree__mercury_to_mercury__mercury_output_bracketed_sym_name_3_0),
+0
+},
+{
+MR_COMMON(2,18),
+MR_ENTRY_AP(recompilation__usage__write_classname_and_arity_3_0),
+0
+},
+{
+MR_COMMON(2,19),
+MR_ENTRY_AP(recompilation__usage__write_simple_item_matches_4_3_0),
+0
+},
+{
+MR_COMMON(2,20),
+MR_ENTRY_AP(parse_tree__mercury_to_mercury__mercury_output_bracketed_sym_name_3_0),
+0
+},
+{
+MR_COMMON(2,21),
+MR_ENTRY_AP(recompilation__usage__write_resolved_functor_3_0),
+0
+},
+{
+MR_COMMON(11,1),
+MR_ENTRY_AP(fn__recompilation__usage__IntroducedFrom__func__find_matching_functors__748__1_1_0),
+0
+},
+{
+MR_COMMON(11,2),
+MR_ENTRY_AP(fn__recompilation__usage__IntroducedFrom__func__find_matching_functors__748__1_1_0),
+0
+},
+{
+MR_COMMON(11,3),
+MR_ENTRY_AP(fn__recompilation__usage__IntroducedFrom__func__find_matching_functors__776__1_1_0),
+0
+},
+{
+MR_COMMON(2,23),
+MR_ENTRY_AP(recompilation__usage__record_expanded_items_used_by_item_2_3_0),
+0
+},
+{
+MR_COMMON(2,24),
+MR_ENTRY_AP(recompilation__usage__find_items_used_by_class_constraint_3_0),
+0
+},
+{
+MR_COMMON(2,25),
+MR_ENTRY_AP(recompilation__usage__find_items_used_by_type_3_0),
+0
+},
+{
+MR_COMMON(2,26),
+MR_ENTRY_AP(recompilation__usage__find_items_used_by_class_constraint_3_0),
+0
+},
+{
+MR_COMMON(2,27),
+MR_ENTRY_AP(recompilation__usage__find_items_used_by_class_constraint_3_0),
+0
+},
+{
+MR_COMMON(2,28),
+MR_ENTRY_AP(recompilation__usage__find_items_used_by_class_constraint_3_0),
+0
+},
+{
+MR_COMMON(2,29),
+MR_ENTRY_AP(recompilation__usage__find_items_used_by_class_constraint_3_0),
+0
+},
+{
+MR_COMMON(2,30),
+MR_ENTRY_AP(recompilation__usage__find_items_used_by_type_and_mode_3_0),
+0
+},
+{
+MR_COMMON(2,31),
+MR_ENTRY_AP(recompilation__usage__find_items_used_by_mode_3_0),
+0
+},
+{
+MR_COMMON(2,32),
+MR_ENTRY_AP(recompilation__usage__find_items_used_by_class_constraint_3_0),
+0
+},
+{
+MR_COMMON(2,33),
+MR_ENTRY_AP(recompilation__usage__find_items_used_by_ctor_arg_3_0),
+0
+},
+{
+MR_COMMON(10,6),
+MR_ENTRY_AP(recompilation__usage__find_items_used_by_proc_arg_modes_4_0),
+0
+},
+{
+MR_COMMON(2,34),
+MR_ENTRY_AP(recompilation__usage__find_items_used_by_type_spec_3_0),
+0
+},
+{
+MR_COMMON(2,35),
+MR_ENTRY_AP(recompilation__usage__find_items_used_by_type_3_0),
+0
+},
+{
+MR_COMMON(2,36),
+MR_ENTRY_AP(recompilation__usage__find_items_used_by_inst_3_0),
+0
+},
+{
+MR_COMMON(2,37),
+MR_ENTRY_AP(recompilation__usage__find_items_used_by_inst_3_0),
+0
+},
+{
+MR_COMMON(2,38),
+MR_ENTRY_AP(recompilation__usage__find_items_used_by_type_3_0),
+0
+},
+};
+
+static const struct mercury_type_4 mercury_common_4[2] =
+{
+{
+MR_CTOR_ADDR(pair, pair, 2),
+MR_CTOR0_ADDR(mdbcomp__prim_data, sym_name),
+1
+},
+{
+MR_CTOR_ADDR(tree234, tree234, 2),
+MR_CTOR0_ADDR(mdbcomp__prim_data, sym_name),
+1
+},
+};
+
+extern const MR_TypeCtorInfo_Struct mercury_data_builtin__type_ctor_info_pred_0;
+extern const MR_TypeCtorInfo_Struct mercury_data_io__type_ctor_info_state_0;
+static const struct mercury_type_5 mercury_common_5[1] =
+{
+{
+MR_CTOR0_ADDR(builtin, pred),
+3,
+MR_COMMON(4,0),
+MR_IO_CTOR_ADDR,
+MR_IO_CTOR_ADDR
+},
+};
+
+static const struct mercury_type_6 mercury_common_6[1] =
+{
+{
+{
+1,
+17
+}
+},
+};
+
+static const MR_UserClosureId
+mercury_data__closure_layout__recompilation__usage__write_pred_or_func_matches_2_4_0_2;
+extern const MR_TypeCtorInfo_Struct mercury_data_private_builtin__type_ctor_info_type_info_0;
+static const MR_UserClosureId
+mercury_data__closure_layout__recompilation__usage__write_functor_matches_5_0_2;
+static const MR_UserClosureId
+mercury_data__closure_layout__recompilation__usage__find_items_used_by_preds_4_0_1;
+extern const MR_TypeCtorInfo_Struct mercury_data_mdbcomp__prim_data__type_ctor_info_pred_or_func_0;
+static const MR_UserClosureId
+mercury_data__closure_layout__recompilation__usage__find_items_used_by_simple_item_set_4_0_1;
+extern const MR_TypeCtorInfo_Struct mercury_data_recompilation__type_ctor_info_item_type_0;
+static const MR_UserClosureId
+mercury_data__closure_layout__recompilation__usage__write_resolved_item_set_2_4_0_1;
+static const MR_UserClosureId
+mercury_data__closure_layout__recompilation__usage__do_record_used_pred_or_func_9_0_2;
+static const MR_UserClosureId
+mercury_data__closure_layout__recompilation__usage__find_matching_functors_4_0_3;
+static const MR_UserClosureId
+mercury_data__closure_layout__recompilation__usage__do_record_used_functor_8_0_1;
+extern const MR_TypeCtorInfo_Struct mercury_data_builtin__type_ctor_info_string_0;
+static const struct mercury_type_7 mercury_common_7[8] =
+{
+{
+{
+(MR_Word *) &mercury_data__closure_layout__recompilation__usage__write_pred_or_func_matches_2_4_0_2,
+MR_COMMON(6,0)
+},
+5,
+{
+MR_CTOR0_ADDR(private_builtin, type_info),
+MR_COMMON(5,0),
+MR_COMMON(0,16),
+MR_IO_CTOR_ADDR,
+MR_IO_CTOR_ADDR
+}
+},
+{
+{
+(MR_Word *) &mercury_data__closure_layout__recompilation__usage__write_functor_matches_5_0_2,
+MR_COMMON(6,0)
+},
+5,
+{
+MR_CTOR0_ADDR(private_builtin, type_info),
+MR_COMMON(5,0),
+MR_COMMON(0,16),
+MR_IO_CTOR_ADDR,
+MR_IO_CTOR_ADDR
+}
+},
+{
+{
+(MR_Word *) &mercury_data__closure_layout__recompilation__usage__find_items_used_by_preds_4_0_1,
+(MR_Word *) (MR_Integer) 0
+},
+5,
+{
+MR_CTOR0_ADDR(mdbcomp__prim_data, pred_or_func),
+MR_COMMON(0,19),
+MR_COMMON(0,20),
+MR_CTOR0_ADDR(recompilation__usage, recompilation_usage_info),
+MR_CTOR0_ADDR(recompilation__usage, recompilation_usage_info)
+}
+},
+{
+{
+(MR_Word *) &mercury_data__closure_layout__recompilation__usage__find_items_used_by_simple_item_set_4_0_1,
+(MR_Word *) (MR_Integer) 0
+},
+5,
+{
+MR_CTOR0_ADDR(recompilation, item_type),
+MR_COMMON(0,19),
+MR_COMMON(0,20),
+MR_CTOR0_ADDR(recompilation__usage, recompilation_usage_info),
+MR_CTOR0_ADDR(recompilation__usage, recompilation_usage_info)
+}
+},
+{
+{
+(MR_Word *) &mercury_data__closure_layout__recompilation__usage__write_resolved_item_set_2_4_0_1,
+MR_COMMON(6,0)
+},
+5,
+{
+MR_CTOR0_ADDR(private_builtin, type_info),
+MR_COMMON(5,0),
+MR_COMMON(0,15),
+MR_IO_CTOR_ADDR,
+MR_IO_CTOR_ADDR
+}
+},
+{
+{
+(MR_Word *) &mercury_data__closure_layout__recompilation__usage__do_record_used_pred_or_func_9_0_2,
+(MR_Word *) (MR_Integer) 0
+},
+5,
+{
+MR_CTOR0_ADDR(mdbcomp__prim_data, pred_or_func),
+MR_COMMON(0,19),
+MR_COMMON(0,29),
+MR_CTOR0_ADDR(recompilation__usage, recompilation_usage_info),
+MR_CTOR0_ADDR(recompilation__usage, recompilation_usage_info)
+}
+},
+{
+{
+(MR_Word *) &mercury_data__closure_layout__recompilation__usage__find_matching_functors_4_0_3,
+(MR_Word *) (MR_Integer) 0
+},
+5,
+{
+MR_CTOR0_ADDR(hlds__hlds_module, module_info),
+MR_CTOR0_ADDR(mdbcomp__prim_data, sym_name),
+MR_INT_CTOR_ADDR,
+MR_INT_CTOR_ADDR,
+MR_CTOR0_ADDR(recompilation__usage, resolved_functor)
+}
+},
+{
+{
+(MR_Word *) &mercury_data__closure_layout__recompilation__usage__do_record_used_functor_8_0_1,
+(MR_Word *) (MR_Integer) 0
+},
+5,
+{
+MR_STRING_CTOR_ADDR,
+MR_INT_CTOR_ADDR,
+MR_CTOR0_ADDR(recompilation__usage, resolved_functor),
+MR_CTOR0_ADDR(recompilation__usage, recompilation_usage_info),
+MR_CTOR0_ADDR(recompilation__usage, recompilation_usage_info)
+}
+},
+};
+
+static const struct mercury_type_8 mercury_common_8[1] =
+{
+{
+MR_COMMON(7,0),
+MR_ENTRY_AP(recompilation__usage__write_resolved_item_set_2_4_0),
+2,
+MR_TAG_COMMON(0,1,0),
+MR_TAG_COMMON(0,3,1)
+},
+};
+
+extern const MR_TypeCtorInfo_Struct mercury_data_recompilation__type_ctor_info_item_id_set_3;
+extern const MR_TypeCtorInfo_Struct mercury_data_recompilation__type_ctor_info_item_id_set_3;
+static const struct mercury_type_9 mercury_common_9[3] =
+{
+{
+{
+MR_CTOR_ADDR(recompilation, item_id_set, 3),
+MR_TAG_COMMON(0,1,7),
+MR_TAG_COMMON(0,1,7),
+MR_TAG_COMMON(0,1,7)
+}
+},
+{
+{
+MR_CTOR_ADDR(recompilation, item_id_set, 3),
+MR_COMMON(1,11),
+MR_COMMON(1,11),
+MR_COMMON(1,11)
+}
+},
+{
+{
+MR_CTOR_ADDR(recompilation, item_id_set, 3),
+MR_COMMON(1,11),
+MR_COMMON(1,11),
+MR_COMMON(1,11)
+}
+},
+};
+
+static const MR_UserClosureId
+mercury_data__closure_layout__recompilation__usage__find_items_used_by_item_4_0_2;
+extern const MR_TypeCtorInfo_Struct mercury_data_hlds__hlds_data__type_ctor_info_hlds_instance_defn_0;
+static const MR_UserClosureId
+mercury_data__closure_layout__recompilation__usage__find_items_used_by_functors_3_0_1;
+static const MR_UserClosureId
+mercury_data__closure_layout__recompilation__usage__find_all_used_imported_items_2_3_0_1;
+extern const MR_TypeCtorInfo_Struct mercury_data_parse_tree__prog_data__type_ctor_info_class_id_0;
+static const MR_UserClosureId
+mercury_data__closure_layout__recompilation__usage__write_module_name_and_used_items_7_0_1;
+static const MR_UserClosureId
+mercury_data__closure_layout__recompilation__usage__find_items_used_by_instances_4_0_2;
+static const MR_UserClosureId
+mercury_data__closure_layout__recompilation__usage__find_items_used_by_instances_4_0_3;
+static const MR_UserClosureId
+mercury_data__closure_layout__recompilation__usage__find_items_used_by_pred_5_0_1;
+extern const MR_TypeCtorInfo_Struct mercury_data_hlds__hlds_pred__type_ctor_info_proc_info_0;
+static const struct mercury_type_10 mercury_common_10[7] =
+{
+{
+{
+(MR_Word *) &mercury_data__closure_layout__recompilation__usage__find_items_used_by_item_4_0_2,
+(MR_Word *) (MR_Integer) 0
+},
+4,
+{
+MR_CTOR0_ADDR(recompilation, item_name),
+MR_CTOR0_ADDR(hlds__hlds_data, hlds_instance_defn),
+MR_CTOR0_ADDR(recompilation__usage, recompilation_usage_info),
+MR_CTOR0_ADDR(recompilation__usage, recompilation_usage_info)
+}
+},
+{
+{
+(MR_Word *) &mercury_data__closure_layout__recompilation__usage__find_items_used_by_functors_3_0_1,
+(MR_Word *) (MR_Integer) 0
+},
+4,
+{
+MR_COMMON(0,19),
+MR_COMMON(0,20),
+MR_CTOR0_ADDR(recompilation__usage, recompilation_usage_info),
+MR_CTOR0_ADDR(recompilation__usage, recompilation_usage_info)
+}
+},
+{
+{
+(MR_Word *) &mercury_data__closure_layout__recompilation__usage__find_all_used_imported_items_2_3_0_1,
+(MR_Word *) (MR_Integer) 0
+},
+4,
+{
+MR_CTOR0_ADDR(parse_tree__prog_data, class_id),
+MR_COMMON(1,10),
+MR_CTOR0_ADDR(recompilation__usage, recompilation_usage_info),
+MR_CTOR0_ADDR(recompilation__usage, recompilation_usage_info)
+}
+},
+{
+{
+(MR_Word *) &mercury_data__closure_layout__recompilation__usage__write_module_name_and_used_items_7_0_1,
+(MR_Word *) (MR_Integer) 0
+},
+4,
+{
+MR_COMMON(9,2),
+MR_CTOR0_ADDR(recompilation, item_type),
+MR_COMMON(0,26),
+MR_COMMON(0,26)
+}
+},
+{
+{
+(MR_Word *) &mercury_data__closure_layout__recompilation__usage__find_items_used_by_instances_4_0_2,
+(MR_Word *) (MR_Integer) 0
+},
+4,
+{
+MR_CTOR0_ADDR(recompilation, item_name),
+MR_CTOR0_ADDR(hlds__hlds_data, hlds_instance_defn),
+MR_CTOR0_ADDR(recompilation__usage, recompilation_usage_info),
+MR_CTOR0_ADDR(recompilation__usage, recompilation_usage_info)
+}
+},
+{
+{
+(MR_Word *) &mercury_data__closure_layout__recompilation__usage__find_items_used_by_instances_4_0_3,
+(MR_Word *) (MR_Integer) 0
+},
+4,
+{
+MR_CTOR0_ADDR(recompilation, item_name),
+MR_CTOR0_ADDR(hlds__hlds_data, hlds_instance_defn),
+MR_CTOR0_ADDR(recompilation__usage, recompilation_usage_info),
+MR_CTOR0_ADDR(recompilation__usage, recompilation_usage_info)
+}
+},
+{
+{
+(MR_Word *) &mercury_data__closure_layout__recompilation__usage__find_items_used_by_pred_5_0_1,
+(MR_Word *) (MR_Integer) 0
+},
+4,
+{
+MR_INT_CTOR_ADDR,
+MR_CTOR0_ADDR(hlds__hlds_pred, proc_info),
+MR_CTOR0_ADDR(recompilation__usage, recompilation_usage_info),
+MR_CTOR0_ADDR(recompilation__usage, recompilation_usage_info)
+}
+},
+};
+
+static const MR_UserClosureId
+mercury_data__closure_layout__recompilation__usage__find_all_used_imported_items_7_0_1;
+static const MR_UserClosureId
+mercury_data__closure_layout__recompilation__usage__find_matching_functors_4_0_1;
+extern const MR_TypeCtorInfo_Struct mercury_data_hlds__hlds_data__type_ctor_info_hlds_cons_defn_0;
+static const MR_UserClosureId
+mercury_data__closure_layout__recompilation__usage__find_matching_functors_4_0_2;
+static const MR_UserClosureId
+mercury_data__closure_layout__recompilation__usage__find_matching_functors_4_0_4;
+extern const MR_TypeCtorInfo_Struct mercury_data_hlds__hlds_data__type_ctor_info_hlds_ctor_field_defn_0;
+static const struct mercury_type_11 mercury_common_11[4] =
+{
+{
+(MR_Word *) &mercury_data__closure_layout__recompilation__usage__find_all_used_imported_items_7_0_1,
+(MR_Word *) (MR_Integer) 0,
+2,
+MR_CTOR0_ADDR(hlds__hlds_module, module_info),
+MR_CTOR0_ADDR(mdbcomp__prim_data, sym_name)
+},
+{
+(MR_Word *) &mercury_data__closure_layout__recompilation__usage__find_matching_functors_4_0_1,
+(MR_Word *) (MR_Integer) 0,
+2,
+MR_CTOR0_ADDR(hlds__hlds_data, hlds_cons_defn),
+MR_CTOR0_ADDR(recompilation__usage, resolved_functor)
+},
+{
+(MR_Word *) &mercury_data__closure_layout__recompilation__usage__find_matching_functors_4_0_2,
+(MR_Word *) (MR_Integer) 0,
+2,
+MR_CTOR0_ADDR(hlds__hlds_data, hlds_cons_defn),
+MR_CTOR0_ADDR(recompilation__usage, resolved_functor)
+},
+{
+(MR_Word *) &mercury_data__closure_layout__recompilation__usage__find_matching_functors_4_0_4,
+(MR_Word *) (MR_Integer) 0,
+2,
+MR_CTOR0_ADDR(hlds__hlds_data, hlds_ctor_field_defn),
+MR_CTOR0_ADDR(recompilation__usage, resolved_functor)
+},
+};
+
+static const MR_UserClosureId
+mercury_data__closure_layout__recompilation__usage__write_usage_file_2_6_0_2;
+extern const MR_TypeCtorInfo_Struct mercury_data_recompilation__type_ctor_info_recompilation_info_0;
+static const MR_UserClosureId
+mercury_data__closure_layout__recompilation__usage__write_usage_file_2_6_0_4;
+static const MR_UserClosureId
+mercury_data__closure_layout__recompilation__usage__find_items_used_by_preds_2_5_0_1;
+static const MR_UserClosureId
+mercury_data__closure_layout__recompilation__usage__find_items_used_by_simple_item_set_2_5_0_1;
+static const struct mercury_type_12 mercury_common_12[4] =
+{
+{
+{
+(MR_Word *) &mercury_data__closure_layout__recompilation__usage__write_usage_file_2_6_0_2,
+(MR_Word *) (MR_Integer) 0
+},
+7,
+{
+MR_CTOR0_ADDR(recompilation, recompilation_info),
+MR_COMMON(0,23),
+MR_COMMON(0,24),
+MR_CTOR0_ADDR(mdbcomp__prim_data, sym_name),
+MR_COMMON(9,2),
+MR_IO_CTOR_ADDR,
+MR_IO_CTOR_ADDR
+}
+},
+{
+{
+(MR_Word *) &mercury_data__closure_layout__recompilation__usage__write_usage_file_2_6_0_4,
+(MR_Word *) (MR_Integer) 0
+},
+7,
+{
+MR_CTOR0_ADDR(recompilation, recompilation_info),
+MR_COMMON(0,23),
+MR_COMMON(0,24),
+MR_CTOR0_ADDR(mdbcomp__prim_data, sym_name),
+MR_COMMON(9,2),
+MR_IO_CTOR_ADDR,
+MR_IO_CTOR_ADDR
+}
+},
+{
+{
+(MR_Word *) &mercury_data__closure_layout__recompilation__usage__find_items_used_by_preds_2_5_0_1,
+(MR_Word *) (MR_Integer) 0
+},
+7,
+{
+MR_CTOR0_ADDR(mdbcomp__prim_data, pred_or_func),
+MR_STRING_CTOR_ADDR,
+MR_INT_CTOR_ADDR,
+MR_CTOR0_ADDR(mdbcomp__prim_data, sym_name),
+MR_CTOR0_ADDR(mdbcomp__prim_data, sym_name),
+MR_CTOR0_ADDR(recompilation__usage, recompilation_usage_info),
+MR_CTOR0_ADDR(recompilation__usage, recompilation_usage_info)
+}
+},
+{
+{
+(MR_Word *) &mercury_data__closure_layout__recompilation__usage__find_items_used_by_simple_item_set_2_5_0_1,
+(MR_Word *) (MR_Integer) 0
+},
+7,
+{
+MR_CTOR0_ADDR(recompilation, item_type),
+MR_STRING_CTOR_ADDR,
+MR_INT_CTOR_ADDR,
+MR_CTOR0_ADDR(mdbcomp__prim_data, sym_name),
+MR_CTOR0_ADDR(mdbcomp__prim_data, sym_name),
+MR_CTOR0_ADDR(recompilation__usage, recompilation_usage_info),
+MR_CTOR0_ADDR(recompilation__usage, recompilation_usage_info)
+}
+},
+};
+
+static const MR_UserClosureId
+mercury_data__closure_layout__recompilation__usage__find_items_used_by_functors_2_4_0_1;
+static const struct mercury_type_13 mercury_common_13[1] =
+{
+{
+{
+(MR_Word *) &mercury_data__closure_layout__recompilation__usage__find_items_used_by_functors_2_4_0_1,
+(MR_Word *) (MR_Integer) 0
+},
+6,
+{
+MR_STRING_CTOR_ADDR,
+MR_INT_CTOR_ADDR,
+MR_CTOR0_ADDR(mdbcomp__prim_data, sym_name),
+MR_CTOR0_ADDR(mdbcomp__prim_data, sym_name),
+MR_CTOR0_ADDR(recompilation__usage, recompilation_usage_info),
+MR_CTOR0_ADDR(recompilation__usage, recompilation_usage_info)
+}
+},
+};
+
+static const MR_FA_TypeInfo_Struct2 mercury_data_pair__ti_pair_2builtin__type_ctor_info_string_0builtin__type_ctor_info_int_0 = {
+	&mercury_data_pair__type_ctor_info_pair_2,
+{	(MR_TypeInfo) &mercury_data_builtin__type_ctor_info_string_0,
+	(MR_TypeInfo) &mercury_data_builtin__type_ctor_info_int_0
+}};
+
+static const MR_FA_TypeInfo_Struct1 mercury_data_set_ordlist__ti_set_ordlist_1pair__ti_pair_2builtin__type_ctor_info_string_0builtin__type_ctor_info_int_0 = {
+	&mercury_data_set_ordlist__type_ctor_info_set_ordlist_1,
+{	(MR_TypeInfo) &mercury_data_pair__ti_pair_2builtin__type_ctor_info_string_0builtin__type_ctor_info_int_0
+}};
+
+const MR_TypeCtorInfo_Struct mercury_data_recompilation__usage__type_ctor_info_imported_item_set_0 = {
+	0,
+	13,
+	-1,
+	MR_TYPECTOR_REP_EQUIV_GROUND,
+	MR_MAYBE_STATIC_CODE(MR_ENTRY_AP(__Unify___recompilation__usage__imported_item_set_0_0)),
+	MR_MAYBE_STATIC_CODE(MR_ENTRY_AP(__Compare___recompilation__usage__imported_item_set_0_0)),
+	"recompilation.usage",
+	"imported_item_set",
+	{ 0 },
+	{ (void *)&mercury_data_set_ordlist__ti_set_ordlist_1pair__ti_pair_2builtin__type_ctor_info_string_0builtin__type_ctor_info_int_0 },
+	-1,
+	0,
+	NULL
+};
+
+static const MR_FA_TypeInfo_Struct3 mercury_data_recompilation__ti_item_id_set_3set_ordlist__ti_set_ordlist_1pair__ti_pair_2builtin__type_ctor_info_string_0builtin__type_ctor_info_int_0set_ordlist__ti_set_ordlist_1pair__ti_pair_2builtin__type_ctor_info_string_0builtin__type_ctor_info_int_0set_ordlist__ti_set_ordlist_1pair__ti_pair_2builtin__type_ctor_info_string_0builtin__type_ctor_info_int_0 = {
+	&mercury_data_recompilation__type_ctor_info_item_id_set_3,
+{	(MR_TypeInfo) &mercury_data_set_ordlist__ti_set_ordlist_1pair__ti_pair_2builtin__type_ctor_info_string_0builtin__type_ctor_info_int_0,
+	(MR_TypeInfo) &mercury_data_set_ordlist__ti_set_ordlist_1pair__ti_pair_2builtin__type_ctor_info_string_0builtin__type_ctor_info_int_0,
+	(MR_TypeInfo) &mercury_data_set_ordlist__ti_set_ordlist_1pair__ti_pair_2builtin__type_ctor_info_string_0builtin__type_ctor_info_int_0
+}};
+
+static const MR_FA_TypeInfo_Struct2 mercury_data_tree234__ti_tree234_2mdbcomp__prim_data__type_ctor_info_sym_name_0recompilation__ti_item_id_set_3set_ordlist__ti_set_ordlist_1pair__ti_pair_2builtin__type_ctor_info_string_0builtin__type_ctor_info_int_0set_ordlist__ti_set_ordlist_1pair__ti_pair_2builtin__type_ctor_info_string_0builtin__type_ctor_info_int_0set_ordlist__ti_set_ordlist_1pair__ti_pair_2builtin__type_ctor_info_string_0builtin__type_ctor_info_int_0 = {
+	&mercury_data_tree234__type_ctor_info_tree234_2,
+{	(MR_TypeInfo) &mercury_data_mdbcomp__prim_data__type_ctor_info_sym_name_0,
+	(MR_TypeInfo) &mercury_data_recompilation__ti_item_id_set_3set_ordlist__ti_set_ordlist_1pair__ti_pair_2builtin__type_ctor_info_string_0builtin__type_ctor_info_int_0set_ordlist__ti_set_ordlist_1pair__ti_pair_2builtin__type_ctor_info_string_0builtin__type_ctor_info_int_0set_ordlist__ti_set_ordlist_1pair__ti_pair_2builtin__type_ctor_info_string_0builtin__type_ctor_info_int_0
+}};
+
+const MR_TypeCtorInfo_Struct mercury_data_recompilation__usage__type_ctor_info_imported_items_0 = {
+	0,
+	13,
+	-1,
+	MR_TYPECTOR_REP_EQUIV_GROUND,
+	MR_MAYBE_STATIC_CODE(MR_ENTRY_AP(__Unify___recompilation__usage__imported_items_0_0)),
+	MR_MAYBE_STATIC_CODE(MR_ENTRY_AP(__Compare___recompilation__usage__imported_items_0_0)),
+	"recompilation.usage",
+	"imported_items",
+	{ 0 },
+	{ (void *)&mercury_data_tree234__ti_tree234_2mdbcomp__prim_data__type_ctor_info_sym_name_0recompilation__ti_item_id_set_3set_ordlist__ti_set_ordlist_1pair__ti_pair_2builtin__type_ctor_info_string_0builtin__type_ctor_info_int_0set_ordlist__ti_set_ordlist_1pair__ti_pair_2builtin__type_ctor_info_string_0builtin__type_ctor_info_int_0set_ordlist__ti_set_ordlist_1pair__ti_pair_2builtin__type_ctor_info_string_0builtin__type_ctor_info_int_0 },
+	-1,
+	0,
+	NULL
+};
+
+const MR_TypeCtorInfo_Struct mercury_data_recompilation__usage__type_ctor_info_module_imported_items_0 = {
+	0,
+	13,
+	-1,
+	MR_TYPECTOR_REP_EQUIV_GROUND,
+	MR_MAYBE_STATIC_CODE(MR_ENTRY_AP(__Unify___recompilation__usage__module_imported_items_0_0)),
+	MR_MAYBE_STATIC_CODE(MR_ENTRY_AP(__Compare___recompilation__usage__module_imported_items_0_0)),
+	"recompilation.usage",
+	"module_imported_items",
+	{ 0 },
+	{ (void *)&mercury_data_recompilation__ti_item_id_set_3set_ordlist__ti_set_ordlist_1pair__ti_pair_2builtin__type_ctor_info_string_0builtin__type_ctor_info_int_0set_ordlist__ti_set_ordlist_1pair__ti_pair_2builtin__type_ctor_info_string_0builtin__type_ctor_info_int_0set_ordlist__ti_set_ordlist_1pair__ti_pair_2builtin__type_ctor_info_string_0builtin__type_ctor_info_int_0 },
+	-1,
+	0,
+	NULL
+};
+extern const MR_TypeCtorInfo_Struct mercury_data_hlds__hlds_module__type_ctor_info_module_info_0;
+extern const MR_TypeCtorInfo_Struct mercury_data_queue__type_ctor_info_queue_1;
+extern const MR_TypeCtorInfo_Struct mercury_data_recompilation__type_ctor_info_item_id_0;
+
+static const MR_FA_TypeInfo_Struct1 mercury_data_queue__ti_queue_1recompilation__type_ctor_info_item_id_0 = {
+	&mercury_data_queue__type_ctor_info_queue_1,
+{	(MR_TypeInfo) &mercury_data_recompilation__type_ctor_info_item_id_0
+}};
+
+static const MR_FA_TypeInfo_Struct1 mercury_data_set_ordlist__ti_set_ordlist_1recompilation__type_ctor_info_item_name_0 = {
+	&mercury_data_set_ordlist__type_ctor_info_set_ordlist_1,
+{	(MR_TypeInfo) &mercury_data_recompilation__type_ctor_info_item_name_0
+}};
+
+static const MR_FA_TypeInfo_Struct2 mercury_data_tree234__ti_tree234_2mdbcomp__prim_data__type_ctor_info_sym_name_0set_ordlist__ti_set_ordlist_1recompilation__type_ctor_info_item_name_0 = {
+	&mercury_data_tree234__type_ctor_info_tree234_2,
+{	(MR_TypeInfo) &mercury_data_mdbcomp__prim_data__type_ctor_info_sym_name_0,
+	(MR_TypeInfo) &mercury_data_set_ordlist__ti_set_ordlist_1recompilation__type_ctor_info_item_name_0
+}};
+
+static const MR_FA_TypeInfo_Struct1 mercury_data_set_ordlist__ti_set_ordlist_1recompilation__type_ctor_info_item_id_0 = {
+	&mercury_data_set_ordlist__type_ctor_info_set_ordlist_1,
+{	(MR_TypeInfo) &mercury_data_recompilation__type_ctor_info_item_id_0
+}};
+
+static const MR_FA_TypeInfo_Struct2 mercury_data_tree234__ti_tree234_2recompilation__type_ctor_info_item_id_0set_ordlist__ti_set_ordlist_1recompilation__type_ctor_info_item_id_0 = {
+	&mercury_data_tree234__type_ctor_info_tree234_2,
+{	(MR_TypeInfo) &mercury_data_recompilation__type_ctor_info_item_id_0,
+	(MR_TypeInfo) &mercury_data_set_ordlist__ti_set_ordlist_1recompilation__type_ctor_info_item_id_0
+}};
+
+static const MR_FA_TypeInfo_Struct2 mercury_data_tree234__ti_tree234_2mdbcomp__prim_data__type_ctor_info_sym_name_0mdbcomp__prim_data__type_ctor_info_sym_name_0 = {
+	&mercury_data_tree234__type_ctor_info_tree234_2,
+{	(MR_TypeInfo) &mercury_data_mdbcomp__prim_data__type_ctor_info_sym_name_0,
+	(MR_TypeInfo) &mercury_data_mdbcomp__prim_data__type_ctor_info_sym_name_0
+}};
+
+static const MR_FA_TypeInfo_Struct2 mercury_data_tree234__ti_tree234_2pair__ti_pair_2builtin__type_ctor_info_string_0builtin__type_ctor_info_int_0tree234__ti_tree234_2mdbcomp__prim_data__type_ctor_info_sym_name_0mdbcomp__prim_data__type_ctor_info_sym_name_0 = {
+	&mercury_data_tree234__type_ctor_info_tree234_2,
+{	(MR_TypeInfo) &mercury_data_pair__ti_pair_2builtin__type_ctor_info_string_0builtin__type_ctor_info_int_0,
+	(MR_TypeInfo) &mercury_data_tree234__ti_tree234_2mdbcomp__prim_data__type_ctor_info_sym_name_0mdbcomp__prim_data__type_ctor_info_sym_name_0
+}};
+
+static const MR_FA_TypeInfo_Struct2 mercury_data_pair__ti_pair_2builtin__type_ctor_info_int_0mdbcomp__prim_data__type_ctor_info_sym_name_0 = {
+	&mercury_data_pair__type_ctor_info_pair_2,
+{	(MR_TypeInfo) &mercury_data_builtin__type_ctor_info_int_0,
+	(MR_TypeInfo) &mercury_data_mdbcomp__prim_data__type_ctor_info_sym_name_0
+}};
+
+static const MR_FA_TypeInfo_Struct1 mercury_data_set_ordlist__ti_set_ordlist_1pair__ti_pair_2builtin__type_ctor_info_int_0mdbcomp__prim_data__type_ctor_info_sym_name_0 = {
+	&mercury_data_set_ordlist__type_ctor_info_set_ordlist_1,
+{	(MR_TypeInfo) &mercury_data_pair__ti_pair_2builtin__type_ctor_info_int_0mdbcomp__prim_data__type_ctor_info_sym_name_0
+}};
+
+static const MR_FA_TypeInfo_Struct2 mercury_data_tree234__ti_tree234_2mdbcomp__prim_data__type_ctor_info_sym_name_0set_ordlist__ti_set_ordlist_1pair__ti_pair_2builtin__type_ctor_info_int_0mdbcomp__prim_data__type_ctor_info_sym_name_0 = {
+	&mercury_data_tree234__type_ctor_info_tree234_2,
+{	(MR_TypeInfo) &mercury_data_mdbcomp__prim_data__type_ctor_info_sym_name_0,
+	(MR_TypeInfo) &mercury_data_set_ordlist__ti_set_ordlist_1pair__ti_pair_2builtin__type_ctor_info_int_0mdbcomp__prim_data__type_ctor_info_sym_name_0
+}};
+
+static const MR_FA_TypeInfo_Struct2 mercury_data_pair__ti_pair_2builtin__type_ctor_info_int_0tree234__ti_tree234_2mdbcomp__prim_data__type_ctor_info_sym_name_0set_ordlist__ti_set_ordlist_1pair__ti_pair_2builtin__type_ctor_info_int_0mdbcomp__prim_data__type_ctor_info_sym_name_0 = {
+	&mercury_data_pair__type_ctor_info_pair_2,
+{	(MR_TypeInfo) &mercury_data_builtin__type_ctor_info_int_0,
+	(MR_TypeInfo) &mercury_data_tree234__ti_tree234_2mdbcomp__prim_data__type_ctor_info_sym_name_0set_ordlist__ti_set_ordlist_1pair__ti_pair_2builtin__type_ctor_info_int_0mdbcomp__prim_data__type_ctor_info_sym_name_0
+}};
+
+static const MR_FA_TypeInfo_Struct1 mercury_data_list__ti_list_1pair__ti_pair_2builtin__type_ctor_info_int_0tree234__ti_tree234_2mdbcomp__prim_data__type_ctor_info_sym_name_0set_ordlist__ti_set_ordlist_1pair__ti_pair_2builtin__type_ctor_info_int_0mdbcomp__prim_data__type_ctor_info_sym_name_0 = {
+	&mercury_data_list__type_ctor_info_list_1,
+{	(MR_TypeInfo) &mercury_data_pair__ti_pair_2builtin__type_ctor_info_int_0tree234__ti_tree234_2mdbcomp__prim_data__type_ctor_info_sym_name_0set_ordlist__ti_set_ordlist_1pair__ti_pair_2builtin__type_ctor_info_int_0mdbcomp__prim_data__type_ctor_info_sym_name_0
+}};
+
+static const MR_FA_TypeInfo_Struct2 mercury_data_tree234__ti_tree234_2builtin__type_ctor_info_string_0list__ti_list_1pair__ti_pair_2builtin__type_ctor_info_int_0tree234__ti_tree234_2mdbcomp__prim_data__type_ctor_info_sym_name_0set_ordlist__ti_set_ordlist_1pair__ti_pair_2builtin__type_ctor_info_int_0mdbcomp__prim_data__type_ctor_info_sym_name_0 = {
+	&mercury_data_tree234__type_ctor_info_tree234_2,
+{	(MR_TypeInfo) &mercury_data_builtin__type_ctor_info_string_0,
+	(MR_TypeInfo) &mercury_data_list__ti_list_1pair__ti_pair_2builtin__type_ctor_info_int_0tree234__ti_tree234_2mdbcomp__prim_data__type_ctor_info_sym_name_0set_ordlist__ti_set_ordlist_1pair__ti_pair_2builtin__type_ctor_info_int_0mdbcomp__prim_data__type_ctor_info_sym_name_0
+}};
+
+static const MR_FA_TypeInfo_Struct1 mercury_data_set_ordlist__ti_set_ordlist_1recompilation__usage__type_ctor_info_resolved_functor_0 = {
+	&mercury_data_set_ordlist__type_ctor_info_set_ordlist_1,
+{	(MR_TypeInfo) &mercury_data_recompilation__usage__type_ctor_info_resolved_functor_0
+}};
+
+static const MR_FA_TypeInfo_Struct2 mercury_data_tree234__ti_tree234_2mdbcomp__prim_data__type_ctor_info_sym_name_0set_ordlist__ti_set_ordlist_1recompilation__usage__type_ctor_info_resolved_functor_0 = {
+	&mercury_data_tree234__type_ctor_info_tree234_2,
+{	(MR_TypeInfo) &mercury_data_mdbcomp__prim_data__type_ctor_info_sym_name_0,
+	(MR_TypeInfo) &mercury_data_set_ordlist__ti_set_ordlist_1recompilation__usage__type_ctor_info_resolved_functor_0
+}};
+
+static const MR_FA_TypeInfo_Struct2 mercury_data_pair__ti_pair_2builtin__type_ctor_info_int_0tree234__ti_tree234_2mdbcomp__prim_data__type_ctor_info_sym_name_0set_ordlist__ti_set_ordlist_1recompilation__usage__type_ctor_info_resolved_functor_0 = {
+	&mercury_data_pair__type_ctor_info_pair_2,
+{	(MR_TypeInfo) &mercury_data_builtin__type_ctor_info_int_0,
+	(MR_TypeInfo) &mercury_data_tree234__ti_tree234_2mdbcomp__prim_data__type_ctor_info_sym_name_0set_ordlist__ti_set_ordlist_1recompilation__usage__type_ctor_info_resolved_functor_0
+}};
+
+static const MR_FA_TypeInfo_Struct1 mercury_data_list__ti_list_1pair__ti_pair_2builtin__type_ctor_info_int_0tree234__ti_tree234_2mdbcomp__prim_data__type_ctor_info_sym_name_0set_ordlist__ti_set_ordlist_1recompilation__usage__type_ctor_info_resolved_functor_0 = {
+	&mercury_data_list__type_ctor_info_list_1,
+{	(MR_TypeInfo) &mercury_data_pair__ti_pair_2builtin__type_ctor_info_int_0tree234__ti_tree234_2mdbcomp__prim_data__type_ctor_info_sym_name_0set_ordlist__ti_set_ordlist_1recompilation__usage__type_ctor_info_resolved_functor_0
+}};
+
+static const MR_FA_TypeInfo_Struct2 mercury_data_tree234__ti_tree234_2builtin__type_ctor_info_string_0list__ti_list_1pair__ti_pair_2builtin__type_ctor_info_int_0tree234__ti_tree234_2mdbcomp__prim_data__type_ctor_info_sym_name_0set_ordlist__ti_set_ordlist_1recompilation__usage__type_ctor_info_resolved_functor_0 = {
+	&mercury_data_tree234__type_ctor_info_tree234_2,
+{	(MR_TypeInfo) &mercury_data_builtin__type_ctor_info_string_0,
+	(MR_TypeInfo) &mercury_data_list__ti_list_1pair__ti_pair_2builtin__type_ctor_info_int_0tree234__ti_tree234_2mdbcomp__prim_data__type_ctor_info_sym_name_0set_ordlist__ti_set_ordlist_1recompilation__usage__type_ctor_info_resolved_functor_0
+}};
+
+static const MR_FA_TypeInfo_Struct3 mercury_data_recompilation__ti_item_id_set_3tree234__ti_tree234_2pair__ti_pair_2builtin__type_ctor_info_string_0builtin__type_ctor_info_int_0tree234__ti_tree234_2mdbcomp__prim_data__type_ctor_info_sym_name_0mdbcomp__prim_data__type_ctor_info_sym_name_0tree234__ti_tree234_2builtin__type_ctor_info_string_0list__ti_list_1pair__ti_pair_2builtin__type_ctor_info_int_0tree234__ti_tree234_2mdbcomp__prim_data__type_ctor_info_sym_name_0set_ordlist__ti_set_ordlist_1pair__ti_pair_2builtin__type_ctor_info_int_0mdbcomp__prim_data__type_ctor_info_sym_name_0tree234__ti_tree234_2builtin__type_ctor_info_string_0list__ti_list_1pair__ti_pair_2builtin__type_ctor_info_int_0tree234__ti_tree234_2mdbcomp__prim_data__type_ctor_info_sym_name_0set_ordlist__ti_set_ordlist_1recompilation__usage__type_ctor_info_resolved_functor_0 = {
+	&mercury_data_recompilation__type_ctor_info_item_id_set_3,
+{	(MR_TypeInfo) &mercury_data_tree234__ti_tree234_2pair__ti_pair_2builtin__type_ctor_info_string_0builtin__type_ctor_info_int_0tree234__ti_tree234_2mdbcomp__prim_data__type_ctor_info_sym_name_0mdbcomp__prim_data__type_ctor_info_sym_name_0,
+	(MR_TypeInfo) &mercury_data_tree234__ti_tree234_2builtin__type_ctor_info_string_0list__ti_list_1pair__ti_pair_2builtin__type_ctor_info_int_0tree234__ti_tree234_2mdbcomp__prim_data__type_ctor_info_sym_name_0set_ordlist__ti_set_ordlist_1pair__ti_pair_2builtin__type_ctor_info_int_0mdbcomp__prim_data__type_ctor_info_sym_name_0,
+	(MR_TypeInfo) &mercury_data_tree234__ti_tree234_2builtin__type_ctor_info_string_0list__ti_list_1pair__ti_pair_2builtin__type_ctor_info_int_0tree234__ti_tree234_2mdbcomp__prim_data__type_ctor_info_sym_name_0set_ordlist__ti_set_ordlist_1recompilation__usage__type_ctor_info_resolved_functor_0
+}};
+extern const MR_TypeCtorInfo_Struct mercury_data_hlds__hlds_module__type_ctor_info_module_info_0;
+
+const MR_PseudoTypeInfo mercury_data_recompilation__usage__field_types_recompilation_usage_info_0_0[] = {
+	(MR_PseudoTypeInfo) &mercury_data_hlds__hlds_module__type_ctor_info_module_info_0,
+	(MR_PseudoTypeInfo) &mercury_data_queue__ti_queue_1recompilation__type_ctor_info_item_id_0,
+	(MR_PseudoTypeInfo) &mercury_data_tree234__ti_tree234_2mdbcomp__prim_data__type_ctor_info_sym_name_0recompilation__ti_item_id_set_3set_ordlist__ti_set_ordlist_1pair__ti_pair_2builtin__type_ctor_info_string_0builtin__type_ctor_info_int_0set_ordlist__ti_set_ordlist_1pair__ti_pair_2builtin__type_ctor_info_string_0builtin__type_ctor_info_int_0set_ordlist__ti_set_ordlist_1pair__ti_pair_2builtin__type_ctor_info_string_0builtin__type_ctor_info_int_0,
+	(MR_PseudoTypeInfo) &mercury_data_tree234__ti_tree234_2mdbcomp__prim_data__type_ctor_info_sym_name_0set_ordlist__ti_set_ordlist_1recompilation__type_ctor_info_item_name_0,
+	(MR_PseudoTypeInfo) &mercury_data_tree234__ti_tree234_2recompilation__type_ctor_info_item_id_0set_ordlist__ti_set_ordlist_1recompilation__type_ctor_info_item_id_0,
+	(MR_PseudoTypeInfo) &mercury_data_recompilation__ti_item_id_set_3tree234__ti_tree234_2pair__ti_pair_2builtin__type_ctor_info_string_0builtin__type_ctor_info_int_0tree234__ti_tree234_2mdbcomp__prim_data__type_ctor_info_sym_name_0mdbcomp__prim_data__type_ctor_info_sym_name_0tree234__ti_tree234_2builtin__type_ctor_info_string_0list__ti_list_1pair__ti_pair_2builtin__type_ctor_info_int_0tree234__ti_tree234_2mdbcomp__prim_data__type_ctor_info_sym_name_0set_ordlist__ti_set_ordlist_1pair__ti_pair_2builtin__type_ctor_info_int_0mdbcomp__prim_data__type_ctor_info_sym_name_0tree234__ti_tree234_2builtin__type_ctor_info_string_0list__ti_list_1pair__ti_pair_2builtin__type_ctor_info_int_0tree234__ti_tree234_2mdbcomp__prim_data__type_ctor_info_sym_name_0set_ordlist__ti_set_ordlist_1recompilation__usage__type_ctor_info_resolved_functor_0,
+	(MR_PseudoTypeInfo) &mercury_data_set_ordlist__ti_set_ordlist_1recompilation__type_ctor_info_item_name_0
+};
+
+const MR_ConstString mercury_data_recompilation__usage__field_names_recompilation_usage_info_0_0[] = {
+	"module_info",
+	"item_queue",
+	"imported_items",
+	"module_instances",
+	"dependencies",
+	"used_items",
+	"used_typeclasses"
+};
+
+static const MR_DuFunctorDesc mercury_data_recompilation__usage__du_functor_desc_recompilation_usage_info_0_0 = {
+	"recompilation_usage_info",
+	7,
+	0,
+	MR_SECTAG_NONE,
+	0,
+	-1,
+	0,
+	(MR_PseudoTypeInfo *) mercury_data_recompilation__usage__field_types_recompilation_usage_info_0_0,
+	mercury_data_recompilation__usage__field_names_recompilation_usage_info_0_0,
+	NULL
+};
+
+const MR_DuFunctorDescPtr mercury_data_recompilation__usage__du_stag_ordered_recompilation_usage_info_0_0[] = {
+	&mercury_data_recompilation__usage__du_functor_desc_recompilation_usage_info_0_0
+
+};
+
+const MR_DuPtagLayout mercury_data_recompilation__usage__du_ptag_ordered_recompilation_usage_info_0[] = {
+	{ 1, MR_SECTAG_NONE,
+	mercury_data_recompilation__usage__du_stag_ordered_recompilation_usage_info_0_0 }
+
+};
+
+const MR_DuFunctorDescPtr mercury_data_recompilation__usage__du_name_ordered_recompilation_usage_info_0[] = {
+	&mercury_data_recompilation__usage__du_functor_desc_recompilation_usage_info_0_0
+};
+
+const MR_Integer mercury_data_recompilation__usage__functor_number_map_recompilation_usage_info_0[] = {
+	0 };
+	
+const MR_TypeCtorInfo_Struct mercury_data_recompilation__usage__type_ctor_info_recompilation_usage_info_0 = {
+	0,
+	13,
+	1,
+	MR_TYPECTOR_REP_DU,
+	MR_MAYBE_STATIC_CODE(MR_ENTRY_AP(__Unify___recompilation__usage__recompilation_usage_info_0_0)),
+	MR_MAYBE_STATIC_CODE(MR_ENTRY_AP(__Compare___recompilation__usage__recompilation_usage_info_0_0)),
+	"recompilation.usage",
+	"recompilation_usage_info",
+	{ (void *)mercury_data_recompilation__usage__du_name_ordered_recompilation_usage_info_0 },
+	{ (void *)mercury_data_recompilation__usage__du_ptag_ordered_recompilation_usage_info_0 },
+	1,
+	4,
+	mercury_data_recompilation__usage__functor_number_map_recompilation_usage_info_0
+};
+extern const MR_TypeCtorInfo_Struct mercury_data_bool__type_ctor_info_bool_0;
+
+static const MR_FA_PseudoTypeInfo_Struct2 mercury_data_tree234__pti_tree234_2__plain_mdbcomp__prim_data__type_ctor_info_sym_name_0__pseudo_1 = {
+	&mercury_data_tree234__type_ctor_info_tree234_2,
+{	(MR_PseudoTypeInfo) &mercury_data_mdbcomp__prim_data__type_ctor_info_sym_name_0,
+	(MR_PseudoTypeInfo) 1
+}};
+extern const MR_TypeCtorInfo_Struct mercury_data_bool__type_ctor_info_bool_0;
+extern const MR_TypeCtorInfo_Struct mercury_data_recompilation__usage__type_ctor_info_recompilation_usage_info_0;
+
+static const MR_VA_PseudoTypeInfo_Struct8 mercury_data___vpti_pred_8__plain_mdbcomp__prim_data__type_ctor_info_sym_name_0__plain_mdbcomp__prim_data__type_ctor_info_sym_name_0__plain_builtin__type_ctor_info_int_0__plain_bool__type_ctor_info_bool_0__pseudo_tree234__pti_tree234_2__plain_mdbcomp__prim_data__type_ctor_info_sym_name_0__pseudo_1__pseudo_tree234__pti_tree234_2__plain_mdbcomp__prim_data__type_ctor_info_sym_name_0__pseudo_1__plain_recompilation__usage__type_ctor_info_recompilation_usage_info_0__plain_recompilation__usage__type_ctor_info_recompilation_usage_info_0 = {
+	&mercury_data_builtin__type_ctor_info_pred_0,
+	8,
+{	(MR_PseudoTypeInfo) &mercury_data_mdbcomp__prim_data__type_ctor_info_sym_name_0,
+	(MR_PseudoTypeInfo) &mercury_data_mdbcomp__prim_data__type_ctor_info_sym_name_0,
+	(MR_PseudoTypeInfo) &mercury_data_builtin__type_ctor_info_int_0,
+	(MR_PseudoTypeInfo) &mercury_data_bool__type_ctor_info_bool_0,
+	(MR_PseudoTypeInfo) &mercury_data_tree234__pti_tree234_2__plain_mdbcomp__prim_data__type_ctor_info_sym_name_0__pseudo_1,
+	(MR_PseudoTypeInfo) &mercury_data_tree234__pti_tree234_2__plain_mdbcomp__prim_data__type_ctor_info_sym_name_0__pseudo_1,
+	(MR_PseudoTypeInfo) &mercury_data_recompilation__usage__type_ctor_info_recompilation_usage_info_0,
+	(MR_PseudoTypeInfo) &mercury_data_recompilation__usage__type_ctor_info_recompilation_usage_info_0
+}};
+
+const MR_TypeCtorInfo_Struct mercury_data_recompilation__usage__type_ctor_info_record_resolved_item_1 = {
+	1,
+	13,
+	-1,
+	MR_TYPECTOR_REP_EQUIV,
+	MR_MAYBE_STATIC_CODE(MR_ENTRY_AP(__Unify___recompilation__usage__record_resolved_item_1_0)),
+	MR_MAYBE_STATIC_CODE(MR_ENTRY_AP(__Compare___recompilation__usage__record_resolved_item_1_0)),
+	"recompilation.usage",
+	"record_resolved_item",
+	{ 0 },
+	{ (void *)&mercury_data___vpti_pred_8__plain_mdbcomp__prim_data__type_ctor_info_sym_name_0__plain_mdbcomp__prim_data__type_ctor_info_sym_name_0__plain_builtin__type_ctor_info_int_0__plain_bool__type_ctor_info_bool_0__pseudo_tree234__pti_tree234_2__plain_mdbcomp__prim_data__type_ctor_info_sym_name_0__pseudo_1__pseudo_tree234__pti_tree234_2__plain_mdbcomp__prim_data__type_ctor_info_sym_name_0__pseudo_1__plain_recompilation__usage__type_ctor_info_recompilation_usage_info_0__plain_recompilation__usage__type_ctor_info_recompilation_usage_info_0 },
+	-1,
+	0,
+	NULL
+};
+extern const MR_TypeCtorInfo_Struct mercury_data_mdbcomp__prim_data__type_ctor_info_pred_or_func_0;
+extern const MR_TypeCtorInfo_Struct mercury_data_mdbcomp__prim_data__type_ctor_info_pred_or_func_0;
+
+const MR_PseudoTypeInfo mercury_data_recompilation__usage__field_types_resolved_functor_0_0[] = {
+	(MR_PseudoTypeInfo) &mercury_data_builtin__type_ctor_info_int_0,
+	(MR_PseudoTypeInfo) &mercury_data_mdbcomp__prim_data__type_ctor_info_sym_name_0,
+	(MR_PseudoTypeInfo) &mercury_data_mdbcomp__prim_data__type_ctor_info_pred_or_func_0,
+	(MR_PseudoTypeInfo) &mercury_data_builtin__type_ctor_info_int_0
+};
+
+static const MR_DuFunctorDesc mercury_data_recompilation__usage__du_functor_desc_resolved_functor_0_0 = {
+	"resolved_functor_pred_or_func",
+	4,
+	0,
+	MR_SECTAG_NONE,
+	0,
+	-1,
+	0,
+	(MR_PseudoTypeInfo *) mercury_data_recompilation__usage__field_types_resolved_functor_0_0,
+	NULL,
+	NULL
+};
+
+const MR_PseudoTypeInfo mercury_data_recompilation__usage__field_types_resolved_functor_0_1[] = {
+	(MR_PseudoTypeInfo) &mercury_data_recompilation__type_ctor_info_item_name_0
+};
+
+static const MR_DuFunctorDesc mercury_data_recompilation__usage__du_functor_desc_resolved_functor_0_1 = {
+	"resolved_functor_constructor",
+	1,
+	0,
+	MR_SECTAG_NONE,
+	1,
+	-1,
+	1,
+	(MR_PseudoTypeInfo *) mercury_data_recompilation__usage__field_types_resolved_functor_0_1,
+	NULL,
+	NULL
+};
+
+const MR_PseudoTypeInfo mercury_data_recompilation__usage__field_types_resolved_functor_0_2[] = {
+	(MR_PseudoTypeInfo) &mercury_data_recompilation__type_ctor_info_item_name_0,
+	(MR_PseudoTypeInfo) &mercury_data_recompilation__type_ctor_info_item_name_0
+};
+
+static const MR_DuFunctorDesc mercury_data_recompilation__usage__du_functor_desc_resolved_functor_0_2 = {
+	"resolved_functor_field",
+	2,
+	0,
+	MR_SECTAG_NONE,
+	2,
+	-1,
+	2,
+	(MR_PseudoTypeInfo *) mercury_data_recompilation__usage__field_types_resolved_functor_0_2,
+	NULL,
+	NULL
+};
+
+const MR_DuFunctorDescPtr mercury_data_recompilation__usage__du_stag_ordered_resolved_functor_0_0[] = {
+	&mercury_data_recompilation__usage__du_functor_desc_resolved_functor_0_0
+
+};
+
+const MR_DuFunctorDescPtr mercury_data_recompilation__usage__du_stag_ordered_resolved_functor_0_1[] = {
+	&mercury_data_recompilation__usage__du_functor_desc_resolved_functor_0_1
+
+};
+
+const MR_DuFunctorDescPtr mercury_data_recompilation__usage__du_stag_ordered_resolved_functor_0_2[] = {
+	&mercury_data_recompilation__usage__du_functor_desc_resolved_functor_0_2
+
+};
+
+const MR_DuPtagLayout mercury_data_recompilation__usage__du_ptag_ordered_resolved_functor_0[] = {
+	{ 1, MR_SECTAG_NONE,
+	mercury_data_recompilation__usage__du_stag_ordered_resolved_functor_0_0 },
+	{ 1, MR_SECTAG_NONE,
+	mercury_data_recompilation__usage__du_stag_ordered_resolved_functor_0_1 },
+	{ 1, MR_SECTAG_NONE,
+	mercury_data_recompilation__usage__du_stag_ordered_resolved_functor_0_2 }
+
+};
+
+const MR_DuFunctorDescPtr mercury_data_recompilation__usage__du_name_ordered_resolved_functor_0[] = {
+	&mercury_data_recompilation__usage__du_functor_desc_resolved_functor_0_1,
+	&mercury_data_recompilation__usage__du_functor_desc_resolved_functor_0_2,
+	&mercury_data_recompilation__usage__du_functor_desc_resolved_functor_0_0
+};
+
+const MR_Integer mercury_data_recompilation__usage__functor_number_map_resolved_functor_0[] = {
+	2,
+	0,
+	1 };
+	
+const MR_TypeCtorInfo_Struct mercury_data_recompilation__usage__type_ctor_info_resolved_functor_0 = {
+	0,
+	13,
+	3,
+	MR_TYPECTOR_REP_DU,
+	MR_MAYBE_STATIC_CODE(MR_ENTRY_AP(__Unify___recompilation__usage__resolved_functor_0_0)),
+	MR_MAYBE_STATIC_CODE(MR_ENTRY_AP(__Compare___recompilation__usage__resolved_functor_0_0)),
+	"recompilation.usage",
+	"resolved_functor",
+	{ (void *)mercury_data_recompilation__usage__du_name_ordered_resolved_functor_0 },
+	{ (void *)mercury_data_recompilation__usage__du_ptag_ordered_resolved_functor_0 },
+	3,
+	4,
+	mercury_data_recompilation__usage__functor_number_map_resolved_functor_0
+};
+
+const MR_TypeCtorInfo_Struct mercury_data_recompilation__usage__type_ctor_info_resolved_functor_map_0 = {
+	0,
+	13,
+	-1,
+	MR_TYPECTOR_REP_EQUIV_GROUND,
+	MR_MAYBE_STATIC_CODE(MR_ENTRY_AP(__Unify___recompilation__usage__resolved_functor_map_0_0)),
+	MR_MAYBE_STATIC_CODE(MR_ENTRY_AP(__Compare___recompilation__usage__resolved_functor_map_0_0)),
+	"recompilation.usage",
+	"resolved_functor_map",
+	{ 0 },
+	{ (void *)&mercury_data_tree234__ti_tree234_2mdbcomp__prim_data__type_ctor_info_sym_name_0set_ordlist__ti_set_ordlist_1recompilation__usage__type_ctor_info_resolved_functor_0 },
+	-1,
+	0,
+	NULL
+};
+
+const MR_TypeCtorInfo_Struct mercury_data_recompilation__usage__type_ctor_info_resolved_functor_set_0 = {
+	0,
+	13,
+	-1,
+	MR_TYPECTOR_REP_EQUIV_GROUND,
+	MR_MAYBE_STATIC_CODE(MR_ENTRY_AP(__Unify___recompilation__usage__resolved_functor_set_0_0)),
+	MR_MAYBE_STATIC_CODE(MR_ENTRY_AP(__Compare___recompilation__usage__resolved_functor_set_0_0)),
+	"recompilation.usage",
+	"resolved_functor_set",
+	{ 0 },
+	{ (void *)&mercury_data_tree234__ti_tree234_2builtin__type_ctor_info_string_0list__ti_list_1pair__ti_pair_2builtin__type_ctor_info_int_0tree234__ti_tree234_2mdbcomp__prim_data__type_ctor_info_sym_name_0set_ordlist__ti_set_ordlist_1recompilation__usage__type_ctor_info_resolved_functor_0 },
+	-1,
+	0,
+	NULL
+};
+
+static const MR_FA_PseudoTypeInfo_Struct2 mercury_data_pair__pti_pair_2__plain_builtin__type_ctor_info_int_0__pseudo_tree234__pti_tree234_2__plain_mdbcomp__prim_data__type_ctor_info_sym_name_0__pseudo_1 = {
+	&mercury_data_pair__type_ctor_info_pair_2,
+{	(MR_PseudoTypeInfo) &mercury_data_builtin__type_ctor_info_int_0,
+	(MR_PseudoTypeInfo) &mercury_data_tree234__pti_tree234_2__plain_mdbcomp__prim_data__type_ctor_info_sym_name_0__pseudo_1
+}};
+
+static const MR_FA_PseudoTypeInfo_Struct1 mercury_data_list__pti_list_1__pseudo_pair__pti_pair_2__plain_builtin__type_ctor_info_int_0__pseudo_tree234__pti_tree234_2__plain_mdbcomp__prim_data__type_ctor_info_sym_name_0__pseudo_1 = {
+	&mercury_data_list__type_ctor_info_list_1,
+{	(MR_PseudoTypeInfo) &mercury_data_pair__pti_pair_2__plain_builtin__type_ctor_info_int_0__pseudo_tree234__pti_tree234_2__plain_mdbcomp__prim_data__type_ctor_info_sym_name_0__pseudo_1
+}};
+
+const MR_TypeCtorInfo_Struct mercury_data_recompilation__usage__type_ctor_info_resolved_item_list_1 = {
+	1,
+	13,
+	-1,
+	MR_TYPECTOR_REP_EQUIV,
+	MR_MAYBE_STATIC_CODE(MR_ENTRY_AP(__Unify___recompilation__usage__resolved_item_list_1_0)),
+	MR_MAYBE_STATIC_CODE(MR_ENTRY_AP(__Compare___recompilation__usage__resolved_item_list_1_0)),
+	"recompilation.usage",
+	"resolved_item_list",
+	{ 0 },
+	{ (void *)&mercury_data_list__pti_list_1__pseudo_pair__pti_pair_2__plain_builtin__type_ctor_info_int_0__pseudo_tree234__pti_tree234_2__plain_mdbcomp__prim_data__type_ctor_info_sym_name_0__pseudo_1 },
+	-1,
+	0,
+	NULL
+};
+
+const MR_TypeCtorInfo_Struct mercury_data_recompilation__usage__type_ctor_info_resolved_item_map_1 = {
+	1,
+	13,
+	-1,
+	MR_TYPECTOR_REP_EQUIV,
+	MR_MAYBE_STATIC_CODE(MR_ENTRY_AP(__Unify___recompilation__usage__resolved_item_map_1_0)),
+	MR_MAYBE_STATIC_CODE(MR_ENTRY_AP(__Compare___recompilation__usage__resolved_item_map_1_0)),
+	"recompilation.usage",
+	"resolved_item_map",
+	{ 0 },
+	{ (void *)&mercury_data_tree234__pti_tree234_2__plain_mdbcomp__prim_data__type_ctor_info_sym_name_0__pseudo_1 },
+	-1,
+	0,
+	NULL
+};
+
+static const MR_FA_PseudoTypeInfo_Struct2 mercury_data_tree234__pti_tree234_2__plain_builtin__type_ctor_info_string_0__pseudo_list__pti_list_1__pseudo_pair__pti_pair_2__plain_builtin__type_ctor_info_int_0__pseudo_tree234__pti_tree234_2__plain_mdbcomp__prim_data__type_ctor_info_sym_name_0__pseudo_1 = {
+	&mercury_data_tree234__type_ctor_info_tree234_2,
+{	(MR_PseudoTypeInfo) &mercury_data_builtin__type_ctor_info_string_0,
+	(MR_PseudoTypeInfo) &mercury_data_list__pti_list_1__pseudo_pair__pti_pair_2__plain_builtin__type_ctor_info_int_0__pseudo_tree234__pti_tree234_2__plain_mdbcomp__prim_data__type_ctor_info_sym_name_0__pseudo_1
+}};
+
+const MR_TypeCtorInfo_Struct mercury_data_recompilation__usage__type_ctor_info_resolved_item_set_1 = {
+	1,
+	13,
+	-1,
+	MR_TYPECTOR_REP_EQUIV,
+	MR_MAYBE_STATIC_CODE(MR_ENTRY_AP(__Unify___recompilation__usage__resolved_item_set_1_0)),
+	MR_MAYBE_STATIC_CODE(MR_ENTRY_AP(__Compare___recompilation__usage__resolved_item_set_1_0)),
+	"recompilation.usage",
+	"resolved_item_set",
+	{ 0 },
+	{ (void *)&mercury_data_tree234__pti_tree234_2__plain_builtin__type_ctor_info_string_0__pseudo_list__pti_list_1__pseudo_pair__pti_pair_2__plain_builtin__type_ctor_info_int_0__pseudo_tree234__pti_tree234_2__plain_mdbcomp__prim_data__type_ctor_info_sym_name_0__pseudo_1 },
+	-1,
+	0,
+	NULL
+};
+
+const MR_TypeCtorInfo_Struct mercury_data_recompilation__usage__type_ctor_info_resolved_pred_or_func_map_0 = {
+	0,
+	13,
+	-1,
+	MR_TYPECTOR_REP_EQUIV_GROUND,
+	MR_MAYBE_STATIC_CODE(MR_ENTRY_AP(__Unify___recompilation__usage__resolved_pred_or_func_map_0_0)),
+	MR_MAYBE_STATIC_CODE(MR_ENTRY_AP(__Compare___recompilation__usage__resolved_pred_or_func_map_0_0)),
+	"recompilation.usage",
+	"resolved_pred_or_func_map",
+	{ 0 },
+	{ (void *)&mercury_data_tree234__ti_tree234_2mdbcomp__prim_data__type_ctor_info_sym_name_0set_ordlist__ti_set_ordlist_1pair__ti_pair_2builtin__type_ctor_info_int_0mdbcomp__prim_data__type_ctor_info_sym_name_0 },
+	-1,
+	0,
+	NULL
+};
+
+const MR_TypeCtorInfo_Struct mercury_data_recompilation__usage__type_ctor_info_resolved_pred_or_func_set_0 = {
+	0,
+	13,
+	-1,
+	MR_TYPECTOR_REP_EQUIV_GROUND,
+	MR_MAYBE_STATIC_CODE(MR_ENTRY_AP(__Unify___recompilation__usage__resolved_pred_or_func_set_0_0)),
+	MR_MAYBE_STATIC_CODE(MR_ENTRY_AP(__Compare___recompilation__usage__resolved_pred_or_func_set_0_0)),
+	"recompilation.usage",
+	"resolved_pred_or_func_set",
+	{ 0 },
+	{ (void *)&mercury_data_tree234__ti_tree234_2builtin__type_ctor_info_string_0list__ti_list_1pair__ti_pair_2builtin__type_ctor_info_int_0tree234__ti_tree234_2mdbcomp__prim_data__type_ctor_info_sym_name_0set_ordlist__ti_set_ordlist_1pair__ti_pair_2builtin__type_ctor_info_int_0mdbcomp__prim_data__type_ctor_info_sym_name_0 },
+	-1,
+	0,
+	NULL
+};
+
+const MR_TypeCtorInfo_Struct mercury_data_recompilation__usage__type_ctor_info_resolved_used_items_0 = {
+	0,
+	13,
+	-1,
+	MR_TYPECTOR_REP_EQUIV_GROUND,
+	MR_MAYBE_STATIC_CODE(MR_ENTRY_AP(__Unify___recompilation__usage__resolved_used_items_0_0)),
+	MR_MAYBE_STATIC_CODE(MR_ENTRY_AP(__Compare___recompilation__usage__resolved_used_items_0_0)),
+	"recompilation.usage",
+	"resolved_used_items",
+	{ 0 },
+	{ (void *)&mercury_data_recompilation__ti_item_id_set_3tree234__ti_tree234_2pair__ti_pair_2builtin__type_ctor_info_string_0builtin__type_ctor_info_int_0tree234__ti_tree234_2mdbcomp__prim_data__type_ctor_info_sym_name_0mdbcomp__prim_data__type_ctor_info_sym_name_0tree234__ti_tree234_2builtin__type_ctor_info_string_0list__ti_list_1pair__ti_pair_2builtin__type_ctor_info_int_0tree234__ti_tree234_2mdbcomp__prim_data__type_ctor_info_sym_name_0set_ordlist__ti_set_ordlist_1pair__ti_pair_2builtin__type_ctor_info_int_0mdbcomp__prim_data__type_ctor_info_sym_name_0tree234__ti_tree234_2builtin__type_ctor_info_string_0list__ti_list_1pair__ti_pair_2builtin__type_ctor_info_int_0tree234__ti_tree234_2mdbcomp__prim_data__type_ctor_info_sym_name_0set_ordlist__ti_set_ordlist_1recompilation__usage__type_ctor_info_resolved_functor_0 },
+	-1,
+	0,
+	NULL
+};
+
+static const MR_FA_PseudoTypeInfo_Struct2 mercury_data_pair__pti_pair_2__plain_mdbcomp__prim_data__type_ctor_info_sym_name_0__pseudo_1 = {
+	&mercury_data_pair__type_ctor_info_pair_2,
+{	(MR_PseudoTypeInfo) &mercury_data_mdbcomp__prim_data__type_ctor_info_sym_name_0,
+	(MR_PseudoTypeInfo) 1
+}};
+
+static const MR_VA_PseudoTypeInfo_Struct3 mercury_data___vpti_pred_3__pseudo_pair__pti_pair_2__plain_mdbcomp__prim_data__type_ctor_info_sym_name_0__pseudo_1__plain_io__type_ctor_info_state_0__plain_io__type_ctor_info_state_0 = {
+	&mercury_data_builtin__type_ctor_info_pred_0,
+	3,
+{	(MR_PseudoTypeInfo) &mercury_data_pair__pti_pair_2__plain_mdbcomp__prim_data__type_ctor_info_sym_name_0__pseudo_1,
+	(MR_PseudoTypeInfo) &mercury_data_io__type_ctor_info_state_0,
+	(MR_PseudoTypeInfo) &mercury_data_io__type_ctor_info_state_0
+}};
+
+const MR_TypeCtorInfo_Struct mercury_data_recompilation__usage__type_ctor_info_write_resolved_item_1 = {
+	1,
+	13,
+	-1,
+	MR_TYPECTOR_REP_EQUIV,
+	MR_MAYBE_STATIC_CODE(MR_ENTRY_AP(__Unify___recompilation__usage__write_resolved_item_1_0)),
+	MR_MAYBE_STATIC_CODE(MR_ENTRY_AP(__Compare___recompilation__usage__write_resolved_item_1_0)),
+	"recompilation.usage",
+	"write_resolved_item",
+	{ 0 },
+	{ (void *)&mercury_data___vpti_pred_3__pseudo_pair__pti_pair_2__plain_mdbcomp__prim_data__type_ctor_info_sym_name_0__pseudo_1__plain_io__type_ctor_info_state_0__plain_io__type_ctor_info_state_0 },
+	-1,
+	0,
+	NULL
+};
+
+
+static const MR_UserClosureId
+mercury_data__closure_layout__recompilation__usage__find_items_used_by_class_constraint_3_0_1 = {
+{
+MR_PREDICATE,
+"recompilation.usage",
+"recompilation.usage",
+"find_items_used_by_type",
+3,
+0
+},
+"recompilation.usage",
+"recompilation.usage.m",
+1278,
+"5"
+};
+
+static const MR_UserClosureId
+mercury_data__closure_layout__recompilation__usage__find_items_used_by_bound_inst_3_0_2 = {
+{
+MR_PREDICATE,
+"recompilation.usage",
+"recompilation.usage",
+"find_items_used_by_inst",
+3,
+0
+},
+"recompilation.usage",
+"recompilation.usage.m",
+1323,
+"5"
+};
+
+static const MR_UserClosureId
+mercury_data__closure_layout__recompilation__usage__find_items_used_by_bound_inst_3_0_1 = {
+{
+MR_PREDICATE,
+"recompilation.usage",
+"recompilation.usage",
+"find_items_used_by_inst",
+3,
+0
+},
+"recompilation.usage",
+"recompilation.usage.m",
+1323,
+"5"
+};
+
+static const MR_UserClosureId
+mercury_data__closure_layout__recompilation__usage__find_items_used_by_simple_item_set_2_5_0_1 = {
+{
+MR_PREDICATE,
+"recompilation.usage",
+"recompilation.usage",
+"find_items_used_by_simple_item_set_3",
+7,
+0
+},
+"recompilation.usage",
+"recompilation.usage.m",
+1262,
+"7"
+};
+
+static const MR_UserClosureId
+mercury_data__closure_layout__recompilation__usage__find_items_used_by_functors_2_4_0_1 = {
+{
+MR_PREDICATE,
+"recompilation.usage",
+"recompilation.usage",
+"find_items_used_by_functors_3",
+6,
+0
+},
+"recompilation.usage",
+"recompilation.usage.m",
+1224,
+"6"
+};
+
+static const MR_UserClosureId
+mercury_data__closure_layout__recompilation__usage__find_items_used_by_type_spec_3_0_1 = {
+{
+MR_PREDICATE,
+"recompilation.usage",
+"recompilation.usage",
+"find_items_used_by_type",
+3,
+0
+},
+"recompilation.usage",
+"recompilation.usage.m",
+1278,
+"5"
+};
+
+static const MR_UserClosureId
+mercury_data__closure_layout__recompilation__usage__find_items_used_by_pred_5_0_2 = {
+{
+MR_PREDICATE,
+"recompilation.usage",
+"recompilation.usage",
+"find_items_used_by_type_spec",
+3,
+0
+},
+"recompilation.usage",
+"recompilation.usage.m",
+1183,
+"58"
+};
+
+static const MR_UserClosureId
+mercury_data__closure_layout__recompilation__usage__find_items_used_by_pred_5_0_1 = {
+{
+MR_PREDICATE,
+"recompilation.usage",
+"recompilation.usage",
+"find_items_used_by_proc_arg_modes",
+4,
+0
+},
+"recompilation.usage",
+"recompilation.usage.m",
+1175,
+"49"
+};
+
+static const MR_UserClosureId
+mercury_data__closure_layout__recompilation__usage__find_items_used_by_preds_2_5_0_1 = {
+{
+MR_PREDICATE,
+"recompilation.usage",
+"recompilation.usage",
+"find_items_used_by_preds_3",
+7,
+0
+},
+"recompilation.usage",
+"recompilation.usage.m",
+1118,
+"7"
+};
+
+static const MR_UserClosureId
+mercury_data__closure_layout__recompilation__usage__find_items_used_by_ctor_3_0_2 = {
+{
+MR_PREDICATE,
+"recompilation.usage",
+"recompilation.usage",
+"find_items_used_by_ctor_arg",
+3,
+0
+},
+"recompilation.usage",
+"recompilation.usage.m",
+1079,
+"7"
+};
+
+static const MR_UserClosureId
+mercury_data__closure_layout__recompilation__usage__find_items_used_by_ctor_3_0_1 = {
+{
+MR_PREDICATE,
+"recompilation.usage",
+"recompilation.usage",
+"find_items_used_by_class_constraint",
+3,
+0
+},
+"recompilation.usage",
+"recompilation.usage.m",
+1408,
+"5"
+};
+
+static const MR_UserClosureId
+mercury_data__closure_layout__recompilation__usage__find_items_used_by_class_method_3_0_4 = {
+{
+MR_PREDICATE,
+"recompilation.usage",
+"recompilation.usage",
+"find_items_used_by_mode",
+3,
+0
+},
+"recompilation.usage",
+"recompilation.usage.m",
+1305,
+"5"
+};
+
+static const MR_UserClosureId
+mercury_data__closure_layout__recompilation__usage__find_items_used_by_class_method_3_0_3 = {
+{
+MR_PREDICATE,
+"recompilation.usage",
+"recompilation.usage",
+"find_items_used_by_type_and_mode",
+3,
+0
+},
+"recompilation.usage",
+"recompilation.usage.m",
+1043,
+"7"
+};
+
+static const MR_UserClosureId
+mercury_data__closure_layout__recompilation__usage__find_items_used_by_class_method_3_0_2 = {
+{
+MR_PREDICATE,
+"recompilation.usage",
+"recompilation.usage",
+"find_items_used_by_class_constraint",
+3,
+0
+},
+"recompilation.usage",
+"recompilation.usage.m",
+1408,
+"5"
+};
+
+static const MR_UserClosureId
+mercury_data__closure_layout__recompilation__usage__find_items_used_by_class_method_3_0_1 = {
+{
+MR_PREDICATE,
+"recompilation.usage",
+"recompilation.usage",
+"find_items_used_by_class_constraint",
+3,
+0
+},
+"recompilation.usage",
+"recompilation.usage.m",
+1408,
+"5"
+};
+
+static const MR_UserClosureId
+mercury_data__closure_layout__recompilation__usage__find_items_used_by_class_context_3_0_2 = {
+{
+MR_PREDICATE,
+"recompilation.usage",
+"recompilation.usage",
+"find_items_used_by_class_constraint",
+3,
+0
+},
+"recompilation.usage",
+"recompilation.usage.m",
+1408,
+"5"
+};
+
+static const MR_UserClosureId
+mercury_data__closure_layout__recompilation__usage__find_items_used_by_class_context_3_0_1 = {
+{
+MR_PREDICATE,
+"recompilation.usage",
+"recompilation.usage",
+"find_items_used_by_class_constraint",
+3,
+0
+},
+"recompilation.usage",
+"recompilation.usage.m",
+1408,
+"5"
+};
+
+static const MR_UserClosureId
+mercury_data__closure_layout__recompilation__usage__find_items_used_by_instance_4_0_2 = {
+{
+MR_PREDICATE,
+"recompilation.usage",
+"recompilation.usage",
+"find_items_used_by_type",
+3,
+0
+},
+"recompilation.usage",
+"recompilation.usage.m",
+1278,
+"5"
+};
+
+static const MR_UserClosureId
+mercury_data__closure_layout__recompilation__usage__find_items_used_by_instance_4_0_1 = {
+{
+MR_PREDICATE,
+"recompilation.usage",
+"recompilation.usage",
+"find_items_used_by_class_constraint",
+3,
+0
+},
+"recompilation.usage",
+"recompilation.usage.m",
+1408,
+"5"
+};
+
+static const MR_UserClosureId
+mercury_data__closure_layout__recompilation__usage__find_items_used_by_instances_4_0_3 = {
+{
+MR_PREDICATE,
+"recompilation.usage",
+"recompilation.usage",
+"find_items_used_by_instance",
+4,
+0
+},
+"recompilation.usage",
+"recompilation.usage.m",
+1003,
+"13"
+};
+
+static const MR_UserClosureId
+mercury_data__closure_layout__recompilation__usage__find_items_used_by_instances_4_0_2 = {
+{
+MR_PREDICATE,
+"recompilation.usage",
+"recompilation.usage",
+"find_items_used_by_instance",
+4,
+0
+},
+"recompilation.usage",
+"recompilation.usage.m",
+1003,
+"13"
+};
+
+static const MR_UserClosureId
+mercury_data__closure_layout__recompilation__usage__find_items_used_by_instances_4_0_1 = {
+{
+MR_PREDICATE,
+"recompilation.usage",
+"recompilation.usage",
+"record_expanded_items_used_by_item_2",
+3,
+0
+},
+"recompilation.usage",
+"recompilation.usage.m",
+1499,
+"12"
+};
+
+static const MR_UserClosureId
+mercury_data__closure_layout__recompilation__usage__do_record_used_functor_8_0_1 = {
+{
+MR_PREDICATE,
+"recompilation.usage",
+"recompilation.usage",
+"find_items_used_by_functor",
+5,
+0
+},
+"recompilation.usage",
+"recompilation.usage.m",
+717,
+"13"
+};
+
+static const MR_UserClosureId
+mercury_data__closure_layout__recompilation__usage__find_matching_functors_4_0_4 = {
+{
+MR_FUNCTION,
+"recompilation.usage",
+"recompilation.usage",
+"lambda_recompilation_usage_m_776",
+2,
+0
+},
+"recompilation.usage",
+"recompilation.usage.m",
+776,
+"46"
+};
+
+static const MR_UserClosureId
+mercury_data__closure_layout__recompilation__usage__find_matching_functors_4_0_3 = {
+{
+MR_FUNCTION,
+"recompilation.usage",
+"recompilation.usage",
+"get_pred_or_func_ctors",
+5,
+0
+},
+"recompilation.usage",
+"recompilation.usage.m",
+762,
+"37"
+};
+
+static const MR_UserClosureId
+mercury_data__closure_layout__recompilation__usage__find_matching_functors_4_0_2 = {
+{
+MR_FUNCTION,
+"recompilation.usage",
+"recompilation.usage",
+"lambda_recompilation_usage_m_748",
+2,
+0
+},
+"recompilation.usage",
+"recompilation.usage.m",
+748,
+"22"
+};
+
+static const MR_UserClosureId
+mercury_data__closure_layout__recompilation__usage__find_matching_functors_4_0_1 = {
+{
+MR_FUNCTION,
+"recompilation.usage",
+"recompilation.usage",
+"lambda_recompilation_usage_m_748",
+2,
+0
+},
+"recompilation.usage",
+"recompilation.usage.m",
+748,
+"22"
+};
+
+static const MR_UserClosureId
+mercury_data__closure_layout__recompilation__usage__do_record_used_pred_or_func_9_0_2 = {
+{
+MR_PREDICATE,
+"recompilation.usage",
+"recompilation.usage",
+"find_items_used_by_pred",
+5,
+0
+},
+"recompilation.usage",
+"recompilation.usage.m",
+687,
+"31"
+};
+
+static const MR_UserClosureId
+mercury_data__closure_layout__recompilation__usage__do_record_used_pred_or_func_9_0_1 = {
+{
+MR_FUNCTION,
+"recompilation.usage",
+"recompilation.usage",
+"lambda_recompilation_usage_m_679",
+3,
+0
+},
+"recompilation.usage",
+"recompilation.usage.m",
+679,
+"22"
+};
+
+static const MR_UserClosureId
+mercury_data__closure_layout__recompilation__usage__write_resolved_item_set_2_4_0_1 = {
+{
+MR_PREDICATE,
+"recompilation.usage",
+"recompilation.usage",
+"write_resolved_item_set_3",
+4,
+0
+},
+"recompilation.usage",
+"recompilation.usage.m",
+435,
+"11"
+};
+
+static const MR_UserClosureId
+mercury_data__closure_layout__recompilation__usage__write_functor_matches_2_3_0_1 = {
+{
+MR_PREDICATE,
+"recompilation.usage",
+"recompilation.usage",
+"write_resolved_functor",
+3,
+0
+},
+"recompilation.usage",
+"recompilation.usage.m",
+407,
+"10"
+};
+
+static const MR_UserClosureId
+mercury_data__closure_layout__recompilation__usage__write_pred_or_func_matches_3_3_0_1 = {
+{
+MR_PREDICATE,
+"parse_tree.mercury_to_mercury",
+"parse_tree.mercury_to_mercury",
+"mercury_output_bracketed_sym_name",
+3,
+0
+},
+"recompilation.usage",
+"recompilation.usage.m",
+384,
+"17"
+};
+
+static const MR_UserClosureId
+mercury_data__closure_layout__recompilation__usage__write_simple_item_matches_3_3_0_1 = {
+{
+MR_PREDICATE,
+"recompilation.usage",
+"recompilation.usage",
+"write_simple_item_matches_4",
+3,
+0
+},
+"recompilation.usage",
+"recompilation.usage.m",
+338,
+"16"
+};
+
+static const MR_UserClosureId
+mercury_data__closure_layout__recompilation__usage__write_module_name_and_used_items_7_0_1 = {
+{
+MR_FUNCTION,
+"recompilation.usage",
+"recompilation.usage",
+"lambda_recompilation_usage_m_261",
+4,
+0
+},
+"recompilation.usage",
+"recompilation.usage.m",
+261,
+"39"
+};
+
+static const MR_UserClosureId
+mercury_data__closure_layout__recompilation__usage__write_usage_file_2_6_0_4 = {
+{
+MR_PREDICATE,
+"recompilation.usage",
+"recompilation.usage",
+"write_module_name_and_used_items",
+7,
+0
+},
+"recompilation.usage",
+"recompilation.usage.m",
+220,
+"88"
+};
+
+static const MR_UserClosureId
+mercury_data__closure_layout__recompilation__usage__write_usage_file_2_6_0_3 = {
+{
+MR_PREDICATE,
+"recompilation.usage",
+"recompilation.usage",
+"write_classname_and_arity",
+3,
+0
+},
+"recompilation.usage",
+"recompilation.usage.m",
+215,
+"84"
+};
+
+static const MR_UserClosureId
+mercury_data__closure_layout__recompilation__usage__write_usage_file_2_6_0_2 = {
+{
+MR_PREDICATE,
+"recompilation.usage",
+"recompilation.usage",
+"write_module_name_and_used_items",
+7,
+0
+},
+"recompilation.usage",
+"recompilation.usage.m",
+220,
+"88"
+};
+
+static const MR_UserClosureId
+mercury_data__closure_layout__recompilation__usage__write_usage_file_2_6_0_1 = {
+{
+MR_PREDICATE,
+"parse_tree.mercury_to_mercury",
+"parse_tree.mercury_to_mercury",
+"mercury_output_bracketed_sym_name",
+3,
+0
+},
+"recompilation.usage",
+"recompilation.usage.m",
+174,
+"37"
+};
+
+static const MR_UserClosureId
+mercury_data__closure_layout__recompilation__usage__find_all_used_imported_items_7_0_2 = {
+{
+MR_PREDICATE,
+"recompilation.usage",
+"recompilation.usage",
+"insert_into_imported_items_map",
+3,
+0
+},
+"recompilation.usage",
+"recompilation.usage.m",
+554,
+"13"
+};
+
+static const MR_UserClosureId
+mercury_data__closure_layout__recompilation__usage__find_all_used_imported_items_7_0_1 = {
+{
+MR_PREDICATE,
+"recompilation.usage",
+"recompilation.usage",
+"visible_modules",
+2,
+0
+},
+"recompilation.usage",
+"recompilation.usage.m",
+554,
+"12"
+};
+
+static const MR_UserClosureId
+mercury_data__closure_layout__recompilation__usage__find_all_used_imported_items_2_3_0_1 = {
+{
+MR_PREDICATE,
+"recompilation.usage",
+"recompilation.usage",
+"find_items_used_by_instances",
+4,
+0
+},
+"recompilation.usage",
+"recompilation.usage.m",
+592,
+"7"
+};
+
+static const MR_UserClosureId
+mercury_data__closure_layout__recompilation__usage__find_items_used_by_simple_item_set_4_0_1 = {
+{
+MR_PREDICATE,
+"recompilation.usage",
+"recompilation.usage",
+"find_items_used_by_simple_item_set_2",
+5,
+0
+},
+"recompilation.usage",
+"recompilation.usage.m",
+1254,
+"6"
+};
+
+static const MR_UserClosureId
+mercury_data__closure_layout__recompilation__usage__find_items_used_by_functors_3_0_1 = {
+{
+MR_PREDICATE,
+"recompilation.usage",
+"recompilation.usage",
+"find_items_used_by_functors_2",
+4,
+0
+},
+"recompilation.usage",
+"recompilation.usage.m",
+1217,
+"5"
+};
+
+static const MR_UserClosureId
+mercury_data__closure_layout__recompilation__usage__find_items_used_by_preds_4_0_1 = {
+{
+MR_PREDICATE,
+"recompilation.usage",
+"recompilation.usage",
+"find_items_used_by_preds_2",
+5,
+0
+},
+"recompilation.usage",
+"recompilation.usage.m",
+1111,
+"6"
+};
+
+static const MR_UserClosureId
+mercury_data__closure_layout__recompilation__usage__find_items_used_by_item_4_0_2 = {
+{
+MR_PREDICATE,
+"recompilation.usage",
+"recompilation.usage",
+"find_items_used_by_instance",
+4,
+0
+},
+"recompilation.usage",
+"recompilation.usage.m",
+976,
+"74"
+};
+
+static const MR_UserClosureId
+mercury_data__closure_layout__recompilation__usage__find_items_used_by_item_4_0_1 = {
+{
+MR_PREDICATE,
+"recompilation.usage",
+"recompilation.usage",
+"find_items_used_by_class_method",
+3,
+0
+},
+"recompilation.usage",
+"recompilation.usage.m",
+972,
+"68"
+};
+
+static const MR_UserClosureId
+mercury_data__closure_layout__recompilation__usage__find_items_used_by_class_constraints_3_0_1 = {
+{
+MR_PREDICATE,
+"recompilation.usage",
+"recompilation.usage",
+"find_items_used_by_class_constraint",
+3,
+0
+},
+"recompilation.usage",
+"recompilation.usage.m",
+1408,
+"5"
+};
+
+static const MR_UserClosureId
+mercury_data__closure_layout__recompilation__usage__find_items_used_by_inst_name_3_0_1 = {
+{
+MR_PREDICATE,
+"recompilation.usage",
+"recompilation.usage",
+"find_items_used_by_inst",
+3,
+0
+},
+"recompilation.usage",
+"recompilation.usage.m",
+1323,
+"5"
+};
+
+static const MR_UserClosureId
+mercury_data__closure_layout__recompilation__usage__find_items_used_by_inst_3_0_3 = {
+{
+MR_PREDICATE,
+"recompilation.usage",
+"recompilation.usage",
+"find_items_used_by_bound_inst",
+3,
+0
+},
+"recompilation.usage",
+"recompilation.usage.m",
+1338,
+"27"
+};
+
+static const MR_UserClosureId
+mercury_data__closure_layout__recompilation__usage__find_items_used_by_inst_3_0_2 = {
+{
+MR_PREDICATE,
+"recompilation.usage",
+"recompilation.usage",
+"find_items_used_by_inst",
+3,
+0
+},
+"recompilation.usage",
+"recompilation.usage.m",
+1323,
+"5"
+};
+
+static const MR_UserClosureId
+mercury_data__closure_layout__recompilation__usage__find_items_used_by_inst_3_0_1 = {
+{
+MR_PREDICATE,
+"recompilation.usage",
+"recompilation.usage",
+"find_items_used_by_mode",
+3,
+0
+},
+"recompilation.usage",
+"recompilation.usage.m",
+1305,
+"5"
+};
+
+static const MR_UserClosureId
+mercury_data__closure_layout__recompilation__usage__find_items_used_by_modes_3_0_1 = {
+{
+MR_PREDICATE,
+"recompilation.usage",
+"recompilation.usage",
+"find_items_used_by_mode",
+3,
+0
+},
+"recompilation.usage",
+"recompilation.usage.m",
+1305,
+"5"
+};
+
+static const MR_UserClosureId
+mercury_data__closure_layout__recompilation__usage__find_items_used_by_insts_3_0_1 = {
+{
+MR_PREDICATE,
+"recompilation.usage",
+"recompilation.usage",
+"find_items_used_by_inst",
+3,
+0
+},
+"recompilation.usage",
+"recompilation.usage.m",
+1323,
+"5"
+};
+
+static const MR_UserClosureId
+mercury_data__closure_layout__recompilation__usage__find_items_used_by_type_body_3_0_1 = {
+{
+MR_PREDICATE,
+"recompilation.usage",
+"recompilation.usage",
+"find_items_used_by_ctor",
+3,
+0
+},
+"recompilation.usage",
+"recompilation.usage.m",
+1065,
+"5"
+};
+
+static const MR_UserClosureId
+mercury_data__closure_layout__recompilation__usage__find_items_used_by_type_3_0_2 = {
+{
+MR_PREDICATE,
+"recompilation.usage",
+"recompilation.usage",
+"find_items_used_by_type",
+3,
+0
+},
+"recompilation.usage",
+"recompilation.usage.m",
+1278,
+"5"
+};
+
+static const MR_UserClosureId
+mercury_data__closure_layout__recompilation__usage__find_items_used_by_type_3_0_1 = {
+{
+MR_PREDICATE,
+"recompilation.usage",
+"recompilation.usage",
+"find_items_used_by_type",
+3,
+0
+},
+"recompilation.usage",
+"recompilation.usage.m",
+1278,
+"5"
+};
+
+static const MR_UserClosureId
+mercury_data__closure_layout__recompilation__usage__record_expanded_items_used_by_item_4_0_1 = {
+{
+MR_PREDICATE,
+"recompilation.usage",
+"recompilation.usage",
+"record_expanded_items_used_by_item_2",
+3,
+0
+},
+"recompilation.usage",
+"recompilation.usage.m",
+1499,
+"12"
+};
+
+static const MR_UserClosureId
+mercury_data__closure_layout__recompilation__usage__find_items_used_by_types_3_0_1 = {
+{
+MR_PREDICATE,
+"recompilation.usage",
+"recompilation.usage",
+"find_items_used_by_type",
+3,
+0
+},
+"recompilation.usage",
+"recompilation.usage.m",
+1278,
+"5"
+};
+
+static const MR_UserClosureId
+mercury_data__closure_layout__recompilation__usage__write_functor_matches_5_0_2 = {
+{
+MR_PREDICATE,
+"recompilation.usage",
+"recompilation.usage",
+"write_resolved_item_set_2",
+4,
+0
+},
+"recompilation.usage",
+"recompilation.usage.m",
+423,
+"13"
+};
+
+static const MR_UserClosureId
+mercury_data__closure_layout__recompilation__usage__write_functor_matches_5_0_1 = {
+{
+MR_PREDICATE,
+"recompilation.usage",
+"recompilation.usage",
+"write_functor_matches_2",
+3,
+0
+},
+"recompilation.usage",
+"",
+0,
+"-1"
+};
+
+static const MR_UserClosureId
+mercury_data__closure_layout__recompilation__usage__write_pred_or_func_matches_2_4_0_2 = {
+{
+MR_PREDICATE,
+"recompilation.usage",
+"recompilation.usage",
+"write_resolved_item_set_2",
+4,
+0
+},
+"recompilation.usage",
+"recompilation.usage.m",
+423,
+"13"
+};
+
+static const MR_UserClosureId
+mercury_data__closure_layout__recompilation__usage__write_pred_or_func_matches_2_4_0_1 = {
+{
+MR_PREDICATE,
+"recompilation.usage",
+"recompilation.usage",
+"write_pred_or_func_matches_3",
+3,
+0
+},
+"recompilation.usage",
+"",
+0,
+"-1"
+};
+
+static const MR_UserClosureId
+mercury_data__closure_layout__recompilation__usage__write_simple_item_matches_6_0_1 = {
+{
+MR_PREDICATE,
+"recompilation.usage",
+"recompilation.usage",
+"write_simple_item_matches_3",
+3,
+0
+},
+"recompilation.usage",
+"recompilation.usage.m",
+324,
+"12"
+};
+
+
+
+MR_BEGIN_MODULE(recompilation__usage_module0)
+	MR_init_entry1(fn__recompilation__usage__usage_file_version_number_0_0);
+	MR_INIT_PROC_LAYOUT_ADDR(mercury__fn__recompilation__usage__usage_file_version_number_0_0);
+MR_BEGIN_CODE
+
+/*-------------------------------------------------------------------------*/
+/* code for 'usage_file_version_number'/1 mode 0 */
+#ifdef MR_maybe_local_thread_engine_base
+	#undef MR_maybe_local_thread_engine_base
+	#define MR_maybe_local_thread_engine_base MR_local_thread_engine_base
+#endif
+MR_define_entry(mercury__fn__recompilation__usage__usage_file_version_number_0_0);
+	MR_MAYBE_INIT_LOCAL_THREAD_ENGINE_BASE
+	MR_r1 = (MR_Integer) 2;
+	MR_proceed();
+#ifdef MR_maybe_local_thread_engine_base
+	#undef MR_maybe_local_thread_engine_base
+	#define MR_maybe_local_thread_engine_base MR_thread_engine_base
+#endif
+MR_END_MODULE
+
+MR_decl_entry(fn__recompilation__extract_simple_item_set_2_0);
+MR_decl_entry(map__is_empty_1_0);
+MR_decl_entry(recompilation__string_to_item_type_2_1);
+MR_decl_entry(io__write_string_3_0);
+MR_decl_entry(map__to_assoc_list_2_0);
+MR_decl_entry(io__write_list_5_0);
+
+MR_BEGIN_MODULE(recompilation__usage_module1)
+	MR_init_entry1(recompilation__usage__write_simple_item_matches_6_0);
+	MR_INIT_PROC_LAYOUT_ADDR(mercury__recompilation__usage__write_simple_item_matches_6_0);
+	MR_init_label10(recompilation__usage__write_simple_item_matches_6_0,16,19,17,22,23,24,25,26,27,30)
+	MR_init_label1(recompilation__usage__write_simple_item_matches_6_0,31)
+MR_BEGIN_CODE
+
+/*-------------------------------------------------------------------------*/
+/* code for 'write_simple_item_matches'/6 mode 0 */
+#ifdef MR_maybe_local_thread_engine_base
+	#undef MR_maybe_local_thread_engine_base
+	#define MR_maybe_local_thread_engine_base MR_local_thread_engine_base
+#endif
+MR_def_static(recompilation__usage__write_simple_item_matches_6_0)
+	MR_MAYBE_INIT_LOCAL_THREAD_ENGINE_BASE
+	MR_incr_sp(6);
+	MR_sv(6) = (MR_Word) MR_succip;
+	MR_sv(1) = MR_r1;
+	MR_sv(3) = MR_r3;
+	MR_sv(4) = (MR_Word) MR_TAG_COMMON(0,0,0);
+	MR_sv(5) = (MR_Word) MR_TAG_COMMON(0,0,1);
+	MR_r1 = (MR_Word) MR_TAG_COMMON(0,0,2);
+	{
+	MR_Word MR_tempr1;
+	MR_tempr1 = MR_r2;
+	MR_r2 = (MR_Word) MR_TAG_COMMON(0,0,6);
+	MR_r3 = (MR_Word) MR_TAG_COMMON(0,0,9);
+	MR_r4 = MR_tempr1;
+	MR_r5 = MR_sv(1);
+	}
+	MR_np_call_localret_ent(fn__recompilation__extract_simple_item_set_2_0,
+		recompilation__usage__write_simple_item_matches_6_0_i16);
+MR_def_label(recompilation__usage__write_simple_item_matches_6_0,16)
+	MR_MAYBE_INIT_LOCAL_THREAD_ENGINE_BASE
+	MR_sv(2) = MR_r1;
+	MR_r1 = MR_sv(4);
+	MR_r2 = MR_sv(5);
+	MR_r3 = MR_sv(2);
+	MR_np_call_localret_ent(map__is_empty_1_0,
+		recompilation__usage__write_simple_item_matches_6_0_i19);
+MR_def_label(recompilation__usage__write_simple_item_matches_6_0,19)
+	MR_MAYBE_INIT_LOCAL_THREAD_ENGINE_BASE
+	if (!(MR_r1)) {
+		MR_GOTO_LAB(recompilation__usage__write_simple_item_matches_6_0_i17);
+	}
+	MR_r1 = MR_sv(3);
+	MR_decr_sp_and_return(6);
+MR_def_label(recompilation__usage__write_simple_item_matches_6_0,17)
+	MR_MAYBE_INIT_LOCAL_THREAD_ENGINE_BASE
+	MR_r1 = MR_sv(2);
+	if (MR_INT_NE(MR_sv(3),0)) {
+		MR_GOTO_LAB(recompilation__usage__write_simple_item_matches_6_0_i22);
+	}
+	MR_r1 = MR_sv(1);
+	MR_np_call_localret_ent(recompilation__string_to_item_type_2_1,
+		recompilation__usage__write_simple_item_matches_6_0_i24);
+MR_def_label(recompilation__usage__write_simple_item_matches_6_0,22)
+	MR_MAYBE_INIT_LOCAL_THREAD_ENGINE_BASE
+	MR_sv(2) = MR_r1;
+	MR_r1 = (MR_Word) MR_string_const(",\n\t", 3);
+	MR_np_call_localret_ent(io__write_string_3_0,
+		recompilation__usage__write_simple_item_matches_6_0_i23);
+MR_def_label(recompilation__usage__write_simple_item_matches_6_0,23)
+	MR_MAYBE_INIT_LOCAL_THREAD_ENGINE_BASE
+	MR_r1 = MR_sv(1);
+	MR_np_call_localret_ent(recompilation__string_to_item_type_2_1,
+		recompilation__usage__write_simple_item_matches_6_0_i24);
+MR_def_label(recompilation__usage__write_simple_item_matches_6_0,24)
+	MR_MAYBE_INIT_LOCAL_THREAD_ENGINE_BASE
+	MR_np_call_localret_ent(io__write_string_3_0,
+		recompilation__usage__write_simple_item_matches_6_0_i25);
+MR_def_label(recompilation__usage__write_simple_item_matches_6_0,25)
+	MR_MAYBE_INIT_LOCAL_THREAD_ENGINE_BASE
+	MR_r1 = (MR_Word) MR_string_const("(\n\t\t", 4);
+	MR_np_call_localret_ent(io__write_string_3_0,
+		recompilation__usage__write_simple_item_matches_6_0_i26);
+MR_def_label(recompilation__usage__write_simple_item_matches_6_0,26)
+	MR_MAYBE_INIT_LOCAL_THREAD_ENGINE_BASE
+	MR_r1 = MR_sv(4);
+	MR_r2 = MR_sv(5);
+	MR_r3 = MR_sv(2);
+	MR_np_call_localret_ent(map__to_assoc_list_2_0,
+		recompilation__usage__write_simple_item_matches_6_0_i27);
+MR_def_label(recompilation__usage__write_simple_item_matches_6_0,27)
+	MR_MAYBE_INIT_LOCAL_THREAD_ENGINE_BASE
+	{
+	MR_Word MR_tempr1, MR_tempr2;
+	MR_tag_alloc_heap(MR_tempr1, 0, (MR_Integer) 3);
+	MR_tfield(0, MR_tempr1, 0) = (MR_Word) MR_CTOR_ADDR(pair, pair, 2);
+	MR_tfield(0, MR_tempr1, 1) = MR_sv(4);
+	MR_tfield(0, MR_tempr1, 2) = MR_sv(5);
+	MR_tempr2 = MR_r1;
+	MR_r1 = MR_tempr1;
+	MR_r2 = MR_tempr2;
+	MR_r3 = (MR_Word) MR_string_const(",\n\t\t", 4);
+	MR_r4 = (MR_Word) MR_TAG_COMMON(0,3,0);
+	}
+	MR_np_call_localret_ent(io__write_list_5_0,
+		recompilation__usage__write_simple_item_matches_6_0_i30);
+MR_def_label(recompilation__usage__write_simple_item_matches_6_0,30)
+	MR_MAYBE_INIT_LOCAL_THREAD_ENGINE_BASE
+	MR_r1 = (MR_Word) MR_string_const("\n\t)", 3);
+	MR_np_call_localret_ent(io__write_string_3_0,
+		recompilation__usage__write_simple_item_matches_6_0_i31);
+MR_def_label(recompilation__usage__write_simple_item_matches_6_0,31)
+	MR_MAYBE_INIT_LOCAL_THREAD_ENGINE_BASE
+	MR_r1 = (MR_Integer) 1;
+	MR_decr_sp_and_return(6);
+#ifdef MR_maybe_local_thread_engine_base
+	#undef MR_maybe_local_thread_engine_base
+	#define MR_maybe_local_thread_engine_base MR_thread_engine_base
+#endif
+MR_END_MODULE
+
+
+MR_BEGIN_MODULE(recompilation__usage_module2)
+	MR_init_entry1(recompilation__usage__write_pred_or_func_matches_2_4_0);
+	MR_INIT_PROC_LAYOUT_ADDR(mercury__recompilation__usage__write_pred_or_func_matches_2_4_0);
+	MR_init_label5(recompilation__usage__write_pred_or_func_matches_2_4_0,4,5,6,10,14)
+MR_BEGIN_CODE
+
+/*-------------------------------------------------------------------------*/
+/* code for 'write_pred_or_func_matches_2'/4 mode 0 */
+#ifdef MR_maybe_local_thread_engine_base
+	#undef MR_maybe_local_thread_engine_base
+	#define MR_maybe_local_thread_engine_base MR_local_thread_engine_base
+#endif
+MR_def_static(recompilation__usage__write_pred_or_func_matches_2_4_0)
+	MR_MAYBE_INIT_LOCAL_THREAD_ENGINE_BASE
+	MR_incr_sp(3);
+	MR_sv(3) = (MR_Word) MR_succip;
+	MR_sv(1) = MR_r2;
+	MR_sv(2) = (MR_Word) MR_TAG_COMMON(0,1,0);
+	MR_np_call_localret_ent(recompilation__string_to_item_type_2_1,
+		recompilation__usage__write_pred_or_func_matches_2_4_0_i4);
+MR_def_label(recompilation__usage__write_pred_or_func_matches_2_4_0,4)
+	MR_MAYBE_INIT_LOCAL_THREAD_ENGINE_BASE
+	MR_np_call_localret_ent(io__write_string_3_0,
+		recompilation__usage__write_pred_or_func_matches_2_4_0_i5);
+MR_def_label(recompilation__usage__write_pred_or_func_matches_2_4_0,5)
+	MR_MAYBE_INIT_LOCAL_THREAD_ENGINE_BASE
+	MR_r1 = (MR_Word) MR_string_const("(\n\t\t", 4);
+	MR_np_call_localret_ent(io__write_string_3_0,
+		recompilation__usage__write_pred_or_func_matches_2_4_0_i6);
+MR_def_label(recompilation__usage__write_pred_or_func_matches_2_4_0,6)
+	MR_MAYBE_INIT_LOCAL_THREAD_ENGINE_BASE
+	{
+	MR_Word MR_tempr1;
+	MR_tempr1 = MR_sv(1);
+	MR_sv(1) = (MR_Word) MR_TAG_COMMON(0,1,1);
+	MR_r1 = (MR_Word) MR_STRING_CTOR_ADDR;
+	MR_r2 = MR_sv(1);
+	MR_r3 = MR_tempr1;
+	}
+	MR_np_call_localret_ent(map__to_assoc_list_2_0,
+		recompilation__usage__write_pred_or_func_matches_2_4_0_i10);
+MR_def_label(recompilation__usage__write_pred_or_func_matches_2_4_0,10)
+	MR_MAYBE_INIT_LOCAL_THREAD_ENGINE_BASE
+	{
+	MR_Word MR_tempr1;
+	MR_tempr1 = MR_r1;
+	MR_r1 = (MR_Word) MR_TAG_COMMON(0,0,17);
+	MR_r2 = MR_tempr1;
+	MR_r3 = (MR_Word) MR_string_const(",\n\t\t", 4);
+	MR_r4 = (MR_Word) MR_TAG_COMMON(0,8,0);
+	}
+	MR_np_call_localret_ent(io__write_list_5_0,
+		recompilation__usage__write_pred_or_func_matches_2_4_0_i14);
+MR_def_label(recompilation__usage__write_pred_or_func_matches_2_4_0,14)
+	MR_MAYBE_INIT_LOCAL_THREAD_ENGINE_BASE
+	MR_r1 = (MR_Word) MR_string_const("\n\t)", 3);
+	MR_succip_word = MR_sv(3);
+	MR_decr_sp(3);
+	MR_np_tailcall_ent(io__write_string_3_0);
+#ifdef MR_maybe_local_thread_engine_base
+	#undef MR_maybe_local_thread_engine_base
+	#define MR_maybe_local_thread_engine_base MR_thread_engine_base
+#endif
+MR_END_MODULE
+
+MR_decl_entry(fn__recompilation__extract_pred_or_func_set_2_0);
+
+MR_BEGIN_MODULE(recompilation__usage_module3)
+	MR_init_entry1(recompilation__usage__write_pred_or_func_matches_6_0);
+	MR_INIT_PROC_LAYOUT_ADDR(mercury__recompilation__usage__write_pred_or_func_matches_6_0);
+	MR_init_label6(recompilation__usage__write_pred_or_func_matches_6_0,16,19,17,22,23,24)
+MR_BEGIN_CODE
+
+/*-------------------------------------------------------------------------*/
+/* code for 'write_pred_or_func_matches'/6 mode 0 */
+#ifdef MR_maybe_local_thread_engine_base
+	#undef MR_maybe_local_thread_engine_base
+	#define MR_maybe_local_thread_engine_base MR_local_thread_engine_base
+#endif
+MR_def_static(recompilation__usage__write_pred_or_func_matches_6_0)
+	MR_MAYBE_INIT_LOCAL_THREAD_ENGINE_BASE
+	MR_incr_sp(5);
+	MR_sv(5) = (MR_Word) MR_succip;
+	MR_sv(1) = MR_r1;
+	MR_sv(3) = MR_r3;
+	MR_sv(2) = (MR_Word) MR_STRING_CTOR_ADDR;
+	MR_sv(4) = (MR_Word) MR_TAG_COMMON(0,1,1);
+	MR_r1 = (MR_Word) MR_TAG_COMMON(0,0,2);
+	{
+	MR_Word MR_tempr1;
+	MR_tempr1 = MR_r2;
+	MR_r2 = (MR_Word) MR_TAG_COMMON(0,0,6);
+	MR_r3 = (MR_Word) MR_TAG_COMMON(0,0,9);
+	MR_r4 = MR_tempr1;
+	MR_r5 = MR_sv(1);
+	}
+	MR_np_call_localret_ent(fn__recompilation__extract_pred_or_func_set_2_0,
+		recompilation__usage__write_pred_or_func_matches_6_0_i16);
+MR_def_label(recompilation__usage__write_pred_or_func_matches_6_0,16)
+	MR_MAYBE_INIT_LOCAL_THREAD_ENGINE_BASE
+	MR_sv(2) = MR_r1;
+	MR_r1 = (MR_Word) MR_STRING_CTOR_ADDR;
+	MR_r2 = MR_sv(4);
+	MR_r3 = MR_sv(2);
+	MR_np_call_localret_ent(map__is_empty_1_0,
+		recompilation__usage__write_pred_or_func_matches_6_0_i19);
+MR_def_label(recompilation__usage__write_pred_or_func_matches_6_0,19)
+	MR_MAYBE_INIT_LOCAL_THREAD_ENGINE_BASE
+	if (!(MR_r1)) {
+		MR_GOTO_LAB(recompilation__usage__write_pred_or_func_matches_6_0_i17);
+	}
+	MR_r1 = MR_sv(3);
+	MR_decr_sp_and_return(5);
+MR_def_label(recompilation__usage__write_pred_or_func_matches_6_0,17)
+	MR_MAYBE_INIT_LOCAL_THREAD_ENGINE_BASE
+	MR_r1 = MR_sv(2);
+	if (MR_INT_NE(MR_sv(3),0)) {
+		MR_GOTO_LAB(recompilation__usage__write_pred_or_func_matches_6_0_i22);
+	}
+	{
+	MR_Word MR_tempr1;
+	MR_tempr1 = MR_r1;
+	MR_r1 = MR_sv(1);
+	MR_r2 = MR_tempr1;
+	}
+	MR_np_call_localret_ent(recompilation__usage__write_pred_or_func_matches_2_4_0,
+		recompilation__usage__write_pred_or_func_matches_6_0_i24);
+MR_def_label(recompilation__usage__write_pred_or_func_matches_6_0,22)
+	MR_MAYBE_INIT_LOCAL_THREAD_ENGINE_BASE
+	MR_sv(2) = MR_r1;
+	MR_r1 = (MR_Word) MR_string_const(",\n\t", 3);
+	MR_np_call_localret_ent(io__write_string_3_0,
+		recompilation__usage__write_pred_or_func_matches_6_0_i23);
+MR_def_label(recompilation__usage__write_pred_or_func_matches_6_0,23)
+	MR_MAYBE_INIT_LOCAL_THREAD_ENGINE_BASE
+	MR_r1 = MR_sv(1);
+	MR_r2 = MR_sv(2);
+	MR_np_call_localret_ent(recompilation__usage__write_pred_or_func_matches_2_4_0,
+		recompilation__usage__write_pred_or_func_matches_6_0_i24);
+MR_def_label(recompilation__usage__write_pred_or_func_matches_6_0,24)
+	MR_MAYBE_INIT_LOCAL_THREAD_ENGINE_BASE
+	MR_r1 = (MR_Integer) 1;
+	MR_decr_sp_and_return(5);
+#ifdef MR_maybe_local_thread_engine_base
+	#undef MR_maybe_local_thread_engine_base
+	#define MR_maybe_local_thread_engine_base MR_thread_engine_base
+#endif
+MR_END_MODULE
+
+
+MR_BEGIN_MODULE(recompilation__usage_module4)
+	MR_init_entry1(recompilation__usage__write_functor_matches_5_0);
+	MR_INIT_PROC_LAYOUT_ADDR(mercury__recompilation__usage__write_functor_matches_5_0);
+	MR_init_label10(recompilation__usage__write_functor_matches_5_0,7,2,28,10,14,15,16,20,24,25)
+MR_BEGIN_CODE
+
+/*-------------------------------------------------------------------------*/
+/* code for 'write_functor_matches'/5 mode 0 */
+#ifdef MR_maybe_local_thread_engine_base
+	#undef MR_maybe_local_thread_engine_base
+	#define MR_maybe_local_thread_engine_base MR_local_thread_engine_base
+#endif
+MR_def_static(recompilation__usage__write_functor_matches_5_0)
+	MR_MAYBE_INIT_LOCAL_THREAD_ENGINE_BASE
+	MR_incr_sp(3);
+	MR_sv(3) = (MR_Word) MR_succip;
+	MR_sv(1) = MR_r1;
+	MR_sv(2) = MR_r2;
+	MR_r1 = (MR_Word) MR_STRING_CTOR_ADDR;
+	MR_r2 = (MR_Word) MR_TAG_COMMON(0,1,3);
+	MR_r3 = MR_sv(1);
+	MR_np_call_localret_ent(map__is_empty_1_0,
+		recompilation__usage__write_functor_matches_5_0_i7);
+MR_def_label(recompilation__usage__write_functor_matches_5_0,7)
+	MR_MAYBE_INIT_LOCAL_THREAD_ENGINE_BASE
+	if (!(MR_r1)) {
+		MR_GOTO_LAB(recompilation__usage__write_functor_matches_5_0_i2);
+	}
+	MR_r1 = MR_sv(2);
+	MR_decr_sp_and_return(3);
+MR_def_label(recompilation__usage__write_functor_matches_5_0,2)
+	MR_MAYBE_INIT_LOCAL_THREAD_ENGINE_BASE
+	if (MR_INT_NE(MR_sv(2),0)) {
+		MR_GOTO_LAB(recompilation__usage__write_functor_matches_5_0_i10);
+	}
+MR_def_label(recompilation__usage__write_functor_matches_5_0,28)
+	MR_MAYBE_INIT_LOCAL_THREAD_ENGINE_BASE
+	MR_sv(2) = (MR_Word) MR_TAG_COMMON(0,1,2);
+	MR_r1 = (MR_Integer) 5;
+	MR_np_call_localret_ent(recompilation__string_to_item_type_2_1,
+		recompilation__usage__write_functor_matches_5_0_i14);
+MR_def_label(recompilation__usage__write_functor_matches_5_0,10)
+	MR_MAYBE_INIT_LOCAL_THREAD_ENGINE_BASE
+	MR_r1 = (MR_Word) MR_string_const(",\n\t", 3);
+	MR_np_call_localret_ent(io__write_string_3_0,
+		recompilation__usage__write_functor_matches_5_0_i28);
+MR_def_label(recompilation__usage__write_functor_matches_5_0,14)
+	MR_MAYBE_INIT_LOCAL_THREAD_ENGINE_BASE
+	MR_np_call_localret_ent(io__write_string_3_0,
+		recompilation__usage__write_functor_matches_5_0_i15);
+MR_def_label(recompilation__usage__write_functor_matches_5_0,15)
+	MR_MAYBE_INIT_LOCAL_THREAD_ENGINE_BASE
+	MR_r1 = (MR_Word) MR_string_const("(\n\t\t", 4);
+	MR_np_call_localret_ent(io__write_string_3_0,
+		recompilation__usage__write_functor_matches_5_0_i16);
+MR_def_label(recompilation__usage__write_functor_matches_5_0,16)
+	MR_MAYBE_INIT_LOCAL_THREAD_ENGINE_BASE
+	{
+	MR_Word MR_tempr1, MR_tempr2;
+	MR_tag_alloc_heap(MR_tempr1, 0, (MR_Integer) 3);
+	MR_tfield(0, MR_tempr1, 0) = (MR_Word) MR_CTOR_ADDR(tree234, tree234, 2);
+	MR_tfield(0, MR_tempr1, 1) = (MR_Word) MR_CTOR0_ADDR(mdbcomp__prim_data, sym_name);
+	MR_tfield(0, MR_tempr1, 2) = MR_sv(2);
+	MR_tag_alloc_heap(MR_tempr2, 0, (MR_Integer) 3);
+	MR_tfield(0, MR_tempr2, 0) = (MR_Word) MR_CTOR_ADDR(pair, pair, 2);
+	MR_tfield(0, MR_tempr2, 1) = (MR_Word) MR_INT_CTOR_ADDR;
+	MR_tfield(0, MR_tempr2, 2) = MR_tempr1;
+	MR_tag_alloc_heap(MR_r2, 0, (MR_Integer) 2);
+	MR_tfield(0, MR_r2, 0) = (MR_Word) MR_LIST_CTOR_ADDR;
+	MR_tfield(0, MR_r2, 1) = MR_tempr2;
+	MR_tempr2 = MR_sv(1);
+	MR_sv(1) = MR_r2;
+	MR_r1 = (MR_Word) MR_STRING_CTOR_ADDR;
+	MR_r3 = MR_tempr2;
+	}
+	MR_np_call_localret_ent(map__to_assoc_list_2_0,
+		recompilation__usage__write_functor_matches_5_0_i20);
+MR_def_label(recompilation__usage__write_functor_matches_5_0,20)
+	MR_MAYBE_INIT_LOCAL_THREAD_ENGINE_BASE
+	{
+	MR_Word MR_tempr1, MR_tempr2, MR_tempr3;
+	MR_tag_alloc_heap(MR_tempr1, 0, (MR_Integer) 5);
+	MR_r4 = MR_tempr1;
+	MR_tfield(0, MR_tempr1, 0) = (MR_Word) MR_COMMON(7,1);
+	MR_tfield(0, MR_tempr1, 1) = (MR_Word) MR_ENTRY_AP(recompilation__usage__write_resolved_item_set_2_4_0);
+	MR_tfield(0, MR_tempr1, 2) = (MR_Integer) 2;
+	MR_tfield(0, MR_tempr1, 3) = MR_sv(2);
+	MR_tfield(0, MR_tempr1, 4) = (MR_Word) MR_TAG_COMMON(0,3,2);
+	MR_tag_alloc_heap(MR_tempr2, 0, (MR_Integer) 3);
+	MR_tfield(0, MR_tempr2, 0) = (MR_Word) MR_CTOR_ADDR(pair, pair, 2);
+	MR_tfield(0, MR_tempr2, 1) = (MR_Word) MR_STRING_CTOR_ADDR;
+	MR_tfield(0, MR_tempr2, 2) = MR_sv(1);
+	MR_tempr3 = MR_r1;
+	MR_r1 = MR_tempr2;
+	MR_r2 = MR_tempr3;
+	MR_r3 = (MR_Word) MR_string_const(",\n\t\t", 4);
+	}
+	MR_np_call_localret_ent(io__write_list_5_0,
+		recompilation__usage__write_functor_matches_5_0_i24);
+MR_def_label(recompilation__usage__write_functor_matches_5_0,24)
+	MR_MAYBE_INIT_LOCAL_THREAD_ENGINE_BASE
+	MR_r1 = (MR_Word) MR_string_const("\n\t)", 3);
+	MR_np_call_localret_ent(io__write_string_3_0,
+		recompilation__usage__write_functor_matches_5_0_i25);
+MR_def_label(recompilation__usage__write_functor_matches_5_0,25)
+	MR_MAYBE_INIT_LOCAL_THREAD_ENGINE_BASE
+	MR_r1 = (MR_Integer) 1;
+	MR_decr_sp_and_return(3);
+#ifdef MR_maybe_local_thread_engine_base
+	#undef MR_maybe_local_thread_engine_base
+	#define MR_maybe_local_thread_engine_base MR_thread_engine_base
+#endif
+MR_END_MODULE
+
+MR_decl_entry(fn__recompilation__pred_or_func_to_item_type_1_0);
+MR_decl_entry(fn__recompilation__update_pred_or_func_set_3_0);
+
+MR_BEGIN_MODULE(recompilation__usage_module5)
+	MR_init_entry1(recompilation__usage__record_used_pred_or_func_4_0);
+	MR_INIT_PROC_LAYOUT_ADDR(mercury__recompilation__usage__record_used_pred_or_func_4_0);
+	MR_init_label4(recompilation__usage__record_used_pred_or_func_4_0,2,17,18,19)
+MR_BEGIN_CODE
+
+/*-------------------------------------------------------------------------*/
+/* code for 'record_used_pred_or_func'/4 mode 0 */
+#ifdef MR_maybe_local_thread_engine_base
+	#undef MR_maybe_local_thread_engine_base
+	#define MR_maybe_local_thread_engine_base MR_local_thread_engine_base
+#endif
+MR_def_static(recompilation__usage__record_used_pred_or_func_4_0)
+	MR_MAYBE_INIT_LOCAL_THREAD_ENGINE_BASE
+	MR_incr_sp(9);
+	MR_sv(9) = (MR_Word) MR_succip;
+	MR_sv(1) = MR_r1;
+	MR_sv(2) = MR_r2;
+	MR_sv(5) = MR_r3;
+	MR_np_call_localret_ent(fn__recompilation__pred_or_func_to_item_type_1_0,
+		recompilation__usage__record_used_pred_or_func_4_0_i2);
+MR_def_label(recompilation__usage__record_used_pred_or_func_4_0,2)
+	MR_MAYBE_INIT_LOCAL_THREAD_ENGINE_BASE
+	MR_sv(3) = MR_r1;
+	MR_sv(4) = MR_tfield(0, MR_sv(5), 5);
+	MR_sv(6) = (MR_Word) MR_TAG_COMMON(0,0,2);
+	MR_sv(7) = (MR_Word) MR_TAG_COMMON(0,0,6);
+	MR_sv(8) = (MR_Word) MR_TAG_COMMON(0,0,9);
+	MR_r1 = MR_sv(6);
+	MR_r2 = MR_sv(7);
+	MR_r3 = MR_sv(8);
+	MR_r4 = MR_sv(4);
+	MR_r5 = MR_sv(3);
+	MR_np_call_localret_ent(fn__recompilation__extract_pred_or_func_set_2_0,
+		recompilation__usage__record_used_pred_or_func_4_0_i17);
+MR_def_label(recompilation__usage__record_used_pred_or_func_4_0,17)
+	MR_MAYBE_INIT_LOCAL_THREAD_ENGINE_BASE
+	{
+	MR_Word MR_tempr1, MR_tempr2;
+	MR_tempr1 = MR_r1;
+	MR_r1 = MR_sv(1);
+	MR_tempr2 = MR_sv(2);
+	MR_r2 = MR_tfield(0, MR_tempr2, 0);
+	MR_r3 = MR_tfield(0, MR_tempr2, 1);
+	MR_r4 = MR_tempr1;
+	MR_r5 = MR_sv(5);
+	}
+	MR_np_call_localret_ent(f_114_101_99_111_109_112_105_108_97_116_105_111_110_95_95_117_115_97_103_101_95_95_85_110_117_115_101_100_65_114_103_115_95_95_112_114_101_100_95_95_114_101_99_111_114_100_95_114_101_115_111_108_118_101_100_95_105_116_101_109_95_95_104_111_50_95_95_91_52_93_95_48_7_0,
+		recompilation__usage__record_used_pred_or_func_4_0_i18);
+MR_def_label(recompilation__usage__record_used_pred_or_func_4_0,18)
+	MR_MAYBE_INIT_LOCAL_THREAD_ENGINE_BASE
+	MR_sv(1) = MR_r2;
+	{
+	MR_Word MR_tempr1;
+	MR_tempr1 = MR_r1;
+	MR_r1 = MR_sv(6);
+	MR_r2 = MR_sv(7);
+	MR_r3 = MR_sv(8);
+	MR_r4 = MR_sv(4);
+	MR_r5 = MR_sv(3);
+	MR_r6 = MR_tempr1;
+	}
+	MR_np_call_localret_ent(fn__recompilation__update_pred_or_func_set_3_0,
+		recompilation__usage__record_used_pred_or_func_4_0_i19);
+MR_def_label(recompilation__usage__record_used_pred_or_func_4_0,19)
+	MR_MAYBE_INIT_LOCAL_THREAD_ENGINE_BASE
+	MR_tag_alloc_heap(MR_r2, 0, (MR_Integer) 7);
+	{
+	MR_Word MR_tempr1;
+	MR_tempr1 = MR_sv(1);
+	MR_tfield(0, MR_r2, 0) = MR_tfield(0, MR_tempr1, 0);
+	MR_tfield(0, MR_r2, 1) = MR_tfield(0, MR_tempr1, 1);
+	MR_tfield(0, MR_r2, 2) = MR_tfield(0, MR_tempr1, 2);
+	MR_tfield(0, MR_r2, 3) = MR_tfield(0, MR_tempr1, 3);
+	MR_tfield(0, MR_r2, 4) = MR_tfield(0, MR_tempr1, 4);
+	MR_tfield(0, MR_r2, 5) = MR_r1;
+	MR_tfield(0, MR_r2, 6) = MR_tfield(0, MR_tempr1, 6);
+	MR_r1 = MR_r2;
+	MR_decr_sp_and_return(9);
+	}
+#ifdef MR_maybe_local_thread_engine_base
+	#undef MR_maybe_local_thread_engine_base
+	#define MR_maybe_local_thread_engine_base MR_thread_engine_base
+#endif
+MR_END_MODULE
+
+extern const MR_TypeCtorInfo_Struct mercury_data_parse_tree__prog_data__type_ctor_info_mer_type_0;
+MR_decl_entry(list__foldl_4_0);
+
+MR_BEGIN_MODULE(recompilation__usage_module6)
+	MR_init_entry1(recompilation__usage__find_items_used_by_types_3_0);
+	MR_INIT_PROC_LAYOUT_ADDR(mercury__recompilation__usage__find_items_used_by_types_3_0);
+MR_BEGIN_CODE
+
+/*-------------------------------------------------------------------------*/
+/* code for 'find_items_used_by_types'/3 mode 0 */
+#ifdef MR_maybe_local_thread_engine_base
+	#undef MR_maybe_local_thread_engine_base
+	#define MR_maybe_local_thread_engine_base MR_local_thread_engine_base
+#endif
+MR_def_static(recompilation__usage__find_items_used_by_types_3_0)
+	MR_MAYBE_INIT_LOCAL_THREAD_ENGINE_BASE
+	{
+	MR_Word MR_tempr1, MR_tempr2;
+	MR_tempr1 = MR_r1;
+	MR_r1 = (MR_Word) MR_CTOR0_ADDR(parse_tree__prog_data, mer_type);
+	MR_tempr2 = MR_r2;
+	MR_r2 = (MR_Word) MR_CTOR0_ADDR(recompilation__usage, recompilation_usage_info);
+	MR_r3 = (MR_Word) MR_TAG_COMMON(0,3,3);
+	MR_r4 = MR_tempr1;
+	MR_r5 = MR_tempr2;
+	MR_np_tailcall_ent(list__foldl_4_0);
+	}
+#ifdef MR_maybe_local_thread_engine_base
+	#undef MR_maybe_local_thread_engine_base
+	#define MR_maybe_local_thread_engine_base MR_thread_engine_base
+#endif
+MR_END_MODULE
+
+MR_decl_entry(map__search_3_0);
+MR_decl_entry(fn__recompilation__extract_ids_2_0);
+MR_decl_entry(set__member_2_0);
+
+MR_BEGIN_MODULE(recompilation__usage_module7)
+	MR_init_entry1(recompilation__usage__item_is_recorded_used_3_0);
+	MR_INIT_PROC_LAYOUT_ADDR(mercury__recompilation__usage__item_is_recorded_used_3_0);
+	MR_init_label3(recompilation__usage__item_is_recorded_used_3_0,6,8,1)
+MR_BEGIN_CODE
+
+/*-------------------------------------------------------------------------*/
+/* code for 'item_is_recorded_used'/3 mode 0 */
+#ifdef MR_maybe_local_thread_engine_base
+	#undef MR_maybe_local_thread_engine_base
+	#define MR_maybe_local_thread_engine_base MR_local_thread_engine_base
+#endif
+MR_def_static(recompilation__usage__item_is_recorded_used_3_0)
+	MR_MAYBE_INIT_LOCAL_THREAD_ENGINE_BASE
+	MR_incr_sp(6);
+	MR_sv(6) = (MR_Word) MR_succip;
+	{
+	MR_Word MR_tempr1, MR_tempr2, MR_tempr3;
+	MR_tempr3 = MR_r3;
+	MR_tempr1 = MR_tfield(0, MR_tempr3, 0);
+	if (MR_PTAG_TESTR(MR_tempr1,1)) {
+		MR_GOTO_LAB(recompilation__usage__item_is_recorded_used_3_0_i1);
+	}
+	MR_sv(1) = MR_r2;
+	MR_sv(2) = MR_tfield(1, MR_tempr1, 1);
+	MR_sv(3) = MR_tfield(0, MR_tempr3, 1);
+	MR_sv(4) = (MR_Word) MR_TAG_COMMON(0,0,0);
+	MR_sv(5) = (MR_Word) MR_TAG_COMMON(0,1,7);
+	MR_tempr2 = MR_r1;
+	MR_r1 = (MR_Word) MR_CTOR0_ADDR(mdbcomp__prim_data, sym_name);
+	MR_r2 = (MR_Word) MR_TAG_COMMON(0,9,0);
+	MR_r3 = MR_tfield(0, MR_tempr2, 2);
+	MR_r4 = MR_tfield(1, MR_tempr1, 0);
+	}
+	MR_np_call_localret_ent(map__search_3_0,
+		recompilation__usage__item_is_recorded_used_3_0_i6);
+MR_def_label(recompilation__usage__item_is_recorded_used_3_0,6)
+	MR_MAYBE_INIT_LOCAL_THREAD_ENGINE_BASE
+	if (!(MR_r1)) {
+		MR_GOTO_LAB(recompilation__usage__item_is_recorded_used_3_0_i1);
+	}
+	MR_r1 = MR_sv(5);
+	MR_r3 = MR_sv(1);
+	MR_np_call_localret_ent(fn__recompilation__extract_ids_2_0,
+		recompilation__usage__item_is_recorded_used_3_0_i8);
+MR_def_label(recompilation__usage__item_is_recorded_used_3_0,8)
+	MR_MAYBE_INIT_LOCAL_THREAD_ENGINE_BASE
+	MR_tag_alloc_heap(MR_r2, 0, (MR_Integer) 2);
+	MR_tfield(0, MR_r2, 0) = MR_sv(2);
+	MR_tfield(0, MR_r2, 1) = MR_sv(3);
+	{
+	MR_Word MR_tempr1;
+	MR_tempr1 = MR_r1;
+	MR_r1 = MR_sv(4);
+	MR_r3 = MR_tempr1;
+	MR_succip_word = MR_sv(6);
+	MR_decr_sp(6);
+	MR_np_tailcall_ent(set__member_2_0);
+	}
+MR_def_label(recompilation__usage__item_is_recorded_used_3_0,1)
+	MR_MAYBE_INIT_LOCAL_THREAD_ENGINE_BASE
+	MR_succip_word = MR_sv(6);
+	MR_decr_sp(6);
+	MR_r1 = MR_FALSE;
+	MR_proceed();
+#ifdef MR_maybe_local_thread_engine_base
+	#undef MR_maybe_local_thread_engine_base
+	#define MR_maybe_local_thread_engine_base MR_thread_engine_base
+#endif
+MR_END_MODULE
+
+MR_decl_entry(require__unexpected_3_0);
+MR_decl_entry(fn__set__init_0_0);
+MR_decl_entry(fn__recompilation__init_item_id_set_1_0);
+MR_decl_entry(set__insert_3_0);
+MR_decl_entry(fn__recompilation__update_ids_3_0);
+MR_decl_entry(map__set_4_0);
+
+MR_BEGIN_MODULE(recompilation__usage_module8)
+	MR_init_entry1(recompilation__usage__record_imported_item_4_0);
+	MR_INIT_PROC_LAYOUT_ADDR(mercury__recompilation__usage__record_imported_item_4_0);
+	MR_init_label10(recompilation__usage__record_imported_item_4_0,2,5,10,6,14,15,16,17,19,20)
+	MR_init_label1(recompilation__usage__record_imported_item_4_0,22)
+MR_BEGIN_CODE
+
+/*-------------------------------------------------------------------------*/
+/* code for 'record_imported_item'/4 mode 0 */
+#ifdef MR_maybe_local_thread_engine_base
+	#undef MR_maybe_local_thread_engine_base
+	#define MR_maybe_local_thread_engine_base MR_local_thread_engine_base
+#endif
+MR_def_static(recompilation__usage__record_imported_item_4_0)
+	MR_MAYBE_INIT_LOCAL_THREAD_ENGINE_BASE
+	MR_incr_sp(10);
+	MR_sv(10) = (MR_Word) MR_succip;
+	MR_sv(2) = MR_tfield(0, MR_r2, 1);
+	{
+	MR_Word MR_tempr1;
+	MR_tempr1 = MR_tfield(0, MR_r2, 0);
+	MR_r5 = MR_tempr1;
+	if (MR_PTAG_TESTR(MR_tempr1,1)) {
+		MR_GOTO_LAB(recompilation__usage__record_imported_item_4_0_i2);
+	}
+	MR_sv(1) = MR_r1;
+	MR_r4 = MR_tfield(1, MR_tempr1, 0);
+	MR_sv(4) = MR_tfield(1, MR_tempr1, 1);
+	MR_sv(7) = MR_r3;
+	MR_r3 = MR_tfield(0, MR_r3, 2);
+	MR_GOTO_LAB(recompilation__usage__record_imported_item_4_0_i5);
+	}
+MR_def_label(recompilation__usage__record_imported_item_4_0,2)
+	MR_MAYBE_INIT_LOCAL_THREAD_ENGINE_BASE
+	MR_sv(1) = MR_r1;
+	MR_r1 = (MR_Word) MR_string_const("recompilation.usage", 19);
+	MR_r2 = (MR_Word) MR_string_const("predicate \140recompilation.usage.record_imported_item\'/4", 54);
+	MR_sv(7) = MR_r3;
+	MR_r3 = (MR_Word) MR_string_const("unqualified item", 16);
+	MR_np_call_localret_ent(require__unexpected_3_0,
+		recompilation__usage__record_imported_item_4_0_i5);
+MR_def_label(recompilation__usage__record_imported_item_4_0,5)
+	MR_MAYBE_INIT_LOCAL_THREAD_ENGINE_BASE
+	MR_sv(3) = MR_r4;
+	MR_sv(5) = MR_r3;
+	MR_sv(6) = (MR_Word) MR_TAG_COMMON(0,0,0);
+	MR_sv(8) = (MR_Word) MR_TAG_COMMON(0,1,7);
+	MR_r1 = (MR_Word) MR_CTOR0_ADDR(mdbcomp__prim_data, sym_name);
+	MR_r2 = (MR_Word) MR_TAG_COMMON(0,9,0);
+	MR_np_call_localret_ent(map__search_3_0,
+		recompilation__usage__record_imported_item_4_0_i10);
+MR_def_label(recompilation__usage__record_imported_item_4_0,10)
+	MR_MAYBE_INIT_LOCAL_THREAD_ENGINE_BASE
+	if (!(MR_r1)) {
+		MR_GOTO_LAB(recompilation__usage__record_imported_item_4_0_i6);
+	}
+	MR_r3 = MR_sv(1);
+	MR_sv(8) = MR_sv(6);
+	MR_r1 = (MR_Word) MR_TAG_COMMON(0,1,7);
+	MR_GOTO_LAB(recompilation__usage__record_imported_item_4_0_i16);
+MR_def_label(recompilation__usage__record_imported_item_4_0,6)
+	MR_MAYBE_INIT_LOCAL_THREAD_ENGINE_BASE
+	MR_sv(8) = (MR_Word) MR_TAG_COMMON(0,0,0);
+	MR_sv(9) = (MR_Word) MR_TAG_COMMON(0,1,7);
+	MR_r1 = MR_sv(8);
+	MR_np_call_localret_ent(fn__set__init_0_0,
+		recompilation__usage__record_imported_item_4_0_i14);
+MR_def_label(recompilation__usage__record_imported_item_4_0,14)
+	MR_MAYBE_INIT_LOCAL_THREAD_ENGINE_BASE
+	{
+	MR_Word MR_tempr1;
+	MR_tempr1 = MR_r1;
+	MR_r1 = MR_sv(9);
+	MR_r2 = MR_tempr1;
+	}
+	MR_np_call_localret_ent(fn__recompilation__init_item_id_set_1_0,
+		recompilation__usage__record_imported_item_4_0_i15);
+MR_def_label(recompilation__usage__record_imported_item_4_0,15)
+	MR_MAYBE_INIT_LOCAL_THREAD_ENGINE_BASE
+	MR_r3 = MR_sv(1);
+	MR_r2 = MR_r1;
+	MR_r1 = MR_sv(9);
+MR_def_label(recompilation__usage__record_imported_item_4_0,16)
+	MR_MAYBE_INIT_LOCAL_THREAD_ENGINE_BASE
+	MR_sv(1) = MR_r3;
+	MR_sv(6) = MR_r2;
+	MR_sv(9) = MR_r1;
+	MR_np_call_localret_ent(fn__recompilation__extract_ids_2_0,
+		recompilation__usage__record_imported_item_4_0_i17);
+MR_def_label(recompilation__usage__record_imported_item_4_0,17)
+	MR_MAYBE_INIT_LOCAL_THREAD_ENGINE_BASE
+	MR_tag_alloc_heap(MR_r2, 0, (MR_Integer) 2);
+	MR_tfield(0, MR_r2, 0) = MR_sv(4);
+	MR_tfield(0, MR_r2, 1) = MR_sv(2);
+	{
+	MR_Word MR_tempr1;
+	MR_tempr1 = MR_r1;
+	MR_r1 = MR_sv(8);
+	MR_r3 = MR_tempr1;
+	}
+	MR_np_call_localret_ent(set__insert_3_0,
+		recompilation__usage__record_imported_item_4_0_i19);
+MR_def_label(recompilation__usage__record_imported_item_4_0,19)
+	MR_MAYBE_INIT_LOCAL_THREAD_ENGINE_BASE
+	{
+	MR_Word MR_tempr1;
+	MR_tempr1 = MR_r1;
+	MR_r1 = MR_sv(9);
+	MR_r2 = MR_sv(6);
+	MR_r3 = MR_sv(1);
+	MR_r4 = MR_tempr1;
+	}
+	MR_np_call_localret_ent(fn__recompilation__update_ids_3_0,
+		recompilation__usage__record_imported_item_4_0_i20);
+MR_def_label(recompilation__usage__record_imported_item_4_0,20)
+	MR_MAYBE_INIT_LOCAL_THREAD_ENGINE_BASE
+	MR_tag_alloc_heap(MR_r2, 0, (MR_Integer) 4);
+	MR_tfield(0, MR_r2, 0) = (MR_Word) MR_CTOR_ADDR(recompilation, item_id_set, 3);
+	{
+	MR_Word MR_tempr1, MR_tempr2;
+	MR_tempr2 = MR_sv(9);
+	MR_tfield(0, MR_r2, 1) = MR_tempr2;
+	MR_tfield(0, MR_r2, 2) = MR_tempr2;
+	MR_tfield(0, MR_r2, 3) = MR_tempr2;
+	MR_tempr1 = MR_r1;
+	MR_r1 = (MR_Word) MR_CTOR0_ADDR(mdbcomp__prim_data, sym_name);
+	MR_r3 = MR_sv(3);
+	MR_r4 = MR_tempr1;
+	MR_r5 = MR_sv(5);
+	}
+	MR_np_call_localret_ent(map__set_4_0,
+		recompilation__usage__record_imported_item_4_0_i22);
+MR_def_label(recompilation__usage__record_imported_item_4_0,22)
+	MR_MAYBE_INIT_LOCAL_THREAD_ENGINE_BASE
+	MR_tag_alloc_heap(MR_r2, 0, (MR_Integer) 7);
+	{
+	MR_Word MR_tempr1;
+	MR_tempr1 = MR_sv(7);
+	MR_tfield(0, MR_r2, 0) = MR_tfield(0, MR_tempr1, 0);
+	MR_tfield(0, MR_r2, 1) = MR_tfield(0, MR_tempr1, 1);
+	MR_tfield(0, MR_r2, 2) = MR_r1;
+	MR_tfield(0, MR_r2, 3) = MR_tfield(0, MR_tempr1, 3);
+	MR_tfield(0, MR_r2, 4) = MR_tfield(0, MR_tempr1, 4);
+	MR_tfield(0, MR_r2, 5) = MR_tfield(0, MR_tempr1, 5);
+	MR_tfield(0, MR_r2, 6) = MR_tfield(0, MR_tempr1, 6);
+	MR_r1 = MR_r2;
+	MR_decr_sp_and_return(10);
+	}
+#ifdef MR_maybe_local_thread_engine_base
+	#undef MR_maybe_local_thread_engine_base
+	#define MR_maybe_local_thread_engine_base MR_thread_engine_base
+#endif
+MR_END_MODULE
+
+MR_decl_entry(fn__set__to_sorted_list_1_0);
+
+MR_BEGIN_MODULE(recompilation__usage_module9)
+	MR_init_entry1(recompilation__usage__record_expanded_items_used_by_item_4_0);
+	MR_INIT_PROC_LAYOUT_ADDR(mercury__recompilation__usage__record_expanded_items_used_by_item_4_0);
+	MR_init_label3(recompilation__usage__record_expanded_items_used_by_item_4_0,5,7,2)
+MR_BEGIN_CODE
+
+/*-------------------------------------------------------------------------*/
+/* code for 'record_expanded_items_used_by_item'/4 mode 0 */
+#ifdef MR_maybe_local_thread_engine_base
+	#undef MR_maybe_local_thread_engine_base
+	#define MR_maybe_local_thread_engine_base MR_local_thread_engine_base
+#endif
+MR_def_static(recompilation__usage__record_expanded_items_used_by_item_4_0)
+	MR_MAYBE_INIT_LOCAL_THREAD_ENGINE_BASE
+	MR_incr_sp(3);
+	MR_sv(3) = (MR_Word) MR_succip;
+	{
+	MR_Word MR_tempr1;
+	MR_tag_alloc_heap(MR_tempr1, 0, (MR_Integer) 2);
+	MR_r4 = MR_tempr1;
+	MR_tfield(0, MR_tempr1, 0) = MR_r1;
+	MR_tfield(0, MR_tempr1, 1) = MR_r2;
+	MR_sv(1) = MR_r3;
+	MR_r1 = (MR_Word) MR_CTOR0_ADDR(recompilation, item_id);
+	MR_r2 = (MR_Word) MR_TAG_COMMON(0,1,8);
+	MR_r3 = MR_tfield(0, MR_r3, 4);
+	}
+	MR_np_call_localret_ent(map__search_3_0,
+		recompilation__usage__record_expanded_items_used_by_item_4_0_i5);
+MR_def_label(recompilation__usage__record_expanded_items_used_by_item_4_0,5)
+	MR_MAYBE_INIT_LOCAL_THREAD_ENGINE_BASE
+	if (!(MR_r1)) {
+		MR_GOTO_LAB(recompilation__usage__record_expanded_items_used_by_item_4_0_i2);
+	}
+	MR_sv(2) = (MR_Word) MR_CTOR0_ADDR(recompilation, item_id);
+	MR_r1 = MR_sv(2);
+	MR_np_call_localret_ent(fn__set__to_sorted_list_1_0,
+		recompilation__usage__record_expanded_items_used_by_item_4_0_i7);
+MR_def_label(recompilation__usage__record_expanded_items_used_by_item_4_0,7)
+	MR_MAYBE_INIT_LOCAL_THREAD_ENGINE_BASE
+	{
+	MR_Word MR_tempr1;
+	MR_tempr1 = MR_r1;
+	MR_r1 = MR_sv(2);
+	MR_r2 = (MR_Word) MR_CTOR0_ADDR(recompilation__usage, recompilation_usage_info);
+	MR_r3 = (MR_Word) MR_TAG_COMMON(0,3,4);
+	MR_r4 = MR_tempr1;
+	MR_r5 = MR_sv(1);
+	MR_succip_word = MR_sv(3);
+	MR_decr_sp(3);
+	MR_np_tailcall_ent(list__foldl_4_0);
+	}
+MR_def_label(recompilation__usage__record_expanded_items_used_by_item_4_0,2)
+	MR_MAYBE_INIT_LOCAL_THREAD_ENGINE_BASE
+	MR_r1 = MR_sv(1);
+	MR_decr_sp_and_return(3);
+#ifdef MR_maybe_local_thread_engine_base
+	#undef MR_maybe_local_thread_engine_base
+	#define MR_maybe_local_thread_engine_base MR_thread_engine_base
+#endif
+MR_END_MODULE
+
+MR_decl_entry(hlds__hlds_module__module_info_get_name_2_0);
+MR_decl_entry(__Unify___mdbcomp__prim_data__sym_name_0_0);
+MR_decl_entry(queue__put_3_0);
+
+MR_BEGIN_MODULE(recompilation__usage_module10)
+	MR_init_entry1(recompilation__usage__maybe_record_item_to_process_4_0);
+	MR_INIT_PROC_LAYOUT_ADDR(mercury__recompilation__usage__maybe_record_item_to_process_4_0);
+	MR_init_label10(recompilation__usage__maybe_record_item_to_process_4_0,4,2,6,13,15,17,8,22,23,20)
+	MR_init_label2(recompilation__usage__maybe_record_item_to_process_4_0,26,28)
+MR_BEGIN_CODE
+
+/*-------------------------------------------------------------------------*/
+/* code for 'maybe_record_item_to_process'/4 mode 0 */
+#ifdef MR_maybe_local_thread_engine_base
+	#undef MR_maybe_local_thread_engine_base
+	#define MR_maybe_local_thread_engine_base MR_local_thread_engine_base
+#endif
+MR_def_static(recompilation__usage__maybe_record_item_to_process_4_0)
+	MR_MAYBE_INIT_LOCAL_THREAD_ENGINE_BASE
+	MR_incr_sp(8);
+	MR_sv(8) = (MR_Word) MR_succip;
+	if (MR_INT_NE(MR_r1,4)) {
+		MR_GOTO_LAB(recompilation__usage__maybe_record_item_to_process_4_0_i2);
+	}
+	MR_sv(1) = MR_r1;
+	MR_sv(2) = MR_r2;
+	MR_sv(3) = MR_r3;
+	MR_r1 = (MR_Word) MR_CTOR0_ADDR(recompilation, item_name);
+	MR_r3 = MR_tfield(0, MR_r3, 6);
+	MR_np_call_localret_ent(set__insert_3_0,
+		recompilation__usage__maybe_record_item_to_process_4_0_i4);
+MR_def_label(recompilation__usage__maybe_record_item_to_process_4_0,4)
+	MR_MAYBE_INIT_LOCAL_THREAD_ENGINE_BASE
+	{
+	MR_Word MR_tempr1, MR_tempr2;
+	MR_tag_alloc_heap(MR_tempr1, 0, (MR_Integer) 7);
+	MR_r5 = MR_tempr1;
+	MR_tempr2 = MR_sv(3);
+	MR_tfield(0, MR_tempr1, 0) = MR_tfield(0, MR_tempr2, 0);
+	MR_tfield(0, MR_tempr1, 1) = MR_tfield(0, MR_tempr2, 1);
+	MR_tfield(0, MR_tempr1, 2) = MR_tfield(0, MR_tempr2, 2);
+	MR_tfield(0, MR_tempr1, 3) = MR_tfield(0, MR_tempr2, 3);
+	MR_tfield(0, MR_tempr1, 4) = MR_tfield(0, MR_tempr2, 4);
+	MR_tfield(0, MR_tempr1, 5) = MR_tfield(0, MR_tempr2, 5);
+	MR_tfield(0, MR_tempr1, 6) = MR_r1;
+	MR_sv(3) = MR_tempr1;
+	MR_GOTO_LAB(recompilation__usage__maybe_record_item_to_process_4_0_i6);
+	}
+MR_def_label(recompilation__usage__maybe_record_item_to_process_4_0,2)
+	MR_MAYBE_INIT_LOCAL_THREAD_ENGINE_BASE
+	MR_sv(1) = MR_r1;
+	MR_sv(2) = MR_r2;
+	MR_sv(3) = MR_r3;
+MR_def_label(recompilation__usage__maybe_record_item_to_process_4_0,6)
+	MR_MAYBE_INIT_LOCAL_THREAD_ENGINE_BASE
+	{
+	MR_Word MR_tempr1, MR_tempr2;
+	MR_tempr2 = MR_sv(2);
+	MR_tempr1 = MR_tfield(0, MR_tempr2, 0);
+	if (MR_PTAG_TESTR(MR_tempr1,1)) {
+		MR_GOTO_LAB(recompilation__usage__maybe_record_item_to_process_4_0_i8);
+	}
+	MR_sv(4) = MR_tfield(1, MR_tempr1, 1);
+	MR_sv(5) = MR_tfield(0, MR_tempr2, 1);
+	MR_sv(6) = (MR_Word) MR_TAG_COMMON(0,0,0);
+	MR_sv(7) = (MR_Word) MR_TAG_COMMON(0,1,7);
+	MR_r1 = (MR_Word) MR_CTOR0_ADDR(mdbcomp__prim_data, sym_name);
+	MR_r2 = (MR_Word) MR_TAG_COMMON(0,9,0);
+	MR_r3 = MR_tfield(0, MR_sv(3), 2);
+	MR_r4 = MR_tfield(1, MR_tempr1, 0);
+	}
+	MR_np_call_localret_ent(map__search_3_0,
+		recompilation__usage__maybe_record_item_to_process_4_0_i13);
+MR_def_label(recompilation__usage__maybe_record_item_to_process_4_0,13)
+	MR_MAYBE_INIT_LOCAL_THREAD_ENGINE_BASE
+	if (!(MR_r1)) {
+		MR_GOTO_LAB(recompilation__usage__maybe_record_item_to_process_4_0_i8);
+	}
+	MR_r1 = MR_sv(7);
+	MR_r3 = MR_sv(1);
+	MR_np_call_localret_ent(fn__recompilation__extract_ids_2_0,
+		recompilation__usage__maybe_record_item_to_process_4_0_i15);
+MR_def_label(recompilation__usage__maybe_record_item_to_process_4_0,15)
+	MR_MAYBE_INIT_LOCAL_THREAD_ENGINE_BASE
+	MR_tag_alloc_heap(MR_r2, 0, (MR_Integer) 2);
+	MR_tfield(0, MR_r2, 0) = MR_sv(4);
+	MR_tfield(0, MR_r2, 1) = MR_sv(5);
+	{
+	MR_Word MR_tempr1;
+	MR_tempr1 = MR_r1;
+	MR_r1 = MR_sv(6);
+	MR_r3 = MR_tempr1;
+	}
+	MR_np_call_localret_ent(set__member_2_0,
+		recompilation__usage__maybe_record_item_to_process_4_0_i17);
+MR_def_label(recompilation__usage__maybe_record_item_to_process_4_0,17)
+	MR_MAYBE_INIT_LOCAL_THREAD_ENGINE_BASE
+	if (!(MR_r1)) {
+		MR_GOTO_LAB(recompilation__usage__maybe_record_item_to_process_4_0_i8);
+	}
+	MR_r1 = MR_sv(3);
+	MR_decr_sp_and_return(8);
+MR_def_label(recompilation__usage__maybe_record_item_to_process_4_0,8)
+	MR_MAYBE_INIT_LOCAL_THREAD_ENGINE_BASE
+	MR_r2 = MR_tfield(0, MR_sv(2), 0);
+	if (MR_PTAG_TESTR(MR_r2,1)) {
+		MR_GOTO_LAB(recompilation__usage__maybe_record_item_to_process_4_0_i20);
+	}
+	MR_sv(4) = MR_tfield(1, MR_r2, 0);
+	MR_r1 = MR_tfield(0, MR_sv(3), 0);
+	MR_np_call_localret_ent(hlds__hlds_module__module_info_get_name_2_0,
+		recompilation__usage__maybe_record_item_to_process_4_0_i22);
+MR_def_label(recompilation__usage__maybe_record_item_to_process_4_0,22)
+	MR_MAYBE_INIT_LOCAL_THREAD_ENGINE_BASE
+	{
+	MR_Word MR_tempr1;
+	MR_tempr1 = MR_r1;
+	MR_r1 = MR_sv(4);
+	MR_r2 = MR_tempr1;
+	}
+	MR_np_call_localret_ent(__Unify___mdbcomp__prim_data__sym_name_0_0,
+		recompilation__usage__maybe_record_item_to_process_4_0_i23);
+MR_def_label(recompilation__usage__maybe_record_item_to_process_4_0,23)
+	MR_MAYBE_INIT_LOCAL_THREAD_ENGINE_BASE
+	if (!(MR_r1)) {
+		MR_GOTO_LAB(recompilation__usage__maybe_record_item_to_process_4_0_i20);
+	}
+	MR_r1 = MR_sv(3);
+	MR_decr_sp_and_return(8);
+MR_def_label(recompilation__usage__maybe_record_item_to_process_4_0,20)
+	MR_MAYBE_INIT_LOCAL_THREAD_ENGINE_BASE
+	MR_tag_alloc_heap(MR_r2, 0, (MR_Integer) 2);
+	MR_tfield(0, MR_r2, 0) = MR_sv(1);
+	MR_tfield(0, MR_r2, 1) = MR_sv(2);
+	MR_r1 = (MR_Word) MR_CTOR0_ADDR(recompilation, item_id);
+	MR_r3 = MR_tfield(0, MR_sv(3), 1);
+	MR_np_call_localret_ent(queue__put_3_0,
+		recompilation__usage__maybe_record_item_to_process_4_0_i26);
+MR_def_label(recompilation__usage__maybe_record_item_to_process_4_0,26)
+	MR_MAYBE_INIT_LOCAL_THREAD_ENGINE_BASE
+	{
+	MR_Word MR_tempr1, MR_tempr2;
+	MR_tag_alloc_heap(MR_tempr1, 0, (MR_Integer) 7);
+	MR_r3 = MR_tempr1;
+	MR_tempr2 = MR_sv(3);
+	MR_tfield(0, MR_tempr1, 0) = MR_tfield(0, MR_tempr2, 0);
+	MR_tfield(0, MR_tempr1, 1) = MR_r1;
+	MR_tfield(0, MR_tempr1, 2) = MR_tfield(0, MR_tempr2, 2);
+	MR_tfield(0, MR_tempr1, 3) = MR_tfield(0, MR_tempr2, 3);
+	MR_tfield(0, MR_tempr1, 4) = MR_tfield(0, MR_tempr2, 4);
+	MR_tfield(0, MR_tempr1, 5) = MR_tfield(0, MR_tempr2, 5);
+	MR_tfield(0, MR_tempr1, 6) = MR_tfield(0, MR_tempr2, 6);
+	MR_r1 = MR_sv(1);
+	MR_r2 = MR_sv(2);
+	}
+	MR_np_call_localret_ent(recompilation__usage__record_imported_item_4_0,
+		recompilation__usage__maybe_record_item_to_process_4_0_i28);
+MR_def_label(recompilation__usage__maybe_record_item_to_process_4_0,28)
+	MR_MAYBE_INIT_LOCAL_THREAD_ENGINE_BASE
+	{
+	MR_Word MR_tempr1;
+	MR_tempr1 = MR_r1;
+	MR_r1 = MR_sv(1);
+	MR_r2 = MR_sv(2);
+	MR_r3 = MR_tempr1;
+	MR_succip_word = MR_sv(8);
+	MR_decr_sp(8);
+	MR_np_tailcall_ent(recompilation__usage__record_expanded_items_used_by_item_4_0);
+	}
+#ifdef MR_maybe_local_thread_engine_base
+	#undef MR_maybe_local_thread_engine_base
+	#define MR_maybe_local_thread_engine_base MR_thread_engine_base
+#endif
+MR_END_MODULE
+
+MR_decl_entry(parse_tree__prog_type__type_to_ctor_and_args_3_0);
+MR_decl_entry(parse_tree__prog_type__type_ctor_is_higher_order_4_0);
+MR_decl_entry(fn__recompilation__type_ctor_to_item_name_1_0);
+
+MR_BEGIN_MODULE(recompilation__usage_module11)
+	MR_init_entry1(recompilation__usage__find_items_used_by_type_3_0);
+	MR_INIT_PROC_LAYOUT_ADDR(mercury__recompilation__usage__find_items_used_by_type_3_0);
+	MR_init_label7(recompilation__usage__find_items_used_by_type_3_0,4,11,13,14,6,7,2)
+MR_BEGIN_CODE
+
+/*-------------------------------------------------------------------------*/
+/* code for 'find_items_used_by_type'/3 mode 0 */
+#ifdef MR_maybe_local_thread_engine_base
+	#undef MR_maybe_local_thread_engine_base
+	#define MR_maybe_local_thread_engine_base MR_local_thread_engine_base
+#endif
+MR_def_static(recompilation__usage__find_items_used_by_type_3_0)
+	MR_MAYBE_INIT_LOCAL_THREAD_ENGINE_BASE
+	MR_incr_sp(4);
+	MR_sv(4) = (MR_Word) MR_succip;
+	MR_sv(3) = MR_r2;
+	MR_np_call_localret_ent(parse_tree__prog_type__type_to_ctor_and_args_3_0,
+		recompilation__usage__find_items_used_by_type_3_0_i4);
+MR_def_label(recompilation__usage__find_items_used_by_type_3_0,4)
+	MR_MAYBE_INIT_LOCAL_THREAD_ENGINE_BASE
+	if (!(MR_r1)) {
+		MR_GOTO_LAB(recompilation__usage__find_items_used_by_type_3_0_i2);
+	}
+	{
+	MR_Word MR_tempr1;
+	MR_tempr1 = MR_tfield(0, MR_r2, 0);
+	if (MR_PTAG_TESTR(MR_tempr1,1)) {
+		MR_GOTO_LAB(recompilation__usage__find_items_used_by_type_3_0_i7);
+	}
+	MR_sv(1) = MR_r2;
+	MR_sv(2) = MR_r3;
+	MR_r1 = MR_r2;
+	}
+	MR_np_call_localret_ent(parse_tree__prog_type__type_ctor_is_higher_order_4_0,
+		recompilation__usage__find_items_used_by_type_3_0_i11);
+MR_def_label(recompilation__usage__find_items_used_by_type_3_0,11)
+	MR_MAYBE_INIT_LOCAL_THREAD_ENGINE_BASE
+	if (MR_r1) {
+		MR_GOTO_LAB(recompilation__usage__find_items_used_by_type_3_0_i6);
+	}
+	MR_r2 = MR_sv(1);
+	{
+	MR_Word MR_tempr1;
+	MR_tempr1 = MR_sv(2);
+	MR_r1 = MR_r2;
+	}
+	MR_np_call_localret_ent(fn__recompilation__type_ctor_to_item_name_1_0,
+		recompilation__usage__find_items_used_by_type_3_0_i13);
+MR_def_label(recompilation__usage__find_items_used_by_type_3_0,13)
+	MR_MAYBE_INIT_LOCAL_THREAD_ENGINE_BASE
+	{
+	MR_Word MR_tempr1;
+	MR_tempr1 = MR_r1;
+	MR_r1 = (MR_Integer) 0;
+	MR_r2 = MR_tempr1;
+	MR_r3 = MR_sv(3);
+	}
+	MR_np_call_localret_ent(recompilation__usage__maybe_record_item_to_process_4_0,
+		recompilation__usage__find_items_used_by_type_3_0_i14);
+MR_def_label(recompilation__usage__find_items_used_by_type_3_0,14)
+	MR_MAYBE_INIT_LOCAL_THREAD_ENGINE_BASE
+	MR_r4 = MR_sv(2);
+	MR_r5 = MR_r1;
+	MR_r3 = (MR_Word) MR_TAG_COMMON(0,3,5);
+	MR_r1 = (MR_Word) MR_CTOR0_ADDR(parse_tree__prog_data, mer_type);
+	MR_r2 = (MR_Word) MR_CTOR0_ADDR(recompilation__usage, recompilation_usage_info);
+	MR_succip_word = MR_sv(4);
+	MR_decr_sp(4);
+	MR_np_tailcall_ent(list__foldl_4_0);
+MR_def_label(recompilation__usage__find_items_used_by_type_3_0,6)
+	MR_MAYBE_INIT_LOCAL_THREAD_ENGINE_BASE
+	MR_r3 = MR_sv(2);
+MR_def_label(recompilation__usage__find_items_used_by_type_3_0,7)
+	MR_MAYBE_INIT_LOCAL_THREAD_ENGINE_BASE
+	MR_r4 = MR_r3;
+	MR_r5 = MR_sv(3);
+	MR_r3 = (MR_Word) MR_TAG_COMMON(0,3,6);
+	MR_r1 = (MR_Word) MR_CTOR0_ADDR(parse_tree__prog_data, mer_type);
+	MR_r2 = (MR_Word) MR_CTOR0_ADDR(recompilation__usage, recompilation_usage_info);
+	MR_succip_word = MR_sv(4);
+	MR_decr_sp(4);
+	MR_np_tailcall_ent(list__foldl_4_0);
+MR_def_label(recompilation__usage__find_items_used_by_type_3_0,2)
+	MR_MAYBE_INIT_LOCAL_THREAD_ENGINE_BASE
+	MR_r2 = MR_sv(3);
+	MR_r1 = MR_r2;
+	MR_decr_sp_and_return(4);
+#ifdef MR_maybe_local_thread_engine_base
+	#undef MR_maybe_local_thread_engine_base
+	#define MR_maybe_local_thread_engine_base MR_thread_engine_base
+#endif
+MR_END_MODULE
+
+extern const MR_TypeCtorInfo_Struct mercury_data_parse_tree__prog_data__type_ctor_info_constructor_0;
+
+MR_BEGIN_MODULE(recompilation__usage_module12)
+	MR_init_entry1(recompilation__usage__find_items_used_by_type_body_3_0);
+	MR_INIT_PROC_LAYOUT_ADDR(mercury__recompilation__usage__find_items_used_by_type_body_3_0);
+	MR_init_label2(recompilation__usage__find_items_used_by_type_body_3_0,3,6)
+MR_BEGIN_CODE
+
+/*-------------------------------------------------------------------------*/
+/* code for 'find_items_used_by_type_body'/3 mode 0 */
+#ifdef MR_maybe_local_thread_engine_base
+	#undef MR_maybe_local_thread_engine_base
+	#define MR_maybe_local_thread_engine_base MR_local_thread_engine_base
+#endif
+MR_def_static(recompilation__usage__find_items_used_by_type_body_3_0)
+	MR_MAYBE_INIT_LOCAL_THREAD_ENGINE_BASE
+	if (MR_PTAG_TESTR(MR_r1,0)) {
+		MR_GOTO_LAB(recompilation__usage__find_items_used_by_type_body_3_0_i3);
+	}
+	{
+	MR_Word MR_tempr1, MR_tempr2;
+	MR_tempr1 = MR_r1;
+	MR_r1 = (MR_Word) MR_CTOR0_ADDR(parse_tree__prog_data, constructor);
+	MR_tempr2 = MR_r2;
+	MR_r2 = (MR_Word) MR_CTOR0_ADDR(recompilation__usage, recompilation_usage_info);
+	MR_r3 = (MR_Word) MR_TAG_COMMON(0,3,7);
+	MR_r4 = MR_tfield(0, MR_tempr1, 0);
+	MR_r5 = MR_tempr2;
+	MR_np_tailcall_ent(list__foldl_4_0);
+	}
+MR_def_label(recompilation__usage__find_items_used_by_type_body_3_0,3)
+	MR_MAYBE_INIT_LOCAL_THREAD_ENGINE_BASE
+	if (MR_PTAG_TESTR(MR_r1,1)) {
+		MR_GOTO_LAB(recompilation__usage__find_items_used_by_type_body_3_0_i6);
+	}
+	MR_r1 = MR_tfield(1, MR_r1, 0);
+	MR_np_tailcall_ent(recompilation__usage__find_items_used_by_type_3_0);
+MR_def_label(recompilation__usage__find_items_used_by_type_body_3_0,6)
+	MR_MAYBE_INIT_LOCAL_THREAD_ENGINE_BASE
+	MR_r1 = MR_r2;
+	MR_proceed();
+#ifdef MR_maybe_local_thread_engine_base
+	#undef MR_maybe_local_thread_engine_base
+	#define MR_maybe_local_thread_engine_base MR_thread_engine_base
+#endif
+MR_END_MODULE
+
+extern const MR_TypeCtorInfo_Struct mercury_data_parse_tree__prog_data__type_ctor_info_mer_inst_0;
+
+MR_BEGIN_MODULE(recompilation__usage_module13)
+	MR_init_entry1(recompilation__usage__find_items_used_by_insts_3_0);
+	MR_INIT_PROC_LAYOUT_ADDR(mercury__recompilation__usage__find_items_used_by_insts_3_0);
+MR_BEGIN_CODE
+
+/*-------------------------------------------------------------------------*/
+/* code for 'find_items_used_by_insts'/3 mode 0 */
+#ifdef MR_maybe_local_thread_engine_base
+	#undef MR_maybe_local_thread_engine_base
+	#define MR_maybe_local_thread_engine_base MR_local_thread_engine_base
+#endif
+MR_def_static(recompilation__usage__find_items_used_by_insts_3_0)
+	MR_MAYBE_INIT_LOCAL_THREAD_ENGINE_BASE
+	{
+	MR_Word MR_tempr1, MR_tempr2;
+	MR_tempr1 = MR_r1;
+	MR_r1 = (MR_Word) MR_CTOR0_ADDR(parse_tree__prog_data, mer_inst);
+	MR_tempr2 = MR_r2;
+	MR_r2 = (MR_Word) MR_CTOR0_ADDR(recompilation__usage, recompilation_usage_info);
+	MR_r3 = (MR_Word) MR_TAG_COMMON(0,3,8);
+	MR_r4 = MR_tempr1;
+	MR_r5 = MR_tempr2;
+	MR_np_tailcall_ent(list__foldl_4_0);
+	}
+#ifdef MR_maybe_local_thread_engine_base
+	#undef MR_maybe_local_thread_engine_base
+	#define MR_maybe_local_thread_engine_base MR_thread_engine_base
+#endif
+MR_END_MODULE
+
+extern const MR_TypeCtorInfo_Struct mercury_data_parse_tree__prog_data__type_ctor_info_mer_mode_0;
+
+MR_BEGIN_MODULE(recompilation__usage_module14)
+	MR_init_entry1(recompilation__usage__find_items_used_by_modes_3_0);
+	MR_INIT_PROC_LAYOUT_ADDR(mercury__recompilation__usage__find_items_used_by_modes_3_0);
+MR_BEGIN_CODE
+
+/*-------------------------------------------------------------------------*/
+/* code for 'find_items_used_by_modes'/3 mode 0 */
+#ifdef MR_maybe_local_thread_engine_base
+	#undef MR_maybe_local_thread_engine_base
+	#define MR_maybe_local_thread_engine_base MR_local_thread_engine_base
+#endif
+MR_def_static(recompilation__usage__find_items_used_by_modes_3_0)
+	MR_MAYBE_INIT_LOCAL_THREAD_ENGINE_BASE
+	{
+	MR_Word MR_tempr1, MR_tempr2;
+	MR_tempr1 = MR_r1;
+	MR_r1 = (MR_Word) MR_CTOR0_ADDR(parse_tree__prog_data, mer_mode);
+	MR_tempr2 = MR_r2;
+	MR_r2 = (MR_Word) MR_CTOR0_ADDR(recompilation__usage, recompilation_usage_info);
+	MR_r3 = (MR_Word) MR_TAG_COMMON(0,3,9);
+	MR_r4 = MR_tempr1;
+	MR_r5 = MR_tempr2;
+	MR_np_tailcall_ent(list__foldl_4_0);
+	}
+#ifdef MR_maybe_local_thread_engine_base
+	#undef MR_maybe_local_thread_engine_base
+	#define MR_maybe_local_thread_engine_base MR_thread_engine_base
+#endif
+MR_END_MODULE
+
+MR_decl_entry(list__length_2_0);
+extern const MR_TypeCtorInfo_Struct mercury_data_parse_tree__prog_data__type_ctor_info_bound_inst_0;
+
+MR_BEGIN_MODULE(recompilation__usage_module15)
+	MR_init_entry1(recompilation__usage__find_items_used_by_inst_3_0);
+	MR_INIT_PROC_LAYOUT_ADDR(mercury__recompilation__usage__find_items_used_by_inst_3_0);
+	MR_init_label10(recompilation__usage__find_items_used_by_inst_3_0,90,3,4,7,5,10,12,14,11,17)
+	MR_init_label4(recompilation__usage__find_items_used_by_inst_3_0,20,22,38,26)
+MR_BEGIN_CODE
+
+/*-------------------------------------------------------------------------*/
+/* code for 'find_items_used_by_inst'/3 mode 0 */
+#ifdef MR_maybe_local_thread_engine_base
+	#undef MR_maybe_local_thread_engine_base
+	#define MR_maybe_local_thread_engine_base MR_local_thread_engine_base
+#endif
+MR_def_static(recompilation__usage__find_items_used_by_inst_3_0)
+	MR_MAYBE_INIT_LOCAL_THREAD_ENGINE_BASE
+	MR_incr_sp(4);
+	MR_sv(4) = (MR_Word) MR_succip;
+MR_def_label(recompilation__usage__find_items_used_by_inst_3_0,90)
+	MR_MAYBE_INIT_LOCAL_THREAD_ENGINE_BASE
+	if (MR_LTAGS_TESTR(MR_r1,0,0)) {
+		MR_GOTO_LAB(recompilation__usage__find_items_used_by_inst_3_0_i3);
+	}
+	MR_r1 = MR_r2;
+	MR_decr_sp_and_return(4);
+MR_def_label(recompilation__usage__find_items_used_by_inst_3_0,3)
+	MR_MAYBE_INIT_LOCAL_THREAD_ENGINE_BASE
+	if (MR_LTAGS_TESTR(MR_r1,0,1)) {
+		MR_GOTO_LAB(recompilation__usage__find_items_used_by_inst_3_0_i4);
+	}
+	MR_r1 = MR_r2;
+	MR_decr_sp_and_return(4);
+MR_def_label(recompilation__usage__find_items_used_by_inst_3_0,4)
+	MR_MAYBE_INIT_LOCAL_THREAD_ENGINE_BASE
+	if (MR_PTAG_TESTR(MR_r1,2)) {
+		MR_GOTO_LAB(recompilation__usage__find_items_used_by_inst_3_0_i5);
+	}
+	MR_r6 = MR_tfield(2, MR_r1, 1);
+	if (MR_LTAGS_TESTR(MR_r6,0,0)) {
+		MR_GOTO_LAB(recompilation__usage__find_items_used_by_inst_3_0_i7);
+	}
+	MR_r1 = MR_r2;
+	MR_decr_sp_and_return(4);
+MR_def_label(recompilation__usage__find_items_used_by_inst_3_0,7)
+	MR_MAYBE_INIT_LOCAL_THREAD_ENGINE_BASE
+	MR_r1 = (MR_Word) MR_CTOR0_ADDR(parse_tree__prog_data, mer_mode);
+	{
+	MR_Word MR_tempr1;
+	MR_tempr1 = MR_r2;
+	MR_r2 = (MR_Word) MR_CTOR0_ADDR(recompilation__usage, recompilation_usage_info);
+	MR_r3 = (MR_Word) MR_TAG_COMMON(0,3,10);
+	MR_r4 = MR_tfield(0, MR_tfield(1, MR_r6, 0), 1);
+	MR_r5 = MR_tempr1;
+	MR_succip_word = MR_sv(4);
+	MR_decr_sp(4);
+	MR_np_tailcall_ent(list__foldl_4_0);
+	}
+MR_def_label(recompilation__usage__find_items_used_by_inst_3_0,5)
+	MR_MAYBE_INIT_LOCAL_THREAD_ENGINE_BASE
+	if (MR_PTAG_TESTR(MR_r1,1)) {
+		MR_GOTO_LAB(recompilation__usage__find_items_used_by_inst_3_0_i10);
+	}
+	MR_r1 = MR_r2;
+	MR_decr_sp_and_return(4);
+MR_def_label(recompilation__usage__find_items_used_by_inst_3_0,10)
+	MR_MAYBE_INIT_LOCAL_THREAD_ENGINE_BASE
+	if (MR_RTAGS_TESTR(MR_r1,3,5)) {
+		MR_GOTO_LAB(recompilation__usage__find_items_used_by_inst_3_0_i11);
+	}
+	MR_sv(1) = MR_r2;
+	MR_sv(2) = MR_tfield(3, MR_r1, 1);
+	MR_sv(3) = MR_tfield(3, MR_r1, 2);
+	MR_r1 = (MR_Word) MR_CTOR0_ADDR(parse_tree__prog_data, mer_inst);
+	MR_r2 = MR_sv(3);
+	MR_np_call_localret_ent(list__length_2_0,
+		recompilation__usage__find_items_used_by_inst_3_0_i12);
+MR_def_label(recompilation__usage__find_items_used_by_inst_3_0,12)
+	MR_MAYBE_INIT_LOCAL_THREAD_ENGINE_BASE
+	MR_tag_alloc_heap(MR_r2, 0, (MR_Integer) 2);
+	MR_tfield(0, MR_r2, 0) = MR_sv(2);
+	MR_tfield(0, MR_r2, 1) = MR_r1;
+	MR_r1 = (MR_Integer) 3;
+	MR_r3 = MR_sv(1);
+	MR_np_call_localret_ent(recompilation__usage__maybe_record_item_to_process_4_0,
+		recompilation__usage__find_items_used_by_inst_3_0_i14);
+MR_def_label(recompilation__usage__find_items_used_by_inst_3_0,14)
+	MR_MAYBE_INIT_LOCAL_THREAD_ENGINE_BASE
+	{
+	MR_Word MR_tempr1;
+	MR_tempr1 = MR_r1;
+	MR_r1 = (MR_Word) MR_CTOR0_ADDR(parse_tree__prog_data, mer_inst);
+	MR_r2 = (MR_Word) MR_CTOR0_ADDR(recompilation__usage, recompilation_usage_info);
+	MR_r3 = (MR_Word) MR_TAG_COMMON(0,3,11);
+	MR_r4 = MR_sv(3);
+	MR_r5 = MR_tempr1;
+	MR_succip_word = MR_sv(4);
+	MR_decr_sp(4);
+	MR_np_tailcall_ent(list__foldl_4_0);
+	}
+MR_def_label(recompilation__usage__find_items_used_by_inst_3_0,11)
+	MR_MAYBE_INIT_LOCAL_THREAD_ENGINE_BASE
+	if (MR_RTAGS_TESTR(MR_r1,3,0)) {
+		MR_GOTO_LAB(recompilation__usage__find_items_used_by_inst_3_0_i17);
+	}
+	{
+	MR_Word MR_tempr1, MR_tempr2;
+	MR_tempr1 = MR_r1;
+	MR_r1 = (MR_Word) MR_CTOR0_ADDR(parse_tree__prog_data, bound_inst);
+	MR_tempr2 = MR_r2;
+	MR_r2 = (MR_Word) MR_CTOR0_ADDR(recompilation__usage, recompilation_usage_info);
+	MR_r3 = (MR_Word) MR_TAG_COMMON(0,3,12);
+	MR_r4 = MR_tfield(3, MR_tempr1, 2);
+	MR_r5 = MR_tempr2;
+	MR_succip_word = MR_sv(4);
+	MR_decr_sp(4);
+	MR_np_tailcall_ent(list__foldl_4_0);
+	}
+MR_def_label(recompilation__usage__find_items_used_by_inst_3_0,17)
+	MR_MAYBE_INIT_LOCAL_THREAD_ENGINE_BASE
+	if (MR_RTAGS_TESTR(MR_r1,3,3)) {
+		MR_GOTO_LAB(recompilation__usage__find_items_used_by_inst_3_0_i20);
+	}
+	MR_r1 = MR_tfield(3, MR_r1, 2);
+	MR_succip_word = MR_sv(4);
+	MR_GOTO_LAB(recompilation__usage__find_items_used_by_inst_3_0_i90);
+MR_def_label(recompilation__usage__find_items_used_by_inst_3_0,20)
+	MR_MAYBE_INIT_LOCAL_THREAD_ENGINE_BASE
+	if (MR_RTAGS_TESTR(MR_r1,3,4)) {
+		MR_GOTO_LAB(recompilation__usage__find_items_used_by_inst_3_0_i22);
+	}
+	MR_r1 = MR_tfield(3, MR_r1, 1);
+	MR_succip_word = MR_sv(4);
+	MR_decr_sp(4);
+	MR_np_tailcall_ent(recompilation__usage__find_items_used_by_inst_name_3_0);
+MR_def_label(recompilation__usage__find_items_used_by_inst_3_0,22)
+	MR_MAYBE_INIT_LOCAL_THREAD_ENGINE_BASE
+	if (MR_RTAGS_TESTR(MR_r1,3,1)) {
+		MR_GOTO_LAB(recompilation__usage__find_items_used_by_inst_3_0_i38);
+	}
+	MR_r3 = MR_tfield(3, MR_r1, 2);
+	if (MR_LTAGS_TESTR(MR_r3,0,0)) {
+		MR_GOTO_LAB(recompilation__usage__find_items_used_by_inst_3_0_i26);
+	}
+MR_def_label(recompilation__usage__find_items_used_by_inst_3_0,38)
+	MR_MAYBE_INIT_LOCAL_THREAD_ENGINE_BASE
+	MR_r1 = MR_r2;
+	MR_decr_sp_and_return(4);
+MR_def_label(recompilation__usage__find_items_used_by_inst_3_0,26)
+	MR_MAYBE_INIT_LOCAL_THREAD_ENGINE_BASE
+	MR_r1 = MR_tfield(0, MR_tfield(1, MR_r3, 0), 1);
+	MR_succip_word = MR_sv(4);
+	MR_decr_sp(4);
+	MR_np_tailcall_ent(recompilation__usage__find_items_used_by_modes_3_0);
+#ifdef MR_maybe_local_thread_engine_base
+	#undef MR_maybe_local_thread_engine_base
+	#define MR_maybe_local_thread_engine_base MR_thread_engine_base
+#endif
+MR_END_MODULE
+
+
+MR_BEGIN_MODULE(recompilation__usage_module16)
+	MR_init_entry1(recompilation__usage__find_items_used_by_inst_name_3_0);
+	MR_INIT_PROC_LAYOUT_ADDR(mercury__recompilation__usage__find_items_used_by_inst_name_3_0);
+	MR_init_label10(recompilation__usage__find_items_used_by_inst_name_3_0,76,3,7,6,10,12,9,15,17,19)
+	MR_init_label3(recompilation__usage__find_items_used_by_inst_name_3_0,21,23,25)
+MR_BEGIN_CODE
+
+/*-------------------------------------------------------------------------*/
+/* code for 'find_items_used_by_inst_name'/3 mode 0 */
+#ifdef MR_maybe_local_thread_engine_base
+	#undef MR_maybe_local_thread_engine_base
+	#define MR_maybe_local_thread_engine_base MR_local_thread_engine_base
+#endif
+MR_def_static(recompilation__usage__find_items_used_by_inst_name_3_0)
+	MR_MAYBE_INIT_LOCAL_THREAD_ENGINE_BASE
+	MR_incr_sp(4);
+	MR_sv(4) = (MR_Word) MR_succip;
+MR_def_label(recompilation__usage__find_items_used_by_inst_name_3_0,76)
+	MR_MAYBE_INIT_LOCAL_THREAD_ENGINE_BASE
+	if (MR_PTAG_TESTR(MR_r1,1)) {
+		MR_GOTO_LAB(recompilation__usage__find_items_used_by_inst_name_3_0_i3);
+	}
+	MR_sv(1) = MR_tfield(1, MR_r1, 1);
+	MR_r1 = MR_tfield(1, MR_r1, 0);
+	MR_np_call_localret_ent(recompilation__usage__find_items_used_by_inst_3_0,
+		recompilation__usage__find_items_used_by_inst_name_3_0_i7);
+MR_def_label(recompilation__usage__find_items_used_by_inst_name_3_0,3)
+	MR_MAYBE_INIT_LOCAL_THREAD_ENGINE_BASE
+	if (MR_PTAG_TESTR(MR_r1,2)) {
+		MR_GOTO_LAB(recompilation__usage__find_items_used_by_inst_name_3_0_i6);
+	}
+	MR_sv(1) = MR_tfield(2, MR_r1, 2);
+	MR_r1 = MR_tfield(2, MR_r1, 1);
+	MR_np_call_localret_ent(recompilation__usage__find_items_used_by_inst_3_0,
+		recompilation__usage__find_items_used_by_inst_name_3_0_i7);
+MR_def_label(recompilation__usage__find_items_used_by_inst_name_3_0,7)
+	MR_MAYBE_INIT_LOCAL_THREAD_ENGINE_BASE
+	{
+	MR_Word MR_tempr1;
+	MR_tempr1 = MR_r1;
+	MR_r1 = MR_sv(1);
+	MR_r2 = MR_tempr1;
+	MR_succip_word = MR_sv(4);
+	MR_decr_sp(4);
+	MR_np_tailcall_ent(recompilation__usage__find_items_used_by_inst_3_0);
+	}
+MR_def_label(recompilation__usage__find_items_used_by_inst_name_3_0,6)
+	MR_MAYBE_INIT_LOCAL_THREAD_ENGINE_BASE
+	if (MR_PTAG_TESTR(MR_r1,0)) {
+		MR_GOTO_LAB(recompilation__usage__find_items_used_by_inst_name_3_0_i9);
+	}
+	MR_sv(1) = MR_r2;
+	MR_sv(2) = MR_tfield(0, MR_r1, 0);
+	MR_sv(3) = MR_tfield(0, MR_r1, 1);
+	MR_r1 = (MR_Word) MR_CTOR0_ADDR(parse_tree__prog_data, mer_inst);
+	MR_r2 = MR_sv(3);
+	MR_np_call_localret_ent(list__length_2_0,
+		recompilation__usage__find_items_used_by_inst_name_3_0_i10);
+MR_def_label(recompilation__usage__find_items_used_by_inst_name_3_0,10)
+	MR_MAYBE_INIT_LOCAL_THREAD_ENGINE_BASE
+	MR_tag_alloc_heap(MR_r2, 0, (MR_Integer) 2);
+	MR_tfield(0, MR_r2, 0) = MR_sv(2);
+	MR_tfield(0, MR_r2, 1) = MR_r1;
+	MR_r1 = (MR_Integer) 3;
+	MR_r3 = MR_sv(1);
+	MR_np_call_localret_ent(recompilation__usage__maybe_record_item_to_process_4_0,
+		recompilation__usage__find_items_used_by_inst_name_3_0_i12);
+MR_def_label(recompilation__usage__find_items_used_by_inst_name_3_0,12)
+	MR_MAYBE_INIT_LOCAL_THREAD_ENGINE_BASE
+	{
+	MR_Word MR_tempr1;
+	MR_tempr1 = MR_r1;
+	MR_r1 = (MR_Word) MR_CTOR0_ADDR(parse_tree__prog_data, mer_inst);
+	MR_r2 = (MR_Word) MR_CTOR0_ADDR(recompilation__usage, recompilation_usage_info);
+	MR_r3 = (MR_Word) MR_TAG_COMMON(0,3,13);
+	MR_r4 = MR_sv(3);
+	MR_r5 = MR_tempr1;
+	MR_succip_word = MR_sv(4);
+	MR_decr_sp(4);
+	MR_np_tailcall_ent(list__foldl_4_0);
+	}
+MR_def_label(recompilation__usage__find_items_used_by_inst_name_3_0,9)
+	MR_MAYBE_INIT_LOCAL_THREAD_ENGINE_BASE
+	if (MR_RTAGS_TESTR(MR_r1,3,1)) {
+		MR_GOTO_LAB(recompilation__usage__find_items_used_by_inst_name_3_0_i15);
+	}
+	MR_r1 = MR_tfield(3, MR_r1, 1);
+	MR_succip_word = MR_sv(4);
+	MR_GOTO_LAB(recompilation__usage__find_items_used_by_inst_name_3_0_i76);
+MR_def_label(recompilation__usage__find_items_used_by_inst_name_3_0,15)
+	MR_MAYBE_INIT_LOCAL_THREAD_ENGINE_BASE
+	if (MR_RTAGS_TESTR(MR_r1,3,0)) {
+		MR_GOTO_LAB(recompilation__usage__find_items_used_by_inst_name_3_0_i17);
+	}
+	MR_r1 = MR_tfield(3, MR_r1, 1);
+	MR_succip_word = MR_sv(4);
+	MR_GOTO_LAB(recompilation__usage__find_items_used_by_inst_name_3_0_i76);
+MR_def_label(recompilation__usage__find_items_used_by_inst_name_3_0,17)
+	MR_MAYBE_INIT_LOCAL_THREAD_ENGINE_BASE
+	if (MR_RTAGS_TESTR(MR_r1,3,3)) {
+		MR_GOTO_LAB(recompilation__usage__find_items_used_by_inst_name_3_0_i19);
+	}
+	MR_r1 = MR_tfield(3, MR_r1, 1);
+	MR_succip_word = MR_sv(4);
+	MR_GOTO_LAB(recompilation__usage__find_items_used_by_inst_name_3_0_i76);
+MR_def_label(recompilation__usage__find_items_used_by_inst_name_3_0,19)
+	MR_MAYBE_INIT_LOCAL_THREAD_ENGINE_BASE
+	if (MR_RTAGS_TESTR(MR_r1,3,2)) {
+		MR_GOTO_LAB(recompilation__usage__find_items_used_by_inst_name_3_0_i21);
+	}
+	MR_r1 = MR_tfield(3, MR_r1, 1);
+	MR_succip_word = MR_sv(4);
+	MR_GOTO_LAB(recompilation__usage__find_items_used_by_inst_name_3_0_i76);
+MR_def_label(recompilation__usage__find_items_used_by_inst_name_3_0,21)
+	MR_MAYBE_INIT_LOCAL_THREAD_ENGINE_BASE
+	if (MR_RTAGS_TESTR(MR_r1,3,4)) {
+		MR_GOTO_LAB(recompilation__usage__find_items_used_by_inst_name_3_0_i23);
+	}
+	MR_r1 = MR_tfield(3, MR_r1, 2);
+	MR_succip_word = MR_sv(4);
+	MR_decr_sp(4);
+	MR_np_tailcall_ent(recompilation__usage__find_items_used_by_type_3_0);
+MR_def_label(recompilation__usage__find_items_used_by_inst_name_3_0,23)
+	MR_MAYBE_INIT_LOCAL_THREAD_ENGINE_BASE
+	MR_sv(1) = MR_tfield(3, MR_r1, 2);
+	MR_r1 = MR_tfield(3, MR_r1, 1);
+	MR_np_call_localret_ent(recompilation__usage__find_items_used_by_type_3_0,
+		recompilation__usage__find_items_used_by_inst_name_3_0_i25);
+MR_def_label(recompilation__usage__find_items_used_by_inst_name_3_0,25)
+	MR_MAYBE_INIT_LOCAL_THREAD_ENGINE_BASE
+	{
+	MR_Word MR_tempr1;
+	MR_tempr1 = MR_r1;
+	MR_r1 = MR_sv(1);
+	MR_r2 = MR_tempr1;
+	MR_succip_word = MR_sv(4);
+	MR_GOTO_LAB(recompilation__usage__find_items_used_by_inst_name_3_0_i76);
+	}
+#ifdef MR_maybe_local_thread_engine_base
+	#undef MR_maybe_local_thread_engine_base
+	#define MR_maybe_local_thread_engine_base MR_thread_engine_base
+#endif
+MR_END_MODULE
+
+
+MR_BEGIN_MODULE(recompilation__usage_module17)
+	MR_init_entry1(recompilation__usage__find_items_used_by_mode_3_0);
+	MR_INIT_PROC_LAYOUT_ADDR(mercury__recompilation__usage__find_items_used_by_mode_3_0);
+	MR_init_label4(recompilation__usage__find_items_used_by_mode_3_0,4,3,6,8)
+MR_BEGIN_CODE
+
+/*-------------------------------------------------------------------------*/
+/* code for 'find_items_used_by_mode'/3 mode 0 */
+#ifdef MR_maybe_local_thread_engine_base
+	#undef MR_maybe_local_thread_engine_base
+	#define MR_maybe_local_thread_engine_base MR_local_thread_engine_base
+#endif
+MR_def_static(recompilation__usage__find_items_used_by_mode_3_0)
+	MR_MAYBE_INIT_LOCAL_THREAD_ENGINE_BASE
+	MR_incr_sp(4);
+	MR_sv(4) = (MR_Word) MR_succip;
+	if (MR_PTAG_TESTR(MR_r1,0)) {
+		MR_GOTO_LAB(recompilation__usage__find_items_used_by_mode_3_0_i3);
+	}
+	MR_sv(1) = MR_tfield(0, MR_r1, 1);
+	MR_r1 = MR_tfield(0, MR_r1, 0);
+	MR_np_call_localret_ent(recompilation__usage__find_items_used_by_inst_3_0,
+		recompilation__usage__find_items_used_by_mode_3_0_i4);
+MR_def_label(recompilation__usage__find_items_used_by_mode_3_0,4)
+	MR_MAYBE_INIT_LOCAL_THREAD_ENGINE_BASE
+	{
+	MR_Word MR_tempr1;
+	MR_tempr1 = MR_r1;
+	MR_r1 = MR_sv(1);
+	MR_r2 = MR_tempr1;
+	MR_succip_word = MR_sv(4);
+	MR_decr_sp(4);
+	MR_np_tailcall_ent(recompilation__usage__find_items_used_by_inst_3_0);
+	}
+MR_def_label(recompilation__usage__find_items_used_by_mode_3_0,3)
+	MR_MAYBE_INIT_LOCAL_THREAD_ENGINE_BASE
+	MR_sv(1) = MR_r2;
+	MR_sv(2) = MR_tfield(1, MR_r1, 0);
+	MR_sv(3) = MR_tfield(1, MR_r1, 1);
+	MR_r1 = (MR_Word) MR_CTOR0_ADDR(parse_tree__prog_data, mer_inst);
+	MR_r2 = MR_sv(3);
+	MR_np_call_localret_ent(list__length_2_0,
+		recompilation__usage__find_items_used_by_mode_3_0_i6);
+MR_def_label(recompilation__usage__find_items_used_by_mode_3_0,6)
+	MR_MAYBE_INIT_LOCAL_THREAD_ENGINE_BASE
+	MR_tag_alloc_heap(MR_r2, 0, (MR_Integer) 2);
+	MR_tfield(0, MR_r2, 0) = MR_sv(2);
+	MR_tfield(0, MR_r2, 1) = MR_r1;
+	MR_r1 = (MR_Integer) 2;
+	MR_r3 = MR_sv(1);
+	MR_np_call_localret_ent(recompilation__usage__maybe_record_item_to_process_4_0,
+		recompilation__usage__find_items_used_by_mode_3_0_i8);
+MR_def_label(recompilation__usage__find_items_used_by_mode_3_0,8)
+	MR_MAYBE_INIT_LOCAL_THREAD_ENGINE_BASE
+	{
+	MR_Word MR_tempr1;
+	MR_tempr1 = MR_r1;
+	MR_r1 = MR_sv(3);
+	MR_r2 = MR_tempr1;
+	MR_succip_word = MR_sv(4);
+	MR_decr_sp(4);
+	MR_np_tailcall_ent(recompilation__usage__find_items_used_by_insts_3_0);
+	}
+#ifdef MR_maybe_local_thread_engine_base
+	#undef MR_maybe_local_thread_engine_base
+	#define MR_maybe_local_thread_engine_base MR_thread_engine_base
+#endif
+MR_END_MODULE
+
+
+MR_BEGIN_MODULE(recompilation__usage_module18)
+	MR_init_entry1(recompilation__usage__find_items_used_by_mode_defn_3_0);
+	MR_INIT_PROC_LAYOUT_ADDR(mercury__recompilation__usage__find_items_used_by_mode_defn_3_0);
+MR_BEGIN_CODE
+
+/*-------------------------------------------------------------------------*/
+/* code for 'find_items_used_by_mode_defn'/3 mode 0 */
+#ifdef MR_maybe_local_thread_engine_base
+	#undef MR_maybe_local_thread_engine_base
+	#define MR_maybe_local_thread_engine_base MR_local_thread_engine_base
+#endif
+MR_def_static(recompilation__usage__find_items_used_by_mode_defn_3_0)
+	MR_MAYBE_INIT_LOCAL_THREAD_ENGINE_BASE
+	MR_r1 = MR_tfield(0, MR_r1, 2);
+	MR_np_tailcall_ent(recompilation__usage__find_items_used_by_mode_3_0);
+#ifdef MR_maybe_local_thread_engine_base
+	#undef MR_maybe_local_thread_engine_base
+	#define MR_maybe_local_thread_engine_base MR_thread_engine_base
+#endif
+MR_END_MODULE
+
+
+MR_BEGIN_MODULE(recompilation__usage_module19)
+	MR_init_entry1(recompilation__usage__find_items_used_by_inst_defn_3_0);
+	MR_INIT_PROC_LAYOUT_ADDR(mercury__recompilation__usage__find_items_used_by_inst_defn_3_0);
+	MR_init_label1(recompilation__usage__find_items_used_by_inst_defn_3_0,3)
+MR_BEGIN_CODE
+
+/*-------------------------------------------------------------------------*/
+/* code for 'find_items_used_by_inst_defn'/3 mode 0 */
+#ifdef MR_maybe_local_thread_engine_base
+	#undef MR_maybe_local_thread_engine_base
+	#define MR_maybe_local_thread_engine_base MR_local_thread_engine_base
+#endif
+MR_def_static(recompilation__usage__find_items_used_by_inst_defn_3_0)
+	MR_MAYBE_INIT_LOCAL_THREAD_ENGINE_BASE
+	MR_r3 = MR_tfield(0, MR_r1, 2);
+	if (MR_LTAGS_TESTR(MR_r3,0,0)) {
+		MR_GOTO_LAB(recompilation__usage__find_items_used_by_inst_defn_3_0_i3);
+	}
+	MR_r1 = MR_r2;
+	MR_proceed();
+MR_def_label(recompilation__usage__find_items_used_by_inst_defn_3_0,3)
+	MR_MAYBE_INIT_LOCAL_THREAD_ENGINE_BASE
+	MR_r1 = MR_tfield(1, MR_r3, 0);
+	MR_np_tailcall_ent(recompilation__usage__find_items_used_by_inst_3_0);
+#ifdef MR_maybe_local_thread_engine_base
+	#undef MR_maybe_local_thread_engine_base
+	#define MR_maybe_local_thread_engine_base MR_thread_engine_base
+#endif
+MR_END_MODULE
+
+extern const MR_TypeCtorInfo_Struct mercury_data_parse_tree__prog_data__type_ctor_info_prog_constraint_0;
+
+MR_BEGIN_MODULE(recompilation__usage_module20)
+	MR_init_entry1(recompilation__usage__find_items_used_by_class_constraints_3_0);
+	MR_INIT_PROC_LAYOUT_ADDR(mercury__recompilation__usage__find_items_used_by_class_constraints_3_0);
+MR_BEGIN_CODE
+
+/*-------------------------------------------------------------------------*/
+/* code for 'find_items_used_by_class_constraints'/3 mode 0 */
+#ifdef MR_maybe_local_thread_engine_base
+	#undef MR_maybe_local_thread_engine_base
+	#define MR_maybe_local_thread_engine_base MR_local_thread_engine_base
+#endif
+MR_def_static(recompilation__usage__find_items_used_by_class_constraints_3_0)
+	MR_MAYBE_INIT_LOCAL_THREAD_ENGINE_BASE
+	{
+	MR_Word MR_tempr1, MR_tempr2;
+	MR_tempr1 = MR_r1;
+	MR_r1 = (MR_Word) MR_CTOR0_ADDR(parse_tree__prog_data, prog_constraint);
+	MR_tempr2 = MR_r2;
+	MR_r2 = (MR_Word) MR_CTOR0_ADDR(recompilation__usage, recompilation_usage_info);
+	MR_r3 = (MR_Word) MR_TAG_COMMON(0,3,14);
+	MR_r4 = MR_tempr1;
+	MR_r5 = MR_tempr2;
+	MR_np_tailcall_ent(list__foldl_4_0);
+	}
+#ifdef MR_maybe_local_thread_engine_base
+	#undef MR_maybe_local_thread_engine_base
+	#define MR_maybe_local_thread_engine_base MR_thread_engine_base
+#endif
+MR_END_MODULE
+
+MR_decl_entry(hlds__hlds_module__module_info_get_inst_table_2_0);
+MR_decl_entry(hlds__hlds_data__inst_table_get_user_insts_2_0);
+MR_decl_entry(hlds__hlds_data__user_inst_table_get_inst_defns_2_0);
+MR_decl_entry(fn__recompilation__item_name_to_inst_id_1_0);
+extern const MR_TypeCtorInfo_Struct mercury_data_parse_tree__prog_data__type_ctor_info_inst_id_0;
+extern const MR_TypeCtorInfo_Struct mercury_data_hlds__hlds_data__type_ctor_info_hlds_inst_defn_0;
+MR_decl_entry(map__lookup_3_0);
+MR_decl_entry(hlds__hlds_module__module_info_get_mode_table_2_0);
+MR_decl_entry(hlds__hlds_data__mode_table_get_mode_defns_2_0);
+MR_decl_entry(fn__recompilation__item_name_to_mode_id_1_0);
+extern const MR_TypeCtorInfo_Struct mercury_data_parse_tree__prog_data__type_ctor_info_mode_id_0;
+extern const MR_TypeCtorInfo_Struct mercury_data_hlds__hlds_data__type_ctor_info_hlds_mode_defn_0;
+MR_decl_entry(hlds__hlds_module__module_info_get_type_table_2_0);
+MR_decl_entry(fn__recompilation__item_name_to_type_ctor_1_0);
+MR_decl_entry(hlds__hlds_data__lookup_type_ctor_defn_3_0);
+MR_decl_entry(hlds__hlds_data__get_type_defn_body_2_0);
+MR_decl_entry(hlds__hlds_module__module_info_get_class_table_2_0);
+extern const MR_TypeCtorInfo_Struct mercury_data_parse_tree__prog_data__type_ctor_info_class_id_0;
+extern const MR_TypeCtorInfo_Struct mercury_data_hlds__hlds_data__type_ctor_info_hlds_class_defn_0;
+MR_decl_entry(hlds__hlds_module__module_info_get_instance_table_2_0);
+extern const MR_TypeCtorInfo_Struct mercury_data_parse_tree__prog_item__type_ctor_info_class_method_0;
+
+MR_BEGIN_MODULE(recompilation__usage_module21)
+	MR_init_entry1(recompilation__usage__find_items_used_by_item_4_0);
+	MR_INIT_PROC_LAYOUT_ADDR(mercury__recompilation__usage__find_items_used_by_item_4_0);
+	MR_init_label10(recompilation__usage__find_items_used_by_item_4_0,3,4,7,8,9,10,11,6,14,15)
+	MR_init_label10(recompilation__usage__find_items_used_by_item_4_0,16,17,13,19,20,23,24,25,26,22)
+	MR_init_label10(recompilation__usage__find_items_used_by_item_4_0,32,33,34,35,31,39,40,41,65,43)
+	MR_init_label4(recompilation__usage__find_items_used_by_item_4_0,46,49,47,37)
+MR_BEGIN_CODE
+
+/*-------------------------------------------------------------------------*/
+/* code for 'find_items_used_by_item'/4 mode 0 */
+#ifdef MR_maybe_local_thread_engine_base
+	#undef MR_maybe_local_thread_engine_base
+	#define MR_maybe_local_thread_engine_base MR_local_thread_engine_base
+#endif
+MR_def_static(recompilation__usage__find_items_used_by_item_4_0)
+	MR_MAYBE_INIT_LOCAL_THREAD_ENGINE_BASE
+	if (MR_INT_NE(MR_r1,9)) {
+		MR_GOTO_LAB(recompilation__usage__find_items_used_by_item_4_0_i3);
+	}
+	MR_r1 = MR_r3;
+	MR_proceed();
+MR_def_label(recompilation__usage__find_items_used_by_item_4_0,3)
+	MR_MAYBE_INIT_LOCAL_THREAD_ENGINE_BASE
+	if (MR_INT_NE(MR_r1,7)) {
+		MR_GOTO_LAB(recompilation__usage__find_items_used_by_item_4_0_i4);
+	}
+	MR_r1 = (MR_Integer) 1;
+	MR_np_tailcall_ent(recompilation__usage__record_used_pred_or_func_4_0);
+MR_def_label(recompilation__usage__find_items_used_by_item_4_0,4)
+	MR_MAYBE_INIT_LOCAL_THREAD_ENGINE_BASE
+	if (MR_INT_NE(MR_r1,3)) {
+		MR_GOTO_LAB(recompilation__usage__find_items_used_by_item_4_0_i6);
+	}
+	MR_incr_sp(6);
+	MR_sv(6) = (MR_Word) MR_succip;
+	MR_sv(1) = MR_r2;
+	{
+	MR_Word MR_tempr1;
+	MR_tempr1 = MR_r3;
+	MR_sv(2) = MR_tempr1;
+	MR_r1 = MR_tfield(0, MR_tempr1, 0);
+	}
+	MR_np_call_localret_ent(hlds__hlds_module__module_info_get_inst_table_2_0,
+		recompilation__usage__find_items_used_by_item_4_0_i7);
+MR_def_label(recompilation__usage__find_items_used_by_item_4_0,7)
+	MR_MAYBE_INIT_LOCAL_THREAD_ENGINE_BASE
+	MR_np_call_localret_ent(hlds__hlds_data__inst_table_get_user_insts_2_0,
+		recompilation__usage__find_items_used_by_item_4_0_i8);
+MR_def_label(recompilation__usage__find_items_used_by_item_4_0,8)
+	MR_MAYBE_INIT_LOCAL_THREAD_ENGINE_BASE
+	MR_np_call_localret_ent(hlds__hlds_data__user_inst_table_get_inst_defns_2_0,
+		recompilation__usage__find_items_used_by_item_4_0_i9);
+MR_def_label(recompilation__usage__find_items_used_by_item_4_0,9)
+	MR_MAYBE_INIT_LOCAL_THREAD_ENGINE_BASE
+	MR_r2 = MR_sv(1);
+	MR_sv(1) = MR_r1;
+	MR_r1 = MR_r2;
+	MR_np_call_localret_ent(fn__recompilation__item_name_to_inst_id_1_0,
+		recompilation__usage__find_items_used_by_item_4_0_i10);
+MR_def_label(recompilation__usage__find_items_used_by_item_4_0,10)
+	MR_MAYBE_INIT_LOCAL_THREAD_ENGINE_BASE
+	{
+	MR_Word MR_tempr1;
+	MR_tempr1 = MR_r1;
+	MR_r1 = (MR_Word) MR_CTOR0_ADDR(parse_tree__prog_data, inst_id);
+	MR_r2 = (MR_Word) MR_CTOR0_ADDR(hlds__hlds_data, hlds_inst_defn);
+	MR_r3 = MR_sv(1);
+	MR_r4 = MR_tempr1;
+	}
+	MR_np_call_localret_ent(map__lookup_3_0,
+		recompilation__usage__find_items_used_by_item_4_0_i11);
+MR_def_label(recompilation__usage__find_items_used_by_item_4_0,11)
+	MR_MAYBE_INIT_LOCAL_THREAD_ENGINE_BASE
+	MR_r2 = MR_sv(2);
+	MR_succip_word = MR_sv(6);
+	MR_decr_sp(6);
+	MR_np_tailcall_ent(recompilation__usage__find_items_used_by_inst_defn_3_0);
+MR_def_label(recompilation__usage__find_items_used_by_item_4_0,6)
+	MR_MAYBE_INIT_LOCAL_THREAD_ENGINE_BASE
+	if (MR_INT_NE(MR_r1,2)) {
+		MR_GOTO_LAB(recompilation__usage__find_items_used_by_item_4_0_i13);
+	}
+	MR_incr_sp(6);
+	MR_sv(6) = (MR_Word) MR_succip;
+	MR_sv(1) = MR_r2;
+	{
+	MR_Word MR_tempr1;
+	MR_tempr1 = MR_r3;
+	MR_sv(2) = MR_tempr1;
+	MR_r1 = MR_tfield(0, MR_tempr1, 0);
+	}
+	MR_np_call_localret_ent(hlds__hlds_module__module_info_get_mode_table_2_0,
+		recompilation__usage__find_items_used_by_item_4_0_i14);
+MR_def_label(recompilation__usage__find_items_used_by_item_4_0,14)
+	MR_MAYBE_INIT_LOCAL_THREAD_ENGINE_BASE
+	MR_np_call_localret_ent(hlds__hlds_data__mode_table_get_mode_defns_2_0,
+		recompilation__usage__find_items_used_by_item_4_0_i15);
+MR_def_label(recompilation__usage__find_items_used_by_item_4_0,15)
+	MR_MAYBE_INIT_LOCAL_THREAD_ENGINE_BASE
+	MR_r2 = MR_sv(1);
+	MR_sv(1) = MR_r1;
+	MR_r1 = MR_r2;
+	MR_np_call_localret_ent(fn__recompilation__item_name_to_mode_id_1_0,
+		recompilation__usage__find_items_used_by_item_4_0_i16);
+MR_def_label(recompilation__usage__find_items_used_by_item_4_0,16)
+	MR_MAYBE_INIT_LOCAL_THREAD_ENGINE_BASE
+	{
+	MR_Word MR_tempr1;
+	MR_tempr1 = MR_r1;
+	MR_r1 = (MR_Word) MR_CTOR0_ADDR(parse_tree__prog_data, mode_id);
+	MR_r2 = (MR_Word) MR_CTOR0_ADDR(hlds__hlds_data, hlds_mode_defn);
+	MR_r3 = MR_sv(1);
+	MR_r4 = MR_tempr1;
+	}
+	MR_np_call_localret_ent(map__lookup_3_0,
+		recompilation__usage__find_items_used_by_item_4_0_i17);
+MR_def_label(recompilation__usage__find_items_used_by_item_4_0,17)
+	MR_MAYBE_INIT_LOCAL_THREAD_ENGINE_BASE
+	MR_r2 = MR_sv(2);
+	MR_succip_word = MR_sv(6);
+	MR_decr_sp(6);
+	MR_np_tailcall_ent(recompilation__usage__find_items_used_by_mode_defn_3_0);
+MR_def_label(recompilation__usage__find_items_used_by_item_4_0,13)
+	MR_MAYBE_INIT_LOCAL_THREAD_ENGINE_BASE
+	if (MR_INT_NE(MR_r1,8)) {
+		MR_GOTO_LAB(recompilation__usage__find_items_used_by_item_4_0_i19);
+	}
+	MR_r1 = MR_r3;
+	MR_proceed();
+MR_def_label(recompilation__usage__find_items_used_by_item_4_0,19)
+	MR_MAYBE_INIT_LOCAL_THREAD_ENGINE_BASE
+	if (MR_INT_NE(MR_r1,6)) {
+		MR_GOTO_LAB(recompilation__usage__find_items_used_by_item_4_0_i20);
+	}
+	MR_r1 = (MR_Integer) 0;
+	MR_np_tailcall_ent(recompilation__usage__record_used_pred_or_func_4_0);
+MR_def_label(recompilation__usage__find_items_used_by_item_4_0,20)
+	MR_MAYBE_INIT_LOCAL_THREAD_ENGINE_BASE
+	if (MR_INT_NE(MR_r1,0)) {
+		MR_GOTO_LAB(recompilation__usage__find_items_used_by_item_4_0_i22);
+	}
+	MR_incr_sp(6);
+	MR_sv(6) = (MR_Word) MR_succip;
+	MR_sv(1) = MR_r2;
+	{
+	MR_Word MR_tempr1;
+	MR_tempr1 = MR_r3;
+	MR_sv(2) = MR_tempr1;
+	MR_r1 = MR_tfield(0, MR_tempr1, 0);
+	}
+	MR_np_call_localret_ent(hlds__hlds_module__module_info_get_type_table_2_0,
+		recompilation__usage__find_items_used_by_item_4_0_i23);
+MR_def_label(recompilation__usage__find_items_used_by_item_4_0,23)
+	MR_MAYBE_INIT_LOCAL_THREAD_ENGINE_BASE
+	MR_r2 = MR_sv(1);
+	MR_sv(1) = MR_r1;
+	MR_r1 = MR_r2;
+	MR_np_call_localret_ent(fn__recompilation__item_name_to_type_ctor_1_0,
+		recompilation__usage__find_items_used_by_item_4_0_i24);
+MR_def_label(recompilation__usage__find_items_used_by_item_4_0,24)
+	MR_MAYBE_INIT_LOCAL_THREAD_ENGINE_BASE
+	{
+	MR_Word MR_tempr1;
+	MR_tempr1 = MR_r1;
+	MR_r1 = MR_sv(1);
+	MR_r2 = MR_tempr1;
+	}
+	MR_np_call_localret_ent(hlds__hlds_data__lookup_type_ctor_defn_3_0,
+		recompilation__usage__find_items_used_by_item_4_0_i25);
+MR_def_label(recompilation__usage__find_items_used_by_item_4_0,25)
+	MR_MAYBE_INIT_LOCAL_THREAD_ENGINE_BASE
+	MR_np_call_localret_ent(hlds__hlds_data__get_type_defn_body_2_0,
+		recompilation__usage__find_items_used_by_item_4_0_i26);
+MR_def_label(recompilation__usage__find_items_used_by_item_4_0,26)
+	MR_MAYBE_INIT_LOCAL_THREAD_ENGINE_BASE
+	if (MR_PTAG_TESTR(MR_r1,1)) {
+		MR_GOTO_LAB(recompilation__usage__find_items_used_by_item_4_0_i47);
+	}
+	MR_r1 = MR_tfield(1, MR_r1, 0);
+	MR_r2 = MR_sv(2);
+	MR_succip_word = MR_sv(6);
+	MR_decr_sp(6);
+	MR_np_tailcall_ent(recompilation__usage__find_items_used_by_type_3_0);
+MR_def_label(recompilation__usage__find_items_used_by_item_4_0,22)
+	MR_MAYBE_INIT_LOCAL_THREAD_ENGINE_BASE
+	if (MR_INT_NE(MR_r1,1)) {
+		MR_GOTO_LAB(recompilation__usage__find_items_used_by_item_4_0_i31);
+	}
+	MR_incr_sp(6);
+	MR_sv(6) = (MR_Word) MR_succip;
+	MR_sv(1) = MR_r2;
+	{
+	MR_Word MR_tempr1;
+	MR_tempr1 = MR_r3;
+	MR_sv(2) = MR_tempr1;
+	MR_r1 = MR_tfield(0, MR_tempr1, 0);
+	}
+	MR_np_call_localret_ent(hlds__hlds_module__module_info_get_type_table_2_0,
+		recompilation__usage__find_items_used_by_item_4_0_i32);
+MR_def_label(recompilation__usage__find_items_used_by_item_4_0,32)
+	MR_MAYBE_INIT_LOCAL_THREAD_ENGINE_BASE
+	MR_r2 = MR_sv(1);
+	MR_sv(1) = MR_r1;
+	MR_r1 = MR_r2;
+	MR_np_call_localret_ent(fn__recompilation__item_name_to_type_ctor_1_0,
+		recompilation__usage__find_items_used_by_item_4_0_i33);
+MR_def_label(recompilation__usage__find_items_used_by_item_4_0,33)
+	MR_MAYBE_INIT_LOCAL_THREAD_ENGINE_BASE
+	{
+	MR_Word MR_tempr1;
+	MR_tempr1 = MR_r1;
+	MR_r1 = MR_sv(1);
+	MR_r2 = MR_tempr1;
+	}
+	MR_np_call_localret_ent(hlds__hlds_data__lookup_type_ctor_defn_3_0,
+		recompilation__usage__find_items_used_by_item_4_0_i34);
+MR_def_label(recompilation__usage__find_items_used_by_item_4_0,34)
+	MR_MAYBE_INIT_LOCAL_THREAD_ENGINE_BASE
+	MR_np_call_localret_ent(hlds__hlds_data__get_type_defn_body_2_0,
+		recompilation__usage__find_items_used_by_item_4_0_i35);
+MR_def_label(recompilation__usage__find_items_used_by_item_4_0,35)
+	MR_MAYBE_INIT_LOCAL_THREAD_ENGINE_BASE
+	MR_r2 = MR_sv(2);
+	MR_succip_word = MR_sv(6);
+	MR_decr_sp(6);
+	MR_np_tailcall_ent(recompilation__usage__find_items_used_by_type_body_3_0);
+MR_def_label(recompilation__usage__find_items_used_by_item_4_0,31)
+	MR_MAYBE_INIT_LOCAL_THREAD_ENGINE_BASE
+	if (MR_INT_NE(MR_r1,4)) {
+		MR_GOTO_LAB(recompilation__usage__find_items_used_by_item_4_0_i37);
+	}
+	MR_incr_sp(6);
+	MR_sv(6) = (MR_Word) MR_succip;
+	{
+	MR_Word MR_tempr1, MR_tempr2;
+	MR_tag_alloc_heap(MR_tempr1, 0, (MR_Integer) 2);
+	MR_sv(3) = MR_tempr1;
+	MR_tfield(0, MR_tempr1, 0) = MR_tfield(0, MR_r2, 0);
+	MR_tfield(0, MR_tempr1, 1) = MR_tfield(0, MR_r2, 1);
+	MR_sv(1) = MR_r2;
+	MR_tempr2 = MR_r3;
+	MR_sv(2) = MR_tempr2;
+	MR_sv(4) = MR_tfield(0, MR_tempr2, 0);
+	MR_r1 = MR_sv(4);
+	}
+	MR_np_call_localret_ent(hlds__hlds_module__module_info_get_class_table_2_0,
+		recompilation__usage__find_items_used_by_item_4_0_i39);
+MR_def_label(recompilation__usage__find_items_used_by_item_4_0,39)
+	MR_MAYBE_INIT_LOCAL_THREAD_ENGINE_BASE
+	MR_sv(5) = (MR_Word) MR_CTOR0_ADDR(parse_tree__prog_data, class_id);
+	{
+	MR_Word MR_tempr1;
+	MR_tempr1 = MR_r1;
+	MR_r1 = MR_sv(5);
+	MR_r2 = (MR_Word) MR_CTOR0_ADDR(hlds__hlds_data, hlds_class_defn);
+	MR_r3 = MR_tempr1;
+	MR_r4 = MR_sv(3);
+	}
+	MR_np_call_localret_ent(map__lookup_3_0,
+		recompilation__usage__find_items_used_by_item_4_0_i40);
+MR_def_label(recompilation__usage__find_items_used_by_item_4_0,40)
+	MR_MAYBE_INIT_LOCAL_THREAD_ENGINE_BASE
+	{
+	MR_Word MR_tempr1;
+	MR_tempr1 = MR_sv(2);
+	MR_sv(2) = MR_tfield(0, MR_r1, 6);
+	MR_r1 = MR_tfield(0, MR_r1, 1);
+	MR_r2 = MR_tempr1;
+	}
+	MR_np_call_localret_ent(recompilation__usage__find_items_used_by_class_constraints_3_0,
+		recompilation__usage__find_items_used_by_item_4_0_i41);
+MR_def_label(recompilation__usage__find_items_used_by_item_4_0,41)
+	MR_MAYBE_INIT_LOCAL_THREAD_ENGINE_BASE
+	if (MR_LTAGS_TESTR(MR_sv(2),0,0)) {
+		MR_GOTO_LAB(recompilation__usage__find_items_used_by_item_4_0_i43);
+	}
+MR_def_label(recompilation__usage__find_items_used_by_item_4_0,65)
+	MR_MAYBE_INIT_LOCAL_THREAD_ENGINE_BASE
+	MR_sv(2) = MR_r1;
+	MR_r1 = MR_sv(4);
+	MR_np_call_localret_ent(hlds__hlds_module__module_info_get_instance_table_2_0,
+		recompilation__usage__find_items_used_by_item_4_0_i46);
+MR_def_label(recompilation__usage__find_items_used_by_item_4_0,43)
+	MR_MAYBE_INIT_LOCAL_THREAD_ENGINE_BASE
+	{
+	MR_Word MR_tempr1;
+	MR_tempr1 = MR_r1;
+	MR_r1 = (MR_Word) MR_CTOR0_ADDR(parse_tree__prog_item, class_method);
+	MR_r2 = (MR_Word) MR_CTOR0_ADDR(recompilation__usage, recompilation_usage_info);
+	MR_r3 = (MR_Word) MR_TAG_COMMON(0,3,15);
+	MR_r4 = MR_tfield(1, MR_sv(2), 0);
+	MR_r5 = MR_tempr1;
+	}
+	MR_np_call_localret_ent(list__foldl_4_0,
+		recompilation__usage__find_items_used_by_item_4_0_i65);
+MR_def_label(recompilation__usage__find_items_used_by_item_4_0,46)
+	MR_MAYBE_INIT_LOCAL_THREAD_ENGINE_BASE
+	{
+	MR_Word MR_tempr1;
+	MR_tempr1 = MR_r1;
+	MR_r1 = MR_sv(5);
+	MR_r2 = (MR_Word) MR_TAG_COMMON(0,1,9);
+	MR_r3 = MR_tempr1;
+	MR_r4 = MR_sv(3);
+	}
+	MR_np_call_localret_ent(map__search_3_0,
+		recompilation__usage__find_items_used_by_item_4_0_i49);
+MR_def_label(recompilation__usage__find_items_used_by_item_4_0,49)
+	MR_MAYBE_INIT_LOCAL_THREAD_ENGINE_BASE
+	if (!(MR_r1)) {
+		MR_GOTO_LAB(recompilation__usage__find_items_used_by_item_4_0_i47);
+	}
+	{
+	MR_Word MR_tempr1, MR_tempr2;
+	MR_tag_alloc_heap(MR_tempr1, 0, (MR_Integer) 4);
+	MR_r3 = MR_tempr1;
+	MR_tfield(0, MR_tempr1, 0) = (MR_Word) MR_COMMON(10,0);
+	MR_tfield(0, MR_tempr1, 1) = (MR_Word) MR_ENTRY_AP(recompilation__usage__find_items_used_by_instance_4_0);
+	MR_tfield(0, MR_tempr1, 2) = (MR_Integer) 1;
+	MR_tfield(0, MR_tempr1, 3) = MR_sv(1);
+	MR_r1 = (MR_Word) MR_CTOR0_ADDR(hlds__hlds_data, hlds_instance_defn);
+	MR_tempr2 = MR_r2;
+	MR_r2 = (MR_Word) MR_CTOR0_ADDR(recompilation__usage, recompilation_usage_info);
+	MR_r4 = MR_tempr2;
+	MR_r5 = MR_sv(2);
+	MR_succip_word = MR_sv(6);
+	MR_decr_sp(6);
+	MR_np_tailcall_ent(list__foldl_4_0);
+	}
+MR_def_label(recompilation__usage__find_items_used_by_item_4_0,47)
+	MR_MAYBE_INIT_LOCAL_THREAD_ENGINE_BASE
+	MR_r1 = MR_sv(2);
+	MR_decr_sp_and_return(6);
+MR_def_label(recompilation__usage__find_items_used_by_item_4_0,37)
+	MR_MAYBE_INIT_LOCAL_THREAD_ENGINE_BASE
+	MR_r1 = (MR_Word) MR_string_const("recompilation.usage", 19);
+	MR_r2 = (MR_Word) MR_string_const("predicate \140recompilation.usage.find_items_used_by_item\'/4", 57);
+	MR_r3 = (MR_Word) MR_string_const("functor", 7);
+	MR_np_tailcall_ent(require__unexpected_3_0);
+#ifdef MR_maybe_local_thread_engine_base
+	#undef MR_maybe_local_thread_engine_base
+	#define MR_maybe_local_thread_engine_base MR_thread_engine_base
+#endif
+MR_END_MODULE
+
+MR_decl_entry(queue__get_3_0);
+
+MR_BEGIN_MODULE(recompilation__usage_module22)
+	MR_init_entry1(recompilation__usage__process_imported_item_queue_2_3_0);
+	MR_INIT_PROC_LAYOUT_ADDR(mercury__recompilation__usage__process_imported_item_queue_2_3_0);
+	MR_init_label4(recompilation__usage__process_imported_item_queue_2_3_0,13,3,5,2)
+MR_BEGIN_CODE
+
+/*-------------------------------------------------------------------------*/
+/* code for 'process_imported_item_queue_2'/3 mode 0 */
+#ifdef MR_maybe_local_thread_engine_base
+	#undef MR_maybe_local_thread_engine_base
+	#define MR_maybe_local_thread_engine_base MR_local_thread_engine_base
+#endif
+MR_def_static(recompilation__usage__process_imported_item_queue_2_3_0)
+	MR_MAYBE_INIT_LOCAL_THREAD_ENGINE_BASE
+	MR_incr_sp(2);
+	MR_sv(2) = (MR_Word) MR_succip;
+MR_def_label(recompilation__usage__process_imported_item_queue_2_3_0,13)
+	MR_MAYBE_INIT_LOCAL_THREAD_ENGINE_BASE
+	MR_sv(1) = MR_r2;
+	{
+	MR_Word MR_tempr1;
+	MR_tempr1 = MR_r1;
+	MR_r1 = (MR_Word) MR_CTOR0_ADDR(recompilation, item_id);
+	MR_r2 = MR_tempr1;
+	}
+	MR_np_call_localret_ent(queue__get_3_0,
+		recompilation__usage__process_imported_item_queue_2_3_0_i3);
+MR_def_label(recompilation__usage__process_imported_item_queue_2_3_0,3)
+	MR_MAYBE_INIT_LOCAL_THREAD_ENGINE_BASE
+	if (!(MR_r1)) {
+		MR_GOTO_LAB(recompilation__usage__process_imported_item_queue_2_3_0_i2);
+	}
+	{
+	MR_Word MR_tempr1;
+	MR_tempr1 = MR_sv(1);
+	MR_sv(1) = MR_r3;
+	MR_r1 = MR_tfield(0, MR_r2, 0);
+	MR_r2 = MR_tfield(0, MR_r2, 1);
+	MR_r3 = MR_tempr1;
+	}
+	MR_np_call_localret_ent(recompilation__usage__find_items_used_by_item_4_0,
+		recompilation__usage__process_imported_item_queue_2_3_0_i5);
+MR_def_label(recompilation__usage__process_imported_item_queue_2_3_0,5)
+	MR_MAYBE_INIT_LOCAL_THREAD_ENGINE_BASE
+	{
+	MR_Word MR_tempr1;
+	MR_tempr1 = MR_r1;
+	MR_r1 = MR_sv(1);
+	MR_r2 = MR_tempr1;
+	MR_succip_word = MR_sv(2);
+	MR_GOTO_LAB(recompilation__usage__process_imported_item_queue_2_3_0_i13);
+	}
+MR_def_label(recompilation__usage__process_imported_item_queue_2_3_0,2)
+	MR_MAYBE_INIT_LOCAL_THREAD_ENGINE_BASE
+	MR_r1 = MR_sv(1);
+	MR_decr_sp_and_return(2);
+#ifdef MR_maybe_local_thread_engine_base
+	#undef MR_maybe_local_thread_engine_base
+	#define MR_maybe_local_thread_engine_base MR_thread_engine_base
+#endif
+MR_END_MODULE
+
+MR_decl_entry(fn__queue__init_0_0);
+MR_decl_entry(queue__is_empty_1_0);
+
+MR_BEGIN_MODULE(recompilation__usage_module23)
+	MR_init_entry1(recompilation__usage__process_imported_item_queue_2_0);
+	MR_INIT_PROC_LAYOUT_ADDR(mercury__recompilation__usage__process_imported_item_queue_2_0);
+	MR_init_label5(recompilation__usage__process_imported_item_queue_2_0,15,2,4,7,5)
+MR_BEGIN_CODE
+
+/*-------------------------------------------------------------------------*/
+/* code for 'process_imported_item_queue'/2 mode 0 */
+#ifdef MR_maybe_local_thread_engine_base
+	#undef MR_maybe_local_thread_engine_base
+	#define MR_maybe_local_thread_engine_base MR_local_thread_engine_base
+#endif
+MR_def_static(recompilation__usage__process_imported_item_queue_2_0)
+	MR_MAYBE_INIT_LOCAL_THREAD_ENGINE_BASE
+	MR_incr_sp(4);
+	MR_sv(4) = (MR_Word) MR_succip;
+MR_def_label(recompilation__usage__process_imported_item_queue_2_0,15)
+	MR_MAYBE_INIT_LOCAL_THREAD_ENGINE_BASE
+	MR_sv(1) = MR_tfield(0, MR_r1, 1);
+	MR_sv(2) = MR_r1;
+	MR_sv(3) = (MR_Word) MR_CTOR0_ADDR(recompilation, item_id);
+	MR_r1 = MR_sv(3);
+	MR_np_call_localret_ent(fn__queue__init_0_0,
+		recompilation__usage__process_imported_item_queue_2_0_i2);
+MR_def_label(recompilation__usage__process_imported_item_queue_2_0,2)
+	MR_MAYBE_INIT_LOCAL_THREAD_ENGINE_BASE
+	MR_tag_alloc_heap(MR_r2, 0, (MR_Integer) 7);
+	{
+	MR_Word MR_tempr1;
+	MR_tempr1 = MR_sv(2);
+	MR_tfield(0, MR_r2, 0) = MR_tfield(0, MR_tempr1, 0);
+	MR_tfield(0, MR_r2, 1) = MR_r1;
+	MR_tfield(0, MR_r2, 2) = MR_tfield(0, MR_tempr1, 2);
+	MR_tfield(0, MR_r2, 3) = MR_tfield(0, MR_tempr1, 3);
+	MR_tfield(0, MR_r2, 4) = MR_tfield(0, MR_tempr1, 4);
+	MR_tfield(0, MR_r2, 5) = MR_tfield(0, MR_tempr1, 5);
+	MR_tfield(0, MR_r2, 6) = MR_tfield(0, MR_tempr1, 6);
+	MR_r1 = MR_sv(1);
+	}
+	MR_np_call_localret_ent(recompilation__usage__process_imported_item_queue_2_3_0,
+		recompilation__usage__process_imported_item_queue_2_0_i4);
+MR_def_label(recompilation__usage__process_imported_item_queue_2_0,4)
+	MR_MAYBE_INIT_LOCAL_THREAD_ENGINE_BASE
+	MR_sv(1) = MR_r1;
+	MR_r1 = MR_sv(3);
+	MR_r2 = MR_tfield(0, MR_sv(1), 1);
+	MR_np_call_localret_ent(queue__is_empty_1_0,
+		recompilation__usage__process_imported_item_queue_2_0_i7);
+MR_def_label(recompilation__usage__process_imported_item_queue_2_0,7)
+	MR_MAYBE_INIT_LOCAL_THREAD_ENGINE_BASE
+	if (!(MR_r1)) {
+		MR_GOTO_LAB(recompilation__usage__process_imported_item_queue_2_0_i5);
+	}
+	MR_r1 = MR_sv(1);
+	MR_decr_sp_and_return(4);
+MR_def_label(recompilation__usage__process_imported_item_queue_2_0,5)
+	MR_MAYBE_INIT_LOCAL_THREAD_ENGINE_BASE
+	MR_r1 = MR_sv(1);
+	MR_succip_word = MR_sv(4);
+	MR_GOTO_LAB(recompilation__usage__process_imported_item_queue_2_0_i15);
+#ifdef MR_maybe_local_thread_engine_base
+	#undef MR_maybe_local_thread_engine_base
+	#define MR_maybe_local_thread_engine_base MR_thread_engine_base
+#endif
+MR_END_MODULE
+
+MR_decl_entry(map__foldl_4_0);
+
+MR_BEGIN_MODULE(recompilation__usage_module24)
+	MR_init_entry1(recompilation__usage__find_items_used_by_preds_4_0);
+	MR_INIT_PROC_LAYOUT_ADDR(mercury__recompilation__usage__find_items_used_by_preds_4_0);
+MR_BEGIN_CODE
+
+/*-------------------------------------------------------------------------*/
+/* code for 'find_items_used_by_preds'/4 mode 0 */
+#ifdef MR_maybe_local_thread_engine_base
+	#undef MR_maybe_local_thread_engine_base
+	#define MR_maybe_local_thread_engine_base MR_local_thread_engine_base
+#endif
+MR_def_static(recompilation__usage__find_items_used_by_preds_4_0)
+	MR_MAYBE_INIT_LOCAL_THREAD_ENGINE_BASE
+	{
+	MR_Word MR_tempr1, MR_tempr2, MR_tempr3;
+	MR_tag_alloc_heap(MR_tempr1, 0, (MR_Integer) 4);
+	MR_r4 = MR_tempr1;
+	MR_tfield(0, MR_tempr1, 0) = (MR_Word) MR_COMMON(7,2);
+	MR_tfield(0, MR_tempr1, 1) = (MR_Word) MR_ENTRY_AP(recompilation__usage__find_items_used_by_preds_2_5_0);
+	MR_tfield(0, MR_tempr1, 2) = (MR_Integer) 1;
+	MR_tfield(0, MR_tempr1, 3) = MR_r1;
+	MR_r1 = (MR_Word) MR_TAG_COMMON(0,0,0);
+	MR_tempr2 = MR_r2;
+	MR_r2 = (MR_Word) MR_TAG_COMMON(0,0,1);
+	MR_tempr3 = MR_r3;
+	MR_r3 = (MR_Word) MR_CTOR0_ADDR(recompilation__usage, recompilation_usage_info);
+	MR_r5 = MR_tempr2;
+	MR_r6 = MR_tempr3;
+	MR_np_tailcall_ent(map__foldl_4_0);
+	}
+#ifdef MR_maybe_local_thread_engine_base
+	#undef MR_maybe_local_thread_engine_base
+	#define MR_maybe_local_thread_engine_base MR_thread_engine_base
+#endif
+MR_END_MODULE
+
+
+MR_BEGIN_MODULE(recompilation__usage_module25)
+	MR_init_entry1(recompilation__usage__find_items_used_by_functors_3_0);
+	MR_INIT_PROC_LAYOUT_ADDR(mercury__recompilation__usage__find_items_used_by_functors_3_0);
+MR_BEGIN_CODE
+
+/*-------------------------------------------------------------------------*/
+/* code for 'find_items_used_by_functors'/3 mode 0 */
+#ifdef MR_maybe_local_thread_engine_base
+	#undef MR_maybe_local_thread_engine_base
+	#define MR_maybe_local_thread_engine_base MR_local_thread_engine_base
+#endif
+MR_def_static(recompilation__usage__find_items_used_by_functors_3_0)
+	MR_MAYBE_INIT_LOCAL_THREAD_ENGINE_BASE
+	{
+	MR_Word MR_tempr1, MR_tempr2;
+	MR_tempr1 = MR_r1;
+	MR_r1 = (MR_Word) MR_TAG_COMMON(0,0,0);
+	MR_tempr2 = MR_r2;
+	MR_r2 = (MR_Word) MR_TAG_COMMON(0,0,1);
+	MR_r3 = (MR_Word) MR_CTOR0_ADDR(recompilation__usage, recompilation_usage_info);
+	MR_r4 = (MR_Word) MR_TAG_COMMON(0,3,16);
+	MR_r5 = MR_tempr1;
+	MR_r6 = MR_tempr2;
+	MR_np_tailcall_ent(map__foldl_4_0);
+	}
+#ifdef MR_maybe_local_thread_engine_base
+	#undef MR_maybe_local_thread_engine_base
+	#define MR_maybe_local_thread_engine_base MR_thread_engine_base
+#endif
+MR_END_MODULE
+
+
+MR_BEGIN_MODULE(recompilation__usage_module26)
+	MR_init_entry1(recompilation__usage__find_items_used_by_simple_item_set_4_0);
+	MR_INIT_PROC_LAYOUT_ADDR(mercury__recompilation__usage__find_items_used_by_simple_item_set_4_0);
+MR_BEGIN_CODE
+
+/*-------------------------------------------------------------------------*/
+/* code for 'find_items_used_by_simple_item_set'/4 mode 0 */
+#ifdef MR_maybe_local_thread_engine_base
+	#undef MR_maybe_local_thread_engine_base
+	#define MR_maybe_local_thread_engine_base MR_local_thread_engine_base
+#endif
+MR_def_static(recompilation__usage__find_items_used_by_simple_item_set_4_0)
+	MR_MAYBE_INIT_LOCAL_THREAD_ENGINE_BASE
+	{
+	MR_Word MR_tempr1, MR_tempr2, MR_tempr3;
+	MR_tag_alloc_heap(MR_tempr1, 0, (MR_Integer) 4);
+	MR_r4 = MR_tempr1;
+	MR_tfield(0, MR_tempr1, 0) = (MR_Word) MR_COMMON(7,3);
+	MR_tfield(0, MR_tempr1, 1) = (MR_Word) MR_ENTRY_AP(recompilation__usage__find_items_used_by_simple_item_set_2_5_0);
+	MR_tfield(0, MR_tempr1, 2) = (MR_Integer) 1;
+	MR_tfield(0, MR_tempr1, 3) = MR_r1;
+	MR_r1 = (MR_Word) MR_TAG_COMMON(0,0,0);
+	MR_tempr2 = MR_r2;
+	MR_r2 = (MR_Word) MR_TAG_COMMON(0,0,1);
+	MR_tempr3 = MR_r3;
+	MR_r3 = (MR_Word) MR_CTOR0_ADDR(recompilation__usage, recompilation_usage_info);
+	MR_r5 = MR_tempr2;
+	MR_r6 = MR_tempr3;
+	MR_np_tailcall_ent(map__foldl_4_0);
+	}
+#ifdef MR_maybe_local_thread_engine_base
+	#undef MR_maybe_local_thread_engine_base
+	#define MR_maybe_local_thread_engine_base MR_thread_engine_base
+#endif
+MR_END_MODULE
+
+
+MR_BEGIN_MODULE(recompilation__usage_module27)
+	MR_init_entry1(recompilation__usage__find_all_used_imported_items_2_3_0);
+	MR_INIT_PROC_LAYOUT_ADDR(mercury__recompilation__usage__find_all_used_imported_items_2_3_0);
+	MR_init_label10(recompilation__usage__find_all_used_imported_items_2_3_0,2,5,6,7,8,9,10,11,12,13)
+MR_BEGIN_CODE
+
+/*-------------------------------------------------------------------------*/
+/* code for 'find_all_used_imported_items_2'/3 mode 0 */
+#ifdef MR_maybe_local_thread_engine_base
+	#undef MR_maybe_local_thread_engine_base
+	#define MR_maybe_local_thread_engine_base MR_local_thread_engine_base
+#endif
+MR_def_static(recompilation__usage__find_all_used_imported_items_2_3_0)
+	MR_MAYBE_INIT_LOCAL_THREAD_ENGINE_BASE
+	MR_incr_sp(3);
+	MR_sv(3) = (MR_Word) MR_succip;
+	MR_sv(1) = MR_r1;
+	MR_sv(2) = MR_r2;
+	MR_r1 = MR_tfield(0, MR_r2, 0);
+	MR_np_call_localret_ent(hlds__hlds_module__module_info_get_instance_table_2_0,
+		recompilation__usage__find_all_used_imported_items_2_3_0_i2);
+MR_def_label(recompilation__usage__find_all_used_imported_items_2_3_0,2)
+	MR_MAYBE_INIT_LOCAL_THREAD_ENGINE_BASE
+	{
+	MR_Word MR_tempr1;
+	MR_tempr1 = MR_r1;
+	MR_r1 = (MR_Word) MR_CTOR0_ADDR(parse_tree__prog_data, class_id);
+	MR_r2 = (MR_Word) MR_TAG_COMMON(0,1,9);
+	MR_r3 = (MR_Word) MR_CTOR0_ADDR(recompilation__usage, recompilation_usage_info);
+	MR_r4 = (MR_Word) MR_TAG_COMMON(0,3,17);
+	MR_r5 = MR_tempr1;
+	MR_r6 = MR_sv(2);
+	}
+	MR_np_call_localret_ent(map__foldl_4_0,
+		recompilation__usage__find_all_used_imported_items_2_3_0_i5);
+MR_def_label(recompilation__usage__find_all_used_imported_items_2_3_0,5)
+	MR_MAYBE_INIT_LOCAL_THREAD_ENGINE_BASE
+	{
+	MR_Word MR_tempr1;
+	MR_tempr1 = MR_r1;
+	MR_r1 = (MR_Integer) 0;
+	MR_r2 = MR_tfield(0, MR_sv(1), 6);
+	MR_r3 = MR_tempr1;
+	}
+	MR_np_call_localret_ent(recompilation__usage__find_items_used_by_preds_4_0,
+		recompilation__usage__find_all_used_imported_items_2_3_0_i6);
+MR_def_label(recompilation__usage__find_all_used_imported_items_2_3_0,6)
+	MR_MAYBE_INIT_LOCAL_THREAD_ENGINE_BASE
+	{
+	MR_Word MR_tempr1;
+	MR_tempr1 = MR_r1;
+	MR_r1 = (MR_Integer) 1;
+	MR_r2 = MR_tfield(0, MR_sv(1), 7);
+	MR_r3 = MR_tempr1;
+	}
+	MR_np_call_localret_ent(recompilation__usage__find_items_used_by_preds_4_0,
+		recompilation__usage__find_all_used_imported_items_2_3_0_i7);
+MR_def_label(recompilation__usage__find_all_used_imported_items_2_3_0,7)
+	MR_MAYBE_INIT_LOCAL_THREAD_ENGINE_BASE
+	{
+	MR_Word MR_tempr1;
+	MR_tempr1 = MR_r1;
+	MR_r1 = MR_tfield(0, MR_sv(1), 5);
+	MR_r2 = MR_tempr1;
+	}
+	MR_np_call_localret_ent(recompilation__usage__find_items_used_by_functors_3_0,
+		recompilation__usage__find_all_used_imported_items_2_3_0_i8);
+MR_def_label(recompilation__usage__find_all_used_imported_items_2_3_0,8)
+	MR_MAYBE_INIT_LOCAL_THREAD_ENGINE_BASE
+	{
+	MR_Word MR_tempr1;
+	MR_tempr1 = MR_r1;
+	MR_r1 = (MR_Integer) 0;
+	MR_r2 = MR_tfield(0, MR_sv(1), 0);
+	MR_r3 = MR_tempr1;
+	}
+	MR_np_call_localret_ent(recompilation__usage__find_items_used_by_simple_item_set_4_0,
+		recompilation__usage__find_all_used_imported_items_2_3_0_i9);
+MR_def_label(recompilation__usage__find_all_used_imported_items_2_3_0,9)
+	MR_MAYBE_INIT_LOCAL_THREAD_ENGINE_BASE
+	{
+	MR_Word MR_tempr1;
+	MR_tempr1 = MR_r1;
+	MR_r1 = (MR_Integer) 1;
+	MR_r2 = MR_tfield(0, MR_sv(1), 1);
+	MR_r3 = MR_tempr1;
+	}
+	MR_np_call_localret_ent(recompilation__usage__find_items_used_by_simple_item_set_4_0,
+		recompilation__usage__find_all_used_imported_items_2_3_0_i10);
+MR_def_label(recompilation__usage__find_all_used_imported_items_2_3_0,10)
+	MR_MAYBE_INIT_LOCAL_THREAD_ENGINE_BASE
+	{
+	MR_Word MR_tempr1;
+	MR_tempr1 = MR_r1;
+	MR_r1 = (MR_Integer) 2;
+	MR_r2 = MR_tfield(0, MR_sv(1), 2);
+	MR_r3 = MR_tempr1;
+	}
+	MR_np_call_localret_ent(recompilation__usage__find_items_used_by_simple_item_set_4_0,
+		recompilation__usage__find_all_used_imported_items_2_3_0_i11);
+MR_def_label(recompilation__usage__find_all_used_imported_items_2_3_0,11)
+	MR_MAYBE_INIT_LOCAL_THREAD_ENGINE_BASE
+	{
+	MR_Word MR_tempr1;
+	MR_tempr1 = MR_r1;
+	MR_r1 = (MR_Integer) 4;
+	MR_r2 = MR_tfield(0, MR_sv(1), 4);
+	MR_r3 = MR_tempr1;
+	}
+	MR_np_call_localret_ent(recompilation__usage__find_items_used_by_simple_item_set_4_0,
+		recompilation__usage__find_all_used_imported_items_2_3_0_i12);
+MR_def_label(recompilation__usage__find_all_used_imported_items_2_3_0,12)
+	MR_MAYBE_INIT_LOCAL_THREAD_ENGINE_BASE
+	{
+	MR_Word MR_tempr1;
+	MR_tempr1 = MR_r1;
+	MR_r1 = (MR_Integer) 3;
+	MR_r2 = MR_tfield(0, MR_sv(1), 3);
+	MR_r3 = MR_tempr1;
+	}
+	MR_np_call_localret_ent(recompilation__usage__find_items_used_by_simple_item_set_4_0,
+		recompilation__usage__find_all_used_imported_items_2_3_0_i13);
+MR_def_label(recompilation__usage__find_all_used_imported_items_2_3_0,13)
+	MR_MAYBE_INIT_LOCAL_THREAD_ENGINE_BASE
+	MR_succip_word = MR_sv(3);
+	MR_decr_sp(3);
+	MR_np_tailcall_ent(recompilation__usage__process_imported_item_queue_2_0);
+#ifdef MR_maybe_local_thread_engine_base
+	#undef MR_maybe_local_thread_engine_base
+	#define MR_maybe_local_thread_engine_base MR_thread_engine_base
+#endif
+MR_END_MODULE
+
+MR_decl_entry(map__init_1_0);
+MR_decl_entry(solutions__unsorted_aggregate_4_7);
+MR_decl_entry(queue__init_1_0);
+MR_decl_entry(set__init_1_0);
+
+MR_BEGIN_MODULE(recompilation__usage_module28)
+	MR_init_entry1(recompilation__usage__find_all_used_imported_items_7_0);
+	MR_INIT_PROC_LAYOUT_ADDR(mercury__recompilation__usage__find_all_used_imported_items_7_0);
+	MR_init_label10(recompilation__usage__find_all_used_imported_items_7_0,5,9,10,12,13,18,24,25,26,27)
+	MR_init_label1(recompilation__usage__find_all_used_imported_items_7_0,30)
+MR_BEGIN_CODE
+
+/*-------------------------------------------------------------------------*/
+/* code for 'find_all_used_imported_items'/7 mode 0 */
+#ifdef MR_maybe_local_thread_engine_base
+	#undef MR_maybe_local_thread_engine_base
+	#define MR_maybe_local_thread_engine_base MR_local_thread_engine_base
+#endif
+MR_def_static(recompilation__usage__find_all_used_imported_items_7_0)
+	MR_MAYBE_INIT_LOCAL_THREAD_ENGINE_BASE
+	MR_incr_sp(18);
+	MR_sv(18) = (MR_Word) MR_succip;
+	MR_sv(1) = MR_r1;
+	MR_sv(2) = MR_r2;
+	MR_sv(3) = MR_r3;
+	MR_sv(16) = (MR_Word) MR_STRING_CTOR_ADDR;
+	MR_sv(13) = (MR_Word) MR_INT_CTOR_ADDR;
+	MR_sv(14) = (MR_Word) MR_CTOR_ADDR(pair, pair, 2);
+	MR_sv(4) = (MR_Word) MR_TAG_COMMON(0,9,0);
+	MR_r1 = (MR_Word) MR_CTOR0_ADDR(mdbcomp__prim_data, sym_name);
+	MR_r2 = MR_sv(4);
+	MR_np_call_localret_ent(map__init_1_0,
+		recompilation__usage__find_all_used_imported_items_7_0_i5);
+MR_def_label(recompilation__usage__find_all_used_imported_items_7_0,5)
+	MR_MAYBE_INIT_LOCAL_THREAD_ENGINE_BASE
+	{
+	MR_Word MR_tempr1, MR_tempr2;
+	MR_tag_alloc_heap(MR_tempr1, 0, (MR_Integer) 4);
+	MR_r3 = MR_tempr1;
+	MR_tfield(0, MR_tempr1, 0) = (MR_Word) MR_COMMON(11,0);
+	MR_tfield(0, MR_tempr1, 1) = (MR_Word) MR_ENTRY_AP(recompilation__usage__visible_modules_2_0);
+	MR_tfield(0, MR_tempr1, 2) = (MR_Integer) 1;
+	MR_tfield(0, MR_tempr1, 3) = MR_sv(1);
+	MR_sv(15) = (MR_Word) MR_CTOR_ADDR(tree234, tree234, 2);
+	MR_tempr2 = MR_r1;
+	MR_r1 = (MR_Word) MR_CTOR0_ADDR(mdbcomp__prim_data, sym_name);
+	MR_r2 = (MR_Word) MR_TAG_COMMON(0,0,21);
+	MR_r4 = (MR_Word) MR_TAG_COMMON(0,3,18);
+	MR_r5 = MR_tempr2;
+	}
+	MR_np_call_localret_ent(solutions__unsorted_aggregate_4_7,
+		recompilation__usage__find_all_used_imported_items_7_0_i9);
+MR_def_label(recompilation__usage__find_all_used_imported_items_7_0,9)
+	MR_MAYBE_INIT_LOCAL_THREAD_ENGINE_BASE
+	MR_sv(4) = MR_r1;
+	MR_r1 = (MR_Word) MR_CTOR0_ADDR(recompilation, item_id);
+	MR_np_call_localret_ent(queue__init_1_0,
+		recompilation__usage__find_all_used_imported_items_7_0_i10);
+MR_def_label(recompilation__usage__find_all_used_imported_items_7_0,10)
+	MR_MAYBE_INIT_LOCAL_THREAD_ENGINE_BASE
+	MR_sv(5) = MR_r1;
+	MR_sv(6) = (MR_Word) MR_CTOR0_ADDR(recompilation, item_name);
+	MR_r1 = (MR_Word) MR_CTOR0_ADDR(mdbcomp__prim_data, sym_name);
+	MR_r2 = (MR_Word) MR_TAG_COMMON(0,1,12);
+	MR_np_call_localret_ent(map__init_1_0,
+		recompilation__usage__find_all_used_imported_items_7_0_i12);
+MR_def_label(recompilation__usage__find_all_used_imported_items_7_0,12)
+	MR_MAYBE_INIT_LOCAL_THREAD_ENGINE_BASE
+	MR_sv(6) = MR_r1;
+	MR_r1 = (MR_Word) MR_CTOR0_ADDR(recompilation, item_name);
+	MR_np_call_localret_ent(set__init_1_0,
+		recompilation__usage__find_all_used_imported_items_7_0_i13);
+MR_def_label(recompilation__usage__find_all_used_imported_items_7_0,13)
+	MR_MAYBE_INIT_LOCAL_THREAD_ENGINE_BASE
+	MR_sv(7) = MR_r1;
+	{
+	MR_Word MR_tempr1;
+	MR_tempr1 = MR_sv(2);
+	MR_sv(8) = MR_tfield(0, MR_tempr1, 0);
+	MR_sv(9) = MR_tfield(0, MR_tempr1, 1);
+	MR_sv(10) = MR_tfield(0, MR_tempr1, 2);
+	MR_sv(11) = MR_tfield(0, MR_tempr1, 3);
+	MR_sv(12) = MR_tfield(0, MR_tempr1, 4);
+	MR_r1 = MR_sv(16);
+	MR_r2 = (MR_Word) MR_TAG_COMMON(0,1,3);
+	}
+	MR_np_call_localret_ent(map__init_1_0,
+		recompilation__usage__find_all_used_imported_items_7_0_i18);
+MR_def_label(recompilation__usage__find_all_used_imported_items_7_0,18)
+	MR_MAYBE_INIT_LOCAL_THREAD_ENGINE_BASE
+	MR_sv(13) = MR_r1;
+	MR_sv(17) = (MR_Word) MR_TAG_COMMON(0,1,1);
+	MR_r1 = MR_sv(16);
+	MR_r2 = MR_sv(17);
+	MR_np_call_localret_ent(map__init_1_0,
+		recompilation__usage__find_all_used_imported_items_7_0_i24);
+MR_def_label(recompilation__usage__find_all_used_imported_items_7_0,24)
+	MR_MAYBE_INIT_LOCAL_THREAD_ENGINE_BASE
+	MR_sv(14) = MR_r1;
+	MR_r1 = MR_sv(16);
+	MR_r2 = MR_sv(17);
+	MR_np_call_localret_ent(map__init_1_0,
+		recompilation__usage__find_all_used_imported_items_7_0_i25);
+MR_def_label(recompilation__usage__find_all_used_imported_items_7_0,25)
+	MR_MAYBE_INIT_LOCAL_THREAD_ENGINE_BASE
+	MR_sv(15) = MR_r1;
+	MR_r1 = MR_sv(16);
+	MR_r2 = MR_sv(17);
+	MR_np_call_localret_ent(map__init_1_0,
+		recompilation__usage__find_all_used_imported_items_7_0_i26);
+MR_def_label(recompilation__usage__find_all_used_imported_items_7_0,26)
+	MR_MAYBE_INIT_LOCAL_THREAD_ENGINE_BASE
+	MR_sv(16) = MR_r1;
+	MR_r1 = (MR_Word) MR_STRING_CTOR_ADDR;
+	MR_r2 = MR_sv(17);
+	MR_np_call_localret_ent(map__init_1_0,
+		recompilation__usage__find_all_used_imported_items_7_0_i27);
+MR_def_label(recompilation__usage__find_all_used_imported_items_7_0,27)
+	MR_MAYBE_INIT_LOCAL_THREAD_ENGINE_BASE
+	{
+	MR_Word MR_tempr1;
+	MR_tag_alloc_heap(MR_tempr1, 0, (MR_Integer) 10);
+	MR_tfield(0, MR_tempr1, 0) = MR_sv(8);
+	MR_tfield(0, MR_tempr1, 1) = MR_sv(9);
+	MR_tfield(0, MR_tempr1, 2) = MR_sv(10);
+	MR_tfield(0, MR_tempr1, 3) = MR_sv(11);
+	MR_tfield(0, MR_tempr1, 4) = MR_sv(12);
+	MR_tfield(0, MR_tempr1, 5) = MR_sv(13);
+	MR_tfield(0, MR_tempr1, 6) = MR_sv(14);
+	MR_tfield(0, MR_tempr1, 7) = MR_sv(15);
+	MR_tfield(0, MR_tempr1, 8) = MR_sv(16);
+	MR_tfield(0, MR_tempr1, 9) = MR_r1;
+	MR_tag_alloc_heap(MR_r2, 0, (MR_Integer) 7);
+	MR_tfield(0, MR_r2, 0) = MR_sv(1);
+	MR_tfield(0, MR_r2, 1) = MR_sv(5);
+	MR_tfield(0, MR_r2, 2) = MR_sv(4);
+	MR_tfield(0, MR_r2, 3) = MR_sv(6);
+	MR_tfield(0, MR_r2, 4) = MR_sv(3);
+	MR_tfield(0, MR_r2, 5) = MR_tempr1;
+	MR_tfield(0, MR_r2, 6) = MR_sv(7);
+	MR_r1 = MR_sv(2);
+	}
+	MR_np_call_localret_ent(recompilation__usage__find_all_used_imported_items_2_3_0,
+		recompilation__usage__find_all_used_imported_items_7_0_i30);
+MR_def_label(recompilation__usage__find_all_used_imported_items_7_0,30)
+	MR_MAYBE_INIT_LOCAL_THREAD_ENGINE_BASE
+	{
+	MR_Word MR_tempr1;
+	MR_tempr1 = MR_r1;
+	MR_r1 = MR_tfield(0, MR_r1, 5);
+	MR_r2 = MR_tfield(0, MR_tempr1, 6);
+	MR_r3 = MR_tfield(0, MR_tempr1, 2);
+	MR_r4 = MR_tfield(0, MR_tempr1, 3);
+	MR_decr_sp_and_return(18);
+	}
+#ifdef MR_maybe_local_thread_engine_base
+	#undef MR_maybe_local_thread_engine_base
+	#define MR_maybe_local_thread_engine_base MR_thread_engine_base
+#endif
+MR_END_MODULE
+
+MR_decl_entry(io__write_int_3_0);
+MR_decl_entry(fn__recompilation__version__version_numbers_version_number_0_0);
+extern const MR_TypeCtorInfo_Struct mercury_data_parse_tree__module_imports__type_ctor_info_module_timestamp_0;
+MR_decl_entry(recompilation__write_version_number_3_0);
+MR_decl_entry(fn__recompilation__init_used_items_0_0);
+MR_decl_entry(__Unify___recompilation__item_id_set_3_0);
+MR_decl_entry(set__empty_1_0);
+extern const MR_TypeCtorInfo_Struct mercury_data_io__type_ctor_info_state_0;
+MR_decl_entry(map__foldl_4_2);
+MR_decl_entry(io__nl_2_0);
+
+MR_BEGIN_MODULE(recompilation__usage_module29)
+	MR_init_entry1(recompilation__usage__write_usage_file_2_6_0);
+	MR_INIT_PROC_LAYOUT_ADDR(mercury__recompilation__usage__write_usage_file_2_6_0);
+	MR_init_label10(recompilation__usage__write_usage_file_2_6_0,2,3,4,5,6,7,8,9,10,11)
+	MR_init_label10(recompilation__usage__write_usage_file_2_6_0,12,13,14,16,18,20,21,22,24,28)
+	MR_init_label10(recompilation__usage__write_usage_file_2_6_0,23,31,32,33,34,35,36,37,38,39)
+	MR_init_label10(recompilation__usage__write_usage_file_2_6_0,40,43,45,42,50,51,53,54,60,61)
+MR_BEGIN_CODE
+
+/*-------------------------------------------------------------------------*/
+/* code for 'write_usage_file_2'/6 mode 0 */
+#ifdef MR_maybe_local_thread_engine_base
+	#undef MR_maybe_local_thread_engine_base
+	#define MR_maybe_local_thread_engine_base MR_local_thread_engine_base
+#endif
+MR_def_static(recompilation__usage__write_usage_file_2_6_0)
+	MR_MAYBE_INIT_LOCAL_THREAD_ENGINE_BASE
+	MR_incr_sp(9);
+	MR_sv(9) = (MR_Word) MR_succip;
+	MR_sv(1) = MR_r1;
+	MR_sv(2) = MR_r2;
+	MR_sv(3) = MR_r3;
+	MR_sv(4) = MR_r4;
+	MR_np_call_localret_ent(fn__recompilation__usage__usage_file_version_number_0_0,
+		recompilation__usage__write_usage_file_2_6_0_i2);
+MR_def_label(recompilation__usage__write_usage_file_2_6_0,2)
+	MR_MAYBE_INIT_LOCAL_THREAD_ENGINE_BASE
+	MR_np_call_localret_ent(io__write_int_3_0,
+		recompilation__usage__write_usage_file_2_6_0_i3);
+MR_def_label(recompilation__usage__write_usage_file_2_6_0,3)
+	MR_MAYBE_INIT_LOCAL_THREAD_ENGINE_BASE
+	MR_r1 = (MR_Word) MR_string_const(",", 1);
+	MR_np_call_localret_ent(io__write_string_3_0,
+		recompilation__usage__write_usage_file_2_6_0_i4);
+MR_def_label(recompilation__usage__write_usage_file_2_6_0,4)
+	MR_MAYBE_INIT_LOCAL_THREAD_ENGINE_BASE
+	MR_np_call_localret_ent(fn__recompilation__version__version_numbers_version_number_0_0,
+		recompilation__usage__write_usage_file_2_6_0_i5);
+MR_def_label(recompilation__usage__write_usage_file_2_6_0,5)
+	MR_MAYBE_INIT_LOCAL_THREAD_ENGINE_BASE
+	MR_np_call_localret_ent(io__write_int_3_0,
+		recompilation__usage__write_usage_file_2_6_0_i6);
+MR_def_label(recompilation__usage__write_usage_file_2_6_0,6)
+	MR_MAYBE_INIT_LOCAL_THREAD_ENGINE_BASE
+	MR_r1 = (MR_Word) MR_string_const(".\n\n", 3);
+	MR_np_call_localret_ent(io__write_string_3_0,
+		recompilation__usage__write_usage_file_2_6_0_i7);
+MR_def_label(recompilation__usage__write_usage_file_2_6_0,7)
+	MR_MAYBE_INIT_LOCAL_THREAD_ENGINE_BASE
+	MR_r1 = MR_sv(1);
+	MR_np_call_localret_ent(hlds__hlds_module__module_info_get_name_2_0,
+		recompilation__usage__write_usage_file_2_6_0_i8);
+MR_def_label(recompilation__usage__write_usage_file_2_6_0,8)
+	MR_MAYBE_INIT_LOCAL_THREAD_ENGINE_BASE
+	MR_sv(5) = MR_r1;
+	MR_sv(8) = (MR_Word) MR_CTOR0_ADDR(mdbcomp__prim_data, sym_name);
+	MR_r1 = MR_sv(8);
+	MR_r2 = (MR_Word) MR_CTOR0_ADDR(parse_tree__module_imports, module_timestamp);
+	MR_r3 = MR_sv(4);
+	MR_r4 = MR_sv(5);
+	MR_np_call_localret_ent(map__lookup_3_0,
+		recompilation__usage__write_usage_file_2_6_0_i9);
+MR_def_label(recompilation__usage__write_usage_file_2_6_0,9)
+	MR_MAYBE_INIT_LOCAL_THREAD_ENGINE_BASE
+	MR_sv(6) = MR_tfield(0, MR_r1, 1);
+	MR_r1 = (MR_Word) MR_string_const("(", 1);
+	MR_np_call_localret_ent(io__write_string_3_0,
+		recompilation__usage__write_usage_file_2_6_0_i10);
+MR_def_label(recompilation__usage__write_usage_file_2_6_0,10)
+	MR_MAYBE_INIT_LOCAL_THREAD_ENGINE_BASE
+	MR_r1 = MR_sv(5);
+	MR_np_call_localret_ent(parse_tree__mercury_to_mercury__mercury_output_bracketed_sym_name_3_0,
+		recompilation__usage__write_usage_file_2_6_0_i11);
+MR_def_label(recompilation__usage__write_usage_file_2_6_0,11)
+	MR_MAYBE_INIT_LOCAL_THREAD_ENGINE_BASE
+	MR_r1 = (MR_Word) MR_string_const(", \".m\", ", 8);
+	MR_np_call_localret_ent(io__write_string_3_0,
+		recompilation__usage__write_usage_file_2_6_0_i12);
+MR_def_label(recompilation__usage__write_usage_file_2_6_0,12)
+	MR_MAYBE_INIT_LOCAL_THREAD_ENGINE_BASE
+	MR_r1 = MR_sv(6);
+	MR_np_call_localret_ent(recompilation__write_version_number_3_0,
+		recompilation__usage__write_usage_file_2_6_0_i13);
+MR_def_label(recompilation__usage__write_usage_file_2_6_0,13)
+	MR_MAYBE_INIT_LOCAL_THREAD_ENGINE_BASE
+	MR_r1 = (MR_Word) MR_string_const(").\n\n", 4);
+	MR_np_call_localret_ent(io__write_string_3_0,
+		recompilation__usage__write_usage_file_2_6_0_i14);
+MR_def_label(recompilation__usage__write_usage_file_2_6_0,14)
+	MR_MAYBE_INIT_LOCAL_THREAD_ENGINE_BASE
+	if (MR_LTAGS_TESTR(MR_sv(2),0,0)) {
+		MR_GOTO_LAB(recompilation__usage__write_usage_file_2_6_0_i16);
+	}
+	MR_r1 = (MR_Word) MR_string_const("sub_modules.\n\n", 14);
+	MR_np_call_localret_ent(io__write_string_3_0,
+		recompilation__usage__write_usage_file_2_6_0_i21);
+MR_def_label(recompilation__usage__write_usage_file_2_6_0,16)
+	MR_MAYBE_INIT_LOCAL_THREAD_ENGINE_BASE
+	MR_r1 = (MR_Word) MR_string_const("sub_modules(", 12);
+	MR_np_call_localret_ent(io__write_string_3_0,
+		recompilation__usage__write_usage_file_2_6_0_i18);
+MR_def_label(recompilation__usage__write_usage_file_2_6_0,18)
+	MR_MAYBE_INIT_LOCAL_THREAD_ENGINE_BASE
+	MR_r1 = MR_sv(8);
+	MR_r2 = MR_sv(2);
+	MR_r3 = (MR_Word) MR_string_const(", ", 2);
+	MR_r4 = (MR_Word) MR_TAG_COMMON(0,3,19);
+	MR_np_call_localret_ent(io__write_list_5_0,
+		recompilation__usage__write_usage_file_2_6_0_i20);
+MR_def_label(recompilation__usage__write_usage_file_2_6_0,20)
+	MR_MAYBE_INIT_LOCAL_THREAD_ENGINE_BASE
+	MR_r1 = (MR_Word) MR_string_const(").\n\n", 4);
+	MR_np_call_localret_ent(io__write_string_3_0,
+		recompilation__usage__write_usage_file_2_6_0_i21);
+MR_def_label(recompilation__usage__write_usage_file_2_6_0,21)
+	MR_MAYBE_INIT_LOCAL_THREAD_ENGINE_BASE
+	MR_r1 = MR_sv(1);
+	{
+	MR_Word MR_tempr1;
+	MR_tempr1 = MR_sv(3);
+	MR_r2 = MR_tfield(0, MR_tempr1, 1);
+	MR_r3 = MR_tfield(0, MR_tempr1, 2);
+	MR_sv(1) = MR_r2;
+	}
+	MR_np_call_localret_ent(recompilation__usage__find_all_used_imported_items_7_0,
+		recompilation__usage__write_usage_file_2_6_0_i22);
+MR_def_label(recompilation__usage__write_usage_file_2_6_0,22)
+	MR_MAYBE_INIT_LOCAL_THREAD_ENGINE_BASE
+	MR_sv(2) = MR_r1;
+	MR_sv(5) = MR_r2;
+	MR_sv(6) = MR_r3;
+	MR_sv(7) = MR_r4;
+	MR_np_call_localret_ent(fn__recompilation__init_used_items_0_0,
+		recompilation__usage__write_usage_file_2_6_0_i24);
+MR_def_label(recompilation__usage__write_usage_file_2_6_0,24)
+	MR_MAYBE_INIT_LOCAL_THREAD_ENGINE_BASE
+	{
+	MR_Word MR_tempr1;
+	MR_tempr1 = MR_r1;
+	MR_r1 = (MR_Word) MR_TAG_COMMON(0,0,2);
+	MR_r2 = MR_r1;
+	MR_r3 = MR_r1;
+	MR_r4 = MR_sv(1);
+	MR_r5 = MR_tempr1;
+	}
+	MR_np_call_localret_ent(__Unify___recompilation__item_id_set_3_0,
+		recompilation__usage__write_usage_file_2_6_0_i28);
+MR_def_label(recompilation__usage__write_usage_file_2_6_0,28)
+	MR_MAYBE_INIT_LOCAL_THREAD_ENGINE_BASE
+	if (!(MR_r1)) {
+		MR_GOTO_LAB(recompilation__usage__write_usage_file_2_6_0_i23);
+	}
+	MR_r1 = (MR_Word) MR_string_const("used_items.\n", 12);
+	MR_np_call_localret_ent(io__write_string_3_0,
+		recompilation__usage__write_usage_file_2_6_0_i40);
+MR_def_label(recompilation__usage__write_usage_file_2_6_0,23)
+	MR_MAYBE_INIT_LOCAL_THREAD_ENGINE_BASE
+	MR_r1 = (MR_Word) MR_string_const("used_items(\n\t", 13);
+	MR_np_call_localret_ent(io__write_string_3_0,
+		recompilation__usage__write_usage_file_2_6_0_i31);
+MR_def_label(recompilation__usage__write_usage_file_2_6_0,31)
+	MR_MAYBE_INIT_LOCAL_THREAD_ENGINE_BASE
+	MR_r1 = (MR_Integer) 0;
+	MR_r2 = MR_sv(2);
+	MR_r3 = (MR_Integer) 0;
+	MR_np_call_localret_ent(recompilation__usage__write_simple_item_matches_6_0,
+		recompilation__usage__write_usage_file_2_6_0_i32);
+MR_def_label(recompilation__usage__write_usage_file_2_6_0,32)
+	MR_MAYBE_INIT_LOCAL_THREAD_ENGINE_BASE
+	{
+	MR_Word MR_tempr1;
+	MR_tempr1 = MR_r1;
+	MR_r1 = (MR_Integer) 1;
+	MR_r2 = MR_sv(2);
+	MR_r3 = MR_tempr1;
+	}
+	MR_np_call_localret_ent(recompilation__usage__write_simple_item_matches_6_0,
+		recompilation__usage__write_usage_file_2_6_0_i33);
+MR_def_label(recompilation__usage__write_usage_file_2_6_0,33)
+	MR_MAYBE_INIT_LOCAL_THREAD_ENGINE_BASE
+	{
+	MR_Word MR_tempr1;
+	MR_tempr1 = MR_r1;
+	MR_r1 = (MR_Integer) 2;
+	MR_r2 = MR_sv(2);
+	MR_r3 = MR_tempr1;
+	}
+	MR_np_call_localret_ent(recompilation__usage__write_simple_item_matches_6_0,
+		recompilation__usage__write_usage_file_2_6_0_i34);
+MR_def_label(recompilation__usage__write_usage_file_2_6_0,34)
+	MR_MAYBE_INIT_LOCAL_THREAD_ENGINE_BASE
+	{
+	MR_Word MR_tempr1;
+	MR_tempr1 = MR_r1;
+	MR_r1 = (MR_Integer) 3;
+	MR_r2 = MR_sv(2);
+	MR_r3 = MR_tempr1;
+	}
+	MR_np_call_localret_ent(recompilation__usage__write_simple_item_matches_6_0,
+		recompilation__usage__write_usage_file_2_6_0_i35);
+MR_def_label(recompilation__usage__write_usage_file_2_6_0,35)
+	MR_MAYBE_INIT_LOCAL_THREAD_ENGINE_BASE
+	{
+	MR_Word MR_tempr1;
+	MR_tempr1 = MR_r1;
+	MR_r1 = (MR_Integer) 4;
+	MR_r2 = MR_sv(2);
+	MR_r3 = MR_tempr1;
+	}
+	MR_np_call_localret_ent(recompilation__usage__write_simple_item_matches_6_0,
+		recompilation__usage__write_usage_file_2_6_0_i36);
+MR_def_label(recompilation__usage__write_usage_file_2_6_0,36)
+	MR_MAYBE_INIT_LOCAL_THREAD_ENGINE_BASE
+	{
+	MR_Word MR_tempr1;
+	MR_tempr1 = MR_r1;
+	MR_r1 = (MR_Integer) 6;
+	MR_r2 = MR_sv(2);
+	MR_r3 = MR_tempr1;
+	}
+	MR_np_call_localret_ent(recompilation__usage__write_pred_or_func_matches_6_0,
+		recompilation__usage__write_usage_file_2_6_0_i37);
+MR_def_label(recompilation__usage__write_usage_file_2_6_0,37)
+	MR_MAYBE_INIT_LOCAL_THREAD_ENGINE_BASE
+	{
+	MR_Word MR_tempr1;
+	MR_tempr1 = MR_r1;
+	MR_r1 = (MR_Integer) 7;
+	MR_r2 = MR_sv(2);
+	MR_r3 = MR_tempr1;
+	}
+	MR_np_call_localret_ent(recompilation__usage__write_pred_or_func_matches_6_0,
+		recompilation__usage__write_usage_file_2_6_0_i38);
+MR_def_label(recompilation__usage__write_usage_file_2_6_0,38)
+	MR_MAYBE_INIT_LOCAL_THREAD_ENGINE_BASE
+	{
+	MR_Word MR_tempr1;
+	MR_tempr1 = MR_r1;
+	MR_r1 = MR_tfield(0, MR_sv(2), 5);
+	MR_r2 = MR_tempr1;
+	}
+	MR_np_call_localret_ent(recompilation__usage__write_functor_matches_5_0,
+		recompilation__usage__write_usage_file_2_6_0_i39);
+MR_def_label(recompilation__usage__write_usage_file_2_6_0,39)
+	MR_MAYBE_INIT_LOCAL_THREAD_ENGINE_BASE
+	MR_r1 = (MR_Word) MR_string_const("\n).\n\n", 5);
+	MR_np_call_localret_ent(io__write_string_3_0,
+		recompilation__usage__write_usage_file_2_6_0_i40);
+MR_def_label(recompilation__usage__write_usage_file_2_6_0,40)
+	MR_MAYBE_INIT_LOCAL_THREAD_ENGINE_BASE
+	MR_r2 = MR_sv(5);
+	MR_r1 = (MR_Word) MR_CTOR0_ADDR(recompilation, item_name);
+	MR_np_call_localret_ent(set__empty_1_0,
+		recompilation__usage__write_usage_file_2_6_0_i43);
+MR_def_label(recompilation__usage__write_usage_file_2_6_0,43)
+	MR_MAYBE_INIT_LOCAL_THREAD_ENGINE_BASE
+	if (!(MR_r1)) {
+		MR_GOTO_LAB(recompilation__usage__write_usage_file_2_6_0_i42);
+	}
+	MR_r1 = (MR_Word) MR_string_const("used_classes.\n", 14);
+	MR_np_call_localret_ent(io__write_string_3_0,
+		recompilation__usage__write_usage_file_2_6_0_i45);
+MR_def_label(recompilation__usage__write_usage_file_2_6_0,45)
+	MR_MAYBE_INIT_LOCAL_THREAD_ENGINE_BASE
+	{
+	MR_Word MR_tempr1;
+	MR_tag_alloc_heap(MR_tempr1, 0, (MR_Integer) 6);
+	MR_r4 = MR_tempr1;
+	MR_tfield(0, MR_tempr1, 0) = (MR_Word) MR_COMMON(12,0);
+	MR_tfield(0, MR_tempr1, 1) = (MR_Word) MR_ENTRY_AP(recompilation__usage__write_module_name_and_used_items_7_0);
+	MR_tfield(0, MR_tempr1, 2) = (MR_Integer) 3;
+	MR_tfield(0, MR_tempr1, 3) = MR_sv(3);
+	MR_tfield(0, MR_tempr1, 4) = MR_sv(4);
+	MR_tfield(0, MR_tempr1, 5) = MR_sv(7);
+	MR_r5 = MR_sv(6);
+	MR_r1 = MR_sv(8);
+	MR_r2 = (MR_Word) MR_TAG_COMMON(0,9,0);
+	MR_r3 = (MR_Word) MR_IO_CTOR_ADDR;
+	}
+	MR_np_call_localret_ent(map__foldl_4_2,
+		recompilation__usage__write_usage_file_2_6_0_i60);
+MR_def_label(recompilation__usage__write_usage_file_2_6_0,42)
+	MR_MAYBE_INIT_LOCAL_THREAD_ENGINE_BASE
+	MR_r1 = (MR_Word) MR_string_const("used_classes(", 13);
+	MR_np_call_localret_ent(io__write_string_3_0,
+		recompilation__usage__write_usage_file_2_6_0_i50);
+MR_def_label(recompilation__usage__write_usage_file_2_6_0,50)
+	MR_MAYBE_INIT_LOCAL_THREAD_ENGINE_BASE
+	MR_sv(1) = (MR_Word) MR_CTOR0_ADDR(recompilation, item_name);
+	MR_r1 = MR_sv(1);
+	MR_r2 = MR_sv(5);
+	MR_np_call_localret_ent(fn__set__to_sorted_list_1_0,
+		recompilation__usage__write_usage_file_2_6_0_i51);
+MR_def_label(recompilation__usage__write_usage_file_2_6_0,51)
+	MR_MAYBE_INIT_LOCAL_THREAD_ENGINE_BASE
+	{
+	MR_Word MR_tempr1;
+	MR_tempr1 = MR_r1;
+	MR_r1 = MR_sv(1);
+	MR_r2 = MR_tempr1;
+	MR_r3 = (MR_Word) MR_string_const(", ", 2);
+	MR_r4 = (MR_Word) MR_TAG_COMMON(0,3,20);
+	}
+	MR_np_call_localret_ent(io__write_list_5_0,
+		recompilation__usage__write_usage_file_2_6_0_i53);
+MR_def_label(recompilation__usage__write_usage_file_2_6_0,53)
+	MR_MAYBE_INIT_LOCAL_THREAD_ENGINE_BASE
+	MR_r1 = (MR_Word) MR_string_const(").\n", 3);
+	MR_np_call_localret_ent(io__write_string_3_0,
+		recompilation__usage__write_usage_file_2_6_0_i54);
+MR_def_label(recompilation__usage__write_usage_file_2_6_0,54)
+	MR_MAYBE_INIT_LOCAL_THREAD_ENGINE_BASE
+	{
+	MR_Word MR_tempr1;
+	MR_tag_alloc_heap(MR_tempr1, 0, (MR_Integer) 6);
+	MR_r4 = MR_tempr1;
+	MR_tfield(0, MR_tempr1, 0) = (MR_Word) MR_COMMON(12,1);
+	MR_tfield(0, MR_tempr1, 1) = (MR_Word) MR_ENTRY_AP(recompilation__usage__write_module_name_and_used_items_7_0);
+	MR_tfield(0, MR_tempr1, 2) = (MR_Integer) 3;
+	MR_tfield(0, MR_tempr1, 3) = MR_sv(3);
+	MR_tfield(0, MR_tempr1, 4) = MR_sv(4);
+	MR_tfield(0, MR_tempr1, 5) = MR_sv(7);
+	MR_r5 = MR_sv(6);
+	MR_r1 = MR_sv(8);
+	MR_r2 = (MR_Word) MR_TAG_COMMON(0,9,0);
+	MR_r3 = (MR_Word) MR_IO_CTOR_ADDR;
+	}
+	MR_np_call_localret_ent(map__foldl_4_2,
+		recompilation__usage__write_usage_file_2_6_0_i60);
+MR_def_label(recompilation__usage__write_usage_file_2_6_0,60)
+	MR_MAYBE_INIT_LOCAL_THREAD_ENGINE_BASE
+	MR_np_call_localret_ent(io__nl_2_0,
+		recompilation__usage__write_usage_file_2_6_0_i61);
+MR_def_label(recompilation__usage__write_usage_file_2_6_0,61)
+	MR_MAYBE_INIT_LOCAL_THREAD_ENGINE_BASE
+	MR_r1 = (MR_Word) MR_string_const("done.\n", 6);
+	MR_succip_word = MR_sv(9);
+	MR_decr_sp(9);
+	MR_np_tailcall_ent(io__write_string_3_0);
+#ifdef MR_maybe_local_thread_engine_base
+	#undef MR_maybe_local_thread_engine_base
+	#define MR_maybe_local_thread_engine_base MR_thread_engine_base
+#endif
+MR_END_MODULE
+
+MR_decl_entry(hlds__hlds_module__module_info_get_maybe_recompilation_info_2_0);
+MR_decl_entry(hlds__hlds_module__module_info_get_globals_2_0);
+MR_decl_entry(libs__globals__lookup_bool_option_3_0);
+MR_decl_entry(libs__file_util__maybe_write_string_4_0);
+MR_decl_entry(parse_tree__file_names__module_name_to_file_name_7_0);
+MR_decl_entry(io__open_output_4_0);
+MR_decl_entry(io__error_message_2_0);
+MR_decl_entry(io__set_exit_status_3_0);
+MR_decl_entry(io__set_output_stream_4_0);
+MR_decl_entry(io__close_output_3_0);
+
+MR_BEGIN_MODULE(recompilation__usage_module30)
+	MR_init_entry1(recompilation__usage__write_usage_file_5_0);
+	MR_INIT_PROC_LAYOUT_ADDR(mercury__recompilation__usage__write_usage_file_5_0);
+	MR_init_label10(recompilation__usage__write_usage_file_5_0,2,6,7,8,9,10,11,14,15,16)
+	MR_init_label8(recompilation__usage__write_usage_file_5_0,17,18,19,13,21,22,23,25)
+MR_BEGIN_CODE
+
+/*-------------------------------------------------------------------------*/
+/* code for 'write_usage_file'/5 mode 0 */
+#ifdef MR_maybe_local_thread_engine_base
+	#undef MR_maybe_local_thread_engine_base
+	#define MR_maybe_local_thread_engine_base MR_local_thread_engine_base
+#endif
+MR_define_entry(mercury__recompilation__usage__write_usage_file_5_0);
+	MR_MAYBE_INIT_LOCAL_THREAD_ENGINE_BASE
+	MR_incr_sp(6);
+	MR_sv(6) = (MR_Word) MR_succip;
+	MR_sv(1) = MR_r1;
+	MR_sv(2) = MR_r2;
+	MR_sv(3) = MR_r3;
+	MR_np_call_localret_ent(hlds__hlds_module__module_info_get_maybe_recompilation_info_2_0,
+		recompilation__usage__write_usage_file_5_0_i2);
+MR_def_label(recompilation__usage__write_usage_file_5_0,2)
+	MR_MAYBE_INIT_LOCAL_THREAD_ENGINE_BASE
+	if (MR_LTAGS_TEST(MR_r1,0,0)) {
+		MR_GOTO_LAB(recompilation__usage__write_usage_file_5_0_i25);
+	}
+	if (MR_LTAGS_TEST(MR_sv(3),0,0)) {
+		MR_GOTO_LAB(recompilation__usage__write_usage_file_5_0_i25);
+	}
+	MR_r2 = MR_sv(3);
+	MR_sv(3) = MR_tfield(1, MR_r1, 0);
+	MR_sv(4) = MR_tfield(1, MR_r2, 0);
+	MR_r1 = MR_sv(1);
+	MR_np_call_localret_ent(hlds__hlds_module__module_info_get_globals_2_0,
+		recompilation__usage__write_usage_file_5_0_i6);
+MR_def_label(recompilation__usage__write_usage_file_5_0,6)
+	MR_MAYBE_INIT_LOCAL_THREAD_ENGINE_BASE
+	MR_sv(5) = MR_r1;
+	MR_r2 = (MR_Integer) 41;
+	MR_np_call_localret_ent(libs__globals__lookup_bool_option_3_0,
+		recompilation__usage__write_usage_file_5_0_i7);
+MR_def_label(recompilation__usage__write_usage_file_5_0,7)
+	MR_MAYBE_INIT_LOCAL_THREAD_ENGINE_BASE
+	MR_r2 = (MR_Word) MR_string_const("% Writing recompilation compilation dependency information\n", 59);
+	MR_np_call_localret_ent(libs__file_util__maybe_write_string_4_0,
+		recompilation__usage__write_usage_file_5_0_i8);
+MR_def_label(recompilation__usage__write_usage_file_5_0,8)
+	MR_MAYBE_INIT_LOCAL_THREAD_ENGINE_BASE
+	MR_r1 = MR_sv(1);
+	MR_np_call_localret_ent(hlds__hlds_module__module_info_get_name_2_0,
+		recompilation__usage__write_usage_file_5_0_i9);
+MR_def_label(recompilation__usage__write_usage_file_5_0,9)
+	MR_MAYBE_INIT_LOCAL_THREAD_ENGINE_BASE
+	{
+	MR_Word MR_tempr1;
+	MR_tempr1 = MR_r1;
+	MR_r1 = MR_sv(5);
+	MR_r2 = MR_tempr1;
+	MR_r3 = (MR_Word) MR_string_const(".used", 5);
+	MR_r4 = (MR_Integer) 0;
+	}
+	MR_np_call_localret_ent(parse_tree__file_names__module_name_to_file_name_7_0,
+		recompilation__usage__write_usage_file_5_0_i10);
+MR_def_label(recompilation__usage__write_usage_file_5_0,10)
+	MR_MAYBE_INIT_LOCAL_THREAD_ENGINE_BASE
+	MR_sv(5) = MR_r1;
+	MR_np_call_localret_ent(io__open_output_4_0,
+		recompilation__usage__write_usage_file_5_0_i11);
+MR_def_label(recompilation__usage__write_usage_file_5_0,11)
+	MR_MAYBE_INIT_LOCAL_THREAD_ENGINE_BASE
+	if (MR_PTAG_TESTR(MR_r1,1)) {
+		MR_GOTO_LAB(recompilation__usage__write_usage_file_5_0_i13);
+	}
+	MR_r1 = MR_tfield(1, MR_r1, 0);
+	MR_np_call_localret_ent(io__error_message_2_0,
+		recompilation__usage__write_usage_file_5_0_i14);
+MR_def_label(recompilation__usage__write_usage_file_5_0,14)
+	MR_MAYBE_INIT_LOCAL_THREAD_ENGINE_BASE
+	MR_sv(1) = MR_r1;
+	MR_r1 = (MR_Word) MR_string_const("\nError opening \140", 16);
+	MR_np_call_localret_ent(io__write_string_3_0,
+		recompilation__usage__write_usage_file_5_0_i15);
+MR_def_label(recompilation__usage__write_usage_file_5_0,15)
+	MR_MAYBE_INIT_LOCAL_THREAD_ENGINE_BASE
+	MR_r1 = MR_sv(5);
+	MR_np_call_localret_ent(io__write_string_3_0,
+		recompilation__usage__write_usage_file_5_0_i16);
+MR_def_label(recompilation__usage__write_usage_file_5_0,16)
+	MR_MAYBE_INIT_LOCAL_THREAD_ENGINE_BASE
+	MR_r1 = (MR_Word) MR_string_const("\'for output: ", 13);
+	MR_np_call_localret_ent(io__write_string_3_0,
+		recompilation__usage__write_usage_file_5_0_i17);
+MR_def_label(recompilation__usage__write_usage_file_5_0,17)
+	MR_MAYBE_INIT_LOCAL_THREAD_ENGINE_BASE
+	MR_r1 = MR_sv(1);
+	MR_np_call_localret_ent(io__write_string_3_0,
+		recompilation__usage__write_usage_file_5_0_i18);
+MR_def_label(recompilation__usage__write_usage_file_5_0,18)
+	MR_MAYBE_INIT_LOCAL_THREAD_ENGINE_BASE
+	MR_r1 = (MR_Word) MR_string_const(".\n", 2);
+	MR_np_call_localret_ent(io__write_string_3_0,
+		recompilation__usage__write_usage_file_5_0_i19);
+MR_def_label(recompilation__usage__write_usage_file_5_0,19)
+	MR_MAYBE_INIT_LOCAL_THREAD_ENGINE_BASE
+	MR_r1 = (MR_Integer) 1;
+	MR_succip_word = MR_sv(6);
+	MR_decr_sp(6);
+	MR_np_tailcall_ent(io__set_exit_status_3_0);
+MR_def_label(recompilation__usage__write_usage_file_5_0,13)
+	MR_MAYBE_INIT_LOCAL_THREAD_ENGINE_BASE
+	MR_r1 = MR_tfield(0, MR_r1, 0);
+	MR_np_call_localret_ent(io__set_output_stream_4_0,
+		recompilation__usage__write_usage_file_5_0_i21);
+MR_def_label(recompilation__usage__write_usage_file_5_0,21)
+	MR_MAYBE_INIT_LOCAL_THREAD_ENGINE_BASE
+	{
+	MR_Word MR_tempr1;
+	MR_tempr1 = MR_sv(1);
+	MR_sv(1) = MR_r1;
+	MR_r1 = MR_tempr1;
+	MR_r2 = MR_sv(2);
+	MR_r3 = MR_sv(3);
+	MR_r4 = MR_sv(4);
+	}
+	MR_np_call_localret_ent(recompilation__usage__write_usage_file_2_6_0,
+		recompilation__usage__write_usage_file_5_0_i22);
+MR_def_label(recompilation__usage__write_usage_file_5_0,22)
+	MR_MAYBE_INIT_LOCAL_THREAD_ENGINE_BASE
+	MR_r1 = MR_sv(1);
+	MR_np_call_localret_ent(io__set_output_stream_4_0,
+		recompilation__usage__write_usage_file_5_0_i23);
+MR_def_label(recompilation__usage__write_usage_file_5_0,23)
+	MR_MAYBE_INIT_LOCAL_THREAD_ENGINE_BASE
+	MR_succip_word = MR_sv(6);
+	MR_decr_sp(6);
+	MR_np_tailcall_ent(io__close_output_3_0);
+MR_def_label(recompilation__usage__write_usage_file_5_0,25)
+	MR_MAYBE_INIT_LOCAL_THREAD_ENGINE_BASE
+	MR_decr_sp_and_return(6);
+#ifdef MR_maybe_local_thread_engine_base
+	#undef MR_maybe_local_thread_engine_base
+	#define MR_maybe_local_thread_engine_base MR_thread_engine_base
+#endif
+MR_END_MODULE
+
+MR_decl_entry(mdbcomp__prim_data__any_mercury_builtin_module_1_0);
+extern const MR_TypeCtorInfo_Struct mercury_data_recompilation__type_ctor_info_version_numbers_0;
+MR_decl_entry(fn__map__init_0_0);
+MR_decl_entry(fn__recompilation__map_ids_3_0);
+MR_decl_entry(map__select_3_0);
+MR_decl_entry(recompilation__version__write_version_numbers_3_0);
+
+MR_BEGIN_MODULE(recompilation__usage_module31)
+	MR_init_entry1(recompilation__usage__write_module_name_and_used_items_7_0);
+	MR_INIT_PROC_LAYOUT_ADDR(mercury__recompilation__usage__write_module_name_and_used_items_7_0);
+	MR_init_label10(recompilation__usage__write_module_name_and_used_items_7_0,2,3,4,5,6,7,8,9,11,13)
+	MR_init_label9(recompilation__usage__write_module_name_and_used_items_7_0,18,20,25,26,29,27,32,34,15)
+MR_BEGIN_CODE
+
+/*-------------------------------------------------------------------------*/
+/* code for 'write_module_name_and_used_items'/7 mode 0 */
+#ifdef MR_maybe_local_thread_engine_base
+	#undef MR_maybe_local_thread_engine_base
+	#define MR_maybe_local_thread_engine_base MR_local_thread_engine_base
+#endif
+MR_def_static(recompilation__usage__write_module_name_and_used_items_7_0)
+	MR_MAYBE_INIT_LOCAL_THREAD_ENGINE_BASE
+	MR_incr_sp(9);
+	MR_sv(9) = (MR_Word) MR_succip;
+	MR_sv(1) = MR_r1;
+	MR_sv(2) = MR_r2;
+	MR_sv(3) = MR_r3;
+	MR_sv(4) = MR_r4;
+	MR_sv(5) = MR_r5;
+	MR_np_call_localret_ent(io__nl_2_0,
+		recompilation__usage__write_module_name_and_used_items_7_0_i2);
+MR_def_label(recompilation__usage__write_module_name_and_used_items_7_0,2)
+	MR_MAYBE_INIT_LOCAL_THREAD_ENGINE_BASE
+	MR_r1 = (MR_Word) MR_string_const("(", 1);
+	MR_np_call_localret_ent(io__write_string_3_0,
+		recompilation__usage__write_module_name_and_used_items_7_0_i3);
+MR_def_label(recompilation__usage__write_module_name_and_used_items_7_0,3)
+	MR_MAYBE_INIT_LOCAL_THREAD_ENGINE_BASE
+	MR_r1 = MR_sv(4);
+	MR_np_call_localret_ent(parse_tree__mercury_to_mercury__mercury_output_bracketed_sym_name_3_0,
+		recompilation__usage__write_module_name_and_used_items_7_0_i4);
+MR_def_label(recompilation__usage__write_module_name_and_used_items_7_0,4)
+	MR_MAYBE_INIT_LOCAL_THREAD_ENGINE_BASE
+	MR_r1 = (MR_Word) MR_string_const(", \"", 3);
+	MR_np_call_localret_ent(io__write_string_3_0,
+		recompilation__usage__write_module_name_and_used_items_7_0_i5);
+MR_def_label(recompilation__usage__write_module_name_and_used_items_7_0,5)
+	MR_MAYBE_INIT_LOCAL_THREAD_ENGINE_BASE
+	MR_sv(7) = (MR_Word) MR_CTOR0_ADDR(mdbcomp__prim_data, sym_name);
+	MR_r1 = MR_sv(7);
+	MR_r2 = (MR_Word) MR_CTOR0_ADDR(parse_tree__module_imports, module_timestamp);
+	MR_r3 = MR_sv(2);
+	MR_r4 = MR_sv(4);
+	MR_np_call_localret_ent(map__lookup_3_0,
+		recompilation__usage__write_module_name_and_used_items_7_0_i6);
+MR_def_label(recompilation__usage__write_module_name_and_used_items_7_0,6)
+	MR_MAYBE_INIT_LOCAL_THREAD_ENGINE_BASE
+	MR_sv(2) = MR_tfield(0, MR_r1, 1);
+	MR_sv(6) = MR_tfield(0, MR_r1, 2);
+	MR_r1 = MR_tfield(0, MR_r1, 0);
+	MR_np_call_localret_ent(io__write_string_3_0,
+		recompilation__usage__write_module_name_and_used_items_7_0_i7);
+MR_def_label(recompilation__usage__write_module_name_and_used_items_7_0,7)
+	MR_MAYBE_INIT_LOCAL_THREAD_ENGINE_BASE
+	MR_r1 = (MR_Word) MR_string_const("\", ", 3);
+	MR_np_call_localret_ent(io__write_string_3_0,
+		recompilation__usage__write_module_name_and_used_items_7_0_i8);
+MR_def_label(recompilation__usage__write_module_name_and_used_items_7_0,8)
+	MR_MAYBE_INIT_LOCAL_THREAD_ENGINE_BASE
+	MR_r1 = MR_sv(2);
+	MR_np_call_localret_ent(recompilation__write_version_number_3_0,
+		recompilation__usage__write_module_name_and_used_items_7_0_i9);
+MR_def_label(recompilation__usage__write_module_name_and_used_items_7_0,9)
+	MR_MAYBE_INIT_LOCAL_THREAD_ENGINE_BASE
+	if (MR_INT_NE(MR_sv(6),1)) {
+		MR_GOTO_LAB(recompilation__usage__write_module_name_and_used_items_7_0_i11);
+	}
+	MR_r1 = (MR_Word) MR_string_const(")", 1);
+	MR_np_call_localret_ent(io__write_string_3_0,
+		recompilation__usage__write_module_name_and_used_items_7_0_i13);
+MR_def_label(recompilation__usage__write_module_name_and_used_items_7_0,11)
+	MR_MAYBE_INIT_LOCAL_THREAD_ENGINE_BASE
+	MR_r1 = (MR_Word) MR_string_const(", used)", 7);
+	MR_np_call_localret_ent(io__write_string_3_0,
+		recompilation__usage__write_module_name_and_used_items_7_0_i13);
+MR_def_label(recompilation__usage__write_module_name_and_used_items_7_0,13)
+	MR_MAYBE_INIT_LOCAL_THREAD_ENGINE_BASE
+	MR_r1 = MR_sv(4);
+	MR_np_call_localret_ent(mdbcomp__prim_data__any_mercury_builtin_module_1_0,
+		recompilation__usage__write_module_name_and_used_items_7_0_i18);
+MR_def_label(recompilation__usage__write_module_name_and_used_items_7_0,18)
+	MR_MAYBE_INIT_LOCAL_THREAD_ENGINE_BASE
+	if (MR_r1) {
+		MR_GOTO_LAB(recompilation__usage__write_module_name_and_used_items_7_0_i15);
+	}
+	MR_r1 = MR_sv(4);
+	MR_r1 = MR_sv(7);
+	MR_r2 = (MR_Word) MR_CTOR0_ADDR(recompilation, version_numbers);
+	MR_r3 = MR_tfield(0, MR_sv(1), 3);
+	MR_r4 = MR_sv(4);
+	MR_np_call_localret_ent(map__search_3_0,
+		recompilation__usage__write_module_name_and_used_items_7_0_i20);
+MR_def_label(recompilation__usage__write_module_name_and_used_items_7_0,20)
+	MR_MAYBE_INIT_LOCAL_THREAD_ENGINE_BASE
+	if (!(MR_r1)) {
+		MR_GOTO_LAB(recompilation__usage__write_module_name_and_used_items_7_0_i15);
+	}
+	{
+	MR_Word MR_tempr1;
+	MR_tag_alloc_heap(MR_tempr1, 0, (MR_Integer) 4);
+	MR_tfield(0, MR_tempr1, 0) = (MR_Word) MR_COMMON(10,3);
+	MR_tfield(0, MR_tempr1, 1) = (MR_Word) MR_ENTRY_AP(fn__recompilation__usage__IntroducedFrom__func__write_module_name_and_used_items__261__1_3_0);
+	MR_tfield(0, MR_tempr1, 2) = (MR_Integer) 1;
+	MR_tfield(0, MR_tempr1, 3) = MR_sv(5);
+	MR_sv(1) = MR_tfield(0, MR_r2, 0);
+	MR_sv(2) = MR_tfield(0, MR_r2, 1);
+	MR_sv(5) = MR_tempr1;
+	MR_sv(6) = (MR_Word) MR_CTOR0_ADDR(libs__timestamp, timestamp);
+	MR_sv(8) = (MR_Word) MR_TAG_COMMON(0,0,25);
+	MR_r1 = (MR_Word) MR_TAG_COMMON(0,0,0);
+	MR_r2 = MR_sv(6);
+	}
+	MR_np_call_localret_ent(fn__map__init_0_0,
+		recompilation__usage__write_module_name_and_used_items_7_0_i25);
+MR_def_label(recompilation__usage__write_module_name_and_used_items_7_0,25)
+	MR_MAYBE_INIT_LOCAL_THREAD_ENGINE_BASE
+	{
+	MR_Word MR_tempr1;
+	MR_tempr1 = MR_r1;
+	MR_r1 = MR_sv(8);
+	MR_r2 = MR_r1;
+	MR_r3 = MR_sv(5);
+	MR_r4 = MR_sv(1);
+	MR_r5 = MR_tempr1;
+	}
+	MR_np_call_localret_ent(fn__recompilation__map_ids_3_0,
+		recompilation__usage__write_module_name_and_used_items_7_0_i26);
+MR_def_label(recompilation__usage__write_module_name_and_used_items_7_0,26)
+	MR_MAYBE_INIT_LOCAL_THREAD_ENGINE_BASE
+	MR_sv(1) = MR_r1;
+	MR_r1 = MR_sv(7);
+	MR_r2 = (MR_Word) MR_TAG_COMMON(0,1,12);
+	MR_r3 = MR_sv(3);
+	MR_r4 = MR_sv(4);
+	MR_np_call_localret_ent(map__search_3_0,
+		recompilation__usage__write_module_name_and_used_items_7_0_i29);
+MR_def_label(recompilation__usage__write_module_name_and_used_items_7_0,29)
+	MR_MAYBE_INIT_LOCAL_THREAD_ENGINE_BASE
+	if (!(MR_r1)) {
+		MR_GOTO_LAB(recompilation__usage__write_module_name_and_used_items_7_0_i27);
+	}
+	MR_r1 = (MR_Word) MR_CTOR0_ADDR(recompilation, item_name);
+	{
+	MR_Word MR_tempr1;
+	MR_tempr1 = MR_r2;
+	MR_r2 = MR_sv(6);
+	MR_r3 = MR_sv(2);
+	MR_r4 = MR_tempr1;
+	}
+	MR_np_call_localret_ent(map__select_3_0,
+		recompilation__usage__write_module_name_and_used_items_7_0_i32);
+MR_def_label(recompilation__usage__write_module_name_and_used_items_7_0,27)
+	MR_MAYBE_INIT_LOCAL_THREAD_ENGINE_BASE
+	MR_r1 = (MR_Word) MR_CTOR0_ADDR(recompilation, item_name);
+	MR_r2 = MR_sv(6);
+	MR_np_call_localret_ent(map__init_1_0,
+		recompilation__usage__write_module_name_and_used_items_7_0_i32);
+MR_def_label(recompilation__usage__write_module_name_and_used_items_7_0,32)
+	MR_MAYBE_INIT_LOCAL_THREAD_ENGINE_BASE
+	MR_sv(2) = MR_r1;
+	MR_r1 = (MR_Word) MR_string_const(" => ", 4);
+	MR_np_call_localret_ent(io__write_string_3_0,
+		recompilation__usage__write_module_name_and_used_items_7_0_i34);
+MR_def_label(recompilation__usage__write_module_name_and_used_items_7_0,34)
+	MR_MAYBE_INIT_LOCAL_THREAD_ENGINE_BASE
+	{
+	MR_Word MR_tempr1;
+	MR_tag_alloc_heap(MR_tempr1, 0, (MR_Integer) 2);
+	MR_tfield(0, MR_tempr1, 0) = MR_sv(1);
+	MR_tfield(0, MR_tempr1, 1) = MR_sv(2);
+	MR_r1 = MR_tempr1;
+	}
+	MR_np_call_localret_ent(recompilation__version__write_version_numbers_3_0,
+		recompilation__usage__write_module_name_and_used_items_7_0_i15);
+MR_def_label(recompilation__usage__write_module_name_and_used_items_7_0,15)
+	MR_MAYBE_INIT_LOCAL_THREAD_ENGINE_BASE
+	MR_r1 = (MR_Word) MR_string_const(".\n", 2);
+	MR_succip_word = MR_sv(9);
+	MR_decr_sp(9);
+	MR_np_tailcall_ent(io__write_string_3_0);
+#ifdef MR_maybe_local_thread_engine_base
+	#undef MR_maybe_local_thread_engine_base
+	#define MR_maybe_local_thread_engine_base MR_thread_engine_base
+#endif
+MR_END_MODULE
+
+
+MR_BEGIN_MODULE(recompilation__usage_module32)
+	MR_init_entry1(recompilation__usage__write_classname_and_arity_3_0);
+	MR_INIT_PROC_LAYOUT_ADDR(mercury__recompilation__usage__write_classname_and_arity_3_0);
+	MR_init_label2(recompilation__usage__write_classname_and_arity_3_0,2,3)
+MR_BEGIN_CODE
+
+/*-------------------------------------------------------------------------*/
+/* code for 'write_classname_and_arity'/3 mode 0 */
+#ifdef MR_maybe_local_thread_engine_base
+	#undef MR_maybe_local_thread_engine_base
+	#define MR_maybe_local_thread_engine_base MR_local_thread_engine_base
+#endif
+MR_def_static(recompilation__usage__write_classname_and_arity_3_0)
+	MR_MAYBE_INIT_LOCAL_THREAD_ENGINE_BASE
+	MR_incr_sp(2);
+	MR_sv(2) = (MR_Word) MR_succip;
+	MR_sv(1) = MR_tfield(0, MR_r1, 1);
+	MR_r1 = MR_tfield(0, MR_r1, 0);
+	MR_np_call_localret_ent(parse_tree__mercury_to_mercury__mercury_output_bracketed_sym_name_3_0,
+		recompilation__usage__write_classname_and_arity_3_0_i2);
+MR_def_label(recompilation__usage__write_classname_and_arity_3_0,2)
+	MR_MAYBE_INIT_LOCAL_THREAD_ENGINE_BASE
+	MR_r1 = (MR_Word) MR_string_const("/", 1);
+	MR_np_call_localret_ent(io__write_string_3_0,
+		recompilation__usage__write_classname_and_arity_3_0_i3);
+MR_def_label(recompilation__usage__write_classname_and_arity_3_0,3)
+	MR_MAYBE_INIT_LOCAL_THREAD_ENGINE_BASE
+	MR_r1 = MR_sv(1);
+	MR_succip_word = MR_sv(2);
+	MR_decr_sp(2);
+	MR_np_tailcall_ent(io__write_int_3_0);
+#ifdef MR_maybe_local_thread_engine_base
+	#undef MR_maybe_local_thread_engine_base
+	#define MR_maybe_local_thread_engine_base MR_thread_engine_base
+#endif
+MR_END_MODULE
+
+MR_decl_entry(parse_tree__mercury_to_mercury__mercury_output_bracketed_sym_name_4_0);
+
+MR_BEGIN_MODULE(recompilation__usage_module33)
+	MR_init_entry1(recompilation__usage__write_simple_item_matches_3_3_0);
+	MR_INIT_PROC_LAYOUT_ADDR(mercury__recompilation__usage__write_simple_item_matches_3_3_0);
+	MR_init_label6(recompilation__usage__write_simple_item_matches_3_3_0,3,4,5,6,7,10)
+MR_BEGIN_CODE
+
+/*-------------------------------------------------------------------------*/
+/* code for 'write_simple_item_matches_3'/3 mode 0 */
+#ifdef MR_maybe_local_thread_engine_base
+	#undef MR_maybe_local_thread_engine_base
+	#define MR_maybe_local_thread_engine_base MR_local_thread_engine_base
+#endif
+MR_def_static(recompilation__usage__write_simple_item_matches_3_3_0)
+	MR_MAYBE_INIT_LOCAL_THREAD_ENGINE_BASE
+	MR_incr_sp(3);
+	MR_sv(3) = (MR_Word) MR_succip;
+	{
+	MR_Word MR_tempr1, MR_tempr2;
+	MR_tag_alloc_heap(MR_tempr1, 0, (MR_Integer) 1);
+	MR_tempr2 = MR_tfield(0, MR_r1, 0);
+	MR_tfield(0, MR_tempr1, 0) = MR_tfield(0, MR_tempr2, 0);
+	MR_sv(1) = MR_tfield(0, MR_tempr2, 1);
+	MR_sv(2) = MR_tfield(0, MR_r1, 1);
+	MR_r1 = MR_tempr1;
+	MR_r2 = (MR_Integer) 0;
+	}
+	MR_np_call_localret_ent(parse_tree__mercury_to_mercury__mercury_output_bracketed_sym_name_4_0,
+		recompilation__usage__write_simple_item_matches_3_3_0_i3);
+MR_def_label(recompilation__usage__write_simple_item_matches_3_3_0,3)
+	MR_MAYBE_INIT_LOCAL_THREAD_ENGINE_BASE
+	MR_r1 = (MR_Word) MR_string_const("/", 1);
+	MR_np_call_localret_ent(io__write_string_3_0,
+		recompilation__usage__write_simple_item_matches_3_3_0_i4);
+MR_def_label(recompilation__usage__write_simple_item_matches_3_3_0,4)
+	MR_MAYBE_INIT_LOCAL_THREAD_ENGINE_BASE
+	MR_r1 = MR_sv(1);
+	MR_np_call_localret_ent(io__write_int_3_0,
+		recompilation__usage__write_simple_item_matches_3_3_0_i5);
+MR_def_label(recompilation__usage__write_simple_item_matches_3_3_0,5)
+	MR_MAYBE_INIT_LOCAL_THREAD_ENGINE_BASE
+	MR_r1 = (MR_Word) MR_string_const(" - (", 4);
+	MR_np_call_localret_ent(io__write_string_3_0,
+		recompilation__usage__write_simple_item_matches_3_3_0_i6);
+MR_def_label(recompilation__usage__write_simple_item_matches_3_3_0,6)
+	MR_MAYBE_INIT_LOCAL_THREAD_ENGINE_BASE
+	MR_sv(1) = (MR_Word) MR_CTOR0_ADDR(mdbcomp__prim_data, sym_name);
+	MR_r1 = MR_sv(1);
+	MR_r2 = MR_r1;
+	MR_r3 = MR_sv(2);
+	MR_np_call_localret_ent(map__to_assoc_list_2_0,
+		recompilation__usage__write_simple_item_matches_3_3_0_i7);
+MR_def_label(recompilation__usage__write_simple_item_matches_3_3_0,7)
+	MR_MAYBE_INIT_LOCAL_THREAD_ENGINE_BASE
+	{
+	MR_Word MR_tempr1;
+	MR_tempr1 = MR_r1;
+	MR_r1 = (MR_Word) MR_TAG_COMMON(0,0,27);
+	MR_r2 = MR_tempr1;
+	MR_r3 = (MR_Word) MR_string_const(", ", 2);
+	MR_r4 = (MR_Word) MR_TAG_COMMON(0,3,21);
+	}
+	MR_np_call_localret_ent(io__write_list_5_0,
+		recompilation__usage__write_simple_item_matches_3_3_0_i10);
+MR_def_label(recompilation__usage__write_simple_item_matches_3_3_0,10)
+	MR_MAYBE_INIT_LOCAL_THREAD_ENGINE_BASE
+	MR_r1 = (MR_Word) MR_string_const(")", 1);
+	MR_succip_word = MR_sv(3);
+	MR_decr_sp(3);
+	MR_np_tailcall_ent(io__write_string_3_0);
+#ifdef MR_maybe_local_thread_engine_base
+	#undef MR_maybe_local_thread_engine_base
+	#define MR_maybe_local_thread_engine_base MR_thread_engine_base
+#endif
+MR_END_MODULE
+
+
+MR_BEGIN_MODULE(recompilation__usage_module34)
+	MR_init_entry1(recompilation__usage__write_simple_item_matches_4_3_0);
+	MR_INIT_PROC_LAYOUT_ADDR(mercury__recompilation__usage__write_simple_item_matches_4_3_0);
+	MR_init_label4(recompilation__usage__write_simple_item_matches_4_3_0,2,5,7,9)
+MR_BEGIN_CODE
+
+/*-------------------------------------------------------------------------*/
+/* code for 'write_simple_item_matches_4'/3 mode 0 */
+#ifdef MR_maybe_local_thread_engine_base
+	#undef MR_maybe_local_thread_engine_base
+	#define MR_maybe_local_thread_engine_base MR_local_thread_engine_base
+#endif
+MR_def_static(recompilation__usage__write_simple_item_matches_4_3_0)
+	MR_MAYBE_INIT_LOCAL_THREAD_ENGINE_BASE
+	MR_incr_sp(3);
+	MR_sv(3) = (MR_Word) MR_succip;
+	MR_sv(1) = MR_tfield(0, MR_r1, 0);
+	MR_sv(2) = MR_tfield(0, MR_r1, 1);
+	MR_r1 = MR_sv(1);
+	MR_np_call_localret_ent(parse_tree__mercury_to_mercury__mercury_output_bracketed_sym_name_3_0,
+		recompilation__usage__write_simple_item_matches_4_3_0_i2);
+MR_def_label(recompilation__usage__write_simple_item_matches_4_3_0,2)
+	MR_MAYBE_INIT_LOCAL_THREAD_ENGINE_BASE
+	MR_r1 = MR_sv(1);
+	MR_r2 = MR_sv(2);
+	MR_np_call_localret_ent(__Unify___mdbcomp__prim_data__sym_name_0_0,
+		recompilation__usage__write_simple_item_matches_4_3_0_i5);
+MR_def_label(recompilation__usage__write_simple_item_matches_4_3_0,5)
+	MR_MAYBE_INIT_LOCAL_THREAD_ENGINE_BASE
+	if (MR_r1) {
+		MR_GOTO_LAB(recompilation__usage__write_simple_item_matches_4_3_0_i9);
+	}
+	MR_r1 = (MR_Word) MR_string_const(" => ", 4);
+	MR_np_call_localret_ent(io__write_string_3_0,
+		recompilation__usage__write_simple_item_matches_4_3_0_i7);
+MR_def_label(recompilation__usage__write_simple_item_matches_4_3_0,7)
+	MR_MAYBE_INIT_LOCAL_THREAD_ENGINE_BASE
+	MR_r1 = MR_sv(2);
+	MR_succip_word = MR_sv(3);
+	MR_decr_sp(3);
+	MR_np_tailcall_ent(parse_tree__mercury_to_mercury__mercury_output_bracketed_sym_name_3_0);
+MR_def_label(recompilation__usage__write_simple_item_matches_4_3_0,9)
+	MR_MAYBE_INIT_LOCAL_THREAD_ENGINE_BASE
+	MR_decr_sp_and_return(3);
+#ifdef MR_maybe_local_thread_engine_base
+	#undef MR_maybe_local_thread_engine_base
+	#define MR_maybe_local_thread_engine_base MR_thread_engine_base
+#endif
+MR_END_MODULE
+
+MR_decl_entry(fn__assoc_list__values_1_0);
+
+MR_BEGIN_MODULE(recompilation__usage_module35)
+	MR_init_entry1(recompilation__usage__write_pred_or_func_matches_3_3_0);
+	MR_INIT_PROC_LAYOUT_ADDR(mercury__recompilation__usage__write_pred_or_func_matches_3_3_0);
+	MR_init_label8(recompilation__usage__write_pred_or_func_matches_3_3_0,3,4,5,9,7,12,14,16)
+MR_BEGIN_CODE
+
+/*-------------------------------------------------------------------------*/
+/* code for 'write_pred_or_func_matches_3'/3 mode 0 */
+#ifdef MR_maybe_local_thread_engine_base
+	#undef MR_maybe_local_thread_engine_base
+	#define MR_maybe_local_thread_engine_base MR_local_thread_engine_base
+#endif
+MR_def_static(recompilation__usage__write_pred_or_func_matches_3_3_0)
+	MR_MAYBE_INIT_LOCAL_THREAD_ENGINE_BASE
+	MR_incr_sp(4);
+	MR_sv(4) = (MR_Word) MR_succip;
+	MR_sv(1) = MR_tfield(0, MR_r1, 0);
+	MR_sv(2) = (MR_Word) MR_CTOR0_ADDR(hlds__hlds_pred, pred_id);
+	MR_sv(3) = (MR_Word) MR_CTOR0_ADDR(mdbcomp__prim_data, sym_name);
+	{
+	MR_Word MR_tempr1;
+	MR_tempr1 = MR_r1;
+	MR_r1 = (MR_Word) MR_TAG_COMMON(0,0,3);
+	MR_r2 = MR_tfield(0, MR_tempr1, 1);
+	}
+	MR_np_call_localret_ent(fn__set__to_sorted_list_1_0,
+		recompilation__usage__write_pred_or_func_matches_3_3_0_i3);
+MR_def_label(recompilation__usage__write_pred_or_func_matches_3_3_0,3)
+	MR_MAYBE_INIT_LOCAL_THREAD_ENGINE_BASE
+	{
+	MR_Word MR_tempr1;
+	MR_tempr1 = MR_r1;
+	MR_r1 = MR_sv(2);
+	MR_r2 = MR_sv(3);
+	MR_r3 = MR_tempr1;
+	}
+	MR_np_call_localret_ent(fn__assoc_list__values_1_0,
+		recompilation__usage__write_pred_or_func_matches_3_3_0_i4);
+MR_def_label(recompilation__usage__write_pred_or_func_matches_3_3_0,4)
+	MR_MAYBE_INIT_LOCAL_THREAD_ENGINE_BASE
+	MR_sv(2) = MR_r1;
+	MR_r1 = MR_sv(1);
+	MR_np_call_localret_ent(parse_tree__mercury_to_mercury__mercury_output_bracketed_sym_name_3_0,
+		recompilation__usage__write_pred_or_func_matches_3_3_0_i5);
+MR_def_label(recompilation__usage__write_pred_or_func_matches_3_3_0,5)
+	MR_MAYBE_INIT_LOCAL_THREAD_ENGINE_BASE
+	if (MR_LTAGS_TEST(MR_sv(2),0,0)) {
+		MR_GOTO_LAB(recompilation__usage__write_pred_or_func_matches_3_3_0_i7);
+	}
+	{
+	MR_Word MR_tempr1, MR_tempr2;
+	MR_tempr1 = MR_sv(1);
+	MR_tempr2 = MR_sv(2);
+	MR_sv(1) = MR_tfield(1, MR_tempr2, 1);
+	MR_r1 = MR_tempr1;
+	MR_r2 = MR_tfield(1, MR_tempr2, 0);
+	}
+	MR_np_call_localret_ent(__Unify___mdbcomp__prim_data__sym_name_0_0,
+		recompilation__usage__write_pred_or_func_matches_3_3_0_i9);
+MR_def_label(recompilation__usage__write_pred_or_func_matches_3_3_0,9)
+	MR_MAYBE_INIT_LOCAL_THREAD_ENGINE_BASE
+	if (!(MR_r1)) {
+		MR_GOTO_LAB(recompilation__usage__write_pred_or_func_matches_3_3_0_i7);
+	}
+	if (MR_LTAGS_TEST(MR_sv(1),0,0)) {
+		MR_GOTO_LAB(recompilation__usage__write_pred_or_func_matches_3_3_0_i16);
+	}
+MR_def_label(recompilation__usage__write_pred_or_func_matches_3_3_0,7)
+	MR_MAYBE_INIT_LOCAL_THREAD_ENGINE_BASE
+	MR_r1 = (MR_Word) MR_string_const(" => (", 5);
+	MR_np_call_localret_ent(io__write_string_3_0,
+		recompilation__usage__write_pred_or_func_matches_3_3_0_i12);
+MR_def_label(recompilation__usage__write_pred_or_func_matches_3_3_0,12)
+	MR_MAYBE_INIT_LOCAL_THREAD_ENGINE_BASE
+	MR_r1 = MR_sv(3);
+	MR_r2 = MR_sv(2);
+	MR_r3 = (MR_Word) MR_string_const(", ", 2);
+	MR_r4 = (MR_Word) MR_TAG_COMMON(0,3,22);
+	MR_np_call_localret_ent(io__write_list_5_0,
+		recompilation__usage__write_pred_or_func_matches_3_3_0_i14);
+MR_def_label(recompilation__usage__write_pred_or_func_matches_3_3_0,14)
+	MR_MAYBE_INIT_LOCAL_THREAD_ENGINE_BASE
+	MR_r1 = (MR_Word) MR_string_const(")", 1);
+	MR_succip_word = MR_sv(4);
+	MR_decr_sp(4);
+	MR_np_tailcall_ent(io__write_string_3_0);
+MR_def_label(recompilation__usage__write_pred_or_func_matches_3_3_0,16)
+	MR_MAYBE_INIT_LOCAL_THREAD_ENGINE_BASE
+	MR_decr_sp_and_return(4);
+#ifdef MR_maybe_local_thread_engine_base
+	#undef MR_maybe_local_thread_engine_base
+	#define MR_maybe_local_thread_engine_base MR_thread_engine_base
+#endif
+MR_END_MODULE
+
+
+MR_BEGIN_MODULE(recompilation__usage_module36)
+	MR_init_entry1(recompilation__usage__write_functor_matches_2_3_0);
+	MR_INIT_PROC_LAYOUT_ADDR(mercury__recompilation__usage__write_functor_matches_2_3_0);
+	MR_init_label4(recompilation__usage__write_functor_matches_2_3_0,2,3,4,6)
+MR_BEGIN_CODE
+
+/*-------------------------------------------------------------------------*/
+/* code for 'write_functor_matches_2'/3 mode 0 */
+#ifdef MR_maybe_local_thread_engine_base
+	#undef MR_maybe_local_thread_engine_base
+	#define MR_maybe_local_thread_engine_base MR_local_thread_engine_base
+#endif
+MR_def_static(recompilation__usage__write_functor_matches_2_3_0)
+	MR_MAYBE_INIT_LOCAL_THREAD_ENGINE_BASE
+	MR_incr_sp(2);
+	MR_sv(2) = (MR_Word) MR_succip;
+	MR_sv(1) = MR_tfield(0, MR_r1, 1);
+	MR_r1 = MR_tfield(0, MR_r1, 0);
+	MR_np_call_localret_ent(parse_tree__mercury_to_mercury__mercury_output_bracketed_sym_name_3_0,
+		recompilation__usage__write_functor_matches_2_3_0_i2);
+MR_def_label(recompilation__usage__write_functor_matches_2_3_0,2)
+	MR_MAYBE_INIT_LOCAL_THREAD_ENGINE_BASE
+	MR_r1 = (MR_Word) MR_string_const(" => (", 5);
+	MR_np_call_localret_ent(io__write_string_3_0,
+		recompilation__usage__write_functor_matches_2_3_0_i3);
+MR_def_label(recompilation__usage__write_functor_matches_2_3_0,3)
+	MR_MAYBE_INIT_LOCAL_THREAD_ENGINE_BASE
+	{
+	MR_Word MR_tempr1;
+	MR_tempr1 = MR_sv(1);
+	MR_sv(1) = (MR_Word) MR_CTOR0_ADDR(recompilation__usage, resolved_functor);
+	MR_r1 = MR_sv(1);
+	MR_r2 = MR_tempr1;
+	}
+	MR_np_call_localret_ent(fn__set__to_sorted_list_1_0,
+		recompilation__usage__write_functor_matches_2_3_0_i4);
+MR_def_label(recompilation__usage__write_functor_matches_2_3_0,4)
+	MR_MAYBE_INIT_LOCAL_THREAD_ENGINE_BASE
+	{
+	MR_Word MR_tempr1;
+	MR_tempr1 = MR_r1;
+	MR_r1 = MR_sv(1);
+	MR_r2 = MR_tempr1;
+	MR_r3 = (MR_Word) MR_string_const(", ", 2);
+	MR_r4 = (MR_Word) MR_TAG_COMMON(0,3,23);
+	}
+	MR_np_call_localret_ent(io__write_list_5_0,
+		recompilation__usage__write_functor_matches_2_3_0_i6);
+MR_def_label(recompilation__usage__write_functor_matches_2_3_0,6)
+	MR_MAYBE_INIT_LOCAL_THREAD_ENGINE_BASE
+	MR_r1 = (MR_Word) MR_string_const(")", 1);
+	MR_succip_word = MR_sv(2);
+	MR_decr_sp(2);
+	MR_np_tailcall_ent(io__write_string_3_0);
+#ifdef MR_maybe_local_thread_engine_base
+	#undef MR_maybe_local_thread_engine_base
+	#define MR_maybe_local_thread_engine_base MR_thread_engine_base
+#endif
+MR_END_MODULE
+
+
+MR_BEGIN_MODULE(recompilation__usage_module37)
+	MR_init_entry1(recompilation__usage__write_resolved_item_set_2_4_0);
+	MR_INIT_PROC_LAYOUT_ADDR(mercury__recompilation__usage__write_resolved_item_set_2_4_0);
+	MR_init_label3(recompilation__usage__write_resolved_item_set_2_4_0,3,4,8)
+MR_BEGIN_CODE
+
+/*-------------------------------------------------------------------------*/
+/* code for 'write_resolved_item_set_2'/4 mode 0 */
+#ifdef MR_maybe_local_thread_engine_base
+	#undef MR_maybe_local_thread_engine_base
+	#define MR_maybe_local_thread_engine_base MR_local_thread_engine_base
+#endif
+MR_def_static(recompilation__usage__write_resolved_item_set_2_4_0)
+	MR_MAYBE_INIT_LOCAL_THREAD_ENGINE_BASE
+	MR_incr_sp(4);
+	MR_sv(4) = (MR_Word) MR_succip;
+	{
+	MR_Word MR_tempr1, MR_tempr2;
+	MR_tag_alloc_heap(MR_tempr1, 0, (MR_Integer) 1);
+	MR_tempr2 = MR_r3;
+	MR_tfield(0, MR_tempr1, 0) = MR_tfield(0, MR_tempr2, 0);
+	MR_sv(1) = MR_r2;
+	MR_sv(2) = MR_tfield(0, MR_tempr2, 1);
+	MR_sv(3) = MR_r1;
+	MR_r1 = MR_tempr1;
+	}
+	MR_np_call_localret_ent(parse_tree__mercury_to_mercury__mercury_output_bracketed_sym_name_3_0,
+		recompilation__usage__write_resolved_item_set_2_4_0_i3);
+MR_def_label(recompilation__usage__write_resolved_item_set_2_4_0,3)
+	MR_MAYBE_INIT_LOCAL_THREAD_ENGINE_BASE
+	MR_r1 = (MR_Word) MR_string_const(" - (", 4);
+	MR_np_call_localret_ent(io__write_string_3_0,
+		recompilation__usage__write_resolved_item_set_2_4_0_i4);
+MR_def_label(recompilation__usage__write_resolved_item_set_2_4_0,4)
+	MR_MAYBE_INIT_LOCAL_THREAD_ENGINE_BASE
+	{
+	MR_Word MR_tempr1, MR_tempr2, MR_tempr3, MR_tempr4;
+	MR_tag_alloc_heap(MR_tempr1, 0, (MR_Integer) 5);
+	MR_r4 = MR_tempr1;
+	MR_tfield(0, MR_tempr1, 0) = (MR_Word) MR_COMMON(7,4);
+	MR_tfield(0, MR_tempr1, 1) = (MR_Word) MR_ENTRY_AP(recompilation__usage__write_resolved_item_set_3_4_0);
+	MR_tfield(0, MR_tempr1, 2) = (MR_Integer) 2;
+	MR_tempr4 = MR_sv(3);
+	MR_tfield(0, MR_tempr1, 3) = MR_tempr4;
+	MR_tfield(0, MR_tempr1, 4) = MR_sv(1);
+	MR_tag_alloc_heap(MR_tempr2, 0, (MR_Integer) 3);
+	MR_tfield(0, MR_tempr2, 0) = (MR_Word) MR_CTOR_ADDR(tree234, tree234, 2);
+	MR_tfield(0, MR_tempr2, 1) = (MR_Word) MR_CTOR0_ADDR(mdbcomp__prim_data, sym_name);
+	MR_tfield(0, MR_tempr2, 2) = MR_tempr4;
+	MR_tag_alloc_heap(MR_tempr3, 0, (MR_Integer) 3);
+	MR_tfield(0, MR_tempr3, 0) = (MR_Word) MR_CTOR_ADDR(pair, pair, 2);
+	MR_tfield(0, MR_tempr3, 1) = (MR_Word) MR_INT_CTOR_ADDR;
+	MR_tfield(0, MR_tempr3, 2) = MR_tempr2;
+	MR_r1 = MR_tempr3;
+	MR_r2 = MR_sv(2);
+	MR_r3 = (MR_Word) MR_string_const(",\n\t\t\t", 5);
+	}
+	MR_np_call_localret_ent(io__write_list_5_0,
+		recompilation__usage__write_resolved_item_set_2_4_0_i8);
+MR_def_label(recompilation__usage__write_resolved_item_set_2_4_0,8)
+	MR_MAYBE_INIT_LOCAL_THREAD_ENGINE_BASE
+	MR_r1 = (MR_Word) MR_string_const(")", 1);
+	MR_succip_word = MR_sv(4);
+	MR_decr_sp(4);
+	MR_np_tailcall_ent(io__write_string_3_0);
+#ifdef MR_maybe_local_thread_engine_base
+	#undef MR_maybe_local_thread_engine_base
+	#define MR_maybe_local_thread_engine_base MR_thread_engine_base
+#endif
+MR_END_MODULE
+
+
+MR_BEGIN_MODULE(recompilation__usage_module38)
+	MR_init_entry1(recompilation__usage__write_resolved_item_set_3_4_0);
+	MR_INIT_PROC_LAYOUT_ADDR(mercury__recompilation__usage__write_resolved_item_set_3_4_0);
+	MR_init_label4(recompilation__usage__write_resolved_item_set_3_4_0,2,3,4,6)
+MR_BEGIN_CODE
+
+/*-------------------------------------------------------------------------*/
+/* code for 'write_resolved_item_set_3'/4 mode 0 */
+#ifdef MR_maybe_local_thread_engine_base
+	#undef MR_maybe_local_thread_engine_base
+	#define MR_maybe_local_thread_engine_base MR_local_thread_engine_base
+#endif
+MR_def_static(recompilation__usage__write_resolved_item_set_3_4_0)
+	MR_MAYBE_INIT_LOCAL_THREAD_ENGINE_BASE
+	MR_incr_sp(4);
+	MR_sv(4) = (MR_Word) MR_succip;
+	MR_sv(1) = MR_r2;
+	{
+	MR_Word MR_tempr1;
+	MR_tempr1 = MR_r3;
+	MR_sv(2) = MR_tfield(0, MR_tempr1, 1);
+	MR_sv(3) = MR_r1;
+	MR_r1 = MR_tfield(0, MR_tempr1, 0);
+	}
+	MR_np_call_localret_ent(io__write_int_3_0,
+		recompilation__usage__write_resolved_item_set_3_4_0_i2);
+MR_def_label(recompilation__usage__write_resolved_item_set_3_4_0,2)
+	MR_MAYBE_INIT_LOCAL_THREAD_ENGINE_BASE
+	MR_r1 = (MR_Word) MR_string_const(" - (", 4);
+	MR_np_call_localret_ent(io__write_string_3_0,
+		recompilation__usage__write_resolved_item_set_3_4_0_i3);
+MR_def_label(recompilation__usage__write_resolved_item_set_3_4_0,3)
+	MR_MAYBE_INIT_LOCAL_THREAD_ENGINE_BASE
+	{
+	MR_Word MR_tempr1;
+	MR_tempr1 = MR_sv(2);
+	MR_sv(2) = (MR_Word) MR_CTOR0_ADDR(mdbcomp__prim_data, sym_name);
+	MR_r1 = MR_sv(2);
+	MR_r2 = MR_sv(3);
+	MR_r3 = MR_tempr1;
+	}
+	MR_np_call_localret_ent(map__to_assoc_list_2_0,
+		recompilation__usage__write_resolved_item_set_3_4_0_i4);
+MR_def_label(recompilation__usage__write_resolved_item_set_3_4_0,4)
+	MR_MAYBE_INIT_LOCAL_THREAD_ENGINE_BASE
+	{
+	MR_Word MR_tempr1, MR_tempr2;
+	MR_tag_alloc_heap(MR_tempr1, 0, (MR_Integer) 3);
+	MR_tfield(0, MR_tempr1, 0) = (MR_Word) MR_CTOR_ADDR(pair, pair, 2);
+	MR_tfield(0, MR_tempr1, 1) = MR_sv(2);
+	MR_tfield(0, MR_tempr1, 2) = MR_sv(3);
+	MR_tempr2 = MR_r1;
+	MR_r1 = MR_tempr1;
+	MR_r2 = MR_tempr2;
+	MR_r3 = (MR_Word) MR_string_const(",\n\t\t\t\t", 6);
+	MR_r4 = MR_sv(1);
+	}
+	MR_np_call_localret_ent(io__write_list_5_0,
+		recompilation__usage__write_resolved_item_set_3_4_0_i6);
+MR_def_label(recompilation__usage__write_resolved_item_set_3_4_0,6)
+	MR_MAYBE_INIT_LOCAL_THREAD_ENGINE_BASE
+	MR_r1 = (MR_Word) MR_string_const(")", 1);
+	MR_succip_word = MR_sv(4);
+	MR_decr_sp(4);
+	MR_np_tailcall_ent(io__write_string_3_0);
+#ifdef MR_maybe_local_thread_engine_base
+	#undef MR_maybe_local_thread_engine_base
+	#define MR_maybe_local_thread_engine_base MR_thread_engine_base
+#endif
+MR_END_MODULE
+
+MR_decl_entry(parse_tree__prog_out__write_pred_or_func_3_0);
+
+MR_BEGIN_MODULE(recompilation__usage_module39)
+	MR_init_entry1(recompilation__usage__write_resolved_functor_3_0);
+	MR_INIT_PROC_LAYOUT_ADDR(mercury__recompilation__usage__write_resolved_functor_3_0);
+	MR_init_label10(recompilation__usage__write_resolved_functor_3_0,4,5,6,3,10,11,12,13,14,15)
+	MR_init_label7(recompilation__usage__write_resolved_functor_3_0,16,9,19,20,21,22,23)
+MR_BEGIN_CODE
+
+/*-------------------------------------------------------------------------*/
+/* code for 'write_resolved_functor'/3 mode 0 */
+#ifdef MR_maybe_local_thread_engine_base
+	#undef MR_maybe_local_thread_engine_base
+	#define MR_maybe_local_thread_engine_base MR_local_thread_engine_base
+#endif
+MR_def_static(recompilation__usage__write_resolved_functor_3_0)
+	MR_MAYBE_INIT_LOCAL_THREAD_ENGINE_BASE
+	MR_incr_sp(5);
+	MR_sv(5) = (MR_Word) MR_succip;
+	if (MR_PTAG_TESTR(MR_r1,1)) {
+		MR_GOTO_LAB(recompilation__usage__write_resolved_functor_3_0_i3);
+	}
+	{
+	MR_Word MR_tempr1;
+	MR_tempr1 = MR_tfield(1, MR_r1, 0);
+	MR_sv(1) = MR_tfield(0, MR_tempr1, 0);
+	MR_sv(2) = MR_tfield(0, MR_tempr1, 1);
+	MR_r1 = (MR_Word) MR_string_const("ctor(", 5);
+	}
+	MR_np_call_localret_ent(io__write_string_3_0,
+		recompilation__usage__write_resolved_functor_3_0_i4);
+MR_def_label(recompilation__usage__write_resolved_functor_3_0,4)
+	MR_MAYBE_INIT_LOCAL_THREAD_ENGINE_BASE
+	MR_r1 = MR_sv(1);
+	MR_r2 = (MR_Integer) 0;
+	MR_np_call_localret_ent(parse_tree__mercury_to_mercury__mercury_output_bracketed_sym_name_4_0,
+		recompilation__usage__write_resolved_functor_3_0_i5);
+MR_def_label(recompilation__usage__write_resolved_functor_3_0,5)
+	MR_MAYBE_INIT_LOCAL_THREAD_ENGINE_BASE
+	MR_r1 = (MR_Word) MR_string_const("/", 1);
+	MR_np_call_localret_ent(io__write_string_3_0,
+		recompilation__usage__write_resolved_functor_3_0_i6);
+MR_def_label(recompilation__usage__write_resolved_functor_3_0,6)
+	MR_MAYBE_INIT_LOCAL_THREAD_ENGINE_BASE
+	MR_r1 = MR_sv(2);
+	MR_np_call_localret_ent(io__write_int_3_0,
+		recompilation__usage__write_resolved_functor_3_0_i23);
+MR_def_label(recompilation__usage__write_resolved_functor_3_0,3)
+	MR_MAYBE_INIT_LOCAL_THREAD_ENGINE_BASE
+	if (MR_PTAG_TESTR(MR_r1,2)) {
+		MR_GOTO_LAB(recompilation__usage__write_resolved_functor_3_0_i9);
+	}
+	{
+	MR_Word MR_tempr1, MR_tempr2;
+	MR_tempr1 = MR_tfield(2, MR_r1, 0);
+	MR_sv(1) = MR_tfield(0, MR_tempr1, 1);
+	MR_tempr2 = MR_tfield(2, MR_r1, 1);
+	MR_sv(2) = MR_tfield(0, MR_tempr2, 0);
+	MR_sv(3) = MR_tfield(0, MR_tempr2, 1);
+	MR_sv(4) = MR_tfield(0, MR_tempr1, 0);
+	MR_r1 = (MR_Word) MR_string_const("field(", 6);
+	}
+	MR_np_call_localret_ent(io__write_string_3_0,
+		recompilation__usage__write_resolved_functor_3_0_i10);
+MR_def_label(recompilation__usage__write_resolved_functor_3_0,10)
+	MR_MAYBE_INIT_LOCAL_THREAD_ENGINE_BASE
+	MR_r1 = MR_sv(4);
+	MR_r2 = (MR_Integer) 0;
+	MR_np_call_localret_ent(parse_tree__mercury_to_mercury__mercury_output_bracketed_sym_name_4_0,
+		recompilation__usage__write_resolved_functor_3_0_i11);
+MR_def_label(recompilation__usage__write_resolved_functor_3_0,11)
+	MR_MAYBE_INIT_LOCAL_THREAD_ENGINE_BASE
+	MR_r1 = (MR_Word) MR_string_const("/", 1);
+	MR_np_call_localret_ent(io__write_string_3_0,
+		recompilation__usage__write_resolved_functor_3_0_i12);
+MR_def_label(recompilation__usage__write_resolved_functor_3_0,12)
+	MR_MAYBE_INIT_LOCAL_THREAD_ENGINE_BASE
+	MR_r1 = MR_sv(1);
+	MR_np_call_localret_ent(io__write_int_3_0,
+		recompilation__usage__write_resolved_functor_3_0_i13);
+MR_def_label(recompilation__usage__write_resolved_functor_3_0,13)
+	MR_MAYBE_INIT_LOCAL_THREAD_ENGINE_BASE
+	MR_r1 = (MR_Word) MR_string_const(", ", 2);
+	MR_np_call_localret_ent(io__write_string_3_0,
+		recompilation__usage__write_resolved_functor_3_0_i14);
+MR_def_label(recompilation__usage__write_resolved_functor_3_0,14)
+	MR_MAYBE_INIT_LOCAL_THREAD_ENGINE_BASE
+	MR_r1 = MR_sv(2);
+	MR_r2 = (MR_Integer) 0;
+	MR_np_call_localret_ent(parse_tree__mercury_to_mercury__mercury_output_bracketed_sym_name_4_0,
+		recompilation__usage__write_resolved_functor_3_0_i15);
+MR_def_label(recompilation__usage__write_resolved_functor_3_0,15)
+	MR_MAYBE_INIT_LOCAL_THREAD_ENGINE_BASE
+	MR_r1 = (MR_Word) MR_string_const("/", 1);
+	MR_np_call_localret_ent(io__write_string_3_0,
+		recompilation__usage__write_resolved_functor_3_0_i16);
+MR_def_label(recompilation__usage__write_resolved_functor_3_0,16)
+	MR_MAYBE_INIT_LOCAL_THREAD_ENGINE_BASE
+	MR_r1 = MR_sv(3);
+	MR_np_call_localret_ent(io__write_int_3_0,
+		recompilation__usage__write_resolved_functor_3_0_i23);
+MR_def_label(recompilation__usage__write_resolved_functor_3_0,9)
+	MR_MAYBE_INIT_LOCAL_THREAD_ENGINE_BASE
+	MR_sv(1) = MR_tfield(0, MR_r1, 1);
+	MR_sv(2) = MR_tfield(0, MR_r1, 3);
+	MR_r1 = MR_tfield(0, MR_r1, 2);
+	MR_np_call_localret_ent(parse_tree__prog_out__write_pred_or_func_3_0,
+		recompilation__usage__write_resolved_functor_3_0_i19);
+MR_def_label(recompilation__usage__write_resolved_functor_3_0,19)
+	MR_MAYBE_INIT_LOCAL_THREAD_ENGINE_BASE
+	MR_r1 = (MR_Word) MR_string_const("(", 1);
+	MR_np_call_localret_ent(io__write_string_3_0,
+		recompilation__usage__write_resolved_functor_3_0_i20);
+MR_def_label(recompilation__usage__write_resolved_functor_3_0,20)
+	MR_MAYBE_INIT_LOCAL_THREAD_ENGINE_BASE
+	MR_r1 = MR_sv(1);
+	MR_np_call_localret_ent(parse_tree__mercury_to_mercury__mercury_output_bracketed_sym_name_3_0,
+		recompilation__usage__write_resolved_functor_3_0_i21);
+MR_def_label(recompilation__usage__write_resolved_functor_3_0,21)
+	MR_MAYBE_INIT_LOCAL_THREAD_ENGINE_BASE
+	MR_r1 = (MR_Word) MR_string_const(", ", 2);
+	MR_np_call_localret_ent(io__write_string_3_0,
+		recompilation__usage__write_resolved_functor_3_0_i22);
+MR_def_label(recompilation__usage__write_resolved_functor_3_0,22)
+	MR_MAYBE_INIT_LOCAL_THREAD_ENGINE_BASE
+	MR_r1 = MR_sv(2);
+	MR_np_call_localret_ent(io__write_int_3_0,
+		recompilation__usage__write_resolved_functor_3_0_i23);
+MR_def_label(recompilation__usage__write_resolved_functor_3_0,23)
+	MR_MAYBE_INIT_LOCAL_THREAD_ENGINE_BASE
+	MR_r1 = (MR_Word) MR_string_const(")", 1);
+	MR_succip_word = MR_sv(5);
+	MR_decr_sp(5);
+	MR_np_tailcall_ent(io__write_string_3_0);
+#ifdef MR_maybe_local_thread_engine_base
+	#undef MR_maybe_local_thread_engine_base
+	#define MR_maybe_local_thread_engine_base MR_thread_engine_base
+#endif
+MR_END_MODULE
+
+MR_declare_entry(MR_do_fail);
+MR_decl_entry(hlds__hlds_module__visible_module_2_0);
+MR_declare_entry(MR_do_redo);
+
+MR_BEGIN_MODULE(recompilation__usage_module40)
+	MR_init_entry1(recompilation__usage__visible_modules_2_0);
+	MR_INIT_PROC_LAYOUT_ADDR(mercury__recompilation__usage__visible_modules_2_0);
+	MR_init_label3(recompilation__usage__visible_modules_2_0,1,3,4)
+MR_BEGIN_CODE
+
+/*-------------------------------------------------------------------------*/
+/* code for 'visible_modules'/2 mode 0 */
+#ifdef MR_maybe_local_thread_engine_base
+	#undef MR_maybe_local_thread_engine_base
+	#define MR_maybe_local_thread_engine_base MR_local_thread_engine_base
+#endif
+MR_def_static(recompilation__usage__visible_modules_2_0)
+	MR_MAYBE_INIT_LOCAL_THREAD_ENGINE_BASE
+	MR_mkframe("pred recompilation.usage.visible_modules/2-0", 2,
+		MR_ENTRY(MR_do_fail));
+	MR_fv(1) = MR_r1;
+	MR_np_call_localret_ent(hlds__hlds_module__visible_module_2_0,
+		recompilation__usage__visible_modules_2_0_i1);
+MR_def_label(recompilation__usage__visible_modules_2_0,1)
+	MR_MAYBE_INIT_LOCAL_THREAD_ENGINE_BASE
+	MR_fv(2) = MR_r1;
+	MR_r1 = MR_fv(1);
+	MR_np_call_localret_ent(hlds__hlds_module__module_info_get_name_2_0,
+		recompilation__usage__visible_modules_2_0_i3);
+MR_def_label(recompilation__usage__visible_modules_2_0,3)
+	MR_MAYBE_INIT_LOCAL_THREAD_ENGINE_BASE
+	{
+	MR_Word MR_tempr1;
+	MR_tempr1 = MR_r1;
+	MR_r1 = MR_fv(2);
+	MR_r2 = MR_tempr1;
+	}
+	MR_np_call_localret_ent(__Unify___mdbcomp__prim_data__sym_name_0_0,
+		recompilation__usage__visible_modules_2_0_i4);
+MR_def_label(recompilation__usage__visible_modules_2_0,4)
+	MR_MAYBE_INIT_LOCAL_THREAD_ENGINE_BASE
+	if (MR_r1) {
+		MR_GOTO(MR_ENTRY(MR_do_redo));
+	}
+	MR_r1 = MR_fv(2);
+	MR_succeed();
+#ifdef MR_maybe_local_thread_engine_base
+	#undef MR_maybe_local_thread_engine_base
+	#define MR_maybe_local_thread_engine_base MR_thread_engine_base
+#endif
+MR_END_MODULE
+
+
+MR_BEGIN_MODULE(recompilation__usage_module41)
+	MR_init_entry1(recompilation__usage__insert_into_imported_items_map_3_0);
+	MR_INIT_PROC_LAYOUT_ADDR(mercury__recompilation__usage__insert_into_imported_items_map_3_0);
+	MR_init_label2(recompilation__usage__insert_into_imported_items_map_3_0,4,5)
+MR_BEGIN_CODE
+
+/*-------------------------------------------------------------------------*/
+/* code for 'insert_into_imported_items_map'/3 mode 0 */
+#ifdef MR_maybe_local_thread_engine_base
+	#undef MR_maybe_local_thread_engine_base
+	#define MR_maybe_local_thread_engine_base MR_local_thread_engine_base
+#endif
+MR_def_static(recompilation__usage__insert_into_imported_items_map_3_0)
+	MR_MAYBE_INIT_LOCAL_THREAD_ENGINE_BASE
+	MR_incr_sp(4);
+	MR_sv(4) = (MR_Word) MR_succip;
+	MR_sv(1) = MR_r1;
+	MR_sv(2) = MR_r2;
+	MR_sv(3) = (MR_Word) MR_TAG_COMMON(0,1,7);
+	MR_r1 = (MR_Word) MR_TAG_COMMON(0,0,0);
+	MR_np_call_localret_ent(fn__set__init_0_0,
+		recompilation__usage__insert_into_imported_items_map_3_0_i4);
+MR_def_label(recompilation__usage__insert_into_imported_items_map_3_0,4)
+	MR_MAYBE_INIT_LOCAL_THREAD_ENGINE_BASE
+	{
+	MR_Word MR_tempr1;
+	MR_tempr1 = MR_r1;
+	MR_r1 = MR_sv(3);
+	MR_r2 = MR_tempr1;
+	}
+	MR_np_call_localret_ent(fn__recompilation__init_item_id_set_1_0,
+		recompilation__usage__insert_into_imported_items_map_3_0_i5);
+MR_def_label(recompilation__usage__insert_into_imported_items_map_3_0,5)
+	MR_MAYBE_INIT_LOCAL_THREAD_ENGINE_BASE
+	{
+	MR_Word MR_tempr1;
+	MR_tempr1 = MR_r1;
+	MR_r1 = (MR_Word) MR_CTOR0_ADDR(mdbcomp__prim_data, sym_name);
+	MR_r2 = (MR_Word) MR_TAG_COMMON(0,9,0);
+	MR_r3 = MR_sv(1);
+	MR_r4 = MR_tempr1;
+	MR_r5 = MR_sv(2);
+	MR_succip_word = MR_sv(4);
+	MR_decr_sp(4);
+	MR_np_tailcall_ent(map__set_4_0);
+	}
+#ifdef MR_maybe_local_thread_engine_base
+	#undef MR_maybe_local_thread_engine_base
+	#define MR_maybe_local_thread_engine_base MR_thread_engine_base
+#endif
+MR_END_MODULE
+
+MR_decl_entry(hlds__hlds_module__module_info_get_predicate_table_2_0);
+MR_decl_entry(parse_tree__prog_util__adjust_func_arity_3_1);
+MR_decl_entry(hlds__pred_table__predicate_table_search_pf_sym_arity_6_0);
+MR_decl_entry(fn__list__map_2_0);
+MR_decl_entry(fn__set__list_to_set_1_0);
+MR_decl_entry(map__det_insert_4_0);
+MR_decl_entry(fn__mdbcomp__prim_data__unqualify_name_1_0);
+MR_decl_entry(set__fold_4_0);
+
+MR_BEGIN_MODULE(recompilation__usage_module42)
+	MR_init_entry1(recompilation__usage__do_record_used_pred_or_func_9_0);
+	MR_INIT_PROC_LAYOUT_ADDR(mercury__recompilation__usage__do_record_used_pred_or_func_9_0);
+	MR_init_label9(recompilation__usage__do_record_used_pred_or_func_9_0,3,4,5,9,10,12,13,16,2)
+MR_BEGIN_CODE
+
+/*-------------------------------------------------------------------------*/
+/* code for 'do_record_used_pred_or_func'/9 mode 0 */
+#ifdef MR_maybe_local_thread_engine_base
+	#undef MR_maybe_local_thread_engine_base
+	#define MR_maybe_local_thread_engine_base MR_local_thread_engine_base
+#endif
+MR_def_static(recompilation__usage__do_record_used_pred_or_func_9_0)
+	MR_MAYBE_INIT_LOCAL_THREAD_ENGINE_BASE
+	MR_incr_sp(9);
+	MR_sv(9) = (MR_Word) MR_succip;
+	MR_sv(1) = MR_r1;
+	MR_sv(2) = MR_r2;
+	MR_sv(3) = MR_r3;
+	MR_sv(4) = MR_r4;
+	{
+	MR_Word MR_tempr1;
+	MR_tempr1 = MR_r6;
+	MR_sv(5) = MR_tfield(0, MR_tempr1, 0);
+	MR_sv(7) = MR_r5;
+	MR_sv(8) = MR_tempr1;
+	MR_r1 = MR_sv(5);
+	}
+	MR_np_call_localret_ent(hlds__hlds_module__module_info_get_predicate_table_2_0,
+		recompilation__usage__do_record_used_pred_or_func_9_0_i3);
+MR_def_label(recompilation__usage__do_record_used_pred_or_func_9_0,3)
+	MR_MAYBE_INIT_LOCAL_THREAD_ENGINE_BASE
+	MR_sv(6) = MR_r1;
+	MR_r1 = MR_sv(1);
+	MR_r2 = MR_sv(4);
+	MR_np_call_localret_ent(parse_tree__prog_util__adjust_func_arity_3_1,
+		recompilation__usage__do_record_used_pred_or_func_9_0_i4);
+MR_def_label(recompilation__usage__do_record_used_pred_or_func_9_0,4)
+	MR_MAYBE_INIT_LOCAL_THREAD_ENGINE_BASE
+	{
+	MR_Word MR_tempr1;
+	MR_tempr1 = MR_r1;
+	MR_r1 = MR_sv(6);
+	MR_r2 = (MR_Integer) 1;
+	MR_r3 = MR_sv(1);
+	MR_r4 = MR_sv(3);
+	MR_r5 = MR_tempr1;
+	}
+	MR_np_call_localret_ent(hlds__pred_table__predicate_table_search_pf_sym_arity_6_0,
+		recompilation__usage__do_record_used_pred_or_func_9_0_i5);
+MR_def_label(recompilation__usage__do_record_used_pred_or_func_9_0,5)
+	MR_MAYBE_INIT_LOCAL_THREAD_ENGINE_BASE
+	if (!(MR_r1)) {
+		MR_GOTO_LAB(recompilation__usage__do_record_used_pred_or_func_9_0_i2);
+	}
+	{
+	MR_Word MR_tempr1, MR_tempr2;
+	MR_tag_alloc_heap(MR_tempr1, 0, (MR_Integer) 4);
+	MR_r3 = MR_tempr1;
+	MR_tfield(0, MR_tempr1, 0) = (MR_Word) MR_COMMON(2,22);
+	MR_tfield(0, MR_tempr1, 1) = (MR_Word) MR_ENTRY_AP(fn__recompilation__usage__IntroducedFrom__func__do_record_used_pred_or_func__679__1_2_0);
+	MR_tfield(0, MR_tempr1, 2) = (MR_Integer) 1;
+	MR_tfield(0, MR_tempr1, 3) = MR_sv(5);
+	MR_sv(5) = (MR_Word) MR_CTOR0_ADDR(mdbcomp__prim_data, sym_name);
+	MR_sv(6) = (MR_Word) MR_TAG_COMMON(0,0,3);
+	MR_r1 = (MR_Word) MR_CTOR0_ADDR(hlds__hlds_pred, pred_id);
+	MR_tempr2 = MR_r2;
+	MR_r2 = MR_sv(6);
+	MR_r4 = MR_tempr2;
+	}
+	MR_np_call_localret_ent(fn__list__map_2_0,
+		recompilation__usage__do_record_used_pred_or_func_9_0_i9);
+MR_def_label(recompilation__usage__do_record_used_pred_or_func_9_0,9)
+	MR_MAYBE_INIT_LOCAL_THREAD_ENGINE_BASE
+	{
+	MR_Word MR_tempr1;
+	MR_tempr1 = MR_r1;
+	MR_r1 = MR_sv(6);
+	MR_r2 = MR_tempr1;
+	}
+	MR_np_call_localret_ent(fn__set__list_to_set_1_0,
+		recompilation__usage__do_record_used_pred_or_func_9_0_i10);
+MR_def_label(recompilation__usage__do_record_used_pred_or_func_9_0,10)
+	MR_MAYBE_INIT_LOCAL_THREAD_ENGINE_BASE
+	{
+	MR_Word MR_tempr1;
+	MR_tempr1 = MR_sv(2);
+	MR_sv(2) = MR_r1;
+	MR_r1 = MR_sv(5);
+	MR_r2 = (MR_Word) MR_TAG_COMMON(0,1,0);
+	MR_r3 = MR_tempr1;
+	MR_r4 = MR_sv(2);
+	MR_r5 = MR_sv(7);
+	}
+	MR_np_call_localret_ent(map__det_insert_4_0,
+		recompilation__usage__do_record_used_pred_or_func_9_0_i12);
+MR_def_label(recompilation__usage__do_record_used_pred_or_func_9_0,12)
+	MR_MAYBE_INIT_LOCAL_THREAD_ENGINE_BASE
+	MR_r2 = MR_sv(3);
+	MR_sv(3) = MR_r1;
+	MR_r1 = MR_r2;
+	MR_np_call_localret_ent(fn__mdbcomp__prim_data__unqualify_name_1_0,
+		recompilation__usage__do_record_used_pred_or_func_9_0_i13);
+MR_def_label(recompilation__usage__do_record_used_pred_or_func_9_0,13)
+	MR_MAYBE_INIT_LOCAL_THREAD_ENGINE_BASE
+	{
+	MR_Word MR_tempr1, MR_tempr2;
+	MR_tag_alloc_heap(MR_tempr1, 0, (MR_Integer) 2);
+	MR_tfield(0, MR_tempr1, 0) = MR_r1;
+	MR_tfield(0, MR_tempr1, 1) = MR_sv(4);
+	MR_tag_alloc_heap(MR_tempr2, 0, (MR_Integer) 5);
+	MR_r3 = MR_tempr2;
+	MR_tfield(0, MR_tempr2, 0) = (MR_Word) MR_COMMON(7,5);
+	MR_tfield(0, MR_tempr2, 1) = (MR_Word) MR_ENTRY_AP(recompilation__usage__find_items_used_by_pred_5_0);
+	MR_tfield(0, MR_tempr2, 2) = (MR_Integer) 2;
+	MR_tfield(0, MR_tempr2, 3) = MR_sv(1);
+	MR_tfield(0, MR_tempr2, 4) = MR_tempr1;
+	MR_r1 = MR_sv(6);
+	MR_r2 = (MR_Word) MR_CTOR0_ADDR(recompilation__usage, recompilation_usage_info);
+	MR_r4 = MR_sv(2);
+	MR_r5 = MR_sv(8);
+	}
+	MR_np_call_localret_ent(set__fold_4_0,
+		recompilation__usage__do_record_used_pred_or_func_9_0_i16);
+MR_def_label(recompilation__usage__do_record_used_pred_or_func_9_0,16)
+	MR_MAYBE_INIT_LOCAL_THREAD_ENGINE_BASE
+	{
+	MR_Word MR_tempr1;
+	MR_tempr1 = MR_r1;
+	MR_r1 = (MR_Integer) 1;
+	MR_r2 = MR_sv(3);
+	MR_r3 = MR_tempr1;
+	MR_decr_sp_and_return(9);
+	}
+MR_def_label(recompilation__usage__do_record_used_pred_or_func_9_0,2)
+	MR_MAYBE_INIT_LOCAL_THREAD_ENGINE_BASE
+	MR_r1 = (MR_Integer) 0;
+	MR_r2 = MR_sv(7);
+	MR_r3 = MR_sv(8);
+	MR_decr_sp_and_return(9);
+#ifdef MR_maybe_local_thread_engine_base
+	#undef MR_maybe_local_thread_engine_base
+	#define MR_maybe_local_thread_engine_base MR_thread_engine_base
+#endif
+MR_END_MODULE
+
+MR_decl_entry(hlds__hlds_module__module_info_get_cons_table_2_0);
+MR_decl_entry(fn__parse_tree__prog_data__cons_id_dummy_type_ctor_0_0);
+extern const MR_TypeCtorInfo_Struct mercury_data_parse_tree__prog_data__type_ctor_info_cons_id_0;
+MR_decl_entry(parse_tree__prog_type__remove_new_prefix_2_0);
+MR_decl_entry(fn__f_108_105_115_116_95_95_43_43_2_0);
+MR_decl_entry(hlds__pred_table__predicate_table_search_sym_4_0);
+MR_decl_entry(fn__list__filter_map_2_0);
+MR_decl_entry(hlds__hlds_pred__is_field_access_function_name_5_0);
+MR_decl_entry(hlds__hlds_module__module_info_get_ctor_field_table_2_0);
+MR_decl_entry(fn__list__condense_1_0);
+
+MR_BEGIN_MODULE(recompilation__usage_module43)
+	MR_init_entry1(recompilation__usage__find_matching_functors_4_0);
+	MR_INIT_PROC_LAYOUT_ADDR(mercury__recompilation__usage__find_matching_functors_4_0);
+	MR_init_label10(recompilation__usage__find_matching_functors_4_0,2,3,7,5,9,11,13,16,18,10)
+	MR_init_label10(recompilation__usage__find_matching_functors_4_0,21,22,23,25,28,24,29,31,33,35)
+	MR_init_label4(recompilation__usage__find_matching_functors_4_0,38,30,45,46)
+MR_BEGIN_CODE
+
+/*-------------------------------------------------------------------------*/
+/* code for 'find_matching_functors'/4 mode 0 */
+#ifdef MR_maybe_local_thread_engine_base
+	#undef MR_maybe_local_thread_engine_base
+	#define MR_maybe_local_thread_engine_base MR_local_thread_engine_base
+#endif
+MR_def_static(recompilation__usage__find_matching_functors_4_0)
+	MR_MAYBE_INIT_LOCAL_THREAD_ENGINE_BASE
+	MR_incr_sp(7);
+	MR_sv(7) = (MR_Word) MR_succip;
+	MR_sv(1) = MR_r1;
+	MR_sv(2) = MR_r2;
+	MR_sv(3) = MR_r3;
+	MR_np_call_localret_ent(hlds__hlds_module__module_info_get_cons_table_2_0,
+		recompilation__usage__find_matching_functors_4_0_i2);
+MR_def_label(recompilation__usage__find_matching_functors_4_0,2)
+	MR_MAYBE_INIT_LOCAL_THREAD_ENGINE_BASE
+	MR_sv(4) = MR_r1;
+	MR_np_call_localret_ent(fn__parse_tree__prog_data__cons_id_dummy_type_ctor_0_0,
+		recompilation__usage__find_matching_functors_4_0_i3);
+MR_def_label(recompilation__usage__find_matching_functors_4_0,3)
+	MR_MAYBE_INIT_LOCAL_THREAD_ENGINE_BASE
+	{
+	MR_Word MR_tempr1;
+	MR_tag_alloc_heap(MR_tempr1, 1, (MR_Integer) 3);
+	MR_r4 = MR_tempr1;
+	MR_tfield(1, MR_tempr1, 0) = MR_sv(2);
+	MR_tfield(1, MR_tempr1, 1) = MR_sv(3);
+	MR_tfield(1, MR_tempr1, 2) = MR_r1;
+	MR_r1 = (MR_Word) MR_CTOR0_ADDR(parse_tree__prog_data, cons_id);
+	MR_r2 = (MR_Word) MR_TAG_COMMON(0,1,14);
+	MR_r3 = MR_sv(4);
+	}
+	MR_np_call_localret_ent(map__search_3_0,
+		recompilation__usage__find_matching_functors_4_0_i7);
+MR_def_label(recompilation__usage__find_matching_functors_4_0,7)
+	MR_MAYBE_INIT_LOCAL_THREAD_ENGINE_BASE
+	if (!(MR_r1)) {
+		MR_GOTO_LAB(recompilation__usage__find_matching_functors_4_0_i5);
+	}
+	MR_r1 = MR_sv(2);
+	MR_sv(5) = MR_r2;
+	MR_GOTO_LAB(recompilation__usage__find_matching_functors_4_0_i9);
+MR_def_label(recompilation__usage__find_matching_functors_4_0,5)
+	MR_MAYBE_INIT_LOCAL_THREAD_ENGINE_BASE
+	MR_r1 = MR_sv(2);
+	MR_sv(5) = (MR_Word) MR_tbmkword(0, 0);
+MR_def_label(recompilation__usage__find_matching_functors_4_0,9)
+	MR_MAYBE_INIT_LOCAL_THREAD_ENGINE_BASE
+	MR_sv(2) = MR_r1;
+	MR_np_call_localret_ent(parse_tree__prog_type__remove_new_prefix_2_0,
+		recompilation__usage__find_matching_functors_4_0_i11);
+MR_def_label(recompilation__usage__find_matching_functors_4_0,11)
+	MR_MAYBE_INIT_LOCAL_THREAD_ENGINE_BASE
+	if (!(MR_r1)) {
+		MR_GOTO_LAB(recompilation__usage__find_matching_functors_4_0_i10);
+	}
+	MR_sv(6) = MR_r2;
+	MR_np_call_localret_ent(fn__parse_tree__prog_data__cons_id_dummy_type_ctor_0_0,
+		recompilation__usage__find_matching_functors_4_0_i13);
+MR_def_label(recompilation__usage__find_matching_functors_4_0,13)
+	MR_MAYBE_INIT_LOCAL_THREAD_ENGINE_BASE
+	{
+	MR_Word MR_tempr1;
+	MR_tag_alloc_heap(MR_tempr1, 1, (MR_Integer) 3);
+	MR_r4 = MR_tempr1;
+	MR_tfield(1, MR_tempr1, 0) = MR_sv(6);
+	MR_tfield(1, MR_tempr1, 1) = MR_sv(3);
+	MR_tfield(1, MR_tempr1, 2) = MR_r1;
+	MR_r1 = (MR_Word) MR_CTOR0_ADDR(parse_tree__prog_data, cons_id);
+	MR_r2 = (MR_Word) MR_TAG_COMMON(0,1,14);
+	MR_r3 = MR_sv(4);
+	}
+	MR_np_call_localret_ent(map__search_3_0,
+		recompilation__usage__find_matching_functors_4_0_i16);
+MR_def_label(recompilation__usage__find_matching_functors_4_0,16)
+	MR_MAYBE_INIT_LOCAL_THREAD_ENGINE_BASE
+	if (!(MR_r1)) {
+		MR_GOTO_LAB(recompilation__usage__find_matching_functors_4_0_i10);
+	}
+	MR_r1 = (MR_Word) MR_CTOR0_ADDR(hlds__hlds_data, hlds_cons_defn);
+	{
+	MR_Word MR_tempr1;
+	MR_tempr1 = MR_r2;
+	MR_r2 = MR_sv(5);
+	MR_r3 = MR_tempr1;
+	}
+	MR_np_call_localret_ent(fn__f_108_105_115_116_95_95_43_43_2_0,
+		recompilation__usage__find_matching_functors_4_0_i18);
+MR_def_label(recompilation__usage__find_matching_functors_4_0,18)
+	MR_MAYBE_INIT_LOCAL_THREAD_ENGINE_BASE
+	MR_r4 = MR_r1;
+	MR_r3 = (MR_Word) MR_TAG_COMMON(0,3,24);
+	MR_r1 = (MR_Word) MR_CTOR0_ADDR(hlds__hlds_data, hlds_cons_defn);
+	MR_r2 = (MR_Word) MR_CTOR0_ADDR(recompilation__usage, resolved_functor);
+	MR_GOTO_LAB(recompilation__usage__find_matching_functors_4_0_i21);
+MR_def_label(recompilation__usage__find_matching_functors_4_0,10)
+	MR_MAYBE_INIT_LOCAL_THREAD_ENGINE_BASE
+	MR_r4 = MR_sv(5);
+	MR_r3 = (MR_Word) MR_TAG_COMMON(0,3,25);
+	MR_r1 = (MR_Word) MR_CTOR0_ADDR(hlds__hlds_data, hlds_cons_defn);
+	MR_r2 = (MR_Word) MR_CTOR0_ADDR(recompilation__usage, resolved_functor);
+MR_def_label(recompilation__usage__find_matching_functors_4_0,21)
+	MR_MAYBE_INIT_LOCAL_THREAD_ENGINE_BASE
+	MR_sv(5) = MR_r2;
+	MR_np_call_localret_ent(fn__list__map_2_0,
+		recompilation__usage__find_matching_functors_4_0_i22);
+MR_def_label(recompilation__usage__find_matching_functors_4_0,22)
+	MR_MAYBE_INIT_LOCAL_THREAD_ENGINE_BASE
+	MR_sv(4) = MR_r1;
+	MR_r1 = MR_sv(1);
+	MR_np_call_localret_ent(hlds__hlds_module__module_info_get_predicate_table_2_0,
+		recompilation__usage__find_matching_functors_4_0_i23);
+MR_def_label(recompilation__usage__find_matching_functors_4_0,23)
+	MR_MAYBE_INIT_LOCAL_THREAD_ENGINE_BASE
+	MR_r2 = (MR_Integer) 1;
+	MR_r3 = MR_sv(2);
+	MR_np_call_localret_ent(hlds__pred_table__predicate_table_search_sym_4_0,
+		recompilation__usage__find_matching_functors_4_0_i25);
+MR_def_label(recompilation__usage__find_matching_functors_4_0,25)
+	MR_MAYBE_INIT_LOCAL_THREAD_ENGINE_BASE
+	if (!(MR_r1)) {
+		MR_GOTO_LAB(recompilation__usage__find_matching_functors_4_0_i24);
+	}
+	{
+	MR_Word MR_tempr1, MR_tempr2;
+	MR_tag_alloc_heap(MR_tempr1, 0, (MR_Integer) 6);
+	MR_r3 = MR_tempr1;
+	MR_tfield(0, MR_tempr1, 0) = (MR_Word) MR_COMMON(7,6);
+	MR_tfield(0, MR_tempr1, 1) = (MR_Word) MR_ENTRY_AP(fn__recompilation__usage__get_pred_or_func_ctors_4_0);
+	MR_tfield(0, MR_tempr1, 2) = (MR_Integer) 3;
+	MR_tfield(0, MR_tempr1, 3) = MR_sv(1);
+	MR_tfield(0, MR_tempr1, 4) = MR_sv(2);
+	MR_tfield(0, MR_tempr1, 5) = MR_sv(3);
+	MR_r1 = (MR_Word) MR_CTOR0_ADDR(hlds__hlds_pred, pred_id);
+	MR_tempr2 = MR_r2;
+	MR_r2 = MR_sv(5);
+	MR_r4 = MR_tempr2;
+	}
+	MR_np_call_localret_ent(fn__list__filter_map_2_0,
+		recompilation__usage__find_matching_functors_4_0_i28);
+MR_def_label(recompilation__usage__find_matching_functors_4_0,28)
+	MR_MAYBE_INIT_LOCAL_THREAD_ENGINE_BASE
+	MR_r3 = MR_r1;
+	MR_r1 = MR_sv(1);
+	MR_r2 = MR_sv(2);
+	MR_sv(2) = MR_r3;
+	MR_GOTO_LAB(recompilation__usage__find_matching_functors_4_0_i29);
+MR_def_label(recompilation__usage__find_matching_functors_4_0,24)
+	MR_MAYBE_INIT_LOCAL_THREAD_ENGINE_BASE
+	MR_r1 = MR_sv(1);
+	MR_r2 = MR_sv(2);
+	MR_sv(2) = (MR_Word) MR_tbmkword(0, 0);
+MR_def_label(recompilation__usage__find_matching_functors_4_0,29)
+	MR_MAYBE_INIT_LOCAL_THREAD_ENGINE_BASE
+	MR_sv(1) = MR_r1;
+	MR_np_call_localret_ent(hlds__hlds_pred__is_field_access_function_name_5_0,
+		recompilation__usage__find_matching_functors_4_0_i31);
+MR_def_label(recompilation__usage__find_matching_functors_4_0,31)
+	MR_MAYBE_INIT_LOCAL_THREAD_ENGINE_BASE
+	if (!(MR_r1)) {
+		MR_GOTO_LAB(recompilation__usage__find_matching_functors_4_0_i30);
+	}
+	if ((MR_sv(3) != MR_r2)) {
+		MR_GOTO_LAB(recompilation__usage__find_matching_functors_4_0_i30);
+	}
+	MR_r2 = MR_sv(1);
+	MR_sv(1) = MR_r4;
+	MR_r1 = MR_r2;
+	MR_np_call_localret_ent(hlds__hlds_module__module_info_get_ctor_field_table_2_0,
+		recompilation__usage__find_matching_functors_4_0_i33);
+MR_def_label(recompilation__usage__find_matching_functors_4_0,33)
+	MR_MAYBE_INIT_LOCAL_THREAD_ENGINE_BASE
+	{
+	MR_Word MR_tempr1;
+	MR_tempr1 = MR_r1;
+	MR_r1 = (MR_Word) MR_CTOR0_ADDR(mdbcomp__prim_data, sym_name);
+	MR_r2 = (MR_Word) MR_TAG_COMMON(0,1,15);
+	MR_r3 = MR_tempr1;
+	MR_r4 = MR_sv(1);
+	}
+	MR_np_call_localret_ent(map__search_3_0,
+		recompilation__usage__find_matching_functors_4_0_i35);
+MR_def_label(recompilation__usage__find_matching_functors_4_0,35)
+	MR_MAYBE_INIT_LOCAL_THREAD_ENGINE_BASE
+	if (!(MR_r1)) {
+		MR_GOTO_LAB(recompilation__usage__find_matching_functors_4_0_i30);
+	}
+	MR_r1 = (MR_Word) MR_CTOR0_ADDR(hlds__hlds_data, hlds_ctor_field_defn);
+	{
+	MR_Word MR_tempr1;
+	MR_tempr1 = MR_r2;
+	MR_r2 = MR_sv(5);
+	MR_r3 = (MR_Word) MR_TAG_COMMON(0,3,26);
+	MR_r4 = MR_tempr1;
+	}
+	MR_np_call_localret_ent(fn__list__map_2_0,
+		recompilation__usage__find_matching_functors_4_0_i38);
+MR_def_label(recompilation__usage__find_matching_functors_4_0,38)
+	MR_MAYBE_INIT_LOCAL_THREAD_ENGINE_BASE
+	{
+	MR_Word MR_tempr1, MR_tempr2;
+	MR_tag_alloc_heap(MR_tempr1, 1, (MR_Integer) 2);
+	MR_r3 = MR_tempr1;
+	MR_tfield(1, MR_tempr1, 0) = MR_r1;
+	MR_tfield(1, MR_tempr1, 1) = (MR_Word) MR_tbmkword(0, 0);
+	MR_tag_alloc_heap(MR_tempr2, 1, (MR_Integer) 2);
+	MR_r4 = MR_tempr2;
+	MR_tfield(1, MR_tempr2, 0) = MR_sv(2);
+	MR_tfield(1, MR_tempr2, 1) = MR_tempr1;
+	MR_tag_alloc_heap(MR_r2, 1, (MR_Integer) 2);
+	MR_tfield(1, MR_r2, 0) = MR_sv(4);
+	MR_tfield(1, MR_r2, 1) = MR_tempr2;
+	MR_r1 = MR_sv(5);
+	MR_GOTO_LAB(recompilation__usage__find_matching_functors_4_0_i45);
+	}
+MR_def_label(recompilation__usage__find_matching_functors_4_0,30)
+	MR_MAYBE_INIT_LOCAL_THREAD_ENGINE_BASE
+	{
+	MR_Word MR_tempr1;
+	MR_tag_alloc_heap(MR_tempr1, 1, (MR_Integer) 2);
+	MR_tfield(1, MR_tempr1, 0) = MR_sv(2);
+	MR_tfield(1, MR_tempr1, 1) = (MR_Word) MR_TAG_COMMON(1,1,16);
+	MR_tag_alloc_heap(MR_r2, 1, (MR_Integer) 2);
+	MR_tfield(1, MR_r2, 0) = MR_sv(4);
+	MR_tfield(1, MR_r2, 1) = MR_tempr1;
+	MR_r1 = MR_sv(5);
+	}
+MR_def_label(recompilation__usage__find_matching_functors_4_0,45)
+	MR_MAYBE_INIT_LOCAL_THREAD_ENGINE_BASE
+	MR_sv(5) = MR_r1;
+	MR_np_call_localret_ent(fn__list__condense_1_0,
+		recompilation__usage__find_matching_functors_4_0_i46);
+MR_def_label(recompilation__usage__find_matching_functors_4_0,46)
+	MR_MAYBE_INIT_LOCAL_THREAD_ENGINE_BASE
+	{
+	MR_Word MR_tempr1;
+	MR_tempr1 = MR_r1;
+	MR_r1 = MR_sv(5);
+	MR_r2 = MR_tempr1;
+	MR_succip_word = MR_sv(7);
+	MR_decr_sp(7);
+	MR_np_tailcall_ent(fn__set__list_to_set_1_0);
+	}
+#ifdef MR_maybe_local_thread_engine_base
+	#undef MR_maybe_local_thread_engine_base
+	#define MR_maybe_local_thread_engine_base MR_thread_engine_base
+#endif
+MR_END_MODULE
+
+
+MR_BEGIN_MODULE(recompilation__usage_module44)
+	MR_init_entry1(recompilation__usage__do_record_used_functor_8_0);
+	MR_INIT_PROC_LAYOUT_ADDR(mercury__recompilation__usage__do_record_used_functor_8_0);
+	MR_init_label6(recompilation__usage__do_record_used_functor_8_0,2,3,5,8,6,11)
+MR_BEGIN_CODE
+
+/*-------------------------------------------------------------------------*/
+/* code for 'do_record_used_functor'/8 mode 0 */
+#ifdef MR_maybe_local_thread_engine_base
+	#undef MR_maybe_local_thread_engine_base
+	#define MR_maybe_local_thread_engine_base MR_local_thread_engine_base
+#endif
+MR_def_static(recompilation__usage__do_record_used_functor_8_0)
+	MR_MAYBE_INIT_LOCAL_THREAD_ENGINE_BASE
+	MR_incr_sp(6);
+	MR_sv(6) = (MR_Word) MR_succip;
+	MR_sv(1) = MR_r1;
+	MR_sv(2) = MR_r2;
+	MR_sv(3) = MR_r3;
+	MR_sv(4) = MR_r4;
+	{
+	MR_Word MR_tempr1;
+	MR_tempr1 = MR_r5;
+	MR_sv(5) = MR_tempr1;
+	MR_r1 = MR_tfield(0, MR_tempr1, 0);
+	}
+	MR_np_call_localret_ent(recompilation__usage__find_matching_functors_4_0,
+		recompilation__usage__do_record_used_functor_8_0_i2);
+MR_def_label(recompilation__usage__do_record_used_functor_8_0,2)
+	MR_MAYBE_INIT_LOCAL_THREAD_ENGINE_BASE
+	MR_r2 = MR_sv(2);
+	MR_sv(2) = MR_r1;
+	MR_r1 = MR_r2;
+	MR_np_call_localret_ent(fn__mdbcomp__prim_data__unqualify_name_1_0,
+		recompilation__usage__do_record_used_functor_8_0_i3);
+MR_def_label(recompilation__usage__do_record_used_functor_8_0,3)
+	MR_MAYBE_INIT_LOCAL_THREAD_ENGINE_BASE
+	{
+	MR_Word MR_tempr1, MR_tempr2;
+	MR_tag_alloc_heap(MR_tempr1, 0, (MR_Integer) 5);
+	MR_r3 = MR_tempr1;
+	MR_tfield(0, MR_tempr1, 0) = (MR_Word) MR_COMMON(7,7);
+	MR_tfield(0, MR_tempr1, 1) = (MR_Word) MR_ENTRY_AP(recompilation__usage__find_items_used_by_functor_5_0);
+	MR_tfield(0, MR_tempr1, 2) = (MR_Integer) 2;
+	MR_tfield(0, MR_tempr1, 3) = MR_r1;
+	MR_tfield(0, MR_tempr1, 4) = MR_sv(3);
+	MR_tempr2 = MR_sv(5);
+	MR_sv(5) = (MR_Word) MR_CTOR0_ADDR(recompilation__usage, resolved_functor);
+	MR_r1 = MR_sv(5);
+	MR_r2 = (MR_Word) MR_CTOR0_ADDR(recompilation__usage, recompilation_usage_info);
+	MR_r4 = MR_sv(2);
+	MR_r5 = MR_tempr2;
+	}
+	MR_np_call_localret_ent(set__fold_4_0,
+		recompilation__usage__do_record_used_functor_8_0_i5);
+MR_def_label(recompilation__usage__do_record_used_functor_8_0,5)
+	MR_MAYBE_INIT_LOCAL_THREAD_ENGINE_BASE
+	MR_sv(3) = MR_r1;
+	MR_r1 = MR_sv(5);
+	MR_r2 = MR_sv(2);
+	MR_np_call_localret_ent(set__empty_1_0,
+		recompilation__usage__do_record_used_functor_8_0_i8);
+MR_def_label(recompilation__usage__do_record_used_functor_8_0,8)
+	MR_MAYBE_INIT_LOCAL_THREAD_ENGINE_BASE
+	if (!(MR_r1)) {
+		MR_GOTO_LAB(recompilation__usage__do_record_used_functor_8_0_i6);
+	}
+	MR_r1 = (MR_Integer) 0;
+	MR_r2 = MR_sv(4);
+	MR_r3 = MR_sv(3);
+	MR_decr_sp_and_return(6);
+MR_def_label(recompilation__usage__do_record_used_functor_8_0,6)
+	MR_MAYBE_INIT_LOCAL_THREAD_ENGINE_BASE
+	MR_r1 = MR_sv(3);
+	MR_tag_alloc_heap(MR_r2, 0, (MR_Integer) 2);
+	MR_tfield(0, MR_r2, 0) = (MR_Word) MR_CTOR1_ADDR(set_ordlist, set_ordlist);
+	MR_tfield(0, MR_r2, 1) = MR_sv(5);
+	MR_r1 = (MR_Word) MR_CTOR0_ADDR(mdbcomp__prim_data, sym_name);
+	MR_r3 = MR_sv(1);
+	MR_r4 = MR_sv(2);
+	MR_r5 = MR_sv(4);
+	MR_np_call_localret_ent(map__det_insert_4_0,
+		recompilation__usage__do_record_used_functor_8_0_i11);
+MR_def_label(recompilation__usage__do_record_used_functor_8_0,11)
+	MR_MAYBE_INIT_LOCAL_THREAD_ENGINE_BASE
+	{
+	MR_Word MR_tempr1;
+	MR_tempr1 = MR_r1;
+	MR_r1 = (MR_Integer) 1;
+	MR_r2 = MR_tempr1;
+	MR_r3 = MR_sv(3);
+	MR_decr_sp_and_return(6);
+	}
+#ifdef MR_maybe_local_thread_engine_base
+	#undef MR_maybe_local_thread_engine_base
+	#define MR_maybe_local_thread_engine_base MR_thread_engine_base
+#endif
+MR_END_MODULE
+
+
+MR_BEGIN_MODULE(recompilation__usage_module45)
+	MR_init_entry1(fn__recompilation__usage__get_pred_or_func_ctors_4_0);
+	MR_INIT_PROC_LAYOUT_ADDR(mercury__fn__recompilation__usage__get_pred_or_func_ctors_4_0);
+MR_BEGIN_CODE
+
+/*-------------------------------------------------------------------------*/
+/* code for 'get_pred_or_func_ctors'/5 mode 0 */
+#ifdef MR_maybe_local_thread_engine_base
+	#undef MR_maybe_local_thread_engine_base
+	#define MR_maybe_local_thread_engine_base MR_local_thread_engine_base
+#endif
+MR_def_static(fn__recompilation__usage__get_pred_or_func_ctors_4_0)
+	MR_MAYBE_INIT_LOCAL_THREAD_ENGINE_BASE
+	MR_r2 = MR_r3;
+	MR_r3 = MR_r4;
+	MR_np_tailcall_ent(fn__f_114_101_99_111_109_112_105_108_97_116_105_111_110_95_95_117_115_97_103_101_95_95_85_110_117_115_101_100_65_114_103_115_95_95_102_117_110_99_95_95_103_101_116_95_112_114_101_100_95_111_114_95_102_117_110_99_95_99_116_111_114_115_95_95_91_50_93_95_48_4_0);
+#ifdef MR_maybe_local_thread_engine_base
+	#undef MR_maybe_local_thread_engine_base
+	#define MR_maybe_local_thread_engine_base MR_thread_engine_base
+#endif
+MR_END_MODULE
+
+
+MR_BEGIN_MODULE(recompilation__usage_module46)
+	MR_init_entry1(recompilation__usage__find_items_used_by_instances_4_0);
+	MR_INIT_PROC_LAYOUT_ADDR(mercury__recompilation__usage__find_items_used_by_instances_4_0);
+	MR_init_label8(recompilation__usage__find_items_used_by_instances_4_0,6,7,12,14,16,9,3,4)
+MR_BEGIN_CODE
+
+/*-------------------------------------------------------------------------*/
+/* code for 'find_items_used_by_instances'/4 mode 0 */
+#ifdef MR_maybe_local_thread_engine_base
+	#undef MR_maybe_local_thread_engine_base
+	#define MR_maybe_local_thread_engine_base MR_local_thread_engine_base
+#endif
+MR_def_static(recompilation__usage__find_items_used_by_instances_4_0)
+	MR_MAYBE_INIT_LOCAL_THREAD_ENGINE_BASE
+	MR_incr_sp(5);
+	MR_sv(5) = (MR_Word) MR_succip;
+	{
+	MR_Word MR_tempr1, MR_tempr2, MR_tempr3;
+	MR_tag_alloc_heap(MR_tempr1, 0, (MR_Integer) 2);
+	MR_sv(2) = MR_tempr1;
+	MR_tfield(0, MR_tempr1, 0) = MR_tfield(0, MR_r1, 0);
+	MR_tfield(0, MR_tempr1, 1) = MR_tfield(0, MR_r1, 1);
+	MR_tempr2 = MR_tfield(0, MR_tempr1, 0);
+	if (MR_PTAG_TESTR(MR_tempr2,1)) {
+		MR_GOTO_LAB(recompilation__usage__find_items_used_by_instances_4_0_i4);
+	}
+	MR_sv(1) = MR_r2;
+	MR_tempr3 = MR_r3;
+	MR_sv(3) = MR_tempr3;
+	MR_sv(4) = MR_tfield(1, MR_tempr2, 0);
+	MR_r1 = MR_tfield(0, MR_tempr3, 0);
+	}
+	MR_np_call_localret_ent(hlds__hlds_module__module_info_get_name_2_0,
+		recompilation__usage__find_items_used_by_instances_4_0_i6);
+MR_def_label(recompilation__usage__find_items_used_by_instances_4_0,6)
+	MR_MAYBE_INIT_LOCAL_THREAD_ENGINE_BASE
+	{
+	MR_Word MR_tempr1;
+	MR_tempr1 = MR_r1;
+	MR_r1 = MR_sv(4);
+	MR_r2 = MR_tempr1;
+	}
+	MR_np_call_localret_ent(__Unify___mdbcomp__prim_data__sym_name_0_0,
+		recompilation__usage__find_items_used_by_instances_4_0_i7);
+MR_def_label(recompilation__usage__find_items_used_by_instances_4_0,7)
+	MR_MAYBE_INIT_LOCAL_THREAD_ENGINE_BASE
+	if (!(MR_r1)) {
+		MR_GOTO_LAB(recompilation__usage__find_items_used_by_instances_4_0_i3);
+	}
+	{
+	MR_Word MR_tempr1;
+	MR_tag_alloc_heap(MR_tempr1, 0, (MR_Integer) 2);
+	MR_r4 = MR_tempr1;
+	MR_tfield(0, MR_tempr1, 0) = (MR_Integer) 4;
+	MR_tfield(0, MR_tempr1, 1) = MR_sv(2);
+	MR_r1 = (MR_Word) MR_CTOR0_ADDR(recompilation, item_id);
+	MR_r2 = (MR_Word) MR_TAG_COMMON(0,1,8);
+	MR_r3 = MR_tfield(0, MR_sv(3), 4);
+	}
+	MR_np_call_localret_ent(map__search_3_0,
+		recompilation__usage__find_items_used_by_instances_4_0_i12);
+MR_def_label(recompilation__usage__find_items_used_by_instances_4_0,12)
+	MR_MAYBE_INIT_LOCAL_THREAD_ENGINE_BASE
+	if (!(MR_r1)) {
+		MR_GOTO_LAB(recompilation__usage__find_items_used_by_instances_4_0_i9);
+	}
+	MR_sv(4) = (MR_Word) MR_CTOR0_ADDR(recompilation, item_id);
+	MR_r1 = MR_sv(4);
+	MR_np_call_localret_ent(fn__set__to_sorted_list_1_0,
+		recompilation__usage__find_items_used_by_instances_4_0_i14);
+MR_def_label(recompilation__usage__find_items_used_by_instances_4_0,14)
+	MR_MAYBE_INIT_LOCAL_THREAD_ENGINE_BASE
+	{
+	MR_Word MR_tempr1;
+	MR_tempr1 = MR_r1;
+	MR_r1 = MR_sv(4);
+	MR_r2 = (MR_Word) MR_CTOR0_ADDR(recompilation__usage, recompilation_usage_info);
+	MR_r3 = (MR_Word) MR_TAG_COMMON(0,3,27);
+	MR_r4 = MR_tempr1;
+	MR_r5 = MR_sv(3);
+	}
+	MR_np_call_localret_ent(list__foldl_4_0,
+		recompilation__usage__find_items_used_by_instances_4_0_i16);
+MR_def_label(recompilation__usage__find_items_used_by_instances_4_0,16)
+	MR_MAYBE_INIT_LOCAL_THREAD_ENGINE_BASE
+	{
+	MR_Word MR_tempr1;
+	MR_tag_alloc_heap(MR_tempr1, 0, (MR_Integer) 4);
+	MR_r3 = MR_tempr1;
+	MR_tfield(0, MR_tempr1, 0) = (MR_Word) MR_COMMON(10,4);
+	MR_tfield(0, MR_tempr1, 1) = (MR_Word) MR_ENTRY_AP(recompilation__usage__find_items_used_by_instance_4_0);
+	MR_tfield(0, MR_tempr1, 2) = (MR_Integer) 1;
+	MR_tfield(0, MR_tempr1, 3) = MR_sv(2);
+	MR_r4 = MR_sv(1);
+	MR_r5 = MR_r1;
+	MR_r1 = (MR_Word) MR_CTOR0_ADDR(hlds__hlds_data, hlds_instance_defn);
+	MR_r2 = (MR_Word) MR_CTOR0_ADDR(recompilation__usage, recompilation_usage_info);
+	MR_succip_word = MR_sv(5);
+	MR_decr_sp(5);
+	MR_np_tailcall_ent(list__foldl_4_0);
+	}
+MR_def_label(recompilation__usage__find_items_used_by_instances_4_0,9)
+	MR_MAYBE_INIT_LOCAL_THREAD_ENGINE_BASE
+	{
+	MR_Word MR_tempr1;
+	MR_tag_alloc_heap(MR_tempr1, 0, (MR_Integer) 4);
+	MR_r3 = MR_tempr1;
+	MR_tfield(0, MR_tempr1, 0) = (MR_Word) MR_COMMON(10,5);
+	MR_tfield(0, MR_tempr1, 1) = (MR_Word) MR_ENTRY_AP(recompilation__usage__find_items_used_by_instance_4_0);
+	MR_tfield(0, MR_tempr1, 2) = (MR_Integer) 1;
+	MR_tfield(0, MR_tempr1, 3) = MR_sv(2);
+	MR_r4 = MR_sv(1);
+	MR_r5 = MR_sv(3);
+	MR_r1 = (MR_Word) MR_CTOR0_ADDR(hlds__hlds_data, hlds_instance_defn);
+	MR_r2 = (MR_Word) MR_CTOR0_ADDR(recompilation__usage, recompilation_usage_info);
+	MR_succip_word = MR_sv(5);
+	MR_decr_sp(5);
+	MR_np_tailcall_ent(list__foldl_4_0);
+	}
+MR_def_label(recompilation__usage__find_items_used_by_instances_4_0,3)
+	MR_MAYBE_INIT_LOCAL_THREAD_ENGINE_BASE
+	MR_r3 = MR_sv(3);
+MR_def_label(recompilation__usage__find_items_used_by_instances_4_0,4)
+	MR_MAYBE_INIT_LOCAL_THREAD_ENGINE_BASE
+	MR_r1 = MR_r3;
+	MR_decr_sp_and_return(5);
+#ifdef MR_maybe_local_thread_engine_base
+	#undef MR_maybe_local_thread_engine_base
+	#define MR_maybe_local_thread_engine_base MR_thread_engine_base
+#endif
+MR_END_MODULE
+
+
+MR_BEGIN_MODULE(recompilation__usage_module47)
+	MR_init_entry1(recompilation__usage__find_items_used_by_instance_4_0);
+	MR_INIT_PROC_LAYOUT_ADDR(mercury__recompilation__usage__find_items_used_by_instance_4_0);
+	MR_init_label10(recompilation__usage__find_items_used_by_instance_4_0,3,4,2,7,9,12,10,14,15,16)
+	MR_init_label1(recompilation__usage__find_items_used_by_instance_4_0,18)
+MR_BEGIN_CODE
+
+/*-------------------------------------------------------------------------*/
+/* code for 'find_items_used_by_instance'/4 mode 0 */
+#ifdef MR_maybe_local_thread_engine_base
+	#undef MR_maybe_local_thread_engine_base
+	#define MR_maybe_local_thread_engine_base MR_local_thread_engine_base
+#endif
+MR_def_static(recompilation__usage__find_items_used_by_instance_4_0)
+	MR_MAYBE_INIT_LOCAL_THREAD_ENGINE_BASE
+	MR_incr_sp(6);
+	MR_sv(6) = (MR_Word) MR_succip;
+	MR_sv(4) = MR_tfield(0, MR_r2, 4);
+	MR_sv(3) = MR_tfield(0, MR_r2, 3);
+	MR_sv(2) = MR_tfield(0, MR_r2, 0);
+	MR_sv(1) = MR_r1;
+	{
+	MR_Word MR_tempr1;
+	MR_tempr1 = MR_r3;
+	MR_sv(5) = MR_tempr1;
+	MR_r1 = MR_tfield(0, MR_tempr1, 0);
+	}
+	MR_np_call_localret_ent(hlds__hlds_module__module_info_get_name_2_0,
+		recompilation__usage__find_items_used_by_instance_4_0_i3);
+MR_def_label(recompilation__usage__find_items_used_by_instance_4_0,3)
+	MR_MAYBE_INIT_LOCAL_THREAD_ENGINE_BASE
+	{
+	MR_Word MR_tempr1;
+	MR_tempr1 = MR_r1;
+	MR_r1 = MR_sv(2);
+	MR_r2 = MR_tempr1;
+	}
+	MR_np_call_localret_ent(__Unify___mdbcomp__prim_data__sym_name_0_0,
+		recompilation__usage__find_items_used_by_instance_4_0_i4);
+MR_def_label(recompilation__usage__find_items_used_by_instance_4_0,4)
+	MR_MAYBE_INIT_LOCAL_THREAD_ENGINE_BASE
+	if (!(MR_r1)) {
+		MR_GOTO_LAB(recompilation__usage__find_items_used_by_instance_4_0_i2);
+	}
+	MR_r1 = MR_sv(5);
+	MR_decr_sp_and_return(6);
+MR_def_label(recompilation__usage__find_items_used_by_instance_4_0,2)
+	MR_MAYBE_INIT_LOCAL_THREAD_ENGINE_BASE
+	MR_r1 = (MR_Word) MR_CTOR0_ADDR(parse_tree__prog_data, prog_constraint);
+	MR_r2 = (MR_Word) MR_CTOR0_ADDR(recompilation__usage, recompilation_usage_info);
+	MR_r3 = (MR_Word) MR_TAG_COMMON(0,3,28);
+	MR_r4 = MR_sv(3);
+	MR_r5 = MR_sv(5);
+	MR_np_call_localret_ent(list__foldl_4_0,
+		recompilation__usage__find_items_used_by_instance_4_0_i7);
+MR_def_label(recompilation__usage__find_items_used_by_instance_4_0,7)
+	MR_MAYBE_INIT_LOCAL_THREAD_ENGINE_BASE
+	{
+	MR_Word MR_tempr1;
+	MR_tempr1 = MR_r1;
+	MR_r1 = (MR_Word) MR_CTOR0_ADDR(parse_tree__prog_data, mer_type);
+	MR_r2 = (MR_Word) MR_CTOR0_ADDR(recompilation__usage, recompilation_usage_info);
+	MR_r3 = (MR_Word) MR_TAG_COMMON(0,3,29);
+	MR_r4 = MR_sv(4);
+	MR_r5 = MR_tempr1;
+	}
+	MR_np_call_localret_ent(list__foldl_4_0,
+		recompilation__usage__find_items_used_by_instance_4_0_i9);
+MR_def_label(recompilation__usage__find_items_used_by_instance_4_0,9)
+	MR_MAYBE_INIT_LOCAL_THREAD_ENGINE_BASE
+	MR_r3 = MR_tfield(0, MR_r1, 3);
+	MR_sv(3) = MR_r3;
+	MR_sv(4) = MR_r1;
+	MR_r1 = (MR_Word) MR_CTOR0_ADDR(mdbcomp__prim_data, sym_name);
+	MR_r2 = (MR_Word) MR_TAG_COMMON(0,1,12);
+	MR_r4 = MR_sv(2);
+	MR_np_call_localret_ent(map__search_3_0,
+		recompilation__usage__find_items_used_by_instance_4_0_i12);
+MR_def_label(recompilation__usage__find_items_used_by_instance_4_0,12)
+	MR_MAYBE_INIT_LOCAL_THREAD_ENGINE_BASE
+	if (!(MR_r1)) {
+		MR_GOTO_LAB(recompilation__usage__find_items_used_by_instance_4_0_i10);
+	}
+	MR_r4 = MR_r2;
+	MR_r2 = MR_sv(1);
+	MR_r3 = MR_r4;
+	MR_r1 = (MR_Word) MR_CTOR0_ADDR(recompilation, item_name);
+	MR_GOTO_LAB(recompilation__usage__find_items_used_by_instance_4_0_i15);
+MR_def_label(recompilation__usage__find_items_used_by_instance_4_0,10)
+	MR_MAYBE_INIT_LOCAL_THREAD_ENGINE_BASE
+	MR_r1 = (MR_Word) MR_CTOR0_ADDR(recompilation, item_name);
+	MR_np_call_localret_ent(set__init_1_0,
+		recompilation__usage__find_items_used_by_instance_4_0_i14);
+MR_def_label(recompilation__usage__find_items_used_by_instance_4_0,14)
+	MR_MAYBE_INIT_LOCAL_THREAD_ENGINE_BASE
+	MR_r2 = MR_sv(1);
+	MR_r3 = MR_r1;
+	MR_r1 = (MR_Word) MR_CTOR0_ADDR(recompilation, item_name);
+MR_def_label(recompilation__usage__find_items_used_by_instance_4_0,15)
+	MR_MAYBE_INIT_LOCAL_THREAD_ENGINE_BASE
+	MR_sv(1) = MR_r1;
+	MR_np_call_localret_ent(set__insert_3_0,
+		recompilation__usage__find_items_used_by_instance_4_0_i16);
+MR_def_label(recompilation__usage__find_items_used_by_instance_4_0,16)
+	MR_MAYBE_INIT_LOCAL_THREAD_ENGINE_BASE
+	MR_tag_alloc_heap(MR_r2, 0, (MR_Integer) 2);
+	MR_tfield(0, MR_r2, 0) = (MR_Word) MR_CTOR1_ADDR(set_ordlist, set_ordlist);
+	MR_tfield(0, MR_r2, 1) = MR_sv(1);
+	{
+	MR_Word MR_tempr1;
+	MR_tempr1 = MR_r1;
+	MR_r1 = (MR_Word) MR_CTOR0_ADDR(mdbcomp__prim_data, sym_name);
+	MR_r3 = MR_sv(2);
+	MR_r4 = MR_tempr1;
+	MR_r5 = MR_sv(3);
+	}
+	MR_np_call_localret_ent(map__set_4_0,
+		recompilation__usage__find_items_used_by_instance_4_0_i18);
+MR_def_label(recompilation__usage__find_items_used_by_instance_4_0,18)
+	MR_MAYBE_INIT_LOCAL_THREAD_ENGINE_BASE
+	MR_tag_alloc_heap(MR_r2, 0, (MR_Integer) 7);
+	{
+	MR_Word MR_tempr1;
+	MR_tempr1 = MR_sv(4);
+	MR_tfield(0, MR_r2, 0) = MR_tfield(0, MR_tempr1, 0);
+	MR_tfield(0, MR_r2, 1) = MR_tfield(0, MR_tempr1, 1);
+	MR_tfield(0, MR_r2, 2) = MR_tfield(0, MR_tempr1, 2);
+	MR_tfield(0, MR_r2, 3) = MR_r1;
+	MR_tfield(0, MR_r2, 4) = MR_tfield(0, MR_tempr1, 4);
+	MR_tfield(0, MR_r2, 5) = MR_tfield(0, MR_tempr1, 5);
+	MR_tfield(0, MR_r2, 6) = MR_tfield(0, MR_tempr1, 6);
+	MR_r1 = MR_r2;
+	MR_decr_sp_and_return(6);
+	}
+#ifdef MR_maybe_local_thread_engine_base
+	#undef MR_maybe_local_thread_engine_base
+	#define MR_maybe_local_thread_engine_base MR_thread_engine_base
+#endif
+MR_END_MODULE
+
+
+MR_BEGIN_MODULE(recompilation__usage_module48)
+	MR_init_entry1(recompilation__usage__find_items_used_by_class_context_3_0);
+	MR_INIT_PROC_LAYOUT_ADDR(mercury__recompilation__usage__find_items_used_by_class_context_3_0);
+	MR_init_label1(recompilation__usage__find_items_used_by_class_context_3_0,3)
+MR_BEGIN_CODE
+
+/*-------------------------------------------------------------------------*/
+/* code for 'find_items_used_by_class_context'/3 mode 0 */
+#ifdef MR_maybe_local_thread_engine_base
+	#undef MR_maybe_local_thread_engine_base
+	#define MR_maybe_local_thread_engine_base MR_local_thread_engine_base
+#endif
+MR_def_static(recompilation__usage__find_items_used_by_class_context_3_0)
+	MR_MAYBE_INIT_LOCAL_THREAD_ENGINE_BASE
+	MR_incr_sp(2);
+	MR_sv(2) = (MR_Word) MR_succip;
+	MR_sv(1) = MR_tfield(0, MR_r1, 1);
+	{
+	MR_Word MR_tempr1, MR_tempr2;
+	MR_tempr1 = MR_r1;
+	MR_r1 = (MR_Word) MR_CTOR0_ADDR(parse_tree__prog_data, prog_constraint);
+	MR_tempr2 = MR_r2;
+	MR_r2 = (MR_Word) MR_CTOR0_ADDR(recompilation__usage, recompilation_usage_info);
+	MR_r3 = (MR_Word) MR_TAG_COMMON(0,3,30);
+	MR_r4 = MR_tfield(0, MR_tempr1, 0);
+	MR_r5 = MR_tempr2;
+	}
+	MR_np_call_localret_ent(list__foldl_4_0,
+		recompilation__usage__find_items_used_by_class_context_3_0_i3);
+MR_def_label(recompilation__usage__find_items_used_by_class_context_3_0,3)
+	MR_MAYBE_INIT_LOCAL_THREAD_ENGINE_BASE
+	{
+	MR_Word MR_tempr1;
+	MR_tempr1 = MR_r1;
+	MR_r1 = (MR_Word) MR_CTOR0_ADDR(parse_tree__prog_data, prog_constraint);
+	MR_r2 = (MR_Word) MR_CTOR0_ADDR(recompilation__usage, recompilation_usage_info);
+	MR_r3 = (MR_Word) MR_TAG_COMMON(0,3,31);
+	MR_r4 = MR_sv(1);
+	MR_r5 = MR_tempr1;
+	MR_succip_word = MR_sv(2);
+	MR_decr_sp(2);
+	MR_np_tailcall_ent(list__foldl_4_0);
+	}
+#ifdef MR_maybe_local_thread_engine_base
+	#undef MR_maybe_local_thread_engine_base
+	#define MR_maybe_local_thread_engine_base MR_thread_engine_base
+#endif
+MR_END_MODULE
+
+extern const MR_TypeCtorInfo_Struct mercury_data_parse_tree__prog_data__type_ctor_info_type_and_mode_0;
+
+MR_BEGIN_MODULE(recompilation__usage_module49)
+	MR_init_entry1(recompilation__usage__find_items_used_by_class_method_3_0);
+	MR_INIT_PROC_LAYOUT_ADDR(mercury__recompilation__usage__find_items_used_by_class_method_3_0);
+	MR_init_label3(recompilation__usage__find_items_used_by_class_method_3_0,5,7,3)
+MR_BEGIN_CODE
+
+/*-------------------------------------------------------------------------*/
+/* code for 'find_items_used_by_class_method'/3 mode 0 */
+#ifdef MR_maybe_local_thread_engine_base
+	#undef MR_maybe_local_thread_engine_base
+	#define MR_maybe_local_thread_engine_base MR_local_thread_engine_base
+#endif
+MR_def_static(recompilation__usage__find_items_used_by_class_method_3_0)
+	MR_MAYBE_INIT_LOCAL_THREAD_ENGINE_BASE
+	if (MR_PTAG_TESTR(MR_r1,0)) {
+		MR_GOTO_LAB(recompilation__usage__find_items_used_by_class_method_3_0_i3);
+	}
+	MR_incr_sp(3);
+	MR_sv(3) = (MR_Word) MR_succip;
+	MR_sv(1) = MR_tfield(0, MR_r1, 5);
+	{
+	MR_Word MR_tempr1, MR_tempr2;
+	MR_tempr1 = MR_tfield(0, MR_r1, 11);
+	MR_sv(2) = MR_tfield(0, MR_tempr1, 1);
+	MR_r1 = (MR_Word) MR_CTOR0_ADDR(parse_tree__prog_data, prog_constraint);
+	MR_tempr2 = MR_r2;
+	MR_r2 = (MR_Word) MR_CTOR0_ADDR(recompilation__usage, recompilation_usage_info);
+	MR_r3 = (MR_Word) MR_TAG_COMMON(0,3,32);
+	MR_r4 = MR_tfield(0, MR_tempr1, 0);
+	MR_r5 = MR_tempr2;
+	}
+	MR_np_call_localret_ent(list__foldl_4_0,
+		recompilation__usage__find_items_used_by_class_method_3_0_i5);
+MR_def_label(recompilation__usage__find_items_used_by_class_method_3_0,5)
+	MR_MAYBE_INIT_LOCAL_THREAD_ENGINE_BASE
+	{
+	MR_Word MR_tempr1;
+	MR_tempr1 = MR_r1;
+	MR_r1 = (MR_Word) MR_CTOR0_ADDR(parse_tree__prog_data, prog_constraint);
+	MR_r2 = (MR_Word) MR_CTOR0_ADDR(recompilation__usage, recompilation_usage_info);
+	MR_r3 = (MR_Word) MR_TAG_COMMON(0,3,33);
+	MR_r4 = MR_sv(2);
+	MR_r5 = MR_tempr1;
+	}
+	MR_np_call_localret_ent(list__foldl_4_0,
+		recompilation__usage__find_items_used_by_class_method_3_0_i7);
+MR_def_label(recompilation__usage__find_items_used_by_class_method_3_0,7)
+	MR_MAYBE_INIT_LOCAL_THREAD_ENGINE_BASE
+	{
+	MR_Word MR_tempr1;
+	MR_tempr1 = MR_r1;
+	MR_r1 = (MR_Word) MR_CTOR0_ADDR(parse_tree__prog_data, type_and_mode);
+	MR_r2 = (MR_Word) MR_CTOR0_ADDR(recompilation__usage, recompilation_usage_info);
+	MR_r3 = (MR_Word) MR_TAG_COMMON(0,3,34);
+	MR_r4 = MR_sv(1);
+	MR_r5 = MR_tempr1;
+	MR_succip_word = MR_sv(3);
+	MR_decr_sp(3);
+	MR_np_tailcall_ent(list__foldl_4_0);
+	}
+MR_def_label(recompilation__usage__find_items_used_by_class_method_3_0,3)
+	MR_MAYBE_INIT_LOCAL_THREAD_ENGINE_BASE
+	{
+	MR_Word MR_tempr1, MR_tempr2;
+	MR_tempr1 = MR_r1;
+	MR_r1 = (MR_Word) MR_CTOR0_ADDR(parse_tree__prog_data, mer_mode);
+	MR_tempr2 = MR_r2;
+	MR_r2 = (MR_Word) MR_CTOR0_ADDR(recompilation__usage, recompilation_usage_info);
+	MR_r3 = (MR_Word) MR_TAG_COMMON(0,3,35);
+	MR_r4 = MR_tfield(1, MR_tempr1, 3);
+	MR_r5 = MR_tempr2;
+	MR_np_tailcall_ent(list__foldl_4_0);
+	}
+#ifdef MR_maybe_local_thread_engine_base
+	#undef MR_maybe_local_thread_engine_base
+	#define MR_maybe_local_thread_engine_base MR_thread_engine_base
+#endif
+MR_END_MODULE
+
+
+MR_BEGIN_MODULE(recompilation__usage_module50)
+	MR_init_entry1(recompilation__usage__find_items_used_by_type_and_mode_3_0);
+	MR_INIT_PROC_LAYOUT_ADDR(mercury__recompilation__usage__find_items_used_by_type_and_mode_3_0);
+	MR_init_label2(recompilation__usage__find_items_used_by_type_and_mode_3_0,4,3)
+MR_BEGIN_CODE
+
+/*-------------------------------------------------------------------------*/
+/* code for 'find_items_used_by_type_and_mode'/3 mode 0 */
+#ifdef MR_maybe_local_thread_engine_base
+	#undef MR_maybe_local_thread_engine_base
+	#define MR_maybe_local_thread_engine_base MR_local_thread_engine_base
+#endif
+MR_def_static(recompilation__usage__find_items_used_by_type_and_mode_3_0)
+	MR_MAYBE_INIT_LOCAL_THREAD_ENGINE_BASE
+	if (MR_PTAG_TESTR(MR_r1,1)) {
+		MR_GOTO_LAB(recompilation__usage__find_items_used_by_type_and_mode_3_0_i3);
+	}
+	MR_incr_sp(2);
+	MR_sv(2) = (MR_Word) MR_succip;
+	MR_sv(1) = MR_tfield(1, MR_r1, 0);
+	MR_r1 = MR_tfield(1, MR_r1, 1);
+	MR_np_call_localret_ent(recompilation__usage__find_items_used_by_mode_3_0,
+		recompilation__usage__find_items_used_by_type_and_mode_3_0_i4);
+MR_def_label(recompilation__usage__find_items_used_by_type_and_mode_3_0,4)
+	MR_MAYBE_INIT_LOCAL_THREAD_ENGINE_BASE
+	{
+	MR_Word MR_tempr1;
+	MR_tempr1 = MR_r1;
+	MR_r1 = MR_sv(1);
+	MR_r2 = MR_tempr1;
+	MR_succip_word = MR_sv(2);
+	MR_decr_sp(2);
+	MR_np_tailcall_ent(recompilation__usage__find_items_used_by_type_3_0);
+	}
+MR_def_label(recompilation__usage__find_items_used_by_type_and_mode_3_0,3)
+	MR_MAYBE_INIT_LOCAL_THREAD_ENGINE_BASE
+	MR_r1 = MR_tfield(0, MR_r1, 0);
+	MR_np_tailcall_ent(recompilation__usage__find_items_used_by_type_3_0);
+#ifdef MR_maybe_local_thread_engine_base
+	#undef MR_maybe_local_thread_engine_base
+	#define MR_maybe_local_thread_engine_base MR_thread_engine_base
+#endif
+MR_END_MODULE
+
+extern const MR_TypeCtorInfo_Struct mercury_data_parse_tree__prog_data__type_ctor_info_constructor_arg_0;
+
+MR_BEGIN_MODULE(recompilation__usage_module51)
+	MR_init_entry1(recompilation__usage__find_items_used_by_ctor_3_0);
+	MR_INIT_PROC_LAYOUT_ADDR(mercury__recompilation__usage__find_items_used_by_ctor_3_0);
+	MR_init_label1(recompilation__usage__find_items_used_by_ctor_3_0,3)
+MR_BEGIN_CODE
+
+/*-------------------------------------------------------------------------*/
+/* code for 'find_items_used_by_ctor'/3 mode 0 */
+#ifdef MR_maybe_local_thread_engine_base
+	#undef MR_maybe_local_thread_engine_base
+	#define MR_maybe_local_thread_engine_base MR_local_thread_engine_base
+#endif
+MR_def_static(recompilation__usage__find_items_used_by_ctor_3_0)
+	MR_MAYBE_INIT_LOCAL_THREAD_ENGINE_BASE
+	MR_incr_sp(2);
+	MR_sv(2) = (MR_Word) MR_succip;
+	MR_sv(1) = MR_tfield(0, MR_r1, 3);
+	{
+	MR_Word MR_tempr1, MR_tempr2;
+	MR_tempr1 = MR_r1;
+	MR_r1 = (MR_Word) MR_CTOR0_ADDR(parse_tree__prog_data, prog_constraint);
+	MR_tempr2 = MR_r2;
+	MR_r2 = (MR_Word) MR_CTOR0_ADDR(recompilation__usage, recompilation_usage_info);
+	MR_r3 = (MR_Word) MR_TAG_COMMON(0,3,36);
+	MR_r4 = MR_tfield(0, MR_tempr1, 1);
+	MR_r5 = MR_tempr2;
+	}
+	MR_np_call_localret_ent(list__foldl_4_0,
+		recompilation__usage__find_items_used_by_ctor_3_0_i3);
+MR_def_label(recompilation__usage__find_items_used_by_ctor_3_0,3)
+	MR_MAYBE_INIT_LOCAL_THREAD_ENGINE_BASE
+	{
+	MR_Word MR_tempr1;
+	MR_tempr1 = MR_r1;
+	MR_r1 = (MR_Word) MR_CTOR0_ADDR(parse_tree__prog_data, constructor_arg);
+	MR_r2 = (MR_Word) MR_CTOR0_ADDR(recompilation__usage, recompilation_usage_info);
+	MR_r3 = (MR_Word) MR_TAG_COMMON(0,3,37);
+	MR_r4 = MR_sv(1);
+	MR_r5 = MR_tempr1;
+	MR_succip_word = MR_sv(2);
+	MR_decr_sp(2);
+	MR_np_tailcall_ent(list__foldl_4_0);
+	}
+#ifdef MR_maybe_local_thread_engine_base
+	#undef MR_maybe_local_thread_engine_base
+	#define MR_maybe_local_thread_engine_base MR_thread_engine_base
+#endif
+MR_END_MODULE
+
+
+MR_BEGIN_MODULE(recompilation__usage_module52)
+	MR_init_entry1(recompilation__usage__find_items_used_by_ctor_arg_3_0);
+	MR_INIT_PROC_LAYOUT_ADDR(mercury__recompilation__usage__find_items_used_by_ctor_arg_3_0);
+MR_BEGIN_CODE
+
+/*-------------------------------------------------------------------------*/
+/* code for 'find_items_used_by_ctor_arg'/3 mode 0 */
+#ifdef MR_maybe_local_thread_engine_base
+	#undef MR_maybe_local_thread_engine_base
+	#define MR_maybe_local_thread_engine_base MR_local_thread_engine_base
+#endif
+MR_def_static(recompilation__usage__find_items_used_by_ctor_arg_3_0)
+	MR_MAYBE_INIT_LOCAL_THREAD_ENGINE_BASE
+	MR_r1 = MR_tfield(0, MR_r1, 1);
+	MR_np_tailcall_ent(recompilation__usage__find_items_used_by_type_3_0);
+#ifdef MR_maybe_local_thread_engine_base
+	#undef MR_maybe_local_thread_engine_base
+	#define MR_maybe_local_thread_engine_base MR_thread_engine_base
+#endif
+MR_END_MODULE
+
+
+MR_BEGIN_MODULE(recompilation__usage_module53)
+	MR_init_entry1(recompilation__usage__find_items_used_by_preds_2_5_0);
+	MR_INIT_PROC_LAYOUT_ADDR(mercury__recompilation__usage__find_items_used_by_preds_2_5_0);
+MR_BEGIN_CODE
+
+/*-------------------------------------------------------------------------*/
+/* code for 'find_items_used_by_preds_2'/5 mode 0 */
+#ifdef MR_maybe_local_thread_engine_base
+	#undef MR_maybe_local_thread_engine_base
+	#define MR_maybe_local_thread_engine_base MR_local_thread_engine_base
+#endif
+MR_def_static(recompilation__usage__find_items_used_by_preds_2_5_0)
+	MR_MAYBE_INIT_LOCAL_THREAD_ENGINE_BASE
+	{
+	MR_Word MR_tempr1, MR_tempr2, MR_tempr3;
+	MR_tag_alloc_heap(MR_tempr1, 0, (MR_Integer) 6);
+	MR_tfield(0, MR_tempr1, 0) = (MR_Word) MR_COMMON(12,2);
+	MR_tfield(0, MR_tempr1, 1) = (MR_Word) MR_ENTRY_AP(recompilation__usage__find_items_used_by_preds_3_7_0);
+	MR_tfield(0, MR_tempr1, 2) = (MR_Integer) 3;
+	MR_tfield(0, MR_tempr1, 3) = MR_r1;
+	MR_tfield(0, MR_tempr1, 4) = MR_tfield(0, MR_r2, 0);
+	MR_tfield(0, MR_tempr1, 5) = MR_tfield(0, MR_r2, 1);
+	MR_r1 = (MR_Word) MR_CTOR0_ADDR(mdbcomp__prim_data, sym_name);
+	MR_r2 = MR_r1;
+	MR_tempr2 = MR_r3;
+	MR_r3 = (MR_Word) MR_CTOR0_ADDR(recompilation__usage, recompilation_usage_info);
+	MR_tempr3 = MR_r4;
+	MR_r4 = MR_tempr1;
+	MR_r5 = MR_tempr2;
+	MR_r6 = MR_tempr3;
+	MR_np_tailcall_ent(map__foldl_4_0);
+	}
+#ifdef MR_maybe_local_thread_engine_base
+	#undef MR_maybe_local_thread_engine_base
+	#define MR_maybe_local_thread_engine_base MR_thread_engine_base
+#endif
+MR_END_MODULE
+
+
+MR_BEGIN_MODULE(recompilation__usage_module54)
+	MR_init_entry1(recompilation__usage__find_items_used_by_preds_3_7_0);
+	MR_INIT_PROC_LAYOUT_ADDR(mercury__recompilation__usage__find_items_used_by_preds_3_7_0);
+MR_BEGIN_CODE
+
+/*-------------------------------------------------------------------------*/
+/* code for 'find_items_used_by_preds_3'/7 mode 0 */
+#ifdef MR_maybe_local_thread_engine_base
+	#undef MR_maybe_local_thread_engine_base
+	#define MR_maybe_local_thread_engine_base MR_local_thread_engine_base
+#endif
+MR_def_static(recompilation__usage__find_items_used_by_preds_3_7_0)
+	MR_MAYBE_INIT_LOCAL_THREAD_ENGINE_BASE
+	MR_r5 = MR_r6;
+	MR_np_tailcall_ent(f_114_101_99_111_109_112_105_108_97_116_105_111_110_95_95_117_115_97_103_101_95_95_85_110_117_115_101_100_65_114_103_115_95_95_112_114_101_100_95_95_102_105_110_100_95_105_116_101_109_115_95_117_115_101_100_95_98_121_95_112_114_101_100_115_95_51_95_95_91_53_93_95_48_7_0);
+#ifdef MR_maybe_local_thread_engine_base
+	#undef MR_maybe_local_thread_engine_base
+	#define MR_maybe_local_thread_engine_base MR_thread_engine_base
+#endif
+MR_END_MODULE
+
+MR_decl_entry(hlds__hlds_module__module_info_pred_info_3_0);
+MR_decl_entry(hlds__hlds_pred__pred_info_get_markers_2_0);
+MR_decl_entry(hlds__hlds_pred__check_marker_2_0);
+MR_decl_entry(hlds__hlds_pred__pred_info_get_class_context_2_0);
+MR_decl_entry(fn__list__length_1_0);
+MR_decl_entry(hlds__hlds_pred__pred_info_get_arg_types_2_0);
+MR_decl_entry(hlds__hlds_pred__pred_info_get_procedures_2_0);
+extern const MR_TypeCtorInfo_Struct mercury_data_hlds__hlds_pred__type_ctor_info_proc_id_0;
+extern const MR_TypeCtorInfo_Struct mercury_data_hlds__hlds_pred__type_ctor_info_proc_info_0;
+MR_decl_entry(hlds__hlds_module__module_info_get_type_spec_info_2_0);
+
+MR_BEGIN_MODULE(recompilation__usage_module55)
+	MR_init_entry1(recompilation__usage__find_items_used_by_pred_5_0);
+	MR_INIT_PROC_LAYOUT_ADDR(mercury__recompilation__usage__find_items_used_by_pred_5_0);
+	MR_init_label10(recompilation__usage__find_items_used_by_pred_5_0,2,3,11,9,14,15,4,5,18,19)
+	MR_init_label10(recompilation__usage__find_items_used_by_pred_5_0,21,24,22,27,17,31,32,33,34,35)
+	MR_init_label6(recompilation__usage__find_items_used_by_pred_5_0,37,38,39,40,43,41)
+MR_BEGIN_CODE
+
+/*-------------------------------------------------------------------------*/
+/* code for 'find_items_used_by_pred'/5 mode 0 */
+#ifdef MR_maybe_local_thread_engine_base
+	#undef MR_maybe_local_thread_engine_base
+	#define MR_maybe_local_thread_engine_base MR_local_thread_engine_base
+#endif
+MR_def_static(recompilation__usage__find_items_used_by_pred_5_0)
+	MR_MAYBE_INIT_LOCAL_THREAD_ENGINE_BASE
+	MR_incr_sp(10);
+	MR_sv(10) = (MR_Word) MR_succip;
+	MR_sv(1) = MR_tfield(0, MR_r2, 0);
+	MR_sv(2) = MR_tfield(0, MR_r2, 1);
+	{
+	MR_Word MR_tempr1;
+	MR_tempr1 = MR_r3;
+	MR_sv(3) = MR_tfield(0, MR_tempr1, 0);
+	MR_sv(4) = MR_tfield(0, MR_tempr1, 1);
+	MR_sv(9) = MR_r4;
+	}
+	MR_np_call_localret_ent(fn__recompilation__pred_or_func_to_item_type_1_0,
+		recompilation__usage__find_items_used_by_pred_5_0_i2);
+MR_def_label(recompilation__usage__find_items_used_by_pred_5_0,2)
+	MR_MAYBE_INIT_LOCAL_THREAD_ENGINE_BASE
+	MR_sv(5) = MR_r1;
+	MR_sv(6) = MR_tfield(0, MR_sv(9), 0);
+	MR_r1 = MR_sv(6);
+	MR_r2 = MR_sv(3);
+	MR_np_call_localret_ent(hlds__hlds_module__module_info_pred_info_3_0,
+		recompilation__usage__find_items_used_by_pred_5_0_i3);
+MR_def_label(recompilation__usage__find_items_used_by_pred_5_0,3)
+	MR_MAYBE_INIT_LOCAL_THREAD_ENGINE_BASE
+	{
+	MR_Word MR_tempr1, MR_tempr2;
+	MR_tag_alloc_heap(MR_tempr1, 1, (MR_Integer) 2);
+	MR_tfield(1, MR_tempr1, 0) = MR_sv(4);
+	MR_tfield(1, MR_tempr1, 1) = MR_sv(1);
+	MR_tag_alloc_heap(MR_tempr2, 0, (MR_Integer) 2);
+	MR_r3 = MR_tempr2;
+	MR_tfield(0, MR_tempr2, 0) = MR_tempr1;
+	MR_tfield(0, MR_tempr2, 1) = MR_sv(2);
+	MR_sv(7) = MR_r1;
+	MR_sv(8) = MR_tempr2;
+	MR_r1 = MR_sv(9);
+	MR_r2 = MR_sv(5);
+	}
+	MR_np_call_localret_ent(recompilation__usage__item_is_recorded_used_3_0,
+		recompilation__usage__find_items_used_by_pred_5_0_i11);
+MR_def_label(recompilation__usage__find_items_used_by_pred_5_0,11)
+	MR_MAYBE_INIT_LOCAL_THREAD_ENGINE_BASE
+	if (!(MR_r1)) {
+		MR_GOTO_LAB(recompilation__usage__find_items_used_by_pred_5_0_i9);
+	}
+	MR_r1 = MR_sv(9);
+	MR_decr_sp_and_return(10);
+MR_def_label(recompilation__usage__find_items_used_by_pred_5_0,9)
+	MR_MAYBE_INIT_LOCAL_THREAD_ENGINE_BASE
+	MR_r1 = MR_sv(7);
+	{
+	MR_Word MR_tempr1;
+	MR_tempr1 = MR_sv(8);
+	MR_r2 = MR_tfield(0, MR_tempr1, 0);
+	if (MR_PTAG_TESTR(MR_r2,1)) {
+		MR_GOTO_LAB(recompilation__usage__find_items_used_by_pred_5_0_i5);
+	}
+	MR_sv(8) = MR_tfield(1, MR_r2, 0);
+	MR_r1 = MR_tfield(0, MR_sv(9), 0);
+	}
+	MR_np_call_localret_ent(hlds__hlds_module__module_info_get_name_2_0,
+		recompilation__usage__find_items_used_by_pred_5_0_i14);
+MR_def_label(recompilation__usage__find_items_used_by_pred_5_0,14)
+	MR_MAYBE_INIT_LOCAL_THREAD_ENGINE_BASE
+	{
+	MR_Word MR_tempr1;
+	MR_tempr1 = MR_r1;
+	MR_r1 = MR_sv(8);
+	MR_r2 = MR_tempr1;
+	}
+	MR_np_call_localret_ent(__Unify___mdbcomp__prim_data__sym_name_0_0,
+		recompilation__usage__find_items_used_by_pred_5_0_i15);
+MR_def_label(recompilation__usage__find_items_used_by_pred_5_0,15)
+	MR_MAYBE_INIT_LOCAL_THREAD_ENGINE_BASE
+	if (!(MR_r1)) {
+		MR_GOTO_LAB(recompilation__usage__find_items_used_by_pred_5_0_i4);
+	}
+	MR_r1 = MR_sv(9);
+	MR_decr_sp_and_return(10);
+MR_def_label(recompilation__usage__find_items_used_by_pred_5_0,4)
+	MR_MAYBE_INIT_LOCAL_THREAD_ENGINE_BASE
+	MR_r1 = MR_sv(7);
+MR_def_label(recompilation__usage__find_items_used_by_pred_5_0,5)
+	MR_MAYBE_INIT_LOCAL_THREAD_ENGINE_BASE
+	MR_sv(7) = MR_r1;
+	MR_np_call_localret_ent(hlds__hlds_pred__pred_info_get_markers_2_0,
+		recompilation__usage__find_items_used_by_pred_5_0_i18);
+MR_def_label(recompilation__usage__find_items_used_by_pred_5_0,18)
+	MR_MAYBE_INIT_LOCAL_THREAD_ENGINE_BASE
+	MR_r2 = (MR_Integer) 9;
+	MR_np_call_localret_ent(hlds__hlds_pred__check_marker_2_0,
+		recompilation__usage__find_items_used_by_pred_5_0_i19);
+MR_def_label(recompilation__usage__find_items_used_by_pred_5_0,19)
+	MR_MAYBE_INIT_LOCAL_THREAD_ENGINE_BASE
+	if (!(MR_r1)) {
+		MR_GOTO_LAB(recompilation__usage__find_items_used_by_pred_5_0_i17);
+	}
+	MR_r1 = MR_sv(7);
+	MR_np_call_localret_ent(hlds__hlds_pred__pred_info_get_class_context_2_0,
+		recompilation__usage__find_items_used_by_pred_5_0_i21);
+MR_def_label(recompilation__usage__find_items_used_by_pred_5_0,21)
+	MR_MAYBE_INIT_LOCAL_THREAD_ENGINE_BASE
+	{
+	MR_Word MR_tempr1, MR_tempr2;
+	MR_tempr1 = MR_tfield(0, MR_r1, 0);
+	if (MR_LTAGS_TEST(MR_tempr1,0,0)) {
+		MR_GOTO_LAB(recompilation__usage__find_items_used_by_pred_5_0_i22);
+	}
+	MR_tempr2 = MR_tfield(1, MR_tempr1, 0);
+	MR_sv(1) = MR_tfield(0, MR_tempr2, 0);
+	MR_r1 = (MR_Word) MR_CTOR0_ADDR(parse_tree__prog_data, mer_type);
+	MR_r2 = MR_tfield(0, MR_tempr2, 1);
+	}
+	MR_np_call_localret_ent(fn__list__length_1_0,
+		recompilation__usage__find_items_used_by_pred_5_0_i24);
+MR_def_label(recompilation__usage__find_items_used_by_pred_5_0,24)
+	MR_MAYBE_INIT_LOCAL_THREAD_ENGINE_BASE
+	MR_tag_alloc_heap(MR_r2, 0, (MR_Integer) 2);
+	MR_tfield(0, MR_r2, 0) = MR_sv(1);
+	MR_tfield(0, MR_r2, 1) = MR_r1;
+	MR_r3 = MR_sv(9);
+	MR_r1 = (MR_Integer) 4;
+	MR_succip_word = MR_sv(10);
+	MR_decr_sp(10);
+	MR_np_tailcall_ent(recompilation__usage__maybe_record_item_to_process_4_0);
+MR_def_label(recompilation__usage__find_items_used_by_pred_5_0,22)
+	MR_MAYBE_INIT_LOCAL_THREAD_ENGINE_BASE
+	MR_r1 = (MR_Word) MR_string_const("recompilation.usage", 19);
+	MR_r2 = (MR_Word) MR_string_const("predicate \140recompilation.usage.find_items_used_by_pred\'/5", 57);
+	MR_r3 = (MR_Word) MR_string_const("class method with no class constraints", 38);
+	MR_np_call_localret_ent(require__unexpected_3_0,
+		recompilation__usage__find_items_used_by_pred_5_0_i27);
+MR_def_label(recompilation__usage__find_items_used_by_pred_5_0,27)
+	MR_MAYBE_INIT_LOCAL_THREAD_ENGINE_BASE
+	MR_succip_word = MR_sv(10);
+	MR_decr_sp(10);
+	MR_np_tailcall_ent(recompilation__usage__maybe_record_item_to_process_4_0);
+MR_def_label(recompilation__usage__find_items_used_by_pred_5_0,17)
+	MR_MAYBE_INIT_LOCAL_THREAD_ENGINE_BASE
+	{
+	MR_Word MR_tempr1;
+	MR_tag_alloc_heap(MR_tempr1, 1, (MR_Integer) 2);
+	MR_tfield(1, MR_tempr1, 0) = MR_sv(4);
+	MR_tfield(1, MR_tempr1, 1) = MR_sv(1);
+	MR_tag_alloc_heap(MR_r2, 0, (MR_Integer) 2);
+	MR_tfield(0, MR_r2, 0) = MR_tempr1;
+	MR_tfield(0, MR_r2, 1) = MR_sv(2);
+	MR_sv(1) = MR_r2;
+	MR_r1 = MR_sv(5);
+	MR_r3 = MR_sv(9);
+	}
+	MR_np_call_localret_ent(recompilation__usage__record_expanded_items_used_by_item_4_0,
+		recompilation__usage__find_items_used_by_pred_5_0_i31);
+MR_def_label(recompilation__usage__find_items_used_by_pred_5_0,31)
+	MR_MAYBE_INIT_LOCAL_THREAD_ENGINE_BASE
+	{
+	MR_Word MR_tempr1;
+	MR_tempr1 = MR_r1;
+	MR_r1 = MR_sv(5);
+	MR_r2 = MR_sv(1);
+	MR_r3 = MR_tempr1;
+	}
+	MR_np_call_localret_ent(recompilation__usage__record_imported_item_4_0,
+		recompilation__usage__find_items_used_by_pred_5_0_i32);
+MR_def_label(recompilation__usage__find_items_used_by_pred_5_0,32)
+	MR_MAYBE_INIT_LOCAL_THREAD_ENGINE_BASE
+	MR_sv(1) = MR_r1;
+	MR_r1 = MR_sv(7);
+	MR_np_call_localret_ent(hlds__hlds_pred__pred_info_get_arg_types_2_0,
+		recompilation__usage__find_items_used_by_pred_5_0_i33);
+MR_def_label(recompilation__usage__find_items_used_by_pred_5_0,33)
+	MR_MAYBE_INIT_LOCAL_THREAD_ENGINE_BASE
+	MR_r2 = MR_sv(1);
+	MR_np_call_localret_ent(recompilation__usage__find_items_used_by_types_3_0,
+		recompilation__usage__find_items_used_by_pred_5_0_i34);
+MR_def_label(recompilation__usage__find_items_used_by_pred_5_0,34)
+	MR_MAYBE_INIT_LOCAL_THREAD_ENGINE_BASE
+	MR_sv(1) = MR_r1;
+	MR_r1 = MR_sv(7);
+	MR_np_call_localret_ent(hlds__hlds_pred__pred_info_get_procedures_2_0,
+		recompilation__usage__find_items_used_by_pred_5_0_i35);
+MR_def_label(recompilation__usage__find_items_used_by_pred_5_0,35)
+	MR_MAYBE_INIT_LOCAL_THREAD_ENGINE_BASE
+	MR_sv(2) = (MR_Word) MR_CTOR0_ADDR(recompilation__usage, recompilation_usage_info);
+	{
+	MR_Word MR_tempr1;
+	MR_tempr1 = MR_r1;
+	MR_r1 = (MR_Word) MR_CTOR0_ADDR(hlds__hlds_pred, proc_id);
+	MR_r2 = (MR_Word) MR_CTOR0_ADDR(hlds__hlds_pred, proc_info);
+	MR_r3 = MR_sv(2);
+	MR_r4 = (MR_Word) MR_TAG_COMMON(0,3,38);
+	MR_r5 = MR_tempr1;
+	MR_r6 = MR_sv(1);
+	}
+	MR_np_call_localret_ent(map__foldl_4_0,
+		recompilation__usage__find_items_used_by_pred_5_0_i37);
+MR_def_label(recompilation__usage__find_items_used_by_pred_5_0,37)
+	MR_MAYBE_INIT_LOCAL_THREAD_ENGINE_BASE
+	MR_sv(1) = MR_r1;
+	MR_r1 = MR_sv(7);
+	MR_np_call_localret_ent(hlds__hlds_pred__pred_info_get_class_context_2_0,
+		recompilation__usage__find_items_used_by_pred_5_0_i38);
+MR_def_label(recompilation__usage__find_items_used_by_pred_5_0,38)
+	MR_MAYBE_INIT_LOCAL_THREAD_ENGINE_BASE
+	MR_r2 = MR_sv(1);
+	MR_np_call_localret_ent(recompilation__usage__find_items_used_by_class_context_3_0,
+		recompilation__usage__find_items_used_by_pred_5_0_i39);
+MR_def_label(recompilation__usage__find_items_used_by_pred_5_0,39)
+	MR_MAYBE_INIT_LOCAL_THREAD_ENGINE_BASE
+	MR_sv(1) = MR_r1;
+	MR_r1 = MR_sv(6);
+	MR_np_call_localret_ent(hlds__hlds_module__module_info_get_type_spec_info_2_0,
+		recompilation__usage__find_items_used_by_pred_5_0_i40);
+MR_def_label(recompilation__usage__find_items_used_by_pred_5_0,40)
+	MR_MAYBE_INIT_LOCAL_THREAD_ENGINE_BASE
+	{
+	MR_Word MR_tempr1;
+	MR_tempr1 = MR_r1;
+	MR_r1 = (MR_Word) MR_CTOR0_ADDR(hlds__hlds_pred, pred_id);
+	MR_r2 = (MR_Word) MR_TAG_COMMON(0,1,17);
+	MR_r3 = MR_tfield(0, MR_tempr1, 3);
+	MR_r4 = MR_sv(3);
+	}
+	MR_np_call_localret_ent(map__search_3_0,
+		recompilation__usage__find_items_used_by_pred_5_0_i43);
+MR_def_label(recompilation__usage__find_items_used_by_pred_5_0,43)
+	MR_MAYBE_INIT_LOCAL_THREAD_ENGINE_BASE
+	if (!(MR_r1)) {
+		MR_GOTO_LAB(recompilation__usage__find_items_used_by_pred_5_0_i41);
+	}
+	MR_r1 = (MR_Word) MR_CTOR0_ADDR(parse_tree__prog_item, pragma_type);
+	{
+	MR_Word MR_tempr1;
+	MR_tempr1 = MR_r2;
+	MR_r2 = MR_sv(2);
+	MR_r3 = (MR_Word) MR_TAG_COMMON(0,3,39);
+	MR_r4 = MR_tempr1;
+	MR_r5 = MR_sv(1);
+	MR_succip_word = MR_sv(10);
+	MR_decr_sp(10);
+	MR_np_tailcall_ent(list__foldl_4_0);
+	}
+MR_def_label(recompilation__usage__find_items_used_by_pred_5_0,41)
+	MR_MAYBE_INIT_LOCAL_THREAD_ENGINE_BASE
+	MR_r1 = MR_sv(1);
+	MR_decr_sp_and_return(10);
+#ifdef MR_maybe_local_thread_engine_base
+	#undef MR_maybe_local_thread_engine_base
+	#define MR_maybe_local_thread_engine_base MR_thread_engine_base
+#endif
+MR_END_MODULE
+
+
+MR_BEGIN_MODULE(recompilation__usage_module56)
+	MR_init_entry1(recompilation__usage__find_items_used_by_proc_arg_modes_4_0);
+	MR_INIT_PROC_LAYOUT_ADDR(mercury__recompilation__usage__find_items_used_by_proc_arg_modes_4_0);
+MR_BEGIN_CODE
+
+/*-------------------------------------------------------------------------*/
+/* code for 'find_items_used_by_proc_arg_modes'/4 mode 0 */
+#ifdef MR_maybe_local_thread_engine_base
+	#undef MR_maybe_local_thread_engine_base
+	#define MR_maybe_local_thread_engine_base MR_local_thread_engine_base
+#endif
+MR_def_static(recompilation__usage__find_items_used_by_proc_arg_modes_4_0)
+	MR_MAYBE_INIT_LOCAL_THREAD_ENGINE_BASE
+	MR_r1 = MR_r2;
+	MR_r2 = MR_r3;
+	MR_np_tailcall_ent(f_114_101_99_111_109_112_105_108_97_116_105_111_110_95_95_117_115_97_103_101_95_95_85_110_117_115_101_100_65_114_103_115_95_95_112_114_101_100_95_95_102_105_110_100_95_105_116_101_109_115_95_117_115_101_100_95_98_121_95_112_114_111_99_95_97_114_103_95_109_111_100_101_115_95_95_91_49_93_95_48_4_0);
+#ifdef MR_maybe_local_thread_engine_base
+	#undef MR_maybe_local_thread_engine_base
+	#define MR_maybe_local_thread_engine_base MR_thread_engine_base
+#endif
+MR_END_MODULE
+
+MR_decl_entry(assoc_list__values_2_0);
+
+MR_BEGIN_MODULE(recompilation__usage_module57)
+	MR_init_entry1(recompilation__usage__find_items_used_by_type_spec_3_0);
+	MR_INIT_PROC_LAYOUT_ADDR(mercury__recompilation__usage__find_items_used_by_type_spec_3_0);
+	MR_init_label4(recompilation__usage__find_items_used_by_type_spec_3_0,5,7,9,2)
+MR_BEGIN_CODE
+
+/*-------------------------------------------------------------------------*/
+/* code for 'find_items_used_by_type_spec'/3 mode 0 */
+#ifdef MR_maybe_local_thread_engine_base
+	#undef MR_maybe_local_thread_engine_base
+	#define MR_maybe_local_thread_engine_base MR_local_thread_engine_base
+#endif
+MR_def_static(recompilation__usage__find_items_used_by_type_spec_3_0)
+	MR_MAYBE_INIT_LOCAL_THREAD_ENGINE_BASE
+	if (MR_RTAGS_TESTR(MR_r1,3,4)) {
+		MR_GOTO_LAB(recompilation__usage__find_items_used_by_type_spec_3_0_i2);
+	}
+	MR_incr_sp(2);
+	MR_sv(2) = (MR_Word) MR_succip;
+	MR_r4 = MR_tfield(3, MR_r1, 5);
+	if (MR_LTAGS_TESTR(MR_r4,0,0)) {
+		MR_GOTO_LAB(recompilation__usage__find_items_used_by_type_spec_3_0_i5);
+	}
+	MR_r3 = MR_tfield(3, MR_r1, 6);
+	MR_sv(1) = MR_r2;
+	MR_r1 = (MR_Word) MR_TAG_COMMON(0,1,18);
+	MR_r2 = (MR_Word) MR_CTOR0_ADDR(parse_tree__prog_data, mer_type);
+	MR_np_call_localret_ent(assoc_list__values_2_0,
+		recompilation__usage__find_items_used_by_type_spec_3_0_i9);
+MR_def_label(recompilation__usage__find_items_used_by_type_spec_3_0,5)
+	MR_MAYBE_INIT_LOCAL_THREAD_ENGINE_BASE
+	MR_sv(1) = MR_tfield(3, MR_r1, 6);
+	MR_r1 = MR_tfield(1, MR_r4, 0);
+	MR_np_call_localret_ent(recompilation__usage__find_items_used_by_modes_3_0,
+		recompilation__usage__find_items_used_by_type_spec_3_0_i7);
+MR_def_label(recompilation__usage__find_items_used_by_type_spec_3_0,7)
+	MR_MAYBE_INIT_LOCAL_THREAD_ENGINE_BASE
+	MR_r3 = MR_sv(1);
+	MR_sv(1) = MR_r1;
+	MR_r1 = (MR_Word) MR_TAG_COMMON(0,1,18);
+	MR_r2 = (MR_Word) MR_CTOR0_ADDR(parse_tree__prog_data, mer_type);
+	MR_np_call_localret_ent(assoc_list__values_2_0,
+		recompilation__usage__find_items_used_by_type_spec_3_0_i9);
+MR_def_label(recompilation__usage__find_items_used_by_type_spec_3_0,9)
+	MR_MAYBE_INIT_LOCAL_THREAD_ENGINE_BASE
+	{
+	MR_Word MR_tempr1;
+	MR_tempr1 = MR_r1;
+	MR_r1 = (MR_Word) MR_CTOR0_ADDR(parse_tree__prog_data, mer_type);
+	MR_r2 = (MR_Word) MR_CTOR0_ADDR(recompilation__usage, recompilation_usage_info);
+	MR_r3 = (MR_Word) MR_TAG_COMMON(0,3,40);
+	MR_r4 = MR_tempr1;
+	MR_r5 = MR_sv(1);
+	MR_succip_word = MR_sv(2);
+	MR_decr_sp(2);
+	MR_np_tailcall_ent(list__foldl_4_0);
+	}
+MR_def_label(recompilation__usage__find_items_used_by_type_spec_3_0,2)
+	MR_MAYBE_INIT_LOCAL_THREAD_ENGINE_BASE
+	MR_r1 = (MR_Word) MR_string_const("recompilation.usage", 19);
+	MR_r2 = (MR_Word) MR_string_const("predicate \140recompilation.usage.find_items_used_by_type_spec\'/3", 62);
+	MR_r3 = (MR_Word) MR_string_const("unexpected pragma type", 22);
+	MR_np_tailcall_ent(require__unexpected_3_0);
+#ifdef MR_maybe_local_thread_engine_base
+	#undef MR_maybe_local_thread_engine_base
+	#define MR_maybe_local_thread_engine_base MR_thread_engine_base
+#endif
+MR_END_MODULE
+
+
+MR_BEGIN_MODULE(recompilation__usage_module58)
+	MR_init_entry1(recompilation__usage__find_items_used_by_functors_2_4_0);
+	MR_INIT_PROC_LAYOUT_ADDR(mercury__recompilation__usage__find_items_used_by_functors_2_4_0);
+MR_BEGIN_CODE
+
+/*-------------------------------------------------------------------------*/
+/* code for 'find_items_used_by_functors_2'/4 mode 0 */
+#ifdef MR_maybe_local_thread_engine_base
+	#undef MR_maybe_local_thread_engine_base
+	#define MR_maybe_local_thread_engine_base MR_local_thread_engine_base
+#endif
+MR_def_static(recompilation__usage__find_items_used_by_functors_2_4_0)
+	MR_MAYBE_INIT_LOCAL_THREAD_ENGINE_BASE
+	{
+	MR_Word MR_tempr1, MR_tempr2, MR_tempr3;
+	MR_tag_alloc_heap(MR_tempr1, 0, (MR_Integer) 5);
+	MR_r4 = MR_tempr1;
+	MR_tfield(0, MR_tempr1, 0) = (MR_Word) MR_COMMON(13,0);
+	MR_tfield(0, MR_tempr1, 1) = (MR_Word) MR_ENTRY_AP(recompilation__usage__find_items_used_by_functors_3_6_0);
+	MR_tfield(0, MR_tempr1, 2) = (MR_Integer) 2;
+	MR_tfield(0, MR_tempr1, 3) = MR_tfield(0, MR_r1, 0);
+	MR_tfield(0, MR_tempr1, 4) = MR_tfield(0, MR_r1, 1);
+	MR_r1 = (MR_Word) MR_CTOR0_ADDR(mdbcomp__prim_data, sym_name);
+	MR_tempr2 = MR_r2;
+	MR_r2 = MR_r1;
+	MR_tempr3 = MR_r3;
+	MR_r3 = (MR_Word) MR_CTOR0_ADDR(recompilation__usage, recompilation_usage_info);
+	MR_r5 = MR_tempr2;
+	MR_r6 = MR_tempr3;
+	MR_np_tailcall_ent(map__foldl_4_0);
+	}
+#ifdef MR_maybe_local_thread_engine_base
+	#undef MR_maybe_local_thread_engine_base
+	#define MR_maybe_local_thread_engine_base MR_thread_engine_base
+#endif
+MR_END_MODULE
+
+
+MR_BEGIN_MODULE(recompilation__usage_module59)
+	MR_init_entry1(recompilation__usage__find_items_used_by_functors_3_6_0);
+	MR_INIT_PROC_LAYOUT_ADDR(mercury__recompilation__usage__find_items_used_by_functors_3_6_0);
+MR_BEGIN_CODE
+
+/*-------------------------------------------------------------------------*/
+/* code for 'find_items_used_by_functors_3'/6 mode 0 */
+#ifdef MR_maybe_local_thread_engine_base
+	#undef MR_maybe_local_thread_engine_base
+	#define MR_maybe_local_thread_engine_base MR_local_thread_engine_base
+#endif
+MR_def_static(recompilation__usage__find_items_used_by_functors_3_6_0)
+	MR_MAYBE_INIT_LOCAL_THREAD_ENGINE_BASE
+	MR_r4 = MR_r5;
+	MR_np_tailcall_ent(f_114_101_99_111_109_112_105_108_97_116_105_111_110_95_95_117_115_97_103_101_95_95_85_110_117_115_101_100_65_114_103_115_95_95_112_114_101_100_95_95_102_105_110_100_95_105_116_101_109_115_95_117_115_101_100_95_98_121_95_102_117_110_99_116_111_114_115_95_51_95_95_91_52_93_95_48_6_0);
+#ifdef MR_maybe_local_thread_engine_base
+	#undef MR_maybe_local_thread_engine_base
+	#define MR_maybe_local_thread_engine_base MR_thread_engine_base
+#endif
+MR_END_MODULE
+
+
+MR_BEGIN_MODULE(recompilation__usage_module60)
+	MR_init_entry1(recompilation__usage__find_items_used_by_functor_5_0);
+	MR_INIT_PROC_LAYOUT_ADDR(mercury__recompilation__usage__find_items_used_by_functor_5_0);
+MR_BEGIN_CODE
+
+/*-------------------------------------------------------------------------*/
+/* code for 'find_items_used_by_functor'/5 mode 0 */
+#ifdef MR_maybe_local_thread_engine_base
+	#undef MR_maybe_local_thread_engine_base
+	#define MR_maybe_local_thread_engine_base MR_local_thread_engine_base
+#endif
+MR_def_static(recompilation__usage__find_items_used_by_functor_5_0)
+	MR_MAYBE_INIT_LOCAL_THREAD_ENGINE_BASE
+	MR_r2 = MR_r3;
+	MR_r3 = MR_r4;
+	MR_np_tailcall_ent(f_114_101_99_111_109_112_105_108_97_116_105_111_110_95_95_117_115_97_103_101_95_95_85_110_117_115_101_100_65_114_103_115_95_95_112_114_101_100_95_95_102_105_110_100_95_105_116_101_109_115_95_117_115_101_100_95_98_121_95_102_117_110_99_116_111_114_95_95_91_50_93_95_48_5_0);
+#ifdef MR_maybe_local_thread_engine_base
+	#undef MR_maybe_local_thread_engine_base
+	#define MR_maybe_local_thread_engine_base MR_thread_engine_base
+#endif
+MR_END_MODULE
+
+
+MR_BEGIN_MODULE(recompilation__usage_module61)
+	MR_init_entry1(recompilation__usage__find_items_used_by_simple_item_set_2_5_0);
+	MR_INIT_PROC_LAYOUT_ADDR(mercury__recompilation__usage__find_items_used_by_simple_item_set_2_5_0);
+MR_BEGIN_CODE
+
+/*-------------------------------------------------------------------------*/
+/* code for 'find_items_used_by_simple_item_set_2'/5 mode 0 */
+#ifdef MR_maybe_local_thread_engine_base
+	#undef MR_maybe_local_thread_engine_base
+	#define MR_maybe_local_thread_engine_base MR_local_thread_engine_base
+#endif
+MR_def_static(recompilation__usage__find_items_used_by_simple_item_set_2_5_0)
+	MR_MAYBE_INIT_LOCAL_THREAD_ENGINE_BASE
+	{
+	MR_Word MR_tempr1, MR_tempr2, MR_tempr3;
+	MR_tag_alloc_heap(MR_tempr1, 0, (MR_Integer) 6);
+	MR_tfield(0, MR_tempr1, 0) = (MR_Word) MR_COMMON(12,3);
+	MR_tfield(0, MR_tempr1, 1) = (MR_Word) MR_ENTRY_AP(recompilation__usage__find_items_used_by_simple_item_set_3_7_0);
+	MR_tfield(0, MR_tempr1, 2) = (MR_Integer) 3;
+	MR_tfield(0, MR_tempr1, 3) = MR_r1;
+	MR_tfield(0, MR_tempr1, 4) = MR_tfield(0, MR_r2, 0);
+	MR_tfield(0, MR_tempr1, 5) = MR_tfield(0, MR_r2, 1);
+	MR_r1 = (MR_Word) MR_CTOR0_ADDR(mdbcomp__prim_data, sym_name);
+	MR_r2 = MR_r1;
+	MR_tempr2 = MR_r3;
+	MR_r3 = (MR_Word) MR_CTOR0_ADDR(recompilation__usage, recompilation_usage_info);
+	MR_tempr3 = MR_r4;
+	MR_r4 = MR_tempr1;
+	MR_r5 = MR_tempr2;
+	MR_r6 = MR_tempr3;
+	MR_np_tailcall_ent(map__foldl_4_0);
+	}
+#ifdef MR_maybe_local_thread_engine_base
+	#undef MR_maybe_local_thread_engine_base
+	#define MR_maybe_local_thread_engine_base MR_thread_engine_base
+#endif
+MR_END_MODULE
+
+
+MR_BEGIN_MODULE(recompilation__usage_module62)
+	MR_init_entry1(recompilation__usage__find_items_used_by_simple_item_set_3_7_0);
+	MR_INIT_PROC_LAYOUT_ADDR(mercury__recompilation__usage__find_items_used_by_simple_item_set_3_7_0);
+MR_BEGIN_CODE
+
+/*-------------------------------------------------------------------------*/
+/* code for 'find_items_used_by_simple_item_set_3'/7 mode 0 */
+#ifdef MR_maybe_local_thread_engine_base
+	#undef MR_maybe_local_thread_engine_base
+	#define MR_maybe_local_thread_engine_base MR_local_thread_engine_base
+#endif
+MR_def_static(recompilation__usage__find_items_used_by_simple_item_set_3_7_0)
+	MR_MAYBE_INIT_LOCAL_THREAD_ENGINE_BASE
+	MR_r4 = MR_r5;
+	MR_r5 = MR_r6;
+	MR_np_tailcall_ent(f_114_101_99_111_109_112_105_108_97_116_105_111_110_95_95_117_115_97_103_101_95_95_85_110_117_115_101_100_65_114_103_115_95_95_112_114_101_100_95_95_102_105_110_100_95_105_116_101_109_115_95_117_115_101_100_95_98_121_95_115_105_109_112_108_101_95_105_116_101_109_95_115_101_116_95_51_95_95_91_52_93_95_48_7_0);
+#ifdef MR_maybe_local_thread_engine_base
+	#undef MR_maybe_local_thread_engine_base
+	#define MR_maybe_local_thread_engine_base MR_thread_engine_base
+#endif
+MR_END_MODULE
+
+
+MR_BEGIN_MODULE(recompilation__usage_module63)
+	MR_init_entry1(recompilation__usage__find_items_used_by_bound_inst_3_0);
+	MR_INIT_PROC_LAYOUT_ADDR(mercury__recompilation__usage__find_items_used_by_bound_inst_3_0);
+	MR_init_label2(recompilation__usage__find_items_used_by_bound_inst_3_0,4,2)
+MR_BEGIN_CODE
+
+/*-------------------------------------------------------------------------*/
+/* code for 'find_items_used_by_bound_inst'/3 mode 0 */
+#ifdef MR_maybe_local_thread_engine_base
+	#undef MR_maybe_local_thread_engine_base
+	#define MR_maybe_local_thread_engine_base MR_local_thread_engine_base
+#endif
+MR_def_static(recompilation__usage__find_items_used_by_bound_inst_3_0)
+	MR_MAYBE_INIT_LOCAL_THREAD_ENGINE_BASE
+	MR_incr_sp(3);
+	MR_sv(3) = (MR_Word) MR_succip;
+	MR_sv(1) = MR_tfield(0, MR_r1, 1);
+	{
+	MR_Word MR_tempr1, MR_tempr2;
+	MR_tempr1 = MR_tfield(0, MR_r1, 0);
+	if (MR_PTAG_TESTR(MR_tempr1,1)) {
+		MR_GOTO_LAB(recompilation__usage__find_items_used_by_bound_inst_3_0_i2);
+	}
+	MR_sv(2) = MR_tfield(0, MR_r2, 5);
+	MR_r1 = MR_tfield(1, MR_tempr1, 0);
+	MR_tempr2 = MR_r2;
+	MR_r2 = MR_tfield(1, MR_tempr1, 1);
+	MR_r3 = MR_tfield(0, MR_sv(2), 5);
+	MR_r4 = MR_tempr2;
+	}
+	MR_np_call_localret_ent(recompilation__usage__record_resolved_item__ho1_7_0,
+		recompilation__usage__find_items_used_by_bound_inst_3_0_i4);
+MR_def_label(recompilation__usage__find_items_used_by_bound_inst_3_0,4)
+	MR_MAYBE_INIT_LOCAL_THREAD_ENGINE_BASE
+	{
+	MR_Word MR_tempr1, MR_tempr2, MR_tempr3;
+	MR_tag_alloc_heap(MR_tempr1, 0, (MR_Integer) 10);
+	MR_tempr3 = MR_sv(2);
+	MR_tfield(0, MR_tempr1, 0) = MR_tfield(0, MR_tempr3, 0);
+	MR_tfield(0, MR_tempr1, 1) = MR_tfield(0, MR_tempr3, 1);
+	MR_tfield(0, MR_tempr1, 2) = MR_tfield(0, MR_tempr3, 2);
+	MR_tfield(0, MR_tempr1, 3) = MR_tfield(0, MR_tempr3, 3);
+	MR_tfield(0, MR_tempr1, 4) = MR_tfield(0, MR_tempr3, 4);
+	MR_tfield(0, MR_tempr1, 5) = MR_r1;
+	MR_tfield(0, MR_tempr1, 6) = MR_tfield(0, MR_tempr3, 6);
+	MR_tfield(0, MR_tempr1, 7) = MR_tfield(0, MR_tempr3, 7);
+	MR_tfield(0, MR_tempr1, 8) = MR_tfield(0, MR_tempr3, 8);
+	MR_tfield(0, MR_tempr1, 9) = MR_tfield(0, MR_tempr3, 9);
+	MR_tag_alloc_heap(MR_tempr2, 0, (MR_Integer) 7);
+	MR_r5 = MR_tempr2;
+	MR_tfield(0, MR_tempr2, 0) = MR_tfield(0, MR_r2, 0);
+	MR_tfield(0, MR_tempr2, 1) = MR_tfield(0, MR_r2, 1);
+	MR_tfield(0, MR_tempr2, 2) = MR_tfield(0, MR_r2, 2);
+	MR_tfield(0, MR_tempr2, 3) = MR_tfield(0, MR_r2, 3);
+	MR_tfield(0, MR_tempr2, 4) = MR_tfield(0, MR_r2, 4);
+	MR_tfield(0, MR_tempr2, 5) = MR_tempr1;
+	MR_tfield(0, MR_tempr2, 6) = MR_tfield(0, MR_r2, 6);
+	MR_r4 = MR_sv(1);
+	MR_r3 = (MR_Word) MR_TAG_COMMON(0,3,41);
+	MR_r1 = (MR_Word) MR_CTOR0_ADDR(parse_tree__prog_data, mer_inst);
+	MR_r2 = (MR_Word) MR_CTOR0_ADDR(recompilation__usage, recompilation_usage_info);
+	MR_succip_word = MR_sv(3);
+	MR_decr_sp(3);
+	MR_np_tailcall_ent(list__foldl_4_0);
+	}
+MR_def_label(recompilation__usage__find_items_used_by_bound_inst_3_0,2)
+	MR_MAYBE_INIT_LOCAL_THREAD_ENGINE_BASE
+	MR_r4 = MR_sv(1);
+	MR_r5 = MR_r2;
+	MR_r3 = (MR_Word) MR_TAG_COMMON(0,3,42);
+	MR_r1 = (MR_Word) MR_CTOR0_ADDR(parse_tree__prog_data, mer_inst);
+	MR_r2 = (MR_Word) MR_CTOR0_ADDR(recompilation__usage, recompilation_usage_info);
+	MR_succip_word = MR_sv(3);
+	MR_decr_sp(3);
+	MR_np_tailcall_ent(list__foldl_4_0);
+#ifdef MR_maybe_local_thread_engine_base
+	#undef MR_maybe_local_thread_engine_base
+	#define MR_maybe_local_thread_engine_base MR_thread_engine_base
+#endif
+MR_END_MODULE
+
+
+MR_BEGIN_MODULE(recompilation__usage_module64)
+	MR_init_entry1(recompilation__usage__find_items_used_by_class_constraint_3_0);
+	MR_INIT_PROC_LAYOUT_ADDR(mercury__recompilation__usage__find_items_used_by_class_constraint_3_0);
+	MR_init_label2(recompilation__usage__find_items_used_by_class_constraint_3_0,2,4)
+MR_BEGIN_CODE
+
+/*-------------------------------------------------------------------------*/
+/* code for 'find_items_used_by_class_constraint'/3 mode 0 */
+#ifdef MR_maybe_local_thread_engine_base
+	#undef MR_maybe_local_thread_engine_base
+	#define MR_maybe_local_thread_engine_base MR_local_thread_engine_base
+#endif
+MR_def_static(recompilation__usage__find_items_used_by_class_constraint_3_0)
+	MR_MAYBE_INIT_LOCAL_THREAD_ENGINE_BASE
+	MR_incr_sp(4);
+	MR_sv(4) = (MR_Word) MR_succip;
+	MR_sv(1) = MR_tfield(0, MR_r1, 0);
+	MR_sv(2) = MR_tfield(0, MR_r1, 1);
+	MR_sv(3) = MR_r2;
+	MR_r1 = (MR_Word) MR_CTOR0_ADDR(parse_tree__prog_data, mer_type);
+	MR_r2 = MR_sv(2);
+	MR_np_call_localret_ent(fn__list__length_1_0,
+		recompilation__usage__find_items_used_by_class_constraint_3_0_i2);
+MR_def_label(recompilation__usage__find_items_used_by_class_constraint_3_0,2)
+	MR_MAYBE_INIT_LOCAL_THREAD_ENGINE_BASE
+	MR_tag_alloc_heap(MR_r2, 0, (MR_Integer) 2);
+	MR_tfield(0, MR_r2, 0) = MR_sv(1);
+	MR_tfield(0, MR_r2, 1) = MR_r1;
+	MR_r1 = (MR_Integer) 4;
+	MR_r3 = MR_sv(3);
+	MR_np_call_localret_ent(recompilation__usage__maybe_record_item_to_process_4_0,
+		recompilation__usage__find_items_used_by_class_constraint_3_0_i4);
+MR_def_label(recompilation__usage__find_items_used_by_class_constraint_3_0,4)
+	MR_MAYBE_INIT_LOCAL_THREAD_ENGINE_BASE
+	{
+	MR_Word MR_tempr1;
+	MR_tempr1 = MR_r1;
+	MR_r1 = (MR_Word) MR_CTOR0_ADDR(parse_tree__prog_data, mer_type);
+	MR_r2 = (MR_Word) MR_CTOR0_ADDR(recompilation__usage, recompilation_usage_info);
+	MR_r3 = (MR_Word) MR_TAG_COMMON(0,3,43);
+	MR_r4 = MR_sv(2);
+	MR_r5 = MR_tempr1;
+	MR_succip_word = MR_sv(4);
+	MR_decr_sp(4);
+	MR_np_tailcall_ent(list__foldl_4_0);
+	}
+#ifdef MR_maybe_local_thread_engine_base
+	#undef MR_maybe_local_thread_engine_base
+	#define MR_maybe_local_thread_engine_base MR_thread_engine_base
+#endif
+MR_END_MODULE
+
+
+MR_BEGIN_MODULE(recompilation__usage_module65)
+	MR_init_entry1(recompilation__usage__record_expanded_items_used_by_item_2_3_0);
+	MR_INIT_PROC_LAYOUT_ADDR(mercury__recompilation__usage__record_expanded_items_used_by_item_2_3_0);
+MR_BEGIN_CODE
+
+/*-------------------------------------------------------------------------*/
+/* code for 'record_expanded_items_used_by_item_2'/3 mode 0 */
+#ifdef MR_maybe_local_thread_engine_base
+	#undef MR_maybe_local_thread_engine_base
+	#define MR_maybe_local_thread_engine_base MR_local_thread_engine_base
+#endif
+MR_def_static(recompilation__usage__record_expanded_items_used_by_item_2_3_0)
+	MR_MAYBE_INIT_LOCAL_THREAD_ENGINE_BASE
+	{
+	MR_Word MR_tempr1, MR_tempr2;
+	MR_tempr1 = MR_r1;
+	MR_r1 = MR_tfield(0, MR_r1, 0);
+	MR_tempr2 = MR_r2;
+	MR_r2 = MR_tfield(0, MR_tempr1, 1);
+	MR_r3 = MR_tempr2;
+	MR_np_tailcall_ent(recompilation__usage__maybe_record_item_to_process_4_0);
+	}
+#ifdef MR_maybe_local_thread_engine_base
+	#undef MR_maybe_local_thread_engine_base
+	#define MR_maybe_local_thread_engine_base MR_thread_engine_base
+#endif
+MR_END_MODULE
+
+MR_decl_entry(__Unify___set_ordlist__set_ordlist_1_0);
+
+MR_BEGIN_MODULE(recompilation__usage_module66)
+	MR_init_entry1(__Unify___recompilation__usage__imported_item_set_0_0);
+	MR_INIT_PROC_LAYOUT_ADDR(mercury____Unify___recompilation__usage__imported_item_set_0_0);
+MR_BEGIN_CODE
+
+/*-------------------------------------------------------------------------*/
+/* code for '__Unify__'/2 mode 0 */
+#ifdef MR_maybe_local_thread_engine_base
+	#undef MR_maybe_local_thread_engine_base
+	#define MR_maybe_local_thread_engine_base MR_local_thread_engine_base
+#endif
+MR_def_static(__Unify___recompilation__usage__imported_item_set_0_0)
+	MR_MAYBE_INIT_LOCAL_THREAD_ENGINE_BASE
+	{
+	MR_Word MR_tempr1, MR_tempr2;
+	MR_tempr1 = MR_r1;
+	MR_r1 = (MR_Word) MR_TAG_COMMON(0,0,0);
+	MR_tempr2 = MR_r2;
+	MR_r2 = MR_tempr1;
+	MR_r3 = MR_tempr2;
+	MR_np_tailcall_ent(__Unify___set_ordlist__set_ordlist_1_0);
+	}
+#ifdef MR_maybe_local_thread_engine_base
+	#undef MR_maybe_local_thread_engine_base
+	#define MR_maybe_local_thread_engine_base MR_thread_engine_base
+#endif
+MR_END_MODULE
+
+MR_decl_entry(__Compare___set_ordlist__set_ordlist_1_0);
+
+MR_BEGIN_MODULE(recompilation__usage_module67)
+	MR_init_entry1(__Compare___recompilation__usage__imported_item_set_0_0);
+	MR_INIT_PROC_LAYOUT_ADDR(mercury____Compare___recompilation__usage__imported_item_set_0_0);
+MR_BEGIN_CODE
+
+/*-------------------------------------------------------------------------*/
+/* code for '__Compare__'/3 mode 0 */
+#ifdef MR_maybe_local_thread_engine_base
+	#undef MR_maybe_local_thread_engine_base
+	#define MR_maybe_local_thread_engine_base MR_local_thread_engine_base
+#endif
+MR_def_static(__Compare___recompilation__usage__imported_item_set_0_0)
+	MR_MAYBE_INIT_LOCAL_THREAD_ENGINE_BASE
+	{
+	MR_Word MR_tempr1, MR_tempr2;
+	MR_tempr1 = MR_r1;
+	MR_r1 = (MR_Word) MR_TAG_COMMON(0,0,0);
+	MR_tempr2 = MR_r2;
+	MR_r2 = MR_tempr1;
+	MR_r3 = MR_tempr2;
+	MR_np_tailcall_ent(__Compare___set_ordlist__set_ordlist_1_0);
+	}
+#ifdef MR_maybe_local_thread_engine_base
+	#undef MR_maybe_local_thread_engine_base
+	#define MR_maybe_local_thread_engine_base MR_thread_engine_base
+#endif
+MR_END_MODULE
+
+MR_decl_entry(__Unify___tree234__tree234_2_0);
+
+MR_BEGIN_MODULE(recompilation__usage_module68)
+	MR_init_entry1(__Unify___recompilation__usage__imported_items_0_0);
+	MR_INIT_PROC_LAYOUT_ADDR(mercury____Unify___recompilation__usage__imported_items_0_0);
+MR_BEGIN_CODE
+
+/*-------------------------------------------------------------------------*/
+/* code for '__Unify__'/2 mode 0 */
+#ifdef MR_maybe_local_thread_engine_base
+	#undef MR_maybe_local_thread_engine_base
+	#define MR_maybe_local_thread_engine_base MR_local_thread_engine_base
+#endif
+MR_def_static(__Unify___recompilation__usage__imported_items_0_0)
+	MR_MAYBE_INIT_LOCAL_THREAD_ENGINE_BASE
+	{
+	MR_Word MR_tempr1, MR_tempr2;
+	MR_tempr1 = MR_r1;
+	MR_r1 = (MR_Word) MR_CTOR0_ADDR(mdbcomp__prim_data, sym_name);
+	MR_tempr2 = MR_r2;
+	MR_r2 = (MR_Word) MR_TAG_COMMON(0,9,0);
+	MR_r3 = MR_tempr1;
+	MR_r4 = MR_tempr2;
+	MR_np_tailcall_ent(__Unify___tree234__tree234_2_0);
+	}
+#ifdef MR_maybe_local_thread_engine_base
+	#undef MR_maybe_local_thread_engine_base
+	#define MR_maybe_local_thread_engine_base MR_thread_engine_base
+#endif
+MR_END_MODULE
+
+MR_decl_entry(__Compare___tree234__tree234_2_0);
+
+MR_BEGIN_MODULE(recompilation__usage_module69)
+	MR_init_entry1(__Compare___recompilation__usage__imported_items_0_0);
+	MR_INIT_PROC_LAYOUT_ADDR(mercury____Compare___recompilation__usage__imported_items_0_0);
+MR_BEGIN_CODE
+
+/*-------------------------------------------------------------------------*/
+/* code for '__Compare__'/3 mode 0 */
+#ifdef MR_maybe_local_thread_engine_base
+	#undef MR_maybe_local_thread_engine_base
+	#define MR_maybe_local_thread_engine_base MR_local_thread_engine_base
+#endif
+MR_def_static(__Compare___recompilation__usage__imported_items_0_0)
+	MR_MAYBE_INIT_LOCAL_THREAD_ENGINE_BASE
+	{
+	MR_Word MR_tempr1, MR_tempr2;
+	MR_tempr1 = MR_r1;
+	MR_r1 = (MR_Word) MR_CTOR0_ADDR(mdbcomp__prim_data, sym_name);
+	MR_tempr2 = MR_r2;
+	MR_r2 = (MR_Word) MR_TAG_COMMON(0,9,0);
+	MR_r3 = MR_tempr1;
+	MR_r4 = MR_tempr2;
+	MR_np_tailcall_ent(__Compare___tree234__tree234_2_0);
+	}
+#ifdef MR_maybe_local_thread_engine_base
+	#undef MR_maybe_local_thread_engine_base
+	#define MR_maybe_local_thread_engine_base MR_thread_engine_base
+#endif
+MR_END_MODULE
+
+
+MR_BEGIN_MODULE(recompilation__usage_module70)
+	MR_init_entry1(__Unify___recompilation__usage__module_imported_items_0_0);
+	MR_INIT_PROC_LAYOUT_ADDR(mercury____Unify___recompilation__usage__module_imported_items_0_0);
+MR_BEGIN_CODE
+
+/*-------------------------------------------------------------------------*/
+/* code for '__Unify__'/2 mode 0 */
+#ifdef MR_maybe_local_thread_engine_base
+	#undef MR_maybe_local_thread_engine_base
+	#define MR_maybe_local_thread_engine_base MR_local_thread_engine_base
+#endif
+MR_def_static(__Unify___recompilation__usage__module_imported_items_0_0)
+	MR_MAYBE_INIT_LOCAL_THREAD_ENGINE_BASE
+	{
+	MR_Word MR_tempr1, MR_tempr2;
+	MR_tempr1 = MR_r1;
+	MR_r1 = (MR_Word) MR_TAG_COMMON(0,1,7);
+	MR_tempr2 = MR_r2;
+	MR_r2 = MR_r1;
+	MR_r3 = MR_r1;
+	MR_r4 = MR_tempr1;
+	MR_r5 = MR_tempr2;
+	MR_np_tailcall_ent(__Unify___recompilation__item_id_set_3_0);
+	}
+#ifdef MR_maybe_local_thread_engine_base
+	#undef MR_maybe_local_thread_engine_base
+	#define MR_maybe_local_thread_engine_base MR_thread_engine_base
+#endif
+MR_END_MODULE
+
+MR_decl_entry(__Compare___recompilation__item_id_set_3_0);
+
+MR_BEGIN_MODULE(recompilation__usage_module71)
+	MR_init_entry1(__Compare___recompilation__usage__module_imported_items_0_0);
+	MR_INIT_PROC_LAYOUT_ADDR(mercury____Compare___recompilation__usage__module_imported_items_0_0);
+MR_BEGIN_CODE
+
+/*-------------------------------------------------------------------------*/
+/* code for '__Compare__'/3 mode 0 */
+#ifdef MR_maybe_local_thread_engine_base
+	#undef MR_maybe_local_thread_engine_base
+	#define MR_maybe_local_thread_engine_base MR_local_thread_engine_base
+#endif
+MR_def_static(__Compare___recompilation__usage__module_imported_items_0_0)
+	MR_MAYBE_INIT_LOCAL_THREAD_ENGINE_BASE
+	{
+	MR_Word MR_tempr1, MR_tempr2;
+	MR_tempr1 = MR_r1;
+	MR_r1 = (MR_Word) MR_TAG_COMMON(0,1,7);
+	MR_tempr2 = MR_r2;
+	MR_r2 = MR_r1;
+	MR_r3 = MR_r1;
+	MR_r4 = MR_tempr1;
+	MR_r5 = MR_tempr2;
+	MR_np_tailcall_ent(__Compare___recompilation__item_id_set_3_0);
+	}
+#ifdef MR_maybe_local_thread_engine_base
+	#undef MR_maybe_local_thread_engine_base
+	#define MR_maybe_local_thread_engine_base MR_thread_engine_base
+#endif
+MR_END_MODULE
+
+MR_decl_entry(__Unify___hlds__hlds_module__module_info_0_0);
+MR_decl_entry(__Unify___queue__queue_1_0);
+
+MR_BEGIN_MODULE(recompilation__usage_module72)
+	MR_init_entry1(__Unify___recompilation__usage__recompilation_usage_info_0_0);
+	MR_INIT_PROC_LAYOUT_ADDR(mercury____Unify___recompilation__usage__recompilation_usage_info_0_0);
+	MR_init_label8(__Unify___recompilation__usage__recompilation_usage_info_0_0,4,6,11,14,17,32,36,1)
+MR_BEGIN_CODE
+
+/*-------------------------------------------------------------------------*/
+/* code for '__Unify__'/2 mode 0 */
+#ifdef MR_maybe_local_thread_engine_base
+	#undef MR_maybe_local_thread_engine_base
+	#define MR_maybe_local_thread_engine_base MR_local_thread_engine_base
+#endif
+MR_def_static(__Unify___recompilation__usage__recompilation_usage_info_0_0)
+	MR_MAYBE_INIT_LOCAL_THREAD_ENGINE_BASE
+	if ((MR_r1 == MR_r2)) {
+		MR_GOTO_LAB(__Unify___recompilation__usage__recompilation_usage_info_0_0_i36);
+	}
+	MR_incr_sp(13);
+	MR_sv(13) = (MR_Word) MR_succip;
+	MR_sv(1) = MR_r1;
+	MR_sv(2) = MR_r2;
+	{
+	MR_Word MR_tempr1, MR_tempr2;
+	MR_tempr1 = MR_sv(1);
+	MR_sv(1) = MR_tfield(0, MR_tempr1, 1);
+	MR_tempr2 = MR_sv(2);
+	MR_sv(2) = MR_tfield(0, MR_tempr1, 2);
+	MR_sv(3) = MR_tfield(0, MR_tempr1, 3);
+	MR_sv(4) = MR_tfield(0, MR_tempr1, 4);
+	MR_sv(5) = MR_tfield(0, MR_tempr1, 5);
+	MR_sv(6) = MR_tfield(0, MR_tempr1, 6);
+	MR_sv(7) = MR_tfield(0, MR_tempr2, 1);
+	MR_sv(8) = MR_tfield(0, MR_tempr2, 2);
+	MR_sv(9) = MR_tfield(0, MR_tempr2, 3);
+	MR_sv(10) = MR_tfield(0, MR_tempr2, 4);
+	MR_sv(11) = MR_tfield(0, MR_tempr2, 5);
+	MR_sv(12) = MR_tfield(0, MR_tempr2, 6);
+	MR_r1 = MR_tfield(0, MR_tempr1, 0);
+	MR_r2 = MR_tfield(0, MR_tempr2, 0);
+	}
+	MR_np_call_localret_ent(__Unify___hlds__hlds_module__module_info_0_0,
+		__Unify___recompilation__usage__recompilation_usage_info_0_0_i4);
+MR_def_label(__Unify___recompilation__usage__recompilation_usage_info_0_0,4)
+	MR_MAYBE_INIT_LOCAL_THREAD_ENGINE_BASE
+	if (!(MR_r1)) {
+		MR_GOTO_LAB(__Unify___recompilation__usage__recompilation_usage_info_0_0_i1);
+	}
+	MR_r1 = (MR_Word) MR_CTOR0_ADDR(recompilation, item_id);
+	MR_r2 = MR_sv(1);
+	MR_r3 = MR_sv(7);
+	MR_np_call_localret_ent(__Unify___queue__queue_1_0,
+		__Unify___recompilation__usage__recompilation_usage_info_0_0_i6);
+MR_def_label(__Unify___recompilation__usage__recompilation_usage_info_0_0,6)
+	MR_MAYBE_INIT_LOCAL_THREAD_ENGINE_BASE
+	if (!(MR_r1)) {
+		MR_GOTO_LAB(__Unify___recompilation__usage__recompilation_usage_info_0_0_i1);
+	}
+	{
+	MR_Word MR_tempr1;
+	MR_tempr1 = MR_sv(2);
+	MR_sv(2) = (MR_Word) MR_TAG_COMMON(0,0,0);
+	MR_r1 = (MR_Word) MR_CTOR0_ADDR(mdbcomp__prim_data, sym_name);
+	MR_r2 = (MR_Word) MR_TAG_COMMON(0,9,0);
+	MR_r3 = MR_tempr1;
+	MR_r4 = MR_sv(8);
+	}
+	MR_np_call_localret_ent(__Unify___tree234__tree234_2_0,
+		__Unify___recompilation__usage__recompilation_usage_info_0_0_i11);
+MR_def_label(__Unify___recompilation__usage__recompilation_usage_info_0_0,11)
+	MR_MAYBE_INIT_LOCAL_THREAD_ENGINE_BASE
+	if (!(MR_r1)) {
+		MR_GOTO_LAB(__Unify___recompilation__usage__recompilation_usage_info_0_0_i1);
+	}
+	MR_sv(1) = (MR_Word) MR_CTOR0_ADDR(recompilation, item_name);
+	MR_r1 = (MR_Word) MR_CTOR0_ADDR(mdbcomp__prim_data, sym_name);
+	MR_r2 = (MR_Word) MR_TAG_COMMON(0,1,12);
+	MR_r3 = MR_sv(3);
+	MR_r4 = MR_sv(9);
+	MR_np_call_localret_ent(__Unify___tree234__tree234_2_0,
+		__Unify___recompilation__usage__recompilation_usage_info_0_0_i14);
+MR_def_label(__Unify___recompilation__usage__recompilation_usage_info_0_0,14)
+	MR_MAYBE_INIT_LOCAL_THREAD_ENGINE_BASE
+	if (!(MR_r1)) {
+		MR_GOTO_LAB(__Unify___recompilation__usage__recompilation_usage_info_0_0_i1);
+	}
+	MR_r1 = (MR_Word) MR_CTOR0_ADDR(recompilation, item_id);
+	MR_r2 = (MR_Word) MR_TAG_COMMON(0,1,8);
+	MR_r3 = MR_sv(4);
+	MR_r4 = MR_sv(10);
+	MR_np_call_localret_ent(__Unify___tree234__tree234_2_0,
+		__Unify___recompilation__usage__recompilation_usage_info_0_0_i17);
+MR_def_label(__Unify___recompilation__usage__recompilation_usage_info_0_0,17)
+	MR_MAYBE_INIT_LOCAL_THREAD_ENGINE_BASE
+	if (!(MR_r1)) {
+		MR_GOTO_LAB(__Unify___recompilation__usage__recompilation_usage_info_0_0_i1);
+	}
+	MR_r1 = (MR_Word) MR_TAG_COMMON(0,0,2);
+	MR_r2 = (MR_Word) MR_TAG_COMMON(0,0,6);
+	MR_r3 = (MR_Word) MR_TAG_COMMON(0,0,9);
+	MR_r4 = MR_sv(5);
+	MR_r5 = MR_sv(11);
+	MR_np_call_localret_ent(__Unify___recompilation__item_id_set_3_0,
+		__Unify___recompilation__usage__recompilation_usage_info_0_0_i32);
+MR_def_label(__Unify___recompilation__usage__recompilation_usage_info_0_0,32)
+	MR_MAYBE_INIT_LOCAL_THREAD_ENGINE_BASE
+	if (!(MR_r1)) {
+		MR_GOTO_LAB(__Unify___recompilation__usage__recompilation_usage_info_0_0_i1);
+	}
+	MR_r1 = MR_sv(1);
+	MR_r2 = MR_sv(6);
+	MR_r3 = MR_sv(12);
+	MR_succip_word = MR_sv(13);
+	MR_decr_sp(13);
+	MR_np_tailcall_ent(__Unify___set_ordlist__set_ordlist_1_0);
+MR_def_label(__Unify___recompilation__usage__recompilation_usage_info_0_0,36)
+	MR_MAYBE_INIT_LOCAL_THREAD_ENGINE_BASE
+	MR_r1 = MR_TRUE;
+	MR_proceed();
+MR_def_label(__Unify___recompilation__usage__recompilation_usage_info_0_0,1)
+	MR_MAYBE_INIT_LOCAL_THREAD_ENGINE_BASE
+	MR_r1 = MR_FALSE;
+	MR_decr_sp_and_return(13);
+#ifdef MR_maybe_local_thread_engine_base
+	#undef MR_maybe_local_thread_engine_base
+	#define MR_maybe_local_thread_engine_base MR_thread_engine_base
+#endif
+MR_END_MODULE
+
+MR_decl_entry(__Compare___hlds__hlds_module__module_info_0_0);
+MR_decl_entry(__Compare___queue__queue_1_0);
+
+MR_BEGIN_MODULE(recompilation__usage_module73)
+	MR_init_entry1(__Compare___recompilation__usage__recompilation_usage_info_0_0);
+	MR_INIT_PROC_LAYOUT_ADDR(mercury____Compare___recompilation__usage__recompilation_usage_info_0_0);
+	MR_init_label9(__Compare___recompilation__usage__recompilation_usage_info_0_0,3,2,5,9,16,21,26,44,101)
+MR_BEGIN_CODE
+
+/*-------------------------------------------------------------------------*/
+/* code for '__Compare__'/3 mode 0 */
+#ifdef MR_maybe_local_thread_engine_base
+	#undef MR_maybe_local_thread_engine_base
+	#define MR_maybe_local_thread_engine_base MR_local_thread_engine_base
+#endif
+MR_def_static(__Compare___recompilation__usage__recompilation_usage_info_0_0)
+	MR_MAYBE_INIT_LOCAL_THREAD_ENGINE_BASE
+	if ((MR_r1 == MR_r2)) {
+		MR_GOTO_LAB(__Compare___recompilation__usage__recompilation_usage_info_0_0_i3);
+	}
+	MR_incr_sp(13);
+	MR_sv(13) = (MR_Word) MR_succip;
+	MR_sv(1) = MR_r1;
+	MR_sv(2) = MR_r2;
+	MR_GOTO_LAB(__Compare___recompilation__usage__recompilation_usage_info_0_0_i2);
+MR_def_label(__Compare___recompilation__usage__recompilation_usage_info_0_0,3)
+	MR_MAYBE_INIT_LOCAL_THREAD_ENGINE_BASE
+	MR_r1 = (MR_Integer) 0;
+	MR_proceed();
+MR_def_label(__Compare___recompilation__usage__recompilation_usage_info_0_0,2)
+	MR_MAYBE_INIT_LOCAL_THREAD_ENGINE_BASE
+	{
+	MR_Word MR_tempr1, MR_tempr2, MR_tempr3, MR_tempr4, MR_tempr5, MR_tempr6;
+	MR_tempr5 = MR_sv(2);
+	MR_sv(12) = MR_tfield(0, MR_tempr5, 6);
+	MR_sv(11) = MR_tfield(0, MR_tempr5, 5);
+	MR_sv(10) = MR_tfield(0, MR_tempr5, 4);
+	MR_sv(9) = MR_tfield(0, MR_tempr5, 3);
+	MR_sv(8) = MR_tfield(0, MR_tempr5, 2);
+	MR_sv(7) = MR_tfield(0, MR_tempr5, 1);
+	MR_tempr6 = MR_sv(1);
+	MR_sv(6) = MR_tfield(0, MR_tempr6, 6);
+	MR_sv(5) = MR_tfield(0, MR_tempr6, 5);
+	MR_sv(4) = MR_tfield(0, MR_tempr6, 4);
+	MR_sv(3) = MR_tfield(0, MR_tempr6, 3);
+	MR_tempr1 = MR_tfield(0, MR_tempr6, 2);
+	MR_tempr2 = MR_tfield(0, MR_tempr6, 1);
+	MR_tempr3 = MR_tempr6;
+	MR_sv(1) = MR_tempr2;
+	MR_tempr4 = MR_tempr5;
+	MR_sv(2) = MR_tempr1;
+	MR_r1 = MR_tfield(0, MR_tempr3, 0);
+	MR_r2 = MR_tfield(0, MR_tempr4, 0);
+	}
+	MR_np_call_localret_ent(__Compare___hlds__hlds_module__module_info_0_0,
+		__Compare___recompilation__usage__recompilation_usage_info_0_0_i5);
+MR_def_label(__Compare___recompilation__usage__recompilation_usage_info_0_0,5)
+	MR_MAYBE_INIT_LOCAL_THREAD_ENGINE_BASE
+	if (MR_INT_NE(MR_r1,0)) {
+		MR_GOTO_LAB(__Compare___recompilation__usage__recompilation_usage_info_0_0_i101);
+	}
+	MR_r1 = (MR_Word) MR_CTOR0_ADDR(recompilation, item_id);
+	MR_r2 = MR_sv(1);
+	MR_r3 = MR_sv(7);
+	MR_np_call_localret_ent(__Compare___queue__queue_1_0,
+		__Compare___recompilation__usage__recompilation_usage_info_0_0_i9);
+MR_def_label(__Compare___recompilation__usage__recompilation_usage_info_0_0,9)
+	MR_MAYBE_INIT_LOCAL_THREAD_ENGINE_BASE
+	if (MR_INT_NE(MR_r1,0)) {
+		MR_GOTO_LAB(__Compare___recompilation__usage__recompilation_usage_info_0_0_i101);
+	}
+	MR_r1 = (MR_Word) MR_CTOR0_ADDR(mdbcomp__prim_data, sym_name);
+	MR_r2 = (MR_Word) MR_TAG_COMMON(0,9,0);
+	MR_r3 = MR_sv(2);
+	MR_r4 = MR_sv(8);
+	MR_np_call_localret_ent(__Compare___tree234__tree234_2_0,
+		__Compare___recompilation__usage__recompilation_usage_info_0_0_i16);
+MR_def_label(__Compare___recompilation__usage__recompilation_usage_info_0_0,16)
+	MR_MAYBE_INIT_LOCAL_THREAD_ENGINE_BASE
+	if (MR_INT_NE(MR_r1,0)) {
+		MR_GOTO_LAB(__Compare___recompilation__usage__recompilation_usage_info_0_0_i101);
+	}
+	MR_r1 = (MR_Word) MR_CTOR0_ADDR(mdbcomp__prim_data, sym_name);
+	MR_r2 = (MR_Word) MR_TAG_COMMON(0,1,12);
+	MR_r3 = MR_sv(3);
+	MR_r4 = MR_sv(9);
+	MR_np_call_localret_ent(__Compare___tree234__tree234_2_0,
+		__Compare___recompilation__usage__recompilation_usage_info_0_0_i21);
+MR_def_label(__Compare___recompilation__usage__recompilation_usage_info_0_0,21)
+	MR_MAYBE_INIT_LOCAL_THREAD_ENGINE_BASE
+	if (MR_INT_NE(MR_r1,0)) {
+		MR_GOTO_LAB(__Compare___recompilation__usage__recompilation_usage_info_0_0_i101);
+	}
+	MR_r1 = (MR_Word) MR_CTOR0_ADDR(recompilation, item_id);
+	MR_r2 = (MR_Word) MR_TAG_COMMON(0,1,8);
+	MR_r3 = MR_sv(4);
+	MR_r4 = MR_sv(10);
+	MR_np_call_localret_ent(__Compare___tree234__tree234_2_0,
+		__Compare___recompilation__usage__recompilation_usage_info_0_0_i26);
+MR_def_label(__Compare___recompilation__usage__recompilation_usage_info_0_0,26)
+	MR_MAYBE_INIT_LOCAL_THREAD_ENGINE_BASE
+	if (MR_INT_NE(MR_r1,0)) {
+		MR_GOTO_LAB(__Compare___recompilation__usage__recompilation_usage_info_0_0_i101);
+	}
+	MR_r1 = (MR_Word) MR_TAG_COMMON(0,0,2);
+	MR_r2 = (MR_Word) MR_TAG_COMMON(0,0,6);
+	MR_r3 = (MR_Word) MR_TAG_COMMON(0,0,9);
+	MR_r4 = MR_sv(5);
+	MR_r5 = MR_sv(11);
+	MR_np_call_localret_ent(__Compare___recompilation__item_id_set_3_0,
+		__Compare___recompilation__usage__recompilation_usage_info_0_0_i44);
+MR_def_label(__Compare___recompilation__usage__recompilation_usage_info_0_0,44)
+	MR_MAYBE_INIT_LOCAL_THREAD_ENGINE_BASE
+	if (MR_INT_NE(MR_r1,0)) {
+		MR_GOTO_LAB(__Compare___recompilation__usage__recompilation_usage_info_0_0_i101);
+	}
+	MR_r1 = (MR_Word) MR_CTOR0_ADDR(recompilation, item_name);
+	MR_r2 = MR_sv(6);
+	MR_r3 = MR_sv(12);
+	MR_succip_word = MR_sv(13);
+	MR_decr_sp(13);
+	MR_np_tailcall_ent(__Compare___set_ordlist__set_ordlist_1_0);
+MR_def_label(__Compare___recompilation__usage__recompilation_usage_info_0_0,101)
+	MR_MAYBE_INIT_LOCAL_THREAD_ENGINE_BASE
+	MR_decr_sp_and_return(13);
+#ifdef MR_maybe_local_thread_engine_base
+	#undef MR_maybe_local_thread_engine_base
+	#define MR_maybe_local_thread_engine_base MR_thread_engine_base
+#endif
+MR_END_MODULE
+
+
+MR_BEGIN_MODULE(recompilation__usage_module74)
+	MR_init_entry1(__Unify___recompilation__usage__record_resolved_item_1_0);
+	MR_INIT_PROC_LAYOUT_ADDR(mercury____Unify___recompilation__usage__record_resolved_item_1_0);
+MR_BEGIN_CODE
+
+/*-------------------------------------------------------------------------*/
+/* code for '__Unify__'/2 mode 0 */
+#ifdef MR_maybe_local_thread_engine_base
+	#undef MR_maybe_local_thread_engine_base
+	#define MR_maybe_local_thread_engine_base MR_local_thread_engine_base
+#endif
+MR_def_static(__Unify___recompilation__usage__record_resolved_item_1_0)
+	MR_MAYBE_INIT_LOCAL_THREAD_ENGINE_BASE
+	MR_r1 = MR_r2;
+	MR_r2 = MR_r3;
+	MR_np_tailcall_ent(f_114_101_99_111_109_112_105_108_97_116_105_111_110_95_95_117_115_97_103_101_95_95_85_110_117_115_101_100_65_114_103_115_95_95_112_114_101_100_95_95_95_95_85_110_105_102_121_95_95_95_114_101_99_111_109_112_105_108_97_116_105_111_110_95_95_117_115_97_103_101_95_95_114_101_99_111_114_100_95_114_101_115_111_108_118_101_100_95_105_116_101_109_95_49_95_95_91_49_93_95_48_2_0);
+#ifdef MR_maybe_local_thread_engine_base
+	#undef MR_maybe_local_thread_engine_base
+	#define MR_maybe_local_thread_engine_base MR_thread_engine_base
+#endif
+MR_END_MODULE
+
+
+MR_BEGIN_MODULE(recompilation__usage_module75)
+	MR_init_entry1(__Compare___recompilation__usage__record_resolved_item_1_0);
+	MR_INIT_PROC_LAYOUT_ADDR(mercury____Compare___recompilation__usage__record_resolved_item_1_0);
+MR_BEGIN_CODE
+
+/*-------------------------------------------------------------------------*/
+/* code for '__Compare__'/3 mode 0 */
+#ifdef MR_maybe_local_thread_engine_base
+	#undef MR_maybe_local_thread_engine_base
+	#define MR_maybe_local_thread_engine_base MR_local_thread_engine_base
+#endif
+MR_def_static(__Compare___recompilation__usage__record_resolved_item_1_0)
+	MR_MAYBE_INIT_LOCAL_THREAD_ENGINE_BASE
+	MR_r1 = MR_r2;
+	MR_r2 = MR_r3;
+	MR_np_tailcall_ent(f_114_101_99_111_109_112_105_108_97_116_105_111_110_95_95_117_115_97_103_101_95_95_85_110_117_115_101_100_65_114_103_115_95_95_112_114_101_100_95_95_95_95_67_111_109_112_97_114_101_95_95_95_114_101_99_111_109_112_105_108_97_116_105_111_110_95_95_117_115_97_103_101_95_95_114_101_99_111_114_100_95_114_101_115_111_108_118_101_100_95_105_116_101_109_95_49_95_95_91_49_93_95_48_3_0);
+#ifdef MR_maybe_local_thread_engine_base
+	#undef MR_maybe_local_thread_engine_base
+	#define MR_maybe_local_thread_engine_base MR_thread_engine_base
+#endif
+MR_END_MODULE
+
+MR_decl_entry(__Unify___recompilation__item_name_0_0);
+
+MR_BEGIN_MODULE(recompilation__usage_module76)
+	MR_init_entry1(__Unify___recompilation__usage__resolved_functor_0_0);
+	MR_INIT_PROC_LAYOUT_ADDR(mercury____Unify___recompilation__usage__resolved_functor_0_0);
+	MR_init_label6(__Unify___recompilation__usage__resolved_functor_0_0,5,11,26,9,16,1)
+MR_BEGIN_CODE
+
+/*-------------------------------------------------------------------------*/
+/* code for '__Unify__'/2 mode 0 */
+#ifdef MR_maybe_local_thread_engine_base
+	#undef MR_maybe_local_thread_engine_base
+	#define MR_maybe_local_thread_engine_base MR_local_thread_engine_base
+#endif
+MR_define_entry(mercury____Unify___recompilation__usage__resolved_functor_0_0);
+	MR_MAYBE_INIT_LOCAL_THREAD_ENGINE_BASE
+	if ((MR_r1 == MR_r2)) {
+		MR_GOTO_LAB(__Unify___recompilation__usage__resolved_functor_0_0_i26);
+	}
+	MR_incr_sp(5);
+	MR_sv(5) = (MR_Word) MR_succip;
+	{
+	MR_Word MR_tempr1, MR_tempr2;
+	MR_tempr1 = MR_r1;
+	MR_sv(1) = MR_tempr1;
+	MR_tempr2 = MR_r2;
+	MR_sv(2) = MR_tempr2;
+	if (MR_PTAG_TESTR(MR_tempr1,1)) {
+		MR_GOTO_LAB(__Unify___recompilation__usage__resolved_functor_0_0_i5);
+	}
+	if (MR_PTAG_TESTR(MR_tempr2,1)) {
+		MR_GOTO_LAB(__Unify___recompilation__usage__resolved_functor_0_0_i1);
+	}
+	MR_r1 = MR_tfield(1, MR_tempr1, 0);
+	MR_r2 = MR_tfield(1, MR_tempr2, 0);
+	MR_decr_sp(5);
+	MR_np_tailcall_ent(__Unify___recompilation__item_name_0_0);
+	}
+MR_def_label(__Unify___recompilation__usage__resolved_functor_0_0,5)
+	MR_MAYBE_INIT_LOCAL_THREAD_ENGINE_BASE
+	if (MR_PTAG_TESTR(MR_sv(1),2)) {
+		MR_GOTO_LAB(__Unify___recompilation__usage__resolved_functor_0_0_i9);
+	}
+	if (MR_PTAG_TESTR(MR_sv(2),2)) {
+		MR_GOTO_LAB(__Unify___recompilation__usage__resolved_functor_0_0_i1);
+	}
+	{
+	MR_Word MR_tempr1, MR_tempr2;
+	MR_tempr1 = MR_sv(1);
+	MR_sv(1) = MR_tfield(2, MR_tempr1, 1);
+	MR_tempr2 = MR_sv(2);
+	MR_sv(2) = MR_tfield(2, MR_tempr2, 1);
+	MR_r1 = MR_tfield(2, MR_tempr1, 0);
+	MR_r2 = MR_tfield(2, MR_tempr2, 0);
+	}
+	MR_np_call_localret_ent(__Unify___recompilation__item_name_0_0,
+		__Unify___recompilation__usage__resolved_functor_0_0_i11);
+MR_def_label(__Unify___recompilation__usage__resolved_functor_0_0,11)
+	MR_MAYBE_INIT_LOCAL_THREAD_ENGINE_BASE
+	if (!(MR_r1)) {
+		MR_GOTO_LAB(__Unify___recompilation__usage__resolved_functor_0_0_i1);
+	}
+	MR_r1 = MR_sv(1);
+	MR_r2 = MR_sv(2);
+	MR_succip_word = MR_sv(5);
+	MR_decr_sp(5);
+	MR_np_tailcall_ent(__Unify___recompilation__item_name_0_0);
+MR_def_label(__Unify___recompilation__usage__resolved_functor_0_0,26)
+	MR_MAYBE_INIT_LOCAL_THREAD_ENGINE_BASE
+	MR_r1 = MR_TRUE;
+	MR_proceed();
+MR_def_label(__Unify___recompilation__usage__resolved_functor_0_0,9)
+	MR_MAYBE_INIT_LOCAL_THREAD_ENGINE_BASE
+	if (MR_PTAG_TESTR(MR_sv(2),0)) {
+		MR_GOTO_LAB(__Unify___recompilation__usage__resolved_functor_0_0_i1);
+	}
+	{
+	MR_Word MR_tempr1, MR_tempr2, MR_tempr3, MR_tempr4;
+	MR_tempr3 = MR_sv(1);
+	MR_tempr1 = MR_tfield(0, MR_tempr3, 0);
+	MR_tempr4 = MR_sv(2);
+	MR_tempr2 = MR_tfield(0, MR_tempr4, 0);
+	if ((MR_tempr1 != MR_tempr2)) {
+		MR_GOTO_LAB(__Unify___recompilation__usage__resolved_functor_0_0_i1);
+	}
+	MR_tempr1 = MR_tempr3;
+	MR_sv(1) = MR_tfield(0, MR_tempr1, 2);
+	MR_tempr2 = MR_tempr4;
+	MR_sv(2) = MR_tfield(0, MR_tempr1, 3);
+	MR_sv(3) = MR_tfield(0, MR_tempr2, 2);
+	MR_sv(4) = MR_tfield(0, MR_tempr2, 3);
+	MR_r1 = MR_tfield(0, MR_tempr1, 1);
+	MR_r2 = MR_tfield(0, MR_tempr2, 1);
+	}
+	MR_np_call_localret_ent(__Unify___mdbcomp__prim_data__sym_name_0_0,
+		__Unify___recompilation__usage__resolved_functor_0_0_i16);
+MR_def_label(__Unify___recompilation__usage__resolved_functor_0_0,16)
+	MR_MAYBE_INIT_LOCAL_THREAD_ENGINE_BASE
+	if (!(MR_r1)) {
+		MR_GOTO_LAB(__Unify___recompilation__usage__resolved_functor_0_0_i1);
+	}
+	if ((MR_sv(1) != MR_sv(3))) {
+		MR_GOTO_LAB(__Unify___recompilation__usage__resolved_functor_0_0_i1);
+	}
+	MR_r1 = (MR_sv(2) == MR_sv(4));
+	MR_decr_sp_and_return(5);
+MR_def_label(__Unify___recompilation__usage__resolved_functor_0_0,1)
+	MR_MAYBE_INIT_LOCAL_THREAD_ENGINE_BASE
+	MR_r1 = MR_FALSE;
+	MR_decr_sp_and_return(5);
+#ifdef MR_maybe_local_thread_engine_base
+	#undef MR_maybe_local_thread_engine_base
+	#define MR_maybe_local_thread_engine_base MR_thread_engine_base
+#endif
+MR_END_MODULE
+
+MR_decl_entry(__Compare___recompilation__item_name_0_0);
+MR_decl_entry(private_builtin__builtin_compare_int_3_0);
+MR_decl_entry(__Compare___mdbcomp__prim_data__sym_name_0_0);
+
+MR_BEGIN_MODULE(recompilation__usage_module77)
+	MR_init_entry1(__Compare___recompilation__usage__resolved_functor_0_0);
+	MR_INIT_PROC_LAYOUT_ADDR(mercury____Compare___recompilation__usage__resolved_functor_0_0);
+	MR_init_label10(__Compare___recompilation__usage__resolved_functor_0_0,3,2,7,5,58,12,15,10,21,22)
+	MR_init_label4(__Compare___recompilation__usage__resolved_functor_0_0,24,28,32,112)
+MR_BEGIN_CODE
+
+/*-------------------------------------------------------------------------*/
+/* code for '__Compare__'/3 mode 0 */
+#ifdef MR_maybe_local_thread_engine_base
+	#undef MR_maybe_local_thread_engine_base
+	#define MR_maybe_local_thread_engine_base MR_local_thread_engine_base
+#endif
+MR_define_entry(mercury____Compare___recompilation__usage__resolved_functor_0_0);
+	MR_MAYBE_INIT_LOCAL_THREAD_ENGINE_BASE
+	if ((MR_r1 == MR_r2)) {
+		MR_GOTO_LAB(__Compare___recompilation__usage__resolved_functor_0_0_i3);
+	}
+	MR_incr_sp(7);
+	MR_sv(7) = (MR_Word) MR_succip;
+	MR_sv(1) = MR_r1;
+	MR_sv(2) = MR_r2;
+	MR_GOTO_LAB(__Compare___recompilation__usage__resolved_functor_0_0_i2);
+MR_def_label(__Compare___recompilation__usage__resolved_functor_0_0,3)
+	MR_MAYBE_INIT_LOCAL_THREAD_ENGINE_BASE
+	MR_r1 = (MR_Integer) 0;
+	MR_proceed();
+MR_def_label(__Compare___recompilation__usage__resolved_functor_0_0,2)
+	MR_MAYBE_INIT_LOCAL_THREAD_ENGINE_BASE
+	if (MR_PTAG_TESTR(MR_sv(1),1)) {
+		MR_GOTO_LAB(__Compare___recompilation__usage__resolved_functor_0_0_i5);
+	}
+	if (MR_PTAG_TESTR(MR_sv(2),1)) {
+		MR_GOTO_LAB(__Compare___recompilation__usage__resolved_functor_0_0_i7);
+	}
+	MR_r1 = MR_tfield(1, MR_sv(1), 0);
+	MR_r2 = MR_tfield(1, MR_sv(2), 0);
+	MR_succip_word = MR_sv(7);
+	MR_decr_sp(7);
+	MR_np_tailcall_ent(__Compare___recompilation__item_name_0_0);
+MR_def_label(__Compare___recompilation__usage__resolved_functor_0_0,7)
+	MR_MAYBE_INIT_LOCAL_THREAD_ENGINE_BASE
+	if (MR_PTAG_TESTR(MR_sv(2),2)) {
+		MR_GOTO_LAB(__Compare___recompilation__usage__resolved_functor_0_0_i58);
+	}
+	MR_r1 = (MR_Integer) 1;
+	MR_decr_sp_and_return(7);
+MR_def_label(__Compare___recompilation__usage__resolved_functor_0_0,5)
+	MR_MAYBE_INIT_LOCAL_THREAD_ENGINE_BASE
+	if (MR_PTAG_TESTR(MR_sv(1),2)) {
+		MR_GOTO_LAB(__Compare___recompilation__usage__resolved_functor_0_0_i10);
+	}
+	if (MR_PTAG_TESTR(MR_sv(2),1)) {
+		MR_GOTO_LAB(__Compare___recompilation__usage__resolved_functor_0_0_i12);
+	}
+MR_def_label(__Compare___recompilation__usage__resolved_functor_0_0,58)
+	MR_MAYBE_INIT_LOCAL_THREAD_ENGINE_BASE
+	MR_r1 = (MR_Integer) 2;
+	MR_decr_sp_and_return(7);
+MR_def_label(__Compare___recompilation__usage__resolved_functor_0_0,12)
+	MR_MAYBE_INIT_LOCAL_THREAD_ENGINE_BASE
+	if (MR_PTAG_TESTR(MR_sv(2),2)) {
+		MR_GOTO_LAB(__Compare___recompilation__usage__resolved_functor_0_0_i58);
+	}
+	{
+	MR_Word MR_tempr1, MR_tempr2, MR_tempr3, MR_tempr4, MR_tempr5, MR_tempr6;
+	MR_tempr5 = MR_sv(1);
+	MR_tempr1 = MR_tfield(2, MR_tempr5, 1);
+	MR_tempr6 = MR_sv(2);
+	MR_tempr2 = MR_tfield(2, MR_tempr6, 1);
+	MR_tempr3 = MR_tempr5;
+	MR_sv(1) = MR_tempr2;
+	MR_tempr4 = MR_tempr6;
+	MR_sv(2) = MR_tempr1;
+	MR_r1 = MR_tfield(2, MR_tempr3, 0);
+	MR_r2 = MR_tfield(2, MR_tempr4, 0);
+	}
+	MR_np_call_localret_ent(__Compare___recompilation__item_name_0_0,
+		__Compare___recompilation__usage__resolved_functor_0_0_i15);
+MR_def_label(__Compare___recompilation__usage__resolved_functor_0_0,15)
+	MR_MAYBE_INIT_LOCAL_THREAD_ENGINE_BASE
+	if (MR_INT_NE(MR_r1,0)) {
+		MR_GOTO_LAB(__Compare___recompilation__usage__resolved_functor_0_0_i112);
+	}
+	MR_r1 = MR_sv(2);
+	MR_r2 = MR_sv(1);
+	MR_succip_word = MR_sv(7);
+	MR_decr_sp(7);
+	MR_np_tailcall_ent(__Compare___recompilation__item_name_0_0);
+MR_def_label(__Compare___recompilation__usage__resolved_functor_0_0,10)
+	MR_MAYBE_INIT_LOCAL_THREAD_ENGINE_BASE
+	if (MR_PTAG_TESTR(MR_sv(2),1)) {
+		MR_GOTO_LAB(__Compare___recompilation__usage__resolved_functor_0_0_i21);
+	}
+	MR_r1 = (MR_Integer) 1;
+	MR_decr_sp_and_return(7);
+MR_def_label(__Compare___recompilation__usage__resolved_functor_0_0,21)
+	MR_MAYBE_INIT_LOCAL_THREAD_ENGINE_BASE
+	if (MR_PTAG_TESTR(MR_sv(2),2)) {
+		MR_GOTO_LAB(__Compare___recompilation__usage__resolved_functor_0_0_i22);
+	}
+	MR_r1 = (MR_Integer) 1;
+	MR_decr_sp_and_return(7);
+MR_def_label(__Compare___recompilation__usage__resolved_functor_0_0,22)
+	MR_MAYBE_INIT_LOCAL_THREAD_ENGINE_BASE
+	{
+	MR_Word MR_tempr1, MR_tempr2, MR_tempr3, MR_tempr4, MR_tempr5, MR_tempr6;
+	MR_tempr5 = MR_sv(1);
+	MR_sv(6) = MR_tfield(0, MR_tempr5, 1);
+	MR_sv(5) = MR_tfield(0, MR_tempr5, 2);
+	MR_sv(4) = MR_tfield(0, MR_tempr5, 3);
+	MR_tempr6 = MR_sv(2);
+	MR_sv(3) = MR_tfield(0, MR_tempr6, 3);
+	MR_tempr1 = MR_tfield(0, MR_tempr6, 2);
+	MR_tempr2 = MR_tfield(0, MR_tempr6, 1);
+	MR_tempr3 = MR_tempr5;
+	MR_sv(1) = MR_tempr2;
+	MR_tempr4 = MR_tempr6;
+	MR_sv(2) = MR_tempr1;
+	MR_r1 = MR_tfield(0, MR_tempr3, 0);
+	MR_r2 = MR_tfield(0, MR_tempr4, 0);
+	}
+	MR_np_call_localret_ent(private_builtin__builtin_compare_int_3_0,
+		__Compare___recompilation__usage__resolved_functor_0_0_i24);
+MR_def_label(__Compare___recompilation__usage__resolved_functor_0_0,24)
+	MR_MAYBE_INIT_LOCAL_THREAD_ENGINE_BASE
+	if (MR_INT_NE(MR_r1,0)) {
+		MR_GOTO_LAB(__Compare___recompilation__usage__resolved_functor_0_0_i112);
+	}
+	MR_r1 = MR_sv(6);
+	MR_r2 = MR_sv(1);
+	MR_np_call_localret_ent(__Compare___mdbcomp__prim_data__sym_name_0_0,
+		__Compare___recompilation__usage__resolved_functor_0_0_i28);
+MR_def_label(__Compare___recompilation__usage__resolved_functor_0_0,28)
+	MR_MAYBE_INIT_LOCAL_THREAD_ENGINE_BASE
+	if (MR_INT_NE(MR_r1,0)) {
+		MR_GOTO_LAB(__Compare___recompilation__usage__resolved_functor_0_0_i112);
+	}
+	MR_r1 = MR_sv(5);
+	MR_r2 = MR_sv(2);
+	MR_np_call_localret_ent(private_builtin__builtin_compare_int_3_0,
+		__Compare___recompilation__usage__resolved_functor_0_0_i32);
+MR_def_label(__Compare___recompilation__usage__resolved_functor_0_0,32)
+	MR_MAYBE_INIT_LOCAL_THREAD_ENGINE_BASE
+	if (MR_INT_NE(MR_r1,0)) {
+		MR_GOTO_LAB(__Compare___recompilation__usage__resolved_functor_0_0_i112);
+	}
+	MR_r1 = MR_sv(4);
+	MR_r2 = MR_sv(3);
+	MR_succip_word = MR_sv(7);
+	MR_decr_sp(7);
+	MR_np_tailcall_ent(private_builtin__builtin_compare_int_3_0);
+MR_def_label(__Compare___recompilation__usage__resolved_functor_0_0,112)
+	MR_MAYBE_INIT_LOCAL_THREAD_ENGINE_BASE
+	MR_decr_sp_and_return(7);
+#ifdef MR_maybe_local_thread_engine_base
+	#undef MR_maybe_local_thread_engine_base
+	#define MR_maybe_local_thread_engine_base MR_thread_engine_base
+#endif
+MR_END_MODULE
+
+
+MR_BEGIN_MODULE(recompilation__usage_module78)
+	MR_init_entry1(__Unify___recompilation__usage__resolved_functor_map_0_0);
+	MR_INIT_PROC_LAYOUT_ADDR(mercury____Unify___recompilation__usage__resolved_functor_map_0_0);
+MR_BEGIN_CODE
+
+/*-------------------------------------------------------------------------*/
+/* code for '__Unify__'/2 mode 0 */
+#ifdef MR_maybe_local_thread_engine_base
+	#undef MR_maybe_local_thread_engine_base
+	#define MR_maybe_local_thread_engine_base MR_local_thread_engine_base
+#endif
+MR_define_entry(mercury____Unify___recompilation__usage__resolved_functor_map_0_0);
+	MR_MAYBE_INIT_LOCAL_THREAD_ENGINE_BASE
+	{
+	MR_Word MR_tempr1, MR_tempr2;
+	MR_tempr1 = MR_r1;
+	MR_r1 = (MR_Word) MR_CTOR0_ADDR(mdbcomp__prim_data, sym_name);
+	MR_tempr2 = MR_r2;
+	MR_r2 = (MR_Word) MR_TAG_COMMON(0,1,2);
+	MR_r3 = MR_tempr1;
+	MR_r4 = MR_tempr2;
+	MR_np_tailcall_ent(__Unify___tree234__tree234_2_0);
+	}
+#ifdef MR_maybe_local_thread_engine_base
+	#undef MR_maybe_local_thread_engine_base
+	#define MR_maybe_local_thread_engine_base MR_thread_engine_base
+#endif
+MR_END_MODULE
+
+
+MR_BEGIN_MODULE(recompilation__usage_module79)
+	MR_init_entry1(__Compare___recompilation__usage__resolved_functor_map_0_0);
+	MR_INIT_PROC_LAYOUT_ADDR(mercury____Compare___recompilation__usage__resolved_functor_map_0_0);
+MR_BEGIN_CODE
+
+/*-------------------------------------------------------------------------*/
+/* code for '__Compare__'/3 mode 0 */
+#ifdef MR_maybe_local_thread_engine_base
+	#undef MR_maybe_local_thread_engine_base
+	#define MR_maybe_local_thread_engine_base MR_local_thread_engine_base
+#endif
+MR_define_entry(mercury____Compare___recompilation__usage__resolved_functor_map_0_0);
+	MR_MAYBE_INIT_LOCAL_THREAD_ENGINE_BASE
+	{
+	MR_Word MR_tempr1, MR_tempr2;
+	MR_tempr1 = MR_r1;
+	MR_r1 = (MR_Word) MR_CTOR0_ADDR(mdbcomp__prim_data, sym_name);
+	MR_tempr2 = MR_r2;
+	MR_r2 = (MR_Word) MR_TAG_COMMON(0,1,2);
+	MR_r3 = MR_tempr1;
+	MR_r4 = MR_tempr2;
+	MR_np_tailcall_ent(__Compare___tree234__tree234_2_0);
+	}
+#ifdef MR_maybe_local_thread_engine_base
+	#undef MR_maybe_local_thread_engine_base
+	#define MR_maybe_local_thread_engine_base MR_thread_engine_base
+#endif
+MR_END_MODULE
+
+
+MR_BEGIN_MODULE(recompilation__usage_module80)
+	MR_init_entry1(__Unify___recompilation__usage__resolved_functor_set_0_0);
+	MR_INIT_PROC_LAYOUT_ADDR(mercury____Unify___recompilation__usage__resolved_functor_set_0_0);
+MR_BEGIN_CODE
+
+/*-------------------------------------------------------------------------*/
+/* code for '__Unify__'/2 mode 0 */
+#ifdef MR_maybe_local_thread_engine_base
+	#undef MR_maybe_local_thread_engine_base
+	#define MR_maybe_local_thread_engine_base MR_local_thread_engine_base
+#endif
+MR_define_entry(mercury____Unify___recompilation__usage__resolved_functor_set_0_0);
+	MR_MAYBE_INIT_LOCAL_THREAD_ENGINE_BASE
+	{
+	MR_Word MR_tempr1, MR_tempr2;
+	MR_tempr1 = MR_r1;
+	MR_r1 = (MR_Word) MR_STRING_CTOR_ADDR;
+	MR_tempr2 = MR_r2;
+	MR_r2 = (MR_Word) MR_TAG_COMMON(0,1,3);
+	MR_r3 = MR_tempr1;
+	MR_r4 = MR_tempr2;
+	MR_np_tailcall_ent(__Unify___tree234__tree234_2_0);
+	}
+#ifdef MR_maybe_local_thread_engine_base
+	#undef MR_maybe_local_thread_engine_base
+	#define MR_maybe_local_thread_engine_base MR_thread_engine_base
+#endif
+MR_END_MODULE
+
+
+MR_BEGIN_MODULE(recompilation__usage_module81)
+	MR_init_entry1(__Compare___recompilation__usage__resolved_functor_set_0_0);
+	MR_INIT_PROC_LAYOUT_ADDR(mercury____Compare___recompilation__usage__resolved_functor_set_0_0);
+MR_BEGIN_CODE
+
+/*-------------------------------------------------------------------------*/
+/* code for '__Compare__'/3 mode 0 */
+#ifdef MR_maybe_local_thread_engine_base
+	#undef MR_maybe_local_thread_engine_base
+	#define MR_maybe_local_thread_engine_base MR_local_thread_engine_base
+#endif
+MR_define_entry(mercury____Compare___recompilation__usage__resolved_functor_set_0_0);
+	MR_MAYBE_INIT_LOCAL_THREAD_ENGINE_BASE
+	{
+	MR_Word MR_tempr1, MR_tempr2;
+	MR_tempr1 = MR_r1;
+	MR_r1 = (MR_Word) MR_STRING_CTOR_ADDR;
+	MR_tempr2 = MR_r2;
+	MR_r2 = (MR_Word) MR_TAG_COMMON(0,1,3);
+	MR_r3 = MR_tempr1;
+	MR_r4 = MR_tempr2;
+	MR_np_tailcall_ent(__Compare___tree234__tree234_2_0);
+	}
+#ifdef MR_maybe_local_thread_engine_base
+	#undef MR_maybe_local_thread_engine_base
+	#define MR_maybe_local_thread_engine_base MR_thread_engine_base
+#endif
+MR_END_MODULE
+
+MR_decl_entry(__Unify___list__list_1_0);
+
+MR_BEGIN_MODULE(recompilation__usage_module82)
+	MR_init_entry1(__Unify___recompilation__usage__resolved_item_list_1_0);
+	MR_INIT_PROC_LAYOUT_ADDR(mercury____Unify___recompilation__usage__resolved_item_list_1_0);
+MR_BEGIN_CODE
+
+/*-------------------------------------------------------------------------*/
+/* code for '__Unify__'/2 mode 0 */
+#ifdef MR_maybe_local_thread_engine_base
+	#undef MR_maybe_local_thread_engine_base
+	#define MR_maybe_local_thread_engine_base MR_local_thread_engine_base
+#endif
+MR_define_entry(mercury____Unify___recompilation__usage__resolved_item_list_1_0);
+	MR_MAYBE_INIT_LOCAL_THREAD_ENGINE_BASE
+	{
+	MR_Word MR_tempr1;
+	MR_tag_alloc_heap(MR_tempr1, 0, (MR_Integer) 3);
+	MR_tfield(0, MR_tempr1, 0) = (MR_Word) MR_CTOR_ADDR(tree234, tree234, 2);
+	MR_tfield(0, MR_tempr1, 1) = (MR_Word) MR_CTOR0_ADDR(mdbcomp__prim_data, sym_name);
+	MR_tfield(0, MR_tempr1, 2) = MR_r1;
+	MR_tag_alloc_heap(MR_r1, 0, (MR_Integer) 3);
+	MR_tfield(0, MR_r1, 0) = (MR_Word) MR_CTOR_ADDR(pair, pair, 2);
+	MR_tfield(0, MR_r1, 1) = (MR_Word) MR_INT_CTOR_ADDR;
+	MR_tfield(0, MR_r1, 2) = MR_tempr1;
+	MR_np_tailcall_ent(__Unify___list__list_1_0);
+	}
+#ifdef MR_maybe_local_thread_engine_base
+	#undef MR_maybe_local_thread_engine_base
+	#define MR_maybe_local_thread_engine_base MR_thread_engine_base
+#endif
+MR_END_MODULE
+
+MR_decl_entry(__Compare___list__list_1_0);
+
+MR_BEGIN_MODULE(recompilation__usage_module83)
+	MR_init_entry1(__Compare___recompilation__usage__resolved_item_list_1_0);
+	MR_INIT_PROC_LAYOUT_ADDR(mercury____Compare___recompilation__usage__resolved_item_list_1_0);
+MR_BEGIN_CODE
+
+/*-------------------------------------------------------------------------*/
+/* code for '__Compare__'/3 mode 0 */
+#ifdef MR_maybe_local_thread_engine_base
+	#undef MR_maybe_local_thread_engine_base
+	#define MR_maybe_local_thread_engine_base MR_local_thread_engine_base
+#endif
+MR_define_entry(mercury____Compare___recompilation__usage__resolved_item_list_1_0);
+	MR_MAYBE_INIT_LOCAL_THREAD_ENGINE_BASE
+	{
+	MR_Word MR_tempr1;
+	MR_tag_alloc_heap(MR_tempr1, 0, (MR_Integer) 3);
+	MR_tfield(0, MR_tempr1, 0) = (MR_Word) MR_CTOR_ADDR(tree234, tree234, 2);
+	MR_tfield(0, MR_tempr1, 1) = (MR_Word) MR_CTOR0_ADDR(mdbcomp__prim_data, sym_name);
+	MR_tfield(0, MR_tempr1, 2) = MR_r1;
+	MR_tag_alloc_heap(MR_r1, 0, (MR_Integer) 3);
+	MR_tfield(0, MR_r1, 0) = (MR_Word) MR_CTOR_ADDR(pair, pair, 2);
+	MR_tfield(0, MR_r1, 1) = (MR_Word) MR_INT_CTOR_ADDR;
+	MR_tfield(0, MR_r1, 2) = MR_tempr1;
+	MR_np_tailcall_ent(__Compare___list__list_1_0);
+	}
+#ifdef MR_maybe_local_thread_engine_base
+	#undef MR_maybe_local_thread_engine_base
+	#define MR_maybe_local_thread_engine_base MR_thread_engine_base
+#endif
+MR_END_MODULE
+
+
+MR_BEGIN_MODULE(recompilation__usage_module84)
+	MR_init_entry1(__Unify___recompilation__usage__resolved_item_map_1_0);
+	MR_INIT_PROC_LAYOUT_ADDR(mercury____Unify___recompilation__usage__resolved_item_map_1_0);
+MR_BEGIN_CODE
+
+/*-------------------------------------------------------------------------*/
+/* code for '__Unify__'/2 mode 0 */
+#ifdef MR_maybe_local_thread_engine_base
+	#undef MR_maybe_local_thread_engine_base
+	#define MR_maybe_local_thread_engine_base MR_local_thread_engine_base
+#endif
+MR_define_entry(mercury____Unify___recompilation__usage__resolved_item_map_1_0);
+	MR_MAYBE_INIT_LOCAL_THREAD_ENGINE_BASE
+	{
+	MR_Word MR_tempr1, MR_tempr2, MR_tempr3;
+	MR_tempr1 = MR_r1;
+	MR_r1 = (MR_Word) MR_CTOR0_ADDR(mdbcomp__prim_data, sym_name);
+	MR_tempr2 = MR_r2;
+	MR_r2 = MR_tempr1;
+	MR_tempr3 = MR_r3;
+	MR_r3 = MR_tempr2;
+	MR_r4 = MR_tempr3;
+	MR_np_tailcall_ent(__Unify___tree234__tree234_2_0);
+	}
+#ifdef MR_maybe_local_thread_engine_base
+	#undef MR_maybe_local_thread_engine_base
+	#define MR_maybe_local_thread_engine_base MR_thread_engine_base
+#endif
+MR_END_MODULE
+
+
+MR_BEGIN_MODULE(recompilation__usage_module85)
+	MR_init_entry1(__Compare___recompilation__usage__resolved_item_map_1_0);
+	MR_INIT_PROC_LAYOUT_ADDR(mercury____Compare___recompilation__usage__resolved_item_map_1_0);
+MR_BEGIN_CODE
+
+/*-------------------------------------------------------------------------*/
+/* code for '__Compare__'/3 mode 0 */
+#ifdef MR_maybe_local_thread_engine_base
+	#undef MR_maybe_local_thread_engine_base
+	#define MR_maybe_local_thread_engine_base MR_local_thread_engine_base
+#endif
+MR_define_entry(mercury____Compare___recompilation__usage__resolved_item_map_1_0);
+	MR_MAYBE_INIT_LOCAL_THREAD_ENGINE_BASE
+	{
+	MR_Word MR_tempr1, MR_tempr2, MR_tempr3;
+	MR_tempr1 = MR_r1;
+	MR_r1 = (MR_Word) MR_CTOR0_ADDR(mdbcomp__prim_data, sym_name);
+	MR_tempr2 = MR_r2;
+	MR_r2 = MR_tempr1;
+	MR_tempr3 = MR_r3;
+	MR_r3 = MR_tempr2;
+	MR_r4 = MR_tempr3;
+	MR_np_tailcall_ent(__Compare___tree234__tree234_2_0);
+	}
+#ifdef MR_maybe_local_thread_engine_base
+	#undef MR_maybe_local_thread_engine_base
+	#define MR_maybe_local_thread_engine_base MR_thread_engine_base
+#endif
+MR_END_MODULE
+
+
+MR_BEGIN_MODULE(recompilation__usage_module86)
+	MR_init_entry1(__Unify___recompilation__usage__resolved_item_set_1_0);
+	MR_INIT_PROC_LAYOUT_ADDR(mercury____Unify___recompilation__usage__resolved_item_set_1_0);
+MR_BEGIN_CODE
+
+/*-------------------------------------------------------------------------*/
+/* code for '__Unify__'/2 mode 0 */
+#ifdef MR_maybe_local_thread_engine_base
+	#undef MR_maybe_local_thread_engine_base
+	#define MR_maybe_local_thread_engine_base MR_local_thread_engine_base
+#endif
+MR_define_entry(mercury____Unify___recompilation__usage__resolved_item_set_1_0);
+	MR_MAYBE_INIT_LOCAL_THREAD_ENGINE_BASE
+	{
+	MR_Word MR_tempr1, MR_tempr2, MR_tempr3;
+	MR_tag_alloc_heap(MR_tempr1, 0, (MR_Integer) 3);
+	MR_tfield(0, MR_tempr1, 0) = (MR_Word) MR_CTOR_ADDR(tree234, tree234, 2);
+	MR_tfield(0, MR_tempr1, 1) = (MR_Word) MR_CTOR0_ADDR(mdbcomp__prim_data, sym_name);
+	MR_tfield(0, MR_tempr1, 2) = MR_r1;
+	MR_tag_alloc_heap(MR_tempr2, 0, (MR_Integer) 3);
+	MR_tfield(0, MR_tempr2, 0) = (MR_Word) MR_CTOR_ADDR(pair, pair, 2);
+	MR_tfield(0, MR_tempr2, 1) = (MR_Word) MR_INT_CTOR_ADDR;
+	MR_tfield(0, MR_tempr2, 2) = MR_tempr1;
+	MR_tag_alloc_heap(MR_tempr1, 0, (MR_Integer) 2);
+	MR_tfield(0, MR_tempr1, 0) = (MR_Word) MR_LIST_CTOR_ADDR;
+	MR_tfield(0, MR_tempr1, 1) = MR_tempr2;
+	MR_r1 = (MR_Word) MR_STRING_CTOR_ADDR;
+	MR_tempr2 = MR_r2;
+	MR_r2 = MR_tempr1;
+	MR_tempr3 = MR_r3;
+	MR_r3 = MR_tempr2;
+	MR_r4 = MR_tempr3;
+	MR_np_tailcall_ent(__Unify___tree234__tree234_2_0);
+	}
+#ifdef MR_maybe_local_thread_engine_base
+	#undef MR_maybe_local_thread_engine_base
+	#define MR_maybe_local_thread_engine_base MR_thread_engine_base
+#endif
+MR_END_MODULE
+
+
+MR_BEGIN_MODULE(recompilation__usage_module87)
+	MR_init_entry1(__Compare___recompilation__usage__resolved_item_set_1_0);
+	MR_INIT_PROC_LAYOUT_ADDR(mercury____Compare___recompilation__usage__resolved_item_set_1_0);
+MR_BEGIN_CODE
+
+/*-------------------------------------------------------------------------*/
+/* code for '__Compare__'/3 mode 0 */
+#ifdef MR_maybe_local_thread_engine_base
+	#undef MR_maybe_local_thread_engine_base
+	#define MR_maybe_local_thread_engine_base MR_local_thread_engine_base
+#endif
+MR_define_entry(mercury____Compare___recompilation__usage__resolved_item_set_1_0);
+	MR_MAYBE_INIT_LOCAL_THREAD_ENGINE_BASE
+	{
+	MR_Word MR_tempr1, MR_tempr2, MR_tempr3;
+	MR_tag_alloc_heap(MR_tempr1, 0, (MR_Integer) 3);
+	MR_tfield(0, MR_tempr1, 0) = (MR_Word) MR_CTOR_ADDR(tree234, tree234, 2);
+	MR_tfield(0, MR_tempr1, 1) = (MR_Word) MR_CTOR0_ADDR(mdbcomp__prim_data, sym_name);
+	MR_tfield(0, MR_tempr1, 2) = MR_r1;
+	MR_tag_alloc_heap(MR_tempr2, 0, (MR_Integer) 3);
+	MR_tfield(0, MR_tempr2, 0) = (MR_Word) MR_CTOR_ADDR(pair, pair, 2);
+	MR_tfield(0, MR_tempr2, 1) = (MR_Word) MR_INT_CTOR_ADDR;
+	MR_tfield(0, MR_tempr2, 2) = MR_tempr1;
+	MR_tag_alloc_heap(MR_tempr1, 0, (MR_Integer) 2);
+	MR_tfield(0, MR_tempr1, 0) = (MR_Word) MR_LIST_CTOR_ADDR;
+	MR_tfield(0, MR_tempr1, 1) = MR_tempr2;
+	MR_r1 = (MR_Word) MR_STRING_CTOR_ADDR;
+	MR_tempr2 = MR_r2;
+	MR_r2 = MR_tempr1;
+	MR_tempr3 = MR_r3;
+	MR_r3 = MR_tempr2;
+	MR_r4 = MR_tempr3;
+	MR_np_tailcall_ent(__Compare___tree234__tree234_2_0);
+	}
+#ifdef MR_maybe_local_thread_engine_base
+	#undef MR_maybe_local_thread_engine_base
+	#define MR_maybe_local_thread_engine_base MR_thread_engine_base
+#endif
+MR_END_MODULE
+
+
+MR_BEGIN_MODULE(recompilation__usage_module88)
+	MR_init_entry1(__Unify___recompilation__usage__resolved_pred_or_func_map_0_0);
+	MR_INIT_PROC_LAYOUT_ADDR(mercury____Unify___recompilation__usage__resolved_pred_or_func_map_0_0);
+MR_BEGIN_CODE
+
+/*-------------------------------------------------------------------------*/
+/* code for '__Unify__'/2 mode 0 */
+#ifdef MR_maybe_local_thread_engine_base
+	#undef MR_maybe_local_thread_engine_base
+	#define MR_maybe_local_thread_engine_base MR_local_thread_engine_base
+#endif
+MR_define_entry(mercury____Unify___recompilation__usage__resolved_pred_or_func_map_0_0);
+	MR_MAYBE_INIT_LOCAL_THREAD_ENGINE_BASE
+	{
+	MR_Word MR_tempr1, MR_tempr2;
+	MR_tempr1 = MR_r1;
+	MR_r1 = (MR_Word) MR_CTOR0_ADDR(mdbcomp__prim_data, sym_name);
+	MR_tempr2 = MR_r2;
+	MR_r2 = (MR_Word) MR_TAG_COMMON(0,1,0);
+	MR_r3 = MR_tempr1;
+	MR_r4 = MR_tempr2;
+	MR_np_tailcall_ent(__Unify___tree234__tree234_2_0);
+	}
+#ifdef MR_maybe_local_thread_engine_base
+	#undef MR_maybe_local_thread_engine_base
+	#define MR_maybe_local_thread_engine_base MR_thread_engine_base
+#endif
+MR_END_MODULE
+
+
+MR_BEGIN_MODULE(recompilation__usage_module89)
+	MR_init_entry1(__Compare___recompilation__usage__resolved_pred_or_func_map_0_0);
+	MR_INIT_PROC_LAYOUT_ADDR(mercury____Compare___recompilation__usage__resolved_pred_or_func_map_0_0);
+MR_BEGIN_CODE
+
+/*-------------------------------------------------------------------------*/
+/* code for '__Compare__'/3 mode 0 */
+#ifdef MR_maybe_local_thread_engine_base
+	#undef MR_maybe_local_thread_engine_base
+	#define MR_maybe_local_thread_engine_base MR_local_thread_engine_base
+#endif
+MR_define_entry(mercury____Compare___recompilation__usage__resolved_pred_or_func_map_0_0);
+	MR_MAYBE_INIT_LOCAL_THREAD_ENGINE_BASE
+	{
+	MR_Word MR_tempr1, MR_tempr2;
+	MR_tempr1 = MR_r1;
+	MR_r1 = (MR_Word) MR_CTOR0_ADDR(mdbcomp__prim_data, sym_name);
+	MR_tempr2 = MR_r2;
+	MR_r2 = (MR_Word) MR_TAG_COMMON(0,1,0);
+	MR_r3 = MR_tempr1;
+	MR_r4 = MR_tempr2;
+	MR_np_tailcall_ent(__Compare___tree234__tree234_2_0);
+	}
+#ifdef MR_maybe_local_thread_engine_base
+	#undef MR_maybe_local_thread_engine_base
+	#define MR_maybe_local_thread_engine_base MR_thread_engine_base
+#endif
+MR_END_MODULE
+
+
+MR_BEGIN_MODULE(recompilation__usage_module90)
+	MR_init_entry1(__Unify___recompilation__usage__resolved_pred_or_func_set_0_0);
+	MR_INIT_PROC_LAYOUT_ADDR(mercury____Unify___recompilation__usage__resolved_pred_or_func_set_0_0);
+MR_BEGIN_CODE
+
+/*-------------------------------------------------------------------------*/
+/* code for '__Unify__'/2 mode 0 */
+#ifdef MR_maybe_local_thread_engine_base
+	#undef MR_maybe_local_thread_engine_base
+	#define MR_maybe_local_thread_engine_base MR_local_thread_engine_base
+#endif
+MR_define_entry(mercury____Unify___recompilation__usage__resolved_pred_or_func_set_0_0);
+	MR_MAYBE_INIT_LOCAL_THREAD_ENGINE_BASE
+	{
+	MR_Word MR_tempr1, MR_tempr2;
+	MR_tempr1 = MR_r1;
+	MR_r1 = (MR_Word) MR_STRING_CTOR_ADDR;
+	MR_tempr2 = MR_r2;
+	MR_r2 = (MR_Word) MR_TAG_COMMON(0,1,1);
+	MR_r3 = MR_tempr1;
+	MR_r4 = MR_tempr2;
+	MR_np_tailcall_ent(__Unify___tree234__tree234_2_0);
+	}
+#ifdef MR_maybe_local_thread_engine_base
+	#undef MR_maybe_local_thread_engine_base
+	#define MR_maybe_local_thread_engine_base MR_thread_engine_base
+#endif
+MR_END_MODULE
+
+
+MR_BEGIN_MODULE(recompilation__usage_module91)
+	MR_init_entry1(__Compare___recompilation__usage__resolved_pred_or_func_set_0_0);
+	MR_INIT_PROC_LAYOUT_ADDR(mercury____Compare___recompilation__usage__resolved_pred_or_func_set_0_0);
+MR_BEGIN_CODE
+
+/*-------------------------------------------------------------------------*/
+/* code for '__Compare__'/3 mode 0 */
+#ifdef MR_maybe_local_thread_engine_base
+	#undef MR_maybe_local_thread_engine_base
+	#define MR_maybe_local_thread_engine_base MR_local_thread_engine_base
+#endif
+MR_define_entry(mercury____Compare___recompilation__usage__resolved_pred_or_func_set_0_0);
+	MR_MAYBE_INIT_LOCAL_THREAD_ENGINE_BASE
+	{
+	MR_Word MR_tempr1, MR_tempr2;
+	MR_tempr1 = MR_r1;
+	MR_r1 = (MR_Word) MR_STRING_CTOR_ADDR;
+	MR_tempr2 = MR_r2;
+	MR_r2 = (MR_Word) MR_TAG_COMMON(0,1,1);
+	MR_r3 = MR_tempr1;
+	MR_r4 = MR_tempr2;
+	MR_np_tailcall_ent(__Compare___tree234__tree234_2_0);
+	}
+#ifdef MR_maybe_local_thread_engine_base
+	#undef MR_maybe_local_thread_engine_base
+	#define MR_maybe_local_thread_engine_base MR_thread_engine_base
+#endif
+MR_END_MODULE
+
+
+MR_BEGIN_MODULE(recompilation__usage_module92)
+	MR_init_entry1(__Unify___recompilation__usage__resolved_used_items_0_0);
+	MR_INIT_PROC_LAYOUT_ADDR(mercury____Unify___recompilation__usage__resolved_used_items_0_0);
+MR_BEGIN_CODE
+
+/*-------------------------------------------------------------------------*/
+/* code for '__Unify__'/2 mode 0 */
+#ifdef MR_maybe_local_thread_engine_base
+	#undef MR_maybe_local_thread_engine_base
+	#define MR_maybe_local_thread_engine_base MR_local_thread_engine_base
+#endif
+MR_define_entry(mercury____Unify___recompilation__usage__resolved_used_items_0_0);
+	MR_MAYBE_INIT_LOCAL_THREAD_ENGINE_BASE
+	{
+	MR_Word MR_tempr1, MR_tempr2;
+	MR_tempr1 = MR_r1;
+	MR_r1 = (MR_Word) MR_TAG_COMMON(0,0,2);
+	MR_tempr2 = MR_r2;
+	MR_r2 = (MR_Word) MR_TAG_COMMON(0,0,6);
+	MR_r3 = (MR_Word) MR_TAG_COMMON(0,0,9);
+	MR_r4 = MR_tempr1;
+	MR_r5 = MR_tempr2;
+	MR_np_tailcall_ent(__Unify___recompilation__item_id_set_3_0);
+	}
+#ifdef MR_maybe_local_thread_engine_base
+	#undef MR_maybe_local_thread_engine_base
+	#define MR_maybe_local_thread_engine_base MR_thread_engine_base
+#endif
+MR_END_MODULE
+
+
+MR_BEGIN_MODULE(recompilation__usage_module93)
+	MR_init_entry1(__Compare___recompilation__usage__resolved_used_items_0_0);
+	MR_INIT_PROC_LAYOUT_ADDR(mercury____Compare___recompilation__usage__resolved_used_items_0_0);
+MR_BEGIN_CODE
+
+/*-------------------------------------------------------------------------*/
+/* code for '__Compare__'/3 mode 0 */
+#ifdef MR_maybe_local_thread_engine_base
+	#undef MR_maybe_local_thread_engine_base
+	#define MR_maybe_local_thread_engine_base MR_local_thread_engine_base
+#endif
+MR_define_entry(mercury____Compare___recompilation__usage__resolved_used_items_0_0);
+	MR_MAYBE_INIT_LOCAL_THREAD_ENGINE_BASE
+	{
+	MR_Word MR_tempr1, MR_tempr2;
+	MR_tempr1 = MR_r1;
+	MR_r1 = (MR_Word) MR_TAG_COMMON(0,0,2);
+	MR_tempr2 = MR_r2;
+	MR_r2 = (MR_Word) MR_TAG_COMMON(0,0,6);
+	MR_r3 = (MR_Word) MR_TAG_COMMON(0,0,9);
+	MR_r4 = MR_tempr1;
+	MR_r5 = MR_tempr2;
+	MR_np_tailcall_ent(__Compare___recompilation__item_id_set_3_0);
+	}
+#ifdef MR_maybe_local_thread_engine_base
+	#undef MR_maybe_local_thread_engine_base
+	#define MR_maybe_local_thread_engine_base MR_thread_engine_base
+#endif
+MR_END_MODULE
+
+
+MR_BEGIN_MODULE(recompilation__usage_module94)
+	MR_init_entry1(__Unify___recompilation__usage__write_resolved_item_1_0);
+	MR_INIT_PROC_LAYOUT_ADDR(mercury____Unify___recompilation__usage__write_resolved_item_1_0);
+MR_BEGIN_CODE
+
+/*-------------------------------------------------------------------------*/
+/* code for '__Unify__'/2 mode 0 */
+#ifdef MR_maybe_local_thread_engine_base
+	#undef MR_maybe_local_thread_engine_base
+	#define MR_maybe_local_thread_engine_base MR_local_thread_engine_base
+#endif
+MR_def_static(__Unify___recompilation__usage__write_resolved_item_1_0)
+	MR_MAYBE_INIT_LOCAL_THREAD_ENGINE_BASE
+	MR_r1 = MR_r2;
+	MR_r2 = MR_r3;
+	MR_np_tailcall_ent(f_114_101_99_111_109_112_105_108_97_116_105_111_110_95_95_117_115_97_103_101_95_95_85_110_117_115_101_100_65_114_103_115_95_95_112_114_101_100_95_95_95_95_85_110_105_102_121_95_95_95_114_101_99_111_109_112_105_108_97_116_105_111_110_95_95_117_115_97_103_101_95_95_119_114_105_116_101_95_114_101_115_111_108_118_101_100_95_105_116_101_109_95_49_95_95_91_49_93_95_48_2_0);
+#ifdef MR_maybe_local_thread_engine_base
+	#undef MR_maybe_local_thread_engine_base
+	#define MR_maybe_local_thread_engine_base MR_thread_engine_base
+#endif
+MR_END_MODULE
+
+
+MR_BEGIN_MODULE(recompilation__usage_module95)
+	MR_init_entry1(__Compare___recompilation__usage__write_resolved_item_1_0);
+	MR_INIT_PROC_LAYOUT_ADDR(mercury____Compare___recompilation__usage__write_resolved_item_1_0);
+MR_BEGIN_CODE
+
+/*-------------------------------------------------------------------------*/
+/* code for '__Compare__'/3 mode 0 */
+#ifdef MR_maybe_local_thread_engine_base
+	#undef MR_maybe_local_thread_engine_base
+	#define MR_maybe_local_thread_engine_base MR_local_thread_engine_base
+#endif
+MR_def_static(__Compare___recompilation__usage__write_resolved_item_1_0)
+	MR_MAYBE_INIT_LOCAL_THREAD_ENGINE_BASE
+	MR_r1 = MR_r2;
+	MR_r2 = MR_r3;
+	MR_np_tailcall_ent(f_114_101_99_111_109_112_105_108_97_116_105_111_110_95_95_117_115_97_103_101_95_95_85_110_117_115_101_100_65_114_103_115_95_95_112_114_101_100_95_95_95_95_67_111_109_112_97_114_101_95_95_95_114_101_99_111_109_112_105_108_97_116_105_111_110_95_95_117_115_97_103_101_95_95_119_114_105_116_101_95_114_101_115_111_108_118_101_100_95_105_116_101_109_95_49_95_95_91_49_93_95_48_3_0);
+#ifdef MR_maybe_local_thread_engine_base
+	#undef MR_maybe_local_thread_engine_base
+	#define MR_maybe_local_thread_engine_base MR_thread_engine_base
+#endif
+MR_END_MODULE
+
+
+MR_BEGIN_MODULE(recompilation__usage_module96)
+	MR_init_entry1(fn__recompilation__usage__IntroducedFrom__func__write_module_name_and_used_items__261__1_3_0);
+	MR_INIT_PROC_LAYOUT_ADDR(mercury__fn__recompilation__usage__IntroducedFrom__func__write_module_name_and_used_items__261__1_3_0);
+	MR_init_label1(fn__recompilation__usage__IntroducedFrom__func__write_module_name_and_used_items__261__1_3_0,4)
+MR_BEGIN_CODE
+
+/*-------------------------------------------------------------------------*/
+/* code for 'IntroducedFrom__func__write_module_name_and_used_items__261__1'/4 mode 0 */
+#ifdef MR_maybe_local_thread_engine_base
+	#undef MR_maybe_local_thread_engine_base
+	#define MR_maybe_local_thread_engine_base MR_local_thread_engine_base
+#endif
+MR_def_static(fn__recompilation__usage__IntroducedFrom__func__write_module_name_and_used_items__261__1_3_0)
+	MR_MAYBE_INIT_LOCAL_THREAD_ENGINE_BASE
+	MR_incr_sp(3);
+	MR_sv(3) = (MR_Word) MR_succip;
+	MR_sv(1) = MR_r3;
+	MR_sv(2) = (MR_Word) MR_TAG_COMMON(0,0,0);
+	{
+	MR_Word MR_tempr1, MR_tempr2;
+	MR_tempr1 = MR_r1;
+	MR_r1 = (MR_Word) MR_TAG_COMMON(0,1,7);
+	MR_tempr2 = MR_r2;
+	MR_r2 = MR_tempr1;
+	MR_r3 = MR_tempr2;
+	}
+	MR_np_call_localret_ent(fn__recompilation__extract_ids_2_0,
+		fn__recompilation__usage__IntroducedFrom__func__write_module_name_and_used_items__261__1_3_0_i4);
+MR_def_label(fn__recompilation__usage__IntroducedFrom__func__write_module_name_and_used_items__261__1_3_0,4)
+	MR_MAYBE_INIT_LOCAL_THREAD_ENGINE_BASE
+	{
+	MR_Word MR_tempr1;
+	MR_tempr1 = MR_r1;
+	MR_r1 = MR_sv(2);
+	MR_r2 = (MR_Word) MR_CTOR0_ADDR(libs__timestamp, timestamp);
+	MR_r3 = MR_sv(1);
+	MR_r4 = MR_tempr1;
+	MR_succip_word = MR_sv(3);
+	MR_decr_sp(3);
+	MR_np_tailcall_ent(map__select_3_0);
+	}
+#ifdef MR_maybe_local_thread_engine_base
+	#undef MR_maybe_local_thread_engine_base
+	#define MR_maybe_local_thread_engine_base MR_thread_engine_base
+#endif
+MR_END_MODULE
+
+MR_decl_entry(fn__hlds__hlds_pred__pred_info_module_1_0);
+
+MR_BEGIN_MODULE(recompilation__usage_module97)
+	MR_init_entry1(fn__recompilation__usage__IntroducedFrom__func__do_record_used_pred_or_func__679__1_2_0);
+	MR_INIT_PROC_LAYOUT_ADDR(mercury__fn__recompilation__usage__IntroducedFrom__func__do_record_used_pred_or_func__679__1_2_0);
+	MR_init_label2(fn__recompilation__usage__IntroducedFrom__func__do_record_used_pred_or_func__679__1_2_0,2,3)
+MR_BEGIN_CODE
+
+/*-------------------------------------------------------------------------*/
+/* code for 'IntroducedFrom__func__do_record_used_pred_or_func__679__1'/3 mode 0 */
+#ifdef MR_maybe_local_thread_engine_base
+	#undef MR_maybe_local_thread_engine_base
+	#define MR_maybe_local_thread_engine_base MR_local_thread_engine_base
+#endif
+MR_def_static(fn__recompilation__usage__IntroducedFrom__func__do_record_used_pred_or_func__679__1_2_0)
+	MR_MAYBE_INIT_LOCAL_THREAD_ENGINE_BASE
+	MR_incr_sp(2);
+	MR_sv(2) = (MR_Word) MR_succip;
+	MR_sv(1) = MR_r2;
+	MR_np_call_localret_ent(hlds__hlds_module__module_info_pred_info_3_0,
+		fn__recompilation__usage__IntroducedFrom__func__do_record_used_pred_or_func__679__1_2_0_i2);
+MR_def_label(fn__recompilation__usage__IntroducedFrom__func__do_record_used_pred_or_func__679__1_2_0,2)
+	MR_MAYBE_INIT_LOCAL_THREAD_ENGINE_BASE
+	MR_np_call_localret_ent(fn__hlds__hlds_pred__pred_info_module_1_0,
+		fn__recompilation__usage__IntroducedFrom__func__do_record_used_pred_or_func__679__1_2_0_i3);
+MR_def_label(fn__recompilation__usage__IntroducedFrom__func__do_record_used_pred_or_func__679__1_2_0,3)
+	MR_MAYBE_INIT_LOCAL_THREAD_ENGINE_BASE
+	MR_tag_alloc_heap(MR_r2, 0, (MR_Integer) 2);
+	MR_tfield(0, MR_r2, 0) = MR_sv(1);
+	MR_tfield(0, MR_r2, 1) = MR_r1;
+	MR_r1 = MR_r2;
+	MR_decr_sp_and_return(2);
+#ifdef MR_maybe_local_thread_engine_base
+	#undef MR_maybe_local_thread_engine_base
+	#define MR_maybe_local_thread_engine_base MR_thread_engine_base
+#endif
+MR_END_MODULE
+
+
+MR_BEGIN_MODULE(recompilation__usage_module98)
+	MR_init_entry1(fn__recompilation__usage__IntroducedFrom__func__find_matching_functors__748__1_1_0);
+	MR_INIT_PROC_LAYOUT_ADDR(mercury__fn__recompilation__usage__IntroducedFrom__func__find_matching_functors__748__1_1_0);
+	MR_init_label1(fn__recompilation__usage__IntroducedFrom__func__find_matching_functors__748__1_1_0,2)
+MR_BEGIN_CODE
+
+/*-------------------------------------------------------------------------*/
+/* code for 'IntroducedFrom__func__find_matching_functors__748__1'/2 mode 0 */
+#ifdef MR_maybe_local_thread_engine_base
+	#undef MR_maybe_local_thread_engine_base
+	#define MR_maybe_local_thread_engine_base MR_local_thread_engine_base
+#endif
+MR_def_static(fn__recompilation__usage__IntroducedFrom__func__find_matching_functors__748__1_1_0)
+	MR_MAYBE_INIT_LOCAL_THREAD_ENGINE_BASE
+	MR_incr_sp(1);
+	MR_sv(1) = (MR_Word) MR_succip;
+	MR_r1 = MR_tfield(0, MR_r1, 0);
+	MR_np_call_localret_ent(fn__recompilation__type_ctor_to_item_name_1_0,
+		fn__recompilation__usage__IntroducedFrom__func__find_matching_functors__748__1_1_0_i2);
+MR_def_label(fn__recompilation__usage__IntroducedFrom__func__find_matching_functors__748__1_1_0,2)
+	MR_MAYBE_INIT_LOCAL_THREAD_ENGINE_BASE
+	MR_tag_alloc_heap(MR_r2, 1, (MR_Integer) 1);
+	MR_tfield(1, MR_r2, 0) = MR_r1;
+	MR_r1 = MR_r2;
+	MR_decr_sp_and_return(1);
+#ifdef MR_maybe_local_thread_engine_base
+	#undef MR_maybe_local_thread_engine_base
+	#define MR_maybe_local_thread_engine_base MR_thread_engine_base
+#endif
+MR_END_MODULE
+
+
+MR_BEGIN_MODULE(recompilation__usage_module99)
+	MR_init_entry1(fn__recompilation__usage__IntroducedFrom__func__find_matching_functors__776__1_1_0);
+	MR_INIT_PROC_LAYOUT_ADDR(mercury__fn__recompilation__usage__IntroducedFrom__func__find_matching_functors__776__1_1_0);
+	MR_init_label2(fn__recompilation__usage__IntroducedFrom__func__find_matching_functors__776__1_1_0,4,2)
+MR_BEGIN_CODE
+
+/*-------------------------------------------------------------------------*/
+/* code for 'IntroducedFrom__func__find_matching_functors__776__1'/2 mode 0 */
+#ifdef MR_maybe_local_thread_engine_base
+	#undef MR_maybe_local_thread_engine_base
+	#define MR_maybe_local_thread_engine_base MR_local_thread_engine_base
+#endif
+MR_def_static(fn__recompilation__usage__IntroducedFrom__func__find_matching_functors__776__1_1_0)
+	MR_MAYBE_INIT_LOCAL_THREAD_ENGINE_BASE
+	MR_r2 = MR_tfield(0, MR_r1, 3);
+	if (MR_PTAG_TESTR(MR_r2,1)) {
+		MR_GOTO_LAB(fn__recompilation__usage__IntroducedFrom__func__find_matching_functors__776__1_1_0_i2);
+	}
+	MR_incr_sp(3);
+	MR_sv(3) = (MR_Word) MR_succip;
+	MR_sv(1) = MR_tfield(1, MR_r2, 0);
+	MR_sv(2) = MR_tfield(1, MR_r2, 1);
+	MR_r1 = MR_tfield(0, MR_r1, 2);
+	MR_np_call_localret_ent(fn__recompilation__type_ctor_to_item_name_1_0,
+		fn__recompilation__usage__IntroducedFrom__func__find_matching_functors__776__1_1_0_i4);
+MR_def_label(fn__recompilation__usage__IntroducedFrom__func__find_matching_functors__776__1_1_0,4)
+	MR_MAYBE_INIT_LOCAL_THREAD_ENGINE_BASE
+	MR_tag_alloc_heap(MR_r2, 0, (MR_Integer) 2);
+	MR_tfield(0, MR_r2, 0) = MR_sv(1);
+	MR_tfield(0, MR_r2, 1) = MR_sv(2);
+	{
+	MR_Word MR_tempr1;
+	MR_tag_alloc_heap(MR_tempr1, 2, (MR_Integer) 2);
+	MR_tfield(2, MR_tempr1, 0) = MR_r1;
+	MR_tfield(2, MR_tempr1, 1) = MR_r2;
+	MR_r1 = MR_tempr1;
+	MR_decr_sp_and_return(3);
+	}
+MR_def_label(fn__recompilation__usage__IntroducedFrom__func__find_matching_functors__776__1_1_0,2)
+	MR_MAYBE_INIT_LOCAL_THREAD_ENGINE_BASE
+	MR_r1 = (MR_Word) MR_string_const("recompilation.usage", 19);
+	MR_r2 = (MR_Word) MR_string_const("predicate \140recompilation.usage.find_matching_functors\'/4", 56);
+	MR_r3 = (MR_Word) MR_string_const("weird cons_id in hlds_field_defn", 32);
+	MR_np_tailcall_ent(require__unexpected_3_0);
+#ifdef MR_maybe_local_thread_engine_base
+	#undef MR_maybe_local_thread_engine_base
+	#define MR_maybe_local_thread_engine_base MR_thread_engine_base
+#endif
+MR_END_MODULE
+
+MR_decl_entry(fn__recompilation__find_module_qualifier_1_0);
+
+MR_BEGIN_MODULE(recompilation__usage_module100)
+	MR_init_entry1(recompilation__usage__record_resolved_item__ho1_7_0);
+	MR_INIT_PROC_LAYOUT_ADDR(mercury__recompilation__usage__record_resolved_item__ho1_7_0);
+	MR_init_label7(recompilation__usage__record_resolved_item__ho1_7_0,3,4,9,5,12,14,18)
+MR_BEGIN_CODE
+
+/*-------------------------------------------------------------------------*/
+/* code for 'record_resolved_item__ho1'/7 mode 0 */
+#ifdef MR_maybe_local_thread_engine_base
+	#undef MR_maybe_local_thread_engine_base
+	#define MR_maybe_local_thread_engine_base MR_local_thread_engine_base
+#endif
+MR_def_static(recompilation__usage__record_resolved_item__ho1_7_0)
+	MR_MAYBE_INIT_LOCAL_THREAD_ENGINE_BASE
+	MR_incr_sp(8);
+	MR_sv(8) = (MR_Word) MR_succip;
+	MR_sv(1) = MR_r1;
+	MR_sv(2) = MR_r2;
+	MR_sv(5) = MR_r3;
+	MR_sv(6) = MR_r4;
+	MR_sv(7) = (MR_Word) MR_TAG_COMMON(0,1,2);
+	MR_np_call_localret_ent(fn__mdbcomp__prim_data__unqualify_name_1_0,
+		recompilation__usage__record_resolved_item__ho1_7_0_i3);
+MR_def_label(recompilation__usage__record_resolved_item__ho1_7_0,3)
+	MR_MAYBE_INIT_LOCAL_THREAD_ENGINE_BASE
+	MR_sv(3) = MR_r1;
+	MR_r1 = MR_sv(1);
+	MR_np_call_localret_ent(fn__recompilation__find_module_qualifier_1_0,
+		recompilation__usage__record_resolved_item__ho1_7_0_i4);
+MR_def_label(recompilation__usage__record_resolved_item__ho1_7_0,4)
+	MR_MAYBE_INIT_LOCAL_THREAD_ENGINE_BASE
+	MR_sv(4) = MR_r1;
+	MR_r1 = (MR_Word) MR_STRING_CTOR_ADDR;
+	MR_r2 = (MR_Word) MR_TAG_COMMON(0,1,3);
+	MR_r3 = MR_sv(5);
+	MR_r4 = MR_sv(3);
+	MR_np_call_localret_ent(map__search_3_0,
+		recompilation__usage__record_resolved_item__ho1_7_0_i9);
+MR_def_label(recompilation__usage__record_resolved_item__ho1_7_0,9)
+	MR_MAYBE_INIT_LOCAL_THREAD_ENGINE_BASE
+	if (!(MR_r1)) {
+		MR_GOTO_LAB(recompilation__usage__record_resolved_item__ho1_7_0_i5);
+	}
+	{
+	MR_Word MR_tempr1;
+	MR_tempr1 = MR_r2;
+	MR_r2 = MR_sv(1);
+	MR_r3 = MR_sv(2);
+	MR_r1 = MR_sv(4);
+	MR_r4 = MR_tempr1;
+	MR_r5 = MR_sv(6);
+	}
+	MR_np_call_localret_ent(recompilation__usage__record_resolved_item_2__ho6_9_0,
+		recompilation__usage__record_resolved_item__ho1_7_0_i12);
+MR_def_label(recompilation__usage__record_resolved_item__ho1_7_0,5)
+	MR_MAYBE_INIT_LOCAL_THREAD_ENGINE_BASE
+	MR_r2 = MR_sv(1);
+	MR_r3 = MR_sv(2);
+	MR_r1 = MR_sv(4);
+	MR_r4 = (MR_Word) MR_tbmkword(0, 0);
+	MR_r5 = MR_sv(6);
+	MR_np_call_localret_ent(recompilation__usage__record_resolved_item_2__ho6_9_0,
+		recompilation__usage__record_resolved_item__ho1_7_0_i12);
+MR_def_label(recompilation__usage__record_resolved_item__ho1_7_0,12)
+	MR_MAYBE_INIT_LOCAL_THREAD_ENGINE_BASE
+	if (MR_INT_NE(MR_r1,0)) {
+		MR_GOTO_LAB(recompilation__usage__record_resolved_item__ho1_7_0_i14);
+	}
+	MR_r1 = MR_sv(5);
+	MR_r2 = MR_r3;
+	MR_decr_sp_and_return(8);
+MR_def_label(recompilation__usage__record_resolved_item__ho1_7_0,14)
+	MR_MAYBE_INIT_LOCAL_THREAD_ENGINE_BASE
+	{
+	MR_Word MR_tempr1, MR_tempr2;
+	MR_tag_alloc_heap(MR_tempr1, 0, (MR_Integer) 3);
+	MR_tfield(0, MR_tempr1, 0) = (MR_Word) MR_CTOR_ADDR(tree234, tree234, 2);
+	MR_tfield(0, MR_tempr1, 1) = (MR_Word) MR_CTOR0_ADDR(mdbcomp__prim_data, sym_name);
+	MR_tfield(0, MR_tempr1, 2) = MR_sv(7);
+	MR_tag_alloc_heap(MR_tempr2, 0, (MR_Integer) 3);
+	MR_tfield(0, MR_tempr2, 0) = (MR_Word) MR_CTOR_ADDR(pair, pair, 2);
+	MR_tfield(0, MR_tempr2, 1) = (MR_Word) MR_INT_CTOR_ADDR;
+	MR_tfield(0, MR_tempr2, 2) = MR_tempr1;
+	MR_tag_alloc_heap(MR_tempr1, 0, (MR_Integer) 2);
+	MR_tfield(0, MR_tempr1, 0) = (MR_Word) MR_LIST_CTOR_ADDR;
+	MR_tfield(0, MR_tempr1, 1) = MR_tempr2;
+	MR_sv(1) = MR_r3;
+	MR_r1 = (MR_Word) MR_STRING_CTOR_ADDR;
+	MR_tempr2 = MR_r2;
+	MR_r2 = MR_tempr1;
+	MR_r3 = MR_sv(3);
+	MR_r4 = MR_tempr2;
+	MR_r5 = MR_sv(5);
+	}
+	MR_np_call_localret_ent(map__set_4_0,
+		recompilation__usage__record_resolved_item__ho1_7_0_i18);
+MR_def_label(recompilation__usage__record_resolved_item__ho1_7_0,18)
+	MR_MAYBE_INIT_LOCAL_THREAD_ENGINE_BASE
+	MR_r2 = MR_sv(1);
+	MR_decr_sp_and_return(8);
+#ifdef MR_maybe_local_thread_engine_base
+	#undef MR_maybe_local_thread_engine_base
+	#define MR_maybe_local_thread_engine_base MR_thread_engine_base
+#endif
+MR_END_MODULE
+
+
+MR_BEGIN_MODULE(recompilation__usage_module101)
+	MR_init_entry1(recompilation__usage__record_resolved_item_2__ho6_9_0);
+	MR_INIT_PROC_LAYOUT_ADDR(mercury__recompilation__usage__record_resolved_item_2__ho6_9_0);
+	MR_init_label10(recompilation__usage__record_resolved_item_2__ho6_9_0,5,6,8,4,12,13,15,11,19,21)
+	MR_init_label3(recompilation__usage__record_resolved_item_2__ho6_9_0,18,24,26)
+MR_BEGIN_CODE
+
+/*-------------------------------------------------------------------------*/
+/* code for 'record_resolved_item_2__ho6'/9 mode 0 */
+#ifdef MR_maybe_local_thread_engine_base
+	#undef MR_maybe_local_thread_engine_base
+	#define MR_maybe_local_thread_engine_base MR_local_thread_engine_base
+#endif
+MR_def_static(recompilation__usage__record_resolved_item_2__ho6_9_0)
+	MR_MAYBE_INIT_LOCAL_THREAD_ENGINE_BASE
+	MR_incr_sp(6);
+	MR_sv(6) = (MR_Word) MR_succip;
+	if (MR_LTAGS_TESTR(MR_r4,0,0)) {
+		MR_GOTO_LAB(recompilation__usage__record_resolved_item_2__ho6_9_0_i4);
+	}
+	MR_sv(1) = MR_r1;
+	MR_sv(2) = MR_r2;
+	MR_sv(3) = MR_r3;
+	MR_sv(4) = MR_r4;
+	MR_sv(5) = MR_r5;
+	MR_r1 = (MR_Word) MR_CTOR0_ADDR(mdbcomp__prim_data, sym_name);
+	MR_r2 = (MR_Word) MR_TAG_COMMON(0,1,2);
+	MR_np_call_localret_ent(map__init_1_0,
+		recompilation__usage__record_resolved_item_2__ho6_9_0_i5);
+MR_def_label(recompilation__usage__record_resolved_item_2__ho6_9_0,5)
+	MR_MAYBE_INIT_LOCAL_THREAD_ENGINE_BASE
+	{
+	MR_Word MR_tempr1;
+	MR_tempr1 = MR_r1;
+	MR_r1 = MR_sv(1);
+	MR_r2 = MR_sv(2);
+	MR_r3 = MR_sv(3);
+	MR_r4 = MR_tempr1;
+	MR_r5 = MR_sv(5);
+	}
+	MR_np_call_localret_ent(recompilation__usage__record_resolved_item_3__ho7_9_0,
+		recompilation__usage__record_resolved_item_2__ho6_9_0_i6);
+MR_def_label(recompilation__usage__record_resolved_item_2__ho6_9_0,6)
+	MR_MAYBE_INIT_LOCAL_THREAD_ENGINE_BASE
+	if (MR_INT_NE(MR_r1,0)) {
+		MR_GOTO_LAB(recompilation__usage__record_resolved_item_2__ho6_9_0_i8);
+	}
+	MR_r2 = MR_sv(4);
+	MR_decr_sp_and_return(6);
+MR_def_label(recompilation__usage__record_resolved_item_2__ho6_9_0,8)
+	MR_MAYBE_INIT_LOCAL_THREAD_ENGINE_BASE
+	{
+	MR_Word MR_tempr1;
+	MR_tag_alloc_heap(MR_tempr1, 0, (MR_Integer) 2);
+	MR_tfield(0, MR_tempr1, 0) = MR_sv(3);
+	MR_tfield(0, MR_tempr1, 1) = MR_r2;
+	MR_tag_alloc_heap(MR_r2, 1, (MR_Integer) 2);
+	MR_tfield(1, MR_r2, 0) = MR_tempr1;
+	MR_tfield(1, MR_r2, 1) = (MR_Word) MR_tbmkword(0, 0);
+	MR_decr_sp_and_return(6);
+	}
+MR_def_label(recompilation__usage__record_resolved_item_2__ho6_9_0,4)
+	MR_MAYBE_INIT_LOCAL_THREAD_ENGINE_BASE
+	{
+	MR_Word MR_tempr1, MR_tempr2;
+	MR_tempr2 = MR_r4;
+	MR_tempr1 = MR_tfield(1, MR_tempr2, 0);
+	MR_sv(1) = MR_tempr1;
+	MR_r6 = MR_tfield(1, MR_tempr2, 1);
+	MR_r7 = MR_tfield(0, MR_tempr1, 1);
+	MR_r8 = MR_tfield(0, MR_tempr1, 0);
+	if (((MR_Integer) MR_r3 >= (MR_Integer) MR_r8)) {
+		MR_GOTO_LAB(recompilation__usage__record_resolved_item_2__ho6_9_0_i11);
+	}
+	MR_sv(1) = MR_r1;
+	MR_sv(2) = MR_r2;
+	MR_sv(3) = MR_r3;
+	MR_sv(4) = MR_tempr2;
+	MR_sv(5) = MR_r5;
+	MR_r1 = (MR_Word) MR_CTOR0_ADDR(mdbcomp__prim_data, sym_name);
+	MR_r2 = (MR_Word) MR_TAG_COMMON(0,1,2);
+	}
+	MR_np_call_localret_ent(map__init_1_0,
+		recompilation__usage__record_resolved_item_2__ho6_9_0_i12);
+MR_def_label(recompilation__usage__record_resolved_item_2__ho6_9_0,12)
+	MR_MAYBE_INIT_LOCAL_THREAD_ENGINE_BASE
+	{
+	MR_Word MR_tempr1;
+	MR_tempr1 = MR_r1;
+	MR_r1 = MR_sv(1);
+	MR_r2 = MR_sv(2);
+	MR_r3 = MR_sv(3);
+	MR_r4 = MR_tempr1;
+	MR_r5 = MR_sv(5);
+	}
+	MR_np_call_localret_ent(recompilation__usage__record_resolved_item_3__ho7_9_0,
+		recompilation__usage__record_resolved_item_2__ho6_9_0_i13);
+MR_def_label(recompilation__usage__record_resolved_item_2__ho6_9_0,13)
+	MR_MAYBE_INIT_LOCAL_THREAD_ENGINE_BASE
+	if (MR_INT_NE(MR_r1,0)) {
+		MR_GOTO_LAB(recompilation__usage__record_resolved_item_2__ho6_9_0_i15);
+	}
+	MR_r2 = MR_sv(4);
+	MR_decr_sp_and_return(6);
+MR_def_label(recompilation__usage__record_resolved_item_2__ho6_9_0,15)
+	MR_MAYBE_INIT_LOCAL_THREAD_ENGINE_BASE
+	{
+	MR_Word MR_tempr1;
+	MR_tag_alloc_heap(MR_tempr1, 0, (MR_Integer) 2);
+	MR_tfield(0, MR_tempr1, 0) = MR_sv(3);
+	MR_tfield(0, MR_tempr1, 1) = MR_r2;
+	MR_tag_alloc_heap(MR_r2, 1, (MR_Integer) 2);
+	MR_tfield(1, MR_r2, 0) = MR_tempr1;
+	MR_tfield(1, MR_r2, 1) = MR_sv(4);
+	MR_decr_sp_and_return(6);
+	}
+MR_def_label(recompilation__usage__record_resolved_item_2__ho6_9_0,11)
+	MR_MAYBE_INIT_LOCAL_THREAD_ENGINE_BASE
+	if ((MR_r3 != MR_r8)) {
+		MR_GOTO_LAB(recompilation__usage__record_resolved_item_2__ho6_9_0_i18);
+	}
+	MR_sv(3) = MR_r3;
+	MR_sv(4) = MR_r4;
+	MR_sv(1) = MR_r6;
+	MR_r4 = MR_r7;
+	MR_np_call_localret_ent(recompilation__usage__record_resolved_item_3__ho7_9_0,
+		recompilation__usage__record_resolved_item_2__ho6_9_0_i19);
+MR_def_label(recompilation__usage__record_resolved_item_2__ho6_9_0,19)
+	MR_MAYBE_INIT_LOCAL_THREAD_ENGINE_BASE
+	if (MR_INT_NE(MR_r1,0)) {
+		MR_GOTO_LAB(recompilation__usage__record_resolved_item_2__ho6_9_0_i21);
+	}
+	MR_r2 = MR_sv(4);
+	MR_decr_sp_and_return(6);
+MR_def_label(recompilation__usage__record_resolved_item_2__ho6_9_0,21)
+	MR_MAYBE_INIT_LOCAL_THREAD_ENGINE_BASE
+	{
+	MR_Word MR_tempr1;
+	MR_tag_alloc_heap(MR_tempr1, 0, (MR_Integer) 2);
+	MR_tfield(0, MR_tempr1, 0) = MR_sv(3);
+	MR_tfield(0, MR_tempr1, 1) = MR_r2;
+	MR_tag_alloc_heap(MR_r2, 1, (MR_Integer) 2);
+	MR_tfield(1, MR_r2, 0) = MR_tempr1;
+	MR_tfield(1, MR_r2, 1) = MR_sv(1);
+	MR_decr_sp_and_return(6);
+	}
+MR_def_label(recompilation__usage__record_resolved_item_2__ho6_9_0,18)
+	MR_MAYBE_INIT_LOCAL_THREAD_ENGINE_BASE
+	MR_sv(4) = MR_r4;
+	MR_r4 = MR_r6;
+	MR_np_localcall_lab(recompilation__usage__record_resolved_item_2__ho6_9_0,
+		recompilation__usage__record_resolved_item_2__ho6_9_0_i24);
+MR_def_label(recompilation__usage__record_resolved_item_2__ho6_9_0,24)
+	MR_MAYBE_INIT_LOCAL_THREAD_ENGINE_BASE
+	if (MR_INT_NE(MR_r1,0)) {
+		MR_GOTO_LAB(recompilation__usage__record_resolved_item_2__ho6_9_0_i26);
+	}
+	MR_r2 = MR_sv(4);
+	MR_decr_sp_and_return(6);
+MR_def_label(recompilation__usage__record_resolved_item_2__ho6_9_0,26)
+	MR_MAYBE_INIT_LOCAL_THREAD_ENGINE_BASE
+	{
+	MR_Word MR_tempr1;
+	MR_tag_alloc_heap(MR_tempr1, 1, (MR_Integer) 2);
+	MR_tfield(1, MR_tempr1, 0) = MR_sv(1);
+	MR_tfield(1, MR_tempr1, 1) = MR_r2;
+	MR_r2 = MR_tempr1;
+	MR_decr_sp_and_return(6);
+	}
+#ifdef MR_maybe_local_thread_engine_base
+	#undef MR_maybe_local_thread_engine_base
+	#define MR_maybe_local_thread_engine_base MR_thread_engine_base
+#endif
+MR_END_MODULE
+
+MR_decl_entry(map__contains_2_0);
+
+MR_BEGIN_MODULE(recompilation__usage_module102)
+	MR_init_entry1(recompilation__usage__record_resolved_item_3__ho7_9_0);
+	MR_INIT_PROC_LAYOUT_ADDR(mercury__recompilation__usage__record_resolved_item_3__ho7_9_0);
+	MR_init_label2(recompilation__usage__record_resolved_item_3__ho7_9_0,4,3)
+MR_BEGIN_CODE
+
+/*-------------------------------------------------------------------------*/
+/* code for 'record_resolved_item_3__ho7'/9 mode 0 */
+#ifdef MR_maybe_local_thread_engine_base
+	#undef MR_maybe_local_thread_engine_base
+	#define MR_maybe_local_thread_engine_base MR_local_thread_engine_base
+#endif
+MR_def_static(recompilation__usage__record_resolved_item_3__ho7_9_0)
+	MR_MAYBE_INIT_LOCAL_THREAD_ENGINE_BASE
+	MR_incr_sp(6);
+	MR_sv(6) = (MR_Word) MR_succip;
+	MR_sv(1) = MR_r1;
+	MR_sv(2) = MR_r2;
+	MR_sv(3) = MR_r3;
+	{
+	MR_Word MR_tempr1;
+	MR_tempr1 = MR_r4;
+	MR_sv(4) = MR_tempr1;
+	MR_sv(5) = MR_r5;
+	MR_r1 = (MR_Word) MR_CTOR0_ADDR(mdbcomp__prim_data, sym_name);
+	MR_r2 = (MR_Word) MR_TAG_COMMON(0,1,2);
+	MR_r3 = MR_tempr1;
+	MR_r4 = MR_sv(1);
+	}
+	MR_np_call_localret_ent(map__contains_2_0,
+		recompilation__usage__record_resolved_item_3__ho7_9_0_i4);
+MR_def_label(recompilation__usage__record_resolved_item_3__ho7_9_0,4)
+	MR_MAYBE_INIT_LOCAL_THREAD_ENGINE_BASE
+	if (!(MR_r1)) {
+		MR_GOTO_LAB(recompilation__usage__record_resolved_item_3__ho7_9_0_i3);
+	}
+	MR_r1 = (MR_Integer) 0;
+	MR_r2 = MR_sv(4);
+	MR_r3 = MR_sv(5);
+	MR_decr_sp_and_return(6);
+MR_def_label(recompilation__usage__record_resolved_item_3__ho7_9_0,3)
+	MR_MAYBE_INIT_LOCAL_THREAD_ENGINE_BASE
+	MR_r1 = MR_sv(1);
+	MR_r2 = MR_sv(2);
+	MR_r3 = MR_sv(3);
+	MR_r4 = MR_sv(4);
+	MR_r5 = MR_sv(5);
+	MR_succip_word = MR_sv(6);
+	MR_decr_sp(6);
+	MR_np_tailcall_ent(recompilation__usage__do_record_used_functor_8_0);
+#ifdef MR_maybe_local_thread_engine_base
+	#undef MR_maybe_local_thread_engine_base
+	#define MR_maybe_local_thread_engine_base MR_thread_engine_base
+#endif
+MR_END_MODULE
+
+MR_decl_entry(fn__hlds__hlds_pred__pred_info_is_pred_or_func_1_0);
+MR_decl_entry(fn__hlds__hlds_pred__pred_info_orig_arity_1_0);
+MR_decl_entry(hlds__hlds_pred__pred_info_get_exist_quant_tvars_2_0);
+
+MR_BEGIN_MODULE(recompilation__usage_module103)
+	MR_init_entry1(fn__f_114_101_99_111_109_112_105_108_97_116_105_111_110_95_95_117_115_97_103_101_95_95_85_110_117_115_101_100_65_114_103_115_95_95_102_117_110_99_95_95_103_101_116_95_112_114_101_100_95_111_114_95_102_117_110_99_95_99_116_111_114_115_95_95_91_50_93_95_48_4_0);
+	MR_INIT_PROC_LAYOUT_ADDR(mercury__fn__f_114_101_99_111_109_112_105_108_97_116_105_111_110_95_95_117_115_97_103_101_95_95_85_110_117_115_101_100_65_114_103_115_95_95_102_117_110_99_95_95_103_101_116_95_112_114_101_100_95_111_114_95_102_117_110_99_95_99_116_111_114_115_95_95_91_50_93_95_48_4_0);
+	MR_init_label9(fn__f_114_101_99_111_109_112_105_108_97_116_105_111_110_95_95_117_115_97_103_101_95_95_85_110_117_115_101_100_65_114_103_115_95_95_102_117_110_99_95_95_103_101_116_95_112_114_101_100_95_111_114_95_102_117_110_99_95_99_116_111_114_115_95_95_91_50_93_95_48_4_0,2,3,4,5,6,7,10,9,1)
+MR_BEGIN_CODE
+
+/*-------------------------------------------------------------------------*/
+/* code for 'UnusedArgs__func__get_pred_or_func_ctors__[2]_0'/5 mode 0 */
+#ifdef MR_maybe_local_thread_engine_base
+	#undef MR_maybe_local_thread_engine_base
+	#define MR_maybe_local_thread_engine_base MR_local_thread_engine_base
+#endif
+MR_def_static(fn__f_114_101_99_111_109_112_105_108_97_116_105_111_110_95_95_117_115_97_103_101_95_95_85_110_117_115_101_100_65_114_103_115_95_95_102_117_110_99_95_95_103_101_116_95_112_114_101_100_95_111_114_95_102_117_110_99_95_99_116_111_114_115_95_95_91_50_93_95_48_4_0)
+	MR_MAYBE_INIT_LOCAL_THREAD_ENGINE_BASE
+	MR_incr_sp(6);
+	MR_sv(6) = (MR_Word) MR_succip;
+	MR_sv(1) = MR_r2;
+	{
+	MR_Word MR_tempr1;
+	MR_tempr1 = MR_r3;
+	MR_sv(2) = MR_tempr1;
+	MR_r2 = MR_tempr1;
+	}
+	MR_np_call_localret_ent(hlds__hlds_module__module_info_pred_info_3_0,
+		fn__f_114_101_99_111_109_112_105_108_97_116_105_111_110_95_95_117_115_97_103_101_95_95_85_110_117_115_101_100_65_114_103_115_95_95_102_117_110_99_95_95_103_101_116_95_112_114_101_100_95_111_114_95_102_117_110_99_95_99_116_111_114_115_95_95_91_50_93_95_48_4_0_i2);
+MR_def_label(fn__f_114_101_99_111_109_112_105_108_97_116_105_111_110_95_95_117_115_97_103_101_95_95_85_110_117_115_101_100_65_114_103_115_95_95_102_117_110_99_95_95_103_101_116_95_112_114_101_100_95_111_114_95_102_117_110_99_95_99_116_111_114_115_95_95_91_50_93_95_48_4_0,2)
+	MR_MAYBE_INIT_LOCAL_THREAD_ENGINE_BASE
+	MR_sv(3) = MR_r1;
+	MR_np_call_localret_ent(fn__hlds__hlds_pred__pred_info_is_pred_or_func_1_0,
+		fn__f_114_101_99_111_109_112_105_108_97_116_105_111_110_95_95_117_115_97_103_101_95_95_85_110_117_115_101_100_65_114_103_115_95_95_102_117_110_99_95_95_103_101_116_95_112_114_101_100_95_111_114_95_102_117_110_99_95_99_116_111_114_115_95_95_91_50_93_95_48_4_0_i3);
+MR_def_label(fn__f_114_101_99_111_109_112_105_108_97_116_105_111_110_95_95_117_115_97_103_101_95_95_85_110_117_115_101_100_65_114_103_115_95_95_102_117_110_99_95_95_103_101_116_95_112_114_101_100_95_111_114_95_102_117_110_99_95_99_116_111_114_115_95_95_91_50_93_95_48_4_0,3)
+	MR_MAYBE_INIT_LOCAL_THREAD_ENGINE_BASE
+	MR_sv(4) = MR_r1;
+	MR_r1 = MR_sv(3);
+	MR_np_call_localret_ent(fn__hlds__hlds_pred__pred_info_module_1_0,
+		fn__f_114_101_99_111_109_112_105_108_97_116_105_111_110_95_95_117_115_97_103_101_95_95_85_110_117_115_101_100_65_114_103_115_95_95_102_117_110_99_95_95_103_101_116_95_112_114_101_100_95_111_114_95_102_117_110_99_95_99_116_111_114_115_95_95_91_50_93_95_48_4_0_i4);
+MR_def_label(fn__f_114_101_99_111_109_112_105_108_97_116_105_111_110_95_95_117_115_97_103_101_95_95_85_110_117_115_101_100_65_114_103_115_95_95_102_117_110_99_95_95_103_101_116_95_112_114_101_100_95_111_114_95_102_117_110_99_95_99_116_111_114_115_95_95_91_50_93_95_48_4_0,4)
+	MR_MAYBE_INIT_LOCAL_THREAD_ENGINE_BASE
+	MR_sv(5) = MR_r1;
+	MR_r1 = MR_sv(3);
+	MR_np_call_localret_ent(fn__hlds__hlds_pred__pred_info_orig_arity_1_0,
+		fn__f_114_101_99_111_109_112_105_108_97_116_105_111_110_95_95_117_115_97_103_101_95_95_85_110_117_115_101_100_65_114_103_115_95_95_102_117_110_99_95_95_103_101_116_95_112_114_101_100_95_111_114_95_102_117_110_99_95_99_116_111_114_115_95_95_91_50_93_95_48_4_0_i5);
+MR_def_label(fn__f_114_101_99_111_109_112_105_108_97_116_105_111_110_95_95_117_115_97_103_101_95_95_85_110_117_115_101_100_65_114_103_115_95_95_102_117_110_99_95_95_103_101_116_95_112_114_101_100_95_111_114_95_102_117_110_99_95_99_116_111_114_115_95_95_91_50_93_95_48_4_0,5)
+	MR_MAYBE_INIT_LOCAL_THREAD_ENGINE_BASE
+	MR_r2 = MR_sv(3);
+	MR_sv(3) = MR_r1;
+	MR_r1 = MR_r2;
+	MR_np_call_localret_ent(hlds__hlds_pred__pred_info_get_exist_quant_tvars_2_0,
+		fn__f_114_101_99_111_109_112_105_108_97_116_105_111_110_95_95_117_115_97_103_101_95_95_85_110_117_115_101_100_65_114_103_115_95_95_102_117_110_99_95_95_103_101_116_95_112_114_101_100_95_111_114_95_102_117_110_99_95_99_116_111_114_115_95_95_91_50_93_95_48_4_0_i6);
+MR_def_label(fn__f_114_101_99_111_109_112_105_108_97_116_105_111_110_95_95_117_115_97_103_101_95_95_85_110_117_115_101_100_65_114_103_115_95_95_102_117_110_99_95_95_103_101_116_95_112_114_101_100_95_111_114_95_102_117_110_99_95_99_116_111_114_115_95_95_91_50_93_95_48_4_0,6)
+	MR_MAYBE_INIT_LOCAL_THREAD_ENGINE_BASE
+	{
+	MR_Word MR_tempr1;
+	MR_tempr1 = MR_sv(3);
+	MR_sv(3) = MR_r1;
+	MR_r1 = MR_sv(4);
+	MR_r2 = MR_tempr1;
+	}
+	MR_np_call_localret_ent(parse_tree__prog_util__adjust_func_arity_3_1,
+		fn__f_114_101_99_111_109_112_105_108_97_116_105_111_110_95_95_117_115_97_103_101_95_95_85_110_117_115_101_100_65_114_103_115_95_95_102_117_110_99_95_95_103_101_116_95_112_114_101_100_95_111_114_95_102_117_110_99_95_99_116_111_114_115_95_95_91_50_93_95_48_4_0_i7);
+MR_def_label(fn__f_114_101_99_111_109_112_105_108_97_116_105_111_110_95_95_117_115_97_103_101_95_95_85_110_117_115_101_100_65_114_103_115_95_95_102_117_110_99_95_95_103_101_116_95_112_114_101_100_95_111_114_95_102_117_110_99_95_99_116_111_114_115_95_95_91_50_93_95_48_4_0,7)
+	MR_MAYBE_INIT_LOCAL_THREAD_ENGINE_BASE
+	if (MR_INT_NE(MR_sv(4),1)) {
+		MR_GOTO_LAB(fn__f_114_101_99_111_109_112_105_108_97_116_105_111_110_95_95_117_115_97_103_101_95_95_85_110_117_115_101_100_65_114_103_115_95_95_102_117_110_99_95_95_103_101_116_95_112_114_101_100_95_111_114_95_102_117_110_99_95_99_116_111_114_115_95_95_91_50_93_95_48_4_0_i9);
+	}
+	if (((MR_Integer) MR_r1 < (MR_Integer) MR_sv(1))) {
+		MR_GOTO_LAB(fn__f_114_101_99_111_109_112_105_108_97_116_105_111_110_95_95_117_115_97_103_101_95_95_85_110_117_115_101_100_65_114_103_115_95_95_102_117_110_99_95_95_103_101_116_95_112_114_101_100_95_111_114_95_102_117_110_99_95_99_116_111_114_115_95_95_91_50_93_95_48_4_0_i1);
+	}
+	if (MR_LTAGS_TEST(MR_sv(3),0,0)) {
+		MR_GOTO_LAB(fn__f_114_101_99_111_109_112_105_108_97_116_105_111_110_95_95_117_115_97_103_101_95_95_85_110_117_115_101_100_65_114_103_115_95_95_102_117_110_99_95_95_103_101_116_95_112_114_101_100_95_111_114_95_102_117_110_99_95_99_116_111_114_115_95_95_91_50_93_95_48_4_0_i10);
+	}
+	if ((MR_r1 != MR_sv(1))) {
+		MR_GOTO_LAB(fn__f_114_101_99_111_109_112_105_108_97_116_105_111_110_95_95_117_115_97_103_101_95_95_85_110_117_115_101_100_65_114_103_115_95_95_102_117_110_99_95_95_103_101_116_95_112_114_101_100_95_111_114_95_102_117_110_99_95_99_116_111_114_115_95_95_91_50_93_95_48_4_0_i1);
+	}
+MR_def_label(fn__f_114_101_99_111_109_112_105_108_97_116_105_111_110_95_95_117_115_97_103_101_95_95_85_110_117_115_101_100_65_114_103_115_95_95_102_117_110_99_95_95_103_101_116_95_112_114_101_100_95_111_114_95_102_117_110_99_95_99_116_111_114_115_95_95_91_50_93_95_48_4_0,10)
+	MR_MAYBE_INIT_LOCAL_THREAD_ENGINE_BASE
+	MR_tag_alloc_heap(MR_r2, 0, (MR_Integer) 4);
+	MR_tfield(0, MR_r2, 0) = MR_sv(2);
+	MR_tfield(0, MR_r2, 1) = MR_sv(5);
+	MR_tfield(0, MR_r2, 2) = MR_sv(4);
+	MR_tfield(0, MR_r2, 3) = MR_r1;
+	MR_succip_word = MR_sv(6);
+	MR_decr_sp(6);
+	MR_r1 = MR_TRUE;
+	MR_proceed();
+MR_def_label(fn__f_114_101_99_111_109_112_105_108_97_116_105_111_110_95_95_117_115_97_103_101_95_95_85_110_117_115_101_100_65_114_103_115_95_95_102_117_110_99_95_95_103_101_116_95_112_114_101_100_95_111_114_95_102_117_110_99_95_99_116_111_114_115_95_95_91_50_93_95_48_4_0,9)
+	MR_MAYBE_INIT_LOCAL_THREAD_ENGINE_BASE
+	if (((MR_Integer) MR_r1 < (MR_Integer) MR_sv(1))) {
+		MR_GOTO_LAB(fn__f_114_101_99_111_109_112_105_108_97_116_105_111_110_95_95_117_115_97_103_101_95_95_85_110_117_115_101_100_65_114_103_115_95_95_102_117_110_99_95_95_103_101_116_95_112_114_101_100_95_111_114_95_102_117_110_99_95_99_116_111_114_115_95_95_91_50_93_95_48_4_0_i1);
+	}
+	if (MR_LTAGS_TESTR(MR_sv(3),0,0)) {
+		MR_GOTO_LAB(fn__f_114_101_99_111_109_112_105_108_97_116_105_111_110_95_95_117_115_97_103_101_95_95_85_110_117_115_101_100_65_114_103_115_95_95_102_117_110_99_95_95_103_101_116_95_112_114_101_100_95_111_114_95_102_117_110_99_95_99_116_111_114_115_95_95_91_50_93_95_48_4_0_i1);
+	}
+	MR_tag_alloc_heap(MR_r2, 0, (MR_Integer) 4);
+	MR_tfield(0, MR_r2, 0) = MR_sv(2);
+	MR_tfield(0, MR_r2, 1) = MR_sv(5);
+	MR_tfield(0, MR_r2, 2) = MR_sv(4);
+	MR_tfield(0, MR_r2, 3) = MR_r1;
+	MR_succip_word = MR_sv(6);
+	MR_decr_sp(6);
+	MR_r1 = MR_TRUE;
+	MR_proceed();
+MR_def_label(fn__f_114_101_99_111_109_112_105_108_97_116_105_111_110_95_95_117_115_97_103_101_95_95_85_110_117_115_101_100_65_114_103_115_95_95_102_117_110_99_95_95_103_101_116_95_112_114_101_100_95_111_114_95_102_117_110_99_95_99_116_111_114_115_95_95_91_50_93_95_48_4_0,1)
+	MR_MAYBE_INIT_LOCAL_THREAD_ENGINE_BASE
+	MR_succip_word = MR_sv(6);
+	MR_decr_sp(6);
+	MR_r1 = MR_FALSE;
+	MR_proceed();
+#ifdef MR_maybe_local_thread_engine_base
+	#undef MR_maybe_local_thread_engine_base
+	#define MR_maybe_local_thread_engine_base MR_thread_engine_base
+#endif
+MR_END_MODULE
+
+MR_decl_entry(fn__recompilation__module_qualify_name_2_0);
+
+MR_BEGIN_MODULE(recompilation__usage_module104)
+	MR_init_entry1(f_114_101_99_111_109_112_105_108_97_116_105_111_110_95_95_117_115_97_103_101_95_95_85_110_117_115_101_100_65_114_103_115_95_95_112_114_101_100_95_95_102_105_110_100_95_105_116_101_109_115_95_117_115_101_100_95_98_121_95_112_114_101_100_115_95_51_95_95_91_53_93_95_48_7_0);
+	MR_INIT_PROC_LAYOUT_ADDR(mercury__f_114_101_99_111_109_112_105_108_97_116_105_111_110_95_95_117_115_97_103_101_95_95_85_110_117_115_101_100_65_114_103_115_95_95_112_114_101_100_95_95_102_105_110_100_95_105_116_101_109_115_95_117_115_101_100_95_98_121_95_112_114_101_100_115_95_51_95_95_91_53_93_95_48_7_0);
+	MR_init_label5(f_114_101_99_111_109_112_105_108_97_116_105_111_110_95_95_117_115_97_103_101_95_95_85_110_117_115_101_100_65_114_103_115_95_95_112_114_101_100_95_95_102_105_110_100_95_105_116_101_109_115_95_117_115_101_100_95_98_121_95_112_114_101_100_115_95_51_95_95_91_53_93_95_48_7_0,2,4,19,20,21)
+MR_BEGIN_CODE
+
+/*-------------------------------------------------------------------------*/
+/* code for 'UnusedArgs__pred__find_items_used_by_preds_3__[5]_0'/7 mode 0 */
+#ifdef MR_maybe_local_thread_engine_base
+	#undef MR_maybe_local_thread_engine_base
+	#define MR_maybe_local_thread_engine_base MR_local_thread_engine_base
+#endif
+MR_def_static(f_114_101_99_111_109_112_105_108_97_116_105_111_110_95_95_117_115_97_103_101_95_95_85_110_117_115_101_100_65_114_103_115_95_95_112_114_101_100_95_95_102_105_110_100_95_105_116_101_109_115_95_117_115_101_100_95_98_121_95_112_114_101_100_115_95_51_95_95_91_53_93_95_48_7_0)
+	MR_MAYBE_INIT_LOCAL_THREAD_ENGINE_BASE
+	MR_incr_sp(9);
+	MR_sv(9) = (MR_Word) MR_succip;
+	MR_sv(1) = MR_r1;
+	MR_sv(2) = MR_r3;
+	MR_sv(3) = MR_r5;
+	MR_r1 = MR_r4;
+	MR_np_call_localret_ent(fn__recompilation__module_qualify_name_2_0,
+		f_114_101_99_111_109_112_105_108_97_116_105_111_110_95_95_117_115_97_103_101_95_95_85_110_117_115_101_100_65_114_103_115_95_95_112_114_101_100_95_95_102_105_110_100_95_105_116_101_109_115_95_117_115_101_100_95_98_121_95_112_114_101_100_115_95_51_95_95_91_53_93_95_48_7_0_i2);
+MR_def_label(f_114_101_99_111_109_112_105_108_97_116_105_111_110_95_95_117_115_97_103_101_95_95_85_110_117_115_101_100_65_114_103_115_95_95_112_114_101_100_95_95_102_105_110_100_95_105_116_101_109_115_95_117_115_101_100_95_98_121_95_112_114_101_100_115_95_51_95_95_91_53_93_95_48_7_0,2)
+	MR_MAYBE_INIT_LOCAL_THREAD_ENGINE_BASE
+	MR_tag_alloc_heap(MR_r2, 0, (MR_Integer) 2);
+	MR_tfield(0, MR_r2, 0) = MR_r1;
+	MR_tfield(0, MR_r2, 1) = MR_sv(2);
+	MR_sv(2) = MR_r2;
+	MR_r1 = MR_sv(1);
+	MR_np_call_localret_ent(fn__recompilation__pred_or_func_to_item_type_1_0,
+		f_114_101_99_111_109_112_105_108_97_116_105_111_110_95_95_117_115_97_103_101_95_95_85_110_117_115_101_100_65_114_103_115_95_95_112_114_101_100_95_95_102_105_110_100_95_105_116_101_109_115_95_117_115_101_100_95_98_121_95_112_114_101_100_115_95_51_95_95_91_53_93_95_48_7_0_i4);
+MR_def_label(f_114_101_99_111_109_112_105_108_97_116_105_111_110_95_95_117_115_97_103_101_95_95_85_110_117_115_101_100_65_114_103_115_95_95_112_114_101_100_95_95_102_105_110_100_95_105_116_101_109_115_95_117_115_101_100_95_98_121_95_112_114_101_100_115_95_51_95_95_91_53_93_95_48_7_0,4)
+	MR_MAYBE_INIT_LOCAL_THREAD_ENGINE_BASE
+	MR_sv(4) = MR_r1;
+	MR_sv(5) = MR_tfield(0, MR_sv(3), 5);
+	MR_sv(6) = (MR_Word) MR_TAG_COMMON(0,0,2);
+	MR_sv(7) = (MR_Word) MR_TAG_COMMON(0,0,6);
+	MR_sv(8) = (MR_Word) MR_TAG_COMMON(0,0,9);
+	MR_r1 = MR_sv(6);
+	MR_r2 = MR_sv(7);
+	MR_r3 = MR_sv(8);
+	MR_r4 = MR_sv(5);
+	MR_r5 = MR_sv(4);
+	MR_np_call_localret_ent(fn__recompilation__extract_pred_or_func_set_2_0,
+		f_114_101_99_111_109_112_105_108_97_116_105_111_110_95_95_117_115_97_103_101_95_95_85_110_117_115_101_100_65_114_103_115_95_95_112_114_101_100_95_95_102_105_110_100_95_105_116_101_109_115_95_117_115_101_100_95_98_121_95_112_114_101_100_115_95_51_95_95_91_53_93_95_48_7_0_i19);
+MR_def_label(f_114_101_99_111_109_112_105_108_97_116_105_111_110_95_95_117_115_97_103_101_95_95_85_110_117_115_101_100_65_114_103_115_95_95_112_114_101_100_95_95_102_105_110_100_95_105_116_101_109_115_95_117_115_101_100_95_98_121_95_112_114_101_100_115_95_51_95_95_91_53_93_95_48_7_0,19)
+	MR_MAYBE_INIT_LOCAL_THREAD_ENGINE_BASE
+	{
+	MR_Word MR_tempr1, MR_tempr2;
+	MR_tempr1 = MR_r1;
+	MR_r1 = MR_sv(1);
+	MR_tempr2 = MR_sv(2);
+	MR_r2 = MR_tfield(0, MR_tempr2, 0);
+	MR_r3 = MR_tfield(0, MR_tempr2, 1);
+	MR_r4 = MR_tempr1;
+	MR_r5 = MR_sv(3);
+	}
+	MR_np_call_localret_ent(f_114_101_99_111_109_112_105_108_97_116_105_111_110_95_95_117_115_97_103_101_95_95_85_110_117_115_101_100_65_114_103_115_95_95_112_114_101_100_95_95_114_101_99_111_114_100_95_114_101_115_111_108_118_101_100_95_105_116_101_109_95_95_104_111_50_95_95_91_52_93_95_48_7_0,
+		f_114_101_99_111_109_112_105_108_97_116_105_111_110_95_95_117_115_97_103_101_95_95_85_110_117_115_101_100_65_114_103_115_95_95_112_114_101_100_95_95_102_105_110_100_95_105_116_101_109_115_95_117_115_101_100_95_98_121_95_112_114_101_100_115_95_51_95_95_91_53_93_95_48_7_0_i20);
+MR_def_label(f_114_101_99_111_109_112_105_108_97_116_105_111_110_95_95_117_115_97_103_101_95_95_85_110_117_115_101_100_65_114_103_115_95_95_112_114_101_100_95_95_102_105_110_100_95_105_116_101_109_115_95_117_115_101_100_95_98_121_95_112_114_101_100_115_95_51_95_95_91_53_93_95_48_7_0,20)
+	MR_MAYBE_INIT_LOCAL_THREAD_ENGINE_BASE
+	MR_sv(1) = MR_r2;
+	{
+	MR_Word MR_tempr1;
+	MR_tempr1 = MR_r1;
+	MR_r1 = MR_sv(6);
+	MR_r2 = MR_sv(7);
+	MR_r3 = MR_sv(8);
+	MR_r4 = MR_sv(5);
+	MR_r5 = MR_sv(4);
+	MR_r6 = MR_tempr1;
+	}
+	MR_np_call_localret_ent(fn__recompilation__update_pred_or_func_set_3_0,
+		f_114_101_99_111_109_112_105_108_97_116_105_111_110_95_95_117_115_97_103_101_95_95_85_110_117_115_101_100_65_114_103_115_95_95_112_114_101_100_95_95_102_105_110_100_95_105_116_101_109_115_95_117_115_101_100_95_98_121_95_112_114_101_100_115_95_51_95_95_91_53_93_95_48_7_0_i21);
+MR_def_label(f_114_101_99_111_109_112_105_108_97_116_105_111_110_95_95_117_115_97_103_101_95_95_85_110_117_115_101_100_65_114_103_115_95_95_112_114_101_100_95_95_102_105_110_100_95_105_116_101_109_115_95_117_115_101_100_95_98_121_95_112_114_101_100_115_95_51_95_95_91_53_93_95_48_7_0,21)
+	MR_MAYBE_INIT_LOCAL_THREAD_ENGINE_BASE
+	MR_tag_alloc_heap(MR_r2, 0, (MR_Integer) 7);
+	{
+	MR_Word MR_tempr1;
+	MR_tempr1 = MR_sv(1);
+	MR_tfield(0, MR_r2, 0) = MR_tfield(0, MR_tempr1, 0);
+	MR_tfield(0, MR_r2, 1) = MR_tfield(0, MR_tempr1, 1);
+	MR_tfield(0, MR_r2, 2) = MR_tfield(0, MR_tempr1, 2);
+	MR_tfield(0, MR_r2, 3) = MR_tfield(0, MR_tempr1, 3);
+	MR_tfield(0, MR_r2, 4) = MR_tfield(0, MR_tempr1, 4);
+	MR_tfield(0, MR_r2, 5) = MR_r1;
+	MR_tfield(0, MR_r2, 6) = MR_tfield(0, MR_tempr1, 6);
+	MR_r1 = MR_r2;
+	MR_decr_sp_and_return(9);
+	}
+#ifdef MR_maybe_local_thread_engine_base
+	#undef MR_maybe_local_thread_engine_base
+	#define MR_maybe_local_thread_engine_base MR_thread_engine_base
+#endif
+MR_END_MODULE
+
+MR_decl_entry(hlds__hlds_pred__proc_info_get_argmodes_2_0);
+
+MR_BEGIN_MODULE(recompilation__usage_module105)
+	MR_init_entry1(f_114_101_99_111_109_112_105_108_97_116_105_111_110_95_95_117_115_97_103_101_95_95_85_110_117_115_101_100_65_114_103_115_95_95_112_114_101_100_95_95_102_105_110_100_95_105_116_101_109_115_95_117_115_101_100_95_98_121_95_112_114_111_99_95_97_114_103_95_109_111_100_101_115_95_95_91_49_93_95_48_4_0);
+	MR_INIT_PROC_LAYOUT_ADDR(mercury__f_114_101_99_111_109_112_105_108_97_116_105_111_110_95_95_117_115_97_103_101_95_95_85_110_117_115_101_100_65_114_103_115_95_95_112_114_101_100_95_95_102_105_110_100_95_105_116_101_109_115_95_117_115_101_100_95_98_121_95_112_114_111_99_95_97_114_103_95_109_111_100_101_115_95_95_91_49_93_95_48_4_0);
+	MR_init_label1(f_114_101_99_111_109_112_105_108_97_116_105_111_110_95_95_117_115_97_103_101_95_95_85_110_117_115_101_100_65_114_103_115_95_95_112_114_101_100_95_95_102_105_110_100_95_105_116_101_109_115_95_117_115_101_100_95_98_121_95_112_114_111_99_95_97_114_103_95_109_111_100_101_115_95_95_91_49_93_95_48_4_0,2)
+MR_BEGIN_CODE
+
+/*-------------------------------------------------------------------------*/
+/* code for 'UnusedArgs__pred__find_items_used_by_proc_arg_modes__[1]_0'/4 mode 0 */
+#ifdef MR_maybe_local_thread_engine_base
+	#undef MR_maybe_local_thread_engine_base
+	#define MR_maybe_local_thread_engine_base MR_local_thread_engine_base
+#endif
+MR_def_static(f_114_101_99_111_109_112_105_108_97_116_105_111_110_95_95_117_115_97_103_101_95_95_85_110_117_115_101_100_65_114_103_115_95_95_112_114_101_100_95_95_102_105_110_100_95_105_116_101_109_115_95_117_115_101_100_95_98_121_95_112_114_111_99_95_97_114_103_95_109_111_100_101_115_95_95_91_49_93_95_48_4_0)
+	MR_MAYBE_INIT_LOCAL_THREAD_ENGINE_BASE
+	MR_incr_sp(2);
+	MR_sv(2) = (MR_Word) MR_succip;
+	MR_sv(1) = MR_r2;
+	MR_np_call_localret_ent(hlds__hlds_pred__proc_info_get_argmodes_2_0,
+		f_114_101_99_111_109_112_105_108_97_116_105_111_110_95_95_117_115_97_103_101_95_95_85_110_117_115_101_100_65_114_103_115_95_95_112_114_101_100_95_95_102_105_110_100_95_105_116_101_109_115_95_117_115_101_100_95_98_121_95_112_114_111_99_95_97_114_103_95_109_111_100_101_115_95_95_91_49_93_95_48_4_0_i2);
+MR_def_label(f_114_101_99_111_109_112_105_108_97_116_105_111_110_95_95_117_115_97_103_101_95_95_85_110_117_115_101_100_65_114_103_115_95_95_112_114_101_100_95_95_102_105_110_100_95_105_116_101_109_115_95_117_115_101_100_95_98_121_95_112_114_111_99_95_97_114_103_95_109_111_100_101_115_95_95_91_49_93_95_48_4_0,2)
+	MR_MAYBE_INIT_LOCAL_THREAD_ENGINE_BASE
+	MR_r2 = MR_sv(1);
+	MR_succip_word = MR_sv(2);
+	MR_decr_sp(2);
+	MR_np_tailcall_ent(recompilation__usage__find_items_used_by_modes_3_0);
+#ifdef MR_maybe_local_thread_engine_base
+	#undef MR_maybe_local_thread_engine_base
+	#define MR_maybe_local_thread_engine_base MR_thread_engine_base
+#endif
+MR_END_MODULE
+
+
+MR_BEGIN_MODULE(recompilation__usage_module106)
+	MR_init_entry1(f_114_101_99_111_109_112_105_108_97_116_105_111_110_95_95_117_115_97_103_101_95_95_85_110_117_115_101_100_65_114_103_115_95_95_112_114_101_100_95_95_102_105_110_100_95_105_116_101_109_115_95_117_115_101_100_95_98_121_95_102_117_110_99_116_111_114_115_95_51_95_95_91_52_93_95_48_6_0);
+	MR_INIT_PROC_LAYOUT_ADDR(mercury__f_114_101_99_111_109_112_105_108_97_116_105_111_110_95_95_117_115_97_103_101_95_95_85_110_117_115_101_100_65_114_103_115_95_95_112_114_101_100_95_95_102_105_110_100_95_105_116_101_109_115_95_117_115_101_100_95_98_121_95_102_117_110_99_116_111_114_115_95_51_95_95_91_52_93_95_48_6_0);
+	MR_init_label2(f_114_101_99_111_109_112_105_108_97_116_105_111_110_95_95_117_115_97_103_101_95_95_85_110_117_115_101_100_65_114_103_115_95_95_112_114_101_100_95_95_102_105_110_100_95_105_116_101_109_115_95_117_115_101_100_95_98_121_95_102_117_110_99_116_111_114_115_95_51_95_95_91_52_93_95_48_6_0,2,3)
+MR_BEGIN_CODE
+
+/*-------------------------------------------------------------------------*/
+/* code for 'UnusedArgs__pred__find_items_used_by_functors_3__[4]_0'/6 mode 0 */
+#ifdef MR_maybe_local_thread_engine_base
+	#undef MR_maybe_local_thread_engine_base
+	#define MR_maybe_local_thread_engine_base MR_local_thread_engine_base
+#endif
+MR_def_static(f_114_101_99_111_109_112_105_108_97_116_105_111_110_95_95_117_115_97_103_101_95_95_85_110_117_115_101_100_65_114_103_115_95_95_112_114_101_100_95_95_102_105_110_100_95_105_116_101_109_115_95_117_115_101_100_95_98_121_95_102_117_110_99_116_111_114_115_95_51_95_95_91_52_93_95_48_6_0)
+	MR_MAYBE_INIT_LOCAL_THREAD_ENGINE_BASE
+	MR_incr_sp(3);
+	MR_sv(3) = (MR_Word) MR_succip;
+	MR_sv(1) = MR_r2;
+	MR_sv(2) = MR_r4;
+	{
+	MR_Word MR_tempr1;
+	MR_tempr1 = MR_r1;
+	MR_r1 = MR_r3;
+	MR_r2 = MR_tempr1;
+	}
+	MR_np_call_localret_ent(fn__recompilation__module_qualify_name_2_0,
+		f_114_101_99_111_109_112_105_108_97_116_105_111_110_95_95_117_115_97_103_101_95_95_85_110_117_115_101_100_65_114_103_115_95_95_112_114_101_100_95_95_102_105_110_100_95_105_116_101_109_115_95_117_115_101_100_95_98_121_95_102_117_110_99_116_111_114_115_95_51_95_95_91_52_93_95_48_6_0_i2);
+MR_def_label(f_114_101_99_111_109_112_105_108_97_116_105_111_110_95_95_117_115_97_103_101_95_95_85_110_117_115_101_100_65_114_103_115_95_95_112_114_101_100_95_95_102_105_110_100_95_105_116_101_109_115_95_117_115_101_100_95_98_121_95_102_117_110_99_116_111_114_115_95_51_95_95_91_52_93_95_48_6_0,2)
+	MR_MAYBE_INIT_LOCAL_THREAD_ENGINE_BASE
+	{
+	MR_Word MR_tempr1, MR_tempr2;
+	MR_tempr1 = MR_sv(1);
+	MR_tempr2 = MR_sv(2);
+	MR_sv(1) = MR_tfield(0, MR_tempr2, 5);
+	MR_r2 = MR_tempr1;
+	MR_r3 = MR_tfield(0, MR_sv(1), 5);
+	MR_r4 = MR_tempr2;
+	}
+	MR_np_call_localret_ent(recompilation__usage__record_resolved_item__ho1_7_0,
+		f_114_101_99_111_109_112_105_108_97_116_105_111_110_95_95_117_115_97_103_101_95_95_85_110_117_115_101_100_65_114_103_115_95_95_112_114_101_100_95_95_102_105_110_100_95_105_116_101_109_115_95_117_115_101_100_95_98_121_95_102_117_110_99_116_111_114_115_95_51_95_95_91_52_93_95_48_6_0_i3);
+MR_def_label(f_114_101_99_111_109_112_105_108_97_116_105_111_110_95_95_117_115_97_103_101_95_95_85_110_117_115_101_100_65_114_103_115_95_95_112_114_101_100_95_95_102_105_110_100_95_105_116_101_109_115_95_117_115_101_100_95_98_121_95_102_117_110_99_116_111_114_115_95_51_95_95_91_52_93_95_48_6_0,3)
+	MR_MAYBE_INIT_LOCAL_THREAD_ENGINE_BASE
+	{
+	MR_Word MR_tempr1, MR_tempr2;
+	MR_tag_alloc_heap(MR_tempr1, 0, (MR_Integer) 10);
+	MR_tempr2 = MR_sv(1);
+	MR_tfield(0, MR_tempr1, 0) = MR_tfield(0, MR_tempr2, 0);
+	MR_tfield(0, MR_tempr1, 1) = MR_tfield(0, MR_tempr2, 1);
+	MR_tfield(0, MR_tempr1, 2) = MR_tfield(0, MR_tempr2, 2);
+	MR_tfield(0, MR_tempr1, 3) = MR_tfield(0, MR_tempr2, 3);
+	MR_tfield(0, MR_tempr1, 4) = MR_tfield(0, MR_tempr2, 4);
+	MR_tfield(0, MR_tempr1, 5) = MR_r1;
+	MR_tfield(0, MR_tempr1, 6) = MR_tfield(0, MR_tempr2, 6);
+	MR_tfield(0, MR_tempr1, 7) = MR_tfield(0, MR_tempr2, 7);
+	MR_tfield(0, MR_tempr1, 8) = MR_tfield(0, MR_tempr2, 8);
+	MR_tfield(0, MR_tempr1, 9) = MR_tfield(0, MR_tempr2, 9);
+	MR_tag_alloc_heap(MR_r1, 0, (MR_Integer) 7);
+	MR_tfield(0, MR_r1, 0) = MR_tfield(0, MR_r2, 0);
+	MR_tfield(0, MR_r1, 1) = MR_tfield(0, MR_r2, 1);
+	MR_tfield(0, MR_r1, 2) = MR_tfield(0, MR_r2, 2);
+	MR_tfield(0, MR_r1, 3) = MR_tfield(0, MR_r2, 3);
+	MR_tfield(0, MR_r1, 4) = MR_tfield(0, MR_r2, 4);
+	MR_tfield(0, MR_r1, 5) = MR_tempr1;
+	MR_tfield(0, MR_r1, 6) = MR_tfield(0, MR_r2, 6);
+	MR_decr_sp_and_return(3);
+	}
+#ifdef MR_maybe_local_thread_engine_base
+	#undef MR_maybe_local_thread_engine_base
+	#define MR_maybe_local_thread_engine_base MR_thread_engine_base
+#endif
+MR_END_MODULE
+
+
+MR_BEGIN_MODULE(recompilation__usage_module107)
+	MR_init_entry1(f_114_101_99_111_109_112_105_108_97_116_105_111_110_95_95_117_115_97_103_101_95_95_85_110_117_115_101_100_65_114_103_115_95_95_112_114_101_100_95_95_102_105_110_100_95_105_116_101_109_115_95_117_115_101_100_95_98_121_95_102_117_110_99_116_111_114_95_95_91_50_93_95_48_5_0);
+	MR_INIT_PROC_LAYOUT_ADDR(mercury__f_114_101_99_111_109_112_105_108_97_116_105_111_110_95_95_117_115_97_103_101_95_95_85_110_117_115_101_100_65_114_103_115_95_95_112_114_101_100_95_95_102_105_110_100_95_105_116_101_109_115_95_117_115_101_100_95_98_121_95_102_117_110_99_116_111_114_95_95_91_50_93_95_48_5_0);
+	MR_init_label2(f_114_101_99_111_109_112_105_108_97_116_105_111_110_95_95_117_115_97_103_101_95_95_85_110_117_115_101_100_65_114_103_115_95_95_112_114_101_100_95_95_102_105_110_100_95_105_116_101_109_115_95_117_115_101_100_95_98_121_95_102_117_110_99_116_111_114_95_95_91_50_93_95_48_5_0,3,5)
+MR_BEGIN_CODE
+
+/*-------------------------------------------------------------------------*/
+/* code for 'UnusedArgs__pred__find_items_used_by_functor__[2]_0'/5 mode 0 */
+#ifdef MR_maybe_local_thread_engine_base
+	#undef MR_maybe_local_thread_engine_base
+	#define MR_maybe_local_thread_engine_base MR_local_thread_engine_base
+#endif
+MR_def_static(f_114_101_99_111_109_112_105_108_97_116_105_111_110_95_95_117_115_97_103_101_95_95_85_110_117_115_101_100_65_114_103_115_95_95_112_114_101_100_95_95_102_105_110_100_95_105_116_101_109_115_95_117_115_101_100_95_98_121_95_102_117_110_99_116_111_114_95_95_91_50_93_95_48_5_0)
+	MR_MAYBE_INIT_LOCAL_THREAD_ENGINE_BASE
+	if (MR_PTAG_TESTR(MR_r2,1)) {
+		MR_GOTO_LAB(f_114_101_99_111_109_112_105_108_97_116_105_111_110_95_95_117_115_97_103_101_95_95_85_110_117_115_101_100_65_114_103_115_95_95_112_114_101_100_95_95_102_105_110_100_95_105_116_101_109_115_95_117_115_101_100_95_98_121_95_102_117_110_99_116_111_114_95_95_91_50_93_95_48_5_0_i3);
+	}
+	MR_r1 = (MR_Integer) 1;
+	MR_r2 = MR_tfield(1, MR_r2, 0);
+	MR_np_tailcall_ent(recompilation__usage__maybe_record_item_to_process_4_0);
+MR_def_label(f_114_101_99_111_109_112_105_108_97_116_105_111_110_95_95_117_115_97_103_101_95_95_85_110_117_115_101_100_65_114_103_115_95_95_112_114_101_100_95_95_102_105_110_100_95_105_116_101_109_115_95_117_115_101_100_95_98_121_95_102_117_110_99_116_111_114_95_95_91_50_93_95_48_5_0,3)
+	MR_MAYBE_INIT_LOCAL_THREAD_ENGINE_BASE
+	if (MR_PTAG_TESTR(MR_r2,2)) {
+		MR_GOTO_LAB(f_114_101_99_111_109_112_105_108_97_116_105_111_110_95_95_117_115_97_103_101_95_95_85_110_117_115_101_100_65_114_103_115_95_95_112_114_101_100_95_95_102_105_110_100_95_105_116_101_109_115_95_117_115_101_100_95_98_121_95_102_117_110_99_116_111_114_95_95_91_50_93_95_48_5_0_i5);
+	}
+	MR_r1 = (MR_Integer) 1;
+	MR_r2 = MR_tfield(2, MR_r2, 0);
+	MR_np_tailcall_ent(recompilation__usage__maybe_record_item_to_process_4_0);
+MR_def_label(f_114_101_99_111_109_112_105_108_97_116_105_111_110_95_95_117_115_97_103_101_95_95_85_110_117_115_101_100_65_114_103_115_95_95_112_114_101_100_95_95_102_105_110_100_95_105_116_101_109_115_95_117_115_101_100_95_98_121_95_102_117_110_99_116_111_114_95_95_91_50_93_95_48_5_0,5)
+	MR_MAYBE_INIT_LOCAL_THREAD_ENGINE_BASE
+	{
+	MR_Word MR_tempr1, MR_tempr2, MR_tempr3;
+	MR_tag_alloc_heap(MR_tempr1, 0, (MR_Integer) 2);
+	MR_tfield(0, MR_tempr1, 0) = MR_r1;
+	MR_tfield(0, MR_tempr1, 1) = MR_tfield(0, MR_r2, 3);
+	MR_tag_alloc_heap(MR_tempr2, 0, (MR_Integer) 2);
+	MR_tfield(0, MR_tempr2, 0) = MR_tfield(0, MR_r2, 0);
+	MR_tfield(0, MR_tempr2, 1) = MR_tfield(0, MR_r2, 1);
+	MR_r1 = MR_tfield(0, MR_r2, 2);
+	MR_r2 = MR_tempr1;
+	MR_tempr3 = MR_r3;
+	MR_r3 = MR_tempr2;
+	MR_r4 = MR_tempr3;
+	MR_np_tailcall_ent(recompilation__usage__find_items_used_by_pred_5_0);
+	}
+#ifdef MR_maybe_local_thread_engine_base
+	#undef MR_maybe_local_thread_engine_base
+	#define MR_maybe_local_thread_engine_base MR_thread_engine_base
+#endif
+MR_END_MODULE
+
+
+MR_BEGIN_MODULE(recompilation__usage_module108)
+	MR_init_entry1(f_114_101_99_111_109_112_105_108_97_116_105_111_110_95_95_117_115_97_103_101_95_95_85_110_117_115_101_100_65_114_103_115_95_95_112_114_101_100_95_95_102_105_110_100_95_105_116_101_109_115_95_117_115_101_100_95_98_121_95_115_105_109_112_108_101_95_105_116_101_109_95_115_101_116_95_51_95_95_91_52_93_95_48_7_0);
+	MR_INIT_PROC_LAYOUT_ADDR(mercury__f_114_101_99_111_109_112_105_108_97_116_105_111_110_95_95_117_115_97_103_101_95_95_85_110_117_115_101_100_65_114_103_115_95_95_112_114_101_100_95_95_102_105_110_100_95_105_116_101_109_115_95_117_115_101_100_95_98_121_95_115_105_109_112_108_101_95_105_116_101_109_95_115_101_116_95_51_95_95_91_52_93_95_48_7_0);
+MR_BEGIN_CODE
+
+/*-------------------------------------------------------------------------*/
+/* code for 'UnusedArgs__pred__find_items_used_by_simple_item_set_3__[4]_0'/7 mode 0 */
+#ifdef MR_maybe_local_thread_engine_base
+	#undef MR_maybe_local_thread_engine_base
+	#define MR_maybe_local_thread_engine_base MR_local_thread_engine_base
+#endif
+MR_def_static(f_114_101_99_111_109_112_105_108_97_116_105_111_110_95_95_117_115_97_103_101_95_95_85_110_117_115_101_100_65_114_103_115_95_95_112_114_101_100_95_95_102_105_110_100_95_105_116_101_109_115_95_117_115_101_100_95_98_121_95_115_105_109_112_108_101_95_105_116_101_109_95_115_101_116_95_51_95_95_91_52_93_95_48_7_0)
+	MR_MAYBE_INIT_LOCAL_THREAD_ENGINE_BASE
+	{
+	MR_Word MR_tempr1;
+	MR_tag_alloc_heap(MR_tempr1, 1, (MR_Integer) 2);
+	MR_tfield(1, MR_tempr1, 0) = MR_r4;
+	MR_tfield(1, MR_tempr1, 1) = MR_r2;
+	MR_tag_alloc_heap(MR_r2, 0, (MR_Integer) 2);
+	MR_tfield(0, MR_r2, 0) = MR_tempr1;
+	MR_tfield(0, MR_r2, 1) = MR_r3;
+	MR_r3 = MR_r5;
+	MR_np_tailcall_ent(recompilation__usage__maybe_record_item_to_process_4_0);
+	}
+#ifdef MR_maybe_local_thread_engine_base
+	#undef MR_maybe_local_thread_engine_base
+	#define MR_maybe_local_thread_engine_base MR_thread_engine_base
+#endif
+MR_END_MODULE
+
+MR_decl_entry(private_builtin__builtin_unify_pred_2_0);
+
+MR_BEGIN_MODULE(recompilation__usage_module109)
+	MR_init_entry1(f_114_101_99_111_109_112_105_108_97_116_105_111_110_95_95_117_115_97_103_101_95_95_85_110_117_115_101_100_65_114_103_115_95_95_112_114_101_100_95_95_95_95_85_110_105_102_121_95_95_95_114_101_99_111_109_112_105_108_97_116_105_111_110_95_95_117_115_97_103_101_95_95_114_101_99_111_114_100_95_114_101_115_111_108_118_101_100_95_105_116_101_109_95_49_95_95_91_49_93_95_48_2_0);
+	MR_INIT_PROC_LAYOUT_ADDR(mercury__f_114_101_99_111_109_112_105_108_97_116_105_111_110_95_95_117_115_97_103_101_95_95_85_110_117_115_101_100_65_114_103_115_95_95_112_114_101_100_95_95_95_95_85_110_105_102_121_95_95_95_114_101_99_111_109_112_105_108_97_116_105_111_110_95_95_117_115_97_103_101_95_95_114_101_99_111_114_100_95_114_101_115_111_108_118_101_100_95_105_116_101_109_95_49_95_95_91_49_93_95_48_2_0);
+MR_BEGIN_CODE
+
+/*-------------------------------------------------------------------------*/
+/* code for 'UnusedArgs__pred____Unify___recompilation__usage__record_resolved_item_1__[1]_0'/2 mode 0 */
+#ifdef MR_maybe_local_thread_engine_base
+	#undef MR_maybe_local_thread_engine_base
+	#define MR_maybe_local_thread_engine_base MR_local_thread_engine_base
+#endif
+MR_def_static(f_114_101_99_111_109_112_105_108_97_116_105_111_110_95_95_117_115_97_103_101_95_95_85_110_117_115_101_100_65_114_103_115_95_95_112_114_101_100_95_95_95_95_85_110_105_102_121_95_95_95_114_101_99_111_109_112_105_108_97_116_105_111_110_95_95_117_115_97_103_101_95_95_114_101_99_111_114_100_95_114_101_115_111_108_118_101_100_95_105_116_101_109_95_49_95_95_91_49_93_95_48_2_0)
+	MR_MAYBE_INIT_LOCAL_THREAD_ENGINE_BASE
+	MR_np_tailcall_ent(private_builtin__builtin_unify_pred_2_0);
+#ifdef MR_maybe_local_thread_engine_base
+	#undef MR_maybe_local_thread_engine_base
+	#define MR_maybe_local_thread_engine_base MR_thread_engine_base
+#endif
+MR_END_MODULE
+
+MR_decl_entry(private_builtin__builtin_compare_pred_3_0);
+
+MR_BEGIN_MODULE(recompilation__usage_module110)
+	MR_init_entry1(f_114_101_99_111_109_112_105_108_97_116_105_111_110_95_95_117_115_97_103_101_95_95_85_110_117_115_101_100_65_114_103_115_95_95_112_114_101_100_95_95_95_95_67_111_109_112_97_114_101_95_95_95_114_101_99_111_109_112_105_108_97_116_105_111_110_95_95_117_115_97_103_101_95_95_114_101_99_111_114_100_95_114_101_115_111_108_118_101_100_95_105_116_101_109_95_49_95_95_91_49_93_95_48_3_0);
+	MR_INIT_PROC_LAYOUT_ADDR(mercury__f_114_101_99_111_109_112_105_108_97_116_105_111_110_95_95_117_115_97_103_101_95_95_85_110_117_115_101_100_65_114_103_115_95_95_112_114_101_100_95_95_95_95_67_111_109_112_97_114_101_95_95_95_114_101_99_111_109_112_105_108_97_116_105_111_110_95_95_117_115_97_103_101_95_95_114_101_99_111_114_100_95_114_101_115_111_108_118_101_100_95_105_116_101_109_95_49_95_95_91_49_93_95_48_3_0);
+MR_BEGIN_CODE
+
+/*-------------------------------------------------------------------------*/
+/* code for 'UnusedArgs__pred____Compare___recompilation__usage__record_resolved_item_1__[1]_0'/3 mode 0 */
+#ifdef MR_maybe_local_thread_engine_base
+	#undef MR_maybe_local_thread_engine_base
+	#define MR_maybe_local_thread_engine_base MR_local_thread_engine_base
+#endif
+MR_def_static(f_114_101_99_111_109_112_105_108_97_116_105_111_110_95_95_117_115_97_103_101_95_95_85_110_117_115_101_100_65_114_103_115_95_95_112_114_101_100_95_95_95_95_67_111_109_112_97_114_101_95_95_95_114_101_99_111_109_112_105_108_97_116_105_111_110_95_95_117_115_97_103_101_95_95_114_101_99_111_114_100_95_114_101_115_111_108_118_101_100_95_105_116_101_109_95_49_95_95_91_49_93_95_48_3_0)
+	MR_MAYBE_INIT_LOCAL_THREAD_ENGINE_BASE
+	MR_np_tailcall_ent(private_builtin__builtin_compare_pred_3_0);
+#ifdef MR_maybe_local_thread_engine_base
+	#undef MR_maybe_local_thread_engine_base
+	#define MR_maybe_local_thread_engine_base MR_thread_engine_base
+#endif
+MR_END_MODULE
+
+
+MR_BEGIN_MODULE(recompilation__usage_module111)
+	MR_init_entry1(f_114_101_99_111_109_112_105_108_97_116_105_111_110_95_95_117_115_97_103_101_95_95_85_110_117_115_101_100_65_114_103_115_95_95_112_114_101_100_95_95_95_95_85_110_105_102_121_95_95_95_114_101_99_111_109_112_105_108_97_116_105_111_110_95_95_117_115_97_103_101_95_95_119_114_105_116_101_95_114_101_115_111_108_118_101_100_95_105_116_101_109_95_49_95_95_91_49_93_95_48_2_0);
+	MR_INIT_PROC_LAYOUT_ADDR(mercury__f_114_101_99_111_109_112_105_108_97_116_105_111_110_95_95_117_115_97_103_101_95_95_85_110_117_115_101_100_65_114_103_115_95_95_112_114_101_100_95_95_95_95_85_110_105_102_121_95_95_95_114_101_99_111_109_112_105_108_97_116_105_111_110_95_95_117_115_97_103_101_95_95_119_114_105_116_101_95_114_101_115_111_108_118_101_100_95_105_116_101_109_95_49_95_95_91_49_93_95_48_2_0);
+MR_BEGIN_CODE
+
+/*-------------------------------------------------------------------------*/
+/* code for 'UnusedArgs__pred____Unify___recompilation__usage__write_resolved_item_1__[1]_0'/2 mode 0 */
+#ifdef MR_maybe_local_thread_engine_base
+	#undef MR_maybe_local_thread_engine_base
+	#define MR_maybe_local_thread_engine_base MR_local_thread_engine_base
+#endif
+MR_def_static(f_114_101_99_111_109_112_105_108_97_116_105_111_110_95_95_117_115_97_103_101_95_95_85_110_117_115_101_100_65_114_103_115_95_95_112_114_101_100_95_95_95_95_85_110_105_102_121_95_95_95_114_101_99_111_109_112_105_108_97_116_105_111_110_95_95_117_115_97_103_101_95_95_119_114_105_116_101_95_114_101_115_111_108_118_101_100_95_105_116_101_109_95_49_95_95_91_49_93_95_48_2_0)
+	MR_MAYBE_INIT_LOCAL_THREAD_ENGINE_BASE
+	MR_np_tailcall_ent(private_builtin__builtin_unify_pred_2_0);
+#ifdef MR_maybe_local_thread_engine_base
+	#undef MR_maybe_local_thread_engine_base
+	#define MR_maybe_local_thread_engine_base MR_thread_engine_base
+#endif
+MR_END_MODULE
+
+
+MR_BEGIN_MODULE(recompilation__usage_module112)
+	MR_init_entry1(f_114_101_99_111_109_112_105_108_97_116_105_111_110_95_95_117_115_97_103_101_95_95_85_110_117_115_101_100_65_114_103_115_95_95_112_114_101_100_95_95_95_95_67_111_109_112_97_114_101_95_95_95_114_101_99_111_109_112_105_108_97_116_105_111_110_95_95_117_115_97_103_101_95_95_119_114_105_116_101_95_114_101_115_111_108_118_101_100_95_105_116_101_109_95_49_95_95_91_49_93_95_48_3_0);
+	MR_INIT_PROC_LAYOUT_ADDR(mercury__f_114_101_99_111_109_112_105_108_97_116_105_111_110_95_95_117_115_97_103_101_95_95_85_110_117_115_101_100_65_114_103_115_95_95_112_114_101_100_95_95_95_95_67_111_109_112_97_114_101_95_95_95_114_101_99_111_109_112_105_108_97_116_105_111_110_95_95_117_115_97_103_101_95_95_119_114_105_116_101_95_114_101_115_111_108_118_101_100_95_105_116_101_109_95_49_95_95_91_49_93_95_48_3_0);
+MR_BEGIN_CODE
+
+/*-------------------------------------------------------------------------*/
+/* code for 'UnusedArgs__pred____Compare___recompilation__usage__write_resolved_item_1__[1]_0'/3 mode 0 */
+#ifdef MR_maybe_local_thread_engine_base
+	#undef MR_maybe_local_thread_engine_base
+	#define MR_maybe_local_thread_engine_base MR_local_thread_engine_base
+#endif
+MR_def_static(f_114_101_99_111_109_112_105_108_97_116_105_111_110_95_95_117_115_97_103_101_95_95_85_110_117_115_101_100_65_114_103_115_95_95_112_114_101_100_95_95_95_95_67_111_109_112_97_114_101_95_95_95_114_101_99_111_109_112_105_108_97_116_105_111_110_95_95_117_115_97_103_101_95_95_119_114_105_116_101_95_114_101_115_111_108_118_101_100_95_105_116_101_109_95_49_95_95_91_49_93_95_48_3_0)
+	MR_MAYBE_INIT_LOCAL_THREAD_ENGINE_BASE
+	MR_np_tailcall_ent(private_builtin__builtin_compare_pred_3_0);
+#ifdef MR_maybe_local_thread_engine_base
+	#undef MR_maybe_local_thread_engine_base
+	#define MR_maybe_local_thread_engine_base MR_thread_engine_base
+#endif
+MR_END_MODULE
+
+
+MR_BEGIN_MODULE(recompilation__usage_module113)
+	MR_init_entry1(f_114_101_99_111_109_112_105_108_97_116_105_111_110_95_95_117_115_97_103_101_95_95_85_110_117_115_101_100_65_114_103_115_95_95_112_114_101_100_95_95_114_101_99_111_114_100_95_114_101_115_111_108_118_101_100_95_105_116_101_109_95_95_104_111_50_95_95_91_52_93_95_48_7_0);
+	MR_INIT_PROC_LAYOUT_ADDR(mercury__f_114_101_99_111_109_112_105_108_97_116_105_111_110_95_95_117_115_97_103_101_95_95_85_110_117_115_101_100_65_114_103_115_95_95_112_114_101_100_95_95_114_101_99_111_114_100_95_114_101_115_111_108_118_101_100_95_105_116_101_109_95_95_104_111_50_95_95_91_52_93_95_48_7_0);
+	MR_init_label7(f_114_101_99_111_109_112_105_108_97_116_105_111_110_95_95_117_115_97_103_101_95_95_85_110_117_115_101_100_65_114_103_115_95_95_112_114_101_100_95_95_114_101_99_111_114_100_95_114_101_115_111_108_118_101_100_95_105_116_101_109_95_95_104_111_50_95_95_91_52_93_95_48_7_0,4,5,10,6,13,15,19)
+MR_BEGIN_CODE
+
+/*-------------------------------------------------------------------------*/
+/* code for 'UnusedArgs__pred__record_resolved_item__ho2__[4]_0'/7 mode 0 */
+#ifdef MR_maybe_local_thread_engine_base
+	#undef MR_maybe_local_thread_engine_base
+	#define MR_maybe_local_thread_engine_base MR_local_thread_engine_base
+#endif
+MR_def_static(f_114_101_99_111_109_112_105_108_97_116_105_111_110_95_95_117_115_97_103_101_95_95_85_110_117_115_101_100_65_114_103_115_95_95_112_114_101_100_95_95_114_101_99_111_114_100_95_114_101_115_111_108_118_101_100_95_105_116_101_109_95_95_104_111_50_95_95_91_52_93_95_48_7_0)
+	MR_MAYBE_INIT_LOCAL_THREAD_ENGINE_BASE
+	MR_incr_sp(9);
+	MR_sv(9) = (MR_Word) MR_succip;
+	MR_sv(1) = MR_r2;
+	MR_sv(2) = MR_r3;
+	MR_sv(5) = MR_r4;
+	MR_sv(6) = MR_r5;
+	MR_sv(7) = (MR_Word) MR_TAG_COMMON(0,1,0);
+	MR_sv(8) = MR_r1;
+	MR_r1 = MR_r2;
+	MR_np_call_localret_ent(fn__mdbcomp__prim_data__unqualify_name_1_0,
+		f_114_101_99_111_109_112_105_108_97_116_105_111_110_95_95_117_115_97_103_101_95_95_85_110_117_115_101_100_65_114_103_115_95_95_112_114_101_100_95_95_114_101_99_111_114_100_95_114_101_115_111_108_118_101_100_95_105_116_101_109_95_95_104_111_50_95_95_91_52_93_95_48_7_0_i4);
+MR_def_label(f_114_101_99_111_109_112_105_108_97_116_105_111_110_95_95_117_115_97_103_101_95_95_85_110_117_115_101_100_65_114_103_115_95_95_112_114_101_100_95_95_114_101_99_111_114_100_95_114_101_115_111_108_118_101_100_95_105_116_101_109_95_95_104_111_50_95_95_91_52_93_95_48_7_0,4)
+	MR_MAYBE_INIT_LOCAL_THREAD_ENGINE_BASE
+	MR_sv(3) = MR_r1;
+	MR_r1 = MR_sv(1);
+	MR_np_call_localret_ent(fn__recompilation__find_module_qualifier_1_0,
+		f_114_101_99_111_109_112_105_108_97_116_105_111_110_95_95_117_115_97_103_101_95_95_85_110_117_115_101_100_65_114_103_115_95_95_112_114_101_100_95_95_114_101_99_111_114_100_95_114_101_115_111_108_118_101_100_95_105_116_101_109_95_95_104_111_50_95_95_91_52_93_95_48_7_0_i5);
+MR_def_label(f_114_101_99_111_109_112_105_108_97_116_105_111_110_95_95_117_115_97_103_101_95_95_85_110_117_115_101_100_65_114_103_115_95_95_112_114_101_100_95_95_114_101_99_111_114_100_95_114_101_115_111_108_118_101_100_95_105_116_101_109_95_95_104_111_50_95_95_91_52_93_95_48_7_0,5)
+	MR_MAYBE_INIT_LOCAL_THREAD_ENGINE_BASE
+	MR_sv(4) = MR_r1;
+	MR_r1 = (MR_Word) MR_STRING_CTOR_ADDR;
+	MR_r2 = (MR_Word) MR_TAG_COMMON(0,1,1);
+	MR_r3 = MR_sv(5);
+	MR_r4 = MR_sv(3);
+	MR_np_call_localret_ent(map__search_3_0,
+		f_114_101_99_111_109_112_105_108_97_116_105_111_110_95_95_117_115_97_103_101_95_95_85_110_117_115_101_100_65_114_103_115_95_95_112_114_101_100_95_95_114_101_99_111_114_100_95_114_101_115_111_108_118_101_100_95_105_116_101_109_95_95_104_111_50_95_95_91_52_93_95_48_7_0_i10);
+MR_def_label(f_114_101_99_111_109_112_105_108_97_116_105_111_110_95_95_117_115_97_103_101_95_95_85_110_117_115_101_100_65_114_103_115_95_95_112_114_101_100_95_95_114_101_99_111_114_100_95_114_101_115_111_108_118_101_100_95_105_116_101_109_95_95_104_111_50_95_95_91_52_93_95_48_7_0,10)
+	MR_MAYBE_INIT_LOCAL_THREAD_ENGINE_BASE
+	if (!(MR_r1)) {
+		MR_GOTO_LAB(f_114_101_99_111_109_112_105_108_97_116_105_111_110_95_95_117_115_97_103_101_95_95_85_110_117_115_101_100_65_114_103_115_95_95_112_114_101_100_95_95_114_101_99_111_114_100_95_114_101_115_111_108_118_101_100_95_105_116_101_109_95_95_104_111_50_95_95_91_52_93_95_48_7_0_i6);
+	}
+	MR_r3 = MR_sv(1);
+	MR_r4 = MR_sv(2);
+	{
+	MR_Word MR_tempr1;
+	MR_tempr1 = MR_r2;
+	MR_r2 = MR_sv(4);
+	MR_r5 = MR_tempr1;
+	MR_r6 = MR_sv(6);
+	MR_r1 = MR_sv(8);
+	}
+	MR_np_call_localret_ent(f_114_101_99_111_109_112_105_108_97_116_105_111_110_95_95_117_115_97_103_101_95_95_85_110_117_115_101_100_65_114_103_115_95_95_112_114_101_100_95_95_114_101_99_111_114_100_95_114_101_115_111_108_118_101_100_95_105_116_101_109_95_50_95_95_104_111_53_95_95_91_53_93_95_48_9_0,
+		f_114_101_99_111_109_112_105_108_97_116_105_111_110_95_95_117_115_97_103_101_95_95_85_110_117_115_101_100_65_114_103_115_95_95_112_114_101_100_95_95_114_101_99_111_114_100_95_114_101_115_111_108_118_101_100_95_105_116_101_109_95_95_104_111_50_95_95_91_52_93_95_48_7_0_i13);
+MR_def_label(f_114_101_99_111_109_112_105_108_97_116_105_111_110_95_95_117_115_97_103_101_95_95_85_110_117_115_101_100_65_114_103_115_95_95_112_114_101_100_95_95_114_101_99_111_114_100_95_114_101_115_111_108_118_101_100_95_105_116_101_109_95_95_104_111_50_95_95_91_52_93_95_48_7_0,6)
+	MR_MAYBE_INIT_LOCAL_THREAD_ENGINE_BASE
+	MR_r3 = MR_sv(1);
+	MR_r4 = MR_sv(2);
+	MR_r2 = MR_sv(4);
+	MR_r5 = (MR_Word) MR_tbmkword(0, 0);
+	MR_r6 = MR_sv(6);
+	MR_r1 = MR_sv(8);
+	MR_np_call_localret_ent(f_114_101_99_111_109_112_105_108_97_116_105_111_110_95_95_117_115_97_103_101_95_95_85_110_117_115_101_100_65_114_103_115_95_95_112_114_101_100_95_95_114_101_99_111_114_100_95_114_101_115_111_108_118_101_100_95_105_116_101_109_95_50_95_95_104_111_53_95_95_91_53_93_95_48_9_0,
+		f_114_101_99_111_109_112_105_108_97_116_105_111_110_95_95_117_115_97_103_101_95_95_85_110_117_115_101_100_65_114_103_115_95_95_112_114_101_100_95_95_114_101_99_111_114_100_95_114_101_115_111_108_118_101_100_95_105_116_101_109_95_95_104_111_50_95_95_91_52_93_95_48_7_0_i13);
+MR_def_label(f_114_101_99_111_109_112_105_108_97_116_105_111_110_95_95_117_115_97_103_101_95_95_85_110_117_115_101_100_65_114_103_115_95_95_112_114_101_100_95_95_114_101_99_111_114_100_95_114_101_115_111_108_118_101_100_95_105_116_101_109_95_95_104_111_50_95_95_91_52_93_95_48_7_0,13)
+	MR_MAYBE_INIT_LOCAL_THREAD_ENGINE_BASE
+	if (MR_INT_NE(MR_r1,0)) {
+		MR_GOTO_LAB(f_114_101_99_111_109_112_105_108_97_116_105_111_110_95_95_117_115_97_103_101_95_95_85_110_117_115_101_100_65_114_103_115_95_95_112_114_101_100_95_95_114_101_99_111_114_100_95_114_101_115_111_108_118_101_100_95_105_116_101_109_95_95_104_111_50_95_95_91_52_93_95_48_7_0_i15);
+	}
+	MR_r1 = MR_sv(5);
+	MR_r2 = MR_r3;
+	MR_decr_sp_and_return(9);
+MR_def_label(f_114_101_99_111_109_112_105_108_97_116_105_111_110_95_95_117_115_97_103_101_95_95_85_110_117_115_101_100_65_114_103_115_95_95_112_114_101_100_95_95_114_101_99_111_114_100_95_114_101_115_111_108_118_101_100_95_105_116_101_109_95_95_104_111_50_95_95_91_52_93_95_48_7_0,15)
+	MR_MAYBE_INIT_LOCAL_THREAD_ENGINE_BASE
+	{
+	MR_Word MR_tempr1, MR_tempr2;
+	MR_tag_alloc_heap(MR_tempr1, 0, (MR_Integer) 3);
+	MR_tfield(0, MR_tempr1, 0) = (MR_Word) MR_CTOR_ADDR(tree234, tree234, 2);
+	MR_tfield(0, MR_tempr1, 1) = (MR_Word) MR_CTOR0_ADDR(mdbcomp__prim_data, sym_name);
+	MR_tfield(0, MR_tempr1, 2) = MR_sv(7);
+	MR_tag_alloc_heap(MR_tempr2, 0, (MR_Integer) 3);
+	MR_tfield(0, MR_tempr2, 0) = (MR_Word) MR_CTOR_ADDR(pair, pair, 2);
+	MR_tfield(0, MR_tempr2, 1) = (MR_Word) MR_INT_CTOR_ADDR;
+	MR_tfield(0, MR_tempr2, 2) = MR_tempr1;
+	MR_tag_alloc_heap(MR_tempr1, 0, (MR_Integer) 2);
+	MR_tfield(0, MR_tempr1, 0) = (MR_Word) MR_LIST_CTOR_ADDR;
+	MR_tfield(0, MR_tempr1, 1) = MR_tempr2;
+	MR_sv(1) = MR_r3;
+	MR_r1 = (MR_Word) MR_STRING_CTOR_ADDR;
+	MR_tempr2 = MR_r2;
+	MR_r2 = MR_tempr1;
+	MR_r3 = MR_sv(3);
+	MR_r4 = MR_tempr2;
+	MR_r5 = MR_sv(5);
+	}
+	MR_np_call_localret_ent(map__set_4_0,
+		f_114_101_99_111_109_112_105_108_97_116_105_111_110_95_95_117_115_97_103_101_95_95_85_110_117_115_101_100_65_114_103_115_95_95_112_114_101_100_95_95_114_101_99_111_114_100_95_114_101_115_111_108_118_101_100_95_105_116_101_109_95_95_104_111_50_95_95_91_52_93_95_48_7_0_i19);
+MR_def_label(f_114_101_99_111_109_112_105_108_97_116_105_111_110_95_95_117_115_97_103_101_95_95_85_110_117_115_101_100_65_114_103_115_95_95_112_114_101_100_95_95_114_101_99_111_114_100_95_114_101_115_111_108_118_101_100_95_105_116_101_109_95_95_104_111_50_95_95_91_52_93_95_48_7_0,19)
+	MR_MAYBE_INIT_LOCAL_THREAD_ENGINE_BASE
+	MR_r2 = MR_sv(1);
+	MR_decr_sp_and_return(9);
+#ifdef MR_maybe_local_thread_engine_base
+	#undef MR_maybe_local_thread_engine_base
+	#define MR_maybe_local_thread_engine_base MR_thread_engine_base
+#endif
+MR_END_MODULE
+
+
+MR_BEGIN_MODULE(recompilation__usage_module114)
+	MR_init_entry1(f_114_101_99_111_109_112_105_108_97_116_105_111_110_95_95_117_115_97_103_101_95_95_85_110_117_115_101_100_65_114_103_115_95_95_112_114_101_100_95_95_114_101_99_111_114_100_95_114_101_115_111_108_118_101_100_95_105_116_101_109_95_50_95_95_104_111_53_95_95_91_53_93_95_48_9_0);
+	MR_INIT_PROC_LAYOUT_ADDR(mercury__f_114_101_99_111_109_112_105_108_97_116_105_111_110_95_95_117_115_97_103_101_95_95_85_110_117_115_101_100_65_114_103_115_95_95_112_114_101_100_95_95_114_101_99_111_114_100_95_114_101_115_111_108_118_101_100_95_105_116_101_109_95_50_95_95_104_111_53_95_95_91_53_93_95_48_9_0);
+	MR_init_label10(f_114_101_99_111_109_112_105_108_97_116_105_111_110_95_95_117_115_97_103_101_95_95_85_110_117_115_101_100_65_114_103_115_95_95_112_114_101_100_95_95_114_101_99_111_114_100_95_114_101_115_111_108_118_101_100_95_105_116_101_109_95_50_95_95_104_111_53_95_95_91_53_93_95_48_9_0,6,8,7,10,12,5,17,18,20,16)
+	MR_init_label5(f_114_101_99_111_109_112_105_108_97_116_105_111_110_95_95_117_115_97_103_101_95_95_85_110_117_115_101_100_65_114_103_115_95_95_112_114_101_100_95_95_114_101_99_111_114_100_95_114_101_115_111_108_118_101_100_95_105_116_101_109_95_50_95_95_104_111_53_95_95_91_53_93_95_48_9_0,24,26,23,29,31)
+MR_BEGIN_CODE
+
+/*-------------------------------------------------------------------------*/
+/* code for 'UnusedArgs__pred__record_resolved_item_2__ho5__[5]_0'/9 mode 0 */
+#ifdef MR_maybe_local_thread_engine_base
+	#undef MR_maybe_local_thread_engine_base
+	#define MR_maybe_local_thread_engine_base MR_local_thread_engine_base
+#endif
+MR_def_static(f_114_101_99_111_109_112_105_108_97_116_105_111_110_95_95_117_115_97_103_101_95_95_85_110_117_115_101_100_65_114_103_115_95_95_112_114_101_100_95_95_114_101_99_111_114_100_95_114_101_115_111_108_118_101_100_95_105_116_101_109_95_50_95_95_104_111_53_95_95_91_53_93_95_48_9_0)
+	MR_MAYBE_INIT_LOCAL_THREAD_ENGINE_BASE
+	MR_incr_sp(8);
+	MR_sv(8) = (MR_Word) MR_succip;
+	if (MR_LTAGS_TESTR(MR_r5,0,0)) {
+		MR_GOTO_LAB(f_114_101_99_111_109_112_105_108_97_116_105_111_110_95_95_117_115_97_103_101_95_95_85_110_117_115_101_100_65_114_103_115_95_95_112_114_101_100_95_95_114_101_99_111_114_100_95_114_101_115_111_108_118_101_100_95_105_116_101_109_95_50_95_95_104_111_53_95_95_91_53_93_95_48_9_0_i5);
+	}
+	MR_sv(1) = MR_r2;
+	MR_sv(2) = MR_r3;
+	MR_sv(3) = MR_r4;
+	MR_sv(4) = MR_r5;
+	MR_sv(5) = MR_r6;
+	MR_sv(6) = (MR_Word) MR_TAG_COMMON(0,1,0);
+	MR_sv(7) = MR_r1;
+	MR_r1 = (MR_Word) MR_CTOR0_ADDR(mdbcomp__prim_data, sym_name);
+	MR_r2 = MR_sv(6);
+	MR_np_call_localret_ent(map__init_1_0,
+		f_114_101_99_111_109_112_105_108_97_116_105_111_110_95_95_117_115_97_103_101_95_95_85_110_117_115_101_100_65_114_103_115_95_95_112_114_101_100_95_95_114_101_99_111_114_100_95_114_101_115_111_108_118_101_100_95_105_116_101_109_95_50_95_95_104_111_53_95_95_91_53_93_95_48_9_0_i6);
+MR_def_label(f_114_101_99_111_109_112_105_108_97_116_105_111_110_95_95_117_115_97_103_101_95_95_85_110_117_115_101_100_65_114_103_115_95_95_112_114_101_100_95_95_114_101_99_111_114_100_95_114_101_115_111_108_118_101_100_95_105_116_101_109_95_50_95_95_104_111_53_95_95_91_53_93_95_48_9_0,6)
+	MR_MAYBE_INIT_LOCAL_THREAD_ENGINE_BASE
+	MR_sv(6) = MR_r1;
+	MR_r1 = (MR_Word) MR_CTOR0_ADDR(mdbcomp__prim_data, sym_name);
+	MR_r2 = (MR_Word) MR_TAG_COMMON(0,1,0);
+	MR_r3 = MR_sv(6);
+	MR_r4 = MR_sv(1);
+	MR_np_call_localret_ent(map__contains_2_0,
+		f_114_101_99_111_109_112_105_108_97_116_105_111_110_95_95_117_115_97_103_101_95_95_85_110_117_115_101_100_65_114_103_115_95_95_112_114_101_100_95_95_114_101_99_111_114_100_95_114_101_115_111_108_118_101_100_95_105_116_101_109_95_50_95_95_104_111_53_95_95_91_53_93_95_48_9_0_i8);
+MR_def_label(f_114_101_99_111_109_112_105_108_97_116_105_111_110_95_95_117_115_97_103_101_95_95_85_110_117_115_101_100_65_114_103_115_95_95_112_114_101_100_95_95_114_101_99_111_114_100_95_114_101_115_111_108_118_101_100_95_105_116_101_109_95_50_95_95_104_111_53_95_95_91_53_93_95_48_9_0,8)
+	MR_MAYBE_INIT_LOCAL_THREAD_ENGINE_BASE
+	if (!(MR_r1)) {
+		MR_GOTO_LAB(f_114_101_99_111_109_112_105_108_97_116_105_111_110_95_95_117_115_97_103_101_95_95_85_110_117_115_101_100_65_114_103_115_95_95_112_114_101_100_95_95_114_101_99_111_114_100_95_114_101_115_111_108_118_101_100_95_105_116_101_109_95_50_95_95_104_111_53_95_95_91_53_93_95_48_9_0_i7);
+	}
+	MR_r1 = (MR_Integer) 0;
+	MR_r2 = MR_sv(4);
+	MR_r3 = MR_sv(5);
+	MR_decr_sp_and_return(8);
+MR_def_label(f_114_101_99_111_109_112_105_108_97_116_105_111_110_95_95_117_115_97_103_101_95_95_85_110_117_115_101_100_65_114_103_115_95_95_112_114_101_100_95_95_114_101_99_111_114_100_95_114_101_115_111_108_118_101_100_95_105_116_101_109_95_50_95_95_104_111_53_95_95_91_53_93_95_48_9_0,7)
+	MR_MAYBE_INIT_LOCAL_THREAD_ENGINE_BASE
+	MR_r1 = MR_sv(7);
+	MR_r2 = MR_sv(1);
+	MR_r3 = MR_sv(2);
+	MR_r4 = MR_sv(3);
+	MR_r5 = MR_sv(6);
+	MR_r6 = MR_sv(5);
+	MR_np_call_localret_ent(recompilation__usage__do_record_used_pred_or_func_9_0,
+		f_114_101_99_111_109_112_105_108_97_116_105_111_110_95_95_117_115_97_103_101_95_95_85_110_117_115_101_100_65_114_103_115_95_95_112_114_101_100_95_95_114_101_99_111_114_100_95_114_101_115_111_108_118_101_100_95_105_116_101_109_95_50_95_95_104_111_53_95_95_91_53_93_95_48_9_0_i10);
+MR_def_label(f_114_101_99_111_109_112_105_108_97_116_105_111_110_95_95_117_115_97_103_101_95_95_85_110_117_115_101_100_65_114_103_115_95_95_112_114_101_100_95_95_114_101_99_111_114_100_95_114_101_115_111_108_118_101_100_95_105_116_101_109_95_50_95_95_104_111_53_95_95_91_53_93_95_48_9_0,10)
+	MR_MAYBE_INIT_LOCAL_THREAD_ENGINE_BASE
+	if (MR_INT_NE(MR_r1,0)) {
+		MR_GOTO_LAB(f_114_101_99_111_109_112_105_108_97_116_105_111_110_95_95_117_115_97_103_101_95_95_85_110_117_115_101_100_65_114_103_115_95_95_112_114_101_100_95_95_114_101_99_111_114_100_95_114_101_115_111_108_118_101_100_95_105_116_101_109_95_50_95_95_104_111_53_95_95_91_53_93_95_48_9_0_i12);
+	}
+	MR_r2 = MR_sv(4);
+	MR_decr_sp_and_return(8);
+MR_def_label(f_114_101_99_111_109_112_105_108_97_116_105_111_110_95_95_117_115_97_103_101_95_95_85_110_117_115_101_100_65_114_103_115_95_95_112_114_101_100_95_95_114_101_99_111_114_100_95_114_101_115_111_108_118_101_100_95_105_116_101_109_95_50_95_95_104_111_53_95_95_91_53_93_95_48_9_0,12)
+	MR_MAYBE_INIT_LOCAL_THREAD_ENGINE_BASE
+	{
+	MR_Word MR_tempr1;
+	MR_tag_alloc_heap(MR_tempr1, 0, (MR_Integer) 2);
+	MR_tfield(0, MR_tempr1, 0) = MR_sv(3);
+	MR_tfield(0, MR_tempr1, 1) = MR_r2;
+	MR_tag_alloc_heap(MR_r2, 1, (MR_Integer) 2);
+	MR_tfield(1, MR_r2, 0) = MR_tempr1;
+	MR_tfield(1, MR_r2, 1) = (MR_Word) MR_tbmkword(0, 0);
+	MR_decr_sp_and_return(8);
+	}
+MR_def_label(f_114_101_99_111_109_112_105_108_97_116_105_111_110_95_95_117_115_97_103_101_95_95_85_110_117_115_101_100_65_114_103_115_95_95_112_114_101_100_95_95_114_101_99_111_114_100_95_114_101_115_111_108_118_101_100_95_105_116_101_109_95_50_95_95_104_111_53_95_95_91_53_93_95_48_9_0,5)
+	MR_MAYBE_INIT_LOCAL_THREAD_ENGINE_BASE
+	{
+	MR_Word MR_tempr1, MR_tempr2;
+	MR_tempr2 = MR_r5;
+	MR_tempr1 = MR_tfield(1, MR_tempr2, 0);
+	MR_sv(1) = MR_tempr1;
+	MR_r7 = MR_tfield(1, MR_tempr2, 1);
+	MR_r8 = MR_tfield(0, MR_tempr1, 1);
+	MR_r9 = MR_tfield(0, MR_tempr1, 0);
+	if (((MR_Integer) MR_r4 >= (MR_Integer) MR_r9)) {
+		MR_GOTO_LAB(f_114_101_99_111_109_112_105_108_97_116_105_111_110_95_95_117_115_97_103_101_95_95_85_110_117_115_101_100_65_114_103_115_95_95_112_114_101_100_95_95_114_101_99_111_114_100_95_114_101_115_111_108_118_101_100_95_105_116_101_109_95_50_95_95_104_111_53_95_95_91_53_93_95_48_9_0_i16);
+	}
+	MR_sv(1) = MR_r2;
+	MR_sv(2) = MR_r3;
+	MR_sv(3) = MR_r4;
+	MR_sv(4) = MR_tempr2;
+	MR_sv(5) = MR_r6;
+	MR_sv(7) = MR_r1;
+	MR_r1 = (MR_Word) MR_CTOR0_ADDR(mdbcomp__prim_data, sym_name);
+	MR_r2 = (MR_Word) MR_TAG_COMMON(0,1,0);
+	}
+	MR_np_call_localret_ent(map__init_1_0,
+		f_114_101_99_111_109_112_105_108_97_116_105_111_110_95_95_117_115_97_103_101_95_95_85_110_117_115_101_100_65_114_103_115_95_95_112_114_101_100_95_95_114_101_99_111_114_100_95_114_101_115_111_108_118_101_100_95_105_116_101_109_95_50_95_95_104_111_53_95_95_91_53_93_95_48_9_0_i17);
+MR_def_label(f_114_101_99_111_109_112_105_108_97_116_105_111_110_95_95_117_115_97_103_101_95_95_85_110_117_115_101_100_65_114_103_115_95_95_112_114_101_100_95_95_114_101_99_111_114_100_95_114_101_115_111_108_118_101_100_95_105_116_101_109_95_50_95_95_104_111_53_95_95_91_53_93_95_48_9_0,17)
+	MR_MAYBE_INIT_LOCAL_THREAD_ENGINE_BASE
+	{
+	MR_Word MR_tempr1;
+	MR_tempr1 = MR_r1;
+	MR_r1 = MR_sv(7);
+	MR_r2 = MR_sv(1);
+	MR_r3 = MR_sv(2);
+	MR_r4 = MR_sv(3);
+	MR_r5 = MR_tempr1;
+	MR_r6 = MR_sv(5);
+	}
+	MR_np_call_localret_ent(f_114_101_99_111_109_112_105_108_97_116_105_111_110_95_95_117_115_97_103_101_95_95_85_110_117_115_101_100_65_114_103_115_95_95_112_114_101_100_95_95_114_101_99_111_114_100_95_114_101_115_111_108_118_101_100_95_105_116_101_109_95_51_95_95_104_111_56_95_95_91_53_93_95_48_9_0,
+		f_114_101_99_111_109_112_105_108_97_116_105_111_110_95_95_117_115_97_103_101_95_95_85_110_117_115_101_100_65_114_103_115_95_95_112_114_101_100_95_95_114_101_99_111_114_100_95_114_101_115_111_108_118_101_100_95_105_116_101_109_95_50_95_95_104_111_53_95_95_91_53_93_95_48_9_0_i18);
+MR_def_label(f_114_101_99_111_109_112_105_108_97_116_105_111_110_95_95_117_115_97_103_101_95_95_85_110_117_115_101_100_65_114_103_115_95_95_112_114_101_100_95_95_114_101_99_111_114_100_95_114_101_115_111_108_118_101_100_95_105_116_101_109_95_50_95_95_104_111_53_95_95_91_53_93_95_48_9_0,18)
+	MR_MAYBE_INIT_LOCAL_THREAD_ENGINE_BASE
+	if (MR_INT_NE(MR_r1,0)) {
+		MR_GOTO_LAB(f_114_101_99_111_109_112_105_108_97_116_105_111_110_95_95_117_115_97_103_101_95_95_85_110_117_115_101_100_65_114_103_115_95_95_112_114_101_100_95_95_114_101_99_111_114_100_95_114_101_115_111_108_118_101_100_95_105_116_101_109_95_50_95_95_104_111_53_95_95_91_53_93_95_48_9_0_i20);
+	}
+	MR_r2 = MR_sv(4);
+	MR_decr_sp_and_return(8);
+MR_def_label(f_114_101_99_111_109_112_105_108_97_116_105_111_110_95_95_117_115_97_103_101_95_95_85_110_117_115_101_100_65_114_103_115_95_95_112_114_101_100_95_95_114_101_99_111_114_100_95_114_101_115_111_108_118_101_100_95_105_116_101_109_95_50_95_95_104_111_53_95_95_91_53_93_95_48_9_0,20)
+	MR_MAYBE_INIT_LOCAL_THREAD_ENGINE_BASE
+	{
+	MR_Word MR_tempr1;
+	MR_tag_alloc_heap(MR_tempr1, 0, (MR_Integer) 2);
+	MR_tfield(0, MR_tempr1, 0) = MR_sv(3);
+	MR_tfield(0, MR_tempr1, 1) = MR_r2;
+	MR_tag_alloc_heap(MR_r2, 1, (MR_Integer) 2);
+	MR_tfield(1, MR_r2, 0) = MR_tempr1;
+	MR_tfield(1, MR_r2, 1) = MR_sv(4);
+	MR_decr_sp_and_return(8);
+	}
+MR_def_label(f_114_101_99_111_109_112_105_108_97_116_105_111_110_95_95_117_115_97_103_101_95_95_85_110_117_115_101_100_65_114_103_115_95_95_112_114_101_100_95_95_114_101_99_111_114_100_95_114_101_115_111_108_118_101_100_95_105_116_101_109_95_50_95_95_104_111_53_95_95_91_53_93_95_48_9_0,16)
+	MR_MAYBE_INIT_LOCAL_THREAD_ENGINE_BASE
+	if ((MR_r4 != MR_r9)) {
+		MR_GOTO_LAB(f_114_101_99_111_109_112_105_108_97_116_105_111_110_95_95_117_115_97_103_101_95_95_85_110_117_115_101_100_65_114_103_115_95_95_112_114_101_100_95_95_114_101_99_111_114_100_95_114_101_115_111_108_118_101_100_95_105_116_101_109_95_50_95_95_104_111_53_95_95_91_53_93_95_48_9_0_i23);
+	}
+	MR_sv(3) = MR_r4;
+	MR_sv(4) = MR_r5;
+	MR_sv(1) = MR_r7;
+	MR_r5 = MR_r8;
+	MR_np_call_localret_ent(f_114_101_99_111_109_112_105_108_97_116_105_111_110_95_95_117_115_97_103_101_95_95_85_110_117_115_101_100_65_114_103_115_95_95_112_114_101_100_95_95_114_101_99_111_114_100_95_114_101_115_111_108_118_101_100_95_105_116_101_109_95_51_95_95_104_111_56_95_95_91_53_93_95_48_9_0,
+		f_114_101_99_111_109_112_105_108_97_116_105_111_110_95_95_117_115_97_103_101_95_95_85_110_117_115_101_100_65_114_103_115_95_95_112_114_101_100_95_95_114_101_99_111_114_100_95_114_101_115_111_108_118_101_100_95_105_116_101_109_95_50_95_95_104_111_53_95_95_91_53_93_95_48_9_0_i24);
+MR_def_label(f_114_101_99_111_109_112_105_108_97_116_105_111_110_95_95_117_115_97_103_101_95_95_85_110_117_115_101_100_65_114_103_115_95_95_112_114_101_100_95_95_114_101_99_111_114_100_95_114_101_115_111_108_118_101_100_95_105_116_101_109_95_50_95_95_104_111_53_95_95_91_53_93_95_48_9_0,24)
+	MR_MAYBE_INIT_LOCAL_THREAD_ENGINE_BASE
+	if (MR_INT_NE(MR_r1,0)) {
+		MR_GOTO_LAB(f_114_101_99_111_109_112_105_108_97_116_105_111_110_95_95_117_115_97_103_101_95_95_85_110_117_115_101_100_65_114_103_115_95_95_112_114_101_100_95_95_114_101_99_111_114_100_95_114_101_115_111_108_118_101_100_95_105_116_101_109_95_50_95_95_104_111_53_95_95_91_53_93_95_48_9_0_i26);
+	}
+	MR_r2 = MR_sv(4);
+	MR_decr_sp_and_return(8);
+MR_def_label(f_114_101_99_111_109_112_105_108_97_116_105_111_110_95_95_117_115_97_103_101_95_95_85_110_117_115_101_100_65_114_103_115_95_95_112_114_101_100_95_95_114_101_99_111_114_100_95_114_101_115_111_108_118_101_100_95_105_116_101_109_95_50_95_95_104_111_53_95_95_91_53_93_95_48_9_0,26)
+	MR_MAYBE_INIT_LOCAL_THREAD_ENGINE_BASE
+	{
+	MR_Word MR_tempr1;
+	MR_tag_alloc_heap(MR_tempr1, 0, (MR_Integer) 2);
+	MR_tfield(0, MR_tempr1, 0) = MR_sv(3);
+	MR_tfield(0, MR_tempr1, 1) = MR_r2;
+	MR_tag_alloc_heap(MR_r2, 1, (MR_Integer) 2);
+	MR_tfield(1, MR_r2, 0) = MR_tempr1;
+	MR_tfield(1, MR_r2, 1) = MR_sv(1);
+	MR_decr_sp_and_return(8);
+	}
+MR_def_label(f_114_101_99_111_109_112_105_108_97_116_105_111_110_95_95_117_115_97_103_101_95_95_85_110_117_115_101_100_65_114_103_115_95_95_112_114_101_100_95_95_114_101_99_111_114_100_95_114_101_115_111_108_118_101_100_95_105_116_101_109_95_50_95_95_104_111_53_95_95_91_53_93_95_48_9_0,23)
+	MR_MAYBE_INIT_LOCAL_THREAD_ENGINE_BASE
+	MR_sv(4) = MR_r5;
+	MR_r5 = MR_r7;
+	MR_np_localcall_lab(f_114_101_99_111_109_112_105_108_97_116_105_111_110_95_95_117_115_97_103_101_95_95_85_110_117_115_101_100_65_114_103_115_95_95_112_114_101_100_95_95_114_101_99_111_114_100_95_114_101_115_111_108_118_101_100_95_105_116_101_109_95_50_95_95_104_111_53_95_95_91_53_93_95_48_9_0,
+		f_114_101_99_111_109_112_105_108_97_116_105_111_110_95_95_117_115_97_103_101_95_95_85_110_117_115_101_100_65_114_103_115_95_95_112_114_101_100_95_95_114_101_99_111_114_100_95_114_101_115_111_108_118_101_100_95_105_116_101_109_95_50_95_95_104_111_53_95_95_91_53_93_95_48_9_0_i29);
+MR_def_label(f_114_101_99_111_109_112_105_108_97_116_105_111_110_95_95_117_115_97_103_101_95_95_85_110_117_115_101_100_65_114_103_115_95_95_112_114_101_100_95_95_114_101_99_111_114_100_95_114_101_115_111_108_118_101_100_95_105_116_101_109_95_50_95_95_104_111_53_95_95_91_53_93_95_48_9_0,29)
+	MR_MAYBE_INIT_LOCAL_THREAD_ENGINE_BASE
+	if (MR_INT_NE(MR_r1,0)) {
+		MR_GOTO_LAB(f_114_101_99_111_109_112_105_108_97_116_105_111_110_95_95_117_115_97_103_101_95_95_85_110_117_115_101_100_65_114_103_115_95_95_112_114_101_100_95_95_114_101_99_111_114_100_95_114_101_115_111_108_118_101_100_95_105_116_101_109_95_50_95_95_104_111_53_95_95_91_53_93_95_48_9_0_i31);
+	}
+	MR_r2 = MR_sv(4);
+	MR_decr_sp_and_return(8);
+MR_def_label(f_114_101_99_111_109_112_105_108_97_116_105_111_110_95_95_117_115_97_103_101_95_95_85_110_117_115_101_100_65_114_103_115_95_95_112_114_101_100_95_95_114_101_99_111_114_100_95_114_101_115_111_108_118_101_100_95_105_116_101_109_95_50_95_95_104_111_53_95_95_91_53_93_95_48_9_0,31)
+	MR_MAYBE_INIT_LOCAL_THREAD_ENGINE_BASE
+	{
+	MR_Word MR_tempr1;
+	MR_tag_alloc_heap(MR_tempr1, 1, (MR_Integer) 2);
+	MR_tfield(1, MR_tempr1, 0) = MR_sv(1);
+	MR_tfield(1, MR_tempr1, 1) = MR_r2;
+	MR_r2 = MR_tempr1;
+	MR_decr_sp_and_return(8);
+	}
+#ifdef MR_maybe_local_thread_engine_base
+	#undef MR_maybe_local_thread_engine_base
+	#define MR_maybe_local_thread_engine_base MR_thread_engine_base
+#endif
+MR_END_MODULE
+
+
+MR_BEGIN_MODULE(recompilation__usage_module115)
+	MR_init_entry1(f_114_101_99_111_109_112_105_108_97_116_105_111_110_95_95_117_115_97_103_101_95_95_85_110_117_115_101_100_65_114_103_115_95_95_112_114_101_100_95_95_114_101_99_111_114_100_95_114_101_115_111_108_118_101_100_95_105_116_101_109_95_51_95_95_104_111_56_95_95_91_53_93_95_48_9_0);
+	MR_INIT_PROC_LAYOUT_ADDR(mercury__f_114_101_99_111_109_112_105_108_97_116_105_111_110_95_95_117_115_97_103_101_95_95_85_110_117_115_101_100_65_114_103_115_95_95_112_114_101_100_95_95_114_101_99_111_114_100_95_114_101_115_111_108_118_101_100_95_105_116_101_109_95_51_95_95_104_111_56_95_95_91_53_93_95_48_9_0);
+	MR_init_label2(f_114_101_99_111_109_112_105_108_97_116_105_111_110_95_95_117_115_97_103_101_95_95_85_110_117_115_101_100_65_114_103_115_95_95_112_114_101_100_95_95_114_101_99_111_114_100_95_114_101_115_111_108_118_101_100_95_105_116_101_109_95_51_95_95_104_111_56_95_95_91_53_93_95_48_9_0,5,4)
+MR_BEGIN_CODE
+
+/*-------------------------------------------------------------------------*/
+/* code for 'UnusedArgs__pred__record_resolved_item_3__ho8__[5]_0'/9 mode 0 */
+#ifdef MR_maybe_local_thread_engine_base
+	#undef MR_maybe_local_thread_engine_base
+	#define MR_maybe_local_thread_engine_base MR_local_thread_engine_base
+#endif
+MR_def_static(f_114_101_99_111_109_112_105_108_97_116_105_111_110_95_95_117_115_97_103_101_95_95_85_110_117_115_101_100_65_114_103_115_95_95_112_114_101_100_95_95_114_101_99_111_114_100_95_114_101_115_111_108_118_101_100_95_105_116_101_109_95_51_95_95_104_111_56_95_95_91_53_93_95_48_9_0)
+	MR_MAYBE_INIT_LOCAL_THREAD_ENGINE_BASE
+	MR_incr_sp(7);
+	MR_sv(7) = (MR_Word) MR_succip;
+	MR_sv(1) = MR_r2;
+	MR_sv(2) = MR_r3;
+	MR_sv(3) = MR_r4;
+	{
+	MR_Word MR_tempr1;
+	MR_tempr1 = MR_r5;
+	MR_sv(4) = MR_tempr1;
+	MR_sv(5) = MR_r6;
+	MR_sv(6) = MR_r1;
+	MR_r1 = (MR_Word) MR_CTOR0_ADDR(mdbcomp__prim_data, sym_name);
+	MR_r2 = (MR_Word) MR_TAG_COMMON(0,1,0);
+	MR_r3 = MR_tempr1;
+	MR_r4 = MR_sv(1);
+	}
+	MR_np_call_localret_ent(map__contains_2_0,
+		f_114_101_99_111_109_112_105_108_97_116_105_111_110_95_95_117_115_97_103_101_95_95_85_110_117_115_101_100_65_114_103_115_95_95_112_114_101_100_95_95_114_101_99_111_114_100_95_114_101_115_111_108_118_101_100_95_105_116_101_109_95_51_95_95_104_111_56_95_95_91_53_93_95_48_9_0_i5);
+MR_def_label(f_114_101_99_111_109_112_105_108_97_116_105_111_110_95_95_117_115_97_103_101_95_95_85_110_117_115_101_100_65_114_103_115_95_95_112_114_101_100_95_95_114_101_99_111_114_100_95_114_101_115_111_108_118_101_100_95_105_116_101_109_95_51_95_95_104_111_56_95_95_91_53_93_95_48_9_0,5)
+	MR_MAYBE_INIT_LOCAL_THREAD_ENGINE_BASE
+	if (!(MR_r1)) {
+		MR_GOTO_LAB(f_114_101_99_111_109_112_105_108_97_116_105_111_110_95_95_117_115_97_103_101_95_95_85_110_117_115_101_100_65_114_103_115_95_95_112_114_101_100_95_95_114_101_99_111_114_100_95_114_101_115_111_108_118_101_100_95_105_116_101_109_95_51_95_95_104_111_56_95_95_91_53_93_95_48_9_0_i4);
+	}
+	MR_r1 = (MR_Integer) 0;
+	MR_r2 = MR_sv(4);
+	MR_r3 = MR_sv(5);
+	MR_decr_sp_and_return(7);
+MR_def_label(f_114_101_99_111_109_112_105_108_97_116_105_111_110_95_95_117_115_97_103_101_95_95_85_110_117_115_101_100_65_114_103_115_95_95_112_114_101_100_95_95_114_101_99_111_114_100_95_114_101_115_111_108_118_101_100_95_105_116_101_109_95_51_95_95_104_111_56_95_95_91_53_93_95_48_9_0,4)
+	MR_MAYBE_INIT_LOCAL_THREAD_ENGINE_BASE
+	MR_r1 = MR_sv(6);
+	MR_r2 = MR_sv(1);
+	MR_r3 = MR_sv(2);
+	MR_r4 = MR_sv(3);
+	MR_r5 = MR_sv(4);
+	MR_r6 = MR_sv(5);
+	MR_succip_word = MR_sv(7);
+	MR_decr_sp(7);
+	MR_np_tailcall_ent(recompilation__usage__do_record_used_pred_or_func_9_0);
+#ifdef MR_maybe_local_thread_engine_base
+	#undef MR_maybe_local_thread_engine_base
+	#define MR_maybe_local_thread_engine_base MR_thread_engine_base
+#endif
+MR_END_MODULE
+
+static void mercury__recompilation__usage_maybe_bunch_0(void)
+{
+	recompilation__usage_module0();
+	recompilation__usage_module1();
+	recompilation__usage_module2();
+	recompilation__usage_module3();
+	recompilation__usage_module4();
+	recompilation__usage_module5();
+	recompilation__usage_module6();
+	recompilation__usage_module7();
+	recompilation__usage_module8();
+	recompilation__usage_module9();
+	recompilation__usage_module10();
+	recompilation__usage_module11();
+	recompilation__usage_module12();
+	recompilation__usage_module13();
+	recompilation__usage_module14();
+	recompilation__usage_module15();
+	recompilation__usage_module16();
+	recompilation__usage_module17();
+	recompilation__usage_module18();
+	recompilation__usage_module19();
+	recompilation__usage_module20();
+	recompilation__usage_module21();
+	recompilation__usage_module22();
+	recompilation__usage_module23();
+	recompilation__usage_module24();
+	recompilation__usage_module25();
+	recompilation__usage_module26();
+	recompilation__usage_module27();
+	recompilation__usage_module28();
+	recompilation__usage_module29();
+	recompilation__usage_module30();
+	recompilation__usage_module31();
+	recompilation__usage_module32();
+	recompilation__usage_module33();
+	recompilation__usage_module34();
+	recompilation__usage_module35();
+	recompilation__usage_module36();
+	recompilation__usage_module37();
+	recompilation__usage_module38();
+	recompilation__usage_module39();
+}
+
+static void mercury__recompilation__usage_maybe_bunch_1(void)
+{
+	recompilation__usage_module40();
+	recompilation__usage_module41();
+	recompilation__usage_module42();
+	recompilation__usage_module43();
+	recompilation__usage_module44();
+	recompilation__usage_module45();
+	recompilation__usage_module46();
+	recompilation__usage_module47();
+	recompilation__usage_module48();
+	recompilation__usage_module49();
+	recompilation__usage_module50();
+	recompilation__usage_module51();
+	recompilation__usage_module52();
+	recompilation__usage_module53();
+	recompilation__usage_module54();
+	recompilation__usage_module55();
+	recompilation__usage_module56();
+	recompilation__usage_module57();
+	recompilation__usage_module58();
+	recompilation__usage_module59();
+	recompilation__usage_module60();
+	recompilation__usage_module61();
+	recompilation__usage_module62();
+	recompilation__usage_module63();
+	recompilation__usage_module64();
+	recompilation__usage_module65();
+	recompilation__usage_module66();
+	recompilation__usage_module67();
+	recompilation__usage_module68();
+	recompilation__usage_module69();
+	recompilation__usage_module70();
+	recompilation__usage_module71();
+	recompilation__usage_module72();
+	recompilation__usage_module73();
+	recompilation__usage_module74();
+	recompilation__usage_module75();
+	recompilation__usage_module76();
+	recompilation__usage_module77();
+	recompilation__usage_module78();
+	recompilation__usage_module79();
+}
+
+static void mercury__recompilation__usage_maybe_bunch_2(void)
+{
+	recompilation__usage_module80();
+	recompilation__usage_module81();
+	recompilation__usage_module82();
+	recompilation__usage_module83();
+	recompilation__usage_module84();
+	recompilation__usage_module85();
+	recompilation__usage_module86();
+	recompilation__usage_module87();
+	recompilation__usage_module88();
+	recompilation__usage_module89();
+	recompilation__usage_module90();
+	recompilation__usage_module91();
+	recompilation__usage_module92();
+	recompilation__usage_module93();
+	recompilation__usage_module94();
+	recompilation__usage_module95();
+	recompilation__usage_module96();
+	recompilation__usage_module97();
+	recompilation__usage_module98();
+	recompilation__usage_module99();
+	recompilation__usage_module100();
+	recompilation__usage_module101();
+	recompilation__usage_module102();
+	recompilation__usage_module103();
+	recompilation__usage_module104();
+	recompilation__usage_module105();
+	recompilation__usage_module106();
+	recompilation__usage_module107();
+	recompilation__usage_module108();
+	recompilation__usage_module109();
+	recompilation__usage_module110();
+	recompilation__usage_module111();
+	recompilation__usage_module112();
+	recompilation__usage_module113();
+	recompilation__usage_module114();
+	recompilation__usage_module115();
+}
+
+/* suppress gcc -Wmissing-decls warnings */
+void mercury__recompilation__usage__init(void);
+void mercury__recompilation__usage__init_type_tables(void);
+void mercury__recompilation__usage__init_debugger(void);
+#ifdef MR_DEEP_PROFILING
+void mercury__recompilation__usage__write_out_proc_statics(FILE *deep_fp, FILE *procrep_fp);
+#endif
+#ifdef MR_RECORD_TERM_SIZES
+void mercury__recompilation__usage__init_complexity_procs(void);
+#endif
+#ifdef MR_THREADSCOPE
+void mercury__recompilation__usage__init_threadscope_string_table(void);
+#endif
+
+void mercury__recompilation__usage__init(void)
+{
+	static MR_bool done = MR_FALSE;
+	if (done) {
+		return;
+	}
+	done = MR_TRUE;
+	mercury__recompilation__usage_maybe_bunch_0();
+	mercury__recompilation__usage_maybe_bunch_1();
+	mercury__recompilation__usage_maybe_bunch_2();
+	MR_INIT_TYPE_CTOR_INFO(
+		mercury_data_recompilation__usage__type_ctor_info_imported_item_set_0,
+		recompilation__usage__imported_item_set_0_0);
+	MR_INIT_TYPE_CTOR_INFO(
+		mercury_data_recompilation__usage__type_ctor_info_imported_items_0,
+		recompilation__usage__imported_items_0_0);
+	MR_INIT_TYPE_CTOR_INFO(
+		mercury_data_recompilation__usage__type_ctor_info_module_imported_items_0,
+		recompilation__usage__module_imported_items_0_0);
+	MR_INIT_TYPE_CTOR_INFO(
+		mercury_data_recompilation__usage__type_ctor_info_recompilation_usage_info_0,
+		recompilation__usage__recompilation_usage_info_0_0);
+	MR_INIT_TYPE_CTOR_INFO(
+		mercury_data_recompilation__usage__type_ctor_info_record_resolved_item_1,
+		recompilation__usage__record_resolved_item_1_0);
+	MR_INIT_TYPE_CTOR_INFO(
+		mercury_data_recompilation__usage__type_ctor_info_resolved_functor_0,
+		recompilation__usage__resolved_functor_0_0);
+	MR_INIT_TYPE_CTOR_INFO(
+		mercury_data_recompilation__usage__type_ctor_info_resolved_functor_map_0,
+		recompilation__usage__resolved_functor_map_0_0);
+	MR_INIT_TYPE_CTOR_INFO(
+		mercury_data_recompilation__usage__type_ctor_info_resolved_functor_set_0,
+		recompilation__usage__resolved_functor_set_0_0);
+	MR_INIT_TYPE_CTOR_INFO(
+		mercury_data_recompilation__usage__type_ctor_info_resolved_item_list_1,
+		recompilation__usage__resolved_item_list_1_0);
+	MR_INIT_TYPE_CTOR_INFO(
+		mercury_data_recompilation__usage__type_ctor_info_resolved_item_map_1,
+		recompilation__usage__resolved_item_map_1_0);
+	MR_INIT_TYPE_CTOR_INFO(
+		mercury_data_recompilation__usage__type_ctor_info_resolved_item_set_1,
+		recompilation__usage__resolved_item_set_1_0);
+	MR_INIT_TYPE_CTOR_INFO(
+		mercury_data_recompilation__usage__type_ctor_info_resolved_pred_or_func_map_0,
+		recompilation__usage__resolved_pred_or_func_map_0_0);
+	MR_INIT_TYPE_CTOR_INFO(
+		mercury_data_recompilation__usage__type_ctor_info_resolved_pred_or_func_set_0,
+		recompilation__usage__resolved_pred_or_func_set_0_0);
+	MR_INIT_TYPE_CTOR_INFO(
+		mercury_data_recompilation__usage__type_ctor_info_resolved_used_items_0,
+		recompilation__usage__resolved_used_items_0_0);
+	MR_INIT_TYPE_CTOR_INFO(
+		mercury_data_recompilation__usage__type_ctor_info_write_resolved_item_1,
+		recompilation__usage__write_resolved_item_1_0);
+	mercury__recompilation__usage__init_debugger();
+}
+
+void mercury__recompilation__usage__init_type_tables(void)
+{
+	static MR_bool done = MR_FALSE;
+	if (done) {
+		return;
+	}
+	done = MR_TRUE;
+	{
+		MR_register_type_ctor_info(
+		&mercury_data_recompilation__usage__type_ctor_info_imported_item_set_0);
+	}
+	{
+		MR_register_type_ctor_info(
+		&mercury_data_recompilation__usage__type_ctor_info_imported_items_0);
+	}
+	{
+		MR_register_type_ctor_info(
+		&mercury_data_recompilation__usage__type_ctor_info_module_imported_items_0);
+	}
+	{
+		MR_register_type_ctor_info(
+		&mercury_data_recompilation__usage__type_ctor_info_recompilation_usage_info_0);
+	}
+	{
+		MR_register_type_ctor_info(
+		&mercury_data_recompilation__usage__type_ctor_info_record_resolved_item_1);
+	}
+	{
+		MR_register_type_ctor_info(
+		&mercury_data_recompilation__usage__type_ctor_info_resolved_functor_0);
+	}
+	{
+		MR_register_type_ctor_info(
+		&mercury_data_recompilation__usage__type_ctor_info_resolved_functor_map_0);
+	}
+	{
+		MR_register_type_ctor_info(
+		&mercury_data_recompilation__usage__type_ctor_info_resolved_functor_set_0);
+	}
+	{
+		MR_register_type_ctor_info(
+		&mercury_data_recompilation__usage__type_ctor_info_resolved_item_list_1);
+	}
+	{
+		MR_register_type_ctor_info(
+		&mercury_data_recompilation__usage__type_ctor_info_resolved_item_map_1);
+	}
+	{
+		MR_register_type_ctor_info(
+		&mercury_data_recompilation__usage__type_ctor_info_resolved_item_set_1);
+	}
+	{
+		MR_register_type_ctor_info(
+		&mercury_data_recompilation__usage__type_ctor_info_resolved_pred_or_func_map_0);
+	}
+	{
+		MR_register_type_ctor_info(
+		&mercury_data_recompilation__usage__type_ctor_info_resolved_pred_or_func_set_0);
+	}
+	{
+		MR_register_type_ctor_info(
+		&mercury_data_recompilation__usage__type_ctor_info_resolved_used_items_0);
+	}
+	{
+		MR_register_type_ctor_info(
+		&mercury_data_recompilation__usage__type_ctor_info_write_resolved_item_1);
+	}
+}
+
+
+void mercury__recompilation__usage__init_debugger(void)
+{
+	static MR_bool done = MR_FALSE;
+	if (done) {
+		return;
+	}
+	done = MR_TRUE;
+}
+
+#ifdef MR_DEEP_PROFILING
+
+void mercury__recompilation__usage__write_out_proc_statics(FILE *deep_fp, FILE *procrep_fp)
+{
+	MR_write_out_module_proc_reps_start(procrep_fp, &mercury_data__module_common_layout__recompilation__usage);
+	MR_write_out_module_proc_reps_end(procrep_fp);
+}
+
+#endif
+
+#ifdef MR_RECORD_TERM_SIZES
+
+void mercury__recompilation__usage__init_complexity_procs(void)
+{
+}
+
+#endif
+
+#ifdef MR_THREADSCOPE
+
+void mercury__recompilation__usage__init_threadscope_string_table(void)
+{
+}
+
+#endif
+
+/* ensure everything is compiled with the same grade */
+static const void *const MR_grade = &MR_GRADE_VAR;

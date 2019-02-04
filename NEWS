@@ -1,0 +1,327 @@
+NEWS since Mercury 11.01
+------------------------
+
+HIGHLIGHTS
+==========
+
+Changes to the Mercury language:
+
+* The `char' type now represents a Unicode code point.
+
+Changes to the Mercury standard library:
+
+* We have improved Unicode support in the standard library.
+
+* We have changed the argument order of many of the predicates in the array,
+  bag, bimap, eqvclass, map, multi_map, queue and set modules in order
+  to make them more conducive to the use of state variable notation.
+
+
+DETAILED LISTING
+================
+
+Changes to the Mercury standard library:
+
+* We have improved Unicode support in the standard library.
+
+    + Procedures in the string module now understand either UTF-8 or
+      UTF-16 encodings, depending upon the backend.
+
+    + Text I/O routines now read and write files in UTF-8 encoding.
+
+* We have added additional modes for set.map/3 and set.map_fold/5.
+
+* The argument order of the following predicates has been changed so as to
+  make them more conducive to the use of state variable notation:
+  array.set/4, array.semidet/4, array.slow_set/4, array.semidet_slow_set/4,
+  array.resize/4, array.shrink/3, bag.insert/3, bag.insert_list/3,
+  bag.insert_set/3, bag.remove/3, bag.det_remove/3, bag.remove_list/3,
+  bag.remove_set/3, bag.delete/3, bag.remove_all/3, bag.delete_all/3,
+  bag.remove_smallest/3, bimap.insert/4, bimap.det_insert/4, bimap.set/4,
+  eqvclass.ensure_element/3, eqvclass.new_element/3,
+  eqvclass.ensure_equivalence/4, eqvclass.new_equivalence/4,
+  eqvclass.remove_equivalent_elements/3, map.insert/4, map.det_insert/4,
+  map.det_insert_from_corresponding_lists/4,
+  map.det_insert_from_assoc_list/3, map.set_from_corresponding_lists/4,
+  map.set_from_assoc_list/3, map.update/4, map.det_update/4, map.delete/3,
+  map.delete_list/3, map.remove/4, map.det_remove/4, map.remove_smallest/4,
+  multi_map.insert/4, multi_map.det_insert/4, multi_map.update/4,
+  multi_map.det_update/4, multi_map.det_replace/4, multi_map.set/4,
+  multi_map.add/4, multi_map.delete/4, multi_map.remove/4, and
+  multi_map.remove_smallest/4, queue.put/3, queue.put_list/3,
+  queue.get/3, queue.delete_all/3, queue.put_on_front/3,
+  queue.get_from_back/3, queue.put_list_on_front/3,
+  queue.get_from_back/3, rbtree.insert/4, rbtree.update/4, rbtree.set/4,
+  rbtree.delete/3, rbtree.remove_smallest/4, rbtree.remove_largest/4,
+  set.insert/3, set.insert_list/3, set.delete/3, set.delete_list/3,
+  set.remove/3, set.remove_list/3, set.remove_least/3, tree234.insert/4,
+  set_bbbtree.insert/3, set_bbbtree.insert_list/3, set_bbbtree.delete/3,
+  set_bbbtree.delete_list/3, set_bbbtree.remove/3, set_bbbtree.remove_list/3,
+  set_bbbtree.remove_least/3, set_bbbtree.remove_largest/3,
+  set_ordlist.insert/3, set_ordlist.insert_list/3, set_ordlist.delete/3,
+  set_ordlist.delete_list/3, set_ordlist.remove/3, set_ordlist.remove_list/3,
+  set_ordlist.remove_least/3, set_unordlist.insert/3,
+  set_unordlist.insert_list/3, set_unordlist.delete/3,
+  set_unordlist.delete_list/3, set_unordlist.remove/3,
+  set.unordlist.remove_list/3, set_unordlist.remove_least/3,
+  sparse_bitset.insert/3, sparse_bitset.insert_list/3, sparse_bitset.delete/3,
+  sparse_bitset.delete_list/3, sparse_bitset.remove/3,
+  sparse_bitset.remove_list/3, sparse_bitset.remove_leq/3,
+  sparse_bitset.remove_gt/3, sparse_bitset.remove_least/3,
+  term.create_var/3, tree234.set/4, tree234.remove/4, tree234.remove_smallest/4,
+  tree234.update/4, tree_bitset.insert/3, tree_bitset.insert_list/3,
+  tree_bitset.delete/3, tree_bitset.delete_list/3, tree_bitset.remove/3,
+  tree_bitset.remove_list/3 and tree_bitset.remove_least/3
+
+* We have add the following new functions for creating singleton
+  maps: bimap.singleton/2, injection.singleton/2, map.singleton/2,
+  rbtree.singleton/2 and tree234.singleton/2 .
+
+* The following procedures have been added to the standard library:
+
+	array2d.init/3
+	bitmap.init/2
+        cord.init/0
+	hash_table.init/3
+	hash_table.init_default/1
+	store.init/1
+	semaphore.init/1
+	semaphore.init/3
+	version_array.init/2
+	version_array2d.init/3
+	version_bitmap.init/2
+	version_hash_table.init/3
+	version_hash_table.unsafe_init/3
+	version_hash_table.init_default/1
+	version_hash_table.unsafe_init_default/1
+	version_store.init/0
+
+   They replace the following procedures, which are now obsolete and will be
+   removed in a later release:
+
+	array2d.new/3
+	bitmap.new/2
+	hash_table.new/3
+	hash_table.new_default/1
+	store.new/1
+	semaphore.new/1
+	semaphore.new/3
+	version_array.new/2
+	version_array2d.new/3
+	version_bitmap.new/2
+	version_hash_table.new/3
+	version_hash_table.unsafe_new/3
+	version_hash_table.new_default/1
+	version_hash_table.unsafe_new_default/1
+	version_store.new/0
+
+* The following procedures are have been deprecated and will be removed in
+  a future release: dir.basename_det/1, list.replace_nth_det/3,
+  list.replace_nth_det/4, list.index0_det/2, list.index1_det/2,
+  list.index0_det/2, list.index1_det/2, list.last_det/1, stack.top_det/1,
+  stack.pop_det/3, string.remove_suffix_det/2, string.index_det/2,
+  string.index_det/3, string.set_char_det/3, string.set_char_det/4 and
+  type_desc.ground_pseudo_type_desc_type_to_type_desc_det/1.
+
+  The versions of these procedures that use "det_" as a prefix should be
+  used instead.  (We have added these where they did not already exist.) 
+
+* The deprecated modules graph, group and relation are no longer included
+  in the library.
+
+* The following predicates have been added to the modules that provide sets
+  in the library: set.is_empty/1, set_bbbtree.is_empty/1,
+  set_ctree234.is_empty/1, set_ordlist.is_empty/1, set_tree234.is_empty/1,
+  set_unordlist.is_empty/1, sparse_bitset.is_empty/1, tree_bitset.is_empty/1,
+  set.filter/4, set_bbbtree.filter/3, set_bbbtree.filter/4, set_ctree.filter/3,
+  set_ctree.filter/4, set_ordlist.filter/3, set_ordlist.filter/4,
+  set_tree.filter/3, set_tree.filter/4, set_unordlist.filter/3,
+  set_unordlist.filter/4, sparse_bitset.filter/3, sparse_bitset.filter/4,
+  tree_bitset.filter/3, tree_bitset.filter/4.
+
+  All the is_empty predicates are synonyms for the existing empty/1 predicates
+  in those modules.
+
+* We have added the predicate pqueue.det_remove/4.  It is like pqueue.remove/4
+  except that it throws an exception instead of failing if the priority queue
+  is empty.
+
+* The new modules svstack and svpqueue provide state variable friendly
+  versions of predicates in the stack and pqueue modules.
+  (As with the other sv* modules these modules are intended to pave the
+  way for an eventual change of the predicate argument ordering in the
+  stack and pqueue modules.)
+
+* We have added additional modes with unique and mostly-unique accumulators
+  to rbtree.foldl/4, rbtree.foldl2/6 and tree_bitset.foldl/4.
+
+* A new function, array.generate/2, and new predicate, array.generate_foldl/5,
+  can be used to create and fill new arrays.
+
+* We have added the new predicate assoc_list.foldl_keys/4 and
+  assoc_list.foldl_values/4 for folding over just keys or values
+  an association list.
+
+NEWS for Mercury 11.01
+----------------------
+
+Upcoming changes to the Mercury standard library:
+
+* In the next release after 11.01 we intend to change the argument order of
+  many of the predicates in the standard library so as to make them more
+  conducive to the use of state variable notation.
+
+  For example, map.insert/4 will be changed from
+      
+     map.insert(map(K, V)::in, K::in, V::in, map(K, V)::out) is semidet.
+
+  to
+
+     map.insert(K::in, V::in, map(K, V)::in, map(K, V)::out) is semidet.
+
+  As part of this change, the sv* modules will be deprecated; they will
+  be removed from the library in a later release.
+
+  Note that none of these upcoming changes affect the 11.01 release.
+
+
+HIGHLIGHTS
+==========
+
+Changes to the Mercury language:
+
+* We have added two new kinds of scopes to the language.
+
+  A scope introduced by one of the new keywords require_det, require_semidet,
+  require_multi, require_nondet, require_cc_multi, require_cc_nondet,
+  require_erroneous and require_failure, as the name implies, requires
+  the goal inside the scope to have the given determinism.
+  
+  A scope introduced by the keyword require_complete_switch requires the
+  goal inside the scope, if it is a switch on the variable named by the scope,
+  to be a complete switch, i.e. to have arms for all the function symbols
+  in the type of the switched-on variable.
+
+Changes to the Mercury standard library:
+
+* We have added semidet modes for hash_table.fold/4 and
+  version_hash_table.fold/4.
+
+* We have added new predicates and functions added to the assoc_list module.
+  The predicates map_keys_only/3 map_values_only/3 and map_values/3 complement
+  the functions of the same name. The predicates filter/3, negated_filter/3,
+  filter/4, merge/3, which also have function versions, do jobs very similar
+  to the predicates of the same name in the list module, but do the relevant
+  operations on keys instead of entire list elements.
+
++ We have moved the lazy evaluation module out of the extras distribution and
+  into a new standard library module called `lazy'.  It has also been made
+  backend-agnostic.
+
+* We have made changes to the list module of the standard library:
+
+  + We added a new predicate list.member_index0/3.  It is like list.member/2
+    except that it also takes a parameter representing the zero-based index of
+    the element within the list.
+
+  + We added a new predicate list.map3_foldl/7 which maps over a list producing
+    three lists and one folded value.
+  
+  + We added semidet modes with unique accumulators for list.foldl3/8,
+    list.foldl4/10, list.foldl5/12, and list.foldl6/14.
+
+* We have added the predicates divide/4 and divide_by_set/4 to the tree_bitset
+  module of the standard library.
+
+* We have added the predicates set_ctree234.member/2 and
+  set_ctree234.non_empty/1.  We have add the function
+  set_ctree234.from_list/1.
+
+* We have added the the predicate set_bbbtree.count/2 and the
+  function set_bbbtree.count/1.  These replace the predicate
+  set_bbbtree.size/2 which is now deprecated.  
+
+* We have added the predicate set_ordlist.non_empty/1.
+
+* We have added the predicate set_tree234.non_empty/1 and the
+  function set_tree234.from_list/1.
+
+* We have added the predicates set_unordlist.non_empty/1 and
+  set_unordlist.count/2, and the function set_unordlist.count/1. 
+
+* All of the modules in the standard library that implement the set ADT,
+  (set, set_ordlist, set_unordlist, set_bbbtree, set_tree234,
+  and set_ctree234), now support folding over sets with up to six
+  accumulators.  Modes that provide unique and mostly-unique accumulators
+  for set fold have also been added.
+
+* We have made the following changes to the array module of the standard
+  library:
+
+  + We have added the functions unsafe_elem/2 and append/2.
+
+  + We have added the predicates svset/4, unsafe_svset/4, foldl2/4, foldl2/6,
+    foldr/4, foldr2/6, map_foldl/5, map_corresponding_foldl/6, and member/2.
+
+* We have added the predicates version_array.foldl2/6, version_array.foldr/4,
+  and version_array.foldr2/6 to the standard library.
+
+* We have added semidet modes with unique and mostly-unique accumulators for
+  the following predicates:
+	bimap.foldl2/6
+	bimap.foldl3/8
+	cord.foldl_pred/4
+  	cord.map_foldl/5
+	list.map_corresponding_foldl2/8
+	list.map_corresponding_foldl3/10
+	list.map_corresponding3_foldl/7
+	map.foldl3/8
+
+* We have added the predicate unsorted_aggregate2/6 to the solutions module
+  of the standard library.
+
+* We have added several predicates and functions to the require module
+  of the standard library. The predicates sorry/2 and sorry/3 report
+  the absence of a feature, while the predicates unexpected/2 and unexpected/3
+  report an internal error in the program; all have function versions too.
+  The predicate expect/3 calls unexpected if a condition isn't satisfied.
+  We now have expect/4 as well as expect/3. For expect/4 as well as expect/3,
+  the first and last arguments are the expected condition and the error message
+  respectively, but with expect/4, there are two arguments in the middle
+  to specify the location of the error (normally the name of the module
+  and of the predicate respectively). We also added expect_not/3 and
+  expect_not/4, which are like expect/3 and expect/4 respectively,
+  except they expect the condition to be *false*, not true.
+
+Changes to the Mercury compiler:
+
+* We have added a new backend that generates C#.
+
+* Support for building and linking against frameworks on Mac OS X has
+  been improved.
+
+Changes to the extras distribution:
+
+* We have added a binding to the Cairo 2D graphics library.
+
+
+DETAILED LISTING
+================
+
+Changes to the Mercury compiler:
+
+* We have added a new backend that generates C#.
+  For more details, see the README.CSharp.
+
+  The new backend was contributed by Mission Critical IT
+  <http://www.missioncriticalit.com/>.
+
+* We have added two new options, --framework and --framework-directory
+  in order to simplify building and linking against frameworks on Mac OS X.
+  (-F is supported as a synonym for --framework-directory.)
+
+* Switches on strings in which all output arguments in all switch arms are
+  bound to constants are now implemented using lookup tables on the LLDS
+  back end. This should make the generated code more compact as well as faster.
+
+For news about earlier versions, see the HISTORY file.
