@@ -1,0 +1,15 @@
+:- module (hlds.make_tags).
+:- interface.
+:- import_module list.
+:- import_module maybe.
+:- import_module (hlds.hlds_data).
+:- import_module (hlds.hlds_module).
+:- import_module (libs.globals).
+:- import_module (parse_tree.error_util).
+:- import_module (parse_tree.prog_data).
+:- pred assign_constructor_tags(list.list(parse_tree.prog_data.constructor), maybe.maybe(parse_tree.prog_data.unify_compare), parse_tree.prog_data.type_ctor, parse_tree.prog_data.uses_reserved_tag, libs.globals.globals, hlds.hlds_data.cons_tag_values, parse_tree.prog_data.uses_reserved_address, hlds.hlds_data.du_type_kind).
+:- mode assign_constructor_tags((builtin.in), (builtin.in), (builtin.in), (builtin.in), (builtin.in), (builtin.out), (builtin.out), (builtin.out)) is det.
+:- pred compute_cheaper_tag_test(hlds.hlds_data.cons_tag_values, hlds.hlds_data.maybe_cheaper_tag_test).
+:- mode compute_cheaper_tag_test((builtin.in), (builtin.out)) is det.
+:- pred post_process_type_defns(hlds.hlds_module.module_info, hlds.hlds_module.module_info, list.list(parse_tree.error_util.error_spec)).
+:- mode post_process_type_defns((builtin.in), (builtin.out), (builtin.out)) is det.

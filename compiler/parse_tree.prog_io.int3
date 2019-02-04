@@ -1,0 +1,6 @@
+:- module (parse_tree.prog_io).
+:- interface.
+:- type maybe_return_timestamp
+	where	type_is_abstract_enum(1).
+:- type module_error
+	where	type_is_abstract_enum(2).

@@ -1,0 +1,47 @@
+:- module rtree.
+:- interface.
+:- import_module list.
+:- type box
+	--->	box(float, float, float, float).
+:- type box3d
+	--->	box3d(float, float, float, float, float, float).
+:- type interval
+	--->	interval(float, float).
+:- type rtree(K, V).
+:- typeclass region(K) where [
+	pred intersects(K, K),
+	mode intersects((builtin.in), (builtin.in)) is semidet,
+	pred contains(K, K),
+	mode contains((builtin.in), (builtin.in)) is semidet,
+	func size(K) = float,
+	func bounding_region(K, K) = K,
+	func bounding_region_size(K, K) = float
+].
+:- instance (rtree.region(rtree.box)).
+:- instance (rtree.region(rtree.box3d)).
+:- instance (rtree.region(rtree.interval)).
+:- pred delete(K, V, rtree.rtree(K, V), rtree.rtree(K, V)) <= (rtree.region(K)).
+:- mode delete((builtin.in), (builtin.in), (builtin.in), (builtin.out)) is semidet.
+:- pred fold(pred(K, V, A, A), rtree.rtree(K, V), A, A).
+:- mode fold((pred((builtin.in), (builtin.in), (builtin.in), (builtin.out)) is det), (builtin.in), (builtin.in), (builtin.out)) is det.
+:- mode fold((pred((builtin.in), (builtin.in), (builtin.di), (builtin.uo)) is det), (builtin.in), (builtin.di), (builtin.uo)) is det.
+:- mode fold((pred((builtin.in), (builtin.in), (builtin.in), (builtin.out)) is semidet), (builtin.in), (builtin.in), (builtin.out)) is semidet.
+:- func init = rtree.rtree(K, V) <= (rtree.region(K)).
+:- mode init = (builtin.uo) is det.
+:- func insert(K, V, rtree.rtree(K, V)) = rtree.rtree(K, V) <= (rtree.region(K)).
+:- pred insert(K, V, rtree.rtree(K, V), rtree.rtree(K, V)) <= (rtree.region(K)).
+:- mode insert((builtin.in), (builtin.in), (builtin.in), (builtin.out)) is det.
+:- pred is_empty(rtree.rtree(K, V)).
+:- mode is_empty((builtin.in)) is semidet.
+:- pred map_values(pred(K, V, W), rtree.rtree(K, V), rtree.rtree(K, W)).
+:- mode map_values((pred((builtin.in), (builtin.in), (builtin.out)) is det), (builtin.in), (builtin.out)) is det.
+:- mode map_values((pred((builtin.in), (builtin.in), (builtin.out)) is semidet), (builtin.in), (builtin.out)) is semidet.
+:- func search_contains(rtree.rtree(K, V), K) = list.list(V) <= (rtree.region(K)).
+:- pred search_first(pred(K, L), pred(V, L), rtree.rtree(K, V), L, V, L).
+:- mode search_first((pred((builtin.in), (builtin.out)) is semidet), (pred((builtin.in), (builtin.out)) is semidet), (builtin.in), (builtin.in), (builtin.out), (builtin.out)) is semidet.
+:- func search_general((pred K), (pred V), rtree.rtree(K, V)) = list.list(V).
+:- mode search_general(builtin.in((pred((builtin.in)) is semidet)), builtin.in((pred((builtin.in)) is semidet)), (builtin.in)) = (builtin.out) is det.
+:- pred search_general_fold((pred K), pred(K, V, A, A), rtree.rtree(K, V), A, A).
+:- mode search_general_fold((pred((builtin.in)) is semidet), (pred((builtin.in), (builtin.in), (builtin.in), (builtin.out)) is det), (builtin.in), (builtin.in), (builtin.out)) is det.
+:- mode search_general_fold((pred((builtin.in)) is semidet), (pred((builtin.in), (builtin.in), (builtin.di), (builtin.uo)) is det), (builtin.in), (builtin.di), (builtin.uo)) is det.
+:- func search_intersects(rtree.rtree(K, V), K) = list.list(V) <= (rtree.region(K)).

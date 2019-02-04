@@ -1,0 +1,7 @@
+:- module (ll_backend.llds_to_x86_64_out).
+:- interface.
+:- import_module io.
+:- import_module list.
+:- import_module (ll_backend.x86_64_instrs).
+:- pred output_x86_64_asm(io.output_stream, list.list(ll_backend.x86_64_instrs.x86_64_procedure), io.io, io.io).
+:- mode output_x86_64_asm((builtin.in), (builtin.in), (builtin.di), (builtin.uo)) is det.
