@@ -1,0 +1,13 @@
+:- module (ml_backend.mlds_to_c).
+:- interface.
+:- import_module io.
+:- import_module (backend_libs.rtti).
+:- import_module (libs.globals).
+:- import_module (ml_backend.mlds).
+:- func mlds_tabling_data_name(ml_backend.mlds.mlds_proc_label, backend_libs.rtti.proc_tabling_struct_id) = string.
+:- pred output_c_file(ml_backend.mlds.mlds, libs.globals.globals, string, io.io, io.io).
+:- mode output_c_file((builtin.in), (builtin.in), (builtin.in), (builtin.di), (builtin.uo)) is det.
+:- pred output_c_header_file(ml_backend.mlds.mlds, libs.globals.globals, string, io.io, io.io).
+:- mode output_c_header_file((builtin.in), (builtin.in), (builtin.in), (builtin.di), (builtin.uo)) is det.
+:- pred output_c_mlds(ml_backend.mlds.mlds, libs.globals.globals, string, io.io, io.io).
+:- mode output_c_mlds((builtin.in), (builtin.in), (builtin.in), (builtin.di), (builtin.uo)) is det.

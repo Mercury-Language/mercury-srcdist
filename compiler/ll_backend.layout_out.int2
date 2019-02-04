@@ -1,0 +1,19 @@
+:- module (ll_backend.layout_out).
+:- interface.
+:- import_module bool.
+:- import_module io.
+:- import_module list.
+:- import_module maybe.
+:- import_module (hlds.hlds_pred).
+:- import_module (ll_backend.layout).
+:- import_module (ll_backend.llds).
+:- import_module (ll_backend.llds_out).
+:- import_module (mdbcomp.prim_data).
+:- import_module (mdbcomp.program_representation).
+:- import_module ((ll_backend.llds_out).llds_out_util).
+:- type being_defined
+	--->	not_being_defined 
+	;	being_defined .
+:- type use_layout_macro
+	--->	do_not_use_layout_macro 
+	;	use_layout_macro .

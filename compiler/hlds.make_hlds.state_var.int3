@@ -1,0 +1,12 @@
+:- module ((hlds.make_hlds).state_var).
+:- interface.
+:- type hlds_goal_svar_info.
+:- type hlds_goal_svar_infos.
+:- type svar.
+:- type svar_ctxt.
+:- type svar_info.
+:- type svar_inner_atomic_scope_info.
+:- type svar_map.
+:- type svar_outer_atomic_scope_info.
+:- type svar_set.
+:- type svars.

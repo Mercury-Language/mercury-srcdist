@@ -1,0 +1,13 @@
+module(1, "term_to_xml.m",
+	term_to_xml,
+	{},
+	{builtin, deconstruct, io, list, maybe, stream, type_desc, private_builtin},
+	{builtin, deconstruct, io, list, maybe, stream, type_desc, bool, char, construct, exception, int, map, string, unit, univ, private_builtin},
+	{},
+	{},
+	{},
+	{},
+	{},
+	no_foreign_export,
+	no_main
+).

@@ -1,0 +1,13 @@
+:- module prof_info.
+:- interface.
+:- import_module list.
+:- import_module map.
+:- type addrdecl == map.map(string, int).
+:- type cycle_map == map.map(string, int).
+:- type pred_info.
+:- type prof.
+:- type prof_node.
+:- type prof_node_map == map.map(int, prof_info.prof_node).
+:- type prof_node_type
+	--->	predicate 
+	;	cycle .

@@ -1,0 +1,14 @@
+:- module coverage.
+:- interface.
+:- import_module map.
+:- import_module mdbcomp.
+:- import_module measurements.
+:- import_module profile.
+:- import_module report.
+:- import_module (mdbcomp.program_representation).
+:- type coverage_info
+	--->	coverage_unknown 
+	;	coverage_known_same(int)
+	;	coverage_known(int, int)
+	;	coverage_known_before(int)
+	;	coverage_known_after(int).

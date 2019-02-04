@@ -1,0 +1,261 @@
+/usr/bin/texi2dvi: Running etex --file-line-error './reference_manual.texi_pp' ...
+This is pdfTeXk, Version 3.141592-1.40.3 (Web2C 7.5.6)
+ file:line:error style messages enabled.
+ %&-line parsing enabled.
+entering extended mode
+(./reference_manual.texi_pp (./texinfo.tex
+Loading texinfo [version 1999-09-25.10]: Basics, pdf,
+(/usr/share/texmf-texlive/tex/plain/misc/pdfcolor.tex) fonts, page headings,
+tables, conditionals, indexing, sectioning, toc, environments, defuns, macros,
+cross references, (/usr/share/texmf-texlive/tex/generic/epsf/epsf.tex
+This is `epsf.tex' v2.7.3 <23 July 2005>
+) localization, and turning on texinfo input format.) [1{/var/lib/texmf/fonts/m
+ap/pdftex/updmap/pdftex.map}] [2] [-1] Chapter 1 Chapter 2 [1] [2]
+Cross reference values unknown; you must run TeX again. [3]
+Overfull \hbox (20.69044pt too wide) in paragraph at lines 375--375
+ []@texttt parse_list(Head '|' Tail ']') = '[|]'(parse_term(Head), parse_term(T
+ail)).[] 
+[4] [5] [6] [7] [8] [9] [10]
+Underfull \hbox (badness 2293) in paragraph at lines 830--846
+ []@textrm A de-ter-min-ism cast, of the kind per-formed by @texttt promise_equ
+ivalent_
+[11] [12]
+Overfull \hbox (67.74168pt too wide) in paragraph at lines 997--997
+ []@texttt substitute(@textsl Head@texttt , @textsl X@texttt , @textsl ThisX@te
+xttt , @textsl NextX@texttt ) :- transform(@textsl Body@texttt , @textsl X@text
+tt , @textsl ThisX@texttt , @textsl NextX@texttt )[] 
+
+Overfull \hbox (67.74168pt too wide) in paragraph at lines 1003--1003
+ []@texttt substitute(@textsl Head@texttt , @textsl X@texttt , @textsl ThisX@te
+xttt , @textsl NextX@texttt ) :- transform(@textsl Body@texttt , @textsl X@text
+tt , @textsl ThisX@texttt , @textsl NextX@texttt )[] 
+
+Overfull \hbox (58.34311pt too wide) in paragraph at lines 1009--1009
+ []@texttt transform(@textsl Goal1@texttt , @textsl X@texttt , @textsl ThisX@te
+xttt , @textsl TmpX@texttt ), transform(@textsl Goal2@texttt , @textsl X@texttt
+ , @textsl TmpX@texttt , @textsl NextX@texttt )[] 
+
+Overfull \hbox (62.32764pt too wide) in paragraph at lines 1016--1016
+ []@texttt transform(@textsl Goal1@texttt , @textsl X@texttt , @textsl ThisX@te
+xttt , @textsl NextX@texttt ) ; transform(@textsl Goal2@texttt , @textsl X@text
+tt , @textsl ThisX@texttt , @textsl NextX@texttt )[] 
+
+Overfull \hbox (17.05246pt too wide) in paragraph at lines 1032--1032
+ []@texttt transform((if @textsl Goal1 @texttt then @textsl Goal2 @texttt else 
+@textsl Goal3@texttt ), @textsl X@texttt , @textsl ThisX@texttt , @textsl NextX
+@texttt ) =[] 
+
+Overfull \hbox (104.33261pt too wide) in paragraph at lines 1033--1033
+ []@texttt if transform(@textsl Goal1@texttt , @textsl X@texttt , @textsl ThisX
+@texttt , @textsl TmpX@texttt ) then transform(@textsl Goal2@texttt , @textsl X
+@texttt , @textsl TmpX@texttt ,  @textsl NextX@texttt )[] 
+
+Overfull \hbox (84.78886pt too wide) in paragraph at lines 1034--1034
+ []                                    @texttt else transform(@textsl Goal3@tex
+ttt , @textsl X@texttt , @textsl ThisX@texttt , @textsl NextX@texttt )[] 
+[13]
+Overfull \hbox (81.33786pt too wide) in paragraph at lines 1043--1043
+ []@texttt transform(@textsl Goal1@texttt , @textsl X@texttt , @textsl ThisX@te
+xttt , @textsl TmpX@texttt ) => transform(@textsl Goal2@texttt , @textsl X@text
+tt , @textsl TmpX@texttt ,  @textsl NextX@texttt ),[] 
+[14] [15]
+Overfull \hbox (38.26587pt too wide) in paragraph at lines 1230--1230
+ []@texttt transform(V_in, V_out, [Term1, []]) = (V_in = [Term, [] | V_Out])[] 
+
+
+Overfull \hbox (26.76846pt too wide) in paragraph at lines 1263--1263
+ []@texttt transform(V_in, V_out, if CondGoal then ThenGoal else ElseGoal) =[] 
+
+[16] [17] [18]
+Underfull \hbox (badness 10000) in paragraph at lines 1452--1454
+ [][] @textrm is equiv-a-lent to
+
+Overfull \hbox (32.51717pt too wide) in paragraph at lines 1468--1468
+ []@texttt transform(Term0 ^ Field(Arg1, []) ^ Rest := FieldValue) = Term :-[] 
+
+
+Overfull \hbox (55.5119pt too wide) in paragraph at lines 1470--1470
+ []        @texttt NewFieldValue = transform(OldFieldValue ^ Rest := FieldValue
+),[] 
+
+Overfull \hbox (0.26494pt too wide) in paragraph at lines 1476--1478
+ [][] @textrm is equiv-a-lent to []. 
+
+Overfull \hbox (55.65312pt too wide) in paragraph at lines 1479--1481
+ [][] @textrm is equiv-a-lent to []. 
+[19]
+Overfull \hbox (20.69046pt too wide) in paragraph at lines 1561--1561
+ []@texttt pred(Arg1::Mode1, Arg2::Mode2, [], DCGMode0, DCGMode1) is Det --> DC
+GGoal[] 
+[20]
+Overfull \hbox (20.69046pt too wide) in paragraph at lines 1594--1594
+ []@texttt pred(Var1::Mode1, Var2::Mode2, [], DCGMode0, DCGMode1) is Det --> DC
+GGoal[] 
+
+Underfull \hbox (badness 2875) in paragraph at lines 1605--1609
+@textrm where DCG-Var0 and DCG-Var1 are fresh vari-ables, and Goal is the re-su
+lt of
+[21] [22] Chapter 3 [23] [24] [25] [26] [27] [28] [29] [30] [31]
+Overfull \hbox (26.43913pt too wide) in paragraph at lines 2452--2452
+ []@texttt :- impure func 'representation to ground name/arity'(representation_
+type) =[] 
+[32] [33] Chapter 4 [34] [35] [36] [37] [38] [39] [40] Chapter 5 [41]
+Chapter 6 [42]
+Underfull \hbox (badness 7308) in paragraph at lines 3318--3322
+[]@textrm The de-ter-min-ism an-no-ta-tion @texttt erroneous[] @textrm is used 
+on the li-brary pred-i-cates
+
+Underfull \hbox (badness 4726) in paragraph at lines 3318--3322
+@textrm `@texttt require.error/1[]@textrm '[] and `@texttt exception.throw/1[]@
+textrm '[], but apart from that de-ter-min-ism
+[43] [44] [45] [46] [47] [48] [49] Chapter 7 [50]
+Underfull \hbox (badness 5050) in paragraph at lines 3980--3983
+[]@textrm If a uni-fi-ca-tion pred-i-cate is sup-plied with-out a com-par-i-son
+ pred-i-cate, the
+[51] [52] Chapter 8 [53] [54] [55] [56] [57] Chapter 9 [58] [59] [60] [61]
+[62] [63]
+Overfull \hbox (32.51715pt too wide) in paragraph at lines 4992--4992
+ []@texttt :- pred get_varname(vartype::out(varinst), io::di, io::uo) is det.[]
+ 
+
+Overfull \hbox (32.51715pt too wide) in paragraph at lines 4993--4993
+ []@texttt :- pred set_varname(vartype::in(varinst),  io::di, io::uo) is det.[]
+ 
+
+Underfull \hbox (badness 10000) in paragraph at lines 5006--5011
+ []@textrm The `@texttt constant[]@textrm '[] at-tribute can-not be spec-i-fied
+ to-gether with the
+[64] Chapter 10 [65]
+Overfull \hbox (43.6852pt too wide) in paragraph at lines 5124--5124
+ []        @texttt %       NewPoint is Point translated X_Offset units in the X
+ direction[] 
+[66] [67]
+Overfull \hbox (32.18782pt too wide) in paragraph at lines 5308--5308
+ []@texttt coordinate_translate(coordinate(X, Y), Dx, Dy) = coordinate(X + Dx, 
+Y + Dy).[] 
+[68] [69] [70]
+Overfull \hbox (14.94176pt too wide) in paragraph at lines 5482--5482
+ []        @texttt func plus(T::in, T::in) = (T::out) is det, % '+'/2 (forward 
+mode)[] 
+
+Overfull \hbox (14.94176pt too wide) in paragraph at lines 5483--5483
+ []        @texttt func mult(T::in, T::in) = (T::out) is det, % '*'/2 (forward 
+mode)[] 
+
+Overfull \hbox (14.94176pt too wide) in paragraph at lines 5484--5484
+ []        @texttt func negative(T::in) = (T::out) is det     % '-'/1 (forward 
+mode)[] 
+[71] [72] [73] Chapter 11 [74] [75] [76] [77] [78] [79] [80] Chapter 12
+[81] [82] Chapter 13 [83]
+Underfull \hbox (badness 3439) in paragraph at lines 6421--6431
+@textrm which can be se-lected with dif-fer-ent com-bi-na-tions of the `@texttt
+ --no-reorder-conj[]@textrm '[],
+[84] Chapter 14
+Overfull \hbox (76.50696pt too wide) in paragraph at lines 6503--6503
+ []@texttt :- pragma foreign_proc("@textsl Lang@texttt ", @textsl Func@texttt (
+@textsl Var1@texttt ::@textsl Mode1@texttt , @textsl Var2@texttt ::@textsl Mode
+2@texttt , []) = (@textsl Var@texttt ::@textsl Mode@texttt ),[] 
+[85]
+Underfull \hbox (badness 2245) in paragraph at lines 6587--6595
+ @textrm spec-i-fied, is `@texttt may_call_mercury[]@textrm '[]. Spec-i-fy-ing 
+`@texttt will_not_call_mercury[]@textrm '[]
+[86] [87] [88] [89]
+Overfull \hbox (43.6852pt too wide) in paragraph at lines 6912--6912
+ []@texttt MR_list_cons(head,tail)    /* construct a list with the given head a
+nd tail */[] 
+
+Underfull \hbox (badness 2285) in paragraph at lines 6929--6948
+@textrm Mer-cury ar-ray types are mapped to CLR ar-ray types. When com-pil-ing 
+with
+[90] [91] [92] [93]
+Overfull \hbox (13.75848pt too wide) in paragraph at lines 7200--7200
+ []@texttt :- pragma foreign_type(@textsl Lang@texttt , @textsl Mer-cury-Type-N
+ame@texttt , @textsl For-eign-Type-Descrip-tor@texttt , [@textsl For-
+[94] [95]
+Underfull \hbox (badness 2334) in paragraph at lines 7399--7403
+[]@textrm Entities de-clared in `@texttt pragma foreign_decl[]@textrm '[] dec-l
+a-ra-tions are vis-i-ble in `@texttt pragma
+
+Underfull \hbox (badness 10000) in paragraph at lines 7399--7403
+@texttt foreign_code[]@textrm '[], `@texttt pragma foreign_type[]@textrm '[], `
+@texttt pragma foreign_proc[]@textrm '[], and `@texttt pragma
+[96]
+Underfull \hbox (badness 10000) in paragraph at lines 7453--7458
+[]@textrm `@texttt pragma foreign_import_module[]@textrm '[] should be used in-
+stead of the ex-plicit
+
+Underfull \hbox (badness 3148) in paragraph at lines 7453--7458
+@texttt #include[] @textrm be-cause `@texttt pragma foreign_import_module[]@tex
+trm '[] tells the im-ple-men-ta-tion that
+
+Underfull \hbox (badness 2334) in paragraph at lines 7485--7488
+[]@textrm Entities de-clared in `@texttt pragma foreign_code[]@textrm '[] dec-l
+a-ra-tions are vis-i-ble in `@texttt pragma
+[97] [98] [99]
+Underfull \hbox (badness 2809) in paragraph at lines 7743--7747
+[]@textrm Any macros, func-tion pro-to-types, or other C dec-la-ra-tions that a
+re used in
+[100] [101] [102] [103] [104]
+Overfull \hbox (43.6852pt too wide) in paragraph at lines 8062--8062
+ []@texttt :- pragma foreign_proc("IL", add(X::in, Y::in, Z::out), [max_stack_s
+ize(2)], "[] 
+[105] [106] [107] [108] [109] Chapter 15 [110] [111] [112] [113] [114]
+Underfull \hbox (badness 2529) in paragraph at lines 8835--8842
+ []@textrm This at-tribute de-clares whether or not ex-e-cu-tion in-side this C
+ code
+
+Underfull \hbox (badness 2245) in paragraph at lines 8835--8842
+ @textrm spec-i-fied, is `@texttt may_call_mercury[]@textrm '[]. Spec-i-fy-ing 
+`@texttt will_not_call_mercury[]@textrm '[]
+[115] [116] [117]
+Overfull \hbox (37.93651pt too wide) in paragraph at lines 9119--9119
+ []@texttt :- pred initialise_complicated_structure(complicated_c_structure::uo
+) is det.[] 
+[118]
+Overfull \hbox (20.69044pt too wide) in paragraph at lines 9140--9140
+ []@texttt :- pragma c_code(do_calculation(Value::in, Structure0::di, Structure
+::uo),[] 
+Chapter 16 [119] [120] [121] [122] [123] [124] Chapter 17 [125] [126]
+Chapter 18 [127] [128] [129] Chapter 19 [130] [131] [132] [133] [134] [135]
+[136]
+Overfull \hbox (41.5521pt too wide) in paragraph at lines 10636--10638
+[]@textrm For an ex-am-ple of the use of this in-ter-face, see the mod-ule `@te
+xttt extras/trailed_update/tr_array.m[]@textrm '[]
+
+Overfull \hbox (9.78093pt too wide) in paragraph at lines 10696--10698
+ []@textrm `@texttt MR_trail_current_value(@textsl address@texttt )[]@textrm '[
+] is equiv-a-lent to `@texttt MR_trail_value(@textsl address@texttt ,
+[137] [138] [139] [140] [141] Chapter 20 [142] [143] )
+(see the transcript file for additional information)pdfTeX warning (dest): name
+{Using pragma foreign\unhbox \voidb@x \kern .06em \vbox {\hrule width.3em heigh
+t.1ex}type for C@} has been referenced but does not exist, replaced by a fixed 
+one
+
+pdfTeX warning (dest): name{Nondet pragma c\unhbox \voidb@x \kern .06em \vbox {
+\hrule width.3em height.1ex}code@} has been referenced but does not exist, repl
+aced by a fixed one
+
+pdfTeX warning (dest): name{Using pragma foreign\unhbox \voidb@x \kern .06em \v
+box {\hrule width.3em height.1ex}type for IL@} has been referenced but does not
+ exist, replaced by a fixed one
+
+pdfTeX warning (dest): name{Using pragma foreign\unhbox \voidb@x \kern .06em \v
+box {\hrule width.3em height.1ex}decl for C@} has been referenced but does not 
+exist, replaced by a fixed one
+
+pdfTeX warning (dest): name{pragma c\unhbox \voidb@x \kern .06em \vbox {\hrule 
+width.3em height.1ex}code@} has been referenced but does not exist, replaced by
+ a fixed one
+
+</usr/share/texmf-texlive/fonts/type1/bluesky/cm/cmb10.pfb></usr/share/texmf-te
+xlive/fonts/type1/bluesky/cm/cmbx12.pfb></usr/share/texmf-texlive/fonts/type1/b
+luesky/cm/cmr10.pfb></usr/share/texmf-texlive/fonts/type1/bluesky/cm/cmr7.pfb><
+/usr/share/texmf-texlive/fonts/type1/bluesky/cm/cmr9.pfb></usr/share/texmf-texl
+ive/fonts/type1/bluesky/cm/cmsl10.pfb></usr/share/texmf-texlive/fonts/type1/blu
+esky/cm/cmsl9.pfb></usr/share/texmf-texlive/fonts/type1/bluesky/cm/cmsy10.pfb><
+/usr/share/texmf-texlive/fonts/type1/bluesky/cm/cmsy9.pfb></usr/share/texmf-tex
+live/fonts/type1/bluesky/cm/cmti10.pfb></usr/share/texmf-texlive/fonts/type1/bl
+uesky/cm/cmtt10.pfb></usr/share/texmf-texlive/fonts/type1/bluesky/cm/cmtt12.pfb
+></usr/share/texmf-texlive/fonts/type1/bluesky/latex-fonts/lcircle1.pfb>
+Output written on reference_manual.pdf (146 pages, 589926 bytes).
+Transcript written on reference_manual.log.

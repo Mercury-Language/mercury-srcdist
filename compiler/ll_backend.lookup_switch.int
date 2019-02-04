@@ -1,0 +1,13 @@
+:- module (ll_backend.lookup_switch).
+:- interface.
+:- import_module list.
+:- import_module (backend_libs.switch_util).
+:- import_module (hlds.hlds_goal).
+:- import_module (hlds.hlds_llds).
+:- import_module (ll_backend.code_info).
+:- import_module (ll_backend.llds).
+:- type lookup_switch_info.
+:- pred generate_lookup_switch(ll_backend.llds.rval, hlds.hlds_llds.abs_store_map, ll_backend.code_info.branch_end, ll_backend.lookup_switch.lookup_switch_info, int, int, backend_libs.switch_util.need_bit_vec_check, backend_libs.switch_util.need_range_check, ll_backend.llds.llds_code, ll_backend.code_info.code_info, ll_backend.code_info.code_info).
+:- mode generate_lookup_switch((builtin.in), (builtin.in), (builtin.in), (builtin.in), (builtin.in), (builtin.in), (builtin.in), (builtin.in), (builtin.out), (builtin.in), (builtin.out)) is det.
+:- pred is_lookup_switch(list.list(hlds.hlds_goal.tagged_case), hlds.hlds_goal.hlds_goal_info, hlds.hlds_llds.abs_store_map, ll_backend.code_info.branch_end, ll_backend.code_info.branch_end, ll_backend.lookup_switch.lookup_switch_info, ll_backend.code_info.code_info, ll_backend.code_info.code_info).
+:- mode is_lookup_switch((builtin.in), (builtin.in), (builtin.in), (builtin.in), (builtin.out), (builtin.out), (builtin.in), (builtin.out)) is semidet.

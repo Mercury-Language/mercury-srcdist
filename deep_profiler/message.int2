@@ -1,0 +1,31 @@
+:- module message.
+:- interface.
+:- import_module cord.
+:- import_module int.
+:- import_module mdbcomp.
+:- import_module profile.
+:- import_module string.
+:- import_module (mdbcomp.program_representation).
+:- type message
+	--->	message((message.message_location) :: message.program_location, (message.message_type) :: message.message_type).
+:- type message_level
+	--->	message_info 
+	;	message_notice 
+	;	message_warning 
+	;	message_error .
+:- type message_type
+	--->	info_found_candidate_conjunction 
+	;	info_found_conjs_above_callsite_threshold(int)
+	;	info_split_conjunction_into_partitions(int)
+	;	info_found_n_conjunctions_with_positive_speedup(int)
+	;	notice_duplicate_instantiation(int)
+	;	notice_callpair_has_more_than_one_dependant_var 
+	;	notice_partition_does_not_have_costly_calls(int, int)
+	;	warning_cannot_lookup_proc_defn 
+	;	warning_cannot_compute_procrep_coverage_fallback(string)
+	;	error_extra_proc_dynamics_in_clique_proc 
+	;	error_coverage_procrep_error(string).
+:- type program_location
+	--->	proc(mdbcomp.program_representation.string_proc_label)
+	;	goal(mdbcomp.program_representation.string_proc_label, mdbcomp.program_representation.goal_path)
+	;	clique(profile.clique_ptr).

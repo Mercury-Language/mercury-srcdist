@@ -1,0 +1,841 @@
+:- module map.
+:- use_module assoc_list, builtin, list, pair, private_builtin, require, set, string, svmap, svset, term, tree234.
+:- pred map.overlay_2(list.list(pair.pair(K_1, V_2)), tree234.tree234(K_1, V_2), tree234.tree234(K_1, V_2)).
+:- mode map.overlay_2((builtin.in), (builtin.in), (builtin.out)) is det.
+:- pragma type_spec((map.overlay_2)/3, (K_1 = term.var(V_9)), (map.'TypeSpecOf__pred_or_func__overlay_2__[K = var(V_2)]')).
+:- pred map.overlay_large_map_2(list.list(pair.pair(K_1, V_2)), tree234.tree234(K_1, V_2), tree234.tree234(K_1, V_2)).
+:- mode map.overlay_large_map_2((builtin.in), (builtin.in), (builtin.out)) is det.
+:- pragma type_spec((map.overlay_large_map_2)/3, (K_1 = term.var(V_9)), (map.'TypeSpecOf__pred_or_func__overlay_large_map_2__[K = var(V_2)]')).
+:- pred map.select_2(list.list(K_1), tree234.tree234(K_1, V_2), tree234.tree234(K_1, V_2), tree234.tree234(K_1, V_2)).
+:- mode map.select_2((builtin.in), (builtin.in), (builtin.in), (builtin.out)) is det.
+:- pragma type_spec((map.select_2)/4, (K_1 = term.var(V_9)), (map.'TypeSpecOf__pred_or_func__select_2__[K = var(V_2)]')).
+:- pred map.intersect_2(list.list(pair.pair(K_1, V_2)), list.list(pair.pair(K_1, V_2)), pred(V_2, V_2, V_2), tree234.tree234(K_1, V_2), tree234.tree234(K_1, V_2)).
+:- mode map.intersect_2((builtin.in), (builtin.in), (pred((builtin.in), (builtin.in), (builtin.out)) is semidet), (builtin.in), (builtin.out)) is semidet.
+:- mode map.intersect_2((builtin.in), (builtin.in), (pred((builtin.in), (builtin.in), (builtin.out)) is det), (builtin.in), (builtin.out)) is det.
+:- func map.common_subset_2(list.list(pair.pair(K_1, V_2)), list.list(pair.pair(K_1, V_2)), tree234.tree234(K_1, V_2)) = tree234.tree234(K_1, V_2).
+:- mode map.common_subset_2((builtin.in), (builtin.in), (builtin.in)) = (builtin.out) is det.
+:- pred map.union_2(list.list(pair.pair(K_1, V_2)), list.list(pair.pair(K_1, V_2)), pred(V_2, V_2, V_2), tree234.tree234(K_1, V_2), tree234.tree234(K_1, V_2)).
+:- mode map.union_2((builtin.in), (builtin.in), (pred((builtin.in), (builtin.in), (builtin.out)) is semidet), (builtin.in), (builtin.out)) is semidet.
+:- mode map.union_2((builtin.in), (builtin.in), (pred((builtin.in), (builtin.in), (builtin.out)) is det), (builtin.in), (builtin.out)) is det.
+:- pred map.reverse_map_2(K_1, V_2, tree234.tree234(V_2, set.set(K_1)), tree234.tree234(V_2, set.set(K_1))).
+:- mode map.reverse_map_2((builtin.in), (builtin.in), (builtin.in), (builtin.out)) is det.
+map.init(M_2) :-
+    tree234.init(M_2).
+map.init = M_2 :-
+    map.init(M_2).
+map.is_empty(M_2) :-
+    tree234.is_empty(M_2).
+map.contains(Map_3, K_4) :-
+    map.search(Map_3, K_4, V_5).
+map.member(Map_4, K_5, V_6) :-
+    tree234.member(Map_4, K_5, V_6).
+map.search(Map_4, K_5, V_6) :-
+    tree234.search(Map_4, K_5, V_6).
+map.search(M_4, K_5) = V_6 :-
+    map.search(M_4, K_5, V_6).
+map.lookup(M_4, K_5) = V_6 :-
+    map.lookup(M_4, K_5, V_6).
+map.lower_bound_search(Map_5, SearchK_6, K_7, V_8) :-
+    tree234.lower_bound_search(Map_5, SearchK_6, K_7, V_8).
+map.upper_bound_search(Map_5, SearchK_6, K_7, V_8) :-
+    tree234.upper_bound_search(Map_5, SearchK_6, K_7, V_8).
+map.max_key(M_3) = HeadVar__2_2 :-
+    HeadVar__2_2 = tree234.max_key(M_3).
+map.min_key(M_3) = HeadVar__2_2 :-
+    HeadVar__2_2 = tree234.min_key(M_3).
+map.inverse_search(Map_4, V_5, K_6) :-
+    map.member(Map_4, K_6, V_5).
+map.insert(Map0_5, K_6, V_7, Map_8) :-
+    tree234.insert(Map0_5, K_6, V_7, Map_8).
+map.insert(M1_5, K_6, V_7) = M2_8 :-
+    map.insert(M1_5, K_6, V_7, M2_8).
+map.det_insert(M1_5, K_6, V_7) = M2_8 :-
+    map.det_insert(M1_5, K_6, V_7, M2_8).
+map.det_insert_from_corresponding_lists(M1_5, Ks_6, Vs_7) = M2_8 :-
+    map.det_insert_from_corresponding_lists(M1_5, Ks_6, Vs_7, M2_8).
+map.det_insert_from_assoc_list(M1_4, AL_5) = M2_6 :-
+    map.det_insert_from_assoc_list(M1_4, AL_5, M2_6).
+map.set_from_corresponding_lists(M1_5, Ks_6, Vs_7) = M2_8 :-
+    map.set_from_corresponding_lists(M1_5, Ks_6, Vs_7, M2_8).
+map.set_from_assoc_list(M1_4, AL_5) = M2_6 :-
+    map.set_from_assoc_list(M1_4, AL_5, M2_6).
+map.update(Map0_5, K_6, V_7, Map_8) :-
+    tree234.update(Map0_5, K_6, V_7, Map_8).
+map.update(M1_5, K_6, V_7) = M2_8 :-
+    map.update(M1_5, K_6, V_7, M2_8).
+map.det_update(M1_5, K_6, V_7) = M2_8 :-
+    map.det_update(M1_5, K_6, V_7, M2_8).
+map.transform_value(P_5, K_6, STATE_VARIABLE_Map_0_8, STATE_VARIABLE_Map_9) :-
+    tree234.transform_value(P_5, K_6, STATE_VARIABLE_Map_0_8, STATE_VARIABLE_Map_1_10),
+    STATE_VARIABLE_Map_9 = STATE_VARIABLE_Map_1_10.
+map.det_transform_value(P_5, K_6, STATE_VARIABLE_Map_0_9, STATE_VARIABLE_Map_10) :-
+    (if
+      map.transform_value(P_5, K_6, STATE_VARIABLE_Map_0_9, NewMap_8)
+    then
+      STATE_VARIABLE_Map_1_11 = NewMap_8
+    else
+      V_13 = "map.det_transform_value: key not found" : string,
+      require.report_lookup_error(V_13, K_6),
+      STATE_VARIABLE_Map_1_11 = STATE_VARIABLE_Map_0_9
+    ),
+    STATE_VARIABLE_Map_10 = STATE_VARIABLE_Map_1_11.
+map.det_transform_value(F_5, K_6, Map0_7) = Map_8 :-
+    V_11 = (pred(V_13::(builtin.in), V_12::(builtin.out)) is det :-
+      some [] (
+        V_13 = V0_14,
+        V_15 = apply(F_5, V0_14),
+        V_12 = V_15
+      )
+    ) : pred(V_1, V_1),
+    map.det_transform_value(V_11, K_6, Map0_7, Map_8).
+map.set(M1_5, K_6, V_7) = M2_8 :-
+    map.set(M1_5, K_6, V_7, M2_8).
+map.set(Map0_5, K_6, V_7, Map_8) :-
+    tree234.set(Map0_5, K_6, V_7, Map_8).
+map.keys(M_3) = Ks_4 :-
+    map.keys(M_3, Ks_4).
+map.keys(Map_3, KeyList_4) :-
+    tree234.keys(Map_3, KeyList_4).
+map.sorted_keys(M_3) = Ks_4 :-
+    map.sorted_keys(M_3, Ks_4).
+map.sorted_keys(Map_3, KeyList_4) :-
+    tree234.keys(Map_3, KeyList_4).
+map.values(M_3) = Vs_4 :-
+    map.values(M_3, Vs_4).
+map.values(Map_3, KeyList_4) :-
+    tree234.values(Map_3, KeyList_4).
+map.to_assoc_list(M_3) = AL_4 :-
+    map.to_assoc_list(M_3, AL_4).
+map.to_assoc_list(M_3, L_4) :-
+    tree234.tree234_to_assoc_list(M_3, L_4).
+map.to_sorted_assoc_list(M_3) = AL_4 :-
+    map.to_sorted_assoc_list(M_3, AL_4).
+map.to_sorted_assoc_list(M_3, L_4) :-
+    tree234.tree234_to_assoc_list(M_3, L_4).
+map.from_assoc_list(AL_3) = M_4 :-
+    map.from_assoc_list(AL_3, M_4).
+map.from_assoc_list(L_3, M_4) :-
+    tree234.assoc_list_to_tree234(L_3, M_4).
+map.from_sorted_assoc_list(AL_3) = M_4 :-
+    map.from_sorted_assoc_list(AL_3, M_4).
+map.from_sorted_assoc_list(L_3, M_4) :-
+    tree234.from_sorted_assoc_list(L_3, M_4).
+map.from_rev_sorted_assoc_list(AL_3) = M_4 :-
+    map.from_rev_sorted_assoc_list(AL_3, M_4).
+map.from_rev_sorted_assoc_list(L_3, M_4) :-
+    tree234.from_rev_sorted_assoc_list(L_3, M_4).
+map.delete(M1_4, K_5) = M2_6 :-
+    map.delete(M1_4, K_5, M2_6).
+map.delete(Map0_4, Key_5, Map_6) :-
+    tree234.delete(Map0_4, Key_5, Map_6).
+map.delete_list(M1_4, Ks_5) = M2_6 :-
+    map.delete_list(M1_4, Ks_5, M2_6).
+map.remove(Map0_5, Key_6, Value_7, Map_8) :-
+    tree234.remove(Map0_5, Key_6, Value_7, Map_8).
+map.count(M_3) = N_4 :-
+    map.count(M_3, N_4).
+map.count(Map_3, Count_4) :-
+    tree234.count(Map_3, Count_4).
+map.from_corresponding_lists(Ks_4, Vs_5) = M_6 :-
+    map.from_corresponding_lists(Ks_4, Vs_5, M_6).
+map.from_corresponding_lists(Keys_4, Values_5, Map_6) :-
+    assoc_list.from_corresponding_lists(Keys_4, Values_5, AssocList_7),
+    tree234.assoc_list_to_tree234(AssocList_7, Map_6).
+map.merge(M1_4, M2_5) = M3_6 :-
+    map.merge(M1_4, M2_5, M3_6).
+map.merge(MA_4, MB_5, M_6) :-
+    map.to_assoc_list(MB_5, MBList_7),
+    map.det_insert_from_assoc_list(MA_4, MBList_7, M_6).
+map.overlay(M1_4, M2_5) = M3_6 :-
+    map.overlay(M1_4, M2_5, M3_6).
+map.overlay(Map0_4, Map1_5, Map_6) :-
+    map.to_assoc_list(Map1_5, AssocList_7),
+    map.overlay_2(AssocList_7, Map0_4, Map_6).
+map.overlay_large_map(M1_4, M2_5) = M3_6 :-
+    map.overlay_large_map(M1_4, M2_5, M3_6).
+map.overlay_large_map(Map0_4, Map1_5, Map_6) :-
+    map.to_assoc_list(Map0_4, AssocList_7),
+    map.overlay_large_map_2(AssocList_7, Map1_5, Map_6).
+map.select(M1_4, S_5) = M2_6 :-
+    map.select(M1_4, S_5, M2_6).
+map.select(Original_4, KeySet_5, NewMap_6) :-
+    set.to_sorted_list(KeySet_5, KeyList_7),
+    map.init(NewMap0_8),
+    map.select_2(KeyList_7, Original_4, NewMap0_8, NewMap_6).
+map.apply_to_list(Ks_4, M_5) = Vs_6 :-
+    map.apply_to_list(Ks_4, M_5, Vs_6).
+map.optimize(M1_3) = M2_4 :-
+    map.optimize(M1_3, M2_4).
+map.optimize(Map_3, Map_3).
+map.remove_smallest(Map0_5, K_6, V_7, Map_8) :-
+    tree234.remove_smallest(Map0_5, K_6, V_7, Map_8).
+map.foldl(F_5, M_6, A_7) = B_8 :-
+    P_9 = (pred(V_17::(builtin.in), V_16::(builtin.in), V_15::(builtin.in), V_14::(builtin.out)) is det :-
+      some [] (
+        V_17 = W_18,
+        V_16 = X_19,
+        V_15 = Y_20,
+        Z_21 = apply(F_5, W_18, X_19, Y_20),
+        V_14 = Z_21
+      )
+    ) : pred(K_1, V_2, A_3, A_3),
+    map.foldl(P_9, M_6, A_7, B_8).
+map.foldl(Pred_5, Map_6, STATE_VARIABLE_A_0_8, STATE_VARIABLE_A_9) :-
+    tree234.foldl(Pred_5, Map_6, STATE_VARIABLE_A_0_8, STATE_VARIABLE_A_1_10),
+    STATE_VARIABLE_A_9 = STATE_VARIABLE_A_1_10.
+map.foldl2(Pred_7, Map_8, STATE_VARIABLE_A_0_11, STATE_VARIABLE_A_12, STATE_VARIABLE_B_0_13, STATE_VARIABLE_B_14) :-
+    tree234.foldl2(Pred_7, Map_8, STATE_VARIABLE_A_0_11, STATE_VARIABLE_A_1_15, STATE_VARIABLE_B_0_13, STATE_VARIABLE_B_1_16),
+    STATE_VARIABLE_B_14 = STATE_VARIABLE_B_1_16,
+    STATE_VARIABLE_A_12 = STATE_VARIABLE_A_1_15.
+map.foldl3(Pred_9, Map_10, STATE_VARIABLE_A_0_14, STATE_VARIABLE_A_15, STATE_VARIABLE_B_0_16, STATE_VARIABLE_B_17, STATE_VARIABLE_C_0_18, STATE_VARIABLE_C_19) :-
+    tree234.foldl3(Pred_9, Map_10, STATE_VARIABLE_A_0_14, STATE_VARIABLE_A_1_20, STATE_VARIABLE_B_0_16, STATE_VARIABLE_B_1_21, STATE_VARIABLE_C_0_18, STATE_VARIABLE_C_1_22),
+    STATE_VARIABLE_C_19 = STATE_VARIABLE_C_1_22,
+    STATE_VARIABLE_B_17 = STATE_VARIABLE_B_1_21,
+    STATE_VARIABLE_A_15 = STATE_VARIABLE_A_1_20.
+map.foldl4(Pred_11, Map_12, STATE_VARIABLE_A_0_17, STATE_VARIABLE_A_18, STATE_VARIABLE_B_0_19, STATE_VARIABLE_B_20, STATE_VARIABLE_C_0_21, STATE_VARIABLE_C_22, STATE_VARIABLE_D_0_23, STATE_VARIABLE_D_24) :-
+    tree234.foldl4(Pred_11, Map_12, STATE_VARIABLE_A_0_17, STATE_VARIABLE_A_1_25, STATE_VARIABLE_B_0_19, STATE_VARIABLE_B_1_26, STATE_VARIABLE_C_0_21, STATE_VARIABLE_C_1_27, STATE_VARIABLE_D_0_23, STATE_VARIABLE_D_1_28),
+    STATE_VARIABLE_D_24 = STATE_VARIABLE_D_1_28,
+    STATE_VARIABLE_C_22 = STATE_VARIABLE_C_1_27,
+    STATE_VARIABLE_B_20 = STATE_VARIABLE_B_1_26,
+    STATE_VARIABLE_A_18 = STATE_VARIABLE_A_1_25.
+map.foldl_values(Pred_5, Map_6, STATE_VARIABLE_A_0_8, STATE_VARIABLE_A_9) :-
+    tree234.foldl_values(Pred_5, Map_6, STATE_VARIABLE_A_0_8, STATE_VARIABLE_A_1_10),
+    STATE_VARIABLE_A_9 = STATE_VARIABLE_A_1_10.
+map.foldr(F_5, M_6, A_7) = B_8 :-
+    P_9 = (pred(V_17::(builtin.in), V_16::(builtin.in), V_15::(builtin.in), V_14::(builtin.out)) is det :-
+      some [] (
+        V_17 = W_18,
+        V_16 = X_19,
+        V_15 = Y_20,
+        Z_21 = apply(F_5, W_18, X_19, Y_20),
+        V_14 = Z_21
+      )
+    ) : pred(K_1, V_2, A_3, A_3),
+    map.foldr(P_9, M_6, A_7, B_8).
+map.foldr(Pred_5, Map_6, STATE_VARIABLE_A_0_8, STATE_VARIABLE_A_9) :-
+    tree234.foldr(Pred_5, Map_6, STATE_VARIABLE_A_0_8, STATE_VARIABLE_A_1_10),
+    STATE_VARIABLE_A_9 = STATE_VARIABLE_A_1_10.
+map.foldr2(Pred_7, Map_8, STATE_VARIABLE_A_0_11, STATE_VARIABLE_A_12, STATE_VARIABLE_B_0_13, STATE_VARIABLE_B_14) :-
+    tree234.foldr2(Pred_7, Map_8, STATE_VARIABLE_A_0_11, STATE_VARIABLE_A_1_15, STATE_VARIABLE_B_0_13, STATE_VARIABLE_B_1_16),
+    STATE_VARIABLE_B_14 = STATE_VARIABLE_B_1_16,
+    STATE_VARIABLE_A_12 = STATE_VARIABLE_A_1_15.
+map.foldr3(Pred_9, Map_10, STATE_VARIABLE_A_0_14, STATE_VARIABLE_A_15, STATE_VARIABLE_B_0_16, STATE_VARIABLE_B_17, STATE_VARIABLE_C_0_18, STATE_VARIABLE_C_19) :-
+    tree234.foldr3(Pred_9, Map_10, STATE_VARIABLE_A_0_14, STATE_VARIABLE_A_1_20, STATE_VARIABLE_B_0_16, STATE_VARIABLE_B_1_21, STATE_VARIABLE_C_0_18, STATE_VARIABLE_C_1_22),
+    STATE_VARIABLE_C_19 = STATE_VARIABLE_C_1_22,
+    STATE_VARIABLE_B_17 = STATE_VARIABLE_B_1_21,
+    STATE_VARIABLE_A_15 = STATE_VARIABLE_A_1_20.
+map.foldr4(Pred_11, Map_12, STATE_VARIABLE_A_0_17, STATE_VARIABLE_A_18, STATE_VARIABLE_B_0_19, STATE_VARIABLE_B_20, STATE_VARIABLE_C_0_21, STATE_VARIABLE_C_22, STATE_VARIABLE_D_0_23, STATE_VARIABLE_D_24) :-
+    tree234.foldr4(Pred_11, Map_12, STATE_VARIABLE_A_0_17, STATE_VARIABLE_A_1_25, STATE_VARIABLE_B_0_19, STATE_VARIABLE_B_1_26, STATE_VARIABLE_C_0_21, STATE_VARIABLE_C_1_27, STATE_VARIABLE_D_0_23, STATE_VARIABLE_D_1_28),
+    STATE_VARIABLE_D_24 = STATE_VARIABLE_D_1_28,
+    STATE_VARIABLE_C_22 = STATE_VARIABLE_C_1_27,
+    STATE_VARIABLE_B_20 = STATE_VARIABLE_B_1_26,
+    STATE_VARIABLE_A_18 = STATE_VARIABLE_A_1_25.
+map.map_values(F_4, M1_5) = M2_6 :-
+    P_7 = (pred(V_13::(builtin.in), V_12::(builtin.in), V_11::(builtin.out)) is det :-
+      some [] (
+        V_13 = X_14,
+        V_12 = Y_15,
+        Z_16 = apply(F_4, X_14, Y_15),
+        V_11 = Z_16
+      )
+    ) : pred(K_1, V_2, W_3),
+    map.map_values(P_7, M1_5, M2_6).
+map.map_values(Pred_4, Map0_5, Map_6) :-
+    tree234.map_values(Pred_4, Map0_5, Map_6).
+map.map_values_only(F_4, M1_5) = M2_6 :-
+    P_7 = (pred(V_11::(builtin.in), V_10::(builtin.out)) is det :-
+      some [] (
+        V_11 = Y_12,
+        Z_13 = apply(F_4, Y_12),
+        V_10 = Z_13
+      )
+    ) : pred(V_1, W_2),
+    map.map_values_only(P_7, M1_5, M2_6).
+map.map_values_only(Pred_4, Map0_5, Map_6) :-
+    tree234.map_values_only(Pred_4, Map0_5, Map_6).
+map.map_foldl(Pred_6, STATE_VARIABLE_Map_0_9, STATE_VARIABLE_Map_10, STATE_VARIABLE_AccA_0_11, STATE_VARIABLE_AccA_12) :-
+    tree234.map_foldl(Pred_6, STATE_VARIABLE_Map_0_9, STATE_VARIABLE_Map_1_13, STATE_VARIABLE_AccA_0_11, STATE_VARIABLE_AccA_1_14),
+    STATE_VARIABLE_AccA_12 = STATE_VARIABLE_AccA_1_14,
+    STATE_VARIABLE_Map_10 = STATE_VARIABLE_Map_1_13.
+map.map_foldl2(Pred_8, STATE_VARIABLE_Map_0_12, STATE_VARIABLE_Map_13, STATE_VARIABLE_AccA_0_14, STATE_VARIABLE_AccA_15, STATE_VARIABLE_AccB_0_16, STATE_VARIABLE_AccB_17) :-
+    tree234.map_foldl2(Pred_8, STATE_VARIABLE_Map_0_12, STATE_VARIABLE_Map_1_18, STATE_VARIABLE_AccA_0_14, STATE_VARIABLE_AccA_1_19, STATE_VARIABLE_AccB_0_16, STATE_VARIABLE_AccB_1_20),
+    STATE_VARIABLE_AccB_17 = STATE_VARIABLE_AccB_1_20,
+    STATE_VARIABLE_AccA_15 = STATE_VARIABLE_AccA_1_19,
+    STATE_VARIABLE_Map_13 = STATE_VARIABLE_Map_1_18.
+map.map_foldl3(Pred_10, STATE_VARIABLE_Map_0_15, STATE_VARIABLE_Map_16, STATE_VARIABLE_AccA_0_17, STATE_VARIABLE_AccA_18, STATE_VARIABLE_AccB_0_19, STATE_VARIABLE_AccB_20, STATE_VARIABLE_AccC_0_21, STATE_VARIABLE_AccC_22) :-
+    tree234.map_foldl3(Pred_10, STATE_VARIABLE_Map_0_15, STATE_VARIABLE_Map_1_23, STATE_VARIABLE_AccA_0_17, STATE_VARIABLE_AccA_1_24, STATE_VARIABLE_AccB_0_19, STATE_VARIABLE_AccB_1_25, STATE_VARIABLE_AccC_0_21, STATE_VARIABLE_AccC_1_26),
+    STATE_VARIABLE_AccC_22 = STATE_VARIABLE_AccC_1_26,
+    STATE_VARIABLE_AccB_20 = STATE_VARIABLE_AccB_1_25,
+    STATE_VARIABLE_AccA_18 = STATE_VARIABLE_AccA_1_24,
+    STATE_VARIABLE_Map_16 = STATE_VARIABLE_Map_1_23.
+map.map_values_foldl(Pred_6, STATE_VARIABLE_Map_0_9, STATE_VARIABLE_Map_10, STATE_VARIABLE_AccA_0_11, STATE_VARIABLE_AccA_12) :-
+    tree234.map_values_foldl(Pred_6, STATE_VARIABLE_Map_0_9, STATE_VARIABLE_Map_1_13, STATE_VARIABLE_AccA_0_11, STATE_VARIABLE_AccA_1_14),
+    STATE_VARIABLE_AccA_12 = STATE_VARIABLE_AccA_1_14,
+    STATE_VARIABLE_Map_10 = STATE_VARIABLE_Map_1_13.
+map.map_values_foldl2(Pred_8, STATE_VARIABLE_Map_0_12, STATE_VARIABLE_Map_13, STATE_VARIABLE_AccA_0_14, STATE_VARIABLE_AccA_15, STATE_VARIABLE_AccB_0_16, STATE_VARIABLE_AccB_17) :-
+    tree234.map_values_foldl2(Pred_8, STATE_VARIABLE_Map_0_12, STATE_VARIABLE_Map_1_18, STATE_VARIABLE_AccA_0_14, STATE_VARIABLE_AccA_1_19, STATE_VARIABLE_AccB_0_16, STATE_VARIABLE_AccB_1_20),
+    STATE_VARIABLE_AccB_17 = STATE_VARIABLE_AccB_1_20,
+    STATE_VARIABLE_AccA_15 = STATE_VARIABLE_AccA_1_19,
+    STATE_VARIABLE_Map_13 = STATE_VARIABLE_Map_1_18.
+map.map_values_foldl3(Pred_10, STATE_VARIABLE_Map_0_15, STATE_VARIABLE_Map_16, STATE_VARIABLE_AccA_0_17, STATE_VARIABLE_AccA_18, STATE_VARIABLE_AccB_0_19, STATE_VARIABLE_AccB_20, STATE_VARIABLE_AccC_0_21, STATE_VARIABLE_AccC_22) :-
+    tree234.map_values_foldl3(Pred_10, STATE_VARIABLE_Map_0_15, STATE_VARIABLE_Map_1_23, STATE_VARIABLE_AccA_0_17, STATE_VARIABLE_AccA_1_24, STATE_VARIABLE_AccB_0_19, STATE_VARIABLE_AccB_1_25, STATE_VARIABLE_AccC_0_21, STATE_VARIABLE_AccC_1_26),
+    STATE_VARIABLE_AccC_22 = STATE_VARIABLE_AccC_1_26,
+    STATE_VARIABLE_AccB_20 = STATE_VARIABLE_AccB_1_25,
+    STATE_VARIABLE_AccA_18 = STATE_VARIABLE_AccA_1_24,
+    STATE_VARIABLE_Map_16 = STATE_VARIABLE_Map_1_23.
+map.intersect(CommonPred_5, Map1_6, Map2_7, Common_8) :-
+    map.to_sorted_assoc_list(Map1_6, AssocList1_9),
+    map.to_sorted_assoc_list(Map2_7, AssocList2_10),
+    map.init(Common0_11),
+    map.intersect_2(AssocList1_9, AssocList2_10, CommonPred_5, Common0_11, Common_8).
+map.intersect(F_5, M1_6, M2_7) = M3_8 :-
+    P_9 = (pred(V_15::(builtin.in), V_14::(builtin.in), V_13::(builtin.out)) is det :-
+      some [] (
+        V_15 = X_16,
+        V_14 = Y_17,
+        Z_18 = apply(F_5, X_16, Y_17),
+        V_13 = Z_18
+      )
+    ) : pred(V_1, V_1, V_1),
+    map.intersect(P_9, M1_6, M2_7, M3_8).
+map.det_intersect(CommonPred_5, Map1_6, Map2_7, Common_8) :-
+    (if
+      map.intersect(CommonPred_5, Map1_6, Map2_7, CommonPrime_9)
+    then
+      Common_8 = CommonPrime_9
+    else
+      V_10 = "map.det_intersect: map.intersect failed" : string,
+      require.error(V_10)
+    ).
+map.det_intersect(PF_5, M1_6, M2_7) = M3_8 :-
+    P_9 = (pred(V_15::(builtin.in), V_14::(builtin.in), V_13::(builtin.out)) is semidet :-
+      some [] (
+        V_15 = X_16,
+        V_14 = Y_17,
+        Z_18 = apply(PF_5, X_16, Y_17),
+        V_13 = Z_18
+      )
+    ) : pred(V_1, V_1, V_1),
+    map.det_intersect(P_9, M1_6, M2_7, M3_8).
+map.common_subset(Map1_4, Map2_5) = Common_6 :-
+    map.to_sorted_assoc_list(Map1_4, AssocList1_7),
+    map.to_sorted_assoc_list(Map2_5, AssocList2_8),
+    map.init(Common0_9),
+    Common_6 = map.common_subset_2(AssocList1_7, AssocList2_8, Common0_9).
+map.union(F_5, M1_6, M2_7) = M3_8 :-
+    P_9 = (pred(V_15::(builtin.in), V_14::(builtin.in), V_13::(builtin.out)) is det :-
+      some [] (
+        V_15 = X_16,
+        V_14 = Y_17,
+        Z_18 = apply(F_5, X_16, Y_17),
+        V_13 = Z_18
+      )
+    ) : pred(V_1, V_1, V_1),
+    map.union(P_9, M1_6, M2_7, M3_8).
+map.union(CommonPred_5, Map1_6, Map2_7, Common_8) :-
+    map.to_sorted_assoc_list(Map1_6, AssocList1_9),
+    map.to_sorted_assoc_list(Map2_7, AssocList2_10),
+    map.init(Common0_11),
+    map.union_2(AssocList1_9, AssocList2_10, CommonPred_5, Common0_11, Common_8).
+map.det_union(CommonPred_5, Map1_6, Map2_7, Union_8) :-
+    (if
+      map.union(CommonPred_5, Map1_6, Map2_7, UnionPrime_9)
+    then
+      Union_8 = UnionPrime_9
+    else
+      V_10 = "map.det_union: map.union failed" : string,
+      require.error(V_10)
+    ).
+map.det_union(F_5, M1_6, M2_7) = M3_8 :-
+    P_9 = (pred(V_15::(builtin.in), V_14::(builtin.in), V_13::(builtin.out)) is semidet :-
+      some [] (
+        V_15 = X_16,
+        V_14 = Y_17,
+        Z_18 = apply(F_5, X_16, Y_17),
+        V_13 = Z_18
+      )
+    ) : pred(V_1, V_1, V_1),
+    map.det_union(P_9, M1_6, M2_7, M3_8).
+map.reverse_map(Map_3) = RevMap_4 :-
+    V_5 = map.reverse_map_2 : pred(K_1, V_2, tree234.tree234(V_2, set.set(K_1)), tree234.tree234(V_2, set.set(K_1))),
+    V_6 = map.init,
+    map.foldl(V_5, Map_3, V_6, RevMap_4).
+map.elem(Key_4, Map_5) = HeadVar__3_3 :-
+    HeadVar__3_3 = map.search(Map_5, Key_4).
+map.det_elem(Key_4, Map_5) = HeadVar__3_3 :-
+    HeadVar__3_3 = map.lookup(Map_5, Key_4).
+map.'elem :='(Key_5, Map_6, Value_7) = HeadVar__4_4 :-
+    HeadVar__4_4 = map.set(Map_6, Key_5, Value_7).
+map.'det_elem :='(Key_5, Map_6, Value_7) = HeadVar__4_4 :-
+    HeadVar__4_4 = map.det_update(Map_6, Key_5, Value_7).
+map.old_merge(M1_4, M2_5) = M3_6 :-
+    map.old_merge(M1_4, M2_5, M3_6).
+map.old_merge(M0_4, M1_5, M_6) :-
+    map.to_assoc_list(M0_4, ML0_7),
+    map.to_assoc_list(M1_5, ML1_8),
+    list.merge(ML0_7, ML1_8, ML_9),
+    map.from_assoc_list(ML_9, M_6).
+map.intersect_2(AssocList1_6, AssocList2_7, CommonPred_8, STATE_VARIABLE_Common_0_22, STATE_VARIABLE_Common_23) :-
+    ( % disjunction
+      AssocList1_6 = list.[] : list.list(pair.pair(K_1, V_2)),
+      AssocList2_7 = list.[] : list.list(pair.pair(K_1, V_2)),
+      STATE_VARIABLE_Common_7_29 = STATE_VARIABLE_Common_0_22
+    ;
+      AssocList1_6 = list.[V_10 | V_11] : list.list(pair.pair(K_1, V_2)),
+      AssocList2_7 = list.[] : list.list(pair.pair(K_1, V_2)),
+      STATE_VARIABLE_Common_7_29 = STATE_VARIABLE_Common_0_22
+    ;
+      AssocList1_6 = list.[] : list.list(pair.pair(K_1, V_2)),
+      AssocList2_7 = list.[V_12 | V_13] : list.list(pair.pair(K_1, V_2)),
+      STATE_VARIABLE_Common_7_29 = STATE_VARIABLE_Common_0_22
+    ;
+      AssocList1_6 = list.[V_25 | AssocTail1_16] : list.list(pair.pair(K_1, V_2)),
+      V_25 = pair.(Key1_14 - Value1_15) : pair.pair(K_1, V_2),
+      AssocList2_7 = list.[V_26 | AssocTail2_19] : list.list(pair.pair(K_1, V_2)),
+      V_26 = pair.(Key2_17 - Value2_18) : pair.pair(K_1, V_2),
+      builtin.compare(R_20, Key1_14, Key2_17),
+      ( % disjunction
+        R_20 = builtin.(=) : builtin.comparison_result,
+        call(CommonPred_8, Value1_15, Value2_18, Value_21),
+        map.det_insert(STATE_VARIABLE_Common_0_22, Key1_14, Value_21, STATE_VARIABLE_Common_1_24),
+        map.intersect_2(AssocTail1_16, AssocTail2_19, CommonPred_8, STATE_VARIABLE_Common_1_24, STATE_VARIABLE_Common_7_29)
+      ;
+        R_20 = builtin.(<) : builtin.comparison_result,
+        map.intersect_2(AssocTail1_16, AssocList2_7, CommonPred_8, STATE_VARIABLE_Common_0_22, STATE_VARIABLE_Common_1_31),
+        STATE_VARIABLE_Common_7_29 = STATE_VARIABLE_Common_1_31
+      ;
+        R_20 = builtin.(>) : builtin.comparison_result,
+        map.intersect_2(AssocList1_6, AssocTail2_19, CommonPred_8, STATE_VARIABLE_Common_0_22, STATE_VARIABLE_Common_1_32),
+        STATE_VARIABLE_Common_7_29 = STATE_VARIABLE_Common_1_32
+      )
+    ),
+    STATE_VARIABLE_Common_23 = STATE_VARIABLE_Common_7_29.
+map.union_2(AssocList1_6, AssocList2_7, CommonPred_8, STATE_VARIABLE_Common_0_22, STATE_VARIABLE_Common_23) :-
+    ( % disjunction
+      AssocList1_6 = list.[] : list.list(pair.pair(K_1, V_2)),
+      AssocList2_7 = list.[] : list.list(pair.pair(K_1, V_2)),
+      STATE_VARIABLE_Common_7_31 = STATE_VARIABLE_Common_0_22
+    ;
+      AssocList1_6 = list.[V_10 | V_11] : list.list(pair.pair(K_1, V_2)),
+      AssocList2_7 = list.[] : list.list(pair.pair(K_1, V_2)),
+      map.det_insert_from_assoc_list(STATE_VARIABLE_Common_0_22, AssocList1_6, STATE_VARIABLE_Common_1_24),
+      STATE_VARIABLE_Common_7_31 = STATE_VARIABLE_Common_1_24
+    ;
+      AssocList1_6 = list.[] : list.list(pair.pair(K_1, V_2)),
+      AssocList2_7 = list.[V_12 | V_13] : list.list(pair.pair(K_1, V_2)),
+      map.det_insert_from_assoc_list(STATE_VARIABLE_Common_0_22, AssocList2_7, STATE_VARIABLE_Common_1_35),
+      STATE_VARIABLE_Common_7_31 = STATE_VARIABLE_Common_1_35
+    ;
+      AssocList1_6 = list.[V_25 | AssocTail1_16] : list.list(pair.pair(K_1, V_2)),
+      V_25 = pair.(Key1_14 - Value1_15) : pair.pair(K_1, V_2),
+      AssocList2_7 = list.[V_26 | AssocTail2_19] : list.list(pair.pair(K_1, V_2)),
+      V_26 = pair.(Key2_17 - Value2_18) : pair.pair(K_1, V_2),
+      builtin.compare(R_20, Key1_14, Key2_17),
+      ( % disjunction
+        R_20 = builtin.(=) : builtin.comparison_result,
+        call(CommonPred_8, Value1_15, Value2_18, Value_21),
+        map.det_insert(STATE_VARIABLE_Common_0_22, Key1_14, Value_21, STATE_VARIABLE_Common_1_36),
+        map.union_2(AssocTail1_16, AssocTail2_19, CommonPred_8, STATE_VARIABLE_Common_1_36, STATE_VARIABLE_Common_7_31)
+      ;
+        R_20 = builtin.(<) : builtin.comparison_result,
+        map.det_insert(STATE_VARIABLE_Common_0_22, Key1_14, Value1_15, STATE_VARIABLE_Common_1_37),
+        map.union_2(AssocTail1_16, AssocList2_7, CommonPred_8, STATE_VARIABLE_Common_1_37, STATE_VARIABLE_Common_6_29),
+        STATE_VARIABLE_Common_7_31 = STATE_VARIABLE_Common_6_29
+      ;
+        R_20 = builtin.(>) : builtin.comparison_result,
+        map.det_insert(STATE_VARIABLE_Common_0_22, Key2_17, Value2_18, STATE_VARIABLE_Common_1_38),
+        map.union_2(AssocList1_6, AssocTail2_19, CommonPred_8, STATE_VARIABLE_Common_1_38, STATE_VARIABLE_Common_6_27),
+        STATE_VARIABLE_Common_7_31 = STATE_VARIABLE_Common_6_27
+      )
+    ),
+    STATE_VARIABLE_Common_23 = STATE_VARIABLE_Common_7_31.
+:- pragma exceptions(predicate, (map.init), 1, 0, may_throw(user_exception)).
+:- pragma exceptions(function, (map.init), 1, 0, may_throw(user_exception)).
+:- pragma exceptions(predicate, (map.is_empty), 1, 0, may_throw(user_exception)).
+:- pragma exceptions(predicate, (map.contains), 2, 0, may_throw(user_exception)).
+:- pragma exceptions(predicate, (map.member), 3, 0, may_throw(user_exception)).
+:- pragma exceptions(predicate, (map.search), 3, 0, may_throw(user_exception)).
+:- pragma exceptions(function, (map.search), 3, 0, may_throw(user_exception)).
+:- pragma exceptions(predicate, (map.lookup), 3, 0, may_throw(user_exception)).
+:- pragma exceptions(function, (map.lookup), 3, 0, may_throw(user_exception)).
+:- pragma exceptions(predicate, (map.lower_bound_search), 4, 0, may_throw(user_exception)).
+:- pragma exceptions(predicate, (map.lower_bound_lookup), 4, 0, may_throw(user_exception)).
+:- pragma exceptions(predicate, (map.upper_bound_search), 4, 0, may_throw(user_exception)).
+:- pragma exceptions(predicate, (map.upper_bound_lookup), 4, 0, may_throw(user_exception)).
+:- pragma exceptions(function, (map.max_key), 2, 0, may_throw(user_exception)).
+:- pragma exceptions(function, (map.min_key), 2, 0, may_throw(user_exception)).
+:- pragma exceptions(predicate, (map.inverse_search), 3, 0, may_throw(user_exception)).
+:- pragma exceptions(predicate, (map.insert), 4, 0, may_throw(user_exception)).
+:- pragma exceptions(function, (map.insert), 4, 0, may_throw(user_exception)).
+:- pragma exceptions(predicate, (map.det_insert), 4, 0, may_throw(user_exception)).
+:- pragma exceptions(function, (map.det_insert), 4, 0, may_throw(user_exception)).
+:- pragma exceptions(predicate, (map.det_insert_from_corresponding_lists), 4, 0, may_throw(user_exception)).
+:- pragma exceptions(function, (map.det_insert_from_corresponding_lists), 4, 0, may_throw(user_exception)).
+:- pragma exceptions(predicate, (map.det_insert_from_assoc_list), 3, 0, may_throw(user_exception)).
+:- pragma exceptions(function, (map.det_insert_from_assoc_list), 3, 0, may_throw(user_exception)).
+:- pragma exceptions(predicate, (map.set_from_corresponding_lists), 4, 0, may_throw(user_exception)).
+:- pragma exceptions(function, (map.set_from_corresponding_lists), 4, 0, may_throw(user_exception)).
+:- pragma exceptions(predicate, (map.set_from_assoc_list), 3, 0, may_throw(user_exception)).
+:- pragma exceptions(function, (map.set_from_assoc_list), 3, 0, may_throw(user_exception)).
+:- pragma exceptions(predicate, (map.update), 4, 0, may_throw(user_exception)).
+:- pragma exceptions(function, (map.update), 4, 0, may_throw(user_exception)).
+:- pragma exceptions(predicate, (map.det_update), 4, 0, may_throw(user_exception)).
+:- pragma exceptions(function, (map.det_update), 4, 0, may_throw(user_exception)).
+:- pragma exceptions(predicate, (map.transform_value), 4, 0, may_throw(user_exception)).
+:- pragma exceptions(predicate, (map.det_transform_value), 4, 0, may_throw(user_exception)).
+:- pragma exceptions(function, (map.det_transform_value), 4, 0, may_throw(user_exception)).
+:- pragma exceptions(function, (map.set), 4, 0, may_throw(user_exception)).
+:- pragma exceptions(predicate, (map.set), 4, 0, may_throw(user_exception)).
+:- pragma exceptions(function, (map.keys), 2, 0, may_throw(user_exception)).
+:- pragma exceptions(predicate, (map.keys), 2, 0, may_throw(user_exception)).
+:- pragma exceptions(function, (map.sorted_keys), 2, 0, may_throw(user_exception)).
+:- pragma exceptions(predicate, (map.sorted_keys), 2, 0, may_throw(user_exception)).
+:- pragma exceptions(function, (map.values), 2, 0, may_throw(user_exception)).
+:- pragma exceptions(predicate, (map.values), 2, 0, may_throw(user_exception)).
+:- pragma exceptions(function, (map.to_assoc_list), 2, 0, may_throw(user_exception)).
+:- pragma exceptions(predicate, (map.to_assoc_list), 2, 0, may_throw(user_exception)).
+:- pragma exceptions(function, (map.to_sorted_assoc_list), 2, 0, may_throw(user_exception)).
+:- pragma exceptions(predicate, (map.to_sorted_assoc_list), 2, 0, may_throw(user_exception)).
+:- pragma exceptions(function, (map.from_assoc_list), 2, 0, may_throw(user_exception)).
+:- pragma exceptions(predicate, (map.from_assoc_list), 2, 0, may_throw(user_exception)).
+:- pragma exceptions(function, (map.from_sorted_assoc_list), 2, 0, may_throw(user_exception)).
+:- pragma exceptions(predicate, (map.from_sorted_assoc_list), 2, 0, may_throw(user_exception)).
+:- pragma exceptions(function, (map.from_rev_sorted_assoc_list), 2, 0, may_throw(user_exception)).
+:- pragma exceptions(predicate, (map.from_rev_sorted_assoc_list), 2, 0, may_throw(user_exception)).
+:- pragma exceptions(function, (map.delete), 3, 0, may_throw(user_exception)).
+:- pragma exceptions(predicate, (map.delete), 3, 0, may_throw(user_exception)).
+:- pragma exceptions(function, (map.delete_list), 3, 0, may_throw(user_exception)).
+:- pragma exceptions(predicate, (map.delete_list), 3, 0, may_throw(user_exception)).
+:- pragma exceptions(predicate, (map.remove), 4, 0, may_throw(user_exception)).
+:- pragma exceptions(predicate, (map.det_remove), 4, 0, may_throw(user_exception)).
+:- pragma exceptions(function, (map.count), 2, 0, may_throw(user_exception)).
+:- pragma exceptions(predicate, (map.count), 2, 0, may_throw(user_exception)).
+:- pragma exceptions(function, (map.from_corresponding_lists), 3, 0, may_throw(user_exception)).
+:- pragma exceptions(predicate, (map.from_corresponding_lists), 3, 0, may_throw(user_exception)).
+:- pragma exceptions(function, (map.merge), 3, 0, may_throw(user_exception)).
+:- pragma exceptions(predicate, (map.merge), 3, 0, may_throw(user_exception)).
+:- pragma exceptions(function, (map.overlay), 3, 0, may_throw(user_exception)).
+:- pragma exceptions(predicate, (map.overlay), 3, 0, may_throw(user_exception)).
+:- pragma exceptions(function, (map.overlay_large_map), 3, 0, may_throw(user_exception)).
+:- pragma exceptions(predicate, (map.overlay_large_map), 3, 0, may_throw(user_exception)).
+:- pragma exceptions(function, (map.select), 3, 0, may_throw(user_exception)).
+:- pragma exceptions(predicate, (map.select), 3, 0, may_throw(user_exception)).
+:- pragma exceptions(function, (map.apply_to_list), 3, 0, may_throw(user_exception)).
+:- pragma exceptions(predicate, (map.apply_to_list), 3, 0, may_throw(user_exception)).
+:- pragma exceptions(function, (map.optimize), 2, 0, will_not_throw).
+:- pragma exceptions(predicate, (map.optimize), 2, 0, will_not_throw).
+:- pragma exceptions(predicate, (map.remove_smallest), 4, 0, may_throw(user_exception)).
+:- pragma exceptions(function, (map.foldl), 4, 0, may_throw(user_exception)).
+:- pragma exceptions(predicate, (map.foldl), 4, 0, may_throw(user_exception)).
+:- pragma exceptions(predicate, (map.foldl), 4, 1, may_throw(user_exception)).
+:- pragma exceptions(predicate, (map.foldl), 4, 2, may_throw(user_exception)).
+:- pragma exceptions(predicate, (map.foldl), 4, 3, may_throw(user_exception)).
+:- pragma exceptions(predicate, (map.foldl), 4, 4, may_throw(user_exception)).
+:- pragma exceptions(predicate, (map.foldl), 4, 5, may_throw(user_exception)).
+:- pragma exceptions(predicate, (map.foldl), 4, 6, may_throw(user_exception)).
+:- pragma exceptions(predicate, (map.foldl), 4, 7, may_throw(user_exception)).
+:- pragma exceptions(predicate, (map.foldl), 4, 8, may_throw(user_exception)).
+:- pragma exceptions(predicate, (map.foldl2), 6, 0, may_throw(user_exception)).
+:- pragma exceptions(predicate, (map.foldl2), 6, 1, may_throw(user_exception)).
+:- pragma exceptions(predicate, (map.foldl2), 6, 2, may_throw(user_exception)).
+:- pragma exceptions(predicate, (map.foldl2), 6, 3, may_throw(user_exception)).
+:- pragma exceptions(predicate, (map.foldl2), 6, 4, may_throw(user_exception)).
+:- pragma exceptions(predicate, (map.foldl2), 6, 5, may_throw(user_exception)).
+:- pragma exceptions(predicate, (map.foldl2), 6, 6, may_throw(user_exception)).
+:- pragma exceptions(predicate, (map.foldl3), 8, 0, may_throw(user_exception)).
+:- pragma exceptions(predicate, (map.foldl3), 8, 1, may_throw(user_exception)).
+:- pragma exceptions(predicate, (map.foldl3), 8, 2, may_throw(user_exception)).
+:- pragma exceptions(predicate, (map.foldl3), 8, 3, may_throw(user_exception)).
+:- pragma exceptions(predicate, (map.foldl3), 8, 4, may_throw(user_exception)).
+:- pragma exceptions(predicate, (map.foldl4), 10, 0, may_throw(user_exception)).
+:- pragma exceptions(predicate, (map.foldl4), 10, 1, may_throw(user_exception)).
+:- pragma exceptions(predicate, (map.foldl4), 10, 2, may_throw(user_exception)).
+:- pragma exceptions(predicate, (map.foldl4), 10, 3, may_throw(user_exception)).
+:- pragma exceptions(predicate, (map.foldl4), 10, 4, may_throw(user_exception)).
+:- pragma exceptions(predicate, (map.foldl4), 10, 5, may_throw(user_exception)).
+:- pragma exceptions(predicate, (map.foldl_values), 4, 0, may_throw(user_exception)).
+:- pragma exceptions(predicate, (map.foldl_values), 4, 1, may_throw(user_exception)).
+:- pragma exceptions(predicate, (map.foldl_values), 4, 2, may_throw(user_exception)).
+:- pragma exceptions(predicate, (map.foldl_values), 4, 3, may_throw(user_exception)).
+:- pragma exceptions(predicate, (map.foldl_values), 4, 4, may_throw(user_exception)).
+:- pragma exceptions(predicate, (map.foldl_values), 4, 5, may_throw(user_exception)).
+:- pragma exceptions(predicate, (map.foldl_values), 4, 6, may_throw(user_exception)).
+:- pragma exceptions(predicate, (map.foldl_values), 4, 7, may_throw(user_exception)).
+:- pragma exceptions(predicate, (map.foldl_values), 4, 8, may_throw(user_exception)).
+:- pragma exceptions(function, (map.foldr), 4, 0, may_throw(user_exception)).
+:- pragma exceptions(predicate, (map.foldr), 4, 0, may_throw(user_exception)).
+:- pragma exceptions(predicate, (map.foldr), 4, 1, may_throw(user_exception)).
+:- pragma exceptions(predicate, (map.foldr), 4, 2, may_throw(user_exception)).
+:- pragma exceptions(predicate, (map.foldr), 4, 3, may_throw(user_exception)).
+:- pragma exceptions(predicate, (map.foldr), 4, 4, may_throw(user_exception)).
+:- pragma exceptions(predicate, (map.foldr), 4, 5, may_throw(user_exception)).
+:- pragma exceptions(predicate, (map.foldr), 4, 6, may_throw(user_exception)).
+:- pragma exceptions(predicate, (map.foldr), 4, 7, may_throw(user_exception)).
+:- pragma exceptions(predicate, (map.foldr), 4, 8, may_throw(user_exception)).
+:- pragma exceptions(predicate, (map.foldr2), 6, 0, may_throw(user_exception)).
+:- pragma exceptions(predicate, (map.foldr2), 6, 1, may_throw(user_exception)).
+:- pragma exceptions(predicate, (map.foldr2), 6, 2, may_throw(user_exception)).
+:- pragma exceptions(predicate, (map.foldr2), 6, 3, may_throw(user_exception)).
+:- pragma exceptions(predicate, (map.foldr3), 8, 0, may_throw(user_exception)).
+:- pragma exceptions(predicate, (map.foldr3), 8, 1, may_throw(user_exception)).
+:- pragma exceptions(predicate, (map.foldr3), 8, 2, may_throw(user_exception)).
+:- pragma exceptions(predicate, (map.foldr3), 8, 3, may_throw(user_exception)).
+:- pragma exceptions(predicate, (map.foldr3), 8, 4, may_throw(user_exception)).
+:- pragma exceptions(predicate, (map.foldr4), 10, 0, may_throw(user_exception)).
+:- pragma exceptions(predicate, (map.foldr4), 10, 1, may_throw(user_exception)).
+:- pragma exceptions(predicate, (map.foldr4), 10, 2, may_throw(user_exception)).
+:- pragma exceptions(predicate, (map.foldr4), 10, 3, may_throw(user_exception)).
+:- pragma exceptions(predicate, (map.foldr4), 10, 4, may_throw(user_exception)).
+:- pragma exceptions(predicate, (map.foldr4), 10, 5, may_throw(user_exception)).
+:- pragma exceptions(function, (map.map_values), 3, 0, may_throw(user_exception)).
+:- pragma exceptions(predicate, (map.map_values), 3, 0, may_throw(user_exception)).
+:- pragma exceptions(predicate, (map.map_values), 3, 1, may_throw(user_exception)).
+:- pragma exceptions(function, (map.map_values_only), 3, 0, may_throw(user_exception)).
+:- pragma exceptions(predicate, (map.map_values_only), 3, 0, may_throw(user_exception)).
+:- pragma exceptions(predicate, (map.map_values_only), 3, 1, may_throw(user_exception)).
+:- pragma exceptions(predicate, (map.map_foldl), 5, 0, may_throw(user_exception)).
+:- pragma exceptions(predicate, (map.map_foldl), 5, 1, may_throw(user_exception)).
+:- pragma exceptions(predicate, (map.map_foldl), 5, 2, may_throw(user_exception)).
+:- pragma exceptions(predicate, (map.map_foldl2), 7, 0, may_throw(user_exception)).
+:- pragma exceptions(predicate, (map.map_foldl2), 7, 1, may_throw(user_exception)).
+:- pragma exceptions(predicate, (map.map_foldl2), 7, 2, may_throw(user_exception)).
+:- pragma exceptions(predicate, (map.map_foldl2), 7, 3, may_throw(user_exception)).
+:- pragma exceptions(predicate, (map.map_foldl3), 9, 0, may_throw(user_exception)).
+:- pragma exceptions(predicate, (map.map_foldl3), 9, 1, may_throw(user_exception)).
+:- pragma exceptions(predicate, (map.map_foldl3), 9, 2, may_throw(user_exception)).
+:- pragma exceptions(predicate, (map.map_foldl3), 9, 3, may_throw(user_exception)).
+:- pragma exceptions(predicate, (map.map_foldl3), 9, 4, may_throw(user_exception)).
+:- pragma exceptions(predicate, (map.map_values_foldl), 5, 0, may_throw(user_exception)).
+:- pragma exceptions(predicate, (map.map_values_foldl), 5, 1, may_throw(user_exception)).
+:- pragma exceptions(predicate, (map.map_values_foldl), 5, 2, may_throw(user_exception)).
+:- pragma exceptions(predicate, (map.map_values_foldl2), 7, 0, may_throw(user_exception)).
+:- pragma exceptions(predicate, (map.map_values_foldl2), 7, 1, may_throw(user_exception)).
+:- pragma exceptions(predicate, (map.map_values_foldl2), 7, 2, may_throw(user_exception)).
+:- pragma exceptions(predicate, (map.map_values_foldl2), 7, 3, may_throw(user_exception)).
+:- pragma exceptions(predicate, (map.map_values_foldl3), 9, 0, may_throw(user_exception)).
+:- pragma exceptions(predicate, (map.map_values_foldl3), 9, 1, may_throw(user_exception)).
+:- pragma exceptions(predicate, (map.map_values_foldl3), 9, 2, may_throw(user_exception)).
+:- pragma exceptions(predicate, (map.map_values_foldl3), 9, 3, may_throw(user_exception)).
+:- pragma exceptions(predicate, (map.map_values_foldl3), 9, 4, may_throw(user_exception)).
+:- pragma exceptions(predicate, (map.intersect), 4, 0, may_throw(user_exception)).
+:- pragma exceptions(predicate, (map.intersect), 4, 1, may_throw(user_exception)).
+:- pragma exceptions(function, (map.intersect), 4, 0, may_throw(user_exception)).
+:- pragma exceptions(predicate, (map.det_intersect), 4, 0, may_throw(user_exception)).
+:- pragma exceptions(function, (map.det_intersect), 4, 0, may_throw(user_exception)).
+:- pragma exceptions(function, (map.common_subset), 3, 0, may_throw(user_exception)).
+:- pragma exceptions(function, (map.union), 4, 0, may_throw(user_exception)).
+:- pragma exceptions(predicate, (map.union), 4, 0, may_throw(user_exception)).
+:- pragma exceptions(predicate, (map.union), 4, 1, may_throw(user_exception)).
+:- pragma exceptions(predicate, (map.det_union), 4, 0, may_throw(user_exception)).
+:- pragma exceptions(function, (map.det_union), 4, 0, may_throw(user_exception)).
+:- pragma exceptions(function, (map.reverse_map), 2, 0, may_throw(user_exception)).
+:- pragma exceptions(function, (map.elem), 3, 0, may_throw(user_exception)).
+:- pragma exceptions(function, (map.det_elem), 3, 0, may_throw(user_exception)).
+:- pragma exceptions(function, (map.'elem :='), 4, 0, may_throw(user_exception)).
+:- pragma exceptions(function, (map.'det_elem :='), 4, 0, may_throw(user_exception)).
+:- pragma exceptions(function, (map.old_merge), 3, 0, may_throw(user_exception)).
+:- pragma exceptions(predicate, (map.old_merge), 3, 0, may_throw(user_exception)).
+:- pragma exceptions(predicate, (map.overlay_2), 3, 0, may_throw(user_exception)).
+:- pragma exceptions(predicate, (map.overlay_large_map_2), 3, 0, may_throw(user_exception)).
+:- pragma exceptions(predicate, (map.select_2), 4, 0, may_throw(user_exception)).
+:- pragma exceptions(predicate, (map.intersect_2), 5, 0, may_throw(user_exception)).
+:- pragma exceptions(predicate, (map.intersect_2), 5, 1, may_throw(user_exception)).
+:- pragma exceptions(function, (map.common_subset_2), 4, 0, may_throw(user_exception)).
+:- pragma exceptions(predicate, (map.union_2), 5, 0, may_throw(user_exception)).
+:- pragma exceptions(predicate, (map.union_2), 5, 1, may_throw(user_exception)).
+:- pragma exceptions(predicate, (map.reverse_map_2), 4, 0, may_throw(user_exception)).
+:- pragma termination_info(map.init((builtin.uo)), infinite, can_loop).
+:- pragma termination_info((map.init) = (builtin.uo), infinite, can_loop).
+:- pragma termination_info(map.is_empty((builtin.in)), finite(0, [no, no, no]), can_loop).
+:- pragma termination_info(map.contains((builtin.in), (builtin.in)), finite(0, [no, no, no, no]), can_loop).
+:- pragma termination_info(map.member((builtin.in), (builtin.out), (builtin.out)), infinite, can_loop).
+:- pragma termination_info(map.search((builtin.in), (builtin.in), (builtin.out)), infinite, can_loop).
+:- pragma termination_info(map.search((builtin.in), (builtin.in)) = (builtin.out), infinite, can_loop).
+:- pragma termination_info(map.lookup((builtin.in), (builtin.in), (builtin.out)), infinite, can_loop).
+:- pragma termination_info(map.lookup((builtin.in), (builtin.in)) = (builtin.out), infinite, can_loop).
+:- pragma termination_info(map.lower_bound_search((builtin.in), (builtin.in), (builtin.out), (builtin.out)), infinite, can_loop).
+:- pragma termination_info(map.lower_bound_lookup((builtin.in), (builtin.in), (builtin.out), (builtin.out)), infinite, can_loop).
+:- pragma termination_info(map.upper_bound_search((builtin.in), (builtin.in), (builtin.out), (builtin.out)), infinite, can_loop).
+:- pragma termination_info(map.upper_bound_lookup((builtin.in), (builtin.in), (builtin.out), (builtin.out)), infinite, can_loop).
+:- pragma termination_info(map.max_key((builtin.in)) = (builtin.out), infinite, can_loop).
+:- pragma termination_info(map.min_key((builtin.in)) = (builtin.out), infinite, can_loop).
+:- pragma termination_info(map.inverse_search((builtin.in), (builtin.in), (builtin.out)), infinite, can_loop).
+:- pragma termination_info(map.insert((builtin.in), (builtin.in), (builtin.in), (builtin.out)), infinite, can_loop).
+:- pragma termination_info(map.insert((builtin.in), (builtin.in), (builtin.in)) = (builtin.out), infinite, can_loop).
+:- pragma termination_info(map.det_insert((builtin.in), (builtin.in), (builtin.in), (builtin.out)), infinite, can_loop).
+:- pragma termination_info(map.det_insert((builtin.in), (builtin.in), (builtin.in)) = (builtin.out), infinite, can_loop).
+:- pragma termination_info(map.det_insert_from_corresponding_lists((builtin.in), (builtin.in), (builtin.in), (builtin.out)), infinite, can_loop).
+:- pragma termination_info(map.det_insert_from_corresponding_lists((builtin.in), (builtin.in), (builtin.in)) = (builtin.out), infinite, can_loop).
+:- pragma termination_info(map.det_insert_from_assoc_list((builtin.in), (builtin.in), (builtin.out)), infinite, can_loop).
+:- pragma termination_info(map.det_insert_from_assoc_list((builtin.in), (builtin.in)) = (builtin.out), infinite, can_loop).
+:- pragma termination_info(map.set_from_corresponding_lists((builtin.in), (builtin.in), (builtin.in), (builtin.out)), infinite, can_loop).
+:- pragma termination_info(map.set_from_corresponding_lists((builtin.in), (builtin.in), (builtin.in)) = (builtin.out), infinite, can_loop).
+:- pragma termination_info(map.set_from_assoc_list((builtin.in), (builtin.in), (builtin.out)), infinite, can_loop).
+:- pragma termination_info(map.set_from_assoc_list((builtin.in), (builtin.in)) = (builtin.out), infinite, can_loop).
+:- pragma termination_info(map.update((builtin.in), (builtin.in), (builtin.in), (builtin.out)), infinite, can_loop).
+:- pragma termination_info(map.update((builtin.in), (builtin.in), (builtin.in)) = (builtin.out), infinite, can_loop).
+:- pragma termination_info(map.det_update((builtin.in), (builtin.in), (builtin.in), (builtin.out)), infinite, can_loop).
+:- pragma termination_info(map.det_update((builtin.in), (builtin.in), (builtin.in)) = (builtin.out), infinite, can_loop).
+:- pragma termination_info(map.transform_value(builtin.in((pred((builtin.in), (builtin.out)) is det)), (builtin.in), (builtin.in), (builtin.out)), infinite, can_loop).
+:- pragma termination_info(map.det_transform_value(builtin.in((pred((builtin.in), (builtin.out)) is det)), (builtin.in), (builtin.in), (builtin.out)), infinite, can_loop).
+:- pragma termination_info(map.det_transform_value((builtin.in), (builtin.in), (builtin.in)) = (builtin.out), infinite, can_loop).
+:- pragma termination_info(map.set((builtin.in), (builtin.in), (builtin.in)) = (builtin.out), infinite, can_loop).
+:- pragma termination_info(map.set((builtin.in), (builtin.in), (builtin.in), (builtin.out)), infinite, can_loop).
+:- pragma termination_info(map.keys((builtin.in)) = (builtin.out), infinite, can_loop).
+:- pragma termination_info(map.keys((builtin.in), (builtin.out)), infinite, can_loop).
+:- pragma termination_info(map.sorted_keys((builtin.in)) = (builtin.out), infinite, can_loop).
+:- pragma termination_info(map.sorted_keys((builtin.in), (builtin.out)), infinite, can_loop).
+:- pragma termination_info(map.values((builtin.in)) = (builtin.out), infinite, can_loop).
+:- pragma termination_info(map.values((builtin.in), (builtin.out)), infinite, can_loop).
+:- pragma termination_info(map.to_assoc_list((builtin.in)) = (builtin.out), infinite, can_loop).
+:- pragma termination_info(map.to_assoc_list((builtin.in), (builtin.out)), infinite, can_loop).
+:- pragma termination_info(map.to_sorted_assoc_list((builtin.in)) = (builtin.out), infinite, can_loop).
+:- pragma termination_info(map.to_sorted_assoc_list((builtin.in), (builtin.out)), infinite, can_loop).
+:- pragma termination_info(map.from_assoc_list((builtin.in)) = (builtin.out), infinite, can_loop).
+:- pragma termination_info(map.from_assoc_list((builtin.in), (builtin.out)), infinite, can_loop).
+:- pragma termination_info(map.from_sorted_assoc_list((builtin.in)) = (builtin.out), infinite, can_loop).
+:- pragma termination_info(map.from_sorted_assoc_list((builtin.in), (builtin.out)), infinite, can_loop).
+:- pragma termination_info(map.from_rev_sorted_assoc_list((builtin.in)) = (builtin.out), infinite, can_loop).
+:- pragma termination_info(map.from_rev_sorted_assoc_list((builtin.in), (builtin.out)), infinite, can_loop).
+:- pragma termination_info(map.delete((builtin.in), (builtin.in)) = (builtin.out), infinite, can_loop).
+:- pragma termination_info(map.delete((builtin.in), (builtin.in), (builtin.out)), infinite, can_loop).
+:- pragma termination_info(map.delete_list((builtin.in), (builtin.in)) = (builtin.out), infinite, can_loop).
+:- pragma termination_info(map.delete_list((builtin.in), (builtin.in), (builtin.out)), infinite, can_loop).
+:- pragma termination_info(map.remove((builtin.in), (builtin.in), (builtin.out), (builtin.out)), infinite, can_loop).
+:- pragma termination_info(map.det_remove((builtin.in), (builtin.in), (builtin.out), (builtin.out)), infinite, can_loop).
+:- pragma termination_info(map.count((builtin.in)) = (builtin.out), infinite, can_loop).
+:- pragma termination_info(map.count((builtin.in), (builtin.out)), infinite, can_loop).
+:- pragma termination_info(map.from_corresponding_lists((builtin.in), (builtin.in)) = (builtin.out), infinite, can_loop).
+:- pragma termination_info(map.from_corresponding_lists((builtin.in), (builtin.in), (builtin.out)), infinite, can_loop).
+:- pragma termination_info(map.merge((builtin.in), (builtin.in)) = (builtin.out), infinite, can_loop).
+:- pragma termination_info(map.merge((builtin.in), (builtin.in), (builtin.out)), infinite, can_loop).
+:- pragma termination_info(map.overlay((builtin.in), (builtin.in)) = (builtin.out), infinite, can_loop).
+:- pragma termination_info(map.overlay((builtin.in), (builtin.in), (builtin.out)), infinite, can_loop).
+:- pragma termination_info(map.overlay_large_map((builtin.in), (builtin.in)) = (builtin.out), infinite, can_loop).
+:- pragma termination_info(map.overlay_large_map((builtin.in), (builtin.in), (builtin.out)), infinite, can_loop).
+:- pragma termination_info(map.select((builtin.in), (builtin.in)) = (builtin.out), infinite, can_loop).
+:- pragma termination_info(map.select((builtin.in), (builtin.in), (builtin.out)), infinite, can_loop).
+:- pragma termination_info(map.apply_to_list((builtin.in), (builtin.in)) = (builtin.out), infinite, can_loop).
+:- pragma termination_info(map.apply_to_list((builtin.in), (builtin.in), (builtin.out)), infinite, can_loop).
+:- pragma termination_info(map.optimize((builtin.in)) = (builtin.out), finite(0, [no, no, yes, no]), cannot_loop).
+:- pragma termination_info(map.optimize((builtin.in), (builtin.out)), finite(0, [no, no, yes, no]), cannot_loop).
+:- pragma termination_info(map.remove_smallest((builtin.in), (builtin.out), (builtin.out), (builtin.out)), infinite, can_loop).
+:- pragma termination_info(map.foldl((builtin.in), (builtin.in), (builtin.in)) = (builtin.out), infinite, can_loop).
+:- pragma termination_info(map.foldl((pred((builtin.in), (builtin.in), (builtin.in), (builtin.out)) is det), (builtin.in), (builtin.in), (builtin.out)), infinite, can_loop).
+:- pragma termination_info(map.foldl((pred((builtin.in), (builtin.in), (builtin.mdi), (builtin.muo)) is det), (builtin.in), (builtin.mdi), (builtin.muo)), infinite, can_loop).
+:- pragma termination_info(map.foldl((pred((builtin.in), (builtin.in), (builtin.di), (builtin.uo)) is det), (builtin.in), (builtin.di), (builtin.uo)), infinite, can_loop).
+:- pragma termination_info(map.foldl((pred((builtin.in), (builtin.in), (builtin.in), (builtin.out)) is semidet), (builtin.in), (builtin.in), (builtin.out)), infinite, can_loop).
+:- pragma termination_info(map.foldl((pred((builtin.in), (builtin.in), (builtin.mdi), (builtin.muo)) is semidet), (builtin.in), (builtin.mdi), (builtin.muo)), infinite, can_loop).
+:- pragma termination_info(map.foldl((pred((builtin.in), (builtin.in), (builtin.di), (builtin.uo)) is semidet), (builtin.in), (builtin.di), (builtin.uo)), infinite, can_loop).
+:- pragma termination_info(map.foldl((pred((builtin.in), (builtin.in), (builtin.in), (builtin.out)) is cc_multi), (builtin.in), (builtin.in), (builtin.out)), infinite, can_loop).
+:- pragma termination_info(map.foldl((pred((builtin.in), (builtin.in), (builtin.di), (builtin.uo)) is cc_multi), (builtin.in), (builtin.di), (builtin.uo)), infinite, can_loop).
+:- pragma termination_info(map.foldl((pred((builtin.in), (builtin.in), (builtin.mdi), (builtin.muo)) is cc_multi), (builtin.in), (builtin.mdi), (builtin.muo)), infinite, can_loop).
+:- pragma termination_info(map.foldl2((pred((builtin.in), (builtin.in), (builtin.in), (builtin.out), (builtin.in), (builtin.out)) is det), (builtin.in), (builtin.in), (builtin.out), (builtin.in), (builtin.out)), infinite, can_loop).
+:- pragma termination_info(map.foldl2((pred((builtin.in), (builtin.in), (builtin.in), (builtin.out), (builtin.mdi), (builtin.muo)) is det), (builtin.in), (builtin.in), (builtin.out), (builtin.mdi), (builtin.muo)), infinite, can_loop).
+:- pragma termination_info(map.foldl2((pred((builtin.in), (builtin.in), (builtin.in), (builtin.out), (builtin.di), (builtin.uo)) is det), (builtin.in), (builtin.in), (builtin.out), (builtin.di), (builtin.uo)), infinite, can_loop).
+:- pragma termination_info(map.foldl2((pred((builtin.in), (builtin.in), (builtin.di), (builtin.uo), (builtin.di), (builtin.uo)) is det), (builtin.in), (builtin.di), (builtin.uo), (builtin.di), (builtin.uo)), infinite, can_loop).
+:- pragma termination_info(map.foldl2((pred((builtin.in), (builtin.in), (builtin.in), (builtin.out), (builtin.in), (builtin.out)) is semidet), (builtin.in), (builtin.in), (builtin.out), (builtin.in), (builtin.out)), infinite, can_loop).
+:- pragma termination_info(map.foldl2((pred((builtin.in), (builtin.in), (builtin.in), (builtin.out), (builtin.mdi), (builtin.muo)) is semidet), (builtin.in), (builtin.in), (builtin.out), (builtin.mdi), (builtin.muo)), infinite, can_loop).
+:- pragma termination_info(map.foldl2((pred((builtin.in), (builtin.in), (builtin.in), (builtin.out), (builtin.di), (builtin.uo)) is semidet), (builtin.in), (builtin.in), (builtin.out), (builtin.di), (builtin.uo)), infinite, can_loop).
+:- pragma termination_info(map.foldl3((pred((builtin.in), (builtin.in), (builtin.in), (builtin.out), (builtin.in), (builtin.out), (builtin.in), (builtin.out)) is det), (builtin.in), (builtin.in), (builtin.out), (builtin.in), (builtin.out), (builtin.in), (builtin.out)), infinite, can_loop).
+:- pragma termination_info(map.foldl3((pred((builtin.in), (builtin.in), (builtin.in), (builtin.out), (builtin.in), (builtin.out), (builtin.in), (builtin.out)) is semidet), (builtin.in), (builtin.in), (builtin.out), (builtin.in), (builtin.out), (builtin.in), (builtin.out)), infinite, can_loop).
+:- pragma termination_info(map.foldl3((pred((builtin.in), (builtin.in), (builtin.in), (builtin.out), (builtin.in), (builtin.out), (builtin.di), (builtin.uo)) is det), (builtin.in), (builtin.in), (builtin.out), (builtin.in), (builtin.out), (builtin.di), (builtin.uo)), infinite, can_loop).
+:- pragma termination_info(map.foldl3((pred((builtin.in), (builtin.in), (builtin.in), (builtin.out), (builtin.di), (builtin.uo), (builtin.di), (builtin.uo)) is det), (builtin.in), (builtin.in), (builtin.out), (builtin.di), (builtin.uo), (builtin.di), (builtin.uo)), infinite, can_loop).
+:- pragma termination_info(map.foldl3((pred((builtin.in), (builtin.in), (builtin.di), (builtin.uo), (builtin.di), (builtin.uo), (builtin.di), (builtin.uo)) is det), (builtin.in), (builtin.di), (builtin.uo), (builtin.di), (builtin.uo), (builtin.di), (builtin.uo)), infinite, can_loop).
+:- pragma termination_info(map.foldl4((pred((builtin.in), (builtin.in), (builtin.in), (builtin.out), (builtin.in), (builtin.out), (builtin.in), (builtin.out), (builtin.in), (builtin.out)) is det), (builtin.in), (builtin.in), (builtin.out), (builtin.in), (builtin.out), (builtin.in), (builtin.out), (builtin.in), (builtin.out)), infinite, can_loop).
+:- pragma termination_info(map.foldl4((pred((builtin.in), (builtin.in), (builtin.in), (builtin.out), (builtin.in), (builtin.out), (builtin.in), (builtin.out), (builtin.in), (builtin.out)) is semidet), (builtin.in), (builtin.in), (builtin.out), (builtin.in), (builtin.out), (builtin.in), (builtin.out), (builtin.in), (builtin.out)), infinite, can_loop).
+:- pragma termination_info(map.foldl4((pred((builtin.in), (builtin.in), (builtin.in), (builtin.out), (builtin.in), (builtin.out), (builtin.in), (builtin.out), (builtin.di), (builtin.uo)) is det), (builtin.in), (builtin.in), (builtin.out), (builtin.in), (builtin.out), (builtin.in), (builtin.out), (builtin.di), (builtin.uo)), infinite, can_loop).
+:- pragma termination_info(map.foldl4((pred((builtin.in), (builtin.in), (builtin.in), (builtin.out), (builtin.in), (builtin.out), (builtin.di), (builtin.uo), (builtin.di), (builtin.uo)) is det), (builtin.in), (builtin.in), (builtin.out), (builtin.in), (builtin.out), (builtin.di), (builtin.uo), (builtin.di), (builtin.uo)), infinite, can_loop).
+:- pragma termination_info(map.foldl4((pred((builtin.in), (builtin.in), (builtin.in), (builtin.out), (builtin.di), (builtin.uo), (builtin.di), (builtin.uo), (builtin.di), (builtin.uo)) is det), (builtin.in), (builtin.in), (builtin.out), (builtin.di), (builtin.uo), (builtin.di), (builtin.uo), (builtin.di), (builtin.uo)), infinite, can_loop).
+:- pragma termination_info(map.foldl4((pred((builtin.in), (builtin.in), (builtin.di), (builtin.uo), (builtin.di), (builtin.uo), (builtin.di), (builtin.uo), (builtin.di), (builtin.uo)) is det), (builtin.in), (builtin.di), (builtin.uo), (builtin.di), (builtin.uo), (builtin.di), (builtin.uo), (builtin.di), (builtin.uo)), infinite, can_loop).
+:- pragma termination_info(map.foldl_values((pred((builtin.in), (builtin.in), (builtin.out)) is det), (builtin.in), (builtin.in), (builtin.out)), infinite, can_loop).
+:- pragma termination_info(map.foldl_values((pred((builtin.in), (builtin.mdi), (builtin.muo)) is det), (builtin.in), (builtin.mdi), (builtin.muo)), infinite, can_loop).
+:- pragma termination_info(map.foldl_values((pred((builtin.in), (builtin.di), (builtin.uo)) is det), (builtin.in), (builtin.di), (builtin.uo)), infinite, can_loop).
+:- pragma termination_info(map.foldl_values((pred((builtin.in), (builtin.in), (builtin.out)) is semidet), (builtin.in), (builtin.in), (builtin.out)), infinite, can_loop).
+:- pragma termination_info(map.foldl_values((pred((builtin.in), (builtin.mdi), (builtin.muo)) is semidet), (builtin.in), (builtin.mdi), (builtin.muo)), infinite, can_loop).
+:- pragma termination_info(map.foldl_values((pred((builtin.in), (builtin.di), (builtin.uo)) is semidet), (builtin.in), (builtin.di), (builtin.uo)), infinite, can_loop).
+:- pragma termination_info(map.foldl_values((pred((builtin.in), (builtin.in), (builtin.out)) is cc_multi), (builtin.in), (builtin.in), (builtin.out)), infinite, can_loop).
+:- pragma termination_info(map.foldl_values((pred((builtin.in), (builtin.di), (builtin.uo)) is cc_multi), (builtin.in), (builtin.di), (builtin.uo)), infinite, can_loop).
+:- pragma termination_info(map.foldl_values((pred((builtin.in), (builtin.mdi), (builtin.muo)) is cc_multi), (builtin.in), (builtin.mdi), (builtin.muo)), infinite, can_loop).
+:- pragma termination_info(map.foldr((builtin.in), (builtin.in), (builtin.in)) = (builtin.out), infinite, can_loop).
+:- pragma termination_info(map.foldr((pred((builtin.in), (builtin.in), (builtin.in), (builtin.out)) is det), (builtin.in), (builtin.in), (builtin.out)), infinite, can_loop).
+:- pragma termination_info(map.foldr((pred((builtin.in), (builtin.in), (builtin.mdi), (builtin.muo)) is det), (builtin.in), (builtin.mdi), (builtin.muo)), infinite, can_loop).
+:- pragma termination_info(map.foldr((pred((builtin.in), (builtin.in), (builtin.di), (builtin.uo)) is det), (builtin.in), (builtin.di), (builtin.uo)), infinite, can_loop).
+:- pragma termination_info(map.foldr((pred((builtin.in), (builtin.in), (builtin.in), (builtin.out)) is semidet), (builtin.in), (builtin.in), (builtin.out)), infinite, can_loop).
+:- pragma termination_info(map.foldr((pred((builtin.in), (builtin.in), (builtin.mdi), (builtin.muo)) is semidet), (builtin.in), (builtin.mdi), (builtin.muo)), infinite, can_loop).
+:- pragma termination_info(map.foldr((pred((builtin.in), (builtin.in), (builtin.di), (builtin.uo)) is semidet), (builtin.in), (builtin.di), (builtin.uo)), infinite, can_loop).
+:- pragma termination_info(map.foldr((pred((builtin.in), (builtin.in), (builtin.in), (builtin.out)) is cc_multi), (builtin.in), (builtin.in), (builtin.out)), infinite, can_loop).
+:- pragma termination_info(map.foldr((pred((builtin.in), (builtin.in), (builtin.di), (builtin.uo)) is cc_multi), (builtin.in), (builtin.di), (builtin.uo)), infinite, can_loop).
+:- pragma termination_info(map.foldr((pred((builtin.in), (builtin.in), (builtin.mdi), (builtin.muo)) is cc_multi), (builtin.in), (builtin.mdi), (builtin.muo)), infinite, can_loop).
+:- pragma termination_info(map.foldr2((pred((builtin.in), (builtin.in), (builtin.in), (builtin.out), (builtin.in), (builtin.out)) is det), (builtin.in), (builtin.in), (builtin.out), (builtin.in), (builtin.out)), infinite, can_loop).
+:- pragma termination_info(map.foldr2((pred((builtin.in), (builtin.in), (builtin.in), (builtin.out), (builtin.in), (builtin.out)) is semidet), (builtin.in), (builtin.in), (builtin.out), (builtin.in), (builtin.out)), infinite, can_loop).
+:- pragma termination_info(map.foldr2((pred((builtin.in), (builtin.in), (builtin.in), (builtin.out), (builtin.di), (builtin.uo)) is det), (builtin.in), (builtin.in), (builtin.out), (builtin.di), (builtin.uo)), infinite, can_loop).
+:- pragma termination_info(map.foldr2((pred((builtin.in), (builtin.in), (builtin.di), (builtin.uo), (builtin.di), (builtin.uo)) is det), (builtin.in), (builtin.di), (builtin.uo), (builtin.di), (builtin.uo)), infinite, can_loop).
+:- pragma termination_info(map.foldr3((pred((builtin.in), (builtin.in), (builtin.in), (builtin.out), (builtin.in), (builtin.out), (builtin.in), (builtin.out)) is det), (builtin.in), (builtin.in), (builtin.out), (builtin.in), (builtin.out), (builtin.in), (builtin.out)), infinite, can_loop).
+:- pragma termination_info(map.foldr3((pred((builtin.in), (builtin.in), (builtin.in), (builtin.out), (builtin.in), (builtin.out), (builtin.in), (builtin.out)) is semidet), (builtin.in), (builtin.in), (builtin.out), (builtin.in), (builtin.out), (builtin.in), (builtin.out)), infinite, can_loop).
+:- pragma termination_info(map.foldr3((pred((builtin.in), (builtin.in), (builtin.in), (builtin.out), (builtin.in), (builtin.out), (builtin.di), (builtin.uo)) is det), (builtin.in), (builtin.in), (builtin.out), (builtin.in), (builtin.out), (builtin.di), (builtin.uo)), infinite, can_loop).
+:- pragma termination_info(map.foldr3((pred((builtin.in), (builtin.in), (builtin.in), (builtin.out), (builtin.di), (builtin.uo), (builtin.di), (builtin.uo)) is det), (builtin.in), (builtin.in), (builtin.out), (builtin.di), (builtin.uo), (builtin.di), (builtin.uo)), infinite, can_loop).
+:- pragma termination_info(map.foldr3((pred((builtin.in), (builtin.in), (builtin.di), (builtin.uo), (builtin.di), (builtin.uo), (builtin.di), (builtin.uo)) is det), (builtin.in), (builtin.di), (builtin.uo), (builtin.di), (builtin.uo), (builtin.di), (builtin.uo)), infinite, can_loop).
+:- pragma termination_info(map.foldr4((pred((builtin.in), (builtin.in), (builtin.in), (builtin.out), (builtin.in), (builtin.out), (builtin.in), (builtin.out), (builtin.in), (builtin.out)) is det), (builtin.in), (builtin.in), (builtin.out), (builtin.in), (builtin.out), (builtin.in), (builtin.out), (builtin.in), (builtin.out)), infinite, can_loop).
+:- pragma termination_info(map.foldr4((pred((builtin.in), (builtin.in), (builtin.in), (builtin.out), (builtin.in), (builtin.out), (builtin.in), (builtin.out), (builtin.in), (builtin.out)) is semidet), (builtin.in), (builtin.in), (builtin.out), (builtin.in), (builtin.out), (builtin.in), (builtin.out), (builtin.in), (builtin.out)), infinite, can_loop).
+:- pragma termination_info(map.foldr4((pred((builtin.in), (builtin.in), (builtin.in), (builtin.out), (builtin.in), (builtin.out), (builtin.in), (builtin.out), (builtin.di), (builtin.uo)) is det), (builtin.in), (builtin.in), (builtin.out), (builtin.in), (builtin.out), (builtin.in), (builtin.out), (builtin.di), (builtin.uo)), infinite, can_loop).
+:- pragma termination_info(map.foldr4((pred((builtin.in), (builtin.in), (builtin.in), (builtin.out), (builtin.in), (builtin.out), (builtin.di), (builtin.uo), (builtin.di), (builtin.uo)) is det), (builtin.in), (builtin.in), (builtin.out), (builtin.in), (builtin.out), (builtin.di), (builtin.uo), (builtin.di), (builtin.uo)), infinite, can_loop).
+:- pragma termination_info(map.foldr4((pred((builtin.in), (builtin.in), (builtin.in), (builtin.out), (builtin.di), (builtin.uo), (builtin.di), (builtin.uo), (builtin.di), (builtin.uo)) is det), (builtin.in), (builtin.in), (builtin.out), (builtin.di), (builtin.uo), (builtin.di), (builtin.uo), (builtin.di), (builtin.uo)), infinite, can_loop).
+:- pragma termination_info(map.foldr4((pred((builtin.in), (builtin.in), (builtin.di), (builtin.uo), (builtin.di), (builtin.uo), (builtin.di), (builtin.uo), (builtin.di), (builtin.uo)) is det), (builtin.in), (builtin.di), (builtin.uo), (builtin.di), (builtin.uo), (builtin.di), (builtin.uo), (builtin.di), (builtin.uo)), infinite, can_loop).
+:- pragma termination_info(map.map_values((builtin.in), (builtin.in)) = (builtin.out), infinite, can_loop).
+:- pragma termination_info(map.map_values((pred((builtin.in), (builtin.in), (builtin.out)) is det), (builtin.in), (builtin.out)), infinite, can_loop).
+:- pragma termination_info(map.map_values((pred((builtin.in), (builtin.in), (builtin.out)) is semidet), (builtin.in), (builtin.out)), infinite, can_loop).
+:- pragma termination_info(map.map_values_only((builtin.in), (builtin.in)) = (builtin.out), infinite, can_loop).
+:- pragma termination_info(map.map_values_only((pred((builtin.in), (builtin.out)) is det), (builtin.in), (builtin.out)), infinite, can_loop).
+:- pragma termination_info(map.map_values_only((pred((builtin.in), (builtin.out)) is semidet), (builtin.in), (builtin.out)), infinite, can_loop).
+:- pragma termination_info(map.map_foldl((pred((builtin.in), (builtin.in), (builtin.out), (builtin.di), (builtin.uo)) is det), (builtin.in), (builtin.out), (builtin.di), (builtin.uo)), infinite, can_loop).
+:- pragma termination_info(map.map_foldl((pred((builtin.in), (builtin.in), (builtin.out), (builtin.in), (builtin.out)) is det), (builtin.in), (builtin.out), (builtin.in), (builtin.out)), infinite, can_loop).
+:- pragma termination_info(map.map_foldl((pred((builtin.in), (builtin.in), (builtin.out), (builtin.in), (builtin.out)) is semidet), (builtin.in), (builtin.out), (builtin.in), (builtin.out)), infinite, can_loop).
+:- pragma termination_info(map.map_foldl2((pred((builtin.in), (builtin.in), (builtin.out), (builtin.di), (builtin.uo), (builtin.di), (builtin.uo)) is det), (builtin.in), (builtin.out), (builtin.di), (builtin.uo), (builtin.di), (builtin.uo)), infinite, can_loop).
+:- pragma termination_info(map.map_foldl2((pred((builtin.in), (builtin.in), (builtin.out), (builtin.in), (builtin.out), (builtin.di), (builtin.uo)) is det), (builtin.in), (builtin.out), (builtin.in), (builtin.out), (builtin.di), (builtin.uo)), infinite, can_loop).
+:- pragma termination_info(map.map_foldl2((pred((builtin.in), (builtin.in), (builtin.out), (builtin.in), (builtin.out), (builtin.in), (builtin.out)) is det), (builtin.in), (builtin.out), (builtin.in), (builtin.out), (builtin.in), (builtin.out)), infinite, can_loop).
+:- pragma termination_info(map.map_foldl2((pred((builtin.in), (builtin.in), (builtin.out), (builtin.in), (builtin.out), (builtin.in), (builtin.out)) is semidet), (builtin.in), (builtin.out), (builtin.in), (builtin.out), (builtin.in), (builtin.out)), infinite, can_loop).
+:- pragma termination_info(map.map_foldl3((pred((builtin.in), (builtin.in), (builtin.out), (builtin.di), (builtin.uo), (builtin.di), (builtin.uo), (builtin.di), (builtin.uo)) is det), (builtin.in), (builtin.out), (builtin.di), (builtin.uo), (builtin.di), (builtin.uo), (builtin.di), (builtin.uo)), infinite, can_loop).
+:- pragma termination_info(map.map_foldl3((pred((builtin.in), (builtin.in), (builtin.out), (builtin.in), (builtin.out), (builtin.di), (builtin.uo), (builtin.di), (builtin.uo)) is det), (builtin.in), (builtin.out), (builtin.in), (builtin.out), (builtin.di), (builtin.uo), (builtin.di), (builtin.uo)), infinite, can_loop).
+:- pragma termination_info(map.map_foldl3((pred((builtin.in), (builtin.in), (builtin.out), (builtin.in), (builtin.out), (builtin.in), (builtin.out), (builtin.di), (builtin.uo)) is det), (builtin.in), (builtin.out), (builtin.in), (builtin.out), (builtin.in), (builtin.out), (builtin.di), (builtin.uo)), infinite, can_loop).
+:- pragma termination_info(map.map_foldl3((pred((builtin.in), (builtin.in), (builtin.out), (builtin.in), (builtin.out), (builtin.in), (builtin.out), (builtin.in), (builtin.out)) is det), (builtin.in), (builtin.out), (builtin.in), (builtin.out), (builtin.in), (builtin.out), (builtin.in), (builtin.out)), infinite, can_loop).
+:- pragma termination_info(map.map_foldl3((pred((builtin.in), (builtin.in), (builtin.out), (builtin.in), (builtin.out), (builtin.in), (builtin.out), (builtin.in), (builtin.out)) is semidet), (builtin.in), (builtin.out), (builtin.in), (builtin.out), (builtin.in), (builtin.out), (builtin.in), (builtin.out)), infinite, can_loop).
+:- pragma termination_info(map.map_values_foldl((pred((builtin.in), (builtin.out), (builtin.di), (builtin.uo)) is det), (builtin.in), (builtin.out), (builtin.di), (builtin.uo)), infinite, can_loop).
+:- pragma termination_info(map.map_values_foldl((pred((builtin.in), (builtin.out), (builtin.in), (builtin.out)) is det), (builtin.in), (builtin.out), (builtin.in), (builtin.out)), infinite, can_loop).
+:- pragma termination_info(map.map_values_foldl((pred((builtin.in), (builtin.out), (builtin.in), (builtin.out)) is semidet), (builtin.in), (builtin.out), (builtin.in), (builtin.out)), infinite, can_loop).
+:- pragma termination_info(map.map_values_foldl2((pred((builtin.in), (builtin.out), (builtin.di), (builtin.uo), (builtin.di), (builtin.uo)) is det), (builtin.in), (builtin.out), (builtin.di), (builtin.uo), (builtin.di), (builtin.uo)), infinite, can_loop).
+:- pragma termination_info(map.map_values_foldl2((pred((builtin.in), (builtin.out), (builtin.in), (builtin.out), (builtin.di), (builtin.uo)) is det), (builtin.in), (builtin.out), (builtin.in), (builtin.out), (builtin.di), (builtin.uo)), infinite, can_loop).
+:- pragma termination_info(map.map_values_foldl2((pred((builtin.in), (builtin.out), (builtin.in), (builtin.out), (builtin.in), (builtin.out)) is det), (builtin.in), (builtin.out), (builtin.in), (builtin.out), (builtin.in), (builtin.out)), infinite, can_loop).
+:- pragma termination_info(map.map_values_foldl2((pred((builtin.in), (builtin.out), (builtin.in), (builtin.out), (builtin.in), (builtin.out)) is semidet), (builtin.in), (builtin.out), (builtin.in), (builtin.out), (builtin.in), (builtin.out)), infinite, can_loop).
+:- pragma termination_info(map.map_values_foldl3((pred((builtin.in), (builtin.out), (builtin.di), (builtin.uo), (builtin.di), (builtin.uo), (builtin.di), (builtin.uo)) is det), (builtin.in), (builtin.out), (builtin.di), (builtin.uo), (builtin.di), (builtin.uo), (builtin.di), (builtin.uo)), infinite, can_loop).
+:- pragma termination_info(map.map_values_foldl3((pred((builtin.in), (builtin.out), (builtin.in), (builtin.out), (builtin.di), (builtin.uo), (builtin.di), (builtin.uo)) is det), (builtin.in), (builtin.out), (builtin.in), (builtin.out), (builtin.di), (builtin.uo), (builtin.di), (builtin.uo)), infinite, can_loop).
+:- pragma termination_info(map.map_values_foldl3((pred((builtin.in), (builtin.out), (builtin.in), (builtin.out), (builtin.in), (builtin.out), (builtin.di), (builtin.uo)) is det), (builtin.in), (builtin.out), (builtin.in), (builtin.out), (builtin.in), (builtin.out), (builtin.di), (builtin.uo)), infinite, can_loop).
+:- pragma termination_info(map.map_values_foldl3((pred((builtin.in), (builtin.out), (builtin.in), (builtin.out), (builtin.in), (builtin.out), (builtin.in), (builtin.out)) is det), (builtin.in), (builtin.out), (builtin.in), (builtin.out), (builtin.in), (builtin.out), (builtin.in), (builtin.out)), infinite, can_loop).
+:- pragma termination_info(map.map_values_foldl3((pred((builtin.in), (builtin.out), (builtin.in), (builtin.out), (builtin.in), (builtin.out), (builtin.in), (builtin.out)) is semidet), (builtin.in), (builtin.out), (builtin.in), (builtin.out), (builtin.in), (builtin.out), (builtin.in), (builtin.out)), infinite, can_loop).
+:- pragma termination_info(map.intersect((pred((builtin.in), (builtin.in), (builtin.out)) is semidet), (builtin.in), (builtin.in), (builtin.out)), infinite, can_loop).
+:- pragma termination_info(map.intersect((pred((builtin.in), (builtin.in), (builtin.out)) is det), (builtin.in), (builtin.in), (builtin.out)), infinite, can_loop).
+:- pragma termination_info(map.intersect((builtin.in), (builtin.in), (builtin.in)) = (builtin.out), infinite, can_loop).
+:- pragma termination_info(map.det_intersect((pred((builtin.in), (builtin.in), (builtin.out)) is semidet), (builtin.in), (builtin.in), (builtin.out)), infinite, can_loop).
+:- pragma termination_info(map.det_intersect((func((builtin.in), (builtin.in)) = (builtin.out) is semidet), (builtin.in), (builtin.in)) = (builtin.out), infinite, can_loop).
+:- pragma termination_info(map.common_subset((builtin.in), (builtin.in)) = (builtin.out), infinite, can_loop).
+:- pragma termination_info(map.union((builtin.in), (builtin.in), (builtin.in)) = (builtin.out), infinite, can_loop).
+:- pragma termination_info(map.union((pred((builtin.in), (builtin.in), (builtin.out)) is semidet), (builtin.in), (builtin.in), (builtin.out)), infinite, can_loop).
+:- pragma termination_info(map.union((pred((builtin.in), (builtin.in), (builtin.out)) is det), (builtin.in), (builtin.in), (builtin.out)), infinite, can_loop).
+:- pragma termination_info(map.det_union((pred((builtin.in), (builtin.in), (builtin.out)) is semidet), (builtin.in), (builtin.in), (builtin.out)), infinite, can_loop).
+:- pragma termination_info(map.det_union((func((builtin.in), (builtin.in)) = (builtin.out) is semidet), (builtin.in), (builtin.in)) = (builtin.out), infinite, can_loop).
+:- pragma termination_info(map.reverse_map((builtin.in)) = (builtin.out), infinite, can_loop).
+:- pragma termination_info(map.elem((builtin.in), (builtin.in)) = (builtin.out), infinite, can_loop).
+:- pragma termination_info(map.det_elem((builtin.in), (builtin.in)) = (builtin.out), infinite, can_loop).
+:- pragma termination_info(map.'elem :='((builtin.in), (builtin.in), (builtin.in)) = (builtin.out), infinite, can_loop).
+:- pragma termination_info(map.'det_elem :='((builtin.in), (builtin.in), (builtin.in)) = (builtin.out), infinite, can_loop).
+:- pragma termination_info(map.old_merge((builtin.in), (builtin.in)) = (builtin.out), infinite, can_loop).
+:- pragma termination_info(map.old_merge((builtin.in), (builtin.in), (builtin.out)), infinite, can_loop).
+:- pragma termination_info(map.overlay_2((builtin.in), (builtin.in), (builtin.out)), infinite, can_loop).
+:- pragma termination_info(map.overlay_large_map_2((builtin.in), (builtin.in), (builtin.out)), infinite, can_loop).
+:- pragma termination_info(map.select_2((builtin.in), (builtin.in), (builtin.in), (builtin.out)), infinite, can_loop).
+:- pragma termination_info(map.intersect_2((builtin.in), (builtin.in), (pred((builtin.in), (builtin.in), (builtin.out)) is semidet), (builtin.in), (builtin.out)), infinite, can_loop).
+:- pragma termination_info(map.intersect_2((builtin.in), (builtin.in), (pred((builtin.in), (builtin.in), (builtin.out)) is det), (builtin.in), (builtin.out)), infinite, can_loop).
+:- pragma termination_info(map.common_subset_2((builtin.in), (builtin.in), (builtin.in)) = (builtin.out), infinite, can_loop).
+:- pragma termination_info(map.union_2((builtin.in), (builtin.in), (pred((builtin.in), (builtin.in), (builtin.out)) is semidet), (builtin.in), (builtin.out)), infinite, can_loop).
+:- pragma termination_info(map.union_2((builtin.in), (builtin.in), (pred((builtin.in), (builtin.in), (builtin.out)) is det), (builtin.in), (builtin.out)), infinite, can_loop).
+:- pragma termination_info(map.reverse_map_2((builtin.in), (builtin.in), (builtin.in), (builtin.out)), infinite, can_loop).

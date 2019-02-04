@@ -1,0 +1,18 @@
+:- module (libs.compiler_util).
+:- interface.
+:- import_module io.
+:- import_module (libs.globals).
+:- pred expect((pred), string, string).
+:- mode expect(((pred) is semidet), (builtin.in), (builtin.in)) is det.
+:- pred record_warning(libs.globals.globals, io.io, io.io).
+:- mode record_warning((builtin.in), (builtin.di), (builtin.uo)) is det.
+:- pred report_warning(libs.globals.globals, string, io.io, io.io).
+:- mode report_warning((builtin.in), (builtin.in), (builtin.di), (builtin.uo)) is det.
+:- pred report_warning_to_stream(libs.globals.globals, io.output_stream, string, io.io, io.io).
+:- mode report_warning_to_stream((builtin.in), (builtin.in), (builtin.in), (builtin.di), (builtin.uo)) is det.
+:- func sorry(string, string) = V_1 is erroneous.
+:- pred sorry(string, string).
+:- mode sorry((builtin.in), (builtin.in)) is erroneous.
+:- func unexpected(string, string) = V_1 is erroneous.
+:- pred unexpected(string, string).
+:- mode unexpected((builtin.in), (builtin.in)) is erroneous.

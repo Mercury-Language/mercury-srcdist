@@ -1,0 +1,34 @@
+/*
+** Automatically generated from `unused_imports.m'
+** by the Mercury compiler,
+** version rotd-2010-06-17, configured for x86_64-unknown-linux-gnu.
+** Do not edit.
+*/
+#ifndef CHECK_HLDS__UNUSED_IMPORTS_MH
+#define CHECK_HLDS__UNUSED_IMPORTS_MH
+
+#ifdef __cplusplus
+extern "C" {
+#endif
+
+#ifdef MR_HIGHLEVEL_CODE
+#include "mercury.h"
+#else
+  #ifndef MERCURY_HDR_EXCLUDE_IMP_H
+  #include "mercury_imp.h"
+  #endif
+#endif
+#ifdef MR_DEEP_PROFILING
+#include "mercury_deep_profiling.h"
+#endif
+
+#ifndef CHECK_HLDS__UNUSED_IMPORTS_DECL_GUARD
+#define CHECK_HLDS__UNUSED_IMPORTS_DECL_GUARD
+
+#endif
+
+#ifdef __cplusplus
+}
+#endif
+
+#endif /* CHECK_HLDS__UNUSED_IMPORTS_MH */

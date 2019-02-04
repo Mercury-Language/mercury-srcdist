@@ -1,0 +1,80 @@
+:- module (mdbcomp.feedback).
+:- interface.
+:- import_module assoc_list.
+:- import_module int.
+:- import_module io.
+:- import_module list.
+:- import_module maybe.
+:- import_module string.
+:- import_module (mdbcomp.program_representation).
+:- type callee_rep
+	--->	unknown_callee 
+	;	named_callee(((mdbcomp.feedback).nc_module_name) :: string, ((mdbcomp.feedback).nc_proc_name) :: string).
+:- type conjuncts_are_dependant
+	--->	conjuncts_are_dependant 
+	;	conjuncts_are_independent .
+:- type feedback_data
+	--->	feedback_data_calls_above_threshold_sorted(((mdbcomp.feedback).threshold) :: int, ((mdbcomp.feedback).stat_measure) :: mdbcomp.feedback.stat_measure, ((mdbcomp.feedback).calls) :: list.list(mdbcomp.program_representation.call_site))
+	;	feedback_data_candidate_parallel_conjunctions(((mdbcomp.feedback).desired_parallelism) :: float, ((mdbcomp.feedback).sparking_cost) :: int, ((mdbcomp.feedback).sparking_delay) :: int, ((mdbcomp.feedback).locking_cost) :: int, ((mdbcomp.feedback).conjunctions) :: assoc_list.assoc_list(mdbcomp.program_representation.string_proc_label, mdbcomp.feedback.candidate_par_conjunction(mdbcomp.feedback.pard_goal))).
+:- type feedback_info.
+:- type feedback_read_error
+	--->	open_error(io.error)
+	;	read_error(io.error)
+	;	parse_error(((mdbcomp.feedback).fre_pe_message) :: string, ((mdbcomp.feedback).fre_pe_line_no) :: int)
+	;	unexpected_eof 
+	;	incorrect_version 
+	;	incorrect_first_line 
+	;	incorrect_program_name(((mdbcomp.feedback).fre_ipn_expected) :: string, ((mdbcomp.feedback).fre_ipn_got) :: string).
+:- type feedback_write_result
+	--->	ok 
+	;	open_error(io.error)
+	;	write_error(io.error).
+:- type parallel_exec_metrics.
+:- type parallel_exec_metrics_incomplete.
+:- type pard_goal
+	--->	pg_call(((mdbcomp.feedback).pgc_callee) :: mdbcomp.feedback.callee_rep, ((mdbcomp.feedback).pgc_vars) :: list.list(maybe.maybe(string)), ((mdbcomp.feedback).pgc_cost_percall) :: float)
+	;	pg_cheap_call(((mdbcomp.feedback).pgcc_callee) :: mdbcomp.feedback.callee_rep, ((mdbcomp.feedback).pgcc_vars) :: list.list(maybe.maybe(string)))
+	;	pg_other_atomic_goal .
+:- type stat_measure
+	--->	stat_mean 
+	;	stat_median .
+:- type candidate_par_conjunction(GoalType)
+	--->	candidate_par_conjunction(((mdbcomp.feedback).cpc_goal_path) :: mdbcomp.program_representation.goal_path_string, ((mdbcomp.feedback).cpc_partition_number) :: int, ((mdbcomp.feedback).cpc_is_dependant) :: mdbcomp.feedback.conjuncts_are_dependant, ((mdbcomp.feedback).cpc_goals_before) :: list.list(GoalType), ((mdbcomp.feedback).cpc_conjs) :: list.list(mdbcomp.feedback.seq_conj(GoalType)), ((mdbcomp.feedback).cpc_goals_after) :: list.list(GoalType), ((mdbcomp.feedback).cpc_par_exec_metrics) :: mdbcomp.feedback.parallel_exec_metrics).
+:- type seq_conj(GoalType)
+	--->	seq_conj(((mdbcomp.feedback).sc_conjs) :: list.list(GoalType)).
+:- type feedback_read_result(T)
+	--->	ok(T)
+	;	error(mdbcomp.feedback.feedback_read_error).
+:- inst (feedback_data_query) == bound(feedback_data_calls_above_threshold_sorted(free, free, free) ; feedback_data_candidate_parallel_conjunctions(free, free, free, free, free)).
+:- mode (feedback_data_query) == (((mdbcomp.feedback).feedback_data_query) >> ground).
+:- pred convert_candidate_par_conjunction(pred(A, B), mdbcomp.feedback.candidate_par_conjunction(A), mdbcomp.feedback.candidate_par_conjunction(B)).
+:- mode convert_candidate_par_conjunction((pred((builtin.in), (builtin.out)) is det), (builtin.in), (builtin.out)) is det.
+:- pred convert_seq_conj(pred(A, B), mdbcomp.feedback.seq_conj(A), mdbcomp.feedback.seq_conj(B)).
+:- mode convert_seq_conj((pred((builtin.in), (builtin.out)) is det), (builtin.in), (builtin.out)) is det.
+:- func finalise_parallel_exec_metrics(mdbcomp.feedback.parallel_exec_metrics_incomplete, int, float, float) = mdbcomp.feedback.parallel_exec_metrics.
+:- pred get_all_feedback_data(mdbcomp.feedback.feedback_info, list.list(mdbcomp.feedback.feedback_data)).
+:- mode get_all_feedback_data((builtin.in), (builtin.out)) is det.
+:- pred get_feedback_data(mdbcomp.feedback.feedback_info, mdbcomp.feedback.feedback_data).
+:- mode get_feedback_data((builtin.in), ((mdbcomp.feedback).feedback_data_query)) is semidet.
+:- func get_feedback_program_name(mdbcomp.feedback.feedback_info) = string.
+:- func init_empty_parallel_exec_metrics(float) = mdbcomp.feedback.parallel_exec_metrics_incomplete.
+:- func init_feedback_info(string) = mdbcomp.feedback.feedback_info.
+:- func init_parallel_exec_metrics_incomplete(mdbcomp.feedback.parallel_exec_metrics_incomplete, float, float) = mdbcomp.feedback.parallel_exec_metrics_incomplete.
+:- func parallel_exec_metrics_get_first_conj_dead_time(mdbcomp.feedback.parallel_exec_metrics) = float.
+:- func parallel_exec_metrics_get_future_dead_time(mdbcomp.feedback.parallel_exec_metrics) = float.
+:- func parallel_exec_metrics_get_num_calls(mdbcomp.feedback.parallel_exec_metrics) = int.
+:- func parallel_exec_metrics_get_par_time(mdbcomp.feedback.parallel_exec_metrics) = float.
+:- func parallel_exec_metrics_get_seq_time(mdbcomp.feedback.parallel_exec_metrics) = float.
+:- func parallel_exec_metrics_get_speedup(mdbcomp.feedback.parallel_exec_metrics) = float.
+:- func parallel_exec_metrics_get_time_saving(mdbcomp.feedback.parallel_exec_metrics) = float.
+:- func parallel_exec_metrics_get_total_dead_time(mdbcomp.feedback.parallel_exec_metrics) = float.
+:- pred put_feedback_data(mdbcomp.feedback.feedback_data, mdbcomp.feedback.feedback_info, mdbcomp.feedback.feedback_info).
+:- mode put_feedback_data((builtin.in), (builtin.in), (builtin.out)) is det.
+:- pred read_error_message_string(string, mdbcomp.feedback.feedback_read_error, string).
+:- mode read_error_message_string((builtin.in), (builtin.in), (builtin.out)) is det.
+:- pred read_feedback_file(string, mdbcomp.feedback.feedback_read_result(mdbcomp.feedback.feedback_info), io.io, io.io).
+:- mode read_feedback_file((builtin.in), (builtin.out), (builtin.di), (builtin.uo)) is det.
+:- pred read_or_create(string, string, mdbcomp.feedback.feedback_read_result(mdbcomp.feedback.feedback_info), io.io, io.io).
+:- mode read_or_create((builtin.in), (builtin.in), (builtin.out), (builtin.di), (builtin.uo)) is det.
+:- pred write_feedback_file(string, string, mdbcomp.feedback.feedback_info, mdbcomp.feedback.feedback_write_result, io.io, io.io).
+:- mode write_feedback_file((builtin.in), (builtin.in), (builtin.in), (builtin.out), (builtin.di), (builtin.uo)) is det.
