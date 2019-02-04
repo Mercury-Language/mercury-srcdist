@@ -1,0 +1,4 @@
+:- module (check_hlds.inst_match).
+:- interface.
+:- type ground_matches_bound
+	where	type_is_abstract_enum(1).
