@@ -1,0 +1,23 @@
+:- module (transform_hlds.term_constr_data).
+:- interface.
+:- type abstract_goal.
+:- type abstract_goals.
+:- type abstract_ho_call.
+:- type abstract_ppid.
+:- type abstract_proc.
+:- type abstract_scc.
+:- type arg_size_result.
+:- type call_vars.
+:- type head_vars.
+:- type local_vars.
+:- type nonlocal_vars.
+:- type recursion_type
+	where	type_is_abstract_enum(2).
+:- type size_term.
+:- type size_terms.
+:- type size_var.
+:- type size_var_map.
+:- type size_vars.
+:- type size_varset.
+:- type widening.
+:- type zero_vars.
