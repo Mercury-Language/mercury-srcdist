@@ -1,0 +1,787 @@
+# vim: ts=8 sw=8 noexpandtab ft=make
+
+
+
+parse_tree.module_qual.qualify_items.optdate parse_tree.module_qual.qualify_items.trans_opt_date module_qual.qualify_items.err parse_tree.module_qual.qualify_items.c_date parse_tree.module_qual.qualify_items.java_date : module_qual.qualify_items.m \
+	parse_tree.int0 \
+	parse_tree.module_qual.int0 \
+	assoc_list.int \
+	bool.int \
+	builtin.int \
+	int.int \
+	libs.int \
+	list.int \
+	map.int \
+	maybe.int \
+	mdbcomp.int \
+	pair.int \
+	private_builtin.int \
+	recompilation.int \
+	require.int \
+	set.int \
+	term.int \
+	libs.globals.int \
+	libs.options.int \
+	mdbcomp.sym_name.int \
+	parse_tree.error_util.int \
+	parse_tree.get_dependencies.int \
+	parse_tree.prog_data.int \
+	parse_tree.prog_data_event.int \
+	parse_tree.prog_data_foreign.int \
+	parse_tree.prog_data_pragma.int \
+	parse_tree.prog_item.int \
+	parse_tree.module_qual.collect_mq_info.int \
+	parse_tree.module_qual.id_set.int \
+	parse_tree.module_qual.qual_errors.int \
+	array.int2 \
+	bimap.int2 \
+	bitmap.int2 \
+	char.int2 \
+	construct.int2 \
+	cord.int2 \
+	deconstruct.int2 \
+	enum.int2 \
+	getopt_io.int2 \
+	integer.int2 \
+	io.int2 \
+	ops.int2 \
+	pretty_printer.int2 \
+	random.int2 \
+	rtti_implementation.int2 \
+	set_ordlist.int2 \
+	sparse_bitset.int2 \
+	stream.int2 \
+	string.int2 \
+	time.int2 \
+	tree234.int2 \
+	type_desc.int2 \
+	unit.int2 \
+	univ.int2 \
+	varset.int2 \
+	libs.compiler_util.int2 \
+	libs.op_mode.int2 \
+	libs.rat.int2 \
+	libs.timestamp.int2 \
+	libs.trace_params.int2 \
+	mdbcomp.feedback.int2 \
+	mdbcomp.goal_path.int2 \
+	mdbcomp.prim_data.int2 \
+	mdbcomp.program_representation.int2 \
+	mdbcomp.rtti_access.int2 \
+	mdbcomp.trace_counts.int2 \
+	parse_tree.file_kind.int2 \
+	parse_tree.maybe_error.int2 \
+	parse_tree.set_of_var.int2 \
+	mdbcomp.feedback.automatic_parallelism.int2
+
+ifeq (x,y)
+# RULE date_file_deps
+# source group names:
+#   (unnamed)
+#   parent deps
+#   long deps
+#   short deps
+parse_tree.module_qual.qualify_items.optdate parse_tree.module_qual.qualify_items.trans_opt_date module_qual.qualify_items.err parse_tree.module_qual.qualify_items.c_date parse_tree.module_qual.qualify_items.java_date : \
+		module_qual.qualify_items.m \
+	\
+		parse_tree.int0 \
+		parse_tree.module_qual.int0 \
+	\
+		assoc_list.int \
+		bool.int \
+		builtin.int \
+		int.int \
+		libs.int \
+		list.int \
+		map.int \
+		maybe.int \
+		mdbcomp.int \
+		pair.int \
+		private_builtin.int \
+		recompilation.int \
+		require.int \
+		set.int \
+		term.int \
+		libs.globals.int \
+		libs.options.int \
+		mdbcomp.sym_name.int \
+		parse_tree.error_util.int \
+		parse_tree.get_dependencies.int \
+		parse_tree.prog_data.int \
+		parse_tree.prog_data_event.int \
+		parse_tree.prog_data_foreign.int \
+		parse_tree.prog_data_pragma.int \
+		parse_tree.prog_item.int \
+		parse_tree.module_qual.collect_mq_info.int \
+		parse_tree.module_qual.id_set.int \
+		parse_tree.module_qual.qual_errors.int \
+	\
+		array.int2 \
+		bimap.int2 \
+		bitmap.int2 \
+		char.int2 \
+		construct.int2 \
+		cord.int2 \
+		deconstruct.int2 \
+		enum.int2 \
+		getopt_io.int2 \
+		integer.int2 \
+		io.int2 \
+		ops.int2 \
+		pretty_printer.int2 \
+		random.int2 \
+		rtti_implementation.int2 \
+		set_ordlist.int2 \
+		sparse_bitset.int2 \
+		stream.int2 \
+		string.int2 \
+		time.int2 \
+		tree234.int2 \
+		type_desc.int2 \
+		unit.int2 \
+		univ.int2 \
+		varset.int2 \
+		libs.compiler_util.int2 \
+		libs.op_mode.int2 \
+		libs.rat.int2 \
+		libs.timestamp.int2 \
+		libs.trace_params.int2 \
+		mdbcomp.feedback.int2 \
+		mdbcomp.goal_path.int2 \
+		mdbcomp.prim_data.int2 \
+		mdbcomp.program_representation.int2 \
+		mdbcomp.rtti_access.int2 \
+		mdbcomp.trace_counts.int2 \
+		parse_tree.file_kind.int2 \
+		parse_tree.maybe_error.int2 \
+		parse_tree.set_of_var.int2 \
+		mdbcomp.feedback.automatic_parallelism.int2
+endif
+
+
+
+parse_tree.module_qual.qualify_items.pic_o parse_tree.module_qual.qualify_items.$O : \
+	array.mih \
+	assoc_list.mih \
+	bimap.mih \
+	bitmap.mih \
+	bool.mih \
+	builtin.mih \
+	char.mih \
+	construct.mih \
+	cord.mih \
+	deconstruct.mih \
+	enum.mih \
+	getopt_io.mih \
+	int.mih \
+	integer.mih \
+	io.mih \
+	libs.mih \
+	list.mih \
+	map.mih \
+	maybe.mih \
+	mdbcomp.mih \
+	ops.mih \
+	pair.mih \
+	parse_tree.mih \
+	pretty_printer.mih \
+	private_builtin.mih \
+	random.mih \
+	recompilation.mih \
+	require.mih \
+	rtti_implementation.mih \
+	set.mih \
+	set_ordlist.mih \
+	sparse_bitset.mih \
+	stream.mih \
+	string.mih \
+	term.mih \
+	time.mih \
+	tree234.mih \
+	type_desc.mih \
+	unit.mih \
+	univ.mih \
+	varset.mih \
+	libs.compiler_util.mih \
+	libs.globals.mih \
+	libs.op_mode.mih \
+	libs.options.mih \
+	libs.rat.mih \
+	libs.timestamp.mih \
+	libs.trace_params.mih \
+	mdbcomp.feedback.mih \
+	mdbcomp.goal_path.mih \
+	mdbcomp.prim_data.mih \
+	mdbcomp.program_representation.mih \
+	mdbcomp.rtti_access.mih \
+	mdbcomp.sym_name.mih \
+	mdbcomp.trace_counts.mih \
+	parse_tree.error_util.mih \
+	parse_tree.file_kind.mih \
+	parse_tree.get_dependencies.mih \
+	parse_tree.maybe_error.mih \
+	parse_tree.module_qual.mih \
+	parse_tree.prog_data.mih \
+	parse_tree.prog_data_event.mih \
+	parse_tree.prog_data_foreign.mih \
+	parse_tree.prog_data_pragma.mih \
+	parse_tree.prog_item.mih \
+	parse_tree.set_of_var.mih \
+	mdbcomp.feedback.automatic_parallelism.mih \
+	parse_tree.module_qual.collect_mq_info.mih \
+	parse_tree.module_qual.id_set.mih \
+	parse_tree.module_qual.qual_errors.mih \
+	parse_tree.module_qual.qualify_items.mih
+
+ifeq (x,y)
+# RULE objs_on_mihs
+parse_tree.module_qual.qualify_items.pic_o parse_tree.module_qual.qualify_items.$O : \
+		array.mih \
+		assoc_list.mih \
+		bimap.mih \
+		bitmap.mih \
+		bool.mih \
+		builtin.mih \
+		char.mih \
+		construct.mih \
+		cord.mih \
+		deconstruct.mih \
+		enum.mih \
+		getopt_io.mih \
+		int.mih \
+		integer.mih \
+		io.mih \
+		libs.mih \
+		list.mih \
+		map.mih \
+		maybe.mih \
+		mdbcomp.mih \
+		ops.mih \
+		pair.mih \
+		parse_tree.mih \
+		pretty_printer.mih \
+		private_builtin.mih \
+		random.mih \
+		recompilation.mih \
+		require.mih \
+		rtti_implementation.mih \
+		set.mih \
+		set_ordlist.mih \
+		sparse_bitset.mih \
+		stream.mih \
+		string.mih \
+		term.mih \
+		time.mih \
+		tree234.mih \
+		type_desc.mih \
+		unit.mih \
+		univ.mih \
+		varset.mih \
+		libs.compiler_util.mih \
+		libs.globals.mih \
+		libs.op_mode.mih \
+		libs.options.mih \
+		libs.rat.mih \
+		libs.timestamp.mih \
+		libs.trace_params.mih \
+		mdbcomp.feedback.mih \
+		mdbcomp.goal_path.mih \
+		mdbcomp.prim_data.mih \
+		mdbcomp.program_representation.mih \
+		mdbcomp.rtti_access.mih \
+		mdbcomp.sym_name.mih \
+		mdbcomp.trace_counts.mih \
+		parse_tree.error_util.mih \
+		parse_tree.file_kind.mih \
+		parse_tree.get_dependencies.mih \
+		parse_tree.maybe_error.mih \
+		parse_tree.module_qual.mih \
+		parse_tree.prog_data.mih \
+		parse_tree.prog_data_event.mih \
+		parse_tree.prog_data_foreign.mih \
+		parse_tree.prog_data_pragma.mih \
+		parse_tree.prog_item.mih \
+		parse_tree.set_of_var.mih \
+		mdbcomp.feedback.automatic_parallelism.mih \
+		parse_tree.module_qual.collect_mq_info.mih \
+		parse_tree.module_qual.id_set.mih \
+		parse_tree.module_qual.qual_errors.mih \
+		parse_tree.module_qual.qualify_items.mih
+endif
+
+
+
+parse_tree.module_qual.qualify_items.mh parse_tree.module_qual.qualify_items.mih : parse_tree.module_qual.qualify_items.c
+
+ifeq (x,y)
+# RULE mh_and_mih_on_c
+parse_tree.module_qual.qualify_items.mh parse_tree.module_qual.qualify_items.mih : parse_tree.module_qual.qualify_items.c
+endif
+
+
+
+ifeq ($(findstring java,$(GRADE)),java)
+parse_tree.module_qual.qualify_items.module_dep : jmercury/parse_tree__module_qual__qualify_items.java
+else
+parse_tree.module_qual.qualify_items.module_dep : parse_tree.module_qual.qualify_items.c
+endif
+
+ifeq ($(findstring java,$(GRADE)),java)
+
+ifeq (x,y)
+# RULE module_dep_on_java
+parse_tree.module_qual.qualify_items.module_dep : jmercury/parse_tree__module_qual__qualify_items.java
+endif
+
+else
+
+ifeq (x,y)
+# RULE module_dep_on_c
+parse_tree.module_qual.qualify_items.module_dep : parse_tree.module_qual.qualify_items.c
+endif
+
+endif # conditional fragment
+
+
+
+parse_tree.module_qual.qualify_items.date parse_tree.module_qual.qualify_items.date0 \
+	parse_tree.date \
+	parse_tree.module_qual.date : module_qual.qualify_items.m \
+	parse_tree.int0 \
+	parse_tree.module_qual.int0 \
+	assoc_list.int3 \
+	bool.int3 \
+	builtin.int3 \
+	int.int3 \
+	libs.int3 \
+	list.int3 \
+	map.int3 \
+	maybe.int3 \
+	mdbcomp.int3 \
+	pair.int3 \
+	private_builtin.int3 \
+	recompilation.int3 \
+	require.int3 \
+	set.int3 \
+	term.int3 \
+	libs.globals.int3 \
+	libs.options.int3 \
+	mdbcomp.sym_name.int3 \
+	parse_tree.error_util.int3 \
+	parse_tree.get_dependencies.int3 \
+	parse_tree.prog_data.int3 \
+	parse_tree.prog_data_event.int3 \
+	parse_tree.prog_data_foreign.int3 \
+	parse_tree.prog_data_pragma.int3 \
+	parse_tree.prog_item.int3 \
+	parse_tree.module_qual.collect_mq_info.int3 \
+	parse_tree.module_qual.id_set.int3 \
+	parse_tree.module_qual.qual_errors.int3 \
+	array.int3 \
+	bimap.int3 \
+	bitmap.int3 \
+	char.int3 \
+	construct.int3 \
+	cord.int3 \
+	deconstruct.int3 \
+	enum.int3 \
+	getopt_io.int3 \
+	integer.int3 \
+	io.int3 \
+	ops.int3 \
+	pretty_printer.int3 \
+	random.int3 \
+	rtti_implementation.int3 \
+	set_ordlist.int3 \
+	sparse_bitset.int3 \
+	stream.int3 \
+	string.int3 \
+	time.int3 \
+	tree234.int3 \
+	type_desc.int3 \
+	unit.int3 \
+	univ.int3 \
+	varset.int3 \
+	libs.compiler_util.int3 \
+	libs.op_mode.int3 \
+	libs.rat.int3 \
+	libs.timestamp.int3 \
+	libs.trace_params.int3 \
+	mdbcomp.feedback.int3 \
+	mdbcomp.goal_path.int3 \
+	mdbcomp.prim_data.int3 \
+	mdbcomp.program_representation.int3 \
+	mdbcomp.rtti_access.int3 \
+	mdbcomp.trace_counts.int3 \
+	parse_tree.file_kind.int3 \
+	parse_tree.maybe_error.int3 \
+	parse_tree.set_of_var.int3 \
+	mdbcomp.feedback.automatic_parallelism.int3
+
+ifeq (x,y)
+# RULE self_and_parent_date_deps
+# source group names:
+#   (unnamed)
+#   parent dep int0
+#   long dep int3s
+#   short dep int3s
+parse_tree.module_qual.qualify_items.date parse_tree.module_qual.qualify_items.date0 parse_tree.date parse_tree.module_qual.date : \
+		module_qual.qualify_items.m \
+	\
+		parse_tree.int0 \
+		parse_tree.module_qual.int0 \
+	\
+		assoc_list.int3 \
+		bool.int3 \
+		builtin.int3 \
+		int.int3 \
+		libs.int3 \
+		list.int3 \
+		map.int3 \
+		maybe.int3 \
+		mdbcomp.int3 \
+		pair.int3 \
+		private_builtin.int3 \
+		recompilation.int3 \
+		require.int3 \
+		set.int3 \
+		term.int3 \
+		libs.globals.int3 \
+		libs.options.int3 \
+		mdbcomp.sym_name.int3 \
+		parse_tree.error_util.int3 \
+		parse_tree.get_dependencies.int3 \
+		parse_tree.prog_data.int3 \
+		parse_tree.prog_data_event.int3 \
+		parse_tree.prog_data_foreign.int3 \
+		parse_tree.prog_data_pragma.int3 \
+		parse_tree.prog_item.int3 \
+		parse_tree.module_qual.collect_mq_info.int3 \
+		parse_tree.module_qual.id_set.int3 \
+		parse_tree.module_qual.qual_errors.int3 \
+	\
+		array.int3 \
+		bimap.int3 \
+		bitmap.int3 \
+		char.int3 \
+		construct.int3 \
+		cord.int3 \
+		deconstruct.int3 \
+		enum.int3 \
+		getopt_io.int3 \
+		integer.int3 \
+		io.int3 \
+		ops.int3 \
+		pretty_printer.int3 \
+		random.int3 \
+		rtti_implementation.int3 \
+		set_ordlist.int3 \
+		sparse_bitset.int3 \
+		stream.int3 \
+		string.int3 \
+		time.int3 \
+		tree234.int3 \
+		type_desc.int3 \
+		unit.int3 \
+		univ.int3 \
+		varset.int3 \
+		libs.compiler_util.int3 \
+		libs.op_mode.int3 \
+		libs.rat.int3 \
+		libs.timestamp.int3 \
+		libs.trace_params.int3 \
+		mdbcomp.feedback.int3 \
+		mdbcomp.goal_path.int3 \
+		mdbcomp.prim_data.int3 \
+		mdbcomp.program_representation.int3 \
+		mdbcomp.rtti_access.int3 \
+		mdbcomp.trace_counts.int3 \
+		parse_tree.file_kind.int3 \
+		parse_tree.maybe_error.int3 \
+		parse_tree.set_of_var.int3 \
+		mdbcomp.feedback.automatic_parallelism.int3
+endif
+
+
+
+parse_tree.module_qual.qualify_items.date0 \
+	parse_tree.date0 \
+	parse_tree.module_qual.date0 : module_qual.qualify_items.m \
+	assoc_list.int3 \
+	bool.int3 \
+	builtin.int3 \
+	int.int3 \
+	libs.int3 \
+	list.int3 \
+	map.int3 \
+	maybe.int3 \
+	mdbcomp.int3 \
+	pair.int3 \
+	private_builtin.int3 \
+	recompilation.int3 \
+	require.int3 \
+	set.int3 \
+	term.int3 \
+	libs.globals.int3 \
+	libs.options.int3 \
+	mdbcomp.sym_name.int3 \
+	parse_tree.error_util.int3 \
+	parse_tree.get_dependencies.int3 \
+	parse_tree.prog_data.int3 \
+	parse_tree.prog_data_event.int3 \
+	parse_tree.prog_data_foreign.int3 \
+	parse_tree.prog_data_pragma.int3 \
+	parse_tree.prog_item.int3 \
+	parse_tree.module_qual.collect_mq_info.int3 \
+	parse_tree.module_qual.id_set.int3 \
+	parse_tree.module_qual.qual_errors.int3 \
+	array.int3 \
+	bimap.int3 \
+	bitmap.int3 \
+	char.int3 \
+	construct.int3 \
+	cord.int3 \
+	deconstruct.int3 \
+	enum.int3 \
+	getopt_io.int3 \
+	integer.int3 \
+	io.int3 \
+	ops.int3 \
+	pretty_printer.int3 \
+	random.int3 \
+	rtti_implementation.int3 \
+	set_ordlist.int3 \
+	sparse_bitset.int3 \
+	stream.int3 \
+	string.int3 \
+	time.int3 \
+	tree234.int3 \
+	type_desc.int3 \
+	unit.int3 \
+	univ.int3 \
+	varset.int3 \
+	libs.compiler_util.int3 \
+	libs.op_mode.int3 \
+	libs.rat.int3 \
+	libs.timestamp.int3 \
+	libs.trace_params.int3 \
+	mdbcomp.feedback.int3 \
+	mdbcomp.goal_path.int3 \
+	mdbcomp.prim_data.int3 \
+	mdbcomp.program_representation.int3 \
+	mdbcomp.rtti_access.int3 \
+	mdbcomp.trace_counts.int3 \
+	parse_tree.file_kind.int3 \
+	parse_tree.maybe_error.int3 \
+	parse_tree.set_of_var.int3 \
+	mdbcomp.feedback.automatic_parallelism.int3
+
+ifeq (x,y)
+# RULE self_and_parent_date0_deps
+# source group names:
+#   (unnamed)
+#   long dep int3s
+#   short dep int3s
+parse_tree.module_qual.qualify_items.date0 parse_tree.date0 parse_tree.module_qual.date0 : \
+		module_qual.qualify_items.m \
+	\
+		assoc_list.int3 \
+		bool.int3 \
+		builtin.int3 \
+		int.int3 \
+		libs.int3 \
+		list.int3 \
+		map.int3 \
+		maybe.int3 \
+		mdbcomp.int3 \
+		pair.int3 \
+		private_builtin.int3 \
+		recompilation.int3 \
+		require.int3 \
+		set.int3 \
+		term.int3 \
+		libs.globals.int3 \
+		libs.options.int3 \
+		mdbcomp.sym_name.int3 \
+		parse_tree.error_util.int3 \
+		parse_tree.get_dependencies.int3 \
+		parse_tree.prog_data.int3 \
+		parse_tree.prog_data_event.int3 \
+		parse_tree.prog_data_foreign.int3 \
+		parse_tree.prog_data_pragma.int3 \
+		parse_tree.prog_item.int3 \
+		parse_tree.module_qual.collect_mq_info.int3 \
+		parse_tree.module_qual.id_set.int3 \
+		parse_tree.module_qual.qual_errors.int3 \
+	\
+		array.int3 \
+		bimap.int3 \
+		bitmap.int3 \
+		char.int3 \
+		construct.int3 \
+		cord.int3 \
+		deconstruct.int3 \
+		enum.int3 \
+		getopt_io.int3 \
+		integer.int3 \
+		io.int3 \
+		ops.int3 \
+		pretty_printer.int3 \
+		random.int3 \
+		rtti_implementation.int3 \
+		set_ordlist.int3 \
+		sparse_bitset.int3 \
+		stream.int3 \
+		string.int3 \
+		time.int3 \
+		tree234.int3 \
+		type_desc.int3 \
+		unit.int3 \
+		univ.int3 \
+		varset.int3 \
+		libs.compiler_util.int3 \
+		libs.op_mode.int3 \
+		libs.rat.int3 \
+		libs.timestamp.int3 \
+		libs.trace_params.int3 \
+		mdbcomp.feedback.int3 \
+		mdbcomp.goal_path.int3 \
+		mdbcomp.prim_data.int3 \
+		mdbcomp.program_representation.int3 \
+		mdbcomp.rtti_access.int3 \
+		mdbcomp.trace_counts.int3 \
+		parse_tree.file_kind.int3 \
+		parse_tree.maybe_error.int3 \
+		parse_tree.set_of_var.int3 \
+		mdbcomp.feedback.automatic_parallelism.int3
+endif
+
+
+
+parse_tree.module_qual.qualify_items.$O :  \
+	io.mh \
+	string.mh \
+	time.mh \
+	mdbcomp.rtti_access.mh
+
+
+
+parse_tree.module_qual.qualify_items.pic_o :  \
+	io.mh \
+	string.mh \
+	time.mh \
+	mdbcomp.rtti_access.mh
+
+ifeq (x,y)
+# RULE foreign_deps_for_.mh
+parse_tree.module_qual.qualify_items.$O : \
+		io.mh \
+		string.mh \
+		time.mh \
+		mdbcomp.rtti_access.mh
+endif
+
+ifeq (x,y)
+# RULE foreign_deps_for_.mh
+parse_tree.module_qual.qualify_items.pic_o : \
+		io.mh \
+		string.mh \
+		time.mh \
+		mdbcomp.rtti_access.mh
+endif
+
+
+parse_tree.module_qual.qualify_items.int0 : parse_tree.module_qual.qualify_items.date0
+	@:
+parse_tree.module_qual.qualify_items.int : parse_tree.module_qual.qualify_items.date
+	@:
+parse_tree.module_qual.qualify_items.int2 : parse_tree.module_qual.qualify_items.date
+	@:
+parse_tree.module_qual.qualify_items.int3 : parse_tree.module_qual.qualify_items.date3
+	@:
+parse_tree.module_qual.qualify_items.opt : parse_tree.module_qual.qualify_items.optdate
+	@:
+parse_tree.module_qual.qualify_items.trans_opt : parse_tree.module_qual.qualify_items.trans_opt_date
+	@:
+
+ifeq (x,y)
+parse_tree.module_qual.qualify_items.int0 : parse_tree.module_qual.qualify_items.date0
+	@:
+endif
+
+ifeq (x,y)
+parse_tree.module_qual.qualify_items.int : parse_tree.module_qual.qualify_items.date
+	@:
+endif
+
+ifeq (x,y)
+parse_tree.module_qual.qualify_items.int2 : parse_tree.module_qual.qualify_items.date
+	@:
+endif
+
+ifeq (x,y)
+parse_tree.module_qual.qualify_items.int3 : parse_tree.module_qual.qualify_items.date3
+	@:
+endif
+
+ifeq (x,y)
+parse_tree.module_qual.qualify_items.opt : parse_tree.module_qual.qualify_items.optdate
+	@:
+endif
+
+ifeq (x,y)
+parse_tree.module_qual.qualify_items.trans_opt : parse_tree.module_qual.qualify_items.trans_opt_date
+	@:
+endif
+
+
+parse_tree.module_qual.qualify_items.date0 : module_qual.qualify_items.m
+	$(MCPI) $(ALL_GRADEFLAGS) $(ALL_MCPIFLAGS) parse_tree.module_qual.qualify_items
+parse_tree.module_qual.qualify_items.date : module_qual.qualify_items.m
+	$(MCI) $(ALL_GRADEFLAGS) $(ALL_MCIFLAGS) parse_tree.module_qual.qualify_items
+parse_tree.module_qual.qualify_items.date3 : module_qual.qualify_items.m
+	$(MCSI) $(ALL_GRADEFLAGS) $(ALL_MCSIFLAGS) parse_tree.module_qual.qualify_items
+parse_tree.module_qual.qualify_items.optdate : module_qual.qualify_items.m
+	$(MCOI) $(ALL_GRADEFLAGS) $(ALL_MCOIFLAGS) parse_tree.module_qual.qualify_items
+parse_tree.module_qual.qualify_items.trans_opt_date : module_qual.qualify_items.m
+	$(MCTOI) $(ALL_GRADEFLAGS) $(ALL_MCTOIFLAGS) parse_tree.module_qual.qualify_items
+parse_tree.module_qual.qualify_items.c_date : module_qual.qualify_items.m
+	$(MCG) $(ALL_GRADEFLAGS) $(ALL_MCGFLAGS) parse_tree.module_qual.qualify_items $(ERR_REDIRECT)
+parse_tree.module_qual.qualify_items.java_date : module_qual.qualify_items.m
+	$(MCG) $(ALL_GRADEFLAGS) $(ALL_MCGFLAGS) --java-only parse_tree.module_qual.qualify_items $(ERR_REDIRECT)
+
+ifeq (x,y)
+parse_tree.module_qual.qualify_items.date0 : module_qual.qualify_items.m
+	$(MCPI) $(ALL_GRADEFLAGS) $(ALL_MCPIFLAGS) parse_tree.module_qual.qualify_items
+endif
+
+ifeq (x,y)
+parse_tree.module_qual.qualify_items.date : module_qual.qualify_items.m
+	$(MCI) $(ALL_GRADEFLAGS) $(ALL_MCIFLAGS) parse_tree.module_qual.qualify_items
+endif
+
+ifeq (x,y)
+parse_tree.module_qual.qualify_items.date3 : module_qual.qualify_items.m
+	$(MCSI) $(ALL_GRADEFLAGS) $(ALL_MCSIFLAGS) parse_tree.module_qual.qualify_items
+endif
+
+ifeq (x,y)
+parse_tree.module_qual.qualify_items.optdate : module_qual.qualify_items.m
+	$(MCOI) $(ALL_GRADEFLAGS) $(ALL_MCOIFLAGS) parse_tree.module_qual.qualify_items
+endif
+
+ifeq (x,y)
+parse_tree.module_qual.qualify_items.trans_opt_date : module_qual.qualify_items.m
+	$(MCTOI) $(ALL_GRADEFLAGS) $(ALL_MCTOIFLAGS) parse_tree.module_qual.qualify_items
+endif
+
+ifeq (x,y)
+parse_tree.module_qual.qualify_items.c_date : module_qual.qualify_items.m
+	$(MCG) $(ALL_GRADEFLAGS) $(ALL_MCGFLAGS) parse_tree.module_qual.qualify_items $(ERR_REDIRECT)
+endif
+
+ifeq (x,y)
+parse_tree.module_qual.qualify_items.java_date : module_qual.qualify_items.m
+	$(MCG) $(ALL_GRADEFLAGS) $(ALL_MCGFLAGS) --java-only parse_tree.module_qual.qualify_items $(ERR_REDIRECT)
+endif
+

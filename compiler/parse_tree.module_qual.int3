@@ -1,0 +1,14 @@
+:- module (parse_tree.module_qual).
+:- interface.
+:- type maybe_found_undef_inst
+	where	type_is_abstract_enum(1).
+:- type maybe_found_undef_mode
+	where	type_is_abstract_enum(1).
+:- type maybe_found_undef_type
+	where	type_is_abstract_enum(1).
+:- type maybe_found_undef_typeclass
+	where	type_is_abstract_enum(1).
+:- type mq_in_interface
+	where	type_is_abstract_enum(1).
+:- type mq_info.
+:- type partial_qualifier_info.

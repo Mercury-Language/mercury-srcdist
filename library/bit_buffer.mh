@@ -1,0 +1,49 @@
+/*
+** Automatically generated from `bit_buffer.m'
+** by the Mercury compiler,
+** version rotd-2017-06-13
+** configured for x86_64-apple-darwin13.4.0.
+** Do not edit.
+*/
+#ifndef BIT_BUFFER_MH
+#define BIT_BUFFER_MH
+
+#ifdef __cplusplus
+extern "C" {
+#endif
+
+#ifdef MR_HIGHLEVEL_CODE
+#include "mercury.h"
+#else
+  #ifndef MERCURY_HDR_EXCLUDE_IMP_H
+  #include "mercury_imp.h"
+  #endif
+#endif
+#ifdef MR_DEEP_PROFILING
+#include "mercury_deep_profiling.h"
+#endif
+
+#ifndef BIT_BUFFER_DECL_GUARD
+#define BIT_BUFFER_DECL_GUARD
+
+typedef struct {
+    MR_BitmapPtr    ML_bit_buffer_bitmap;
+    MR_Integer      ML_bit_buffer_pos;
+    MR_Integer      ML_bit_buffer_size;
+    MR_Word         ML_bit_buffer_use_stream;
+    MR_Word         ML_bit_buffer_stream;
+    MR_Word         ML_bit_buffer_state;
+    MR_Word         ML_bit_buffer_filled_bitmaps;
+    MR_Word         ML_bit_buffer_read_status;
+} ML_BitBuffer;
+
+typedef ML_BitBuffer *ML_BitBufferPtr;
+
+
+#endif
+
+#ifdef __cplusplus
+}
+#endif
+
+#endif /* BIT_BUFFER_MH */

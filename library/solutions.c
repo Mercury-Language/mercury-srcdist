@@ -1,0 +1,11159 @@
+/*
+** Automatically generated from `solutions.m'
+** by the Mercury compiler,
+** version rotd-2017-06-13
+** configured for x86_64-apple-darwin13.4.0.
+** Do not edit.
+**
+** The autoconfigured grade settings governing
+** the generation of this C file were
+**
+** TAG_BITS=2
+** UNBOXED_FLOAT=no
+** PREGENERATED_DIST=yes
+** HIGHLEVEL_CODE=yes
+**
+** END_OF_C_GRADE_INFO
+*/
+
+
+/* :- module solutions. */
+/* :- implementation. */
+
+/*
+INIT mercury__solutions__init
+ENDINIT
+*/
+
+#include "solutions.mih"
+
+
+#include "array.mih"
+#include "assoc_list.mih"
+#include "benchmarking.mih"
+#include "bitmap.mih"
+#include "bool.mih"
+#include "builtin.mih"
+#include "calendar.mih"
+#include "char.mih"
+#include "construct.mih"
+#include "cord.mih"
+#include "deconstruct.mih"
+#include "dir.mih"
+#include "enum.mih"
+#include "erlang_rtti_implementation.mih"
+#include "exception.mih"
+#include "float.mih"
+#include "int.mih"
+#include "integer.mih"
+#include "io.mih"
+#include "lexer.mih"
+#include "list.mih"
+#include "map.mih"
+#include "math.mih"
+#include "maybe.mih"
+#include "mutvar.mih"
+#include "ops.mih"
+#include "pair.mih"
+#include "parser.mih"
+#include "pretty_printer.mih"
+#include "private_builtin.mih"
+#include "random.mih"
+#include "require.mih"
+#include "rtti_implementation.mih"
+#include "set.mih"
+#include "set_ordlist.mih"
+#include "set_tree234.mih"
+#include "std_util.mih"
+#include "stm_builtin.mih"
+#include "store.mih"
+#include "stream.mih"
+#include "string.mih"
+#include "table_builtin.mih"
+#include "term.mih"
+#include "term_conversion.mih"
+#include "term_io.mih"
+#include "time.mih"
+#include "tree234.mih"
+#include "type_desc.mih"
+#include "uint.mih"
+#include "unit.mih"
+#include "univ.mih"
+#include "varset.mih"
+#include "version_array.mih"
+#include "stream.string_writer.mih"
+#include "string.format.mih"
+#include "string.parse_runtime.mih"
+#include "string.parse_util.mih"
+#include "string.to_string.mih"
+
+
+
+struct mercury__solutions__builtin_aggregate2_6_p_7_env_0_s {
+  MR_Word mercury__solutions__builtin_aggregate2_6_p_7_env_0__TypeInfo_for_T_32;
+  MR_Word mercury__solutions__builtin_aggregate2_6_p_7_env_0__TypeInfo_for_U_33;
+  MR_Word mercury__solutions__builtin_aggregate2_6_p_7_env_0__TypeInfo_for_V_34;
+  MR_Word mercury__solutions__builtin_aggregate2_6_p_7_env_0__GeneratorPred_7;
+  MR_Word mercury__solutions__builtin_aggregate2_6_p_7_env_0__CollectorPred_8;
+  MR_bool mercury__solutions__builtin_aggregate2_6_p_7_env_0__succeeded;
+  MR_Word mercury__solutions__builtin_aggregate2_6_p_7_env_0__HeapPtr_11;
+  MR_Word mercury__solutions__builtin_aggregate2_6_p_7_env_0__TrailPtr_13;
+  MR_Word mercury__solutions__builtin_aggregate2_6_p_7_env_0__Mutvar1_14;
+  MR_Word mercury__solutions__builtin_aggregate2_6_p_7_env_0__Mutvar2_15;
+  jmp_buf mercury__solutions__builtin_aggregate2_6_p_7_env_0__commit_0;
+  MR_Box mercury__solutions__builtin_aggregate2_6_p_7_env_0__Answer0_16;
+  MR_Box mercury__solutions__builtin_aggregate2_6_p_7_env_0__Answer_17;
+  MR_Box mercury__solutions__builtin_aggregate2_6_p_7_env_0__SubAccA0_18;
+  MR_Box mercury__solutions__builtin_aggregate2_6_p_7_env_0__SubAccB0_19;
+  MR_Box mercury__solutions__builtin_aggregate2_6_p_7_env_0__SubAccA_20;
+  MR_Box mercury__solutions__builtin_aggregate2_6_p_7_env_0__SubAccB_21;
+};
+
+struct mercury__solutions__builtin_aggregate2_6_p_6_env_0_s {
+  MR_Word mercury__solutions__builtin_aggregate2_6_p_6_env_0__TypeInfo_for_T_32;
+  MR_Word mercury__solutions__builtin_aggregate2_6_p_6_env_0__TypeInfo_for_U_33;
+  MR_Word mercury__solutions__builtin_aggregate2_6_p_6_env_0__TypeInfo_for_V_34;
+  MR_Word mercury__solutions__builtin_aggregate2_6_p_6_env_0__GeneratorPred_7;
+  MR_Word mercury__solutions__builtin_aggregate2_6_p_6_env_0__CollectorPred_8;
+  MR_bool mercury__solutions__builtin_aggregate2_6_p_6_env_0__succeeded;
+  MR_Word mercury__solutions__builtin_aggregate2_6_p_6_env_0__HeapPtr_11;
+  MR_Word mercury__solutions__builtin_aggregate2_6_p_6_env_0__TrailPtr_13;
+  MR_Word mercury__solutions__builtin_aggregate2_6_p_6_env_0__Mutvar1_14;
+  MR_Word mercury__solutions__builtin_aggregate2_6_p_6_env_0__Mutvar2_15;
+  jmp_buf mercury__solutions__builtin_aggregate2_6_p_6_env_0__commit_0;
+  MR_Box mercury__solutions__builtin_aggregate2_6_p_6_env_0__Answer0_16;
+  MR_Box mercury__solutions__builtin_aggregate2_6_p_6_env_0__Answer_17;
+  MR_Box mercury__solutions__builtin_aggregate2_6_p_6_env_0__SubAccA0_18;
+  MR_Box mercury__solutions__builtin_aggregate2_6_p_6_env_0__SubAccB0_19;
+  MR_Box mercury__solutions__builtin_aggregate2_6_p_6_env_0__SubAccA_20;
+  MR_Box mercury__solutions__builtin_aggregate2_6_p_6_env_0__SubAccB_21;
+};
+
+struct mercury__solutions__builtin_aggregate2_6_p_5_env_0_s {
+  MR_Word mercury__solutions__builtin_aggregate2_6_p_5_env_0__TypeInfo_for_T_32;
+  MR_Word mercury__solutions__builtin_aggregate2_6_p_5_env_0__TypeInfo_for_U_33;
+  MR_Word mercury__solutions__builtin_aggregate2_6_p_5_env_0__TypeInfo_for_V_34;
+  MR_Word mercury__solutions__builtin_aggregate2_6_p_5_env_0__GeneratorPred_7;
+  MR_Word mercury__solutions__builtin_aggregate2_6_p_5_env_0__CollectorPred_8;
+  MR_bool mercury__solutions__builtin_aggregate2_6_p_5_env_0__succeeded;
+  MR_Word mercury__solutions__builtin_aggregate2_6_p_5_env_0__HeapPtr_11;
+  MR_Word mercury__solutions__builtin_aggregate2_6_p_5_env_0__TrailPtr_13;
+  MR_Word mercury__solutions__builtin_aggregate2_6_p_5_env_0__Mutvar1_14;
+  MR_Word mercury__solutions__builtin_aggregate2_6_p_5_env_0__Mutvar2_15;
+  jmp_buf mercury__solutions__builtin_aggregate2_6_p_5_env_0__commit_0;
+  MR_Box mercury__solutions__builtin_aggregate2_6_p_5_env_0__Answer0_16;
+  MR_Box mercury__solutions__builtin_aggregate2_6_p_5_env_0__Answer_17;
+  MR_Box mercury__solutions__builtin_aggregate2_6_p_5_env_0__SubAccA0_18;
+  MR_Box mercury__solutions__builtin_aggregate2_6_p_5_env_0__SubAccB0_19;
+  MR_Box mercury__solutions__builtin_aggregate2_6_p_5_env_0__SubAccA_20;
+  MR_Box mercury__solutions__builtin_aggregate2_6_p_5_env_0__SubAccB_21;
+};
+
+struct mercury__solutions__builtin_aggregate2_6_p_4_env_0_s {
+  MR_Word mercury__solutions__builtin_aggregate2_6_p_4_env_0__TypeInfo_for_T_32;
+  MR_Word mercury__solutions__builtin_aggregate2_6_p_4_env_0__TypeInfo_for_U_33;
+  MR_Word mercury__solutions__builtin_aggregate2_6_p_4_env_0__TypeInfo_for_V_34;
+  MR_Word mercury__solutions__builtin_aggregate2_6_p_4_env_0__GeneratorPred_7;
+  MR_Word mercury__solutions__builtin_aggregate2_6_p_4_env_0__CollectorPred_8;
+  MR_bool mercury__solutions__builtin_aggregate2_6_p_4_env_0__succeeded;
+  MR_Word mercury__solutions__builtin_aggregate2_6_p_4_env_0__HeapPtr_11;
+  MR_Word mercury__solutions__builtin_aggregate2_6_p_4_env_0__TrailPtr_13;
+  MR_Word mercury__solutions__builtin_aggregate2_6_p_4_env_0__Mutvar1_14;
+  MR_Word mercury__solutions__builtin_aggregate2_6_p_4_env_0__Mutvar2_15;
+  jmp_buf mercury__solutions__builtin_aggregate2_6_p_4_env_0__commit_0;
+  MR_Box mercury__solutions__builtin_aggregate2_6_p_4_env_0__Answer0_16;
+  MR_Box mercury__solutions__builtin_aggregate2_6_p_4_env_0__Answer_17;
+  MR_Box mercury__solutions__builtin_aggregate2_6_p_4_env_0__SubAccA0_18;
+  MR_Box mercury__solutions__builtin_aggregate2_6_p_4_env_0__SubAccB0_19;
+  MR_Box mercury__solutions__builtin_aggregate2_6_p_4_env_0__SubAccA_20;
+  MR_Box mercury__solutions__builtin_aggregate2_6_p_4_env_0__SubAccB_21;
+};
+
+struct mercury__solutions__builtin_aggregate2_6_p_3_env_0_s {
+  MR_Word mercury__solutions__builtin_aggregate2_6_p_3_env_0__TypeInfo_for_T_32;
+  MR_Word mercury__solutions__builtin_aggregate2_6_p_3_env_0__TypeInfo_for_U_33;
+  MR_Word mercury__solutions__builtin_aggregate2_6_p_3_env_0__TypeInfo_for_V_34;
+  MR_Word mercury__solutions__builtin_aggregate2_6_p_3_env_0__GeneratorPred_7;
+  MR_Word mercury__solutions__builtin_aggregate2_6_p_3_env_0__CollectorPred_8;
+  MR_bool mercury__solutions__builtin_aggregate2_6_p_3_env_0__succeeded;
+  MR_Word mercury__solutions__builtin_aggregate2_6_p_3_env_0__HeapPtr_11;
+  MR_Word mercury__solutions__builtin_aggregate2_6_p_3_env_0__TrailPtr_13;
+  MR_Word mercury__solutions__builtin_aggregate2_6_p_3_env_0__Mutvar1_14;
+  MR_Word mercury__solutions__builtin_aggregate2_6_p_3_env_0__Mutvar2_15;
+  jmp_buf mercury__solutions__builtin_aggregate2_6_p_3_env_0__commit_0;
+  MR_Box mercury__solutions__builtin_aggregate2_6_p_3_env_0__Answer0_16;
+  MR_Box mercury__solutions__builtin_aggregate2_6_p_3_env_0__Answer_17;
+  MR_Box mercury__solutions__builtin_aggregate2_6_p_3_env_0__SubAccA0_18;
+  MR_Box mercury__solutions__builtin_aggregate2_6_p_3_env_0__SubAccB0_19;
+  MR_Box mercury__solutions__builtin_aggregate2_6_p_3_env_0__SubAccA_20;
+  MR_Box mercury__solutions__builtin_aggregate2_6_p_3_env_0__SubAccB_21;
+};
+
+struct mercury__solutions__builtin_aggregate2_6_p_2_env_0_s {
+  MR_Word mercury__solutions__builtin_aggregate2_6_p_2_env_0__TypeInfo_for_T_32;
+  MR_Word mercury__solutions__builtin_aggregate2_6_p_2_env_0__TypeInfo_for_U_33;
+  MR_Word mercury__solutions__builtin_aggregate2_6_p_2_env_0__TypeInfo_for_V_34;
+  MR_Word mercury__solutions__builtin_aggregate2_6_p_2_env_0__GeneratorPred_7;
+  MR_Word mercury__solutions__builtin_aggregate2_6_p_2_env_0__CollectorPred_8;
+  MR_bool mercury__solutions__builtin_aggregate2_6_p_2_env_0__succeeded;
+  MR_Word mercury__solutions__builtin_aggregate2_6_p_2_env_0__HeapPtr_11;
+  MR_Word mercury__solutions__builtin_aggregate2_6_p_2_env_0__TrailPtr_13;
+  MR_Word mercury__solutions__builtin_aggregate2_6_p_2_env_0__Mutvar1_14;
+  MR_Word mercury__solutions__builtin_aggregate2_6_p_2_env_0__Mutvar2_15;
+  jmp_buf mercury__solutions__builtin_aggregate2_6_p_2_env_0__commit_0;
+  MR_Box mercury__solutions__builtin_aggregate2_6_p_2_env_0__Answer0_16;
+  MR_Box mercury__solutions__builtin_aggregate2_6_p_2_env_0__Answer_17;
+  MR_Box mercury__solutions__builtin_aggregate2_6_p_2_env_0__SubAccA0_18;
+  MR_Box mercury__solutions__builtin_aggregate2_6_p_2_env_0__SubAccB0_19;
+  MR_Box mercury__solutions__builtin_aggregate2_6_p_2_env_0__SubAccA_20;
+  MR_Box mercury__solutions__builtin_aggregate2_6_p_2_env_0__SubAccB_21;
+};
+
+struct mercury__solutions__builtin_aggregate2_6_p_1_env_0_s {
+  MR_Word mercury__solutions__builtin_aggregate2_6_p_1_env_0__TypeInfo_for_T_32;
+  MR_Word mercury__solutions__builtin_aggregate2_6_p_1_env_0__TypeInfo_for_U_33;
+  MR_Word mercury__solutions__builtin_aggregate2_6_p_1_env_0__TypeInfo_for_V_34;
+  MR_Word mercury__solutions__builtin_aggregate2_6_p_1_env_0__GeneratorPred_7;
+  MR_Word mercury__solutions__builtin_aggregate2_6_p_1_env_0__CollectorPred_8;
+  MR_bool mercury__solutions__builtin_aggregate2_6_p_1_env_0__succeeded;
+  MR_Word mercury__solutions__builtin_aggregate2_6_p_1_env_0__HeapPtr_11;
+  MR_Word mercury__solutions__builtin_aggregate2_6_p_1_env_0__TrailPtr_13;
+  MR_Word mercury__solutions__builtin_aggregate2_6_p_1_env_0__Mutvar1_14;
+  MR_Word mercury__solutions__builtin_aggregate2_6_p_1_env_0__Mutvar2_15;
+  jmp_buf mercury__solutions__builtin_aggregate2_6_p_1_env_0__commit_0;
+  MR_Box mercury__solutions__builtin_aggregate2_6_p_1_env_0__Answer0_16;
+  MR_Box mercury__solutions__builtin_aggregate2_6_p_1_env_0__Answer_17;
+  MR_Box mercury__solutions__builtin_aggregate2_6_p_1_env_0__SubAccA0_18;
+  MR_Box mercury__solutions__builtin_aggregate2_6_p_1_env_0__SubAccB0_19;
+  MR_Box mercury__solutions__builtin_aggregate2_6_p_1_env_0__SubAccA_20;
+  MR_Box mercury__solutions__builtin_aggregate2_6_p_1_env_0__SubAccB_21;
+};
+
+struct mercury__solutions__builtin_aggregate2_6_p_0_env_0_s {
+  MR_Word mercury__solutions__builtin_aggregate2_6_p_0_env_0__TypeInfo_for_T_32;
+  MR_Word mercury__solutions__builtin_aggregate2_6_p_0_env_0__TypeInfo_for_U_33;
+  MR_Word mercury__solutions__builtin_aggregate2_6_p_0_env_0__TypeInfo_for_V_34;
+  MR_Word mercury__solutions__builtin_aggregate2_6_p_0_env_0__GeneratorPred_7;
+  MR_Word mercury__solutions__builtin_aggregate2_6_p_0_env_0__CollectorPred_8;
+  MR_bool mercury__solutions__builtin_aggregate2_6_p_0_env_0__succeeded;
+  MR_Word mercury__solutions__builtin_aggregate2_6_p_0_env_0__HeapPtr_11;
+  MR_Word mercury__solutions__builtin_aggregate2_6_p_0_env_0__TrailPtr_13;
+  MR_Word mercury__solutions__builtin_aggregate2_6_p_0_env_0__Mutvar1_14;
+  MR_Word mercury__solutions__builtin_aggregate2_6_p_0_env_0__Mutvar2_15;
+  jmp_buf mercury__solutions__builtin_aggregate2_6_p_0_env_0__commit_0;
+  MR_Box mercury__solutions__builtin_aggregate2_6_p_0_env_0__Answer0_16;
+  MR_Box mercury__solutions__builtin_aggregate2_6_p_0_env_0__Answer_17;
+  MR_Box mercury__solutions__builtin_aggregate2_6_p_0_env_0__SubAccA0_18;
+  MR_Box mercury__solutions__builtin_aggregate2_6_p_0_env_0__SubAccB0_19;
+  MR_Box mercury__solutions__builtin_aggregate2_6_p_0_env_0__SubAccA_20;
+  MR_Box mercury__solutions__builtin_aggregate2_6_p_0_env_0__SubAccB_21;
+};
+
+struct mercury__solutions__builtin_aggregate_4_p_9_env_0_s {
+  MR_Word mercury__solutions__builtin_aggregate_4_p_9_env_0__TypeInfo_for_T_21;
+  MR_Word mercury__solutions__builtin_aggregate_4_p_9_env_0__TypeInfo_for_U_22;
+  MR_Word mercury__solutions__builtin_aggregate_4_p_9_env_0__GeneratorPred_5;
+  MR_Word mercury__solutions__builtin_aggregate_4_p_9_env_0__CollectorPred_6;
+  MR_bool mercury__solutions__builtin_aggregate_4_p_9_env_0__succeeded;
+  MR_Word mercury__solutions__builtin_aggregate_4_p_9_env_0__HeapPtr_8;
+  MR_Word mercury__solutions__builtin_aggregate_4_p_9_env_0__TrailPtr_10;
+  MR_Word mercury__solutions__builtin_aggregate_4_p_9_env_0__Mutvar_11;
+  jmp_buf mercury__solutions__builtin_aggregate_4_p_9_env_0__commit_0;
+  MR_Box mercury__solutions__builtin_aggregate_4_p_9_env_0__Answer0_12;
+  MR_Box mercury__solutions__builtin_aggregate_4_p_9_env_0__Answer_13;
+  MR_Box mercury__solutions__builtin_aggregate_4_p_9_env_0__Acc0_14;
+  MR_Box mercury__solutions__builtin_aggregate_4_p_9_env_0__Acc1_15;
+};
+
+struct mercury__solutions__builtin_aggregate_4_p_8_env_0_s {
+  MR_Word mercury__solutions__builtin_aggregate_4_p_8_env_0__TypeInfo_for_T_21;
+  MR_Word mercury__solutions__builtin_aggregate_4_p_8_env_0__TypeInfo_for_U_22;
+  MR_Word mercury__solutions__builtin_aggregate_4_p_8_env_0__GeneratorPred_5;
+  MR_Word mercury__solutions__builtin_aggregate_4_p_8_env_0__CollectorPred_6;
+  MR_bool mercury__solutions__builtin_aggregate_4_p_8_env_0__succeeded;
+  MR_Word mercury__solutions__builtin_aggregate_4_p_8_env_0__HeapPtr_8;
+  MR_Word mercury__solutions__builtin_aggregate_4_p_8_env_0__TrailPtr_10;
+  MR_Word mercury__solutions__builtin_aggregate_4_p_8_env_0__Mutvar_11;
+  jmp_buf mercury__solutions__builtin_aggregate_4_p_8_env_0__commit_0;
+  MR_Box mercury__solutions__builtin_aggregate_4_p_8_env_0__Answer0_12;
+  MR_Box mercury__solutions__builtin_aggregate_4_p_8_env_0__Answer_13;
+  MR_Box mercury__solutions__builtin_aggregate_4_p_8_env_0__Acc0_14;
+  MR_Box mercury__solutions__builtin_aggregate_4_p_8_env_0__Acc1_15;
+};
+
+struct mercury__solutions__builtin_aggregate_4_p_7_env_0_s {
+  MR_Word mercury__solutions__builtin_aggregate_4_p_7_env_0__TypeInfo_for_T_21;
+  MR_Word mercury__solutions__builtin_aggregate_4_p_7_env_0__TypeInfo_for_U_22;
+  MR_Word mercury__solutions__builtin_aggregate_4_p_7_env_0__GeneratorPred_5;
+  MR_Word mercury__solutions__builtin_aggregate_4_p_7_env_0__CollectorPred_6;
+  MR_bool mercury__solutions__builtin_aggregate_4_p_7_env_0__succeeded;
+  MR_Word mercury__solutions__builtin_aggregate_4_p_7_env_0__HeapPtr_8;
+  MR_Word mercury__solutions__builtin_aggregate_4_p_7_env_0__TrailPtr_10;
+  MR_Word mercury__solutions__builtin_aggregate_4_p_7_env_0__Mutvar_11;
+  jmp_buf mercury__solutions__builtin_aggregate_4_p_7_env_0__commit_0;
+  MR_Box mercury__solutions__builtin_aggregate_4_p_7_env_0__Answer0_12;
+  MR_Box mercury__solutions__builtin_aggregate_4_p_7_env_0__Answer_13;
+  MR_Box mercury__solutions__builtin_aggregate_4_p_7_env_0__Acc0_14;
+  MR_Box mercury__solutions__builtin_aggregate_4_p_7_env_0__Acc1_15;
+};
+
+struct mercury__solutions__builtin_aggregate_4_p_6_env_0_s {
+  MR_Word mercury__solutions__builtin_aggregate_4_p_6_env_0__TypeInfo_for_T_21;
+  MR_Word mercury__solutions__builtin_aggregate_4_p_6_env_0__TypeInfo_for_U_22;
+  MR_Word mercury__solutions__builtin_aggregate_4_p_6_env_0__GeneratorPred_5;
+  MR_Word mercury__solutions__builtin_aggregate_4_p_6_env_0__CollectorPred_6;
+  MR_bool mercury__solutions__builtin_aggregate_4_p_6_env_0__succeeded;
+  MR_Word mercury__solutions__builtin_aggregate_4_p_6_env_0__HeapPtr_8;
+  MR_Word mercury__solutions__builtin_aggregate_4_p_6_env_0__TrailPtr_10;
+  MR_Word mercury__solutions__builtin_aggregate_4_p_6_env_0__Mutvar_11;
+  jmp_buf mercury__solutions__builtin_aggregate_4_p_6_env_0__commit_0;
+  MR_Box mercury__solutions__builtin_aggregate_4_p_6_env_0__Answer0_12;
+  MR_Box mercury__solutions__builtin_aggregate_4_p_6_env_0__Answer_13;
+  MR_Box mercury__solutions__builtin_aggregate_4_p_6_env_0__Acc0_14;
+  MR_Box mercury__solutions__builtin_aggregate_4_p_6_env_0__Acc1_15;
+};
+
+struct mercury__solutions__builtin_aggregate_4_p_5_env_0_s {
+  MR_Word mercury__solutions__builtin_aggregate_4_p_5_env_0__TypeInfo_for_T_21;
+  MR_Word mercury__solutions__builtin_aggregate_4_p_5_env_0__TypeInfo_for_U_22;
+  MR_Word mercury__solutions__builtin_aggregate_4_p_5_env_0__GeneratorPred_5;
+  MR_Word mercury__solutions__builtin_aggregate_4_p_5_env_0__CollectorPred_6;
+  MR_bool mercury__solutions__builtin_aggregate_4_p_5_env_0__succeeded;
+  MR_Word mercury__solutions__builtin_aggregate_4_p_5_env_0__HeapPtr_8;
+  MR_Word mercury__solutions__builtin_aggregate_4_p_5_env_0__TrailPtr_10;
+  MR_Word mercury__solutions__builtin_aggregate_4_p_5_env_0__Mutvar_11;
+  jmp_buf mercury__solutions__builtin_aggregate_4_p_5_env_0__commit_0;
+  MR_Box mercury__solutions__builtin_aggregate_4_p_5_env_0__Answer0_12;
+  MR_Box mercury__solutions__builtin_aggregate_4_p_5_env_0__Answer_13;
+  MR_Box mercury__solutions__builtin_aggregate_4_p_5_env_0__Acc0_14;
+  MR_Box mercury__solutions__builtin_aggregate_4_p_5_env_0__Acc1_15;
+};
+
+struct mercury__solutions__builtin_aggregate_4_p_4_env_0_s {
+  MR_Word mercury__solutions__builtin_aggregate_4_p_4_env_0__TypeInfo_for_T_21;
+  MR_Word mercury__solutions__builtin_aggregate_4_p_4_env_0__TypeInfo_for_U_22;
+  MR_Word mercury__solutions__builtin_aggregate_4_p_4_env_0__GeneratorPred_5;
+  MR_Word mercury__solutions__builtin_aggregate_4_p_4_env_0__CollectorPred_6;
+  MR_bool mercury__solutions__builtin_aggregate_4_p_4_env_0__succeeded;
+  MR_Word mercury__solutions__builtin_aggregate_4_p_4_env_0__HeapPtr_8;
+  MR_Word mercury__solutions__builtin_aggregate_4_p_4_env_0__TrailPtr_10;
+  MR_Word mercury__solutions__builtin_aggregate_4_p_4_env_0__Mutvar_11;
+  jmp_buf mercury__solutions__builtin_aggregate_4_p_4_env_0__commit_0;
+  MR_Box mercury__solutions__builtin_aggregate_4_p_4_env_0__Answer0_12;
+  MR_Box mercury__solutions__builtin_aggregate_4_p_4_env_0__Answer_13;
+  MR_Box mercury__solutions__builtin_aggregate_4_p_4_env_0__Acc0_14;
+  MR_Box mercury__solutions__builtin_aggregate_4_p_4_env_0__Acc1_15;
+};
+
+struct mercury__solutions__builtin_aggregate_4_p_3_env_0_s {
+  MR_Word mercury__solutions__builtin_aggregate_4_p_3_env_0__TypeInfo_for_T_21;
+  MR_Word mercury__solutions__builtin_aggregate_4_p_3_env_0__TypeInfo_for_U_22;
+  MR_Word mercury__solutions__builtin_aggregate_4_p_3_env_0__GeneratorPred_5;
+  MR_Word mercury__solutions__builtin_aggregate_4_p_3_env_0__CollectorPred_6;
+  MR_bool mercury__solutions__builtin_aggregate_4_p_3_env_0__succeeded;
+  MR_Word mercury__solutions__builtin_aggregate_4_p_3_env_0__HeapPtr_8;
+  MR_Word mercury__solutions__builtin_aggregate_4_p_3_env_0__TrailPtr_10;
+  MR_Word mercury__solutions__builtin_aggregate_4_p_3_env_0__Mutvar_11;
+  jmp_buf mercury__solutions__builtin_aggregate_4_p_3_env_0__commit_0;
+  MR_Box mercury__solutions__builtin_aggregate_4_p_3_env_0__Answer0_12;
+  MR_Box mercury__solutions__builtin_aggregate_4_p_3_env_0__Answer_13;
+  MR_Box mercury__solutions__builtin_aggregate_4_p_3_env_0__Acc0_14;
+  MR_Box mercury__solutions__builtin_aggregate_4_p_3_env_0__Acc1_15;
+};
+
+struct mercury__solutions__builtin_aggregate_4_p_2_env_0_s {
+  MR_Word mercury__solutions__builtin_aggregate_4_p_2_env_0__TypeInfo_for_T_21;
+  MR_Word mercury__solutions__builtin_aggregate_4_p_2_env_0__TypeInfo_for_U_22;
+  MR_Word mercury__solutions__builtin_aggregate_4_p_2_env_0__GeneratorPred_5;
+  MR_Word mercury__solutions__builtin_aggregate_4_p_2_env_0__CollectorPred_6;
+  MR_bool mercury__solutions__builtin_aggregate_4_p_2_env_0__succeeded;
+  MR_Word mercury__solutions__builtin_aggregate_4_p_2_env_0__HeapPtr_8;
+  MR_Word mercury__solutions__builtin_aggregate_4_p_2_env_0__TrailPtr_10;
+  MR_Word mercury__solutions__builtin_aggregate_4_p_2_env_0__Mutvar_11;
+  jmp_buf mercury__solutions__builtin_aggregate_4_p_2_env_0__commit_0;
+  MR_Box mercury__solutions__builtin_aggregate_4_p_2_env_0__Answer0_12;
+  MR_Box mercury__solutions__builtin_aggregate_4_p_2_env_0__Answer_13;
+  MR_Box mercury__solutions__builtin_aggregate_4_p_2_env_0__Acc0_14;
+  MR_Box mercury__solutions__builtin_aggregate_4_p_2_env_0__Acc1_15;
+};
+
+struct mercury__solutions__builtin_aggregate_4_p_1_env_0_s {
+  MR_Word mercury__solutions__builtin_aggregate_4_p_1_env_0__TypeInfo_for_T_21;
+  MR_Word mercury__solutions__builtin_aggregate_4_p_1_env_0__TypeInfo_for_U_22;
+  MR_Word mercury__solutions__builtin_aggregate_4_p_1_env_0__GeneratorPred_5;
+  MR_Word mercury__solutions__builtin_aggregate_4_p_1_env_0__CollectorPred_6;
+  MR_bool mercury__solutions__builtin_aggregate_4_p_1_env_0__succeeded;
+  MR_Word mercury__solutions__builtin_aggregate_4_p_1_env_0__HeapPtr_8;
+  MR_Word mercury__solutions__builtin_aggregate_4_p_1_env_0__TrailPtr_10;
+  MR_Word mercury__solutions__builtin_aggregate_4_p_1_env_0__Mutvar_11;
+  jmp_buf mercury__solutions__builtin_aggregate_4_p_1_env_0__commit_0;
+  MR_Box mercury__solutions__builtin_aggregate_4_p_1_env_0__Answer0_12;
+  MR_Box mercury__solutions__builtin_aggregate_4_p_1_env_0__Answer_13;
+  MR_Box mercury__solutions__builtin_aggregate_4_p_1_env_0__Acc0_14;
+  MR_Box mercury__solutions__builtin_aggregate_4_p_1_env_0__Acc1_15;
+};
+
+struct mercury__solutions__builtin_aggregate_4_p_0_env_0_s {
+  MR_Word mercury__solutions__builtin_aggregate_4_p_0_env_0__TypeInfo_for_T_21;
+  MR_Word mercury__solutions__builtin_aggregate_4_p_0_env_0__TypeInfo_for_U_22;
+  MR_Word mercury__solutions__builtin_aggregate_4_p_0_env_0__GeneratorPred_5;
+  MR_Word mercury__solutions__builtin_aggregate_4_p_0_env_0__CollectorPred_6;
+  MR_bool mercury__solutions__builtin_aggregate_4_p_0_env_0__succeeded;
+  MR_Word mercury__solutions__builtin_aggregate_4_p_0_env_0__HeapPtr_8;
+  MR_Word mercury__solutions__builtin_aggregate_4_p_0_env_0__TrailPtr_10;
+  MR_Word mercury__solutions__builtin_aggregate_4_p_0_env_0__Mutvar_11;
+  jmp_buf mercury__solutions__builtin_aggregate_4_p_0_env_0__commit_0;
+  MR_Box mercury__solutions__builtin_aggregate_4_p_0_env_0__Answer0_12;
+  MR_Box mercury__solutions__builtin_aggregate_4_p_0_env_0__Answer_13;
+  MR_Box mercury__solutions__builtin_aggregate_4_p_0_env_0__Acc0_14;
+  MR_Box mercury__solutions__builtin_aggregate_4_p_0_env_0__Acc1_15;
+};
+
+struct mercury__solutions__builtin_solutions_2_p_1_env_0_s {
+  MR_Word mercury__solutions__builtin_solutions_2_p_1_env_0__TypeInfo_for_T_8;
+  MR_Word mercury__solutions__builtin_solutions_2_p_1_env_0__Generator_3;
+  MR_bool mercury__solutions__builtin_solutions_2_p_1_env_0__succeeded;
+  MR_Word mercury__solutions__builtin_solutions_2_p_1_env_0__TypeInfo_13_13;
+  MR_Word mercury__solutions__builtin_solutions_2_p_1_env_0__HeapPtr_19;
+  MR_Word mercury__solutions__builtin_solutions_2_p_1_env_0__TrailPtr_21;
+  MR_Word mercury__solutions__builtin_solutions_2_p_1_env_0__Mutvar_22;
+  jmp_buf mercury__solutions__builtin_solutions_2_p_1_env_0__commit_0;
+  MR_Box mercury__solutions__builtin_solutions_2_p_1_env_0__Answer0_23;
+  MR_Box mercury__solutions__builtin_solutions_2_p_1_env_0__Answer_24;
+  MR_Word mercury__solutions__builtin_solutions_2_p_1_env_0__Acc0_25;
+  MR_Word mercury__solutions__builtin_solutions_2_p_1_env_0__Acc1_26;
+};
+
+struct mercury__solutions__builtin_solutions_2_p_0_env_0_s {
+  MR_Word mercury__solutions__builtin_solutions_2_p_0_env_0__TypeInfo_for_T_8;
+  MR_Word mercury__solutions__builtin_solutions_2_p_0_env_0__Generator_3;
+  MR_bool mercury__solutions__builtin_solutions_2_p_0_env_0__succeeded;
+  MR_Word mercury__solutions__builtin_solutions_2_p_0_env_0__TypeInfo_13_13;
+  MR_Word mercury__solutions__builtin_solutions_2_p_0_env_0__HeapPtr_19;
+  MR_Word mercury__solutions__builtin_solutions_2_p_0_env_0__TrailPtr_21;
+  MR_Word mercury__solutions__builtin_solutions_2_p_0_env_0__Mutvar_22;
+  jmp_buf mercury__solutions__builtin_solutions_2_p_0_env_0__commit_0;
+  MR_Box mercury__solutions__builtin_solutions_2_p_0_env_0__Answer0_23;
+  MR_Box mercury__solutions__builtin_solutions_2_p_0_env_0__Answer_24;
+  MR_Word mercury__solutions__builtin_solutions_2_p_0_env_0__Acc0_25;
+  MR_Word mercury__solutions__builtin_solutions_2_p_0_env_0__Acc1_26;
+};
+
+struct mercury__solutions__do_while_4_p_5_env_0_s {
+  MR_Word mercury__solutions__do_while_4_p_5_env_0__TypeInfo_for_T_22;
+  MR_Word mercury__solutions__do_while_4_p_5_env_0__TypeInfo_for_T2_23;
+  MR_Word mercury__solutions__do_while_4_p_5_env_0__GeneratorPred_5;
+  MR_Word mercury__solutions__do_while_4_p_5_env_0__CollectorPred_6;
+  MR_bool mercury__solutions__do_while_4_p_5_env_0__succeeded;
+  MR_Word mercury__solutions__do_while_4_p_5_env_0__HeapPtr_8;
+  MR_Word mercury__solutions__do_while_4_p_5_env_0__TrailPtr_10;
+  MR_Word mercury__solutions__do_while_4_p_5_env_0__Mutvar_11;
+  jmp_buf mercury__solutions__do_while_4_p_5_env_0__commit_0;
+  MR_Box mercury__solutions__do_while_4_p_5_env_0__Answer0_12;
+  MR_Box mercury__solutions__do_while_4_p_5_env_0__Answer_13;
+  MR_Box mercury__solutions__do_while_4_p_5_env_0__Acc0_14;
+  MR_Word mercury__solutions__do_while_4_p_5_env_0__More_15;
+  MR_Box mercury__solutions__do_while_4_p_5_env_0__Acc1_16;
+};
+
+struct mercury__solutions__do_while_4_p_4_env_0_s {
+  MR_Word mercury__solutions__do_while_4_p_4_env_0__TypeInfo_for_T_22;
+  MR_Word mercury__solutions__do_while_4_p_4_env_0__TypeInfo_for_T2_23;
+  MR_Word mercury__solutions__do_while_4_p_4_env_0__GeneratorPred_5;
+  MR_Word mercury__solutions__do_while_4_p_4_env_0__CollectorPred_6;
+  MR_bool mercury__solutions__do_while_4_p_4_env_0__succeeded;
+  MR_Word mercury__solutions__do_while_4_p_4_env_0__HeapPtr_8;
+  MR_Word mercury__solutions__do_while_4_p_4_env_0__TrailPtr_10;
+  MR_Word mercury__solutions__do_while_4_p_4_env_0__Mutvar_11;
+  jmp_buf mercury__solutions__do_while_4_p_4_env_0__commit_0;
+  MR_Box mercury__solutions__do_while_4_p_4_env_0__Answer0_12;
+  MR_Box mercury__solutions__do_while_4_p_4_env_0__Answer_13;
+  MR_Box mercury__solutions__do_while_4_p_4_env_0__Acc0_14;
+  MR_Word mercury__solutions__do_while_4_p_4_env_0__More_15;
+  MR_Box mercury__solutions__do_while_4_p_4_env_0__Acc1_16;
+};
+
+struct mercury__solutions__do_while_4_p_3_env_0_s {
+  MR_Word mercury__solutions__do_while_4_p_3_env_0__TypeInfo_for_T_22;
+  MR_Word mercury__solutions__do_while_4_p_3_env_0__TypeInfo_for_T2_23;
+  MR_Word mercury__solutions__do_while_4_p_3_env_0__GeneratorPred_5;
+  MR_Word mercury__solutions__do_while_4_p_3_env_0__CollectorPred_6;
+  MR_bool mercury__solutions__do_while_4_p_3_env_0__succeeded;
+  MR_Word mercury__solutions__do_while_4_p_3_env_0__HeapPtr_8;
+  MR_Word mercury__solutions__do_while_4_p_3_env_0__TrailPtr_10;
+  MR_Word mercury__solutions__do_while_4_p_3_env_0__Mutvar_11;
+  jmp_buf mercury__solutions__do_while_4_p_3_env_0__commit_0;
+  MR_Box mercury__solutions__do_while_4_p_3_env_0__Answer0_12;
+  MR_Box mercury__solutions__do_while_4_p_3_env_0__Answer_13;
+  MR_Box mercury__solutions__do_while_4_p_3_env_0__Acc0_14;
+  MR_Word mercury__solutions__do_while_4_p_3_env_0__More_15;
+  MR_Box mercury__solutions__do_while_4_p_3_env_0__Acc1_16;
+};
+
+struct mercury__solutions__do_while_4_p_2_env_0_s {
+  MR_Word mercury__solutions__do_while_4_p_2_env_0__TypeInfo_for_T_22;
+  MR_Word mercury__solutions__do_while_4_p_2_env_0__TypeInfo_for_T2_23;
+  MR_Word mercury__solutions__do_while_4_p_2_env_0__GeneratorPred_5;
+  MR_Word mercury__solutions__do_while_4_p_2_env_0__CollectorPred_6;
+  MR_bool mercury__solutions__do_while_4_p_2_env_0__succeeded;
+  MR_Word mercury__solutions__do_while_4_p_2_env_0__HeapPtr_8;
+  MR_Word mercury__solutions__do_while_4_p_2_env_0__TrailPtr_10;
+  MR_Word mercury__solutions__do_while_4_p_2_env_0__Mutvar_11;
+  jmp_buf mercury__solutions__do_while_4_p_2_env_0__commit_0;
+  MR_Box mercury__solutions__do_while_4_p_2_env_0__Answer0_12;
+  MR_Box mercury__solutions__do_while_4_p_2_env_0__Answer_13;
+  MR_Box mercury__solutions__do_while_4_p_2_env_0__Acc0_14;
+  MR_Word mercury__solutions__do_while_4_p_2_env_0__More_15;
+  MR_Box mercury__solutions__do_while_4_p_2_env_0__Acc1_16;
+};
+
+struct mercury__solutions__do_while_4_p_1_env_0_s {
+  MR_Word mercury__solutions__do_while_4_p_1_env_0__TypeInfo_for_T_22;
+  MR_Word mercury__solutions__do_while_4_p_1_env_0__TypeInfo_for_T2_23;
+  MR_Word mercury__solutions__do_while_4_p_1_env_0__GeneratorPred_5;
+  MR_Word mercury__solutions__do_while_4_p_1_env_0__CollectorPred_6;
+  MR_bool mercury__solutions__do_while_4_p_1_env_0__succeeded;
+  MR_Word mercury__solutions__do_while_4_p_1_env_0__HeapPtr_8;
+  MR_Word mercury__solutions__do_while_4_p_1_env_0__TrailPtr_10;
+  MR_Word mercury__solutions__do_while_4_p_1_env_0__Mutvar_11;
+  jmp_buf mercury__solutions__do_while_4_p_1_env_0__commit_0;
+  MR_Box mercury__solutions__do_while_4_p_1_env_0__Answer0_12;
+  MR_Box mercury__solutions__do_while_4_p_1_env_0__Answer_13;
+  MR_Box mercury__solutions__do_while_4_p_1_env_0__Acc0_14;
+  MR_Word mercury__solutions__do_while_4_p_1_env_0__More_15;
+  MR_Box mercury__solutions__do_while_4_p_1_env_0__Acc1_16;
+};
+
+struct mercury__solutions__do_while_4_p_0_env_0_s {
+  MR_Word mercury__solutions__do_while_4_p_0_env_0__TypeInfo_for_T_22;
+  MR_Word mercury__solutions__do_while_4_p_0_env_0__TypeInfo_for_T2_23;
+  MR_Word mercury__solutions__do_while_4_p_0_env_0__GeneratorPred_5;
+  MR_Word mercury__solutions__do_while_4_p_0_env_0__CollectorPred_6;
+  MR_bool mercury__solutions__do_while_4_p_0_env_0__succeeded;
+  MR_Word mercury__solutions__do_while_4_p_0_env_0__HeapPtr_8;
+  MR_Word mercury__solutions__do_while_4_p_0_env_0__TrailPtr_10;
+  MR_Word mercury__solutions__do_while_4_p_0_env_0__Mutvar_11;
+  jmp_buf mercury__solutions__do_while_4_p_0_env_0__commit_0;
+  MR_Box mercury__solutions__do_while_4_p_0_env_0__Answer0_12;
+  MR_Box mercury__solutions__do_while_4_p_0_env_0__Answer_13;
+  MR_Box mercury__solutions__do_while_4_p_0_env_0__Acc0_14;
+  MR_Word mercury__solutions__do_while_4_p_0_env_0__More_15;
+  MR_Box mercury__solutions__do_while_4_p_0_env_0__Acc1_16;
+};
+
+
+static const MR_Integer mercury__solutions__solutions__functor_number_map_trail_ptr_0[1];
+
+static const MR_NotagFunctorDesc mercury__solutions__solutions__notag_functor_desc_trail_ptr_0;
+
+static MR_bool MR_CALL 
+mercury__solutions____Unify____heap_ptr_0_0_10001(
+  MR_Box mercury__solutions__wrapper_arg_1,
+  MR_Box mercury__solutions__wrapper_arg_2);
+
+static void MR_CALL 
+mercury__solutions____Compare____heap_ptr_0_0_10001(
+  MR_Box * mercury__solutions__wrapper_arg_1,
+  MR_Box mercury__solutions__wrapper_arg_2,
+  MR_Box mercury__solutions__wrapper_arg_3);
+
+static MR_bool MR_CALL 
+mercury__solutions____Unify____trail_ptr_0_0_10001(
+  MR_Box mercury__solutions__wrapper_arg_1,
+  MR_Box mercury__solutions__wrapper_arg_2);
+
+static void MR_CALL 
+mercury__solutions____Compare____trail_ptr_0_0_10001(
+  MR_Box * mercury__solutions__wrapper_arg_1,
+  MR_Box mercury__solutions__wrapper_arg_2,
+  MR_Box mercury__solutions__wrapper_arg_3);
+
+static void MR_CALL 
+mercury__solutions__f_85_110_117_115_101_100_65_114_103_115_95_95_112_114_101_100_95_95_102_111_108_100_108_95_95_104_111_57_95_95_91_49_44_32_50_44_32_52_44_32_53_44_32_54_93_95_48_4_p_in__list_0(
+  MR_Word mercury__solutions__Var_18,
+  MR_Word mercury__solutions__HeadVar__2_2,
+  MR_Box mercury__solutions__HeadVar__3_3,
+  MR_Box * mercury__solutions__HeadVar__4_4);
+
+static void MR_CALL 
+mercury__solutions__f_85_110_117_115_101_100_65_114_103_115_95_95_112_114_101_100_95_95_102_111_108_100_108_95_95_104_111_56_95_95_91_49_44_32_50_44_32_52_44_32_53_44_32_54_93_95_48_4_p_in__list_0(
+  MR_Word mercury__solutions__Var_18,
+  MR_Word mercury__solutions__HeadVar__2_2,
+  MR_Box mercury__solutions__HeadVar__3_3,
+  MR_Box * mercury__solutions__HeadVar__4_4);
+
+static MR_Integer MR_CALL 
+mercury__solutions__f_85_110_117_115_101_100_65_114_103_115_95_95_102_117_110_99_95_95_67_108_97_115_115_77_101_116_104_111_100_95_102_111_114_95_111_112_115_95_95_111_112_95_116_97_98_108_101_95_95_95_95_111_112_115_95_95_109_101_114_99_117_114_121_95_111_112_95_116_97_98_108_101_95_95_97_114_105_116_121_48_95_95_95_95_95_95_111_112_115_95_95_109_97_120_95_112_114_105_111_114_105_116_121_95_49_95_95_91_49_93_95_48_1_f_in__ops_0(void);
+
+static void MR_CALL 
+mercury__solutions__end_all_soln_neg_context_no_more_0_p_0(void);
+
+static void MR_CALL 
+mercury__solutions__end_all_soln_neg_context_more_0_p_0(void);
+
+static void MR_CALL 
+mercury__solutions__start_all_soln_neg_context_0_p_0(void);
+
+static void MR_CALL 
+mercury__solutions__reset_solutions_heap_1_p_0(
+  MR_Word mercury__solutions__SolutionsHeapPtr_1);
+
+static void MR_CALL 
+mercury__solutions__partial_deep_copy_3_p_2(
+  MR_Word mercury__solutions__TypeInfo_for_T_4,
+  MR_Word mercury__solutions__HeadVar__1_1,
+  MR_Box mercury__solutions__HeadVar__2_2,
+  MR_Box * mercury__solutions__HeadVar__3_3);
+
+static void MR_CALL 
+mercury__solutions__partial_deep_copy_3_p_1(
+  MR_Word mercury__solutions__TypeInfo_for_T_4,
+  MR_Word mercury__solutions__HeadVar__1_1,
+  MR_Box mercury__solutions__HeadVar__2_2,
+  MR_Box * mercury__solutions__HeadVar__3_3);
+
+static void MR_CALL 
+mercury__solutions__partial_deep_copy_3_p_0(
+  MR_Word mercury__solutions__TypeInfo_for_T_4,
+  MR_Word mercury__solutions__HeadVar__1_1,
+  MR_Box mercury__solutions__HeadVar__2_2,
+  MR_Box * mercury__solutions__HeadVar__3_3);
+
+static void MR_CALL 
+mercury__solutions__swap_heap_and_solutions_heap_0_p_0(void);
+
+static void MR_CALL 
+mercury__solutions__discard_trail_ticket_0_p_0(void);
+
+static void MR_CALL 
+mercury__solutions__check_for_floundering_1_p_0(
+  MR_Word mercury__solutions__TrailPtr_1);
+
+static void MR_CALL 
+mercury__solutions__get_registers_3_p_0(
+  MR_Word * mercury__solutions__HeapPtr_1,
+  MR_Word * mercury__solutions__SolutionsHeapPtr_2,
+  MR_Word * mercury__solutions__TrailPtr_3);
+
+static void MR_CALL 
+mercury__solutions__builtin_aggregate2_6_p_7_1(
+  void * mercury__solutions__env_ptr_arg);
+
+static void MR_CALL 
+mercury__solutions__builtin_aggregate2_6_p_7_2(
+  void * mercury__solutions__env_ptr_arg);
+
+static void MR_CALL 
+mercury__solutions__builtin_aggregate2_6_p_7_3(
+  void * mercury__solutions__env_ptr_arg);
+
+static void MR_CALL 
+mercury__solutions__builtin_aggregate2_6_p_6_1(
+  void * mercury__solutions__env_ptr_arg);
+
+static void MR_CALL 
+mercury__solutions__builtin_aggregate2_6_p_6_2(
+  void * mercury__solutions__env_ptr_arg);
+
+static void MR_CALL 
+mercury__solutions__builtin_aggregate2_6_p_6_3(
+  void * mercury__solutions__env_ptr_arg);
+
+static void MR_CALL 
+mercury__solutions__builtin_aggregate2_6_p_5_1(
+  void * mercury__solutions__env_ptr_arg);
+
+static void MR_CALL 
+mercury__solutions__builtin_aggregate2_6_p_5_2(
+  void * mercury__solutions__env_ptr_arg);
+
+static void MR_CALL 
+mercury__solutions__builtin_aggregate2_6_p_5_3(
+  void * mercury__solutions__env_ptr_arg);
+
+static void MR_CALL 
+mercury__solutions__builtin_aggregate2_6_p_4_1(
+  void * mercury__solutions__env_ptr_arg);
+
+static void MR_CALL 
+mercury__solutions__builtin_aggregate2_6_p_4_2(
+  void * mercury__solutions__env_ptr_arg);
+
+static void MR_CALL 
+mercury__solutions__builtin_aggregate2_6_p_4_3(
+  void * mercury__solutions__env_ptr_arg);
+
+static void MR_CALL 
+mercury__solutions__builtin_aggregate2_6_p_3_1(
+  void * mercury__solutions__env_ptr_arg);
+
+static void MR_CALL 
+mercury__solutions__builtin_aggregate2_6_p_3_2(
+  void * mercury__solutions__env_ptr_arg);
+
+static void MR_CALL 
+mercury__solutions__builtin_aggregate2_6_p_3_3(
+  void * mercury__solutions__env_ptr_arg);
+
+static void MR_CALL 
+mercury__solutions__builtin_aggregate2_6_p_2_1(
+  void * mercury__solutions__env_ptr_arg);
+
+static void MR_CALL 
+mercury__solutions__builtin_aggregate2_6_p_2_2(
+  void * mercury__solutions__env_ptr_arg);
+
+static void MR_CALL 
+mercury__solutions__builtin_aggregate2_6_p_2_3(
+  void * mercury__solutions__env_ptr_arg);
+
+static void MR_CALL 
+mercury__solutions__builtin_aggregate2_6_p_1_1(
+  void * mercury__solutions__env_ptr_arg);
+
+static void MR_CALL 
+mercury__solutions__builtin_aggregate2_6_p_1_2(
+  void * mercury__solutions__env_ptr_arg);
+
+static void MR_CALL 
+mercury__solutions__builtin_aggregate2_6_p_1_3(
+  void * mercury__solutions__env_ptr_arg);
+
+static void MR_CALL 
+mercury__solutions__builtin_aggregate2_6_p_0_1(
+  void * mercury__solutions__env_ptr_arg);
+
+static void MR_CALL 
+mercury__solutions__builtin_aggregate2_6_p_0_2(
+  void * mercury__solutions__env_ptr_arg);
+
+static void MR_CALL 
+mercury__solutions__builtin_aggregate2_6_p_0_3(
+  void * mercury__solutions__env_ptr_arg);
+
+static void MR_CALL 
+mercury__solutions__builtin_aggregate_4_p_9_1(
+  void * mercury__solutions__env_ptr_arg);
+
+static void MR_CALL 
+mercury__solutions__builtin_aggregate_4_p_9_2(
+  void * mercury__solutions__env_ptr_arg);
+
+static void MR_CALL 
+mercury__solutions__builtin_aggregate_4_p_9_3(
+  void * mercury__solutions__env_ptr_arg);
+
+static void MR_CALL 
+mercury__solutions__builtin_aggregate_4_p_8_1(
+  void * mercury__solutions__env_ptr_arg);
+
+static void MR_CALL 
+mercury__solutions__builtin_aggregate_4_p_8_2(
+  void * mercury__solutions__env_ptr_arg);
+
+static void MR_CALL 
+mercury__solutions__builtin_aggregate_4_p_8_3(
+  void * mercury__solutions__env_ptr_arg);
+
+static void MR_CALL 
+mercury__solutions__builtin_aggregate_4_p_7_1(
+  void * mercury__solutions__env_ptr_arg);
+
+static void MR_CALL 
+mercury__solutions__builtin_aggregate_4_p_7_2(
+  void * mercury__solutions__env_ptr_arg);
+
+static void MR_CALL 
+mercury__solutions__builtin_aggregate_4_p_7_3(
+  void * mercury__solutions__env_ptr_arg);
+
+static void MR_CALL 
+mercury__solutions__builtin_aggregate_4_p_6_1(
+  void * mercury__solutions__env_ptr_arg);
+
+static void MR_CALL 
+mercury__solutions__builtin_aggregate_4_p_6_2(
+  void * mercury__solutions__env_ptr_arg);
+
+static void MR_CALL 
+mercury__solutions__builtin_aggregate_4_p_6_3(
+  void * mercury__solutions__env_ptr_arg);
+
+static void MR_CALL 
+mercury__solutions__builtin_aggregate_4_p_5_1(
+  void * mercury__solutions__env_ptr_arg);
+
+static void MR_CALL 
+mercury__solutions__builtin_aggregate_4_p_5_2(
+  void * mercury__solutions__env_ptr_arg);
+
+static void MR_CALL 
+mercury__solutions__builtin_aggregate_4_p_5_3(
+  void * mercury__solutions__env_ptr_arg);
+
+static void MR_CALL 
+mercury__solutions__builtin_aggregate_4_p_4_1(
+  void * mercury__solutions__env_ptr_arg);
+
+static void MR_CALL 
+mercury__solutions__builtin_aggregate_4_p_4_2(
+  void * mercury__solutions__env_ptr_arg);
+
+static void MR_CALL 
+mercury__solutions__builtin_aggregate_4_p_4_3(
+  void * mercury__solutions__env_ptr_arg);
+
+static void MR_CALL 
+mercury__solutions__builtin_aggregate_4_p_3_1(
+  void * mercury__solutions__env_ptr_arg);
+
+static void MR_CALL 
+mercury__solutions__builtin_aggregate_4_p_3_2(
+  void * mercury__solutions__env_ptr_arg);
+
+static void MR_CALL 
+mercury__solutions__builtin_aggregate_4_p_3_3(
+  void * mercury__solutions__env_ptr_arg);
+
+static void MR_CALL 
+mercury__solutions__builtin_aggregate_4_p_2_1(
+  void * mercury__solutions__env_ptr_arg);
+
+static void MR_CALL 
+mercury__solutions__builtin_aggregate_4_p_2_2(
+  void * mercury__solutions__env_ptr_arg);
+
+static void MR_CALL 
+mercury__solutions__builtin_aggregate_4_p_2_3(
+  void * mercury__solutions__env_ptr_arg);
+
+static void MR_CALL 
+mercury__solutions__builtin_aggregate_4_p_1_1(
+  void * mercury__solutions__env_ptr_arg);
+
+static void MR_CALL 
+mercury__solutions__builtin_aggregate_4_p_1_2(
+  void * mercury__solutions__env_ptr_arg);
+
+static void MR_CALL 
+mercury__solutions__builtin_aggregate_4_p_1_3(
+  void * mercury__solutions__env_ptr_arg);
+
+static void MR_CALL 
+mercury__solutions__builtin_aggregate_4_p_0_1(
+  void * mercury__solutions__env_ptr_arg);
+
+static void MR_CALL 
+mercury__solutions__builtin_aggregate_4_p_0_2(
+  void * mercury__solutions__env_ptr_arg);
+
+static void MR_CALL 
+mercury__solutions__builtin_aggregate_4_p_0_3(
+  void * mercury__solutions__env_ptr_arg);
+
+static void MR_CALL 
+mercury__solutions__builtin_solutions_2_p_1_1(
+  void * mercury__solutions__env_ptr_arg);
+
+static void MR_CALL 
+mercury__solutions__builtin_solutions_2_p_1_2(
+  void * mercury__solutions__env_ptr_arg);
+
+static void MR_CALL 
+mercury__solutions__builtin_solutions_2_p_1_3(
+  void * mercury__solutions__env_ptr_arg);
+
+static void MR_CALL 
+mercury__solutions__builtin_solutions_2_p_0_1(
+  void * mercury__solutions__env_ptr_arg);
+
+static void MR_CALL 
+mercury__solutions__builtin_solutions_2_p_0_2(
+  void * mercury__solutions__env_ptr_arg);
+
+static void MR_CALL 
+mercury__solutions__builtin_solutions_2_p_0_3(
+  void * mercury__solutions__env_ptr_arg);
+
+static void MR_CALL 
+mercury__solutions__do_while_4_p_5_1(
+  void * mercury__solutions__env_ptr_arg);
+
+static void MR_CALL 
+mercury__solutions__do_while_4_p_5_2(
+  void * mercury__solutions__env_ptr_arg);
+
+static void MR_CALL 
+mercury__solutions__do_while_4_p_5_3(
+  void * mercury__solutions__env_ptr_arg);
+
+static void MR_CALL 
+mercury__solutions__do_while_4_p_4_1(
+  void * mercury__solutions__env_ptr_arg);
+
+static void MR_CALL 
+mercury__solutions__do_while_4_p_4_2(
+  void * mercury__solutions__env_ptr_arg);
+
+static void MR_CALL 
+mercury__solutions__do_while_4_p_4_3(
+  void * mercury__solutions__env_ptr_arg);
+
+static void MR_CALL 
+mercury__solutions__do_while_4_p_3_1(
+  void * mercury__solutions__env_ptr_arg);
+
+static void MR_CALL 
+mercury__solutions__do_while_4_p_3_2(
+  void * mercury__solutions__env_ptr_arg);
+
+static void MR_CALL 
+mercury__solutions__do_while_4_p_3_3(
+  void * mercury__solutions__env_ptr_arg);
+
+static void MR_CALL 
+mercury__solutions__do_while_4_p_2_1(
+  void * mercury__solutions__env_ptr_arg);
+
+static void MR_CALL 
+mercury__solutions__do_while_4_p_2_2(
+  void * mercury__solutions__env_ptr_arg);
+
+static void MR_CALL 
+mercury__solutions__do_while_4_p_2_3(
+  void * mercury__solutions__env_ptr_arg);
+
+static void MR_CALL 
+mercury__solutions__do_while_4_p_1_1(
+  void * mercury__solutions__env_ptr_arg);
+
+static void MR_CALL 
+mercury__solutions__do_while_4_p_1_2(
+  void * mercury__solutions__env_ptr_arg);
+
+static void MR_CALL 
+mercury__solutions__do_while_4_p_1_3(
+  void * mercury__solutions__env_ptr_arg);
+
+static void MR_CALL 
+mercury__solutions__do_while_4_p_0_1(
+  void * mercury__solutions__env_ptr_arg);
+
+static void MR_CALL 
+mercury__solutions__do_while_4_p_0_2(
+  void * mercury__solutions__env_ptr_arg);
+
+static void MR_CALL 
+mercury__solutions__do_while_4_p_0_3(
+  void * mercury__solutions__env_ptr_arg);
+
+
+static /* final */ const MR_Box mercury__solutions_scalar_common_1[1][3];
+
+static /* final */ const MR_Box mercury__solutions_scalar_common_2[1][4];
+
+static /* final */ const MR_Box mercury__solutions_scalar_common_3[2][5];
+
+
+
+
+static /* final */ const MR_Box mercury__solutions_scalar_common_1[1][3] = {
+  /* row 0 */
+  {
+    ((MR_Box) (base_typeclass_info_stream__stream__arity2__io__output_stream__arity0__io__state__arity0__)),
+    ((MR_Box) (&mercury__io__io__type_ctor_info_output_stream_0)),
+    ((MR_Box) (&mercury__io__io__type_ctor_info_state_0))
+  },
+};
+
+static /* final */ const MR_Box mercury__solutions_scalar_common_2[1][4] = {
+  /* row 0 */
+  {
+    ((MR_Box) (base_typeclass_info_stream__output__arity2__io__output_stream__arity0__io__state__arity0__)),
+    ((MR_Box) (&mercury__solutions_scalar_common_1[0])),
+    ((MR_Box) (&mercury__io__io__type_ctor_info_output_stream_0)),
+    ((MR_Box) (&mercury__io__io__type_ctor_info_state_0))
+  },
+};
+
+static /* final */ const MR_Box mercury__solutions_scalar_common_3[2][5] = {
+  /* row 0 */
+  {
+    ((MR_Box) (base_typeclass_info_stream__writer__arity3__io__output_stream__arity0__string__arity0__io__state__arity0__)),
+    ((MR_Box) (&mercury__solutions_scalar_common_2[0])),
+    ((MR_Box) (&mercury__io__io__type_ctor_info_output_stream_0)),
+    ((MR_Box) (&mercury__builtin__builtin__type_ctor_info_string_0)),
+    ((MR_Box) (&mercury__io__io__type_ctor_info_state_0))
+  },
+  /* row 1 */
+  {
+    ((MR_Box) (base_typeclass_info_stream__writer__arity3__io__output_stream__arity0__character__arity0__io__state__arity0__)),
+    ((MR_Box) (&mercury__solutions_scalar_common_2[0])),
+    ((MR_Box) (&mercury__io__io__type_ctor_info_output_stream_0)),
+    ((MR_Box) (&mercury__builtin__builtin__type_ctor_info_character_0)),
+    ((MR_Box) (&mercury__io__io__type_ctor_info_state_0))
+  },
+};
+
+
+
+#include "array.mh"
+#include "benchmarking.mh"
+#include "bitmap.mh"
+#include "builtin.mh"
+#include "char.mh"
+#include "construct.mh"
+#include "dir.mh"
+#include "exception.mh"
+#include "float.mh"
+#include "int.mh"
+#include "io.mh"
+#include "math.mh"
+#include "pretty_printer.mh"
+#include "private_builtin.mh"
+#include "rtti_implementation.mh"
+#include "solutions.mh"
+#include "stm_builtin.mh"
+#include "store.mh"
+#include "string.mh"
+#include "table_builtin.mh"
+#include "time.mh"
+#include "type_desc.mh"
+#include "uint.mh"
+#include "version_array.mh"
+
+
+
+const MR_TypeCtorInfo_Struct mercury__solutions__solutions__type_ctor_info_heap_ptr_0 = {
+  (MR_Integer) 0,
+  (MR_Integer) 17,
+  (MR_Integer) -1,
+  mercury__private_builtin__MR_TYPECTOR_REP_EQUIV_GROUND,
+  ((MR_Box) (mercury__solutions____Unify____heap_ptr_0_0_10001)),
+  ((MR_Box) (mercury__solutions____Compare____heap_ptr_0_0_10001)),
+  (MR_String) "solutions",
+  (MR_String) "heap_ptr",
+  {     NULL },
+  {     (MR_PseudoTypeInfo) &mercury__private_builtin__private_builtin__type_ctor_info_heap_pointer_0 },
+  (MR_Integer) -1,
+  (MR_Integer) 0,
+  NULL
+};
+
+static const MR_Integer mercury__solutions__solutions__functor_number_map_trail_ptr_0[1] = {
+  (MR_Integer) 0
+};
+
+static const MR_NotagFunctorDesc mercury__solutions__solutions__notag_functor_desc_trail_ptr_0 = {
+  (MR_String) "trail_ptr",
+  (MR_PseudoTypeInfo) &mercury__builtin__builtin__type_ctor_info_c_pointer_0,
+  NULL,
+  mercury__private_builtin__MR_FUNCTOR_SUBTYPE_NONE
+};
+
+const MR_TypeCtorInfo_Struct mercury__solutions__solutions__type_ctor_info_trail_ptr_0 = {
+  (MR_Integer) 0,
+  (MR_Integer) 17,
+  (MR_Integer) -1,
+  mercury__private_builtin__MR_TYPECTOR_REP_NOTAG_GROUND,
+  ((MR_Box) (mercury__solutions____Unify____trail_ptr_0_0_10001)),
+  ((MR_Box) (mercury__solutions____Compare____trail_ptr_0_0_10001)),
+  (MR_String) "solutions",
+  (MR_String) "trail_ptr",
+  {     &mercury__solutions__solutions__notag_functor_desc_trail_ptr_0 },
+  {     &mercury__solutions__solutions__notag_functor_desc_trail_ptr_0 },
+  (MR_Integer) 1,
+  (MR_Integer) 4,
+  mercury__solutions__solutions__functor_number_map_trail_ptr_0
+};
+
+static MR_bool MR_CALL 
+mercury__solutions____Unify____heap_ptr_0_0_10001(
+  MR_Box mercury__solutions__wrapper_arg_1,
+  MR_Box mercury__solutions__wrapper_arg_2)
+{
+  {
+    MR_bool mercury__solutions__succeeded;
+
+    {
+      mercury__solutions__succeeded = mercury__solutions____Unify____heap_ptr_0_0(((MR_Word) mercury__solutions__wrapper_arg_1), ((MR_Word) mercury__solutions__wrapper_arg_2));
+    }
+    return mercury__solutions__succeeded;
+  }
+}
+
+static void MR_CALL 
+mercury__solutions____Compare____heap_ptr_0_0_10001(
+  MR_Box * mercury__solutions__wrapper_arg_1,
+  MR_Box mercury__solutions__wrapper_arg_2,
+  MR_Box mercury__solutions__wrapper_arg_3)
+{
+  {
+    MR_Word mercury__solutions__conv0_HeadVar__1_1;
+
+    {
+      mercury__solutions____Compare____heap_ptr_0_0(&mercury__solutions__conv0_HeadVar__1_1, ((MR_Word) mercury__solutions__wrapper_arg_2), ((MR_Word) mercury__solutions__wrapper_arg_3));
+    }
+    *mercury__solutions__wrapper_arg_1 = ((MR_Box) (mercury__solutions__conv0_HeadVar__1_1));
+  }
+}
+
+static MR_bool MR_CALL 
+mercury__solutions____Unify____trail_ptr_0_0_10001(
+  MR_Box mercury__solutions__wrapper_arg_1,
+  MR_Box mercury__solutions__wrapper_arg_2)
+{
+  {
+    MR_bool mercury__solutions__succeeded;
+
+    {
+      mercury__solutions__succeeded = mercury__solutions____Unify____trail_ptr_0_0(((MR_Word) mercury__solutions__wrapper_arg_1), ((MR_Word) mercury__solutions__wrapper_arg_2));
+    }
+    return mercury__solutions__succeeded;
+  }
+}
+
+static void MR_CALL 
+mercury__solutions____Compare____trail_ptr_0_0_10001(
+  MR_Box * mercury__solutions__wrapper_arg_1,
+  MR_Box mercury__solutions__wrapper_arg_2,
+  MR_Box mercury__solutions__wrapper_arg_3)
+{
+  {
+    MR_Word mercury__solutions__conv0_HeadVar__1_1;
+
+    {
+      mercury__solutions____Compare____trail_ptr_0_0(&mercury__solutions__conv0_HeadVar__1_1, ((MR_Word) mercury__solutions__wrapper_arg_2), ((MR_Word) mercury__solutions__wrapper_arg_3));
+    }
+    *mercury__solutions__wrapper_arg_1 = ((MR_Box) (mercury__solutions__conv0_HeadVar__1_1));
+  }
+}
+
+static void MR_CALL 
+mercury__solutions__f_85_110_117_115_101_100_65_114_103_115_95_95_112_114_101_100_95_95_102_111_108_100_108_95_95_104_111_57_95_95_91_49_44_32_50_44_32_52_44_32_53_44_32_54_93_95_48_4_p_in__list_0(
+  MR_Word mercury__solutions__Var_18,
+  MR_Word mercury__solutions__HeadVar__2_2,
+  MR_Box mercury__solutions__HeadVar__3_3,
+  MR_Box * mercury__solutions__HeadVar__4_4)
+{
+  while (MR_TRUE)
+    {
+      /* tailcall optimized into a loop */
+      {
+        MR_bool mercury__solutions__succeeded;
+
+        if ((mercury__solutions__HeadVar__2_2 == ((MR_Word) MR_mkword(MR_mktag(0), MR_mkbody((MR_Integer) 0)))))
+          *mercury__solutions__HeadVar__4_4 = mercury__solutions__HeadVar__3_3;
+        else
+          {
+            MR_Box mercury__solutions__V_10_9 = (MR_hl_field(MR_mktag(1), mercury__solutions__HeadVar__2_2, (MR_Integer) 0));
+            MR_Word mercury__solutions__V_11_10 = ((MR_Word) (MR_hl_field(MR_mktag(1), mercury__solutions__HeadVar__2_2, (MR_Integer) 1)));
+            MR_Box mercury__solutions__V_15_13;
+            MR_Box MR_CALL (* mercury__solutions__func_0)(MR_Box, MR_Box, MR_Box) = ((MR_Box MR_CALL (*)(MR_Box, MR_Box, MR_Box)) (MR_hl_field(MR_mktag(0), mercury__solutions__Var_18, (MR_Integer) 1)));
+
+            {
+              mercury__solutions__V_15_13 = mercury__solutions__func_0(((MR_Box) mercury__solutions__Var_18), mercury__solutions__V_10_9, mercury__solutions__HeadVar__3_3);
+            }
+            /* direct tailcall eliminated */
+            {
+              MR_Word mercury__solutions__next_value_of_HeadVar__2_2 = mercury__solutions__V_11_10;
+              MR_Box mercury__solutions__next_value_of_HeadVar__3_3 = mercury__solutions__V_15_13;
+
+              mercury__solutions__HeadVar__3_3 = mercury__solutions__next_value_of_HeadVar__3_3;
+              mercury__solutions__HeadVar__2_2 = mercury__solutions__next_value_of_HeadVar__2_2;
+            }
+            continue;
+          }
+      }
+      break;
+    }
+}
+
+static void MR_CALL 
+mercury__solutions__f_85_110_117_115_101_100_65_114_103_115_95_95_112_114_101_100_95_95_102_111_108_100_108_95_95_104_111_56_95_95_91_49_44_32_50_44_32_52_44_32_53_44_32_54_93_95_48_4_p_in__list_0(
+  MR_Word mercury__solutions__Var_18,
+  MR_Word mercury__solutions__HeadVar__2_2,
+  MR_Box mercury__solutions__HeadVar__3_3,
+  MR_Box * mercury__solutions__HeadVar__4_4)
+{
+  while (MR_TRUE)
+    {
+      /* tailcall optimized into a loop */
+      {
+        MR_bool mercury__solutions__succeeded;
+
+        if ((mercury__solutions__HeadVar__2_2 == ((MR_Word) MR_mkword(MR_mktag(0), MR_mkbody((MR_Integer) 0)))))
+          *mercury__solutions__HeadVar__4_4 = mercury__solutions__HeadVar__3_3;
+        else
+          {
+            MR_Box mercury__solutions__V_10_9 = (MR_hl_field(MR_mktag(1), mercury__solutions__HeadVar__2_2, (MR_Integer) 0));
+            MR_Word mercury__solutions__V_11_10 = ((MR_Word) (MR_hl_field(MR_mktag(1), mercury__solutions__HeadVar__2_2, (MR_Integer) 1)));
+            MR_Box mercury__solutions__V_15_13;
+            MR_Box MR_CALL (* mercury__solutions__func_0)(MR_Box, MR_Box, MR_Box) = ((MR_Box MR_CALL (*)(MR_Box, MR_Box, MR_Box)) (MR_hl_field(MR_mktag(0), mercury__solutions__Var_18, (MR_Integer) 1)));
+
+            {
+              mercury__solutions__V_15_13 = mercury__solutions__func_0(((MR_Box) mercury__solutions__Var_18), mercury__solutions__V_10_9, mercury__solutions__HeadVar__3_3);
+            }
+            /* direct tailcall eliminated */
+            {
+              MR_Word mercury__solutions__next_value_of_HeadVar__2_2 = mercury__solutions__V_11_10;
+              MR_Box mercury__solutions__next_value_of_HeadVar__3_3 = mercury__solutions__V_15_13;
+
+              mercury__solutions__HeadVar__3_3 = mercury__solutions__next_value_of_HeadVar__3_3;
+              mercury__solutions__HeadVar__2_2 = mercury__solutions__next_value_of_HeadVar__2_2;
+            }
+            continue;
+          }
+      }
+      break;
+    }
+}
+
+static MR_Integer MR_CALL 
+mercury__solutions__f_85_110_117_115_101_100_65_114_103_115_95_95_102_117_110_99_95_95_67_108_97_115_115_77_101_116_104_111_100_95_102_111_114_95_111_112_115_95_95_111_112_95_116_97_98_108_101_95_95_95_95_111_112_115_95_95_109_101_114_99_117_114_121_95_111_112_95_116_97_98_108_101_95_95_97_114_105_116_121_48_95_95_95_95_95_95_111_112_115_95_95_109_97_120_95_112_114_105_111_114_105_116_121_95_49_95_95_91_49_93_95_48_1_f_in__ops_0(void)
+{
+  {
+    MR_bool mercury__solutions__succeeded;
+
+    return (MR_Integer) 1200;
+  }
+}
+
+void MR_CALL 
+mercury__solutions__f_85_110_117_115_101_100_65_114_103_115_95_95_112_114_101_100_95_95_97_115_115_101_114_116_95_110_117_109_95_115_111_108_117_116_105_111_110_115_95_95_91_50_93_95_49_3_p_1(
+  MR_Word mercury__solutions__TypeInfo_for_T_14,
+  MR_Word mercury__solutions__HeadVar__2_2,
+  MR_Word * mercury__solutions__List_3)
+{
+  {
+    MR_bool mercury__solutions__succeeded;
+
+    *mercury__solutions__List_3 = mercury__solutions__HeadVar__2_2;
+  }
+}
+
+void MR_CALL 
+mercury__solutions__f_85_110_117_115_101_100_65_114_103_115_95_95_112_114_101_100_95_95_97_115_115_101_114_116_95_110_117_109_95_115_111_108_117_116_105_111_110_115_95_95_91_50_93_95_48_3_p_0(
+  MR_Word mercury__solutions__TypeInfo_for_T_14,
+  MR_Word mercury__solutions__HeadVar__2_2,
+  MR_Word * mercury__solutions__List_3)
+{
+  {
+    MR_bool mercury__solutions__succeeded;
+
+    if ((mercury__solutions__HeadVar__2_2 == ((MR_Word) MR_mkword(MR_mktag(0), MR_mkbody((MR_Integer) 0)))))
+      {
+        {
+          mercury__require__unexpected_3_p_0((MR_String) "solutions", (MR_String) "predicate \140solutions.assert_num_solutions\'/3", (MR_String) "no solutions");
+          return;
+        }
+      }
+    else
+      *mercury__solutions__List_3 = mercury__solutions__HeadVar__2_2;
+  }
+}
+
+void MR_CALL 
+mercury__solutions____Compare____trail_ptr_0_0(
+  MR_Word * mercury__solutions__HeadVar__1_1,
+  MR_Word mercury__solutions__HeadVar__2_2,
+  MR_Word mercury__solutions__HeadVar__3_3)
+{
+  {
+    MR_bool mercury__solutions__succeeded;
+    MR_Integer mercury__solutions__CastX_6 = (MR_Integer) mercury__solutions__HeadVar__2_2;
+    MR_Integer mercury__solutions__CastY_7 = (MR_Integer) mercury__solutions__HeadVar__3_3;
+
+    mercury__solutions__succeeded = (mercury__solutions__CastX_6 == mercury__solutions__CastY_7);
+    if (mercury__solutions__succeeded)
+      *mercury__solutions__HeadVar__1_1 = (MR_Integer) 0;
+    else
+      {
+        MR_Word mercury__solutions__Var_4 = (MR_Word) mercury__solutions__HeadVar__2_2;
+        MR_Word mercury__solutions__Var_5 = (MR_Word) mercury__solutions__HeadVar__3_3;
+
+        {
+          mercury__builtin____Compare____c_pointer_0_0(mercury__solutions__HeadVar__1_1, mercury__solutions__Var_4, mercury__solutions__Var_5);
+        }
+      }
+  }
+}
+
+MR_bool MR_CALL 
+mercury__solutions____Unify____trail_ptr_0_0(
+  MR_Word mercury__solutions__HeadVar__1_1,
+  MR_Word mercury__solutions__HeadVar__2_2)
+{
+  {
+    MR_bool mercury__solutions__succeeded;
+    MR_Integer mercury__solutions__CastX_5 = (MR_Integer) mercury__solutions__HeadVar__1_1;
+    MR_Integer mercury__solutions__CastY_6 = (MR_Integer) mercury__solutions__HeadVar__2_2;
+
+    mercury__solutions__succeeded = (mercury__solutions__CastX_5 == mercury__solutions__CastY_6);
+    if (mercury__solutions__succeeded)
+      mercury__solutions__succeeded = MR_TRUE;
+    else
+      {
+        MR_Word mercury__solutions__Var_3 = (MR_Word) mercury__solutions__HeadVar__1_1;
+        MR_Word mercury__solutions__Var_4 = (MR_Word) mercury__solutions__HeadVar__2_2;
+
+        {
+          mercury__solutions__succeeded = mercury__builtin____Unify____c_pointer_0_0(mercury__solutions__Var_3, mercury__solutions__Var_4);
+        }
+      }
+    return mercury__solutions__succeeded;
+  }
+}
+
+void MR_CALL 
+mercury__solutions____Compare____heap_ptr_0_0(
+  MR_Word * mercury__solutions__HeadVar__1_1,
+  MR_Word mercury__solutions__HeadVar__2_2,
+  MR_Word mercury__solutions__HeadVar__3_3)
+{
+  {
+    MR_bool mercury__solutions__succeeded;
+    MR_Word mercury__solutions__Cast_HeadVar1_4 = mercury__solutions__HeadVar__2_2;
+    MR_Word mercury__solutions__Cast_HeadVar2_5 = mercury__solutions__HeadVar__3_3;
+
+    {
+      mercury__private_builtin____Compare____heap_pointer_0_0(mercury__solutions__HeadVar__1_1, mercury__solutions__Cast_HeadVar1_4, mercury__solutions__Cast_HeadVar2_5);
+    }
+  }
+}
+
+MR_bool MR_CALL 
+mercury__solutions____Unify____heap_ptr_0_0(
+  MR_Word mercury__solutions__HeadVar__1_1,
+  MR_Word mercury__solutions__HeadVar__2_2)
+{
+  {
+    MR_bool mercury__solutions__succeeded;
+    MR_Word mercury__solutions__Cast_HeadVar1_3 = mercury__solutions__HeadVar__1_1;
+    MR_Word mercury__solutions__Cast_HeadVar2_4 = mercury__solutions__HeadVar__2_2;
+
+    {
+      mercury__solutions__succeeded = mercury__private_builtin____Unify____heap_pointer_0_0(mercury__solutions__Cast_HeadVar1_3, mercury__solutions__Cast_HeadVar2_4);
+    }
+    return mercury__solutions__succeeded;
+  }
+}
+
+static void MR_CALL 
+mercury__solutions__end_all_soln_neg_context_no_more_0_p_0(void)
+{
+  {
+    MR_bool mercury__solutions__succeeded;
+
+{
+#define MR_PROC_LABEL mercury__solutions__end_all_soln_neg_context_no_more_0_p_0
+
+
+		{
+
+#ifdef MR_USE_MINIMAL_MODEL_STACK_COPY
+    MR_pneg_enter_else("end_all_soln_neg_context");
+#endif
+
+
+		;}
+#undef MR_PROC_LABEL
+}
+  }
+}
+
+static void MR_CALL 
+mercury__solutions__end_all_soln_neg_context_more_0_p_0(void)
+{
+  {
+    MR_bool mercury__solutions__succeeded;
+
+{
+#define MR_PROC_LABEL mercury__solutions__end_all_soln_neg_context_more_0_p_0
+
+
+		{
+
+#ifdef MR_USE_MINIMAL_MODEL_STACK_COPY
+    MR_pneg_enter_then();
+#endif
+
+
+		;}
+#undef MR_PROC_LABEL
+}
+  }
+}
+
+static void MR_CALL 
+mercury__solutions__start_all_soln_neg_context_0_p_0(void)
+{
+  {
+    MR_bool mercury__solutions__succeeded;
+
+{
+#define MR_PROC_LABEL mercury__solutions__start_all_soln_neg_context_0_p_0
+
+
+		{
+
+#ifdef MR_USE_MINIMAL_MODEL_STACK_COPY
+    MR_pneg_enter_cond();
+#endif
+
+
+		;}
+#undef MR_PROC_LABEL
+}
+  }
+}
+
+static void MR_CALL 
+mercury__solutions__reset_solutions_heap_1_p_0(
+  MR_Word mercury__solutions__SolutionsHeapPtr_1)
+{
+  {
+    MR_bool mercury__solutions__succeeded;
+
+{
+#define MR_PROC_LABEL mercury__solutions__reset_solutions_heap_1_p_0
+
+	MR_Word SolutionsHeapPtr;
+
+	SolutionsHeapPtr =  mercury__solutions__SolutionsHeapPtr_1 ;
+		{
+
+#ifdef MR_RECLAIM_HP_ON_FAILURE
+    MR_sol_hp = (MR_Word *) SolutionsHeapPtr;
+#endif
+
+
+		;}
+#undef MR_PROC_LABEL
+}
+  }
+}
+
+static void MR_CALL 
+mercury__solutions__partial_deep_copy_3_p_2(
+  MR_Word mercury__solutions__TypeInfo_for_T_4,
+  MR_Word mercury__solutions__HeadVar__1_1,
+  MR_Box mercury__solutions__HeadVar__2_2,
+  MR_Box * mercury__solutions__HeadVar__3_3)
+{
+  {
+    MR_bool mercury__solutions__succeeded;
+
+{
+#define MR_PROC_LABEL mercury__solutions__partial_deep_copy_3_p_2
+
+	MR_Word TypeInfo_for_T;
+	MR_Word SolutionsHeapPtr;
+	MR_Word OldVal;
+	MR_Word NewVal;
+
+	TypeInfo_for_T =  mercury__solutions__TypeInfo_for_T_4 ;
+	SolutionsHeapPtr =  mercury__solutions__HeadVar__1_1 ;
+	OldVal = (MR_Word) mercury__solutions__HeadVar__2_2 ;
+		{
+
+    MR_PARTIAL_DEEP_COPY(SolutionsHeapPtr, OldVal, NewVal, TypeInfo_for_T);
+
+
+		;}
+#undef MR_PROC_LABEL
+	 *mercury__solutions__HeadVar__3_3  = (MR_Box) NewVal;
+}
+  }
+}
+
+static void MR_CALL 
+mercury__solutions__partial_deep_copy_3_p_1(
+  MR_Word mercury__solutions__TypeInfo_for_T_4,
+  MR_Word mercury__solutions__HeadVar__1_1,
+  MR_Box mercury__solutions__HeadVar__2_2,
+  MR_Box * mercury__solutions__HeadVar__3_3)
+{
+  {
+    MR_bool mercury__solutions__succeeded;
+
+{
+#define MR_PROC_LABEL mercury__solutions__partial_deep_copy_3_p_1
+
+	MR_Word TypeInfo_for_T;
+	MR_Word SolutionsHeapPtr;
+	MR_Word OldVal;
+	MR_Word NewVal;
+
+	TypeInfo_for_T =  mercury__solutions__TypeInfo_for_T_4 ;
+	SolutionsHeapPtr =  mercury__solutions__HeadVar__1_1 ;
+	OldVal = (MR_Word) mercury__solutions__HeadVar__2_2 ;
+		{
+
+    MR_PARTIAL_DEEP_COPY(SolutionsHeapPtr, OldVal, NewVal, TypeInfo_for_T);
+
+
+		;}
+#undef MR_PROC_LABEL
+	 *mercury__solutions__HeadVar__3_3  = (MR_Box) NewVal;
+}
+  }
+}
+
+static void MR_CALL 
+mercury__solutions__partial_deep_copy_3_p_0(
+  MR_Word mercury__solutions__TypeInfo_for_T_4,
+  MR_Word mercury__solutions__HeadVar__1_1,
+  MR_Box mercury__solutions__HeadVar__2_2,
+  MR_Box * mercury__solutions__HeadVar__3_3)
+{
+  {
+    MR_bool mercury__solutions__succeeded;
+
+{
+#define MR_PROC_LABEL mercury__solutions__partial_deep_copy_3_p_0
+
+	MR_Word TypeInfo_for_T;
+	MR_Word SolutionsHeapPtr;
+	MR_Word OldVal;
+	MR_Word NewVal;
+
+	TypeInfo_for_T =  mercury__solutions__TypeInfo_for_T_4 ;
+	SolutionsHeapPtr =  mercury__solutions__HeadVar__1_1 ;
+	OldVal = (MR_Word) mercury__solutions__HeadVar__2_2 ;
+		{
+
+    MR_PARTIAL_DEEP_COPY(SolutionsHeapPtr, OldVal, NewVal, TypeInfo_for_T);
+
+
+		;}
+#undef MR_PROC_LABEL
+	 *mercury__solutions__HeadVar__3_3  = (MR_Box) NewVal;
+}
+  }
+}
+
+static void MR_CALL 
+mercury__solutions__swap_heap_and_solutions_heap_0_p_0(void)
+{
+  {
+    MR_bool mercury__solutions__succeeded;
+
+{
+#define MR_PROC_LABEL mercury__solutions__swap_heap_and_solutions_heap_0_p_0
+
+
+		{
+{
+#ifdef MR_RECLAIM_HP_ON_FAILURE
+    MR_MemoryZone   *temp_zone;
+    MR_Word         *temp_hp;
+
+    temp_zone = MR_ENGINE(MR_eng_heap_zone);
+    MR_ENGINE(MR_eng_heap_zone) = MR_ENGINE(MR_eng_solutions_heap_zone);
+    MR_ENGINE(MR_eng_solutions_heap_zone) = temp_zone;
+    temp_hp = MR_hp;
+    MR_hp_word = (MR_Word) MR_sol_hp;
+    MR_sol_hp = temp_hp;
+#endif
+}
+
+		;}
+#undef MR_PROC_LABEL
+}
+  }
+}
+
+static void MR_CALL 
+mercury__solutions__discard_trail_ticket_0_p_0(void)
+{
+  {
+    MR_bool mercury__solutions__succeeded;
+
+{
+#define MR_PROC_LABEL mercury__solutions__discard_trail_ticket_0_p_0
+
+
+		{
+
+#ifdef MR_USE_TRAIL
+    MR_discard_ticket();
+#endif
+
+
+		;}
+#undef MR_PROC_LABEL
+}
+  }
+}
+
+static void MR_CALL 
+mercury__solutions__check_for_floundering_1_p_0(
+  MR_Word mercury__solutions__TrailPtr_1)
+{
+  {
+    MR_bool mercury__solutions__succeeded;
+
+{
+#define MR_PROC_LABEL mercury__solutions__check_for_floundering_1_p_0
+
+	MR_Word TrailPtr;
+
+	TrailPtr =  mercury__solutions__TrailPtr_1 ;
+		{
+
+#ifdef MR_USE_TRAIL
+    /* check for outstanding delayed goals (``floundering'') */
+    MR_reset_ticket(TrailPtr, MR_solve);
+#endif
+
+
+		;}
+#undef MR_PROC_LABEL
+}
+  }
+}
+
+static void MR_CALL 
+mercury__solutions__get_registers_3_p_0(
+  MR_Word * mercury__solutions__HeapPtr_1,
+  MR_Word * mercury__solutions__SolutionsHeapPtr_2,
+  MR_Word * mercury__solutions__TrailPtr_3)
+{
+  {
+    MR_bool mercury__solutions__succeeded;
+
+{
+#define MR_PROC_LABEL mercury__solutions__get_registers_3_p_0
+
+	MR_Word HeapPtr;
+	MR_Word SolutionsHeapPtr;
+	MR_Word TrailPtr;
+
+		{
+
+    /* save heap states */
+#ifdef MR_RECLAIM_HP_ON_FAILURE
+    HeapPtr = (MR_Word) MR_hp;
+    SolutionsHeapPtr = (MR_Word) MR_sol_hp;
+#else
+    HeapPtr = SolutionsHeapPtr = 0;
+#endif
+
+    /* save trail state */
+#ifdef MR_USE_TRAIL
+    MR_store_ticket(TrailPtr);
+#else
+    TrailPtr = 0;
+#endif
+
+
+		;}
+#undef MR_PROC_LABEL
+	 *mercury__solutions__HeapPtr_1  = HeapPtr;
+	 *mercury__solutions__SolutionsHeapPtr_2  = SolutionsHeapPtr;
+	 *mercury__solutions__TrailPtr_3  = TrailPtr;
+}
+  }
+}
+
+static void MR_CALL 
+mercury__solutions__builtin_aggregate2_6_p_7_1(
+  void * mercury__solutions__env_ptr_arg)
+{
+  {
+    struct mercury__solutions__builtin_aggregate2_6_p_7_env_0_s * mercury__solutions__env_ptr = (struct mercury__solutions__builtin_aggregate2_6_p_7_env_0_s *) mercury__solutions__env_ptr_arg;
+
+    MR_builtin_longjmp((mercury__solutions__env_ptr)->mercury__solutions__builtin_aggregate2_6_p_7_env_0__commit_0, 1);
+  }
+}
+
+static void MR_CALL 
+mercury__solutions__builtin_aggregate2_6_p_7_2(
+  void * mercury__solutions__env_ptr_arg)
+{
+  {
+    struct mercury__solutions__builtin_aggregate2_6_p_7_env_0_s * mercury__solutions__env_ptr = (struct mercury__solutions__builtin_aggregate2_6_p_7_env_0_s *) mercury__solutions__env_ptr_arg;
+
+    {
+      void MR_CALL (* mercury__solutions__func_1)(MR_Box, MR_Box, MR_Box, MR_Box *, MR_Box, MR_Box *);
+
+{
+#define MR_PROC_LABEL mercury__solutions__builtin_aggregate2_6_p_7
+
+	MR_Word TrailPtr;
+
+	TrailPtr =  (mercury__solutions__env_ptr)->mercury__solutions__builtin_aggregate2_6_p_7_env_0__TrailPtr_13 ;
+		{
+
+#ifdef MR_USE_TRAIL
+    /* check for outstanding delayed goals (``floundering'') */
+    MR_reset_ticket(TrailPtr, MR_solve);
+#endif
+
+
+		;}
+#undef MR_PROC_LABEL
+}
+{
+#define MR_PROC_LABEL mercury__solutions__builtin_aggregate2_6_p_7
+
+
+		{
+{
+#ifdef MR_RECLAIM_HP_ON_FAILURE
+    MR_MemoryZone   *temp_zone;
+    MR_Word         *temp_hp;
+
+    temp_zone = MR_ENGINE(MR_eng_heap_zone);
+    MR_ENGINE(MR_eng_heap_zone) = MR_ENGINE(MR_eng_solutions_heap_zone);
+    MR_ENGINE(MR_eng_solutions_heap_zone) = temp_zone;
+    temp_hp = MR_hp;
+    MR_hp_word = (MR_Word) MR_sol_hp;
+    MR_sol_hp = temp_hp;
+#endif
+}
+
+		;}
+#undef MR_PROC_LABEL
+}
+{
+#define MR_PROC_LABEL mercury__solutions__builtin_aggregate2_6_p_7
+
+	MR_Word TypeInfo_for_T;
+	MR_Word SolutionsHeapPtr;
+	MR_Word OldVal;
+	MR_Word NewVal;
+
+	TypeInfo_for_T =  (mercury__solutions__env_ptr)->mercury__solutions__builtin_aggregate2_6_p_7_env_0__TypeInfo_for_T_32 ;
+	SolutionsHeapPtr =  (mercury__solutions__env_ptr)->mercury__solutions__builtin_aggregate2_6_p_7_env_0__HeapPtr_11 ;
+	OldVal = (MR_Word) (mercury__solutions__env_ptr)->mercury__solutions__builtin_aggregate2_6_p_7_env_0__Answer0_16 ;
+		{
+
+    MR_PARTIAL_DEEP_COPY(SolutionsHeapPtr, OldVal, NewVal, TypeInfo_for_T);
+
+
+		;}
+#undef MR_PROC_LABEL
+	 (mercury__solutions__env_ptr)->mercury__solutions__builtin_aggregate2_6_p_7_env_0__Answer_17  = (MR_Box) NewVal;
+}
+      {
+        mercury__mutvar__get_mutvar_2_p_0((mercury__solutions__env_ptr)->mercury__solutions__builtin_aggregate2_6_p_7_env_0__TypeInfo_for_U_33, (mercury__solutions__env_ptr)->mercury__solutions__builtin_aggregate2_6_p_7_env_0__Mutvar1_14, &(mercury__solutions__env_ptr)->mercury__solutions__builtin_aggregate2_6_p_7_env_0__SubAccA0_18);
+      }
+      {
+        mercury__mutvar__get_mutvar_2_p_0((mercury__solutions__env_ptr)->mercury__solutions__builtin_aggregate2_6_p_7_env_0__TypeInfo_for_V_34, (mercury__solutions__env_ptr)->mercury__solutions__builtin_aggregate2_6_p_7_env_0__Mutvar2_15, &(mercury__solutions__env_ptr)->mercury__solutions__builtin_aggregate2_6_p_7_env_0__SubAccB0_19);
+      }
+      mercury__solutions__func_1 = ((void MR_CALL (*)(MR_Box, MR_Box, MR_Box, MR_Box *, MR_Box, MR_Box *)) (MR_hl_field(MR_mktag(0), (mercury__solutions__env_ptr)->mercury__solutions__builtin_aggregate2_6_p_7_env_0__CollectorPred_8, (MR_Integer) 1)));
+      {
+        mercury__solutions__func_1(((MR_Box) (mercury__solutions__env_ptr)->mercury__solutions__builtin_aggregate2_6_p_7_env_0__CollectorPred_8), (mercury__solutions__env_ptr)->mercury__solutions__builtin_aggregate2_6_p_7_env_0__Answer_17, (mercury__solutions__env_ptr)->mercury__solutions__builtin_aggregate2_6_p_7_env_0__SubAccA0_18, &(mercury__solutions__env_ptr)->mercury__solutions__builtin_aggregate2_6_p_7_env_0__SubAccA_20, (mercury__solutions__env_ptr)->mercury__solutions__builtin_aggregate2_6_p_7_env_0__SubAccB0_19, &(mercury__solutions__env_ptr)->mercury__solutions__builtin_aggregate2_6_p_7_env_0__SubAccB_21);
+      }
+      {
+        mercury__mutvar__set_mutvar_2_p_0((mercury__solutions__env_ptr)->mercury__solutions__builtin_aggregate2_6_p_7_env_0__TypeInfo_for_U_33, (mercury__solutions__env_ptr)->mercury__solutions__builtin_aggregate2_6_p_7_env_0__Mutvar1_14, (mercury__solutions__env_ptr)->mercury__solutions__builtin_aggregate2_6_p_7_env_0__SubAccA_20);
+      }
+      {
+        mercury__mutvar__set_mutvar_2_p_0((mercury__solutions__env_ptr)->mercury__solutions__builtin_aggregate2_6_p_7_env_0__TypeInfo_for_V_34, (mercury__solutions__env_ptr)->mercury__solutions__builtin_aggregate2_6_p_7_env_0__Mutvar2_15, (mercury__solutions__env_ptr)->mercury__solutions__builtin_aggregate2_6_p_7_env_0__SubAccB_21);
+      }
+{
+#define MR_PROC_LABEL mercury__solutions__builtin_aggregate2_6_p_7
+
+
+		{
+{
+#ifdef MR_RECLAIM_HP_ON_FAILURE
+    MR_MemoryZone   *temp_zone;
+    MR_Word         *temp_hp;
+
+    temp_zone = MR_ENGINE(MR_eng_heap_zone);
+    MR_ENGINE(MR_eng_heap_zone) = MR_ENGINE(MR_eng_solutions_heap_zone);
+    MR_ENGINE(MR_eng_solutions_heap_zone) = temp_zone;
+    temp_hp = MR_hp;
+    MR_hp_word = (MR_Word) MR_sol_hp;
+    MR_sol_hp = temp_hp;
+#endif
+}
+
+		;}
+#undef MR_PROC_LABEL
+}
+      (mercury__solutions__env_ptr)->mercury__solutions__builtin_aggregate2_6_p_7_env_0__succeeded = MR_FALSE;
+      if ((mercury__solutions__env_ptr)->mercury__solutions__builtin_aggregate2_6_p_7_env_0__succeeded)
+        {
+          mercury__solutions__builtin_aggregate2_6_p_7_1(mercury__solutions__env_ptr);
+        }
+    }
+  }
+}
+
+static void MR_CALL 
+mercury__solutions__builtin_aggregate2_6_p_7_3(
+  void * mercury__solutions__env_ptr_arg)
+{
+  {
+    struct mercury__solutions__builtin_aggregate2_6_p_7_env_0_s * mercury__solutions__env_ptr = (struct mercury__solutions__builtin_aggregate2_6_p_7_env_0_s *) mercury__solutions__env_ptr_arg;
+
+    if (MR_builtin_setjmp((mercury__solutions__env_ptr)->mercury__solutions__builtin_aggregate2_6_p_7_env_0__commit_0) == 0)
+      {
+        {
+          void MR_CALL (* mercury__solutions__func_0)(MR_Box, MR_Box *, MR_Cont, void *) = ((void MR_CALL (*)(MR_Box, MR_Box *, MR_Cont, void *)) (MR_hl_field(MR_mktag(0), (mercury__solutions__env_ptr)->mercury__solutions__builtin_aggregate2_6_p_7_env_0__GeneratorPred_7, (MR_Integer) 1)));
+
+          {
+            mercury__solutions__func_0(((MR_Box) (mercury__solutions__env_ptr)->mercury__solutions__builtin_aggregate2_6_p_7_env_0__GeneratorPred_7), &(mercury__solutions__env_ptr)->mercury__solutions__builtin_aggregate2_6_p_7_env_0__Answer0_16, mercury__solutions__builtin_aggregate2_6_p_7_2, mercury__solutions__env_ptr);
+          }
+        }
+        (mercury__solutions__env_ptr)->mercury__solutions__builtin_aggregate2_6_p_7_env_0__succeeded = MR_FALSE;
+      }
+    else
+      (mercury__solutions__env_ptr)->mercury__solutions__builtin_aggregate2_6_p_7_env_0__succeeded = MR_TRUE;
+  }
+}
+
+void MR_CALL 
+mercury__solutions__builtin_aggregate2_6_p_7(
+  MR_Word mercury__solutions__TypeInfo_for_T_32,
+  MR_Word mercury__solutions__TypeInfo_for_U_33,
+  MR_Word mercury__solutions__TypeInfo_for_V_34,
+  MR_Word mercury__solutions__GeneratorPred_7,
+  MR_Word mercury__solutions__CollectorPred_8,
+  MR_Box mercury__solutions__STATE_VARIABLE_Acc1_0_22,
+  MR_Box * mercury__solutions__STATE_VARIABLE_Acc1_23,
+  MR_Box mercury__solutions__STATE_VARIABLE_Acc2_0_24,
+  MR_Box * mercury__solutions__STATE_VARIABLE_Acc2_25)
+{
+  {
+    struct mercury__solutions__builtin_aggregate2_6_p_7_env_0_s mercury__solutions__env;
+
+    (mercury__solutions__env).mercury__solutions__builtin_aggregate2_6_p_7_env_0__TypeInfo_for_T_32 = mercury__solutions__TypeInfo_for_T_32;
+    (mercury__solutions__env).mercury__solutions__builtin_aggregate2_6_p_7_env_0__TypeInfo_for_U_33 = mercury__solutions__TypeInfo_for_U_33;
+    (mercury__solutions__env).mercury__solutions__builtin_aggregate2_6_p_7_env_0__TypeInfo_for_V_34 = mercury__solutions__TypeInfo_for_V_34;
+    (mercury__solutions__env).mercury__solutions__builtin_aggregate2_6_p_7_env_0__GeneratorPred_7 = mercury__solutions__GeneratorPred_7;
+    (mercury__solutions__env).mercury__solutions__builtin_aggregate2_6_p_7_env_0__CollectorPred_8 = mercury__solutions__CollectorPred_8;
+    {
+      MR_Word mercury__solutions__SolutionsHeapPtr_12;
+      MR_Box mercury__solutions__STATE_VARIABLE_Acc1_28_28;
+      MR_Box mercury__solutions__STATE_VARIABLE_Acc2_29_29;
+      MR_Word mercury__solutions__TypeInfo_for_U_35;
+      MR_Word mercury__solutions__TypeInfo_for_V_36;
+
+{
+#define MR_PROC_LABEL mercury__solutions__builtin_aggregate2_6_p_7
+
+	MR_Word HeapPtr;
+	MR_Word SolutionsHeapPtr;
+	MR_Word TrailPtr;
+
+		{
+
+    /* save heap states */
+#ifdef MR_RECLAIM_HP_ON_FAILURE
+    HeapPtr = (MR_Word) MR_hp;
+    SolutionsHeapPtr = (MR_Word) MR_sol_hp;
+#else
+    HeapPtr = SolutionsHeapPtr = 0;
+#endif
+
+    /* save trail state */
+#ifdef MR_USE_TRAIL
+    MR_store_ticket(TrailPtr);
+#else
+    TrailPtr = 0;
+#endif
+
+
+		;}
+#undef MR_PROC_LABEL
+	 (mercury__solutions__env).mercury__solutions__builtin_aggregate2_6_p_7_env_0__HeapPtr_11  = HeapPtr;
+	 mercury__solutions__SolutionsHeapPtr_12  = SolutionsHeapPtr;
+	 (mercury__solutions__env).mercury__solutions__builtin_aggregate2_6_p_7_env_0__TrailPtr_13  = TrailPtr;
+}
+{
+#define MR_PROC_LABEL mercury__solutions__builtin_aggregate2_6_p_7
+
+
+		{
+
+#ifdef MR_USE_MINIMAL_MODEL_STACK_COPY
+    MR_pneg_enter_cond();
+#endif
+
+
+		;}
+#undef MR_PROC_LABEL
+}
+      {
+        mercury__mutvar__new_mutvar_2_p_0((mercury__solutions__env).mercury__solutions__builtin_aggregate2_6_p_7_env_0__TypeInfo_for_U_33, mercury__solutions__STATE_VARIABLE_Acc1_0_22, &(mercury__solutions__env).mercury__solutions__builtin_aggregate2_6_p_7_env_0__Mutvar1_14);
+      }
+      {
+        mercury__mutvar__new_mutvar_2_p_0((mercury__solutions__env).mercury__solutions__builtin_aggregate2_6_p_7_env_0__TypeInfo_for_V_34, mercury__solutions__STATE_VARIABLE_Acc2_0_24, &(mercury__solutions__env).mercury__solutions__builtin_aggregate2_6_p_7_env_0__Mutvar2_15);
+      }
+      {
+        mercury__solutions__builtin_aggregate2_6_p_7_3(&mercury__solutions__env);
+      }
+      if (!((mercury__solutions__env).mercury__solutions__builtin_aggregate2_6_p_7_env_0__succeeded))
+        {
+          MR_Box mercury__solutions__STATE_VARIABLE_Acc1_26_26;
+          MR_Box mercury__solutions__STATE_VARIABLE_Acc2_27_27;
+
+{
+#define MR_PROC_LABEL mercury__solutions__builtin_aggregate2_6_p_7
+
+
+		{
+
+#ifdef MR_USE_MINIMAL_MODEL_STACK_COPY
+    MR_pneg_enter_else("end_all_soln_neg_context");
+#endif
+
+
+		;}
+#undef MR_PROC_LABEL
+}
+          {
+            mercury__mutvar__get_mutvar_2_p_0((mercury__solutions__env).mercury__solutions__builtin_aggregate2_6_p_7_env_0__TypeInfo_for_U_33, (mercury__solutions__env).mercury__solutions__builtin_aggregate2_6_p_7_env_0__Mutvar1_14, &mercury__solutions__STATE_VARIABLE_Acc1_26_26);
+          }
+          {
+            mercury__mutvar__get_mutvar_2_p_0((mercury__solutions__env).mercury__solutions__builtin_aggregate2_6_p_7_env_0__TypeInfo_for_V_34, (mercury__solutions__env).mercury__solutions__builtin_aggregate2_6_p_7_env_0__Mutvar2_15, &mercury__solutions__STATE_VARIABLE_Acc2_27_27);
+          }
+{
+#define MR_PROC_LABEL mercury__solutions__builtin_aggregate2_6_p_7
+
+	MR_Word TypeInfo_for_T;
+	MR_Word SolutionsHeapPtr;
+	MR_Word OldVal;
+	MR_Word NewVal;
+
+	TypeInfo_for_T =  (mercury__solutions__env).mercury__solutions__builtin_aggregate2_6_p_7_env_0__TypeInfo_for_U_33 ;
+	SolutionsHeapPtr =  mercury__solutions__SolutionsHeapPtr_12 ;
+	OldVal = (MR_Word) mercury__solutions__STATE_VARIABLE_Acc1_26_26 ;
+		{
+
+    MR_PARTIAL_DEEP_COPY(SolutionsHeapPtr, OldVal, NewVal, TypeInfo_for_T);
+
+
+		;}
+#undef MR_PROC_LABEL
+	 mercury__solutions__STATE_VARIABLE_Acc1_28_28  = (MR_Box) NewVal;
+}
+{
+#define MR_PROC_LABEL mercury__solutions__builtin_aggregate2_6_p_7
+
+	MR_Word TypeInfo_for_T;
+	MR_Word SolutionsHeapPtr;
+	MR_Word OldVal;
+	MR_Word NewVal;
+
+	TypeInfo_for_T =  (mercury__solutions__env).mercury__solutions__builtin_aggregate2_6_p_7_env_0__TypeInfo_for_V_34 ;
+	SolutionsHeapPtr =  mercury__solutions__SolutionsHeapPtr_12 ;
+	OldVal = (MR_Word) mercury__solutions__STATE_VARIABLE_Acc2_27_27 ;
+		{
+
+    MR_PARTIAL_DEEP_COPY(SolutionsHeapPtr, OldVal, NewVal, TypeInfo_for_T);
+
+
+		;}
+#undef MR_PROC_LABEL
+	 mercury__solutions__STATE_VARIABLE_Acc2_29_29  = (MR_Box) NewVal;
+}
+{
+#define MR_PROC_LABEL mercury__solutions__builtin_aggregate2_6_p_7
+
+	MR_Word SolutionsHeapPtr;
+
+	SolutionsHeapPtr =  mercury__solutions__SolutionsHeapPtr_12 ;
+		{
+
+#ifdef MR_RECLAIM_HP_ON_FAILURE
+    MR_sol_hp = (MR_Word *) SolutionsHeapPtr;
+#endif
+
+
+		;}
+#undef MR_PROC_LABEL
+}
+{
+#define MR_PROC_LABEL mercury__solutions__builtin_aggregate2_6_p_7
+
+
+		{
+
+#ifdef MR_USE_TRAIL
+    MR_discard_ticket();
+#endif
+
+
+		;}
+#undef MR_PROC_LABEL
+}
+        }
+{
+#define MR_PROC_LABEL mercury__solutions__builtin_aggregate2_6_p_7
+
+	MR_Word X;
+	MR_Word Y;
+
+	X = (MR_Word) mercury__solutions__STATE_VARIABLE_Acc1_28_28 ;
+		{
+
+    Y = X;
+
+
+		;}
+#undef MR_PROC_LABEL
+	 *mercury__solutions__STATE_VARIABLE_Acc1_23  = (MR_Box) Y;
+}
+{
+#define MR_PROC_LABEL mercury__solutions__builtin_aggregate2_6_p_7
+
+	MR_Word X;
+	MR_Word Y;
+
+	X = (MR_Word) mercury__solutions__STATE_VARIABLE_Acc2_29_29 ;
+		{
+
+    Y = X;
+
+
+		;}
+#undef MR_PROC_LABEL
+	 *mercury__solutions__STATE_VARIABLE_Acc2_25  = (MR_Box) Y;
+}
+    }
+  }
+}
+
+static void MR_CALL 
+mercury__solutions__builtin_aggregate2_6_p_6_1(
+  void * mercury__solutions__env_ptr_arg)
+{
+  {
+    struct mercury__solutions__builtin_aggregate2_6_p_6_env_0_s * mercury__solutions__env_ptr = (struct mercury__solutions__builtin_aggregate2_6_p_6_env_0_s *) mercury__solutions__env_ptr_arg;
+
+    MR_builtin_longjmp((mercury__solutions__env_ptr)->mercury__solutions__builtin_aggregate2_6_p_6_env_0__commit_0, 1);
+  }
+}
+
+static void MR_CALL 
+mercury__solutions__builtin_aggregate2_6_p_6_2(
+  void * mercury__solutions__env_ptr_arg)
+{
+  {
+    struct mercury__solutions__builtin_aggregate2_6_p_6_env_0_s * mercury__solutions__env_ptr = (struct mercury__solutions__builtin_aggregate2_6_p_6_env_0_s *) mercury__solutions__env_ptr_arg;
+
+    {
+      void MR_CALL (* mercury__solutions__func_1)(MR_Box, MR_Box, MR_Box, MR_Box *, MR_Box, MR_Box *);
+
+{
+#define MR_PROC_LABEL mercury__solutions__builtin_aggregate2_6_p_6
+
+	MR_Word TrailPtr;
+
+	TrailPtr =  (mercury__solutions__env_ptr)->mercury__solutions__builtin_aggregate2_6_p_6_env_0__TrailPtr_13 ;
+		{
+
+#ifdef MR_USE_TRAIL
+    /* check for outstanding delayed goals (``floundering'') */
+    MR_reset_ticket(TrailPtr, MR_solve);
+#endif
+
+
+		;}
+#undef MR_PROC_LABEL
+}
+{
+#define MR_PROC_LABEL mercury__solutions__builtin_aggregate2_6_p_6
+
+
+		{
+{
+#ifdef MR_RECLAIM_HP_ON_FAILURE
+    MR_MemoryZone   *temp_zone;
+    MR_Word         *temp_hp;
+
+    temp_zone = MR_ENGINE(MR_eng_heap_zone);
+    MR_ENGINE(MR_eng_heap_zone) = MR_ENGINE(MR_eng_solutions_heap_zone);
+    MR_ENGINE(MR_eng_solutions_heap_zone) = temp_zone;
+    temp_hp = MR_hp;
+    MR_hp_word = (MR_Word) MR_sol_hp;
+    MR_sol_hp = temp_hp;
+#endif
+}
+
+		;}
+#undef MR_PROC_LABEL
+}
+{
+#define MR_PROC_LABEL mercury__solutions__builtin_aggregate2_6_p_6
+
+	MR_Word TypeInfo_for_T;
+	MR_Word SolutionsHeapPtr;
+	MR_Word OldVal;
+	MR_Word NewVal;
+
+	TypeInfo_for_T =  (mercury__solutions__env_ptr)->mercury__solutions__builtin_aggregate2_6_p_6_env_0__TypeInfo_for_T_32 ;
+	SolutionsHeapPtr =  (mercury__solutions__env_ptr)->mercury__solutions__builtin_aggregate2_6_p_6_env_0__HeapPtr_11 ;
+	OldVal = (MR_Word) (mercury__solutions__env_ptr)->mercury__solutions__builtin_aggregate2_6_p_6_env_0__Answer0_16 ;
+		{
+
+    MR_PARTIAL_DEEP_COPY(SolutionsHeapPtr, OldVal, NewVal, TypeInfo_for_T);
+
+
+		;}
+#undef MR_PROC_LABEL
+	 (mercury__solutions__env_ptr)->mercury__solutions__builtin_aggregate2_6_p_6_env_0__Answer_17  = (MR_Box) NewVal;
+}
+      {
+        mercury__mutvar__get_mutvar_2_p_0((mercury__solutions__env_ptr)->mercury__solutions__builtin_aggregate2_6_p_6_env_0__TypeInfo_for_U_33, (mercury__solutions__env_ptr)->mercury__solutions__builtin_aggregate2_6_p_6_env_0__Mutvar1_14, &(mercury__solutions__env_ptr)->mercury__solutions__builtin_aggregate2_6_p_6_env_0__SubAccA0_18);
+      }
+      {
+        mercury__mutvar__get_mutvar_2_p_0((mercury__solutions__env_ptr)->mercury__solutions__builtin_aggregate2_6_p_6_env_0__TypeInfo_for_V_34, (mercury__solutions__env_ptr)->mercury__solutions__builtin_aggregate2_6_p_6_env_0__Mutvar2_15, &(mercury__solutions__env_ptr)->mercury__solutions__builtin_aggregate2_6_p_6_env_0__SubAccB0_19);
+      }
+      mercury__solutions__func_1 = ((void MR_CALL (*)(MR_Box, MR_Box, MR_Box, MR_Box *, MR_Box, MR_Box *)) (MR_hl_field(MR_mktag(0), (mercury__solutions__env_ptr)->mercury__solutions__builtin_aggregate2_6_p_6_env_0__CollectorPred_8, (MR_Integer) 1)));
+      {
+        mercury__solutions__func_1(((MR_Box) (mercury__solutions__env_ptr)->mercury__solutions__builtin_aggregate2_6_p_6_env_0__CollectorPred_8), (mercury__solutions__env_ptr)->mercury__solutions__builtin_aggregate2_6_p_6_env_0__Answer_17, (mercury__solutions__env_ptr)->mercury__solutions__builtin_aggregate2_6_p_6_env_0__SubAccA0_18, &(mercury__solutions__env_ptr)->mercury__solutions__builtin_aggregate2_6_p_6_env_0__SubAccA_20, (mercury__solutions__env_ptr)->mercury__solutions__builtin_aggregate2_6_p_6_env_0__SubAccB0_19, &(mercury__solutions__env_ptr)->mercury__solutions__builtin_aggregate2_6_p_6_env_0__SubAccB_21);
+      }
+      {
+        mercury__mutvar__set_mutvar_2_p_0((mercury__solutions__env_ptr)->mercury__solutions__builtin_aggregate2_6_p_6_env_0__TypeInfo_for_U_33, (mercury__solutions__env_ptr)->mercury__solutions__builtin_aggregate2_6_p_6_env_0__Mutvar1_14, (mercury__solutions__env_ptr)->mercury__solutions__builtin_aggregate2_6_p_6_env_0__SubAccA_20);
+      }
+      {
+        mercury__mutvar__set_mutvar_2_p_0((mercury__solutions__env_ptr)->mercury__solutions__builtin_aggregate2_6_p_6_env_0__TypeInfo_for_V_34, (mercury__solutions__env_ptr)->mercury__solutions__builtin_aggregate2_6_p_6_env_0__Mutvar2_15, (mercury__solutions__env_ptr)->mercury__solutions__builtin_aggregate2_6_p_6_env_0__SubAccB_21);
+      }
+{
+#define MR_PROC_LABEL mercury__solutions__builtin_aggregate2_6_p_6
+
+
+		{
+{
+#ifdef MR_RECLAIM_HP_ON_FAILURE
+    MR_MemoryZone   *temp_zone;
+    MR_Word         *temp_hp;
+
+    temp_zone = MR_ENGINE(MR_eng_heap_zone);
+    MR_ENGINE(MR_eng_heap_zone) = MR_ENGINE(MR_eng_solutions_heap_zone);
+    MR_ENGINE(MR_eng_solutions_heap_zone) = temp_zone;
+    temp_hp = MR_hp;
+    MR_hp_word = (MR_Word) MR_sol_hp;
+    MR_sol_hp = temp_hp;
+#endif
+}
+
+		;}
+#undef MR_PROC_LABEL
+}
+      (mercury__solutions__env_ptr)->mercury__solutions__builtin_aggregate2_6_p_6_env_0__succeeded = MR_FALSE;
+      if ((mercury__solutions__env_ptr)->mercury__solutions__builtin_aggregate2_6_p_6_env_0__succeeded)
+        {
+          mercury__solutions__builtin_aggregate2_6_p_6_1(mercury__solutions__env_ptr);
+        }
+    }
+  }
+}
+
+static void MR_CALL 
+mercury__solutions__builtin_aggregate2_6_p_6_3(
+  void * mercury__solutions__env_ptr_arg)
+{
+  {
+    struct mercury__solutions__builtin_aggregate2_6_p_6_env_0_s * mercury__solutions__env_ptr = (struct mercury__solutions__builtin_aggregate2_6_p_6_env_0_s *) mercury__solutions__env_ptr_arg;
+
+    if (MR_builtin_setjmp((mercury__solutions__env_ptr)->mercury__solutions__builtin_aggregate2_6_p_6_env_0__commit_0) == 0)
+      {
+        {
+          void MR_CALL (* mercury__solutions__func_0)(MR_Box, MR_Box *, MR_Cont, void *) = ((void MR_CALL (*)(MR_Box, MR_Box *, MR_Cont, void *)) (MR_hl_field(MR_mktag(0), (mercury__solutions__env_ptr)->mercury__solutions__builtin_aggregate2_6_p_6_env_0__GeneratorPred_7, (MR_Integer) 1)));
+
+          {
+            mercury__solutions__func_0(((MR_Box) (mercury__solutions__env_ptr)->mercury__solutions__builtin_aggregate2_6_p_6_env_0__GeneratorPred_7), &(mercury__solutions__env_ptr)->mercury__solutions__builtin_aggregate2_6_p_6_env_0__Answer0_16, mercury__solutions__builtin_aggregate2_6_p_6_2, mercury__solutions__env_ptr);
+          }
+        }
+        (mercury__solutions__env_ptr)->mercury__solutions__builtin_aggregate2_6_p_6_env_0__succeeded = MR_FALSE;
+      }
+    else
+      (mercury__solutions__env_ptr)->mercury__solutions__builtin_aggregate2_6_p_6_env_0__succeeded = MR_TRUE;
+  }
+}
+
+void MR_CALL 
+mercury__solutions__builtin_aggregate2_6_p_6(
+  MR_Word mercury__solutions__TypeInfo_for_T_32,
+  MR_Word mercury__solutions__TypeInfo_for_U_33,
+  MR_Word mercury__solutions__TypeInfo_for_V_34,
+  MR_Word mercury__solutions__GeneratorPred_7,
+  MR_Word mercury__solutions__CollectorPred_8,
+  MR_Box mercury__solutions__STATE_VARIABLE_Acc1_0_22,
+  MR_Box * mercury__solutions__STATE_VARIABLE_Acc1_23,
+  MR_Box mercury__solutions__STATE_VARIABLE_Acc2_0_24,
+  MR_Box * mercury__solutions__STATE_VARIABLE_Acc2_25)
+{
+  {
+    struct mercury__solutions__builtin_aggregate2_6_p_6_env_0_s mercury__solutions__env;
+
+    (mercury__solutions__env).mercury__solutions__builtin_aggregate2_6_p_6_env_0__TypeInfo_for_T_32 = mercury__solutions__TypeInfo_for_T_32;
+    (mercury__solutions__env).mercury__solutions__builtin_aggregate2_6_p_6_env_0__TypeInfo_for_U_33 = mercury__solutions__TypeInfo_for_U_33;
+    (mercury__solutions__env).mercury__solutions__builtin_aggregate2_6_p_6_env_0__TypeInfo_for_V_34 = mercury__solutions__TypeInfo_for_V_34;
+    (mercury__solutions__env).mercury__solutions__builtin_aggregate2_6_p_6_env_0__GeneratorPred_7 = mercury__solutions__GeneratorPred_7;
+    (mercury__solutions__env).mercury__solutions__builtin_aggregate2_6_p_6_env_0__CollectorPred_8 = mercury__solutions__CollectorPred_8;
+    {
+      MR_Word mercury__solutions__SolutionsHeapPtr_12;
+      MR_Box mercury__solutions__STATE_VARIABLE_Acc1_28_28;
+      MR_Box mercury__solutions__STATE_VARIABLE_Acc2_29_29;
+      MR_Word mercury__solutions__TypeInfo_for_U_35;
+      MR_Word mercury__solutions__TypeInfo_for_V_36;
+
+{
+#define MR_PROC_LABEL mercury__solutions__builtin_aggregate2_6_p_6
+
+	MR_Word HeapPtr;
+	MR_Word SolutionsHeapPtr;
+	MR_Word TrailPtr;
+
+		{
+
+    /* save heap states */
+#ifdef MR_RECLAIM_HP_ON_FAILURE
+    HeapPtr = (MR_Word) MR_hp;
+    SolutionsHeapPtr = (MR_Word) MR_sol_hp;
+#else
+    HeapPtr = SolutionsHeapPtr = 0;
+#endif
+
+    /* save trail state */
+#ifdef MR_USE_TRAIL
+    MR_store_ticket(TrailPtr);
+#else
+    TrailPtr = 0;
+#endif
+
+
+		;}
+#undef MR_PROC_LABEL
+	 (mercury__solutions__env).mercury__solutions__builtin_aggregate2_6_p_6_env_0__HeapPtr_11  = HeapPtr;
+	 mercury__solutions__SolutionsHeapPtr_12  = SolutionsHeapPtr;
+	 (mercury__solutions__env).mercury__solutions__builtin_aggregate2_6_p_6_env_0__TrailPtr_13  = TrailPtr;
+}
+{
+#define MR_PROC_LABEL mercury__solutions__builtin_aggregate2_6_p_6
+
+
+		{
+
+#ifdef MR_USE_MINIMAL_MODEL_STACK_COPY
+    MR_pneg_enter_cond();
+#endif
+
+
+		;}
+#undef MR_PROC_LABEL
+}
+      {
+        mercury__mutvar__new_mutvar_2_p_0((mercury__solutions__env).mercury__solutions__builtin_aggregate2_6_p_6_env_0__TypeInfo_for_U_33, mercury__solutions__STATE_VARIABLE_Acc1_0_22, &(mercury__solutions__env).mercury__solutions__builtin_aggregate2_6_p_6_env_0__Mutvar1_14);
+      }
+      {
+        mercury__mutvar__new_mutvar_2_p_0((mercury__solutions__env).mercury__solutions__builtin_aggregate2_6_p_6_env_0__TypeInfo_for_V_34, mercury__solutions__STATE_VARIABLE_Acc2_0_24, &(mercury__solutions__env).mercury__solutions__builtin_aggregate2_6_p_6_env_0__Mutvar2_15);
+      }
+      {
+        mercury__solutions__builtin_aggregate2_6_p_6_3(&mercury__solutions__env);
+      }
+      if (!((mercury__solutions__env).mercury__solutions__builtin_aggregate2_6_p_6_env_0__succeeded))
+        {
+          MR_Box mercury__solutions__STATE_VARIABLE_Acc1_26_26;
+          MR_Box mercury__solutions__STATE_VARIABLE_Acc2_27_27;
+
+{
+#define MR_PROC_LABEL mercury__solutions__builtin_aggregate2_6_p_6
+
+
+		{
+
+#ifdef MR_USE_MINIMAL_MODEL_STACK_COPY
+    MR_pneg_enter_else("end_all_soln_neg_context");
+#endif
+
+
+		;}
+#undef MR_PROC_LABEL
+}
+          {
+            mercury__mutvar__get_mutvar_2_p_0((mercury__solutions__env).mercury__solutions__builtin_aggregate2_6_p_6_env_0__TypeInfo_for_U_33, (mercury__solutions__env).mercury__solutions__builtin_aggregate2_6_p_6_env_0__Mutvar1_14, &mercury__solutions__STATE_VARIABLE_Acc1_26_26);
+          }
+          {
+            mercury__mutvar__get_mutvar_2_p_0((mercury__solutions__env).mercury__solutions__builtin_aggregate2_6_p_6_env_0__TypeInfo_for_V_34, (mercury__solutions__env).mercury__solutions__builtin_aggregate2_6_p_6_env_0__Mutvar2_15, &mercury__solutions__STATE_VARIABLE_Acc2_27_27);
+          }
+{
+#define MR_PROC_LABEL mercury__solutions__builtin_aggregate2_6_p_6
+
+	MR_Word TypeInfo_for_T;
+	MR_Word SolutionsHeapPtr;
+	MR_Word OldVal;
+	MR_Word NewVal;
+
+	TypeInfo_for_T =  (mercury__solutions__env).mercury__solutions__builtin_aggregate2_6_p_6_env_0__TypeInfo_for_U_33 ;
+	SolutionsHeapPtr =  mercury__solutions__SolutionsHeapPtr_12 ;
+	OldVal = (MR_Word) mercury__solutions__STATE_VARIABLE_Acc1_26_26 ;
+		{
+
+    MR_PARTIAL_DEEP_COPY(SolutionsHeapPtr, OldVal, NewVal, TypeInfo_for_T);
+
+
+		;}
+#undef MR_PROC_LABEL
+	 mercury__solutions__STATE_VARIABLE_Acc1_28_28  = (MR_Box) NewVal;
+}
+{
+#define MR_PROC_LABEL mercury__solutions__builtin_aggregate2_6_p_6
+
+	MR_Word TypeInfo_for_T;
+	MR_Word SolutionsHeapPtr;
+	MR_Word OldVal;
+	MR_Word NewVal;
+
+	TypeInfo_for_T =  (mercury__solutions__env).mercury__solutions__builtin_aggregate2_6_p_6_env_0__TypeInfo_for_V_34 ;
+	SolutionsHeapPtr =  mercury__solutions__SolutionsHeapPtr_12 ;
+	OldVal = (MR_Word) mercury__solutions__STATE_VARIABLE_Acc2_27_27 ;
+		{
+
+    MR_PARTIAL_DEEP_COPY(SolutionsHeapPtr, OldVal, NewVal, TypeInfo_for_T);
+
+
+		;}
+#undef MR_PROC_LABEL
+	 mercury__solutions__STATE_VARIABLE_Acc2_29_29  = (MR_Box) NewVal;
+}
+{
+#define MR_PROC_LABEL mercury__solutions__builtin_aggregate2_6_p_6
+
+	MR_Word SolutionsHeapPtr;
+
+	SolutionsHeapPtr =  mercury__solutions__SolutionsHeapPtr_12 ;
+		{
+
+#ifdef MR_RECLAIM_HP_ON_FAILURE
+    MR_sol_hp = (MR_Word *) SolutionsHeapPtr;
+#endif
+
+
+		;}
+#undef MR_PROC_LABEL
+}
+{
+#define MR_PROC_LABEL mercury__solutions__builtin_aggregate2_6_p_6
+
+
+		{
+
+#ifdef MR_USE_TRAIL
+    MR_discard_ticket();
+#endif
+
+
+		;}
+#undef MR_PROC_LABEL
+}
+        }
+{
+#define MR_PROC_LABEL mercury__solutions__builtin_aggregate2_6_p_6
+
+	MR_Word X;
+	MR_Word Y;
+
+	X = (MR_Word) mercury__solutions__STATE_VARIABLE_Acc1_28_28 ;
+		{
+
+    Y = X;
+
+
+		;}
+#undef MR_PROC_LABEL
+	 *mercury__solutions__STATE_VARIABLE_Acc1_23  = (MR_Box) Y;
+}
+{
+#define MR_PROC_LABEL mercury__solutions__builtin_aggregate2_6_p_6
+
+	MR_Word X;
+	MR_Word Y;
+
+	X = (MR_Word) mercury__solutions__STATE_VARIABLE_Acc2_29_29 ;
+		{
+
+    Y = X;
+
+
+		;}
+#undef MR_PROC_LABEL
+	 *mercury__solutions__STATE_VARIABLE_Acc2_25  = (MR_Box) Y;
+}
+    }
+  }
+}
+
+static void MR_CALL 
+mercury__solutions__builtin_aggregate2_6_p_5_1(
+  void * mercury__solutions__env_ptr_arg)
+{
+  {
+    struct mercury__solutions__builtin_aggregate2_6_p_5_env_0_s * mercury__solutions__env_ptr = (struct mercury__solutions__builtin_aggregate2_6_p_5_env_0_s *) mercury__solutions__env_ptr_arg;
+
+    MR_builtin_longjmp((mercury__solutions__env_ptr)->mercury__solutions__builtin_aggregate2_6_p_5_env_0__commit_0, 1);
+  }
+}
+
+static void MR_CALL 
+mercury__solutions__builtin_aggregate2_6_p_5_2(
+  void * mercury__solutions__env_ptr_arg)
+{
+  {
+    struct mercury__solutions__builtin_aggregate2_6_p_5_env_0_s * mercury__solutions__env_ptr = (struct mercury__solutions__builtin_aggregate2_6_p_5_env_0_s *) mercury__solutions__env_ptr_arg;
+
+    {
+      void MR_CALL (* mercury__solutions__func_1)(MR_Box, MR_Box, MR_Box, MR_Box *, MR_Box, MR_Box *);
+
+{
+#define MR_PROC_LABEL mercury__solutions__builtin_aggregate2_6_p_5
+
+	MR_Word TrailPtr;
+
+	TrailPtr =  (mercury__solutions__env_ptr)->mercury__solutions__builtin_aggregate2_6_p_5_env_0__TrailPtr_13 ;
+		{
+
+#ifdef MR_USE_TRAIL
+    /* check for outstanding delayed goals (``floundering'') */
+    MR_reset_ticket(TrailPtr, MR_solve);
+#endif
+
+
+		;}
+#undef MR_PROC_LABEL
+}
+{
+#define MR_PROC_LABEL mercury__solutions__builtin_aggregate2_6_p_5
+
+
+		{
+{
+#ifdef MR_RECLAIM_HP_ON_FAILURE
+    MR_MemoryZone   *temp_zone;
+    MR_Word         *temp_hp;
+
+    temp_zone = MR_ENGINE(MR_eng_heap_zone);
+    MR_ENGINE(MR_eng_heap_zone) = MR_ENGINE(MR_eng_solutions_heap_zone);
+    MR_ENGINE(MR_eng_solutions_heap_zone) = temp_zone;
+    temp_hp = MR_hp;
+    MR_hp_word = (MR_Word) MR_sol_hp;
+    MR_sol_hp = temp_hp;
+#endif
+}
+
+		;}
+#undef MR_PROC_LABEL
+}
+{
+#define MR_PROC_LABEL mercury__solutions__builtin_aggregate2_6_p_5
+
+	MR_Word TypeInfo_for_T;
+	MR_Word SolutionsHeapPtr;
+	MR_Word OldVal;
+	MR_Word NewVal;
+
+	TypeInfo_for_T =  (mercury__solutions__env_ptr)->mercury__solutions__builtin_aggregate2_6_p_5_env_0__TypeInfo_for_T_32 ;
+	SolutionsHeapPtr =  (mercury__solutions__env_ptr)->mercury__solutions__builtin_aggregate2_6_p_5_env_0__HeapPtr_11 ;
+	OldVal = (MR_Word) (mercury__solutions__env_ptr)->mercury__solutions__builtin_aggregate2_6_p_5_env_0__Answer0_16 ;
+		{
+
+    MR_PARTIAL_DEEP_COPY(SolutionsHeapPtr, OldVal, NewVal, TypeInfo_for_T);
+
+
+		;}
+#undef MR_PROC_LABEL
+	 (mercury__solutions__env_ptr)->mercury__solutions__builtin_aggregate2_6_p_5_env_0__Answer_17  = (MR_Box) NewVal;
+}
+      {
+        mercury__mutvar__get_mutvar_2_p_0((mercury__solutions__env_ptr)->mercury__solutions__builtin_aggregate2_6_p_5_env_0__TypeInfo_for_U_33, (mercury__solutions__env_ptr)->mercury__solutions__builtin_aggregate2_6_p_5_env_0__Mutvar1_14, &(mercury__solutions__env_ptr)->mercury__solutions__builtin_aggregate2_6_p_5_env_0__SubAccA0_18);
+      }
+      {
+        mercury__mutvar__get_mutvar_2_p_0((mercury__solutions__env_ptr)->mercury__solutions__builtin_aggregate2_6_p_5_env_0__TypeInfo_for_V_34, (mercury__solutions__env_ptr)->mercury__solutions__builtin_aggregate2_6_p_5_env_0__Mutvar2_15, &(mercury__solutions__env_ptr)->mercury__solutions__builtin_aggregate2_6_p_5_env_0__SubAccB0_19);
+      }
+      mercury__solutions__func_1 = ((void MR_CALL (*)(MR_Box, MR_Box, MR_Box, MR_Box *, MR_Box, MR_Box *)) (MR_hl_field(MR_mktag(0), (mercury__solutions__env_ptr)->mercury__solutions__builtin_aggregate2_6_p_5_env_0__CollectorPred_8, (MR_Integer) 1)));
+      {
+        mercury__solutions__func_1(((MR_Box) (mercury__solutions__env_ptr)->mercury__solutions__builtin_aggregate2_6_p_5_env_0__CollectorPred_8), (mercury__solutions__env_ptr)->mercury__solutions__builtin_aggregate2_6_p_5_env_0__Answer_17, (mercury__solutions__env_ptr)->mercury__solutions__builtin_aggregate2_6_p_5_env_0__SubAccA0_18, &(mercury__solutions__env_ptr)->mercury__solutions__builtin_aggregate2_6_p_5_env_0__SubAccA_20, (mercury__solutions__env_ptr)->mercury__solutions__builtin_aggregate2_6_p_5_env_0__SubAccB0_19, &(mercury__solutions__env_ptr)->mercury__solutions__builtin_aggregate2_6_p_5_env_0__SubAccB_21);
+      }
+      {
+        mercury__mutvar__set_mutvar_2_p_0((mercury__solutions__env_ptr)->mercury__solutions__builtin_aggregate2_6_p_5_env_0__TypeInfo_for_U_33, (mercury__solutions__env_ptr)->mercury__solutions__builtin_aggregate2_6_p_5_env_0__Mutvar1_14, (mercury__solutions__env_ptr)->mercury__solutions__builtin_aggregate2_6_p_5_env_0__SubAccA_20);
+      }
+      {
+        mercury__mutvar__set_mutvar_2_p_0((mercury__solutions__env_ptr)->mercury__solutions__builtin_aggregate2_6_p_5_env_0__TypeInfo_for_V_34, (mercury__solutions__env_ptr)->mercury__solutions__builtin_aggregate2_6_p_5_env_0__Mutvar2_15, (mercury__solutions__env_ptr)->mercury__solutions__builtin_aggregate2_6_p_5_env_0__SubAccB_21);
+      }
+{
+#define MR_PROC_LABEL mercury__solutions__builtin_aggregate2_6_p_5
+
+
+		{
+{
+#ifdef MR_RECLAIM_HP_ON_FAILURE
+    MR_MemoryZone   *temp_zone;
+    MR_Word         *temp_hp;
+
+    temp_zone = MR_ENGINE(MR_eng_heap_zone);
+    MR_ENGINE(MR_eng_heap_zone) = MR_ENGINE(MR_eng_solutions_heap_zone);
+    MR_ENGINE(MR_eng_solutions_heap_zone) = temp_zone;
+    temp_hp = MR_hp;
+    MR_hp_word = (MR_Word) MR_sol_hp;
+    MR_sol_hp = temp_hp;
+#endif
+}
+
+		;}
+#undef MR_PROC_LABEL
+}
+      (mercury__solutions__env_ptr)->mercury__solutions__builtin_aggregate2_6_p_5_env_0__succeeded = MR_FALSE;
+      if ((mercury__solutions__env_ptr)->mercury__solutions__builtin_aggregate2_6_p_5_env_0__succeeded)
+        {
+          mercury__solutions__builtin_aggregate2_6_p_5_1(mercury__solutions__env_ptr);
+        }
+    }
+  }
+}
+
+static void MR_CALL 
+mercury__solutions__builtin_aggregate2_6_p_5_3(
+  void * mercury__solutions__env_ptr_arg)
+{
+  {
+    struct mercury__solutions__builtin_aggregate2_6_p_5_env_0_s * mercury__solutions__env_ptr = (struct mercury__solutions__builtin_aggregate2_6_p_5_env_0_s *) mercury__solutions__env_ptr_arg;
+
+    if (MR_builtin_setjmp((mercury__solutions__env_ptr)->mercury__solutions__builtin_aggregate2_6_p_5_env_0__commit_0) == 0)
+      {
+        {
+          void MR_CALL (* mercury__solutions__func_0)(MR_Box, MR_Box *, MR_Cont, void *) = ((void MR_CALL (*)(MR_Box, MR_Box *, MR_Cont, void *)) (MR_hl_field(MR_mktag(0), (mercury__solutions__env_ptr)->mercury__solutions__builtin_aggregate2_6_p_5_env_0__GeneratorPred_7, (MR_Integer) 1)));
+
+          {
+            mercury__solutions__func_0(((MR_Box) (mercury__solutions__env_ptr)->mercury__solutions__builtin_aggregate2_6_p_5_env_0__GeneratorPred_7), &(mercury__solutions__env_ptr)->mercury__solutions__builtin_aggregate2_6_p_5_env_0__Answer0_16, mercury__solutions__builtin_aggregate2_6_p_5_2, mercury__solutions__env_ptr);
+          }
+        }
+        (mercury__solutions__env_ptr)->mercury__solutions__builtin_aggregate2_6_p_5_env_0__succeeded = MR_FALSE;
+      }
+    else
+      (mercury__solutions__env_ptr)->mercury__solutions__builtin_aggregate2_6_p_5_env_0__succeeded = MR_TRUE;
+  }
+}
+
+void MR_CALL 
+mercury__solutions__builtin_aggregate2_6_p_5(
+  MR_Word mercury__solutions__TypeInfo_for_T_32,
+  MR_Word mercury__solutions__TypeInfo_for_U_33,
+  MR_Word mercury__solutions__TypeInfo_for_V_34,
+  MR_Word mercury__solutions__GeneratorPred_7,
+  MR_Word mercury__solutions__CollectorPred_8,
+  MR_Box mercury__solutions__STATE_VARIABLE_Acc1_0_22,
+  MR_Box * mercury__solutions__STATE_VARIABLE_Acc1_23,
+  MR_Box mercury__solutions__STATE_VARIABLE_Acc2_0_24,
+  MR_Box * mercury__solutions__STATE_VARIABLE_Acc2_25)
+{
+  {
+    struct mercury__solutions__builtin_aggregate2_6_p_5_env_0_s mercury__solutions__env;
+
+    (mercury__solutions__env).mercury__solutions__builtin_aggregate2_6_p_5_env_0__TypeInfo_for_T_32 = mercury__solutions__TypeInfo_for_T_32;
+    (mercury__solutions__env).mercury__solutions__builtin_aggregate2_6_p_5_env_0__TypeInfo_for_U_33 = mercury__solutions__TypeInfo_for_U_33;
+    (mercury__solutions__env).mercury__solutions__builtin_aggregate2_6_p_5_env_0__TypeInfo_for_V_34 = mercury__solutions__TypeInfo_for_V_34;
+    (mercury__solutions__env).mercury__solutions__builtin_aggregate2_6_p_5_env_0__GeneratorPred_7 = mercury__solutions__GeneratorPred_7;
+    (mercury__solutions__env).mercury__solutions__builtin_aggregate2_6_p_5_env_0__CollectorPred_8 = mercury__solutions__CollectorPred_8;
+    {
+      MR_Word mercury__solutions__SolutionsHeapPtr_12;
+      MR_Box mercury__solutions__STATE_VARIABLE_Acc1_28_28;
+      MR_Box mercury__solutions__STATE_VARIABLE_Acc2_29_29;
+      MR_Word mercury__solutions__TypeInfo_for_U_35;
+      MR_Word mercury__solutions__TypeInfo_for_V_36;
+
+{
+#define MR_PROC_LABEL mercury__solutions__builtin_aggregate2_6_p_5
+
+	MR_Word HeapPtr;
+	MR_Word SolutionsHeapPtr;
+	MR_Word TrailPtr;
+
+		{
+
+    /* save heap states */
+#ifdef MR_RECLAIM_HP_ON_FAILURE
+    HeapPtr = (MR_Word) MR_hp;
+    SolutionsHeapPtr = (MR_Word) MR_sol_hp;
+#else
+    HeapPtr = SolutionsHeapPtr = 0;
+#endif
+
+    /* save trail state */
+#ifdef MR_USE_TRAIL
+    MR_store_ticket(TrailPtr);
+#else
+    TrailPtr = 0;
+#endif
+
+
+		;}
+#undef MR_PROC_LABEL
+	 (mercury__solutions__env).mercury__solutions__builtin_aggregate2_6_p_5_env_0__HeapPtr_11  = HeapPtr;
+	 mercury__solutions__SolutionsHeapPtr_12  = SolutionsHeapPtr;
+	 (mercury__solutions__env).mercury__solutions__builtin_aggregate2_6_p_5_env_0__TrailPtr_13  = TrailPtr;
+}
+{
+#define MR_PROC_LABEL mercury__solutions__builtin_aggregate2_6_p_5
+
+
+		{
+
+#ifdef MR_USE_MINIMAL_MODEL_STACK_COPY
+    MR_pneg_enter_cond();
+#endif
+
+
+		;}
+#undef MR_PROC_LABEL
+}
+      {
+        mercury__mutvar__new_mutvar_2_p_0((mercury__solutions__env).mercury__solutions__builtin_aggregate2_6_p_5_env_0__TypeInfo_for_U_33, mercury__solutions__STATE_VARIABLE_Acc1_0_22, &(mercury__solutions__env).mercury__solutions__builtin_aggregate2_6_p_5_env_0__Mutvar1_14);
+      }
+      {
+        mercury__mutvar__new_mutvar_2_p_0((mercury__solutions__env).mercury__solutions__builtin_aggregate2_6_p_5_env_0__TypeInfo_for_V_34, mercury__solutions__STATE_VARIABLE_Acc2_0_24, &(mercury__solutions__env).mercury__solutions__builtin_aggregate2_6_p_5_env_0__Mutvar2_15);
+      }
+      {
+        mercury__solutions__builtin_aggregate2_6_p_5_3(&mercury__solutions__env);
+      }
+      if (!((mercury__solutions__env).mercury__solutions__builtin_aggregate2_6_p_5_env_0__succeeded))
+        {
+          MR_Box mercury__solutions__STATE_VARIABLE_Acc1_26_26;
+          MR_Box mercury__solutions__STATE_VARIABLE_Acc2_27_27;
+
+{
+#define MR_PROC_LABEL mercury__solutions__builtin_aggregate2_6_p_5
+
+
+		{
+
+#ifdef MR_USE_MINIMAL_MODEL_STACK_COPY
+    MR_pneg_enter_else("end_all_soln_neg_context");
+#endif
+
+
+		;}
+#undef MR_PROC_LABEL
+}
+          {
+            mercury__mutvar__get_mutvar_2_p_0((mercury__solutions__env).mercury__solutions__builtin_aggregate2_6_p_5_env_0__TypeInfo_for_U_33, (mercury__solutions__env).mercury__solutions__builtin_aggregate2_6_p_5_env_0__Mutvar1_14, &mercury__solutions__STATE_VARIABLE_Acc1_26_26);
+          }
+          {
+            mercury__mutvar__get_mutvar_2_p_0((mercury__solutions__env).mercury__solutions__builtin_aggregate2_6_p_5_env_0__TypeInfo_for_V_34, (mercury__solutions__env).mercury__solutions__builtin_aggregate2_6_p_5_env_0__Mutvar2_15, &mercury__solutions__STATE_VARIABLE_Acc2_27_27);
+          }
+{
+#define MR_PROC_LABEL mercury__solutions__builtin_aggregate2_6_p_5
+
+	MR_Word TypeInfo_for_T;
+	MR_Word SolutionsHeapPtr;
+	MR_Word OldVal;
+	MR_Word NewVal;
+
+	TypeInfo_for_T =  (mercury__solutions__env).mercury__solutions__builtin_aggregate2_6_p_5_env_0__TypeInfo_for_U_33 ;
+	SolutionsHeapPtr =  mercury__solutions__SolutionsHeapPtr_12 ;
+	OldVal = (MR_Word) mercury__solutions__STATE_VARIABLE_Acc1_26_26 ;
+		{
+
+    MR_PARTIAL_DEEP_COPY(SolutionsHeapPtr, OldVal, NewVal, TypeInfo_for_T);
+
+
+		;}
+#undef MR_PROC_LABEL
+	 mercury__solutions__STATE_VARIABLE_Acc1_28_28  = (MR_Box) NewVal;
+}
+{
+#define MR_PROC_LABEL mercury__solutions__builtin_aggregate2_6_p_5
+
+	MR_Word TypeInfo_for_T;
+	MR_Word SolutionsHeapPtr;
+	MR_Word OldVal;
+	MR_Word NewVal;
+
+	TypeInfo_for_T =  (mercury__solutions__env).mercury__solutions__builtin_aggregate2_6_p_5_env_0__TypeInfo_for_V_34 ;
+	SolutionsHeapPtr =  mercury__solutions__SolutionsHeapPtr_12 ;
+	OldVal = (MR_Word) mercury__solutions__STATE_VARIABLE_Acc2_27_27 ;
+		{
+
+    MR_PARTIAL_DEEP_COPY(SolutionsHeapPtr, OldVal, NewVal, TypeInfo_for_T);
+
+
+		;}
+#undef MR_PROC_LABEL
+	 mercury__solutions__STATE_VARIABLE_Acc2_29_29  = (MR_Box) NewVal;
+}
+{
+#define MR_PROC_LABEL mercury__solutions__builtin_aggregate2_6_p_5
+
+	MR_Word SolutionsHeapPtr;
+
+	SolutionsHeapPtr =  mercury__solutions__SolutionsHeapPtr_12 ;
+		{
+
+#ifdef MR_RECLAIM_HP_ON_FAILURE
+    MR_sol_hp = (MR_Word *) SolutionsHeapPtr;
+#endif
+
+
+		;}
+#undef MR_PROC_LABEL
+}
+{
+#define MR_PROC_LABEL mercury__solutions__builtin_aggregate2_6_p_5
+
+
+		{
+
+#ifdef MR_USE_TRAIL
+    MR_discard_ticket();
+#endif
+
+
+		;}
+#undef MR_PROC_LABEL
+}
+        }
+{
+#define MR_PROC_LABEL mercury__solutions__builtin_aggregate2_6_p_5
+
+	MR_Word X;
+	MR_Word Y;
+
+	X = (MR_Word) mercury__solutions__STATE_VARIABLE_Acc1_28_28 ;
+		{
+
+    Y = X;
+
+
+		;}
+#undef MR_PROC_LABEL
+	 *mercury__solutions__STATE_VARIABLE_Acc1_23  = (MR_Box) Y;
+}
+{
+#define MR_PROC_LABEL mercury__solutions__builtin_aggregate2_6_p_5
+
+	MR_Word X;
+	MR_Word Y;
+
+	X = (MR_Word) mercury__solutions__STATE_VARIABLE_Acc2_29_29 ;
+		{
+
+    Y = X;
+
+
+		;}
+#undef MR_PROC_LABEL
+	 *mercury__solutions__STATE_VARIABLE_Acc2_25  = (MR_Box) Y;
+}
+    }
+  }
+}
+
+static void MR_CALL 
+mercury__solutions__builtin_aggregate2_6_p_4_1(
+  void * mercury__solutions__env_ptr_arg)
+{
+  {
+    struct mercury__solutions__builtin_aggregate2_6_p_4_env_0_s * mercury__solutions__env_ptr = (struct mercury__solutions__builtin_aggregate2_6_p_4_env_0_s *) mercury__solutions__env_ptr_arg;
+
+    MR_builtin_longjmp((mercury__solutions__env_ptr)->mercury__solutions__builtin_aggregate2_6_p_4_env_0__commit_0, 1);
+  }
+}
+
+static void MR_CALL 
+mercury__solutions__builtin_aggregate2_6_p_4_2(
+  void * mercury__solutions__env_ptr_arg)
+{
+  {
+    struct mercury__solutions__builtin_aggregate2_6_p_4_env_0_s * mercury__solutions__env_ptr = (struct mercury__solutions__builtin_aggregate2_6_p_4_env_0_s *) mercury__solutions__env_ptr_arg;
+
+    {
+      void MR_CALL (* mercury__solutions__func_1)(MR_Box, MR_Box, MR_Box, MR_Box *, MR_Box, MR_Box *);
+
+{
+#define MR_PROC_LABEL mercury__solutions__builtin_aggregate2_6_p_4
+
+	MR_Word TrailPtr;
+
+	TrailPtr =  (mercury__solutions__env_ptr)->mercury__solutions__builtin_aggregate2_6_p_4_env_0__TrailPtr_13 ;
+		{
+
+#ifdef MR_USE_TRAIL
+    /* check for outstanding delayed goals (``floundering'') */
+    MR_reset_ticket(TrailPtr, MR_solve);
+#endif
+
+
+		;}
+#undef MR_PROC_LABEL
+}
+{
+#define MR_PROC_LABEL mercury__solutions__builtin_aggregate2_6_p_4
+
+
+		{
+{
+#ifdef MR_RECLAIM_HP_ON_FAILURE
+    MR_MemoryZone   *temp_zone;
+    MR_Word         *temp_hp;
+
+    temp_zone = MR_ENGINE(MR_eng_heap_zone);
+    MR_ENGINE(MR_eng_heap_zone) = MR_ENGINE(MR_eng_solutions_heap_zone);
+    MR_ENGINE(MR_eng_solutions_heap_zone) = temp_zone;
+    temp_hp = MR_hp;
+    MR_hp_word = (MR_Word) MR_sol_hp;
+    MR_sol_hp = temp_hp;
+#endif
+}
+
+		;}
+#undef MR_PROC_LABEL
+}
+{
+#define MR_PROC_LABEL mercury__solutions__builtin_aggregate2_6_p_4
+
+	MR_Word TypeInfo_for_T;
+	MR_Word SolutionsHeapPtr;
+	MR_Word OldVal;
+	MR_Word NewVal;
+
+	TypeInfo_for_T =  (mercury__solutions__env_ptr)->mercury__solutions__builtin_aggregate2_6_p_4_env_0__TypeInfo_for_T_32 ;
+	SolutionsHeapPtr =  (mercury__solutions__env_ptr)->mercury__solutions__builtin_aggregate2_6_p_4_env_0__HeapPtr_11 ;
+	OldVal = (MR_Word) (mercury__solutions__env_ptr)->mercury__solutions__builtin_aggregate2_6_p_4_env_0__Answer0_16 ;
+		{
+
+    MR_PARTIAL_DEEP_COPY(SolutionsHeapPtr, OldVal, NewVal, TypeInfo_for_T);
+
+
+		;}
+#undef MR_PROC_LABEL
+	 (mercury__solutions__env_ptr)->mercury__solutions__builtin_aggregate2_6_p_4_env_0__Answer_17  = (MR_Box) NewVal;
+}
+      {
+        mercury__mutvar__get_mutvar_2_p_0((mercury__solutions__env_ptr)->mercury__solutions__builtin_aggregate2_6_p_4_env_0__TypeInfo_for_U_33, (mercury__solutions__env_ptr)->mercury__solutions__builtin_aggregate2_6_p_4_env_0__Mutvar1_14, &(mercury__solutions__env_ptr)->mercury__solutions__builtin_aggregate2_6_p_4_env_0__SubAccA0_18);
+      }
+      {
+        mercury__mutvar__get_mutvar_2_p_0((mercury__solutions__env_ptr)->mercury__solutions__builtin_aggregate2_6_p_4_env_0__TypeInfo_for_V_34, (mercury__solutions__env_ptr)->mercury__solutions__builtin_aggregate2_6_p_4_env_0__Mutvar2_15, &(mercury__solutions__env_ptr)->mercury__solutions__builtin_aggregate2_6_p_4_env_0__SubAccB0_19);
+      }
+      mercury__solutions__func_1 = ((void MR_CALL (*)(MR_Box, MR_Box, MR_Box, MR_Box *, MR_Box, MR_Box *)) (MR_hl_field(MR_mktag(0), (mercury__solutions__env_ptr)->mercury__solutions__builtin_aggregate2_6_p_4_env_0__CollectorPred_8, (MR_Integer) 1)));
+      {
+        mercury__solutions__func_1(((MR_Box) (mercury__solutions__env_ptr)->mercury__solutions__builtin_aggregate2_6_p_4_env_0__CollectorPred_8), (mercury__solutions__env_ptr)->mercury__solutions__builtin_aggregate2_6_p_4_env_0__Answer_17, (mercury__solutions__env_ptr)->mercury__solutions__builtin_aggregate2_6_p_4_env_0__SubAccA0_18, &(mercury__solutions__env_ptr)->mercury__solutions__builtin_aggregate2_6_p_4_env_0__SubAccA_20, (mercury__solutions__env_ptr)->mercury__solutions__builtin_aggregate2_6_p_4_env_0__SubAccB0_19, &(mercury__solutions__env_ptr)->mercury__solutions__builtin_aggregate2_6_p_4_env_0__SubAccB_21);
+      }
+      {
+        mercury__mutvar__set_mutvar_2_p_0((mercury__solutions__env_ptr)->mercury__solutions__builtin_aggregate2_6_p_4_env_0__TypeInfo_for_U_33, (mercury__solutions__env_ptr)->mercury__solutions__builtin_aggregate2_6_p_4_env_0__Mutvar1_14, (mercury__solutions__env_ptr)->mercury__solutions__builtin_aggregate2_6_p_4_env_0__SubAccA_20);
+      }
+      {
+        mercury__mutvar__set_mutvar_2_p_0((mercury__solutions__env_ptr)->mercury__solutions__builtin_aggregate2_6_p_4_env_0__TypeInfo_for_V_34, (mercury__solutions__env_ptr)->mercury__solutions__builtin_aggregate2_6_p_4_env_0__Mutvar2_15, (mercury__solutions__env_ptr)->mercury__solutions__builtin_aggregate2_6_p_4_env_0__SubAccB_21);
+      }
+{
+#define MR_PROC_LABEL mercury__solutions__builtin_aggregate2_6_p_4
+
+
+		{
+{
+#ifdef MR_RECLAIM_HP_ON_FAILURE
+    MR_MemoryZone   *temp_zone;
+    MR_Word         *temp_hp;
+
+    temp_zone = MR_ENGINE(MR_eng_heap_zone);
+    MR_ENGINE(MR_eng_heap_zone) = MR_ENGINE(MR_eng_solutions_heap_zone);
+    MR_ENGINE(MR_eng_solutions_heap_zone) = temp_zone;
+    temp_hp = MR_hp;
+    MR_hp_word = (MR_Word) MR_sol_hp;
+    MR_sol_hp = temp_hp;
+#endif
+}
+
+		;}
+#undef MR_PROC_LABEL
+}
+      (mercury__solutions__env_ptr)->mercury__solutions__builtin_aggregate2_6_p_4_env_0__succeeded = MR_FALSE;
+      if ((mercury__solutions__env_ptr)->mercury__solutions__builtin_aggregate2_6_p_4_env_0__succeeded)
+        {
+          mercury__solutions__builtin_aggregate2_6_p_4_1(mercury__solutions__env_ptr);
+        }
+    }
+  }
+}
+
+static void MR_CALL 
+mercury__solutions__builtin_aggregate2_6_p_4_3(
+  void * mercury__solutions__env_ptr_arg)
+{
+  {
+    struct mercury__solutions__builtin_aggregate2_6_p_4_env_0_s * mercury__solutions__env_ptr = (struct mercury__solutions__builtin_aggregate2_6_p_4_env_0_s *) mercury__solutions__env_ptr_arg;
+
+    if (MR_builtin_setjmp((mercury__solutions__env_ptr)->mercury__solutions__builtin_aggregate2_6_p_4_env_0__commit_0) == 0)
+      {
+        {
+          void MR_CALL (* mercury__solutions__func_0)(MR_Box, MR_Box *, MR_Cont, void *) = ((void MR_CALL (*)(MR_Box, MR_Box *, MR_Cont, void *)) (MR_hl_field(MR_mktag(0), (mercury__solutions__env_ptr)->mercury__solutions__builtin_aggregate2_6_p_4_env_0__GeneratorPred_7, (MR_Integer) 1)));
+
+          {
+            mercury__solutions__func_0(((MR_Box) (mercury__solutions__env_ptr)->mercury__solutions__builtin_aggregate2_6_p_4_env_0__GeneratorPred_7), &(mercury__solutions__env_ptr)->mercury__solutions__builtin_aggregate2_6_p_4_env_0__Answer0_16, mercury__solutions__builtin_aggregate2_6_p_4_2, mercury__solutions__env_ptr);
+          }
+        }
+        (mercury__solutions__env_ptr)->mercury__solutions__builtin_aggregate2_6_p_4_env_0__succeeded = MR_FALSE;
+      }
+    else
+      (mercury__solutions__env_ptr)->mercury__solutions__builtin_aggregate2_6_p_4_env_0__succeeded = MR_TRUE;
+  }
+}
+
+void MR_CALL 
+mercury__solutions__builtin_aggregate2_6_p_4(
+  MR_Word mercury__solutions__TypeInfo_for_T_32,
+  MR_Word mercury__solutions__TypeInfo_for_U_33,
+  MR_Word mercury__solutions__TypeInfo_for_V_34,
+  MR_Word mercury__solutions__GeneratorPred_7,
+  MR_Word mercury__solutions__CollectorPred_8,
+  MR_Box mercury__solutions__STATE_VARIABLE_Acc1_0_22,
+  MR_Box * mercury__solutions__STATE_VARIABLE_Acc1_23,
+  MR_Box mercury__solutions__STATE_VARIABLE_Acc2_0_24,
+  MR_Box * mercury__solutions__STATE_VARIABLE_Acc2_25)
+{
+  {
+    struct mercury__solutions__builtin_aggregate2_6_p_4_env_0_s mercury__solutions__env;
+
+    (mercury__solutions__env).mercury__solutions__builtin_aggregate2_6_p_4_env_0__TypeInfo_for_T_32 = mercury__solutions__TypeInfo_for_T_32;
+    (mercury__solutions__env).mercury__solutions__builtin_aggregate2_6_p_4_env_0__TypeInfo_for_U_33 = mercury__solutions__TypeInfo_for_U_33;
+    (mercury__solutions__env).mercury__solutions__builtin_aggregate2_6_p_4_env_0__TypeInfo_for_V_34 = mercury__solutions__TypeInfo_for_V_34;
+    (mercury__solutions__env).mercury__solutions__builtin_aggregate2_6_p_4_env_0__GeneratorPred_7 = mercury__solutions__GeneratorPred_7;
+    (mercury__solutions__env).mercury__solutions__builtin_aggregate2_6_p_4_env_0__CollectorPred_8 = mercury__solutions__CollectorPred_8;
+    {
+      MR_Word mercury__solutions__SolutionsHeapPtr_12;
+      MR_Box mercury__solutions__STATE_VARIABLE_Acc1_28_28;
+      MR_Box mercury__solutions__STATE_VARIABLE_Acc2_29_29;
+      MR_Word mercury__solutions__TypeInfo_for_U_35;
+      MR_Word mercury__solutions__TypeInfo_for_V_36;
+
+{
+#define MR_PROC_LABEL mercury__solutions__builtin_aggregate2_6_p_4
+
+	MR_Word HeapPtr;
+	MR_Word SolutionsHeapPtr;
+	MR_Word TrailPtr;
+
+		{
+
+    /* save heap states */
+#ifdef MR_RECLAIM_HP_ON_FAILURE
+    HeapPtr = (MR_Word) MR_hp;
+    SolutionsHeapPtr = (MR_Word) MR_sol_hp;
+#else
+    HeapPtr = SolutionsHeapPtr = 0;
+#endif
+
+    /* save trail state */
+#ifdef MR_USE_TRAIL
+    MR_store_ticket(TrailPtr);
+#else
+    TrailPtr = 0;
+#endif
+
+
+		;}
+#undef MR_PROC_LABEL
+	 (mercury__solutions__env).mercury__solutions__builtin_aggregate2_6_p_4_env_0__HeapPtr_11  = HeapPtr;
+	 mercury__solutions__SolutionsHeapPtr_12  = SolutionsHeapPtr;
+	 (mercury__solutions__env).mercury__solutions__builtin_aggregate2_6_p_4_env_0__TrailPtr_13  = TrailPtr;
+}
+{
+#define MR_PROC_LABEL mercury__solutions__builtin_aggregate2_6_p_4
+
+
+		{
+
+#ifdef MR_USE_MINIMAL_MODEL_STACK_COPY
+    MR_pneg_enter_cond();
+#endif
+
+
+		;}
+#undef MR_PROC_LABEL
+}
+      {
+        mercury__mutvar__new_mutvar_2_p_0((mercury__solutions__env).mercury__solutions__builtin_aggregate2_6_p_4_env_0__TypeInfo_for_U_33, mercury__solutions__STATE_VARIABLE_Acc1_0_22, &(mercury__solutions__env).mercury__solutions__builtin_aggregate2_6_p_4_env_0__Mutvar1_14);
+      }
+      {
+        mercury__mutvar__new_mutvar_2_p_0((mercury__solutions__env).mercury__solutions__builtin_aggregate2_6_p_4_env_0__TypeInfo_for_V_34, mercury__solutions__STATE_VARIABLE_Acc2_0_24, &(mercury__solutions__env).mercury__solutions__builtin_aggregate2_6_p_4_env_0__Mutvar2_15);
+      }
+      {
+        mercury__solutions__builtin_aggregate2_6_p_4_3(&mercury__solutions__env);
+      }
+      if (!((mercury__solutions__env).mercury__solutions__builtin_aggregate2_6_p_4_env_0__succeeded))
+        {
+          MR_Box mercury__solutions__STATE_VARIABLE_Acc1_26_26;
+          MR_Box mercury__solutions__STATE_VARIABLE_Acc2_27_27;
+
+{
+#define MR_PROC_LABEL mercury__solutions__builtin_aggregate2_6_p_4
+
+
+		{
+
+#ifdef MR_USE_MINIMAL_MODEL_STACK_COPY
+    MR_pneg_enter_else("end_all_soln_neg_context");
+#endif
+
+
+		;}
+#undef MR_PROC_LABEL
+}
+          {
+            mercury__mutvar__get_mutvar_2_p_0((mercury__solutions__env).mercury__solutions__builtin_aggregate2_6_p_4_env_0__TypeInfo_for_U_33, (mercury__solutions__env).mercury__solutions__builtin_aggregate2_6_p_4_env_0__Mutvar1_14, &mercury__solutions__STATE_VARIABLE_Acc1_26_26);
+          }
+          {
+            mercury__mutvar__get_mutvar_2_p_0((mercury__solutions__env).mercury__solutions__builtin_aggregate2_6_p_4_env_0__TypeInfo_for_V_34, (mercury__solutions__env).mercury__solutions__builtin_aggregate2_6_p_4_env_0__Mutvar2_15, &mercury__solutions__STATE_VARIABLE_Acc2_27_27);
+          }
+{
+#define MR_PROC_LABEL mercury__solutions__builtin_aggregate2_6_p_4
+
+	MR_Word TypeInfo_for_T;
+	MR_Word SolutionsHeapPtr;
+	MR_Word OldVal;
+	MR_Word NewVal;
+
+	TypeInfo_for_T =  (mercury__solutions__env).mercury__solutions__builtin_aggregate2_6_p_4_env_0__TypeInfo_for_U_33 ;
+	SolutionsHeapPtr =  mercury__solutions__SolutionsHeapPtr_12 ;
+	OldVal = (MR_Word) mercury__solutions__STATE_VARIABLE_Acc1_26_26 ;
+		{
+
+    MR_PARTIAL_DEEP_COPY(SolutionsHeapPtr, OldVal, NewVal, TypeInfo_for_T);
+
+
+		;}
+#undef MR_PROC_LABEL
+	 mercury__solutions__STATE_VARIABLE_Acc1_28_28  = (MR_Box) NewVal;
+}
+{
+#define MR_PROC_LABEL mercury__solutions__builtin_aggregate2_6_p_4
+
+	MR_Word TypeInfo_for_T;
+	MR_Word SolutionsHeapPtr;
+	MR_Word OldVal;
+	MR_Word NewVal;
+
+	TypeInfo_for_T =  (mercury__solutions__env).mercury__solutions__builtin_aggregate2_6_p_4_env_0__TypeInfo_for_V_34 ;
+	SolutionsHeapPtr =  mercury__solutions__SolutionsHeapPtr_12 ;
+	OldVal = (MR_Word) mercury__solutions__STATE_VARIABLE_Acc2_27_27 ;
+		{
+
+    MR_PARTIAL_DEEP_COPY(SolutionsHeapPtr, OldVal, NewVal, TypeInfo_for_T);
+
+
+		;}
+#undef MR_PROC_LABEL
+	 mercury__solutions__STATE_VARIABLE_Acc2_29_29  = (MR_Box) NewVal;
+}
+{
+#define MR_PROC_LABEL mercury__solutions__builtin_aggregate2_6_p_4
+
+	MR_Word SolutionsHeapPtr;
+
+	SolutionsHeapPtr =  mercury__solutions__SolutionsHeapPtr_12 ;
+		{
+
+#ifdef MR_RECLAIM_HP_ON_FAILURE
+    MR_sol_hp = (MR_Word *) SolutionsHeapPtr;
+#endif
+
+
+		;}
+#undef MR_PROC_LABEL
+}
+{
+#define MR_PROC_LABEL mercury__solutions__builtin_aggregate2_6_p_4
+
+
+		{
+
+#ifdef MR_USE_TRAIL
+    MR_discard_ticket();
+#endif
+
+
+		;}
+#undef MR_PROC_LABEL
+}
+        }
+{
+#define MR_PROC_LABEL mercury__solutions__builtin_aggregate2_6_p_4
+
+	MR_Word X;
+	MR_Word Y;
+
+	X = (MR_Word) mercury__solutions__STATE_VARIABLE_Acc1_28_28 ;
+		{
+
+    Y = X;
+
+
+		;}
+#undef MR_PROC_LABEL
+	 *mercury__solutions__STATE_VARIABLE_Acc1_23  = (MR_Box) Y;
+}
+{
+#define MR_PROC_LABEL mercury__solutions__builtin_aggregate2_6_p_4
+
+	MR_Word X;
+	MR_Word Y;
+
+	X = (MR_Word) mercury__solutions__STATE_VARIABLE_Acc2_29_29 ;
+		{
+
+    Y = X;
+
+
+		;}
+#undef MR_PROC_LABEL
+	 *mercury__solutions__STATE_VARIABLE_Acc2_25  = (MR_Box) Y;
+}
+    }
+  }
+}
+
+static void MR_CALL 
+mercury__solutions__builtin_aggregate2_6_p_3_1(
+  void * mercury__solutions__env_ptr_arg)
+{
+  {
+    struct mercury__solutions__builtin_aggregate2_6_p_3_env_0_s * mercury__solutions__env_ptr = (struct mercury__solutions__builtin_aggregate2_6_p_3_env_0_s *) mercury__solutions__env_ptr_arg;
+
+    MR_builtin_longjmp((mercury__solutions__env_ptr)->mercury__solutions__builtin_aggregate2_6_p_3_env_0__commit_0, 1);
+  }
+}
+
+static void MR_CALL 
+mercury__solutions__builtin_aggregate2_6_p_3_2(
+  void * mercury__solutions__env_ptr_arg)
+{
+  {
+    struct mercury__solutions__builtin_aggregate2_6_p_3_env_0_s * mercury__solutions__env_ptr = (struct mercury__solutions__builtin_aggregate2_6_p_3_env_0_s *) mercury__solutions__env_ptr_arg;
+
+    {
+      void MR_CALL (* mercury__solutions__func_1)(MR_Box, MR_Box, MR_Box, MR_Box *, MR_Box, MR_Box *);
+
+{
+#define MR_PROC_LABEL mercury__solutions__builtin_aggregate2_6_p_3
+
+	MR_Word TrailPtr;
+
+	TrailPtr =  (mercury__solutions__env_ptr)->mercury__solutions__builtin_aggregate2_6_p_3_env_0__TrailPtr_13 ;
+		{
+
+#ifdef MR_USE_TRAIL
+    /* check for outstanding delayed goals (``floundering'') */
+    MR_reset_ticket(TrailPtr, MR_solve);
+#endif
+
+
+		;}
+#undef MR_PROC_LABEL
+}
+{
+#define MR_PROC_LABEL mercury__solutions__builtin_aggregate2_6_p_3
+
+
+		{
+{
+#ifdef MR_RECLAIM_HP_ON_FAILURE
+    MR_MemoryZone   *temp_zone;
+    MR_Word         *temp_hp;
+
+    temp_zone = MR_ENGINE(MR_eng_heap_zone);
+    MR_ENGINE(MR_eng_heap_zone) = MR_ENGINE(MR_eng_solutions_heap_zone);
+    MR_ENGINE(MR_eng_solutions_heap_zone) = temp_zone;
+    temp_hp = MR_hp;
+    MR_hp_word = (MR_Word) MR_sol_hp;
+    MR_sol_hp = temp_hp;
+#endif
+}
+
+		;}
+#undef MR_PROC_LABEL
+}
+{
+#define MR_PROC_LABEL mercury__solutions__builtin_aggregate2_6_p_3
+
+	MR_Word TypeInfo_for_T;
+	MR_Word SolutionsHeapPtr;
+	MR_Word OldVal;
+	MR_Word NewVal;
+
+	TypeInfo_for_T =  (mercury__solutions__env_ptr)->mercury__solutions__builtin_aggregate2_6_p_3_env_0__TypeInfo_for_T_32 ;
+	SolutionsHeapPtr =  (mercury__solutions__env_ptr)->mercury__solutions__builtin_aggregate2_6_p_3_env_0__HeapPtr_11 ;
+	OldVal = (MR_Word) (mercury__solutions__env_ptr)->mercury__solutions__builtin_aggregate2_6_p_3_env_0__Answer0_16 ;
+		{
+
+    MR_PARTIAL_DEEP_COPY(SolutionsHeapPtr, OldVal, NewVal, TypeInfo_for_T);
+
+
+		;}
+#undef MR_PROC_LABEL
+	 (mercury__solutions__env_ptr)->mercury__solutions__builtin_aggregate2_6_p_3_env_0__Answer_17  = (MR_Box) NewVal;
+}
+      {
+        mercury__mutvar__get_mutvar_2_p_0((mercury__solutions__env_ptr)->mercury__solutions__builtin_aggregate2_6_p_3_env_0__TypeInfo_for_U_33, (mercury__solutions__env_ptr)->mercury__solutions__builtin_aggregate2_6_p_3_env_0__Mutvar1_14, &(mercury__solutions__env_ptr)->mercury__solutions__builtin_aggregate2_6_p_3_env_0__SubAccA0_18);
+      }
+      {
+        mercury__mutvar__get_mutvar_2_p_0((mercury__solutions__env_ptr)->mercury__solutions__builtin_aggregate2_6_p_3_env_0__TypeInfo_for_V_34, (mercury__solutions__env_ptr)->mercury__solutions__builtin_aggregate2_6_p_3_env_0__Mutvar2_15, &(mercury__solutions__env_ptr)->mercury__solutions__builtin_aggregate2_6_p_3_env_0__SubAccB0_19);
+      }
+      mercury__solutions__func_1 = ((void MR_CALL (*)(MR_Box, MR_Box, MR_Box, MR_Box *, MR_Box, MR_Box *)) (MR_hl_field(MR_mktag(0), (mercury__solutions__env_ptr)->mercury__solutions__builtin_aggregate2_6_p_3_env_0__CollectorPred_8, (MR_Integer) 1)));
+      {
+        mercury__solutions__func_1(((MR_Box) (mercury__solutions__env_ptr)->mercury__solutions__builtin_aggregate2_6_p_3_env_0__CollectorPred_8), (mercury__solutions__env_ptr)->mercury__solutions__builtin_aggregate2_6_p_3_env_0__Answer_17, (mercury__solutions__env_ptr)->mercury__solutions__builtin_aggregate2_6_p_3_env_0__SubAccA0_18, &(mercury__solutions__env_ptr)->mercury__solutions__builtin_aggregate2_6_p_3_env_0__SubAccA_20, (mercury__solutions__env_ptr)->mercury__solutions__builtin_aggregate2_6_p_3_env_0__SubAccB0_19, &(mercury__solutions__env_ptr)->mercury__solutions__builtin_aggregate2_6_p_3_env_0__SubAccB_21);
+      }
+      {
+        mercury__mutvar__set_mutvar_2_p_0((mercury__solutions__env_ptr)->mercury__solutions__builtin_aggregate2_6_p_3_env_0__TypeInfo_for_U_33, (mercury__solutions__env_ptr)->mercury__solutions__builtin_aggregate2_6_p_3_env_0__Mutvar1_14, (mercury__solutions__env_ptr)->mercury__solutions__builtin_aggregate2_6_p_3_env_0__SubAccA_20);
+      }
+      {
+        mercury__mutvar__set_mutvar_2_p_0((mercury__solutions__env_ptr)->mercury__solutions__builtin_aggregate2_6_p_3_env_0__TypeInfo_for_V_34, (mercury__solutions__env_ptr)->mercury__solutions__builtin_aggregate2_6_p_3_env_0__Mutvar2_15, (mercury__solutions__env_ptr)->mercury__solutions__builtin_aggregate2_6_p_3_env_0__SubAccB_21);
+      }
+{
+#define MR_PROC_LABEL mercury__solutions__builtin_aggregate2_6_p_3
+
+
+		{
+{
+#ifdef MR_RECLAIM_HP_ON_FAILURE
+    MR_MemoryZone   *temp_zone;
+    MR_Word         *temp_hp;
+
+    temp_zone = MR_ENGINE(MR_eng_heap_zone);
+    MR_ENGINE(MR_eng_heap_zone) = MR_ENGINE(MR_eng_solutions_heap_zone);
+    MR_ENGINE(MR_eng_solutions_heap_zone) = temp_zone;
+    temp_hp = MR_hp;
+    MR_hp_word = (MR_Word) MR_sol_hp;
+    MR_sol_hp = temp_hp;
+#endif
+}
+
+		;}
+#undef MR_PROC_LABEL
+}
+      (mercury__solutions__env_ptr)->mercury__solutions__builtin_aggregate2_6_p_3_env_0__succeeded = MR_FALSE;
+      if ((mercury__solutions__env_ptr)->mercury__solutions__builtin_aggregate2_6_p_3_env_0__succeeded)
+        {
+          mercury__solutions__builtin_aggregate2_6_p_3_1(mercury__solutions__env_ptr);
+        }
+    }
+  }
+}
+
+static void MR_CALL 
+mercury__solutions__builtin_aggregate2_6_p_3_3(
+  void * mercury__solutions__env_ptr_arg)
+{
+  {
+    struct mercury__solutions__builtin_aggregate2_6_p_3_env_0_s * mercury__solutions__env_ptr = (struct mercury__solutions__builtin_aggregate2_6_p_3_env_0_s *) mercury__solutions__env_ptr_arg;
+
+    if (MR_builtin_setjmp((mercury__solutions__env_ptr)->mercury__solutions__builtin_aggregate2_6_p_3_env_0__commit_0) == 0)
+      {
+        {
+          void MR_CALL (* mercury__solutions__func_0)(MR_Box, MR_Box *, MR_Cont, void *) = ((void MR_CALL (*)(MR_Box, MR_Box *, MR_Cont, void *)) (MR_hl_field(MR_mktag(0), (mercury__solutions__env_ptr)->mercury__solutions__builtin_aggregate2_6_p_3_env_0__GeneratorPred_7, (MR_Integer) 1)));
+
+          {
+            mercury__solutions__func_0(((MR_Box) (mercury__solutions__env_ptr)->mercury__solutions__builtin_aggregate2_6_p_3_env_0__GeneratorPred_7), &(mercury__solutions__env_ptr)->mercury__solutions__builtin_aggregate2_6_p_3_env_0__Answer0_16, mercury__solutions__builtin_aggregate2_6_p_3_2, mercury__solutions__env_ptr);
+          }
+        }
+        (mercury__solutions__env_ptr)->mercury__solutions__builtin_aggregate2_6_p_3_env_0__succeeded = MR_FALSE;
+      }
+    else
+      (mercury__solutions__env_ptr)->mercury__solutions__builtin_aggregate2_6_p_3_env_0__succeeded = MR_TRUE;
+  }
+}
+
+void MR_CALL 
+mercury__solutions__builtin_aggregate2_6_p_3(
+  MR_Word mercury__solutions__TypeInfo_for_T_32,
+  MR_Word mercury__solutions__TypeInfo_for_U_33,
+  MR_Word mercury__solutions__TypeInfo_for_V_34,
+  MR_Word mercury__solutions__GeneratorPred_7,
+  MR_Word mercury__solutions__CollectorPred_8,
+  MR_Box mercury__solutions__STATE_VARIABLE_Acc1_0_22,
+  MR_Box * mercury__solutions__STATE_VARIABLE_Acc1_23,
+  MR_Box mercury__solutions__STATE_VARIABLE_Acc2_0_24,
+  MR_Box * mercury__solutions__STATE_VARIABLE_Acc2_25)
+{
+  {
+    struct mercury__solutions__builtin_aggregate2_6_p_3_env_0_s mercury__solutions__env;
+
+    (mercury__solutions__env).mercury__solutions__builtin_aggregate2_6_p_3_env_0__TypeInfo_for_T_32 = mercury__solutions__TypeInfo_for_T_32;
+    (mercury__solutions__env).mercury__solutions__builtin_aggregate2_6_p_3_env_0__TypeInfo_for_U_33 = mercury__solutions__TypeInfo_for_U_33;
+    (mercury__solutions__env).mercury__solutions__builtin_aggregate2_6_p_3_env_0__TypeInfo_for_V_34 = mercury__solutions__TypeInfo_for_V_34;
+    (mercury__solutions__env).mercury__solutions__builtin_aggregate2_6_p_3_env_0__GeneratorPred_7 = mercury__solutions__GeneratorPred_7;
+    (mercury__solutions__env).mercury__solutions__builtin_aggregate2_6_p_3_env_0__CollectorPred_8 = mercury__solutions__CollectorPred_8;
+    {
+      MR_Word mercury__solutions__SolutionsHeapPtr_12;
+      MR_Box mercury__solutions__STATE_VARIABLE_Acc1_28_28;
+      MR_Box mercury__solutions__STATE_VARIABLE_Acc2_29_29;
+      MR_Word mercury__solutions__TypeInfo_for_U_35;
+      MR_Word mercury__solutions__TypeInfo_for_V_36;
+
+{
+#define MR_PROC_LABEL mercury__solutions__builtin_aggregate2_6_p_3
+
+	MR_Word HeapPtr;
+	MR_Word SolutionsHeapPtr;
+	MR_Word TrailPtr;
+
+		{
+
+    /* save heap states */
+#ifdef MR_RECLAIM_HP_ON_FAILURE
+    HeapPtr = (MR_Word) MR_hp;
+    SolutionsHeapPtr = (MR_Word) MR_sol_hp;
+#else
+    HeapPtr = SolutionsHeapPtr = 0;
+#endif
+
+    /* save trail state */
+#ifdef MR_USE_TRAIL
+    MR_store_ticket(TrailPtr);
+#else
+    TrailPtr = 0;
+#endif
+
+
+		;}
+#undef MR_PROC_LABEL
+	 (mercury__solutions__env).mercury__solutions__builtin_aggregate2_6_p_3_env_0__HeapPtr_11  = HeapPtr;
+	 mercury__solutions__SolutionsHeapPtr_12  = SolutionsHeapPtr;
+	 (mercury__solutions__env).mercury__solutions__builtin_aggregate2_6_p_3_env_0__TrailPtr_13  = TrailPtr;
+}
+{
+#define MR_PROC_LABEL mercury__solutions__builtin_aggregate2_6_p_3
+
+
+		{
+
+#ifdef MR_USE_MINIMAL_MODEL_STACK_COPY
+    MR_pneg_enter_cond();
+#endif
+
+
+		;}
+#undef MR_PROC_LABEL
+}
+      {
+        mercury__mutvar__new_mutvar_2_p_0((mercury__solutions__env).mercury__solutions__builtin_aggregate2_6_p_3_env_0__TypeInfo_for_U_33, mercury__solutions__STATE_VARIABLE_Acc1_0_22, &(mercury__solutions__env).mercury__solutions__builtin_aggregate2_6_p_3_env_0__Mutvar1_14);
+      }
+      {
+        mercury__mutvar__new_mutvar_2_p_0((mercury__solutions__env).mercury__solutions__builtin_aggregate2_6_p_3_env_0__TypeInfo_for_V_34, mercury__solutions__STATE_VARIABLE_Acc2_0_24, &(mercury__solutions__env).mercury__solutions__builtin_aggregate2_6_p_3_env_0__Mutvar2_15);
+      }
+      {
+        mercury__solutions__builtin_aggregate2_6_p_3_3(&mercury__solutions__env);
+      }
+      if (!((mercury__solutions__env).mercury__solutions__builtin_aggregate2_6_p_3_env_0__succeeded))
+        {
+          MR_Box mercury__solutions__STATE_VARIABLE_Acc1_26_26;
+          MR_Box mercury__solutions__STATE_VARIABLE_Acc2_27_27;
+
+{
+#define MR_PROC_LABEL mercury__solutions__builtin_aggregate2_6_p_3
+
+
+		{
+
+#ifdef MR_USE_MINIMAL_MODEL_STACK_COPY
+    MR_pneg_enter_else("end_all_soln_neg_context");
+#endif
+
+
+		;}
+#undef MR_PROC_LABEL
+}
+          {
+            mercury__mutvar__get_mutvar_2_p_0((mercury__solutions__env).mercury__solutions__builtin_aggregate2_6_p_3_env_0__TypeInfo_for_U_33, (mercury__solutions__env).mercury__solutions__builtin_aggregate2_6_p_3_env_0__Mutvar1_14, &mercury__solutions__STATE_VARIABLE_Acc1_26_26);
+          }
+          {
+            mercury__mutvar__get_mutvar_2_p_0((mercury__solutions__env).mercury__solutions__builtin_aggregate2_6_p_3_env_0__TypeInfo_for_V_34, (mercury__solutions__env).mercury__solutions__builtin_aggregate2_6_p_3_env_0__Mutvar2_15, &mercury__solutions__STATE_VARIABLE_Acc2_27_27);
+          }
+{
+#define MR_PROC_LABEL mercury__solutions__builtin_aggregate2_6_p_3
+
+	MR_Word TypeInfo_for_T;
+	MR_Word SolutionsHeapPtr;
+	MR_Word OldVal;
+	MR_Word NewVal;
+
+	TypeInfo_for_T =  (mercury__solutions__env).mercury__solutions__builtin_aggregate2_6_p_3_env_0__TypeInfo_for_U_33 ;
+	SolutionsHeapPtr =  mercury__solutions__SolutionsHeapPtr_12 ;
+	OldVal = (MR_Word) mercury__solutions__STATE_VARIABLE_Acc1_26_26 ;
+		{
+
+    MR_PARTIAL_DEEP_COPY(SolutionsHeapPtr, OldVal, NewVal, TypeInfo_for_T);
+
+
+		;}
+#undef MR_PROC_LABEL
+	 mercury__solutions__STATE_VARIABLE_Acc1_28_28  = (MR_Box) NewVal;
+}
+{
+#define MR_PROC_LABEL mercury__solutions__builtin_aggregate2_6_p_3
+
+	MR_Word TypeInfo_for_T;
+	MR_Word SolutionsHeapPtr;
+	MR_Word OldVal;
+	MR_Word NewVal;
+
+	TypeInfo_for_T =  (mercury__solutions__env).mercury__solutions__builtin_aggregate2_6_p_3_env_0__TypeInfo_for_V_34 ;
+	SolutionsHeapPtr =  mercury__solutions__SolutionsHeapPtr_12 ;
+	OldVal = (MR_Word) mercury__solutions__STATE_VARIABLE_Acc2_27_27 ;
+		{
+
+    MR_PARTIAL_DEEP_COPY(SolutionsHeapPtr, OldVal, NewVal, TypeInfo_for_T);
+
+
+		;}
+#undef MR_PROC_LABEL
+	 mercury__solutions__STATE_VARIABLE_Acc2_29_29  = (MR_Box) NewVal;
+}
+{
+#define MR_PROC_LABEL mercury__solutions__builtin_aggregate2_6_p_3
+
+	MR_Word SolutionsHeapPtr;
+
+	SolutionsHeapPtr =  mercury__solutions__SolutionsHeapPtr_12 ;
+		{
+
+#ifdef MR_RECLAIM_HP_ON_FAILURE
+    MR_sol_hp = (MR_Word *) SolutionsHeapPtr;
+#endif
+
+
+		;}
+#undef MR_PROC_LABEL
+}
+{
+#define MR_PROC_LABEL mercury__solutions__builtin_aggregate2_6_p_3
+
+
+		{
+
+#ifdef MR_USE_TRAIL
+    MR_discard_ticket();
+#endif
+
+
+		;}
+#undef MR_PROC_LABEL
+}
+        }
+{
+#define MR_PROC_LABEL mercury__solutions__builtin_aggregate2_6_p_3
+
+	MR_Word X;
+	MR_Word Y;
+
+	X = (MR_Word) mercury__solutions__STATE_VARIABLE_Acc1_28_28 ;
+		{
+
+    Y = X;
+
+
+		;}
+#undef MR_PROC_LABEL
+	 *mercury__solutions__STATE_VARIABLE_Acc1_23  = (MR_Box) Y;
+}
+{
+#define MR_PROC_LABEL mercury__solutions__builtin_aggregate2_6_p_3
+
+	MR_Word X;
+	MR_Word Y;
+
+	X = (MR_Word) mercury__solutions__STATE_VARIABLE_Acc2_29_29 ;
+		{
+
+    Y = X;
+
+
+		;}
+#undef MR_PROC_LABEL
+	 *mercury__solutions__STATE_VARIABLE_Acc2_25  = (MR_Box) Y;
+}
+    }
+  }
+}
+
+static void MR_CALL 
+mercury__solutions__builtin_aggregate2_6_p_2_1(
+  void * mercury__solutions__env_ptr_arg)
+{
+  {
+    struct mercury__solutions__builtin_aggregate2_6_p_2_env_0_s * mercury__solutions__env_ptr = (struct mercury__solutions__builtin_aggregate2_6_p_2_env_0_s *) mercury__solutions__env_ptr_arg;
+
+    MR_builtin_longjmp((mercury__solutions__env_ptr)->mercury__solutions__builtin_aggregate2_6_p_2_env_0__commit_0, 1);
+  }
+}
+
+static void MR_CALL 
+mercury__solutions__builtin_aggregate2_6_p_2_2(
+  void * mercury__solutions__env_ptr_arg)
+{
+  {
+    struct mercury__solutions__builtin_aggregate2_6_p_2_env_0_s * mercury__solutions__env_ptr = (struct mercury__solutions__builtin_aggregate2_6_p_2_env_0_s *) mercury__solutions__env_ptr_arg;
+
+    {
+      void MR_CALL (* mercury__solutions__func_1)(MR_Box, MR_Box, MR_Box, MR_Box *, MR_Box, MR_Box *);
+
+{
+#define MR_PROC_LABEL mercury__solutions__builtin_aggregate2_6_p_2
+
+	MR_Word TrailPtr;
+
+	TrailPtr =  (mercury__solutions__env_ptr)->mercury__solutions__builtin_aggregate2_6_p_2_env_0__TrailPtr_13 ;
+		{
+
+#ifdef MR_USE_TRAIL
+    /* check for outstanding delayed goals (``floundering'') */
+    MR_reset_ticket(TrailPtr, MR_solve);
+#endif
+
+
+		;}
+#undef MR_PROC_LABEL
+}
+{
+#define MR_PROC_LABEL mercury__solutions__builtin_aggregate2_6_p_2
+
+
+		{
+{
+#ifdef MR_RECLAIM_HP_ON_FAILURE
+    MR_MemoryZone   *temp_zone;
+    MR_Word         *temp_hp;
+
+    temp_zone = MR_ENGINE(MR_eng_heap_zone);
+    MR_ENGINE(MR_eng_heap_zone) = MR_ENGINE(MR_eng_solutions_heap_zone);
+    MR_ENGINE(MR_eng_solutions_heap_zone) = temp_zone;
+    temp_hp = MR_hp;
+    MR_hp_word = (MR_Word) MR_sol_hp;
+    MR_sol_hp = temp_hp;
+#endif
+}
+
+		;}
+#undef MR_PROC_LABEL
+}
+{
+#define MR_PROC_LABEL mercury__solutions__builtin_aggregate2_6_p_2
+
+	MR_Word TypeInfo_for_T;
+	MR_Word SolutionsHeapPtr;
+	MR_Word OldVal;
+	MR_Word NewVal;
+
+	TypeInfo_for_T =  (mercury__solutions__env_ptr)->mercury__solutions__builtin_aggregate2_6_p_2_env_0__TypeInfo_for_T_32 ;
+	SolutionsHeapPtr =  (mercury__solutions__env_ptr)->mercury__solutions__builtin_aggregate2_6_p_2_env_0__HeapPtr_11 ;
+	OldVal = (MR_Word) (mercury__solutions__env_ptr)->mercury__solutions__builtin_aggregate2_6_p_2_env_0__Answer0_16 ;
+		{
+
+    MR_PARTIAL_DEEP_COPY(SolutionsHeapPtr, OldVal, NewVal, TypeInfo_for_T);
+
+
+		;}
+#undef MR_PROC_LABEL
+	 (mercury__solutions__env_ptr)->mercury__solutions__builtin_aggregate2_6_p_2_env_0__Answer_17  = (MR_Box) NewVal;
+}
+      {
+        mercury__mutvar__get_mutvar_2_p_0((mercury__solutions__env_ptr)->mercury__solutions__builtin_aggregate2_6_p_2_env_0__TypeInfo_for_U_33, (mercury__solutions__env_ptr)->mercury__solutions__builtin_aggregate2_6_p_2_env_0__Mutvar1_14, &(mercury__solutions__env_ptr)->mercury__solutions__builtin_aggregate2_6_p_2_env_0__SubAccA0_18);
+      }
+      {
+        mercury__mutvar__get_mutvar_2_p_0((mercury__solutions__env_ptr)->mercury__solutions__builtin_aggregate2_6_p_2_env_0__TypeInfo_for_V_34, (mercury__solutions__env_ptr)->mercury__solutions__builtin_aggregate2_6_p_2_env_0__Mutvar2_15, &(mercury__solutions__env_ptr)->mercury__solutions__builtin_aggregate2_6_p_2_env_0__SubAccB0_19);
+      }
+      mercury__solutions__func_1 = ((void MR_CALL (*)(MR_Box, MR_Box, MR_Box, MR_Box *, MR_Box, MR_Box *)) (MR_hl_field(MR_mktag(0), (mercury__solutions__env_ptr)->mercury__solutions__builtin_aggregate2_6_p_2_env_0__CollectorPred_8, (MR_Integer) 1)));
+      {
+        mercury__solutions__func_1(((MR_Box) (mercury__solutions__env_ptr)->mercury__solutions__builtin_aggregate2_6_p_2_env_0__CollectorPred_8), (mercury__solutions__env_ptr)->mercury__solutions__builtin_aggregate2_6_p_2_env_0__Answer_17, (mercury__solutions__env_ptr)->mercury__solutions__builtin_aggregate2_6_p_2_env_0__SubAccA0_18, &(mercury__solutions__env_ptr)->mercury__solutions__builtin_aggregate2_6_p_2_env_0__SubAccA_20, (mercury__solutions__env_ptr)->mercury__solutions__builtin_aggregate2_6_p_2_env_0__SubAccB0_19, &(mercury__solutions__env_ptr)->mercury__solutions__builtin_aggregate2_6_p_2_env_0__SubAccB_21);
+      }
+      {
+        mercury__mutvar__set_mutvar_2_p_0((mercury__solutions__env_ptr)->mercury__solutions__builtin_aggregate2_6_p_2_env_0__TypeInfo_for_U_33, (mercury__solutions__env_ptr)->mercury__solutions__builtin_aggregate2_6_p_2_env_0__Mutvar1_14, (mercury__solutions__env_ptr)->mercury__solutions__builtin_aggregate2_6_p_2_env_0__SubAccA_20);
+      }
+      {
+        mercury__mutvar__set_mutvar_2_p_0((mercury__solutions__env_ptr)->mercury__solutions__builtin_aggregate2_6_p_2_env_0__TypeInfo_for_V_34, (mercury__solutions__env_ptr)->mercury__solutions__builtin_aggregate2_6_p_2_env_0__Mutvar2_15, (mercury__solutions__env_ptr)->mercury__solutions__builtin_aggregate2_6_p_2_env_0__SubAccB_21);
+      }
+{
+#define MR_PROC_LABEL mercury__solutions__builtin_aggregate2_6_p_2
+
+
+		{
+{
+#ifdef MR_RECLAIM_HP_ON_FAILURE
+    MR_MemoryZone   *temp_zone;
+    MR_Word         *temp_hp;
+
+    temp_zone = MR_ENGINE(MR_eng_heap_zone);
+    MR_ENGINE(MR_eng_heap_zone) = MR_ENGINE(MR_eng_solutions_heap_zone);
+    MR_ENGINE(MR_eng_solutions_heap_zone) = temp_zone;
+    temp_hp = MR_hp;
+    MR_hp_word = (MR_Word) MR_sol_hp;
+    MR_sol_hp = temp_hp;
+#endif
+}
+
+		;}
+#undef MR_PROC_LABEL
+}
+      (mercury__solutions__env_ptr)->mercury__solutions__builtin_aggregate2_6_p_2_env_0__succeeded = MR_FALSE;
+      if ((mercury__solutions__env_ptr)->mercury__solutions__builtin_aggregate2_6_p_2_env_0__succeeded)
+        {
+          mercury__solutions__builtin_aggregate2_6_p_2_1(mercury__solutions__env_ptr);
+        }
+    }
+  }
+}
+
+static void MR_CALL 
+mercury__solutions__builtin_aggregate2_6_p_2_3(
+  void * mercury__solutions__env_ptr_arg)
+{
+  {
+    struct mercury__solutions__builtin_aggregate2_6_p_2_env_0_s * mercury__solutions__env_ptr = (struct mercury__solutions__builtin_aggregate2_6_p_2_env_0_s *) mercury__solutions__env_ptr_arg;
+
+    if (MR_builtin_setjmp((mercury__solutions__env_ptr)->mercury__solutions__builtin_aggregate2_6_p_2_env_0__commit_0) == 0)
+      {
+        {
+          void MR_CALL (* mercury__solutions__func_0)(MR_Box, MR_Box *, MR_Cont, void *) = ((void MR_CALL (*)(MR_Box, MR_Box *, MR_Cont, void *)) (MR_hl_field(MR_mktag(0), (mercury__solutions__env_ptr)->mercury__solutions__builtin_aggregate2_6_p_2_env_0__GeneratorPred_7, (MR_Integer) 1)));
+
+          {
+            mercury__solutions__func_0(((MR_Box) (mercury__solutions__env_ptr)->mercury__solutions__builtin_aggregate2_6_p_2_env_0__GeneratorPred_7), &(mercury__solutions__env_ptr)->mercury__solutions__builtin_aggregate2_6_p_2_env_0__Answer0_16, mercury__solutions__builtin_aggregate2_6_p_2_2, mercury__solutions__env_ptr);
+          }
+        }
+        (mercury__solutions__env_ptr)->mercury__solutions__builtin_aggregate2_6_p_2_env_0__succeeded = MR_FALSE;
+      }
+    else
+      (mercury__solutions__env_ptr)->mercury__solutions__builtin_aggregate2_6_p_2_env_0__succeeded = MR_TRUE;
+  }
+}
+
+void MR_CALL 
+mercury__solutions__builtin_aggregate2_6_p_2(
+  MR_Word mercury__solutions__TypeInfo_for_T_32,
+  MR_Word mercury__solutions__TypeInfo_for_U_33,
+  MR_Word mercury__solutions__TypeInfo_for_V_34,
+  MR_Word mercury__solutions__GeneratorPred_7,
+  MR_Word mercury__solutions__CollectorPred_8,
+  MR_Box mercury__solutions__STATE_VARIABLE_Acc1_0_22,
+  MR_Box * mercury__solutions__STATE_VARIABLE_Acc1_23,
+  MR_Box mercury__solutions__STATE_VARIABLE_Acc2_0_24,
+  MR_Box * mercury__solutions__STATE_VARIABLE_Acc2_25)
+{
+  {
+    struct mercury__solutions__builtin_aggregate2_6_p_2_env_0_s mercury__solutions__env;
+
+    (mercury__solutions__env).mercury__solutions__builtin_aggregate2_6_p_2_env_0__TypeInfo_for_T_32 = mercury__solutions__TypeInfo_for_T_32;
+    (mercury__solutions__env).mercury__solutions__builtin_aggregate2_6_p_2_env_0__TypeInfo_for_U_33 = mercury__solutions__TypeInfo_for_U_33;
+    (mercury__solutions__env).mercury__solutions__builtin_aggregate2_6_p_2_env_0__TypeInfo_for_V_34 = mercury__solutions__TypeInfo_for_V_34;
+    (mercury__solutions__env).mercury__solutions__builtin_aggregate2_6_p_2_env_0__GeneratorPred_7 = mercury__solutions__GeneratorPred_7;
+    (mercury__solutions__env).mercury__solutions__builtin_aggregate2_6_p_2_env_0__CollectorPred_8 = mercury__solutions__CollectorPred_8;
+    {
+      MR_Word mercury__solutions__SolutionsHeapPtr_12;
+      MR_Box mercury__solutions__STATE_VARIABLE_Acc1_28_28;
+      MR_Box mercury__solutions__STATE_VARIABLE_Acc2_29_29;
+      MR_Word mercury__solutions__TypeInfo_for_U_35;
+      MR_Word mercury__solutions__TypeInfo_for_V_36;
+
+{
+#define MR_PROC_LABEL mercury__solutions__builtin_aggregate2_6_p_2
+
+	MR_Word HeapPtr;
+	MR_Word SolutionsHeapPtr;
+	MR_Word TrailPtr;
+
+		{
+
+    /* save heap states */
+#ifdef MR_RECLAIM_HP_ON_FAILURE
+    HeapPtr = (MR_Word) MR_hp;
+    SolutionsHeapPtr = (MR_Word) MR_sol_hp;
+#else
+    HeapPtr = SolutionsHeapPtr = 0;
+#endif
+
+    /* save trail state */
+#ifdef MR_USE_TRAIL
+    MR_store_ticket(TrailPtr);
+#else
+    TrailPtr = 0;
+#endif
+
+
+		;}
+#undef MR_PROC_LABEL
+	 (mercury__solutions__env).mercury__solutions__builtin_aggregate2_6_p_2_env_0__HeapPtr_11  = HeapPtr;
+	 mercury__solutions__SolutionsHeapPtr_12  = SolutionsHeapPtr;
+	 (mercury__solutions__env).mercury__solutions__builtin_aggregate2_6_p_2_env_0__TrailPtr_13  = TrailPtr;
+}
+{
+#define MR_PROC_LABEL mercury__solutions__builtin_aggregate2_6_p_2
+
+
+		{
+
+#ifdef MR_USE_MINIMAL_MODEL_STACK_COPY
+    MR_pneg_enter_cond();
+#endif
+
+
+		;}
+#undef MR_PROC_LABEL
+}
+      {
+        mercury__mutvar__new_mutvar_2_p_0((mercury__solutions__env).mercury__solutions__builtin_aggregate2_6_p_2_env_0__TypeInfo_for_U_33, mercury__solutions__STATE_VARIABLE_Acc1_0_22, &(mercury__solutions__env).mercury__solutions__builtin_aggregate2_6_p_2_env_0__Mutvar1_14);
+      }
+      {
+        mercury__mutvar__new_mutvar_2_p_0((mercury__solutions__env).mercury__solutions__builtin_aggregate2_6_p_2_env_0__TypeInfo_for_V_34, mercury__solutions__STATE_VARIABLE_Acc2_0_24, &(mercury__solutions__env).mercury__solutions__builtin_aggregate2_6_p_2_env_0__Mutvar2_15);
+      }
+      {
+        mercury__solutions__builtin_aggregate2_6_p_2_3(&mercury__solutions__env);
+      }
+      if (!((mercury__solutions__env).mercury__solutions__builtin_aggregate2_6_p_2_env_0__succeeded))
+        {
+          MR_Box mercury__solutions__STATE_VARIABLE_Acc1_26_26;
+          MR_Box mercury__solutions__STATE_VARIABLE_Acc2_27_27;
+
+{
+#define MR_PROC_LABEL mercury__solutions__builtin_aggregate2_6_p_2
+
+
+		{
+
+#ifdef MR_USE_MINIMAL_MODEL_STACK_COPY
+    MR_pneg_enter_else("end_all_soln_neg_context");
+#endif
+
+
+		;}
+#undef MR_PROC_LABEL
+}
+          {
+            mercury__mutvar__get_mutvar_2_p_0((mercury__solutions__env).mercury__solutions__builtin_aggregate2_6_p_2_env_0__TypeInfo_for_U_33, (mercury__solutions__env).mercury__solutions__builtin_aggregate2_6_p_2_env_0__Mutvar1_14, &mercury__solutions__STATE_VARIABLE_Acc1_26_26);
+          }
+          {
+            mercury__mutvar__get_mutvar_2_p_0((mercury__solutions__env).mercury__solutions__builtin_aggregate2_6_p_2_env_0__TypeInfo_for_V_34, (mercury__solutions__env).mercury__solutions__builtin_aggregate2_6_p_2_env_0__Mutvar2_15, &mercury__solutions__STATE_VARIABLE_Acc2_27_27);
+          }
+{
+#define MR_PROC_LABEL mercury__solutions__builtin_aggregate2_6_p_2
+
+	MR_Word TypeInfo_for_T;
+	MR_Word SolutionsHeapPtr;
+	MR_Word OldVal;
+	MR_Word NewVal;
+
+	TypeInfo_for_T =  (mercury__solutions__env).mercury__solutions__builtin_aggregate2_6_p_2_env_0__TypeInfo_for_U_33 ;
+	SolutionsHeapPtr =  mercury__solutions__SolutionsHeapPtr_12 ;
+	OldVal = (MR_Word) mercury__solutions__STATE_VARIABLE_Acc1_26_26 ;
+		{
+
+    MR_PARTIAL_DEEP_COPY(SolutionsHeapPtr, OldVal, NewVal, TypeInfo_for_T);
+
+
+		;}
+#undef MR_PROC_LABEL
+	 mercury__solutions__STATE_VARIABLE_Acc1_28_28  = (MR_Box) NewVal;
+}
+{
+#define MR_PROC_LABEL mercury__solutions__builtin_aggregate2_6_p_2
+
+	MR_Word TypeInfo_for_T;
+	MR_Word SolutionsHeapPtr;
+	MR_Word OldVal;
+	MR_Word NewVal;
+
+	TypeInfo_for_T =  (mercury__solutions__env).mercury__solutions__builtin_aggregate2_6_p_2_env_0__TypeInfo_for_V_34 ;
+	SolutionsHeapPtr =  mercury__solutions__SolutionsHeapPtr_12 ;
+	OldVal = (MR_Word) mercury__solutions__STATE_VARIABLE_Acc2_27_27 ;
+		{
+
+    MR_PARTIAL_DEEP_COPY(SolutionsHeapPtr, OldVal, NewVal, TypeInfo_for_T);
+
+
+		;}
+#undef MR_PROC_LABEL
+	 mercury__solutions__STATE_VARIABLE_Acc2_29_29  = (MR_Box) NewVal;
+}
+{
+#define MR_PROC_LABEL mercury__solutions__builtin_aggregate2_6_p_2
+
+	MR_Word SolutionsHeapPtr;
+
+	SolutionsHeapPtr =  mercury__solutions__SolutionsHeapPtr_12 ;
+		{
+
+#ifdef MR_RECLAIM_HP_ON_FAILURE
+    MR_sol_hp = (MR_Word *) SolutionsHeapPtr;
+#endif
+
+
+		;}
+#undef MR_PROC_LABEL
+}
+{
+#define MR_PROC_LABEL mercury__solutions__builtin_aggregate2_6_p_2
+
+
+		{
+
+#ifdef MR_USE_TRAIL
+    MR_discard_ticket();
+#endif
+
+
+		;}
+#undef MR_PROC_LABEL
+}
+        }
+{
+#define MR_PROC_LABEL mercury__solutions__builtin_aggregate2_6_p_2
+
+	MR_Word X;
+	MR_Word Y;
+
+	X = (MR_Word) mercury__solutions__STATE_VARIABLE_Acc1_28_28 ;
+		{
+
+    Y = X;
+
+
+		;}
+#undef MR_PROC_LABEL
+	 *mercury__solutions__STATE_VARIABLE_Acc1_23  = (MR_Box) Y;
+}
+{
+#define MR_PROC_LABEL mercury__solutions__builtin_aggregate2_6_p_2
+
+	MR_Word X;
+	MR_Word Y;
+
+	X = (MR_Word) mercury__solutions__STATE_VARIABLE_Acc2_29_29 ;
+		{
+
+    Y = X;
+
+
+		;}
+#undef MR_PROC_LABEL
+	 *mercury__solutions__STATE_VARIABLE_Acc2_25  = (MR_Box) Y;
+}
+    }
+  }
+}
+
+static void MR_CALL 
+mercury__solutions__builtin_aggregate2_6_p_1_1(
+  void * mercury__solutions__env_ptr_arg)
+{
+  {
+    struct mercury__solutions__builtin_aggregate2_6_p_1_env_0_s * mercury__solutions__env_ptr = (struct mercury__solutions__builtin_aggregate2_6_p_1_env_0_s *) mercury__solutions__env_ptr_arg;
+
+    MR_builtin_longjmp((mercury__solutions__env_ptr)->mercury__solutions__builtin_aggregate2_6_p_1_env_0__commit_0, 1);
+  }
+}
+
+static void MR_CALL 
+mercury__solutions__builtin_aggregate2_6_p_1_2(
+  void * mercury__solutions__env_ptr_arg)
+{
+  {
+    struct mercury__solutions__builtin_aggregate2_6_p_1_env_0_s * mercury__solutions__env_ptr = (struct mercury__solutions__builtin_aggregate2_6_p_1_env_0_s *) mercury__solutions__env_ptr_arg;
+
+    {
+      void MR_CALL (* mercury__solutions__func_1)(MR_Box, MR_Box, MR_Box, MR_Box *, MR_Box, MR_Box *);
+
+{
+#define MR_PROC_LABEL mercury__solutions__builtin_aggregate2_6_p_1
+
+	MR_Word TrailPtr;
+
+	TrailPtr =  (mercury__solutions__env_ptr)->mercury__solutions__builtin_aggregate2_6_p_1_env_0__TrailPtr_13 ;
+		{
+
+#ifdef MR_USE_TRAIL
+    /* check for outstanding delayed goals (``floundering'') */
+    MR_reset_ticket(TrailPtr, MR_solve);
+#endif
+
+
+		;}
+#undef MR_PROC_LABEL
+}
+{
+#define MR_PROC_LABEL mercury__solutions__builtin_aggregate2_6_p_1
+
+
+		{
+{
+#ifdef MR_RECLAIM_HP_ON_FAILURE
+    MR_MemoryZone   *temp_zone;
+    MR_Word         *temp_hp;
+
+    temp_zone = MR_ENGINE(MR_eng_heap_zone);
+    MR_ENGINE(MR_eng_heap_zone) = MR_ENGINE(MR_eng_solutions_heap_zone);
+    MR_ENGINE(MR_eng_solutions_heap_zone) = temp_zone;
+    temp_hp = MR_hp;
+    MR_hp_word = (MR_Word) MR_sol_hp;
+    MR_sol_hp = temp_hp;
+#endif
+}
+
+		;}
+#undef MR_PROC_LABEL
+}
+{
+#define MR_PROC_LABEL mercury__solutions__builtin_aggregate2_6_p_1
+
+	MR_Word TypeInfo_for_T;
+	MR_Word SolutionsHeapPtr;
+	MR_Word OldVal;
+	MR_Word NewVal;
+
+	TypeInfo_for_T =  (mercury__solutions__env_ptr)->mercury__solutions__builtin_aggregate2_6_p_1_env_0__TypeInfo_for_T_32 ;
+	SolutionsHeapPtr =  (mercury__solutions__env_ptr)->mercury__solutions__builtin_aggregate2_6_p_1_env_0__HeapPtr_11 ;
+	OldVal = (MR_Word) (mercury__solutions__env_ptr)->mercury__solutions__builtin_aggregate2_6_p_1_env_0__Answer0_16 ;
+		{
+
+    MR_PARTIAL_DEEP_COPY(SolutionsHeapPtr, OldVal, NewVal, TypeInfo_for_T);
+
+
+		;}
+#undef MR_PROC_LABEL
+	 (mercury__solutions__env_ptr)->mercury__solutions__builtin_aggregate2_6_p_1_env_0__Answer_17  = (MR_Box) NewVal;
+}
+      {
+        mercury__mutvar__get_mutvar_2_p_0((mercury__solutions__env_ptr)->mercury__solutions__builtin_aggregate2_6_p_1_env_0__TypeInfo_for_U_33, (mercury__solutions__env_ptr)->mercury__solutions__builtin_aggregate2_6_p_1_env_0__Mutvar1_14, &(mercury__solutions__env_ptr)->mercury__solutions__builtin_aggregate2_6_p_1_env_0__SubAccA0_18);
+      }
+      {
+        mercury__mutvar__get_mutvar_2_p_0((mercury__solutions__env_ptr)->mercury__solutions__builtin_aggregate2_6_p_1_env_0__TypeInfo_for_V_34, (mercury__solutions__env_ptr)->mercury__solutions__builtin_aggregate2_6_p_1_env_0__Mutvar2_15, &(mercury__solutions__env_ptr)->mercury__solutions__builtin_aggregate2_6_p_1_env_0__SubAccB0_19);
+      }
+      mercury__solutions__func_1 = ((void MR_CALL (*)(MR_Box, MR_Box, MR_Box, MR_Box *, MR_Box, MR_Box *)) (MR_hl_field(MR_mktag(0), (mercury__solutions__env_ptr)->mercury__solutions__builtin_aggregate2_6_p_1_env_0__CollectorPred_8, (MR_Integer) 1)));
+      {
+        mercury__solutions__func_1(((MR_Box) (mercury__solutions__env_ptr)->mercury__solutions__builtin_aggregate2_6_p_1_env_0__CollectorPred_8), (mercury__solutions__env_ptr)->mercury__solutions__builtin_aggregate2_6_p_1_env_0__Answer_17, (mercury__solutions__env_ptr)->mercury__solutions__builtin_aggregate2_6_p_1_env_0__SubAccA0_18, &(mercury__solutions__env_ptr)->mercury__solutions__builtin_aggregate2_6_p_1_env_0__SubAccA_20, (mercury__solutions__env_ptr)->mercury__solutions__builtin_aggregate2_6_p_1_env_0__SubAccB0_19, &(mercury__solutions__env_ptr)->mercury__solutions__builtin_aggregate2_6_p_1_env_0__SubAccB_21);
+      }
+      {
+        mercury__mutvar__set_mutvar_2_p_0((mercury__solutions__env_ptr)->mercury__solutions__builtin_aggregate2_6_p_1_env_0__TypeInfo_for_U_33, (mercury__solutions__env_ptr)->mercury__solutions__builtin_aggregate2_6_p_1_env_0__Mutvar1_14, (mercury__solutions__env_ptr)->mercury__solutions__builtin_aggregate2_6_p_1_env_0__SubAccA_20);
+      }
+      {
+        mercury__mutvar__set_mutvar_2_p_0((mercury__solutions__env_ptr)->mercury__solutions__builtin_aggregate2_6_p_1_env_0__TypeInfo_for_V_34, (mercury__solutions__env_ptr)->mercury__solutions__builtin_aggregate2_6_p_1_env_0__Mutvar2_15, (mercury__solutions__env_ptr)->mercury__solutions__builtin_aggregate2_6_p_1_env_0__SubAccB_21);
+      }
+{
+#define MR_PROC_LABEL mercury__solutions__builtin_aggregate2_6_p_1
+
+
+		{
+{
+#ifdef MR_RECLAIM_HP_ON_FAILURE
+    MR_MemoryZone   *temp_zone;
+    MR_Word         *temp_hp;
+
+    temp_zone = MR_ENGINE(MR_eng_heap_zone);
+    MR_ENGINE(MR_eng_heap_zone) = MR_ENGINE(MR_eng_solutions_heap_zone);
+    MR_ENGINE(MR_eng_solutions_heap_zone) = temp_zone;
+    temp_hp = MR_hp;
+    MR_hp_word = (MR_Word) MR_sol_hp;
+    MR_sol_hp = temp_hp;
+#endif
+}
+
+		;}
+#undef MR_PROC_LABEL
+}
+      (mercury__solutions__env_ptr)->mercury__solutions__builtin_aggregate2_6_p_1_env_0__succeeded = MR_FALSE;
+      if ((mercury__solutions__env_ptr)->mercury__solutions__builtin_aggregate2_6_p_1_env_0__succeeded)
+        {
+          mercury__solutions__builtin_aggregate2_6_p_1_1(mercury__solutions__env_ptr);
+        }
+    }
+  }
+}
+
+static void MR_CALL 
+mercury__solutions__builtin_aggregate2_6_p_1_3(
+  void * mercury__solutions__env_ptr_arg)
+{
+  {
+    struct mercury__solutions__builtin_aggregate2_6_p_1_env_0_s * mercury__solutions__env_ptr = (struct mercury__solutions__builtin_aggregate2_6_p_1_env_0_s *) mercury__solutions__env_ptr_arg;
+
+    if (MR_builtin_setjmp((mercury__solutions__env_ptr)->mercury__solutions__builtin_aggregate2_6_p_1_env_0__commit_0) == 0)
+      {
+        {
+          void MR_CALL (* mercury__solutions__func_0)(MR_Box, MR_Box *, MR_Cont, void *) = ((void MR_CALL (*)(MR_Box, MR_Box *, MR_Cont, void *)) (MR_hl_field(MR_mktag(0), (mercury__solutions__env_ptr)->mercury__solutions__builtin_aggregate2_6_p_1_env_0__GeneratorPred_7, (MR_Integer) 1)));
+
+          {
+            mercury__solutions__func_0(((MR_Box) (mercury__solutions__env_ptr)->mercury__solutions__builtin_aggregate2_6_p_1_env_0__GeneratorPred_7), &(mercury__solutions__env_ptr)->mercury__solutions__builtin_aggregate2_6_p_1_env_0__Answer0_16, mercury__solutions__builtin_aggregate2_6_p_1_2, mercury__solutions__env_ptr);
+          }
+        }
+        (mercury__solutions__env_ptr)->mercury__solutions__builtin_aggregate2_6_p_1_env_0__succeeded = MR_FALSE;
+      }
+    else
+      (mercury__solutions__env_ptr)->mercury__solutions__builtin_aggregate2_6_p_1_env_0__succeeded = MR_TRUE;
+  }
+}
+
+void MR_CALL 
+mercury__solutions__builtin_aggregate2_6_p_1(
+  MR_Word mercury__solutions__TypeInfo_for_T_32,
+  MR_Word mercury__solutions__TypeInfo_for_U_33,
+  MR_Word mercury__solutions__TypeInfo_for_V_34,
+  MR_Word mercury__solutions__GeneratorPred_7,
+  MR_Word mercury__solutions__CollectorPred_8,
+  MR_Box mercury__solutions__STATE_VARIABLE_Acc1_0_22,
+  MR_Box * mercury__solutions__STATE_VARIABLE_Acc1_23,
+  MR_Box mercury__solutions__STATE_VARIABLE_Acc2_0_24,
+  MR_Box * mercury__solutions__STATE_VARIABLE_Acc2_25)
+{
+  {
+    struct mercury__solutions__builtin_aggregate2_6_p_1_env_0_s mercury__solutions__env;
+
+    (mercury__solutions__env).mercury__solutions__builtin_aggregate2_6_p_1_env_0__TypeInfo_for_T_32 = mercury__solutions__TypeInfo_for_T_32;
+    (mercury__solutions__env).mercury__solutions__builtin_aggregate2_6_p_1_env_0__TypeInfo_for_U_33 = mercury__solutions__TypeInfo_for_U_33;
+    (mercury__solutions__env).mercury__solutions__builtin_aggregate2_6_p_1_env_0__TypeInfo_for_V_34 = mercury__solutions__TypeInfo_for_V_34;
+    (mercury__solutions__env).mercury__solutions__builtin_aggregate2_6_p_1_env_0__GeneratorPred_7 = mercury__solutions__GeneratorPred_7;
+    (mercury__solutions__env).mercury__solutions__builtin_aggregate2_6_p_1_env_0__CollectorPred_8 = mercury__solutions__CollectorPred_8;
+    {
+      MR_Word mercury__solutions__SolutionsHeapPtr_12;
+      MR_Box mercury__solutions__STATE_VARIABLE_Acc1_28_28;
+      MR_Box mercury__solutions__STATE_VARIABLE_Acc2_29_29;
+      MR_Word mercury__solutions__TypeInfo_for_U_35;
+      MR_Word mercury__solutions__TypeInfo_for_V_36;
+
+{
+#define MR_PROC_LABEL mercury__solutions__builtin_aggregate2_6_p_1
+
+	MR_Word HeapPtr;
+	MR_Word SolutionsHeapPtr;
+	MR_Word TrailPtr;
+
+		{
+
+    /* save heap states */
+#ifdef MR_RECLAIM_HP_ON_FAILURE
+    HeapPtr = (MR_Word) MR_hp;
+    SolutionsHeapPtr = (MR_Word) MR_sol_hp;
+#else
+    HeapPtr = SolutionsHeapPtr = 0;
+#endif
+
+    /* save trail state */
+#ifdef MR_USE_TRAIL
+    MR_store_ticket(TrailPtr);
+#else
+    TrailPtr = 0;
+#endif
+
+
+		;}
+#undef MR_PROC_LABEL
+	 (mercury__solutions__env).mercury__solutions__builtin_aggregate2_6_p_1_env_0__HeapPtr_11  = HeapPtr;
+	 mercury__solutions__SolutionsHeapPtr_12  = SolutionsHeapPtr;
+	 (mercury__solutions__env).mercury__solutions__builtin_aggregate2_6_p_1_env_0__TrailPtr_13  = TrailPtr;
+}
+{
+#define MR_PROC_LABEL mercury__solutions__builtin_aggregate2_6_p_1
+
+
+		{
+
+#ifdef MR_USE_MINIMAL_MODEL_STACK_COPY
+    MR_pneg_enter_cond();
+#endif
+
+
+		;}
+#undef MR_PROC_LABEL
+}
+      {
+        mercury__mutvar__new_mutvar_2_p_0((mercury__solutions__env).mercury__solutions__builtin_aggregate2_6_p_1_env_0__TypeInfo_for_U_33, mercury__solutions__STATE_VARIABLE_Acc1_0_22, &(mercury__solutions__env).mercury__solutions__builtin_aggregate2_6_p_1_env_0__Mutvar1_14);
+      }
+      {
+        mercury__mutvar__new_mutvar_2_p_0((mercury__solutions__env).mercury__solutions__builtin_aggregate2_6_p_1_env_0__TypeInfo_for_V_34, mercury__solutions__STATE_VARIABLE_Acc2_0_24, &(mercury__solutions__env).mercury__solutions__builtin_aggregate2_6_p_1_env_0__Mutvar2_15);
+      }
+      {
+        mercury__solutions__builtin_aggregate2_6_p_1_3(&mercury__solutions__env);
+      }
+      if (!((mercury__solutions__env).mercury__solutions__builtin_aggregate2_6_p_1_env_0__succeeded))
+        {
+          MR_Box mercury__solutions__STATE_VARIABLE_Acc1_26_26;
+          MR_Box mercury__solutions__STATE_VARIABLE_Acc2_27_27;
+
+{
+#define MR_PROC_LABEL mercury__solutions__builtin_aggregate2_6_p_1
+
+
+		{
+
+#ifdef MR_USE_MINIMAL_MODEL_STACK_COPY
+    MR_pneg_enter_else("end_all_soln_neg_context");
+#endif
+
+
+		;}
+#undef MR_PROC_LABEL
+}
+          {
+            mercury__mutvar__get_mutvar_2_p_0((mercury__solutions__env).mercury__solutions__builtin_aggregate2_6_p_1_env_0__TypeInfo_for_U_33, (mercury__solutions__env).mercury__solutions__builtin_aggregate2_6_p_1_env_0__Mutvar1_14, &mercury__solutions__STATE_VARIABLE_Acc1_26_26);
+          }
+          {
+            mercury__mutvar__get_mutvar_2_p_0((mercury__solutions__env).mercury__solutions__builtin_aggregate2_6_p_1_env_0__TypeInfo_for_V_34, (mercury__solutions__env).mercury__solutions__builtin_aggregate2_6_p_1_env_0__Mutvar2_15, &mercury__solutions__STATE_VARIABLE_Acc2_27_27);
+          }
+{
+#define MR_PROC_LABEL mercury__solutions__builtin_aggregate2_6_p_1
+
+	MR_Word TypeInfo_for_T;
+	MR_Word SolutionsHeapPtr;
+	MR_Word OldVal;
+	MR_Word NewVal;
+
+	TypeInfo_for_T =  (mercury__solutions__env).mercury__solutions__builtin_aggregate2_6_p_1_env_0__TypeInfo_for_U_33 ;
+	SolutionsHeapPtr =  mercury__solutions__SolutionsHeapPtr_12 ;
+	OldVal = (MR_Word) mercury__solutions__STATE_VARIABLE_Acc1_26_26 ;
+		{
+
+    MR_PARTIAL_DEEP_COPY(SolutionsHeapPtr, OldVal, NewVal, TypeInfo_for_T);
+
+
+		;}
+#undef MR_PROC_LABEL
+	 mercury__solutions__STATE_VARIABLE_Acc1_28_28  = (MR_Box) NewVal;
+}
+{
+#define MR_PROC_LABEL mercury__solutions__builtin_aggregate2_6_p_1
+
+	MR_Word TypeInfo_for_T;
+	MR_Word SolutionsHeapPtr;
+	MR_Word OldVal;
+	MR_Word NewVal;
+
+	TypeInfo_for_T =  (mercury__solutions__env).mercury__solutions__builtin_aggregate2_6_p_1_env_0__TypeInfo_for_V_34 ;
+	SolutionsHeapPtr =  mercury__solutions__SolutionsHeapPtr_12 ;
+	OldVal = (MR_Word) mercury__solutions__STATE_VARIABLE_Acc2_27_27 ;
+		{
+
+    MR_PARTIAL_DEEP_COPY(SolutionsHeapPtr, OldVal, NewVal, TypeInfo_for_T);
+
+
+		;}
+#undef MR_PROC_LABEL
+	 mercury__solutions__STATE_VARIABLE_Acc2_29_29  = (MR_Box) NewVal;
+}
+{
+#define MR_PROC_LABEL mercury__solutions__builtin_aggregate2_6_p_1
+
+	MR_Word SolutionsHeapPtr;
+
+	SolutionsHeapPtr =  mercury__solutions__SolutionsHeapPtr_12 ;
+		{
+
+#ifdef MR_RECLAIM_HP_ON_FAILURE
+    MR_sol_hp = (MR_Word *) SolutionsHeapPtr;
+#endif
+
+
+		;}
+#undef MR_PROC_LABEL
+}
+{
+#define MR_PROC_LABEL mercury__solutions__builtin_aggregate2_6_p_1
+
+
+		{
+
+#ifdef MR_USE_TRAIL
+    MR_discard_ticket();
+#endif
+
+
+		;}
+#undef MR_PROC_LABEL
+}
+        }
+{
+#define MR_PROC_LABEL mercury__solutions__builtin_aggregate2_6_p_1
+
+	MR_Word X;
+	MR_Word Y;
+
+	X = (MR_Word) mercury__solutions__STATE_VARIABLE_Acc1_28_28 ;
+		{
+
+    Y = X;
+
+
+		;}
+#undef MR_PROC_LABEL
+	 *mercury__solutions__STATE_VARIABLE_Acc1_23  = (MR_Box) Y;
+}
+{
+#define MR_PROC_LABEL mercury__solutions__builtin_aggregate2_6_p_1
+
+	MR_Word X;
+	MR_Word Y;
+
+	X = (MR_Word) mercury__solutions__STATE_VARIABLE_Acc2_29_29 ;
+		{
+
+    Y = X;
+
+
+		;}
+#undef MR_PROC_LABEL
+	 *mercury__solutions__STATE_VARIABLE_Acc2_25  = (MR_Box) Y;
+}
+    }
+  }
+}
+
+static void MR_CALL 
+mercury__solutions__builtin_aggregate2_6_p_0_1(
+  void * mercury__solutions__env_ptr_arg)
+{
+  {
+    struct mercury__solutions__builtin_aggregate2_6_p_0_env_0_s * mercury__solutions__env_ptr = (struct mercury__solutions__builtin_aggregate2_6_p_0_env_0_s *) mercury__solutions__env_ptr_arg;
+
+    MR_builtin_longjmp((mercury__solutions__env_ptr)->mercury__solutions__builtin_aggregate2_6_p_0_env_0__commit_0, 1);
+  }
+}
+
+static void MR_CALL 
+mercury__solutions__builtin_aggregate2_6_p_0_2(
+  void * mercury__solutions__env_ptr_arg)
+{
+  {
+    struct mercury__solutions__builtin_aggregate2_6_p_0_env_0_s * mercury__solutions__env_ptr = (struct mercury__solutions__builtin_aggregate2_6_p_0_env_0_s *) mercury__solutions__env_ptr_arg;
+
+    {
+      void MR_CALL (* mercury__solutions__func_1)(MR_Box, MR_Box, MR_Box, MR_Box *, MR_Box, MR_Box *);
+
+{
+#define MR_PROC_LABEL mercury__solutions__builtin_aggregate2_6_p_0
+
+	MR_Word TrailPtr;
+
+	TrailPtr =  (mercury__solutions__env_ptr)->mercury__solutions__builtin_aggregate2_6_p_0_env_0__TrailPtr_13 ;
+		{
+
+#ifdef MR_USE_TRAIL
+    /* check for outstanding delayed goals (``floundering'') */
+    MR_reset_ticket(TrailPtr, MR_solve);
+#endif
+
+
+		;}
+#undef MR_PROC_LABEL
+}
+{
+#define MR_PROC_LABEL mercury__solutions__builtin_aggregate2_6_p_0
+
+
+		{
+{
+#ifdef MR_RECLAIM_HP_ON_FAILURE
+    MR_MemoryZone   *temp_zone;
+    MR_Word         *temp_hp;
+
+    temp_zone = MR_ENGINE(MR_eng_heap_zone);
+    MR_ENGINE(MR_eng_heap_zone) = MR_ENGINE(MR_eng_solutions_heap_zone);
+    MR_ENGINE(MR_eng_solutions_heap_zone) = temp_zone;
+    temp_hp = MR_hp;
+    MR_hp_word = (MR_Word) MR_sol_hp;
+    MR_sol_hp = temp_hp;
+#endif
+}
+
+		;}
+#undef MR_PROC_LABEL
+}
+{
+#define MR_PROC_LABEL mercury__solutions__builtin_aggregate2_6_p_0
+
+	MR_Word TypeInfo_for_T;
+	MR_Word SolutionsHeapPtr;
+	MR_Word OldVal;
+	MR_Word NewVal;
+
+	TypeInfo_for_T =  (mercury__solutions__env_ptr)->mercury__solutions__builtin_aggregate2_6_p_0_env_0__TypeInfo_for_T_32 ;
+	SolutionsHeapPtr =  (mercury__solutions__env_ptr)->mercury__solutions__builtin_aggregate2_6_p_0_env_0__HeapPtr_11 ;
+	OldVal = (MR_Word) (mercury__solutions__env_ptr)->mercury__solutions__builtin_aggregate2_6_p_0_env_0__Answer0_16 ;
+		{
+
+    MR_PARTIAL_DEEP_COPY(SolutionsHeapPtr, OldVal, NewVal, TypeInfo_for_T);
+
+
+		;}
+#undef MR_PROC_LABEL
+	 (mercury__solutions__env_ptr)->mercury__solutions__builtin_aggregate2_6_p_0_env_0__Answer_17  = (MR_Box) NewVal;
+}
+      {
+        mercury__mutvar__get_mutvar_2_p_0((mercury__solutions__env_ptr)->mercury__solutions__builtin_aggregate2_6_p_0_env_0__TypeInfo_for_U_33, (mercury__solutions__env_ptr)->mercury__solutions__builtin_aggregate2_6_p_0_env_0__Mutvar1_14, &(mercury__solutions__env_ptr)->mercury__solutions__builtin_aggregate2_6_p_0_env_0__SubAccA0_18);
+      }
+      {
+        mercury__mutvar__get_mutvar_2_p_0((mercury__solutions__env_ptr)->mercury__solutions__builtin_aggregate2_6_p_0_env_0__TypeInfo_for_V_34, (mercury__solutions__env_ptr)->mercury__solutions__builtin_aggregate2_6_p_0_env_0__Mutvar2_15, &(mercury__solutions__env_ptr)->mercury__solutions__builtin_aggregate2_6_p_0_env_0__SubAccB0_19);
+      }
+      mercury__solutions__func_1 = ((void MR_CALL (*)(MR_Box, MR_Box, MR_Box, MR_Box *, MR_Box, MR_Box *)) (MR_hl_field(MR_mktag(0), (mercury__solutions__env_ptr)->mercury__solutions__builtin_aggregate2_6_p_0_env_0__CollectorPred_8, (MR_Integer) 1)));
+      {
+        mercury__solutions__func_1(((MR_Box) (mercury__solutions__env_ptr)->mercury__solutions__builtin_aggregate2_6_p_0_env_0__CollectorPred_8), (mercury__solutions__env_ptr)->mercury__solutions__builtin_aggregate2_6_p_0_env_0__Answer_17, (mercury__solutions__env_ptr)->mercury__solutions__builtin_aggregate2_6_p_0_env_0__SubAccA0_18, &(mercury__solutions__env_ptr)->mercury__solutions__builtin_aggregate2_6_p_0_env_0__SubAccA_20, (mercury__solutions__env_ptr)->mercury__solutions__builtin_aggregate2_6_p_0_env_0__SubAccB0_19, &(mercury__solutions__env_ptr)->mercury__solutions__builtin_aggregate2_6_p_0_env_0__SubAccB_21);
+      }
+      {
+        mercury__mutvar__set_mutvar_2_p_0((mercury__solutions__env_ptr)->mercury__solutions__builtin_aggregate2_6_p_0_env_0__TypeInfo_for_U_33, (mercury__solutions__env_ptr)->mercury__solutions__builtin_aggregate2_6_p_0_env_0__Mutvar1_14, (mercury__solutions__env_ptr)->mercury__solutions__builtin_aggregate2_6_p_0_env_0__SubAccA_20);
+      }
+      {
+        mercury__mutvar__set_mutvar_2_p_0((mercury__solutions__env_ptr)->mercury__solutions__builtin_aggregate2_6_p_0_env_0__TypeInfo_for_V_34, (mercury__solutions__env_ptr)->mercury__solutions__builtin_aggregate2_6_p_0_env_0__Mutvar2_15, (mercury__solutions__env_ptr)->mercury__solutions__builtin_aggregate2_6_p_0_env_0__SubAccB_21);
+      }
+{
+#define MR_PROC_LABEL mercury__solutions__builtin_aggregate2_6_p_0
+
+
+		{
+{
+#ifdef MR_RECLAIM_HP_ON_FAILURE
+    MR_MemoryZone   *temp_zone;
+    MR_Word         *temp_hp;
+
+    temp_zone = MR_ENGINE(MR_eng_heap_zone);
+    MR_ENGINE(MR_eng_heap_zone) = MR_ENGINE(MR_eng_solutions_heap_zone);
+    MR_ENGINE(MR_eng_solutions_heap_zone) = temp_zone;
+    temp_hp = MR_hp;
+    MR_hp_word = (MR_Word) MR_sol_hp;
+    MR_sol_hp = temp_hp;
+#endif
+}
+
+		;}
+#undef MR_PROC_LABEL
+}
+      (mercury__solutions__env_ptr)->mercury__solutions__builtin_aggregate2_6_p_0_env_0__succeeded = MR_FALSE;
+      if ((mercury__solutions__env_ptr)->mercury__solutions__builtin_aggregate2_6_p_0_env_0__succeeded)
+        {
+          mercury__solutions__builtin_aggregate2_6_p_0_1(mercury__solutions__env_ptr);
+        }
+    }
+  }
+}
+
+static void MR_CALL 
+mercury__solutions__builtin_aggregate2_6_p_0_3(
+  void * mercury__solutions__env_ptr_arg)
+{
+  {
+    struct mercury__solutions__builtin_aggregate2_6_p_0_env_0_s * mercury__solutions__env_ptr = (struct mercury__solutions__builtin_aggregate2_6_p_0_env_0_s *) mercury__solutions__env_ptr_arg;
+
+    if (MR_builtin_setjmp((mercury__solutions__env_ptr)->mercury__solutions__builtin_aggregate2_6_p_0_env_0__commit_0) == 0)
+      {
+        {
+          void MR_CALL (* mercury__solutions__func_0)(MR_Box, MR_Box *, MR_Cont, void *) = ((void MR_CALL (*)(MR_Box, MR_Box *, MR_Cont, void *)) (MR_hl_field(MR_mktag(0), (mercury__solutions__env_ptr)->mercury__solutions__builtin_aggregate2_6_p_0_env_0__GeneratorPred_7, (MR_Integer) 1)));
+
+          {
+            mercury__solutions__func_0(((MR_Box) (mercury__solutions__env_ptr)->mercury__solutions__builtin_aggregate2_6_p_0_env_0__GeneratorPred_7), &(mercury__solutions__env_ptr)->mercury__solutions__builtin_aggregate2_6_p_0_env_0__Answer0_16, mercury__solutions__builtin_aggregate2_6_p_0_2, mercury__solutions__env_ptr);
+          }
+        }
+        (mercury__solutions__env_ptr)->mercury__solutions__builtin_aggregate2_6_p_0_env_0__succeeded = MR_FALSE;
+      }
+    else
+      (mercury__solutions__env_ptr)->mercury__solutions__builtin_aggregate2_6_p_0_env_0__succeeded = MR_TRUE;
+  }
+}
+
+void MR_CALL 
+mercury__solutions__builtin_aggregate2_6_p_0(
+  MR_Word mercury__solutions__TypeInfo_for_T_32,
+  MR_Word mercury__solutions__TypeInfo_for_U_33,
+  MR_Word mercury__solutions__TypeInfo_for_V_34,
+  MR_Word mercury__solutions__GeneratorPred_7,
+  MR_Word mercury__solutions__CollectorPred_8,
+  MR_Box mercury__solutions__STATE_VARIABLE_Acc1_0_22,
+  MR_Box * mercury__solutions__STATE_VARIABLE_Acc1_23,
+  MR_Box mercury__solutions__STATE_VARIABLE_Acc2_0_24,
+  MR_Box * mercury__solutions__STATE_VARIABLE_Acc2_25)
+{
+  {
+    struct mercury__solutions__builtin_aggregate2_6_p_0_env_0_s mercury__solutions__env;
+
+    (mercury__solutions__env).mercury__solutions__builtin_aggregate2_6_p_0_env_0__TypeInfo_for_T_32 = mercury__solutions__TypeInfo_for_T_32;
+    (mercury__solutions__env).mercury__solutions__builtin_aggregate2_6_p_0_env_0__TypeInfo_for_U_33 = mercury__solutions__TypeInfo_for_U_33;
+    (mercury__solutions__env).mercury__solutions__builtin_aggregate2_6_p_0_env_0__TypeInfo_for_V_34 = mercury__solutions__TypeInfo_for_V_34;
+    (mercury__solutions__env).mercury__solutions__builtin_aggregate2_6_p_0_env_0__GeneratorPred_7 = mercury__solutions__GeneratorPred_7;
+    (mercury__solutions__env).mercury__solutions__builtin_aggregate2_6_p_0_env_0__CollectorPred_8 = mercury__solutions__CollectorPred_8;
+    {
+      MR_Word mercury__solutions__SolutionsHeapPtr_12;
+      MR_Box mercury__solutions__STATE_VARIABLE_Acc1_28_28;
+      MR_Box mercury__solutions__STATE_VARIABLE_Acc2_29_29;
+      MR_Word mercury__solutions__TypeInfo_for_U_35;
+      MR_Word mercury__solutions__TypeInfo_for_V_36;
+
+{
+#define MR_PROC_LABEL mercury__solutions__builtin_aggregate2_6_p_0
+
+	MR_Word HeapPtr;
+	MR_Word SolutionsHeapPtr;
+	MR_Word TrailPtr;
+
+		{
+
+    /* save heap states */
+#ifdef MR_RECLAIM_HP_ON_FAILURE
+    HeapPtr = (MR_Word) MR_hp;
+    SolutionsHeapPtr = (MR_Word) MR_sol_hp;
+#else
+    HeapPtr = SolutionsHeapPtr = 0;
+#endif
+
+    /* save trail state */
+#ifdef MR_USE_TRAIL
+    MR_store_ticket(TrailPtr);
+#else
+    TrailPtr = 0;
+#endif
+
+
+		;}
+#undef MR_PROC_LABEL
+	 (mercury__solutions__env).mercury__solutions__builtin_aggregate2_6_p_0_env_0__HeapPtr_11  = HeapPtr;
+	 mercury__solutions__SolutionsHeapPtr_12  = SolutionsHeapPtr;
+	 (mercury__solutions__env).mercury__solutions__builtin_aggregate2_6_p_0_env_0__TrailPtr_13  = TrailPtr;
+}
+{
+#define MR_PROC_LABEL mercury__solutions__builtin_aggregate2_6_p_0
+
+
+		{
+
+#ifdef MR_USE_MINIMAL_MODEL_STACK_COPY
+    MR_pneg_enter_cond();
+#endif
+
+
+		;}
+#undef MR_PROC_LABEL
+}
+      {
+        mercury__mutvar__new_mutvar_2_p_0((mercury__solutions__env).mercury__solutions__builtin_aggregate2_6_p_0_env_0__TypeInfo_for_U_33, mercury__solutions__STATE_VARIABLE_Acc1_0_22, &(mercury__solutions__env).mercury__solutions__builtin_aggregate2_6_p_0_env_0__Mutvar1_14);
+      }
+      {
+        mercury__mutvar__new_mutvar_2_p_0((mercury__solutions__env).mercury__solutions__builtin_aggregate2_6_p_0_env_0__TypeInfo_for_V_34, mercury__solutions__STATE_VARIABLE_Acc2_0_24, &(mercury__solutions__env).mercury__solutions__builtin_aggregate2_6_p_0_env_0__Mutvar2_15);
+      }
+      {
+        mercury__solutions__builtin_aggregate2_6_p_0_3(&mercury__solutions__env);
+      }
+      if (!((mercury__solutions__env).mercury__solutions__builtin_aggregate2_6_p_0_env_0__succeeded))
+        {
+          MR_Box mercury__solutions__STATE_VARIABLE_Acc1_26_26;
+          MR_Box mercury__solutions__STATE_VARIABLE_Acc2_27_27;
+
+{
+#define MR_PROC_LABEL mercury__solutions__builtin_aggregate2_6_p_0
+
+
+		{
+
+#ifdef MR_USE_MINIMAL_MODEL_STACK_COPY
+    MR_pneg_enter_else("end_all_soln_neg_context");
+#endif
+
+
+		;}
+#undef MR_PROC_LABEL
+}
+          {
+            mercury__mutvar__get_mutvar_2_p_0((mercury__solutions__env).mercury__solutions__builtin_aggregate2_6_p_0_env_0__TypeInfo_for_U_33, (mercury__solutions__env).mercury__solutions__builtin_aggregate2_6_p_0_env_0__Mutvar1_14, &mercury__solutions__STATE_VARIABLE_Acc1_26_26);
+          }
+          {
+            mercury__mutvar__get_mutvar_2_p_0((mercury__solutions__env).mercury__solutions__builtin_aggregate2_6_p_0_env_0__TypeInfo_for_V_34, (mercury__solutions__env).mercury__solutions__builtin_aggregate2_6_p_0_env_0__Mutvar2_15, &mercury__solutions__STATE_VARIABLE_Acc2_27_27);
+          }
+{
+#define MR_PROC_LABEL mercury__solutions__builtin_aggregate2_6_p_0
+
+	MR_Word TypeInfo_for_T;
+	MR_Word SolutionsHeapPtr;
+	MR_Word OldVal;
+	MR_Word NewVal;
+
+	TypeInfo_for_T =  (mercury__solutions__env).mercury__solutions__builtin_aggregate2_6_p_0_env_0__TypeInfo_for_U_33 ;
+	SolutionsHeapPtr =  mercury__solutions__SolutionsHeapPtr_12 ;
+	OldVal = (MR_Word) mercury__solutions__STATE_VARIABLE_Acc1_26_26 ;
+		{
+
+    MR_PARTIAL_DEEP_COPY(SolutionsHeapPtr, OldVal, NewVal, TypeInfo_for_T);
+
+
+		;}
+#undef MR_PROC_LABEL
+	 mercury__solutions__STATE_VARIABLE_Acc1_28_28  = (MR_Box) NewVal;
+}
+{
+#define MR_PROC_LABEL mercury__solutions__builtin_aggregate2_6_p_0
+
+	MR_Word TypeInfo_for_T;
+	MR_Word SolutionsHeapPtr;
+	MR_Word OldVal;
+	MR_Word NewVal;
+
+	TypeInfo_for_T =  (mercury__solutions__env).mercury__solutions__builtin_aggregate2_6_p_0_env_0__TypeInfo_for_V_34 ;
+	SolutionsHeapPtr =  mercury__solutions__SolutionsHeapPtr_12 ;
+	OldVal = (MR_Word) mercury__solutions__STATE_VARIABLE_Acc2_27_27 ;
+		{
+
+    MR_PARTIAL_DEEP_COPY(SolutionsHeapPtr, OldVal, NewVal, TypeInfo_for_T);
+
+
+		;}
+#undef MR_PROC_LABEL
+	 mercury__solutions__STATE_VARIABLE_Acc2_29_29  = (MR_Box) NewVal;
+}
+{
+#define MR_PROC_LABEL mercury__solutions__builtin_aggregate2_6_p_0
+
+	MR_Word SolutionsHeapPtr;
+
+	SolutionsHeapPtr =  mercury__solutions__SolutionsHeapPtr_12 ;
+		{
+
+#ifdef MR_RECLAIM_HP_ON_FAILURE
+    MR_sol_hp = (MR_Word *) SolutionsHeapPtr;
+#endif
+
+
+		;}
+#undef MR_PROC_LABEL
+}
+{
+#define MR_PROC_LABEL mercury__solutions__builtin_aggregate2_6_p_0
+
+
+		{
+
+#ifdef MR_USE_TRAIL
+    MR_discard_ticket();
+#endif
+
+
+		;}
+#undef MR_PROC_LABEL
+}
+        }
+{
+#define MR_PROC_LABEL mercury__solutions__builtin_aggregate2_6_p_0
+
+	MR_Word X;
+	MR_Word Y;
+
+	X = (MR_Word) mercury__solutions__STATE_VARIABLE_Acc1_28_28 ;
+		{
+
+    Y = X;
+
+
+		;}
+#undef MR_PROC_LABEL
+	 *mercury__solutions__STATE_VARIABLE_Acc1_23  = (MR_Box) Y;
+}
+{
+#define MR_PROC_LABEL mercury__solutions__builtin_aggregate2_6_p_0
+
+	MR_Word X;
+	MR_Word Y;
+
+	X = (MR_Word) mercury__solutions__STATE_VARIABLE_Acc2_29_29 ;
+		{
+
+    Y = X;
+
+
+		;}
+#undef MR_PROC_LABEL
+	 *mercury__solutions__STATE_VARIABLE_Acc2_25  = (MR_Box) Y;
+}
+    }
+  }
+}
+
+static void MR_CALL 
+mercury__solutions__builtin_aggregate_4_p_9_1(
+  void * mercury__solutions__env_ptr_arg)
+{
+  {
+    struct mercury__solutions__builtin_aggregate_4_p_9_env_0_s * mercury__solutions__env_ptr = (struct mercury__solutions__builtin_aggregate_4_p_9_env_0_s *) mercury__solutions__env_ptr_arg;
+
+    MR_builtin_longjmp((mercury__solutions__env_ptr)->mercury__solutions__builtin_aggregate_4_p_9_env_0__commit_0, 1);
+  }
+}
+
+static void MR_CALL 
+mercury__solutions__builtin_aggregate_4_p_9_2(
+  void * mercury__solutions__env_ptr_arg)
+{
+  {
+    struct mercury__solutions__builtin_aggregate_4_p_9_env_0_s * mercury__solutions__env_ptr = (struct mercury__solutions__builtin_aggregate_4_p_9_env_0_s *) mercury__solutions__env_ptr_arg;
+
+    {
+      void MR_CALL (* mercury__solutions__func_1)(MR_Box, MR_Box, MR_Box, MR_Box *);
+
+{
+#define MR_PROC_LABEL mercury__solutions__builtin_aggregate_4_p_9
+
+	MR_Word TrailPtr;
+
+	TrailPtr =  (mercury__solutions__env_ptr)->mercury__solutions__builtin_aggregate_4_p_9_env_0__TrailPtr_10 ;
+		{
+
+#ifdef MR_USE_TRAIL
+    /* check for outstanding delayed goals (``floundering'') */
+    MR_reset_ticket(TrailPtr, MR_solve);
+#endif
+
+
+		;}
+#undef MR_PROC_LABEL
+}
+{
+#define MR_PROC_LABEL mercury__solutions__builtin_aggregate_4_p_9
+
+
+		{
+{
+#ifdef MR_RECLAIM_HP_ON_FAILURE
+    MR_MemoryZone   *temp_zone;
+    MR_Word         *temp_hp;
+
+    temp_zone = MR_ENGINE(MR_eng_heap_zone);
+    MR_ENGINE(MR_eng_heap_zone) = MR_ENGINE(MR_eng_solutions_heap_zone);
+    MR_ENGINE(MR_eng_solutions_heap_zone) = temp_zone;
+    temp_hp = MR_hp;
+    MR_hp_word = (MR_Word) MR_sol_hp;
+    MR_sol_hp = temp_hp;
+#endif
+}
+
+		;}
+#undef MR_PROC_LABEL
+}
+{
+#define MR_PROC_LABEL mercury__solutions__builtin_aggregate_4_p_9
+
+	MR_Word TypeInfo_for_T;
+	MR_Word SolutionsHeapPtr;
+	MR_Word OldVal;
+	MR_Word NewVal;
+
+	TypeInfo_for_T =  (mercury__solutions__env_ptr)->mercury__solutions__builtin_aggregate_4_p_9_env_0__TypeInfo_for_T_21 ;
+	SolutionsHeapPtr =  (mercury__solutions__env_ptr)->mercury__solutions__builtin_aggregate_4_p_9_env_0__HeapPtr_8 ;
+	OldVal = (MR_Word) (mercury__solutions__env_ptr)->mercury__solutions__builtin_aggregate_4_p_9_env_0__Answer0_12 ;
+		{
+
+    MR_PARTIAL_DEEP_COPY(SolutionsHeapPtr, OldVal, NewVal, TypeInfo_for_T);
+
+
+		;}
+#undef MR_PROC_LABEL
+	 (mercury__solutions__env_ptr)->mercury__solutions__builtin_aggregate_4_p_9_env_0__Answer_13  = (MR_Box) NewVal;
+}
+      {
+        mercury__mutvar__get_mutvar_2_p_0((mercury__solutions__env_ptr)->mercury__solutions__builtin_aggregate_4_p_9_env_0__TypeInfo_for_U_22, (mercury__solutions__env_ptr)->mercury__solutions__builtin_aggregate_4_p_9_env_0__Mutvar_11, &(mercury__solutions__env_ptr)->mercury__solutions__builtin_aggregate_4_p_9_env_0__Acc0_14);
+      }
+      mercury__solutions__func_1 = ((void MR_CALL (*)(MR_Box, MR_Box, MR_Box, MR_Box *)) (MR_hl_field(MR_mktag(0), (mercury__solutions__env_ptr)->mercury__solutions__builtin_aggregate_4_p_9_env_0__CollectorPred_6, (MR_Integer) 1)));
+      {
+        mercury__solutions__func_1(((MR_Box) (mercury__solutions__env_ptr)->mercury__solutions__builtin_aggregate_4_p_9_env_0__CollectorPred_6), (mercury__solutions__env_ptr)->mercury__solutions__builtin_aggregate_4_p_9_env_0__Answer_13, (mercury__solutions__env_ptr)->mercury__solutions__builtin_aggregate_4_p_9_env_0__Acc0_14, &(mercury__solutions__env_ptr)->mercury__solutions__builtin_aggregate_4_p_9_env_0__Acc1_15);
+      }
+      {
+        mercury__mutvar__set_mutvar_2_p_0((mercury__solutions__env_ptr)->mercury__solutions__builtin_aggregate_4_p_9_env_0__TypeInfo_for_U_22, (mercury__solutions__env_ptr)->mercury__solutions__builtin_aggregate_4_p_9_env_0__Mutvar_11, (mercury__solutions__env_ptr)->mercury__solutions__builtin_aggregate_4_p_9_env_0__Acc1_15);
+      }
+{
+#define MR_PROC_LABEL mercury__solutions__builtin_aggregate_4_p_9
+
+
+		{
+{
+#ifdef MR_RECLAIM_HP_ON_FAILURE
+    MR_MemoryZone   *temp_zone;
+    MR_Word         *temp_hp;
+
+    temp_zone = MR_ENGINE(MR_eng_heap_zone);
+    MR_ENGINE(MR_eng_heap_zone) = MR_ENGINE(MR_eng_solutions_heap_zone);
+    MR_ENGINE(MR_eng_solutions_heap_zone) = temp_zone;
+    temp_hp = MR_hp;
+    MR_hp_word = (MR_Word) MR_sol_hp;
+    MR_sol_hp = temp_hp;
+#endif
+}
+
+		;}
+#undef MR_PROC_LABEL
+}
+      (mercury__solutions__env_ptr)->mercury__solutions__builtin_aggregate_4_p_9_env_0__succeeded = MR_FALSE;
+      if ((mercury__solutions__env_ptr)->mercury__solutions__builtin_aggregate_4_p_9_env_0__succeeded)
+        {
+          mercury__solutions__builtin_aggregate_4_p_9_1(mercury__solutions__env_ptr);
+        }
+    }
+  }
+}
+
+static void MR_CALL 
+mercury__solutions__builtin_aggregate_4_p_9_3(
+  void * mercury__solutions__env_ptr_arg)
+{
+  {
+    struct mercury__solutions__builtin_aggregate_4_p_9_env_0_s * mercury__solutions__env_ptr = (struct mercury__solutions__builtin_aggregate_4_p_9_env_0_s *) mercury__solutions__env_ptr_arg;
+
+    if (MR_builtin_setjmp((mercury__solutions__env_ptr)->mercury__solutions__builtin_aggregate_4_p_9_env_0__commit_0) == 0)
+      {
+        {
+          void MR_CALL (* mercury__solutions__func_0)(MR_Box, MR_Box *, MR_Cont, void *) = ((void MR_CALL (*)(MR_Box, MR_Box *, MR_Cont, void *)) (MR_hl_field(MR_mktag(0), (mercury__solutions__env_ptr)->mercury__solutions__builtin_aggregate_4_p_9_env_0__GeneratorPred_5, (MR_Integer) 1)));
+
+          {
+            mercury__solutions__func_0(((MR_Box) (mercury__solutions__env_ptr)->mercury__solutions__builtin_aggregate_4_p_9_env_0__GeneratorPred_5), &(mercury__solutions__env_ptr)->mercury__solutions__builtin_aggregate_4_p_9_env_0__Answer0_12, mercury__solutions__builtin_aggregate_4_p_9_2, mercury__solutions__env_ptr);
+          }
+        }
+        (mercury__solutions__env_ptr)->mercury__solutions__builtin_aggregate_4_p_9_env_0__succeeded = MR_FALSE;
+      }
+    else
+      (mercury__solutions__env_ptr)->mercury__solutions__builtin_aggregate_4_p_9_env_0__succeeded = MR_TRUE;
+  }
+}
+
+void MR_CALL 
+mercury__solutions__builtin_aggregate_4_p_9(
+  MR_Word mercury__solutions__TypeInfo_for_T_21,
+  MR_Word mercury__solutions__TypeInfo_for_U_22,
+  MR_Word mercury__solutions__GeneratorPred_5,
+  MR_Word mercury__solutions__CollectorPred_6,
+  MR_Box mercury__solutions__STATE_VARIABLE_Acc_0_16,
+  MR_Box * mercury__solutions__STATE_VARIABLE_Acc_17)
+{
+  {
+    struct mercury__solutions__builtin_aggregate_4_p_9_env_0_s mercury__solutions__env;
+
+    (mercury__solutions__env).mercury__solutions__builtin_aggregate_4_p_9_env_0__TypeInfo_for_T_21 = mercury__solutions__TypeInfo_for_T_21;
+    (mercury__solutions__env).mercury__solutions__builtin_aggregate_4_p_9_env_0__TypeInfo_for_U_22 = mercury__solutions__TypeInfo_for_U_22;
+    (mercury__solutions__env).mercury__solutions__builtin_aggregate_4_p_9_env_0__GeneratorPred_5 = mercury__solutions__GeneratorPred_5;
+    (mercury__solutions__env).mercury__solutions__builtin_aggregate_4_p_9_env_0__CollectorPred_6 = mercury__solutions__CollectorPred_6;
+    {
+      MR_Word mercury__solutions__SolutionsHeapPtr_9;
+      MR_Box mercury__solutions__STATE_VARIABLE_Acc_19_19;
+      MR_Word mercury__solutions__TypeInfo_for_U_23;
+
+{
+#define MR_PROC_LABEL mercury__solutions__builtin_aggregate_4_p_9
+
+	MR_Word HeapPtr;
+	MR_Word SolutionsHeapPtr;
+	MR_Word TrailPtr;
+
+		{
+
+    /* save heap states */
+#ifdef MR_RECLAIM_HP_ON_FAILURE
+    HeapPtr = (MR_Word) MR_hp;
+    SolutionsHeapPtr = (MR_Word) MR_sol_hp;
+#else
+    HeapPtr = SolutionsHeapPtr = 0;
+#endif
+
+    /* save trail state */
+#ifdef MR_USE_TRAIL
+    MR_store_ticket(TrailPtr);
+#else
+    TrailPtr = 0;
+#endif
+
+
+		;}
+#undef MR_PROC_LABEL
+	 (mercury__solutions__env).mercury__solutions__builtin_aggregate_4_p_9_env_0__HeapPtr_8  = HeapPtr;
+	 mercury__solutions__SolutionsHeapPtr_9  = SolutionsHeapPtr;
+	 (mercury__solutions__env).mercury__solutions__builtin_aggregate_4_p_9_env_0__TrailPtr_10  = TrailPtr;
+}
+{
+#define MR_PROC_LABEL mercury__solutions__builtin_aggregate_4_p_9
+
+
+		{
+
+#ifdef MR_USE_MINIMAL_MODEL_STACK_COPY
+    MR_pneg_enter_cond();
+#endif
+
+
+		;}
+#undef MR_PROC_LABEL
+}
+      {
+        mercury__mutvar__new_mutvar_2_p_0((mercury__solutions__env).mercury__solutions__builtin_aggregate_4_p_9_env_0__TypeInfo_for_U_22, mercury__solutions__STATE_VARIABLE_Acc_0_16, &(mercury__solutions__env).mercury__solutions__builtin_aggregate_4_p_9_env_0__Mutvar_11);
+      }
+      {
+        mercury__solutions__builtin_aggregate_4_p_9_3(&mercury__solutions__env);
+      }
+      if (!((mercury__solutions__env).mercury__solutions__builtin_aggregate_4_p_9_env_0__succeeded))
+        {
+          MR_Box mercury__solutions__STATE_VARIABLE_Acc_18_18;
+
+{
+#define MR_PROC_LABEL mercury__solutions__builtin_aggregate_4_p_9
+
+
+		{
+
+#ifdef MR_USE_MINIMAL_MODEL_STACK_COPY
+    MR_pneg_enter_else("end_all_soln_neg_context");
+#endif
+
+
+		;}
+#undef MR_PROC_LABEL
+}
+          {
+            mercury__mutvar__get_mutvar_2_p_0((mercury__solutions__env).mercury__solutions__builtin_aggregate_4_p_9_env_0__TypeInfo_for_U_22, (mercury__solutions__env).mercury__solutions__builtin_aggregate_4_p_9_env_0__Mutvar_11, &mercury__solutions__STATE_VARIABLE_Acc_18_18);
+          }
+{
+#define MR_PROC_LABEL mercury__solutions__builtin_aggregate_4_p_9
+
+	MR_Word TypeInfo_for_T;
+	MR_Word SolutionsHeapPtr;
+	MR_Word OldVal;
+	MR_Word NewVal;
+
+	TypeInfo_for_T =  (mercury__solutions__env).mercury__solutions__builtin_aggregate_4_p_9_env_0__TypeInfo_for_U_22 ;
+	SolutionsHeapPtr =  mercury__solutions__SolutionsHeapPtr_9 ;
+	OldVal = (MR_Word) mercury__solutions__STATE_VARIABLE_Acc_18_18 ;
+		{
+
+    MR_PARTIAL_DEEP_COPY(SolutionsHeapPtr, OldVal, NewVal, TypeInfo_for_T);
+
+
+		;}
+#undef MR_PROC_LABEL
+	 mercury__solutions__STATE_VARIABLE_Acc_19_19  = (MR_Box) NewVal;
+}
+{
+#define MR_PROC_LABEL mercury__solutions__builtin_aggregate_4_p_9
+
+	MR_Word SolutionsHeapPtr;
+
+	SolutionsHeapPtr =  mercury__solutions__SolutionsHeapPtr_9 ;
+		{
+
+#ifdef MR_RECLAIM_HP_ON_FAILURE
+    MR_sol_hp = (MR_Word *) SolutionsHeapPtr;
+#endif
+
+
+		;}
+#undef MR_PROC_LABEL
+}
+{
+#define MR_PROC_LABEL mercury__solutions__builtin_aggregate_4_p_9
+
+
+		{
+
+#ifdef MR_USE_TRAIL
+    MR_discard_ticket();
+#endif
+
+
+		;}
+#undef MR_PROC_LABEL
+}
+        }
+{
+#define MR_PROC_LABEL mercury__solutions__builtin_aggregate_4_p_9
+
+	MR_Word X;
+	MR_Word Y;
+
+	X = (MR_Word) mercury__solutions__STATE_VARIABLE_Acc_19_19 ;
+		{
+
+    Y = X;
+
+
+		;}
+#undef MR_PROC_LABEL
+	 *mercury__solutions__STATE_VARIABLE_Acc_17  = (MR_Box) Y;
+}
+    }
+  }
+}
+
+static void MR_CALL 
+mercury__solutions__builtin_aggregate_4_p_8_1(
+  void * mercury__solutions__env_ptr_arg)
+{
+  {
+    struct mercury__solutions__builtin_aggregate_4_p_8_env_0_s * mercury__solutions__env_ptr = (struct mercury__solutions__builtin_aggregate_4_p_8_env_0_s *) mercury__solutions__env_ptr_arg;
+
+    MR_builtin_longjmp((mercury__solutions__env_ptr)->mercury__solutions__builtin_aggregate_4_p_8_env_0__commit_0, 1);
+  }
+}
+
+static void MR_CALL 
+mercury__solutions__builtin_aggregate_4_p_8_2(
+  void * mercury__solutions__env_ptr_arg)
+{
+  {
+    struct mercury__solutions__builtin_aggregate_4_p_8_env_0_s * mercury__solutions__env_ptr = (struct mercury__solutions__builtin_aggregate_4_p_8_env_0_s *) mercury__solutions__env_ptr_arg;
+
+    {
+      void MR_CALL (* mercury__solutions__func_1)(MR_Box, MR_Box, MR_Box, MR_Box *);
+
+{
+#define MR_PROC_LABEL mercury__solutions__builtin_aggregate_4_p_8
+
+	MR_Word TrailPtr;
+
+	TrailPtr =  (mercury__solutions__env_ptr)->mercury__solutions__builtin_aggregate_4_p_8_env_0__TrailPtr_10 ;
+		{
+
+#ifdef MR_USE_TRAIL
+    /* check for outstanding delayed goals (``floundering'') */
+    MR_reset_ticket(TrailPtr, MR_solve);
+#endif
+
+
+		;}
+#undef MR_PROC_LABEL
+}
+{
+#define MR_PROC_LABEL mercury__solutions__builtin_aggregate_4_p_8
+
+
+		{
+{
+#ifdef MR_RECLAIM_HP_ON_FAILURE
+    MR_MemoryZone   *temp_zone;
+    MR_Word         *temp_hp;
+
+    temp_zone = MR_ENGINE(MR_eng_heap_zone);
+    MR_ENGINE(MR_eng_heap_zone) = MR_ENGINE(MR_eng_solutions_heap_zone);
+    MR_ENGINE(MR_eng_solutions_heap_zone) = temp_zone;
+    temp_hp = MR_hp;
+    MR_hp_word = (MR_Word) MR_sol_hp;
+    MR_sol_hp = temp_hp;
+#endif
+}
+
+		;}
+#undef MR_PROC_LABEL
+}
+{
+#define MR_PROC_LABEL mercury__solutions__builtin_aggregate_4_p_8
+
+	MR_Word TypeInfo_for_T;
+	MR_Word SolutionsHeapPtr;
+	MR_Word OldVal;
+	MR_Word NewVal;
+
+	TypeInfo_for_T =  (mercury__solutions__env_ptr)->mercury__solutions__builtin_aggregate_4_p_8_env_0__TypeInfo_for_T_21 ;
+	SolutionsHeapPtr =  (mercury__solutions__env_ptr)->mercury__solutions__builtin_aggregate_4_p_8_env_0__HeapPtr_8 ;
+	OldVal = (MR_Word) (mercury__solutions__env_ptr)->mercury__solutions__builtin_aggregate_4_p_8_env_0__Answer0_12 ;
+		{
+
+    MR_PARTIAL_DEEP_COPY(SolutionsHeapPtr, OldVal, NewVal, TypeInfo_for_T);
+
+
+		;}
+#undef MR_PROC_LABEL
+	 (mercury__solutions__env_ptr)->mercury__solutions__builtin_aggregate_4_p_8_env_0__Answer_13  = (MR_Box) NewVal;
+}
+      {
+        mercury__mutvar__get_mutvar_2_p_0((mercury__solutions__env_ptr)->mercury__solutions__builtin_aggregate_4_p_8_env_0__TypeInfo_for_U_22, (mercury__solutions__env_ptr)->mercury__solutions__builtin_aggregate_4_p_8_env_0__Mutvar_11, &(mercury__solutions__env_ptr)->mercury__solutions__builtin_aggregate_4_p_8_env_0__Acc0_14);
+      }
+      mercury__solutions__func_1 = ((void MR_CALL (*)(MR_Box, MR_Box, MR_Box, MR_Box *)) (MR_hl_field(MR_mktag(0), (mercury__solutions__env_ptr)->mercury__solutions__builtin_aggregate_4_p_8_env_0__CollectorPred_6, (MR_Integer) 1)));
+      {
+        mercury__solutions__func_1(((MR_Box) (mercury__solutions__env_ptr)->mercury__solutions__builtin_aggregate_4_p_8_env_0__CollectorPred_6), (mercury__solutions__env_ptr)->mercury__solutions__builtin_aggregate_4_p_8_env_0__Answer_13, (mercury__solutions__env_ptr)->mercury__solutions__builtin_aggregate_4_p_8_env_0__Acc0_14, &(mercury__solutions__env_ptr)->mercury__solutions__builtin_aggregate_4_p_8_env_0__Acc1_15);
+      }
+      {
+        mercury__mutvar__set_mutvar_2_p_0((mercury__solutions__env_ptr)->mercury__solutions__builtin_aggregate_4_p_8_env_0__TypeInfo_for_U_22, (mercury__solutions__env_ptr)->mercury__solutions__builtin_aggregate_4_p_8_env_0__Mutvar_11, (mercury__solutions__env_ptr)->mercury__solutions__builtin_aggregate_4_p_8_env_0__Acc1_15);
+      }
+{
+#define MR_PROC_LABEL mercury__solutions__builtin_aggregate_4_p_8
+
+
+		{
+{
+#ifdef MR_RECLAIM_HP_ON_FAILURE
+    MR_MemoryZone   *temp_zone;
+    MR_Word         *temp_hp;
+
+    temp_zone = MR_ENGINE(MR_eng_heap_zone);
+    MR_ENGINE(MR_eng_heap_zone) = MR_ENGINE(MR_eng_solutions_heap_zone);
+    MR_ENGINE(MR_eng_solutions_heap_zone) = temp_zone;
+    temp_hp = MR_hp;
+    MR_hp_word = (MR_Word) MR_sol_hp;
+    MR_sol_hp = temp_hp;
+#endif
+}
+
+		;}
+#undef MR_PROC_LABEL
+}
+      (mercury__solutions__env_ptr)->mercury__solutions__builtin_aggregate_4_p_8_env_0__succeeded = MR_FALSE;
+      if ((mercury__solutions__env_ptr)->mercury__solutions__builtin_aggregate_4_p_8_env_0__succeeded)
+        {
+          mercury__solutions__builtin_aggregate_4_p_8_1(mercury__solutions__env_ptr);
+        }
+    }
+  }
+}
+
+static void MR_CALL 
+mercury__solutions__builtin_aggregate_4_p_8_3(
+  void * mercury__solutions__env_ptr_arg)
+{
+  {
+    struct mercury__solutions__builtin_aggregate_4_p_8_env_0_s * mercury__solutions__env_ptr = (struct mercury__solutions__builtin_aggregate_4_p_8_env_0_s *) mercury__solutions__env_ptr_arg;
+
+    if (MR_builtin_setjmp((mercury__solutions__env_ptr)->mercury__solutions__builtin_aggregate_4_p_8_env_0__commit_0) == 0)
+      {
+        {
+          void MR_CALL (* mercury__solutions__func_0)(MR_Box, MR_Box *, MR_Cont, void *) = ((void MR_CALL (*)(MR_Box, MR_Box *, MR_Cont, void *)) (MR_hl_field(MR_mktag(0), (mercury__solutions__env_ptr)->mercury__solutions__builtin_aggregate_4_p_8_env_0__GeneratorPred_5, (MR_Integer) 1)));
+
+          {
+            mercury__solutions__func_0(((MR_Box) (mercury__solutions__env_ptr)->mercury__solutions__builtin_aggregate_4_p_8_env_0__GeneratorPred_5), &(mercury__solutions__env_ptr)->mercury__solutions__builtin_aggregate_4_p_8_env_0__Answer0_12, mercury__solutions__builtin_aggregate_4_p_8_2, mercury__solutions__env_ptr);
+          }
+        }
+        (mercury__solutions__env_ptr)->mercury__solutions__builtin_aggregate_4_p_8_env_0__succeeded = MR_FALSE;
+      }
+    else
+      (mercury__solutions__env_ptr)->mercury__solutions__builtin_aggregate_4_p_8_env_0__succeeded = MR_TRUE;
+  }
+}
+
+void MR_CALL 
+mercury__solutions__builtin_aggregate_4_p_8(
+  MR_Word mercury__solutions__TypeInfo_for_T_21,
+  MR_Word mercury__solutions__TypeInfo_for_U_22,
+  MR_Word mercury__solutions__GeneratorPred_5,
+  MR_Word mercury__solutions__CollectorPred_6,
+  MR_Box mercury__solutions__STATE_VARIABLE_Acc_0_16,
+  MR_Box * mercury__solutions__STATE_VARIABLE_Acc_17)
+{
+  {
+    struct mercury__solutions__builtin_aggregate_4_p_8_env_0_s mercury__solutions__env;
+
+    (mercury__solutions__env).mercury__solutions__builtin_aggregate_4_p_8_env_0__TypeInfo_for_T_21 = mercury__solutions__TypeInfo_for_T_21;
+    (mercury__solutions__env).mercury__solutions__builtin_aggregate_4_p_8_env_0__TypeInfo_for_U_22 = mercury__solutions__TypeInfo_for_U_22;
+    (mercury__solutions__env).mercury__solutions__builtin_aggregate_4_p_8_env_0__GeneratorPred_5 = mercury__solutions__GeneratorPred_5;
+    (mercury__solutions__env).mercury__solutions__builtin_aggregate_4_p_8_env_0__CollectorPred_6 = mercury__solutions__CollectorPred_6;
+    {
+      MR_Word mercury__solutions__SolutionsHeapPtr_9;
+      MR_Box mercury__solutions__STATE_VARIABLE_Acc_19_19;
+      MR_Word mercury__solutions__TypeInfo_for_U_23;
+
+{
+#define MR_PROC_LABEL mercury__solutions__builtin_aggregate_4_p_8
+
+	MR_Word HeapPtr;
+	MR_Word SolutionsHeapPtr;
+	MR_Word TrailPtr;
+
+		{
+
+    /* save heap states */
+#ifdef MR_RECLAIM_HP_ON_FAILURE
+    HeapPtr = (MR_Word) MR_hp;
+    SolutionsHeapPtr = (MR_Word) MR_sol_hp;
+#else
+    HeapPtr = SolutionsHeapPtr = 0;
+#endif
+
+    /* save trail state */
+#ifdef MR_USE_TRAIL
+    MR_store_ticket(TrailPtr);
+#else
+    TrailPtr = 0;
+#endif
+
+
+		;}
+#undef MR_PROC_LABEL
+	 (mercury__solutions__env).mercury__solutions__builtin_aggregate_4_p_8_env_0__HeapPtr_8  = HeapPtr;
+	 mercury__solutions__SolutionsHeapPtr_9  = SolutionsHeapPtr;
+	 (mercury__solutions__env).mercury__solutions__builtin_aggregate_4_p_8_env_0__TrailPtr_10  = TrailPtr;
+}
+{
+#define MR_PROC_LABEL mercury__solutions__builtin_aggregate_4_p_8
+
+
+		{
+
+#ifdef MR_USE_MINIMAL_MODEL_STACK_COPY
+    MR_pneg_enter_cond();
+#endif
+
+
+		;}
+#undef MR_PROC_LABEL
+}
+      {
+        mercury__mutvar__new_mutvar_2_p_0((mercury__solutions__env).mercury__solutions__builtin_aggregate_4_p_8_env_0__TypeInfo_for_U_22, mercury__solutions__STATE_VARIABLE_Acc_0_16, &(mercury__solutions__env).mercury__solutions__builtin_aggregate_4_p_8_env_0__Mutvar_11);
+      }
+      {
+        mercury__solutions__builtin_aggregate_4_p_8_3(&mercury__solutions__env);
+      }
+      if (!((mercury__solutions__env).mercury__solutions__builtin_aggregate_4_p_8_env_0__succeeded))
+        {
+          MR_Box mercury__solutions__STATE_VARIABLE_Acc_18_18;
+
+{
+#define MR_PROC_LABEL mercury__solutions__builtin_aggregate_4_p_8
+
+
+		{
+
+#ifdef MR_USE_MINIMAL_MODEL_STACK_COPY
+    MR_pneg_enter_else("end_all_soln_neg_context");
+#endif
+
+
+		;}
+#undef MR_PROC_LABEL
+}
+          {
+            mercury__mutvar__get_mutvar_2_p_0((mercury__solutions__env).mercury__solutions__builtin_aggregate_4_p_8_env_0__TypeInfo_for_U_22, (mercury__solutions__env).mercury__solutions__builtin_aggregate_4_p_8_env_0__Mutvar_11, &mercury__solutions__STATE_VARIABLE_Acc_18_18);
+          }
+{
+#define MR_PROC_LABEL mercury__solutions__builtin_aggregate_4_p_8
+
+	MR_Word TypeInfo_for_T;
+	MR_Word SolutionsHeapPtr;
+	MR_Word OldVal;
+	MR_Word NewVal;
+
+	TypeInfo_for_T =  (mercury__solutions__env).mercury__solutions__builtin_aggregate_4_p_8_env_0__TypeInfo_for_U_22 ;
+	SolutionsHeapPtr =  mercury__solutions__SolutionsHeapPtr_9 ;
+	OldVal = (MR_Word) mercury__solutions__STATE_VARIABLE_Acc_18_18 ;
+		{
+
+    MR_PARTIAL_DEEP_COPY(SolutionsHeapPtr, OldVal, NewVal, TypeInfo_for_T);
+
+
+		;}
+#undef MR_PROC_LABEL
+	 mercury__solutions__STATE_VARIABLE_Acc_19_19  = (MR_Box) NewVal;
+}
+{
+#define MR_PROC_LABEL mercury__solutions__builtin_aggregate_4_p_8
+
+	MR_Word SolutionsHeapPtr;
+
+	SolutionsHeapPtr =  mercury__solutions__SolutionsHeapPtr_9 ;
+		{
+
+#ifdef MR_RECLAIM_HP_ON_FAILURE
+    MR_sol_hp = (MR_Word *) SolutionsHeapPtr;
+#endif
+
+
+		;}
+#undef MR_PROC_LABEL
+}
+{
+#define MR_PROC_LABEL mercury__solutions__builtin_aggregate_4_p_8
+
+
+		{
+
+#ifdef MR_USE_TRAIL
+    MR_discard_ticket();
+#endif
+
+
+		;}
+#undef MR_PROC_LABEL
+}
+        }
+{
+#define MR_PROC_LABEL mercury__solutions__builtin_aggregate_4_p_8
+
+	MR_Word X;
+	MR_Word Y;
+
+	X = (MR_Word) mercury__solutions__STATE_VARIABLE_Acc_19_19 ;
+		{
+
+    Y = X;
+
+
+		;}
+#undef MR_PROC_LABEL
+	 *mercury__solutions__STATE_VARIABLE_Acc_17  = (MR_Box) Y;
+}
+    }
+  }
+}
+
+static void MR_CALL 
+mercury__solutions__builtin_aggregate_4_p_7_1(
+  void * mercury__solutions__env_ptr_arg)
+{
+  {
+    struct mercury__solutions__builtin_aggregate_4_p_7_env_0_s * mercury__solutions__env_ptr = (struct mercury__solutions__builtin_aggregate_4_p_7_env_0_s *) mercury__solutions__env_ptr_arg;
+
+    MR_builtin_longjmp((mercury__solutions__env_ptr)->mercury__solutions__builtin_aggregate_4_p_7_env_0__commit_0, 1);
+  }
+}
+
+static void MR_CALL 
+mercury__solutions__builtin_aggregate_4_p_7_2(
+  void * mercury__solutions__env_ptr_arg)
+{
+  {
+    struct mercury__solutions__builtin_aggregate_4_p_7_env_0_s * mercury__solutions__env_ptr = (struct mercury__solutions__builtin_aggregate_4_p_7_env_0_s *) mercury__solutions__env_ptr_arg;
+
+    {
+      void MR_CALL (* mercury__solutions__func_1)(MR_Box, MR_Box, MR_Box, MR_Box *);
+
+{
+#define MR_PROC_LABEL mercury__solutions__builtin_aggregate_4_p_7
+
+	MR_Word TrailPtr;
+
+	TrailPtr =  (mercury__solutions__env_ptr)->mercury__solutions__builtin_aggregate_4_p_7_env_0__TrailPtr_10 ;
+		{
+
+#ifdef MR_USE_TRAIL
+    /* check for outstanding delayed goals (``floundering'') */
+    MR_reset_ticket(TrailPtr, MR_solve);
+#endif
+
+
+		;}
+#undef MR_PROC_LABEL
+}
+{
+#define MR_PROC_LABEL mercury__solutions__builtin_aggregate_4_p_7
+
+
+		{
+{
+#ifdef MR_RECLAIM_HP_ON_FAILURE
+    MR_MemoryZone   *temp_zone;
+    MR_Word         *temp_hp;
+
+    temp_zone = MR_ENGINE(MR_eng_heap_zone);
+    MR_ENGINE(MR_eng_heap_zone) = MR_ENGINE(MR_eng_solutions_heap_zone);
+    MR_ENGINE(MR_eng_solutions_heap_zone) = temp_zone;
+    temp_hp = MR_hp;
+    MR_hp_word = (MR_Word) MR_sol_hp;
+    MR_sol_hp = temp_hp;
+#endif
+}
+
+		;}
+#undef MR_PROC_LABEL
+}
+{
+#define MR_PROC_LABEL mercury__solutions__builtin_aggregate_4_p_7
+
+	MR_Word TypeInfo_for_T;
+	MR_Word SolutionsHeapPtr;
+	MR_Word OldVal;
+	MR_Word NewVal;
+
+	TypeInfo_for_T =  (mercury__solutions__env_ptr)->mercury__solutions__builtin_aggregate_4_p_7_env_0__TypeInfo_for_T_21 ;
+	SolutionsHeapPtr =  (mercury__solutions__env_ptr)->mercury__solutions__builtin_aggregate_4_p_7_env_0__HeapPtr_8 ;
+	OldVal = (MR_Word) (mercury__solutions__env_ptr)->mercury__solutions__builtin_aggregate_4_p_7_env_0__Answer0_12 ;
+		{
+
+    MR_PARTIAL_DEEP_COPY(SolutionsHeapPtr, OldVal, NewVal, TypeInfo_for_T);
+
+
+		;}
+#undef MR_PROC_LABEL
+	 (mercury__solutions__env_ptr)->mercury__solutions__builtin_aggregate_4_p_7_env_0__Answer_13  = (MR_Box) NewVal;
+}
+      {
+        mercury__mutvar__get_mutvar_2_p_0((mercury__solutions__env_ptr)->mercury__solutions__builtin_aggregate_4_p_7_env_0__TypeInfo_for_U_22, (mercury__solutions__env_ptr)->mercury__solutions__builtin_aggregate_4_p_7_env_0__Mutvar_11, &(mercury__solutions__env_ptr)->mercury__solutions__builtin_aggregate_4_p_7_env_0__Acc0_14);
+      }
+      mercury__solutions__func_1 = ((void MR_CALL (*)(MR_Box, MR_Box, MR_Box, MR_Box *)) (MR_hl_field(MR_mktag(0), (mercury__solutions__env_ptr)->mercury__solutions__builtin_aggregate_4_p_7_env_0__CollectorPred_6, (MR_Integer) 1)));
+      {
+        mercury__solutions__func_1(((MR_Box) (mercury__solutions__env_ptr)->mercury__solutions__builtin_aggregate_4_p_7_env_0__CollectorPred_6), (mercury__solutions__env_ptr)->mercury__solutions__builtin_aggregate_4_p_7_env_0__Answer_13, (mercury__solutions__env_ptr)->mercury__solutions__builtin_aggregate_4_p_7_env_0__Acc0_14, &(mercury__solutions__env_ptr)->mercury__solutions__builtin_aggregate_4_p_7_env_0__Acc1_15);
+      }
+      {
+        mercury__mutvar__set_mutvar_2_p_0((mercury__solutions__env_ptr)->mercury__solutions__builtin_aggregate_4_p_7_env_0__TypeInfo_for_U_22, (mercury__solutions__env_ptr)->mercury__solutions__builtin_aggregate_4_p_7_env_0__Mutvar_11, (mercury__solutions__env_ptr)->mercury__solutions__builtin_aggregate_4_p_7_env_0__Acc1_15);
+      }
+{
+#define MR_PROC_LABEL mercury__solutions__builtin_aggregate_4_p_7
+
+
+		{
+{
+#ifdef MR_RECLAIM_HP_ON_FAILURE
+    MR_MemoryZone   *temp_zone;
+    MR_Word         *temp_hp;
+
+    temp_zone = MR_ENGINE(MR_eng_heap_zone);
+    MR_ENGINE(MR_eng_heap_zone) = MR_ENGINE(MR_eng_solutions_heap_zone);
+    MR_ENGINE(MR_eng_solutions_heap_zone) = temp_zone;
+    temp_hp = MR_hp;
+    MR_hp_word = (MR_Word) MR_sol_hp;
+    MR_sol_hp = temp_hp;
+#endif
+}
+
+		;}
+#undef MR_PROC_LABEL
+}
+      (mercury__solutions__env_ptr)->mercury__solutions__builtin_aggregate_4_p_7_env_0__succeeded = MR_FALSE;
+      if ((mercury__solutions__env_ptr)->mercury__solutions__builtin_aggregate_4_p_7_env_0__succeeded)
+        {
+          mercury__solutions__builtin_aggregate_4_p_7_1(mercury__solutions__env_ptr);
+        }
+    }
+  }
+}
+
+static void MR_CALL 
+mercury__solutions__builtin_aggregate_4_p_7_3(
+  void * mercury__solutions__env_ptr_arg)
+{
+  {
+    struct mercury__solutions__builtin_aggregate_4_p_7_env_0_s * mercury__solutions__env_ptr = (struct mercury__solutions__builtin_aggregate_4_p_7_env_0_s *) mercury__solutions__env_ptr_arg;
+
+    if (MR_builtin_setjmp((mercury__solutions__env_ptr)->mercury__solutions__builtin_aggregate_4_p_7_env_0__commit_0) == 0)
+      {
+        {
+          void MR_CALL (* mercury__solutions__func_0)(MR_Box, MR_Box *, MR_Cont, void *) = ((void MR_CALL (*)(MR_Box, MR_Box *, MR_Cont, void *)) (MR_hl_field(MR_mktag(0), (mercury__solutions__env_ptr)->mercury__solutions__builtin_aggregate_4_p_7_env_0__GeneratorPred_5, (MR_Integer) 1)));
+
+          {
+            mercury__solutions__func_0(((MR_Box) (mercury__solutions__env_ptr)->mercury__solutions__builtin_aggregate_4_p_7_env_0__GeneratorPred_5), &(mercury__solutions__env_ptr)->mercury__solutions__builtin_aggregate_4_p_7_env_0__Answer0_12, mercury__solutions__builtin_aggregate_4_p_7_2, mercury__solutions__env_ptr);
+          }
+        }
+        (mercury__solutions__env_ptr)->mercury__solutions__builtin_aggregate_4_p_7_env_0__succeeded = MR_FALSE;
+      }
+    else
+      (mercury__solutions__env_ptr)->mercury__solutions__builtin_aggregate_4_p_7_env_0__succeeded = MR_TRUE;
+  }
+}
+
+void MR_CALL 
+mercury__solutions__builtin_aggregate_4_p_7(
+  MR_Word mercury__solutions__TypeInfo_for_T_21,
+  MR_Word mercury__solutions__TypeInfo_for_U_22,
+  MR_Word mercury__solutions__GeneratorPred_5,
+  MR_Word mercury__solutions__CollectorPred_6,
+  MR_Box mercury__solutions__STATE_VARIABLE_Acc_0_16,
+  MR_Box * mercury__solutions__STATE_VARIABLE_Acc_17)
+{
+  {
+    struct mercury__solutions__builtin_aggregate_4_p_7_env_0_s mercury__solutions__env;
+
+    (mercury__solutions__env).mercury__solutions__builtin_aggregate_4_p_7_env_0__TypeInfo_for_T_21 = mercury__solutions__TypeInfo_for_T_21;
+    (mercury__solutions__env).mercury__solutions__builtin_aggregate_4_p_7_env_0__TypeInfo_for_U_22 = mercury__solutions__TypeInfo_for_U_22;
+    (mercury__solutions__env).mercury__solutions__builtin_aggregate_4_p_7_env_0__GeneratorPred_5 = mercury__solutions__GeneratorPred_5;
+    (mercury__solutions__env).mercury__solutions__builtin_aggregate_4_p_7_env_0__CollectorPred_6 = mercury__solutions__CollectorPred_6;
+    {
+      MR_Word mercury__solutions__SolutionsHeapPtr_9;
+      MR_Box mercury__solutions__STATE_VARIABLE_Acc_19_19;
+      MR_Word mercury__solutions__TypeInfo_for_U_23;
+
+{
+#define MR_PROC_LABEL mercury__solutions__builtin_aggregate_4_p_7
+
+	MR_Word HeapPtr;
+	MR_Word SolutionsHeapPtr;
+	MR_Word TrailPtr;
+
+		{
+
+    /* save heap states */
+#ifdef MR_RECLAIM_HP_ON_FAILURE
+    HeapPtr = (MR_Word) MR_hp;
+    SolutionsHeapPtr = (MR_Word) MR_sol_hp;
+#else
+    HeapPtr = SolutionsHeapPtr = 0;
+#endif
+
+    /* save trail state */
+#ifdef MR_USE_TRAIL
+    MR_store_ticket(TrailPtr);
+#else
+    TrailPtr = 0;
+#endif
+
+
+		;}
+#undef MR_PROC_LABEL
+	 (mercury__solutions__env).mercury__solutions__builtin_aggregate_4_p_7_env_0__HeapPtr_8  = HeapPtr;
+	 mercury__solutions__SolutionsHeapPtr_9  = SolutionsHeapPtr;
+	 (mercury__solutions__env).mercury__solutions__builtin_aggregate_4_p_7_env_0__TrailPtr_10  = TrailPtr;
+}
+{
+#define MR_PROC_LABEL mercury__solutions__builtin_aggregate_4_p_7
+
+
+		{
+
+#ifdef MR_USE_MINIMAL_MODEL_STACK_COPY
+    MR_pneg_enter_cond();
+#endif
+
+
+		;}
+#undef MR_PROC_LABEL
+}
+      {
+        mercury__mutvar__new_mutvar_2_p_0((mercury__solutions__env).mercury__solutions__builtin_aggregate_4_p_7_env_0__TypeInfo_for_U_22, mercury__solutions__STATE_VARIABLE_Acc_0_16, &(mercury__solutions__env).mercury__solutions__builtin_aggregate_4_p_7_env_0__Mutvar_11);
+      }
+      {
+        mercury__solutions__builtin_aggregate_4_p_7_3(&mercury__solutions__env);
+      }
+      if (!((mercury__solutions__env).mercury__solutions__builtin_aggregate_4_p_7_env_0__succeeded))
+        {
+          MR_Box mercury__solutions__STATE_VARIABLE_Acc_18_18;
+
+{
+#define MR_PROC_LABEL mercury__solutions__builtin_aggregate_4_p_7
+
+
+		{
+
+#ifdef MR_USE_MINIMAL_MODEL_STACK_COPY
+    MR_pneg_enter_else("end_all_soln_neg_context");
+#endif
+
+
+		;}
+#undef MR_PROC_LABEL
+}
+          {
+            mercury__mutvar__get_mutvar_2_p_0((mercury__solutions__env).mercury__solutions__builtin_aggregate_4_p_7_env_0__TypeInfo_for_U_22, (mercury__solutions__env).mercury__solutions__builtin_aggregate_4_p_7_env_0__Mutvar_11, &mercury__solutions__STATE_VARIABLE_Acc_18_18);
+          }
+{
+#define MR_PROC_LABEL mercury__solutions__builtin_aggregate_4_p_7
+
+	MR_Word TypeInfo_for_T;
+	MR_Word SolutionsHeapPtr;
+	MR_Word OldVal;
+	MR_Word NewVal;
+
+	TypeInfo_for_T =  (mercury__solutions__env).mercury__solutions__builtin_aggregate_4_p_7_env_0__TypeInfo_for_U_22 ;
+	SolutionsHeapPtr =  mercury__solutions__SolutionsHeapPtr_9 ;
+	OldVal = (MR_Word) mercury__solutions__STATE_VARIABLE_Acc_18_18 ;
+		{
+
+    MR_PARTIAL_DEEP_COPY(SolutionsHeapPtr, OldVal, NewVal, TypeInfo_for_T);
+
+
+		;}
+#undef MR_PROC_LABEL
+	 mercury__solutions__STATE_VARIABLE_Acc_19_19  = (MR_Box) NewVal;
+}
+{
+#define MR_PROC_LABEL mercury__solutions__builtin_aggregate_4_p_7
+
+	MR_Word SolutionsHeapPtr;
+
+	SolutionsHeapPtr =  mercury__solutions__SolutionsHeapPtr_9 ;
+		{
+
+#ifdef MR_RECLAIM_HP_ON_FAILURE
+    MR_sol_hp = (MR_Word *) SolutionsHeapPtr;
+#endif
+
+
+		;}
+#undef MR_PROC_LABEL
+}
+{
+#define MR_PROC_LABEL mercury__solutions__builtin_aggregate_4_p_7
+
+
+		{
+
+#ifdef MR_USE_TRAIL
+    MR_discard_ticket();
+#endif
+
+
+		;}
+#undef MR_PROC_LABEL
+}
+        }
+{
+#define MR_PROC_LABEL mercury__solutions__builtin_aggregate_4_p_7
+
+	MR_Word X;
+	MR_Word Y;
+
+	X = (MR_Word) mercury__solutions__STATE_VARIABLE_Acc_19_19 ;
+		{
+
+    Y = X;
+
+
+		;}
+#undef MR_PROC_LABEL
+	 *mercury__solutions__STATE_VARIABLE_Acc_17  = (MR_Box) Y;
+}
+    }
+  }
+}
+
+static void MR_CALL 
+mercury__solutions__builtin_aggregate_4_p_6_1(
+  void * mercury__solutions__env_ptr_arg)
+{
+  {
+    struct mercury__solutions__builtin_aggregate_4_p_6_env_0_s * mercury__solutions__env_ptr = (struct mercury__solutions__builtin_aggregate_4_p_6_env_0_s *) mercury__solutions__env_ptr_arg;
+
+    MR_builtin_longjmp((mercury__solutions__env_ptr)->mercury__solutions__builtin_aggregate_4_p_6_env_0__commit_0, 1);
+  }
+}
+
+static void MR_CALL 
+mercury__solutions__builtin_aggregate_4_p_6_2(
+  void * mercury__solutions__env_ptr_arg)
+{
+  {
+    struct mercury__solutions__builtin_aggregate_4_p_6_env_0_s * mercury__solutions__env_ptr = (struct mercury__solutions__builtin_aggregate_4_p_6_env_0_s *) mercury__solutions__env_ptr_arg;
+
+    {
+      void MR_CALL (* mercury__solutions__func_1)(MR_Box, MR_Box, MR_Box, MR_Box *);
+
+{
+#define MR_PROC_LABEL mercury__solutions__builtin_aggregate_4_p_6
+
+	MR_Word TrailPtr;
+
+	TrailPtr =  (mercury__solutions__env_ptr)->mercury__solutions__builtin_aggregate_4_p_6_env_0__TrailPtr_10 ;
+		{
+
+#ifdef MR_USE_TRAIL
+    /* check for outstanding delayed goals (``floundering'') */
+    MR_reset_ticket(TrailPtr, MR_solve);
+#endif
+
+
+		;}
+#undef MR_PROC_LABEL
+}
+{
+#define MR_PROC_LABEL mercury__solutions__builtin_aggregate_4_p_6
+
+
+		{
+{
+#ifdef MR_RECLAIM_HP_ON_FAILURE
+    MR_MemoryZone   *temp_zone;
+    MR_Word         *temp_hp;
+
+    temp_zone = MR_ENGINE(MR_eng_heap_zone);
+    MR_ENGINE(MR_eng_heap_zone) = MR_ENGINE(MR_eng_solutions_heap_zone);
+    MR_ENGINE(MR_eng_solutions_heap_zone) = temp_zone;
+    temp_hp = MR_hp;
+    MR_hp_word = (MR_Word) MR_sol_hp;
+    MR_sol_hp = temp_hp;
+#endif
+}
+
+		;}
+#undef MR_PROC_LABEL
+}
+{
+#define MR_PROC_LABEL mercury__solutions__builtin_aggregate_4_p_6
+
+	MR_Word TypeInfo_for_T;
+	MR_Word SolutionsHeapPtr;
+	MR_Word OldVal;
+	MR_Word NewVal;
+
+	TypeInfo_for_T =  (mercury__solutions__env_ptr)->mercury__solutions__builtin_aggregate_4_p_6_env_0__TypeInfo_for_T_21 ;
+	SolutionsHeapPtr =  (mercury__solutions__env_ptr)->mercury__solutions__builtin_aggregate_4_p_6_env_0__HeapPtr_8 ;
+	OldVal = (MR_Word) (mercury__solutions__env_ptr)->mercury__solutions__builtin_aggregate_4_p_6_env_0__Answer0_12 ;
+		{
+
+    MR_PARTIAL_DEEP_COPY(SolutionsHeapPtr, OldVal, NewVal, TypeInfo_for_T);
+
+
+		;}
+#undef MR_PROC_LABEL
+	 (mercury__solutions__env_ptr)->mercury__solutions__builtin_aggregate_4_p_6_env_0__Answer_13  = (MR_Box) NewVal;
+}
+      {
+        mercury__mutvar__get_mutvar_2_p_0((mercury__solutions__env_ptr)->mercury__solutions__builtin_aggregate_4_p_6_env_0__TypeInfo_for_U_22, (mercury__solutions__env_ptr)->mercury__solutions__builtin_aggregate_4_p_6_env_0__Mutvar_11, &(mercury__solutions__env_ptr)->mercury__solutions__builtin_aggregate_4_p_6_env_0__Acc0_14);
+      }
+      mercury__solutions__func_1 = ((void MR_CALL (*)(MR_Box, MR_Box, MR_Box, MR_Box *)) (MR_hl_field(MR_mktag(0), (mercury__solutions__env_ptr)->mercury__solutions__builtin_aggregate_4_p_6_env_0__CollectorPred_6, (MR_Integer) 1)));
+      {
+        mercury__solutions__func_1(((MR_Box) (mercury__solutions__env_ptr)->mercury__solutions__builtin_aggregate_4_p_6_env_0__CollectorPred_6), (mercury__solutions__env_ptr)->mercury__solutions__builtin_aggregate_4_p_6_env_0__Answer_13, (mercury__solutions__env_ptr)->mercury__solutions__builtin_aggregate_4_p_6_env_0__Acc0_14, &(mercury__solutions__env_ptr)->mercury__solutions__builtin_aggregate_4_p_6_env_0__Acc1_15);
+      }
+      {
+        mercury__mutvar__set_mutvar_2_p_0((mercury__solutions__env_ptr)->mercury__solutions__builtin_aggregate_4_p_6_env_0__TypeInfo_for_U_22, (mercury__solutions__env_ptr)->mercury__solutions__builtin_aggregate_4_p_6_env_0__Mutvar_11, (mercury__solutions__env_ptr)->mercury__solutions__builtin_aggregate_4_p_6_env_0__Acc1_15);
+      }
+{
+#define MR_PROC_LABEL mercury__solutions__builtin_aggregate_4_p_6
+
+
+		{
+{
+#ifdef MR_RECLAIM_HP_ON_FAILURE
+    MR_MemoryZone   *temp_zone;
+    MR_Word         *temp_hp;
+
+    temp_zone = MR_ENGINE(MR_eng_heap_zone);
+    MR_ENGINE(MR_eng_heap_zone) = MR_ENGINE(MR_eng_solutions_heap_zone);
+    MR_ENGINE(MR_eng_solutions_heap_zone) = temp_zone;
+    temp_hp = MR_hp;
+    MR_hp_word = (MR_Word) MR_sol_hp;
+    MR_sol_hp = temp_hp;
+#endif
+}
+
+		;}
+#undef MR_PROC_LABEL
+}
+      (mercury__solutions__env_ptr)->mercury__solutions__builtin_aggregate_4_p_6_env_0__succeeded = MR_FALSE;
+      if ((mercury__solutions__env_ptr)->mercury__solutions__builtin_aggregate_4_p_6_env_0__succeeded)
+        {
+          mercury__solutions__builtin_aggregate_4_p_6_1(mercury__solutions__env_ptr);
+        }
+    }
+  }
+}
+
+static void MR_CALL 
+mercury__solutions__builtin_aggregate_4_p_6_3(
+  void * mercury__solutions__env_ptr_arg)
+{
+  {
+    struct mercury__solutions__builtin_aggregate_4_p_6_env_0_s * mercury__solutions__env_ptr = (struct mercury__solutions__builtin_aggregate_4_p_6_env_0_s *) mercury__solutions__env_ptr_arg;
+
+    if (MR_builtin_setjmp((mercury__solutions__env_ptr)->mercury__solutions__builtin_aggregate_4_p_6_env_0__commit_0) == 0)
+      {
+        {
+          void MR_CALL (* mercury__solutions__func_0)(MR_Box, MR_Box *, MR_Cont, void *) = ((void MR_CALL (*)(MR_Box, MR_Box *, MR_Cont, void *)) (MR_hl_field(MR_mktag(0), (mercury__solutions__env_ptr)->mercury__solutions__builtin_aggregate_4_p_6_env_0__GeneratorPred_5, (MR_Integer) 1)));
+
+          {
+            mercury__solutions__func_0(((MR_Box) (mercury__solutions__env_ptr)->mercury__solutions__builtin_aggregate_4_p_6_env_0__GeneratorPred_5), &(mercury__solutions__env_ptr)->mercury__solutions__builtin_aggregate_4_p_6_env_0__Answer0_12, mercury__solutions__builtin_aggregate_4_p_6_2, mercury__solutions__env_ptr);
+          }
+        }
+        (mercury__solutions__env_ptr)->mercury__solutions__builtin_aggregate_4_p_6_env_0__succeeded = MR_FALSE;
+      }
+    else
+      (mercury__solutions__env_ptr)->mercury__solutions__builtin_aggregate_4_p_6_env_0__succeeded = MR_TRUE;
+  }
+}
+
+void MR_CALL 
+mercury__solutions__builtin_aggregate_4_p_6(
+  MR_Word mercury__solutions__TypeInfo_for_T_21,
+  MR_Word mercury__solutions__TypeInfo_for_U_22,
+  MR_Word mercury__solutions__GeneratorPred_5,
+  MR_Word mercury__solutions__CollectorPred_6,
+  MR_Box mercury__solutions__STATE_VARIABLE_Acc_0_16,
+  MR_Box * mercury__solutions__STATE_VARIABLE_Acc_17)
+{
+  {
+    struct mercury__solutions__builtin_aggregate_4_p_6_env_0_s mercury__solutions__env;
+
+    (mercury__solutions__env).mercury__solutions__builtin_aggregate_4_p_6_env_0__TypeInfo_for_T_21 = mercury__solutions__TypeInfo_for_T_21;
+    (mercury__solutions__env).mercury__solutions__builtin_aggregate_4_p_6_env_0__TypeInfo_for_U_22 = mercury__solutions__TypeInfo_for_U_22;
+    (mercury__solutions__env).mercury__solutions__builtin_aggregate_4_p_6_env_0__GeneratorPred_5 = mercury__solutions__GeneratorPred_5;
+    (mercury__solutions__env).mercury__solutions__builtin_aggregate_4_p_6_env_0__CollectorPred_6 = mercury__solutions__CollectorPred_6;
+    {
+      MR_Word mercury__solutions__SolutionsHeapPtr_9;
+      MR_Box mercury__solutions__STATE_VARIABLE_Acc_19_19;
+      MR_Word mercury__solutions__TypeInfo_for_U_23;
+
+{
+#define MR_PROC_LABEL mercury__solutions__builtin_aggregate_4_p_6
+
+	MR_Word HeapPtr;
+	MR_Word SolutionsHeapPtr;
+	MR_Word TrailPtr;
+
+		{
+
+    /* save heap states */
+#ifdef MR_RECLAIM_HP_ON_FAILURE
+    HeapPtr = (MR_Word) MR_hp;
+    SolutionsHeapPtr = (MR_Word) MR_sol_hp;
+#else
+    HeapPtr = SolutionsHeapPtr = 0;
+#endif
+
+    /* save trail state */
+#ifdef MR_USE_TRAIL
+    MR_store_ticket(TrailPtr);
+#else
+    TrailPtr = 0;
+#endif
+
+
+		;}
+#undef MR_PROC_LABEL
+	 (mercury__solutions__env).mercury__solutions__builtin_aggregate_4_p_6_env_0__HeapPtr_8  = HeapPtr;
+	 mercury__solutions__SolutionsHeapPtr_9  = SolutionsHeapPtr;
+	 (mercury__solutions__env).mercury__solutions__builtin_aggregate_4_p_6_env_0__TrailPtr_10  = TrailPtr;
+}
+{
+#define MR_PROC_LABEL mercury__solutions__builtin_aggregate_4_p_6
+
+
+		{
+
+#ifdef MR_USE_MINIMAL_MODEL_STACK_COPY
+    MR_pneg_enter_cond();
+#endif
+
+
+		;}
+#undef MR_PROC_LABEL
+}
+      {
+        mercury__mutvar__new_mutvar_2_p_0((mercury__solutions__env).mercury__solutions__builtin_aggregate_4_p_6_env_0__TypeInfo_for_U_22, mercury__solutions__STATE_VARIABLE_Acc_0_16, &(mercury__solutions__env).mercury__solutions__builtin_aggregate_4_p_6_env_0__Mutvar_11);
+      }
+      {
+        mercury__solutions__builtin_aggregate_4_p_6_3(&mercury__solutions__env);
+      }
+      if (!((mercury__solutions__env).mercury__solutions__builtin_aggregate_4_p_6_env_0__succeeded))
+        {
+          MR_Box mercury__solutions__STATE_VARIABLE_Acc_18_18;
+
+{
+#define MR_PROC_LABEL mercury__solutions__builtin_aggregate_4_p_6
+
+
+		{
+
+#ifdef MR_USE_MINIMAL_MODEL_STACK_COPY
+    MR_pneg_enter_else("end_all_soln_neg_context");
+#endif
+
+
+		;}
+#undef MR_PROC_LABEL
+}
+          {
+            mercury__mutvar__get_mutvar_2_p_0((mercury__solutions__env).mercury__solutions__builtin_aggregate_4_p_6_env_0__TypeInfo_for_U_22, (mercury__solutions__env).mercury__solutions__builtin_aggregate_4_p_6_env_0__Mutvar_11, &mercury__solutions__STATE_VARIABLE_Acc_18_18);
+          }
+{
+#define MR_PROC_LABEL mercury__solutions__builtin_aggregate_4_p_6
+
+	MR_Word TypeInfo_for_T;
+	MR_Word SolutionsHeapPtr;
+	MR_Word OldVal;
+	MR_Word NewVal;
+
+	TypeInfo_for_T =  (mercury__solutions__env).mercury__solutions__builtin_aggregate_4_p_6_env_0__TypeInfo_for_U_22 ;
+	SolutionsHeapPtr =  mercury__solutions__SolutionsHeapPtr_9 ;
+	OldVal = (MR_Word) mercury__solutions__STATE_VARIABLE_Acc_18_18 ;
+		{
+
+    MR_PARTIAL_DEEP_COPY(SolutionsHeapPtr, OldVal, NewVal, TypeInfo_for_T);
+
+
+		;}
+#undef MR_PROC_LABEL
+	 mercury__solutions__STATE_VARIABLE_Acc_19_19  = (MR_Box) NewVal;
+}
+{
+#define MR_PROC_LABEL mercury__solutions__builtin_aggregate_4_p_6
+
+	MR_Word SolutionsHeapPtr;
+
+	SolutionsHeapPtr =  mercury__solutions__SolutionsHeapPtr_9 ;
+		{
+
+#ifdef MR_RECLAIM_HP_ON_FAILURE
+    MR_sol_hp = (MR_Word *) SolutionsHeapPtr;
+#endif
+
+
+		;}
+#undef MR_PROC_LABEL
+}
+{
+#define MR_PROC_LABEL mercury__solutions__builtin_aggregate_4_p_6
+
+
+		{
+
+#ifdef MR_USE_TRAIL
+    MR_discard_ticket();
+#endif
+
+
+		;}
+#undef MR_PROC_LABEL
+}
+        }
+{
+#define MR_PROC_LABEL mercury__solutions__builtin_aggregate_4_p_6
+
+	MR_Word X;
+	MR_Word Y;
+
+	X = (MR_Word) mercury__solutions__STATE_VARIABLE_Acc_19_19 ;
+		{
+
+    Y = X;
+
+
+		;}
+#undef MR_PROC_LABEL
+	 *mercury__solutions__STATE_VARIABLE_Acc_17  = (MR_Box) Y;
+}
+    }
+  }
+}
+
+static void MR_CALL 
+mercury__solutions__builtin_aggregate_4_p_5_1(
+  void * mercury__solutions__env_ptr_arg)
+{
+  {
+    struct mercury__solutions__builtin_aggregate_4_p_5_env_0_s * mercury__solutions__env_ptr = (struct mercury__solutions__builtin_aggregate_4_p_5_env_0_s *) mercury__solutions__env_ptr_arg;
+
+    MR_builtin_longjmp((mercury__solutions__env_ptr)->mercury__solutions__builtin_aggregate_4_p_5_env_0__commit_0, 1);
+  }
+}
+
+static void MR_CALL 
+mercury__solutions__builtin_aggregate_4_p_5_2(
+  void * mercury__solutions__env_ptr_arg)
+{
+  {
+    struct mercury__solutions__builtin_aggregate_4_p_5_env_0_s * mercury__solutions__env_ptr = (struct mercury__solutions__builtin_aggregate_4_p_5_env_0_s *) mercury__solutions__env_ptr_arg;
+
+    {
+      void MR_CALL (* mercury__solutions__func_1)(MR_Box, MR_Box, MR_Box, MR_Box *);
+
+{
+#define MR_PROC_LABEL mercury__solutions__builtin_aggregate_4_p_5
+
+	MR_Word TrailPtr;
+
+	TrailPtr =  (mercury__solutions__env_ptr)->mercury__solutions__builtin_aggregate_4_p_5_env_0__TrailPtr_10 ;
+		{
+
+#ifdef MR_USE_TRAIL
+    /* check for outstanding delayed goals (``floundering'') */
+    MR_reset_ticket(TrailPtr, MR_solve);
+#endif
+
+
+		;}
+#undef MR_PROC_LABEL
+}
+{
+#define MR_PROC_LABEL mercury__solutions__builtin_aggregate_4_p_5
+
+
+		{
+{
+#ifdef MR_RECLAIM_HP_ON_FAILURE
+    MR_MemoryZone   *temp_zone;
+    MR_Word         *temp_hp;
+
+    temp_zone = MR_ENGINE(MR_eng_heap_zone);
+    MR_ENGINE(MR_eng_heap_zone) = MR_ENGINE(MR_eng_solutions_heap_zone);
+    MR_ENGINE(MR_eng_solutions_heap_zone) = temp_zone;
+    temp_hp = MR_hp;
+    MR_hp_word = (MR_Word) MR_sol_hp;
+    MR_sol_hp = temp_hp;
+#endif
+}
+
+		;}
+#undef MR_PROC_LABEL
+}
+{
+#define MR_PROC_LABEL mercury__solutions__builtin_aggregate_4_p_5
+
+	MR_Word TypeInfo_for_T;
+	MR_Word SolutionsHeapPtr;
+	MR_Word OldVal;
+	MR_Word NewVal;
+
+	TypeInfo_for_T =  (mercury__solutions__env_ptr)->mercury__solutions__builtin_aggregate_4_p_5_env_0__TypeInfo_for_T_21 ;
+	SolutionsHeapPtr =  (mercury__solutions__env_ptr)->mercury__solutions__builtin_aggregate_4_p_5_env_0__HeapPtr_8 ;
+	OldVal = (MR_Word) (mercury__solutions__env_ptr)->mercury__solutions__builtin_aggregate_4_p_5_env_0__Answer0_12 ;
+		{
+
+    MR_PARTIAL_DEEP_COPY(SolutionsHeapPtr, OldVal, NewVal, TypeInfo_for_T);
+
+
+		;}
+#undef MR_PROC_LABEL
+	 (mercury__solutions__env_ptr)->mercury__solutions__builtin_aggregate_4_p_5_env_0__Answer_13  = (MR_Box) NewVal;
+}
+      {
+        mercury__mutvar__get_mutvar_2_p_0((mercury__solutions__env_ptr)->mercury__solutions__builtin_aggregate_4_p_5_env_0__TypeInfo_for_U_22, (mercury__solutions__env_ptr)->mercury__solutions__builtin_aggregate_4_p_5_env_0__Mutvar_11, &(mercury__solutions__env_ptr)->mercury__solutions__builtin_aggregate_4_p_5_env_0__Acc0_14);
+      }
+      mercury__solutions__func_1 = ((void MR_CALL (*)(MR_Box, MR_Box, MR_Box, MR_Box *)) (MR_hl_field(MR_mktag(0), (mercury__solutions__env_ptr)->mercury__solutions__builtin_aggregate_4_p_5_env_0__CollectorPred_6, (MR_Integer) 1)));
+      {
+        mercury__solutions__func_1(((MR_Box) (mercury__solutions__env_ptr)->mercury__solutions__builtin_aggregate_4_p_5_env_0__CollectorPred_6), (mercury__solutions__env_ptr)->mercury__solutions__builtin_aggregate_4_p_5_env_0__Answer_13, (mercury__solutions__env_ptr)->mercury__solutions__builtin_aggregate_4_p_5_env_0__Acc0_14, &(mercury__solutions__env_ptr)->mercury__solutions__builtin_aggregate_4_p_5_env_0__Acc1_15);
+      }
+      {
+        mercury__mutvar__set_mutvar_2_p_0((mercury__solutions__env_ptr)->mercury__solutions__builtin_aggregate_4_p_5_env_0__TypeInfo_for_U_22, (mercury__solutions__env_ptr)->mercury__solutions__builtin_aggregate_4_p_5_env_0__Mutvar_11, (mercury__solutions__env_ptr)->mercury__solutions__builtin_aggregate_4_p_5_env_0__Acc1_15);
+      }
+{
+#define MR_PROC_LABEL mercury__solutions__builtin_aggregate_4_p_5
+
+
+		{
+{
+#ifdef MR_RECLAIM_HP_ON_FAILURE
+    MR_MemoryZone   *temp_zone;
+    MR_Word         *temp_hp;
+
+    temp_zone = MR_ENGINE(MR_eng_heap_zone);
+    MR_ENGINE(MR_eng_heap_zone) = MR_ENGINE(MR_eng_solutions_heap_zone);
+    MR_ENGINE(MR_eng_solutions_heap_zone) = temp_zone;
+    temp_hp = MR_hp;
+    MR_hp_word = (MR_Word) MR_sol_hp;
+    MR_sol_hp = temp_hp;
+#endif
+}
+
+		;}
+#undef MR_PROC_LABEL
+}
+      (mercury__solutions__env_ptr)->mercury__solutions__builtin_aggregate_4_p_5_env_0__succeeded = MR_FALSE;
+      if ((mercury__solutions__env_ptr)->mercury__solutions__builtin_aggregate_4_p_5_env_0__succeeded)
+        {
+          mercury__solutions__builtin_aggregate_4_p_5_1(mercury__solutions__env_ptr);
+        }
+    }
+  }
+}
+
+static void MR_CALL 
+mercury__solutions__builtin_aggregate_4_p_5_3(
+  void * mercury__solutions__env_ptr_arg)
+{
+  {
+    struct mercury__solutions__builtin_aggregate_4_p_5_env_0_s * mercury__solutions__env_ptr = (struct mercury__solutions__builtin_aggregate_4_p_5_env_0_s *) mercury__solutions__env_ptr_arg;
+
+    if (MR_builtin_setjmp((mercury__solutions__env_ptr)->mercury__solutions__builtin_aggregate_4_p_5_env_0__commit_0) == 0)
+      {
+        {
+          void MR_CALL (* mercury__solutions__func_0)(MR_Box, MR_Box *, MR_Cont, void *) = ((void MR_CALL (*)(MR_Box, MR_Box *, MR_Cont, void *)) (MR_hl_field(MR_mktag(0), (mercury__solutions__env_ptr)->mercury__solutions__builtin_aggregate_4_p_5_env_0__GeneratorPred_5, (MR_Integer) 1)));
+
+          {
+            mercury__solutions__func_0(((MR_Box) (mercury__solutions__env_ptr)->mercury__solutions__builtin_aggregate_4_p_5_env_0__GeneratorPred_5), &(mercury__solutions__env_ptr)->mercury__solutions__builtin_aggregate_4_p_5_env_0__Answer0_12, mercury__solutions__builtin_aggregate_4_p_5_2, mercury__solutions__env_ptr);
+          }
+        }
+        (mercury__solutions__env_ptr)->mercury__solutions__builtin_aggregate_4_p_5_env_0__succeeded = MR_FALSE;
+      }
+    else
+      (mercury__solutions__env_ptr)->mercury__solutions__builtin_aggregate_4_p_5_env_0__succeeded = MR_TRUE;
+  }
+}
+
+void MR_CALL 
+mercury__solutions__builtin_aggregate_4_p_5(
+  MR_Word mercury__solutions__TypeInfo_for_T_21,
+  MR_Word mercury__solutions__TypeInfo_for_U_22,
+  MR_Word mercury__solutions__GeneratorPred_5,
+  MR_Word mercury__solutions__CollectorPred_6,
+  MR_Box mercury__solutions__STATE_VARIABLE_Acc_0_16,
+  MR_Box * mercury__solutions__STATE_VARIABLE_Acc_17)
+{
+  {
+    struct mercury__solutions__builtin_aggregate_4_p_5_env_0_s mercury__solutions__env;
+
+    (mercury__solutions__env).mercury__solutions__builtin_aggregate_4_p_5_env_0__TypeInfo_for_T_21 = mercury__solutions__TypeInfo_for_T_21;
+    (mercury__solutions__env).mercury__solutions__builtin_aggregate_4_p_5_env_0__TypeInfo_for_U_22 = mercury__solutions__TypeInfo_for_U_22;
+    (mercury__solutions__env).mercury__solutions__builtin_aggregate_4_p_5_env_0__GeneratorPred_5 = mercury__solutions__GeneratorPred_5;
+    (mercury__solutions__env).mercury__solutions__builtin_aggregate_4_p_5_env_0__CollectorPred_6 = mercury__solutions__CollectorPred_6;
+    {
+      MR_Word mercury__solutions__SolutionsHeapPtr_9;
+      MR_Box mercury__solutions__STATE_VARIABLE_Acc_19_19;
+      MR_Word mercury__solutions__TypeInfo_for_U_23;
+
+{
+#define MR_PROC_LABEL mercury__solutions__builtin_aggregate_4_p_5
+
+	MR_Word HeapPtr;
+	MR_Word SolutionsHeapPtr;
+	MR_Word TrailPtr;
+
+		{
+
+    /* save heap states */
+#ifdef MR_RECLAIM_HP_ON_FAILURE
+    HeapPtr = (MR_Word) MR_hp;
+    SolutionsHeapPtr = (MR_Word) MR_sol_hp;
+#else
+    HeapPtr = SolutionsHeapPtr = 0;
+#endif
+
+    /* save trail state */
+#ifdef MR_USE_TRAIL
+    MR_store_ticket(TrailPtr);
+#else
+    TrailPtr = 0;
+#endif
+
+
+		;}
+#undef MR_PROC_LABEL
+	 (mercury__solutions__env).mercury__solutions__builtin_aggregate_4_p_5_env_0__HeapPtr_8  = HeapPtr;
+	 mercury__solutions__SolutionsHeapPtr_9  = SolutionsHeapPtr;
+	 (mercury__solutions__env).mercury__solutions__builtin_aggregate_4_p_5_env_0__TrailPtr_10  = TrailPtr;
+}
+{
+#define MR_PROC_LABEL mercury__solutions__builtin_aggregate_4_p_5
+
+
+		{
+
+#ifdef MR_USE_MINIMAL_MODEL_STACK_COPY
+    MR_pneg_enter_cond();
+#endif
+
+
+		;}
+#undef MR_PROC_LABEL
+}
+      {
+        mercury__mutvar__new_mutvar_2_p_0((mercury__solutions__env).mercury__solutions__builtin_aggregate_4_p_5_env_0__TypeInfo_for_U_22, mercury__solutions__STATE_VARIABLE_Acc_0_16, &(mercury__solutions__env).mercury__solutions__builtin_aggregate_4_p_5_env_0__Mutvar_11);
+      }
+      {
+        mercury__solutions__builtin_aggregate_4_p_5_3(&mercury__solutions__env);
+      }
+      if (!((mercury__solutions__env).mercury__solutions__builtin_aggregate_4_p_5_env_0__succeeded))
+        {
+          MR_Box mercury__solutions__STATE_VARIABLE_Acc_18_18;
+
+{
+#define MR_PROC_LABEL mercury__solutions__builtin_aggregate_4_p_5
+
+
+		{
+
+#ifdef MR_USE_MINIMAL_MODEL_STACK_COPY
+    MR_pneg_enter_else("end_all_soln_neg_context");
+#endif
+
+
+		;}
+#undef MR_PROC_LABEL
+}
+          {
+            mercury__mutvar__get_mutvar_2_p_0((mercury__solutions__env).mercury__solutions__builtin_aggregate_4_p_5_env_0__TypeInfo_for_U_22, (mercury__solutions__env).mercury__solutions__builtin_aggregate_4_p_5_env_0__Mutvar_11, &mercury__solutions__STATE_VARIABLE_Acc_18_18);
+          }
+{
+#define MR_PROC_LABEL mercury__solutions__builtin_aggregate_4_p_5
+
+	MR_Word TypeInfo_for_T;
+	MR_Word SolutionsHeapPtr;
+	MR_Word OldVal;
+	MR_Word NewVal;
+
+	TypeInfo_for_T =  (mercury__solutions__env).mercury__solutions__builtin_aggregate_4_p_5_env_0__TypeInfo_for_U_22 ;
+	SolutionsHeapPtr =  mercury__solutions__SolutionsHeapPtr_9 ;
+	OldVal = (MR_Word) mercury__solutions__STATE_VARIABLE_Acc_18_18 ;
+		{
+
+    MR_PARTIAL_DEEP_COPY(SolutionsHeapPtr, OldVal, NewVal, TypeInfo_for_T);
+
+
+		;}
+#undef MR_PROC_LABEL
+	 mercury__solutions__STATE_VARIABLE_Acc_19_19  = (MR_Box) NewVal;
+}
+{
+#define MR_PROC_LABEL mercury__solutions__builtin_aggregate_4_p_5
+
+	MR_Word SolutionsHeapPtr;
+
+	SolutionsHeapPtr =  mercury__solutions__SolutionsHeapPtr_9 ;
+		{
+
+#ifdef MR_RECLAIM_HP_ON_FAILURE
+    MR_sol_hp = (MR_Word *) SolutionsHeapPtr;
+#endif
+
+
+		;}
+#undef MR_PROC_LABEL
+}
+{
+#define MR_PROC_LABEL mercury__solutions__builtin_aggregate_4_p_5
+
+
+		{
+
+#ifdef MR_USE_TRAIL
+    MR_discard_ticket();
+#endif
+
+
+		;}
+#undef MR_PROC_LABEL
+}
+        }
+{
+#define MR_PROC_LABEL mercury__solutions__builtin_aggregate_4_p_5
+
+	MR_Word X;
+	MR_Word Y;
+
+	X = (MR_Word) mercury__solutions__STATE_VARIABLE_Acc_19_19 ;
+		{
+
+    Y = X;
+
+
+		;}
+#undef MR_PROC_LABEL
+	 *mercury__solutions__STATE_VARIABLE_Acc_17  = (MR_Box) Y;
+}
+    }
+  }
+}
+
+static void MR_CALL 
+mercury__solutions__builtin_aggregate_4_p_4_1(
+  void * mercury__solutions__env_ptr_arg)
+{
+  {
+    struct mercury__solutions__builtin_aggregate_4_p_4_env_0_s * mercury__solutions__env_ptr = (struct mercury__solutions__builtin_aggregate_4_p_4_env_0_s *) mercury__solutions__env_ptr_arg;
+
+    MR_builtin_longjmp((mercury__solutions__env_ptr)->mercury__solutions__builtin_aggregate_4_p_4_env_0__commit_0, 1);
+  }
+}
+
+static void MR_CALL 
+mercury__solutions__builtin_aggregate_4_p_4_2(
+  void * mercury__solutions__env_ptr_arg)
+{
+  {
+    struct mercury__solutions__builtin_aggregate_4_p_4_env_0_s * mercury__solutions__env_ptr = (struct mercury__solutions__builtin_aggregate_4_p_4_env_0_s *) mercury__solutions__env_ptr_arg;
+
+    {
+      void MR_CALL (* mercury__solutions__func_1)(MR_Box, MR_Box, MR_Box, MR_Box *);
+
+{
+#define MR_PROC_LABEL mercury__solutions__builtin_aggregate_4_p_4
+
+	MR_Word TrailPtr;
+
+	TrailPtr =  (mercury__solutions__env_ptr)->mercury__solutions__builtin_aggregate_4_p_4_env_0__TrailPtr_10 ;
+		{
+
+#ifdef MR_USE_TRAIL
+    /* check for outstanding delayed goals (``floundering'') */
+    MR_reset_ticket(TrailPtr, MR_solve);
+#endif
+
+
+		;}
+#undef MR_PROC_LABEL
+}
+{
+#define MR_PROC_LABEL mercury__solutions__builtin_aggregate_4_p_4
+
+
+		{
+{
+#ifdef MR_RECLAIM_HP_ON_FAILURE
+    MR_MemoryZone   *temp_zone;
+    MR_Word         *temp_hp;
+
+    temp_zone = MR_ENGINE(MR_eng_heap_zone);
+    MR_ENGINE(MR_eng_heap_zone) = MR_ENGINE(MR_eng_solutions_heap_zone);
+    MR_ENGINE(MR_eng_solutions_heap_zone) = temp_zone;
+    temp_hp = MR_hp;
+    MR_hp_word = (MR_Word) MR_sol_hp;
+    MR_sol_hp = temp_hp;
+#endif
+}
+
+		;}
+#undef MR_PROC_LABEL
+}
+{
+#define MR_PROC_LABEL mercury__solutions__builtin_aggregate_4_p_4
+
+	MR_Word TypeInfo_for_T;
+	MR_Word SolutionsHeapPtr;
+	MR_Word OldVal;
+	MR_Word NewVal;
+
+	TypeInfo_for_T =  (mercury__solutions__env_ptr)->mercury__solutions__builtin_aggregate_4_p_4_env_0__TypeInfo_for_T_21 ;
+	SolutionsHeapPtr =  (mercury__solutions__env_ptr)->mercury__solutions__builtin_aggregate_4_p_4_env_0__HeapPtr_8 ;
+	OldVal = (MR_Word) (mercury__solutions__env_ptr)->mercury__solutions__builtin_aggregate_4_p_4_env_0__Answer0_12 ;
+		{
+
+    MR_PARTIAL_DEEP_COPY(SolutionsHeapPtr, OldVal, NewVal, TypeInfo_for_T);
+
+
+		;}
+#undef MR_PROC_LABEL
+	 (mercury__solutions__env_ptr)->mercury__solutions__builtin_aggregate_4_p_4_env_0__Answer_13  = (MR_Box) NewVal;
+}
+      {
+        mercury__mutvar__get_mutvar_2_p_0((mercury__solutions__env_ptr)->mercury__solutions__builtin_aggregate_4_p_4_env_0__TypeInfo_for_U_22, (mercury__solutions__env_ptr)->mercury__solutions__builtin_aggregate_4_p_4_env_0__Mutvar_11, &(mercury__solutions__env_ptr)->mercury__solutions__builtin_aggregate_4_p_4_env_0__Acc0_14);
+      }
+      mercury__solutions__func_1 = ((void MR_CALL (*)(MR_Box, MR_Box, MR_Box, MR_Box *)) (MR_hl_field(MR_mktag(0), (mercury__solutions__env_ptr)->mercury__solutions__builtin_aggregate_4_p_4_env_0__CollectorPred_6, (MR_Integer) 1)));
+      {
+        mercury__solutions__func_1(((MR_Box) (mercury__solutions__env_ptr)->mercury__solutions__builtin_aggregate_4_p_4_env_0__CollectorPred_6), (mercury__solutions__env_ptr)->mercury__solutions__builtin_aggregate_4_p_4_env_0__Answer_13, (mercury__solutions__env_ptr)->mercury__solutions__builtin_aggregate_4_p_4_env_0__Acc0_14, &(mercury__solutions__env_ptr)->mercury__solutions__builtin_aggregate_4_p_4_env_0__Acc1_15);
+      }
+      {
+        mercury__mutvar__set_mutvar_2_p_0((mercury__solutions__env_ptr)->mercury__solutions__builtin_aggregate_4_p_4_env_0__TypeInfo_for_U_22, (mercury__solutions__env_ptr)->mercury__solutions__builtin_aggregate_4_p_4_env_0__Mutvar_11, (mercury__solutions__env_ptr)->mercury__solutions__builtin_aggregate_4_p_4_env_0__Acc1_15);
+      }
+{
+#define MR_PROC_LABEL mercury__solutions__builtin_aggregate_4_p_4
+
+
+		{
+{
+#ifdef MR_RECLAIM_HP_ON_FAILURE
+    MR_MemoryZone   *temp_zone;
+    MR_Word         *temp_hp;
+
+    temp_zone = MR_ENGINE(MR_eng_heap_zone);
+    MR_ENGINE(MR_eng_heap_zone) = MR_ENGINE(MR_eng_solutions_heap_zone);
+    MR_ENGINE(MR_eng_solutions_heap_zone) = temp_zone;
+    temp_hp = MR_hp;
+    MR_hp_word = (MR_Word) MR_sol_hp;
+    MR_sol_hp = temp_hp;
+#endif
+}
+
+		;}
+#undef MR_PROC_LABEL
+}
+      (mercury__solutions__env_ptr)->mercury__solutions__builtin_aggregate_4_p_4_env_0__succeeded = MR_FALSE;
+      if ((mercury__solutions__env_ptr)->mercury__solutions__builtin_aggregate_4_p_4_env_0__succeeded)
+        {
+          mercury__solutions__builtin_aggregate_4_p_4_1(mercury__solutions__env_ptr);
+        }
+    }
+  }
+}
+
+static void MR_CALL 
+mercury__solutions__builtin_aggregate_4_p_4_3(
+  void * mercury__solutions__env_ptr_arg)
+{
+  {
+    struct mercury__solutions__builtin_aggregate_4_p_4_env_0_s * mercury__solutions__env_ptr = (struct mercury__solutions__builtin_aggregate_4_p_4_env_0_s *) mercury__solutions__env_ptr_arg;
+
+    if (MR_builtin_setjmp((mercury__solutions__env_ptr)->mercury__solutions__builtin_aggregate_4_p_4_env_0__commit_0) == 0)
+      {
+        {
+          void MR_CALL (* mercury__solutions__func_0)(MR_Box, MR_Box *, MR_Cont, void *) = ((void MR_CALL (*)(MR_Box, MR_Box *, MR_Cont, void *)) (MR_hl_field(MR_mktag(0), (mercury__solutions__env_ptr)->mercury__solutions__builtin_aggregate_4_p_4_env_0__GeneratorPred_5, (MR_Integer) 1)));
+
+          {
+            mercury__solutions__func_0(((MR_Box) (mercury__solutions__env_ptr)->mercury__solutions__builtin_aggregate_4_p_4_env_0__GeneratorPred_5), &(mercury__solutions__env_ptr)->mercury__solutions__builtin_aggregate_4_p_4_env_0__Answer0_12, mercury__solutions__builtin_aggregate_4_p_4_2, mercury__solutions__env_ptr);
+          }
+        }
+        (mercury__solutions__env_ptr)->mercury__solutions__builtin_aggregate_4_p_4_env_0__succeeded = MR_FALSE;
+      }
+    else
+      (mercury__solutions__env_ptr)->mercury__solutions__builtin_aggregate_4_p_4_env_0__succeeded = MR_TRUE;
+  }
+}
+
+void MR_CALL 
+mercury__solutions__builtin_aggregate_4_p_4(
+  MR_Word mercury__solutions__TypeInfo_for_T_21,
+  MR_Word mercury__solutions__TypeInfo_for_U_22,
+  MR_Word mercury__solutions__GeneratorPred_5,
+  MR_Word mercury__solutions__CollectorPred_6,
+  MR_Box mercury__solutions__STATE_VARIABLE_Acc_0_16,
+  MR_Box * mercury__solutions__STATE_VARIABLE_Acc_17)
+{
+  {
+    struct mercury__solutions__builtin_aggregate_4_p_4_env_0_s mercury__solutions__env;
+
+    (mercury__solutions__env).mercury__solutions__builtin_aggregate_4_p_4_env_0__TypeInfo_for_T_21 = mercury__solutions__TypeInfo_for_T_21;
+    (mercury__solutions__env).mercury__solutions__builtin_aggregate_4_p_4_env_0__TypeInfo_for_U_22 = mercury__solutions__TypeInfo_for_U_22;
+    (mercury__solutions__env).mercury__solutions__builtin_aggregate_4_p_4_env_0__GeneratorPred_5 = mercury__solutions__GeneratorPred_5;
+    (mercury__solutions__env).mercury__solutions__builtin_aggregate_4_p_4_env_0__CollectorPred_6 = mercury__solutions__CollectorPred_6;
+    {
+      MR_Word mercury__solutions__SolutionsHeapPtr_9;
+      MR_Box mercury__solutions__STATE_VARIABLE_Acc_19_19;
+      MR_Word mercury__solutions__TypeInfo_for_U_23;
+
+{
+#define MR_PROC_LABEL mercury__solutions__builtin_aggregate_4_p_4
+
+	MR_Word HeapPtr;
+	MR_Word SolutionsHeapPtr;
+	MR_Word TrailPtr;
+
+		{
+
+    /* save heap states */
+#ifdef MR_RECLAIM_HP_ON_FAILURE
+    HeapPtr = (MR_Word) MR_hp;
+    SolutionsHeapPtr = (MR_Word) MR_sol_hp;
+#else
+    HeapPtr = SolutionsHeapPtr = 0;
+#endif
+
+    /* save trail state */
+#ifdef MR_USE_TRAIL
+    MR_store_ticket(TrailPtr);
+#else
+    TrailPtr = 0;
+#endif
+
+
+		;}
+#undef MR_PROC_LABEL
+	 (mercury__solutions__env).mercury__solutions__builtin_aggregate_4_p_4_env_0__HeapPtr_8  = HeapPtr;
+	 mercury__solutions__SolutionsHeapPtr_9  = SolutionsHeapPtr;
+	 (mercury__solutions__env).mercury__solutions__builtin_aggregate_4_p_4_env_0__TrailPtr_10  = TrailPtr;
+}
+{
+#define MR_PROC_LABEL mercury__solutions__builtin_aggregate_4_p_4
+
+
+		{
+
+#ifdef MR_USE_MINIMAL_MODEL_STACK_COPY
+    MR_pneg_enter_cond();
+#endif
+
+
+		;}
+#undef MR_PROC_LABEL
+}
+      {
+        mercury__mutvar__new_mutvar_2_p_0((mercury__solutions__env).mercury__solutions__builtin_aggregate_4_p_4_env_0__TypeInfo_for_U_22, mercury__solutions__STATE_VARIABLE_Acc_0_16, &(mercury__solutions__env).mercury__solutions__builtin_aggregate_4_p_4_env_0__Mutvar_11);
+      }
+      {
+        mercury__solutions__builtin_aggregate_4_p_4_3(&mercury__solutions__env);
+      }
+      if (!((mercury__solutions__env).mercury__solutions__builtin_aggregate_4_p_4_env_0__succeeded))
+        {
+          MR_Box mercury__solutions__STATE_VARIABLE_Acc_18_18;
+
+{
+#define MR_PROC_LABEL mercury__solutions__builtin_aggregate_4_p_4
+
+
+		{
+
+#ifdef MR_USE_MINIMAL_MODEL_STACK_COPY
+    MR_pneg_enter_else("end_all_soln_neg_context");
+#endif
+
+
+		;}
+#undef MR_PROC_LABEL
+}
+          {
+            mercury__mutvar__get_mutvar_2_p_0((mercury__solutions__env).mercury__solutions__builtin_aggregate_4_p_4_env_0__TypeInfo_for_U_22, (mercury__solutions__env).mercury__solutions__builtin_aggregate_4_p_4_env_0__Mutvar_11, &mercury__solutions__STATE_VARIABLE_Acc_18_18);
+          }
+{
+#define MR_PROC_LABEL mercury__solutions__builtin_aggregate_4_p_4
+
+	MR_Word TypeInfo_for_T;
+	MR_Word SolutionsHeapPtr;
+	MR_Word OldVal;
+	MR_Word NewVal;
+
+	TypeInfo_for_T =  (mercury__solutions__env).mercury__solutions__builtin_aggregate_4_p_4_env_0__TypeInfo_for_U_22 ;
+	SolutionsHeapPtr =  mercury__solutions__SolutionsHeapPtr_9 ;
+	OldVal = (MR_Word) mercury__solutions__STATE_VARIABLE_Acc_18_18 ;
+		{
+
+    MR_PARTIAL_DEEP_COPY(SolutionsHeapPtr, OldVal, NewVal, TypeInfo_for_T);
+
+
+		;}
+#undef MR_PROC_LABEL
+	 mercury__solutions__STATE_VARIABLE_Acc_19_19  = (MR_Box) NewVal;
+}
+{
+#define MR_PROC_LABEL mercury__solutions__builtin_aggregate_4_p_4
+
+	MR_Word SolutionsHeapPtr;
+
+	SolutionsHeapPtr =  mercury__solutions__SolutionsHeapPtr_9 ;
+		{
+
+#ifdef MR_RECLAIM_HP_ON_FAILURE
+    MR_sol_hp = (MR_Word *) SolutionsHeapPtr;
+#endif
+
+
+		;}
+#undef MR_PROC_LABEL
+}
+{
+#define MR_PROC_LABEL mercury__solutions__builtin_aggregate_4_p_4
+
+
+		{
+
+#ifdef MR_USE_TRAIL
+    MR_discard_ticket();
+#endif
+
+
+		;}
+#undef MR_PROC_LABEL
+}
+        }
+{
+#define MR_PROC_LABEL mercury__solutions__builtin_aggregate_4_p_4
+
+	MR_Word X;
+	MR_Word Y;
+
+	X = (MR_Word) mercury__solutions__STATE_VARIABLE_Acc_19_19 ;
+		{
+
+    Y = X;
+
+
+		;}
+#undef MR_PROC_LABEL
+	 *mercury__solutions__STATE_VARIABLE_Acc_17  = (MR_Box) Y;
+}
+    }
+  }
+}
+
+static void MR_CALL 
+mercury__solutions__builtin_aggregate_4_p_3_1(
+  void * mercury__solutions__env_ptr_arg)
+{
+  {
+    struct mercury__solutions__builtin_aggregate_4_p_3_env_0_s * mercury__solutions__env_ptr = (struct mercury__solutions__builtin_aggregate_4_p_3_env_0_s *) mercury__solutions__env_ptr_arg;
+
+    MR_builtin_longjmp((mercury__solutions__env_ptr)->mercury__solutions__builtin_aggregate_4_p_3_env_0__commit_0, 1);
+  }
+}
+
+static void MR_CALL 
+mercury__solutions__builtin_aggregate_4_p_3_2(
+  void * mercury__solutions__env_ptr_arg)
+{
+  {
+    struct mercury__solutions__builtin_aggregate_4_p_3_env_0_s * mercury__solutions__env_ptr = (struct mercury__solutions__builtin_aggregate_4_p_3_env_0_s *) mercury__solutions__env_ptr_arg;
+
+    {
+      void MR_CALL (* mercury__solutions__func_1)(MR_Box, MR_Box, MR_Box, MR_Box *);
+
+{
+#define MR_PROC_LABEL mercury__solutions__builtin_aggregate_4_p_3
+
+	MR_Word TrailPtr;
+
+	TrailPtr =  (mercury__solutions__env_ptr)->mercury__solutions__builtin_aggregate_4_p_3_env_0__TrailPtr_10 ;
+		{
+
+#ifdef MR_USE_TRAIL
+    /* check for outstanding delayed goals (``floundering'') */
+    MR_reset_ticket(TrailPtr, MR_solve);
+#endif
+
+
+		;}
+#undef MR_PROC_LABEL
+}
+{
+#define MR_PROC_LABEL mercury__solutions__builtin_aggregate_4_p_3
+
+
+		{
+{
+#ifdef MR_RECLAIM_HP_ON_FAILURE
+    MR_MemoryZone   *temp_zone;
+    MR_Word         *temp_hp;
+
+    temp_zone = MR_ENGINE(MR_eng_heap_zone);
+    MR_ENGINE(MR_eng_heap_zone) = MR_ENGINE(MR_eng_solutions_heap_zone);
+    MR_ENGINE(MR_eng_solutions_heap_zone) = temp_zone;
+    temp_hp = MR_hp;
+    MR_hp_word = (MR_Word) MR_sol_hp;
+    MR_sol_hp = temp_hp;
+#endif
+}
+
+		;}
+#undef MR_PROC_LABEL
+}
+{
+#define MR_PROC_LABEL mercury__solutions__builtin_aggregate_4_p_3
+
+	MR_Word TypeInfo_for_T;
+	MR_Word SolutionsHeapPtr;
+	MR_Word OldVal;
+	MR_Word NewVal;
+
+	TypeInfo_for_T =  (mercury__solutions__env_ptr)->mercury__solutions__builtin_aggregate_4_p_3_env_0__TypeInfo_for_T_21 ;
+	SolutionsHeapPtr =  (mercury__solutions__env_ptr)->mercury__solutions__builtin_aggregate_4_p_3_env_0__HeapPtr_8 ;
+	OldVal = (MR_Word) (mercury__solutions__env_ptr)->mercury__solutions__builtin_aggregate_4_p_3_env_0__Answer0_12 ;
+		{
+
+    MR_PARTIAL_DEEP_COPY(SolutionsHeapPtr, OldVal, NewVal, TypeInfo_for_T);
+
+
+		;}
+#undef MR_PROC_LABEL
+	 (mercury__solutions__env_ptr)->mercury__solutions__builtin_aggregate_4_p_3_env_0__Answer_13  = (MR_Box) NewVal;
+}
+      {
+        mercury__mutvar__get_mutvar_2_p_0((mercury__solutions__env_ptr)->mercury__solutions__builtin_aggregate_4_p_3_env_0__TypeInfo_for_U_22, (mercury__solutions__env_ptr)->mercury__solutions__builtin_aggregate_4_p_3_env_0__Mutvar_11, &(mercury__solutions__env_ptr)->mercury__solutions__builtin_aggregate_4_p_3_env_0__Acc0_14);
+      }
+      mercury__solutions__func_1 = ((void MR_CALL (*)(MR_Box, MR_Box, MR_Box, MR_Box *)) (MR_hl_field(MR_mktag(0), (mercury__solutions__env_ptr)->mercury__solutions__builtin_aggregate_4_p_3_env_0__CollectorPred_6, (MR_Integer) 1)));
+      {
+        mercury__solutions__func_1(((MR_Box) (mercury__solutions__env_ptr)->mercury__solutions__builtin_aggregate_4_p_3_env_0__CollectorPred_6), (mercury__solutions__env_ptr)->mercury__solutions__builtin_aggregate_4_p_3_env_0__Answer_13, (mercury__solutions__env_ptr)->mercury__solutions__builtin_aggregate_4_p_3_env_0__Acc0_14, &(mercury__solutions__env_ptr)->mercury__solutions__builtin_aggregate_4_p_3_env_0__Acc1_15);
+      }
+      {
+        mercury__mutvar__set_mutvar_2_p_0((mercury__solutions__env_ptr)->mercury__solutions__builtin_aggregate_4_p_3_env_0__TypeInfo_for_U_22, (mercury__solutions__env_ptr)->mercury__solutions__builtin_aggregate_4_p_3_env_0__Mutvar_11, (mercury__solutions__env_ptr)->mercury__solutions__builtin_aggregate_4_p_3_env_0__Acc1_15);
+      }
+{
+#define MR_PROC_LABEL mercury__solutions__builtin_aggregate_4_p_3
+
+
+		{
+{
+#ifdef MR_RECLAIM_HP_ON_FAILURE
+    MR_MemoryZone   *temp_zone;
+    MR_Word         *temp_hp;
+
+    temp_zone = MR_ENGINE(MR_eng_heap_zone);
+    MR_ENGINE(MR_eng_heap_zone) = MR_ENGINE(MR_eng_solutions_heap_zone);
+    MR_ENGINE(MR_eng_solutions_heap_zone) = temp_zone;
+    temp_hp = MR_hp;
+    MR_hp_word = (MR_Word) MR_sol_hp;
+    MR_sol_hp = temp_hp;
+#endif
+}
+
+		;}
+#undef MR_PROC_LABEL
+}
+      (mercury__solutions__env_ptr)->mercury__solutions__builtin_aggregate_4_p_3_env_0__succeeded = MR_FALSE;
+      if ((mercury__solutions__env_ptr)->mercury__solutions__builtin_aggregate_4_p_3_env_0__succeeded)
+        {
+          mercury__solutions__builtin_aggregate_4_p_3_1(mercury__solutions__env_ptr);
+        }
+    }
+  }
+}
+
+static void MR_CALL 
+mercury__solutions__builtin_aggregate_4_p_3_3(
+  void * mercury__solutions__env_ptr_arg)
+{
+  {
+    struct mercury__solutions__builtin_aggregate_4_p_3_env_0_s * mercury__solutions__env_ptr = (struct mercury__solutions__builtin_aggregate_4_p_3_env_0_s *) mercury__solutions__env_ptr_arg;
+
+    if (MR_builtin_setjmp((mercury__solutions__env_ptr)->mercury__solutions__builtin_aggregate_4_p_3_env_0__commit_0) == 0)
+      {
+        {
+          void MR_CALL (* mercury__solutions__func_0)(MR_Box, MR_Box *, MR_Cont, void *) = ((void MR_CALL (*)(MR_Box, MR_Box *, MR_Cont, void *)) (MR_hl_field(MR_mktag(0), (mercury__solutions__env_ptr)->mercury__solutions__builtin_aggregate_4_p_3_env_0__GeneratorPred_5, (MR_Integer) 1)));
+
+          {
+            mercury__solutions__func_0(((MR_Box) (mercury__solutions__env_ptr)->mercury__solutions__builtin_aggregate_4_p_3_env_0__GeneratorPred_5), &(mercury__solutions__env_ptr)->mercury__solutions__builtin_aggregate_4_p_3_env_0__Answer0_12, mercury__solutions__builtin_aggregate_4_p_3_2, mercury__solutions__env_ptr);
+          }
+        }
+        (mercury__solutions__env_ptr)->mercury__solutions__builtin_aggregate_4_p_3_env_0__succeeded = MR_FALSE;
+      }
+    else
+      (mercury__solutions__env_ptr)->mercury__solutions__builtin_aggregate_4_p_3_env_0__succeeded = MR_TRUE;
+  }
+}
+
+void MR_CALL 
+mercury__solutions__builtin_aggregate_4_p_3(
+  MR_Word mercury__solutions__TypeInfo_for_T_21,
+  MR_Word mercury__solutions__TypeInfo_for_U_22,
+  MR_Word mercury__solutions__GeneratorPred_5,
+  MR_Word mercury__solutions__CollectorPred_6,
+  MR_Box mercury__solutions__STATE_VARIABLE_Acc_0_16,
+  MR_Box * mercury__solutions__STATE_VARIABLE_Acc_17)
+{
+  {
+    struct mercury__solutions__builtin_aggregate_4_p_3_env_0_s mercury__solutions__env;
+
+    (mercury__solutions__env).mercury__solutions__builtin_aggregate_4_p_3_env_0__TypeInfo_for_T_21 = mercury__solutions__TypeInfo_for_T_21;
+    (mercury__solutions__env).mercury__solutions__builtin_aggregate_4_p_3_env_0__TypeInfo_for_U_22 = mercury__solutions__TypeInfo_for_U_22;
+    (mercury__solutions__env).mercury__solutions__builtin_aggregate_4_p_3_env_0__GeneratorPred_5 = mercury__solutions__GeneratorPred_5;
+    (mercury__solutions__env).mercury__solutions__builtin_aggregate_4_p_3_env_0__CollectorPred_6 = mercury__solutions__CollectorPred_6;
+    {
+      MR_Word mercury__solutions__SolutionsHeapPtr_9;
+      MR_Box mercury__solutions__STATE_VARIABLE_Acc_19_19;
+      MR_Word mercury__solutions__TypeInfo_for_U_23;
+
+{
+#define MR_PROC_LABEL mercury__solutions__builtin_aggregate_4_p_3
+
+	MR_Word HeapPtr;
+	MR_Word SolutionsHeapPtr;
+	MR_Word TrailPtr;
+
+		{
+
+    /* save heap states */
+#ifdef MR_RECLAIM_HP_ON_FAILURE
+    HeapPtr = (MR_Word) MR_hp;
+    SolutionsHeapPtr = (MR_Word) MR_sol_hp;
+#else
+    HeapPtr = SolutionsHeapPtr = 0;
+#endif
+
+    /* save trail state */
+#ifdef MR_USE_TRAIL
+    MR_store_ticket(TrailPtr);
+#else
+    TrailPtr = 0;
+#endif
+
+
+		;}
+#undef MR_PROC_LABEL
+	 (mercury__solutions__env).mercury__solutions__builtin_aggregate_4_p_3_env_0__HeapPtr_8  = HeapPtr;
+	 mercury__solutions__SolutionsHeapPtr_9  = SolutionsHeapPtr;
+	 (mercury__solutions__env).mercury__solutions__builtin_aggregate_4_p_3_env_0__TrailPtr_10  = TrailPtr;
+}
+{
+#define MR_PROC_LABEL mercury__solutions__builtin_aggregate_4_p_3
+
+
+		{
+
+#ifdef MR_USE_MINIMAL_MODEL_STACK_COPY
+    MR_pneg_enter_cond();
+#endif
+
+
+		;}
+#undef MR_PROC_LABEL
+}
+      {
+        mercury__mutvar__new_mutvar_2_p_0((mercury__solutions__env).mercury__solutions__builtin_aggregate_4_p_3_env_0__TypeInfo_for_U_22, mercury__solutions__STATE_VARIABLE_Acc_0_16, &(mercury__solutions__env).mercury__solutions__builtin_aggregate_4_p_3_env_0__Mutvar_11);
+      }
+      {
+        mercury__solutions__builtin_aggregate_4_p_3_3(&mercury__solutions__env);
+      }
+      if (!((mercury__solutions__env).mercury__solutions__builtin_aggregate_4_p_3_env_0__succeeded))
+        {
+          MR_Box mercury__solutions__STATE_VARIABLE_Acc_18_18;
+
+{
+#define MR_PROC_LABEL mercury__solutions__builtin_aggregate_4_p_3
+
+
+		{
+
+#ifdef MR_USE_MINIMAL_MODEL_STACK_COPY
+    MR_pneg_enter_else("end_all_soln_neg_context");
+#endif
+
+
+		;}
+#undef MR_PROC_LABEL
+}
+          {
+            mercury__mutvar__get_mutvar_2_p_0((mercury__solutions__env).mercury__solutions__builtin_aggregate_4_p_3_env_0__TypeInfo_for_U_22, (mercury__solutions__env).mercury__solutions__builtin_aggregate_4_p_3_env_0__Mutvar_11, &mercury__solutions__STATE_VARIABLE_Acc_18_18);
+          }
+{
+#define MR_PROC_LABEL mercury__solutions__builtin_aggregate_4_p_3
+
+	MR_Word TypeInfo_for_T;
+	MR_Word SolutionsHeapPtr;
+	MR_Word OldVal;
+	MR_Word NewVal;
+
+	TypeInfo_for_T =  (mercury__solutions__env).mercury__solutions__builtin_aggregate_4_p_3_env_0__TypeInfo_for_U_22 ;
+	SolutionsHeapPtr =  mercury__solutions__SolutionsHeapPtr_9 ;
+	OldVal = (MR_Word) mercury__solutions__STATE_VARIABLE_Acc_18_18 ;
+		{
+
+    MR_PARTIAL_DEEP_COPY(SolutionsHeapPtr, OldVal, NewVal, TypeInfo_for_T);
+
+
+		;}
+#undef MR_PROC_LABEL
+	 mercury__solutions__STATE_VARIABLE_Acc_19_19  = (MR_Box) NewVal;
+}
+{
+#define MR_PROC_LABEL mercury__solutions__builtin_aggregate_4_p_3
+
+	MR_Word SolutionsHeapPtr;
+
+	SolutionsHeapPtr =  mercury__solutions__SolutionsHeapPtr_9 ;
+		{
+
+#ifdef MR_RECLAIM_HP_ON_FAILURE
+    MR_sol_hp = (MR_Word *) SolutionsHeapPtr;
+#endif
+
+
+		;}
+#undef MR_PROC_LABEL
+}
+{
+#define MR_PROC_LABEL mercury__solutions__builtin_aggregate_4_p_3
+
+
+		{
+
+#ifdef MR_USE_TRAIL
+    MR_discard_ticket();
+#endif
+
+
+		;}
+#undef MR_PROC_LABEL
+}
+        }
+{
+#define MR_PROC_LABEL mercury__solutions__builtin_aggregate_4_p_3
+
+	MR_Word X;
+	MR_Word Y;
+
+	X = (MR_Word) mercury__solutions__STATE_VARIABLE_Acc_19_19 ;
+		{
+
+    Y = X;
+
+
+		;}
+#undef MR_PROC_LABEL
+	 *mercury__solutions__STATE_VARIABLE_Acc_17  = (MR_Box) Y;
+}
+    }
+  }
+}
+
+static void MR_CALL 
+mercury__solutions__builtin_aggregate_4_p_2_1(
+  void * mercury__solutions__env_ptr_arg)
+{
+  {
+    struct mercury__solutions__builtin_aggregate_4_p_2_env_0_s * mercury__solutions__env_ptr = (struct mercury__solutions__builtin_aggregate_4_p_2_env_0_s *) mercury__solutions__env_ptr_arg;
+
+    MR_builtin_longjmp((mercury__solutions__env_ptr)->mercury__solutions__builtin_aggregate_4_p_2_env_0__commit_0, 1);
+  }
+}
+
+static void MR_CALL 
+mercury__solutions__builtin_aggregate_4_p_2_2(
+  void * mercury__solutions__env_ptr_arg)
+{
+  {
+    struct mercury__solutions__builtin_aggregate_4_p_2_env_0_s * mercury__solutions__env_ptr = (struct mercury__solutions__builtin_aggregate_4_p_2_env_0_s *) mercury__solutions__env_ptr_arg;
+
+    {
+      void MR_CALL (* mercury__solutions__func_1)(MR_Box, MR_Box, MR_Box, MR_Box *);
+
+{
+#define MR_PROC_LABEL mercury__solutions__builtin_aggregate_4_p_2
+
+	MR_Word TrailPtr;
+
+	TrailPtr =  (mercury__solutions__env_ptr)->mercury__solutions__builtin_aggregate_4_p_2_env_0__TrailPtr_10 ;
+		{
+
+#ifdef MR_USE_TRAIL
+    /* check for outstanding delayed goals (``floundering'') */
+    MR_reset_ticket(TrailPtr, MR_solve);
+#endif
+
+
+		;}
+#undef MR_PROC_LABEL
+}
+{
+#define MR_PROC_LABEL mercury__solutions__builtin_aggregate_4_p_2
+
+
+		{
+{
+#ifdef MR_RECLAIM_HP_ON_FAILURE
+    MR_MemoryZone   *temp_zone;
+    MR_Word         *temp_hp;
+
+    temp_zone = MR_ENGINE(MR_eng_heap_zone);
+    MR_ENGINE(MR_eng_heap_zone) = MR_ENGINE(MR_eng_solutions_heap_zone);
+    MR_ENGINE(MR_eng_solutions_heap_zone) = temp_zone;
+    temp_hp = MR_hp;
+    MR_hp_word = (MR_Word) MR_sol_hp;
+    MR_sol_hp = temp_hp;
+#endif
+}
+
+		;}
+#undef MR_PROC_LABEL
+}
+{
+#define MR_PROC_LABEL mercury__solutions__builtin_aggregate_4_p_2
+
+	MR_Word TypeInfo_for_T;
+	MR_Word SolutionsHeapPtr;
+	MR_Word OldVal;
+	MR_Word NewVal;
+
+	TypeInfo_for_T =  (mercury__solutions__env_ptr)->mercury__solutions__builtin_aggregate_4_p_2_env_0__TypeInfo_for_T_21 ;
+	SolutionsHeapPtr =  (mercury__solutions__env_ptr)->mercury__solutions__builtin_aggregate_4_p_2_env_0__HeapPtr_8 ;
+	OldVal = (MR_Word) (mercury__solutions__env_ptr)->mercury__solutions__builtin_aggregate_4_p_2_env_0__Answer0_12 ;
+		{
+
+    MR_PARTIAL_DEEP_COPY(SolutionsHeapPtr, OldVal, NewVal, TypeInfo_for_T);
+
+
+		;}
+#undef MR_PROC_LABEL
+	 (mercury__solutions__env_ptr)->mercury__solutions__builtin_aggregate_4_p_2_env_0__Answer_13  = (MR_Box) NewVal;
+}
+      {
+        mercury__mutvar__get_mutvar_2_p_0((mercury__solutions__env_ptr)->mercury__solutions__builtin_aggregate_4_p_2_env_0__TypeInfo_for_U_22, (mercury__solutions__env_ptr)->mercury__solutions__builtin_aggregate_4_p_2_env_0__Mutvar_11, &(mercury__solutions__env_ptr)->mercury__solutions__builtin_aggregate_4_p_2_env_0__Acc0_14);
+      }
+      mercury__solutions__func_1 = ((void MR_CALL (*)(MR_Box, MR_Box, MR_Box, MR_Box *)) (MR_hl_field(MR_mktag(0), (mercury__solutions__env_ptr)->mercury__solutions__builtin_aggregate_4_p_2_env_0__CollectorPred_6, (MR_Integer) 1)));
+      {
+        mercury__solutions__func_1(((MR_Box) (mercury__solutions__env_ptr)->mercury__solutions__builtin_aggregate_4_p_2_env_0__CollectorPred_6), (mercury__solutions__env_ptr)->mercury__solutions__builtin_aggregate_4_p_2_env_0__Answer_13, (mercury__solutions__env_ptr)->mercury__solutions__builtin_aggregate_4_p_2_env_0__Acc0_14, &(mercury__solutions__env_ptr)->mercury__solutions__builtin_aggregate_4_p_2_env_0__Acc1_15);
+      }
+      {
+        mercury__mutvar__set_mutvar_2_p_0((mercury__solutions__env_ptr)->mercury__solutions__builtin_aggregate_4_p_2_env_0__TypeInfo_for_U_22, (mercury__solutions__env_ptr)->mercury__solutions__builtin_aggregate_4_p_2_env_0__Mutvar_11, (mercury__solutions__env_ptr)->mercury__solutions__builtin_aggregate_4_p_2_env_0__Acc1_15);
+      }
+{
+#define MR_PROC_LABEL mercury__solutions__builtin_aggregate_4_p_2
+
+
+		{
+{
+#ifdef MR_RECLAIM_HP_ON_FAILURE
+    MR_MemoryZone   *temp_zone;
+    MR_Word         *temp_hp;
+
+    temp_zone = MR_ENGINE(MR_eng_heap_zone);
+    MR_ENGINE(MR_eng_heap_zone) = MR_ENGINE(MR_eng_solutions_heap_zone);
+    MR_ENGINE(MR_eng_solutions_heap_zone) = temp_zone;
+    temp_hp = MR_hp;
+    MR_hp_word = (MR_Word) MR_sol_hp;
+    MR_sol_hp = temp_hp;
+#endif
+}
+
+		;}
+#undef MR_PROC_LABEL
+}
+      (mercury__solutions__env_ptr)->mercury__solutions__builtin_aggregate_4_p_2_env_0__succeeded = MR_FALSE;
+      if ((mercury__solutions__env_ptr)->mercury__solutions__builtin_aggregate_4_p_2_env_0__succeeded)
+        {
+          mercury__solutions__builtin_aggregate_4_p_2_1(mercury__solutions__env_ptr);
+        }
+    }
+  }
+}
+
+static void MR_CALL 
+mercury__solutions__builtin_aggregate_4_p_2_3(
+  void * mercury__solutions__env_ptr_arg)
+{
+  {
+    struct mercury__solutions__builtin_aggregate_4_p_2_env_0_s * mercury__solutions__env_ptr = (struct mercury__solutions__builtin_aggregate_4_p_2_env_0_s *) mercury__solutions__env_ptr_arg;
+
+    if (MR_builtin_setjmp((mercury__solutions__env_ptr)->mercury__solutions__builtin_aggregate_4_p_2_env_0__commit_0) == 0)
+      {
+        {
+          void MR_CALL (* mercury__solutions__func_0)(MR_Box, MR_Box *, MR_Cont, void *) = ((void MR_CALL (*)(MR_Box, MR_Box *, MR_Cont, void *)) (MR_hl_field(MR_mktag(0), (mercury__solutions__env_ptr)->mercury__solutions__builtin_aggregate_4_p_2_env_0__GeneratorPred_5, (MR_Integer) 1)));
+
+          {
+            mercury__solutions__func_0(((MR_Box) (mercury__solutions__env_ptr)->mercury__solutions__builtin_aggregate_4_p_2_env_0__GeneratorPred_5), &(mercury__solutions__env_ptr)->mercury__solutions__builtin_aggregate_4_p_2_env_0__Answer0_12, mercury__solutions__builtin_aggregate_4_p_2_2, mercury__solutions__env_ptr);
+          }
+        }
+        (mercury__solutions__env_ptr)->mercury__solutions__builtin_aggregate_4_p_2_env_0__succeeded = MR_FALSE;
+      }
+    else
+      (mercury__solutions__env_ptr)->mercury__solutions__builtin_aggregate_4_p_2_env_0__succeeded = MR_TRUE;
+  }
+}
+
+void MR_CALL 
+mercury__solutions__builtin_aggregate_4_p_2(
+  MR_Word mercury__solutions__TypeInfo_for_T_21,
+  MR_Word mercury__solutions__TypeInfo_for_U_22,
+  MR_Word mercury__solutions__GeneratorPred_5,
+  MR_Word mercury__solutions__CollectorPred_6,
+  MR_Box mercury__solutions__STATE_VARIABLE_Acc_0_16,
+  MR_Box * mercury__solutions__STATE_VARIABLE_Acc_17)
+{
+  {
+    struct mercury__solutions__builtin_aggregate_4_p_2_env_0_s mercury__solutions__env;
+
+    (mercury__solutions__env).mercury__solutions__builtin_aggregate_4_p_2_env_0__TypeInfo_for_T_21 = mercury__solutions__TypeInfo_for_T_21;
+    (mercury__solutions__env).mercury__solutions__builtin_aggregate_4_p_2_env_0__TypeInfo_for_U_22 = mercury__solutions__TypeInfo_for_U_22;
+    (mercury__solutions__env).mercury__solutions__builtin_aggregate_4_p_2_env_0__GeneratorPred_5 = mercury__solutions__GeneratorPred_5;
+    (mercury__solutions__env).mercury__solutions__builtin_aggregate_4_p_2_env_0__CollectorPred_6 = mercury__solutions__CollectorPred_6;
+    {
+      MR_Word mercury__solutions__SolutionsHeapPtr_9;
+      MR_Box mercury__solutions__STATE_VARIABLE_Acc_19_19;
+      MR_Word mercury__solutions__TypeInfo_for_U_23;
+
+{
+#define MR_PROC_LABEL mercury__solutions__builtin_aggregate_4_p_2
+
+	MR_Word HeapPtr;
+	MR_Word SolutionsHeapPtr;
+	MR_Word TrailPtr;
+
+		{
+
+    /* save heap states */
+#ifdef MR_RECLAIM_HP_ON_FAILURE
+    HeapPtr = (MR_Word) MR_hp;
+    SolutionsHeapPtr = (MR_Word) MR_sol_hp;
+#else
+    HeapPtr = SolutionsHeapPtr = 0;
+#endif
+
+    /* save trail state */
+#ifdef MR_USE_TRAIL
+    MR_store_ticket(TrailPtr);
+#else
+    TrailPtr = 0;
+#endif
+
+
+		;}
+#undef MR_PROC_LABEL
+	 (mercury__solutions__env).mercury__solutions__builtin_aggregate_4_p_2_env_0__HeapPtr_8  = HeapPtr;
+	 mercury__solutions__SolutionsHeapPtr_9  = SolutionsHeapPtr;
+	 (mercury__solutions__env).mercury__solutions__builtin_aggregate_4_p_2_env_0__TrailPtr_10  = TrailPtr;
+}
+{
+#define MR_PROC_LABEL mercury__solutions__builtin_aggregate_4_p_2
+
+
+		{
+
+#ifdef MR_USE_MINIMAL_MODEL_STACK_COPY
+    MR_pneg_enter_cond();
+#endif
+
+
+		;}
+#undef MR_PROC_LABEL
+}
+      {
+        mercury__mutvar__new_mutvar_2_p_0((mercury__solutions__env).mercury__solutions__builtin_aggregate_4_p_2_env_0__TypeInfo_for_U_22, mercury__solutions__STATE_VARIABLE_Acc_0_16, &(mercury__solutions__env).mercury__solutions__builtin_aggregate_4_p_2_env_0__Mutvar_11);
+      }
+      {
+        mercury__solutions__builtin_aggregate_4_p_2_3(&mercury__solutions__env);
+      }
+      if (!((mercury__solutions__env).mercury__solutions__builtin_aggregate_4_p_2_env_0__succeeded))
+        {
+          MR_Box mercury__solutions__STATE_VARIABLE_Acc_18_18;
+
+{
+#define MR_PROC_LABEL mercury__solutions__builtin_aggregate_4_p_2
+
+
+		{
+
+#ifdef MR_USE_MINIMAL_MODEL_STACK_COPY
+    MR_pneg_enter_else("end_all_soln_neg_context");
+#endif
+
+
+		;}
+#undef MR_PROC_LABEL
+}
+          {
+            mercury__mutvar__get_mutvar_2_p_0((mercury__solutions__env).mercury__solutions__builtin_aggregate_4_p_2_env_0__TypeInfo_for_U_22, (mercury__solutions__env).mercury__solutions__builtin_aggregate_4_p_2_env_0__Mutvar_11, &mercury__solutions__STATE_VARIABLE_Acc_18_18);
+          }
+{
+#define MR_PROC_LABEL mercury__solutions__builtin_aggregate_4_p_2
+
+	MR_Word TypeInfo_for_T;
+	MR_Word SolutionsHeapPtr;
+	MR_Word OldVal;
+	MR_Word NewVal;
+
+	TypeInfo_for_T =  (mercury__solutions__env).mercury__solutions__builtin_aggregate_4_p_2_env_0__TypeInfo_for_U_22 ;
+	SolutionsHeapPtr =  mercury__solutions__SolutionsHeapPtr_9 ;
+	OldVal = (MR_Word) mercury__solutions__STATE_VARIABLE_Acc_18_18 ;
+		{
+
+    MR_PARTIAL_DEEP_COPY(SolutionsHeapPtr, OldVal, NewVal, TypeInfo_for_T);
+
+
+		;}
+#undef MR_PROC_LABEL
+	 mercury__solutions__STATE_VARIABLE_Acc_19_19  = (MR_Box) NewVal;
+}
+{
+#define MR_PROC_LABEL mercury__solutions__builtin_aggregate_4_p_2
+
+	MR_Word SolutionsHeapPtr;
+
+	SolutionsHeapPtr =  mercury__solutions__SolutionsHeapPtr_9 ;
+		{
+
+#ifdef MR_RECLAIM_HP_ON_FAILURE
+    MR_sol_hp = (MR_Word *) SolutionsHeapPtr;
+#endif
+
+
+		;}
+#undef MR_PROC_LABEL
+}
+{
+#define MR_PROC_LABEL mercury__solutions__builtin_aggregate_4_p_2
+
+
+		{
+
+#ifdef MR_USE_TRAIL
+    MR_discard_ticket();
+#endif
+
+
+		;}
+#undef MR_PROC_LABEL
+}
+        }
+{
+#define MR_PROC_LABEL mercury__solutions__builtin_aggregate_4_p_2
+
+	MR_Word X;
+	MR_Word Y;
+
+	X = (MR_Word) mercury__solutions__STATE_VARIABLE_Acc_19_19 ;
+		{
+
+    Y = X;
+
+
+		;}
+#undef MR_PROC_LABEL
+	 *mercury__solutions__STATE_VARIABLE_Acc_17  = (MR_Box) Y;
+}
+    }
+  }
+}
+
+static void MR_CALL 
+mercury__solutions__builtin_aggregate_4_p_1_1(
+  void * mercury__solutions__env_ptr_arg)
+{
+  {
+    struct mercury__solutions__builtin_aggregate_4_p_1_env_0_s * mercury__solutions__env_ptr = (struct mercury__solutions__builtin_aggregate_4_p_1_env_0_s *) mercury__solutions__env_ptr_arg;
+
+    MR_builtin_longjmp((mercury__solutions__env_ptr)->mercury__solutions__builtin_aggregate_4_p_1_env_0__commit_0, 1);
+  }
+}
+
+static void MR_CALL 
+mercury__solutions__builtin_aggregate_4_p_1_2(
+  void * mercury__solutions__env_ptr_arg)
+{
+  {
+    struct mercury__solutions__builtin_aggregate_4_p_1_env_0_s * mercury__solutions__env_ptr = (struct mercury__solutions__builtin_aggregate_4_p_1_env_0_s *) mercury__solutions__env_ptr_arg;
+
+    {
+      void MR_CALL (* mercury__solutions__func_1)(MR_Box, MR_Box, MR_Box, MR_Box *);
+
+{
+#define MR_PROC_LABEL mercury__solutions__builtin_aggregate_4_p_1
+
+	MR_Word TrailPtr;
+
+	TrailPtr =  (mercury__solutions__env_ptr)->mercury__solutions__builtin_aggregate_4_p_1_env_0__TrailPtr_10 ;
+		{
+
+#ifdef MR_USE_TRAIL
+    /* check for outstanding delayed goals (``floundering'') */
+    MR_reset_ticket(TrailPtr, MR_solve);
+#endif
+
+
+		;}
+#undef MR_PROC_LABEL
+}
+{
+#define MR_PROC_LABEL mercury__solutions__builtin_aggregate_4_p_1
+
+
+		{
+{
+#ifdef MR_RECLAIM_HP_ON_FAILURE
+    MR_MemoryZone   *temp_zone;
+    MR_Word         *temp_hp;
+
+    temp_zone = MR_ENGINE(MR_eng_heap_zone);
+    MR_ENGINE(MR_eng_heap_zone) = MR_ENGINE(MR_eng_solutions_heap_zone);
+    MR_ENGINE(MR_eng_solutions_heap_zone) = temp_zone;
+    temp_hp = MR_hp;
+    MR_hp_word = (MR_Word) MR_sol_hp;
+    MR_sol_hp = temp_hp;
+#endif
+}
+
+		;}
+#undef MR_PROC_LABEL
+}
+{
+#define MR_PROC_LABEL mercury__solutions__builtin_aggregate_4_p_1
+
+	MR_Word TypeInfo_for_T;
+	MR_Word SolutionsHeapPtr;
+	MR_Word OldVal;
+	MR_Word NewVal;
+
+	TypeInfo_for_T =  (mercury__solutions__env_ptr)->mercury__solutions__builtin_aggregate_4_p_1_env_0__TypeInfo_for_T_21 ;
+	SolutionsHeapPtr =  (mercury__solutions__env_ptr)->mercury__solutions__builtin_aggregate_4_p_1_env_0__HeapPtr_8 ;
+	OldVal = (MR_Word) (mercury__solutions__env_ptr)->mercury__solutions__builtin_aggregate_4_p_1_env_0__Answer0_12 ;
+		{
+
+    MR_PARTIAL_DEEP_COPY(SolutionsHeapPtr, OldVal, NewVal, TypeInfo_for_T);
+
+
+		;}
+#undef MR_PROC_LABEL
+	 (mercury__solutions__env_ptr)->mercury__solutions__builtin_aggregate_4_p_1_env_0__Answer_13  = (MR_Box) NewVal;
+}
+      {
+        mercury__mutvar__get_mutvar_2_p_0((mercury__solutions__env_ptr)->mercury__solutions__builtin_aggregate_4_p_1_env_0__TypeInfo_for_U_22, (mercury__solutions__env_ptr)->mercury__solutions__builtin_aggregate_4_p_1_env_0__Mutvar_11, &(mercury__solutions__env_ptr)->mercury__solutions__builtin_aggregate_4_p_1_env_0__Acc0_14);
+      }
+      mercury__solutions__func_1 = ((void MR_CALL (*)(MR_Box, MR_Box, MR_Box, MR_Box *)) (MR_hl_field(MR_mktag(0), (mercury__solutions__env_ptr)->mercury__solutions__builtin_aggregate_4_p_1_env_0__CollectorPred_6, (MR_Integer) 1)));
+      {
+        mercury__solutions__func_1(((MR_Box) (mercury__solutions__env_ptr)->mercury__solutions__builtin_aggregate_4_p_1_env_0__CollectorPred_6), (mercury__solutions__env_ptr)->mercury__solutions__builtin_aggregate_4_p_1_env_0__Answer_13, (mercury__solutions__env_ptr)->mercury__solutions__builtin_aggregate_4_p_1_env_0__Acc0_14, &(mercury__solutions__env_ptr)->mercury__solutions__builtin_aggregate_4_p_1_env_0__Acc1_15);
+      }
+      {
+        mercury__mutvar__set_mutvar_2_p_0((mercury__solutions__env_ptr)->mercury__solutions__builtin_aggregate_4_p_1_env_0__TypeInfo_for_U_22, (mercury__solutions__env_ptr)->mercury__solutions__builtin_aggregate_4_p_1_env_0__Mutvar_11, (mercury__solutions__env_ptr)->mercury__solutions__builtin_aggregate_4_p_1_env_0__Acc1_15);
+      }
+{
+#define MR_PROC_LABEL mercury__solutions__builtin_aggregate_4_p_1
+
+
+		{
+{
+#ifdef MR_RECLAIM_HP_ON_FAILURE
+    MR_MemoryZone   *temp_zone;
+    MR_Word         *temp_hp;
+
+    temp_zone = MR_ENGINE(MR_eng_heap_zone);
+    MR_ENGINE(MR_eng_heap_zone) = MR_ENGINE(MR_eng_solutions_heap_zone);
+    MR_ENGINE(MR_eng_solutions_heap_zone) = temp_zone;
+    temp_hp = MR_hp;
+    MR_hp_word = (MR_Word) MR_sol_hp;
+    MR_sol_hp = temp_hp;
+#endif
+}
+
+		;}
+#undef MR_PROC_LABEL
+}
+      (mercury__solutions__env_ptr)->mercury__solutions__builtin_aggregate_4_p_1_env_0__succeeded = MR_FALSE;
+      if ((mercury__solutions__env_ptr)->mercury__solutions__builtin_aggregate_4_p_1_env_0__succeeded)
+        {
+          mercury__solutions__builtin_aggregate_4_p_1_1(mercury__solutions__env_ptr);
+        }
+    }
+  }
+}
+
+static void MR_CALL 
+mercury__solutions__builtin_aggregate_4_p_1_3(
+  void * mercury__solutions__env_ptr_arg)
+{
+  {
+    struct mercury__solutions__builtin_aggregate_4_p_1_env_0_s * mercury__solutions__env_ptr = (struct mercury__solutions__builtin_aggregate_4_p_1_env_0_s *) mercury__solutions__env_ptr_arg;
+
+    if (MR_builtin_setjmp((mercury__solutions__env_ptr)->mercury__solutions__builtin_aggregate_4_p_1_env_0__commit_0) == 0)
+      {
+        {
+          void MR_CALL (* mercury__solutions__func_0)(MR_Box, MR_Box *, MR_Cont, void *) = ((void MR_CALL (*)(MR_Box, MR_Box *, MR_Cont, void *)) (MR_hl_field(MR_mktag(0), (mercury__solutions__env_ptr)->mercury__solutions__builtin_aggregate_4_p_1_env_0__GeneratorPred_5, (MR_Integer) 1)));
+
+          {
+            mercury__solutions__func_0(((MR_Box) (mercury__solutions__env_ptr)->mercury__solutions__builtin_aggregate_4_p_1_env_0__GeneratorPred_5), &(mercury__solutions__env_ptr)->mercury__solutions__builtin_aggregate_4_p_1_env_0__Answer0_12, mercury__solutions__builtin_aggregate_4_p_1_2, mercury__solutions__env_ptr);
+          }
+        }
+        (mercury__solutions__env_ptr)->mercury__solutions__builtin_aggregate_4_p_1_env_0__succeeded = MR_FALSE;
+      }
+    else
+      (mercury__solutions__env_ptr)->mercury__solutions__builtin_aggregate_4_p_1_env_0__succeeded = MR_TRUE;
+  }
+}
+
+void MR_CALL 
+mercury__solutions__builtin_aggregate_4_p_1(
+  MR_Word mercury__solutions__TypeInfo_for_T_21,
+  MR_Word mercury__solutions__TypeInfo_for_U_22,
+  MR_Word mercury__solutions__GeneratorPred_5,
+  MR_Word mercury__solutions__CollectorPred_6,
+  MR_Box mercury__solutions__STATE_VARIABLE_Acc_0_16,
+  MR_Box * mercury__solutions__STATE_VARIABLE_Acc_17)
+{
+  {
+    struct mercury__solutions__builtin_aggregate_4_p_1_env_0_s mercury__solutions__env;
+
+    (mercury__solutions__env).mercury__solutions__builtin_aggregate_4_p_1_env_0__TypeInfo_for_T_21 = mercury__solutions__TypeInfo_for_T_21;
+    (mercury__solutions__env).mercury__solutions__builtin_aggregate_4_p_1_env_0__TypeInfo_for_U_22 = mercury__solutions__TypeInfo_for_U_22;
+    (mercury__solutions__env).mercury__solutions__builtin_aggregate_4_p_1_env_0__GeneratorPred_5 = mercury__solutions__GeneratorPred_5;
+    (mercury__solutions__env).mercury__solutions__builtin_aggregate_4_p_1_env_0__CollectorPred_6 = mercury__solutions__CollectorPred_6;
+    {
+      MR_Word mercury__solutions__SolutionsHeapPtr_9;
+      MR_Box mercury__solutions__STATE_VARIABLE_Acc_19_19;
+      MR_Word mercury__solutions__TypeInfo_for_U_23;
+
+{
+#define MR_PROC_LABEL mercury__solutions__builtin_aggregate_4_p_1
+
+	MR_Word HeapPtr;
+	MR_Word SolutionsHeapPtr;
+	MR_Word TrailPtr;
+
+		{
+
+    /* save heap states */
+#ifdef MR_RECLAIM_HP_ON_FAILURE
+    HeapPtr = (MR_Word) MR_hp;
+    SolutionsHeapPtr = (MR_Word) MR_sol_hp;
+#else
+    HeapPtr = SolutionsHeapPtr = 0;
+#endif
+
+    /* save trail state */
+#ifdef MR_USE_TRAIL
+    MR_store_ticket(TrailPtr);
+#else
+    TrailPtr = 0;
+#endif
+
+
+		;}
+#undef MR_PROC_LABEL
+	 (mercury__solutions__env).mercury__solutions__builtin_aggregate_4_p_1_env_0__HeapPtr_8  = HeapPtr;
+	 mercury__solutions__SolutionsHeapPtr_9  = SolutionsHeapPtr;
+	 (mercury__solutions__env).mercury__solutions__builtin_aggregate_4_p_1_env_0__TrailPtr_10  = TrailPtr;
+}
+{
+#define MR_PROC_LABEL mercury__solutions__builtin_aggregate_4_p_1
+
+
+		{
+
+#ifdef MR_USE_MINIMAL_MODEL_STACK_COPY
+    MR_pneg_enter_cond();
+#endif
+
+
+		;}
+#undef MR_PROC_LABEL
+}
+      {
+        mercury__mutvar__new_mutvar_2_p_0((mercury__solutions__env).mercury__solutions__builtin_aggregate_4_p_1_env_0__TypeInfo_for_U_22, mercury__solutions__STATE_VARIABLE_Acc_0_16, &(mercury__solutions__env).mercury__solutions__builtin_aggregate_4_p_1_env_0__Mutvar_11);
+      }
+      {
+        mercury__solutions__builtin_aggregate_4_p_1_3(&mercury__solutions__env);
+      }
+      if (!((mercury__solutions__env).mercury__solutions__builtin_aggregate_4_p_1_env_0__succeeded))
+        {
+          MR_Box mercury__solutions__STATE_VARIABLE_Acc_18_18;
+
+{
+#define MR_PROC_LABEL mercury__solutions__builtin_aggregate_4_p_1
+
+
+		{
+
+#ifdef MR_USE_MINIMAL_MODEL_STACK_COPY
+    MR_pneg_enter_else("end_all_soln_neg_context");
+#endif
+
+
+		;}
+#undef MR_PROC_LABEL
+}
+          {
+            mercury__mutvar__get_mutvar_2_p_0((mercury__solutions__env).mercury__solutions__builtin_aggregate_4_p_1_env_0__TypeInfo_for_U_22, (mercury__solutions__env).mercury__solutions__builtin_aggregate_4_p_1_env_0__Mutvar_11, &mercury__solutions__STATE_VARIABLE_Acc_18_18);
+          }
+{
+#define MR_PROC_LABEL mercury__solutions__builtin_aggregate_4_p_1
+
+	MR_Word TypeInfo_for_T;
+	MR_Word SolutionsHeapPtr;
+	MR_Word OldVal;
+	MR_Word NewVal;
+
+	TypeInfo_for_T =  (mercury__solutions__env).mercury__solutions__builtin_aggregate_4_p_1_env_0__TypeInfo_for_U_22 ;
+	SolutionsHeapPtr =  mercury__solutions__SolutionsHeapPtr_9 ;
+	OldVal = (MR_Word) mercury__solutions__STATE_VARIABLE_Acc_18_18 ;
+		{
+
+    MR_PARTIAL_DEEP_COPY(SolutionsHeapPtr, OldVal, NewVal, TypeInfo_for_T);
+
+
+		;}
+#undef MR_PROC_LABEL
+	 mercury__solutions__STATE_VARIABLE_Acc_19_19  = (MR_Box) NewVal;
+}
+{
+#define MR_PROC_LABEL mercury__solutions__builtin_aggregate_4_p_1
+
+	MR_Word SolutionsHeapPtr;
+
+	SolutionsHeapPtr =  mercury__solutions__SolutionsHeapPtr_9 ;
+		{
+
+#ifdef MR_RECLAIM_HP_ON_FAILURE
+    MR_sol_hp = (MR_Word *) SolutionsHeapPtr;
+#endif
+
+
+		;}
+#undef MR_PROC_LABEL
+}
+{
+#define MR_PROC_LABEL mercury__solutions__builtin_aggregate_4_p_1
+
+
+		{
+
+#ifdef MR_USE_TRAIL
+    MR_discard_ticket();
+#endif
+
+
+		;}
+#undef MR_PROC_LABEL
+}
+        }
+{
+#define MR_PROC_LABEL mercury__solutions__builtin_aggregate_4_p_1
+
+	MR_Word X;
+	MR_Word Y;
+
+	X = (MR_Word) mercury__solutions__STATE_VARIABLE_Acc_19_19 ;
+		{
+
+    Y = X;
+
+
+		;}
+#undef MR_PROC_LABEL
+	 *mercury__solutions__STATE_VARIABLE_Acc_17  = (MR_Box) Y;
+}
+    }
+  }
+}
+
+static void MR_CALL 
+mercury__solutions__builtin_aggregate_4_p_0_1(
+  void * mercury__solutions__env_ptr_arg)
+{
+  {
+    struct mercury__solutions__builtin_aggregate_4_p_0_env_0_s * mercury__solutions__env_ptr = (struct mercury__solutions__builtin_aggregate_4_p_0_env_0_s *) mercury__solutions__env_ptr_arg;
+
+    MR_builtin_longjmp((mercury__solutions__env_ptr)->mercury__solutions__builtin_aggregate_4_p_0_env_0__commit_0, 1);
+  }
+}
+
+static void MR_CALL 
+mercury__solutions__builtin_aggregate_4_p_0_2(
+  void * mercury__solutions__env_ptr_arg)
+{
+  {
+    struct mercury__solutions__builtin_aggregate_4_p_0_env_0_s * mercury__solutions__env_ptr = (struct mercury__solutions__builtin_aggregate_4_p_0_env_0_s *) mercury__solutions__env_ptr_arg;
+
+    {
+      void MR_CALL (* mercury__solutions__func_1)(MR_Box, MR_Box, MR_Box, MR_Box *);
+
+{
+#define MR_PROC_LABEL mercury__solutions__builtin_aggregate_4_p_0
+
+	MR_Word TrailPtr;
+
+	TrailPtr =  (mercury__solutions__env_ptr)->mercury__solutions__builtin_aggregate_4_p_0_env_0__TrailPtr_10 ;
+		{
+
+#ifdef MR_USE_TRAIL
+    /* check for outstanding delayed goals (``floundering'') */
+    MR_reset_ticket(TrailPtr, MR_solve);
+#endif
+
+
+		;}
+#undef MR_PROC_LABEL
+}
+{
+#define MR_PROC_LABEL mercury__solutions__builtin_aggregate_4_p_0
+
+
+		{
+{
+#ifdef MR_RECLAIM_HP_ON_FAILURE
+    MR_MemoryZone   *temp_zone;
+    MR_Word         *temp_hp;
+
+    temp_zone = MR_ENGINE(MR_eng_heap_zone);
+    MR_ENGINE(MR_eng_heap_zone) = MR_ENGINE(MR_eng_solutions_heap_zone);
+    MR_ENGINE(MR_eng_solutions_heap_zone) = temp_zone;
+    temp_hp = MR_hp;
+    MR_hp_word = (MR_Word) MR_sol_hp;
+    MR_sol_hp = temp_hp;
+#endif
+}
+
+		;}
+#undef MR_PROC_LABEL
+}
+{
+#define MR_PROC_LABEL mercury__solutions__builtin_aggregate_4_p_0
+
+	MR_Word TypeInfo_for_T;
+	MR_Word SolutionsHeapPtr;
+	MR_Word OldVal;
+	MR_Word NewVal;
+
+	TypeInfo_for_T =  (mercury__solutions__env_ptr)->mercury__solutions__builtin_aggregate_4_p_0_env_0__TypeInfo_for_T_21 ;
+	SolutionsHeapPtr =  (mercury__solutions__env_ptr)->mercury__solutions__builtin_aggregate_4_p_0_env_0__HeapPtr_8 ;
+	OldVal = (MR_Word) (mercury__solutions__env_ptr)->mercury__solutions__builtin_aggregate_4_p_0_env_0__Answer0_12 ;
+		{
+
+    MR_PARTIAL_DEEP_COPY(SolutionsHeapPtr, OldVal, NewVal, TypeInfo_for_T);
+
+
+		;}
+#undef MR_PROC_LABEL
+	 (mercury__solutions__env_ptr)->mercury__solutions__builtin_aggregate_4_p_0_env_0__Answer_13  = (MR_Box) NewVal;
+}
+      {
+        mercury__mutvar__get_mutvar_2_p_0((mercury__solutions__env_ptr)->mercury__solutions__builtin_aggregate_4_p_0_env_0__TypeInfo_for_U_22, (mercury__solutions__env_ptr)->mercury__solutions__builtin_aggregate_4_p_0_env_0__Mutvar_11, &(mercury__solutions__env_ptr)->mercury__solutions__builtin_aggregate_4_p_0_env_0__Acc0_14);
+      }
+      mercury__solutions__func_1 = ((void MR_CALL (*)(MR_Box, MR_Box, MR_Box, MR_Box *)) (MR_hl_field(MR_mktag(0), (mercury__solutions__env_ptr)->mercury__solutions__builtin_aggregate_4_p_0_env_0__CollectorPred_6, (MR_Integer) 1)));
+      {
+        mercury__solutions__func_1(((MR_Box) (mercury__solutions__env_ptr)->mercury__solutions__builtin_aggregate_4_p_0_env_0__CollectorPred_6), (mercury__solutions__env_ptr)->mercury__solutions__builtin_aggregate_4_p_0_env_0__Answer_13, (mercury__solutions__env_ptr)->mercury__solutions__builtin_aggregate_4_p_0_env_0__Acc0_14, &(mercury__solutions__env_ptr)->mercury__solutions__builtin_aggregate_4_p_0_env_0__Acc1_15);
+      }
+      {
+        mercury__mutvar__set_mutvar_2_p_0((mercury__solutions__env_ptr)->mercury__solutions__builtin_aggregate_4_p_0_env_0__TypeInfo_for_U_22, (mercury__solutions__env_ptr)->mercury__solutions__builtin_aggregate_4_p_0_env_0__Mutvar_11, (mercury__solutions__env_ptr)->mercury__solutions__builtin_aggregate_4_p_0_env_0__Acc1_15);
+      }
+{
+#define MR_PROC_LABEL mercury__solutions__builtin_aggregate_4_p_0
+
+
+		{
+{
+#ifdef MR_RECLAIM_HP_ON_FAILURE
+    MR_MemoryZone   *temp_zone;
+    MR_Word         *temp_hp;
+
+    temp_zone = MR_ENGINE(MR_eng_heap_zone);
+    MR_ENGINE(MR_eng_heap_zone) = MR_ENGINE(MR_eng_solutions_heap_zone);
+    MR_ENGINE(MR_eng_solutions_heap_zone) = temp_zone;
+    temp_hp = MR_hp;
+    MR_hp_word = (MR_Word) MR_sol_hp;
+    MR_sol_hp = temp_hp;
+#endif
+}
+
+		;}
+#undef MR_PROC_LABEL
+}
+      (mercury__solutions__env_ptr)->mercury__solutions__builtin_aggregate_4_p_0_env_0__succeeded = MR_FALSE;
+      if ((mercury__solutions__env_ptr)->mercury__solutions__builtin_aggregate_4_p_0_env_0__succeeded)
+        {
+          mercury__solutions__builtin_aggregate_4_p_0_1(mercury__solutions__env_ptr);
+        }
+    }
+  }
+}
+
+static void MR_CALL 
+mercury__solutions__builtin_aggregate_4_p_0_3(
+  void * mercury__solutions__env_ptr_arg)
+{
+  {
+    struct mercury__solutions__builtin_aggregate_4_p_0_env_0_s * mercury__solutions__env_ptr = (struct mercury__solutions__builtin_aggregate_4_p_0_env_0_s *) mercury__solutions__env_ptr_arg;
+
+    if (MR_builtin_setjmp((mercury__solutions__env_ptr)->mercury__solutions__builtin_aggregate_4_p_0_env_0__commit_0) == 0)
+      {
+        {
+          void MR_CALL (* mercury__solutions__func_0)(MR_Box, MR_Box *, MR_Cont, void *) = ((void MR_CALL (*)(MR_Box, MR_Box *, MR_Cont, void *)) (MR_hl_field(MR_mktag(0), (mercury__solutions__env_ptr)->mercury__solutions__builtin_aggregate_4_p_0_env_0__GeneratorPred_5, (MR_Integer) 1)));
+
+          {
+            mercury__solutions__func_0(((MR_Box) (mercury__solutions__env_ptr)->mercury__solutions__builtin_aggregate_4_p_0_env_0__GeneratorPred_5), &(mercury__solutions__env_ptr)->mercury__solutions__builtin_aggregate_4_p_0_env_0__Answer0_12, mercury__solutions__builtin_aggregate_4_p_0_2, mercury__solutions__env_ptr);
+          }
+        }
+        (mercury__solutions__env_ptr)->mercury__solutions__builtin_aggregate_4_p_0_env_0__succeeded = MR_FALSE;
+      }
+    else
+      (mercury__solutions__env_ptr)->mercury__solutions__builtin_aggregate_4_p_0_env_0__succeeded = MR_TRUE;
+  }
+}
+
+void MR_CALL 
+mercury__solutions__builtin_aggregate_4_p_0(
+  MR_Word mercury__solutions__TypeInfo_for_T_21,
+  MR_Word mercury__solutions__TypeInfo_for_U_22,
+  MR_Word mercury__solutions__GeneratorPred_5,
+  MR_Word mercury__solutions__CollectorPred_6,
+  MR_Box mercury__solutions__STATE_VARIABLE_Acc_0_16,
+  MR_Box * mercury__solutions__STATE_VARIABLE_Acc_17)
+{
+  {
+    struct mercury__solutions__builtin_aggregate_4_p_0_env_0_s mercury__solutions__env;
+
+    (mercury__solutions__env).mercury__solutions__builtin_aggregate_4_p_0_env_0__TypeInfo_for_T_21 = mercury__solutions__TypeInfo_for_T_21;
+    (mercury__solutions__env).mercury__solutions__builtin_aggregate_4_p_0_env_0__TypeInfo_for_U_22 = mercury__solutions__TypeInfo_for_U_22;
+    (mercury__solutions__env).mercury__solutions__builtin_aggregate_4_p_0_env_0__GeneratorPred_5 = mercury__solutions__GeneratorPred_5;
+    (mercury__solutions__env).mercury__solutions__builtin_aggregate_4_p_0_env_0__CollectorPred_6 = mercury__solutions__CollectorPred_6;
+    {
+      MR_Word mercury__solutions__SolutionsHeapPtr_9;
+      MR_Box mercury__solutions__STATE_VARIABLE_Acc_19_19;
+      MR_Word mercury__solutions__TypeInfo_for_U_23;
+
+{
+#define MR_PROC_LABEL mercury__solutions__builtin_aggregate_4_p_0
+
+	MR_Word HeapPtr;
+	MR_Word SolutionsHeapPtr;
+	MR_Word TrailPtr;
+
+		{
+
+    /* save heap states */
+#ifdef MR_RECLAIM_HP_ON_FAILURE
+    HeapPtr = (MR_Word) MR_hp;
+    SolutionsHeapPtr = (MR_Word) MR_sol_hp;
+#else
+    HeapPtr = SolutionsHeapPtr = 0;
+#endif
+
+    /* save trail state */
+#ifdef MR_USE_TRAIL
+    MR_store_ticket(TrailPtr);
+#else
+    TrailPtr = 0;
+#endif
+
+
+		;}
+#undef MR_PROC_LABEL
+	 (mercury__solutions__env).mercury__solutions__builtin_aggregate_4_p_0_env_0__HeapPtr_8  = HeapPtr;
+	 mercury__solutions__SolutionsHeapPtr_9  = SolutionsHeapPtr;
+	 (mercury__solutions__env).mercury__solutions__builtin_aggregate_4_p_0_env_0__TrailPtr_10  = TrailPtr;
+}
+{
+#define MR_PROC_LABEL mercury__solutions__builtin_aggregate_4_p_0
+
+
+		{
+
+#ifdef MR_USE_MINIMAL_MODEL_STACK_COPY
+    MR_pneg_enter_cond();
+#endif
+
+
+		;}
+#undef MR_PROC_LABEL
+}
+      {
+        mercury__mutvar__new_mutvar_2_p_0((mercury__solutions__env).mercury__solutions__builtin_aggregate_4_p_0_env_0__TypeInfo_for_U_22, mercury__solutions__STATE_VARIABLE_Acc_0_16, &(mercury__solutions__env).mercury__solutions__builtin_aggregate_4_p_0_env_0__Mutvar_11);
+      }
+      {
+        mercury__solutions__builtin_aggregate_4_p_0_3(&mercury__solutions__env);
+      }
+      if (!((mercury__solutions__env).mercury__solutions__builtin_aggregate_4_p_0_env_0__succeeded))
+        {
+          MR_Box mercury__solutions__STATE_VARIABLE_Acc_18_18;
+
+{
+#define MR_PROC_LABEL mercury__solutions__builtin_aggregate_4_p_0
+
+
+		{
+
+#ifdef MR_USE_MINIMAL_MODEL_STACK_COPY
+    MR_pneg_enter_else("end_all_soln_neg_context");
+#endif
+
+
+		;}
+#undef MR_PROC_LABEL
+}
+          {
+            mercury__mutvar__get_mutvar_2_p_0((mercury__solutions__env).mercury__solutions__builtin_aggregate_4_p_0_env_0__TypeInfo_for_U_22, (mercury__solutions__env).mercury__solutions__builtin_aggregate_4_p_0_env_0__Mutvar_11, &mercury__solutions__STATE_VARIABLE_Acc_18_18);
+          }
+{
+#define MR_PROC_LABEL mercury__solutions__builtin_aggregate_4_p_0
+
+	MR_Word TypeInfo_for_T;
+	MR_Word SolutionsHeapPtr;
+	MR_Word OldVal;
+	MR_Word NewVal;
+
+	TypeInfo_for_T =  (mercury__solutions__env).mercury__solutions__builtin_aggregate_4_p_0_env_0__TypeInfo_for_U_22 ;
+	SolutionsHeapPtr =  mercury__solutions__SolutionsHeapPtr_9 ;
+	OldVal = (MR_Word) mercury__solutions__STATE_VARIABLE_Acc_18_18 ;
+		{
+
+    MR_PARTIAL_DEEP_COPY(SolutionsHeapPtr, OldVal, NewVal, TypeInfo_for_T);
+
+
+		;}
+#undef MR_PROC_LABEL
+	 mercury__solutions__STATE_VARIABLE_Acc_19_19  = (MR_Box) NewVal;
+}
+{
+#define MR_PROC_LABEL mercury__solutions__builtin_aggregate_4_p_0
+
+	MR_Word SolutionsHeapPtr;
+
+	SolutionsHeapPtr =  mercury__solutions__SolutionsHeapPtr_9 ;
+		{
+
+#ifdef MR_RECLAIM_HP_ON_FAILURE
+    MR_sol_hp = (MR_Word *) SolutionsHeapPtr;
+#endif
+
+
+		;}
+#undef MR_PROC_LABEL
+}
+{
+#define MR_PROC_LABEL mercury__solutions__builtin_aggregate_4_p_0
+
+
+		{
+
+#ifdef MR_USE_TRAIL
+    MR_discard_ticket();
+#endif
+
+
+		;}
+#undef MR_PROC_LABEL
+}
+        }
+{
+#define MR_PROC_LABEL mercury__solutions__builtin_aggregate_4_p_0
+
+	MR_Word X;
+	MR_Word Y;
+
+	X = (MR_Word) mercury__solutions__STATE_VARIABLE_Acc_19_19 ;
+		{
+
+    Y = X;
+
+
+		;}
+#undef MR_PROC_LABEL
+	 *mercury__solutions__STATE_VARIABLE_Acc_17  = (MR_Box) Y;
+}
+    }
+  }
+}
+
+void MR_CALL 
+mercury__solutions__assert_num_solutions_3_p_1(
+  MR_Word mercury__solutions__TypeInfo_for_T_14,
+  MR_Word mercury__solutions___Pred_1,
+  MR_Word mercury__solutions__HeadVar__2_2,
+  MR_Word * mercury__solutions__List_3)
+{
+  {
+    MR_bool mercury__solutions__succeeded;
+
+    {
+      mercury__solutions__f_85_110_117_115_101_100_65_114_103_115_95_95_112_114_101_100_95_95_97_115_115_101_114_116_95_110_117_109_95_115_111_108_117_116_105_111_110_115_95_95_91_50_93_95_49_3_p_1(mercury__solutions__TypeInfo_for_T_14, mercury__solutions__HeadVar__2_2, mercury__solutions__List_3);
+    }
+  }
+}
+
+void MR_CALL 
+mercury__solutions__assert_num_solutions_3_p_0(
+  MR_Word mercury__solutions__TypeInfo_for_T_14,
+  MR_Word mercury__solutions___Pred_1,
+  MR_Word mercury__solutions__HeadVar__2_2,
+  MR_Word * mercury__solutions__List_3)
+{
+  {
+    MR_bool mercury__solutions__succeeded;
+
+    {
+      mercury__solutions__f_85_110_117_115_101_100_65_114_103_115_95_95_112_114_101_100_95_95_97_115_115_101_114_116_95_110_117_109_95_115_111_108_117_116_105_111_110_115_95_95_91_50_93_95_48_3_p_0(mercury__solutions__TypeInfo_for_T_14, mercury__solutions__HeadVar__2_2, mercury__solutions__List_3);
+    }
+  }
+}
+
+static void MR_CALL 
+mercury__solutions__builtin_solutions_2_p_1_1(
+  void * mercury__solutions__env_ptr_arg)
+{
+  {
+    struct mercury__solutions__builtin_solutions_2_p_1_env_0_s * mercury__solutions__env_ptr = (struct mercury__solutions__builtin_solutions_2_p_1_env_0_s *) mercury__solutions__env_ptr_arg;
+
+    MR_builtin_longjmp((mercury__solutions__env_ptr)->mercury__solutions__builtin_solutions_2_p_1_env_0__commit_0, 1);
+  }
+}
+
+static void MR_CALL 
+mercury__solutions__builtin_solutions_2_p_1_2(
+  void * mercury__solutions__env_ptr_arg)
+{
+  {
+    struct mercury__solutions__builtin_solutions_2_p_1_env_0_s * mercury__solutions__env_ptr = (struct mercury__solutions__builtin_solutions_2_p_1_env_0_s *) mercury__solutions__env_ptr_arg;
+
+    {
+      MR_Box mercury__solutions__conv2_Acc0_25;
+
+{
+#define MR_PROC_LABEL mercury__solutions__builtin_solutions_2_p_1
+
+	MR_Word TrailPtr;
+
+	TrailPtr =  (mercury__solutions__env_ptr)->mercury__solutions__builtin_solutions_2_p_1_env_0__TrailPtr_21 ;
+		{
+
+#ifdef MR_USE_TRAIL
+    /* check for outstanding delayed goals (``floundering'') */
+    MR_reset_ticket(TrailPtr, MR_solve);
+#endif
+
+
+		;}
+#undef MR_PROC_LABEL
+}
+{
+#define MR_PROC_LABEL mercury__solutions__builtin_solutions_2_p_1
+
+
+		{
+{
+#ifdef MR_RECLAIM_HP_ON_FAILURE
+    MR_MemoryZone   *temp_zone;
+    MR_Word         *temp_hp;
+
+    temp_zone = MR_ENGINE(MR_eng_heap_zone);
+    MR_ENGINE(MR_eng_heap_zone) = MR_ENGINE(MR_eng_solutions_heap_zone);
+    MR_ENGINE(MR_eng_solutions_heap_zone) = temp_zone;
+    temp_hp = MR_hp;
+    MR_hp_word = (MR_Word) MR_sol_hp;
+    MR_sol_hp = temp_hp;
+#endif
+}
+
+		;}
+#undef MR_PROC_LABEL
+}
+{
+#define MR_PROC_LABEL mercury__solutions__builtin_solutions_2_p_1
+
+	MR_Word TypeInfo_for_T;
+	MR_Word SolutionsHeapPtr;
+	MR_Word OldVal;
+	MR_Word NewVal;
+
+	TypeInfo_for_T =  (mercury__solutions__env_ptr)->mercury__solutions__builtin_solutions_2_p_1_env_0__TypeInfo_for_T_8 ;
+	SolutionsHeapPtr =  (mercury__solutions__env_ptr)->mercury__solutions__builtin_solutions_2_p_1_env_0__HeapPtr_19 ;
+	OldVal = (MR_Word) (mercury__solutions__env_ptr)->mercury__solutions__builtin_solutions_2_p_1_env_0__Answer0_23 ;
+		{
+
+    MR_PARTIAL_DEEP_COPY(SolutionsHeapPtr, OldVal, NewVal, TypeInfo_for_T);
+
+
+		;}
+#undef MR_PROC_LABEL
+	 (mercury__solutions__env_ptr)->mercury__solutions__builtin_solutions_2_p_1_env_0__Answer_24  = (MR_Box) NewVal;
+}
+      {
+        mercury__mutvar__get_mutvar_2_p_0((mercury__solutions__env_ptr)->mercury__solutions__builtin_solutions_2_p_1_env_0__TypeInfo_13_13, (MR_Word) (mercury__solutions__env_ptr)->mercury__solutions__builtin_solutions_2_p_1_env_0__Mutvar_22, &mercury__solutions__conv2_Acc0_25);
+      }
+      (mercury__solutions__env_ptr)->mercury__solutions__builtin_solutions_2_p_1_env_0__Acc0_25 = ((MR_Word) mercury__solutions__conv2_Acc0_25);
+      {
+        MR_Word base;
+        base = (MR_Word) MR_mkword(MR_mktag(1), MR_new_object(MR_Word, ((MR_Integer) 2 * sizeof(MR_Word)), NULL, NULL));
+        (mercury__solutions__env_ptr)->mercury__solutions__builtin_solutions_2_p_1_env_0__Acc1_26 = base;
+        MR_hl_field(MR_mktag(1), base, 0) = (mercury__solutions__env_ptr)->mercury__solutions__builtin_solutions_2_p_1_env_0__Answer_24;
+        MR_hl_field(MR_mktag(1), base, 1) = ((MR_Box) ((mercury__solutions__env_ptr)->mercury__solutions__builtin_solutions_2_p_1_env_0__Acc0_25));
+      }
+      {
+        mercury__mutvar__set_mutvar_2_p_0((mercury__solutions__env_ptr)->mercury__solutions__builtin_solutions_2_p_1_env_0__TypeInfo_13_13, (MR_Word) (mercury__solutions__env_ptr)->mercury__solutions__builtin_solutions_2_p_1_env_0__Mutvar_22, ((MR_Box) ((mercury__solutions__env_ptr)->mercury__solutions__builtin_solutions_2_p_1_env_0__Acc1_26)));
+      }
+{
+#define MR_PROC_LABEL mercury__solutions__builtin_solutions_2_p_1
+
+
+		{
+{
+#ifdef MR_RECLAIM_HP_ON_FAILURE
+    MR_MemoryZone   *temp_zone;
+    MR_Word         *temp_hp;
+
+    temp_zone = MR_ENGINE(MR_eng_heap_zone);
+    MR_ENGINE(MR_eng_heap_zone) = MR_ENGINE(MR_eng_solutions_heap_zone);
+    MR_ENGINE(MR_eng_solutions_heap_zone) = temp_zone;
+    temp_hp = MR_hp;
+    MR_hp_word = (MR_Word) MR_sol_hp;
+    MR_sol_hp = temp_hp;
+#endif
+}
+
+		;}
+#undef MR_PROC_LABEL
+}
+      (mercury__solutions__env_ptr)->mercury__solutions__builtin_solutions_2_p_1_env_0__succeeded = MR_FALSE;
+      if ((mercury__solutions__env_ptr)->mercury__solutions__builtin_solutions_2_p_1_env_0__succeeded)
+        {
+          mercury__solutions__builtin_solutions_2_p_1_1(mercury__solutions__env_ptr);
+        }
+    }
+  }
+}
+
+static void MR_CALL 
+mercury__solutions__builtin_solutions_2_p_1_3(
+  void * mercury__solutions__env_ptr_arg)
+{
+  {
+    struct mercury__solutions__builtin_solutions_2_p_1_env_0_s * mercury__solutions__env_ptr = (struct mercury__solutions__builtin_solutions_2_p_1_env_0_s *) mercury__solutions__env_ptr_arg;
+
+    if (MR_builtin_setjmp((mercury__solutions__env_ptr)->mercury__solutions__builtin_solutions_2_p_1_env_0__commit_0) == 0)
+      {
+        {
+          void MR_CALL (* mercury__solutions__func_1)(MR_Box, MR_Box *, MR_Cont, void *) = ((void MR_CALL (*)(MR_Box, MR_Box *, MR_Cont, void *)) (MR_hl_field(MR_mktag(0), (mercury__solutions__env_ptr)->mercury__solutions__builtin_solutions_2_p_1_env_0__Generator_3, (MR_Integer) 1)));
+
+          {
+            mercury__solutions__func_1(((MR_Box) (mercury__solutions__env_ptr)->mercury__solutions__builtin_solutions_2_p_1_env_0__Generator_3), &(mercury__solutions__env_ptr)->mercury__solutions__builtin_solutions_2_p_1_env_0__Answer0_23, mercury__solutions__builtin_solutions_2_p_1_2, mercury__solutions__env_ptr);
+          }
+        }
+        (mercury__solutions__env_ptr)->mercury__solutions__builtin_solutions_2_p_1_env_0__succeeded = MR_FALSE;
+      }
+    else
+      (mercury__solutions__env_ptr)->mercury__solutions__builtin_solutions_2_p_1_env_0__succeeded = MR_TRUE;
+  }
+}
+
+void MR_CALL 
+mercury__solutions__builtin_solutions_2_p_1(
+  MR_Word mercury__solutions__TypeInfo_for_T_8,
+  MR_Word mercury__solutions__Generator_3,
+  MR_Word * mercury__solutions__UnsortedList_4)
+{
+  {
+    struct mercury__solutions__builtin_solutions_2_p_1_env_0_s mercury__solutions__env;
+
+    (mercury__solutions__env).mercury__solutions__builtin_solutions_2_p_1_env_0__TypeInfo_for_T_8 = mercury__solutions__TypeInfo_for_T_8;
+    (mercury__solutions__env).mercury__solutions__builtin_solutions_2_p_1_env_0__Generator_3 = mercury__solutions__Generator_3;
+    {
+      MR_Word mercury__solutions__TypeCtorInfo_12_12 = (MR_Word) &mercury__list__list__type_ctor_info_list_1;
+      MR_Word mercury__solutions__Var_7 = (MR_Word) MR_mkword(MR_mktag(0), MR_mkbody((MR_Integer) 0));
+      MR_Word mercury__solutions__SolutionsHeapPtr_20;
+      MR_Word mercury__solutions__STATE_VARIABLE_Acc_19_28;
+      MR_Word mercury__solutions__conv0_Mutvar_22;
+      MR_Word mercury__solutions__TypeInfo_13_43;
+      MR_Box mercury__solutions__conv5_Y;
+
+      {
+        MR_Word base;
+        base = (MR_Word) MR_new_object(MR_Word, ((MR_Integer) 2 * sizeof(MR_Word)), NULL, NULL);
+        (mercury__solutions__env).mercury__solutions__builtin_solutions_2_p_1_env_0__TypeInfo_13_13 = base;
+        MR_hl_field(MR_mktag(0), base, 0) = ((MR_Box) (mercury__solutions__TypeCtorInfo_12_12));
+        MR_hl_field(MR_mktag(0), base, 1) = ((MR_Box) ((mercury__solutions__env).mercury__solutions__builtin_solutions_2_p_1_env_0__TypeInfo_for_T_8));
+      }
+{
+#define MR_PROC_LABEL mercury__solutions__builtin_solutions_2_p_1
+
+	MR_Word HeapPtr;
+	MR_Word SolutionsHeapPtr;
+	MR_Word TrailPtr;
+
+		{
+
+    /* save heap states */
+#ifdef MR_RECLAIM_HP_ON_FAILURE
+    HeapPtr = (MR_Word) MR_hp;
+    SolutionsHeapPtr = (MR_Word) MR_sol_hp;
+#else
+    HeapPtr = SolutionsHeapPtr = 0;
+#endif
+
+    /* save trail state */
+#ifdef MR_USE_TRAIL
+    MR_store_ticket(TrailPtr);
+#else
+    TrailPtr = 0;
+#endif
+
+
+		;}
+#undef MR_PROC_LABEL
+	 (mercury__solutions__env).mercury__solutions__builtin_solutions_2_p_1_env_0__HeapPtr_19  = HeapPtr;
+	 mercury__solutions__SolutionsHeapPtr_20  = SolutionsHeapPtr;
+	 (mercury__solutions__env).mercury__solutions__builtin_solutions_2_p_1_env_0__TrailPtr_21  = TrailPtr;
+}
+{
+#define MR_PROC_LABEL mercury__solutions__builtin_solutions_2_p_1
+
+
+		{
+
+#ifdef MR_USE_MINIMAL_MODEL_STACK_COPY
+    MR_pneg_enter_cond();
+#endif
+
+
+		;}
+#undef MR_PROC_LABEL
+}
+      {
+        mercury__mutvar__new_mutvar_2_p_0((mercury__solutions__env).mercury__solutions__builtin_solutions_2_p_1_env_0__TypeInfo_13_13, ((MR_Box) (mercury__solutions__Var_7)), &mercury__solutions__conv0_Mutvar_22);
+      }
+      (mercury__solutions__env).mercury__solutions__builtin_solutions_2_p_1_env_0__Mutvar_22 = (MR_Word) mercury__solutions__conv0_Mutvar_22;
+      {
+        mercury__solutions__builtin_solutions_2_p_1_3(&mercury__solutions__env);
+      }
+      if (!((mercury__solutions__env).mercury__solutions__builtin_solutions_2_p_1_env_0__succeeded))
+        {
+          MR_Word mercury__solutions__STATE_VARIABLE_Acc_18_27;
+          MR_Box mercury__solutions__conv3_STATE_VARIABLE_Acc_18_27;
+          MR_Box mercury__solutions__conv4_NewVal;
+
+{
+#define MR_PROC_LABEL mercury__solutions__builtin_solutions_2_p_1
+
+
+		{
+
+#ifdef MR_USE_MINIMAL_MODEL_STACK_COPY
+    MR_pneg_enter_else("end_all_soln_neg_context");
+#endif
+
+
+		;}
+#undef MR_PROC_LABEL
+}
+          {
+            mercury__mutvar__get_mutvar_2_p_0((mercury__solutions__env).mercury__solutions__builtin_solutions_2_p_1_env_0__TypeInfo_13_13, (MR_Word) (mercury__solutions__env).mercury__solutions__builtin_solutions_2_p_1_env_0__Mutvar_22, &mercury__solutions__conv3_STATE_VARIABLE_Acc_18_27);
+          }
+          mercury__solutions__STATE_VARIABLE_Acc_18_27 = ((MR_Word) mercury__solutions__conv3_STATE_VARIABLE_Acc_18_27);
+{
+#define MR_PROC_LABEL mercury__solutions__builtin_solutions_2_p_1
+
+	MR_Word TypeInfo_for_T;
+	MR_Word SolutionsHeapPtr;
+	MR_Word OldVal;
+	MR_Word NewVal;
+
+	TypeInfo_for_T =  (mercury__solutions__env).mercury__solutions__builtin_solutions_2_p_1_env_0__TypeInfo_13_13 ;
+	SolutionsHeapPtr =  mercury__solutions__SolutionsHeapPtr_20 ;
+	OldVal = (MR_Word) ((MR_Box) (mercury__solutions__STATE_VARIABLE_Acc_18_27)) ;
+		{
+
+    MR_PARTIAL_DEEP_COPY(SolutionsHeapPtr, OldVal, NewVal, TypeInfo_for_T);
+
+
+		;}
+#undef MR_PROC_LABEL
+	 mercury__solutions__conv4_NewVal  = (MR_Box) NewVal;
+          mercury__solutions__STATE_VARIABLE_Acc_19_28 = ((MR_Word) mercury__solutions__conv4_NewVal);
+}
+{
+#define MR_PROC_LABEL mercury__solutions__builtin_solutions_2_p_1
+
+	MR_Word SolutionsHeapPtr;
+
+	SolutionsHeapPtr =  mercury__solutions__SolutionsHeapPtr_20 ;
+		{
+
+#ifdef MR_RECLAIM_HP_ON_FAILURE
+    MR_sol_hp = (MR_Word *) SolutionsHeapPtr;
+#endif
+
+
+		;}
+#undef MR_PROC_LABEL
+}
+{
+#define MR_PROC_LABEL mercury__solutions__builtin_solutions_2_p_1
+
+
+		{
+
+#ifdef MR_USE_TRAIL
+    MR_discard_ticket();
+#endif
+
+
+		;}
+#undef MR_PROC_LABEL
+}
+        }
+{
+#define MR_PROC_LABEL mercury__solutions__builtin_solutions_2_p_1
+
+	MR_Word X;
+	MR_Word Y;
+
+	X = (MR_Word) ((MR_Box) (mercury__solutions__STATE_VARIABLE_Acc_19_28)) ;
+		{
+
+    Y = X;
+
+
+		;}
+#undef MR_PROC_LABEL
+	 mercury__solutions__conv5_Y  = (MR_Box) Y;
+      *mercury__solutions__UnsortedList_4 = ((MR_Word) mercury__solutions__conv5_Y);
+}
+    }
+  }
+}
+
+static void MR_CALL 
+mercury__solutions__builtin_solutions_2_p_0_1(
+  void * mercury__solutions__env_ptr_arg)
+{
+  {
+    struct mercury__solutions__builtin_solutions_2_p_0_env_0_s * mercury__solutions__env_ptr = (struct mercury__solutions__builtin_solutions_2_p_0_env_0_s *) mercury__solutions__env_ptr_arg;
+
+    MR_builtin_longjmp((mercury__solutions__env_ptr)->mercury__solutions__builtin_solutions_2_p_0_env_0__commit_0, 1);
+  }
+}
+
+static void MR_CALL 
+mercury__solutions__builtin_solutions_2_p_0_2(
+  void * mercury__solutions__env_ptr_arg)
+{
+  {
+    struct mercury__solutions__builtin_solutions_2_p_0_env_0_s * mercury__solutions__env_ptr = (struct mercury__solutions__builtin_solutions_2_p_0_env_0_s *) mercury__solutions__env_ptr_arg;
+
+    {
+      MR_Box mercury__solutions__conv2_Acc0_25;
+
+{
+#define MR_PROC_LABEL mercury__solutions__builtin_solutions_2_p_0
+
+	MR_Word TrailPtr;
+
+	TrailPtr =  (mercury__solutions__env_ptr)->mercury__solutions__builtin_solutions_2_p_0_env_0__TrailPtr_21 ;
+		{
+
+#ifdef MR_USE_TRAIL
+    /* check for outstanding delayed goals (``floundering'') */
+    MR_reset_ticket(TrailPtr, MR_solve);
+#endif
+
+
+		;}
+#undef MR_PROC_LABEL
+}
+{
+#define MR_PROC_LABEL mercury__solutions__builtin_solutions_2_p_0
+
+
+		{
+{
+#ifdef MR_RECLAIM_HP_ON_FAILURE
+    MR_MemoryZone   *temp_zone;
+    MR_Word         *temp_hp;
+
+    temp_zone = MR_ENGINE(MR_eng_heap_zone);
+    MR_ENGINE(MR_eng_heap_zone) = MR_ENGINE(MR_eng_solutions_heap_zone);
+    MR_ENGINE(MR_eng_solutions_heap_zone) = temp_zone;
+    temp_hp = MR_hp;
+    MR_hp_word = (MR_Word) MR_sol_hp;
+    MR_sol_hp = temp_hp;
+#endif
+}
+
+		;}
+#undef MR_PROC_LABEL
+}
+{
+#define MR_PROC_LABEL mercury__solutions__builtin_solutions_2_p_0
+
+	MR_Word TypeInfo_for_T;
+	MR_Word SolutionsHeapPtr;
+	MR_Word OldVal;
+	MR_Word NewVal;
+
+	TypeInfo_for_T =  (mercury__solutions__env_ptr)->mercury__solutions__builtin_solutions_2_p_0_env_0__TypeInfo_for_T_8 ;
+	SolutionsHeapPtr =  (mercury__solutions__env_ptr)->mercury__solutions__builtin_solutions_2_p_0_env_0__HeapPtr_19 ;
+	OldVal = (MR_Word) (mercury__solutions__env_ptr)->mercury__solutions__builtin_solutions_2_p_0_env_0__Answer0_23 ;
+		{
+
+    MR_PARTIAL_DEEP_COPY(SolutionsHeapPtr, OldVal, NewVal, TypeInfo_for_T);
+
+
+		;}
+#undef MR_PROC_LABEL
+	 (mercury__solutions__env_ptr)->mercury__solutions__builtin_solutions_2_p_0_env_0__Answer_24  = (MR_Box) NewVal;
+}
+      {
+        mercury__mutvar__get_mutvar_2_p_0((mercury__solutions__env_ptr)->mercury__solutions__builtin_solutions_2_p_0_env_0__TypeInfo_13_13, (MR_Word) (mercury__solutions__env_ptr)->mercury__solutions__builtin_solutions_2_p_0_env_0__Mutvar_22, &mercury__solutions__conv2_Acc0_25);
+      }
+      (mercury__solutions__env_ptr)->mercury__solutions__builtin_solutions_2_p_0_env_0__Acc0_25 = ((MR_Word) mercury__solutions__conv2_Acc0_25);
+      {
+        MR_Word base;
+        base = (MR_Word) MR_mkword(MR_mktag(1), MR_new_object(MR_Word, ((MR_Integer) 2 * sizeof(MR_Word)), NULL, NULL));
+        (mercury__solutions__env_ptr)->mercury__solutions__builtin_solutions_2_p_0_env_0__Acc1_26 = base;
+        MR_hl_field(MR_mktag(1), base, 0) = (mercury__solutions__env_ptr)->mercury__solutions__builtin_solutions_2_p_0_env_0__Answer_24;
+        MR_hl_field(MR_mktag(1), base, 1) = ((MR_Box) ((mercury__solutions__env_ptr)->mercury__solutions__builtin_solutions_2_p_0_env_0__Acc0_25));
+      }
+      {
+        mercury__mutvar__set_mutvar_2_p_0((mercury__solutions__env_ptr)->mercury__solutions__builtin_solutions_2_p_0_env_0__TypeInfo_13_13, (MR_Word) (mercury__solutions__env_ptr)->mercury__solutions__builtin_solutions_2_p_0_env_0__Mutvar_22, ((MR_Box) ((mercury__solutions__env_ptr)->mercury__solutions__builtin_solutions_2_p_0_env_0__Acc1_26)));
+      }
+{
+#define MR_PROC_LABEL mercury__solutions__builtin_solutions_2_p_0
+
+
+		{
+{
+#ifdef MR_RECLAIM_HP_ON_FAILURE
+    MR_MemoryZone   *temp_zone;
+    MR_Word         *temp_hp;
+
+    temp_zone = MR_ENGINE(MR_eng_heap_zone);
+    MR_ENGINE(MR_eng_heap_zone) = MR_ENGINE(MR_eng_solutions_heap_zone);
+    MR_ENGINE(MR_eng_solutions_heap_zone) = temp_zone;
+    temp_hp = MR_hp;
+    MR_hp_word = (MR_Word) MR_sol_hp;
+    MR_sol_hp = temp_hp;
+#endif
+}
+
+		;}
+#undef MR_PROC_LABEL
+}
+      (mercury__solutions__env_ptr)->mercury__solutions__builtin_solutions_2_p_0_env_0__succeeded = MR_FALSE;
+      if ((mercury__solutions__env_ptr)->mercury__solutions__builtin_solutions_2_p_0_env_0__succeeded)
+        {
+          mercury__solutions__builtin_solutions_2_p_0_1(mercury__solutions__env_ptr);
+        }
+    }
+  }
+}
+
+static void MR_CALL 
+mercury__solutions__builtin_solutions_2_p_0_3(
+  void * mercury__solutions__env_ptr_arg)
+{
+  {
+    struct mercury__solutions__builtin_solutions_2_p_0_env_0_s * mercury__solutions__env_ptr = (struct mercury__solutions__builtin_solutions_2_p_0_env_0_s *) mercury__solutions__env_ptr_arg;
+
+    if (MR_builtin_setjmp((mercury__solutions__env_ptr)->mercury__solutions__builtin_solutions_2_p_0_env_0__commit_0) == 0)
+      {
+        {
+          void MR_CALL (* mercury__solutions__func_1)(MR_Box, MR_Box *, MR_Cont, void *) = ((void MR_CALL (*)(MR_Box, MR_Box *, MR_Cont, void *)) (MR_hl_field(MR_mktag(0), (mercury__solutions__env_ptr)->mercury__solutions__builtin_solutions_2_p_0_env_0__Generator_3, (MR_Integer) 1)));
+
+          {
+            mercury__solutions__func_1(((MR_Box) (mercury__solutions__env_ptr)->mercury__solutions__builtin_solutions_2_p_0_env_0__Generator_3), &(mercury__solutions__env_ptr)->mercury__solutions__builtin_solutions_2_p_0_env_0__Answer0_23, mercury__solutions__builtin_solutions_2_p_0_2, mercury__solutions__env_ptr);
+          }
+        }
+        (mercury__solutions__env_ptr)->mercury__solutions__builtin_solutions_2_p_0_env_0__succeeded = MR_FALSE;
+      }
+    else
+      (mercury__solutions__env_ptr)->mercury__solutions__builtin_solutions_2_p_0_env_0__succeeded = MR_TRUE;
+  }
+}
+
+void MR_CALL 
+mercury__solutions__builtin_solutions_2_p_0(
+  MR_Word mercury__solutions__TypeInfo_for_T_8,
+  MR_Word mercury__solutions__Generator_3,
+  MR_Word * mercury__solutions__UnsortedList_4)
+{
+  {
+    struct mercury__solutions__builtin_solutions_2_p_0_env_0_s mercury__solutions__env;
+
+    (mercury__solutions__env).mercury__solutions__builtin_solutions_2_p_0_env_0__TypeInfo_for_T_8 = mercury__solutions__TypeInfo_for_T_8;
+    (mercury__solutions__env).mercury__solutions__builtin_solutions_2_p_0_env_0__Generator_3 = mercury__solutions__Generator_3;
+    {
+      MR_Word mercury__solutions__TypeCtorInfo_12_12 = (MR_Word) &mercury__list__list__type_ctor_info_list_1;
+      MR_Word mercury__solutions__UnsortedList0_5;
+      MR_Word mercury__solutions__Var_7 = (MR_Word) MR_mkword(MR_mktag(0), MR_mkbody((MR_Integer) 0));
+      MR_Word mercury__solutions__SolutionsHeapPtr_20;
+      MR_Word mercury__solutions__STATE_VARIABLE_Acc_19_28;
+      MR_Word mercury__solutions__conv0_Mutvar_22;
+      MR_Word mercury__solutions__TypeInfo_13_43;
+      MR_Box mercury__solutions__conv5_Y;
+
+      {
+        MR_Word base;
+        base = (MR_Word) MR_new_object(MR_Word, ((MR_Integer) 2 * sizeof(MR_Word)), NULL, NULL);
+        (mercury__solutions__env).mercury__solutions__builtin_solutions_2_p_0_env_0__TypeInfo_13_13 = base;
+        MR_hl_field(MR_mktag(0), base, 0) = ((MR_Box) (mercury__solutions__TypeCtorInfo_12_12));
+        MR_hl_field(MR_mktag(0), base, 1) = ((MR_Box) ((mercury__solutions__env).mercury__solutions__builtin_solutions_2_p_0_env_0__TypeInfo_for_T_8));
+      }
+{
+#define MR_PROC_LABEL mercury__solutions__builtin_solutions_2_p_0
+
+	MR_Word HeapPtr;
+	MR_Word SolutionsHeapPtr;
+	MR_Word TrailPtr;
+
+		{
+
+    /* save heap states */
+#ifdef MR_RECLAIM_HP_ON_FAILURE
+    HeapPtr = (MR_Word) MR_hp;
+    SolutionsHeapPtr = (MR_Word) MR_sol_hp;
+#else
+    HeapPtr = SolutionsHeapPtr = 0;
+#endif
+
+    /* save trail state */
+#ifdef MR_USE_TRAIL
+    MR_store_ticket(TrailPtr);
+#else
+    TrailPtr = 0;
+#endif
+
+
+		;}
+#undef MR_PROC_LABEL
+	 (mercury__solutions__env).mercury__solutions__builtin_solutions_2_p_0_env_0__HeapPtr_19  = HeapPtr;
+	 mercury__solutions__SolutionsHeapPtr_20  = SolutionsHeapPtr;
+	 (mercury__solutions__env).mercury__solutions__builtin_solutions_2_p_0_env_0__TrailPtr_21  = TrailPtr;
+}
+{
+#define MR_PROC_LABEL mercury__solutions__builtin_solutions_2_p_0
+
+
+		{
+
+#ifdef MR_USE_MINIMAL_MODEL_STACK_COPY
+    MR_pneg_enter_cond();
+#endif
+
+
+		;}
+#undef MR_PROC_LABEL
+}
+      {
+        mercury__mutvar__new_mutvar_2_p_0((mercury__solutions__env).mercury__solutions__builtin_solutions_2_p_0_env_0__TypeInfo_13_13, ((MR_Box) (mercury__solutions__Var_7)), &mercury__solutions__conv0_Mutvar_22);
+      }
+      (mercury__solutions__env).mercury__solutions__builtin_solutions_2_p_0_env_0__Mutvar_22 = (MR_Word) mercury__solutions__conv0_Mutvar_22;
+      {
+        mercury__solutions__builtin_solutions_2_p_0_3(&mercury__solutions__env);
+      }
+      if (!((mercury__solutions__env).mercury__solutions__builtin_solutions_2_p_0_env_0__succeeded))
+        {
+          MR_Word mercury__solutions__STATE_VARIABLE_Acc_18_27;
+          MR_Box mercury__solutions__conv3_STATE_VARIABLE_Acc_18_27;
+          MR_Box mercury__solutions__conv4_NewVal;
+
+{
+#define MR_PROC_LABEL mercury__solutions__builtin_solutions_2_p_0
+
+
+		{
+
+#ifdef MR_USE_MINIMAL_MODEL_STACK_COPY
+    MR_pneg_enter_else("end_all_soln_neg_context");
+#endif
+
+
+		;}
+#undef MR_PROC_LABEL
+}
+          {
+            mercury__mutvar__get_mutvar_2_p_0((mercury__solutions__env).mercury__solutions__builtin_solutions_2_p_0_env_0__TypeInfo_13_13, (MR_Word) (mercury__solutions__env).mercury__solutions__builtin_solutions_2_p_0_env_0__Mutvar_22, &mercury__solutions__conv3_STATE_VARIABLE_Acc_18_27);
+          }
+          mercury__solutions__STATE_VARIABLE_Acc_18_27 = ((MR_Word) mercury__solutions__conv3_STATE_VARIABLE_Acc_18_27);
+{
+#define MR_PROC_LABEL mercury__solutions__builtin_solutions_2_p_0
+
+	MR_Word TypeInfo_for_T;
+	MR_Word SolutionsHeapPtr;
+	MR_Word OldVal;
+	MR_Word NewVal;
+
+	TypeInfo_for_T =  (mercury__solutions__env).mercury__solutions__builtin_solutions_2_p_0_env_0__TypeInfo_13_13 ;
+	SolutionsHeapPtr =  mercury__solutions__SolutionsHeapPtr_20 ;
+	OldVal = (MR_Word) ((MR_Box) (mercury__solutions__STATE_VARIABLE_Acc_18_27)) ;
+		{
+
+    MR_PARTIAL_DEEP_COPY(SolutionsHeapPtr, OldVal, NewVal, TypeInfo_for_T);
+
+
+		;}
+#undef MR_PROC_LABEL
+	 mercury__solutions__conv4_NewVal  = (MR_Box) NewVal;
+          mercury__solutions__STATE_VARIABLE_Acc_19_28 = ((MR_Word) mercury__solutions__conv4_NewVal);
+}
+{
+#define MR_PROC_LABEL mercury__solutions__builtin_solutions_2_p_0
+
+	MR_Word SolutionsHeapPtr;
+
+	SolutionsHeapPtr =  mercury__solutions__SolutionsHeapPtr_20 ;
+		{
+
+#ifdef MR_RECLAIM_HP_ON_FAILURE
+    MR_sol_hp = (MR_Word *) SolutionsHeapPtr;
+#endif
+
+
+		;}
+#undef MR_PROC_LABEL
+}
+{
+#define MR_PROC_LABEL mercury__solutions__builtin_solutions_2_p_0
+
+
+		{
+
+#ifdef MR_USE_TRAIL
+    MR_discard_ticket();
+#endif
+
+
+		;}
+#undef MR_PROC_LABEL
+}
+        }
+{
+#define MR_PROC_LABEL mercury__solutions__builtin_solutions_2_p_0
+
+	MR_Word X;
+	MR_Word Y;
+
+	X = (MR_Word) ((MR_Box) (mercury__solutions__STATE_VARIABLE_Acc_19_28)) ;
+		{
+
+    Y = X;
+
+
+		;}
+#undef MR_PROC_LABEL
+	 mercury__solutions__conv5_Y  = (MR_Box) Y;
+      mercury__solutions__UnsortedList0_5 = ((MR_Word) mercury__solutions__conv5_Y);
+}
+      if ((mercury__solutions__UnsortedList0_5 == ((MR_Word) MR_mkword(MR_mktag(0), MR_mkbody((MR_Integer) 0)))))
+        {
+          {
+            mercury__require__unexpected_3_p_0((MR_String) "solutions", (MR_String) "predicate \140solutions.assert_num_solutions\'/3", (MR_String) "no solutions");
+            return;
+          }
+        }
+      else
+        *mercury__solutions__UnsortedList_4 = mercury__solutions__UnsortedList0_5;
+    }
+  }
+}
+
+static void MR_CALL 
+mercury__solutions__do_while_4_p_5_1(
+  void * mercury__solutions__env_ptr_arg)
+{
+  {
+    struct mercury__solutions__do_while_4_p_5_env_0_s * mercury__solutions__env_ptr = (struct mercury__solutions__do_while_4_p_5_env_0_s *) mercury__solutions__env_ptr_arg;
+
+    MR_builtin_longjmp((mercury__solutions__env_ptr)->mercury__solutions__do_while_4_p_5_env_0__commit_0, 1);
+  }
+}
+
+static void MR_CALL 
+mercury__solutions__do_while_4_p_5_2(
+  void * mercury__solutions__env_ptr_arg)
+{
+  {
+    struct mercury__solutions__do_while_4_p_5_env_0_s * mercury__solutions__env_ptr = (struct mercury__solutions__do_while_4_p_5_env_0_s *) mercury__solutions__env_ptr_arg;
+
+    {
+      void MR_CALL (* mercury__solutions__func_1)(MR_Box, MR_Box, MR_Box *, MR_Box, MR_Box *);
+      MR_Box mercury__solutions__conv2_More_15;
+
+{
+#define MR_PROC_LABEL mercury__solutions__do_while_4_p_5
+
+	MR_Word TrailPtr;
+
+	TrailPtr =  (mercury__solutions__env_ptr)->mercury__solutions__do_while_4_p_5_env_0__TrailPtr_10 ;
+		{
+
+#ifdef MR_USE_TRAIL
+    /* check for outstanding delayed goals (``floundering'') */
+    MR_reset_ticket(TrailPtr, MR_solve);
+#endif
+
+
+		;}
+#undef MR_PROC_LABEL
+}
+{
+#define MR_PROC_LABEL mercury__solutions__do_while_4_p_5
+
+
+		{
+{
+#ifdef MR_RECLAIM_HP_ON_FAILURE
+    MR_MemoryZone   *temp_zone;
+    MR_Word         *temp_hp;
+
+    temp_zone = MR_ENGINE(MR_eng_heap_zone);
+    MR_ENGINE(MR_eng_heap_zone) = MR_ENGINE(MR_eng_solutions_heap_zone);
+    MR_ENGINE(MR_eng_solutions_heap_zone) = temp_zone;
+    temp_hp = MR_hp;
+    MR_hp_word = (MR_Word) MR_sol_hp;
+    MR_sol_hp = temp_hp;
+#endif
+}
+
+		;}
+#undef MR_PROC_LABEL
+}
+{
+#define MR_PROC_LABEL mercury__solutions__do_while_4_p_5
+
+	MR_Word TypeInfo_for_T;
+	MR_Word SolutionsHeapPtr;
+	MR_Word OldVal;
+	MR_Word NewVal;
+
+	TypeInfo_for_T =  (mercury__solutions__env_ptr)->mercury__solutions__do_while_4_p_5_env_0__TypeInfo_for_T_22 ;
+	SolutionsHeapPtr =  (mercury__solutions__env_ptr)->mercury__solutions__do_while_4_p_5_env_0__HeapPtr_8 ;
+	OldVal = (MR_Word) (mercury__solutions__env_ptr)->mercury__solutions__do_while_4_p_5_env_0__Answer0_12 ;
+		{
+
+    MR_PARTIAL_DEEP_COPY(SolutionsHeapPtr, OldVal, NewVal, TypeInfo_for_T);
+
+
+		;}
+#undef MR_PROC_LABEL
+	 (mercury__solutions__env_ptr)->mercury__solutions__do_while_4_p_5_env_0__Answer_13  = (MR_Box) NewVal;
+}
+      {
+        mercury__mutvar__get_mutvar_2_p_0((mercury__solutions__env_ptr)->mercury__solutions__do_while_4_p_5_env_0__TypeInfo_for_T2_23, (mercury__solutions__env_ptr)->mercury__solutions__do_while_4_p_5_env_0__Mutvar_11, &(mercury__solutions__env_ptr)->mercury__solutions__do_while_4_p_5_env_0__Acc0_14);
+      }
+      mercury__solutions__func_1 = ((void MR_CALL (*)(MR_Box, MR_Box, MR_Box *, MR_Box, MR_Box *)) (MR_hl_field(MR_mktag(0), (mercury__solutions__env_ptr)->mercury__solutions__do_while_4_p_5_env_0__CollectorPred_6, (MR_Integer) 1)));
+      {
+        mercury__solutions__func_1(((MR_Box) (mercury__solutions__env_ptr)->mercury__solutions__do_while_4_p_5_env_0__CollectorPred_6), (mercury__solutions__env_ptr)->mercury__solutions__do_while_4_p_5_env_0__Answer_13, &mercury__solutions__conv2_More_15, (mercury__solutions__env_ptr)->mercury__solutions__do_while_4_p_5_env_0__Acc0_14, &(mercury__solutions__env_ptr)->mercury__solutions__do_while_4_p_5_env_0__Acc1_16);
+      }
+      (mercury__solutions__env_ptr)->mercury__solutions__do_while_4_p_5_env_0__More_15 = ((MR_Word) mercury__solutions__conv2_More_15);
+      {
+        mercury__mutvar__set_mutvar_2_p_0((mercury__solutions__env_ptr)->mercury__solutions__do_while_4_p_5_env_0__TypeInfo_for_T2_23, (mercury__solutions__env_ptr)->mercury__solutions__do_while_4_p_5_env_0__Mutvar_11, (mercury__solutions__env_ptr)->mercury__solutions__do_while_4_p_5_env_0__Acc1_16);
+      }
+{
+#define MR_PROC_LABEL mercury__solutions__do_while_4_p_5
+
+
+		{
+{
+#ifdef MR_RECLAIM_HP_ON_FAILURE
+    MR_MemoryZone   *temp_zone;
+    MR_Word         *temp_hp;
+
+    temp_zone = MR_ENGINE(MR_eng_heap_zone);
+    MR_ENGINE(MR_eng_heap_zone) = MR_ENGINE(MR_eng_solutions_heap_zone);
+    MR_ENGINE(MR_eng_solutions_heap_zone) = temp_zone;
+    temp_hp = MR_hp;
+    MR_hp_word = (MR_Word) MR_sol_hp;
+    MR_sol_hp = temp_hp;
+#endif
+}
+
+		;}
+#undef MR_PROC_LABEL
+}
+      (mercury__solutions__env_ptr)->mercury__solutions__do_while_4_p_5_env_0__succeeded = ((mercury__solutions__env_ptr)->mercury__solutions__do_while_4_p_5_env_0__More_15 == (MR_Integer) 0);
+      if ((mercury__solutions__env_ptr)->mercury__solutions__do_while_4_p_5_env_0__succeeded)
+        {
+{
+#define MR_PROC_LABEL mercury__solutions__do_while_4_p_5
+
+
+		{
+
+#ifdef MR_USE_MINIMAL_MODEL_STACK_COPY
+    MR_pneg_enter_then();
+#endif
+
+
+		;}
+#undef MR_PROC_LABEL
+}
+          {
+            mercury__solutions__do_while_4_p_5_1(mercury__solutions__env_ptr);
+          }
+        }
+    }
+  }
+}
+
+static void MR_CALL 
+mercury__solutions__do_while_4_p_5_3(
+  void * mercury__solutions__env_ptr_arg)
+{
+  {
+    struct mercury__solutions__do_while_4_p_5_env_0_s * mercury__solutions__env_ptr = (struct mercury__solutions__do_while_4_p_5_env_0_s *) mercury__solutions__env_ptr_arg;
+
+    if (MR_builtin_setjmp((mercury__solutions__env_ptr)->mercury__solutions__do_while_4_p_5_env_0__commit_0) == 0)
+      {
+        {
+          void MR_CALL (* mercury__solutions__func_0)(MR_Box, MR_Box *, MR_Cont, void *) = ((void MR_CALL (*)(MR_Box, MR_Box *, MR_Cont, void *)) (MR_hl_field(MR_mktag(0), (mercury__solutions__env_ptr)->mercury__solutions__do_while_4_p_5_env_0__GeneratorPred_5, (MR_Integer) 1)));
+
+          {
+            mercury__solutions__func_0(((MR_Box) (mercury__solutions__env_ptr)->mercury__solutions__do_while_4_p_5_env_0__GeneratorPred_5), &(mercury__solutions__env_ptr)->mercury__solutions__do_while_4_p_5_env_0__Answer0_12, mercury__solutions__do_while_4_p_5_2, mercury__solutions__env_ptr);
+          }
+        }
+        (mercury__solutions__env_ptr)->mercury__solutions__do_while_4_p_5_env_0__succeeded = MR_FALSE;
+      }
+    else
+      (mercury__solutions__env_ptr)->mercury__solutions__do_while_4_p_5_env_0__succeeded = MR_TRUE;
+  }
+}
+
+void MR_CALL 
+mercury__solutions__do_while_4_p_5(
+  MR_Word mercury__solutions__TypeInfo_for_T_22,
+  MR_Word mercury__solutions__TypeInfo_for_T2_23,
+  MR_Word mercury__solutions__GeneratorPred_5,
+  MR_Word mercury__solutions__CollectorPred_6,
+  MR_Box mercury__solutions__STATE_VARIABLE_Acc_0_17,
+  MR_Box * mercury__solutions__STATE_VARIABLE_Acc_18)
+{
+  {
+    struct mercury__solutions__do_while_4_p_5_env_0_s mercury__solutions__env;
+
+    (mercury__solutions__env).mercury__solutions__do_while_4_p_5_env_0__TypeInfo_for_T_22 = mercury__solutions__TypeInfo_for_T_22;
+    (mercury__solutions__env).mercury__solutions__do_while_4_p_5_env_0__TypeInfo_for_T2_23 = mercury__solutions__TypeInfo_for_T2_23;
+    (mercury__solutions__env).mercury__solutions__do_while_4_p_5_env_0__GeneratorPred_5 = mercury__solutions__GeneratorPred_5;
+    (mercury__solutions__env).mercury__solutions__do_while_4_p_5_env_0__CollectorPred_6 = mercury__solutions__CollectorPred_6;
+    {
+      MR_Word mercury__solutions__SolutionsHeapPtr_9;
+      MR_Box mercury__solutions__STATE_VARIABLE_Acc_19_19;
+      MR_Box mercury__solutions__STATE_VARIABLE_Acc_20_20;
+      MR_Word mercury__solutions__TypeInfo_for_T2_24;
+
+{
+#define MR_PROC_LABEL mercury__solutions__do_while_4_p_5
+
+	MR_Word HeapPtr;
+	MR_Word SolutionsHeapPtr;
+	MR_Word TrailPtr;
+
+		{
+
+    /* save heap states */
+#ifdef MR_RECLAIM_HP_ON_FAILURE
+    HeapPtr = (MR_Word) MR_hp;
+    SolutionsHeapPtr = (MR_Word) MR_sol_hp;
+#else
+    HeapPtr = SolutionsHeapPtr = 0;
+#endif
+
+    /* save trail state */
+#ifdef MR_USE_TRAIL
+    MR_store_ticket(TrailPtr);
+#else
+    TrailPtr = 0;
+#endif
+
+
+		;}
+#undef MR_PROC_LABEL
+	 (mercury__solutions__env).mercury__solutions__do_while_4_p_5_env_0__HeapPtr_8  = HeapPtr;
+	 mercury__solutions__SolutionsHeapPtr_9  = SolutionsHeapPtr;
+	 (mercury__solutions__env).mercury__solutions__do_while_4_p_5_env_0__TrailPtr_10  = TrailPtr;
+}
+      {
+        mercury__mutvar__new_mutvar_2_p_1((mercury__solutions__env).mercury__solutions__do_while_4_p_5_env_0__TypeInfo_for_T2_23, mercury__solutions__STATE_VARIABLE_Acc_0_17, &(mercury__solutions__env).mercury__solutions__do_while_4_p_5_env_0__Mutvar_11);
+      }
+{
+#define MR_PROC_LABEL mercury__solutions__do_while_4_p_5
+
+
+		{
+
+#ifdef MR_USE_MINIMAL_MODEL_STACK_COPY
+    MR_pneg_enter_cond();
+#endif
+
+
+		;}
+#undef MR_PROC_LABEL
+}
+      {
+        mercury__solutions__do_while_4_p_5_3(&mercury__solutions__env);
+      }
+      if (!((mercury__solutions__env).mercury__solutions__do_while_4_p_5_env_0__succeeded))
+        {
+{
+#define MR_PROC_LABEL mercury__solutions__do_while_4_p_5
+
+
+		{
+
+#ifdef MR_USE_MINIMAL_MODEL_STACK_COPY
+    MR_pneg_enter_else("end_all_soln_neg_context");
+#endif
+
+
+		;}
+#undef MR_PROC_LABEL
+}
+        }
+      {
+        mercury__mutvar__get_mutvar_2_p_0((mercury__solutions__env).mercury__solutions__do_while_4_p_5_env_0__TypeInfo_for_T2_23, (mercury__solutions__env).mercury__solutions__do_while_4_p_5_env_0__Mutvar_11, &mercury__solutions__STATE_VARIABLE_Acc_19_19);
+      }
+{
+#define MR_PROC_LABEL mercury__solutions__do_while_4_p_5
+
+	MR_Word TypeInfo_for_T;
+	MR_Word SolutionsHeapPtr;
+	MR_Word OldVal;
+	MR_Word NewVal;
+
+	TypeInfo_for_T =  (mercury__solutions__env).mercury__solutions__do_while_4_p_5_env_0__TypeInfo_for_T2_23 ;
+	SolutionsHeapPtr =  mercury__solutions__SolutionsHeapPtr_9 ;
+	OldVal = (MR_Word) mercury__solutions__STATE_VARIABLE_Acc_19_19 ;
+		{
+
+    MR_PARTIAL_DEEP_COPY(SolutionsHeapPtr, OldVal, NewVal, TypeInfo_for_T);
+
+
+		;}
+#undef MR_PROC_LABEL
+	 mercury__solutions__STATE_VARIABLE_Acc_20_20  = (MR_Box) NewVal;
+}
+{
+#define MR_PROC_LABEL mercury__solutions__do_while_4_p_5
+
+	MR_Word SolutionsHeapPtr;
+
+	SolutionsHeapPtr =  mercury__solutions__SolutionsHeapPtr_9 ;
+		{
+
+#ifdef MR_RECLAIM_HP_ON_FAILURE
+    MR_sol_hp = (MR_Word *) SolutionsHeapPtr;
+#endif
+
+
+		;}
+#undef MR_PROC_LABEL
+}
+{
+#define MR_PROC_LABEL mercury__solutions__do_while_4_p_5
+
+
+		{
+
+#ifdef MR_USE_TRAIL
+    MR_discard_ticket();
+#endif
+
+
+		;}
+#undef MR_PROC_LABEL
+}
+{
+#define MR_PROC_LABEL mercury__solutions__do_while_4_p_5
+
+	MR_Word X;
+	MR_Word Y;
+
+	X = (MR_Word) mercury__solutions__STATE_VARIABLE_Acc_20_20 ;
+		{
+
+    Y = X;
+
+
+		;}
+#undef MR_PROC_LABEL
+	 *mercury__solutions__STATE_VARIABLE_Acc_18  = (MR_Box) Y;
+}
+    }
+  }
+}
+
+static void MR_CALL 
+mercury__solutions__do_while_4_p_4_1(
+  void * mercury__solutions__env_ptr_arg)
+{
+  {
+    struct mercury__solutions__do_while_4_p_4_env_0_s * mercury__solutions__env_ptr = (struct mercury__solutions__do_while_4_p_4_env_0_s *) mercury__solutions__env_ptr_arg;
+
+    MR_builtin_longjmp((mercury__solutions__env_ptr)->mercury__solutions__do_while_4_p_4_env_0__commit_0, 1);
+  }
+}
+
+static void MR_CALL 
+mercury__solutions__do_while_4_p_4_2(
+  void * mercury__solutions__env_ptr_arg)
+{
+  {
+    struct mercury__solutions__do_while_4_p_4_env_0_s * mercury__solutions__env_ptr = (struct mercury__solutions__do_while_4_p_4_env_0_s *) mercury__solutions__env_ptr_arg;
+
+    {
+      void MR_CALL (* mercury__solutions__func_1)(MR_Box, MR_Box, MR_Box *, MR_Box, MR_Box *);
+      MR_Box mercury__solutions__conv2_More_15;
+
+{
+#define MR_PROC_LABEL mercury__solutions__do_while_4_p_4
+
+	MR_Word TrailPtr;
+
+	TrailPtr =  (mercury__solutions__env_ptr)->mercury__solutions__do_while_4_p_4_env_0__TrailPtr_10 ;
+		{
+
+#ifdef MR_USE_TRAIL
+    /* check for outstanding delayed goals (``floundering'') */
+    MR_reset_ticket(TrailPtr, MR_solve);
+#endif
+
+
+		;}
+#undef MR_PROC_LABEL
+}
+{
+#define MR_PROC_LABEL mercury__solutions__do_while_4_p_4
+
+
+		{
+{
+#ifdef MR_RECLAIM_HP_ON_FAILURE
+    MR_MemoryZone   *temp_zone;
+    MR_Word         *temp_hp;
+
+    temp_zone = MR_ENGINE(MR_eng_heap_zone);
+    MR_ENGINE(MR_eng_heap_zone) = MR_ENGINE(MR_eng_solutions_heap_zone);
+    MR_ENGINE(MR_eng_solutions_heap_zone) = temp_zone;
+    temp_hp = MR_hp;
+    MR_hp_word = (MR_Word) MR_sol_hp;
+    MR_sol_hp = temp_hp;
+#endif
+}
+
+		;}
+#undef MR_PROC_LABEL
+}
+{
+#define MR_PROC_LABEL mercury__solutions__do_while_4_p_4
+
+	MR_Word TypeInfo_for_T;
+	MR_Word SolutionsHeapPtr;
+	MR_Word OldVal;
+	MR_Word NewVal;
+
+	TypeInfo_for_T =  (mercury__solutions__env_ptr)->mercury__solutions__do_while_4_p_4_env_0__TypeInfo_for_T_22 ;
+	SolutionsHeapPtr =  (mercury__solutions__env_ptr)->mercury__solutions__do_while_4_p_4_env_0__HeapPtr_8 ;
+	OldVal = (MR_Word) (mercury__solutions__env_ptr)->mercury__solutions__do_while_4_p_4_env_0__Answer0_12 ;
+		{
+
+    MR_PARTIAL_DEEP_COPY(SolutionsHeapPtr, OldVal, NewVal, TypeInfo_for_T);
+
+
+		;}
+#undef MR_PROC_LABEL
+	 (mercury__solutions__env_ptr)->mercury__solutions__do_while_4_p_4_env_0__Answer_13  = (MR_Box) NewVal;
+}
+      {
+        mercury__mutvar__get_mutvar_2_p_0((mercury__solutions__env_ptr)->mercury__solutions__do_while_4_p_4_env_0__TypeInfo_for_T2_23, (mercury__solutions__env_ptr)->mercury__solutions__do_while_4_p_4_env_0__Mutvar_11, &(mercury__solutions__env_ptr)->mercury__solutions__do_while_4_p_4_env_0__Acc0_14);
+      }
+      mercury__solutions__func_1 = ((void MR_CALL (*)(MR_Box, MR_Box, MR_Box *, MR_Box, MR_Box *)) (MR_hl_field(MR_mktag(0), (mercury__solutions__env_ptr)->mercury__solutions__do_while_4_p_4_env_0__CollectorPred_6, (MR_Integer) 1)));
+      {
+        mercury__solutions__func_1(((MR_Box) (mercury__solutions__env_ptr)->mercury__solutions__do_while_4_p_4_env_0__CollectorPred_6), (mercury__solutions__env_ptr)->mercury__solutions__do_while_4_p_4_env_0__Answer_13, &mercury__solutions__conv2_More_15, (mercury__solutions__env_ptr)->mercury__solutions__do_while_4_p_4_env_0__Acc0_14, &(mercury__solutions__env_ptr)->mercury__solutions__do_while_4_p_4_env_0__Acc1_16);
+      }
+      (mercury__solutions__env_ptr)->mercury__solutions__do_while_4_p_4_env_0__More_15 = ((MR_Word) mercury__solutions__conv2_More_15);
+      {
+        mercury__mutvar__set_mutvar_2_p_0((mercury__solutions__env_ptr)->mercury__solutions__do_while_4_p_4_env_0__TypeInfo_for_T2_23, (mercury__solutions__env_ptr)->mercury__solutions__do_while_4_p_4_env_0__Mutvar_11, (mercury__solutions__env_ptr)->mercury__solutions__do_while_4_p_4_env_0__Acc1_16);
+      }
+{
+#define MR_PROC_LABEL mercury__solutions__do_while_4_p_4
+
+
+		{
+{
+#ifdef MR_RECLAIM_HP_ON_FAILURE
+    MR_MemoryZone   *temp_zone;
+    MR_Word         *temp_hp;
+
+    temp_zone = MR_ENGINE(MR_eng_heap_zone);
+    MR_ENGINE(MR_eng_heap_zone) = MR_ENGINE(MR_eng_solutions_heap_zone);
+    MR_ENGINE(MR_eng_solutions_heap_zone) = temp_zone;
+    temp_hp = MR_hp;
+    MR_hp_word = (MR_Word) MR_sol_hp;
+    MR_sol_hp = temp_hp;
+#endif
+}
+
+		;}
+#undef MR_PROC_LABEL
+}
+      (mercury__solutions__env_ptr)->mercury__solutions__do_while_4_p_4_env_0__succeeded = ((mercury__solutions__env_ptr)->mercury__solutions__do_while_4_p_4_env_0__More_15 == (MR_Integer) 0);
+      if ((mercury__solutions__env_ptr)->mercury__solutions__do_while_4_p_4_env_0__succeeded)
+        {
+{
+#define MR_PROC_LABEL mercury__solutions__do_while_4_p_4
+
+
+		{
+
+#ifdef MR_USE_MINIMAL_MODEL_STACK_COPY
+    MR_pneg_enter_then();
+#endif
+
+
+		;}
+#undef MR_PROC_LABEL
+}
+          {
+            mercury__solutions__do_while_4_p_4_1(mercury__solutions__env_ptr);
+          }
+        }
+    }
+  }
+}
+
+static void MR_CALL 
+mercury__solutions__do_while_4_p_4_3(
+  void * mercury__solutions__env_ptr_arg)
+{
+  {
+    struct mercury__solutions__do_while_4_p_4_env_0_s * mercury__solutions__env_ptr = (struct mercury__solutions__do_while_4_p_4_env_0_s *) mercury__solutions__env_ptr_arg;
+
+    if (MR_builtin_setjmp((mercury__solutions__env_ptr)->mercury__solutions__do_while_4_p_4_env_0__commit_0) == 0)
+      {
+        {
+          void MR_CALL (* mercury__solutions__func_0)(MR_Box, MR_Box *, MR_Cont, void *) = ((void MR_CALL (*)(MR_Box, MR_Box *, MR_Cont, void *)) (MR_hl_field(MR_mktag(0), (mercury__solutions__env_ptr)->mercury__solutions__do_while_4_p_4_env_0__GeneratorPred_5, (MR_Integer) 1)));
+
+          {
+            mercury__solutions__func_0(((MR_Box) (mercury__solutions__env_ptr)->mercury__solutions__do_while_4_p_4_env_0__GeneratorPred_5), &(mercury__solutions__env_ptr)->mercury__solutions__do_while_4_p_4_env_0__Answer0_12, mercury__solutions__do_while_4_p_4_2, mercury__solutions__env_ptr);
+          }
+        }
+        (mercury__solutions__env_ptr)->mercury__solutions__do_while_4_p_4_env_0__succeeded = MR_FALSE;
+      }
+    else
+      (mercury__solutions__env_ptr)->mercury__solutions__do_while_4_p_4_env_0__succeeded = MR_TRUE;
+  }
+}
+
+void MR_CALL 
+mercury__solutions__do_while_4_p_4(
+  MR_Word mercury__solutions__TypeInfo_for_T_22,
+  MR_Word mercury__solutions__TypeInfo_for_T2_23,
+  MR_Word mercury__solutions__GeneratorPred_5,
+  MR_Word mercury__solutions__CollectorPred_6,
+  MR_Box mercury__solutions__STATE_VARIABLE_Acc_0_17,
+  MR_Box * mercury__solutions__STATE_VARIABLE_Acc_18)
+{
+  {
+    struct mercury__solutions__do_while_4_p_4_env_0_s mercury__solutions__env;
+
+    (mercury__solutions__env).mercury__solutions__do_while_4_p_4_env_0__TypeInfo_for_T_22 = mercury__solutions__TypeInfo_for_T_22;
+    (mercury__solutions__env).mercury__solutions__do_while_4_p_4_env_0__TypeInfo_for_T2_23 = mercury__solutions__TypeInfo_for_T2_23;
+    (mercury__solutions__env).mercury__solutions__do_while_4_p_4_env_0__GeneratorPred_5 = mercury__solutions__GeneratorPred_5;
+    (mercury__solutions__env).mercury__solutions__do_while_4_p_4_env_0__CollectorPred_6 = mercury__solutions__CollectorPred_6;
+    {
+      MR_Word mercury__solutions__SolutionsHeapPtr_9;
+      MR_Box mercury__solutions__STATE_VARIABLE_Acc_19_19;
+      MR_Box mercury__solutions__STATE_VARIABLE_Acc_20_20;
+      MR_Word mercury__solutions__TypeInfo_for_T2_24;
+
+{
+#define MR_PROC_LABEL mercury__solutions__do_while_4_p_4
+
+	MR_Word HeapPtr;
+	MR_Word SolutionsHeapPtr;
+	MR_Word TrailPtr;
+
+		{
+
+    /* save heap states */
+#ifdef MR_RECLAIM_HP_ON_FAILURE
+    HeapPtr = (MR_Word) MR_hp;
+    SolutionsHeapPtr = (MR_Word) MR_sol_hp;
+#else
+    HeapPtr = SolutionsHeapPtr = 0;
+#endif
+
+    /* save trail state */
+#ifdef MR_USE_TRAIL
+    MR_store_ticket(TrailPtr);
+#else
+    TrailPtr = 0;
+#endif
+
+
+		;}
+#undef MR_PROC_LABEL
+	 (mercury__solutions__env).mercury__solutions__do_while_4_p_4_env_0__HeapPtr_8  = HeapPtr;
+	 mercury__solutions__SolutionsHeapPtr_9  = SolutionsHeapPtr;
+	 (mercury__solutions__env).mercury__solutions__do_while_4_p_4_env_0__TrailPtr_10  = TrailPtr;
+}
+      {
+        mercury__mutvar__new_mutvar_2_p_1((mercury__solutions__env).mercury__solutions__do_while_4_p_4_env_0__TypeInfo_for_T2_23, mercury__solutions__STATE_VARIABLE_Acc_0_17, &(mercury__solutions__env).mercury__solutions__do_while_4_p_4_env_0__Mutvar_11);
+      }
+{
+#define MR_PROC_LABEL mercury__solutions__do_while_4_p_4
+
+
+		{
+
+#ifdef MR_USE_MINIMAL_MODEL_STACK_COPY
+    MR_pneg_enter_cond();
+#endif
+
+
+		;}
+#undef MR_PROC_LABEL
+}
+      {
+        mercury__solutions__do_while_4_p_4_3(&mercury__solutions__env);
+      }
+      if (!((mercury__solutions__env).mercury__solutions__do_while_4_p_4_env_0__succeeded))
+        {
+{
+#define MR_PROC_LABEL mercury__solutions__do_while_4_p_4
+
+
+		{
+
+#ifdef MR_USE_MINIMAL_MODEL_STACK_COPY
+    MR_pneg_enter_else("end_all_soln_neg_context");
+#endif
+
+
+		;}
+#undef MR_PROC_LABEL
+}
+        }
+      {
+        mercury__mutvar__get_mutvar_2_p_0((mercury__solutions__env).mercury__solutions__do_while_4_p_4_env_0__TypeInfo_for_T2_23, (mercury__solutions__env).mercury__solutions__do_while_4_p_4_env_0__Mutvar_11, &mercury__solutions__STATE_VARIABLE_Acc_19_19);
+      }
+{
+#define MR_PROC_LABEL mercury__solutions__do_while_4_p_4
+
+	MR_Word TypeInfo_for_T;
+	MR_Word SolutionsHeapPtr;
+	MR_Word OldVal;
+	MR_Word NewVal;
+
+	TypeInfo_for_T =  (mercury__solutions__env).mercury__solutions__do_while_4_p_4_env_0__TypeInfo_for_T2_23 ;
+	SolutionsHeapPtr =  mercury__solutions__SolutionsHeapPtr_9 ;
+	OldVal = (MR_Word) mercury__solutions__STATE_VARIABLE_Acc_19_19 ;
+		{
+
+    MR_PARTIAL_DEEP_COPY(SolutionsHeapPtr, OldVal, NewVal, TypeInfo_for_T);
+
+
+		;}
+#undef MR_PROC_LABEL
+	 mercury__solutions__STATE_VARIABLE_Acc_20_20  = (MR_Box) NewVal;
+}
+{
+#define MR_PROC_LABEL mercury__solutions__do_while_4_p_4
+
+	MR_Word SolutionsHeapPtr;
+
+	SolutionsHeapPtr =  mercury__solutions__SolutionsHeapPtr_9 ;
+		{
+
+#ifdef MR_RECLAIM_HP_ON_FAILURE
+    MR_sol_hp = (MR_Word *) SolutionsHeapPtr;
+#endif
+
+
+		;}
+#undef MR_PROC_LABEL
+}
+{
+#define MR_PROC_LABEL mercury__solutions__do_while_4_p_4
+
+
+		{
+
+#ifdef MR_USE_TRAIL
+    MR_discard_ticket();
+#endif
+
+
+		;}
+#undef MR_PROC_LABEL
+}
+{
+#define MR_PROC_LABEL mercury__solutions__do_while_4_p_4
+
+	MR_Word X;
+	MR_Word Y;
+
+	X = (MR_Word) mercury__solutions__STATE_VARIABLE_Acc_20_20 ;
+		{
+
+    Y = X;
+
+
+		;}
+#undef MR_PROC_LABEL
+	 *mercury__solutions__STATE_VARIABLE_Acc_18  = (MR_Box) Y;
+}
+    }
+  }
+}
+
+static void MR_CALL 
+mercury__solutions__do_while_4_p_3_1(
+  void * mercury__solutions__env_ptr_arg)
+{
+  {
+    struct mercury__solutions__do_while_4_p_3_env_0_s * mercury__solutions__env_ptr = (struct mercury__solutions__do_while_4_p_3_env_0_s *) mercury__solutions__env_ptr_arg;
+
+    MR_builtin_longjmp((mercury__solutions__env_ptr)->mercury__solutions__do_while_4_p_3_env_0__commit_0, 1);
+  }
+}
+
+static void MR_CALL 
+mercury__solutions__do_while_4_p_3_2(
+  void * mercury__solutions__env_ptr_arg)
+{
+  {
+    struct mercury__solutions__do_while_4_p_3_env_0_s * mercury__solutions__env_ptr = (struct mercury__solutions__do_while_4_p_3_env_0_s *) mercury__solutions__env_ptr_arg;
+
+    {
+      void MR_CALL (* mercury__solutions__func_1)(MR_Box, MR_Box, MR_Box *, MR_Box, MR_Box *);
+      MR_Box mercury__solutions__conv2_More_15;
+
+{
+#define MR_PROC_LABEL mercury__solutions__do_while_4_p_3
+
+	MR_Word TrailPtr;
+
+	TrailPtr =  (mercury__solutions__env_ptr)->mercury__solutions__do_while_4_p_3_env_0__TrailPtr_10 ;
+		{
+
+#ifdef MR_USE_TRAIL
+    /* check for outstanding delayed goals (``floundering'') */
+    MR_reset_ticket(TrailPtr, MR_solve);
+#endif
+
+
+		;}
+#undef MR_PROC_LABEL
+}
+{
+#define MR_PROC_LABEL mercury__solutions__do_while_4_p_3
+
+
+		{
+{
+#ifdef MR_RECLAIM_HP_ON_FAILURE
+    MR_MemoryZone   *temp_zone;
+    MR_Word         *temp_hp;
+
+    temp_zone = MR_ENGINE(MR_eng_heap_zone);
+    MR_ENGINE(MR_eng_heap_zone) = MR_ENGINE(MR_eng_solutions_heap_zone);
+    MR_ENGINE(MR_eng_solutions_heap_zone) = temp_zone;
+    temp_hp = MR_hp;
+    MR_hp_word = (MR_Word) MR_sol_hp;
+    MR_sol_hp = temp_hp;
+#endif
+}
+
+		;}
+#undef MR_PROC_LABEL
+}
+{
+#define MR_PROC_LABEL mercury__solutions__do_while_4_p_3
+
+	MR_Word TypeInfo_for_T;
+	MR_Word SolutionsHeapPtr;
+	MR_Word OldVal;
+	MR_Word NewVal;
+
+	TypeInfo_for_T =  (mercury__solutions__env_ptr)->mercury__solutions__do_while_4_p_3_env_0__TypeInfo_for_T_22 ;
+	SolutionsHeapPtr =  (mercury__solutions__env_ptr)->mercury__solutions__do_while_4_p_3_env_0__HeapPtr_8 ;
+	OldVal = (MR_Word) (mercury__solutions__env_ptr)->mercury__solutions__do_while_4_p_3_env_0__Answer0_12 ;
+		{
+
+    MR_PARTIAL_DEEP_COPY(SolutionsHeapPtr, OldVal, NewVal, TypeInfo_for_T);
+
+
+		;}
+#undef MR_PROC_LABEL
+	 (mercury__solutions__env_ptr)->mercury__solutions__do_while_4_p_3_env_0__Answer_13  = (MR_Box) NewVal;
+}
+      {
+        mercury__mutvar__get_mutvar_2_p_0((mercury__solutions__env_ptr)->mercury__solutions__do_while_4_p_3_env_0__TypeInfo_for_T2_23, (mercury__solutions__env_ptr)->mercury__solutions__do_while_4_p_3_env_0__Mutvar_11, &(mercury__solutions__env_ptr)->mercury__solutions__do_while_4_p_3_env_0__Acc0_14);
+      }
+      mercury__solutions__func_1 = ((void MR_CALL (*)(MR_Box, MR_Box, MR_Box *, MR_Box, MR_Box *)) (MR_hl_field(MR_mktag(0), (mercury__solutions__env_ptr)->mercury__solutions__do_while_4_p_3_env_0__CollectorPred_6, (MR_Integer) 1)));
+      {
+        mercury__solutions__func_1(((MR_Box) (mercury__solutions__env_ptr)->mercury__solutions__do_while_4_p_3_env_0__CollectorPred_6), (mercury__solutions__env_ptr)->mercury__solutions__do_while_4_p_3_env_0__Answer_13, &mercury__solutions__conv2_More_15, (mercury__solutions__env_ptr)->mercury__solutions__do_while_4_p_3_env_0__Acc0_14, &(mercury__solutions__env_ptr)->mercury__solutions__do_while_4_p_3_env_0__Acc1_16);
+      }
+      (mercury__solutions__env_ptr)->mercury__solutions__do_while_4_p_3_env_0__More_15 = ((MR_Word) mercury__solutions__conv2_More_15);
+      {
+        mercury__mutvar__set_mutvar_2_p_0((mercury__solutions__env_ptr)->mercury__solutions__do_while_4_p_3_env_0__TypeInfo_for_T2_23, (mercury__solutions__env_ptr)->mercury__solutions__do_while_4_p_3_env_0__Mutvar_11, (mercury__solutions__env_ptr)->mercury__solutions__do_while_4_p_3_env_0__Acc1_16);
+      }
+{
+#define MR_PROC_LABEL mercury__solutions__do_while_4_p_3
+
+
+		{
+{
+#ifdef MR_RECLAIM_HP_ON_FAILURE
+    MR_MemoryZone   *temp_zone;
+    MR_Word         *temp_hp;
+
+    temp_zone = MR_ENGINE(MR_eng_heap_zone);
+    MR_ENGINE(MR_eng_heap_zone) = MR_ENGINE(MR_eng_solutions_heap_zone);
+    MR_ENGINE(MR_eng_solutions_heap_zone) = temp_zone;
+    temp_hp = MR_hp;
+    MR_hp_word = (MR_Word) MR_sol_hp;
+    MR_sol_hp = temp_hp;
+#endif
+}
+
+		;}
+#undef MR_PROC_LABEL
+}
+      (mercury__solutions__env_ptr)->mercury__solutions__do_while_4_p_3_env_0__succeeded = ((mercury__solutions__env_ptr)->mercury__solutions__do_while_4_p_3_env_0__More_15 == (MR_Integer) 0);
+      if ((mercury__solutions__env_ptr)->mercury__solutions__do_while_4_p_3_env_0__succeeded)
+        {
+{
+#define MR_PROC_LABEL mercury__solutions__do_while_4_p_3
+
+
+		{
+
+#ifdef MR_USE_MINIMAL_MODEL_STACK_COPY
+    MR_pneg_enter_then();
+#endif
+
+
+		;}
+#undef MR_PROC_LABEL
+}
+          {
+            mercury__solutions__do_while_4_p_3_1(mercury__solutions__env_ptr);
+          }
+        }
+    }
+  }
+}
+
+static void MR_CALL 
+mercury__solutions__do_while_4_p_3_3(
+  void * mercury__solutions__env_ptr_arg)
+{
+  {
+    struct mercury__solutions__do_while_4_p_3_env_0_s * mercury__solutions__env_ptr = (struct mercury__solutions__do_while_4_p_3_env_0_s *) mercury__solutions__env_ptr_arg;
+
+    if (MR_builtin_setjmp((mercury__solutions__env_ptr)->mercury__solutions__do_while_4_p_3_env_0__commit_0) == 0)
+      {
+        {
+          void MR_CALL (* mercury__solutions__func_0)(MR_Box, MR_Box *, MR_Cont, void *) = ((void MR_CALL (*)(MR_Box, MR_Box *, MR_Cont, void *)) (MR_hl_field(MR_mktag(0), (mercury__solutions__env_ptr)->mercury__solutions__do_while_4_p_3_env_0__GeneratorPred_5, (MR_Integer) 1)));
+
+          {
+            mercury__solutions__func_0(((MR_Box) (mercury__solutions__env_ptr)->mercury__solutions__do_while_4_p_3_env_0__GeneratorPred_5), &(mercury__solutions__env_ptr)->mercury__solutions__do_while_4_p_3_env_0__Answer0_12, mercury__solutions__do_while_4_p_3_2, mercury__solutions__env_ptr);
+          }
+        }
+        (mercury__solutions__env_ptr)->mercury__solutions__do_while_4_p_3_env_0__succeeded = MR_FALSE;
+      }
+    else
+      (mercury__solutions__env_ptr)->mercury__solutions__do_while_4_p_3_env_0__succeeded = MR_TRUE;
+  }
+}
+
+void MR_CALL 
+mercury__solutions__do_while_4_p_3(
+  MR_Word mercury__solutions__TypeInfo_for_T_22,
+  MR_Word mercury__solutions__TypeInfo_for_T2_23,
+  MR_Word mercury__solutions__GeneratorPred_5,
+  MR_Word mercury__solutions__CollectorPred_6,
+  MR_Box mercury__solutions__STATE_VARIABLE_Acc_0_17,
+  MR_Box * mercury__solutions__STATE_VARIABLE_Acc_18)
+{
+  {
+    struct mercury__solutions__do_while_4_p_3_env_0_s mercury__solutions__env;
+
+    (mercury__solutions__env).mercury__solutions__do_while_4_p_3_env_0__TypeInfo_for_T_22 = mercury__solutions__TypeInfo_for_T_22;
+    (mercury__solutions__env).mercury__solutions__do_while_4_p_3_env_0__TypeInfo_for_T2_23 = mercury__solutions__TypeInfo_for_T2_23;
+    (mercury__solutions__env).mercury__solutions__do_while_4_p_3_env_0__GeneratorPred_5 = mercury__solutions__GeneratorPred_5;
+    (mercury__solutions__env).mercury__solutions__do_while_4_p_3_env_0__CollectorPred_6 = mercury__solutions__CollectorPred_6;
+    {
+      MR_Word mercury__solutions__SolutionsHeapPtr_9;
+      MR_Box mercury__solutions__STATE_VARIABLE_Acc_19_19;
+      MR_Box mercury__solutions__STATE_VARIABLE_Acc_20_20;
+      MR_Word mercury__solutions__TypeInfo_for_T2_24;
+
+{
+#define MR_PROC_LABEL mercury__solutions__do_while_4_p_3
+
+	MR_Word HeapPtr;
+	MR_Word SolutionsHeapPtr;
+	MR_Word TrailPtr;
+
+		{
+
+    /* save heap states */
+#ifdef MR_RECLAIM_HP_ON_FAILURE
+    HeapPtr = (MR_Word) MR_hp;
+    SolutionsHeapPtr = (MR_Word) MR_sol_hp;
+#else
+    HeapPtr = SolutionsHeapPtr = 0;
+#endif
+
+    /* save trail state */
+#ifdef MR_USE_TRAIL
+    MR_store_ticket(TrailPtr);
+#else
+    TrailPtr = 0;
+#endif
+
+
+		;}
+#undef MR_PROC_LABEL
+	 (mercury__solutions__env).mercury__solutions__do_while_4_p_3_env_0__HeapPtr_8  = HeapPtr;
+	 mercury__solutions__SolutionsHeapPtr_9  = SolutionsHeapPtr;
+	 (mercury__solutions__env).mercury__solutions__do_while_4_p_3_env_0__TrailPtr_10  = TrailPtr;
+}
+      {
+        mercury__mutvar__new_mutvar_2_p_0((mercury__solutions__env).mercury__solutions__do_while_4_p_3_env_0__TypeInfo_for_T2_23, mercury__solutions__STATE_VARIABLE_Acc_0_17, &(mercury__solutions__env).mercury__solutions__do_while_4_p_3_env_0__Mutvar_11);
+      }
+{
+#define MR_PROC_LABEL mercury__solutions__do_while_4_p_3
+
+
+		{
+
+#ifdef MR_USE_MINIMAL_MODEL_STACK_COPY
+    MR_pneg_enter_cond();
+#endif
+
+
+		;}
+#undef MR_PROC_LABEL
+}
+      {
+        mercury__solutions__do_while_4_p_3_3(&mercury__solutions__env);
+      }
+      if (!((mercury__solutions__env).mercury__solutions__do_while_4_p_3_env_0__succeeded))
+        {
+{
+#define MR_PROC_LABEL mercury__solutions__do_while_4_p_3
+
+
+		{
+
+#ifdef MR_USE_MINIMAL_MODEL_STACK_COPY
+    MR_pneg_enter_else("end_all_soln_neg_context");
+#endif
+
+
+		;}
+#undef MR_PROC_LABEL
+}
+        }
+      {
+        mercury__mutvar__get_mutvar_2_p_0((mercury__solutions__env).mercury__solutions__do_while_4_p_3_env_0__TypeInfo_for_T2_23, (mercury__solutions__env).mercury__solutions__do_while_4_p_3_env_0__Mutvar_11, &mercury__solutions__STATE_VARIABLE_Acc_19_19);
+      }
+{
+#define MR_PROC_LABEL mercury__solutions__do_while_4_p_3
+
+	MR_Word TypeInfo_for_T;
+	MR_Word SolutionsHeapPtr;
+	MR_Word OldVal;
+	MR_Word NewVal;
+
+	TypeInfo_for_T =  (mercury__solutions__env).mercury__solutions__do_while_4_p_3_env_0__TypeInfo_for_T2_23 ;
+	SolutionsHeapPtr =  mercury__solutions__SolutionsHeapPtr_9 ;
+	OldVal = (MR_Word) mercury__solutions__STATE_VARIABLE_Acc_19_19 ;
+		{
+
+    MR_PARTIAL_DEEP_COPY(SolutionsHeapPtr, OldVal, NewVal, TypeInfo_for_T);
+
+
+		;}
+#undef MR_PROC_LABEL
+	 mercury__solutions__STATE_VARIABLE_Acc_20_20  = (MR_Box) NewVal;
+}
+{
+#define MR_PROC_LABEL mercury__solutions__do_while_4_p_3
+
+	MR_Word SolutionsHeapPtr;
+
+	SolutionsHeapPtr =  mercury__solutions__SolutionsHeapPtr_9 ;
+		{
+
+#ifdef MR_RECLAIM_HP_ON_FAILURE
+    MR_sol_hp = (MR_Word *) SolutionsHeapPtr;
+#endif
+
+
+		;}
+#undef MR_PROC_LABEL
+}
+{
+#define MR_PROC_LABEL mercury__solutions__do_while_4_p_3
+
+
+		{
+
+#ifdef MR_USE_TRAIL
+    MR_discard_ticket();
+#endif
+
+
+		;}
+#undef MR_PROC_LABEL
+}
+{
+#define MR_PROC_LABEL mercury__solutions__do_while_4_p_3
+
+	MR_Word X;
+	MR_Word Y;
+
+	X = (MR_Word) mercury__solutions__STATE_VARIABLE_Acc_20_20 ;
+		{
+
+    Y = X;
+
+
+		;}
+#undef MR_PROC_LABEL
+	 *mercury__solutions__STATE_VARIABLE_Acc_18  = (MR_Box) Y;
+}
+    }
+  }
+}
+
+static void MR_CALL 
+mercury__solutions__do_while_4_p_2_1(
+  void * mercury__solutions__env_ptr_arg)
+{
+  {
+    struct mercury__solutions__do_while_4_p_2_env_0_s * mercury__solutions__env_ptr = (struct mercury__solutions__do_while_4_p_2_env_0_s *) mercury__solutions__env_ptr_arg;
+
+    MR_builtin_longjmp((mercury__solutions__env_ptr)->mercury__solutions__do_while_4_p_2_env_0__commit_0, 1);
+  }
+}
+
+static void MR_CALL 
+mercury__solutions__do_while_4_p_2_2(
+  void * mercury__solutions__env_ptr_arg)
+{
+  {
+    struct mercury__solutions__do_while_4_p_2_env_0_s * mercury__solutions__env_ptr = (struct mercury__solutions__do_while_4_p_2_env_0_s *) mercury__solutions__env_ptr_arg;
+
+    {
+      void MR_CALL (* mercury__solutions__func_1)(MR_Box, MR_Box, MR_Box *, MR_Box, MR_Box *);
+      MR_Box mercury__solutions__conv2_More_15;
+
+{
+#define MR_PROC_LABEL mercury__solutions__do_while_4_p_2
+
+	MR_Word TrailPtr;
+
+	TrailPtr =  (mercury__solutions__env_ptr)->mercury__solutions__do_while_4_p_2_env_0__TrailPtr_10 ;
+		{
+
+#ifdef MR_USE_TRAIL
+    /* check for outstanding delayed goals (``floundering'') */
+    MR_reset_ticket(TrailPtr, MR_solve);
+#endif
+
+
+		;}
+#undef MR_PROC_LABEL
+}
+{
+#define MR_PROC_LABEL mercury__solutions__do_while_4_p_2
+
+
+		{
+{
+#ifdef MR_RECLAIM_HP_ON_FAILURE
+    MR_MemoryZone   *temp_zone;
+    MR_Word         *temp_hp;
+
+    temp_zone = MR_ENGINE(MR_eng_heap_zone);
+    MR_ENGINE(MR_eng_heap_zone) = MR_ENGINE(MR_eng_solutions_heap_zone);
+    MR_ENGINE(MR_eng_solutions_heap_zone) = temp_zone;
+    temp_hp = MR_hp;
+    MR_hp_word = (MR_Word) MR_sol_hp;
+    MR_sol_hp = temp_hp;
+#endif
+}
+
+		;}
+#undef MR_PROC_LABEL
+}
+{
+#define MR_PROC_LABEL mercury__solutions__do_while_4_p_2
+
+	MR_Word TypeInfo_for_T;
+	MR_Word SolutionsHeapPtr;
+	MR_Word OldVal;
+	MR_Word NewVal;
+
+	TypeInfo_for_T =  (mercury__solutions__env_ptr)->mercury__solutions__do_while_4_p_2_env_0__TypeInfo_for_T_22 ;
+	SolutionsHeapPtr =  (mercury__solutions__env_ptr)->mercury__solutions__do_while_4_p_2_env_0__HeapPtr_8 ;
+	OldVal = (MR_Word) (mercury__solutions__env_ptr)->mercury__solutions__do_while_4_p_2_env_0__Answer0_12 ;
+		{
+
+    MR_PARTIAL_DEEP_COPY(SolutionsHeapPtr, OldVal, NewVal, TypeInfo_for_T);
+
+
+		;}
+#undef MR_PROC_LABEL
+	 (mercury__solutions__env_ptr)->mercury__solutions__do_while_4_p_2_env_0__Answer_13  = (MR_Box) NewVal;
+}
+      {
+        mercury__mutvar__get_mutvar_2_p_0((mercury__solutions__env_ptr)->mercury__solutions__do_while_4_p_2_env_0__TypeInfo_for_T2_23, (mercury__solutions__env_ptr)->mercury__solutions__do_while_4_p_2_env_0__Mutvar_11, &(mercury__solutions__env_ptr)->mercury__solutions__do_while_4_p_2_env_0__Acc0_14);
+      }
+      mercury__solutions__func_1 = ((void MR_CALL (*)(MR_Box, MR_Box, MR_Box *, MR_Box, MR_Box *)) (MR_hl_field(MR_mktag(0), (mercury__solutions__env_ptr)->mercury__solutions__do_while_4_p_2_env_0__CollectorPred_6, (MR_Integer) 1)));
+      {
+        mercury__solutions__func_1(((MR_Box) (mercury__solutions__env_ptr)->mercury__solutions__do_while_4_p_2_env_0__CollectorPred_6), (mercury__solutions__env_ptr)->mercury__solutions__do_while_4_p_2_env_0__Answer_13, &mercury__solutions__conv2_More_15, (mercury__solutions__env_ptr)->mercury__solutions__do_while_4_p_2_env_0__Acc0_14, &(mercury__solutions__env_ptr)->mercury__solutions__do_while_4_p_2_env_0__Acc1_16);
+      }
+      (mercury__solutions__env_ptr)->mercury__solutions__do_while_4_p_2_env_0__More_15 = ((MR_Word) mercury__solutions__conv2_More_15);
+      {
+        mercury__mutvar__set_mutvar_2_p_0((mercury__solutions__env_ptr)->mercury__solutions__do_while_4_p_2_env_0__TypeInfo_for_T2_23, (mercury__solutions__env_ptr)->mercury__solutions__do_while_4_p_2_env_0__Mutvar_11, (mercury__solutions__env_ptr)->mercury__solutions__do_while_4_p_2_env_0__Acc1_16);
+      }
+{
+#define MR_PROC_LABEL mercury__solutions__do_while_4_p_2
+
+
+		{
+{
+#ifdef MR_RECLAIM_HP_ON_FAILURE
+    MR_MemoryZone   *temp_zone;
+    MR_Word         *temp_hp;
+
+    temp_zone = MR_ENGINE(MR_eng_heap_zone);
+    MR_ENGINE(MR_eng_heap_zone) = MR_ENGINE(MR_eng_solutions_heap_zone);
+    MR_ENGINE(MR_eng_solutions_heap_zone) = temp_zone;
+    temp_hp = MR_hp;
+    MR_hp_word = (MR_Word) MR_sol_hp;
+    MR_sol_hp = temp_hp;
+#endif
+}
+
+		;}
+#undef MR_PROC_LABEL
+}
+      (mercury__solutions__env_ptr)->mercury__solutions__do_while_4_p_2_env_0__succeeded = ((mercury__solutions__env_ptr)->mercury__solutions__do_while_4_p_2_env_0__More_15 == (MR_Integer) 0);
+      if ((mercury__solutions__env_ptr)->mercury__solutions__do_while_4_p_2_env_0__succeeded)
+        {
+{
+#define MR_PROC_LABEL mercury__solutions__do_while_4_p_2
+
+
+		{
+
+#ifdef MR_USE_MINIMAL_MODEL_STACK_COPY
+    MR_pneg_enter_then();
+#endif
+
+
+		;}
+#undef MR_PROC_LABEL
+}
+          {
+            mercury__solutions__do_while_4_p_2_1(mercury__solutions__env_ptr);
+          }
+        }
+    }
+  }
+}
+
+static void MR_CALL 
+mercury__solutions__do_while_4_p_2_3(
+  void * mercury__solutions__env_ptr_arg)
+{
+  {
+    struct mercury__solutions__do_while_4_p_2_env_0_s * mercury__solutions__env_ptr = (struct mercury__solutions__do_while_4_p_2_env_0_s *) mercury__solutions__env_ptr_arg;
+
+    if (MR_builtin_setjmp((mercury__solutions__env_ptr)->mercury__solutions__do_while_4_p_2_env_0__commit_0) == 0)
+      {
+        {
+          void MR_CALL (* mercury__solutions__func_0)(MR_Box, MR_Box *, MR_Cont, void *) = ((void MR_CALL (*)(MR_Box, MR_Box *, MR_Cont, void *)) (MR_hl_field(MR_mktag(0), (mercury__solutions__env_ptr)->mercury__solutions__do_while_4_p_2_env_0__GeneratorPred_5, (MR_Integer) 1)));
+
+          {
+            mercury__solutions__func_0(((MR_Box) (mercury__solutions__env_ptr)->mercury__solutions__do_while_4_p_2_env_0__GeneratorPred_5), &(mercury__solutions__env_ptr)->mercury__solutions__do_while_4_p_2_env_0__Answer0_12, mercury__solutions__do_while_4_p_2_2, mercury__solutions__env_ptr);
+          }
+        }
+        (mercury__solutions__env_ptr)->mercury__solutions__do_while_4_p_2_env_0__succeeded = MR_FALSE;
+      }
+    else
+      (mercury__solutions__env_ptr)->mercury__solutions__do_while_4_p_2_env_0__succeeded = MR_TRUE;
+  }
+}
+
+void MR_CALL 
+mercury__solutions__do_while_4_p_2(
+  MR_Word mercury__solutions__TypeInfo_for_T_22,
+  MR_Word mercury__solutions__TypeInfo_for_T2_23,
+  MR_Word mercury__solutions__GeneratorPred_5,
+  MR_Word mercury__solutions__CollectorPred_6,
+  MR_Box mercury__solutions__STATE_VARIABLE_Acc_0_17,
+  MR_Box * mercury__solutions__STATE_VARIABLE_Acc_18)
+{
+  {
+    struct mercury__solutions__do_while_4_p_2_env_0_s mercury__solutions__env;
+
+    (mercury__solutions__env).mercury__solutions__do_while_4_p_2_env_0__TypeInfo_for_T_22 = mercury__solutions__TypeInfo_for_T_22;
+    (mercury__solutions__env).mercury__solutions__do_while_4_p_2_env_0__TypeInfo_for_T2_23 = mercury__solutions__TypeInfo_for_T2_23;
+    (mercury__solutions__env).mercury__solutions__do_while_4_p_2_env_0__GeneratorPred_5 = mercury__solutions__GeneratorPred_5;
+    (mercury__solutions__env).mercury__solutions__do_while_4_p_2_env_0__CollectorPred_6 = mercury__solutions__CollectorPred_6;
+    {
+      MR_Word mercury__solutions__SolutionsHeapPtr_9;
+      MR_Box mercury__solutions__STATE_VARIABLE_Acc_19_19;
+      MR_Box mercury__solutions__STATE_VARIABLE_Acc_20_20;
+      MR_Word mercury__solutions__TypeInfo_for_T2_24;
+
+{
+#define MR_PROC_LABEL mercury__solutions__do_while_4_p_2
+
+	MR_Word HeapPtr;
+	MR_Word SolutionsHeapPtr;
+	MR_Word TrailPtr;
+
+		{
+
+    /* save heap states */
+#ifdef MR_RECLAIM_HP_ON_FAILURE
+    HeapPtr = (MR_Word) MR_hp;
+    SolutionsHeapPtr = (MR_Word) MR_sol_hp;
+#else
+    HeapPtr = SolutionsHeapPtr = 0;
+#endif
+
+    /* save trail state */
+#ifdef MR_USE_TRAIL
+    MR_store_ticket(TrailPtr);
+#else
+    TrailPtr = 0;
+#endif
+
+
+		;}
+#undef MR_PROC_LABEL
+	 (mercury__solutions__env).mercury__solutions__do_while_4_p_2_env_0__HeapPtr_8  = HeapPtr;
+	 mercury__solutions__SolutionsHeapPtr_9  = SolutionsHeapPtr;
+	 (mercury__solutions__env).mercury__solutions__do_while_4_p_2_env_0__TrailPtr_10  = TrailPtr;
+}
+      {
+        mercury__mutvar__new_mutvar_2_p_1((mercury__solutions__env).mercury__solutions__do_while_4_p_2_env_0__TypeInfo_for_T2_23, mercury__solutions__STATE_VARIABLE_Acc_0_17, &(mercury__solutions__env).mercury__solutions__do_while_4_p_2_env_0__Mutvar_11);
+      }
+{
+#define MR_PROC_LABEL mercury__solutions__do_while_4_p_2
+
+
+		{
+
+#ifdef MR_USE_MINIMAL_MODEL_STACK_COPY
+    MR_pneg_enter_cond();
+#endif
+
+
+		;}
+#undef MR_PROC_LABEL
+}
+      {
+        mercury__solutions__do_while_4_p_2_3(&mercury__solutions__env);
+      }
+      if (!((mercury__solutions__env).mercury__solutions__do_while_4_p_2_env_0__succeeded))
+        {
+{
+#define MR_PROC_LABEL mercury__solutions__do_while_4_p_2
+
+
+		{
+
+#ifdef MR_USE_MINIMAL_MODEL_STACK_COPY
+    MR_pneg_enter_else("end_all_soln_neg_context");
+#endif
+
+
+		;}
+#undef MR_PROC_LABEL
+}
+        }
+      {
+        mercury__mutvar__get_mutvar_2_p_0((mercury__solutions__env).mercury__solutions__do_while_4_p_2_env_0__TypeInfo_for_T2_23, (mercury__solutions__env).mercury__solutions__do_while_4_p_2_env_0__Mutvar_11, &mercury__solutions__STATE_VARIABLE_Acc_19_19);
+      }
+{
+#define MR_PROC_LABEL mercury__solutions__do_while_4_p_2
+
+	MR_Word TypeInfo_for_T;
+	MR_Word SolutionsHeapPtr;
+	MR_Word OldVal;
+	MR_Word NewVal;
+
+	TypeInfo_for_T =  (mercury__solutions__env).mercury__solutions__do_while_4_p_2_env_0__TypeInfo_for_T2_23 ;
+	SolutionsHeapPtr =  mercury__solutions__SolutionsHeapPtr_9 ;
+	OldVal = (MR_Word) mercury__solutions__STATE_VARIABLE_Acc_19_19 ;
+		{
+
+    MR_PARTIAL_DEEP_COPY(SolutionsHeapPtr, OldVal, NewVal, TypeInfo_for_T);
+
+
+		;}
+#undef MR_PROC_LABEL
+	 mercury__solutions__STATE_VARIABLE_Acc_20_20  = (MR_Box) NewVal;
+}
+{
+#define MR_PROC_LABEL mercury__solutions__do_while_4_p_2
+
+	MR_Word SolutionsHeapPtr;
+
+	SolutionsHeapPtr =  mercury__solutions__SolutionsHeapPtr_9 ;
+		{
+
+#ifdef MR_RECLAIM_HP_ON_FAILURE
+    MR_sol_hp = (MR_Word *) SolutionsHeapPtr;
+#endif
+
+
+		;}
+#undef MR_PROC_LABEL
+}
+{
+#define MR_PROC_LABEL mercury__solutions__do_while_4_p_2
+
+
+		{
+
+#ifdef MR_USE_TRAIL
+    MR_discard_ticket();
+#endif
+
+
+		;}
+#undef MR_PROC_LABEL
+}
+{
+#define MR_PROC_LABEL mercury__solutions__do_while_4_p_2
+
+	MR_Word X;
+	MR_Word Y;
+
+	X = (MR_Word) mercury__solutions__STATE_VARIABLE_Acc_20_20 ;
+		{
+
+    Y = X;
+
+
+		;}
+#undef MR_PROC_LABEL
+	 *mercury__solutions__STATE_VARIABLE_Acc_18  = (MR_Box) Y;
+}
+    }
+  }
+}
+
+static void MR_CALL 
+mercury__solutions__do_while_4_p_1_1(
+  void * mercury__solutions__env_ptr_arg)
+{
+  {
+    struct mercury__solutions__do_while_4_p_1_env_0_s * mercury__solutions__env_ptr = (struct mercury__solutions__do_while_4_p_1_env_0_s *) mercury__solutions__env_ptr_arg;
+
+    MR_builtin_longjmp((mercury__solutions__env_ptr)->mercury__solutions__do_while_4_p_1_env_0__commit_0, 1);
+  }
+}
+
+static void MR_CALL 
+mercury__solutions__do_while_4_p_1_2(
+  void * mercury__solutions__env_ptr_arg)
+{
+  {
+    struct mercury__solutions__do_while_4_p_1_env_0_s * mercury__solutions__env_ptr = (struct mercury__solutions__do_while_4_p_1_env_0_s *) mercury__solutions__env_ptr_arg;
+
+    {
+      void MR_CALL (* mercury__solutions__func_1)(MR_Box, MR_Box, MR_Box *, MR_Box, MR_Box *);
+      MR_Box mercury__solutions__conv2_More_15;
+
+{
+#define MR_PROC_LABEL mercury__solutions__do_while_4_p_1
+
+	MR_Word TrailPtr;
+
+	TrailPtr =  (mercury__solutions__env_ptr)->mercury__solutions__do_while_4_p_1_env_0__TrailPtr_10 ;
+		{
+
+#ifdef MR_USE_TRAIL
+    /* check for outstanding delayed goals (``floundering'') */
+    MR_reset_ticket(TrailPtr, MR_solve);
+#endif
+
+
+		;}
+#undef MR_PROC_LABEL
+}
+{
+#define MR_PROC_LABEL mercury__solutions__do_while_4_p_1
+
+
+		{
+{
+#ifdef MR_RECLAIM_HP_ON_FAILURE
+    MR_MemoryZone   *temp_zone;
+    MR_Word         *temp_hp;
+
+    temp_zone = MR_ENGINE(MR_eng_heap_zone);
+    MR_ENGINE(MR_eng_heap_zone) = MR_ENGINE(MR_eng_solutions_heap_zone);
+    MR_ENGINE(MR_eng_solutions_heap_zone) = temp_zone;
+    temp_hp = MR_hp;
+    MR_hp_word = (MR_Word) MR_sol_hp;
+    MR_sol_hp = temp_hp;
+#endif
+}
+
+		;}
+#undef MR_PROC_LABEL
+}
+{
+#define MR_PROC_LABEL mercury__solutions__do_while_4_p_1
+
+	MR_Word TypeInfo_for_T;
+	MR_Word SolutionsHeapPtr;
+	MR_Word OldVal;
+	MR_Word NewVal;
+
+	TypeInfo_for_T =  (mercury__solutions__env_ptr)->mercury__solutions__do_while_4_p_1_env_0__TypeInfo_for_T_22 ;
+	SolutionsHeapPtr =  (mercury__solutions__env_ptr)->mercury__solutions__do_while_4_p_1_env_0__HeapPtr_8 ;
+	OldVal = (MR_Word) (mercury__solutions__env_ptr)->mercury__solutions__do_while_4_p_1_env_0__Answer0_12 ;
+		{
+
+    MR_PARTIAL_DEEP_COPY(SolutionsHeapPtr, OldVal, NewVal, TypeInfo_for_T);
+
+
+		;}
+#undef MR_PROC_LABEL
+	 (mercury__solutions__env_ptr)->mercury__solutions__do_while_4_p_1_env_0__Answer_13  = (MR_Box) NewVal;
+}
+      {
+        mercury__mutvar__get_mutvar_2_p_0((mercury__solutions__env_ptr)->mercury__solutions__do_while_4_p_1_env_0__TypeInfo_for_T2_23, (mercury__solutions__env_ptr)->mercury__solutions__do_while_4_p_1_env_0__Mutvar_11, &(mercury__solutions__env_ptr)->mercury__solutions__do_while_4_p_1_env_0__Acc0_14);
+      }
+      mercury__solutions__func_1 = ((void MR_CALL (*)(MR_Box, MR_Box, MR_Box *, MR_Box, MR_Box *)) (MR_hl_field(MR_mktag(0), (mercury__solutions__env_ptr)->mercury__solutions__do_while_4_p_1_env_0__CollectorPred_6, (MR_Integer) 1)));
+      {
+        mercury__solutions__func_1(((MR_Box) (mercury__solutions__env_ptr)->mercury__solutions__do_while_4_p_1_env_0__CollectorPred_6), (mercury__solutions__env_ptr)->mercury__solutions__do_while_4_p_1_env_0__Answer_13, &mercury__solutions__conv2_More_15, (mercury__solutions__env_ptr)->mercury__solutions__do_while_4_p_1_env_0__Acc0_14, &(mercury__solutions__env_ptr)->mercury__solutions__do_while_4_p_1_env_0__Acc1_16);
+      }
+      (mercury__solutions__env_ptr)->mercury__solutions__do_while_4_p_1_env_0__More_15 = ((MR_Word) mercury__solutions__conv2_More_15);
+      {
+        mercury__mutvar__set_mutvar_2_p_0((mercury__solutions__env_ptr)->mercury__solutions__do_while_4_p_1_env_0__TypeInfo_for_T2_23, (mercury__solutions__env_ptr)->mercury__solutions__do_while_4_p_1_env_0__Mutvar_11, (mercury__solutions__env_ptr)->mercury__solutions__do_while_4_p_1_env_0__Acc1_16);
+      }
+{
+#define MR_PROC_LABEL mercury__solutions__do_while_4_p_1
+
+
+		{
+{
+#ifdef MR_RECLAIM_HP_ON_FAILURE
+    MR_MemoryZone   *temp_zone;
+    MR_Word         *temp_hp;
+
+    temp_zone = MR_ENGINE(MR_eng_heap_zone);
+    MR_ENGINE(MR_eng_heap_zone) = MR_ENGINE(MR_eng_solutions_heap_zone);
+    MR_ENGINE(MR_eng_solutions_heap_zone) = temp_zone;
+    temp_hp = MR_hp;
+    MR_hp_word = (MR_Word) MR_sol_hp;
+    MR_sol_hp = temp_hp;
+#endif
+}
+
+		;}
+#undef MR_PROC_LABEL
+}
+      (mercury__solutions__env_ptr)->mercury__solutions__do_while_4_p_1_env_0__succeeded = ((mercury__solutions__env_ptr)->mercury__solutions__do_while_4_p_1_env_0__More_15 == (MR_Integer) 0);
+      if ((mercury__solutions__env_ptr)->mercury__solutions__do_while_4_p_1_env_0__succeeded)
+        {
+{
+#define MR_PROC_LABEL mercury__solutions__do_while_4_p_1
+
+
+		{
+
+#ifdef MR_USE_MINIMAL_MODEL_STACK_COPY
+    MR_pneg_enter_then();
+#endif
+
+
+		;}
+#undef MR_PROC_LABEL
+}
+          {
+            mercury__solutions__do_while_4_p_1_1(mercury__solutions__env_ptr);
+          }
+        }
+    }
+  }
+}
+
+static void MR_CALL 
+mercury__solutions__do_while_4_p_1_3(
+  void * mercury__solutions__env_ptr_arg)
+{
+  {
+    struct mercury__solutions__do_while_4_p_1_env_0_s * mercury__solutions__env_ptr = (struct mercury__solutions__do_while_4_p_1_env_0_s *) mercury__solutions__env_ptr_arg;
+
+    if (MR_builtin_setjmp((mercury__solutions__env_ptr)->mercury__solutions__do_while_4_p_1_env_0__commit_0) == 0)
+      {
+        {
+          void MR_CALL (* mercury__solutions__func_0)(MR_Box, MR_Box *, MR_Cont, void *) = ((void MR_CALL (*)(MR_Box, MR_Box *, MR_Cont, void *)) (MR_hl_field(MR_mktag(0), (mercury__solutions__env_ptr)->mercury__solutions__do_while_4_p_1_env_0__GeneratorPred_5, (MR_Integer) 1)));
+
+          {
+            mercury__solutions__func_0(((MR_Box) (mercury__solutions__env_ptr)->mercury__solutions__do_while_4_p_1_env_0__GeneratorPred_5), &(mercury__solutions__env_ptr)->mercury__solutions__do_while_4_p_1_env_0__Answer0_12, mercury__solutions__do_while_4_p_1_2, mercury__solutions__env_ptr);
+          }
+        }
+        (mercury__solutions__env_ptr)->mercury__solutions__do_while_4_p_1_env_0__succeeded = MR_FALSE;
+      }
+    else
+      (mercury__solutions__env_ptr)->mercury__solutions__do_while_4_p_1_env_0__succeeded = MR_TRUE;
+  }
+}
+
+void MR_CALL 
+mercury__solutions__do_while_4_p_1(
+  MR_Word mercury__solutions__TypeInfo_for_T_22,
+  MR_Word mercury__solutions__TypeInfo_for_T2_23,
+  MR_Word mercury__solutions__GeneratorPred_5,
+  MR_Word mercury__solutions__CollectorPred_6,
+  MR_Box mercury__solutions__STATE_VARIABLE_Acc_0_17,
+  MR_Box * mercury__solutions__STATE_VARIABLE_Acc_18)
+{
+  {
+    struct mercury__solutions__do_while_4_p_1_env_0_s mercury__solutions__env;
+
+    (mercury__solutions__env).mercury__solutions__do_while_4_p_1_env_0__TypeInfo_for_T_22 = mercury__solutions__TypeInfo_for_T_22;
+    (mercury__solutions__env).mercury__solutions__do_while_4_p_1_env_0__TypeInfo_for_T2_23 = mercury__solutions__TypeInfo_for_T2_23;
+    (mercury__solutions__env).mercury__solutions__do_while_4_p_1_env_0__GeneratorPred_5 = mercury__solutions__GeneratorPred_5;
+    (mercury__solutions__env).mercury__solutions__do_while_4_p_1_env_0__CollectorPred_6 = mercury__solutions__CollectorPred_6;
+    {
+      MR_Word mercury__solutions__SolutionsHeapPtr_9;
+      MR_Box mercury__solutions__STATE_VARIABLE_Acc_19_19;
+      MR_Box mercury__solutions__STATE_VARIABLE_Acc_20_20;
+      MR_Word mercury__solutions__TypeInfo_for_T2_24;
+
+{
+#define MR_PROC_LABEL mercury__solutions__do_while_4_p_1
+
+	MR_Word HeapPtr;
+	MR_Word SolutionsHeapPtr;
+	MR_Word TrailPtr;
+
+		{
+
+    /* save heap states */
+#ifdef MR_RECLAIM_HP_ON_FAILURE
+    HeapPtr = (MR_Word) MR_hp;
+    SolutionsHeapPtr = (MR_Word) MR_sol_hp;
+#else
+    HeapPtr = SolutionsHeapPtr = 0;
+#endif
+
+    /* save trail state */
+#ifdef MR_USE_TRAIL
+    MR_store_ticket(TrailPtr);
+#else
+    TrailPtr = 0;
+#endif
+
+
+		;}
+#undef MR_PROC_LABEL
+	 (mercury__solutions__env).mercury__solutions__do_while_4_p_1_env_0__HeapPtr_8  = HeapPtr;
+	 mercury__solutions__SolutionsHeapPtr_9  = SolutionsHeapPtr;
+	 (mercury__solutions__env).mercury__solutions__do_while_4_p_1_env_0__TrailPtr_10  = TrailPtr;
+}
+      {
+        mercury__mutvar__new_mutvar_2_p_1((mercury__solutions__env).mercury__solutions__do_while_4_p_1_env_0__TypeInfo_for_T2_23, mercury__solutions__STATE_VARIABLE_Acc_0_17, &(mercury__solutions__env).mercury__solutions__do_while_4_p_1_env_0__Mutvar_11);
+      }
+{
+#define MR_PROC_LABEL mercury__solutions__do_while_4_p_1
+
+
+		{
+
+#ifdef MR_USE_MINIMAL_MODEL_STACK_COPY
+    MR_pneg_enter_cond();
+#endif
+
+
+		;}
+#undef MR_PROC_LABEL
+}
+      {
+        mercury__solutions__do_while_4_p_1_3(&mercury__solutions__env);
+      }
+      if (!((mercury__solutions__env).mercury__solutions__do_while_4_p_1_env_0__succeeded))
+        {
+{
+#define MR_PROC_LABEL mercury__solutions__do_while_4_p_1
+
+
+		{
+
+#ifdef MR_USE_MINIMAL_MODEL_STACK_COPY
+    MR_pneg_enter_else("end_all_soln_neg_context");
+#endif
+
+
+		;}
+#undef MR_PROC_LABEL
+}
+        }
+      {
+        mercury__mutvar__get_mutvar_2_p_0((mercury__solutions__env).mercury__solutions__do_while_4_p_1_env_0__TypeInfo_for_T2_23, (mercury__solutions__env).mercury__solutions__do_while_4_p_1_env_0__Mutvar_11, &mercury__solutions__STATE_VARIABLE_Acc_19_19);
+      }
+{
+#define MR_PROC_LABEL mercury__solutions__do_while_4_p_1
+
+	MR_Word TypeInfo_for_T;
+	MR_Word SolutionsHeapPtr;
+	MR_Word OldVal;
+	MR_Word NewVal;
+
+	TypeInfo_for_T =  (mercury__solutions__env).mercury__solutions__do_while_4_p_1_env_0__TypeInfo_for_T2_23 ;
+	SolutionsHeapPtr =  mercury__solutions__SolutionsHeapPtr_9 ;
+	OldVal = (MR_Word) mercury__solutions__STATE_VARIABLE_Acc_19_19 ;
+		{
+
+    MR_PARTIAL_DEEP_COPY(SolutionsHeapPtr, OldVal, NewVal, TypeInfo_for_T);
+
+
+		;}
+#undef MR_PROC_LABEL
+	 mercury__solutions__STATE_VARIABLE_Acc_20_20  = (MR_Box) NewVal;
+}
+{
+#define MR_PROC_LABEL mercury__solutions__do_while_4_p_1
+
+	MR_Word SolutionsHeapPtr;
+
+	SolutionsHeapPtr =  mercury__solutions__SolutionsHeapPtr_9 ;
+		{
+
+#ifdef MR_RECLAIM_HP_ON_FAILURE
+    MR_sol_hp = (MR_Word *) SolutionsHeapPtr;
+#endif
+
+
+		;}
+#undef MR_PROC_LABEL
+}
+{
+#define MR_PROC_LABEL mercury__solutions__do_while_4_p_1
+
+
+		{
+
+#ifdef MR_USE_TRAIL
+    MR_discard_ticket();
+#endif
+
+
+		;}
+#undef MR_PROC_LABEL
+}
+{
+#define MR_PROC_LABEL mercury__solutions__do_while_4_p_1
+
+	MR_Word X;
+	MR_Word Y;
+
+	X = (MR_Word) mercury__solutions__STATE_VARIABLE_Acc_20_20 ;
+		{
+
+    Y = X;
+
+
+		;}
+#undef MR_PROC_LABEL
+	 *mercury__solutions__STATE_VARIABLE_Acc_18  = (MR_Box) Y;
+}
+    }
+  }
+}
+
+static void MR_CALL 
+mercury__solutions__do_while_4_p_0_1(
+  void * mercury__solutions__env_ptr_arg)
+{
+  {
+    struct mercury__solutions__do_while_4_p_0_env_0_s * mercury__solutions__env_ptr = (struct mercury__solutions__do_while_4_p_0_env_0_s *) mercury__solutions__env_ptr_arg;
+
+    MR_builtin_longjmp((mercury__solutions__env_ptr)->mercury__solutions__do_while_4_p_0_env_0__commit_0, 1);
+  }
+}
+
+static void MR_CALL 
+mercury__solutions__do_while_4_p_0_2(
+  void * mercury__solutions__env_ptr_arg)
+{
+  {
+    struct mercury__solutions__do_while_4_p_0_env_0_s * mercury__solutions__env_ptr = (struct mercury__solutions__do_while_4_p_0_env_0_s *) mercury__solutions__env_ptr_arg;
+
+    {
+      void MR_CALL (* mercury__solutions__func_1)(MR_Box, MR_Box, MR_Box *, MR_Box, MR_Box *);
+      MR_Box mercury__solutions__conv2_More_15;
+
+{
+#define MR_PROC_LABEL mercury__solutions__do_while_4_p_0
+
+	MR_Word TrailPtr;
+
+	TrailPtr =  (mercury__solutions__env_ptr)->mercury__solutions__do_while_4_p_0_env_0__TrailPtr_10 ;
+		{
+
+#ifdef MR_USE_TRAIL
+    /* check for outstanding delayed goals (``floundering'') */
+    MR_reset_ticket(TrailPtr, MR_solve);
+#endif
+
+
+		;}
+#undef MR_PROC_LABEL
+}
+{
+#define MR_PROC_LABEL mercury__solutions__do_while_4_p_0
+
+
+		{
+{
+#ifdef MR_RECLAIM_HP_ON_FAILURE
+    MR_MemoryZone   *temp_zone;
+    MR_Word         *temp_hp;
+
+    temp_zone = MR_ENGINE(MR_eng_heap_zone);
+    MR_ENGINE(MR_eng_heap_zone) = MR_ENGINE(MR_eng_solutions_heap_zone);
+    MR_ENGINE(MR_eng_solutions_heap_zone) = temp_zone;
+    temp_hp = MR_hp;
+    MR_hp_word = (MR_Word) MR_sol_hp;
+    MR_sol_hp = temp_hp;
+#endif
+}
+
+		;}
+#undef MR_PROC_LABEL
+}
+{
+#define MR_PROC_LABEL mercury__solutions__do_while_4_p_0
+
+	MR_Word TypeInfo_for_T;
+	MR_Word SolutionsHeapPtr;
+	MR_Word OldVal;
+	MR_Word NewVal;
+
+	TypeInfo_for_T =  (mercury__solutions__env_ptr)->mercury__solutions__do_while_4_p_0_env_0__TypeInfo_for_T_22 ;
+	SolutionsHeapPtr =  (mercury__solutions__env_ptr)->mercury__solutions__do_while_4_p_0_env_0__HeapPtr_8 ;
+	OldVal = (MR_Word) (mercury__solutions__env_ptr)->mercury__solutions__do_while_4_p_0_env_0__Answer0_12 ;
+		{
+
+    MR_PARTIAL_DEEP_COPY(SolutionsHeapPtr, OldVal, NewVal, TypeInfo_for_T);
+
+
+		;}
+#undef MR_PROC_LABEL
+	 (mercury__solutions__env_ptr)->mercury__solutions__do_while_4_p_0_env_0__Answer_13  = (MR_Box) NewVal;
+}
+      {
+        mercury__mutvar__get_mutvar_2_p_0((mercury__solutions__env_ptr)->mercury__solutions__do_while_4_p_0_env_0__TypeInfo_for_T2_23, (mercury__solutions__env_ptr)->mercury__solutions__do_while_4_p_0_env_0__Mutvar_11, &(mercury__solutions__env_ptr)->mercury__solutions__do_while_4_p_0_env_0__Acc0_14);
+      }
+      mercury__solutions__func_1 = ((void MR_CALL (*)(MR_Box, MR_Box, MR_Box *, MR_Box, MR_Box *)) (MR_hl_field(MR_mktag(0), (mercury__solutions__env_ptr)->mercury__solutions__do_while_4_p_0_env_0__CollectorPred_6, (MR_Integer) 1)));
+      {
+        mercury__solutions__func_1(((MR_Box) (mercury__solutions__env_ptr)->mercury__solutions__do_while_4_p_0_env_0__CollectorPred_6), (mercury__solutions__env_ptr)->mercury__solutions__do_while_4_p_0_env_0__Answer_13, &mercury__solutions__conv2_More_15, (mercury__solutions__env_ptr)->mercury__solutions__do_while_4_p_0_env_0__Acc0_14, &(mercury__solutions__env_ptr)->mercury__solutions__do_while_4_p_0_env_0__Acc1_16);
+      }
+      (mercury__solutions__env_ptr)->mercury__solutions__do_while_4_p_0_env_0__More_15 = ((MR_Word) mercury__solutions__conv2_More_15);
+      {
+        mercury__mutvar__set_mutvar_2_p_0((mercury__solutions__env_ptr)->mercury__solutions__do_while_4_p_0_env_0__TypeInfo_for_T2_23, (mercury__solutions__env_ptr)->mercury__solutions__do_while_4_p_0_env_0__Mutvar_11, (mercury__solutions__env_ptr)->mercury__solutions__do_while_4_p_0_env_0__Acc1_16);
+      }
+{
+#define MR_PROC_LABEL mercury__solutions__do_while_4_p_0
+
+
+		{
+{
+#ifdef MR_RECLAIM_HP_ON_FAILURE
+    MR_MemoryZone   *temp_zone;
+    MR_Word         *temp_hp;
+
+    temp_zone = MR_ENGINE(MR_eng_heap_zone);
+    MR_ENGINE(MR_eng_heap_zone) = MR_ENGINE(MR_eng_solutions_heap_zone);
+    MR_ENGINE(MR_eng_solutions_heap_zone) = temp_zone;
+    temp_hp = MR_hp;
+    MR_hp_word = (MR_Word) MR_sol_hp;
+    MR_sol_hp = temp_hp;
+#endif
+}
+
+		;}
+#undef MR_PROC_LABEL
+}
+      (mercury__solutions__env_ptr)->mercury__solutions__do_while_4_p_0_env_0__succeeded = ((mercury__solutions__env_ptr)->mercury__solutions__do_while_4_p_0_env_0__More_15 == (MR_Integer) 0);
+      if ((mercury__solutions__env_ptr)->mercury__solutions__do_while_4_p_0_env_0__succeeded)
+        {
+{
+#define MR_PROC_LABEL mercury__solutions__do_while_4_p_0
+
+
+		{
+
+#ifdef MR_USE_MINIMAL_MODEL_STACK_COPY
+    MR_pneg_enter_then();
+#endif
+
+
+		;}
+#undef MR_PROC_LABEL
+}
+          {
+            mercury__solutions__do_while_4_p_0_1(mercury__solutions__env_ptr);
+          }
+        }
+    }
+  }
+}
+
+static void MR_CALL 
+mercury__solutions__do_while_4_p_0_3(
+  void * mercury__solutions__env_ptr_arg)
+{
+  {
+    struct mercury__solutions__do_while_4_p_0_env_0_s * mercury__solutions__env_ptr = (struct mercury__solutions__do_while_4_p_0_env_0_s *) mercury__solutions__env_ptr_arg;
+
+    if (MR_builtin_setjmp((mercury__solutions__env_ptr)->mercury__solutions__do_while_4_p_0_env_0__commit_0) == 0)
+      {
+        {
+          void MR_CALL (* mercury__solutions__func_0)(MR_Box, MR_Box *, MR_Cont, void *) = ((void MR_CALL (*)(MR_Box, MR_Box *, MR_Cont, void *)) (MR_hl_field(MR_mktag(0), (mercury__solutions__env_ptr)->mercury__solutions__do_while_4_p_0_env_0__GeneratorPred_5, (MR_Integer) 1)));
+
+          {
+            mercury__solutions__func_0(((MR_Box) (mercury__solutions__env_ptr)->mercury__solutions__do_while_4_p_0_env_0__GeneratorPred_5), &(mercury__solutions__env_ptr)->mercury__solutions__do_while_4_p_0_env_0__Answer0_12, mercury__solutions__do_while_4_p_0_2, mercury__solutions__env_ptr);
+          }
+        }
+        (mercury__solutions__env_ptr)->mercury__solutions__do_while_4_p_0_env_0__succeeded = MR_FALSE;
+      }
+    else
+      (mercury__solutions__env_ptr)->mercury__solutions__do_while_4_p_0_env_0__succeeded = MR_TRUE;
+  }
+}
+
+void MR_CALL 
+mercury__solutions__do_while_4_p_0(
+  MR_Word mercury__solutions__TypeInfo_for_T_22,
+  MR_Word mercury__solutions__TypeInfo_for_T2_23,
+  MR_Word mercury__solutions__GeneratorPred_5,
+  MR_Word mercury__solutions__CollectorPred_6,
+  MR_Box mercury__solutions__STATE_VARIABLE_Acc_0_17,
+  MR_Box * mercury__solutions__STATE_VARIABLE_Acc_18)
+{
+  {
+    struct mercury__solutions__do_while_4_p_0_env_0_s mercury__solutions__env;
+
+    (mercury__solutions__env).mercury__solutions__do_while_4_p_0_env_0__TypeInfo_for_T_22 = mercury__solutions__TypeInfo_for_T_22;
+    (mercury__solutions__env).mercury__solutions__do_while_4_p_0_env_0__TypeInfo_for_T2_23 = mercury__solutions__TypeInfo_for_T2_23;
+    (mercury__solutions__env).mercury__solutions__do_while_4_p_0_env_0__GeneratorPred_5 = mercury__solutions__GeneratorPred_5;
+    (mercury__solutions__env).mercury__solutions__do_while_4_p_0_env_0__CollectorPred_6 = mercury__solutions__CollectorPred_6;
+    {
+      MR_Word mercury__solutions__SolutionsHeapPtr_9;
+      MR_Box mercury__solutions__STATE_VARIABLE_Acc_19_19;
+      MR_Box mercury__solutions__STATE_VARIABLE_Acc_20_20;
+      MR_Word mercury__solutions__TypeInfo_for_T2_24;
+
+{
+#define MR_PROC_LABEL mercury__solutions__do_while_4_p_0
+
+	MR_Word HeapPtr;
+	MR_Word SolutionsHeapPtr;
+	MR_Word TrailPtr;
+
+		{
+
+    /* save heap states */
+#ifdef MR_RECLAIM_HP_ON_FAILURE
+    HeapPtr = (MR_Word) MR_hp;
+    SolutionsHeapPtr = (MR_Word) MR_sol_hp;
+#else
+    HeapPtr = SolutionsHeapPtr = 0;
+#endif
+
+    /* save trail state */
+#ifdef MR_USE_TRAIL
+    MR_store_ticket(TrailPtr);
+#else
+    TrailPtr = 0;
+#endif
+
+
+		;}
+#undef MR_PROC_LABEL
+	 (mercury__solutions__env).mercury__solutions__do_while_4_p_0_env_0__HeapPtr_8  = HeapPtr;
+	 mercury__solutions__SolutionsHeapPtr_9  = SolutionsHeapPtr;
+	 (mercury__solutions__env).mercury__solutions__do_while_4_p_0_env_0__TrailPtr_10  = TrailPtr;
+}
+      {
+        mercury__mutvar__new_mutvar_2_p_0((mercury__solutions__env).mercury__solutions__do_while_4_p_0_env_0__TypeInfo_for_T2_23, mercury__solutions__STATE_VARIABLE_Acc_0_17, &(mercury__solutions__env).mercury__solutions__do_while_4_p_0_env_0__Mutvar_11);
+      }
+{
+#define MR_PROC_LABEL mercury__solutions__do_while_4_p_0
+
+
+		{
+
+#ifdef MR_USE_MINIMAL_MODEL_STACK_COPY
+    MR_pneg_enter_cond();
+#endif
+
+
+		;}
+#undef MR_PROC_LABEL
+}
+      {
+        mercury__solutions__do_while_4_p_0_3(&mercury__solutions__env);
+      }
+      if (!((mercury__solutions__env).mercury__solutions__do_while_4_p_0_env_0__succeeded))
+        {
+{
+#define MR_PROC_LABEL mercury__solutions__do_while_4_p_0
+
+
+		{
+
+#ifdef MR_USE_MINIMAL_MODEL_STACK_COPY
+    MR_pneg_enter_else("end_all_soln_neg_context");
+#endif
+
+
+		;}
+#undef MR_PROC_LABEL
+}
+        }
+      {
+        mercury__mutvar__get_mutvar_2_p_0((mercury__solutions__env).mercury__solutions__do_while_4_p_0_env_0__TypeInfo_for_T2_23, (mercury__solutions__env).mercury__solutions__do_while_4_p_0_env_0__Mutvar_11, &mercury__solutions__STATE_VARIABLE_Acc_19_19);
+      }
+{
+#define MR_PROC_LABEL mercury__solutions__do_while_4_p_0
+
+	MR_Word TypeInfo_for_T;
+	MR_Word SolutionsHeapPtr;
+	MR_Word OldVal;
+	MR_Word NewVal;
+
+	TypeInfo_for_T =  (mercury__solutions__env).mercury__solutions__do_while_4_p_0_env_0__TypeInfo_for_T2_23 ;
+	SolutionsHeapPtr =  mercury__solutions__SolutionsHeapPtr_9 ;
+	OldVal = (MR_Word) mercury__solutions__STATE_VARIABLE_Acc_19_19 ;
+		{
+
+    MR_PARTIAL_DEEP_COPY(SolutionsHeapPtr, OldVal, NewVal, TypeInfo_for_T);
+
+
+		;}
+#undef MR_PROC_LABEL
+	 mercury__solutions__STATE_VARIABLE_Acc_20_20  = (MR_Box) NewVal;
+}
+{
+#define MR_PROC_LABEL mercury__solutions__do_while_4_p_0
+
+	MR_Word SolutionsHeapPtr;
+
+	SolutionsHeapPtr =  mercury__solutions__SolutionsHeapPtr_9 ;
+		{
+
+#ifdef MR_RECLAIM_HP_ON_FAILURE
+    MR_sol_hp = (MR_Word *) SolutionsHeapPtr;
+#endif
+
+
+		;}
+#undef MR_PROC_LABEL
+}
+{
+#define MR_PROC_LABEL mercury__solutions__do_while_4_p_0
+
+
+		{
+
+#ifdef MR_USE_TRAIL
+    MR_discard_ticket();
+#endif
+
+
+		;}
+#undef MR_PROC_LABEL
+}
+{
+#define MR_PROC_LABEL mercury__solutions__do_while_4_p_0
+
+	MR_Word X;
+	MR_Word Y;
+
+	X = (MR_Word) mercury__solutions__STATE_VARIABLE_Acc_20_20 ;
+		{
+
+    Y = X;
+
+
+		;}
+#undef MR_PROC_LABEL
+	 *mercury__solutions__STATE_VARIABLE_Acc_18  = (MR_Box) Y;
+}
+    }
+  }
+}
+
+void MR_CALL 
+mercury__solutions__unsorted_aggregate2_6_p_7(
+  MR_Word mercury__solutions__TypeInfo_for_T_17,
+  MR_Word mercury__solutions__TypeInfo_for_U_18,
+  MR_Word mercury__solutions__TypeInfo_for_V_19,
+  MR_Word mercury__solutions__Generator_7,
+  MR_Word mercury__solutions__AccumulatorPred_8,
+  MR_Box mercury__solutions__STATE_VARIABLE_Acc1_0_11,
+  MR_Box * mercury__solutions__STATE_VARIABLE_Acc1_12,
+  MR_Box mercury__solutions__STATE_VARIABLE_Acc2_0_13,
+  MR_Box * mercury__solutions__STATE_VARIABLE_Acc2_14)
+{
+  {
+    MR_bool mercury__solutions__succeeded;
+
+    {
+      mercury__solutions__builtin_aggregate2_6_p_7(mercury__solutions__TypeInfo_for_T_17, mercury__solutions__TypeInfo_for_U_18, mercury__solutions__TypeInfo_for_V_19, mercury__solutions__Generator_7, mercury__solutions__AccumulatorPred_8, mercury__solutions__STATE_VARIABLE_Acc1_0_11, mercury__solutions__STATE_VARIABLE_Acc1_12, mercury__solutions__STATE_VARIABLE_Acc2_0_13, mercury__solutions__STATE_VARIABLE_Acc2_14);
+    }
+  }
+}
+
+void MR_CALL 
+mercury__solutions__unsorted_aggregate2_6_p_6(
+  MR_Word mercury__solutions__TypeInfo_for_T_17,
+  MR_Word mercury__solutions__TypeInfo_for_U_18,
+  MR_Word mercury__solutions__TypeInfo_for_V_19,
+  MR_Word mercury__solutions__Generator_7,
+  MR_Word mercury__solutions__AccumulatorPred_8,
+  MR_Box mercury__solutions__STATE_VARIABLE_Acc1_0_11,
+  MR_Box * mercury__solutions__STATE_VARIABLE_Acc1_12,
+  MR_Box mercury__solutions__STATE_VARIABLE_Acc2_0_13,
+  MR_Box * mercury__solutions__STATE_VARIABLE_Acc2_14)
+{
+  {
+    MR_bool mercury__solutions__succeeded;
+
+    {
+      mercury__solutions__builtin_aggregate2_6_p_6(mercury__solutions__TypeInfo_for_T_17, mercury__solutions__TypeInfo_for_U_18, mercury__solutions__TypeInfo_for_V_19, mercury__solutions__Generator_7, mercury__solutions__AccumulatorPred_8, mercury__solutions__STATE_VARIABLE_Acc1_0_11, mercury__solutions__STATE_VARIABLE_Acc1_12, mercury__solutions__STATE_VARIABLE_Acc2_0_13, mercury__solutions__STATE_VARIABLE_Acc2_14);
+    }
+  }
+}
+
+void MR_CALL 
+mercury__solutions__unsorted_aggregate2_6_p_5(
+  MR_Word mercury__solutions__TypeInfo_for_T_17,
+  MR_Word mercury__solutions__TypeInfo_for_U_18,
+  MR_Word mercury__solutions__TypeInfo_for_V_19,
+  MR_Word mercury__solutions__Generator_7,
+  MR_Word mercury__solutions__AccumulatorPred_8,
+  MR_Box mercury__solutions__STATE_VARIABLE_Acc1_0_11,
+  MR_Box * mercury__solutions__STATE_VARIABLE_Acc1_12,
+  MR_Box mercury__solutions__STATE_VARIABLE_Acc2_0_13,
+  MR_Box * mercury__solutions__STATE_VARIABLE_Acc2_14)
+{
+  {
+    MR_bool mercury__solutions__succeeded;
+
+    {
+      mercury__solutions__builtin_aggregate2_6_p_5(mercury__solutions__TypeInfo_for_T_17, mercury__solutions__TypeInfo_for_U_18, mercury__solutions__TypeInfo_for_V_19, mercury__solutions__Generator_7, mercury__solutions__AccumulatorPred_8, mercury__solutions__STATE_VARIABLE_Acc1_0_11, mercury__solutions__STATE_VARIABLE_Acc1_12, mercury__solutions__STATE_VARIABLE_Acc2_0_13, mercury__solutions__STATE_VARIABLE_Acc2_14);
+    }
+  }
+}
+
+void MR_CALL 
+mercury__solutions__unsorted_aggregate2_6_p_4(
+  MR_Word mercury__solutions__TypeInfo_for_T_17,
+  MR_Word mercury__solutions__TypeInfo_for_U_18,
+  MR_Word mercury__solutions__TypeInfo_for_V_19,
+  MR_Word mercury__solutions__Generator_7,
+  MR_Word mercury__solutions__AccumulatorPred_8,
+  MR_Box mercury__solutions__STATE_VARIABLE_Acc1_0_11,
+  MR_Box * mercury__solutions__STATE_VARIABLE_Acc1_12,
+  MR_Box mercury__solutions__STATE_VARIABLE_Acc2_0_13,
+  MR_Box * mercury__solutions__STATE_VARIABLE_Acc2_14)
+{
+  {
+    MR_bool mercury__solutions__succeeded;
+
+    {
+      mercury__solutions__builtin_aggregate2_6_p_4(mercury__solutions__TypeInfo_for_T_17, mercury__solutions__TypeInfo_for_U_18, mercury__solutions__TypeInfo_for_V_19, mercury__solutions__Generator_7, mercury__solutions__AccumulatorPred_8, mercury__solutions__STATE_VARIABLE_Acc1_0_11, mercury__solutions__STATE_VARIABLE_Acc1_12, mercury__solutions__STATE_VARIABLE_Acc2_0_13, mercury__solutions__STATE_VARIABLE_Acc2_14);
+    }
+  }
+}
+
+void MR_CALL 
+mercury__solutions__unsorted_aggregate2_6_p_3(
+  MR_Word mercury__solutions__TypeInfo_for_T_17,
+  MR_Word mercury__solutions__TypeInfo_for_U_18,
+  MR_Word mercury__solutions__TypeInfo_for_V_19,
+  MR_Word mercury__solutions__Generator_7,
+  MR_Word mercury__solutions__AccumulatorPred_8,
+  MR_Box mercury__solutions__STATE_VARIABLE_Acc1_0_11,
+  MR_Box * mercury__solutions__STATE_VARIABLE_Acc1_12,
+  MR_Box mercury__solutions__STATE_VARIABLE_Acc2_0_13,
+  MR_Box * mercury__solutions__STATE_VARIABLE_Acc2_14)
+{
+  {
+    MR_bool mercury__solutions__succeeded;
+
+    {
+      mercury__solutions__builtin_aggregate2_6_p_3(mercury__solutions__TypeInfo_for_T_17, mercury__solutions__TypeInfo_for_U_18, mercury__solutions__TypeInfo_for_V_19, mercury__solutions__Generator_7, mercury__solutions__AccumulatorPred_8, mercury__solutions__STATE_VARIABLE_Acc1_0_11, mercury__solutions__STATE_VARIABLE_Acc1_12, mercury__solutions__STATE_VARIABLE_Acc2_0_13, mercury__solutions__STATE_VARIABLE_Acc2_14);
+    }
+  }
+}
+
+void MR_CALL 
+mercury__solutions__unsorted_aggregate2_6_p_2(
+  MR_Word mercury__solutions__TypeInfo_for_T_17,
+  MR_Word mercury__solutions__TypeInfo_for_U_18,
+  MR_Word mercury__solutions__TypeInfo_for_V_19,
+  MR_Word mercury__solutions__Generator_7,
+  MR_Word mercury__solutions__AccumulatorPred_8,
+  MR_Box mercury__solutions__STATE_VARIABLE_Acc1_0_11,
+  MR_Box * mercury__solutions__STATE_VARIABLE_Acc1_12,
+  MR_Box mercury__solutions__STATE_VARIABLE_Acc2_0_13,
+  MR_Box * mercury__solutions__STATE_VARIABLE_Acc2_14)
+{
+  {
+    MR_bool mercury__solutions__succeeded;
+
+    {
+      mercury__solutions__builtin_aggregate2_6_p_2(mercury__solutions__TypeInfo_for_T_17, mercury__solutions__TypeInfo_for_U_18, mercury__solutions__TypeInfo_for_V_19, mercury__solutions__Generator_7, mercury__solutions__AccumulatorPred_8, mercury__solutions__STATE_VARIABLE_Acc1_0_11, mercury__solutions__STATE_VARIABLE_Acc1_12, mercury__solutions__STATE_VARIABLE_Acc2_0_13, mercury__solutions__STATE_VARIABLE_Acc2_14);
+    }
+  }
+}
+
+void MR_CALL 
+mercury__solutions__unsorted_aggregate2_6_p_1(
+  MR_Word mercury__solutions__TypeInfo_for_T_17,
+  MR_Word mercury__solutions__TypeInfo_for_U_18,
+  MR_Word mercury__solutions__TypeInfo_for_V_19,
+  MR_Word mercury__solutions__Generator_7,
+  MR_Word mercury__solutions__AccumulatorPred_8,
+  MR_Box mercury__solutions__STATE_VARIABLE_Acc1_0_11,
+  MR_Box * mercury__solutions__STATE_VARIABLE_Acc1_12,
+  MR_Box mercury__solutions__STATE_VARIABLE_Acc2_0_13,
+  MR_Box * mercury__solutions__STATE_VARIABLE_Acc2_14)
+{
+  {
+    MR_bool mercury__solutions__succeeded;
+
+    {
+      mercury__solutions__builtin_aggregate2_6_p_1(mercury__solutions__TypeInfo_for_T_17, mercury__solutions__TypeInfo_for_U_18, mercury__solutions__TypeInfo_for_V_19, mercury__solutions__Generator_7, mercury__solutions__AccumulatorPred_8, mercury__solutions__STATE_VARIABLE_Acc1_0_11, mercury__solutions__STATE_VARIABLE_Acc1_12, mercury__solutions__STATE_VARIABLE_Acc2_0_13, mercury__solutions__STATE_VARIABLE_Acc2_14);
+    }
+  }
+}
+
+void MR_CALL 
+mercury__solutions__unsorted_aggregate2_6_p_0(
+  MR_Word mercury__solutions__TypeInfo_for_T_17,
+  MR_Word mercury__solutions__TypeInfo_for_U_18,
+  MR_Word mercury__solutions__TypeInfo_for_V_19,
+  MR_Word mercury__solutions__Generator_7,
+  MR_Word mercury__solutions__AccumulatorPred_8,
+  MR_Box mercury__solutions__STATE_VARIABLE_Acc1_0_11,
+  MR_Box * mercury__solutions__STATE_VARIABLE_Acc1_12,
+  MR_Box mercury__solutions__STATE_VARIABLE_Acc2_0_13,
+  MR_Box * mercury__solutions__STATE_VARIABLE_Acc2_14)
+{
+  {
+    MR_bool mercury__solutions__succeeded;
+
+    {
+      mercury__solutions__builtin_aggregate2_6_p_0(mercury__solutions__TypeInfo_for_T_17, mercury__solutions__TypeInfo_for_U_18, mercury__solutions__TypeInfo_for_V_19, mercury__solutions__Generator_7, mercury__solutions__AccumulatorPred_8, mercury__solutions__STATE_VARIABLE_Acc1_0_11, mercury__solutions__STATE_VARIABLE_Acc1_12, mercury__solutions__STATE_VARIABLE_Acc2_0_13, mercury__solutions__STATE_VARIABLE_Acc2_14);
+    }
+  }
+}
+
+void MR_CALL 
+mercury__solutions__unsorted_aggregate_4_p_9(
+  MR_Word mercury__solutions__TypeInfo_for_T_11,
+  MR_Word mercury__solutions__TypeInfo_for_U_12,
+  MR_Word mercury__solutions__Generator_5,
+  MR_Word mercury__solutions__AccumulatorPred_6,
+  MR_Box mercury__solutions__STATE_VARIABLE_Acc_0_8,
+  MR_Box * mercury__solutions__STATE_VARIABLE_Acc_9)
+{
+  {
+    MR_bool mercury__solutions__succeeded;
+
+    {
+      mercury__solutions__builtin_aggregate_4_p_9(mercury__solutions__TypeInfo_for_T_11, mercury__solutions__TypeInfo_for_U_12, mercury__solutions__Generator_5, mercury__solutions__AccumulatorPred_6, mercury__solutions__STATE_VARIABLE_Acc_0_8, mercury__solutions__STATE_VARIABLE_Acc_9);
+    }
+  }
+}
+
+void MR_CALL 
+mercury__solutions__unsorted_aggregate_4_p_8(
+  MR_Word mercury__solutions__TypeInfo_for_T_11,
+  MR_Word mercury__solutions__TypeInfo_for_U_12,
+  MR_Word mercury__solutions__Generator_5,
+  MR_Word mercury__solutions__AccumulatorPred_6,
+  MR_Box mercury__solutions__STATE_VARIABLE_Acc_0_8,
+  MR_Box * mercury__solutions__STATE_VARIABLE_Acc_9)
+{
+  {
+    MR_bool mercury__solutions__succeeded;
+
+    {
+      mercury__solutions__builtin_aggregate_4_p_8(mercury__solutions__TypeInfo_for_T_11, mercury__solutions__TypeInfo_for_U_12, mercury__solutions__Generator_5, mercury__solutions__AccumulatorPred_6, mercury__solutions__STATE_VARIABLE_Acc_0_8, mercury__solutions__STATE_VARIABLE_Acc_9);
+    }
+  }
+}
+
+void MR_CALL 
+mercury__solutions__unsorted_aggregate_4_p_7(
+  MR_Word mercury__solutions__TypeInfo_for_T_11,
+  MR_Word mercury__solutions__TypeInfo_for_U_12,
+  MR_Word mercury__solutions__Generator_5,
+  MR_Word mercury__solutions__AccumulatorPred_6,
+  MR_Box mercury__solutions__STATE_VARIABLE_Acc_0_8,
+  MR_Box * mercury__solutions__STATE_VARIABLE_Acc_9)
+{
+  {
+    MR_bool mercury__solutions__succeeded;
+
+    {
+      mercury__solutions__builtin_aggregate_4_p_7(mercury__solutions__TypeInfo_for_T_11, mercury__solutions__TypeInfo_for_U_12, mercury__solutions__Generator_5, mercury__solutions__AccumulatorPred_6, mercury__solutions__STATE_VARIABLE_Acc_0_8, mercury__solutions__STATE_VARIABLE_Acc_9);
+    }
+  }
+}
+
+void MR_CALL 
+mercury__solutions__unsorted_aggregate_4_p_6(
+  MR_Word mercury__solutions__TypeInfo_for_T_11,
+  MR_Word mercury__solutions__TypeInfo_for_U_12,
+  MR_Word mercury__solutions__Generator_5,
+  MR_Word mercury__solutions__AccumulatorPred_6,
+  MR_Box mercury__solutions__STATE_VARIABLE_Acc_0_8,
+  MR_Box * mercury__solutions__STATE_VARIABLE_Acc_9)
+{
+  {
+    MR_bool mercury__solutions__succeeded;
+
+    {
+      mercury__solutions__builtin_aggregate_4_p_6(mercury__solutions__TypeInfo_for_T_11, mercury__solutions__TypeInfo_for_U_12, mercury__solutions__Generator_5, mercury__solutions__AccumulatorPred_6, mercury__solutions__STATE_VARIABLE_Acc_0_8, mercury__solutions__STATE_VARIABLE_Acc_9);
+    }
+  }
+}
+
+void MR_CALL 
+mercury__solutions__unsorted_aggregate_4_p_5(
+  MR_Word mercury__solutions__TypeInfo_for_T_11,
+  MR_Word mercury__solutions__TypeInfo_for_U_12,
+  MR_Word mercury__solutions__Generator_5,
+  MR_Word mercury__solutions__AccumulatorPred_6,
+  MR_Box mercury__solutions__STATE_VARIABLE_Acc_0_8,
+  MR_Box * mercury__solutions__STATE_VARIABLE_Acc_9)
+{
+  {
+    MR_bool mercury__solutions__succeeded;
+
+    {
+      mercury__solutions__builtin_aggregate_4_p_5(mercury__solutions__TypeInfo_for_T_11, mercury__solutions__TypeInfo_for_U_12, mercury__solutions__Generator_5, mercury__solutions__AccumulatorPred_6, mercury__solutions__STATE_VARIABLE_Acc_0_8, mercury__solutions__STATE_VARIABLE_Acc_9);
+    }
+  }
+}
+
+void MR_CALL 
+mercury__solutions__unsorted_aggregate_4_p_4(
+  MR_Word mercury__solutions__TypeInfo_for_T_11,
+  MR_Word mercury__solutions__TypeInfo_for_U_12,
+  MR_Word mercury__solutions__Generator_5,
+  MR_Word mercury__solutions__AccumulatorPred_6,
+  MR_Box mercury__solutions__STATE_VARIABLE_Acc_0_8,
+  MR_Box * mercury__solutions__STATE_VARIABLE_Acc_9)
+{
+  {
+    MR_bool mercury__solutions__succeeded;
+
+    {
+      mercury__solutions__builtin_aggregate_4_p_4(mercury__solutions__TypeInfo_for_T_11, mercury__solutions__TypeInfo_for_U_12, mercury__solutions__Generator_5, mercury__solutions__AccumulatorPred_6, mercury__solutions__STATE_VARIABLE_Acc_0_8, mercury__solutions__STATE_VARIABLE_Acc_9);
+    }
+  }
+}
+
+void MR_CALL 
+mercury__solutions__unsorted_aggregate_4_p_3(
+  MR_Word mercury__solutions__TypeInfo_for_T_11,
+  MR_Word mercury__solutions__TypeInfo_for_U_12,
+  MR_Word mercury__solutions__Generator_5,
+  MR_Word mercury__solutions__AccumulatorPred_6,
+  MR_Box mercury__solutions__STATE_VARIABLE_Acc_0_8,
+  MR_Box * mercury__solutions__STATE_VARIABLE_Acc_9)
+{
+  {
+    MR_bool mercury__solutions__succeeded;
+
+    {
+      mercury__solutions__builtin_aggregate_4_p_3(mercury__solutions__TypeInfo_for_T_11, mercury__solutions__TypeInfo_for_U_12, mercury__solutions__Generator_5, mercury__solutions__AccumulatorPred_6, mercury__solutions__STATE_VARIABLE_Acc_0_8, mercury__solutions__STATE_VARIABLE_Acc_9);
+    }
+  }
+}
+
+void MR_CALL 
+mercury__solutions__unsorted_aggregate_4_p_2(
+  MR_Word mercury__solutions__TypeInfo_for_T_11,
+  MR_Word mercury__solutions__TypeInfo_for_U_12,
+  MR_Word mercury__solutions__Generator_5,
+  MR_Word mercury__solutions__AccumulatorPred_6,
+  MR_Box mercury__solutions__STATE_VARIABLE_Acc_0_8,
+  MR_Box * mercury__solutions__STATE_VARIABLE_Acc_9)
+{
+  {
+    MR_bool mercury__solutions__succeeded;
+
+    {
+      mercury__solutions__builtin_aggregate_4_p_1(mercury__solutions__TypeInfo_for_T_11, mercury__solutions__TypeInfo_for_U_12, mercury__solutions__Generator_5, mercury__solutions__AccumulatorPred_6, mercury__solutions__STATE_VARIABLE_Acc_0_8, mercury__solutions__STATE_VARIABLE_Acc_9);
+    }
+  }
+}
+
+void MR_CALL 
+mercury__solutions__unsorted_aggregate_4_p_1(
+  MR_Word mercury__solutions__TypeInfo_for_T_11,
+  MR_Word mercury__solutions__TypeInfo_for_U_12,
+  MR_Word mercury__solutions__Generator_5,
+  MR_Word mercury__solutions__AccumulatorPred_6,
+  MR_Box mercury__solutions__STATE_VARIABLE_Acc_0_8,
+  MR_Box * mercury__solutions__STATE_VARIABLE_Acc_9)
+{
+  {
+    MR_bool mercury__solutions__succeeded;
+
+    {
+      mercury__solutions__builtin_aggregate_4_p_2(mercury__solutions__TypeInfo_for_T_11, mercury__solutions__TypeInfo_for_U_12, mercury__solutions__Generator_5, mercury__solutions__AccumulatorPred_6, mercury__solutions__STATE_VARIABLE_Acc_0_8, mercury__solutions__STATE_VARIABLE_Acc_9);
+    }
+  }
+}
+
+void MR_CALL 
+mercury__solutions__unsorted_aggregate_4_p_0(
+  MR_Word mercury__solutions__TypeInfo_for_T_11,
+  MR_Word mercury__solutions__TypeInfo_for_U_12,
+  MR_Word mercury__solutions__Generator_5,
+  MR_Word mercury__solutions__AccumulatorPred_6,
+  MR_Box mercury__solutions__STATE_VARIABLE_Acc_0_8,
+  MR_Box * mercury__solutions__STATE_VARIABLE_Acc_9)
+{
+  {
+    MR_bool mercury__solutions__succeeded;
+
+    {
+      mercury__solutions__builtin_aggregate_4_p_0(mercury__solutions__TypeInfo_for_T_11, mercury__solutions__TypeInfo_for_U_12, mercury__solutions__Generator_5, mercury__solutions__AccumulatorPred_6, mercury__solutions__STATE_VARIABLE_Acc_0_8, mercury__solutions__STATE_VARIABLE_Acc_9);
+    }
+  }
+}
+
+void MR_CALL 
+mercury__solutions__aggregate2_6_p_3(
+  MR_Word mercury__solutions__TypeInfo_for_T_18,
+  MR_Word mercury__solutions__TypeInfo_for_U_19,
+  MR_Word mercury__solutions__TypeInfo_for_V_20,
+  MR_Word mercury__solutions__Generator_7,
+  MR_Word mercury__solutions__AccumulatorPred_8,
+  MR_Box mercury__solutions__STATE_VARIABLE_Acc1_0_12,
+  MR_Box * mercury__solutions__STATE_VARIABLE_Acc1_13,
+  MR_Box mercury__solutions__STATE_VARIABLE_Acc2_0_14,
+  MR_Box * mercury__solutions__STATE_VARIABLE_Acc2_15)
+{
+  {
+    MR_bool mercury__solutions__succeeded;
+    MR_Word mercury__solutions__Solutions_11;
+    MR_Word mercury__solutions__UnsortedList_24;
+    MR_Integer mercury__solutions__V_5_27;
+
+    {
+      mercury__solutions__builtin_solutions_2_p_1(mercury__solutions__TypeInfo_for_T_18, mercury__solutions__Generator_7, &mercury__solutions__UnsortedList_24);
+    }
+    {
+      mercury__list__length_acc_3_p_0(mercury__solutions__TypeInfo_for_T_18, mercury__solutions__UnsortedList_24, (MR_Integer) 0, &mercury__solutions__V_5_27);
+    }
+    {
+      mercury__list__merge_sort_and_remove_dups_3_p_0(mercury__solutions__TypeInfo_for_T_18, mercury__solutions__V_5_27, mercury__solutions__UnsortedList_24, &mercury__solutions__Solutions_11);
+    }
+    {
+      mercury__list__foldl2_6_p_0(mercury__solutions__TypeInfo_for_T_18, mercury__solutions__TypeInfo_for_U_19, mercury__solutions__TypeInfo_for_V_20, mercury__solutions__AccumulatorPred_8, mercury__solutions__Solutions_11, mercury__solutions__STATE_VARIABLE_Acc1_0_12, mercury__solutions__STATE_VARIABLE_Acc1_13, mercury__solutions__STATE_VARIABLE_Acc2_0_14, mercury__solutions__STATE_VARIABLE_Acc2_15);
+    }
+  }
+}
+
+void MR_CALL 
+mercury__solutions__aggregate2_6_p_2(
+  MR_Word mercury__solutions__TypeInfo_for_T_18,
+  MR_Word mercury__solutions__TypeInfo_for_U_19,
+  MR_Word mercury__solutions__TypeInfo_for_V_20,
+  MR_Word mercury__solutions__Generator_7,
+  MR_Word mercury__solutions__AccumulatorPred_8,
+  MR_Box mercury__solutions__STATE_VARIABLE_Acc1_0_12,
+  MR_Box * mercury__solutions__STATE_VARIABLE_Acc1_13,
+  MR_Box mercury__solutions__STATE_VARIABLE_Acc2_0_14,
+  MR_Box * mercury__solutions__STATE_VARIABLE_Acc2_15)
+{
+  {
+    MR_bool mercury__solutions__succeeded;
+    MR_Word mercury__solutions__Solutions_11;
+    MR_Word mercury__solutions__UnsortedList_24;
+    MR_Integer mercury__solutions__V_5_27;
+
+    {
+      mercury__solutions__builtin_solutions_2_p_1(mercury__solutions__TypeInfo_for_T_18, mercury__solutions__Generator_7, &mercury__solutions__UnsortedList_24);
+    }
+    {
+      mercury__list__length_acc_3_p_0(mercury__solutions__TypeInfo_for_T_18, mercury__solutions__UnsortedList_24, (MR_Integer) 0, &mercury__solutions__V_5_27);
+    }
+    {
+      mercury__list__merge_sort_and_remove_dups_3_p_0(mercury__solutions__TypeInfo_for_T_18, mercury__solutions__V_5_27, mercury__solutions__UnsortedList_24, &mercury__solutions__Solutions_11);
+    }
+    {
+      mercury__list__foldl2_6_p_2(mercury__solutions__TypeInfo_for_T_18, mercury__solutions__TypeInfo_for_U_19, mercury__solutions__TypeInfo_for_V_20, mercury__solutions__AccumulatorPred_8, mercury__solutions__Solutions_11, mercury__solutions__STATE_VARIABLE_Acc1_0_12, mercury__solutions__STATE_VARIABLE_Acc1_13, mercury__solutions__STATE_VARIABLE_Acc2_0_14, mercury__solutions__STATE_VARIABLE_Acc2_15);
+    }
+  }
+}
+
+void MR_CALL 
+mercury__solutions__aggregate2_6_p_1(
+  MR_Word mercury__solutions__TypeInfo_for_T_18,
+  MR_Word mercury__solutions__TypeInfo_for_U_19,
+  MR_Word mercury__solutions__TypeInfo_for_V_20,
+  MR_Word mercury__solutions__Generator_7,
+  MR_Word mercury__solutions__AccumulatorPred_8,
+  MR_Box mercury__solutions__STATE_VARIABLE_Acc1_0_12,
+  MR_Box * mercury__solutions__STATE_VARIABLE_Acc1_13,
+  MR_Box mercury__solutions__STATE_VARIABLE_Acc2_0_14,
+  MR_Box * mercury__solutions__STATE_VARIABLE_Acc2_15)
+{
+  {
+    MR_bool mercury__solutions__succeeded;
+    MR_Word mercury__solutions__Solutions_11;
+
+    {
+      mercury__solutions__solutions_2_p_0(mercury__solutions__TypeInfo_for_T_18, mercury__solutions__Generator_7, &mercury__solutions__Solutions_11);
+    }
+    {
+      mercury__list__foldl2_6_p_2(mercury__solutions__TypeInfo_for_T_18, mercury__solutions__TypeInfo_for_U_19, mercury__solutions__TypeInfo_for_V_20, mercury__solutions__AccumulatorPred_8, mercury__solutions__Solutions_11, mercury__solutions__STATE_VARIABLE_Acc1_0_12, mercury__solutions__STATE_VARIABLE_Acc1_13, mercury__solutions__STATE_VARIABLE_Acc2_0_14, mercury__solutions__STATE_VARIABLE_Acc2_15);
+    }
+  }
+}
+
+void MR_CALL 
+mercury__solutions__aggregate2_6_p_0(
+  MR_Word mercury__solutions__TypeInfo_for_T_18,
+  MR_Word mercury__solutions__TypeInfo_for_U_19,
+  MR_Word mercury__solutions__TypeInfo_for_V_20,
+  MR_Word mercury__solutions__Generator_7,
+  MR_Word mercury__solutions__AccumulatorPred_8,
+  MR_Box mercury__solutions__STATE_VARIABLE_Acc1_0_12,
+  MR_Box * mercury__solutions__STATE_VARIABLE_Acc1_13,
+  MR_Box mercury__solutions__STATE_VARIABLE_Acc2_0_14,
+  MR_Box * mercury__solutions__STATE_VARIABLE_Acc2_15)
+{
+  {
+    MR_bool mercury__solutions__succeeded;
+    MR_Word mercury__solutions__Solutions_11;
+
+    {
+      mercury__solutions__solutions_2_p_0(mercury__solutions__TypeInfo_for_T_18, mercury__solutions__Generator_7, &mercury__solutions__Solutions_11);
+    }
+    {
+      mercury__list__foldl2_6_p_0(mercury__solutions__TypeInfo_for_T_18, mercury__solutions__TypeInfo_for_U_19, mercury__solutions__TypeInfo_for_V_20, mercury__solutions__AccumulatorPred_8, mercury__solutions__Solutions_11, mercury__solutions__STATE_VARIABLE_Acc1_0_12, mercury__solutions__STATE_VARIABLE_Acc1_13, mercury__solutions__STATE_VARIABLE_Acc2_0_14, mercury__solutions__STATE_VARIABLE_Acc2_15);
+    }
+  }
+}
+
+void MR_CALL 
+mercury__solutions__aggregate_4_p_3(
+  MR_Word mercury__solutions__TypeInfo_for_T_12,
+  MR_Word mercury__solutions__TypeInfo_for_U_13,
+  MR_Word mercury__solutions__Generator_5,
+  MR_Word mercury__solutions__AccumulatorPred_6,
+  MR_Box mercury__solutions__STATE_VARIABLE_Acc_0_9,
+  MR_Box * mercury__solutions__STATE_VARIABLE_Acc_10)
+{
+  {
+    MR_bool mercury__solutions__succeeded;
+    MR_Word mercury__solutions__Solutions_8;
+    MR_Word mercury__solutions__UnsortedList_17;
+    MR_Integer mercury__solutions__V_5_20;
+
+    {
+      mercury__solutions__builtin_solutions_2_p_1(mercury__solutions__TypeInfo_for_T_12, mercury__solutions__Generator_5, &mercury__solutions__UnsortedList_17);
+    }
+    {
+      mercury__list__length_acc_3_p_0(mercury__solutions__TypeInfo_for_T_12, mercury__solutions__UnsortedList_17, (MR_Integer) 0, &mercury__solutions__V_5_20);
+    }
+    {
+      mercury__list__merge_sort_and_remove_dups_3_p_0(mercury__solutions__TypeInfo_for_T_12, mercury__solutions__V_5_20, mercury__solutions__UnsortedList_17, &mercury__solutions__Solutions_8);
+    }
+    {
+      mercury__list__foldl_4_p_0(mercury__solutions__TypeInfo_for_T_12, mercury__solutions__TypeInfo_for_U_13, mercury__solutions__AccumulatorPred_6, mercury__solutions__Solutions_8, mercury__solutions__STATE_VARIABLE_Acc_0_9, mercury__solutions__STATE_VARIABLE_Acc_10);
+    }
+  }
+}
+
+void MR_CALL 
+mercury__solutions__aggregate_4_p_2(
+  MR_Word mercury__solutions__TypeInfo_for_T_12,
+  MR_Word mercury__solutions__TypeInfo_for_U_13,
+  MR_Word mercury__solutions__Generator_5,
+  MR_Word mercury__solutions__AccumulatorPred_6,
+  MR_Box mercury__solutions__STATE_VARIABLE_Acc_0_9,
+  MR_Box * mercury__solutions__STATE_VARIABLE_Acc_10)
+{
+  {
+    MR_bool mercury__solutions__succeeded;
+    MR_Word mercury__solutions__Solutions_8;
+    MR_Word mercury__solutions__UnsortedList_17;
+    MR_Integer mercury__solutions__V_5_20;
+
+    {
+      mercury__solutions__builtin_solutions_2_p_1(mercury__solutions__TypeInfo_for_T_12, mercury__solutions__Generator_5, &mercury__solutions__UnsortedList_17);
+    }
+    {
+      mercury__list__length_acc_3_p_0(mercury__solutions__TypeInfo_for_T_12, mercury__solutions__UnsortedList_17, (MR_Integer) 0, &mercury__solutions__V_5_20);
+    }
+    {
+      mercury__list__merge_sort_and_remove_dups_3_p_0(mercury__solutions__TypeInfo_for_T_12, mercury__solutions__V_5_20, mercury__solutions__UnsortedList_17, &mercury__solutions__Solutions_8);
+    }
+    {
+      mercury__list__foldl_4_p_2(mercury__solutions__TypeInfo_for_T_12, mercury__solutions__TypeInfo_for_U_13, mercury__solutions__AccumulatorPred_6, mercury__solutions__Solutions_8, mercury__solutions__STATE_VARIABLE_Acc_0_9, mercury__solutions__STATE_VARIABLE_Acc_10);
+    }
+  }
+}
+
+void MR_CALL 
+mercury__solutions__aggregate_4_p_1(
+  MR_Word mercury__solutions__TypeInfo_for_T_12,
+  MR_Word mercury__solutions__TypeInfo_for_U_13,
+  MR_Word mercury__solutions__Generator_5,
+  MR_Word mercury__solutions__AccumulatorPred_6,
+  MR_Box mercury__solutions__STATE_VARIABLE_Acc_0_9,
+  MR_Box * mercury__solutions__STATE_VARIABLE_Acc_10)
+{
+  {
+    MR_bool mercury__solutions__succeeded;
+    MR_Word mercury__solutions__Solutions_8;
+
+    {
+      mercury__solutions__solutions_2_p_0(mercury__solutions__TypeInfo_for_T_12, mercury__solutions__Generator_5, &mercury__solutions__Solutions_8);
+    }
+    {
+      mercury__list__foldl_4_p_2(mercury__solutions__TypeInfo_for_T_12, mercury__solutions__TypeInfo_for_U_13, mercury__solutions__AccumulatorPred_6, mercury__solutions__Solutions_8, mercury__solutions__STATE_VARIABLE_Acc_0_9, mercury__solutions__STATE_VARIABLE_Acc_10);
+    }
+  }
+}
+
+void MR_CALL 
+mercury__solutions__aggregate_4_p_0(
+  MR_Word mercury__solutions__TypeInfo_for_T_12,
+  MR_Word mercury__solutions__TypeInfo_for_U_13,
+  MR_Word mercury__solutions__Generator_5,
+  MR_Word mercury__solutions__AccumulatorPred_6,
+  MR_Box mercury__solutions__STATE_VARIABLE_Acc_0_9,
+  MR_Box * mercury__solutions__STATE_VARIABLE_Acc_10)
+{
+  {
+    MR_bool mercury__solutions__succeeded;
+    MR_Word mercury__solutions__Solutions_8;
+
+    {
+      mercury__solutions__solutions_2_p_0(mercury__solutions__TypeInfo_for_T_12, mercury__solutions__Generator_5, &mercury__solutions__Solutions_8);
+    }
+    {
+      mercury__list__foldl_4_p_0(mercury__solutions__TypeInfo_for_T_12, mercury__solutions__TypeInfo_for_U_13, mercury__solutions__AccumulatorPred_6, mercury__solutions__Solutions_8, mercury__solutions__STATE_VARIABLE_Acc_0_9, mercury__solutions__STATE_VARIABLE_Acc_10);
+    }
+  }
+}
+
+MR_Box MR_CALL 
+mercury__solutions__aggregate_3_f_1(
+  MR_Word mercury__solutions__TypeInfo_for_T_19,
+  MR_Word mercury__solutions__TypeInfo_for_U_20,
+  MR_Word mercury__solutions__P_5,
+  MR_Word mercury__solutions__F_6,
+  MR_Box mercury__solutions__Acc0_7)
+{
+  {
+    MR_bool mercury__solutions__succeeded;
+    MR_Box mercury__solutions__Acc_8;
+    MR_Word mercury__solutions__Solutions_26;
+    MR_Word mercury__solutions__UnsortedList_31;
+    MR_Integer mercury__solutions__V_5_34;
+
+    {
+      mercury__solutions__builtin_solutions_2_p_1(mercury__solutions__TypeInfo_for_T_19, mercury__solutions__P_5, &mercury__solutions__UnsortedList_31);
+    }
+    {
+      mercury__list__length_acc_3_p_0(mercury__solutions__TypeInfo_for_T_19, mercury__solutions__UnsortedList_31, (MR_Integer) 0, &mercury__solutions__V_5_34);
+    }
+    {
+      mercury__list__merge_sort_and_remove_dups_3_p_0(mercury__solutions__TypeInfo_for_T_19, mercury__solutions__V_5_34, mercury__solutions__UnsortedList_31, &mercury__solutions__Solutions_26);
+    }
+    {
+      mercury__solutions__f_85_110_117_115_101_100_65_114_103_115_95_95_112_114_101_100_95_95_102_111_108_100_108_95_95_104_111_57_95_95_91_49_44_32_50_44_32_52_44_32_53_44_32_54_93_95_48_4_p_in__list_0(mercury__solutions__F_6, mercury__solutions__Solutions_26, mercury__solutions__Acc0_7, &mercury__solutions__Acc_8);
+    }
+    return mercury__solutions__Acc_8;
+  }
+}
+
+MR_Box MR_CALL 
+mercury__solutions__aggregate_3_f_0(
+  MR_Word mercury__solutions__TypeInfo_for_T_19,
+  MR_Word mercury__solutions__TypeInfo_for_U_20,
+  MR_Word mercury__solutions__P_5,
+  MR_Word mercury__solutions__F_6,
+  MR_Box mercury__solutions__Acc0_7)
+{
+  {
+    MR_bool mercury__solutions__succeeded;
+    MR_Box mercury__solutions__Acc_8;
+    MR_Word mercury__solutions__Solutions_26;
+
+    {
+      mercury__solutions__solutions_2_p_0(mercury__solutions__TypeInfo_for_T_19, mercury__solutions__P_5, &mercury__solutions__Solutions_26);
+    }
+    {
+      mercury__solutions__f_85_110_117_115_101_100_65_114_103_115_95_95_112_114_101_100_95_95_102_111_108_100_108_95_95_104_111_56_95_95_91_49_44_32_50_44_32_52_44_32_53_44_32_54_93_95_48_4_p_in__list_0(mercury__solutions__F_6, mercury__solutions__Solutions_26, mercury__solutions__Acc0_7, &mercury__solutions__Acc_8);
+    }
+    return mercury__solutions__Acc_8;
+  }
+}
+
+void MR_CALL 
+mercury__solutions__unsorted_solutions_2_p_1(
+  MR_Word mercury__solutions__TypeInfo_for_T_5,
+  MR_Word mercury__solutions__Pred_3,
+  MR_Word * mercury__solutions__List_4)
+{
+  {
+    MR_bool mercury__solutions__succeeded;
+
+    {
+      mercury__solutions__builtin_solutions_2_p_1(mercury__solutions__TypeInfo_for_T_5, mercury__solutions__Pred_3, mercury__solutions__List_4);
+    }
+  }
+}
+
+void MR_CALL 
+mercury__solutions__unsorted_solutions_2_p_0(
+  MR_Word mercury__solutions__TypeInfo_for_T_5,
+  MR_Word mercury__solutions__Pred_3,
+  MR_Word * mercury__solutions__List_4)
+{
+  {
+    MR_bool mercury__solutions__succeeded;
+
+    {
+      mercury__solutions__builtin_solutions_2_p_0(mercury__solutions__TypeInfo_for_T_5, mercury__solutions__Pred_3, mercury__solutions__List_4);
+    }
+  }
+}
+
+void MR_CALL 
+mercury__solutions__solutions_set_2_p_1(
+  MR_Word mercury__solutions__TypeInfo_for_T_6,
+  MR_Word mercury__solutions__Pred_3,
+  MR_Word * mercury__solutions__Set_4)
+{
+  {
+    MR_bool mercury__solutions__succeeded;
+    MR_Word mercury__solutions__List_5;
+    MR_Word mercury__solutions__V_4_10;
+    MR_Integer mercury__solutions__V_5_13;
+
+    {
+      mercury__solutions__builtin_solutions_2_p_1(mercury__solutions__TypeInfo_for_T_6, mercury__solutions__Pred_3, &mercury__solutions__List_5);
+    }
+    {
+      mercury__list__length_acc_3_p_0(mercury__solutions__TypeInfo_for_T_6, mercury__solutions__List_5, (MR_Integer) 0, &mercury__solutions__V_5_13);
+    }
+    {
+      mercury__list__merge_sort_and_remove_dups_3_p_0(mercury__solutions__TypeInfo_for_T_6, mercury__solutions__V_5_13, mercury__solutions__List_5, &mercury__solutions__V_4_10);
+    }
+    *mercury__solutions__Set_4 = (MR_Word) mercury__solutions__V_4_10;
+  }
+}
+
+void MR_CALL 
+mercury__solutions__solutions_set_2_p_0(
+  MR_Word mercury__solutions__TypeInfo_for_T_6,
+  MR_Word mercury__solutions__Pred_3,
+  MR_Word * mercury__solutions__Set_4)
+{
+  {
+    MR_bool mercury__solutions__succeeded;
+    MR_Word mercury__solutions__List_5;
+    MR_Word mercury__solutions__V_4_10;
+    MR_Integer mercury__solutions__V_5_13;
+
+    {
+      mercury__solutions__builtin_solutions_2_p_0(mercury__solutions__TypeInfo_for_T_6, mercury__solutions__Pred_3, &mercury__solutions__List_5);
+    }
+    {
+      mercury__list__length_acc_3_p_0(mercury__solutions__TypeInfo_for_T_6, mercury__solutions__List_5, (MR_Integer) 0, &mercury__solutions__V_5_13);
+    }
+    {
+      mercury__list__merge_sort_and_remove_dups_3_p_0(mercury__solutions__TypeInfo_for_T_6, mercury__solutions__V_5_13, mercury__solutions__List_5, &mercury__solutions__V_4_10);
+    }
+    *mercury__solutions__Set_4 = (MR_Word) mercury__solutions__V_4_10;
+  }
+}
+
+MR_Word MR_CALL 
+mercury__solutions__solutions_set_1_f_1(
+  MR_Word mercury__solutions__TypeInfo_for_T_5,
+  MR_Word mercury__solutions__P_3)
+{
+  {
+    MR_bool mercury__solutions__succeeded;
+    MR_Word mercury__solutions__S_4;
+    MR_Word mercury__solutions__List_8;
+    MR_Word mercury__solutions__V_4_12;
+    MR_Integer mercury__solutions__V_5_15;
+
+    {
+      mercury__solutions__builtin_solutions_2_p_1(mercury__solutions__TypeInfo_for_T_5, mercury__solutions__P_3, &mercury__solutions__List_8);
+    }
+    {
+      mercury__list__length_acc_3_p_0(mercury__solutions__TypeInfo_for_T_5, mercury__solutions__List_8, (MR_Integer) 0, &mercury__solutions__V_5_15);
+    }
+    {
+      mercury__list__merge_sort_and_remove_dups_3_p_0(mercury__solutions__TypeInfo_for_T_5, mercury__solutions__V_5_15, mercury__solutions__List_8, &mercury__solutions__V_4_12);
+    }
+    mercury__solutions__S_4 = (MR_Word) mercury__solutions__V_4_12;
+    return mercury__solutions__S_4;
+  }
+}
+
+MR_Word MR_CALL 
+mercury__solutions__solutions_set_1_f_0(
+  MR_Word mercury__solutions__TypeInfo_for_T_5,
+  MR_Word mercury__solutions__P_3)
+{
+  {
+    MR_bool mercury__solutions__succeeded;
+    MR_Word mercury__solutions__S_4;
+    MR_Word mercury__solutions__List_8;
+    MR_Word mercury__solutions__V_4_12;
+    MR_Integer mercury__solutions__V_5_15;
+
+    {
+      mercury__solutions__builtin_solutions_2_p_0(mercury__solutions__TypeInfo_for_T_5, mercury__solutions__P_3, &mercury__solutions__List_8);
+    }
+    {
+      mercury__list__length_acc_3_p_0(mercury__solutions__TypeInfo_for_T_5, mercury__solutions__List_8, (MR_Integer) 0, &mercury__solutions__V_5_15);
+    }
+    {
+      mercury__list__merge_sort_and_remove_dups_3_p_0(mercury__solutions__TypeInfo_for_T_5, mercury__solutions__V_5_15, mercury__solutions__List_8, &mercury__solutions__V_4_12);
+    }
+    mercury__solutions__S_4 = (MR_Word) mercury__solutions__V_4_12;
+    return mercury__solutions__S_4;
+  }
+}
+
+MR_Word MR_CALL 
+mercury__solutions__solutions_1_f_1(
+  MR_Word mercury__solutions__TypeInfo_for_T_5,
+  MR_Word mercury__solutions__P_3)
+{
+  {
+    MR_bool mercury__solutions__succeeded;
+    MR_Word mercury__solutions__S_4;
+    MR_Word mercury__solutions__UnsortedList_9;
+    MR_Integer mercury__solutions__V_5_12;
+
+    {
+      mercury__solutions__builtin_solutions_2_p_1(mercury__solutions__TypeInfo_for_T_5, mercury__solutions__P_3, &mercury__solutions__UnsortedList_9);
+    }
+    {
+      mercury__list__length_acc_3_p_0(mercury__solutions__TypeInfo_for_T_5, mercury__solutions__UnsortedList_9, (MR_Integer) 0, &mercury__solutions__V_5_12);
+    }
+    {
+      mercury__list__merge_sort_and_remove_dups_3_p_0(mercury__solutions__TypeInfo_for_T_5, mercury__solutions__V_5_12, mercury__solutions__UnsortedList_9, &mercury__solutions__S_4);
+    }
+    return mercury__solutions__S_4;
+  }
+}
+
+MR_Word MR_CALL 
+mercury__solutions__solutions_1_f_0(
+  MR_Word mercury__solutions__TypeInfo_for_T_5,
+  MR_Word mercury__solutions__P_3)
+{
+  {
+    MR_bool mercury__solutions__succeeded;
+    MR_Word mercury__solutions__S_4;
+
+    {
+      mercury__solutions__solutions_2_p_0(mercury__solutions__TypeInfo_for_T_5, mercury__solutions__P_3, &mercury__solutions__S_4);
+    }
+    return mercury__solutions__S_4;
+  }
+}
+
+void MR_CALL 
+mercury__solutions__solutions_2_p_1(
+  MR_Word mercury__solutions__TypeInfo_for_T_7,
+  MR_Word mercury__solutions__Pred_3,
+  MR_Word * mercury__solutions__List_4)
+{
+  {
+    MR_bool mercury__solutions__succeeded;
+    MR_Word mercury__solutions__UnsortedList_6;
+    MR_Integer mercury__solutions__V_5_10;
+
+    {
+      mercury__solutions__builtin_solutions_2_p_1(mercury__solutions__TypeInfo_for_T_7, mercury__solutions__Pred_3, &mercury__solutions__UnsortedList_6);
+    }
+    {
+      mercury__list__length_acc_3_p_0(mercury__solutions__TypeInfo_for_T_7, mercury__solutions__UnsortedList_6, (MR_Integer) 0, &mercury__solutions__V_5_10);
+    }
+    {
+      mercury__list__merge_sort_and_remove_dups_3_p_0(mercury__solutions__TypeInfo_for_T_7, mercury__solutions__V_5_10, mercury__solutions__UnsortedList_6, mercury__solutions__List_4);
+    }
+  }
+}
+
+void MR_CALL 
+mercury__solutions__solutions_2_p_0(
+  MR_Word mercury__solutions__TypeInfo_for_T_7,
+  MR_Word mercury__solutions__Pred_3,
+  MR_Word * mercury__solutions__List_4)
+{
+  {
+    MR_bool mercury__solutions__succeeded;
+    MR_Word mercury__solutions__List0_5;
+    MR_Word mercury__solutions__UnsortedList_6;
+    MR_Integer mercury__solutions__V_5_10;
+
+    {
+      mercury__solutions__builtin_solutions_2_p_0(mercury__solutions__TypeInfo_for_T_7, mercury__solutions__Pred_3, &mercury__solutions__UnsortedList_6);
+    }
+    {
+      mercury__list__length_acc_3_p_0(mercury__solutions__TypeInfo_for_T_7, mercury__solutions__UnsortedList_6, (MR_Integer) 0, &mercury__solutions__V_5_10);
+    }
+    {
+      mercury__list__merge_sort_and_remove_dups_3_p_0(mercury__solutions__TypeInfo_for_T_7, mercury__solutions__V_5_10, mercury__solutions__UnsortedList_6, &mercury__solutions__List0_5);
+    }
+    if ((mercury__solutions__List0_5 == ((MR_Word) MR_mkword(MR_mktag(0), MR_mkbody((MR_Integer) 0)))))
+      {
+        {
+          mercury__require__unexpected_3_p_0((MR_String) "solutions", (MR_String) "predicate \140solutions.assert_num_solutions\'/3", (MR_String) "no solutions");
+          return;
+        }
+      }
+    else
+      *mercury__solutions__List_4 = mercury__solutions__List0_5;
+  }
+}
+
+void mercury__solutions__init(void)
+{
+}
+
+void mercury__solutions__init_type_tables(void)
+{
+	static MR_bool initialised = MR_FALSE;
+	if (initialised) return;
+	initialised = MR_TRUE;
+
+	MR_register_type_ctor_info(&mercury__solutions__solutions__type_ctor_info_heap_ptr_0);
+	MR_register_type_ctor_info(&mercury__solutions__solutions__type_ctor_info_trail_ptr_0);
+}
+
+void mercury__solutions__init_debugger(void)
+{
+	MR_fatal_error("debugger initialization in MLDS grade");
+}
+
+// Ensure everything is compiled with the same grade.
+const char *mercury__solutions__grade_check(void)
+{
+    return &MR_GRADE_VAR;
+}
+
+/* :- end_module solutions. */

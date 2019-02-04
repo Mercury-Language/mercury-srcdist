@@ -1,0 +1,149 @@
+# vim: ts=8 sw=8 noexpandtab ft=make
+
+
+
+top_level.optdate top_level.trans_opt_date top_level.err top_level.c_date top_level.java_date : top_level.m top_level.int0 \
+	builtin.int \
+	private_builtin.int
+
+ifeq (x,y)
+# RULE date_file_deps
+# source group names:
+#   (unnamed)
+#   (unnamed)
+#   long deps
+top_level.optdate top_level.trans_opt_date top_level.err top_level.c_date top_level.java_date : \
+		top_level.m \
+	\
+		top_level.int0 \
+	\
+		builtin.int \
+		private_builtin.int
+endif
+
+
+
+top_level.pic_o top_level.$O : \
+	builtin.mih \
+	private_builtin.mih
+
+ifeq (x,y)
+# RULE objs_on_mihs
+top_level.pic_o top_level.$O : \
+		builtin.mih \
+		private_builtin.mih
+endif
+
+
+
+top_level.mh top_level.mih : top_level.c
+
+ifeq (x,y)
+# RULE mh_and_mih_on_c
+top_level.mh top_level.mih : top_level.c
+endif
+
+
+
+ifeq ($(findstring java,$(GRADE)),java)
+top_level.module_dep : jmercury/top_level.java
+else
+top_level.module_dep : top_level.c
+endif
+
+ifeq ($(findstring java,$(GRADE)),java)
+
+ifeq (x,y)
+# RULE module_dep_on_java
+top_level.module_dep : jmercury/top_level.java
+endif
+
+else
+
+ifeq (x,y)
+# RULE module_dep_on_c
+top_level.module_dep : top_level.c
+endif
+
+endif # conditional fragment
+
+
+
+top_level.date top_level.date0 : top_level.m \
+	builtin.int3 \
+	private_builtin.int3
+
+ifeq (x,y)
+# RULE self_and_parent_date_deps
+# source group names:
+#   (unnamed)
+#   long dep int3s
+top_level.date top_level.date0 : \
+		top_level.m \
+	\
+		builtin.int3 \
+		private_builtin.int3
+endif
+
+
+
+top_level.date0 : top_level.m \
+	builtin.int3 \
+	private_builtin.int3
+
+ifeq (x,y)
+# RULE self_and_parent_date0_deps
+# source group names:
+#   (unnamed)
+#   long dep int3s
+top_level.date0 : \
+		top_level.m \
+	\
+		builtin.int3 \
+		private_builtin.int3
+endif
+
+
+top_level.int0 : top_level.date0
+	@:
+top_level.int : top_level.date
+	@:
+top_level.int2 : top_level.date
+	@:
+top_level.int3 : top_level.date3
+	@:
+top_level.opt : top_level.optdate
+	@:
+top_level.trans_opt : top_level.trans_opt_date
+	@:
+
+ifeq (x,y)
+top_level.int0 : top_level.date0
+	@:
+endif
+
+ifeq (x,y)
+top_level.int : top_level.date
+	@:
+endif
+
+ifeq (x,y)
+top_level.int2 : top_level.date
+	@:
+endif
+
+ifeq (x,y)
+top_level.int3 : top_level.date3
+	@:
+endif
+
+ifeq (x,y)
+top_level.opt : top_level.optdate
+	@:
+endif
+
+ifeq (x,y)
+top_level.trans_opt : top_level.trans_opt_date
+	@:
+endif
+
