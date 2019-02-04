@@ -1,0 +1,13 @@
+module(1, "ranges.m",
+	ranges,
+	{},
+	{builtin, list, private_builtin, set},
+	{builtin, exception, int, list, private_builtin, set},
+	{},
+	{},
+	{},
+	{"C"},
+	{"C" - ranges},
+	contains_foreign_export,
+	no_main
+).
