@@ -1,0 +1,3 @@
+:- module pqueue.
+:- interface.
+:- type pqueue(K, V).
