@@ -1,0 +1,13 @@
+module(1, "string.parse_runtime.m",
+	(string.parse_runtime),
+	{string},
+	{builtin, list, private_builtin, (string.parse_util)},
+	{builtin, int, list, maybe, private_builtin, require, (string.parse_util)},
+	{},
+	{},
+	{},
+	{},
+	{},
+	no_foreign_export,
+	no_main
+).

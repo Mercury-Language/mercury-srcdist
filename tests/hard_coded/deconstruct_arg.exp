@@ -1,0 +1,306 @@
+test term: apple([])
+deconstruct functor: apple/1
+argument #0: []
+no other argument access succeeded
+plain deconstruct:
+functor apple arity 1 [[]]
+limited deconstruct 3:
+functor apple arity 1 [[]]
+
+test term: apple([9, 5, 1])
+deconstruct functor: apple/1
+argument #0: [9, 5, 1]
+no other argument access succeeded
+plain deconstruct:
+functor apple arity 1 [[9, 5, 1]]
+limited deconstruct 3:
+functor apple arity 1 [[9, 5, 1]]
+
+test term: zop(3.3, 2.03)
+deconstruct functor: zop/2
+argument #0: 3.3
+argument #1: 2.03
+no other argument access succeeded
+plain deconstruct:
+functor zop arity 2 [3.3, 2.03]
+limited deconstruct 3:
+functor zop arity 2 [3.3, 2.03]
+
+test term: zap(50, 51.0, 52)
+deconstruct functor: zap/3
+argument #0: 50
+argument #1: 51.0
+argument #2: 52
+no other argument access succeeded
+plain deconstruct:
+functor zap arity 3 [50, 51.0, 52]
+limited deconstruct 3:
+functor zap arity 3 [50, 51.0, 52]
+
+test term: zip(50, 51, 52, 53)
+deconstruct functor: zip/4
+argument #0: 50
+argument #1: 51
+argument #2: 52
+no other argument access succeeded
+plain deconstruct:
+functor zip arity 4 [50, 51, 52, 53]
+limited deconstruct 3: failed
+
+test term: wombat
+deconstruct functor: wombat/0
+
+test term: qwerty(5)
+deconstruct functor: qwerty/1
+argument #0: 5
+no other argument access succeeded
+plain deconstruct:
+functor qwerty arity 1 [5]
+limited deconstruct 3:
+functor qwerty arity 1 [5]
+
+test term: moomoo(50, "moo.")
+deconstruct functor: moomoo/2
+argument #0: 50
+argument #1: "moo."
+argument named 'moo': 50
+argument named 'mooo!': "moo."
+no other argument access succeeded
+plain deconstruct:
+functor moomoo arity 2 [50, "moo."]
+limited deconstruct 3:
+functor moomoo arity 2 [50, "moo."]
+
+test term: 'a'
+deconstruct functor: 'a'/0
+
+test term: ' '
+deconstruct functor: ' '/0
+
+test term: '\a'
+deconstruct functor: '\a'/0
+
+test term: '\b'
+deconstruct functor: '\b'/0
+
+test term: '\r'
+deconstruct functor: '\r'/0
+
+test term: '\f'
+deconstruct functor: '\f'/0
+
+test term: '\t'
+deconstruct functor: '\t'/0
+
+test term: '\n'
+deconstruct functor: '\n'/0
+
+test term: '\v'
+deconstruct functor: '\v'/0
+
+test term: '\\'
+deconstruct functor: '\\'/0
+
+test term: '\''
+deconstruct functor: '\''/0
+
+test term: '~'
+deconstruct functor: '~'/0
+
+test term: '\001\'
+deconstruct functor: '\001\'/0
+
+test term: '\037\'
+deconstruct functor: '\037\'/0
+
+test term: '\177\'
+deconstruct functor: '\177\'/0
+
+test term: '\200\'
+deconstruct functor: '\200\'/0
+
+test term: '\237\'
+deconstruct functor: '\237\'/0
+
+test term: ' '
+deconstruct functor: ' '/0
+
+test term: 'Ω'
+deconstruct functor: 'Ω'/0
+
+test term: ""
+deconstruct functor: ""/0
+
+test term: "azBZ09"
+deconstruct functor: "azBZ09"/0
+
+test term: "α∀🜓"
+deconstruct functor: "α∀🜓"/0
+
+test term: "\a\b\f\n\t\r\v\"\\"
+deconstruct functor: "\a\b\f\n\t\r\v\"\\"/0
+
+test term: "\001\\a\037\AZ[`az~\177\"
+deconstruct functor: "\001\\a\037\AZ[`az~\177\"/0
+
+test term: "\200\\a\237\ Àÿ"
+deconstruct functor: "\200\\a\237\ Àÿ"/0
+
+test term: "α\nβ\tγ,a\nα\001\α\001\a\001\α"
+deconstruct functor: "α\nβ\tγ,a\nα\001\α\001\a\001\α"/0
+
+test term: 0.12345678901234566
+deconstruct functor: 0.12345678901234566/0
+
+test term: infinity
+deconstruct functor: infinity/0
+
+test term: -infinity
+deconstruct functor: -infinity/0
+
+test term: 4
+deconstruct functor: 4/0
+
+test term: 561u
+deconstruct functor: 561u/0
+
+test term: 42i8
+deconstruct functor: 42i8/0
+
+test term: 42u8
+deconstruct functor: 42u8/0
+
+test term: 42i16
+deconstruct functor: 42i16/0
+
+test term: 42u16
+deconstruct functor: 42u16/0
+
+test term: 42i32
+deconstruct functor: 42i32/0
+
+test term: 43u32
+deconstruct functor: 43u32/0
+
+test term: 66i64
+deconstruct functor: 66i64/0
+
+test term: 67u64
+deconstruct functor: 67u64/0
+
+test term: univ_cons(["hi! I\'m a univ!"])
+deconstruct functor: univ_cons/1
+argument #0: ["hi! I\'m a univ!"]
+no other argument access succeeded
+plain deconstruct:
+functor univ_cons arity 1 [["hi! I\'m a univ!"]]
+limited deconstruct 3:
+functor univ_cons arity 1 [["hi! I\'m a univ!"]]
+
+test term: '<<deconstruct_arg.set/1>>'
+deconstruct functor: set_rep/1
+argument #0: [1, 2, 3, 3]
+no other argument access succeeded
+plain deconstruct:
+functor set_rep arity 1 [[1, 2, 3, 3]]
+limited deconstruct 3:
+functor set_rep arity 1 [[1, 2, 3, 3]]
+
+test term: '<<predicate>>'
+deconstruct functor: newline/0
+
+test term: '<<predicate>>'
+deconstruct functor: lambda_deconstruct_arg_m_202/1
+argument #0: [1, 2]
+no other argument access succeeded
+plain deconstruct:
+functor lambda_deconstruct_arg_m_202 arity 1 [[1, 2]]
+limited deconstruct 3:
+functor lambda_deconstruct_arg_m_202 arity 1 [[1, 2]]
+
+test term: '<<predicate>>'
+deconstruct functor: p/3
+argument #0: 1
+argument #1: 2.2
+argument #2: "three"
+no other argument access succeeded
+plain deconstruct:
+functor p arity 3 [1, 2.2, "three"]
+limited deconstruct 3:
+functor p arity 3 [1, 2.2, "three"]
+
+test term: {1, 'b'}
+deconstruct functor: {}/2
+argument #0: 1
+argument #1: 'b'
+no other argument access succeeded
+plain deconstruct:
+functor {} arity 2 [1, 'b']
+limited deconstruct 3:
+functor {} arity 2 [1, 'b']
+
+test term: {1, 'b', "third"}
+deconstruct functor: {}/3
+argument #0: 1
+argument #1: 'b'
+argument #2: "third"
+no other argument access succeeded
+plain deconstruct:
+functor {} arity 3 [1, 'b', "third"]
+limited deconstruct 3:
+functor {} arity 3 [1, 'b', "third"]
+
+test term: {1, 'b', "third", {1, 2, 3, 4}}
+deconstruct functor: {}/4
+argument #0: 1
+argument #1: 'b'
+argument #2: "third"
+no other argument access succeeded
+plain deconstruct:
+functor {} arity 4 [1, 'b', "third", {1, 2, 3, 4}]
+limited deconstruct 3: failed
+
+test term: array([1000, 2000])
+deconstruct functor: <<array>>/2
+argument #0: 1000
+argument #1: 2000
+no other argument access succeeded
+plain deconstruct:
+functor <<array>> arity 2 [1000, 2000]
+limited deconstruct 3:
+functor <<array>> arity 2 [1000, 2000]
+
+test term: array([100, 200, 300])
+deconstruct functor: <<array>>/3
+argument #0: 100
+argument #1: 200
+argument #2: 300
+no other argument access succeeded
+plain deconstruct:
+functor <<array>> arity 3 [100, 200, 300]
+limited deconstruct 3:
+functor <<array>> arity 3 [100, 200, 300]
+
+test term: array([10, 20, 30, 40])
+deconstruct functor: <<array>>/4
+argument #0: 10
+argument #1: 20
+argument #2: 30
+no other argument access succeeded
+plain deconstruct:
+functor <<array>> arity 4 [10, 20, 30, 40]
+limited deconstruct 3: failed
+
+test term: packed(100, one, two, three, "four")
+deconstruct functor: packed/5
+argument #0: 100
+argument #1: one
+argument #2: two
+argument named 'packed1': 100
+argument named 'packed2': one
+argument named 'packed3': two
+no other argument access succeeded
+plain deconstruct:
+functor packed arity 5 [100, one, two, three, "four"]
+limited deconstruct 3: failed
+
