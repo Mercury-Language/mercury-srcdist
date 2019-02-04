@@ -1,0 +1,210 @@
+/*
+** Automatically generated from `mcsolver.m'
+** by the Mercury compiler,
+** version rotd-2019-01-27
+** configured for x86_64-pc-linux-gnu.
+** Do not edit.
+**
+** The autoconfigured grade settings governing
+** the generation of this C file were
+**
+** TAG_BITS=2
+** UNBOXED_FLOAT=no
+** UNBOXED_INT64S=no
+** PREGENERATED_DIST=yes
+** HIGHLEVEL_CODE=yes
+**
+** END_OF_C_GRADE_INFO
+*/
+
+
+// :- module check_hlds.mcsolver.
+// :- interface.
+
+#ifndef MR_HEADER_GUARD_check_hlds__mcsolver
+#define MR_HEADER_GUARD_check_hlds__mcsolver
+
+#ifdef __cplusplus
+extern "C" {
+#endif
+
+#include "mercury.h"
+
+
+#ifndef CHECK_HLDS__MCSOLVER_DECL_GUARD
+#define CHECK_HLDS__MCSOLVER_DECL_GUARD
+#include "check_hlds.mih"
+
+#endif
+
+
+
+
+extern const MR_TypeCtorInfo_Struct check_hlds__mcsolver__check_hlds__mcsolver__type_ctor_info_assgt_0;
+
+extern const MR_TypeCtorInfo_Struct check_hlds__mcsolver__check_hlds__mcsolver__type_ctor_info_assgts_0;
+
+extern const MR_TypeCtorInfo_Struct check_hlds__mcsolver__check_hlds__mcsolver__type_ctor_info_complex_cstrt_0;
+
+extern const MR_TypeCtorInfo_Struct check_hlds__mcsolver__check_hlds__mcsolver__type_ctor_info_complex_cstrt_map_0;
+
+extern const MR_TypeCtorInfo_Struct check_hlds__mcsolver__check_hlds__mcsolver__type_ctor_info_complex_cstrts_0;
+
+extern const MR_TypeCtorInfo_Struct check_hlds__mcsolver__check_hlds__mcsolver__type_ctor_info_eqv_vars_0;
+
+extern const MR_TypeCtorInfo_Struct check_hlds__mcsolver__check_hlds__mcsolver__type_ctor_info_impl_0;
+
+extern const MR_TypeCtorInfo_Struct check_hlds__mcsolver__check_hlds__mcsolver__type_ctor_info_impls_0;
+
+extern const MR_TypeCtorInfo_Struct check_hlds__mcsolver__check_hlds__mcsolver__type_ctor_info_mcvar_0;
+
+extern const MR_TypeCtorInfo_Struct check_hlds__mcsolver__check_hlds__mcsolver__type_ctor_info_mcvars_0;
+
+extern const MR_TypeCtorInfo_Struct check_hlds__mcsolver__check_hlds__mcsolver__type_ctor_info_prep_cstrts_0;
+
+extern const MR_TypeCtorInfo_Struct check_hlds__mcsolver__check_hlds__mcsolver__type_ctor_info_prop_graph_0;
+
+extern const MR_TypeCtorInfo_Struct check_hlds__mcsolver__check_hlds__mcsolver__type_ctor_info_solver_cstrts_0;
+
+void MR_CALL 
+check_hlds__mcsolver__assign_4_p_0(
+  MR_Word param_1,
+  MR_Word param_2,
+  MR_Word param_3,
+  MR_Word * param_4);
+
+void MR_CALL 
+check_hlds__mcsolver__at_most_one_3_p_0(
+  MR_Word param_1,
+  MR_Word param_2,
+  MR_Word * param_3);
+
+void MR_CALL 
+check_hlds__mcsolver__different_4_p_0(
+  MR_Word param_1,
+  MR_Word param_2,
+  MR_Word param_3,
+  MR_Word * param_4);
+
+void MR_CALL 
+check_hlds__mcsolver__disjunction_of_assignments_3_p_0(
+  MR_Word param_1,
+  MR_Word param_2,
+  MR_Word * param_3);
+
+void MR_CALL 
+check_hlds__mcsolver__equivalent_3_p_0(
+  MR_Word param_1,
+  MR_Word param_2,
+  MR_Word * param_3);
+
+void MR_CALL 
+check_hlds__mcsolver__equivalent_4_p_0(
+  MR_Word param_1,
+  MR_Word param_2,
+  MR_Word param_3,
+  MR_Word * param_4);
+
+void MR_CALL 
+check_hlds__mcsolver__equivalent_to_disjunction_4_p_0(
+  MR_Word param_1,
+  MR_Word param_2,
+  MR_Word param_3,
+  MR_Word * param_4);
+
+void MR_CALL 
+check_hlds__mcsolver__exactly_one_3_p_0(
+  MR_Word param_1,
+  MR_Word param_2,
+  MR_Word * param_3);
+
+void MR_CALL 
+check_hlds__mcsolver__implies_4_p_0(
+  MR_Word param_1,
+  MR_Word param_2,
+  MR_Word param_3,
+  MR_Word * param_4);
+
+void MR_CALL 
+check_hlds__mcsolver__not_both_4_p_0(
+  MR_Word param_1,
+  MR_Word param_2,
+  MR_Word param_3,
+  MR_Word * param_4);
+
+void MR_CALL 
+check_hlds__mcsolver__prepare_abstract_constraints_3_p_0(
+  MR_Word param_1,
+  MR_Word param_2,
+  MR_Word * param_3);
+
+void MR_CALL 
+check_hlds__mcsolver__solve_2_p_0(
+  MR_Word param_1,
+  MR_Word * param_2,
+  MR_Cont param_3,
+  void * param_4);
+
+MR_Word MR_CALL 
+check_hlds__mcsolver__make_solver_cstrts_1_f_0(
+  MR_Word param_1);
+
+MR_Word MR_CALL 
+check_hlds__mcsolver__new_prep_cstrts_0_f_0(void);
+
+void MR_CALL 
+check_hlds__mcsolver____Compare____mcvar_0_0(
+  MR_Word * param_1,
+  MR_Word param_2,
+  MR_Word param_3);
+
+void MR_CALL 
+check_hlds__mcsolver____Compare____mcvars_0_0(
+  MR_Word * param_1,
+  MR_Word param_2,
+  MR_Word param_3);
+
+void MR_CALL 
+check_hlds__mcsolver____Compare____prep_cstrts_0_0(
+  MR_Word * param_1,
+  MR_Word param_2,
+  MR_Word param_3);
+
+void MR_CALL 
+check_hlds__mcsolver____Compare____solver_cstrts_0_0(
+  MR_Word * param_1,
+  MR_Word param_2,
+  MR_Word param_3);
+
+MR_bool MR_CALL 
+check_hlds__mcsolver____Unify____mcvar_0_0(
+  MR_Word param_1,
+  MR_Word param_2);
+
+MR_bool MR_CALL 
+check_hlds__mcsolver____Unify____mcvars_0_0(
+  MR_Word param_1,
+  MR_Word param_2);
+
+MR_bool MR_CALL 
+check_hlds__mcsolver____Unify____prep_cstrts_0_0(
+  MR_Word param_1,
+  MR_Word param_2);
+
+MR_bool MR_CALL 
+check_hlds__mcsolver____Unify____solver_cstrts_0_0(
+  MR_Word param_1,
+  MR_Word param_2);
+
+void mercury__check_hlds__mcsolver__init(void);
+void mercury__check_hlds__mcsolver__init_type_tables(void);
+void mercury__check_hlds__mcsolver__init_debugger(void);
+const char *mercury__check_hlds__mcsolver__grade_check(void);
+
+#ifdef __cplusplus
+}
+#endif
+
+#endif // MR_HEADER_GUARD_check_hlds.mcsolver
+
+// :- end_interface check_hlds.mcsolver.
