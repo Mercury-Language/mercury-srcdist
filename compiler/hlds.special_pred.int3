@@ -1,0 +1,3 @@
+:- module (hlds.special_pred).
+:- interface.
+:- type special_pred_maps.
