@@ -1,0 +1,111 @@
+/*
+** Automatically generated from `make_hlds_error.m'
+** by the Mercury compiler,
+** version 2018-11-08
+** configured for x86_64-pc-linux-gnu.
+** Do not edit.
+**
+** The autoconfigured grade settings governing
+** the generation of this C file were
+**
+** TAG_BITS=2
+** UNBOXED_FLOAT=no
+** UNBOXED_INT64S=no
+** PREGENERATED_DIST=yes
+** HIGHLEVEL_CODE=yes
+**
+** END_OF_C_GRADE_INFO
+*/
+
+
+// :- module hlds.make_hlds_error.
+// :- interface.
+
+#ifndef MR_HEADER_GUARD_hlds__make_hlds_error
+#define MR_HEADER_GUARD_hlds__make_hlds_error
+
+#ifdef __cplusplus
+extern "C" {
+#endif
+
+#include "mercury.h"
+
+
+#ifndef HLDS__MAKE_HLDS_ERROR_DECL_GUARD
+#define HLDS__MAKE_HLDS_ERROR_DECL_GUARD
+#include "hlds.mih"
+
+#endif
+
+
+
+
+void MR_CALL 
+hlds__make_hlds_error__error_is_exported_4_p_0(
+  MR_Word param_1,
+  MR_Word param_2,
+  MR_Word param_3,
+  MR_Word * param_4);
+
+void MR_CALL 
+hlds__make_hlds_error__maybe_report_undefined_pred_error_10_p_0(
+  MR_Word param_1,
+  MR_Word param_2,
+  MR_Integer param_3,
+  MR_Word param_4,
+  MR_Word param_5,
+  MR_Word param_6,
+  MR_Word param_7,
+  MR_Word param_8,
+  MR_Word param_9,
+  MR_Word * param_10);
+
+void MR_CALL 
+hlds__make_hlds_error__report_if_pragma_is_wrongly_in_interface_4_p_0(
+  MR_Word param_1,
+  MR_Word param_2,
+  MR_Word param_3,
+  MR_Word * param_4);
+
+void MR_CALL 
+hlds__make_hlds_error__report_multiple_def_error_8_p_0(
+  MR_Word param_1,
+  MR_Integer param_2,
+  MR_String param_3,
+  MR_Word param_4,
+  MR_Word param_5,
+  MR_Word param_6,
+  MR_Word param_7,
+  MR_Word * param_8);
+
+void MR_CALL 
+hlds__make_hlds_error__report_undefined_mode_error_6_p_0(
+  MR_Word param_1,
+  MR_Integer param_2,
+  MR_Word param_3,
+  MR_Word param_4,
+  MR_Word param_5,
+  MR_Word * param_6);
+
+void MR_CALL 
+hlds__make_hlds_error__report_undefined_pred_or_func_error_7_p_0(
+  MR_Word param_1,
+  MR_Integer param_2,
+  MR_Word param_3,
+  MR_Word param_4,
+  MR_Word param_5,
+  MR_Word param_6,
+  MR_Word * param_7);
+
+void mercury__hlds__make_hlds_error__init(void);
+void mercury__hlds__make_hlds_error__init_type_tables(void);
+void mercury__hlds__make_hlds_error__init_debugger(void);
+const char *mercury__hlds__make_hlds_error__grade_check(void);
+
+#ifdef __cplusplus
+}
+#endif
+
+#endif // MR_HEADER_GUARD_hlds.make_hlds_error
+
+// :- end_interface hlds.make_hlds_error.

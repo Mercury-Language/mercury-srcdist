@@ -1,0 +1,210 @@
+/*
+** Automatically generated from `sym_name.m'
+** by the Mercury compiler,
+** version 2018-11-08
+** configured for x86_64-pc-linux-gnu.
+** Do not edit.
+**
+** The autoconfigured grade settings governing
+** the generation of this C file were
+**
+** TAG_BITS=2
+** UNBOXED_FLOAT=no
+** UNBOXED_INT64S=no
+** PREGENERATED_DIST=yes
+** HIGHLEVEL_CODE=yes
+**
+** END_OF_C_GRADE_INFO
+*/
+
+
+// :- module mdbcomp.sym_name.
+// :- interface.
+
+#ifndef MR_HEADER_GUARD_mdbcomp__sym_name
+#define MR_HEADER_GUARD_mdbcomp__sym_name
+
+#ifdef __cplusplus
+extern "C" {
+#endif
+
+#include "mercury.h"
+
+
+#ifndef MDBCOMP__SYM_NAME_DECL_GUARD
+#define MDBCOMP__SYM_NAME_DECL_GUARD
+#include "mdbcomp.mih"
+
+#endif
+
+
+
+
+extern const MR_TypeCtorInfo_Struct mdbcomp__sym_name__mdbcomp__sym_name__type_ctor_info_module_name_0;
+
+extern const MR_TypeCtorInfo_Struct mdbcomp__sym_name__mdbcomp__sym_name__type_ctor_info_sym_name_0;
+
+void MR_CALL 
+mdbcomp__sym_name__add_sym_name_suffix_3_p_0(
+  MR_Word param_1,
+  MR_String param_2,
+  MR_Word * param_3);
+
+void MR_CALL 
+mdbcomp__sym_name__det_sym_name_get_module_name_2_p_0(
+  MR_Word param_1,
+  MR_Word * param_2);
+
+MR_bool MR_CALL 
+mdbcomp__sym_name__is_submodule_2_p_0(
+  MR_Word param_1,
+  MR_Word param_2);
+
+MR_bool MR_CALL 
+mdbcomp__sym_name__partial_sym_name_is_part_of_full_2_p_0(
+  MR_Word param_1,
+  MR_Word param_2);
+
+MR_bool MR_CALL 
+mdbcomp__sym_name__partial_sym_name_matches_full_2_p_0(
+  MR_Word param_1,
+  MR_Word param_2);
+
+void MR_CALL 
+mdbcomp__sym_name__remove_sym_name_prefix_3_p_1(
+  MR_Word * param_1,
+  MR_String param_2,
+  MR_Word param_3);
+
+MR_bool MR_CALL 
+mdbcomp__sym_name__remove_sym_name_prefix_3_p_0(
+  MR_Word param_1,
+  MR_String param_2,
+  MR_Word * param_3);
+
+MR_bool MR_CALL 
+mdbcomp__sym_name__remove_sym_name_suffix_3_p_0(
+  MR_Word param_1,
+  MR_String param_2,
+  MR_Word * param_3);
+
+MR_bool MR_CALL 
+mdbcomp__sym_name__strip_outermost_qualifier_3_p_0(
+  MR_Word param_1,
+  MR_String * param_2,
+  MR_Word * param_3);
+
+MR_bool MR_CALL 
+mdbcomp__sym_name__sym_name_get_module_name_2_p_0(
+  MR_Word param_1,
+  MR_Word * param_2);
+
+void MR_CALL 
+mdbcomp__sym_name__sym_name_get_module_name_default_3_p_0(
+  MR_Word param_1,
+  MR_Word param_2,
+  MR_Word * param_3);
+
+void MR_CALL 
+mdbcomp__sym_name__sym_name_get_module_name_default_name_4_p_0(
+  MR_Word param_1,
+  MR_Word param_2,
+  MR_Word * param_3,
+  MR_String * param_4);
+
+void MR_CALL 
+mdbcomp__sym_name__sym_name_to_qualifier_list_and_name_3_p_0(
+  MR_Word param_1,
+  MR_Word * param_2,
+  MR_String * param_3);
+
+void MR_CALL 
+mdbcomp__sym_name__sym_name_to_term_4_p_0(
+  MR_Word param_1,
+  MR_Word param_2,
+  MR_Word param_3,
+  MR_Word param_4,
+  MR_Word * param_5);
+
+MR_Word MR_CALL 
+mdbcomp__sym_name__add_outermost_qualifier_2_f_0(
+  MR_String param_1,
+  MR_Word param_2);
+
+MR_Word MR_CALL 
+mdbcomp__sym_name__get_ancestors_1_f_0(
+  MR_Word param_1);
+
+MR_Word MR_CALL 
+mdbcomp__sym_name__get_ancestors_set_1_f_0(
+  MR_Word param_1);
+
+MR_String MR_CALL 
+mdbcomp__sym_name__outermost_qualifier_1_f_0(
+  MR_Word param_1);
+
+MR_Word MR_CALL 
+mdbcomp__sym_name__string_to_sym_name_1_f_0(
+  MR_String param_1);
+
+MR_Word MR_CALL 
+mdbcomp__sym_name__string_to_sym_name_sep_2_f_0(
+  MR_String param_1,
+  MR_String param_2);
+
+MR_Word MR_CALL 
+mdbcomp__sym_name__sym_name_to_list_1_f_0(
+  MR_Word param_1);
+
+MR_String MR_CALL 
+mdbcomp__sym_name__sym_name_to_string_1_f_0(
+  MR_Word param_1);
+
+MR_String MR_CALL 
+mdbcomp__sym_name__sym_name_to_string_sep_2_f_0(
+  MR_Word param_1,
+  MR_String param_2);
+
+MR_Word MR_CALL 
+mdbcomp__sym_name__transform_sym_base_name_2_f_0(
+  MR_Word param_1,
+  MR_Word param_2);
+
+MR_String MR_CALL 
+mdbcomp__sym_name__unqualify_name_1_f_0(
+  MR_Word param_1);
+
+void MR_CALL 
+mdbcomp__sym_name____Compare____module_name_0_0(
+  MR_Word * param_1,
+  MR_Word param_2,
+  MR_Word param_3);
+
+void MR_CALL 
+mdbcomp__sym_name____Compare____sym_name_0_0(
+  MR_Word * param_1,
+  MR_Word param_2,
+  MR_Word param_3);
+
+MR_bool MR_CALL 
+mdbcomp__sym_name____Unify____module_name_0_0(
+  MR_Word param_1,
+  MR_Word param_2);
+
+MR_bool MR_CALL 
+mdbcomp__sym_name____Unify____sym_name_0_0(
+  MR_Word param_1,
+  MR_Word param_2);
+
+void mercury__mdbcomp__sym_name__init(void);
+void mercury__mdbcomp__sym_name__init_type_tables(void);
+void mercury__mdbcomp__sym_name__init_debugger(void);
+const char *mercury__mdbcomp__sym_name__grade_check(void);
+
+#ifdef __cplusplus
+}
+#endif
+
+#endif // MR_HEADER_GUARD_mdbcomp.sym_name
+
+// :- end_interface mdbcomp.sym_name.
