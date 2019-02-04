@@ -1,0 +1,16 @@
+:- module (transform_hlds.inlining).
+:- interface.
+:- import_module hlds.
+:- import_module list.
+:- import_module map.
+:- import_module parse_tree.
+:- import_module (hlds.hlds_clauses).
+:- import_module (hlds.hlds_goal).
+:- import_module (hlds.hlds_module).
+:- import_module (hlds.hlds_pred).
+:- import_module (hlds.hlds_rtti).
+:- import_module (hlds.vartypes).
+:- import_module (parse_tree.prog_data).
+:- type may_inline_purity_promised_pred
+    --->    may_not_inline_purity_promised_pred 
+    ;       may_inline_purity_promised_pred .

@@ -1,0 +1,20 @@
+:- module ((check_hlds.simplify).simplify_proc).
+:- interface.
+:- import_module hlds.
+:- import_module list.
+:- import_module parse_tree.
+:- import_module (hlds.hlds_goal).
+:- import_module (hlds.hlds_module).
+:- import_module (hlds.hlds_pred).
+:- import_module (hlds.instmap).
+:- import_module (parse_tree.error_util).
+:- import_module (parse_tree.prog_data).
+:- import_module ((check_hlds.simplify).simplify_tasks).
+:- pred simplify_goal_update_vars_in_proc(check_hlds.simplify.simplify_tasks.simplify_tasks, hlds.hlds_module.module_info, hlds.hlds_module.module_info, hlds.hlds_pred.pred_id, hlds.hlds_pred.proc_id, hlds.hlds_pred.proc_info, hlds.hlds_pred.proc_info, hlds.instmap.instmap, hlds.hlds_goal.hlds_goal, hlds.hlds_goal.hlds_goal, int).
+:- mode simplify_goal_update_vars_in_proc((builtin.in), (builtin.in), (builtin.out), (builtin.in), (builtin.in), (builtin.in), (builtin.out), (builtin.in), (builtin.in), (builtin.out), (builtin.out)) is det.
+:- pred simplify_may_introduce_calls(string, string, parse_tree.prog_data.arity).
+:- mode simplify_may_introduce_calls((builtin.in), (builtin.in), (builtin.in)) is semidet.
+:- pred simplify_pred_procs(check_hlds.simplify.simplify_tasks.simplify_tasks, hlds.hlds_pred.pred_id, list.list(hlds.hlds_pred.proc_id), hlds.hlds_module.module_info, hlds.hlds_module.module_info, hlds.hlds_pred.pred_info, hlds.hlds_pred.pred_info, parse_tree.error_util.error_spec_accumulator, parse_tree.error_util.error_spec_accumulator).
+:- mode simplify_pred_procs((builtin.in), (builtin.in), (builtin.in), (builtin.in), (builtin.out), (builtin.in), (builtin.out), (builtin.in), (builtin.out)) is det.
+:- pred simplify_proc(check_hlds.simplify.simplify_tasks.simplify_tasks, hlds.hlds_pred.pred_id, hlds.hlds_pred.proc_id, hlds.hlds_module.module_info, hlds.hlds_module.module_info, hlds.hlds_pred.proc_info, hlds.hlds_pred.proc_info).
+:- mode simplify_proc((builtin.in), (builtin.in), (builtin.in), (builtin.in), (builtin.out), (builtin.in), (builtin.out)) is det.

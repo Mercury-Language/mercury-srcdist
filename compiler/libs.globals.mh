@@ -1,0 +1,95 @@
+/*
+** Automatically generated from `globals.m'
+** by the Mercury compiler,
+** version rotd-2017-09-03
+** configured for x86_64-apple-darwin13.4.0.
+** Do not edit.
+*/
+#ifndef LIBS__GLOBALS_MH
+#define LIBS__GLOBALS_MH
+
+#ifdef __cplusplus
+extern "C" {
+#endif
+
+#ifdef MR_HIGHLEVEL_CODE
+#include "mercury.h"
+#else
+  #ifndef MERCURY_HDR_EXCLUDE_IMP_H
+  #include "mercury_imp.h"
+  #endif
+#endif
+#ifdef MR_DEEP_PROFILING
+#include "mercury_deep_profiling.h"
+#endif
+
+#ifndef LIBS__GLOBALS_DECL_GUARD
+#define LIBS__GLOBALS_DECL_GUARD
+#ifdef MR_HIGHLEVEL_CODE
+    extern MR_Word libs__globals__mutable_variable_maybe_from_ground_term_threshold;
+#else
+    extern MR_Word libs__globals__mutable_variable_maybe_from_ground_term_threshold;
+#endif
+#ifdef MR_THREAD_SAFE
+    extern MercuryLock libs__globals__mutable_variable_maybe_from_ground_term_threshold_lock;
+#endif
+
+#ifdef MR_HIGHLEVEL_CODE
+    extern MR_Word libs__globals__mutable_variable_extra_error_info;
+#else
+    extern MR_Word libs__globals__mutable_variable_extra_error_info;
+#endif
+#ifdef MR_THREAD_SAFE
+    extern MercuryLock libs__globals__mutable_variable_extra_error_info_lock;
+#endif
+
+#ifdef MR_HIGHLEVEL_CODE
+    extern MR_Word libs__globals__mutable_variable_some_errors_were_context_limited;
+#else
+    extern MR_Word libs__globals__mutable_variable_some_errors_were_context_limited;
+#endif
+#ifdef MR_THREAD_SAFE
+    extern MercuryLock libs__globals__mutable_variable_some_errors_were_context_limited_lock;
+#endif
+
+#ifdef MR_HIGHLEVEL_CODE
+    extern MR_Word libs__globals__mutable_variable_disable_smart_recompilation;
+#else
+    extern MR_Word libs__globals__mutable_variable_disable_smart_recompilation;
+#endif
+#ifdef MR_THREAD_SAFE
+    extern MercuryLock libs__globals__mutable_variable_disable_smart_recompilation_lock;
+#endif
+
+#ifdef MR_HIGHLEVEL_CODE
+    extern MR_Word libs__globals__mutable_variable_disable_generate_item_version_numbers;
+#else
+    extern MR_Word libs__globals__mutable_variable_disable_generate_item_version_numbers;
+#endif
+#ifdef MR_THREAD_SAFE
+    extern MercuryLock libs__globals__mutable_variable_disable_generate_item_version_numbers_lock;
+#endif
+
+#ifdef MR_HIGHLEVEL_CODE
+    extern MR_Word libs__globals__mutable_variable_maybe_source_file_map;
+#else
+    extern MR_Word libs__globals__mutable_variable_maybe_source_file_map;
+#endif
+#ifdef MR_THREAD_SAFE
+    extern MercuryLock libs__globals__mutable_variable_maybe_source_file_map_lock;
+#endif
+
+
+#endif
+void libs__globals__user_init_pred_0(void);
+void libs__globals__user_init_pred_1(void);
+void libs__globals__user_init_pred_2(void);
+void libs__globals__user_init_pred_3(void);
+void libs__globals__user_init_pred_4(void);
+void libs__globals__user_init_pred_5(void);
+
+#ifdef __cplusplus
+}
+#endif
+
+#endif /* LIBS__GLOBALS_MH */

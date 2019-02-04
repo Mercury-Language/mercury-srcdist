@@ -1,0 +1,88 @@
+/*
+** Automatically generated from `ml_tailcall.m'
+** by the Mercury compiler,
+** version rotd-2017-09-03
+** configured for x86_64-apple-darwin13.4.0.
+** Do not edit.
+**
+** The autoconfigured grade settings governing
+** the generation of this C file were
+**
+** TAG_BITS=2
+** UNBOXED_FLOAT=no
+** PREGENERATED_DIST=yes
+** HIGHLEVEL_CODE=yes
+**
+** END_OF_C_GRADE_INFO
+*/
+
+
+// :- module ml_backend.ml_tailcall.
+// :- interface.
+
+#ifndef MR_HEADER_GUARD_ml_backend__ml_tailcall
+#define MR_HEADER_GUARD_ml_backend__ml_tailcall
+
+#ifdef __cplusplus
+extern "C" {
+#endif
+
+#include "mercury.h"
+
+
+#ifndef ML_BACKEND__ML_TAILCALL_DECL_GUARD
+#define ML_BACKEND__ML_TAILCALL_DECL_GUARD
+#include "ml_backend.mih"
+
+#endif
+
+
+
+
+extern const MR_TypeCtorInfo_Struct ml_backend__ml_tailcall__ml_backend__ml_tailcall__type_ctor_info_at_tail_0;
+
+extern const MR_TypeCtorInfo_Struct ml_backend__ml_tailcall__ml_backend__ml_tailcall__type_ctor_info_is_local_0;
+
+extern const MR_TypeCtorInfo_Struct ml_backend__ml_tailcall__ml_backend__ml_tailcall__type_ctor_info_may_yield_dangling_stack_ref_0;
+
+extern const MR_TypeCtorInfo_Struct ml_backend__ml_tailcall__ml_backend__ml_tailcall__type_ctor_info_tailcall_info_0;
+
+extern const MR_TypeCtorInfo_Struct ml_backend__ml_tailcall__ml_backend__ml_tailcall__type_ctor_info_tc_in_body_info_0;
+
+extern const MR_TypeCtorInfo_Struct ml_backend__ml_tailcall__ml_backend__ml_tailcall__type_ctor_info_warn_tail_calls_0;
+
+void MR_CALL 
+ml_backend__ml_tailcall__ml_mark_tailcalls_5_p_0(
+  MR_Word param_1,
+  MR_Word param_2,
+  MR_Word * param_3,
+  MR_Word param_4,
+  MR_Word * param_5);
+
+MR_Word MR_CALL 
+ml_backend__ml_tailcall__may_rvals_yield_dangling_stack_ref_1_f_0(
+  MR_Word param_1);
+
+void MR_CALL 
+ml_backend__ml_tailcall____Compare____may_yield_dangling_stack_ref_0_0(
+  MR_Word * param_1,
+  MR_Word param_2,
+  MR_Word param_3);
+
+MR_bool MR_CALL 
+ml_backend__ml_tailcall____Unify____may_yield_dangling_stack_ref_0_0(
+  MR_Word param_1,
+  MR_Word param_2);
+
+void mercury__ml_backend__ml_tailcall__init(void);
+void mercury__ml_backend__ml_tailcall__init_type_tables(void);
+void mercury__ml_backend__ml_tailcall__init_debugger(void);
+const char *mercury__ml_backend__ml_tailcall__grade_check(void);
+
+#ifdef __cplusplus
+}
+#endif
+
+#endif // MR_HEADER_GUARD_ml_backend.ml_tailcall
+
+// :- end_interface ml_backend.ml_tailcall.
