@@ -1,0 +1,4 @@
+:- module ((check_hlds.simplify).format_call).
+:- interface.
+:- type maybe_generate_implicit_stream_warnings
+	where	type_is_abstract_enum(1).

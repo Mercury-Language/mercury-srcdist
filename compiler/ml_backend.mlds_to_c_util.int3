@@ -1,0 +1,5 @@
+:- module (ml_backend.mlds_to_c_util).
+:- interface.
+:- type decl_or_defn
+	where	type_is_abstract_enum(1).
+:- type mlds_to_c_opts.
