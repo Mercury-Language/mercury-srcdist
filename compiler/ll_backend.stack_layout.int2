@@ -1,0 +1,3 @@
+:- module (ll_backend.stack_layout).
+:- interface.
+:- type string_table.

@@ -1,0 +1,34 @@
+/*
+** Automatically generated from `erl_rtti.m'
+** by the Mercury compiler,
+** version rotd-2012-06-11, configured for x86_64-unknown-linux-gnu.
+** Do not edit.
+*/
+#ifndef ERL_BACKEND__ERL_RTTI_MH
+#define ERL_BACKEND__ERL_RTTI_MH
+
+#ifdef __cplusplus
+extern "C" {
+#endif
+
+#ifdef MR_HIGHLEVEL_CODE
+#include "mercury.h"
+#else
+  #ifndef MERCURY_HDR_EXCLUDE_IMP_H
+  #include "mercury_imp.h"
+  #endif
+#endif
+#ifdef MR_DEEP_PROFILING
+#include "mercury_deep_profiling.h"
+#endif
+
+#ifndef ERL_BACKEND__ERL_RTTI_DECL_GUARD
+#define ERL_BACKEND__ERL_RTTI_DECL_GUARD
+
+#endif
+
+#ifdef __cplusplus
+}
+#endif
+
+#endif /* ERL_BACKEND__ERL_RTTI_MH */

@@ -1,0 +1,28 @@
+:- module ((mdprof_fb.automatic_parallelism).autopar_costs).
+:- interface.
+:- import_module lazy.
+:- import_module list.
+:- import_module map.
+:- import_module maybe.
+:- import_module mdbcomp.
+:- import_module measurements.
+:- import_module report.
+:- import_module var_use_analysis.
+:- import_module (mdbcomp.goal_path).
+:- import_module (mdbcomp.program_representation).
+:- import_module ((mdprof_fb.automatic_parallelism).autopar_types).
+:- pred atomic_goal_build_use_map(mdbcomp.program_representation.atomic_goal_rep, mdbcomp.goal_path.reverse_goal_path, mdprof_fb.automatic_parallelism.autopar_types.implicit_parallelism_info, var_use_analysis.var_use_type, mdbcomp.program_representation.var_rep, map.map(mdbcomp.program_representation.var_rep, lazy.lazy(var_use_analysis.var_use_info)), map.map(mdbcomp.program_representation.var_rep, lazy.lazy(var_use_analysis.var_use_info))).
+:- mode atomic_goal_build_use_map((builtin.in), (builtin.in), (builtin.in), (builtin.in), (builtin.in), (builtin.in), (builtin.out)) is det.
+:- pred conj_calc_cost(list.list(mdprof_fb.automatic_parallelism.autopar_types.pard_goal_detail), int, measurements.goal_cost_csq).
+:- mode conj_calc_cost((builtin.in), (builtin.in), (builtin.out)) is det.
+:- pred disj_calc_cost(list.list(mdprof_fb.automatic_parallelism.autopar_types.pard_goal_detail), int, measurements.goal_cost_csq).
+:- mode disj_calc_cost((builtin.in), (builtin.in), (builtin.out)) is det.
+:- pred implicit_par_info_intermodule_var_use(mdprof_fb.automatic_parallelism.autopar_types.implicit_parallelism_info, var_use_analysis.intermodule_var_use).
+:- mode implicit_par_info_intermodule_var_use((builtin.in), (builtin.out)) is det.
+:- pred ite_calc_cost(mdprof_fb.automatic_parallelism.autopar_types.pard_goal_detail, mdprof_fb.automatic_parallelism.autopar_types.pard_goal_detail, mdprof_fb.automatic_parallelism.autopar_types.pard_goal_detail, measurements.goal_cost_csq).
+:- mode ite_calc_cost((builtin.in), (builtin.in), (builtin.in), (builtin.out)) is det.
+:- pred recursion_type_get_interesting_parallelisation_depth(report.recursion_type, maybe.maybe(measurements.recursion_depth)).
+:- mode recursion_type_get_interesting_parallelisation_depth(builtin.in((report.recursion_type_known_costs)), builtin.out(maybe.maybe_yes(ground))) is det.
+:- mode recursion_type_get_interesting_parallelisation_depth((builtin.in), (builtin.out)) is det.
+:- pred switch_calc_cost(list.list(mdbcomp.program_representation.case_rep(mdprof_fb.automatic_parallelism.autopar_types.pard_goal_detail_annotation)), int, measurements.goal_cost_csq).
+:- mode switch_calc_cost((builtin.in), (builtin.in), (builtin.out)) is det.

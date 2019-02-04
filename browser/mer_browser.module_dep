@@ -1,0 +1,13 @@
+module(1, "mer_browser.m",
+	mer_browser,
+	{},
+	{builtin, private_builtin},
+	{builtin, mdb, private_builtin},
+	{},
+	{},
+	{},
+	{},
+	{},
+	no_foreign_export,
+	no_main
+).

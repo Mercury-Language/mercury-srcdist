@@ -1,0 +1,17 @@
+:- module (hlds.const_struct).
+:- interface.
+:- import_module assoc_list.
+:- import_module bool.
+:- import_module list.
+:- import_module map.
+:- import_module (libs.globals).
+:- import_module (parse_tree.prog_data).
+:- type const_instance_id
+	--->	ciid(int, parse_tree.prog_data.prog_constraint, list.list(parse_tree.prog_data.prog_constraint)).
+:- type const_instance_map == map.map(hlds.const_struct.const_instance_id, int).
+:- type const_struct
+	--->	const_struct(((hlds.const_struct).cs_cons_id) :: parse_tree.prog_data.cons_id, ((hlds.const_struct).cs_args) :: list.list(hlds.const_struct.const_struct_arg), ((hlds.const_struct).cs_term_type) :: parse_tree.prog_data.mer_type, ((hlds.const_struct).cs_term_int) :: parse_tree.prog_data.mer_inst).
+:- type const_struct_arg
+	--->	csa_const_struct(int)
+	;	csa_constant(parse_tree.prog_data.cons_id, parse_tree.prog_data.mer_type).
+:- type const_struct_db.
