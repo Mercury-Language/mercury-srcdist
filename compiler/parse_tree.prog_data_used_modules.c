@@ -1,0 +1,618 @@
+/*
+** Automatically generated from `prog_data_used_modules.m'
+** by the Mercury compiler,
+** version rotd-2018-03-01
+** configured for x86_64-pc-linux-gnu.
+** Do not edit.
+**
+** The autoconfigured grade settings governing
+** the generation of this C file were
+**
+** TAG_BITS=2
+** UNBOXED_FLOAT=no
+** UNBOXED_INT64S=no
+** PREGENERATED_DIST=yes
+** HIGHLEVEL_CODE=yes
+**
+** END_OF_C_GRADE_INFO
+*/
+
+
+// :- module parse_tree.prog_data_used_modules.
+// :- implementation.
+
+/*
+INIT mercury__parse_tree__prog_data_used_modules__init
+ENDINIT
+*/
+
+#include "parse_tree.prog_data_used_modules.mih"
+
+
+#include "mdbcomp.mih"
+#include "parse_tree.mih"
+#include "mdbcomp.builtin_modules.mih"
+#include "mdbcomp.sym_name.mih"
+#include "array.mih"
+#include "assoc_list.mih"
+#include "bitmap.mih"
+#include "bool.mih"
+#include "builtin.mih"
+#include "char.mih"
+#include "construct.mih"
+#include "deconstruct.mih"
+#include "enum.mih"
+#include "integer.mih"
+#include "io.mih"
+#include "list.mih"
+#include "map.mih"
+#include "maybe.mih"
+#include "ops.mih"
+#include "pair.mih"
+#include "pretty_printer.mih"
+#include "private_builtin.mih"
+#include "random.mih"
+#include "rtti_implementation.mih"
+#include "set.mih"
+#include "set_ordlist.mih"
+#include "stream.mih"
+#include "string.mih"
+#include "term.mih"
+#include "time.mih"
+#include "tree234.mih"
+#include "type_desc.mih"
+#include "univ.mih"
+
+
+
+
+static const MR_EnumFunctorDesc parse_tree__prog_data_used_modules__parse_tree__prog_data_used_modules__enum_functor_desc_item_visibility_0_0;
+
+static const MR_EnumFunctorDesc parse_tree__prog_data_used_modules__parse_tree__prog_data_used_modules__enum_functor_desc_item_visibility_0_1;
+
+static const MR_EnumFunctorDescPtr parse_tree__prog_data_used_modules__parse_tree__prog_data_used_modules__enum_value_ordered_item_visibility_0[2];
+
+static const MR_EnumFunctorDescPtr parse_tree__prog_data_used_modules__parse_tree__prog_data_used_modules__enum_name_ordered_item_visibility_0[2];
+
+static const MR_Integer parse_tree__prog_data_used_modules__parse_tree__prog_data_used_modules__functor_number_map_item_visibility_0[2];
+
+static const MR_FA_TypeInfo_Struct1 parse_tree__prog_data_used_modules__set_ordlist__ti_set_ordlist_1mdbcomp__sym_name__type_ctor_info_sym_name_0;
+
+static const MR_PseudoTypeInfo parse_tree__prog_data_used_modules__parse_tree__prog_data_used_modules__field_types_used_modules_0_0[2];
+
+static const MR_ConstString parse_tree__prog_data_used_modules__parse_tree__prog_data_used_modules__field_names_used_modules_0_0[2];
+
+static const MR_DuFunctorDesc parse_tree__prog_data_used_modules__parse_tree__prog_data_used_modules__du_functor_desc_used_modules_0_0;
+
+static const MR_DuFunctorDescPtr parse_tree__prog_data_used_modules__parse_tree__prog_data_used_modules__du_stag_ordered_used_modules_0_0[1];
+
+static const MR_DuPtagLayout parse_tree__prog_data_used_modules__parse_tree__prog_data_used_modules__du_ptag_ordered_used_modules_0[1];
+
+static const MR_DuFunctorDescPtr parse_tree__prog_data_used_modules__parse_tree__prog_data_used_modules__du_name_ordered_used_modules_0[1];
+
+static const MR_Integer parse_tree__prog_data_used_modules__parse_tree__prog_data_used_modules__functor_number_map_used_modules_0[1];
+
+static MR_bool MR_CALL 
+parse_tree__prog_data_used_modules____Unify____item_visibility_0_0_10001(
+  MR_Box wrapper_arg_1,
+  MR_Box wrapper_arg_2);
+
+static void MR_CALL 
+parse_tree__prog_data_used_modules____Compare____item_visibility_0_0_10001(
+  MR_Box * wrapper_arg_1,
+  MR_Box wrapper_arg_2,
+  MR_Box wrapper_arg_3);
+
+static MR_bool MR_CALL 
+parse_tree__prog_data_used_modules____Unify____used_modules_0_0_10001(
+  MR_Box wrapper_arg_1,
+  MR_Box wrapper_arg_2);
+
+static void MR_CALL 
+parse_tree__prog_data_used_modules____Compare____used_modules_0_0_10001(
+  MR_Box * wrapper_arg_1,
+  MR_Box wrapper_arg_2,
+  MR_Box wrapper_arg_3);
+
+
+static /* final */ const MR_Box parse_tree__prog_data_used_modules_scalar_common_1[1][2];
+
+
+
+
+static /* final */ const MR_Box parse_tree__prog_data_used_modules_scalar_common_1[1][2] = {
+  /* row 0 */
+  {
+    ((MR_Box) (&mercury__set_ordlist__set_ordlist__type_ctor_info_set_ordlist_1)),
+    ((MR_Box) (&mdbcomp__sym_name__mdbcomp__sym_name__type_ctor_info_sym_name_0))
+  },
+};
+
+
+
+#include "io.mh"
+#include "string.mh"
+#include "time.mh"
+
+
+
+static const MR_EnumFunctorDesc parse_tree__prog_data_used_modules__parse_tree__prog_data_used_modules__enum_functor_desc_item_visibility_0_0 = {
+  (MR_String) "visibility_public",
+  (MR_Integer) 0
+};
+
+static const MR_EnumFunctorDesc parse_tree__prog_data_used_modules__parse_tree__prog_data_used_modules__enum_functor_desc_item_visibility_0_1 = {
+  (MR_String) "visibility_private",
+  (MR_Integer) 1
+};
+
+static const MR_EnumFunctorDescPtr parse_tree__prog_data_used_modules__parse_tree__prog_data_used_modules__enum_value_ordered_item_visibility_0[2] = {
+  &parse_tree__prog_data_used_modules__parse_tree__prog_data_used_modules__enum_functor_desc_item_visibility_0_0,
+  &parse_tree__prog_data_used_modules__parse_tree__prog_data_used_modules__enum_functor_desc_item_visibility_0_1
+};
+
+static const MR_EnumFunctorDescPtr parse_tree__prog_data_used_modules__parse_tree__prog_data_used_modules__enum_name_ordered_item_visibility_0[2] = {
+  &parse_tree__prog_data_used_modules__parse_tree__prog_data_used_modules__enum_functor_desc_item_visibility_0_1,
+  &parse_tree__prog_data_used_modules__parse_tree__prog_data_used_modules__enum_functor_desc_item_visibility_0_0
+};
+
+static const MR_Integer parse_tree__prog_data_used_modules__parse_tree__prog_data_used_modules__functor_number_map_item_visibility_0[2] = {
+  (MR_Integer) 1,
+  (MR_Integer) 0
+};
+
+const MR_TypeCtorInfo_Struct parse_tree__prog_data_used_modules__parse_tree__prog_data_used_modules__type_ctor_info_item_visibility_0 = {
+  (MR_Integer) 0,
+  (MR_Integer) 17,
+  (MR_Integer) -1,
+  MR_TYPECTOR_REP_ENUM,
+  ((MR_Box) (parse_tree__prog_data_used_modules____Unify____item_visibility_0_0_10001)),
+  ((MR_Box) (parse_tree__prog_data_used_modules____Compare____item_visibility_0_0_10001)),
+  (MR_String) "parse_tree.prog_data_used_modules",
+  (MR_String) "item_visibility",
+  {     parse_tree__prog_data_used_modules__parse_tree__prog_data_used_modules__enum_name_ordered_item_visibility_0 },
+  {     parse_tree__prog_data_used_modules__parse_tree__prog_data_used_modules__enum_value_ordered_item_visibility_0 },
+  (MR_Integer) 2,
+  (MR_Integer) 4,
+  parse_tree__prog_data_used_modules__parse_tree__prog_data_used_modules__functor_number_map_item_visibility_0
+};
+
+static const MR_FA_TypeInfo_Struct1 parse_tree__prog_data_used_modules__set_ordlist__ti_set_ordlist_1mdbcomp__sym_name__type_ctor_info_sym_name_0 = {
+  &mercury__set_ordlist__set_ordlist__type_ctor_info_set_ordlist_1,
+  {
+    (MR_TypeInfo) &mdbcomp__sym_name__mdbcomp__sym_name__type_ctor_info_sym_name_0
+  }
+};
+
+static const MR_PseudoTypeInfo parse_tree__prog_data_used_modules__parse_tree__prog_data_used_modules__field_types_used_modules_0_0[2] = {
+  (MR_PseudoTypeInfo) &parse_tree__prog_data_used_modules__set_ordlist__ti_set_ordlist_1mdbcomp__sym_name__type_ctor_info_sym_name_0,
+  (MR_PseudoTypeInfo) &parse_tree__prog_data_used_modules__set_ordlist__ti_set_ordlist_1mdbcomp__sym_name__type_ctor_info_sym_name_0
+};
+
+static const MR_ConstString parse_tree__prog_data_used_modules__parse_tree__prog_data_used_modules__field_names_used_modules_0_0[2] = {
+  (MR_String) "int_used_modules",
+  (MR_String) "imp_used_modules"
+};
+
+static const MR_DuFunctorDesc parse_tree__prog_data_used_modules__parse_tree__prog_data_used_modules__du_functor_desc_used_modules_0_0 = {
+  (MR_String) "used_modules",
+  (MR_Integer) 2,
+  (MR_Integer) 0,
+  MR_SECTAG_NONE,
+  (MR_Integer) 0,
+  (MR_Integer) -1,
+  (MR_Integer) 0,
+  parse_tree__prog_data_used_modules__parse_tree__prog_data_used_modules__field_types_used_modules_0_0,
+  parse_tree__prog_data_used_modules__parse_tree__prog_data_used_modules__field_names_used_modules_0_0,
+  NULL,
+  NULL,
+  MR_FUNCTOR_SUBTYPE_NONE
+};
+
+static const MR_DuFunctorDescPtr parse_tree__prog_data_used_modules__parse_tree__prog_data_used_modules__du_stag_ordered_used_modules_0_0[1] = {
+  &parse_tree__prog_data_used_modules__parse_tree__prog_data_used_modules__du_functor_desc_used_modules_0_0
+};
+
+static const MR_DuPtagLayout parse_tree__prog_data_used_modules__parse_tree__prog_data_used_modules__du_ptag_ordered_used_modules_0[1] = {
+  {
+    (MR_Integer) 1,
+    MR_SECTAG_NONE,
+    parse_tree__prog_data_used_modules__parse_tree__prog_data_used_modules__du_stag_ordered_used_modules_0_0
+  }
+};
+
+static const MR_DuFunctorDescPtr parse_tree__prog_data_used_modules__parse_tree__prog_data_used_modules__du_name_ordered_used_modules_0[1] = {
+  &parse_tree__prog_data_used_modules__parse_tree__prog_data_used_modules__du_functor_desc_used_modules_0_0
+};
+
+static const MR_Integer parse_tree__prog_data_used_modules__parse_tree__prog_data_used_modules__functor_number_map_used_modules_0[1] = {
+  (MR_Integer) 0
+};
+
+const MR_TypeCtorInfo_Struct parse_tree__prog_data_used_modules__parse_tree__prog_data_used_modules__type_ctor_info_used_modules_0 = {
+  (MR_Integer) 0,
+  (MR_Integer) 17,
+  (MR_Integer) 1,
+  MR_TYPECTOR_REP_DU,
+  ((MR_Box) (parse_tree__prog_data_used_modules____Unify____used_modules_0_0_10001)),
+  ((MR_Box) (parse_tree__prog_data_used_modules____Compare____used_modules_0_0_10001)),
+  (MR_String) "parse_tree.prog_data_used_modules",
+  (MR_String) "used_modules",
+  {     parse_tree__prog_data_used_modules__parse_tree__prog_data_used_modules__du_name_ordered_used_modules_0 },
+  {     parse_tree__prog_data_used_modules__parse_tree__prog_data_used_modules__du_ptag_ordered_used_modules_0 },
+  (MR_Integer) 1,
+  (MR_Integer) 4,
+  parse_tree__prog_data_used_modules__parse_tree__prog_data_used_modules__functor_number_map_used_modules_0
+};
+
+void MR_CALL 
+parse_tree__prog_data_used_modules____Compare____used_modules_0_0(
+  MR_Word * HeadVar__1_1,
+  MR_Word HeadVar__2_2,
+  MR_Word HeadVar__3_3)
+{
+  {
+    MR_bool succeeded;
+    MR_Integer CastX_9 = (MR_Integer) HeadVar__2_2;
+    MR_Integer CastY_10 = (MR_Integer) HeadVar__3_3;
+
+    succeeded = (CastX_9 == CastY_10);
+    if (succeeded)
+      *HeadVar__1_1 = (MR_Integer) 0;
+    else
+    {
+      MR_Word ArgX1_4 = ((MR_Word) (MR_hl_field(MR_mktag(0), HeadVar__2_2, (MR_Integer) 0)));
+      MR_Word ArgY1_5 = ((MR_Word) (MR_hl_field(MR_mktag(0), HeadVar__3_3, (MR_Integer) 0)));
+      MR_Word ArgX2_6 = ((MR_Word) (MR_hl_field(MR_mktag(0), HeadVar__2_2, (MR_Integer) 1)));
+      MR_Word ArgY2_7 = ((MR_Word) (MR_hl_field(MR_mktag(0), HeadVar__3_3, (MR_Integer) 1)));
+      MR_Word Var_8;
+
+      mercury__builtin__compare_3_p_0((MR_Word) &parse_tree__prog_data_used_modules_scalar_common_1[0], &Var_8, ((MR_Box) (ArgX1_4)), ((MR_Box) (ArgY1_5)));
+      succeeded = (Var_8 == (MR_Integer) 0);
+      succeeded = !(succeeded);
+      if (succeeded)
+        *HeadVar__1_1 = Var_8;
+      else
+      {
+        mercury__builtin__compare_3_p_0((MR_Word) &parse_tree__prog_data_used_modules_scalar_common_1[0], HeadVar__1_1, ((MR_Box) (ArgX2_6)), ((MR_Box) (ArgY2_7)));
+      }
+    }
+  }
+}
+
+MR_bool MR_CALL 
+parse_tree__prog_data_used_modules____Unify____used_modules_0_0(
+  MR_Word HeadVar__1_1,
+  MR_Word HeadVar__2_2)
+{
+  {
+    MR_bool succeeded;
+    MR_Integer CastX_7 = (MR_Integer) HeadVar__1_1;
+    MR_Integer CastY_8 = (MR_Integer) HeadVar__2_2;
+
+    succeeded = (CastX_7 == CastY_8);
+    if (succeeded)
+      succeeded = MR_TRUE;
+    else
+    {
+      MR_Word TypeInfo_10_10;
+      MR_Word ArgX1_3 = ((MR_Word) (MR_hl_field(MR_mktag(0), HeadVar__1_1, (MR_Integer) 0)));
+      MR_Word ArgY1_4 = ((MR_Word) (MR_hl_field(MR_mktag(0), HeadVar__2_2, (MR_Integer) 0)));
+      MR_Word ArgX2_5 = ((MR_Word) (MR_hl_field(MR_mktag(0), HeadVar__1_1, (MR_Integer) 1)));
+      MR_Word ArgY2_6 = ((MR_Word) (MR_hl_field(MR_mktag(0), HeadVar__2_2, (MR_Integer) 1)));
+
+      succeeded = mercury__builtin__unify_2_p_0((MR_Word) &parse_tree__prog_data_used_modules_scalar_common_1[0], ((MR_Box) (ArgX1_3)), ((MR_Box) (ArgY1_4)));
+      if (succeeded)
+      {
+        TypeInfo_10_10 = (MR_Word) &parse_tree__prog_data_used_modules_scalar_common_1[0];
+        succeeded = mercury__builtin__unify_2_p_0(TypeInfo_10_10, ((MR_Box) (ArgX2_5)), ((MR_Box) (ArgY2_6)));
+      }
+    }
+    return succeeded;
+  }
+}
+
+void MR_CALL 
+parse_tree__prog_data_used_modules____Compare____item_visibility_0_0(
+  MR_Word * HeadVar__1_1,
+  MR_Word HeadVar__2_2,
+  MR_Word HeadVar__3_3)
+{
+  {
+    MR_Integer Cast_HeadVar1_4 = (MR_Integer) HeadVar__2_2;
+    MR_Integer Cast_HeadVar2_5 = (MR_Integer) HeadVar__3_3;
+
+    mercury__private_builtin__builtin_compare_int_3_p_0(HeadVar__1_1, Cast_HeadVar1_4, Cast_HeadVar2_5);
+  }
+}
+
+MR_bool MR_CALL 
+parse_tree__prog_data_used_modules____Unify____item_visibility_0_0(
+  MR_Word HeadVar__2_1,
+  MR_Word HeadVar__2_2)
+{
+  {
+    MR_bool succeeded = (HeadVar__2_1 == HeadVar__2_2);
+
+    return succeeded;
+  }
+}
+
+void MR_CALL 
+parse_tree__prog_data_used_modules__record_format_modules_as_used_2_p_0(
+  MR_Word STATE_VARIABLE_UsedModules_0_7,
+  MR_Word * STATE_VARIABLE_UsedModules_8)
+{
+  {
+    MR_Word ImplUsedModules0_4 = ((MR_Word) (MR_hl_field(MR_mktag(0), STATE_VARIABLE_UsedModules_0_7, (MR_Integer) 1)));
+    MR_Word FormatModules_5;
+    MR_Word ImplUsedModules_6;
+    MR_Word Var_9;
+    MR_Word Var_10;
+    MR_Word Var_11;
+    MR_Word Var_12;
+    MR_Word Var_13;
+    MR_Word Var_16 = ((MR_Word) (MR_hl_field(MR_mktag(0), STATE_VARIABLE_UsedModules_0_7, (MR_Integer) 0)));
+    MR_Word Var_17;
+    MR_Word Var_18;
+
+    Var_9 = mdbcomp__builtin_modules__mercury_string_format_module_0_f_0();
+    Var_11 = mdbcomp__builtin_modules__mercury_string_parse_util_module_0_f_0();
+    Var_13 = mdbcomp__builtin_modules__mercury_stream_module_0_f_0();
+    {
+      Var_12 = (MR_Word) MR_mkword(MR_mktag(1), MR_new_object(MR_Word, ((MR_Integer) 2 * sizeof(MR_Word)), NULL, NULL));
+      MR_hl_field(MR_mktag(1), Var_12, 0) = ((MR_Box) (Var_13));
+      MR_hl_field(MR_mktag(1), Var_12, 1) = ((MR_Box) (MR_mkword(MR_mktag(0), MR_mkbody((MR_Integer) 0))));
+    }
+    {
+      Var_10 = (MR_Word) MR_mkword(MR_mktag(1), MR_new_object(MR_Word, ((MR_Integer) 2 * sizeof(MR_Word)), NULL, NULL));
+      MR_hl_field(MR_mktag(1), Var_10, 0) = ((MR_Box) (Var_11));
+      MR_hl_field(MR_mktag(1), Var_10, 1) = ((MR_Box) (Var_12));
+    }
+    {
+      FormatModules_5 = (MR_Word) MR_mkword(MR_mktag(1), MR_new_object(MR_Word, ((MR_Integer) 2 * sizeof(MR_Word)), NULL, NULL));
+      MR_hl_field(MR_mktag(1), FormatModules_5, 0) = ((MR_Box) (Var_9));
+      MR_hl_field(MR_mktag(1), FormatModules_5, 1) = ((MR_Box) (Var_10));
+    }
+    mercury__set__insert_list_3_p_0((MR_Word) &mdbcomp__sym_name__mdbcomp__sym_name__type_ctor_info_sym_name_0, FormatModules_5, ImplUsedModules0_4, &ImplUsedModules_6);
+    Var_17 = ((MR_Word) (MR_hl_field(MR_mktag(0), STATE_VARIABLE_UsedModules_0_7, (MR_Integer) 0)));
+    Var_18 = ((MR_Word) (MR_hl_field(MR_mktag(0), STATE_VARIABLE_UsedModules_0_7, (MR_Integer) 1)));
+    {
+      MR_Word base;
+      base = (MR_Word) MR_new_object(MR_Word, ((MR_Integer) 2 * sizeof(MR_Word)), NULL, NULL);
+      *STATE_VARIABLE_UsedModules_8 = base;
+      MR_hl_field(MR_mktag(0), base, 0) = ((MR_Box) (Var_17));
+      MR_hl_field(MR_mktag(0), base, 1) = ((MR_Box) (ImplUsedModules_6));
+    }
+  }
+}
+
+void MR_CALL 
+parse_tree__prog_data_used_modules__record_sym_name_module_as_used_4_p_0(
+  MR_Word Visibility_5,
+  MR_Word SymName_6,
+  MR_Word STATE_VARIABLE_UsedModules_0_11,
+  MR_Word * STATE_VARIABLE_UsedModules_12)
+{
+  if (((MR_tag((MR_Word) SymName_6)) == (MR_mktag((MR_Integer) 1))))
+  {
+    MR_Word ModuleName_9 = ((MR_Word) (MR_hl_field(MR_mktag(1), SymName_6, (MR_Integer) 0)));
+    MR_String Var_10 = ((MR_String) (MR_hl_field(MR_mktag(1), SymName_6, (MR_Integer) 1)));
+
+    parse_tree__prog_data_used_modules__record_module_and_ancestors_as_used_4_p_0(Visibility_5, ModuleName_9, STATE_VARIABLE_UsedModules_0_11, STATE_VARIABLE_UsedModules_12);
+  }
+  else
+    *STATE_VARIABLE_UsedModules_12 = STATE_VARIABLE_UsedModules_0_11;
+}
+
+void MR_CALL 
+parse_tree__prog_data_used_modules__record_module_and_ancestors_as_used_4_p_0(
+  MR_Word Visibility_5,
+  MR_Word ModuleName_6,
+  MR_Word STATE_VARIABLE_UsedModules_0_11,
+  MR_Word * STATE_VARIABLE_UsedModules_12)
+{
+  while (MR_TRUE)
+  {
+    // setup for model_det tailcalls optimized into a loop
+    if (((MR_tag((MR_Word) ModuleName_6)) == (MR_mktag((MR_Integer) 1))))
+    {
+      MR_Word ParentModuleName_9 = ((MR_Word) (MR_hl_field(MR_mktag(1), ModuleName_6, (MR_Integer) 0)));
+      MR_Word STATE_VARIABLE_UsedModules_13_13;
+      MR_Word Var_35 = ((MR_Word) (MR_hl_field(MR_mktag(0), STATE_VARIABLE_UsedModules_0_11, (MR_Integer) 1)));
+      MR_Word Var_36 = ((MR_Word) (MR_hl_field(MR_mktag(0), STATE_VARIABLE_UsedModules_0_11, (MR_Integer) 0)));
+      MR_String Var_10 = ((MR_String) (MR_hl_field(MR_mktag(1), ModuleName_6, (MR_Integer) 1)));
+      MR_Word next_value_of_ModuleName_6;
+      MR_Word next_value_of_STATE_VARIABLE_UsedModules_0_11;
+
+      switch (Visibility_5) {
+        default: /*NOTREACHED*/ MR_assert(0);
+        case (MR_Integer) 1:
+          {
+            MR_Word ImplUsedModules_24;
+            MR_Word Var_31;
+            MR_Word Var_32;
+
+            mercury__set__insert_3_p_0((MR_Word) &mdbcomp__sym_name__mdbcomp__sym_name__type_ctor_info_sym_name_0, ((MR_Box) (ModuleName_6)), Var_35, &ImplUsedModules_24);
+            Var_31 = ((MR_Word) (MR_hl_field(MR_mktag(0), STATE_VARIABLE_UsedModules_0_11, (MR_Integer) 0)));
+            Var_32 = ((MR_Word) (MR_hl_field(MR_mktag(0), STATE_VARIABLE_UsedModules_0_11, (MR_Integer) 1)));
+            {
+              STATE_VARIABLE_UsedModules_13_13 = (MR_Word) MR_new_object(MR_Word, ((MR_Integer) 2 * sizeof(MR_Word)), NULL, NULL);
+              MR_hl_field(MR_mktag(0), STATE_VARIABLE_UsedModules_13_13, 0) = ((MR_Box) (Var_31));
+              MR_hl_field(MR_mktag(0), STATE_VARIABLE_UsedModules_13_13, 1) = ((MR_Box) (ImplUsedModules_24));
+            }
+          }
+          break;
+        case (MR_Integer) 0:
+          {
+            MR_Word IntUsedModules_22;
+            MR_Word Var_29;
+            MR_Word Var_28;
+
+            mercury__set__insert_3_p_0((MR_Word) &mdbcomp__sym_name__mdbcomp__sym_name__type_ctor_info_sym_name_0, ((MR_Box) (ModuleName_6)), Var_36, &IntUsedModules_22);
+            Var_28 = ((MR_Word) (MR_hl_field(MR_mktag(0), STATE_VARIABLE_UsedModules_0_11, (MR_Integer) 0)));
+            Var_29 = ((MR_Word) (MR_hl_field(MR_mktag(0), STATE_VARIABLE_UsedModules_0_11, (MR_Integer) 1)));
+            {
+              STATE_VARIABLE_UsedModules_13_13 = (MR_Word) MR_new_object(MR_Word, ((MR_Integer) 2 * sizeof(MR_Word)), NULL, NULL);
+              MR_hl_field(MR_mktag(0), STATE_VARIABLE_UsedModules_13_13, 0) = ((MR_Box) (IntUsedModules_22));
+              MR_hl_field(MR_mktag(0), STATE_VARIABLE_UsedModules_13_13, 1) = ((MR_Box) (Var_29));
+            }
+          }
+          break;
+      }
+      // direct tailcall eliminated
+      next_value_of_ModuleName_6 = ParentModuleName_9;
+      next_value_of_STATE_VARIABLE_UsedModules_0_11 = STATE_VARIABLE_UsedModules_13_13;
+      ModuleName_6 = next_value_of_ModuleName_6;
+      STATE_VARIABLE_UsedModules_0_11 = next_value_of_STATE_VARIABLE_UsedModules_0_11;
+      continue;
+    }
+    else
+    {
+      MR_Word Var_56 = ((MR_Word) (MR_hl_field(MR_mktag(0), STATE_VARIABLE_UsedModules_0_11, (MR_Integer) 1)));
+      MR_Word Var_57 = ((MR_Word) (MR_hl_field(MR_mktag(0), STATE_VARIABLE_UsedModules_0_11, (MR_Integer) 0)));
+
+      switch (Visibility_5) {
+        default: /*NOTREACHED*/ MR_assert(0);
+        case (MR_Integer) 1:
+          {
+            MR_Word ImplUsedModules_45;
+            MR_Word Var_52;
+            MR_Word Var_53;
+
+            mercury__set__insert_3_p_0((MR_Word) &mdbcomp__sym_name__mdbcomp__sym_name__type_ctor_info_sym_name_0, ((MR_Box) (ModuleName_6)), Var_56, &ImplUsedModules_45);
+            Var_52 = ((MR_Word) (MR_hl_field(MR_mktag(0), STATE_VARIABLE_UsedModules_0_11, (MR_Integer) 0)));
+            Var_53 = ((MR_Word) (MR_hl_field(MR_mktag(0), STATE_VARIABLE_UsedModules_0_11, (MR_Integer) 1)));
+            {
+              MR_Word base;
+              base = (MR_Word) MR_new_object(MR_Word, ((MR_Integer) 2 * sizeof(MR_Word)), NULL, NULL);
+              *STATE_VARIABLE_UsedModules_12 = base;
+              MR_hl_field(MR_mktag(0), base, 0) = ((MR_Box) (Var_52));
+              MR_hl_field(MR_mktag(0), base, 1) = ((MR_Box) (ImplUsedModules_45));
+            }
+          }
+          break;
+        case (MR_Integer) 0:
+          {
+            MR_Word IntUsedModules_43;
+            MR_Word Var_50;
+            MR_Word Var_49;
+
+            mercury__set__insert_3_p_0((MR_Word) &mdbcomp__sym_name__mdbcomp__sym_name__type_ctor_info_sym_name_0, ((MR_Box) (ModuleName_6)), Var_57, &IntUsedModules_43);
+            Var_49 = ((MR_Word) (MR_hl_field(MR_mktag(0), STATE_VARIABLE_UsedModules_0_11, (MR_Integer) 0)));
+            Var_50 = ((MR_Word) (MR_hl_field(MR_mktag(0), STATE_VARIABLE_UsedModules_0_11, (MR_Integer) 1)));
+            {
+              MR_Word base;
+              base = (MR_Word) MR_new_object(MR_Word, ((MR_Integer) 2 * sizeof(MR_Word)), NULL, NULL);
+              *STATE_VARIABLE_UsedModules_12 = base;
+              MR_hl_field(MR_mktag(0), base, 0) = ((MR_Box) (IntUsedModules_43));
+              MR_hl_field(MR_mktag(0), base, 1) = ((MR_Box) (Var_50));
+            }
+          }
+          break;
+      }
+    }
+    break;
+  }
+}
+
+MR_Word MR_CALL 
+parse_tree__prog_data_used_modules__used_modules_init_0_f_0(void)
+{
+  {
+    MR_Word HeadVar__1_1;
+    MR_Word TypeCtorInfo_4_4 = (MR_Word) &mdbcomp__sym_name__mdbcomp__sym_name__type_ctor_info_sym_name_0;
+    MR_Word Var_2;
+    MR_Word Var_3;
+
+    Var_2 = mercury__set__init_0_f_0(TypeCtorInfo_4_4);
+    Var_3 = mercury__set__init_0_f_0(TypeCtorInfo_4_4);
+    {
+      HeadVar__1_1 = (MR_Word) MR_new_object(MR_Word, ((MR_Integer) 2 * sizeof(MR_Word)), NULL, NULL);
+      MR_hl_field(MR_mktag(0), HeadVar__1_1, 0) = ((MR_Box) (Var_2));
+      MR_hl_field(MR_mktag(0), HeadVar__1_1, 1) = ((MR_Box) (Var_3));
+    }
+    return HeadVar__1_1;
+  }
+}
+
+static MR_bool MR_CALL 
+parse_tree__prog_data_used_modules____Unify____item_visibility_0_0_10001(
+  MR_Box wrapper_arg_1,
+  MR_Box wrapper_arg_2)
+{
+  {
+    MR_bool succeeded;
+
+    succeeded = parse_tree__prog_data_used_modules____Unify____item_visibility_0_0(((MR_Word) wrapper_arg_1), ((MR_Word) wrapper_arg_2));
+    return succeeded;
+  }
+}
+
+static void MR_CALL 
+parse_tree__prog_data_used_modules____Compare____item_visibility_0_0_10001(
+  MR_Box * wrapper_arg_1,
+  MR_Box wrapper_arg_2,
+  MR_Box wrapper_arg_3)
+{
+  {
+    MR_Word conv0_HeadVar__1_1;
+
+    parse_tree__prog_data_used_modules____Compare____item_visibility_0_0(&conv0_HeadVar__1_1, ((MR_Word) wrapper_arg_2), ((MR_Word) wrapper_arg_3));
+    *wrapper_arg_1 = ((MR_Box) (conv0_HeadVar__1_1));
+  }
+}
+
+static MR_bool MR_CALL 
+parse_tree__prog_data_used_modules____Unify____used_modules_0_0_10001(
+  MR_Box wrapper_arg_1,
+  MR_Box wrapper_arg_2)
+{
+  {
+    MR_bool succeeded;
+
+    succeeded = parse_tree__prog_data_used_modules____Unify____used_modules_0_0(((MR_Word) wrapper_arg_1), ((MR_Word) wrapper_arg_2));
+    return succeeded;
+  }
+}
+
+static void MR_CALL 
+parse_tree__prog_data_used_modules____Compare____used_modules_0_0_10001(
+  MR_Box * wrapper_arg_1,
+  MR_Box wrapper_arg_2,
+  MR_Box wrapper_arg_3)
+{
+  {
+    MR_Word conv0_HeadVar__1_1;
+
+    parse_tree__prog_data_used_modules____Compare____used_modules_0_0(&conv0_HeadVar__1_1, ((MR_Word) wrapper_arg_2), ((MR_Word) wrapper_arg_3));
+    *wrapper_arg_1 = ((MR_Box) (conv0_HeadVar__1_1));
+  }
+}
+
+void mercury__parse_tree__prog_data_used_modules__init(void)
+{
+}
+
+void mercury__parse_tree__prog_data_used_modules__init_type_tables(void)
+{
+	static MR_bool initialised = MR_FALSE;
+	if (initialised) return;
+	initialised = MR_TRUE;
+
+	MR_register_type_ctor_info(&parse_tree__prog_data_used_modules__parse_tree__prog_data_used_modules__type_ctor_info_item_visibility_0);
+	MR_register_type_ctor_info(&parse_tree__prog_data_used_modules__parse_tree__prog_data_used_modules__type_ctor_info_used_modules_0);
+}
+
+void mercury__parse_tree__prog_data_used_modules__init_debugger(void)
+{
+	MR_fatal_error("debugger initialization in MLDS grade");
+}
+
+// Ensure everything is compiled with the same grade.
+const char *mercury__parse_tree__prog_data_used_modules__grade_check(void)
+{
+    return &MR_GRADE_VAR;
+}
+
+// :- end_module parse_tree.prog_data_used_modules.
