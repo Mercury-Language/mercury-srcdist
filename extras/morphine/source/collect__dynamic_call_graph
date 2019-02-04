@@ -1,0 +1,62 @@
+%------------------------------------------------------------------------------%
+% Copyright (C) 1999-2001 INRIA/INSA/IFSIC.
+% This file may only be copied under the terms of the GNU Library General
+% Public License - see the file License in the Morphine distribution.
+% 
+% Author : Erwan Jahier <jahier@irisa.fr>
+%
+% Computes a dynamic call graph, namely, the sub-graph of the (static) call 
+% graph that has been exercized during an execution.
+
+:- import_module set, stack.
+
+:- type predicate ---> proc_name/arity.
+:- type arc ---> arc(predicate, int, predicate).
+:- type graph == set(arc).
+
+:- type accumulator_type ---> ct(stack(predicate), graph).
+:- type collected_type ---> collected_type(graph).
+
+initialize(ct(Stack, set__init)) :-
+	stack__push(stack__init, "user"/0, Stack).
+
+filter(Event, Acc0, Acc) :-
+	Port = port(Event),
+	Acc0 = ct(Stack0, Graph0),
+	( 
+		Port = call
+	->
+		PreviousPred = stack__top_det(Stack0),
+		CurrentPred = proc_name(Event) / proc_arity(Event),
+		Graph = promise_only_solution(
+		     update_graph(PreviousPred, CurrentPred, Graph0)),
+		Acc = ct(push(Stack0, CurrentPred), Graph)
+	;
+		Port = redo
+	->
+		CurrentPred = proc_name(Event) / proc_arity(Event),
+		Acc = ct(push(Stack0, CurrentPred), Graph0)
+	;
+		( Port = fail ; Port = exit)
+	->
+		stack__pop_det(Stack0, _, Stack),
+		Acc = ct(Stack, Graph0)
+	;
+		% Other events 
+		Acc = Acc0
+	).
+
+:- pred update_graph(predicate, predicate, set(arc), set(arc)).
+:- mode update_graph(in, in, in, out) is cc_multi.
+update_graph(Pred0, Pred, Graph0, Graph) :-
+	(
+	    member(arc(Pred0, N, Pred), Graph0)
+	->
+	    delete(Graph0, arc(Pred0, N, Pred), Graph1),
+	    insert(Graph1, arc(Pred0, N+1, Pred), Graph)
+	;
+	    insert(Graph0, arc(Pred0, 1, Pred), Graph)
+	).
+
+
+post_process(ct(_, Graph), collected_type(Graph)).

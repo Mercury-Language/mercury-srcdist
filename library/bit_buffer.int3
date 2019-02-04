@@ -1,0 +1,15 @@
+:- module bit_buffer.
+:- interface.
+:- include_module (bit_buffer.read).
+:- include_module (bit_buffer.write).
+:- import_module bitmap.
+:- import_module stream.
+:- type error_state.
+:- type error_stream.
+:- type error_stream_error.
+:- instance (stream.bulk_reader(bit_buffer.error_stream, byte_index, bitmap, bit_buffer.error_state, bit_buffer.error_stream_error)).
+:- instance (stream.error(bit_buffer.error_stream_error)).
+:- instance (stream.input(bit_buffer.error_stream, bit_buffer.error_state)).
+:- instance (stream.output(bit_buffer.error_stream, bit_buffer.error_state)).
+:- instance (stream.stream(bit_buffer.error_stream, bit_buffer.error_state)).
+:- instance (stream.writer(bit_buffer.error_stream, bitmap.slice, bit_buffer.error_state)).
