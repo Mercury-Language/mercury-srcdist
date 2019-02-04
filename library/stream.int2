@@ -1,0 +1,37 @@
+:- module stream.
+:- interface.
+:- import_module bool.
+:- import_module char.
+:- import_module list.
+:- import_module string.
+:- include_module (stream.string_writer).
+:- type name == string.
+:- type whence
+	--->	set 
+	;	cur 
+	;	end .
+:- type res(Error)
+	--->	ok 
+	;	error(Error).
+:- type result(Error)
+	--->	ok 
+	;	eof 
+	;	error(Error).
+:- type maybe_partial_res(T, Error)
+	--->	ok(T)
+	;	error(T, Error).
+:- type result(T, Error)
+	--->	ok(T)
+	;	eof 
+	;	error(Error).
+:- typeclass error(Error).
+:- typeclass stream(Stream, State) <= ((Stream -> State)).
+:- typeclass duplex(Stream, State, Error) <= (stream.input(Stream, State, Error), stream.output(Stream, State)).
+:- typeclass reader(Stream, Unit, State, Error) <= (stream.input(Stream, State, Error)).
+:- typeclass writer(Stream, Unit, State) <= (stream.output(Stream, State)).
+:- typeclass unbounded_putback(Stream, Unit, State, Error) <= (stream.putback(Stream, Unit, State, Error)).
+:- typeclass putback(Stream, Unit, State, Error) <= (stream.reader(Stream, Unit, State, Error)).
+:- typeclass line_oriented(Stream, State) <= (stream.stream(Stream, State)).
+:- typeclass output(Stream, State) <= (stream.stream(Stream, State)).
+:- typeclass seekable(Stream, State) <= (stream.stream(Stream, State)).
+:- typeclass input(Stream, State, Error) <= ((Stream -> Error), stream.stream(Stream, State), stream.error(Error)).

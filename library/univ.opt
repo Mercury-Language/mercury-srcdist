@@ -1,0 +1,36 @@
+:- module univ.
+:- use_module builtin, list, private_builtin, require, string, type_desc.
+:- type (univ.univ)
+	--->	some [T] (univ_cons(T)).
+univ.univ_to_type(Univ_3, X_4) :-
+    univ.type_to_univ(X_4, Univ_3).
+univ.univ(X_3) = Univ_4 :-
+    univ.type_to_univ(X_3, Univ_4).
+univ.univ_type(Univ_3) = HeadVar__2_2 :-
+    HeadVar__2_2 = type_desc.type_of(V_4),
+    V_4 = univ.univ_value(Univ_3).
+univ.univ_value((univ.univ_cons(X_3))) = X_3.
+:- pragma exceptions(predicate, (univ.type_to_univ), 2, 0, will_not_throw).
+:- pragma exceptions(predicate, (univ.type_to_univ), 2, 1, will_not_throw).
+:- pragma exceptions(predicate, (univ.type_to_univ), 2, 2, may_throw(user_exception)).
+:- pragma exceptions(predicate, (univ.univ_to_type), 2, 0, may_throw(user_exception)).
+:- pragma exceptions(predicate, (univ.univ_to_type), 2, 1, will_not_throw).
+:- pragma exceptions(predicate, (univ.univ_to_type), 2, 2, will_not_throw).
+:- pragma exceptions(function, (univ.univ), 2, 0, will_not_throw).
+:- pragma exceptions(function, (univ.univ), 2, 1, will_not_throw).
+:- pragma exceptions(function, (univ.univ), 2, 2, may_throw(user_exception)).
+:- pragma exceptions(predicate, (univ.det_univ_to_type), 2, 0, may_throw(user_exception)).
+:- pragma exceptions(function, (univ.univ_type), 2, 0, may_throw(user_exception)).
+:- pragma exceptions(function, (univ.univ_value), 2, 0, will_not_throw).
+:- pragma termination_info(univ.type_to_univ((builtin.di), (builtin.uo)), infinite, cannot_loop).
+:- pragma termination_info(univ.type_to_univ((builtin.in), (builtin.out)), infinite, cannot_loop).
+:- pragma termination_info(univ.type_to_univ((builtin.out), (builtin.in)), infinite, can_loop).
+:- pragma termination_info(univ.univ_to_type((builtin.in), (builtin.out)), infinite, can_loop).
+:- pragma termination_info(univ.univ_to_type((builtin.out), (builtin.in)), infinite, cannot_loop).
+:- pragma termination_info(univ.univ_to_type((builtin.uo), (builtin.di)), infinite, cannot_loop).
+:- pragma termination_info(univ.univ((builtin.in)) = (builtin.out), infinite, cannot_loop).
+:- pragma termination_info(univ.univ((builtin.di)) = (builtin.uo), infinite, cannot_loop).
+:- pragma termination_info(univ.univ((builtin.out)) = (builtin.in), infinite, can_loop).
+:- pragma termination_info(univ.det_univ_to_type((builtin.in), (builtin.out)), infinite, can_loop).
+:- pragma termination_info(univ.univ_type((builtin.in)) = (builtin.out), infinite, can_loop).
+:- pragma termination_info(univ.univ_value((builtin.in)) = (builtin.out), infinite, cannot_loop).

@@ -1,0 +1,13 @@
+module(1, "int.m",
+	int,
+	{},
+	{builtin, array, enum, private_builtin},
+	{builtin, array, enum, exception, math, private_builtin},
+	{},
+	{},
+	{},
+	{"C"},
+	{"C" - int, "C#" - int, "Java" - int, "C" - int},
+	no_foreign_export,
+	no_main
+).

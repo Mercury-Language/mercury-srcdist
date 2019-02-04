@@ -1,0 +1,17 @@
+:- module (thread.channel).
+:- use_module builtin, io, private_builtin, (thread.mvar).
+:- type ((thread.channel).stream(T)) == ((thread.mvar).mvar(((thread.channel).item(T)))).
+:- type ((thread.channel).item(T))
+	--->	item(T, ((thread.mvar).mvar(((thread.channel).item(T))))).
+:- type ((thread.channel).channel(T))
+	--->	channel(((thread.mvar).mvar(((thread.mvar).mvar(((thread.channel).item(T)))))), ((thread.mvar).mvar(((thread.mvar).mvar(((thread.channel).item(T))))))).
+:- pragma exceptions(predicate, ((thread.channel).init), 3, 0, may_throw(user_exception)).
+:- pragma exceptions(predicate, ((thread.channel).put), 4, 0, may_throw(user_exception)).
+:- pragma exceptions(predicate, ((thread.channel).take), 4, 0, may_throw(user_exception)).
+:- pragma exceptions(predicate, ((thread.channel).duplicate), 4, 0, may_throw(user_exception)).
+:- pragma exceptions(predicate, ((thread.channel).untake), 4, 0, may_throw(user_exception)).
+:- pragma termination_info((thread.channel).init((builtin.out), (builtin.di), (builtin.uo)), infinite, can_loop).
+:- pragma termination_info((thread.channel).put((builtin.in), (builtin.in), (builtin.di), (builtin.uo)), infinite, can_loop).
+:- pragma termination_info((thread.channel).take((builtin.in), (builtin.out), (builtin.di), (builtin.uo)), infinite, can_loop).
+:- pragma termination_info((thread.channel).duplicate((builtin.in), (builtin.out), (builtin.di), (builtin.uo)), infinite, can_loop).
+:- pragma termination_info((thread.channel).untake((builtin.in), (builtin.in), (builtin.di), (builtin.uo)), infinite, can_loop).

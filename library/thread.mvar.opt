@@ -1,0 +1,10 @@
+:- module (thread.mvar).
+:- use_module builtin, io, mutvar, private_builtin, (thread.semaphore).
+:- type ((thread.mvar).mvar(T))
+	--->	mvar(((thread.semaphore).semaphore), ((thread.semaphore).semaphore), (mutvar.mutvar(T))).
+:- pragma exceptions(predicate, ((thread.mvar).init), 3, 0, may_throw(user_exception)).
+:- pragma exceptions(predicate, ((thread.mvar).take), 4, 0, may_throw(user_exception)).
+:- pragma exceptions(predicate, ((thread.mvar).put), 4, 0, may_throw(user_exception)).
+:- pragma termination_info((thread.mvar).init((builtin.out), (builtin.di), (builtin.uo)), infinite, can_loop).
+:- pragma termination_info((thread.mvar).take((builtin.in), (builtin.out), (builtin.di), (builtin.uo)), infinite, can_loop).
+:- pragma termination_info((thread.mvar).put((builtin.in), (builtin.in), (builtin.di), (builtin.uo)), infinite, can_loop).

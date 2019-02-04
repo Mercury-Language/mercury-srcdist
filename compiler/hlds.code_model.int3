@@ -1,0 +1,3 @@
+:- module (hlds.code_model).
+:- interface.
+:- type code_model.

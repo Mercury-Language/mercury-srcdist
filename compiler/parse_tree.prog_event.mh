@@ -1,0 +1,40 @@
+/*
+** Automatically generated from `prog_event.m'
+** by the Mercury compiler,
+** version rotd-2007-04-03, configured for i686-pc-linux-gnu.
+** Do not edit.
+*/
+#ifndef PARSE_TREE__PROG_EVENT_MH
+#define PARSE_TREE__PROG_EVENT_MH
+
+#ifdef __cplusplus
+extern "C" {
+#endif
+
+#ifdef MR_HIGHLEVEL_CODE
+#include "mercury.h"
+#else
+  #ifndef MERCURY_HDR_EXCLUDE_IMP_H
+  #include "mercury_imp.h"
+  #endif
+#endif
+#ifdef MR_DEEP_PROFILING
+#include "mercury_deep_profiling.h"
+#endif
+
+#ifndef PARSE_TREE__PROG_EVENT_DECL_GUARD
+#define PARSE_TREE__PROG_EVENT_DECL_GUARD
+#line 153 "prog_event.m"
+
+#include "mercury_event_spec.h"
+#include <stdio.h>
+
+#line 33 "parse_tree.prog_event.mh.tmp"
+
+#endif
+
+#ifdef __cplusplus
+}
+#endif
+
+#endif /* PARSE_TREE__PROG_EVENT_MH */

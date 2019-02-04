@@ -1,0 +1,74 @@
+:- module (parse_tree.prog_out).
+:- interface.
+:- import_module bool.
+:- import_module io.
+:- import_module list.
+:- import_module maybe.
+:- import_module (mdbcomp.prim_data).
+:- import_module (parse_tree.prog_data).
+:- import_module (parse_tree.prog_item).
+:- func arg_tabling_method_to_string(((parse_tree.prog_data).arg_tabling_method)) = string.
+:- pred builtin_type_to_string(((parse_tree.prog_data).builtin_type), string).
+:- mode builtin_type_to_string((builtin.in), (builtin.out)) is det.
+:- mode builtin_type_to_string((builtin.out), (builtin.in)) is semidet.
+:- pred context_to_string(((parse_tree.prog_data).prog_context), string).
+:- mode context_to_string((builtin.in), (builtin.out)) is det.
+:- func eval_method_to_pragma_name(((parse_tree.prog_data).eval_method)) = string.
+:- func eval_method_to_string(((parse_tree.prog_data).eval_method)) = string.
+:- func maybe_arg_tabling_method_to_string((maybe.maybe(((parse_tree.prog_data).arg_tabling_method)))) = string.
+:- pred maybe_flush_output((bool.bool), (io.io), (io.io)).
+:- mode maybe_flush_output((builtin.in), (builtin.di), (builtin.uo)) is det.
+:- pred maybe_report_stats((bool.bool), (io.io), (io.io)).
+:- mode maybe_report_stats((builtin.in), (builtin.di), (builtin.uo)) is det.
+:- pred maybe_write_string((bool.bool), string, (io.io), (io.io)).
+:- mode maybe_write_string((builtin.in), (builtin.in), (builtin.di), (builtin.uo)) is det.
+:- func module_spec_to_escaped_string(((parse_tree.prog_data).module_specifier)) = string.
+:- func pred_or_func_to_full_str(((mdbcomp.prim_data).pred_or_func)) = string.
+:- func pred_or_func_to_str(((mdbcomp.prim_data).pred_or_func)) = string.
+:- func promise_to_string(((parse_tree.prog_data).promise_type)) = string.
+:- mode promise_to_string((builtin.in)) = (builtin.out) is det.
+:- mode promise_to_string((builtin.out)) = (builtin.in) is semidet.
+:- mode promise_to_string((builtin.out)) = (builtin.out) is multi.
+:- pred purity_name(((parse_tree.prog_data).purity), string).
+:- mode purity_name((builtin.in), (builtin.out)) is det.
+:- mode purity_name((builtin.out), (builtin.in)) is semidet.
+:- func purity_prefix_to_string(((parse_tree.prog_data).purity)) = string.
+:- pred report_error(string, (io.io), (io.io)).
+:- mode report_error((builtin.in), (builtin.di), (builtin.uo)) is det.
+:- pred report_error((io.output_stream), string, (io.io), (io.io)).
+:- mode report_error((builtin.in), (builtin.in), (builtin.di), (builtin.uo)) is det.
+:- func simple_call_id_to_string(((parse_tree.prog_data).simple_call_id)) = string.
+:- func simple_call_id_to_string(((mdbcomp.prim_data).pred_or_func), ((parse_tree.prog_data).sym_name_and_arity)) = string.
+:- func simple_call_id_to_string(((mdbcomp.prim_data).pred_or_func), ((mdbcomp.prim_data).sym_name), ((parse_tree.prog_data).arity)) = string.
+:- pred simple_call_id_to_sym_name_and_arity(((parse_tree.prog_data).simple_call_id), ((parse_tree.prog_data).sym_name_and_arity)).
+:- mode simple_call_id_to_sym_name_and_arity((builtin.in), (builtin.out)) is det.
+:- func sym_name_and_arity_to_string(((parse_tree.prog_data).sym_name_and_arity)) = string.
+:- func sym_name_to_escaped_string(((mdbcomp.prim_data).sym_name)) = string.
+:- pred write_context(((parse_tree.prog_data).prog_context), (io.io), (io.io)).
+:- mode write_context((builtin.in), (builtin.di), (builtin.uo)) is det.
+:- pred write_messages(((parse_tree.prog_item).message_list), (io.io), (io.io)).
+:- mode write_messages((builtin.in), (builtin.di), (builtin.uo)) is det.
+:- pred write_module_spec(((parse_tree.prog_data).module_specifier), (io.io), (io.io)).
+:- mode write_module_spec((builtin.in), (builtin.di), (builtin.uo)) is det.
+:- pred write_pred_or_func(((mdbcomp.prim_data).pred_or_func), (io.io), (io.io)).
+:- mode write_pred_or_func((builtin.in), (builtin.di), (builtin.uo)) is det.
+:- pred write_promise_type(((parse_tree.prog_data).promise_type), (io.io), (io.io)).
+:- mode write_promise_type((builtin.in), (builtin.di), (builtin.uo)) is det.
+:- pred write_purity(((parse_tree.prog_data).purity), (io.io), (io.io)).
+:- mode write_purity((builtin.in), (builtin.di), (builtin.uo)) is det.
+:- pred write_purity_prefix(((parse_tree.prog_data).purity), (io.io), (io.io)).
+:- mode write_purity_prefix((builtin.in), (builtin.di), (builtin.uo)) is det.
+:- pred write_quoted_sym_name(((mdbcomp.prim_data).sym_name), (io.io), (io.io)).
+:- mode write_quoted_sym_name((builtin.in), (builtin.di), (builtin.uo)) is det.
+:- pred write_simple_call_id(((parse_tree.prog_data).simple_call_id), (io.io), (io.io)).
+:- mode write_simple_call_id((builtin.in), (builtin.di), (builtin.uo)) is det.
+:- pred write_simple_call_id(((mdbcomp.prim_data).pred_or_func), ((parse_tree.prog_data).sym_name_and_arity), (io.io), (io.io)).
+:- mode write_simple_call_id((builtin.in), (builtin.in), (builtin.di), (builtin.uo)) is det.
+:- pred write_simple_call_id(((mdbcomp.prim_data).pred_or_func), ((mdbcomp.prim_data).sym_name), ((parse_tree.prog_data).arity), (io.io), (io.io)).
+:- mode write_simple_call_id((builtin.in), (builtin.in), (builtin.in), (builtin.di), (builtin.uo)) is det.
+:- pred write_string_list((list.list(string)), (io.io), (io.io)).
+:- mode write_string_list((builtin.in), (builtin.di), (builtin.uo)) is det.
+:- pred write_sym_name(((mdbcomp.prim_data).sym_name), (io.io), (io.io)).
+:- mode write_sym_name((builtin.in), (builtin.di), (builtin.uo)) is det.
+:- pred write_sym_name_and_arity(((parse_tree.prog_data).sym_name_and_arity), (io.io), (io.io)).
+:- mode write_sym_name_and_arity((builtin.in), (builtin.di), (builtin.uo)) is det.

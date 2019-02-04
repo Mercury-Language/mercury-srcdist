@@ -1,0 +1,13 @@
+module(1, "tree234.m",
+	tree234,
+	{},
+	{builtin, assoc_list, list, term, private_builtin},
+	{builtin, assoc_list, list, term, bool, int, pair, require, private_builtin},
+	{},
+	{},
+	{},
+	{},
+	{},
+	no_foreign_export,
+	no_main
+).

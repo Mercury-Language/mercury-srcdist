@@ -1,0 +1,21 @@
+/.cvsignore/1.2/Sat Feb 15 23:59:41 2003//
+/.nocopyright/1.1/Sat Feb 15 23:50:42 2003//
+/Mmakefile/1.6/Thu Nov  8 15:30:39 2001//
+/README/1.9/Thu Feb 15 00:32:00 2007//
+/calculator.m/1.12/Tue Mar 21 00:50:57 2006//
+/calculator2.m/1.4/Wed Jun 28 09:11:07 2006//
+/cat.m/1.7/Fri Aug 12 04:50:36 2005//
+/e.m/1.6/Tue Mar 21 00:50:57 2006//
+/eliza.m/1.19/Wed Jun 28 09:11:07 2006//
+/expand_terms.m/1.5/Tue Mar 21 00:50:57 2006//
+/hello.m/1.4/Fri Aug 12 04:50:37 2005//
+/interpreter.m/1.9/Wed Nov  1 23:11:23 2006//
+/sort.m/1.7/Wed Jun 28 09:11:07 2006//
+/ultra_sub.m/1.8/Tue Mar 21 00:50:58 2006//
+D/c_interface////
+D/diff////
+D/muz////
+D/rot13////
+D/solutions////
+D/solver_types////
+D/tests////

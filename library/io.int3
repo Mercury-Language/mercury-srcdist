@@ -1,0 +1,78 @@
+:- module io.
+:- pragma foreign_import_module("C", io).
+:- pragma foreign_import_module("Java", io).
+:- pragma foreign_import_module("IL", io).
+:- interface.
+:- import_module bitmap.
+:- import_module bool.
+:- import_module char.
+:- import_module deconstruct.
+:- import_module list.
+:- import_module map.
+:- import_module maybe.
+:- import_module ops.
+:- import_module stream.
+:- import_module string.
+:- import_module time.
+:- import_module univ.
+:- type access_type.
+:- type binary_input_stream.
+:- type binary_output_stream.
+:- type error.
+:- type file_id.
+:- type file_type.
+:- type input_stream.
+:- type io.
+:- type maybe_stream_info.
+:- type output_stream.
+:- type poly_type.
+:- type posn.
+:- type res.
+:- type result.
+:- type state.
+:- type stream_content.
+:- type stream_db.
+:- type stream_id.
+:- type stream_info.
+:- type stream_mode.
+:- type stream_source.
+:- type system_error.
+:- pragma foreign_type(il, system_error, "class [mscorlib]System.Exception").
+:- pragma foreign_type(c, system_error, "MR_Integer").
+:- pragma foreign_type(java, system_error, "java.lang.Exception").
+:- type system_result.
+:- type text_input_stream.
+:- type text_output_stream.
+:- type whence.
+:- type maybe_partial_res(T).
+:- type read_result(T).
+:- type res(T).
+:- type result(T).
+:- inst (read_bitmap) == io.maybe_partial_res(bound({}(bitmap, ground))).
+:- inst (maybe_partial_res(T)) == bound(error(T, ground) ; ok(T)).
+:- typeclass binary_stream(T).
+:- instance (io.binary_stream((io.binary_input_stream))).
+:- instance (io.binary_stream((io.binary_output_stream))).
+:- instance (stream.error((io.error))).
+:- instance (stream.input((io.binary_input_stream), (io.io), (io.error))).
+:- instance (stream.input((io.input_stream), (io.io), (io.error))).
+:- instance (stream.line_oriented((io.input_stream), (io.io))).
+:- instance (stream.line_oriented((io.output_stream), (io.io))).
+:- instance (stream.output((io.binary_output_stream), (io.io))).
+:- instance (stream.output((io.output_stream), (io.io))).
+:- instance (stream.putback((io.binary_input_stream), int, (io.io), (io.error))).
+:- instance (stream.putback((io.input_stream), char, (io.io), (io.error))).
+:- instance (stream.reader((io.binary_input_stream), int, (io.io), (io.error))).
+:- instance (stream.reader((io.input_stream), char, (io.io), (io.error))).
+:- instance (stream.seekable((io.binary_input_stream), (io.io))).
+:- instance (stream.seekable((io.binary_output_stream), (io.io))).
+:- instance (stream.stream((io.binary_input_stream), (io.io))).
+:- instance (stream.stream((io.binary_output_stream), (io.io))).
+:- instance (stream.stream((io.input_stream), (io.io))).
+:- instance (stream.stream((io.output_stream), (io.io))).
+:- instance (stream.writer((io.binary_output_stream), int, (io.io))).
+:- instance (stream.writer((io.output_stream), char, (io.io))).
+:- instance (stream.writer((io.output_stream), univ, (io.io))).
+:- instance (stream.writer((io.output_stream), int, (io.io))).
+:- instance (stream.writer((io.output_stream), float, (io.io))).
+:- instance (stream.writer((io.output_stream), string, (io.io))).

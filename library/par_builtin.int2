@@ -1,0 +1,10 @@
+:- module par_builtin.
+:- interface.
+:- type future(T).
+:- implementation.
+:- pragma foreign_type(il, future(T), "class [mscorlib]System.Object").
+:- pragma foreign_type(c, future(T), "MR_Future *", [can_pass_as_mercury_type]).
+:- pragma foreign_import_module("C", par_builtin).
+:- pragma foreign_import_module("IL", par_builtin).
+:- pragma foreign_import_module("C", par_builtin).
+:- pragma foreign_import_module("IL", par_builtin).

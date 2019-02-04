@@ -1,0 +1,4 @@
+:- module (make.module_target).
+:- interface.
+:- type foreign_code_file
+	--->	foreign_code_file(((make.module_target).foreign_language) :: ((libs.globals).foreign_language), ((make.module_target).target_file) :: ((parse_tree.prog_io).file_name), ((make.module_target).object_file) :: ((parse_tree.prog_io).file_name)).

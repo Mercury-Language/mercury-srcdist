@@ -1,0 +1,47 @@
+:- module gcc.
+:- interface.
+:- import_module bool.
+:- import_module io.
+:- type arg_list.
+:- type expr.
+:- type field_decl.
+:- type field_decls.
+:- type field_name == string.
+:- type func_asm_name == string.
+:- type func_decl.
+:- type func_name == string.
+:- type init_elem.
+:- type init_list.
+:- type label.
+:- type label_name == string.
+:- type loop.
+:- type op.
+:- type param_decl == (gcc.var_decl).
+:- type param_decls.
+:- type param_name == string.
+:- type param_types.
+:- type struct_name == string.
+:- type tree.
+:- type tree_code.
+:- type (type).
+:- type type_decl.
+:- type var_decl.
+:- type var_name == string.
+:- type frontend_callback(T) == pred(T, (io.state), (io.state)).
+:- inst (frontend_callback) == (pred((builtin.out), (builtin.di), (builtin.uo)) is det).
+:- implementation.
+:- type arg_list == (gcc.tree).
+:- type expr == (gcc.tree).
+:- type field_decl == (gcc.tree).
+:- type field_decls == (gcc.tree).
+:- type func_decl == (gcc.(type)).
+:- type init_elem == (gcc.tree).
+:- type init_list == (gcc.tree).
+:- type label == (gcc.tree).
+:- type op == (gcc.tree_code).
+:- type param_decls == (gcc.tree).
+:- type param_types == (gcc.tree).
+:- type tree_code == int.
+:- type (type) == (gcc.tree).
+:- type type_decl == (gcc.tree).
+:- type var_decl == (gcc.tree).

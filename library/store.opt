@@ -1,0 +1,243 @@
+:- module store.
+:- use_module builtin, deconstruct, io, private_builtin, require.
+:- type (store.store(S))
+	--->	mkstore((builtin.c_pointer))
+	where	equality is (store.store_equal),
+		comparison is (store.store_compare).
+:- type (store.generic_ref(T, S))
+	--->	ref((private_builtin.ref(T))).
+:- pragma foreign_type(java, (store.generic_ref(T, S)), "mercury.store.Ref").
+:- type (store.generic_mutvar(T, S))
+	--->	mutvar((private_builtin.ref(T))).
+:- pragma foreign_type(java, (store.generic_mutvar(T, S)), "mercury.mutvar.Mutvar").
+:- typeclass store.store(T) where [
+
+].
+:- instance (store.store((store.store(S)))) where [
+
+].
+:- instance (store.store((io.state))) where [
+
+].
+:- pragma foreign_import_module("C", store).
+:- pragma foreign_import_module("C#", store).
+:- pragma foreign_import_module("Java", store).
+:- pragma foreign_import_module("C", io).
+:- pragma foreign_import_module("Java", io).
+:- pragma foreign_import_module("IL", io).
+:- pragma foreign_import_module("C", io).
+:- pragma foreign_import_module("Java", io).
+:- pragma foreign_import_module("IL", io).
+:- pragma foreign_import_module("C", string).
+:- pragma foreign_import_module("C", bitmap).
+:- pragma foreign_import_module("Java", bitmap).
+:- pragma foreign_import_module("C", bitmap).
+:- pragma foreign_import_module("Java", bitmap).
+:- pragma foreign_import_module("C", time).
+:- pragma foreign_import_module("Java", time).
+:- pragma foreign_import_module("IL", time).
+:- pragma foreign_import_module("C", time).
+:- pragma foreign_import_module("Java", time).
+:- pragma foreign_import_module("IL", time).
+:- pred store.store_equal((store.store(S_1)), (store.store(S_1))).
+:- mode store.store_equal((builtin.in), (builtin.in)) is semidet.
+:- pred store.store_compare((builtin.comparison_result), (store.store(S_1)), (store.store(S_1))).
+:- mode store.store_compare((builtin.uo), (builtin.in), (builtin.in)) is det.
+:- some [S] (pred store.do_init((store.store(S)))).
+:- mode store.do_init((builtin.uo)) is det.
+:- pred store.unsafe_new_uninitialized_mutvar((store.generic_mutvar(T, S)), S, S) <= (store.store(S)).
+:- mode store.unsafe_new_uninitialized_mutvar((builtin.out), (builtin.di), (builtin.uo)) is det.
+:- pred store.unsafe_ref_value((store.generic_ref(T, S)), T, S, S) <= (store.store(S)).
+:- mode store.unsafe_ref_value((builtin.in), (builtin.uo), (builtin.di), (builtin.uo)) is det.
+store.new(S_2) :-
+    store.do_init(S_2).
+:- pragma foreign_proc("C", store.new_mutvar(Val :: (builtin.in), Mutvar :: (builtin.out), S0 :: (builtin.di), S :: (builtin.uo)), [will_not_call_mercury, not_thread_safe, not_tabled_for_io, promise_pure, will_not_modify_trail], "
+    MR_offset_incr_hp_msg(Mutvar, MR_SIZE_SLOT_SIZE, MR_SIZE_SLOT_SIZE + 1,
+        MR_PROC_LABEL, \"store.mutvar/2\");
+    MR_define_size_slot(0, Mutvar, 1);
+    * (MR_Word *) Mutvar = Val;
+    S = S0;
+").
+store.copy_mutvar(Mutvar_5, Copy_6, STATE_VARIABLE_S_0_9, STATE_VARIABLE_S_10) :-
+    store.get_mutvar(Mutvar_5, Value_8, STATE_VARIABLE_S_0_9, STATE_VARIABLE_S_1_11),
+    store.new_mutvar(Value_8, Copy_6, STATE_VARIABLE_S_1_11, STATE_VARIABLE_S_2_12),
+    STATE_VARIABLE_S_10 = STATE_VARIABLE_S_2_12.
+:- pragma foreign_proc("C", store.get_mutvar(Mutvar :: (builtin.in), Val :: (builtin.out), S0 :: (builtin.di), S :: (builtin.uo)), [will_not_call_mercury, not_thread_safe, not_tabled_for_io, promise_pure, will_not_modify_trail], "
+    Val = * (MR_Word *) Mutvar;
+    S = S0;
+").
+:- pragma foreign_proc("C", store.set_mutvar(Mutvar :: (builtin.in), Val :: (builtin.in), S0 :: (builtin.di), S :: (builtin.uo)), [will_not_call_mercury, not_thread_safe, not_tabled_for_io, promise_pure, will_not_modify_trail], "
+    * (MR_Word *) Mutvar = Val;
+    S = S0;
+").
+store.new_cyclic_mutvar(Func_5, MutVar_6, STATE_VARIABLE_Store_0_9, STATE_VARIABLE_Store_10) :-
+    store.unsafe_new_uninitialized_mutvar(MutVar_6, STATE_VARIABLE_Store_0_9, STATE_VARIABLE_Store_1_11),
+    Value_8 = apply(Func_5, MutVar_6),
+    store.set_mutvar(MutVar_6, Value_8, STATE_VARIABLE_Store_1_11, STATE_VARIABLE_Store_2_12),
+    STATE_VARIABLE_Store_10 = STATE_VARIABLE_Store_2_12.
+:- pragma foreign_proc("C", store.new_ref(Val :: (builtin.di), Ref :: (builtin.out), S0 :: (builtin.di), S :: (builtin.uo)), [will_not_call_mercury, not_thread_safe, not_tabled_for_io, promise_pure, will_not_modify_trail], "
+    MR_offset_incr_hp_msg(Ref, MR_SIZE_SLOT_SIZE, MR_SIZE_SLOT_SIZE + 1,
+        MR_PROC_LABEL, \"store:ref/2\");
+    MR_define_size_slot(0, Ref, 1);
+    * (MR_Word *) Ref = Val;
+    S = S0;
+").
+store.ref_functor(Ref_6, Functor_7, Arity_8, STATE_VARIABLE_Store_0_11, STATE_VARIABLE_Store_12) :-
+    store.unsafe_ref_value(Ref_6, Val_10, STATE_VARIABLE_Store_0_11, STATE_VARIABLE_Store_1_13),
+    V_15 = deconstruct.canonicalize : (deconstruct.noncanon_handling),
+    deconstruct.functor(Val_10, V_15, Functor_7, Arity_8),
+    STATE_VARIABLE_Store_12 = STATE_VARIABLE_Store_1_13.
+:- pragma foreign_proc("C", store.arg_ref(Ref :: (builtin.in), ArgNum :: (builtin.in), ArgRef :: (builtin.out), S0 :: (builtin.di), S :: (builtin.uo)), [will_not_call_mercury, not_thread_safe, not_tabled_for_io, promise_pure, may_modify_trail], "{
+    MR_TypeInfo type_info;
+    MR_TypeInfo arg_type_info;
+    MR_TypeInfo exp_arg_type_info;
+    MR_Word     *arg_ref;
+
+    type_info = (MR_TypeInfo) TypeInfo_for_T;
+    exp_arg_type_info = (MR_TypeInfo) TypeInfo_for_ArgT;
+
+    MR_save_transient_registers();
+
+    if (!MR_arg(type_info, (MR_Word *) Ref, ArgNum, &arg_type_info,
+        &arg_ref, MR_NONCANON_ABORT))
+    {
+        MR_fatal_error(\"store.arg_ref: argument number out of range\");
+    }
+
+    if (MR_compare_type_info(arg_type_info, exp_arg_type_info) !=
+        MR_COMPARE_EQUAL)
+    {
+        MR_fatal_error(\"store.arg_ref: argument has wrong type\");
+    }
+
+    MR_restore_transient_registers();
+
+    ArgRef = (MR_Word) arg_ref;
+    S = S0;
+}").
+:- pragma foreign_proc("C", store.new_arg_ref(Val :: (builtin.di), ArgNum :: (builtin.in), ArgRef :: (builtin.out), S0 :: (builtin.di), S :: (builtin.uo)), [will_not_call_mercury, not_thread_safe, not_tabled_for_io, promise_pure, may_modify_trail], "{
+    MR_TypeInfo type_info;
+    MR_TypeInfo arg_type_info;
+    MR_TypeInfo exp_arg_type_info;
+    MR_Word     *arg_ref;
+
+    type_info = (MR_TypeInfo) TypeInfo_for_T;
+    exp_arg_type_info = (MR_TypeInfo) TypeInfo_for_ArgT;
+
+    MR_save_transient_registers();
+
+    if (!MR_arg(type_info, (MR_Word *) &Val, ArgNum, &arg_type_info,
+        &arg_ref, MR_NONCANON_ABORT))
+    {
+        MR_fatal_error(\"store.new_arg_ref: argument number out of range\");
+    }
+
+    if (MR_compare_type_info(arg_type_info, exp_arg_type_info) !=
+        MR_COMPARE_EQUAL)
+    {
+        MR_fatal_error(\"store.new_arg_ref: argument has wrong type\");
+    }
+
+    MR_restore_transient_registers();
+
+    /*
+    ** For no_tag types, the argument may have the same address as the
+    ** term.  Since the term (Val) is currently on the C stack, we can\'t
+    ** return a pointer to it; so if that is the case, then we need
+    ** to copy it to the heap before returning.
+    */
+
+    if (arg_ref == &Val) {
+        MR_offset_incr_hp_msg(ArgRef, MR_SIZE_SLOT_SIZE,
+            MR_SIZE_SLOT_SIZE + 1, MR_PROC_LABEL, \"store:ref/2\");
+        MR_define_size_slot(0, ArgRef, 1);
+        * (MR_Word *) ArgRef = Val;
+    } else {
+        ArgRef = (MR_Word) arg_ref;
+    }
+    S = S0;
+}").
+:- pragma foreign_proc("C", store.set_ref(Ref :: (builtin.in), ValRef :: (builtin.in), S0 :: (builtin.di), S :: (builtin.uo)), [will_not_call_mercury, not_thread_safe, not_tabled_for_io, promise_pure, may_modify_trail], "
+    * (MR_Word *) Ref = * (MR_Word *) ValRef;
+    S = S0;
+").
+:- pragma foreign_proc("C", store.set_ref_value(Ref :: (builtin.in), Val :: (builtin.di), S0 :: (builtin.di), S :: (builtin.uo)), [will_not_call_mercury, not_thread_safe, not_tabled_for_io, promise_pure, may_modify_trail], "
+    * (MR_Word *) Ref = Val;
+    S = S0;
+").
+store.copy_ref_value(Ref_5, Val_6, DCG_0_7, DCG_1_8) :-
+    store.unsafe_ref_value(Ref_5, Val_6, DCG_0_7, DCG_1_8).
+:- pragma foreign_proc("C", store.extract_ref_value(_S :: (builtin.di), Ref :: (builtin.in), Val :: (builtin.out)), [will_not_call_mercury, not_thread_safe, not_tabled_for_io, promise_pure, may_modify_trail], "
+    Val = * (MR_Word *) Ref;
+").
+:- pragma foreign_proc("C", store.unsafe_arg_ref(Ref :: (builtin.in), Arg :: (builtin.in), ArgRef :: (builtin.out), S0 :: (builtin.di), S :: (builtin.uo)), [will_not_call_mercury, not_thread_safe, not_tabled_for_io, promise_pure, may_modify_trail], "{
+    /* unsafe - does not check type & arity, won\'t handle no_tag types */
+    MR_Word *Ptr;
+
+    Ptr = (MR_Word *) MR_strip_tag((MR_Word) Ref);
+    ArgRef = (MR_Word) &Ptr[Arg];
+    S = S0;
+}").
+:- pragma foreign_proc("C", store.unsafe_new_arg_ref(Val :: (builtin.di), Arg :: (builtin.in), ArgRef :: (builtin.out), S0 :: (builtin.di), S :: (builtin.uo)), [will_not_call_mercury, not_thread_safe, not_tabled_for_io, promise_pure, may_modify_trail], "{
+    /* unsafe - does not check type & arity, won\'t handle no_tag types */
+    MR_Word *Ptr;
+
+    Ptr = (MR_Word *) MR_strip_tag((MR_Word) Val);
+    ArgRef = (MR_Word) &Ptr[Arg];
+    S = S0;
+}").
+:- pragma foreign_proc("C", store.do_init(_S0 :: (builtin.uo)), [will_not_call_mercury, not_thread_safe, not_tabled_for_io, promise_pure, will_not_modify_trail], "
+    /* TypeInfo_for_S */
+").
+:- pragma foreign_proc("C", store.unsafe_new_uninitialized_mutvar(Mutvar :: (builtin.out), S0 :: (builtin.di), S :: (builtin.uo)), [will_not_call_mercury, not_thread_safe, not_tabled_for_io, promise_pure, will_not_modify_trail], "
+    MR_offset_incr_hp_msg(Mutvar, MR_SIZE_SLOT_SIZE, MR_SIZE_SLOT_SIZE + 1,
+        MR_PROC_LABEL, \"store.mutvar/2\");
+    MR_define_size_slot(0, Mutvar, 1);
+    S = S0;
+").
+:- pragma foreign_proc("C", store.unsafe_ref_value(Ref :: (builtin.in), Val :: (builtin.uo), S0 :: (builtin.di), S :: (builtin.uo)), [will_not_call_mercury, not_thread_safe, not_tabled_for_io, promise_pure, will_not_modify_trail], "
+    Val = * (MR_Word *) Ref;
+    S = S0;
+").
+:- pragma exceptions(predicate, (store.new), 1, 0, will_not_throw).
+:- pragma exceptions(predicate, (store.new_mutvar), 4, 0, will_not_throw).
+:- pragma exceptions(predicate, (store.copy_mutvar), 4, 0, will_not_throw).
+:- pragma exceptions(predicate, (store.get_mutvar), 4, 0, will_not_throw).
+:- pragma exceptions(predicate, (store.set_mutvar), 4, 0, will_not_throw).
+:- pragma exceptions(predicate, (store.new_cyclic_mutvar), 4, 0, may_throw(user_exception)).
+:- pragma exceptions(predicate, (store.new_ref), 4, 0, will_not_throw).
+:- pragma exceptions(predicate, (store.ref_functor), 5, 0, may_throw(user_exception)).
+:- pragma exceptions(predicate, (store.arg_ref), 5, 0, will_not_throw).
+:- pragma exceptions(predicate, (store.new_arg_ref), 5, 0, will_not_throw).
+:- pragma exceptions(predicate, (store.set_ref), 4, 0, will_not_throw).
+:- pragma exceptions(predicate, (store.set_ref_value), 4, 0, will_not_throw).
+:- pragma exceptions(predicate, (store.copy_ref_value), 4, 0, will_not_throw).
+:- pragma exceptions(predicate, (store.extract_ref_value), 3, 0, will_not_throw).
+:- pragma exceptions(predicate, (store.unsafe_arg_ref), 5, 0, will_not_throw).
+:- pragma exceptions(predicate, (store.unsafe_new_arg_ref), 5, 0, will_not_throw).
+:- pragma exceptions(predicate, (store.store_equal), 2, 0, may_throw(user_exception)).
+:- pragma exceptions(predicate, (store.store_compare), 3, 0, may_throw(user_exception)).
+:- pragma exceptions(predicate, (store.do_init), 1, 0, will_not_throw).
+:- pragma exceptions(predicate, (store.unsafe_new_uninitialized_mutvar), 3, 0, will_not_throw).
+:- pragma exceptions(predicate, (store.unsafe_ref_value), 4, 0, will_not_throw).
+:- pragma termination_info(store.new((builtin.uo)), infinite, cannot_loop).
+:- pragma termination_info(store.new_mutvar((builtin.in), (builtin.out), (builtin.di), (builtin.uo)), infinite, cannot_loop).
+:- pragma termination_info(store.copy_mutvar((builtin.in), (builtin.out), (builtin.di), (builtin.uo)), infinite, cannot_loop).
+:- pragma termination_info(store.get_mutvar((builtin.in), (builtin.out), (builtin.di), (builtin.uo)), infinite, cannot_loop).
+:- pragma termination_info(store.set_mutvar((builtin.in), (builtin.in), (builtin.di), (builtin.uo)), infinite, cannot_loop).
+:- pragma termination_info(store.new_cyclic_mutvar((builtin.in), (builtin.out), (builtin.di), (builtin.uo)), infinite, can_loop).
+:- pragma termination_info(store.new_ref((builtin.di), (builtin.out), (builtin.di), (builtin.uo)), infinite, cannot_loop).
+:- pragma termination_info(store.ref_functor((builtin.in), (builtin.out), (builtin.out), (builtin.di), (builtin.uo)), infinite, can_loop).
+:- pragma termination_info(store.arg_ref((builtin.in), (builtin.in), (builtin.out), (builtin.di), (builtin.uo)), infinite, cannot_loop).
+:- pragma termination_info(store.new_arg_ref((builtin.di), (builtin.in), (builtin.out), (builtin.di), (builtin.uo)), infinite, cannot_loop).
+:- pragma termination_info(store.set_ref((builtin.in), (builtin.in), (builtin.di), (builtin.uo)), infinite, cannot_loop).
+:- pragma termination_info(store.set_ref_value((builtin.in), (builtin.di), (builtin.di), (builtin.uo)), infinite, cannot_loop).
+:- pragma termination_info(store.copy_ref_value((builtin.in), (builtin.uo), (builtin.di), (builtin.uo)), infinite, cannot_loop).
+:- pragma termination_info(store.extract_ref_value((builtin.di), (builtin.in), (builtin.out)), infinite, cannot_loop).
+:- pragma termination_info(store.unsafe_arg_ref((builtin.in), (builtin.in), (builtin.out), (builtin.di), (builtin.uo)), infinite, cannot_loop).
+:- pragma termination_info(store.unsafe_new_arg_ref((builtin.di), (builtin.in), (builtin.out), (builtin.di), (builtin.uo)), infinite, cannot_loop).
+:- pragma termination_info(store.store_equal((builtin.in), (builtin.in)), infinite, can_loop).
+:- pragma termination_info(store.store_compare((builtin.uo), (builtin.in), (builtin.in)), infinite, can_loop).
+:- pragma termination_info(store.do_init((builtin.uo)), infinite, cannot_loop).
+:- pragma termination_info(store.unsafe_new_uninitialized_mutvar((builtin.out), (builtin.di), (builtin.uo)), infinite, cannot_loop).
+:- pragma termination_info(store.unsafe_ref_value((builtin.in), (builtin.uo), (builtin.di), (builtin.uo)), infinite, cannot_loop).

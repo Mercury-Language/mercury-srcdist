@@ -1,0 +1,11 @@
+:- module (check_hlds.typecheck_info).
+:- interface.
+:- type args_type_assign.
+:- type args_type_assign_set.
+:- type cons_type_info.
+:- type cons_type_info_source.
+:- type overloaded_symbol.
+:- type overloaded_symbol_map.
+:- type type_assign.
+:- type type_assign_set.
+:- type typecheck_info.

@@ -1,0 +1,27 @@
+:- module (ml_backend.ml_code_util).
+:- interface.
+:- import_module bool.
+:- import_module list.
+:- import_module map.
+:- import_module maybe.
+:- import_module set.
+:- import_module (backend_libs.builtin_ops).
+:- import_module (hlds.code_model).
+:- import_module (hlds.hlds_module).
+:- import_module (hlds.hlds_pred).
+:- import_module (hlds.hlds_rtti).
+:- import_module (libs.globals).
+:- import_module (mdbcomp.prim_data).
+:- import_module (ml_backend.mlds).
+:- import_module (parse_tree.prog_data).
+:- type commit_sequence_num == int.
+:- type cond_seq == int.
+:- type const_seq == int.
+:- type conv_seq == int.
+:- type gen_pred == pred(((ml_backend.mlds).mlds_defns), ((ml_backend.mlds).statements), ((ml_backend.ml_code_util).ml_gen_info), ((ml_backend.ml_code_util).ml_gen_info)).
+:- type label_num == int.
+:- type ml_gen_info.
+:- type ml_label_func == ((ml_backend.mlds).mlds_func_sequence_num).
+:- type success_cont
+	--->	success_cont(((ml_backend.mlds).mlds_rval), ((ml_backend.mlds).mlds_rval), (list.list(((ml_backend.mlds).mlds_type))), (list.list(((ml_backend.mlds).mlds_lval)))).
+:- inst (gen_pred) == (pred((builtin.out), (builtin.out), (builtin.in), (builtin.out)) is det).

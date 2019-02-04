@@ -1,0 +1,119 @@
+:- module make.
+:- interface.
+:- include_module (make.options_file).
+:- include_module (make.util).
+:- import_module (make.options_file).
+:- import_module mdbcomp.
+:- import_module (mdbcomp.prim_data).
+:- import_module parse_tree.
+:- import_module (parse_tree.modules).
+:- import_module (parse_tree.prog_io).
+:- import_module io.
+:- import_module list.
+:- pred make_process_args(((make.options_file).options_variables), (list.list(string)), (list.list(((parse_tree.prog_io).file_name))), (io.io), (io.io)).
+:- mode make_process_args((builtin.in), (builtin.in), (builtin.in), (builtin.di), (builtin.uo)) is det.
+:- pred make_write_module_dep_file(((parse_tree.modules).module_imports), (io.io), (io.io)).
+:- mode make_write_module_dep_file((builtin.in), (builtin.di), (builtin.uo)) is det.
+:- func make_module_dep_file_extension = string.
+:- type make_info.
+:- include_module (make.dependencies).
+:- include_module (make.module_dep_file).
+:- include_module (make.module_target).
+:- include_module (make.program_target).
+:- import_module backend_libs.
+:- import_module (backend_libs.compile_target_code).
+:- import_module hlds.
+:- import_module libs.
+:- import_module (libs.globals).
+:- import_module (libs.options).
+:- import_module (libs.timestamp).
+:- import_module (make.dependencies).
+:- import_module (make.module_dep_file).
+:- import_module (make.module_target).
+:- import_module (make.program_target).
+:- import_module (make.util).
+:- import_module (parse_tree.error_util).
+:- import_module top_level.
+:- import_module (top_level.mercury_compile).
+:- import_module bool.
+:- import_module dir.
+:- import_module int.
+:- import_module map.
+:- import_module maybe.
+:- import_module pair.
+:- import_module set.
+:- import_module solutions.
+:- import_module string.
+:- type make_info
+	--->	make_info((make.module_dependencies) :: (map.map(((mdbcomp.prim_data).module_name), (maybe.maybe(((parse_tree.modules).module_imports))))), (make.file_timestamps) :: (make.file_timestamps), (make.option_args) :: (list.list(string)), (make.options_variables) :: ((make.options_file).options_variables), (make.dependency_status) :: (map.map(((make.dependencies).dependency_file), (make.dependency_status))), (make.cached_direct_imports) :: ((make.dependencies).cached_direct_imports), (make.cached_transitive_dependencies) :: ((make.dependencies).cached_transitive_dependencies), (make.rebuild_dependencies) :: (bool.bool), (make.keep_going) :: (bool.bool), (make.error_file_modules) :: (set.set(((mdbcomp.prim_data).module_name))), (make.importing_module) :: (maybe.maybe(((mdbcomp.prim_data).module_name))), (make.command_line_targets) :: (set.set((pair.pair(((mdbcomp.prim_data).module_name), (make.target_type))))), (make.reanalysis_passes) :: int).
+:- type make_error
+	--->	make_error_target((make.target_file))
+	;	make_error_dependencies(((mdbcomp.prim_data).module_name))
+	;	make_error_other(string).
+:- type compilation_task_type
+	--->	process_module((make.module_compilation_task_type))
+	;	target_code_to_object_code(((backend_libs.compile_target_code).pic))
+	;	foreign_code_to_object_code(((backend_libs.compile_target_code).pic), ((libs.globals).foreign_language))
+	;	fact_table_code_to_object_code(((backend_libs.compile_target_code).pic), ((parse_tree.prog_io).file_name)).
+:- type module_compilation_task_type
+	--->	task_errorcheck 
+	;	task_make_short_interface 
+	;	task_make_interface 
+	;	task_make_private_interface 
+	;	task_make_optimization_interface 
+	;	task_make_analysis_registry 
+	;	task_compile_to_target_code 
+	;	task_make_xml_doc .
+:- type module_target_type
+	--->	module_target_source 
+	;	module_target_errors 
+	;	module_target_private_interface 
+	;	module_target_long_interface 
+	;	module_target_short_interface 
+	;	module_target_unqualified_short_interface 
+	;	module_target_intermodule_interface 
+	;	module_target_analysis_registry 
+	;	module_target_c_header((make.c_header_type))
+	;	module_target_c_code 
+	;	module_target_il_code 
+	;	module_target_il_asm 
+	;	module_target_java_code 
+	;	module_target_asm_code(((backend_libs.compile_target_code).pic))
+	;	module_target_object_code(((backend_libs.compile_target_code).pic))
+	;	module_target_foreign_il_asm(((libs.globals).foreign_language))
+	;	module_target_foreign_object(((backend_libs.compile_target_code).pic), ((libs.globals).foreign_language))
+	;	module_target_fact_table_object(((backend_libs.compile_target_code).pic), ((parse_tree.prog_io).file_name))
+	;	module_target_xml_doc .
+:- type c_header_type
+	--->	header_mh 
+	;	header_mih .
+:- type misc_target_type
+	--->	misc_target_clean 
+	;	misc_target_realclean 
+	;	misc_target_build_all((make.module_target_type))
+	;	misc_target_build_analyses 
+	;	misc_target_build_library 
+	;	misc_target_install_library 
+	;	misc_target_build_xml_docs .
+:- type file_timestamps == (map.map(string, (maybe.maybe_error(((libs.timestamp).timestamp))))).
+:- type dependency_status
+	--->	deps_status_not_considered 
+	;	deps_status_being_built 
+	;	deps_status_up_to_date 
+	;	deps_status_error .
+:- type target_file
+	--->	target_file((make.target_file_name) :: ((mdbcomp.prim_data).module_name), (make.target_file_type) :: (make.module_target_type)).
+:- type linked_target_file
+	--->	linked_target_file((make.linked_tf_name) :: ((mdbcomp.prim_data).module_name), (make.linked_tf_type) :: ((backend_libs.compile_target_code).linked_target_type)).
+:- pred make_target((pair.pair(((mdbcomp.prim_data).module_name), (make.target_type))), (bool.bool), (make.make_info), (make.make_info), (io.io), (io.io)).
+:- mode make_target((builtin.in), (builtin.out), (builtin.in), (builtin.out), (builtin.di), (builtin.uo)) is det.
+:- type target_type
+	--->	module_target((make.module_target_type))
+	;	linked_target(((backend_libs.compile_target_code).linked_target_type))
+	;	misc_target((make.misc_target_type)).
+:- pred classify_target(((libs.globals).globals), string, (pair.pair(((mdbcomp.prim_data).module_name), (make.target_type)))).
+:- mode classify_target((builtin.in), (builtin.in), (builtin.out)) is det.
+:- pred classify_target_2(((libs.globals).globals), string, string, (pair.pair(((mdbcomp.prim_data).module_name), (make.target_type)))).
+:- mode classify_target_2((builtin.in), (builtin.in), (builtin.in), (builtin.out)) is nondet.
+:- pred search_backwards_for_dot(string, int, int).
+:- mode search_backwards_for_dot((builtin.in), (builtin.in), (builtin.out)) is semidet.

@@ -1,0 +1,11 @@
+:- module (parse_tree.error_util).
+:- interface.
+:- type actual_severity.
+:- type error_msg.
+:- type error_msg_component.
+:- type error_phase.
+:- type error_severity.
+:- type error_spec.
+:- type format_component.
+:- type format_components.
+:- type mode_report_control.

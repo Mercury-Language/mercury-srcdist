@@ -1,0 +1,8 @@
+:- module (make.dependencies).
+:- interface.
+:- type cached_direct_imports.
+:- type cached_transitive_dependencies.
+:- type dependencies_result.
+:- type dependency_file.
+:- type find_module_deps(T).
+:- inst (find_module_deps) == (pred(in, out, out, in, out, di, uo) is det).

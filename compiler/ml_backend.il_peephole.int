@@ -1,0 +1,7 @@
+:- module (ml_backend.il_peephole).
+:- interface.
+:- import_module bool.
+:- import_module list.
+:- import_module (ml_backend.ilasm).
+:- pred il_peephole_optimize((bool.bool), (list.list(((ml_backend.ilasm).decl))), (list.list(((ml_backend.ilasm).decl)))).
+:- mode il_peephole_optimize((builtin.in), (builtin.in), (builtin.out)) is det.

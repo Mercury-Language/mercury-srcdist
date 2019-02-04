@@ -1,0 +1,12 @@
+:- module (ml_backend.mlds_to_managed).
+:- interface.
+:- import_module io.
+:- import_module (libs.globals).
+:- import_module (ml_backend.mlds).
+:- inst (managed_lang) == bound(lang_csharp ; lang_managed_cplusplus).
+:- pred output_managed_code(((libs.globals).foreign_language), ((ml_backend.mlds).mlds), (io.io), (io.io)).
+:- mode output_managed_code(builtin.in(((ml_backend.mlds_to_managed).managed_lang)), (builtin.in), (builtin.di), (builtin.uo)) is det.
+:- pred output_src_end(((ml_backend.mlds).mercury_module_name), (io.io), (io.io)).
+:- mode output_src_end((builtin.in), (builtin.di), (builtin.uo)) is det.
+:- pred output_src_start(((ml_backend.mlds).mercury_module_name), (io.io), (io.io)).
+:- mode output_src_start((builtin.in), (builtin.di), (builtin.uo)) is det.

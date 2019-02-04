@@ -1,0 +1,3 @@
+:- module ((transform_hlds.ctgc).livedata).
+:- interface.
+:- type livedata.

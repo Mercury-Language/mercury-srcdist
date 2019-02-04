@@ -1,0 +1,11 @@
+:- module (thread.channel).
+:- pragma termination_info((thread.channel).init((builtin.out), (builtin.di), (builtin.uo)), infinite, cannot_loop).
+:- pragma termination_info((thread.channel).put((builtin.in), (builtin.in), (builtin.di), (builtin.uo)), infinite, cannot_loop).
+:- pragma termination_info((thread.channel).take((builtin.in), (builtin.out), (builtin.di), (builtin.uo)), infinite, cannot_loop).
+:- pragma termination_info((thread.channel).duplicate((builtin.in), (builtin.out), (builtin.di), (builtin.uo)), infinite, cannot_loop).
+:- pragma termination_info((thread.channel).untake((builtin.in), (builtin.in), (builtin.di), (builtin.uo)), infinite, cannot_loop).
+:- pragma exceptions(predicate, ((thread.channel).init), 3, 0, will_not_throw).
+:- pragma exceptions(predicate, ((thread.channel).put), 4, 0, will_not_throw).
+:- pragma exceptions(predicate, ((thread.channel).take), 4, 0, will_not_throw).
+:- pragma exceptions(predicate, ((thread.channel).duplicate), 4, 0, will_not_throw).
+:- pragma exceptions(predicate, ((thread.channel).untake), 4, 0, will_not_throw).

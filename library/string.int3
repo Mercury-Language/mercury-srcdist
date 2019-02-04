@@ -1,0 +1,4 @@
+:- module string.
+:- interface.
+:- type justified_column.
+:- type poly_type.

@@ -1,0 +1,1296 @@
+/*
+** Automatically generated from `library.m'
+** by the Mercury compiler,
+** version rotd-2007-04-03, configured for i686-pc-linux-gnu.
+** Do not edit.
+**
+** The autoconfigured grade settings governing
+** the generation of this C file were
+**
+** TAG_BITS=2
+** UNBOXED_FLOAT=no
+**
+** END_OF_C_GRADE_INFO
+*/
+
+/*
+INIT mercury__library__init
+ENDINIT
+*/
+
+#define MR_ALLOW_RESET
+#include "mercury_imp.h"
+#line 24 "library.c"
+#include "library.mh"
+
+#line 27 "library.c"
+#line 124 "array.int"
+#include "array.mh"
+
+#line 31 "library.c"
+#line 128 "bitmap.int"
+#include "bitmap.mh"
+
+#line 35 "library.c"
+#line 52 "dir.int"
+#include "dir.mh"
+
+#line 39 "library.c"
+#line 520 "io.int"
+#include "io.mh"
+
+#line 43 "library.c"
+#line 526 "io.int"
+#include "string.mh"
+
+#line 47 "library.c"
+#line 41 "time.int"
+#include "time.mh"
+
+#line 51 "library.c"
+#line 33 "version_array.int"
+#include "version_array.mh"
+
+#line 55 "library.c"
+#line 16 "par_builtin.int"
+#include "par_builtin.mh"
+
+#line 59 "library.c"
+#line 147 "profiling_builtin.int"
+#include "profiling_builtin.mh"
+
+#line 63 "library.c"
+#line 240 "table_builtin.int"
+#include "table_builtin.mh"
+
+#line 67 "library.c"
+#line 4 "builtin.opt"
+#include "builtin.mh"
+
+#line 71 "library.c"
+#line 4 "char.opt"
+#include "char.mh"
+
+#line 75 "library.c"
+#line 3 "construct.opt"
+#include "construct.mh"
+
+#line 79 "library.c"
+#line 14 "exception.opt"
+#include "exception.mh"
+
+#line 83 "library.c"
+#line 3 "float.opt"
+#include "float.mh"
+
+#line 87 "library.c"
+#line 4 "int.opt"
+#include "int.mh"
+
+#line 91 "library.c"
+#line 3 "math.opt"
+#include "math.mh"
+
+#line 95 "library.c"
+#line 9 "private_builtin.opt"
+#include "private_builtin.mh"
+
+#line 99 "library.c"
+#line 103 "rtti_implementation.opt"
+#include "rtti_implementation.mh"
+
+#line 103 "library.c"
+#line 22 "store.opt"
+#include "store.mh"
+
+#line 107 "library.c"
+#line 3 "term_size_prof_builtin.opt"
+#include "term_size_prof_builtin.mh"
+
+#line 111 "library.c"
+#line 6 "type_desc.opt"
+#include "type_desc.mh"
+
+#line 115 "library.c"
+#line 116 "library.c"
+#ifndef LIBRARY_DECL_GUARD
+#define LIBRARY_DECL_GUARD
+
+#line 120 "library.c"
+#line 121 "library.c"
+
+#endif
+#line 124 "library.c"
+
+
+struct mercury_type_0 {
+	MR_Integer f1[256];
+};
+static const struct mercury_type_0 mercury_common_0[];
+
+struct mercury_type_1 {
+	MR_Integer f1;
+	MR_String f2[31];
+	MR_Integer f3;
+	MR_String f4;
+	MR_Integer f5[2];
+	MR_String f6[2];
+	MR_Integer f7[3];
+	MR_String f8[2];
+	MR_Integer f9[3];
+	MR_String f10;
+	MR_Integer f11[2];
+	MR_String f12;
+	MR_Integer f13[2];
+	MR_String f14;
+	MR_Integer f15[9];
+	MR_String f16[2];
+	MR_Integer f17[4];
+	MR_String f18;
+	MR_Integer f19[2];
+	MR_String f20;
+	MR_Integer f21[2];
+	MR_String f22;
+	MR_Integer f23[5];
+	MR_String f24[2];
+	MR_Integer f25[5];
+	MR_String f26[2];
+	MR_Integer f27[3];
+	MR_String f28;
+	MR_Integer f29[2];
+	MR_String f30;
+	MR_Integer f31;
+	MR_String f32;
+	MR_Integer f33;
+	MR_String f34[2];
+	MR_Integer f35;
+	MR_String f36;
+	MR_Integer f37[8];
+	MR_String f38[2];
+	MR_Integer f39;
+	MR_String f40;
+	MR_Integer f41;
+	MR_String f42;
+	MR_Integer f43[6];
+	MR_String f44;
+	MR_Integer f45;
+	MR_String f46[4];
+	MR_Integer f47;
+	MR_String f48[3];
+	MR_Integer f49[2];
+	MR_String f50[2];
+	MR_Integer f51[2];
+	MR_String f52;
+	MR_Integer f53[10];
+	MR_String f54;
+	MR_Integer f55[3];
+	MR_String f56;
+	MR_Integer f57;
+	MR_String f58;
+	MR_Integer f59[4];
+	MR_String f60;
+	MR_Integer f61;
+	MR_String f62;
+	MR_Integer f63[3];
+	MR_String f64[2];
+	MR_Integer f65;
+	MR_String f66;
+	MR_Integer f67[2];
+	MR_String f68[2];
+	MR_Integer f69;
+	MR_String f70;
+	MR_Integer f71[2];
+	MR_String f72[3];
+	MR_Integer f73[4];
+	MR_String f74;
+	MR_Integer f75;
+	MR_String f76;
+	MR_Integer f77;
+	MR_String f78;
+	MR_Integer f79[2];
+	MR_String f80;
+	MR_Integer f81;
+	MR_String f82;
+	MR_Integer f83;
+	MR_String f84;
+	MR_Integer f85[3];
+	MR_String f86[2];
+	MR_Integer f87[4];
+	MR_String f88;
+	MR_Integer f89[5];
+	MR_String f90;
+	MR_Integer f91[5];
+	MR_String f92[2];
+	MR_Integer f93[4];
+	MR_String f94;
+	MR_Integer f95;
+	MR_String f96;
+	MR_Integer f97;
+	MR_String f98[2];
+	MR_Integer f99;
+	MR_String f100;
+	MR_Integer f101[8];
+	MR_String f102;
+	MR_Integer f103;
+	MR_String f104;
+	MR_Integer f105[4];
+	MR_String f106;
+	MR_Integer f107;
+	MR_String f108;
+	MR_Integer f109[5];
+};
+static const struct mercury_type_1 mercury_common_1[];
+MR_decl_label4(library__mercury_std_library_module_1_0, 3,111,5,2)
+MR_def_extern_entry(library__version_1_0)
+MR_def_extern_entry(library__mercury_std_library_module_1_0)
+MR_decl_static(fn__f_108_105_98_114_97_114_121_95_95_111_112_115_95_95_85_110_117_115_101_100_65_114_103_115_95_95_102_117_110_99_95_95_67_108_97_115_115_77_101_116_104_111_100_95_102_111_114_95_111_112_115_95_95_111_112_95_116_97_98_108_101_95_95_95_95_111_112_115_95_95_109_101_114_99_117_114_121_95_111_112_95_116_97_98_108_101_95_95_97_114_105_116_121_48_95_95_95_95_95_95_111_112_115_95_95_109_97_120_95_112_114_105_111_114_105_116_121_95_49_95_95_91_49_93_95_48_1_0)
+
+static const struct mercury_type_0 mercury_common_0[1] =
+{
+{
+{
+-2,
+-1,
+-1,
+-1,
+-1,
+-1,
+-1,
+-1,
+-1,
+-1,
+-1,
+-1,
+-1,
+1,
+16,
+4,
+-1,
+-1,
+-1,
+-1,
+-1,
+-1,
+-1,
+5,
+-1,
+-1,
+6,
+-1,
+-1,
+-1,
+-1,
+-1,
+-2,
+-1,
+-2,
+-2,
+-1,
+-1,
+-2,
+-2,
+-2,
+-1,
+-1,
+-2,
+-2,
+-2,
+-1,
+-2,
+-2,
+-1,
+-2,
+-2,
+-1,
+-2,
+-2,
+-2,
+-2,
+-2,
+-2,
+-2,
+-2,
+-2,
+-1,
+-1,
+-2,
+-2,
+-2,
+-2,
+-1,
+-2,
+-2,
+-1,
+-2,
+-2,
+-1,
+-2,
+-2,
+-2,
+-2,
+-2,
+-1,
+-1,
+-2,
+-2,
+-2,
+-2,
+-2,
+-1,
+-1,
+-2,
+-2,
+-2,
+9,
+-2,
+-2,
+-1,
+-2,
+11,
+-2,
+-1,
+12,
+-2,
+-1,
+-2,
+-2,
+-2,
+-2,
+-2,
+-2,
+-2,
+-2,
+-1,
+14,
+-2,
+17,
+-2,
+-1,
+-2,
+-2,
+-2,
+-2,
+-2,
+-2,
+-1,
+-2,
+-1,
+-1,
+-1,
+-1,
+-2,
+-1,
+18,
+19,
+-2,
+-2,
+-1,
+-1,
+-2,
+-2,
+-1,
+-2,
+-2,
+-2,
+-2,
+-2,
+-2,
+-2,
+-2,
+-2,
+-2,
+-1,
+-2,
+-2,
+-2,
+-1,
+-2,
+-1,
+-2,
+-2,
+-2,
+-2,
+-1,
+-2,
+-1,
+-2,
+-2,
+-2,
+-1,
+-1,
+-2,
+20,
+-2,
+-2,
+22,
+-1,
+-2,
+-1,
+-2,
+-2,
+-1,
+-1,
+-1,
+-2,
+-2,
+-2,
+-2,
+-1,
+-2,
+-1,
+-2,
+-1,
+-2,
+-2,
+-1,
+-2,
+-1,
+-2,
+-1,
+-2,
+-2,
+-2,
+24,
+-1,
+-2,
+-2,
+-2,
+-2,
+-1,
+-2,
+-2,
+-2,
+-2,
+-2,
+-1,
+-2,
+-2,
+-2,
+-2,
+-2,
+-1,
+-1,
+-2,
+-2,
+-2,
+-2,
+-1,
+-2,
+-1,
+-2,
+29,
+30,
+-2,
+-1,
+-2,
+-2,
+-2,
+-2,
+-2,
+-2,
+-2,
+-2,
+-1,
+-2,
+31,
+-2,
+-2,
+-2,
+-2,
+-1,
+-2,
+-1,
+-2,
+-2,
+-2,
+-2,
+-2
+}
+},
+};
+
+static const struct mercury_type_1 mercury_common_1[1] =
+{
+{
+0,
+{
+MR_string_const("table_builtin", 13),
+MR_string_const("svset", 5),
+MR_string_const("version_types", 13),
+MR_string_const("mutvar", 6),
+MR_string_const("enum", 4),
+MR_string_const("robdd", 5),
+MR_string_const("pqueue", 6),
+MR_string_const("array2d", 7),
+MR_string_const("char", 4),
+MR_string_const("rational", 8),
+MR_string_const("profiling_builtin", 17),
+MR_string_const("bintree", 7),
+MR_string_const("thread.channel", 14),
+MR_string_const("set_unordlist", 13),
+MR_string_const("prolog", 6),
+MR_string_const("rbtree", 6),
+MR_string_const("bimap", 5),
+MR_string_const("stream.string_writer", 20),
+MR_string_const("eqvclass", 8),
+MR_string_const("bool", 4),
+MR_string_const("bintree_set", 11),
+MR_string_const("getopt_io", 9),
+MR_string_const("maybe", 5),
+MR_string_const("sparse_bitset", 13),
+MR_string_const("hash_table", 10),
+MR_string_const("stream", 6),
+MR_string_const("benchmarking", 12),
+MR_string_const("array", 5),
+MR_string_const("bitmap", 6),
+MR_string_const("gc", 2),
+MR_string_const("counter", 7)
+},
+0,
+MR_string_const("varset", 6),
+{
+0,
+0
+},
+{
+MR_string_const("io", 2),
+MR_string_const("rtti_implementation", 19)
+},
+{
+0,
+0,
+0
+},
+{
+MR_string_const("graph", 5),
+MR_string_const("require", 7)
+},
+{
+0,
+0,
+0
+},
+MR_string_const("pair", 4),
+{
+0,
+0
+},
+MR_string_const("time", 4),
+{
+0,
+0
+},
+MR_string_const("math", 4),
+{
+0,
+0,
+0,
+0,
+0,
+0,
+0,
+0,
+0
+},
+{
+MR_string_const("cord", 4),
+MR_string_const("type_desc", 9)
+},
+{
+0,
+0,
+0,
+0
+},
+MR_string_const("version_hash_table", 18),
+{
+0,
+0
+},
+MR_string_const("bag", 3),
+{
+0,
+0
+},
+MR_string_const("svvarset", 8),
+{
+0,
+0,
+0,
+0,
+0
+},
+{
+MR_string_const("std_util", 8),
+MR_string_const("rtree", 5)
+},
+{
+0,
+0,
+0,
+0,
+0
+},
+{
+MR_string_const("version_store", 13),
+MR_string_const("library", 7)
+},
+{
+0,
+0,
+0
+},
+MR_string_const("dir", 3),
+{
+0,
+0
+},
+MR_string_const("map", 3),
+0,
+MR_string_const("set_ctree234", 12),
+0,
+{
+MR_string_const("lexer", 5),
+MR_string_const("svmulti_map", 11)
+},
+0,
+MR_string_const("builtin", 7),
+{
+0,
+0,
+0,
+0,
+0,
+0,
+0,
+0
+},
+{
+MR_string_const("ops", 3),
+MR_string_const("term_io", 7)
+},
+0,
+MR_string_const("set_bbbtree", 11),
+0,
+MR_string_const("queue", 5),
+{
+0,
+0,
+0,
+0,
+0,
+0
+},
+MR_string_const("getopt", 6),
+0,
+{
+MR_string_const("random", 6),
+MR_string_const("injection", 9),
+MR_string_const("deconstruct", 11),
+MR_string_const("univ", 4)
+},
+0,
+{
+MR_string_const("unit", 4),
+MR_string_const("thread.mvar", 11),
+MR_string_const("svbag", 5)
+},
+{
+0,
+0
+},
+{
+MR_string_const("pprint", 6),
+MR_string_const("term_size_prof_builtin", 22)
+},
+{
+0,
+0
+},
+MR_string_const("stack", 5),
+{
+0,
+0,
+0,
+0,
+0,
+0,
+0,
+0,
+0,
+0
+},
+MR_string_const("par_builtin", 11),
+{
+0,
+0,
+0
+},
+MR_string_const("group", 5),
+0,
+MR_string_const("svmap", 5),
+{
+0,
+0,
+0,
+0
+},
+MR_string_const("integer", 7),
+0,
+MR_string_const("multi_map", 9),
+{
+0,
+0,
+0
+},
+{
+MR_string_const("term_to_xml", 11),
+MR_string_const("version_bitmap", 14)
+},
+0,
+MR_string_const("thread.semaphore", 16),
+{
+0,
+0
+},
+{
+MR_string_const("set_ordlist", 11),
+MR_string_const("relation", 8)
+},
+0,
+MR_string_const("int", 3),
+{
+0,
+0
+},
+{
+MR_string_const("svqueue", 7),
+MR_string_const("tree234", 7),
+MR_string_const("svbimap", 7)
+},
+{
+0,
+0,
+0,
+0
+},
+MR_string_const("store", 5),
+0,
+MR_string_const("private_builtin", 15),
+0,
+MR_string_const("exception", 9),
+{
+0,
+0
+},
+MR_string_const("set", 3),
+0,
+MR_string_const("solutions", 9),
+0,
+MR_string_const("set_tree234", 11),
+{
+0,
+0,
+0
+},
+{
+MR_string_const("svrelation", 10),
+MR_string_const("term", 4)
+},
+{
+0,
+0,
+0,
+0
+},
+MR_string_const("tree_bitset", 11),
+{
+0,
+0,
+0,
+0,
+0
+},
+MR_string_const("float", 5),
+{
+0,
+0,
+0,
+0,
+0
+},
+{
+MR_string_const("svarray", 7),
+MR_string_const("construct", 9)
+},
+{
+0,
+0,
+0,
+0
+},
+MR_string_const("parser", 6),
+0,
+MR_string_const("sveqvclass", 10),
+0,
+{
+MR_string_const("version_array2d", 15),
+MR_string_const("list", 4)
+},
+0,
+MR_string_const("thread", 6),
+{
+0,
+0,
+0,
+0,
+0,
+0,
+0,
+0
+},
+MR_string_const("version_array", 13),
+0,
+MR_string_const("string", 6),
+{
+0,
+0,
+0,
+0
+},
+MR_string_const("bt_array", 8),
+0,
+MR_string_const("assoc_list", 10),
+{
+0,
+0,
+0,
+0,
+0
+}
+},
+};
+
+
+MR_BEGIN_MODULE(library_module0)
+	MR_init_entry1(library__version_1_0);
+MR_BEGIN_CODE
+
+#ifdef MR_maybe_local_thread_engine_base
+	#undef MR_maybe_local_thread_engine_base
+	#define MR_maybe_local_thread_engine_base MR_local_thread_engine_base
+#endif
+MR_define_entry(mercury__library__version_1_0);
+	MR_MAYBE_INIT_LOCAL_THREAD_ENGINE_BASE
+	{
+	MR_String	Version;
+#define	MR_PROC_LABEL	mercury__library__version_1_0
+	MR_OBTAIN_GLOBAL_LOCK("version");
+{
+#line 157 "library.m"
+
+    MR_ConstString version_string =
+        MR_VERSION ", configured for " MR_FULLARCH;
+    /*
+    ** Cast away const needed here, because Mercury declares Version
+    ** with type MR_String rather than MR_ConstString.
+    */
+    Version = (MR_String) (MR_Word) version_string;
+;}
+#line 901 "library.c"
+	MR_RELEASE_GLOBAL_LOCK("version");
+	MR_r1 = (MR_Word) Version;
+#undef	MR_PROC_LABEL
+	}
+	MR_proceed();
+#ifdef MR_maybe_local_thread_engine_base
+	#undef MR_maybe_local_thread_engine_base
+	#define MR_maybe_local_thread_engine_base MR_thread_engine_base
+#endif
+MR_END_MODULE
+
+
+MR_BEGIN_MODULE(library_module1)
+	MR_init_entry1(library__mercury_std_library_module_1_0);
+	MR_init_label4(library__mercury_std_library_module_1_0,3,111,5,2)
+MR_BEGIN_CODE
+
+#ifdef MR_maybe_local_thread_engine_base
+	#undef MR_maybe_local_thread_engine_base
+	#define MR_maybe_local_thread_engine_base MR_local_thread_engine_base
+#endif
+MR_define_entry(mercury__library__mercury_std_library_module_1_0);
+	MR_MAYBE_INIT_LOCAL_THREAD_ENGINE_BASE
+	MR_r2 = (MR_hash_string((MR_String) MR_r1) & (MR_Integer) 255);
+MR_def_label(library__mercury_std_library_module_1_0,3)
+	MR_MAYBE_INIT_LOCAL_THREAD_ENGINE_BASE
+	while (1) {
+	{
+	MR_Word MR_tempr1;
+	MR_tempr1 = (MR_COMMON(1,0))[(MR_Integer) MR_r2];
+	if (((MR_Integer) MR_tempr1 && (strcmp((char *)MR_tempr1, (char *)MR_r1) == 0))) {
+		MR_GOTO_LAB(library__mercury_std_library_module_1_0_i5);
+	}
+	MR_r2 = (MR_COMMON(0,0))[(MR_Integer) MR_r2];
+	if (MR_INT_GE(MR_r2,0))
+		continue;
+	}
+	break; } /* end while */
+MR_def_label(library__mercury_std_library_module_1_0,111)
+	MR_MAYBE_INIT_LOCAL_THREAD_ENGINE_BASE
+	MR_r1 = MR_FALSE;
+	MR_proceed();
+MR_def_label(library__mercury_std_library_module_1_0,5)
+	MR_MAYBE_INIT_LOCAL_THREAD_ENGINE_BASE
+	MR_COMPUTED_GOTO((MR_Unsigned) MR_r2,
+		MR_LABEL_AP(library__mercury_std_library_module_1_0_i111) MR_AND
+		MR_LABEL_AP(library__mercury_std_library_module_1_0_i2) MR_AND
+		MR_LABEL_AP(library__mercury_std_library_module_1_0_i2) MR_AND
+		MR_LABEL_AP(library__mercury_std_library_module_1_0_i2) MR_AND
+		MR_LABEL_AP(library__mercury_std_library_module_1_0_i2) MR_AND
+		MR_LABEL_AP(library__mercury_std_library_module_1_0_i2) MR_AND
+		MR_LABEL_AP(library__mercury_std_library_module_1_0_i2) MR_AND
+		MR_LABEL_AP(library__mercury_std_library_module_1_0_i2) MR_AND
+		MR_LABEL_AP(library__mercury_std_library_module_1_0_i2) MR_AND
+		MR_LABEL_AP(library__mercury_std_library_module_1_0_i2) MR_AND
+		MR_LABEL_AP(library__mercury_std_library_module_1_0_i2) MR_AND
+		MR_LABEL_AP(library__mercury_std_library_module_1_0_i2) MR_AND
+		MR_LABEL_AP(library__mercury_std_library_module_1_0_i2) MR_AND
+		MR_LABEL_AP(library__mercury_std_library_module_1_0_i2) MR_AND
+		MR_LABEL_AP(library__mercury_std_library_module_1_0_i2) MR_AND
+		MR_LABEL_AP(library__mercury_std_library_module_1_0_i2) MR_AND
+		MR_LABEL_AP(library__mercury_std_library_module_1_0_i2) MR_AND
+		MR_LABEL_AP(library__mercury_std_library_module_1_0_i2) MR_AND
+		MR_LABEL_AP(library__mercury_std_library_module_1_0_i2) MR_AND
+		MR_LABEL_AP(library__mercury_std_library_module_1_0_i2) MR_AND
+		MR_LABEL_AP(library__mercury_std_library_module_1_0_i2) MR_AND
+		MR_LABEL_AP(library__mercury_std_library_module_1_0_i2) MR_AND
+		MR_LABEL_AP(library__mercury_std_library_module_1_0_i2) MR_AND
+		MR_LABEL_AP(library__mercury_std_library_module_1_0_i2) MR_AND
+		MR_LABEL_AP(library__mercury_std_library_module_1_0_i2) MR_AND
+		MR_LABEL_AP(library__mercury_std_library_module_1_0_i2) MR_AND
+		MR_LABEL_AP(library__mercury_std_library_module_1_0_i2) MR_AND
+		MR_LABEL_AP(library__mercury_std_library_module_1_0_i2) MR_AND
+		MR_LABEL_AP(library__mercury_std_library_module_1_0_i2) MR_AND
+		MR_LABEL_AP(library__mercury_std_library_module_1_0_i2) MR_AND
+		MR_LABEL_AP(library__mercury_std_library_module_1_0_i2) MR_AND
+		MR_LABEL_AP(library__mercury_std_library_module_1_0_i2) MR_AND
+		MR_LABEL_AP(library__mercury_std_library_module_1_0_i111) MR_AND
+		MR_LABEL_AP(library__mercury_std_library_module_1_0_i2) MR_AND
+		MR_LABEL_AP(library__mercury_std_library_module_1_0_i111) MR_AND
+		MR_LABEL_AP(library__mercury_std_library_module_1_0_i111) MR_AND
+		MR_LABEL_AP(library__mercury_std_library_module_1_0_i2) MR_AND
+		MR_LABEL_AP(library__mercury_std_library_module_1_0_i2) MR_AND
+		MR_LABEL_AP(library__mercury_std_library_module_1_0_i111) MR_AND
+		MR_LABEL_AP(library__mercury_std_library_module_1_0_i111) MR_AND
+		MR_LABEL_AP(library__mercury_std_library_module_1_0_i111) MR_AND
+		MR_LABEL_AP(library__mercury_std_library_module_1_0_i2) MR_AND
+		MR_LABEL_AP(library__mercury_std_library_module_1_0_i2) MR_AND
+		MR_LABEL_AP(library__mercury_std_library_module_1_0_i111) MR_AND
+		MR_LABEL_AP(library__mercury_std_library_module_1_0_i111) MR_AND
+		MR_LABEL_AP(library__mercury_std_library_module_1_0_i111) MR_AND
+		MR_LABEL_AP(library__mercury_std_library_module_1_0_i2) MR_AND
+		MR_LABEL_AP(library__mercury_std_library_module_1_0_i111) MR_AND
+		MR_LABEL_AP(library__mercury_std_library_module_1_0_i111) MR_AND
+		MR_LABEL_AP(library__mercury_std_library_module_1_0_i2) MR_AND
+		MR_LABEL_AP(library__mercury_std_library_module_1_0_i111) MR_AND
+		MR_LABEL_AP(library__mercury_std_library_module_1_0_i111) MR_AND
+		MR_LABEL_AP(library__mercury_std_library_module_1_0_i2) MR_AND
+		MR_LABEL_AP(library__mercury_std_library_module_1_0_i111) MR_AND
+		MR_LABEL_AP(library__mercury_std_library_module_1_0_i111) MR_AND
+		MR_LABEL_AP(library__mercury_std_library_module_1_0_i111) MR_AND
+		MR_LABEL_AP(library__mercury_std_library_module_1_0_i111) MR_AND
+		MR_LABEL_AP(library__mercury_std_library_module_1_0_i111) MR_AND
+		MR_LABEL_AP(library__mercury_std_library_module_1_0_i111) MR_AND
+		MR_LABEL_AP(library__mercury_std_library_module_1_0_i111) MR_AND
+		MR_LABEL_AP(library__mercury_std_library_module_1_0_i111) MR_AND
+		MR_LABEL_AP(library__mercury_std_library_module_1_0_i111) MR_AND
+		MR_LABEL_AP(library__mercury_std_library_module_1_0_i2) MR_AND
+		MR_LABEL_AP(library__mercury_std_library_module_1_0_i2) MR_AND
+		MR_LABEL_AP(library__mercury_std_library_module_1_0_i111) MR_AND
+		MR_LABEL_AP(library__mercury_std_library_module_1_0_i111) MR_AND
+		MR_LABEL_AP(library__mercury_std_library_module_1_0_i111) MR_AND
+		MR_LABEL_AP(library__mercury_std_library_module_1_0_i111) MR_AND
+		MR_LABEL_AP(library__mercury_std_library_module_1_0_i2) MR_AND
+		MR_LABEL_AP(library__mercury_std_library_module_1_0_i111) MR_AND
+		MR_LABEL_AP(library__mercury_std_library_module_1_0_i111) MR_AND
+		MR_LABEL_AP(library__mercury_std_library_module_1_0_i2) MR_AND
+		MR_LABEL_AP(library__mercury_std_library_module_1_0_i111) MR_AND
+		MR_LABEL_AP(library__mercury_std_library_module_1_0_i111) MR_AND
+		MR_LABEL_AP(library__mercury_std_library_module_1_0_i2) MR_AND
+		MR_LABEL_AP(library__mercury_std_library_module_1_0_i111) MR_AND
+		MR_LABEL_AP(library__mercury_std_library_module_1_0_i111) MR_AND
+		MR_LABEL_AP(library__mercury_std_library_module_1_0_i111) MR_AND
+		MR_LABEL_AP(library__mercury_std_library_module_1_0_i111) MR_AND
+		MR_LABEL_AP(library__mercury_std_library_module_1_0_i111) MR_AND
+		MR_LABEL_AP(library__mercury_std_library_module_1_0_i2) MR_AND
+		MR_LABEL_AP(library__mercury_std_library_module_1_0_i2) MR_AND
+		MR_LABEL_AP(library__mercury_std_library_module_1_0_i111) MR_AND
+		MR_LABEL_AP(library__mercury_std_library_module_1_0_i111) MR_AND
+		MR_LABEL_AP(library__mercury_std_library_module_1_0_i111) MR_AND
+		MR_LABEL_AP(library__mercury_std_library_module_1_0_i111) MR_AND
+		MR_LABEL_AP(library__mercury_std_library_module_1_0_i111) MR_AND
+		MR_LABEL_AP(library__mercury_std_library_module_1_0_i2) MR_AND
+		MR_LABEL_AP(library__mercury_std_library_module_1_0_i2) MR_AND
+		MR_LABEL_AP(library__mercury_std_library_module_1_0_i111) MR_AND
+		MR_LABEL_AP(library__mercury_std_library_module_1_0_i111) MR_AND
+		MR_LABEL_AP(library__mercury_std_library_module_1_0_i111) MR_AND
+		MR_LABEL_AP(library__mercury_std_library_module_1_0_i2) MR_AND
+		MR_LABEL_AP(library__mercury_std_library_module_1_0_i111) MR_AND
+		MR_LABEL_AP(library__mercury_std_library_module_1_0_i111) MR_AND
+		MR_LABEL_AP(library__mercury_std_library_module_1_0_i2) MR_AND
+		MR_LABEL_AP(library__mercury_std_library_module_1_0_i111) MR_AND
+		MR_LABEL_AP(library__mercury_std_library_module_1_0_i2) MR_AND
+		MR_LABEL_AP(library__mercury_std_library_module_1_0_i111) MR_AND
+		MR_LABEL_AP(library__mercury_std_library_module_1_0_i2) MR_AND
+		MR_LABEL_AP(library__mercury_std_library_module_1_0_i2) MR_AND
+		MR_LABEL_AP(library__mercury_std_library_module_1_0_i111) MR_AND
+		MR_LABEL_AP(library__mercury_std_library_module_1_0_i2) MR_AND
+		MR_LABEL_AP(library__mercury_std_library_module_1_0_i111) MR_AND
+		MR_LABEL_AP(library__mercury_std_library_module_1_0_i111) MR_AND
+		MR_LABEL_AP(library__mercury_std_library_module_1_0_i111) MR_AND
+		MR_LABEL_AP(library__mercury_std_library_module_1_0_i111) MR_AND
+		MR_LABEL_AP(library__mercury_std_library_module_1_0_i111) MR_AND
+		MR_LABEL_AP(library__mercury_std_library_module_1_0_i111) MR_AND
+		MR_LABEL_AP(library__mercury_std_library_module_1_0_i111) MR_AND
+		MR_LABEL_AP(library__mercury_std_library_module_1_0_i111) MR_AND
+		MR_LABEL_AP(library__mercury_std_library_module_1_0_i2) MR_AND
+		MR_LABEL_AP(library__mercury_std_library_module_1_0_i2) MR_AND
+		MR_LABEL_AP(library__mercury_std_library_module_1_0_i111) MR_AND
+		MR_LABEL_AP(library__mercury_std_library_module_1_0_i2) MR_AND
+		MR_LABEL_AP(library__mercury_std_library_module_1_0_i111) MR_AND
+		MR_LABEL_AP(library__mercury_std_library_module_1_0_i2) MR_AND
+		MR_LABEL_AP(library__mercury_std_library_module_1_0_i111) MR_AND
+		MR_LABEL_AP(library__mercury_std_library_module_1_0_i111) MR_AND
+		MR_LABEL_AP(library__mercury_std_library_module_1_0_i111) MR_AND
+		MR_LABEL_AP(library__mercury_std_library_module_1_0_i111) MR_AND
+		MR_LABEL_AP(library__mercury_std_library_module_1_0_i111) MR_AND
+		MR_LABEL_AP(library__mercury_std_library_module_1_0_i111) MR_AND
+		MR_LABEL_AP(library__mercury_std_library_module_1_0_i2) MR_AND
+		MR_LABEL_AP(library__mercury_std_library_module_1_0_i111) MR_AND
+		MR_LABEL_AP(library__mercury_std_library_module_1_0_i2) MR_AND
+		MR_LABEL_AP(library__mercury_std_library_module_1_0_i2) MR_AND
+		MR_LABEL_AP(library__mercury_std_library_module_1_0_i2) MR_AND
+		MR_LABEL_AP(library__mercury_std_library_module_1_0_i2) MR_AND
+		MR_LABEL_AP(library__mercury_std_library_module_1_0_i111) MR_AND
+		MR_LABEL_AP(library__mercury_std_library_module_1_0_i2) MR_AND
+		MR_LABEL_AP(library__mercury_std_library_module_1_0_i2) MR_AND
+		MR_LABEL_AP(library__mercury_std_library_module_1_0_i2) MR_AND
+		MR_LABEL_AP(library__mercury_std_library_module_1_0_i111) MR_AND
+		MR_LABEL_AP(library__mercury_std_library_module_1_0_i111) MR_AND
+		MR_LABEL_AP(library__mercury_std_library_module_1_0_i2) MR_AND
+		MR_LABEL_AP(library__mercury_std_library_module_1_0_i2) MR_AND
+		MR_LABEL_AP(library__mercury_std_library_module_1_0_i111) MR_AND
+		MR_LABEL_AP(library__mercury_std_library_module_1_0_i111) MR_AND
+		MR_LABEL_AP(library__mercury_std_library_module_1_0_i2) MR_AND
+		MR_LABEL_AP(library__mercury_std_library_module_1_0_i111) MR_AND
+		MR_LABEL_AP(library__mercury_std_library_module_1_0_i111) MR_AND
+		MR_LABEL_AP(library__mercury_std_library_module_1_0_i111) MR_AND
+		MR_LABEL_AP(library__mercury_std_library_module_1_0_i111) MR_AND
+		MR_LABEL_AP(library__mercury_std_library_module_1_0_i111) MR_AND
+		MR_LABEL_AP(library__mercury_std_library_module_1_0_i111) MR_AND
+		MR_LABEL_AP(library__mercury_std_library_module_1_0_i111) MR_AND
+		MR_LABEL_AP(library__mercury_std_library_module_1_0_i111) MR_AND
+		MR_LABEL_AP(library__mercury_std_library_module_1_0_i111) MR_AND
+		MR_LABEL_AP(library__mercury_std_library_module_1_0_i111) MR_AND
+		MR_LABEL_AP(library__mercury_std_library_module_1_0_i2) MR_AND
+		MR_LABEL_AP(library__mercury_std_library_module_1_0_i111) MR_AND
+		MR_LABEL_AP(library__mercury_std_library_module_1_0_i111) MR_AND
+		MR_LABEL_AP(library__mercury_std_library_module_1_0_i111) MR_AND
+		MR_LABEL_AP(library__mercury_std_library_module_1_0_i2) MR_AND
+		MR_LABEL_AP(library__mercury_std_library_module_1_0_i111) MR_AND
+		MR_LABEL_AP(library__mercury_std_library_module_1_0_i2) MR_AND
+		MR_LABEL_AP(library__mercury_std_library_module_1_0_i111) MR_AND
+		MR_LABEL_AP(library__mercury_std_library_module_1_0_i111) MR_AND
+		MR_LABEL_AP(library__mercury_std_library_module_1_0_i111) MR_AND
+		MR_LABEL_AP(library__mercury_std_library_module_1_0_i111) MR_AND
+		MR_LABEL_AP(library__mercury_std_library_module_1_0_i2) MR_AND
+		MR_LABEL_AP(library__mercury_std_library_module_1_0_i111) MR_AND
+		MR_LABEL_AP(library__mercury_std_library_module_1_0_i2) MR_AND
+		MR_LABEL_AP(library__mercury_std_library_module_1_0_i111) MR_AND
+		MR_LABEL_AP(library__mercury_std_library_module_1_0_i111) MR_AND
+		MR_LABEL_AP(library__mercury_std_library_module_1_0_i111) MR_AND
+		MR_LABEL_AP(library__mercury_std_library_module_1_0_i2) MR_AND
+		MR_LABEL_AP(library__mercury_std_library_module_1_0_i2) MR_AND
+		MR_LABEL_AP(library__mercury_std_library_module_1_0_i111) MR_AND
+		MR_LABEL_AP(library__mercury_std_library_module_1_0_i2) MR_AND
+		MR_LABEL_AP(library__mercury_std_library_module_1_0_i111) MR_AND
+		MR_LABEL_AP(library__mercury_std_library_module_1_0_i111) MR_AND
+		MR_LABEL_AP(library__mercury_std_library_module_1_0_i2) MR_AND
+		MR_LABEL_AP(library__mercury_std_library_module_1_0_i2) MR_AND
+		MR_LABEL_AP(library__mercury_std_library_module_1_0_i111) MR_AND
+		MR_LABEL_AP(library__mercury_std_library_module_1_0_i2) MR_AND
+		MR_LABEL_AP(library__mercury_std_library_module_1_0_i111) MR_AND
+		MR_LABEL_AP(library__mercury_std_library_module_1_0_i111) MR_AND
+		MR_LABEL_AP(library__mercury_std_library_module_1_0_i2) MR_AND
+		MR_LABEL_AP(library__mercury_std_library_module_1_0_i2) MR_AND
+		MR_LABEL_AP(library__mercury_std_library_module_1_0_i2) MR_AND
+		MR_LABEL_AP(library__mercury_std_library_module_1_0_i111) MR_AND
+		MR_LABEL_AP(library__mercury_std_library_module_1_0_i111) MR_AND
+		MR_LABEL_AP(library__mercury_std_library_module_1_0_i111) MR_AND
+		MR_LABEL_AP(library__mercury_std_library_module_1_0_i111) MR_AND
+		MR_LABEL_AP(library__mercury_std_library_module_1_0_i2) MR_AND
+		MR_LABEL_AP(library__mercury_std_library_module_1_0_i111) MR_AND
+		MR_LABEL_AP(library__mercury_std_library_module_1_0_i2) MR_AND
+		MR_LABEL_AP(library__mercury_std_library_module_1_0_i111) MR_AND
+		MR_LABEL_AP(library__mercury_std_library_module_1_0_i2) MR_AND
+		MR_LABEL_AP(library__mercury_std_library_module_1_0_i111) MR_AND
+		MR_LABEL_AP(library__mercury_std_library_module_1_0_i111) MR_AND
+		MR_LABEL_AP(library__mercury_std_library_module_1_0_i2) MR_AND
+		MR_LABEL_AP(library__mercury_std_library_module_1_0_i111) MR_AND
+		MR_LABEL_AP(library__mercury_std_library_module_1_0_i2) MR_AND
+		MR_LABEL_AP(library__mercury_std_library_module_1_0_i111) MR_AND
+		MR_LABEL_AP(library__mercury_std_library_module_1_0_i2) MR_AND
+		MR_LABEL_AP(library__mercury_std_library_module_1_0_i111) MR_AND
+		MR_LABEL_AP(library__mercury_std_library_module_1_0_i111) MR_AND
+		MR_LABEL_AP(library__mercury_std_library_module_1_0_i111) MR_AND
+		MR_LABEL_AP(library__mercury_std_library_module_1_0_i2) MR_AND
+		MR_LABEL_AP(library__mercury_std_library_module_1_0_i2) MR_AND
+		MR_LABEL_AP(library__mercury_std_library_module_1_0_i111) MR_AND
+		MR_LABEL_AP(library__mercury_std_library_module_1_0_i111) MR_AND
+		MR_LABEL_AP(library__mercury_std_library_module_1_0_i111) MR_AND
+		MR_LABEL_AP(library__mercury_std_library_module_1_0_i111) MR_AND
+		MR_LABEL_AP(library__mercury_std_library_module_1_0_i2) MR_AND
+		MR_LABEL_AP(library__mercury_std_library_module_1_0_i111) MR_AND
+		MR_LABEL_AP(library__mercury_std_library_module_1_0_i111) MR_AND
+		MR_LABEL_AP(library__mercury_std_library_module_1_0_i111) MR_AND
+		MR_LABEL_AP(library__mercury_std_library_module_1_0_i111) MR_AND
+		MR_LABEL_AP(library__mercury_std_library_module_1_0_i111) MR_AND
+		MR_LABEL_AP(library__mercury_std_library_module_1_0_i2) MR_AND
+		MR_LABEL_AP(library__mercury_std_library_module_1_0_i111) MR_AND
+		MR_LABEL_AP(library__mercury_std_library_module_1_0_i111) MR_AND
+		MR_LABEL_AP(library__mercury_std_library_module_1_0_i111) MR_AND
+		MR_LABEL_AP(library__mercury_std_library_module_1_0_i111) MR_AND
+		MR_LABEL_AP(library__mercury_std_library_module_1_0_i111) MR_AND
+		MR_LABEL_AP(library__mercury_std_library_module_1_0_i2) MR_AND
+		MR_LABEL_AP(library__mercury_std_library_module_1_0_i2) MR_AND
+		MR_LABEL_AP(library__mercury_std_library_module_1_0_i111) MR_AND
+		MR_LABEL_AP(library__mercury_std_library_module_1_0_i111) MR_AND
+		MR_LABEL_AP(library__mercury_std_library_module_1_0_i111) MR_AND
+		MR_LABEL_AP(library__mercury_std_library_module_1_0_i111) MR_AND
+		MR_LABEL_AP(library__mercury_std_library_module_1_0_i2) MR_AND
+		MR_LABEL_AP(library__mercury_std_library_module_1_0_i111) MR_AND
+		MR_LABEL_AP(library__mercury_std_library_module_1_0_i2) MR_AND
+		MR_LABEL_AP(library__mercury_std_library_module_1_0_i111) MR_AND
+		MR_LABEL_AP(library__mercury_std_library_module_1_0_i2) MR_AND
+		MR_LABEL_AP(library__mercury_std_library_module_1_0_i2) MR_AND
+		MR_LABEL_AP(library__mercury_std_library_module_1_0_i111) MR_AND
+		MR_LABEL_AP(library__mercury_std_library_module_1_0_i2) MR_AND
+		MR_LABEL_AP(library__mercury_std_library_module_1_0_i111) MR_AND
+		MR_LABEL_AP(library__mercury_std_library_module_1_0_i111) MR_AND
+		MR_LABEL_AP(library__mercury_std_library_module_1_0_i111) MR_AND
+		MR_LABEL_AP(library__mercury_std_library_module_1_0_i111) MR_AND
+		MR_LABEL_AP(library__mercury_std_library_module_1_0_i111) MR_AND
+		MR_LABEL_AP(library__mercury_std_library_module_1_0_i111) MR_AND
+		MR_LABEL_AP(library__mercury_std_library_module_1_0_i111) MR_AND
+		MR_LABEL_AP(library__mercury_std_library_module_1_0_i111) MR_AND
+		MR_LABEL_AP(library__mercury_std_library_module_1_0_i2) MR_AND
+		MR_LABEL_AP(library__mercury_std_library_module_1_0_i111) MR_AND
+		MR_LABEL_AP(library__mercury_std_library_module_1_0_i2) MR_AND
+		MR_LABEL_AP(library__mercury_std_library_module_1_0_i111) MR_AND
+		MR_LABEL_AP(library__mercury_std_library_module_1_0_i111) MR_AND
+		MR_LABEL_AP(library__mercury_std_library_module_1_0_i111) MR_AND
+		MR_LABEL_AP(library__mercury_std_library_module_1_0_i111) MR_AND
+		MR_LABEL_AP(library__mercury_std_library_module_1_0_i2) MR_AND
+		MR_LABEL_AP(library__mercury_std_library_module_1_0_i111) MR_AND
+		MR_LABEL_AP(library__mercury_std_library_module_1_0_i2) MR_AND
+		MR_LABEL_AP(library__mercury_std_library_module_1_0_i111) MR_AND
+		MR_LABEL_AP(library__mercury_std_library_module_1_0_i111) MR_AND
+		MR_LABEL_AP(library__mercury_std_library_module_1_0_i111) MR_AND
+		MR_LABEL_AP(library__mercury_std_library_module_1_0_i111) MR_AND
+		MR_LABEL_AP(library__mercury_std_library_module_1_0_i111));
+MR_def_label(library__mercury_std_library_module_1_0,2)
+	MR_MAYBE_INIT_LOCAL_THREAD_ENGINE_BASE
+	MR_r1 = MR_TRUE;
+	MR_proceed();
+#ifdef MR_maybe_local_thread_engine_base
+	#undef MR_maybe_local_thread_engine_base
+	#define MR_maybe_local_thread_engine_base MR_thread_engine_base
+#endif
+MR_END_MODULE
+
+
+MR_BEGIN_MODULE(library_module2)
+	MR_init_entry1(fn__f_108_105_98_114_97_114_121_95_95_111_112_115_95_95_85_110_117_115_101_100_65_114_103_115_95_95_102_117_110_99_95_95_67_108_97_115_115_77_101_116_104_111_100_95_102_111_114_95_111_112_115_95_95_111_112_95_116_97_98_108_101_95_95_95_95_111_112_115_95_95_109_101_114_99_117_114_121_95_111_112_95_116_97_98_108_101_95_95_97_114_105_116_121_48_95_95_95_95_95_95_111_112_115_95_95_109_97_120_95_112_114_105_111_114_105_116_121_95_49_95_95_91_49_93_95_48_1_0);
+MR_BEGIN_CODE
+
+#ifdef MR_maybe_local_thread_engine_base
+	#undef MR_maybe_local_thread_engine_base
+	#define MR_maybe_local_thread_engine_base MR_local_thread_engine_base
+#endif
+MR_def_static(fn__f_108_105_98_114_97_114_121_95_95_111_112_115_95_95_85_110_117_115_101_100_65_114_103_115_95_95_102_117_110_99_95_95_67_108_97_115_115_77_101_116_104_111_100_95_102_111_114_95_111_112_115_95_95_111_112_95_116_97_98_108_101_95_95_95_95_111_112_115_95_95_109_101_114_99_117_114_121_95_111_112_95_116_97_98_108_101_95_95_97_114_105_116_121_48_95_95_95_95_95_95_111_112_115_95_95_109_97_120_95_112_114_105_111_114_105_116_121_95_49_95_95_91_49_93_95_48_1_0)
+	MR_MAYBE_INIT_LOCAL_THREAD_ENGINE_BASE
+	MR_r1 = (MR_Integer) 1200;
+	MR_proceed();
+#ifdef MR_maybe_local_thread_engine_base
+	#undef MR_maybe_local_thread_engine_base
+	#define MR_maybe_local_thread_engine_base MR_thread_engine_base
+#endif
+MR_END_MODULE
+
+static void mercury__library_maybe_bunch_0(void)
+{
+	library_module0();
+	library_module1();
+	library_module2();
+}
+
+/* suppress gcc -Wmissing-decls warnings */
+void mercury__library__init(void);
+void mercury__library__init_type_tables(void);
+void mercury__library__init_debugger(void);
+#ifdef MR_DEEP_PROFILING
+void mercury__library__write_out_proc_statics(FILE *fp);
+#endif
+#ifdef MR_RECORD_TERM_SIZES
+void mercury__library__init_complexity_procs(void);
+#endif
+
+void mercury__library__init(void)
+{
+	static MR_bool done = MR_FALSE;
+	if (done) {
+		return;
+	}
+	done = MR_TRUE;
+	mercury__library_maybe_bunch_0();
+	mercury__library__init_debugger();
+}
+
+void mercury__library__init_type_tables(void)
+{
+	static MR_bool done = MR_FALSE;
+	if (done) {
+		return;
+	}
+	done = MR_TRUE;
+}
+
+
+void mercury__library__init_debugger(void)
+{
+	static MR_bool done = MR_FALSE;
+	if (done) {
+		return;
+	}
+	done = MR_TRUE;
+}
+
+#ifdef MR_DEEP_PROFILING
+
+void mercury__library__write_out_proc_statics(FILE *fp)
+{
+}
+
+#endif
+
+#ifdef MR_RECORD_TERM_SIZES
+
+void mercury__library__init_complexity_procs(void)
+{
+}
+
+#endif
+
+/* ensure everything is compiled with the same grade */
+static const void *const MR_grade = &MR_GRADE_VAR;

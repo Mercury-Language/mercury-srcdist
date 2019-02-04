@@ -1,0 +1,445 @@
+Terminals which are not used
+
+   GARBAGE
+
+
+Grammar
+
+    0 $accept: file $end
+
+    1 file: TOKEN_EVENT TOKEN_SET TOKEN_ID events
+
+    2 events: event events
+    3       | /* empty */
+
+    4 event: TOKEN_EVENT TOKEN_ID TOKEN_LPAREN maybe_attrs TOKEN_RPAREN
+
+    5 maybe_attrs: attrs
+    6            | /* empty */
+
+    7 attrs: attr TOKEN_COMMA attrs
+    8      | attr
+
+    9 attr: TOKEN_ID TOKEN_COLON type
+
+   10 type: term
+   11     | TOKEN_FUNCTION
+   12     | term TOKEN_SYNTHESIZED TOKEN_BY flat_term
+
+   13 term: sym
+   14     | sym TOKEN_LPAREN terms TOKEN_RPAREN
+
+   15 terms: term TOKEN_COMMA terms
+   16      | term
+
+   17 flat_term: TOKEN_ID
+   18          | TOKEN_ID TOKEN_LPAREN ids TOKEN_RPAREN
+
+   19 ids: TOKEN_ID TOKEN_COMMA ids
+   20    | TOKEN_ID
+
+   21 sym: TOKEN_ID
+   22    | TOKEN_SYM
+
+
+Terminals, with rules where they appear
+
+$end (0) 0
+error (256)
+TOKEN_EVENT (258) 1 4
+TOKEN_SET (259) 1
+TOKEN_FUNCTION (260) 11
+TOKEN_SYNTHESIZED (261) 12
+TOKEN_BY (262) 12
+TOKEN_LPAREN (263) 4 14 18
+TOKEN_RPAREN (264) 4 14 18
+TOKEN_COLON (265) 9
+TOKEN_COMMA (266) 7 15 19
+TOKEN_ID (267) 1 4 9 17 18 19 20 21
+TOKEN_SYM (268) 22
+GARBAGE (269)
+
+
+Nonterminals, with rules where they appear
+
+$accept (15)
+    on left: 0
+file (16)
+    on left: 1, on right: 0
+events (17)
+    on left: 2 3, on right: 1 2
+event (18)
+    on left: 4, on right: 2
+maybe_attrs (19)
+    on left: 5 6, on right: 4
+attrs (20)
+    on left: 7 8, on right: 5 7
+attr (21)
+    on left: 9, on right: 7 8
+type (22)
+    on left: 10 11 12, on right: 9
+term (23)
+    on left: 13 14, on right: 10 12 15 16
+terms (24)
+    on left: 15 16, on right: 14 15
+flat_term (25)
+    on left: 17 18, on right: 12
+ids (26)
+    on left: 19 20, on right: 18 19
+sym (27)
+    on left: 21 22, on right: 13 14
+
+
+state 0
+
+    0 $accept: . file $end
+
+    TOKEN_EVENT  shift, and go to state 1
+
+    file  go to state 2
+
+
+state 1
+
+    1 file: TOKEN_EVENT . TOKEN_SET TOKEN_ID events
+
+    TOKEN_SET  shift, and go to state 3
+
+
+state 2
+
+    0 $accept: file . $end
+
+    $end  shift, and go to state 4
+
+
+state 3
+
+    1 file: TOKEN_EVENT TOKEN_SET . TOKEN_ID events
+
+    TOKEN_ID  shift, and go to state 5
+
+
+state 4
+
+    0 $accept: file $end .
+
+    $default  accept
+
+
+state 5
+
+    1 file: TOKEN_EVENT TOKEN_SET TOKEN_ID . events
+
+    TOKEN_EVENT  shift, and go to state 6
+
+    $default  reduce using rule 3 (events)
+
+    events  go to state 7
+    event   go to state 8
+
+
+state 6
+
+    4 event: TOKEN_EVENT . TOKEN_ID TOKEN_LPAREN maybe_attrs TOKEN_RPAREN
+
+    TOKEN_ID  shift, and go to state 9
+
+
+state 7
+
+    1 file: TOKEN_EVENT TOKEN_SET TOKEN_ID events .
+
+    $default  reduce using rule 1 (file)
+
+
+state 8
+
+    2 events: event . events
+
+    TOKEN_EVENT  shift, and go to state 6
+
+    $default  reduce using rule 3 (events)
+
+    events  go to state 10
+    event   go to state 8
+
+
+state 9
+
+    4 event: TOKEN_EVENT TOKEN_ID . TOKEN_LPAREN maybe_attrs TOKEN_RPAREN
+
+    TOKEN_LPAREN  shift, and go to state 11
+
+
+state 10
+
+    2 events: event events .
+
+    $default  reduce using rule 2 (events)
+
+
+state 11
+
+    4 event: TOKEN_EVENT TOKEN_ID TOKEN_LPAREN . maybe_attrs TOKEN_RPAREN
+
+    TOKEN_ID  shift, and go to state 12
+
+    $default  reduce using rule 6 (maybe_attrs)
+
+    maybe_attrs  go to state 13
+    attrs        go to state 14
+    attr         go to state 15
+
+
+state 12
+
+    9 attr: TOKEN_ID . TOKEN_COLON type
+
+    TOKEN_COLON  shift, and go to state 16
+
+
+state 13
+
+    4 event: TOKEN_EVENT TOKEN_ID TOKEN_LPAREN maybe_attrs . TOKEN_RPAREN
+
+    TOKEN_RPAREN  shift, and go to state 17
+
+
+state 14
+
+    5 maybe_attrs: attrs .
+
+    $default  reduce using rule 5 (maybe_attrs)
+
+
+state 15
+
+    7 attrs: attr . TOKEN_COMMA attrs
+    8      | attr .
+
+    TOKEN_COMMA  shift, and go to state 18
+
+    $default  reduce using rule 8 (attrs)
+
+
+state 16
+
+    9 attr: TOKEN_ID TOKEN_COLON . type
+
+    TOKEN_FUNCTION  shift, and go to state 19
+    TOKEN_ID        shift, and go to state 20
+    TOKEN_SYM       shift, and go to state 21
+
+    type  go to state 22
+    term  go to state 23
+    sym   go to state 24
+
+
+state 17
+
+    4 event: TOKEN_EVENT TOKEN_ID TOKEN_LPAREN maybe_attrs TOKEN_RPAREN .
+
+    $default  reduce using rule 4 (event)
+
+
+state 18
+
+    7 attrs: attr TOKEN_COMMA . attrs
+
+    TOKEN_ID  shift, and go to state 12
+
+    attrs  go to state 25
+    attr   go to state 15
+
+
+state 19
+
+   11 type: TOKEN_FUNCTION .
+
+    $default  reduce using rule 11 (type)
+
+
+state 20
+
+   21 sym: TOKEN_ID .
+
+    $default  reduce using rule 21 (sym)
+
+
+state 21
+
+   22 sym: TOKEN_SYM .
+
+    $default  reduce using rule 22 (sym)
+
+
+state 22
+
+    9 attr: TOKEN_ID TOKEN_COLON type .
+
+    $default  reduce using rule 9 (attr)
+
+
+state 23
+
+   10 type: term .
+   12     | term . TOKEN_SYNTHESIZED TOKEN_BY flat_term
+
+    TOKEN_SYNTHESIZED  shift, and go to state 26
+
+    $default  reduce using rule 10 (type)
+
+
+state 24
+
+   13 term: sym .
+   14     | sym . TOKEN_LPAREN terms TOKEN_RPAREN
+
+    TOKEN_LPAREN  shift, and go to state 27
+
+    $default  reduce using rule 13 (term)
+
+
+state 25
+
+    7 attrs: attr TOKEN_COMMA attrs .
+
+    $default  reduce using rule 7 (attrs)
+
+
+state 26
+
+   12 type: term TOKEN_SYNTHESIZED . TOKEN_BY flat_term
+
+    TOKEN_BY  shift, and go to state 28
+
+
+state 27
+
+   14 term: sym TOKEN_LPAREN . terms TOKEN_RPAREN
+
+    TOKEN_ID   shift, and go to state 20
+    TOKEN_SYM  shift, and go to state 21
+
+    term   go to state 29
+    terms  go to state 30
+    sym    go to state 24
+
+
+state 28
+
+   12 type: term TOKEN_SYNTHESIZED TOKEN_BY . flat_term
+
+    TOKEN_ID  shift, and go to state 31
+
+    flat_term  go to state 32
+
+
+state 29
+
+   15 terms: term . TOKEN_COMMA terms
+   16      | term .
+
+    TOKEN_COMMA  shift, and go to state 33
+
+    $default  reduce using rule 16 (terms)
+
+
+state 30
+
+   14 term: sym TOKEN_LPAREN terms . TOKEN_RPAREN
+
+    TOKEN_RPAREN  shift, and go to state 34
+
+
+state 31
+
+   17 flat_term: TOKEN_ID .
+   18          | TOKEN_ID . TOKEN_LPAREN ids TOKEN_RPAREN
+
+    TOKEN_LPAREN  shift, and go to state 35
+
+    $default  reduce using rule 17 (flat_term)
+
+
+state 32
+
+   12 type: term TOKEN_SYNTHESIZED TOKEN_BY flat_term .
+
+    $default  reduce using rule 12 (type)
+
+
+state 33
+
+   15 terms: term TOKEN_COMMA . terms
+
+    TOKEN_ID   shift, and go to state 20
+    TOKEN_SYM  shift, and go to state 21
+
+    term   go to state 29
+    terms  go to state 36
+    sym    go to state 24
+
+
+state 34
+
+   14 term: sym TOKEN_LPAREN terms TOKEN_RPAREN .
+
+    $default  reduce using rule 14 (term)
+
+
+state 35
+
+   18 flat_term: TOKEN_ID TOKEN_LPAREN . ids TOKEN_RPAREN
+
+    TOKEN_ID  shift, and go to state 37
+
+    ids  go to state 38
+
+
+state 36
+
+   15 terms: term TOKEN_COMMA terms .
+
+    $default  reduce using rule 15 (terms)
+
+
+state 37
+
+   19 ids: TOKEN_ID . TOKEN_COMMA ids
+   20    | TOKEN_ID .
+
+    TOKEN_COMMA  shift, and go to state 39
+
+    $default  reduce using rule 20 (ids)
+
+
+state 38
+
+   18 flat_term: TOKEN_ID TOKEN_LPAREN ids . TOKEN_RPAREN
+
+    TOKEN_RPAREN  shift, and go to state 40
+
+
+state 39
+
+   19 ids: TOKEN_ID TOKEN_COMMA . ids
+
+    TOKEN_ID  shift, and go to state 37
+
+    ids  go to state 41
+
+
+state 40
+
+   18 flat_term: TOKEN_ID TOKEN_LPAREN ids TOKEN_RPAREN .
+
+    $default  reduce using rule 18 (flat_term)
+
+
+state 41
+
+   19 ids: TOKEN_ID TOKEN_COMMA ids .
+
+    $default  reduce using rule 19 (ids)

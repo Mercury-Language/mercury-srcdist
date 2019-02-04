@@ -1,0 +1,79 @@
+:- module (ll_backend.layout).
+:- interface.
+:- import_module assoc_list.
+:- import_module bool.
+:- import_module list.
+:- import_module map.
+:- import_module maybe.
+:- import_module (hlds.hlds_pred).
+:- import_module (hlds.hlds_rtti).
+:- import_module (libs.trace_params).
+:- import_module (ll_backend.llds).
+:- import_module (mdbcomp.prim_data).
+:- import_module (parse_tree.prog_data).
+:- type deep_excp_slots
+	--->	deep_excp_slots(((ll_backend.layout).top_csd) :: int, ((ll_backend.layout).middle_csd) :: int, ((ll_backend.layout).old_outermost) :: int).
+:- type event_set_layout_data
+	--->	event_set_layout_data(((parse_tree.prog_data).event_set_data), (map.map(int, ((ll_backend.llds).rval)))).
+:- type file_layout_data
+	--->	file_layout_data(((ll_backend.layout).file_name) :: string, ((ll_backend.layout).line_no_label_list) :: (assoc_list.assoc_list(int, ((ll_backend.layout).layout_name)))).
+:- type label_layout_details
+	--->	label_layout_details(((mdbcomp.prim_data).proc_label), int, ((ll_backend.layout).label_vars)).
+:- type label_var_info
+	--->	label_var_info(((ll_backend.layout).encoded_var_count) :: int, ((ll_backend.layout).locns_types) :: ((ll_backend.llds).rval), ((ll_backend.layout).var_nums) :: ((ll_backend.llds).rval), ((ll_backend.layout).type_params) :: ((ll_backend.llds).rval)).
+:- type label_vars
+	--->	label_has_var_info 
+	;	label_has_no_var_info .
+:- type layout_data
+	--->	label_layout_data(((ll_backend.layout).proc_label) :: ((mdbcomp.prim_data).proc_label), ((ll_backend.layout).label_num) :: int, ((ll_backend.layout).proc_layout_name) :: ((ll_backend.layout).layout_name), ((ll_backend.layout).maybe_port) :: (maybe.maybe(((mdbcomp.prim_data).trace_port))), ((ll_backend.layout).maybe_is_hidden) :: (maybe.maybe((bool.bool))), ((ll_backend.layout).label_num_in_module) :: int, ((ll_backend.layout).maybe_goal_path) :: (maybe.maybe(int)), ((ll_backend.layout).maybe_user_info) :: (maybe.maybe(((ll_backend.layout).user_event_data))), ((ll_backend.layout).maybe_var_info) :: (maybe.maybe(((ll_backend.layout).label_var_info))))
+	;	proc_layout_data(((ll_backend.layout).proc_layout_label) :: ((hlds.hlds_rtti).rtti_proc_label), ((ll_backend.layout).proc_layout_trav) :: ((ll_backend.layout).proc_layout_stack_traversal), ((ll_backend.layout).proc_layout_more) :: ((ll_backend.layout).maybe_proc_id_and_more))
+	;	module_layout_data(((ll_backend.layout).module_name) :: ((mdbcomp.prim_data).module_name), ((ll_backend.layout).string_table_size) :: int, ((ll_backend.layout).string_table) :: ((ll_backend.layout).string_with_0s), ((ll_backend.layout).proc_layout_names) :: (list.list(((ll_backend.layout).layout_name))), ((ll_backend.layout).file_layouts) :: (list.list(((ll_backend.layout).file_layout_data))), ((ll_backend.layout).trace_level) :: ((libs.trace_params).trace_level), ((ll_backend.layout).suppressed_events) :: int, ((ll_backend.layout).num_label_exec_count) :: int, ((ll_backend.layout).maybe_event_specs) :: (maybe.maybe(((ll_backend.layout).event_set_layout_data))))
+	;	closure_proc_id_data(((ll_backend.layout).caller_proc_label) :: ((mdbcomp.prim_data).proc_label), ((ll_backend.layout).caller_closure_seq_no) :: int, ((ll_backend.layout).closure_proc_label) :: ((mdbcomp.prim_data).proc_label), ((ll_backend.layout).closure_module_name) :: ((mdbcomp.prim_data).module_name), ((ll_backend.layout).closure_file_name) :: string, ((ll_backend.layout).closure_line_number) :: int, ((ll_backend.layout).closure_origin) :: ((hlds.hlds_pred).pred_origin), ((ll_backend.layout).closure_goal_path) :: string)
+	;	table_io_decl_data(((ll_backend.layout).table_io_decl_proc_ptr) :: ((hlds.hlds_rtti).rtti_proc_label), ((ll_backend.layout).table_io_decl_kind) :: ((ll_backend.layout).proc_layout_kind), ((ll_backend.layout).table_io_decl_num_ptis) :: int, ((ll_backend.layout).table_io_decl_ptis) :: ((ll_backend.llds).rval), ((ll_backend.layout).table_io_decl_type_params) :: ((ll_backend.llds).rval)).
+:- type layout_name
+	--->	label_layout(((mdbcomp.prim_data).proc_label), int, ((ll_backend.layout).label_vars))
+	;	user_event_layout(((mdbcomp.prim_data).proc_label), int)
+	;	user_event_attr_var_nums(((mdbcomp.prim_data).proc_label), int)
+	;	proc_layout(((hlds.hlds_rtti).rtti_proc_label), ((ll_backend.layout).proc_layout_kind))
+	;	proc_layout_exec_trace(((hlds.hlds_rtti).rtti_proc_label))
+	;	proc_layout_head_var_nums(((hlds.hlds_rtti).rtti_proc_label))
+	;	proc_layout_var_names(((hlds.hlds_rtti).rtti_proc_label))
+	;	proc_layout_body_bytecode(((hlds.hlds_rtti).rtti_proc_label))
+	;	table_io_decl(((hlds.hlds_rtti).rtti_proc_label))
+	;	closure_proc_id(((mdbcomp.prim_data).proc_label), int, ((mdbcomp.prim_data).proc_label))
+	;	file_layout(((mdbcomp.prim_data).module_name), int)
+	;	file_layout_line_number_vector(((mdbcomp.prim_data).module_name), int)
+	;	file_layout_label_layout_vector(((mdbcomp.prim_data).module_name), int)
+	;	module_layout_string_table(((mdbcomp.prim_data).module_name))
+	;	module_layout_file_vector(((mdbcomp.prim_data).module_name))
+	;	module_layout_proc_vector(((mdbcomp.prim_data).module_name))
+	;	module_layout_label_exec_count(((mdbcomp.prim_data).module_name), int)
+	;	module_layout_event_set_desc(((mdbcomp.prim_data).module_name))
+	;	module_layout_event_arg_names(((mdbcomp.prim_data).module_name), int)
+	;	module_layout_event_synth_attrs(((mdbcomp.prim_data).module_name), int)
+	;	module_layout_event_synth_attr_args(((mdbcomp.prim_data).module_name), int, int)
+	;	module_layout_event_synth_attr_order(((mdbcomp.prim_data).module_name), int, int)
+	;	module_layout_event_synth_order(((mdbcomp.prim_data).module_name), int)
+	;	module_layout_event_specs(((mdbcomp.prim_data).module_name))
+	;	module_layout(((mdbcomp.prim_data).module_name))
+	;	proc_static(((hlds.hlds_rtti).rtti_proc_label))
+	;	proc_static_call_sites(((hlds.hlds_rtti).rtti_proc_label)).
+:- type maybe_proc_id_and_more
+	--->	no_proc_id 
+	;	proc_id((maybe.maybe(((ll_backend.layout).proc_layout_proc_static))), (maybe.maybe(((ll_backend.layout).proc_layout_exec_trace)))).
+:- type proc_layout_exec_trace
+	--->	proc_layout_exec_trace(((ll_backend.layout).maybe_call_label_layout) :: (maybe.maybe(((ll_backend.layout).label_layout_details))), ((ll_backend.layout).proc_body_bytes) :: (list.list(int)), ((ll_backend.layout).maybe_table_info) :: (maybe.maybe(((ll_backend.llds).data_addr))), ((ll_backend.layout).head_var_nums) :: (list.list(int)), ((ll_backend.layout).var_names) :: (list.list(int)), ((ll_backend.layout).max_var_num) :: int, ((ll_backend.layout).max_r_num) :: int, ((ll_backend.layout).maybe_from_full_slot) :: (maybe.maybe(int)), ((ll_backend.layout).maybe_io_seq_slot) :: (maybe.maybe(int)), ((ll_backend.layout).maybe_trail_slot) :: (maybe.maybe(int)), ((ll_backend.layout).maybe_maxfr_slot) :: (maybe.maybe(int)), ((ll_backend.layout).eval_method) :: ((parse_tree.prog_data).eval_method), ((ll_backend.layout).maybe_call_table_slot) :: (maybe.maybe(int)), ((ll_backend.layout).eff_trace_level) :: ((libs.trace_params).trace_level), ((ll_backend.layout).exec_trace_flags) :: int).
+:- type proc_layout_kind
+	--->	proc_layout_traversal 
+	;	proc_layout_proc_id(((ll_backend.layout).proc_layout_user_or_uci)).
+:- type proc_layout_proc_static
+	--->	proc_layout_proc_static(((ll_backend.layout).hlds_proc_static) :: ((hlds.hlds_pred).hlds_proc_static), ((ll_backend.layout).deep_excp_slots) :: ((ll_backend.layout).deep_excp_slots)).
+:- type proc_layout_stack_traversal
+	--->	proc_layout_stack_traversal(((ll_backend.layout).entry_label) :: (maybe.maybe(((ll_backend.llds).label))), ((ll_backend.layout).succip_slot) :: (maybe.maybe(int)), ((ll_backend.layout).stack_slot_count) :: int, ((ll_backend.layout).detism) :: ((parse_tree.prog_data).determinism)).
+:- type proc_layout_user_or_uci
+	--->	user 
+	;	uci .
+:- type string_with_0s
+	--->	string_with_0s((list.list(string))).
+:- type user_event_data
+	--->	user_event_data(((ll_backend.layout).user_event_number) :: int, ((ll_backend.layout).user_event_locns) :: ((ll_backend.llds).rval), ((ll_backend.layout).user_event_var_nums) :: (list.list((maybe.maybe(int))))).

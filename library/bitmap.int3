@@ -1,0 +1,16 @@
+:- module bitmap.
+:- interface.
+:- import_module bool.
+:- type bit_index.
+:- type bitmap.
+:- type bitmap_error.
+:- type byte.
+:- type byte_index.
+:- type num_bits.
+:- type num_bytes.
+:- type word.
+:- inst (bitmap) == ground.
+:- inst (uniq_bitmap) == (bitmap.bitmap).
+:- mode (bitmap_di) == in((bitmap.uniq_bitmap)).
+:- mode (bitmap_ui) == in((bitmap.uniq_bitmap)).
+:- mode (bitmap_uo) == out((bitmap.uniq_bitmap)).

@@ -1,0 +1,40 @@
+:- module group.
+:- interface.
+:- import_module assoc_list.
+:- import_module list.
+:- import_module set.
+:- type key.
+:- type group(T).
+:- pred group((group.group(T)), T, (set.set(T))).
+:- mode group((builtin.in), (builtin.in), (builtin.out)) is det.
+:- func group((group.group(T)), T) = (set.set(T)).
+:- pred group_key((group.group(T)), T, (group.key)).
+:- mode group_key((builtin.in), (builtin.in), (builtin.out)) is det.
+:- func group_key((group.group(T)), T) = (group.key).
+:- pred group_keys((group.group(T)), (list.list((group.key)))).
+:- mode group_keys((builtin.in), (builtin.out)) is det.
+:- func group_keys((group.group(T))) = (list.list((group.key))).
+:- pred init((group.group(T))).
+:- mode init((builtin.out)) is det.
+:- func init = (group.group(T)).
+:- pred insert((group.group(T)), (set.set(T)), (group.group(T))).
+:- mode insert((builtin.in), (builtin.in), (builtin.out)) is det.
+:- func insert((group.group(T)), (set.set(T))) = (group.group(T)).
+:- pred key_group((group.group(T)), (group.key), (set.set(T))).
+:- mode key_group((builtin.in), (builtin.in), (builtin.out)) is det.
+:- func key_group((group.group(T)), (group.key)) = (set.set(T)).
+:- pred largest_group_key((group.group(T)), (group.key)).
+:- mode largest_group_key((builtin.in), (builtin.out)) is det.
+:- func largest_group_key((group.group(T))) = (group.key).
+:- pred remove_group((group.group(T)), (group.key), (set.set(T)), (group.group(T))).
+:- mode remove_group((builtin.in), (builtin.in), (builtin.out), (builtin.out)) is det.
+:- pred same_group((group.group(T)), T, T).
+:- mode same_group((builtin.in), (builtin.in), (builtin.in)) is semidet.
+:- pred sets_and_keys((group.group(T)), (assoc_list.assoc_list((set.set(T)), (group.key)))).
+:- mode sets_and_keys((builtin.in), (builtin.out)) is det.
+:- func sets_and_keys((group.group(T))) = (assoc_list.assoc_list((set.set(T)), (group.key))).
+:- pred to_set((group.group(T)), (set.set((set.set(T))))).
+:- mode to_set((builtin.in), (builtin.out)) is det.
+:- func to_set((group.group(T))) = (set.set((set.set(T)))).
+:- implementation.
+:- type key == int.

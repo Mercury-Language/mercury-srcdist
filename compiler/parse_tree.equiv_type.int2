@@ -1,0 +1,20 @@
+:- module (parse_tree.equiv_type).
+:- interface.
+:- import_module bool.
+:- import_module list.
+:- import_module map.
+:- import_module maybe.
+:- import_module recompilation.
+:- import_module (mdbcomp.prim_data).
+:- import_module (parse_tree.error_util).
+:- import_module (parse_tree.prog_data).
+:- import_module (parse_tree.prog_item).
+:- type equiv_type_info == (maybe.maybe(((parse_tree.equiv_type).expanded_item_set))).
+:- type eqv_map == (map.map(((parse_tree.prog_data).type_ctor), ((parse_tree.equiv_type).eqv_type_body))).
+:- type eqv_type_body
+	--->	eqv_type_body(((parse_tree.prog_data).tvarset), (list.list(((parse_tree.prog_data).type_param))), ((parse_tree.prog_data).mer_type)).
+:- type expanded_item_set.
+:- implementation.
+:- import_module pair.
+:- import_module set.
+:- type expanded_item_set == (pair.pair(((mdbcomp.prim_data).module_name), (set.set((recompilation.item_id))))).

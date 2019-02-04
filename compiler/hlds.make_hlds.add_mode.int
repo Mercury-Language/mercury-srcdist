@@ -1,0 +1,13 @@
+:- module ((hlds.make_hlds).add_mode).
+:- interface.
+:- import_module bool.
+:- import_module list.
+:- import_module (hlds.hlds_module).
+:- import_module (mdbcomp.prim_data).
+:- import_module (parse_tree.error_util).
+:- import_module (parse_tree.prog_data).
+:- import_module ((hlds.make_hlds).make_hlds_passes).
+:- pred module_add_inst_defn(((parse_tree.prog_data).inst_varset), ((mdbcomp.prim_data).sym_name), (list.list(((parse_tree.prog_data).inst_var))), ((parse_tree.prog_data).inst_defn), ((parse_tree.prog_data).condition), ((parse_tree.prog_data).prog_context), (((hlds.make_hlds).make_hlds_passes).item_status), ((hlds.hlds_module).module_info), ((hlds.hlds_module).module_info), (bool.bool), (list.list(((parse_tree.error_util).error_spec))), (list.list(((parse_tree.error_util).error_spec)))).
+:- mode module_add_inst_defn((builtin.in), (builtin.in), (builtin.in), (builtin.in), (builtin.in), (builtin.in), (builtin.in), (builtin.in), (builtin.out), (builtin.out), (builtin.in), (builtin.out)) is det.
+:- pred module_add_mode_defn(((parse_tree.prog_data).inst_varset), ((mdbcomp.prim_data).sym_name), (list.list(((parse_tree.prog_data).inst_var))), ((parse_tree.prog_data).mode_defn), ((parse_tree.prog_data).condition), ((parse_tree.prog_data).prog_context), (((hlds.make_hlds).make_hlds_passes).item_status), ((hlds.hlds_module).module_info), ((hlds.hlds_module).module_info), (bool.bool), (list.list(((parse_tree.error_util).error_spec))), (list.list(((parse_tree.error_util).error_spec)))).
+:- mode module_add_mode_defn((builtin.in), (builtin.in), (builtin.in), (builtin.in), (builtin.in), (builtin.in), (builtin.in), (builtin.in), (builtin.out), (builtin.out), (builtin.in), (builtin.out)) is det.

@@ -1,0 +1,30 @@
+:- module (mdb.browser_info).
+:- interface.
+:- import_module bool.
+:- import_module getopt.
+:- import_module io.
+:- import_module list.
+:- import_module maybe.
+:- import_module univ.
+:- import_module (mdb.browser_term).
+:- import_module (mdb.parse).
+:- import_module (mdb.term_rep).
+:- import_module (mdbcomp.program_representation).
+:- type browse_caller_type.
+:- type browser_db.
+:- type browser_info.
+:- type browser_mode_func.
+:- type browser_persistent_state.
+:- type browser_term_mode.
+:- type debugger.
+:- type dir.
+:- type format_params.
+:- type how_track_subterm.
+:- type param_cmd.
+:- type portray_format.
+:- type setting.
+:- type should_assert_invalid.
+:- type term_browser_response.
+:- type maybe_track_subterm(P).
+:- inst (dir_no_parent) == bound(child_name(ground) ; child_num(ground)).
+:- inst (simplified_dirs) == list_skel(((mdb.browser_info).dir_no_parent)).

@@ -1,0 +1,10 @@
+:- module (libs.polyhedron).
+:- interface.
+:- import_module io.
+:- import_module list.
+:- import_module map.
+:- import_module maybe.
+:- import_module set.
+:- import_module (libs.lp_rational).
+:- type polyhedra == (list.list(((libs.polyhedron).polyhedron))).
+:- type polyhedron.

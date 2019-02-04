@@ -1,0 +1,10 @@
+:- module (mdb.cterm).
+:- interface.
+:- import_module bool.
+:- type cargs.
+:- type cterm.
+:- implementation.
+:- pragma foreign_type(c, cargs, "MR_CArgs", [can_pass_as_mercury_type]).
+:- pragma foreign_type(c, cterm, "MR_CTerm", [can_pass_as_mercury_type]).
+:- pragma foreign_import_module("C", (mdb.cterm)).
+:- pragma foreign_import_module("C", (mdb.cterm)).

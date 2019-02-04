@@ -1,0 +1,9 @@
+:- module (ml_backend.ml_string_switch).
+:- interface.
+:- import_module (backend_libs.switch_util).
+:- import_module (hlds.code_model).
+:- import_module (ml_backend.ml_code_util).
+:- import_module (ml_backend.mlds).
+:- import_module (parse_tree.prog_data).
+:- pred generate(((backend_libs.switch_util).cases_list), ((parse_tree.prog_data).prog_var), ((hlds.code_model).code_model), ((parse_tree.prog_data).can_fail), ((parse_tree.prog_data).prog_context), ((ml_backend.mlds).mlds_defns), ((ml_backend.mlds).statements), ((ml_backend.ml_code_util).ml_gen_info), ((ml_backend.ml_code_util).ml_gen_info)).
+:- mode generate((builtin.in), (builtin.in), (builtin.in), (builtin.in), (builtin.in), (builtin.out), (builtin.out), (builtin.in), (builtin.out)) is det.

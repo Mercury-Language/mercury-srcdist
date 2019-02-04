@@ -1,0 +1,13 @@
+module(1, "string.m",
+	string,
+	{},
+	{builtin, assoc_list, char, deconstruct, list, maybe, ops, private_builtin},
+	{builtin, assoc_list, char, deconstruct, list, maybe, ops, array, bool, float, int, integer, maybe, pair, require, std_util, type_desc, univ, private_builtin, rtti_implementation, term_io},
+	{},
+	{},
+	{},
+	{"C"},
+	{"C" - string, "C#" - string, "Java" - string, "IL" - string, "C" - string},
+	contains_foreign_export,
+	no_main
+).

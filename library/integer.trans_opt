@@ -1,0 +1,103 @@
+:- module integer.
+:- pragma termination_info(integer.'<'((builtin.in), (builtin.in)), finite(0, [no, no]), cannot_loop).
+:- pragma termination_info(integer.'>'((builtin.in), (builtin.in)), finite(0, [no, no]), cannot_loop).
+:- pragma termination_info(integer.'=<'((builtin.in), (builtin.in)), finite(0, [no, no]), cannot_loop).
+:- pragma termination_info(integer.'>='((builtin.in), (builtin.in)), finite(0, [no, no]), cannot_loop).
+:- pragma termination_info(integer.integer((builtin.in)) = (builtin.out), infinite, can_loop).
+:- pragma termination_info(integer.to_string((builtin.in)) = (builtin.out), infinite, can_loop).
+:- pragma termination_info(integer.from_string((builtin.in)) = (builtin.out), infinite, can_loop).
+:- pragma termination_info(integer.det_from_string((builtin.in)) = (builtin.out), infinite, can_loop).
+:- pragma termination_info(integer.'+'((builtin.in)) = (builtin.out), finite(0, [yes, no]), cannot_loop).
+:- pragma termination_info(integer.'-'((builtin.in)) = (builtin.out), infinite, cannot_loop).
+:- pragma termination_info(integer.'+'((builtin.in), (builtin.in)) = (builtin.out), infinite, cannot_loop).
+:- pragma termination_info(integer.'-'((builtin.in), (builtin.in)) = (builtin.out), infinite, cannot_loop).
+:- pragma termination_info(integer.'*'((builtin.in), (builtin.in)) = (builtin.out), infinite, can_loop).
+:- pragma termination_info(integer.'//'((builtin.in), (builtin.in)) = (builtin.out), infinite, can_loop).
+:- pragma termination_info(integer.div((builtin.in), (builtin.in)) = (builtin.out), infinite, can_loop).
+:- pragma termination_info(integer.rem((builtin.in), (builtin.in)) = (builtin.out), infinite, can_loop).
+:- pragma termination_info(integer.mod((builtin.in), (builtin.in)) = (builtin.out), infinite, can_loop).
+:- pragma termination_info(integer.divide_with_rem((builtin.in), (builtin.in), (builtin.out), (builtin.out)), infinite, can_loop).
+:- pragma termination_info(integer.'<<'((builtin.in), (builtin.in)) = (builtin.out), infinite, can_loop).
+:- pragma termination_info(integer.'>>'((builtin.in), (builtin.in)) = (builtin.out), infinite, can_loop).
+:- pragma termination_info(integer.'/\\'((builtin.in), (builtin.in)) = (builtin.out), infinite, cannot_loop).
+:- pragma termination_info(integer.'\\/'((builtin.in), (builtin.in)) = (builtin.out), infinite, cannot_loop).
+:- pragma termination_info(integer.xor((builtin.in), (builtin.in)) = (builtin.out), infinite, cannot_loop).
+:- pragma termination_info(integer.'\\'((builtin.in)) = (builtin.out), infinite, cannot_loop).
+:- pragma termination_info(integer.abs((builtin.in)) = (builtin.out), infinite, cannot_loop).
+:- pragma termination_info(integer.pow((builtin.in), (builtin.in)) = (builtin.out), infinite, can_loop).
+:- pragma termination_info(integer.float((builtin.in)) = (builtin.out), finite(0, [no, no]), cannot_loop).
+:- pragma termination_info(integer.int((builtin.in)) = (builtin.out), finite(0, [no, no]), can_loop).
+:- pragma termination_info((integer.zero) = (builtin.out), finite(2, [no]), cannot_loop).
+:- pragma termination_info((integer.one) = (builtin.out), finite(4, [no]), cannot_loop).
+:- pragma termination_info((integer.base) = (builtin.out), finite(0, [no]), cannot_loop).
+:- pragma termination_info(integer.big_abs((builtin.in)) = (builtin.out), infinite, cannot_loop).
+:- pragma termination_info(integer.neg_list((builtin.in), (builtin.out)), infinite, cannot_loop).
+:- pragma termination_info(integer.big_isnegative((builtin.in)), finite(0, [no]), cannot_loop).
+:- pragma termination_info(integer.big_neg((builtin.in)) = (builtin.out), infinite, cannot_loop).
+:- pragma termination_info(integer.big_mul((builtin.in), (builtin.in)) = (builtin.out), infinite, can_loop).
+:- pragma termination_info(integer.big_sign((builtin.in), (builtin.in)) = (builtin.out), infinite, cannot_loop).
+:- pragma termination_info(integer.big_quot((builtin.in), (builtin.in)) = (builtin.out), infinite, can_loop).
+:- pragma termination_info(integer.big_rem((builtin.in), (builtin.in)) = (builtin.out), infinite, can_loop).
+:- pragma termination_info(integer.big_div((builtin.in), (builtin.in)) = (builtin.out), infinite, can_loop).
+:- pragma termination_info(integer.big_mod((builtin.in), (builtin.in)) = (builtin.out), infinite, can_loop).
+:- pragma termination_info(integer.big_cmp((builtin.in), (builtin.in)) = (builtin.out), finite(0, [no, no, no]), cannot_loop).
+:- pragma termination_info(integer.big_plus((builtin.in), (builtin.in)) = (builtin.out), infinite, cannot_loop).
+:- pragma termination_info(integer.int_to_integer((builtin.in)) = (builtin.out), infinite, can_loop).
+:- pragma termination_info(integer.signum((builtin.in)) = (builtin.out), finite(0, [no, no]), cannot_loop).
+:- pragma termination_info(integer.integer_signum((builtin.in)) = (builtin.out), finite(0, [no, no]), cannot_loop).
+:- pragma termination_info(integer.pos_mul((builtin.in), (builtin.in)) = (builtin.out), infinite, can_loop).
+:- pragma termination_info(integer.big_quot_rem((builtin.in), (builtin.in), (builtin.out), (builtin.out)), infinite, can_loop).
+:- pragma termination_info(integer.big_pow((builtin.in), (builtin.in)) = (builtin.out), infinite, can_loop).
+:- pragma termination_info(integer.float_list((builtin.in), (builtin.in), (builtin.in)) = (builtin.out), finite(0, [no, yes, no, no]), cannot_loop).
+:- pragma termination_info(integer.string_to_integer((builtin.in)) = (builtin.out), infinite, can_loop).
+:- pragma exceptions(predicate, (integer.(<)), 2, 0, will_not_throw).
+:- pragma exceptions(predicate, (integer.(>)), 2, 0, will_not_throw).
+:- pragma exceptions(predicate, (integer.(=<)), 2, 0, will_not_throw).
+:- pragma exceptions(predicate, (integer.(>=)), 2, 0, will_not_throw).
+:- pragma exceptions(function, (integer.integer), 2, 0, may_throw(user_exception)).
+:- pragma exceptions(function, (integer.to_string), 2, 0, may_throw(user_exception)).
+:- pragma exceptions(function, (integer.from_string), 2, 0, may_throw(user_exception)).
+:- pragma exceptions(function, (integer.det_from_string), 2, 0, may_throw(user_exception)).
+:- pragma exceptions(function, (integer.(+)), 2, 0, will_not_throw).
+:- pragma exceptions(function, (integer.(-)), 2, 0, will_not_throw).
+:- pragma exceptions(function, (integer.(+)), 3, 0, may_throw(user_exception)).
+:- pragma exceptions(function, (integer.(-)), 3, 0, may_throw(user_exception)).
+:- pragma exceptions(function, (integer.(*)), 3, 0, may_throw(user_exception)).
+:- pragma exceptions(function, (integer.(//)), 3, 0, may_throw(user_exception)).
+:- pragma exceptions(function, (integer.(div)), 3, 0, may_throw(user_exception)).
+:- pragma exceptions(function, (integer.(rem)), 3, 0, may_throw(user_exception)).
+:- pragma exceptions(function, (integer.(mod)), 3, 0, may_throw(user_exception)).
+:- pragma exceptions(predicate, (integer.divide_with_rem), 4, 0, may_throw(user_exception)).
+:- pragma exceptions(function, (integer.(<<)), 3, 0, may_throw(user_exception)).
+:- pragma exceptions(function, (integer.(>>)), 3, 0, may_throw(user_exception)).
+:- pragma exceptions(function, (integer.(/\)), 3, 0, may_throw(user_exception)).
+:- pragma exceptions(function, (integer.(\/)), 3, 0, may_throw(user_exception)).
+:- pragma exceptions(function, (integer.xor), 3, 0, may_throw(user_exception)).
+:- pragma exceptions(function, (integer.(\)), 2, 0, may_throw(user_exception)).
+:- pragma exceptions(function, (integer.abs), 2, 0, will_not_throw).
+:- pragma exceptions(function, (integer.pow), 3, 0, may_throw(user_exception)).
+:- pragma exceptions(function, (integer.float), 2, 0, will_not_throw).
+:- pragma exceptions(function, (integer.int), 2, 0, may_throw(user_exception)).
+:- pragma exceptions(function, (integer.zero), 1, 0, will_not_throw).
+:- pragma exceptions(function, (integer.one), 1, 0, will_not_throw).
+:- pragma exceptions(function, (integer.base), 1, 0, will_not_throw).
+:- pragma exceptions(function, (integer.big_abs), 2, 0, will_not_throw).
+:- pragma exceptions(predicate, (integer.neg_list), 2, 0, will_not_throw).
+:- pragma exceptions(predicate, (integer.big_isnegative), 1, 0, will_not_throw).
+:- pragma exceptions(function, (integer.big_neg), 2, 0, will_not_throw).
+:- pragma exceptions(function, (integer.big_mul), 3, 0, may_throw(user_exception)).
+:- pragma exceptions(function, (integer.big_sign), 3, 0, will_not_throw).
+:- pragma exceptions(function, (integer.big_quot), 3, 0, may_throw(user_exception)).
+:- pragma exceptions(function, (integer.big_rem), 3, 0, may_throw(user_exception)).
+:- pragma exceptions(function, (integer.big_div), 3, 0, may_throw(user_exception)).
+:- pragma exceptions(function, (integer.big_mod), 3, 0, may_throw(user_exception)).
+:- pragma exceptions(function, (integer.big_cmp), 3, 0, will_not_throw).
+:- pragma exceptions(function, (integer.big_plus), 3, 0, may_throw(user_exception)).
+:- pragma exceptions(function, (integer.int_to_integer), 2, 0, may_throw(user_exception)).
+:- pragma exceptions(function, (integer.signum), 2, 0, will_not_throw).
+:- pragma exceptions(function, (integer.integer_signum), 2, 0, will_not_throw).
+:- pragma exceptions(function, (integer.pos_mul), 3, 0, may_throw(user_exception)).
+:- pragma exceptions(predicate, (integer.big_quot_rem), 4, 0, may_throw(user_exception)).
+:- pragma exceptions(function, (integer.big_pow), 3, 0, may_throw(user_exception)).
+:- pragma exceptions(function, (integer.float_list), 4, 0, will_not_throw).
+:- pragma exceptions(function, (integer.string_to_integer), 2, 0, may_throw(user_exception)).

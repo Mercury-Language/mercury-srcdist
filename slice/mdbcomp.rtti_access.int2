@@ -1,0 +1,18 @@
+:- module (mdbcomp.rtti_access).
+:- interface.
+:- import_module list.
+:- import_module maybe.
+:- import_module (mdbcomp.prim_data).
+:- import_module (mdbcomp.program_representation).
+:- import_module (mdbcomp.trace_counts).
+:- type label_layout.
+:- type proc_layout.
+:- implementation.
+:- pragma foreign_type(c, label_layout, "const MR_LabelLayout *", [can_pass_as_mercury_type, stable]).
+:- pragma foreign_type(java, label_layout, "java.lang.Object").
+:- pragma foreign_type(c, proc_layout, "const MR_ProcLayout *", [can_pass_as_mercury_type, stable]).
+:- pragma foreign_type(java, proc_layout, "java.lang.Object").
+:- pragma foreign_import_module("C", (mdbcomp.rtti_access)).
+:- pragma foreign_import_module("Java", (mdbcomp.rtti_access)).
+:- pragma foreign_import_module("C", (mdbcomp.rtti_access)).
+:- pragma foreign_import_module("Java", (mdbcomp.rtti_access)).

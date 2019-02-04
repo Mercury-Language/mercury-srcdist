@@ -1,0 +1,46 @@
+:- module (mdb.declarative_edt).
+:- interface.
+:- import_module bool.
+:- import_module list.
+:- import_module map.
+:- import_module maybe.
+:- import_module pair.
+:- import_module unit.
+:- import_module (mdb.browser_info).
+:- import_module (mdb.declarative_debugger).
+:- import_module (mdb.declarative_oracle).
+:- import_module (mdbcomp.prim_data).
+:- import_module (mdbcomp.program_representation).
+:- import_module (mdbcomp.rtti_access).
+:- type find_origin_response
+	--->	not_found 
+	;	origin(((mdb.declarative_edt).suspect_id), ((mdbcomp.program_representation).arg_pos), ((mdbcomp.program_representation).term_path), ((mdb.declarative_edt).subterm_mode))
+	;	primitive_op(((mdb.declarative_edt).suspect_id), string, int, ((mdb.declarative_edt).primitive_op_type), (bool.bool))
+	;	require_explicit_subtree 
+	;	require_explicit_supertree .
+:- type maybe_found_descendent
+	--->	found(((mdb.declarative_edt).suspect_id))
+	;	not_found 
+	;	require_explicit_subtree(((mdb.declarative_edt).suspect_id)).
+:- type primitive_op_type
+	--->	primop_foreign_proc 
+	;	primop_builtin_call 
+	;	primop_untraced_call 
+	;	primop_unification .
+:- type subterm_mode
+	--->	subterm_in 
+	;	subterm_out .
+:- type suspect_id.
+:- type weighting_heuristic
+	--->	number_of_events 
+	;	suspicion .
+:- type search_space(T).
+:- type subterm_origin(T)
+	--->	origin_output(T, ((mdbcomp.program_representation).arg_pos), ((mdbcomp.program_representation).term_path))
+	;	origin_input(((mdbcomp.program_representation).arg_pos), ((mdbcomp.program_representation).term_path))
+	;	origin_primitive_op(string, int, ((mdb.declarative_edt).primitive_op_type))
+	;	origin_not_found 
+	;	origin_require_explicit_subtree .
+:- typeclass mercury_edt(S, T).
+:- implementation.
+:- type suspect_id == int.

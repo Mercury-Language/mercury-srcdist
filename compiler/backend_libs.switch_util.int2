@@ -1,0 +1,34 @@
+:- module (backend_libs.switch_util).
+:- interface.
+:- import_module assoc_list.
+:- import_module hlds.
+:- import_module list.
+:- import_module map.
+:- import_module pair.
+:- import_module parse_tree.
+:- import_module (backend_libs.rtti).
+:- import_module (hlds.hlds_data).
+:- import_module (hlds.hlds_goal).
+:- import_module (hlds.hlds_module).
+:- import_module (parse_tree.prog_data).
+:- import_module (parse_tree.prog_type).
+:- type cases_list == (list.list(((backend_libs.switch_util).extended_case))).
+:- type extended_case
+	--->	extended_case(int, ((hlds.hlds_data).cons_tag), ((parse_tree.prog_data).cons_id), ((hlds.hlds_goal).hlds_goal)).
+:- type hash_slot
+	--->	hash_slot(((backend_libs.switch_util).extended_case), int).
+:- type ptag_case
+	--->	ptag_case(((backend_libs.rtti).sectag_locn), ((backend_libs.switch_util).stag_goal_map)).
+:- type ptag_case_list == (assoc_list.assoc_list(((hlds.hlds_data).tag_bits), ((backend_libs.switch_util).ptag_case))).
+:- type ptag_case_map == (map.map(((hlds.hlds_data).tag_bits), ((backend_libs.switch_util).ptag_case))).
+:- type ptag_count_list == (assoc_list.assoc_list(((hlds.hlds_data).tag_bits), (pair.pair(((backend_libs.rtti).sectag_locn), int)))).
+:- type ptag_count_map == (map.map(((hlds.hlds_data).tag_bits), (pair.pair(((backend_libs.rtti).sectag_locn), int)))).
+:- type stag_goal
+	--->	stag_goal(((parse_tree.prog_data).cons_id), ((hlds.hlds_goal).hlds_goal)).
+:- type stag_goal_list == (assoc_list.assoc_list(int, ((backend_libs.switch_util).stag_goal))).
+:- type stag_goal_map == (map.map(int, ((backend_libs.switch_util).stag_goal))).
+:- type switch_category
+	--->	atomic_switch 
+	;	string_switch 
+	;	tag_switch 
+	;	other_switch .

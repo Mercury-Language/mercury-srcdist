@@ -1,0 +1,13 @@
+:- module svrelation.
+:- pragma termination_info(svrelation.add_element((builtin.in), (builtin.out), (builtin.in), (builtin.out)), infinite, can_loop).
+:- pragma termination_info(svrelation.add((builtin.in), (builtin.in), (builtin.in), (builtin.out)), infinite, can_loop).
+:- pragma termination_info(svrelation.add_values((builtin.in), (builtin.in), (builtin.in), (builtin.out)), infinite, can_loop).
+:- pragma termination_info(svrelation.add_assoc_list((builtin.in), (builtin.in), (builtin.out)), infinite, can_loop).
+:- pragma termination_info(svrelation.remove((builtin.in), (builtin.in), (builtin.in), (builtin.out)), infinite, can_loop).
+:- pragma termination_info(svrelation.remove_assoc_list((builtin.in), (builtin.in), (builtin.out)), infinite, can_loop).
+:- pragma exceptions(predicate, (svrelation.add_element), 4, 0, may_throw(user_exception)).
+:- pragma exceptions(predicate, (svrelation.add), 4, 0, may_throw(user_exception)).
+:- pragma exceptions(predicate, (svrelation.add_values), 4, 0, may_throw(user_exception)).
+:- pragma exceptions(predicate, (svrelation.add_assoc_list), 3, 0, may_throw(user_exception)).
+:- pragma exceptions(predicate, (svrelation.remove), 4, 0, may_throw(user_exception)).
+:- pragma exceptions(predicate, (svrelation.remove_assoc_list), 3, 0, may_throw(user_exception)).

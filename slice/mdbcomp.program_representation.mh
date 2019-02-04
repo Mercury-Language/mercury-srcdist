@@ -1,0 +1,36 @@
+/*
+** Automatically generated from `mdbcomp.program_representation.m'
+** by the Mercury compiler,
+** version rotd-2007-04-03, configured for i686-pc-linux-gnu.
+** Do not edit.
+*/
+#ifndef MDBCOMP__PROGRAM_REPRESENTATION_MH
+#define MDBCOMP__PROGRAM_REPRESENTATION_MH
+
+#ifdef __cplusplus
+extern "C" {
+#endif
+
+#ifdef MR_HIGHLEVEL_CODE
+#include "mercury.h"
+#else
+  #ifndef MERCURY_HDR_EXCLUDE_IMP_H
+  #include "mercury_imp.h"
+  #endif
+#endif
+#ifdef MR_DEEP_PROFILING
+#include "mercury_deep_profiling.h"
+#endif
+
+#ifndef MDBCOMP__PROGRAM_REPRESENTATION_DECL_GUARD
+#define MDBCOMP__PROGRAM_REPRESENTATION_DECL_GUARD
+
+#endif
+MR_Word ML_goal_rep_type(void);
+MR_Word ML_proc_rep_type(void);
+
+#ifdef __cplusplus
+}
+#endif
+
+#endif /* MDBCOMP__PROGRAM_REPRESENTATION_MH */

@@ -1,0 +1,31 @@
+:- module time.
+:- interface.
+:- import_module io.
+:- import_module maybe.
+:- type clock_t == int.
+:- type dst
+	--->	standard_time 
+	;	daylight_time .
+:- type time_error
+	--->	time_error(string).
+:- type time_t.
+:- type time_t_rep.
+:- type tm
+	--->	tm((time.tm_year) :: int, (time.tm_mon) :: int, (time.tm_mday) :: int, (time.tm_hour) :: int, (time.tm_min) :: int, (time.tm_sec) :: int, (time.tm_yday) :: int, (time.tm_wday) :: int, (time.tm_dst) :: (maybe.maybe((time.dst)))).
+:- type tms
+	--->	tms((time.clock_t), (time.clock_t), (time.clock_t), (time.clock_t)).
+:- implementation.
+:- type time_t_rep
+	--->	time_t_rep((builtin.c_pointer)).
+:- pragma foreign_type(il, time_t_rep, "valuetype [mscorlib]System.DateTime")
+	where	type_is_abstract_noncanonical.
+:- pragma foreign_type(c, time_t_rep, "time_t")
+	where	type_is_abstract_noncanonical.
+:- pragma foreign_type(java, time_t_rep, "java.util.Date")
+	where	type_is_abstract_noncanonical.
+:- pragma foreign_import_module("C", time).
+:- pragma foreign_import_module("Java", time).
+:- pragma foreign_import_module("IL", time).
+:- pragma foreign_import_module("C", time).
+:- pragma foreign_import_module("Java", time).
+:- pragma foreign_import_module("IL", time).

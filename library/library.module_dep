@@ -1,0 +1,13 @@
+module(1, "library.m",
+	library,
+	{},
+	{builtin, private_builtin},
+	{builtin, array, array2d, assoc_list, bag, benchmarking, bimap, bintree, bintree_set, bitmap, bool, bt_array, builtin, char, construct, cord, counter, deconstruct, dir, enum, eqvclass, exception, float, gc, getopt, getopt_io, graph, group, hash_table, injection, int, integer, io, lexer, list, map, math, maybe, multi_map, ops, pair, parser, pprint, pqueue, prolog, queue, random, rational, rbtree, relation, require, robdd, rtree, set, set_bbbtree, set_ctree234, set_ordlist, set_tree234, set_unordlist, solutions, sparse_bitset, stack, std_util, store, stream, string, svarray, svbag, svbimap, sveqvclass, svmap, svmulti_map, svqueue, svrelation, svset, svvarset, term, term_io, term_to_xml, thread, time, tree234, tree_bitset, type_desc, unit, univ, varset, version_array, version_array2d, version_bitmap, version_hash_table, version_store, version_types, mutvar, par_builtin, private_builtin, profiling_builtin, rtti_implementation, table_builtin, term_size_prof_builtin, private_builtin},
+	{},
+	{},
+	{},
+	{"C"},
+	{"C" - library, "C#" - library, "Java" - library, "C" - library},
+	no_foreign_export,
+	no_main
+).

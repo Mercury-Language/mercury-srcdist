@@ -1,0 +1,116 @@
+:- module injection.
+:- interface.
+:- import_module assoc_list.
+:- import_module list.
+:- import_module map.
+:- type injection(K, V).
+:- func apply_forward_map_to_list((injection.injection(K, V)), (list.list(K))) = (list.list(V)).
+:- pred apply_forward_map_to_list((injection.injection(K, V)), (list.list(K)), (list.list(V))).
+:- mode apply_forward_map_to_list((builtin.in), (builtin.in), (builtin.out)) is det.
+:- func apply_reverse_map_to_list((injection.injection(K, V)), (list.list(V))) = (list.list(K)).
+:- pred apply_reverse_map_to_list((injection.injection(K, V)), (list.list(V)), (list.list(K))).
+:- mode apply_reverse_map_to_list((builtin.in), (builtin.in), (builtin.out)) is det.
+:- pred contains_key((injection.injection(K, V)), K).
+:- mode contains_key((builtin.in), (builtin.in)) is semidet.
+:- pred contains_value((injection.injection(K, V)), V).
+:- mode contains_value((builtin.in), (builtin.in)) is semidet.
+:- func delete_key((injection.injection(K, V)), K) = (injection.injection(K, V)).
+:- pred delete_key(K, (injection.injection(K, V)), (injection.injection(K, V))).
+:- mode delete_key((builtin.in), (builtin.in), (builtin.out)) is det.
+:- func delete_keys((injection.injection(K, V)), (list.list(K))) = (injection.injection(K, V)).
+:- pred delete_keys((list.list(K)), (injection.injection(K, V)), (injection.injection(K, V))).
+:- mode delete_keys((builtin.in), (builtin.in), (builtin.out)) is det.
+:- func delete_value((injection.injection(K, V)), V) = (injection.injection(K, V)).
+:- pred delete_value(V, (injection.injection(K, V)), (injection.injection(K, V))).
+:- mode delete_value((builtin.in), (builtin.in), (builtin.out)) is det.
+:- func delete_values((injection.injection(K, V)), (list.list(V))) = (injection.injection(K, V)).
+:- pred delete_values((list.list(V)), (injection.injection(K, V)), (injection.injection(K, V))).
+:- mode delete_values((builtin.in), (builtin.in), (builtin.out)) is det.
+:- func det_insert((injection.injection(K, V)), K, V) = (injection.injection(K, V)).
+:- pred det_insert((injection.injection(K, V)), K, V, (injection.injection(K, V))).
+:- mode det_insert((builtin.in), (builtin.in), (builtin.in), (builtin.out)) is det.
+:- func det_insert_from_assoc_list((assoc_list.assoc_list(K, V)), (injection.injection(K, V))) = (injection.injection(K, V)).
+:- pred det_insert_from_assoc_list((assoc_list.assoc_list(K, V)), (injection.injection(K, V)), (injection.injection(K, V))).
+:- mode det_insert_from_assoc_list((builtin.in), (builtin.in), (builtin.out)) is det.
+:- func det_insert_from_corresponding_lists((list.list(K)), (list.list(V)), (injection.injection(K, V))) = (injection.injection(K, V)).
+:- pred det_insert_from_corresponding_lists((list.list(K)), (list.list(V)), (injection.injection(K, V)), (injection.injection(K, V))).
+:- mode det_insert_from_corresponding_lists((builtin.in), (builtin.in), (builtin.in), (builtin.out)) is det.
+:- func det_set((injection.injection(K, V)), K, V) = (injection.injection(K, V)).
+:- pred det_set((injection.injection(K, V)), K, V, (injection.injection(K, V))).
+:- mode det_set((builtin.in), (builtin.in), (builtin.in), (builtin.out)) is det.
+:- func det_set_from_assoc_list((assoc_list.assoc_list(K, V)), (injection.injection(K, V))) = (injection.injection(K, V)).
+:- pred det_set_from_assoc_list((assoc_list.assoc_list(K, V)), (injection.injection(K, V)), (injection.injection(K, V))).
+:- mode det_set_from_assoc_list((builtin.in), (builtin.in), (builtin.out)) is det.
+:- func det_set_from_corresponding_lists((list.list(K)), (list.list(V)), (injection.injection(K, V))) = (injection.injection(K, V)).
+:- pred det_set_from_corresponding_lists((list.list(K)), (list.list(V)), (injection.injection(K, V)), (injection.injection(K, V))).
+:- mode det_set_from_corresponding_lists((builtin.in), (builtin.in), (builtin.in), (builtin.out)) is det.
+:- func det_update((injection.injection(K, V)), K, V) = (injection.injection(K, V)).
+:- pred det_update((injection.injection(K, V)), K, V, (injection.injection(K, V))).
+:- mode det_update((builtin.in), (builtin.in), (builtin.in), (builtin.out)) is det.
+:- pred filter_map_keys(pred(V, K, L), (injection.injection(K, V)), (injection.injection(L, V))).
+:- mode filter_map_keys(builtin.in((pred((builtin.in), (builtin.in), (builtin.out)) is semidet)), (builtin.in), (builtin.out)) is det.
+:- func forward_map((injection.injection(K, V))) = (map.map(K, V)).
+:- pred forward_map((injection.injection(K, V)), (map.map(K, V))).
+:- mode forward_map((builtin.in), (builtin.out)) is det.
+:- func forward_search((injection.injection(K, V)), K) = V is semidet.
+:- pred forward_search((injection.injection(K, V)), K, V).
+:- mode forward_search((builtin.in), (builtin.in), (builtin.out)) is semidet.
+:- func init = (injection.injection(K, V)).
+:- pred init((injection.injection(K, V))).
+:- mode init((builtin.out)) is det.
+:- func insert((injection.injection(K, V)), K, V) = (injection.injection(K, V)) is semidet.
+:- pred insert((injection.injection(K, V)), K, V, (injection.injection(K, V))).
+:- mode insert((builtin.in), (builtin.in), (builtin.in), (builtin.out)) is semidet.
+:- func insert_from_assoc_list((assoc_list.assoc_list(K, V)), (injection.injection(K, V))) = (injection.injection(K, V)) is semidet.
+:- pred insert_from_assoc_list((assoc_list.assoc_list(K, V)), (injection.injection(K, V)), (injection.injection(K, V))).
+:- mode insert_from_assoc_list((builtin.in), (builtin.in), (builtin.out)) is semidet.
+:- func insert_from_corresponding_lists((list.list(K)), (list.list(V)), (injection.injection(K, V))) = (injection.injection(K, V)) is semidet.
+:- pred insert_from_corresponding_lists((list.list(K)), (list.list(V)), (injection.injection(K, V)), (injection.injection(K, V))).
+:- mode insert_from_corresponding_lists((builtin.in), (builtin.in), (builtin.in), (builtin.out)) is semidet.
+:- pred is_empty((injection.injection(K, V))).
+:- mode is_empty((builtin.in)) is semidet.
+:- func keys((injection.injection(K, V))) = (list.list(K)).
+:- pred keys((injection.injection(K, V)), (list.list(K))).
+:- mode keys((builtin.in), (builtin.out)) is det.
+:- func lookup((injection.injection(K, V)), K) = V.
+:- pred lookup((injection.injection(K, V)), K, V).
+:- mode lookup((builtin.in), (builtin.in), (builtin.out)) is det.
+:- func map_keys((func(V, K) = L), (injection.injection(K, V))) = (injection.injection(L, V)).
+:- pred map_keys(pred(V, K, L), (injection.injection(K, V)), (injection.injection(L, V))).
+:- mode map_keys(builtin.in((pred((builtin.in), (builtin.in), (builtin.out)) is det)), (builtin.in), (builtin.out)) is det.
+:- func map_values((func(K, V) = W), (injection.injection(K, V))) = (injection.injection(K, W)).
+:- pred map_values(pred(K, V, W), (injection.injection(K, V)), (injection.injection(K, W))).
+:- mode map_values(builtin.in((pred((builtin.in), (builtin.in), (builtin.out)) is det)), (builtin.in), (builtin.out)) is det.
+:- func merge((injection.injection(K, V)), (injection.injection(K, V))) = (injection.injection(K, V)).
+:- pred merge((injection.injection(K, V)), (injection.injection(K, V)), (injection.injection(K, V))).
+:- mode merge((builtin.in), (builtin.in), (builtin.out)) is det.
+:- func overlay((injection.injection(K, V)), (injection.injection(K, V))) = (injection.injection(K, V)).
+:- pred overlay((injection.injection(K, V)), (injection.injection(K, V)), (injection.injection(K, V))).
+:- mode overlay((builtin.in), (builtin.in), (builtin.out)) is det.
+:- func reverse_lookup((injection.injection(K, V)), V) = K.
+:- pred reverse_lookup((injection.injection(K, V)), K, V).
+:- mode reverse_lookup((builtin.in), (builtin.out), (builtin.in)) is det.
+:- func reverse_map((injection.injection(K, V))) = (map.map(V, K)).
+:- pred reverse_map((injection.injection(K, V)), (map.map(V, K))).
+:- mode reverse_map((builtin.in), (builtin.out)) is det.
+:- func reverse_search((injection.injection(K, V)), V) = K is semidet.
+:- pred reverse_search((injection.injection(K, V)), K, V).
+:- mode reverse_search((builtin.in), (builtin.out), (builtin.in)) is semidet.
+:- pred search((injection.injection(K, V)), K, V).
+:- mode search((builtin.in), (builtin.in), (builtin.out)) is cc_nondet.
+:- mode search((builtin.in), (builtin.out), (builtin.in)) is semidet.
+:- func set((injection.injection(K, V)), K, V) = (injection.injection(K, V)) is semidet.
+:- pred set((injection.injection(K, V)), K, V, (injection.injection(K, V))).
+:- mode set((builtin.in), (builtin.in), (builtin.in), (builtin.out)) is semidet.
+:- func set_from_assoc_list((assoc_list.assoc_list(K, V)), (injection.injection(K, V))) = (injection.injection(K, V)) is semidet.
+:- pred set_from_assoc_list((assoc_list.assoc_list(K, V)), (injection.injection(K, V)), (injection.injection(K, V))).
+:- mode set_from_assoc_list((builtin.in), (builtin.in), (builtin.out)) is semidet.
+:- func set_from_corresponding_lists((list.list(K)), (list.list(V)), (injection.injection(K, V))) = (injection.injection(K, V)) is semidet.
+:- pred set_from_corresponding_lists((list.list(K)), (list.list(V)), (injection.injection(K, V)), (injection.injection(K, V))).
+:- mode set_from_corresponding_lists((builtin.in), (builtin.in), (builtin.in), (builtin.out)) is semidet.
+:- func update((injection.injection(K, V)), K, V) = (injection.injection(K, V)) is semidet.
+:- pred update((injection.injection(K, V)), K, V, (injection.injection(K, V))).
+:- mode update((builtin.in), (builtin.in), (builtin.in), (builtin.out)) is semidet.
+:- func values((injection.injection(K, V))) = (list.list(V)).
+:- pred values((injection.injection(K, V)), (list.list(V))).
+:- mode values((builtin.in), (builtin.out)) is det.

@@ -1,0 +1,19 @@
+:- module par_builtin.
+:- interface.
+:- type future(T).
+:- impure pred evaluate_parallelism_condition is semidet.
+:- pred get((par_builtin.future(T)), T).
+:- mode get((builtin.in), (builtin.out)) is det.
+:- pred new_future((par_builtin.future(T))).
+:- mode new_future((builtin.uo)) is det.
+:- impure pred signal((par_builtin.future(T)), T).
+:- mode signal((builtin.in), (builtin.in)) is det.
+:- pred wait((par_builtin.future(T)), T).
+:- mode wait((builtin.in), (builtin.out)) is det.
+:- implementation.
+:- pragma foreign_type(il, future(T), "class [mscorlib]System.Object").
+:- pragma foreign_type(c, future(T), "MR_Future *", [can_pass_as_mercury_type]).
+:- pragma foreign_import_module("C", par_builtin).
+:- pragma foreign_import_module("IL", par_builtin).
+:- pragma foreign_import_module("C", par_builtin).
+:- pragma foreign_import_module("IL", par_builtin).

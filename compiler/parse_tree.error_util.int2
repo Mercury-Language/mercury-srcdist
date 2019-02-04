@@ -1,0 +1,64 @@
+:- module (parse_tree.error_util).
+:- interface.
+:- import_module bool.
+:- import_module io.
+:- import_module list.
+:- import_module maybe.
+:- import_module (libs.globals).
+:- import_module (libs.options).
+:- import_module (mdbcomp.prim_data).
+:- import_module (parse_tree.prog_data).
+:- type actual_severity
+	--->	actual_severity_error 
+	;	actual_severity_warning 
+	;	actual_severity_informational .
+:- type error_msg
+	--->	simple_msg(((parse_tree.error_util).simple_context) :: ((parse_tree.prog_data).prog_context), ((parse_tree.error_util).simple_components) :: (list.list(((parse_tree.error_util).error_msg_component))))
+	;	error_msg(((parse_tree.error_util).error_context) :: (maybe.maybe(((parse_tree.prog_data).prog_context))), ((parse_tree.error_util).error_treat_as_first) :: (bool.bool), ((parse_tree.error_util).error_extra_indent) :: int, ((parse_tree.error_util).error_components) :: (list.list(((parse_tree.error_util).error_msg_component)))).
+:- type error_msg_component
+	--->	always(((parse_tree.error_util).format_components))
+	;	option_is_set(((libs.options).option), (bool.bool), (list.list(((parse_tree.error_util).error_msg_component))))
+	;	verbose_only(((parse_tree.error_util).format_components))
+	;	verbose_and_nonverbose(((parse_tree.error_util).format_components), ((parse_tree.error_util).format_components))
+	;	print_anything(pred((io.io), (io.io))).
+:- type error_phase
+	--->	phase_read_files 
+	;	phase_term_to_parse_tree 
+	;	phase_parse_tree_to_hlds 
+	;	phase_expand_types 
+	;	phase_type_check 
+	;	phase_mode_check 
+	;	phase_purity_check 
+	;	phase_detism_check 
+	;	phase_simplify(((parse_tree.error_util).mode_report_control))
+	;	phase_dead_code 
+	;	phase_termination_analysis 
+	;	phase_accumulator_intro 
+	;	phase_interface_gen 
+	;	phase_code_gen .
+:- type error_severity
+	--->	severity_error 
+	;	severity_warning 
+	;	severity_informational 
+	;	severity_conditional(((parse_tree.error_util).cond_option) :: ((libs.options).option), ((parse_tree.error_util).cond_option_value) :: (bool.bool), ((parse_tree.error_util).cond_if_match) :: ((parse_tree.error_util).error_severity), ((parse_tree.error_util).cond_if_no_match) :: (maybe.maybe(((parse_tree.error_util).error_severity)))).
+:- type error_spec
+	--->	error_spec(((parse_tree.error_util).error_severity) :: ((parse_tree.error_util).error_severity), ((parse_tree.error_util).error_phase) :: ((parse_tree.error_util).error_phase), ((parse_tree.error_util).error_msgs) :: (list.list(((parse_tree.error_util).error_msg)))).
+:- type format_component
+	--->	fixed(string)
+	;	quote(string)
+	;	int_fixed(int)
+	;	prefix(string)
+	;	suffix(string)
+	;	words(string)
+	;	sym_name(((mdbcomp.prim_data).sym_name))
+	;	sym_name_and_arity(((parse_tree.prog_data).sym_name_and_arity))
+	;	top_ctor_of_type(((parse_tree.prog_data).mer_type))
+	;	p_or_f(((mdbcomp.prim_data).pred_or_func))
+	;	simple_call(((parse_tree.prog_data).simple_call_id))
+	;	nl 
+	;	nl_indent_delta(int)
+	;	blank_line .
+:- type format_components == (list.list(((parse_tree.error_util).format_component))).
+:- type mode_report_control
+	--->	report_in_any_mode 
+	;	report_only_if_in_all_modes .
