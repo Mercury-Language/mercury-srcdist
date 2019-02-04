@@ -1,0 +1,5 @@
+:- module erlang_rtti_implementation.
+:- interface.
+:- type type_ctor_info.
+:- type type_ctor_info_evaled.
+:- type type_info.
