@@ -1,0 +1,4 @@
+
+INIT mercury__mer_ssdb__init
+INIT mercury__ssdb__init
+REQUIRED_INIT mercury__ssdb__required_init

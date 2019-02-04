@@ -1,0 +1,4 @@
+:- module (parse_tree.java_names).
+:- interface.
+:- type csj_qual_kind
+	where	type_is_abstract_enum(1).
