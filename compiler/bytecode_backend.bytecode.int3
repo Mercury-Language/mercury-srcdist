@@ -1,0 +1,20 @@
+:- module (bytecode_backend.bytecode).
+:- interface.
+:- type byte_arg.
+:- type byte_code.
+:- type byte_cons_id.
+:- type byte_cons_tag.
+:- type byte_dir
+	where	type_is_abstract_enum(2).
+:- type byte_is_func.
+:- type byte_label_id.
+:- type byte_module_id.
+:- type byte_pred_id.
+:- type byte_proc_id.
+:- type byte_reg_type.
+:- type byte_temp.
+:- type byte_test_id
+	where	type_is_abstract_enum(3).
+:- type byte_tree.
+:- type byte_var.
+:- type byte_var_info.

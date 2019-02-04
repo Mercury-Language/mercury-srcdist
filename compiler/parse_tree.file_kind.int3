@@ -1,0 +1,9 @@
+:- module (parse_tree.file_kind).
+:- interface.
+:- type file_kind.
+:- type int_file_kind
+	where	type_is_abstract_enum(2).
+:- type int_or_opt_file_kind.
+:- type opt_file_kind
+	where	type_is_abstract_enum(1).
+:- type src_file_kind.

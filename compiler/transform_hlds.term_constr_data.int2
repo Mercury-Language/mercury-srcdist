@@ -1,0 +1,50 @@
+:- module (transform_hlds.term_constr_data).
+:- interface.
+:- import_module bool.
+:- import_module hlds.
+:- import_module io.
+:- import_module libs.
+:- import_module list.
+:- import_module map.
+:- import_module parse_tree.
+:- import_module set.
+:- import_module (hlds.hlds_module).
+:- import_module (hlds.hlds_pred).
+:- import_module (libs.lp_rational).
+:- import_module (libs.polyhedron).
+:- import_module (parse_tree.prog_data).
+:- import_module (transform_hlds.term_constr_errors).
+:- type abstract_goal
+    --->    term_disj(((transform_hlds.term_constr_data).disj_goals) :: list.list(transform_hlds.term_constr_data.abstract_goal), ((transform_hlds.term_constr_data).disj_size) :: int, ((transform_hlds.term_constr_data).disj_locals) :: transform_hlds.term_constr_data.local_vars, ((transform_hlds.term_constr_data).disj_nonlocals) :: transform_hlds.term_constr_data.nonlocal_vars)
+    ;       term_conj(((transform_hlds.term_constr_data).conj_goals) :: list.list(transform_hlds.term_constr_data.abstract_goal), ((transform_hlds.term_constr_data).conj_locals) :: transform_hlds.term_constr_data.local_vars, ((transform_hlds.term_constr_data).conj_nonlocals) :: transform_hlds.term_constr_data.nonlocal_vars)
+    ;       term_call(((transform_hlds.term_constr_data).call_ppid) :: transform_hlds.term_constr_data.abstract_ppid, ((transform_hlds.term_constr_data).call_context) :: parse_tree.prog_data.prog_context, ((transform_hlds.term_constr_data).call_vars) :: transform_hlds.term_constr_data.call_vars, ((transform_hlds.term_constr_data).call_zeros) :: transform_hlds.term_constr_data.zero_vars, ((transform_hlds.term_constr_data).call_locals) :: transform_hlds.term_constr_data.local_vars, ((transform_hlds.term_constr_data).call_nonlocals) :: transform_hlds.term_constr_data.nonlocal_vars, ((transform_hlds.term_constr_data).call_constrs) :: libs.polyhedron.polyhedron)
+    ;       term_primitive(((transform_hlds.term_constr_data).prim_constrs) :: libs.polyhedron.polyhedron, ((transform_hlds.term_constr_data).prim_locals) :: transform_hlds.term_constr_data.local_vars, ((transform_hlds.term_constr_data).prim_nonlocals) :: transform_hlds.term_constr_data.nonlocal_vars).
+:- type abstract_goals == list.list(transform_hlds.term_constr_data.abstract_goal).
+:- type abstract_ho_call
+    --->    ho_call(parse_tree.prog_data.prog_context).
+:- type abstract_ppid
+    --->    real(hlds.hlds_pred.pred_proc_id).
+:- type abstract_proc
+    --->    abstract_proc(((transform_hlds.term_constr_data).ap_ppid) :: transform_hlds.term_constr_data.abstract_ppid, ((transform_hlds.term_constr_data).ap_is_entry) :: bool.bool, ((transform_hlds.term_constr_data).ap_context) :: parse_tree.prog_data.prog_context, ((transform_hlds.term_constr_data).ap_head_vars) :: transform_hlds.term_constr_data.head_vars, ((transform_hlds.term_constr_data).ap_inputs) :: list.list(bool.bool), ((transform_hlds.term_constr_data).ap_body) :: transform_hlds.term_constr_data.abstract_goal, ((transform_hlds.term_constr_data).ap_size_var_map) :: transform_hlds.term_constr_data.size_var_map, ((transform_hlds.term_constr_data).ap_size_varset) :: transform_hlds.term_constr_data.size_varset, ((transform_hlds.term_constr_data).ap_zeros) :: transform_hlds.term_constr_data.zero_vars, ((transform_hlds.term_constr_data).ap_recursion) :: transform_hlds.term_constr_data.recursion_type, ((transform_hlds.term_constr_data).ap_num_calls) :: int, ((transform_hlds.term_constr_data).ap_ho_calls) :: list.list(transform_hlds.term_constr_data.abstract_ho_call)).
+:- type abstract_scc == set.set(transform_hlds.term_constr_data.abstract_proc).
+:- type arg_size_result
+    --->    arg_size_ok 
+    ;       arg_size_error(list.list(transform_hlds.term_constr_errors.term2_error)).
+:- type call_vars == transform_hlds.term_constr_data.size_vars.
+:- type head_vars == transform_hlds.term_constr_data.size_vars.
+:- type local_vars == transform_hlds.term_constr_data.size_vars.
+:- type nonlocal_vars == transform_hlds.term_constr_data.size_vars.
+:- type recursion_type
+    --->    none 
+    ;       direct_only 
+    ;       mutual_only 
+    ;       both .
+:- type size_term == libs.lp_rational.lp_term.
+:- type size_terms == libs.lp_rational.lp_terms.
+:- type size_var == libs.lp_rational.lp_var.
+:- type size_var_map == map.map(parse_tree.prog_data.prog_var, transform_hlds.term_constr_data.size_var).
+:- type size_vars == list.list(transform_hlds.term_constr_data.size_var).
+:- type size_varset == libs.lp_rational.lp_varset.
+:- type widening
+    --->    after_fixed_cutoff(int).
+:- type zero_vars == set.set(transform_hlds.term_constr_data.size_var).
