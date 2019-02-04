@@ -1,0 +1,7 @@
+:- module term_conversion.
+:- interface.
+:- type term_to_type_arg_context.
+:- type term_to_type_context.
+:- type term_to_type_error(T).
+:- type term_to_type_result(T).
+:- type term_to_type_result(T, U).
