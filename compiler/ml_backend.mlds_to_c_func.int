@@ -1,0 +1,20 @@
+:- module (ml_backend.mlds_to_c_func).
+:- interface.
+:- import_module io.
+:- import_module list.
+:- import_module parse_tree.
+:- import_module (ml_backend.mlds).
+:- import_module (ml_backend.mlds_to_c_type).
+:- import_module (ml_backend.mlds_to_c_util).
+:- import_module (ml_backend.mlds_to_target_util).
+:- import_module (parse_tree.prog_data).
+:- pred mlds_output_func_decl_ho(ml_backend.mlds_to_c_util.mlds_to_c_opts, ml_backend.mlds_to_target_util.indent, ml_backend.mlds.qual_function_name, parse_tree.prog_data.prog_context, string, ml_backend.mlds.mlds_func_params, ml_backend.mlds_to_c_type.output_type, ml_backend.mlds_to_c_type.output_type, io.io, io.io).
+:- mode mlds_output_func_decl_ho((builtin.in), (builtin.in), (builtin.in), (builtin.in), (builtin.in), (builtin.in), builtin.in(((ml_backend.mlds_to_c_type).output_type)), builtin.in(((ml_backend.mlds_to_c_type).output_type)), (builtin.di), (builtin.uo)) is det.
+:- pred mlds_output_function_decl_opts(ml_backend.mlds_to_c_util.mlds_to_c_opts, ml_backend.mlds_to_target_util.indent, ml_backend.mlds.mlds_module_name, ml_backend.mlds.mlds_function_defn, io.io, io.io).
+:- mode mlds_output_function_decl_opts((builtin.in), (builtin.in), (builtin.in), (builtin.in), (builtin.di), (builtin.uo)) is det.
+:- pred mlds_output_function_decls(ml_backend.mlds_to_c_util.mlds_to_c_opts, ml_backend.mlds_to_target_util.indent, ml_backend.mlds.mlds_module_name, list.list(ml_backend.mlds.mlds_function_defn), io.io, io.io).
+:- mode mlds_output_function_decls((builtin.in), (builtin.in), (builtin.in), (builtin.in), (builtin.di), (builtin.uo)) is det.
+:- pred mlds_output_function_defn(ml_backend.mlds_to_c_util.mlds_to_c_opts, ml_backend.mlds_to_target_util.indent, ml_backend.mlds.mlds_module_name, ml_backend.mlds.mlds_function_defn, io.io, io.io).
+:- mode mlds_output_function_defn((builtin.in), (builtin.in), (builtin.in), (builtin.in), (builtin.di), (builtin.uo)) is det.
+:- pred mlds_output_function_defns(ml_backend.mlds_to_c_util.mlds_to_c_opts, ml_backend.mlds_to_target_util.indent, ml_backend.mlds.mlds_module_name, list.list(ml_backend.mlds.mlds_function_defn), io.io, io.io).
+:- mode mlds_output_function_defns((builtin.in), (builtin.in), (builtin.in), (builtin.in), (builtin.di), (builtin.uo)) is det.
