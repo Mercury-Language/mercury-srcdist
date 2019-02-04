@@ -1,0 +1,19 @@
+:- module edit_seq.
+:- interface.
+:- import_module list.
+:- type diff(T)
+    --->    unchanged(T)
+    ;       deleted(T)
+    ;       inserted(T).
+:- type diff_seq(T) == list.list(edit_seq.diff(T)).
+:- type edit(T)
+    --->    delete(int)
+    ;       insert(int, T)
+    ;       replace(int, T).
+:- type edit_params
+    --->    edit_params((edit_seq.cost_of_delete) :: int, (edit_seq.cost_of_insert) :: int, (edit_seq.cost_of_replace) :: int).
+:- type edit_seq(T) == list.list(edit_seq.edit(T)).
+:- pred find_diff_seq(list.list(T), edit_seq.edit_seq(T), edit_seq.diff_seq(T)).
+:- mode find_diff_seq((builtin.in), (builtin.in), (builtin.out)) is det.
+:- pred find_shortest_edit_seq(edit_seq.edit_params, list.list(T), list.list(T), edit_seq.edit_seq(T)).
+:- mode find_shortest_edit_seq((builtin.in), (builtin.in), (builtin.in), (builtin.out)) is det.
