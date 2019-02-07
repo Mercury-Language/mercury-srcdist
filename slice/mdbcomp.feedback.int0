@@ -1,0 +1,72 @@
+:- module (mdbcomp.feedback).
+:- interface.
+:- include_module ((mdbcomp.feedback).automatic_parallelism).
+:- import_module assoc_list.
+:- import_module io.
+:- import_module maybe.
+:- import_module (mdbcomp.program_representation).
+:- import_module ((mdbcomp.feedback).automatic_parallelism).
+:- type feedback_info.
+:- type feedback_info_candidate_parallel_conjunctions
+    --->    feedback_info_candidate_parallel_conjunctions(((mdbcomp.feedback).cpc_parameters) :: mdbcomp.feedback.automatic_parallelism.candidate_par_conjunctions_params, ((mdbcomp.feedback).cpc_conjunctions) :: assoc_list.assoc_list(mdbcomp.program_representation.string_proc_label, mdbcomp.feedback.automatic_parallelism.candidate_par_conjunctions_proc)).
+:- type feedback_read_error
+    --->    fre_open_error(io.error)
+    ;       fre_read_error(io.error)
+    ;       fre_parse_error(((mdbcomp.feedback).fre_pe_message) :: string, ((mdbcomp.feedback).fre_pe_line_no) :: int)
+    ;       fre_unexpected_eof 
+    ;       fre_incorrect_version(string)
+    ;       fre_incorrect_first_line 
+    ;       fre_incorrect_profiled_program_name(((mdbcomp.feedback).fre_ippn_expected) :: string, ((mdbcomp.feedback).fre_ippn_got) :: string)
+    ;       fre_repeated_component(((mdbcomp.feedback).fre_component_name) :: string).
+:- type feedback_read_result(T) == maybe.maybe_error(T, mdbcomp.feedback.feedback_read_error).
+:- type feedback_write_result
+    --->    fwr_ok 
+    ;       fwr_open_error(io.error)
+    ;       fwr_write_error(io.error).
+:- pred add_feedback_candidate_parallel_conjunctions(string, mdbcomp.feedback.feedback_info_candidate_parallel_conjunctions, mdbcomp.feedback.feedback_info, mdbcomp.feedback.feedback_info).
+:- mode add_feedback_candidate_parallel_conjunctions((builtin.in), (builtin.in), (builtin.in), (builtin.out)) is det.
+:- pred feedback_read_error_message_string(string, mdbcomp.feedback.feedback_read_error, string).
+:- mode feedback_read_error_message_string((builtin.in), (builtin.in), (builtin.out)) is det.
+:- pred get_all_feedback_info(mdbcomp.feedback.feedback_info, string, maybe.maybe(mdbcomp.feedback.feedback_info_candidate_parallel_conjunctions)).
+:- mode get_all_feedback_info((builtin.in), (builtin.out), (builtin.out)) is det.
+:- func get_feedback_candidate_parallel_conjunctions(mdbcomp.feedback.feedback_info) = maybe.maybe(mdbcomp.feedback.feedback_info_candidate_parallel_conjunctions).
+:- func get_feedback_profiled_program_name(mdbcomp.feedback.feedback_info) = string.
+:- func init_feedback_info(string) = mdbcomp.feedback.feedback_info.
+:- pred read_feedback_file(string, maybe.maybe(string), mdbcomp.feedback.feedback_read_result(mdbcomp.feedback.feedback_info), io.io, io.io).
+:- mode read_feedback_file((builtin.in), (builtin.in), (builtin.out), (builtin.di), (builtin.uo)) is det.
+:- pred read_or_create_feedback_file(string, string, mdbcomp.feedback.feedback_read_result(mdbcomp.feedback.feedback_info), io.io, io.io).
+:- mode read_or_create_feedback_file((builtin.in), (builtin.in), (builtin.out), (builtin.di), (builtin.uo)) is det.
+:- pred replace_feedback_candidate_parallel_conjunctions(string, mdbcomp.feedback.feedback_info_candidate_parallel_conjunctions, mdbcomp.feedback.feedback_info, mdbcomp.feedback.feedback_info).
+:- mode replace_feedback_candidate_parallel_conjunctions((builtin.in), (builtin.in), (builtin.in), (builtin.out)) is det.
+:- pred write_feedback_file(string, mdbcomp.feedback.feedback_info, mdbcomp.feedback.feedback_write_result, io.io, io.io).
+:- mode write_feedback_file((builtin.in), (builtin.in), (builtin.out), (builtin.di), (builtin.uo)) is det.
+:- implementation.
+:- import_module assoc_list.
+:- import_module exception.
+:- import_module io.
+:- import_module list.
+:- import_module maybe.
+:- import_module require.
+:- import_module string.
+:- import_module unit.
+:- import_module univ.
+:- import_module (mdbcomp.program_representation).
+:- import_module ((mdbcomp.feedback).automatic_parallelism).
+:- type feedback_component_wrapper
+    --->    fcw_candidate_parallel_conjunctions(mdbcomp.feedback.feedback_info_candidate_parallel_conjunctions).
+:- type feedback_info
+    --->    feedback_info(((mdbcomp.feedback).fi_profiled_program_name) :: string, ((mdbcomp.feedback).fi_maybe_candidate_parallel_conjunctions) :: maybe.maybe(mdbcomp.feedback.feedback_info_candidate_parallel_conjunctions)).
+:- pred actually_write_feedback_file(io.output_stream, mdbcomp.feedback.feedback_info, unit.unit, io.io, io.io).
+:- mode actually_write_feedback_file((builtin.in), (builtin.in), (builtin.out), (builtin.di), (builtin.uo)) is det.
+:- pred add_feedback_components(list.list(mdbcomp.feedback.feedback_component_wrapper), mdbcomp.feedback.feedback_info, mdbcomp.feedback.feedback_read_result(mdbcomp.feedback.feedback_info)).
+:- mode add_feedback_components((builtin.in), (builtin.in), (builtin.out)) is det.
+:- func feedback_first_line = string.
+:- func feedback_version = string.
+:- pred maybe_read(pred(A, mdbcomp.feedback.feedback_read_result(B), io.io, io.io), mdbcomp.feedback.feedback_read_result(A), mdbcomp.feedback.feedback_read_result(B), io.io, io.io).
+:- mode maybe_read(builtin.in((pred((builtin.in), (builtin.out), (builtin.di), (builtin.uo)) is det)), (builtin.in), (builtin.out), (builtin.di), (builtin.uo)) is det.
+:- pred read_all_feedback_data(io.input_stream, string, mdbcomp.feedback.feedback_read_result(mdbcomp.feedback.feedback_info), io.io, io.io).
+:- mode read_all_feedback_data((builtin.in), (builtin.in), (builtin.out), (builtin.di), (builtin.uo)) is det.
+:- pred read_check_line(string, mdbcomp.feedback.feedback_read_error, io.input_stream, unit.unit, mdbcomp.feedback.feedback_read_result(unit.unit), io.io, io.io).
+:- mode read_check_line((builtin.in), (builtin.in), (builtin.in), (builtin.in), (builtin.out), (builtin.di), (builtin.uo)) is det.
+:- pred read_profiled_program_name(maybe.maybe(string), io.input_stream, unit.unit, mdbcomp.feedback.feedback_read_result(string), io.io, io.io).
+:- mode read_profiled_program_name((builtin.in), (builtin.in), (builtin.in), (builtin.out), (builtin.di), (builtin.uo)) is det.

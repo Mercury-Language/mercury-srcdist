@@ -1,0 +1,13 @@
+:- module measurements.
+:- interface.
+:- type cs_cost_csq.
+:- type goal_cost_csq.
+:- type inherit_prof_info.
+:- type is_active
+	where	type_is_abstract_enum(1).
+:- type own_prof_info.
+:- type parallel_exec_metrics_incomplete.
+:- type parallelism_amount.
+:- type proc_cost_csq.
+:- type recursion_depth.
+:- type static_coverage_info.
