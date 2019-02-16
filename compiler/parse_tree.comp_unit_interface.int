@@ -1,0 +1,26 @@
+:- module (parse_tree.comp_unit_interface).
+:- interface.
+:- import_module libs.
+:- import_module list.
+:- import_module mdbcomp.
+:- import_module (libs.globals).
+:- import_module (mdbcomp.sym_name).
+:- import_module (parse_tree.error_util).
+:- import_module (parse_tree.prog_data).
+:- import_module (parse_tree.prog_item).
+:- type maybe_include_impl_types
+    --->    dont_include_impl_types 
+    ;       include_impl_types .
+:- pred add_needed_foreign_import_module_items_to_item_blocks(mdbcomp.sym_name.module_name, MS, list.list(parse_tree.prog_item.item_block(MS)), list.list(parse_tree.prog_item.item_block(MS))).
+:- mode add_needed_foreign_import_module_items_to_item_blocks((builtin.in), (builtin.in), (builtin.in), (builtin.out)) is det.
+:- func clause_in_interface_warning(string, parse_tree.prog_data.prog_context) = parse_tree.error_util.error_spec.
+:- pred generate_interfaces_int1_int2(libs.globals.globals, parse_tree.prog_item.aug_compilation_unit, parse_tree.prog_item.parse_tree_int, parse_tree.prog_item.parse_tree_int, list.list(parse_tree.error_util.error_spec)).
+:- mode generate_interfaces_int1_int2((builtin.in), (builtin.in), (builtin.out), (builtin.out), (builtin.out)) is det.
+:- pred generate_short_interface_int3(libs.globals.globals, parse_tree.prog_item.raw_compilation_unit, parse_tree.prog_item.parse_tree_int, list.list(parse_tree.error_util.error_spec)).
+:- mode generate_short_interface_int3((builtin.in), (builtin.in), (builtin.out), (builtin.out)) is det.
+:- pred get_foreign_self_imports_from_item_blocks(list.list(parse_tree.prog_item.item_block(MS)), list.list(libs.globals.foreign_language)).
+:- mode get_foreign_self_imports_from_item_blocks((builtin.in), (builtin.out)) is det.
+:- pred get_int_and_impl(parse_tree.comp_unit_interface.maybe_include_impl_types, parse_tree.prog_item.raw_compilation_unit, list.list(parse_tree.prog_item.raw_item_block), list.list(parse_tree.prog_item.raw_item_block)).
+:- mode get_int_and_impl((builtin.in), (builtin.in), (builtin.out), (builtin.out)) is det.
+:- pred get_interface(parse_tree.comp_unit_interface.maybe_include_impl_types, parse_tree.prog_item.raw_compilation_unit, parse_tree.prog_item.raw_compilation_unit).
+:- mode get_interface((builtin.in), (builtin.in), (builtin.out)) is det.

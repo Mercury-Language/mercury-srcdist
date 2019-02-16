@@ -1,0 +1,13 @@
+module(1, "map.m",
+	map,
+	{},
+	{assoc_list, builtin, list, maybe, private_builtin, set, term, tree234},
+	{assoc_list, builtin, int, list, maybe, pair, private_builtin, require, set, term, tree234},
+	{},
+	{},
+	{},
+	{},
+	{},
+	no_foreign_export,
+	no_main
+).
