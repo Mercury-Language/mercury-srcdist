@@ -1,0 +1,3 @@
+:- module (check_hlds.prop_mode_constraints).
+:- interface.
+:- type pred_constraints_map.
