@@ -1,0 +1,5 @@
+:- module ((check_hlds.simplify).simplify_tasks).
+:- interface.
+:- type simplify_task
+	where	type_is_abstract_enum(4).
+:- type simplify_tasks.

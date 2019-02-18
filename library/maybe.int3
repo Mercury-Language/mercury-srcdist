@@ -1,0 +1,14 @@
+:- module maybe.
+:- interface.
+:- import_module list.
+:- type maybe(T).
+:- type maybe_error.
+:- type maybe_error(T).
+:- type maybe_error(T, E).
+:- type maybe_errors(T).
+:- type maybe_errors(T, E).
+:- inst (maybe(I)) for maybe.maybe/1 == bound(no ; yes(I)).
+:- inst (maybe_error(I)) for maybe.maybe_error/2 == bound(error(ground) ; ok(I)).
+:- inst (maybe_error_ok(I)) for maybe.maybe_error/2 == bound(ok(I)).
+:- inst (maybe_errors_ok(I)) for maybe.maybe_errors/2 == bound(ok(I)).
+:- inst (maybe_yes(I)) for maybe.maybe/1 == bound(yes(I)).

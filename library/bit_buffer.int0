@@ -1,0 +1,67 @@
+:- module bit_buffer.
+:- interface.
+:- include_module (bit_buffer.read).
+:- include_module (bit_buffer.write).
+:- import_module bitmap.
+:- import_module stream.
+:- type error_state
+    --->    error_state .
+:- type error_stream
+    --->    error_stream .
+:- type error_stream_error
+    --->    error_stream_error .
+:- instance (stream.bulk_reader(bit_buffer.error_stream, bitmap.byte_index, bitmap.bitmap, bit_buffer.error_state, bit_buffer.error_stream_error)).
+:- instance (stream.error(bit_buffer.error_stream_error)).
+:- instance (stream.input(bit_buffer.error_stream, bit_buffer.error_state)).
+:- instance (stream.output(bit_buffer.error_stream, bit_buffer.error_state)).
+:- instance (stream.stream(bit_buffer.error_stream, bit_buffer.error_state)).
+:- instance (stream.writer(bit_buffer.error_stream, bitmap.slice, bit_buffer.error_state)).
+:- pragma foreign_import_module("C", bit_buffer).
+:- implementation.
+:- import_module bitmap.
+:- import_module bool.
+:- import_module exception.
+:- import_module int.
+:- import_module list.
+:- import_module stream.
+:- type bit_buffer(Stream, State) == bit_buffer.bit_buffer(Stream, State, {}).
+:- type bit_buffer(Stream, State, Error)
+    --->    bit_buffer((bit_buffer.mer_bitmap) :: bitmap.bitmap, (bit_buffer.mer_pos) :: bitmap.bit_index, (bit_buffer.mer_size) :: bitmap.num_bits, (bit_buffer.mer_use_stream) :: bool.bool, (bit_buffer.mer_stream) :: Stream, (bit_buffer.mer_state) :: State, (bit_buffer.mer_filled_bitmaps) :: list.list(bitmap.bitmap), (bit_buffer.mer_read_status) :: stream.res(Error)).
+:- pragma foreign_type(c, bit_buffer(Stream, State, Error), "ML_BitBufferPtr", [can_pass_as_mercury_type]).
+:- mode (bit_buffer_di) == (builtin.in).
+:- mode (bit_buffer_ui) == (builtin.in).
+:- mode (bit_buffer_uo) == (builtin.out).
+:- func bitmap(bit_buffer.bit_buffer(V_1, V_2, V_3)) = bitmap.bitmap.
+:- mode bitmap((bit_buffer.bit_buffer_ui)) = (bitmap.bitmap_uo) is det.
+:- func filled_bitmaps(bit_buffer.bit_buffer(V_1, V_2, V_3)) = list.list(bitmap.bitmap).
+:- mode filled_bitmaps((bit_buffer.bit_buffer_ui)) = (builtin.out) is det.
+:- func new_buffer(bitmap.bitmap, bitmap.bit_index, bitmap.num_bits, bool.bool, Stream, State) = bit_buffer.bit_buffer(Stream, State, Error).
+:- func new_buffer_2(bitmap.bitmap, bitmap.num_bits, bitmap.bit_index, bool.bool, Stream, State, stream.res(Error)) = bit_buffer.bit_buffer(Stream, State, Error).
+:- func pos(bit_buffer.bit_buffer(V_1, V_2, V_3)) = int.
+:- mode pos((bit_buffer.bit_buffer_ui)) = (builtin.out) is det.
+:- func read_status(bit_buffer.bit_buffer(V_1, V_2, Error)) = stream.res(Error).
+:- mode read_status((bit_buffer.bit_buffer_ui)) = (builtin.out) is det.
+:- pred set_all(bitmap.bitmap, bitmap.bit_index, bitmap.num_bits, State, list.list(bitmap.bitmap), bit_buffer.bit_buffer(Stream, State, Error), bit_buffer.bit_buffer(Stream, State, Error)).
+:- mode set_all((bitmap.bitmap_di), (builtin.in), (builtin.in), (builtin.di), (builtin.in), (bit_buffer.bit_buffer_di), (bit_buffer.bit_buffer_uo)) is det.
+:- pred set_bitmap(bitmap.bitmap, bitmap.bit_index, bit_buffer.bit_buffer(Stream, State, Error), bit_buffer.bit_buffer(Stream, State, Error)).
+:- mode set_bitmap((bitmap.bitmap_di), (builtin.in), (bit_buffer.bit_buffer_di), (bit_buffer.bit_buffer_uo)) is det.
+:- pred set_read_status(stream.res(Error), bit_buffer.bit_buffer(Stream, State, Error), bit_buffer.bit_buffer(Stream, State, Error)).
+:- mode set_read_status((builtin.in), (bit_buffer.bit_buffer_di), (bit_buffer.bit_buffer_uo)) is det.
+:- pred set_state(State, bit_buffer.bit_buffer(Stream, State, Error), bit_buffer.bit_buffer(Stream, State, Error)).
+:- mode set_state((builtin.di), (bit_buffer.bit_buffer_di), (bit_buffer.bit_buffer_uo)) is det.
+:- pred set_use_stream(bool.bool, bit_buffer.bit_buffer(Stream, State, Error), bit_buffer.bit_buffer(Stream, State, Error)).
+:- mode set_use_stream((builtin.in), (bit_buffer.bit_buffer_di), (bit_buffer.bit_buffer_uo)) is det.
+:- func size(bit_buffer.bit_buffer(V_1, V_2, V_3)) = int.
+:- mode size((bit_buffer.bit_buffer_ui)) = (builtin.out) is det.
+:- func state(bit_buffer.bit_buffer(V_1, State, V_3)) = State.
+:- mode state((bit_buffer.bit_buffer_ui)) = (builtin.uo) is det.
+:- func stream(bit_buffer.bit_buffer(Stream, V_2, V_3)) = Stream.
+:- mode stream((bit_buffer.bit_buffer_ui)) = (builtin.out) is det.
+:- func use_stream(bit_buffer.bit_buffer(V_1, V_2, V_3)) = bool.bool.
+:- mode use_stream((bit_buffer.bit_buffer_ui)) = (builtin.out) is det.
+:- instance (stream.bulk_reader(bit_buffer.error_stream, bitmap.byte_index, bitmap.bitmap, bit_buffer.error_state, bit_buffer.error_stream_error)).
+:- instance (stream.error(bit_buffer.error_stream_error)).
+:- instance (stream.input(bit_buffer.error_stream, bit_buffer.error_state)).
+:- instance (stream.output(bit_buffer.error_stream, bit_buffer.error_state)).
+:- instance (stream.stream(bit_buffer.error_stream, bit_buffer.error_state)).
+:- instance (stream.writer(bit_buffer.error_stream, bitmap.slice, bit_buffer.error_state)).
