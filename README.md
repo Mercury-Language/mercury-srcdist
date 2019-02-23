@@ -13,5 +13,24 @@ then click on the ellipsis (...) to expand the list of tags.
 
 To keep a clone up-to-date, please use `git fetch --tags`.
 
+Building from a git checkout
+----------------------------
+
+When performing a checkout, git will set the current time as the timestamp
+on every file it modifies, but only those. This can confuse the Mercury
+build system, which uses the timestamp on certain files to indicate when
+another file was last meaningfully changed. The simplest solution is to
+ensure that all files have the same modification time before starting
+the build process, e.g.
+
+    git reset --hard rotd-2019-02-18
+    git clean -fdx .
+    find . -type f | xargs touch -r VERSION
+    ./configure ...
+    make install ...
+
+Extras
+------
+
 Prior to about 2013, the "extras" directory was distributed as separate
 "mercury-extras" packages; those packages have not been imported.
