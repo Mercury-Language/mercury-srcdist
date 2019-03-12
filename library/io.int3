@@ -1,0 +1,99 @@
+:- module io.
+:- interface.
+:- import_module array.
+:- import_module bitmap.
+:- import_module bool.
+:- import_module char.
+:- import_module deconstruct.
+:- import_module list.
+:- import_module map.
+:- import_module maybe.
+:- import_module ops.
+:- import_module stream.
+:- import_module string.
+:- import_module time.
+:- import_module univ.
+:- type access_type
+	where	type_is_abstract_enum(2).
+:- type binary_input_stream.
+:- type binary_output_stream.
+:- type error.
+:- type file_id.
+:- type file_type
+	where	type_is_abstract_enum(4).
+:- type input_stream.
+:- type io.
+:- type maybe_incomplete_result(T).
+:- type maybe_partial_res(T).
+:- type maybe_stream_info.
+:- type output_stream.
+:- type posn.
+:- type read_result(T).
+:- type res.
+:- type res(T).
+:- type result.
+:- type result(T).
+:- type state.
+:- type stream_content
+	where	type_is_abstract_enum(2).
+:- type stream_db.
+:- type stream_id.
+:- type stream_info.
+:- type stream_mode
+	where	type_is_abstract_enum(2).
+:- type stream_source.
+:- type system_error.
+:- pragma foreign_type(c, system_error, "MR_Integer").
+:- pragma foreign_type(csharp, system_error, "System.Exception").
+:- pragma foreign_type(java, system_error, "java.lang.Exception").
+:- pragma foreign_type(erlang, system_error, "").
+:- type system_result.
+:- type text_input_stream.
+:- type text_output_stream.
+:- type whence
+	where	type_is_abstract_enum(2).
+:- inst (maybe_partial_res(T)) for io.maybe_partial_res/1 == bound(error(T, ground) ; ok(T)).
+:- instance (stream.bulk_reader(io.binary_input_stream, int, bitmap, io.io, io.error)).
+:- instance (stream.error(io.error)).
+:- instance (stream.input(io.binary_input_stream, io.io)).
+:- instance (stream.input(io.text_input_stream, io.io)).
+:- instance (stream.line_oriented(io.text_input_stream, io.io)).
+:- instance (stream.line_oriented(io.text_output_stream, io.io)).
+:- instance (stream.output(io.binary_output_stream, io.io)).
+:- instance (stream.output(io.text_output_stream, io.io)).
+:- instance (stream.putback(io.binary_input_stream, int, io.io, io.error)).
+:- instance (stream.putback(io.binary_input_stream, int8, io.io, io.error)).
+:- instance (stream.putback(io.binary_input_stream, uint8, io.io, io.error)).
+:- instance (stream.putback(io.text_input_stream, char, io.io, io.error)).
+:- instance (stream.reader(io.binary_input_stream, int, io.io, io.error)).
+:- instance (stream.reader(io.binary_input_stream, int8, io.io, io.error)).
+:- instance (stream.reader(io.binary_input_stream, uint8, io.io, io.error)).
+:- instance (stream.reader(io.text_input_stream, char, io.io, io.error)).
+:- instance (stream.reader(io.text_input_stream, line, io.io, io.error)).
+:- instance (stream.reader(io.text_input_stream, text_file, io.io, io.error)).
+:- instance (stream.seekable(io.binary_input_stream, io.io)).
+:- instance (stream.seekable(io.binary_output_stream, io.io)).
+:- instance (stream.stream(io.binary_input_stream, io.io)).
+:- instance (stream.stream(io.binary_output_stream, io.io)).
+:- instance (stream.stream(io.text_input_stream, io.io)).
+:- instance (stream.stream(io.text_output_stream, io.io)).
+:- instance (stream.writer(io.binary_output_stream, byte, io.io)).
+:- instance (stream.writer(io.binary_output_stream, bitmap.slice, io.io)).
+:- instance (stream.writer(io.binary_output_stream, int8, io.io)).
+:- instance (stream.writer(io.binary_output_stream, uint8, io.io)).
+:- instance (stream.writer(io.text_output_stream, char, io.io)).
+:- instance (stream.writer(io.text_output_stream, univ, io.io)).
+:- instance (stream.writer(io.text_output_stream, int, io.io)).
+:- instance (stream.writer(io.text_output_stream, uint, io.io)).
+:- instance (stream.writer(io.text_output_stream, int8, io.io)).
+:- instance (stream.writer(io.text_output_stream, uint8, io.io)).
+:- instance (stream.writer(io.text_output_stream, uint8, io.io)).
+:- instance (stream.writer(io.text_output_stream, int16, io.io)).
+:- instance (stream.writer(io.text_output_stream, uint16, io.io)).
+:- instance (stream.writer(io.text_output_stream, int32, io.io)).
+:- instance (stream.writer(io.text_output_stream, float, io.io)).
+:- instance (stream.writer(io.text_output_stream, string, io.io)).
+:- pragma foreign_import_module("C", io).
+:- pragma foreign_import_module("C#", io).
+:- pragma foreign_import_module("Java", io).
+:- pragma foreign_import_module("Erlang", io).
