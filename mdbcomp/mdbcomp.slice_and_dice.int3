@@ -1,0 +1,10 @@
+:- module (mdbcomp.slice_and_dice).
+:- interface.
+:- type dice.
+:- type dice_exec_count.
+:- type dice_proc_map.
+:- type proc_dice.
+:- type proc_slice.
+:- type slice.
+:- type slice_exec_count.
+:- type slice_proc_map.
