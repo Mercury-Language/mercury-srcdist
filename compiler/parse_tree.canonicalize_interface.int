@@ -1,0 +1,5 @@
+:- module (parse_tree.canonicalize_interface).
+:- interface.
+:- import_module (parse_tree.prog_item).
+:- pred order_parse_tree_int_contents(parse_tree.prog_item.parse_tree_int, parse_tree.prog_item.parse_tree_int).
+:- mode order_parse_tree_int_contents((builtin.in), (builtin.out)) is det.

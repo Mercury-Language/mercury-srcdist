@@ -1,0 +1,160 @@
+/*
+** Automatically generated from `ctgc.livedata.m'
+** by the Mercury compiler,
+** version rotd-2019-03-19
+** configured for x86_64-pc-linux-gnu.
+** Do not edit.
+**
+** The autoconfigured grade settings governing
+** the generation of this C file were
+**
+** TAG_BITS=2
+** UNBOXED_FLOAT=no
+** UNBOXED_INT64S=no
+** PREGENERATED_DIST=yes
+** HIGHLEVEL_CODE=yes
+**
+** END_OF_C_GRADE_INFO
+*/
+
+
+// :- module transform_hlds.ctgc.livedata.
+// :- interface.
+
+#ifndef MR_HEADER_GUARD_transform_hlds__ctgc__livedata
+#define MR_HEADER_GUARD_transform_hlds__ctgc__livedata
+
+#ifdef __cplusplus
+extern "C" {
+#endif
+
+#include "mercury.h"
+
+
+#ifndef TRANSFORM_HLDS__CTGC__LIVEDATA_DECL_GUARD
+#define TRANSFORM_HLDS__CTGC__LIVEDATA_DECL_GUARD
+#include "transform_hlds.mih"
+#include "transform_hlds.ctgc.mih"
+
+#endif
+
+
+
+
+extern const MR_TypeCtorInfo_Struct transform_hlds__ctgc__livedata__transform_hlds__ctgc__livedata__type_ctor_info_livedata_0;
+
+extern const MR_TypeCtorInfo_Struct transform_hlds__ctgc__livedata__transform_hlds__ctgc__livedata__type_ctor_info_nodes_are_not_live_result_0;
+
+MR_bool MR_CALL 
+transform_hlds__ctgc__livedata__livedata_is_bottom_1_p_0(
+  MR_Word param_1);
+
+MR_bool MR_CALL 
+transform_hlds__ctgc__livedata__livedata_is_top_1_p_0(
+  MR_Word param_1);
+
+MR_bool MR_CALL 
+transform_hlds__ctgc__livedata__livedata_subsumes_datastruct_4_p_0(
+  MR_Word param_1,
+  MR_Word param_2,
+  MR_Word param_3,
+  MR_Word param_4);
+
+MR_bool MR_CALL 
+transform_hlds__ctgc__livedata__livedata_subsumes_prog_var_2_p_0(
+  MR_Word param_1,
+  MR_Word param_2);
+
+void MR_CALL 
+transform_hlds__ctgc__livedata__nodes_are_not_live_5_p_0(
+  MR_Word param_1,
+  MR_Word param_2,
+  MR_Word param_3,
+  MR_Word param_4,
+  MR_Word * param_5);
+
+MR_Word MR_CALL 
+transform_hlds__ctgc__livedata__livedata_add_liveness_5_f_0(
+  MR_Word param_1,
+  MR_Word param_2,
+  MR_Word param_3,
+  MR_Word param_4,
+  MR_Word param_5);
+
+MR_Word MR_CALL 
+transform_hlds__ctgc__livedata__livedata_get_datastructs_1_f_0(
+  MR_Word param_1);
+
+MR_Word MR_CALL 
+transform_hlds__ctgc__livedata__livedata_init_0_f_0(void);
+
+MR_Word MR_CALL 
+transform_hlds__ctgc__livedata__livedata_init_as_top_0_f_0(void);
+
+MR_Word MR_CALL 
+transform_hlds__ctgc__livedata__livedata_init_at_goal_4_f_0(
+  MR_Word param_1,
+  MR_Word param_2,
+  MR_Word param_3,
+  MR_Word param_4);
+
+MR_Word MR_CALL 
+transform_hlds__ctgc__livedata__livedata_init_from_datastructs_1_f_0(
+  MR_Word param_1);
+
+MR_Word MR_CALL 
+transform_hlds__ctgc__livedata__livedata_init_from_vars_1_f_0(
+  MR_Word param_1);
+
+MR_Word MR_CALL 
+transform_hlds__ctgc__livedata__livedata_least_upper_bound_4_f_0(
+  MR_Word param_1,
+  MR_Word param_2,
+  MR_Word param_3,
+  MR_Word param_4);
+
+MR_Word MR_CALL 
+transform_hlds__ctgc__livedata__livedata_least_upper_bound_list_3_f_0(
+  MR_Word param_1,
+  MR_Word param_2,
+  MR_Word param_3);
+
+MR_Word MR_CALL 
+transform_hlds__ctgc__livedata__livedata_project_2_f_0(
+  MR_Word param_1,
+  MR_Word param_2);
+
+void MR_CALL 
+transform_hlds__ctgc__livedata____Compare____livedata_0_0(
+  MR_Word * param_1,
+  MR_Word param_2,
+  MR_Word param_3);
+
+void MR_CALL 
+transform_hlds__ctgc__livedata____Compare____nodes_are_not_live_result_0_0(
+  MR_Word * param_1,
+  MR_Word param_2,
+  MR_Word param_3);
+
+MR_bool MR_CALL 
+transform_hlds__ctgc__livedata____Unify____livedata_0_0(
+  MR_Word param_1,
+  MR_Word param_2);
+
+MR_bool MR_CALL 
+transform_hlds__ctgc__livedata____Unify____nodes_are_not_live_result_0_0(
+  MR_Word param_1,
+  MR_Word param_2);
+
+void mercury__transform_hlds__ctgc__livedata__init(void);
+void mercury__transform_hlds__ctgc__livedata__init_type_tables(void);
+void mercury__transform_hlds__ctgc__livedata__init_debugger(void);
+const char *mercury__transform_hlds__ctgc__livedata__grade_check(void);
+
+#ifdef __cplusplus
+}
+#endif
+
+#endif // MR_HEADER_GUARD_transform_hlds.ctgc.livedata
+
+// :- end_interface transform_hlds.ctgc.livedata.
