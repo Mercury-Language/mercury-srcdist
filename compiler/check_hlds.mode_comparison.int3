@@ -1,0 +1,5 @@
+:- module (check_hlds.mode_comparison).
+:- interface.
+:- type match
+	where	type_is_abstract_enum(2).
+:- type proc_mode.

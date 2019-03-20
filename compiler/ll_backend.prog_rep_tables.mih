@@ -1,0 +1,114 @@
+/*
+** Automatically generated from `prog_rep_tables.m'
+** by the Mercury compiler,
+** version rotd-2019-03-20
+** configured for x86_64-pc-linux-gnu.
+** Do not edit.
+**
+** The autoconfigured grade settings governing
+** the generation of this C file were
+**
+** TAG_BITS=2
+** UNBOXED_FLOAT=no
+** UNBOXED_INT64S=no
+** PREGENERATED_DIST=yes
+** HIGHLEVEL_CODE=yes
+**
+** END_OF_C_GRADE_INFO
+*/
+
+
+// :- module ll_backend.prog_rep_tables.
+// :- interface.
+
+#ifndef MR_HEADER_GUARD_ll_backend__prog_rep_tables
+#define MR_HEADER_GUARD_ll_backend__prog_rep_tables
+
+#ifdef __cplusplus
+extern "C" {
+#endif
+
+#include "mercury.h"
+
+
+#ifndef LL_BACKEND__PROG_REP_TABLES_DECL_GUARD
+#define LL_BACKEND__PROG_REP_TABLES_DECL_GUARD
+#include "ll_backend.mih"
+
+#endif
+
+
+
+
+extern const MR_TypeCtorInfo_Struct ll_backend__prog_rep_tables__ll_backend__prog_rep_tables__type_ctor_info_string_table_info_0;
+
+extern const MR_TypeCtorInfo_Struct ll_backend__prog_rep_tables__ll_backend__prog_rep_tables__type_ctor_info_type_table_info_0;
+
+void MR_CALL 
+ll_backend__prog_rep_tables__get_string_table_contents_3_p_0(
+  MR_Word param_1,
+  MR_Word * param_2,
+  MR_Integer * param_3);
+
+void MR_CALL 
+ll_backend__prog_rep_tables__get_type_table_contents_3_p_0(
+  MR_Word param_1,
+  MR_Integer * param_2,
+  MR_Word * param_3);
+
+void MR_CALL 
+ll_backend__prog_rep_tables__lookup_string_in_table_4_p_0(
+  MR_String param_1,
+  MR_Integer * param_2,
+  MR_Word param_3,
+  MR_Word * param_4);
+
+void MR_CALL 
+ll_backend__prog_rep_tables__lookup_type_in_table_6_p_0(
+  MR_Word param_1,
+  MR_Integer * param_2,
+  MR_Word param_3,
+  MR_Word * param_4,
+  MR_Word param_5,
+  MR_Word * param_6);
+
+MR_Word MR_CALL 
+ll_backend__prog_rep_tables__init_string_table_info_0_f_0(void);
+
+MR_Word MR_CALL 
+ll_backend__prog_rep_tables__init_type_table_info_0_f_0(void);
+
+void MR_CALL 
+ll_backend__prog_rep_tables____Compare____string_table_info_0_0(
+  MR_Word * param_1,
+  MR_Word param_2,
+  MR_Word param_3);
+
+void MR_CALL 
+ll_backend__prog_rep_tables____Compare____type_table_info_0_0(
+  MR_Word * param_1,
+  MR_Word param_2,
+  MR_Word param_3);
+
+MR_bool MR_CALL 
+ll_backend__prog_rep_tables____Unify____string_table_info_0_0(
+  MR_Word param_1,
+  MR_Word param_2);
+
+MR_bool MR_CALL 
+ll_backend__prog_rep_tables____Unify____type_table_info_0_0(
+  MR_Word param_1,
+  MR_Word param_2);
+
+void mercury__ll_backend__prog_rep_tables__init(void);
+void mercury__ll_backend__prog_rep_tables__init_type_tables(void);
+void mercury__ll_backend__prog_rep_tables__init_debugger(void);
+const char *mercury__ll_backend__prog_rep_tables__grade_check(void);
+
+#ifdef __cplusplus
+}
+#endif
+
+#endif // MR_HEADER_GUARD_ll_backend.prog_rep_tables
+
+// :- end_interface ll_backend.prog_rep_tables.
