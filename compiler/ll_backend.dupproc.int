@@ -1,0 +1,10 @@
+:- module (ll_backend.dupproc).
+:- interface.
+:- import_module assoc_list.
+:- import_module list.
+:- import_module map.
+:- import_module mdbcomp.
+:- import_module (ll_backend.llds).
+:- import_module (mdbcomp.prim_data).
+:- pred eliminate_duplicate_procs(assoc_list.assoc_list(mdbcomp.prim_data.proc_label, ll_backend.llds.c_procedure), list.list(ll_backend.llds.c_procedure), map.map(mdbcomp.prim_data.proc_label, mdbcomp.prim_data.proc_label), map.map(mdbcomp.prim_data.proc_label, mdbcomp.prim_data.proc_label)).
+:- mode eliminate_duplicate_procs((builtin.in), (builtin.out), (builtin.in), (builtin.out)) is det.

@@ -1,0 +1,34 @@
+:- module (mdb.declarative_debugger).
+:- interface.
+:- import_module io.
+:- import_module list.
+:- import_module maybe.
+:- import_module unit.
+:- import_module (mdb.browser_info).
+:- import_module (mdb.declarative_analyser).
+:- import_module (mdb.declarative_execution).
+:- import_module (mdb.declarative_tree).
+:- import_module (mdb.help).
+:- import_module (mdb.io_action).
+:- import_module (mdb.term_rep).
+:- import_module (mdbcomp.program_representation).
+:- type decl_answer(T).
+:- type decl_bug.
+:- type decl_confirmation
+	where	type_is_abstract_enum(2).
+:- type decl_contour.
+:- type decl_e_bug.
+:- type decl_evidence(T).
+:- type decl_exception.
+:- type decl_i_bug.
+:- type decl_position.
+:- type decl_question(T).
+:- type decl_truth
+	where	type_is_abstract_enum(2).
+:- type diagnoser_exception.
+:- type diagnoser_response(R).
+:- type diagnoser_state(R).
+:- type final_decl_atom.
+:- type init_decl_atom.
+:- type some_decl_atom.
+:- inst (known_answer) for (mdb.declarative_debugger).decl_answer/1 == bound(ignore(ground) ; truth_value(ground, ground)).
