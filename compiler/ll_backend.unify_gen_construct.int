@@ -1,0 +1,19 @@
+:- module (ll_backend.unify_gen_construct).
+:- interface.
+:- import_module hlds.
+:- import_module list.
+:- import_module maybe.
+:- import_module parse_tree.
+:- import_module (hlds.hlds_goal).
+:- import_module (hlds.hlds_module).
+:- import_module (ll_backend.code_info).
+:- import_module (ll_backend.code_loc_dep).
+:- import_module (ll_backend.global_data).
+:- import_module (ll_backend.llds).
+:- import_module (parse_tree.prog_data).
+:- pred generate_const_structs(hlds.hlds_module.module_info, ll_backend.llds.const_struct_map, ll_backend.global_data.global_data, ll_backend.global_data.global_data).
+:- mode generate_const_structs((builtin.in), (builtin.out), (builtin.in), (builtin.out)) is det.
+:- pred generate_construction_unification(parse_tree.prog_data.prog_var, parse_tree.prog_data.cons_id, list.list(parse_tree.prog_data.prog_var), list.list(hlds.hlds_goal.unify_mode), hlds.hlds_goal.how_to_construct, list.list(int), maybe.maybe(hlds.hlds_goal.term_size_value), hlds.hlds_goal.hlds_goal_info, ll_backend.llds.llds_code, ll_backend.code_info.code_info, ll_backend.code_info.code_info, ll_backend.code_loc_dep.code_loc_dep, ll_backend.code_loc_dep.code_loc_dep).
+:- mode generate_construction_unification((builtin.in), (builtin.in), (builtin.in), (builtin.in), (builtin.in), (builtin.in), (builtin.in), (builtin.in), (builtin.out), (builtin.in), (builtin.out), (builtin.in), (builtin.out)) is det.
+:- pred generate_ground_term(parse_tree.prog_data.prog_var, hlds.hlds_goal.hlds_goal, ll_backend.code_info.code_info, ll_backend.code_info.code_info, ll_backend.code_loc_dep.code_loc_dep, ll_backend.code_loc_dep.code_loc_dep).
+:- mode generate_ground_term((builtin.in), (builtin.in), (builtin.in), (builtin.out), (builtin.in), (builtin.out)) is det.

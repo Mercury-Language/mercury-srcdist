@@ -1,0 +1,33 @@
+/*
+** Automatically generated from `library.m'
+** by the Mercury compiler,
+** version rotd-2019-03-24
+** configured for x86_64-pc-linux-gnu.
+** Do not edit.
+*/
+#ifndef LIBRARY_MH
+#define LIBRARY_MH
+
+#ifdef __cplusplus
+extern "C" {
+#endif
+
+#ifdef MR_HIGHLEVEL_CODE
+#include "mercury.h"
+#else
+  #ifndef MERCURY_HDR_EXCLUDE_IMP_H
+  #include "mercury_imp.h"
+  #endif
+#endif
+#ifdef MR_DEEP_PROFILING
+#include "mercury_deep_profiling.h"
+#endif
+
+void ML_std_library_init(void);
+void ML_std_library_finalize(void);
+
+#ifdef __cplusplus
+}
+#endif
+
+#endif /* LIBRARY_MH */
