@@ -1,0 +1,3 @@
+:- module (ll_backend.frameopt).
+:- implementation.
+:- typeclass block_entry_exit(En, Ex) <= ((En -> Ex), (Ex -> En)).
