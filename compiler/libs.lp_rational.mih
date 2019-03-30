@@ -1,0 +1,463 @@
+/*
+** Automatically generated from `lp_rational.m'
+** by the Mercury compiler,
+** version rotd-2019-03-29
+** configured for x86_64-pc-linux-gnu.
+** Do not edit.
+**
+** The autoconfigured grade settings governing
+** the generation of this C file were
+**
+** TAG_BITS=2
+** UNBOXED_FLOAT=no
+** UNBOXED_INT64S=no
+** PREGENERATED_DIST=yes
+** HIGHLEVEL_CODE=yes
+**
+** END_OF_C_GRADE_INFO
+*/
+
+
+// :- module libs.lp_rational.
+// :- interface.
+
+#ifndef MR_HEADER_GUARD_libs__lp_rational
+#define MR_HEADER_GUARD_libs__lp_rational
+
+#ifdef __cplusplus
+extern "C" {
+#endif
+
+#include "mercury.h"
+
+
+#ifndef LIBS__LP_RATIONAL_DECL_GUARD
+#define LIBS__LP_RATIONAL_DECL_GUARD
+#include "libs.mih"
+
+#endif
+
+
+
+
+extern const MR_TypeCtorInfo_Struct libs__lp_rational__libs__lp_rational__type_ctor_info_cc_map_0;
+
+extern const MR_TypeCtorInfo_Struct libs__lp_rational__libs__lp_rational__type_ctor_info_cell_0;
+
+extern const MR_TypeCtorInfo_Struct libs__lp_rational__libs__lp_rational__type_ctor_info_coeff_info_0;
+
+extern const MR_TypeCtorInfo_Struct libs__lp_rational__libs__lp_rational__type_ctor_info_constraint_0;
+
+extern const MR_TypeCtorInfo_Struct libs__lp_rational__libs__lp_rational__type_ctor_info_constraints_0;
+
+extern const MR_TypeCtorInfo_Struct libs__lp_rational__libs__lp_rational__type_ctor_info_direction_0;
+
+extern const MR_TypeCtorInfo_Struct libs__lp_rational__libs__lp_rational__type_ctor_info_entailment_result_0;
+
+extern const MR_TypeCtorInfo_Struct libs__lp_rational__libs__lp_rational__type_ctor_info_lp_coefficient_0;
+
+extern const MR_TypeCtorInfo_Struct libs__lp_rational__libs__lp_rational__type_ctor_info_lp_constant_0;
+
+extern const MR_TypeCtorInfo_Struct libs__lp_rational__libs__lp_rational__type_ctor_info_lp_operator_0;
+
+extern const MR_TypeCtorInfo_Struct libs__lp_rational__libs__lp_rational__type_ctor_info_lp_result_0;
+
+extern const MR_TypeCtorInfo_Struct libs__lp_rational__libs__lp_rational__type_ctor_info_lp_term_0;
+
+extern const MR_TypeCtorInfo_Struct libs__lp_rational__libs__lp_rational__type_ctor_info_lp_terms_0;
+
+extern const MR_TypeCtorInfo_Struct libs__lp_rational__libs__lp_rational__type_ctor_info_lp_var_0;
+
+extern const MR_TypeCtorInfo_Struct libs__lp_rational__libs__lp_rational__type_ctor_info_lp_vars_0;
+
+extern const MR_TypeCtorInfo_Struct libs__lp_rational__libs__lp_rational__type_ctor_info_lp_varset_0;
+
+extern const MR_TypeCtorInfo_Struct libs__lp_rational__libs__lp_rational__type_ctor_info_lpr_info_0;
+
+extern const MR_TypeCtorInfo_Struct libs__lp_rational__libs__lp_rational__type_ctor_info_matrix_0;
+
+extern const MR_TypeCtorInfo_Struct libs__lp_rational__libs__lp_rational__type_ctor_info_objective_0;
+
+extern const MR_TypeCtorInfo_Struct libs__lp_rational__libs__lp_rational__type_ctor_info_output_var_0;
+
+extern const MR_TypeCtorInfo_Struct libs__lp_rational__libs__lp_rational__type_ctor_info_projection_result_0;
+
+extern const MR_TypeCtorInfo_Struct libs__lp_rational__libs__lp_rational__type_ctor_info_tableau_0;
+
+extern const MR_TypeCtorInfo_Struct libs__lp_rational__libs__lp_rational__type_ctor_info_var_num_map_0;
+
+extern const MR_TypeCtorInfo_Struct libs__lp_rational__libs__lp_rational__type_ctor_info_vector_0;
+
+void MR_CALL 
+libs__lp_rational__f_85_110_117_115_101_100_65_114_103_115_95_95_112_114_101_100_95_95_112_114_111_106_101_99_116_95_95_91_50_93_95_48_4_p_0(
+  MR_Word param_1,
+  MR_Word param_2,
+  MR_Word * param_3);
+
+void MR_CALL 
+libs__lp_rational__f_85_110_117_115_101_100_65_114_103_115_95_95_112_114_101_100_95_95_112_114_111_106_101_99_116_95_95_91_50_93_95_48_5_p_0(
+  MR_Word param_1,
+  MR_Word param_2,
+  MR_Word param_3,
+  MR_Word * param_4);
+
+void MR_CALL 
+libs__lp_rational__deconstruct_constraint_4_p_0(
+  MR_Word param_1,
+  MR_Word * param_2,
+  MR_Word * param_3,
+  MR_Word * param_4);
+
+void MR_CALL 
+libs__lp_rational__deconstruct_non_false_constraint_4_p_0(
+  MR_Word param_1,
+  MR_Word * param_2,
+  MR_Word * param_3,
+  MR_Word * param_4);
+
+MR_bool MR_CALL 
+libs__lp_rational__entailed_3_p_0(
+  MR_Word param_1,
+  MR_Word param_2,
+  MR_Word param_3);
+
+MR_bool MR_CALL 
+libs__lp_rational__inconsistent_2_p_0(
+  MR_Word param_1,
+  MR_Word param_2);
+
+MR_bool MR_CALL 
+libs__lp_rational__is_false_1_p_0(
+  MR_Word param_1);
+
+MR_bool MR_CALL 
+libs__lp_rational__is_true_1_p_0(
+  MR_Word param_1);
+
+MR_bool MR_CALL 
+libs__lp_rational__nonneg_constr_1_p_0(
+  MR_Word param_1);
+
+void MR_CALL 
+libs__lp_rational__output_constraints_4_p_0(
+  MR_Word param_1,
+  MR_Word param_2);
+
+void MR_CALL 
+libs__lp_rational__project_4_p_0(
+  MR_Word param_1,
+  MR_Word param_2,
+  MR_Word param_3,
+  MR_Word * param_4);
+
+void MR_CALL 
+libs__lp_rational__project_5_p_0(
+  MR_Word param_1,
+  MR_Word param_2,
+  MR_Word param_3,
+  MR_Word param_4,
+  MR_Word * param_5);
+
+MR_bool MR_CALL 
+libs__lp_rational__remove_some_entailed_constraints_3_p_0(
+  MR_Word param_1,
+  MR_Word param_2,
+  MR_Word * param_3);
+
+void MR_CALL 
+libs__lp_rational__restore_equalities_2_p_0(
+  MR_Word param_1,
+  MR_Word * param_2);
+
+void MR_CALL 
+libs__lp_rational__write_constraints_4_p_0(
+  MR_Word param_1,
+  MR_Word param_2);
+
+MR_Word MR_CALL 
+libs__lp_rational__f_85_110_117_115_101_100_65_114_103_115_95_95_102_117_110_99_95_95_112_114_111_106_101_99_116_95_95_91_50_93_95_48_3_f_0(
+  MR_Word param_1,
+  MR_Word param_2);
+
+MR_Word MR_CALL 
+libs__lp_rational__bounding_box_2_f_0(
+  MR_Word param_1,
+  MR_Word param_2);
+
+MR_Word MR_CALL 
+libs__lp_rational__construct_constraint_3_f_0(
+  MR_Word param_1,
+  MR_Word param_2,
+  MR_Word param_3);
+
+MR_Word MR_CALL 
+libs__lp_rational__construct_non_false_constraint_3_f_0(
+  MR_Word param_1,
+  MR_Word param_2,
+  MR_Word param_3);
+
+MR_Word MR_CALL 
+libs__lp_rational__entailed_3_f_0(
+  MR_Word param_1,
+  MR_Word param_2,
+  MR_Word param_3);
+
+MR_Word MR_CALL 
+libs__lp_rational__false_constraint_0_f_0(void);
+
+MR_Word MR_CALL 
+libs__lp_rational__get_vars_from_constraints_1_f_0(
+  MR_Word param_1);
+
+MR_Word MR_CALL 
+libs__lp_rational__lp_term_1_f_0(
+  MR_Word param_1);
+
+MR_Word MR_CALL 
+libs__lp_rational__make_nonneg_constr_1_f_0(
+  MR_Word param_1);
+
+MR_Word MR_CALL 
+libs__lp_rational__make_var_const_eq_constraint_2_f_0(
+  MR_Word param_1,
+  MR_Word param_2);
+
+MR_Word MR_CALL 
+libs__lp_rational__make_var_const_gte_constraint_2_f_0(
+  MR_Word param_1,
+  MR_Word param_2);
+
+MR_Word MR_CALL 
+libs__lp_rational__make_vars_eq_constraint_2_f_0(
+  MR_Word param_1,
+  MR_Word param_2);
+
+MR_Word MR_CALL 
+libs__lp_rational__nonneg_box_2_f_0(
+  MR_Word param_1,
+  MR_Word param_2);
+
+MR_Word MR_CALL 
+libs__lp_rational__project_3_f_0(
+  MR_Word param_1,
+  MR_Word param_2,
+  MR_Word param_3);
+
+MR_Word MR_CALL 
+libs__lp_rational__set_vars_to_zero_2_f_0(
+  MR_Word param_1,
+  MR_Word param_2);
+
+MR_Word MR_CALL 
+libs__lp_rational__simplify_constraints_1_f_0(
+  MR_Word param_1);
+
+MR_Word MR_CALL 
+libs__lp_rational__solve_4_f_0(
+  MR_Word param_1,
+  MR_Word param_2,
+  MR_Word param_3,
+  MR_Word param_4);
+
+MR_Word MR_CALL 
+libs__lp_rational__substitute_vars_2_f_0(
+  MR_Word param_1,
+  MR_Word param_2);
+
+MR_Word MR_CALL 
+libs__lp_rational__substitute_vars_3_f_0(
+  MR_Word param_1,
+  MR_Word param_2,
+  MR_Word param_3);
+
+MR_Word MR_CALL 
+libs__lp_rational__true_constraint_0_f_0(void);
+
+void MR_CALL 
+libs__lp_rational____Compare____constraint_0_0(
+  MR_Word * param_1,
+  MR_Word param_2,
+  MR_Word param_3);
+
+void MR_CALL 
+libs__lp_rational____Compare____constraints_0_0(
+  MR_Word * param_1,
+  MR_Word param_2,
+  MR_Word param_3);
+
+void MR_CALL 
+libs__lp_rational____Compare____direction_0_0(
+  MR_Word * param_1,
+  MR_Word param_2,
+  MR_Word param_3);
+
+void MR_CALL 
+libs__lp_rational____Compare____entailment_result_0_0(
+  MR_Word * param_1,
+  MR_Word param_2,
+  MR_Word param_3);
+
+void MR_CALL 
+libs__lp_rational____Compare____lp_coefficient_0_0(
+  MR_Word * param_1,
+  MR_Word param_2,
+  MR_Word param_3);
+
+void MR_CALL 
+libs__lp_rational____Compare____lp_constant_0_0(
+  MR_Word * param_1,
+  MR_Word param_2,
+  MR_Word param_3);
+
+void MR_CALL 
+libs__lp_rational____Compare____lp_operator_0_0(
+  MR_Word * param_1,
+  MR_Word param_2,
+  MR_Word param_3);
+
+void MR_CALL 
+libs__lp_rational____Compare____lp_result_0_0(
+  MR_Word * param_1,
+  MR_Word param_2,
+  MR_Word param_3);
+
+void MR_CALL 
+libs__lp_rational____Compare____lp_term_0_0(
+  MR_Word * param_1,
+  MR_Word param_2,
+  MR_Word param_3);
+
+void MR_CALL 
+libs__lp_rational____Compare____lp_terms_0_0(
+  MR_Word * param_1,
+  MR_Word param_2,
+  MR_Word param_3);
+
+void MR_CALL 
+libs__lp_rational____Compare____lp_var_0_0(
+  MR_Word * param_1,
+  MR_Word param_2,
+  MR_Word param_3);
+
+void MR_CALL 
+libs__lp_rational____Compare____lp_vars_0_0(
+  MR_Word * param_1,
+  MR_Word param_2,
+  MR_Word param_3);
+
+void MR_CALL 
+libs__lp_rational____Compare____lp_varset_0_0(
+  MR_Word * param_1,
+  MR_Word param_2,
+  MR_Word param_3);
+
+void MR_CALL 
+libs__lp_rational____Compare____objective_0_0(
+  MR_Word * param_1,
+  MR_Word param_2,
+  MR_Word param_3);
+
+void MR_CALL 
+libs__lp_rational____Compare____output_var_0_0(
+  MR_Word * param_1,
+  MR_Word param_2,
+  MR_Word param_3);
+
+void MR_CALL 
+libs__lp_rational____Compare____projection_result_0_0(
+  MR_Word * param_1,
+  MR_Word param_2,
+  MR_Word param_3);
+
+MR_bool MR_CALL 
+libs__lp_rational____Unify____constraint_0_0(
+  MR_Word param_1,
+  MR_Word param_2);
+
+MR_bool MR_CALL 
+libs__lp_rational____Unify____constraints_0_0(
+  MR_Word param_1,
+  MR_Word param_2);
+
+MR_bool MR_CALL 
+libs__lp_rational____Unify____direction_0_0(
+  MR_Word param_1,
+  MR_Word param_2);
+
+MR_bool MR_CALL 
+libs__lp_rational____Unify____entailment_result_0_0(
+  MR_Word param_1,
+  MR_Word param_2);
+
+MR_bool MR_CALL 
+libs__lp_rational____Unify____lp_coefficient_0_0(
+  MR_Word param_1,
+  MR_Word param_2);
+
+MR_bool MR_CALL 
+libs__lp_rational____Unify____lp_constant_0_0(
+  MR_Word param_1,
+  MR_Word param_2);
+
+MR_bool MR_CALL 
+libs__lp_rational____Unify____lp_operator_0_0(
+  MR_Word param_1,
+  MR_Word param_2);
+
+MR_bool MR_CALL 
+libs__lp_rational____Unify____lp_result_0_0(
+  MR_Word param_1,
+  MR_Word param_2);
+
+MR_bool MR_CALL 
+libs__lp_rational____Unify____lp_term_0_0(
+  MR_Word param_1,
+  MR_Word param_2);
+
+MR_bool MR_CALL 
+libs__lp_rational____Unify____lp_terms_0_0(
+  MR_Word param_1,
+  MR_Word param_2);
+
+MR_bool MR_CALL 
+libs__lp_rational____Unify____lp_var_0_0(
+  MR_Word param_1,
+  MR_Word param_2);
+
+MR_bool MR_CALL 
+libs__lp_rational____Unify____lp_vars_0_0(
+  MR_Word param_1,
+  MR_Word param_2);
+
+MR_bool MR_CALL 
+libs__lp_rational____Unify____lp_varset_0_0(
+  MR_Word param_1,
+  MR_Word param_2);
+
+MR_bool MR_CALL 
+libs__lp_rational____Unify____objective_0_0(
+  MR_Word param_1,
+  MR_Word param_2);
+
+MR_bool MR_CALL 
+libs__lp_rational____Unify____output_var_0_0(
+  MR_Word param_1,
+  MR_Word param_2);
+
+MR_bool MR_CALL 
+libs__lp_rational____Unify____projection_result_0_0(
+  MR_Word param_1,
+  MR_Word param_2);
+
+void mercury__libs__lp_rational__init(void);
+void mercury__libs__lp_rational__init_type_tables(void);
+void mercury__libs__lp_rational__init_debugger(void);
+const char *mercury__libs__lp_rational__grade_check(void);
+
+#ifdef __cplusplus
+}
+#endif
+
+#endif // MR_HEADER_GUARD_libs.lp_rational
+
+// :- end_interface libs.lp_rational.

@@ -1,0 +1,19 @@
+:- module coverage.
+:- interface.
+:- import_module analysis_utils.
+:- import_module array.
+:- import_module list.
+:- import_module map.
+:- import_module mdbcomp.
+:- import_module measurements.
+:- import_module (mdbcomp.goal_path).
+:- import_module (mdbcomp.program_representation).
+:- type coverage_info
+    --->    coverage_unknown 
+    ;       coverage_known_zero 
+    ;       coverage_known_same(int)
+    ;       coverage_known(int, int)
+    ;       coverage_known_before(int)
+    ;       coverage_known_after(int).
+:- type coverage_point
+    --->    coverage_point(int, mdbcomp.goal_path.reverse_goal_path, mdbcomp.program_representation.cp_type).
