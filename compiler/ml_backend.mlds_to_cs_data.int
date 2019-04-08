@@ -1,0 +1,25 @@
+:- module (ml_backend.mlds_to_cs_data).
+:- interface.
+:- import_module bool.
+:- import_module io.
+:- import_module list.
+:- import_module maybe.
+:- import_module (ml_backend.mlds).
+:- import_module (ml_backend.mlds_to_cs_util).
+:- import_module (ml_backend.mlds_to_target_util).
+:- pred mlds_output_code_addr_for_csharp(ml_backend.mlds_to_cs_util.csharp_out_info, ml_backend.mlds.mlds_code_addr, bool.bool, io.io, io.io).
+:- mode mlds_output_code_addr_for_csharp((builtin.in), (builtin.in), (builtin.in), (builtin.di), (builtin.uo)) is det.
+:- pred output_call_rval_for_csharp(ml_backend.mlds_to_cs_util.csharp_out_info, ml_backend.mlds.mlds_rval, io.io, io.io).
+:- mode output_call_rval_for_csharp((builtin.in), (builtin.in), (builtin.di), (builtin.uo)) is det.
+:- pred output_initializer_alloc_only_for_csharp(ml_backend.mlds_to_cs_util.csharp_out_info, ml_backend.mlds.mlds_initializer, maybe.maybe(ml_backend.mlds.mlds_type), io.io, io.io).
+:- mode output_initializer_alloc_only_for_csharp((builtin.in), (builtin.in), (builtin.in), (builtin.di), (builtin.uo)) is det.
+:- pred output_initializer_body_for_csharp(ml_backend.mlds_to_cs_util.csharp_out_info, ml_backend.mlds.mlds_initializer, maybe.maybe(ml_backend.mlds.mlds_type), io.io, io.io).
+:- mode output_initializer_body_for_csharp((builtin.in), (builtin.in), (builtin.in), (builtin.di), (builtin.uo)) is det.
+:- pred output_initializer_body_list_for_csharp(ml_backend.mlds_to_cs_util.csharp_out_info, list.list(ml_backend.mlds.mlds_initializer), io.io, io.io).
+:- mode output_initializer_body_list_for_csharp((builtin.in), (builtin.in), (builtin.di), (builtin.uo)) is det.
+:- pred output_initializer_for_csharp(ml_backend.mlds_to_cs_util.csharp_out_info, ml_backend.mlds_to_target_util.output_aux, ml_backend.mlds.mlds_type, ml_backend.mlds.mlds_initializer, io.io, io.io).
+:- mode output_initializer_for_csharp((builtin.in), (builtin.in), (builtin.in), (builtin.in), (builtin.di), (builtin.uo)) is det.
+:- pred output_lval_for_csharp(ml_backend.mlds_to_cs_util.csharp_out_info, ml_backend.mlds.mlds_lval, io.io, io.io).
+:- mode output_lval_for_csharp((builtin.in), (builtin.in), (builtin.di), (builtin.uo)) is det.
+:- pred output_rval_for_csharp(ml_backend.mlds_to_cs_util.csharp_out_info, ml_backend.mlds.mlds_rval, io.io, io.io).
+:- mode output_rval_for_csharp((builtin.in), (builtin.in), (builtin.di), (builtin.uo)) is det.
