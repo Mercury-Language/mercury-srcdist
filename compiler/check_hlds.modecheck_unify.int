@@ -1,0 +1,11 @@
+:- module (check_hlds.modecheck_unify).
+:- interface.
+:- import_module hlds.
+:- import_module parse_tree.
+:- import_module (check_hlds.mode_info).
+:- import_module (hlds.hlds_goal).
+:- import_module (parse_tree.prog_data).
+:- pred create_var_var_unification(parse_tree.prog_data.prog_var, parse_tree.prog_data.prog_var, parse_tree.prog_data.mer_type, check_hlds.mode_info.mode_info, hlds.hlds_goal.hlds_goal).
+:- mode create_var_var_unification((builtin.in), (builtin.in), (builtin.in), (builtin.in), (builtin.out)) is det.
+:- pred modecheck_unification(parse_tree.prog_data.prog_var, hlds.hlds_goal.unify_rhs, hlds.hlds_goal.unification, hlds.hlds_goal.unify_context, hlds.hlds_goal.hlds_goal_info, hlds.hlds_goal.hlds_goal_expr, check_hlds.mode_info.mode_info, check_hlds.mode_info.mode_info).
+:- mode modecheck_unification((builtin.in), (builtin.in), (builtin.in), (builtin.in), (builtin.in), (builtin.out), (builtin.in), (builtin.out)) is det.
