@@ -1,0 +1,21839 @@
+/*
+** Automatically generated from `lexer.m'
+** by the Mercury compiler,
+** version rotd-2017-06-02
+** configured for x86_64-apple-darwin13.4.0.
+** Do not edit.
+**
+** The autoconfigured grade settings governing
+** the generation of this C file were
+**
+** TAG_BITS=2
+** UNBOXED_FLOAT=no
+** PREGENERATED_DIST=yes
+** HIGHLEVEL_CODE=yes
+**
+** END_OF_C_GRADE_INFO
+*/
+
+
+/* :- module lexer. */
+/* :- implementation. */
+
+/*
+INIT mercury__lexer__init
+ENDINIT
+*/
+
+#include "lexer.mih"
+
+
+#include "array.mih"
+#include "assoc_list.mih"
+#include "benchmarking.mih"
+#include "bitmap.mih"
+#include "bool.mih"
+#include "builtin.mih"
+#include "calendar.mih"
+#include "char.mih"
+#include "construct.mih"
+#include "cord.mih"
+#include "deconstruct.mih"
+#include "dir.mih"
+#include "enum.mih"
+#include "erlang_rtti_implementation.mih"
+#include "exception.mih"
+#include "float.mih"
+#include "int.mih"
+#include "integer.mih"
+#include "io.mih"
+#include "list.mih"
+#include "map.mih"
+#include "math.mih"
+#include "maybe.mih"
+#include "mutvar.mih"
+#include "ops.mih"
+#include "pair.mih"
+#include "parser.mih"
+#include "pretty_printer.mih"
+#include "private_builtin.mih"
+#include "random.mih"
+#include "require.mih"
+#include "rtti_implementation.mih"
+#include "set.mih"
+#include "set_ordlist.mih"
+#include "set_tree234.mih"
+#include "solutions.mih"
+#include "std_util.mih"
+#include "stm_builtin.mih"
+#include "store.mih"
+#include "stream.mih"
+#include "string.mih"
+#include "table_builtin.mih"
+#include "term.mih"
+#include "term_conversion.mih"
+#include "term_io.mih"
+#include "time.mih"
+#include "tree234.mih"
+#include "type_desc.mih"
+#include "uint.mih"
+#include "unit.mih"
+#include "univ.mih"
+#include "varset.mih"
+#include "version_array.mih"
+#include "stream.string_writer.mih"
+#include "string.format.mih"
+#include "string.parse_runtime.mih"
+#include "string.parse_util.mih"
+#include "string.to_string.mih"
+
+
+
+
+static const MR_EnumFunctorDesc mercury__lexer__lexer__enum_functor_desc_get_token_action_0_0;
+
+static const MR_EnumFunctorDesc mercury__lexer__lexer__enum_functor_desc_get_token_action_0_1;
+
+static const MR_EnumFunctorDesc mercury__lexer__lexer__enum_functor_desc_get_token_action_0_2;
+
+static const MR_EnumFunctorDesc mercury__lexer__lexer__enum_functor_desc_get_token_action_0_3;
+
+static const MR_EnumFunctorDesc mercury__lexer__lexer__enum_functor_desc_get_token_action_0_4;
+
+static const MR_EnumFunctorDesc mercury__lexer__lexer__enum_functor_desc_get_token_action_0_5;
+
+static const MR_EnumFunctorDesc mercury__lexer__lexer__enum_functor_desc_get_token_action_0_6;
+
+static const MR_EnumFunctorDesc mercury__lexer__lexer__enum_functor_desc_get_token_action_0_7;
+
+static const MR_EnumFunctorDesc mercury__lexer__lexer__enum_functor_desc_get_token_action_0_8;
+
+static const MR_EnumFunctorDesc mercury__lexer__lexer__enum_functor_desc_get_token_action_0_9;
+
+static const MR_EnumFunctorDesc mercury__lexer__lexer__enum_functor_desc_get_token_action_0_10;
+
+static const MR_EnumFunctorDesc mercury__lexer__lexer__enum_functor_desc_get_token_action_0_11;
+
+static const MR_EnumFunctorDesc mercury__lexer__lexer__enum_functor_desc_get_token_action_0_12;
+
+static const MR_EnumFunctorDesc mercury__lexer__lexer__enum_functor_desc_get_token_action_0_13;
+
+static const MR_EnumFunctorDescPtr mercury__lexer__lexer__enum_value_ordered_get_token_action_0[14];
+
+static const MR_EnumFunctorDescPtr mercury__lexer__lexer__enum_name_ordered_get_token_action_0[14];
+
+static const MR_Integer mercury__lexer__lexer__functor_number_map_get_token_action_0[14];
+
+static const MR_EnumFunctorDesc mercury__lexer__lexer__enum_functor_desc_integer_base_0_0;
+
+static const MR_EnumFunctorDesc mercury__lexer__lexer__enum_functor_desc_integer_base_0_1;
+
+static const MR_EnumFunctorDesc mercury__lexer__lexer__enum_functor_desc_integer_base_0_2;
+
+static const MR_EnumFunctorDesc mercury__lexer__lexer__enum_functor_desc_integer_base_0_3;
+
+static const MR_EnumFunctorDescPtr mercury__lexer__lexer__enum_value_ordered_integer_base_0[4];
+
+static const MR_EnumFunctorDescPtr mercury__lexer__lexer__enum_name_ordered_integer_base_0[4];
+
+static const MR_Integer mercury__lexer__lexer__functor_number_map_integer_base_0[4];
+
+static const MR_EnumFunctorDesc mercury__lexer__lexer__enum_functor_desc_integer_size_0_0;
+
+static const MR_EnumFunctorDesc mercury__lexer__lexer__enum_functor_desc_integer_size_0_1;
+
+static const MR_EnumFunctorDesc mercury__lexer__lexer__enum_functor_desc_integer_size_0_2;
+
+static const MR_EnumFunctorDesc mercury__lexer__lexer__enum_functor_desc_integer_size_0_3;
+
+static const MR_EnumFunctorDesc mercury__lexer__lexer__enum_functor_desc_integer_size_0_4;
+
+static const MR_EnumFunctorDescPtr mercury__lexer__lexer__enum_value_ordered_integer_size_0[5];
+
+static const MR_EnumFunctorDescPtr mercury__lexer__lexer__enum_name_ordered_integer_size_0[5];
+
+static const MR_Integer mercury__lexer__lexer__functor_number_map_integer_size_0[5];
+
+static const MR_EnumFunctorDesc mercury__lexer__lexer__enum_functor_desc_last_digit_is_underscore_0_0;
+
+static const MR_EnumFunctorDesc mercury__lexer__lexer__enum_functor_desc_last_digit_is_underscore_0_1;
+
+static const MR_EnumFunctorDescPtr mercury__lexer__lexer__enum_value_ordered_last_digit_is_underscore_0[2];
+
+static const MR_EnumFunctorDescPtr mercury__lexer__lexer__enum_name_ordered_last_digit_is_underscore_0[2];
+
+static const MR_Integer mercury__lexer__lexer__functor_number_map_last_digit_is_underscore_0[2];
+
+static const MR_Integer mercury__lexer__lexer__functor_number_map_maybe_have_valid_token_0[1];
+
+static const MR_NotagFunctorDesc mercury__lexer__lexer__notag_functor_desc_maybe_have_valid_token_0;
+
+static const MR_EnumFunctorDesc mercury__lexer__lexer__enum_functor_desc_scanned_past_whitespace_0_0;
+
+static const MR_EnumFunctorDesc mercury__lexer__lexer__enum_functor_desc_scanned_past_whitespace_0_1;
+
+static const MR_EnumFunctorDescPtr mercury__lexer__lexer__enum_value_ordered_scanned_past_whitespace_0[2];
+
+static const MR_EnumFunctorDescPtr mercury__lexer__lexer__enum_name_ordered_scanned_past_whitespace_0[2];
+
+static const MR_Integer mercury__lexer__lexer__functor_number_map_scanned_past_whitespace_0[2];
+
+static const MR_EnumFunctorDesc mercury__lexer__lexer__enum_functor_desc_signedness_0_0;
+
+static const MR_EnumFunctorDesc mercury__lexer__lexer__enum_functor_desc_signedness_0_1;
+
+static const MR_EnumFunctorDescPtr mercury__lexer__lexer__enum_value_ordered_signedness_0[2];
+
+static const MR_EnumFunctorDescPtr mercury__lexer__lexer__enum_name_ordered_signedness_0[2];
+
+static const MR_Integer mercury__lexer__lexer__functor_number_map_signedness_0[2];
+
+static const MR_PseudoTypeInfo mercury__lexer__lexer__field_types_token_0_0[1];
+
+static const MR_DuFunctorDesc mercury__lexer__lexer__du_functor_desc_token_0_0;
+
+static const MR_PseudoTypeInfo mercury__lexer__lexer__field_types_token_0_1[1];
+
+static const MR_DuFunctorDesc mercury__lexer__lexer__du_functor_desc_token_0_1;
+
+static const MR_PseudoTypeInfo mercury__lexer__lexer__field_types_token_0_2[4];
+
+static const MR_DuFunctorDesc mercury__lexer__lexer__du_functor_desc_token_0_2;
+
+static const MR_PseudoTypeInfo mercury__lexer__lexer__field_types_token_0_3[1];
+
+static const MR_DuFunctorDesc mercury__lexer__lexer__du_functor_desc_token_0_3;
+
+static const MR_PseudoTypeInfo mercury__lexer__lexer__field_types_token_0_4[1];
+
+static const MR_DuFunctorDesc mercury__lexer__lexer__du_functor_desc_token_0_4;
+
+static const MR_PseudoTypeInfo mercury__lexer__lexer__field_types_token_0_5[1];
+
+static const MR_DuFunctorDesc mercury__lexer__lexer__du_functor_desc_token_0_5;
+
+static const MR_DuFunctorDesc mercury__lexer__lexer__du_functor_desc_token_0_6;
+
+static const MR_DuFunctorDesc mercury__lexer__lexer__du_functor_desc_token_0_7;
+
+static const MR_DuFunctorDesc mercury__lexer__lexer__du_functor_desc_token_0_8;
+
+static const MR_DuFunctorDesc mercury__lexer__lexer__du_functor_desc_token_0_9;
+
+static const MR_DuFunctorDesc mercury__lexer__lexer__du_functor_desc_token_0_10;
+
+static const MR_DuFunctorDesc mercury__lexer__lexer__du_functor_desc_token_0_11;
+
+static const MR_DuFunctorDesc mercury__lexer__lexer__du_functor_desc_token_0_12;
+
+static const MR_DuFunctorDesc mercury__lexer__lexer__du_functor_desc_token_0_13;
+
+static const MR_DuFunctorDesc mercury__lexer__lexer__du_functor_desc_token_0_14;
+
+static const MR_DuFunctorDesc mercury__lexer__lexer__du_functor_desc_token_0_15;
+
+static const MR_PseudoTypeInfo mercury__lexer__lexer__field_types_token_0_16[1];
+
+static const MR_DuFunctorDesc mercury__lexer__lexer__du_functor_desc_token_0_16;
+
+static const MR_PseudoTypeInfo mercury__lexer__lexer__field_types_token_0_17[1];
+
+static const MR_DuFunctorDesc mercury__lexer__lexer__du_functor_desc_token_0_17;
+
+static const MR_PseudoTypeInfo mercury__lexer__lexer__field_types_token_0_18[1];
+
+static const MR_DuFunctorDesc mercury__lexer__lexer__du_functor_desc_token_0_18;
+
+static const MR_DuFunctorDesc mercury__lexer__lexer__du_functor_desc_token_0_19;
+
+static const MR_PseudoTypeInfo mercury__lexer__lexer__field_types_token_0_20[1];
+
+static const MR_DuFunctorDesc mercury__lexer__lexer__du_functor_desc_token_0_20;
+
+static const MR_DuFunctorDescPtr mercury__lexer__lexer__du_stag_ordered_token_0_0[11];
+
+static const MR_DuFunctorDescPtr mercury__lexer__lexer__du_stag_ordered_token_0_1[1];
+
+static const MR_DuFunctorDescPtr mercury__lexer__lexer__du_stag_ordered_token_0_2[1];
+
+static const MR_DuFunctorDescPtr mercury__lexer__lexer__du_stag_ordered_token_0_3[8];
+
+static const MR_DuPtagLayout mercury__lexer__lexer__du_ptag_ordered_token_0[4];
+
+static const MR_DuFunctorDescPtr mercury__lexer__lexer__du_name_ordered_token_0[21];
+
+static const MR_Integer mercury__lexer__lexer__functor_number_map_token_0[21];
+
+static const MR_PseudoTypeInfo mercury__lexer__lexer__field_types_token_list_0_0[3];
+
+static const MR_DuFunctorDesc mercury__lexer__lexer__du_functor_desc_token_list_0_0;
+
+static const MR_DuFunctorDesc mercury__lexer__lexer__du_functor_desc_token_list_0_1;
+
+static const MR_DuFunctorDescPtr mercury__lexer__lexer__du_stag_ordered_token_list_0_0[1];
+
+static const MR_DuFunctorDescPtr mercury__lexer__lexer__du_stag_ordered_token_list_0_1[1];
+
+static const MR_DuPtagLayout mercury__lexer__lexer__du_ptag_ordered_token_list_0[2];
+
+static const MR_DuFunctorDescPtr mercury__lexer__lexer__du_name_ordered_token_list_0[2];
+
+static const MR_Integer mercury__lexer__lexer__functor_number_map_token_list_0[2];
+
+static MR_bool MR_CALL 
+mercury__lexer____Unify____get_token_action_0_0_10001(
+  MR_Box mercury__lexer__wrapper_arg_1,
+  MR_Box mercury__lexer__wrapper_arg_2);
+
+static void MR_CALL 
+mercury__lexer____Compare____get_token_action_0_0_10001(
+  MR_Box * mercury__lexer__wrapper_arg_1,
+  MR_Box mercury__lexer__wrapper_arg_2,
+  MR_Box mercury__lexer__wrapper_arg_3);
+
+static MR_bool MR_CALL 
+mercury__lexer____Unify____integer_base_0_0_10001(
+  MR_Box mercury__lexer__wrapper_arg_1,
+  MR_Box mercury__lexer__wrapper_arg_2);
+
+static void MR_CALL 
+mercury__lexer____Compare____integer_base_0_0_10001(
+  MR_Box * mercury__lexer__wrapper_arg_1,
+  MR_Box mercury__lexer__wrapper_arg_2,
+  MR_Box mercury__lexer__wrapper_arg_3);
+
+static MR_bool MR_CALL 
+mercury__lexer____Unify____integer_size_0_0_10001(
+  MR_Box mercury__lexer__wrapper_arg_1,
+  MR_Box mercury__lexer__wrapper_arg_2);
+
+static void MR_CALL 
+mercury__lexer____Compare____integer_size_0_0_10001(
+  MR_Box * mercury__lexer__wrapper_arg_1,
+  MR_Box mercury__lexer__wrapper_arg_2,
+  MR_Box mercury__lexer__wrapper_arg_3);
+
+static MR_bool MR_CALL 
+mercury__lexer____Unify____last_digit_is_underscore_0_0_10001(
+  MR_Box mercury__lexer__wrapper_arg_1,
+  MR_Box mercury__lexer__wrapper_arg_2);
+
+static void MR_CALL 
+mercury__lexer____Compare____last_digit_is_underscore_0_0_10001(
+  MR_Box * mercury__lexer__wrapper_arg_1,
+  MR_Box mercury__lexer__wrapper_arg_2,
+  MR_Box mercury__lexer__wrapper_arg_3);
+
+static MR_bool MR_CALL 
+mercury__lexer____Unify____maybe_have_valid_token_0_0_10001(
+  MR_Box mercury__lexer__wrapper_arg_1,
+  MR_Box mercury__lexer__wrapper_arg_2);
+
+static void MR_CALL 
+mercury__lexer____Compare____maybe_have_valid_token_0_0_10001(
+  MR_Box * mercury__lexer__wrapper_arg_1,
+  MR_Box mercury__lexer__wrapper_arg_2,
+  MR_Box mercury__lexer__wrapper_arg_3);
+
+static MR_bool MR_CALL 
+mercury__lexer____Unify____offset_0_0_10001(
+  MR_Box mercury__lexer__wrapper_arg_1,
+  MR_Box mercury__lexer__wrapper_arg_2);
+
+static void MR_CALL 
+mercury__lexer____Compare____offset_0_0_10001(
+  MR_Box * mercury__lexer__wrapper_arg_1,
+  MR_Box mercury__lexer__wrapper_arg_2,
+  MR_Box mercury__lexer__wrapper_arg_3);
+
+static MR_bool MR_CALL 
+mercury__lexer____Unify____scanned_past_whitespace_0_0_10001(
+  MR_Box mercury__lexer__wrapper_arg_1,
+  MR_Box mercury__lexer__wrapper_arg_2);
+
+static void MR_CALL 
+mercury__lexer____Compare____scanned_past_whitespace_0_0_10001(
+  MR_Box * mercury__lexer__wrapper_arg_1,
+  MR_Box mercury__lexer__wrapper_arg_2,
+  MR_Box mercury__lexer__wrapper_arg_3);
+
+static MR_bool MR_CALL 
+mercury__lexer____Unify____signedness_0_0_10001(
+  MR_Box mercury__lexer__wrapper_arg_1,
+  MR_Box mercury__lexer__wrapper_arg_2);
+
+static void MR_CALL 
+mercury__lexer____Compare____signedness_0_0_10001(
+  MR_Box * mercury__lexer__wrapper_arg_1,
+  MR_Box mercury__lexer__wrapper_arg_2,
+  MR_Box mercury__lexer__wrapper_arg_3);
+
+static MR_bool MR_CALL 
+mercury__lexer____Unify____string_token_context_0_0_10001(
+  MR_Box mercury__lexer__wrapper_arg_1,
+  MR_Box mercury__lexer__wrapper_arg_2);
+
+static void MR_CALL 
+mercury__lexer____Compare____string_token_context_0_0_10001(
+  MR_Box * mercury__lexer__wrapper_arg_1,
+  MR_Box mercury__lexer__wrapper_arg_2,
+  MR_Box mercury__lexer__wrapper_arg_3);
+
+static MR_bool MR_CALL 
+mercury__lexer____Unify____token_0_0_10001(
+  MR_Box mercury__lexer__wrapper_arg_1,
+  MR_Box mercury__lexer__wrapper_arg_2);
+
+static void MR_CALL 
+mercury__lexer____Compare____token_0_0_10001(
+  MR_Box * mercury__lexer__wrapper_arg_1,
+  MR_Box mercury__lexer__wrapper_arg_2,
+  MR_Box mercury__lexer__wrapper_arg_3);
+
+static MR_bool MR_CALL 
+mercury__lexer____Unify____token_context_0_0_10001(
+  MR_Box mercury__lexer__wrapper_arg_1,
+  MR_Box mercury__lexer__wrapper_arg_2);
+
+static void MR_CALL 
+mercury__lexer____Compare____token_context_0_0_10001(
+  MR_Box * mercury__lexer__wrapper_arg_1,
+  MR_Box mercury__lexer__wrapper_arg_2,
+  MR_Box mercury__lexer__wrapper_arg_3);
+
+static MR_bool MR_CALL 
+mercury__lexer____Unify____token_list_0_0_10001(
+  MR_Box mercury__lexer__wrapper_arg_1,
+  MR_Box mercury__lexer__wrapper_arg_2);
+
+static void MR_CALL 
+mercury__lexer____Compare____token_list_0_0_10001(
+  MR_Box * mercury__lexer__wrapper_arg_1,
+  MR_Box mercury__lexer__wrapper_arg_2,
+  MR_Box mercury__lexer__wrapper_arg_3);
+
+static MR_Integer MR_CALL 
+mercury__lexer__f_85_110_117_115_101_100_65_114_103_115_95_95_102_117_110_99_95_95_67_108_97_115_115_77_101_116_104_111_100_95_102_111_114_95_111_112_115_95_95_111_112_95_116_97_98_108_101_95_95_95_95_111_112_115_95_95_109_101_114_99_117_114_121_95_111_112_95_116_97_98_108_101_95_95_97_114_105_116_121_48_95_95_95_95_95_95_111_112_115_95_95_109_97_120_95_112_114_105_111_114_105_116_121_95_49_95_95_91_49_93_95_48_1_f_in__ops_0(void);
+
+static MR_Word MR_CALL 
+mercury__lexer__null_character_error_0_f_0(void);
+
+static MR_bool MR_CALL 
+mercury__lexer__rev_char_list_to_string_2_p_0(
+  MR_Word mercury__lexer__RevChars_3,
+  MR_String * mercury__lexer__String_4);
+
+static void MR_CALL 
+mercury__lexer__conv_string_to_int_5_p_0(
+  MR_String mercury__lexer__String_6,
+  MR_Word mercury__lexer__Base_7,
+  MR_Word mercury__lexer__Signedness_8,
+  MR_Word mercury__lexer__Size_9,
+  MR_Word * mercury__lexer__Token_10);
+
+static void MR_CALL 
+mercury__lexer__rev_char_list_to_int_5_p_0(
+  MR_Word mercury__lexer__RevChars_6,
+  MR_Word mercury__lexer__Base_7,
+  MR_Word mercury__lexer__Signedness_8,
+  MR_Word mercury__lexer__Size_9,
+  MR_Word * mercury__lexer__Token_10);
+
+static void MR_CALL 
+mercury__lexer__string_get_float_exponent_3_8_p_0(
+  MR_String mercury__lexer__String_9,
+  MR_Word mercury__lexer__STATE_VARIABLE_LastDigit_0_18,
+  MR_Integer mercury__lexer__Len_11,
+  MR_Word mercury__lexer__Posn0_12,
+  MR_Word * mercury__lexer__Token_13,
+  MR_Integer * mercury__lexer__Context_14,
+  MR_Word mercury__lexer__STATE_VARIABLE_Posn_0_19,
+  MR_Word * mercury__lexer__STATE_VARIABLE_Posn_20);
+
+static void MR_CALL 
+mercury__lexer__get_float_exponent_3_6_p_0(
+  MR_Word mercury__lexer__Stream_7,
+  MR_Word mercury__lexer__STATE_VARIABLE_LastDigit_0_15,
+  MR_Word mercury__lexer__STATE_VARIABLE_RevChars_0_16,
+  MR_Word * mercury__lexer__Token_10);
+
+static void MR_CALL 
+mercury__lexer__get_float_exponent_2_5_p_0(
+  MR_Word mercury__lexer__Stream_6,
+  MR_Word mercury__lexer__STATE_VARIABLE_RevChars_0_14,
+  MR_Word * mercury__lexer__Token_8);
+
+static void MR_CALL 
+mercury__lexer__string_get_float_exponent_7_p_0(
+  MR_String mercury__lexer__String_8,
+  MR_Integer mercury__lexer__Len_9,
+  MR_Word mercury__lexer__Posn0_10,
+  MR_Word * mercury__lexer__Token_11,
+  MR_Integer * mercury__lexer__Context_12,
+  MR_Word mercury__lexer__STATE_VARIABLE_Posn_0_17,
+  MR_Word * mercury__lexer__STATE_VARIABLE_Posn_18);
+
+static void MR_CALL 
+mercury__lexer__get_float_exponent_5_p_0(
+  MR_Word mercury__lexer__Stream_6,
+  MR_Word mercury__lexer__STATE_VARIABLE_RevChars_0_14,
+  MR_Word * mercury__lexer__Token_8);
+
+static void MR_CALL 
+mercury__lexer__string_get_float_decimals_8_p_0(
+  MR_String mercury__lexer__String_9,
+  MR_Word mercury__lexer__STATE_VARIABLE_LastDigit_0_18,
+  MR_Integer mercury__lexer__Len_11,
+  MR_Word mercury__lexer__Posn0_12,
+  MR_Word * mercury__lexer__Token_13,
+  MR_Integer * mercury__lexer__Context_14,
+  MR_Word mercury__lexer__STATE_VARIABLE_Posn_0_19,
+  MR_Word * mercury__lexer__STATE_VARIABLE_Posn_20);
+
+static void MR_CALL 
+mercury__lexer__get_float_decimals_6_p_0(
+  MR_Word mercury__lexer__Stream_7,
+  MR_Word mercury__lexer__STATE_VARIABLE_LastDigit_0_15,
+  MR_Word mercury__lexer__STATE_VARIABLE_RevChars_0_16,
+  MR_Word * mercury__lexer__Token_10);
+
+static void MR_CALL 
+mercury__lexer__string_get_int_dot_8_p_0(
+  MR_String mercury__lexer__String_9,
+  MR_Word mercury__lexer__STATE_VARIABLE_LastDigit_0_18,
+  MR_Integer mercury__lexer__Len_11,
+  MR_Word mercury__lexer__Posn0_12,
+  MR_Word * mercury__lexer__Token_13,
+  MR_Integer * mercury__lexer__Context_14,
+  MR_Word mercury__lexer__STATE_VARIABLE_Posn_0_19,
+  MR_Word * mercury__lexer__STATE_VARIABLE_Posn_20);
+
+static void MR_CALL 
+mercury__lexer__get_int_dot_6_p_0(
+  MR_Word mercury__lexer__Stream_7,
+  MR_Word mercury__lexer__STATE_VARIABLE_LastDigit_0_20,
+  MR_Word mercury__lexer__STATE_VARIABLE_RevChars_0_21,
+  MR_Word * mercury__lexer__Token_10);
+
+static void MR_CALL 
+mercury__lexer__string_get_integer_size_suffix_2_11_p_0(
+  MR_String mercury__lexer__String_12,
+  MR_Integer mercury__lexer__Len_13,
+  MR_Word mercury__lexer__Posn1_14,
+  MR_Word mercury__lexer__LastDigitPosn_15,
+  MR_Word mercury__lexer__Base_16,
+  MR_Word mercury__lexer__Signedness_17,
+  MR_Char mercury__lexer__ExpectedChar_18,
+  MR_Word mercury__lexer__Size_19,
+  MR_Word * mercury__lexer__Token_20,
+  MR_Word mercury__lexer__STATE_VARIABLE_Posn_0_25,
+  MR_Word * mercury__lexer__STATE_VARIABLE_Posn_26);
+
+static void MR_CALL 
+mercury__lexer__string_get_integer_size_suffix_9_p_0(
+  MR_String mercury__lexer__String_10,
+  MR_Integer mercury__lexer__Len_11,
+  MR_Word mercury__lexer__Posn1_12,
+  MR_Word mercury__lexer__LastDigitPosn_13,
+  MR_Word mercury__lexer__Base_14,
+  MR_Word mercury__lexer__Signedness_15,
+  MR_Word * mercury__lexer__Token_16,
+  MR_Word mercury__lexer__STATE_VARIABLE_Posn_0_23,
+  MR_Word * mercury__lexer__STATE_VARIABLE_Posn_24);
+
+static void MR_CALL 
+mercury__lexer__get_integer_size_suffix_2_9_p_0(
+  MR_Word mercury__lexer__Stream_10,
+  MR_Word mercury__lexer__RevChars_11,
+  MR_Word mercury__lexer__Base_12,
+  MR_Word mercury__lexer__Signedness_13,
+  MR_Char mercury__lexer__ExpectedNextChar_14,
+  MR_Word mercury__lexer__ExpectedSize_15,
+  MR_Word * mercury__lexer__Token_16);
+
+static void MR_CALL 
+mercury__lexer__get_integer_size_suffix_7_p_0(
+  MR_Word mercury__lexer__Stream_8,
+  MR_Word mercury__lexer__RevChars_9,
+  MR_Word mercury__lexer__Base_10,
+  MR_Word mercury__lexer__Signedness_11,
+  MR_Word * mercury__lexer__Token_12);
+
+static void MR_CALL 
+mercury__lexer__string_get_number_8_p_0(
+  MR_String mercury__lexer__String_9,
+  MR_Word mercury__lexer__STATE_VARIABLE_LastDigit_0_19,
+  MR_Integer mercury__lexer__Len_11,
+  MR_Word mercury__lexer__Posn0_12,
+  MR_Word * mercury__lexer__Token_13,
+  MR_Integer * mercury__lexer__Context_14,
+  MR_Word mercury__lexer__STATE_VARIABLE_Posn_0_20,
+  MR_Word * mercury__lexer__STATE_VARIABLE_Posn_21);
+
+static void MR_CALL 
+mercury__lexer__get_number_6_p_0(
+  MR_Word mercury__lexer__Stream_7,
+  MR_Word mercury__lexer__STATE_VARIABLE_LastDigit_0_15,
+  MR_Word mercury__lexer__STATE_VARIABLE_RevChars_0_16,
+  MR_Word * mercury__lexer__Token_10);
+
+static void MR_CALL 
+mercury__lexer__string_get_hex_2_8_p_0(
+  MR_String mercury__lexer__String_9,
+  MR_Word mercury__lexer__STATE_VARIABLE_LastDigit_0_19,
+  MR_Integer mercury__lexer__Len_11,
+  MR_Word mercury__lexer__Posn1_12,
+  MR_Word * mercury__lexer__Token_13,
+  MR_Integer * mercury__lexer__Context_14,
+  MR_Word mercury__lexer__STATE_VARIABLE_Posn_0_20,
+  MR_Word * mercury__lexer__STATE_VARIABLE_Posn_21);
+
+static void MR_CALL 
+mercury__lexer__get_hex_2_6_p_0(
+  MR_Word mercury__lexer__Stream_7,
+  MR_Word mercury__lexer__STATE_VARIABLE_LastDigit_0_15,
+  MR_Word mercury__lexer__STATE_VARIABLE_RevChars_0_16,
+  MR_Word * mercury__lexer__Token_10);
+
+static void MR_CALL 
+mercury__lexer__string_get_hex_7_p_0(
+  MR_String mercury__lexer__String_8,
+  MR_Integer mercury__lexer__Len_9,
+  MR_Word mercury__lexer__Posn0_10,
+  MR_Word * mercury__lexer__Token_11,
+  MR_Integer * mercury__lexer__Context_12,
+  MR_Word mercury__lexer__STATE_VARIABLE_Posn_0_17,
+  MR_Word * mercury__lexer__STATE_VARIABLE_Posn_18);
+
+static void MR_CALL 
+mercury__lexer__get_hex_4_p_0(
+  MR_Word mercury__lexer__Stream_5,
+  MR_Word * mercury__lexer__Token_6);
+
+static void MR_CALL 
+mercury__lexer__string_get_octal_2_8_p_0(
+  MR_String mercury__lexer__String_9,
+  MR_Word mercury__lexer__STATE_VARIABLE_LastDigit_0_19,
+  MR_Integer mercury__lexer__Len_11,
+  MR_Word mercury__lexer__Posn1_12,
+  MR_Word * mercury__lexer__Token_13,
+  MR_Integer * mercury__lexer__Context_14,
+  MR_Word mercury__lexer__STATE_VARIABLE_Posn_0_20,
+  MR_Word * mercury__lexer__STATE_VARIABLE_Posn_21);
+
+static void MR_CALL 
+mercury__lexer__get_octal_2_6_p_0(
+  MR_Word mercury__lexer__Stream_7,
+  MR_Word mercury__lexer__STATE_VARIABLE_LastDigit_0_15,
+  MR_Word mercury__lexer__STATE_VARIABLE_RevChars_0_16,
+  MR_Word * mercury__lexer__Token_10);
+
+static void MR_CALL 
+mercury__lexer__string_get_octal_7_p_0(
+  MR_String mercury__lexer__String_8,
+  MR_Integer mercury__lexer__Len_9,
+  MR_Word mercury__lexer__Posn0_10,
+  MR_Word * mercury__lexer__Token_11,
+  MR_Integer * mercury__lexer__Context_12,
+  MR_Word mercury__lexer__STATE_VARIABLE_Posn_0_17,
+  MR_Word * mercury__lexer__STATE_VARIABLE_Posn_18);
+
+static void MR_CALL 
+mercury__lexer__get_octal_4_p_0(
+  MR_Word mercury__lexer__Stream_5,
+  MR_Word * mercury__lexer__Token_6);
+
+static void MR_CALL 
+mercury__lexer__string_get_binary_2_8_p_0(
+  MR_String mercury__lexer__String_9,
+  MR_Word mercury__lexer__STATE_VARIABLE_LastDigit_0_19,
+  MR_Integer mercury__lexer__Len_11,
+  MR_Word mercury__lexer__Posn1_12,
+  MR_Word * mercury__lexer__Token_13,
+  MR_Integer * mercury__lexer__Context_14,
+  MR_Word mercury__lexer__STATE_VARIABLE_Posn_0_20,
+  MR_Word * mercury__lexer__STATE_VARIABLE_Posn_21);
+
+static void MR_CALL 
+mercury__lexer__get_binary_2_6_p_0(
+  MR_Word mercury__lexer__Stream_7,
+  MR_Word mercury__lexer__STATE_VARIABLE_LastDigit_0_15,
+  MR_Word mercury__lexer__STATE_VARIABLE_RevChars_0_16,
+  MR_Word * mercury__lexer__Token_10);
+
+static void MR_CALL 
+mercury__lexer__string_get_binary_7_p_0(
+  MR_String mercury__lexer__String_8,
+  MR_Integer mercury__lexer__Len_9,
+  MR_Word mercury__lexer__Posn0_10,
+  MR_Word * mercury__lexer__Token_11,
+  MR_Integer * mercury__lexer__Context_12,
+  MR_Word mercury__lexer__STATE_VARIABLE_Posn_0_17,
+  MR_Word * mercury__lexer__STATE_VARIABLE_Posn_18);
+
+static void MR_CALL 
+mercury__lexer__get_binary_4_p_0(
+  MR_Word mercury__lexer__Stream_5,
+  MR_Word * mercury__lexer__Token_6);
+
+static void MR_CALL 
+mercury__lexer__string_get_char_code_7_p_0(
+  MR_String mercury__lexer__String_8,
+  MR_Integer mercury__lexer__Len_9,
+  MR_Word mercury__lexer__Posn0_10,
+  MR_Word * mercury__lexer__Token_11,
+  MR_Integer * mercury__lexer__Context_12,
+  MR_Word mercury__lexer__STATE_VARIABLE_Posn_0_16,
+  MR_Word * mercury__lexer__STATE_VARIABLE_Posn_17);
+
+static void MR_CALL 
+mercury__lexer__get_char_code_4_p_0(
+  MR_Word mercury__lexer__Stream_5,
+  MR_Word * mercury__lexer__Token_6);
+
+static void MR_CALL 
+mercury__lexer__string_get_zero_7_p_0(
+  MR_String mercury__lexer__String_8,
+  MR_Integer mercury__lexer__Len_9,
+  MR_Word mercury__lexer__Posn0_10,
+  MR_Word * mercury__lexer__Token_11,
+  MR_Integer * mercury__lexer__Context_12,
+  MR_Word mercury__lexer__STATE_VARIABLE_Posn_0_17,
+  MR_Word * mercury__lexer__STATE_VARIABLE_Posn_18);
+
+static void MR_CALL 
+mercury__lexer__get_zero_4_p_0(
+  MR_Word mercury__lexer__Stream_5,
+  MR_Word * mercury__lexer__Token_6);
+
+static void MR_CALL 
+mercury__lexer__string_get_variable_7_p_0(
+  MR_String mercury__lexer__String_8,
+  MR_Integer mercury__lexer__Len_9,
+  MR_Word mercury__lexer__Posn0_10,
+  MR_Word * mercury__lexer__Token_11,
+  MR_Integer * mercury__lexer__Context_12,
+  MR_Word mercury__lexer__STATE_VARIABLE_Posn_0_16,
+  MR_Word * mercury__lexer__STATE_VARIABLE_Posn_17);
+
+static void MR_CALL 
+mercury__lexer__get_variable_5_p_0(
+  MR_Word mercury__lexer__Stream_6,
+  MR_Word mercury__lexer__STATE_VARIABLE_RevChars_0_14,
+  MR_Word * mercury__lexer__Token_8);
+
+static void MR_CALL 
+mercury__lexer__string_get_graphic_7_p_0(
+  MR_String mercury__lexer__String_8,
+  MR_Integer mercury__lexer__Len_9,
+  MR_Word mercury__lexer__Posn0_10,
+  MR_Word * mercury__lexer__Token_11,
+  MR_Integer * mercury__lexer__Context_12,
+  MR_Word mercury__lexer__STATE_VARIABLE_Posn_0_16,
+  MR_Word * mercury__lexer__STATE_VARIABLE_Posn_17);
+
+static void MR_CALL 
+mercury__lexer__get_graphic_5_p_0(
+  MR_Word mercury__lexer__Stream_6,
+  MR_Word mercury__lexer__STATE_VARIABLE_RevChars_0_14,
+  MR_Word * mercury__lexer__Token_8);
+
+static void MR_CALL 
+mercury__lexer__string_get_source_line_number_7_p_0(
+  MR_String mercury__lexer__String_8,
+  MR_Integer mercury__lexer__Len_9,
+  MR_Word mercury__lexer__Posn1_10,
+  MR_Word * mercury__lexer__Token_11,
+  MR_Word * mercury__lexer__HaveToken_12,
+  MR_Word mercury__lexer__STATE_VARIABLE_Posn_0_19,
+  MR_Word * mercury__lexer__STATE_VARIABLE_Posn_20);
+
+static void MR_CALL 
+mercury__lexer__get_source_line_number_6_p_0(
+  MR_Word mercury__lexer__Stream_7,
+  MR_Word mercury__lexer__STATE_VARIABLE_RevChars_0_18,
+  MR_Word * mercury__lexer__Token_9,
+  MR_Word * mercury__lexer__HaveToken_10);
+
+static void MR_CALL 
+mercury__lexer__string_get_implementation_defined_literal_rest_7_p_0(
+  MR_String mercury__lexer__String_8,
+  MR_Integer mercury__lexer__Len_9,
+  MR_Word mercury__lexer__Posn0_10,
+  MR_Word * mercury__lexer__Token_11,
+  MR_Integer * mercury__lexer__Context_12,
+  MR_Word mercury__lexer__STATE_VARIABLE_Posn_0_18,
+  MR_Word * mercury__lexer__STATE_VARIABLE_Posn_19);
+
+static void MR_CALL 
+mercury__lexer__get_implementation_defined_literal_rest_4_p_0(
+  MR_Word mercury__lexer__Stream_5,
+  MR_Word * mercury__lexer__Token_6);
+
+static void MR_CALL 
+mercury__lexer__string_get_name_7_p_0(
+  MR_String mercury__lexer__String_8,
+  MR_Integer mercury__lexer__Len_9,
+  MR_Word mercury__lexer__Posn0_10,
+  MR_Word * mercury__lexer__Token_11,
+  MR_Integer * mercury__lexer__Context_12,
+  MR_Word mercury__lexer__STATE_VARIABLE_Posn_0_16,
+  MR_Word * mercury__lexer__STATE_VARIABLE_Posn_17);
+
+static void MR_CALL 
+mercury__lexer__get_name_5_p_0(
+  MR_Word mercury__lexer__Stream_6,
+  MR_Word mercury__lexer__STATE_VARIABLE_RevChars_0_14,
+  MR_Word * mercury__lexer__Token_8);
+
+static void MR_CALL 
+mercury__lexer__string_get_octal_escape_10_p_0(
+  MR_String mercury__lexer__String_11,
+  MR_Integer mercury__lexer__Len_12,
+  MR_Char mercury__lexer__QuoteChar_13,
+  MR_Word mercury__lexer__STATE_VARIABLE_RevChars_0_21,
+  MR_Word mercury__lexer__STATE_VARIABLE_RevOctalChars_0_22,
+  MR_Word mercury__lexer__Posn0_16,
+  MR_Word * mercury__lexer__Token_17,
+  MR_Integer * mercury__lexer__Context_18,
+  MR_Word mercury__lexer__STATE_VARIABLE_Posn_0_23,
+  MR_Word * mercury__lexer__STATE_VARIABLE_Posn_24);
+
+static void MR_CALL 
+mercury__lexer__get_octal_escape_7_p_0(
+  MR_Word mercury__lexer__Stream_8,
+  MR_Char mercury__lexer__QuoteChar_9,
+  MR_Word mercury__lexer__STATE_VARIABLE_RevChars_0_17,
+  MR_Word mercury__lexer__STATE_VARIABLE_RevOctalChars_0_18,
+  MR_Word * mercury__lexer__Token_12);
+
+static void MR_CALL 
+mercury__lexer__string_get_hex_escape_10_p_0(
+  MR_String mercury__lexer__String_11,
+  MR_Integer mercury__lexer__Len_12,
+  MR_Char mercury__lexer__QuoteChar_13,
+  MR_Word mercury__lexer__STATE_VARIABLE_RevChars_0_21,
+  MR_Word mercury__lexer__STATE_VARIABLE_RevHexChars_0_22,
+  MR_Word mercury__lexer__Posn0_16,
+  MR_Word * mercury__lexer__Token_17,
+  MR_Integer * mercury__lexer__Context_18,
+  MR_Word mercury__lexer__STATE_VARIABLE_Posn_0_23,
+  MR_Word * mercury__lexer__STATE_VARIABLE_Posn_24);
+
+static void MR_CALL 
+mercury__lexer__get_hex_escape_7_p_0(
+  MR_Word mercury__lexer__Stream_8,
+  MR_Char mercury__lexer__QuoteChar_9,
+  MR_Word mercury__lexer__STATE_VARIABLE_RevChars_0_17,
+  MR_Word mercury__lexer__STATE_VARIABLE_RevHexChars_0_18,
+  MR_Word * mercury__lexer__Token_12);
+
+static void MR_CALL 
+mercury__lexer__string_get_unicode_escape_11_p_0(
+  MR_Integer mercury__lexer__NumHexChars_12,
+  MR_String mercury__lexer__String_13,
+  MR_Integer mercury__lexer__Len_14,
+  MR_Char mercury__lexer__QuoteChar_15,
+  MR_Word mercury__lexer__STATE_VARIABLE_RevChars_0_26,
+  MR_Word mercury__lexer__STATE_VARIABLE_RevHexChars_0_27,
+  MR_Word mercury__lexer__Posn0_18,
+  MR_Word * mercury__lexer__Token_19,
+  MR_Integer * mercury__lexer__Context_20,
+  MR_Word mercury__lexer__STATE_VARIABLE_Posn_0_28,
+  MR_Word * mercury__lexer__STATE_VARIABLE_Posn_29);
+
+static void MR_CALL 
+mercury__lexer__get_unicode_escape_8_p_0(
+  MR_Word mercury__lexer__Stream_9,
+  MR_Integer mercury__lexer__NumHexChars_10,
+  MR_Char mercury__lexer__QuoteChar_11,
+  MR_Word mercury__lexer__STATE_VARIABLE_RevChars_0_22,
+  MR_Word mercury__lexer__STATE_VARIABLE_RevHexChars_0_23,
+  MR_Word * mercury__lexer__Token_14);
+
+static void MR_CALL 
+mercury__lexer__string_get_quoted_name_escape_9_p_0(
+  MR_String mercury__lexer__String_10,
+  MR_Integer mercury__lexer__Len_11,
+  MR_Char mercury__lexer__QuoteChar_12,
+  MR_Word mercury__lexer__STATE_VARIABLE_RevChars_0_20,
+  MR_Word mercury__lexer__Posn0_14,
+  MR_Word * mercury__lexer__Token_15,
+  MR_Integer * mercury__lexer__Context_16,
+  MR_Word mercury__lexer__STATE_VARIABLE_Posn_0_21,
+  MR_Word * mercury__lexer__STATE_VARIABLE_Posn_22);
+
+static void MR_CALL 
+mercury__lexer__get_quoted_name_escape_6_p_0(
+  MR_Word mercury__lexer__Stream_7,
+  MR_Char mercury__lexer__QuoteChar_8,
+  MR_Word mercury__lexer__STATE_VARIABLE_RevChars_0_16,
+  MR_Word * mercury__lexer__Token_10);
+
+static void MR_CALL 
+mercury__lexer__finish_quoted_name_3_p_0(
+  MR_Char mercury__lexer__QuoteChar_4,
+  MR_Word mercury__lexer__RevChars_5,
+  MR_Word * mercury__lexer__Token_6);
+
+static void MR_CALL 
+mercury__lexer__string_get_quoted_name_9_p_0(
+  MR_String mercury__lexer__String_10,
+  MR_Integer mercury__lexer__Len_11,
+  MR_Char mercury__lexer__QuoteChar_12,
+  MR_Word mercury__lexer__STATE_VARIABLE_RevChars_0_19,
+  MR_Word mercury__lexer__Posn0_14,
+  MR_Word * mercury__lexer__Token_15,
+  MR_Integer * mercury__lexer__Context_16,
+  MR_Word mercury__lexer__STATE_VARIABLE_Posn_0_20,
+  MR_Word * mercury__lexer__STATE_VARIABLE_Posn_21);
+
+static void MR_CALL 
+mercury__lexer__get_quoted_name_6_p_0(
+  MR_Word mercury__lexer__Stream_7,
+  MR_Char mercury__lexer__QuoteChar_8,
+  MR_Word mercury__lexer__STATE_VARIABLE_RevChars_0_15,
+  MR_Word * mercury__lexer__Token_10);
+
+static void MR_CALL 
+mercury__lexer__string_start_quoted_name_9_p_0(
+  MR_String mercury__lexer__String_10,
+  MR_Integer mercury__lexer__Len_11,
+  MR_Char mercury__lexer__QuoteChar_12,
+  MR_Word mercury__lexer__STATE_VARIABLE_RevChars_0_22,
+  MR_Word mercury__lexer__Posn0_14,
+  MR_Word * mercury__lexer__Token_15,
+  MR_Integer * mercury__lexer__Context_16,
+  MR_Word mercury__lexer__STATE_VARIABLE_Posn_0_23,
+  MR_Word * mercury__lexer__STATE_VARIABLE_Posn_24);
+
+static void MR_CALL 
+mercury__lexer__start_quoted_name_6_p_0(
+  MR_Word mercury__lexer__Stream_7,
+  MR_Char mercury__lexer__QuoteChar_8,
+  MR_Word mercury__lexer__STATE_VARIABLE_RevChars_0_15,
+  MR_Word * mercury__lexer__Token_10);
+
+static void MR_CALL 
+mercury__lexer__string_get_comment_2_7_p_0(
+  MR_String mercury__lexer__String_8,
+  MR_Integer mercury__lexer__Len_9,
+  MR_Word mercury__lexer__Posn0_10,
+  MR_Word * mercury__lexer__Token_11,
+  MR_Word * mercury__lexer__HaveToken_12,
+  MR_Word mercury__lexer__STATE_VARIABLE_Posn_0_15,
+  MR_Word * mercury__lexer__STATE_VARIABLE_Posn_16);
+
+static void MR_CALL 
+mercury__lexer__get_comment_2_5_p_0(
+  MR_Word mercury__lexer__Stream_6,
+  MR_Word * mercury__lexer__Token_7,
+  MR_Word * mercury__lexer__HaveToken_8);
+
+static void MR_CALL 
+mercury__lexer__string_get_comment_7_p_0(
+  MR_String mercury__lexer__String_8,
+  MR_Integer mercury__lexer__Len_9,
+  MR_Word mercury__lexer__Posn0_10,
+  MR_Word * mercury__lexer__Token_11,
+  MR_Word * mercury__lexer__HaveToken_12,
+  MR_Word mercury__lexer__STATE_VARIABLE_Posn_0_15,
+  MR_Word * mercury__lexer__STATE_VARIABLE_Posn_16);
+
+static void MR_CALL 
+mercury__lexer__get_comment_5_p_0(
+  MR_Word mercury__lexer__Stream_6,
+  MR_Word * mercury__lexer__Token_7,
+  MR_Word * mercury__lexer__HaveToken_8);
+
+static void MR_CALL 
+mercury__lexer__string_get_slash_7_p_0(
+  MR_String mercury__lexer__String_8,
+  MR_Integer mercury__lexer__Len_9,
+  MR_Word mercury__lexer__Posn0_10,
+  MR_Word * mercury__lexer__Token_11,
+  MR_Word * mercury__lexer__HaveToken_12,
+  MR_Word mercury__lexer__STATE_VARIABLE_Posn_0_16,
+  MR_Word * mercury__lexer__STATE_VARIABLE_Posn_17);
+
+static void MR_CALL 
+mercury__lexer__get_slash_5_p_0(
+  MR_Word mercury__lexer__Stream_6,
+  MR_Word * mercury__lexer__Token_7,
+  MR_Word * mercury__lexer__HaveToken_8);
+
+static void MR_CALL 
+mercury__lexer__string_skip_to_eol_6_p_0(
+  MR_String mercury__lexer__String_7,
+  MR_Integer mercury__lexer__Len_8,
+  MR_Word * mercury__lexer__Token_9,
+  MR_Word * mercury__lexer__HaveToken_10,
+  MR_Word mercury__lexer__STATE_VARIABLE_Posn_0_13,
+  MR_Word * mercury__lexer__STATE_VARIABLE_Posn_14);
+
+static void MR_CALL 
+mercury__lexer__skip_to_eol_5_p_0(
+  MR_Word mercury__lexer__Stream_6,
+  MR_Word * mercury__lexer__Token_7,
+  MR_Word * mercury__lexer__HaveToken_8);
+
+static void MR_CALL 
+mercury__lexer__string_get_dot_7_p_0(
+  MR_String mercury__lexer__String_8,
+  MR_Integer mercury__lexer__Len_9,
+  MR_Word mercury__lexer__Posn0_10,
+  MR_Word * mercury__lexer__Token_11,
+  MR_Integer * mercury__lexer__Context_12,
+  MR_Word mercury__lexer__STATE_VARIABLE_Posn_0_15,
+  MR_Word * mercury__lexer__STATE_VARIABLE_Posn_16);
+
+static void MR_CALL 
+mercury__lexer__get_dot_4_p_0(
+  MR_Word mercury__lexer__Stream_5,
+  MR_Word * mercury__lexer__Token_6);
+
+static void MR_CALL 
+mercury__lexer__handle_special_token_3_p_0(
+  MR_Char mercury__lexer__Char_4,
+  MR_Word mercury__lexer__ScannedPastWhiteSpace_5,
+  MR_Word * mercury__lexer__Token_6);
+
+static MR_bool MR_CALL 
+mercury__lexer__have_token_with_context_2_p_0(
+  MR_Word mercury__lexer__HeadVar__1_1,
+  MR_Integer * mercury__lexer__Context_3);
+
+static void MR_CALL 
+mercury__lexer__do_not_have_token_2_p_0(
+  MR_Word * mercury__lexer__Token_3,
+  MR_Word * mercury__lexer__HaveToken_4);
+
+static void MR_CALL 
+mercury__lexer__string_have_token_4_p_0(
+  MR_Word mercury__lexer__Posn0_5,
+  MR_Word * mercury__lexer__HeadVar__2_2,
+  MR_Word mercury__lexer__STATE_VARIABLE_Posn_0_8,
+  MR_Word * mercury__lexer__STATE_VARIABLE_Posn_9);
+
+static void MR_CALL 
+mercury__lexer__have_token_4_p_0(
+  MR_Word mercury__lexer__Stream_5,
+  MR_Word * mercury__lexer__HeadVar__2_2);
+
+static void MR_CALL 
+mercury__lexer__string_get_token_2_7_p_0(
+  MR_String mercury__lexer__String_8,
+  MR_Integer mercury__lexer__Len_9,
+  MR_Word mercury__lexer__ScannedPastWhiteSpace_10,
+  MR_Word * mercury__lexer__Token_11,
+  MR_Integer * mercury__lexer__Context_12,
+  MR_Word mercury__lexer__STATE_VARIABLE_Posn_0_17,
+  MR_Word * mercury__lexer__STATE_VARIABLE_Posn_18);
+
+static void MR_CALL 
+mercury__lexer__string_get_token_6_p_0(
+  MR_String mercury__lexer__String_7,
+  MR_Integer mercury__lexer__Len_8,
+  MR_Word * mercury__lexer__Token_9,
+  MR_Integer * mercury__lexer__Context_10,
+  MR_Word mercury__lexer__STATE_VARIABLE_Posn_0_12,
+  MR_Word * mercury__lexer__STATE_VARIABLE_Posn_13);
+
+static void MR_CALL 
+mercury__lexer__unsafe_get_float_between_4_p_0(
+  MR_String mercury__lexer__Str_1,
+  MR_Integer mercury__lexer__Start_2,
+  MR_Integer mercury__lexer__End_3,
+  MR_String * mercury__lexer__FloatStr_4);
+
+static void MR_CALL 
+mercury__lexer__grab_float_string_5_p_0(
+  MR_String mercury__lexer__String_6,
+  MR_Word mercury__lexer__Posn0_7,
+  MR_String * mercury__lexer__FloatString_8,
+  MR_Word mercury__lexer__Posn_9,
+  MR_Word * mercury__lexer__Posn_5);
+
+static void MR_CALL 
+mercury__lexer__grab_string_5_p_0(
+  MR_String mercury__lexer__String_6,
+  MR_Word mercury__lexer__Posn0_7,
+  MR_String * mercury__lexer__SubString_8,
+  MR_Word mercury__lexer__Posn_9,
+  MR_Word * mercury__lexer__Posn_5);
+
+static void MR_CALL 
+mercury__lexer__string_ungetchar_3_p_0(
+  MR_String mercury__lexer__String_4,
+  MR_Word mercury__lexer__Posn0_5,
+  MR_Word * mercury__lexer__Posn_6);
+
+static MR_bool MR_CALL 
+mercury__lexer__string_read_char_5_p_0(
+  MR_String mercury__lexer__String_6,
+  MR_Integer mercury__lexer__Len_7,
+  MR_Char * mercury__lexer__Char_8,
+  MR_Word mercury__lexer__Posn0_9,
+  MR_Word * mercury__lexer__Posn_10);
+
+static void MR_CALL 
+mercury__lexer__string_get_context_4_p_0(
+  MR_Word mercury__lexer__StartPosn_5,
+  MR_Integer * mercury__lexer__Context_6,
+  MR_Word mercury__lexer__STATE_VARIABLE_Posn_0_11,
+  MR_Word * mercury__lexer__STATE_VARIABLE_Posn_12);
+
+
+static /* final */ const MR_Box mercury__lexer_scalar_common_1[1][3];
+
+static /* final */ const MR_Box mercury__lexer_scalar_common_2[1][4];
+
+static /* final */ const MR_Box mercury__lexer_scalar_common_3[3][5];
+
+static /* final */ const MR_Box mercury__lexer_scalar_common_4[41][2];
+
+static /* final */ const MR_Box mercury__lexer_scalar_common_6[5][1];
+
+static /* final */ const MR_Integer mercury__lexer_scalar_common_8[1][4];
+
+
+/* sealed */ struct mercury__lexer__vector_common_type_5_0_s {
+  const MR_Integer mercury__lexer__vector_common_type_5_0__vct_5_f_0;
+  const MR_String mercury__lexer__vector_common_type_5_0__vct_5_f_1;
+};
+
+static /* final */ const struct mercury__lexer__vector_common_type_5_0_s mercury__lexer_vector_common_5[4];
+
+/* sealed */ struct mercury__lexer__vector_common_type_7_0_s {
+  const MR_Word mercury__lexer__vector_common_type_7_0__vct_7_f_0;
+};
+
+static /* final */ const struct mercury__lexer__vector_common_type_7_0_s mercury__lexer_vector_common_7[1062];
+
+/* sealed */ struct mercury__lexer__vector_common_type_9_0_s {
+  const MR_Integer mercury__lexer__vector_common_type_9_0__vct_9_f_0;
+};
+
+static /* final */ const struct mercury__lexer__vector_common_type_9_0_s mercury__lexer_vector_common_9[4];
+
+
+
+static /* final */ const MR_Box mercury__lexer_scalar_common_1[1][3] = {
+  /* row 0 */
+  {
+    ((MR_Box) (base_typeclass_info_stream__stream__arity2__io__output_stream__arity0__io__state__arity0__)),
+    ((MR_Box) (&mercury__io__io__type_ctor_info_output_stream_0)),
+    ((MR_Box) (&mercury__io__io__type_ctor_info_state_0))
+  },
+};
+
+static /* final */ const MR_Box mercury__lexer_scalar_common_2[1][4] = {
+  /* row 0 */
+  {
+    ((MR_Box) (base_typeclass_info_stream__output__arity2__io__output_stream__arity0__io__state__arity0__)),
+    ((MR_Box) (&mercury__lexer_scalar_common_1[0])),
+    ((MR_Box) (&mercury__io__io__type_ctor_info_output_stream_0)),
+    ((MR_Box) (&mercury__io__io__type_ctor_info_state_0))
+  },
+};
+
+static /* final */ const MR_Box mercury__lexer_scalar_common_3[3][5] = {
+  /* row 0 */
+  {
+    ((MR_Box) (base_typeclass_info_stream__writer__arity3__io__output_stream__arity0__string__arity0__io__state__arity0__)),
+    ((MR_Box) (&mercury__lexer_scalar_common_2[0])),
+    ((MR_Box) (&mercury__io__io__type_ctor_info_output_stream_0)),
+    ((MR_Box) (&mercury__builtin__builtin__type_ctor_info_string_0)),
+    ((MR_Box) (&mercury__io__io__type_ctor_info_state_0))
+  },
+  /* row 1 */
+  {
+    ((MR_Box) (base_typeclass_info_stream__writer__arity3__io__output_stream__arity0__character__arity0__io__state__arity0__)),
+    ((MR_Box) (&mercury__lexer_scalar_common_2[0])),
+    ((MR_Box) (&mercury__io__io__type_ctor_info_output_stream_0)),
+    ((MR_Box) (&mercury__builtin__builtin__type_ctor_info_character_0)),
+    ((MR_Box) (&mercury__io__io__type_ctor_info_state_0))
+  },
+  /* row 2 */
+  {
+    ((MR_Box) (MR_Word) ((MR_Integer) 0)),
+    ((MR_Box) ((MR_Integer) 2)),
+    ((MR_Box) (&mercury__lexer_scalar_common_4[27])),
+    ((MR_Box) ((MR_Integer) 0)),
+    ((MR_Box) ((MR_Integer) 0))
+  },
+};
+
+static /* final */ const MR_Box mercury__lexer_scalar_common_4[41][2] = {
+  /* row 0 */
+  {
+    ((MR_Box) ((MR_String) ")")),
+    ((MR_Box) (MR_mkword(MR_mktag(0), MR_mkbody((MR_Integer) 0))))
+  },
+  /* row 1 */
+  {
+    ((MR_Box) ((MR_String) "\'")),
+    ((MR_Box) (MR_mkword(MR_mktag(0), MR_mkbody((MR_Integer) 0))))
+  },
+  /* row 2 */
+  {
+    ((MR_Box) ((MR_String) "\'.")),
+    ((MR_Box) (MR_mkword(MR_mktag(0), MR_mkbody((MR_Integer) 0))))
+  },
+  /* row 3 */
+  {
+    ((MR_Box) ((MR_String) ">>")),
+    ((MR_Box) (MR_mkword(MR_mktag(0), MR_mkbody((MR_Integer) 0))))
+  },
+  /* row 4 */
+  {
+    ((MR_Box) ((MR_String) "\"")),
+    ((MR_Box) (MR_mkword(MR_mktag(0), MR_mkbody((MR_Integer) 0))))
+  },
+  /* row 5 */
+  {
+    ((MR_Box) (MR_Word) ((MR_Char) 46)),
+    ((MR_Box) (MR_mkword(MR_mktag(0), MR_mkbody((MR_Integer) 0))))
+  },
+  /* row 6 */
+  {
+    ((MR_Box) (MR_Word) ((MR_Char) 47)),
+    ((MR_Box) (MR_mkword(MR_mktag(0), MR_mkbody((MR_Integer) 0))))
+  },
+  /* row 7 */
+  {
+    ((MR_Box) (MR_Word) ((MR_Integer) 5)),
+    ((MR_Box) ((MR_String) "unterminated \'/*\' comment"))
+  },
+  /* row 8 */
+  {
+    ((MR_Box) (MR_Word) ((MR_Integer) 5)),
+    ((MR_Box) ((MR_String) "unterminated quote"))
+  },
+  /* row 9 */
+  {
+    ((MR_Box) (MR_Word) ((MR_Integer) 5)),
+    ((MR_Box) ((MR_String) "invalid character in quoted name"))
+  },
+  /* row 10 */
+  {
+    ((MR_Box) (MR_Word) ((MR_Integer) 5)),
+    ((MR_Box) ((MR_String) "invalid escape character"))
+  },
+  /* row 11 */
+  {
+    ((MR_Box) (MR_Word) ((MR_Integer) 5)),
+    ((MR_Box) ((MR_String) "null character is illegal in strings and names"))
+  },
+  /* row 12 */
+  {
+    ((MR_Box) (MR_Word) ((MR_Integer) 5)),
+    ((MR_Box) ((MR_String) "invalid Unicode character code"))
+  },
+  /* row 13 */
+  {
+    ((MR_Box) (MR_Word) ((MR_Integer) 5)),
+    ((MR_Box) ((MR_String) "invalid hex character in Unicode escape"))
+  },
+  /* row 14 */
+  {
+    ((MR_Box) (MR_Word) ((MR_Integer) 5)),
+    ((MR_Box) ((MR_String) "empty hex escape"))
+  },
+  /* row 15 */
+  {
+    ((MR_Box) (MR_Word) ((MR_Integer) 5)),
+    ((MR_Box) ((MR_String) "invalid hex escape"))
+  },
+  /* row 16 */
+  {
+    ((MR_Box) (MR_Word) ((MR_Integer) 5)),
+    ((MR_Box) ((MR_String) "unterminated hex escape"))
+  },
+  /* row 17 */
+  {
+    ((MR_Box) (MR_Word) ((MR_Integer) 5)),
+    ((MR_Box) ((MR_String) "empty octal escape"))
+  },
+  /* row 18 */
+  {
+    ((MR_Box) (MR_Word) ((MR_Integer) 5)),
+    ((MR_Box) ((MR_String) "invalid octal escape"))
+  },
+  /* row 19 */
+  {
+    ((MR_Box) (MR_Word) ((MR_Integer) 5)),
+    ((MR_Box) ((MR_String) "unterminated octal escape"))
+  },
+  /* row 20 */
+  {
+    ((MR_Box) (MR_Word) ((MR_Integer) 5)),
+    ((MR_Box) ((MR_String) "invalid character in name"))
+  },
+  /* row 21 */
+  {
+    ((MR_Box) (MR_Word) ((MR_Char) 36)),
+    ((MR_Box) (MR_mkword(MR_mktag(0), MR_mkbody((MR_Integer) 0))))
+  },
+  /* row 22 */
+  {
+    ((MR_Box) (MR_Word) ((MR_Integer) 5)),
+    ((MR_Box) ((MR_String) "unexpected end-of-file in \140#\' line number directive"))
+  },
+  /* row 23 */
+  {
+    ((MR_Box) ((MR_String) "\' in \140#\' line number directive")),
+    ((MR_Box) (MR_mkword(MR_mktag(0), MR_mkbody((MR_Integer) 0))))
+  },
+  /* row 24 */
+  {
+    ((MR_Box) (MR_Word) ((MR_Integer) 5)),
+    ((MR_Box) ((MR_String) "invalid character in \140#\' line number directive"))
+  },
+  /* row 25 */
+  {
+    ((MR_Box) (MR_Word) ((MR_Integer) 5)),
+    ((MR_Box) ((MR_String) "invalid character in graphic token"))
+  },
+  /* row 26 */
+  {
+    ((MR_Box) (MR_Word) ((MR_Integer) 5)),
+    ((MR_Box) ((MR_String) "invalid character in variable"))
+  },
+  /* row 27 */
+  {
+    ((MR_Box) ((MR_Integer) 0)),
+    ((MR_Box) (MR_mkword(MR_mktag(0), MR_mkbody((MR_Integer) 0))))
+  },
+  /* row 28 */
+  {
+    ((MR_Box) (MR_Word) ((MR_Char) 48)),
+    ((MR_Box) (MR_mkword(MR_mktag(0), MR_mkbody((MR_Integer) 0))))
+  },
+  /* row 29 */
+  {
+    ((MR_Box) (MR_Word) ((MR_Integer) 5)),
+    ((MR_Box) ((MR_String) "unterminated char code literal"))
+  },
+  /* row 30 */
+  {
+    ((MR_Box) (MR_Word) ((MR_Integer) 5)),
+    ((MR_Box) ((MR_String) "unterminated binary literal"))
+  },
+  /* row 31 */
+  {
+    ((MR_Box) (MR_Word) ((MR_Integer) 5)),
+    ((MR_Box) ((MR_String) "invalid character in int"))
+  },
+  /* row 32 */
+  {
+    ((MR_Box) (MR_Word) ((MR_Integer) 5)),
+    ((MR_Box) ((MR_String) "unterminated octal literal"))
+  },
+  /* row 33 */
+  {
+    ((MR_Box) (MR_Word) ((MR_Integer) 5)),
+    ((MR_Box) ((MR_String) "unterminated hexadecimal literal"))
+  },
+  /* row 34 */
+  {
+    ((MR_Box) (MR_Word) ((MR_Integer) 5)),
+    ((MR_Box) ((MR_String) "unterminated decimal literal"))
+  },
+  /* row 35 */
+  {
+    ((MR_Box) (MR_Word) ((MR_Integer) 5)),
+    ((MR_Box) ((MR_String) "underscore before exponent"))
+  },
+  /* row 36 */
+  {
+    ((MR_Box) (MR_Word) ((MR_Integer) 5)),
+    ((MR_Box) ((MR_String) "invalid integer size suffix"))
+  },
+  /* row 37 */
+  {
+    ((MR_Box) (MR_Word) ((MR_Integer) 5)),
+    ((MR_Box) ((MR_String) "underscore following decimal point"))
+  },
+  /* row 38 */
+  {
+    ((MR_Box) (MR_Word) ((MR_Integer) 5)),
+    ((MR_Box) ((MR_String) "invalid float token"))
+  },
+  /* row 39 */
+  {
+    ((MR_Box) (MR_Word) ((MR_Integer) 5)),
+    ((MR_Box) ((MR_String) "fractional part of float terminated by underscore"))
+  },
+  /* row 40 */
+  {
+    ((MR_Box) (MR_Word) ((MR_Integer) 5)),
+    ((MR_Box) ((MR_String) "unterminated exponent in float literal"))
+  },
+};
+
+static /* final */ const MR_Box mercury__lexer_scalar_common_6[5][1] = {
+  /* row 0 */
+  {
+    ((MR_Box) ((MR_String) "."))
+  },
+  /* row 1 */
+  {
+    ((MR_Box) ((MR_String) "\140"))
+  },
+  /* row 2 */
+  {
+    ((MR_Box) ((MR_String) ";"))
+  },
+  /* row 3 */
+  {
+    ((MR_Box) ((MR_String) "/"))
+  },
+  /* row 4 */
+  {
+    ((MR_Box) ((MR_String) "\044"))
+  },
+};
+
+static /* final */ const MR_Integer mercury__lexer_scalar_common_8[1][4] = {
+  /* row 0 */
+  {
+    (MR_Integer) 4286578719,
+    (MR_Integer) 4294967295,
+    (MR_Integer) 4294967295,
+    (MR_Integer) 4194303
+  },
+};
+
+
+static /* final */ const struct mercury__lexer__vector_common_type_5_0_s mercury__lexer_vector_common_5[4] = {
+  /* row 0 */
+  {
+    (MR_Integer) 2,
+    (MR_String) "0b"
+  },
+  /* row 1 */
+  {
+    (MR_Integer) 8,
+    (MR_String) "0o"
+  },
+  /* row 2 */
+  {
+    (MR_Integer) 10,
+    (MR_String) ""
+  },
+  /* row 3 */
+  {
+    (MR_Integer) 16,
+    (MR_String) "0x"
+  },
+};
+
+static /* final */ const struct mercury__lexer__vector_common_type_7_0_s mercury__lexer_vector_common_7[1062] = {
+  /* row 0 */   {     (MR_Integer) 0 },
+  /* row 1 */   {     (MR_Integer) 0 },
+  /* row 2 */   {     (MR_Integer) 0 },
+  /* row 3 */   {     (MR_Integer) 0 },
+  /* row 4 */   {     (MR_Integer) 0 },
+  /* row 5 */   {     (MR_Word) (MR_Integer) 0 },
+  /* row 6 */   {     (MR_Word) (MR_Integer) 0 },
+  /* row 7 */   {     (MR_Word) (MR_Integer) 0 },
+  /* row 8 */   {     (MR_Word) (MR_Integer) 0 },
+  /* row 9 */   {     (MR_Word) (MR_Integer) 0 },
+  /* row 10 */   {     (MR_Word) (MR_Integer) 0 },
+  /* row 11 */   {     (MR_Word) (MR_Integer) 0 },
+  /* row 12 */   {     (MR_Word) (MR_Integer) 0 },
+  /* row 13 */   {     (MR_Word) (MR_Integer) 0 },
+  /* row 14 */   {     (MR_Word) (MR_Integer) 0 },
+  /* row 15 */   {     (MR_Word) (MR_Integer) 0 },
+  /* row 16 */   {     (MR_Word) (MR_Integer) 0 },
+  /* row 17 */   {     (MR_Word) (MR_Integer) 0 },
+  /* row 18 */   {     (MR_Word) (MR_Integer) 0 },
+  /* row 19 */   {     (MR_Word) (MR_Integer) 0 },
+  /* row 20 */   {     (MR_Word) (MR_Integer) 0 },
+  /* row 21 */   {     (MR_Word) (MR_Integer) 0 },
+  /* row 22 */   {     (MR_Word) (MR_Integer) 0 },
+  /* row 23 */   {     (MR_Integer) 0 },
+  /* row 24 */   {     (MR_Integer) 13 },
+  /* row 25 */   {     (MR_Integer) 8 },
+  /* row 26 */   {     (MR_Integer) 10 },
+  /* row 27 */   {     (MR_Integer) 12 },
+  /* row 28 */   {     (MR_Integer) 7 },
+  /* row 29 */   {     (MR_Integer) 13 },
+  /* row 30 */   {     (MR_Integer) 8 },
+  /* row 31 */   {     (MR_Integer) 5 },
+  /* row 32 */   {     (MR_Integer) 5 },
+  /* row 33 */   {     (MR_Integer) 13 },
+  /* row 34 */   {     (MR_Integer) 13 },
+  /* row 35 */   {     (MR_Integer) 5 },
+  /* row 36 */   {     (MR_Integer) 13 },
+  /* row 37 */   {     (MR_Integer) 6 },
+  /* row 38 */   {     (MR_Integer) 9 },
+  /* row 39 */   {     (MR_Integer) 3 },
+  /* row 40 */   {     (MR_Integer) 4 },
+  /* row 41 */   {     (MR_Integer) 4 },
+  /* row 42 */   {     (MR_Integer) 4 },
+  /* row 43 */   {     (MR_Integer) 4 },
+  /* row 44 */   {     (MR_Integer) 4 },
+  /* row 45 */   {     (MR_Integer) 4 },
+  /* row 46 */   {     (MR_Integer) 4 },
+  /* row 47 */   {     (MR_Integer) 4 },
+  /* row 48 */   {     (MR_Integer) 4 },
+  /* row 49 */   {     (MR_Integer) 13 },
+  /* row 50 */   {     (MR_Integer) 5 },
+  /* row 51 */   {     (MR_Integer) 13 },
+  /* row 52 */   {     (MR_Integer) 13 },
+  /* row 53 */   {     (MR_Integer) 13 },
+  /* row 54 */   {     (MR_Integer) 13 },
+  /* row 55 */   {     (MR_Integer) 13 },
+  /* row 56 */   {     (MR_Integer) 2 },
+  /* row 57 */   {     (MR_Integer) 2 },
+  /* row 58 */   {     (MR_Integer) 2 },
+  /* row 59 */   {     (MR_Integer) 2 },
+  /* row 60 */   {     (MR_Integer) 2 },
+  /* row 61 */   {     (MR_Integer) 2 },
+  /* row 62 */   {     (MR_Integer) 2 },
+  /* row 63 */   {     (MR_Integer) 2 },
+  /* row 64 */   {     (MR_Integer) 2 },
+  /* row 65 */   {     (MR_Integer) 2 },
+  /* row 66 */   {     (MR_Integer) 2 },
+  /* row 67 */   {     (MR_Integer) 2 },
+  /* row 68 */   {     (MR_Integer) 2 },
+  /* row 69 */   {     (MR_Integer) 2 },
+  /* row 70 */   {     (MR_Integer) 2 },
+  /* row 71 */   {     (MR_Integer) 2 },
+  /* row 72 */   {     (MR_Integer) 2 },
+  /* row 73 */   {     (MR_Integer) 2 },
+  /* row 74 */   {     (MR_Integer) 2 },
+  /* row 75 */   {     (MR_Integer) 2 },
+  /* row 76 */   {     (MR_Integer) 2 },
+  /* row 77 */   {     (MR_Integer) 2 },
+  /* row 78 */   {     (MR_Integer) 2 },
+  /* row 79 */   {     (MR_Integer) 2 },
+  /* row 80 */   {     (MR_Integer) 2 },
+  /* row 81 */   {     (MR_Integer) 2 },
+  /* row 82 */   {     (MR_Integer) 5 },
+  /* row 83 */   {     (MR_Integer) 13 },
+  /* row 84 */   {     (MR_Integer) 5 },
+  /* row 85 */   {     (MR_Integer) 13 },
+  /* row 86 */   {     (MR_Integer) 2 },
+  /* row 87 */   {     (MR_Integer) 11 },
+  /* row 88 */   {     (MR_Integer) 1 },
+  /* row 89 */   {     (MR_Integer) 1 },
+  /* row 90 */   {     (MR_Integer) 1 },
+  /* row 91 */   {     (MR_Integer) 1 },
+  /* row 92 */   {     (MR_Integer) 1 },
+  /* row 93 */   {     (MR_Integer) 1 },
+  /* row 94 */   {     (MR_Integer) 1 },
+  /* row 95 */   {     (MR_Integer) 1 },
+  /* row 96 */   {     (MR_Integer) 1 },
+  /* row 97 */   {     (MR_Integer) 1 },
+  /* row 98 */   {     (MR_Integer) 1 },
+  /* row 99 */   {     (MR_Integer) 1 },
+  /* row 100 */   {     (MR_Integer) 1 },
+  /* row 101 */   {     (MR_Integer) 1 },
+  /* row 102 */   {     (MR_Integer) 1 },
+  /* row 103 */   {     (MR_Integer) 1 },
+  /* row 104 */   {     (MR_Integer) 1 },
+  /* row 105 */   {     (MR_Integer) 1 },
+  /* row 106 */   {     (MR_Integer) 1 },
+  /* row 107 */   {     (MR_Integer) 1 },
+  /* row 108 */   {     (MR_Integer) 1 },
+  /* row 109 */   {     (MR_Integer) 1 },
+  /* row 110 */   {     (MR_Integer) 1 },
+  /* row 111 */   {     (MR_Integer) 1 },
+  /* row 112 */   {     (MR_Integer) 1 },
+  /* row 113 */   {     (MR_Integer) 1 },
+  /* row 114 */   {     (MR_Integer) 5 },
+  /* row 115 */   {     (MR_Integer) 5 },
+  /* row 116 */   {     (MR_Integer) 5 },
+  /* row 117 */   {     (MR_Integer) 13 },
+  /* row 118 */   {     (MR_Integer) 0 },
+  /* row 119 */   {     (MR_Integer) 0 },
+  /* row 120 */   {     (MR_Integer) 0 },
+  /* row 121 */   {     (MR_Integer) 0 },
+  /* row 122 */   {     (MR_Integer) 0 },
+  /* row 123 */   {     (MR_Word) (MR_Integer) 0 },
+  /* row 124 */   {     (MR_Word) (MR_Integer) 0 },
+  /* row 125 */   {     (MR_Word) (MR_Integer) 0 },
+  /* row 126 */   {     (MR_Word) (MR_Integer) 0 },
+  /* row 127 */   {     (MR_Word) (MR_Integer) 0 },
+  /* row 128 */   {     (MR_Word) (MR_Integer) 0 },
+  /* row 129 */   {     (MR_Word) (MR_Integer) 0 },
+  /* row 130 */   {     (MR_Word) (MR_Integer) 0 },
+  /* row 131 */   {     (MR_Word) (MR_Integer) 0 },
+  /* row 132 */   {     (MR_Word) (MR_Integer) 0 },
+  /* row 133 */   {     (MR_Word) (MR_Integer) 0 },
+  /* row 134 */   {     (MR_Word) (MR_Integer) 0 },
+  /* row 135 */   {     (MR_Word) (MR_Integer) 0 },
+  /* row 136 */   {     (MR_Word) (MR_Integer) 0 },
+  /* row 137 */   {     (MR_Word) (MR_Integer) 0 },
+  /* row 138 */   {     (MR_Word) (MR_Integer) 0 },
+  /* row 139 */   {     (MR_Word) (MR_Integer) 0 },
+  /* row 140 */   {     (MR_Word) (MR_Integer) 0 },
+  /* row 141 */   {     (MR_Integer) 0 },
+  /* row 142 */   {     (MR_Integer) 13 },
+  /* row 143 */   {     (MR_Integer) 8 },
+  /* row 144 */   {     (MR_Integer) 10 },
+  /* row 145 */   {     (MR_Integer) 12 },
+  /* row 146 */   {     (MR_Integer) 7 },
+  /* row 147 */   {     (MR_Integer) 13 },
+  /* row 148 */   {     (MR_Integer) 8 },
+  /* row 149 */   {     (MR_Integer) 5 },
+  /* row 150 */   {     (MR_Integer) 5 },
+  /* row 151 */   {     (MR_Integer) 13 },
+  /* row 152 */   {     (MR_Integer) 13 },
+  /* row 153 */   {     (MR_Integer) 5 },
+  /* row 154 */   {     (MR_Integer) 13 },
+  /* row 155 */   {     (MR_Integer) 6 },
+  /* row 156 */   {     (MR_Integer) 9 },
+  /* row 157 */   {     (MR_Integer) 3 },
+  /* row 158 */   {     (MR_Integer) 4 },
+  /* row 159 */   {     (MR_Integer) 4 },
+  /* row 160 */   {     (MR_Integer) 4 },
+  /* row 161 */   {     (MR_Integer) 4 },
+  /* row 162 */   {     (MR_Integer) 4 },
+  /* row 163 */   {     (MR_Integer) 4 },
+  /* row 164 */   {     (MR_Integer) 4 },
+  /* row 165 */   {     (MR_Integer) 4 },
+  /* row 166 */   {     (MR_Integer) 4 },
+  /* row 167 */   {     (MR_Integer) 13 },
+  /* row 168 */   {     (MR_Integer) 5 },
+  /* row 169 */   {     (MR_Integer) 13 },
+  /* row 170 */   {     (MR_Integer) 13 },
+  /* row 171 */   {     (MR_Integer) 13 },
+  /* row 172 */   {     (MR_Integer) 13 },
+  /* row 173 */   {     (MR_Integer) 13 },
+  /* row 174 */   {     (MR_Integer) 2 },
+  /* row 175 */   {     (MR_Integer) 2 },
+  /* row 176 */   {     (MR_Integer) 2 },
+  /* row 177 */   {     (MR_Integer) 2 },
+  /* row 178 */   {     (MR_Integer) 2 },
+  /* row 179 */   {     (MR_Integer) 2 },
+  /* row 180 */   {     (MR_Integer) 2 },
+  /* row 181 */   {     (MR_Integer) 2 },
+  /* row 182 */   {     (MR_Integer) 2 },
+  /* row 183 */   {     (MR_Integer) 2 },
+  /* row 184 */   {     (MR_Integer) 2 },
+  /* row 185 */   {     (MR_Integer) 2 },
+  /* row 186 */   {     (MR_Integer) 2 },
+  /* row 187 */   {     (MR_Integer) 2 },
+  /* row 188 */   {     (MR_Integer) 2 },
+  /* row 189 */   {     (MR_Integer) 2 },
+  /* row 190 */   {     (MR_Integer) 2 },
+  /* row 191 */   {     (MR_Integer) 2 },
+  /* row 192 */   {     (MR_Integer) 2 },
+  /* row 193 */   {     (MR_Integer) 2 },
+  /* row 194 */   {     (MR_Integer) 2 },
+  /* row 195 */   {     (MR_Integer) 2 },
+  /* row 196 */   {     (MR_Integer) 2 },
+  /* row 197 */   {     (MR_Integer) 2 },
+  /* row 198 */   {     (MR_Integer) 2 },
+  /* row 199 */   {     (MR_Integer) 2 },
+  /* row 200 */   {     (MR_Integer) 5 },
+  /* row 201 */   {     (MR_Integer) 13 },
+  /* row 202 */   {     (MR_Integer) 5 },
+  /* row 203 */   {     (MR_Integer) 13 },
+  /* row 204 */   {     (MR_Integer) 2 },
+  /* row 205 */   {     (MR_Integer) 11 },
+  /* row 206 */   {     (MR_Integer) 1 },
+  /* row 207 */   {     (MR_Integer) 1 },
+  /* row 208 */   {     (MR_Integer) 1 },
+  /* row 209 */   {     (MR_Integer) 1 },
+  /* row 210 */   {     (MR_Integer) 1 },
+  /* row 211 */   {     (MR_Integer) 1 },
+  /* row 212 */   {     (MR_Integer) 1 },
+  /* row 213 */   {     (MR_Integer) 1 },
+  /* row 214 */   {     (MR_Integer) 1 },
+  /* row 215 */   {     (MR_Integer) 1 },
+  /* row 216 */   {     (MR_Integer) 1 },
+  /* row 217 */   {     (MR_Integer) 1 },
+  /* row 218 */   {     (MR_Integer) 1 },
+  /* row 219 */   {     (MR_Integer) 1 },
+  /* row 220 */   {     (MR_Integer) 1 },
+  /* row 221 */   {     (MR_Integer) 1 },
+  /* row 222 */   {     (MR_Integer) 1 },
+  /* row 223 */   {     (MR_Integer) 1 },
+  /* row 224 */   {     (MR_Integer) 1 },
+  /* row 225 */   {     (MR_Integer) 1 },
+  /* row 226 */   {     (MR_Integer) 1 },
+  /* row 227 */   {     (MR_Integer) 1 },
+  /* row 228 */   {     (MR_Integer) 1 },
+  /* row 229 */   {     (MR_Integer) 1 },
+  /* row 230 */   {     (MR_Integer) 1 },
+  /* row 231 */   {     (MR_Integer) 1 },
+  /* row 232 */   {     (MR_Integer) 5 },
+  /* row 233 */   {     (MR_Integer) 5 },
+  /* row 234 */   {     (MR_Integer) 5 },
+  /* row 235 */   {     (MR_Integer) 13 },
+  /* row 236 */   {     (MR_Integer) 0 },
+  /* row 237 */   {     (MR_Integer) 0 },
+  /* row 238 */   {     (MR_Integer) 0 },
+  /* row 239 */   {     (MR_Integer) 0 },
+  /* row 240 */   {     (MR_Integer) 0 },
+  /* row 241 */   {     (MR_Word) (MR_Integer) 0 },
+  /* row 242 */   {     (MR_Word) (MR_Integer) 0 },
+  /* row 243 */   {     (MR_Word) (MR_Integer) 0 },
+  /* row 244 */   {     (MR_Word) (MR_Integer) 0 },
+  /* row 245 */   {     (MR_Word) (MR_Integer) 0 },
+  /* row 246 */   {     (MR_Word) (MR_Integer) 0 },
+  /* row 247 */   {     (MR_Word) (MR_Integer) 0 },
+  /* row 248 */   {     (MR_Word) (MR_Integer) 0 },
+  /* row 249 */   {     (MR_Word) (MR_Integer) 0 },
+  /* row 250 */   {     (MR_Word) (MR_Integer) 0 },
+  /* row 251 */   {     (MR_Word) (MR_Integer) 0 },
+  /* row 252 */   {     (MR_Word) (MR_Integer) 0 },
+  /* row 253 */   {     (MR_Word) (MR_Integer) 0 },
+  /* row 254 */   {     (MR_Word) (MR_Integer) 0 },
+  /* row 255 */   {     (MR_Word) (MR_Integer) 0 },
+  /* row 256 */   {     (MR_Word) (MR_Integer) 0 },
+  /* row 257 */   {     (MR_Word) (MR_Integer) 0 },
+  /* row 258 */   {     (MR_Word) (MR_Integer) 0 },
+  /* row 259 */   {     (MR_Integer) 0 },
+  /* row 260 */   {     (MR_Integer) 13 },
+  /* row 261 */   {     (MR_Integer) 8 },
+  /* row 262 */   {     (MR_Integer) 10 },
+  /* row 263 */   {     (MR_Integer) 12 },
+  /* row 264 */   {     (MR_Integer) 7 },
+  /* row 265 */   {     (MR_Integer) 13 },
+  /* row 266 */   {     (MR_Integer) 8 },
+  /* row 267 */   {     (MR_Integer) 5 },
+  /* row 268 */   {     (MR_Integer) 5 },
+  /* row 269 */   {     (MR_Integer) 13 },
+  /* row 270 */   {     (MR_Integer) 13 },
+  /* row 271 */   {     (MR_Integer) 5 },
+  /* row 272 */   {     (MR_Integer) 13 },
+  /* row 273 */   {     (MR_Integer) 6 },
+  /* row 274 */   {     (MR_Integer) 9 },
+  /* row 275 */   {     (MR_Integer) 3 },
+  /* row 276 */   {     (MR_Integer) 4 },
+  /* row 277 */   {     (MR_Integer) 4 },
+  /* row 278 */   {     (MR_Integer) 4 },
+  /* row 279 */   {     (MR_Integer) 4 },
+  /* row 280 */   {     (MR_Integer) 4 },
+  /* row 281 */   {     (MR_Integer) 4 },
+  /* row 282 */   {     (MR_Integer) 4 },
+  /* row 283 */   {     (MR_Integer) 4 },
+  /* row 284 */   {     (MR_Integer) 4 },
+  /* row 285 */   {     (MR_Integer) 13 },
+  /* row 286 */   {     (MR_Integer) 5 },
+  /* row 287 */   {     (MR_Integer) 13 },
+  /* row 288 */   {     (MR_Integer) 13 },
+  /* row 289 */   {     (MR_Integer) 13 },
+  /* row 290 */   {     (MR_Integer) 13 },
+  /* row 291 */   {     (MR_Integer) 13 },
+  /* row 292 */   {     (MR_Integer) 2 },
+  /* row 293 */   {     (MR_Integer) 2 },
+  /* row 294 */   {     (MR_Integer) 2 },
+  /* row 295 */   {     (MR_Integer) 2 },
+  /* row 296 */   {     (MR_Integer) 2 },
+  /* row 297 */   {     (MR_Integer) 2 },
+  /* row 298 */   {     (MR_Integer) 2 },
+  /* row 299 */   {     (MR_Integer) 2 },
+  /* row 300 */   {     (MR_Integer) 2 },
+  /* row 301 */   {     (MR_Integer) 2 },
+  /* row 302 */   {     (MR_Integer) 2 },
+  /* row 303 */   {     (MR_Integer) 2 },
+  /* row 304 */   {     (MR_Integer) 2 },
+  /* row 305 */   {     (MR_Integer) 2 },
+  /* row 306 */   {     (MR_Integer) 2 },
+  /* row 307 */   {     (MR_Integer) 2 },
+  /* row 308 */   {     (MR_Integer) 2 },
+  /* row 309 */   {     (MR_Integer) 2 },
+  /* row 310 */   {     (MR_Integer) 2 },
+  /* row 311 */   {     (MR_Integer) 2 },
+  /* row 312 */   {     (MR_Integer) 2 },
+  /* row 313 */   {     (MR_Integer) 2 },
+  /* row 314 */   {     (MR_Integer) 2 },
+  /* row 315 */   {     (MR_Integer) 2 },
+  /* row 316 */   {     (MR_Integer) 2 },
+  /* row 317 */   {     (MR_Integer) 2 },
+  /* row 318 */   {     (MR_Integer) 5 },
+  /* row 319 */   {     (MR_Integer) 13 },
+  /* row 320 */   {     (MR_Integer) 5 },
+  /* row 321 */   {     (MR_Integer) 13 },
+  /* row 322 */   {     (MR_Integer) 2 },
+  /* row 323 */   {     (MR_Integer) 11 },
+  /* row 324 */   {     (MR_Integer) 1 },
+  /* row 325 */   {     (MR_Integer) 1 },
+  /* row 326 */   {     (MR_Integer) 1 },
+  /* row 327 */   {     (MR_Integer) 1 },
+  /* row 328 */   {     (MR_Integer) 1 },
+  /* row 329 */   {     (MR_Integer) 1 },
+  /* row 330 */   {     (MR_Integer) 1 },
+  /* row 331 */   {     (MR_Integer) 1 },
+  /* row 332 */   {     (MR_Integer) 1 },
+  /* row 333 */   {     (MR_Integer) 1 },
+  /* row 334 */   {     (MR_Integer) 1 },
+  /* row 335 */   {     (MR_Integer) 1 },
+  /* row 336 */   {     (MR_Integer) 1 },
+  /* row 337 */   {     (MR_Integer) 1 },
+  /* row 338 */   {     (MR_Integer) 1 },
+  /* row 339 */   {     (MR_Integer) 1 },
+  /* row 340 */   {     (MR_Integer) 1 },
+  /* row 341 */   {     (MR_Integer) 1 },
+  /* row 342 */   {     (MR_Integer) 1 },
+  /* row 343 */   {     (MR_Integer) 1 },
+  /* row 344 */   {     (MR_Integer) 1 },
+  /* row 345 */   {     (MR_Integer) 1 },
+  /* row 346 */   {     (MR_Integer) 1 },
+  /* row 347 */   {     (MR_Integer) 1 },
+  /* row 348 */   {     (MR_Integer) 1 },
+  /* row 349 */   {     (MR_Integer) 1 },
+  /* row 350 */   {     (MR_Integer) 5 },
+  /* row 351 */   {     (MR_Integer) 5 },
+  /* row 352 */   {     (MR_Integer) 5 },
+  /* row 353 */   {     (MR_Integer) 13 },
+  /* row 354 */   {     (MR_Integer) 0 },
+  /* row 355 */   {     (MR_Integer) 0 },
+  /* row 356 */   {     (MR_Integer) 0 },
+  /* row 357 */   {     (MR_Integer) 0 },
+  /* row 358 */   {     (MR_Integer) 0 },
+  /* row 359 */   {     (MR_Word) (MR_Integer) 0 },
+  /* row 360 */   {     (MR_Word) (MR_Integer) 0 },
+  /* row 361 */   {     (MR_Word) (MR_Integer) 0 },
+  /* row 362 */   {     (MR_Word) (MR_Integer) 0 },
+  /* row 363 */   {     (MR_Word) (MR_Integer) 0 },
+  /* row 364 */   {     (MR_Word) (MR_Integer) 0 },
+  /* row 365 */   {     (MR_Word) (MR_Integer) 0 },
+  /* row 366 */   {     (MR_Word) (MR_Integer) 0 },
+  /* row 367 */   {     (MR_Word) (MR_Integer) 0 },
+  /* row 368 */   {     (MR_Word) (MR_Integer) 0 },
+  /* row 369 */   {     (MR_Word) (MR_Integer) 0 },
+  /* row 370 */   {     (MR_Word) (MR_Integer) 0 },
+  /* row 371 */   {     (MR_Word) (MR_Integer) 0 },
+  /* row 372 */   {     (MR_Word) (MR_Integer) 0 },
+  /* row 373 */   {     (MR_Word) (MR_Integer) 0 },
+  /* row 374 */   {     (MR_Word) (MR_Integer) 0 },
+  /* row 375 */   {     (MR_Word) (MR_Integer) 0 },
+  /* row 376 */   {     (MR_Word) (MR_Integer) 0 },
+  /* row 377 */   {     (MR_Integer) 0 },
+  /* row 378 */   {     (MR_Integer) 13 },
+  /* row 379 */   {     (MR_Integer) 8 },
+  /* row 380 */   {     (MR_Integer) 10 },
+  /* row 381 */   {     (MR_Integer) 12 },
+  /* row 382 */   {     (MR_Integer) 7 },
+  /* row 383 */   {     (MR_Integer) 13 },
+  /* row 384 */   {     (MR_Integer) 8 },
+  /* row 385 */   {     (MR_Integer) 5 },
+  /* row 386 */   {     (MR_Integer) 5 },
+  /* row 387 */   {     (MR_Integer) 13 },
+  /* row 388 */   {     (MR_Integer) 13 },
+  /* row 389 */   {     (MR_Integer) 5 },
+  /* row 390 */   {     (MR_Integer) 13 },
+  /* row 391 */   {     (MR_Integer) 6 },
+  /* row 392 */   {     (MR_Integer) 9 },
+  /* row 393 */   {     (MR_Integer) 3 },
+  /* row 394 */   {     (MR_Integer) 4 },
+  /* row 395 */   {     (MR_Integer) 4 },
+  /* row 396 */   {     (MR_Integer) 4 },
+  /* row 397 */   {     (MR_Integer) 4 },
+  /* row 398 */   {     (MR_Integer) 4 },
+  /* row 399 */   {     (MR_Integer) 4 },
+  /* row 400 */   {     (MR_Integer) 4 },
+  /* row 401 */   {     (MR_Integer) 4 },
+  /* row 402 */   {     (MR_Integer) 4 },
+  /* row 403 */   {     (MR_Integer) 13 },
+  /* row 404 */   {     (MR_Integer) 5 },
+  /* row 405 */   {     (MR_Integer) 13 },
+  /* row 406 */   {     (MR_Integer) 13 },
+  /* row 407 */   {     (MR_Integer) 13 },
+  /* row 408 */   {     (MR_Integer) 13 },
+  /* row 409 */   {     (MR_Integer) 13 },
+  /* row 410 */   {     (MR_Integer) 2 },
+  /* row 411 */   {     (MR_Integer) 2 },
+  /* row 412 */   {     (MR_Integer) 2 },
+  /* row 413 */   {     (MR_Integer) 2 },
+  /* row 414 */   {     (MR_Integer) 2 },
+  /* row 415 */   {     (MR_Integer) 2 },
+  /* row 416 */   {     (MR_Integer) 2 },
+  /* row 417 */   {     (MR_Integer) 2 },
+  /* row 418 */   {     (MR_Integer) 2 },
+  /* row 419 */   {     (MR_Integer) 2 },
+  /* row 420 */   {     (MR_Integer) 2 },
+  /* row 421 */   {     (MR_Integer) 2 },
+  /* row 422 */   {     (MR_Integer) 2 },
+  /* row 423 */   {     (MR_Integer) 2 },
+  /* row 424 */   {     (MR_Integer) 2 },
+  /* row 425 */   {     (MR_Integer) 2 },
+  /* row 426 */   {     (MR_Integer) 2 },
+  /* row 427 */   {     (MR_Integer) 2 },
+  /* row 428 */   {     (MR_Integer) 2 },
+  /* row 429 */   {     (MR_Integer) 2 },
+  /* row 430 */   {     (MR_Integer) 2 },
+  /* row 431 */   {     (MR_Integer) 2 },
+  /* row 432 */   {     (MR_Integer) 2 },
+  /* row 433 */   {     (MR_Integer) 2 },
+  /* row 434 */   {     (MR_Integer) 2 },
+  /* row 435 */   {     (MR_Integer) 2 },
+  /* row 436 */   {     (MR_Integer) 5 },
+  /* row 437 */   {     (MR_Integer) 13 },
+  /* row 438 */   {     (MR_Integer) 5 },
+  /* row 439 */   {     (MR_Integer) 13 },
+  /* row 440 */   {     (MR_Integer) 2 },
+  /* row 441 */   {     (MR_Integer) 11 },
+  /* row 442 */   {     (MR_Integer) 1 },
+  /* row 443 */   {     (MR_Integer) 1 },
+  /* row 444 */   {     (MR_Integer) 1 },
+  /* row 445 */   {     (MR_Integer) 1 },
+  /* row 446 */   {     (MR_Integer) 1 },
+  /* row 447 */   {     (MR_Integer) 1 },
+  /* row 448 */   {     (MR_Integer) 1 },
+  /* row 449 */   {     (MR_Integer) 1 },
+  /* row 450 */   {     (MR_Integer) 1 },
+  /* row 451 */   {     (MR_Integer) 1 },
+  /* row 452 */   {     (MR_Integer) 1 },
+  /* row 453 */   {     (MR_Integer) 1 },
+  /* row 454 */   {     (MR_Integer) 1 },
+  /* row 455 */   {     (MR_Integer) 1 },
+  /* row 456 */   {     (MR_Integer) 1 },
+  /* row 457 */   {     (MR_Integer) 1 },
+  /* row 458 */   {     (MR_Integer) 1 },
+  /* row 459 */   {     (MR_Integer) 1 },
+  /* row 460 */   {     (MR_Integer) 1 },
+  /* row 461 */   {     (MR_Integer) 1 },
+  /* row 462 */   {     (MR_Integer) 1 },
+  /* row 463 */   {     (MR_Integer) 1 },
+  /* row 464 */   {     (MR_Integer) 1 },
+  /* row 465 */   {     (MR_Integer) 1 },
+  /* row 466 */   {     (MR_Integer) 1 },
+  /* row 467 */   {     (MR_Integer) 1 },
+  /* row 468 */   {     (MR_Integer) 5 },
+  /* row 469 */   {     (MR_Integer) 5 },
+  /* row 470 */   {     (MR_Integer) 5 },
+  /* row 471 */   {     (MR_Integer) 13 },
+  /* row 472 */   {     (MR_Integer) 0 },
+  /* row 473 */   {     (MR_Integer) 0 },
+  /* row 474 */   {     (MR_Integer) 0 },
+  /* row 475 */   {     (MR_Integer) 0 },
+  /* row 476 */   {     (MR_Integer) 0 },
+  /* row 477 */   {     (MR_Word) (MR_Integer) 0 },
+  /* row 478 */   {     (MR_Word) (MR_Integer) 0 },
+  /* row 479 */   {     (MR_Word) (MR_Integer) 0 },
+  /* row 480 */   {     (MR_Word) (MR_Integer) 0 },
+  /* row 481 */   {     (MR_Word) (MR_Integer) 0 },
+  /* row 482 */   {     (MR_Word) (MR_Integer) 0 },
+  /* row 483 */   {     (MR_Word) (MR_Integer) 0 },
+  /* row 484 */   {     (MR_Word) (MR_Integer) 0 },
+  /* row 485 */   {     (MR_Word) (MR_Integer) 0 },
+  /* row 486 */   {     (MR_Word) (MR_Integer) 0 },
+  /* row 487 */   {     (MR_Word) (MR_Integer) 0 },
+  /* row 488 */   {     (MR_Word) (MR_Integer) 0 },
+  /* row 489 */   {     (MR_Word) (MR_Integer) 0 },
+  /* row 490 */   {     (MR_Word) (MR_Integer) 0 },
+  /* row 491 */   {     (MR_Word) (MR_Integer) 0 },
+  /* row 492 */   {     (MR_Word) (MR_Integer) 0 },
+  /* row 493 */   {     (MR_Word) (MR_Integer) 0 },
+  /* row 494 */   {     (MR_Word) (MR_Integer) 0 },
+  /* row 495 */   {     (MR_Integer) 0 },
+  /* row 496 */   {     (MR_Integer) 13 },
+  /* row 497 */   {     (MR_Integer) 8 },
+  /* row 498 */   {     (MR_Integer) 10 },
+  /* row 499 */   {     (MR_Integer) 12 },
+  /* row 500 */   {     (MR_Integer) 7 },
+  /* row 501 */   {     (MR_Integer) 13 },
+  /* row 502 */   {     (MR_Integer) 8 },
+  /* row 503 */   {     (MR_Integer) 5 },
+  /* row 504 */   {     (MR_Integer) 5 },
+  /* row 505 */   {     (MR_Integer) 13 },
+  /* row 506 */   {     (MR_Integer) 13 },
+  /* row 507 */   {     (MR_Integer) 5 },
+  /* row 508 */   {     (MR_Integer) 13 },
+  /* row 509 */   {     (MR_Integer) 6 },
+  /* row 510 */   {     (MR_Integer) 9 },
+  /* row 511 */   {     (MR_Integer) 3 },
+  /* row 512 */   {     (MR_Integer) 4 },
+  /* row 513 */   {     (MR_Integer) 4 },
+  /* row 514 */   {     (MR_Integer) 4 },
+  /* row 515 */   {     (MR_Integer) 4 },
+  /* row 516 */   {     (MR_Integer) 4 },
+  /* row 517 */   {     (MR_Integer) 4 },
+  /* row 518 */   {     (MR_Integer) 4 },
+  /* row 519 */   {     (MR_Integer) 4 },
+  /* row 520 */   {     (MR_Integer) 4 },
+  /* row 521 */   {     (MR_Integer) 13 },
+  /* row 522 */   {     (MR_Integer) 5 },
+  /* row 523 */   {     (MR_Integer) 13 },
+  /* row 524 */   {     (MR_Integer) 13 },
+  /* row 525 */   {     (MR_Integer) 13 },
+  /* row 526 */   {     (MR_Integer) 13 },
+  /* row 527 */   {     (MR_Integer) 13 },
+  /* row 528 */   {     (MR_Integer) 2 },
+  /* row 529 */   {     (MR_Integer) 2 },
+  /* row 530 */   {     (MR_Integer) 2 },
+  /* row 531 */   {     (MR_Integer) 2 },
+  /* row 532 */   {     (MR_Integer) 2 },
+  /* row 533 */   {     (MR_Integer) 2 },
+  /* row 534 */   {     (MR_Integer) 2 },
+  /* row 535 */   {     (MR_Integer) 2 },
+  /* row 536 */   {     (MR_Integer) 2 },
+  /* row 537 */   {     (MR_Integer) 2 },
+  /* row 538 */   {     (MR_Integer) 2 },
+  /* row 539 */   {     (MR_Integer) 2 },
+  /* row 540 */   {     (MR_Integer) 2 },
+  /* row 541 */   {     (MR_Integer) 2 },
+  /* row 542 */   {     (MR_Integer) 2 },
+  /* row 543 */   {     (MR_Integer) 2 },
+  /* row 544 */   {     (MR_Integer) 2 },
+  /* row 545 */   {     (MR_Integer) 2 },
+  /* row 546 */   {     (MR_Integer) 2 },
+  /* row 547 */   {     (MR_Integer) 2 },
+  /* row 548 */   {     (MR_Integer) 2 },
+  /* row 549 */   {     (MR_Integer) 2 },
+  /* row 550 */   {     (MR_Integer) 2 },
+  /* row 551 */   {     (MR_Integer) 2 },
+  /* row 552 */   {     (MR_Integer) 2 },
+  /* row 553 */   {     (MR_Integer) 2 },
+  /* row 554 */   {     (MR_Integer) 5 },
+  /* row 555 */   {     (MR_Integer) 13 },
+  /* row 556 */   {     (MR_Integer) 5 },
+  /* row 557 */   {     (MR_Integer) 13 },
+  /* row 558 */   {     (MR_Integer) 2 },
+  /* row 559 */   {     (MR_Integer) 11 },
+  /* row 560 */   {     (MR_Integer) 1 },
+  /* row 561 */   {     (MR_Integer) 1 },
+  /* row 562 */   {     (MR_Integer) 1 },
+  /* row 563 */   {     (MR_Integer) 1 },
+  /* row 564 */   {     (MR_Integer) 1 },
+  /* row 565 */   {     (MR_Integer) 1 },
+  /* row 566 */   {     (MR_Integer) 1 },
+  /* row 567 */   {     (MR_Integer) 1 },
+  /* row 568 */   {     (MR_Integer) 1 },
+  /* row 569 */   {     (MR_Integer) 1 },
+  /* row 570 */   {     (MR_Integer) 1 },
+  /* row 571 */   {     (MR_Integer) 1 },
+  /* row 572 */   {     (MR_Integer) 1 },
+  /* row 573 */   {     (MR_Integer) 1 },
+  /* row 574 */   {     (MR_Integer) 1 },
+  /* row 575 */   {     (MR_Integer) 1 },
+  /* row 576 */   {     (MR_Integer) 1 },
+  /* row 577 */   {     (MR_Integer) 1 },
+  /* row 578 */   {     (MR_Integer) 1 },
+  /* row 579 */   {     (MR_Integer) 1 },
+  /* row 580 */   {     (MR_Integer) 1 },
+  /* row 581 */   {     (MR_Integer) 1 },
+  /* row 582 */   {     (MR_Integer) 1 },
+  /* row 583 */   {     (MR_Integer) 1 },
+  /* row 584 */   {     (MR_Integer) 1 },
+  /* row 585 */   {     (MR_Integer) 1 },
+  /* row 586 */   {     (MR_Integer) 5 },
+  /* row 587 */   {     (MR_Integer) 5 },
+  /* row 588 */   {     (MR_Integer) 5 },
+  /* row 589 */   {     (MR_Integer) 13 },
+  /* row 590 */   {     (MR_Integer) 0 },
+  /* row 591 */   {     (MR_Integer) 0 },
+  /* row 592 */   {     (MR_Integer) 0 },
+  /* row 593 */   {     (MR_Integer) 0 },
+  /* row 594 */   {     (MR_Integer) 0 },
+  /* row 595 */   {     (MR_Word) (MR_Integer) 0 },
+  /* row 596 */   {     (MR_Word) (MR_Integer) 0 },
+  /* row 597 */   {     (MR_Word) (MR_Integer) 0 },
+  /* row 598 */   {     (MR_Word) (MR_Integer) 0 },
+  /* row 599 */   {     (MR_Word) (MR_Integer) 0 },
+  /* row 600 */   {     (MR_Word) (MR_Integer) 0 },
+  /* row 601 */   {     (MR_Word) (MR_Integer) 0 },
+  /* row 602 */   {     (MR_Word) (MR_Integer) 0 },
+  /* row 603 */   {     (MR_Word) (MR_Integer) 0 },
+  /* row 604 */   {     (MR_Word) (MR_Integer) 0 },
+  /* row 605 */   {     (MR_Word) (MR_Integer) 0 },
+  /* row 606 */   {     (MR_Word) (MR_Integer) 0 },
+  /* row 607 */   {     (MR_Word) (MR_Integer) 0 },
+  /* row 608 */   {     (MR_Word) (MR_Integer) 0 },
+  /* row 609 */   {     (MR_Word) (MR_Integer) 0 },
+  /* row 610 */   {     (MR_Word) (MR_Integer) 0 },
+  /* row 611 */   {     (MR_Word) (MR_Integer) 0 },
+  /* row 612 */   {     (MR_Word) (MR_Integer) 0 },
+  /* row 613 */   {     (MR_Integer) 0 },
+  /* row 614 */   {     (MR_Integer) 13 },
+  /* row 615 */   {     (MR_Integer) 8 },
+  /* row 616 */   {     (MR_Integer) 10 },
+  /* row 617 */   {     (MR_Integer) 12 },
+  /* row 618 */   {     (MR_Integer) 7 },
+  /* row 619 */   {     (MR_Integer) 13 },
+  /* row 620 */   {     (MR_Integer) 8 },
+  /* row 621 */   {     (MR_Integer) 5 },
+  /* row 622 */   {     (MR_Integer) 5 },
+  /* row 623 */   {     (MR_Integer) 13 },
+  /* row 624 */   {     (MR_Integer) 13 },
+  /* row 625 */   {     (MR_Integer) 5 },
+  /* row 626 */   {     (MR_Integer) 13 },
+  /* row 627 */   {     (MR_Integer) 6 },
+  /* row 628 */   {     (MR_Integer) 9 },
+  /* row 629 */   {     (MR_Integer) 3 },
+  /* row 630 */   {     (MR_Integer) 4 },
+  /* row 631 */   {     (MR_Integer) 4 },
+  /* row 632 */   {     (MR_Integer) 4 },
+  /* row 633 */   {     (MR_Integer) 4 },
+  /* row 634 */   {     (MR_Integer) 4 },
+  /* row 635 */   {     (MR_Integer) 4 },
+  /* row 636 */   {     (MR_Integer) 4 },
+  /* row 637 */   {     (MR_Integer) 4 },
+  /* row 638 */   {     (MR_Integer) 4 },
+  /* row 639 */   {     (MR_Integer) 13 },
+  /* row 640 */   {     (MR_Integer) 5 },
+  /* row 641 */   {     (MR_Integer) 13 },
+  /* row 642 */   {     (MR_Integer) 13 },
+  /* row 643 */   {     (MR_Integer) 13 },
+  /* row 644 */   {     (MR_Integer) 13 },
+  /* row 645 */   {     (MR_Integer) 13 },
+  /* row 646 */   {     (MR_Integer) 2 },
+  /* row 647 */   {     (MR_Integer) 2 },
+  /* row 648 */   {     (MR_Integer) 2 },
+  /* row 649 */   {     (MR_Integer) 2 },
+  /* row 650 */   {     (MR_Integer) 2 },
+  /* row 651 */   {     (MR_Integer) 2 },
+  /* row 652 */   {     (MR_Integer) 2 },
+  /* row 653 */   {     (MR_Integer) 2 },
+  /* row 654 */   {     (MR_Integer) 2 },
+  /* row 655 */   {     (MR_Integer) 2 },
+  /* row 656 */   {     (MR_Integer) 2 },
+  /* row 657 */   {     (MR_Integer) 2 },
+  /* row 658 */   {     (MR_Integer) 2 },
+  /* row 659 */   {     (MR_Integer) 2 },
+  /* row 660 */   {     (MR_Integer) 2 },
+  /* row 661 */   {     (MR_Integer) 2 },
+  /* row 662 */   {     (MR_Integer) 2 },
+  /* row 663 */   {     (MR_Integer) 2 },
+  /* row 664 */   {     (MR_Integer) 2 },
+  /* row 665 */   {     (MR_Integer) 2 },
+  /* row 666 */   {     (MR_Integer) 2 },
+  /* row 667 */   {     (MR_Integer) 2 },
+  /* row 668 */   {     (MR_Integer) 2 },
+  /* row 669 */   {     (MR_Integer) 2 },
+  /* row 670 */   {     (MR_Integer) 2 },
+  /* row 671 */   {     (MR_Integer) 2 },
+  /* row 672 */   {     (MR_Integer) 5 },
+  /* row 673 */   {     (MR_Integer) 13 },
+  /* row 674 */   {     (MR_Integer) 5 },
+  /* row 675 */   {     (MR_Integer) 13 },
+  /* row 676 */   {     (MR_Integer) 2 },
+  /* row 677 */   {     (MR_Integer) 11 },
+  /* row 678 */   {     (MR_Integer) 1 },
+  /* row 679 */   {     (MR_Integer) 1 },
+  /* row 680 */   {     (MR_Integer) 1 },
+  /* row 681 */   {     (MR_Integer) 1 },
+  /* row 682 */   {     (MR_Integer) 1 },
+  /* row 683 */   {     (MR_Integer) 1 },
+  /* row 684 */   {     (MR_Integer) 1 },
+  /* row 685 */   {     (MR_Integer) 1 },
+  /* row 686 */   {     (MR_Integer) 1 },
+  /* row 687 */   {     (MR_Integer) 1 },
+  /* row 688 */   {     (MR_Integer) 1 },
+  /* row 689 */   {     (MR_Integer) 1 },
+  /* row 690 */   {     (MR_Integer) 1 },
+  /* row 691 */   {     (MR_Integer) 1 },
+  /* row 692 */   {     (MR_Integer) 1 },
+  /* row 693 */   {     (MR_Integer) 1 },
+  /* row 694 */   {     (MR_Integer) 1 },
+  /* row 695 */   {     (MR_Integer) 1 },
+  /* row 696 */   {     (MR_Integer) 1 },
+  /* row 697 */   {     (MR_Integer) 1 },
+  /* row 698 */   {     (MR_Integer) 1 },
+  /* row 699 */   {     (MR_Integer) 1 },
+  /* row 700 */   {     (MR_Integer) 1 },
+  /* row 701 */   {     (MR_Integer) 1 },
+  /* row 702 */   {     (MR_Integer) 1 },
+  /* row 703 */   {     (MR_Integer) 1 },
+  /* row 704 */   {     (MR_Integer) 5 },
+  /* row 705 */   {     (MR_Integer) 5 },
+  /* row 706 */   {     (MR_Integer) 5 },
+  /* row 707 */   {     (MR_Integer) 13 },
+  /* row 708 */   {     (MR_Integer) 0 },
+  /* row 709 */   {     (MR_Integer) 0 },
+  /* row 710 */   {     (MR_Integer) 0 },
+  /* row 711 */   {     (MR_Integer) 0 },
+  /* row 712 */   {     (MR_Integer) 0 },
+  /* row 713 */   {     (MR_Word) (MR_Integer) 0 },
+  /* row 714 */   {     (MR_Word) (MR_Integer) 0 },
+  /* row 715 */   {     (MR_Word) (MR_Integer) 0 },
+  /* row 716 */   {     (MR_Word) (MR_Integer) 0 },
+  /* row 717 */   {     (MR_Word) (MR_Integer) 0 },
+  /* row 718 */   {     (MR_Word) (MR_Integer) 0 },
+  /* row 719 */   {     (MR_Word) (MR_Integer) 0 },
+  /* row 720 */   {     (MR_Word) (MR_Integer) 0 },
+  /* row 721 */   {     (MR_Word) (MR_Integer) 0 },
+  /* row 722 */   {     (MR_Word) (MR_Integer) 0 },
+  /* row 723 */   {     (MR_Word) (MR_Integer) 0 },
+  /* row 724 */   {     (MR_Word) (MR_Integer) 0 },
+  /* row 725 */   {     (MR_Word) (MR_Integer) 0 },
+  /* row 726 */   {     (MR_Word) (MR_Integer) 0 },
+  /* row 727 */   {     (MR_Word) (MR_Integer) 0 },
+  /* row 728 */   {     (MR_Word) (MR_Integer) 0 },
+  /* row 729 */   {     (MR_Word) (MR_Integer) 0 },
+  /* row 730 */   {     (MR_Word) (MR_Integer) 0 },
+  /* row 731 */   {     (MR_Integer) 0 },
+  /* row 732 */   {     (MR_Integer) 13 },
+  /* row 733 */   {     (MR_Integer) 8 },
+  /* row 734 */   {     (MR_Integer) 10 },
+  /* row 735 */   {     (MR_Integer) 12 },
+  /* row 736 */   {     (MR_Integer) 7 },
+  /* row 737 */   {     (MR_Integer) 13 },
+  /* row 738 */   {     (MR_Integer) 8 },
+  /* row 739 */   {     (MR_Integer) 5 },
+  /* row 740 */   {     (MR_Integer) 5 },
+  /* row 741 */   {     (MR_Integer) 13 },
+  /* row 742 */   {     (MR_Integer) 13 },
+  /* row 743 */   {     (MR_Integer) 5 },
+  /* row 744 */   {     (MR_Integer) 13 },
+  /* row 745 */   {     (MR_Integer) 6 },
+  /* row 746 */   {     (MR_Integer) 9 },
+  /* row 747 */   {     (MR_Integer) 3 },
+  /* row 748 */   {     (MR_Integer) 4 },
+  /* row 749 */   {     (MR_Integer) 4 },
+  /* row 750 */   {     (MR_Integer) 4 },
+  /* row 751 */   {     (MR_Integer) 4 },
+  /* row 752 */   {     (MR_Integer) 4 },
+  /* row 753 */   {     (MR_Integer) 4 },
+  /* row 754 */   {     (MR_Integer) 4 },
+  /* row 755 */   {     (MR_Integer) 4 },
+  /* row 756 */   {     (MR_Integer) 4 },
+  /* row 757 */   {     (MR_Integer) 13 },
+  /* row 758 */   {     (MR_Integer) 5 },
+  /* row 759 */   {     (MR_Integer) 13 },
+  /* row 760 */   {     (MR_Integer) 13 },
+  /* row 761 */   {     (MR_Integer) 13 },
+  /* row 762 */   {     (MR_Integer) 13 },
+  /* row 763 */   {     (MR_Integer) 13 },
+  /* row 764 */   {     (MR_Integer) 2 },
+  /* row 765 */   {     (MR_Integer) 2 },
+  /* row 766 */   {     (MR_Integer) 2 },
+  /* row 767 */   {     (MR_Integer) 2 },
+  /* row 768 */   {     (MR_Integer) 2 },
+  /* row 769 */   {     (MR_Integer) 2 },
+  /* row 770 */   {     (MR_Integer) 2 },
+  /* row 771 */   {     (MR_Integer) 2 },
+  /* row 772 */   {     (MR_Integer) 2 },
+  /* row 773 */   {     (MR_Integer) 2 },
+  /* row 774 */   {     (MR_Integer) 2 },
+  /* row 775 */   {     (MR_Integer) 2 },
+  /* row 776 */   {     (MR_Integer) 2 },
+  /* row 777 */   {     (MR_Integer) 2 },
+  /* row 778 */   {     (MR_Integer) 2 },
+  /* row 779 */   {     (MR_Integer) 2 },
+  /* row 780 */   {     (MR_Integer) 2 },
+  /* row 781 */   {     (MR_Integer) 2 },
+  /* row 782 */   {     (MR_Integer) 2 },
+  /* row 783 */   {     (MR_Integer) 2 },
+  /* row 784 */   {     (MR_Integer) 2 },
+  /* row 785 */   {     (MR_Integer) 2 },
+  /* row 786 */   {     (MR_Integer) 2 },
+  /* row 787 */   {     (MR_Integer) 2 },
+  /* row 788 */   {     (MR_Integer) 2 },
+  /* row 789 */   {     (MR_Integer) 2 },
+  /* row 790 */   {     (MR_Integer) 5 },
+  /* row 791 */   {     (MR_Integer) 13 },
+  /* row 792 */   {     (MR_Integer) 5 },
+  /* row 793 */   {     (MR_Integer) 13 },
+  /* row 794 */   {     (MR_Integer) 2 },
+  /* row 795 */   {     (MR_Integer) 11 },
+  /* row 796 */   {     (MR_Integer) 1 },
+  /* row 797 */   {     (MR_Integer) 1 },
+  /* row 798 */   {     (MR_Integer) 1 },
+  /* row 799 */   {     (MR_Integer) 1 },
+  /* row 800 */   {     (MR_Integer) 1 },
+  /* row 801 */   {     (MR_Integer) 1 },
+  /* row 802 */   {     (MR_Integer) 1 },
+  /* row 803 */   {     (MR_Integer) 1 },
+  /* row 804 */   {     (MR_Integer) 1 },
+  /* row 805 */   {     (MR_Integer) 1 },
+  /* row 806 */   {     (MR_Integer) 1 },
+  /* row 807 */   {     (MR_Integer) 1 },
+  /* row 808 */   {     (MR_Integer) 1 },
+  /* row 809 */   {     (MR_Integer) 1 },
+  /* row 810 */   {     (MR_Integer) 1 },
+  /* row 811 */   {     (MR_Integer) 1 },
+  /* row 812 */   {     (MR_Integer) 1 },
+  /* row 813 */   {     (MR_Integer) 1 },
+  /* row 814 */   {     (MR_Integer) 1 },
+  /* row 815 */   {     (MR_Integer) 1 },
+  /* row 816 */   {     (MR_Integer) 1 },
+  /* row 817 */   {     (MR_Integer) 1 },
+  /* row 818 */   {     (MR_Integer) 1 },
+  /* row 819 */   {     (MR_Integer) 1 },
+  /* row 820 */   {     (MR_Integer) 1 },
+  /* row 821 */   {     (MR_Integer) 1 },
+  /* row 822 */   {     (MR_Integer) 5 },
+  /* row 823 */   {     (MR_Integer) 5 },
+  /* row 824 */   {     (MR_Integer) 5 },
+  /* row 825 */   {     (MR_Integer) 13 },
+  /* row 826 */   {     (MR_Integer) 0 },
+  /* row 827 */   {     (MR_Integer) 0 },
+  /* row 828 */   {     (MR_Integer) 0 },
+  /* row 829 */   {     (MR_Integer) 0 },
+  /* row 830 */   {     (MR_Integer) 0 },
+  /* row 831 */   {     (MR_Word) (MR_Integer) 0 },
+  /* row 832 */   {     (MR_Word) (MR_Integer) 0 },
+  /* row 833 */   {     (MR_Word) (MR_Integer) 0 },
+  /* row 834 */   {     (MR_Word) (MR_Integer) 0 },
+  /* row 835 */   {     (MR_Word) (MR_Integer) 0 },
+  /* row 836 */   {     (MR_Word) (MR_Integer) 0 },
+  /* row 837 */   {     (MR_Word) (MR_Integer) 0 },
+  /* row 838 */   {     (MR_Word) (MR_Integer) 0 },
+  /* row 839 */   {     (MR_Word) (MR_Integer) 0 },
+  /* row 840 */   {     (MR_Word) (MR_Integer) 0 },
+  /* row 841 */   {     (MR_Word) (MR_Integer) 0 },
+  /* row 842 */   {     (MR_Word) (MR_Integer) 0 },
+  /* row 843 */   {     (MR_Word) (MR_Integer) 0 },
+  /* row 844 */   {     (MR_Word) (MR_Integer) 0 },
+  /* row 845 */   {     (MR_Word) (MR_Integer) 0 },
+  /* row 846 */   {     (MR_Word) (MR_Integer) 0 },
+  /* row 847 */   {     (MR_Word) (MR_Integer) 0 },
+  /* row 848 */   {     (MR_Word) (MR_Integer) 0 },
+  /* row 849 */   {     (MR_Integer) 0 },
+  /* row 850 */   {     (MR_Integer) 13 },
+  /* row 851 */   {     (MR_Integer) 8 },
+  /* row 852 */   {     (MR_Integer) 10 },
+  /* row 853 */   {     (MR_Integer) 12 },
+  /* row 854 */   {     (MR_Integer) 7 },
+  /* row 855 */   {     (MR_Integer) 13 },
+  /* row 856 */   {     (MR_Integer) 8 },
+  /* row 857 */   {     (MR_Integer) 5 },
+  /* row 858 */   {     (MR_Integer) 5 },
+  /* row 859 */   {     (MR_Integer) 13 },
+  /* row 860 */   {     (MR_Integer) 13 },
+  /* row 861 */   {     (MR_Integer) 5 },
+  /* row 862 */   {     (MR_Integer) 13 },
+  /* row 863 */   {     (MR_Integer) 6 },
+  /* row 864 */   {     (MR_Integer) 9 },
+  /* row 865 */   {     (MR_Integer) 3 },
+  /* row 866 */   {     (MR_Integer) 4 },
+  /* row 867 */   {     (MR_Integer) 4 },
+  /* row 868 */   {     (MR_Integer) 4 },
+  /* row 869 */   {     (MR_Integer) 4 },
+  /* row 870 */   {     (MR_Integer) 4 },
+  /* row 871 */   {     (MR_Integer) 4 },
+  /* row 872 */   {     (MR_Integer) 4 },
+  /* row 873 */   {     (MR_Integer) 4 },
+  /* row 874 */   {     (MR_Integer) 4 },
+  /* row 875 */   {     (MR_Integer) 13 },
+  /* row 876 */   {     (MR_Integer) 5 },
+  /* row 877 */   {     (MR_Integer) 13 },
+  /* row 878 */   {     (MR_Integer) 13 },
+  /* row 879 */   {     (MR_Integer) 13 },
+  /* row 880 */   {     (MR_Integer) 13 },
+  /* row 881 */   {     (MR_Integer) 13 },
+  /* row 882 */   {     (MR_Integer) 2 },
+  /* row 883 */   {     (MR_Integer) 2 },
+  /* row 884 */   {     (MR_Integer) 2 },
+  /* row 885 */   {     (MR_Integer) 2 },
+  /* row 886 */   {     (MR_Integer) 2 },
+  /* row 887 */   {     (MR_Integer) 2 },
+  /* row 888 */   {     (MR_Integer) 2 },
+  /* row 889 */   {     (MR_Integer) 2 },
+  /* row 890 */   {     (MR_Integer) 2 },
+  /* row 891 */   {     (MR_Integer) 2 },
+  /* row 892 */   {     (MR_Integer) 2 },
+  /* row 893 */   {     (MR_Integer) 2 },
+  /* row 894 */   {     (MR_Integer) 2 },
+  /* row 895 */   {     (MR_Integer) 2 },
+  /* row 896 */   {     (MR_Integer) 2 },
+  /* row 897 */   {     (MR_Integer) 2 },
+  /* row 898 */   {     (MR_Integer) 2 },
+  /* row 899 */   {     (MR_Integer) 2 },
+  /* row 900 */   {     (MR_Integer) 2 },
+  /* row 901 */   {     (MR_Integer) 2 },
+  /* row 902 */   {     (MR_Integer) 2 },
+  /* row 903 */   {     (MR_Integer) 2 },
+  /* row 904 */   {     (MR_Integer) 2 },
+  /* row 905 */   {     (MR_Integer) 2 },
+  /* row 906 */   {     (MR_Integer) 2 },
+  /* row 907 */   {     (MR_Integer) 2 },
+  /* row 908 */   {     (MR_Integer) 5 },
+  /* row 909 */   {     (MR_Integer) 13 },
+  /* row 910 */   {     (MR_Integer) 5 },
+  /* row 911 */   {     (MR_Integer) 13 },
+  /* row 912 */   {     (MR_Integer) 2 },
+  /* row 913 */   {     (MR_Integer) 11 },
+  /* row 914 */   {     (MR_Integer) 1 },
+  /* row 915 */   {     (MR_Integer) 1 },
+  /* row 916 */   {     (MR_Integer) 1 },
+  /* row 917 */   {     (MR_Integer) 1 },
+  /* row 918 */   {     (MR_Integer) 1 },
+  /* row 919 */   {     (MR_Integer) 1 },
+  /* row 920 */   {     (MR_Integer) 1 },
+  /* row 921 */   {     (MR_Integer) 1 },
+  /* row 922 */   {     (MR_Integer) 1 },
+  /* row 923 */   {     (MR_Integer) 1 },
+  /* row 924 */   {     (MR_Integer) 1 },
+  /* row 925 */   {     (MR_Integer) 1 },
+  /* row 926 */   {     (MR_Integer) 1 },
+  /* row 927 */   {     (MR_Integer) 1 },
+  /* row 928 */   {     (MR_Integer) 1 },
+  /* row 929 */   {     (MR_Integer) 1 },
+  /* row 930 */   {     (MR_Integer) 1 },
+  /* row 931 */   {     (MR_Integer) 1 },
+  /* row 932 */   {     (MR_Integer) 1 },
+  /* row 933 */   {     (MR_Integer) 1 },
+  /* row 934 */   {     (MR_Integer) 1 },
+  /* row 935 */   {     (MR_Integer) 1 },
+  /* row 936 */   {     (MR_Integer) 1 },
+  /* row 937 */   {     (MR_Integer) 1 },
+  /* row 938 */   {     (MR_Integer) 1 },
+  /* row 939 */   {     (MR_Integer) 1 },
+  /* row 940 */   {     (MR_Integer) 5 },
+  /* row 941 */   {     (MR_Integer) 5 },
+  /* row 942 */   {     (MR_Integer) 5 },
+  /* row 943 */   {     (MR_Integer) 13 },
+  /* row 944 */   {     (MR_Integer) 0 },
+  /* row 945 */   {     (MR_Integer) 0 },
+  /* row 946 */   {     (MR_Integer) 0 },
+  /* row 947 */   {     (MR_Integer) 0 },
+  /* row 948 */   {     (MR_Integer) 0 },
+  /* row 949 */   {     (MR_Word) (MR_Integer) 0 },
+  /* row 950 */   {     (MR_Word) (MR_Integer) 0 },
+  /* row 951 */   {     (MR_Word) (MR_Integer) 0 },
+  /* row 952 */   {     (MR_Word) (MR_Integer) 0 },
+  /* row 953 */   {     (MR_Word) (MR_Integer) 0 },
+  /* row 954 */   {     (MR_Word) (MR_Integer) 0 },
+  /* row 955 */   {     (MR_Word) (MR_Integer) 0 },
+  /* row 956 */   {     (MR_Word) (MR_Integer) 0 },
+  /* row 957 */   {     (MR_Word) (MR_Integer) 0 },
+  /* row 958 */   {     (MR_Word) (MR_Integer) 0 },
+  /* row 959 */   {     (MR_Word) (MR_Integer) 0 },
+  /* row 960 */   {     (MR_Word) (MR_Integer) 0 },
+  /* row 961 */   {     (MR_Word) (MR_Integer) 0 },
+  /* row 962 */   {     (MR_Word) (MR_Integer) 0 },
+  /* row 963 */   {     (MR_Word) (MR_Integer) 0 },
+  /* row 964 */   {     (MR_Word) (MR_Integer) 0 },
+  /* row 965 */   {     (MR_Word) (MR_Integer) 0 },
+  /* row 966 */   {     (MR_Word) (MR_Integer) 0 },
+  /* row 967 */   {     (MR_Integer) 0 },
+  /* row 968 */   {     (MR_Integer) 13 },
+  /* row 969 */   {     (MR_Integer) 8 },
+  /* row 970 */   {     (MR_Integer) 10 },
+  /* row 971 */   {     (MR_Integer) 12 },
+  /* row 972 */   {     (MR_Integer) 7 },
+  /* row 973 */   {     (MR_Integer) 13 },
+  /* row 974 */   {     (MR_Integer) 8 },
+  /* row 975 */   {     (MR_Integer) 5 },
+  /* row 976 */   {     (MR_Integer) 5 },
+  /* row 977 */   {     (MR_Integer) 13 },
+  /* row 978 */   {     (MR_Integer) 13 },
+  /* row 979 */   {     (MR_Integer) 5 },
+  /* row 980 */   {     (MR_Integer) 13 },
+  /* row 981 */   {     (MR_Integer) 6 },
+  /* row 982 */   {     (MR_Integer) 9 },
+  /* row 983 */   {     (MR_Integer) 3 },
+  /* row 984 */   {     (MR_Integer) 4 },
+  /* row 985 */   {     (MR_Integer) 4 },
+  /* row 986 */   {     (MR_Integer) 4 },
+  /* row 987 */   {     (MR_Integer) 4 },
+  /* row 988 */   {     (MR_Integer) 4 },
+  /* row 989 */   {     (MR_Integer) 4 },
+  /* row 990 */   {     (MR_Integer) 4 },
+  /* row 991 */   {     (MR_Integer) 4 },
+  /* row 992 */   {     (MR_Integer) 4 },
+  /* row 993 */   {     (MR_Integer) 13 },
+  /* row 994 */   {     (MR_Integer) 5 },
+  /* row 995 */   {     (MR_Integer) 13 },
+  /* row 996 */   {     (MR_Integer) 13 },
+  /* row 997 */   {     (MR_Integer) 13 },
+  /* row 998 */   {     (MR_Integer) 13 },
+  /* row 999 */   {     (MR_Integer) 13 },
+  /* row 1000 */   {     (MR_Integer) 2 },
+  /* row 1001 */   {     (MR_Integer) 2 },
+  /* row 1002 */   {     (MR_Integer) 2 },
+  /* row 1003 */   {     (MR_Integer) 2 },
+  /* row 1004 */   {     (MR_Integer) 2 },
+  /* row 1005 */   {     (MR_Integer) 2 },
+  /* row 1006 */   {     (MR_Integer) 2 },
+  /* row 1007 */   {     (MR_Integer) 2 },
+  /* row 1008 */   {     (MR_Integer) 2 },
+  /* row 1009 */   {     (MR_Integer) 2 },
+  /* row 1010 */   {     (MR_Integer) 2 },
+  /* row 1011 */   {     (MR_Integer) 2 },
+  /* row 1012 */   {     (MR_Integer) 2 },
+  /* row 1013 */   {     (MR_Integer) 2 },
+  /* row 1014 */   {     (MR_Integer) 2 },
+  /* row 1015 */   {     (MR_Integer) 2 },
+  /* row 1016 */   {     (MR_Integer) 2 },
+  /* row 1017 */   {     (MR_Integer) 2 },
+  /* row 1018 */   {     (MR_Integer) 2 },
+  /* row 1019 */   {     (MR_Integer) 2 },
+  /* row 1020 */   {     (MR_Integer) 2 },
+  /* row 1021 */   {     (MR_Integer) 2 },
+  /* row 1022 */   {     (MR_Integer) 2 },
+  /* row 1023 */   {     (MR_Integer) 2 },
+  /* row 1024 */   {     (MR_Integer) 2 },
+  /* row 1025 */   {     (MR_Integer) 2 },
+  /* row 1026 */   {     (MR_Integer) 5 },
+  /* row 1027 */   {     (MR_Integer) 13 },
+  /* row 1028 */   {     (MR_Integer) 5 },
+  /* row 1029 */   {     (MR_Integer) 13 },
+  /* row 1030 */   {     (MR_Integer) 2 },
+  /* row 1031 */   {     (MR_Integer) 11 },
+  /* row 1032 */   {     (MR_Integer) 1 },
+  /* row 1033 */   {     (MR_Integer) 1 },
+  /* row 1034 */   {     (MR_Integer) 1 },
+  /* row 1035 */   {     (MR_Integer) 1 },
+  /* row 1036 */   {     (MR_Integer) 1 },
+  /* row 1037 */   {     (MR_Integer) 1 },
+  /* row 1038 */   {     (MR_Integer) 1 },
+  /* row 1039 */   {     (MR_Integer) 1 },
+  /* row 1040 */   {     (MR_Integer) 1 },
+  /* row 1041 */   {     (MR_Integer) 1 },
+  /* row 1042 */   {     (MR_Integer) 1 },
+  /* row 1043 */   {     (MR_Integer) 1 },
+  /* row 1044 */   {     (MR_Integer) 1 },
+  /* row 1045 */   {     (MR_Integer) 1 },
+  /* row 1046 */   {     (MR_Integer) 1 },
+  /* row 1047 */   {     (MR_Integer) 1 },
+  /* row 1048 */   {     (MR_Integer) 1 },
+  /* row 1049 */   {     (MR_Integer) 1 },
+  /* row 1050 */   {     (MR_Integer) 1 },
+  /* row 1051 */   {     (MR_Integer) 1 },
+  /* row 1052 */   {     (MR_Integer) 1 },
+  /* row 1053 */   {     (MR_Integer) 1 },
+  /* row 1054 */   {     (MR_Integer) 1 },
+  /* row 1055 */   {     (MR_Integer) 1 },
+  /* row 1056 */   {     (MR_Integer) 1 },
+  /* row 1057 */   {     (MR_Integer) 1 },
+  /* row 1058 */   {     (MR_Integer) 5 },
+  /* row 1059 */   {     (MR_Integer) 5 },
+  /* row 1060 */   {     (MR_Integer) 5 },
+  /* row 1061 */   {     (MR_Integer) 13 },
+};
+
+static /* final */ const struct mercury__lexer__vector_common_type_9_0_s mercury__lexer_vector_common_9[4] = {
+  /* row 0 */   {     (MR_Integer) 2 },
+  /* row 1 */   {     (MR_Integer) 8 },
+  /* row 2 */   {     (MR_Integer) 10 },
+  /* row 3 */   {     (MR_Integer) 16 },
+};
+
+
+#include "array.mh"
+#include "benchmarking.mh"
+#include "bitmap.mh"
+#include "builtin.mh"
+#include "char.mh"
+#include "construct.mh"
+#include "dir.mh"
+#include "exception.mh"
+#include "float.mh"
+#include "int.mh"
+#include "io.mh"
+#include "lexer.mh"
+#include "math.mh"
+#include "pretty_printer.mh"
+#include "private_builtin.mh"
+#include "rtti_implementation.mh"
+#include "stm_builtin.mh"
+#include "store.mh"
+#include "string.mh"
+#include "table_builtin.mh"
+#include "time.mh"
+#include "type_desc.mh"
+#include "uint.mh"
+#include "version_array.mh"
+
+
+
+static const MR_EnumFunctorDesc mercury__lexer__lexer__enum_functor_desc_get_token_action_0_0 = {
+  (MR_String) "action_whitespace",
+  (MR_Integer) 0
+};
+
+static const MR_EnumFunctorDesc mercury__lexer__lexer__enum_functor_desc_get_token_action_0_1 = {
+  (MR_String) "action_alpha_lower",
+  (MR_Integer) 1
+};
+
+static const MR_EnumFunctorDesc mercury__lexer__lexer__enum_functor_desc_get_token_action_0_2 = {
+  (MR_String) "action_alpha_upper_uscore",
+  (MR_Integer) 2
+};
+
+static const MR_EnumFunctorDesc mercury__lexer__lexer__enum_functor_desc_get_token_action_0_3 = {
+  (MR_String) "action_zero",
+  (MR_Integer) 3
+};
+
+static const MR_EnumFunctorDesc mercury__lexer__lexer__enum_functor_desc_get_token_action_0_4 = {
+  (MR_String) "action_nonzero_digit",
+  (MR_Integer) 4
+};
+
+static const MR_EnumFunctorDesc mercury__lexer__lexer__enum_functor_desc_get_token_action_0_5 = {
+  (MR_String) "action_special_token",
+  (MR_Integer) 5
+};
+
+static const MR_EnumFunctorDesc mercury__lexer__lexer__enum_functor_desc_get_token_action_0_6 = {
+  (MR_String) "action_dot",
+  (MR_Integer) 6
+};
+
+static const MR_EnumFunctorDesc mercury__lexer__lexer__enum_functor_desc_get_token_action_0_7 = {
+  (MR_String) "action_percent",
+  (MR_Integer) 7
+};
+
+static const MR_EnumFunctorDesc mercury__lexer__lexer__enum_functor_desc_get_token_action_0_8 = {
+  (MR_String) "action_quote",
+  (MR_Integer) 8
+};
+
+static const MR_EnumFunctorDesc mercury__lexer__lexer__enum_functor_desc_get_token_action_0_9 = {
+  (MR_String) "action_slash",
+  (MR_Integer) 9
+};
+
+static const MR_EnumFunctorDesc mercury__lexer__lexer__enum_functor_desc_get_token_action_0_10 = {
+  (MR_String) "action_hash",
+  (MR_Integer) 10
+};
+
+static const MR_EnumFunctorDesc mercury__lexer__lexer__enum_functor_desc_get_token_action_0_11 = {
+  (MR_String) "action_backquote",
+  (MR_Integer) 11
+};
+
+static const MR_EnumFunctorDesc mercury__lexer__lexer__enum_functor_desc_get_token_action_0_12 = {
+  (MR_String) "action_dollar",
+  (MR_Integer) 12
+};
+
+static const MR_EnumFunctorDesc mercury__lexer__lexer__enum_functor_desc_get_token_action_0_13 = {
+  (MR_String) "action_graphic_token",
+  (MR_Integer) 13
+};
+
+static const MR_EnumFunctorDescPtr mercury__lexer__lexer__enum_value_ordered_get_token_action_0[14] = {
+  &mercury__lexer__lexer__enum_functor_desc_get_token_action_0_0,
+  &mercury__lexer__lexer__enum_functor_desc_get_token_action_0_1,
+  &mercury__lexer__lexer__enum_functor_desc_get_token_action_0_2,
+  &mercury__lexer__lexer__enum_functor_desc_get_token_action_0_3,
+  &mercury__lexer__lexer__enum_functor_desc_get_token_action_0_4,
+  &mercury__lexer__lexer__enum_functor_desc_get_token_action_0_5,
+  &mercury__lexer__lexer__enum_functor_desc_get_token_action_0_6,
+  &mercury__lexer__lexer__enum_functor_desc_get_token_action_0_7,
+  &mercury__lexer__lexer__enum_functor_desc_get_token_action_0_8,
+  &mercury__lexer__lexer__enum_functor_desc_get_token_action_0_9,
+  &mercury__lexer__lexer__enum_functor_desc_get_token_action_0_10,
+  &mercury__lexer__lexer__enum_functor_desc_get_token_action_0_11,
+  &mercury__lexer__lexer__enum_functor_desc_get_token_action_0_12,
+  &mercury__lexer__lexer__enum_functor_desc_get_token_action_0_13
+};
+
+static const MR_EnumFunctorDescPtr mercury__lexer__lexer__enum_name_ordered_get_token_action_0[14] = {
+  &mercury__lexer__lexer__enum_functor_desc_get_token_action_0_1,
+  &mercury__lexer__lexer__enum_functor_desc_get_token_action_0_2,
+  &mercury__lexer__lexer__enum_functor_desc_get_token_action_0_11,
+  &mercury__lexer__lexer__enum_functor_desc_get_token_action_0_12,
+  &mercury__lexer__lexer__enum_functor_desc_get_token_action_0_6,
+  &mercury__lexer__lexer__enum_functor_desc_get_token_action_0_13,
+  &mercury__lexer__lexer__enum_functor_desc_get_token_action_0_10,
+  &mercury__lexer__lexer__enum_functor_desc_get_token_action_0_4,
+  &mercury__lexer__lexer__enum_functor_desc_get_token_action_0_7,
+  &mercury__lexer__lexer__enum_functor_desc_get_token_action_0_8,
+  &mercury__lexer__lexer__enum_functor_desc_get_token_action_0_9,
+  &mercury__lexer__lexer__enum_functor_desc_get_token_action_0_5,
+  &mercury__lexer__lexer__enum_functor_desc_get_token_action_0_0,
+  &mercury__lexer__lexer__enum_functor_desc_get_token_action_0_3
+};
+
+static const MR_Integer mercury__lexer__lexer__functor_number_map_get_token_action_0[14] = {
+  (MR_Integer) 12,
+  (MR_Integer) 0,
+  (MR_Integer) 1,
+  (MR_Integer) 13,
+  (MR_Integer) 7,
+  (MR_Integer) 11,
+  (MR_Integer) 4,
+  (MR_Integer) 8,
+  (MR_Integer) 9,
+  (MR_Integer) 10,
+  (MR_Integer) 6,
+  (MR_Integer) 2,
+  (MR_Integer) 3,
+  (MR_Integer) 5
+};
+
+const MR_TypeCtorInfo_Struct mercury__lexer__lexer__type_ctor_info_get_token_action_0 = {
+  (MR_Integer) 0,
+  (MR_Integer) 17,
+  (MR_Integer) -1,
+  mercury__private_builtin__MR_TYPECTOR_REP_ENUM,
+  ((MR_Box) (mercury__lexer____Unify____get_token_action_0_0_10001)),
+  ((MR_Box) (mercury__lexer____Compare____get_token_action_0_0_10001)),
+  (MR_String) "lexer",
+  (MR_String) "get_token_action",
+  {     mercury__lexer__lexer__enum_name_ordered_get_token_action_0 },
+  {     mercury__lexer__lexer__enum_value_ordered_get_token_action_0 },
+  (MR_Integer) 14,
+  (MR_Integer) 4,
+  mercury__lexer__lexer__functor_number_map_get_token_action_0
+};
+
+static const MR_EnumFunctorDesc mercury__lexer__lexer__enum_functor_desc_integer_base_0_0 = {
+  (MR_String) "base_2",
+  (MR_Integer) 0
+};
+
+static const MR_EnumFunctorDesc mercury__lexer__lexer__enum_functor_desc_integer_base_0_1 = {
+  (MR_String) "base_8",
+  (MR_Integer) 1
+};
+
+static const MR_EnumFunctorDesc mercury__lexer__lexer__enum_functor_desc_integer_base_0_2 = {
+  (MR_String) "base_10",
+  (MR_Integer) 2
+};
+
+static const MR_EnumFunctorDesc mercury__lexer__lexer__enum_functor_desc_integer_base_0_3 = {
+  (MR_String) "base_16",
+  (MR_Integer) 3
+};
+
+static const MR_EnumFunctorDescPtr mercury__lexer__lexer__enum_value_ordered_integer_base_0[4] = {
+  &mercury__lexer__lexer__enum_functor_desc_integer_base_0_0,
+  &mercury__lexer__lexer__enum_functor_desc_integer_base_0_1,
+  &mercury__lexer__lexer__enum_functor_desc_integer_base_0_2,
+  &mercury__lexer__lexer__enum_functor_desc_integer_base_0_3
+};
+
+static const MR_EnumFunctorDescPtr mercury__lexer__lexer__enum_name_ordered_integer_base_0[4] = {
+  &mercury__lexer__lexer__enum_functor_desc_integer_base_0_2,
+  &mercury__lexer__lexer__enum_functor_desc_integer_base_0_3,
+  &mercury__lexer__lexer__enum_functor_desc_integer_base_0_0,
+  &mercury__lexer__lexer__enum_functor_desc_integer_base_0_1
+};
+
+static const MR_Integer mercury__lexer__lexer__functor_number_map_integer_base_0[4] = {
+  (MR_Integer) 2,
+  (MR_Integer) 3,
+  (MR_Integer) 0,
+  (MR_Integer) 1
+};
+
+const MR_TypeCtorInfo_Struct mercury__lexer__lexer__type_ctor_info_integer_base_0 = {
+  (MR_Integer) 0,
+  (MR_Integer) 17,
+  (MR_Integer) -1,
+  mercury__private_builtin__MR_TYPECTOR_REP_ENUM,
+  ((MR_Box) (mercury__lexer____Unify____integer_base_0_0_10001)),
+  ((MR_Box) (mercury__lexer____Compare____integer_base_0_0_10001)),
+  (MR_String) "lexer",
+  (MR_String) "integer_base",
+  {     mercury__lexer__lexer__enum_name_ordered_integer_base_0 },
+  {     mercury__lexer__lexer__enum_value_ordered_integer_base_0 },
+  (MR_Integer) 4,
+  (MR_Integer) 4,
+  mercury__lexer__lexer__functor_number_map_integer_base_0
+};
+
+static const MR_EnumFunctorDesc mercury__lexer__lexer__enum_functor_desc_integer_size_0_0 = {
+  (MR_String) "size_word",
+  (MR_Integer) 0
+};
+
+static const MR_EnumFunctorDesc mercury__lexer__lexer__enum_functor_desc_integer_size_0_1 = {
+  (MR_String) "size_8_bit",
+  (MR_Integer) 1
+};
+
+static const MR_EnumFunctorDesc mercury__lexer__lexer__enum_functor_desc_integer_size_0_2 = {
+  (MR_String) "size_16_bit",
+  (MR_Integer) 2
+};
+
+static const MR_EnumFunctorDesc mercury__lexer__lexer__enum_functor_desc_integer_size_0_3 = {
+  (MR_String) "size_32_bit",
+  (MR_Integer) 3
+};
+
+static const MR_EnumFunctorDesc mercury__lexer__lexer__enum_functor_desc_integer_size_0_4 = {
+  (MR_String) "size_64_bit",
+  (MR_Integer) 4
+};
+
+static const MR_EnumFunctorDescPtr mercury__lexer__lexer__enum_value_ordered_integer_size_0[5] = {
+  &mercury__lexer__lexer__enum_functor_desc_integer_size_0_0,
+  &mercury__lexer__lexer__enum_functor_desc_integer_size_0_1,
+  &mercury__lexer__lexer__enum_functor_desc_integer_size_0_2,
+  &mercury__lexer__lexer__enum_functor_desc_integer_size_0_3,
+  &mercury__lexer__lexer__enum_functor_desc_integer_size_0_4
+};
+
+static const MR_EnumFunctorDescPtr mercury__lexer__lexer__enum_name_ordered_integer_size_0[5] = {
+  &mercury__lexer__lexer__enum_functor_desc_integer_size_0_2,
+  &mercury__lexer__lexer__enum_functor_desc_integer_size_0_3,
+  &mercury__lexer__lexer__enum_functor_desc_integer_size_0_4,
+  &mercury__lexer__lexer__enum_functor_desc_integer_size_0_1,
+  &mercury__lexer__lexer__enum_functor_desc_integer_size_0_0
+};
+
+static const MR_Integer mercury__lexer__lexer__functor_number_map_integer_size_0[5] = {
+  (MR_Integer) 4,
+  (MR_Integer) 3,
+  (MR_Integer) 0,
+  (MR_Integer) 1,
+  (MR_Integer) 2
+};
+
+const MR_TypeCtorInfo_Struct mercury__lexer__lexer__type_ctor_info_integer_size_0 = {
+  (MR_Integer) 0,
+  (MR_Integer) 17,
+  (MR_Integer) -1,
+  mercury__private_builtin__MR_TYPECTOR_REP_ENUM,
+  ((MR_Box) (mercury__lexer____Unify____integer_size_0_0_10001)),
+  ((MR_Box) (mercury__lexer____Compare____integer_size_0_0_10001)),
+  (MR_String) "lexer",
+  (MR_String) "integer_size",
+  {     mercury__lexer__lexer__enum_name_ordered_integer_size_0 },
+  {     mercury__lexer__lexer__enum_value_ordered_integer_size_0 },
+  (MR_Integer) 5,
+  (MR_Integer) 4,
+  mercury__lexer__lexer__functor_number_map_integer_size_0
+};
+
+static const MR_EnumFunctorDesc mercury__lexer__lexer__enum_functor_desc_last_digit_is_underscore_0_0 = {
+  (MR_String) "last_digit_is_underscore",
+  (MR_Integer) 0
+};
+
+static const MR_EnumFunctorDesc mercury__lexer__lexer__enum_functor_desc_last_digit_is_underscore_0_1 = {
+  (MR_String) "last_digit_is_not_underscore",
+  (MR_Integer) 1
+};
+
+static const MR_EnumFunctorDescPtr mercury__lexer__lexer__enum_value_ordered_last_digit_is_underscore_0[2] = {
+  &mercury__lexer__lexer__enum_functor_desc_last_digit_is_underscore_0_0,
+  &mercury__lexer__lexer__enum_functor_desc_last_digit_is_underscore_0_1
+};
+
+static const MR_EnumFunctorDescPtr mercury__lexer__lexer__enum_name_ordered_last_digit_is_underscore_0[2] = {
+  &mercury__lexer__lexer__enum_functor_desc_last_digit_is_underscore_0_1,
+  &mercury__lexer__lexer__enum_functor_desc_last_digit_is_underscore_0_0
+};
+
+static const MR_Integer mercury__lexer__lexer__functor_number_map_last_digit_is_underscore_0[2] = {
+  (MR_Integer) 1,
+  (MR_Integer) 0
+};
+
+const MR_TypeCtorInfo_Struct mercury__lexer__lexer__type_ctor_info_last_digit_is_underscore_0 = {
+  (MR_Integer) 0,
+  (MR_Integer) 17,
+  (MR_Integer) -1,
+  mercury__private_builtin__MR_TYPECTOR_REP_ENUM,
+  ((MR_Box) (mercury__lexer____Unify____last_digit_is_underscore_0_0_10001)),
+  ((MR_Box) (mercury__lexer____Compare____last_digit_is_underscore_0_0_10001)),
+  (MR_String) "lexer",
+  (MR_String) "last_digit_is_underscore",
+  {     mercury__lexer__lexer__enum_name_ordered_last_digit_is_underscore_0 },
+  {     mercury__lexer__lexer__enum_value_ordered_last_digit_is_underscore_0 },
+  (MR_Integer) 2,
+  (MR_Integer) 4,
+  mercury__lexer__lexer__functor_number_map_last_digit_is_underscore_0
+};
+
+static const MR_Integer mercury__lexer__lexer__functor_number_map_maybe_have_valid_token_0[1] = {
+  (MR_Integer) 0
+};
+
+static const MR_NotagFunctorDesc mercury__lexer__lexer__notag_functor_desc_maybe_have_valid_token_0 = {
+  (MR_String) "maybe_have_valid_token",
+  (MR_PseudoTypeInfo) &mercury__builtin__builtin__type_ctor_info_int_0,
+  NULL,
+  mercury__private_builtin__MR_FUNCTOR_SUBTYPE_NONE
+};
+
+const MR_TypeCtorInfo_Struct mercury__lexer__lexer__type_ctor_info_maybe_have_valid_token_0 = {
+  (MR_Integer) 0,
+  (MR_Integer) 17,
+  (MR_Integer) -1,
+  mercury__private_builtin__MR_TYPECTOR_REP_NOTAG_GROUND,
+  ((MR_Box) (mercury__lexer____Unify____maybe_have_valid_token_0_0_10001)),
+  ((MR_Box) (mercury__lexer____Compare____maybe_have_valid_token_0_0_10001)),
+  (MR_String) "lexer",
+  (MR_String) "maybe_have_valid_token",
+  {     &mercury__lexer__lexer__notag_functor_desc_maybe_have_valid_token_0 },
+  {     &mercury__lexer__lexer__notag_functor_desc_maybe_have_valid_token_0 },
+  (MR_Integer) 1,
+  (MR_Integer) 4,
+  mercury__lexer__lexer__functor_number_map_maybe_have_valid_token_0
+};
+
+const MR_TypeCtorInfo_Struct mercury__lexer__lexer__type_ctor_info_offset_0 = {
+  (MR_Integer) 0,
+  (MR_Integer) 17,
+  (MR_Integer) -1,
+  mercury__private_builtin__MR_TYPECTOR_REP_EQUIV_GROUND,
+  ((MR_Box) (mercury__lexer____Unify____offset_0_0_10001)),
+  ((MR_Box) (mercury__lexer____Compare____offset_0_0_10001)),
+  (MR_String) "lexer",
+  (MR_String) "offset",
+  {     NULL },
+  {     (MR_PseudoTypeInfo) &mercury__builtin__builtin__type_ctor_info_int_0 },
+  (MR_Integer) -1,
+  (MR_Integer) 0,
+  NULL
+};
+
+static const MR_EnumFunctorDesc mercury__lexer__lexer__enum_functor_desc_scanned_past_whitespace_0_0 = {
+  (MR_String) "scanned_past_whitespace",
+  (MR_Integer) 0
+};
+
+static const MR_EnumFunctorDesc mercury__lexer__lexer__enum_functor_desc_scanned_past_whitespace_0_1 = {
+  (MR_String) "not_scanned_past_whitespace",
+  (MR_Integer) 1
+};
+
+static const MR_EnumFunctorDescPtr mercury__lexer__lexer__enum_value_ordered_scanned_past_whitespace_0[2] = {
+  &mercury__lexer__lexer__enum_functor_desc_scanned_past_whitespace_0_0,
+  &mercury__lexer__lexer__enum_functor_desc_scanned_past_whitespace_0_1
+};
+
+static const MR_EnumFunctorDescPtr mercury__lexer__lexer__enum_name_ordered_scanned_past_whitespace_0[2] = {
+  &mercury__lexer__lexer__enum_functor_desc_scanned_past_whitespace_0_1,
+  &mercury__lexer__lexer__enum_functor_desc_scanned_past_whitespace_0_0
+};
+
+static const MR_Integer mercury__lexer__lexer__functor_number_map_scanned_past_whitespace_0[2] = {
+  (MR_Integer) 1,
+  (MR_Integer) 0
+};
+
+const MR_TypeCtorInfo_Struct mercury__lexer__lexer__type_ctor_info_scanned_past_whitespace_0 = {
+  (MR_Integer) 0,
+  (MR_Integer) 17,
+  (MR_Integer) -1,
+  mercury__private_builtin__MR_TYPECTOR_REP_ENUM,
+  ((MR_Box) (mercury__lexer____Unify____scanned_past_whitespace_0_0_10001)),
+  ((MR_Box) (mercury__lexer____Compare____scanned_past_whitespace_0_0_10001)),
+  (MR_String) "lexer",
+  (MR_String) "scanned_past_whitespace",
+  {     mercury__lexer__lexer__enum_name_ordered_scanned_past_whitespace_0 },
+  {     mercury__lexer__lexer__enum_value_ordered_scanned_past_whitespace_0 },
+  (MR_Integer) 2,
+  (MR_Integer) 4,
+  mercury__lexer__lexer__functor_number_map_scanned_past_whitespace_0
+};
+
+static const MR_EnumFunctorDesc mercury__lexer__lexer__enum_functor_desc_signedness_0_0 = {
+  (MR_String) "signed",
+  (MR_Integer) 0
+};
+
+static const MR_EnumFunctorDesc mercury__lexer__lexer__enum_functor_desc_signedness_0_1 = {
+  (MR_String) "unsigned",
+  (MR_Integer) 1
+};
+
+static const MR_EnumFunctorDescPtr mercury__lexer__lexer__enum_value_ordered_signedness_0[2] = {
+  &mercury__lexer__lexer__enum_functor_desc_signedness_0_0,
+  &mercury__lexer__lexer__enum_functor_desc_signedness_0_1
+};
+
+static const MR_EnumFunctorDescPtr mercury__lexer__lexer__enum_name_ordered_signedness_0[2] = {
+  &mercury__lexer__lexer__enum_functor_desc_signedness_0_0,
+  &mercury__lexer__lexer__enum_functor_desc_signedness_0_1
+};
+
+static const MR_Integer mercury__lexer__lexer__functor_number_map_signedness_0[2] = {
+  (MR_Integer) 0,
+  (MR_Integer) 1
+};
+
+const MR_TypeCtorInfo_Struct mercury__lexer__lexer__type_ctor_info_signedness_0 = {
+  (MR_Integer) 0,
+  (MR_Integer) 17,
+  (MR_Integer) -1,
+  mercury__private_builtin__MR_TYPECTOR_REP_ENUM,
+  ((MR_Box) (mercury__lexer____Unify____signedness_0_0_10001)),
+  ((MR_Box) (mercury__lexer____Compare____signedness_0_0_10001)),
+  (MR_String) "lexer",
+  (MR_String) "signedness",
+  {     mercury__lexer__lexer__enum_name_ordered_signedness_0 },
+  {     mercury__lexer__lexer__enum_value_ordered_signedness_0 },
+  (MR_Integer) 2,
+  (MR_Integer) 4,
+  mercury__lexer__lexer__functor_number_map_signedness_0
+};
+
+const MR_TypeCtorInfo_Struct mercury__lexer__lexer__type_ctor_info_string_token_context_0 = {
+  (MR_Integer) 0,
+  (MR_Integer) 17,
+  (MR_Integer) -1,
+  mercury__private_builtin__MR_TYPECTOR_REP_EQUIV_GROUND,
+  ((MR_Box) (mercury__lexer____Unify____string_token_context_0_0_10001)),
+  ((MR_Box) (mercury__lexer____Compare____string_token_context_0_0_10001)),
+  (MR_String) "lexer",
+  (MR_String) "string_token_context",
+  {     NULL },
+  {     (MR_PseudoTypeInfo) &mercury__builtin__builtin__type_ctor_info_int_0 },
+  (MR_Integer) -1,
+  (MR_Integer) 0,
+  NULL
+};
+
+static const MR_PseudoTypeInfo mercury__lexer__lexer__field_types_token_0_0[1] = {
+  (MR_PseudoTypeInfo) &mercury__builtin__builtin__type_ctor_info_string_0
+};
+
+static const MR_DuFunctorDesc mercury__lexer__lexer__du_functor_desc_token_0_0 = {
+  (MR_String) "name",
+  (MR_Integer) 1,
+  (MR_Integer) 0,
+  mercury__private_builtin__MR_SECTAG_NONE,
+  (MR_Integer) 1,
+  (MR_Integer) -1,
+  (MR_Integer) 0,
+  mercury__lexer__lexer__field_types_token_0_0,
+  NULL,
+  NULL,
+  NULL,
+  mercury__private_builtin__MR_FUNCTOR_SUBTYPE_NONE
+};
+
+static const MR_PseudoTypeInfo mercury__lexer__lexer__field_types_token_0_1[1] = {
+  (MR_PseudoTypeInfo) &mercury__builtin__builtin__type_ctor_info_string_0
+};
+
+static const MR_DuFunctorDesc mercury__lexer__lexer__du_functor_desc_token_0_1 = {
+  (MR_String) "variable",
+  (MR_Integer) 1,
+  (MR_Integer) 0,
+  mercury__private_builtin__MR_SECTAG_NONE,
+  (MR_Integer) 2,
+  (MR_Integer) -1,
+  (MR_Integer) 1,
+  mercury__lexer__lexer__field_types_token_0_1,
+  NULL,
+  NULL,
+  NULL,
+  mercury__private_builtin__MR_FUNCTOR_SUBTYPE_NONE
+};
+
+static const MR_PseudoTypeInfo mercury__lexer__lexer__field_types_token_0_2[4] = {
+  (MR_PseudoTypeInfo) &mercury__lexer__lexer__type_ctor_info_integer_base_0,
+  (MR_PseudoTypeInfo) &mercury__integer__integer__type_ctor_info_integer_0,
+  (MR_PseudoTypeInfo) &mercury__lexer__lexer__type_ctor_info_signedness_0,
+  (MR_PseudoTypeInfo) &mercury__lexer__lexer__type_ctor_info_integer_size_0
+};
+
+static const MR_DuFunctorDesc mercury__lexer__lexer__du_functor_desc_token_0_2 = {
+  (MR_String) "integer",
+  (MR_Integer) 4,
+  (MR_Integer) 0,
+  mercury__private_builtin__MR_SECTAG_REMOTE,
+  (MR_Integer) 3,
+  (MR_Integer) 0,
+  (MR_Integer) 2,
+  mercury__lexer__lexer__field_types_token_0_2,
+  NULL,
+  NULL,
+  NULL,
+  mercury__private_builtin__MR_FUNCTOR_SUBTYPE_NONE
+};
+
+static const MR_PseudoTypeInfo mercury__lexer__lexer__field_types_token_0_3[1] = {
+  (MR_PseudoTypeInfo) &mercury__builtin__builtin__type_ctor_info_float_0
+};
+
+static const MR_DuFunctorDesc mercury__lexer__lexer__du_functor_desc_token_0_3 = {
+  (MR_String) "float",
+  (MR_Integer) 1,
+  (MR_Integer) 0,
+  mercury__private_builtin__MR_SECTAG_REMOTE,
+  (MR_Integer) 3,
+  (MR_Integer) 1,
+  (MR_Integer) 3,
+  mercury__lexer__lexer__field_types_token_0_3,
+  NULL,
+  NULL,
+  NULL,
+  mercury__private_builtin__MR_FUNCTOR_SUBTYPE_NONE
+};
+
+static const MR_PseudoTypeInfo mercury__lexer__lexer__field_types_token_0_4[1] = {
+  (MR_PseudoTypeInfo) &mercury__builtin__builtin__type_ctor_info_string_0
+};
+
+static const MR_DuFunctorDesc mercury__lexer__lexer__du_functor_desc_token_0_4 = {
+  (MR_String) "string",
+  (MR_Integer) 1,
+  (MR_Integer) 0,
+  mercury__private_builtin__MR_SECTAG_REMOTE,
+  (MR_Integer) 3,
+  (MR_Integer) 2,
+  (MR_Integer) 4,
+  mercury__lexer__lexer__field_types_token_0_4,
+  NULL,
+  NULL,
+  NULL,
+  mercury__private_builtin__MR_FUNCTOR_SUBTYPE_NONE
+};
+
+static const MR_PseudoTypeInfo mercury__lexer__lexer__field_types_token_0_5[1] = {
+  (MR_PseudoTypeInfo) &mercury__builtin__builtin__type_ctor_info_string_0
+};
+
+static const MR_DuFunctorDesc mercury__lexer__lexer__du_functor_desc_token_0_5 = {
+  (MR_String) "implementation_defined",
+  (MR_Integer) 1,
+  (MR_Integer) 0,
+  mercury__private_builtin__MR_SECTAG_REMOTE,
+  (MR_Integer) 3,
+  (MR_Integer) 3,
+  (MR_Integer) 5,
+  mercury__lexer__lexer__field_types_token_0_5,
+  NULL,
+  NULL,
+  NULL,
+  mercury__private_builtin__MR_FUNCTOR_SUBTYPE_NONE
+};
+
+static const MR_DuFunctorDesc mercury__lexer__lexer__du_functor_desc_token_0_6 = {
+  (MR_String) "open",
+  (MR_Integer) 0,
+  (MR_Integer) 0,
+  mercury__private_builtin__MR_SECTAG_LOCAL,
+  (MR_Integer) 0,
+  (MR_Integer) 0,
+  (MR_Integer) 6,
+  NULL,
+  NULL,
+  NULL,
+  NULL,
+  mercury__private_builtin__MR_FUNCTOR_SUBTYPE_NONE
+};
+
+static const MR_DuFunctorDesc mercury__lexer__lexer__du_functor_desc_token_0_7 = {
+  (MR_String) "open_ct",
+  (MR_Integer) 0,
+  (MR_Integer) 0,
+  mercury__private_builtin__MR_SECTAG_LOCAL,
+  (MR_Integer) 0,
+  (MR_Integer) 1,
+  (MR_Integer) 7,
+  NULL,
+  NULL,
+  NULL,
+  NULL,
+  mercury__private_builtin__MR_FUNCTOR_SUBTYPE_NONE
+};
+
+static const MR_DuFunctorDesc mercury__lexer__lexer__du_functor_desc_token_0_8 = {
+  (MR_String) "close",
+  (MR_Integer) 0,
+  (MR_Integer) 0,
+  mercury__private_builtin__MR_SECTAG_LOCAL,
+  (MR_Integer) 0,
+  (MR_Integer) 2,
+  (MR_Integer) 8,
+  NULL,
+  NULL,
+  NULL,
+  NULL,
+  mercury__private_builtin__MR_FUNCTOR_SUBTYPE_NONE
+};
+
+static const MR_DuFunctorDesc mercury__lexer__lexer__du_functor_desc_token_0_9 = {
+  (MR_String) "open_list",
+  (MR_Integer) 0,
+  (MR_Integer) 0,
+  mercury__private_builtin__MR_SECTAG_LOCAL,
+  (MR_Integer) 0,
+  (MR_Integer) 3,
+  (MR_Integer) 9,
+  NULL,
+  NULL,
+  NULL,
+  NULL,
+  mercury__private_builtin__MR_FUNCTOR_SUBTYPE_NONE
+};
+
+static const MR_DuFunctorDesc mercury__lexer__lexer__du_functor_desc_token_0_10 = {
+  (MR_String) "close_list",
+  (MR_Integer) 0,
+  (MR_Integer) 0,
+  mercury__private_builtin__MR_SECTAG_LOCAL,
+  (MR_Integer) 0,
+  (MR_Integer) 4,
+  (MR_Integer) 10,
+  NULL,
+  NULL,
+  NULL,
+  NULL,
+  mercury__private_builtin__MR_FUNCTOR_SUBTYPE_NONE
+};
+
+static const MR_DuFunctorDesc mercury__lexer__lexer__du_functor_desc_token_0_11 = {
+  (MR_String) "open_curly",
+  (MR_Integer) 0,
+  (MR_Integer) 0,
+  mercury__private_builtin__MR_SECTAG_LOCAL,
+  (MR_Integer) 0,
+  (MR_Integer) 5,
+  (MR_Integer) 11,
+  NULL,
+  NULL,
+  NULL,
+  NULL,
+  mercury__private_builtin__MR_FUNCTOR_SUBTYPE_NONE
+};
+
+static const MR_DuFunctorDesc mercury__lexer__lexer__du_functor_desc_token_0_12 = {
+  (MR_String) "close_curly",
+  (MR_Integer) 0,
+  (MR_Integer) 0,
+  mercury__private_builtin__MR_SECTAG_LOCAL,
+  (MR_Integer) 0,
+  (MR_Integer) 6,
+  (MR_Integer) 12,
+  NULL,
+  NULL,
+  NULL,
+  NULL,
+  mercury__private_builtin__MR_FUNCTOR_SUBTYPE_NONE
+};
+
+static const MR_DuFunctorDesc mercury__lexer__lexer__du_functor_desc_token_0_13 = {
+  (MR_String) "ht_sep",
+  (MR_Integer) 0,
+  (MR_Integer) 0,
+  mercury__private_builtin__MR_SECTAG_LOCAL,
+  (MR_Integer) 0,
+  (MR_Integer) 7,
+  (MR_Integer) 13,
+  NULL,
+  NULL,
+  NULL,
+  NULL,
+  mercury__private_builtin__MR_FUNCTOR_SUBTYPE_NONE
+};
+
+static const MR_DuFunctorDesc mercury__lexer__lexer__du_functor_desc_token_0_14 = {
+  (MR_String) "comma",
+  (MR_Integer) 0,
+  (MR_Integer) 0,
+  mercury__private_builtin__MR_SECTAG_LOCAL,
+  (MR_Integer) 0,
+  (MR_Integer) 8,
+  (MR_Integer) 14,
+  NULL,
+  NULL,
+  NULL,
+  NULL,
+  mercury__private_builtin__MR_FUNCTOR_SUBTYPE_NONE
+};
+
+static const MR_DuFunctorDesc mercury__lexer__lexer__du_functor_desc_token_0_15 = {
+  (MR_String) "end",
+  (MR_Integer) 0,
+  (MR_Integer) 0,
+  mercury__private_builtin__MR_SECTAG_LOCAL,
+  (MR_Integer) 0,
+  (MR_Integer) 9,
+  (MR_Integer) 15,
+  NULL,
+  NULL,
+  NULL,
+  NULL,
+  mercury__private_builtin__MR_FUNCTOR_SUBTYPE_NONE
+};
+
+static const MR_PseudoTypeInfo mercury__lexer__lexer__field_types_token_0_16[1] = {
+  (MR_PseudoTypeInfo) &mercury__builtin__builtin__type_ctor_info_character_0
+};
+
+static const MR_DuFunctorDesc mercury__lexer__lexer__du_functor_desc_token_0_16 = {
+  (MR_String) "junk",
+  (MR_Integer) 1,
+  (MR_Integer) 0,
+  mercury__private_builtin__MR_SECTAG_REMOTE,
+  (MR_Integer) 3,
+  (MR_Integer) 4,
+  (MR_Integer) 16,
+  mercury__lexer__lexer__field_types_token_0_16,
+  NULL,
+  NULL,
+  NULL,
+  mercury__private_builtin__MR_FUNCTOR_SUBTYPE_NONE
+};
+
+static const MR_PseudoTypeInfo mercury__lexer__lexer__field_types_token_0_17[1] = {
+  (MR_PseudoTypeInfo) &mercury__builtin__builtin__type_ctor_info_string_0
+};
+
+static const MR_DuFunctorDesc mercury__lexer__lexer__du_functor_desc_token_0_17 = {
+  (MR_String) "error",
+  (MR_Integer) 1,
+  (MR_Integer) 0,
+  mercury__private_builtin__MR_SECTAG_REMOTE,
+  (MR_Integer) 3,
+  (MR_Integer) 5,
+  (MR_Integer) 17,
+  mercury__lexer__lexer__field_types_token_0_17,
+  NULL,
+  NULL,
+  NULL,
+  mercury__private_builtin__MR_FUNCTOR_SUBTYPE_NONE
+};
+
+static const MR_PseudoTypeInfo mercury__lexer__lexer__field_types_token_0_18[1] = {
+  (MR_PseudoTypeInfo) &mercury__io__io__type_ctor_info_error_0
+};
+
+static const MR_DuFunctorDesc mercury__lexer__lexer__du_functor_desc_token_0_18 = {
+  (MR_String) "io_error",
+  (MR_Integer) 1,
+  (MR_Integer) 0,
+  mercury__private_builtin__MR_SECTAG_REMOTE,
+  (MR_Integer) 3,
+  (MR_Integer) 6,
+  (MR_Integer) 18,
+  mercury__lexer__lexer__field_types_token_0_18,
+  NULL,
+  NULL,
+  NULL,
+  mercury__private_builtin__MR_FUNCTOR_SUBTYPE_NONE
+};
+
+static const MR_DuFunctorDesc mercury__lexer__lexer__du_functor_desc_token_0_19 = {
+  (MR_String) "eof",
+  (MR_Integer) 0,
+  (MR_Integer) 0,
+  mercury__private_builtin__MR_SECTAG_LOCAL,
+  (MR_Integer) 0,
+  (MR_Integer) 10,
+  (MR_Integer) 19,
+  NULL,
+  NULL,
+  NULL,
+  NULL,
+  mercury__private_builtin__MR_FUNCTOR_SUBTYPE_NONE
+};
+
+static const MR_PseudoTypeInfo mercury__lexer__lexer__field_types_token_0_20[1] = {
+  (MR_PseudoTypeInfo) &mercury__integer__integer__type_ctor_info_integer_0
+};
+
+static const MR_DuFunctorDesc mercury__lexer__lexer__du_functor_desc_token_0_20 = {
+  (MR_String) "integer_dot",
+  (MR_Integer) 1,
+  (MR_Integer) 0,
+  mercury__private_builtin__MR_SECTAG_REMOTE,
+  (MR_Integer) 3,
+  (MR_Integer) 7,
+  (MR_Integer) 20,
+  mercury__lexer__lexer__field_types_token_0_20,
+  NULL,
+  NULL,
+  NULL,
+  mercury__private_builtin__MR_FUNCTOR_SUBTYPE_NONE
+};
+
+static const MR_DuFunctorDescPtr mercury__lexer__lexer__du_stag_ordered_token_0_0[11] = {
+  &mercury__lexer__lexer__du_functor_desc_token_0_6,
+  &mercury__lexer__lexer__du_functor_desc_token_0_7,
+  &mercury__lexer__lexer__du_functor_desc_token_0_8,
+  &mercury__lexer__lexer__du_functor_desc_token_0_9,
+  &mercury__lexer__lexer__du_functor_desc_token_0_10,
+  &mercury__lexer__lexer__du_functor_desc_token_0_11,
+  &mercury__lexer__lexer__du_functor_desc_token_0_12,
+  &mercury__lexer__lexer__du_functor_desc_token_0_13,
+  &mercury__lexer__lexer__du_functor_desc_token_0_14,
+  &mercury__lexer__lexer__du_functor_desc_token_0_15,
+  &mercury__lexer__lexer__du_functor_desc_token_0_19
+};
+
+static const MR_DuFunctorDescPtr mercury__lexer__lexer__du_stag_ordered_token_0_1[1] = {
+  &mercury__lexer__lexer__du_functor_desc_token_0_0
+};
+
+static const MR_DuFunctorDescPtr mercury__lexer__lexer__du_stag_ordered_token_0_2[1] = {
+  &mercury__lexer__lexer__du_functor_desc_token_0_1
+};
+
+static const MR_DuFunctorDescPtr mercury__lexer__lexer__du_stag_ordered_token_0_3[8] = {
+  &mercury__lexer__lexer__du_functor_desc_token_0_2,
+  &mercury__lexer__lexer__du_functor_desc_token_0_3,
+  &mercury__lexer__lexer__du_functor_desc_token_0_4,
+  &mercury__lexer__lexer__du_functor_desc_token_0_5,
+  &mercury__lexer__lexer__du_functor_desc_token_0_16,
+  &mercury__lexer__lexer__du_functor_desc_token_0_17,
+  &mercury__lexer__lexer__du_functor_desc_token_0_18,
+  &mercury__lexer__lexer__du_functor_desc_token_0_20
+};
+
+static const MR_DuPtagLayout mercury__lexer__lexer__du_ptag_ordered_token_0[4] = {
+  {
+    (MR_Integer) 11,
+    mercury__private_builtin__MR_SECTAG_LOCAL,
+    mercury__lexer__lexer__du_stag_ordered_token_0_0
+  },
+  {
+    (MR_Integer) 1,
+    mercury__private_builtin__MR_SECTAG_NONE,
+    mercury__lexer__lexer__du_stag_ordered_token_0_1
+  },
+  {
+    (MR_Integer) 1,
+    mercury__private_builtin__MR_SECTAG_NONE,
+    mercury__lexer__lexer__du_stag_ordered_token_0_2
+  },
+  {
+    (MR_Integer) 8,
+    mercury__private_builtin__MR_SECTAG_REMOTE,
+    mercury__lexer__lexer__du_stag_ordered_token_0_3
+  }
+};
+
+static const MR_DuFunctorDescPtr mercury__lexer__lexer__du_name_ordered_token_0[21] = {
+  &mercury__lexer__lexer__du_functor_desc_token_0_8,
+  &mercury__lexer__lexer__du_functor_desc_token_0_12,
+  &mercury__lexer__lexer__du_functor_desc_token_0_10,
+  &mercury__lexer__lexer__du_functor_desc_token_0_14,
+  &mercury__lexer__lexer__du_functor_desc_token_0_15,
+  &mercury__lexer__lexer__du_functor_desc_token_0_19,
+  &mercury__lexer__lexer__du_functor_desc_token_0_17,
+  &mercury__lexer__lexer__du_functor_desc_token_0_3,
+  &mercury__lexer__lexer__du_functor_desc_token_0_13,
+  &mercury__lexer__lexer__du_functor_desc_token_0_5,
+  &mercury__lexer__lexer__du_functor_desc_token_0_2,
+  &mercury__lexer__lexer__du_functor_desc_token_0_20,
+  &mercury__lexer__lexer__du_functor_desc_token_0_18,
+  &mercury__lexer__lexer__du_functor_desc_token_0_16,
+  &mercury__lexer__lexer__du_functor_desc_token_0_0,
+  &mercury__lexer__lexer__du_functor_desc_token_0_6,
+  &mercury__lexer__lexer__du_functor_desc_token_0_7,
+  &mercury__lexer__lexer__du_functor_desc_token_0_11,
+  &mercury__lexer__lexer__du_functor_desc_token_0_9,
+  &mercury__lexer__lexer__du_functor_desc_token_0_4,
+  &mercury__lexer__lexer__du_functor_desc_token_0_1
+};
+
+static const MR_Integer mercury__lexer__lexer__functor_number_map_token_0[21] = {
+  (MR_Integer) 14,
+  (MR_Integer) 20,
+  (MR_Integer) 10,
+  (MR_Integer) 7,
+  (MR_Integer) 19,
+  (MR_Integer) 9,
+  (MR_Integer) 15,
+  (MR_Integer) 16,
+  (MR_Integer) 0,
+  (MR_Integer) 18,
+  (MR_Integer) 2,
+  (MR_Integer) 17,
+  (MR_Integer) 1,
+  (MR_Integer) 8,
+  (MR_Integer) 3,
+  (MR_Integer) 4,
+  (MR_Integer) 13,
+  (MR_Integer) 6,
+  (MR_Integer) 12,
+  (MR_Integer) 5,
+  (MR_Integer) 11
+};
+
+const MR_TypeCtorInfo_Struct mercury__lexer__lexer__type_ctor_info_token_0 = {
+  (MR_Integer) 0,
+  (MR_Integer) 17,
+  (MR_Integer) 4,
+  mercury__private_builtin__MR_TYPECTOR_REP_DU,
+  ((MR_Box) (mercury__lexer____Unify____token_0_0_10001)),
+  ((MR_Box) (mercury__lexer____Compare____token_0_0_10001)),
+  (MR_String) "lexer",
+  (MR_String) "token",
+  {     mercury__lexer__lexer__du_name_ordered_token_0 },
+  {     mercury__lexer__lexer__du_ptag_ordered_token_0 },
+  (MR_Integer) 21,
+  (MR_Integer) 4,
+  mercury__lexer__lexer__functor_number_map_token_0
+};
+
+const MR_TypeCtorInfo_Struct mercury__lexer__lexer__type_ctor_info_token_context_0 = {
+  (MR_Integer) 0,
+  (MR_Integer) 17,
+  (MR_Integer) -1,
+  mercury__private_builtin__MR_TYPECTOR_REP_EQUIV_GROUND,
+  ((MR_Box) (mercury__lexer____Unify____token_context_0_0_10001)),
+  ((MR_Box) (mercury__lexer____Compare____token_context_0_0_10001)),
+  (MR_String) "lexer",
+  (MR_String) "token_context",
+  {     NULL },
+  {     (MR_PseudoTypeInfo) &mercury__builtin__builtin__type_ctor_info_int_0 },
+  (MR_Integer) -1,
+  (MR_Integer) 0,
+  NULL
+};
+
+static const MR_PseudoTypeInfo mercury__lexer__lexer__field_types_token_list_0_0[3] = {
+  (MR_PseudoTypeInfo) &mercury__lexer__lexer__type_ctor_info_token_0,
+  (MR_PseudoTypeInfo) &mercury__builtin__builtin__type_ctor_info_int_0,
+  (MR_PseudoTypeInfo) &mercury__lexer__lexer__type_ctor_info_token_list_0
+};
+
+static const MR_DuFunctorDesc mercury__lexer__lexer__du_functor_desc_token_list_0_0 = {
+  (MR_String) "token_cons",
+  (MR_Integer) 3,
+  (MR_Integer) 0,
+  mercury__private_builtin__MR_SECTAG_NONE,
+  (MR_Integer) 1,
+  (MR_Integer) -1,
+  (MR_Integer) 0,
+  mercury__lexer__lexer__field_types_token_list_0_0,
+  NULL,
+  NULL,
+  NULL,
+  mercury__private_builtin__MR_FUNCTOR_SUBTYPE_NONE
+};
+
+static const MR_DuFunctorDesc mercury__lexer__lexer__du_functor_desc_token_list_0_1 = {
+  (MR_String) "token_nil",
+  (MR_Integer) 0,
+  (MR_Integer) 0,
+  mercury__private_builtin__MR_SECTAG_LOCAL,
+  (MR_Integer) 0,
+  (MR_Integer) 0,
+  (MR_Integer) 1,
+  NULL,
+  NULL,
+  NULL,
+  NULL,
+  mercury__private_builtin__MR_FUNCTOR_SUBTYPE_NONE
+};
+
+static const MR_DuFunctorDescPtr mercury__lexer__lexer__du_stag_ordered_token_list_0_0[1] = {
+  &mercury__lexer__lexer__du_functor_desc_token_list_0_1
+};
+
+static const MR_DuFunctorDescPtr mercury__lexer__lexer__du_stag_ordered_token_list_0_1[1] = {
+  &mercury__lexer__lexer__du_functor_desc_token_list_0_0
+};
+
+static const MR_DuPtagLayout mercury__lexer__lexer__du_ptag_ordered_token_list_0[2] = {
+  {
+    (MR_Integer) 1,
+    mercury__private_builtin__MR_SECTAG_LOCAL,
+    mercury__lexer__lexer__du_stag_ordered_token_list_0_0
+  },
+  {
+    (MR_Integer) 1,
+    mercury__private_builtin__MR_SECTAG_NONE,
+    mercury__lexer__lexer__du_stag_ordered_token_list_0_1
+  }
+};
+
+static const MR_DuFunctorDescPtr mercury__lexer__lexer__du_name_ordered_token_list_0[2] = {
+  &mercury__lexer__lexer__du_functor_desc_token_list_0_0,
+  &mercury__lexer__lexer__du_functor_desc_token_list_0_1
+};
+
+static const MR_Integer mercury__lexer__lexer__functor_number_map_token_list_0[2] = {
+  (MR_Integer) 0,
+  (MR_Integer) 1
+};
+
+const MR_TypeCtorInfo_Struct mercury__lexer__lexer__type_ctor_info_token_list_0 = {
+  (MR_Integer) 0,
+  (MR_Integer) 17,
+  (MR_Integer) 2,
+  mercury__private_builtin__MR_TYPECTOR_REP_DU,
+  ((MR_Box) (mercury__lexer____Unify____token_list_0_0_10001)),
+  ((MR_Box) (mercury__lexer____Compare____token_list_0_0_10001)),
+  (MR_String) "lexer",
+  (MR_String) "token_list",
+  {     mercury__lexer__lexer__du_name_ordered_token_list_0 },
+  {     mercury__lexer__lexer__du_ptag_ordered_token_list_0 },
+  (MR_Integer) 2,
+  (MR_Integer) 4,
+  mercury__lexer__lexer__functor_number_map_token_list_0
+};
+
+static MR_bool MR_CALL 
+mercury__lexer____Unify____get_token_action_0_0_10001(
+  MR_Box mercury__lexer__wrapper_arg_1,
+  MR_Box mercury__lexer__wrapper_arg_2)
+{
+  {
+    MR_bool mercury__lexer__succeeded;
+
+    {
+      mercury__lexer__succeeded = mercury__lexer____Unify____get_token_action_0_0(((MR_Word) mercury__lexer__wrapper_arg_1), ((MR_Word) mercury__lexer__wrapper_arg_2));
+    }
+    return mercury__lexer__succeeded;
+  }
+}
+
+static void MR_CALL 
+mercury__lexer____Compare____get_token_action_0_0_10001(
+  MR_Box * mercury__lexer__wrapper_arg_1,
+  MR_Box mercury__lexer__wrapper_arg_2,
+  MR_Box mercury__lexer__wrapper_arg_3)
+{
+  {
+    MR_Word mercury__lexer__conv0_HeadVar__1_1;
+
+    {
+      mercury__lexer____Compare____get_token_action_0_0(&mercury__lexer__conv0_HeadVar__1_1, ((MR_Word) mercury__lexer__wrapper_arg_2), ((MR_Word) mercury__lexer__wrapper_arg_3));
+    }
+    *mercury__lexer__wrapper_arg_1 = ((MR_Box) (mercury__lexer__conv0_HeadVar__1_1));
+  }
+}
+
+static MR_bool MR_CALL 
+mercury__lexer____Unify____integer_base_0_0_10001(
+  MR_Box mercury__lexer__wrapper_arg_1,
+  MR_Box mercury__lexer__wrapper_arg_2)
+{
+  {
+    MR_bool mercury__lexer__succeeded;
+
+    {
+      mercury__lexer__succeeded = mercury__lexer____Unify____integer_base_0_0(((MR_Word) mercury__lexer__wrapper_arg_1), ((MR_Word) mercury__lexer__wrapper_arg_2));
+    }
+    return mercury__lexer__succeeded;
+  }
+}
+
+static void MR_CALL 
+mercury__lexer____Compare____integer_base_0_0_10001(
+  MR_Box * mercury__lexer__wrapper_arg_1,
+  MR_Box mercury__lexer__wrapper_arg_2,
+  MR_Box mercury__lexer__wrapper_arg_3)
+{
+  {
+    MR_Word mercury__lexer__conv0_HeadVar__1_1;
+
+    {
+      mercury__lexer____Compare____integer_base_0_0(&mercury__lexer__conv0_HeadVar__1_1, ((MR_Word) mercury__lexer__wrapper_arg_2), ((MR_Word) mercury__lexer__wrapper_arg_3));
+    }
+    *mercury__lexer__wrapper_arg_1 = ((MR_Box) (mercury__lexer__conv0_HeadVar__1_1));
+  }
+}
+
+static MR_bool MR_CALL 
+mercury__lexer____Unify____integer_size_0_0_10001(
+  MR_Box mercury__lexer__wrapper_arg_1,
+  MR_Box mercury__lexer__wrapper_arg_2)
+{
+  {
+    MR_bool mercury__lexer__succeeded;
+
+    {
+      mercury__lexer__succeeded = mercury__lexer____Unify____integer_size_0_0(((MR_Word) mercury__lexer__wrapper_arg_1), ((MR_Word) mercury__lexer__wrapper_arg_2));
+    }
+    return mercury__lexer__succeeded;
+  }
+}
+
+static void MR_CALL 
+mercury__lexer____Compare____integer_size_0_0_10001(
+  MR_Box * mercury__lexer__wrapper_arg_1,
+  MR_Box mercury__lexer__wrapper_arg_2,
+  MR_Box mercury__lexer__wrapper_arg_3)
+{
+  {
+    MR_Word mercury__lexer__conv0_HeadVar__1_1;
+
+    {
+      mercury__lexer____Compare____integer_size_0_0(&mercury__lexer__conv0_HeadVar__1_1, ((MR_Word) mercury__lexer__wrapper_arg_2), ((MR_Word) mercury__lexer__wrapper_arg_3));
+    }
+    *mercury__lexer__wrapper_arg_1 = ((MR_Box) (mercury__lexer__conv0_HeadVar__1_1));
+  }
+}
+
+static MR_bool MR_CALL 
+mercury__lexer____Unify____last_digit_is_underscore_0_0_10001(
+  MR_Box mercury__lexer__wrapper_arg_1,
+  MR_Box mercury__lexer__wrapper_arg_2)
+{
+  {
+    MR_bool mercury__lexer__succeeded;
+
+    {
+      mercury__lexer__succeeded = mercury__lexer____Unify____last_digit_is_underscore_0_0(((MR_Word) mercury__lexer__wrapper_arg_1), ((MR_Word) mercury__lexer__wrapper_arg_2));
+    }
+    return mercury__lexer__succeeded;
+  }
+}
+
+static void MR_CALL 
+mercury__lexer____Compare____last_digit_is_underscore_0_0_10001(
+  MR_Box * mercury__lexer__wrapper_arg_1,
+  MR_Box mercury__lexer__wrapper_arg_2,
+  MR_Box mercury__lexer__wrapper_arg_3)
+{
+  {
+    MR_Word mercury__lexer__conv0_HeadVar__1_1;
+
+    {
+      mercury__lexer____Compare____last_digit_is_underscore_0_0(&mercury__lexer__conv0_HeadVar__1_1, ((MR_Word) mercury__lexer__wrapper_arg_2), ((MR_Word) mercury__lexer__wrapper_arg_3));
+    }
+    *mercury__lexer__wrapper_arg_1 = ((MR_Box) (mercury__lexer__conv0_HeadVar__1_1));
+  }
+}
+
+static MR_bool MR_CALL 
+mercury__lexer____Unify____maybe_have_valid_token_0_0_10001(
+  MR_Box mercury__lexer__wrapper_arg_1,
+  MR_Box mercury__lexer__wrapper_arg_2)
+{
+  {
+    MR_bool mercury__lexer__succeeded;
+
+    {
+      mercury__lexer__succeeded = mercury__lexer____Unify____maybe_have_valid_token_0_0(((MR_Word) mercury__lexer__wrapper_arg_1), ((MR_Word) mercury__lexer__wrapper_arg_2));
+    }
+    return mercury__lexer__succeeded;
+  }
+}
+
+static void MR_CALL 
+mercury__lexer____Compare____maybe_have_valid_token_0_0_10001(
+  MR_Box * mercury__lexer__wrapper_arg_1,
+  MR_Box mercury__lexer__wrapper_arg_2,
+  MR_Box mercury__lexer__wrapper_arg_3)
+{
+  {
+    MR_Word mercury__lexer__conv0_HeadVar__1_1;
+
+    {
+      mercury__lexer____Compare____maybe_have_valid_token_0_0(&mercury__lexer__conv0_HeadVar__1_1, ((MR_Word) mercury__lexer__wrapper_arg_2), ((MR_Word) mercury__lexer__wrapper_arg_3));
+    }
+    *mercury__lexer__wrapper_arg_1 = ((MR_Box) (mercury__lexer__conv0_HeadVar__1_1));
+  }
+}
+
+static MR_bool MR_CALL 
+mercury__lexer____Unify____offset_0_0_10001(
+  MR_Box mercury__lexer__wrapper_arg_1,
+  MR_Box mercury__lexer__wrapper_arg_2)
+{
+  {
+    MR_bool mercury__lexer__succeeded;
+
+    {
+      mercury__lexer__succeeded = mercury__lexer____Unify____offset_0_0(((MR_Integer) mercury__lexer__wrapper_arg_1), ((MR_Integer) mercury__lexer__wrapper_arg_2));
+    }
+    return mercury__lexer__succeeded;
+  }
+}
+
+static void MR_CALL 
+mercury__lexer____Compare____offset_0_0_10001(
+  MR_Box * mercury__lexer__wrapper_arg_1,
+  MR_Box mercury__lexer__wrapper_arg_2,
+  MR_Box mercury__lexer__wrapper_arg_3)
+{
+  {
+    MR_Word mercury__lexer__conv0_HeadVar__1_1;
+
+    {
+      mercury__lexer____Compare____offset_0_0(&mercury__lexer__conv0_HeadVar__1_1, ((MR_Integer) mercury__lexer__wrapper_arg_2), ((MR_Integer) mercury__lexer__wrapper_arg_3));
+    }
+    *mercury__lexer__wrapper_arg_1 = ((MR_Box) (mercury__lexer__conv0_HeadVar__1_1));
+  }
+}
+
+static MR_bool MR_CALL 
+mercury__lexer____Unify____scanned_past_whitespace_0_0_10001(
+  MR_Box mercury__lexer__wrapper_arg_1,
+  MR_Box mercury__lexer__wrapper_arg_2)
+{
+  {
+    MR_bool mercury__lexer__succeeded;
+
+    {
+      mercury__lexer__succeeded = mercury__lexer____Unify____scanned_past_whitespace_0_0(((MR_Word) mercury__lexer__wrapper_arg_1), ((MR_Word) mercury__lexer__wrapper_arg_2));
+    }
+    return mercury__lexer__succeeded;
+  }
+}
+
+static void MR_CALL 
+mercury__lexer____Compare____scanned_past_whitespace_0_0_10001(
+  MR_Box * mercury__lexer__wrapper_arg_1,
+  MR_Box mercury__lexer__wrapper_arg_2,
+  MR_Box mercury__lexer__wrapper_arg_3)
+{
+  {
+    MR_Word mercury__lexer__conv0_HeadVar__1_1;
+
+    {
+      mercury__lexer____Compare____scanned_past_whitespace_0_0(&mercury__lexer__conv0_HeadVar__1_1, ((MR_Word) mercury__lexer__wrapper_arg_2), ((MR_Word) mercury__lexer__wrapper_arg_3));
+    }
+    *mercury__lexer__wrapper_arg_1 = ((MR_Box) (mercury__lexer__conv0_HeadVar__1_1));
+  }
+}
+
+static MR_bool MR_CALL 
+mercury__lexer____Unify____signedness_0_0_10001(
+  MR_Box mercury__lexer__wrapper_arg_1,
+  MR_Box mercury__lexer__wrapper_arg_2)
+{
+  {
+    MR_bool mercury__lexer__succeeded;
+
+    {
+      mercury__lexer__succeeded = mercury__lexer____Unify____signedness_0_0(((MR_Word) mercury__lexer__wrapper_arg_1), ((MR_Word) mercury__lexer__wrapper_arg_2));
+    }
+    return mercury__lexer__succeeded;
+  }
+}
+
+static void MR_CALL 
+mercury__lexer____Compare____signedness_0_0_10001(
+  MR_Box * mercury__lexer__wrapper_arg_1,
+  MR_Box mercury__lexer__wrapper_arg_2,
+  MR_Box mercury__lexer__wrapper_arg_3)
+{
+  {
+    MR_Word mercury__lexer__conv0_HeadVar__1_1;
+
+    {
+      mercury__lexer____Compare____signedness_0_0(&mercury__lexer__conv0_HeadVar__1_1, ((MR_Word) mercury__lexer__wrapper_arg_2), ((MR_Word) mercury__lexer__wrapper_arg_3));
+    }
+    *mercury__lexer__wrapper_arg_1 = ((MR_Box) (mercury__lexer__conv0_HeadVar__1_1));
+  }
+}
+
+static MR_bool MR_CALL 
+mercury__lexer____Unify____string_token_context_0_0_10001(
+  MR_Box mercury__lexer__wrapper_arg_1,
+  MR_Box mercury__lexer__wrapper_arg_2)
+{
+  {
+    MR_bool mercury__lexer__succeeded;
+
+    {
+      mercury__lexer__succeeded = mercury__lexer____Unify____string_token_context_0_0(((MR_Integer) mercury__lexer__wrapper_arg_1), ((MR_Integer) mercury__lexer__wrapper_arg_2));
+    }
+    return mercury__lexer__succeeded;
+  }
+}
+
+static void MR_CALL 
+mercury__lexer____Compare____string_token_context_0_0_10001(
+  MR_Box * mercury__lexer__wrapper_arg_1,
+  MR_Box mercury__lexer__wrapper_arg_2,
+  MR_Box mercury__lexer__wrapper_arg_3)
+{
+  {
+    MR_Word mercury__lexer__conv0_HeadVar__1_1;
+
+    {
+      mercury__lexer____Compare____string_token_context_0_0(&mercury__lexer__conv0_HeadVar__1_1, ((MR_Integer) mercury__lexer__wrapper_arg_2), ((MR_Integer) mercury__lexer__wrapper_arg_3));
+    }
+    *mercury__lexer__wrapper_arg_1 = ((MR_Box) (mercury__lexer__conv0_HeadVar__1_1));
+  }
+}
+
+static MR_bool MR_CALL 
+mercury__lexer____Unify____token_0_0_10001(
+  MR_Box mercury__lexer__wrapper_arg_1,
+  MR_Box mercury__lexer__wrapper_arg_2)
+{
+  {
+    MR_bool mercury__lexer__succeeded;
+
+    {
+      mercury__lexer__succeeded = mercury__lexer____Unify____token_0_0(((MR_Word) mercury__lexer__wrapper_arg_1), ((MR_Word) mercury__lexer__wrapper_arg_2));
+    }
+    return mercury__lexer__succeeded;
+  }
+}
+
+static void MR_CALL 
+mercury__lexer____Compare____token_0_0_10001(
+  MR_Box * mercury__lexer__wrapper_arg_1,
+  MR_Box mercury__lexer__wrapper_arg_2,
+  MR_Box mercury__lexer__wrapper_arg_3)
+{
+  {
+    MR_Word mercury__lexer__conv0_HeadVar__1_1;
+
+    {
+      mercury__lexer____Compare____token_0_0(&mercury__lexer__conv0_HeadVar__1_1, ((MR_Word) mercury__lexer__wrapper_arg_2), ((MR_Word) mercury__lexer__wrapper_arg_3));
+    }
+    *mercury__lexer__wrapper_arg_1 = ((MR_Box) (mercury__lexer__conv0_HeadVar__1_1));
+  }
+}
+
+static MR_bool MR_CALL 
+mercury__lexer____Unify____token_context_0_0_10001(
+  MR_Box mercury__lexer__wrapper_arg_1,
+  MR_Box mercury__lexer__wrapper_arg_2)
+{
+  {
+    MR_bool mercury__lexer__succeeded;
+
+    {
+      mercury__lexer__succeeded = mercury__lexer____Unify____token_context_0_0(((MR_Integer) mercury__lexer__wrapper_arg_1), ((MR_Integer) mercury__lexer__wrapper_arg_2));
+    }
+    return mercury__lexer__succeeded;
+  }
+}
+
+static void MR_CALL 
+mercury__lexer____Compare____token_context_0_0_10001(
+  MR_Box * mercury__lexer__wrapper_arg_1,
+  MR_Box mercury__lexer__wrapper_arg_2,
+  MR_Box mercury__lexer__wrapper_arg_3)
+{
+  {
+    MR_Word mercury__lexer__conv0_HeadVar__1_1;
+
+    {
+      mercury__lexer____Compare____token_context_0_0(&mercury__lexer__conv0_HeadVar__1_1, ((MR_Integer) mercury__lexer__wrapper_arg_2), ((MR_Integer) mercury__lexer__wrapper_arg_3));
+    }
+    *mercury__lexer__wrapper_arg_1 = ((MR_Box) (mercury__lexer__conv0_HeadVar__1_1));
+  }
+}
+
+static MR_bool MR_CALL 
+mercury__lexer____Unify____token_list_0_0_10001(
+  MR_Box mercury__lexer__wrapper_arg_1,
+  MR_Box mercury__lexer__wrapper_arg_2)
+{
+  {
+    MR_bool mercury__lexer__succeeded;
+
+    {
+      mercury__lexer__succeeded = mercury__lexer____Unify____token_list_0_0(((MR_Word) mercury__lexer__wrapper_arg_1), ((MR_Word) mercury__lexer__wrapper_arg_2));
+    }
+    return mercury__lexer__succeeded;
+  }
+}
+
+static void MR_CALL 
+mercury__lexer____Compare____token_list_0_0_10001(
+  MR_Box * mercury__lexer__wrapper_arg_1,
+  MR_Box mercury__lexer__wrapper_arg_2,
+  MR_Box mercury__lexer__wrapper_arg_3)
+{
+  {
+    MR_Word mercury__lexer__conv0_HeadVar__1_1;
+
+    {
+      mercury__lexer____Compare____token_list_0_0(&mercury__lexer__conv0_HeadVar__1_1, ((MR_Word) mercury__lexer__wrapper_arg_2), ((MR_Word) mercury__lexer__wrapper_arg_3));
+    }
+    *mercury__lexer__wrapper_arg_1 = ((MR_Box) (mercury__lexer__conv0_HeadVar__1_1));
+  }
+}
+
+void MR_CALL 
+mercury__lexer__LCMCpr_string_get_token_list_max_1_5_p_0(
+  MR_String mercury__lexer__String_6,
+  MR_Integer mercury__lexer__Len_7,
+  MR_Word * mercury__lexer__AddrOfTokens_32,
+  MR_Word mercury__lexer__STATE_VARIABLE_Posn_0_26,
+  MR_Word * mercury__lexer__STATE_VARIABLE_Posn_27)
+{
+  while (MR_TRUE)
+    {
+      /* tailcall optimized into a loop */
+      {
+        MR_bool mercury__lexer__succeeded;
+        MR_Word mercury__lexer__Token_10;
+        MR_Integer mercury__lexer__Context_11;
+        MR_Word mercury__lexer__STATE_VARIABLE_Posn_28_28;
+
+        {
+          mercury__lexer__string_get_token_6_p_0(mercury__lexer__String_6, mercury__lexer__Len_7, &mercury__lexer__Token_10, &mercury__lexer__Context_11, mercury__lexer__STATE_VARIABLE_Posn_0_26, &mercury__lexer__STATE_VARIABLE_Posn_28_28);
+        }
+        switch (MR_tag((MR_Word) mercury__lexer__Token_10)) {
+          default: /*NOTREACHED*/ MR_assert(0);
+          case (MR_Integer) 0:
+            switch (MR_unmkbody(mercury__lexer__Token_10)) {
+              default: /*NOTREACHED*/ MR_assert(0);
+              case (MR_Integer) 0:
+              case (MR_Integer) 1:
+              case (MR_Integer) 2:
+              case (MR_Integer) 3:
+              case (MR_Integer) 4:
+              case (MR_Integer) 5:
+              case (MR_Integer) 6:
+              case (MR_Integer) 7:
+              case (MR_Integer) 8:
+                {
+                  MR_Word mercury__lexer__Tokens_8;
+                  MR_Word * mercury__lexer__AddrTokens1_31;
+
+                  {
+                    mercury__lexer__Tokens_8 = (MR_Word) MR_mkword(MR_mktag(1), MR_new_object(MR_Word, ((MR_Integer) 3 * sizeof(MR_Word)), NULL, NULL));
+                    MR_hl_field(MR_mktag(1), mercury__lexer__Tokens_8, 0) = ((MR_Box) (mercury__lexer__Token_10));
+                    MR_hl_field(MR_mktag(1), mercury__lexer__Tokens_8, 1) = ((MR_Box) (mercury__lexer__Context_11));
+                    MR_hl_field(MR_mktag(1), mercury__lexer__Tokens_8, 2) = NULL;
+                  }
+                  mercury__lexer__AddrTokens1_31 = (MR_Word *) &(MR_hl_field(MR_mktag(1), mercury__lexer__Tokens_8, (MR_Integer) 2));
+                  *mercury__lexer__AddrOfTokens_32 = mercury__lexer__Tokens_8;
+                  /* direct tailcall eliminated */
+                  {
+                    MR_Word * mercury__lexer__next_value_of_AddrOfTokens_32 = mercury__lexer__AddrTokens1_31;
+                    MR_Word mercury__lexer__next_value_of_STATE_VARIABLE_Posn_0_26 = mercury__lexer__STATE_VARIABLE_Posn_28_28;
+
+                    mercury__lexer__STATE_VARIABLE_Posn_0_26 = mercury__lexer__next_value_of_STATE_VARIABLE_Posn_0_26;
+                    mercury__lexer__AddrOfTokens_32 = mercury__lexer__next_value_of_AddrOfTokens_32;
+                  }
+                  continue;
+                }
+                break;
+              case (MR_Integer) 9:
+                {
+                  MR_Word mercury__lexer__Var_30 = (MR_Word) MR_mkword(MR_mktag(0), MR_mkbody((MR_Integer) 0));
+                  MR_Word mercury__lexer__Tokens_33;
+
+                  {
+                    mercury__lexer__Tokens_33 = (MR_Word) MR_mkword(MR_mktag(1), MR_new_object(MR_Word, ((MR_Integer) 3 * sizeof(MR_Word)), NULL, NULL));
+                    MR_hl_field(MR_mktag(1), mercury__lexer__Tokens_33, 0) = ((MR_Box) (mercury__lexer__Token_10));
+                    MR_hl_field(MR_mktag(1), mercury__lexer__Tokens_33, 1) = ((MR_Box) (mercury__lexer__Context_11));
+                    MR_hl_field(MR_mktag(1), mercury__lexer__Tokens_33, 2) = ((MR_Box) (mercury__lexer__Var_30));
+                  }
+                  *mercury__lexer__AddrOfTokens_32 = mercury__lexer__Tokens_33;
+                  *mercury__lexer__STATE_VARIABLE_Posn_27 = mercury__lexer__STATE_VARIABLE_Posn_28_28;
+                }
+                break;
+              case (MR_Integer) 10:
+                {
+                  MR_Word mercury__lexer__Tokens_34 = (MR_Word) MR_mkword(MR_mktag(0), MR_mkbody((MR_Integer) 0));
+
+                  *mercury__lexer__AddrOfTokens_32 = mercury__lexer__Tokens_34;
+                  *mercury__lexer__STATE_VARIABLE_Posn_27 = mercury__lexer__STATE_VARIABLE_Posn_28_28;
+                }
+                break;
+            }
+            break;
+          case (MR_Integer) 1:
+          case (MR_Integer) 2:
+            {
+              MR_Word mercury__lexer__Tokens_8;
+              MR_Word * mercury__lexer__AddrTokens1_31;
+
+              {
+                mercury__lexer__Tokens_8 = (MR_Word) MR_mkword(MR_mktag(1), MR_new_object(MR_Word, ((MR_Integer) 3 * sizeof(MR_Word)), NULL, NULL));
+                MR_hl_field(MR_mktag(1), mercury__lexer__Tokens_8, 0) = ((MR_Box) (mercury__lexer__Token_10));
+                MR_hl_field(MR_mktag(1), mercury__lexer__Tokens_8, 1) = ((MR_Box) (mercury__lexer__Context_11));
+                MR_hl_field(MR_mktag(1), mercury__lexer__Tokens_8, 2) = NULL;
+              }
+              mercury__lexer__AddrTokens1_31 = (MR_Word *) &(MR_hl_field(MR_mktag(1), mercury__lexer__Tokens_8, (MR_Integer) 2));
+              *mercury__lexer__AddrOfTokens_32 = mercury__lexer__Tokens_8;
+              /* direct tailcall eliminated */
+              {
+                MR_Word * mercury__lexer__next_value_of_AddrOfTokens_32 = mercury__lexer__AddrTokens1_31;
+                MR_Word mercury__lexer__next_value_of_STATE_VARIABLE_Posn_0_26 = mercury__lexer__STATE_VARIABLE_Posn_28_28;
+
+                mercury__lexer__STATE_VARIABLE_Posn_0_26 = mercury__lexer__next_value_of_STATE_VARIABLE_Posn_0_26;
+                mercury__lexer__AddrOfTokens_32 = mercury__lexer__next_value_of_AddrOfTokens_32;
+              }
+              continue;
+            }
+            break;
+          case (MR_Integer) 3:
+            switch (((MR_Integer) (MR_Word) (MR_hl_field(MR_mktag(3), mercury__lexer__Token_10, (MR_Integer) 0)))) {
+              default: /*NOTREACHED*/ MR_assert(0);
+              case (MR_Integer) 0:
+              case (MR_Integer) 1:
+              case (MR_Integer) 2:
+              case (MR_Integer) 3:
+              case (MR_Integer) 4:
+              case (MR_Integer) 7:
+                {
+                  MR_Word mercury__lexer__Tokens_8;
+                  MR_Word * mercury__lexer__AddrTokens1_31;
+
+                  {
+                    mercury__lexer__Tokens_8 = (MR_Word) MR_mkword(MR_mktag(1), MR_new_object(MR_Word, ((MR_Integer) 3 * sizeof(MR_Word)), NULL, NULL));
+                    MR_hl_field(MR_mktag(1), mercury__lexer__Tokens_8, 0) = ((MR_Box) (mercury__lexer__Token_10));
+                    MR_hl_field(MR_mktag(1), mercury__lexer__Tokens_8, 1) = ((MR_Box) (mercury__lexer__Context_11));
+                    MR_hl_field(MR_mktag(1), mercury__lexer__Tokens_8, 2) = NULL;
+                  }
+                  mercury__lexer__AddrTokens1_31 = (MR_Word *) &(MR_hl_field(MR_mktag(1), mercury__lexer__Tokens_8, (MR_Integer) 2));
+                  *mercury__lexer__AddrOfTokens_32 = mercury__lexer__Tokens_8;
+                  /* direct tailcall eliminated */
+                  {
+                    MR_Word * mercury__lexer__next_value_of_AddrOfTokens_32 = mercury__lexer__AddrTokens1_31;
+                    MR_Word mercury__lexer__next_value_of_STATE_VARIABLE_Posn_0_26 = mercury__lexer__STATE_VARIABLE_Posn_28_28;
+
+                    mercury__lexer__STATE_VARIABLE_Posn_0_26 = mercury__lexer__next_value_of_STATE_VARIABLE_Posn_0_26;
+                    mercury__lexer__AddrOfTokens_32 = mercury__lexer__next_value_of_AddrOfTokens_32;
+                  }
+                  continue;
+                }
+                break;
+              case (MR_Integer) 5:
+              case (MR_Integer) 6:
+                {
+                  MR_Word mercury__lexer__Var_30 = (MR_Word) MR_mkword(MR_mktag(0), MR_mkbody((MR_Integer) 0));
+                  MR_Word mercury__lexer__Tokens_33;
+
+                  {
+                    mercury__lexer__Tokens_33 = (MR_Word) MR_mkword(MR_mktag(1), MR_new_object(MR_Word, ((MR_Integer) 3 * sizeof(MR_Word)), NULL, NULL));
+                    MR_hl_field(MR_mktag(1), mercury__lexer__Tokens_33, 0) = ((MR_Box) (mercury__lexer__Token_10));
+                    MR_hl_field(MR_mktag(1), mercury__lexer__Tokens_33, 1) = ((MR_Box) (mercury__lexer__Context_11));
+                    MR_hl_field(MR_mktag(1), mercury__lexer__Tokens_33, 2) = ((MR_Box) (mercury__lexer__Var_30));
+                  }
+                  *mercury__lexer__AddrOfTokens_32 = mercury__lexer__Tokens_33;
+                  *mercury__lexer__STATE_VARIABLE_Posn_27 = mercury__lexer__STATE_VARIABLE_Posn_28_28;
+                }
+                break;
+            }
+            break;
+        }
+      }
+      break;
+    }
+}
+
+void MR_CALL 
+mercury__lexer__LCMCpr_get_token_list_2_1_6_p_0(
+  MR_Word mercury__lexer__Stream_7,
+  MR_Word mercury__lexer__Token0_8,
+  MR_Integer mercury__lexer__Context0_9,
+  MR_Word * mercury__lexer__AddrOfTokens_89)
+{
+  while (MR_TRUE)
+    {
+      /* tailcall optimized into a loop */
+      {
+        MR_bool mercury__lexer__succeeded;
+
+        switch (MR_tag((MR_Word) mercury__lexer__Token0_8)) {
+          default: /*NOTREACHED*/ MR_assert(0);
+          case (MR_Integer) 0:
+            switch (MR_unmkbody(mercury__lexer__Token0_8)) {
+              default: /*NOTREACHED*/ MR_assert(0);
+              case (MR_Integer) 0:
+              case (MR_Integer) 1:
+              case (MR_Integer) 2:
+              case (MR_Integer) 3:
+              case (MR_Integer) 4:
+              case (MR_Integer) 5:
+              case (MR_Integer) 6:
+              case (MR_Integer) 7:
+              case (MR_Integer) 8:
+                {
+                  MR_Integer mercury__lexer__Context1_40;
+                  MR_Word mercury__lexer__Token1_41;
+                  MR_Word mercury__lexer__Tokens_10;
+                  MR_Word * mercury__lexer__AddrTokens1_87;
+
+                  {
+                    mercury__lexer__get_token_5_p_0(mercury__lexer__Stream_7, &mercury__lexer__Token1_41, &mercury__lexer__Context1_40);
+                  }
+                  {
+                    mercury__lexer__Tokens_10 = (MR_Word) MR_mkword(MR_mktag(1), MR_new_object(MR_Word, ((MR_Integer) 3 * sizeof(MR_Word)), NULL, NULL));
+                    MR_hl_field(MR_mktag(1), mercury__lexer__Tokens_10, 0) = ((MR_Box) (mercury__lexer__Token0_8));
+                    MR_hl_field(MR_mktag(1), mercury__lexer__Tokens_10, 1) = ((MR_Box) (mercury__lexer__Context0_9));
+                    MR_hl_field(MR_mktag(1), mercury__lexer__Tokens_10, 2) = NULL;
+                  }
+                  mercury__lexer__AddrTokens1_87 = (MR_Word *) &(MR_hl_field(MR_mktag(1), mercury__lexer__Tokens_10, (MR_Integer) 2));
+                  *mercury__lexer__AddrOfTokens_89 = mercury__lexer__Tokens_10;
+                  /* direct tailcall eliminated */
+                  {
+                    MR_Word mercury__lexer__next_value_of_Token0_8 = mercury__lexer__Token1_41;
+                    MR_Integer mercury__lexer__next_value_of_Context0_9 = mercury__lexer__Context1_40;
+                    MR_Word * mercury__lexer__next_value_of_AddrOfTokens_89 = mercury__lexer__AddrTokens1_87;
+
+                    mercury__lexer__AddrOfTokens_89 = mercury__lexer__next_value_of_AddrOfTokens_89;
+                    mercury__lexer__Context0_9 = mercury__lexer__next_value_of_Context0_9;
+                    mercury__lexer__Token0_8 = mercury__lexer__next_value_of_Token0_8;
+                  }
+                  continue;
+                }
+                break;
+              case (MR_Integer) 9:
+                {
+                  MR_Word mercury__lexer__Var_39 = (MR_Word) MR_mkword(MR_mktag(0), MR_mkbody((MR_Integer) 0));
+                  MR_Word mercury__lexer__Tokens_90;
+
+                  {
+                    mercury__lexer__Tokens_90 = (MR_Word) MR_mkword(MR_mktag(1), MR_new_object(MR_Word, ((MR_Integer) 3 * sizeof(MR_Word)), NULL, NULL));
+                    MR_hl_field(MR_mktag(1), mercury__lexer__Tokens_90, 0) = ((MR_Box) (mercury__lexer__Token0_8));
+                    MR_hl_field(MR_mktag(1), mercury__lexer__Tokens_90, 1) = ((MR_Box) (mercury__lexer__Context0_9));
+                    MR_hl_field(MR_mktag(1), mercury__lexer__Tokens_90, 2) = ((MR_Box) (mercury__lexer__Var_39));
+                  }
+                  *mercury__lexer__AddrOfTokens_89 = mercury__lexer__Tokens_90;
+                }
+                break;
+              case (MR_Integer) 10:
+                {
+                  MR_Word mercury__lexer__Tokens_91 = (MR_Word) MR_mkword(MR_mktag(0), MR_mkbody((MR_Integer) 0));
+
+                  *mercury__lexer__AddrOfTokens_89 = mercury__lexer__Tokens_91;
+                }
+                break;
+            }
+            break;
+          case (MR_Integer) 1:
+          case (MR_Integer) 2:
+            {
+              MR_Integer mercury__lexer__Context1_40;
+              MR_Word mercury__lexer__Token1_41;
+              MR_Word mercury__lexer__Tokens_10;
+              MR_Word * mercury__lexer__AddrTokens1_87;
+
+              {
+                mercury__lexer__get_token_5_p_0(mercury__lexer__Stream_7, &mercury__lexer__Token1_41, &mercury__lexer__Context1_40);
+              }
+              {
+                mercury__lexer__Tokens_10 = (MR_Word) MR_mkword(MR_mktag(1), MR_new_object(MR_Word, ((MR_Integer) 3 * sizeof(MR_Word)), NULL, NULL));
+                MR_hl_field(MR_mktag(1), mercury__lexer__Tokens_10, 0) = ((MR_Box) (mercury__lexer__Token0_8));
+                MR_hl_field(MR_mktag(1), mercury__lexer__Tokens_10, 1) = ((MR_Box) (mercury__lexer__Context0_9));
+                MR_hl_field(MR_mktag(1), mercury__lexer__Tokens_10, 2) = NULL;
+              }
+              mercury__lexer__AddrTokens1_87 = (MR_Word *) &(MR_hl_field(MR_mktag(1), mercury__lexer__Tokens_10, (MR_Integer) 2));
+              *mercury__lexer__AddrOfTokens_89 = mercury__lexer__Tokens_10;
+              /* direct tailcall eliminated */
+              {
+                MR_Word mercury__lexer__next_value_of_Token0_8 = mercury__lexer__Token1_41;
+                MR_Integer mercury__lexer__next_value_of_Context0_9 = mercury__lexer__Context1_40;
+                MR_Word * mercury__lexer__next_value_of_AddrOfTokens_89 = mercury__lexer__AddrTokens1_87;
+
+                mercury__lexer__AddrOfTokens_89 = mercury__lexer__next_value_of_AddrOfTokens_89;
+                mercury__lexer__Context0_9 = mercury__lexer__next_value_of_Context0_9;
+                mercury__lexer__Token0_8 = mercury__lexer__next_value_of_Token0_8;
+              }
+              continue;
+            }
+            break;
+          case (MR_Integer) 3:
+            switch (((MR_Integer) (MR_Word) (MR_hl_field(MR_mktag(3), mercury__lexer__Token0_8, (MR_Integer) 0)))) {
+              default: /*NOTREACHED*/ MR_assert(0);
+              case (MR_Integer) 0:
+              case (MR_Integer) 1:
+              case (MR_Integer) 2:
+              case (MR_Integer) 3:
+              case (MR_Integer) 4:
+                {
+                  MR_Integer mercury__lexer__Context1_40;
+                  MR_Word mercury__lexer__Token1_41;
+                  MR_Word mercury__lexer__Tokens_10;
+                  MR_Word * mercury__lexer__AddrTokens1_87;
+
+                  {
+                    mercury__lexer__get_token_5_p_0(mercury__lexer__Stream_7, &mercury__lexer__Token1_41, &mercury__lexer__Context1_40);
+                  }
+                  {
+                    mercury__lexer__Tokens_10 = (MR_Word) MR_mkword(MR_mktag(1), MR_new_object(MR_Word, ((MR_Integer) 3 * sizeof(MR_Word)), NULL, NULL));
+                    MR_hl_field(MR_mktag(1), mercury__lexer__Tokens_10, 0) = ((MR_Box) (mercury__lexer__Token0_8));
+                    MR_hl_field(MR_mktag(1), mercury__lexer__Tokens_10, 1) = ((MR_Box) (mercury__lexer__Context0_9));
+                    MR_hl_field(MR_mktag(1), mercury__lexer__Tokens_10, 2) = NULL;
+                  }
+                  mercury__lexer__AddrTokens1_87 = (MR_Word *) &(MR_hl_field(MR_mktag(1), mercury__lexer__Tokens_10, (MR_Integer) 2));
+                  *mercury__lexer__AddrOfTokens_89 = mercury__lexer__Tokens_10;
+                  /* direct tailcall eliminated */
+                  {
+                    MR_Word mercury__lexer__next_value_of_Token0_8 = mercury__lexer__Token1_41;
+                    MR_Integer mercury__lexer__next_value_of_Context0_9 = mercury__lexer__Context1_40;
+                    MR_Word * mercury__lexer__next_value_of_AddrOfTokens_89 = mercury__lexer__AddrTokens1_87;
+
+                    mercury__lexer__AddrOfTokens_89 = mercury__lexer__next_value_of_AddrOfTokens_89;
+                    mercury__lexer__Context0_9 = mercury__lexer__next_value_of_Context0_9;
+                    mercury__lexer__Token0_8 = mercury__lexer__next_value_of_Token0_8;
+                  }
+                  continue;
+                }
+                break;
+              case (MR_Integer) 5:
+              case (MR_Integer) 6:
+                {
+                  MR_Word mercury__lexer__Var_39 = (MR_Word) MR_mkword(MR_mktag(0), MR_mkbody((MR_Integer) 0));
+                  MR_Word mercury__lexer__Tokens_90;
+
+                  {
+                    mercury__lexer__Tokens_90 = (MR_Word) MR_mkword(MR_mktag(1), MR_new_object(MR_Word, ((MR_Integer) 3 * sizeof(MR_Word)), NULL, NULL));
+                    MR_hl_field(MR_mktag(1), mercury__lexer__Tokens_90, 0) = ((MR_Box) (mercury__lexer__Token0_8));
+                    MR_hl_field(MR_mktag(1), mercury__lexer__Tokens_90, 1) = ((MR_Box) (mercury__lexer__Context0_9));
+                    MR_hl_field(MR_mktag(1), mercury__lexer__Tokens_90, 2) = ((MR_Box) (mercury__lexer__Var_39));
+                  }
+                  *mercury__lexer__AddrOfTokens_89 = mercury__lexer__Tokens_90;
+                }
+                break;
+              case (MR_Integer) 7:
+                {
+                  MR_Word mercury__lexer__Integer_14 = ((MR_Word) (MR_hl_field(MR_mktag(3), mercury__lexer__Token0_8, (MR_Integer) 1)));
+                  MR_Integer mercury__lexer__Context1_15;
+                  MR_Word mercury__lexer__Token1_16;
+                  MR_Word mercury__lexer__Var_35;
+                  MR_Box mercury__lexer__V_5_52 = (MR_Box) mercury__lexer__Stream_7;
+                  MR_Word mercury__lexer__Result_58;
+                  MR_Char mercury__lexer__Char_59;
+                  MR_Word mercury__lexer__V_10_75;
+                  MR_Box mercury__lexer__V_11_76;
+                  MR_Box mercury__lexer__V_7_85;
+                  MR_Word * mercury__lexer__AddrTokens1_88;
+                  MR_Word mercury__lexer__Tokens_92;
+
+{
+#define MR_PROC_LABEL mercury__lexer__LCMCpr_get_token_list_2_1_6_p_0
+
+	MercuryFilePtr Stream;
+	MR_Integer LineNum;
+
+	Stream = (MercuryFilePtr) mercury__lexer__V_5_52 ;
+		{
+
+    LineNum = MR_line_number(*Stream);
+
+
+		;}
+#undef MR_PROC_LABEL
+	 mercury__lexer__Context1_15  = LineNum;
+}
+                  mercury__lexer__V_7_85 = (MR_Box) mercury__lexer__Stream_7;
+                  {
+                    mercury__io__read_char_code_2_6_p_0(mercury__lexer__V_7_85, &mercury__lexer__V_10_75, &mercury__lexer__Char_59, &mercury__lexer__V_11_76);
+                  }
+                  switch (mercury__lexer__V_10_75) {
+                    default: /*NOTREACHED*/ MR_assert(0);
+                    case (MR_Integer) 1:
+                      mercury__lexer__Result_58 = (MR_Word) MR_mkword(MR_mktag(0), MR_mkbody((MR_Integer) 1));
+                      break;
+                    case (MR_Integer) 2:
+                      {
+                        MR_String mercury__lexer__V_12_78;
+                        MR_Word mercury__lexer__V_17_79;
+
+{
+#define MR_PROC_LABEL mercury__lexer__LCMCpr_get_token_list_2_1_6_p_0
+
+	MR_Integer Error;
+	MR_String Msg0;
+	MR_String Msg;
+
+	MR_MAYBE_UNBOX_FOREIGN_TYPE(MR_Integer, mercury__lexer__V_11_76 , Error);
+	Msg0 =  (MR_String) "read failed: " ;
+		{
+
+    ML_make_err_msg(Error, Msg0, MR_ALLOC_ID, Msg);
+
+
+		;}
+#undef MR_PROC_LABEL
+	 mercury__lexer__V_12_78  = Msg;
+}
+                        mercury__lexer__V_17_79 = (MR_Word) mercury__lexer__V_12_78;
+                        {
+                          mercury__lexer__Result_58 = (MR_Word) MR_mkword(MR_mktag(1), MR_new_object(MR_Word, ((MR_Integer) 1 * sizeof(MR_Word)), NULL, NULL));
+                          MR_hl_field(MR_mktag(1), mercury__lexer__Result_58, 0) = ((MR_Box) (mercury__lexer__V_17_79));
+                        }
+                      }
+                      break;
+                    case (MR_Integer) 0:
+                      mercury__lexer__Result_58 = (MR_Word) MR_mkword(MR_mktag(0), MR_mkbody((MR_Integer) 0));
+                      break;
+                  }
+                  switch (MR_tag((MR_Word) mercury__lexer__Result_58)) {
+                    default: /*NOTREACHED*/ MR_assert(0);
+                    case (MR_Integer) 0:
+                      switch (MR_unmkbody(mercury__lexer__Result_58)) {
+                        default: /*NOTREACHED*/ MR_assert(0);
+                        case (MR_Integer) 0:
+                          {
+                            {
+                              mercury__lexer__succeeded = mercury__char__is_whitespace_1_p_0(mercury__lexer__Char_59);
+                            }
+                            if (!(mercury__lexer__succeeded))
+                              mercury__lexer__succeeded = (mercury__lexer__Char_59 == (MR_Char) 37);
+                            if (mercury__lexer__succeeded)
+                              {
+                                {
+                                  mercury__io__putback_char_4_p_0(mercury__lexer__Stream_7, mercury__lexer__Char_59);
+                                }
+                                mercury__lexer__Token1_16 = (MR_Word) MR_mkword(MR_mktag(0), MR_mkbody((MR_Integer) 9));
+                              }
+                            else
+                              {
+                                switch (mercury__lexer__Char_59) {
+                                  default:
+                                    mercury__lexer__succeeded = MR_FALSE;
+                                    break;
+                                  case (MR_Char) 33:
+                                    mercury__lexer__succeeded = MR_TRUE;
+                                    break;
+                                  case (MR_Char) 35:
+                                    mercury__lexer__succeeded = MR_TRUE;
+                                    break;
+                                  case (MR_Char) 36:
+                                    mercury__lexer__succeeded = MR_TRUE;
+                                    break;
+                                  case (MR_Char) 38:
+                                    mercury__lexer__succeeded = MR_TRUE;
+                                    break;
+                                  case (MR_Char) 42:
+                                    mercury__lexer__succeeded = MR_TRUE;
+                                    break;
+                                  case (MR_Char) 43:
+                                    mercury__lexer__succeeded = MR_TRUE;
+                                    break;
+                                  case (MR_Char) 45:
+                                    mercury__lexer__succeeded = MR_TRUE;
+                                    break;
+                                  case (MR_Char) 46:
+                                    mercury__lexer__succeeded = MR_TRUE;
+                                    break;
+                                  case (MR_Char) 47:
+                                    mercury__lexer__succeeded = MR_TRUE;
+                                    break;
+                                  case (MR_Char) 58:
+                                    mercury__lexer__succeeded = MR_TRUE;
+                                    break;
+                                  case (MR_Char) 60:
+                                    mercury__lexer__succeeded = MR_TRUE;
+                                    break;
+                                  case (MR_Char) 61:
+                                    mercury__lexer__succeeded = MR_TRUE;
+                                    break;
+                                  case (MR_Char) 62:
+                                    mercury__lexer__succeeded = MR_TRUE;
+                                    break;
+                                  case (MR_Char) 63:
+                                    mercury__lexer__succeeded = MR_TRUE;
+                                    break;
+                                  case (MR_Char) 64:
+                                    mercury__lexer__succeeded = MR_TRUE;
+                                    break;
+                                  case (MR_Char) 92:
+                                    mercury__lexer__succeeded = MR_TRUE;
+                                    break;
+                                  case (MR_Char) 94:
+                                    mercury__lexer__succeeded = MR_TRUE;
+                                    break;
+                                  case (MR_Char) 126:
+                                    mercury__lexer__succeeded = MR_TRUE;
+                                    break;
+                                }
+                                if (mercury__lexer__succeeded)
+                                  {
+                                    MR_Word mercury__lexer__Var_63;
+                                    MR_Word mercury__lexer__Var_65 = (MR_Word) MR_mkword(MR_mktag(1), &mercury__lexer_scalar_common_4[5]);
+                                    MR_Word mercury__lexer__Var_67 = (MR_Word) MR_mkword(MR_mktag(0), MR_mkbody((MR_Integer) 0));
+
+                                    {
+                                      mercury__lexer__Var_63 = (MR_Word) MR_mkword(MR_mktag(1), MR_new_object(MR_Word, ((MR_Integer) 2 * sizeof(MR_Word)), NULL, NULL));
+                                      MR_hl_field(MR_mktag(1), mercury__lexer__Var_63, 0) = ((MR_Box) (MR_Word) (mercury__lexer__Char_59));
+                                      MR_hl_field(MR_mktag(1), mercury__lexer__Var_63, 1) = ((MR_Box) (mercury__lexer__Var_65));
+                                    }
+                                    {
+                                      mercury__lexer__get_graphic_5_p_0(mercury__lexer__Stream_7, mercury__lexer__Var_63, &mercury__lexer__Token1_16);
+                                    }
+                                  }
+                                else
+                                  {
+                                    {
+                                      mercury__io__putback_char_4_p_0(mercury__lexer__Stream_7, mercury__lexer__Char_59);
+                                    }
+                                    mercury__lexer__Token1_16 = (MR_Word) MR_mkword(MR_mktag(1), &mercury__lexer_scalar_common_6[0]);
+                                  }
+                              }
+                          }
+                          break;
+                        case (MR_Integer) 1:
+                          mercury__lexer__Token1_16 = (MR_Word) MR_mkword(MR_mktag(0), MR_mkbody((MR_Integer) 9));
+                          break;
+                      }
+                      break;
+                    case (MR_Integer) 1:
+                      {
+                        MR_Word mercury__lexer__Error_60 = ((MR_Word) (MR_hl_field(MR_mktag(1), mercury__lexer__Result_58, (MR_Integer) 0)));
+
+                        {
+                          mercury__lexer__Token1_16 = (MR_Word) MR_mkword(MR_mktag(3), MR_new_object(MR_Word, ((MR_Integer) 2 * sizeof(MR_Word)), NULL, NULL));
+                          MR_hl_field(MR_mktag(3), mercury__lexer__Token1_16, 0) = ((MR_Box) (MR_Word) ((MR_Integer) 6));
+                          MR_hl_field(MR_mktag(3), mercury__lexer__Token1_16, 1) = ((MR_Box) (mercury__lexer__Error_60));
+                        }
+                      }
+                      break;
+                  }
+                  {
+                    mercury__lexer__Var_35 = (MR_Word) MR_mkword(MR_mktag(3), MR_new_object(MR_Word, ((MR_Integer) 5 * sizeof(MR_Word)), NULL, NULL));
+                    MR_hl_field(MR_mktag(3), mercury__lexer__Var_35, 0) = ((MR_Box) (MR_Word) ((MR_Integer) 0));
+                    MR_hl_field(MR_mktag(3), mercury__lexer__Var_35, 1) = ((MR_Box) ((MR_Integer) 2));
+                    MR_hl_field(MR_mktag(3), mercury__lexer__Var_35, 2) = ((MR_Box) (mercury__lexer__Integer_14));
+                    MR_hl_field(MR_mktag(3), mercury__lexer__Var_35, 3) = ((MR_Box) ((MR_Integer) 0));
+                    MR_hl_field(MR_mktag(3), mercury__lexer__Var_35, 4) = ((MR_Box) ((MR_Integer) 0));
+                  }
+                  {
+                    mercury__lexer__Tokens_92 = (MR_Word) MR_mkword(MR_mktag(1), MR_new_object(MR_Word, ((MR_Integer) 3 * sizeof(MR_Word)), NULL, NULL));
+                    MR_hl_field(MR_mktag(1), mercury__lexer__Tokens_92, 0) = ((MR_Box) (mercury__lexer__Var_35));
+                    MR_hl_field(MR_mktag(1), mercury__lexer__Tokens_92, 1) = ((MR_Box) (mercury__lexer__Context0_9));
+                    MR_hl_field(MR_mktag(1), mercury__lexer__Tokens_92, 2) = NULL;
+                  }
+                  mercury__lexer__AddrTokens1_88 = (MR_Word *) &(MR_hl_field(MR_mktag(1), mercury__lexer__Tokens_92, (MR_Integer) 2));
+                  *mercury__lexer__AddrOfTokens_89 = mercury__lexer__Tokens_92;
+                  /* direct tailcall eliminated */
+                  {
+                    MR_Word mercury__lexer__next_value_of_Token0_8 = mercury__lexer__Token1_16;
+                    MR_Integer mercury__lexer__next_value_of_Context0_9 = mercury__lexer__Context1_15;
+                    MR_Word * mercury__lexer__next_value_of_AddrOfTokens_89 = mercury__lexer__AddrTokens1_88;
+
+                    mercury__lexer__AddrOfTokens_89 = mercury__lexer__next_value_of_AddrOfTokens_89;
+                    mercury__lexer__Context0_9 = mercury__lexer__next_value_of_Context0_9;
+                    mercury__lexer__Token0_8 = mercury__lexer__next_value_of_Token0_8;
+                  }
+                  continue;
+                }
+                break;
+            }
+            break;
+        }
+      }
+      break;
+    }
+}
+
+static MR_Integer MR_CALL 
+mercury__lexer__f_85_110_117_115_101_100_65_114_103_115_95_95_102_117_110_99_95_95_67_108_97_115_115_77_101_116_104_111_100_95_102_111_114_95_111_112_115_95_95_111_112_95_116_97_98_108_101_95_95_95_95_111_112_115_95_95_109_101_114_99_117_114_121_95_111_112_95_116_97_98_108_101_95_95_97_114_105_116_121_48_95_95_95_95_95_95_111_112_115_95_95_109_97_120_95_112_114_105_111_114_105_116_121_95_49_95_95_91_49_93_95_48_1_f_in__ops_0(void)
+{
+  {
+    MR_bool mercury__lexer__succeeded;
+
+    return (MR_Integer) 1200;
+  }
+}
+
+void MR_CALL 
+mercury__lexer____Compare____token_list_0_0(
+  MR_Word * mercury__lexer__HeadVar__1_1,
+  MR_Word mercury__lexer__HeadVar__2_2,
+  MR_Word mercury__lexer__HeadVar__3_3)
+{
+  while (MR_TRUE)
+    {
+      /* tailcall optimized into a loop */
+      {
+        MR_bool mercury__lexer__succeeded;
+        MR_Integer mercury__lexer__CastX_18 = (MR_Integer) mercury__lexer__HeadVar__2_2;
+        MR_Integer mercury__lexer__CastY_19 = (MR_Integer) mercury__lexer__HeadVar__3_3;
+
+        mercury__lexer__succeeded = (mercury__lexer__CastX_18 == mercury__lexer__CastY_19);
+        if (mercury__lexer__succeeded)
+          *mercury__lexer__HeadVar__1_1 = (MR_Integer) 0;
+        else
+        if ((mercury__lexer__HeadVar__2_2 == ((MR_Word) MR_mkword(MR_mktag(0), MR_mkbody((MR_Integer) 0)))))
+          if ((mercury__lexer__HeadVar__3_3 == ((MR_Word) MR_mkword(MR_mktag(0), MR_mkbody((MR_Integer) 0)))))
+            *mercury__lexer__HeadVar__1_1 = (MR_Integer) 0;
+          else
+            *mercury__lexer__HeadVar__1_1 = (MR_Integer) 2;
+        else
+          {
+            MR_Word mercury__lexer__Var_23 = ((MR_Word) (MR_hl_field(MR_mktag(1), mercury__lexer__HeadVar__2_2, (MR_Integer) 2)));
+            MR_Integer mercury__lexer__Var_24 = ((MR_Integer) (MR_hl_field(MR_mktag(1), mercury__lexer__HeadVar__2_2, (MR_Integer) 1)));
+            MR_Word mercury__lexer__Var_25 = ((MR_Word) (MR_hl_field(MR_mktag(1), mercury__lexer__HeadVar__2_2, (MR_Integer) 0)));
+
+            if ((mercury__lexer__HeadVar__3_3 == ((MR_Word) MR_mkword(MR_mktag(0), MR_mkbody((MR_Integer) 0)))))
+              *mercury__lexer__HeadVar__1_1 = (MR_Integer) 1;
+            else
+              {
+                MR_Word mercury__lexer__Var_7 = ((MR_Word) (MR_hl_field(MR_mktag(1), mercury__lexer__HeadVar__3_3, (MR_Integer) 0)));
+                MR_Integer mercury__lexer__Var_8 = ((MR_Integer) (MR_hl_field(MR_mktag(1), mercury__lexer__HeadVar__3_3, (MR_Integer) 1)));
+                MR_Word mercury__lexer__Var_9 = ((MR_Word) (MR_hl_field(MR_mktag(1), mercury__lexer__HeadVar__3_3, (MR_Integer) 2)));
+                MR_Word mercury__lexer__Var_10;
+
+                {
+                  mercury__lexer____Compare____token_0_0(&mercury__lexer__Var_10, mercury__lexer__Var_25, mercury__lexer__Var_7);
+                }
+                mercury__lexer__succeeded = (mercury__lexer__Var_10 == (MR_Integer) 0);
+                mercury__lexer__succeeded = !(mercury__lexer__succeeded);
+                if (mercury__lexer__succeeded)
+                  *mercury__lexer__HeadVar__1_1 = mercury__lexer__Var_10;
+                else
+                  {
+                    MR_Word mercury__lexer__Var_11;
+
+                    mercury__lexer__succeeded = (mercury__lexer__Var_24 < mercury__lexer__Var_8);
+                    if (mercury__lexer__succeeded)
+                      mercury__lexer__Var_11 = (MR_Integer) 1;
+                    else
+                      {
+                        mercury__lexer__succeeded = (mercury__lexer__Var_24 == mercury__lexer__Var_8);
+                        if (mercury__lexer__succeeded)
+                          mercury__lexer__Var_11 = (MR_Integer) 0;
+                        else
+                          mercury__lexer__Var_11 = (MR_Integer) 2;
+                      }
+                    mercury__lexer__succeeded = (mercury__lexer__Var_11 == (MR_Integer) 0);
+                    mercury__lexer__succeeded = !(mercury__lexer__succeeded);
+                    if (mercury__lexer__succeeded)
+                      *mercury__lexer__HeadVar__1_1 = mercury__lexer__Var_11;
+                    else
+                      {
+                        /* direct tailcall eliminated */
+                        {
+                          MR_Word mercury__lexer__next_value_of_HeadVar__2_2 = mercury__lexer__Var_23;
+                          MR_Word mercury__lexer__next_value_of_HeadVar__3_3 = mercury__lexer__Var_9;
+
+                          mercury__lexer__HeadVar__3_3 = mercury__lexer__next_value_of_HeadVar__3_3;
+                          mercury__lexer__HeadVar__2_2 = mercury__lexer__next_value_of_HeadVar__2_2;
+                        }
+                        continue;
+                      }
+                  }
+              }
+          }
+      }
+      break;
+    }
+}
+
+MR_bool MR_CALL 
+mercury__lexer____Unify____token_list_0_0(
+  MR_Word mercury__lexer__HeadVar__1_1,
+  MR_Word mercury__lexer__HeadVar__2_2)
+{
+  while (MR_TRUE)
+    {
+      /* tailcall optimized into a loop */
+      {
+        MR_bool mercury__lexer__succeeded;
+        MR_Integer mercury__lexer__CastX_11 = (MR_Integer) mercury__lexer__HeadVar__1_1;
+        MR_Integer mercury__lexer__CastY_12 = (MR_Integer) mercury__lexer__HeadVar__2_2;
+
+        mercury__lexer__succeeded = (mercury__lexer__CastX_11 == mercury__lexer__CastY_12);
+        if (mercury__lexer__succeeded)
+          mercury__lexer__succeeded = MR_TRUE;
+        else
+        if ((mercury__lexer__HeadVar__1_1 == ((MR_Word) MR_mkword(MR_mktag(0), MR_mkbody((MR_Integer) 0)))))
+          {
+            MR_Integer mercury__lexer__CastX_9 = (MR_Integer) mercury__lexer__HeadVar__1_1;
+            MR_Integer mercury__lexer__CastY_10 = (MR_Integer) mercury__lexer__HeadVar__2_2;
+
+            mercury__lexer__succeeded = (mercury__lexer__CastY_10 == mercury__lexer__CastX_9);
+          }
+        else
+          {
+            MR_Word mercury__lexer__Var_3 = ((MR_Word) (MR_hl_field(MR_mktag(1), mercury__lexer__HeadVar__1_1, (MR_Integer) 0)));
+            MR_Integer mercury__lexer__Var_4 = ((MR_Integer) (MR_hl_field(MR_mktag(1), mercury__lexer__HeadVar__1_1, (MR_Integer) 1)));
+            MR_Word mercury__lexer__Var_5 = ((MR_Word) (MR_hl_field(MR_mktag(1), mercury__lexer__HeadVar__1_1, (MR_Integer) 2)));
+            MR_Word mercury__lexer__Var_6;
+            MR_Integer mercury__lexer__Var_7;
+            MR_Word mercury__lexer__Var_8;
+
+            mercury__lexer__succeeded = ((MR_tag((MR_Word) mercury__lexer__HeadVar__2_2)) == (MR_mktag((MR_Integer) 1)));
+            if (mercury__lexer__succeeded)
+              {
+                mercury__lexer__Var_6 = ((MR_Word) (MR_hl_field(MR_mktag(1), mercury__lexer__HeadVar__2_2, (MR_Integer) 0)));
+                mercury__lexer__Var_7 = ((MR_Integer) (MR_hl_field(MR_mktag(1), mercury__lexer__HeadVar__2_2, (MR_Integer) 1)));
+                mercury__lexer__Var_8 = ((MR_Word) (MR_hl_field(MR_mktag(1), mercury__lexer__HeadVar__2_2, (MR_Integer) 2)));
+                {
+                  mercury__lexer__succeeded = mercury__lexer____Unify____token_0_0(mercury__lexer__Var_3, mercury__lexer__Var_6);
+                }
+                if (mercury__lexer__succeeded)
+                  {
+                    mercury__lexer__succeeded = (mercury__lexer__Var_4 == mercury__lexer__Var_7);
+                    if (mercury__lexer__succeeded)
+                      {
+                        /* direct tailcall eliminated */
+                        {
+                          MR_Word mercury__lexer__next_value_of_HeadVar__1_1 = mercury__lexer__Var_5;
+                          MR_Word mercury__lexer__next_value_of_HeadVar__2_2 = mercury__lexer__Var_8;
+
+                          mercury__lexer__HeadVar__2_2 = mercury__lexer__next_value_of_HeadVar__2_2;
+                          mercury__lexer__HeadVar__1_1 = mercury__lexer__next_value_of_HeadVar__1_1;
+                        }
+                        continue;
+                      }
+                  }
+              }
+          }
+        return mercury__lexer__succeeded;
+      }
+      break;
+    }
+}
+
+void MR_CALL 
+mercury__lexer____Compare____token_context_0_0(
+  MR_Word * mercury__lexer__HeadVar__1_1,
+  MR_Integer mercury__lexer__HeadVar__2_2,
+  MR_Integer mercury__lexer__HeadVar__3_3)
+{
+  {
+    MR_bool mercury__lexer__succeeded;
+    MR_Integer mercury__lexer__Cast_HeadVar1_4 = mercury__lexer__HeadVar__2_2;
+    MR_Integer mercury__lexer__Cast_HeadVar2_5 = mercury__lexer__HeadVar__3_3;
+
+    mercury__lexer__succeeded = (mercury__lexer__Cast_HeadVar1_4 < mercury__lexer__Cast_HeadVar2_5);
+    if (mercury__lexer__succeeded)
+      *mercury__lexer__HeadVar__1_1 = (MR_Integer) 1;
+    else
+      {
+        mercury__lexer__succeeded = (mercury__lexer__Cast_HeadVar1_4 == mercury__lexer__Cast_HeadVar2_5);
+        if (mercury__lexer__succeeded)
+          *mercury__lexer__HeadVar__1_1 = (MR_Integer) 0;
+        else
+          *mercury__lexer__HeadVar__1_1 = (MR_Integer) 2;
+      }
+  }
+}
+
+MR_bool MR_CALL 
+mercury__lexer____Unify____token_context_0_0(
+  MR_Integer mercury__lexer__HeadVar__1_1,
+  MR_Integer mercury__lexer__HeadVar__2_2)
+{
+  {
+    MR_bool mercury__lexer__succeeded;
+    MR_Integer mercury__lexer__Cast_HeadVar1_3 = mercury__lexer__HeadVar__1_1;
+    MR_Integer mercury__lexer__Cast_HeadVar2_4 = mercury__lexer__HeadVar__2_2;
+
+    mercury__lexer__succeeded = (mercury__lexer__Cast_HeadVar1_3 == mercury__lexer__Cast_HeadVar2_4);
+    return mercury__lexer__succeeded;
+  }
+}
+
+void MR_CALL 
+mercury__lexer____Compare____token_0_0(
+  MR_Word * mercury__lexer__HeadVar__1_1,
+  MR_Word mercury__lexer__HeadVar__2_2,
+  MR_Word mercury__lexer__HeadVar__3_3)
+{
+  {
+    MR_bool mercury__lexer__succeeded;
+    MR_Integer mercury__lexer__CastX_36 = (MR_Integer) mercury__lexer__HeadVar__2_2;
+    MR_Integer mercury__lexer__CastY_37 = (MR_Integer) mercury__lexer__HeadVar__3_3;
+
+    mercury__lexer__succeeded = (mercury__lexer__CastX_36 == mercury__lexer__CastY_37);
+    if (mercury__lexer__succeeded)
+      *mercury__lexer__HeadVar__1_1 = (MR_Integer) 0;
+    else
+      {
+        MR_Integer mercury__lexer__Var_4;
+        MR_Integer mercury__lexer__Var_5;
+
+        {
+          mercury__lexer____Index____token_0_0(mercury__lexer__HeadVar__2_2, &mercury__lexer__Var_4);
+        }
+        {
+          mercury__lexer____Index____token_0_0(mercury__lexer__HeadVar__3_3, &mercury__lexer__Var_5);
+        }
+        mercury__lexer__succeeded = (mercury__lexer__Var_4 < mercury__lexer__Var_5);
+        if (mercury__lexer__succeeded)
+          *mercury__lexer__HeadVar__1_1 = (MR_Integer) 1;
+        else
+          {
+            mercury__lexer__succeeded = (mercury__lexer__Var_4 > mercury__lexer__Var_5);
+            if (mercury__lexer__succeeded)
+              *mercury__lexer__HeadVar__1_1 = (MR_Integer) 2;
+            else
+              {
+                MR_Word mercury__lexer__Var_6;
+
+                switch (MR_tag((MR_Word) mercury__lexer__HeadVar__2_2)) {
+                  default: /*NOTREACHED*/ MR_assert(0);
+                  case (MR_Integer) 0:
+                    switch (MR_unmkbody(mercury__lexer__HeadVar__2_2)) {
+                      default: /*NOTREACHED*/ MR_assert(0);
+                      case (MR_Integer) 0:
+                        {
+                          mercury__lexer__Var_6 = (MR_Integer) 0;
+                          mercury__lexer__succeeded = MR_TRUE;
+                        }
+                        break;
+                      case (MR_Integer) 1:
+                        {
+                          mercury__lexer__Var_6 = (MR_Integer) 0;
+                          mercury__lexer__succeeded = MR_TRUE;
+                        }
+                        break;
+                      case (MR_Integer) 2:
+                        {
+                          mercury__lexer__Var_6 = (MR_Integer) 0;
+                          mercury__lexer__succeeded = MR_TRUE;
+                        }
+                        break;
+                      case (MR_Integer) 3:
+                        {
+                          mercury__lexer__Var_6 = (MR_Integer) 0;
+                          mercury__lexer__succeeded = MR_TRUE;
+                        }
+                        break;
+                      case (MR_Integer) 4:
+                        {
+                          mercury__lexer__Var_6 = (MR_Integer) 0;
+                          mercury__lexer__succeeded = MR_TRUE;
+                        }
+                        break;
+                      case (MR_Integer) 5:
+                        {
+                          mercury__lexer__Var_6 = (MR_Integer) 0;
+                          mercury__lexer__succeeded = MR_TRUE;
+                        }
+                        break;
+                      case (MR_Integer) 6:
+                        {
+                          mercury__lexer__Var_6 = (MR_Integer) 0;
+                          mercury__lexer__succeeded = MR_TRUE;
+                        }
+                        break;
+                      case (MR_Integer) 7:
+                        {
+                          mercury__lexer__Var_6 = (MR_Integer) 0;
+                          mercury__lexer__succeeded = MR_TRUE;
+                        }
+                        break;
+                      case (MR_Integer) 8:
+                        {
+                          mercury__lexer__Var_6 = (MR_Integer) 0;
+                          mercury__lexer__succeeded = MR_TRUE;
+                        }
+                        break;
+                      case (MR_Integer) 9:
+                        {
+                          mercury__lexer__Var_6 = (MR_Integer) 0;
+                          mercury__lexer__succeeded = MR_TRUE;
+                        }
+                        break;
+                      case (MR_Integer) 10:
+                        {
+                          mercury__lexer__Var_6 = (MR_Integer) 0;
+                          mercury__lexer__succeeded = MR_TRUE;
+                        }
+                        break;
+                    }
+                    break;
+                  case (MR_Integer) 1:
+                    {
+                      MR_String mercury__lexer__Var_7 = ((MR_String) (MR_hl_field(MR_mktag(1), mercury__lexer__HeadVar__2_2, (MR_Integer) 0)));
+                      MR_String mercury__lexer__Var_8;
+                      MR_Integer mercury__lexer__V_7_94;
+                      MR_Integer mercury__lexer__V_8_95;
+
+                      mercury__lexer__succeeded = ((MR_tag((MR_Word) mercury__lexer__HeadVar__3_3)) == (MR_mktag((MR_Integer) 1)));
+                      if (mercury__lexer__succeeded)
+                        {
+                          mercury__lexer__Var_8 = ((MR_String) (MR_hl_field(MR_mktag(1), mercury__lexer__HeadVar__3_3, (MR_Integer) 0)));
+{
+#define MR_PROC_LABEL mercury__lexer____Compare____token_0_0
+
+	MR_Integer Res;
+	MR_String S1;
+	MR_String S2;
+
+	S1 =  mercury__lexer__Var_7 ;
+	S2 =  mercury__lexer__Var_8 ;
+		{
+
+    Res = strcmp(S1, S2);
+
+
+		;}
+#undef MR_PROC_LABEL
+	 mercury__lexer__V_7_94  = Res;
+}
+                          mercury__lexer__V_8_95 = (MR_Integer) 0;
+                          mercury__lexer__succeeded = (mercury__lexer__V_7_94 < mercury__lexer__V_8_95);
+                          if (mercury__lexer__succeeded)
+                            mercury__lexer__Var_6 = (MR_Integer) 1;
+                          else
+                            {
+                              mercury__lexer__succeeded = (mercury__lexer__V_7_94 == (MR_Integer) 0);
+                              if (mercury__lexer__succeeded)
+                                mercury__lexer__Var_6 = (MR_Integer) 0;
+                              else
+                                mercury__lexer__Var_6 = (MR_Integer) 2;
+                            }
+                          mercury__lexer__succeeded = MR_TRUE;
+                        }
+                    }
+                    break;
+                  case (MR_Integer) 2:
+                    {
+                      MR_String mercury__lexer__Var_9 = ((MR_String) (MR_hl_field(MR_mktag(2), mercury__lexer__HeadVar__2_2, (MR_Integer) 0)));
+                      MR_String mercury__lexer__Var_10;
+                      MR_Integer mercury__lexer__V_7_104;
+                      MR_Integer mercury__lexer__V_8_105;
+
+                      mercury__lexer__succeeded = ((MR_tag((MR_Word) mercury__lexer__HeadVar__3_3)) == (MR_mktag((MR_Integer) 2)));
+                      if (mercury__lexer__succeeded)
+                        {
+                          mercury__lexer__Var_10 = ((MR_String) (MR_hl_field(MR_mktag(2), mercury__lexer__HeadVar__3_3, (MR_Integer) 0)));
+{
+#define MR_PROC_LABEL mercury__lexer____Compare____token_0_0
+
+	MR_Integer Res;
+	MR_String S1;
+	MR_String S2;
+
+	S1 =  mercury__lexer__Var_9 ;
+	S2 =  mercury__lexer__Var_10 ;
+		{
+
+    Res = strcmp(S1, S2);
+
+
+		;}
+#undef MR_PROC_LABEL
+	 mercury__lexer__V_7_104  = Res;
+}
+                          mercury__lexer__V_8_105 = (MR_Integer) 0;
+                          mercury__lexer__succeeded = (mercury__lexer__V_7_104 < mercury__lexer__V_8_105);
+                          if (mercury__lexer__succeeded)
+                            mercury__lexer__Var_6 = (MR_Integer) 1;
+                          else
+                            {
+                              mercury__lexer__succeeded = (mercury__lexer__V_7_104 == (MR_Integer) 0);
+                              if (mercury__lexer__succeeded)
+                                mercury__lexer__Var_6 = (MR_Integer) 0;
+                              else
+                                mercury__lexer__Var_6 = (MR_Integer) 2;
+                            }
+                          mercury__lexer__succeeded = MR_TRUE;
+                        }
+                    }
+                    break;
+                  case (MR_Integer) 3:
+                    switch (((MR_Integer) (MR_Word) (MR_hl_field(MR_mktag(3), mercury__lexer__HeadVar__2_2, (MR_Integer) 0)))) {
+                      default: /*NOTREACHED*/ MR_assert(0);
+                      case (MR_Integer) 0:
+                        {
+                          MR_Word mercury__lexer__Var_11 = ((MR_Word) (MR_hl_field(MR_mktag(3), mercury__lexer__HeadVar__2_2, (MR_Integer) 1)));
+                          MR_Word mercury__lexer__Var_12 = ((MR_Word) (MR_hl_field(MR_mktag(3), mercury__lexer__HeadVar__2_2, (MR_Integer) 2)));
+                          MR_Word mercury__lexer__Var_13 = ((MR_Word) (MR_hl_field(MR_mktag(3), mercury__lexer__HeadVar__2_2, (MR_Integer) 3)));
+                          MR_Word mercury__lexer__Var_14 = ((MR_Word) (MR_hl_field(MR_mktag(3), mercury__lexer__HeadVar__2_2, (MR_Integer) 4)));
+                          MR_Word mercury__lexer__Var_15;
+                          MR_Word mercury__lexer__Var_16;
+                          MR_Word mercury__lexer__Var_17;
+                          MR_Word mercury__lexer__Var_18;
+                          MR_Word mercury__lexer__Var_19;
+                          MR_Integer mercury__lexer__Var_51;
+                          MR_Integer mercury__lexer__Var_52;
+
+                          mercury__lexer__succeeded = ((((MR_tag((MR_Word) mercury__lexer__HeadVar__3_3)) == (MR_mktag((MR_Integer) 3)))) && (((((MR_Integer) (MR_Word) (MR_hl_field(MR_mktag(3), mercury__lexer__HeadVar__3_3, (MR_Integer) 0)))) == (MR_Integer) 0)));
+                          if (mercury__lexer__succeeded)
+                            {
+                              mercury__lexer__Var_15 = ((MR_Word) (MR_hl_field(MR_mktag(3), mercury__lexer__HeadVar__3_3, (MR_Integer) 1)));
+                              mercury__lexer__Var_16 = ((MR_Word) (MR_hl_field(MR_mktag(3), mercury__lexer__HeadVar__3_3, (MR_Integer) 2)));
+                              mercury__lexer__Var_17 = ((MR_Word) (MR_hl_field(MR_mktag(3), mercury__lexer__HeadVar__3_3, (MR_Integer) 3)));
+                              mercury__lexer__Var_18 = ((MR_Word) (MR_hl_field(MR_mktag(3), mercury__lexer__HeadVar__3_3, (MR_Integer) 4)));
+                              mercury__lexer__Var_51 = (MR_Integer) mercury__lexer__Var_11;
+                              mercury__lexer__Var_52 = (MR_Integer) mercury__lexer__Var_15;
+                              mercury__lexer__succeeded = (mercury__lexer__Var_51 < mercury__lexer__Var_52);
+                              if (mercury__lexer__succeeded)
+                                mercury__lexer__Var_19 = (MR_Integer) 1;
+                              else
+                                {
+                                  mercury__lexer__succeeded = (mercury__lexer__Var_51 == mercury__lexer__Var_52);
+                                  if (mercury__lexer__succeeded)
+                                    mercury__lexer__Var_19 = (MR_Integer) 0;
+                                  else
+                                    mercury__lexer__Var_19 = (MR_Integer) 2;
+                                }
+                              mercury__lexer__succeeded = (mercury__lexer__Var_19 == (MR_Integer) 0);
+                              mercury__lexer__succeeded = !(mercury__lexer__succeeded);
+                              if (mercury__lexer__succeeded)
+                                mercury__lexer__Var_6 = mercury__lexer__Var_19;
+                              else
+                                {
+                                  MR_Word mercury__lexer__Var_20;
+
+                                  {
+                                    mercury__integer____Compare____integer_0_0(&mercury__lexer__Var_20, mercury__lexer__Var_12, mercury__lexer__Var_16);
+                                  }
+                                  mercury__lexer__succeeded = (mercury__lexer__Var_20 == (MR_Integer) 0);
+                                  mercury__lexer__succeeded = !(mercury__lexer__succeeded);
+                                  if (mercury__lexer__succeeded)
+                                    mercury__lexer__Var_6 = mercury__lexer__Var_20;
+                                  else
+                                    {
+                                      MR_Word mercury__lexer__Var_21;
+                                      MR_Integer mercury__lexer__Var_53 = (MR_Integer) mercury__lexer__Var_13;
+                                      MR_Integer mercury__lexer__Var_54 = (MR_Integer) mercury__lexer__Var_17;
+
+                                      mercury__lexer__succeeded = (mercury__lexer__Var_53 < mercury__lexer__Var_54);
+                                      if (mercury__lexer__succeeded)
+                                        mercury__lexer__Var_21 = (MR_Integer) 1;
+                                      else
+                                        {
+                                          mercury__lexer__succeeded = (mercury__lexer__Var_53 == mercury__lexer__Var_54);
+                                          if (mercury__lexer__succeeded)
+                                            mercury__lexer__Var_21 = (MR_Integer) 0;
+                                          else
+                                            mercury__lexer__Var_21 = (MR_Integer) 2;
+                                        }
+                                      mercury__lexer__succeeded = (mercury__lexer__Var_21 == (MR_Integer) 0);
+                                      mercury__lexer__succeeded = !(mercury__lexer__succeeded);
+                                      if (mercury__lexer__succeeded)
+                                        mercury__lexer__Var_6 = mercury__lexer__Var_21;
+                                      else
+                                        {
+                                          MR_Integer mercury__lexer__Var_55 = (MR_Integer) mercury__lexer__Var_14;
+                                          MR_Integer mercury__lexer__Var_56 = (MR_Integer) mercury__lexer__Var_18;
+
+                                          mercury__lexer__succeeded = (mercury__lexer__Var_55 < mercury__lexer__Var_56);
+                                          if (mercury__lexer__succeeded)
+                                            mercury__lexer__Var_6 = (MR_Integer) 1;
+                                          else
+                                            {
+                                              mercury__lexer__succeeded = (mercury__lexer__Var_55 == mercury__lexer__Var_56);
+                                              if (mercury__lexer__succeeded)
+                                                mercury__lexer__Var_6 = (MR_Integer) 0;
+                                              else
+                                                mercury__lexer__Var_6 = (MR_Integer) 2;
+                                            }
+                                        }
+                                    }
+                                }
+                              mercury__lexer__succeeded = MR_TRUE;
+                            }
+                        }
+                        break;
+                      case (MR_Integer) 1:
+                        {
+                          MR_Float mercury__lexer__Var_22 = MR_unbox_float((MR_hl_field(MR_mktag(3), mercury__lexer__HeadVar__2_2, (MR_Integer) 1)));
+                          MR_Float mercury__lexer__Var_23;
+
+                          mercury__lexer__succeeded = ((((MR_tag((MR_Word) mercury__lexer__HeadVar__3_3)) == (MR_mktag((MR_Integer) 3)))) && (((((MR_Integer) (MR_Word) (MR_hl_field(MR_mktag(3), mercury__lexer__HeadVar__3_3, (MR_Integer) 0)))) == (MR_Integer) 1)));
+                          if (mercury__lexer__succeeded)
+                            {
+                              mercury__lexer__Var_23 = MR_unbox_float((MR_hl_field(MR_mktag(3), mercury__lexer__HeadVar__3_3, (MR_Integer) 1)));
+                              mercury__lexer__succeeded = (mercury__lexer__Var_22 < mercury__lexer__Var_23);
+                              if (mercury__lexer__succeeded)
+                                mercury__lexer__Var_6 = (MR_Integer) 1;
+                              else
+                                {
+                                  mercury__lexer__succeeded = (mercury__lexer__Var_22 > mercury__lexer__Var_23);
+                                  if (mercury__lexer__succeeded)
+                                    mercury__lexer__Var_6 = (MR_Integer) 2;
+                                  else
+                                    mercury__lexer__Var_6 = (MR_Integer) 0;
+                                }
+                              mercury__lexer__succeeded = MR_TRUE;
+                            }
+                        }
+                        break;
+                      case (MR_Integer) 2:
+                        {
+                          MR_String mercury__lexer__Var_24 = ((MR_String) (MR_hl_field(MR_mktag(3), mercury__lexer__HeadVar__2_2, (MR_Integer) 1)));
+                          MR_String mercury__lexer__Var_25;
+                          MR_Integer mercury__lexer__V_7_99;
+                          MR_Integer mercury__lexer__V_8_100;
+
+                          mercury__lexer__succeeded = ((((MR_tag((MR_Word) mercury__lexer__HeadVar__3_3)) == (MR_mktag((MR_Integer) 3)))) && (((((MR_Integer) (MR_Word) (MR_hl_field(MR_mktag(3), mercury__lexer__HeadVar__3_3, (MR_Integer) 0)))) == (MR_Integer) 2)));
+                          if (mercury__lexer__succeeded)
+                            {
+                              mercury__lexer__Var_25 = ((MR_String) (MR_hl_field(MR_mktag(3), mercury__lexer__HeadVar__3_3, (MR_Integer) 1)));
+{
+#define MR_PROC_LABEL mercury__lexer____Compare____token_0_0
+
+	MR_Integer Res;
+	MR_String S1;
+	MR_String S2;
+
+	S1 =  mercury__lexer__Var_24 ;
+	S2 =  mercury__lexer__Var_25 ;
+		{
+
+    Res = strcmp(S1, S2);
+
+
+		;}
+#undef MR_PROC_LABEL
+	 mercury__lexer__V_7_99  = Res;
+}
+                              mercury__lexer__V_8_100 = (MR_Integer) 0;
+                              mercury__lexer__succeeded = (mercury__lexer__V_7_99 < mercury__lexer__V_8_100);
+                              if (mercury__lexer__succeeded)
+                                mercury__lexer__Var_6 = (MR_Integer) 1;
+                              else
+                                {
+                                  mercury__lexer__succeeded = (mercury__lexer__V_7_99 == (MR_Integer) 0);
+                                  if (mercury__lexer__succeeded)
+                                    mercury__lexer__Var_6 = (MR_Integer) 0;
+                                  else
+                                    mercury__lexer__Var_6 = (MR_Integer) 2;
+                                }
+                              mercury__lexer__succeeded = MR_TRUE;
+                            }
+                        }
+                        break;
+                      case (MR_Integer) 3:
+                        {
+                          MR_String mercury__lexer__Var_26 = ((MR_String) (MR_hl_field(MR_mktag(3), mercury__lexer__HeadVar__2_2, (MR_Integer) 1)));
+                          MR_String mercury__lexer__Var_27;
+                          MR_Integer mercury__lexer__V_7_70;
+                          MR_Integer mercury__lexer__V_8_71;
+
+                          mercury__lexer__succeeded = ((((MR_tag((MR_Word) mercury__lexer__HeadVar__3_3)) == (MR_mktag((MR_Integer) 3)))) && (((((MR_Integer) (MR_Word) (MR_hl_field(MR_mktag(3), mercury__lexer__HeadVar__3_3, (MR_Integer) 0)))) == (MR_Integer) 3)));
+                          if (mercury__lexer__succeeded)
+                            {
+                              mercury__lexer__Var_27 = ((MR_String) (MR_hl_field(MR_mktag(3), mercury__lexer__HeadVar__3_3, (MR_Integer) 1)));
+{
+#define MR_PROC_LABEL mercury__lexer____Compare____token_0_0
+
+	MR_Integer Res;
+	MR_String S1;
+	MR_String S2;
+
+	S1 =  mercury__lexer__Var_26 ;
+	S2 =  mercury__lexer__Var_27 ;
+		{
+
+    Res = strcmp(S1, S2);
+
+
+		;}
+#undef MR_PROC_LABEL
+	 mercury__lexer__V_7_70  = Res;
+}
+                              mercury__lexer__V_8_71 = (MR_Integer) 0;
+                              mercury__lexer__succeeded = (mercury__lexer__V_7_70 < mercury__lexer__V_8_71);
+                              if (mercury__lexer__succeeded)
+                                mercury__lexer__Var_6 = (MR_Integer) 1;
+                              else
+                                {
+                                  mercury__lexer__succeeded = (mercury__lexer__V_7_70 == (MR_Integer) 0);
+                                  if (mercury__lexer__succeeded)
+                                    mercury__lexer__Var_6 = (MR_Integer) 0;
+                                  else
+                                    mercury__lexer__Var_6 = (MR_Integer) 2;
+                                }
+                              mercury__lexer__succeeded = MR_TRUE;
+                            }
+                        }
+                        break;
+                      case (MR_Integer) 4:
+                        {
+                          MR_Char mercury__lexer__Var_28 = ((MR_Char) (MR_Word) (MR_hl_field(MR_mktag(3), mercury__lexer__HeadVar__2_2, (MR_Integer) 1)));
+                          MR_Char mercury__lexer__Var_29;
+                          MR_Integer mercury__lexer__V_7_89;
+                          MR_Integer mercury__lexer__V_8_90;
+
+                          mercury__lexer__succeeded = ((((MR_tag((MR_Word) mercury__lexer__HeadVar__3_3)) == (MR_mktag((MR_Integer) 3)))) && (((((MR_Integer) (MR_Word) (MR_hl_field(MR_mktag(3), mercury__lexer__HeadVar__3_3, (MR_Integer) 0)))) == (MR_Integer) 4)));
+                          if (mercury__lexer__succeeded)
+                            {
+                              mercury__lexer__Var_29 = ((MR_Char) (MR_Word) (MR_hl_field(MR_mktag(3), mercury__lexer__HeadVar__3_3, (MR_Integer) 1)));
+{
+#define MR_PROC_LABEL mercury__lexer____Compare____token_0_0
+
+	MR_Char Character;
+	MR_Integer Int;
+
+	Character =  mercury__lexer__Var_28 ;
+		{
+
+    Int = (MR_UnsignedChar) Character;
+
+
+		;}
+#undef MR_PROC_LABEL
+	 mercury__lexer__V_7_89  = Int;
+}
+{
+#define MR_PROC_LABEL mercury__lexer____Compare____token_0_0
+
+	MR_Char Character;
+	MR_Integer Int;
+
+	Character =  mercury__lexer__Var_29 ;
+		{
+
+    Int = (MR_UnsignedChar) Character;
+
+
+		;}
+#undef MR_PROC_LABEL
+	 mercury__lexer__V_8_90  = Int;
+}
+                              mercury__lexer__succeeded = (mercury__lexer__V_7_89 < mercury__lexer__V_8_90);
+                              if (mercury__lexer__succeeded)
+                                mercury__lexer__Var_6 = (MR_Integer) 1;
+                              else
+                                {
+                                  mercury__lexer__succeeded = (mercury__lexer__V_7_89 == mercury__lexer__V_8_90);
+                                  if (mercury__lexer__succeeded)
+                                    mercury__lexer__Var_6 = (MR_Integer) 0;
+                                  else
+                                    mercury__lexer__Var_6 = (MR_Integer) 2;
+                                }
+                              mercury__lexer__succeeded = MR_TRUE;
+                            }
+                        }
+                        break;
+                      case (MR_Integer) 5:
+                        {
+                          MR_String mercury__lexer__Var_30 = ((MR_String) (MR_hl_field(MR_mktag(3), mercury__lexer__HeadVar__2_2, (MR_Integer) 1)));
+                          MR_String mercury__lexer__Var_31;
+                          MR_Integer mercury__lexer__V_7_62;
+                          MR_Integer mercury__lexer__V_8_63;
+
+                          mercury__lexer__succeeded = ((((MR_tag((MR_Word) mercury__lexer__HeadVar__3_3)) == (MR_mktag((MR_Integer) 3)))) && (((((MR_Integer) (MR_Word) (MR_hl_field(MR_mktag(3), mercury__lexer__HeadVar__3_3, (MR_Integer) 0)))) == (MR_Integer) 5)));
+                          if (mercury__lexer__succeeded)
+                            {
+                              mercury__lexer__Var_31 = ((MR_String) (MR_hl_field(MR_mktag(3), mercury__lexer__HeadVar__3_3, (MR_Integer) 1)));
+{
+#define MR_PROC_LABEL mercury__lexer____Compare____token_0_0
+
+	MR_Integer Res;
+	MR_String S1;
+	MR_String S2;
+
+	S1 =  mercury__lexer__Var_30 ;
+	S2 =  mercury__lexer__Var_31 ;
+		{
+
+    Res = strcmp(S1, S2);
+
+
+		;}
+#undef MR_PROC_LABEL
+	 mercury__lexer__V_7_62  = Res;
+}
+                              mercury__lexer__V_8_63 = (MR_Integer) 0;
+                              mercury__lexer__succeeded = (mercury__lexer__V_7_62 < mercury__lexer__V_8_63);
+                              if (mercury__lexer__succeeded)
+                                mercury__lexer__Var_6 = (MR_Integer) 1;
+                              else
+                                {
+                                  mercury__lexer__succeeded = (mercury__lexer__V_7_62 == (MR_Integer) 0);
+                                  if (mercury__lexer__succeeded)
+                                    mercury__lexer__Var_6 = (MR_Integer) 0;
+                                  else
+                                    mercury__lexer__Var_6 = (MR_Integer) 2;
+                                }
+                              mercury__lexer__succeeded = MR_TRUE;
+                            }
+                        }
+                        break;
+                      case (MR_Integer) 6:
+                        {
+                          MR_Word mercury__lexer__Var_32 = ((MR_Word) (MR_hl_field(MR_mktag(3), mercury__lexer__HeadVar__2_2, (MR_Integer) 1)));
+                          MR_Word mercury__lexer__Var_33;
+                          MR_String mercury__lexer__Var_57;
+                          MR_String mercury__lexer__Var_58;
+                          MR_Integer mercury__lexer__V_7_84;
+                          MR_Integer mercury__lexer__V_8_85;
+
+                          mercury__lexer__succeeded = ((((MR_tag((MR_Word) mercury__lexer__HeadVar__3_3)) == (MR_mktag((MR_Integer) 3)))) && (((((MR_Integer) (MR_Word) (MR_hl_field(MR_mktag(3), mercury__lexer__HeadVar__3_3, (MR_Integer) 0)))) == (MR_Integer) 6)));
+                          if (mercury__lexer__succeeded)
+                            {
+                              mercury__lexer__Var_33 = ((MR_Word) (MR_hl_field(MR_mktag(3), mercury__lexer__HeadVar__3_3, (MR_Integer) 1)));
+                              mercury__lexer__Var_57 = (MR_String) mercury__lexer__Var_32;
+                              mercury__lexer__Var_58 = (MR_String) mercury__lexer__Var_33;
+{
+#define MR_PROC_LABEL mercury__lexer____Compare____token_0_0
+
+	MR_Integer Res;
+	MR_String S1;
+	MR_String S2;
+
+	S1 =  mercury__lexer__Var_57 ;
+	S2 =  mercury__lexer__Var_58 ;
+		{
+
+    Res = strcmp(S1, S2);
+
+
+		;}
+#undef MR_PROC_LABEL
+	 mercury__lexer__V_7_84  = Res;
+}
+                              mercury__lexer__V_8_85 = (MR_Integer) 0;
+                              mercury__lexer__succeeded = (mercury__lexer__V_7_84 < mercury__lexer__V_8_85);
+                              if (mercury__lexer__succeeded)
+                                mercury__lexer__Var_6 = (MR_Integer) 1;
+                              else
+                                {
+                                  mercury__lexer__succeeded = (mercury__lexer__V_7_84 == (MR_Integer) 0);
+                                  if (mercury__lexer__succeeded)
+                                    mercury__lexer__Var_6 = (MR_Integer) 0;
+                                  else
+                                    mercury__lexer__Var_6 = (MR_Integer) 2;
+                                }
+                              mercury__lexer__succeeded = MR_TRUE;
+                            }
+                        }
+                        break;
+                      case (MR_Integer) 7:
+                        {
+                          MR_Word mercury__lexer__Var_34 = ((MR_Word) (MR_hl_field(MR_mktag(3), mercury__lexer__HeadVar__2_2, (MR_Integer) 1)));
+                          MR_Word mercury__lexer__Var_35;
+
+                          mercury__lexer__succeeded = ((((MR_tag((MR_Word) mercury__lexer__HeadVar__3_3)) == (MR_mktag((MR_Integer) 3)))) && (((((MR_Integer) (MR_Word) (MR_hl_field(MR_mktag(3), mercury__lexer__HeadVar__3_3, (MR_Integer) 0)))) == (MR_Integer) 7)));
+                          if (mercury__lexer__succeeded)
+                            {
+                              mercury__lexer__Var_35 = ((MR_Word) (MR_hl_field(MR_mktag(3), mercury__lexer__HeadVar__3_3, (MR_Integer) 1)));
+                              {
+                                mercury__integer____Compare____integer_0_0(&mercury__lexer__Var_6, mercury__lexer__Var_34, mercury__lexer__Var_35);
+                              }
+                              mercury__lexer__succeeded = MR_TRUE;
+                            }
+                        }
+                        break;
+                    }
+                    break;
+                }
+                if (mercury__lexer__succeeded)
+                  *mercury__lexer__HeadVar__1_1 = mercury__lexer__Var_6;
+                else
+                  {
+                    mercury__private_builtin__compare_error_0_p_0();
+                    return;
+                  }
+              }
+          }
+      }
+  }
+}
+
+void MR_CALL 
+mercury__lexer____Index____token_0_0(
+  MR_Word mercury__lexer__HeadVar__1_1,
+  MR_Integer * mercury__lexer__HeadVar__2_2)
+{
+  {
+    MR_bool mercury__lexer__succeeded;
+
+    switch (MR_tag((MR_Word) mercury__lexer__HeadVar__1_1)) {
+      default: /*NOTREACHED*/ MR_assert(0);
+      case (MR_Integer) 0:
+        switch (MR_unmkbody(mercury__lexer__HeadVar__1_1)) {
+          default: /*NOTREACHED*/ MR_assert(0);
+          case (MR_Integer) 0:
+            *mercury__lexer__HeadVar__2_2 = (MR_Integer) 6;
+            break;
+          case (MR_Integer) 1:
+            *mercury__lexer__HeadVar__2_2 = (MR_Integer) 7;
+            break;
+          case (MR_Integer) 2:
+            *mercury__lexer__HeadVar__2_2 = (MR_Integer) 8;
+            break;
+          case (MR_Integer) 3:
+            *mercury__lexer__HeadVar__2_2 = (MR_Integer) 9;
+            break;
+          case (MR_Integer) 4:
+            *mercury__lexer__HeadVar__2_2 = (MR_Integer) 10;
+            break;
+          case (MR_Integer) 5:
+            *mercury__lexer__HeadVar__2_2 = (MR_Integer) 11;
+            break;
+          case (MR_Integer) 6:
+            *mercury__lexer__HeadVar__2_2 = (MR_Integer) 12;
+            break;
+          case (MR_Integer) 7:
+            *mercury__lexer__HeadVar__2_2 = (MR_Integer) 13;
+            break;
+          case (MR_Integer) 8:
+            *mercury__lexer__HeadVar__2_2 = (MR_Integer) 14;
+            break;
+          case (MR_Integer) 9:
+            *mercury__lexer__HeadVar__2_2 = (MR_Integer) 15;
+            break;
+          case (MR_Integer) 10:
+            *mercury__lexer__HeadVar__2_2 = (MR_Integer) 19;
+            break;
+        }
+        break;
+      case (MR_Integer) 1:
+        *mercury__lexer__HeadVar__2_2 = (MR_Integer) 0;
+        break;
+      case (MR_Integer) 2:
+        *mercury__lexer__HeadVar__2_2 = (MR_Integer) 1;
+        break;
+      case (MR_Integer) 3:
+        switch (((MR_Integer) (MR_Word) (MR_hl_field(MR_mktag(3), mercury__lexer__HeadVar__1_1, (MR_Integer) 0)))) {
+          default: /*NOTREACHED*/ MR_assert(0);
+          case (MR_Integer) 0:
+            *mercury__lexer__HeadVar__2_2 = (MR_Integer) 2;
+            break;
+          case (MR_Integer) 1:
+            *mercury__lexer__HeadVar__2_2 = (MR_Integer) 3;
+            break;
+          case (MR_Integer) 2:
+            *mercury__lexer__HeadVar__2_2 = (MR_Integer) 4;
+            break;
+          case (MR_Integer) 3:
+            *mercury__lexer__HeadVar__2_2 = (MR_Integer) 5;
+            break;
+          case (MR_Integer) 4:
+            *mercury__lexer__HeadVar__2_2 = (MR_Integer) 16;
+            break;
+          case (MR_Integer) 5:
+            *mercury__lexer__HeadVar__2_2 = (MR_Integer) 17;
+            break;
+          case (MR_Integer) 6:
+            *mercury__lexer__HeadVar__2_2 = (MR_Integer) 18;
+            break;
+          case (MR_Integer) 7:
+            *mercury__lexer__HeadVar__2_2 = (MR_Integer) 20;
+            break;
+        }
+        break;
+    }
+  }
+}
+
+MR_bool MR_CALL 
+mercury__lexer____Unify____token_0_0(
+  MR_Word mercury__lexer__HeadVar__1_1,
+  MR_Word mercury__lexer__HeadVar__2_2)
+{
+  {
+    MR_bool mercury__lexer__succeeded;
+    MR_Integer mercury__lexer__CastX_51 = (MR_Integer) mercury__lexer__HeadVar__1_1;
+    MR_Integer mercury__lexer__CastY_52 = (MR_Integer) mercury__lexer__HeadVar__2_2;
+
+    mercury__lexer__succeeded = (mercury__lexer__CastX_51 == mercury__lexer__CastY_52);
+    if (mercury__lexer__succeeded)
+      mercury__lexer__succeeded = MR_TRUE;
+    else
+      switch (MR_tag((MR_Word) mercury__lexer__HeadVar__1_1)) {
+        default: /*NOTREACHED*/ MR_assert(0);
+        case (MR_Integer) 0:
+          switch (MR_unmkbody(mercury__lexer__HeadVar__1_1)) {
+            default: /*NOTREACHED*/ MR_assert(0);
+            case (MR_Integer) 0:
+              {
+                MR_Integer mercury__lexer__CastX_21 = (MR_Integer) mercury__lexer__HeadVar__1_1;
+                MR_Integer mercury__lexer__CastY_22 = (MR_Integer) mercury__lexer__HeadVar__2_2;
+
+                mercury__lexer__succeeded = (mercury__lexer__CastY_22 == mercury__lexer__CastX_21);
+              }
+              break;
+            case (MR_Integer) 1:
+              {
+                MR_Integer mercury__lexer__CastX_23 = (MR_Integer) mercury__lexer__HeadVar__1_1;
+                MR_Integer mercury__lexer__CastY_24 = (MR_Integer) mercury__lexer__HeadVar__2_2;
+
+                mercury__lexer__succeeded = (mercury__lexer__CastY_24 == mercury__lexer__CastX_23);
+              }
+              break;
+            case (MR_Integer) 2:
+              {
+                MR_Integer mercury__lexer__CastX_25 = (MR_Integer) mercury__lexer__HeadVar__1_1;
+                MR_Integer mercury__lexer__CastY_26 = (MR_Integer) mercury__lexer__HeadVar__2_2;
+
+                mercury__lexer__succeeded = (mercury__lexer__CastY_26 == mercury__lexer__CastX_25);
+              }
+              break;
+            case (MR_Integer) 3:
+              {
+                MR_Integer mercury__lexer__CastX_27 = (MR_Integer) mercury__lexer__HeadVar__1_1;
+                MR_Integer mercury__lexer__CastY_28 = (MR_Integer) mercury__lexer__HeadVar__2_2;
+
+                mercury__lexer__succeeded = (mercury__lexer__CastY_28 == mercury__lexer__CastX_27);
+              }
+              break;
+            case (MR_Integer) 4:
+              {
+                MR_Integer mercury__lexer__CastX_29 = (MR_Integer) mercury__lexer__HeadVar__1_1;
+                MR_Integer mercury__lexer__CastY_30 = (MR_Integer) mercury__lexer__HeadVar__2_2;
+
+                mercury__lexer__succeeded = (mercury__lexer__CastY_30 == mercury__lexer__CastX_29);
+              }
+              break;
+            case (MR_Integer) 5:
+              {
+                MR_Integer mercury__lexer__CastX_31 = (MR_Integer) mercury__lexer__HeadVar__1_1;
+                MR_Integer mercury__lexer__CastY_32 = (MR_Integer) mercury__lexer__HeadVar__2_2;
+
+                mercury__lexer__succeeded = (mercury__lexer__CastY_32 == mercury__lexer__CastX_31);
+              }
+              break;
+            case (MR_Integer) 6:
+              {
+                MR_Integer mercury__lexer__CastX_33 = (MR_Integer) mercury__lexer__HeadVar__1_1;
+                MR_Integer mercury__lexer__CastY_34 = (MR_Integer) mercury__lexer__HeadVar__2_2;
+
+                mercury__lexer__succeeded = (mercury__lexer__CastY_34 == mercury__lexer__CastX_33);
+              }
+              break;
+            case (MR_Integer) 7:
+              {
+                MR_Integer mercury__lexer__CastX_35 = (MR_Integer) mercury__lexer__HeadVar__1_1;
+                MR_Integer mercury__lexer__CastY_36 = (MR_Integer) mercury__lexer__HeadVar__2_2;
+
+                mercury__lexer__succeeded = (mercury__lexer__CastY_36 == mercury__lexer__CastX_35);
+              }
+              break;
+            case (MR_Integer) 8:
+              {
+                MR_Integer mercury__lexer__CastX_37 = (MR_Integer) mercury__lexer__HeadVar__1_1;
+                MR_Integer mercury__lexer__CastY_38 = (MR_Integer) mercury__lexer__HeadVar__2_2;
+
+                mercury__lexer__succeeded = (mercury__lexer__CastY_38 == mercury__lexer__CastX_37);
+              }
+              break;
+            case (MR_Integer) 9:
+              {
+                MR_Integer mercury__lexer__CastX_39 = (MR_Integer) mercury__lexer__HeadVar__1_1;
+                MR_Integer mercury__lexer__CastY_40 = (MR_Integer) mercury__lexer__HeadVar__2_2;
+
+                mercury__lexer__succeeded = (mercury__lexer__CastY_40 == mercury__lexer__CastX_39);
+              }
+              break;
+            case (MR_Integer) 10:
+              {
+                MR_Integer mercury__lexer__CastX_47 = (MR_Integer) mercury__lexer__HeadVar__1_1;
+                MR_Integer mercury__lexer__CastY_48 = (MR_Integer) mercury__lexer__HeadVar__2_2;
+
+                mercury__lexer__succeeded = (mercury__lexer__CastY_48 == mercury__lexer__CastX_47);
+              }
+              break;
+          }
+          break;
+        case (MR_Integer) 1:
+          {
+            MR_String mercury__lexer__Var_3 = ((MR_String) (MR_hl_field(MR_mktag(1), mercury__lexer__HeadVar__1_1, (MR_Integer) 0)));
+            MR_String mercury__lexer__Var_4;
+
+            mercury__lexer__succeeded = ((MR_tag((MR_Word) mercury__lexer__HeadVar__2_2)) == (MR_mktag((MR_Integer) 1)));
+            if (mercury__lexer__succeeded)
+              {
+                mercury__lexer__Var_4 = ((MR_String) (MR_hl_field(MR_mktag(1), mercury__lexer__HeadVar__2_2, (MR_Integer) 0)));
+                mercury__lexer__succeeded = (strcmp(mercury__lexer__Var_3, mercury__lexer__Var_4) == 0);
+              }
+          }
+          break;
+        case (MR_Integer) 2:
+          {
+            MR_String mercury__lexer__Var_5 = ((MR_String) (MR_hl_field(MR_mktag(2), mercury__lexer__HeadVar__1_1, (MR_Integer) 0)));
+            MR_String mercury__lexer__Var_6;
+
+            mercury__lexer__succeeded = ((MR_tag((MR_Word) mercury__lexer__HeadVar__2_2)) == (MR_mktag((MR_Integer) 2)));
+            if (mercury__lexer__succeeded)
+              {
+                mercury__lexer__Var_6 = ((MR_String) (MR_hl_field(MR_mktag(2), mercury__lexer__HeadVar__2_2, (MR_Integer) 0)));
+                mercury__lexer__succeeded = (strcmp(mercury__lexer__Var_5, mercury__lexer__Var_6) == 0);
+              }
+          }
+          break;
+        case (MR_Integer) 3:
+          switch (((MR_Integer) (MR_Word) (MR_hl_field(MR_mktag(3), mercury__lexer__HeadVar__1_1, (MR_Integer) 0)))) {
+            default: /*NOTREACHED*/ MR_assert(0);
+            case (MR_Integer) 0:
+              {
+                MR_Word mercury__lexer__Var_7 = ((MR_Word) (MR_hl_field(MR_mktag(3), mercury__lexer__HeadVar__1_1, (MR_Integer) 1)));
+                MR_Word mercury__lexer__Var_8 = ((MR_Word) (MR_hl_field(MR_mktag(3), mercury__lexer__HeadVar__1_1, (MR_Integer) 2)));
+                MR_Word mercury__lexer__Var_9 = ((MR_Word) (MR_hl_field(MR_mktag(3), mercury__lexer__HeadVar__1_1, (MR_Integer) 3)));
+                MR_Word mercury__lexer__Var_10 = ((MR_Word) (MR_hl_field(MR_mktag(3), mercury__lexer__HeadVar__1_1, (MR_Integer) 4)));
+                MR_Word mercury__lexer__Var_11;
+                MR_Word mercury__lexer__Var_12;
+                MR_Word mercury__lexer__Var_13;
+                MR_Word mercury__lexer__Var_14;
+
+                mercury__lexer__succeeded = ((((MR_tag((MR_Word) mercury__lexer__HeadVar__2_2)) == (MR_mktag((MR_Integer) 3)))) && (((((MR_Integer) (MR_Word) (MR_hl_field(MR_mktag(3), mercury__lexer__HeadVar__2_2, (MR_Integer) 0)))) == (MR_Integer) 0)));
+                if (mercury__lexer__succeeded)
+                  {
+                    mercury__lexer__Var_11 = ((MR_Word) (MR_hl_field(MR_mktag(3), mercury__lexer__HeadVar__2_2, (MR_Integer) 1)));
+                    mercury__lexer__Var_12 = ((MR_Word) (MR_hl_field(MR_mktag(3), mercury__lexer__HeadVar__2_2, (MR_Integer) 2)));
+                    mercury__lexer__Var_13 = ((MR_Word) (MR_hl_field(MR_mktag(3), mercury__lexer__HeadVar__2_2, (MR_Integer) 3)));
+                    mercury__lexer__Var_14 = ((MR_Word) (MR_hl_field(MR_mktag(3), mercury__lexer__HeadVar__2_2, (MR_Integer) 4)));
+                    mercury__lexer__succeeded = (mercury__lexer__Var_7 == mercury__lexer__Var_11);
+                    if (mercury__lexer__succeeded)
+                      {
+                        {
+                          mercury__lexer__succeeded = mercury__integer____Unify____integer_0_0(mercury__lexer__Var_8, mercury__lexer__Var_12);
+                        }
+                        if (mercury__lexer__succeeded)
+                          {
+                            mercury__lexer__succeeded = (mercury__lexer__Var_9 == mercury__lexer__Var_13);
+                            if (mercury__lexer__succeeded)
+                              mercury__lexer__succeeded = (mercury__lexer__Var_10 == mercury__lexer__Var_14);
+                          }
+                      }
+                  }
+              }
+              break;
+            case (MR_Integer) 1:
+              {
+                MR_Float mercury__lexer__Var_15 = MR_unbox_float((MR_hl_field(MR_mktag(3), mercury__lexer__HeadVar__1_1, (MR_Integer) 1)));
+                MR_Float mercury__lexer__Var_16;
+
+                mercury__lexer__succeeded = ((((MR_tag((MR_Word) mercury__lexer__HeadVar__2_2)) == (MR_mktag((MR_Integer) 3)))) && (((((MR_Integer) (MR_Word) (MR_hl_field(MR_mktag(3), mercury__lexer__HeadVar__2_2, (MR_Integer) 0)))) == (MR_Integer) 1)));
+                if (mercury__lexer__succeeded)
+                  {
+                    mercury__lexer__Var_16 = MR_unbox_float((MR_hl_field(MR_mktag(3), mercury__lexer__HeadVar__2_2, (MR_Integer) 1)));
+                    mercury__lexer__succeeded = (mercury__lexer__Var_15 == mercury__lexer__Var_16);
+                  }
+              }
+              break;
+            case (MR_Integer) 2:
+              {
+                MR_String mercury__lexer__Var_17 = ((MR_String) (MR_hl_field(MR_mktag(3), mercury__lexer__HeadVar__1_1, (MR_Integer) 1)));
+                MR_String mercury__lexer__Var_18;
+
+                mercury__lexer__succeeded = ((((MR_tag((MR_Word) mercury__lexer__HeadVar__2_2)) == (MR_mktag((MR_Integer) 3)))) && (((((MR_Integer) (MR_Word) (MR_hl_field(MR_mktag(3), mercury__lexer__HeadVar__2_2, (MR_Integer) 0)))) == (MR_Integer) 2)));
+                if (mercury__lexer__succeeded)
+                  {
+                    mercury__lexer__Var_18 = ((MR_String) (MR_hl_field(MR_mktag(3), mercury__lexer__HeadVar__2_2, (MR_Integer) 1)));
+                    mercury__lexer__succeeded = (strcmp(mercury__lexer__Var_17, mercury__lexer__Var_18) == 0);
+                  }
+              }
+              break;
+            case (MR_Integer) 3:
+              {
+                MR_String mercury__lexer__Var_19 = ((MR_String) (MR_hl_field(MR_mktag(3), mercury__lexer__HeadVar__1_1, (MR_Integer) 1)));
+                MR_String mercury__lexer__Var_20;
+
+                mercury__lexer__succeeded = ((((MR_tag((MR_Word) mercury__lexer__HeadVar__2_2)) == (MR_mktag((MR_Integer) 3)))) && (((((MR_Integer) (MR_Word) (MR_hl_field(MR_mktag(3), mercury__lexer__HeadVar__2_2, (MR_Integer) 0)))) == (MR_Integer) 3)));
+                if (mercury__lexer__succeeded)
+                  {
+                    mercury__lexer__Var_20 = ((MR_String) (MR_hl_field(MR_mktag(3), mercury__lexer__HeadVar__2_2, (MR_Integer) 1)));
+                    mercury__lexer__succeeded = (strcmp(mercury__lexer__Var_19, mercury__lexer__Var_20) == 0);
+                  }
+              }
+              break;
+            case (MR_Integer) 4:
+              {
+                MR_Char mercury__lexer__Var_41 = ((MR_Char) (MR_Word) (MR_hl_field(MR_mktag(3), mercury__lexer__HeadVar__1_1, (MR_Integer) 1)));
+                MR_Char mercury__lexer__Var_42;
+
+                mercury__lexer__succeeded = ((((MR_tag((MR_Word) mercury__lexer__HeadVar__2_2)) == (MR_mktag((MR_Integer) 3)))) && (((((MR_Integer) (MR_Word) (MR_hl_field(MR_mktag(3), mercury__lexer__HeadVar__2_2, (MR_Integer) 0)))) == (MR_Integer) 4)));
+                if (mercury__lexer__succeeded)
+                  {
+                    mercury__lexer__Var_42 = ((MR_Char) (MR_Word) (MR_hl_field(MR_mktag(3), mercury__lexer__HeadVar__2_2, (MR_Integer) 1)));
+                    mercury__lexer__succeeded = (mercury__lexer__Var_41 == mercury__lexer__Var_42);
+                  }
+              }
+              break;
+            case (MR_Integer) 5:
+              {
+                MR_String mercury__lexer__Var_43 = ((MR_String) (MR_hl_field(MR_mktag(3), mercury__lexer__HeadVar__1_1, (MR_Integer) 1)));
+                MR_String mercury__lexer__Var_44;
+
+                mercury__lexer__succeeded = ((((MR_tag((MR_Word) mercury__lexer__HeadVar__2_2)) == (MR_mktag((MR_Integer) 3)))) && (((((MR_Integer) (MR_Word) (MR_hl_field(MR_mktag(3), mercury__lexer__HeadVar__2_2, (MR_Integer) 0)))) == (MR_Integer) 5)));
+                if (mercury__lexer__succeeded)
+                  {
+                    mercury__lexer__Var_44 = ((MR_String) (MR_hl_field(MR_mktag(3), mercury__lexer__HeadVar__2_2, (MR_Integer) 1)));
+                    mercury__lexer__succeeded = (strcmp(mercury__lexer__Var_43, mercury__lexer__Var_44) == 0);
+                  }
+              }
+              break;
+            case (MR_Integer) 6:
+              {
+                MR_Word mercury__lexer__Var_45 = ((MR_Word) (MR_hl_field(MR_mktag(3), mercury__lexer__HeadVar__1_1, (MR_Integer) 1)));
+                MR_Word mercury__lexer__Var_46;
+                MR_String mercury__lexer__Var_56;
+                MR_String mercury__lexer__Var_57;
+
+                mercury__lexer__succeeded = ((((MR_tag((MR_Word) mercury__lexer__HeadVar__2_2)) == (MR_mktag((MR_Integer) 3)))) && (((((MR_Integer) (MR_Word) (MR_hl_field(MR_mktag(3), mercury__lexer__HeadVar__2_2, (MR_Integer) 0)))) == (MR_Integer) 6)));
+                if (mercury__lexer__succeeded)
+                  {
+                    mercury__lexer__Var_46 = ((MR_Word) (MR_hl_field(MR_mktag(3), mercury__lexer__HeadVar__2_2, (MR_Integer) 1)));
+                    mercury__lexer__Var_56 = (MR_String) mercury__lexer__Var_45;
+                    mercury__lexer__Var_57 = (MR_String) mercury__lexer__Var_46;
+                    mercury__lexer__succeeded = (strcmp(mercury__lexer__Var_56, mercury__lexer__Var_57) == 0);
+                  }
+              }
+              break;
+            case (MR_Integer) 7:
+              {
+                MR_Word mercury__lexer__Var_49 = ((MR_Word) (MR_hl_field(MR_mktag(3), mercury__lexer__HeadVar__1_1, (MR_Integer) 1)));
+                MR_Word mercury__lexer__Var_50;
+
+                mercury__lexer__succeeded = ((((MR_tag((MR_Word) mercury__lexer__HeadVar__2_2)) == (MR_mktag((MR_Integer) 3)))) && (((((MR_Integer) (MR_Word) (MR_hl_field(MR_mktag(3), mercury__lexer__HeadVar__2_2, (MR_Integer) 0)))) == (MR_Integer) 7)));
+                if (mercury__lexer__succeeded)
+                  {
+                    mercury__lexer__Var_50 = ((MR_Word) (MR_hl_field(MR_mktag(3), mercury__lexer__HeadVar__2_2, (MR_Integer) 1)));
+                    {
+                      mercury__lexer__succeeded = mercury__integer____Unify____integer_0_0(mercury__lexer__Var_49, mercury__lexer__Var_50);
+                    }
+                  }
+              }
+              break;
+          }
+          break;
+      }
+    return mercury__lexer__succeeded;
+  }
+}
+
+void MR_CALL 
+mercury__lexer____Compare____string_token_context_0_0(
+  MR_Word * mercury__lexer__HeadVar__1_1,
+  MR_Integer mercury__lexer__HeadVar__2_2,
+  MR_Integer mercury__lexer__HeadVar__3_3)
+{
+  {
+    MR_bool mercury__lexer__succeeded;
+    MR_Integer mercury__lexer__Cast_HeadVar1_4 = mercury__lexer__HeadVar__2_2;
+    MR_Integer mercury__lexer__Cast_HeadVar2_5 = mercury__lexer__HeadVar__3_3;
+
+    mercury__lexer__succeeded = (mercury__lexer__Cast_HeadVar1_4 < mercury__lexer__Cast_HeadVar2_5);
+    if (mercury__lexer__succeeded)
+      *mercury__lexer__HeadVar__1_1 = (MR_Integer) 1;
+    else
+      {
+        mercury__lexer__succeeded = (mercury__lexer__Cast_HeadVar1_4 == mercury__lexer__Cast_HeadVar2_5);
+        if (mercury__lexer__succeeded)
+          *mercury__lexer__HeadVar__1_1 = (MR_Integer) 0;
+        else
+          *mercury__lexer__HeadVar__1_1 = (MR_Integer) 2;
+      }
+  }
+}
+
+MR_bool MR_CALL 
+mercury__lexer____Unify____string_token_context_0_0(
+  MR_Integer mercury__lexer__HeadVar__1_1,
+  MR_Integer mercury__lexer__HeadVar__2_2)
+{
+  {
+    MR_bool mercury__lexer__succeeded;
+    MR_Integer mercury__lexer__Cast_HeadVar1_3 = mercury__lexer__HeadVar__1_1;
+    MR_Integer mercury__lexer__Cast_HeadVar2_4 = mercury__lexer__HeadVar__2_2;
+
+    mercury__lexer__succeeded = (mercury__lexer__Cast_HeadVar1_3 == mercury__lexer__Cast_HeadVar2_4);
+    return mercury__lexer__succeeded;
+  }
+}
+
+void MR_CALL 
+mercury__lexer____Compare____signedness_0_0(
+  MR_Word * mercury__lexer__HeadVar__1_1,
+  MR_Word mercury__lexer__HeadVar__2_2,
+  MR_Word mercury__lexer__HeadVar__3_3)
+{
+  {
+    MR_bool mercury__lexer__succeeded;
+    MR_Integer mercury__lexer__Cast_HeadVar1_4 = (MR_Integer) mercury__lexer__HeadVar__2_2;
+    MR_Integer mercury__lexer__Cast_HeadVar2_5 = (MR_Integer) mercury__lexer__HeadVar__3_3;
+
+    mercury__lexer__succeeded = (mercury__lexer__Cast_HeadVar1_4 < mercury__lexer__Cast_HeadVar2_5);
+    if (mercury__lexer__succeeded)
+      *mercury__lexer__HeadVar__1_1 = (MR_Integer) 1;
+    else
+      {
+        mercury__lexer__succeeded = (mercury__lexer__Cast_HeadVar1_4 == mercury__lexer__Cast_HeadVar2_5);
+        if (mercury__lexer__succeeded)
+          *mercury__lexer__HeadVar__1_1 = (MR_Integer) 0;
+        else
+          *mercury__lexer__HeadVar__1_1 = (MR_Integer) 2;
+      }
+  }
+}
+
+MR_bool MR_CALL 
+mercury__lexer____Unify____signedness_0_0(
+  MR_Word mercury__lexer__HeadVar__2_1,
+  MR_Word mercury__lexer__HeadVar__2_2)
+{
+  {
+    MR_bool mercury__lexer__succeeded = (mercury__lexer__HeadVar__2_1 == mercury__lexer__HeadVar__2_2);
+
+    return mercury__lexer__succeeded;
+  }
+}
+
+void MR_CALL 
+mercury__lexer____Compare____scanned_past_whitespace_0_0(
+  MR_Word * mercury__lexer__HeadVar__1_1,
+  MR_Word mercury__lexer__HeadVar__2_2,
+  MR_Word mercury__lexer__HeadVar__3_3)
+{
+  {
+    MR_bool mercury__lexer__succeeded;
+    MR_Integer mercury__lexer__Cast_HeadVar1_4 = (MR_Integer) mercury__lexer__HeadVar__2_2;
+    MR_Integer mercury__lexer__Cast_HeadVar2_5 = (MR_Integer) mercury__lexer__HeadVar__3_3;
+
+    mercury__lexer__succeeded = (mercury__lexer__Cast_HeadVar1_4 < mercury__lexer__Cast_HeadVar2_5);
+    if (mercury__lexer__succeeded)
+      *mercury__lexer__HeadVar__1_1 = (MR_Integer) 1;
+    else
+      {
+        mercury__lexer__succeeded = (mercury__lexer__Cast_HeadVar1_4 == mercury__lexer__Cast_HeadVar2_5);
+        if (mercury__lexer__succeeded)
+          *mercury__lexer__HeadVar__1_1 = (MR_Integer) 0;
+        else
+          *mercury__lexer__HeadVar__1_1 = (MR_Integer) 2;
+      }
+  }
+}
+
+MR_bool MR_CALL 
+mercury__lexer____Unify____scanned_past_whitespace_0_0(
+  MR_Word mercury__lexer__HeadVar__2_1,
+  MR_Word mercury__lexer__HeadVar__2_2)
+{
+  {
+    MR_bool mercury__lexer__succeeded = (mercury__lexer__HeadVar__2_1 == mercury__lexer__HeadVar__2_2);
+
+    return mercury__lexer__succeeded;
+  }
+}
+
+void MR_CALL 
+mercury__lexer____Compare____offset_0_0(
+  MR_Word * mercury__lexer__HeadVar__1_1,
+  MR_Integer mercury__lexer__HeadVar__2_2,
+  MR_Integer mercury__lexer__HeadVar__3_3)
+{
+  {
+    MR_bool mercury__lexer__succeeded;
+    MR_Integer mercury__lexer__Cast_HeadVar1_4 = mercury__lexer__HeadVar__2_2;
+    MR_Integer mercury__lexer__Cast_HeadVar2_5 = mercury__lexer__HeadVar__3_3;
+
+    mercury__lexer__succeeded = (mercury__lexer__Cast_HeadVar1_4 < mercury__lexer__Cast_HeadVar2_5);
+    if (mercury__lexer__succeeded)
+      *mercury__lexer__HeadVar__1_1 = (MR_Integer) 1;
+    else
+      {
+        mercury__lexer__succeeded = (mercury__lexer__Cast_HeadVar1_4 == mercury__lexer__Cast_HeadVar2_5);
+        if (mercury__lexer__succeeded)
+          *mercury__lexer__HeadVar__1_1 = (MR_Integer) 0;
+        else
+          *mercury__lexer__HeadVar__1_1 = (MR_Integer) 2;
+      }
+  }
+}
+
+MR_bool MR_CALL 
+mercury__lexer____Unify____offset_0_0(
+  MR_Integer mercury__lexer__HeadVar__1_1,
+  MR_Integer mercury__lexer__HeadVar__2_2)
+{
+  {
+    MR_bool mercury__lexer__succeeded;
+    MR_Integer mercury__lexer__Cast_HeadVar1_3 = mercury__lexer__HeadVar__1_1;
+    MR_Integer mercury__lexer__Cast_HeadVar2_4 = mercury__lexer__HeadVar__2_2;
+
+    mercury__lexer__succeeded = (mercury__lexer__Cast_HeadVar1_3 == mercury__lexer__Cast_HeadVar2_4);
+    return mercury__lexer__succeeded;
+  }
+}
+
+void MR_CALL 
+mercury__lexer____Compare____maybe_have_valid_token_0_0(
+  MR_Word * mercury__lexer__HeadVar__1_1,
+  MR_Word mercury__lexer__HeadVar__2_2,
+  MR_Word mercury__lexer__HeadVar__3_3)
+{
+  {
+    MR_bool mercury__lexer__succeeded;
+    MR_Integer mercury__lexer__CastX_6 = (MR_Integer) mercury__lexer__HeadVar__2_2;
+    MR_Integer mercury__lexer__CastY_7 = (MR_Integer) mercury__lexer__HeadVar__3_3;
+
+    mercury__lexer__succeeded = (mercury__lexer__CastX_6 == mercury__lexer__CastY_7);
+    if (mercury__lexer__succeeded)
+      *mercury__lexer__HeadVar__1_1 = (MR_Integer) 0;
+    else
+      {
+        MR_Integer mercury__lexer__Var_4 = (MR_Integer) mercury__lexer__HeadVar__2_2;
+        MR_Integer mercury__lexer__Var_5 = (MR_Integer) mercury__lexer__HeadVar__3_3;
+
+        mercury__lexer__succeeded = (mercury__lexer__Var_4 < mercury__lexer__Var_5);
+        if (mercury__lexer__succeeded)
+          *mercury__lexer__HeadVar__1_1 = (MR_Integer) 1;
+        else
+          {
+            mercury__lexer__succeeded = (mercury__lexer__Var_4 == mercury__lexer__Var_5);
+            if (mercury__lexer__succeeded)
+              *mercury__lexer__HeadVar__1_1 = (MR_Integer) 0;
+            else
+              *mercury__lexer__HeadVar__1_1 = (MR_Integer) 2;
+          }
+      }
+  }
+}
+
+MR_bool MR_CALL 
+mercury__lexer____Unify____maybe_have_valid_token_0_0(
+  MR_Word mercury__lexer__HeadVar__1_1,
+  MR_Word mercury__lexer__HeadVar__2_2)
+{
+  {
+    MR_bool mercury__lexer__succeeded;
+    MR_Integer mercury__lexer__CastX_5 = (MR_Integer) mercury__lexer__HeadVar__1_1;
+    MR_Integer mercury__lexer__CastY_6 = (MR_Integer) mercury__lexer__HeadVar__2_2;
+
+    mercury__lexer__succeeded = (mercury__lexer__CastX_5 == mercury__lexer__CastY_6);
+    if (mercury__lexer__succeeded)
+      mercury__lexer__succeeded = MR_TRUE;
+    else
+      {
+        MR_Integer mercury__lexer__Var_3 = (MR_Integer) mercury__lexer__HeadVar__1_1;
+        MR_Integer mercury__lexer__Var_4 = (MR_Integer) mercury__lexer__HeadVar__2_2;
+
+        mercury__lexer__succeeded = (mercury__lexer__Var_3 == mercury__lexer__Var_4);
+      }
+    return mercury__lexer__succeeded;
+  }
+}
+
+void MR_CALL 
+mercury__lexer____Compare____last_digit_is_underscore_0_0(
+  MR_Word * mercury__lexer__HeadVar__1_1,
+  MR_Word mercury__lexer__HeadVar__2_2,
+  MR_Word mercury__lexer__HeadVar__3_3)
+{
+  {
+    MR_bool mercury__lexer__succeeded;
+    MR_Integer mercury__lexer__Cast_HeadVar1_4 = (MR_Integer) mercury__lexer__HeadVar__2_2;
+    MR_Integer mercury__lexer__Cast_HeadVar2_5 = (MR_Integer) mercury__lexer__HeadVar__3_3;
+
+    mercury__lexer__succeeded = (mercury__lexer__Cast_HeadVar1_4 < mercury__lexer__Cast_HeadVar2_5);
+    if (mercury__lexer__succeeded)
+      *mercury__lexer__HeadVar__1_1 = (MR_Integer) 1;
+    else
+      {
+        mercury__lexer__succeeded = (mercury__lexer__Cast_HeadVar1_4 == mercury__lexer__Cast_HeadVar2_5);
+        if (mercury__lexer__succeeded)
+          *mercury__lexer__HeadVar__1_1 = (MR_Integer) 0;
+        else
+          *mercury__lexer__HeadVar__1_1 = (MR_Integer) 2;
+      }
+  }
+}
+
+MR_bool MR_CALL 
+mercury__lexer____Unify____last_digit_is_underscore_0_0(
+  MR_Word mercury__lexer__HeadVar__2_1,
+  MR_Word mercury__lexer__HeadVar__2_2)
+{
+  {
+    MR_bool mercury__lexer__succeeded = (mercury__lexer__HeadVar__2_1 == mercury__lexer__HeadVar__2_2);
+
+    return mercury__lexer__succeeded;
+  }
+}
+
+void MR_CALL 
+mercury__lexer____Compare____integer_size_0_0(
+  MR_Word * mercury__lexer__HeadVar__1_1,
+  MR_Word mercury__lexer__HeadVar__2_2,
+  MR_Word mercury__lexer__HeadVar__3_3)
+{
+  {
+    MR_bool mercury__lexer__succeeded;
+    MR_Integer mercury__lexer__Cast_HeadVar1_4 = (MR_Integer) mercury__lexer__HeadVar__2_2;
+    MR_Integer mercury__lexer__Cast_HeadVar2_5 = (MR_Integer) mercury__lexer__HeadVar__3_3;
+
+    mercury__lexer__succeeded = (mercury__lexer__Cast_HeadVar1_4 < mercury__lexer__Cast_HeadVar2_5);
+    if (mercury__lexer__succeeded)
+      *mercury__lexer__HeadVar__1_1 = (MR_Integer) 1;
+    else
+      {
+        mercury__lexer__succeeded = (mercury__lexer__Cast_HeadVar1_4 == mercury__lexer__Cast_HeadVar2_5);
+        if (mercury__lexer__succeeded)
+          *mercury__lexer__HeadVar__1_1 = (MR_Integer) 0;
+        else
+          *mercury__lexer__HeadVar__1_1 = (MR_Integer) 2;
+      }
+  }
+}
+
+MR_bool MR_CALL 
+mercury__lexer____Unify____integer_size_0_0(
+  MR_Word mercury__lexer__HeadVar__2_1,
+  MR_Word mercury__lexer__HeadVar__2_2)
+{
+  {
+    MR_bool mercury__lexer__succeeded = (mercury__lexer__HeadVar__2_1 == mercury__lexer__HeadVar__2_2);
+
+    return mercury__lexer__succeeded;
+  }
+}
+
+void MR_CALL 
+mercury__lexer____Compare____integer_base_0_0(
+  MR_Word * mercury__lexer__HeadVar__1_1,
+  MR_Word mercury__lexer__HeadVar__2_2,
+  MR_Word mercury__lexer__HeadVar__3_3)
+{
+  {
+    MR_bool mercury__lexer__succeeded;
+    MR_Integer mercury__lexer__Cast_HeadVar1_4 = (MR_Integer) mercury__lexer__HeadVar__2_2;
+    MR_Integer mercury__lexer__Cast_HeadVar2_5 = (MR_Integer) mercury__lexer__HeadVar__3_3;
+
+    mercury__lexer__succeeded = (mercury__lexer__Cast_HeadVar1_4 < mercury__lexer__Cast_HeadVar2_5);
+    if (mercury__lexer__succeeded)
+      *mercury__lexer__HeadVar__1_1 = (MR_Integer) 1;
+    else
+      {
+        mercury__lexer__succeeded = (mercury__lexer__Cast_HeadVar1_4 == mercury__lexer__Cast_HeadVar2_5);
+        if (mercury__lexer__succeeded)
+          *mercury__lexer__HeadVar__1_1 = (MR_Integer) 0;
+        else
+          *mercury__lexer__HeadVar__1_1 = (MR_Integer) 2;
+      }
+  }
+}
+
+MR_bool MR_CALL 
+mercury__lexer____Unify____integer_base_0_0(
+  MR_Word mercury__lexer__HeadVar__2_1,
+  MR_Word mercury__lexer__HeadVar__2_2)
+{
+  {
+    MR_bool mercury__lexer__succeeded = (mercury__lexer__HeadVar__2_1 == mercury__lexer__HeadVar__2_2);
+
+    return mercury__lexer__succeeded;
+  }
+}
+
+void MR_CALL 
+mercury__lexer____Compare____get_token_action_0_0(
+  MR_Word * mercury__lexer__HeadVar__1_1,
+  MR_Word mercury__lexer__HeadVar__2_2,
+  MR_Word mercury__lexer__HeadVar__3_3)
+{
+  {
+    MR_bool mercury__lexer__succeeded;
+    MR_Integer mercury__lexer__Cast_HeadVar1_4 = (MR_Integer) mercury__lexer__HeadVar__2_2;
+    MR_Integer mercury__lexer__Cast_HeadVar2_5 = (MR_Integer) mercury__lexer__HeadVar__3_3;
+
+    mercury__lexer__succeeded = (mercury__lexer__Cast_HeadVar1_4 < mercury__lexer__Cast_HeadVar2_5);
+    if (mercury__lexer__succeeded)
+      *mercury__lexer__HeadVar__1_1 = (MR_Integer) 1;
+    else
+      {
+        mercury__lexer__succeeded = (mercury__lexer__Cast_HeadVar1_4 == mercury__lexer__Cast_HeadVar2_5);
+        if (mercury__lexer__succeeded)
+          *mercury__lexer__HeadVar__1_1 = (MR_Integer) 0;
+        else
+          *mercury__lexer__HeadVar__1_1 = (MR_Integer) 2;
+      }
+  }
+}
+
+MR_bool MR_CALL 
+mercury__lexer____Unify____get_token_action_0_0(
+  MR_Word mercury__lexer__HeadVar__2_1,
+  MR_Word mercury__lexer__HeadVar__2_2)
+{
+  {
+    MR_bool mercury__lexer__succeeded = (mercury__lexer__HeadVar__2_1 == mercury__lexer__HeadVar__2_2);
+
+    return mercury__lexer__succeeded;
+  }
+}
+
+static MR_Word MR_CALL 
+mercury__lexer__null_character_error_0_f_0(void)
+{
+  {
+    MR_bool mercury__lexer__succeeded;
+    MR_Word mercury__lexer__HeadVar__1_1 = (MR_Word) MR_mkword(MR_mktag(3), &mercury__lexer_scalar_common_4[11]);
+
+    return mercury__lexer__HeadVar__1_1;
+  }
+}
+
+static MR_bool MR_CALL 
+mercury__lexer__rev_char_list_to_string_2_p_0(
+  MR_Word mercury__lexer__RevChars_3,
+  MR_String * mercury__lexer__String_4)
+{
+  {
+    MR_bool mercury__lexer__succeeded;
+
+    {
+      mercury__lexer__succeeded = mercury__string__semidet_from_rev_char_list_2_p_0(mercury__lexer__RevChars_3, mercury__lexer__String_4);
+    }
+    return mercury__lexer__succeeded;
+  }
+}
+
+static void MR_CALL 
+mercury__lexer__conv_string_to_int_5_p_0(
+  MR_String mercury__lexer__String_6,
+  MR_Word mercury__lexer__Base_7,
+  MR_Word mercury__lexer__Signedness_8,
+  MR_Word mercury__lexer__Size_9,
+  MR_Word * mercury__lexer__Token_10)
+{
+  {
+    MR_bool mercury__lexer__succeeded;
+    MR_Integer mercury__lexer__BaseInt_11 = ((&mercury__lexer_vector_common_9[0 + mercury__lexer__Base_7]))->mercury__lexer__vector_common_type_9_0__vct_9_f_0;
+    MR_Word mercury__lexer__Integer_12;
+
+    {
+      mercury__lexer__succeeded = mercury__integer__from_base_string_underscore_3_p_0(mercury__lexer__BaseInt_11, mercury__lexer__String_6, &mercury__lexer__Integer_12);
+    }
+    if (mercury__lexer__succeeded)
+      {
+        MR_Word base;
+        base = (MR_Word) MR_mkword(MR_mktag(3), MR_new_object(MR_Word, ((MR_Integer) 5 * sizeof(MR_Word)), NULL, NULL));
+        *mercury__lexer__Token_10 = base;
+        MR_hl_field(MR_mktag(3), base, 0) = ((MR_Box) (MR_Word) ((MR_Integer) 0));
+        MR_hl_field(MR_mktag(3), base, 1) = ((MR_Box) (mercury__lexer__Base_7));
+        MR_hl_field(MR_mktag(3), base, 2) = ((MR_Box) (mercury__lexer__Integer_12));
+        MR_hl_field(MR_mktag(3), base, 3) = ((MR_Box) (mercury__lexer__Signedness_8));
+        MR_hl_field(MR_mktag(3), base, 4) = ((MR_Box) (mercury__lexer__Size_9));
+      }
+    else
+      {
+        *mercury__lexer__Token_10 = (MR_Word) MR_mkword(MR_mktag(3), &mercury__lexer_scalar_common_4[31]);
+      }
+  }
+}
+
+static void MR_CALL 
+mercury__lexer__rev_char_list_to_int_5_p_0(
+  MR_Word mercury__lexer__RevChars_6,
+  MR_Word mercury__lexer__Base_7,
+  MR_Word mercury__lexer__Signedness_8,
+  MR_Word mercury__lexer__Size_9,
+  MR_Word * mercury__lexer__Token_10)
+{
+  {
+    MR_bool mercury__lexer__succeeded;
+    MR_String mercury__lexer__String_11;
+
+    {
+      mercury__lexer__succeeded = mercury__string__semidet_from_rev_char_list_2_p_0(mercury__lexer__RevChars_6, &mercury__lexer__String_11);
+    }
+    if (mercury__lexer__succeeded)
+      {
+        mercury__lexer__conv_string_to_int_5_p_0(mercury__lexer__String_11, mercury__lexer__Base_7, mercury__lexer__Signedness_8, mercury__lexer__Size_9, mercury__lexer__Token_10);
+      }
+    else
+      {
+        *mercury__lexer__Token_10 = (MR_Word) MR_mkword(MR_mktag(3), &mercury__lexer_scalar_common_4[31]);
+      }
+  }
+}
+
+static void MR_CALL 
+mercury__lexer__string_get_float_exponent_3_8_p_0(
+  MR_String mercury__lexer__String_9,
+  MR_Word mercury__lexer__STATE_VARIABLE_LastDigit_0_18,
+  MR_Integer mercury__lexer__Len_11,
+  MR_Word mercury__lexer__Posn0_12,
+  MR_Word * mercury__lexer__Token_13,
+  MR_Integer * mercury__lexer__Context_14,
+  MR_Word mercury__lexer__STATE_VARIABLE_Posn_0_19,
+  MR_Word * mercury__lexer__STATE_VARIABLE_Posn_20)
+{
+  while (MR_TRUE)
+    {
+      /* tailcall optimized into a loop */
+      {
+        MR_bool mercury__lexer__succeeded;
+        MR_Char mercury__lexer__Char_16;
+        MR_Word mercury__lexer__STATE_VARIABLE_Posn_21_21;
+        MR_Integer mercury__lexer__LineNum0_45 = ((MR_Integer) (MR_hl_field(MR_mktag(0), mercury__lexer__STATE_VARIABLE_Posn_0_19, (MR_Integer) 0)));
+        MR_Integer mercury__lexer__LineOffset0_46 = ((MR_Integer) (MR_hl_field(MR_mktag(0), mercury__lexer__STATE_VARIABLE_Posn_0_19, (MR_Integer) 1)));
+        MR_Integer mercury__lexer__Offset0_47 = ((MR_Integer) (MR_hl_field(MR_mktag(0), mercury__lexer__STATE_VARIABLE_Posn_0_19, (MR_Integer) 2)));
+        MR_Integer mercury__lexer__Offset_48;
+
+        mercury__lexer__succeeded = (mercury__lexer__Offset0_47 < mercury__lexer__Len_11);
+        if (mercury__lexer__succeeded)
+          {
+{
+#define MR_PROC_LABEL mercury__lexer__string_get_float_exponent_3_8_p_0
+
+	MR_String Str;
+	MR_Integer Index;
+	MR_Integer NextIndex;
+	MR_Char Ch;
+	MR_bool SUCCESS_INDICATOR;
+
+	Str =  mercury__lexer__String_9 ;
+	Index =  mercury__lexer__Offset0_47 ;
+		{
+
+    Ch = Str[Index];
+    if (MR_is_ascii(Ch)) {
+        NextIndex = Index + 1;
+        SUCCESS_INDICATOR = (Ch != 0);
+    } else {
+        NextIndex = Index;
+        Ch = MR_utf8_get_next_mb(Str, &NextIndex);
+        SUCCESS_INDICATOR = (Ch > 0);
+    }
+
+
+		;}
+#undef MR_PROC_LABEL
+	if (SUCCESS_INDICATOR) {
+	 mercury__lexer__Offset_48  = NextIndex;
+	 mercury__lexer__Char_16  = Ch;
+	}
+mercury__lexer__succeeded  = SUCCESS_INDICATOR;
+}
+            if (mercury__lexer__succeeded)
+              {
+                mercury__lexer__succeeded = (mercury__lexer__Char_16 == (MR_Char) 10);
+                if (mercury__lexer__succeeded)
+                  {
+                    MR_Integer mercury__lexer__LineNum_49 = (mercury__lexer__LineNum0_45 + (MR_Integer) 1);
+
+                    {
+                      mercury__lexer__STATE_VARIABLE_Posn_21_21 = (MR_Word) MR_new_object(MR_Word, ((MR_Integer) 3 * sizeof(MR_Word)), NULL, NULL);
+                      MR_hl_field(MR_mktag(0), mercury__lexer__STATE_VARIABLE_Posn_21_21, 0) = ((MR_Box) (mercury__lexer__LineNum_49));
+                      MR_hl_field(MR_mktag(0), mercury__lexer__STATE_VARIABLE_Posn_21_21, 1) = ((MR_Box) (mercury__lexer__Offset_48));
+                      MR_hl_field(MR_mktag(0), mercury__lexer__STATE_VARIABLE_Posn_21_21, 2) = ((MR_Box) (mercury__lexer__Offset_48));
+                    }
+                  }
+                else
+                  {
+                    mercury__lexer__STATE_VARIABLE_Posn_21_21 = (MR_Word) MR_new_object(MR_Word, ((MR_Integer) 3 * sizeof(MR_Word)), NULL, NULL);
+                    MR_hl_field(MR_mktag(0), mercury__lexer__STATE_VARIABLE_Posn_21_21, 0) = ((MR_Box) (mercury__lexer__LineNum0_45));
+                    MR_hl_field(MR_mktag(0), mercury__lexer__STATE_VARIABLE_Posn_21_21, 1) = ((MR_Box) (mercury__lexer__LineOffset0_46));
+                    MR_hl_field(MR_mktag(0), mercury__lexer__STATE_VARIABLE_Posn_21_21, 2) = ((MR_Box) (mercury__lexer__Offset_48));
+                  }
+                mercury__lexer__succeeded = MR_TRUE;
+              }
+          }
+        if (mercury__lexer__succeeded)
+          {
+            {
+              mercury__lexer__succeeded = mercury__char__is_decimal_digit_1_p_0(mercury__lexer__Char_16);
+            }
+            if (mercury__lexer__succeeded)
+              {
+                /* direct tailcall eliminated */
+                {
+                  MR_Word mercury__lexer__next_value_of_STATE_VARIABLE_Posn_0_19 = mercury__lexer__STATE_VARIABLE_Posn_21_21;
+
+                  mercury__lexer__STATE_VARIABLE_Posn_0_19 = mercury__lexer__next_value_of_STATE_VARIABLE_Posn_0_19;
+                  mercury__lexer__STATE_VARIABLE_LastDigit_0_18 = (MR_Integer) 1;
+                }
+                continue;
+              }
+            else
+              {
+                mercury__lexer__succeeded = (mercury__lexer__Char_16 == (MR_Char) 95);
+                if (mercury__lexer__succeeded)
+                  {
+                    /* direct tailcall eliminated */
+                    {
+                      MR_Word mercury__lexer__next_value_of_STATE_VARIABLE_Posn_0_19 = mercury__lexer__STATE_VARIABLE_Posn_21_21;
+
+                      mercury__lexer__STATE_VARIABLE_Posn_0_19 = mercury__lexer__next_value_of_STATE_VARIABLE_Posn_0_19;
+                      mercury__lexer__STATE_VARIABLE_LastDigit_0_18 = (MR_Integer) 0;
+                    }
+                    continue;
+                  }
+                else
+                  {
+                    MR_Word mercury__lexer__STATE_VARIABLE_Posn_26_26;
+                    MR_Integer mercury__lexer__Var_82;
+                    MR_Integer mercury__lexer__Var_83;
+
+                    {
+                      mercury__lexer__string_ungetchar_3_p_0(mercury__lexer__String_9, mercury__lexer__STATE_VARIABLE_Posn_21_21, &mercury__lexer__STATE_VARIABLE_Posn_26_26);
+                    }
+                    switch (mercury__lexer__STATE_VARIABLE_LastDigit_0_18) {
+                      default: /*NOTREACHED*/ MR_assert(0);
+                      case (MR_Integer) 1:
+                        {
+                          MR_String mercury__lexer__FloatString_17;
+                          MR_Integer mercury__lexer__Offset0_59;
+                          MR_Integer mercury__lexer__Offset_62;
+                          MR_Integer mercury__lexer__Var_57;
+                          MR_Integer mercury__lexer__Var_58;
+                          MR_Integer mercury__lexer__Var_60;
+                          MR_Integer mercury__lexer__Var_61;
+                          MR_Float mercury__lexer__Float_74;
+
+                          *mercury__lexer__STATE_VARIABLE_Posn_20 = mercury__lexer__STATE_VARIABLE_Posn_26_26;
+                          mercury__lexer__Var_57 = ((MR_Integer) (MR_hl_field(MR_mktag(0), mercury__lexer__Posn0_12, (MR_Integer) 0)));
+                          mercury__lexer__Var_58 = ((MR_Integer) (MR_hl_field(MR_mktag(0), mercury__lexer__Posn0_12, (MR_Integer) 1)));
+                          mercury__lexer__Offset0_59 = ((MR_Integer) (MR_hl_field(MR_mktag(0), mercury__lexer__Posn0_12, (MR_Integer) 2)));
+                          mercury__lexer__Var_60 = ((MR_Integer) (MR_hl_field(MR_mktag(0), mercury__lexer__STATE_VARIABLE_Posn_26_26, (MR_Integer) 0)));
+                          mercury__lexer__Var_61 = ((MR_Integer) (MR_hl_field(MR_mktag(0), mercury__lexer__STATE_VARIABLE_Posn_26_26, (MR_Integer) 1)));
+                          mercury__lexer__Offset_62 = ((MR_Integer) (MR_hl_field(MR_mktag(0), mercury__lexer__STATE_VARIABLE_Posn_26_26, (MR_Integer) 2)));
+{
+#define MR_PROC_LABEL mercury__lexer__string_get_float_exponent_3_8_p_0
+
+	MR_String Str;
+	MR_Integer Start;
+	MR_Integer End;
+	MR_String FloatStr;
+
+	Str =  mercury__lexer__String_9 ;
+	Start =  mercury__lexer__Offset0_59 ;
+	End =  mercury__lexer__Offset_62 ;
+		{
+
+    int src;
+    int dst = 0;
+
+    MR_allocate_aligned_string_msg(FloatStr, End - Start, MR_ALLOC_ID);
+    for (src = Start; src < End; src++) {
+        if (Str[src] != '_') {
+            FloatStr[dst] = Str[src];
+            dst++;
+        }
+    }
+    FloatStr[dst] = '\0';
+
+
+		;}
+#undef MR_PROC_LABEL
+	 mercury__lexer__FloatString_17  = FloatStr;
+}
+{
+#define MR_PROC_LABEL mercury__lexer__string_get_float_exponent_3_8_p_0
+
+	MR_String FloatString;
+	MR_Float FloatVal;
+	MR_bool SUCCESS_INDICATOR;
+
+	FloatString =  mercury__lexer__FloatString_17 ;
+		{
+{
+    /*
+    ** The %c checks for any erroneous characters appearing after the float;
+    ** if there are then sscanf() will return 2 rather than 1.
+    */
+    char    tmpc;
+    SUCCESS_INDICATOR =
+        (!MR_isspace(FloatString[0])) &&
+        (sscanf(FloatString, MR_FLT_FMT "%c", &FloatVal, &tmpc) == 1);
+        /* MR_TRUE if sscanf succeeds, MR_FALSE otherwise */
+}
+
+		;}
+#undef MR_PROC_LABEL
+	if (SUCCESS_INDICATOR) {
+	 mercury__lexer__Float_74  = FloatVal;
+	}
+mercury__lexer__succeeded  = SUCCESS_INDICATOR;
+}
+                          if (mercury__lexer__succeeded)
+                            {
+                              MR_Word base;
+                              base = (MR_Word) MR_mkword(MR_mktag(3), MR_new_object(MR_Word, ((MR_Integer) 2 * sizeof(MR_Word)), NULL, NULL));
+                              *mercury__lexer__Token_13 = base;
+                              MR_hl_field(MR_mktag(3), base, 0) = ((MR_Box) (MR_Word) ((MR_Integer) 1));
+                              MR_hl_field(MR_mktag(3), base, 1) = MR_box_float(mercury__lexer__Float_74);
+                            }
+                          else
+                            {
+                              *mercury__lexer__Token_13 = (MR_Word) MR_mkword(MR_mktag(3), &mercury__lexer_scalar_common_4[38]);
+                            }
+                        }
+                        break;
+                      case (MR_Integer) 0:
+                        {
+                          *mercury__lexer__Token_13 = (MR_Word) MR_mkword(MR_mktag(3), &mercury__lexer_scalar_common_4[40]);
+                          *mercury__lexer__STATE_VARIABLE_Posn_20 = mercury__lexer__STATE_VARIABLE_Posn_26_26;
+                        }
+                        break;
+                    }
+                    *mercury__lexer__Context_14 = ((MR_Integer) (MR_hl_field(MR_mktag(0), mercury__lexer__Posn0_12, (MR_Integer) 0)));
+                    mercury__lexer__Var_82 = ((MR_Integer) (MR_hl_field(MR_mktag(0), mercury__lexer__Posn0_12, (MR_Integer) 1)));
+                    mercury__lexer__Var_83 = ((MR_Integer) (MR_hl_field(MR_mktag(0), mercury__lexer__Posn0_12, (MR_Integer) 2)));
+                  }
+              }
+          }
+        else
+          {
+            MR_String mercury__lexer__FloatString_38;
+            MR_Integer mercury__lexer__Var_94;
+            MR_Integer mercury__lexer__Var_95;
+
+            {
+              mercury__lexer__grab_float_string_5_p_0(mercury__lexer__String_9, mercury__lexer__Posn0_12, &mercury__lexer__FloatString_38, mercury__lexer__STATE_VARIABLE_Posn_0_19, mercury__lexer__STATE_VARIABLE_Posn_20);
+            }
+            switch (mercury__lexer__STATE_VARIABLE_LastDigit_0_18) {
+              default: /*NOTREACHED*/ MR_assert(0);
+              case (MR_Integer) 1:
+                {
+                  MR_Float mercury__lexer__Float_86;
+
+{
+#define MR_PROC_LABEL mercury__lexer__string_get_float_exponent_3_8_p_0
+
+	MR_String FloatString;
+	MR_Float FloatVal;
+	MR_bool SUCCESS_INDICATOR;
+
+	FloatString =  mercury__lexer__FloatString_38 ;
+		{
+{
+    /*
+    ** The %c checks for any erroneous characters appearing after the float;
+    ** if there are then sscanf() will return 2 rather than 1.
+    */
+    char    tmpc;
+    SUCCESS_INDICATOR =
+        (!MR_isspace(FloatString[0])) &&
+        (sscanf(FloatString, MR_FLT_FMT "%c", &FloatVal, &tmpc) == 1);
+        /* MR_TRUE if sscanf succeeds, MR_FALSE otherwise */
+}
+
+		;}
+#undef MR_PROC_LABEL
+	if (SUCCESS_INDICATOR) {
+	 mercury__lexer__Float_86  = FloatVal;
+	}
+mercury__lexer__succeeded  = SUCCESS_INDICATOR;
+}
+                  if (mercury__lexer__succeeded)
+                    {
+                      MR_Word base;
+                      base = (MR_Word) MR_mkword(MR_mktag(3), MR_new_object(MR_Word, ((MR_Integer) 2 * sizeof(MR_Word)), NULL, NULL));
+                      *mercury__lexer__Token_13 = base;
+                      MR_hl_field(MR_mktag(3), base, 0) = ((MR_Box) (MR_Word) ((MR_Integer) 1));
+                      MR_hl_field(MR_mktag(3), base, 1) = MR_box_float(mercury__lexer__Float_86);
+                    }
+                  else
+                    {
+                      *mercury__lexer__Token_13 = (MR_Word) MR_mkword(MR_mktag(3), &mercury__lexer_scalar_common_4[38]);
+                    }
+                }
+                break;
+              case (MR_Integer) 0:
+                {
+                  *mercury__lexer__Token_13 = (MR_Word) MR_mkword(MR_mktag(3), &mercury__lexer_scalar_common_4[40]);
+                }
+                break;
+            }
+            *mercury__lexer__Context_14 = ((MR_Integer) (MR_hl_field(MR_mktag(0), mercury__lexer__Posn0_12, (MR_Integer) 0)));
+            mercury__lexer__Var_94 = ((MR_Integer) (MR_hl_field(MR_mktag(0), mercury__lexer__Posn0_12, (MR_Integer) 1)));
+            mercury__lexer__Var_95 = ((MR_Integer) (MR_hl_field(MR_mktag(0), mercury__lexer__Posn0_12, (MR_Integer) 2)));
+          }
+      }
+      break;
+    }
+}
+
+static void MR_CALL 
+mercury__lexer__get_float_exponent_3_6_p_0(
+  MR_Word mercury__lexer__Stream_7,
+  MR_Word mercury__lexer__STATE_VARIABLE_LastDigit_0_15,
+  MR_Word mercury__lexer__STATE_VARIABLE_RevChars_0_16,
+  MR_Word * mercury__lexer__Token_10)
+{
+  while (MR_TRUE)
+    {
+      /* tailcall optimized into a loop */
+      {
+        MR_bool mercury__lexer__succeeded;
+        MR_Word mercury__lexer__Result_12;
+        MR_Char mercury__lexer__Char_13;
+        MR_Word mercury__lexer__V_10_50;
+        MR_Box mercury__lexer__V_11_51;
+        MR_Box mercury__lexer__V_7_60 = (MR_Box) mercury__lexer__Stream_7;
+
+        {
+          mercury__io__read_char_code_2_6_p_0(mercury__lexer__V_7_60, &mercury__lexer__V_10_50, &mercury__lexer__Char_13, &mercury__lexer__V_11_51);
+        }
+        switch (mercury__lexer__V_10_50) {
+          default: /*NOTREACHED*/ MR_assert(0);
+          case (MR_Integer) 1:
+            mercury__lexer__Result_12 = (MR_Word) MR_mkword(MR_mktag(0), MR_mkbody((MR_Integer) 1));
+            break;
+          case (MR_Integer) 2:
+            {
+              MR_String mercury__lexer__V_12_53;
+              MR_Word mercury__lexer__V_17_54;
+
+{
+#define MR_PROC_LABEL mercury__lexer__get_float_exponent_3_6_p_0
+
+	MR_Integer Error;
+	MR_String Msg0;
+	MR_String Msg;
+
+	MR_MAYBE_UNBOX_FOREIGN_TYPE(MR_Integer, mercury__lexer__V_11_51 , Error);
+	Msg0 =  (MR_String) "read failed: " ;
+		{
+
+    ML_make_err_msg(Error, Msg0, MR_ALLOC_ID, Msg);
+
+
+		;}
+#undef MR_PROC_LABEL
+	 mercury__lexer__V_12_53  = Msg;
+}
+              mercury__lexer__V_17_54 = (MR_Word) mercury__lexer__V_12_53;
+              {
+                mercury__lexer__Result_12 = (MR_Word) MR_mkword(MR_mktag(1), MR_new_object(MR_Word, ((MR_Integer) 1 * sizeof(MR_Word)), NULL, NULL));
+                MR_hl_field(MR_mktag(1), mercury__lexer__Result_12, 0) = ((MR_Box) (mercury__lexer__V_17_54));
+              }
+            }
+            break;
+          case (MR_Integer) 0:
+            mercury__lexer__Result_12 = (MR_Word) MR_mkword(MR_mktag(0), MR_mkbody((MR_Integer) 0));
+            break;
+        }
+        switch (MR_tag((MR_Word) mercury__lexer__Result_12)) {
+          default: /*NOTREACHED*/ MR_assert(0);
+          case (MR_Integer) 0:
+            switch (MR_unmkbody(mercury__lexer__Result_12)) {
+              default: /*NOTREACHED*/ MR_assert(0);
+              case (MR_Integer) 0:
+                {
+                  {
+                    mercury__lexer__succeeded = mercury__char__is_decimal_digit_1_p_0(mercury__lexer__Char_13);
+                  }
+                  if (mercury__lexer__succeeded)
+                    {
+                      MR_Word mercury__lexer__STATE_VARIABLE_RevChars_20_32;
+
+                      {
+                        mercury__lexer__STATE_VARIABLE_RevChars_20_32 = (MR_Word) MR_mkword(MR_mktag(1), MR_new_object(MR_Word, ((MR_Integer) 2 * sizeof(MR_Word)), NULL, NULL));
+                        MR_hl_field(MR_mktag(1), mercury__lexer__STATE_VARIABLE_RevChars_20_32, 0) = ((MR_Box) (MR_Word) (mercury__lexer__Char_13));
+                        MR_hl_field(MR_mktag(1), mercury__lexer__STATE_VARIABLE_RevChars_20_32, 1) = ((MR_Box) (mercury__lexer__STATE_VARIABLE_RevChars_0_16));
+                      }
+                      /* direct tailcall eliminated */
+                      {
+                        MR_Word mercury__lexer__next_value_of_STATE_VARIABLE_RevChars_0_16 = mercury__lexer__STATE_VARIABLE_RevChars_20_32;
+
+                        mercury__lexer__STATE_VARIABLE_RevChars_0_16 = mercury__lexer__next_value_of_STATE_VARIABLE_RevChars_0_16;
+                        mercury__lexer__STATE_VARIABLE_LastDigit_0_15 = (MR_Integer) 1;
+                      }
+                      continue;
+                    }
+                  else
+                    {
+                      mercury__lexer__succeeded = (mercury__lexer__Char_13 == (MR_Char) 95);
+                      if (mercury__lexer__succeeded)
+                        {
+                          /* direct tailcall eliminated */
+                          {
+                            mercury__lexer__STATE_VARIABLE_LastDigit_0_15 = (MR_Integer) 0;
+                          }
+                          continue;
+                        }
+                      else
+                        {
+                          {
+                            mercury__io__putback_char_4_p_0(mercury__lexer__Stream_7, mercury__lexer__Char_13);
+                          }
+                          switch (mercury__lexer__STATE_VARIABLE_LastDigit_0_15) {
+                            default: /*NOTREACHED*/ MR_assert(0);
+                            case (MR_Integer) 1:
+                              {
+                                MR_String mercury__lexer__String_74;
+
+                                {
+                                  mercury__lexer__succeeded = mercury__string__semidet_from_rev_char_list_2_p_0(mercury__lexer__STATE_VARIABLE_RevChars_0_16, &mercury__lexer__String_74);
+                                }
+                                if (mercury__lexer__succeeded)
+                                  {
+                                    MR_Float mercury__lexer__Float_80;
+
+{
+#define MR_PROC_LABEL mercury__lexer__get_float_exponent_3_6_p_0
+
+	MR_String FloatString;
+	MR_Float FloatVal;
+	MR_bool SUCCESS_INDICATOR;
+
+	FloatString =  mercury__lexer__String_74 ;
+		{
+{
+    /*
+    ** The %c checks for any erroneous characters appearing after the float;
+    ** if there are then sscanf() will return 2 rather than 1.
+    */
+    char    tmpc;
+    SUCCESS_INDICATOR =
+        (!MR_isspace(FloatString[0])) &&
+        (sscanf(FloatString, MR_FLT_FMT "%c", &FloatVal, &tmpc) == 1);
+        /* MR_TRUE if sscanf succeeds, MR_FALSE otherwise */
+}
+
+		;}
+#undef MR_PROC_LABEL
+	if (SUCCESS_INDICATOR) {
+	 mercury__lexer__Float_80  = FloatVal;
+	}
+mercury__lexer__succeeded  = SUCCESS_INDICATOR;
+}
+                                    if (mercury__lexer__succeeded)
+                                      {
+                                        MR_Word base;
+                                        base = (MR_Word) MR_mkword(MR_mktag(3), MR_new_object(MR_Word, ((MR_Integer) 2 * sizeof(MR_Word)), NULL, NULL));
+                                        *mercury__lexer__Token_10 = base;
+                                        MR_hl_field(MR_mktag(3), base, 0) = ((MR_Box) (MR_Word) ((MR_Integer) 1));
+                                        MR_hl_field(MR_mktag(3), base, 1) = MR_box_float(mercury__lexer__Float_80);
+                                      }
+                                    else
+                                      {
+                                        *mercury__lexer__Token_10 = (MR_Word) MR_mkword(MR_mktag(3), &mercury__lexer_scalar_common_4[38]);
+                                      }
+                                  }
+                                else
+                                  {
+                                    *mercury__lexer__Token_10 = (MR_Word) MR_mkword(MR_mktag(3), &mercury__lexer_scalar_common_4[31]);
+                                  }
+                              }
+                              break;
+                            case (MR_Integer) 0:
+                              {
+                                *mercury__lexer__Token_10 = (MR_Word) MR_mkword(MR_mktag(3), &mercury__lexer_scalar_common_4[40]);
+                              }
+                              break;
+                          }
+                        }
+                    }
+                }
+                break;
+              case (MR_Integer) 1:
+                switch (mercury__lexer__STATE_VARIABLE_LastDigit_0_15) {
+                  default: /*NOTREACHED*/ MR_assert(0);
+                  case (MR_Integer) 1:
+                    {
+                      MR_String mercury__lexer__String_63;
+
+                      {
+                        mercury__lexer__succeeded = mercury__string__semidet_from_rev_char_list_2_p_0(mercury__lexer__STATE_VARIABLE_RevChars_0_16, &mercury__lexer__String_63);
+                      }
+                      if (mercury__lexer__succeeded)
+                        {
+                          MR_Float mercury__lexer__Float_69;
+
+{
+#define MR_PROC_LABEL mercury__lexer__get_float_exponent_3_6_p_0
+
+	MR_String FloatString;
+	MR_Float FloatVal;
+	MR_bool SUCCESS_INDICATOR;
+
+	FloatString =  mercury__lexer__String_63 ;
+		{
+{
+    /*
+    ** The %c checks for any erroneous characters appearing after the float;
+    ** if there are then sscanf() will return 2 rather than 1.
+    */
+    char    tmpc;
+    SUCCESS_INDICATOR =
+        (!MR_isspace(FloatString[0])) &&
+        (sscanf(FloatString, MR_FLT_FMT "%c", &FloatVal, &tmpc) == 1);
+        /* MR_TRUE if sscanf succeeds, MR_FALSE otherwise */
+}
+
+		;}
+#undef MR_PROC_LABEL
+	if (SUCCESS_INDICATOR) {
+	 mercury__lexer__Float_69  = FloatVal;
+	}
+mercury__lexer__succeeded  = SUCCESS_INDICATOR;
+}
+                          if (mercury__lexer__succeeded)
+                            {
+                              MR_Word base;
+                              base = (MR_Word) MR_mkword(MR_mktag(3), MR_new_object(MR_Word, ((MR_Integer) 2 * sizeof(MR_Word)), NULL, NULL));
+                              *mercury__lexer__Token_10 = base;
+                              MR_hl_field(MR_mktag(3), base, 0) = ((MR_Box) (MR_Word) ((MR_Integer) 1));
+                              MR_hl_field(MR_mktag(3), base, 1) = MR_box_float(mercury__lexer__Float_69);
+                            }
+                          else
+                            {
+                              *mercury__lexer__Token_10 = (MR_Word) MR_mkword(MR_mktag(3), &mercury__lexer_scalar_common_4[38]);
+                            }
+                        }
+                      else
+                        {
+                          *mercury__lexer__Token_10 = (MR_Word) MR_mkword(MR_mktag(3), &mercury__lexer_scalar_common_4[31]);
+                        }
+                    }
+                    break;
+                  case (MR_Integer) 0:
+                    {
+                      *mercury__lexer__Token_10 = (MR_Word) MR_mkword(MR_mktag(3), &mercury__lexer_scalar_common_4[40]);
+                    }
+                    break;
+                }
+                break;
+            }
+            break;
+          case (MR_Integer) 1:
+            {
+              MR_Word mercury__lexer__Error_14 = ((MR_Word) (MR_hl_field(MR_mktag(1), mercury__lexer__Result_12, (MR_Integer) 0)));
+
+              {
+                MR_Word base;
+                base = (MR_Word) MR_mkword(MR_mktag(3), MR_new_object(MR_Word, ((MR_Integer) 2 * sizeof(MR_Word)), NULL, NULL));
+                *mercury__lexer__Token_10 = base;
+                MR_hl_field(MR_mktag(3), base, 0) = ((MR_Box) (MR_Word) ((MR_Integer) 6));
+                MR_hl_field(MR_mktag(3), base, 1) = ((MR_Box) (mercury__lexer__Error_14));
+              }
+            }
+            break;
+        }
+      }
+      break;
+    }
+}
+
+static void MR_CALL 
+mercury__lexer__get_float_exponent_2_5_p_0(
+  MR_Word mercury__lexer__Stream_6,
+  MR_Word mercury__lexer__STATE_VARIABLE_RevChars_0_14,
+  MR_Word * mercury__lexer__Token_8)
+{
+  {
+    MR_bool mercury__lexer__succeeded;
+    MR_Word mercury__lexer__Result_10;
+    MR_Char mercury__lexer__Char_11;
+    MR_Word mercury__lexer__V_10_35;
+    MR_Box mercury__lexer__V_11_36;
+    MR_Box mercury__lexer__V_7_45 = (MR_Box) mercury__lexer__Stream_6;
+
+    {
+      mercury__io__read_char_code_2_6_p_0(mercury__lexer__V_7_45, &mercury__lexer__V_10_35, &mercury__lexer__Char_11, &mercury__lexer__V_11_36);
+    }
+    switch (mercury__lexer__V_10_35) {
+      default: /*NOTREACHED*/ MR_assert(0);
+      case (MR_Integer) 1:
+        mercury__lexer__Result_10 = (MR_Word) MR_mkword(MR_mktag(0), MR_mkbody((MR_Integer) 1));
+        break;
+      case (MR_Integer) 2:
+        {
+          MR_String mercury__lexer__V_12_38;
+          MR_Word mercury__lexer__V_17_39;
+
+{
+#define MR_PROC_LABEL mercury__lexer__get_float_exponent_2_5_p_0
+
+	MR_Integer Error;
+	MR_String Msg0;
+	MR_String Msg;
+
+	MR_MAYBE_UNBOX_FOREIGN_TYPE(MR_Integer, mercury__lexer__V_11_36 , Error);
+	Msg0 =  (MR_String) "read failed: " ;
+		{
+
+    ML_make_err_msg(Error, Msg0, MR_ALLOC_ID, Msg);
+
+
+		;}
+#undef MR_PROC_LABEL
+	 mercury__lexer__V_12_38  = Msg;
+}
+          mercury__lexer__V_17_39 = (MR_Word) mercury__lexer__V_12_38;
+          {
+            mercury__lexer__Result_10 = (MR_Word) MR_mkword(MR_mktag(1), MR_new_object(MR_Word, ((MR_Integer) 1 * sizeof(MR_Word)), NULL, NULL));
+            MR_hl_field(MR_mktag(1), mercury__lexer__Result_10, 0) = ((MR_Box) (mercury__lexer__V_17_39));
+          }
+        }
+        break;
+      case (MR_Integer) 0:
+        mercury__lexer__Result_10 = (MR_Word) MR_mkword(MR_mktag(0), MR_mkbody((MR_Integer) 0));
+        break;
+    }
+    switch (MR_tag((MR_Word) mercury__lexer__Result_10)) {
+      default: /*NOTREACHED*/ MR_assert(0);
+      case (MR_Integer) 0:
+        switch (MR_unmkbody(mercury__lexer__Result_10)) {
+          default: /*NOTREACHED*/ MR_assert(0);
+          case (MR_Integer) 0:
+            {
+              {
+                mercury__lexer__succeeded = mercury__char__is_decimal_digit_1_p_0(mercury__lexer__Char_11);
+              }
+              if (mercury__lexer__succeeded)
+                {
+                  MR_Word mercury__lexer__STATE_VARIABLE_RevChars_18_25;
+
+                  {
+                    mercury__lexer__STATE_VARIABLE_RevChars_18_25 = (MR_Word) MR_mkword(MR_mktag(1), MR_new_object(MR_Word, ((MR_Integer) 2 * sizeof(MR_Word)), NULL, NULL));
+                    MR_hl_field(MR_mktag(1), mercury__lexer__STATE_VARIABLE_RevChars_18_25, 0) = ((MR_Box) (MR_Word) (mercury__lexer__Char_11));
+                    MR_hl_field(MR_mktag(1), mercury__lexer__STATE_VARIABLE_RevChars_18_25, 1) = ((MR_Box) (mercury__lexer__STATE_VARIABLE_RevChars_0_14));
+                  }
+                  {
+                    mercury__lexer__get_float_exponent_3_6_p_0(mercury__lexer__Stream_6, (MR_Integer) 1, mercury__lexer__STATE_VARIABLE_RevChars_18_25, mercury__lexer__Token_8);
+                  }
+                }
+              else
+                {
+                  {
+                    mercury__io__putback_char_4_p_0(mercury__lexer__Stream_6, mercury__lexer__Char_11);
+                  }
+                  *mercury__lexer__Token_8 = (MR_Word) MR_mkword(MR_mktag(3), &mercury__lexer_scalar_common_4[40]);
+                }
+            }
+            break;
+          case (MR_Integer) 1:
+            {
+              *mercury__lexer__Token_8 = (MR_Word) MR_mkword(MR_mktag(3), &mercury__lexer_scalar_common_4[40]);
+            }
+            break;
+        }
+        break;
+      case (MR_Integer) 1:
+        {
+          MR_Word mercury__lexer__Error_12 = ((MR_Word) (MR_hl_field(MR_mktag(1), mercury__lexer__Result_10, (MR_Integer) 0)));
+
+          {
+            MR_Word base;
+            base = (MR_Word) MR_mkword(MR_mktag(3), MR_new_object(MR_Word, ((MR_Integer) 2 * sizeof(MR_Word)), NULL, NULL));
+            *mercury__lexer__Token_8 = base;
+            MR_hl_field(MR_mktag(3), base, 0) = ((MR_Box) (MR_Word) ((MR_Integer) 6));
+            MR_hl_field(MR_mktag(3), base, 1) = ((MR_Box) (mercury__lexer__Error_12));
+          }
+        }
+        break;
+    }
+  }
+}
+
+static void MR_CALL 
+mercury__lexer__string_get_float_exponent_7_p_0(
+  MR_String mercury__lexer__String_8,
+  MR_Integer mercury__lexer__Len_9,
+  MR_Word mercury__lexer__Posn0_10,
+  MR_Word * mercury__lexer__Token_11,
+  MR_Integer * mercury__lexer__Context_12,
+  MR_Word mercury__lexer__STATE_VARIABLE_Posn_0_17,
+  MR_Word * mercury__lexer__STATE_VARIABLE_Posn_18)
+{
+  {
+    MR_bool mercury__lexer__succeeded;
+    MR_Char mercury__lexer__Char_14;
+    MR_Word mercury__lexer__STATE_VARIABLE_Posn_19_19;
+    MR_Integer mercury__lexer__LineNum0_32 = ((MR_Integer) (MR_hl_field(MR_mktag(0), mercury__lexer__STATE_VARIABLE_Posn_0_17, (MR_Integer) 0)));
+    MR_Integer mercury__lexer__LineOffset0_33 = ((MR_Integer) (MR_hl_field(MR_mktag(0), mercury__lexer__STATE_VARIABLE_Posn_0_17, (MR_Integer) 1)));
+    MR_Integer mercury__lexer__Offset0_34 = ((MR_Integer) (MR_hl_field(MR_mktag(0), mercury__lexer__STATE_VARIABLE_Posn_0_17, (MR_Integer) 2)));
+    MR_Integer mercury__lexer__Offset_35;
+
+    mercury__lexer__succeeded = (mercury__lexer__Offset0_34 < mercury__lexer__Len_9);
+    if (mercury__lexer__succeeded)
+      {
+{
+#define MR_PROC_LABEL mercury__lexer__string_get_float_exponent_7_p_0
+
+	MR_String Str;
+	MR_Integer Index;
+	MR_Integer NextIndex;
+	MR_Char Ch;
+	MR_bool SUCCESS_INDICATOR;
+
+	Str =  mercury__lexer__String_8 ;
+	Index =  mercury__lexer__Offset0_34 ;
+		{
+
+    Ch = Str[Index];
+    if (MR_is_ascii(Ch)) {
+        NextIndex = Index + 1;
+        SUCCESS_INDICATOR = (Ch != 0);
+    } else {
+        NextIndex = Index;
+        Ch = MR_utf8_get_next_mb(Str, &NextIndex);
+        SUCCESS_INDICATOR = (Ch > 0);
+    }
+
+
+		;}
+#undef MR_PROC_LABEL
+	if (SUCCESS_INDICATOR) {
+	 mercury__lexer__Offset_35  = NextIndex;
+	 mercury__lexer__Char_14  = Ch;
+	}
+mercury__lexer__succeeded  = SUCCESS_INDICATOR;
+}
+        if (mercury__lexer__succeeded)
+          {
+            mercury__lexer__succeeded = (mercury__lexer__Char_14 == (MR_Char) 10);
+            if (mercury__lexer__succeeded)
+              {
+                MR_Integer mercury__lexer__LineNum_36 = (mercury__lexer__LineNum0_32 + (MR_Integer) 1);
+
+                {
+                  mercury__lexer__STATE_VARIABLE_Posn_19_19 = (MR_Word) MR_new_object(MR_Word, ((MR_Integer) 3 * sizeof(MR_Word)), NULL, NULL);
+                  MR_hl_field(MR_mktag(0), mercury__lexer__STATE_VARIABLE_Posn_19_19, 0) = ((MR_Box) (mercury__lexer__LineNum_36));
+                  MR_hl_field(MR_mktag(0), mercury__lexer__STATE_VARIABLE_Posn_19_19, 1) = ((MR_Box) (mercury__lexer__Offset_35));
+                  MR_hl_field(MR_mktag(0), mercury__lexer__STATE_VARIABLE_Posn_19_19, 2) = ((MR_Box) (mercury__lexer__Offset_35));
+                }
+              }
+            else
+              {
+                mercury__lexer__STATE_VARIABLE_Posn_19_19 = (MR_Word) MR_new_object(MR_Word, ((MR_Integer) 3 * sizeof(MR_Word)), NULL, NULL);
+                MR_hl_field(MR_mktag(0), mercury__lexer__STATE_VARIABLE_Posn_19_19, 0) = ((MR_Box) (mercury__lexer__LineNum0_32));
+                MR_hl_field(MR_mktag(0), mercury__lexer__STATE_VARIABLE_Posn_19_19, 1) = ((MR_Box) (mercury__lexer__LineOffset0_33));
+                MR_hl_field(MR_mktag(0), mercury__lexer__STATE_VARIABLE_Posn_19_19, 2) = ((MR_Box) (mercury__lexer__Offset_35));
+              }
+            mercury__lexer__succeeded = MR_TRUE;
+          }
+      }
+    if (mercury__lexer__succeeded)
+      {
+        switch (mercury__lexer__Char_14) {
+          default:
+            mercury__lexer__succeeded = MR_FALSE;
+            break;
+          case (MR_Char) 43:
+            mercury__lexer__succeeded = MR_TRUE;
+            break;
+          case (MR_Char) 45:
+            mercury__lexer__succeeded = MR_TRUE;
+            break;
+        }
+        if (mercury__lexer__succeeded)
+          {
+            MR_Char mercury__lexer__Char_47;
+            MR_Word mercury__lexer__STATE_VARIABLE_Posn_18_49;
+            MR_Integer mercury__lexer__LineNum0_61 = ((MR_Integer) (MR_hl_field(MR_mktag(0), mercury__lexer__STATE_VARIABLE_Posn_19_19, (MR_Integer) 0)));
+            MR_Integer mercury__lexer__LineOffset0_62 = ((MR_Integer) (MR_hl_field(MR_mktag(0), mercury__lexer__STATE_VARIABLE_Posn_19_19, (MR_Integer) 1)));
+            MR_Integer mercury__lexer__Offset0_63 = ((MR_Integer) (MR_hl_field(MR_mktag(0), mercury__lexer__STATE_VARIABLE_Posn_19_19, (MR_Integer) 2)));
+            MR_Integer mercury__lexer__Offset_64;
+
+            mercury__lexer__succeeded = (mercury__lexer__Offset0_63 < mercury__lexer__Len_9);
+            if (mercury__lexer__succeeded)
+              {
+{
+#define MR_PROC_LABEL mercury__lexer__string_get_float_exponent_7_p_0
+
+	MR_String Str;
+	MR_Integer Index;
+	MR_Integer NextIndex;
+	MR_Char Ch;
+	MR_bool SUCCESS_INDICATOR;
+
+	Str =  mercury__lexer__String_8 ;
+	Index =  mercury__lexer__Offset0_63 ;
+		{
+
+    Ch = Str[Index];
+    if (MR_is_ascii(Ch)) {
+        NextIndex = Index + 1;
+        SUCCESS_INDICATOR = (Ch != 0);
+    } else {
+        NextIndex = Index;
+        Ch = MR_utf8_get_next_mb(Str, &NextIndex);
+        SUCCESS_INDICATOR = (Ch > 0);
+    }
+
+
+		;}
+#undef MR_PROC_LABEL
+	if (SUCCESS_INDICATOR) {
+	 mercury__lexer__Offset_64  = NextIndex;
+	 mercury__lexer__Char_47  = Ch;
+	}
+mercury__lexer__succeeded  = SUCCESS_INDICATOR;
+}
+                if (mercury__lexer__succeeded)
+                  {
+                    mercury__lexer__succeeded = (mercury__lexer__Char_47 == (MR_Char) 10);
+                    if (mercury__lexer__succeeded)
+                      {
+                        MR_Integer mercury__lexer__LineNum_65 = (mercury__lexer__LineNum0_61 + (MR_Integer) 1);
+
+                        {
+                          mercury__lexer__STATE_VARIABLE_Posn_18_49 = (MR_Word) MR_new_object(MR_Word, ((MR_Integer) 3 * sizeof(MR_Word)), NULL, NULL);
+                          MR_hl_field(MR_mktag(0), mercury__lexer__STATE_VARIABLE_Posn_18_49, 0) = ((MR_Box) (mercury__lexer__LineNum_65));
+                          MR_hl_field(MR_mktag(0), mercury__lexer__STATE_VARIABLE_Posn_18_49, 1) = ((MR_Box) (mercury__lexer__Offset_64));
+                          MR_hl_field(MR_mktag(0), mercury__lexer__STATE_VARIABLE_Posn_18_49, 2) = ((MR_Box) (mercury__lexer__Offset_64));
+                        }
+                      }
+                    else
+                      {
+                        mercury__lexer__STATE_VARIABLE_Posn_18_49 = (MR_Word) MR_new_object(MR_Word, ((MR_Integer) 3 * sizeof(MR_Word)), NULL, NULL);
+                        MR_hl_field(MR_mktag(0), mercury__lexer__STATE_VARIABLE_Posn_18_49, 0) = ((MR_Box) (mercury__lexer__LineNum0_61));
+                        MR_hl_field(MR_mktag(0), mercury__lexer__STATE_VARIABLE_Posn_18_49, 1) = ((MR_Box) (mercury__lexer__LineOffset0_62));
+                        MR_hl_field(MR_mktag(0), mercury__lexer__STATE_VARIABLE_Posn_18_49, 2) = ((MR_Box) (mercury__lexer__Offset_64));
+                      }
+                    mercury__lexer__succeeded = MR_TRUE;
+                  }
+              }
+            if (mercury__lexer__succeeded)
+              {
+                {
+                  mercury__lexer__succeeded = mercury__char__is_decimal_digit_1_p_0(mercury__lexer__Char_47);
+                }
+                if (mercury__lexer__succeeded)
+                  {
+                    {
+                      mercury__lexer__string_get_float_exponent_3_8_p_0(mercury__lexer__String_8, (MR_Integer) 1, mercury__lexer__Len_9, mercury__lexer__Posn0_10, mercury__lexer__Token_11, mercury__lexer__Context_12, mercury__lexer__STATE_VARIABLE_Posn_18_49, mercury__lexer__STATE_VARIABLE_Posn_18);
+                    }
+                  }
+                else
+                  {
+                    MR_Integer mercury__lexer__Var_75;
+                    MR_Integer mercury__lexer__Var_76;
+
+                    {
+                      mercury__lexer__string_ungetchar_3_p_0(mercury__lexer__String_8, mercury__lexer__STATE_VARIABLE_Posn_18_49, mercury__lexer__STATE_VARIABLE_Posn_18);
+                    }
+                    *mercury__lexer__Token_11 = (MR_Word) MR_mkword(MR_mktag(3), &mercury__lexer_scalar_common_4[40]);
+                    *mercury__lexer__Context_12 = ((MR_Integer) (MR_hl_field(MR_mktag(0), mercury__lexer__Posn0_10, (MR_Integer) 0)));
+                    mercury__lexer__Var_75 = ((MR_Integer) (MR_hl_field(MR_mktag(0), mercury__lexer__Posn0_10, (MR_Integer) 1)));
+                    mercury__lexer__Var_76 = ((MR_Integer) (MR_hl_field(MR_mktag(0), mercury__lexer__Posn0_10, (MR_Integer) 2)));
+                  }
+              }
+            else
+              {
+                MR_Integer mercury__lexer__Var_83;
+                MR_Integer mercury__lexer__Var_84;
+
+                *mercury__lexer__Token_11 = (MR_Word) MR_mkword(MR_mktag(3), &mercury__lexer_scalar_common_4[40]);
+                *mercury__lexer__Context_12 = ((MR_Integer) (MR_hl_field(MR_mktag(0), mercury__lexer__Posn0_10, (MR_Integer) 0)));
+                mercury__lexer__Var_83 = ((MR_Integer) (MR_hl_field(MR_mktag(0), mercury__lexer__Posn0_10, (MR_Integer) 1)));
+                mercury__lexer__Var_84 = ((MR_Integer) (MR_hl_field(MR_mktag(0), mercury__lexer__Posn0_10, (MR_Integer) 2)));
+                *mercury__lexer__STATE_VARIABLE_Posn_18 = mercury__lexer__STATE_VARIABLE_Posn_19_19;
+              }
+          }
+        else
+          {
+            {
+              mercury__lexer__succeeded = mercury__char__is_decimal_digit_1_p_0(mercury__lexer__Char_14);
+            }
+            if (mercury__lexer__succeeded)
+              {
+                {
+                  mercury__lexer__string_get_float_exponent_3_8_p_0(mercury__lexer__String_8, (MR_Integer) 1, mercury__lexer__Len_9, mercury__lexer__Posn0_10, mercury__lexer__Token_11, mercury__lexer__Context_12, mercury__lexer__STATE_VARIABLE_Posn_19_19, mercury__lexer__STATE_VARIABLE_Posn_18);
+                }
+              }
+            else
+              {
+                MR_Integer mercury__lexer__Var_92;
+                MR_Integer mercury__lexer__Var_93;
+
+                {
+                  mercury__lexer__string_ungetchar_3_p_0(mercury__lexer__String_8, mercury__lexer__STATE_VARIABLE_Posn_19_19, mercury__lexer__STATE_VARIABLE_Posn_18);
+                }
+                *mercury__lexer__Token_11 = (MR_Word) MR_mkword(MR_mktag(3), &mercury__lexer_scalar_common_4[40]);
+                *mercury__lexer__Context_12 = ((MR_Integer) (MR_hl_field(MR_mktag(0), mercury__lexer__Posn0_10, (MR_Integer) 0)));
+                mercury__lexer__Var_92 = ((MR_Integer) (MR_hl_field(MR_mktag(0), mercury__lexer__Posn0_10, (MR_Integer) 1)));
+                mercury__lexer__Var_93 = ((MR_Integer) (MR_hl_field(MR_mktag(0), mercury__lexer__Posn0_10, (MR_Integer) 2)));
+              }
+          }
+      }
+    else
+      {
+        MR_String mercury__lexer__FloatString_16;
+        MR_Word mercury__lexer__STATE_VARIABLE_Posn_25_25;
+        MR_Float mercury__lexer__Float_96;
+
+        {
+          mercury__lexer__grab_float_string_5_p_0(mercury__lexer__String_8, mercury__lexer__Posn0_10, &mercury__lexer__FloatString_16, mercury__lexer__STATE_VARIABLE_Posn_0_17, &mercury__lexer__STATE_VARIABLE_Posn_25_25);
+        }
+{
+#define MR_PROC_LABEL mercury__lexer__string_get_float_exponent_7_p_0
+
+	MR_String FloatString;
+	MR_Float FloatVal;
+	MR_bool SUCCESS_INDICATOR;
+
+	FloatString =  mercury__lexer__FloatString_16 ;
+		{
+{
+    /*
+    ** The %c checks for any erroneous characters appearing after the float;
+    ** if there are then sscanf() will return 2 rather than 1.
+    */
+    char    tmpc;
+    SUCCESS_INDICATOR =
+        (!MR_isspace(FloatString[0])) &&
+        (sscanf(FloatString, MR_FLT_FMT "%c", &FloatVal, &tmpc) == 1);
+        /* MR_TRUE if sscanf succeeds, MR_FALSE otherwise */
+}
+
+		;}
+#undef MR_PROC_LABEL
+	if (SUCCESS_INDICATOR) {
+	 mercury__lexer__Float_96  = FloatVal;
+	}
+mercury__lexer__succeeded  = SUCCESS_INDICATOR;
+}
+        if (mercury__lexer__succeeded)
+          {
+            MR_Word base;
+            base = (MR_Word) MR_mkword(MR_mktag(3), MR_new_object(MR_Word, ((MR_Integer) 2 * sizeof(MR_Word)), NULL, NULL));
+            *mercury__lexer__Token_11 = base;
+            MR_hl_field(MR_mktag(3), base, 0) = ((MR_Box) (MR_Word) ((MR_Integer) 1));
+            MR_hl_field(MR_mktag(3), base, 1) = MR_box_float(mercury__lexer__Float_96);
+          }
+        else
+          {
+            *mercury__lexer__Token_11 = (MR_Word) MR_mkword(MR_mktag(3), &mercury__lexer_scalar_common_4[38]);
+          }
+        {
+          mercury__lexer__string_get_context_4_p_0(mercury__lexer__Posn0_10, mercury__lexer__Context_12, mercury__lexer__STATE_VARIABLE_Posn_25_25, mercury__lexer__STATE_VARIABLE_Posn_18);
+        }
+      }
+  }
+}
+
+static void MR_CALL 
+mercury__lexer__get_float_exponent_5_p_0(
+  MR_Word mercury__lexer__Stream_6,
+  MR_Word mercury__lexer__STATE_VARIABLE_RevChars_0_14,
+  MR_Word * mercury__lexer__Token_8)
+{
+  {
+    MR_bool mercury__lexer__succeeded;
+    MR_Word mercury__lexer__Result_10;
+    MR_Char mercury__lexer__Char_11;
+    MR_Word mercury__lexer__V_10_38;
+    MR_Box mercury__lexer__V_11_39;
+    MR_Box mercury__lexer__V_7_48 = (MR_Box) mercury__lexer__Stream_6;
+
+    {
+      mercury__io__read_char_code_2_6_p_0(mercury__lexer__V_7_48, &mercury__lexer__V_10_38, &mercury__lexer__Char_11, &mercury__lexer__V_11_39);
+    }
+    switch (mercury__lexer__V_10_38) {
+      default: /*NOTREACHED*/ MR_assert(0);
+      case (MR_Integer) 1:
+        mercury__lexer__Result_10 = (MR_Word) MR_mkword(MR_mktag(0), MR_mkbody((MR_Integer) 1));
+        break;
+      case (MR_Integer) 2:
+        {
+          MR_String mercury__lexer__V_12_41;
+          MR_Word mercury__lexer__V_17_42;
+
+{
+#define MR_PROC_LABEL mercury__lexer__get_float_exponent_5_p_0
+
+	MR_Integer Error;
+	MR_String Msg0;
+	MR_String Msg;
+
+	MR_MAYBE_UNBOX_FOREIGN_TYPE(MR_Integer, mercury__lexer__V_11_39 , Error);
+	Msg0 =  (MR_String) "read failed: " ;
+		{
+
+    ML_make_err_msg(Error, Msg0, MR_ALLOC_ID, Msg);
+
+
+		;}
+#undef MR_PROC_LABEL
+	 mercury__lexer__V_12_41  = Msg;
+}
+          mercury__lexer__V_17_42 = (MR_Word) mercury__lexer__V_12_41;
+          {
+            mercury__lexer__Result_10 = (MR_Word) MR_mkword(MR_mktag(1), MR_new_object(MR_Word, ((MR_Integer) 1 * sizeof(MR_Word)), NULL, NULL));
+            MR_hl_field(MR_mktag(1), mercury__lexer__Result_10, 0) = ((MR_Box) (mercury__lexer__V_17_42));
+          }
+        }
+        break;
+      case (MR_Integer) 0:
+        mercury__lexer__Result_10 = (MR_Word) MR_mkword(MR_mktag(0), MR_mkbody((MR_Integer) 0));
+        break;
+    }
+    switch (MR_tag((MR_Word) mercury__lexer__Result_10)) {
+      default: /*NOTREACHED*/ MR_assert(0);
+      case (MR_Integer) 0:
+        switch (MR_unmkbody(mercury__lexer__Result_10)) {
+          default: /*NOTREACHED*/ MR_assert(0);
+          case (MR_Integer) 0:
+            {
+              switch (mercury__lexer__Char_11) {
+                default:
+                  mercury__lexer__succeeded = MR_FALSE;
+                  break;
+                case (MR_Char) 43:
+                  mercury__lexer__succeeded = MR_TRUE;
+                  break;
+                case (MR_Char) 45:
+                  mercury__lexer__succeeded = MR_TRUE;
+                  break;
+              }
+              if (mercury__lexer__succeeded)
+                {
+                  MR_Word mercury__lexer__STATE_VARIABLE_RevChars_18_26;
+
+                  {
+                    mercury__lexer__STATE_VARIABLE_RevChars_18_26 = (MR_Word) MR_mkword(MR_mktag(1), MR_new_object(MR_Word, ((MR_Integer) 2 * sizeof(MR_Word)), NULL, NULL));
+                    MR_hl_field(MR_mktag(1), mercury__lexer__STATE_VARIABLE_RevChars_18_26, 0) = ((MR_Box) (MR_Word) (mercury__lexer__Char_11));
+                    MR_hl_field(MR_mktag(1), mercury__lexer__STATE_VARIABLE_RevChars_18_26, 1) = ((MR_Box) (mercury__lexer__STATE_VARIABLE_RevChars_0_14));
+                  }
+                  {
+                    mercury__lexer__get_float_exponent_2_5_p_0(mercury__lexer__Stream_6, mercury__lexer__STATE_VARIABLE_RevChars_18_26, mercury__lexer__Token_8);
+                  }
+                }
+              else
+                {
+                  {
+                    mercury__lexer__succeeded = mercury__char__is_decimal_digit_1_p_0(mercury__lexer__Char_11);
+                  }
+                  if (mercury__lexer__succeeded)
+                    {
+                      MR_Word mercury__lexer__STATE_VARIABLE_RevChars_18_27;
+
+                      {
+                        mercury__lexer__STATE_VARIABLE_RevChars_18_27 = (MR_Word) MR_mkword(MR_mktag(1), MR_new_object(MR_Word, ((MR_Integer) 2 * sizeof(MR_Word)), NULL, NULL));
+                        MR_hl_field(MR_mktag(1), mercury__lexer__STATE_VARIABLE_RevChars_18_27, 0) = ((MR_Box) (MR_Word) (mercury__lexer__Char_11));
+                        MR_hl_field(MR_mktag(1), mercury__lexer__STATE_VARIABLE_RevChars_18_27, 1) = ((MR_Box) (mercury__lexer__STATE_VARIABLE_RevChars_0_14));
+                      }
+                      {
+                        mercury__lexer__get_float_exponent_3_6_p_0(mercury__lexer__Stream_6, (MR_Integer) 1, mercury__lexer__STATE_VARIABLE_RevChars_18_27, mercury__lexer__Token_8);
+                      }
+                    }
+                  else
+                    {
+                      {
+                        mercury__io__putback_char_4_p_0(mercury__lexer__Stream_6, mercury__lexer__Char_11);
+                      }
+                      *mercury__lexer__Token_8 = (MR_Word) MR_mkword(MR_mktag(3), &mercury__lexer_scalar_common_4[40]);
+                    }
+                }
+            }
+            break;
+          case (MR_Integer) 1:
+            {
+              MR_String mercury__lexer__String_51;
+
+              {
+                mercury__lexer__succeeded = mercury__string__semidet_from_rev_char_list_2_p_0(mercury__lexer__STATE_VARIABLE_RevChars_0_14, &mercury__lexer__String_51);
+              }
+              if (mercury__lexer__succeeded)
+                {
+                  MR_Float mercury__lexer__Float_57;
+
+{
+#define MR_PROC_LABEL mercury__lexer__get_float_exponent_5_p_0
+
+	MR_String FloatString;
+	MR_Float FloatVal;
+	MR_bool SUCCESS_INDICATOR;
+
+	FloatString =  mercury__lexer__String_51 ;
+		{
+{
+    /*
+    ** The %c checks for any erroneous characters appearing after the float;
+    ** if there are then sscanf() will return 2 rather than 1.
+    */
+    char    tmpc;
+    SUCCESS_INDICATOR =
+        (!MR_isspace(FloatString[0])) &&
+        (sscanf(FloatString, MR_FLT_FMT "%c", &FloatVal, &tmpc) == 1);
+        /* MR_TRUE if sscanf succeeds, MR_FALSE otherwise */
+}
+
+		;}
+#undef MR_PROC_LABEL
+	if (SUCCESS_INDICATOR) {
+	 mercury__lexer__Float_57  = FloatVal;
+	}
+mercury__lexer__succeeded  = SUCCESS_INDICATOR;
+}
+                  if (mercury__lexer__succeeded)
+                    {
+                      MR_Word base;
+                      base = (MR_Word) MR_mkword(MR_mktag(3), MR_new_object(MR_Word, ((MR_Integer) 2 * sizeof(MR_Word)), NULL, NULL));
+                      *mercury__lexer__Token_8 = base;
+                      MR_hl_field(MR_mktag(3), base, 0) = ((MR_Box) (MR_Word) ((MR_Integer) 1));
+                      MR_hl_field(MR_mktag(3), base, 1) = MR_box_float(mercury__lexer__Float_57);
+                    }
+                  else
+                    {
+                      *mercury__lexer__Token_8 = (MR_Word) MR_mkword(MR_mktag(3), &mercury__lexer_scalar_common_4[38]);
+                    }
+                }
+              else
+                {
+                  *mercury__lexer__Token_8 = (MR_Word) MR_mkword(MR_mktag(3), &mercury__lexer_scalar_common_4[31]);
+                }
+            }
+            break;
+        }
+        break;
+      case (MR_Integer) 1:
+        {
+          MR_Word mercury__lexer__Error_12 = ((MR_Word) (MR_hl_field(MR_mktag(1), mercury__lexer__Result_10, (MR_Integer) 0)));
+
+          {
+            MR_Word base;
+            base = (MR_Word) MR_mkword(MR_mktag(3), MR_new_object(MR_Word, ((MR_Integer) 2 * sizeof(MR_Word)), NULL, NULL));
+            *mercury__lexer__Token_8 = base;
+            MR_hl_field(MR_mktag(3), base, 0) = ((MR_Box) (MR_Word) ((MR_Integer) 6));
+            MR_hl_field(MR_mktag(3), base, 1) = ((MR_Box) (mercury__lexer__Error_12));
+          }
+        }
+        break;
+    }
+  }
+}
+
+static void MR_CALL 
+mercury__lexer__string_get_float_decimals_8_p_0(
+  MR_String mercury__lexer__String_9,
+  MR_Word mercury__lexer__STATE_VARIABLE_LastDigit_0_18,
+  MR_Integer mercury__lexer__Len_11,
+  MR_Word mercury__lexer__Posn0_12,
+  MR_Word * mercury__lexer__Token_13,
+  MR_Integer * mercury__lexer__Context_14,
+  MR_Word mercury__lexer__STATE_VARIABLE_Posn_0_19,
+  MR_Word * mercury__lexer__STATE_VARIABLE_Posn_20)
+{
+  while (MR_TRUE)
+    {
+      /* tailcall optimized into a loop */
+      {
+        MR_bool mercury__lexer__succeeded;
+        MR_Char mercury__lexer__Char_16;
+        MR_Word mercury__lexer__STATE_VARIABLE_Posn_21_21;
+        MR_Integer mercury__lexer__LineNum0_48 = ((MR_Integer) (MR_hl_field(MR_mktag(0), mercury__lexer__STATE_VARIABLE_Posn_0_19, (MR_Integer) 0)));
+        MR_Integer mercury__lexer__LineOffset0_49 = ((MR_Integer) (MR_hl_field(MR_mktag(0), mercury__lexer__STATE_VARIABLE_Posn_0_19, (MR_Integer) 1)));
+        MR_Integer mercury__lexer__Offset0_50 = ((MR_Integer) (MR_hl_field(MR_mktag(0), mercury__lexer__STATE_VARIABLE_Posn_0_19, (MR_Integer) 2)));
+        MR_Integer mercury__lexer__Offset_51;
+
+        mercury__lexer__succeeded = (mercury__lexer__Offset0_50 < mercury__lexer__Len_11);
+        if (mercury__lexer__succeeded)
+          {
+{
+#define MR_PROC_LABEL mercury__lexer__string_get_float_decimals_8_p_0
+
+	MR_String Str;
+	MR_Integer Index;
+	MR_Integer NextIndex;
+	MR_Char Ch;
+	MR_bool SUCCESS_INDICATOR;
+
+	Str =  mercury__lexer__String_9 ;
+	Index =  mercury__lexer__Offset0_50 ;
+		{
+
+    Ch = Str[Index];
+    if (MR_is_ascii(Ch)) {
+        NextIndex = Index + 1;
+        SUCCESS_INDICATOR = (Ch != 0);
+    } else {
+        NextIndex = Index;
+        Ch = MR_utf8_get_next_mb(Str, &NextIndex);
+        SUCCESS_INDICATOR = (Ch > 0);
+    }
+
+
+		;}
+#undef MR_PROC_LABEL
+	if (SUCCESS_INDICATOR) {
+	 mercury__lexer__Offset_51  = NextIndex;
+	 mercury__lexer__Char_16  = Ch;
+	}
+mercury__lexer__succeeded  = SUCCESS_INDICATOR;
+}
+            if (mercury__lexer__succeeded)
+              {
+                mercury__lexer__succeeded = (mercury__lexer__Char_16 == (MR_Char) 10);
+                if (mercury__lexer__succeeded)
+                  {
+                    MR_Integer mercury__lexer__LineNum_52 = (mercury__lexer__LineNum0_48 + (MR_Integer) 1);
+
+                    {
+                      mercury__lexer__STATE_VARIABLE_Posn_21_21 = (MR_Word) MR_new_object(MR_Word, ((MR_Integer) 3 * sizeof(MR_Word)), NULL, NULL);
+                      MR_hl_field(MR_mktag(0), mercury__lexer__STATE_VARIABLE_Posn_21_21, 0) = ((MR_Box) (mercury__lexer__LineNum_52));
+                      MR_hl_field(MR_mktag(0), mercury__lexer__STATE_VARIABLE_Posn_21_21, 1) = ((MR_Box) (mercury__lexer__Offset_51));
+                      MR_hl_field(MR_mktag(0), mercury__lexer__STATE_VARIABLE_Posn_21_21, 2) = ((MR_Box) (mercury__lexer__Offset_51));
+                    }
+                  }
+                else
+                  {
+                    mercury__lexer__STATE_VARIABLE_Posn_21_21 = (MR_Word) MR_new_object(MR_Word, ((MR_Integer) 3 * sizeof(MR_Word)), NULL, NULL);
+                    MR_hl_field(MR_mktag(0), mercury__lexer__STATE_VARIABLE_Posn_21_21, 0) = ((MR_Box) (mercury__lexer__LineNum0_48));
+                    MR_hl_field(MR_mktag(0), mercury__lexer__STATE_VARIABLE_Posn_21_21, 1) = ((MR_Box) (mercury__lexer__LineOffset0_49));
+                    MR_hl_field(MR_mktag(0), mercury__lexer__STATE_VARIABLE_Posn_21_21, 2) = ((MR_Box) (mercury__lexer__Offset_51));
+                  }
+                mercury__lexer__succeeded = MR_TRUE;
+              }
+          }
+        if (mercury__lexer__succeeded)
+          {
+            {
+              mercury__lexer__succeeded = mercury__char__is_decimal_digit_1_p_0(mercury__lexer__Char_16);
+            }
+            if (mercury__lexer__succeeded)
+              {
+                /* direct tailcall eliminated */
+                {
+                  MR_Word mercury__lexer__next_value_of_STATE_VARIABLE_Posn_0_19 = mercury__lexer__STATE_VARIABLE_Posn_21_21;
+
+                  mercury__lexer__STATE_VARIABLE_Posn_0_19 = mercury__lexer__next_value_of_STATE_VARIABLE_Posn_0_19;
+                  mercury__lexer__STATE_VARIABLE_LastDigit_0_18 = (MR_Integer) 1;
+                }
+                continue;
+              }
+            else
+              {
+                mercury__lexer__succeeded = (mercury__lexer__Char_16 == (MR_Char) 95);
+                if (mercury__lexer__succeeded)
+                  {
+                    /* direct tailcall eliminated */
+                    {
+                      MR_Word mercury__lexer__next_value_of_STATE_VARIABLE_Posn_0_19 = mercury__lexer__STATE_VARIABLE_Posn_21_21;
+
+                      mercury__lexer__STATE_VARIABLE_Posn_0_19 = mercury__lexer__next_value_of_STATE_VARIABLE_Posn_0_19;
+                      mercury__lexer__STATE_VARIABLE_LastDigit_0_18 = (MR_Integer) 0;
+                    }
+                    continue;
+                  }
+                else
+                  {
+                    switch (mercury__lexer__Char_16) {
+                      default:
+                        mercury__lexer__succeeded = MR_FALSE;
+                        break;
+                      case (MR_Char) 69:
+                        mercury__lexer__succeeded = MR_TRUE;
+                        break;
+                      case (MR_Char) 101:
+                        mercury__lexer__succeeded = MR_TRUE;
+                        break;
+                    }
+                    if (mercury__lexer__succeeded)
+                      {
+                        mercury__lexer__string_get_float_exponent_7_p_0(mercury__lexer__String_9, mercury__lexer__Len_11, mercury__lexer__Posn0_12, mercury__lexer__Token_13, mercury__lexer__Context_14, mercury__lexer__STATE_VARIABLE_Posn_21_21, mercury__lexer__STATE_VARIABLE_Posn_20);
+                      }
+                    else
+                      {
+                        MR_Word mercury__lexer__STATE_VARIABLE_Posn_27_27;
+                        MR_Integer mercury__lexer__Var_85;
+                        MR_Integer mercury__lexer__Var_86;
+
+                        {
+                          mercury__lexer__string_ungetchar_3_p_0(mercury__lexer__String_9, mercury__lexer__STATE_VARIABLE_Posn_21_21, &mercury__lexer__STATE_VARIABLE_Posn_27_27);
+                        }
+                        switch (mercury__lexer__STATE_VARIABLE_LastDigit_0_18) {
+                          default: /*NOTREACHED*/ MR_assert(0);
+                          case (MR_Integer) 1:
+                            {
+                              MR_String mercury__lexer__FloatString_17;
+                              MR_Integer mercury__lexer__Offset0_62;
+                              MR_Integer mercury__lexer__Offset_65;
+                              MR_Integer mercury__lexer__Var_60;
+                              MR_Integer mercury__lexer__Var_61;
+                              MR_Integer mercury__lexer__Var_63;
+                              MR_Integer mercury__lexer__Var_64;
+                              MR_Float mercury__lexer__Float_77;
+
+                              *mercury__lexer__STATE_VARIABLE_Posn_20 = mercury__lexer__STATE_VARIABLE_Posn_27_27;
+                              mercury__lexer__Var_60 = ((MR_Integer) (MR_hl_field(MR_mktag(0), mercury__lexer__Posn0_12, (MR_Integer) 0)));
+                              mercury__lexer__Var_61 = ((MR_Integer) (MR_hl_field(MR_mktag(0), mercury__lexer__Posn0_12, (MR_Integer) 1)));
+                              mercury__lexer__Offset0_62 = ((MR_Integer) (MR_hl_field(MR_mktag(0), mercury__lexer__Posn0_12, (MR_Integer) 2)));
+                              mercury__lexer__Var_63 = ((MR_Integer) (MR_hl_field(MR_mktag(0), mercury__lexer__STATE_VARIABLE_Posn_27_27, (MR_Integer) 0)));
+                              mercury__lexer__Var_64 = ((MR_Integer) (MR_hl_field(MR_mktag(0), mercury__lexer__STATE_VARIABLE_Posn_27_27, (MR_Integer) 1)));
+                              mercury__lexer__Offset_65 = ((MR_Integer) (MR_hl_field(MR_mktag(0), mercury__lexer__STATE_VARIABLE_Posn_27_27, (MR_Integer) 2)));
+{
+#define MR_PROC_LABEL mercury__lexer__string_get_float_decimals_8_p_0
+
+	MR_String Str;
+	MR_Integer Start;
+	MR_Integer End;
+	MR_String FloatStr;
+
+	Str =  mercury__lexer__String_9 ;
+	Start =  mercury__lexer__Offset0_62 ;
+	End =  mercury__lexer__Offset_65 ;
+		{
+
+    int src;
+    int dst = 0;
+
+    MR_allocate_aligned_string_msg(FloatStr, End - Start, MR_ALLOC_ID);
+    for (src = Start; src < End; src++) {
+        if (Str[src] != '_') {
+            FloatStr[dst] = Str[src];
+            dst++;
+        }
+    }
+    FloatStr[dst] = '\0';
+
+
+		;}
+#undef MR_PROC_LABEL
+	 mercury__lexer__FloatString_17  = FloatStr;
+}
+{
+#define MR_PROC_LABEL mercury__lexer__string_get_float_decimals_8_p_0
+
+	MR_String FloatString;
+	MR_Float FloatVal;
+	MR_bool SUCCESS_INDICATOR;
+
+	FloatString =  mercury__lexer__FloatString_17 ;
+		{
+{
+    /*
+    ** The %c checks for any erroneous characters appearing after the float;
+    ** if there are then sscanf() will return 2 rather than 1.
+    */
+    char    tmpc;
+    SUCCESS_INDICATOR =
+        (!MR_isspace(FloatString[0])) &&
+        (sscanf(FloatString, MR_FLT_FMT "%c", &FloatVal, &tmpc) == 1);
+        /* MR_TRUE if sscanf succeeds, MR_FALSE otherwise */
+}
+
+		;}
+#undef MR_PROC_LABEL
+	if (SUCCESS_INDICATOR) {
+	 mercury__lexer__Float_77  = FloatVal;
+	}
+mercury__lexer__succeeded  = SUCCESS_INDICATOR;
+}
+                              if (mercury__lexer__succeeded)
+                                {
+                                  MR_Word base;
+                                  base = (MR_Word) MR_mkword(MR_mktag(3), MR_new_object(MR_Word, ((MR_Integer) 2 * sizeof(MR_Word)), NULL, NULL));
+                                  *mercury__lexer__Token_13 = base;
+                                  MR_hl_field(MR_mktag(3), base, 0) = ((MR_Box) (MR_Word) ((MR_Integer) 1));
+                                  MR_hl_field(MR_mktag(3), base, 1) = MR_box_float(mercury__lexer__Float_77);
+                                }
+                              else
+                                {
+                                  *mercury__lexer__Token_13 = (MR_Word) MR_mkword(MR_mktag(3), &mercury__lexer_scalar_common_4[38]);
+                                }
+                            }
+                            break;
+                          case (MR_Integer) 0:
+                            {
+                              *mercury__lexer__Token_13 = (MR_Word) MR_mkword(MR_mktag(3), &mercury__lexer_scalar_common_4[39]);
+                              *mercury__lexer__STATE_VARIABLE_Posn_20 = mercury__lexer__STATE_VARIABLE_Posn_27_27;
+                            }
+                            break;
+                        }
+                        *mercury__lexer__Context_14 = ((MR_Integer) (MR_hl_field(MR_mktag(0), mercury__lexer__Posn0_12, (MR_Integer) 0)));
+                        mercury__lexer__Var_85 = ((MR_Integer) (MR_hl_field(MR_mktag(0), mercury__lexer__Posn0_12, (MR_Integer) 1)));
+                        mercury__lexer__Var_86 = ((MR_Integer) (MR_hl_field(MR_mktag(0), mercury__lexer__Posn0_12, (MR_Integer) 2)));
+                      }
+                  }
+              }
+          }
+        else
+          {
+            MR_Word mercury__lexer__STATE_VARIABLE_Posn_32_32;
+
+            switch (mercury__lexer__STATE_VARIABLE_LastDigit_0_18) {
+              default: /*NOTREACHED*/ MR_assert(0);
+              case (MR_Integer) 1:
+                {
+                  MR_String mercury__lexer__FloatString_38;
+                  MR_Float mercury__lexer__Float_89;
+
+                  {
+                    mercury__lexer__grab_float_string_5_p_0(mercury__lexer__String_9, mercury__lexer__Posn0_12, &mercury__lexer__FloatString_38, mercury__lexer__STATE_VARIABLE_Posn_0_19, &mercury__lexer__STATE_VARIABLE_Posn_32_32);
+                  }
+{
+#define MR_PROC_LABEL mercury__lexer__string_get_float_decimals_8_p_0
+
+	MR_String FloatString;
+	MR_Float FloatVal;
+	MR_bool SUCCESS_INDICATOR;
+
+	FloatString =  mercury__lexer__FloatString_38 ;
+		{
+{
+    /*
+    ** The %c checks for any erroneous characters appearing after the float;
+    ** if there are then sscanf() will return 2 rather than 1.
+    */
+    char    tmpc;
+    SUCCESS_INDICATOR =
+        (!MR_isspace(FloatString[0])) &&
+        (sscanf(FloatString, MR_FLT_FMT "%c", &FloatVal, &tmpc) == 1);
+        /* MR_TRUE if sscanf succeeds, MR_FALSE otherwise */
+}
+
+		;}
+#undef MR_PROC_LABEL
+	if (SUCCESS_INDICATOR) {
+	 mercury__lexer__Float_89  = FloatVal;
+	}
+mercury__lexer__succeeded  = SUCCESS_INDICATOR;
+}
+                  if (mercury__lexer__succeeded)
+                    {
+                      MR_Word base;
+                      base = (MR_Word) MR_mkword(MR_mktag(3), MR_new_object(MR_Word, ((MR_Integer) 2 * sizeof(MR_Word)), NULL, NULL));
+                      *mercury__lexer__Token_13 = base;
+                      MR_hl_field(MR_mktag(3), base, 0) = ((MR_Box) (MR_Word) ((MR_Integer) 1));
+                      MR_hl_field(MR_mktag(3), base, 1) = MR_box_float(mercury__lexer__Float_89);
+                    }
+                  else
+                    {
+                      *mercury__lexer__Token_13 = (MR_Word) MR_mkword(MR_mktag(3), &mercury__lexer_scalar_common_4[38]);
+                    }
+                }
+                break;
+              case (MR_Integer) 0:
+                {
+                  *mercury__lexer__Token_13 = (MR_Word) MR_mkword(MR_mktag(3), &mercury__lexer_scalar_common_4[39]);
+                  mercury__lexer__STATE_VARIABLE_Posn_32_32 = mercury__lexer__STATE_VARIABLE_Posn_0_19;
+                }
+                break;
+            }
+            {
+              mercury__lexer__string_get_context_4_p_0(mercury__lexer__Posn0_12, mercury__lexer__Context_14, mercury__lexer__STATE_VARIABLE_Posn_32_32, mercury__lexer__STATE_VARIABLE_Posn_20);
+            }
+          }
+      }
+      break;
+    }
+}
+
+static void MR_CALL 
+mercury__lexer__get_float_decimals_6_p_0(
+  MR_Word mercury__lexer__Stream_7,
+  MR_Word mercury__lexer__STATE_VARIABLE_LastDigit_0_15,
+  MR_Word mercury__lexer__STATE_VARIABLE_RevChars_0_16,
+  MR_Word * mercury__lexer__Token_10)
+{
+  while (MR_TRUE)
+    {
+      /* tailcall optimized into a loop */
+      {
+        MR_bool mercury__lexer__succeeded;
+        MR_Word mercury__lexer__Result_12;
+        MR_Char mercury__lexer__Char_13;
+        MR_Word mercury__lexer__V_10_57;
+        MR_Box mercury__lexer__V_11_58;
+        MR_Box mercury__lexer__V_7_67 = (MR_Box) mercury__lexer__Stream_7;
+
+        {
+          mercury__io__read_char_code_2_6_p_0(mercury__lexer__V_7_67, &mercury__lexer__V_10_57, &mercury__lexer__Char_13, &mercury__lexer__V_11_58);
+        }
+        switch (mercury__lexer__V_10_57) {
+          default: /*NOTREACHED*/ MR_assert(0);
+          case (MR_Integer) 1:
+            mercury__lexer__Result_12 = (MR_Word) MR_mkword(MR_mktag(0), MR_mkbody((MR_Integer) 1));
+            break;
+          case (MR_Integer) 2:
+            {
+              MR_String mercury__lexer__V_12_60;
+              MR_Word mercury__lexer__V_17_61;
+
+{
+#define MR_PROC_LABEL mercury__lexer__get_float_decimals_6_p_0
+
+	MR_Integer Error;
+	MR_String Msg0;
+	MR_String Msg;
+
+	MR_MAYBE_UNBOX_FOREIGN_TYPE(MR_Integer, mercury__lexer__V_11_58 , Error);
+	Msg0 =  (MR_String) "read failed: " ;
+		{
+
+    ML_make_err_msg(Error, Msg0, MR_ALLOC_ID, Msg);
+
+
+		;}
+#undef MR_PROC_LABEL
+	 mercury__lexer__V_12_60  = Msg;
+}
+              mercury__lexer__V_17_61 = (MR_Word) mercury__lexer__V_12_60;
+              {
+                mercury__lexer__Result_12 = (MR_Word) MR_mkword(MR_mktag(1), MR_new_object(MR_Word, ((MR_Integer) 1 * sizeof(MR_Word)), NULL, NULL));
+                MR_hl_field(MR_mktag(1), mercury__lexer__Result_12, 0) = ((MR_Box) (mercury__lexer__V_17_61));
+              }
+            }
+            break;
+          case (MR_Integer) 0:
+            mercury__lexer__Result_12 = (MR_Word) MR_mkword(MR_mktag(0), MR_mkbody((MR_Integer) 0));
+            break;
+        }
+        switch (MR_tag((MR_Word) mercury__lexer__Result_12)) {
+          default: /*NOTREACHED*/ MR_assert(0);
+          case (MR_Integer) 0:
+            switch (MR_unmkbody(mercury__lexer__Result_12)) {
+              default: /*NOTREACHED*/ MR_assert(0);
+              case (MR_Integer) 0:
+                {
+                  {
+                    mercury__lexer__succeeded = mercury__char__is_decimal_digit_1_p_0(mercury__lexer__Char_13);
+                  }
+                  if (mercury__lexer__succeeded)
+                    {
+                      MR_Word mercury__lexer__STATE_VARIABLE_RevChars_20_34;
+
+                      {
+                        mercury__lexer__STATE_VARIABLE_RevChars_20_34 = (MR_Word) MR_mkword(MR_mktag(1), MR_new_object(MR_Word, ((MR_Integer) 2 * sizeof(MR_Word)), NULL, NULL));
+                        MR_hl_field(MR_mktag(1), mercury__lexer__STATE_VARIABLE_RevChars_20_34, 0) = ((MR_Box) (MR_Word) (mercury__lexer__Char_13));
+                        MR_hl_field(MR_mktag(1), mercury__lexer__STATE_VARIABLE_RevChars_20_34, 1) = ((MR_Box) (mercury__lexer__STATE_VARIABLE_RevChars_0_16));
+                      }
+                      /* direct tailcall eliminated */
+                      {
+                        MR_Word mercury__lexer__next_value_of_STATE_VARIABLE_RevChars_0_16 = mercury__lexer__STATE_VARIABLE_RevChars_20_34;
+
+                        mercury__lexer__STATE_VARIABLE_RevChars_0_16 = mercury__lexer__next_value_of_STATE_VARIABLE_RevChars_0_16;
+                        mercury__lexer__STATE_VARIABLE_LastDigit_0_15 = (MR_Integer) 1;
+                      }
+                      continue;
+                    }
+                  else
+                    {
+                      mercury__lexer__succeeded = (mercury__lexer__Char_13 == (MR_Char) 95);
+                      if (mercury__lexer__succeeded)
+                        {
+                          /* direct tailcall eliminated */
+                          {
+                            mercury__lexer__STATE_VARIABLE_LastDigit_0_15 = (MR_Integer) 0;
+                          }
+                          continue;
+                        }
+                      else
+                        {
+                          switch (mercury__lexer__Char_13) {
+                            default:
+                              mercury__lexer__succeeded = MR_FALSE;
+                              break;
+                            case (MR_Char) 69:
+                              mercury__lexer__succeeded = MR_TRUE;
+                              break;
+                            case (MR_Char) 101:
+                              mercury__lexer__succeeded = MR_TRUE;
+                              break;
+                          }
+                          if (mercury__lexer__succeeded)
+                            {
+                              MR_Word mercury__lexer__STATE_VARIABLE_RevChars_20_39;
+
+                              {
+                                mercury__lexer__STATE_VARIABLE_RevChars_20_39 = (MR_Word) MR_mkword(MR_mktag(1), MR_new_object(MR_Word, ((MR_Integer) 2 * sizeof(MR_Word)), NULL, NULL));
+                                MR_hl_field(MR_mktag(1), mercury__lexer__STATE_VARIABLE_RevChars_20_39, 0) = ((MR_Box) (MR_Word) (mercury__lexer__Char_13));
+                                MR_hl_field(MR_mktag(1), mercury__lexer__STATE_VARIABLE_RevChars_20_39, 1) = ((MR_Box) (mercury__lexer__STATE_VARIABLE_RevChars_0_16));
+                              }
+                              {
+                                mercury__lexer__get_float_exponent_5_p_0(mercury__lexer__Stream_7, mercury__lexer__STATE_VARIABLE_RevChars_20_39, mercury__lexer__Token_10);
+                              }
+                            }
+                          else
+                            {
+                              {
+                                mercury__io__putback_char_4_p_0(mercury__lexer__Stream_7, mercury__lexer__Char_13);
+                              }
+                              switch (mercury__lexer__STATE_VARIABLE_LastDigit_0_15) {
+                                default: /*NOTREACHED*/ MR_assert(0);
+                                case (MR_Integer) 1:
+                                  {
+                                    MR_String mercury__lexer__String_81;
+
+                                    {
+                                      mercury__lexer__succeeded = mercury__string__semidet_from_rev_char_list_2_p_0(mercury__lexer__STATE_VARIABLE_RevChars_0_16, &mercury__lexer__String_81);
+                                    }
+                                    if (mercury__lexer__succeeded)
+                                      {
+                                        MR_Float mercury__lexer__Float_87;
+
+{
+#define MR_PROC_LABEL mercury__lexer__get_float_decimals_6_p_0
+
+	MR_String FloatString;
+	MR_Float FloatVal;
+	MR_bool SUCCESS_INDICATOR;
+
+	FloatString =  mercury__lexer__String_81 ;
+		{
+{
+    /*
+    ** The %c checks for any erroneous characters appearing after the float;
+    ** if there are then sscanf() will return 2 rather than 1.
+    */
+    char    tmpc;
+    SUCCESS_INDICATOR =
+        (!MR_isspace(FloatString[0])) &&
+        (sscanf(FloatString, MR_FLT_FMT "%c", &FloatVal, &tmpc) == 1);
+        /* MR_TRUE if sscanf succeeds, MR_FALSE otherwise */
+}
+
+		;}
+#undef MR_PROC_LABEL
+	if (SUCCESS_INDICATOR) {
+	 mercury__lexer__Float_87  = FloatVal;
+	}
+mercury__lexer__succeeded  = SUCCESS_INDICATOR;
+}
+                                        if (mercury__lexer__succeeded)
+                                          {
+                                            MR_Word base;
+                                            base = (MR_Word) MR_mkword(MR_mktag(3), MR_new_object(MR_Word, ((MR_Integer) 2 * sizeof(MR_Word)), NULL, NULL));
+                                            *mercury__lexer__Token_10 = base;
+                                            MR_hl_field(MR_mktag(3), base, 0) = ((MR_Box) (MR_Word) ((MR_Integer) 1));
+                                            MR_hl_field(MR_mktag(3), base, 1) = MR_box_float(mercury__lexer__Float_87);
+                                          }
+                                        else
+                                          {
+                                            *mercury__lexer__Token_10 = (MR_Word) MR_mkword(MR_mktag(3), &mercury__lexer_scalar_common_4[38]);
+                                          }
+                                      }
+                                    else
+                                      {
+                                        *mercury__lexer__Token_10 = (MR_Word) MR_mkword(MR_mktag(3), &mercury__lexer_scalar_common_4[31]);
+                                      }
+                                  }
+                                  break;
+                                case (MR_Integer) 0:
+                                  {
+                                    *mercury__lexer__Token_10 = (MR_Word) MR_mkword(MR_mktag(3), &mercury__lexer_scalar_common_4[39]);
+                                  }
+                                  break;
+                              }
+                            }
+                        }
+                    }
+                }
+                break;
+              case (MR_Integer) 1:
+                switch (mercury__lexer__STATE_VARIABLE_LastDigit_0_15) {
+                  default: /*NOTREACHED*/ MR_assert(0);
+                  case (MR_Integer) 1:
+                    {
+                      MR_String mercury__lexer__String_70;
+
+                      {
+                        mercury__lexer__succeeded = mercury__string__semidet_from_rev_char_list_2_p_0(mercury__lexer__STATE_VARIABLE_RevChars_0_16, &mercury__lexer__String_70);
+                      }
+                      if (mercury__lexer__succeeded)
+                        {
+                          MR_Float mercury__lexer__Float_76;
+
+{
+#define MR_PROC_LABEL mercury__lexer__get_float_decimals_6_p_0
+
+	MR_String FloatString;
+	MR_Float FloatVal;
+	MR_bool SUCCESS_INDICATOR;
+
+	FloatString =  mercury__lexer__String_70 ;
+		{
+{
+    /*
+    ** The %c checks for any erroneous characters appearing after the float;
+    ** if there are then sscanf() will return 2 rather than 1.
+    */
+    char    tmpc;
+    SUCCESS_INDICATOR =
+        (!MR_isspace(FloatString[0])) &&
+        (sscanf(FloatString, MR_FLT_FMT "%c", &FloatVal, &tmpc) == 1);
+        /* MR_TRUE if sscanf succeeds, MR_FALSE otherwise */
+}
+
+		;}
+#undef MR_PROC_LABEL
+	if (SUCCESS_INDICATOR) {
+	 mercury__lexer__Float_76  = FloatVal;
+	}
+mercury__lexer__succeeded  = SUCCESS_INDICATOR;
+}
+                          if (mercury__lexer__succeeded)
+                            {
+                              MR_Word base;
+                              base = (MR_Word) MR_mkword(MR_mktag(3), MR_new_object(MR_Word, ((MR_Integer) 2 * sizeof(MR_Word)), NULL, NULL));
+                              *mercury__lexer__Token_10 = base;
+                              MR_hl_field(MR_mktag(3), base, 0) = ((MR_Box) (MR_Word) ((MR_Integer) 1));
+                              MR_hl_field(MR_mktag(3), base, 1) = MR_box_float(mercury__lexer__Float_76);
+                            }
+                          else
+                            {
+                              *mercury__lexer__Token_10 = (MR_Word) MR_mkword(MR_mktag(3), &mercury__lexer_scalar_common_4[38]);
+                            }
+                        }
+                      else
+                        {
+                          *mercury__lexer__Token_10 = (MR_Word) MR_mkword(MR_mktag(3), &mercury__lexer_scalar_common_4[31]);
+                        }
+                    }
+                    break;
+                  case (MR_Integer) 0:
+                    {
+                      *mercury__lexer__Token_10 = (MR_Word) MR_mkword(MR_mktag(3), &mercury__lexer_scalar_common_4[39]);
+                    }
+                    break;
+                }
+                break;
+            }
+            break;
+          case (MR_Integer) 1:
+            {
+              MR_Word mercury__lexer__Error_14 = ((MR_Word) (MR_hl_field(MR_mktag(1), mercury__lexer__Result_12, (MR_Integer) 0)));
+
+              {
+                MR_Word base;
+                base = (MR_Word) MR_mkword(MR_mktag(3), MR_new_object(MR_Word, ((MR_Integer) 2 * sizeof(MR_Word)), NULL, NULL));
+                *mercury__lexer__Token_10 = base;
+                MR_hl_field(MR_mktag(3), base, 0) = ((MR_Box) (MR_Word) ((MR_Integer) 6));
+                MR_hl_field(MR_mktag(3), base, 1) = ((MR_Box) (mercury__lexer__Error_14));
+              }
+            }
+            break;
+        }
+      }
+      break;
+    }
+}
+
+static void MR_CALL 
+mercury__lexer__string_get_int_dot_8_p_0(
+  MR_String mercury__lexer__String_9,
+  MR_Word mercury__lexer__STATE_VARIABLE_LastDigit_0_18,
+  MR_Integer mercury__lexer__Len_11,
+  MR_Word mercury__lexer__Posn0_12,
+  MR_Word * mercury__lexer__Token_13,
+  MR_Integer * mercury__lexer__Context_14,
+  MR_Word mercury__lexer__STATE_VARIABLE_Posn_0_19,
+  MR_Word * mercury__lexer__STATE_VARIABLE_Posn_20)
+{
+  {
+    MR_bool mercury__lexer__succeeded;
+    MR_Char mercury__lexer__Char_16;
+    MR_Word mercury__lexer__STATE_VARIABLE_Posn_21_21;
+    MR_Integer mercury__lexer__LineNum0_53 = ((MR_Integer) (MR_hl_field(MR_mktag(0), mercury__lexer__STATE_VARIABLE_Posn_0_19, (MR_Integer) 0)));
+    MR_Integer mercury__lexer__LineOffset0_54 = ((MR_Integer) (MR_hl_field(MR_mktag(0), mercury__lexer__STATE_VARIABLE_Posn_0_19, (MR_Integer) 1)));
+    MR_Integer mercury__lexer__Offset0_55 = ((MR_Integer) (MR_hl_field(MR_mktag(0), mercury__lexer__STATE_VARIABLE_Posn_0_19, (MR_Integer) 2)));
+    MR_Integer mercury__lexer__Offset_56;
+
+    mercury__lexer__succeeded = (mercury__lexer__Offset0_55 < mercury__lexer__Len_11);
+    if (mercury__lexer__succeeded)
+      {
+{
+#define MR_PROC_LABEL mercury__lexer__string_get_int_dot_8_p_0
+
+	MR_String Str;
+	MR_Integer Index;
+	MR_Integer NextIndex;
+	MR_Char Ch;
+	MR_bool SUCCESS_INDICATOR;
+
+	Str =  mercury__lexer__String_9 ;
+	Index =  mercury__lexer__Offset0_55 ;
+		{
+
+    Ch = Str[Index];
+    if (MR_is_ascii(Ch)) {
+        NextIndex = Index + 1;
+        SUCCESS_INDICATOR = (Ch != 0);
+    } else {
+        NextIndex = Index;
+        Ch = MR_utf8_get_next_mb(Str, &NextIndex);
+        SUCCESS_INDICATOR = (Ch > 0);
+    }
+
+
+		;}
+#undef MR_PROC_LABEL
+	if (SUCCESS_INDICATOR) {
+	 mercury__lexer__Offset_56  = NextIndex;
+	 mercury__lexer__Char_16  = Ch;
+	}
+mercury__lexer__succeeded  = SUCCESS_INDICATOR;
+}
+        if (mercury__lexer__succeeded)
+          {
+            mercury__lexer__succeeded = (mercury__lexer__Char_16 == (MR_Char) 10);
+            if (mercury__lexer__succeeded)
+              {
+                MR_Integer mercury__lexer__LineNum_57 = (mercury__lexer__LineNum0_53 + (MR_Integer) 1);
+
+                {
+                  mercury__lexer__STATE_VARIABLE_Posn_21_21 = (MR_Word) MR_new_object(MR_Word, ((MR_Integer) 3 * sizeof(MR_Word)), NULL, NULL);
+                  MR_hl_field(MR_mktag(0), mercury__lexer__STATE_VARIABLE_Posn_21_21, 0) = ((MR_Box) (mercury__lexer__LineNum_57));
+                  MR_hl_field(MR_mktag(0), mercury__lexer__STATE_VARIABLE_Posn_21_21, 1) = ((MR_Box) (mercury__lexer__Offset_56));
+                  MR_hl_field(MR_mktag(0), mercury__lexer__STATE_VARIABLE_Posn_21_21, 2) = ((MR_Box) (mercury__lexer__Offset_56));
+                }
+              }
+            else
+              {
+                mercury__lexer__STATE_VARIABLE_Posn_21_21 = (MR_Word) MR_new_object(MR_Word, ((MR_Integer) 3 * sizeof(MR_Word)), NULL, NULL);
+                MR_hl_field(MR_mktag(0), mercury__lexer__STATE_VARIABLE_Posn_21_21, 0) = ((MR_Box) (mercury__lexer__LineNum0_53));
+                MR_hl_field(MR_mktag(0), mercury__lexer__STATE_VARIABLE_Posn_21_21, 1) = ((MR_Box) (mercury__lexer__LineOffset0_54));
+                MR_hl_field(MR_mktag(0), mercury__lexer__STATE_VARIABLE_Posn_21_21, 2) = ((MR_Box) (mercury__lexer__Offset_56));
+              }
+            mercury__lexer__succeeded = MR_TRUE;
+          }
+      }
+    if (mercury__lexer__succeeded)
+      {
+        {
+          mercury__lexer__succeeded = mercury__char__is_decimal_digit_1_p_0(mercury__lexer__Char_16);
+        }
+        if (mercury__lexer__succeeded)
+          {
+            {
+              mercury__lexer__string_get_float_decimals_8_p_0(mercury__lexer__String_9, (MR_Integer) 1, mercury__lexer__Len_11, mercury__lexer__Posn0_12, mercury__lexer__Token_13, mercury__lexer__Context_14, mercury__lexer__STATE_VARIABLE_Posn_21_21, mercury__lexer__STATE_VARIABLE_Posn_20);
+            }
+          }
+        else
+          {
+            mercury__lexer__succeeded = (mercury__lexer__Char_16 == (MR_Char) 95);
+            if (mercury__lexer__succeeded)
+              {
+                MR_Integer mercury__lexer__Var_67;
+                MR_Integer mercury__lexer__Var_68;
+
+                *mercury__lexer__Token_13 = (MR_Word) MR_mkword(MR_mktag(3), &mercury__lexer_scalar_common_4[37]);
+                *mercury__lexer__Context_14 = ((MR_Integer) (MR_hl_field(MR_mktag(0), mercury__lexer__Posn0_12, (MR_Integer) 0)));
+                mercury__lexer__Var_67 = ((MR_Integer) (MR_hl_field(MR_mktag(0), mercury__lexer__Posn0_12, (MR_Integer) 1)));
+                mercury__lexer__Var_68 = ((MR_Integer) (MR_hl_field(MR_mktag(0), mercury__lexer__Posn0_12, (MR_Integer) 2)));
+                *mercury__lexer__STATE_VARIABLE_Posn_20 = mercury__lexer__STATE_VARIABLE_Posn_21_21;
+              }
+            else
+              {
+                MR_Word mercury__lexer__STATE_VARIABLE_Posn_26_26;
+                MR_Word mercury__lexer__STATE_VARIABLE_Posn_27_27;
+                MR_Integer mercury__lexer__Var_85;
+                MR_Integer mercury__lexer__Var_86;
+
+                {
+                  mercury__lexer__string_ungetchar_3_p_0(mercury__lexer__String_9, mercury__lexer__STATE_VARIABLE_Posn_21_21, &mercury__lexer__STATE_VARIABLE_Posn_26_26);
+                }
+                {
+                  mercury__lexer__string_ungetchar_3_p_0(mercury__lexer__String_9, mercury__lexer__STATE_VARIABLE_Posn_26_26, &mercury__lexer__STATE_VARIABLE_Posn_27_27);
+                }
+                switch (mercury__lexer__STATE_VARIABLE_LastDigit_0_18) {
+                  default: /*NOTREACHED*/ MR_assert(0);
+                  case (MR_Integer) 1:
+                    {
+                      MR_String mercury__lexer__NumberString_17;
+                      MR_Integer mercury__lexer__Offset0_75;
+                      MR_Integer mercury__lexer__Offset_78;
+                      MR_Integer mercury__lexer__Var_73;
+                      MR_Integer mercury__lexer__Var_74;
+                      MR_Integer mercury__lexer__Var_76;
+                      MR_Integer mercury__lexer__Var_77;
+
+                      *mercury__lexer__STATE_VARIABLE_Posn_20 = mercury__lexer__STATE_VARIABLE_Posn_27_27;
+                      mercury__lexer__Var_73 = ((MR_Integer) (MR_hl_field(MR_mktag(0), mercury__lexer__Posn0_12, (MR_Integer) 0)));
+                      mercury__lexer__Var_74 = ((MR_Integer) (MR_hl_field(MR_mktag(0), mercury__lexer__Posn0_12, (MR_Integer) 1)));
+                      mercury__lexer__Offset0_75 = ((MR_Integer) (MR_hl_field(MR_mktag(0), mercury__lexer__Posn0_12, (MR_Integer) 2)));
+                      mercury__lexer__Var_76 = ((MR_Integer) (MR_hl_field(MR_mktag(0), mercury__lexer__STATE_VARIABLE_Posn_27_27, (MR_Integer) 0)));
+                      mercury__lexer__Var_77 = ((MR_Integer) (MR_hl_field(MR_mktag(0), mercury__lexer__STATE_VARIABLE_Posn_27_27, (MR_Integer) 1)));
+                      mercury__lexer__Offset_78 = ((MR_Integer) (MR_hl_field(MR_mktag(0), mercury__lexer__STATE_VARIABLE_Posn_27_27, (MR_Integer) 2)));
+{
+#define MR_PROC_LABEL mercury__lexer__string_get_int_dot_8_p_0
+
+	MR_String Str;
+	MR_Integer Start;
+	MR_Integer End;
+	MR_String SubString;
+
+	Str =  mercury__lexer__String_9 ;
+	Start =  mercury__lexer__Offset0_75 ;
+	End =  mercury__lexer__Offset_78 ;
+		{
+{
+    MR_Integer Count;
+
+    Count = End - Start;
+    MR_allocate_aligned_string_msg(SubString, Count, MR_ALLOC_ID);
+    MR_memcpy(SubString, Str + Start, Count);
+    SubString[Count] = '\0';
+}
+
+		;}
+#undef MR_PROC_LABEL
+	 mercury__lexer__NumberString_17  = SubString;
+}
+                      {
+                        mercury__lexer__conv_string_to_int_5_p_0(mercury__lexer__NumberString_17, (MR_Integer) 2, (MR_Integer) 0, (MR_Integer) 0, mercury__lexer__Token_13);
+                      }
+                    }
+                    break;
+                  case (MR_Integer) 0:
+                    {
+                      *mercury__lexer__Token_13 = (MR_Word) MR_mkword(MR_mktag(3), &mercury__lexer_scalar_common_4[34]);
+                      *mercury__lexer__STATE_VARIABLE_Posn_20 = mercury__lexer__STATE_VARIABLE_Posn_27_27;
+                    }
+                    break;
+                }
+                *mercury__lexer__Context_14 = ((MR_Integer) (MR_hl_field(MR_mktag(0), mercury__lexer__Posn0_12, (MR_Integer) 0)));
+                mercury__lexer__Var_85 = ((MR_Integer) (MR_hl_field(MR_mktag(0), mercury__lexer__Posn0_12, (MR_Integer) 1)));
+                mercury__lexer__Var_86 = ((MR_Integer) (MR_hl_field(MR_mktag(0), mercury__lexer__Posn0_12, (MR_Integer) 2)));
+              }
+          }
+      }
+    else
+      {
+        MR_Word mercury__lexer__STATE_VARIABLE_Posn_34_34;
+        MR_Integer mercury__lexer__Var_93;
+        MR_Integer mercury__lexer__Var_94;
+
+        {
+          mercury__lexer__string_ungetchar_3_p_0(mercury__lexer__String_9, mercury__lexer__STATE_VARIABLE_Posn_0_19, &mercury__lexer__STATE_VARIABLE_Posn_34_34);
+        }
+        switch (mercury__lexer__STATE_VARIABLE_LastDigit_0_18) {
+          default: /*NOTREACHED*/ MR_assert(0);
+          case (MR_Integer) 1:
+            {
+              MR_String mercury__lexer__NumberString_43;
+
+              {
+                mercury__lexer__grab_string_5_p_0(mercury__lexer__String_9, mercury__lexer__Posn0_12, &mercury__lexer__NumberString_43, mercury__lexer__STATE_VARIABLE_Posn_34_34, mercury__lexer__STATE_VARIABLE_Posn_20);
+              }
+              {
+                mercury__lexer__conv_string_to_int_5_p_0(mercury__lexer__NumberString_43, (MR_Integer) 2, (MR_Integer) 0, (MR_Integer) 0, mercury__lexer__Token_13);
+              }
+            }
+            break;
+          case (MR_Integer) 0:
+            {
+              *mercury__lexer__Token_13 = (MR_Word) MR_mkword(MR_mktag(3), &mercury__lexer_scalar_common_4[34]);
+              *mercury__lexer__STATE_VARIABLE_Posn_20 = mercury__lexer__STATE_VARIABLE_Posn_34_34;
+            }
+            break;
+        }
+        *mercury__lexer__Context_14 = ((MR_Integer) (MR_hl_field(MR_mktag(0), mercury__lexer__Posn0_12, (MR_Integer) 0)));
+        mercury__lexer__Var_93 = ((MR_Integer) (MR_hl_field(MR_mktag(0), mercury__lexer__Posn0_12, (MR_Integer) 1)));
+        mercury__lexer__Var_94 = ((MR_Integer) (MR_hl_field(MR_mktag(0), mercury__lexer__Posn0_12, (MR_Integer) 2)));
+      }
+  }
+}
+
+static void MR_CALL 
+mercury__lexer__get_int_dot_6_p_0(
+  MR_Word mercury__lexer__Stream_7,
+  MR_Word mercury__lexer__STATE_VARIABLE_LastDigit_0_20,
+  MR_Word mercury__lexer__STATE_VARIABLE_RevChars_0_21,
+  MR_Word * mercury__lexer__Token_10)
+{
+  {
+    MR_bool mercury__lexer__succeeded;
+    MR_Word mercury__lexer__Result_12;
+    MR_Char mercury__lexer__Char_13;
+    MR_Word mercury__lexer__V_10_61;
+    MR_Box mercury__lexer__V_11_62;
+    MR_Box mercury__lexer__V_7_71 = (MR_Box) mercury__lexer__Stream_7;
+
+    {
+      mercury__io__read_char_code_2_6_p_0(mercury__lexer__V_7_71, &mercury__lexer__V_10_61, &mercury__lexer__Char_13, &mercury__lexer__V_11_62);
+    }
+    switch (mercury__lexer__V_10_61) {
+      default: /*NOTREACHED*/ MR_assert(0);
+      case (MR_Integer) 1:
+        mercury__lexer__Result_12 = (MR_Word) MR_mkword(MR_mktag(0), MR_mkbody((MR_Integer) 1));
+        break;
+      case (MR_Integer) 2:
+        {
+          MR_String mercury__lexer__V_12_64;
+          MR_Word mercury__lexer__V_17_65;
+
+{
+#define MR_PROC_LABEL mercury__lexer__get_int_dot_6_p_0
+
+	MR_Integer Error;
+	MR_String Msg0;
+	MR_String Msg;
+
+	MR_MAYBE_UNBOX_FOREIGN_TYPE(MR_Integer, mercury__lexer__V_11_62 , Error);
+	Msg0 =  (MR_String) "read failed: " ;
+		{
+
+    ML_make_err_msg(Error, Msg0, MR_ALLOC_ID, Msg);
+
+
+		;}
+#undef MR_PROC_LABEL
+	 mercury__lexer__V_12_64  = Msg;
+}
+          mercury__lexer__V_17_65 = (MR_Word) mercury__lexer__V_12_64;
+          {
+            mercury__lexer__Result_12 = (MR_Word) MR_mkword(MR_mktag(1), MR_new_object(MR_Word, ((MR_Integer) 1 * sizeof(MR_Word)), NULL, NULL));
+            MR_hl_field(MR_mktag(1), mercury__lexer__Result_12, 0) = ((MR_Box) (mercury__lexer__V_17_65));
+          }
+        }
+        break;
+      case (MR_Integer) 0:
+        mercury__lexer__Result_12 = (MR_Word) MR_mkword(MR_mktag(0), MR_mkbody((MR_Integer) 0));
+        break;
+    }
+    switch (MR_tag((MR_Word) mercury__lexer__Result_12)) {
+      default: /*NOTREACHED*/ MR_assert(0);
+      case (MR_Integer) 0:
+        switch (MR_unmkbody(mercury__lexer__Result_12)) {
+          default: /*NOTREACHED*/ MR_assert(0);
+          case (MR_Integer) 0:
+            {
+              {
+                mercury__lexer__succeeded = mercury__char__is_decimal_digit_1_p_0(mercury__lexer__Char_13);
+              }
+              if (mercury__lexer__succeeded)
+                {
+                  MR_Word mercury__lexer__Var_26;
+                  MR_Word mercury__lexer__STATE_VARIABLE_RevChars_25_46;
+
+                  {
+                    mercury__lexer__Var_26 = (MR_Word) MR_mkword(MR_mktag(1), MR_new_object(MR_Word, ((MR_Integer) 2 * sizeof(MR_Word)), NULL, NULL));
+                    MR_hl_field(MR_mktag(1), mercury__lexer__Var_26, 0) = ((MR_Box) (MR_Word) ((MR_Char) 46));
+                    MR_hl_field(MR_mktag(1), mercury__lexer__Var_26, 1) = ((MR_Box) (mercury__lexer__STATE_VARIABLE_RevChars_0_21));
+                  }
+                  {
+                    mercury__lexer__STATE_VARIABLE_RevChars_25_46 = (MR_Word) MR_mkword(MR_mktag(1), MR_new_object(MR_Word, ((MR_Integer) 2 * sizeof(MR_Word)), NULL, NULL));
+                    MR_hl_field(MR_mktag(1), mercury__lexer__STATE_VARIABLE_RevChars_25_46, 0) = ((MR_Box) (MR_Word) (mercury__lexer__Char_13));
+                    MR_hl_field(MR_mktag(1), mercury__lexer__STATE_VARIABLE_RevChars_25_46, 1) = ((MR_Box) (mercury__lexer__Var_26));
+                  }
+                  {
+                    mercury__lexer__get_float_decimals_6_p_0(mercury__lexer__Stream_7, (MR_Integer) 1, mercury__lexer__STATE_VARIABLE_RevChars_25_46, mercury__lexer__Token_10);
+                  }
+                }
+              else
+                {
+                  mercury__lexer__succeeded = (mercury__lexer__Char_13 == (MR_Char) 95);
+                  if (mercury__lexer__succeeded)
+                    {
+                      *mercury__lexer__Token_10 = (MR_Word) MR_mkword(MR_mktag(3), &mercury__lexer_scalar_common_4[37]);
+                    }
+                  else
+                    {
+                      {
+                        mercury__io__putback_char_4_p_0(mercury__lexer__Stream_7, mercury__lexer__Char_13);
+                      }
+                      switch (mercury__lexer__STATE_VARIABLE_LastDigit_0_20) {
+                        default: /*NOTREACHED*/ MR_assert(0);
+                        case (MR_Integer) 1:
+                          {
+                            MR_Word mercury__lexer__Token0_15;
+                            MR_String mercury__lexer__String_87;
+                            MR_Word mercury__lexer__Integer_17;
+                            MR_Word mercury__lexer__Var_16;
+                            MR_Word mercury__lexer__Var_18;
+                            MR_Word mercury__lexer__Var_19;
+
+                            {
+                              mercury__lexer__succeeded = mercury__string__semidet_from_rev_char_list_2_p_0(mercury__lexer__STATE_VARIABLE_RevChars_0_21, &mercury__lexer__String_87);
+                            }
+                            if (mercury__lexer__succeeded)
+                              {
+                                mercury__lexer__conv_string_to_int_5_p_0(mercury__lexer__String_87, (MR_Integer) 2, (MR_Integer) 0, (MR_Integer) 0, &mercury__lexer__Token0_15);
+                              }
+                            else
+                              {
+                                mercury__lexer__Token0_15 = (MR_Word) MR_mkword(MR_mktag(3), &mercury__lexer_scalar_common_4[31]);
+                              }
+                            mercury__lexer__succeeded = ((((MR_tag((MR_Word) mercury__lexer__Token0_15)) == (MR_mktag((MR_Integer) 3)))) && (((((MR_Integer) (MR_Word) (MR_hl_field(MR_mktag(3), mercury__lexer__Token0_15, (MR_Integer) 0)))) == (MR_Integer) 0)));
+                            if (mercury__lexer__succeeded)
+                              {
+                                mercury__lexer__Var_16 = ((MR_Word) (MR_hl_field(MR_mktag(3), mercury__lexer__Token0_15, (MR_Integer) 1)));
+                                mercury__lexer__Integer_17 = ((MR_Word) (MR_hl_field(MR_mktag(3), mercury__lexer__Token0_15, (MR_Integer) 2)));
+                                mercury__lexer__Var_18 = ((MR_Word) (MR_hl_field(MR_mktag(3), mercury__lexer__Token0_15, (MR_Integer) 3)));
+                                mercury__lexer__Var_19 = ((MR_Word) (MR_hl_field(MR_mktag(3), mercury__lexer__Token0_15, (MR_Integer) 4)));
+                                {
+                                  MR_Word base;
+                                  base = (MR_Word) MR_mkword(MR_mktag(3), MR_new_object(MR_Word, ((MR_Integer) 2 * sizeof(MR_Word)), NULL, NULL));
+                                  *mercury__lexer__Token_10 = base;
+                                  MR_hl_field(MR_mktag(3), base, 0) = ((MR_Box) (MR_Word) ((MR_Integer) 7));
+                                  MR_hl_field(MR_mktag(3), base, 1) = ((MR_Box) (mercury__lexer__Integer_17));
+                                }
+                              }
+                            else
+                              *mercury__lexer__Token_10 = mercury__lexer__Token0_15;
+                          }
+                          break;
+                        case (MR_Integer) 0:
+                          {
+                            *mercury__lexer__Token_10 = (MR_Word) MR_mkword(MR_mktag(3), &mercury__lexer_scalar_common_4[34]);
+                          }
+                          break;
+                      }
+                    }
+                }
+            }
+            break;
+          case (MR_Integer) 1:
+            {
+              {
+                mercury__io__putback_char_4_p_0(mercury__lexer__Stream_7, (MR_Char) 46);
+              }
+              switch (mercury__lexer__STATE_VARIABLE_LastDigit_0_20) {
+                default: /*NOTREACHED*/ MR_assert(0);
+                case (MR_Integer) 1:
+                  {
+                    MR_String mercury__lexer__String_77;
+
+                    {
+                      mercury__lexer__succeeded = mercury__string__semidet_from_rev_char_list_2_p_0(mercury__lexer__STATE_VARIABLE_RevChars_0_21, &mercury__lexer__String_77);
+                    }
+                    if (mercury__lexer__succeeded)
+                      {
+                        mercury__lexer__conv_string_to_int_5_p_0(mercury__lexer__String_77, (MR_Integer) 2, (MR_Integer) 0, (MR_Integer) 0, mercury__lexer__Token_10);
+                      }
+                    else
+                      {
+                        *mercury__lexer__Token_10 = (MR_Word) MR_mkword(MR_mktag(3), &mercury__lexer_scalar_common_4[31]);
+                      }
+                  }
+                  break;
+                case (MR_Integer) 0:
+                  {
+                    *mercury__lexer__Token_10 = (MR_Word) MR_mkword(MR_mktag(3), &mercury__lexer_scalar_common_4[34]);
+                  }
+                  break;
+              }
+            }
+            break;
+        }
+        break;
+      case (MR_Integer) 1:
+        {
+          MR_Word mercury__lexer__Error_14 = ((MR_Word) (MR_hl_field(MR_mktag(1), mercury__lexer__Result_12, (MR_Integer) 0)));
+
+          {
+            MR_Word base;
+            base = (MR_Word) MR_mkword(MR_mktag(3), MR_new_object(MR_Word, ((MR_Integer) 2 * sizeof(MR_Word)), NULL, NULL));
+            *mercury__lexer__Token_10 = base;
+            MR_hl_field(MR_mktag(3), base, 0) = ((MR_Box) (MR_Word) ((MR_Integer) 6));
+            MR_hl_field(MR_mktag(3), base, 1) = ((MR_Box) (mercury__lexer__Error_14));
+          }
+        }
+        break;
+    }
+  }
+}
+
+static void MR_CALL 
+mercury__lexer__string_get_integer_size_suffix_2_11_p_0(
+  MR_String mercury__lexer__String_12,
+  MR_Integer mercury__lexer__Len_13,
+  MR_Word mercury__lexer__Posn1_14,
+  MR_Word mercury__lexer__LastDigitPosn_15,
+  MR_Word mercury__lexer__Base_16,
+  MR_Word mercury__lexer__Signedness_17,
+  MR_Char mercury__lexer__ExpectedChar_18,
+  MR_Word mercury__lexer__Size_19,
+  MR_Word * mercury__lexer__Token_20,
+  MR_Word mercury__lexer__STATE_VARIABLE_Posn_0_25,
+  MR_Word * mercury__lexer__STATE_VARIABLE_Posn_26)
+{
+  {
+    MR_bool mercury__lexer__succeeded;
+    MR_Char mercury__lexer__Char_22;
+    MR_Word mercury__lexer__STATE_VARIABLE_Posn_27_27;
+    MR_Integer mercury__lexer__LineNum0_36 = ((MR_Integer) (MR_hl_field(MR_mktag(0), mercury__lexer__STATE_VARIABLE_Posn_0_25, (MR_Integer) 0)));
+    MR_Integer mercury__lexer__LineOffset0_37 = ((MR_Integer) (MR_hl_field(MR_mktag(0), mercury__lexer__STATE_VARIABLE_Posn_0_25, (MR_Integer) 1)));
+    MR_Integer mercury__lexer__Offset0_38 = ((MR_Integer) (MR_hl_field(MR_mktag(0), mercury__lexer__STATE_VARIABLE_Posn_0_25, (MR_Integer) 2)));
+    MR_Integer mercury__lexer__Offset_39;
+
+    mercury__lexer__succeeded = (mercury__lexer__Offset0_38 < mercury__lexer__Len_13);
+    if (mercury__lexer__succeeded)
+      {
+{
+#define MR_PROC_LABEL mercury__lexer__string_get_integer_size_suffix_2_11_p_0
+
+	MR_String Str;
+	MR_Integer Index;
+	MR_Integer NextIndex;
+	MR_Char Ch;
+	MR_bool SUCCESS_INDICATOR;
+
+	Str =  mercury__lexer__String_12 ;
+	Index =  mercury__lexer__Offset0_38 ;
+		{
+
+    Ch = Str[Index];
+    if (MR_is_ascii(Ch)) {
+        NextIndex = Index + 1;
+        SUCCESS_INDICATOR = (Ch != 0);
+    } else {
+        NextIndex = Index;
+        Ch = MR_utf8_get_next_mb(Str, &NextIndex);
+        SUCCESS_INDICATOR = (Ch > 0);
+    }
+
+
+		;}
+#undef MR_PROC_LABEL
+	if (SUCCESS_INDICATOR) {
+	 mercury__lexer__Offset_39  = NextIndex;
+	 mercury__lexer__Char_22  = Ch;
+	}
+mercury__lexer__succeeded  = SUCCESS_INDICATOR;
+}
+        if (mercury__lexer__succeeded)
+          {
+            mercury__lexer__succeeded = (mercury__lexer__Char_22 == (MR_Char) 10);
+            if (mercury__lexer__succeeded)
+              {
+                MR_Integer mercury__lexer__LineNum_40 = (mercury__lexer__LineNum0_36 + (MR_Integer) 1);
+
+                {
+                  mercury__lexer__STATE_VARIABLE_Posn_27_27 = (MR_Word) MR_new_object(MR_Word, ((MR_Integer) 3 * sizeof(MR_Word)), NULL, NULL);
+                  MR_hl_field(MR_mktag(0), mercury__lexer__STATE_VARIABLE_Posn_27_27, 0) = ((MR_Box) (mercury__lexer__LineNum_40));
+                  MR_hl_field(MR_mktag(0), mercury__lexer__STATE_VARIABLE_Posn_27_27, 1) = ((MR_Box) (mercury__lexer__Offset_39));
+                  MR_hl_field(MR_mktag(0), mercury__lexer__STATE_VARIABLE_Posn_27_27, 2) = ((MR_Box) (mercury__lexer__Offset_39));
+                }
+              }
+            else
+              {
+                mercury__lexer__STATE_VARIABLE_Posn_27_27 = (MR_Word) MR_new_object(MR_Word, ((MR_Integer) 3 * sizeof(MR_Word)), NULL, NULL);
+                MR_hl_field(MR_mktag(0), mercury__lexer__STATE_VARIABLE_Posn_27_27, 0) = ((MR_Box) (mercury__lexer__LineNum0_36));
+                MR_hl_field(MR_mktag(0), mercury__lexer__STATE_VARIABLE_Posn_27_27, 1) = ((MR_Box) (mercury__lexer__LineOffset0_37));
+                MR_hl_field(MR_mktag(0), mercury__lexer__STATE_VARIABLE_Posn_27_27, 2) = ((MR_Box) (mercury__lexer__Offset_39));
+              }
+            mercury__lexer__succeeded = MR_TRUE;
+          }
+      }
+    if (mercury__lexer__succeeded)
+      {
+        *mercury__lexer__STATE_VARIABLE_Posn_26 = mercury__lexer__STATE_VARIABLE_Posn_27_27;
+        mercury__lexer__succeeded = (mercury__lexer__Char_22 == mercury__lexer__ExpectedChar_18);
+        if (mercury__lexer__succeeded)
+          {
+            MR_String mercury__lexer__DigitString_23;
+            MR_Integer mercury__lexer__Offset0_49 = ((MR_Integer) (MR_hl_field(MR_mktag(0), mercury__lexer__Posn1_14, (MR_Integer) 2)));
+            MR_Integer mercury__lexer__Offset_52 = ((MR_Integer) (MR_hl_field(MR_mktag(0), mercury__lexer__LastDigitPosn_15, (MR_Integer) 2)));
+            MR_Integer mercury__lexer__Var_47 = ((MR_Integer) (MR_hl_field(MR_mktag(0), mercury__lexer__Posn1_14, (MR_Integer) 0)));
+            MR_Integer mercury__lexer__Var_48 = ((MR_Integer) (MR_hl_field(MR_mktag(0), mercury__lexer__Posn1_14, (MR_Integer) 1)));
+            MR_Integer mercury__lexer__Var_50 = ((MR_Integer) (MR_hl_field(MR_mktag(0), mercury__lexer__LastDigitPosn_15, (MR_Integer) 0)));
+            MR_Integer mercury__lexer__Var_51 = ((MR_Integer) (MR_hl_field(MR_mktag(0), mercury__lexer__LastDigitPosn_15, (MR_Integer) 1)));
+
+{
+#define MR_PROC_LABEL mercury__lexer__string_get_integer_size_suffix_2_11_p_0
+
+	MR_String Str;
+	MR_Integer Start;
+	MR_Integer End;
+	MR_String SubString;
+
+	Str =  mercury__lexer__String_12 ;
+	Start =  mercury__lexer__Offset0_49 ;
+	End =  mercury__lexer__Offset_52 ;
+		{
+{
+    MR_Integer Count;
+
+    Count = End - Start;
+    MR_allocate_aligned_string_msg(SubString, Count, MR_ALLOC_ID);
+    MR_memcpy(SubString, Str + Start, Count);
+    SubString[Count] = '\0';
+}
+
+		;}
+#undef MR_PROC_LABEL
+	 mercury__lexer__DigitString_23  = SubString;
+}
+            {
+              mercury__lexer__conv_string_to_int_5_p_0(mercury__lexer__DigitString_23, mercury__lexer__Base_16, mercury__lexer__Signedness_17, mercury__lexer__Size_19, mercury__lexer__Token_20);
+            }
+          }
+        else
+          {
+            *mercury__lexer__Token_20 = (MR_Word) MR_mkword(MR_mktag(3), &mercury__lexer_scalar_common_4[36]);
+          }
+      }
+    else
+      {
+        *mercury__lexer__Token_20 = (MR_Word) MR_mkword(MR_mktag(3), &mercury__lexer_scalar_common_4[36]);
+        *mercury__lexer__STATE_VARIABLE_Posn_26 = mercury__lexer__STATE_VARIABLE_Posn_0_25;
+      }
+  }
+}
+
+static void MR_CALL 
+mercury__lexer__string_get_integer_size_suffix_9_p_0(
+  MR_String mercury__lexer__String_10,
+  MR_Integer mercury__lexer__Len_11,
+  MR_Word mercury__lexer__Posn1_12,
+  MR_Word mercury__lexer__LastDigitPosn_13,
+  MR_Word mercury__lexer__Base_14,
+  MR_Word mercury__lexer__Signedness_15,
+  MR_Word * mercury__lexer__Token_16,
+  MR_Word mercury__lexer__STATE_VARIABLE_Posn_0_23,
+  MR_Word * mercury__lexer__STATE_VARIABLE_Posn_24)
+{
+  {
+    MR_bool mercury__lexer__succeeded;
+    MR_Char mercury__lexer__Char_18;
+    MR_Word mercury__lexer__STATE_VARIABLE_Posn_25_25;
+    MR_Integer mercury__lexer__LineNum0_51 = ((MR_Integer) (MR_hl_field(MR_mktag(0), mercury__lexer__STATE_VARIABLE_Posn_0_23, (MR_Integer) 0)));
+    MR_Integer mercury__lexer__LineOffset0_52 = ((MR_Integer) (MR_hl_field(MR_mktag(0), mercury__lexer__STATE_VARIABLE_Posn_0_23, (MR_Integer) 1)));
+    MR_Integer mercury__lexer__Offset0_53 = ((MR_Integer) (MR_hl_field(MR_mktag(0), mercury__lexer__STATE_VARIABLE_Posn_0_23, (MR_Integer) 2)));
+    MR_Integer mercury__lexer__Offset_54;
+
+    mercury__lexer__succeeded = (mercury__lexer__Offset0_53 < mercury__lexer__Len_11);
+    if (mercury__lexer__succeeded)
+      {
+{
+#define MR_PROC_LABEL mercury__lexer__string_get_integer_size_suffix_9_p_0
+
+	MR_String Str;
+	MR_Integer Index;
+	MR_Integer NextIndex;
+	MR_Char Ch;
+	MR_bool SUCCESS_INDICATOR;
+
+	Str =  mercury__lexer__String_10 ;
+	Index =  mercury__lexer__Offset0_53 ;
+		{
+
+    Ch = Str[Index];
+    if (MR_is_ascii(Ch)) {
+        NextIndex = Index + 1;
+        SUCCESS_INDICATOR = (Ch != 0);
+    } else {
+        NextIndex = Index;
+        Ch = MR_utf8_get_next_mb(Str, &NextIndex);
+        SUCCESS_INDICATOR = (Ch > 0);
+    }
+
+
+		;}
+#undef MR_PROC_LABEL
+	if (SUCCESS_INDICATOR) {
+	 mercury__lexer__Offset_54  = NextIndex;
+	 mercury__lexer__Char_18  = Ch;
+	}
+mercury__lexer__succeeded  = SUCCESS_INDICATOR;
+}
+        if (mercury__lexer__succeeded)
+          {
+            mercury__lexer__succeeded = (mercury__lexer__Char_18 == (MR_Char) 10);
+            if (mercury__lexer__succeeded)
+              {
+                MR_Integer mercury__lexer__LineNum_55 = (mercury__lexer__LineNum0_51 + (MR_Integer) 1);
+
+                {
+                  mercury__lexer__STATE_VARIABLE_Posn_25_25 = (MR_Word) MR_new_object(MR_Word, ((MR_Integer) 3 * sizeof(MR_Word)), NULL, NULL);
+                  MR_hl_field(MR_mktag(0), mercury__lexer__STATE_VARIABLE_Posn_25_25, 0) = ((MR_Box) (mercury__lexer__LineNum_55));
+                  MR_hl_field(MR_mktag(0), mercury__lexer__STATE_VARIABLE_Posn_25_25, 1) = ((MR_Box) (mercury__lexer__Offset_54));
+                  MR_hl_field(MR_mktag(0), mercury__lexer__STATE_VARIABLE_Posn_25_25, 2) = ((MR_Box) (mercury__lexer__Offset_54));
+                }
+              }
+            else
+              {
+                mercury__lexer__STATE_VARIABLE_Posn_25_25 = (MR_Word) MR_new_object(MR_Word, ((MR_Integer) 3 * sizeof(MR_Word)), NULL, NULL);
+                MR_hl_field(MR_mktag(0), mercury__lexer__STATE_VARIABLE_Posn_25_25, 0) = ((MR_Box) (mercury__lexer__LineNum0_51));
+                MR_hl_field(MR_mktag(0), mercury__lexer__STATE_VARIABLE_Posn_25_25, 1) = ((MR_Box) (mercury__lexer__LineOffset0_52));
+                MR_hl_field(MR_mktag(0), mercury__lexer__STATE_VARIABLE_Posn_25_25, 2) = ((MR_Box) (mercury__lexer__Offset_54));
+              }
+            mercury__lexer__succeeded = MR_TRUE;
+          }
+      }
+    if (mercury__lexer__succeeded)
+      {
+        mercury__lexer__succeeded = (mercury__lexer__Char_18 == (MR_Char) 56);
+        if (mercury__lexer__succeeded)
+          {
+            MR_String mercury__lexer__DigitString_19;
+            MR_Integer mercury__lexer__Offset0_64 = ((MR_Integer) (MR_hl_field(MR_mktag(0), mercury__lexer__Posn1_12, (MR_Integer) 2)));
+            MR_Integer mercury__lexer__Offset_67 = ((MR_Integer) (MR_hl_field(MR_mktag(0), mercury__lexer__LastDigitPosn_13, (MR_Integer) 2)));
+            MR_Integer mercury__lexer__Var_62 = ((MR_Integer) (MR_hl_field(MR_mktag(0), mercury__lexer__Posn1_12, (MR_Integer) 0)));
+            MR_Integer mercury__lexer__Var_63 = ((MR_Integer) (MR_hl_field(MR_mktag(0), mercury__lexer__Posn1_12, (MR_Integer) 1)));
+            MR_Integer mercury__lexer__Var_65 = ((MR_Integer) (MR_hl_field(MR_mktag(0), mercury__lexer__LastDigitPosn_13, (MR_Integer) 0)));
+            MR_Integer mercury__lexer__Var_66 = ((MR_Integer) (MR_hl_field(MR_mktag(0), mercury__lexer__LastDigitPosn_13, (MR_Integer) 1)));
+
+{
+#define MR_PROC_LABEL mercury__lexer__string_get_integer_size_suffix_9_p_0
+
+	MR_String Str;
+	MR_Integer Start;
+	MR_Integer End;
+	MR_String SubString;
+
+	Str =  mercury__lexer__String_10 ;
+	Start =  mercury__lexer__Offset0_64 ;
+	End =  mercury__lexer__Offset_67 ;
+		{
+{
+    MR_Integer Count;
+
+    Count = End - Start;
+    MR_allocate_aligned_string_msg(SubString, Count, MR_ALLOC_ID);
+    MR_memcpy(SubString, Str + Start, Count);
+    SubString[Count] = '\0';
+}
+
+		;}
+#undef MR_PROC_LABEL
+	 mercury__lexer__DigitString_19  = SubString;
+}
+            {
+              mercury__lexer__conv_string_to_int_5_p_0(mercury__lexer__DigitString_19, mercury__lexer__Base_14, mercury__lexer__Signedness_15, (MR_Integer) 1, mercury__lexer__Token_16);
+            }
+            *mercury__lexer__STATE_VARIABLE_Posn_24 = mercury__lexer__STATE_VARIABLE_Posn_25_25;
+          }
+        else
+          {
+            mercury__lexer__succeeded = (mercury__lexer__Char_18 == (MR_Char) 49);
+            if (mercury__lexer__succeeded)
+              {
+                {
+                  mercury__lexer__string_get_integer_size_suffix_2_11_p_0(mercury__lexer__String_10, mercury__lexer__Len_11, mercury__lexer__Posn1_12, mercury__lexer__LastDigitPosn_13, mercury__lexer__Base_14, mercury__lexer__Signedness_15, (MR_Char) 54, (MR_Integer) 2, mercury__lexer__Token_16, mercury__lexer__STATE_VARIABLE_Posn_25_25, mercury__lexer__STATE_VARIABLE_Posn_24);
+                }
+              }
+            else
+              {
+                mercury__lexer__succeeded = (mercury__lexer__Char_18 == (MR_Char) 51);
+                if (mercury__lexer__succeeded)
+                  {
+                    {
+                      mercury__lexer__string_get_integer_size_suffix_2_11_p_0(mercury__lexer__String_10, mercury__lexer__Len_11, mercury__lexer__Posn1_12, mercury__lexer__LastDigitPosn_13, mercury__lexer__Base_14, mercury__lexer__Signedness_15, (MR_Char) 50, (MR_Integer) 3, mercury__lexer__Token_16, mercury__lexer__STATE_VARIABLE_Posn_25_25, mercury__lexer__STATE_VARIABLE_Posn_24);
+                    }
+                  }
+                else
+                  {
+                    mercury__lexer__succeeded = (mercury__lexer__Char_18 == (MR_Char) 54);
+                    if (mercury__lexer__succeeded)
+                      {
+                        {
+                          mercury__lexer__string_get_integer_size_suffix_2_11_p_0(mercury__lexer__String_10, mercury__lexer__Len_11, mercury__lexer__Posn1_12, mercury__lexer__LastDigitPosn_13, mercury__lexer__Base_14, mercury__lexer__Signedness_15, (MR_Char) 52, (MR_Integer) 4, mercury__lexer__Token_16, mercury__lexer__STATE_VARIABLE_Posn_25_25, mercury__lexer__STATE_VARIABLE_Posn_24);
+                        }
+                      }
+                    else
+                      {
+                        {
+                          mercury__lexer__succeeded = mercury__char__is_decimal_digit_1_p_0(mercury__lexer__Char_18);
+                        }
+                        if (mercury__lexer__succeeded)
+                          {
+                            *mercury__lexer__Token_16 = (MR_Word) MR_mkword(MR_mktag(3), &mercury__lexer_scalar_common_4[36]);
+                            *mercury__lexer__STATE_VARIABLE_Posn_24 = mercury__lexer__STATE_VARIABLE_Posn_25_25;
+                          }
+                        else
+                          {
+                            MR_String mercury__lexer__DigitString_40;
+                            MR_Integer mercury__lexer__Offset0_75;
+                            MR_Integer mercury__lexer__Offset_78;
+                            MR_Integer mercury__lexer__Var_73;
+                            MR_Integer mercury__lexer__Var_74;
+                            MR_Integer mercury__lexer__Var_76;
+                            MR_Integer mercury__lexer__Var_77;
+
+                            {
+                              mercury__lexer__string_ungetchar_3_p_0(mercury__lexer__String_10, mercury__lexer__STATE_VARIABLE_Posn_25_25, mercury__lexer__STATE_VARIABLE_Posn_24);
+                            }
+                            mercury__lexer__Var_73 = ((MR_Integer) (MR_hl_field(MR_mktag(0), mercury__lexer__Posn1_12, (MR_Integer) 0)));
+                            mercury__lexer__Var_74 = ((MR_Integer) (MR_hl_field(MR_mktag(0), mercury__lexer__Posn1_12, (MR_Integer) 1)));
+                            mercury__lexer__Offset0_75 = ((MR_Integer) (MR_hl_field(MR_mktag(0), mercury__lexer__Posn1_12, (MR_Integer) 2)));
+                            mercury__lexer__Var_76 = ((MR_Integer) (MR_hl_field(MR_mktag(0), mercury__lexer__LastDigitPosn_13, (MR_Integer) 0)));
+                            mercury__lexer__Var_77 = ((MR_Integer) (MR_hl_field(MR_mktag(0), mercury__lexer__LastDigitPosn_13, (MR_Integer) 1)));
+                            mercury__lexer__Offset_78 = ((MR_Integer) (MR_hl_field(MR_mktag(0), mercury__lexer__LastDigitPosn_13, (MR_Integer) 2)));
+{
+#define MR_PROC_LABEL mercury__lexer__string_get_integer_size_suffix_9_p_0
+
+	MR_String Str;
+	MR_Integer Start;
+	MR_Integer End;
+	MR_String SubString;
+
+	Str =  mercury__lexer__String_10 ;
+	Start =  mercury__lexer__Offset0_75 ;
+	End =  mercury__lexer__Offset_78 ;
+		{
+{
+    MR_Integer Count;
+
+    Count = End - Start;
+    MR_allocate_aligned_string_msg(SubString, Count, MR_ALLOC_ID);
+    MR_memcpy(SubString, Str + Start, Count);
+    SubString[Count] = '\0';
+}
+
+		;}
+#undef MR_PROC_LABEL
+	 mercury__lexer__DigitString_40  = SubString;
+}
+                            {
+                              mercury__lexer__conv_string_to_int_5_p_0(mercury__lexer__DigitString_40, mercury__lexer__Base_14, mercury__lexer__Signedness_15, (MR_Integer) 0, mercury__lexer__Token_16);
+                            }
+                          }
+                      }
+                  }
+              }
+          }
+      }
+    else
+      {
+        MR_String mercury__lexer__DigitString_45;
+        MR_Integer mercury__lexer__Offset0_85 = ((MR_Integer) (MR_hl_field(MR_mktag(0), mercury__lexer__Posn1_12, (MR_Integer) 2)));
+        MR_Integer mercury__lexer__Offset_88 = ((MR_Integer) (MR_hl_field(MR_mktag(0), mercury__lexer__LastDigitPosn_13, (MR_Integer) 2)));
+        MR_Integer mercury__lexer__Var_83 = ((MR_Integer) (MR_hl_field(MR_mktag(0), mercury__lexer__Posn1_12, (MR_Integer) 0)));
+        MR_Integer mercury__lexer__Var_84 = ((MR_Integer) (MR_hl_field(MR_mktag(0), mercury__lexer__Posn1_12, (MR_Integer) 1)));
+        MR_Integer mercury__lexer__Var_86 = ((MR_Integer) (MR_hl_field(MR_mktag(0), mercury__lexer__LastDigitPosn_13, (MR_Integer) 0)));
+        MR_Integer mercury__lexer__Var_87 = ((MR_Integer) (MR_hl_field(MR_mktag(0), mercury__lexer__LastDigitPosn_13, (MR_Integer) 1)));
+
+{
+#define MR_PROC_LABEL mercury__lexer__string_get_integer_size_suffix_9_p_0
+
+	MR_String Str;
+	MR_Integer Start;
+	MR_Integer End;
+	MR_String SubString;
+
+	Str =  mercury__lexer__String_10 ;
+	Start =  mercury__lexer__Offset0_85 ;
+	End =  mercury__lexer__Offset_88 ;
+		{
+{
+    MR_Integer Count;
+
+    Count = End - Start;
+    MR_allocate_aligned_string_msg(SubString, Count, MR_ALLOC_ID);
+    MR_memcpy(SubString, Str + Start, Count);
+    SubString[Count] = '\0';
+}
+
+		;}
+#undef MR_PROC_LABEL
+	 mercury__lexer__DigitString_45  = SubString;
+}
+        {
+          mercury__lexer__conv_string_to_int_5_p_0(mercury__lexer__DigitString_45, mercury__lexer__Base_14, mercury__lexer__Signedness_15, (MR_Integer) 0, mercury__lexer__Token_16);
+        }
+        *mercury__lexer__STATE_VARIABLE_Posn_24 = mercury__lexer__STATE_VARIABLE_Posn_0_23;
+      }
+  }
+}
+
+static void MR_CALL 
+mercury__lexer__get_integer_size_suffix_2_9_p_0(
+  MR_Word mercury__lexer__Stream_10,
+  MR_Word mercury__lexer__RevChars_11,
+  MR_Word mercury__lexer__Base_12,
+  MR_Word mercury__lexer__Signedness_13,
+  MR_Char mercury__lexer__ExpectedNextChar_14,
+  MR_Word mercury__lexer__ExpectedSize_15,
+  MR_Word * mercury__lexer__Token_16)
+{
+  {
+    MR_bool mercury__lexer__succeeded;
+    MR_Word mercury__lexer__Result_18;
+    MR_Char mercury__lexer__Char_19;
+    MR_Word mercury__lexer__V_10_31;
+    MR_Box mercury__lexer__V_11_32;
+    MR_Box mercury__lexer__V_7_41 = (MR_Box) mercury__lexer__Stream_10;
+
+    {
+      mercury__io__read_char_code_2_6_p_0(mercury__lexer__V_7_41, &mercury__lexer__V_10_31, &mercury__lexer__Char_19, &mercury__lexer__V_11_32);
+    }
+    switch (mercury__lexer__V_10_31) {
+      default: /*NOTREACHED*/ MR_assert(0);
+      case (MR_Integer) 1:
+        mercury__lexer__Result_18 = (MR_Word) MR_mkword(MR_mktag(0), MR_mkbody((MR_Integer) 1));
+        break;
+      case (MR_Integer) 2:
+        {
+          MR_String mercury__lexer__V_12_34;
+          MR_Word mercury__lexer__V_17_35;
+
+{
+#define MR_PROC_LABEL mercury__lexer__get_integer_size_suffix_2_9_p_0
+
+	MR_Integer Error;
+	MR_String Msg0;
+	MR_String Msg;
+
+	MR_MAYBE_UNBOX_FOREIGN_TYPE(MR_Integer, mercury__lexer__V_11_32 , Error);
+	Msg0 =  (MR_String) "read failed: " ;
+		{
+
+    ML_make_err_msg(Error, Msg0, MR_ALLOC_ID, Msg);
+
+
+		;}
+#undef MR_PROC_LABEL
+	 mercury__lexer__V_12_34  = Msg;
+}
+          mercury__lexer__V_17_35 = (MR_Word) mercury__lexer__V_12_34;
+          {
+            mercury__lexer__Result_18 = (MR_Word) MR_mkword(MR_mktag(1), MR_new_object(MR_Word, ((MR_Integer) 1 * sizeof(MR_Word)), NULL, NULL));
+            MR_hl_field(MR_mktag(1), mercury__lexer__Result_18, 0) = ((MR_Box) (mercury__lexer__V_17_35));
+          }
+        }
+        break;
+      case (MR_Integer) 0:
+        mercury__lexer__Result_18 = (MR_Word) MR_mkword(MR_mktag(0), MR_mkbody((MR_Integer) 0));
+        break;
+    }
+    switch (MR_tag((MR_Word) mercury__lexer__Result_18)) {
+      default: /*NOTREACHED*/ MR_assert(0);
+      case (MR_Integer) 0:
+        switch (MR_unmkbody(mercury__lexer__Result_18)) {
+          default: /*NOTREACHED*/ MR_assert(0);
+          case (MR_Integer) 0:
+            {
+              mercury__lexer__succeeded = (mercury__lexer__Char_19 == mercury__lexer__ExpectedNextChar_14);
+              if (mercury__lexer__succeeded)
+                {
+                  MR_String mercury__lexer__String_47;
+
+                  {
+                    mercury__lexer__succeeded = mercury__string__semidet_from_rev_char_list_2_p_0(mercury__lexer__RevChars_11, &mercury__lexer__String_47);
+                  }
+                  if (mercury__lexer__succeeded)
+                    {
+                      mercury__lexer__conv_string_to_int_5_p_0(mercury__lexer__String_47, mercury__lexer__Base_12, mercury__lexer__Signedness_13, mercury__lexer__ExpectedSize_15, mercury__lexer__Token_16);
+                    }
+                  else
+                    {
+                      *mercury__lexer__Token_16 = (MR_Word) MR_mkword(MR_mktag(3), &mercury__lexer_scalar_common_4[31]);
+                    }
+                }
+              else
+                {
+                  *mercury__lexer__Token_16 = (MR_Word) MR_mkword(MR_mktag(3), &mercury__lexer_scalar_common_4[36]);
+                }
+            }
+            break;
+          case (MR_Integer) 1:
+            {
+              *mercury__lexer__Token_16 = (MR_Word) MR_mkword(MR_mktag(3), &mercury__lexer_scalar_common_4[36]);
+            }
+            break;
+        }
+        break;
+      case (MR_Integer) 1:
+        {
+          MR_Word mercury__lexer__Error_20 = ((MR_Word) (MR_hl_field(MR_mktag(1), mercury__lexer__Result_18, (MR_Integer) 0)));
+
+          {
+            MR_Word base;
+            base = (MR_Word) MR_mkword(MR_mktag(3), MR_new_object(MR_Word, ((MR_Integer) 2 * sizeof(MR_Word)), NULL, NULL));
+            *mercury__lexer__Token_16 = base;
+            MR_hl_field(MR_mktag(3), base, 0) = ((MR_Box) (MR_Word) ((MR_Integer) 6));
+            MR_hl_field(MR_mktag(3), base, 1) = ((MR_Box) (mercury__lexer__Error_20));
+          }
+        }
+        break;
+    }
+  }
+}
+
+static void MR_CALL 
+mercury__lexer__get_integer_size_suffix_7_p_0(
+  MR_Word mercury__lexer__Stream_8,
+  MR_Word mercury__lexer__RevChars_9,
+  MR_Word mercury__lexer__Base_10,
+  MR_Word mercury__lexer__Signedness_11,
+  MR_Word * mercury__lexer__Token_12)
+{
+  {
+    MR_bool mercury__lexer__succeeded;
+    MR_Word mercury__lexer__Result_14;
+    MR_Char mercury__lexer__Char_15;
+    MR_Word mercury__lexer__V_10_39;
+    MR_Box mercury__lexer__V_11_40;
+    MR_Box mercury__lexer__V_7_49 = (MR_Box) mercury__lexer__Stream_8;
+
+    {
+      mercury__io__read_char_code_2_6_p_0(mercury__lexer__V_7_49, &mercury__lexer__V_10_39, &mercury__lexer__Char_15, &mercury__lexer__V_11_40);
+    }
+    switch (mercury__lexer__V_10_39) {
+      default: /*NOTREACHED*/ MR_assert(0);
+      case (MR_Integer) 1:
+        mercury__lexer__Result_14 = (MR_Word) MR_mkword(MR_mktag(0), MR_mkbody((MR_Integer) 1));
+        break;
+      case (MR_Integer) 2:
+        {
+          MR_String mercury__lexer__V_12_42;
+          MR_Word mercury__lexer__V_17_43;
+
+{
+#define MR_PROC_LABEL mercury__lexer__get_integer_size_suffix_7_p_0
+
+	MR_Integer Error;
+	MR_String Msg0;
+	MR_String Msg;
+
+	MR_MAYBE_UNBOX_FOREIGN_TYPE(MR_Integer, mercury__lexer__V_11_40 , Error);
+	Msg0 =  (MR_String) "read failed: " ;
+		{
+
+    ML_make_err_msg(Error, Msg0, MR_ALLOC_ID, Msg);
+
+
+		;}
+#undef MR_PROC_LABEL
+	 mercury__lexer__V_12_42  = Msg;
+}
+          mercury__lexer__V_17_43 = (MR_Word) mercury__lexer__V_12_42;
+          {
+            mercury__lexer__Result_14 = (MR_Word) MR_mkword(MR_mktag(1), MR_new_object(MR_Word, ((MR_Integer) 1 * sizeof(MR_Word)), NULL, NULL));
+            MR_hl_field(MR_mktag(1), mercury__lexer__Result_14, 0) = ((MR_Box) (mercury__lexer__V_17_43));
+          }
+        }
+        break;
+      case (MR_Integer) 0:
+        mercury__lexer__Result_14 = (MR_Word) MR_mkword(MR_mktag(0), MR_mkbody((MR_Integer) 0));
+        break;
+    }
+    switch (MR_tag((MR_Word) mercury__lexer__Result_14)) {
+      default: /*NOTREACHED*/ MR_assert(0);
+      case (MR_Integer) 0:
+        switch (MR_unmkbody(mercury__lexer__Result_14)) {
+          default: /*NOTREACHED*/ MR_assert(0);
+          case (MR_Integer) 0:
+            {
+              mercury__lexer__succeeded = (mercury__lexer__Char_15 == (MR_Char) 56);
+              if (mercury__lexer__succeeded)
+                {
+                  MR_String mercury__lexer__String_64;
+
+                  {
+                    mercury__lexer__succeeded = mercury__string__semidet_from_rev_char_list_2_p_0(mercury__lexer__RevChars_9, &mercury__lexer__String_64);
+                  }
+                  if (mercury__lexer__succeeded)
+                    {
+                      mercury__lexer__conv_string_to_int_5_p_0(mercury__lexer__String_64, mercury__lexer__Base_10, mercury__lexer__Signedness_11, (MR_Integer) 1, mercury__lexer__Token_12);
+                    }
+                  else
+                    {
+                      *mercury__lexer__Token_12 = (MR_Word) MR_mkword(MR_mktag(3), &mercury__lexer_scalar_common_4[31]);
+                    }
+                }
+              else
+                {
+                  mercury__lexer__succeeded = (mercury__lexer__Char_15 == (MR_Char) 49);
+                  if (mercury__lexer__succeeded)
+                    {
+                      {
+                        mercury__lexer__get_integer_size_suffix_2_9_p_0(mercury__lexer__Stream_8, mercury__lexer__RevChars_9, mercury__lexer__Base_10, mercury__lexer__Signedness_11, (MR_Char) 54, (MR_Integer) 2, mercury__lexer__Token_12);
+                      }
+                    }
+                  else
+                    {
+                      mercury__lexer__succeeded = (mercury__lexer__Char_15 == (MR_Char) 51);
+                      if (mercury__lexer__succeeded)
+                        {
+                          {
+                            mercury__lexer__get_integer_size_suffix_2_9_p_0(mercury__lexer__Stream_8, mercury__lexer__RevChars_9, mercury__lexer__Base_10, mercury__lexer__Signedness_11, (MR_Char) 50, (MR_Integer) 3, mercury__lexer__Token_12);
+                          }
+                        }
+                      else
+                        {
+                          mercury__lexer__succeeded = (mercury__lexer__Char_15 == (MR_Char) 54);
+                          if (mercury__lexer__succeeded)
+                            {
+                              {
+                                mercury__lexer__get_integer_size_suffix_2_9_p_0(mercury__lexer__Stream_8, mercury__lexer__RevChars_9, mercury__lexer__Base_10, mercury__lexer__Signedness_11, (MR_Char) 52, (MR_Integer) 4, mercury__lexer__Token_12);
+                              }
+                            }
+                          else
+                            {
+                              {
+                                mercury__lexer__succeeded = mercury__char__is_decimal_digit_1_p_0(mercury__lexer__Char_15);
+                              }
+                              if (mercury__lexer__succeeded)
+                                {
+                                  *mercury__lexer__Token_12 = (MR_Word) MR_mkword(MR_mktag(3), &mercury__lexer_scalar_common_4[36]);
+                                }
+                              else
+                                {
+                                  MR_String mercury__lexer__String_74;
+
+                                  {
+                                    mercury__io__putback_char_4_p_0(mercury__lexer__Stream_8, mercury__lexer__Char_15);
+                                  }
+                                  {
+                                    mercury__lexer__succeeded = mercury__string__semidet_from_rev_char_list_2_p_0(mercury__lexer__RevChars_9, &mercury__lexer__String_74);
+                                  }
+                                  if (mercury__lexer__succeeded)
+                                    {
+                                      mercury__lexer__conv_string_to_int_5_p_0(mercury__lexer__String_74, mercury__lexer__Base_10, mercury__lexer__Signedness_11, (MR_Integer) 0, mercury__lexer__Token_12);
+                                    }
+                                  else
+                                    {
+                                      *mercury__lexer__Token_12 = (MR_Word) MR_mkword(MR_mktag(3), &mercury__lexer_scalar_common_4[31]);
+                                    }
+                                }
+                            }
+                        }
+                    }
+                }
+            }
+            break;
+          case (MR_Integer) 1:
+            {
+              MR_String mercury__lexer__String_55;
+
+              {
+                mercury__lexer__succeeded = mercury__string__semidet_from_rev_char_list_2_p_0(mercury__lexer__RevChars_9, &mercury__lexer__String_55);
+              }
+              if (mercury__lexer__succeeded)
+                {
+                  mercury__lexer__conv_string_to_int_5_p_0(mercury__lexer__String_55, mercury__lexer__Base_10, mercury__lexer__Signedness_11, (MR_Integer) 0, mercury__lexer__Token_12);
+                }
+              else
+                {
+                  *mercury__lexer__Token_12 = (MR_Word) MR_mkword(MR_mktag(3), &mercury__lexer_scalar_common_4[31]);
+                }
+            }
+            break;
+        }
+        break;
+      case (MR_Integer) 1:
+        {
+          MR_Word mercury__lexer__Error_16 = ((MR_Word) (MR_hl_field(MR_mktag(1), mercury__lexer__Result_14, (MR_Integer) 0)));
+
+          {
+            MR_Word base;
+            base = (MR_Word) MR_mkword(MR_mktag(3), MR_new_object(MR_Word, ((MR_Integer) 2 * sizeof(MR_Word)), NULL, NULL));
+            *mercury__lexer__Token_12 = base;
+            MR_hl_field(MR_mktag(3), base, 0) = ((MR_Box) (MR_Word) ((MR_Integer) 6));
+            MR_hl_field(MR_mktag(3), base, 1) = ((MR_Box) (mercury__lexer__Error_16));
+          }
+        }
+        break;
+    }
+  }
+}
+
+static void MR_CALL 
+mercury__lexer__string_get_number_8_p_0(
+  MR_String mercury__lexer__String_9,
+  MR_Word mercury__lexer__STATE_VARIABLE_LastDigit_0_19,
+  MR_Integer mercury__lexer__Len_11,
+  MR_Word mercury__lexer__Posn0_12,
+  MR_Word * mercury__lexer__Token_13,
+  MR_Integer * mercury__lexer__Context_14,
+  MR_Word mercury__lexer__STATE_VARIABLE_Posn_0_20,
+  MR_Word * mercury__lexer__STATE_VARIABLE_Posn_21)
+{
+  while (MR_TRUE)
+    {
+      /* tailcall optimized into a loop */
+      {
+        MR_bool mercury__lexer__succeeded;
+        MR_Char mercury__lexer__Char_17;
+        MR_Word mercury__lexer__STATE_VARIABLE_Posn_22_22;
+        MR_Integer mercury__lexer__LineNum0_68 = ((MR_Integer) (MR_hl_field(MR_mktag(0), mercury__lexer__STATE_VARIABLE_Posn_0_20, (MR_Integer) 0)));
+        MR_Integer mercury__lexer__LineOffset0_69 = ((MR_Integer) (MR_hl_field(MR_mktag(0), mercury__lexer__STATE_VARIABLE_Posn_0_20, (MR_Integer) 1)));
+        MR_Integer mercury__lexer__Offset0_70 = ((MR_Integer) (MR_hl_field(MR_mktag(0), mercury__lexer__STATE_VARIABLE_Posn_0_20, (MR_Integer) 2)));
+        MR_Integer mercury__lexer__Offset_71;
+
+        mercury__lexer__succeeded = (mercury__lexer__Offset0_70 < mercury__lexer__Len_11);
+        if (mercury__lexer__succeeded)
+          {
+{
+#define MR_PROC_LABEL mercury__lexer__string_get_number_8_p_0
+
+	MR_String Str;
+	MR_Integer Index;
+	MR_Integer NextIndex;
+	MR_Char Ch;
+	MR_bool SUCCESS_INDICATOR;
+
+	Str =  mercury__lexer__String_9 ;
+	Index =  mercury__lexer__Offset0_70 ;
+		{
+
+    Ch = Str[Index];
+    if (MR_is_ascii(Ch)) {
+        NextIndex = Index + 1;
+        SUCCESS_INDICATOR = (Ch != 0);
+    } else {
+        NextIndex = Index;
+        Ch = MR_utf8_get_next_mb(Str, &NextIndex);
+        SUCCESS_INDICATOR = (Ch > 0);
+    }
+
+
+		;}
+#undef MR_PROC_LABEL
+	if (SUCCESS_INDICATOR) {
+	 mercury__lexer__Offset_71  = NextIndex;
+	 mercury__lexer__Char_17  = Ch;
+	}
+mercury__lexer__succeeded  = SUCCESS_INDICATOR;
+}
+            if (mercury__lexer__succeeded)
+              {
+                mercury__lexer__succeeded = (mercury__lexer__Char_17 == (MR_Char) 10);
+                if (mercury__lexer__succeeded)
+                  {
+                    MR_Integer mercury__lexer__LineNum_72 = (mercury__lexer__LineNum0_68 + (MR_Integer) 1);
+
+                    {
+                      mercury__lexer__STATE_VARIABLE_Posn_22_22 = (MR_Word) MR_new_object(MR_Word, ((MR_Integer) 3 * sizeof(MR_Word)), NULL, NULL);
+                      MR_hl_field(MR_mktag(0), mercury__lexer__STATE_VARIABLE_Posn_22_22, 0) = ((MR_Box) (mercury__lexer__LineNum_72));
+                      MR_hl_field(MR_mktag(0), mercury__lexer__STATE_VARIABLE_Posn_22_22, 1) = ((MR_Box) (mercury__lexer__Offset_71));
+                      MR_hl_field(MR_mktag(0), mercury__lexer__STATE_VARIABLE_Posn_22_22, 2) = ((MR_Box) (mercury__lexer__Offset_71));
+                    }
+                  }
+                else
+                  {
+                    mercury__lexer__STATE_VARIABLE_Posn_22_22 = (MR_Word) MR_new_object(MR_Word, ((MR_Integer) 3 * sizeof(MR_Word)), NULL, NULL);
+                    MR_hl_field(MR_mktag(0), mercury__lexer__STATE_VARIABLE_Posn_22_22, 0) = ((MR_Box) (mercury__lexer__LineNum0_68));
+                    MR_hl_field(MR_mktag(0), mercury__lexer__STATE_VARIABLE_Posn_22_22, 1) = ((MR_Box) (mercury__lexer__LineOffset0_69));
+                    MR_hl_field(MR_mktag(0), mercury__lexer__STATE_VARIABLE_Posn_22_22, 2) = ((MR_Box) (mercury__lexer__Offset_71));
+                  }
+                mercury__lexer__succeeded = MR_TRUE;
+              }
+          }
+        if (mercury__lexer__succeeded)
+          {
+            {
+              mercury__lexer__succeeded = mercury__char__is_decimal_digit_1_p_0(mercury__lexer__Char_17);
+            }
+            if (mercury__lexer__succeeded)
+              {
+                /* direct tailcall eliminated */
+                {
+                  MR_Word mercury__lexer__next_value_of_STATE_VARIABLE_Posn_0_20 = mercury__lexer__STATE_VARIABLE_Posn_22_22;
+
+                  mercury__lexer__STATE_VARIABLE_Posn_0_20 = mercury__lexer__next_value_of_STATE_VARIABLE_Posn_0_20;
+                  mercury__lexer__STATE_VARIABLE_LastDigit_0_19 = (MR_Integer) 1;
+                }
+                continue;
+              }
+            else
+              {
+                mercury__lexer__succeeded = (mercury__lexer__Char_17 == (MR_Char) 95);
+                if (mercury__lexer__succeeded)
+                  {
+                    /* direct tailcall eliminated */
+                    {
+                      MR_Word mercury__lexer__next_value_of_STATE_VARIABLE_Posn_0_20 = mercury__lexer__STATE_VARIABLE_Posn_22_22;
+
+                      mercury__lexer__STATE_VARIABLE_Posn_0_20 = mercury__lexer__next_value_of_STATE_VARIABLE_Posn_0_20;
+                      mercury__lexer__STATE_VARIABLE_LastDigit_0_19 = (MR_Integer) 0;
+                    }
+                    continue;
+                  }
+                else
+                  {
+                    mercury__lexer__succeeded = (mercury__lexer__Char_17 == (MR_Char) 46);
+                    if (mercury__lexer__succeeded)
+                      switch (mercury__lexer__STATE_VARIABLE_LastDigit_0_19) {
+                        default: /*NOTREACHED*/ MR_assert(0);
+                        case (MR_Integer) 1:
+                          {
+                            mercury__lexer__string_get_int_dot_8_p_0(mercury__lexer__String_9, mercury__lexer__STATE_VARIABLE_LastDigit_0_19, mercury__lexer__Len_11, mercury__lexer__Posn0_12, mercury__lexer__Token_13, mercury__lexer__Context_14, mercury__lexer__STATE_VARIABLE_Posn_22_22, mercury__lexer__STATE_VARIABLE_Posn_21);
+                          }
+                          break;
+                        case (MR_Integer) 0:
+                          {
+                            MR_Integer mercury__lexer__Var_82;
+                            MR_Integer mercury__lexer__Var_83;
+
+                            *mercury__lexer__Token_13 = (MR_Word) MR_mkword(MR_mktag(3), &mercury__lexer_scalar_common_4[34]);
+                            *mercury__lexer__Context_14 = ((MR_Integer) (MR_hl_field(MR_mktag(0), mercury__lexer__Posn0_12, (MR_Integer) 0)));
+                            mercury__lexer__Var_82 = ((MR_Integer) (MR_hl_field(MR_mktag(0), mercury__lexer__Posn0_12, (MR_Integer) 1)));
+                            mercury__lexer__Var_83 = ((MR_Integer) (MR_hl_field(MR_mktag(0), mercury__lexer__Posn0_12, (MR_Integer) 2)));
+                            *mercury__lexer__STATE_VARIABLE_Posn_21 = mercury__lexer__STATE_VARIABLE_Posn_22_22;
+                          }
+                          break;
+                      }
+                    else
+                      {
+                        mercury__lexer__succeeded = (mercury__lexer__Char_17 == (MR_Char) 117);
+                        if (mercury__lexer__succeeded)
+                          {
+                            MR_Integer mercury__lexer__Var_90;
+                            MR_Integer mercury__lexer__Var_91;
+
+                            {
+                              mercury__lexer__string_get_integer_size_suffix_9_p_0(mercury__lexer__String_9, mercury__lexer__Len_11, mercury__lexer__Posn0_12, mercury__lexer__STATE_VARIABLE_Posn_0_20, (MR_Integer) 2, (MR_Integer) 1, mercury__lexer__Token_13, mercury__lexer__STATE_VARIABLE_Posn_22_22, mercury__lexer__STATE_VARIABLE_Posn_21);
+                            }
+                            *mercury__lexer__Context_14 = ((MR_Integer) (MR_hl_field(MR_mktag(0), mercury__lexer__Posn0_12, (MR_Integer) 0)));
+                            mercury__lexer__Var_90 = ((MR_Integer) (MR_hl_field(MR_mktag(0), mercury__lexer__Posn0_12, (MR_Integer) 1)));
+                            mercury__lexer__Var_91 = ((MR_Integer) (MR_hl_field(MR_mktag(0), mercury__lexer__Posn0_12, (MR_Integer) 2)));
+                          }
+                        else
+                          {
+                            mercury__lexer__succeeded = (mercury__lexer__Char_17 == (MR_Char) 105);
+                            if (mercury__lexer__succeeded)
+                              {
+                                MR_Word mercury__lexer__STATE_VARIABLE_Posn_36_36;
+
+                                {
+                                  mercury__lexer__string_get_integer_size_suffix_9_p_0(mercury__lexer__String_9, mercury__lexer__Len_11, mercury__lexer__Posn0_12, mercury__lexer__STATE_VARIABLE_Posn_0_20, (MR_Integer) 2, (MR_Integer) 0, mercury__lexer__Token_13, mercury__lexer__STATE_VARIABLE_Posn_22_22, &mercury__lexer__STATE_VARIABLE_Posn_36_36);
+                                }
+                                {
+                                  mercury__lexer__string_get_context_4_p_0(mercury__lexer__Posn0_12, mercury__lexer__Context_14, mercury__lexer__STATE_VARIABLE_Posn_36_36, mercury__lexer__STATE_VARIABLE_Posn_21);
+                                }
+                              }
+                            else
+                              {
+                                switch (mercury__lexer__Char_17) {
+                                  default:
+                                    mercury__lexer__succeeded = MR_FALSE;
+                                    break;
+                                  case (MR_Char) 69:
+                                    mercury__lexer__succeeded = MR_TRUE;
+                                    break;
+                                  case (MR_Char) 101:
+                                    mercury__lexer__succeeded = MR_TRUE;
+                                    break;
+                                }
+                                if (mercury__lexer__succeeded)
+                                  switch (mercury__lexer__STATE_VARIABLE_LastDigit_0_19) {
+                                    default: /*NOTREACHED*/ MR_assert(0);
+                                    case (MR_Integer) 1:
+                                      {
+                                        mercury__lexer__string_get_float_exponent_7_p_0(mercury__lexer__String_9, mercury__lexer__Len_11, mercury__lexer__Posn0_12, mercury__lexer__Token_13, mercury__lexer__Context_14, mercury__lexer__STATE_VARIABLE_Posn_22_22, mercury__lexer__STATE_VARIABLE_Posn_21);
+                                      }
+                                      break;
+                                    case (MR_Integer) 0:
+                                      {
+                                        *mercury__lexer__Token_13 = (MR_Word) MR_mkword(MR_mktag(3), &mercury__lexer_scalar_common_4[35]);
+                                        {
+                                          mercury__lexer__string_get_context_4_p_0(mercury__lexer__Posn0_12, mercury__lexer__Context_14, mercury__lexer__STATE_VARIABLE_Posn_22_22, mercury__lexer__STATE_VARIABLE_Posn_21);
+                                        }
+                                      }
+                                      break;
+                                  }
+                                else
+                                  {
+                                    MR_Word mercury__lexer__STATE_VARIABLE_Posn_41_41;
+                                    MR_Word mercury__lexer__STATE_VARIABLE_Posn_43_43;
+
+                                    {
+                                      mercury__lexer__string_ungetchar_3_p_0(mercury__lexer__String_9, mercury__lexer__STATE_VARIABLE_Posn_22_22, &mercury__lexer__STATE_VARIABLE_Posn_41_41);
+                                    }
+                                    switch (mercury__lexer__STATE_VARIABLE_LastDigit_0_19) {
+                                      default: /*NOTREACHED*/ MR_assert(0);
+                                      case (MR_Integer) 1:
+                                        {
+                                          MR_String mercury__lexer__NumberString_18;
+
+                                          {
+                                            mercury__lexer__grab_string_5_p_0(mercury__lexer__String_9, mercury__lexer__Posn0_12, &mercury__lexer__NumberString_18, mercury__lexer__STATE_VARIABLE_Posn_41_41, &mercury__lexer__STATE_VARIABLE_Posn_43_43);
+                                          }
+                                          {
+                                            mercury__lexer__conv_string_to_int_5_p_0(mercury__lexer__NumberString_18, (MR_Integer) 2, (MR_Integer) 0, (MR_Integer) 0, mercury__lexer__Token_13);
+                                          }
+                                        }
+                                        break;
+                                      case (MR_Integer) 0:
+                                        {
+                                          *mercury__lexer__Token_13 = (MR_Word) MR_mkword(MR_mktag(3), &mercury__lexer_scalar_common_4[34]);
+                                          mercury__lexer__STATE_VARIABLE_Posn_43_43 = mercury__lexer__STATE_VARIABLE_Posn_41_41;
+                                        }
+                                        break;
+                                    }
+                                    {
+                                      mercury__lexer__string_get_context_4_p_0(mercury__lexer__Posn0_12, mercury__lexer__Context_14, mercury__lexer__STATE_VARIABLE_Posn_43_43, mercury__lexer__STATE_VARIABLE_Posn_21);
+                                    }
+                                  }
+                              }
+                          }
+                      }
+                  }
+              }
+          }
+        else
+          {
+            MR_Word mercury__lexer__STATE_VARIABLE_Posn_49_49;
+
+            switch (mercury__lexer__STATE_VARIABLE_LastDigit_0_19) {
+              default: /*NOTREACHED*/ MR_assert(0);
+              case (MR_Integer) 1:
+                {
+                  MR_String mercury__lexer__NumberString_58;
+
+                  {
+                    mercury__lexer__grab_string_5_p_0(mercury__lexer__String_9, mercury__lexer__Posn0_12, &mercury__lexer__NumberString_58, mercury__lexer__STATE_VARIABLE_Posn_0_20, &mercury__lexer__STATE_VARIABLE_Posn_49_49);
+                  }
+                  {
+                    mercury__lexer__conv_string_to_int_5_p_0(mercury__lexer__NumberString_58, (MR_Integer) 2, (MR_Integer) 0, (MR_Integer) 0, mercury__lexer__Token_13);
+                  }
+                }
+                break;
+              case (MR_Integer) 0:
+                {
+                  *mercury__lexer__Token_13 = (MR_Word) MR_mkword(MR_mktag(3), &mercury__lexer_scalar_common_4[34]);
+                  mercury__lexer__STATE_VARIABLE_Posn_49_49 = mercury__lexer__STATE_VARIABLE_Posn_0_20;
+                }
+                break;
+            }
+            {
+              mercury__lexer__string_get_context_4_p_0(mercury__lexer__Posn0_12, mercury__lexer__Context_14, mercury__lexer__STATE_VARIABLE_Posn_49_49, mercury__lexer__STATE_VARIABLE_Posn_21);
+            }
+          }
+      }
+      break;
+    }
+}
+
+static void MR_CALL 
+mercury__lexer__get_number_6_p_0(
+  MR_Word mercury__lexer__Stream_7,
+  MR_Word mercury__lexer__STATE_VARIABLE_LastDigit_0_15,
+  MR_Word mercury__lexer__STATE_VARIABLE_RevChars_0_16,
+  MR_Word * mercury__lexer__Token_10)
+{
+  while (MR_TRUE)
+    {
+      /* tailcall optimized into a loop */
+      {
+        MR_bool mercury__lexer__succeeded;
+        MR_Word mercury__lexer__Result_12;
+        MR_Char mercury__lexer__Char_13;
+        MR_Word mercury__lexer__V_10_84;
+        MR_Box mercury__lexer__V_11_85;
+        MR_Box mercury__lexer__V_7_94 = (MR_Box) mercury__lexer__Stream_7;
+
+        {
+          mercury__io__read_char_code_2_6_p_0(mercury__lexer__V_7_94, &mercury__lexer__V_10_84, &mercury__lexer__Char_13, &mercury__lexer__V_11_85);
+        }
+        switch (mercury__lexer__V_10_84) {
+          default: /*NOTREACHED*/ MR_assert(0);
+          case (MR_Integer) 1:
+            mercury__lexer__Result_12 = (MR_Word) MR_mkword(MR_mktag(0), MR_mkbody((MR_Integer) 1));
+            break;
+          case (MR_Integer) 2:
+            {
+              MR_String mercury__lexer__V_12_87;
+              MR_Word mercury__lexer__V_17_88;
+
+{
+#define MR_PROC_LABEL mercury__lexer__get_number_6_p_0
+
+	MR_Integer Error;
+	MR_String Msg0;
+	MR_String Msg;
+
+	MR_MAYBE_UNBOX_FOREIGN_TYPE(MR_Integer, mercury__lexer__V_11_85 , Error);
+	Msg0 =  (MR_String) "read failed: " ;
+		{
+
+    ML_make_err_msg(Error, Msg0, MR_ALLOC_ID, Msg);
+
+
+		;}
+#undef MR_PROC_LABEL
+	 mercury__lexer__V_12_87  = Msg;
+}
+              mercury__lexer__V_17_88 = (MR_Word) mercury__lexer__V_12_87;
+              {
+                mercury__lexer__Result_12 = (MR_Word) MR_mkword(MR_mktag(1), MR_new_object(MR_Word, ((MR_Integer) 1 * sizeof(MR_Word)), NULL, NULL));
+                MR_hl_field(MR_mktag(1), mercury__lexer__Result_12, 0) = ((MR_Box) (mercury__lexer__V_17_88));
+              }
+            }
+            break;
+          case (MR_Integer) 0:
+            mercury__lexer__Result_12 = (MR_Word) MR_mkword(MR_mktag(0), MR_mkbody((MR_Integer) 0));
+            break;
+        }
+        switch (MR_tag((MR_Word) mercury__lexer__Result_12)) {
+          default: /*NOTREACHED*/ MR_assert(0);
+          case (MR_Integer) 0:
+            switch (MR_unmkbody(mercury__lexer__Result_12)) {
+              default: /*NOTREACHED*/ MR_assert(0);
+              case (MR_Integer) 0:
+                {
+                  {
+                    mercury__lexer__succeeded = mercury__char__is_decimal_digit_1_p_0(mercury__lexer__Char_13);
+                  }
+                  if (mercury__lexer__succeeded)
+                    {
+                      MR_Word mercury__lexer__STATE_VARIABLE_RevChars_20_49;
+
+                      {
+                        mercury__lexer__STATE_VARIABLE_RevChars_20_49 = (MR_Word) MR_mkword(MR_mktag(1), MR_new_object(MR_Word, ((MR_Integer) 2 * sizeof(MR_Word)), NULL, NULL));
+                        MR_hl_field(MR_mktag(1), mercury__lexer__STATE_VARIABLE_RevChars_20_49, 0) = ((MR_Box) (MR_Word) (mercury__lexer__Char_13));
+                        MR_hl_field(MR_mktag(1), mercury__lexer__STATE_VARIABLE_RevChars_20_49, 1) = ((MR_Box) (mercury__lexer__STATE_VARIABLE_RevChars_0_16));
+                      }
+                      /* direct tailcall eliminated */
+                      {
+                        MR_Word mercury__lexer__next_value_of_STATE_VARIABLE_RevChars_0_16 = mercury__lexer__STATE_VARIABLE_RevChars_20_49;
+
+                        mercury__lexer__STATE_VARIABLE_RevChars_0_16 = mercury__lexer__next_value_of_STATE_VARIABLE_RevChars_0_16;
+                        mercury__lexer__STATE_VARIABLE_LastDigit_0_15 = (MR_Integer) 1;
+                      }
+                      continue;
+                    }
+                  else
+                    {
+                      mercury__lexer__succeeded = (mercury__lexer__Char_13 == (MR_Char) 95);
+                      if (mercury__lexer__succeeded)
+                        {
+                          /* direct tailcall eliminated */
+                          {
+                            mercury__lexer__STATE_VARIABLE_LastDigit_0_15 = (MR_Integer) 0;
+                          }
+                          continue;
+                        }
+                      else
+                        {
+                          mercury__lexer__succeeded = (mercury__lexer__Char_13 == (MR_Char) 46);
+                          if (mercury__lexer__succeeded)
+                            switch (mercury__lexer__STATE_VARIABLE_LastDigit_0_15) {
+                              default: /*NOTREACHED*/ MR_assert(0);
+                              case (MR_Integer) 1:
+                                {
+                                  mercury__lexer__get_int_dot_6_p_0(mercury__lexer__Stream_7, mercury__lexer__STATE_VARIABLE_LastDigit_0_15, mercury__lexer__STATE_VARIABLE_RevChars_0_16, mercury__lexer__Token_10);
+                                }
+                                break;
+                              case (MR_Integer) 0:
+                                {
+                                  *mercury__lexer__Token_10 = (MR_Word) MR_mkword(MR_mktag(3), &mercury__lexer_scalar_common_4[34]);
+                                }
+                                break;
+                            }
+                          else
+                            {
+                              mercury__lexer__succeeded = (mercury__lexer__Char_13 == (MR_Char) 117);
+                              if (mercury__lexer__succeeded)
+                                {
+                                  {
+                                    mercury__lexer__get_integer_size_suffix_7_p_0(mercury__lexer__Stream_7, mercury__lexer__STATE_VARIABLE_RevChars_0_16, (MR_Integer) 2, (MR_Integer) 1, mercury__lexer__Token_10);
+                                  }
+                                }
+                              else
+                                {
+                                  mercury__lexer__succeeded = (mercury__lexer__Char_13 == (MR_Char) 105);
+                                  if (mercury__lexer__succeeded)
+                                    {
+                                      {
+                                        mercury__lexer__get_integer_size_suffix_7_p_0(mercury__lexer__Stream_7, mercury__lexer__STATE_VARIABLE_RevChars_0_16, (MR_Integer) 2, (MR_Integer) 0, mercury__lexer__Token_10);
+                                      }
+                                    }
+                                  else
+                                    {
+                                      switch (mercury__lexer__Char_13) {
+                                        default:
+                                          mercury__lexer__succeeded = MR_FALSE;
+                                          break;
+                                        case (MR_Char) 69:
+                                          mercury__lexer__succeeded = MR_TRUE;
+                                          break;
+                                        case (MR_Char) 101:
+                                          mercury__lexer__succeeded = MR_TRUE;
+                                          break;
+                                      }
+                                      if (mercury__lexer__succeeded)
+                                        switch (mercury__lexer__STATE_VARIABLE_LastDigit_0_15) {
+                                          default: /*NOTREACHED*/ MR_assert(0);
+                                          case (MR_Integer) 1:
+                                            {
+                                              MR_Word mercury__lexer__STATE_VARIABLE_RevChars_20_60;
+
+                                              {
+                                                mercury__lexer__STATE_VARIABLE_RevChars_20_60 = (MR_Word) MR_mkword(MR_mktag(1), MR_new_object(MR_Word, ((MR_Integer) 2 * sizeof(MR_Word)), NULL, NULL));
+                                                MR_hl_field(MR_mktag(1), mercury__lexer__STATE_VARIABLE_RevChars_20_60, 0) = ((MR_Box) (MR_Word) (mercury__lexer__Char_13));
+                                                MR_hl_field(MR_mktag(1), mercury__lexer__STATE_VARIABLE_RevChars_20_60, 1) = ((MR_Box) (mercury__lexer__STATE_VARIABLE_RevChars_0_16));
+                                              }
+                                              {
+                                                mercury__lexer__get_float_exponent_5_p_0(mercury__lexer__Stream_7, mercury__lexer__STATE_VARIABLE_RevChars_20_60, mercury__lexer__Token_10);
+                                              }
+                                            }
+                                            break;
+                                          case (MR_Integer) 0:
+                                            {
+                                              *mercury__lexer__Token_10 = (MR_Word) MR_mkword(MR_mktag(3), &mercury__lexer_scalar_common_4[35]);
+                                            }
+                                            break;
+                                        }
+                                      else
+                                        {
+                                          {
+                                            mercury__io__putback_char_4_p_0(mercury__lexer__Stream_7, mercury__lexer__Char_13);
+                                          }
+                                          switch (mercury__lexer__STATE_VARIABLE_LastDigit_0_15) {
+                                            default: /*NOTREACHED*/ MR_assert(0);
+                                            case (MR_Integer) 1:
+                                              {
+                                                {
+                                                  mercury__lexer__rev_char_list_to_int_5_p_0(mercury__lexer__STATE_VARIABLE_RevChars_0_16, (MR_Integer) 2, (MR_Integer) 0, (MR_Integer) 0, mercury__lexer__Token_10);
+                                                }
+                                              }
+                                              break;
+                                            case (MR_Integer) 0:
+                                              {
+                                                *mercury__lexer__Token_10 = (MR_Word) MR_mkword(MR_mktag(3), &mercury__lexer_scalar_common_4[34]);
+                                              }
+                                              break;
+                                          }
+                                        }
+                                    }
+                                }
+                            }
+                        }
+                    }
+                }
+                break;
+              case (MR_Integer) 1:
+                switch (mercury__lexer__STATE_VARIABLE_LastDigit_0_15) {
+                  default: /*NOTREACHED*/ MR_assert(0);
+                  case (MR_Integer) 1:
+                    {
+                      {
+                        mercury__lexer__rev_char_list_to_int_5_p_0(mercury__lexer__STATE_VARIABLE_RevChars_0_16, (MR_Integer) 2, (MR_Integer) 0, (MR_Integer) 0, mercury__lexer__Token_10);
+                      }
+                    }
+                    break;
+                  case (MR_Integer) 0:
+                    {
+                      *mercury__lexer__Token_10 = (MR_Word) MR_mkword(MR_mktag(3), &mercury__lexer_scalar_common_4[34]);
+                    }
+                    break;
+                }
+                break;
+            }
+            break;
+          case (MR_Integer) 1:
+            {
+              MR_Word mercury__lexer__Error_14 = ((MR_Word) (MR_hl_field(MR_mktag(1), mercury__lexer__Result_12, (MR_Integer) 0)));
+
+              {
+                MR_Word base;
+                base = (MR_Word) MR_mkword(MR_mktag(3), MR_new_object(MR_Word, ((MR_Integer) 2 * sizeof(MR_Word)), NULL, NULL));
+                *mercury__lexer__Token_10 = base;
+                MR_hl_field(MR_mktag(3), base, 0) = ((MR_Box) (MR_Word) ((MR_Integer) 6));
+                MR_hl_field(MR_mktag(3), base, 1) = ((MR_Box) (mercury__lexer__Error_14));
+              }
+            }
+            break;
+        }
+      }
+      break;
+    }
+}
+
+static void MR_CALL 
+mercury__lexer__string_get_hex_2_8_p_0(
+  MR_String mercury__lexer__String_9,
+  MR_Word mercury__lexer__STATE_VARIABLE_LastDigit_0_19,
+  MR_Integer mercury__lexer__Len_11,
+  MR_Word mercury__lexer__Posn1_12,
+  MR_Word * mercury__lexer__Token_13,
+  MR_Integer * mercury__lexer__Context_14,
+  MR_Word mercury__lexer__STATE_VARIABLE_Posn_0_20,
+  MR_Word * mercury__lexer__STATE_VARIABLE_Posn_21)
+{
+  while (MR_TRUE)
+    {
+      /* tailcall optimized into a loop */
+      {
+        MR_bool mercury__lexer__succeeded;
+        MR_Char mercury__lexer__Char_17;
+        MR_Word mercury__lexer__STATE_VARIABLE_Posn_22_22;
+        MR_Integer mercury__lexer__LineNum0_62 = ((MR_Integer) (MR_hl_field(MR_mktag(0), mercury__lexer__STATE_VARIABLE_Posn_0_20, (MR_Integer) 0)));
+        MR_Integer mercury__lexer__LineOffset0_63 = ((MR_Integer) (MR_hl_field(MR_mktag(0), mercury__lexer__STATE_VARIABLE_Posn_0_20, (MR_Integer) 1)));
+        MR_Integer mercury__lexer__Offset0_64 = ((MR_Integer) (MR_hl_field(MR_mktag(0), mercury__lexer__STATE_VARIABLE_Posn_0_20, (MR_Integer) 2)));
+        MR_Integer mercury__lexer__Offset_65;
+
+        mercury__lexer__succeeded = (mercury__lexer__Offset0_64 < mercury__lexer__Len_11);
+        if (mercury__lexer__succeeded)
+          {
+{
+#define MR_PROC_LABEL mercury__lexer__string_get_hex_2_8_p_0
+
+	MR_String Str;
+	MR_Integer Index;
+	MR_Integer NextIndex;
+	MR_Char Ch;
+	MR_bool SUCCESS_INDICATOR;
+
+	Str =  mercury__lexer__String_9 ;
+	Index =  mercury__lexer__Offset0_64 ;
+		{
+
+    Ch = Str[Index];
+    if (MR_is_ascii(Ch)) {
+        NextIndex = Index + 1;
+        SUCCESS_INDICATOR = (Ch != 0);
+    } else {
+        NextIndex = Index;
+        Ch = MR_utf8_get_next_mb(Str, &NextIndex);
+        SUCCESS_INDICATOR = (Ch > 0);
+    }
+
+
+		;}
+#undef MR_PROC_LABEL
+	if (SUCCESS_INDICATOR) {
+	 mercury__lexer__Offset_65  = NextIndex;
+	 mercury__lexer__Char_17  = Ch;
+	}
+mercury__lexer__succeeded  = SUCCESS_INDICATOR;
+}
+            if (mercury__lexer__succeeded)
+              {
+                mercury__lexer__succeeded = (mercury__lexer__Char_17 == (MR_Char) 10);
+                if (mercury__lexer__succeeded)
+                  {
+                    MR_Integer mercury__lexer__LineNum_66 = (mercury__lexer__LineNum0_62 + (MR_Integer) 1);
+
+                    {
+                      mercury__lexer__STATE_VARIABLE_Posn_22_22 = (MR_Word) MR_new_object(MR_Word, ((MR_Integer) 3 * sizeof(MR_Word)), NULL, NULL);
+                      MR_hl_field(MR_mktag(0), mercury__lexer__STATE_VARIABLE_Posn_22_22, 0) = ((MR_Box) (mercury__lexer__LineNum_66));
+                      MR_hl_field(MR_mktag(0), mercury__lexer__STATE_VARIABLE_Posn_22_22, 1) = ((MR_Box) (mercury__lexer__Offset_65));
+                      MR_hl_field(MR_mktag(0), mercury__lexer__STATE_VARIABLE_Posn_22_22, 2) = ((MR_Box) (mercury__lexer__Offset_65));
+                    }
+                  }
+                else
+                  {
+                    mercury__lexer__STATE_VARIABLE_Posn_22_22 = (MR_Word) MR_new_object(MR_Word, ((MR_Integer) 3 * sizeof(MR_Word)), NULL, NULL);
+                    MR_hl_field(MR_mktag(0), mercury__lexer__STATE_VARIABLE_Posn_22_22, 0) = ((MR_Box) (mercury__lexer__LineNum0_62));
+                    MR_hl_field(MR_mktag(0), mercury__lexer__STATE_VARIABLE_Posn_22_22, 1) = ((MR_Box) (mercury__lexer__LineOffset0_63));
+                    MR_hl_field(MR_mktag(0), mercury__lexer__STATE_VARIABLE_Posn_22_22, 2) = ((MR_Box) (mercury__lexer__Offset_65));
+                  }
+                mercury__lexer__succeeded = MR_TRUE;
+              }
+          }
+        if (mercury__lexer__succeeded)
+          {
+            {
+              mercury__lexer__succeeded = mercury__char__is_hex_digit_1_p_0(mercury__lexer__Char_17);
+            }
+            if (mercury__lexer__succeeded)
+              {
+                /* direct tailcall eliminated */
+                {
+                  MR_Word mercury__lexer__next_value_of_STATE_VARIABLE_Posn_0_20 = mercury__lexer__STATE_VARIABLE_Posn_22_22;
+
+                  mercury__lexer__STATE_VARIABLE_Posn_0_20 = mercury__lexer__next_value_of_STATE_VARIABLE_Posn_0_20;
+                  mercury__lexer__STATE_VARIABLE_LastDigit_0_19 = (MR_Integer) 1;
+                }
+                continue;
+              }
+            else
+              {
+                mercury__lexer__succeeded = (mercury__lexer__Char_17 == (MR_Char) 95);
+                if (mercury__lexer__succeeded)
+                  {
+                    /* direct tailcall eliminated */
+                    {
+                      MR_Word mercury__lexer__next_value_of_STATE_VARIABLE_Posn_0_20 = mercury__lexer__STATE_VARIABLE_Posn_22_22;
+
+                      mercury__lexer__STATE_VARIABLE_Posn_0_20 = mercury__lexer__next_value_of_STATE_VARIABLE_Posn_0_20;
+                      mercury__lexer__STATE_VARIABLE_LastDigit_0_19 = (MR_Integer) 0;
+                    }
+                    continue;
+                  }
+                else
+                  {
+                    mercury__lexer__succeeded = (mercury__lexer__Char_17 == (MR_Char) 117);
+                    if (mercury__lexer__succeeded)
+                      {
+                        MR_Integer mercury__lexer__Var_75;
+                        MR_Integer mercury__lexer__Var_76;
+
+                        {
+                          mercury__lexer__string_get_integer_size_suffix_9_p_0(mercury__lexer__String_9, mercury__lexer__Len_11, mercury__lexer__Posn1_12, mercury__lexer__STATE_VARIABLE_Posn_0_20, (MR_Integer) 3, (MR_Integer) 1, mercury__lexer__Token_13, mercury__lexer__STATE_VARIABLE_Posn_22_22, mercury__lexer__STATE_VARIABLE_Posn_21);
+                        }
+                        *mercury__lexer__Context_14 = ((MR_Integer) (MR_hl_field(MR_mktag(0), mercury__lexer__Posn1_12, (MR_Integer) 0)));
+                        mercury__lexer__Var_75 = ((MR_Integer) (MR_hl_field(MR_mktag(0), mercury__lexer__Posn1_12, (MR_Integer) 1)));
+                        mercury__lexer__Var_76 = ((MR_Integer) (MR_hl_field(MR_mktag(0), mercury__lexer__Posn1_12, (MR_Integer) 2)));
+                      }
+                    else
+                      {
+                        mercury__lexer__succeeded = (mercury__lexer__Char_17 == (MR_Char) 105);
+                        if (mercury__lexer__succeeded)
+                          {
+                            MR_Integer mercury__lexer__Var_83;
+                            MR_Integer mercury__lexer__Var_84;
+
+                            {
+                              mercury__lexer__string_get_integer_size_suffix_9_p_0(mercury__lexer__String_9, mercury__lexer__Len_11, mercury__lexer__Posn1_12, mercury__lexer__STATE_VARIABLE_Posn_0_20, (MR_Integer) 3, (MR_Integer) 0, mercury__lexer__Token_13, mercury__lexer__STATE_VARIABLE_Posn_22_22, mercury__lexer__STATE_VARIABLE_Posn_21);
+                            }
+                            *mercury__lexer__Context_14 = ((MR_Integer) (MR_hl_field(MR_mktag(0), mercury__lexer__Posn1_12, (MR_Integer) 0)));
+                            mercury__lexer__Var_83 = ((MR_Integer) (MR_hl_field(MR_mktag(0), mercury__lexer__Posn1_12, (MR_Integer) 1)));
+                            mercury__lexer__Var_84 = ((MR_Integer) (MR_hl_field(MR_mktag(0), mercury__lexer__Posn1_12, (MR_Integer) 2)));
+                          }
+                        else
+                          {
+                            MR_Word mercury__lexer__STATE_VARIABLE_Posn_37_37;
+
+                            switch (mercury__lexer__STATE_VARIABLE_LastDigit_0_19) {
+                              default: /*NOTREACHED*/ MR_assert(0);
+                              case (MR_Integer) 1:
+                                {
+                                  MR_String mercury__lexer__BinaryString_18;
+                                  MR_Integer mercury__lexer__Offset0_91;
+                                  MR_Integer mercury__lexer__Offset_94;
+                                  MR_Integer mercury__lexer__Var_89;
+                                  MR_Integer mercury__lexer__Var_90;
+                                  MR_Integer mercury__lexer__Var_92;
+                                  MR_Integer mercury__lexer__Var_93;
+
+                                  {
+                                    mercury__lexer__string_ungetchar_3_p_0(mercury__lexer__String_9, mercury__lexer__STATE_VARIABLE_Posn_22_22, &mercury__lexer__STATE_VARIABLE_Posn_37_37);
+                                  }
+                                  mercury__lexer__Var_89 = ((MR_Integer) (MR_hl_field(MR_mktag(0), mercury__lexer__Posn1_12, (MR_Integer) 0)));
+                                  mercury__lexer__Var_90 = ((MR_Integer) (MR_hl_field(MR_mktag(0), mercury__lexer__Posn1_12, (MR_Integer) 1)));
+                                  mercury__lexer__Offset0_91 = ((MR_Integer) (MR_hl_field(MR_mktag(0), mercury__lexer__Posn1_12, (MR_Integer) 2)));
+                                  mercury__lexer__Var_92 = ((MR_Integer) (MR_hl_field(MR_mktag(0), mercury__lexer__STATE_VARIABLE_Posn_37_37, (MR_Integer) 0)));
+                                  mercury__lexer__Var_93 = ((MR_Integer) (MR_hl_field(MR_mktag(0), mercury__lexer__STATE_VARIABLE_Posn_37_37, (MR_Integer) 1)));
+                                  mercury__lexer__Offset_94 = ((MR_Integer) (MR_hl_field(MR_mktag(0), mercury__lexer__STATE_VARIABLE_Posn_37_37, (MR_Integer) 2)));
+{
+#define MR_PROC_LABEL mercury__lexer__string_get_hex_2_8_p_0
+
+	MR_String Str;
+	MR_Integer Start;
+	MR_Integer End;
+	MR_String SubString;
+
+	Str =  mercury__lexer__String_9 ;
+	Start =  mercury__lexer__Offset0_91 ;
+	End =  mercury__lexer__Offset_94 ;
+		{
+{
+    MR_Integer Count;
+
+    Count = End - Start;
+    MR_allocate_aligned_string_msg(SubString, Count, MR_ALLOC_ID);
+    MR_memcpy(SubString, Str + Start, Count);
+    SubString[Count] = '\0';
+}
+
+		;}
+#undef MR_PROC_LABEL
+	 mercury__lexer__BinaryString_18  = SubString;
+}
+                                  {
+                                    mercury__lexer__conv_string_to_int_5_p_0(mercury__lexer__BinaryString_18, (MR_Integer) 3, (MR_Integer) 0, (MR_Integer) 0, mercury__lexer__Token_13);
+                                  }
+                                }
+                                break;
+                              case (MR_Integer) 0:
+                                {
+                                  *mercury__lexer__Token_13 = (MR_Word) MR_mkword(MR_mktag(3), &mercury__lexer_scalar_common_4[33]);
+                                  mercury__lexer__STATE_VARIABLE_Posn_37_37 = mercury__lexer__STATE_VARIABLE_Posn_22_22;
+                                }
+                                break;
+                            }
+                            {
+                              mercury__lexer__string_get_context_4_p_0(mercury__lexer__Posn1_12, mercury__lexer__Context_14, mercury__lexer__STATE_VARIABLE_Posn_37_37, mercury__lexer__STATE_VARIABLE_Posn_21);
+                            }
+                          }
+                      }
+                  }
+              }
+          }
+        else
+          {
+            MR_Word mercury__lexer__STATE_VARIABLE_Posn_43_43;
+
+            switch (mercury__lexer__STATE_VARIABLE_LastDigit_0_19) {
+              default: /*NOTREACHED*/ MR_assert(0);
+              case (MR_Integer) 1:
+                {
+                  MR_String mercury__lexer__BinaryString_52;
+
+                  {
+                    mercury__lexer__grab_string_5_p_0(mercury__lexer__String_9, mercury__lexer__Posn1_12, &mercury__lexer__BinaryString_52, mercury__lexer__STATE_VARIABLE_Posn_0_20, &mercury__lexer__STATE_VARIABLE_Posn_43_43);
+                  }
+                  {
+                    mercury__lexer__conv_string_to_int_5_p_0(mercury__lexer__BinaryString_52, (MR_Integer) 3, (MR_Integer) 0, (MR_Integer) 0, mercury__lexer__Token_13);
+                  }
+                }
+                break;
+              case (MR_Integer) 0:
+                {
+                  *mercury__lexer__Token_13 = (MR_Word) MR_mkword(MR_mktag(3), &mercury__lexer_scalar_common_4[33]);
+                  mercury__lexer__STATE_VARIABLE_Posn_43_43 = mercury__lexer__STATE_VARIABLE_Posn_0_20;
+                }
+                break;
+            }
+            {
+              mercury__lexer__string_get_context_4_p_0(mercury__lexer__Posn1_12, mercury__lexer__Context_14, mercury__lexer__STATE_VARIABLE_Posn_43_43, mercury__lexer__STATE_VARIABLE_Posn_21);
+            }
+          }
+      }
+      break;
+    }
+}
+
+static void MR_CALL 
+mercury__lexer__get_hex_2_6_p_0(
+  MR_Word mercury__lexer__Stream_7,
+  MR_Word mercury__lexer__STATE_VARIABLE_LastDigit_0_15,
+  MR_Word mercury__lexer__STATE_VARIABLE_RevChars_0_16,
+  MR_Word * mercury__lexer__Token_10)
+{
+  while (MR_TRUE)
+    {
+      /* tailcall optimized into a loop */
+      {
+        MR_bool mercury__lexer__succeeded;
+        MR_Word mercury__lexer__Result_12;
+        MR_Char mercury__lexer__Char_13;
+        MR_Word mercury__lexer__V_10_62;
+        MR_Box mercury__lexer__V_11_63;
+        MR_Box mercury__lexer__V_7_72 = (MR_Box) mercury__lexer__Stream_7;
+
+        {
+          mercury__io__read_char_code_2_6_p_0(mercury__lexer__V_7_72, &mercury__lexer__V_10_62, &mercury__lexer__Char_13, &mercury__lexer__V_11_63);
+        }
+        switch (mercury__lexer__V_10_62) {
+          default: /*NOTREACHED*/ MR_assert(0);
+          case (MR_Integer) 1:
+            mercury__lexer__Result_12 = (MR_Word) MR_mkword(MR_mktag(0), MR_mkbody((MR_Integer) 1));
+            break;
+          case (MR_Integer) 2:
+            {
+              MR_String mercury__lexer__V_12_65;
+              MR_Word mercury__lexer__V_17_66;
+
+{
+#define MR_PROC_LABEL mercury__lexer__get_hex_2_6_p_0
+
+	MR_Integer Error;
+	MR_String Msg0;
+	MR_String Msg;
+
+	MR_MAYBE_UNBOX_FOREIGN_TYPE(MR_Integer, mercury__lexer__V_11_63 , Error);
+	Msg0 =  (MR_String) "read failed: " ;
+		{
+
+    ML_make_err_msg(Error, Msg0, MR_ALLOC_ID, Msg);
+
+
+		;}
+#undef MR_PROC_LABEL
+	 mercury__lexer__V_12_65  = Msg;
+}
+              mercury__lexer__V_17_66 = (MR_Word) mercury__lexer__V_12_65;
+              {
+                mercury__lexer__Result_12 = (MR_Word) MR_mkword(MR_mktag(1), MR_new_object(MR_Word, ((MR_Integer) 1 * sizeof(MR_Word)), NULL, NULL));
+                MR_hl_field(MR_mktag(1), mercury__lexer__Result_12, 0) = ((MR_Box) (mercury__lexer__V_17_66));
+              }
+            }
+            break;
+          case (MR_Integer) 0:
+            mercury__lexer__Result_12 = (MR_Word) MR_mkword(MR_mktag(0), MR_mkbody((MR_Integer) 0));
+            break;
+        }
+        switch (MR_tag((MR_Word) mercury__lexer__Result_12)) {
+          default: /*NOTREACHED*/ MR_assert(0);
+          case (MR_Integer) 0:
+            switch (MR_unmkbody(mercury__lexer__Result_12)) {
+              default: /*NOTREACHED*/ MR_assert(0);
+              case (MR_Integer) 0:
+                {
+                  {
+                    mercury__lexer__succeeded = mercury__char__is_hex_digit_1_p_0(mercury__lexer__Char_13);
+                  }
+                  if (mercury__lexer__succeeded)
+                    {
+                      MR_Word mercury__lexer__STATE_VARIABLE_RevChars_20_44;
+
+                      {
+                        mercury__lexer__STATE_VARIABLE_RevChars_20_44 = (MR_Word) MR_mkword(MR_mktag(1), MR_new_object(MR_Word, ((MR_Integer) 2 * sizeof(MR_Word)), NULL, NULL));
+                        MR_hl_field(MR_mktag(1), mercury__lexer__STATE_VARIABLE_RevChars_20_44, 0) = ((MR_Box) (MR_Word) (mercury__lexer__Char_13));
+                        MR_hl_field(MR_mktag(1), mercury__lexer__STATE_VARIABLE_RevChars_20_44, 1) = ((MR_Box) (mercury__lexer__STATE_VARIABLE_RevChars_0_16));
+                      }
+                      /* direct tailcall eliminated */
+                      {
+                        MR_Word mercury__lexer__next_value_of_STATE_VARIABLE_RevChars_0_16 = mercury__lexer__STATE_VARIABLE_RevChars_20_44;
+
+                        mercury__lexer__STATE_VARIABLE_RevChars_0_16 = mercury__lexer__next_value_of_STATE_VARIABLE_RevChars_0_16;
+                        mercury__lexer__STATE_VARIABLE_LastDigit_0_15 = (MR_Integer) 1;
+                      }
+                      continue;
+                    }
+                  else
+                    {
+                      mercury__lexer__succeeded = (mercury__lexer__Char_13 == (MR_Char) 95);
+                      if (mercury__lexer__succeeded)
+                        {
+                          /* direct tailcall eliminated */
+                          {
+                            mercury__lexer__STATE_VARIABLE_LastDigit_0_15 = (MR_Integer) 0;
+                          }
+                          continue;
+                        }
+                      else
+                        {
+                          mercury__lexer__succeeded = (mercury__lexer__Char_13 == (MR_Char) 117);
+                          if (mercury__lexer__succeeded)
+                            {
+                              {
+                                mercury__lexer__get_integer_size_suffix_7_p_0(mercury__lexer__Stream_7, mercury__lexer__STATE_VARIABLE_RevChars_0_16, (MR_Integer) 3, (MR_Integer) 1, mercury__lexer__Token_10);
+                              }
+                            }
+                          else
+                            {
+                              mercury__lexer__succeeded = (mercury__lexer__Char_13 == (MR_Char) 105);
+                              if (mercury__lexer__succeeded)
+                                {
+                                  {
+                                    mercury__lexer__get_integer_size_suffix_7_p_0(mercury__lexer__Stream_7, mercury__lexer__STATE_VARIABLE_RevChars_0_16, (MR_Integer) 3, (MR_Integer) 0, mercury__lexer__Token_10);
+                                  }
+                                }
+                              else
+                                {
+                                  {
+                                    mercury__io__putback_char_4_p_0(mercury__lexer__Stream_7, mercury__lexer__Char_13);
+                                  }
+                                  switch (mercury__lexer__STATE_VARIABLE_LastDigit_0_15) {
+                                    default: /*NOTREACHED*/ MR_assert(0);
+                                    case (MR_Integer) 1:
+                                      {
+                                        MR_String mercury__lexer__String_87;
+
+                                        {
+                                          mercury__lexer__succeeded = mercury__string__semidet_from_rev_char_list_2_p_0(mercury__lexer__STATE_VARIABLE_RevChars_0_16, &mercury__lexer__String_87);
+                                        }
+                                        if (mercury__lexer__succeeded)
+                                          {
+                                            mercury__lexer__conv_string_to_int_5_p_0(mercury__lexer__String_87, (MR_Integer) 3, (MR_Integer) 0, (MR_Integer) 0, mercury__lexer__Token_10);
+                                          }
+                                        else
+                                          {
+                                            *mercury__lexer__Token_10 = (MR_Word) MR_mkword(MR_mktag(3), &mercury__lexer_scalar_common_4[31]);
+                                          }
+                                      }
+                                      break;
+                                    case (MR_Integer) 0:
+                                      {
+                                        *mercury__lexer__Token_10 = (MR_Word) MR_mkword(MR_mktag(3), &mercury__lexer_scalar_common_4[33]);
+                                      }
+                                      break;
+                                  }
+                                }
+                            }
+                        }
+                    }
+                }
+                break;
+              case (MR_Integer) 1:
+                switch (mercury__lexer__STATE_VARIABLE_LastDigit_0_15) {
+                  default: /*NOTREACHED*/ MR_assert(0);
+                  case (MR_Integer) 1:
+                    {
+                      MR_String mercury__lexer__String_78;
+
+                      {
+                        mercury__lexer__succeeded = mercury__string__semidet_from_rev_char_list_2_p_0(mercury__lexer__STATE_VARIABLE_RevChars_0_16, &mercury__lexer__String_78);
+                      }
+                      if (mercury__lexer__succeeded)
+                        {
+                          mercury__lexer__conv_string_to_int_5_p_0(mercury__lexer__String_78, (MR_Integer) 3, (MR_Integer) 0, (MR_Integer) 0, mercury__lexer__Token_10);
+                        }
+                      else
+                        {
+                          *mercury__lexer__Token_10 = (MR_Word) MR_mkword(MR_mktag(3), &mercury__lexer_scalar_common_4[31]);
+                        }
+                    }
+                    break;
+                  case (MR_Integer) 0:
+                    {
+                      *mercury__lexer__Token_10 = (MR_Word) MR_mkword(MR_mktag(3), &mercury__lexer_scalar_common_4[33]);
+                    }
+                    break;
+                }
+                break;
+            }
+            break;
+          case (MR_Integer) 1:
+            {
+              MR_Word mercury__lexer__Error_14 = ((MR_Word) (MR_hl_field(MR_mktag(1), mercury__lexer__Result_12, (MR_Integer) 0)));
+
+              {
+                MR_Word base;
+                base = (MR_Word) MR_mkword(MR_mktag(3), MR_new_object(MR_Word, ((MR_Integer) 2 * sizeof(MR_Word)), NULL, NULL));
+                *mercury__lexer__Token_10 = base;
+                MR_hl_field(MR_mktag(3), base, 0) = ((MR_Box) (MR_Word) ((MR_Integer) 6));
+                MR_hl_field(MR_mktag(3), base, 1) = ((MR_Box) (mercury__lexer__Error_14));
+              }
+            }
+            break;
+        }
+      }
+      break;
+    }
+}
+
+static void MR_CALL 
+mercury__lexer__string_get_hex_7_p_0(
+  MR_String mercury__lexer__String_8,
+  MR_Integer mercury__lexer__Len_9,
+  MR_Word mercury__lexer__Posn0_10,
+  MR_Word * mercury__lexer__Token_11,
+  MR_Integer * mercury__lexer__Context_12,
+  MR_Word mercury__lexer__STATE_VARIABLE_Posn_0_17,
+  MR_Word * mercury__lexer__STATE_VARIABLE_Posn_18)
+{
+  while (MR_TRUE)
+    {
+      /* tailcall optimized into a loop */
+      {
+        MR_bool mercury__lexer__succeeded;
+        MR_Char mercury__lexer__Char_15;
+        MR_Word mercury__lexer__STATE_VARIABLE_Posn_19_19;
+        MR_Integer mercury__lexer__LineNum0_32 = ((MR_Integer) (MR_hl_field(MR_mktag(0), mercury__lexer__STATE_VARIABLE_Posn_0_17, (MR_Integer) 0)));
+        MR_Integer mercury__lexer__LineOffset0_33 = ((MR_Integer) (MR_hl_field(MR_mktag(0), mercury__lexer__STATE_VARIABLE_Posn_0_17, (MR_Integer) 1)));
+        MR_Integer mercury__lexer__Offset0_34 = ((MR_Integer) (MR_hl_field(MR_mktag(0), mercury__lexer__STATE_VARIABLE_Posn_0_17, (MR_Integer) 2)));
+        MR_Integer mercury__lexer__Offset_35;
+
+        mercury__lexer__succeeded = (mercury__lexer__Offset0_34 < mercury__lexer__Len_9);
+        if (mercury__lexer__succeeded)
+          {
+{
+#define MR_PROC_LABEL mercury__lexer__string_get_hex_7_p_0
+
+	MR_String Str;
+	MR_Integer Index;
+	MR_Integer NextIndex;
+	MR_Char Ch;
+	MR_bool SUCCESS_INDICATOR;
+
+	Str =  mercury__lexer__String_8 ;
+	Index =  mercury__lexer__Offset0_34 ;
+		{
+
+    Ch = Str[Index];
+    if (MR_is_ascii(Ch)) {
+        NextIndex = Index + 1;
+        SUCCESS_INDICATOR = (Ch != 0);
+    } else {
+        NextIndex = Index;
+        Ch = MR_utf8_get_next_mb(Str, &NextIndex);
+        SUCCESS_INDICATOR = (Ch > 0);
+    }
+
+
+		;}
+#undef MR_PROC_LABEL
+	if (SUCCESS_INDICATOR) {
+	 mercury__lexer__Offset_35  = NextIndex;
+	 mercury__lexer__Char_15  = Ch;
+	}
+mercury__lexer__succeeded  = SUCCESS_INDICATOR;
+}
+            if (mercury__lexer__succeeded)
+              {
+                mercury__lexer__succeeded = (mercury__lexer__Char_15 == (MR_Char) 10);
+                if (mercury__lexer__succeeded)
+                  {
+                    MR_Integer mercury__lexer__LineNum_36 = (mercury__lexer__LineNum0_32 + (MR_Integer) 1);
+
+                    {
+                      mercury__lexer__STATE_VARIABLE_Posn_19_19 = (MR_Word) MR_new_object(MR_Word, ((MR_Integer) 3 * sizeof(MR_Word)), NULL, NULL);
+                      MR_hl_field(MR_mktag(0), mercury__lexer__STATE_VARIABLE_Posn_19_19, 0) = ((MR_Box) (mercury__lexer__LineNum_36));
+                      MR_hl_field(MR_mktag(0), mercury__lexer__STATE_VARIABLE_Posn_19_19, 1) = ((MR_Box) (mercury__lexer__Offset_35));
+                      MR_hl_field(MR_mktag(0), mercury__lexer__STATE_VARIABLE_Posn_19_19, 2) = ((MR_Box) (mercury__lexer__Offset_35));
+                    }
+                  }
+                else
+                  {
+                    mercury__lexer__STATE_VARIABLE_Posn_19_19 = (MR_Word) MR_new_object(MR_Word, ((MR_Integer) 3 * sizeof(MR_Word)), NULL, NULL);
+                    MR_hl_field(MR_mktag(0), mercury__lexer__STATE_VARIABLE_Posn_19_19, 0) = ((MR_Box) (mercury__lexer__LineNum0_32));
+                    MR_hl_field(MR_mktag(0), mercury__lexer__STATE_VARIABLE_Posn_19_19, 1) = ((MR_Box) (mercury__lexer__LineOffset0_33));
+                    MR_hl_field(MR_mktag(0), mercury__lexer__STATE_VARIABLE_Posn_19_19, 2) = ((MR_Box) (mercury__lexer__Offset_35));
+                  }
+                mercury__lexer__succeeded = MR_TRUE;
+              }
+          }
+        if (mercury__lexer__succeeded)
+          {
+            {
+              mercury__lexer__succeeded = mercury__char__is_hex_digit_1_p_0(mercury__lexer__Char_15);
+            }
+            if (mercury__lexer__succeeded)
+              {
+                {
+                  mercury__lexer__string_get_hex_2_8_p_0(mercury__lexer__String_8, (MR_Integer) 1, mercury__lexer__Len_9, mercury__lexer__STATE_VARIABLE_Posn_0_17, mercury__lexer__Token_11, mercury__lexer__Context_12, mercury__lexer__STATE_VARIABLE_Posn_19_19, mercury__lexer__STATE_VARIABLE_Posn_18);
+                }
+              }
+            else
+              {
+                mercury__lexer__succeeded = (mercury__lexer__Char_15 == (MR_Char) 95);
+                if (mercury__lexer__succeeded)
+                  {
+                    /* direct tailcall eliminated */
+                    {
+                      MR_Word mercury__lexer__next_value_of_STATE_VARIABLE_Posn_0_17 = mercury__lexer__STATE_VARIABLE_Posn_19_19;
+
+                      mercury__lexer__STATE_VARIABLE_Posn_0_17 = mercury__lexer__next_value_of_STATE_VARIABLE_Posn_0_17;
+                    }
+                    continue;
+                  }
+                else
+                  {
+                    MR_Integer mercury__lexer__Var_45;
+                    MR_Integer mercury__lexer__Var_46;
+
+                    {
+                      mercury__lexer__string_ungetchar_3_p_0(mercury__lexer__String_8, mercury__lexer__STATE_VARIABLE_Posn_19_19, mercury__lexer__STATE_VARIABLE_Posn_18);
+                    }
+                    *mercury__lexer__Token_11 = (MR_Word) MR_mkword(MR_mktag(3), &mercury__lexer_scalar_common_4[33]);
+                    *mercury__lexer__Context_12 = ((MR_Integer) (MR_hl_field(MR_mktag(0), mercury__lexer__Posn0_10, (MR_Integer) 0)));
+                    mercury__lexer__Var_45 = ((MR_Integer) (MR_hl_field(MR_mktag(0), mercury__lexer__Posn0_10, (MR_Integer) 1)));
+                    mercury__lexer__Var_46 = ((MR_Integer) (MR_hl_field(MR_mktag(0), mercury__lexer__Posn0_10, (MR_Integer) 2)));
+                  }
+              }
+          }
+        else
+          {
+            MR_Integer mercury__lexer__Var_53;
+            MR_Integer mercury__lexer__Var_54;
+
+            *mercury__lexer__Token_11 = (MR_Word) MR_mkword(MR_mktag(3), &mercury__lexer_scalar_common_4[33]);
+            *mercury__lexer__Context_12 = ((MR_Integer) (MR_hl_field(MR_mktag(0), mercury__lexer__Posn0_10, (MR_Integer) 0)));
+            mercury__lexer__Var_53 = ((MR_Integer) (MR_hl_field(MR_mktag(0), mercury__lexer__Posn0_10, (MR_Integer) 1)));
+            mercury__lexer__Var_54 = ((MR_Integer) (MR_hl_field(MR_mktag(0), mercury__lexer__Posn0_10, (MR_Integer) 2)));
+            *mercury__lexer__STATE_VARIABLE_Posn_18 = mercury__lexer__STATE_VARIABLE_Posn_0_17;
+          }
+      }
+      break;
+    }
+}
+
+static void MR_CALL 
+mercury__lexer__get_hex_4_p_0(
+  MR_Word mercury__lexer__Stream_5,
+  MR_Word * mercury__lexer__Token_6)
+{
+  while (MR_TRUE)
+    {
+      /* tailcall optimized into a loop */
+      {
+        MR_bool mercury__lexer__succeeded;
+        MR_Word mercury__lexer__Result_8;
+        MR_Char mercury__lexer__Char_9;
+        MR_Word mercury__lexer__V_10_27;
+        MR_Box mercury__lexer__V_11_28;
+        MR_Box mercury__lexer__V_7_37 = (MR_Box) mercury__lexer__Stream_5;
+
+        {
+          mercury__io__read_char_code_2_6_p_0(mercury__lexer__V_7_37, &mercury__lexer__V_10_27, &mercury__lexer__Char_9, &mercury__lexer__V_11_28);
+        }
+        switch (mercury__lexer__V_10_27) {
+          default: /*NOTREACHED*/ MR_assert(0);
+          case (MR_Integer) 1:
+            mercury__lexer__Result_8 = (MR_Word) MR_mkword(MR_mktag(0), MR_mkbody((MR_Integer) 1));
+            break;
+          case (MR_Integer) 2:
+            {
+              MR_String mercury__lexer__V_12_30;
+              MR_Word mercury__lexer__V_17_31;
+
+{
+#define MR_PROC_LABEL mercury__lexer__get_hex_4_p_0
+
+	MR_Integer Error;
+	MR_String Msg0;
+	MR_String Msg;
+
+	MR_MAYBE_UNBOX_FOREIGN_TYPE(MR_Integer, mercury__lexer__V_11_28 , Error);
+	Msg0 =  (MR_String) "read failed: " ;
+		{
+
+    ML_make_err_msg(Error, Msg0, MR_ALLOC_ID, Msg);
+
+
+		;}
+#undef MR_PROC_LABEL
+	 mercury__lexer__V_12_30  = Msg;
+}
+              mercury__lexer__V_17_31 = (MR_Word) mercury__lexer__V_12_30;
+              {
+                mercury__lexer__Result_8 = (MR_Word) MR_mkword(MR_mktag(1), MR_new_object(MR_Word, ((MR_Integer) 1 * sizeof(MR_Word)), NULL, NULL));
+                MR_hl_field(MR_mktag(1), mercury__lexer__Result_8, 0) = ((MR_Box) (mercury__lexer__V_17_31));
+              }
+            }
+            break;
+          case (MR_Integer) 0:
+            mercury__lexer__Result_8 = (MR_Word) MR_mkword(MR_mktag(0), MR_mkbody((MR_Integer) 0));
+            break;
+        }
+        switch (MR_tag((MR_Word) mercury__lexer__Result_8)) {
+          default: /*NOTREACHED*/ MR_assert(0);
+          case (MR_Integer) 0:
+            switch (MR_unmkbody(mercury__lexer__Result_8)) {
+              default: /*NOTREACHED*/ MR_assert(0);
+              case (MR_Integer) 0:
+                {
+                  {
+                    mercury__lexer__succeeded = mercury__char__is_hex_digit_1_p_0(mercury__lexer__Char_9);
+                  }
+                  if (mercury__lexer__succeeded)
+                    {
+                      MR_Word mercury__lexer__Var_15;
+                      MR_Word mercury__lexer__Var_17 = (MR_Word) MR_mkword(MR_mktag(0), MR_mkbody((MR_Integer) 0));
+
+                      {
+                        mercury__lexer__Var_15 = (MR_Word) MR_mkword(MR_mktag(1), MR_new_object(MR_Word, ((MR_Integer) 2 * sizeof(MR_Word)), NULL, NULL));
+                        MR_hl_field(MR_mktag(1), mercury__lexer__Var_15, 0) = ((MR_Box) (MR_Word) (mercury__lexer__Char_9));
+                        MR_hl_field(MR_mktag(1), mercury__lexer__Var_15, 1) = ((MR_Box) (mercury__lexer__Var_17));
+                      }
+                      {
+                        mercury__lexer__get_hex_2_6_p_0(mercury__lexer__Stream_5, (MR_Integer) 1, mercury__lexer__Var_15, mercury__lexer__Token_6);
+                      }
+                    }
+                  else
+                    {
+                      mercury__lexer__succeeded = (mercury__lexer__Char_9 == (MR_Char) 95);
+                      if (mercury__lexer__succeeded)
+                        {
+                          /* direct tailcall eliminated */
+                          continue;
+                        }
+                      else
+                        {
+                          {
+                            mercury__io__putback_char_4_p_0(mercury__lexer__Stream_5, mercury__lexer__Char_9);
+                          }
+                          *mercury__lexer__Token_6 = (MR_Word) MR_mkword(MR_mktag(3), &mercury__lexer_scalar_common_4[33]);
+                        }
+                    }
+                }
+                break;
+              case (MR_Integer) 1:
+                {
+                  *mercury__lexer__Token_6 = (MR_Word) MR_mkword(MR_mktag(3), &mercury__lexer_scalar_common_4[33]);
+                }
+                break;
+            }
+            break;
+          case (MR_Integer) 1:
+            {
+              MR_Word mercury__lexer__Error_10 = ((MR_Word) (MR_hl_field(MR_mktag(1), mercury__lexer__Result_8, (MR_Integer) 0)));
+
+              {
+                MR_Word base;
+                base = (MR_Word) MR_mkword(MR_mktag(3), MR_new_object(MR_Word, ((MR_Integer) 2 * sizeof(MR_Word)), NULL, NULL));
+                *mercury__lexer__Token_6 = base;
+                MR_hl_field(MR_mktag(3), base, 0) = ((MR_Box) (MR_Word) ((MR_Integer) 6));
+                MR_hl_field(MR_mktag(3), base, 1) = ((MR_Box) (mercury__lexer__Error_10));
+              }
+            }
+            break;
+        }
+      }
+      break;
+    }
+}
+
+static void MR_CALL 
+mercury__lexer__string_get_octal_2_8_p_0(
+  MR_String mercury__lexer__String_9,
+  MR_Word mercury__lexer__STATE_VARIABLE_LastDigit_0_19,
+  MR_Integer mercury__lexer__Len_11,
+  MR_Word mercury__lexer__Posn1_12,
+  MR_Word * mercury__lexer__Token_13,
+  MR_Integer * mercury__lexer__Context_14,
+  MR_Word mercury__lexer__STATE_VARIABLE_Posn_0_20,
+  MR_Word * mercury__lexer__STATE_VARIABLE_Posn_21)
+{
+  while (MR_TRUE)
+    {
+      /* tailcall optimized into a loop */
+      {
+        MR_bool mercury__lexer__succeeded;
+        MR_Char mercury__lexer__Char_17;
+        MR_Word mercury__lexer__STATE_VARIABLE_Posn_22_22;
+        MR_Integer mercury__lexer__LineNum0_62 = ((MR_Integer) (MR_hl_field(MR_mktag(0), mercury__lexer__STATE_VARIABLE_Posn_0_20, (MR_Integer) 0)));
+        MR_Integer mercury__lexer__LineOffset0_63 = ((MR_Integer) (MR_hl_field(MR_mktag(0), mercury__lexer__STATE_VARIABLE_Posn_0_20, (MR_Integer) 1)));
+        MR_Integer mercury__lexer__Offset0_64 = ((MR_Integer) (MR_hl_field(MR_mktag(0), mercury__lexer__STATE_VARIABLE_Posn_0_20, (MR_Integer) 2)));
+        MR_Integer mercury__lexer__Offset_65;
+
+        mercury__lexer__succeeded = (mercury__lexer__Offset0_64 < mercury__lexer__Len_11);
+        if (mercury__lexer__succeeded)
+          {
+{
+#define MR_PROC_LABEL mercury__lexer__string_get_octal_2_8_p_0
+
+	MR_String Str;
+	MR_Integer Index;
+	MR_Integer NextIndex;
+	MR_Char Ch;
+	MR_bool SUCCESS_INDICATOR;
+
+	Str =  mercury__lexer__String_9 ;
+	Index =  mercury__lexer__Offset0_64 ;
+		{
+
+    Ch = Str[Index];
+    if (MR_is_ascii(Ch)) {
+        NextIndex = Index + 1;
+        SUCCESS_INDICATOR = (Ch != 0);
+    } else {
+        NextIndex = Index;
+        Ch = MR_utf8_get_next_mb(Str, &NextIndex);
+        SUCCESS_INDICATOR = (Ch > 0);
+    }
+
+
+		;}
+#undef MR_PROC_LABEL
+	if (SUCCESS_INDICATOR) {
+	 mercury__lexer__Offset_65  = NextIndex;
+	 mercury__lexer__Char_17  = Ch;
+	}
+mercury__lexer__succeeded  = SUCCESS_INDICATOR;
+}
+            if (mercury__lexer__succeeded)
+              {
+                mercury__lexer__succeeded = (mercury__lexer__Char_17 == (MR_Char) 10);
+                if (mercury__lexer__succeeded)
+                  {
+                    MR_Integer mercury__lexer__LineNum_66 = (mercury__lexer__LineNum0_62 + (MR_Integer) 1);
+
+                    {
+                      mercury__lexer__STATE_VARIABLE_Posn_22_22 = (MR_Word) MR_new_object(MR_Word, ((MR_Integer) 3 * sizeof(MR_Word)), NULL, NULL);
+                      MR_hl_field(MR_mktag(0), mercury__lexer__STATE_VARIABLE_Posn_22_22, 0) = ((MR_Box) (mercury__lexer__LineNum_66));
+                      MR_hl_field(MR_mktag(0), mercury__lexer__STATE_VARIABLE_Posn_22_22, 1) = ((MR_Box) (mercury__lexer__Offset_65));
+                      MR_hl_field(MR_mktag(0), mercury__lexer__STATE_VARIABLE_Posn_22_22, 2) = ((MR_Box) (mercury__lexer__Offset_65));
+                    }
+                  }
+                else
+                  {
+                    mercury__lexer__STATE_VARIABLE_Posn_22_22 = (MR_Word) MR_new_object(MR_Word, ((MR_Integer) 3 * sizeof(MR_Word)), NULL, NULL);
+                    MR_hl_field(MR_mktag(0), mercury__lexer__STATE_VARIABLE_Posn_22_22, 0) = ((MR_Box) (mercury__lexer__LineNum0_62));
+                    MR_hl_field(MR_mktag(0), mercury__lexer__STATE_VARIABLE_Posn_22_22, 1) = ((MR_Box) (mercury__lexer__LineOffset0_63));
+                    MR_hl_field(MR_mktag(0), mercury__lexer__STATE_VARIABLE_Posn_22_22, 2) = ((MR_Box) (mercury__lexer__Offset_65));
+                  }
+                mercury__lexer__succeeded = MR_TRUE;
+              }
+          }
+        if (mercury__lexer__succeeded)
+          {
+            {
+              mercury__lexer__succeeded = mercury__char__is_octal_digit_1_p_0(mercury__lexer__Char_17);
+            }
+            if (mercury__lexer__succeeded)
+              {
+                /* direct tailcall eliminated */
+                {
+                  MR_Word mercury__lexer__next_value_of_STATE_VARIABLE_Posn_0_20 = mercury__lexer__STATE_VARIABLE_Posn_22_22;
+
+                  mercury__lexer__STATE_VARIABLE_Posn_0_20 = mercury__lexer__next_value_of_STATE_VARIABLE_Posn_0_20;
+                  mercury__lexer__STATE_VARIABLE_LastDigit_0_19 = (MR_Integer) 1;
+                }
+                continue;
+              }
+            else
+              {
+                mercury__lexer__succeeded = (mercury__lexer__Char_17 == (MR_Char) 95);
+                if (mercury__lexer__succeeded)
+                  {
+                    /* direct tailcall eliminated */
+                    {
+                      MR_Word mercury__lexer__next_value_of_STATE_VARIABLE_Posn_0_20 = mercury__lexer__STATE_VARIABLE_Posn_22_22;
+
+                      mercury__lexer__STATE_VARIABLE_Posn_0_20 = mercury__lexer__next_value_of_STATE_VARIABLE_Posn_0_20;
+                      mercury__lexer__STATE_VARIABLE_LastDigit_0_19 = (MR_Integer) 0;
+                    }
+                    continue;
+                  }
+                else
+                  {
+                    mercury__lexer__succeeded = (mercury__lexer__Char_17 == (MR_Char) 117);
+                    if (mercury__lexer__succeeded)
+                      {
+                        MR_Integer mercury__lexer__Var_75;
+                        MR_Integer mercury__lexer__Var_76;
+
+                        {
+                          mercury__lexer__string_get_integer_size_suffix_9_p_0(mercury__lexer__String_9, mercury__lexer__Len_11, mercury__lexer__Posn1_12, mercury__lexer__STATE_VARIABLE_Posn_0_20, (MR_Integer) 1, (MR_Integer) 1, mercury__lexer__Token_13, mercury__lexer__STATE_VARIABLE_Posn_22_22, mercury__lexer__STATE_VARIABLE_Posn_21);
+                        }
+                        *mercury__lexer__Context_14 = ((MR_Integer) (MR_hl_field(MR_mktag(0), mercury__lexer__Posn1_12, (MR_Integer) 0)));
+                        mercury__lexer__Var_75 = ((MR_Integer) (MR_hl_field(MR_mktag(0), mercury__lexer__Posn1_12, (MR_Integer) 1)));
+                        mercury__lexer__Var_76 = ((MR_Integer) (MR_hl_field(MR_mktag(0), mercury__lexer__Posn1_12, (MR_Integer) 2)));
+                      }
+                    else
+                      {
+                        mercury__lexer__succeeded = (mercury__lexer__Char_17 == (MR_Char) 105);
+                        if (mercury__lexer__succeeded)
+                          {
+                            MR_Integer mercury__lexer__Var_83;
+                            MR_Integer mercury__lexer__Var_84;
+
+                            {
+                              mercury__lexer__string_get_integer_size_suffix_9_p_0(mercury__lexer__String_9, mercury__lexer__Len_11, mercury__lexer__Posn1_12, mercury__lexer__STATE_VARIABLE_Posn_0_20, (MR_Integer) 1, (MR_Integer) 0, mercury__lexer__Token_13, mercury__lexer__STATE_VARIABLE_Posn_22_22, mercury__lexer__STATE_VARIABLE_Posn_21);
+                            }
+                            *mercury__lexer__Context_14 = ((MR_Integer) (MR_hl_field(MR_mktag(0), mercury__lexer__Posn1_12, (MR_Integer) 0)));
+                            mercury__lexer__Var_83 = ((MR_Integer) (MR_hl_field(MR_mktag(0), mercury__lexer__Posn1_12, (MR_Integer) 1)));
+                            mercury__lexer__Var_84 = ((MR_Integer) (MR_hl_field(MR_mktag(0), mercury__lexer__Posn1_12, (MR_Integer) 2)));
+                          }
+                        else
+                          {
+                            MR_Word mercury__lexer__STATE_VARIABLE_Posn_35_35;
+                            MR_Word mercury__lexer__STATE_VARIABLE_Posn_37_37;
+
+                            {
+                              mercury__lexer__string_ungetchar_3_p_0(mercury__lexer__String_9, mercury__lexer__STATE_VARIABLE_Posn_22_22, &mercury__lexer__STATE_VARIABLE_Posn_35_35);
+                            }
+                            switch (mercury__lexer__STATE_VARIABLE_LastDigit_0_19) {
+                              default: /*NOTREACHED*/ MR_assert(0);
+                              case (MR_Integer) 1:
+                                {
+                                  MR_String mercury__lexer__BinaryString_18;
+                                  MR_Integer mercury__lexer__Offset0_91;
+                                  MR_Integer mercury__lexer__Offset_94;
+                                  MR_Integer mercury__lexer__Var_89;
+                                  MR_Integer mercury__lexer__Var_90;
+                                  MR_Integer mercury__lexer__Var_92;
+                                  MR_Integer mercury__lexer__Var_93;
+
+                                  mercury__lexer__STATE_VARIABLE_Posn_37_37 = mercury__lexer__STATE_VARIABLE_Posn_35_35;
+                                  mercury__lexer__Var_89 = ((MR_Integer) (MR_hl_field(MR_mktag(0), mercury__lexer__Posn1_12, (MR_Integer) 0)));
+                                  mercury__lexer__Var_90 = ((MR_Integer) (MR_hl_field(MR_mktag(0), mercury__lexer__Posn1_12, (MR_Integer) 1)));
+                                  mercury__lexer__Offset0_91 = ((MR_Integer) (MR_hl_field(MR_mktag(0), mercury__lexer__Posn1_12, (MR_Integer) 2)));
+                                  mercury__lexer__Var_92 = ((MR_Integer) (MR_hl_field(MR_mktag(0), mercury__lexer__STATE_VARIABLE_Posn_35_35, (MR_Integer) 0)));
+                                  mercury__lexer__Var_93 = ((MR_Integer) (MR_hl_field(MR_mktag(0), mercury__lexer__STATE_VARIABLE_Posn_35_35, (MR_Integer) 1)));
+                                  mercury__lexer__Offset_94 = ((MR_Integer) (MR_hl_field(MR_mktag(0), mercury__lexer__STATE_VARIABLE_Posn_35_35, (MR_Integer) 2)));
+{
+#define MR_PROC_LABEL mercury__lexer__string_get_octal_2_8_p_0
+
+	MR_String Str;
+	MR_Integer Start;
+	MR_Integer End;
+	MR_String SubString;
+
+	Str =  mercury__lexer__String_9 ;
+	Start =  mercury__lexer__Offset0_91 ;
+	End =  mercury__lexer__Offset_94 ;
+		{
+{
+    MR_Integer Count;
+
+    Count = End - Start;
+    MR_allocate_aligned_string_msg(SubString, Count, MR_ALLOC_ID);
+    MR_memcpy(SubString, Str + Start, Count);
+    SubString[Count] = '\0';
+}
+
+		;}
+#undef MR_PROC_LABEL
+	 mercury__lexer__BinaryString_18  = SubString;
+}
+                                  {
+                                    mercury__lexer__conv_string_to_int_5_p_0(mercury__lexer__BinaryString_18, (MR_Integer) 1, (MR_Integer) 0, (MR_Integer) 0, mercury__lexer__Token_13);
+                                  }
+                                }
+                                break;
+                              case (MR_Integer) 0:
+                                {
+                                  *mercury__lexer__Token_13 = (MR_Word) MR_mkword(MR_mktag(3), &mercury__lexer_scalar_common_4[32]);
+                                  mercury__lexer__STATE_VARIABLE_Posn_37_37 = mercury__lexer__STATE_VARIABLE_Posn_35_35;
+                                }
+                                break;
+                            }
+                            {
+                              mercury__lexer__string_get_context_4_p_0(mercury__lexer__Posn1_12, mercury__lexer__Context_14, mercury__lexer__STATE_VARIABLE_Posn_37_37, mercury__lexer__STATE_VARIABLE_Posn_21);
+                            }
+                          }
+                      }
+                  }
+              }
+          }
+        else
+          {
+            MR_Word mercury__lexer__STATE_VARIABLE_Posn_43_43;
+
+            switch (mercury__lexer__STATE_VARIABLE_LastDigit_0_19) {
+              default: /*NOTREACHED*/ MR_assert(0);
+              case (MR_Integer) 1:
+                {
+                  MR_String mercury__lexer__BinaryString_52;
+
+                  {
+                    mercury__lexer__grab_string_5_p_0(mercury__lexer__String_9, mercury__lexer__Posn1_12, &mercury__lexer__BinaryString_52, mercury__lexer__STATE_VARIABLE_Posn_0_20, &mercury__lexer__STATE_VARIABLE_Posn_43_43);
+                  }
+                  {
+                    mercury__lexer__conv_string_to_int_5_p_0(mercury__lexer__BinaryString_52, (MR_Integer) 1, (MR_Integer) 0, (MR_Integer) 0, mercury__lexer__Token_13);
+                  }
+                }
+                break;
+              case (MR_Integer) 0:
+                {
+                  *mercury__lexer__Token_13 = (MR_Word) MR_mkword(MR_mktag(3), &mercury__lexer_scalar_common_4[32]);
+                  mercury__lexer__STATE_VARIABLE_Posn_43_43 = mercury__lexer__STATE_VARIABLE_Posn_0_20;
+                }
+                break;
+            }
+            {
+              mercury__lexer__string_get_context_4_p_0(mercury__lexer__Posn1_12, mercury__lexer__Context_14, mercury__lexer__STATE_VARIABLE_Posn_43_43, mercury__lexer__STATE_VARIABLE_Posn_21);
+            }
+          }
+      }
+      break;
+    }
+}
+
+static void MR_CALL 
+mercury__lexer__get_octal_2_6_p_0(
+  MR_Word mercury__lexer__Stream_7,
+  MR_Word mercury__lexer__STATE_VARIABLE_LastDigit_0_15,
+  MR_Word mercury__lexer__STATE_VARIABLE_RevChars_0_16,
+  MR_Word * mercury__lexer__Token_10)
+{
+  while (MR_TRUE)
+    {
+      /* tailcall optimized into a loop */
+      {
+        MR_bool mercury__lexer__succeeded;
+        MR_Word mercury__lexer__Result_12;
+        MR_Char mercury__lexer__Char_13;
+        MR_Word mercury__lexer__V_10_62;
+        MR_Box mercury__lexer__V_11_63;
+        MR_Box mercury__lexer__V_7_72 = (MR_Box) mercury__lexer__Stream_7;
+
+        {
+          mercury__io__read_char_code_2_6_p_0(mercury__lexer__V_7_72, &mercury__lexer__V_10_62, &mercury__lexer__Char_13, &mercury__lexer__V_11_63);
+        }
+        switch (mercury__lexer__V_10_62) {
+          default: /*NOTREACHED*/ MR_assert(0);
+          case (MR_Integer) 1:
+            mercury__lexer__Result_12 = (MR_Word) MR_mkword(MR_mktag(0), MR_mkbody((MR_Integer) 1));
+            break;
+          case (MR_Integer) 2:
+            {
+              MR_String mercury__lexer__V_12_65;
+              MR_Word mercury__lexer__V_17_66;
+
+{
+#define MR_PROC_LABEL mercury__lexer__get_octal_2_6_p_0
+
+	MR_Integer Error;
+	MR_String Msg0;
+	MR_String Msg;
+
+	MR_MAYBE_UNBOX_FOREIGN_TYPE(MR_Integer, mercury__lexer__V_11_63 , Error);
+	Msg0 =  (MR_String) "read failed: " ;
+		{
+
+    ML_make_err_msg(Error, Msg0, MR_ALLOC_ID, Msg);
+
+
+		;}
+#undef MR_PROC_LABEL
+	 mercury__lexer__V_12_65  = Msg;
+}
+              mercury__lexer__V_17_66 = (MR_Word) mercury__lexer__V_12_65;
+              {
+                mercury__lexer__Result_12 = (MR_Word) MR_mkword(MR_mktag(1), MR_new_object(MR_Word, ((MR_Integer) 1 * sizeof(MR_Word)), NULL, NULL));
+                MR_hl_field(MR_mktag(1), mercury__lexer__Result_12, 0) = ((MR_Box) (mercury__lexer__V_17_66));
+              }
+            }
+            break;
+          case (MR_Integer) 0:
+            mercury__lexer__Result_12 = (MR_Word) MR_mkword(MR_mktag(0), MR_mkbody((MR_Integer) 0));
+            break;
+        }
+        switch (MR_tag((MR_Word) mercury__lexer__Result_12)) {
+          default: /*NOTREACHED*/ MR_assert(0);
+          case (MR_Integer) 0:
+            switch (MR_unmkbody(mercury__lexer__Result_12)) {
+              default: /*NOTREACHED*/ MR_assert(0);
+              case (MR_Integer) 0:
+                {
+                  {
+                    mercury__lexer__succeeded = mercury__char__is_octal_digit_1_p_0(mercury__lexer__Char_13);
+                  }
+                  if (mercury__lexer__succeeded)
+                    {
+                      MR_Word mercury__lexer__STATE_VARIABLE_RevChars_20_44;
+
+                      {
+                        mercury__lexer__STATE_VARIABLE_RevChars_20_44 = (MR_Word) MR_mkword(MR_mktag(1), MR_new_object(MR_Word, ((MR_Integer) 2 * sizeof(MR_Word)), NULL, NULL));
+                        MR_hl_field(MR_mktag(1), mercury__lexer__STATE_VARIABLE_RevChars_20_44, 0) = ((MR_Box) (MR_Word) (mercury__lexer__Char_13));
+                        MR_hl_field(MR_mktag(1), mercury__lexer__STATE_VARIABLE_RevChars_20_44, 1) = ((MR_Box) (mercury__lexer__STATE_VARIABLE_RevChars_0_16));
+                      }
+                      /* direct tailcall eliminated */
+                      {
+                        MR_Word mercury__lexer__next_value_of_STATE_VARIABLE_RevChars_0_16 = mercury__lexer__STATE_VARIABLE_RevChars_20_44;
+
+                        mercury__lexer__STATE_VARIABLE_RevChars_0_16 = mercury__lexer__next_value_of_STATE_VARIABLE_RevChars_0_16;
+                        mercury__lexer__STATE_VARIABLE_LastDigit_0_15 = (MR_Integer) 1;
+                      }
+                      continue;
+                    }
+                  else
+                    {
+                      mercury__lexer__succeeded = (mercury__lexer__Char_13 == (MR_Char) 95);
+                      if (mercury__lexer__succeeded)
+                        {
+                          /* direct tailcall eliminated */
+                          {
+                            mercury__lexer__STATE_VARIABLE_LastDigit_0_15 = (MR_Integer) 0;
+                          }
+                          continue;
+                        }
+                      else
+                        {
+                          mercury__lexer__succeeded = (mercury__lexer__Char_13 == (MR_Char) 117);
+                          if (mercury__lexer__succeeded)
+                            {
+                              {
+                                mercury__lexer__get_integer_size_suffix_7_p_0(mercury__lexer__Stream_7, mercury__lexer__STATE_VARIABLE_RevChars_0_16, (MR_Integer) 1, (MR_Integer) 1, mercury__lexer__Token_10);
+                              }
+                            }
+                          else
+                            {
+                              mercury__lexer__succeeded = (mercury__lexer__Char_13 == (MR_Char) 105);
+                              if (mercury__lexer__succeeded)
+                                {
+                                  {
+                                    mercury__lexer__get_integer_size_suffix_7_p_0(mercury__lexer__Stream_7, mercury__lexer__STATE_VARIABLE_RevChars_0_16, (MR_Integer) 1, (MR_Integer) 0, mercury__lexer__Token_10);
+                                  }
+                                }
+                              else
+                                {
+                                  {
+                                    mercury__io__putback_char_4_p_0(mercury__lexer__Stream_7, mercury__lexer__Char_13);
+                                  }
+                                  switch (mercury__lexer__STATE_VARIABLE_LastDigit_0_15) {
+                                    default: /*NOTREACHED*/ MR_assert(0);
+                                    case (MR_Integer) 1:
+                                      {
+                                        MR_String mercury__lexer__String_87;
+
+                                        {
+                                          mercury__lexer__succeeded = mercury__string__semidet_from_rev_char_list_2_p_0(mercury__lexer__STATE_VARIABLE_RevChars_0_16, &mercury__lexer__String_87);
+                                        }
+                                        if (mercury__lexer__succeeded)
+                                          {
+                                            mercury__lexer__conv_string_to_int_5_p_0(mercury__lexer__String_87, (MR_Integer) 1, (MR_Integer) 0, (MR_Integer) 0, mercury__lexer__Token_10);
+                                          }
+                                        else
+                                          {
+                                            *mercury__lexer__Token_10 = (MR_Word) MR_mkword(MR_mktag(3), &mercury__lexer_scalar_common_4[31]);
+                                          }
+                                      }
+                                      break;
+                                    case (MR_Integer) 0:
+                                      {
+                                        *mercury__lexer__Token_10 = (MR_Word) MR_mkword(MR_mktag(3), &mercury__lexer_scalar_common_4[32]);
+                                      }
+                                      break;
+                                  }
+                                }
+                            }
+                        }
+                    }
+                }
+                break;
+              case (MR_Integer) 1:
+                switch (mercury__lexer__STATE_VARIABLE_LastDigit_0_15) {
+                  default: /*NOTREACHED*/ MR_assert(0);
+                  case (MR_Integer) 1:
+                    {
+                      MR_String mercury__lexer__String_78;
+
+                      {
+                        mercury__lexer__succeeded = mercury__string__semidet_from_rev_char_list_2_p_0(mercury__lexer__STATE_VARIABLE_RevChars_0_16, &mercury__lexer__String_78);
+                      }
+                      if (mercury__lexer__succeeded)
+                        {
+                          mercury__lexer__conv_string_to_int_5_p_0(mercury__lexer__String_78, (MR_Integer) 1, (MR_Integer) 0, (MR_Integer) 0, mercury__lexer__Token_10);
+                        }
+                      else
+                        {
+                          *mercury__lexer__Token_10 = (MR_Word) MR_mkword(MR_mktag(3), &mercury__lexer_scalar_common_4[31]);
+                        }
+                    }
+                    break;
+                  case (MR_Integer) 0:
+                    {
+                      *mercury__lexer__Token_10 = (MR_Word) MR_mkword(MR_mktag(3), &mercury__lexer_scalar_common_4[32]);
+                    }
+                    break;
+                }
+                break;
+            }
+            break;
+          case (MR_Integer) 1:
+            {
+              MR_Word mercury__lexer__Error_14 = ((MR_Word) (MR_hl_field(MR_mktag(1), mercury__lexer__Result_12, (MR_Integer) 0)));
+
+              {
+                MR_Word base;
+                base = (MR_Word) MR_mkword(MR_mktag(3), MR_new_object(MR_Word, ((MR_Integer) 2 * sizeof(MR_Word)), NULL, NULL));
+                *mercury__lexer__Token_10 = base;
+                MR_hl_field(MR_mktag(3), base, 0) = ((MR_Box) (MR_Word) ((MR_Integer) 6));
+                MR_hl_field(MR_mktag(3), base, 1) = ((MR_Box) (mercury__lexer__Error_14));
+              }
+            }
+            break;
+        }
+      }
+      break;
+    }
+}
+
+static void MR_CALL 
+mercury__lexer__string_get_octal_7_p_0(
+  MR_String mercury__lexer__String_8,
+  MR_Integer mercury__lexer__Len_9,
+  MR_Word mercury__lexer__Posn0_10,
+  MR_Word * mercury__lexer__Token_11,
+  MR_Integer * mercury__lexer__Context_12,
+  MR_Word mercury__lexer__STATE_VARIABLE_Posn_0_17,
+  MR_Word * mercury__lexer__STATE_VARIABLE_Posn_18)
+{
+  while (MR_TRUE)
+    {
+      /* tailcall optimized into a loop */
+      {
+        MR_bool mercury__lexer__succeeded;
+        MR_Char mercury__lexer__Char_15;
+        MR_Word mercury__lexer__STATE_VARIABLE_Posn_19_19;
+        MR_Integer mercury__lexer__LineNum0_32 = ((MR_Integer) (MR_hl_field(MR_mktag(0), mercury__lexer__STATE_VARIABLE_Posn_0_17, (MR_Integer) 0)));
+        MR_Integer mercury__lexer__LineOffset0_33 = ((MR_Integer) (MR_hl_field(MR_mktag(0), mercury__lexer__STATE_VARIABLE_Posn_0_17, (MR_Integer) 1)));
+        MR_Integer mercury__lexer__Offset0_34 = ((MR_Integer) (MR_hl_field(MR_mktag(0), mercury__lexer__STATE_VARIABLE_Posn_0_17, (MR_Integer) 2)));
+        MR_Integer mercury__lexer__Offset_35;
+
+        mercury__lexer__succeeded = (mercury__lexer__Offset0_34 < mercury__lexer__Len_9);
+        if (mercury__lexer__succeeded)
+          {
+{
+#define MR_PROC_LABEL mercury__lexer__string_get_octal_7_p_0
+
+	MR_String Str;
+	MR_Integer Index;
+	MR_Integer NextIndex;
+	MR_Char Ch;
+	MR_bool SUCCESS_INDICATOR;
+
+	Str =  mercury__lexer__String_8 ;
+	Index =  mercury__lexer__Offset0_34 ;
+		{
+
+    Ch = Str[Index];
+    if (MR_is_ascii(Ch)) {
+        NextIndex = Index + 1;
+        SUCCESS_INDICATOR = (Ch != 0);
+    } else {
+        NextIndex = Index;
+        Ch = MR_utf8_get_next_mb(Str, &NextIndex);
+        SUCCESS_INDICATOR = (Ch > 0);
+    }
+
+
+		;}
+#undef MR_PROC_LABEL
+	if (SUCCESS_INDICATOR) {
+	 mercury__lexer__Offset_35  = NextIndex;
+	 mercury__lexer__Char_15  = Ch;
+	}
+mercury__lexer__succeeded  = SUCCESS_INDICATOR;
+}
+            if (mercury__lexer__succeeded)
+              {
+                mercury__lexer__succeeded = (mercury__lexer__Char_15 == (MR_Char) 10);
+                if (mercury__lexer__succeeded)
+                  {
+                    MR_Integer mercury__lexer__LineNum_36 = (mercury__lexer__LineNum0_32 + (MR_Integer) 1);
+
+                    {
+                      mercury__lexer__STATE_VARIABLE_Posn_19_19 = (MR_Word) MR_new_object(MR_Word, ((MR_Integer) 3 * sizeof(MR_Word)), NULL, NULL);
+                      MR_hl_field(MR_mktag(0), mercury__lexer__STATE_VARIABLE_Posn_19_19, 0) = ((MR_Box) (mercury__lexer__LineNum_36));
+                      MR_hl_field(MR_mktag(0), mercury__lexer__STATE_VARIABLE_Posn_19_19, 1) = ((MR_Box) (mercury__lexer__Offset_35));
+                      MR_hl_field(MR_mktag(0), mercury__lexer__STATE_VARIABLE_Posn_19_19, 2) = ((MR_Box) (mercury__lexer__Offset_35));
+                    }
+                  }
+                else
+                  {
+                    mercury__lexer__STATE_VARIABLE_Posn_19_19 = (MR_Word) MR_new_object(MR_Word, ((MR_Integer) 3 * sizeof(MR_Word)), NULL, NULL);
+                    MR_hl_field(MR_mktag(0), mercury__lexer__STATE_VARIABLE_Posn_19_19, 0) = ((MR_Box) (mercury__lexer__LineNum0_32));
+                    MR_hl_field(MR_mktag(0), mercury__lexer__STATE_VARIABLE_Posn_19_19, 1) = ((MR_Box) (mercury__lexer__LineOffset0_33));
+                    MR_hl_field(MR_mktag(0), mercury__lexer__STATE_VARIABLE_Posn_19_19, 2) = ((MR_Box) (mercury__lexer__Offset_35));
+                  }
+                mercury__lexer__succeeded = MR_TRUE;
+              }
+          }
+        if (mercury__lexer__succeeded)
+          {
+            {
+              mercury__lexer__succeeded = mercury__char__is_octal_digit_1_p_0(mercury__lexer__Char_15);
+            }
+            if (mercury__lexer__succeeded)
+              {
+                {
+                  mercury__lexer__string_get_octal_2_8_p_0(mercury__lexer__String_8, (MR_Integer) 1, mercury__lexer__Len_9, mercury__lexer__STATE_VARIABLE_Posn_0_17, mercury__lexer__Token_11, mercury__lexer__Context_12, mercury__lexer__STATE_VARIABLE_Posn_19_19, mercury__lexer__STATE_VARIABLE_Posn_18);
+                }
+              }
+            else
+              {
+                mercury__lexer__succeeded = (mercury__lexer__Char_15 == (MR_Char) 95);
+                if (mercury__lexer__succeeded)
+                  {
+                    /* direct tailcall eliminated */
+                    {
+                      MR_Word mercury__lexer__next_value_of_STATE_VARIABLE_Posn_0_17 = mercury__lexer__STATE_VARIABLE_Posn_19_19;
+
+                      mercury__lexer__STATE_VARIABLE_Posn_0_17 = mercury__lexer__next_value_of_STATE_VARIABLE_Posn_0_17;
+                    }
+                    continue;
+                  }
+                else
+                  {
+                    MR_Integer mercury__lexer__Var_45;
+                    MR_Integer mercury__lexer__Var_46;
+
+                    {
+                      mercury__lexer__string_ungetchar_3_p_0(mercury__lexer__String_8, mercury__lexer__STATE_VARIABLE_Posn_19_19, mercury__lexer__STATE_VARIABLE_Posn_18);
+                    }
+                    *mercury__lexer__Token_11 = (MR_Word) MR_mkword(MR_mktag(3), &mercury__lexer_scalar_common_4[32]);
+                    *mercury__lexer__Context_12 = ((MR_Integer) (MR_hl_field(MR_mktag(0), mercury__lexer__Posn0_10, (MR_Integer) 0)));
+                    mercury__lexer__Var_45 = ((MR_Integer) (MR_hl_field(MR_mktag(0), mercury__lexer__Posn0_10, (MR_Integer) 1)));
+                    mercury__lexer__Var_46 = ((MR_Integer) (MR_hl_field(MR_mktag(0), mercury__lexer__Posn0_10, (MR_Integer) 2)));
+                  }
+              }
+          }
+        else
+          {
+            MR_Integer mercury__lexer__Var_53;
+            MR_Integer mercury__lexer__Var_54;
+
+            *mercury__lexer__Token_11 = (MR_Word) MR_mkword(MR_mktag(3), &mercury__lexer_scalar_common_4[32]);
+            *mercury__lexer__Context_12 = ((MR_Integer) (MR_hl_field(MR_mktag(0), mercury__lexer__Posn0_10, (MR_Integer) 0)));
+            mercury__lexer__Var_53 = ((MR_Integer) (MR_hl_field(MR_mktag(0), mercury__lexer__Posn0_10, (MR_Integer) 1)));
+            mercury__lexer__Var_54 = ((MR_Integer) (MR_hl_field(MR_mktag(0), mercury__lexer__Posn0_10, (MR_Integer) 2)));
+            *mercury__lexer__STATE_VARIABLE_Posn_18 = mercury__lexer__STATE_VARIABLE_Posn_0_17;
+          }
+      }
+      break;
+    }
+}
+
+static void MR_CALL 
+mercury__lexer__get_octal_4_p_0(
+  MR_Word mercury__lexer__Stream_5,
+  MR_Word * mercury__lexer__Token_6)
+{
+  while (MR_TRUE)
+    {
+      /* tailcall optimized into a loop */
+      {
+        MR_bool mercury__lexer__succeeded;
+        MR_Word mercury__lexer__Result_8;
+        MR_Char mercury__lexer__Char_9;
+        MR_Word mercury__lexer__V_10_27;
+        MR_Box mercury__lexer__V_11_28;
+        MR_Box mercury__lexer__V_7_37 = (MR_Box) mercury__lexer__Stream_5;
+
+        {
+          mercury__io__read_char_code_2_6_p_0(mercury__lexer__V_7_37, &mercury__lexer__V_10_27, &mercury__lexer__Char_9, &mercury__lexer__V_11_28);
+        }
+        switch (mercury__lexer__V_10_27) {
+          default: /*NOTREACHED*/ MR_assert(0);
+          case (MR_Integer) 1:
+            mercury__lexer__Result_8 = (MR_Word) MR_mkword(MR_mktag(0), MR_mkbody((MR_Integer) 1));
+            break;
+          case (MR_Integer) 2:
+            {
+              MR_String mercury__lexer__V_12_30;
+              MR_Word mercury__lexer__V_17_31;
+
+{
+#define MR_PROC_LABEL mercury__lexer__get_octal_4_p_0
+
+	MR_Integer Error;
+	MR_String Msg0;
+	MR_String Msg;
+
+	MR_MAYBE_UNBOX_FOREIGN_TYPE(MR_Integer, mercury__lexer__V_11_28 , Error);
+	Msg0 =  (MR_String) "read failed: " ;
+		{
+
+    ML_make_err_msg(Error, Msg0, MR_ALLOC_ID, Msg);
+
+
+		;}
+#undef MR_PROC_LABEL
+	 mercury__lexer__V_12_30  = Msg;
+}
+              mercury__lexer__V_17_31 = (MR_Word) mercury__lexer__V_12_30;
+              {
+                mercury__lexer__Result_8 = (MR_Word) MR_mkword(MR_mktag(1), MR_new_object(MR_Word, ((MR_Integer) 1 * sizeof(MR_Word)), NULL, NULL));
+                MR_hl_field(MR_mktag(1), mercury__lexer__Result_8, 0) = ((MR_Box) (mercury__lexer__V_17_31));
+              }
+            }
+            break;
+          case (MR_Integer) 0:
+            mercury__lexer__Result_8 = (MR_Word) MR_mkword(MR_mktag(0), MR_mkbody((MR_Integer) 0));
+            break;
+        }
+        switch (MR_tag((MR_Word) mercury__lexer__Result_8)) {
+          default: /*NOTREACHED*/ MR_assert(0);
+          case (MR_Integer) 0:
+            switch (MR_unmkbody(mercury__lexer__Result_8)) {
+              default: /*NOTREACHED*/ MR_assert(0);
+              case (MR_Integer) 0:
+                {
+                  {
+                    mercury__lexer__succeeded = mercury__char__is_octal_digit_1_p_0(mercury__lexer__Char_9);
+                  }
+                  if (mercury__lexer__succeeded)
+                    {
+                      MR_Word mercury__lexer__Var_15;
+                      MR_Word mercury__lexer__Var_17 = (MR_Word) MR_mkword(MR_mktag(0), MR_mkbody((MR_Integer) 0));
+
+                      {
+                        mercury__lexer__Var_15 = (MR_Word) MR_mkword(MR_mktag(1), MR_new_object(MR_Word, ((MR_Integer) 2 * sizeof(MR_Word)), NULL, NULL));
+                        MR_hl_field(MR_mktag(1), mercury__lexer__Var_15, 0) = ((MR_Box) (MR_Word) (mercury__lexer__Char_9));
+                        MR_hl_field(MR_mktag(1), mercury__lexer__Var_15, 1) = ((MR_Box) (mercury__lexer__Var_17));
+                      }
+                      {
+                        mercury__lexer__get_octal_2_6_p_0(mercury__lexer__Stream_5, (MR_Integer) 1, mercury__lexer__Var_15, mercury__lexer__Token_6);
+                      }
+                    }
+                  else
+                    {
+                      mercury__lexer__succeeded = (mercury__lexer__Char_9 == (MR_Char) 95);
+                      if (mercury__lexer__succeeded)
+                        {
+                          /* direct tailcall eliminated */
+                          continue;
+                        }
+                      else
+                        {
+                          {
+                            mercury__io__putback_char_4_p_0(mercury__lexer__Stream_5, mercury__lexer__Char_9);
+                          }
+                          *mercury__lexer__Token_6 = (MR_Word) MR_mkword(MR_mktag(3), &mercury__lexer_scalar_common_4[32]);
+                        }
+                    }
+                }
+                break;
+              case (MR_Integer) 1:
+                {
+                  *mercury__lexer__Token_6 = (MR_Word) MR_mkword(MR_mktag(3), &mercury__lexer_scalar_common_4[32]);
+                }
+                break;
+            }
+            break;
+          case (MR_Integer) 1:
+            {
+              MR_Word mercury__lexer__Error_10 = ((MR_Word) (MR_hl_field(MR_mktag(1), mercury__lexer__Result_8, (MR_Integer) 0)));
+
+              {
+                MR_Word base;
+                base = (MR_Word) MR_mkword(MR_mktag(3), MR_new_object(MR_Word, ((MR_Integer) 2 * sizeof(MR_Word)), NULL, NULL));
+                *mercury__lexer__Token_6 = base;
+                MR_hl_field(MR_mktag(3), base, 0) = ((MR_Box) (MR_Word) ((MR_Integer) 6));
+                MR_hl_field(MR_mktag(3), base, 1) = ((MR_Box) (mercury__lexer__Error_10));
+              }
+            }
+            break;
+        }
+      }
+      break;
+    }
+}
+
+static void MR_CALL 
+mercury__lexer__string_get_binary_2_8_p_0(
+  MR_String mercury__lexer__String_9,
+  MR_Word mercury__lexer__STATE_VARIABLE_LastDigit_0_19,
+  MR_Integer mercury__lexer__Len_11,
+  MR_Word mercury__lexer__Posn1_12,
+  MR_Word * mercury__lexer__Token_13,
+  MR_Integer * mercury__lexer__Context_14,
+  MR_Word mercury__lexer__STATE_VARIABLE_Posn_0_20,
+  MR_Word * mercury__lexer__STATE_VARIABLE_Posn_21)
+{
+  while (MR_TRUE)
+    {
+      /* tailcall optimized into a loop */
+      {
+        MR_bool mercury__lexer__succeeded;
+        MR_Char mercury__lexer__Char_17;
+        MR_Word mercury__lexer__STATE_VARIABLE_Posn_22_22;
+        MR_Integer mercury__lexer__LineNum0_62 = ((MR_Integer) (MR_hl_field(MR_mktag(0), mercury__lexer__STATE_VARIABLE_Posn_0_20, (MR_Integer) 0)));
+        MR_Integer mercury__lexer__LineOffset0_63 = ((MR_Integer) (MR_hl_field(MR_mktag(0), mercury__lexer__STATE_VARIABLE_Posn_0_20, (MR_Integer) 1)));
+        MR_Integer mercury__lexer__Offset0_64 = ((MR_Integer) (MR_hl_field(MR_mktag(0), mercury__lexer__STATE_VARIABLE_Posn_0_20, (MR_Integer) 2)));
+        MR_Integer mercury__lexer__Offset_65;
+
+        mercury__lexer__succeeded = (mercury__lexer__Offset0_64 < mercury__lexer__Len_11);
+        if (mercury__lexer__succeeded)
+          {
+{
+#define MR_PROC_LABEL mercury__lexer__string_get_binary_2_8_p_0
+
+	MR_String Str;
+	MR_Integer Index;
+	MR_Integer NextIndex;
+	MR_Char Ch;
+	MR_bool SUCCESS_INDICATOR;
+
+	Str =  mercury__lexer__String_9 ;
+	Index =  mercury__lexer__Offset0_64 ;
+		{
+
+    Ch = Str[Index];
+    if (MR_is_ascii(Ch)) {
+        NextIndex = Index + 1;
+        SUCCESS_INDICATOR = (Ch != 0);
+    } else {
+        NextIndex = Index;
+        Ch = MR_utf8_get_next_mb(Str, &NextIndex);
+        SUCCESS_INDICATOR = (Ch > 0);
+    }
+
+
+		;}
+#undef MR_PROC_LABEL
+	if (SUCCESS_INDICATOR) {
+	 mercury__lexer__Offset_65  = NextIndex;
+	 mercury__lexer__Char_17  = Ch;
+	}
+mercury__lexer__succeeded  = SUCCESS_INDICATOR;
+}
+            if (mercury__lexer__succeeded)
+              {
+                mercury__lexer__succeeded = (mercury__lexer__Char_17 == (MR_Char) 10);
+                if (mercury__lexer__succeeded)
+                  {
+                    MR_Integer mercury__lexer__LineNum_66 = (mercury__lexer__LineNum0_62 + (MR_Integer) 1);
+
+                    {
+                      mercury__lexer__STATE_VARIABLE_Posn_22_22 = (MR_Word) MR_new_object(MR_Word, ((MR_Integer) 3 * sizeof(MR_Word)), NULL, NULL);
+                      MR_hl_field(MR_mktag(0), mercury__lexer__STATE_VARIABLE_Posn_22_22, 0) = ((MR_Box) (mercury__lexer__LineNum_66));
+                      MR_hl_field(MR_mktag(0), mercury__lexer__STATE_VARIABLE_Posn_22_22, 1) = ((MR_Box) (mercury__lexer__Offset_65));
+                      MR_hl_field(MR_mktag(0), mercury__lexer__STATE_VARIABLE_Posn_22_22, 2) = ((MR_Box) (mercury__lexer__Offset_65));
+                    }
+                  }
+                else
+                  {
+                    mercury__lexer__STATE_VARIABLE_Posn_22_22 = (MR_Word) MR_new_object(MR_Word, ((MR_Integer) 3 * sizeof(MR_Word)), NULL, NULL);
+                    MR_hl_field(MR_mktag(0), mercury__lexer__STATE_VARIABLE_Posn_22_22, 0) = ((MR_Box) (mercury__lexer__LineNum0_62));
+                    MR_hl_field(MR_mktag(0), mercury__lexer__STATE_VARIABLE_Posn_22_22, 1) = ((MR_Box) (mercury__lexer__LineOffset0_63));
+                    MR_hl_field(MR_mktag(0), mercury__lexer__STATE_VARIABLE_Posn_22_22, 2) = ((MR_Box) (mercury__lexer__Offset_65));
+                  }
+                mercury__lexer__succeeded = MR_TRUE;
+              }
+          }
+        if (mercury__lexer__succeeded)
+          {
+            switch (mercury__lexer__Char_17) {
+              default:
+                mercury__lexer__succeeded = MR_FALSE;
+                break;
+              case (MR_Char) 48:
+                mercury__lexer__succeeded = MR_TRUE;
+                break;
+              case (MR_Char) 49:
+                mercury__lexer__succeeded = MR_TRUE;
+                break;
+            }
+            if (mercury__lexer__succeeded)
+              {
+                /* direct tailcall eliminated */
+                {
+                  MR_Word mercury__lexer__next_value_of_STATE_VARIABLE_Posn_0_20 = mercury__lexer__STATE_VARIABLE_Posn_22_22;
+
+                  mercury__lexer__STATE_VARIABLE_Posn_0_20 = mercury__lexer__next_value_of_STATE_VARIABLE_Posn_0_20;
+                  mercury__lexer__STATE_VARIABLE_LastDigit_0_19 = (MR_Integer) 1;
+                }
+                continue;
+              }
+            else
+              {
+                mercury__lexer__succeeded = (mercury__lexer__Char_17 == (MR_Char) 95);
+                if (mercury__lexer__succeeded)
+                  {
+                    /* direct tailcall eliminated */
+                    {
+                      MR_Word mercury__lexer__next_value_of_STATE_VARIABLE_Posn_0_20 = mercury__lexer__STATE_VARIABLE_Posn_22_22;
+
+                      mercury__lexer__STATE_VARIABLE_Posn_0_20 = mercury__lexer__next_value_of_STATE_VARIABLE_Posn_0_20;
+                      mercury__lexer__STATE_VARIABLE_LastDigit_0_19 = (MR_Integer) 0;
+                    }
+                    continue;
+                  }
+                else
+                  {
+                    mercury__lexer__succeeded = (mercury__lexer__Char_17 == (MR_Char) 117);
+                    if (mercury__lexer__succeeded)
+                      {
+                        MR_Integer mercury__lexer__Var_75;
+                        MR_Integer mercury__lexer__Var_76;
+
+                        {
+                          mercury__lexer__string_get_integer_size_suffix_9_p_0(mercury__lexer__String_9, mercury__lexer__Len_11, mercury__lexer__Posn1_12, mercury__lexer__STATE_VARIABLE_Posn_0_20, (MR_Integer) 0, (MR_Integer) 1, mercury__lexer__Token_13, mercury__lexer__STATE_VARIABLE_Posn_22_22, mercury__lexer__STATE_VARIABLE_Posn_21);
+                        }
+                        *mercury__lexer__Context_14 = ((MR_Integer) (MR_hl_field(MR_mktag(0), mercury__lexer__Posn1_12, (MR_Integer) 0)));
+                        mercury__lexer__Var_75 = ((MR_Integer) (MR_hl_field(MR_mktag(0), mercury__lexer__Posn1_12, (MR_Integer) 1)));
+                        mercury__lexer__Var_76 = ((MR_Integer) (MR_hl_field(MR_mktag(0), mercury__lexer__Posn1_12, (MR_Integer) 2)));
+                      }
+                    else
+                      {
+                        mercury__lexer__succeeded = (mercury__lexer__Char_17 == (MR_Char) 105);
+                        if (mercury__lexer__succeeded)
+                          {
+                            MR_Integer mercury__lexer__Var_83;
+                            MR_Integer mercury__lexer__Var_84;
+
+                            {
+                              mercury__lexer__string_get_integer_size_suffix_9_p_0(mercury__lexer__String_9, mercury__lexer__Len_11, mercury__lexer__Posn1_12, mercury__lexer__STATE_VARIABLE_Posn_0_20, (MR_Integer) 0, (MR_Integer) 0, mercury__lexer__Token_13, mercury__lexer__STATE_VARIABLE_Posn_22_22, mercury__lexer__STATE_VARIABLE_Posn_21);
+                            }
+                            *mercury__lexer__Context_14 = ((MR_Integer) (MR_hl_field(MR_mktag(0), mercury__lexer__Posn1_12, (MR_Integer) 0)));
+                            mercury__lexer__Var_83 = ((MR_Integer) (MR_hl_field(MR_mktag(0), mercury__lexer__Posn1_12, (MR_Integer) 1)));
+                            mercury__lexer__Var_84 = ((MR_Integer) (MR_hl_field(MR_mktag(0), mercury__lexer__Posn1_12, (MR_Integer) 2)));
+                          }
+                        else
+                          {
+                            MR_Word mercury__lexer__STATE_VARIABLE_Posn_35_35;
+                            MR_Word mercury__lexer__STATE_VARIABLE_Posn_37_37;
+
+                            {
+                              mercury__lexer__string_ungetchar_3_p_0(mercury__lexer__String_9, mercury__lexer__STATE_VARIABLE_Posn_22_22, &mercury__lexer__STATE_VARIABLE_Posn_35_35);
+                            }
+                            switch (mercury__lexer__STATE_VARIABLE_LastDigit_0_19) {
+                              default: /*NOTREACHED*/ MR_assert(0);
+                              case (MR_Integer) 1:
+                                {
+                                  MR_String mercury__lexer__BinaryString_18;
+                                  MR_Integer mercury__lexer__Offset0_91;
+                                  MR_Integer mercury__lexer__Offset_94;
+                                  MR_Integer mercury__lexer__Var_89;
+                                  MR_Integer mercury__lexer__Var_90;
+                                  MR_Integer mercury__lexer__Var_92;
+                                  MR_Integer mercury__lexer__Var_93;
+
+                                  mercury__lexer__STATE_VARIABLE_Posn_37_37 = mercury__lexer__STATE_VARIABLE_Posn_35_35;
+                                  mercury__lexer__Var_89 = ((MR_Integer) (MR_hl_field(MR_mktag(0), mercury__lexer__Posn1_12, (MR_Integer) 0)));
+                                  mercury__lexer__Var_90 = ((MR_Integer) (MR_hl_field(MR_mktag(0), mercury__lexer__Posn1_12, (MR_Integer) 1)));
+                                  mercury__lexer__Offset0_91 = ((MR_Integer) (MR_hl_field(MR_mktag(0), mercury__lexer__Posn1_12, (MR_Integer) 2)));
+                                  mercury__lexer__Var_92 = ((MR_Integer) (MR_hl_field(MR_mktag(0), mercury__lexer__STATE_VARIABLE_Posn_35_35, (MR_Integer) 0)));
+                                  mercury__lexer__Var_93 = ((MR_Integer) (MR_hl_field(MR_mktag(0), mercury__lexer__STATE_VARIABLE_Posn_35_35, (MR_Integer) 1)));
+                                  mercury__lexer__Offset_94 = ((MR_Integer) (MR_hl_field(MR_mktag(0), mercury__lexer__STATE_VARIABLE_Posn_35_35, (MR_Integer) 2)));
+{
+#define MR_PROC_LABEL mercury__lexer__string_get_binary_2_8_p_0
+
+	MR_String Str;
+	MR_Integer Start;
+	MR_Integer End;
+	MR_String SubString;
+
+	Str =  mercury__lexer__String_9 ;
+	Start =  mercury__lexer__Offset0_91 ;
+	End =  mercury__lexer__Offset_94 ;
+		{
+{
+    MR_Integer Count;
+
+    Count = End - Start;
+    MR_allocate_aligned_string_msg(SubString, Count, MR_ALLOC_ID);
+    MR_memcpy(SubString, Str + Start, Count);
+    SubString[Count] = '\0';
+}
+
+		;}
+#undef MR_PROC_LABEL
+	 mercury__lexer__BinaryString_18  = SubString;
+}
+                                  {
+                                    mercury__lexer__conv_string_to_int_5_p_0(mercury__lexer__BinaryString_18, (MR_Integer) 0, (MR_Integer) 0, (MR_Integer) 0, mercury__lexer__Token_13);
+                                  }
+                                }
+                                break;
+                              case (MR_Integer) 0:
+                                {
+                                  *mercury__lexer__Token_13 = (MR_Word) MR_mkword(MR_mktag(3), &mercury__lexer_scalar_common_4[30]);
+                                  mercury__lexer__STATE_VARIABLE_Posn_37_37 = mercury__lexer__STATE_VARIABLE_Posn_35_35;
+                                }
+                                break;
+                            }
+                            {
+                              mercury__lexer__string_get_context_4_p_0(mercury__lexer__Posn1_12, mercury__lexer__Context_14, mercury__lexer__STATE_VARIABLE_Posn_37_37, mercury__lexer__STATE_VARIABLE_Posn_21);
+                            }
+                          }
+                      }
+                  }
+              }
+          }
+        else
+          {
+            MR_Word mercury__lexer__STATE_VARIABLE_Posn_43_43;
+
+            switch (mercury__lexer__STATE_VARIABLE_LastDigit_0_19) {
+              default: /*NOTREACHED*/ MR_assert(0);
+              case (MR_Integer) 1:
+                {
+                  MR_String mercury__lexer__BinaryString_52;
+
+                  {
+                    mercury__lexer__grab_string_5_p_0(mercury__lexer__String_9, mercury__lexer__Posn1_12, &mercury__lexer__BinaryString_52, mercury__lexer__STATE_VARIABLE_Posn_0_20, &mercury__lexer__STATE_VARIABLE_Posn_43_43);
+                  }
+                  {
+                    mercury__lexer__conv_string_to_int_5_p_0(mercury__lexer__BinaryString_52, (MR_Integer) 0, (MR_Integer) 0, (MR_Integer) 0, mercury__lexer__Token_13);
+                  }
+                }
+                break;
+              case (MR_Integer) 0:
+                {
+                  *mercury__lexer__Token_13 = (MR_Word) MR_mkword(MR_mktag(3), &mercury__lexer_scalar_common_4[30]);
+                  mercury__lexer__STATE_VARIABLE_Posn_43_43 = mercury__lexer__STATE_VARIABLE_Posn_0_20;
+                }
+                break;
+            }
+            {
+              mercury__lexer__string_get_context_4_p_0(mercury__lexer__Posn1_12, mercury__lexer__Context_14, mercury__lexer__STATE_VARIABLE_Posn_43_43, mercury__lexer__STATE_VARIABLE_Posn_21);
+            }
+          }
+      }
+      break;
+    }
+}
+
+static void MR_CALL 
+mercury__lexer__get_binary_2_6_p_0(
+  MR_Word mercury__lexer__Stream_7,
+  MR_Word mercury__lexer__STATE_VARIABLE_LastDigit_0_15,
+  MR_Word mercury__lexer__STATE_VARIABLE_RevChars_0_16,
+  MR_Word * mercury__lexer__Token_10)
+{
+  while (MR_TRUE)
+    {
+      /* tailcall optimized into a loop */
+      {
+        MR_bool mercury__lexer__succeeded;
+        MR_Word mercury__lexer__Result_12;
+        MR_Char mercury__lexer__Char_13;
+        MR_Word mercury__lexer__V_10_62;
+        MR_Box mercury__lexer__V_11_63;
+        MR_Box mercury__lexer__V_7_72 = (MR_Box) mercury__lexer__Stream_7;
+
+        {
+          mercury__io__read_char_code_2_6_p_0(mercury__lexer__V_7_72, &mercury__lexer__V_10_62, &mercury__lexer__Char_13, &mercury__lexer__V_11_63);
+        }
+        switch (mercury__lexer__V_10_62) {
+          default: /*NOTREACHED*/ MR_assert(0);
+          case (MR_Integer) 1:
+            mercury__lexer__Result_12 = (MR_Word) MR_mkword(MR_mktag(0), MR_mkbody((MR_Integer) 1));
+            break;
+          case (MR_Integer) 2:
+            {
+              MR_String mercury__lexer__V_12_65;
+              MR_Word mercury__lexer__V_17_66;
+
+{
+#define MR_PROC_LABEL mercury__lexer__get_binary_2_6_p_0
+
+	MR_Integer Error;
+	MR_String Msg0;
+	MR_String Msg;
+
+	MR_MAYBE_UNBOX_FOREIGN_TYPE(MR_Integer, mercury__lexer__V_11_63 , Error);
+	Msg0 =  (MR_String) "read failed: " ;
+		{
+
+    ML_make_err_msg(Error, Msg0, MR_ALLOC_ID, Msg);
+
+
+		;}
+#undef MR_PROC_LABEL
+	 mercury__lexer__V_12_65  = Msg;
+}
+              mercury__lexer__V_17_66 = (MR_Word) mercury__lexer__V_12_65;
+              {
+                mercury__lexer__Result_12 = (MR_Word) MR_mkword(MR_mktag(1), MR_new_object(MR_Word, ((MR_Integer) 1 * sizeof(MR_Word)), NULL, NULL));
+                MR_hl_field(MR_mktag(1), mercury__lexer__Result_12, 0) = ((MR_Box) (mercury__lexer__V_17_66));
+              }
+            }
+            break;
+          case (MR_Integer) 0:
+            mercury__lexer__Result_12 = (MR_Word) MR_mkword(MR_mktag(0), MR_mkbody((MR_Integer) 0));
+            break;
+        }
+        switch (MR_tag((MR_Word) mercury__lexer__Result_12)) {
+          default: /*NOTREACHED*/ MR_assert(0);
+          case (MR_Integer) 0:
+            switch (MR_unmkbody(mercury__lexer__Result_12)) {
+              default: /*NOTREACHED*/ MR_assert(0);
+              case (MR_Integer) 0:
+                {
+                  switch (mercury__lexer__Char_13) {
+                    default:
+                      mercury__lexer__succeeded = MR_FALSE;
+                      break;
+                    case (MR_Char) 48:
+                      mercury__lexer__succeeded = MR_TRUE;
+                      break;
+                    case (MR_Char) 49:
+                      mercury__lexer__succeeded = MR_TRUE;
+                      break;
+                  }
+                  if (mercury__lexer__succeeded)
+                    {
+                      MR_Word mercury__lexer__STATE_VARIABLE_RevChars_20_44;
+
+                      {
+                        mercury__lexer__STATE_VARIABLE_RevChars_20_44 = (MR_Word) MR_mkword(MR_mktag(1), MR_new_object(MR_Word, ((MR_Integer) 2 * sizeof(MR_Word)), NULL, NULL));
+                        MR_hl_field(MR_mktag(1), mercury__lexer__STATE_VARIABLE_RevChars_20_44, 0) = ((MR_Box) (MR_Word) (mercury__lexer__Char_13));
+                        MR_hl_field(MR_mktag(1), mercury__lexer__STATE_VARIABLE_RevChars_20_44, 1) = ((MR_Box) (mercury__lexer__STATE_VARIABLE_RevChars_0_16));
+                      }
+                      /* direct tailcall eliminated */
+                      {
+                        MR_Word mercury__lexer__next_value_of_STATE_VARIABLE_RevChars_0_16 = mercury__lexer__STATE_VARIABLE_RevChars_20_44;
+
+                        mercury__lexer__STATE_VARIABLE_RevChars_0_16 = mercury__lexer__next_value_of_STATE_VARIABLE_RevChars_0_16;
+                        mercury__lexer__STATE_VARIABLE_LastDigit_0_15 = (MR_Integer) 1;
+                      }
+                      continue;
+                    }
+                  else
+                    {
+                      mercury__lexer__succeeded = (mercury__lexer__Char_13 == (MR_Char) 95);
+                      if (mercury__lexer__succeeded)
+                        {
+                          /* direct tailcall eliminated */
+                          {
+                            mercury__lexer__STATE_VARIABLE_LastDigit_0_15 = (MR_Integer) 0;
+                          }
+                          continue;
+                        }
+                      else
+                        {
+                          mercury__lexer__succeeded = (mercury__lexer__Char_13 == (MR_Char) 117);
+                          if (mercury__lexer__succeeded)
+                            {
+                              {
+                                mercury__lexer__get_integer_size_suffix_7_p_0(mercury__lexer__Stream_7, mercury__lexer__STATE_VARIABLE_RevChars_0_16, (MR_Integer) 0, (MR_Integer) 1, mercury__lexer__Token_10);
+                              }
+                            }
+                          else
+                            {
+                              mercury__lexer__succeeded = (mercury__lexer__Char_13 == (MR_Char) 105);
+                              if (mercury__lexer__succeeded)
+                                {
+                                  {
+                                    mercury__lexer__get_integer_size_suffix_7_p_0(mercury__lexer__Stream_7, mercury__lexer__STATE_VARIABLE_RevChars_0_16, (MR_Integer) 0, (MR_Integer) 0, mercury__lexer__Token_10);
+                                  }
+                                }
+                              else
+                                {
+                                  {
+                                    mercury__io__putback_char_4_p_0(mercury__lexer__Stream_7, mercury__lexer__Char_13);
+                                  }
+                                  switch (mercury__lexer__STATE_VARIABLE_LastDigit_0_15) {
+                                    default: /*NOTREACHED*/ MR_assert(0);
+                                    case (MR_Integer) 1:
+                                      {
+                                        MR_String mercury__lexer__String_87;
+
+                                        {
+                                          mercury__lexer__succeeded = mercury__string__semidet_from_rev_char_list_2_p_0(mercury__lexer__STATE_VARIABLE_RevChars_0_16, &mercury__lexer__String_87);
+                                        }
+                                        if (mercury__lexer__succeeded)
+                                          {
+                                            mercury__lexer__conv_string_to_int_5_p_0(mercury__lexer__String_87, (MR_Integer) 0, (MR_Integer) 0, (MR_Integer) 0, mercury__lexer__Token_10);
+                                          }
+                                        else
+                                          {
+                                            *mercury__lexer__Token_10 = (MR_Word) MR_mkword(MR_mktag(3), &mercury__lexer_scalar_common_4[31]);
+                                          }
+                                      }
+                                      break;
+                                    case (MR_Integer) 0:
+                                      {
+                                        *mercury__lexer__Token_10 = (MR_Word) MR_mkword(MR_mktag(3), &mercury__lexer_scalar_common_4[30]);
+                                      }
+                                      break;
+                                  }
+                                }
+                            }
+                        }
+                    }
+                }
+                break;
+              case (MR_Integer) 1:
+                switch (mercury__lexer__STATE_VARIABLE_LastDigit_0_15) {
+                  default: /*NOTREACHED*/ MR_assert(0);
+                  case (MR_Integer) 1:
+                    {
+                      MR_String mercury__lexer__String_78;
+
+                      {
+                        mercury__lexer__succeeded = mercury__string__semidet_from_rev_char_list_2_p_0(mercury__lexer__STATE_VARIABLE_RevChars_0_16, &mercury__lexer__String_78);
+                      }
+                      if (mercury__lexer__succeeded)
+                        {
+                          mercury__lexer__conv_string_to_int_5_p_0(mercury__lexer__String_78, (MR_Integer) 0, (MR_Integer) 0, (MR_Integer) 0, mercury__lexer__Token_10);
+                        }
+                      else
+                        {
+                          *mercury__lexer__Token_10 = (MR_Word) MR_mkword(MR_mktag(3), &mercury__lexer_scalar_common_4[31]);
+                        }
+                    }
+                    break;
+                  case (MR_Integer) 0:
+                    {
+                      *mercury__lexer__Token_10 = (MR_Word) MR_mkword(MR_mktag(3), &mercury__lexer_scalar_common_4[30]);
+                    }
+                    break;
+                }
+                break;
+            }
+            break;
+          case (MR_Integer) 1:
+            {
+              MR_Word mercury__lexer__Error_14 = ((MR_Word) (MR_hl_field(MR_mktag(1), mercury__lexer__Result_12, (MR_Integer) 0)));
+
+              {
+                MR_Word base;
+                base = (MR_Word) MR_mkword(MR_mktag(3), MR_new_object(MR_Word, ((MR_Integer) 2 * sizeof(MR_Word)), NULL, NULL));
+                *mercury__lexer__Token_10 = base;
+                MR_hl_field(MR_mktag(3), base, 0) = ((MR_Box) (MR_Word) ((MR_Integer) 6));
+                MR_hl_field(MR_mktag(3), base, 1) = ((MR_Box) (mercury__lexer__Error_14));
+              }
+            }
+            break;
+        }
+      }
+      break;
+    }
+}
+
+static void MR_CALL 
+mercury__lexer__string_get_binary_7_p_0(
+  MR_String mercury__lexer__String_8,
+  MR_Integer mercury__lexer__Len_9,
+  MR_Word mercury__lexer__Posn0_10,
+  MR_Word * mercury__lexer__Token_11,
+  MR_Integer * mercury__lexer__Context_12,
+  MR_Word mercury__lexer__STATE_VARIABLE_Posn_0_17,
+  MR_Word * mercury__lexer__STATE_VARIABLE_Posn_18)
+{
+  while (MR_TRUE)
+    {
+      /* tailcall optimized into a loop */
+      {
+        MR_bool mercury__lexer__succeeded;
+        MR_Char mercury__lexer__Char_15;
+        MR_Word mercury__lexer__STATE_VARIABLE_Posn_19_19;
+        MR_Integer mercury__lexer__LineNum0_32 = ((MR_Integer) (MR_hl_field(MR_mktag(0), mercury__lexer__STATE_VARIABLE_Posn_0_17, (MR_Integer) 0)));
+        MR_Integer mercury__lexer__LineOffset0_33 = ((MR_Integer) (MR_hl_field(MR_mktag(0), mercury__lexer__STATE_VARIABLE_Posn_0_17, (MR_Integer) 1)));
+        MR_Integer mercury__lexer__Offset0_34 = ((MR_Integer) (MR_hl_field(MR_mktag(0), mercury__lexer__STATE_VARIABLE_Posn_0_17, (MR_Integer) 2)));
+        MR_Integer mercury__lexer__Offset_35;
+
+        mercury__lexer__succeeded = (mercury__lexer__Offset0_34 < mercury__lexer__Len_9);
+        if (mercury__lexer__succeeded)
+          {
+{
+#define MR_PROC_LABEL mercury__lexer__string_get_binary_7_p_0
+
+	MR_String Str;
+	MR_Integer Index;
+	MR_Integer NextIndex;
+	MR_Char Ch;
+	MR_bool SUCCESS_INDICATOR;
+
+	Str =  mercury__lexer__String_8 ;
+	Index =  mercury__lexer__Offset0_34 ;
+		{
+
+    Ch = Str[Index];
+    if (MR_is_ascii(Ch)) {
+        NextIndex = Index + 1;
+        SUCCESS_INDICATOR = (Ch != 0);
+    } else {
+        NextIndex = Index;
+        Ch = MR_utf8_get_next_mb(Str, &NextIndex);
+        SUCCESS_INDICATOR = (Ch > 0);
+    }
+
+
+		;}
+#undef MR_PROC_LABEL
+	if (SUCCESS_INDICATOR) {
+	 mercury__lexer__Offset_35  = NextIndex;
+	 mercury__lexer__Char_15  = Ch;
+	}
+mercury__lexer__succeeded  = SUCCESS_INDICATOR;
+}
+            if (mercury__lexer__succeeded)
+              {
+                mercury__lexer__succeeded = (mercury__lexer__Char_15 == (MR_Char) 10);
+                if (mercury__lexer__succeeded)
+                  {
+                    MR_Integer mercury__lexer__LineNum_36 = (mercury__lexer__LineNum0_32 + (MR_Integer) 1);
+
+                    {
+                      mercury__lexer__STATE_VARIABLE_Posn_19_19 = (MR_Word) MR_new_object(MR_Word, ((MR_Integer) 3 * sizeof(MR_Word)), NULL, NULL);
+                      MR_hl_field(MR_mktag(0), mercury__lexer__STATE_VARIABLE_Posn_19_19, 0) = ((MR_Box) (mercury__lexer__LineNum_36));
+                      MR_hl_field(MR_mktag(0), mercury__lexer__STATE_VARIABLE_Posn_19_19, 1) = ((MR_Box) (mercury__lexer__Offset_35));
+                      MR_hl_field(MR_mktag(0), mercury__lexer__STATE_VARIABLE_Posn_19_19, 2) = ((MR_Box) (mercury__lexer__Offset_35));
+                    }
+                  }
+                else
+                  {
+                    mercury__lexer__STATE_VARIABLE_Posn_19_19 = (MR_Word) MR_new_object(MR_Word, ((MR_Integer) 3 * sizeof(MR_Word)), NULL, NULL);
+                    MR_hl_field(MR_mktag(0), mercury__lexer__STATE_VARIABLE_Posn_19_19, 0) = ((MR_Box) (mercury__lexer__LineNum0_32));
+                    MR_hl_field(MR_mktag(0), mercury__lexer__STATE_VARIABLE_Posn_19_19, 1) = ((MR_Box) (mercury__lexer__LineOffset0_33));
+                    MR_hl_field(MR_mktag(0), mercury__lexer__STATE_VARIABLE_Posn_19_19, 2) = ((MR_Box) (mercury__lexer__Offset_35));
+                  }
+                mercury__lexer__succeeded = MR_TRUE;
+              }
+          }
+        if (mercury__lexer__succeeded)
+          {
+            switch (mercury__lexer__Char_15) {
+              default:
+                mercury__lexer__succeeded = MR_FALSE;
+                break;
+              case (MR_Char) 48:
+                mercury__lexer__succeeded = MR_TRUE;
+                break;
+              case (MR_Char) 49:
+                mercury__lexer__succeeded = MR_TRUE;
+                break;
+            }
+            if (mercury__lexer__succeeded)
+              {
+                {
+                  mercury__lexer__string_get_binary_2_8_p_0(mercury__lexer__String_8, (MR_Integer) 1, mercury__lexer__Len_9, mercury__lexer__STATE_VARIABLE_Posn_0_17, mercury__lexer__Token_11, mercury__lexer__Context_12, mercury__lexer__STATE_VARIABLE_Posn_19_19, mercury__lexer__STATE_VARIABLE_Posn_18);
+                }
+              }
+            else
+              {
+                mercury__lexer__succeeded = (mercury__lexer__Char_15 == (MR_Char) 95);
+                if (mercury__lexer__succeeded)
+                  {
+                    /* direct tailcall eliminated */
+                    {
+                      MR_Word mercury__lexer__next_value_of_Posn0_10 = mercury__lexer__STATE_VARIABLE_Posn_0_17;
+                      MR_Word mercury__lexer__next_value_of_STATE_VARIABLE_Posn_0_17 = mercury__lexer__STATE_VARIABLE_Posn_19_19;
+
+                      mercury__lexer__STATE_VARIABLE_Posn_0_17 = mercury__lexer__next_value_of_STATE_VARIABLE_Posn_0_17;
+                      mercury__lexer__Posn0_10 = mercury__lexer__next_value_of_Posn0_10;
+                    }
+                    continue;
+                  }
+                else
+                  {
+                    MR_Integer mercury__lexer__Var_45;
+                    MR_Integer mercury__lexer__Var_46;
+
+                    {
+                      mercury__lexer__string_ungetchar_3_p_0(mercury__lexer__String_8, mercury__lexer__STATE_VARIABLE_Posn_19_19, mercury__lexer__STATE_VARIABLE_Posn_18);
+                    }
+                    *mercury__lexer__Token_11 = (MR_Word) MR_mkword(MR_mktag(3), &mercury__lexer_scalar_common_4[30]);
+                    *mercury__lexer__Context_12 = ((MR_Integer) (MR_hl_field(MR_mktag(0), mercury__lexer__Posn0_10, (MR_Integer) 0)));
+                    mercury__lexer__Var_45 = ((MR_Integer) (MR_hl_field(MR_mktag(0), mercury__lexer__Posn0_10, (MR_Integer) 1)));
+                    mercury__lexer__Var_46 = ((MR_Integer) (MR_hl_field(MR_mktag(0), mercury__lexer__Posn0_10, (MR_Integer) 2)));
+                  }
+              }
+          }
+        else
+          {
+            MR_Integer mercury__lexer__Var_53;
+            MR_Integer mercury__lexer__Var_54;
+
+            *mercury__lexer__Token_11 = (MR_Word) MR_mkword(MR_mktag(3), &mercury__lexer_scalar_common_4[30]);
+            *mercury__lexer__Context_12 = ((MR_Integer) (MR_hl_field(MR_mktag(0), mercury__lexer__Posn0_10, (MR_Integer) 0)));
+            mercury__lexer__Var_53 = ((MR_Integer) (MR_hl_field(MR_mktag(0), mercury__lexer__Posn0_10, (MR_Integer) 1)));
+            mercury__lexer__Var_54 = ((MR_Integer) (MR_hl_field(MR_mktag(0), mercury__lexer__Posn0_10, (MR_Integer) 2)));
+            *mercury__lexer__STATE_VARIABLE_Posn_18 = mercury__lexer__STATE_VARIABLE_Posn_0_17;
+          }
+      }
+      break;
+    }
+}
+
+static void MR_CALL 
+mercury__lexer__get_binary_4_p_0(
+  MR_Word mercury__lexer__Stream_5,
+  MR_Word * mercury__lexer__Token_6)
+{
+  while (MR_TRUE)
+    {
+      /* tailcall optimized into a loop */
+      {
+        MR_bool mercury__lexer__succeeded;
+        MR_Word mercury__lexer__Result_8;
+        MR_Char mercury__lexer__Char_9;
+        MR_Word mercury__lexer__V_10_27;
+        MR_Box mercury__lexer__V_11_28;
+        MR_Box mercury__lexer__V_7_37 = (MR_Box) mercury__lexer__Stream_5;
+
+        {
+          mercury__io__read_char_code_2_6_p_0(mercury__lexer__V_7_37, &mercury__lexer__V_10_27, &mercury__lexer__Char_9, &mercury__lexer__V_11_28);
+        }
+        switch (mercury__lexer__V_10_27) {
+          default: /*NOTREACHED*/ MR_assert(0);
+          case (MR_Integer) 1:
+            mercury__lexer__Result_8 = (MR_Word) MR_mkword(MR_mktag(0), MR_mkbody((MR_Integer) 1));
+            break;
+          case (MR_Integer) 2:
+            {
+              MR_String mercury__lexer__V_12_30;
+              MR_Word mercury__lexer__V_17_31;
+
+{
+#define MR_PROC_LABEL mercury__lexer__get_binary_4_p_0
+
+	MR_Integer Error;
+	MR_String Msg0;
+	MR_String Msg;
+
+	MR_MAYBE_UNBOX_FOREIGN_TYPE(MR_Integer, mercury__lexer__V_11_28 , Error);
+	Msg0 =  (MR_String) "read failed: " ;
+		{
+
+    ML_make_err_msg(Error, Msg0, MR_ALLOC_ID, Msg);
+
+
+		;}
+#undef MR_PROC_LABEL
+	 mercury__lexer__V_12_30  = Msg;
+}
+              mercury__lexer__V_17_31 = (MR_Word) mercury__lexer__V_12_30;
+              {
+                mercury__lexer__Result_8 = (MR_Word) MR_mkword(MR_mktag(1), MR_new_object(MR_Word, ((MR_Integer) 1 * sizeof(MR_Word)), NULL, NULL));
+                MR_hl_field(MR_mktag(1), mercury__lexer__Result_8, 0) = ((MR_Box) (mercury__lexer__V_17_31));
+              }
+            }
+            break;
+          case (MR_Integer) 0:
+            mercury__lexer__Result_8 = (MR_Word) MR_mkword(MR_mktag(0), MR_mkbody((MR_Integer) 0));
+            break;
+        }
+        switch (MR_tag((MR_Word) mercury__lexer__Result_8)) {
+          default: /*NOTREACHED*/ MR_assert(0);
+          case (MR_Integer) 0:
+            switch (MR_unmkbody(mercury__lexer__Result_8)) {
+              default: /*NOTREACHED*/ MR_assert(0);
+              case (MR_Integer) 0:
+                {
+                  switch (mercury__lexer__Char_9) {
+                    default:
+                      mercury__lexer__succeeded = MR_FALSE;
+                      break;
+                    case (MR_Char) 48:
+                      mercury__lexer__succeeded = MR_TRUE;
+                      break;
+                    case (MR_Char) 49:
+                      mercury__lexer__succeeded = MR_TRUE;
+                      break;
+                  }
+                  if (mercury__lexer__succeeded)
+                    {
+                      MR_Word mercury__lexer__Var_15;
+                      MR_Word mercury__lexer__Var_17 = (MR_Word) MR_mkword(MR_mktag(0), MR_mkbody((MR_Integer) 0));
+
+                      {
+                        mercury__lexer__Var_15 = (MR_Word) MR_mkword(MR_mktag(1), MR_new_object(MR_Word, ((MR_Integer) 2 * sizeof(MR_Word)), NULL, NULL));
+                        MR_hl_field(MR_mktag(1), mercury__lexer__Var_15, 0) = ((MR_Box) (MR_Word) (mercury__lexer__Char_9));
+                        MR_hl_field(MR_mktag(1), mercury__lexer__Var_15, 1) = ((MR_Box) (mercury__lexer__Var_17));
+                      }
+                      {
+                        mercury__lexer__get_binary_2_6_p_0(mercury__lexer__Stream_5, (MR_Integer) 1, mercury__lexer__Var_15, mercury__lexer__Token_6);
+                      }
+                    }
+                  else
+                    {
+                      mercury__lexer__succeeded = (mercury__lexer__Char_9 == (MR_Char) 95);
+                      if (mercury__lexer__succeeded)
+                        {
+                          /* direct tailcall eliminated */
+                          continue;
+                        }
+                      else
+                        {
+                          {
+                            mercury__io__putback_char_4_p_0(mercury__lexer__Stream_5, mercury__lexer__Char_9);
+                          }
+                          *mercury__lexer__Token_6 = (MR_Word) MR_mkword(MR_mktag(3), &mercury__lexer_scalar_common_4[30]);
+                        }
+                    }
+                }
+                break;
+              case (MR_Integer) 1:
+                {
+                  *mercury__lexer__Token_6 = (MR_Word) MR_mkword(MR_mktag(3), &mercury__lexer_scalar_common_4[30]);
+                }
+                break;
+            }
+            break;
+          case (MR_Integer) 1:
+            {
+              MR_Word mercury__lexer__Error_10 = ((MR_Word) (MR_hl_field(MR_mktag(1), mercury__lexer__Result_8, (MR_Integer) 0)));
+
+              {
+                MR_Word base;
+                base = (MR_Word) MR_mkword(MR_mktag(3), MR_new_object(MR_Word, ((MR_Integer) 2 * sizeof(MR_Word)), NULL, NULL));
+                *mercury__lexer__Token_6 = base;
+                MR_hl_field(MR_mktag(3), base, 0) = ((MR_Box) (MR_Word) ((MR_Integer) 6));
+                MR_hl_field(MR_mktag(3), base, 1) = ((MR_Box) (mercury__lexer__Error_10));
+              }
+            }
+            break;
+        }
+      }
+      break;
+    }
+}
+
+static void MR_CALL 
+mercury__lexer__string_get_char_code_7_p_0(
+  MR_String mercury__lexer__String_8,
+  MR_Integer mercury__lexer__Len_9,
+  MR_Word mercury__lexer__Posn0_10,
+  MR_Word * mercury__lexer__Token_11,
+  MR_Integer * mercury__lexer__Context_12,
+  MR_Word mercury__lexer__STATE_VARIABLE_Posn_0_16,
+  MR_Word * mercury__lexer__STATE_VARIABLE_Posn_17)
+{
+  {
+    MR_bool mercury__lexer__succeeded;
+    MR_Char mercury__lexer__Char_14;
+    MR_Word mercury__lexer__STATE_VARIABLE_Posn_18_18;
+    MR_Integer mercury__lexer__LineNum0_31 = ((MR_Integer) (MR_hl_field(MR_mktag(0), mercury__lexer__STATE_VARIABLE_Posn_0_16, (MR_Integer) 0)));
+    MR_Integer mercury__lexer__LineOffset0_32 = ((MR_Integer) (MR_hl_field(MR_mktag(0), mercury__lexer__STATE_VARIABLE_Posn_0_16, (MR_Integer) 1)));
+    MR_Integer mercury__lexer__Offset0_33 = ((MR_Integer) (MR_hl_field(MR_mktag(0), mercury__lexer__STATE_VARIABLE_Posn_0_16, (MR_Integer) 2)));
+    MR_Integer mercury__lexer__Offset_34;
+
+    mercury__lexer__succeeded = (mercury__lexer__Offset0_33 < mercury__lexer__Len_9);
+    if (mercury__lexer__succeeded)
+      {
+{
+#define MR_PROC_LABEL mercury__lexer__string_get_char_code_7_p_0
+
+	MR_String Str;
+	MR_Integer Index;
+	MR_Integer NextIndex;
+	MR_Char Ch;
+	MR_bool SUCCESS_INDICATOR;
+
+	Str =  mercury__lexer__String_8 ;
+	Index =  mercury__lexer__Offset0_33 ;
+		{
+
+    Ch = Str[Index];
+    if (MR_is_ascii(Ch)) {
+        NextIndex = Index + 1;
+        SUCCESS_INDICATOR = (Ch != 0);
+    } else {
+        NextIndex = Index;
+        Ch = MR_utf8_get_next_mb(Str, &NextIndex);
+        SUCCESS_INDICATOR = (Ch > 0);
+    }
+
+
+		;}
+#undef MR_PROC_LABEL
+	if (SUCCESS_INDICATOR) {
+	 mercury__lexer__Offset_34  = NextIndex;
+	 mercury__lexer__Char_14  = Ch;
+	}
+mercury__lexer__succeeded  = SUCCESS_INDICATOR;
+}
+        if (mercury__lexer__succeeded)
+          {
+            mercury__lexer__succeeded = (mercury__lexer__Char_14 == (MR_Char) 10);
+            if (mercury__lexer__succeeded)
+              {
+                MR_Integer mercury__lexer__LineNum_35 = (mercury__lexer__LineNum0_31 + (MR_Integer) 1);
+
+                {
+                  mercury__lexer__STATE_VARIABLE_Posn_18_18 = (MR_Word) MR_new_object(MR_Word, ((MR_Integer) 3 * sizeof(MR_Word)), NULL, NULL);
+                  MR_hl_field(MR_mktag(0), mercury__lexer__STATE_VARIABLE_Posn_18_18, 0) = ((MR_Box) (mercury__lexer__LineNum_35));
+                  MR_hl_field(MR_mktag(0), mercury__lexer__STATE_VARIABLE_Posn_18_18, 1) = ((MR_Box) (mercury__lexer__Offset_34));
+                  MR_hl_field(MR_mktag(0), mercury__lexer__STATE_VARIABLE_Posn_18_18, 2) = ((MR_Box) (mercury__lexer__Offset_34));
+                }
+              }
+            else
+              {
+                mercury__lexer__STATE_VARIABLE_Posn_18_18 = (MR_Word) MR_new_object(MR_Word, ((MR_Integer) 3 * sizeof(MR_Word)), NULL, NULL);
+                MR_hl_field(MR_mktag(0), mercury__lexer__STATE_VARIABLE_Posn_18_18, 0) = ((MR_Box) (mercury__lexer__LineNum0_31));
+                MR_hl_field(MR_mktag(0), mercury__lexer__STATE_VARIABLE_Posn_18_18, 1) = ((MR_Box) (mercury__lexer__LineOffset0_32));
+                MR_hl_field(MR_mktag(0), mercury__lexer__STATE_VARIABLE_Posn_18_18, 2) = ((MR_Box) (mercury__lexer__Offset_34));
+              }
+            mercury__lexer__succeeded = MR_TRUE;
+          }
+      }
+    if (mercury__lexer__succeeded)
+      {
+        MR_Integer mercury__lexer__CharCode_15;
+        MR_Word mercury__lexer__Var_20;
+        MR_Integer mercury__lexer__Var_46;
+        MR_Integer mercury__lexer__Var_47;
+
+{
+#define MR_PROC_LABEL mercury__lexer__string_get_char_code_7_p_0
+
+	MR_Char Character;
+	MR_Integer Int;
+
+	Character =  mercury__lexer__Char_14 ;
+		{
+
+    Int = (MR_UnsignedChar) Character;
+
+
+		;}
+#undef MR_PROC_LABEL
+	 mercury__lexer__CharCode_15  = Int;
+}
+        {
+          mercury__lexer__Var_20 = mercury__integer__int_to_integer_1_f_0(mercury__lexer__CharCode_15);
+        }
+        {
+          MR_Word base;
+          base = (MR_Word) MR_mkword(MR_mktag(3), MR_new_object(MR_Word, ((MR_Integer) 5 * sizeof(MR_Word)), NULL, NULL));
+          *mercury__lexer__Token_11 = base;
+          MR_hl_field(MR_mktag(3), base, 0) = ((MR_Box) (MR_Word) ((MR_Integer) 0));
+          MR_hl_field(MR_mktag(3), base, 1) = ((MR_Box) ((MR_Integer) 2));
+          MR_hl_field(MR_mktag(3), base, 2) = ((MR_Box) (mercury__lexer__Var_20));
+          MR_hl_field(MR_mktag(3), base, 3) = ((MR_Box) ((MR_Integer) 0));
+          MR_hl_field(MR_mktag(3), base, 4) = ((MR_Box) ((MR_Integer) 0));
+        }
+        *mercury__lexer__Context_12 = ((MR_Integer) (MR_hl_field(MR_mktag(0), mercury__lexer__Posn0_10, (MR_Integer) 0)));
+        mercury__lexer__Var_46 = ((MR_Integer) (MR_hl_field(MR_mktag(0), mercury__lexer__Posn0_10, (MR_Integer) 1)));
+        mercury__lexer__Var_47 = ((MR_Integer) (MR_hl_field(MR_mktag(0), mercury__lexer__Posn0_10, (MR_Integer) 2)));
+        *mercury__lexer__STATE_VARIABLE_Posn_17 = mercury__lexer__STATE_VARIABLE_Posn_18_18;
+      }
+    else
+      {
+        MR_Integer mercury__lexer__Var_54;
+        MR_Integer mercury__lexer__Var_55;
+
+        *mercury__lexer__Token_11 = (MR_Word) MR_mkword(MR_mktag(3), &mercury__lexer_scalar_common_4[29]);
+        *mercury__lexer__Context_12 = ((MR_Integer) (MR_hl_field(MR_mktag(0), mercury__lexer__Posn0_10, (MR_Integer) 0)));
+        mercury__lexer__Var_54 = ((MR_Integer) (MR_hl_field(MR_mktag(0), mercury__lexer__Posn0_10, (MR_Integer) 1)));
+        mercury__lexer__Var_55 = ((MR_Integer) (MR_hl_field(MR_mktag(0), mercury__lexer__Posn0_10, (MR_Integer) 2)));
+        *mercury__lexer__STATE_VARIABLE_Posn_17 = mercury__lexer__STATE_VARIABLE_Posn_0_16;
+      }
+  }
+}
+
+static void MR_CALL 
+mercury__lexer__get_char_code_4_p_0(
+  MR_Word mercury__lexer__Stream_5,
+  MR_Word * mercury__lexer__Token_6)
+{
+  {
+    MR_bool mercury__lexer__succeeded;
+    MR_Word mercury__lexer__Result_8;
+    MR_Char mercury__lexer__Char_9;
+    MR_Word mercury__lexer__V_10_25;
+    MR_Box mercury__lexer__V_11_26;
+    MR_Box mercury__lexer__V_7_35 = (MR_Box) mercury__lexer__Stream_5;
+
+    {
+      mercury__io__read_char_code_2_6_p_0(mercury__lexer__V_7_35, &mercury__lexer__V_10_25, &mercury__lexer__Char_9, &mercury__lexer__V_11_26);
+    }
+    switch (mercury__lexer__V_10_25) {
+      default: /*NOTREACHED*/ MR_assert(0);
+      case (MR_Integer) 1:
+        mercury__lexer__Result_8 = (MR_Word) MR_mkword(MR_mktag(0), MR_mkbody((MR_Integer) 1));
+        break;
+      case (MR_Integer) 2:
+        {
+          MR_String mercury__lexer__V_12_28;
+          MR_Word mercury__lexer__V_17_29;
+
+{
+#define MR_PROC_LABEL mercury__lexer__get_char_code_4_p_0
+
+	MR_Integer Error;
+	MR_String Msg0;
+	MR_String Msg;
+
+	MR_MAYBE_UNBOX_FOREIGN_TYPE(MR_Integer, mercury__lexer__V_11_26 , Error);
+	Msg0 =  (MR_String) "read failed: " ;
+		{
+
+    ML_make_err_msg(Error, Msg0, MR_ALLOC_ID, Msg);
+
+
+		;}
+#undef MR_PROC_LABEL
+	 mercury__lexer__V_12_28  = Msg;
+}
+          mercury__lexer__V_17_29 = (MR_Word) mercury__lexer__V_12_28;
+          {
+            mercury__lexer__Result_8 = (MR_Word) MR_mkword(MR_mktag(1), MR_new_object(MR_Word, ((MR_Integer) 1 * sizeof(MR_Word)), NULL, NULL));
+            MR_hl_field(MR_mktag(1), mercury__lexer__Result_8, 0) = ((MR_Box) (mercury__lexer__V_17_29));
+          }
+        }
+        break;
+      case (MR_Integer) 0:
+        mercury__lexer__Result_8 = (MR_Word) MR_mkword(MR_mktag(0), MR_mkbody((MR_Integer) 0));
+        break;
+    }
+    switch (MR_tag((MR_Word) mercury__lexer__Result_8)) {
+      default: /*NOTREACHED*/ MR_assert(0);
+      case (MR_Integer) 0:
+        switch (MR_unmkbody(mercury__lexer__Result_8)) {
+          default: /*NOTREACHED*/ MR_assert(0);
+          case (MR_Integer) 0:
+            {
+              MR_Integer mercury__lexer__CharCode_11;
+              MR_Word mercury__lexer__Var_16;
+
+{
+#define MR_PROC_LABEL mercury__lexer__get_char_code_4_p_0
+
+	MR_Char Character;
+	MR_Integer Int;
+
+	Character =  mercury__lexer__Char_9 ;
+		{
+
+    Int = (MR_UnsignedChar) Character;
+
+
+		;}
+#undef MR_PROC_LABEL
+	 mercury__lexer__CharCode_11  = Int;
+}
+              {
+                mercury__lexer__Var_16 = mercury__integer__int_to_integer_1_f_0(mercury__lexer__CharCode_11);
+              }
+              {
+                MR_Word base;
+                base = (MR_Word) MR_mkword(MR_mktag(3), MR_new_object(MR_Word, ((MR_Integer) 5 * sizeof(MR_Word)), NULL, NULL));
+                *mercury__lexer__Token_6 = base;
+                MR_hl_field(MR_mktag(3), base, 0) = ((MR_Box) (MR_Word) ((MR_Integer) 0));
+                MR_hl_field(MR_mktag(3), base, 1) = ((MR_Box) ((MR_Integer) 2));
+                MR_hl_field(MR_mktag(3), base, 2) = ((MR_Box) (mercury__lexer__Var_16));
+                MR_hl_field(MR_mktag(3), base, 3) = ((MR_Box) ((MR_Integer) 0));
+                MR_hl_field(MR_mktag(3), base, 4) = ((MR_Box) ((MR_Integer) 0));
+              }
+            }
+            break;
+          case (MR_Integer) 1:
+            {
+              *mercury__lexer__Token_6 = (MR_Word) MR_mkword(MR_mktag(3), &mercury__lexer_scalar_common_4[29]);
+            }
+            break;
+        }
+        break;
+      case (MR_Integer) 1:
+        {
+          MR_Word mercury__lexer__Error_10 = ((MR_Word) (MR_hl_field(MR_mktag(1), mercury__lexer__Result_8, (MR_Integer) 0)));
+
+          {
+            MR_Word base;
+            base = (MR_Word) MR_mkword(MR_mktag(3), MR_new_object(MR_Word, ((MR_Integer) 2 * sizeof(MR_Word)), NULL, NULL));
+            *mercury__lexer__Token_6 = base;
+            MR_hl_field(MR_mktag(3), base, 0) = ((MR_Box) (MR_Word) ((MR_Integer) 6));
+            MR_hl_field(MR_mktag(3), base, 1) = ((MR_Box) (mercury__lexer__Error_10));
+          }
+        }
+        break;
+    }
+  }
+}
+
+static void MR_CALL 
+mercury__lexer__string_get_zero_7_p_0(
+  MR_String mercury__lexer__String_8,
+  MR_Integer mercury__lexer__Len_9,
+  MR_Word mercury__lexer__Posn0_10,
+  MR_Word * mercury__lexer__Token_11,
+  MR_Integer * mercury__lexer__Context_12,
+  MR_Word mercury__lexer__STATE_VARIABLE_Posn_0_17,
+  MR_Word * mercury__lexer__STATE_VARIABLE_Posn_18)
+{
+  {
+    MR_bool mercury__lexer__succeeded;
+    MR_Char mercury__lexer__Char_15;
+    MR_Word mercury__lexer__STATE_VARIABLE_Posn_19_19;
+    MR_Integer mercury__lexer__LineNum0_62 = ((MR_Integer) (MR_hl_field(MR_mktag(0), mercury__lexer__STATE_VARIABLE_Posn_0_17, (MR_Integer) 0)));
+    MR_Integer mercury__lexer__LineOffset0_63 = ((MR_Integer) (MR_hl_field(MR_mktag(0), mercury__lexer__STATE_VARIABLE_Posn_0_17, (MR_Integer) 1)));
+    MR_Integer mercury__lexer__Offset0_64 = ((MR_Integer) (MR_hl_field(MR_mktag(0), mercury__lexer__STATE_VARIABLE_Posn_0_17, (MR_Integer) 2)));
+    MR_Integer mercury__lexer__Offset_65;
+
+    mercury__lexer__succeeded = (mercury__lexer__Offset0_64 < mercury__lexer__Len_9);
+    if (mercury__lexer__succeeded)
+      {
+{
+#define MR_PROC_LABEL mercury__lexer__string_get_zero_7_p_0
+
+	MR_String Str;
+	MR_Integer Index;
+	MR_Integer NextIndex;
+	MR_Char Ch;
+	MR_bool SUCCESS_INDICATOR;
+
+	Str =  mercury__lexer__String_8 ;
+	Index =  mercury__lexer__Offset0_64 ;
+		{
+
+    Ch = Str[Index];
+    if (MR_is_ascii(Ch)) {
+        NextIndex = Index + 1;
+        SUCCESS_INDICATOR = (Ch != 0);
+    } else {
+        NextIndex = Index;
+        Ch = MR_utf8_get_next_mb(Str, &NextIndex);
+        SUCCESS_INDICATOR = (Ch > 0);
+    }
+
+
+		;}
+#undef MR_PROC_LABEL
+	if (SUCCESS_INDICATOR) {
+	 mercury__lexer__Offset_65  = NextIndex;
+	 mercury__lexer__Char_15  = Ch;
+	}
+mercury__lexer__succeeded  = SUCCESS_INDICATOR;
+}
+        if (mercury__lexer__succeeded)
+          {
+            mercury__lexer__succeeded = (mercury__lexer__Char_15 == (MR_Char) 10);
+            if (mercury__lexer__succeeded)
+              {
+                MR_Integer mercury__lexer__LineNum_66 = (mercury__lexer__LineNum0_62 + (MR_Integer) 1);
+
+                {
+                  mercury__lexer__STATE_VARIABLE_Posn_19_19 = (MR_Word) MR_new_object(MR_Word, ((MR_Integer) 3 * sizeof(MR_Word)), NULL, NULL);
+                  MR_hl_field(MR_mktag(0), mercury__lexer__STATE_VARIABLE_Posn_19_19, 0) = ((MR_Box) (mercury__lexer__LineNum_66));
+                  MR_hl_field(MR_mktag(0), mercury__lexer__STATE_VARIABLE_Posn_19_19, 1) = ((MR_Box) (mercury__lexer__Offset_65));
+                  MR_hl_field(MR_mktag(0), mercury__lexer__STATE_VARIABLE_Posn_19_19, 2) = ((MR_Box) (mercury__lexer__Offset_65));
+                }
+              }
+            else
+              {
+                mercury__lexer__STATE_VARIABLE_Posn_19_19 = (MR_Word) MR_new_object(MR_Word, ((MR_Integer) 3 * sizeof(MR_Word)), NULL, NULL);
+                MR_hl_field(MR_mktag(0), mercury__lexer__STATE_VARIABLE_Posn_19_19, 0) = ((MR_Box) (mercury__lexer__LineNum0_62));
+                MR_hl_field(MR_mktag(0), mercury__lexer__STATE_VARIABLE_Posn_19_19, 1) = ((MR_Box) (mercury__lexer__LineOffset0_63));
+                MR_hl_field(MR_mktag(0), mercury__lexer__STATE_VARIABLE_Posn_19_19, 2) = ((MR_Box) (mercury__lexer__Offset_65));
+              }
+            mercury__lexer__succeeded = MR_TRUE;
+          }
+      }
+    if (mercury__lexer__succeeded)
+      {
+        {
+          mercury__lexer__succeeded = mercury__char__is_decimal_digit_1_p_0(mercury__lexer__Char_15);
+        }
+        if (mercury__lexer__succeeded)
+          {
+            {
+              mercury__lexer__string_get_number_8_p_0(mercury__lexer__String_8, (MR_Integer) 1, mercury__lexer__Len_9, mercury__lexer__Posn0_10, mercury__lexer__Token_11, mercury__lexer__Context_12, mercury__lexer__STATE_VARIABLE_Posn_19_19, mercury__lexer__STATE_VARIABLE_Posn_18);
+            }
+          }
+        else
+          {
+            mercury__lexer__succeeded = (mercury__lexer__Char_15 == (MR_Char) 95);
+            if (mercury__lexer__succeeded)
+              {
+                {
+                  mercury__lexer__string_get_number_8_p_0(mercury__lexer__String_8, (MR_Integer) 0, mercury__lexer__Len_9, mercury__lexer__Posn0_10, mercury__lexer__Token_11, mercury__lexer__Context_12, mercury__lexer__STATE_VARIABLE_Posn_19_19, mercury__lexer__STATE_VARIABLE_Posn_18);
+                }
+              }
+            else
+              {
+                mercury__lexer__succeeded = (mercury__lexer__Char_15 == (MR_Char) 39);
+                if (mercury__lexer__succeeded)
+                  {
+                    mercury__lexer__string_get_char_code_7_p_0(mercury__lexer__String_8, mercury__lexer__Len_9, mercury__lexer__Posn0_10, mercury__lexer__Token_11, mercury__lexer__Context_12, mercury__lexer__STATE_VARIABLE_Posn_19_19, mercury__lexer__STATE_VARIABLE_Posn_18);
+                  }
+                else
+                  {
+                    mercury__lexer__succeeded = (mercury__lexer__Char_15 == (MR_Char) 98);
+                    if (mercury__lexer__succeeded)
+                      {
+                        mercury__lexer__string_get_binary_7_p_0(mercury__lexer__String_8, mercury__lexer__Len_9, mercury__lexer__Posn0_10, mercury__lexer__Token_11, mercury__lexer__Context_12, mercury__lexer__STATE_VARIABLE_Posn_19_19, mercury__lexer__STATE_VARIABLE_Posn_18);
+                      }
+                    else
+                      {
+                        mercury__lexer__succeeded = (mercury__lexer__Char_15 == (MR_Char) 111);
+                        if (mercury__lexer__succeeded)
+                          {
+                            mercury__lexer__string_get_octal_7_p_0(mercury__lexer__String_8, mercury__lexer__Len_9, mercury__lexer__Posn0_10, mercury__lexer__Token_11, mercury__lexer__Context_12, mercury__lexer__STATE_VARIABLE_Posn_19_19, mercury__lexer__STATE_VARIABLE_Posn_18);
+                          }
+                        else
+                          {
+                            mercury__lexer__succeeded = (mercury__lexer__Char_15 == (MR_Char) 120);
+                            if (mercury__lexer__succeeded)
+                              {
+                                mercury__lexer__string_get_hex_7_p_0(mercury__lexer__String_8, mercury__lexer__Len_9, mercury__lexer__Posn0_10, mercury__lexer__Token_11, mercury__lexer__Context_12, mercury__lexer__STATE_VARIABLE_Posn_19_19, mercury__lexer__STATE_VARIABLE_Posn_18);
+                              }
+                            else
+                              {
+                                mercury__lexer__succeeded = (mercury__lexer__Char_15 == (MR_Char) 117);
+                                if (mercury__lexer__succeeded)
+                                  {
+                                    MR_Integer mercury__lexer__Var_76;
+                                    MR_Integer mercury__lexer__Var_77;
+
+                                    {
+                                      mercury__lexer__string_get_integer_size_suffix_9_p_0(mercury__lexer__String_8, mercury__lexer__Len_9, mercury__lexer__Posn0_10, mercury__lexer__STATE_VARIABLE_Posn_0_17, (MR_Integer) 2, (MR_Integer) 1, mercury__lexer__Token_11, mercury__lexer__STATE_VARIABLE_Posn_19_19, mercury__lexer__STATE_VARIABLE_Posn_18);
+                                    }
+                                    *mercury__lexer__Context_12 = ((MR_Integer) (MR_hl_field(MR_mktag(0), mercury__lexer__Posn0_10, (MR_Integer) 0)));
+                                    mercury__lexer__Var_76 = ((MR_Integer) (MR_hl_field(MR_mktag(0), mercury__lexer__Posn0_10, (MR_Integer) 1)));
+                                    mercury__lexer__Var_77 = ((MR_Integer) (MR_hl_field(MR_mktag(0), mercury__lexer__Posn0_10, (MR_Integer) 2)));
+                                  }
+                                else
+                                  {
+                                    mercury__lexer__succeeded = (mercury__lexer__Char_15 == (MR_Char) 105);
+                                    if (mercury__lexer__succeeded)
+                                      {
+                                        MR_Integer mercury__lexer__Var_84;
+                                        MR_Integer mercury__lexer__Var_85;
+
+                                        {
+                                          mercury__lexer__string_get_integer_size_suffix_9_p_0(mercury__lexer__String_8, mercury__lexer__Len_9, mercury__lexer__Posn0_10, mercury__lexer__STATE_VARIABLE_Posn_0_17, (MR_Integer) 2, (MR_Integer) 0, mercury__lexer__Token_11, mercury__lexer__STATE_VARIABLE_Posn_19_19, mercury__lexer__STATE_VARIABLE_Posn_18);
+                                        }
+                                        *mercury__lexer__Context_12 = ((MR_Integer) (MR_hl_field(MR_mktag(0), mercury__lexer__Posn0_10, (MR_Integer) 0)));
+                                        mercury__lexer__Var_84 = ((MR_Integer) (MR_hl_field(MR_mktag(0), mercury__lexer__Posn0_10, (MR_Integer) 1)));
+                                        mercury__lexer__Var_85 = ((MR_Integer) (MR_hl_field(MR_mktag(0), mercury__lexer__Posn0_10, (MR_Integer) 2)));
+                                      }
+                                    else
+                                      {
+                                        mercury__lexer__succeeded = (mercury__lexer__Char_15 == (MR_Char) 46);
+                                        if (mercury__lexer__succeeded)
+                                          {
+                                            {
+                                              mercury__lexer__string_get_int_dot_8_p_0(mercury__lexer__String_8, (MR_Integer) 1, mercury__lexer__Len_9, mercury__lexer__Posn0_10, mercury__lexer__Token_11, mercury__lexer__Context_12, mercury__lexer__STATE_VARIABLE_Posn_19_19, mercury__lexer__STATE_VARIABLE_Posn_18);
+                                            }
+                                          }
+                                        else
+                                          {
+                                            switch (mercury__lexer__Char_15) {
+                                              default:
+                                                mercury__lexer__succeeded = MR_FALSE;
+                                                break;
+                                              case (MR_Char) 69:
+                                                mercury__lexer__succeeded = MR_TRUE;
+                                                break;
+                                              case (MR_Char) 101:
+                                                mercury__lexer__succeeded = MR_TRUE;
+                                                break;
+                                            }
+                                            if (mercury__lexer__succeeded)
+                                              {
+                                                mercury__lexer__string_get_float_exponent_7_p_0(mercury__lexer__String_8, mercury__lexer__Len_9, mercury__lexer__Posn0_10, mercury__lexer__Token_11, mercury__lexer__Context_12, mercury__lexer__STATE_VARIABLE_Posn_19_19, mercury__lexer__STATE_VARIABLE_Posn_18);
+                                              }
+                                            else
+                                              {
+                                                MR_Word mercury__lexer__Var_39;
+                                                MR_Word mercury__lexer__V_3_95;
+                                                MR_Integer mercury__lexer__Var_92;
+                                                MR_Integer mercury__lexer__Var_93;
+
+                                                {
+                                                  mercury__lexer__string_ungetchar_3_p_0(mercury__lexer__String_8, mercury__lexer__STATE_VARIABLE_Posn_19_19, mercury__lexer__STATE_VARIABLE_Posn_18);
+                                                }
+                                                *mercury__lexer__Context_12 = ((MR_Integer) (MR_hl_field(MR_mktag(0), mercury__lexer__Posn0_10, (MR_Integer) 0)));
+                                                mercury__lexer__Var_92 = ((MR_Integer) (MR_hl_field(MR_mktag(0), mercury__lexer__Posn0_10, (MR_Integer) 1)));
+                                                mercury__lexer__Var_93 = ((MR_Integer) (MR_hl_field(MR_mktag(0), mercury__lexer__Posn0_10, (MR_Integer) 2)));
+                                                mercury__lexer__V_3_95 = (MR_Word) MR_mkword(MR_mktag(0), MR_mkbody((MR_Integer) 0));
+                                                mercury__lexer__Var_39 = (MR_Word) &mercury__lexer_scalar_common_4[27];
+                                                *mercury__lexer__Token_11 = (MR_Word) MR_mkword(MR_mktag(3), &mercury__lexer_scalar_common_3[2]);
+                                              }
+                                          }
+                                      }
+                                  }
+                              }
+                          }
+                      }
+                  }
+              }
+          }
+      }
+    else
+      {
+        MR_Word mercury__lexer__Var_44;
+        MR_Word mercury__lexer__V_3_97;
+
+        {
+          mercury__lexer__string_get_context_4_p_0(mercury__lexer__Posn0_10, mercury__lexer__Context_12, mercury__lexer__STATE_VARIABLE_Posn_0_17, mercury__lexer__STATE_VARIABLE_Posn_18);
+        }
+        mercury__lexer__V_3_97 = (MR_Word) MR_mkword(MR_mktag(0), MR_mkbody((MR_Integer) 0));
+        mercury__lexer__Var_44 = (MR_Word) &mercury__lexer_scalar_common_4[27];
+        *mercury__lexer__Token_11 = (MR_Word) MR_mkword(MR_mktag(3), &mercury__lexer_scalar_common_3[2]);
+      }
+  }
+}
+
+static void MR_CALL 
+mercury__lexer__get_zero_4_p_0(
+  MR_Word mercury__lexer__Stream_5,
+  MR_Word * mercury__lexer__Token_6)
+{
+  {
+    MR_bool mercury__lexer__succeeded;
+    MR_Word mercury__lexer__Result_8;
+    MR_Char mercury__lexer__Char_9;
+    MR_Word mercury__lexer__V_10_71;
+    MR_Box mercury__lexer__V_11_72;
+    MR_Box mercury__lexer__V_7_81 = (MR_Box) mercury__lexer__Stream_5;
+
+    {
+      mercury__io__read_char_code_2_6_p_0(mercury__lexer__V_7_81, &mercury__lexer__V_10_71, &mercury__lexer__Char_9, &mercury__lexer__V_11_72);
+    }
+    switch (mercury__lexer__V_10_71) {
+      default: /*NOTREACHED*/ MR_assert(0);
+      case (MR_Integer) 1:
+        mercury__lexer__Result_8 = (MR_Word) MR_mkword(MR_mktag(0), MR_mkbody((MR_Integer) 1));
+        break;
+      case (MR_Integer) 2:
+        {
+          MR_String mercury__lexer__V_12_74;
+          MR_Word mercury__lexer__V_17_75;
+
+{
+#define MR_PROC_LABEL mercury__lexer__get_zero_4_p_0
+
+	MR_Integer Error;
+	MR_String Msg0;
+	MR_String Msg;
+
+	MR_MAYBE_UNBOX_FOREIGN_TYPE(MR_Integer, mercury__lexer__V_11_72 , Error);
+	Msg0 =  (MR_String) "read failed: " ;
+		{
+
+    ML_make_err_msg(Error, Msg0, MR_ALLOC_ID, Msg);
+
+
+		;}
+#undef MR_PROC_LABEL
+	 mercury__lexer__V_12_74  = Msg;
+}
+          mercury__lexer__V_17_75 = (MR_Word) mercury__lexer__V_12_74;
+          {
+            mercury__lexer__Result_8 = (MR_Word) MR_mkword(MR_mktag(1), MR_new_object(MR_Word, ((MR_Integer) 1 * sizeof(MR_Word)), NULL, NULL));
+            MR_hl_field(MR_mktag(1), mercury__lexer__Result_8, 0) = ((MR_Box) (mercury__lexer__V_17_75));
+          }
+        }
+        break;
+      case (MR_Integer) 0:
+        mercury__lexer__Result_8 = (MR_Word) MR_mkword(MR_mktag(0), MR_mkbody((MR_Integer) 0));
+        break;
+    }
+    switch (MR_tag((MR_Word) mercury__lexer__Result_8)) {
+      default: /*NOTREACHED*/ MR_assert(0);
+      case (MR_Integer) 0:
+        switch (MR_unmkbody(mercury__lexer__Result_8)) {
+          default: /*NOTREACHED*/ MR_assert(0);
+          case (MR_Integer) 0:
+            {
+              {
+                mercury__lexer__succeeded = mercury__char__is_decimal_digit_1_p_0(mercury__lexer__Char_9);
+              }
+              if (mercury__lexer__succeeded)
+                {
+                  MR_Word mercury__lexer__Var_15;
+                  MR_Word mercury__lexer__Var_17 = (MR_Word) MR_mkword(MR_mktag(0), MR_mkbody((MR_Integer) 0));
+
+                  {
+                    mercury__lexer__Var_15 = (MR_Word) MR_mkword(MR_mktag(1), MR_new_object(MR_Word, ((MR_Integer) 2 * sizeof(MR_Word)), NULL, NULL));
+                    MR_hl_field(MR_mktag(1), mercury__lexer__Var_15, 0) = ((MR_Box) (MR_Word) (mercury__lexer__Char_9));
+                    MR_hl_field(MR_mktag(1), mercury__lexer__Var_15, 1) = ((MR_Box) (mercury__lexer__Var_17));
+                  }
+                  {
+                    mercury__lexer__get_number_6_p_0(mercury__lexer__Stream_5, (MR_Integer) 1, mercury__lexer__Var_15, mercury__lexer__Token_6);
+                  }
+                }
+              else
+                {
+                  mercury__lexer__succeeded = (mercury__lexer__Char_9 == (MR_Char) 95);
+                  if (mercury__lexer__succeeded)
+                    {
+                      MR_Word mercury__lexer__Var_18 = (MR_Word) MR_mkword(MR_mktag(1), &mercury__lexer_scalar_common_4[28]);
+                      MR_Word mercury__lexer__Var_21 = (MR_Word) MR_mkword(MR_mktag(0), MR_mkbody((MR_Integer) 0));
+
+                      {
+                        mercury__lexer__get_number_6_p_0(mercury__lexer__Stream_5, (MR_Integer) 0, mercury__lexer__Var_18, mercury__lexer__Token_6);
+                      }
+                    }
+                  else
+                    {
+                      mercury__lexer__succeeded = (mercury__lexer__Char_9 == (MR_Char) 39);
+                      if (mercury__lexer__succeeded)
+                        {
+                          mercury__lexer__get_char_code_4_p_0(mercury__lexer__Stream_5, mercury__lexer__Token_6);
+                        }
+                      else
+                        {
+                          mercury__lexer__succeeded = (mercury__lexer__Char_9 == (MR_Char) 98);
+                          if (mercury__lexer__succeeded)
+                            {
+                              mercury__lexer__get_binary_4_p_0(mercury__lexer__Stream_5, mercury__lexer__Token_6);
+                            }
+                          else
+                            {
+                              mercury__lexer__succeeded = (mercury__lexer__Char_9 == (MR_Char) 111);
+                              if (mercury__lexer__succeeded)
+                                {
+                                  mercury__lexer__get_octal_4_p_0(mercury__lexer__Stream_5, mercury__lexer__Token_6);
+                                }
+                              else
+                                {
+                                  mercury__lexer__succeeded = (mercury__lexer__Char_9 == (MR_Char) 120);
+                                  if (mercury__lexer__succeeded)
+                                    {
+                                      mercury__lexer__get_hex_4_p_0(mercury__lexer__Stream_5, mercury__lexer__Token_6);
+                                    }
+                                  else
+                                    {
+                                      mercury__lexer__succeeded = (mercury__lexer__Char_9 == (MR_Char) 117);
+                                      if (mercury__lexer__succeeded)
+                                        {
+                                          MR_Word mercury__lexer__Var_26 = (MR_Word) MR_mkword(MR_mktag(1), &mercury__lexer_scalar_common_4[28]);
+                                          MR_Word mercury__lexer__Var_31 = (MR_Word) MR_mkword(MR_mktag(0), MR_mkbody((MR_Integer) 0));
+
+                                          {
+                                            mercury__lexer__get_integer_size_suffix_7_p_0(mercury__lexer__Stream_5, mercury__lexer__Var_26, (MR_Integer) 2, (MR_Integer) 1, mercury__lexer__Token_6);
+                                          }
+                                        }
+                                      else
+                                        {
+                                          mercury__lexer__succeeded = (mercury__lexer__Char_9 == (MR_Char) 105);
+                                          if (mercury__lexer__succeeded)
+                                            {
+                                              MR_Word mercury__lexer__Var_32 = (MR_Word) MR_mkword(MR_mktag(1), &mercury__lexer_scalar_common_4[28]);
+                                              MR_Word mercury__lexer__Var_37 = (MR_Word) MR_mkword(MR_mktag(0), MR_mkbody((MR_Integer) 0));
+
+                                              {
+                                                mercury__lexer__get_integer_size_suffix_7_p_0(mercury__lexer__Stream_5, mercury__lexer__Var_32, (MR_Integer) 2, (MR_Integer) 0, mercury__lexer__Token_6);
+                                              }
+                                            }
+                                          else
+                                            {
+                                              mercury__lexer__succeeded = (mercury__lexer__Char_9 == (MR_Char) 46);
+                                              if (mercury__lexer__succeeded)
+                                                {
+                                                  MR_Word mercury__lexer__Var_38 = (MR_Word) MR_mkword(MR_mktag(1), &mercury__lexer_scalar_common_4[28]);
+                                                  MR_Word mercury__lexer__Var_41 = (MR_Word) MR_mkword(MR_mktag(0), MR_mkbody((MR_Integer) 0));
+
+                                                  {
+                                                    mercury__lexer__get_int_dot_6_p_0(mercury__lexer__Stream_5, (MR_Integer) 1, mercury__lexer__Var_38, mercury__lexer__Token_6);
+                                                  }
+                                                }
+                                              else
+                                                {
+                                                  switch (mercury__lexer__Char_9) {
+                                                    default:
+                                                      mercury__lexer__succeeded = MR_FALSE;
+                                                      break;
+                                                    case (MR_Char) 69:
+                                                      mercury__lexer__succeeded = MR_TRUE;
+                                                      break;
+                                                    case (MR_Char) 101:
+                                                      mercury__lexer__succeeded = MR_TRUE;
+                                                      break;
+                                                  }
+                                                  if (mercury__lexer__succeeded)
+                                                    {
+                                                      MR_Word mercury__lexer__Var_42;
+                                                      MR_Word mercury__lexer__Var_44 = (MR_Word) MR_mkword(MR_mktag(1), &mercury__lexer_scalar_common_4[28]);
+                                                      MR_Word mercury__lexer__Var_46 = (MR_Word) MR_mkword(MR_mktag(0), MR_mkbody((MR_Integer) 0));
+
+                                                      {
+                                                        mercury__lexer__Var_42 = (MR_Word) MR_mkword(MR_mktag(1), MR_new_object(MR_Word, ((MR_Integer) 2 * sizeof(MR_Word)), NULL, NULL));
+                                                        MR_hl_field(MR_mktag(1), mercury__lexer__Var_42, 0) = ((MR_Box) (MR_Word) (mercury__lexer__Char_9));
+                                                        MR_hl_field(MR_mktag(1), mercury__lexer__Var_42, 1) = ((MR_Box) (mercury__lexer__Var_44));
+                                                      }
+                                                      {
+                                                        mercury__lexer__get_float_exponent_5_p_0(mercury__lexer__Stream_5, mercury__lexer__Var_42, mercury__lexer__Token_6);
+                                                      }
+                                                    }
+                                                  else
+                                                    {
+                                                      MR_Word mercury__lexer__Var_49;
+                                                      MR_Word mercury__lexer__V_3_86;
+
+                                                      {
+                                                        mercury__io__putback_char_4_p_0(mercury__lexer__Stream_5, mercury__lexer__Char_9);
+                                                      }
+                                                      mercury__lexer__V_3_86 = (MR_Word) MR_mkword(MR_mktag(0), MR_mkbody((MR_Integer) 0));
+                                                      mercury__lexer__Var_49 = (MR_Word) &mercury__lexer_scalar_common_4[27];
+                                                      *mercury__lexer__Token_6 = (MR_Word) MR_mkword(MR_mktag(3), &mercury__lexer_scalar_common_3[2]);
+                                                    }
+                                                }
+                                            }
+                                        }
+                                    }
+                                }
+                            }
+                        }
+                    }
+                }
+            }
+            break;
+          case (MR_Integer) 1:
+            {
+              MR_Word mercury__lexer__Var_53 = (MR_Word) &mercury__lexer_scalar_common_4[27];
+              MR_Word mercury__lexer__V_3_83 = (MR_Word) MR_mkword(MR_mktag(0), MR_mkbody((MR_Integer) 0));
+
+              *mercury__lexer__Token_6 = (MR_Word) MR_mkword(MR_mktag(3), &mercury__lexer_scalar_common_3[2]);
+            }
+            break;
+        }
+        break;
+      case (MR_Integer) 1:
+        {
+          MR_Word mercury__lexer__Error_10 = ((MR_Word) (MR_hl_field(MR_mktag(1), mercury__lexer__Result_8, (MR_Integer) 0)));
+
+          {
+            MR_Word base;
+            base = (MR_Word) MR_mkword(MR_mktag(3), MR_new_object(MR_Word, ((MR_Integer) 2 * sizeof(MR_Word)), NULL, NULL));
+            *mercury__lexer__Token_6 = base;
+            MR_hl_field(MR_mktag(3), base, 0) = ((MR_Box) (MR_Word) ((MR_Integer) 6));
+            MR_hl_field(MR_mktag(3), base, 1) = ((MR_Box) (mercury__lexer__Error_10));
+          }
+        }
+        break;
+    }
+  }
+}
+
+static void MR_CALL 
+mercury__lexer__string_get_variable_7_p_0(
+  MR_String mercury__lexer__String_8,
+  MR_Integer mercury__lexer__Len_9,
+  MR_Word mercury__lexer__Posn0_10,
+  MR_Word * mercury__lexer__Token_11,
+  MR_Integer * mercury__lexer__Context_12,
+  MR_Word mercury__lexer__STATE_VARIABLE_Posn_0_16,
+  MR_Word * mercury__lexer__STATE_VARIABLE_Posn_17)
+{
+  while (MR_TRUE)
+    {
+      /* tailcall optimized into a loop */
+      {
+        MR_bool mercury__lexer__succeeded;
+        MR_Char mercury__lexer__Char_14;
+        MR_Word mercury__lexer__STATE_VARIABLE_Posn_18_18;
+        MR_Integer mercury__lexer__LineNum0_31 = ((MR_Integer) (MR_hl_field(MR_mktag(0), mercury__lexer__STATE_VARIABLE_Posn_0_16, (MR_Integer) 0)));
+        MR_Integer mercury__lexer__LineOffset0_32 = ((MR_Integer) (MR_hl_field(MR_mktag(0), mercury__lexer__STATE_VARIABLE_Posn_0_16, (MR_Integer) 1)));
+        MR_Integer mercury__lexer__Offset0_33 = ((MR_Integer) (MR_hl_field(MR_mktag(0), mercury__lexer__STATE_VARIABLE_Posn_0_16, (MR_Integer) 2)));
+        MR_Integer mercury__lexer__Offset_34;
+
+        mercury__lexer__succeeded = (mercury__lexer__Offset0_33 < mercury__lexer__Len_9);
+        if (mercury__lexer__succeeded)
+          {
+{
+#define MR_PROC_LABEL mercury__lexer__string_get_variable_7_p_0
+
+	MR_String Str;
+	MR_Integer Index;
+	MR_Integer NextIndex;
+	MR_Char Ch;
+	MR_bool SUCCESS_INDICATOR;
+
+	Str =  mercury__lexer__String_8 ;
+	Index =  mercury__lexer__Offset0_33 ;
+		{
+
+    Ch = Str[Index];
+    if (MR_is_ascii(Ch)) {
+        NextIndex = Index + 1;
+        SUCCESS_INDICATOR = (Ch != 0);
+    } else {
+        NextIndex = Index;
+        Ch = MR_utf8_get_next_mb(Str, &NextIndex);
+        SUCCESS_INDICATOR = (Ch > 0);
+    }
+
+
+		;}
+#undef MR_PROC_LABEL
+	if (SUCCESS_INDICATOR) {
+	 mercury__lexer__Offset_34  = NextIndex;
+	 mercury__lexer__Char_14  = Ch;
+	}
+mercury__lexer__succeeded  = SUCCESS_INDICATOR;
+}
+            if (mercury__lexer__succeeded)
+              {
+                mercury__lexer__succeeded = (mercury__lexer__Char_14 == (MR_Char) 10);
+                if (mercury__lexer__succeeded)
+                  {
+                    MR_Integer mercury__lexer__LineNum_35 = (mercury__lexer__LineNum0_31 + (MR_Integer) 1);
+
+                    {
+                      mercury__lexer__STATE_VARIABLE_Posn_18_18 = (MR_Word) MR_new_object(MR_Word, ((MR_Integer) 3 * sizeof(MR_Word)), NULL, NULL);
+                      MR_hl_field(MR_mktag(0), mercury__lexer__STATE_VARIABLE_Posn_18_18, 0) = ((MR_Box) (mercury__lexer__LineNum_35));
+                      MR_hl_field(MR_mktag(0), mercury__lexer__STATE_VARIABLE_Posn_18_18, 1) = ((MR_Box) (mercury__lexer__Offset_34));
+                      MR_hl_field(MR_mktag(0), mercury__lexer__STATE_VARIABLE_Posn_18_18, 2) = ((MR_Box) (mercury__lexer__Offset_34));
+                    }
+                  }
+                else
+                  {
+                    mercury__lexer__STATE_VARIABLE_Posn_18_18 = (MR_Word) MR_new_object(MR_Word, ((MR_Integer) 3 * sizeof(MR_Word)), NULL, NULL);
+                    MR_hl_field(MR_mktag(0), mercury__lexer__STATE_VARIABLE_Posn_18_18, 0) = ((MR_Box) (mercury__lexer__LineNum0_31));
+                    MR_hl_field(MR_mktag(0), mercury__lexer__STATE_VARIABLE_Posn_18_18, 1) = ((MR_Box) (mercury__lexer__LineOffset0_32));
+                    MR_hl_field(MR_mktag(0), mercury__lexer__STATE_VARIABLE_Posn_18_18, 2) = ((MR_Box) (mercury__lexer__Offset_34));
+                  }
+                mercury__lexer__succeeded = MR_TRUE;
+              }
+          }
+        if (mercury__lexer__succeeded)
+          {
+            {
+              mercury__lexer__succeeded = mercury__char__is_alnum_or_underscore_1_p_0(mercury__lexer__Char_14);
+            }
+            if (mercury__lexer__succeeded)
+              {
+                /* direct tailcall eliminated */
+                {
+                  MR_Word mercury__lexer__next_value_of_STATE_VARIABLE_Posn_0_16 = mercury__lexer__STATE_VARIABLE_Posn_18_18;
+
+                  mercury__lexer__STATE_VARIABLE_Posn_0_16 = mercury__lexer__next_value_of_STATE_VARIABLE_Posn_0_16;
+                }
+                continue;
+              }
+            else
+              {
+                MR_String mercury__lexer__VariableName_15;
+                MR_Integer mercury__lexer__Offset0_44;
+                MR_Integer mercury__lexer__Offset_47;
+                MR_Integer mercury__lexer__Var_42;
+                MR_Integer mercury__lexer__Var_43;
+                MR_Integer mercury__lexer__Var_45;
+                MR_Integer mercury__lexer__Var_46;
+                MR_Integer mercury__lexer__Var_54;
+                MR_Integer mercury__lexer__Var_55;
+
+                {
+                  mercury__lexer__string_ungetchar_3_p_0(mercury__lexer__String_8, mercury__lexer__STATE_VARIABLE_Posn_18_18, mercury__lexer__STATE_VARIABLE_Posn_17);
+                }
+                mercury__lexer__Var_42 = ((MR_Integer) (MR_hl_field(MR_mktag(0), mercury__lexer__Posn0_10, (MR_Integer) 0)));
+                mercury__lexer__Var_43 = ((MR_Integer) (MR_hl_field(MR_mktag(0), mercury__lexer__Posn0_10, (MR_Integer) 1)));
+                mercury__lexer__Offset0_44 = ((MR_Integer) (MR_hl_field(MR_mktag(0), mercury__lexer__Posn0_10, (MR_Integer) 2)));
+                mercury__lexer__Var_45 = ((MR_Integer) (MR_hl_field(MR_mktag(0), *mercury__lexer__STATE_VARIABLE_Posn_17, (MR_Integer) 0)));
+                mercury__lexer__Var_46 = ((MR_Integer) (MR_hl_field(MR_mktag(0), *mercury__lexer__STATE_VARIABLE_Posn_17, (MR_Integer) 1)));
+                mercury__lexer__Offset_47 = ((MR_Integer) (MR_hl_field(MR_mktag(0), *mercury__lexer__STATE_VARIABLE_Posn_17, (MR_Integer) 2)));
+{
+#define MR_PROC_LABEL mercury__lexer__string_get_variable_7_p_0
+
+	MR_String Str;
+	MR_Integer Start;
+	MR_Integer End;
+	MR_String SubString;
+
+	Str =  mercury__lexer__String_8 ;
+	Start =  mercury__lexer__Offset0_44 ;
+	End =  mercury__lexer__Offset_47 ;
+		{
+{
+    MR_Integer Count;
+
+    Count = End - Start;
+    MR_allocate_aligned_string_msg(SubString, Count, MR_ALLOC_ID);
+    MR_memcpy(SubString, Str + Start, Count);
+    SubString[Count] = '\0';
+}
+
+		;}
+#undef MR_PROC_LABEL
+	 mercury__lexer__VariableName_15  = SubString;
+}
+                {
+                  MR_Word base;
+                  base = (MR_Word) MR_mkword(MR_mktag(2), MR_new_object(MR_Word, ((MR_Integer) 1 * sizeof(MR_Word)), NULL, NULL));
+                  *mercury__lexer__Token_11 = base;
+                  MR_hl_field(MR_mktag(2), base, 0) = ((MR_Box) (mercury__lexer__VariableName_15));
+                }
+                *mercury__lexer__Context_12 = ((MR_Integer) (MR_hl_field(MR_mktag(0), mercury__lexer__Posn0_10, (MR_Integer) 0)));
+                mercury__lexer__Var_54 = ((MR_Integer) (MR_hl_field(MR_mktag(0), mercury__lexer__Posn0_10, (MR_Integer) 1)));
+                mercury__lexer__Var_55 = ((MR_Integer) (MR_hl_field(MR_mktag(0), mercury__lexer__Posn0_10, (MR_Integer) 2)));
+              }
+          }
+        else
+          {
+            MR_String mercury__lexer__VariableName_25;
+            MR_Integer mercury__lexer__Offset0_62 = ((MR_Integer) (MR_hl_field(MR_mktag(0), mercury__lexer__Posn0_10, (MR_Integer) 2)));
+            MR_Integer mercury__lexer__Offset_65 = ((MR_Integer) (MR_hl_field(MR_mktag(0), mercury__lexer__STATE_VARIABLE_Posn_0_16, (MR_Integer) 2)));
+            MR_Integer mercury__lexer__Var_60 = ((MR_Integer) (MR_hl_field(MR_mktag(0), mercury__lexer__Posn0_10, (MR_Integer) 0)));
+            MR_Integer mercury__lexer__Var_61 = ((MR_Integer) (MR_hl_field(MR_mktag(0), mercury__lexer__Posn0_10, (MR_Integer) 1)));
+            MR_Integer mercury__lexer__Var_63 = ((MR_Integer) (MR_hl_field(MR_mktag(0), mercury__lexer__STATE_VARIABLE_Posn_0_16, (MR_Integer) 0)));
+            MR_Integer mercury__lexer__Var_64 = ((MR_Integer) (MR_hl_field(MR_mktag(0), mercury__lexer__STATE_VARIABLE_Posn_0_16, (MR_Integer) 1)));
+            MR_Integer mercury__lexer__Var_72;
+            MR_Integer mercury__lexer__Var_73;
+
+{
+#define MR_PROC_LABEL mercury__lexer__string_get_variable_7_p_0
+
+	MR_String Str;
+	MR_Integer Start;
+	MR_Integer End;
+	MR_String SubString;
+
+	Str =  mercury__lexer__String_8 ;
+	Start =  mercury__lexer__Offset0_62 ;
+	End =  mercury__lexer__Offset_65 ;
+		{
+{
+    MR_Integer Count;
+
+    Count = End - Start;
+    MR_allocate_aligned_string_msg(SubString, Count, MR_ALLOC_ID);
+    MR_memcpy(SubString, Str + Start, Count);
+    SubString[Count] = '\0';
+}
+
+		;}
+#undef MR_PROC_LABEL
+	 mercury__lexer__VariableName_25  = SubString;
+}
+            {
+              MR_Word base;
+              base = (MR_Word) MR_mkword(MR_mktag(2), MR_new_object(MR_Word, ((MR_Integer) 1 * sizeof(MR_Word)), NULL, NULL));
+              *mercury__lexer__Token_11 = base;
+              MR_hl_field(MR_mktag(2), base, 0) = ((MR_Box) (mercury__lexer__VariableName_25));
+            }
+            *mercury__lexer__Context_12 = ((MR_Integer) (MR_hl_field(MR_mktag(0), mercury__lexer__Posn0_10, (MR_Integer) 0)));
+            mercury__lexer__Var_72 = ((MR_Integer) (MR_hl_field(MR_mktag(0), mercury__lexer__Posn0_10, (MR_Integer) 1)));
+            mercury__lexer__Var_73 = ((MR_Integer) (MR_hl_field(MR_mktag(0), mercury__lexer__Posn0_10, (MR_Integer) 2)));
+            *mercury__lexer__STATE_VARIABLE_Posn_17 = mercury__lexer__STATE_VARIABLE_Posn_0_16;
+          }
+      }
+      break;
+    }
+}
+
+static void MR_CALL 
+mercury__lexer__get_variable_5_p_0(
+  MR_Word mercury__lexer__Stream_6,
+  MR_Word mercury__lexer__STATE_VARIABLE_RevChars_0_14,
+  MR_Word * mercury__lexer__Token_8)
+{
+  while (MR_TRUE)
+    {
+      /* tailcall optimized into a loop */
+      {
+        MR_bool mercury__lexer__succeeded;
+        MR_Word mercury__lexer__Result_10;
+        MR_Char mercury__lexer__Char_11;
+        MR_Word mercury__lexer__V_10_39;
+        MR_Box mercury__lexer__V_11_40;
+        MR_Box mercury__lexer__V_7_49 = (MR_Box) mercury__lexer__Stream_6;
+
+        {
+          mercury__io__read_char_code_2_6_p_0(mercury__lexer__V_7_49, &mercury__lexer__V_10_39, &mercury__lexer__Char_11, &mercury__lexer__V_11_40);
+        }
+        switch (mercury__lexer__V_10_39) {
+          default: /*NOTREACHED*/ MR_assert(0);
+          case (MR_Integer) 1:
+            mercury__lexer__Result_10 = (MR_Word) MR_mkword(MR_mktag(0), MR_mkbody((MR_Integer) 1));
+            break;
+          case (MR_Integer) 2:
+            {
+              MR_String mercury__lexer__V_12_42;
+              MR_Word mercury__lexer__V_17_43;
+
+{
+#define MR_PROC_LABEL mercury__lexer__get_variable_5_p_0
+
+	MR_Integer Error;
+	MR_String Msg0;
+	MR_String Msg;
+
+	MR_MAYBE_UNBOX_FOREIGN_TYPE(MR_Integer, mercury__lexer__V_11_40 , Error);
+	Msg0 =  (MR_String) "read failed: " ;
+		{
+
+    ML_make_err_msg(Error, Msg0, MR_ALLOC_ID, Msg);
+
+
+		;}
+#undef MR_PROC_LABEL
+	 mercury__lexer__V_12_42  = Msg;
+}
+              mercury__lexer__V_17_43 = (MR_Word) mercury__lexer__V_12_42;
+              {
+                mercury__lexer__Result_10 = (MR_Word) MR_mkword(MR_mktag(1), MR_new_object(MR_Word, ((MR_Integer) 1 * sizeof(MR_Word)), NULL, NULL));
+                MR_hl_field(MR_mktag(1), mercury__lexer__Result_10, 0) = ((MR_Box) (mercury__lexer__V_17_43));
+              }
+            }
+            break;
+          case (MR_Integer) 0:
+            mercury__lexer__Result_10 = (MR_Word) MR_mkword(MR_mktag(0), MR_mkbody((MR_Integer) 0));
+            break;
+        }
+        switch (MR_tag((MR_Word) mercury__lexer__Result_10)) {
+          default: /*NOTREACHED*/ MR_assert(0);
+          case (MR_Integer) 0:
+            switch (MR_unmkbody(mercury__lexer__Result_10)) {
+              default: /*NOTREACHED*/ MR_assert(0);
+              case (MR_Integer) 0:
+                {
+                  {
+                    mercury__lexer__succeeded = mercury__char__is_alnum_or_underscore_1_p_0(mercury__lexer__Char_11);
+                  }
+                  if (mercury__lexer__succeeded)
+                    {
+                      MR_Word mercury__lexer__STATE_VARIABLE_RevChars_18_25;
+
+                      {
+                        mercury__lexer__STATE_VARIABLE_RevChars_18_25 = (MR_Word) MR_mkword(MR_mktag(1), MR_new_object(MR_Word, ((MR_Integer) 2 * sizeof(MR_Word)), NULL, NULL));
+                        MR_hl_field(MR_mktag(1), mercury__lexer__STATE_VARIABLE_RevChars_18_25, 0) = ((MR_Box) (MR_Word) (mercury__lexer__Char_11));
+                        MR_hl_field(MR_mktag(1), mercury__lexer__STATE_VARIABLE_RevChars_18_25, 1) = ((MR_Box) (mercury__lexer__STATE_VARIABLE_RevChars_0_14));
+                      }
+                      /* direct tailcall eliminated */
+                      {
+                        MR_Word mercury__lexer__next_value_of_STATE_VARIABLE_RevChars_0_14 = mercury__lexer__STATE_VARIABLE_RevChars_18_25;
+
+                        mercury__lexer__STATE_VARIABLE_RevChars_0_14 = mercury__lexer__next_value_of_STATE_VARIABLE_RevChars_0_14;
+                      }
+                      continue;
+                    }
+                  else
+                    {
+                      MR_String mercury__lexer__VariableName_26;
+
+                      {
+                        mercury__io__putback_char_4_p_0(mercury__lexer__Stream_6, mercury__lexer__Char_11);
+                      }
+                      {
+                        mercury__lexer__succeeded = mercury__string__semidet_from_rev_char_list_2_p_0(mercury__lexer__STATE_VARIABLE_RevChars_0_14, &mercury__lexer__VariableName_26);
+                      }
+                      if (mercury__lexer__succeeded)
+                        {
+                          MR_Word base;
+                          base = (MR_Word) MR_mkword(MR_mktag(2), MR_new_object(MR_Word, ((MR_Integer) 1 * sizeof(MR_Word)), NULL, NULL));
+                          *mercury__lexer__Token_8 = base;
+                          MR_hl_field(MR_mktag(2), base, 0) = ((MR_Box) (mercury__lexer__VariableName_26));
+                        }
+                      else
+                        {
+                          *mercury__lexer__Token_8 = (MR_Word) MR_mkword(MR_mktag(3), &mercury__lexer_scalar_common_4[26]);
+                        }
+                    }
+                }
+                break;
+              case (MR_Integer) 1:
+                {
+                  MR_String mercury__lexer__VariableName_13;
+
+                  {
+                    mercury__lexer__succeeded = mercury__string__semidet_from_rev_char_list_2_p_0(mercury__lexer__STATE_VARIABLE_RevChars_0_14, &mercury__lexer__VariableName_13);
+                  }
+                  if (mercury__lexer__succeeded)
+                    {
+                      MR_Word base;
+                      base = (MR_Word) MR_mkword(MR_mktag(2), MR_new_object(MR_Word, ((MR_Integer) 1 * sizeof(MR_Word)), NULL, NULL));
+                      *mercury__lexer__Token_8 = base;
+                      MR_hl_field(MR_mktag(2), base, 0) = ((MR_Box) (mercury__lexer__VariableName_13));
+                    }
+                  else
+                    {
+                      *mercury__lexer__Token_8 = (MR_Word) MR_mkword(MR_mktag(3), &mercury__lexer_scalar_common_4[26]);
+                    }
+                }
+                break;
+            }
+            break;
+          case (MR_Integer) 1:
+            {
+              MR_Word mercury__lexer__Error_12 = ((MR_Word) (MR_hl_field(MR_mktag(1), mercury__lexer__Result_10, (MR_Integer) 0)));
+
+              {
+                MR_Word base;
+                base = (MR_Word) MR_mkword(MR_mktag(3), MR_new_object(MR_Word, ((MR_Integer) 2 * sizeof(MR_Word)), NULL, NULL));
+                *mercury__lexer__Token_8 = base;
+                MR_hl_field(MR_mktag(3), base, 0) = ((MR_Box) (MR_Word) ((MR_Integer) 6));
+                MR_hl_field(MR_mktag(3), base, 1) = ((MR_Box) (mercury__lexer__Error_12));
+              }
+            }
+            break;
+        }
+      }
+      break;
+    }
+}
+
+static void MR_CALL 
+mercury__lexer__string_get_graphic_7_p_0(
+  MR_String mercury__lexer__String_8,
+  MR_Integer mercury__lexer__Len_9,
+  MR_Word mercury__lexer__Posn0_10,
+  MR_Word * mercury__lexer__Token_11,
+  MR_Integer * mercury__lexer__Context_12,
+  MR_Word mercury__lexer__STATE_VARIABLE_Posn_0_16,
+  MR_Word * mercury__lexer__STATE_VARIABLE_Posn_17)
+{
+  while (MR_TRUE)
+    {
+      /* tailcall optimized into a loop */
+      {
+        MR_bool mercury__lexer__succeeded;
+        MR_Char mercury__lexer__Char_14;
+        MR_Word mercury__lexer__STATE_VARIABLE_Posn_18_18;
+        MR_Integer mercury__lexer__LineNum0_31 = ((MR_Integer) (MR_hl_field(MR_mktag(0), mercury__lexer__STATE_VARIABLE_Posn_0_16, (MR_Integer) 0)));
+        MR_Integer mercury__lexer__LineOffset0_32 = ((MR_Integer) (MR_hl_field(MR_mktag(0), mercury__lexer__STATE_VARIABLE_Posn_0_16, (MR_Integer) 1)));
+        MR_Integer mercury__lexer__Offset0_33 = ((MR_Integer) (MR_hl_field(MR_mktag(0), mercury__lexer__STATE_VARIABLE_Posn_0_16, (MR_Integer) 2)));
+        MR_Integer mercury__lexer__Offset_34;
+
+        mercury__lexer__succeeded = (mercury__lexer__Offset0_33 < mercury__lexer__Len_9);
+        if (mercury__lexer__succeeded)
+          {
+{
+#define MR_PROC_LABEL mercury__lexer__string_get_graphic_7_p_0
+
+	MR_String Str;
+	MR_Integer Index;
+	MR_Integer NextIndex;
+	MR_Char Ch;
+	MR_bool SUCCESS_INDICATOR;
+
+	Str =  mercury__lexer__String_8 ;
+	Index =  mercury__lexer__Offset0_33 ;
+		{
+
+    Ch = Str[Index];
+    if (MR_is_ascii(Ch)) {
+        NextIndex = Index + 1;
+        SUCCESS_INDICATOR = (Ch != 0);
+    } else {
+        NextIndex = Index;
+        Ch = MR_utf8_get_next_mb(Str, &NextIndex);
+        SUCCESS_INDICATOR = (Ch > 0);
+    }
+
+
+		;}
+#undef MR_PROC_LABEL
+	if (SUCCESS_INDICATOR) {
+	 mercury__lexer__Offset_34  = NextIndex;
+	 mercury__lexer__Char_14  = Ch;
+	}
+mercury__lexer__succeeded  = SUCCESS_INDICATOR;
+}
+            if (mercury__lexer__succeeded)
+              {
+                mercury__lexer__succeeded = (mercury__lexer__Char_14 == (MR_Char) 10);
+                if (mercury__lexer__succeeded)
+                  {
+                    MR_Integer mercury__lexer__LineNum_35 = (mercury__lexer__LineNum0_31 + (MR_Integer) 1);
+
+                    {
+                      mercury__lexer__STATE_VARIABLE_Posn_18_18 = (MR_Word) MR_new_object(MR_Word, ((MR_Integer) 3 * sizeof(MR_Word)), NULL, NULL);
+                      MR_hl_field(MR_mktag(0), mercury__lexer__STATE_VARIABLE_Posn_18_18, 0) = ((MR_Box) (mercury__lexer__LineNum_35));
+                      MR_hl_field(MR_mktag(0), mercury__lexer__STATE_VARIABLE_Posn_18_18, 1) = ((MR_Box) (mercury__lexer__Offset_34));
+                      MR_hl_field(MR_mktag(0), mercury__lexer__STATE_VARIABLE_Posn_18_18, 2) = ((MR_Box) (mercury__lexer__Offset_34));
+                    }
+                  }
+                else
+                  {
+                    mercury__lexer__STATE_VARIABLE_Posn_18_18 = (MR_Word) MR_new_object(MR_Word, ((MR_Integer) 3 * sizeof(MR_Word)), NULL, NULL);
+                    MR_hl_field(MR_mktag(0), mercury__lexer__STATE_VARIABLE_Posn_18_18, 0) = ((MR_Box) (mercury__lexer__LineNum0_31));
+                    MR_hl_field(MR_mktag(0), mercury__lexer__STATE_VARIABLE_Posn_18_18, 1) = ((MR_Box) (mercury__lexer__LineOffset0_32));
+                    MR_hl_field(MR_mktag(0), mercury__lexer__STATE_VARIABLE_Posn_18_18, 2) = ((MR_Box) (mercury__lexer__Offset_34));
+                  }
+                mercury__lexer__succeeded = MR_TRUE;
+              }
+          }
+        if (mercury__lexer__succeeded)
+          {
+            switch (mercury__lexer__Char_14) {
+              default:
+                mercury__lexer__succeeded = MR_FALSE;
+                break;
+              case (MR_Char) 33:
+                mercury__lexer__succeeded = MR_TRUE;
+                break;
+              case (MR_Char) 35:
+                mercury__lexer__succeeded = MR_TRUE;
+                break;
+              case (MR_Char) 36:
+                mercury__lexer__succeeded = MR_TRUE;
+                break;
+              case (MR_Char) 38:
+                mercury__lexer__succeeded = MR_TRUE;
+                break;
+              case (MR_Char) 42:
+                mercury__lexer__succeeded = MR_TRUE;
+                break;
+              case (MR_Char) 43:
+                mercury__lexer__succeeded = MR_TRUE;
+                break;
+              case (MR_Char) 45:
+                mercury__lexer__succeeded = MR_TRUE;
+                break;
+              case (MR_Char) 46:
+                mercury__lexer__succeeded = MR_TRUE;
+                break;
+              case (MR_Char) 47:
+                mercury__lexer__succeeded = MR_TRUE;
+                break;
+              case (MR_Char) 58:
+                mercury__lexer__succeeded = MR_TRUE;
+                break;
+              case (MR_Char) 60:
+                mercury__lexer__succeeded = MR_TRUE;
+                break;
+              case (MR_Char) 61:
+                mercury__lexer__succeeded = MR_TRUE;
+                break;
+              case (MR_Char) 62:
+                mercury__lexer__succeeded = MR_TRUE;
+                break;
+              case (MR_Char) 63:
+                mercury__lexer__succeeded = MR_TRUE;
+                break;
+              case (MR_Char) 64:
+                mercury__lexer__succeeded = MR_TRUE;
+                break;
+              case (MR_Char) 92:
+                mercury__lexer__succeeded = MR_TRUE;
+                break;
+              case (MR_Char) 94:
+                mercury__lexer__succeeded = MR_TRUE;
+                break;
+              case (MR_Char) 126:
+                mercury__lexer__succeeded = MR_TRUE;
+                break;
+            }
+            if (mercury__lexer__succeeded)
+              {
+                /* direct tailcall eliminated */
+                {
+                  MR_Word mercury__lexer__next_value_of_STATE_VARIABLE_Posn_0_16 = mercury__lexer__STATE_VARIABLE_Posn_18_18;
+
+                  mercury__lexer__STATE_VARIABLE_Posn_0_16 = mercury__lexer__next_value_of_STATE_VARIABLE_Posn_0_16;
+                }
+                continue;
+              }
+            else
+              {
+                MR_String mercury__lexer__Name_15;
+                MR_Integer mercury__lexer__Offset0_44;
+                MR_Integer mercury__lexer__Offset_47;
+                MR_Integer mercury__lexer__Var_42;
+                MR_Integer mercury__lexer__Var_43;
+                MR_Integer mercury__lexer__Var_45;
+                MR_Integer mercury__lexer__Var_46;
+                MR_Integer mercury__lexer__Var_54;
+                MR_Integer mercury__lexer__Var_55;
+
+                {
+                  mercury__lexer__string_ungetchar_3_p_0(mercury__lexer__String_8, mercury__lexer__STATE_VARIABLE_Posn_18_18, mercury__lexer__STATE_VARIABLE_Posn_17);
+                }
+                mercury__lexer__Var_42 = ((MR_Integer) (MR_hl_field(MR_mktag(0), mercury__lexer__Posn0_10, (MR_Integer) 0)));
+                mercury__lexer__Var_43 = ((MR_Integer) (MR_hl_field(MR_mktag(0), mercury__lexer__Posn0_10, (MR_Integer) 1)));
+                mercury__lexer__Offset0_44 = ((MR_Integer) (MR_hl_field(MR_mktag(0), mercury__lexer__Posn0_10, (MR_Integer) 2)));
+                mercury__lexer__Var_45 = ((MR_Integer) (MR_hl_field(MR_mktag(0), *mercury__lexer__STATE_VARIABLE_Posn_17, (MR_Integer) 0)));
+                mercury__lexer__Var_46 = ((MR_Integer) (MR_hl_field(MR_mktag(0), *mercury__lexer__STATE_VARIABLE_Posn_17, (MR_Integer) 1)));
+                mercury__lexer__Offset_47 = ((MR_Integer) (MR_hl_field(MR_mktag(0), *mercury__lexer__STATE_VARIABLE_Posn_17, (MR_Integer) 2)));
+{
+#define MR_PROC_LABEL mercury__lexer__string_get_graphic_7_p_0
+
+	MR_String Str;
+	MR_Integer Start;
+	MR_Integer End;
+	MR_String SubString;
+
+	Str =  mercury__lexer__String_8 ;
+	Start =  mercury__lexer__Offset0_44 ;
+	End =  mercury__lexer__Offset_47 ;
+		{
+{
+    MR_Integer Count;
+
+    Count = End - Start;
+    MR_allocate_aligned_string_msg(SubString, Count, MR_ALLOC_ID);
+    MR_memcpy(SubString, Str + Start, Count);
+    SubString[Count] = '\0';
+}
+
+		;}
+#undef MR_PROC_LABEL
+	 mercury__lexer__Name_15  = SubString;
+}
+                {
+                  MR_Word base;
+                  base = (MR_Word) MR_mkword(MR_mktag(1), MR_new_object(MR_Word, ((MR_Integer) 1 * sizeof(MR_Word)), NULL, NULL));
+                  *mercury__lexer__Token_11 = base;
+                  MR_hl_field(MR_mktag(1), base, 0) = ((MR_Box) (mercury__lexer__Name_15));
+                }
+                *mercury__lexer__Context_12 = ((MR_Integer) (MR_hl_field(MR_mktag(0), mercury__lexer__Posn0_10, (MR_Integer) 0)));
+                mercury__lexer__Var_54 = ((MR_Integer) (MR_hl_field(MR_mktag(0), mercury__lexer__Posn0_10, (MR_Integer) 1)));
+                mercury__lexer__Var_55 = ((MR_Integer) (MR_hl_field(MR_mktag(0), mercury__lexer__Posn0_10, (MR_Integer) 2)));
+              }
+          }
+        else
+          {
+            MR_String mercury__lexer__Name_25;
+            MR_Integer mercury__lexer__Offset0_62 = ((MR_Integer) (MR_hl_field(MR_mktag(0), mercury__lexer__Posn0_10, (MR_Integer) 2)));
+            MR_Integer mercury__lexer__Offset_65 = ((MR_Integer) (MR_hl_field(MR_mktag(0), mercury__lexer__STATE_VARIABLE_Posn_0_16, (MR_Integer) 2)));
+            MR_Integer mercury__lexer__Var_60 = ((MR_Integer) (MR_hl_field(MR_mktag(0), mercury__lexer__Posn0_10, (MR_Integer) 0)));
+            MR_Integer mercury__lexer__Var_61 = ((MR_Integer) (MR_hl_field(MR_mktag(0), mercury__lexer__Posn0_10, (MR_Integer) 1)));
+            MR_Integer mercury__lexer__Var_63 = ((MR_Integer) (MR_hl_field(MR_mktag(0), mercury__lexer__STATE_VARIABLE_Posn_0_16, (MR_Integer) 0)));
+            MR_Integer mercury__lexer__Var_64 = ((MR_Integer) (MR_hl_field(MR_mktag(0), mercury__lexer__STATE_VARIABLE_Posn_0_16, (MR_Integer) 1)));
+            MR_Integer mercury__lexer__Var_72;
+            MR_Integer mercury__lexer__Var_73;
+
+{
+#define MR_PROC_LABEL mercury__lexer__string_get_graphic_7_p_0
+
+	MR_String Str;
+	MR_Integer Start;
+	MR_Integer End;
+	MR_String SubString;
+
+	Str =  mercury__lexer__String_8 ;
+	Start =  mercury__lexer__Offset0_62 ;
+	End =  mercury__lexer__Offset_65 ;
+		{
+{
+    MR_Integer Count;
+
+    Count = End - Start;
+    MR_allocate_aligned_string_msg(SubString, Count, MR_ALLOC_ID);
+    MR_memcpy(SubString, Str + Start, Count);
+    SubString[Count] = '\0';
+}
+
+		;}
+#undef MR_PROC_LABEL
+	 mercury__lexer__Name_25  = SubString;
+}
+            *mercury__lexer__Context_12 = ((MR_Integer) (MR_hl_field(MR_mktag(0), mercury__lexer__Posn0_10, (MR_Integer) 0)));
+            mercury__lexer__Var_72 = ((MR_Integer) (MR_hl_field(MR_mktag(0), mercury__lexer__Posn0_10, (MR_Integer) 1)));
+            mercury__lexer__Var_73 = ((MR_Integer) (MR_hl_field(MR_mktag(0), mercury__lexer__Posn0_10, (MR_Integer) 2)));
+            *mercury__lexer__STATE_VARIABLE_Posn_17 = mercury__lexer__STATE_VARIABLE_Posn_0_16;
+            {
+              MR_Word base;
+              base = (MR_Word) MR_mkword(MR_mktag(1), MR_new_object(MR_Word, ((MR_Integer) 1 * sizeof(MR_Word)), NULL, NULL));
+              *mercury__lexer__Token_11 = base;
+              MR_hl_field(MR_mktag(1), base, 0) = ((MR_Box) (mercury__lexer__Name_25));
+            }
+          }
+      }
+      break;
+    }
+}
+
+static void MR_CALL 
+mercury__lexer__get_graphic_5_p_0(
+  MR_Word mercury__lexer__Stream_6,
+  MR_Word mercury__lexer__STATE_VARIABLE_RevChars_0_14,
+  MR_Word * mercury__lexer__Token_8)
+{
+  while (MR_TRUE)
+    {
+      /* tailcall optimized into a loop */
+      {
+        MR_bool mercury__lexer__succeeded;
+        MR_Word mercury__lexer__Result_10;
+        MR_Char mercury__lexer__Char_11;
+        MR_Word mercury__lexer__V_10_39;
+        MR_Box mercury__lexer__V_11_40;
+        MR_Box mercury__lexer__V_7_49 = (MR_Box) mercury__lexer__Stream_6;
+
+        {
+          mercury__io__read_char_code_2_6_p_0(mercury__lexer__V_7_49, &mercury__lexer__V_10_39, &mercury__lexer__Char_11, &mercury__lexer__V_11_40);
+        }
+        switch (mercury__lexer__V_10_39) {
+          default: /*NOTREACHED*/ MR_assert(0);
+          case (MR_Integer) 1:
+            mercury__lexer__Result_10 = (MR_Word) MR_mkword(MR_mktag(0), MR_mkbody((MR_Integer) 1));
+            break;
+          case (MR_Integer) 2:
+            {
+              MR_String mercury__lexer__V_12_42;
+              MR_Word mercury__lexer__V_17_43;
+
+{
+#define MR_PROC_LABEL mercury__lexer__get_graphic_5_p_0
+
+	MR_Integer Error;
+	MR_String Msg0;
+	MR_String Msg;
+
+	MR_MAYBE_UNBOX_FOREIGN_TYPE(MR_Integer, mercury__lexer__V_11_40 , Error);
+	Msg0 =  (MR_String) "read failed: " ;
+		{
+
+    ML_make_err_msg(Error, Msg0, MR_ALLOC_ID, Msg);
+
+
+		;}
+#undef MR_PROC_LABEL
+	 mercury__lexer__V_12_42  = Msg;
+}
+              mercury__lexer__V_17_43 = (MR_Word) mercury__lexer__V_12_42;
+              {
+                mercury__lexer__Result_10 = (MR_Word) MR_mkword(MR_mktag(1), MR_new_object(MR_Word, ((MR_Integer) 1 * sizeof(MR_Word)), NULL, NULL));
+                MR_hl_field(MR_mktag(1), mercury__lexer__Result_10, 0) = ((MR_Box) (mercury__lexer__V_17_43));
+              }
+            }
+            break;
+          case (MR_Integer) 0:
+            mercury__lexer__Result_10 = (MR_Word) MR_mkword(MR_mktag(0), MR_mkbody((MR_Integer) 0));
+            break;
+        }
+        switch (MR_tag((MR_Word) mercury__lexer__Result_10)) {
+          default: /*NOTREACHED*/ MR_assert(0);
+          case (MR_Integer) 0:
+            switch (MR_unmkbody(mercury__lexer__Result_10)) {
+              default: /*NOTREACHED*/ MR_assert(0);
+              case (MR_Integer) 0:
+                {
+                  switch (mercury__lexer__Char_11) {
+                    default:
+                      mercury__lexer__succeeded = MR_FALSE;
+                      break;
+                    case (MR_Char) 33:
+                      mercury__lexer__succeeded = MR_TRUE;
+                      break;
+                    case (MR_Char) 35:
+                      mercury__lexer__succeeded = MR_TRUE;
+                      break;
+                    case (MR_Char) 36:
+                      mercury__lexer__succeeded = MR_TRUE;
+                      break;
+                    case (MR_Char) 38:
+                      mercury__lexer__succeeded = MR_TRUE;
+                      break;
+                    case (MR_Char) 42:
+                      mercury__lexer__succeeded = MR_TRUE;
+                      break;
+                    case (MR_Char) 43:
+                      mercury__lexer__succeeded = MR_TRUE;
+                      break;
+                    case (MR_Char) 45:
+                      mercury__lexer__succeeded = MR_TRUE;
+                      break;
+                    case (MR_Char) 46:
+                      mercury__lexer__succeeded = MR_TRUE;
+                      break;
+                    case (MR_Char) 47:
+                      mercury__lexer__succeeded = MR_TRUE;
+                      break;
+                    case (MR_Char) 58:
+                      mercury__lexer__succeeded = MR_TRUE;
+                      break;
+                    case (MR_Char) 60:
+                      mercury__lexer__succeeded = MR_TRUE;
+                      break;
+                    case (MR_Char) 61:
+                      mercury__lexer__succeeded = MR_TRUE;
+                      break;
+                    case (MR_Char) 62:
+                      mercury__lexer__succeeded = MR_TRUE;
+                      break;
+                    case (MR_Char) 63:
+                      mercury__lexer__succeeded = MR_TRUE;
+                      break;
+                    case (MR_Char) 64:
+                      mercury__lexer__succeeded = MR_TRUE;
+                      break;
+                    case (MR_Char) 92:
+                      mercury__lexer__succeeded = MR_TRUE;
+                      break;
+                    case (MR_Char) 94:
+                      mercury__lexer__succeeded = MR_TRUE;
+                      break;
+                    case (MR_Char) 126:
+                      mercury__lexer__succeeded = MR_TRUE;
+                      break;
+                  }
+                  if (mercury__lexer__succeeded)
+                    {
+                      MR_Word mercury__lexer__STATE_VARIABLE_RevChars_18_25;
+
+                      {
+                        mercury__lexer__STATE_VARIABLE_RevChars_18_25 = (MR_Word) MR_mkword(MR_mktag(1), MR_new_object(MR_Word, ((MR_Integer) 2 * sizeof(MR_Word)), NULL, NULL));
+                        MR_hl_field(MR_mktag(1), mercury__lexer__STATE_VARIABLE_RevChars_18_25, 0) = ((MR_Box) (MR_Word) (mercury__lexer__Char_11));
+                        MR_hl_field(MR_mktag(1), mercury__lexer__STATE_VARIABLE_RevChars_18_25, 1) = ((MR_Box) (mercury__lexer__STATE_VARIABLE_RevChars_0_14));
+                      }
+                      /* direct tailcall eliminated */
+                      {
+                        MR_Word mercury__lexer__next_value_of_STATE_VARIABLE_RevChars_0_14 = mercury__lexer__STATE_VARIABLE_RevChars_18_25;
+
+                        mercury__lexer__STATE_VARIABLE_RevChars_0_14 = mercury__lexer__next_value_of_STATE_VARIABLE_RevChars_0_14;
+                      }
+                      continue;
+                    }
+                  else
+                    {
+                      MR_String mercury__lexer__Name_26;
+
+                      {
+                        mercury__io__putback_char_4_p_0(mercury__lexer__Stream_6, mercury__lexer__Char_11);
+                      }
+                      {
+                        mercury__lexer__succeeded = mercury__string__semidet_from_rev_char_list_2_p_0(mercury__lexer__STATE_VARIABLE_RevChars_0_14, &mercury__lexer__Name_26);
+                      }
+                      if (mercury__lexer__succeeded)
+                        {
+                          MR_Word base;
+                          base = (MR_Word) MR_mkword(MR_mktag(1), MR_new_object(MR_Word, ((MR_Integer) 1 * sizeof(MR_Word)), NULL, NULL));
+                          *mercury__lexer__Token_8 = base;
+                          MR_hl_field(MR_mktag(1), base, 0) = ((MR_Box) (mercury__lexer__Name_26));
+                        }
+                      else
+                        {
+                          *mercury__lexer__Token_8 = (MR_Word) MR_mkword(MR_mktag(3), &mercury__lexer_scalar_common_4[25]);
+                        }
+                    }
+                }
+                break;
+              case (MR_Integer) 1:
+                {
+                  MR_String mercury__lexer__Name_13;
+
+                  {
+                    mercury__lexer__succeeded = mercury__string__semidet_from_rev_char_list_2_p_0(mercury__lexer__STATE_VARIABLE_RevChars_0_14, &mercury__lexer__Name_13);
+                  }
+                  if (mercury__lexer__succeeded)
+                    {
+                      MR_Word base;
+                      base = (MR_Word) MR_mkword(MR_mktag(1), MR_new_object(MR_Word, ((MR_Integer) 1 * sizeof(MR_Word)), NULL, NULL));
+                      *mercury__lexer__Token_8 = base;
+                      MR_hl_field(MR_mktag(1), base, 0) = ((MR_Box) (mercury__lexer__Name_13));
+                    }
+                  else
+                    {
+                      *mercury__lexer__Token_8 = (MR_Word) MR_mkword(MR_mktag(3), &mercury__lexer_scalar_common_4[25]);
+                    }
+                }
+                break;
+            }
+            break;
+          case (MR_Integer) 1:
+            {
+              MR_Word mercury__lexer__Error_12 = ((MR_Word) (MR_hl_field(MR_mktag(1), mercury__lexer__Result_10, (MR_Integer) 0)));
+
+              {
+                MR_Word base;
+                base = (MR_Word) MR_mkword(MR_mktag(3), MR_new_object(MR_Word, ((MR_Integer) 2 * sizeof(MR_Word)), NULL, NULL));
+                *mercury__lexer__Token_8 = base;
+                MR_hl_field(MR_mktag(3), base, 0) = ((MR_Box) (MR_Word) ((MR_Integer) 6));
+                MR_hl_field(MR_mktag(3), base, 1) = ((MR_Box) (mercury__lexer__Error_12));
+              }
+            }
+            break;
+        }
+      }
+      break;
+    }
+}
+
+static void MR_CALL 
+mercury__lexer__string_get_source_line_number_7_p_0(
+  MR_String mercury__lexer__String_8,
+  MR_Integer mercury__lexer__Len_9,
+  MR_Word mercury__lexer__Posn1_10,
+  MR_Word * mercury__lexer__Token_11,
+  MR_Word * mercury__lexer__HaveToken_12,
+  MR_Word mercury__lexer__STATE_VARIABLE_Posn_0_19,
+  MR_Word * mercury__lexer__STATE_VARIABLE_Posn_20)
+{
+  while (MR_TRUE)
+    {
+      /* tailcall optimized into a loop */
+      {
+        MR_bool mercury__lexer__succeeded;
+        MR_Char mercury__lexer__Char_14;
+        MR_Word mercury__lexer__STATE_VARIABLE_Posn_21_21;
+        MR_Integer mercury__lexer__LineNum0_52 = ((MR_Integer) (MR_hl_field(MR_mktag(0), mercury__lexer__STATE_VARIABLE_Posn_0_19, (MR_Integer) 0)));
+        MR_Integer mercury__lexer__LineOffset0_53 = ((MR_Integer) (MR_hl_field(MR_mktag(0), mercury__lexer__STATE_VARIABLE_Posn_0_19, (MR_Integer) 1)));
+        MR_Integer mercury__lexer__Offset0_54 = ((MR_Integer) (MR_hl_field(MR_mktag(0), mercury__lexer__STATE_VARIABLE_Posn_0_19, (MR_Integer) 2)));
+        MR_Integer mercury__lexer__Offset_55;
+
+        mercury__lexer__succeeded = (mercury__lexer__Offset0_54 < mercury__lexer__Len_9);
+        if (mercury__lexer__succeeded)
+          {
+{
+#define MR_PROC_LABEL mercury__lexer__string_get_source_line_number_7_p_0
+
+	MR_String Str;
+	MR_Integer Index;
+	MR_Integer NextIndex;
+	MR_Char Ch;
+	MR_bool SUCCESS_INDICATOR;
+
+	Str =  mercury__lexer__String_8 ;
+	Index =  mercury__lexer__Offset0_54 ;
+		{
+
+    Ch = Str[Index];
+    if (MR_is_ascii(Ch)) {
+        NextIndex = Index + 1;
+        SUCCESS_INDICATOR = (Ch != 0);
+    } else {
+        NextIndex = Index;
+        Ch = MR_utf8_get_next_mb(Str, &NextIndex);
+        SUCCESS_INDICATOR = (Ch > 0);
+    }
+
+
+		;}
+#undef MR_PROC_LABEL
+	if (SUCCESS_INDICATOR) {
+	 mercury__lexer__Offset_55  = NextIndex;
+	 mercury__lexer__Char_14  = Ch;
+	}
+mercury__lexer__succeeded  = SUCCESS_INDICATOR;
+}
+            if (mercury__lexer__succeeded)
+              {
+                mercury__lexer__succeeded = (mercury__lexer__Char_14 == (MR_Char) 10);
+                if (mercury__lexer__succeeded)
+                  {
+                    MR_Integer mercury__lexer__LineNum_56 = (mercury__lexer__LineNum0_52 + (MR_Integer) 1);
+
+                    {
+                      mercury__lexer__STATE_VARIABLE_Posn_21_21 = (MR_Word) MR_new_object(MR_Word, ((MR_Integer) 3 * sizeof(MR_Word)), NULL, NULL);
+                      MR_hl_field(MR_mktag(0), mercury__lexer__STATE_VARIABLE_Posn_21_21, 0) = ((MR_Box) (mercury__lexer__LineNum_56));
+                      MR_hl_field(MR_mktag(0), mercury__lexer__STATE_VARIABLE_Posn_21_21, 1) = ((MR_Box) (mercury__lexer__Offset_55));
+                      MR_hl_field(MR_mktag(0), mercury__lexer__STATE_VARIABLE_Posn_21_21, 2) = ((MR_Box) (mercury__lexer__Offset_55));
+                    }
+                  }
+                else
+                  {
+                    mercury__lexer__STATE_VARIABLE_Posn_21_21 = (MR_Word) MR_new_object(MR_Word, ((MR_Integer) 3 * sizeof(MR_Word)), NULL, NULL);
+                    MR_hl_field(MR_mktag(0), mercury__lexer__STATE_VARIABLE_Posn_21_21, 0) = ((MR_Box) (mercury__lexer__LineNum0_52));
+                    MR_hl_field(MR_mktag(0), mercury__lexer__STATE_VARIABLE_Posn_21_21, 1) = ((MR_Box) (mercury__lexer__LineOffset0_53));
+                    MR_hl_field(MR_mktag(0), mercury__lexer__STATE_VARIABLE_Posn_21_21, 2) = ((MR_Box) (mercury__lexer__Offset_55));
+                  }
+                mercury__lexer__succeeded = MR_TRUE;
+              }
+          }
+        if (mercury__lexer__succeeded)
+          {
+            {
+              mercury__lexer__succeeded = mercury__char__is_decimal_digit_1_p_0(mercury__lexer__Char_14);
+            }
+            if (mercury__lexer__succeeded)
+              {
+                /* direct tailcall eliminated */
+                {
+                  MR_Word mercury__lexer__next_value_of_STATE_VARIABLE_Posn_0_19 = mercury__lexer__STATE_VARIABLE_Posn_21_21;
+
+                  mercury__lexer__STATE_VARIABLE_Posn_0_19 = mercury__lexer__next_value_of_STATE_VARIABLE_Posn_0_19;
+                }
+                continue;
+              }
+            else
+              {
+                mercury__lexer__succeeded = (mercury__lexer__Char_14 == (MR_Char) 10);
+                if (mercury__lexer__succeeded)
+                  {
+                    MR_String mercury__lexer__LineNumString_15;
+                    MR_Integer mercury__lexer__Offset0_66 = ((MR_Integer) (MR_hl_field(MR_mktag(0), mercury__lexer__Posn1_10, (MR_Integer) 2)));
+                    MR_Integer mercury__lexer__Offset_69 = ((MR_Integer) (MR_hl_field(MR_mktag(0), mercury__lexer__STATE_VARIABLE_Posn_21_21, (MR_Integer) 2)));
+                    MR_Integer mercury__lexer__Var_64 = ((MR_Integer) (MR_hl_field(MR_mktag(0), mercury__lexer__Posn1_10, (MR_Integer) 0)));
+                    MR_Integer mercury__lexer__Var_65 = ((MR_Integer) (MR_hl_field(MR_mktag(0), mercury__lexer__Posn1_10, (MR_Integer) 1)));
+                    MR_Integer mercury__lexer__Var_67 = ((MR_Integer) (MR_hl_field(MR_mktag(0), mercury__lexer__STATE_VARIABLE_Posn_21_21, (MR_Integer) 0)));
+                    MR_Integer mercury__lexer__Var_68 = ((MR_Integer) (MR_hl_field(MR_mktag(0), mercury__lexer__STATE_VARIABLE_Posn_21_21, (MR_Integer) 1)));
+                    MR_Integer mercury__lexer__LineNum_16;
+                    MR_Integer mercury__lexer__Var_25;
+
+{
+#define MR_PROC_LABEL mercury__lexer__string_get_source_line_number_7_p_0
+
+	MR_String Str;
+	MR_Integer Start;
+	MR_Integer End;
+	MR_String SubString;
+
+	Str =  mercury__lexer__String_8 ;
+	Start =  mercury__lexer__Offset0_66 ;
+	End =  mercury__lexer__Offset_69 ;
+		{
+{
+    MR_Integer Count;
+
+    Count = End - Start;
+    MR_allocate_aligned_string_msg(SubString, Count, MR_ALLOC_ID);
+    MR_memcpy(SubString, Str + Start, Count);
+    SubString[Count] = '\0';
+}
+
+		;}
+#undef MR_PROC_LABEL
+	 mercury__lexer__LineNumString_15  = SubString;
+}
+                    {
+                      mercury__lexer__succeeded = mercury__string__base_string_to_int_3_p_0((MR_Integer) 10, mercury__lexer__LineNumString_15, &mercury__lexer__LineNum_16);
+                    }
+                    if (mercury__lexer__succeeded)
+                      {
+                        mercury__lexer__Var_25 = (MR_Integer) 0;
+                        mercury__lexer__succeeded = (mercury__lexer__LineNum_16 > mercury__lexer__Var_25);
+                      }
+                    if (mercury__lexer__succeeded)
+                      {
+                        MR_Integer mercury__lexer__Offset_75 = ((MR_Integer) (MR_hl_field(MR_mktag(0), mercury__lexer__STATE_VARIABLE_Posn_21_21, (MR_Integer) 2)));
+                        MR_Integer mercury__lexer__Var_73 = ((MR_Integer) (MR_hl_field(MR_mktag(0), mercury__lexer__STATE_VARIABLE_Posn_21_21, (MR_Integer) 0)));
+                        MR_Integer mercury__lexer__Var_74 = ((MR_Integer) (MR_hl_field(MR_mktag(0), mercury__lexer__STATE_VARIABLE_Posn_21_21, (MR_Integer) 1)));
+
+                        {
+                          MR_Word base;
+                          base = (MR_Word) MR_new_object(MR_Word, ((MR_Integer) 3 * sizeof(MR_Word)), NULL, NULL);
+                          *mercury__lexer__STATE_VARIABLE_Posn_20 = base;
+                          MR_hl_field(MR_mktag(0), base, 0) = ((MR_Box) (mercury__lexer__LineNum_16));
+                          MR_hl_field(MR_mktag(0), base, 1) = ((MR_Box) (mercury__lexer__Offset_75));
+                          MR_hl_field(MR_mktag(0), base, 2) = ((MR_Box) (mercury__lexer__Offset_75));
+                        }
+                        *mercury__lexer__Token_11 = (MR_Word) MR_mkword(MR_mktag(0), MR_mkbody((MR_Integer) 10));
+                        *mercury__lexer__HaveToken_12 = (MR_Word) ((MR_Box) ((MR_Integer) -1));
+                      }
+                    else
+                      {
+                        MR_String mercury__lexer__Message_17;
+                        MR_Word mercury__lexer__Var_28;
+                        MR_Word mercury__lexer__Var_30;
+                        MR_Word mercury__lexer__Var_31;
+                        MR_Word mercury__lexer__Var_33;
+                        MR_Integer mercury__lexer__Context_83 = ((MR_Integer) (MR_hl_field(MR_mktag(0), mercury__lexer__Posn1_10, (MR_Integer) 0)));
+                        MR_Integer mercury__lexer__Var_92 = ((MR_Integer) (MR_hl_field(MR_mktag(0), mercury__lexer__Posn1_10, (MR_Integer) 1)));
+                        MR_Integer mercury__lexer__Var_93 = ((MR_Integer) (MR_hl_field(MR_mktag(0), mercury__lexer__Posn1_10, (MR_Integer) 2)));
+
+                        *mercury__lexer__STATE_VARIABLE_Posn_20 = mercury__lexer__STATE_VARIABLE_Posn_21_21;
+                        *mercury__lexer__HaveToken_12 = (MR_Word) mercury__lexer__Context_83;
+                        mercury__lexer__Var_33 = (MR_Word) MR_mkword(MR_mktag(0), MR_mkbody((MR_Integer) 0));
+                        mercury__lexer__Var_31 = (MR_Word) MR_mkword(MR_mktag(1), &mercury__lexer_scalar_common_4[23]);
+                        {
+                          mercury__lexer__Var_30 = (MR_Word) MR_mkword(MR_mktag(1), MR_new_object(MR_Word, ((MR_Integer) 2 * sizeof(MR_Word)), NULL, NULL));
+                          MR_hl_field(MR_mktag(1), mercury__lexer__Var_30, 0) = ((MR_Box) (mercury__lexer__LineNumString_15));
+                          MR_hl_field(MR_mktag(1), mercury__lexer__Var_30, 1) = ((MR_Box) (mercury__lexer__Var_31));
+                        }
+                        {
+                          mercury__lexer__Var_28 = (MR_Word) MR_mkword(MR_mktag(1), MR_new_object(MR_Word, ((MR_Integer) 2 * sizeof(MR_Word)), NULL, NULL));
+                          MR_hl_field(MR_mktag(1), mercury__lexer__Var_28, 0) = ((MR_Box) ((MR_String) "invalid line number \140"));
+                          MR_hl_field(MR_mktag(1), mercury__lexer__Var_28, 1) = ((MR_Box) (mercury__lexer__Var_30));
+                        }
+                        {
+                          mercury__lexer__Message_17 = mercury__string__append_list_1_f_0(mercury__lexer__Var_28);
+                        }
+                        {
+                          MR_Word base;
+                          base = (MR_Word) MR_mkword(MR_mktag(3), MR_new_object(MR_Word, ((MR_Integer) 2 * sizeof(MR_Word)), NULL, NULL));
+                          *mercury__lexer__Token_11 = base;
+                          MR_hl_field(MR_mktag(3), base, 0) = ((MR_Box) (MR_Word) ((MR_Integer) 5));
+                          MR_hl_field(MR_mktag(3), base, 1) = ((MR_Box) (mercury__lexer__Message_17));
+                        }
+                      }
+                  }
+                else
+                  {
+                    MR_String mercury__lexer__DirectiveString_18;
+                    MR_Word mercury__lexer__Var_38;
+                    MR_Word mercury__lexer__Var_40;
+                    MR_Word mercury__lexer__Var_41;
+                    MR_Word mercury__lexer__Var_43;
+                    MR_String mercury__lexer__Message_46;
+
+                    {
+                      mercury__lexer__string_have_token_4_p_0(mercury__lexer__Posn1_10, mercury__lexer__HaveToken_12, mercury__lexer__STATE_VARIABLE_Posn_21_21, mercury__lexer__STATE_VARIABLE_Posn_20);
+                    }
+{
+#define MR_PROC_LABEL mercury__lexer__string_get_source_line_number_7_p_0
+
+	MR_Char Character;
+	MR_Integer Int;
+	MR_bool SUCCESS_INDICATOR;
+
+	Character =  mercury__lexer__Char_14 ;
+	Int =  (MR_Integer) 0 ;
+		{
+
+    SUCCESS_INDICATOR = ((MR_UnsignedChar) Character == Int);
+
+
+		;}
+#undef MR_PROC_LABEL
+	if (SUCCESS_INDICATOR) {
+	}
+mercury__lexer__succeeded  = SUCCESS_INDICATOR;
+}
+                    if (mercury__lexer__succeeded)
+                      mercury__lexer__DirectiveString_18 = (MR_String) "NUL";
+                    else
+                      {
+                        MR_Word mercury__lexer__Var_36;
+                        MR_Word mercury__lexer__Var_37 = (MR_Word) MR_mkword(MR_mktag(0), MR_mkbody((MR_Integer) 0));
+
+                        {
+                          mercury__lexer__Var_36 = (MR_Word) MR_mkword(MR_mktag(1), MR_new_object(MR_Word, ((MR_Integer) 2 * sizeof(MR_Word)), NULL, NULL));
+                          MR_hl_field(MR_mktag(1), mercury__lexer__Var_36, 0) = ((MR_Box) (MR_Word) (mercury__lexer__Char_14));
+                          MR_hl_field(MR_mktag(1), mercury__lexer__Var_36, 1) = ((MR_Box) (mercury__lexer__Var_37));
+                        }
+                        {
+                          mercury__string__from_char_list_2_p_0(mercury__lexer__Var_36, &mercury__lexer__DirectiveString_18);
+                        }
+                      }
+                    mercury__lexer__Var_43 = (MR_Word) MR_mkword(MR_mktag(0), MR_mkbody((MR_Integer) 0));
+                    mercury__lexer__Var_41 = (MR_Word) MR_mkword(MR_mktag(1), &mercury__lexer_scalar_common_4[23]);
+                    {
+                      mercury__lexer__Var_40 = (MR_Word) MR_mkword(MR_mktag(1), MR_new_object(MR_Word, ((MR_Integer) 2 * sizeof(MR_Word)), NULL, NULL));
+                      MR_hl_field(MR_mktag(1), mercury__lexer__Var_40, 0) = ((MR_Box) (mercury__lexer__DirectiveString_18));
+                      MR_hl_field(MR_mktag(1), mercury__lexer__Var_40, 1) = ((MR_Box) (mercury__lexer__Var_41));
+                    }
+                    {
+                      mercury__lexer__Var_38 = (MR_Word) MR_mkword(MR_mktag(1), MR_new_object(MR_Word, ((MR_Integer) 2 * sizeof(MR_Word)), NULL, NULL));
+                      MR_hl_field(MR_mktag(1), mercury__lexer__Var_38, 0) = ((MR_Box) ((MR_String) "invalid character \140"));
+                      MR_hl_field(MR_mktag(1), mercury__lexer__Var_38, 1) = ((MR_Box) (mercury__lexer__Var_40));
+                    }
+                    {
+                      mercury__lexer__Message_46 = mercury__string__append_list_1_f_0(mercury__lexer__Var_38);
+                    }
+                    {
+                      MR_Word base;
+                      base = (MR_Word) MR_mkword(MR_mktag(3), MR_new_object(MR_Word, ((MR_Integer) 2 * sizeof(MR_Word)), NULL, NULL));
+                      *mercury__lexer__Token_11 = base;
+                      MR_hl_field(MR_mktag(3), base, 0) = ((MR_Box) (MR_Word) ((MR_Integer) 5));
+                      MR_hl_field(MR_mktag(3), base, 1) = ((MR_Box) (mercury__lexer__Message_46));
+                    }
+                  }
+              }
+          }
+        else
+          {
+            {
+              mercury__lexer__string_have_token_4_p_0(mercury__lexer__Posn1_10, mercury__lexer__HaveToken_12, mercury__lexer__STATE_VARIABLE_Posn_0_19, mercury__lexer__STATE_VARIABLE_Posn_20);
+            }
+            *mercury__lexer__Token_11 = (MR_Word) MR_mkword(MR_mktag(3), &mercury__lexer_scalar_common_4[22]);
+          }
+      }
+      break;
+    }
+}
+
+static void MR_CALL 
+mercury__lexer__get_source_line_number_6_p_0(
+  MR_Word mercury__lexer__Stream_7,
+  MR_Word mercury__lexer__STATE_VARIABLE_RevChars_0_18,
+  MR_Word * mercury__lexer__Token_9,
+  MR_Word * mercury__lexer__HaveToken_10)
+{
+  while (MR_TRUE)
+    {
+      /* tailcall optimized into a loop */
+      {
+        MR_bool mercury__lexer__succeeded;
+        MR_Word mercury__lexer__Result_12;
+        MR_Char mercury__lexer__Char_13;
+        MR_Word mercury__lexer__V_10_63;
+        MR_Box mercury__lexer__V_11_64;
+        MR_Box mercury__lexer__V_7_73 = (MR_Box) mercury__lexer__Stream_7;
+
+        {
+          mercury__io__read_char_code_2_6_p_0(mercury__lexer__V_7_73, &mercury__lexer__V_10_63, &mercury__lexer__Char_13, &mercury__lexer__V_11_64);
+        }
+        switch (mercury__lexer__V_10_63) {
+          default: /*NOTREACHED*/ MR_assert(0);
+          case (MR_Integer) 1:
+            mercury__lexer__Result_12 = (MR_Word) MR_mkword(MR_mktag(0), MR_mkbody((MR_Integer) 1));
+            break;
+          case (MR_Integer) 2:
+            {
+              MR_String mercury__lexer__V_12_66;
+              MR_Word mercury__lexer__V_17_67;
+
+{
+#define MR_PROC_LABEL mercury__lexer__get_source_line_number_6_p_0
+
+	MR_Integer Error;
+	MR_String Msg0;
+	MR_String Msg;
+
+	MR_MAYBE_UNBOX_FOREIGN_TYPE(MR_Integer, mercury__lexer__V_11_64 , Error);
+	Msg0 =  (MR_String) "read failed: " ;
+		{
+
+    ML_make_err_msg(Error, Msg0, MR_ALLOC_ID, Msg);
+
+
+		;}
+#undef MR_PROC_LABEL
+	 mercury__lexer__V_12_66  = Msg;
+}
+              mercury__lexer__V_17_67 = (MR_Word) mercury__lexer__V_12_66;
+              {
+                mercury__lexer__Result_12 = (MR_Word) MR_mkword(MR_mktag(1), MR_new_object(MR_Word, ((MR_Integer) 1 * sizeof(MR_Word)), NULL, NULL));
+                MR_hl_field(MR_mktag(1), mercury__lexer__Result_12, 0) = ((MR_Box) (mercury__lexer__V_17_67));
+              }
+            }
+            break;
+          case (MR_Integer) 0:
+            mercury__lexer__Result_12 = (MR_Word) MR_mkword(MR_mktag(0), MR_mkbody((MR_Integer) 0));
+            break;
+        }
+        switch (MR_tag((MR_Word) mercury__lexer__Result_12)) {
+          default: /*NOTREACHED*/ MR_assert(0);
+          case (MR_Integer) 0:
+            switch (MR_unmkbody(mercury__lexer__Result_12)) {
+              default: /*NOTREACHED*/ MR_assert(0);
+              case (MR_Integer) 0:
+                {
+                  {
+                    mercury__lexer__succeeded = mercury__char__is_decimal_digit_1_p_0(mercury__lexer__Char_13);
+                  }
+                  if (mercury__lexer__succeeded)
+                    {
+                      MR_Word mercury__lexer__STATE_VARIABLE_RevChars_22_51;
+
+                      {
+                        mercury__lexer__STATE_VARIABLE_RevChars_22_51 = (MR_Word) MR_mkword(MR_mktag(1), MR_new_object(MR_Word, ((MR_Integer) 2 * sizeof(MR_Word)), NULL, NULL));
+                        MR_hl_field(MR_mktag(1), mercury__lexer__STATE_VARIABLE_RevChars_22_51, 0) = ((MR_Box) (MR_Word) (mercury__lexer__Char_13));
+                        MR_hl_field(MR_mktag(1), mercury__lexer__STATE_VARIABLE_RevChars_22_51, 1) = ((MR_Box) (mercury__lexer__STATE_VARIABLE_RevChars_0_18));
+                      }
+                      /* direct tailcall eliminated */
+                      {
+                        MR_Word mercury__lexer__next_value_of_STATE_VARIABLE_RevChars_0_18 = mercury__lexer__STATE_VARIABLE_RevChars_22_51;
+
+                        mercury__lexer__STATE_VARIABLE_RevChars_0_18 = mercury__lexer__next_value_of_STATE_VARIABLE_RevChars_0_18;
+                      }
+                      continue;
+                    }
+                  else
+                    {
+                      mercury__lexer__succeeded = (mercury__lexer__Char_13 == (MR_Char) 10);
+                      if (mercury__lexer__succeeded)
+                        {
+                          MR_String mercury__lexer__String_15;
+
+                          {
+                            mercury__lexer__succeeded = mercury__string__semidet_from_rev_char_list_2_p_0(mercury__lexer__STATE_VARIABLE_RevChars_0_18, &mercury__lexer__String_15);
+                          }
+                          if (mercury__lexer__succeeded)
+                            {
+                              MR_Integer mercury__lexer__Int_16;
+                              MR_Integer mercury__lexer__Var_25;
+
+                              {
+                                mercury__lexer__succeeded = mercury__string__base_string_to_int_3_p_0((MR_Integer) 10, mercury__lexer__String_15, &mercury__lexer__Int_16);
+                              }
+                              if (mercury__lexer__succeeded)
+                                {
+                                  mercury__lexer__Var_25 = (MR_Integer) 0;
+                                  mercury__lexer__succeeded = (mercury__lexer__Int_16 > mercury__lexer__Var_25);
+                                }
+                              if (mercury__lexer__succeeded)
+                                {
+                                  MR_Box mercury__lexer__V_5_96 = (MR_Box) mercury__lexer__Stream_7;
+
+{
+#define MR_PROC_LABEL mercury__lexer__get_source_line_number_6_p_0
+
+	MercuryFilePtr Stream;
+	MR_Integer LineNum;
+
+	Stream = (MercuryFilePtr) mercury__lexer__V_5_96 ;
+	LineNum =  mercury__lexer__Int_16 ;
+		{
+
+    MR_line_number(*Stream) = LineNum;
+
+
+		;}
+#undef MR_PROC_LABEL
+}
+                                  {
+                                    mercury__lexer__do_not_have_token_2_p_0(mercury__lexer__Token_9, mercury__lexer__HaveToken_10);
+                                  }
+                                }
+                              else
+                                {
+                                  MR_String mercury__lexer__Message_17;
+                                  MR_Word mercury__lexer__Var_28;
+                                  MR_Word mercury__lexer__Var_30;
+                                  MR_Word mercury__lexer__Var_31;
+                                  MR_Word mercury__lexer__Var_33;
+
+                                  {
+                                    mercury__lexer__have_token_4_p_0(mercury__lexer__Stream_7, mercury__lexer__HaveToken_10);
+                                  }
+                                  mercury__lexer__Var_33 = (MR_Word) MR_mkword(MR_mktag(0), MR_mkbody((MR_Integer) 0));
+                                  mercury__lexer__Var_31 = (MR_Word) MR_mkword(MR_mktag(1), &mercury__lexer_scalar_common_4[23]);
+                                  {
+                                    mercury__lexer__Var_30 = (MR_Word) MR_mkword(MR_mktag(1), MR_new_object(MR_Word, ((MR_Integer) 2 * sizeof(MR_Word)), NULL, NULL));
+                                    MR_hl_field(MR_mktag(1), mercury__lexer__Var_30, 0) = ((MR_Box) (mercury__lexer__String_15));
+                                    MR_hl_field(MR_mktag(1), mercury__lexer__Var_30, 1) = ((MR_Box) (mercury__lexer__Var_31));
+                                  }
+                                  {
+                                    mercury__lexer__Var_28 = (MR_Word) MR_mkword(MR_mktag(1), MR_new_object(MR_Word, ((MR_Integer) 2 * sizeof(MR_Word)), NULL, NULL));
+                                    MR_hl_field(MR_mktag(1), mercury__lexer__Var_28, 0) = ((MR_Box) ((MR_String) "invalid line number \140"));
+                                    MR_hl_field(MR_mktag(1), mercury__lexer__Var_28, 1) = ((MR_Box) (mercury__lexer__Var_30));
+                                  }
+                                  {
+                                    mercury__lexer__Message_17 = mercury__string__append_list_1_f_0(mercury__lexer__Var_28);
+                                  }
+                                  {
+                                    MR_Word base;
+                                    base = (MR_Word) MR_mkword(MR_mktag(3), MR_new_object(MR_Word, ((MR_Integer) 2 * sizeof(MR_Word)), NULL, NULL));
+                                    *mercury__lexer__Token_9 = base;
+                                    MR_hl_field(MR_mktag(3), base, 0) = ((MR_Box) (MR_Word) ((MR_Integer) 5));
+                                    MR_hl_field(MR_mktag(3), base, 1) = ((MR_Box) (mercury__lexer__Message_17));
+                                  }
+                                }
+                            }
+                          else
+                            {
+                              {
+                                mercury__lexer__have_token_4_p_0(mercury__lexer__Stream_7, mercury__lexer__HaveToken_10);
+                              }
+                              *mercury__lexer__Token_9 = (MR_Word) MR_mkword(MR_mktag(3), &mercury__lexer_scalar_common_4[24]);
+                            }
+                        }
+                      else
+                        {
+                          MR_Word mercury__lexer__Var_40;
+                          MR_Word mercury__lexer__Var_42;
+                          MR_Word mercury__lexer__Var_43;
+                          MR_Word mercury__lexer__Var_45;
+                          MR_String mercury__lexer__String_52;
+                          MR_String mercury__lexer__Message_53;
+
+                          {
+                            mercury__lexer__have_token_4_p_0(mercury__lexer__Stream_7, mercury__lexer__HaveToken_10);
+                          }
+{
+#define MR_PROC_LABEL mercury__lexer__get_source_line_number_6_p_0
+
+	MR_Char Character;
+	MR_Integer Int;
+	MR_bool SUCCESS_INDICATOR;
+
+	Character =  mercury__lexer__Char_13 ;
+	Int =  (MR_Integer) 0 ;
+		{
+
+    SUCCESS_INDICATOR = ((MR_UnsignedChar) Character == Int);
+
+
+		;}
+#undef MR_PROC_LABEL
+	if (SUCCESS_INDICATOR) {
+	}
+mercury__lexer__succeeded  = SUCCESS_INDICATOR;
+}
+                          if (mercury__lexer__succeeded)
+                            mercury__lexer__String_52 = (MR_String) "NUL";
+                          else
+                            {
+                              MR_Word mercury__lexer__Var_38;
+                              MR_Word mercury__lexer__Var_39 = (MR_Word) MR_mkword(MR_mktag(0), MR_mkbody((MR_Integer) 0));
+
+                              {
+                                mercury__lexer__Var_38 = (MR_Word) MR_mkword(MR_mktag(1), MR_new_object(MR_Word, ((MR_Integer) 2 * sizeof(MR_Word)), NULL, NULL));
+                                MR_hl_field(MR_mktag(1), mercury__lexer__Var_38, 0) = ((MR_Box) (MR_Word) (mercury__lexer__Char_13));
+                                MR_hl_field(MR_mktag(1), mercury__lexer__Var_38, 1) = ((MR_Box) (mercury__lexer__Var_39));
+                              }
+                              {
+                                mercury__string__from_char_list_2_p_0(mercury__lexer__Var_38, &mercury__lexer__String_52);
+                              }
+                            }
+                          mercury__lexer__Var_45 = (MR_Word) MR_mkword(MR_mktag(0), MR_mkbody((MR_Integer) 0));
+                          mercury__lexer__Var_43 = (MR_Word) MR_mkword(MR_mktag(1), &mercury__lexer_scalar_common_4[23]);
+                          {
+                            mercury__lexer__Var_42 = (MR_Word) MR_mkword(MR_mktag(1), MR_new_object(MR_Word, ((MR_Integer) 2 * sizeof(MR_Word)), NULL, NULL));
+                            MR_hl_field(MR_mktag(1), mercury__lexer__Var_42, 0) = ((MR_Box) (mercury__lexer__String_52));
+                            MR_hl_field(MR_mktag(1), mercury__lexer__Var_42, 1) = ((MR_Box) (mercury__lexer__Var_43));
+                          }
+                          {
+                            mercury__lexer__Var_40 = (MR_Word) MR_mkword(MR_mktag(1), MR_new_object(MR_Word, ((MR_Integer) 2 * sizeof(MR_Word)), NULL, NULL));
+                            MR_hl_field(MR_mktag(1), mercury__lexer__Var_40, 0) = ((MR_Box) ((MR_String) "invalid character \140"));
+                            MR_hl_field(MR_mktag(1), mercury__lexer__Var_40, 1) = ((MR_Box) (mercury__lexer__Var_42));
+                          }
+                          {
+                            mercury__string__append_list_2_p_0(mercury__lexer__Var_40, &mercury__lexer__Message_53);
+                          }
+                          {
+                            MR_Word base;
+                            base = (MR_Word) MR_mkword(MR_mktag(3), MR_new_object(MR_Word, ((MR_Integer) 2 * sizeof(MR_Word)), NULL, NULL));
+                            *mercury__lexer__Token_9 = base;
+                            MR_hl_field(MR_mktag(3), base, 0) = ((MR_Box) (MR_Word) ((MR_Integer) 5));
+                            MR_hl_field(MR_mktag(3), base, 1) = ((MR_Box) (mercury__lexer__Message_53));
+                          }
+                        }
+                    }
+                }
+                break;
+              case (MR_Integer) 1:
+                {
+                  MR_Integer mercury__lexer__Context_77;
+                  MR_Box mercury__lexer__V_5_89 = (MR_Box) mercury__lexer__Stream_7;
+
+{
+#define MR_PROC_LABEL mercury__lexer__get_source_line_number_6_p_0
+
+	MercuryFilePtr Stream;
+	MR_Integer LineNum;
+
+	Stream = (MercuryFilePtr) mercury__lexer__V_5_89 ;
+		{
+
+    LineNum = MR_line_number(*Stream);
+
+
+		;}
+#undef MR_PROC_LABEL
+	 mercury__lexer__Context_77  = LineNum;
+}
+                  *mercury__lexer__HaveToken_10 = (MR_Word) mercury__lexer__Context_77;
+                  *mercury__lexer__Token_9 = (MR_Word) MR_mkword(MR_mktag(3), &mercury__lexer_scalar_common_4[22]);
+                }
+                break;
+            }
+            break;
+          case (MR_Integer) 1:
+            {
+              MR_Word mercury__lexer__Error_14 = ((MR_Word) (MR_hl_field(MR_mktag(1), mercury__lexer__Result_12, (MR_Integer) 0)));
+
+              {
+                mercury__lexer__have_token_4_p_0(mercury__lexer__Stream_7, mercury__lexer__HaveToken_10);
+              }
+              {
+                MR_Word base;
+                base = (MR_Word) MR_mkword(MR_mktag(3), MR_new_object(MR_Word, ((MR_Integer) 2 * sizeof(MR_Word)), NULL, NULL));
+                *mercury__lexer__Token_9 = base;
+                MR_hl_field(MR_mktag(3), base, 0) = ((MR_Box) (MR_Word) ((MR_Integer) 6));
+                MR_hl_field(MR_mktag(3), base, 1) = ((MR_Box) (mercury__lexer__Error_14));
+              }
+            }
+            break;
+        }
+      }
+      break;
+    }
+}
+
+static void MR_CALL 
+mercury__lexer__string_get_implementation_defined_literal_rest_7_p_0(
+  MR_String mercury__lexer__String_8,
+  MR_Integer mercury__lexer__Len_9,
+  MR_Word mercury__lexer__Posn0_10,
+  MR_Word * mercury__lexer__Token_11,
+  MR_Integer * mercury__lexer__Context_12,
+  MR_Word mercury__lexer__STATE_VARIABLE_Posn_0_18,
+  MR_Word * mercury__lexer__STATE_VARIABLE_Posn_19)
+{
+  {
+    MR_bool mercury__lexer__succeeded;
+    MR_Char mercury__lexer__Char_15;
+    MR_Word mercury__lexer__STATE_VARIABLE_Posn_20_20;
+    MR_Integer mercury__lexer__LineNum0_33 = ((MR_Integer) (MR_hl_field(MR_mktag(0), mercury__lexer__STATE_VARIABLE_Posn_0_18, (MR_Integer) 0)));
+    MR_Integer mercury__lexer__LineOffset0_34 = ((MR_Integer) (MR_hl_field(MR_mktag(0), mercury__lexer__STATE_VARIABLE_Posn_0_18, (MR_Integer) 1)));
+    MR_Integer mercury__lexer__Offset0_35 = ((MR_Integer) (MR_hl_field(MR_mktag(0), mercury__lexer__STATE_VARIABLE_Posn_0_18, (MR_Integer) 2)));
+    MR_Integer mercury__lexer__Offset_36;
+
+    mercury__lexer__succeeded = (mercury__lexer__Offset0_35 < mercury__lexer__Len_9);
+    if (mercury__lexer__succeeded)
+      {
+{
+#define MR_PROC_LABEL mercury__lexer__string_get_implementation_defined_literal_rest_7_p_0
+
+	MR_String Str;
+	MR_Integer Index;
+	MR_Integer NextIndex;
+	MR_Char Ch;
+	MR_bool SUCCESS_INDICATOR;
+
+	Str =  mercury__lexer__String_8 ;
+	Index =  mercury__lexer__Offset0_35 ;
+		{
+
+    Ch = Str[Index];
+    if (MR_is_ascii(Ch)) {
+        NextIndex = Index + 1;
+        SUCCESS_INDICATOR = (Ch != 0);
+    } else {
+        NextIndex = Index;
+        Ch = MR_utf8_get_next_mb(Str, &NextIndex);
+        SUCCESS_INDICATOR = (Ch > 0);
+    }
+
+
+		;}
+#undef MR_PROC_LABEL
+	if (SUCCESS_INDICATOR) {
+	 mercury__lexer__Offset_36  = NextIndex;
+	 mercury__lexer__Char_15  = Ch;
+	}
+mercury__lexer__succeeded  = SUCCESS_INDICATOR;
+}
+        if (mercury__lexer__succeeded)
+          {
+            mercury__lexer__succeeded = (mercury__lexer__Char_15 == (MR_Char) 10);
+            if (mercury__lexer__succeeded)
+              {
+                MR_Integer mercury__lexer__LineNum_37 = (mercury__lexer__LineNum0_33 + (MR_Integer) 1);
+
+                {
+                  mercury__lexer__STATE_VARIABLE_Posn_20_20 = (MR_Word) MR_new_object(MR_Word, ((MR_Integer) 3 * sizeof(MR_Word)), NULL, NULL);
+                  MR_hl_field(MR_mktag(0), mercury__lexer__STATE_VARIABLE_Posn_20_20, 0) = ((MR_Box) (mercury__lexer__LineNum_37));
+                  MR_hl_field(MR_mktag(0), mercury__lexer__STATE_VARIABLE_Posn_20_20, 1) = ((MR_Box) (mercury__lexer__Offset_36));
+                  MR_hl_field(MR_mktag(0), mercury__lexer__STATE_VARIABLE_Posn_20_20, 2) = ((MR_Box) (mercury__lexer__Offset_36));
+                }
+              }
+            else
+              {
+                mercury__lexer__STATE_VARIABLE_Posn_20_20 = (MR_Word) MR_new_object(MR_Word, ((MR_Integer) 3 * sizeof(MR_Word)), NULL, NULL);
+                MR_hl_field(MR_mktag(0), mercury__lexer__STATE_VARIABLE_Posn_20_20, 0) = ((MR_Box) (mercury__lexer__LineNum0_33));
+                MR_hl_field(MR_mktag(0), mercury__lexer__STATE_VARIABLE_Posn_20_20, 1) = ((MR_Box) (mercury__lexer__LineOffset0_34));
+                MR_hl_field(MR_mktag(0), mercury__lexer__STATE_VARIABLE_Posn_20_20, 2) = ((MR_Box) (mercury__lexer__Offset_36));
+              }
+            mercury__lexer__succeeded = MR_TRUE;
+          }
+      }
+    if (mercury__lexer__succeeded)
+      {
+        MR_Char mercury__lexer__V_3_41;
+
+        {
+          mercury__lexer__succeeded = mercury__char__lower_upper_2_p_0(mercury__lexer__Char_15, &mercury__lexer__V_3_41);
+        }
+        if (mercury__lexer__succeeded)
+          {
+            MR_Word mercury__lexer__Token0_16;
+            MR_String mercury__lexer__S_17;
+
+            {
+              mercury__lexer__string_get_name_7_p_0(mercury__lexer__String_8, mercury__lexer__Len_9, mercury__lexer__STATE_VARIABLE_Posn_0_18, &mercury__lexer__Token0_16, mercury__lexer__Context_12, mercury__lexer__STATE_VARIABLE_Posn_20_20, mercury__lexer__STATE_VARIABLE_Posn_19);
+            }
+            mercury__lexer__succeeded = ((MR_tag((MR_Word) mercury__lexer__Token0_16)) == (MR_mktag((MR_Integer) 1)));
+            if (mercury__lexer__succeeded)
+              {
+                mercury__lexer__S_17 = ((MR_String) (MR_hl_field(MR_mktag(1), mercury__lexer__Token0_16, (MR_Integer) 0)));
+                {
+                  MR_Word base;
+                  base = (MR_Word) MR_mkword(MR_mktag(3), MR_new_object(MR_Word, ((MR_Integer) 2 * sizeof(MR_Word)), NULL, NULL));
+                  *mercury__lexer__Token_11 = base;
+                  MR_hl_field(MR_mktag(3), base, 0) = ((MR_Box) (MR_Word) ((MR_Integer) 3));
+                  MR_hl_field(MR_mktag(3), base, 1) = ((MR_Box) (mercury__lexer__S_17));
+                }
+              }
+            else
+              *mercury__lexer__Token_11 = mercury__lexer__Token0_16;
+          }
+        else
+          {
+            switch (mercury__lexer__Char_15) {
+              default:
+                mercury__lexer__succeeded = MR_FALSE;
+                break;
+              case (MR_Char) 33:
+                mercury__lexer__succeeded = MR_TRUE;
+                break;
+              case (MR_Char) 35:
+                mercury__lexer__succeeded = MR_TRUE;
+                break;
+              case (MR_Char) 36:
+                mercury__lexer__succeeded = MR_TRUE;
+                break;
+              case (MR_Char) 38:
+                mercury__lexer__succeeded = MR_TRUE;
+                break;
+              case (MR_Char) 42:
+                mercury__lexer__succeeded = MR_TRUE;
+                break;
+              case (MR_Char) 43:
+                mercury__lexer__succeeded = MR_TRUE;
+                break;
+              case (MR_Char) 45:
+                mercury__lexer__succeeded = MR_TRUE;
+                break;
+              case (MR_Char) 46:
+                mercury__lexer__succeeded = MR_TRUE;
+                break;
+              case (MR_Char) 47:
+                mercury__lexer__succeeded = MR_TRUE;
+                break;
+              case (MR_Char) 58:
+                mercury__lexer__succeeded = MR_TRUE;
+                break;
+              case (MR_Char) 60:
+                mercury__lexer__succeeded = MR_TRUE;
+                break;
+              case (MR_Char) 61:
+                mercury__lexer__succeeded = MR_TRUE;
+                break;
+              case (MR_Char) 62:
+                mercury__lexer__succeeded = MR_TRUE;
+                break;
+              case (MR_Char) 63:
+                mercury__lexer__succeeded = MR_TRUE;
+                break;
+              case (MR_Char) 64:
+                mercury__lexer__succeeded = MR_TRUE;
+                break;
+              case (MR_Char) 92:
+                mercury__lexer__succeeded = MR_TRUE;
+                break;
+              case (MR_Char) 94:
+                mercury__lexer__succeeded = MR_TRUE;
+                break;
+              case (MR_Char) 126:
+                mercury__lexer__succeeded = MR_TRUE;
+                break;
+            }
+            if (mercury__lexer__succeeded)
+              {
+                mercury__lexer__string_get_graphic_7_p_0(mercury__lexer__String_8, mercury__lexer__Len_9, mercury__lexer__Posn0_10, mercury__lexer__Token_11, mercury__lexer__Context_12, mercury__lexer__STATE_VARIABLE_Posn_20_20, mercury__lexer__STATE_VARIABLE_Posn_19);
+              }
+            else
+              {
+                MR_Integer mercury__lexer__Var_48;
+                MR_Integer mercury__lexer__Var_49;
+
+                {
+                  mercury__lexer__string_ungetchar_3_p_0(mercury__lexer__String_8, mercury__lexer__STATE_VARIABLE_Posn_20_20, mercury__lexer__STATE_VARIABLE_Posn_19);
+                }
+                *mercury__lexer__Token_11 = (MR_Word) MR_mkword(MR_mktag(1), &mercury__lexer_scalar_common_6[4]);
+                *mercury__lexer__Context_12 = ((MR_Integer) (MR_hl_field(MR_mktag(0), mercury__lexer__Posn0_10, (MR_Integer) 0)));
+                mercury__lexer__Var_48 = ((MR_Integer) (MR_hl_field(MR_mktag(0), mercury__lexer__Posn0_10, (MR_Integer) 1)));
+                mercury__lexer__Var_49 = ((MR_Integer) (MR_hl_field(MR_mktag(0), mercury__lexer__Posn0_10, (MR_Integer) 2)));
+              }
+          }
+      }
+    else
+      {
+        MR_Integer mercury__lexer__Var_56;
+        MR_Integer mercury__lexer__Var_57;
+
+        *mercury__lexer__Token_11 = (MR_Word) MR_mkword(MR_mktag(1), &mercury__lexer_scalar_common_6[4]);
+        *mercury__lexer__Context_12 = ((MR_Integer) (MR_hl_field(MR_mktag(0), mercury__lexer__Posn0_10, (MR_Integer) 0)));
+        mercury__lexer__Var_56 = ((MR_Integer) (MR_hl_field(MR_mktag(0), mercury__lexer__Posn0_10, (MR_Integer) 1)));
+        mercury__lexer__Var_57 = ((MR_Integer) (MR_hl_field(MR_mktag(0), mercury__lexer__Posn0_10, (MR_Integer) 2)));
+        *mercury__lexer__STATE_VARIABLE_Posn_19 = mercury__lexer__STATE_VARIABLE_Posn_0_18;
+      }
+  }
+}
+
+static void MR_CALL 
+mercury__lexer__get_implementation_defined_literal_rest_4_p_0(
+  MR_Word mercury__lexer__Stream_5,
+  MR_Word * mercury__lexer__Token_6)
+{
+  {
+    MR_bool mercury__lexer__succeeded;
+    MR_Word mercury__lexer__Result_8;
+    MR_Char mercury__lexer__Char_9;
+    MR_Word mercury__lexer__V_10_32;
+    MR_Box mercury__lexer__V_11_33;
+    MR_Box mercury__lexer__V_7_42 = (MR_Box) mercury__lexer__Stream_5;
+
+    {
+      mercury__io__read_char_code_2_6_p_0(mercury__lexer__V_7_42, &mercury__lexer__V_10_32, &mercury__lexer__Char_9, &mercury__lexer__V_11_33);
+    }
+    switch (mercury__lexer__V_10_32) {
+      default: /*NOTREACHED*/ MR_assert(0);
+      case (MR_Integer) 1:
+        mercury__lexer__Result_8 = (MR_Word) MR_mkword(MR_mktag(0), MR_mkbody((MR_Integer) 1));
+        break;
+      case (MR_Integer) 2:
+        {
+          MR_String mercury__lexer__V_12_35;
+          MR_Word mercury__lexer__V_17_36;
+
+{
+#define MR_PROC_LABEL mercury__lexer__get_implementation_defined_literal_rest_4_p_0
+
+	MR_Integer Error;
+	MR_String Msg0;
+	MR_String Msg;
+
+	MR_MAYBE_UNBOX_FOREIGN_TYPE(MR_Integer, mercury__lexer__V_11_33 , Error);
+	Msg0 =  (MR_String) "read failed: " ;
+		{
+
+    ML_make_err_msg(Error, Msg0, MR_ALLOC_ID, Msg);
+
+
+		;}
+#undef MR_PROC_LABEL
+	 mercury__lexer__V_12_35  = Msg;
+}
+          mercury__lexer__V_17_36 = (MR_Word) mercury__lexer__V_12_35;
+          {
+            mercury__lexer__Result_8 = (MR_Word) MR_mkword(MR_mktag(1), MR_new_object(MR_Word, ((MR_Integer) 1 * sizeof(MR_Word)), NULL, NULL));
+            MR_hl_field(MR_mktag(1), mercury__lexer__Result_8, 0) = ((MR_Box) (mercury__lexer__V_17_36));
+          }
+        }
+        break;
+      case (MR_Integer) 0:
+        mercury__lexer__Result_8 = (MR_Word) MR_mkword(MR_mktag(0), MR_mkbody((MR_Integer) 0));
+        break;
+    }
+    switch (MR_tag((MR_Word) mercury__lexer__Result_8)) {
+      default: /*NOTREACHED*/ MR_assert(0);
+      case (MR_Integer) 0:
+        switch (MR_unmkbody(mercury__lexer__Result_8)) {
+          default: /*NOTREACHED*/ MR_assert(0);
+          case (MR_Integer) 0:
+            {
+              MR_Char mercury__lexer__V_3_44;
+
+              {
+                mercury__lexer__succeeded = mercury__char__lower_upper_2_p_0(mercury__lexer__Char_9, &mercury__lexer__V_3_44);
+              }
+              if (mercury__lexer__succeeded)
+                {
+                  MR_Word mercury__lexer__Token0_11;
+                  MR_Word mercury__lexer__Var_16;
+                  MR_Word mercury__lexer__Var_18 = (MR_Word) MR_mkword(MR_mktag(0), MR_mkbody((MR_Integer) 0));
+                  MR_String mercury__lexer__S_12;
+
+                  {
+                    mercury__lexer__Var_16 = (MR_Word) MR_mkword(MR_mktag(1), MR_new_object(MR_Word, ((MR_Integer) 2 * sizeof(MR_Word)), NULL, NULL));
+                    MR_hl_field(MR_mktag(1), mercury__lexer__Var_16, 0) = ((MR_Box) (MR_Word) (mercury__lexer__Char_9));
+                    MR_hl_field(MR_mktag(1), mercury__lexer__Var_16, 1) = ((MR_Box) (mercury__lexer__Var_18));
+                  }
+                  {
+                    mercury__lexer__get_name_5_p_0(mercury__lexer__Stream_5, mercury__lexer__Var_16, &mercury__lexer__Token0_11);
+                  }
+                  mercury__lexer__succeeded = ((MR_tag((MR_Word) mercury__lexer__Token0_11)) == (MR_mktag((MR_Integer) 1)));
+                  if (mercury__lexer__succeeded)
+                    {
+                      mercury__lexer__S_12 = ((MR_String) (MR_hl_field(MR_mktag(1), mercury__lexer__Token0_11, (MR_Integer) 0)));
+                      {
+                        MR_Word base;
+                        base = (MR_Word) MR_mkword(MR_mktag(3), MR_new_object(MR_Word, ((MR_Integer) 2 * sizeof(MR_Word)), NULL, NULL));
+                        *mercury__lexer__Token_6 = base;
+                        MR_hl_field(MR_mktag(3), base, 0) = ((MR_Box) (MR_Word) ((MR_Integer) 3));
+                        MR_hl_field(MR_mktag(3), base, 1) = ((MR_Box) (mercury__lexer__S_12));
+                      }
+                    }
+                  else
+                    *mercury__lexer__Token_6 = mercury__lexer__Token0_11;
+                }
+              else
+                {
+                  switch (mercury__lexer__Char_9) {
+                    default:
+                      mercury__lexer__succeeded = MR_FALSE;
+                      break;
+                    case (MR_Char) 33:
+                      mercury__lexer__succeeded = MR_TRUE;
+                      break;
+                    case (MR_Char) 35:
+                      mercury__lexer__succeeded = MR_TRUE;
+                      break;
+                    case (MR_Char) 36:
+                      mercury__lexer__succeeded = MR_TRUE;
+                      break;
+                    case (MR_Char) 38:
+                      mercury__lexer__succeeded = MR_TRUE;
+                      break;
+                    case (MR_Char) 42:
+                      mercury__lexer__succeeded = MR_TRUE;
+                      break;
+                    case (MR_Char) 43:
+                      mercury__lexer__succeeded = MR_TRUE;
+                      break;
+                    case (MR_Char) 45:
+                      mercury__lexer__succeeded = MR_TRUE;
+                      break;
+                    case (MR_Char) 46:
+                      mercury__lexer__succeeded = MR_TRUE;
+                      break;
+                    case (MR_Char) 47:
+                      mercury__lexer__succeeded = MR_TRUE;
+                      break;
+                    case (MR_Char) 58:
+                      mercury__lexer__succeeded = MR_TRUE;
+                      break;
+                    case (MR_Char) 60:
+                      mercury__lexer__succeeded = MR_TRUE;
+                      break;
+                    case (MR_Char) 61:
+                      mercury__lexer__succeeded = MR_TRUE;
+                      break;
+                    case (MR_Char) 62:
+                      mercury__lexer__succeeded = MR_TRUE;
+                      break;
+                    case (MR_Char) 63:
+                      mercury__lexer__succeeded = MR_TRUE;
+                      break;
+                    case (MR_Char) 64:
+                      mercury__lexer__succeeded = MR_TRUE;
+                      break;
+                    case (MR_Char) 92:
+                      mercury__lexer__succeeded = MR_TRUE;
+                      break;
+                    case (MR_Char) 94:
+                      mercury__lexer__succeeded = MR_TRUE;
+                      break;
+                    case (MR_Char) 126:
+                      mercury__lexer__succeeded = MR_TRUE;
+                      break;
+                  }
+                  if (mercury__lexer__succeeded)
+                    {
+                      MR_Word mercury__lexer__Var_19;
+                      MR_Word mercury__lexer__Var_21 = (MR_Word) MR_mkword(MR_mktag(1), &mercury__lexer_scalar_common_4[21]);
+                      MR_Word mercury__lexer__Var_23 = (MR_Word) MR_mkword(MR_mktag(0), MR_mkbody((MR_Integer) 0));
+
+                      {
+                        mercury__lexer__Var_19 = (MR_Word) MR_mkword(MR_mktag(1), MR_new_object(MR_Word, ((MR_Integer) 2 * sizeof(MR_Word)), NULL, NULL));
+                        MR_hl_field(MR_mktag(1), mercury__lexer__Var_19, 0) = ((MR_Box) (MR_Word) (mercury__lexer__Char_9));
+                        MR_hl_field(MR_mktag(1), mercury__lexer__Var_19, 1) = ((MR_Box) (mercury__lexer__Var_21));
+                      }
+                      {
+                        mercury__lexer__get_graphic_5_p_0(mercury__lexer__Stream_5, mercury__lexer__Var_19, mercury__lexer__Token_6);
+                      }
+                    }
+                  else
+                    {
+                      {
+                        mercury__io__putback_char_4_p_0(mercury__lexer__Stream_5, mercury__lexer__Char_9);
+                      }
+                      *mercury__lexer__Token_6 = (MR_Word) MR_mkword(MR_mktag(1), &mercury__lexer_scalar_common_6[4]);
+                    }
+                }
+            }
+            break;
+          case (MR_Integer) 1:
+            {
+              *mercury__lexer__Token_6 = (MR_Word) MR_mkword(MR_mktag(1), &mercury__lexer_scalar_common_6[4]);
+            }
+            break;
+        }
+        break;
+      case (MR_Integer) 1:
+        {
+          MR_Word mercury__lexer__Error_10 = ((MR_Word) (MR_hl_field(MR_mktag(1), mercury__lexer__Result_8, (MR_Integer) 0)));
+
+          {
+            MR_Word base;
+            base = (MR_Word) MR_mkword(MR_mktag(3), MR_new_object(MR_Word, ((MR_Integer) 2 * sizeof(MR_Word)), NULL, NULL));
+            *mercury__lexer__Token_6 = base;
+            MR_hl_field(MR_mktag(3), base, 0) = ((MR_Box) (MR_Word) ((MR_Integer) 6));
+            MR_hl_field(MR_mktag(3), base, 1) = ((MR_Box) (mercury__lexer__Error_10));
+          }
+        }
+        break;
+    }
+  }
+}
+
+static void MR_CALL 
+mercury__lexer__string_get_name_7_p_0(
+  MR_String mercury__lexer__String_8,
+  MR_Integer mercury__lexer__Len_9,
+  MR_Word mercury__lexer__Posn0_10,
+  MR_Word * mercury__lexer__Token_11,
+  MR_Integer * mercury__lexer__Context_12,
+  MR_Word mercury__lexer__STATE_VARIABLE_Posn_0_16,
+  MR_Word * mercury__lexer__STATE_VARIABLE_Posn_17)
+{
+  while (MR_TRUE)
+    {
+      /* tailcall optimized into a loop */
+      {
+        MR_bool mercury__lexer__succeeded;
+        MR_Char mercury__lexer__Char_14;
+        MR_Word mercury__lexer__STATE_VARIABLE_Posn_18_18;
+        MR_Integer mercury__lexer__LineNum0_31 = ((MR_Integer) (MR_hl_field(MR_mktag(0), mercury__lexer__STATE_VARIABLE_Posn_0_16, (MR_Integer) 0)));
+        MR_Integer mercury__lexer__LineOffset0_32 = ((MR_Integer) (MR_hl_field(MR_mktag(0), mercury__lexer__STATE_VARIABLE_Posn_0_16, (MR_Integer) 1)));
+        MR_Integer mercury__lexer__Offset0_33 = ((MR_Integer) (MR_hl_field(MR_mktag(0), mercury__lexer__STATE_VARIABLE_Posn_0_16, (MR_Integer) 2)));
+        MR_Integer mercury__lexer__Offset_34;
+
+        mercury__lexer__succeeded = (mercury__lexer__Offset0_33 < mercury__lexer__Len_9);
+        if (mercury__lexer__succeeded)
+          {
+{
+#define MR_PROC_LABEL mercury__lexer__string_get_name_7_p_0
+
+	MR_String Str;
+	MR_Integer Index;
+	MR_Integer NextIndex;
+	MR_Char Ch;
+	MR_bool SUCCESS_INDICATOR;
+
+	Str =  mercury__lexer__String_8 ;
+	Index =  mercury__lexer__Offset0_33 ;
+		{
+
+    Ch = Str[Index];
+    if (MR_is_ascii(Ch)) {
+        NextIndex = Index + 1;
+        SUCCESS_INDICATOR = (Ch != 0);
+    } else {
+        NextIndex = Index;
+        Ch = MR_utf8_get_next_mb(Str, &NextIndex);
+        SUCCESS_INDICATOR = (Ch > 0);
+    }
+
+
+		;}
+#undef MR_PROC_LABEL
+	if (SUCCESS_INDICATOR) {
+	 mercury__lexer__Offset_34  = NextIndex;
+	 mercury__lexer__Char_14  = Ch;
+	}
+mercury__lexer__succeeded  = SUCCESS_INDICATOR;
+}
+            if (mercury__lexer__succeeded)
+              {
+                mercury__lexer__succeeded = (mercury__lexer__Char_14 == (MR_Char) 10);
+                if (mercury__lexer__succeeded)
+                  {
+                    MR_Integer mercury__lexer__LineNum_35 = (mercury__lexer__LineNum0_31 + (MR_Integer) 1);
+
+                    {
+                      mercury__lexer__STATE_VARIABLE_Posn_18_18 = (MR_Word) MR_new_object(MR_Word, ((MR_Integer) 3 * sizeof(MR_Word)), NULL, NULL);
+                      MR_hl_field(MR_mktag(0), mercury__lexer__STATE_VARIABLE_Posn_18_18, 0) = ((MR_Box) (mercury__lexer__LineNum_35));
+                      MR_hl_field(MR_mktag(0), mercury__lexer__STATE_VARIABLE_Posn_18_18, 1) = ((MR_Box) (mercury__lexer__Offset_34));
+                      MR_hl_field(MR_mktag(0), mercury__lexer__STATE_VARIABLE_Posn_18_18, 2) = ((MR_Box) (mercury__lexer__Offset_34));
+                    }
+                  }
+                else
+                  {
+                    mercury__lexer__STATE_VARIABLE_Posn_18_18 = (MR_Word) MR_new_object(MR_Word, ((MR_Integer) 3 * sizeof(MR_Word)), NULL, NULL);
+                    MR_hl_field(MR_mktag(0), mercury__lexer__STATE_VARIABLE_Posn_18_18, 0) = ((MR_Box) (mercury__lexer__LineNum0_31));
+                    MR_hl_field(MR_mktag(0), mercury__lexer__STATE_VARIABLE_Posn_18_18, 1) = ((MR_Box) (mercury__lexer__LineOffset0_32));
+                    MR_hl_field(MR_mktag(0), mercury__lexer__STATE_VARIABLE_Posn_18_18, 2) = ((MR_Box) (mercury__lexer__Offset_34));
+                  }
+                mercury__lexer__succeeded = MR_TRUE;
+              }
+          }
+        if (mercury__lexer__succeeded)
+          {
+            {
+              mercury__lexer__succeeded = mercury__char__is_alnum_or_underscore_1_p_0(mercury__lexer__Char_14);
+            }
+            if (mercury__lexer__succeeded)
+              {
+                /* direct tailcall eliminated */
+                {
+                  MR_Word mercury__lexer__next_value_of_STATE_VARIABLE_Posn_0_16 = mercury__lexer__STATE_VARIABLE_Posn_18_18;
+
+                  mercury__lexer__STATE_VARIABLE_Posn_0_16 = mercury__lexer__next_value_of_STATE_VARIABLE_Posn_0_16;
+                }
+                continue;
+              }
+            else
+              {
+                MR_String mercury__lexer__Name_15;
+                MR_Integer mercury__lexer__Offset0_44;
+                MR_Integer mercury__lexer__Offset_47;
+                MR_Integer mercury__lexer__Var_42;
+                MR_Integer mercury__lexer__Var_43;
+                MR_Integer mercury__lexer__Var_45;
+                MR_Integer mercury__lexer__Var_46;
+                MR_Integer mercury__lexer__Var_54;
+                MR_Integer mercury__lexer__Var_55;
+
+                {
+                  mercury__lexer__string_ungetchar_3_p_0(mercury__lexer__String_8, mercury__lexer__STATE_VARIABLE_Posn_18_18, mercury__lexer__STATE_VARIABLE_Posn_17);
+                }
+                mercury__lexer__Var_42 = ((MR_Integer) (MR_hl_field(MR_mktag(0), mercury__lexer__Posn0_10, (MR_Integer) 0)));
+                mercury__lexer__Var_43 = ((MR_Integer) (MR_hl_field(MR_mktag(0), mercury__lexer__Posn0_10, (MR_Integer) 1)));
+                mercury__lexer__Offset0_44 = ((MR_Integer) (MR_hl_field(MR_mktag(0), mercury__lexer__Posn0_10, (MR_Integer) 2)));
+                mercury__lexer__Var_45 = ((MR_Integer) (MR_hl_field(MR_mktag(0), *mercury__lexer__STATE_VARIABLE_Posn_17, (MR_Integer) 0)));
+                mercury__lexer__Var_46 = ((MR_Integer) (MR_hl_field(MR_mktag(0), *mercury__lexer__STATE_VARIABLE_Posn_17, (MR_Integer) 1)));
+                mercury__lexer__Offset_47 = ((MR_Integer) (MR_hl_field(MR_mktag(0), *mercury__lexer__STATE_VARIABLE_Posn_17, (MR_Integer) 2)));
+{
+#define MR_PROC_LABEL mercury__lexer__string_get_name_7_p_0
+
+	MR_String Str;
+	MR_Integer Start;
+	MR_Integer End;
+	MR_String SubString;
+
+	Str =  mercury__lexer__String_8 ;
+	Start =  mercury__lexer__Offset0_44 ;
+	End =  mercury__lexer__Offset_47 ;
+		{
+{
+    MR_Integer Count;
+
+    Count = End - Start;
+    MR_allocate_aligned_string_msg(SubString, Count, MR_ALLOC_ID);
+    MR_memcpy(SubString, Str + Start, Count);
+    SubString[Count] = '\0';
+}
+
+		;}
+#undef MR_PROC_LABEL
+	 mercury__lexer__Name_15  = SubString;
+}
+                {
+                  MR_Word base;
+                  base = (MR_Word) MR_mkword(MR_mktag(1), MR_new_object(MR_Word, ((MR_Integer) 1 * sizeof(MR_Word)), NULL, NULL));
+                  *mercury__lexer__Token_11 = base;
+                  MR_hl_field(MR_mktag(1), base, 0) = ((MR_Box) (mercury__lexer__Name_15));
+                }
+                *mercury__lexer__Context_12 = ((MR_Integer) (MR_hl_field(MR_mktag(0), mercury__lexer__Posn0_10, (MR_Integer) 0)));
+                mercury__lexer__Var_54 = ((MR_Integer) (MR_hl_field(MR_mktag(0), mercury__lexer__Posn0_10, (MR_Integer) 1)));
+                mercury__lexer__Var_55 = ((MR_Integer) (MR_hl_field(MR_mktag(0), mercury__lexer__Posn0_10, (MR_Integer) 2)));
+              }
+          }
+        else
+          {
+            MR_String mercury__lexer__Name_25;
+            MR_Integer mercury__lexer__Offset0_62 = ((MR_Integer) (MR_hl_field(MR_mktag(0), mercury__lexer__Posn0_10, (MR_Integer) 2)));
+            MR_Integer mercury__lexer__Offset_65 = ((MR_Integer) (MR_hl_field(MR_mktag(0), mercury__lexer__STATE_VARIABLE_Posn_0_16, (MR_Integer) 2)));
+            MR_Integer mercury__lexer__Var_60 = ((MR_Integer) (MR_hl_field(MR_mktag(0), mercury__lexer__Posn0_10, (MR_Integer) 0)));
+            MR_Integer mercury__lexer__Var_61 = ((MR_Integer) (MR_hl_field(MR_mktag(0), mercury__lexer__Posn0_10, (MR_Integer) 1)));
+            MR_Integer mercury__lexer__Var_63 = ((MR_Integer) (MR_hl_field(MR_mktag(0), mercury__lexer__STATE_VARIABLE_Posn_0_16, (MR_Integer) 0)));
+            MR_Integer mercury__lexer__Var_64 = ((MR_Integer) (MR_hl_field(MR_mktag(0), mercury__lexer__STATE_VARIABLE_Posn_0_16, (MR_Integer) 1)));
+            MR_Integer mercury__lexer__Var_72;
+            MR_Integer mercury__lexer__Var_73;
+
+{
+#define MR_PROC_LABEL mercury__lexer__string_get_name_7_p_0
+
+	MR_String Str;
+	MR_Integer Start;
+	MR_Integer End;
+	MR_String SubString;
+
+	Str =  mercury__lexer__String_8 ;
+	Start =  mercury__lexer__Offset0_62 ;
+	End =  mercury__lexer__Offset_65 ;
+		{
+{
+    MR_Integer Count;
+
+    Count = End - Start;
+    MR_allocate_aligned_string_msg(SubString, Count, MR_ALLOC_ID);
+    MR_memcpy(SubString, Str + Start, Count);
+    SubString[Count] = '\0';
+}
+
+		;}
+#undef MR_PROC_LABEL
+	 mercury__lexer__Name_25  = SubString;
+}
+            {
+              MR_Word base;
+              base = (MR_Word) MR_mkword(MR_mktag(1), MR_new_object(MR_Word, ((MR_Integer) 1 * sizeof(MR_Word)), NULL, NULL));
+              *mercury__lexer__Token_11 = base;
+              MR_hl_field(MR_mktag(1), base, 0) = ((MR_Box) (mercury__lexer__Name_25));
+            }
+            *mercury__lexer__Context_12 = ((MR_Integer) (MR_hl_field(MR_mktag(0), mercury__lexer__Posn0_10, (MR_Integer) 0)));
+            mercury__lexer__Var_72 = ((MR_Integer) (MR_hl_field(MR_mktag(0), mercury__lexer__Posn0_10, (MR_Integer) 1)));
+            mercury__lexer__Var_73 = ((MR_Integer) (MR_hl_field(MR_mktag(0), mercury__lexer__Posn0_10, (MR_Integer) 2)));
+            *mercury__lexer__STATE_VARIABLE_Posn_17 = mercury__lexer__STATE_VARIABLE_Posn_0_16;
+          }
+      }
+      break;
+    }
+}
+
+static void MR_CALL 
+mercury__lexer__get_name_5_p_0(
+  MR_Word mercury__lexer__Stream_6,
+  MR_Word mercury__lexer__STATE_VARIABLE_RevChars_0_14,
+  MR_Word * mercury__lexer__Token_8)
+{
+  while (MR_TRUE)
+    {
+      /* tailcall optimized into a loop */
+      {
+        MR_bool mercury__lexer__succeeded;
+        MR_Word mercury__lexer__Result_10;
+        MR_Char mercury__lexer__Char_11;
+        MR_Word mercury__lexer__V_10_39;
+        MR_Box mercury__lexer__V_11_40;
+        MR_Box mercury__lexer__V_7_49 = (MR_Box) mercury__lexer__Stream_6;
+
+        {
+          mercury__io__read_char_code_2_6_p_0(mercury__lexer__V_7_49, &mercury__lexer__V_10_39, &mercury__lexer__Char_11, &mercury__lexer__V_11_40);
+        }
+        switch (mercury__lexer__V_10_39) {
+          default: /*NOTREACHED*/ MR_assert(0);
+          case (MR_Integer) 1:
+            mercury__lexer__Result_10 = (MR_Word) MR_mkword(MR_mktag(0), MR_mkbody((MR_Integer) 1));
+            break;
+          case (MR_Integer) 2:
+            {
+              MR_String mercury__lexer__V_12_42;
+              MR_Word mercury__lexer__V_17_43;
+
+{
+#define MR_PROC_LABEL mercury__lexer__get_name_5_p_0
+
+	MR_Integer Error;
+	MR_String Msg0;
+	MR_String Msg;
+
+	MR_MAYBE_UNBOX_FOREIGN_TYPE(MR_Integer, mercury__lexer__V_11_40 , Error);
+	Msg0 =  (MR_String) "read failed: " ;
+		{
+
+    ML_make_err_msg(Error, Msg0, MR_ALLOC_ID, Msg);
+
+
+		;}
+#undef MR_PROC_LABEL
+	 mercury__lexer__V_12_42  = Msg;
+}
+              mercury__lexer__V_17_43 = (MR_Word) mercury__lexer__V_12_42;
+              {
+                mercury__lexer__Result_10 = (MR_Word) MR_mkword(MR_mktag(1), MR_new_object(MR_Word, ((MR_Integer) 1 * sizeof(MR_Word)), NULL, NULL));
+                MR_hl_field(MR_mktag(1), mercury__lexer__Result_10, 0) = ((MR_Box) (mercury__lexer__V_17_43));
+              }
+            }
+            break;
+          case (MR_Integer) 0:
+            mercury__lexer__Result_10 = (MR_Word) MR_mkword(MR_mktag(0), MR_mkbody((MR_Integer) 0));
+            break;
+        }
+        switch (MR_tag((MR_Word) mercury__lexer__Result_10)) {
+          default: /*NOTREACHED*/ MR_assert(0);
+          case (MR_Integer) 0:
+            switch (MR_unmkbody(mercury__lexer__Result_10)) {
+              default: /*NOTREACHED*/ MR_assert(0);
+              case (MR_Integer) 0:
+                {
+                  {
+                    mercury__lexer__succeeded = mercury__char__is_alnum_or_underscore_1_p_0(mercury__lexer__Char_11);
+                  }
+                  if (mercury__lexer__succeeded)
+                    {
+                      MR_Word mercury__lexer__STATE_VARIABLE_RevChars_18_25;
+
+                      {
+                        mercury__lexer__STATE_VARIABLE_RevChars_18_25 = (MR_Word) MR_mkword(MR_mktag(1), MR_new_object(MR_Word, ((MR_Integer) 2 * sizeof(MR_Word)), NULL, NULL));
+                        MR_hl_field(MR_mktag(1), mercury__lexer__STATE_VARIABLE_RevChars_18_25, 0) = ((MR_Box) (MR_Word) (mercury__lexer__Char_11));
+                        MR_hl_field(MR_mktag(1), mercury__lexer__STATE_VARIABLE_RevChars_18_25, 1) = ((MR_Box) (mercury__lexer__STATE_VARIABLE_RevChars_0_14));
+                      }
+                      /* direct tailcall eliminated */
+                      {
+                        MR_Word mercury__lexer__next_value_of_STATE_VARIABLE_RevChars_0_14 = mercury__lexer__STATE_VARIABLE_RevChars_18_25;
+
+                        mercury__lexer__STATE_VARIABLE_RevChars_0_14 = mercury__lexer__next_value_of_STATE_VARIABLE_RevChars_0_14;
+                      }
+                      continue;
+                    }
+                  else
+                    {
+                      MR_String mercury__lexer__Name_26;
+
+                      {
+                        mercury__io__putback_char_4_p_0(mercury__lexer__Stream_6, mercury__lexer__Char_11);
+                      }
+                      {
+                        mercury__lexer__succeeded = mercury__string__semidet_from_rev_char_list_2_p_0(mercury__lexer__STATE_VARIABLE_RevChars_0_14, &mercury__lexer__Name_26);
+                      }
+                      if (mercury__lexer__succeeded)
+                        {
+                          MR_Word base;
+                          base = (MR_Word) MR_mkword(MR_mktag(1), MR_new_object(MR_Word, ((MR_Integer) 1 * sizeof(MR_Word)), NULL, NULL));
+                          *mercury__lexer__Token_8 = base;
+                          MR_hl_field(MR_mktag(1), base, 0) = ((MR_Box) (mercury__lexer__Name_26));
+                        }
+                      else
+                        {
+                          *mercury__lexer__Token_8 = (MR_Word) MR_mkword(MR_mktag(3), &mercury__lexer_scalar_common_4[20]);
+                        }
+                    }
+                }
+                break;
+              case (MR_Integer) 1:
+                {
+                  MR_String mercury__lexer__Name_13;
+
+                  {
+                    mercury__lexer__succeeded = mercury__string__semidet_from_rev_char_list_2_p_0(mercury__lexer__STATE_VARIABLE_RevChars_0_14, &mercury__lexer__Name_13);
+                  }
+                  if (mercury__lexer__succeeded)
+                    {
+                      MR_Word base;
+                      base = (MR_Word) MR_mkword(MR_mktag(1), MR_new_object(MR_Word, ((MR_Integer) 1 * sizeof(MR_Word)), NULL, NULL));
+                      *mercury__lexer__Token_8 = base;
+                      MR_hl_field(MR_mktag(1), base, 0) = ((MR_Box) (mercury__lexer__Name_13));
+                    }
+                  else
+                    {
+                      *mercury__lexer__Token_8 = (MR_Word) MR_mkword(MR_mktag(3), &mercury__lexer_scalar_common_4[20]);
+                    }
+                }
+                break;
+            }
+            break;
+          case (MR_Integer) 1:
+            {
+              MR_Word mercury__lexer__Error_12 = ((MR_Word) (MR_hl_field(MR_mktag(1), mercury__lexer__Result_10, (MR_Integer) 0)));
+
+              {
+                MR_Word base;
+                base = (MR_Word) MR_mkword(MR_mktag(3), MR_new_object(MR_Word, ((MR_Integer) 2 * sizeof(MR_Word)), NULL, NULL));
+                *mercury__lexer__Token_8 = base;
+                MR_hl_field(MR_mktag(3), base, 0) = ((MR_Box) (MR_Word) ((MR_Integer) 6));
+                MR_hl_field(MR_mktag(3), base, 1) = ((MR_Box) (mercury__lexer__Error_12));
+              }
+            }
+            break;
+        }
+      }
+      break;
+    }
+}
+
+static void MR_CALL 
+mercury__lexer__string_get_octal_escape_10_p_0(
+  MR_String mercury__lexer__String_11,
+  MR_Integer mercury__lexer__Len_12,
+  MR_Char mercury__lexer__QuoteChar_13,
+  MR_Word mercury__lexer__STATE_VARIABLE_RevChars_0_21,
+  MR_Word mercury__lexer__STATE_VARIABLE_RevOctalChars_0_22,
+  MR_Word mercury__lexer__Posn0_16,
+  MR_Word * mercury__lexer__Token_17,
+  MR_Integer * mercury__lexer__Context_18,
+  MR_Word mercury__lexer__STATE_VARIABLE_Posn_0_23,
+  MR_Word * mercury__lexer__STATE_VARIABLE_Posn_24)
+{
+  while (MR_TRUE)
+    {
+      /* tailcall optimized into a loop */
+      {
+        MR_bool mercury__lexer__succeeded;
+        MR_Char mercury__lexer__Char_20;
+        MR_Word mercury__lexer__STATE_VARIABLE_Posn_25_25;
+        MR_Integer mercury__lexer__LineNum0_41 = ((MR_Integer) (MR_hl_field(MR_mktag(0), mercury__lexer__STATE_VARIABLE_Posn_0_23, (MR_Integer) 0)));
+        MR_Integer mercury__lexer__LineOffset0_42 = ((MR_Integer) (MR_hl_field(MR_mktag(0), mercury__lexer__STATE_VARIABLE_Posn_0_23, (MR_Integer) 1)));
+        MR_Integer mercury__lexer__Offset0_43 = ((MR_Integer) (MR_hl_field(MR_mktag(0), mercury__lexer__STATE_VARIABLE_Posn_0_23, (MR_Integer) 2)));
+        MR_Integer mercury__lexer__Offset_44;
+
+        mercury__lexer__succeeded = (mercury__lexer__Offset0_43 < mercury__lexer__Len_12);
+        if (mercury__lexer__succeeded)
+          {
+{
+#define MR_PROC_LABEL mercury__lexer__string_get_octal_escape_10_p_0
+
+	MR_String Str;
+	MR_Integer Index;
+	MR_Integer NextIndex;
+	MR_Char Ch;
+	MR_bool SUCCESS_INDICATOR;
+
+	Str =  mercury__lexer__String_11 ;
+	Index =  mercury__lexer__Offset0_43 ;
+		{
+
+    Ch = Str[Index];
+    if (MR_is_ascii(Ch)) {
+        NextIndex = Index + 1;
+        SUCCESS_INDICATOR = (Ch != 0);
+    } else {
+        NextIndex = Index;
+        Ch = MR_utf8_get_next_mb(Str, &NextIndex);
+        SUCCESS_INDICATOR = (Ch > 0);
+    }
+
+
+		;}
+#undef MR_PROC_LABEL
+	if (SUCCESS_INDICATOR) {
+	 mercury__lexer__Offset_44  = NextIndex;
+	 mercury__lexer__Char_20  = Ch;
+	}
+mercury__lexer__succeeded  = SUCCESS_INDICATOR;
+}
+            if (mercury__lexer__succeeded)
+              {
+                mercury__lexer__succeeded = (mercury__lexer__Char_20 == (MR_Char) 10);
+                if (mercury__lexer__succeeded)
+                  {
+                    MR_Integer mercury__lexer__LineNum_45 = (mercury__lexer__LineNum0_41 + (MR_Integer) 1);
+
+                    {
+                      mercury__lexer__STATE_VARIABLE_Posn_25_25 = (MR_Word) MR_new_object(MR_Word, ((MR_Integer) 3 * sizeof(MR_Word)), NULL, NULL);
+                      MR_hl_field(MR_mktag(0), mercury__lexer__STATE_VARIABLE_Posn_25_25, 0) = ((MR_Box) (mercury__lexer__LineNum_45));
+                      MR_hl_field(MR_mktag(0), mercury__lexer__STATE_VARIABLE_Posn_25_25, 1) = ((MR_Box) (mercury__lexer__Offset_44));
+                      MR_hl_field(MR_mktag(0), mercury__lexer__STATE_VARIABLE_Posn_25_25, 2) = ((MR_Box) (mercury__lexer__Offset_44));
+                    }
+                  }
+                else
+                  {
+                    mercury__lexer__STATE_VARIABLE_Posn_25_25 = (MR_Word) MR_new_object(MR_Word, ((MR_Integer) 3 * sizeof(MR_Word)), NULL, NULL);
+                    MR_hl_field(MR_mktag(0), mercury__lexer__STATE_VARIABLE_Posn_25_25, 0) = ((MR_Box) (mercury__lexer__LineNum0_41));
+                    MR_hl_field(MR_mktag(0), mercury__lexer__STATE_VARIABLE_Posn_25_25, 1) = ((MR_Box) (mercury__lexer__LineOffset0_42));
+                    MR_hl_field(MR_mktag(0), mercury__lexer__STATE_VARIABLE_Posn_25_25, 2) = ((MR_Box) (mercury__lexer__Offset_44));
+                  }
+                mercury__lexer__succeeded = MR_TRUE;
+              }
+          }
+        if (mercury__lexer__succeeded)
+          {
+            {
+              mercury__lexer__succeeded = mercury__char__is_octal_digit_1_p_0(mercury__lexer__Char_20);
+            }
+            if (mercury__lexer__succeeded)
+              {
+                MR_Word mercury__lexer__STATE_VARIABLE_RevOctalChars_26_26;
+
+                {
+                  mercury__lexer__STATE_VARIABLE_RevOctalChars_26_26 = (MR_Word) MR_mkword(MR_mktag(1), MR_new_object(MR_Word, ((MR_Integer) 2 * sizeof(MR_Word)), NULL, NULL));
+                  MR_hl_field(MR_mktag(1), mercury__lexer__STATE_VARIABLE_RevOctalChars_26_26, 0) = ((MR_Box) (MR_Word) (mercury__lexer__Char_20));
+                  MR_hl_field(MR_mktag(1), mercury__lexer__STATE_VARIABLE_RevOctalChars_26_26, 1) = ((MR_Box) (mercury__lexer__STATE_VARIABLE_RevOctalChars_0_22));
+                }
+                /* direct tailcall eliminated */
+                {
+                  MR_Word mercury__lexer__next_value_of_STATE_VARIABLE_RevOctalChars_0_22 = mercury__lexer__STATE_VARIABLE_RevOctalChars_26_26;
+                  MR_Word mercury__lexer__next_value_of_STATE_VARIABLE_Posn_0_23 = mercury__lexer__STATE_VARIABLE_Posn_25_25;
+
+                  mercury__lexer__STATE_VARIABLE_Posn_0_23 = mercury__lexer__next_value_of_STATE_VARIABLE_Posn_0_23;
+                  mercury__lexer__STATE_VARIABLE_RevOctalChars_0_22 = mercury__lexer__next_value_of_STATE_VARIABLE_RevOctalChars_0_22;
+                }
+                continue;
+              }
+            else
+              {
+                mercury__lexer__succeeded = (mercury__lexer__Char_20 == (MR_Char) 92);
+                if (mercury__lexer__succeeded)
+                  if ((mercury__lexer__STATE_VARIABLE_RevOctalChars_0_22 == ((MR_Word) MR_mkword(MR_mktag(0), MR_mkbody((MR_Integer) 0)))))
+                    {
+                      *mercury__lexer__Token_17 = (MR_Word) MR_mkword(MR_mktag(3), &mercury__lexer_scalar_common_4[17]);
+                      {
+                        mercury__lexer__string_get_context_4_p_0(mercury__lexer__Posn0_16, mercury__lexer__Context_18, mercury__lexer__STATE_VARIABLE_Posn_25_25, mercury__lexer__STATE_VARIABLE_Posn_24);
+                      }
+                    }
+                  else
+                    {
+                      MR_Integer mercury__lexer__Int_64;
+                      MR_Char mercury__lexer__Char_65;
+                      MR_String mercury__lexer__OctalString_63;
+                      MR_Integer mercury__lexer__Var_66;
+
+                      {
+                        mercury__lexer__succeeded = mercury__lexer__rev_char_list_to_string_2_p_0(mercury__lexer__STATE_VARIABLE_RevOctalChars_0_22, &mercury__lexer__OctalString_63);
+                      }
+                      if (mercury__lexer__succeeded)
+                        {
+                          mercury__lexer__Var_66 = (MR_Integer) 8;
+                          {
+                            mercury__lexer__succeeded = mercury__string__base_string_to_int_3_p_0(mercury__lexer__Var_66, mercury__lexer__OctalString_63, &mercury__lexer__Int_64);
+                          }
+                          if (mercury__lexer__succeeded)
+                            {
+                              mercury__lexer__succeeded = mercury__char__to_int_2_p_2(&mercury__lexer__Char_65, mercury__lexer__Int_64);
+                            }
+                        }
+                      if (mercury__lexer__succeeded)
+                        {
+                          mercury__lexer__succeeded = (mercury__lexer__Int_64 == (MR_Integer) 0);
+                          if (mercury__lexer__succeeded)
+                            {
+                              {
+                                *mercury__lexer__Token_17 = mercury__lexer__null_character_error_0_f_0();
+                              }
+                              {
+                                mercury__lexer__string_get_context_4_p_0(mercury__lexer__Posn0_16, mercury__lexer__Context_18, mercury__lexer__STATE_VARIABLE_Posn_25_25, mercury__lexer__STATE_VARIABLE_Posn_24);
+                              }
+                            }
+                          else
+                            {
+                              MR_Word mercury__lexer__STATE_VARIABLE_RevChars_31_76;
+
+                              {
+                                mercury__lexer__STATE_VARIABLE_RevChars_31_76 = (MR_Word) MR_mkword(MR_mktag(1), MR_new_object(MR_Word, ((MR_Integer) 2 * sizeof(MR_Word)), NULL, NULL));
+                                MR_hl_field(MR_mktag(1), mercury__lexer__STATE_VARIABLE_RevChars_31_76, 0) = ((MR_Box) (MR_Word) (mercury__lexer__Char_65));
+                                MR_hl_field(MR_mktag(1), mercury__lexer__STATE_VARIABLE_RevChars_31_76, 1) = ((MR_Box) (mercury__lexer__STATE_VARIABLE_RevChars_0_21));
+                              }
+                              {
+                                mercury__lexer__string_get_quoted_name_9_p_0(mercury__lexer__String_11, mercury__lexer__Len_12, mercury__lexer__QuoteChar_13, mercury__lexer__STATE_VARIABLE_RevChars_31_76, mercury__lexer__Posn0_16, mercury__lexer__Token_17, mercury__lexer__Context_18, mercury__lexer__STATE_VARIABLE_Posn_25_25, mercury__lexer__STATE_VARIABLE_Posn_24);
+                              }
+                            }
+                        }
+                      else
+                        {
+                          *mercury__lexer__Token_17 = (MR_Word) MR_mkword(MR_mktag(3), &mercury__lexer_scalar_common_4[18]);
+                          {
+                            mercury__lexer__string_get_context_4_p_0(mercury__lexer__Posn0_16, mercury__lexer__Context_18, mercury__lexer__STATE_VARIABLE_Posn_25_25, mercury__lexer__STATE_VARIABLE_Posn_24);
+                          }
+                        }
+                    }
+                else
+                  {
+                    MR_Integer mercury__lexer__Var_88;
+                    MR_Integer mercury__lexer__Var_89;
+
+                    *mercury__lexer__Context_18 = ((MR_Integer) (MR_hl_field(MR_mktag(0), mercury__lexer__Posn0_16, (MR_Integer) 0)));
+                    mercury__lexer__Var_88 = ((MR_Integer) (MR_hl_field(MR_mktag(0), mercury__lexer__Posn0_16, (MR_Integer) 1)));
+                    mercury__lexer__Var_89 = ((MR_Integer) (MR_hl_field(MR_mktag(0), mercury__lexer__Posn0_16, (MR_Integer) 2)));
+                    *mercury__lexer__STATE_VARIABLE_Posn_24 = mercury__lexer__STATE_VARIABLE_Posn_25_25;
+                    *mercury__lexer__Token_17 = (MR_Word) MR_mkword(MR_mktag(3), &mercury__lexer_scalar_common_4[19]);
+                  }
+              }
+          }
+        else
+          {
+            *mercury__lexer__Token_17 = (MR_Word) MR_mkword(MR_mktag(0), MR_mkbody((MR_Integer) 10));
+            {
+              mercury__lexer__string_get_context_4_p_0(mercury__lexer__Posn0_16, mercury__lexer__Context_18, mercury__lexer__STATE_VARIABLE_Posn_0_23, mercury__lexer__STATE_VARIABLE_Posn_24);
+            }
+          }
+      }
+      break;
+    }
+}
+
+static void MR_CALL 
+mercury__lexer__get_octal_escape_7_p_0(
+  MR_Word mercury__lexer__Stream_8,
+  MR_Char mercury__lexer__QuoteChar_9,
+  MR_Word mercury__lexer__STATE_VARIABLE_RevChars_0_17,
+  MR_Word mercury__lexer__STATE_VARIABLE_RevOctalChars_0_18,
+  MR_Word * mercury__lexer__Token_12)
+{
+  while (MR_TRUE)
+    {
+      /* tailcall optimized into a loop */
+      {
+        MR_bool mercury__lexer__succeeded;
+        MR_Word mercury__lexer__Result_14;
+        MR_Char mercury__lexer__Char_15;
+        MR_Word mercury__lexer__V_10_38;
+        MR_Box mercury__lexer__V_11_39;
+        MR_Box mercury__lexer__V_7_48 = (MR_Box) mercury__lexer__Stream_8;
+
+        {
+          mercury__io__read_char_code_2_6_p_0(mercury__lexer__V_7_48, &mercury__lexer__V_10_38, &mercury__lexer__Char_15, &mercury__lexer__V_11_39);
+        }
+        switch (mercury__lexer__V_10_38) {
+          default: /*NOTREACHED*/ MR_assert(0);
+          case (MR_Integer) 1:
+            mercury__lexer__Result_14 = (MR_Word) MR_mkword(MR_mktag(0), MR_mkbody((MR_Integer) 1));
+            break;
+          case (MR_Integer) 2:
+            {
+              MR_String mercury__lexer__V_12_41;
+              MR_Word mercury__lexer__V_17_42;
+
+{
+#define MR_PROC_LABEL mercury__lexer__get_octal_escape_7_p_0
+
+	MR_Integer Error;
+	MR_String Msg0;
+	MR_String Msg;
+
+	MR_MAYBE_UNBOX_FOREIGN_TYPE(MR_Integer, mercury__lexer__V_11_39 , Error);
+	Msg0 =  (MR_String) "read failed: " ;
+		{
+
+    ML_make_err_msg(Error, Msg0, MR_ALLOC_ID, Msg);
+
+
+		;}
+#undef MR_PROC_LABEL
+	 mercury__lexer__V_12_41  = Msg;
+}
+              mercury__lexer__V_17_42 = (MR_Word) mercury__lexer__V_12_41;
+              {
+                mercury__lexer__Result_14 = (MR_Word) MR_mkword(MR_mktag(1), MR_new_object(MR_Word, ((MR_Integer) 1 * sizeof(MR_Word)), NULL, NULL));
+                MR_hl_field(MR_mktag(1), mercury__lexer__Result_14, 0) = ((MR_Box) (mercury__lexer__V_17_42));
+              }
+            }
+            break;
+          case (MR_Integer) 0:
+            mercury__lexer__Result_14 = (MR_Word) MR_mkword(MR_mktag(0), MR_mkbody((MR_Integer) 0));
+            break;
+        }
+        switch (MR_tag((MR_Word) mercury__lexer__Result_14)) {
+          default: /*NOTREACHED*/ MR_assert(0);
+          case (MR_Integer) 0:
+            switch (MR_unmkbody(mercury__lexer__Result_14)) {
+              default: /*NOTREACHED*/ MR_assert(0);
+              case (MR_Integer) 0:
+                {
+                  {
+                    mercury__lexer__succeeded = mercury__char__is_octal_digit_1_p_0(mercury__lexer__Char_15);
+                  }
+                  if (mercury__lexer__succeeded)
+                    {
+                      MR_Word mercury__lexer__STATE_VARIABLE_RevOctalChars_22_28;
+
+                      {
+                        mercury__lexer__STATE_VARIABLE_RevOctalChars_22_28 = (MR_Word) MR_mkword(MR_mktag(1), MR_new_object(MR_Word, ((MR_Integer) 2 * sizeof(MR_Word)), NULL, NULL));
+                        MR_hl_field(MR_mktag(1), mercury__lexer__STATE_VARIABLE_RevOctalChars_22_28, 0) = ((MR_Box) (MR_Word) (mercury__lexer__Char_15));
+                        MR_hl_field(MR_mktag(1), mercury__lexer__STATE_VARIABLE_RevOctalChars_22_28, 1) = ((MR_Box) (mercury__lexer__STATE_VARIABLE_RevOctalChars_0_18));
+                      }
+                      /* direct tailcall eliminated */
+                      {
+                        MR_Word mercury__lexer__next_value_of_STATE_VARIABLE_RevOctalChars_0_18 = mercury__lexer__STATE_VARIABLE_RevOctalChars_22_28;
+
+                        mercury__lexer__STATE_VARIABLE_RevOctalChars_0_18 = mercury__lexer__next_value_of_STATE_VARIABLE_RevOctalChars_0_18;
+                      }
+                      continue;
+                    }
+                  else
+                    {
+                      mercury__lexer__succeeded = (mercury__lexer__Char_15 == (MR_Char) 92);
+                      if (mercury__lexer__succeeded)
+                        if ((mercury__lexer__STATE_VARIABLE_RevOctalChars_0_18 == ((MR_Word) MR_mkword(MR_mktag(0), MR_mkbody((MR_Integer) 0)))))
+                          {
+                            *mercury__lexer__Token_12 = (MR_Word) MR_mkword(MR_mktag(3), &mercury__lexer_scalar_common_4[17]);
+                          }
+                        else
+                          {
+                            MR_Integer mercury__lexer__Int_62;
+                            MR_Char mercury__lexer__Char_63;
+                            MR_String mercury__lexer__OctalString_61;
+                            MR_Integer mercury__lexer__Var_64;
+
+                            {
+                              mercury__lexer__succeeded = mercury__lexer__rev_char_list_to_string_2_p_0(mercury__lexer__STATE_VARIABLE_RevOctalChars_0_18, &mercury__lexer__OctalString_61);
+                            }
+                            if (mercury__lexer__succeeded)
+                              {
+                                mercury__lexer__Var_64 = (MR_Integer) 8;
+                                {
+                                  mercury__lexer__succeeded = mercury__string__base_string_to_int_3_p_0(mercury__lexer__Var_64, mercury__lexer__OctalString_61, &mercury__lexer__Int_62);
+                                }
+                                if (mercury__lexer__succeeded)
+                                  {
+                                    mercury__lexer__succeeded = mercury__char__to_int_2_p_2(&mercury__lexer__Char_63, mercury__lexer__Int_62);
+                                  }
+                              }
+                            if (mercury__lexer__succeeded)
+                              {
+                                mercury__lexer__succeeded = (mercury__lexer__Int_62 == (MR_Integer) 0);
+                                if (mercury__lexer__succeeded)
+                                  {
+                                    *mercury__lexer__Token_12 = mercury__lexer__null_character_error_0_f_0();
+                                  }
+                                else
+                                  {
+                                    MR_Word mercury__lexer__STATE_VARIABLE_RevChars_24_71;
+
+                                    {
+                                      mercury__lexer__STATE_VARIABLE_RevChars_24_71 = (MR_Word) MR_mkword(MR_mktag(1), MR_new_object(MR_Word, ((MR_Integer) 2 * sizeof(MR_Word)), NULL, NULL));
+                                      MR_hl_field(MR_mktag(1), mercury__lexer__STATE_VARIABLE_RevChars_24_71, 0) = ((MR_Box) (MR_Word) (mercury__lexer__Char_63));
+                                      MR_hl_field(MR_mktag(1), mercury__lexer__STATE_VARIABLE_RevChars_24_71, 1) = ((MR_Box) (mercury__lexer__STATE_VARIABLE_RevChars_0_17));
+                                    }
+                                    {
+                                      mercury__lexer__get_quoted_name_6_p_0(mercury__lexer__Stream_8, mercury__lexer__QuoteChar_9, mercury__lexer__STATE_VARIABLE_RevChars_24_71, mercury__lexer__Token_12);
+                                    }
+                                  }
+                              }
+                            else
+                              {
+                                *mercury__lexer__Token_12 = (MR_Word) MR_mkword(MR_mktag(3), &mercury__lexer_scalar_common_4[18]);
+                              }
+                          }
+                      else
+                        {
+                          *mercury__lexer__Token_12 = (MR_Word) MR_mkword(MR_mktag(3), &mercury__lexer_scalar_common_4[19]);
+                        }
+                    }
+                }
+                break;
+              case (MR_Integer) 1:
+                *mercury__lexer__Token_12 = (MR_Word) MR_mkword(MR_mktag(0), MR_mkbody((MR_Integer) 10));
+                break;
+            }
+            break;
+          case (MR_Integer) 1:
+            {
+              MR_Word mercury__lexer__Error_16 = ((MR_Word) (MR_hl_field(MR_mktag(1), mercury__lexer__Result_14, (MR_Integer) 0)));
+
+              {
+                MR_Word base;
+                base = (MR_Word) MR_mkword(MR_mktag(3), MR_new_object(MR_Word, ((MR_Integer) 2 * sizeof(MR_Word)), NULL, NULL));
+                *mercury__lexer__Token_12 = base;
+                MR_hl_field(MR_mktag(3), base, 0) = ((MR_Box) (MR_Word) ((MR_Integer) 6));
+                MR_hl_field(MR_mktag(3), base, 1) = ((MR_Box) (mercury__lexer__Error_16));
+              }
+            }
+            break;
+        }
+      }
+      break;
+    }
+}
+
+static void MR_CALL 
+mercury__lexer__string_get_hex_escape_10_p_0(
+  MR_String mercury__lexer__String_11,
+  MR_Integer mercury__lexer__Len_12,
+  MR_Char mercury__lexer__QuoteChar_13,
+  MR_Word mercury__lexer__STATE_VARIABLE_RevChars_0_21,
+  MR_Word mercury__lexer__STATE_VARIABLE_RevHexChars_0_22,
+  MR_Word mercury__lexer__Posn0_16,
+  MR_Word * mercury__lexer__Token_17,
+  MR_Integer * mercury__lexer__Context_18,
+  MR_Word mercury__lexer__STATE_VARIABLE_Posn_0_23,
+  MR_Word * mercury__lexer__STATE_VARIABLE_Posn_24)
+{
+  while (MR_TRUE)
+    {
+      /* tailcall optimized into a loop */
+      {
+        MR_bool mercury__lexer__succeeded;
+        MR_Char mercury__lexer__Char_20;
+        MR_Word mercury__lexer__STATE_VARIABLE_Posn_25_25;
+        MR_Integer mercury__lexer__LineNum0_41 = ((MR_Integer) (MR_hl_field(MR_mktag(0), mercury__lexer__STATE_VARIABLE_Posn_0_23, (MR_Integer) 0)));
+        MR_Integer mercury__lexer__LineOffset0_42 = ((MR_Integer) (MR_hl_field(MR_mktag(0), mercury__lexer__STATE_VARIABLE_Posn_0_23, (MR_Integer) 1)));
+        MR_Integer mercury__lexer__Offset0_43 = ((MR_Integer) (MR_hl_field(MR_mktag(0), mercury__lexer__STATE_VARIABLE_Posn_0_23, (MR_Integer) 2)));
+        MR_Integer mercury__lexer__Offset_44;
+
+        mercury__lexer__succeeded = (mercury__lexer__Offset0_43 < mercury__lexer__Len_12);
+        if (mercury__lexer__succeeded)
+          {
+{
+#define MR_PROC_LABEL mercury__lexer__string_get_hex_escape_10_p_0
+
+	MR_String Str;
+	MR_Integer Index;
+	MR_Integer NextIndex;
+	MR_Char Ch;
+	MR_bool SUCCESS_INDICATOR;
+
+	Str =  mercury__lexer__String_11 ;
+	Index =  mercury__lexer__Offset0_43 ;
+		{
+
+    Ch = Str[Index];
+    if (MR_is_ascii(Ch)) {
+        NextIndex = Index + 1;
+        SUCCESS_INDICATOR = (Ch != 0);
+    } else {
+        NextIndex = Index;
+        Ch = MR_utf8_get_next_mb(Str, &NextIndex);
+        SUCCESS_INDICATOR = (Ch > 0);
+    }
+
+
+		;}
+#undef MR_PROC_LABEL
+	if (SUCCESS_INDICATOR) {
+	 mercury__lexer__Offset_44  = NextIndex;
+	 mercury__lexer__Char_20  = Ch;
+	}
+mercury__lexer__succeeded  = SUCCESS_INDICATOR;
+}
+            if (mercury__lexer__succeeded)
+              {
+                mercury__lexer__succeeded = (mercury__lexer__Char_20 == (MR_Char) 10);
+                if (mercury__lexer__succeeded)
+                  {
+                    MR_Integer mercury__lexer__LineNum_45 = (mercury__lexer__LineNum0_41 + (MR_Integer) 1);
+
+                    {
+                      mercury__lexer__STATE_VARIABLE_Posn_25_25 = (MR_Word) MR_new_object(MR_Word, ((MR_Integer) 3 * sizeof(MR_Word)), NULL, NULL);
+                      MR_hl_field(MR_mktag(0), mercury__lexer__STATE_VARIABLE_Posn_25_25, 0) = ((MR_Box) (mercury__lexer__LineNum_45));
+                      MR_hl_field(MR_mktag(0), mercury__lexer__STATE_VARIABLE_Posn_25_25, 1) = ((MR_Box) (mercury__lexer__Offset_44));
+                      MR_hl_field(MR_mktag(0), mercury__lexer__STATE_VARIABLE_Posn_25_25, 2) = ((MR_Box) (mercury__lexer__Offset_44));
+                    }
+                  }
+                else
+                  {
+                    mercury__lexer__STATE_VARIABLE_Posn_25_25 = (MR_Word) MR_new_object(MR_Word, ((MR_Integer) 3 * sizeof(MR_Word)), NULL, NULL);
+                    MR_hl_field(MR_mktag(0), mercury__lexer__STATE_VARIABLE_Posn_25_25, 0) = ((MR_Box) (mercury__lexer__LineNum0_41));
+                    MR_hl_field(MR_mktag(0), mercury__lexer__STATE_VARIABLE_Posn_25_25, 1) = ((MR_Box) (mercury__lexer__LineOffset0_42));
+                    MR_hl_field(MR_mktag(0), mercury__lexer__STATE_VARIABLE_Posn_25_25, 2) = ((MR_Box) (mercury__lexer__Offset_44));
+                  }
+                mercury__lexer__succeeded = MR_TRUE;
+              }
+          }
+        if (mercury__lexer__succeeded)
+          {
+            {
+              mercury__lexer__succeeded = mercury__char__is_hex_digit_1_p_0(mercury__lexer__Char_20);
+            }
+            if (mercury__lexer__succeeded)
+              {
+                MR_Word mercury__lexer__STATE_VARIABLE_RevHexChars_26_26;
+
+                {
+                  mercury__lexer__STATE_VARIABLE_RevHexChars_26_26 = (MR_Word) MR_mkword(MR_mktag(1), MR_new_object(MR_Word, ((MR_Integer) 2 * sizeof(MR_Word)), NULL, NULL));
+                  MR_hl_field(MR_mktag(1), mercury__lexer__STATE_VARIABLE_RevHexChars_26_26, 0) = ((MR_Box) (MR_Word) (mercury__lexer__Char_20));
+                  MR_hl_field(MR_mktag(1), mercury__lexer__STATE_VARIABLE_RevHexChars_26_26, 1) = ((MR_Box) (mercury__lexer__STATE_VARIABLE_RevHexChars_0_22));
+                }
+                /* direct tailcall eliminated */
+                {
+                  MR_Word mercury__lexer__next_value_of_STATE_VARIABLE_RevHexChars_0_22 = mercury__lexer__STATE_VARIABLE_RevHexChars_26_26;
+                  MR_Word mercury__lexer__next_value_of_STATE_VARIABLE_Posn_0_23 = mercury__lexer__STATE_VARIABLE_Posn_25_25;
+
+                  mercury__lexer__STATE_VARIABLE_Posn_0_23 = mercury__lexer__next_value_of_STATE_VARIABLE_Posn_0_23;
+                  mercury__lexer__STATE_VARIABLE_RevHexChars_0_22 = mercury__lexer__next_value_of_STATE_VARIABLE_RevHexChars_0_22;
+                }
+                continue;
+              }
+            else
+              {
+                mercury__lexer__succeeded = (mercury__lexer__Char_20 == (MR_Char) 92);
+                if (mercury__lexer__succeeded)
+                  if ((mercury__lexer__STATE_VARIABLE_RevHexChars_0_22 == ((MR_Word) MR_mkword(MR_mktag(0), MR_mkbody((MR_Integer) 0)))))
+                    {
+                      {
+                        mercury__lexer__string_get_context_4_p_0(mercury__lexer__Posn0_16, mercury__lexer__Context_18, mercury__lexer__STATE_VARIABLE_Posn_25_25, mercury__lexer__STATE_VARIABLE_Posn_24);
+                      }
+                      *mercury__lexer__Token_17 = (MR_Word) MR_mkword(MR_mktag(3), &mercury__lexer_scalar_common_4[14]);
+                    }
+                  else
+                    {
+                      MR_Integer mercury__lexer__Int_64;
+                      MR_Char mercury__lexer__Char_65;
+                      MR_String mercury__lexer__HexString_63;
+                      MR_Integer mercury__lexer__Var_66;
+
+                      {
+                        mercury__lexer__succeeded = mercury__lexer__rev_char_list_to_string_2_p_0(mercury__lexer__STATE_VARIABLE_RevHexChars_0_22, &mercury__lexer__HexString_63);
+                      }
+                      if (mercury__lexer__succeeded)
+                        {
+                          mercury__lexer__Var_66 = (MR_Integer) 16;
+                          {
+                            mercury__lexer__succeeded = mercury__string__base_string_to_int_3_p_0(mercury__lexer__Var_66, mercury__lexer__HexString_63, &mercury__lexer__Int_64);
+                          }
+                          if (mercury__lexer__succeeded)
+                            {
+                              mercury__lexer__succeeded = mercury__char__to_int_2_p_2(&mercury__lexer__Char_65, mercury__lexer__Int_64);
+                            }
+                        }
+                      if (mercury__lexer__succeeded)
+                        {
+                          mercury__lexer__succeeded = (mercury__lexer__Int_64 == (MR_Integer) 0);
+                          if (mercury__lexer__succeeded)
+                            {
+                              {
+                                *mercury__lexer__Token_17 = mercury__lexer__null_character_error_0_f_0();
+                              }
+                              {
+                                mercury__lexer__string_get_context_4_p_0(mercury__lexer__Posn0_16, mercury__lexer__Context_18, mercury__lexer__STATE_VARIABLE_Posn_25_25, mercury__lexer__STATE_VARIABLE_Posn_24);
+                              }
+                            }
+                          else
+                            {
+                              MR_Word mercury__lexer__STATE_VARIABLE_RevChars_31_76;
+
+                              {
+                                mercury__lexer__STATE_VARIABLE_RevChars_31_76 = (MR_Word) MR_mkword(MR_mktag(1), MR_new_object(MR_Word, ((MR_Integer) 2 * sizeof(MR_Word)), NULL, NULL));
+                                MR_hl_field(MR_mktag(1), mercury__lexer__STATE_VARIABLE_RevChars_31_76, 0) = ((MR_Box) (MR_Word) (mercury__lexer__Char_65));
+                                MR_hl_field(MR_mktag(1), mercury__lexer__STATE_VARIABLE_RevChars_31_76, 1) = ((MR_Box) (mercury__lexer__STATE_VARIABLE_RevChars_0_21));
+                              }
+                              {
+                                mercury__lexer__string_get_quoted_name_9_p_0(mercury__lexer__String_11, mercury__lexer__Len_12, mercury__lexer__QuoteChar_13, mercury__lexer__STATE_VARIABLE_RevChars_31_76, mercury__lexer__Posn0_16, mercury__lexer__Token_17, mercury__lexer__Context_18, mercury__lexer__STATE_VARIABLE_Posn_25_25, mercury__lexer__STATE_VARIABLE_Posn_24);
+                              }
+                            }
+                        }
+                      else
+                        {
+                          {
+                            mercury__lexer__string_get_context_4_p_0(mercury__lexer__Posn0_16, mercury__lexer__Context_18, mercury__lexer__STATE_VARIABLE_Posn_25_25, mercury__lexer__STATE_VARIABLE_Posn_24);
+                          }
+                          *mercury__lexer__Token_17 = (MR_Word) MR_mkword(MR_mktag(3), &mercury__lexer_scalar_common_4[15]);
+                        }
+                    }
+                else
+                  {
+                    MR_Integer mercury__lexer__Var_88;
+                    MR_Integer mercury__lexer__Var_89;
+
+                    *mercury__lexer__Context_18 = ((MR_Integer) (MR_hl_field(MR_mktag(0), mercury__lexer__Posn0_16, (MR_Integer) 0)));
+                    mercury__lexer__Var_88 = ((MR_Integer) (MR_hl_field(MR_mktag(0), mercury__lexer__Posn0_16, (MR_Integer) 1)));
+                    mercury__lexer__Var_89 = ((MR_Integer) (MR_hl_field(MR_mktag(0), mercury__lexer__Posn0_16, (MR_Integer) 2)));
+                    *mercury__lexer__STATE_VARIABLE_Posn_24 = mercury__lexer__STATE_VARIABLE_Posn_25_25;
+                    *mercury__lexer__Token_17 = (MR_Word) MR_mkword(MR_mktag(3), &mercury__lexer_scalar_common_4[16]);
+                  }
+              }
+          }
+        else
+          {
+            {
+              mercury__lexer__string_get_context_4_p_0(mercury__lexer__Posn0_16, mercury__lexer__Context_18, mercury__lexer__STATE_VARIABLE_Posn_0_23, mercury__lexer__STATE_VARIABLE_Posn_24);
+            }
+            *mercury__lexer__Token_17 = (MR_Word) MR_mkword(MR_mktag(0), MR_mkbody((MR_Integer) 10));
+          }
+      }
+      break;
+    }
+}
+
+static void MR_CALL 
+mercury__lexer__get_hex_escape_7_p_0(
+  MR_Word mercury__lexer__Stream_8,
+  MR_Char mercury__lexer__QuoteChar_9,
+  MR_Word mercury__lexer__STATE_VARIABLE_RevChars_0_17,
+  MR_Word mercury__lexer__STATE_VARIABLE_RevHexChars_0_18,
+  MR_Word * mercury__lexer__Token_12)
+{
+  while (MR_TRUE)
+    {
+      /* tailcall optimized into a loop */
+      {
+        MR_bool mercury__lexer__succeeded;
+        MR_Word mercury__lexer__Result_14;
+        MR_Char mercury__lexer__Char_15;
+        MR_Word mercury__lexer__V_10_38;
+        MR_Box mercury__lexer__V_11_39;
+        MR_Box mercury__lexer__V_7_48 = (MR_Box) mercury__lexer__Stream_8;
+
+        {
+          mercury__io__read_char_code_2_6_p_0(mercury__lexer__V_7_48, &mercury__lexer__V_10_38, &mercury__lexer__Char_15, &mercury__lexer__V_11_39);
+        }
+        switch (mercury__lexer__V_10_38) {
+          default: /*NOTREACHED*/ MR_assert(0);
+          case (MR_Integer) 1:
+            mercury__lexer__Result_14 = (MR_Word) MR_mkword(MR_mktag(0), MR_mkbody((MR_Integer) 1));
+            break;
+          case (MR_Integer) 2:
+            {
+              MR_String mercury__lexer__V_12_41;
+              MR_Word mercury__lexer__V_17_42;
+
+{
+#define MR_PROC_LABEL mercury__lexer__get_hex_escape_7_p_0
+
+	MR_Integer Error;
+	MR_String Msg0;
+	MR_String Msg;
+
+	MR_MAYBE_UNBOX_FOREIGN_TYPE(MR_Integer, mercury__lexer__V_11_39 , Error);
+	Msg0 =  (MR_String) "read failed: " ;
+		{
+
+    ML_make_err_msg(Error, Msg0, MR_ALLOC_ID, Msg);
+
+
+		;}
+#undef MR_PROC_LABEL
+	 mercury__lexer__V_12_41  = Msg;
+}
+              mercury__lexer__V_17_42 = (MR_Word) mercury__lexer__V_12_41;
+              {
+                mercury__lexer__Result_14 = (MR_Word) MR_mkword(MR_mktag(1), MR_new_object(MR_Word, ((MR_Integer) 1 * sizeof(MR_Word)), NULL, NULL));
+                MR_hl_field(MR_mktag(1), mercury__lexer__Result_14, 0) = ((MR_Box) (mercury__lexer__V_17_42));
+              }
+            }
+            break;
+          case (MR_Integer) 0:
+            mercury__lexer__Result_14 = (MR_Word) MR_mkword(MR_mktag(0), MR_mkbody((MR_Integer) 0));
+            break;
+        }
+        switch (MR_tag((MR_Word) mercury__lexer__Result_14)) {
+          default: /*NOTREACHED*/ MR_assert(0);
+          case (MR_Integer) 0:
+            switch (MR_unmkbody(mercury__lexer__Result_14)) {
+              default: /*NOTREACHED*/ MR_assert(0);
+              case (MR_Integer) 0:
+                {
+                  {
+                    mercury__lexer__succeeded = mercury__char__is_hex_digit_1_p_0(mercury__lexer__Char_15);
+                  }
+                  if (mercury__lexer__succeeded)
+                    {
+                      MR_Word mercury__lexer__STATE_VARIABLE_RevHexChars_22_28;
+
+                      {
+                        mercury__lexer__STATE_VARIABLE_RevHexChars_22_28 = (MR_Word) MR_mkword(MR_mktag(1), MR_new_object(MR_Word, ((MR_Integer) 2 * sizeof(MR_Word)), NULL, NULL));
+                        MR_hl_field(MR_mktag(1), mercury__lexer__STATE_VARIABLE_RevHexChars_22_28, 0) = ((MR_Box) (MR_Word) (mercury__lexer__Char_15));
+                        MR_hl_field(MR_mktag(1), mercury__lexer__STATE_VARIABLE_RevHexChars_22_28, 1) = ((MR_Box) (mercury__lexer__STATE_VARIABLE_RevHexChars_0_18));
+                      }
+                      /* direct tailcall eliminated */
+                      {
+                        MR_Word mercury__lexer__next_value_of_STATE_VARIABLE_RevHexChars_0_18 = mercury__lexer__STATE_VARIABLE_RevHexChars_22_28;
+
+                        mercury__lexer__STATE_VARIABLE_RevHexChars_0_18 = mercury__lexer__next_value_of_STATE_VARIABLE_RevHexChars_0_18;
+                      }
+                      continue;
+                    }
+                  else
+                    {
+                      mercury__lexer__succeeded = (mercury__lexer__Char_15 == (MR_Char) 92);
+                      if (mercury__lexer__succeeded)
+                        if ((mercury__lexer__STATE_VARIABLE_RevHexChars_0_18 == ((MR_Word) MR_mkword(MR_mktag(0), MR_mkbody((MR_Integer) 0)))))
+                          {
+                            *mercury__lexer__Token_12 = (MR_Word) MR_mkword(MR_mktag(3), &mercury__lexer_scalar_common_4[14]);
+                          }
+                        else
+                          {
+                            MR_Integer mercury__lexer__Int_62;
+                            MR_Char mercury__lexer__Char_63;
+                            MR_String mercury__lexer__HexString_61;
+                            MR_Integer mercury__lexer__Var_64;
+
+                            {
+                              mercury__lexer__succeeded = mercury__lexer__rev_char_list_to_string_2_p_0(mercury__lexer__STATE_VARIABLE_RevHexChars_0_18, &mercury__lexer__HexString_61);
+                            }
+                            if (mercury__lexer__succeeded)
+                              {
+                                mercury__lexer__Var_64 = (MR_Integer) 16;
+                                {
+                                  mercury__lexer__succeeded = mercury__string__base_string_to_int_3_p_0(mercury__lexer__Var_64, mercury__lexer__HexString_61, &mercury__lexer__Int_62);
+                                }
+                                if (mercury__lexer__succeeded)
+                                  {
+                                    mercury__lexer__succeeded = mercury__char__to_int_2_p_2(&mercury__lexer__Char_63, mercury__lexer__Int_62);
+                                  }
+                              }
+                            if (mercury__lexer__succeeded)
+                              {
+                                mercury__lexer__succeeded = (mercury__lexer__Int_62 == (MR_Integer) 0);
+                                if (mercury__lexer__succeeded)
+                                  {
+                                    *mercury__lexer__Token_12 = mercury__lexer__null_character_error_0_f_0();
+                                  }
+                                else
+                                  {
+                                    MR_Word mercury__lexer__STATE_VARIABLE_RevChars_24_71;
+
+                                    {
+                                      mercury__lexer__STATE_VARIABLE_RevChars_24_71 = (MR_Word) MR_mkword(MR_mktag(1), MR_new_object(MR_Word, ((MR_Integer) 2 * sizeof(MR_Word)), NULL, NULL));
+                                      MR_hl_field(MR_mktag(1), mercury__lexer__STATE_VARIABLE_RevChars_24_71, 0) = ((MR_Box) (MR_Word) (mercury__lexer__Char_63));
+                                      MR_hl_field(MR_mktag(1), mercury__lexer__STATE_VARIABLE_RevChars_24_71, 1) = ((MR_Box) (mercury__lexer__STATE_VARIABLE_RevChars_0_17));
+                                    }
+                                    {
+                                      mercury__lexer__get_quoted_name_6_p_0(mercury__lexer__Stream_8, mercury__lexer__QuoteChar_9, mercury__lexer__STATE_VARIABLE_RevChars_24_71, mercury__lexer__Token_12);
+                                    }
+                                  }
+                              }
+                            else
+                              {
+                                *mercury__lexer__Token_12 = (MR_Word) MR_mkword(MR_mktag(3), &mercury__lexer_scalar_common_4[15]);
+                              }
+                          }
+                      else
+                        {
+                          *mercury__lexer__Token_12 = (MR_Word) MR_mkword(MR_mktag(3), &mercury__lexer_scalar_common_4[16]);
+                        }
+                    }
+                }
+                break;
+              case (MR_Integer) 1:
+                *mercury__lexer__Token_12 = (MR_Word) MR_mkword(MR_mktag(0), MR_mkbody((MR_Integer) 10));
+                break;
+            }
+            break;
+          case (MR_Integer) 1:
+            {
+              MR_Word mercury__lexer__Error_16 = ((MR_Word) (MR_hl_field(MR_mktag(1), mercury__lexer__Result_14, (MR_Integer) 0)));
+
+              {
+                MR_Word base;
+                base = (MR_Word) MR_mkword(MR_mktag(3), MR_new_object(MR_Word, ((MR_Integer) 2 * sizeof(MR_Word)), NULL, NULL));
+                *mercury__lexer__Token_12 = base;
+                MR_hl_field(MR_mktag(3), base, 0) = ((MR_Box) (MR_Word) ((MR_Integer) 6));
+                MR_hl_field(MR_mktag(3), base, 1) = ((MR_Box) (mercury__lexer__Error_16));
+              }
+            }
+            break;
+        }
+      }
+      break;
+    }
+}
+
+static void MR_CALL 
+mercury__lexer__string_get_unicode_escape_11_p_0(
+  MR_Integer mercury__lexer__NumHexChars_12,
+  MR_String mercury__lexer__String_13,
+  MR_Integer mercury__lexer__Len_14,
+  MR_Char mercury__lexer__QuoteChar_15,
+  MR_Word mercury__lexer__STATE_VARIABLE_RevChars_0_26,
+  MR_Word mercury__lexer__STATE_VARIABLE_RevHexChars_0_27,
+  MR_Word mercury__lexer__Posn0_18,
+  MR_Word * mercury__lexer__Token_19,
+  MR_Integer * mercury__lexer__Context_20,
+  MR_Word mercury__lexer__STATE_VARIABLE_Posn_0_28,
+  MR_Word * mercury__lexer__STATE_VARIABLE_Posn_29)
+{
+  while (MR_TRUE)
+    {
+      /* tailcall optimized into a loop */
+      {
+        MR_bool mercury__lexer__succeeded;
+        MR_Word mercury__lexer__TypeCtorInfo_55_55 = (MR_Word) &mercury__builtin__builtin__type_ctor_info_character_0;
+        MR_Integer mercury__lexer__Var_56;
+
+        {
+          mercury__list__length_acc_3_p_0(mercury__lexer__TypeCtorInfo_55_55, mercury__lexer__STATE_VARIABLE_RevHexChars_0_27, (MR_Integer) 0, &mercury__lexer__Var_56);
+        }
+        mercury__lexer__succeeded = (mercury__lexer__NumHexChars_12 == mercury__lexer__Var_56);
+        if (mercury__lexer__succeeded)
+          {
+            MR_Integer mercury__lexer__UnicodeCharCode_23;
+            MR_Char mercury__lexer__UnicodeChar_24;
+            MR_String mercury__lexer__HexString_22;
+            MR_Integer mercury__lexer__Var_30;
+            MR_Integer mercury__lexer__Var_65;
+            MR_Integer mercury__lexer__Var_66;
+            MR_Integer mercury__lexer__Var_67;
+            MR_Integer mercury__lexer__Var_68;
+
+            {
+              mercury__lexer__succeeded = mercury__string__semidet_from_rev_char_list_2_p_0(mercury__lexer__STATE_VARIABLE_RevHexChars_0_27, &mercury__lexer__HexString_22);
+            }
+            if (mercury__lexer__succeeded)
+              {
+                mercury__lexer__Var_30 = (MR_Integer) 16;
+                {
+                  mercury__lexer__succeeded = mercury__string__base_string_to_int_3_p_0(mercury__lexer__Var_30, mercury__lexer__HexString_22, &mercury__lexer__UnicodeCharCode_23);
+                }
+                if (mercury__lexer__succeeded)
+                  {
+                    mercury__lexer__Var_65 = (MR_Integer) 0;
+                    mercury__lexer__succeeded = (mercury__lexer__UnicodeCharCode_23 >= mercury__lexer__Var_65);
+                    if (mercury__lexer__succeeded)
+                      {
+                        mercury__lexer__Var_66 = (MR_Integer) 1114111;
+                        mercury__lexer__succeeded = (mercury__lexer__UnicodeCharCode_23 <= mercury__lexer__Var_66);
+                        if (mercury__lexer__succeeded)
+                          {
+                            mercury__lexer__Var_67 = (MR_Integer) 55296;
+                            mercury__lexer__succeeded = (mercury__lexer__UnicodeCharCode_23 >= mercury__lexer__Var_67);
+                            if (mercury__lexer__succeeded)
+                              {
+                                mercury__lexer__Var_68 = (MR_Integer) 57343;
+                                mercury__lexer__succeeded = (mercury__lexer__UnicodeCharCode_23 <= mercury__lexer__Var_68);
+                              }
+                            mercury__lexer__succeeded = !(mercury__lexer__succeeded);
+                            if (mercury__lexer__succeeded)
+                              {
+{
+#define MR_PROC_LABEL mercury__lexer__string_get_unicode_escape_11_p_0
+
+	MR_Char Character;
+	MR_Integer Int;
+	MR_bool SUCCESS_INDICATOR;
+
+	Int =  mercury__lexer__UnicodeCharCode_23 ;
+		{
+
+    Character = Int;
+    SUCCESS_INDICATOR = (Character >= 0 && Character <= 0x10ffff);
+
+
+		;}
+#undef MR_PROC_LABEL
+	if (SUCCESS_INDICATOR) {
+	 mercury__lexer__UnicodeChar_24  = Character;
+	}
+mercury__lexer__succeeded  = SUCCESS_INDICATOR;
+}
+                              }
+                          }
+                      }
+                  }
+              }
+            if (mercury__lexer__succeeded)
+              {
+                mercury__lexer__succeeded = (mercury__lexer__UnicodeCharCode_23 == (MR_Integer) 0);
+                if (mercury__lexer__succeeded)
+                  {
+                    MR_Integer mercury__lexer__Var_77;
+                    MR_Integer mercury__lexer__Var_78;
+
+                    *mercury__lexer__Context_20 = ((MR_Integer) (MR_hl_field(MR_mktag(0), mercury__lexer__Posn0_18, (MR_Integer) 0)));
+                    mercury__lexer__Var_77 = ((MR_Integer) (MR_hl_field(MR_mktag(0), mercury__lexer__Posn0_18, (MR_Integer) 1)));
+                    mercury__lexer__Var_78 = ((MR_Integer) (MR_hl_field(MR_mktag(0), mercury__lexer__Posn0_18, (MR_Integer) 2)));
+                    *mercury__lexer__STATE_VARIABLE_Posn_29 = mercury__lexer__STATE_VARIABLE_Posn_0_28;
+                    *mercury__lexer__Token_19 = (MR_Word) MR_mkword(MR_mktag(3), &mercury__lexer_scalar_common_4[11]);
+                  }
+                else
+                  {
+                    MR_Word mercury__lexer__STATE_VARIABLE_RevChars_32_42;
+
+                    {
+                      mercury__lexer__STATE_VARIABLE_RevChars_32_42 = (MR_Word) MR_mkword(MR_mktag(1), MR_new_object(MR_Word, ((MR_Integer) 2 * sizeof(MR_Word)), NULL, NULL));
+                      MR_hl_field(MR_mktag(1), mercury__lexer__STATE_VARIABLE_RevChars_32_42, 0) = ((MR_Box) (MR_Word) (mercury__lexer__UnicodeChar_24));
+                      MR_hl_field(MR_mktag(1), mercury__lexer__STATE_VARIABLE_RevChars_32_42, 1) = ((MR_Box) (mercury__lexer__STATE_VARIABLE_RevChars_0_26));
+                    }
+                    {
+                      mercury__lexer__string_get_quoted_name_9_p_0(mercury__lexer__String_13, mercury__lexer__Len_14, mercury__lexer__QuoteChar_15, mercury__lexer__STATE_VARIABLE_RevChars_32_42, mercury__lexer__Posn0_18, mercury__lexer__Token_19, mercury__lexer__Context_20, mercury__lexer__STATE_VARIABLE_Posn_0_28, mercury__lexer__STATE_VARIABLE_Posn_29);
+                    }
+                  }
+              }
+            else
+              {
+                MR_Integer mercury__lexer__Var_86;
+                MR_Integer mercury__lexer__Var_87;
+
+                *mercury__lexer__Context_20 = ((MR_Integer) (MR_hl_field(MR_mktag(0), mercury__lexer__Posn0_18, (MR_Integer) 0)));
+                mercury__lexer__Var_86 = ((MR_Integer) (MR_hl_field(MR_mktag(0), mercury__lexer__Posn0_18, (MR_Integer) 1)));
+                mercury__lexer__Var_87 = ((MR_Integer) (MR_hl_field(MR_mktag(0), mercury__lexer__Posn0_18, (MR_Integer) 2)));
+                *mercury__lexer__STATE_VARIABLE_Posn_29 = mercury__lexer__STATE_VARIABLE_Posn_0_28;
+                *mercury__lexer__Token_19 = (MR_Word) MR_mkword(MR_mktag(3), &mercury__lexer_scalar_common_4[12]);
+              }
+          }
+        else
+          {
+            MR_Char mercury__lexer__Char_25;
+            MR_Word mercury__lexer__STATE_VARIABLE_Posn_36_36;
+            MR_Integer mercury__lexer__LineNum0_93 = ((MR_Integer) (MR_hl_field(MR_mktag(0), mercury__lexer__STATE_VARIABLE_Posn_0_28, (MR_Integer) 0)));
+            MR_Integer mercury__lexer__LineOffset0_94 = ((MR_Integer) (MR_hl_field(MR_mktag(0), mercury__lexer__STATE_VARIABLE_Posn_0_28, (MR_Integer) 1)));
+            MR_Integer mercury__lexer__Offset0_95 = ((MR_Integer) (MR_hl_field(MR_mktag(0), mercury__lexer__STATE_VARIABLE_Posn_0_28, (MR_Integer) 2)));
+            MR_Integer mercury__lexer__Offset_96;
+
+            mercury__lexer__succeeded = (mercury__lexer__Offset0_95 < mercury__lexer__Len_14);
+            if (mercury__lexer__succeeded)
+              {
+{
+#define MR_PROC_LABEL mercury__lexer__string_get_unicode_escape_11_p_0
+
+	MR_String Str;
+	MR_Integer Index;
+	MR_Integer NextIndex;
+	MR_Char Ch;
+	MR_bool SUCCESS_INDICATOR;
+
+	Str =  mercury__lexer__String_13 ;
+	Index =  mercury__lexer__Offset0_95 ;
+		{
+
+    Ch = Str[Index];
+    if (MR_is_ascii(Ch)) {
+        NextIndex = Index + 1;
+        SUCCESS_INDICATOR = (Ch != 0);
+    } else {
+        NextIndex = Index;
+        Ch = MR_utf8_get_next_mb(Str, &NextIndex);
+        SUCCESS_INDICATOR = (Ch > 0);
+    }
+
+
+		;}
+#undef MR_PROC_LABEL
+	if (SUCCESS_INDICATOR) {
+	 mercury__lexer__Offset_96  = NextIndex;
+	 mercury__lexer__Char_25  = Ch;
+	}
+mercury__lexer__succeeded  = SUCCESS_INDICATOR;
+}
+                if (mercury__lexer__succeeded)
+                  {
+                    mercury__lexer__succeeded = (mercury__lexer__Char_25 == (MR_Char) 10);
+                    if (mercury__lexer__succeeded)
+                      {
+                        MR_Integer mercury__lexer__LineNum_97 = (mercury__lexer__LineNum0_93 + (MR_Integer) 1);
+
+                        {
+                          mercury__lexer__STATE_VARIABLE_Posn_36_36 = (MR_Word) MR_new_object(MR_Word, ((MR_Integer) 3 * sizeof(MR_Word)), NULL, NULL);
+                          MR_hl_field(MR_mktag(0), mercury__lexer__STATE_VARIABLE_Posn_36_36, 0) = ((MR_Box) (mercury__lexer__LineNum_97));
+                          MR_hl_field(MR_mktag(0), mercury__lexer__STATE_VARIABLE_Posn_36_36, 1) = ((MR_Box) (mercury__lexer__Offset_96));
+                          MR_hl_field(MR_mktag(0), mercury__lexer__STATE_VARIABLE_Posn_36_36, 2) = ((MR_Box) (mercury__lexer__Offset_96));
+                        }
+                      }
+                    else
+                      {
+                        mercury__lexer__STATE_VARIABLE_Posn_36_36 = (MR_Word) MR_new_object(MR_Word, ((MR_Integer) 3 * sizeof(MR_Word)), NULL, NULL);
+                        MR_hl_field(MR_mktag(0), mercury__lexer__STATE_VARIABLE_Posn_36_36, 0) = ((MR_Box) (mercury__lexer__LineNum0_93));
+                        MR_hl_field(MR_mktag(0), mercury__lexer__STATE_VARIABLE_Posn_36_36, 1) = ((MR_Box) (mercury__lexer__LineOffset0_94));
+                        MR_hl_field(MR_mktag(0), mercury__lexer__STATE_VARIABLE_Posn_36_36, 2) = ((MR_Box) (mercury__lexer__Offset_96));
+                      }
+                    mercury__lexer__succeeded = MR_TRUE;
+                  }
+              }
+            if (mercury__lexer__succeeded)
+              {
+                {
+                  mercury__lexer__succeeded = mercury__char__is_hex_digit_1_p_0(mercury__lexer__Char_25);
+                }
+                if (mercury__lexer__succeeded)
+                  {
+                    MR_Word mercury__lexer__STATE_VARIABLE_RevHexChars_37_45;
+
+                    {
+                      mercury__lexer__STATE_VARIABLE_RevHexChars_37_45 = (MR_Word) MR_mkword(MR_mktag(1), MR_new_object(MR_Word, ((MR_Integer) 2 * sizeof(MR_Word)), NULL, NULL));
+                      MR_hl_field(MR_mktag(1), mercury__lexer__STATE_VARIABLE_RevHexChars_37_45, 0) = ((MR_Box) (MR_Word) (mercury__lexer__Char_25));
+                      MR_hl_field(MR_mktag(1), mercury__lexer__STATE_VARIABLE_RevHexChars_37_45, 1) = ((MR_Box) (mercury__lexer__STATE_VARIABLE_RevHexChars_0_27));
+                    }
+                    /* direct tailcall eliminated */
+                    {
+                      MR_Word mercury__lexer__next_value_of_STATE_VARIABLE_RevHexChars_0_27 = mercury__lexer__STATE_VARIABLE_RevHexChars_37_45;
+                      MR_Word mercury__lexer__next_value_of_STATE_VARIABLE_Posn_0_28 = mercury__lexer__STATE_VARIABLE_Posn_36_36;
+
+                      mercury__lexer__STATE_VARIABLE_Posn_0_28 = mercury__lexer__next_value_of_STATE_VARIABLE_Posn_0_28;
+                      mercury__lexer__STATE_VARIABLE_RevHexChars_0_27 = mercury__lexer__next_value_of_STATE_VARIABLE_RevHexChars_0_27;
+                    }
+                    continue;
+                  }
+                else
+                  {
+                    {
+                      mercury__lexer__string_get_context_4_p_0(mercury__lexer__Posn0_18, mercury__lexer__Context_20, mercury__lexer__STATE_VARIABLE_Posn_36_36, mercury__lexer__STATE_VARIABLE_Posn_29);
+                    }
+                    *mercury__lexer__Token_19 = (MR_Word) MR_mkword(MR_mktag(3), &mercury__lexer_scalar_common_4[13]);
+                  }
+              }
+            else
+              {
+                {
+                  mercury__lexer__string_get_context_4_p_0(mercury__lexer__Posn0_18, mercury__lexer__Context_20, mercury__lexer__STATE_VARIABLE_Posn_0_28, mercury__lexer__STATE_VARIABLE_Posn_29);
+                }
+                *mercury__lexer__Token_19 = (MR_Word) MR_mkword(MR_mktag(0), MR_mkbody((MR_Integer) 10));
+              }
+          }
+      }
+      break;
+    }
+}
+
+static void MR_CALL 
+mercury__lexer__get_unicode_escape_8_p_0(
+  MR_Word mercury__lexer__Stream_9,
+  MR_Integer mercury__lexer__NumHexChars_10,
+  MR_Char mercury__lexer__QuoteChar_11,
+  MR_Word mercury__lexer__STATE_VARIABLE_RevChars_0_22,
+  MR_Word mercury__lexer__STATE_VARIABLE_RevHexChars_0_23,
+  MR_Word * mercury__lexer__Token_14)
+{
+  while (MR_TRUE)
+    {
+      /* tailcall optimized into a loop */
+      {
+        MR_bool mercury__lexer__succeeded;
+        MR_Word mercury__lexer__TypeCtorInfo_50_50 = (MR_Word) &mercury__builtin__builtin__type_ctor_info_character_0;
+        MR_Integer mercury__lexer__Var_51;
+
+        {
+          mercury__list__length_acc_3_p_0(mercury__lexer__TypeCtorInfo_50_50, mercury__lexer__STATE_VARIABLE_RevHexChars_0_23, (MR_Integer) 0, &mercury__lexer__Var_51);
+        }
+        mercury__lexer__succeeded = (mercury__lexer__NumHexChars_10 == mercury__lexer__Var_51);
+        if (mercury__lexer__succeeded)
+          {
+            MR_Integer mercury__lexer__UnicodeCharCode_17;
+            MR_Char mercury__lexer__UnicodeChar_18;
+            MR_String mercury__lexer__HexString_16;
+            MR_Integer mercury__lexer__Var_26;
+            MR_Integer mercury__lexer__Var_60;
+            MR_Integer mercury__lexer__Var_61;
+            MR_Integer mercury__lexer__Var_62;
+            MR_Integer mercury__lexer__Var_63;
+
+            {
+              mercury__lexer__succeeded = mercury__string__semidet_from_rev_char_list_2_p_0(mercury__lexer__STATE_VARIABLE_RevHexChars_0_23, &mercury__lexer__HexString_16);
+            }
+            if (mercury__lexer__succeeded)
+              {
+                mercury__lexer__Var_26 = (MR_Integer) 16;
+                {
+                  mercury__lexer__succeeded = mercury__string__base_string_to_int_3_p_0(mercury__lexer__Var_26, mercury__lexer__HexString_16, &mercury__lexer__UnicodeCharCode_17);
+                }
+                if (mercury__lexer__succeeded)
+                  {
+                    mercury__lexer__Var_60 = (MR_Integer) 0;
+                    mercury__lexer__succeeded = (mercury__lexer__UnicodeCharCode_17 >= mercury__lexer__Var_60);
+                    if (mercury__lexer__succeeded)
+                      {
+                        mercury__lexer__Var_61 = (MR_Integer) 1114111;
+                        mercury__lexer__succeeded = (mercury__lexer__UnicodeCharCode_17 <= mercury__lexer__Var_61);
+                        if (mercury__lexer__succeeded)
+                          {
+                            mercury__lexer__Var_62 = (MR_Integer) 55296;
+                            mercury__lexer__succeeded = (mercury__lexer__UnicodeCharCode_17 >= mercury__lexer__Var_62);
+                            if (mercury__lexer__succeeded)
+                              {
+                                mercury__lexer__Var_63 = (MR_Integer) 57343;
+                                mercury__lexer__succeeded = (mercury__lexer__UnicodeCharCode_17 <= mercury__lexer__Var_63);
+                              }
+                            mercury__lexer__succeeded = !(mercury__lexer__succeeded);
+                            if (mercury__lexer__succeeded)
+                              {
+{
+#define MR_PROC_LABEL mercury__lexer__get_unicode_escape_8_p_0
+
+	MR_Char Character;
+	MR_Integer Int;
+	MR_bool SUCCESS_INDICATOR;
+
+	Int =  mercury__lexer__UnicodeCharCode_17 ;
+		{
+
+    Character = Int;
+    SUCCESS_INDICATOR = (Character >= 0 && Character <= 0x10ffff);
+
+
+		;}
+#undef MR_PROC_LABEL
+	if (SUCCESS_INDICATOR) {
+	 mercury__lexer__UnicodeChar_18  = Character;
+	}
+mercury__lexer__succeeded  = SUCCESS_INDICATOR;
+}
+                              }
+                          }
+                      }
+                  }
+              }
+            if (mercury__lexer__succeeded)
+              {
+                mercury__lexer__succeeded = (mercury__lexer__UnicodeCharCode_17 == (MR_Integer) 0);
+                if (mercury__lexer__succeeded)
+                  {
+                    *mercury__lexer__Token_14 = (MR_Word) MR_mkword(MR_mktag(3), &mercury__lexer_scalar_common_4[11]);
+                  }
+                else
+                  {
+                    MR_Word mercury__lexer__STATE_VARIABLE_RevChars_27_34;
+
+                    {
+                      mercury__lexer__STATE_VARIABLE_RevChars_27_34 = (MR_Word) MR_mkword(MR_mktag(1), MR_new_object(MR_Word, ((MR_Integer) 2 * sizeof(MR_Word)), NULL, NULL));
+                      MR_hl_field(MR_mktag(1), mercury__lexer__STATE_VARIABLE_RevChars_27_34, 0) = ((MR_Box) (MR_Word) (mercury__lexer__UnicodeChar_18));
+                      MR_hl_field(MR_mktag(1), mercury__lexer__STATE_VARIABLE_RevChars_27_34, 1) = ((MR_Box) (mercury__lexer__STATE_VARIABLE_RevChars_0_22));
+                    }
+                    {
+                      mercury__lexer__get_quoted_name_6_p_0(mercury__lexer__Stream_9, mercury__lexer__QuoteChar_11, mercury__lexer__STATE_VARIABLE_RevChars_27_34, mercury__lexer__Token_14);
+                    }
+                  }
+              }
+            else
+              {
+                *mercury__lexer__Token_14 = (MR_Word) MR_mkword(MR_mktag(3), &mercury__lexer_scalar_common_4[12]);
+              }
+          }
+        else
+          {
+            MR_Word mercury__lexer__Result_19;
+            MR_Char mercury__lexer__Char_20;
+            MR_Word mercury__lexer__V_10_72;
+            MR_Box mercury__lexer__V_11_73;
+            MR_Box mercury__lexer__V_7_82 = (MR_Box) mercury__lexer__Stream_9;
+
+            {
+              mercury__io__read_char_code_2_6_p_0(mercury__lexer__V_7_82, &mercury__lexer__V_10_72, &mercury__lexer__Char_20, &mercury__lexer__V_11_73);
+            }
+            switch (mercury__lexer__V_10_72) {
+              default: /*NOTREACHED*/ MR_assert(0);
+              case (MR_Integer) 1:
+                mercury__lexer__Result_19 = (MR_Word) MR_mkword(MR_mktag(0), MR_mkbody((MR_Integer) 1));
+                break;
+              case (MR_Integer) 2:
+                {
+                  MR_String mercury__lexer__V_12_75;
+                  MR_Word mercury__lexer__V_17_76;
+
+{
+#define MR_PROC_LABEL mercury__lexer__get_unicode_escape_8_p_0
+
+	MR_Integer Error;
+	MR_String Msg0;
+	MR_String Msg;
+
+	MR_MAYBE_UNBOX_FOREIGN_TYPE(MR_Integer, mercury__lexer__V_11_73 , Error);
+	Msg0 =  (MR_String) "read failed: " ;
+		{
+
+    ML_make_err_msg(Error, Msg0, MR_ALLOC_ID, Msg);
+
+
+		;}
+#undef MR_PROC_LABEL
+	 mercury__lexer__V_12_75  = Msg;
+}
+                  mercury__lexer__V_17_76 = (MR_Word) mercury__lexer__V_12_75;
+                  {
+                    mercury__lexer__Result_19 = (MR_Word) MR_mkword(MR_mktag(1), MR_new_object(MR_Word, ((MR_Integer) 1 * sizeof(MR_Word)), NULL, NULL));
+                    MR_hl_field(MR_mktag(1), mercury__lexer__Result_19, 0) = ((MR_Box) (mercury__lexer__V_17_76));
+                  }
+                }
+                break;
+              case (MR_Integer) 0:
+                mercury__lexer__Result_19 = (MR_Word) MR_mkword(MR_mktag(0), MR_mkbody((MR_Integer) 0));
+                break;
+            }
+            switch (MR_tag((MR_Word) mercury__lexer__Result_19)) {
+              default: /*NOTREACHED*/ MR_assert(0);
+              case (MR_Integer) 0:
+                switch (MR_unmkbody(mercury__lexer__Result_19)) {
+                  default: /*NOTREACHED*/ MR_assert(0);
+                  case (MR_Integer) 0:
+                    {
+                      {
+                        mercury__lexer__succeeded = mercury__char__is_hex_digit_1_p_0(mercury__lexer__Char_20);
+                      }
+                      if (mercury__lexer__succeeded)
+                        {
+                          MR_Word mercury__lexer__STATE_VARIABLE_RevHexChars_31_41;
+
+                          {
+                            mercury__lexer__STATE_VARIABLE_RevHexChars_31_41 = (MR_Word) MR_mkword(MR_mktag(1), MR_new_object(MR_Word, ((MR_Integer) 2 * sizeof(MR_Word)), NULL, NULL));
+                            MR_hl_field(MR_mktag(1), mercury__lexer__STATE_VARIABLE_RevHexChars_31_41, 0) = ((MR_Box) (MR_Word) (mercury__lexer__Char_20));
+                            MR_hl_field(MR_mktag(1), mercury__lexer__STATE_VARIABLE_RevHexChars_31_41, 1) = ((MR_Box) (mercury__lexer__STATE_VARIABLE_RevHexChars_0_23));
+                          }
+                          /* direct tailcall eliminated */
+                          {
+                            MR_Word mercury__lexer__next_value_of_STATE_VARIABLE_RevHexChars_0_23 = mercury__lexer__STATE_VARIABLE_RevHexChars_31_41;
+
+                            mercury__lexer__STATE_VARIABLE_RevHexChars_0_23 = mercury__lexer__next_value_of_STATE_VARIABLE_RevHexChars_0_23;
+                          }
+                          continue;
+                        }
+                      else
+                        {
+                          *mercury__lexer__Token_14 = (MR_Word) MR_mkword(MR_mktag(3), &mercury__lexer_scalar_common_4[13]);
+                        }
+                    }
+                    break;
+                  case (MR_Integer) 1:
+                    *mercury__lexer__Token_14 = (MR_Word) MR_mkword(MR_mktag(0), MR_mkbody((MR_Integer) 10));
+                    break;
+                }
+                break;
+              case (MR_Integer) 1:
+                {
+                  MR_Word mercury__lexer__Error_21 = ((MR_Word) (MR_hl_field(MR_mktag(1), mercury__lexer__Result_19, (MR_Integer) 0)));
+
+                  {
+                    MR_Word base;
+                    base = (MR_Word) MR_mkword(MR_mktag(3), MR_new_object(MR_Word, ((MR_Integer) 2 * sizeof(MR_Word)), NULL, NULL));
+                    *mercury__lexer__Token_14 = base;
+                    MR_hl_field(MR_mktag(3), base, 0) = ((MR_Box) (MR_Word) ((MR_Integer) 6));
+                    MR_hl_field(MR_mktag(3), base, 1) = ((MR_Box) (mercury__lexer__Error_21));
+                  }
+                }
+                break;
+            }
+          }
+      }
+      break;
+    }
+}
+
+static void MR_CALL 
+mercury__lexer__string_get_quoted_name_escape_9_p_0(
+  MR_String mercury__lexer__String_10,
+  MR_Integer mercury__lexer__Len_11,
+  MR_Char mercury__lexer__QuoteChar_12,
+  MR_Word mercury__lexer__STATE_VARIABLE_RevChars_0_20,
+  MR_Word mercury__lexer__Posn0_14,
+  MR_Word * mercury__lexer__Token_15,
+  MR_Integer * mercury__lexer__Context_16,
+  MR_Word mercury__lexer__STATE_VARIABLE_Posn_0_21,
+  MR_Word * mercury__lexer__STATE_VARIABLE_Posn_22)
+{
+  while (MR_TRUE)
+    {
+      /* tailcall optimized into a loop */
+      {
+        MR_bool mercury__lexer__succeeded;
+        MR_Char mercury__lexer__Char_18;
+        MR_Word mercury__lexer__STATE_VARIABLE_Posn_23_23;
+        MR_Integer mercury__lexer__LineNum0_57 = ((MR_Integer) (MR_hl_field(MR_mktag(0), mercury__lexer__STATE_VARIABLE_Posn_0_21, (MR_Integer) 0)));
+        MR_Integer mercury__lexer__LineOffset0_58 = ((MR_Integer) (MR_hl_field(MR_mktag(0), mercury__lexer__STATE_VARIABLE_Posn_0_21, (MR_Integer) 1)));
+        MR_Integer mercury__lexer__Offset0_59 = ((MR_Integer) (MR_hl_field(MR_mktag(0), mercury__lexer__STATE_VARIABLE_Posn_0_21, (MR_Integer) 2)));
+        MR_Integer mercury__lexer__Offset_60;
+
+        mercury__lexer__succeeded = (mercury__lexer__Offset0_59 < mercury__lexer__Len_11);
+        if (mercury__lexer__succeeded)
+          {
+{
+#define MR_PROC_LABEL mercury__lexer__string_get_quoted_name_escape_9_p_0
+
+	MR_String Str;
+	MR_Integer Index;
+	MR_Integer NextIndex;
+	MR_Char Ch;
+	MR_bool SUCCESS_INDICATOR;
+
+	Str =  mercury__lexer__String_10 ;
+	Index =  mercury__lexer__Offset0_59 ;
+		{
+
+    Ch = Str[Index];
+    if (MR_is_ascii(Ch)) {
+        NextIndex = Index + 1;
+        SUCCESS_INDICATOR = (Ch != 0);
+    } else {
+        NextIndex = Index;
+        Ch = MR_utf8_get_next_mb(Str, &NextIndex);
+        SUCCESS_INDICATOR = (Ch > 0);
+    }
+
+
+		;}
+#undef MR_PROC_LABEL
+	if (SUCCESS_INDICATOR) {
+	 mercury__lexer__Offset_60  = NextIndex;
+	 mercury__lexer__Char_18  = Ch;
+	}
+mercury__lexer__succeeded  = SUCCESS_INDICATOR;
+}
+            if (mercury__lexer__succeeded)
+              {
+                mercury__lexer__succeeded = (mercury__lexer__Char_18 == (MR_Char) 10);
+                if (mercury__lexer__succeeded)
+                  {
+                    MR_Integer mercury__lexer__LineNum_61 = (mercury__lexer__LineNum0_57 + (MR_Integer) 1);
+
+                    {
+                      mercury__lexer__STATE_VARIABLE_Posn_23_23 = (MR_Word) MR_new_object(MR_Word, ((MR_Integer) 3 * sizeof(MR_Word)), NULL, NULL);
+                      MR_hl_field(MR_mktag(0), mercury__lexer__STATE_VARIABLE_Posn_23_23, 0) = ((MR_Box) (mercury__lexer__LineNum_61));
+                      MR_hl_field(MR_mktag(0), mercury__lexer__STATE_VARIABLE_Posn_23_23, 1) = ((MR_Box) (mercury__lexer__Offset_60));
+                      MR_hl_field(MR_mktag(0), mercury__lexer__STATE_VARIABLE_Posn_23_23, 2) = ((MR_Box) (mercury__lexer__Offset_60));
+                    }
+                  }
+                else
+                  {
+                    mercury__lexer__STATE_VARIABLE_Posn_23_23 = (MR_Word) MR_new_object(MR_Word, ((MR_Integer) 3 * sizeof(MR_Word)), NULL, NULL);
+                    MR_hl_field(MR_mktag(0), mercury__lexer__STATE_VARIABLE_Posn_23_23, 0) = ((MR_Box) (mercury__lexer__LineNum0_57));
+                    MR_hl_field(MR_mktag(0), mercury__lexer__STATE_VARIABLE_Posn_23_23, 1) = ((MR_Box) (mercury__lexer__LineOffset0_58));
+                    MR_hl_field(MR_mktag(0), mercury__lexer__STATE_VARIABLE_Posn_23_23, 2) = ((MR_Box) (mercury__lexer__Offset_60));
+                  }
+                mercury__lexer__succeeded = MR_TRUE;
+              }
+          }
+        if (mercury__lexer__succeeded)
+          {
+            mercury__lexer__succeeded = (mercury__lexer__Char_18 == (MR_Char) 10);
+            if (mercury__lexer__succeeded)
+              {
+                mercury__lexer__string_get_quoted_name_9_p_0(mercury__lexer__String_10, mercury__lexer__Len_11, mercury__lexer__QuoteChar_12, mercury__lexer__STATE_VARIABLE_RevChars_0_20, mercury__lexer__Posn0_14, mercury__lexer__Token_15, mercury__lexer__Context_16, mercury__lexer__STATE_VARIABLE_Posn_23_23, mercury__lexer__STATE_VARIABLE_Posn_22);
+              }
+            else
+              {
+                mercury__lexer__succeeded = (mercury__lexer__Char_18 == (MR_Char) 13);
+                if (mercury__lexer__succeeded)
+                  {
+                    /* direct tailcall eliminated */
+                    {
+                      MR_Word mercury__lexer__next_value_of_STATE_VARIABLE_Posn_0_21 = mercury__lexer__STATE_VARIABLE_Posn_23_23;
+
+                      mercury__lexer__STATE_VARIABLE_Posn_0_21 = mercury__lexer__next_value_of_STATE_VARIABLE_Posn_0_21;
+                    }
+                    continue;
+                  }
+                else
+                  {
+                    MR_Char mercury__lexer__EscapedChar_19;
+
+                    switch (mercury__lexer__Char_18) {
+                      default:
+                        mercury__lexer__succeeded = MR_FALSE;
+                        break;
+                      case (MR_Char) 34:
+                        {
+                          mercury__lexer__EscapedChar_19 = (MR_Char) 34;
+                          mercury__lexer__succeeded = MR_TRUE;
+                        }
+                        break;
+                      case (MR_Char) 39:
+                        {
+                          mercury__lexer__EscapedChar_19 = (MR_Char) 39;
+                          mercury__lexer__succeeded = MR_TRUE;
+                        }
+                        break;
+                      case (MR_Char) 92:
+                        {
+                          mercury__lexer__EscapedChar_19 = (MR_Char) 92;
+                          mercury__lexer__succeeded = MR_TRUE;
+                        }
+                        break;
+                      case (MR_Char) 96:
+                        {
+                          mercury__lexer__EscapedChar_19 = (MR_Char) 96;
+                          mercury__lexer__succeeded = MR_TRUE;
+                        }
+                        break;
+                      case (MR_Char) 97:
+                        {
+                          mercury__lexer__EscapedChar_19 = (MR_Char) 7;
+                          mercury__lexer__succeeded = MR_TRUE;
+                        }
+                        break;
+                      case (MR_Char) 98:
+                        {
+                          mercury__lexer__EscapedChar_19 = (MR_Char) 8;
+                          mercury__lexer__succeeded = MR_TRUE;
+                        }
+                        break;
+                      case (MR_Char) 102:
+                        {
+                          mercury__lexer__EscapedChar_19 = (MR_Char) 12;
+                          mercury__lexer__succeeded = MR_TRUE;
+                        }
+                        break;
+                      case (MR_Char) 110:
+                        {
+                          mercury__lexer__EscapedChar_19 = (MR_Char) 10;
+                          mercury__lexer__succeeded = MR_TRUE;
+                        }
+                        break;
+                      case (MR_Char) 114:
+                        {
+                          mercury__lexer__EscapedChar_19 = (MR_Char) 13;
+                          mercury__lexer__succeeded = MR_TRUE;
+                        }
+                        break;
+                      case (MR_Char) 116:
+                        {
+                          mercury__lexer__EscapedChar_19 = (MR_Char) 9;
+                          mercury__lexer__succeeded = MR_TRUE;
+                        }
+                        break;
+                      case (MR_Char) 118:
+                        {
+                          mercury__lexer__EscapedChar_19 = (MR_Char) 11;
+                          mercury__lexer__succeeded = MR_TRUE;
+                        }
+                        break;
+                    }
+                    if (mercury__lexer__succeeded)
+                      {
+                        MR_Word mercury__lexer__STATE_VARIABLE_RevChars_26_45;
+
+                        {
+                          mercury__lexer__STATE_VARIABLE_RevChars_26_45 = (MR_Word) MR_mkword(MR_mktag(1), MR_new_object(MR_Word, ((MR_Integer) 2 * sizeof(MR_Word)), NULL, NULL));
+                          MR_hl_field(MR_mktag(1), mercury__lexer__STATE_VARIABLE_RevChars_26_45, 0) = ((MR_Box) (MR_Word) (mercury__lexer__EscapedChar_19));
+                          MR_hl_field(MR_mktag(1), mercury__lexer__STATE_VARIABLE_RevChars_26_45, 1) = ((MR_Box) (mercury__lexer__STATE_VARIABLE_RevChars_0_20));
+                        }
+                        {
+                          mercury__lexer__string_get_quoted_name_9_p_0(mercury__lexer__String_10, mercury__lexer__Len_11, mercury__lexer__QuoteChar_12, mercury__lexer__STATE_VARIABLE_RevChars_26_45, mercury__lexer__Posn0_14, mercury__lexer__Token_15, mercury__lexer__Context_16, mercury__lexer__STATE_VARIABLE_Posn_23_23, mercury__lexer__STATE_VARIABLE_Posn_22);
+                        }
+                      }
+                    else
+                      {
+                        mercury__lexer__succeeded = (mercury__lexer__Char_18 == (MR_Char) 120);
+                        if (mercury__lexer__succeeded)
+                          {
+                            MR_Word mercury__lexer__Var_28 = (MR_Word) MR_mkword(MR_mktag(0), MR_mkbody((MR_Integer) 0));
+
+                            {
+                              mercury__lexer__string_get_hex_escape_10_p_0(mercury__lexer__String_10, mercury__lexer__Len_11, mercury__lexer__QuoteChar_12, mercury__lexer__STATE_VARIABLE_RevChars_0_20, mercury__lexer__Var_28, mercury__lexer__Posn0_14, mercury__lexer__Token_15, mercury__lexer__Context_16, mercury__lexer__STATE_VARIABLE_Posn_23_23, mercury__lexer__STATE_VARIABLE_Posn_22);
+                            }
+                          }
+                        else
+                          {
+                            mercury__lexer__succeeded = (mercury__lexer__Char_18 == (MR_Char) 117);
+                            if (mercury__lexer__succeeded)
+                              {
+                                MR_Word mercury__lexer__Var_31 = (MR_Word) MR_mkword(MR_mktag(0), MR_mkbody((MR_Integer) 0));
+
+                                {
+                                  mercury__lexer__string_get_unicode_escape_11_p_0((MR_Integer) 4, mercury__lexer__String_10, mercury__lexer__Len_11, mercury__lexer__QuoteChar_12, mercury__lexer__STATE_VARIABLE_RevChars_0_20, mercury__lexer__Var_31, mercury__lexer__Posn0_14, mercury__lexer__Token_15, mercury__lexer__Context_16, mercury__lexer__STATE_VARIABLE_Posn_23_23, mercury__lexer__STATE_VARIABLE_Posn_22);
+                                }
+                              }
+                            else
+                              {
+                                mercury__lexer__succeeded = (mercury__lexer__Char_18 == (MR_Char) 85);
+                                if (mercury__lexer__succeeded)
+                                  {
+                                    MR_Word mercury__lexer__Var_34 = (MR_Word) MR_mkword(MR_mktag(0), MR_mkbody((MR_Integer) 0));
+
+                                    {
+                                      mercury__lexer__string_get_unicode_escape_11_p_0((MR_Integer) 8, mercury__lexer__String_10, mercury__lexer__Len_11, mercury__lexer__QuoteChar_12, mercury__lexer__STATE_VARIABLE_RevChars_0_20, mercury__lexer__Var_34, mercury__lexer__Posn0_14, mercury__lexer__Token_15, mercury__lexer__Context_16, mercury__lexer__STATE_VARIABLE_Posn_23_23, mercury__lexer__STATE_VARIABLE_Posn_22);
+                                    }
+                                  }
+                                else
+                                  {
+                                    {
+                                      mercury__lexer__succeeded = mercury__char__is_octal_digit_1_p_0(mercury__lexer__Char_18);
+                                    }
+                                    if (mercury__lexer__succeeded)
+                                      {
+                                        MR_Word mercury__lexer__Var_36;
+                                        MR_Word mercury__lexer__Var_38 = (MR_Word) MR_mkword(MR_mktag(0), MR_mkbody((MR_Integer) 0));
+
+                                        {
+                                          mercury__lexer__Var_36 = (MR_Word) MR_mkword(MR_mktag(1), MR_new_object(MR_Word, ((MR_Integer) 2 * sizeof(MR_Word)), NULL, NULL));
+                                          MR_hl_field(MR_mktag(1), mercury__lexer__Var_36, 0) = ((MR_Box) (MR_Word) (mercury__lexer__Char_18));
+                                          MR_hl_field(MR_mktag(1), mercury__lexer__Var_36, 1) = ((MR_Box) (mercury__lexer__Var_38));
+                                        }
+                                        {
+                                          mercury__lexer__string_get_octal_escape_10_p_0(mercury__lexer__String_10, mercury__lexer__Len_11, mercury__lexer__QuoteChar_12, mercury__lexer__STATE_VARIABLE_RevChars_0_20, mercury__lexer__Var_36, mercury__lexer__Posn0_14, mercury__lexer__Token_15, mercury__lexer__Context_16, mercury__lexer__STATE_VARIABLE_Posn_23_23, mercury__lexer__STATE_VARIABLE_Posn_22);
+                                        }
+                                      }
+                                    else
+                                      {
+                                        MR_Integer mercury__lexer__Var_70;
+                                        MR_Integer mercury__lexer__Var_71;
+
+                                        *mercury__lexer__Context_16 = ((MR_Integer) (MR_hl_field(MR_mktag(0), mercury__lexer__STATE_VARIABLE_Posn_23_23, (MR_Integer) 0)));
+                                        mercury__lexer__Var_70 = ((MR_Integer) (MR_hl_field(MR_mktag(0), mercury__lexer__STATE_VARIABLE_Posn_23_23, (MR_Integer) 1)));
+                                        mercury__lexer__Var_71 = ((MR_Integer) (MR_hl_field(MR_mktag(0), mercury__lexer__STATE_VARIABLE_Posn_23_23, (MR_Integer) 2)));
+                                        *mercury__lexer__STATE_VARIABLE_Posn_22 = mercury__lexer__STATE_VARIABLE_Posn_23_23;
+                                        *mercury__lexer__Token_15 = (MR_Word) MR_mkword(MR_mktag(3), &mercury__lexer_scalar_common_4[10]);
+                                      }
+                                  }
+                              }
+                          }
+                      }
+                  }
+              }
+          }
+        else
+          {
+            MR_Integer mercury__lexer__Var_78;
+            MR_Integer mercury__lexer__Var_79;
+
+            *mercury__lexer__Context_16 = ((MR_Integer) (MR_hl_field(MR_mktag(0), mercury__lexer__Posn0_14, (MR_Integer) 0)));
+            mercury__lexer__Var_78 = ((MR_Integer) (MR_hl_field(MR_mktag(0), mercury__lexer__Posn0_14, (MR_Integer) 1)));
+            mercury__lexer__Var_79 = ((MR_Integer) (MR_hl_field(MR_mktag(0), mercury__lexer__Posn0_14, (MR_Integer) 2)));
+            *mercury__lexer__STATE_VARIABLE_Posn_22 = mercury__lexer__STATE_VARIABLE_Posn_0_21;
+            *mercury__lexer__Token_15 = (MR_Word) MR_mkword(MR_mktag(0), MR_mkbody((MR_Integer) 10));
+          }
+      }
+      break;
+    }
+}
+
+static void MR_CALL 
+mercury__lexer__get_quoted_name_escape_6_p_0(
+  MR_Word mercury__lexer__Stream_7,
+  MR_Char mercury__lexer__QuoteChar_8,
+  MR_Word mercury__lexer__STATE_VARIABLE_RevChars_0_16,
+  MR_Word * mercury__lexer__Token_10)
+{
+  while (MR_TRUE)
+    {
+      /* tailcall optimized into a loop */
+      {
+        MR_bool mercury__lexer__succeeded;
+        MR_Word mercury__lexer__Result_12;
+        MR_Char mercury__lexer__Char_13;
+        MR_Word mercury__lexer__V_10_54;
+        MR_Box mercury__lexer__V_11_55;
+        MR_Box mercury__lexer__V_7_64 = (MR_Box) mercury__lexer__Stream_7;
+
+        {
+          mercury__io__read_char_code_2_6_p_0(mercury__lexer__V_7_64, &mercury__lexer__V_10_54, &mercury__lexer__Char_13, &mercury__lexer__V_11_55);
+        }
+        switch (mercury__lexer__V_10_54) {
+          default: /*NOTREACHED*/ MR_assert(0);
+          case (MR_Integer) 1:
+            mercury__lexer__Result_12 = (MR_Word) MR_mkword(MR_mktag(0), MR_mkbody((MR_Integer) 1));
+            break;
+          case (MR_Integer) 2:
+            {
+              MR_String mercury__lexer__V_12_57;
+              MR_Word mercury__lexer__V_17_58;
+
+{
+#define MR_PROC_LABEL mercury__lexer__get_quoted_name_escape_6_p_0
+
+	MR_Integer Error;
+	MR_String Msg0;
+	MR_String Msg;
+
+	MR_MAYBE_UNBOX_FOREIGN_TYPE(MR_Integer, mercury__lexer__V_11_55 , Error);
+	Msg0 =  (MR_String) "read failed: " ;
+		{
+
+    ML_make_err_msg(Error, Msg0, MR_ALLOC_ID, Msg);
+
+
+		;}
+#undef MR_PROC_LABEL
+	 mercury__lexer__V_12_57  = Msg;
+}
+              mercury__lexer__V_17_58 = (MR_Word) mercury__lexer__V_12_57;
+              {
+                mercury__lexer__Result_12 = (MR_Word) MR_mkword(MR_mktag(1), MR_new_object(MR_Word, ((MR_Integer) 1 * sizeof(MR_Word)), NULL, NULL));
+                MR_hl_field(MR_mktag(1), mercury__lexer__Result_12, 0) = ((MR_Box) (mercury__lexer__V_17_58));
+              }
+            }
+            break;
+          case (MR_Integer) 0:
+            mercury__lexer__Result_12 = (MR_Word) MR_mkword(MR_mktag(0), MR_mkbody((MR_Integer) 0));
+            break;
+        }
+        switch (MR_tag((MR_Word) mercury__lexer__Result_12)) {
+          default: /*NOTREACHED*/ MR_assert(0);
+          case (MR_Integer) 0:
+            switch (MR_unmkbody(mercury__lexer__Result_12)) {
+              default: /*NOTREACHED*/ MR_assert(0);
+              case (MR_Integer) 0:
+                {
+                  mercury__lexer__succeeded = (mercury__lexer__Char_13 == (MR_Char) 10);
+                  if (mercury__lexer__succeeded)
+                    {
+                      mercury__lexer__get_quoted_name_6_p_0(mercury__lexer__Stream_7, mercury__lexer__QuoteChar_8, mercury__lexer__STATE_VARIABLE_RevChars_0_16, mercury__lexer__Token_10);
+                    }
+                  else
+                    {
+                      mercury__lexer__succeeded = (mercury__lexer__Char_13 == (MR_Char) 13);
+                      if (mercury__lexer__succeeded)
+                        {
+                          /* direct tailcall eliminated */
+                          continue;
+                        }
+                      else
+                        {
+                          MR_Char mercury__lexer__EscapedChar_15;
+
+                          switch (mercury__lexer__Char_13) {
+                            default:
+                              mercury__lexer__succeeded = MR_FALSE;
+                              break;
+                            case (MR_Char) 34:
+                              {
+                                mercury__lexer__EscapedChar_15 = (MR_Char) 34;
+                                mercury__lexer__succeeded = MR_TRUE;
+                              }
+                              break;
+                            case (MR_Char) 39:
+                              {
+                                mercury__lexer__EscapedChar_15 = (MR_Char) 39;
+                                mercury__lexer__succeeded = MR_TRUE;
+                              }
+                              break;
+                            case (MR_Char) 92:
+                              {
+                                mercury__lexer__EscapedChar_15 = (MR_Char) 92;
+                                mercury__lexer__succeeded = MR_TRUE;
+                              }
+                              break;
+                            case (MR_Char) 96:
+                              {
+                                mercury__lexer__EscapedChar_15 = (MR_Char) 96;
+                                mercury__lexer__succeeded = MR_TRUE;
+                              }
+                              break;
+                            case (MR_Char) 97:
+                              {
+                                mercury__lexer__EscapedChar_15 = (MR_Char) 7;
+                                mercury__lexer__succeeded = MR_TRUE;
+                              }
+                              break;
+                            case (MR_Char) 98:
+                              {
+                                mercury__lexer__EscapedChar_15 = (MR_Char) 8;
+                                mercury__lexer__succeeded = MR_TRUE;
+                              }
+                              break;
+                            case (MR_Char) 102:
+                              {
+                                mercury__lexer__EscapedChar_15 = (MR_Char) 12;
+                                mercury__lexer__succeeded = MR_TRUE;
+                              }
+                              break;
+                            case (MR_Char) 110:
+                              {
+                                mercury__lexer__EscapedChar_15 = (MR_Char) 10;
+                                mercury__lexer__succeeded = MR_TRUE;
+                              }
+                              break;
+                            case (MR_Char) 114:
+                              {
+                                mercury__lexer__EscapedChar_15 = (MR_Char) 13;
+                                mercury__lexer__succeeded = MR_TRUE;
+                              }
+                              break;
+                            case (MR_Char) 116:
+                              {
+                                mercury__lexer__EscapedChar_15 = (MR_Char) 9;
+                                mercury__lexer__succeeded = MR_TRUE;
+                              }
+                              break;
+                            case (MR_Char) 118:
+                              {
+                                mercury__lexer__EscapedChar_15 = (MR_Char) 11;
+                                mercury__lexer__succeeded = MR_TRUE;
+                              }
+                              break;
+                          }
+                          if (mercury__lexer__succeeded)
+                            {
+                              MR_Word mercury__lexer__STATE_VARIABLE_RevChars_22_42;
+
+                              {
+                                mercury__lexer__STATE_VARIABLE_RevChars_22_42 = (MR_Word) MR_mkword(MR_mktag(1), MR_new_object(MR_Word, ((MR_Integer) 2 * sizeof(MR_Word)), NULL, NULL));
+                                MR_hl_field(MR_mktag(1), mercury__lexer__STATE_VARIABLE_RevChars_22_42, 0) = ((MR_Box) (MR_Word) (mercury__lexer__EscapedChar_15));
+                                MR_hl_field(MR_mktag(1), mercury__lexer__STATE_VARIABLE_RevChars_22_42, 1) = ((MR_Box) (mercury__lexer__STATE_VARIABLE_RevChars_0_16));
+                              }
+                              {
+                                mercury__lexer__get_quoted_name_6_p_0(mercury__lexer__Stream_7, mercury__lexer__QuoteChar_8, mercury__lexer__STATE_VARIABLE_RevChars_22_42, mercury__lexer__Token_10);
+                              }
+                            }
+                          else
+                            {
+                              mercury__lexer__succeeded = (mercury__lexer__Char_13 == (MR_Char) 120);
+                              if (mercury__lexer__succeeded)
+                                {
+                                  MR_Word mercury__lexer__Var_24 = (MR_Word) MR_mkword(MR_mktag(0), MR_mkbody((MR_Integer) 0));
+
+                                  {
+                                    mercury__lexer__get_hex_escape_7_p_0(mercury__lexer__Stream_7, mercury__lexer__QuoteChar_8, mercury__lexer__STATE_VARIABLE_RevChars_0_16, mercury__lexer__Var_24, mercury__lexer__Token_10);
+                                  }
+                                }
+                              else
+                                {
+                                  mercury__lexer__succeeded = (mercury__lexer__Char_13 == (MR_Char) 117);
+                                  if (mercury__lexer__succeeded)
+                                    {
+                                      MR_Word mercury__lexer__Var_27 = (MR_Word) MR_mkword(MR_mktag(0), MR_mkbody((MR_Integer) 0));
+
+                                      {
+                                        mercury__lexer__get_unicode_escape_8_p_0(mercury__lexer__Stream_7, (MR_Integer) 4, mercury__lexer__QuoteChar_8, mercury__lexer__STATE_VARIABLE_RevChars_0_16, mercury__lexer__Var_27, mercury__lexer__Token_10);
+                                      }
+                                    }
+                                  else
+                                    {
+                                      mercury__lexer__succeeded = (mercury__lexer__Char_13 == (MR_Char) 85);
+                                      if (mercury__lexer__succeeded)
+                                        {
+                                          MR_Word mercury__lexer__Var_30 = (MR_Word) MR_mkword(MR_mktag(0), MR_mkbody((MR_Integer) 0));
+
+                                          {
+                                            mercury__lexer__get_unicode_escape_8_p_0(mercury__lexer__Stream_7, (MR_Integer) 8, mercury__lexer__QuoteChar_8, mercury__lexer__STATE_VARIABLE_RevChars_0_16, mercury__lexer__Var_30, mercury__lexer__Token_10);
+                                          }
+                                        }
+                                      else
+                                        {
+                                          {
+                                            mercury__lexer__succeeded = mercury__char__is_octal_digit_1_p_0(mercury__lexer__Char_13);
+                                          }
+                                          if (mercury__lexer__succeeded)
+                                            {
+                                              MR_Word mercury__lexer__Var_32;
+                                              MR_Word mercury__lexer__Var_34 = (MR_Word) MR_mkword(MR_mktag(0), MR_mkbody((MR_Integer) 0));
+
+                                              {
+                                                mercury__lexer__Var_32 = (MR_Word) MR_mkword(MR_mktag(1), MR_new_object(MR_Word, ((MR_Integer) 2 * sizeof(MR_Word)), NULL, NULL));
+                                                MR_hl_field(MR_mktag(1), mercury__lexer__Var_32, 0) = ((MR_Box) (MR_Word) (mercury__lexer__Char_13));
+                                                MR_hl_field(MR_mktag(1), mercury__lexer__Var_32, 1) = ((MR_Box) (mercury__lexer__Var_34));
+                                              }
+                                              {
+                                                mercury__lexer__get_octal_escape_7_p_0(mercury__lexer__Stream_7, mercury__lexer__QuoteChar_8, mercury__lexer__STATE_VARIABLE_RevChars_0_16, mercury__lexer__Var_32, mercury__lexer__Token_10);
+                                              }
+                                            }
+                                          else
+                                            {
+                                              *mercury__lexer__Token_10 = (MR_Word) MR_mkword(MR_mktag(3), &mercury__lexer_scalar_common_4[10]);
+                                            }
+                                        }
+                                    }
+                                }
+                            }
+                        }
+                    }
+                }
+                break;
+              case (MR_Integer) 1:
+                *mercury__lexer__Token_10 = (MR_Word) MR_mkword(MR_mktag(0), MR_mkbody((MR_Integer) 10));
+                break;
+            }
+            break;
+          case (MR_Integer) 1:
+            {
+              MR_Word mercury__lexer__Error_14 = ((MR_Word) (MR_hl_field(MR_mktag(1), mercury__lexer__Result_12, (MR_Integer) 0)));
+
+              {
+                MR_Word base;
+                base = (MR_Word) MR_mkword(MR_mktag(3), MR_new_object(MR_Word, ((MR_Integer) 2 * sizeof(MR_Word)), NULL, NULL));
+                *mercury__lexer__Token_10 = base;
+                MR_hl_field(MR_mktag(3), base, 0) = ((MR_Box) (MR_Word) ((MR_Integer) 6));
+                MR_hl_field(MR_mktag(3), base, 1) = ((MR_Box) (mercury__lexer__Error_14));
+              }
+            }
+            break;
+        }
+      }
+      break;
+    }
+}
+
+static void MR_CALL 
+mercury__lexer__finish_quoted_name_3_p_0(
+  MR_Char mercury__lexer__QuoteChar_4,
+  MR_Word mercury__lexer__RevChars_5,
+  MR_Word * mercury__lexer__Token_6)
+{
+  {
+    MR_bool mercury__lexer__succeeded;
+    MR_String mercury__lexer__String_7;
+
+    {
+      mercury__lexer__succeeded = mercury__string__semidet_from_rev_char_list_2_p_0(mercury__lexer__RevChars_5, &mercury__lexer__String_7);
+    }
+    if (mercury__lexer__succeeded)
+      {
+        mercury__lexer__succeeded = (mercury__lexer__QuoteChar_4 == (MR_Char) 39);
+        if (mercury__lexer__succeeded)
+          {
+            MR_Word base;
+            base = (MR_Word) MR_mkword(MR_mktag(1), MR_new_object(MR_Word, ((MR_Integer) 1 * sizeof(MR_Word)), NULL, NULL));
+            *mercury__lexer__Token_6 = base;
+            MR_hl_field(MR_mktag(1), base, 0) = ((MR_Box) (mercury__lexer__String_7));
+          }
+        else
+          {
+            mercury__lexer__succeeded = (mercury__lexer__QuoteChar_4 == (MR_Char) 34);
+            if (mercury__lexer__succeeded)
+              {
+                MR_Word base;
+                base = (MR_Word) MR_mkword(MR_mktag(3), MR_new_object(MR_Word, ((MR_Integer) 2 * sizeof(MR_Word)), NULL, NULL));
+                *mercury__lexer__Token_6 = base;
+                MR_hl_field(MR_mktag(3), base, 0) = ((MR_Box) (MR_Word) ((MR_Integer) 2));
+                MR_hl_field(MR_mktag(3), base, 1) = ((MR_Box) (mercury__lexer__String_7));
+              }
+            else
+              {
+                {
+                  mercury__require__error_1_p_0((MR_String) "lexer.m: unknown quote character");
+                  return;
+                }
+              }
+          }
+      }
+    else
+      {
+        *mercury__lexer__Token_6 = (MR_Word) MR_mkword(MR_mktag(3), &mercury__lexer_scalar_common_4[9]);
+      }
+  }
+}
+
+static void MR_CALL 
+mercury__lexer__string_get_quoted_name_9_p_0(
+  MR_String mercury__lexer__String_10,
+  MR_Integer mercury__lexer__Len_11,
+  MR_Char mercury__lexer__QuoteChar_12,
+  MR_Word mercury__lexer__STATE_VARIABLE_RevChars_0_19,
+  MR_Word mercury__lexer__Posn0_14,
+  MR_Word * mercury__lexer__Token_15,
+  MR_Integer * mercury__lexer__Context_16,
+  MR_Word mercury__lexer__STATE_VARIABLE_Posn_0_20,
+  MR_Word * mercury__lexer__STATE_VARIABLE_Posn_21)
+{
+  while (MR_TRUE)
+    {
+      /* tailcall optimized into a loop */
+      {
+        MR_bool mercury__lexer__succeeded;
+        MR_Char mercury__lexer__Char_18;
+        MR_Word mercury__lexer__STATE_VARIABLE_Posn_22_22;
+        MR_Integer mercury__lexer__LineNum0_39 = ((MR_Integer) (MR_hl_field(MR_mktag(0), mercury__lexer__STATE_VARIABLE_Posn_0_20, (MR_Integer) 0)));
+        MR_Integer mercury__lexer__LineOffset0_40 = ((MR_Integer) (MR_hl_field(MR_mktag(0), mercury__lexer__STATE_VARIABLE_Posn_0_20, (MR_Integer) 1)));
+        MR_Integer mercury__lexer__Offset0_41 = ((MR_Integer) (MR_hl_field(MR_mktag(0), mercury__lexer__STATE_VARIABLE_Posn_0_20, (MR_Integer) 2)));
+        MR_Integer mercury__lexer__Offset_42;
+
+        mercury__lexer__succeeded = (mercury__lexer__Offset0_41 < mercury__lexer__Len_11);
+        if (mercury__lexer__succeeded)
+          {
+{
+#define MR_PROC_LABEL mercury__lexer__string_get_quoted_name_9_p_0
+
+	MR_String Str;
+	MR_Integer Index;
+	MR_Integer NextIndex;
+	MR_Char Ch;
+	MR_bool SUCCESS_INDICATOR;
+
+	Str =  mercury__lexer__String_10 ;
+	Index =  mercury__lexer__Offset0_41 ;
+		{
+
+    Ch = Str[Index];
+    if (MR_is_ascii(Ch)) {
+        NextIndex = Index + 1;
+        SUCCESS_INDICATOR = (Ch != 0);
+    } else {
+        NextIndex = Index;
+        Ch = MR_utf8_get_next_mb(Str, &NextIndex);
+        SUCCESS_INDICATOR = (Ch > 0);
+    }
+
+
+		;}
+#undef MR_PROC_LABEL
+	if (SUCCESS_INDICATOR) {
+	 mercury__lexer__Offset_42  = NextIndex;
+	 mercury__lexer__Char_18  = Ch;
+	}
+mercury__lexer__succeeded  = SUCCESS_INDICATOR;
+}
+            if (mercury__lexer__succeeded)
+              {
+                mercury__lexer__succeeded = (mercury__lexer__Char_18 == (MR_Char) 10);
+                if (mercury__lexer__succeeded)
+                  {
+                    MR_Integer mercury__lexer__LineNum_43 = (mercury__lexer__LineNum0_39 + (MR_Integer) 1);
+
+                    {
+                      mercury__lexer__STATE_VARIABLE_Posn_22_22 = (MR_Word) MR_new_object(MR_Word, ((MR_Integer) 3 * sizeof(MR_Word)), NULL, NULL);
+                      MR_hl_field(MR_mktag(0), mercury__lexer__STATE_VARIABLE_Posn_22_22, 0) = ((MR_Box) (mercury__lexer__LineNum_43));
+                      MR_hl_field(MR_mktag(0), mercury__lexer__STATE_VARIABLE_Posn_22_22, 1) = ((MR_Box) (mercury__lexer__Offset_42));
+                      MR_hl_field(MR_mktag(0), mercury__lexer__STATE_VARIABLE_Posn_22_22, 2) = ((MR_Box) (mercury__lexer__Offset_42));
+                    }
+                  }
+                else
+                  {
+                    mercury__lexer__STATE_VARIABLE_Posn_22_22 = (MR_Word) MR_new_object(MR_Word, ((MR_Integer) 3 * sizeof(MR_Word)), NULL, NULL);
+                    MR_hl_field(MR_mktag(0), mercury__lexer__STATE_VARIABLE_Posn_22_22, 0) = ((MR_Box) (mercury__lexer__LineNum0_39));
+                    MR_hl_field(MR_mktag(0), mercury__lexer__STATE_VARIABLE_Posn_22_22, 1) = ((MR_Box) (mercury__lexer__LineOffset0_40));
+                    MR_hl_field(MR_mktag(0), mercury__lexer__STATE_VARIABLE_Posn_22_22, 2) = ((MR_Box) (mercury__lexer__Offset_42));
+                  }
+                mercury__lexer__succeeded = MR_TRUE;
+              }
+          }
+        if (mercury__lexer__succeeded)
+          {
+            mercury__lexer__succeeded = (mercury__lexer__Char_18 == mercury__lexer__QuoteChar_12);
+            if (mercury__lexer__succeeded)
+              {
+                MR_Char mercury__lexer__Char_57;
+                MR_Word mercury__lexer__STATE_VARIABLE_Posn_22_58;
+
+                {
+                  mercury__lexer__succeeded = mercury__lexer__string_read_char_5_p_0(mercury__lexer__String_10, mercury__lexer__Len_11, &mercury__lexer__Char_57, mercury__lexer__STATE_VARIABLE_Posn_22_22, &mercury__lexer__STATE_VARIABLE_Posn_22_58);
+                }
+                if (mercury__lexer__succeeded)
+                  {
+                    mercury__lexer__succeeded = (mercury__lexer__Char_57 == mercury__lexer__QuoteChar_12);
+                    if (mercury__lexer__succeeded)
+                      {
+                        MR_Word mercury__lexer__STATE_VARIABLE_RevChars_23_59;
+
+                        {
+                          mercury__lexer__STATE_VARIABLE_RevChars_23_59 = (MR_Word) MR_mkword(MR_mktag(1), MR_new_object(MR_Word, ((MR_Integer) 2 * sizeof(MR_Word)), NULL, NULL));
+                          MR_hl_field(MR_mktag(1), mercury__lexer__STATE_VARIABLE_RevChars_23_59, 0) = ((MR_Box) (MR_Word) (mercury__lexer__Char_57));
+                          MR_hl_field(MR_mktag(1), mercury__lexer__STATE_VARIABLE_RevChars_23_59, 1) = ((MR_Box) (mercury__lexer__STATE_VARIABLE_RevChars_0_19));
+                        }
+                        /* direct tailcall eliminated */
+                        {
+                          MR_Word mercury__lexer__next_value_of_STATE_VARIABLE_RevChars_0_19 = mercury__lexer__STATE_VARIABLE_RevChars_23_59;
+                          MR_Word mercury__lexer__next_value_of_STATE_VARIABLE_Posn_0_20 = mercury__lexer__STATE_VARIABLE_Posn_22_58;
+
+                          mercury__lexer__STATE_VARIABLE_Posn_0_20 = mercury__lexer__next_value_of_STATE_VARIABLE_Posn_0_20;
+                          mercury__lexer__STATE_VARIABLE_RevChars_0_19 = mercury__lexer__next_value_of_STATE_VARIABLE_RevChars_0_19;
+                        }
+                        continue;
+                      }
+                    else
+                      {
+                        MR_Word mercury__lexer__STATE_VARIABLE_Posn_25_61;
+
+                        {
+                          mercury__lexer__string_ungetchar_3_p_0(mercury__lexer__String_10, mercury__lexer__STATE_VARIABLE_Posn_22_58, &mercury__lexer__STATE_VARIABLE_Posn_25_61);
+                        }
+                        {
+                          mercury__lexer__string_get_context_4_p_0(mercury__lexer__Posn0_14, mercury__lexer__Context_16, mercury__lexer__STATE_VARIABLE_Posn_25_61, mercury__lexer__STATE_VARIABLE_Posn_21);
+                        }
+                        {
+                          mercury__lexer__finish_quoted_name_3_p_0(mercury__lexer__QuoteChar_12, mercury__lexer__STATE_VARIABLE_RevChars_0_19, mercury__lexer__Token_15);
+                        }
+                      }
+                  }
+                else
+                  {
+                    {
+                      mercury__lexer__string_get_context_4_p_0(mercury__lexer__Posn0_14, mercury__lexer__Context_16, mercury__lexer__STATE_VARIABLE_Posn_22_22, mercury__lexer__STATE_VARIABLE_Posn_21);
+                    }
+                    {
+                      mercury__lexer__finish_quoted_name_3_p_0(mercury__lexer__QuoteChar_12, mercury__lexer__STATE_VARIABLE_RevChars_0_19, mercury__lexer__Token_15);
+                    }
+                  }
+              }
+            else
+              {
+                mercury__lexer__succeeded = (mercury__lexer__Char_18 == (MR_Char) 92);
+                if (mercury__lexer__succeeded)
+                  {
+                    mercury__lexer__string_get_quoted_name_escape_9_p_0(mercury__lexer__String_10, mercury__lexer__Len_11, mercury__lexer__QuoteChar_12, mercury__lexer__STATE_VARIABLE_RevChars_0_19, mercury__lexer__Posn0_14, mercury__lexer__Token_15, mercury__lexer__Context_16, mercury__lexer__STATE_VARIABLE_Posn_22_22, mercury__lexer__STATE_VARIABLE_Posn_21);
+                  }
+                else
+                  {
+                    MR_Word mercury__lexer__STATE_VARIABLE_RevChars_25_30;
+
+                    {
+                      mercury__lexer__STATE_VARIABLE_RevChars_25_30 = (MR_Word) MR_mkword(MR_mktag(1), MR_new_object(MR_Word, ((MR_Integer) 2 * sizeof(MR_Word)), NULL, NULL));
+                      MR_hl_field(MR_mktag(1), mercury__lexer__STATE_VARIABLE_RevChars_25_30, 0) = ((MR_Box) (MR_Word) (mercury__lexer__Char_18));
+                      MR_hl_field(MR_mktag(1), mercury__lexer__STATE_VARIABLE_RevChars_25_30, 1) = ((MR_Box) (mercury__lexer__STATE_VARIABLE_RevChars_0_19));
+                    }
+                    /* direct tailcall eliminated */
+                    {
+                      MR_Word mercury__lexer__next_value_of_STATE_VARIABLE_RevChars_0_19 = mercury__lexer__STATE_VARIABLE_RevChars_25_30;
+                      MR_Word mercury__lexer__next_value_of_STATE_VARIABLE_Posn_0_20 = mercury__lexer__STATE_VARIABLE_Posn_22_22;
+
+                      mercury__lexer__STATE_VARIABLE_Posn_0_20 = mercury__lexer__next_value_of_STATE_VARIABLE_Posn_0_20;
+                      mercury__lexer__STATE_VARIABLE_RevChars_0_19 = mercury__lexer__next_value_of_STATE_VARIABLE_RevChars_0_19;
+                    }
+                    continue;
+                  }
+              }
+          }
+        else
+          {
+            MR_Integer mercury__lexer__Var_74;
+            MR_Integer mercury__lexer__Var_75;
+
+            *mercury__lexer__Context_16 = ((MR_Integer) (MR_hl_field(MR_mktag(0), mercury__lexer__Posn0_14, (MR_Integer) 0)));
+            mercury__lexer__Var_74 = ((MR_Integer) (MR_hl_field(MR_mktag(0), mercury__lexer__Posn0_14, (MR_Integer) 1)));
+            mercury__lexer__Var_75 = ((MR_Integer) (MR_hl_field(MR_mktag(0), mercury__lexer__Posn0_14, (MR_Integer) 2)));
+            *mercury__lexer__STATE_VARIABLE_Posn_21 = mercury__lexer__STATE_VARIABLE_Posn_0_20;
+            *mercury__lexer__Token_15 = (MR_Word) MR_mkword(MR_mktag(0), MR_mkbody((MR_Integer) 10));
+          }
+      }
+      break;
+    }
+}
+
+static void MR_CALL 
+mercury__lexer__get_quoted_name_6_p_0(
+  MR_Word mercury__lexer__Stream_7,
+  MR_Char mercury__lexer__QuoteChar_8,
+  MR_Word mercury__lexer__STATE_VARIABLE_RevChars_0_15,
+  MR_Word * mercury__lexer__Token_10)
+{
+  while (MR_TRUE)
+    {
+      /* tailcall optimized into a loop */
+      {
+        MR_bool mercury__lexer__succeeded;
+        MR_Word mercury__lexer__Result_12;
+        MR_Char mercury__lexer__Char_13;
+        MR_Word mercury__lexer__V_10_38;
+        MR_Box mercury__lexer__V_11_39;
+        MR_Box mercury__lexer__V_7_48 = (MR_Box) mercury__lexer__Stream_7;
+
+        {
+          mercury__io__read_char_code_2_6_p_0(mercury__lexer__V_7_48, &mercury__lexer__V_10_38, &mercury__lexer__Char_13, &mercury__lexer__V_11_39);
+        }
+        switch (mercury__lexer__V_10_38) {
+          default: /*NOTREACHED*/ MR_assert(0);
+          case (MR_Integer) 1:
+            mercury__lexer__Result_12 = (MR_Word) MR_mkword(MR_mktag(0), MR_mkbody((MR_Integer) 1));
+            break;
+          case (MR_Integer) 2:
+            {
+              MR_String mercury__lexer__V_12_41;
+              MR_Word mercury__lexer__V_17_42;
+
+{
+#define MR_PROC_LABEL mercury__lexer__get_quoted_name_6_p_0
+
+	MR_Integer Error;
+	MR_String Msg0;
+	MR_String Msg;
+
+	MR_MAYBE_UNBOX_FOREIGN_TYPE(MR_Integer, mercury__lexer__V_11_39 , Error);
+	Msg0 =  (MR_String) "read failed: " ;
+		{
+
+    ML_make_err_msg(Error, Msg0, MR_ALLOC_ID, Msg);
+
+
+		;}
+#undef MR_PROC_LABEL
+	 mercury__lexer__V_12_41  = Msg;
+}
+              mercury__lexer__V_17_42 = (MR_Word) mercury__lexer__V_12_41;
+              {
+                mercury__lexer__Result_12 = (MR_Word) MR_mkword(MR_mktag(1), MR_new_object(MR_Word, ((MR_Integer) 1 * sizeof(MR_Word)), NULL, NULL));
+                MR_hl_field(MR_mktag(1), mercury__lexer__Result_12, 0) = ((MR_Box) (mercury__lexer__V_17_42));
+              }
+            }
+            break;
+          case (MR_Integer) 0:
+            mercury__lexer__Result_12 = (MR_Word) MR_mkword(MR_mktag(0), MR_mkbody((MR_Integer) 0));
+            break;
+        }
+        switch (MR_tag((MR_Word) mercury__lexer__Result_12)) {
+          default: /*NOTREACHED*/ MR_assert(0);
+          case (MR_Integer) 0:
+            switch (MR_unmkbody(mercury__lexer__Result_12)) {
+              default: /*NOTREACHED*/ MR_assert(0);
+              case (MR_Integer) 0:
+                {
+                  mercury__lexer__succeeded = (mercury__lexer__Char_13 == mercury__lexer__QuoteChar_8);
+                  if (mercury__lexer__succeeded)
+                    {
+                      MR_Word mercury__lexer__Result_57;
+                      MR_Char mercury__lexer__Char_58;
+
+                      {
+                        mercury__io__read_char_unboxed_5_p_0(mercury__lexer__Stream_7, &mercury__lexer__Result_57, &mercury__lexer__Char_58);
+                      }
+                      switch (MR_tag((MR_Word) mercury__lexer__Result_57)) {
+                        default: /*NOTREACHED*/ MR_assert(0);
+                        case (MR_Integer) 0:
+                          switch (MR_unmkbody(mercury__lexer__Result_57)) {
+                            default: /*NOTREACHED*/ MR_assert(0);
+                            case (MR_Integer) 0:
+                              {
+                                mercury__lexer__succeeded = (mercury__lexer__Char_58 == mercury__lexer__QuoteChar_8);
+                                if (mercury__lexer__succeeded)
+                                  {
+                                    MR_Word mercury__lexer__STATE_VARIABLE_RevChars_19_66;
+
+                                    {
+                                      mercury__lexer__STATE_VARIABLE_RevChars_19_66 = (MR_Word) MR_mkword(MR_mktag(1), MR_new_object(MR_Word, ((MR_Integer) 2 * sizeof(MR_Word)), NULL, NULL));
+                                      MR_hl_field(MR_mktag(1), mercury__lexer__STATE_VARIABLE_RevChars_19_66, 0) = ((MR_Box) (MR_Word) (mercury__lexer__Char_58));
+                                      MR_hl_field(MR_mktag(1), mercury__lexer__STATE_VARIABLE_RevChars_19_66, 1) = ((MR_Box) (mercury__lexer__STATE_VARIABLE_RevChars_0_15));
+                                    }
+                                    /* direct tailcall eliminated */
+                                    {
+                                      MR_Word mercury__lexer__next_value_of_STATE_VARIABLE_RevChars_0_15 = mercury__lexer__STATE_VARIABLE_RevChars_19_66;
+
+                                      mercury__lexer__STATE_VARIABLE_RevChars_0_15 = mercury__lexer__next_value_of_STATE_VARIABLE_RevChars_0_15;
+                                    }
+                                    continue;
+                                  }
+                                else
+                                  {
+                                    {
+                                      mercury__io__putback_char_4_p_0(mercury__lexer__Stream_7, mercury__lexer__Char_58);
+                                    }
+                                    {
+                                      mercury__lexer__finish_quoted_name_3_p_0(mercury__lexer__QuoteChar_8, mercury__lexer__STATE_VARIABLE_RevChars_0_15, mercury__lexer__Token_10);
+                                    }
+                                  }
+                              }
+                              break;
+                            case (MR_Integer) 1:
+                              {
+                                mercury__lexer__finish_quoted_name_3_p_0(mercury__lexer__QuoteChar_8, mercury__lexer__STATE_VARIABLE_RevChars_0_15, mercury__lexer__Token_10);
+                              }
+                              break;
+                          }
+                          break;
+                        case (MR_Integer) 1:
+                          {
+                            MR_Word mercury__lexer__Error_59 = ((MR_Word) (MR_hl_field(MR_mktag(1), mercury__lexer__Result_57, (MR_Integer) 0)));
+
+                            {
+                              MR_Word base;
+                              base = (MR_Word) MR_mkword(MR_mktag(3), MR_new_object(MR_Word, ((MR_Integer) 2 * sizeof(MR_Word)), NULL, NULL));
+                              *mercury__lexer__Token_10 = base;
+                              MR_hl_field(MR_mktag(3), base, 0) = ((MR_Box) (MR_Word) ((MR_Integer) 6));
+                              MR_hl_field(MR_mktag(3), base, 1) = ((MR_Box) (mercury__lexer__Error_59));
+                            }
+                          }
+                          break;
+                      }
+                    }
+                  else
+                    {
+                      mercury__lexer__succeeded = (mercury__lexer__Char_13 == (MR_Char) 92);
+                      if (mercury__lexer__succeeded)
+                        {
+                          mercury__lexer__get_quoted_name_escape_6_p_0(mercury__lexer__Stream_7, mercury__lexer__QuoteChar_8, mercury__lexer__STATE_VARIABLE_RevChars_0_15, mercury__lexer__Token_10);
+                        }
+                      else
+                        {
+                          MR_Word mercury__lexer__STATE_VARIABLE_RevChars_21_29;
+
+                          {
+                            mercury__lexer__STATE_VARIABLE_RevChars_21_29 = (MR_Word) MR_mkword(MR_mktag(1), MR_new_object(MR_Word, ((MR_Integer) 2 * sizeof(MR_Word)), NULL, NULL));
+                            MR_hl_field(MR_mktag(1), mercury__lexer__STATE_VARIABLE_RevChars_21_29, 0) = ((MR_Box) (MR_Word) (mercury__lexer__Char_13));
+                            MR_hl_field(MR_mktag(1), mercury__lexer__STATE_VARIABLE_RevChars_21_29, 1) = ((MR_Box) (mercury__lexer__STATE_VARIABLE_RevChars_0_15));
+                          }
+                          /* direct tailcall eliminated */
+                          {
+                            MR_Word mercury__lexer__next_value_of_STATE_VARIABLE_RevChars_0_15 = mercury__lexer__STATE_VARIABLE_RevChars_21_29;
+
+                            mercury__lexer__STATE_VARIABLE_RevChars_0_15 = mercury__lexer__next_value_of_STATE_VARIABLE_RevChars_0_15;
+                          }
+                          continue;
+                        }
+                    }
+                }
+                break;
+              case (MR_Integer) 1:
+                *mercury__lexer__Token_10 = (MR_Word) MR_mkword(MR_mktag(0), MR_mkbody((MR_Integer) 10));
+                break;
+            }
+            break;
+          case (MR_Integer) 1:
+            {
+              MR_Word mercury__lexer__Error_14 = ((MR_Word) (MR_hl_field(MR_mktag(1), mercury__lexer__Result_12, (MR_Integer) 0)));
+
+              {
+                MR_Word base;
+                base = (MR_Word) MR_mkword(MR_mktag(3), MR_new_object(MR_Word, ((MR_Integer) 2 * sizeof(MR_Word)), NULL, NULL));
+                *mercury__lexer__Token_10 = base;
+                MR_hl_field(MR_mktag(3), base, 0) = ((MR_Box) (MR_Word) ((MR_Integer) 6));
+                MR_hl_field(MR_mktag(3), base, 1) = ((MR_Box) (mercury__lexer__Error_14));
+              }
+            }
+            break;
+        }
+      }
+      break;
+    }
+}
+
+static void MR_CALL 
+mercury__lexer__string_start_quoted_name_9_p_0(
+  MR_String mercury__lexer__String_10,
+  MR_Integer mercury__lexer__Len_11,
+  MR_Char mercury__lexer__QuoteChar_12,
+  MR_Word mercury__lexer__STATE_VARIABLE_RevChars_0_22,
+  MR_Word mercury__lexer__Posn0_14,
+  MR_Word * mercury__lexer__Token_15,
+  MR_Integer * mercury__lexer__Context_16,
+  MR_Word mercury__lexer__STATE_VARIABLE_Posn_0_23,
+  MR_Word * mercury__lexer__STATE_VARIABLE_Posn_24)
+{
+  {
+    MR_bool mercury__lexer__succeeded;
+    MR_Word mercury__lexer__Token0_18;
+    MR_Word mercury__lexer__STATE_VARIABLE_Posn_25_25;
+    MR_String mercury__lexer__Var_19;
+
+    {
+      mercury__lexer__string_get_quoted_name_9_p_0(mercury__lexer__String_10, mercury__lexer__Len_11, mercury__lexer__QuoteChar_12, mercury__lexer__STATE_VARIABLE_RevChars_0_22, mercury__lexer__Posn0_14, &mercury__lexer__Token0_18, mercury__lexer__Context_16, mercury__lexer__STATE_VARIABLE_Posn_0_23, &mercury__lexer__STATE_VARIABLE_Posn_25_25);
+    }
+    mercury__lexer__succeeded = ((((MR_tag((MR_Word) mercury__lexer__Token0_18)) == (MR_mktag((MR_Integer) 3)))) && (((((MR_Integer) (MR_Word) (MR_hl_field(MR_mktag(3), mercury__lexer__Token0_18, (MR_Integer) 0)))) == (MR_Integer) 5)));
+    if (mercury__lexer__succeeded)
+      {
+        mercury__lexer__Var_19 = ((MR_String) (MR_hl_field(MR_mktag(3), mercury__lexer__Token0_18, (MR_Integer) 1)));
+        {
+          MR_Word mercury__lexer__Var_20;
+          MR_Integer mercury__lexer__Var_21;
+
+          {
+            mercury__lexer__string_start_quoted_name_9_p_0(mercury__lexer__String_10, mercury__lexer__Len_11, mercury__lexer__QuoteChar_12, mercury__lexer__STATE_VARIABLE_RevChars_0_22, mercury__lexer__Posn0_14, &mercury__lexer__Var_20, &mercury__lexer__Var_21, mercury__lexer__STATE_VARIABLE_Posn_25_25, mercury__lexer__STATE_VARIABLE_Posn_24);
+          }
+          *mercury__lexer__Token_15 = mercury__lexer__Token0_18;
+        }
+      }
+    else
+      {
+        mercury__lexer__succeeded = (mercury__lexer__Token0_18 == ((MR_Word) MR_mkword(MR_mktag(0), MR_mkbody((MR_Integer) 10))));
+        if (mercury__lexer__succeeded)
+          {
+            *mercury__lexer__Token_15 = (MR_Word) MR_mkword(MR_mktag(3), &mercury__lexer_scalar_common_4[8]);
+          }
+        else
+          *mercury__lexer__Token_15 = mercury__lexer__Token0_18;
+        *mercury__lexer__STATE_VARIABLE_Posn_24 = mercury__lexer__STATE_VARIABLE_Posn_25_25;
+      }
+  }
+}
+
+static void MR_CALL 
+mercury__lexer__start_quoted_name_6_p_0(
+  MR_Word mercury__lexer__Stream_7,
+  MR_Char mercury__lexer__QuoteChar_8,
+  MR_Word mercury__lexer__STATE_VARIABLE_RevChars_0_15,
+  MR_Word * mercury__lexer__Token_10)
+{
+  {
+    MR_bool mercury__lexer__succeeded;
+    MR_Word mercury__lexer__Token0_12;
+    MR_String mercury__lexer__Var_13;
+
+    {
+      mercury__lexer__get_quoted_name_6_p_0(mercury__lexer__Stream_7, mercury__lexer__QuoteChar_8, mercury__lexer__STATE_VARIABLE_RevChars_0_15, &mercury__lexer__Token0_12);
+    }
+    mercury__lexer__succeeded = ((((MR_tag((MR_Word) mercury__lexer__Token0_12)) == (MR_mktag((MR_Integer) 3)))) && (((((MR_Integer) (MR_Word) (MR_hl_field(MR_mktag(3), mercury__lexer__Token0_12, (MR_Integer) 0)))) == (MR_Integer) 5)));
+    if (mercury__lexer__succeeded)
+      {
+        mercury__lexer__Var_13 = ((MR_String) (MR_hl_field(MR_mktag(3), mercury__lexer__Token0_12, (MR_Integer) 1)));
+        {
+          MR_Word mercury__lexer__Var_14;
+
+          {
+            mercury__lexer__start_quoted_name_6_p_0(mercury__lexer__Stream_7, mercury__lexer__QuoteChar_8, mercury__lexer__STATE_VARIABLE_RevChars_0_15, &mercury__lexer__Var_14);
+          }
+          *mercury__lexer__Token_10 = mercury__lexer__Token0_12;
+        }
+      }
+    else
+      {
+        mercury__lexer__succeeded = (mercury__lexer__Token0_12 == ((MR_Word) MR_mkword(MR_mktag(0), MR_mkbody((MR_Integer) 10))));
+        if (mercury__lexer__succeeded)
+          {
+            *mercury__lexer__Token_10 = (MR_Word) MR_mkword(MR_mktag(3), &mercury__lexer_scalar_common_4[8]);
+          }
+        else
+          *mercury__lexer__Token_10 = mercury__lexer__Token0_12;
+      }
+  }
+}
+
+static void MR_CALL 
+mercury__lexer__string_get_comment_2_7_p_0(
+  MR_String mercury__lexer__String_8,
+  MR_Integer mercury__lexer__Len_9,
+  MR_Word mercury__lexer__Posn0_10,
+  MR_Word * mercury__lexer__Token_11,
+  MR_Word * mercury__lexer__HaveToken_12,
+  MR_Word mercury__lexer__STATE_VARIABLE_Posn_0_15,
+  MR_Word * mercury__lexer__STATE_VARIABLE_Posn_16)
+{
+  while (MR_TRUE)
+    {
+      /* tailcall optimized into a loop */
+      {
+        MR_bool mercury__lexer__succeeded;
+        MR_Char mercury__lexer__Char_14;
+        MR_Word mercury__lexer__STATE_VARIABLE_Posn_17_17;
+        MR_Integer mercury__lexer__LineNum0_27 = ((MR_Integer) (MR_hl_field(MR_mktag(0), mercury__lexer__STATE_VARIABLE_Posn_0_15, (MR_Integer) 0)));
+        MR_Integer mercury__lexer__LineOffset0_28 = ((MR_Integer) (MR_hl_field(MR_mktag(0), mercury__lexer__STATE_VARIABLE_Posn_0_15, (MR_Integer) 1)));
+        MR_Integer mercury__lexer__Offset0_29 = ((MR_Integer) (MR_hl_field(MR_mktag(0), mercury__lexer__STATE_VARIABLE_Posn_0_15, (MR_Integer) 2)));
+        MR_Integer mercury__lexer__Offset_30;
+
+        mercury__lexer__succeeded = (mercury__lexer__Offset0_29 < mercury__lexer__Len_9);
+        if (mercury__lexer__succeeded)
+          {
+{
+#define MR_PROC_LABEL mercury__lexer__string_get_comment_2_7_p_0
+
+	MR_String Str;
+	MR_Integer Index;
+	MR_Integer NextIndex;
+	MR_Char Ch;
+	MR_bool SUCCESS_INDICATOR;
+
+	Str =  mercury__lexer__String_8 ;
+	Index =  mercury__lexer__Offset0_29 ;
+		{
+
+    Ch = Str[Index];
+    if (MR_is_ascii(Ch)) {
+        NextIndex = Index + 1;
+        SUCCESS_INDICATOR = (Ch != 0);
+    } else {
+        NextIndex = Index;
+        Ch = MR_utf8_get_next_mb(Str, &NextIndex);
+        SUCCESS_INDICATOR = (Ch > 0);
+    }
+
+
+		;}
+#undef MR_PROC_LABEL
+	if (SUCCESS_INDICATOR) {
+	 mercury__lexer__Offset_30  = NextIndex;
+	 mercury__lexer__Char_14  = Ch;
+	}
+mercury__lexer__succeeded  = SUCCESS_INDICATOR;
+}
+            if (mercury__lexer__succeeded)
+              {
+                mercury__lexer__succeeded = (mercury__lexer__Char_14 == (MR_Char) 10);
+                if (mercury__lexer__succeeded)
+                  {
+                    MR_Integer mercury__lexer__LineNum_31 = (mercury__lexer__LineNum0_27 + (MR_Integer) 1);
+
+                    {
+                      mercury__lexer__STATE_VARIABLE_Posn_17_17 = (MR_Word) MR_new_object(MR_Word, ((MR_Integer) 3 * sizeof(MR_Word)), NULL, NULL);
+                      MR_hl_field(MR_mktag(0), mercury__lexer__STATE_VARIABLE_Posn_17_17, 0) = ((MR_Box) (mercury__lexer__LineNum_31));
+                      MR_hl_field(MR_mktag(0), mercury__lexer__STATE_VARIABLE_Posn_17_17, 1) = ((MR_Box) (mercury__lexer__Offset_30));
+                      MR_hl_field(MR_mktag(0), mercury__lexer__STATE_VARIABLE_Posn_17_17, 2) = ((MR_Box) (mercury__lexer__Offset_30));
+                    }
+                  }
+                else
+                  {
+                    mercury__lexer__STATE_VARIABLE_Posn_17_17 = (MR_Word) MR_new_object(MR_Word, ((MR_Integer) 3 * sizeof(MR_Word)), NULL, NULL);
+                    MR_hl_field(MR_mktag(0), mercury__lexer__STATE_VARIABLE_Posn_17_17, 0) = ((MR_Box) (mercury__lexer__LineNum0_27));
+                    MR_hl_field(MR_mktag(0), mercury__lexer__STATE_VARIABLE_Posn_17_17, 1) = ((MR_Box) (mercury__lexer__LineOffset0_28));
+                    MR_hl_field(MR_mktag(0), mercury__lexer__STATE_VARIABLE_Posn_17_17, 2) = ((MR_Box) (mercury__lexer__Offset_30));
+                  }
+                mercury__lexer__succeeded = MR_TRUE;
+              }
+          }
+        if (mercury__lexer__succeeded)
+          {
+            mercury__lexer__succeeded = (mercury__lexer__Char_14 == (MR_Char) 47);
+            if (mercury__lexer__succeeded)
+              {
+                *mercury__lexer__Token_11 = (MR_Word) MR_mkword(MR_mktag(0), MR_mkbody((MR_Integer) 10));
+                *mercury__lexer__HaveToken_12 = (MR_Word) ((MR_Box) ((MR_Integer) -1));
+                *mercury__lexer__STATE_VARIABLE_Posn_16 = mercury__lexer__STATE_VARIABLE_Posn_17_17;
+              }
+            else
+              {
+                mercury__lexer__succeeded = (mercury__lexer__Char_14 == (MR_Char) 42);
+                if (mercury__lexer__succeeded)
+                  {
+                    /* direct tailcall eliminated */
+                    {
+                      MR_Word mercury__lexer__next_value_of_STATE_VARIABLE_Posn_0_15 = mercury__lexer__STATE_VARIABLE_Posn_17_17;
+
+                      mercury__lexer__STATE_VARIABLE_Posn_0_15 = mercury__lexer__next_value_of_STATE_VARIABLE_Posn_0_15;
+                    }
+                    continue;
+                  }
+                else
+                  {
+                    mercury__lexer__string_get_comment_7_p_0(mercury__lexer__String_8, mercury__lexer__Len_9, mercury__lexer__Posn0_10, mercury__lexer__Token_11, mercury__lexer__HaveToken_12, mercury__lexer__STATE_VARIABLE_Posn_17_17, mercury__lexer__STATE_VARIABLE_Posn_16);
+                  }
+              }
+          }
+        else
+          {
+            MR_Integer mercury__lexer__Context_40 = ((MR_Integer) (MR_hl_field(MR_mktag(0), mercury__lexer__Posn0_10, (MR_Integer) 0)));
+            MR_Integer mercury__lexer__Var_49 = ((MR_Integer) (MR_hl_field(MR_mktag(0), mercury__lexer__Posn0_10, (MR_Integer) 1)));
+            MR_Integer mercury__lexer__Var_50 = ((MR_Integer) (MR_hl_field(MR_mktag(0), mercury__lexer__Posn0_10, (MR_Integer) 2)));
+
+            *mercury__lexer__STATE_VARIABLE_Posn_16 = mercury__lexer__STATE_VARIABLE_Posn_0_15;
+            *mercury__lexer__HaveToken_12 = (MR_Word) mercury__lexer__Context_40;
+            *mercury__lexer__Token_11 = (MR_Word) MR_mkword(MR_mktag(3), &mercury__lexer_scalar_common_4[7]);
+          }
+      }
+      break;
+    }
+}
+
+static void MR_CALL 
+mercury__lexer__get_comment_2_5_p_0(
+  MR_Word mercury__lexer__Stream_6,
+  MR_Word * mercury__lexer__Token_7,
+  MR_Word * mercury__lexer__HaveToken_8)
+{
+  while (MR_TRUE)
+    {
+      /* tailcall optimized into a loop */
+      {
+        MR_bool mercury__lexer__succeeded;
+        MR_Word mercury__lexer__Result_10;
+        MR_Char mercury__lexer__Char_11;
+        MR_Word mercury__lexer__V_10_26;
+        MR_Box mercury__lexer__V_11_27;
+        MR_Box mercury__lexer__V_7_36 = (MR_Box) mercury__lexer__Stream_6;
+
+        {
+          mercury__io__read_char_code_2_6_p_0(mercury__lexer__V_7_36, &mercury__lexer__V_10_26, &mercury__lexer__Char_11, &mercury__lexer__V_11_27);
+        }
+        switch (mercury__lexer__V_10_26) {
+          default: /*NOTREACHED*/ MR_assert(0);
+          case (MR_Integer) 1:
+            mercury__lexer__Result_10 = (MR_Word) MR_mkword(MR_mktag(0), MR_mkbody((MR_Integer) 1));
+            break;
+          case (MR_Integer) 2:
+            {
+              MR_String mercury__lexer__V_12_29;
+              MR_Word mercury__lexer__V_17_30;
+
+{
+#define MR_PROC_LABEL mercury__lexer__get_comment_2_5_p_0
+
+	MR_Integer Error;
+	MR_String Msg0;
+	MR_String Msg;
+
+	MR_MAYBE_UNBOX_FOREIGN_TYPE(MR_Integer, mercury__lexer__V_11_27 , Error);
+	Msg0 =  (MR_String) "read failed: " ;
+		{
+
+    ML_make_err_msg(Error, Msg0, MR_ALLOC_ID, Msg);
+
+
+		;}
+#undef MR_PROC_LABEL
+	 mercury__lexer__V_12_29  = Msg;
+}
+              mercury__lexer__V_17_30 = (MR_Word) mercury__lexer__V_12_29;
+              {
+                mercury__lexer__Result_10 = (MR_Word) MR_mkword(MR_mktag(1), MR_new_object(MR_Word, ((MR_Integer) 1 * sizeof(MR_Word)), NULL, NULL));
+                MR_hl_field(MR_mktag(1), mercury__lexer__Result_10, 0) = ((MR_Box) (mercury__lexer__V_17_30));
+              }
+            }
+            break;
+          case (MR_Integer) 0:
+            mercury__lexer__Result_10 = (MR_Word) MR_mkword(MR_mktag(0), MR_mkbody((MR_Integer) 0));
+            break;
+        }
+        switch (MR_tag((MR_Word) mercury__lexer__Result_10)) {
+          default: /*NOTREACHED*/ MR_assert(0);
+          case (MR_Integer) 0:
+            switch (MR_unmkbody(mercury__lexer__Result_10)) {
+              default: /*NOTREACHED*/ MR_assert(0);
+              case (MR_Integer) 0:
+                {
+                  mercury__lexer__succeeded = (mercury__lexer__Char_11 == (MR_Char) 47);
+                  if (mercury__lexer__succeeded)
+                    {
+                      *mercury__lexer__Token_7 = (MR_Word) MR_mkword(MR_mktag(0), MR_mkbody((MR_Integer) 10));
+                      *mercury__lexer__HaveToken_8 = (MR_Word) ((MR_Box) ((MR_Integer) -1));
+                    }
+                  else
+                    {
+                      mercury__lexer__succeeded = (mercury__lexer__Char_11 == (MR_Char) 42);
+                      if (mercury__lexer__succeeded)
+                        {
+                          /* direct tailcall eliminated */
+                          continue;
+                        }
+                      else
+                        {
+                          mercury__lexer__get_comment_5_p_0(mercury__lexer__Stream_6, mercury__lexer__Token_7, mercury__lexer__HaveToken_8);
+                        }
+                    }
+                }
+                break;
+              case (MR_Integer) 1:
+                {
+                  MR_Integer mercury__lexer__Context_40;
+                  MR_Box mercury__lexer__V_5_52 = (MR_Box) mercury__lexer__Stream_6;
+
+{
+#define MR_PROC_LABEL mercury__lexer__get_comment_2_5_p_0
+
+	MercuryFilePtr Stream;
+	MR_Integer LineNum;
+
+	Stream = (MercuryFilePtr) mercury__lexer__V_5_52 ;
+		{
+
+    LineNum = MR_line_number(*Stream);
+
+
+		;}
+#undef MR_PROC_LABEL
+	 mercury__lexer__Context_40  = LineNum;
+}
+                  *mercury__lexer__HaveToken_8 = (MR_Word) mercury__lexer__Context_40;
+                  *mercury__lexer__Token_7 = (MR_Word) MR_mkword(MR_mktag(3), &mercury__lexer_scalar_common_4[7]);
+                }
+                break;
+            }
+            break;
+          case (MR_Integer) 1:
+            {
+              MR_Word mercury__lexer__Error_12 = ((MR_Word) (MR_hl_field(MR_mktag(1), mercury__lexer__Result_10, (MR_Integer) 0)));
+              MR_Integer mercury__lexer__Context_56;
+              MR_Box mercury__lexer__V_5_68 = (MR_Box) mercury__lexer__Stream_6;
+
+{
+#define MR_PROC_LABEL mercury__lexer__get_comment_2_5_p_0
+
+	MercuryFilePtr Stream;
+	MR_Integer LineNum;
+
+	Stream = (MercuryFilePtr) mercury__lexer__V_5_68 ;
+		{
+
+    LineNum = MR_line_number(*Stream);
+
+
+		;}
+#undef MR_PROC_LABEL
+	 mercury__lexer__Context_56  = LineNum;
+}
+              *mercury__lexer__HaveToken_8 = (MR_Word) mercury__lexer__Context_56;
+              {
+                MR_Word base;
+                base = (MR_Word) MR_mkword(MR_mktag(3), MR_new_object(MR_Word, ((MR_Integer) 2 * sizeof(MR_Word)), NULL, NULL));
+                *mercury__lexer__Token_7 = base;
+                MR_hl_field(MR_mktag(3), base, 0) = ((MR_Box) (MR_Word) ((MR_Integer) 6));
+                MR_hl_field(MR_mktag(3), base, 1) = ((MR_Box) (mercury__lexer__Error_12));
+              }
+            }
+            break;
+        }
+      }
+      break;
+    }
+}
+
+static void MR_CALL 
+mercury__lexer__string_get_comment_7_p_0(
+  MR_String mercury__lexer__String_8,
+  MR_Integer mercury__lexer__Len_9,
+  MR_Word mercury__lexer__Posn0_10,
+  MR_Word * mercury__lexer__Token_11,
+  MR_Word * mercury__lexer__HaveToken_12,
+  MR_Word mercury__lexer__STATE_VARIABLE_Posn_0_15,
+  MR_Word * mercury__lexer__STATE_VARIABLE_Posn_16)
+{
+  while (MR_TRUE)
+    {
+      /* tailcall optimized into a loop */
+      {
+        MR_bool mercury__lexer__succeeded;
+        MR_Char mercury__lexer__Char_14;
+        MR_Word mercury__lexer__STATE_VARIABLE_Posn_17_17;
+        MR_Integer mercury__lexer__LineNum0_27 = ((MR_Integer) (MR_hl_field(MR_mktag(0), mercury__lexer__STATE_VARIABLE_Posn_0_15, (MR_Integer) 0)));
+        MR_Integer mercury__lexer__LineOffset0_28 = ((MR_Integer) (MR_hl_field(MR_mktag(0), mercury__lexer__STATE_VARIABLE_Posn_0_15, (MR_Integer) 1)));
+        MR_Integer mercury__lexer__Offset0_29 = ((MR_Integer) (MR_hl_field(MR_mktag(0), mercury__lexer__STATE_VARIABLE_Posn_0_15, (MR_Integer) 2)));
+        MR_Integer mercury__lexer__Offset_30;
+
+        mercury__lexer__succeeded = (mercury__lexer__Offset0_29 < mercury__lexer__Len_9);
+        if (mercury__lexer__succeeded)
+          {
+{
+#define MR_PROC_LABEL mercury__lexer__string_get_comment_7_p_0
+
+	MR_String Str;
+	MR_Integer Index;
+	MR_Integer NextIndex;
+	MR_Char Ch;
+	MR_bool SUCCESS_INDICATOR;
+
+	Str =  mercury__lexer__String_8 ;
+	Index =  mercury__lexer__Offset0_29 ;
+		{
+
+    Ch = Str[Index];
+    if (MR_is_ascii(Ch)) {
+        NextIndex = Index + 1;
+        SUCCESS_INDICATOR = (Ch != 0);
+    } else {
+        NextIndex = Index;
+        Ch = MR_utf8_get_next_mb(Str, &NextIndex);
+        SUCCESS_INDICATOR = (Ch > 0);
+    }
+
+
+		;}
+#undef MR_PROC_LABEL
+	if (SUCCESS_INDICATOR) {
+	 mercury__lexer__Offset_30  = NextIndex;
+	 mercury__lexer__Char_14  = Ch;
+	}
+mercury__lexer__succeeded  = SUCCESS_INDICATOR;
+}
+            if (mercury__lexer__succeeded)
+              {
+                mercury__lexer__succeeded = (mercury__lexer__Char_14 == (MR_Char) 10);
+                if (mercury__lexer__succeeded)
+                  {
+                    MR_Integer mercury__lexer__LineNum_31 = (mercury__lexer__LineNum0_27 + (MR_Integer) 1);
+
+                    {
+                      mercury__lexer__STATE_VARIABLE_Posn_17_17 = (MR_Word) MR_new_object(MR_Word, ((MR_Integer) 3 * sizeof(MR_Word)), NULL, NULL);
+                      MR_hl_field(MR_mktag(0), mercury__lexer__STATE_VARIABLE_Posn_17_17, 0) = ((MR_Box) (mercury__lexer__LineNum_31));
+                      MR_hl_field(MR_mktag(0), mercury__lexer__STATE_VARIABLE_Posn_17_17, 1) = ((MR_Box) (mercury__lexer__Offset_30));
+                      MR_hl_field(MR_mktag(0), mercury__lexer__STATE_VARIABLE_Posn_17_17, 2) = ((MR_Box) (mercury__lexer__Offset_30));
+                    }
+                  }
+                else
+                  {
+                    mercury__lexer__STATE_VARIABLE_Posn_17_17 = (MR_Word) MR_new_object(MR_Word, ((MR_Integer) 3 * sizeof(MR_Word)), NULL, NULL);
+                    MR_hl_field(MR_mktag(0), mercury__lexer__STATE_VARIABLE_Posn_17_17, 0) = ((MR_Box) (mercury__lexer__LineNum0_27));
+                    MR_hl_field(MR_mktag(0), mercury__lexer__STATE_VARIABLE_Posn_17_17, 1) = ((MR_Box) (mercury__lexer__LineOffset0_28));
+                    MR_hl_field(MR_mktag(0), mercury__lexer__STATE_VARIABLE_Posn_17_17, 2) = ((MR_Box) (mercury__lexer__Offset_30));
+                  }
+                mercury__lexer__succeeded = MR_TRUE;
+              }
+          }
+        if (mercury__lexer__succeeded)
+          {
+            mercury__lexer__succeeded = (mercury__lexer__Char_14 == (MR_Char) 42);
+            if (mercury__lexer__succeeded)
+              {
+                mercury__lexer__string_get_comment_2_7_p_0(mercury__lexer__String_8, mercury__lexer__Len_9, mercury__lexer__Posn0_10, mercury__lexer__Token_11, mercury__lexer__HaveToken_12, mercury__lexer__STATE_VARIABLE_Posn_17_17, mercury__lexer__STATE_VARIABLE_Posn_16);
+              }
+            else
+              {
+                /* direct tailcall eliminated */
+                {
+                  MR_Word mercury__lexer__next_value_of_STATE_VARIABLE_Posn_0_15 = mercury__lexer__STATE_VARIABLE_Posn_17_17;
+
+                  mercury__lexer__STATE_VARIABLE_Posn_0_15 = mercury__lexer__next_value_of_STATE_VARIABLE_Posn_0_15;
+                }
+                continue;
+              }
+          }
+        else
+          {
+            MR_Integer mercury__lexer__Context_37 = ((MR_Integer) (MR_hl_field(MR_mktag(0), mercury__lexer__Posn0_10, (MR_Integer) 0)));
+            MR_Integer mercury__lexer__Var_46 = ((MR_Integer) (MR_hl_field(MR_mktag(0), mercury__lexer__Posn0_10, (MR_Integer) 1)));
+            MR_Integer mercury__lexer__Var_47 = ((MR_Integer) (MR_hl_field(MR_mktag(0), mercury__lexer__Posn0_10, (MR_Integer) 2)));
+
+            *mercury__lexer__STATE_VARIABLE_Posn_16 = mercury__lexer__STATE_VARIABLE_Posn_0_15;
+            *mercury__lexer__HaveToken_12 = (MR_Word) mercury__lexer__Context_37;
+            *mercury__lexer__Token_11 = (MR_Word) MR_mkword(MR_mktag(3), &mercury__lexer_scalar_common_4[7]);
+          }
+      }
+      break;
+    }
+}
+
+static void MR_CALL 
+mercury__lexer__get_comment_5_p_0(
+  MR_Word mercury__lexer__Stream_6,
+  MR_Word * mercury__lexer__Token_7,
+  MR_Word * mercury__lexer__HaveToken_8)
+{
+  while (MR_TRUE)
+    {
+      /* tailcall optimized into a loop */
+      {
+        MR_bool mercury__lexer__succeeded;
+        MR_Word mercury__lexer__Result_10;
+        MR_Char mercury__lexer__Char_11;
+        MR_Word mercury__lexer__V_10_26;
+        MR_Box mercury__lexer__V_11_27;
+        MR_Box mercury__lexer__V_7_36 = (MR_Box) mercury__lexer__Stream_6;
+
+        {
+          mercury__io__read_char_code_2_6_p_0(mercury__lexer__V_7_36, &mercury__lexer__V_10_26, &mercury__lexer__Char_11, &mercury__lexer__V_11_27);
+        }
+        switch (mercury__lexer__V_10_26) {
+          default: /*NOTREACHED*/ MR_assert(0);
+          case (MR_Integer) 1:
+            mercury__lexer__Result_10 = (MR_Word) MR_mkword(MR_mktag(0), MR_mkbody((MR_Integer) 1));
+            break;
+          case (MR_Integer) 2:
+            {
+              MR_String mercury__lexer__V_12_29;
+              MR_Word mercury__lexer__V_17_30;
+
+{
+#define MR_PROC_LABEL mercury__lexer__get_comment_5_p_0
+
+	MR_Integer Error;
+	MR_String Msg0;
+	MR_String Msg;
+
+	MR_MAYBE_UNBOX_FOREIGN_TYPE(MR_Integer, mercury__lexer__V_11_27 , Error);
+	Msg0 =  (MR_String) "read failed: " ;
+		{
+
+    ML_make_err_msg(Error, Msg0, MR_ALLOC_ID, Msg);
+
+
+		;}
+#undef MR_PROC_LABEL
+	 mercury__lexer__V_12_29  = Msg;
+}
+              mercury__lexer__V_17_30 = (MR_Word) mercury__lexer__V_12_29;
+              {
+                mercury__lexer__Result_10 = (MR_Word) MR_mkword(MR_mktag(1), MR_new_object(MR_Word, ((MR_Integer) 1 * sizeof(MR_Word)), NULL, NULL));
+                MR_hl_field(MR_mktag(1), mercury__lexer__Result_10, 0) = ((MR_Box) (mercury__lexer__V_17_30));
+              }
+            }
+            break;
+          case (MR_Integer) 0:
+            mercury__lexer__Result_10 = (MR_Word) MR_mkword(MR_mktag(0), MR_mkbody((MR_Integer) 0));
+            break;
+        }
+        switch (MR_tag((MR_Word) mercury__lexer__Result_10)) {
+          default: /*NOTREACHED*/ MR_assert(0);
+          case (MR_Integer) 0:
+            switch (MR_unmkbody(mercury__lexer__Result_10)) {
+              default: /*NOTREACHED*/ MR_assert(0);
+              case (MR_Integer) 0:
+                {
+                  mercury__lexer__succeeded = (mercury__lexer__Char_11 == (MR_Char) 42);
+                  if (mercury__lexer__succeeded)
+                    {
+                      mercury__lexer__get_comment_2_5_p_0(mercury__lexer__Stream_6, mercury__lexer__Token_7, mercury__lexer__HaveToken_8);
+                    }
+                  else
+                    {
+                      /* direct tailcall eliminated */
+                      continue;
+                    }
+                }
+                break;
+              case (MR_Integer) 1:
+                {
+                  MR_Integer mercury__lexer__Context_40;
+                  MR_Box mercury__lexer__V_5_52 = (MR_Box) mercury__lexer__Stream_6;
+
+{
+#define MR_PROC_LABEL mercury__lexer__get_comment_5_p_0
+
+	MercuryFilePtr Stream;
+	MR_Integer LineNum;
+
+	Stream = (MercuryFilePtr) mercury__lexer__V_5_52 ;
+		{
+
+    LineNum = MR_line_number(*Stream);
+
+
+		;}
+#undef MR_PROC_LABEL
+	 mercury__lexer__Context_40  = LineNum;
+}
+                  *mercury__lexer__HaveToken_8 = (MR_Word) mercury__lexer__Context_40;
+                  *mercury__lexer__Token_7 = (MR_Word) MR_mkword(MR_mktag(3), &mercury__lexer_scalar_common_4[7]);
+                }
+                break;
+            }
+            break;
+          case (MR_Integer) 1:
+            {
+              MR_Word mercury__lexer__Error_12 = ((MR_Word) (MR_hl_field(MR_mktag(1), mercury__lexer__Result_10, (MR_Integer) 0)));
+              MR_Integer mercury__lexer__Context_56;
+              MR_Box mercury__lexer__V_5_68 = (MR_Box) mercury__lexer__Stream_6;
+
+{
+#define MR_PROC_LABEL mercury__lexer__get_comment_5_p_0
+
+	MercuryFilePtr Stream;
+	MR_Integer LineNum;
+
+	Stream = (MercuryFilePtr) mercury__lexer__V_5_68 ;
+		{
+
+    LineNum = MR_line_number(*Stream);
+
+
+		;}
+#undef MR_PROC_LABEL
+	 mercury__lexer__Context_56  = LineNum;
+}
+              *mercury__lexer__HaveToken_8 = (MR_Word) mercury__lexer__Context_56;
+              {
+                MR_Word base;
+                base = (MR_Word) MR_mkword(MR_mktag(3), MR_new_object(MR_Word, ((MR_Integer) 2 * sizeof(MR_Word)), NULL, NULL));
+                *mercury__lexer__Token_7 = base;
+                MR_hl_field(MR_mktag(3), base, 0) = ((MR_Box) (MR_Word) ((MR_Integer) 6));
+                MR_hl_field(MR_mktag(3), base, 1) = ((MR_Box) (mercury__lexer__Error_12));
+              }
+            }
+            break;
+        }
+      }
+      break;
+    }
+}
+
+static void MR_CALL 
+mercury__lexer__string_get_slash_7_p_0(
+  MR_String mercury__lexer__String_8,
+  MR_Integer mercury__lexer__Len_9,
+  MR_Word mercury__lexer__Posn0_10,
+  MR_Word * mercury__lexer__Token_11,
+  MR_Word * mercury__lexer__HaveToken_12,
+  MR_Word mercury__lexer__STATE_VARIABLE_Posn_0_16,
+  MR_Word * mercury__lexer__STATE_VARIABLE_Posn_17)
+{
+  {
+    MR_bool mercury__lexer__succeeded;
+    MR_Char mercury__lexer__Char_14;
+    MR_Word mercury__lexer__STATE_VARIABLE_Posn_18_18;
+    MR_Integer mercury__lexer__LineNum0_31 = ((MR_Integer) (MR_hl_field(MR_mktag(0), mercury__lexer__STATE_VARIABLE_Posn_0_16, (MR_Integer) 0)));
+    MR_Integer mercury__lexer__LineOffset0_32 = ((MR_Integer) (MR_hl_field(MR_mktag(0), mercury__lexer__STATE_VARIABLE_Posn_0_16, (MR_Integer) 1)));
+    MR_Integer mercury__lexer__Offset0_33 = ((MR_Integer) (MR_hl_field(MR_mktag(0), mercury__lexer__STATE_VARIABLE_Posn_0_16, (MR_Integer) 2)));
+    MR_Integer mercury__lexer__Offset_34;
+
+    mercury__lexer__succeeded = (mercury__lexer__Offset0_33 < mercury__lexer__Len_9);
+    if (mercury__lexer__succeeded)
+      {
+{
+#define MR_PROC_LABEL mercury__lexer__string_get_slash_7_p_0
+
+	MR_String Str;
+	MR_Integer Index;
+	MR_Integer NextIndex;
+	MR_Char Ch;
+	MR_bool SUCCESS_INDICATOR;
+
+	Str =  mercury__lexer__String_8 ;
+	Index =  mercury__lexer__Offset0_33 ;
+		{
+
+    Ch = Str[Index];
+    if (MR_is_ascii(Ch)) {
+        NextIndex = Index + 1;
+        SUCCESS_INDICATOR = (Ch != 0);
+    } else {
+        NextIndex = Index;
+        Ch = MR_utf8_get_next_mb(Str, &NextIndex);
+        SUCCESS_INDICATOR = (Ch > 0);
+    }
+
+
+		;}
+#undef MR_PROC_LABEL
+	if (SUCCESS_INDICATOR) {
+	 mercury__lexer__Offset_34  = NextIndex;
+	 mercury__lexer__Char_14  = Ch;
+	}
+mercury__lexer__succeeded  = SUCCESS_INDICATOR;
+}
+        if (mercury__lexer__succeeded)
+          {
+            mercury__lexer__succeeded = (mercury__lexer__Char_14 == (MR_Char) 10);
+            if (mercury__lexer__succeeded)
+              {
+                MR_Integer mercury__lexer__LineNum_35 = (mercury__lexer__LineNum0_31 + (MR_Integer) 1);
+
+                {
+                  mercury__lexer__STATE_VARIABLE_Posn_18_18 = (MR_Word) MR_new_object(MR_Word, ((MR_Integer) 3 * sizeof(MR_Word)), NULL, NULL);
+                  MR_hl_field(MR_mktag(0), mercury__lexer__STATE_VARIABLE_Posn_18_18, 0) = ((MR_Box) (mercury__lexer__LineNum_35));
+                  MR_hl_field(MR_mktag(0), mercury__lexer__STATE_VARIABLE_Posn_18_18, 1) = ((MR_Box) (mercury__lexer__Offset_34));
+                  MR_hl_field(MR_mktag(0), mercury__lexer__STATE_VARIABLE_Posn_18_18, 2) = ((MR_Box) (mercury__lexer__Offset_34));
+                }
+              }
+            else
+              {
+                mercury__lexer__STATE_VARIABLE_Posn_18_18 = (MR_Word) MR_new_object(MR_Word, ((MR_Integer) 3 * sizeof(MR_Word)), NULL, NULL);
+                MR_hl_field(MR_mktag(0), mercury__lexer__STATE_VARIABLE_Posn_18_18, 0) = ((MR_Box) (mercury__lexer__LineNum0_31));
+                MR_hl_field(MR_mktag(0), mercury__lexer__STATE_VARIABLE_Posn_18_18, 1) = ((MR_Box) (mercury__lexer__LineOffset0_32));
+                MR_hl_field(MR_mktag(0), mercury__lexer__STATE_VARIABLE_Posn_18_18, 2) = ((MR_Box) (mercury__lexer__Offset_34));
+              }
+            mercury__lexer__succeeded = MR_TRUE;
+          }
+      }
+    if (mercury__lexer__succeeded)
+      {
+        mercury__lexer__succeeded = (mercury__lexer__Char_14 == (MR_Char) 42);
+        if (mercury__lexer__succeeded)
+          {
+            mercury__lexer__string_get_comment_7_p_0(mercury__lexer__String_8, mercury__lexer__Len_9, mercury__lexer__Posn0_10, mercury__lexer__Token_11, mercury__lexer__HaveToken_12, mercury__lexer__STATE_VARIABLE_Posn_18_18, mercury__lexer__STATE_VARIABLE_Posn_17);
+          }
+        else
+          {
+            switch (mercury__lexer__Char_14) {
+              default:
+                mercury__lexer__succeeded = MR_FALSE;
+                break;
+              case (MR_Char) 33:
+                mercury__lexer__succeeded = MR_TRUE;
+                break;
+              case (MR_Char) 35:
+                mercury__lexer__succeeded = MR_TRUE;
+                break;
+              case (MR_Char) 36:
+                mercury__lexer__succeeded = MR_TRUE;
+                break;
+              case (MR_Char) 38:
+                mercury__lexer__succeeded = MR_TRUE;
+                break;
+              case (MR_Char) 42:
+                mercury__lexer__succeeded = MR_TRUE;
+                break;
+              case (MR_Char) 43:
+                mercury__lexer__succeeded = MR_TRUE;
+                break;
+              case (MR_Char) 45:
+                mercury__lexer__succeeded = MR_TRUE;
+                break;
+              case (MR_Char) 46:
+                mercury__lexer__succeeded = MR_TRUE;
+                break;
+              case (MR_Char) 47:
+                mercury__lexer__succeeded = MR_TRUE;
+                break;
+              case (MR_Char) 58:
+                mercury__lexer__succeeded = MR_TRUE;
+                break;
+              case (MR_Char) 60:
+                mercury__lexer__succeeded = MR_TRUE;
+                break;
+              case (MR_Char) 61:
+                mercury__lexer__succeeded = MR_TRUE;
+                break;
+              case (MR_Char) 62:
+                mercury__lexer__succeeded = MR_TRUE;
+                break;
+              case (MR_Char) 63:
+                mercury__lexer__succeeded = MR_TRUE;
+                break;
+              case (MR_Char) 64:
+                mercury__lexer__succeeded = MR_TRUE;
+                break;
+              case (MR_Char) 92:
+                mercury__lexer__succeeded = MR_TRUE;
+                break;
+              case (MR_Char) 94:
+                mercury__lexer__succeeded = MR_TRUE;
+                break;
+              case (MR_Char) 126:
+                mercury__lexer__succeeded = MR_TRUE;
+                break;
+            }
+            if (mercury__lexer__succeeded)
+              {
+                MR_Integer mercury__lexer__Context_15;
+
+                {
+                  mercury__lexer__string_get_graphic_7_p_0(mercury__lexer__String_8, mercury__lexer__Len_9, mercury__lexer__Posn0_10, mercury__lexer__Token_11, &mercury__lexer__Context_15, mercury__lexer__STATE_VARIABLE_Posn_18_18, mercury__lexer__STATE_VARIABLE_Posn_17);
+                }
+                *mercury__lexer__HaveToken_12 = (MR_Word) mercury__lexer__Context_15;
+              }
+            else
+              {
+                MR_Integer mercury__lexer__Context_41;
+                MR_Integer mercury__lexer__Var_50;
+                MR_Integer mercury__lexer__Var_51;
+
+                {
+                  mercury__lexer__string_ungetchar_3_p_0(mercury__lexer__String_8, mercury__lexer__STATE_VARIABLE_Posn_18_18, mercury__lexer__STATE_VARIABLE_Posn_17);
+                }
+                mercury__lexer__Context_41 = ((MR_Integer) (MR_hl_field(MR_mktag(0), mercury__lexer__Posn0_10, (MR_Integer) 0)));
+                mercury__lexer__Var_50 = ((MR_Integer) (MR_hl_field(MR_mktag(0), mercury__lexer__Posn0_10, (MR_Integer) 1)));
+                mercury__lexer__Var_51 = ((MR_Integer) (MR_hl_field(MR_mktag(0), mercury__lexer__Posn0_10, (MR_Integer) 2)));
+                *mercury__lexer__HaveToken_12 = (MR_Word) mercury__lexer__Context_41;
+                *mercury__lexer__Token_11 = (MR_Word) MR_mkword(MR_mktag(1), &mercury__lexer_scalar_common_6[3]);
+              }
+          }
+      }
+    else
+      {
+        MR_Integer mercury__lexer__Context_55 = ((MR_Integer) (MR_hl_field(MR_mktag(0), mercury__lexer__Posn0_10, (MR_Integer) 0)));
+        MR_Integer mercury__lexer__Var_64 = ((MR_Integer) (MR_hl_field(MR_mktag(0), mercury__lexer__Posn0_10, (MR_Integer) 1)));
+        MR_Integer mercury__lexer__Var_65 = ((MR_Integer) (MR_hl_field(MR_mktag(0), mercury__lexer__Posn0_10, (MR_Integer) 2)));
+
+        *mercury__lexer__STATE_VARIABLE_Posn_17 = mercury__lexer__STATE_VARIABLE_Posn_0_16;
+        *mercury__lexer__HaveToken_12 = (MR_Word) mercury__lexer__Context_55;
+        *mercury__lexer__Token_11 = (MR_Word) MR_mkword(MR_mktag(1), &mercury__lexer_scalar_common_6[3]);
+      }
+  }
+}
+
+static void MR_CALL 
+mercury__lexer__get_slash_5_p_0(
+  MR_Word mercury__lexer__Stream_6,
+  MR_Word * mercury__lexer__Token_7,
+  MR_Word * mercury__lexer__HaveToken_8)
+{
+  {
+    MR_bool mercury__lexer__succeeded;
+    MR_Word mercury__lexer__Result_10;
+    MR_Char mercury__lexer__Char_11;
+    MR_Word mercury__lexer__V_10_34;
+    MR_Box mercury__lexer__V_11_35;
+    MR_Box mercury__lexer__V_7_44 = (MR_Box) mercury__lexer__Stream_6;
+
+    {
+      mercury__io__read_char_code_2_6_p_0(mercury__lexer__V_7_44, &mercury__lexer__V_10_34, &mercury__lexer__Char_11, &mercury__lexer__V_11_35);
+    }
+    switch (mercury__lexer__V_10_34) {
+      default: /*NOTREACHED*/ MR_assert(0);
+      case (MR_Integer) 1:
+        mercury__lexer__Result_10 = (MR_Word) MR_mkword(MR_mktag(0), MR_mkbody((MR_Integer) 1));
+        break;
+      case (MR_Integer) 2:
+        {
+          MR_String mercury__lexer__V_12_37;
+          MR_Word mercury__lexer__V_17_38;
+
+{
+#define MR_PROC_LABEL mercury__lexer__get_slash_5_p_0
+
+	MR_Integer Error;
+	MR_String Msg0;
+	MR_String Msg;
+
+	MR_MAYBE_UNBOX_FOREIGN_TYPE(MR_Integer, mercury__lexer__V_11_35 , Error);
+	Msg0 =  (MR_String) "read failed: " ;
+		{
+
+    ML_make_err_msg(Error, Msg0, MR_ALLOC_ID, Msg);
+
+
+		;}
+#undef MR_PROC_LABEL
+	 mercury__lexer__V_12_37  = Msg;
+}
+          mercury__lexer__V_17_38 = (MR_Word) mercury__lexer__V_12_37;
+          {
+            mercury__lexer__Result_10 = (MR_Word) MR_mkword(MR_mktag(1), MR_new_object(MR_Word, ((MR_Integer) 1 * sizeof(MR_Word)), NULL, NULL));
+            MR_hl_field(MR_mktag(1), mercury__lexer__Result_10, 0) = ((MR_Box) (mercury__lexer__V_17_38));
+          }
+        }
+        break;
+      case (MR_Integer) 0:
+        mercury__lexer__Result_10 = (MR_Word) MR_mkword(MR_mktag(0), MR_mkbody((MR_Integer) 0));
+        break;
+    }
+    switch (MR_tag((MR_Word) mercury__lexer__Result_10)) {
+      default: /*NOTREACHED*/ MR_assert(0);
+      case (MR_Integer) 0:
+        switch (MR_unmkbody(mercury__lexer__Result_10)) {
+          default: /*NOTREACHED*/ MR_assert(0);
+          case (MR_Integer) 0:
+            {
+              mercury__lexer__succeeded = (mercury__lexer__Char_11 == (MR_Char) 42);
+              if (mercury__lexer__succeeded)
+                {
+                  mercury__lexer__get_comment_5_p_0(mercury__lexer__Stream_6, mercury__lexer__Token_7, mercury__lexer__HaveToken_8);
+                }
+              else
+                {
+                  switch (mercury__lexer__Char_11) {
+                    default:
+                      mercury__lexer__succeeded = MR_FALSE;
+                      break;
+                    case (MR_Char) 33:
+                      mercury__lexer__succeeded = MR_TRUE;
+                      break;
+                    case (MR_Char) 35:
+                      mercury__lexer__succeeded = MR_TRUE;
+                      break;
+                    case (MR_Char) 36:
+                      mercury__lexer__succeeded = MR_TRUE;
+                      break;
+                    case (MR_Char) 38:
+                      mercury__lexer__succeeded = MR_TRUE;
+                      break;
+                    case (MR_Char) 42:
+                      mercury__lexer__succeeded = MR_TRUE;
+                      break;
+                    case (MR_Char) 43:
+                      mercury__lexer__succeeded = MR_TRUE;
+                      break;
+                    case (MR_Char) 45:
+                      mercury__lexer__succeeded = MR_TRUE;
+                      break;
+                    case (MR_Char) 46:
+                      mercury__lexer__succeeded = MR_TRUE;
+                      break;
+                    case (MR_Char) 47:
+                      mercury__lexer__succeeded = MR_TRUE;
+                      break;
+                    case (MR_Char) 58:
+                      mercury__lexer__succeeded = MR_TRUE;
+                      break;
+                    case (MR_Char) 60:
+                      mercury__lexer__succeeded = MR_TRUE;
+                      break;
+                    case (MR_Char) 61:
+                      mercury__lexer__succeeded = MR_TRUE;
+                      break;
+                    case (MR_Char) 62:
+                      mercury__lexer__succeeded = MR_TRUE;
+                      break;
+                    case (MR_Char) 63:
+                      mercury__lexer__succeeded = MR_TRUE;
+                      break;
+                    case (MR_Char) 64:
+                      mercury__lexer__succeeded = MR_TRUE;
+                      break;
+                    case (MR_Char) 92:
+                      mercury__lexer__succeeded = MR_TRUE;
+                      break;
+                    case (MR_Char) 94:
+                      mercury__lexer__succeeded = MR_TRUE;
+                      break;
+                    case (MR_Char) 126:
+                      mercury__lexer__succeeded = MR_TRUE;
+                      break;
+                  }
+                  if (mercury__lexer__succeeded)
+                    {
+                      MR_Word mercury__lexer__Var_17;
+                      MR_Word mercury__lexer__Var_19 = (MR_Word) MR_mkword(MR_mktag(1), &mercury__lexer_scalar_common_4[6]);
+                      MR_Word mercury__lexer__Var_21 = (MR_Word) MR_mkword(MR_mktag(0), MR_mkbody((MR_Integer) 0));
+                      MR_Integer mercury__lexer__Context_80;
+                      MR_Box mercury__lexer__V_5_92;
+
+                      {
+                        mercury__lexer__Var_17 = (MR_Word) MR_mkword(MR_mktag(1), MR_new_object(MR_Word, ((MR_Integer) 2 * sizeof(MR_Word)), NULL, NULL));
+                        MR_hl_field(MR_mktag(1), mercury__lexer__Var_17, 0) = ((MR_Box) (MR_Word) (mercury__lexer__Char_11));
+                        MR_hl_field(MR_mktag(1), mercury__lexer__Var_17, 1) = ((MR_Box) (mercury__lexer__Var_19));
+                      }
+                      {
+                        mercury__lexer__get_graphic_5_p_0(mercury__lexer__Stream_6, mercury__lexer__Var_17, mercury__lexer__Token_7);
+                      }
+                      mercury__lexer__V_5_92 = (MR_Box) mercury__lexer__Stream_6;
+{
+#define MR_PROC_LABEL mercury__lexer__get_slash_5_p_0
+
+	MercuryFilePtr Stream;
+	MR_Integer LineNum;
+
+	Stream = (MercuryFilePtr) mercury__lexer__V_5_92 ;
+		{
+
+    LineNum = MR_line_number(*Stream);
+
+
+		;}
+#undef MR_PROC_LABEL
+	 mercury__lexer__Context_80  = LineNum;
+}
+                      *mercury__lexer__HaveToken_8 = (MR_Word) mercury__lexer__Context_80;
+                    }
+                  else
+                    {
+                      {
+                        mercury__io__putback_char_4_p_0(mercury__lexer__Stream_6, mercury__lexer__Char_11);
+                      }
+                      {
+                        mercury__lexer__have_token_4_p_0(mercury__lexer__Stream_6, mercury__lexer__HaveToken_8);
+                      }
+                      *mercury__lexer__Token_7 = (MR_Word) MR_mkword(MR_mktag(1), &mercury__lexer_scalar_common_6[3]);
+                    }
+                }
+            }
+            break;
+          case (MR_Integer) 1:
+            {
+              MR_Integer mercury__lexer__Context_48;
+              MR_Box mercury__lexer__V_5_60 = (MR_Box) mercury__lexer__Stream_6;
+
+{
+#define MR_PROC_LABEL mercury__lexer__get_slash_5_p_0
+
+	MercuryFilePtr Stream;
+	MR_Integer LineNum;
+
+	Stream = (MercuryFilePtr) mercury__lexer__V_5_60 ;
+		{
+
+    LineNum = MR_line_number(*Stream);
+
+
+		;}
+#undef MR_PROC_LABEL
+	 mercury__lexer__Context_48  = LineNum;
+}
+              *mercury__lexer__HaveToken_8 = (MR_Word) mercury__lexer__Context_48;
+              *mercury__lexer__Token_7 = (MR_Word) MR_mkword(MR_mktag(1), &mercury__lexer_scalar_common_6[3]);
+            }
+            break;
+        }
+        break;
+      case (MR_Integer) 1:
+        {
+          MR_Word mercury__lexer__Error_12 = ((MR_Word) (MR_hl_field(MR_mktag(1), mercury__lexer__Result_10, (MR_Integer) 0)));
+          MR_Integer mercury__lexer__Context_64;
+          MR_Box mercury__lexer__V_5_76 = (MR_Box) mercury__lexer__Stream_6;
+
+{
+#define MR_PROC_LABEL mercury__lexer__get_slash_5_p_0
+
+	MercuryFilePtr Stream;
+	MR_Integer LineNum;
+
+	Stream = (MercuryFilePtr) mercury__lexer__V_5_76 ;
+		{
+
+    LineNum = MR_line_number(*Stream);
+
+
+		;}
+#undef MR_PROC_LABEL
+	 mercury__lexer__Context_64  = LineNum;
+}
+          *mercury__lexer__HaveToken_8 = (MR_Word) mercury__lexer__Context_64;
+          {
+            MR_Word base;
+            base = (MR_Word) MR_mkword(MR_mktag(3), MR_new_object(MR_Word, ((MR_Integer) 2 * sizeof(MR_Word)), NULL, NULL));
+            *mercury__lexer__Token_7 = base;
+            MR_hl_field(MR_mktag(3), base, 0) = ((MR_Box) (MR_Word) ((MR_Integer) 6));
+            MR_hl_field(MR_mktag(3), base, 1) = ((MR_Box) (mercury__lexer__Error_12));
+          }
+        }
+        break;
+    }
+  }
+}
+
+static void MR_CALL 
+mercury__lexer__string_skip_to_eol_6_p_0(
+  MR_String mercury__lexer__String_7,
+  MR_Integer mercury__lexer__Len_8,
+  MR_Word * mercury__lexer__Token_9,
+  MR_Word * mercury__lexer__HaveToken_10,
+  MR_Word mercury__lexer__STATE_VARIABLE_Posn_0_13,
+  MR_Word * mercury__lexer__STATE_VARIABLE_Posn_14)
+{
+  while (MR_TRUE)
+    {
+      /* tailcall optimized into a loop */
+      {
+        MR_bool mercury__lexer__succeeded;
+        MR_Char mercury__lexer__Char_12;
+        MR_Word mercury__lexer__STATE_VARIABLE_Posn_15_15;
+        MR_Integer mercury__lexer__LineNum0_24 = ((MR_Integer) (MR_hl_field(MR_mktag(0), mercury__lexer__STATE_VARIABLE_Posn_0_13, (MR_Integer) 0)));
+        MR_Integer mercury__lexer__LineOffset0_25 = ((MR_Integer) (MR_hl_field(MR_mktag(0), mercury__lexer__STATE_VARIABLE_Posn_0_13, (MR_Integer) 1)));
+        MR_Integer mercury__lexer__Offset0_26 = ((MR_Integer) (MR_hl_field(MR_mktag(0), mercury__lexer__STATE_VARIABLE_Posn_0_13, (MR_Integer) 2)));
+        MR_Integer mercury__lexer__Offset_27;
+
+        mercury__lexer__succeeded = (mercury__lexer__Offset0_26 < mercury__lexer__Len_8);
+        if (mercury__lexer__succeeded)
+          {
+{
+#define MR_PROC_LABEL mercury__lexer__string_skip_to_eol_6_p_0
+
+	MR_String Str;
+	MR_Integer Index;
+	MR_Integer NextIndex;
+	MR_Char Ch;
+	MR_bool SUCCESS_INDICATOR;
+
+	Str =  mercury__lexer__String_7 ;
+	Index =  mercury__lexer__Offset0_26 ;
+		{
+
+    Ch = Str[Index];
+    if (MR_is_ascii(Ch)) {
+        NextIndex = Index + 1;
+        SUCCESS_INDICATOR = (Ch != 0);
+    } else {
+        NextIndex = Index;
+        Ch = MR_utf8_get_next_mb(Str, &NextIndex);
+        SUCCESS_INDICATOR = (Ch > 0);
+    }
+
+
+		;}
+#undef MR_PROC_LABEL
+	if (SUCCESS_INDICATOR) {
+	 mercury__lexer__Offset_27  = NextIndex;
+	 mercury__lexer__Char_12  = Ch;
+	}
+mercury__lexer__succeeded  = SUCCESS_INDICATOR;
+}
+            if (mercury__lexer__succeeded)
+              {
+                mercury__lexer__succeeded = (mercury__lexer__Char_12 == (MR_Char) 10);
+                if (mercury__lexer__succeeded)
+                  {
+                    MR_Integer mercury__lexer__LineNum_28 = (mercury__lexer__LineNum0_24 + (MR_Integer) 1);
+
+                    {
+                      mercury__lexer__STATE_VARIABLE_Posn_15_15 = (MR_Word) MR_new_object(MR_Word, ((MR_Integer) 3 * sizeof(MR_Word)), NULL, NULL);
+                      MR_hl_field(MR_mktag(0), mercury__lexer__STATE_VARIABLE_Posn_15_15, 0) = ((MR_Box) (mercury__lexer__LineNum_28));
+                      MR_hl_field(MR_mktag(0), mercury__lexer__STATE_VARIABLE_Posn_15_15, 1) = ((MR_Box) (mercury__lexer__Offset_27));
+                      MR_hl_field(MR_mktag(0), mercury__lexer__STATE_VARIABLE_Posn_15_15, 2) = ((MR_Box) (mercury__lexer__Offset_27));
+                    }
+                  }
+                else
+                  {
+                    mercury__lexer__STATE_VARIABLE_Posn_15_15 = (MR_Word) MR_new_object(MR_Word, ((MR_Integer) 3 * sizeof(MR_Word)), NULL, NULL);
+                    MR_hl_field(MR_mktag(0), mercury__lexer__STATE_VARIABLE_Posn_15_15, 0) = ((MR_Box) (mercury__lexer__LineNum0_24));
+                    MR_hl_field(MR_mktag(0), mercury__lexer__STATE_VARIABLE_Posn_15_15, 1) = ((MR_Box) (mercury__lexer__LineOffset0_25));
+                    MR_hl_field(MR_mktag(0), mercury__lexer__STATE_VARIABLE_Posn_15_15, 2) = ((MR_Box) (mercury__lexer__Offset_27));
+                  }
+                mercury__lexer__succeeded = MR_TRUE;
+              }
+          }
+        if (mercury__lexer__succeeded)
+          {
+            mercury__lexer__succeeded = (mercury__lexer__Char_12 == (MR_Char) 10);
+            if (mercury__lexer__succeeded)
+              {
+                *mercury__lexer__Token_9 = (MR_Word) MR_mkword(MR_mktag(0), MR_mkbody((MR_Integer) 10));
+                *mercury__lexer__HaveToken_10 = (MR_Word) ((MR_Box) ((MR_Integer) -1));
+                *mercury__lexer__STATE_VARIABLE_Posn_14 = mercury__lexer__STATE_VARIABLE_Posn_15_15;
+              }
+            else
+              {
+                /* direct tailcall eliminated */
+                {
+                  MR_Word mercury__lexer__next_value_of_STATE_VARIABLE_Posn_0_13 = mercury__lexer__STATE_VARIABLE_Posn_15_15;
+
+                  mercury__lexer__STATE_VARIABLE_Posn_0_13 = mercury__lexer__next_value_of_STATE_VARIABLE_Posn_0_13;
+                }
+                continue;
+              }
+          }
+        else
+          {
+            MR_Integer mercury__lexer__Context_37 = ((MR_Integer) (MR_hl_field(MR_mktag(0), mercury__lexer__STATE_VARIABLE_Posn_0_13, (MR_Integer) 0)));
+            MR_Integer mercury__lexer__Var_46 = ((MR_Integer) (MR_hl_field(MR_mktag(0), mercury__lexer__STATE_VARIABLE_Posn_0_13, (MR_Integer) 1)));
+            MR_Integer mercury__lexer__Var_47 = ((MR_Integer) (MR_hl_field(MR_mktag(0), mercury__lexer__STATE_VARIABLE_Posn_0_13, (MR_Integer) 2)));
+
+            *mercury__lexer__STATE_VARIABLE_Posn_14 = mercury__lexer__STATE_VARIABLE_Posn_0_13;
+            *mercury__lexer__HaveToken_10 = (MR_Word) mercury__lexer__Context_37;
+            *mercury__lexer__Token_9 = (MR_Word) MR_mkword(MR_mktag(0), MR_mkbody((MR_Integer) 10));
+          }
+      }
+      break;
+    }
+}
+
+static void MR_CALL 
+mercury__lexer__skip_to_eol_5_p_0(
+  MR_Word mercury__lexer__Stream_6,
+  MR_Word * mercury__lexer__Token_7,
+  MR_Word * mercury__lexer__HaveToken_8)
+{
+  while (MR_TRUE)
+    {
+      /* tailcall optimized into a loop */
+      {
+        MR_bool mercury__lexer__succeeded;
+        MR_Word mercury__lexer__Result_10;
+        MR_Char mercury__lexer__Char_11;
+        MR_Word mercury__lexer__V_10_24;
+        MR_Box mercury__lexer__V_11_25;
+        MR_Box mercury__lexer__V_7_34 = (MR_Box) mercury__lexer__Stream_6;
+
+        {
+          mercury__io__read_char_code_2_6_p_0(mercury__lexer__V_7_34, &mercury__lexer__V_10_24, &mercury__lexer__Char_11, &mercury__lexer__V_11_25);
+        }
+        switch (mercury__lexer__V_10_24) {
+          default: /*NOTREACHED*/ MR_assert(0);
+          case (MR_Integer) 1:
+            mercury__lexer__Result_10 = (MR_Word) MR_mkword(MR_mktag(0), MR_mkbody((MR_Integer) 1));
+            break;
+          case (MR_Integer) 2:
+            {
+              MR_String mercury__lexer__V_12_27;
+              MR_Word mercury__lexer__V_17_28;
+
+{
+#define MR_PROC_LABEL mercury__lexer__skip_to_eol_5_p_0
+
+	MR_Integer Error;
+	MR_String Msg0;
+	MR_String Msg;
+
+	MR_MAYBE_UNBOX_FOREIGN_TYPE(MR_Integer, mercury__lexer__V_11_25 , Error);
+	Msg0 =  (MR_String) "read failed: " ;
+		{
+
+    ML_make_err_msg(Error, Msg0, MR_ALLOC_ID, Msg);
+
+
+		;}
+#undef MR_PROC_LABEL
+	 mercury__lexer__V_12_27  = Msg;
+}
+              mercury__lexer__V_17_28 = (MR_Word) mercury__lexer__V_12_27;
+              {
+                mercury__lexer__Result_10 = (MR_Word) MR_mkword(MR_mktag(1), MR_new_object(MR_Word, ((MR_Integer) 1 * sizeof(MR_Word)), NULL, NULL));
+                MR_hl_field(MR_mktag(1), mercury__lexer__Result_10, 0) = ((MR_Box) (mercury__lexer__V_17_28));
+              }
+            }
+            break;
+          case (MR_Integer) 0:
+            mercury__lexer__Result_10 = (MR_Word) MR_mkword(MR_mktag(0), MR_mkbody((MR_Integer) 0));
+            break;
+        }
+        switch (MR_tag((MR_Word) mercury__lexer__Result_10)) {
+          default: /*NOTREACHED*/ MR_assert(0);
+          case (MR_Integer) 0:
+            switch (MR_unmkbody(mercury__lexer__Result_10)) {
+              default: /*NOTREACHED*/ MR_assert(0);
+              case (MR_Integer) 0:
+                {
+                  mercury__lexer__succeeded = (mercury__lexer__Char_11 == (MR_Char) 10);
+                  if (mercury__lexer__succeeded)
+                    {
+                      *mercury__lexer__Token_7 = (MR_Word) MR_mkword(MR_mktag(0), MR_mkbody((MR_Integer) 10));
+                      *mercury__lexer__HaveToken_8 = (MR_Word) ((MR_Box) ((MR_Integer) -1));
+                    }
+                  else
+                    {
+                      /* direct tailcall eliminated */
+                      continue;
+                    }
+                }
+                break;
+              case (MR_Integer) 1:
+                {
+                  MR_Integer mercury__lexer__Context_38;
+                  MR_Box mercury__lexer__V_5_50 = (MR_Box) mercury__lexer__Stream_6;
+
+{
+#define MR_PROC_LABEL mercury__lexer__skip_to_eol_5_p_0
+
+	MercuryFilePtr Stream;
+	MR_Integer LineNum;
+
+	Stream = (MercuryFilePtr) mercury__lexer__V_5_50 ;
+		{
+
+    LineNum = MR_line_number(*Stream);
+
+
+		;}
+#undef MR_PROC_LABEL
+	 mercury__lexer__Context_38  = LineNum;
+}
+                  *mercury__lexer__HaveToken_8 = (MR_Word) mercury__lexer__Context_38;
+                  *mercury__lexer__Token_7 = (MR_Word) MR_mkword(MR_mktag(0), MR_mkbody((MR_Integer) 10));
+                }
+                break;
+            }
+            break;
+          case (MR_Integer) 1:
+            {
+              MR_Word mercury__lexer__Error_12 = ((MR_Word) (MR_hl_field(MR_mktag(1), mercury__lexer__Result_10, (MR_Integer) 0)));
+              MR_Integer mercury__lexer__Context_54;
+              MR_Box mercury__lexer__V_5_66 = (MR_Box) mercury__lexer__Stream_6;
+
+{
+#define MR_PROC_LABEL mercury__lexer__skip_to_eol_5_p_0
+
+	MercuryFilePtr Stream;
+	MR_Integer LineNum;
+
+	Stream = (MercuryFilePtr) mercury__lexer__V_5_66 ;
+		{
+
+    LineNum = MR_line_number(*Stream);
+
+
+		;}
+#undef MR_PROC_LABEL
+	 mercury__lexer__Context_54  = LineNum;
+}
+              *mercury__lexer__HaveToken_8 = (MR_Word) mercury__lexer__Context_54;
+              {
+                MR_Word base;
+                base = (MR_Word) MR_mkword(MR_mktag(3), MR_new_object(MR_Word, ((MR_Integer) 2 * sizeof(MR_Word)), NULL, NULL));
+                *mercury__lexer__Token_7 = base;
+                MR_hl_field(MR_mktag(3), base, 0) = ((MR_Box) (MR_Word) ((MR_Integer) 6));
+                MR_hl_field(MR_mktag(3), base, 1) = ((MR_Box) (mercury__lexer__Error_12));
+              }
+            }
+            break;
+        }
+      }
+      break;
+    }
+}
+
+static void MR_CALL 
+mercury__lexer__string_get_dot_7_p_0(
+  MR_String mercury__lexer__String_8,
+  MR_Integer mercury__lexer__Len_9,
+  MR_Word mercury__lexer__Posn0_10,
+  MR_Word * mercury__lexer__Token_11,
+  MR_Integer * mercury__lexer__Context_12,
+  MR_Word mercury__lexer__STATE_VARIABLE_Posn_0_15,
+  MR_Word * mercury__lexer__STATE_VARIABLE_Posn_16)
+{
+  {
+    MR_bool mercury__lexer__succeeded;
+    MR_Char mercury__lexer__Char_14;
+    MR_Word mercury__lexer__STATE_VARIABLE_Posn_17_17;
+    MR_Integer mercury__lexer__LineNum0_30 = ((MR_Integer) (MR_hl_field(MR_mktag(0), mercury__lexer__STATE_VARIABLE_Posn_0_15, (MR_Integer) 0)));
+    MR_Integer mercury__lexer__LineOffset0_31 = ((MR_Integer) (MR_hl_field(MR_mktag(0), mercury__lexer__STATE_VARIABLE_Posn_0_15, (MR_Integer) 1)));
+    MR_Integer mercury__lexer__Offset0_32 = ((MR_Integer) (MR_hl_field(MR_mktag(0), mercury__lexer__STATE_VARIABLE_Posn_0_15, (MR_Integer) 2)));
+    MR_Integer mercury__lexer__Offset_33;
+
+    mercury__lexer__succeeded = (mercury__lexer__Offset0_32 < mercury__lexer__Len_9);
+    if (mercury__lexer__succeeded)
+      {
+{
+#define MR_PROC_LABEL mercury__lexer__string_get_dot_7_p_0
+
+	MR_String Str;
+	MR_Integer Index;
+	MR_Integer NextIndex;
+	MR_Char Ch;
+	MR_bool SUCCESS_INDICATOR;
+
+	Str =  mercury__lexer__String_8 ;
+	Index =  mercury__lexer__Offset0_32 ;
+		{
+
+    Ch = Str[Index];
+    if (MR_is_ascii(Ch)) {
+        NextIndex = Index + 1;
+        SUCCESS_INDICATOR = (Ch != 0);
+    } else {
+        NextIndex = Index;
+        Ch = MR_utf8_get_next_mb(Str, &NextIndex);
+        SUCCESS_INDICATOR = (Ch > 0);
+    }
+
+
+		;}
+#undef MR_PROC_LABEL
+	if (SUCCESS_INDICATOR) {
+	 mercury__lexer__Offset_33  = NextIndex;
+	 mercury__lexer__Char_14  = Ch;
+	}
+mercury__lexer__succeeded  = SUCCESS_INDICATOR;
+}
+        if (mercury__lexer__succeeded)
+          {
+            mercury__lexer__succeeded = (mercury__lexer__Char_14 == (MR_Char) 10);
+            if (mercury__lexer__succeeded)
+              {
+                MR_Integer mercury__lexer__LineNum_34 = (mercury__lexer__LineNum0_30 + (MR_Integer) 1);
+
+                {
+                  mercury__lexer__STATE_VARIABLE_Posn_17_17 = (MR_Word) MR_new_object(MR_Word, ((MR_Integer) 3 * sizeof(MR_Word)), NULL, NULL);
+                  MR_hl_field(MR_mktag(0), mercury__lexer__STATE_VARIABLE_Posn_17_17, 0) = ((MR_Box) (mercury__lexer__LineNum_34));
+                  MR_hl_field(MR_mktag(0), mercury__lexer__STATE_VARIABLE_Posn_17_17, 1) = ((MR_Box) (mercury__lexer__Offset_33));
+                  MR_hl_field(MR_mktag(0), mercury__lexer__STATE_VARIABLE_Posn_17_17, 2) = ((MR_Box) (mercury__lexer__Offset_33));
+                }
+              }
+            else
+              {
+                mercury__lexer__STATE_VARIABLE_Posn_17_17 = (MR_Word) MR_new_object(MR_Word, ((MR_Integer) 3 * sizeof(MR_Word)), NULL, NULL);
+                MR_hl_field(MR_mktag(0), mercury__lexer__STATE_VARIABLE_Posn_17_17, 0) = ((MR_Box) (mercury__lexer__LineNum0_30));
+                MR_hl_field(MR_mktag(0), mercury__lexer__STATE_VARIABLE_Posn_17_17, 1) = ((MR_Box) (mercury__lexer__LineOffset0_31));
+                MR_hl_field(MR_mktag(0), mercury__lexer__STATE_VARIABLE_Posn_17_17, 2) = ((MR_Box) (mercury__lexer__Offset_33));
+              }
+            mercury__lexer__succeeded = MR_TRUE;
+          }
+      }
+    if (mercury__lexer__succeeded)
+      {
+        {
+          mercury__lexer__succeeded = mercury__char__is_whitespace_1_p_0(mercury__lexer__Char_14);
+        }
+        if (!(mercury__lexer__succeeded))
+          mercury__lexer__succeeded = (mercury__lexer__Char_14 == (MR_Char) 37);
+        if (mercury__lexer__succeeded)
+          {
+            MR_Integer mercury__lexer__Var_44;
+            MR_Integer mercury__lexer__Var_45;
+
+            {
+              mercury__lexer__string_ungetchar_3_p_0(mercury__lexer__String_8, mercury__lexer__STATE_VARIABLE_Posn_17_17, mercury__lexer__STATE_VARIABLE_Posn_16);
+            }
+            *mercury__lexer__Context_12 = ((MR_Integer) (MR_hl_field(MR_mktag(0), mercury__lexer__Posn0_10, (MR_Integer) 0)));
+            mercury__lexer__Var_44 = ((MR_Integer) (MR_hl_field(MR_mktag(0), mercury__lexer__Posn0_10, (MR_Integer) 1)));
+            mercury__lexer__Var_45 = ((MR_Integer) (MR_hl_field(MR_mktag(0), mercury__lexer__Posn0_10, (MR_Integer) 2)));
+            *mercury__lexer__Token_11 = (MR_Word) MR_mkword(MR_mktag(0), MR_mkbody((MR_Integer) 9));
+          }
+        else
+          {
+            switch (mercury__lexer__Char_14) {
+              default:
+                mercury__lexer__succeeded = MR_FALSE;
+                break;
+              case (MR_Char) 33:
+                mercury__lexer__succeeded = MR_TRUE;
+                break;
+              case (MR_Char) 35:
+                mercury__lexer__succeeded = MR_TRUE;
+                break;
+              case (MR_Char) 36:
+                mercury__lexer__succeeded = MR_TRUE;
+                break;
+              case (MR_Char) 38:
+                mercury__lexer__succeeded = MR_TRUE;
+                break;
+              case (MR_Char) 42:
+                mercury__lexer__succeeded = MR_TRUE;
+                break;
+              case (MR_Char) 43:
+                mercury__lexer__succeeded = MR_TRUE;
+                break;
+              case (MR_Char) 45:
+                mercury__lexer__succeeded = MR_TRUE;
+                break;
+              case (MR_Char) 46:
+                mercury__lexer__succeeded = MR_TRUE;
+                break;
+              case (MR_Char) 47:
+                mercury__lexer__succeeded = MR_TRUE;
+                break;
+              case (MR_Char) 58:
+                mercury__lexer__succeeded = MR_TRUE;
+                break;
+              case (MR_Char) 60:
+                mercury__lexer__succeeded = MR_TRUE;
+                break;
+              case (MR_Char) 61:
+                mercury__lexer__succeeded = MR_TRUE;
+                break;
+              case (MR_Char) 62:
+                mercury__lexer__succeeded = MR_TRUE;
+                break;
+              case (MR_Char) 63:
+                mercury__lexer__succeeded = MR_TRUE;
+                break;
+              case (MR_Char) 64:
+                mercury__lexer__succeeded = MR_TRUE;
+                break;
+              case (MR_Char) 92:
+                mercury__lexer__succeeded = MR_TRUE;
+                break;
+              case (MR_Char) 94:
+                mercury__lexer__succeeded = MR_TRUE;
+                break;
+              case (MR_Char) 126:
+                mercury__lexer__succeeded = MR_TRUE;
+                break;
+            }
+            if (mercury__lexer__succeeded)
+              {
+                mercury__lexer__string_get_graphic_7_p_0(mercury__lexer__String_8, mercury__lexer__Len_9, mercury__lexer__Posn0_10, mercury__lexer__Token_11, mercury__lexer__Context_12, mercury__lexer__STATE_VARIABLE_Posn_17_17, mercury__lexer__STATE_VARIABLE_Posn_16);
+              }
+            else
+              {
+                MR_Integer mercury__lexer__Var_52;
+                MR_Integer mercury__lexer__Var_53;
+
+                {
+                  mercury__lexer__string_ungetchar_3_p_0(mercury__lexer__String_8, mercury__lexer__STATE_VARIABLE_Posn_17_17, mercury__lexer__STATE_VARIABLE_Posn_16);
+                }
+                *mercury__lexer__Context_12 = ((MR_Integer) (MR_hl_field(MR_mktag(0), mercury__lexer__Posn0_10, (MR_Integer) 0)));
+                mercury__lexer__Var_52 = ((MR_Integer) (MR_hl_field(MR_mktag(0), mercury__lexer__Posn0_10, (MR_Integer) 1)));
+                mercury__lexer__Var_53 = ((MR_Integer) (MR_hl_field(MR_mktag(0), mercury__lexer__Posn0_10, (MR_Integer) 2)));
+                *mercury__lexer__Token_11 = (MR_Word) MR_mkword(MR_mktag(1), &mercury__lexer_scalar_common_6[0]);
+              }
+          }
+      }
+    else
+      {
+        MR_Integer mercury__lexer__Var_60;
+        MR_Integer mercury__lexer__Var_61;
+
+        *mercury__lexer__Context_12 = ((MR_Integer) (MR_hl_field(MR_mktag(0), mercury__lexer__Posn0_10, (MR_Integer) 0)));
+        mercury__lexer__Var_60 = ((MR_Integer) (MR_hl_field(MR_mktag(0), mercury__lexer__Posn0_10, (MR_Integer) 1)));
+        mercury__lexer__Var_61 = ((MR_Integer) (MR_hl_field(MR_mktag(0), mercury__lexer__Posn0_10, (MR_Integer) 2)));
+        *mercury__lexer__STATE_VARIABLE_Posn_16 = mercury__lexer__STATE_VARIABLE_Posn_0_15;
+        *mercury__lexer__Token_11 = (MR_Word) MR_mkword(MR_mktag(0), MR_mkbody((MR_Integer) 9));
+      }
+  }
+}
+
+static void MR_CALL 
+mercury__lexer__get_dot_4_p_0(
+  MR_Word mercury__lexer__Stream_5,
+  MR_Word * mercury__lexer__Token_6)
+{
+  {
+    MR_bool mercury__lexer__succeeded;
+    MR_Word mercury__lexer__Result_8;
+    MR_Char mercury__lexer__Char_9;
+    MR_Word mercury__lexer__V_10_27;
+    MR_Box mercury__lexer__V_11_28;
+    MR_Box mercury__lexer__V_7_37 = (MR_Box) mercury__lexer__Stream_5;
+
+    {
+      mercury__io__read_char_code_2_6_p_0(mercury__lexer__V_7_37, &mercury__lexer__V_10_27, &mercury__lexer__Char_9, &mercury__lexer__V_11_28);
+    }
+    switch (mercury__lexer__V_10_27) {
+      default: /*NOTREACHED*/ MR_assert(0);
+      case (MR_Integer) 1:
+        mercury__lexer__Result_8 = (MR_Word) MR_mkword(MR_mktag(0), MR_mkbody((MR_Integer) 1));
+        break;
+      case (MR_Integer) 2:
+        {
+          MR_String mercury__lexer__V_12_30;
+          MR_Word mercury__lexer__V_17_31;
+
+{
+#define MR_PROC_LABEL mercury__lexer__get_dot_4_p_0
+
+	MR_Integer Error;
+	MR_String Msg0;
+	MR_String Msg;
+
+	MR_MAYBE_UNBOX_FOREIGN_TYPE(MR_Integer, mercury__lexer__V_11_28 , Error);
+	Msg0 =  (MR_String) "read failed: " ;
+		{
+
+    ML_make_err_msg(Error, Msg0, MR_ALLOC_ID, Msg);
+
+
+		;}
+#undef MR_PROC_LABEL
+	 mercury__lexer__V_12_30  = Msg;
+}
+          mercury__lexer__V_17_31 = (MR_Word) mercury__lexer__V_12_30;
+          {
+            mercury__lexer__Result_8 = (MR_Word) MR_mkword(MR_mktag(1), MR_new_object(MR_Word, ((MR_Integer) 1 * sizeof(MR_Word)), NULL, NULL));
+            MR_hl_field(MR_mktag(1), mercury__lexer__Result_8, 0) = ((MR_Box) (mercury__lexer__V_17_31));
+          }
+        }
+        break;
+      case (MR_Integer) 0:
+        mercury__lexer__Result_8 = (MR_Word) MR_mkword(MR_mktag(0), MR_mkbody((MR_Integer) 0));
+        break;
+    }
+    switch (MR_tag((MR_Word) mercury__lexer__Result_8)) {
+      default: /*NOTREACHED*/ MR_assert(0);
+      case (MR_Integer) 0:
+        switch (MR_unmkbody(mercury__lexer__Result_8)) {
+          default: /*NOTREACHED*/ MR_assert(0);
+          case (MR_Integer) 0:
+            {
+              {
+                mercury__lexer__succeeded = mercury__char__is_whitespace_1_p_0(mercury__lexer__Char_9);
+              }
+              if (!(mercury__lexer__succeeded))
+                mercury__lexer__succeeded = (mercury__lexer__Char_9 == (MR_Char) 37);
+              if (mercury__lexer__succeeded)
+                {
+                  {
+                    mercury__io__putback_char_4_p_0(mercury__lexer__Stream_5, mercury__lexer__Char_9);
+                  }
+                  *mercury__lexer__Token_6 = (MR_Word) MR_mkword(MR_mktag(0), MR_mkbody((MR_Integer) 9));
+                }
+              else
+                {
+                  switch (mercury__lexer__Char_9) {
+                    default:
+                      mercury__lexer__succeeded = MR_FALSE;
+                      break;
+                    case (MR_Char) 33:
+                      mercury__lexer__succeeded = MR_TRUE;
+                      break;
+                    case (MR_Char) 35:
+                      mercury__lexer__succeeded = MR_TRUE;
+                      break;
+                    case (MR_Char) 36:
+                      mercury__lexer__succeeded = MR_TRUE;
+                      break;
+                    case (MR_Char) 38:
+                      mercury__lexer__succeeded = MR_TRUE;
+                      break;
+                    case (MR_Char) 42:
+                      mercury__lexer__succeeded = MR_TRUE;
+                      break;
+                    case (MR_Char) 43:
+                      mercury__lexer__succeeded = MR_TRUE;
+                      break;
+                    case (MR_Char) 45:
+                      mercury__lexer__succeeded = MR_TRUE;
+                      break;
+                    case (MR_Char) 46:
+                      mercury__lexer__succeeded = MR_TRUE;
+                      break;
+                    case (MR_Char) 47:
+                      mercury__lexer__succeeded = MR_TRUE;
+                      break;
+                    case (MR_Char) 58:
+                      mercury__lexer__succeeded = MR_TRUE;
+                      break;
+                    case (MR_Char) 60:
+                      mercury__lexer__succeeded = MR_TRUE;
+                      break;
+                    case (MR_Char) 61:
+                      mercury__lexer__succeeded = MR_TRUE;
+                      break;
+                    case (MR_Char) 62:
+                      mercury__lexer__succeeded = MR_TRUE;
+                      break;
+                    case (MR_Char) 63:
+                      mercury__lexer__succeeded = MR_TRUE;
+                      break;
+                    case (MR_Char) 64:
+                      mercury__lexer__succeeded = MR_TRUE;
+                      break;
+                    case (MR_Char) 92:
+                      mercury__lexer__succeeded = MR_TRUE;
+                      break;
+                    case (MR_Char) 94:
+                      mercury__lexer__succeeded = MR_TRUE;
+                      break;
+                    case (MR_Char) 126:
+                      mercury__lexer__succeeded = MR_TRUE;
+                      break;
+                  }
+                  if (mercury__lexer__succeeded)
+                    {
+                      MR_Word mercury__lexer__Var_15;
+                      MR_Word mercury__lexer__Var_17 = (MR_Word) MR_mkword(MR_mktag(1), &mercury__lexer_scalar_common_4[5]);
+                      MR_Word mercury__lexer__Var_19 = (MR_Word) MR_mkword(MR_mktag(0), MR_mkbody((MR_Integer) 0));
+
+                      {
+                        mercury__lexer__Var_15 = (MR_Word) MR_mkword(MR_mktag(1), MR_new_object(MR_Word, ((MR_Integer) 2 * sizeof(MR_Word)), NULL, NULL));
+                        MR_hl_field(MR_mktag(1), mercury__lexer__Var_15, 0) = ((MR_Box) (MR_Word) (mercury__lexer__Char_9));
+                        MR_hl_field(MR_mktag(1), mercury__lexer__Var_15, 1) = ((MR_Box) (mercury__lexer__Var_17));
+                      }
+                      {
+                        mercury__lexer__get_graphic_5_p_0(mercury__lexer__Stream_5, mercury__lexer__Var_15, mercury__lexer__Token_6);
+                      }
+                    }
+                  else
+                    {
+                      {
+                        mercury__io__putback_char_4_p_0(mercury__lexer__Stream_5, mercury__lexer__Char_9);
+                      }
+                      *mercury__lexer__Token_6 = (MR_Word) MR_mkword(MR_mktag(1), &mercury__lexer_scalar_common_6[0]);
+                    }
+                }
+            }
+            break;
+          case (MR_Integer) 1:
+            *mercury__lexer__Token_6 = (MR_Word) MR_mkword(MR_mktag(0), MR_mkbody((MR_Integer) 9));
+            break;
+        }
+        break;
+      case (MR_Integer) 1:
+        {
+          MR_Word mercury__lexer__Error_10 = ((MR_Word) (MR_hl_field(MR_mktag(1), mercury__lexer__Result_8, (MR_Integer) 0)));
+
+          {
+            MR_Word base;
+            base = (MR_Word) MR_mkword(MR_mktag(3), MR_new_object(MR_Word, ((MR_Integer) 2 * sizeof(MR_Word)), NULL, NULL));
+            *mercury__lexer__Token_6 = base;
+            MR_hl_field(MR_mktag(3), base, 0) = ((MR_Box) (MR_Word) ((MR_Integer) 6));
+            MR_hl_field(MR_mktag(3), base, 1) = ((MR_Box) (mercury__lexer__Error_10));
+          }
+        }
+        break;
+    }
+  }
+}
+
+static void MR_CALL 
+mercury__lexer__handle_special_token_3_p_0(
+  MR_Char mercury__lexer__Char_4,
+  MR_Word mercury__lexer__ScannedPastWhiteSpace_5,
+  MR_Word * mercury__lexer__Token_6)
+{
+  {
+    MR_bool mercury__lexer__succeeded;
+    MR_Word mercury__lexer__SpecialToken_7;
+
+    switch (mercury__lexer__Char_4) {
+      default:
+        mercury__lexer__succeeded = MR_FALSE;
+        break;
+      case (MR_Char) 40:
+        {
+          mercury__lexer__SpecialToken_7 = (MR_Word) MR_mkword(MR_mktag(0), MR_mkbody((MR_Integer) 0));
+          mercury__lexer__succeeded = MR_TRUE;
+        }
+        break;
+      case (MR_Char) 41:
+        {
+          mercury__lexer__SpecialToken_7 = (MR_Word) MR_mkword(MR_mktag(0), MR_mkbody((MR_Integer) 2));
+          mercury__lexer__succeeded = MR_TRUE;
+        }
+        break;
+      case (MR_Char) 44:
+        {
+          mercury__lexer__SpecialToken_7 = (MR_Word) MR_mkword(MR_mktag(0), MR_mkbody((MR_Integer) 8));
+          mercury__lexer__succeeded = MR_TRUE;
+        }
+        break;
+      case (MR_Char) 59:
+        {
+          mercury__lexer__SpecialToken_7 = (MR_Word) MR_mkword(MR_mktag(1), &mercury__lexer_scalar_common_6[2]);
+          mercury__lexer__succeeded = MR_TRUE;
+        }
+        break;
+      case (MR_Char) 91:
+        {
+          mercury__lexer__SpecialToken_7 = (MR_Word) MR_mkword(MR_mktag(0), MR_mkbody((MR_Integer) 3));
+          mercury__lexer__succeeded = MR_TRUE;
+        }
+        break;
+      case (MR_Char) 93:
+        {
+          mercury__lexer__SpecialToken_7 = (MR_Word) MR_mkword(MR_mktag(0), MR_mkbody((MR_Integer) 4));
+          mercury__lexer__succeeded = MR_TRUE;
+        }
+        break;
+      case (MR_Char) 123:
+        {
+          mercury__lexer__SpecialToken_7 = (MR_Word) MR_mkword(MR_mktag(0), MR_mkbody((MR_Integer) 5));
+          mercury__lexer__succeeded = MR_TRUE;
+        }
+        break;
+      case (MR_Char) 124:
+        {
+          mercury__lexer__SpecialToken_7 = (MR_Word) MR_mkword(MR_mktag(0), MR_mkbody((MR_Integer) 7));
+          mercury__lexer__succeeded = MR_TRUE;
+        }
+        break;
+      case (MR_Char) 125:
+        {
+          mercury__lexer__SpecialToken_7 = (MR_Word) MR_mkword(MR_mktag(0), MR_mkbody((MR_Integer) 6));
+          mercury__lexer__succeeded = MR_TRUE;
+        }
+        break;
+    }
+    if (mercury__lexer__succeeded)
+      switch (mercury__lexer__ScannedPastWhiteSpace_5) {
+        default: /*NOTREACHED*/ MR_assert(0);
+        case (MR_Integer) 1:
+          {
+            mercury__lexer__succeeded = (mercury__lexer__SpecialToken_7 == ((MR_Word) MR_mkword(MR_mktag(0), MR_mkbody((MR_Integer) 0))));
+            if (mercury__lexer__succeeded)
+              *mercury__lexer__Token_6 = (MR_Word) MR_mkword(MR_mktag(0), MR_mkbody((MR_Integer) 1));
+            else
+              *mercury__lexer__Token_6 = mercury__lexer__SpecialToken_7;
+          }
+          break;
+        case (MR_Integer) 0:
+          *mercury__lexer__Token_6 = mercury__lexer__SpecialToken_7;
+          break;
+      }
+    else
+      {
+        {
+          mercury__require__error_1_p_0((MR_String) "lexer.m: handle_special_token: unknown special token");
+          return;
+        }
+      }
+  }
+}
+
+void MR_CALL 
+mercury__lexer__execute_get_token_action_8_p_0(
+  MR_Word mercury__lexer__Stream_9,
+  MR_Char mercury__lexer__Char_10,
+  MR_Word mercury__lexer__Action_11,
+  MR_Word mercury__lexer__ScannedPastWhiteSpace_12,
+  MR_Word * mercury__lexer__Token_13,
+  MR_Integer * mercury__lexer__Context_14)
+{
+  while (MR_TRUE)
+    {
+      /* tailcall optimized into a loop */
+      {
+        MR_bool mercury__lexer__succeeded;
+
+        switch (mercury__lexer__Action_11) {
+          default: /*NOTREACHED*/ MR_assert(0);
+          case (MR_Integer) 1:
+            {
+              MR_Word mercury__lexer__Var_51;
+              MR_Word mercury__lexer__Var_53;
+              MR_Box mercury__lexer__V_5_81 = (MR_Box) mercury__lexer__Stream_9;
+
+{
+#define MR_PROC_LABEL mercury__lexer__execute_get_token_action_8_p_0
+
+	MercuryFilePtr Stream;
+	MR_Integer LineNum;
+
+	Stream = (MercuryFilePtr) mercury__lexer__V_5_81 ;
+		{
+
+    LineNum = MR_line_number(*Stream);
+
+
+		;}
+#undef MR_PROC_LABEL
+	 *mercury__lexer__Context_14  = LineNum;
+}
+              mercury__lexer__Var_53 = (MR_Word) MR_mkword(MR_mktag(0), MR_mkbody((MR_Integer) 0));
+              {
+                mercury__lexer__Var_51 = (MR_Word) MR_mkword(MR_mktag(1), MR_new_object(MR_Word, ((MR_Integer) 2 * sizeof(MR_Word)), NULL, NULL));
+                MR_hl_field(MR_mktag(1), mercury__lexer__Var_51, 0) = ((MR_Box) (MR_Word) (mercury__lexer__Char_10));
+                MR_hl_field(MR_mktag(1), mercury__lexer__Var_51, 1) = ((MR_Box) (mercury__lexer__Var_53));
+              }
+              {
+                mercury__lexer__get_name_5_p_0(mercury__lexer__Stream_9, mercury__lexer__Var_51, mercury__lexer__Token_13);
+              }
+            }
+            break;
+          case (MR_Integer) 2:
+            {
+              MR_Word mercury__lexer__Var_55;
+              MR_Word mercury__lexer__Var_57;
+              MR_Box mercury__lexer__V_5_91 = (MR_Box) mercury__lexer__Stream_9;
+
+{
+#define MR_PROC_LABEL mercury__lexer__execute_get_token_action_8_p_0
+
+	MercuryFilePtr Stream;
+	MR_Integer LineNum;
+
+	Stream = (MercuryFilePtr) mercury__lexer__V_5_91 ;
+		{
+
+    LineNum = MR_line_number(*Stream);
+
+
+		;}
+#undef MR_PROC_LABEL
+	 *mercury__lexer__Context_14  = LineNum;
+}
+              mercury__lexer__Var_57 = (MR_Word) MR_mkword(MR_mktag(0), MR_mkbody((MR_Integer) 0));
+              {
+                mercury__lexer__Var_55 = (MR_Word) MR_mkword(MR_mktag(1), MR_new_object(MR_Word, ((MR_Integer) 2 * sizeof(MR_Word)), NULL, NULL));
+                MR_hl_field(MR_mktag(1), mercury__lexer__Var_55, 0) = ((MR_Box) (MR_Word) (mercury__lexer__Char_10));
+                MR_hl_field(MR_mktag(1), mercury__lexer__Var_55, 1) = ((MR_Box) (mercury__lexer__Var_57));
+              }
+              {
+                mercury__lexer__get_variable_5_p_0(mercury__lexer__Stream_9, mercury__lexer__Var_55, mercury__lexer__Token_13);
+              }
+            }
+            break;
+          case (MR_Integer) 11:
+            {
+              {
+                mercury__lexer__get_context_4_p_0(mercury__lexer__Stream_9, mercury__lexer__Context_14);
+              }
+              *mercury__lexer__Token_13 = (MR_Word) MR_mkword(MR_mktag(1), &mercury__lexer_scalar_common_6[1]);
+            }
+            break;
+          case (MR_Integer) 12:
+            {
+              {
+                mercury__lexer__get_context_4_p_0(mercury__lexer__Stream_9, mercury__lexer__Context_14);
+              }
+              {
+                mercury__lexer__get_implementation_defined_literal_rest_4_p_0(mercury__lexer__Stream_9, mercury__lexer__Token_13);
+              }
+            }
+            break;
+          case (MR_Integer) 6:
+            {
+              {
+                mercury__lexer__get_context_4_p_0(mercury__lexer__Stream_9, mercury__lexer__Context_14);
+              }
+              {
+                mercury__lexer__get_dot_4_p_0(mercury__lexer__Stream_9, mercury__lexer__Token_13);
+              }
+            }
+            break;
+          case (MR_Integer) 13:
+            {
+              MR_Word mercury__lexer__Var_22;
+              MR_Word mercury__lexer__Var_24;
+
+              {
+                mercury__lexer__get_context_4_p_0(mercury__lexer__Stream_9, mercury__lexer__Context_14);
+              }
+              mercury__lexer__Var_24 = (MR_Word) MR_mkword(MR_mktag(0), MR_mkbody((MR_Integer) 0));
+              {
+                mercury__lexer__Var_22 = (MR_Word) MR_mkword(MR_mktag(1), MR_new_object(MR_Word, ((MR_Integer) 2 * sizeof(MR_Word)), NULL, NULL));
+                MR_hl_field(MR_mktag(1), mercury__lexer__Var_22, 0) = ((MR_Box) (MR_Word) (mercury__lexer__Char_10));
+                MR_hl_field(MR_mktag(1), mercury__lexer__Var_22, 1) = ((MR_Box) (mercury__lexer__Var_24));
+              }
+              {
+                mercury__lexer__get_graphic_5_p_0(mercury__lexer__Stream_9, mercury__lexer__Var_22, mercury__lexer__Token_13);
+              }
+            }
+            break;
+          case (MR_Integer) 10:
+            {
+              MR_Word mercury__lexer__Var_29 = (MR_Word) MR_mkword(MR_mktag(0), MR_mkbody((MR_Integer) 0));
+              MR_Word mercury__lexer__Token0_61;
+              MR_Word mercury__lexer__HaveToken0_62;
+              MR_Integer mercury__lexer__Context0_60;
+
+              {
+                mercury__lexer__get_source_line_number_6_p_0(mercury__lexer__Stream_9, mercury__lexer__Var_29, &mercury__lexer__Token0_61, &mercury__lexer__HaveToken0_62);
+              }
+              mercury__lexer__Context0_60 = (MR_Integer) mercury__lexer__HaveToken0_62;
+              mercury__lexer__succeeded = (mercury__lexer__Context0_60 == (MR_Integer) -1);
+              mercury__lexer__succeeded = !(mercury__lexer__succeeded);
+              if (mercury__lexer__succeeded)
+                {
+                  *mercury__lexer__Token_13 = mercury__lexer__Token0_61;
+                  *mercury__lexer__Context_14 = mercury__lexer__Context0_60;
+                }
+              else
+                {
+                  MR_Word mercury__lexer__Result_100;
+                  MR_Char mercury__lexer__Char_101;
+                  MR_Word mercury__lexer__V_10_114;
+                  MR_Box mercury__lexer__V_11_115;
+                  MR_Box mercury__lexer__V_7_124 = (MR_Box) mercury__lexer__Stream_9;
+
+                  {
+                    mercury__io__read_char_code_2_6_p_0(mercury__lexer__V_7_124, &mercury__lexer__V_10_114, &mercury__lexer__Char_101, &mercury__lexer__V_11_115);
+                  }
+                  switch (mercury__lexer__V_10_114) {
+                    default: /*NOTREACHED*/ MR_assert(0);
+                    case (MR_Integer) 1:
+                      mercury__lexer__Result_100 = (MR_Word) MR_mkword(MR_mktag(0), MR_mkbody((MR_Integer) 1));
+                      break;
+                    case (MR_Integer) 2:
+                      {
+                        MR_String mercury__lexer__V_12_117;
+                        MR_Word mercury__lexer__V_17_118;
+
+{
+#define MR_PROC_LABEL mercury__lexer__execute_get_token_action_8_p_0
+
+	MR_Integer Error;
+	MR_String Msg0;
+	MR_String Msg;
+
+	MR_MAYBE_UNBOX_FOREIGN_TYPE(MR_Integer, mercury__lexer__V_11_115 , Error);
+	Msg0 =  (MR_String) "read failed: " ;
+		{
+
+    ML_make_err_msg(Error, Msg0, MR_ALLOC_ID, Msg);
+
+
+		;}
+#undef MR_PROC_LABEL
+	 mercury__lexer__V_12_117  = Msg;
+}
+                        mercury__lexer__V_17_118 = (MR_Word) mercury__lexer__V_12_117;
+                        {
+                          mercury__lexer__Result_100 = (MR_Word) MR_mkword(MR_mktag(1), MR_new_object(MR_Word, ((MR_Integer) 1 * sizeof(MR_Word)), NULL, NULL));
+                          MR_hl_field(MR_mktag(1), mercury__lexer__Result_100, 0) = ((MR_Box) (mercury__lexer__V_17_118));
+                        }
+                      }
+                      break;
+                    case (MR_Integer) 0:
+                      mercury__lexer__Result_100 = (MR_Word) MR_mkword(MR_mktag(0), MR_mkbody((MR_Integer) 0));
+                      break;
+                  }
+                  switch (MR_tag((MR_Word) mercury__lexer__Result_100)) {
+                    default: /*NOTREACHED*/ MR_assert(0);
+                    case (MR_Integer) 0:
+                      switch (MR_unmkbody(mercury__lexer__Result_100)) {
+                        default: /*NOTREACHED*/ MR_assert(0);
+                        case (MR_Integer) 0:
+                          {
+                            MR_Word mercury__lexer__Action_103;
+
+                            if ((((MR_Unsigned) (mercury__lexer__Char_101 - (MR_Integer) 9)) <= ((MR_Unsigned) (MR_Integer) 117)))
+                              if ((((mercury__lexer_scalar_common_8[0])[(((mercury__lexer__Char_101 - (MR_Integer) 9)) >> (MR_Integer) 5)]) & (((MR_Integer) 1 << ((((mercury__lexer__Char_101 - (MR_Integer) 9)) & (MR_Integer) 31))))))
+                                {
+                                  mercury__lexer__Action_103 = ((&mercury__lexer_vector_common_7[590 + (mercury__lexer__Char_101 - (MR_Integer) 9)]))->mercury__lexer__vector_common_type_7_0__vct_7_f_0;
+                                  mercury__lexer__succeeded = MR_TRUE;
+                                }
+                              else
+                                mercury__lexer__succeeded = MR_FALSE;
+                            else
+                              mercury__lexer__succeeded = MR_FALSE;
+                            if (mercury__lexer__succeeded)
+                              {
+                                /* direct tailcall eliminated */
+                                {
+                                  MR_Char mercury__lexer__next_value_of_Char_10 = mercury__lexer__Char_101;
+                                  MR_Word mercury__lexer__next_value_of_Action_11 = mercury__lexer__Action_103;
+
+                                  mercury__lexer__ScannedPastWhiteSpace_12 = (MR_Integer) 1;
+                                  mercury__lexer__Action_11 = mercury__lexer__next_value_of_Action_11;
+                                  mercury__lexer__Char_10 = mercury__lexer__next_value_of_Char_10;
+                                }
+                                continue;
+                              }
+                            else
+                              {
+                                MR_Box mercury__lexer__V_5_156 = (MR_Box) mercury__lexer__Stream_9;
+
+{
+#define MR_PROC_LABEL mercury__lexer__execute_get_token_action_8_p_0
+
+	MercuryFilePtr Stream;
+	MR_Integer LineNum;
+
+	Stream = (MercuryFilePtr) mercury__lexer__V_5_156 ;
+		{
+
+    LineNum = MR_line_number(*Stream);
+
+
+		;}
+#undef MR_PROC_LABEL
+	 *mercury__lexer__Context_14  = LineNum;
+}
+                                {
+                                  MR_Word base;
+                                  base = (MR_Word) MR_mkword(MR_mktag(3), MR_new_object(MR_Word, ((MR_Integer) 2 * sizeof(MR_Word)), NULL, NULL));
+                                  *mercury__lexer__Token_13 = base;
+                                  MR_hl_field(MR_mktag(3), base, 0) = ((MR_Box) (MR_Word) ((MR_Integer) 4));
+                                  MR_hl_field(MR_mktag(3), base, 1) = ((MR_Box) (MR_Word) (mercury__lexer__Char_101));
+                                }
+                              }
+                          }
+                          break;
+                        case (MR_Integer) 1:
+                          {
+                            MR_Box mercury__lexer__V_5_134 = (MR_Box) mercury__lexer__Stream_9;
+
+{
+#define MR_PROC_LABEL mercury__lexer__execute_get_token_action_8_p_0
+
+	MercuryFilePtr Stream;
+	MR_Integer LineNum;
+
+	Stream = (MercuryFilePtr) mercury__lexer__V_5_134 ;
+		{
+
+    LineNum = MR_line_number(*Stream);
+
+
+		;}
+#undef MR_PROC_LABEL
+	 *mercury__lexer__Context_14  = LineNum;
+}
+                            *mercury__lexer__Token_13 = (MR_Word) MR_mkword(MR_mktag(0), MR_mkbody((MR_Integer) 10));
+                          }
+                          break;
+                      }
+                      break;
+                    case (MR_Integer) 1:
+                      {
+                        MR_Word mercury__lexer__Error_102 = ((MR_Word) (MR_hl_field(MR_mktag(1), mercury__lexer__Result_100, (MR_Integer) 0)));
+                        MR_Box mercury__lexer__V_5_144 = (MR_Box) mercury__lexer__Stream_9;
+
+{
+#define MR_PROC_LABEL mercury__lexer__execute_get_token_action_8_p_0
+
+	MercuryFilePtr Stream;
+	MR_Integer LineNum;
+
+	Stream = (MercuryFilePtr) mercury__lexer__V_5_144 ;
+		{
+
+    LineNum = MR_line_number(*Stream);
+
+
+		;}
+#undef MR_PROC_LABEL
+	 *mercury__lexer__Context_14  = LineNum;
+}
+                        {
+                          MR_Word base;
+                          base = (MR_Word) MR_mkword(MR_mktag(3), MR_new_object(MR_Word, ((MR_Integer) 2 * sizeof(MR_Word)), NULL, NULL));
+                          *mercury__lexer__Token_13 = base;
+                          MR_hl_field(MR_mktag(3), base, 0) = ((MR_Box) (MR_Word) ((MR_Integer) 6));
+                          MR_hl_field(MR_mktag(3), base, 1) = ((MR_Box) (mercury__lexer__Error_102));
+                        }
+                      }
+                      break;
+                  }
+                }
+            }
+            break;
+          case (MR_Integer) 4:
+            {
+              MR_Word mercury__lexer__Var_45;
+              MR_Word mercury__lexer__Var_47;
+
+              {
+                mercury__lexer__get_context_4_p_0(mercury__lexer__Stream_9, mercury__lexer__Context_14);
+              }
+              mercury__lexer__Var_47 = (MR_Word) MR_mkword(MR_mktag(0), MR_mkbody((MR_Integer) 0));
+              {
+                mercury__lexer__Var_45 = (MR_Word) MR_mkword(MR_mktag(1), MR_new_object(MR_Word, ((MR_Integer) 2 * sizeof(MR_Word)), NULL, NULL));
+                MR_hl_field(MR_mktag(1), mercury__lexer__Var_45, 0) = ((MR_Box) (MR_Word) (mercury__lexer__Char_10));
+                MR_hl_field(MR_mktag(1), mercury__lexer__Var_45, 1) = ((MR_Box) (mercury__lexer__Var_47));
+              }
+              {
+                mercury__lexer__get_number_6_p_0(mercury__lexer__Stream_9, (MR_Integer) 1, mercury__lexer__Var_45, mercury__lexer__Token_13);
+              }
+            }
+            break;
+          case (MR_Integer) 7:
+            {
+              MR_Word mercury__lexer__Token0_16;
+              MR_Word mercury__lexer__HaveToken0_17;
+              MR_Integer mercury__lexer__Context0_18;
+
+              {
+                mercury__lexer__skip_to_eol_5_p_0(mercury__lexer__Stream_9, &mercury__lexer__Token0_16, &mercury__lexer__HaveToken0_17);
+              }
+              {
+                mercury__lexer__succeeded = mercury__lexer__have_token_with_context_2_p_0(mercury__lexer__HaveToken0_17, &mercury__lexer__Context0_18);
+              }
+              if (mercury__lexer__succeeded)
+                {
+                  *mercury__lexer__Token_13 = mercury__lexer__Token0_16;
+                  *mercury__lexer__Context_14 = mercury__lexer__Context0_18;
+                }
+              else
+                {
+                  MR_Word mercury__lexer__Result_164;
+                  MR_Char mercury__lexer__Char_165;
+                  MR_Word mercury__lexer__V_10_178;
+                  MR_Box mercury__lexer__V_11_179;
+                  MR_Box mercury__lexer__V_7_188 = (MR_Box) mercury__lexer__Stream_9;
+
+                  {
+                    mercury__io__read_char_code_2_6_p_0(mercury__lexer__V_7_188, &mercury__lexer__V_10_178, &mercury__lexer__Char_165, &mercury__lexer__V_11_179);
+                  }
+                  switch (mercury__lexer__V_10_178) {
+                    default: /*NOTREACHED*/ MR_assert(0);
+                    case (MR_Integer) 1:
+                      mercury__lexer__Result_164 = (MR_Word) MR_mkword(MR_mktag(0), MR_mkbody((MR_Integer) 1));
+                      break;
+                    case (MR_Integer) 2:
+                      {
+                        MR_String mercury__lexer__V_12_181;
+                        MR_Word mercury__lexer__V_17_182;
+
+{
+#define MR_PROC_LABEL mercury__lexer__execute_get_token_action_8_p_0
+
+	MR_Integer Error;
+	MR_String Msg0;
+	MR_String Msg;
+
+	MR_MAYBE_UNBOX_FOREIGN_TYPE(MR_Integer, mercury__lexer__V_11_179 , Error);
+	Msg0 =  (MR_String) "read failed: " ;
+		{
+
+    ML_make_err_msg(Error, Msg0, MR_ALLOC_ID, Msg);
+
+
+		;}
+#undef MR_PROC_LABEL
+	 mercury__lexer__V_12_181  = Msg;
+}
+                        mercury__lexer__V_17_182 = (MR_Word) mercury__lexer__V_12_181;
+                        {
+                          mercury__lexer__Result_164 = (MR_Word) MR_mkword(MR_mktag(1), MR_new_object(MR_Word, ((MR_Integer) 1 * sizeof(MR_Word)), NULL, NULL));
+                          MR_hl_field(MR_mktag(1), mercury__lexer__Result_164, 0) = ((MR_Box) (mercury__lexer__V_17_182));
+                        }
+                      }
+                      break;
+                    case (MR_Integer) 0:
+                      mercury__lexer__Result_164 = (MR_Word) MR_mkword(MR_mktag(0), MR_mkbody((MR_Integer) 0));
+                      break;
+                  }
+                  switch (MR_tag((MR_Word) mercury__lexer__Result_164)) {
+                    default: /*NOTREACHED*/ MR_assert(0);
+                    case (MR_Integer) 0:
+                      switch (MR_unmkbody(mercury__lexer__Result_164)) {
+                        default: /*NOTREACHED*/ MR_assert(0);
+                        case (MR_Integer) 0:
+                          {
+                            MR_Word mercury__lexer__Action_167;
+
+                            if ((((MR_Unsigned) (mercury__lexer__Char_165 - (MR_Integer) 9)) <= ((MR_Unsigned) (MR_Integer) 117)))
+                              if ((((mercury__lexer_scalar_common_8[0])[(((mercury__lexer__Char_165 - (MR_Integer) 9)) >> (MR_Integer) 5)]) & (((MR_Integer) 1 << ((((mercury__lexer__Char_165 - (MR_Integer) 9)) & (MR_Integer) 31))))))
+                                {
+                                  mercury__lexer__Action_167 = ((&mercury__lexer_vector_common_7[708 + (mercury__lexer__Char_165 - (MR_Integer) 9)]))->mercury__lexer__vector_common_type_7_0__vct_7_f_0;
+                                  mercury__lexer__succeeded = MR_TRUE;
+                                }
+                              else
+                                mercury__lexer__succeeded = MR_FALSE;
+                            else
+                              mercury__lexer__succeeded = MR_FALSE;
+                            if (mercury__lexer__succeeded)
+                              {
+                                /* direct tailcall eliminated */
+                                {
+                                  MR_Char mercury__lexer__next_value_of_Char_10 = mercury__lexer__Char_165;
+                                  MR_Word mercury__lexer__next_value_of_Action_11 = mercury__lexer__Action_167;
+
+                                  mercury__lexer__ScannedPastWhiteSpace_12 = (MR_Integer) 0;
+                                  mercury__lexer__Action_11 = mercury__lexer__next_value_of_Action_11;
+                                  mercury__lexer__Char_10 = mercury__lexer__next_value_of_Char_10;
+                                }
+                                continue;
+                              }
+                            else
+                              {
+                                MR_Box mercury__lexer__V_5_220 = (MR_Box) mercury__lexer__Stream_9;
+
+{
+#define MR_PROC_LABEL mercury__lexer__execute_get_token_action_8_p_0
+
+	MercuryFilePtr Stream;
+	MR_Integer LineNum;
+
+	Stream = (MercuryFilePtr) mercury__lexer__V_5_220 ;
+		{
+
+    LineNum = MR_line_number(*Stream);
+
+
+		;}
+#undef MR_PROC_LABEL
+	 *mercury__lexer__Context_14  = LineNum;
+}
+                                {
+                                  MR_Word base;
+                                  base = (MR_Word) MR_mkword(MR_mktag(3), MR_new_object(MR_Word, ((MR_Integer) 2 * sizeof(MR_Word)), NULL, NULL));
+                                  *mercury__lexer__Token_13 = base;
+                                  MR_hl_field(MR_mktag(3), base, 0) = ((MR_Box) (MR_Word) ((MR_Integer) 4));
+                                  MR_hl_field(MR_mktag(3), base, 1) = ((MR_Box) (MR_Word) (mercury__lexer__Char_165));
+                                }
+                              }
+                          }
+                          break;
+                        case (MR_Integer) 1:
+                          {
+                            MR_Box mercury__lexer__V_5_198 = (MR_Box) mercury__lexer__Stream_9;
+
+{
+#define MR_PROC_LABEL mercury__lexer__execute_get_token_action_8_p_0
+
+	MercuryFilePtr Stream;
+	MR_Integer LineNum;
+
+	Stream = (MercuryFilePtr) mercury__lexer__V_5_198 ;
+		{
+
+    LineNum = MR_line_number(*Stream);
+
+
+		;}
+#undef MR_PROC_LABEL
+	 *mercury__lexer__Context_14  = LineNum;
+}
+                            *mercury__lexer__Token_13 = (MR_Word) MR_mkword(MR_mktag(0), MR_mkbody((MR_Integer) 10));
+                          }
+                          break;
+                      }
+                      break;
+                    case (MR_Integer) 1:
+                      {
+                        MR_Word mercury__lexer__Error_166 = ((MR_Word) (MR_hl_field(MR_mktag(1), mercury__lexer__Result_164, (MR_Integer) 0)));
+                        MR_Box mercury__lexer__V_5_208 = (MR_Box) mercury__lexer__Stream_9;
+
+{
+#define MR_PROC_LABEL mercury__lexer__execute_get_token_action_8_p_0
+
+	MercuryFilePtr Stream;
+	MR_Integer LineNum;
+
+	Stream = (MercuryFilePtr) mercury__lexer__V_5_208 ;
+		{
+
+    LineNum = MR_line_number(*Stream);
+
+
+		;}
+#undef MR_PROC_LABEL
+	 *mercury__lexer__Context_14  = LineNum;
+}
+                        {
+                          MR_Word base;
+                          base = (MR_Word) MR_mkword(MR_mktag(3), MR_new_object(MR_Word, ((MR_Integer) 2 * sizeof(MR_Word)), NULL, NULL));
+                          *mercury__lexer__Token_13 = base;
+                          MR_hl_field(MR_mktag(3), base, 0) = ((MR_Box) (MR_Word) ((MR_Integer) 6));
+                          MR_hl_field(MR_mktag(3), base, 1) = ((MR_Box) (mercury__lexer__Error_166));
+                        }
+                      }
+                      break;
+                  }
+                }
+            }
+            break;
+          case (MR_Integer) 8:
+            {
+              MR_Word mercury__lexer__Var_38;
+
+              {
+                mercury__lexer__get_context_4_p_0(mercury__lexer__Stream_9, mercury__lexer__Context_14);
+              }
+              mercury__lexer__Var_38 = (MR_Word) MR_mkword(MR_mktag(0), MR_mkbody((MR_Integer) 0));
+              {
+                mercury__lexer__start_quoted_name_6_p_0(mercury__lexer__Stream_9, mercury__lexer__Char_10, mercury__lexer__Var_38, mercury__lexer__Token_13);
+              }
+            }
+            break;
+          case (MR_Integer) 9:
+            {
+              MR_Word mercury__lexer__Token0_67;
+              MR_Word mercury__lexer__HaveToken0_68;
+              MR_Integer mercury__lexer__Context0_65;
+
+              {
+                mercury__lexer__get_slash_5_p_0(mercury__lexer__Stream_9, &mercury__lexer__Token0_67, &mercury__lexer__HaveToken0_68);
+              }
+              {
+                mercury__lexer__succeeded = mercury__lexer__have_token_with_context_2_p_0(mercury__lexer__HaveToken0_68, &mercury__lexer__Context0_65);
+              }
+              if (mercury__lexer__succeeded)
+                {
+                  *mercury__lexer__Token_13 = mercury__lexer__Token0_67;
+                  *mercury__lexer__Context_14 = mercury__lexer__Context0_65;
+                }
+              else
+                {
+                  MR_Word mercury__lexer__Result_228;
+                  MR_Char mercury__lexer__Char_229;
+                  MR_Word mercury__lexer__V_10_242;
+                  MR_Box mercury__lexer__V_11_243;
+                  MR_Box mercury__lexer__V_7_252 = (MR_Box) mercury__lexer__Stream_9;
+
+                  {
+                    mercury__io__read_char_code_2_6_p_0(mercury__lexer__V_7_252, &mercury__lexer__V_10_242, &mercury__lexer__Char_229, &mercury__lexer__V_11_243);
+                  }
+                  switch (mercury__lexer__V_10_242) {
+                    default: /*NOTREACHED*/ MR_assert(0);
+                    case (MR_Integer) 1:
+                      mercury__lexer__Result_228 = (MR_Word) MR_mkword(MR_mktag(0), MR_mkbody((MR_Integer) 1));
+                      break;
+                    case (MR_Integer) 2:
+                      {
+                        MR_String mercury__lexer__V_12_245;
+                        MR_Word mercury__lexer__V_17_246;
+
+{
+#define MR_PROC_LABEL mercury__lexer__execute_get_token_action_8_p_0
+
+	MR_Integer Error;
+	MR_String Msg0;
+	MR_String Msg;
+
+	MR_MAYBE_UNBOX_FOREIGN_TYPE(MR_Integer, mercury__lexer__V_11_243 , Error);
+	Msg0 =  (MR_String) "read failed: " ;
+		{
+
+    ML_make_err_msg(Error, Msg0, MR_ALLOC_ID, Msg);
+
+
+		;}
+#undef MR_PROC_LABEL
+	 mercury__lexer__V_12_245  = Msg;
+}
+                        mercury__lexer__V_17_246 = (MR_Word) mercury__lexer__V_12_245;
+                        {
+                          mercury__lexer__Result_228 = (MR_Word) MR_mkword(MR_mktag(1), MR_new_object(MR_Word, ((MR_Integer) 1 * sizeof(MR_Word)), NULL, NULL));
+                          MR_hl_field(MR_mktag(1), mercury__lexer__Result_228, 0) = ((MR_Box) (mercury__lexer__V_17_246));
+                        }
+                      }
+                      break;
+                    case (MR_Integer) 0:
+                      mercury__lexer__Result_228 = (MR_Word) MR_mkword(MR_mktag(0), MR_mkbody((MR_Integer) 0));
+                      break;
+                  }
+                  switch (MR_tag((MR_Word) mercury__lexer__Result_228)) {
+                    default: /*NOTREACHED*/ MR_assert(0);
+                    case (MR_Integer) 0:
+                      switch (MR_unmkbody(mercury__lexer__Result_228)) {
+                        default: /*NOTREACHED*/ MR_assert(0);
+                        case (MR_Integer) 0:
+                          {
+                            MR_Word mercury__lexer__Action_231;
+
+                            if ((((MR_Unsigned) (mercury__lexer__Char_229 - (MR_Integer) 9)) <= ((MR_Unsigned) (MR_Integer) 117)))
+                              if ((((mercury__lexer_scalar_common_8[0])[(((mercury__lexer__Char_229 - (MR_Integer) 9)) >> (MR_Integer) 5)]) & (((MR_Integer) 1 << ((((mercury__lexer__Char_229 - (MR_Integer) 9)) & (MR_Integer) 31))))))
+                                {
+                                  mercury__lexer__Action_231 = ((&mercury__lexer_vector_common_7[826 + (mercury__lexer__Char_229 - (MR_Integer) 9)]))->mercury__lexer__vector_common_type_7_0__vct_7_f_0;
+                                  mercury__lexer__succeeded = MR_TRUE;
+                                }
+                              else
+                                mercury__lexer__succeeded = MR_FALSE;
+                            else
+                              mercury__lexer__succeeded = MR_FALSE;
+                            if (mercury__lexer__succeeded)
+                              {
+                                /* direct tailcall eliminated */
+                                {
+                                  MR_Char mercury__lexer__next_value_of_Char_10 = mercury__lexer__Char_229;
+                                  MR_Word mercury__lexer__next_value_of_Action_11 = mercury__lexer__Action_231;
+
+                                  mercury__lexer__ScannedPastWhiteSpace_12 = (MR_Integer) 0;
+                                  mercury__lexer__Action_11 = mercury__lexer__next_value_of_Action_11;
+                                  mercury__lexer__Char_10 = mercury__lexer__next_value_of_Char_10;
+                                }
+                                continue;
+                              }
+                            else
+                              {
+                                MR_Box mercury__lexer__V_5_284 = (MR_Box) mercury__lexer__Stream_9;
+
+{
+#define MR_PROC_LABEL mercury__lexer__execute_get_token_action_8_p_0
+
+	MercuryFilePtr Stream;
+	MR_Integer LineNum;
+
+	Stream = (MercuryFilePtr) mercury__lexer__V_5_284 ;
+		{
+
+    LineNum = MR_line_number(*Stream);
+
+
+		;}
+#undef MR_PROC_LABEL
+	 *mercury__lexer__Context_14  = LineNum;
+}
+                                {
+                                  MR_Word base;
+                                  base = (MR_Word) MR_mkword(MR_mktag(3), MR_new_object(MR_Word, ((MR_Integer) 2 * sizeof(MR_Word)), NULL, NULL));
+                                  *mercury__lexer__Token_13 = base;
+                                  MR_hl_field(MR_mktag(3), base, 0) = ((MR_Box) (MR_Word) ((MR_Integer) 4));
+                                  MR_hl_field(MR_mktag(3), base, 1) = ((MR_Box) (MR_Word) (mercury__lexer__Char_229));
+                                }
+                              }
+                          }
+                          break;
+                        case (MR_Integer) 1:
+                          {
+                            MR_Box mercury__lexer__V_5_262 = (MR_Box) mercury__lexer__Stream_9;
+
+{
+#define MR_PROC_LABEL mercury__lexer__execute_get_token_action_8_p_0
+
+	MercuryFilePtr Stream;
+	MR_Integer LineNum;
+
+	Stream = (MercuryFilePtr) mercury__lexer__V_5_262 ;
+		{
+
+    LineNum = MR_line_number(*Stream);
+
+
+		;}
+#undef MR_PROC_LABEL
+	 *mercury__lexer__Context_14  = LineNum;
+}
+                            *mercury__lexer__Token_13 = (MR_Word) MR_mkword(MR_mktag(0), MR_mkbody((MR_Integer) 10));
+                          }
+                          break;
+                      }
+                      break;
+                    case (MR_Integer) 1:
+                      {
+                        MR_Word mercury__lexer__Error_230 = ((MR_Word) (MR_hl_field(MR_mktag(1), mercury__lexer__Result_228, (MR_Integer) 0)));
+                        MR_Box mercury__lexer__V_5_272 = (MR_Box) mercury__lexer__Stream_9;
+
+{
+#define MR_PROC_LABEL mercury__lexer__execute_get_token_action_8_p_0
+
+	MercuryFilePtr Stream;
+	MR_Integer LineNum;
+
+	Stream = (MercuryFilePtr) mercury__lexer__V_5_272 ;
+		{
+
+    LineNum = MR_line_number(*Stream);
+
+
+		;}
+#undef MR_PROC_LABEL
+	 *mercury__lexer__Context_14  = LineNum;
+}
+                        {
+                          MR_Word base;
+                          base = (MR_Word) MR_mkword(MR_mktag(3), MR_new_object(MR_Word, ((MR_Integer) 2 * sizeof(MR_Word)), NULL, NULL));
+                          *mercury__lexer__Token_13 = base;
+                          MR_hl_field(MR_mktag(3), base, 0) = ((MR_Box) (MR_Word) ((MR_Integer) 6));
+                          MR_hl_field(MR_mktag(3), base, 1) = ((MR_Box) (mercury__lexer__Error_230));
+                        }
+                      }
+                      break;
+                  }
+                }
+            }
+            break;
+          case (MR_Integer) 5:
+            {
+              MR_Word mercury__lexer__SpecialToken_288;
+
+              {
+                mercury__lexer__get_context_4_p_0(mercury__lexer__Stream_9, mercury__lexer__Context_14);
+              }
+              switch (mercury__lexer__Char_10) {
+                default:
+                  mercury__lexer__succeeded = MR_FALSE;
+                  break;
+                case (MR_Char) 40:
+                  {
+                    mercury__lexer__SpecialToken_288 = (MR_Word) MR_mkword(MR_mktag(0), MR_mkbody((MR_Integer) 0));
+                    mercury__lexer__succeeded = MR_TRUE;
+                  }
+                  break;
+                case (MR_Char) 41:
+                  {
+                    mercury__lexer__SpecialToken_288 = (MR_Word) MR_mkword(MR_mktag(0), MR_mkbody((MR_Integer) 2));
+                    mercury__lexer__succeeded = MR_TRUE;
+                  }
+                  break;
+                case (MR_Char) 44:
+                  {
+                    mercury__lexer__SpecialToken_288 = (MR_Word) MR_mkword(MR_mktag(0), MR_mkbody((MR_Integer) 8));
+                    mercury__lexer__succeeded = MR_TRUE;
+                  }
+                  break;
+                case (MR_Char) 59:
+                  {
+                    mercury__lexer__SpecialToken_288 = (MR_Word) MR_mkword(MR_mktag(1), &mercury__lexer_scalar_common_6[2]);
+                    mercury__lexer__succeeded = MR_TRUE;
+                  }
+                  break;
+                case (MR_Char) 91:
+                  {
+                    mercury__lexer__SpecialToken_288 = (MR_Word) MR_mkword(MR_mktag(0), MR_mkbody((MR_Integer) 3));
+                    mercury__lexer__succeeded = MR_TRUE;
+                  }
+                  break;
+                case (MR_Char) 93:
+                  {
+                    mercury__lexer__SpecialToken_288 = (MR_Word) MR_mkword(MR_mktag(0), MR_mkbody((MR_Integer) 4));
+                    mercury__lexer__succeeded = MR_TRUE;
+                  }
+                  break;
+                case (MR_Char) 123:
+                  {
+                    mercury__lexer__SpecialToken_288 = (MR_Word) MR_mkword(MR_mktag(0), MR_mkbody((MR_Integer) 5));
+                    mercury__lexer__succeeded = MR_TRUE;
+                  }
+                  break;
+                case (MR_Char) 124:
+                  {
+                    mercury__lexer__SpecialToken_288 = (MR_Word) MR_mkword(MR_mktag(0), MR_mkbody((MR_Integer) 7));
+                    mercury__lexer__succeeded = MR_TRUE;
+                  }
+                  break;
+                case (MR_Char) 125:
+                  {
+                    mercury__lexer__SpecialToken_288 = (MR_Word) MR_mkword(MR_mktag(0), MR_mkbody((MR_Integer) 6));
+                    mercury__lexer__succeeded = MR_TRUE;
+                  }
+                  break;
+              }
+              if (mercury__lexer__succeeded)
+                switch (mercury__lexer__ScannedPastWhiteSpace_12) {
+                  default: /*NOTREACHED*/ MR_assert(0);
+                  case (MR_Integer) 1:
+                    {
+                      mercury__lexer__succeeded = (mercury__lexer__SpecialToken_288 == ((MR_Word) MR_mkword(MR_mktag(0), MR_mkbody((MR_Integer) 0))));
+                      if (mercury__lexer__succeeded)
+                        *mercury__lexer__Token_13 = (MR_Word) MR_mkword(MR_mktag(0), MR_mkbody((MR_Integer) 1));
+                      else
+                        *mercury__lexer__Token_13 = mercury__lexer__SpecialToken_288;
+                    }
+                    break;
+                  case (MR_Integer) 0:
+                    *mercury__lexer__Token_13 = mercury__lexer__SpecialToken_288;
+                    break;
+                }
+              else
+                {
+                  {
+                    mercury__require__error_1_p_0((MR_String) "lexer.m: handle_special_token: unknown special token");
+                    return;
+                  }
+                }
+            }
+            break;
+          case (MR_Integer) 0:
+            {
+              MR_Word mercury__lexer__Result_298;
+              MR_Char mercury__lexer__Char_299;
+              MR_Word mercury__lexer__V_10_312;
+              MR_Box mercury__lexer__V_11_313;
+              MR_Box mercury__lexer__V_7_322 = (MR_Box) mercury__lexer__Stream_9;
+
+              {
+                mercury__io__read_char_code_2_6_p_0(mercury__lexer__V_7_322, &mercury__lexer__V_10_312, &mercury__lexer__Char_299, &mercury__lexer__V_11_313);
+              }
+              switch (mercury__lexer__V_10_312) {
+                default: /*NOTREACHED*/ MR_assert(0);
+                case (MR_Integer) 1:
+                  mercury__lexer__Result_298 = (MR_Word) MR_mkword(MR_mktag(0), MR_mkbody((MR_Integer) 1));
+                  break;
+                case (MR_Integer) 2:
+                  {
+                    MR_String mercury__lexer__V_12_315;
+                    MR_Word mercury__lexer__V_17_316;
+
+{
+#define MR_PROC_LABEL mercury__lexer__execute_get_token_action_8_p_0
+
+	MR_Integer Error;
+	MR_String Msg0;
+	MR_String Msg;
+
+	MR_MAYBE_UNBOX_FOREIGN_TYPE(MR_Integer, mercury__lexer__V_11_313 , Error);
+	Msg0 =  (MR_String) "read failed: " ;
+		{
+
+    ML_make_err_msg(Error, Msg0, MR_ALLOC_ID, Msg);
+
+
+		;}
+#undef MR_PROC_LABEL
+	 mercury__lexer__V_12_315  = Msg;
+}
+                    mercury__lexer__V_17_316 = (MR_Word) mercury__lexer__V_12_315;
+                    {
+                      mercury__lexer__Result_298 = (MR_Word) MR_mkword(MR_mktag(1), MR_new_object(MR_Word, ((MR_Integer) 1 * sizeof(MR_Word)), NULL, NULL));
+                      MR_hl_field(MR_mktag(1), mercury__lexer__Result_298, 0) = ((MR_Box) (mercury__lexer__V_17_316));
+                    }
+                  }
+                  break;
+                case (MR_Integer) 0:
+                  mercury__lexer__Result_298 = (MR_Word) MR_mkword(MR_mktag(0), MR_mkbody((MR_Integer) 0));
+                  break;
+              }
+              switch (MR_tag((MR_Word) mercury__lexer__Result_298)) {
+                default: /*NOTREACHED*/ MR_assert(0);
+                case (MR_Integer) 0:
+                  switch (MR_unmkbody(mercury__lexer__Result_298)) {
+                    default: /*NOTREACHED*/ MR_assert(0);
+                    case (MR_Integer) 0:
+                      {
+                        MR_Word mercury__lexer__Action_301;
+
+                        if ((((MR_Unsigned) (mercury__lexer__Char_299 - (MR_Integer) 9)) <= ((MR_Unsigned) (MR_Integer) 117)))
+                          if ((((mercury__lexer_scalar_common_8[0])[(((mercury__lexer__Char_299 - (MR_Integer) 9)) >> (MR_Integer) 5)]) & (((MR_Integer) 1 << ((((mercury__lexer__Char_299 - (MR_Integer) 9)) & (MR_Integer) 31))))))
+                            {
+                              mercury__lexer__Action_301 = ((&mercury__lexer_vector_common_7[944 + (mercury__lexer__Char_299 - (MR_Integer) 9)]))->mercury__lexer__vector_common_type_7_0__vct_7_f_0;
+                              mercury__lexer__succeeded = MR_TRUE;
+                            }
+                          else
+                            mercury__lexer__succeeded = MR_FALSE;
+                        else
+                          mercury__lexer__succeeded = MR_FALSE;
+                        if (mercury__lexer__succeeded)
+                          {
+                            /* direct tailcall eliminated */
+                            {
+                              MR_Char mercury__lexer__next_value_of_Char_10 = mercury__lexer__Char_299;
+                              MR_Word mercury__lexer__next_value_of_Action_11 = mercury__lexer__Action_301;
+
+                              mercury__lexer__ScannedPastWhiteSpace_12 = (MR_Integer) 0;
+                              mercury__lexer__Action_11 = mercury__lexer__next_value_of_Action_11;
+                              mercury__lexer__Char_10 = mercury__lexer__next_value_of_Char_10;
+                            }
+                            continue;
+                          }
+                        else
+                          {
+                            MR_Box mercury__lexer__V_5_354 = (MR_Box) mercury__lexer__Stream_9;
+
+{
+#define MR_PROC_LABEL mercury__lexer__execute_get_token_action_8_p_0
+
+	MercuryFilePtr Stream;
+	MR_Integer LineNum;
+
+	Stream = (MercuryFilePtr) mercury__lexer__V_5_354 ;
+		{
+
+    LineNum = MR_line_number(*Stream);
+
+
+		;}
+#undef MR_PROC_LABEL
+	 *mercury__lexer__Context_14  = LineNum;
+}
+                            {
+                              MR_Word base;
+                              base = (MR_Word) MR_mkword(MR_mktag(3), MR_new_object(MR_Word, ((MR_Integer) 2 * sizeof(MR_Word)), NULL, NULL));
+                              *mercury__lexer__Token_13 = base;
+                              MR_hl_field(MR_mktag(3), base, 0) = ((MR_Box) (MR_Word) ((MR_Integer) 4));
+                              MR_hl_field(MR_mktag(3), base, 1) = ((MR_Box) (MR_Word) (mercury__lexer__Char_299));
+                            }
+                          }
+                      }
+                      break;
+                    case (MR_Integer) 1:
+                      {
+                        MR_Box mercury__lexer__V_5_332 = (MR_Box) mercury__lexer__Stream_9;
+
+{
+#define MR_PROC_LABEL mercury__lexer__execute_get_token_action_8_p_0
+
+	MercuryFilePtr Stream;
+	MR_Integer LineNum;
+
+	Stream = (MercuryFilePtr) mercury__lexer__V_5_332 ;
+		{
+
+    LineNum = MR_line_number(*Stream);
+
+
+		;}
+#undef MR_PROC_LABEL
+	 *mercury__lexer__Context_14  = LineNum;
+}
+                        *mercury__lexer__Token_13 = (MR_Word) MR_mkword(MR_mktag(0), MR_mkbody((MR_Integer) 10));
+                      }
+                      break;
+                  }
+                  break;
+                case (MR_Integer) 1:
+                  {
+                    MR_Word mercury__lexer__Error_300 = ((MR_Word) (MR_hl_field(MR_mktag(1), mercury__lexer__Result_298, (MR_Integer) 0)));
+                    MR_Box mercury__lexer__V_5_342 = (MR_Box) mercury__lexer__Stream_9;
+
+{
+#define MR_PROC_LABEL mercury__lexer__execute_get_token_action_8_p_0
+
+	MercuryFilePtr Stream;
+	MR_Integer LineNum;
+
+	Stream = (MercuryFilePtr) mercury__lexer__V_5_342 ;
+		{
+
+    LineNum = MR_line_number(*Stream);
+
+
+		;}
+#undef MR_PROC_LABEL
+	 *mercury__lexer__Context_14  = LineNum;
+}
+                    {
+                      MR_Word base;
+                      base = (MR_Word) MR_mkword(MR_mktag(3), MR_new_object(MR_Word, ((MR_Integer) 2 * sizeof(MR_Word)), NULL, NULL));
+                      *mercury__lexer__Token_13 = base;
+                      MR_hl_field(MR_mktag(3), base, 0) = ((MR_Box) (MR_Word) ((MR_Integer) 6));
+                      MR_hl_field(MR_mktag(3), base, 1) = ((MR_Box) (mercury__lexer__Error_300));
+                    }
+                  }
+                  break;
+              }
+            }
+            break;
+          case (MR_Integer) 3:
+            {
+              {
+                mercury__lexer__get_context_4_p_0(mercury__lexer__Stream_9, mercury__lexer__Context_14);
+              }
+              {
+                mercury__lexer__get_zero_4_p_0(mercury__lexer__Stream_9, mercury__lexer__Token_13);
+              }
+            }
+            break;
+        }
+      }
+      break;
+    }
+}
+
+static MR_bool MR_CALL 
+mercury__lexer__have_token_with_context_2_p_0(
+  MR_Word mercury__lexer__HeadVar__1_1,
+  MR_Integer * mercury__lexer__Context_3)
+{
+  {
+    MR_bool mercury__lexer__succeeded;
+
+    *mercury__lexer__Context_3 = (MR_Integer) mercury__lexer__HeadVar__1_1;
+    mercury__lexer__succeeded = (*mercury__lexer__Context_3 == (MR_Integer) -1);
+    mercury__lexer__succeeded = !(mercury__lexer__succeeded);
+    return mercury__lexer__succeeded;
+  }
+}
+
+static void MR_CALL 
+mercury__lexer__do_not_have_token_2_p_0(
+  MR_Word * mercury__lexer__Token_3,
+  MR_Word * mercury__lexer__HaveToken_4)
+{
+  {
+    MR_bool mercury__lexer__succeeded;
+
+    *mercury__lexer__Token_3 = (MR_Word) MR_mkword(MR_mktag(0), MR_mkbody((MR_Integer) 10));
+    *mercury__lexer__HaveToken_4 = (MR_Word) ((MR_Box) ((MR_Integer) -1));
+  }
+}
+
+static void MR_CALL 
+mercury__lexer__string_have_token_4_p_0(
+  MR_Word mercury__lexer__Posn0_5,
+  MR_Word * mercury__lexer__HeadVar__2_2,
+  MR_Word mercury__lexer__STATE_VARIABLE_Posn_0_8,
+  MR_Word * mercury__lexer__STATE_VARIABLE_Posn_9)
+{
+  {
+    MR_bool mercury__lexer__succeeded;
+    MR_Integer mercury__lexer__Context_6 = ((MR_Integer) (MR_hl_field(MR_mktag(0), mercury__lexer__Posn0_5, (MR_Integer) 0)));
+    MR_Integer mercury__lexer__Var_17 = ((MR_Integer) (MR_hl_field(MR_mktag(0), mercury__lexer__Posn0_5, (MR_Integer) 1)));
+    MR_Integer mercury__lexer__Var_18 = ((MR_Integer) (MR_hl_field(MR_mktag(0), mercury__lexer__Posn0_5, (MR_Integer) 2)));
+
+    *mercury__lexer__STATE_VARIABLE_Posn_9 = mercury__lexer__STATE_VARIABLE_Posn_0_8;
+    *mercury__lexer__HeadVar__2_2 = (MR_Word) mercury__lexer__Context_6;
+  }
+}
+
+static void MR_CALL 
+mercury__lexer__have_token_4_p_0(
+  MR_Word mercury__lexer__Stream_5,
+  MR_Word * mercury__lexer__HeadVar__2_2)
+{
+  {
+    MR_bool mercury__lexer__succeeded;
+    MR_Integer mercury__lexer__Context_6;
+    MR_Box mercury__lexer__V_5_20 = (MR_Box) mercury__lexer__Stream_5;
+
+{
+#define MR_PROC_LABEL mercury__lexer__have_token_4_p_0
+
+	MercuryFilePtr Stream;
+	MR_Integer LineNum;
+
+	Stream = (MercuryFilePtr) mercury__lexer__V_5_20 ;
+		{
+
+    LineNum = MR_line_number(*Stream);
+
+
+		;}
+#undef MR_PROC_LABEL
+	 mercury__lexer__Context_6  = LineNum;
+}
+    *mercury__lexer__HeadVar__2_2 = (MR_Word) mercury__lexer__Context_6;
+  }
+}
+
+MR_bool MR_CALL 
+mercury__lexer__lookup_token_action_2_p_0(
+  MR_Char mercury__lexer__Char_3,
+  MR_Word * mercury__lexer__Action_4)
+{
+  {
+    MR_bool mercury__lexer__succeeded;
+
+    if ((((MR_Unsigned) (mercury__lexer__Char_3 - (MR_Integer) 9)) <= ((MR_Unsigned) (MR_Integer) 117)))
+      if ((((mercury__lexer_scalar_common_8[0])[(((mercury__lexer__Char_3 - (MR_Integer) 9)) >> (MR_Integer) 5)]) & (((MR_Integer) 1 << ((((mercury__lexer__Char_3 - (MR_Integer) 9)) & (MR_Integer) 31))))))
+        {
+          *mercury__lexer__Action_4 = ((&mercury__lexer_vector_common_7[472 + (mercury__lexer__Char_3 - (MR_Integer) 9)]))->mercury__lexer__vector_common_type_7_0__vct_7_f_0;
+          mercury__lexer__succeeded = MR_TRUE;
+        }
+      else
+        mercury__lexer__succeeded = MR_FALSE;
+    else
+      mercury__lexer__succeeded = MR_FALSE;
+    return mercury__lexer__succeeded;
+  }
+}
+
+static void MR_CALL 
+mercury__lexer__string_get_token_2_7_p_0(
+  MR_String mercury__lexer__String_8,
+  MR_Integer mercury__lexer__Len_9,
+  MR_Word mercury__lexer__ScannedPastWhiteSpace_10,
+  MR_Word * mercury__lexer__Token_11,
+  MR_Integer * mercury__lexer__Context_12,
+  MR_Word mercury__lexer__STATE_VARIABLE_Posn_0_17,
+  MR_Word * mercury__lexer__STATE_VARIABLE_Posn_18)
+{
+  while (MR_TRUE)
+    {
+      /* tailcall optimized into a loop */
+      {
+        MR_bool mercury__lexer__succeeded;
+        MR_Char mercury__lexer__Char_15;
+        MR_Word mercury__lexer__STATE_VARIABLE_Posn_19_19;
+        MR_Integer mercury__lexer__LineNum0_28 = ((MR_Integer) (MR_hl_field(MR_mktag(0), mercury__lexer__STATE_VARIABLE_Posn_0_17, (MR_Integer) 0)));
+        MR_Integer mercury__lexer__LineOffset0_29 = ((MR_Integer) (MR_hl_field(MR_mktag(0), mercury__lexer__STATE_VARIABLE_Posn_0_17, (MR_Integer) 1)));
+        MR_Integer mercury__lexer__Offset0_30 = ((MR_Integer) (MR_hl_field(MR_mktag(0), mercury__lexer__STATE_VARIABLE_Posn_0_17, (MR_Integer) 2)));
+        MR_Integer mercury__lexer__Offset_31;
+
+        mercury__lexer__succeeded = (mercury__lexer__Offset0_30 < mercury__lexer__Len_9);
+        if (mercury__lexer__succeeded)
+          {
+{
+#define MR_PROC_LABEL mercury__lexer__string_get_token_2_7_p_0
+
+	MR_String Str;
+	MR_Integer Index;
+	MR_Integer NextIndex;
+	MR_Char Ch;
+	MR_bool SUCCESS_INDICATOR;
+
+	Str =  mercury__lexer__String_8 ;
+	Index =  mercury__lexer__Offset0_30 ;
+		{
+
+    Ch = Str[Index];
+    if (MR_is_ascii(Ch)) {
+        NextIndex = Index + 1;
+        SUCCESS_INDICATOR = (Ch != 0);
+    } else {
+        NextIndex = Index;
+        Ch = MR_utf8_get_next_mb(Str, &NextIndex);
+        SUCCESS_INDICATOR = (Ch > 0);
+    }
+
+
+		;}
+#undef MR_PROC_LABEL
+	if (SUCCESS_INDICATOR) {
+	 mercury__lexer__Offset_31  = NextIndex;
+	 mercury__lexer__Char_15  = Ch;
+	}
+mercury__lexer__succeeded  = SUCCESS_INDICATOR;
+}
+            if (mercury__lexer__succeeded)
+              {
+                mercury__lexer__succeeded = (mercury__lexer__Char_15 == (MR_Char) 10);
+                if (mercury__lexer__succeeded)
+                  {
+                    MR_Integer mercury__lexer__LineNum_32 = (mercury__lexer__LineNum0_28 + (MR_Integer) 1);
+
+                    {
+                      mercury__lexer__STATE_VARIABLE_Posn_19_19 = (MR_Word) MR_new_object(MR_Word, ((MR_Integer) 3 * sizeof(MR_Word)), NULL, NULL);
+                      MR_hl_field(MR_mktag(0), mercury__lexer__STATE_VARIABLE_Posn_19_19, 0) = ((MR_Box) (mercury__lexer__LineNum_32));
+                      MR_hl_field(MR_mktag(0), mercury__lexer__STATE_VARIABLE_Posn_19_19, 1) = ((MR_Box) (mercury__lexer__Offset_31));
+                      MR_hl_field(MR_mktag(0), mercury__lexer__STATE_VARIABLE_Posn_19_19, 2) = ((MR_Box) (mercury__lexer__Offset_31));
+                    }
+                  }
+                else
+                  {
+                    mercury__lexer__STATE_VARIABLE_Posn_19_19 = (MR_Word) MR_new_object(MR_Word, ((MR_Integer) 3 * sizeof(MR_Word)), NULL, NULL);
+                    MR_hl_field(MR_mktag(0), mercury__lexer__STATE_VARIABLE_Posn_19_19, 0) = ((MR_Box) (mercury__lexer__LineNum0_28));
+                    MR_hl_field(MR_mktag(0), mercury__lexer__STATE_VARIABLE_Posn_19_19, 1) = ((MR_Box) (mercury__lexer__LineOffset0_29));
+                    MR_hl_field(MR_mktag(0), mercury__lexer__STATE_VARIABLE_Posn_19_19, 2) = ((MR_Box) (mercury__lexer__Offset_31));
+                  }
+                mercury__lexer__succeeded = MR_TRUE;
+              }
+          }
+        if (mercury__lexer__succeeded)
+          {
+            MR_Word mercury__lexer__Action_16;
+
+            if ((((MR_Unsigned) (mercury__lexer__Char_15 - (MR_Integer) 9)) <= ((MR_Unsigned) (MR_Integer) 117)))
+              if ((((mercury__lexer_scalar_common_8[0])[(((mercury__lexer__Char_15 - (MR_Integer) 9)) >> (MR_Integer) 5)]) & (((MR_Integer) 1 << ((((mercury__lexer__Char_15 - (MR_Integer) 9)) & (MR_Integer) 31))))))
+                {
+                  mercury__lexer__Action_16 = ((&mercury__lexer_vector_common_7[354 + (mercury__lexer__Char_15 - (MR_Integer) 9)]))->mercury__lexer__vector_common_type_7_0__vct_7_f_0;
+                  mercury__lexer__succeeded = MR_TRUE;
+                }
+              else
+                mercury__lexer__succeeded = MR_FALSE;
+            else
+              mercury__lexer__succeeded = MR_FALSE;
+            if (mercury__lexer__succeeded)
+              switch (mercury__lexer__Action_16) {
+                default: /*NOTREACHED*/ MR_assert(0);
+                case (MR_Integer) 1:
+                  {
+                    mercury__lexer__string_get_name_7_p_0(mercury__lexer__String_8, mercury__lexer__Len_9, mercury__lexer__STATE_VARIABLE_Posn_0_17, mercury__lexer__Token_11, mercury__lexer__Context_12, mercury__lexer__STATE_VARIABLE_Posn_19_19, mercury__lexer__STATE_VARIABLE_Posn_18);
+                  }
+                  break;
+                case (MR_Integer) 2:
+                  {
+                    mercury__lexer__string_get_variable_7_p_0(mercury__lexer__String_8, mercury__lexer__Len_9, mercury__lexer__STATE_VARIABLE_Posn_0_17, mercury__lexer__Token_11, mercury__lexer__Context_12, mercury__lexer__STATE_VARIABLE_Posn_19_19, mercury__lexer__STATE_VARIABLE_Posn_18);
+                  }
+                  break;
+                case (MR_Integer) 11:
+                  {
+                    {
+                      mercury__lexer__string_get_context_4_p_0(mercury__lexer__STATE_VARIABLE_Posn_0_17, mercury__lexer__Context_12, mercury__lexer__STATE_VARIABLE_Posn_19_19, mercury__lexer__STATE_VARIABLE_Posn_18);
+                    }
+                    *mercury__lexer__Token_11 = (MR_Word) MR_mkword(MR_mktag(1), &mercury__lexer_scalar_common_6[1]);
+                  }
+                  break;
+                case (MR_Integer) 12:
+                  {
+                    mercury__lexer__string_get_implementation_defined_literal_rest_7_p_0(mercury__lexer__String_8, mercury__lexer__Len_9, mercury__lexer__STATE_VARIABLE_Posn_0_17, mercury__lexer__Token_11, mercury__lexer__Context_12, mercury__lexer__STATE_VARIABLE_Posn_19_19, mercury__lexer__STATE_VARIABLE_Posn_18);
+                  }
+                  break;
+                case (MR_Integer) 6:
+                  {
+                    mercury__lexer__string_get_dot_7_p_0(mercury__lexer__String_8, mercury__lexer__Len_9, mercury__lexer__STATE_VARIABLE_Posn_0_17, mercury__lexer__Token_11, mercury__lexer__Context_12, mercury__lexer__STATE_VARIABLE_Posn_19_19, mercury__lexer__STATE_VARIABLE_Posn_18);
+                  }
+                  break;
+                case (MR_Integer) 13:
+                  {
+                    mercury__lexer__string_get_graphic_7_p_0(mercury__lexer__String_8, mercury__lexer__Len_9, mercury__lexer__STATE_VARIABLE_Posn_0_17, mercury__lexer__Token_11, mercury__lexer__Context_12, mercury__lexer__STATE_VARIABLE_Posn_19_19, mercury__lexer__STATE_VARIABLE_Posn_18);
+                  }
+                  break;
+                case (MR_Integer) 10:
+                  {
+                    MR_Word mercury__lexer__STATE_VARIABLE_Posn_31_57;
+                    MR_Word mercury__lexer__Token0_75;
+                    MR_Word mercury__lexer__HaveToken0_76;
+                    MR_Integer mercury__lexer__Context0_74;
+
+                    {
+                      mercury__lexer__string_get_source_line_number_7_p_0(mercury__lexer__String_8, mercury__lexer__Len_9, mercury__lexer__STATE_VARIABLE_Posn_19_19, &mercury__lexer__Token0_75, &mercury__lexer__HaveToken0_76, mercury__lexer__STATE_VARIABLE_Posn_19_19, &mercury__lexer__STATE_VARIABLE_Posn_31_57);
+                    }
+                    {
+                      mercury__lexer__succeeded = mercury__lexer__have_token_with_context_2_p_0(mercury__lexer__HaveToken0_76, &mercury__lexer__Context0_74);
+                    }
+                    if (mercury__lexer__succeeded)
+                      {
+                        *mercury__lexer__Token_11 = mercury__lexer__Token0_75;
+                        *mercury__lexer__Context_12 = mercury__lexer__Context0_74;
+                        *mercury__lexer__STATE_VARIABLE_Posn_18 = mercury__lexer__STATE_VARIABLE_Posn_31_57;
+                      }
+                    else
+                      {
+                        /* direct tailcall eliminated */
+                        {
+                          MR_Word mercury__lexer__next_value_of_STATE_VARIABLE_Posn_0_17 = mercury__lexer__STATE_VARIABLE_Posn_31_57;
+
+                          mercury__lexer__STATE_VARIABLE_Posn_0_17 = mercury__lexer__next_value_of_STATE_VARIABLE_Posn_0_17;
+                          mercury__lexer__ScannedPastWhiteSpace_10 = (MR_Integer) 1;
+                        }
+                        continue;
+                      }
+                  }
+                  break;
+                case (MR_Integer) 4:
+                  {
+                    {
+                      mercury__lexer__string_get_number_8_p_0(mercury__lexer__String_8, (MR_Integer) 1, mercury__lexer__Len_9, mercury__lexer__STATE_VARIABLE_Posn_0_17, mercury__lexer__Token_11, mercury__lexer__Context_12, mercury__lexer__STATE_VARIABLE_Posn_19_19, mercury__lexer__STATE_VARIABLE_Posn_18);
+                    }
+                  }
+                  break;
+                case (MR_Integer) 7:
+                  {
+                    MR_Word mercury__lexer__Token0_49;
+                    MR_Word mercury__lexer__HaveToken0_50;
+                    MR_Word mercury__lexer__STATE_VARIABLE_Posn_35_61;
+                    MR_Integer mercury__lexer__Context0_51;
+
+                    {
+                      mercury__lexer__string_skip_to_eol_6_p_0(mercury__lexer__String_8, mercury__lexer__Len_9, &mercury__lexer__Token0_49, &mercury__lexer__HaveToken0_50, mercury__lexer__STATE_VARIABLE_Posn_19_19, &mercury__lexer__STATE_VARIABLE_Posn_35_61);
+                    }
+                    {
+                      mercury__lexer__succeeded = mercury__lexer__have_token_with_context_2_p_0(mercury__lexer__HaveToken0_50, &mercury__lexer__Context0_51);
+                    }
+                    if (mercury__lexer__succeeded)
+                      {
+                        *mercury__lexer__Token_11 = mercury__lexer__Token0_49;
+                        *mercury__lexer__Context_12 = mercury__lexer__Context0_51;
+                        *mercury__lexer__STATE_VARIABLE_Posn_18 = mercury__lexer__STATE_VARIABLE_Posn_35_61;
+                      }
+                    else
+                      {
+                        /* direct tailcall eliminated */
+                        {
+                          MR_Word mercury__lexer__next_value_of_STATE_VARIABLE_Posn_0_17 = mercury__lexer__STATE_VARIABLE_Posn_35_61;
+
+                          mercury__lexer__STATE_VARIABLE_Posn_0_17 = mercury__lexer__next_value_of_STATE_VARIABLE_Posn_0_17;
+                          mercury__lexer__ScannedPastWhiteSpace_10 = (MR_Integer) 0;
+                        }
+                        continue;
+                      }
+                  }
+                  break;
+                case (MR_Integer) 8:
+                  {
+                    MR_Word mercury__lexer__Var_64 = (MR_Word) MR_mkword(MR_mktag(0), MR_mkbody((MR_Integer) 0));
+
+                    {
+                      mercury__lexer__string_start_quoted_name_9_p_0(mercury__lexer__String_8, mercury__lexer__Len_9, mercury__lexer__Char_15, mercury__lexer__Var_64, mercury__lexer__STATE_VARIABLE_Posn_0_17, mercury__lexer__Token_11, mercury__lexer__Context_12, mercury__lexer__STATE_VARIABLE_Posn_19_19, mercury__lexer__STATE_VARIABLE_Posn_18);
+                    }
+                  }
+                  break;
+                case (MR_Integer) 9:
+                  {
+                    MR_Word mercury__lexer__Token0_81;
+                    MR_Word mercury__lexer__HaveToken0_82;
+                    MR_Word mercury__lexer__STATE_VARIABLE_Posn_35_84;
+                    MR_Integer mercury__lexer__Context0_79;
+
+                    {
+                      mercury__lexer__string_get_slash_7_p_0(mercury__lexer__String_8, mercury__lexer__Len_9, mercury__lexer__STATE_VARIABLE_Posn_0_17, &mercury__lexer__Token0_81, &mercury__lexer__HaveToken0_82, mercury__lexer__STATE_VARIABLE_Posn_19_19, &mercury__lexer__STATE_VARIABLE_Posn_35_84);
+                    }
+                    {
+                      mercury__lexer__succeeded = mercury__lexer__have_token_with_context_2_p_0(mercury__lexer__HaveToken0_82, &mercury__lexer__Context0_79);
+                    }
+                    if (mercury__lexer__succeeded)
+                      {
+                        *mercury__lexer__Token_11 = mercury__lexer__Token0_81;
+                        *mercury__lexer__Context_12 = mercury__lexer__Context0_79;
+                        *mercury__lexer__STATE_VARIABLE_Posn_18 = mercury__lexer__STATE_VARIABLE_Posn_35_84;
+                      }
+                    else
+                      {
+                        /* direct tailcall eliminated */
+                        {
+                          MR_Word mercury__lexer__next_value_of_STATE_VARIABLE_Posn_0_17 = mercury__lexer__STATE_VARIABLE_Posn_35_84;
+
+                          mercury__lexer__STATE_VARIABLE_Posn_0_17 = mercury__lexer__next_value_of_STATE_VARIABLE_Posn_0_17;
+                          mercury__lexer__ScannedPastWhiteSpace_10 = (MR_Integer) 0;
+                        }
+                        continue;
+                      }
+                  }
+                  break;
+                case (MR_Integer) 5:
+                  {
+                    {
+                      mercury__lexer__string_get_context_4_p_0(mercury__lexer__STATE_VARIABLE_Posn_0_17, mercury__lexer__Context_12, mercury__lexer__STATE_VARIABLE_Posn_19_19, mercury__lexer__STATE_VARIABLE_Posn_18);
+                    }
+                    {
+                      mercury__lexer__handle_special_token_3_p_0(mercury__lexer__Char_15, mercury__lexer__ScannedPastWhiteSpace_10, mercury__lexer__Token_11);
+                    }
+                  }
+                  break;
+                case (MR_Integer) 0:
+                  {
+                    /* direct tailcall eliminated */
+                    {
+                      MR_Word mercury__lexer__next_value_of_STATE_VARIABLE_Posn_0_17 = mercury__lexer__STATE_VARIABLE_Posn_19_19;
+
+                      mercury__lexer__STATE_VARIABLE_Posn_0_17 = mercury__lexer__next_value_of_STATE_VARIABLE_Posn_0_17;
+                      mercury__lexer__ScannedPastWhiteSpace_10 = (MR_Integer) 0;
+                    }
+                    continue;
+                  }
+                  break;
+                case (MR_Integer) 3:
+                  {
+                    mercury__lexer__string_get_zero_7_p_0(mercury__lexer__String_8, mercury__lexer__Len_9, mercury__lexer__STATE_VARIABLE_Posn_0_17, mercury__lexer__Token_11, mercury__lexer__Context_12, mercury__lexer__STATE_VARIABLE_Posn_19_19, mercury__lexer__STATE_VARIABLE_Posn_18);
+                  }
+                  break;
+              }
+            else
+              {
+                MR_Integer mercury__lexer__Var_92;
+                MR_Integer mercury__lexer__Var_93;
+
+                *mercury__lexer__Context_12 = ((MR_Integer) (MR_hl_field(MR_mktag(0), mercury__lexer__STATE_VARIABLE_Posn_0_17, (MR_Integer) 0)));
+                mercury__lexer__Var_92 = ((MR_Integer) (MR_hl_field(MR_mktag(0), mercury__lexer__STATE_VARIABLE_Posn_0_17, (MR_Integer) 1)));
+                mercury__lexer__Var_93 = ((MR_Integer) (MR_hl_field(MR_mktag(0), mercury__lexer__STATE_VARIABLE_Posn_0_17, (MR_Integer) 2)));
+                *mercury__lexer__STATE_VARIABLE_Posn_18 = mercury__lexer__STATE_VARIABLE_Posn_19_19;
+                {
+                  MR_Word base;
+                  base = (MR_Word) MR_mkword(MR_mktag(3), MR_new_object(MR_Word, ((MR_Integer) 2 * sizeof(MR_Word)), NULL, NULL));
+                  *mercury__lexer__Token_11 = base;
+                  MR_hl_field(MR_mktag(3), base, 0) = ((MR_Box) (MR_Word) ((MR_Integer) 4));
+                  MR_hl_field(MR_mktag(3), base, 1) = ((MR_Box) (MR_Word) (mercury__lexer__Char_15));
+                }
+              }
+          }
+        else
+          {
+            {
+              mercury__lexer__string_get_context_4_p_0(mercury__lexer__STATE_VARIABLE_Posn_0_17, mercury__lexer__Context_12, mercury__lexer__STATE_VARIABLE_Posn_0_17, mercury__lexer__STATE_VARIABLE_Posn_18);
+            }
+            *mercury__lexer__Token_11 = (MR_Word) MR_mkword(MR_mktag(0), MR_mkbody((MR_Integer) 10));
+          }
+      }
+      break;
+    }
+}
+
+static void MR_CALL 
+mercury__lexer__string_get_token_6_p_0(
+  MR_String mercury__lexer__String_7,
+  MR_Integer mercury__lexer__Len_8,
+  MR_Word * mercury__lexer__Token_9,
+  MR_Integer * mercury__lexer__Context_10,
+  MR_Word mercury__lexer__STATE_VARIABLE_Posn_0_12,
+  MR_Word * mercury__lexer__STATE_VARIABLE_Posn_13)
+{
+  {
+    MR_bool mercury__lexer__succeeded;
+    MR_Char mercury__lexer__Char_25;
+    MR_Word mercury__lexer__STATE_VARIABLE_Posn_19_27;
+    MR_Integer mercury__lexer__LineNum0_36 = ((MR_Integer) (MR_hl_field(MR_mktag(0), mercury__lexer__STATE_VARIABLE_Posn_0_12, (MR_Integer) 0)));
+    MR_Integer mercury__lexer__LineOffset0_37 = ((MR_Integer) (MR_hl_field(MR_mktag(0), mercury__lexer__STATE_VARIABLE_Posn_0_12, (MR_Integer) 1)));
+    MR_Integer mercury__lexer__Offset0_38 = ((MR_Integer) (MR_hl_field(MR_mktag(0), mercury__lexer__STATE_VARIABLE_Posn_0_12, (MR_Integer) 2)));
+    MR_Integer mercury__lexer__Offset_39;
+
+    mercury__lexer__succeeded = (mercury__lexer__Offset0_38 < mercury__lexer__Len_8);
+    if (mercury__lexer__succeeded)
+      {
+{
+#define MR_PROC_LABEL mercury__lexer__string_get_token_6_p_0
+
+	MR_String Str;
+	MR_Integer Index;
+	MR_Integer NextIndex;
+	MR_Char Ch;
+	MR_bool SUCCESS_INDICATOR;
+
+	Str =  mercury__lexer__String_7 ;
+	Index =  mercury__lexer__Offset0_38 ;
+		{
+
+    Ch = Str[Index];
+    if (MR_is_ascii(Ch)) {
+        NextIndex = Index + 1;
+        SUCCESS_INDICATOR = (Ch != 0);
+    } else {
+        NextIndex = Index;
+        Ch = MR_utf8_get_next_mb(Str, &NextIndex);
+        SUCCESS_INDICATOR = (Ch > 0);
+    }
+
+
+		;}
+#undef MR_PROC_LABEL
+	if (SUCCESS_INDICATOR) {
+	 mercury__lexer__Offset_39  = NextIndex;
+	 mercury__lexer__Char_25  = Ch;
+	}
+mercury__lexer__succeeded  = SUCCESS_INDICATOR;
+}
+        if (mercury__lexer__succeeded)
+          {
+            mercury__lexer__succeeded = (mercury__lexer__Char_25 == (MR_Char) 10);
+            if (mercury__lexer__succeeded)
+              {
+                MR_Integer mercury__lexer__LineNum_40 = (mercury__lexer__LineNum0_36 + (MR_Integer) 1);
+
+                {
+                  mercury__lexer__STATE_VARIABLE_Posn_19_27 = (MR_Word) MR_new_object(MR_Word, ((MR_Integer) 3 * sizeof(MR_Word)), NULL, NULL);
+                  MR_hl_field(MR_mktag(0), mercury__lexer__STATE_VARIABLE_Posn_19_27, 0) = ((MR_Box) (mercury__lexer__LineNum_40));
+                  MR_hl_field(MR_mktag(0), mercury__lexer__STATE_VARIABLE_Posn_19_27, 1) = ((MR_Box) (mercury__lexer__Offset_39));
+                  MR_hl_field(MR_mktag(0), mercury__lexer__STATE_VARIABLE_Posn_19_27, 2) = ((MR_Box) (mercury__lexer__Offset_39));
+                }
+              }
+            else
+              {
+                mercury__lexer__STATE_VARIABLE_Posn_19_27 = (MR_Word) MR_new_object(MR_Word, ((MR_Integer) 3 * sizeof(MR_Word)), NULL, NULL);
+                MR_hl_field(MR_mktag(0), mercury__lexer__STATE_VARIABLE_Posn_19_27, 0) = ((MR_Box) (mercury__lexer__LineNum0_36));
+                MR_hl_field(MR_mktag(0), mercury__lexer__STATE_VARIABLE_Posn_19_27, 1) = ((MR_Box) (mercury__lexer__LineOffset0_37));
+                MR_hl_field(MR_mktag(0), mercury__lexer__STATE_VARIABLE_Posn_19_27, 2) = ((MR_Box) (mercury__lexer__Offset_39));
+              }
+            mercury__lexer__succeeded = MR_TRUE;
+          }
+      }
+    if (mercury__lexer__succeeded)
+      {
+        MR_Word mercury__lexer__Action_26;
+
+        if ((((MR_Unsigned) (mercury__lexer__Char_25 - (MR_Integer) 9)) <= ((MR_Unsigned) (MR_Integer) 117)))
+          if ((((mercury__lexer_scalar_common_8[0])[(((mercury__lexer__Char_25 - (MR_Integer) 9)) >> (MR_Integer) 5)]) & (((MR_Integer) 1 << ((((mercury__lexer__Char_25 - (MR_Integer) 9)) & (MR_Integer) 31))))))
+            {
+              mercury__lexer__Action_26 = ((&mercury__lexer_vector_common_7[236 + (mercury__lexer__Char_25 - (MR_Integer) 9)]))->mercury__lexer__vector_common_type_7_0__vct_7_f_0;
+              mercury__lexer__succeeded = MR_TRUE;
+            }
+          else
+            mercury__lexer__succeeded = MR_FALSE;
+        else
+          mercury__lexer__succeeded = MR_FALSE;
+        if (mercury__lexer__succeeded)
+          switch (mercury__lexer__Action_26) {
+            default: /*NOTREACHED*/ MR_assert(0);
+            case (MR_Integer) 1:
+              {
+                mercury__lexer__string_get_name_7_p_0(mercury__lexer__String_7, mercury__lexer__Len_8, mercury__lexer__STATE_VARIABLE_Posn_0_12, mercury__lexer__Token_9, mercury__lexer__Context_10, mercury__lexer__STATE_VARIABLE_Posn_19_27, mercury__lexer__STATE_VARIABLE_Posn_13);
+              }
+              break;
+            case (MR_Integer) 2:
+              {
+                mercury__lexer__string_get_variable_7_p_0(mercury__lexer__String_7, mercury__lexer__Len_8, mercury__lexer__STATE_VARIABLE_Posn_0_12, mercury__lexer__Token_9, mercury__lexer__Context_10, mercury__lexer__STATE_VARIABLE_Posn_19_27, mercury__lexer__STATE_VARIABLE_Posn_13);
+              }
+              break;
+            case (MR_Integer) 11:
+              {
+                {
+                  mercury__lexer__string_get_context_4_p_0(mercury__lexer__STATE_VARIABLE_Posn_0_12, mercury__lexer__Context_10, mercury__lexer__STATE_VARIABLE_Posn_19_27, mercury__lexer__STATE_VARIABLE_Posn_13);
+                }
+                *mercury__lexer__Token_9 = (MR_Word) MR_mkword(MR_mktag(1), &mercury__lexer_scalar_common_6[1]);
+              }
+              break;
+            case (MR_Integer) 12:
+              {
+                mercury__lexer__string_get_implementation_defined_literal_rest_7_p_0(mercury__lexer__String_7, mercury__lexer__Len_8, mercury__lexer__STATE_VARIABLE_Posn_0_12, mercury__lexer__Token_9, mercury__lexer__Context_10, mercury__lexer__STATE_VARIABLE_Posn_19_27, mercury__lexer__STATE_VARIABLE_Posn_13);
+              }
+              break;
+            case (MR_Integer) 6:
+              {
+                mercury__lexer__string_get_dot_7_p_0(mercury__lexer__String_7, mercury__lexer__Len_8, mercury__lexer__STATE_VARIABLE_Posn_0_12, mercury__lexer__Token_9, mercury__lexer__Context_10, mercury__lexer__STATE_VARIABLE_Posn_19_27, mercury__lexer__STATE_VARIABLE_Posn_13);
+              }
+              break;
+            case (MR_Integer) 13:
+              {
+                mercury__lexer__string_get_graphic_7_p_0(mercury__lexer__String_7, mercury__lexer__Len_8, mercury__lexer__STATE_VARIABLE_Posn_0_12, mercury__lexer__Token_9, mercury__lexer__Context_10, mercury__lexer__STATE_VARIABLE_Posn_19_27, mercury__lexer__STATE_VARIABLE_Posn_13);
+              }
+              break;
+            case (MR_Integer) 10:
+              {
+                MR_Word mercury__lexer__STATE_VARIABLE_Posn_31_65;
+                MR_Word mercury__lexer__Token0_83;
+                MR_Word mercury__lexer__HaveToken0_84;
+                MR_Integer mercury__lexer__Context0_82;
+
+                {
+                  mercury__lexer__string_get_source_line_number_7_p_0(mercury__lexer__String_7, mercury__lexer__Len_8, mercury__lexer__STATE_VARIABLE_Posn_19_27, &mercury__lexer__Token0_83, &mercury__lexer__HaveToken0_84, mercury__lexer__STATE_VARIABLE_Posn_19_27, &mercury__lexer__STATE_VARIABLE_Posn_31_65);
+                }
+                {
+                  mercury__lexer__succeeded = mercury__lexer__have_token_with_context_2_p_0(mercury__lexer__HaveToken0_84, &mercury__lexer__Context0_82);
+                }
+                if (mercury__lexer__succeeded)
+                  {
+                    *mercury__lexer__Token_9 = mercury__lexer__Token0_83;
+                    *mercury__lexer__Context_10 = mercury__lexer__Context0_82;
+                    *mercury__lexer__STATE_VARIABLE_Posn_13 = mercury__lexer__STATE_VARIABLE_Posn_31_65;
+                  }
+                else
+                  {
+                    {
+                      mercury__lexer__string_get_token_2_7_p_0(mercury__lexer__String_7, mercury__lexer__Len_8, (MR_Integer) 1, mercury__lexer__Token_9, mercury__lexer__Context_10, mercury__lexer__STATE_VARIABLE_Posn_31_65, mercury__lexer__STATE_VARIABLE_Posn_13);
+                    }
+                  }
+              }
+              break;
+            case (MR_Integer) 4:
+              {
+                {
+                  mercury__lexer__string_get_number_8_p_0(mercury__lexer__String_7, (MR_Integer) 1, mercury__lexer__Len_8, mercury__lexer__STATE_VARIABLE_Posn_0_12, mercury__lexer__Token_9, mercury__lexer__Context_10, mercury__lexer__STATE_VARIABLE_Posn_19_27, mercury__lexer__STATE_VARIABLE_Posn_13);
+                }
+              }
+              break;
+            case (MR_Integer) 7:
+              {
+                MR_Word mercury__lexer__Token0_57;
+                MR_Word mercury__lexer__HaveToken0_58;
+                MR_Word mercury__lexer__STATE_VARIABLE_Posn_35_69;
+                MR_Integer mercury__lexer__Context0_59;
+
+                {
+                  mercury__lexer__string_skip_to_eol_6_p_0(mercury__lexer__String_7, mercury__lexer__Len_8, &mercury__lexer__Token0_57, &mercury__lexer__HaveToken0_58, mercury__lexer__STATE_VARIABLE_Posn_19_27, &mercury__lexer__STATE_VARIABLE_Posn_35_69);
+                }
+                {
+                  mercury__lexer__succeeded = mercury__lexer__have_token_with_context_2_p_0(mercury__lexer__HaveToken0_58, &mercury__lexer__Context0_59);
+                }
+                if (mercury__lexer__succeeded)
+                  {
+                    *mercury__lexer__Token_9 = mercury__lexer__Token0_57;
+                    *mercury__lexer__Context_10 = mercury__lexer__Context0_59;
+                    *mercury__lexer__STATE_VARIABLE_Posn_13 = mercury__lexer__STATE_VARIABLE_Posn_35_69;
+                  }
+                else
+                  {
+                    {
+                      mercury__lexer__string_get_token_2_7_p_0(mercury__lexer__String_7, mercury__lexer__Len_8, (MR_Integer) 0, mercury__lexer__Token_9, mercury__lexer__Context_10, mercury__lexer__STATE_VARIABLE_Posn_35_69, mercury__lexer__STATE_VARIABLE_Posn_13);
+                    }
+                  }
+              }
+              break;
+            case (MR_Integer) 8:
+              {
+                MR_Word mercury__lexer__Var_72 = (MR_Word) MR_mkword(MR_mktag(0), MR_mkbody((MR_Integer) 0));
+
+                {
+                  mercury__lexer__string_start_quoted_name_9_p_0(mercury__lexer__String_7, mercury__lexer__Len_8, mercury__lexer__Char_25, mercury__lexer__Var_72, mercury__lexer__STATE_VARIABLE_Posn_0_12, mercury__lexer__Token_9, mercury__lexer__Context_10, mercury__lexer__STATE_VARIABLE_Posn_19_27, mercury__lexer__STATE_VARIABLE_Posn_13);
+                }
+              }
+              break;
+            case (MR_Integer) 9:
+              {
+                MR_Word mercury__lexer__Token0_89;
+                MR_Word mercury__lexer__HaveToken0_90;
+                MR_Word mercury__lexer__STATE_VARIABLE_Posn_35_92;
+                MR_Integer mercury__lexer__Context0_87;
+
+                {
+                  mercury__lexer__string_get_slash_7_p_0(mercury__lexer__String_7, mercury__lexer__Len_8, mercury__lexer__STATE_VARIABLE_Posn_0_12, &mercury__lexer__Token0_89, &mercury__lexer__HaveToken0_90, mercury__lexer__STATE_VARIABLE_Posn_19_27, &mercury__lexer__STATE_VARIABLE_Posn_35_92);
+                }
+                {
+                  mercury__lexer__succeeded = mercury__lexer__have_token_with_context_2_p_0(mercury__lexer__HaveToken0_90, &mercury__lexer__Context0_87);
+                }
+                if (mercury__lexer__succeeded)
+                  {
+                    *mercury__lexer__Token_9 = mercury__lexer__Token0_89;
+                    *mercury__lexer__Context_10 = mercury__lexer__Context0_87;
+                    *mercury__lexer__STATE_VARIABLE_Posn_13 = mercury__lexer__STATE_VARIABLE_Posn_35_92;
+                  }
+                else
+                  {
+                    {
+                      mercury__lexer__string_get_token_2_7_p_0(mercury__lexer__String_7, mercury__lexer__Len_8, (MR_Integer) 0, mercury__lexer__Token_9, mercury__lexer__Context_10, mercury__lexer__STATE_VARIABLE_Posn_35_92, mercury__lexer__STATE_VARIABLE_Posn_13);
+                    }
+                  }
+              }
+              break;
+            case (MR_Integer) 5:
+              {
+                {
+                  mercury__lexer__string_get_context_4_p_0(mercury__lexer__STATE_VARIABLE_Posn_0_12, mercury__lexer__Context_10, mercury__lexer__STATE_VARIABLE_Posn_19_27, mercury__lexer__STATE_VARIABLE_Posn_13);
+                }
+                {
+                  mercury__lexer__handle_special_token_3_p_0(mercury__lexer__Char_25, (MR_Integer) 1, mercury__lexer__Token_9);
+                }
+              }
+              break;
+            case (MR_Integer) 0:
+              {
+                {
+                  mercury__lexer__string_get_token_2_7_p_0(mercury__lexer__String_7, mercury__lexer__Len_8, (MR_Integer) 0, mercury__lexer__Token_9, mercury__lexer__Context_10, mercury__lexer__STATE_VARIABLE_Posn_19_27, mercury__lexer__STATE_VARIABLE_Posn_13);
+                }
+              }
+              break;
+            case (MR_Integer) 3:
+              {
+                mercury__lexer__string_get_zero_7_p_0(mercury__lexer__String_7, mercury__lexer__Len_8, mercury__lexer__STATE_VARIABLE_Posn_0_12, mercury__lexer__Token_9, mercury__lexer__Context_10, mercury__lexer__STATE_VARIABLE_Posn_19_27, mercury__lexer__STATE_VARIABLE_Posn_13);
+              }
+              break;
+          }
+        else
+          {
+            MR_Integer mercury__lexer__Var_100;
+            MR_Integer mercury__lexer__Var_101;
+
+            *mercury__lexer__Context_10 = ((MR_Integer) (MR_hl_field(MR_mktag(0), mercury__lexer__STATE_VARIABLE_Posn_0_12, (MR_Integer) 0)));
+            mercury__lexer__Var_100 = ((MR_Integer) (MR_hl_field(MR_mktag(0), mercury__lexer__STATE_VARIABLE_Posn_0_12, (MR_Integer) 1)));
+            mercury__lexer__Var_101 = ((MR_Integer) (MR_hl_field(MR_mktag(0), mercury__lexer__STATE_VARIABLE_Posn_0_12, (MR_Integer) 2)));
+            *mercury__lexer__STATE_VARIABLE_Posn_13 = mercury__lexer__STATE_VARIABLE_Posn_19_27;
+            {
+              MR_Word base;
+              base = (MR_Word) MR_mkword(MR_mktag(3), MR_new_object(MR_Word, ((MR_Integer) 2 * sizeof(MR_Word)), NULL, NULL));
+              *mercury__lexer__Token_9 = base;
+              MR_hl_field(MR_mktag(3), base, 0) = ((MR_Box) (MR_Word) ((MR_Integer) 4));
+              MR_hl_field(MR_mktag(3), base, 1) = ((MR_Box) (MR_Word) (mercury__lexer__Char_25));
+            }
+          }
+      }
+    else
+      {
+        {
+          mercury__lexer__string_get_context_4_p_0(mercury__lexer__STATE_VARIABLE_Posn_0_12, mercury__lexer__Context_10, mercury__lexer__STATE_VARIABLE_Posn_0_12, mercury__lexer__STATE_VARIABLE_Posn_13);
+        }
+        *mercury__lexer__Token_9 = (MR_Word) MR_mkword(MR_mktag(0), MR_mkbody((MR_Integer) 10));
+      }
+  }
+}
+
+void MR_CALL 
+mercury__lexer__get_token_2_6_p_0(
+  MR_Word mercury__lexer__Stream_7,
+  MR_Word mercury__lexer__ScannedPastWhiteSpace_8,
+  MR_Word * mercury__lexer__Token_9,
+  MR_Integer * mercury__lexer__Context_10)
+{
+  {
+    MR_bool mercury__lexer__succeeded;
+    MR_Word mercury__lexer__Result_12;
+    MR_Char mercury__lexer__Char_13;
+    MR_Word mercury__lexer__V_10_28;
+    MR_Box mercury__lexer__V_11_29;
+    MR_Box mercury__lexer__V_7_38 = (MR_Box) mercury__lexer__Stream_7;
+
+    {
+      mercury__io__read_char_code_2_6_p_0(mercury__lexer__V_7_38, &mercury__lexer__V_10_28, &mercury__lexer__Char_13, &mercury__lexer__V_11_29);
+    }
+    switch (mercury__lexer__V_10_28) {
+      default: /*NOTREACHED*/ MR_assert(0);
+      case (MR_Integer) 1:
+        mercury__lexer__Result_12 = (MR_Word) MR_mkword(MR_mktag(0), MR_mkbody((MR_Integer) 1));
+        break;
+      case (MR_Integer) 2:
+        {
+          MR_String mercury__lexer__V_12_31;
+          MR_Word mercury__lexer__V_17_32;
+
+{
+#define MR_PROC_LABEL mercury__lexer__get_token_2_6_p_0
+
+	MR_Integer Error;
+	MR_String Msg0;
+	MR_String Msg;
+
+	MR_MAYBE_UNBOX_FOREIGN_TYPE(MR_Integer, mercury__lexer__V_11_29 , Error);
+	Msg0 =  (MR_String) "read failed: " ;
+		{
+
+    ML_make_err_msg(Error, Msg0, MR_ALLOC_ID, Msg);
+
+
+		;}
+#undef MR_PROC_LABEL
+	 mercury__lexer__V_12_31  = Msg;
+}
+          mercury__lexer__V_17_32 = (MR_Word) mercury__lexer__V_12_31;
+          {
+            mercury__lexer__Result_12 = (MR_Word) MR_mkword(MR_mktag(1), MR_new_object(MR_Word, ((MR_Integer) 1 * sizeof(MR_Word)), NULL, NULL));
+            MR_hl_field(MR_mktag(1), mercury__lexer__Result_12, 0) = ((MR_Box) (mercury__lexer__V_17_32));
+          }
+        }
+        break;
+      case (MR_Integer) 0:
+        mercury__lexer__Result_12 = (MR_Word) MR_mkword(MR_mktag(0), MR_mkbody((MR_Integer) 0));
+        break;
+    }
+    switch (MR_tag((MR_Word) mercury__lexer__Result_12)) {
+      default: /*NOTREACHED*/ MR_assert(0);
+      case (MR_Integer) 0:
+        switch (MR_unmkbody(mercury__lexer__Result_12)) {
+          default: /*NOTREACHED*/ MR_assert(0);
+          case (MR_Integer) 0:
+            {
+              MR_Word mercury__lexer__Action_15;
+
+              if ((((MR_Unsigned) (mercury__lexer__Char_13 - (MR_Integer) 9)) <= ((MR_Unsigned) (MR_Integer) 117)))
+                if ((((mercury__lexer_scalar_common_8[0])[(((mercury__lexer__Char_13 - (MR_Integer) 9)) >> (MR_Integer) 5)]) & (((MR_Integer) 1 << ((((mercury__lexer__Char_13 - (MR_Integer) 9)) & (MR_Integer) 31))))))
+                  {
+                    mercury__lexer__Action_15 = ((&mercury__lexer_vector_common_7[118 + (mercury__lexer__Char_13 - (MR_Integer) 9)]))->mercury__lexer__vector_common_type_7_0__vct_7_f_0;
+                    mercury__lexer__succeeded = MR_TRUE;
+                  }
+                else
+                  mercury__lexer__succeeded = MR_FALSE;
+              else
+                mercury__lexer__succeeded = MR_FALSE;
+              if (mercury__lexer__succeeded)
+                {
+                  mercury__lexer__execute_get_token_action_8_p_0(mercury__lexer__Stream_7, mercury__lexer__Char_13, mercury__lexer__Action_15, mercury__lexer__ScannedPastWhiteSpace_8, mercury__lexer__Token_9, mercury__lexer__Context_10);
+                }
+              else
+                {
+                  MR_Box mercury__lexer__V_5_70 = (MR_Box) mercury__lexer__Stream_7;
+
+{
+#define MR_PROC_LABEL mercury__lexer__get_token_2_6_p_0
+
+	MercuryFilePtr Stream;
+	MR_Integer LineNum;
+
+	Stream = (MercuryFilePtr) mercury__lexer__V_5_70 ;
+		{
+
+    LineNum = MR_line_number(*Stream);
+
+
+		;}
+#undef MR_PROC_LABEL
+	 *mercury__lexer__Context_10  = LineNum;
+}
+                  {
+                    MR_Word base;
+                    base = (MR_Word) MR_mkword(MR_mktag(3), MR_new_object(MR_Word, ((MR_Integer) 2 * sizeof(MR_Word)), NULL, NULL));
+                    *mercury__lexer__Token_9 = base;
+                    MR_hl_field(MR_mktag(3), base, 0) = ((MR_Box) (MR_Word) ((MR_Integer) 4));
+                    MR_hl_field(MR_mktag(3), base, 1) = ((MR_Box) (MR_Word) (mercury__lexer__Char_13));
+                  }
+                }
+            }
+            break;
+          case (MR_Integer) 1:
+            {
+              MR_Box mercury__lexer__V_5_48 = (MR_Box) mercury__lexer__Stream_7;
+
+{
+#define MR_PROC_LABEL mercury__lexer__get_token_2_6_p_0
+
+	MercuryFilePtr Stream;
+	MR_Integer LineNum;
+
+	Stream = (MercuryFilePtr) mercury__lexer__V_5_48 ;
+		{
+
+    LineNum = MR_line_number(*Stream);
+
+
+		;}
+#undef MR_PROC_LABEL
+	 *mercury__lexer__Context_10  = LineNum;
+}
+              *mercury__lexer__Token_9 = (MR_Word) MR_mkword(MR_mktag(0), MR_mkbody((MR_Integer) 10));
+            }
+            break;
+        }
+        break;
+      case (MR_Integer) 1:
+        {
+          MR_Word mercury__lexer__Error_14 = ((MR_Word) (MR_hl_field(MR_mktag(1), mercury__lexer__Result_12, (MR_Integer) 0)));
+          MR_Box mercury__lexer__V_5_58 = (MR_Box) mercury__lexer__Stream_7;
+
+{
+#define MR_PROC_LABEL mercury__lexer__get_token_2_6_p_0
+
+	MercuryFilePtr Stream;
+	MR_Integer LineNum;
+
+	Stream = (MercuryFilePtr) mercury__lexer__V_5_58 ;
+		{
+
+    LineNum = MR_line_number(*Stream);
+
+
+		;}
+#undef MR_PROC_LABEL
+	 *mercury__lexer__Context_10  = LineNum;
+}
+          {
+            MR_Word base;
+            base = (MR_Word) MR_mkword(MR_mktag(3), MR_new_object(MR_Word, ((MR_Integer) 2 * sizeof(MR_Word)), NULL, NULL));
+            *mercury__lexer__Token_9 = base;
+            MR_hl_field(MR_mktag(3), base, 0) = ((MR_Box) (MR_Word) ((MR_Integer) 6));
+            MR_hl_field(MR_mktag(3), base, 1) = ((MR_Box) (mercury__lexer__Error_14));
+          }
+        }
+        break;
+    }
+  }
+}
+
+void MR_CALL 
+mercury__lexer__get_token_5_p_0(
+  MR_Word mercury__lexer__Stream_6,
+  MR_Word * mercury__lexer__Token_7,
+  MR_Integer * mercury__lexer__Context_8)
+{
+  {
+    MR_bool mercury__lexer__succeeded;
+    MR_Word mercury__lexer__Result_21;
+    MR_Char mercury__lexer__Char_22;
+    MR_Word mercury__lexer__V_10_35;
+    MR_Box mercury__lexer__V_11_36;
+    MR_Box mercury__lexer__V_7_45 = (MR_Box) mercury__lexer__Stream_6;
+
+    {
+      mercury__io__read_char_code_2_6_p_0(mercury__lexer__V_7_45, &mercury__lexer__V_10_35, &mercury__lexer__Char_22, &mercury__lexer__V_11_36);
+    }
+    switch (mercury__lexer__V_10_35) {
+      default: /*NOTREACHED*/ MR_assert(0);
+      case (MR_Integer) 1:
+        mercury__lexer__Result_21 = (MR_Word) MR_mkword(MR_mktag(0), MR_mkbody((MR_Integer) 1));
+        break;
+      case (MR_Integer) 2:
+        {
+          MR_String mercury__lexer__V_12_38;
+          MR_Word mercury__lexer__V_17_39;
+
+{
+#define MR_PROC_LABEL mercury__lexer__get_token_5_p_0
+
+	MR_Integer Error;
+	MR_String Msg0;
+	MR_String Msg;
+
+	MR_MAYBE_UNBOX_FOREIGN_TYPE(MR_Integer, mercury__lexer__V_11_36 , Error);
+	Msg0 =  (MR_String) "read failed: " ;
+		{
+
+    ML_make_err_msg(Error, Msg0, MR_ALLOC_ID, Msg);
+
+
+		;}
+#undef MR_PROC_LABEL
+	 mercury__lexer__V_12_38  = Msg;
+}
+          mercury__lexer__V_17_39 = (MR_Word) mercury__lexer__V_12_38;
+          {
+            mercury__lexer__Result_21 = (MR_Word) MR_mkword(MR_mktag(1), MR_new_object(MR_Word, ((MR_Integer) 1 * sizeof(MR_Word)), NULL, NULL));
+            MR_hl_field(MR_mktag(1), mercury__lexer__Result_21, 0) = ((MR_Box) (mercury__lexer__V_17_39));
+          }
+        }
+        break;
+      case (MR_Integer) 0:
+        mercury__lexer__Result_21 = (MR_Word) MR_mkword(MR_mktag(0), MR_mkbody((MR_Integer) 0));
+        break;
+    }
+    switch (MR_tag((MR_Word) mercury__lexer__Result_21)) {
+      default: /*NOTREACHED*/ MR_assert(0);
+      case (MR_Integer) 0:
+        switch (MR_unmkbody(mercury__lexer__Result_21)) {
+          default: /*NOTREACHED*/ MR_assert(0);
+          case (MR_Integer) 0:
+            {
+              MR_Word mercury__lexer__Action_24;
+
+              if ((((MR_Unsigned) (mercury__lexer__Char_22 - (MR_Integer) 9)) <= ((MR_Unsigned) (MR_Integer) 117)))
+                if ((((mercury__lexer_scalar_common_8[0])[(((mercury__lexer__Char_22 - (MR_Integer) 9)) >> (MR_Integer) 5)]) & (((MR_Integer) 1 << ((((mercury__lexer__Char_22 - (MR_Integer) 9)) & (MR_Integer) 31))))))
+                  {
+                    mercury__lexer__Action_24 = ((&mercury__lexer_vector_common_7[0 + (mercury__lexer__Char_22 - (MR_Integer) 9)]))->mercury__lexer__vector_common_type_7_0__vct_7_f_0;
+                    mercury__lexer__succeeded = MR_TRUE;
+                  }
+                else
+                  mercury__lexer__succeeded = MR_FALSE;
+              else
+                mercury__lexer__succeeded = MR_FALSE;
+              if (mercury__lexer__succeeded)
+                {
+                  mercury__lexer__execute_get_token_action_8_p_0(mercury__lexer__Stream_6, mercury__lexer__Char_22, mercury__lexer__Action_24, (MR_Integer) 1, mercury__lexer__Token_7, mercury__lexer__Context_8);
+                }
+              else
+                {
+                  MR_Box mercury__lexer__V_5_77 = (MR_Box) mercury__lexer__Stream_6;
+
+{
+#define MR_PROC_LABEL mercury__lexer__get_token_5_p_0
+
+	MercuryFilePtr Stream;
+	MR_Integer LineNum;
+
+	Stream = (MercuryFilePtr) mercury__lexer__V_5_77 ;
+		{
+
+    LineNum = MR_line_number(*Stream);
+
+
+		;}
+#undef MR_PROC_LABEL
+	 *mercury__lexer__Context_8  = LineNum;
+}
+                  {
+                    MR_Word base;
+                    base = (MR_Word) MR_mkword(MR_mktag(3), MR_new_object(MR_Word, ((MR_Integer) 2 * sizeof(MR_Word)), NULL, NULL));
+                    *mercury__lexer__Token_7 = base;
+                    MR_hl_field(MR_mktag(3), base, 0) = ((MR_Box) (MR_Word) ((MR_Integer) 4));
+                    MR_hl_field(MR_mktag(3), base, 1) = ((MR_Box) (MR_Word) (mercury__lexer__Char_22));
+                  }
+                }
+            }
+            break;
+          case (MR_Integer) 1:
+            {
+              MR_Box mercury__lexer__V_5_55 = (MR_Box) mercury__lexer__Stream_6;
+
+{
+#define MR_PROC_LABEL mercury__lexer__get_token_5_p_0
+
+	MercuryFilePtr Stream;
+	MR_Integer LineNum;
+
+	Stream = (MercuryFilePtr) mercury__lexer__V_5_55 ;
+		{
+
+    LineNum = MR_line_number(*Stream);
+
+
+		;}
+#undef MR_PROC_LABEL
+	 *mercury__lexer__Context_8  = LineNum;
+}
+              *mercury__lexer__Token_7 = (MR_Word) MR_mkword(MR_mktag(0), MR_mkbody((MR_Integer) 10));
+            }
+            break;
+        }
+        break;
+      case (MR_Integer) 1:
+        {
+          MR_Word mercury__lexer__Error_23 = ((MR_Word) (MR_hl_field(MR_mktag(1), mercury__lexer__Result_21, (MR_Integer) 0)));
+          MR_Box mercury__lexer__V_5_65 = (MR_Box) mercury__lexer__Stream_6;
+
+{
+#define MR_PROC_LABEL mercury__lexer__get_token_5_p_0
+
+	MercuryFilePtr Stream;
+	MR_Integer LineNum;
+
+	Stream = (MercuryFilePtr) mercury__lexer__V_5_65 ;
+		{
+
+    LineNum = MR_line_number(*Stream);
+
+
+		;}
+#undef MR_PROC_LABEL
+	 *mercury__lexer__Context_8  = LineNum;
+}
+          {
+            MR_Word base;
+            base = (MR_Word) MR_mkword(MR_mktag(3), MR_new_object(MR_Word, ((MR_Integer) 2 * sizeof(MR_Word)), NULL, NULL));
+            *mercury__lexer__Token_7 = base;
+            MR_hl_field(MR_mktag(3), base, 0) = ((MR_Box) (MR_Word) ((MR_Integer) 6));
+            MR_hl_field(MR_mktag(3), base, 1) = ((MR_Box) (mercury__lexer__Error_23));
+          }
+        }
+        break;
+    }
+  }
+}
+
+static void MR_CALL 
+mercury__lexer__unsafe_get_float_between_4_p_0(
+  MR_String mercury__lexer__Str_1,
+  MR_Integer mercury__lexer__Start_2,
+  MR_Integer mercury__lexer__End_3,
+  MR_String * mercury__lexer__FloatStr_4)
+{
+  {
+    MR_bool mercury__lexer__succeeded;
+
+{
+#define MR_PROC_LABEL mercury__lexer__unsafe_get_float_between_4_p_0
+
+	MR_String Str;
+	MR_Integer Start;
+	MR_Integer End;
+	MR_String FloatStr;
+
+	Str =  mercury__lexer__Str_1 ;
+	Start =  mercury__lexer__Start_2 ;
+	End =  mercury__lexer__End_3 ;
+		{
+
+    int src;
+    int dst = 0;
+
+    MR_allocate_aligned_string_msg(FloatStr, End - Start, MR_ALLOC_ID);
+    for (src = Start; src < End; src++) {
+        if (Str[src] != '_') {
+            FloatStr[dst] = Str[src];
+            dst++;
+        }
+    }
+    FloatStr[dst] = '\0';
+
+
+		;}
+#undef MR_PROC_LABEL
+	 *mercury__lexer__FloatStr_4  = FloatStr;
+}
+  }
+}
+
+static void MR_CALL 
+mercury__lexer__grab_float_string_5_p_0(
+  MR_String mercury__lexer__String_6,
+  MR_Word mercury__lexer__Posn0_7,
+  MR_String * mercury__lexer__FloatString_8,
+  MR_Word mercury__lexer__Posn_9,
+  MR_Word * mercury__lexer__Posn_5)
+{
+  {
+    MR_bool mercury__lexer__succeeded;
+    MR_Integer mercury__lexer__Offset0_12;
+    MR_Integer mercury__lexer__Offset_15;
+    MR_Integer mercury__lexer__Var_10;
+    MR_Integer mercury__lexer__Var_11;
+    MR_Integer mercury__lexer__Var_13;
+    MR_Integer mercury__lexer__Var_14;
+
+    *mercury__lexer__Posn_5 = mercury__lexer__Posn_9;
+    mercury__lexer__Var_10 = ((MR_Integer) (MR_hl_field(MR_mktag(0), mercury__lexer__Posn0_7, (MR_Integer) 0)));
+    mercury__lexer__Var_11 = ((MR_Integer) (MR_hl_field(MR_mktag(0), mercury__lexer__Posn0_7, (MR_Integer) 1)));
+    mercury__lexer__Offset0_12 = ((MR_Integer) (MR_hl_field(MR_mktag(0), mercury__lexer__Posn0_7, (MR_Integer) 2)));
+    mercury__lexer__Var_13 = ((MR_Integer) (MR_hl_field(MR_mktag(0), mercury__lexer__Posn_9, (MR_Integer) 0)));
+    mercury__lexer__Var_14 = ((MR_Integer) (MR_hl_field(MR_mktag(0), mercury__lexer__Posn_9, (MR_Integer) 1)));
+    mercury__lexer__Offset_15 = ((MR_Integer) (MR_hl_field(MR_mktag(0), mercury__lexer__Posn_9, (MR_Integer) 2)));
+{
+#define MR_PROC_LABEL mercury__lexer__grab_float_string_5_p_0
+
+	MR_String Str;
+	MR_Integer Start;
+	MR_Integer End;
+	MR_String FloatStr;
+
+	Str =  mercury__lexer__String_6 ;
+	Start =  mercury__lexer__Offset0_12 ;
+	End =  mercury__lexer__Offset_15 ;
+		{
+
+    int src;
+    int dst = 0;
+
+    MR_allocate_aligned_string_msg(FloatStr, End - Start, MR_ALLOC_ID);
+    for (src = Start; src < End; src++) {
+        if (Str[src] != '_') {
+            FloatStr[dst] = Str[src];
+            dst++;
+        }
+    }
+    FloatStr[dst] = '\0';
+
+
+		;}
+#undef MR_PROC_LABEL
+	 *mercury__lexer__FloatString_8  = FloatStr;
+}
+  }
+}
+
+static void MR_CALL 
+mercury__lexer__grab_string_5_p_0(
+  MR_String mercury__lexer__String_6,
+  MR_Word mercury__lexer__Posn0_7,
+  MR_String * mercury__lexer__SubString_8,
+  MR_Word mercury__lexer__Posn_9,
+  MR_Word * mercury__lexer__Posn_5)
+{
+  {
+    MR_bool mercury__lexer__succeeded;
+    MR_Integer mercury__lexer__Offset0_12;
+    MR_Integer mercury__lexer__Offset_15;
+    MR_Integer mercury__lexer__Var_10;
+    MR_Integer mercury__lexer__Var_11;
+    MR_Integer mercury__lexer__Var_13;
+    MR_Integer mercury__lexer__Var_14;
+
+    *mercury__lexer__Posn_5 = mercury__lexer__Posn_9;
+    mercury__lexer__Var_10 = ((MR_Integer) (MR_hl_field(MR_mktag(0), mercury__lexer__Posn0_7, (MR_Integer) 0)));
+    mercury__lexer__Var_11 = ((MR_Integer) (MR_hl_field(MR_mktag(0), mercury__lexer__Posn0_7, (MR_Integer) 1)));
+    mercury__lexer__Offset0_12 = ((MR_Integer) (MR_hl_field(MR_mktag(0), mercury__lexer__Posn0_7, (MR_Integer) 2)));
+    mercury__lexer__Var_13 = ((MR_Integer) (MR_hl_field(MR_mktag(0), mercury__lexer__Posn_9, (MR_Integer) 0)));
+    mercury__lexer__Var_14 = ((MR_Integer) (MR_hl_field(MR_mktag(0), mercury__lexer__Posn_9, (MR_Integer) 1)));
+    mercury__lexer__Offset_15 = ((MR_Integer) (MR_hl_field(MR_mktag(0), mercury__lexer__Posn_9, (MR_Integer) 2)));
+{
+#define MR_PROC_LABEL mercury__lexer__grab_string_5_p_0
+
+	MR_String Str;
+	MR_Integer Start;
+	MR_Integer End;
+	MR_String SubString;
+
+	Str =  mercury__lexer__String_6 ;
+	Start =  mercury__lexer__Offset0_12 ;
+	End =  mercury__lexer__Offset_15 ;
+		{
+{
+    MR_Integer Count;
+
+    Count = End - Start;
+    MR_allocate_aligned_string_msg(SubString, Count, MR_ALLOC_ID);
+    MR_memcpy(SubString, Str + Start, Count);
+    SubString[Count] = '\0';
+}
+
+		;}
+#undef MR_PROC_LABEL
+	 *mercury__lexer__SubString_8  = SubString;
+}
+  }
+}
+
+static void MR_CALL 
+mercury__lexer__string_ungetchar_3_p_0(
+  MR_String mercury__lexer__String_4,
+  MR_Word mercury__lexer__Posn0_5,
+  MR_Word * mercury__lexer__Posn_6)
+{
+  {
+    MR_bool mercury__lexer__succeeded;
+    MR_Integer mercury__lexer__LineNum0_7 = ((MR_Integer) (MR_hl_field(MR_mktag(0), mercury__lexer__Posn0_5, (MR_Integer) 0)));
+    MR_Integer mercury__lexer__LineOffset0_8 = ((MR_Integer) (MR_hl_field(MR_mktag(0), mercury__lexer__Posn0_5, (MR_Integer) 1)));
+    MR_Integer mercury__lexer__Offset0_9 = ((MR_Integer) (MR_hl_field(MR_mktag(0), mercury__lexer__Posn0_5, (MR_Integer) 2)));
+    MR_Integer mercury__lexer__Offset_10;
+    MR_Char mercury__lexer__Char_11;
+
+{
+#define MR_PROC_LABEL mercury__lexer__string_ungetchar_3_p_0
+
+	MR_String Str;
+	MR_Integer Index;
+	MR_Integer PrevIndex;
+	MR_Char Ch;
+	MR_bool SUCCESS_INDICATOR;
+
+	Str =  mercury__lexer__String_4 ;
+	Index =  mercury__lexer__Offset0_9 ;
+		{
+
+    if (Index > 0) {
+        PrevIndex = Index - 1;
+        Ch = Str[PrevIndex];
+        if (MR_is_ascii(Ch)) {
+            SUCCESS_INDICATOR = (Ch != 0);
+        } else {
+            Ch = MR_utf8_prev_get(Str, &PrevIndex);
+            SUCCESS_INDICATOR = (Ch > 0);
+        }
+    } else {
+        SUCCESS_INDICATOR = MR_FALSE;
+    }
+
+
+		;}
+#undef MR_PROC_LABEL
+	if (SUCCESS_INDICATOR) {
+	 mercury__lexer__Offset_10  = PrevIndex;
+	 mercury__lexer__Char_11  = Ch;
+	}
+mercury__lexer__succeeded  = SUCCESS_INDICATOR;
+}
+    if (mercury__lexer__succeeded)
+      {
+        mercury__lexer__succeeded = (mercury__lexer__Char_11 == (MR_Char) 10);
+        if (mercury__lexer__succeeded)
+          {
+            MR_Integer mercury__lexer__LineNum_12 = (mercury__lexer__LineNum0_7 - (MR_Integer) 1);
+
+            {
+              MR_Word base;
+              base = (MR_Word) MR_new_object(MR_Word, ((MR_Integer) 3 * sizeof(MR_Word)), NULL, NULL);
+              *mercury__lexer__Posn_6 = base;
+              MR_hl_field(MR_mktag(0), base, 0) = ((MR_Box) (mercury__lexer__LineNum_12));
+              MR_hl_field(MR_mktag(0), base, 1) = ((MR_Box) (mercury__lexer__Offset_10));
+              MR_hl_field(MR_mktag(0), base, 2) = ((MR_Box) (mercury__lexer__Offset_10));
+            }
+          }
+        else
+          {
+            MR_Word base;
+            base = (MR_Word) MR_new_object(MR_Word, ((MR_Integer) 3 * sizeof(MR_Word)), NULL, NULL);
+            *mercury__lexer__Posn_6 = base;
+            MR_hl_field(MR_mktag(0), base, 0) = ((MR_Box) (mercury__lexer__LineNum0_7));
+            MR_hl_field(MR_mktag(0), base, 1) = ((MR_Box) (mercury__lexer__LineOffset0_8));
+            MR_hl_field(MR_mktag(0), base, 2) = ((MR_Box) (mercury__lexer__Offset_10));
+          }
+      }
+    else
+      *mercury__lexer__Posn_6 = mercury__lexer__Posn0_5;
+  }
+}
+
+static MR_bool MR_CALL 
+mercury__lexer__string_read_char_5_p_0(
+  MR_String mercury__lexer__String_6,
+  MR_Integer mercury__lexer__Len_7,
+  MR_Char * mercury__lexer__Char_8,
+  MR_Word mercury__lexer__Posn0_9,
+  MR_Word * mercury__lexer__Posn_10)
+{
+  {
+    MR_bool mercury__lexer__succeeded;
+    MR_Integer mercury__lexer__LineNum0_11 = ((MR_Integer) (MR_hl_field(MR_mktag(0), mercury__lexer__Posn0_9, (MR_Integer) 0)));
+    MR_Integer mercury__lexer__LineOffset0_12 = ((MR_Integer) (MR_hl_field(MR_mktag(0), mercury__lexer__Posn0_9, (MR_Integer) 1)));
+    MR_Integer mercury__lexer__Offset0_13 = ((MR_Integer) (MR_hl_field(MR_mktag(0), mercury__lexer__Posn0_9, (MR_Integer) 2)));
+    MR_Integer mercury__lexer__Offset_14;
+
+    mercury__lexer__succeeded = (mercury__lexer__Offset0_13 < mercury__lexer__Len_7);
+    if (mercury__lexer__succeeded)
+      {
+{
+#define MR_PROC_LABEL mercury__lexer__string_read_char_5_p_0
+
+	MR_String Str;
+	MR_Integer Index;
+	MR_Integer NextIndex;
+	MR_Char Ch;
+	MR_bool SUCCESS_INDICATOR;
+
+	Str =  mercury__lexer__String_6 ;
+	Index =  mercury__lexer__Offset0_13 ;
+		{
+
+    Ch = Str[Index];
+    if (MR_is_ascii(Ch)) {
+        NextIndex = Index + 1;
+        SUCCESS_INDICATOR = (Ch != 0);
+    } else {
+        NextIndex = Index;
+        Ch = MR_utf8_get_next_mb(Str, &NextIndex);
+        SUCCESS_INDICATOR = (Ch > 0);
+    }
+
+
+		;}
+#undef MR_PROC_LABEL
+	if (SUCCESS_INDICATOR) {
+	 mercury__lexer__Offset_14  = NextIndex;
+	 *mercury__lexer__Char_8  = Ch;
+	}
+mercury__lexer__succeeded  = SUCCESS_INDICATOR;
+}
+        if (mercury__lexer__succeeded)
+          {
+            mercury__lexer__succeeded = (*mercury__lexer__Char_8 == (MR_Char) 10);
+            if (mercury__lexer__succeeded)
+              {
+                MR_Integer mercury__lexer__LineNum_15 = (mercury__lexer__LineNum0_11 + (MR_Integer) 1);
+
+                {
+                  MR_Word base;
+                  base = (MR_Word) MR_new_object(MR_Word, ((MR_Integer) 3 * sizeof(MR_Word)), NULL, NULL);
+                  *mercury__lexer__Posn_10 = base;
+                  MR_hl_field(MR_mktag(0), base, 0) = ((MR_Box) (mercury__lexer__LineNum_15));
+                  MR_hl_field(MR_mktag(0), base, 1) = ((MR_Box) (mercury__lexer__Offset_14));
+                  MR_hl_field(MR_mktag(0), base, 2) = ((MR_Box) (mercury__lexer__Offset_14));
+                }
+              }
+            else
+              {
+                MR_Word base;
+                base = (MR_Word) MR_new_object(MR_Word, ((MR_Integer) 3 * sizeof(MR_Word)), NULL, NULL);
+                *mercury__lexer__Posn_10 = base;
+                MR_hl_field(MR_mktag(0), base, 0) = ((MR_Box) (mercury__lexer__LineNum0_11));
+                MR_hl_field(MR_mktag(0), base, 1) = ((MR_Box) (mercury__lexer__LineOffset0_12));
+                MR_hl_field(MR_mktag(0), base, 2) = ((MR_Box) (mercury__lexer__Offset_14));
+              }
+            mercury__lexer__succeeded = MR_TRUE;
+          }
+      }
+    return mercury__lexer__succeeded;
+  }
+}
+
+static void MR_CALL 
+mercury__lexer__string_get_context_4_p_0(
+  MR_Word mercury__lexer__StartPosn_5,
+  MR_Integer * mercury__lexer__Context_6,
+  MR_Word mercury__lexer__STATE_VARIABLE_Posn_0_11,
+  MR_Word * mercury__lexer__STATE_VARIABLE_Posn_12)
+{
+  {
+    MR_bool mercury__lexer__succeeded;
+    MR_Integer mercury__lexer__Var_9;
+    MR_Integer mercury__lexer__Var_10;
+
+    *mercury__lexer__Context_6 = ((MR_Integer) (MR_hl_field(MR_mktag(0), mercury__lexer__StartPosn_5, (MR_Integer) 0)));
+    mercury__lexer__Var_9 = ((MR_Integer) (MR_hl_field(MR_mktag(0), mercury__lexer__StartPosn_5, (MR_Integer) 1)));
+    mercury__lexer__Var_10 = ((MR_Integer) (MR_hl_field(MR_mktag(0), mercury__lexer__StartPosn_5, (MR_Integer) 2)));
+    *mercury__lexer__STATE_VARIABLE_Posn_12 = mercury__lexer__STATE_VARIABLE_Posn_0_11;
+  }
+}
+
+void MR_CALL 
+mercury__lexer__get_context_4_p_0(
+  MR_Word mercury__lexer__Stream_5,
+  MR_Integer * mercury__lexer__Context_6)
+{
+  {
+    MR_bool mercury__lexer__succeeded;
+    MR_Box mercury__lexer__V_5_14 = (MR_Box) mercury__lexer__Stream_5;
+
+{
+#define MR_PROC_LABEL mercury__lexer__get_context_4_p_0
+
+	MercuryFilePtr Stream;
+	MR_Integer LineNum;
+
+	Stream = (MercuryFilePtr) mercury__lexer__V_5_14 ;
+		{
+
+    LineNum = MR_line_number(*Stream);
+
+
+		;}
+#undef MR_PROC_LABEL
+	 *mercury__lexer__Context_6  = LineNum;
+}
+  }
+}
+
+void MR_CALL 
+mercury__lexer__get_token_list_2_6_p_0(
+  MR_Word mercury__lexer__Stream_7,
+  MR_Word mercury__lexer__Token0_8,
+  MR_Integer mercury__lexer__Context0_9,
+  MR_Word * mercury__lexer__Tokens_10)
+{
+  {
+    MR_bool mercury__lexer__succeeded;
+
+    switch (MR_tag((MR_Word) mercury__lexer__Token0_8)) {
+      default: /*NOTREACHED*/ MR_assert(0);
+      case (MR_Integer) 0:
+        switch (MR_unmkbody(mercury__lexer__Token0_8)) {
+          default: /*NOTREACHED*/ MR_assert(0);
+          case (MR_Integer) 0:
+          case (MR_Integer) 1:
+          case (MR_Integer) 2:
+          case (MR_Integer) 3:
+          case (MR_Integer) 4:
+          case (MR_Integer) 5:
+          case (MR_Integer) 6:
+          case (MR_Integer) 7:
+          case (MR_Integer) 8:
+            {
+              MR_Integer mercury__lexer__Context1_40;
+              MR_Word mercury__lexer__Token1_41;
+              MR_Word * mercury__lexer__AddrTokens1_87;
+
+              {
+                mercury__lexer__get_token_5_p_0(mercury__lexer__Stream_7, &mercury__lexer__Token1_41, &mercury__lexer__Context1_40);
+              }
+              {
+                MR_Word base;
+                base = (MR_Word) MR_mkword(MR_mktag(1), MR_new_object(MR_Word, ((MR_Integer) 3 * sizeof(MR_Word)), NULL, NULL));
+                *mercury__lexer__Tokens_10 = base;
+                MR_hl_field(MR_mktag(1), base, 0) = ((MR_Box) (mercury__lexer__Token0_8));
+                MR_hl_field(MR_mktag(1), base, 1) = ((MR_Box) (mercury__lexer__Context0_9));
+                MR_hl_field(MR_mktag(1), base, 2) = NULL;
+              }
+              mercury__lexer__AddrTokens1_87 = (MR_Word *) &(MR_hl_field(MR_mktag(1), *mercury__lexer__Tokens_10, (MR_Integer) 2));
+              {
+                mercury__lexer__LCMCpr_get_token_list_2_1_6_p_0(mercury__lexer__Stream_7, mercury__lexer__Token1_41, mercury__lexer__Context1_40, mercury__lexer__AddrTokens1_87);
+              }
+            }
+            break;
+          case (MR_Integer) 9:
+            {
+              MR_Word mercury__lexer__Var_39 = (MR_Word) MR_mkword(MR_mktag(0), MR_mkbody((MR_Integer) 0));
+
+              {
+                MR_Word base;
+                base = (MR_Word) MR_mkword(MR_mktag(1), MR_new_object(MR_Word, ((MR_Integer) 3 * sizeof(MR_Word)), NULL, NULL));
+                *mercury__lexer__Tokens_10 = base;
+                MR_hl_field(MR_mktag(1), base, 0) = ((MR_Box) (mercury__lexer__Token0_8));
+                MR_hl_field(MR_mktag(1), base, 1) = ((MR_Box) (mercury__lexer__Context0_9));
+                MR_hl_field(MR_mktag(1), base, 2) = ((MR_Box) (mercury__lexer__Var_39));
+              }
+            }
+            break;
+          case (MR_Integer) 10:
+            *mercury__lexer__Tokens_10 = (MR_Word) MR_mkword(MR_mktag(0), MR_mkbody((MR_Integer) 0));
+            break;
+        }
+        break;
+      case (MR_Integer) 1:
+      case (MR_Integer) 2:
+        {
+          MR_Integer mercury__lexer__Context1_40;
+          MR_Word mercury__lexer__Token1_41;
+          MR_Word * mercury__lexer__AddrTokens1_87;
+
+          {
+            mercury__lexer__get_token_5_p_0(mercury__lexer__Stream_7, &mercury__lexer__Token1_41, &mercury__lexer__Context1_40);
+          }
+          {
+            MR_Word base;
+            base = (MR_Word) MR_mkword(MR_mktag(1), MR_new_object(MR_Word, ((MR_Integer) 3 * sizeof(MR_Word)), NULL, NULL));
+            *mercury__lexer__Tokens_10 = base;
+            MR_hl_field(MR_mktag(1), base, 0) = ((MR_Box) (mercury__lexer__Token0_8));
+            MR_hl_field(MR_mktag(1), base, 1) = ((MR_Box) (mercury__lexer__Context0_9));
+            MR_hl_field(MR_mktag(1), base, 2) = NULL;
+          }
+          mercury__lexer__AddrTokens1_87 = (MR_Word *) &(MR_hl_field(MR_mktag(1), *mercury__lexer__Tokens_10, (MR_Integer) 2));
+          {
+            mercury__lexer__LCMCpr_get_token_list_2_1_6_p_0(mercury__lexer__Stream_7, mercury__lexer__Token1_41, mercury__lexer__Context1_40, mercury__lexer__AddrTokens1_87);
+          }
+        }
+        break;
+      case (MR_Integer) 3:
+        switch (((MR_Integer) (MR_Word) (MR_hl_field(MR_mktag(3), mercury__lexer__Token0_8, (MR_Integer) 0)))) {
+          default: /*NOTREACHED*/ MR_assert(0);
+          case (MR_Integer) 0:
+          case (MR_Integer) 1:
+          case (MR_Integer) 2:
+          case (MR_Integer) 3:
+          case (MR_Integer) 4:
+            {
+              MR_Integer mercury__lexer__Context1_40;
+              MR_Word mercury__lexer__Token1_41;
+              MR_Word * mercury__lexer__AddrTokens1_87;
+
+              {
+                mercury__lexer__get_token_5_p_0(mercury__lexer__Stream_7, &mercury__lexer__Token1_41, &mercury__lexer__Context1_40);
+              }
+              {
+                MR_Word base;
+                base = (MR_Word) MR_mkword(MR_mktag(1), MR_new_object(MR_Word, ((MR_Integer) 3 * sizeof(MR_Word)), NULL, NULL));
+                *mercury__lexer__Tokens_10 = base;
+                MR_hl_field(MR_mktag(1), base, 0) = ((MR_Box) (mercury__lexer__Token0_8));
+                MR_hl_field(MR_mktag(1), base, 1) = ((MR_Box) (mercury__lexer__Context0_9));
+                MR_hl_field(MR_mktag(1), base, 2) = NULL;
+              }
+              mercury__lexer__AddrTokens1_87 = (MR_Word *) &(MR_hl_field(MR_mktag(1), *mercury__lexer__Tokens_10, (MR_Integer) 2));
+              {
+                mercury__lexer__LCMCpr_get_token_list_2_1_6_p_0(mercury__lexer__Stream_7, mercury__lexer__Token1_41, mercury__lexer__Context1_40, mercury__lexer__AddrTokens1_87);
+              }
+            }
+            break;
+          case (MR_Integer) 5:
+          case (MR_Integer) 6:
+            {
+              MR_Word mercury__lexer__Var_39 = (MR_Word) MR_mkword(MR_mktag(0), MR_mkbody((MR_Integer) 0));
+
+              {
+                MR_Word base;
+                base = (MR_Word) MR_mkword(MR_mktag(1), MR_new_object(MR_Word, ((MR_Integer) 3 * sizeof(MR_Word)), NULL, NULL));
+                *mercury__lexer__Tokens_10 = base;
+                MR_hl_field(MR_mktag(1), base, 0) = ((MR_Box) (mercury__lexer__Token0_8));
+                MR_hl_field(MR_mktag(1), base, 1) = ((MR_Box) (mercury__lexer__Context0_9));
+                MR_hl_field(MR_mktag(1), base, 2) = ((MR_Box) (mercury__lexer__Var_39));
+              }
+            }
+            break;
+          case (MR_Integer) 7:
+            {
+              MR_Word mercury__lexer__Integer_14 = ((MR_Word) (MR_hl_field(MR_mktag(3), mercury__lexer__Token0_8, (MR_Integer) 1)));
+              MR_Integer mercury__lexer__Context1_15;
+              MR_Word mercury__lexer__Token1_16;
+              MR_Word mercury__lexer__Var_35;
+              MR_Box mercury__lexer__V_5_52 = (MR_Box) mercury__lexer__Stream_7;
+              MR_Word mercury__lexer__Result_58;
+              MR_Char mercury__lexer__Char_59;
+              MR_Word mercury__lexer__V_10_75;
+              MR_Box mercury__lexer__V_11_76;
+              MR_Box mercury__lexer__V_7_85;
+              MR_Word * mercury__lexer__AddrTokens1_88;
+
+{
+#define MR_PROC_LABEL mercury__lexer__get_token_list_2_6_p_0
+
+	MercuryFilePtr Stream;
+	MR_Integer LineNum;
+
+	Stream = (MercuryFilePtr) mercury__lexer__V_5_52 ;
+		{
+
+    LineNum = MR_line_number(*Stream);
+
+
+		;}
+#undef MR_PROC_LABEL
+	 mercury__lexer__Context1_15  = LineNum;
+}
+              mercury__lexer__V_7_85 = (MR_Box) mercury__lexer__Stream_7;
+              {
+                mercury__io__read_char_code_2_6_p_0(mercury__lexer__V_7_85, &mercury__lexer__V_10_75, &mercury__lexer__Char_59, &mercury__lexer__V_11_76);
+              }
+              switch (mercury__lexer__V_10_75) {
+                default: /*NOTREACHED*/ MR_assert(0);
+                case (MR_Integer) 1:
+                  mercury__lexer__Result_58 = (MR_Word) MR_mkword(MR_mktag(0), MR_mkbody((MR_Integer) 1));
+                  break;
+                case (MR_Integer) 2:
+                  {
+                    MR_String mercury__lexer__V_12_78;
+                    MR_Word mercury__lexer__V_17_79;
+
+{
+#define MR_PROC_LABEL mercury__lexer__get_token_list_2_6_p_0
+
+	MR_Integer Error;
+	MR_String Msg0;
+	MR_String Msg;
+
+	MR_MAYBE_UNBOX_FOREIGN_TYPE(MR_Integer, mercury__lexer__V_11_76 , Error);
+	Msg0 =  (MR_String) "read failed: " ;
+		{
+
+    ML_make_err_msg(Error, Msg0, MR_ALLOC_ID, Msg);
+
+
+		;}
+#undef MR_PROC_LABEL
+	 mercury__lexer__V_12_78  = Msg;
+}
+                    mercury__lexer__V_17_79 = (MR_Word) mercury__lexer__V_12_78;
+                    {
+                      mercury__lexer__Result_58 = (MR_Word) MR_mkword(MR_mktag(1), MR_new_object(MR_Word, ((MR_Integer) 1 * sizeof(MR_Word)), NULL, NULL));
+                      MR_hl_field(MR_mktag(1), mercury__lexer__Result_58, 0) = ((MR_Box) (mercury__lexer__V_17_79));
+                    }
+                  }
+                  break;
+                case (MR_Integer) 0:
+                  mercury__lexer__Result_58 = (MR_Word) MR_mkword(MR_mktag(0), MR_mkbody((MR_Integer) 0));
+                  break;
+              }
+              switch (MR_tag((MR_Word) mercury__lexer__Result_58)) {
+                default: /*NOTREACHED*/ MR_assert(0);
+                case (MR_Integer) 0:
+                  switch (MR_unmkbody(mercury__lexer__Result_58)) {
+                    default: /*NOTREACHED*/ MR_assert(0);
+                    case (MR_Integer) 0:
+                      {
+                        {
+                          mercury__lexer__succeeded = mercury__char__is_whitespace_1_p_0(mercury__lexer__Char_59);
+                        }
+                        if (!(mercury__lexer__succeeded))
+                          mercury__lexer__succeeded = (mercury__lexer__Char_59 == (MR_Char) 37);
+                        if (mercury__lexer__succeeded)
+                          {
+                            {
+                              mercury__io__putback_char_4_p_0(mercury__lexer__Stream_7, mercury__lexer__Char_59);
+                            }
+                            mercury__lexer__Token1_16 = (MR_Word) MR_mkword(MR_mktag(0), MR_mkbody((MR_Integer) 9));
+                          }
+                        else
+                          {
+                            switch (mercury__lexer__Char_59) {
+                              default:
+                                mercury__lexer__succeeded = MR_FALSE;
+                                break;
+                              case (MR_Char) 33:
+                                mercury__lexer__succeeded = MR_TRUE;
+                                break;
+                              case (MR_Char) 35:
+                                mercury__lexer__succeeded = MR_TRUE;
+                                break;
+                              case (MR_Char) 36:
+                                mercury__lexer__succeeded = MR_TRUE;
+                                break;
+                              case (MR_Char) 38:
+                                mercury__lexer__succeeded = MR_TRUE;
+                                break;
+                              case (MR_Char) 42:
+                                mercury__lexer__succeeded = MR_TRUE;
+                                break;
+                              case (MR_Char) 43:
+                                mercury__lexer__succeeded = MR_TRUE;
+                                break;
+                              case (MR_Char) 45:
+                                mercury__lexer__succeeded = MR_TRUE;
+                                break;
+                              case (MR_Char) 46:
+                                mercury__lexer__succeeded = MR_TRUE;
+                                break;
+                              case (MR_Char) 47:
+                                mercury__lexer__succeeded = MR_TRUE;
+                                break;
+                              case (MR_Char) 58:
+                                mercury__lexer__succeeded = MR_TRUE;
+                                break;
+                              case (MR_Char) 60:
+                                mercury__lexer__succeeded = MR_TRUE;
+                                break;
+                              case (MR_Char) 61:
+                                mercury__lexer__succeeded = MR_TRUE;
+                                break;
+                              case (MR_Char) 62:
+                                mercury__lexer__succeeded = MR_TRUE;
+                                break;
+                              case (MR_Char) 63:
+                                mercury__lexer__succeeded = MR_TRUE;
+                                break;
+                              case (MR_Char) 64:
+                                mercury__lexer__succeeded = MR_TRUE;
+                                break;
+                              case (MR_Char) 92:
+                                mercury__lexer__succeeded = MR_TRUE;
+                                break;
+                              case (MR_Char) 94:
+                                mercury__lexer__succeeded = MR_TRUE;
+                                break;
+                              case (MR_Char) 126:
+                                mercury__lexer__succeeded = MR_TRUE;
+                                break;
+                            }
+                            if (mercury__lexer__succeeded)
+                              {
+                                MR_Word mercury__lexer__Var_63;
+                                MR_Word mercury__lexer__Var_65 = (MR_Word) MR_mkword(MR_mktag(1), &mercury__lexer_scalar_common_4[5]);
+                                MR_Word mercury__lexer__Var_67 = (MR_Word) MR_mkword(MR_mktag(0), MR_mkbody((MR_Integer) 0));
+
+                                {
+                                  mercury__lexer__Var_63 = (MR_Word) MR_mkword(MR_mktag(1), MR_new_object(MR_Word, ((MR_Integer) 2 * sizeof(MR_Word)), NULL, NULL));
+                                  MR_hl_field(MR_mktag(1), mercury__lexer__Var_63, 0) = ((MR_Box) (MR_Word) (mercury__lexer__Char_59));
+                                  MR_hl_field(MR_mktag(1), mercury__lexer__Var_63, 1) = ((MR_Box) (mercury__lexer__Var_65));
+                                }
+                                {
+                                  mercury__lexer__get_graphic_5_p_0(mercury__lexer__Stream_7, mercury__lexer__Var_63, &mercury__lexer__Token1_16);
+                                }
+                              }
+                            else
+                              {
+                                {
+                                  mercury__io__putback_char_4_p_0(mercury__lexer__Stream_7, mercury__lexer__Char_59);
+                                }
+                                mercury__lexer__Token1_16 = (MR_Word) MR_mkword(MR_mktag(1), &mercury__lexer_scalar_common_6[0]);
+                              }
+                          }
+                      }
+                      break;
+                    case (MR_Integer) 1:
+                      mercury__lexer__Token1_16 = (MR_Word) MR_mkword(MR_mktag(0), MR_mkbody((MR_Integer) 9));
+                      break;
+                  }
+                  break;
+                case (MR_Integer) 1:
+                  {
+                    MR_Word mercury__lexer__Error_60 = ((MR_Word) (MR_hl_field(MR_mktag(1), mercury__lexer__Result_58, (MR_Integer) 0)));
+
+                    {
+                      mercury__lexer__Token1_16 = (MR_Word) MR_mkword(MR_mktag(3), MR_new_object(MR_Word, ((MR_Integer) 2 * sizeof(MR_Word)), NULL, NULL));
+                      MR_hl_field(MR_mktag(3), mercury__lexer__Token1_16, 0) = ((MR_Box) (MR_Word) ((MR_Integer) 6));
+                      MR_hl_field(MR_mktag(3), mercury__lexer__Token1_16, 1) = ((MR_Box) (mercury__lexer__Error_60));
+                    }
+                  }
+                  break;
+              }
+              {
+                mercury__lexer__Var_35 = (MR_Word) MR_mkword(MR_mktag(3), MR_new_object(MR_Word, ((MR_Integer) 5 * sizeof(MR_Word)), NULL, NULL));
+                MR_hl_field(MR_mktag(3), mercury__lexer__Var_35, 0) = ((MR_Box) (MR_Word) ((MR_Integer) 0));
+                MR_hl_field(MR_mktag(3), mercury__lexer__Var_35, 1) = ((MR_Box) ((MR_Integer) 2));
+                MR_hl_field(MR_mktag(3), mercury__lexer__Var_35, 2) = ((MR_Box) (mercury__lexer__Integer_14));
+                MR_hl_field(MR_mktag(3), mercury__lexer__Var_35, 3) = ((MR_Box) ((MR_Integer) 0));
+                MR_hl_field(MR_mktag(3), mercury__lexer__Var_35, 4) = ((MR_Box) ((MR_Integer) 0));
+              }
+              {
+                MR_Word base;
+                base = (MR_Word) MR_mkword(MR_mktag(1), MR_new_object(MR_Word, ((MR_Integer) 3 * sizeof(MR_Word)), NULL, NULL));
+                *mercury__lexer__Tokens_10 = base;
+                MR_hl_field(MR_mktag(1), base, 0) = ((MR_Box) (mercury__lexer__Var_35));
+                MR_hl_field(MR_mktag(1), base, 1) = ((MR_Box) (mercury__lexer__Context0_9));
+                MR_hl_field(MR_mktag(1), base, 2) = NULL;
+              }
+              mercury__lexer__AddrTokens1_88 = (MR_Word *) &(MR_hl_field(MR_mktag(1), *mercury__lexer__Tokens_10, (MR_Integer) 2));
+              {
+                mercury__lexer__LCMCpr_get_token_list_2_1_6_p_0(mercury__lexer__Stream_7, mercury__lexer__Token1_16, mercury__lexer__Context1_15, mercury__lexer__AddrTokens1_88);
+              }
+            }
+            break;
+        }
+        break;
+    }
+  }
+}
+
+MR_bool MR_CALL 
+mercury__lexer__graphic_token_char_1_p_0(
+  MR_Char mercury__lexer__HeadVar__1_1)
+{
+  {
+    MR_bool mercury__lexer__succeeded;
+
+    switch (mercury__lexer__HeadVar__1_1) {
+      default:
+        mercury__lexer__succeeded = MR_FALSE;
+        break;
+      case (MR_Char) 33:
+        mercury__lexer__succeeded = MR_TRUE;
+        break;
+      case (MR_Char) 35:
+        mercury__lexer__succeeded = MR_TRUE;
+        break;
+      case (MR_Char) 36:
+        mercury__lexer__succeeded = MR_TRUE;
+        break;
+      case (MR_Char) 38:
+        mercury__lexer__succeeded = MR_TRUE;
+        break;
+      case (MR_Char) 42:
+        mercury__lexer__succeeded = MR_TRUE;
+        break;
+      case (MR_Char) 43:
+        mercury__lexer__succeeded = MR_TRUE;
+        break;
+      case (MR_Char) 45:
+        mercury__lexer__succeeded = MR_TRUE;
+        break;
+      case (MR_Char) 46:
+        mercury__lexer__succeeded = MR_TRUE;
+        break;
+      case (MR_Char) 47:
+        mercury__lexer__succeeded = MR_TRUE;
+        break;
+      case (MR_Char) 58:
+        mercury__lexer__succeeded = MR_TRUE;
+        break;
+      case (MR_Char) 60:
+        mercury__lexer__succeeded = MR_TRUE;
+        break;
+      case (MR_Char) 61:
+        mercury__lexer__succeeded = MR_TRUE;
+        break;
+      case (MR_Char) 62:
+        mercury__lexer__succeeded = MR_TRUE;
+        break;
+      case (MR_Char) 63:
+        mercury__lexer__succeeded = MR_TRUE;
+        break;
+      case (MR_Char) 64:
+        mercury__lexer__succeeded = MR_TRUE;
+        break;
+      case (MR_Char) 92:
+        mercury__lexer__succeeded = MR_TRUE;
+        break;
+      case (MR_Char) 94:
+        mercury__lexer__succeeded = MR_TRUE;
+        break;
+      case (MR_Char) 126:
+        mercury__lexer__succeeded = MR_TRUE;
+        break;
+    }
+    return mercury__lexer__succeeded;
+  }
+}
+
+void MR_CALL 
+mercury__lexer__token_to_string_2_p_0(
+  MR_Word mercury__lexer__Token_3,
+  MR_String * mercury__lexer__String_4)
+{
+  {
+    MR_bool mercury__lexer__succeeded;
+
+    switch (MR_tag((MR_Word) mercury__lexer__Token_3)) {
+      default: /*NOTREACHED*/ MR_assert(0);
+      case (MR_Integer) 0:
+        switch (MR_unmkbody(mercury__lexer__Token_3)) {
+          default: /*NOTREACHED*/ MR_assert(0);
+          case (MR_Integer) 0:
+            *mercury__lexer__String_4 = (MR_String) "token \140 (\'";
+            break;
+          case (MR_Integer) 1:
+            *mercury__lexer__String_4 = (MR_String) "token \140(\'";
+            break;
+          case (MR_Integer) 2:
+            *mercury__lexer__String_4 = (MR_String) "token \140)\'";
+            break;
+          case (MR_Integer) 3:
+            *mercury__lexer__String_4 = (MR_String) "token \140[\'";
+            break;
+          case (MR_Integer) 4:
+            *mercury__lexer__String_4 = (MR_String) "token \140]\'";
+            break;
+          case (MR_Integer) 5:
+            *mercury__lexer__String_4 = (MR_String) "token \140{\'";
+            break;
+          case (MR_Integer) 6:
+            *mercury__lexer__String_4 = (MR_String) "token \140}\'";
+            break;
+          case (MR_Integer) 7:
+            *mercury__lexer__String_4 = (MR_String) "token \140|\'";
+            break;
+          case (MR_Integer) 8:
+            *mercury__lexer__String_4 = (MR_String) "token \140,\'";
+            break;
+          case (MR_Integer) 9:
+            *mercury__lexer__String_4 = (MR_String) "token \140. \'";
+            break;
+          case (MR_Integer) 10:
+            *mercury__lexer__String_4 = (MR_String) "end-of-file";
+            break;
+        }
+        break;
+      case (MR_Integer) 1:
+        {
+          MR_String mercury__lexer__Name_5 = ((MR_String) (MR_hl_field(MR_mktag(1), mercury__lexer__Token_3, (MR_Integer) 0)));
+          MR_Word mercury__lexer__Var_74;
+          MR_Word mercury__lexer__Var_76;
+          MR_Word mercury__lexer__Var_77 = (MR_Word) MR_mkword(MR_mktag(1), &mercury__lexer_scalar_common_4[1]);
+          MR_Word mercury__lexer__Var_79 = (MR_Word) MR_mkword(MR_mktag(0), MR_mkbody((MR_Integer) 0));
+
+          {
+            mercury__lexer__Var_76 = (MR_Word) MR_mkword(MR_mktag(1), MR_new_object(MR_Word, ((MR_Integer) 2 * sizeof(MR_Word)), NULL, NULL));
+            MR_hl_field(MR_mktag(1), mercury__lexer__Var_76, 0) = ((MR_Box) (mercury__lexer__Name_5));
+            MR_hl_field(MR_mktag(1), mercury__lexer__Var_76, 1) = ((MR_Box) (mercury__lexer__Var_77));
+          }
+          {
+            mercury__lexer__Var_74 = (MR_Word) MR_mkword(MR_mktag(1), MR_new_object(MR_Word, ((MR_Integer) 2 * sizeof(MR_Word)), NULL, NULL));
+            MR_hl_field(MR_mktag(1), mercury__lexer__Var_74, 0) = ((MR_Box) ((MR_String) "token \'"));
+            MR_hl_field(MR_mktag(1), mercury__lexer__Var_74, 1) = ((MR_Box) (mercury__lexer__Var_76));
+          }
+          {
+            mercury__string__append_list_2_p_0(mercury__lexer__Var_74, mercury__lexer__String_4);
+          }
+        }
+        break;
+      case (MR_Integer) 2:
+        {
+          MR_String mercury__lexer__Var_6 = ((MR_String) (MR_hl_field(MR_mktag(2), mercury__lexer__Token_3, (MR_Integer) 0)));
+          MR_Word mercury__lexer__Var_68;
+          MR_Word mercury__lexer__Var_70;
+          MR_Word mercury__lexer__Var_71 = (MR_Word) MR_mkword(MR_mktag(1), &mercury__lexer_scalar_common_4[1]);
+          MR_Word mercury__lexer__Var_73 = (MR_Word) MR_mkword(MR_mktag(0), MR_mkbody((MR_Integer) 0));
+
+          {
+            mercury__lexer__Var_70 = (MR_Word) MR_mkword(MR_mktag(1), MR_new_object(MR_Word, ((MR_Integer) 2 * sizeof(MR_Word)), NULL, NULL));
+            MR_hl_field(MR_mktag(1), mercury__lexer__Var_70, 0) = ((MR_Box) (mercury__lexer__Var_6));
+            MR_hl_field(MR_mktag(1), mercury__lexer__Var_70, 1) = ((MR_Box) (mercury__lexer__Var_71));
+          }
+          {
+            mercury__lexer__Var_68 = (MR_Word) MR_mkword(MR_mktag(1), MR_new_object(MR_Word, ((MR_Integer) 2 * sizeof(MR_Word)), NULL, NULL));
+            MR_hl_field(MR_mktag(1), mercury__lexer__Var_68, 0) = ((MR_Box) ((MR_String) "variable \140"));
+            MR_hl_field(MR_mktag(1), mercury__lexer__Var_68, 1) = ((MR_Box) (mercury__lexer__Var_70));
+          }
+          {
+            mercury__string__append_list_2_p_0(mercury__lexer__Var_68, mercury__lexer__String_4);
+          }
+        }
+        break;
+      case (MR_Integer) 3:
+        switch (((MR_Integer) (MR_Word) (MR_hl_field(MR_mktag(3), mercury__lexer__Token_3, (MR_Integer) 0)))) {
+          default: /*NOTREACHED*/ MR_assert(0);
+          case (MR_Integer) 0:
+            {
+              MR_Word mercury__lexer__Base_7 = ((MR_Word) (MR_hl_field(MR_mktag(3), mercury__lexer__Token_3, (MR_Integer) 1)));
+              MR_Word mercury__lexer__Integer_8 = ((MR_Word) (MR_hl_field(MR_mktag(3), mercury__lexer__Token_3, (MR_Integer) 2)));
+              MR_Integer mercury__lexer__BaseInt_11 = ((&mercury__lexer_vector_common_5[0 + mercury__lexer__Base_7]))->mercury__lexer__vector_common_type_5_0__vct_5_f_0;
+              MR_String mercury__lexer__Prefix_12 = ((&mercury__lexer_vector_common_5[0 + mercury__lexer__Base_7]))->mercury__lexer__vector_common_type_5_0__vct_5_f_1;
+              MR_String mercury__lexer__IntString_13;
+              MR_Word mercury__lexer__Var_61;
+              MR_Word mercury__lexer__Var_63;
+              MR_Word mercury__lexer__Var_64;
+              MR_Word mercury__lexer__Var_65;
+              MR_Word mercury__lexer__Var_67;
+              MR_Word mercury__lexer___Signedness_9 = ((MR_Word) (MR_hl_field(MR_mktag(3), mercury__lexer__Token_3, (MR_Integer) 3)));
+              MR_Word mercury__lexer___Size_10 = ((MR_Word) (MR_hl_field(MR_mktag(3), mercury__lexer__Token_3, (MR_Integer) 4)));
+
+              {
+                mercury__lexer__IntString_13 = mercury__integer__to_base_string_2_f_0(mercury__lexer__Integer_8, mercury__lexer__BaseInt_11);
+              }
+              mercury__lexer__Var_67 = (MR_Word) MR_mkword(MR_mktag(0), MR_mkbody((MR_Integer) 0));
+              mercury__lexer__Var_65 = (MR_Word) MR_mkword(MR_mktag(1), &mercury__lexer_scalar_common_4[1]);
+              {
+                mercury__lexer__Var_64 = (MR_Word) MR_mkword(MR_mktag(1), MR_new_object(MR_Word, ((MR_Integer) 2 * sizeof(MR_Word)), NULL, NULL));
+                MR_hl_field(MR_mktag(1), mercury__lexer__Var_64, 0) = ((MR_Box) (mercury__lexer__IntString_13));
+                MR_hl_field(MR_mktag(1), mercury__lexer__Var_64, 1) = ((MR_Box) (mercury__lexer__Var_65));
+              }
+              {
+                mercury__lexer__Var_63 = (MR_Word) MR_mkword(MR_mktag(1), MR_new_object(MR_Word, ((MR_Integer) 2 * sizeof(MR_Word)), NULL, NULL));
+                MR_hl_field(MR_mktag(1), mercury__lexer__Var_63, 0) = ((MR_Box) (mercury__lexer__Prefix_12));
+                MR_hl_field(MR_mktag(1), mercury__lexer__Var_63, 1) = ((MR_Box) (mercury__lexer__Var_64));
+              }
+              {
+                mercury__lexer__Var_61 = (MR_Word) MR_mkword(MR_mktag(1), MR_new_object(MR_Word, ((MR_Integer) 2 * sizeof(MR_Word)), NULL, NULL));
+                MR_hl_field(MR_mktag(1), mercury__lexer__Var_61, 0) = ((MR_Box) ((MR_String) "integer \140"));
+                MR_hl_field(MR_mktag(1), mercury__lexer__Var_61, 1) = ((MR_Box) (mercury__lexer__Var_63));
+              }
+              {
+                *mercury__lexer__String_4 = mercury__string__append_list_1_f_0(mercury__lexer__Var_61);
+              }
+            }
+            break;
+          case (MR_Integer) 1:
+            {
+              MR_Float mercury__lexer__Float_14 = MR_unbox_float((MR_hl_field(MR_mktag(3), mercury__lexer__Token_3, (MR_Integer) 1)));
+              MR_String mercury__lexer__FloatString_15;
+              MR_Word mercury__lexer__Var_55;
+              MR_Word mercury__lexer__Var_57;
+              MR_Word mercury__lexer__Var_58;
+              MR_Word mercury__lexer__Var_60;
+
+{
+#define MR_PROC_LABEL mercury__lexer__token_to_string_2_p_0
+
+	MR_Float Flt;
+	MR_String Str;
+
+	Flt =  mercury__lexer__Float_14 ;
+		{
+{
+    /*
+    ** For efficiency reasons we duplicate the C implementation
+    ** of lowlevel_float_to_string.
+    */
+    MR_float_to_string(Flt, Str, MR_ALLOC_ID);
+}
+
+		;}
+#undef MR_PROC_LABEL
+	 mercury__lexer__FloatString_15  = Str;
+}
+              mercury__lexer__Var_60 = (MR_Word) MR_mkword(MR_mktag(0), MR_mkbody((MR_Integer) 0));
+              mercury__lexer__Var_58 = (MR_Word) MR_mkword(MR_mktag(1), &mercury__lexer_scalar_common_4[1]);
+              {
+                mercury__lexer__Var_57 = (MR_Word) MR_mkword(MR_mktag(1), MR_new_object(MR_Word, ((MR_Integer) 2 * sizeof(MR_Word)), NULL, NULL));
+                MR_hl_field(MR_mktag(1), mercury__lexer__Var_57, 0) = ((MR_Box) (mercury__lexer__FloatString_15));
+                MR_hl_field(MR_mktag(1), mercury__lexer__Var_57, 1) = ((MR_Box) (mercury__lexer__Var_58));
+              }
+              {
+                mercury__lexer__Var_55 = (MR_Word) MR_mkword(MR_mktag(1), MR_new_object(MR_Word, ((MR_Integer) 2 * sizeof(MR_Word)), NULL, NULL));
+                MR_hl_field(MR_mktag(1), mercury__lexer__Var_55, 0) = ((MR_Box) ((MR_String) "float \140"));
+                MR_hl_field(MR_mktag(1), mercury__lexer__Var_55, 1) = ((MR_Box) (mercury__lexer__Var_57));
+              }
+              {
+                *mercury__lexer__String_4 = mercury__string__append_list_1_f_0(mercury__lexer__Var_55);
+              }
+            }
+            break;
+          case (MR_Integer) 2:
+            {
+              MR_String mercury__lexer__TokenString_16 = ((MR_String) (MR_hl_field(MR_mktag(3), mercury__lexer__Token_3, (MR_Integer) 1)));
+              MR_Word mercury__lexer__Var_49;
+              MR_Word mercury__lexer__Var_51;
+              MR_Word mercury__lexer__Var_52 = (MR_Word) MR_mkword(MR_mktag(1), &mercury__lexer_scalar_common_4[4]);
+              MR_Word mercury__lexer__Var_54 = (MR_Word) MR_mkword(MR_mktag(0), MR_mkbody((MR_Integer) 0));
+
+              {
+                mercury__lexer__Var_51 = (MR_Word) MR_mkword(MR_mktag(1), MR_new_object(MR_Word, ((MR_Integer) 2 * sizeof(MR_Word)), NULL, NULL));
+                MR_hl_field(MR_mktag(1), mercury__lexer__Var_51, 0) = ((MR_Box) (mercury__lexer__TokenString_16));
+                MR_hl_field(MR_mktag(1), mercury__lexer__Var_51, 1) = ((MR_Box) (mercury__lexer__Var_52));
+              }
+              {
+                mercury__lexer__Var_49 = (MR_Word) MR_mkword(MR_mktag(1), MR_new_object(MR_Word, ((MR_Integer) 2 * sizeof(MR_Word)), NULL, NULL));
+                MR_hl_field(MR_mktag(1), mercury__lexer__Var_49, 0) = ((MR_Box) ((MR_String) "string \""));
+                MR_hl_field(MR_mktag(1), mercury__lexer__Var_49, 1) = ((MR_Box) (mercury__lexer__Var_51));
+              }
+              {
+                mercury__string__append_list_2_p_0(mercury__lexer__Var_49, mercury__lexer__String_4);
+              }
+            }
+            break;
+          case (MR_Integer) 3:
+            {
+              MR_Word mercury__lexer__Var_43;
+              MR_Word mercury__lexer__Var_45;
+              MR_Word mercury__lexer__Var_46 = (MR_Word) MR_mkword(MR_mktag(1), &mercury__lexer_scalar_common_4[1]);
+              MR_Word mercury__lexer__Var_48 = (MR_Word) MR_mkword(MR_mktag(0), MR_mkbody((MR_Integer) 0));
+              MR_String mercury__lexer__Name_80 = ((MR_String) (MR_hl_field(MR_mktag(3), mercury__lexer__Token_3, (MR_Integer) 1)));
+
+              {
+                mercury__lexer__Var_45 = (MR_Word) MR_mkword(MR_mktag(1), MR_new_object(MR_Word, ((MR_Integer) 2 * sizeof(MR_Word)), NULL, NULL));
+                MR_hl_field(MR_mktag(1), mercury__lexer__Var_45, 0) = ((MR_Box) (mercury__lexer__Name_80));
+                MR_hl_field(MR_mktag(1), mercury__lexer__Var_45, 1) = ((MR_Box) (mercury__lexer__Var_46));
+              }
+              {
+                mercury__lexer__Var_43 = (MR_Word) MR_mkword(MR_mktag(1), MR_new_object(MR_Word, ((MR_Integer) 2 * sizeof(MR_Word)), NULL, NULL));
+                MR_hl_field(MR_mktag(1), mercury__lexer__Var_43, 0) = ((MR_Box) ((MR_String) "implementation-defined \140\044"));
+                MR_hl_field(MR_mktag(1), mercury__lexer__Var_43, 1) = ((MR_Box) (mercury__lexer__Var_45));
+              }
+              {
+                *mercury__lexer__String_4 = mercury__string__append_list_1_f_0(mercury__lexer__Var_43);
+              }
+            }
+            break;
+          case (MR_Integer) 4:
+            {
+              MR_Char mercury__lexer__JunkChar_17 = ((MR_Char) (MR_Word) (MR_hl_field(MR_mktag(3), mercury__lexer__Token_3, (MR_Integer) 1)));
+              MR_Integer mercury__lexer__Code_18;
+              MR_String mercury__lexer__Hex_19;
+              MR_Word mercury__lexer__Var_37;
+              MR_Word mercury__lexer__Var_39;
+              MR_Word mercury__lexer__Var_40;
+              MR_Word mercury__lexer__Var_42;
+
+{
+#define MR_PROC_LABEL mercury__lexer__token_to_string_2_p_0
+
+	MR_Char Character;
+	MR_Integer Int;
+
+	Character =  mercury__lexer__JunkChar_17 ;
+		{
+
+    Int = (MR_UnsignedChar) Character;
+
+
+		;}
+#undef MR_PROC_LABEL
+	 mercury__lexer__Code_18  = Int;
+}
+              {
+                mercury__string__int_to_base_string_3_p_0(mercury__lexer__Code_18, (MR_Integer) 16, &mercury__lexer__Hex_19);
+              }
+              mercury__lexer__Var_42 = (MR_Word) MR_mkword(MR_mktag(0), MR_mkbody((MR_Integer) 0));
+              mercury__lexer__Var_40 = (MR_Word) MR_mkword(MR_mktag(1), &mercury__lexer_scalar_common_4[3]);
+              {
+                mercury__lexer__Var_39 = (MR_Word) MR_mkword(MR_mktag(1), MR_new_object(MR_Word, ((MR_Integer) 2 * sizeof(MR_Word)), NULL, NULL));
+                MR_hl_field(MR_mktag(1), mercury__lexer__Var_39, 0) = ((MR_Box) (mercury__lexer__Hex_19));
+                MR_hl_field(MR_mktag(1), mercury__lexer__Var_39, 1) = ((MR_Box) (mercury__lexer__Var_40));
+              }
+              {
+                mercury__lexer__Var_37 = (MR_Word) MR_mkword(MR_mktag(1), MR_new_object(MR_Word, ((MR_Integer) 2 * sizeof(MR_Word)), NULL, NULL));
+                MR_hl_field(MR_mktag(1), mercury__lexer__Var_37, 0) = ((MR_Box) ((MR_String) "illegal character <<0x"));
+                MR_hl_field(MR_mktag(1), mercury__lexer__Var_37, 1) = ((MR_Box) (mercury__lexer__Var_39));
+              }
+              {
+                *mercury__lexer__String_4 = mercury__string__append_list_1_f_0(mercury__lexer__Var_37);
+              }
+            }
+            break;
+          case (MR_Integer) 5:
+            {
+              MR_String mercury__lexer__Message_22 = ((MR_String) (MR_hl_field(MR_mktag(3), mercury__lexer__Token_3, (MR_Integer) 1)));
+              MR_Word mercury__lexer__Var_29;
+              MR_Word mercury__lexer__Var_31;
+              MR_Word mercury__lexer__Var_32 = (MR_Word) MR_mkword(MR_mktag(1), &mercury__lexer_scalar_common_4[0]);
+              MR_Word mercury__lexer__Var_34 = (MR_Word) MR_mkword(MR_mktag(0), MR_mkbody((MR_Integer) 0));
+
+              {
+                mercury__lexer__Var_31 = (MR_Word) MR_mkword(MR_mktag(1), MR_new_object(MR_Word, ((MR_Integer) 2 * sizeof(MR_Word)), NULL, NULL));
+                MR_hl_field(MR_mktag(1), mercury__lexer__Var_31, 0) = ((MR_Box) (mercury__lexer__Message_22));
+                MR_hl_field(MR_mktag(1), mercury__lexer__Var_31, 1) = ((MR_Box) (mercury__lexer__Var_32));
+              }
+              {
+                mercury__lexer__Var_29 = (MR_Word) MR_mkword(MR_mktag(1), MR_new_object(MR_Word, ((MR_Integer) 2 * sizeof(MR_Word)), NULL, NULL));
+                MR_hl_field(MR_mktag(1), mercury__lexer__Var_29, 0) = ((MR_Box) ((MR_String) "illegal token ("));
+                MR_hl_field(MR_mktag(1), mercury__lexer__Var_29, 1) = ((MR_Box) (mercury__lexer__Var_31));
+              }
+              {
+                *mercury__lexer__String_4 = mercury__string__append_list_1_f_0(mercury__lexer__Var_29);
+              }
+            }
+            break;
+          case (MR_Integer) 6:
+            {
+              MR_Word mercury__lexer__IO_Error_20 = ((MR_Word) (MR_hl_field(MR_mktag(3), mercury__lexer__Token_3, (MR_Integer) 1)));
+              MR_String mercury__lexer__IO_ErrorMessage_21 = (MR_String) mercury__lexer__IO_Error_20;
+
+              {
+                mercury__string__append_3_p_2((MR_String) "I/O error: ", mercury__lexer__IO_ErrorMessage_21, mercury__lexer__String_4);
+              }
+            }
+            break;
+          case (MR_Integer) 7:
+            {
+              MR_Word mercury__lexer__Var_23;
+              MR_Word mercury__lexer__Var_25;
+              MR_Word mercury__lexer__Var_26;
+              MR_Word mercury__lexer__Var_28;
+              MR_Word mercury__lexer__Integer_81 = ((MR_Word) (MR_hl_field(MR_mktag(3), mercury__lexer__Token_3, (MR_Integer) 1)));
+              MR_String mercury__lexer__IntString_82;
+
+              {
+                mercury__lexer__IntString_82 = mercury__integer__to_base_string_2_f_0(mercury__lexer__Integer_81, (MR_Integer) 10);
+              }
+              mercury__lexer__Var_28 = (MR_Word) MR_mkword(MR_mktag(0), MR_mkbody((MR_Integer) 0));
+              mercury__lexer__Var_26 = (MR_Word) MR_mkword(MR_mktag(1), &mercury__lexer_scalar_common_4[2]);
+              {
+                mercury__lexer__Var_25 = (MR_Word) MR_mkword(MR_mktag(1), MR_new_object(MR_Word, ((MR_Integer) 2 * sizeof(MR_Word)), NULL, NULL));
+                MR_hl_field(MR_mktag(1), mercury__lexer__Var_25, 0) = ((MR_Box) (mercury__lexer__IntString_82));
+                MR_hl_field(MR_mktag(1), mercury__lexer__Var_25, 1) = ((MR_Box) (mercury__lexer__Var_26));
+              }
+              {
+                mercury__lexer__Var_23 = (MR_Word) MR_mkword(MR_mktag(1), MR_new_object(MR_Word, ((MR_Integer) 2 * sizeof(MR_Word)), NULL, NULL));
+                MR_hl_field(MR_mktag(1), mercury__lexer__Var_23, 0) = ((MR_Box) ((MR_String) "integer \140"));
+                MR_hl_field(MR_mktag(1), mercury__lexer__Var_23, 1) = ((MR_Box) (mercury__lexer__Var_25));
+              }
+              {
+                *mercury__lexer__String_4 = mercury__string__append_list_1_f_0(mercury__lexer__Var_23);
+              }
+            }
+            break;
+        }
+        break;
+    }
+  }
+}
+
+void MR_CALL 
+mercury__lexer__string_get_token_list_4_p_0(
+  MR_String mercury__lexer__String_5,
+  MR_Word * mercury__lexer__Tokens_6,
+  MR_Word mercury__lexer__STATE_VARIABLE_Posn_0_9,
+  MR_Word * mercury__lexer__STATE_VARIABLE_Posn_10)
+{
+  {
+    MR_bool mercury__lexer__succeeded;
+    MR_Integer mercury__lexer__Len_8;
+
+{
+#define MR_PROC_LABEL mercury__lexer__string_get_token_list_4_p_0
+
+	MR_String Str;
+	MR_Integer Length;
+
+	Str =  mercury__lexer__String_5 ;
+		{
+
+    Length = strlen(Str);
+
+
+		;}
+#undef MR_PROC_LABEL
+	 mercury__lexer__Len_8  = Length;
+}
+    {
+      mercury__lexer__string_get_token_list_max_5_p_0(mercury__lexer__String_5, mercury__lexer__Len_8, mercury__lexer__Tokens_6, mercury__lexer__STATE_VARIABLE_Posn_0_9, mercury__lexer__STATE_VARIABLE_Posn_10);
+    }
+  }
+}
+
+void MR_CALL 
+mercury__lexer__string_get_token_list_max_5_p_0(
+  MR_String mercury__lexer__String_6,
+  MR_Integer mercury__lexer__Len_7,
+  MR_Word * mercury__lexer__Tokens_8,
+  MR_Word mercury__lexer__STATE_VARIABLE_Posn_0_26,
+  MR_Word * mercury__lexer__STATE_VARIABLE_Posn_27)
+{
+  {
+    MR_bool mercury__lexer__succeeded;
+    MR_Word mercury__lexer__Token_10;
+    MR_Integer mercury__lexer__Context_11;
+    MR_Word mercury__lexer__STATE_VARIABLE_Posn_28_28;
+
+    {
+      mercury__lexer__string_get_token_6_p_0(mercury__lexer__String_6, mercury__lexer__Len_7, &mercury__lexer__Token_10, &mercury__lexer__Context_11, mercury__lexer__STATE_VARIABLE_Posn_0_26, &mercury__lexer__STATE_VARIABLE_Posn_28_28);
+    }
+    switch (MR_tag((MR_Word) mercury__lexer__Token_10)) {
+      default: /*NOTREACHED*/ MR_assert(0);
+      case (MR_Integer) 0:
+        switch (MR_unmkbody(mercury__lexer__Token_10)) {
+          default: /*NOTREACHED*/ MR_assert(0);
+          case (MR_Integer) 0:
+          case (MR_Integer) 1:
+          case (MR_Integer) 2:
+          case (MR_Integer) 3:
+          case (MR_Integer) 4:
+          case (MR_Integer) 5:
+          case (MR_Integer) 6:
+          case (MR_Integer) 7:
+          case (MR_Integer) 8:
+            {
+              MR_Word * mercury__lexer__AddrTokens1_31;
+
+              {
+                MR_Word base;
+                base = (MR_Word) MR_mkword(MR_mktag(1), MR_new_object(MR_Word, ((MR_Integer) 3 * sizeof(MR_Word)), NULL, NULL));
+                *mercury__lexer__Tokens_8 = base;
+                MR_hl_field(MR_mktag(1), base, 0) = ((MR_Box) (mercury__lexer__Token_10));
+                MR_hl_field(MR_mktag(1), base, 1) = ((MR_Box) (mercury__lexer__Context_11));
+                MR_hl_field(MR_mktag(1), base, 2) = NULL;
+              }
+              mercury__lexer__AddrTokens1_31 = (MR_Word *) &(MR_hl_field(MR_mktag(1), *mercury__lexer__Tokens_8, (MR_Integer) 2));
+              {
+                mercury__lexer__LCMCpr_string_get_token_list_max_1_5_p_0(mercury__lexer__String_6, mercury__lexer__Len_7, mercury__lexer__AddrTokens1_31, mercury__lexer__STATE_VARIABLE_Posn_28_28, mercury__lexer__STATE_VARIABLE_Posn_27);
+              }
+            }
+            break;
+          case (MR_Integer) 9:
+            {
+              MR_Word mercury__lexer__Var_30 = (MR_Word) MR_mkword(MR_mktag(0), MR_mkbody((MR_Integer) 0));
+
+              {
+                MR_Word base;
+                base = (MR_Word) MR_mkword(MR_mktag(1), MR_new_object(MR_Word, ((MR_Integer) 3 * sizeof(MR_Word)), NULL, NULL));
+                *mercury__lexer__Tokens_8 = base;
+                MR_hl_field(MR_mktag(1), base, 0) = ((MR_Box) (mercury__lexer__Token_10));
+                MR_hl_field(MR_mktag(1), base, 1) = ((MR_Box) (mercury__lexer__Context_11));
+                MR_hl_field(MR_mktag(1), base, 2) = ((MR_Box) (mercury__lexer__Var_30));
+              }
+              *mercury__lexer__STATE_VARIABLE_Posn_27 = mercury__lexer__STATE_VARIABLE_Posn_28_28;
+            }
+            break;
+          case (MR_Integer) 10:
+            {
+              *mercury__lexer__Tokens_8 = (MR_Word) MR_mkword(MR_mktag(0), MR_mkbody((MR_Integer) 0));
+              *mercury__lexer__STATE_VARIABLE_Posn_27 = mercury__lexer__STATE_VARIABLE_Posn_28_28;
+            }
+            break;
+        }
+        break;
+      case (MR_Integer) 1:
+      case (MR_Integer) 2:
+        {
+          MR_Word * mercury__lexer__AddrTokens1_31;
+
+          {
+            MR_Word base;
+            base = (MR_Word) MR_mkword(MR_mktag(1), MR_new_object(MR_Word, ((MR_Integer) 3 * sizeof(MR_Word)), NULL, NULL));
+            *mercury__lexer__Tokens_8 = base;
+            MR_hl_field(MR_mktag(1), base, 0) = ((MR_Box) (mercury__lexer__Token_10));
+            MR_hl_field(MR_mktag(1), base, 1) = ((MR_Box) (mercury__lexer__Context_11));
+            MR_hl_field(MR_mktag(1), base, 2) = NULL;
+          }
+          mercury__lexer__AddrTokens1_31 = (MR_Word *) &(MR_hl_field(MR_mktag(1), *mercury__lexer__Tokens_8, (MR_Integer) 2));
+          {
+            mercury__lexer__LCMCpr_string_get_token_list_max_1_5_p_0(mercury__lexer__String_6, mercury__lexer__Len_7, mercury__lexer__AddrTokens1_31, mercury__lexer__STATE_VARIABLE_Posn_28_28, mercury__lexer__STATE_VARIABLE_Posn_27);
+          }
+        }
+        break;
+      case (MR_Integer) 3:
+        switch (((MR_Integer) (MR_Word) (MR_hl_field(MR_mktag(3), mercury__lexer__Token_10, (MR_Integer) 0)))) {
+          default: /*NOTREACHED*/ MR_assert(0);
+          case (MR_Integer) 0:
+          case (MR_Integer) 1:
+          case (MR_Integer) 2:
+          case (MR_Integer) 3:
+          case (MR_Integer) 4:
+          case (MR_Integer) 7:
+            {
+              MR_Word * mercury__lexer__AddrTokens1_31;
+
+              {
+                MR_Word base;
+                base = (MR_Word) MR_mkword(MR_mktag(1), MR_new_object(MR_Word, ((MR_Integer) 3 * sizeof(MR_Word)), NULL, NULL));
+                *mercury__lexer__Tokens_8 = base;
+                MR_hl_field(MR_mktag(1), base, 0) = ((MR_Box) (mercury__lexer__Token_10));
+                MR_hl_field(MR_mktag(1), base, 1) = ((MR_Box) (mercury__lexer__Context_11));
+                MR_hl_field(MR_mktag(1), base, 2) = NULL;
+              }
+              mercury__lexer__AddrTokens1_31 = (MR_Word *) &(MR_hl_field(MR_mktag(1), *mercury__lexer__Tokens_8, (MR_Integer) 2));
+              {
+                mercury__lexer__LCMCpr_string_get_token_list_max_1_5_p_0(mercury__lexer__String_6, mercury__lexer__Len_7, mercury__lexer__AddrTokens1_31, mercury__lexer__STATE_VARIABLE_Posn_28_28, mercury__lexer__STATE_VARIABLE_Posn_27);
+              }
+            }
+            break;
+          case (MR_Integer) 5:
+          case (MR_Integer) 6:
+            {
+              MR_Word mercury__lexer__Var_30 = (MR_Word) MR_mkword(MR_mktag(0), MR_mkbody((MR_Integer) 0));
+
+              {
+                MR_Word base;
+                base = (MR_Word) MR_mkword(MR_mktag(1), MR_new_object(MR_Word, ((MR_Integer) 3 * sizeof(MR_Word)), NULL, NULL));
+                *mercury__lexer__Tokens_8 = base;
+                MR_hl_field(MR_mktag(1), base, 0) = ((MR_Box) (mercury__lexer__Token_10));
+                MR_hl_field(MR_mktag(1), base, 1) = ((MR_Box) (mercury__lexer__Context_11));
+                MR_hl_field(MR_mktag(1), base, 2) = ((MR_Box) (mercury__lexer__Var_30));
+              }
+              *mercury__lexer__STATE_VARIABLE_Posn_27 = mercury__lexer__STATE_VARIABLE_Posn_28_28;
+            }
+            break;
+        }
+        break;
+    }
+  }
+}
+
+void MR_CALL 
+mercury__lexer__get_token_list_4_p_0(
+  MR_Word mercury__lexer__Stream_5,
+  MR_Word * mercury__lexer__Tokens_6)
+{
+  {
+    MR_bool mercury__lexer__succeeded;
+    MR_Word mercury__lexer__Token_8;
+    MR_Integer mercury__lexer__Context_9;
+
+    {
+      mercury__lexer__get_token_5_p_0(mercury__lexer__Stream_5, &mercury__lexer__Token_8, &mercury__lexer__Context_9);
+    }
+    {
+      mercury__lexer__get_token_list_2_6_p_0(mercury__lexer__Stream_5, mercury__lexer__Token_8, mercury__lexer__Context_9, mercury__lexer__Tokens_6);
+    }
+  }
+}
+
+void MR_CALL 
+mercury__lexer__get_token_list_3_p_0(
+  MR_Word * mercury__lexer__Tokens_4)
+{
+  {
+    MR_bool mercury__lexer__succeeded;
+    MR_Word mercury__lexer__Stream_6;
+    MR_Box mercury__lexer__V_4_13;
+    MR_Word mercury__lexer__Token_19;
+    MR_Integer mercury__lexer__Context_20;
+
+{
+#define MR_PROC_LABEL mercury__lexer__get_token_list_3_p_0
+
+	MercuryFilePtr Stream;
+
+		{
+
+    Stream = mercury_current_text_input();
+
+
+		;}
+#undef MR_PROC_LABEL
+	 mercury__lexer__V_4_13  = (MR_Box) Stream;
+}
+    mercury__lexer__Stream_6 = (MR_Word) mercury__lexer__V_4_13;
+    {
+      mercury__lexer__get_token_5_p_0(mercury__lexer__Stream_6, &mercury__lexer__Token_19, &mercury__lexer__Context_20);
+    }
+    {
+      mercury__lexer__get_token_list_2_6_p_0(mercury__lexer__Stream_6, mercury__lexer__Token_19, mercury__lexer__Context_20, mercury__lexer__Tokens_4);
+    }
+  }
+}
+
+void mercury__lexer__init(void)
+{
+}
+
+void mercury__lexer__init_type_tables(void)
+{
+	static MR_bool initialised = MR_FALSE;
+	if (initialised) return;
+	initialised = MR_TRUE;
+
+	MR_register_type_ctor_info(&mercury__lexer__lexer__type_ctor_info_get_token_action_0);
+	MR_register_type_ctor_info(&mercury__lexer__lexer__type_ctor_info_integer_base_0);
+	MR_register_type_ctor_info(&mercury__lexer__lexer__type_ctor_info_integer_size_0);
+	MR_register_type_ctor_info(&mercury__lexer__lexer__type_ctor_info_last_digit_is_underscore_0);
+	MR_register_type_ctor_info(&mercury__lexer__lexer__type_ctor_info_maybe_have_valid_token_0);
+	MR_register_type_ctor_info(&mercury__lexer__lexer__type_ctor_info_offset_0);
+	MR_register_type_ctor_info(&mercury__lexer__lexer__type_ctor_info_scanned_past_whitespace_0);
+	MR_register_type_ctor_info(&mercury__lexer__lexer__type_ctor_info_signedness_0);
+	MR_register_type_ctor_info(&mercury__lexer__lexer__type_ctor_info_string_token_context_0);
+	MR_register_type_ctor_info(&mercury__lexer__lexer__type_ctor_info_token_0);
+	MR_register_type_ctor_info(&mercury__lexer__lexer__type_ctor_info_token_context_0);
+	MR_register_type_ctor_info(&mercury__lexer__lexer__type_ctor_info_token_list_0);
+}
+
+void mercury__lexer__init_debugger(void)
+{
+	MR_fatal_error("debugger initialization in MLDS grade");
+}
+
+// Ensure everything is compiled with the same grade.
+const char *mercury__lexer__grade_check(void)
+{
+    return &MR_GRADE_VAR;
+}
+
+/* :- end_module lexer. */

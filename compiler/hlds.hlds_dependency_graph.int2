@@ -1,0 +1,23 @@
+:- module (hlds.hlds_dependency_graph).
+:- interface.
+:- import_module io.
+:- import_module libs.
+:- import_module list.
+:- import_module set.
+:- import_module (hlds.hlds_module).
+:- import_module (hlds.hlds_pred).
+:- import_module (libs.dependency_graph).
+:- type hlds_bottom_up_dependency_sccs == libs.dependency_graph.bottom_up_dependency_sccs(hlds.hlds_pred.pred_proc_id).
+:- type hlds_dependency_graph == libs.dependency_graph.dependency_graph(hlds.hlds_pred.pred_proc_id).
+:- type hlds_dependency_graph_key == libs.dependency_graph.dependency_graph_key(hlds.hlds_pred.pred_proc_id).
+:- type hlds_dependency_info == libs.dependency_graph.dependency_info(hlds.hlds_pred.pred_proc_id).
+:- type include_imported
+    --->    include_imported 
+    ;       do_not_include_imported .
+:- type scc_with_entry_points
+    --->    scc_with_entry_points(((hlds.hlds_dependency_graph).swep_scc_procs) :: set.set(hlds.hlds_pred.pred_proc_id), ((hlds.hlds_dependency_graph).swep_called_from_higher_sccs) :: set.set(hlds.hlds_pred.pred_proc_id), ((hlds.hlds_dependency_graph).swep_exported_procs) :: set.set(hlds.hlds_pred.pred_proc_id)).
+:- type what_dependency_edges
+    --->    only_tail_calls 
+    ;       all_calls_and_unifies .
+:- implementation.
+:- typeclass dependency_node(T).
