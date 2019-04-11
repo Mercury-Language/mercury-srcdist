@@ -1,0 +1,10 @@
+:- module (ml_backend.ml_unused_assign).
+:- interface.
+:- import_module list.
+:- import_module map.
+:- import_module set.
+:- import_module (ml_backend.mlds).
+:- type seen_at_label_map == map.map(ml_backend.mlds.mlds_label, ml_backend.ml_unused_assign.seen_set).
+:- type seen_set == set.set(ml_backend.mlds.mlds_local_var_name).
+:- pred optimize_away_unused_assigns_in_proc_body(list.list(ml_backend.mlds.mlds_local_var_name), ml_backend.ml_unused_assign.seen_at_label_map, list.list(ml_backend.mlds.mlds_local_var_defn), list.list(ml_backend.mlds.mlds_local_var_defn), list.list(ml_backend.mlds.mlds_function_defn), list.list(ml_backend.mlds.mlds_function_defn), list.list(ml_backend.mlds.mlds_stmt), list.list(ml_backend.mlds.mlds_stmt)).
+:- mode optimize_away_unused_assigns_in_proc_body((builtin.in), (builtin.in), (builtin.in), (builtin.out), (builtin.in), (builtin.out), (builtin.in), (builtin.out)) is det.
