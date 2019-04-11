@@ -1,0 +1,34 @@
+:- module (check_hlds.typecheck_info).
+:- interface.
+:- import_module bool.
+:- import_module hlds.
+:- import_module list.
+:- import_module map.
+:- import_module maybe.
+:- import_module mdbcomp.
+:- import_module parse_tree.
+:- import_module (hlds.hlds_class).
+:- import_module (hlds.hlds_data).
+:- import_module (hlds.hlds_module).
+:- import_module (hlds.hlds_pred).
+:- import_module (hlds.pred_table).
+:- import_module (hlds.status).
+:- import_module (mdbcomp.sym_name).
+:- import_module (parse_tree.error_util).
+:- import_module (parse_tree.prog_data).
+:- type cons_type_info
+    --->    cons_type_info(((check_hlds.typecheck_info).cti_varset) :: parse_tree.prog_data.tvarset, ((check_hlds.typecheck_info).cti_exit_tvars) :: parse_tree.prog_data.existq_tvars, ((check_hlds.typecheck_info).cti_result_type) :: parse_tree.prog_data.mer_type, ((check_hlds.typecheck_info).cti_arg_types) :: list.list(parse_tree.prog_data.mer_type), ((check_hlds.typecheck_info).cti_constraints) :: hlds.hlds_class.hlds_constraints, ((check_hlds.typecheck_info).cti_source) :: check_hlds.typecheck_info.cons_type_info_source).
+:- type cons_type_info_source
+    --->    source_type(parse_tree.prog_data.type_ctor)
+    ;       source_builtin_type(string)
+    ;       source_get_field_access(parse_tree.prog_data.type_ctor)
+    ;       source_set_field_access(parse_tree.prog_data.type_ctor)
+    ;       source_apply(string)
+    ;       source_pred(hlds.hlds_pred.pred_id).
+:- type overloaded_symbol
+    --->    overloaded_pred(parse_tree.prog_data.simple_call_id, list.list(hlds.hlds_pred.pred_id))
+    ;       overloaded_func(parse_tree.prog_data.cons_id, list.list(check_hlds.typecheck_info.cons_type_info_source)).
+:- type overloaded_symbol_map == map.map(check_hlds.typecheck_info.overloaded_symbol, list.list(parse_tree.prog_data.prog_context)).
+:- type type_error_clause_context
+    --->    type_error_clause_context(((check_hlds.typecheck_info).tecc_module_info) :: hlds.hlds_module.module_info, ((check_hlds.typecheck_info).tecc_pred_id) :: hlds.hlds_pred.pred_id, ((check_hlds.typecheck_info).tecc_pred_markers) :: hlds.hlds_pred.pred_markers, ((check_hlds.typecheck_info).tecc_clause_num) :: int, ((check_hlds.typecheck_info).tecc_clause_context) :: parse_tree.prog_data.prog_context, ((check_hlds.typecheck_info).tecc_varset) :: parse_tree.prog_data.prog_varset).
+:- type typecheck_info.

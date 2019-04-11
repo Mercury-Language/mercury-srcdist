@@ -1,0 +1,9 @@
+:- module (ml_backend.mlds_to_java).
+:- interface.
+:- import_module bool.
+:- import_module hlds.
+:- import_module io.
+:- import_module (hlds.hlds_module).
+:- import_module (ml_backend.mlds).
+:- pred output_java_mlds(hlds.hlds_module.module_info, ml_backend.mlds.mlds, bool.bool, io.io, io.io).
+:- mode output_java_mlds((builtin.in), (builtin.in), (builtin.out), (builtin.di), (builtin.uo)) is det.
