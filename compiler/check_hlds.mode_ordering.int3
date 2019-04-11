@@ -1,0 +1,4 @@
+:- module (check_hlds.mode_ordering).
+:- interface.
+:- type pred_constraint_info.
+:- type pred_constraint_map.

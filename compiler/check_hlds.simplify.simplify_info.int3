@@ -1,0 +1,7 @@
+:- module ((check_hlds.simplify).simplify_info).
+:- interface.
+:- type innermost_proc.
+:- type maybe_allow_messages
+	where	type_is_abstract_enum(1).
+:- type simplify_info.
+:- type simplify_nested_context.
