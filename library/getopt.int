@@ -1,0 +1,89 @@
+:- module getopt.
+:- interface.
+:- import_module bool.
+:- import_module char.
+:- import_module list.
+:- import_module map.
+:- import_module maybe.
+:- import_module set.
+:- type maybe_option_table(OptionType)
+    --->    ok(getopt.option_table(OptionType))
+    ;       error(string).
+:- type maybe_option_table_se(OptionType)
+    --->    ok(getopt.option_table(OptionType))
+    ;       error(getopt.option_error(OptionType)).
+:- type option_data
+    --->    bool(bool.bool)
+    ;       int(int)
+    ;       string(string)
+    ;       maybe_int(maybe.maybe(int))
+    ;       maybe_string(maybe.maybe(string))
+    ;       accumulating(list.list(string))
+    ;       special 
+    ;       bool_special 
+    ;       int_special 
+    ;       string_special 
+    ;       maybe_string_special .
+:- type option_error(OptionType)
+    --->    unrecognized_option(string)
+    ;       option_error(OptionType, string, getopt.option_error_reason).
+:- type option_error_reason
+    --->    unknown_type 
+    ;       requires_argument 
+    ;       does_not_allow_argument(string)
+    ;       cannot_negate 
+    ;       special_handler_failed 
+    ;       special_handler_missing 
+    ;       special_handler_error(string)
+    ;       requires_numeric_argument(string).
+:- type option_ops(OptionType)
+    --->    option_ops(pred(char.char, OptionType), pred(string, OptionType), pred(OptionType, getopt.option_data))
+    ;       option_ops(pred(char.char, OptionType), pred(string, OptionType), pred(OptionType, getopt.option_data), pred(OptionType, getopt.special_data, getopt.option_table(OptionType), getopt.maybe_option_table(OptionType)))
+    ;       option_ops_multi(pred(char.char, OptionType), pred(string, OptionType), pred(OptionType, getopt.option_data))
+    ;       option_ops_multi(pred(char.char, OptionType), pred(string, OptionType), pred(OptionType, getopt.option_data), pred(OptionType, getopt.special_data, getopt.option_table(OptionType), getopt.maybe_option_table(OptionType))).
+:- type option_ops_track(OptionType)
+    --->    option_ops_track(pred(char.char, OptionType), pred(string, OptionType), pred(OptionType, getopt.special_data, getopt.option_table(OptionType), getopt.maybe_option_table(OptionType), set.set(OptionType))).
+:- type option_table(OptionType) == map.map(OptionType, getopt.option_data).
+:- type special_data
+    --->    none 
+    ;       bool(bool.bool)
+    ;       int(int)
+    ;       string(string)
+    ;       maybe_string(maybe.maybe(string)).
+:- inst (option_ops) for getopt.option_ops/1 == bound(option_ops((pred((builtin.in), (builtin.out)) is semidet), (pred((builtin.in), (builtin.out)) is semidet), (pred((builtin.out), (builtin.out)) is nondet)) ; option_ops((pred((builtin.in), (builtin.out)) is semidet), (pred((builtin.in), (builtin.out)) is semidet), (pred((builtin.out), (builtin.out)) is nondet), (pred((builtin.in), (builtin.in), (builtin.in), (builtin.out)) is semidet)) ; option_ops_multi((pred((builtin.in), (builtin.out)) is semidet), (pred((builtin.in), (builtin.out)) is semidet), (pred((builtin.out), (builtin.out)) is multi)) ; option_ops_multi((pred((builtin.in), (builtin.out)) is semidet), (pred((builtin.in), (builtin.out)) is semidet), (pred((builtin.out), (builtin.out)) is multi), (pred((builtin.in), (builtin.in), (builtin.in), (builtin.out)) is semidet))).
+:- inst (option_ops_track) for getopt.option_ops_track/1 == bound(option_ops_track((pred((builtin.in), (builtin.out)) is semidet), (pred((builtin.in), (builtin.out)) is semidet), (pred((builtin.in), (builtin.in), (builtin.in), (builtin.out), (builtin.out)) is semidet))).
+:- pred init_option_table(pred(OptionType, getopt.option_data), getopt.option_table(OptionType)).
+:- mode init_option_table(builtin.in((pred((builtin.out), (builtin.out)) is nondet)), (builtin.out)) is det.
+:- pred init_option_table_multi(pred(OptionType, getopt.option_data), getopt.option_table(OptionType)).
+:- mode init_option_table_multi(builtin.in((pred((builtin.out), (builtin.out)) is multi)), (builtin.out)) is det.
+:- pred lookup_accumulating_option(getopt.option_table(Option), Option, list.list(string)).
+:- mode lookup_accumulating_option((builtin.in), (builtin.in), (builtin.out)) is det.
+:- func lookup_accumulating_option(getopt.option_table(Option), Option) = list.list(string).
+:- pred lookup_bool_option(getopt.option_table(Option), Option, bool.bool).
+:- mode lookup_bool_option((builtin.in), (builtin.in), (builtin.out)) is det.
+:- func lookup_bool_option(getopt.option_table(Option), Option) = bool.bool.
+:- pred lookup_int_option(getopt.option_table(Option), Option, int).
+:- mode lookup_int_option((builtin.in), (builtin.in), (builtin.out)) is det.
+:- func lookup_int_option(getopt.option_table(Option), Option) = int.
+:- pred lookup_maybe_int_option(getopt.option_table(Option), Option, maybe.maybe(int)).
+:- mode lookup_maybe_int_option((builtin.in), (builtin.in), (builtin.out)) is det.
+:- func lookup_maybe_int_option(getopt.option_table(Option), Option) = maybe.maybe(int).
+:- pred lookup_maybe_string_option(getopt.option_table(Option), Option, maybe.maybe(string)).
+:- mode lookup_maybe_string_option((builtin.in), (builtin.in), (builtin.out)) is det.
+:- func lookup_maybe_string_option(getopt.option_table(Option), Option) = maybe.maybe(string).
+:- pred lookup_string_option(getopt.option_table(Option), Option, string).
+:- mode lookup_string_option((builtin.in), (builtin.in), (builtin.out)) is det.
+:- func lookup_string_option(getopt.option_table(Option), Option) = string.
+:- func option_error_to_string(getopt.option_error(OptionType)) = string.
+:- pred process_options(getopt.option_ops(OptionType), list.list(string), list.list(string), getopt.maybe_option_table(OptionType)).
+:- mode process_options(builtin.in((getopt.option_ops)), (builtin.in), (builtin.out), (builtin.out)) is det.
+:- pred process_options(getopt.option_ops(OptionType), list.list(string), list.list(string), list.list(string), getopt.maybe_option_table(OptionType)).
+:- mode process_options(builtin.in((getopt.option_ops)), (builtin.in), (builtin.out), (builtin.out), (builtin.out)) is det.
+:- pred process_options_se(getopt.option_ops(OptionType), list.list(string), list.list(string), getopt.maybe_option_table_se(OptionType)).
+:- mode process_options_se(builtin.in((getopt.option_ops)), (builtin.in), (builtin.out), (builtin.out)) is det.
+:- pred process_options_se(getopt.option_ops(OptionType), list.list(string), list.list(string), list.list(string), getopt.maybe_option_table_se(OptionType)).
+:- mode process_options_se(builtin.in((getopt.option_ops)), (builtin.in), (builtin.out), (builtin.out), (builtin.out)) is det.
+:- pred process_options_track(getopt.option_ops_track(OptionType), list.list(string), list.list(string), list.list(string), getopt.option_table(OptionType), getopt.maybe_option_table(OptionType), set.set(OptionType)).
+:- mode process_options_track(builtin.in((getopt.option_ops_track)), (builtin.in), (builtin.out), (builtin.out), (builtin.in), (builtin.out), (builtin.out)) is det.
+:- pred process_options_track_se(getopt.option_ops_track(OptionType), list.list(string), list.list(string), list.list(string), getopt.option_table(OptionType), getopt.maybe_option_table_se(OptionType), set.set(OptionType)).
+:- mode process_options_track_se(builtin.in((getopt.option_ops_track)), (builtin.in), (builtin.out), (builtin.out), (builtin.in), (builtin.out), (builtin.out)) is det.

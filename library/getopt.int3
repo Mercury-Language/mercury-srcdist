@@ -1,0 +1,19 @@
+:- module getopt.
+:- interface.
+:- import_module bool.
+:- import_module char.
+:- import_module list.
+:- import_module map.
+:- import_module maybe.
+:- import_module set.
+:- type maybe_option_table(OptionType).
+:- type maybe_option_table_se(OptionType).
+:- type option_data.
+:- type option_error(OptionType).
+:- type option_error_reason.
+:- type option_ops(OptionType).
+:- type option_ops_track(OptionType).
+:- type option_table(OptionType).
+:- type special_data.
+:- inst (option_ops) for getopt.option_ops/1 == bound(option_ops((pred(in, out) is semidet), (pred(in, out) is semidet), (pred(out, out) is nondet)) ; option_ops((pred(in, out) is semidet), (pred(in, out) is semidet), (pred(out, out) is nondet), (pred(in, in, in, out) is semidet)) ; option_ops_multi((pred(in, out) is semidet), (pred(in, out) is semidet), (pred(out, out) is multi)) ; option_ops_multi((pred(in, out) is semidet), (pred(in, out) is semidet), (pred(out, out) is multi), (pred(in, in, in, out) is semidet))).
+:- inst (option_ops_track) for getopt.option_ops_track/1 == bound(option_ops_track((pred(in, out) is semidet), (pred(in, out) is semidet), (pred(in, in, in, out, out) is semidet))).

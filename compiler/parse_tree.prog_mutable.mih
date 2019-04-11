@@ -1,0 +1,158 @@
+/*
+** Automatically generated from `prog_mutable.m'
+** by the Mercury compiler,
+** version rotd-2018-06-28
+** configured for x86_64-pc-linux-gnu.
+** Do not edit.
+**
+** The autoconfigured grade settings governing
+** the generation of this C file were
+**
+** TAG_BITS=2
+** UNBOXED_FLOAT=no
+** UNBOXED_INT64S=no
+** PREGENERATED_DIST=yes
+** HIGHLEVEL_CODE=yes
+**
+** END_OF_C_GRADE_INFO
+*/
+
+
+// :- module parse_tree.prog_mutable.
+// :- interface.
+
+#ifndef MR_HEADER_GUARD_parse_tree__prog_mutable
+#define MR_HEADER_GUARD_parse_tree__prog_mutable
+
+#ifdef __cplusplus
+extern "C" {
+#endif
+
+#include "mercury.h"
+
+
+#ifndef PARSE_TREE__PROG_MUTABLE_DECL_GUARD
+#define PARSE_TREE__PROG_MUTABLE_DECL_GUARD
+#include "parse_tree.mih"
+
+#endif
+
+
+
+
+extern const MR_TypeCtorInfo_Struct parse_tree__prog_mutable__parse_tree__prog_mutable__type_ctor_info_get_set_pred_kind_0;
+
+MR_Word MR_CALL 
+parse_tree__prog_mutable__constant_get_pred_decl_5_f_0(
+  MR_Word param_1,
+  MR_String param_2,
+  MR_Word param_3,
+  MR_Word param_4,
+  MR_Word param_5);
+
+MR_Word MR_CALL 
+parse_tree__prog_mutable__constant_set_pred_decl_5_f_0(
+  MR_Word param_1,
+  MR_String param_2,
+  MR_Word param_3,
+  MR_Word param_4,
+  MR_Word param_5);
+
+MR_Word MR_CALL 
+parse_tree__prog_mutable__io_get_pred_decl_5_f_0(
+  MR_Word param_1,
+  MR_String param_2,
+  MR_Word param_3,
+  MR_Word param_4,
+  MR_Word param_5);
+
+MR_Word MR_CALL 
+parse_tree__prog_mutable__io_set_pred_decl_5_f_0(
+  MR_Word param_1,
+  MR_String param_2,
+  MR_Word param_3,
+  MR_Word param_4,
+  MR_Word param_5);
+
+MR_String MR_CALL 
+parse_tree__prog_mutable__mutable_c_var_name_2_f_0(
+  MR_Word param_1,
+  MR_String param_2);
+
+MR_Word MR_CALL 
+parse_tree__prog_mutable__mutable_get_pred_sym_name_2_f_0(
+  MR_Word param_1,
+  MR_String param_2);
+
+MR_Word MR_CALL 
+parse_tree__prog_mutable__mutable_init_pred_sym_name_2_f_0(
+  MR_Word param_1,
+  MR_String param_2);
+
+MR_Word MR_CALL 
+parse_tree__prog_mutable__mutable_lock_pred_sym_name_2_f_0(
+  MR_Word param_1,
+  MR_String param_2);
+
+MR_String MR_CALL 
+parse_tree__prog_mutable__mutable_mutex_var_name_1_f_0(
+  MR_String param_1);
+
+MR_Word MR_CALL 
+parse_tree__prog_mutable__mutable_pre_init_pred_sym_name_2_f_0(
+  MR_Word param_1,
+  MR_String param_2);
+
+MR_Word MR_CALL 
+parse_tree__prog_mutable__mutable_secret_set_pred_sym_name_2_f_0(
+  MR_Word param_1,
+  MR_String param_2);
+
+MR_Word MR_CALL 
+parse_tree__prog_mutable__mutable_set_pred_sym_name_2_f_0(
+  MR_Word param_1,
+  MR_String param_2);
+
+MR_Word MR_CALL 
+parse_tree__prog_mutable__mutable_unlock_pred_sym_name_2_f_0(
+  MR_Word param_1,
+  MR_String param_2);
+
+MR_Word MR_CALL 
+parse_tree__prog_mutable__mutable_unsafe_get_pred_sym_name_2_f_0(
+  MR_Word param_1,
+  MR_String param_2);
+
+MR_Word MR_CALL 
+parse_tree__prog_mutable__mutable_unsafe_set_pred_sym_name_2_f_0(
+  MR_Word param_1,
+  MR_String param_2);
+
+MR_Word MR_CALL 
+parse_tree__prog_mutable__std_get_pred_decl_5_f_0(
+  MR_Word param_1,
+  MR_String param_2,
+  MR_Word param_3,
+  MR_Word param_4,
+  MR_Word param_5);
+
+MR_Word MR_CALL 
+parse_tree__prog_mutable__std_set_pred_decl_5_f_0(
+  MR_Word param_1,
+  MR_String param_2,
+  MR_Word param_3,
+  MR_Word param_4,
+  MR_Word param_5);
+
+void mercury__parse_tree__prog_mutable__init(void);
+void mercury__parse_tree__prog_mutable__init_type_tables(void);
+void mercury__parse_tree__prog_mutable__init_debugger(void);
+const char *mercury__parse_tree__prog_mutable__grade_check(void);
+
+#ifdef __cplusplus
+}
+#endif
+
+#endif // MR_HEADER_GUARD_parse_tree.prog_mutable
+
+// :- end_interface parse_tree.prog_mutable.
