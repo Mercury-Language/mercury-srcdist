@@ -1,0 +1,168 @@
+# vim: ts=8 sw=8 noexpandtab ft=make
+
+ifeq (x,y)
+
+
+
+mer_browser.optdate mer_browser.trans_opt_date mer_browser.err mer_browser.c_date mer_browser.java_date : mer_browser.m \
+	builtin.int \
+	mdb.int \
+	private_builtin.int
+
+
+endif # ifeq(x,y)
+
+# RULE date_file_deps
+# source group names:
+#   (unnamed)
+#   long deps
+mer_browser.optdate mer_browser.trans_opt_date mer_browser.err mer_browser.c_date mer_browser.java_date : \
+		mer_browser.m \
+	\
+		builtin.int \
+		mdb.int \
+		private_builtin.int
+
+ifeq (x,y)
+
+
+
+mer_browser.pic_o mer_browser.$O : \
+	builtin.mih \
+	mdb.mih \
+	private_builtin.mih
+
+
+endif # ifeq(x,y)
+
+# RULE objs_on_mihs
+mer_browser.pic_o mer_browser.$O : \
+		builtin.mih \
+		mdb.mih \
+		private_builtin.mih
+
+ifeq (x,y)
+
+
+
+mer_browser.mh mer_browser.mih : mer_browser.c
+
+
+endif # ifeq(x,y)
+
+# RULE mh_and_mih_on_c
+mer_browser.mh mer_browser.mih : mer_browser.c
+
+ifeq (x,y)
+
+
+
+ifeq ($(findstring java,$(GRADE)),java)
+mer_browser.module_dep : jmercury/mer_browser.java
+else
+mer_browser.module_dep : mer_browser.c
+endif
+
+
+endif # ifeq(x,y)
+
+ifeq ($(findstring java,$(GRADE)),java)
+
+# RULE module_dep_on_java
+mer_browser.module_dep : jmercury/mer_browser.java
+
+else
+
+# RULE module_dep_on_c
+mer_browser.module_dep : mer_browser.c
+
+endif # conditional fragment
+
+ifeq (x,y)
+
+
+
+mer_browser.date mer_browser.date0 : mer_browser.m \
+	builtin.int3 \
+	mdb.int3 \
+	private_builtin.int3
+
+
+endif # ifeq(x,y)
+
+# RULE self_and_parent_date_deps
+# source group names:
+#   (unnamed)
+#   long dep int3s
+mer_browser.date mer_browser.date0 : \
+		mer_browser.m \
+	\
+		builtin.int3 \
+		mdb.int3 \
+		private_builtin.int3
+
+ifeq (x,y)
+
+
+
+mer_browser.date0 : mer_browser.m \
+	builtin.int3 \
+	mdb.int3 \
+	private_builtin.int3
+
+
+endif # ifeq(x,y)
+
+# RULE self_and_parent_date0_deps
+# source group names:
+#   (unnamed)
+#   long dep int3s
+mer_browser.date0 : \
+		mer_browser.m \
+	\
+		builtin.int3 \
+		mdb.int3 \
+		private_builtin.int3
+
+ifeq (x,y)
+
+
+mer_browser.int0 : mer_browser.date0
+	@:
+mer_browser.int : mer_browser.date
+	@:
+mer_browser.int2 : mer_browser.date
+	@:
+mer_browser.int3 : mer_browser.date3
+	@:
+mer_browser.opt : mer_browser.optdate
+	@:
+mer_browser.trans_opt : mer_browser.trans_opt_date
+	@:
+
+
+endif # ifeq(x,y)
+
+mer_browser.int0 : mer_browser.date0
+	@:
+
+mer_browser.int : mer_browser.date
+	@:
+
+mer_browser.int2 : mer_browser.date
+	@:
+
+mer_browser.int3 : mer_browser.date3
+	@:
+
+mer_browser.opt : mer_browser.optdate
+	@:
+
+mer_browser.trans_opt : mer_browser.trans_opt_date
+	@:
+
+ifeq (x,y)
+
+
+endif # ifeq(x,y)
+

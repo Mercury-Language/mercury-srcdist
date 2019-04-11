@@ -1,0 +1,95 @@
+/*
+** Automatically generated from `item_util.m'
+** by the Mercury compiler,
+** version rotd-2017-07-04
+** configured for x86_64-apple-darwin13.4.0.
+** Do not edit.
+**
+** The autoconfigured grade settings governing
+** the generation of this C file were
+**
+** TAG_BITS=2
+** UNBOXED_FLOAT=no
+** PREGENERATED_DIST=yes
+** HIGHLEVEL_CODE=yes
+**
+** END_OF_C_GRADE_INFO
+*/
+
+
+/* :- module parse_tree.item_util. */
+/* :- interface. */
+
+#ifndef MR_HEADER_GUARD_parse_tree__item_util
+#define MR_HEADER_GUARD_parse_tree__item_util
+
+#ifdef __cplusplus
+extern "C" {
+#endif
+
+#include "mercury.h"
+
+
+#ifndef PARSE_TREE__ITEM_UTIL_DECL_GUARD
+#define PARSE_TREE__ITEM_UTIL_DECL_GUARD
+#include "parse_tree.mih"
+
+#endif
+
+
+
+
+extern const MR_TypeCtorInfo_Struct parse_tree__item_util__parse_tree__item_util__type_ctor_info_short_int_file_kind_0;
+
+void MR_CALL 
+parse_tree__item_util__make_abstract_typeclass_2_p_0(
+  MR_Word parse_tree__item_util__param_1,
+  MR_Word * parse_tree__item_util__param_2);
+
+void MR_CALL 
+parse_tree__item_util__maybe_make_abstract_instance_3_p_0(
+  MR_Word parse_tree__item_util__param_1,
+  MR_Word parse_tree__item_util__param_2,
+  MR_Word * parse_tree__item_util__param_3);
+
+void MR_CALL 
+parse_tree__item_util__maybe_make_abstract_type_defn_3_p_0(
+  MR_Word parse_tree__item_util__param_1,
+  MR_Word parse_tree__item_util__param_2,
+  MR_Word * parse_tree__item_util__param_3);
+
+MR_Word MR_CALL 
+parse_tree__item_util__item_needs_foreign_imports_1_f_0(
+  MR_Word parse_tree__item_util__param_1);
+
+MR_Word MR_CALL 
+parse_tree__item_util__item_needs_imports_1_f_0(
+  MR_Word parse_tree__item_util__param_1);
+
+MR_Word MR_CALL 
+parse_tree__item_util__make_instance_abstract_1_f_0(
+  MR_Word parse_tree__item_util__param_1);
+
+void MR_CALL 
+parse_tree__item_util____Compare____short_int_file_kind_0_0(
+  MR_Word * parse_tree__item_util__param_1,
+  MR_Word parse_tree__item_util__param_2,
+  MR_Word parse_tree__item_util__param_3);
+
+MR_bool MR_CALL 
+parse_tree__item_util____Unify____short_int_file_kind_0_0(
+  MR_Word parse_tree__item_util__param_1,
+  MR_Word parse_tree__item_util__param_2);
+
+void mercury__parse_tree__item_util__init(void);
+void mercury__parse_tree__item_util__init_type_tables(void);
+void mercury__parse_tree__item_util__init_debugger(void);
+const char *mercury__parse_tree__item_util__grade_check(void);
+
+#ifdef __cplusplus
+}
+#endif
+
+#endif /* MR_HEADER_GUARD_parse_tree.item_util */
+
+/* :- end_interface parse_tree.item_util. */

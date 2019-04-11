@@ -1,0 +1,691 @@
+# vim: ts=8 sw=8 noexpandtab ft=make
+
+ifeq (x,y)
+
+
+
+version_store.optdate version_store.trans_opt_date version_store.err version_store.c_date version_store.java_date : version_store.m \
+	builtin.int \
+	counter.int \
+	int.int \
+	private_builtin.int \
+	unit.int \
+	univ.int \
+	version_array.int \
+	array.int2 \
+	assoc_list.int2 \
+	bitmap.int2 \
+	bool.int2 \
+	char.int2 \
+	construct.int2 \
+	deconstruct.int2 \
+	enum.int2 \
+	integer.int2 \
+	io.int2 \
+	list.int2 \
+	map.int2 \
+	maybe.int2 \
+	ops.int2 \
+	pair.int2 \
+	pretty_printer.int2 \
+	random.int2 \
+	rtti_implementation.int2 \
+	set.int2 \
+	set_ordlist.int2 \
+	stream.int2 \
+	string.int2 \
+	term.int2 \
+	time.int2 \
+	tree234.int2 \
+	type_desc.int2
+
+
+endif # ifeq(x,y)
+
+# RULE date_file_deps
+# source group names:
+#   (unnamed)
+#   long deps
+#   short deps
+version_store.optdate version_store.trans_opt_date version_store.err version_store.c_date version_store.java_date : \
+		version_store.m \
+	\
+		builtin.int \
+		counter.int \
+		int.int \
+		private_builtin.int \
+		unit.int \
+		univ.int \
+		version_array.int \
+	\
+		array.int2 \
+		assoc_list.int2 \
+		bitmap.int2 \
+		bool.int2 \
+		char.int2 \
+		construct.int2 \
+		deconstruct.int2 \
+		enum.int2 \
+		integer.int2 \
+		io.int2 \
+		list.int2 \
+		map.int2 \
+		maybe.int2 \
+		ops.int2 \
+		pair.int2 \
+		pretty_printer.int2 \
+		random.int2 \
+		rtti_implementation.int2 \
+		set.int2 \
+		set_ordlist.int2 \
+		stream.int2 \
+		string.int2 \
+		term.int2 \
+		time.int2 \
+		tree234.int2 \
+		type_desc.int2
+
+ifeq (x,y)
+
+
+
+version_store.$O :  \
+	array.mh \
+	assoc_list.mh \
+	benchmarking.mh \
+	bitmap.mh \
+	bool.mh \
+	builtin.mh \
+	calendar.mh \
+	char.mh \
+	construct.mh \
+	cord.mh \
+	counter.mh \
+	deconstruct.mh \
+	dir.mh \
+	enum.mh \
+	erlang_rtti_implementation.mh \
+	exception.mh \
+	float.mh \
+	int.mh \
+	integer.mh \
+	io.mh \
+	lexer.mh \
+	list.mh \
+	map.mh \
+	math.mh \
+	maybe.mh \
+	mutvar.mh \
+	ops.mh \
+	pair.mh \
+	parser.mh \
+	pretty_printer.mh \
+	private_builtin.mh \
+	random.mh \
+	require.mh \
+	rtti_implementation.mh \
+	set.mh \
+	set_ordlist.mh \
+	set_tree234.mh \
+	solutions.mh \
+	std_util.mh \
+	stm_builtin.mh \
+	store.mh \
+	stream.mh \
+	string.mh \
+	table_builtin.mh \
+	term.mh \
+	term_conversion.mh \
+	term_io.mh \
+	time.mh \
+	tree234.mh \
+	type_desc.mh \
+	uint.mh \
+	unit.mh \
+	univ.mh \
+	varset.mh \
+	version_array.mh \
+	stream.string_writer.mh \
+	string.format.mh \
+	string.parse_runtime.mh \
+	string.parse_util.mh \
+	string.to_string.mh
+
+
+endif # ifeq(x,y)
+
+# RULE machine_dependent_header_deps
+version_store.$O : \
+		array.mh \
+		assoc_list.mh \
+		benchmarking.mh \
+		bitmap.mh \
+		bool.mh \
+		builtin.mh \
+		calendar.mh \
+		char.mh \
+		construct.mh \
+		cord.mh \
+		counter.mh \
+		deconstruct.mh \
+		dir.mh \
+		enum.mh \
+		erlang_rtti_implementation.mh \
+		exception.mh \
+		float.mh \
+		int.mh \
+		integer.mh \
+		io.mh \
+		lexer.mh \
+		list.mh \
+		map.mh \
+		math.mh \
+		maybe.mh \
+		mutvar.mh \
+		ops.mh \
+		pair.mh \
+		parser.mh \
+		pretty_printer.mh \
+		private_builtin.mh \
+		random.mh \
+		require.mh \
+		rtti_implementation.mh \
+		set.mh \
+		set_ordlist.mh \
+		set_tree234.mh \
+		solutions.mh \
+		std_util.mh \
+		stm_builtin.mh \
+		store.mh \
+		stream.mh \
+		string.mh \
+		table_builtin.mh \
+		term.mh \
+		term_conversion.mh \
+		term_io.mh \
+		time.mh \
+		tree234.mh \
+		type_desc.mh \
+		uint.mh \
+		unit.mh \
+		univ.mh \
+		varset.mh \
+		version_array.mh \
+		stream.string_writer.mh \
+		string.format.mh \
+		string.parse_runtime.mh \
+		string.parse_util.mh \
+		string.to_string.mh
+
+ifeq (x,y)
+
+
+
+version_store.trans_opt_date version_store.err version_store.c_date version_store.java_date :  \
+	version_store.opt \
+	builtin.opt \
+	counter.opt \
+	int.opt \
+	private_builtin.opt \
+	unit.opt \
+	univ.opt \
+	version_array.opt
+
+
+endif # ifeq(x,y)
+
+# RULE dates_on_opts_and_int0s
+version_store.trans_opt_date version_store.err version_store.c_date version_store.java_date : \
+		version_store.opt \
+		builtin.opt \
+		counter.opt \
+		int.opt \
+		private_builtin.opt \
+		unit.opt \
+		univ.opt \
+		version_array.opt
+
+ifeq (x,y)
+
+
+
+version_store.err version_store.c_date version_store.java_date :  \
+	version_store.trans_opt \
+	builtin.trans_opt \
+	counter.trans_opt \
+	int.trans_opt \
+	private_builtin.trans_opt \
+	unit.trans_opt \
+	univ.trans_opt \
+	version_array.trans_opt
+
+
+endif # ifeq(x,y)
+
+# RULE dates_on_trans_opts'_opts
+version_store.err version_store.c_date version_store.java_date : \
+		version_store.trans_opt \
+		builtin.trans_opt \
+		counter.trans_opt \
+		int.trans_opt \
+		private_builtin.trans_opt \
+		unit.trans_opt \
+		univ.trans_opt \
+		version_array.trans_opt
+
+ifeq (x,y)
+
+
+
+version_store.pic_o version_store.$O : \
+	array.mih \
+	assoc_list.mih \
+	benchmarking.mih \
+	bitmap.mih \
+	bool.mih \
+	builtin.mih \
+	calendar.mih \
+	char.mih \
+	construct.mih \
+	cord.mih \
+	counter.mih \
+	deconstruct.mih \
+	dir.mih \
+	enum.mih \
+	erlang_rtti_implementation.mih \
+	exception.mih \
+	float.mih \
+	int.mih \
+	integer.mih \
+	io.mih \
+	lexer.mih \
+	list.mih \
+	map.mih \
+	math.mih \
+	maybe.mih \
+	mutvar.mih \
+	ops.mih \
+	pair.mih \
+	parser.mih \
+	pretty_printer.mih \
+	private_builtin.mih \
+	random.mih \
+	require.mih \
+	rtti_implementation.mih \
+	set.mih \
+	set_ordlist.mih \
+	set_tree234.mih \
+	solutions.mih \
+	std_util.mih \
+	stm_builtin.mih \
+	store.mih \
+	stream.mih \
+	string.mih \
+	table_builtin.mih \
+	term.mih \
+	term_conversion.mih \
+	term_io.mih \
+	time.mih \
+	tree234.mih \
+	type_desc.mih \
+	uint.mih \
+	unit.mih \
+	univ.mih \
+	varset.mih \
+	version_array.mih \
+	stream.string_writer.mih \
+	string.format.mih \
+	string.parse_runtime.mih \
+	string.parse_util.mih \
+	string.to_string.mih
+
+
+endif # ifeq(x,y)
+
+# RULE objs_on_mihs
+version_store.pic_o version_store.$O : \
+		array.mih \
+		assoc_list.mih \
+		benchmarking.mih \
+		bitmap.mih \
+		bool.mih \
+		builtin.mih \
+		calendar.mih \
+		char.mih \
+		construct.mih \
+		cord.mih \
+		counter.mih \
+		deconstruct.mih \
+		dir.mih \
+		enum.mih \
+		erlang_rtti_implementation.mih \
+		exception.mih \
+		float.mih \
+		int.mih \
+		integer.mih \
+		io.mih \
+		lexer.mih \
+		list.mih \
+		map.mih \
+		math.mih \
+		maybe.mih \
+		mutvar.mih \
+		ops.mih \
+		pair.mih \
+		parser.mih \
+		pretty_printer.mih \
+		private_builtin.mih \
+		random.mih \
+		require.mih \
+		rtti_implementation.mih \
+		set.mih \
+		set_ordlist.mih \
+		set_tree234.mih \
+		solutions.mih \
+		std_util.mih \
+		stm_builtin.mih \
+		store.mih \
+		stream.mih \
+		string.mih \
+		table_builtin.mih \
+		term.mih \
+		term_conversion.mih \
+		term_io.mih \
+		time.mih \
+		tree234.mih \
+		type_desc.mih \
+		uint.mih \
+		unit.mih \
+		univ.mih \
+		varset.mih \
+		version_array.mih \
+		stream.string_writer.mih \
+		string.format.mih \
+		string.parse_runtime.mih \
+		string.parse_util.mih \
+		string.to_string.mih
+
+ifeq (x,y)
+
+
+
+version_store.mh version_store.mih : version_store.c
+
+
+endif # ifeq(x,y)
+
+# RULE mh_and_mih_on_c
+version_store.mh version_store.mih : version_store.c
+
+ifeq (x,y)
+
+
+
+ifeq ($(findstring java,$(GRADE)),java)
+version_store.module_dep : jmercury/version_store.java
+else
+version_store.module_dep : version_store.c
+endif
+
+
+endif # ifeq(x,y)
+
+ifeq ($(findstring java,$(GRADE)),java)
+
+# RULE module_dep_on_java
+version_store.module_dep : jmercury/version_store.java
+
+else
+
+# RULE module_dep_on_c
+version_store.module_dep : version_store.c
+
+endif # conditional fragment
+
+ifeq (x,y)
+
+
+
+version_store.date version_store.date0 : version_store.m \
+	builtin.int3 \
+	counter.int3 \
+	int.int3 \
+	private_builtin.int3 \
+	unit.int3 \
+	univ.int3 \
+	version_array.int3 \
+	array.int3 \
+	assoc_list.int3 \
+	bitmap.int3 \
+	bool.int3 \
+	char.int3 \
+	construct.int3 \
+	deconstruct.int3 \
+	enum.int3 \
+	integer.int3 \
+	io.int3 \
+	list.int3 \
+	map.int3 \
+	maybe.int3 \
+	ops.int3 \
+	pair.int3 \
+	pretty_printer.int3 \
+	random.int3 \
+	rtti_implementation.int3 \
+	set.int3 \
+	set_ordlist.int3 \
+	stream.int3 \
+	string.int3 \
+	term.int3 \
+	time.int3 \
+	tree234.int3 \
+	type_desc.int3
+
+
+endif # ifeq(x,y)
+
+# RULE self_and_parent_date_deps
+# source group names:
+#   (unnamed)
+#   long dep int3s
+#   short dep int3s
+version_store.date version_store.date0 : \
+		version_store.m \
+	\
+		builtin.int3 \
+		counter.int3 \
+		int.int3 \
+		private_builtin.int3 \
+		unit.int3 \
+		univ.int3 \
+		version_array.int3 \
+	\
+		array.int3 \
+		assoc_list.int3 \
+		bitmap.int3 \
+		bool.int3 \
+		char.int3 \
+		construct.int3 \
+		deconstruct.int3 \
+		enum.int3 \
+		integer.int3 \
+		io.int3 \
+		list.int3 \
+		map.int3 \
+		maybe.int3 \
+		ops.int3 \
+		pair.int3 \
+		pretty_printer.int3 \
+		random.int3 \
+		rtti_implementation.int3 \
+		set.int3 \
+		set_ordlist.int3 \
+		stream.int3 \
+		string.int3 \
+		term.int3 \
+		time.int3 \
+		tree234.int3 \
+		type_desc.int3
+
+ifeq (x,y)
+
+
+
+version_store.date0 : version_store.m \
+	builtin.int3 \
+	counter.int3 \
+	int.int3 \
+	private_builtin.int3 \
+	unit.int3 \
+	univ.int3 \
+	version_array.int3 \
+	array.int3 \
+	assoc_list.int3 \
+	bitmap.int3 \
+	bool.int3 \
+	char.int3 \
+	construct.int3 \
+	deconstruct.int3 \
+	enum.int3 \
+	integer.int3 \
+	io.int3 \
+	list.int3 \
+	map.int3 \
+	maybe.int3 \
+	ops.int3 \
+	pair.int3 \
+	pretty_printer.int3 \
+	random.int3 \
+	rtti_implementation.int3 \
+	set.int3 \
+	set_ordlist.int3 \
+	stream.int3 \
+	string.int3 \
+	term.int3 \
+	time.int3 \
+	tree234.int3 \
+	type_desc.int3
+
+
+endif # ifeq(x,y)
+
+# RULE self_and_parent_date0_deps
+# source group names:
+#   (unnamed)
+#   long dep int3s
+#   short dep int3s
+version_store.date0 : \
+		version_store.m \
+	\
+		builtin.int3 \
+		counter.int3 \
+		int.int3 \
+		private_builtin.int3 \
+		unit.int3 \
+		univ.int3 \
+		version_array.int3 \
+	\
+		array.int3 \
+		assoc_list.int3 \
+		bitmap.int3 \
+		bool.int3 \
+		char.int3 \
+		construct.int3 \
+		deconstruct.int3 \
+		enum.int3 \
+		integer.int3 \
+		io.int3 \
+		list.int3 \
+		map.int3 \
+		maybe.int3 \
+		ops.int3 \
+		pair.int3 \
+		pretty_printer.int3 \
+		random.int3 \
+		rtti_implementation.int3 \
+		set.int3 \
+		set_ordlist.int3 \
+		stream.int3 \
+		string.int3 \
+		term.int3 \
+		time.int3 \
+		tree234.int3 \
+		type_desc.int3
+
+ifeq (x,y)
+
+
+
+version_store.$O :  \
+	io.mh \
+	string.mh \
+	time.mh \
+	version_array.mh
+
+
+
+version_store.pic_o :  \
+	io.mh \
+	string.mh \
+	time.mh \
+	version_array.mh
+
+
+endif # ifeq(x,y)
+
+# RULE foreign_deps_for_.mh
+version_store.$O : \
+		io.mh \
+		string.mh \
+		time.mh \
+		version_array.mh
+
+# RULE foreign_deps_for_.mh
+version_store.pic_o : \
+		io.mh \
+		string.mh \
+		time.mh \
+		version_array.mh
+
+ifeq (x,y)
+
+
+version_store.int0 : version_store.date0
+	@:
+version_store.int : version_store.date
+	@:
+version_store.int2 : version_store.date
+	@:
+version_store.int3 : version_store.date3
+	@:
+version_store.opt : version_store.optdate
+	@:
+version_store.trans_opt : version_store.trans_opt_date
+	@:
+
+
+endif # ifeq(x,y)
+
+version_store.int0 : version_store.date0
+	@:
+
+version_store.int : version_store.date
+	@:
+
+version_store.int2 : version_store.date
+	@:
+
+version_store.int3 : version_store.date3
+	@:
+
+version_store.opt : version_store.optdate
+	@:
+
+version_store.trans_opt : version_store.trans_opt_date
+	@:
+
+ifeq (x,y)
+
+
+endif # ifeq(x,y)
+
