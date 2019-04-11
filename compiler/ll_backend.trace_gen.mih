@@ -1,0 +1,232 @@
+/*
+** Automatically generated from `trace_gen.m'
+** by the Mercury compiler,
+** version rotd-2019-04-11
+** configured for x86_64-pc-linux-gnu.
+** Do not edit.
+**
+** The autoconfigured grade settings governing
+** the generation of this C file were
+**
+** TAG_BITS=2
+** UNBOXED_FLOAT=no
+** UNBOXED_INT64S=no
+** PREGENERATED_DIST=yes
+** HIGHLEVEL_CODE=yes
+**
+** END_OF_C_GRADE_INFO
+*/
+
+
+// :- module ll_backend.trace_gen.
+// :- interface.
+
+#ifndef MR_HEADER_GUARD_ll_backend__trace_gen
+#define MR_HEADER_GUARD_ll_backend__trace_gen
+
+#ifdef __cplusplus
+extern "C" {
+#endif
+
+#include "mercury.h"
+
+
+#ifndef LL_BACKEND__TRACE_GEN_DECL_GUARD
+#define LL_BACKEND__TRACE_GEN_DECL_GUARD
+#include "ll_backend.mih"
+
+#endif
+
+
+
+
+extern const MR_TypeCtorInfo_Struct ll_backend__trace_gen__ll_backend__trace_gen__type_ctor_info_external_event_info_0;
+
+extern const MR_TypeCtorInfo_Struct ll_backend__trace_gen__ll_backend__trace_gen__type_ctor_info_external_trace_port_0;
+
+extern const MR_TypeCtorInfo_Struct ll_backend__trace_gen__ll_backend__trace_gen__type_ctor_info_negation_end_port_0;
+
+extern const MR_TypeCtorInfo_Struct ll_backend__trace_gen__ll_backend__trace_gen__type_ctor_info_trace_info_0;
+
+extern const MR_TypeCtorInfo_Struct ll_backend__trace_gen__ll_backend__trace_gen__type_ctor_info_trace_port_info_0;
+
+extern const MR_TypeCtorInfo_Struct ll_backend__trace_gen__ll_backend__trace_gen__type_ctor_info_trace_slot_info_0;
+
+void MR_CALL 
+ll_backend__trace_gen__do_we_need_maxfr_slot_5_p_0(
+  MR_Word param_1,
+  MR_Word param_2,
+  MR_Word param_3,
+  MR_Word param_4,
+  MR_Word * param_5);
+
+void MR_CALL 
+ll_backend__trace_gen__generate_external_event_code_8_p_0(
+  MR_Word param_1,
+  MR_Word param_2,
+  MR_Word param_3,
+  MR_Word * param_4,
+  MR_Word param_5,
+  MR_Word * param_6,
+  MR_Word param_7,
+  MR_Word * param_8);
+
+void MR_CALL 
+ll_backend__trace_gen__generate_slot_fill_code_3_p_0(
+  MR_Word param_1,
+  MR_Word param_2,
+  MR_Word * param_3);
+
+void MR_CALL 
+ll_backend__trace_gen__generate_tailrec_event_code_10_p_0(
+  MR_Word param_1,
+  MR_Word param_2,
+  MR_Word param_3,
+  MR_Word param_4,
+  MR_Word * param_5,
+  MR_Word * param_6,
+  MR_Word param_7,
+  MR_Word * param_8,
+  MR_Word param_9,
+  MR_Word * param_10);
+
+void MR_CALL 
+ll_backend__trace_gen__generate_user_event_code_7_p_0(
+  MR_Word param_1,
+  MR_Word param_2,
+  MR_Word * param_3,
+  MR_Word param_4,
+  MR_Word * param_5,
+  MR_Word param_6,
+  MR_Word * param_7);
+
+void MR_CALL 
+ll_backend__trace_gen__get_trace_maybe_tail_rec_info_2_p_0(
+  MR_Word param_1,
+  MR_Word * param_2);
+
+void MR_CALL 
+ll_backend__trace_gen__maybe_generate_internal_event_code_7_p_0(
+  MR_Word param_1,
+  MR_Word param_2,
+  MR_Word * param_3,
+  MR_Word param_4,
+  MR_Word * param_5,
+  MR_Word param_6,
+  MR_Word * param_7);
+
+void MR_CALL 
+ll_backend__trace_gen__maybe_generate_negated_event_code_8_p_0(
+  MR_Word param_1,
+  MR_Word param_2,
+  MR_Word param_3,
+  MR_Word * param_4,
+  MR_Word param_5,
+  MR_Word * param_6,
+  MR_Word param_7,
+  MR_Word * param_8);
+
+void MR_CALL 
+ll_backend__trace_gen__maybe_setup_redo_event_2_p_0(
+  MR_Word param_1,
+  MR_Word * param_2);
+
+void MR_CALL 
+ll_backend__trace_gen__trace_fail_vars_3_p_0(
+  MR_Word param_1,
+  MR_Word param_2,
+  MR_Word * param_3);
+
+void MR_CALL 
+ll_backend__trace_gen__trace_prepare_for_call_2_p_0(
+  MR_Word param_1,
+  MR_Word * param_2);
+
+void MR_CALL 
+ll_backend__trace_gen__trace_reserved_slots_6_p_0(
+  MR_Word param_1,
+  MR_Word param_2,
+  MR_Word param_3,
+  MR_Word param_4,
+  MR_Integer * param_5,
+  MR_Word * param_6);
+
+void MR_CALL 
+ll_backend__trace_gen__trace_setup_9_p_0(
+  MR_Word param_1,
+  MR_Word param_2,
+  MR_Word param_3,
+  MR_Word param_4,
+  MR_Word param_5,
+  MR_Word * param_6,
+  MR_Word * param_7,
+  MR_Word param_8,
+  MR_Word * param_9);
+
+void MR_CALL 
+ll_backend__trace_gen____Compare____external_event_info_0_0(
+  MR_Word * param_1,
+  MR_Word param_2,
+  MR_Word param_3);
+
+void MR_CALL 
+ll_backend__trace_gen____Compare____external_trace_port_0_0(
+  MR_Word * param_1,
+  MR_Word param_2,
+  MR_Word param_3);
+
+void MR_CALL 
+ll_backend__trace_gen____Compare____negation_end_port_0_0(
+  MR_Word * param_1,
+  MR_Word param_2,
+  MR_Word param_3);
+
+void MR_CALL 
+ll_backend__trace_gen____Compare____trace_info_0_0(
+  MR_Word * param_1,
+  MR_Word param_2,
+  MR_Word param_3);
+
+void MR_CALL 
+ll_backend__trace_gen____Compare____trace_slot_info_0_0(
+  MR_Word * param_1,
+  MR_Word param_2,
+  MR_Word param_3);
+
+MR_bool MR_CALL 
+ll_backend__trace_gen____Unify____external_event_info_0_0(
+  MR_Word param_1,
+  MR_Word param_2);
+
+MR_bool MR_CALL 
+ll_backend__trace_gen____Unify____external_trace_port_0_0(
+  MR_Word param_1,
+  MR_Word param_2);
+
+MR_bool MR_CALL 
+ll_backend__trace_gen____Unify____negation_end_port_0_0(
+  MR_Word param_1,
+  MR_Word param_2);
+
+MR_bool MR_CALL 
+ll_backend__trace_gen____Unify____trace_info_0_0(
+  MR_Word param_1,
+  MR_Word param_2);
+
+MR_bool MR_CALL 
+ll_backend__trace_gen____Unify____trace_slot_info_0_0(
+  MR_Word param_1,
+  MR_Word param_2);
+
+void mercury__ll_backend__trace_gen__init(void);
+void mercury__ll_backend__trace_gen__init_type_tables(void);
+void mercury__ll_backend__trace_gen__init_debugger(void);
+const char *mercury__ll_backend__trace_gen__grade_check(void);
+
+#ifdef __cplusplus
+}
+#endif
+
+#endif // MR_HEADER_GUARD_ll_backend.trace_gen
+
+// :- end_interface ll_backend.trace_gen.
