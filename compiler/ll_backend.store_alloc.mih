@@ -1,0 +1,83 @@
+/*
+** Automatically generated from `store_alloc.m'
+** by the Mercury compiler,
+** version rotd-2018-07-11
+** configured for x86_64-pc-linux-gnu.
+** Do not edit.
+**
+** The autoconfigured grade settings governing
+** the generation of this C file were
+**
+** TAG_BITS=2
+** UNBOXED_FLOAT=no
+** UNBOXED_INT64S=no
+** PREGENERATED_DIST=yes
+** HIGHLEVEL_CODE=yes
+**
+** END_OF_C_GRADE_INFO
+*/
+
+
+// :- module ll_backend.store_alloc.
+// :- interface.
+
+#ifndef MR_HEADER_GUARD_ll_backend__store_alloc
+#define MR_HEADER_GUARD_ll_backend__store_alloc
+
+#ifdef __cplusplus
+extern "C" {
+#endif
+
+#include "mercury.h"
+
+
+#ifndef LL_BACKEND__STORE_ALLOC_DECL_GUARD
+#define LL_BACKEND__STORE_ALLOC_DECL_GUARD
+#include "ll_backend.mih"
+
+#endif
+
+
+
+
+extern const MR_TypeCtorInfo_Struct ll_backend__store_alloc__ll_backend__store_alloc__type_ctor_info_branched_goal_0;
+
+extern const MR_TypeCtorInfo_Struct ll_backend__store_alloc__ll_backend__store_alloc__type_ctor_info_last_locns_0;
+
+extern const MR_TypeCtorInfo_Struct ll_backend__store_alloc__ll_backend__store_alloc__type_ctor_info_store_alloc_info_0;
+
+extern const MR_TypeCtorInfo_Struct ll_backend__store_alloc__ll_backend__store_alloc__type_ctor_info_store_map_run_type_0;
+
+extern const MR_TypeCtorInfo_Struct ll_backend__store_alloc__ll_backend__store_alloc__type_ctor_info_where_stored_0;
+
+void MR_CALL 
+ll_backend__store_alloc__allocate_store_maps_5_p_0(
+  MR_Word param_1,
+  MR_Word param_2,
+  MR_Word param_3,
+  MR_Word param_4,
+  MR_Word * param_5);
+
+void MR_CALL 
+ll_backend__store_alloc____Compare____store_map_run_type_0_0(
+  MR_Word * param_1,
+  MR_Word param_2,
+  MR_Word param_3);
+
+MR_bool MR_CALL 
+ll_backend__store_alloc____Unify____store_map_run_type_0_0(
+  MR_Word param_1,
+  MR_Word param_2);
+
+void mercury__ll_backend__store_alloc__init(void);
+void mercury__ll_backend__store_alloc__init_type_tables(void);
+void mercury__ll_backend__store_alloc__init_debugger(void);
+const char *mercury__ll_backend__store_alloc__grade_check(void);
+
+#ifdef __cplusplus
+}
+#endif
+
+#endif // MR_HEADER_GUARD_ll_backend.store_alloc
+
+// :- end_interface ll_backend.store_alloc.

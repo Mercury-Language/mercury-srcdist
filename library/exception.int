@@ -1,0 +1,63 @@
+:- module exception.
+:- interface.
+:- import_module io.
+:- import_module list.
+:- import_module maybe.
+:- import_module stm_builtin.
+:- import_module store.
+:- import_module univ.
+:- type exception_result(T)
+    --->    succeeded(T)
+    ;       failed 
+    ;       exception(univ.univ).
+:- type near_stack_limits
+    --->    near_stack_limits .
+:- type software_error
+    --->    software_error(string).
+:- inst ([]) for list.list/1 == bound([]).
+:- inst (cannot_fail) for exception.exception_result/1 == bound(exception(ground) ; succeeded(ground)).
+:- inst (nil_or_singleton_list) for list.list/1 == bound([] ; '[|]'(ground, (exception.[]))).
+:- pred exc_univ_to_type(univ.univ, T).
+:- mode exc_univ_to_type((builtin.in), (builtin.out)) is semidet.
+:- mode exc_univ_to_type((builtin.out), (builtin.in)) is det.
+:- mode exc_univ_to_type((builtin.uo), (builtin.di)) is det.
+:- some [T] (func exc_univ_value(univ.univ) = T).
+:- pred finally(pred(T, io.io, io.io), T, pred(io.res, io.io, io.io), io.res, io.io, io.io).
+:- mode finally((pred((builtin.out), (builtin.di), (builtin.uo)) is det), (builtin.out), (pred((builtin.out), (builtin.di), (builtin.uo)) is det), (builtin.out), (builtin.di), (builtin.uo)) is det.
+:- mode finally((pred((builtin.out), (builtin.di), (builtin.uo)) is cc_multi), (builtin.out), (pred((builtin.out), (builtin.di), (builtin.uo)) is cc_multi), (builtin.out), (builtin.di), (builtin.uo)) is cc_multi.
+:- pred incremental_try_all((pred T), pred(exception.exception_result(T), A, A), A, A).
+:- mode incremental_try_all((pred((builtin.out)) is nondet), (pred((builtin.in), (builtin.di), (builtin.uo)) is det), (builtin.di), (builtin.uo)) is cc_multi.
+:- mode incremental_try_all((pred((builtin.out)) is nondet), (pred((builtin.in), (builtin.in), (builtin.out)) is det), (builtin.in), (builtin.out)) is cc_multi.
+:- pred magic_exception_result(exception.exception_result({})).
+:- mode magic_exception_result(builtin.out((exception.cannot_fail))) is cc_multi.
+:- pred rethrow(exception.exception_result(T)).
+:- mode rethrow(builtin.in(bound(exception(ground)))) is erroneous.
+:- func rethrow(exception.exception_result(T)) = V_2.
+:- mode rethrow(builtin.in(bound(exception(ground)))) = (builtin.out) is erroneous.
+:- pred throw(T).
+:- mode throw((builtin.in)) is erroneous.
+:- func throw(T) = V_2 is erroneous.
+:- impure pred throw_if_near_stack_limits is det.
+:- pred try((pred T), exception.exception_result(T)).
+:- mode try((pred((builtin.out)) is det), builtin.out((exception.cannot_fail))) is cc_multi.
+:- mode try((pred((builtin.out)) is semidet), (builtin.out)) is cc_multi.
+:- mode try((pred((builtin.out)) is cc_multi), builtin.out((exception.cannot_fail))) is cc_multi.
+:- mode try((pred((builtin.out)) is cc_nondet), (builtin.out)) is cc_multi.
+:- pred try_all((pred T), maybe.maybe(univ.univ), list.list(T)).
+:- mode try_all((pred((builtin.out)) is det), (builtin.out), builtin.out((exception.nil_or_singleton_list))) is cc_multi.
+:- mode try_all((pred((builtin.out)) is semidet), (builtin.out), builtin.out((exception.nil_or_singleton_list))) is cc_multi.
+:- mode try_all((pred((builtin.out)) is multi), (builtin.out), (builtin.out)) is cc_multi.
+:- mode try_all((pred((builtin.out)) is nondet), (builtin.out), (builtin.out)) is cc_multi.
+:- pred try_io(pred(T, io.io, io.io), exception.exception_result(T), io.io, io.io).
+:- mode try_io((pred((builtin.out), (builtin.di), (builtin.uo)) is det), builtin.out((exception.cannot_fail)), (builtin.di), (builtin.uo)) is cc_multi.
+:- mode try_io((pred((builtin.out), (builtin.di), (builtin.uo)) is cc_multi), builtin.out((exception.cannot_fail)), (builtin.di), (builtin.uo)) is cc_multi.
+:- pred try_stm(pred(A, stm_builtin.stm, stm_builtin.stm), exception.exception_result(A), stm_builtin.stm, stm_builtin.stm).
+:- mode try_stm(builtin.in((pred((builtin.out), (builtin.di), (builtin.uo)) is det)), builtin.out((exception.cannot_fail)), (builtin.di), (builtin.uo)) is cc_multi.
+:- mode try_stm(builtin.in((pred((builtin.out), (builtin.di), (builtin.uo)) is cc_multi)), builtin.out((exception.cannot_fail)), (builtin.di), (builtin.uo)) is cc_multi.
+:- pred try_store(pred(T, store.store(S), store.store(S)), exception.exception_result(T), store.store(S), store.store(S)).
+:- mode try_store((pred((builtin.out), (builtin.di), (builtin.uo)) is det), builtin.out((exception.cannot_fail)), (builtin.di), (builtin.uo)) is cc_multi.
+:- mode try_store((pred((builtin.out), (builtin.di), (builtin.uo)) is cc_multi), builtin.out((exception.cannot_fail)), (builtin.di), (builtin.uo)) is cc_multi.
+:- pred unreachable is erroneous.
+:- pred unsafe_try_stm(pred(A, stm_builtin.stm, stm_builtin.stm), exception.exception_result(A), stm_builtin.stm, stm_builtin.stm).
+:- mode unsafe_try_stm(builtin.in((pred((builtin.out), (builtin.di), (builtin.uo)) is det)), builtin.out((exception.cannot_fail)), (builtin.di), (builtin.uo)) is cc_multi.
+:- mode unsafe_try_stm(builtin.in((pred((builtin.out), (builtin.di), (builtin.uo)) is cc_multi)), builtin.out((exception.cannot_fail)), (builtin.di), (builtin.uo)) is cc_multi.
