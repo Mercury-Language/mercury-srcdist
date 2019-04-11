@@ -1,0 +1,4 @@
+:- module (transform_hlds.size_prof).
+:- interface.
+:- type construct_transform
+	where	type_is_abstract_enum(1).
