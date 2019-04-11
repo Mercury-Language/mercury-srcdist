@@ -1,0 +1,8895 @@
+/*
+** Automatically generated from `switch_detection.m'
+** by the Mercury compiler,
+** version rotd-2017-06-12
+** configured for x86_64-apple-darwin13.4.0.
+** Do not edit.
+**
+** The autoconfigured grade settings governing
+** the generation of this C file were
+**
+** TAG_BITS=2
+** UNBOXED_FLOAT=no
+** PREGENERATED_DIST=yes
+** HIGHLEVEL_CODE=yes
+**
+** END_OF_C_GRADE_INFO
+*/
+
+
+/* :- module check_hlds.switch_detection. */
+/* :- implementation. */
+
+/*
+INIT mercury__check_hlds__switch_detection__init
+ENDINIT
+*/
+
+#include "check_hlds.switch_detection.mih"
+
+
+#include "analysis.mih"
+#include "check_hlds.mih"
+#include "hlds.mih"
+#include "libs.mih"
+#include "mdbcomp.mih"
+#include "mode_robdd.mih"
+#include "parse_tree.mih"
+#include "recompilation.mih"
+#include "transform_hlds.mih"
+#include "check_hlds.delay_info.mih"
+#include "check_hlds.det_util.mih"
+#include "check_hlds.inst_test.mih"
+#include "check_hlds.mode_constraint_robdd.mih"
+#include "check_hlds.mode_errors.mih"
+#include "check_hlds.mode_info.mih"
+#include "check_hlds.type_util.mih"
+#include "check_hlds.unify_proc.mih"
+#include "hlds.const_struct.mih"
+#include "hlds.goal_util.mih"
+#include "hlds.hlds_args.mih"
+#include "hlds.hlds_clauses.mih"
+#include "hlds.hlds_data.mih"
+#include "hlds.hlds_dependency_graph.mih"
+#include "hlds.hlds_goal.mih"
+#include "hlds.hlds_llds.mih"
+#include "hlds.hlds_module.mih"
+#include "hlds.hlds_pred.mih"
+#include "hlds.hlds_rtti.mih"
+#include "hlds.inst_graph.mih"
+#include "hlds.instmap.mih"
+#include "hlds.passes_aux.mih"
+#include "hlds.pred_table.mih"
+#include "hlds.quantification.mih"
+#include "hlds.special_pred.mih"
+#include "hlds.status.mih"
+#include "hlds.vartypes.mih"
+#include "libs.compiler_util.mih"
+#include "libs.dependency_graph.mih"
+#include "libs.globals.mih"
+#include "libs.lp_rational.mih"
+#include "libs.op_mode.mih"
+#include "libs.options.mih"
+#include "libs.polyhedron.mih"
+#include "libs.rat.mih"
+#include "libs.timestamp.mih"
+#include "libs.trace_params.mih"
+#include "mdbcomp.feedback.mih"
+#include "mdbcomp.goal_path.mih"
+#include "mdbcomp.prim_data.mih"
+#include "mdbcomp.program_representation.mih"
+#include "mdbcomp.rtti_access.mih"
+#include "mdbcomp.sym_name.mih"
+#include "mdbcomp.trace_counts.mih"
+#include "array.mih"
+#include "assoc_list.mih"
+#include "bag.mih"
+#include "bimap.mih"
+#include "bitmap.mih"
+#include "bool.mih"
+#include "builtin.mih"
+#include "char.mih"
+#include "construct.mih"
+#include "cord.mih"
+#include "deconstruct.mih"
+#include "digraph.mih"
+#include "enum.mih"
+#include "getopt_io.mih"
+#include "int.mih"
+#include "integer.mih"
+#include "io.mih"
+#include "list.mih"
+#include "map.mih"
+#include "maybe.mih"
+#include "multi_map.mih"
+#include "ops.mih"
+#include "pair.mih"
+#include "pretty_printer.mih"
+#include "private_builtin.mih"
+#include "queue.mih"
+#include "random.mih"
+#include "require.mih"
+#include "robdd.mih"
+#include "rtti_implementation.mih"
+#include "set.mih"
+#include "set_ordlist.mih"
+#include "set_tree234.mih"
+#include "sparse_bitset.mih"
+#include "stack.mih"
+#include "stream.mih"
+#include "string.mih"
+#include "term.mih"
+#include "time.mih"
+#include "tree234.mih"
+#include "type_desc.mih"
+#include "unit.mih"
+#include "univ.mih"
+#include "varset.mih"
+#include "mode_robdd.tfeirn.mih"
+#include "parse_tree.error_util.mih"
+#include "parse_tree.file_kind.mih"
+#include "parse_tree.maybe_error.mih"
+#include "parse_tree.module_qual.mih"
+#include "parse_tree.prog_data.mih"
+#include "parse_tree.prog_data_event.mih"
+#include "parse_tree.prog_data_foreign.mih"
+#include "parse_tree.prog_data_pragma.mih"
+#include "parse_tree.prog_data_used_modules.mih"
+#include "parse_tree.prog_foreign.mih"
+#include "parse_tree.prog_item.mih"
+#include "parse_tree.prog_mode.mih"
+#include "parse_tree.prog_rename.mih"
+#include "parse_tree.prog_type.mih"
+#include "parse_tree.set_of_var.mih"
+#include "transform_hlds.term_constr_data.mih"
+#include "transform_hlds.term_constr_errors.mih"
+#include "transform_hlds.term_constr_main_types.mih"
+#include "transform_hlds.term_errors.mih"
+#include "transform_hlds.term_norm.mih"
+#include "transform_hlds.term_util.mih"
+#include "mdbcomp.feedback.automatic_parallelism.mih"
+
+
+
+
+static const MR_FA_PseudoTypeInfo_Struct1 check_hlds__switch_detection__set_tree234__pti_set_tree234_1__plain_parse_tree__prog_data__type_ctor_info_cons_id_0;
+
+static const MR_FA_PseudoTypeInfo_Struct2 check_hlds__switch_detection__pair__pti_pair_2__plain_parse_tree__prog_data__type_ctor_info_cons_id_0__plain_check_hlds__switch_detection__type_ctor_info_cons_id_entry_0;
+
+static const MR_FA_PseudoTypeInfo_Struct1 check_hlds__switch_detection__list__pti_list_1__plain_hlds__hlds_goal__type_ctor_info_case_0;
+
+static const MR_FA_PseudoTypeInfo_Struct1 check_hlds__switch_detection__list__pti_list_1__plain_hlds__hlds_goal__type_ctor_info_hlds_goal_0;
+
+static const MR_FA_PseudoTypeInfo_Struct1 check_hlds__switch_detection__term__pti_var_1__plain_parse_tree__prog_data__type_ctor_info_prog_var_type_0;
+
+static const MR_FA_PseudoTypeInfo_Struct1 check_hlds__switch_detection__maybe__pti_maybe_1__plain_parse_tree__prog_data__type_ctor_info_cons_id_0;
+
+static const MR_EnumFunctorDesc check_hlds__switch_detection__check_hlds__switch_detection__enum_functor_desc_allow_multi_arm_0_0;
+
+static const MR_EnumFunctorDesc check_hlds__switch_detection__check_hlds__switch_detection__enum_functor_desc_allow_multi_arm_0_1;
+
+static const MR_EnumFunctorDescPtr check_hlds__switch_detection__check_hlds__switch_detection__enum_value_ordered_allow_multi_arm_0[2];
+
+static const MR_EnumFunctorDescPtr check_hlds__switch_detection__check_hlds__switch_detection__enum_name_ordered_allow_multi_arm_0[2];
+
+static const MR_Integer check_hlds__switch_detection__check_hlds__switch_detection__functor_number_map_allow_multi_arm_0[2];
+
+static const MR_FA_TypeInfo_Struct1 check_hlds__switch_detection__term__ti_var_1parse_tree__prog_data__type_ctor_info_prog_var_type_0;
+
+static const MR_FA_TypeInfo_Struct1 check_hlds__switch_detection__list__ti_list_1hlds__hlds_goal__type_ctor_info_case_0;
+
+static const MR_FA_TypeInfo_Struct1 check_hlds__switch_detection__list__ti_list_1hlds__hlds_goal__type_ctor_info_hlds_goal_0;
+
+static const MR_PseudoTypeInfo check_hlds__switch_detection__check_hlds__switch_detection__field_types_candidate_switch_0_0[6];
+
+static const MR_ConstString check_hlds__switch_detection__check_hlds__switch_detection__field_names_candidate_switch_0_0[6];
+
+static const MR_DuFunctorDesc check_hlds__switch_detection__check_hlds__switch_detection__du_functor_desc_candidate_switch_0_0;
+
+static const MR_DuFunctorDescPtr check_hlds__switch_detection__check_hlds__switch_detection__du_stag_ordered_candidate_switch_0_0[1];
+
+static const MR_DuPtagLayout check_hlds__switch_detection__check_hlds__switch_detection__du_ptag_ordered_candidate_switch_0[1];
+
+static const MR_DuFunctorDescPtr check_hlds__switch_detection__check_hlds__switch_detection__du_name_ordered_candidate_switch_0[1];
+
+static const MR_Integer check_hlds__switch_detection__check_hlds__switch_detection__functor_number_map_candidate_switch_0[1];
+
+static const MR_PseudoTypeInfo check_hlds__switch_detection__check_hlds__switch_detection__field_types_candidate_switch_rank_0_0[1];
+
+static const MR_DuFunctorDesc check_hlds__switch_detection__check_hlds__switch_detection__du_functor_desc_candidate_switch_rank_0_0;
+
+static const MR_PseudoTypeInfo check_hlds__switch_detection__check_hlds__switch_detection__field_types_candidate_switch_rank_0_1[1];
+
+static const MR_DuFunctorDesc check_hlds__switch_detection__check_hlds__switch_detection__du_functor_desc_candidate_switch_rank_0_1;
+
+static const MR_DuFunctorDesc check_hlds__switch_detection__check_hlds__switch_detection__du_functor_desc_candidate_switch_rank_0_2;
+
+static const MR_DuFunctorDesc check_hlds__switch_detection__check_hlds__switch_detection__du_functor_desc_candidate_switch_rank_0_3;
+
+static const MR_DuFunctorDesc check_hlds__switch_detection__check_hlds__switch_detection__du_functor_desc_candidate_switch_rank_0_4;
+
+static const MR_DuFunctorDesc check_hlds__switch_detection__check_hlds__switch_detection__du_functor_desc_candidate_switch_rank_0_5;
+
+static const MR_DuFunctorDesc check_hlds__switch_detection__check_hlds__switch_detection__du_functor_desc_candidate_switch_rank_0_6;
+
+static const MR_DuFunctorDesc check_hlds__switch_detection__check_hlds__switch_detection__du_functor_desc_candidate_switch_rank_0_7;
+
+static const MR_DuFunctorDescPtr check_hlds__switch_detection__check_hlds__switch_detection__du_stag_ordered_candidate_switch_rank_0_0[6];
+
+static const MR_DuFunctorDescPtr check_hlds__switch_detection__check_hlds__switch_detection__du_stag_ordered_candidate_switch_rank_0_1[1];
+
+static const MR_DuFunctorDescPtr check_hlds__switch_detection__check_hlds__switch_detection__du_stag_ordered_candidate_switch_rank_0_2[1];
+
+static const MR_DuPtagLayout check_hlds__switch_detection__check_hlds__switch_detection__du_ptag_ordered_candidate_switch_rank_0[3];
+
+static const MR_DuFunctorDescPtr check_hlds__switch_detection__check_hlds__switch_detection__du_name_ordered_candidate_switch_rank_0[8];
+
+static const MR_Integer check_hlds__switch_detection__check_hlds__switch_detection__functor_number_map_candidate_switch_rank_0[8];
+
+static const MR_PseudoTypeInfo check_hlds__switch_detection__check_hlds__switch_detection__field_types_case_arm_0_0[2];
+
+static const MR_DuFunctorDesc check_hlds__switch_detection__check_hlds__switch_detection__du_functor_desc_case_arm_0_0;
+
+static const MR_FA_TypeInfo_Struct1 check_hlds__switch_detection__list__ti_list_1parse_tree__prog_data__type_ctor_info_cons_id_0;
+
+static const MR_PseudoTypeInfo check_hlds__switch_detection__check_hlds__switch_detection__field_types_case_arm_0_1[3];
+
+static const MR_DuFunctorDesc check_hlds__switch_detection__check_hlds__switch_detection__du_functor_desc_case_arm_0_1;
+
+static const MR_DuFunctorDescPtr check_hlds__switch_detection__check_hlds__switch_detection__du_stag_ordered_case_arm_0_0[1];
+
+static const MR_DuFunctorDescPtr check_hlds__switch_detection__check_hlds__switch_detection__du_stag_ordered_case_arm_0_1[1];
+
+static const MR_DuPtagLayout check_hlds__switch_detection__check_hlds__switch_detection__du_ptag_ordered_case_arm_0[2];
+
+static const MR_DuFunctorDescPtr check_hlds__switch_detection__check_hlds__switch_detection__du_name_ordered_case_arm_0[2];
+
+static const MR_Integer check_hlds__switch_detection__check_hlds__switch_detection__functor_number_map_case_arm_0[2];
+
+static const MR_EnumFunctorDesc check_hlds__switch_detection__check_hlds__switch_detection__enum_functor_desc_cases_missing_0_0;
+
+static const MR_EnumFunctorDesc check_hlds__switch_detection__check_hlds__switch_detection__enum_functor_desc_cases_missing_0_1;
+
+static const MR_EnumFunctorDesc check_hlds__switch_detection__check_hlds__switch_detection__enum_functor_desc_cases_missing_0_2;
+
+static const MR_EnumFunctorDescPtr check_hlds__switch_detection__check_hlds__switch_detection__enum_value_ordered_cases_missing_0[3];
+
+static const MR_EnumFunctorDescPtr check_hlds__switch_detection__check_hlds__switch_detection__enum_name_ordered_cases_missing_0[3];
+
+static const MR_Integer check_hlds__switch_detection__check_hlds__switch_detection__functor_number_map_cases_missing_0[3];
+
+static const MR_FA_TypeInfo_Struct2 check_hlds__switch_detection__tree234__ti_tree234_2parse_tree__prog_data__type_ctor_info_cons_id_0check_hlds__switch_detection__type_ctor_info_cons_id_entry_0;
+
+static const MR_FA_TypeInfo_Struct1 check_hlds__switch_detection__set_tree234__ti_set_tree234_1parse_tree__prog_data__type_ctor_info_cons_id_0;
+
+static const MR_PseudoTypeInfo check_hlds__switch_detection__check_hlds__switch_detection__field_types_cases_table_0_0[2];
+
+static const MR_ConstString check_hlds__switch_detection__check_hlds__switch_detection__field_names_cases_table_0_0[2];
+
+static const MR_DuFunctorDesc check_hlds__switch_detection__check_hlds__switch_detection__du_functor_desc_cases_table_0_0;
+
+static const MR_DuFunctorDescPtr check_hlds__switch_detection__check_hlds__switch_detection__du_stag_ordered_cases_table_0_0[1];
+
+static const MR_DuPtagLayout check_hlds__switch_detection__check_hlds__switch_detection__du_ptag_ordered_cases_table_0[1];
+
+static const MR_DuFunctorDescPtr check_hlds__switch_detection__check_hlds__switch_detection__du_name_ordered_cases_table_0[1];
+
+static const MR_Integer check_hlds__switch_detection__check_hlds__switch_detection__functor_number_map_cases_table_0[1];
+
+static const MR_FA_TypeInfo_Struct1 check_hlds__switch_detection__cord__ti_cord_1check_hlds__switch_detection__type_ctor_info_case_arm_0;
+
+static const MR_PseudoTypeInfo check_hlds__switch_detection__check_hlds__switch_detection__field_types_cons_id_entry_0_0[2];
+
+static const MR_ConstString check_hlds__switch_detection__check_hlds__switch_detection__field_names_cons_id_entry_0_0[2];
+
+static const MR_DuFunctorDesc check_hlds__switch_detection__check_hlds__switch_detection__du_functor_desc_cons_id_entry_0_0;
+
+static const MR_DuFunctorDescPtr check_hlds__switch_detection__check_hlds__switch_detection__du_stag_ordered_cons_id_entry_0_0[1];
+
+static const MR_DuPtagLayout check_hlds__switch_detection__check_hlds__switch_detection__du_ptag_ordered_cons_id_entry_0[1];
+
+static const MR_DuFunctorDescPtr check_hlds__switch_detection__check_hlds__switch_detection__du_name_ordered_cons_id_entry_0[1];
+
+static const MR_Integer check_hlds__switch_detection__check_hlds__switch_detection__functor_number_map_cons_id_entry_0[1];
+
+static const MR_EnumFunctorDesc check_hlds__switch_detection__check_hlds__switch_detection__enum_functor_desc_cons_id_state_0_0;
+
+static const MR_EnumFunctorDesc check_hlds__switch_detection__check_hlds__switch_detection__enum_functor_desc_cons_id_state_0_1;
+
+static const MR_EnumFunctorDesc check_hlds__switch_detection__check_hlds__switch_detection__enum_functor_desc_cons_id_state_0_2;
+
+static const MR_EnumFunctorDescPtr check_hlds__switch_detection__check_hlds__switch_detection__enum_value_ordered_cons_id_state_0[3];
+
+static const MR_EnumFunctorDescPtr check_hlds__switch_detection__check_hlds__switch_detection__enum_name_ordered_cons_id_state_0[3];
+
+static const MR_Integer check_hlds__switch_detection__check_hlds__switch_detection__functor_number_map_cons_id_state_0[3];
+
+static const MR_EnumFunctorDesc check_hlds__switch_detection__check_hlds__switch_detection__enum_functor_desc_deconstruct_search_0_0;
+
+static const MR_EnumFunctorDesc check_hlds__switch_detection__check_hlds__switch_detection__enum_functor_desc_deconstruct_search_0_1;
+
+static const MR_EnumFunctorDesc check_hlds__switch_detection__check_hlds__switch_detection__enum_functor_desc_deconstruct_search_0_2;
+
+static const MR_EnumFunctorDescPtr check_hlds__switch_detection__check_hlds__switch_detection__enum_value_ordered_deconstruct_search_0[3];
+
+static const MR_EnumFunctorDescPtr check_hlds__switch_detection__check_hlds__switch_detection__enum_name_ordered_deconstruct_search_0[3];
+
+static const MR_Integer check_hlds__switch_detection__check_hlds__switch_detection__functor_number_map_deconstruct_search_0[3];
+
+static const MR_EnumFunctorDesc check_hlds__switch_detection__check_hlds__switch_detection__enum_functor_desc_found_deconstruct_0_0;
+
+static const MR_EnumFunctorDesc check_hlds__switch_detection__check_hlds__switch_detection__enum_functor_desc_found_deconstruct_0_1;
+
+static const MR_EnumFunctorDescPtr check_hlds__switch_detection__check_hlds__switch_detection__enum_value_ordered_found_deconstruct_0[2];
+
+static const MR_EnumFunctorDescPtr check_hlds__switch_detection__check_hlds__switch_detection__enum_name_ordered_found_deconstruct_0[2];
+
+static const MR_Integer check_hlds__switch_detection__check_hlds__switch_detection__functor_number_map_found_deconstruct_0[2];
+
+static const MR_FA_TypeInfo_Struct2 check_hlds__switch_detection__tree234__ti_tree234_2term__ti_var_1parse_tree__prog_data__type_ctor_info_prog_var_type_0parse_tree__prog_data__type_ctor_info_mer_type_0;
+
+static const MR_FA_TypeInfo_Struct1 check_hlds__switch_detection__set_ordlist__ti_set_ordlist_1hlds__hlds_pred__type_ctor_info_pred_proc_id_0;
+
+static const MR_PseudoTypeInfo check_hlds__switch_detection__check_hlds__switch_detection__field_types_local_switch_detect_info_0_0[5];
+
+static const MR_ConstString check_hlds__switch_detection__check_hlds__switch_detection__field_names_local_switch_detect_info_0_0[5];
+
+static const MR_DuFunctorDesc check_hlds__switch_detection__check_hlds__switch_detection__du_functor_desc_local_switch_detect_info_0_0;
+
+static const MR_DuFunctorDescPtr check_hlds__switch_detection__check_hlds__switch_detection__du_stag_ordered_local_switch_detect_info_0_0[1];
+
+static const MR_DuPtagLayout check_hlds__switch_detection__check_hlds__switch_detection__du_ptag_ordered_local_switch_detect_info_0[1];
+
+static const MR_DuFunctorDescPtr check_hlds__switch_detection__check_hlds__switch_detection__du_name_ordered_local_switch_detect_info_0[1];
+
+static const MR_Integer check_hlds__switch_detection__check_hlds__switch_detection__functor_number_map_local_switch_detect_info_0[1];
+
+static const MR_VA_PseudoTypeInfo_Struct7 check_hlds__switch_detection____vpti_pred_7__plain_term__ti_var_1parse_tree__prog_data__type_ctor_info_prog_var_type_0__plain_hlds__hlds_goal__type_ctor_info_hlds_goal_0__plain_list__ti_list_1hlds__hlds_goal__type_ctor_info_hlds_goal_0__pseudo_1__pseudo_1__pseudo_2__pseudo_2;
+
+static const MR_PseudoTypeInfo check_hlds__switch_detection__check_hlds__switch_detection__field_types_switch_detect_info_0_0[2];
+
+static const MR_ConstString check_hlds__switch_detection__check_hlds__switch_detection__field_names_switch_detect_info_0_0[2];
+
+static const MR_DuFunctorDesc check_hlds__switch_detection__check_hlds__switch_detection__du_functor_desc_switch_detect_info_0_0;
+
+static const MR_DuFunctorDescPtr check_hlds__switch_detection__check_hlds__switch_detection__du_stag_ordered_switch_detect_info_0_0[1];
+
+static const MR_DuPtagLayout check_hlds__switch_detection__check_hlds__switch_detection__du_ptag_ordered_switch_detect_info_0[1];
+
+static const MR_DuFunctorDescPtr check_hlds__switch_detection__check_hlds__switch_detection__du_name_ordered_switch_detect_info_0[1];
+
+static const MR_Integer check_hlds__switch_detection__check_hlds__switch_detection__functor_number_map_switch_detect_info_0[1];
+
+static MR_bool MR_CALL 
+check_hlds__switch_detection____Unify____allow_multi_arm_0_0_10001(
+  MR_Box check_hlds__switch_detection__wrapper_arg_1,
+  MR_Box check_hlds__switch_detection__wrapper_arg_2);
+
+static void MR_CALL 
+check_hlds__switch_detection____Compare____allow_multi_arm_0_0_10001(
+  MR_Box * check_hlds__switch_detection__wrapper_arg_1,
+  MR_Box check_hlds__switch_detection__wrapper_arg_2,
+  MR_Box check_hlds__switch_detection__wrapper_arg_3);
+
+static MR_bool MR_CALL 
+check_hlds__switch_detection____Unify____candidate_switch_0_0_10001(
+  MR_Box check_hlds__switch_detection__wrapper_arg_1,
+  MR_Box check_hlds__switch_detection__wrapper_arg_2);
+
+static void MR_CALL 
+check_hlds__switch_detection____Compare____candidate_switch_0_0_10001(
+  MR_Box * check_hlds__switch_detection__wrapper_arg_1,
+  MR_Box check_hlds__switch_detection__wrapper_arg_2,
+  MR_Box check_hlds__switch_detection__wrapper_arg_3);
+
+static MR_bool MR_CALL 
+check_hlds__switch_detection____Unify____candidate_switch_rank_0_0_10001(
+  MR_Box check_hlds__switch_detection__wrapper_arg_1,
+  MR_Box check_hlds__switch_detection__wrapper_arg_2);
+
+static void MR_CALL 
+check_hlds__switch_detection____Compare____candidate_switch_rank_0_0_10001(
+  MR_Box * check_hlds__switch_detection__wrapper_arg_1,
+  MR_Box check_hlds__switch_detection__wrapper_arg_2,
+  MR_Box check_hlds__switch_detection__wrapper_arg_3);
+
+static MR_bool MR_CALL 
+check_hlds__switch_detection____Unify____case_arm_0_0_10001(
+  MR_Box check_hlds__switch_detection__wrapper_arg_1,
+  MR_Box check_hlds__switch_detection__wrapper_arg_2);
+
+static void MR_CALL 
+check_hlds__switch_detection____Compare____case_arm_0_0_10001(
+  MR_Box * check_hlds__switch_detection__wrapper_arg_1,
+  MR_Box check_hlds__switch_detection__wrapper_arg_2,
+  MR_Box check_hlds__switch_detection__wrapper_arg_3);
+
+static MR_bool MR_CALL 
+check_hlds__switch_detection____Unify____cases_missing_0_0_10001(
+  MR_Box check_hlds__switch_detection__wrapper_arg_1,
+  MR_Box check_hlds__switch_detection__wrapper_arg_2);
+
+static void MR_CALL 
+check_hlds__switch_detection____Compare____cases_missing_0_0_10001(
+  MR_Box * check_hlds__switch_detection__wrapper_arg_1,
+  MR_Box check_hlds__switch_detection__wrapper_arg_2,
+  MR_Box check_hlds__switch_detection__wrapper_arg_3);
+
+static MR_bool MR_CALL 
+check_hlds__switch_detection____Unify____cases_table_0_0_10001(
+  MR_Box check_hlds__switch_detection__wrapper_arg_1,
+  MR_Box check_hlds__switch_detection__wrapper_arg_2);
+
+static void MR_CALL 
+check_hlds__switch_detection____Compare____cases_table_0_0_10001(
+  MR_Box * check_hlds__switch_detection__wrapper_arg_1,
+  MR_Box check_hlds__switch_detection__wrapper_arg_2,
+  MR_Box check_hlds__switch_detection__wrapper_arg_3);
+
+static MR_bool MR_CALL 
+check_hlds__switch_detection____Unify____cons_id_entry_0_0_10001(
+  MR_Box check_hlds__switch_detection__wrapper_arg_1,
+  MR_Box check_hlds__switch_detection__wrapper_arg_2);
+
+static void MR_CALL 
+check_hlds__switch_detection____Compare____cons_id_entry_0_0_10001(
+  MR_Box * check_hlds__switch_detection__wrapper_arg_1,
+  MR_Box check_hlds__switch_detection__wrapper_arg_2,
+  MR_Box check_hlds__switch_detection__wrapper_arg_3);
+
+static MR_bool MR_CALL 
+check_hlds__switch_detection____Unify____cons_id_state_0_0_10001(
+  MR_Box check_hlds__switch_detection__wrapper_arg_1,
+  MR_Box check_hlds__switch_detection__wrapper_arg_2);
+
+static void MR_CALL 
+check_hlds__switch_detection____Compare____cons_id_state_0_0_10001(
+  MR_Box * check_hlds__switch_detection__wrapper_arg_1,
+  MR_Box check_hlds__switch_detection__wrapper_arg_2,
+  MR_Box check_hlds__switch_detection__wrapper_arg_3);
+
+static MR_bool MR_CALL 
+check_hlds__switch_detection____Unify____deconstruct_search_0_0_10001(
+  MR_Box check_hlds__switch_detection__wrapper_arg_1,
+  MR_Box check_hlds__switch_detection__wrapper_arg_2);
+
+static void MR_CALL 
+check_hlds__switch_detection____Compare____deconstruct_search_0_0_10001(
+  MR_Box * check_hlds__switch_detection__wrapper_arg_1,
+  MR_Box check_hlds__switch_detection__wrapper_arg_2,
+  MR_Box check_hlds__switch_detection__wrapper_arg_3);
+
+static MR_bool MR_CALL 
+check_hlds__switch_detection____Unify____found_deconstruct_0_0_10001(
+  MR_Box check_hlds__switch_detection__wrapper_arg_1,
+  MR_Box check_hlds__switch_detection__wrapper_arg_2);
+
+static void MR_CALL 
+check_hlds__switch_detection____Compare____found_deconstruct_0_0_10001(
+  MR_Box * check_hlds__switch_detection__wrapper_arg_1,
+  MR_Box check_hlds__switch_detection__wrapper_arg_2,
+  MR_Box check_hlds__switch_detection__wrapper_arg_3);
+
+static MR_bool MR_CALL 
+check_hlds__switch_detection____Unify____local_switch_detect_info_0_0_10001(
+  MR_Box check_hlds__switch_detection__wrapper_arg_1,
+  MR_Box check_hlds__switch_detection__wrapper_arg_2);
+
+static void MR_CALL 
+check_hlds__switch_detection____Compare____local_switch_detect_info_0_0_10001(
+  MR_Box * check_hlds__switch_detection__wrapper_arg_1,
+  MR_Box check_hlds__switch_detection__wrapper_arg_2,
+  MR_Box check_hlds__switch_detection__wrapper_arg_3);
+
+static MR_bool MR_CALL 
+check_hlds__switch_detection____Unify____process_unify_2_0_10001(
+  MR_Box check_hlds__switch_detection__wrapper_arg_1,
+  MR_Box check_hlds__switch_detection__wrapper_arg_2,
+  MR_Box check_hlds__switch_detection__wrapper_arg_3,
+  MR_Box check_hlds__switch_detection__wrapper_arg_4);
+
+static void MR_CALL 
+check_hlds__switch_detection____Compare____process_unify_2_0_10001(
+  MR_Box check_hlds__switch_detection__wrapper_arg_1,
+  MR_Box check_hlds__switch_detection__wrapper_arg_2,
+  MR_Box * check_hlds__switch_detection__wrapper_arg_3,
+  MR_Box check_hlds__switch_detection__wrapper_arg_4,
+  MR_Box check_hlds__switch_detection__wrapper_arg_5);
+
+static MR_bool MR_CALL 
+check_hlds__switch_detection____Unify____switch_detect_info_0_0_10001(
+  MR_Box check_hlds__switch_detection__wrapper_arg_1,
+  MR_Box check_hlds__switch_detection__wrapper_arg_2);
+
+static void MR_CALL 
+check_hlds__switch_detection____Compare____switch_detect_info_0_0_10001(
+  MR_Box * check_hlds__switch_detection__wrapper_arg_1,
+  MR_Box check_hlds__switch_detection__wrapper_arg_2,
+  MR_Box check_hlds__switch_detection__wrapper_arg_3);
+
+static void MR_CALL 
+check_hlds__switch_detection__f_85_110_117_115_101_100_65_114_103_115_95_95_112_114_101_100_95_95_99_111_110_106_95_102_105_110_100_95_98_105_110_100_95_118_97_114_95_95_91_49_44_32_50_93_95_48_11_p_0(
+  MR_Word check_hlds__switch_detection__HeadVar__1_1,
+  MR_Word check_hlds__switch_detection__ProcessUnify_2,
+  MR_Word check_hlds__switch_detection__HeadVar__3_3,
+  MR_Word * check_hlds__switch_detection__HeadVar__4_4,
+  MR_Word check_hlds__switch_detection__STATE_VARIABLE_Subst_0_5,
+  MR_Word * check_hlds__switch_detection__STATE_VARIABLE_Subst_6,
+  MR_Box check_hlds__switch_detection__STATE_VARIABLE_Result_0_7,
+  MR_Box * check_hlds__switch_detection__STATE_VARIABLE_Result_8,
+  MR_Box check_hlds__switch_detection__STATE_VARIABLE_Info_0_9,
+  MR_Box * check_hlds__switch_detection__STATE_VARIABLE_Info_10,
+  MR_Word * check_hlds__switch_detection__HeadVar__11_11);
+
+static void MR_CALL 
+check_hlds__switch_detection__f_85_110_117_115_101_100_65_114_103_115_95_95_112_114_101_100_95_95_102_105_110_100_95_98_105_110_100_95_118_97_114_95_50_95_95_91_49_44_32_50_93_95_48_11_p_0(
+  MR_Word check_hlds__switch_detection__Var_12,
+  MR_Word check_hlds__switch_detection__ProcessUnify_13,
+  MR_Word check_hlds__switch_detection__Goal0_14,
+  MR_Word * check_hlds__switch_detection__Goal_15,
+  MR_Word check_hlds__switch_detection__STATE_VARIABLE_Subst_0_87,
+  MR_Word * check_hlds__switch_detection__STATE_VARIABLE_Subst_88,
+  MR_Box check_hlds__switch_detection__STATE_VARIABLE_Result_0_89,
+  MR_Box * check_hlds__switch_detection__STATE_VARIABLE_Result_90,
+  MR_Box check_hlds__switch_detection__STATE_VARIABLE_Info_0_91,
+  MR_Box * check_hlds__switch_detection__STATE_VARIABLE_Info_92,
+  MR_Word * check_hlds__switch_detection__FoundDeconstruct_19);
+
+static void MR_CALL 
+check_hlds__switch_detection__f_85_110_117_115_101_100_65_114_103_115_95_95_112_114_101_100_95_95_102_105_110_100_95_98_105_110_100_95_118_97_114_95_102_111_114_95_115_119_105_116_99_104_95_105_110_95_100_101_99_111_110_115_116_114_117_99_116_95_95_91_52_44_32_54_93_95_48_7_p_0(
+  MR_Word check_hlds__switch_detection__SwitchVar_8,
+  MR_Word check_hlds__switch_detection__Goal0_9,
+  MR_Word * check_hlds__switch_detection__Goals_10,
+  MR_Word * check_hlds__switch_detection__Result_12);
+
+static void MR_CALL 
+check_hlds__switch_detection__IntroducedFrom__pred__delete_covered_functors__1502__1_3_p_0(
+  MR_Word check_hlds__switch_detection__HeadVar__1_20,
+  MR_Word check_hlds__switch_detection__HeadVar__2_21,
+  MR_Word * check_hlds__switch_detection__HeadVar__3_22);
+
+static MR_bool MR_CALL 
+check_hlds__switch_detection__IntroducedFrom__pred__convert_case__527__1_2_p_0(
+  MR_Word check_hlds__switch_detection__ConflictConsIds_9,
+  MR_Word check_hlds__switch_detection__HeadVar__2_92);
+
+static MR_bool MR_CALL 
+check_hlds__switch_detection__IntroducedFrom__pred__convert_case__490__1_2_p_0(
+  MR_Word check_hlds__switch_detection__IsMember_18,
+  MR_Word check_hlds__switch_detection__HeadVar__2_62);
+
+static MR_bool MR_CALL 
+check_hlds__switch_detection__IntroducedFrom__pred__convert_case__500__1_2_p_0(
+  MR_Word check_hlds__switch_detection__HeadVar__1_54,
+  MR_Word check_hlds__switch_detection__IsMember_66);
+
+static MR_bool MR_CALL 
+check_hlds__switch_detection__IntroducedFrom__pred__convert_case__482__1_2_p_0(
+  MR_Word check_hlds__switch_detection__HeadVar__1_39,
+  MR_Word check_hlds__switch_detection__HeadVar__2_96);
+
+static void MR_CALL 
+check_hlds__switch_detection____Compare____local_switch_detect_info_0_0(
+  MR_Word * check_hlds__switch_detection__HeadVar__1_1,
+  MR_Word check_hlds__switch_detection__HeadVar__2_2,
+  MR_Word check_hlds__switch_detection__HeadVar__3_3);
+
+static MR_bool MR_CALL 
+check_hlds__switch_detection____Unify____local_switch_detect_info_0_0(
+  MR_Word check_hlds__switch_detection__HeadVar__1_1,
+  MR_Word check_hlds__switch_detection__HeadVar__2_2);
+
+static void MR_CALL 
+check_hlds__switch_detection____Compare____deconstruct_search_0_0(
+  MR_Word * check_hlds__switch_detection__HeadVar__1_1,
+  MR_Word check_hlds__switch_detection__HeadVar__2_2,
+  MR_Word check_hlds__switch_detection__HeadVar__3_3);
+
+static MR_bool MR_CALL 
+check_hlds__switch_detection____Unify____deconstruct_search_0_0(
+  MR_Word check_hlds__switch_detection__HeadVar__2_1,
+  MR_Word check_hlds__switch_detection__HeadVar__2_2);
+
+static void MR_CALL 
+check_hlds__switch_detection____Compare____cons_id_state_0_0(
+  MR_Word * check_hlds__switch_detection__HeadVar__1_1,
+  MR_Word check_hlds__switch_detection__HeadVar__2_2,
+  MR_Word check_hlds__switch_detection__HeadVar__3_3);
+
+static MR_bool MR_CALL 
+check_hlds__switch_detection____Unify____cons_id_state_0_0(
+  MR_Word check_hlds__switch_detection__HeadVar__2_1,
+  MR_Word check_hlds__switch_detection__HeadVar__2_2);
+
+static void MR_CALL 
+check_hlds__switch_detection____Compare____cons_id_entry_0_0(
+  MR_Word * check_hlds__switch_detection__HeadVar__1_1,
+  MR_Word check_hlds__switch_detection__HeadVar__2_2,
+  MR_Word check_hlds__switch_detection__HeadVar__3_3);
+
+static MR_bool MR_CALL 
+check_hlds__switch_detection____Unify____cons_id_entry_0_0(
+  MR_Word check_hlds__switch_detection__HeadVar__1_1,
+  MR_Word check_hlds__switch_detection__HeadVar__2_2);
+
+static void MR_CALL 
+check_hlds__switch_detection____Compare____cases_table_0_0(
+  MR_Word * check_hlds__switch_detection__HeadVar__1_1,
+  MR_Word check_hlds__switch_detection__HeadVar__2_2,
+  MR_Word check_hlds__switch_detection__HeadVar__3_3);
+
+static MR_bool MR_CALL 
+check_hlds__switch_detection____Unify____cases_table_0_0(
+  MR_Word check_hlds__switch_detection__HeadVar__1_1,
+  MR_Word check_hlds__switch_detection__HeadVar__2_2);
+
+static void MR_CALL 
+check_hlds__switch_detection____Compare____cases_missing_0_0(
+  MR_Word * check_hlds__switch_detection__HeadVar__1_1,
+  MR_Word check_hlds__switch_detection__HeadVar__2_2,
+  MR_Word check_hlds__switch_detection__HeadVar__3_3);
+
+static MR_bool MR_CALL 
+check_hlds__switch_detection____Unify____cases_missing_0_0(
+  MR_Word check_hlds__switch_detection__HeadVar__2_1,
+  MR_Word check_hlds__switch_detection__HeadVar__2_2);
+
+static void MR_CALL 
+check_hlds__switch_detection____Compare____case_arm_0_0(
+  MR_Word * check_hlds__switch_detection__HeadVar__1_1,
+  MR_Word check_hlds__switch_detection__HeadVar__2_2,
+  MR_Word check_hlds__switch_detection__HeadVar__3_3);
+
+static MR_bool MR_CALL 
+check_hlds__switch_detection____Unify____case_arm_0_0(
+  MR_Word check_hlds__switch_detection__HeadVar__1_1,
+  MR_Word check_hlds__switch_detection__HeadVar__2_2);
+
+static void MR_CALL 
+check_hlds__switch_detection____Compare____candidate_switch_rank_0_0(
+  MR_Word * check_hlds__switch_detection__HeadVar__1_1,
+  MR_Word check_hlds__switch_detection__HeadVar__2_2,
+  MR_Word check_hlds__switch_detection__HeadVar__3_3);
+
+static MR_bool MR_CALL 
+check_hlds__switch_detection____Unify____candidate_switch_rank_0_0(
+  MR_Word check_hlds__switch_detection__HeadVar__1_1,
+  MR_Word check_hlds__switch_detection__HeadVar__2_2);
+
+static void MR_CALL 
+check_hlds__switch_detection____Compare____candidate_switch_0_0(
+  MR_Word * check_hlds__switch_detection__HeadVar__1_1,
+  MR_Word check_hlds__switch_detection__HeadVar__2_2,
+  MR_Word check_hlds__switch_detection__HeadVar__3_3);
+
+static MR_bool MR_CALL 
+check_hlds__switch_detection____Unify____candidate_switch_0_0(
+  MR_Word check_hlds__switch_detection__HeadVar__1_1,
+  MR_Word check_hlds__switch_detection__HeadVar__2_2);
+
+static void MR_CALL 
+check_hlds__switch_detection____Compare____allow_multi_arm_0_0(
+  MR_Word * check_hlds__switch_detection__HeadVar__1_1,
+  MR_Word check_hlds__switch_detection__HeadVar__2_2,
+  MR_Word check_hlds__switch_detection__HeadVar__3_3);
+
+static MR_bool MR_CALL 
+check_hlds__switch_detection____Unify____allow_multi_arm_0_0(
+  MR_Word check_hlds__switch_detection__HeadVar__2_1,
+  MR_Word check_hlds__switch_detection__HeadVar__2_2);
+
+static MR_Integer MR_CALL 
+check_hlds__switch_detection__count_covered_cons_ids_1_f_0(
+  MR_Word check_hlds__switch_detection__HeadVar__1_1);
+
+static void MR_CALL 
+check_hlds__switch_detection__delete_covered_functors_3_p_0_1(
+  MR_Box check_hlds__switch_detection__closure_arg,
+  MR_Box check_hlds__switch_detection__wrapper_arg_1,
+  MR_Box check_hlds__switch_detection__wrapper_arg_2,
+  MR_Box * check_hlds__switch_detection__wrapper_arg_3);
+
+static void MR_CALL 
+check_hlds__switch_detection__delete_covered_functors_3_p_0(
+  MR_Word check_hlds__switch_detection__HeadVar__1_1,
+  MR_Word check_hlds__switch_detection__STATE_VARIABLE_UncoveredConsIds_0_2,
+  MR_Word * check_hlds__switch_detection__STATE_VARIABLE_UncoveredConsIds_3);
+
+static void MR_CALL 
+check_hlds__switch_detection__find_bind_var_for_switch_in_deconstruct_7_p_0(
+  MR_Word check_hlds__switch_detection__SwitchVar_8,
+  MR_Word check_hlds__switch_detection__Goal0_9,
+  MR_Word * check_hlds__switch_detection__Goals_10,
+  MR_Word check_hlds__switch_detection___Result0_11,
+  MR_Word * check_hlds__switch_detection__Result_12);
+
+static void MR_CALL 
+check_hlds__switch_detection__partition_disj_trial_6_p_0_1(
+  MR_Box check_hlds__switch_detection__closure_arg,
+  MR_Box check_hlds__switch_detection__wrapper_arg_1,
+  MR_Box check_hlds__switch_detection__wrapper_arg_2,
+  MR_Box * check_hlds__switch_detection__wrapper_arg_3,
+  MR_Box check_hlds__switch_detection__wrapper_arg_4,
+  MR_Box * check_hlds__switch_detection__wrapper_arg_5,
+  MR_Box check_hlds__switch_detection__wrapper_arg_6,
+  MR_Box * check_hlds__switch_detection__wrapper_arg_7);
+
+static void MR_CALL 
+check_hlds__switch_detection__partition_disj_trial_6_p_0(
+  MR_Word check_hlds__switch_detection__HeadVar__1_1,
+  MR_Word check_hlds__switch_detection__HeadVar__2_2,
+  MR_Word check_hlds__switch_detection__STATE_VARIABLE_Left_0_3,
+  MR_Word * check_hlds__switch_detection__STATE_VARIABLE_Left_4,
+  MR_Word check_hlds__switch_detection__STATE_VARIABLE_CasesTable_0_5,
+  MR_Word * check_hlds__switch_detection__STATE_VARIABLE_CasesTable_6);
+
+static void MR_CALL 
+check_hlds__switch_detection__create_expanded_conjunction_5_p_0(
+  MR_Word check_hlds__switch_detection__Unifies_6,
+  MR_Word check_hlds__switch_detection__LaterGoals_7,
+  MR_Word check_hlds__switch_detection__GoalInfo_8,
+  MR_Word check_hlds__switch_detection__Disjunct_9,
+  MR_Word * check_hlds__switch_detection__Goal_10);
+
+static MR_bool MR_CALL 
+check_hlds__switch_detection__all_disjuncts_are_switch_var_unifies_3_p_0(
+  MR_Word check_hlds__switch_detection__HeadVar__1_1,
+  MR_Word check_hlds__switch_detection__HeadVar__2_2,
+  MR_Word * check_hlds__switch_detection__HeadVar__3_3);
+
+static void MR_CALL 
+check_hlds__switch_detection__expand_sub_disj_process_conj_7_p_0_2(
+  MR_Box check_hlds__switch_detection__closure_arg,
+  MR_Box check_hlds__switch_detection__wrapper_arg_1,
+  MR_Box * check_hlds__switch_detection__wrapper_arg_2);
+
+static void MR_CALL 
+check_hlds__switch_detection__expand_sub_disj_process_conj_7_p_0_1(
+  MR_Box check_hlds__switch_detection__closure_arg,
+  MR_Box check_hlds__switch_detection__wrapper_arg_1,
+  MR_Box check_hlds__switch_detection__wrapper_arg_2,
+  MR_Box * check_hlds__switch_detection__wrapper_arg_3);
+
+static MR_bool MR_CALL 
+check_hlds__switch_detection__expand_sub_disj_process_conj_7_p_0(
+  MR_Word check_hlds__switch_detection__AllowMulti_8,
+  MR_Word check_hlds__switch_detection__Var_9,
+  MR_Word check_hlds__switch_detection__ConjGoals_10,
+  MR_Word check_hlds__switch_detection__STATE_VARIABLE_RevUnifies_0_36,
+  MR_Word check_hlds__switch_detection__GoalInfo_12,
+  MR_Word check_hlds__switch_detection__STATE_VARIABLE_CasesTable_0_37,
+  MR_Word * check_hlds__switch_detection__STATE_VARIABLE_CasesTable_38);
+
+static MR_bool MR_CALL 
+check_hlds__switch_detection__expand_sub_disjs_5_p_0(
+  MR_Word check_hlds__switch_detection__HeadVar__1_1,
+  MR_Word check_hlds__switch_detection__HeadVar__2_2,
+  MR_Word check_hlds__switch_detection__HeadVar__3_3,
+  MR_Word check_hlds__switch_detection__STATE_VARIABLE_CasesTable_0_4,
+  MR_Word * check_hlds__switch_detection__STATE_VARIABLE_CasesTable_5);
+
+static void MR_CALL 
+check_hlds__switch_detection__partition_disj_7_p_0_2(
+  MR_Box check_hlds__switch_detection__closure_arg,
+  MR_Box check_hlds__switch_detection__wrapper_arg_1,
+  MR_Box check_hlds__switch_detection__wrapper_arg_2,
+  MR_Box * check_hlds__switch_detection__wrapper_arg_3,
+  MR_Box check_hlds__switch_detection__wrapper_arg_4,
+  MR_Box * check_hlds__switch_detection__wrapper_arg_5);
+
+static void MR_CALL 
+check_hlds__switch_detection__partition_disj_7_p_0_1(
+  MR_Box check_hlds__switch_detection__closure_arg,
+  MR_Box check_hlds__switch_detection__wrapper_arg_1,
+  MR_Box check_hlds__switch_detection__wrapper_arg_2,
+  MR_Box * check_hlds__switch_detection__wrapper_arg_3,
+  MR_Box check_hlds__switch_detection__wrapper_arg_4,
+  MR_Box * check_hlds__switch_detection__wrapper_arg_5);
+
+static MR_bool MR_CALL 
+check_hlds__switch_detection__partition_disj_7_p_0(
+  MR_Word check_hlds__switch_detection__Disjuncts0_8,
+  MR_Word check_hlds__switch_detection__Var_9,
+  MR_Word check_hlds__switch_detection__GoalInfo_10,
+  MR_Word * check_hlds__switch_detection__Left_11,
+  MR_Word * check_hlds__switch_detection__Cases_12,
+  MR_Word check_hlds__switch_detection__STATE_VARIABLE_LocalInfo_0_21,
+  MR_Word * check_hlds__switch_detection__STATE_VARIABLE_LocalInfo_22);
+
+static void MR_CALL 
+check_hlds__switch_detection__select_best_candidate_switch_3_p_0(
+  MR_Word check_hlds__switch_detection__HeadVar__1_1,
+  MR_Word check_hlds__switch_detection__STATE_VARIABLE_BestCandidate_0_2,
+  MR_Word * check_hlds__switch_detection__STATE_VARIABLE_BestCandidate_3);
+
+static MR_bool MR_CALL 
+check_hlds__switch_detection__is_candidate_switch_8_p_0(
+  MR_Word check_hlds__switch_detection__ModuleInfo_9,
+  MR_Word check_hlds__switch_detection__MaybeRequiredVar_10,
+  MR_Word check_hlds__switch_detection__Var_11,
+  MR_Word check_hlds__switch_detection__VarType_12,
+  MR_Word check_hlds__switch_detection__VarInst0_13,
+  MR_Word check_hlds__switch_detection__Cases0_14,
+  MR_Word check_hlds__switch_detection__LeftOver_15,
+  MR_Word * check_hlds__switch_detection__Candidate_16);
+
+static void MR_CALL 
+check_hlds__switch_detection__detect_switch_candidates_in_disj_9_p_0(
+  MR_Word check_hlds__switch_detection__HeadVar__1_1,
+  MR_Word check_hlds__switch_detection__HeadVar__2_2,
+  MR_Word check_hlds__switch_detection__HeadVar__3_3,
+  MR_Word check_hlds__switch_detection__HeadVar__4_4,
+  MR_Word check_hlds__switch_detection__HeadVar__5_5,
+  MR_Word check_hlds__switch_detection__STATE_VARIABLE_Candidates_0_6,
+  MR_Word * check_hlds__switch_detection__STATE_VARIABLE_Candidates_7,
+  MR_Word check_hlds__switch_detection__STATE_VARIABLE_LocalInfo_0_8,
+  MR_Word * check_hlds__switch_detection__STATE_VARIABLE_LocalInfo_9);
+
+static void MR_CALL 
+check_hlds__switch_detection__detect_switches_in_disj_7_p_0(
+  MR_Word check_hlds__switch_detection__GoalInfo_8,
+  MR_Word check_hlds__switch_detection__Disjuncts0_9,
+  MR_Word check_hlds__switch_detection__InstMap0_10,
+  MR_Word check_hlds__switch_detection__MaybeRequiredVar_11,
+  MR_Word * check_hlds__switch_detection__GoalExpr_12,
+  MR_Word check_hlds__switch_detection__STATE_VARIABLE_LocalInfo_0_35,
+  MR_Word * check_hlds__switch_detection__STATE_VARIABLE_LocalInfo_36);
+
+static void MR_CALL 
+check_hlds__switch_detection__add_multi_entry_for_cons_id_4_p_0(
+  MR_Word check_hlds__switch_detection__Arm_5,
+  MR_Word check_hlds__switch_detection__ConsId_6,
+  MR_Word check_hlds__switch_detection__CasesTable0_7,
+  MR_Word * check_hlds__switch_detection__CasesTable_8);
+
+static void MR_CALL 
+check_hlds__switch_detection__gather_smallest_context_3_p_0(
+  MR_Word check_hlds__switch_detection__HeadVar__1_1,
+  MR_Word check_hlds__switch_detection__STATE_VARIABLE_SmallestContext_0_2,
+  MR_Word * check_hlds__switch_detection__STATE_VARIABLE_SmallestContext_3);
+
+static void MR_CALL 
+check_hlds__switch_detection__use_context_of_first_disjunct_3_p_0(
+  MR_Word check_hlds__switch_detection__Disjuncts_4,
+  MR_Word check_hlds__switch_detection__GoalInfo0_5,
+  MR_Word * check_hlds__switch_detection__GoalInfo_6);
+
+static MR_Word MR_CALL 
+check_hlds__switch_detection__project_single_arm_goal_1_f_0(
+  MR_Word check_hlds__switch_detection__HeadVar__1_1);
+
+static MR_Word MR_CALL 
+check_hlds__switch_detection__project_arm_goal_1_f_0(
+  MR_Word check_hlds__switch_detection__HeadVar__1_1);
+
+static MR_bool MR_CALL 
+check_hlds__switch_detection__convert_case_7_p_0_6(
+  MR_Box check_hlds__switch_detection__closure_arg,
+  MR_Box check_hlds__switch_detection__wrapper_arg_1);
+
+static MR_Box MR_CALL 
+check_hlds__switch_detection__convert_case_7_p_0_5(
+  MR_Box check_hlds__switch_detection__closure_arg,
+  MR_Box check_hlds__switch_detection__wrapper_arg_1);
+
+static MR_bool MR_CALL 
+check_hlds__switch_detection__convert_case_7_p_0_4(
+  MR_Box check_hlds__switch_detection__closure_arg);
+
+static MR_Box MR_CALL 
+check_hlds__switch_detection__convert_case_7_p_0_3(
+  MR_Box check_hlds__switch_detection__closure_arg,
+  MR_Box check_hlds__switch_detection__wrapper_arg_1);
+
+static MR_bool MR_CALL 
+check_hlds__switch_detection__convert_case_7_p_0_2(
+  MR_Box check_hlds__switch_detection__closure_arg);
+
+static MR_bool MR_CALL 
+check_hlds__switch_detection__convert_case_7_p_0_1(
+  MR_Box check_hlds__switch_detection__closure_arg);
+
+static void MR_CALL 
+check_hlds__switch_detection__convert_case_7_p_0(
+  MR_Word check_hlds__switch_detection__GoalInfo0_8,
+  MR_Word check_hlds__switch_detection__ConflictConsIds_9,
+  MR_Word check_hlds__switch_detection__HeadVar__3_3,
+  MR_Word check_hlds__switch_detection__STATE_VARIABLE_Cases_0_31,
+  MR_Word * check_hlds__switch_detection__STATE_VARIABLE_Cases_32,
+  MR_Word check_hlds__switch_detection__STATE_VARIABLE_AlreadyHandledConsIds_0_33,
+  MR_Word * check_hlds__switch_detection__STATE_VARIABLE_AlreadyHandledConsIds_34);
+
+static void MR_CALL 
+check_hlds__switch_detection__convert_cases_table_2_f_0_1(
+  MR_Box check_hlds__switch_detection__closure_arg,
+  MR_Box check_hlds__switch_detection__wrapper_arg_1,
+  MR_Box check_hlds__switch_detection__wrapper_arg_2,
+  MR_Box * check_hlds__switch_detection__wrapper_arg_3,
+  MR_Box check_hlds__switch_detection__wrapper_arg_4,
+  MR_Box * check_hlds__switch_detection__wrapper_arg_5);
+
+static MR_Word MR_CALL 
+check_hlds__switch_detection__convert_cases_table_2_f_0(
+  MR_Word check_hlds__switch_detection__GoalInfo_4,
+  MR_Word check_hlds__switch_detection__CasesTable_5);
+
+static void MR_CALL 
+check_hlds__switch_detection__detect_switches_in_orelse_5_p_0(
+  MR_Word check_hlds__switch_detection__InstMap_1,
+  MR_Word check_hlds__switch_detection__HeadVar__2_2,
+  MR_Word * check_hlds__switch_detection__HeadVar__3_3,
+  MR_Word check_hlds__switch_detection__STATE_VARIABLE_LocalInfo_0_4,
+  MR_Word * check_hlds__switch_detection__STATE_VARIABLE_LocalInfo_5);
+
+static void MR_CALL 
+check_hlds__switch_detection__detect_switches_in_conj_5_p_0(
+  MR_Word check_hlds__switch_detection__InstMap0_1,
+  MR_Word check_hlds__switch_detection__HeadVar__2_2,
+  MR_Word * check_hlds__switch_detection__HeadVar__3_3,
+  MR_Word check_hlds__switch_detection__STATE_VARIABLE_LocalInfo_0_4,
+  MR_Word * check_hlds__switch_detection__STATE_VARIABLE_LocalInfo_5);
+
+static void MR_CALL 
+check_hlds__switch_detection__detect_switches_in_cases_6_p_0(
+  MR_Word check_hlds__switch_detection__Var_1,
+  MR_Word check_hlds__switch_detection__InstMap0_2,
+  MR_Word check_hlds__switch_detection__HeadVar__3_3,
+  MR_Word * check_hlds__switch_detection__HeadVar__4_4,
+  MR_Word check_hlds__switch_detection__STATE_VARIABLE_LocalInfo_0_5,
+  MR_Word * check_hlds__switch_detection__STATE_VARIABLE_LocalInfo_6);
+
+static void MR_CALL 
+check_hlds__switch_detection__detect_sub_switches_in_disj_5_p_0(
+  MR_Word check_hlds__switch_detection__InstMap_1,
+  MR_Word check_hlds__switch_detection__HeadVar__2_2,
+  MR_Word * check_hlds__switch_detection__HeadVar__3_3,
+  MR_Word check_hlds__switch_detection__STATE_VARIABLE_LocalInfo_0_4,
+  MR_Word * check_hlds__switch_detection__STATE_VARIABLE_LocalInfo_5);
+
+static void MR_CALL 
+check_hlds__switch_detection__detect_switches_in_goal_expr_7_p_0(
+  MR_Word check_hlds__switch_detection__InstMap0_8,
+  MR_Word check_hlds__switch_detection__MaybeRequiredVar_9,
+  MR_Word check_hlds__switch_detection__GoalInfo_10,
+  MR_Word check_hlds__switch_detection__GoalExpr0_11,
+  MR_Word * check_hlds__switch_detection__GoalExpr_12,
+  MR_Word check_hlds__switch_detection__STATE_VARIABLE_LocalInfo_0_111,
+  MR_Word * check_hlds__switch_detection__STATE_VARIABLE_LocalInfo_112);
+
+static void MR_CALL 
+check_hlds__switch_detection__detect_switches_in_goal_update_instmap_6_p_0(
+  MR_Word check_hlds__switch_detection__STATE_VARIABLE_InstMap_0_14,
+  MR_Word * check_hlds__switch_detection__STATE_VARIABLE_InstMap_15,
+  MR_Word check_hlds__switch_detection__Goal0_8,
+  MR_Word * check_hlds__switch_detection__Goal_9,
+  MR_Word check_hlds__switch_detection__STATE_VARIABLE_LocalInfo_0_16,
+  MR_Word * check_hlds__switch_detection__STATE_VARIABLE_LocalInfo_17);
+
+static void MR_CALL 
+check_hlds__switch_detection__detect_switches_in_goal_6_p_0(
+  MR_Word check_hlds__switch_detection__InstMap0_7,
+  MR_Word check_hlds__switch_detection__MaybeRequiredVar_8,
+  MR_Word check_hlds__switch_detection__Goal0_9,
+  MR_Word * check_hlds__switch_detection__Goal_10,
+  MR_Word check_hlds__switch_detection__STATE_VARIABLE_LocalInfo_0_15,
+  MR_Word * check_hlds__switch_detection__STATE_VARIABLE_LocalInfo_16);
+
+static void MR_CALL 
+check_hlds__switch_detection__detect_switches_in_procs_4_p_0(
+  MR_Word check_hlds__switch_detection__HeadVar__1_1,
+  MR_Word check_hlds__switch_detection__HeadVar__2_2,
+  MR_Word check_hlds__switch_detection__HeadVar__3_3,
+  MR_Word * check_hlds__switch_detection__HeadVar__4_4);
+
+static void MR_CALL 
+check_hlds__switch_detection__detect_switches_in_preds_4_p_0(
+  MR_Word check_hlds__switch_detection__Info_1,
+  MR_Word check_hlds__switch_detection__ValidPredIdSet_2,
+  MR_Word check_hlds__switch_detection__HeadVar__3_3,
+  MR_Word * check_hlds__switch_detection__HeadVar__4_4);
+
+
+static /* final */ const MR_Box check_hlds__switch_detection_scalar_common_1[9][2];
+
+static /* final */ const MR_Box check_hlds__switch_detection_scalar_common_2[7][3];
+
+static /* final */ const MR_Box check_hlds__switch_detection_scalar_common_3[2][10];
+
+static /* final */ const MR_Box check_hlds__switch_detection_scalar_common_4[4][5];
+
+static /* final */ const MR_Box check_hlds__switch_detection_scalar_common_5[1][7];
+
+static /* final */ const MR_Box check_hlds__switch_detection_scalar_common_6[1][8];
+
+static /* final */ const MR_Box check_hlds__switch_detection_scalar_common_7[1][6];
+
+
+
+
+static /* final */ const MR_Box check_hlds__switch_detection_scalar_common_1[9][2] = {
+  /* row 0 */
+  {
+    ((MR_Box) (&mercury__term__term__type_ctor_info_var_1)),
+    ((MR_Box) (&parse_tree__prog_data__parse_tree__prog_data__type_ctor_info_prog_var_type_0))
+  },
+  /* row 1 */
+  {
+    ((MR_Box) (&mercury__term__term__type_ctor_info_term_1)),
+    ((MR_Box) (&parse_tree__prog_data__parse_tree__prog_data__type_ctor_info_prog_var_type_0))
+  },
+  /* row 2 */
+  {
+    ((MR_Box) (&mercury__list__list__type_ctor_info_list_1)),
+    ((MR_Box) (&hlds__hlds_goal__hlds__hlds_goal__type_ctor_info_case_0))
+  },
+  /* row 3 */
+  {
+    ((MR_Box) (&mercury__set_tree234__set_tree234__type_ctor_info_set_tree234_1)),
+    ((MR_Box) (&parse_tree__prog_data__parse_tree__prog_data__type_ctor_info_cons_id_0))
+  },
+  /* row 4 */
+  {
+    ((MR_Box) (&mercury__list__list__type_ctor_info_list_1)),
+    ((MR_Box) (&hlds__hlds_goal__hlds__hlds_goal__type_ctor_info_hlds_goal_0))
+  },
+  /* row 5 */
+  {
+    ((MR_Box) (&mercury__list__list__type_ctor_info_list_1)),
+    ((MR_Box) (&parse_tree__prog_data__parse_tree__prog_data__type_ctor_info_cons_id_0))
+  },
+  /* row 6 */
+  {
+    ((MR_Box) (&mercury__cord__cord__type_ctor_info_cord_1)),
+    ((MR_Box) (&check_hlds__switch_detection__check_hlds__switch_detection__type_ctor_info_case_arm_0))
+  },
+  /* row 7 */
+  {
+    ((MR_Box) (&mercury__set_ordlist__set_ordlist__type_ctor_info_set_ordlist_1)),
+    ((MR_Box) (&hlds__hlds_pred__hlds__hlds_pred__type_ctor_info_pred_proc_id_0))
+  },
+  /* row 8 */
+  {
+    ((MR_Box) (MR_Word) ((MR_Integer) 3)),
+    ((MR_Box) (MR_mkword(MR_mktag(0), MR_mkbody((MR_Integer) 0))))
+  },
+};
+
+static /* final */ const MR_Box check_hlds__switch_detection_scalar_common_2[7][3] = {
+  /* row 0 */
+  {
+    ((MR_Box) (&mercury__pair__pair__type_ctor_info_pair_2)),
+    ((MR_Box) (&parse_tree__prog_data__parse_tree__prog_data__type_ctor_info_cons_id_0)),
+    ((MR_Box) (&check_hlds__switch_detection__check_hlds__switch_detection__type_ctor_info_cons_id_entry_0))
+  },
+  /* row 1 */
+  {
+    ((MR_Box) (&mercury__tree234__tree234__type_ctor_info_tree234_2)),
+    ((MR_Box) (&parse_tree__prog_data__parse_tree__prog_data__type_ctor_info_cons_id_0)),
+    ((MR_Box) (&check_hlds__switch_detection__check_hlds__switch_detection__type_ctor_info_cons_id_entry_0))
+  },
+  /* row 2 */
+  {
+    ((MR_Box) (&mercury__tree234__tree234__type_ctor_info_tree234_2)),
+    ((MR_Box) (&check_hlds__switch_detection_scalar_common_1[0])),
+    ((MR_Box) (&parse_tree__prog_data__parse_tree__prog_data__type_ctor_info_mer_type_0))
+  },
+  /* row 3 */
+  {
+    ((MR_Box) (&check_hlds__switch_detection_scalar_common_4[2])),
+    ((MR_Box) (check_hlds__switch_detection__convert_case_7_p_0_3)),
+    ((MR_Box) (MR_Word) ((MR_Integer) 0))
+  },
+  /* row 4 */
+  {
+    ((MR_Box) (&check_hlds__switch_detection_scalar_common_4[2])),
+    ((MR_Box) (check_hlds__switch_detection__convert_case_7_p_0_5)),
+    ((MR_Box) (MR_Word) ((MR_Integer) 0))
+  },
+  /* row 5 */
+  {
+    ((MR_Box) (&check_hlds__switch_detection_scalar_common_3[1])),
+    ((MR_Box) (check_hlds__switch_detection__partition_disj_trial_6_p_0_1)),
+    ((MR_Box) (MR_Word) ((MR_Integer) 0))
+  },
+  /* row 6 */
+  {
+    ((MR_Box) (&check_hlds__switch_detection_scalar_common_7[0])),
+    ((MR_Box) (check_hlds__switch_detection__delete_covered_functors_3_p_0_1)),
+    ((MR_Box) (MR_Word) ((MR_Integer) 0))
+  },
+};
+
+static /* final */ const MR_Box check_hlds__switch_detection_scalar_common_3[2][10] = {
+  /* row 0 */
+  {
+    NULL,
+    ((MR_Box) (NULL)),
+    ((MR_Box) (MR_Word) ((MR_Integer) 7)),
+    ((MR_Box) (&hlds__hlds_goal__hlds__hlds_goal__type_ctor_info_hlds_goal_info_0)),
+    ((MR_Box) (&check_hlds__switch_detection__set_tree234__pti_set_tree234_1__plain_parse_tree__prog_data__type_ctor_info_cons_id_0)),
+    ((MR_Box) (&check_hlds__switch_detection__pair__pti_pair_2__plain_parse_tree__prog_data__type_ctor_info_cons_id_0__plain_check_hlds__switch_detection__type_ctor_info_cons_id_entry_0)),
+    ((MR_Box) (&check_hlds__switch_detection__list__pti_list_1__plain_hlds__hlds_goal__type_ctor_info_case_0)),
+    ((MR_Box) (&check_hlds__switch_detection__list__pti_list_1__plain_hlds__hlds_goal__type_ctor_info_case_0)),
+    ((MR_Box) (&check_hlds__switch_detection__set_tree234__pti_set_tree234_1__plain_parse_tree__prog_data__type_ctor_info_cons_id_0)),
+    ((MR_Box) (&check_hlds__switch_detection__set_tree234__pti_set_tree234_1__plain_parse_tree__prog_data__type_ctor_info_cons_id_0))
+  },
+  /* row 1 */
+  {
+    NULL,
+    ((MR_Box) (NULL)),
+    ((MR_Box) (MR_Word) ((MR_Integer) 7)),
+    ((MR_Box) (&check_hlds__switch_detection__term__pti_var_1__plain_parse_tree__prog_data__type_ctor_info_prog_var_type_0)),
+    ((MR_Box) (&hlds__hlds_goal__hlds__hlds_goal__type_ctor_info_hlds_goal_0)),
+    ((MR_Box) (&check_hlds__switch_detection__list__pti_list_1__plain_hlds__hlds_goal__type_ctor_info_hlds_goal_0)),
+    ((MR_Box) (&check_hlds__switch_detection__maybe__pti_maybe_1__plain_parse_tree__prog_data__type_ctor_info_cons_id_0)),
+    ((MR_Box) (&check_hlds__switch_detection__maybe__pti_maybe_1__plain_parse_tree__prog_data__type_ctor_info_cons_id_0)),
+    ((MR_Box) (&mercury__unit__unit__type_ctor_info_unit_0)),
+    ((MR_Box) (&mercury__unit__unit__type_ctor_info_unit_0))
+  },
+};
+
+static /* final */ const MR_Box check_hlds__switch_detection_scalar_common_4[4][5] = {
+  /* row 0 */
+  {
+    NULL,
+    ((MR_Box) (NULL)),
+    ((MR_Box) (MR_Word) ((MR_Integer) 2)),
+    ((MR_Box) (&check_hlds__switch_detection__check_hlds__switch_detection__type_ctor_info_cons_id_state_0)),
+    ((MR_Box) (&check_hlds__switch_detection__check_hlds__switch_detection__type_ctor_info_cons_id_state_0))
+  },
+  /* row 1 */
+  {
+    NULL,
+    ((MR_Box) (NULL)),
+    ((MR_Box) (MR_Word) ((MR_Integer) 2)),
+    ((MR_Box) (&mercury__bool__bool__type_ctor_info_bool_0)),
+    ((MR_Box) (&mercury__bool__bool__type_ctor_info_bool_0))
+  },
+  /* row 2 */
+  {
+    NULL,
+    ((MR_Box) (NULL)),
+    ((MR_Box) (MR_Word) ((MR_Integer) 2)),
+    ((MR_Box) (&check_hlds__switch_detection__check_hlds__switch_detection__type_ctor_info_case_arm_0)),
+    ((MR_Box) (&hlds__hlds_goal__hlds__hlds_goal__type_ctor_info_hlds_goal_0))
+  },
+  /* row 3 */
+  {
+    NULL,
+    ((MR_Box) (NULL)),
+    ((MR_Box) (MR_Word) ((MR_Integer) 2)),
+    ((MR_Box) (&check_hlds__switch_detection__set_tree234__pti_set_tree234_1__plain_parse_tree__prog_data__type_ctor_info_cons_id_0)),
+    ((MR_Box) (&parse_tree__prog_data__parse_tree__prog_data__type_ctor_info_cons_id_0))
+  },
+};
+
+static /* final */ const MR_Box check_hlds__switch_detection_scalar_common_5[1][7] = {
+  /* row 0 */
+  {
+    NULL,
+    ((MR_Box) (NULL)),
+    ((MR_Box) (MR_Word) ((MR_Integer) 4)),
+    ((MR_Box) (&check_hlds__switch_detection__check_hlds__switch_detection__type_ctor_info_case_arm_0)),
+    ((MR_Box) (&parse_tree__prog_data__parse_tree__prog_data__type_ctor_info_cons_id_0)),
+    ((MR_Box) (&check_hlds__switch_detection__check_hlds__switch_detection__type_ctor_info_cases_table_0)),
+    ((MR_Box) (&check_hlds__switch_detection__check_hlds__switch_detection__type_ctor_info_cases_table_0))
+  },
+};
+
+static /* final */ const MR_Box check_hlds__switch_detection_scalar_common_6[1][8] = {
+  /* row 0 */
+  {
+    NULL,
+    ((MR_Box) (NULL)),
+    ((MR_Box) (MR_Word) ((MR_Integer) 5)),
+    ((MR_Box) (&check_hlds__switch_detection__list__pti_list_1__plain_hlds__hlds_goal__type_ctor_info_hlds_goal_0)),
+    ((MR_Box) (&check_hlds__switch_detection__list__pti_list_1__plain_hlds__hlds_goal__type_ctor_info_hlds_goal_0)),
+    ((MR_Box) (&hlds__hlds_goal__hlds__hlds_goal__type_ctor_info_hlds_goal_info_0)),
+    ((MR_Box) (&hlds__hlds_goal__hlds__hlds_goal__type_ctor_info_hlds_goal_0)),
+    ((MR_Box) (&hlds__hlds_goal__hlds__hlds_goal__type_ctor_info_hlds_goal_0))
+  },
+};
+
+static /* final */ const MR_Box check_hlds__switch_detection_scalar_common_7[1][6] = {
+  /* row 0 */
+  {
+    NULL,
+    ((MR_Box) (NULL)),
+    ((MR_Box) (MR_Word) ((MR_Integer) 3)),
+    ((MR_Box) (&parse_tree__prog_data__parse_tree__prog_data__type_ctor_info_cons_id_0)),
+    ((MR_Box) (&check_hlds__switch_detection__set_tree234__pti_set_tree234_1__plain_parse_tree__prog_data__type_ctor_info_cons_id_0)),
+    ((MR_Box) (&check_hlds__switch_detection__set_tree234__pti_set_tree234_1__plain_parse_tree__prog_data__type_ctor_info_cons_id_0))
+  },
+};
+
+
+
+#include "io.mh"
+#include "string.mh"
+#include "time.mh"
+#include "mdbcomp.rtti_access.mh"
+
+
+
+static const MR_FA_PseudoTypeInfo_Struct1 check_hlds__switch_detection__set_tree234__pti_set_tree234_1__plain_parse_tree__prog_data__type_ctor_info_cons_id_0 = {
+  &mercury__set_tree234__set_tree234__type_ctor_info_set_tree234_1,
+  {
+    (MR_PseudoTypeInfo) &parse_tree__prog_data__parse_tree__prog_data__type_ctor_info_cons_id_0
+  }
+};
+
+static const MR_FA_PseudoTypeInfo_Struct2 check_hlds__switch_detection__pair__pti_pair_2__plain_parse_tree__prog_data__type_ctor_info_cons_id_0__plain_check_hlds__switch_detection__type_ctor_info_cons_id_entry_0 = {
+  &mercury__pair__pair__type_ctor_info_pair_2,
+  {
+    (MR_PseudoTypeInfo) &parse_tree__prog_data__parse_tree__prog_data__type_ctor_info_cons_id_0,
+    (MR_PseudoTypeInfo) &check_hlds__switch_detection__check_hlds__switch_detection__type_ctor_info_cons_id_entry_0
+  }
+};
+
+static const MR_FA_PseudoTypeInfo_Struct1 check_hlds__switch_detection__list__pti_list_1__plain_hlds__hlds_goal__type_ctor_info_case_0 = {
+  &mercury__list__list__type_ctor_info_list_1,
+  {
+    (MR_PseudoTypeInfo) &hlds__hlds_goal__hlds__hlds_goal__type_ctor_info_case_0
+  }
+};
+
+static const MR_FA_PseudoTypeInfo_Struct1 check_hlds__switch_detection__list__pti_list_1__plain_hlds__hlds_goal__type_ctor_info_hlds_goal_0 = {
+  &mercury__list__list__type_ctor_info_list_1,
+  {
+    (MR_PseudoTypeInfo) &hlds__hlds_goal__hlds__hlds_goal__type_ctor_info_hlds_goal_0
+  }
+};
+
+static const MR_FA_PseudoTypeInfo_Struct1 check_hlds__switch_detection__term__pti_var_1__plain_parse_tree__prog_data__type_ctor_info_prog_var_type_0 = {
+  &mercury__term__term__type_ctor_info_var_1,
+  {
+    (MR_PseudoTypeInfo) &parse_tree__prog_data__parse_tree__prog_data__type_ctor_info_prog_var_type_0
+  }
+};
+
+static const MR_FA_PseudoTypeInfo_Struct1 check_hlds__switch_detection__maybe__pti_maybe_1__plain_parse_tree__prog_data__type_ctor_info_cons_id_0 = {
+  &mercury__maybe__maybe__type_ctor_info_maybe_1,
+  {
+    (MR_PseudoTypeInfo) &parse_tree__prog_data__parse_tree__prog_data__type_ctor_info_cons_id_0
+  }
+};
+
+static const MR_EnumFunctorDesc check_hlds__switch_detection__check_hlds__switch_detection__enum_functor_desc_allow_multi_arm_0_0 = {
+  (MR_String) "allow_multi_arm",
+  (MR_Integer) 0
+};
+
+static const MR_EnumFunctorDesc check_hlds__switch_detection__check_hlds__switch_detection__enum_functor_desc_allow_multi_arm_0_1 = {
+  (MR_String) "dont_allow_multi_arm",
+  (MR_Integer) 1
+};
+
+static const MR_EnumFunctorDescPtr check_hlds__switch_detection__check_hlds__switch_detection__enum_value_ordered_allow_multi_arm_0[2] = {
+  &check_hlds__switch_detection__check_hlds__switch_detection__enum_functor_desc_allow_multi_arm_0_0,
+  &check_hlds__switch_detection__check_hlds__switch_detection__enum_functor_desc_allow_multi_arm_0_1
+};
+
+static const MR_EnumFunctorDescPtr check_hlds__switch_detection__check_hlds__switch_detection__enum_name_ordered_allow_multi_arm_0[2] = {
+  &check_hlds__switch_detection__check_hlds__switch_detection__enum_functor_desc_allow_multi_arm_0_0,
+  &check_hlds__switch_detection__check_hlds__switch_detection__enum_functor_desc_allow_multi_arm_0_1
+};
+
+static const MR_Integer check_hlds__switch_detection__check_hlds__switch_detection__functor_number_map_allow_multi_arm_0[2] = {
+  (MR_Integer) 0,
+  (MR_Integer) 1
+};
+
+const MR_TypeCtorInfo_Struct check_hlds__switch_detection__check_hlds__switch_detection__type_ctor_info_allow_multi_arm_0 = {
+  (MR_Integer) 0,
+  (MR_Integer) 17,
+  (MR_Integer) -1,
+  mercury__private_builtin__MR_TYPECTOR_REP_ENUM,
+  ((MR_Box) (check_hlds__switch_detection____Unify____allow_multi_arm_0_0_10001)),
+  ((MR_Box) (check_hlds__switch_detection____Compare____allow_multi_arm_0_0_10001)),
+  (MR_String) "check_hlds.switch_detection",
+  (MR_String) "allow_multi_arm",
+  {     check_hlds__switch_detection__check_hlds__switch_detection__enum_name_ordered_allow_multi_arm_0 },
+  {     check_hlds__switch_detection__check_hlds__switch_detection__enum_value_ordered_allow_multi_arm_0 },
+  (MR_Integer) 2,
+  (MR_Integer) 4,
+  check_hlds__switch_detection__check_hlds__switch_detection__functor_number_map_allow_multi_arm_0
+};
+
+static const MR_FA_TypeInfo_Struct1 check_hlds__switch_detection__term__ti_var_1parse_tree__prog_data__type_ctor_info_prog_var_type_0 = {
+  &mercury__term__term__type_ctor_info_var_1,
+  {
+    (MR_TypeInfo) &parse_tree__prog_data__parse_tree__prog_data__type_ctor_info_prog_var_type_0
+  }
+};
+
+static const MR_FA_TypeInfo_Struct1 check_hlds__switch_detection__list__ti_list_1hlds__hlds_goal__type_ctor_info_case_0 = {
+  &mercury__list__list__type_ctor_info_list_1,
+  {
+    (MR_TypeInfo) &hlds__hlds_goal__hlds__hlds_goal__type_ctor_info_case_0
+  }
+};
+
+static const MR_FA_TypeInfo_Struct1 check_hlds__switch_detection__list__ti_list_1hlds__hlds_goal__type_ctor_info_hlds_goal_0 = {
+  &mercury__list__list__type_ctor_info_list_1,
+  {
+    (MR_TypeInfo) &hlds__hlds_goal__hlds__hlds_goal__type_ctor_info_hlds_goal_0
+  }
+};
+
+static const MR_PseudoTypeInfo check_hlds__switch_detection__check_hlds__switch_detection__field_types_candidate_switch_0_0[6] = {
+  (MR_PseudoTypeInfo) &check_hlds__switch_detection__term__ti_var_1parse_tree__prog_data__type_ctor_info_prog_var_type_0,
+  (MR_PseudoTypeInfo) &check_hlds__switch_detection__list__ti_list_1hlds__hlds_goal__type_ctor_info_case_0,
+  (MR_PseudoTypeInfo) &check_hlds__switch_detection__list__ti_list_1hlds__hlds_goal__type_ctor_info_hlds_goal_0,
+  (MR_PseudoTypeInfo) &check_hlds__switch_detection__list__ti_list_1hlds__hlds_goal__type_ctor_info_hlds_goal_0,
+  (MR_PseudoTypeInfo) &check_hlds__switch_detection__check_hlds__switch_detection__type_ctor_info_candidate_switch_rank_0,
+  (MR_PseudoTypeInfo) &parse_tree__prog_data__parse_tree__prog_data__type_ctor_info_can_fail_0
+};
+
+static const MR_ConstString check_hlds__switch_detection__check_hlds__switch_detection__field_names_candidate_switch_0_0[6] = {
+  (MR_String) "cs_var",
+  (MR_String) "cs_cases",
+  (MR_String) "cs_unreachable_case_goals",
+  (MR_String) "cs_left_over_disjuncts",
+  (MR_String) "cs_rank",
+  (MR_String) "cs_can_fail"
+};
+
+static const MR_DuFunctorDesc check_hlds__switch_detection__check_hlds__switch_detection__du_functor_desc_candidate_switch_0_0 = {
+  (MR_String) "candidate_switch",
+  (MR_Integer) 6,
+  (MR_Integer) 0,
+  mercury__private_builtin__MR_SECTAG_NONE,
+  (MR_Integer) 0,
+  (MR_Integer) -1,
+  (MR_Integer) 0,
+  check_hlds__switch_detection__check_hlds__switch_detection__field_types_candidate_switch_0_0,
+  check_hlds__switch_detection__check_hlds__switch_detection__field_names_candidate_switch_0_0,
+  NULL,
+  NULL,
+  mercury__private_builtin__MR_FUNCTOR_SUBTYPE_NONE
+};
+
+static const MR_DuFunctorDescPtr check_hlds__switch_detection__check_hlds__switch_detection__du_stag_ordered_candidate_switch_0_0[1] = {
+  &check_hlds__switch_detection__check_hlds__switch_detection__du_functor_desc_candidate_switch_0_0
+};
+
+static const MR_DuPtagLayout check_hlds__switch_detection__check_hlds__switch_detection__du_ptag_ordered_candidate_switch_0[1] = {
+  {
+    (MR_Integer) 1,
+    mercury__private_builtin__MR_SECTAG_NONE,
+    check_hlds__switch_detection__check_hlds__switch_detection__du_stag_ordered_candidate_switch_0_0
+  }
+};
+
+static const MR_DuFunctorDescPtr check_hlds__switch_detection__check_hlds__switch_detection__du_name_ordered_candidate_switch_0[1] = {
+  &check_hlds__switch_detection__check_hlds__switch_detection__du_functor_desc_candidate_switch_0_0
+};
+
+static const MR_Integer check_hlds__switch_detection__check_hlds__switch_detection__functor_number_map_candidate_switch_0[1] = {
+  (MR_Integer) 0
+};
+
+const MR_TypeCtorInfo_Struct check_hlds__switch_detection__check_hlds__switch_detection__type_ctor_info_candidate_switch_0 = {
+  (MR_Integer) 0,
+  (MR_Integer) 17,
+  (MR_Integer) 1,
+  mercury__private_builtin__MR_TYPECTOR_REP_DU,
+  ((MR_Box) (check_hlds__switch_detection____Unify____candidate_switch_0_0_10001)),
+  ((MR_Box) (check_hlds__switch_detection____Compare____candidate_switch_0_0_10001)),
+  (MR_String) "check_hlds.switch_detection",
+  (MR_String) "candidate_switch",
+  {     check_hlds__switch_detection__check_hlds__switch_detection__du_name_ordered_candidate_switch_0 },
+  {     check_hlds__switch_detection__check_hlds__switch_detection__du_ptag_ordered_candidate_switch_0 },
+  (MR_Integer) 1,
+  (MR_Integer) 4,
+  check_hlds__switch_detection__check_hlds__switch_detection__functor_number_map_candidate_switch_0
+};
+
+static const MR_PseudoTypeInfo check_hlds__switch_detection__check_hlds__switch_detection__field_types_candidate_switch_rank_0_0[1] = {
+  (MR_PseudoTypeInfo) &mercury__builtin__builtin__type_ctor_info_int_0
+};
+
+static const MR_DuFunctorDesc check_hlds__switch_detection__check_hlds__switch_detection__du_functor_desc_candidate_switch_rank_0_0 = {
+  (MR_String) "some_leftover_can_fail",
+  (MR_Integer) 1,
+  (MR_Integer) 0,
+  mercury__private_builtin__MR_SECTAG_NONE,
+  (MR_Integer) 1,
+  (MR_Integer) -1,
+  (MR_Integer) 0,
+  check_hlds__switch_detection__check_hlds__switch_detection__field_types_candidate_switch_rank_0_0,
+  NULL,
+  NULL,
+  NULL,
+  mercury__private_builtin__MR_FUNCTOR_SUBTYPE_NONE
+};
+
+static const MR_PseudoTypeInfo check_hlds__switch_detection__check_hlds__switch_detection__field_types_candidate_switch_rank_0_1[1] = {
+  (MR_PseudoTypeInfo) &mercury__builtin__builtin__type_ctor_info_int_0
+};
+
+static const MR_DuFunctorDesc check_hlds__switch_detection__check_hlds__switch_detection__du_functor_desc_candidate_switch_rank_0_1 = {
+  (MR_String) "some_leftover_cannot_fail",
+  (MR_Integer) 1,
+  (MR_Integer) 0,
+  mercury__private_builtin__MR_SECTAG_NONE,
+  (MR_Integer) 2,
+  (MR_Integer) -1,
+  (MR_Integer) 1,
+  check_hlds__switch_detection__check_hlds__switch_detection__field_types_candidate_switch_rank_0_1,
+  NULL,
+  NULL,
+  NULL,
+  mercury__private_builtin__MR_FUNCTOR_SUBTYPE_NONE
+};
+
+static const MR_DuFunctorDesc check_hlds__switch_detection__check_hlds__switch_detection__du_functor_desc_candidate_switch_rank_0_2 = {
+  (MR_String) "no_leftover_twoplus_cases_finite_can_fail",
+  (MR_Integer) 0,
+  (MR_Integer) 0,
+  mercury__private_builtin__MR_SECTAG_LOCAL,
+  (MR_Integer) 0,
+  (MR_Integer) 0,
+  (MR_Integer) 2,
+  NULL,
+  NULL,
+  NULL,
+  NULL,
+  mercury__private_builtin__MR_FUNCTOR_SUBTYPE_NONE
+};
+
+static const MR_DuFunctorDesc check_hlds__switch_detection__check_hlds__switch_detection__du_functor_desc_candidate_switch_rank_0_3 = {
+  (MR_String) "no_leftover_one_case",
+  (MR_Integer) 0,
+  (MR_Integer) 0,
+  mercury__private_builtin__MR_SECTAG_LOCAL,
+  (MR_Integer) 0,
+  (MR_Integer) 1,
+  (MR_Integer) 3,
+  NULL,
+  NULL,
+  NULL,
+  NULL,
+  mercury__private_builtin__MR_FUNCTOR_SUBTYPE_NONE
+};
+
+static const MR_DuFunctorDesc check_hlds__switch_detection__check_hlds__switch_detection__du_functor_desc_candidate_switch_rank_0_4 = {
+  (MR_String) "no_leftover_twoplus_cases_infinite_can_fail",
+  (MR_Integer) 0,
+  (MR_Integer) 0,
+  mercury__private_builtin__MR_SECTAG_LOCAL,
+  (MR_Integer) 0,
+  (MR_Integer) 2,
+  (MR_Integer) 4,
+  NULL,
+  NULL,
+  NULL,
+  NULL,
+  mercury__private_builtin__MR_FUNCTOR_SUBTYPE_NONE
+};
+
+static const MR_DuFunctorDesc check_hlds__switch_detection__check_hlds__switch_detection__du_functor_desc_candidate_switch_rank_0_5 = {
+  (MR_String) "no_leftover_twoplus_cases_finite_cannot_fail",
+  (MR_Integer) 0,
+  (MR_Integer) 0,
+  mercury__private_builtin__MR_SECTAG_LOCAL,
+  (MR_Integer) 0,
+  (MR_Integer) 3,
+  (MR_Integer) 5,
+  NULL,
+  NULL,
+  NULL,
+  NULL,
+  mercury__private_builtin__MR_FUNCTOR_SUBTYPE_NONE
+};
+
+static const MR_DuFunctorDesc check_hlds__switch_detection__check_hlds__switch_detection__du_functor_desc_candidate_switch_rank_0_6 = {
+  (MR_String) "all_disjuncts_are_unreachable",
+  (MR_Integer) 0,
+  (MR_Integer) 0,
+  mercury__private_builtin__MR_SECTAG_LOCAL,
+  (MR_Integer) 0,
+  (MR_Integer) 4,
+  (MR_Integer) 6,
+  NULL,
+  NULL,
+  NULL,
+  NULL,
+  mercury__private_builtin__MR_FUNCTOR_SUBTYPE_NONE
+};
+
+static const MR_DuFunctorDesc check_hlds__switch_detection__check_hlds__switch_detection__du_functor_desc_candidate_switch_rank_0_7 = {
+  (MR_String) "no_leftover_twoplus_cases_explicitly_selected",
+  (MR_Integer) 0,
+  (MR_Integer) 0,
+  mercury__private_builtin__MR_SECTAG_LOCAL,
+  (MR_Integer) 0,
+  (MR_Integer) 5,
+  (MR_Integer) 7,
+  NULL,
+  NULL,
+  NULL,
+  NULL,
+  mercury__private_builtin__MR_FUNCTOR_SUBTYPE_NONE
+};
+
+static const MR_DuFunctorDescPtr check_hlds__switch_detection__check_hlds__switch_detection__du_stag_ordered_candidate_switch_rank_0_0[6] = {
+  &check_hlds__switch_detection__check_hlds__switch_detection__du_functor_desc_candidate_switch_rank_0_2,
+  &check_hlds__switch_detection__check_hlds__switch_detection__du_functor_desc_candidate_switch_rank_0_3,
+  &check_hlds__switch_detection__check_hlds__switch_detection__du_functor_desc_candidate_switch_rank_0_4,
+  &check_hlds__switch_detection__check_hlds__switch_detection__du_functor_desc_candidate_switch_rank_0_5,
+  &check_hlds__switch_detection__check_hlds__switch_detection__du_functor_desc_candidate_switch_rank_0_6,
+  &check_hlds__switch_detection__check_hlds__switch_detection__du_functor_desc_candidate_switch_rank_0_7
+};
+
+static const MR_DuFunctorDescPtr check_hlds__switch_detection__check_hlds__switch_detection__du_stag_ordered_candidate_switch_rank_0_1[1] = {
+  &check_hlds__switch_detection__check_hlds__switch_detection__du_functor_desc_candidate_switch_rank_0_0
+};
+
+static const MR_DuFunctorDescPtr check_hlds__switch_detection__check_hlds__switch_detection__du_stag_ordered_candidate_switch_rank_0_2[1] = {
+  &check_hlds__switch_detection__check_hlds__switch_detection__du_functor_desc_candidate_switch_rank_0_1
+};
+
+static const MR_DuPtagLayout check_hlds__switch_detection__check_hlds__switch_detection__du_ptag_ordered_candidate_switch_rank_0[3] = {
+  {
+    (MR_Integer) 6,
+    mercury__private_builtin__MR_SECTAG_LOCAL,
+    check_hlds__switch_detection__check_hlds__switch_detection__du_stag_ordered_candidate_switch_rank_0_0
+  },
+  {
+    (MR_Integer) 1,
+    mercury__private_builtin__MR_SECTAG_NONE,
+    check_hlds__switch_detection__check_hlds__switch_detection__du_stag_ordered_candidate_switch_rank_0_1
+  },
+  {
+    (MR_Integer) 1,
+    mercury__private_builtin__MR_SECTAG_NONE,
+    check_hlds__switch_detection__check_hlds__switch_detection__du_stag_ordered_candidate_switch_rank_0_2
+  }
+};
+
+static const MR_DuFunctorDescPtr check_hlds__switch_detection__check_hlds__switch_detection__du_name_ordered_candidate_switch_rank_0[8] = {
+  &check_hlds__switch_detection__check_hlds__switch_detection__du_functor_desc_candidate_switch_rank_0_6,
+  &check_hlds__switch_detection__check_hlds__switch_detection__du_functor_desc_candidate_switch_rank_0_3,
+  &check_hlds__switch_detection__check_hlds__switch_detection__du_functor_desc_candidate_switch_rank_0_7,
+  &check_hlds__switch_detection__check_hlds__switch_detection__du_functor_desc_candidate_switch_rank_0_2,
+  &check_hlds__switch_detection__check_hlds__switch_detection__du_functor_desc_candidate_switch_rank_0_5,
+  &check_hlds__switch_detection__check_hlds__switch_detection__du_functor_desc_candidate_switch_rank_0_4,
+  &check_hlds__switch_detection__check_hlds__switch_detection__du_functor_desc_candidate_switch_rank_0_0,
+  &check_hlds__switch_detection__check_hlds__switch_detection__du_functor_desc_candidate_switch_rank_0_1
+};
+
+static const MR_Integer check_hlds__switch_detection__check_hlds__switch_detection__functor_number_map_candidate_switch_rank_0[8] = {
+  (MR_Integer) 6,
+  (MR_Integer) 7,
+  (MR_Integer) 3,
+  (MR_Integer) 1,
+  (MR_Integer) 5,
+  (MR_Integer) 4,
+  (MR_Integer) 0,
+  (MR_Integer) 2
+};
+
+const MR_TypeCtorInfo_Struct check_hlds__switch_detection__check_hlds__switch_detection__type_ctor_info_candidate_switch_rank_0 = {
+  (MR_Integer) 0,
+  (MR_Integer) 17,
+  (MR_Integer) 3,
+  mercury__private_builtin__MR_TYPECTOR_REP_DU,
+  ((MR_Box) (check_hlds__switch_detection____Unify____candidate_switch_rank_0_0_10001)),
+  ((MR_Box) (check_hlds__switch_detection____Compare____candidate_switch_rank_0_0_10001)),
+  (MR_String) "check_hlds.switch_detection",
+  (MR_String) "candidate_switch_rank",
+  {     check_hlds__switch_detection__check_hlds__switch_detection__du_name_ordered_candidate_switch_rank_0 },
+  {     check_hlds__switch_detection__check_hlds__switch_detection__du_ptag_ordered_candidate_switch_rank_0 },
+  (MR_Integer) 8,
+  (MR_Integer) 4,
+  check_hlds__switch_detection__check_hlds__switch_detection__functor_number_map_candidate_switch_rank_0
+};
+
+static const MR_PseudoTypeInfo check_hlds__switch_detection__check_hlds__switch_detection__field_types_case_arm_0_0[2] = {
+  (MR_PseudoTypeInfo) &parse_tree__prog_data__parse_tree__prog_data__type_ctor_info_cons_id_0,
+  (MR_PseudoTypeInfo) &hlds__hlds_goal__hlds__hlds_goal__type_ctor_info_hlds_goal_0
+};
+
+static const MR_DuFunctorDesc check_hlds__switch_detection__check_hlds__switch_detection__du_functor_desc_case_arm_0_0 = {
+  (MR_String) "single_cons_id_arm",
+  (MR_Integer) 2,
+  (MR_Integer) 0,
+  mercury__private_builtin__MR_SECTAG_NONE,
+  (MR_Integer) 0,
+  (MR_Integer) -1,
+  (MR_Integer) 0,
+  check_hlds__switch_detection__check_hlds__switch_detection__field_types_case_arm_0_0,
+  NULL,
+  NULL,
+  NULL,
+  mercury__private_builtin__MR_FUNCTOR_SUBTYPE_NONE
+};
+
+static const MR_FA_TypeInfo_Struct1 check_hlds__switch_detection__list__ti_list_1parse_tree__prog_data__type_ctor_info_cons_id_0 = {
+  &mercury__list__list__type_ctor_info_list_1,
+  {
+    (MR_TypeInfo) &parse_tree__prog_data__parse_tree__prog_data__type_ctor_info_cons_id_0
+  }
+};
+
+static const MR_PseudoTypeInfo check_hlds__switch_detection__check_hlds__switch_detection__field_types_case_arm_0_1[3] = {
+  (MR_PseudoTypeInfo) &parse_tree__prog_data__parse_tree__prog_data__type_ctor_info_cons_id_0,
+  (MR_PseudoTypeInfo) &check_hlds__switch_detection__list__ti_list_1parse_tree__prog_data__type_ctor_info_cons_id_0,
+  (MR_PseudoTypeInfo) &hlds__hlds_goal__hlds__hlds_goal__type_ctor_info_hlds_goal_0
+};
+
+static const MR_DuFunctorDesc check_hlds__switch_detection__check_hlds__switch_detection__du_functor_desc_case_arm_0_1 = {
+  (MR_String) "multi_cons_id_arm",
+  (MR_Integer) 3,
+  (MR_Integer) 0,
+  mercury__private_builtin__MR_SECTAG_NONE,
+  (MR_Integer) 1,
+  (MR_Integer) -1,
+  (MR_Integer) 1,
+  check_hlds__switch_detection__check_hlds__switch_detection__field_types_case_arm_0_1,
+  NULL,
+  NULL,
+  NULL,
+  mercury__private_builtin__MR_FUNCTOR_SUBTYPE_NONE
+};
+
+static const MR_DuFunctorDescPtr check_hlds__switch_detection__check_hlds__switch_detection__du_stag_ordered_case_arm_0_0[1] = {
+  &check_hlds__switch_detection__check_hlds__switch_detection__du_functor_desc_case_arm_0_0
+};
+
+static const MR_DuFunctorDescPtr check_hlds__switch_detection__check_hlds__switch_detection__du_stag_ordered_case_arm_0_1[1] = {
+  &check_hlds__switch_detection__check_hlds__switch_detection__du_functor_desc_case_arm_0_1
+};
+
+static const MR_DuPtagLayout check_hlds__switch_detection__check_hlds__switch_detection__du_ptag_ordered_case_arm_0[2] = {
+  {
+    (MR_Integer) 1,
+    mercury__private_builtin__MR_SECTAG_NONE,
+    check_hlds__switch_detection__check_hlds__switch_detection__du_stag_ordered_case_arm_0_0
+  },
+  {
+    (MR_Integer) 1,
+    mercury__private_builtin__MR_SECTAG_NONE,
+    check_hlds__switch_detection__check_hlds__switch_detection__du_stag_ordered_case_arm_0_1
+  }
+};
+
+static const MR_DuFunctorDescPtr check_hlds__switch_detection__check_hlds__switch_detection__du_name_ordered_case_arm_0[2] = {
+  &check_hlds__switch_detection__check_hlds__switch_detection__du_functor_desc_case_arm_0_1,
+  &check_hlds__switch_detection__check_hlds__switch_detection__du_functor_desc_case_arm_0_0
+};
+
+static const MR_Integer check_hlds__switch_detection__check_hlds__switch_detection__functor_number_map_case_arm_0[2] = {
+  (MR_Integer) 1,
+  (MR_Integer) 0
+};
+
+const MR_TypeCtorInfo_Struct check_hlds__switch_detection__check_hlds__switch_detection__type_ctor_info_case_arm_0 = {
+  (MR_Integer) 0,
+  (MR_Integer) 17,
+  (MR_Integer) 2,
+  mercury__private_builtin__MR_TYPECTOR_REP_DU,
+  ((MR_Box) (check_hlds__switch_detection____Unify____case_arm_0_0_10001)),
+  ((MR_Box) (check_hlds__switch_detection____Compare____case_arm_0_0_10001)),
+  (MR_String) "check_hlds.switch_detection",
+  (MR_String) "case_arm",
+  {     check_hlds__switch_detection__check_hlds__switch_detection__du_name_ordered_case_arm_0 },
+  {     check_hlds__switch_detection__check_hlds__switch_detection__du_ptag_ordered_case_arm_0 },
+  (MR_Integer) 2,
+  (MR_Integer) 4,
+  check_hlds__switch_detection__check_hlds__switch_detection__functor_number_map_case_arm_0
+};
+
+static const MR_EnumFunctorDesc check_hlds__switch_detection__check_hlds__switch_detection__enum_functor_desc_cases_missing_0_0 = {
+  (MR_String) "no_cases_missing",
+  (MR_Integer) 0
+};
+
+static const MR_EnumFunctorDesc check_hlds__switch_detection__check_hlds__switch_detection__enum_functor_desc_cases_missing_0_1 = {
+  (MR_String) "some_cases_missing",
+  (MR_Integer) 1
+};
+
+static const MR_EnumFunctorDesc check_hlds__switch_detection__check_hlds__switch_detection__enum_functor_desc_cases_missing_0_2 = {
+  (MR_String) "unbounded_cases",
+  (MR_Integer) 2
+};
+
+static const MR_EnumFunctorDescPtr check_hlds__switch_detection__check_hlds__switch_detection__enum_value_ordered_cases_missing_0[3] = {
+  &check_hlds__switch_detection__check_hlds__switch_detection__enum_functor_desc_cases_missing_0_0,
+  &check_hlds__switch_detection__check_hlds__switch_detection__enum_functor_desc_cases_missing_0_1,
+  &check_hlds__switch_detection__check_hlds__switch_detection__enum_functor_desc_cases_missing_0_2
+};
+
+static const MR_EnumFunctorDescPtr check_hlds__switch_detection__check_hlds__switch_detection__enum_name_ordered_cases_missing_0[3] = {
+  &check_hlds__switch_detection__check_hlds__switch_detection__enum_functor_desc_cases_missing_0_0,
+  &check_hlds__switch_detection__check_hlds__switch_detection__enum_functor_desc_cases_missing_0_1,
+  &check_hlds__switch_detection__check_hlds__switch_detection__enum_functor_desc_cases_missing_0_2
+};
+
+static const MR_Integer check_hlds__switch_detection__check_hlds__switch_detection__functor_number_map_cases_missing_0[3] = {
+  (MR_Integer) 0,
+  (MR_Integer) 1,
+  (MR_Integer) 2
+};
+
+const MR_TypeCtorInfo_Struct check_hlds__switch_detection__check_hlds__switch_detection__type_ctor_info_cases_missing_0 = {
+  (MR_Integer) 0,
+  (MR_Integer) 17,
+  (MR_Integer) -1,
+  mercury__private_builtin__MR_TYPECTOR_REP_ENUM,
+  ((MR_Box) (check_hlds__switch_detection____Unify____cases_missing_0_0_10001)),
+  ((MR_Box) (check_hlds__switch_detection____Compare____cases_missing_0_0_10001)),
+  (MR_String) "check_hlds.switch_detection",
+  (MR_String) "cases_missing",
+  {     check_hlds__switch_detection__check_hlds__switch_detection__enum_name_ordered_cases_missing_0 },
+  {     check_hlds__switch_detection__check_hlds__switch_detection__enum_value_ordered_cases_missing_0 },
+  (MR_Integer) 3,
+  (MR_Integer) 4,
+  check_hlds__switch_detection__check_hlds__switch_detection__functor_number_map_cases_missing_0
+};
+
+static const MR_FA_TypeInfo_Struct2 check_hlds__switch_detection__tree234__ti_tree234_2parse_tree__prog_data__type_ctor_info_cons_id_0check_hlds__switch_detection__type_ctor_info_cons_id_entry_0 = {
+  &mercury__tree234__tree234__type_ctor_info_tree234_2,
+  {
+    (MR_TypeInfo) &parse_tree__prog_data__parse_tree__prog_data__type_ctor_info_cons_id_0,
+    (MR_TypeInfo) &check_hlds__switch_detection__check_hlds__switch_detection__type_ctor_info_cons_id_entry_0
+  }
+};
+
+static const MR_FA_TypeInfo_Struct1 check_hlds__switch_detection__set_tree234__ti_set_tree234_1parse_tree__prog_data__type_ctor_info_cons_id_0 = {
+  &mercury__set_tree234__set_tree234__type_ctor_info_set_tree234_1,
+  {
+    (MR_TypeInfo) &parse_tree__prog_data__parse_tree__prog_data__type_ctor_info_cons_id_0
+  }
+};
+
+static const MR_PseudoTypeInfo check_hlds__switch_detection__check_hlds__switch_detection__field_types_cases_table_0_0[2] = {
+  (MR_PseudoTypeInfo) &check_hlds__switch_detection__tree234__ti_tree234_2parse_tree__prog_data__type_ctor_info_cons_id_0check_hlds__switch_detection__type_ctor_info_cons_id_entry_0,
+  (MR_PseudoTypeInfo) &check_hlds__switch_detection__set_tree234__ti_set_tree234_1parse_tree__prog_data__type_ctor_info_cons_id_0
+};
+
+static const MR_ConstString check_hlds__switch_detection__check_hlds__switch_detection__field_names_cases_table_0_0[2] = {
+  (MR_String) "cases_map",
+  (MR_String) "conflict_cons_ids"
+};
+
+static const MR_DuFunctorDesc check_hlds__switch_detection__check_hlds__switch_detection__du_functor_desc_cases_table_0_0 = {
+  (MR_String) "cases_table",
+  (MR_Integer) 2,
+  (MR_Integer) 0,
+  mercury__private_builtin__MR_SECTAG_NONE,
+  (MR_Integer) 0,
+  (MR_Integer) -1,
+  (MR_Integer) 0,
+  check_hlds__switch_detection__check_hlds__switch_detection__field_types_cases_table_0_0,
+  check_hlds__switch_detection__check_hlds__switch_detection__field_names_cases_table_0_0,
+  NULL,
+  NULL,
+  mercury__private_builtin__MR_FUNCTOR_SUBTYPE_NONE
+};
+
+static const MR_DuFunctorDescPtr check_hlds__switch_detection__check_hlds__switch_detection__du_stag_ordered_cases_table_0_0[1] = {
+  &check_hlds__switch_detection__check_hlds__switch_detection__du_functor_desc_cases_table_0_0
+};
+
+static const MR_DuPtagLayout check_hlds__switch_detection__check_hlds__switch_detection__du_ptag_ordered_cases_table_0[1] = {
+  {
+    (MR_Integer) 1,
+    mercury__private_builtin__MR_SECTAG_NONE,
+    check_hlds__switch_detection__check_hlds__switch_detection__du_stag_ordered_cases_table_0_0
+  }
+};
+
+static const MR_DuFunctorDescPtr check_hlds__switch_detection__check_hlds__switch_detection__du_name_ordered_cases_table_0[1] = {
+  &check_hlds__switch_detection__check_hlds__switch_detection__du_functor_desc_cases_table_0_0
+};
+
+static const MR_Integer check_hlds__switch_detection__check_hlds__switch_detection__functor_number_map_cases_table_0[1] = {
+  (MR_Integer) 0
+};
+
+const MR_TypeCtorInfo_Struct check_hlds__switch_detection__check_hlds__switch_detection__type_ctor_info_cases_table_0 = {
+  (MR_Integer) 0,
+  (MR_Integer) 17,
+  (MR_Integer) 1,
+  mercury__private_builtin__MR_TYPECTOR_REP_DU,
+  ((MR_Box) (check_hlds__switch_detection____Unify____cases_table_0_0_10001)),
+  ((MR_Box) (check_hlds__switch_detection____Compare____cases_table_0_0_10001)),
+  (MR_String) "check_hlds.switch_detection",
+  (MR_String) "cases_table",
+  {     check_hlds__switch_detection__check_hlds__switch_detection__du_name_ordered_cases_table_0 },
+  {     check_hlds__switch_detection__check_hlds__switch_detection__du_ptag_ordered_cases_table_0 },
+  (MR_Integer) 1,
+  (MR_Integer) 4,
+  check_hlds__switch_detection__check_hlds__switch_detection__functor_number_map_cases_table_0
+};
+
+static const MR_FA_TypeInfo_Struct1 check_hlds__switch_detection__cord__ti_cord_1check_hlds__switch_detection__type_ctor_info_case_arm_0 = {
+  &mercury__cord__cord__type_ctor_info_cord_1,
+  {
+    (MR_TypeInfo) &check_hlds__switch_detection__check_hlds__switch_detection__type_ctor_info_case_arm_0
+  }
+};
+
+static const MR_PseudoTypeInfo check_hlds__switch_detection__check_hlds__switch_detection__field_types_cons_id_entry_0_0[2] = {
+  (MR_PseudoTypeInfo) &check_hlds__switch_detection__check_hlds__switch_detection__type_ctor_info_cons_id_state_0,
+  (MR_PseudoTypeInfo) &check_hlds__switch_detection__cord__ti_cord_1check_hlds__switch_detection__type_ctor_info_case_arm_0
+};
+
+static const MR_ConstString check_hlds__switch_detection__check_hlds__switch_detection__field_names_cons_id_entry_0_0[2] = {
+  (MR_String) "cons_id_state",
+  (MR_String) "cons_id_arms"
+};
+
+static const MR_DuFunctorDesc check_hlds__switch_detection__check_hlds__switch_detection__du_functor_desc_cons_id_entry_0_0 = {
+  (MR_String) "cons_id_entry",
+  (MR_Integer) 2,
+  (MR_Integer) 0,
+  mercury__private_builtin__MR_SECTAG_NONE,
+  (MR_Integer) 0,
+  (MR_Integer) -1,
+  (MR_Integer) 0,
+  check_hlds__switch_detection__check_hlds__switch_detection__field_types_cons_id_entry_0_0,
+  check_hlds__switch_detection__check_hlds__switch_detection__field_names_cons_id_entry_0_0,
+  NULL,
+  NULL,
+  mercury__private_builtin__MR_FUNCTOR_SUBTYPE_NONE
+};
+
+static const MR_DuFunctorDescPtr check_hlds__switch_detection__check_hlds__switch_detection__du_stag_ordered_cons_id_entry_0_0[1] = {
+  &check_hlds__switch_detection__check_hlds__switch_detection__du_functor_desc_cons_id_entry_0_0
+};
+
+static const MR_DuPtagLayout check_hlds__switch_detection__check_hlds__switch_detection__du_ptag_ordered_cons_id_entry_0[1] = {
+  {
+    (MR_Integer) 1,
+    mercury__private_builtin__MR_SECTAG_NONE,
+    check_hlds__switch_detection__check_hlds__switch_detection__du_stag_ordered_cons_id_entry_0_0
+  }
+};
+
+static const MR_DuFunctorDescPtr check_hlds__switch_detection__check_hlds__switch_detection__du_name_ordered_cons_id_entry_0[1] = {
+  &check_hlds__switch_detection__check_hlds__switch_detection__du_functor_desc_cons_id_entry_0_0
+};
+
+static const MR_Integer check_hlds__switch_detection__check_hlds__switch_detection__functor_number_map_cons_id_entry_0[1] = {
+  (MR_Integer) 0
+};
+
+const MR_TypeCtorInfo_Struct check_hlds__switch_detection__check_hlds__switch_detection__type_ctor_info_cons_id_entry_0 = {
+  (MR_Integer) 0,
+  (MR_Integer) 17,
+  (MR_Integer) 1,
+  mercury__private_builtin__MR_TYPECTOR_REP_DU,
+  ((MR_Box) (check_hlds__switch_detection____Unify____cons_id_entry_0_0_10001)),
+  ((MR_Box) (check_hlds__switch_detection____Compare____cons_id_entry_0_0_10001)),
+  (MR_String) "check_hlds.switch_detection",
+  (MR_String) "cons_id_entry",
+  {     check_hlds__switch_detection__check_hlds__switch_detection__du_name_ordered_cons_id_entry_0 },
+  {     check_hlds__switch_detection__check_hlds__switch_detection__du_ptag_ordered_cons_id_entry_0 },
+  (MR_Integer) 1,
+  (MR_Integer) 4,
+  check_hlds__switch_detection__check_hlds__switch_detection__functor_number_map_cons_id_entry_0
+};
+
+static const MR_EnumFunctorDesc check_hlds__switch_detection__check_hlds__switch_detection__enum_functor_desc_cons_id_state_0_0 = {
+  (MR_String) "cons_id_has_all_singles",
+  (MR_Integer) 0
+};
+
+static const MR_EnumFunctorDesc check_hlds__switch_detection__check_hlds__switch_detection__enum_functor_desc_cons_id_state_0_1 = {
+  (MR_String) "cons_id_has_one_multi",
+  (MR_Integer) 1
+};
+
+static const MR_EnumFunctorDesc check_hlds__switch_detection__check_hlds__switch_detection__enum_functor_desc_cons_id_state_0_2 = {
+  (MR_String) "cons_id_has_conflict",
+  (MR_Integer) 2
+};
+
+static const MR_EnumFunctorDescPtr check_hlds__switch_detection__check_hlds__switch_detection__enum_value_ordered_cons_id_state_0[3] = {
+  &check_hlds__switch_detection__check_hlds__switch_detection__enum_functor_desc_cons_id_state_0_0,
+  &check_hlds__switch_detection__check_hlds__switch_detection__enum_functor_desc_cons_id_state_0_1,
+  &check_hlds__switch_detection__check_hlds__switch_detection__enum_functor_desc_cons_id_state_0_2
+};
+
+static const MR_EnumFunctorDescPtr check_hlds__switch_detection__check_hlds__switch_detection__enum_name_ordered_cons_id_state_0[3] = {
+  &check_hlds__switch_detection__check_hlds__switch_detection__enum_functor_desc_cons_id_state_0_0,
+  &check_hlds__switch_detection__check_hlds__switch_detection__enum_functor_desc_cons_id_state_0_2,
+  &check_hlds__switch_detection__check_hlds__switch_detection__enum_functor_desc_cons_id_state_0_1
+};
+
+static const MR_Integer check_hlds__switch_detection__check_hlds__switch_detection__functor_number_map_cons_id_state_0[3] = {
+  (MR_Integer) 0,
+  (MR_Integer) 2,
+  (MR_Integer) 1
+};
+
+const MR_TypeCtorInfo_Struct check_hlds__switch_detection__check_hlds__switch_detection__type_ctor_info_cons_id_state_0 = {
+  (MR_Integer) 0,
+  (MR_Integer) 17,
+  (MR_Integer) -1,
+  mercury__private_builtin__MR_TYPECTOR_REP_ENUM,
+  ((MR_Box) (check_hlds__switch_detection____Unify____cons_id_state_0_0_10001)),
+  ((MR_Box) (check_hlds__switch_detection____Compare____cons_id_state_0_0_10001)),
+  (MR_String) "check_hlds.switch_detection",
+  (MR_String) "cons_id_state",
+  {     check_hlds__switch_detection__check_hlds__switch_detection__enum_name_ordered_cons_id_state_0 },
+  {     check_hlds__switch_detection__check_hlds__switch_detection__enum_value_ordered_cons_id_state_0 },
+  (MR_Integer) 3,
+  (MR_Integer) 4,
+  check_hlds__switch_detection__check_hlds__switch_detection__functor_number_map_cons_id_state_0
+};
+
+static const MR_EnumFunctorDesc check_hlds__switch_detection__check_hlds__switch_detection__enum_functor_desc_deconstruct_search_0_0 = {
+  (MR_String) "before_deconstruct",
+  (MR_Integer) 0
+};
+
+static const MR_EnumFunctorDesc check_hlds__switch_detection__check_hlds__switch_detection__enum_functor_desc_deconstruct_search_0_1 = {
+  (MR_String) "found_deconstruct",
+  (MR_Integer) 1
+};
+
+static const MR_EnumFunctorDesc check_hlds__switch_detection__check_hlds__switch_detection__enum_functor_desc_deconstruct_search_0_2 = {
+  (MR_String) "given_up_search",
+  (MR_Integer) 2
+};
+
+static const MR_EnumFunctorDescPtr check_hlds__switch_detection__check_hlds__switch_detection__enum_value_ordered_deconstruct_search_0[3] = {
+  &check_hlds__switch_detection__check_hlds__switch_detection__enum_functor_desc_deconstruct_search_0_0,
+  &check_hlds__switch_detection__check_hlds__switch_detection__enum_functor_desc_deconstruct_search_0_1,
+  &check_hlds__switch_detection__check_hlds__switch_detection__enum_functor_desc_deconstruct_search_0_2
+};
+
+static const MR_EnumFunctorDescPtr check_hlds__switch_detection__check_hlds__switch_detection__enum_name_ordered_deconstruct_search_0[3] = {
+  &check_hlds__switch_detection__check_hlds__switch_detection__enum_functor_desc_deconstruct_search_0_0,
+  &check_hlds__switch_detection__check_hlds__switch_detection__enum_functor_desc_deconstruct_search_0_1,
+  &check_hlds__switch_detection__check_hlds__switch_detection__enum_functor_desc_deconstruct_search_0_2
+};
+
+static const MR_Integer check_hlds__switch_detection__check_hlds__switch_detection__functor_number_map_deconstruct_search_0[3] = {
+  (MR_Integer) 0,
+  (MR_Integer) 1,
+  (MR_Integer) 2
+};
+
+const MR_TypeCtorInfo_Struct check_hlds__switch_detection__check_hlds__switch_detection__type_ctor_info_deconstruct_search_0 = {
+  (MR_Integer) 0,
+  (MR_Integer) 17,
+  (MR_Integer) -1,
+  mercury__private_builtin__MR_TYPECTOR_REP_ENUM,
+  ((MR_Box) (check_hlds__switch_detection____Unify____deconstruct_search_0_0_10001)),
+  ((MR_Box) (check_hlds__switch_detection____Compare____deconstruct_search_0_0_10001)),
+  (MR_String) "check_hlds.switch_detection",
+  (MR_String) "deconstruct_search",
+  {     check_hlds__switch_detection__check_hlds__switch_detection__enum_name_ordered_deconstruct_search_0 },
+  {     check_hlds__switch_detection__check_hlds__switch_detection__enum_value_ordered_deconstruct_search_0 },
+  (MR_Integer) 3,
+  (MR_Integer) 4,
+  check_hlds__switch_detection__check_hlds__switch_detection__functor_number_map_deconstruct_search_0
+};
+
+static const MR_EnumFunctorDesc check_hlds__switch_detection__check_hlds__switch_detection__enum_functor_desc_found_deconstruct_0_0 = {
+  (MR_String) "did_find_deconstruct",
+  (MR_Integer) 0
+};
+
+static const MR_EnumFunctorDesc check_hlds__switch_detection__check_hlds__switch_detection__enum_functor_desc_found_deconstruct_0_1 = {
+  (MR_String) "did_not_find_deconstruct",
+  (MR_Integer) 1
+};
+
+static const MR_EnumFunctorDescPtr check_hlds__switch_detection__check_hlds__switch_detection__enum_value_ordered_found_deconstruct_0[2] = {
+  &check_hlds__switch_detection__check_hlds__switch_detection__enum_functor_desc_found_deconstruct_0_0,
+  &check_hlds__switch_detection__check_hlds__switch_detection__enum_functor_desc_found_deconstruct_0_1
+};
+
+static const MR_EnumFunctorDescPtr check_hlds__switch_detection__check_hlds__switch_detection__enum_name_ordered_found_deconstruct_0[2] = {
+  &check_hlds__switch_detection__check_hlds__switch_detection__enum_functor_desc_found_deconstruct_0_0,
+  &check_hlds__switch_detection__check_hlds__switch_detection__enum_functor_desc_found_deconstruct_0_1
+};
+
+static const MR_Integer check_hlds__switch_detection__check_hlds__switch_detection__functor_number_map_found_deconstruct_0[2] = {
+  (MR_Integer) 0,
+  (MR_Integer) 1
+};
+
+const MR_TypeCtorInfo_Struct check_hlds__switch_detection__check_hlds__switch_detection__type_ctor_info_found_deconstruct_0 = {
+  (MR_Integer) 0,
+  (MR_Integer) 17,
+  (MR_Integer) -1,
+  mercury__private_builtin__MR_TYPECTOR_REP_ENUM,
+  ((MR_Box) (check_hlds__switch_detection____Unify____found_deconstruct_0_0_10001)),
+  ((MR_Box) (check_hlds__switch_detection____Compare____found_deconstruct_0_0_10001)),
+  (MR_String) "check_hlds.switch_detection",
+  (MR_String) "found_deconstruct",
+  {     check_hlds__switch_detection__check_hlds__switch_detection__enum_name_ordered_found_deconstruct_0 },
+  {     check_hlds__switch_detection__check_hlds__switch_detection__enum_value_ordered_found_deconstruct_0 },
+  (MR_Integer) 2,
+  (MR_Integer) 4,
+  check_hlds__switch_detection__check_hlds__switch_detection__functor_number_map_found_deconstruct_0
+};
+
+static const MR_FA_TypeInfo_Struct2 check_hlds__switch_detection__tree234__ti_tree234_2term__ti_var_1parse_tree__prog_data__type_ctor_info_prog_var_type_0parse_tree__prog_data__type_ctor_info_mer_type_0 = {
+  &mercury__tree234__tree234__type_ctor_info_tree234_2,
+  {
+    (MR_TypeInfo) &check_hlds__switch_detection__term__ti_var_1parse_tree__prog_data__type_ctor_info_prog_var_type_0,
+    (MR_TypeInfo) &parse_tree__prog_data__parse_tree__prog_data__type_ctor_info_mer_type_0
+  }
+};
+
+static const MR_FA_TypeInfo_Struct1 check_hlds__switch_detection__set_ordlist__ti_set_ordlist_1hlds__hlds_pred__type_ctor_info_pred_proc_id_0 = {
+  &mercury__set_ordlist__set_ordlist__type_ctor_info_set_ordlist_1,
+  {
+    (MR_TypeInfo) &hlds__hlds_pred__hlds__hlds_pred__type_ctor_info_pred_proc_id_0
+  }
+};
+
+static const MR_PseudoTypeInfo check_hlds__switch_detection__check_hlds__switch_detection__field_types_local_switch_detect_info_0_0[5] = {
+  (MR_PseudoTypeInfo) &hlds__hlds_module__hlds__hlds_module__type_ctor_info_module_info_0,
+  (MR_PseudoTypeInfo) &check_hlds__switch_detection__check_hlds__switch_detection__type_ctor_info_allow_multi_arm_0,
+  (MR_PseudoTypeInfo) &check_hlds__switch_detection__tree234__ti_tree234_2term__ti_var_1parse_tree__prog_data__type_ctor_info_prog_var_type_0parse_tree__prog_data__type_ctor_info_mer_type_0,
+  (MR_PseudoTypeInfo) &hlds__hlds_pred__hlds__hlds_pred__type_ctor_info_need_to_requantify_0,
+  (MR_PseudoTypeInfo) &check_hlds__switch_detection__set_ordlist__ti_set_ordlist_1hlds__hlds_pred__type_ctor_info_pred_proc_id_0
+};
+
+static const MR_ConstString check_hlds__switch_detection__check_hlds__switch_detection__field_names_local_switch_detect_info_0_0[5] = {
+  (MR_String) "lsdi_module_info",
+  (MR_String) "lsdi_allow_multi_arm",
+  (MR_String) "lsdi_vartypes",
+  (MR_String) "lsdi_requant",
+  (MR_String) "lsdi_deleted_callees"
+};
+
+static const MR_DuFunctorDesc check_hlds__switch_detection__check_hlds__switch_detection__du_functor_desc_local_switch_detect_info_0_0 = {
+  (MR_String) "local_switch_detect_info",
+  (MR_Integer) 5,
+  (MR_Integer) 0,
+  mercury__private_builtin__MR_SECTAG_NONE,
+  (MR_Integer) 0,
+  (MR_Integer) -1,
+  (MR_Integer) 0,
+  check_hlds__switch_detection__check_hlds__switch_detection__field_types_local_switch_detect_info_0_0,
+  check_hlds__switch_detection__check_hlds__switch_detection__field_names_local_switch_detect_info_0_0,
+  NULL,
+  NULL,
+  mercury__private_builtin__MR_FUNCTOR_SUBTYPE_NONE
+};
+
+static const MR_DuFunctorDescPtr check_hlds__switch_detection__check_hlds__switch_detection__du_stag_ordered_local_switch_detect_info_0_0[1] = {
+  &check_hlds__switch_detection__check_hlds__switch_detection__du_functor_desc_local_switch_detect_info_0_0
+};
+
+static const MR_DuPtagLayout check_hlds__switch_detection__check_hlds__switch_detection__du_ptag_ordered_local_switch_detect_info_0[1] = {
+  {
+    (MR_Integer) 1,
+    mercury__private_builtin__MR_SECTAG_NONE,
+    check_hlds__switch_detection__check_hlds__switch_detection__du_stag_ordered_local_switch_detect_info_0_0
+  }
+};
+
+static const MR_DuFunctorDescPtr check_hlds__switch_detection__check_hlds__switch_detection__du_name_ordered_local_switch_detect_info_0[1] = {
+  &check_hlds__switch_detection__check_hlds__switch_detection__du_functor_desc_local_switch_detect_info_0_0
+};
+
+static const MR_Integer check_hlds__switch_detection__check_hlds__switch_detection__functor_number_map_local_switch_detect_info_0[1] = {
+  (MR_Integer) 0
+};
+
+const MR_TypeCtorInfo_Struct check_hlds__switch_detection__check_hlds__switch_detection__type_ctor_info_local_switch_detect_info_0 = {
+  (MR_Integer) 0,
+  (MR_Integer) 17,
+  (MR_Integer) 1,
+  mercury__private_builtin__MR_TYPECTOR_REP_DU,
+  ((MR_Box) (check_hlds__switch_detection____Unify____local_switch_detect_info_0_0_10001)),
+  ((MR_Box) (check_hlds__switch_detection____Compare____local_switch_detect_info_0_0_10001)),
+  (MR_String) "check_hlds.switch_detection",
+  (MR_String) "local_switch_detect_info",
+  {     check_hlds__switch_detection__check_hlds__switch_detection__du_name_ordered_local_switch_detect_info_0 },
+  {     check_hlds__switch_detection__check_hlds__switch_detection__du_ptag_ordered_local_switch_detect_info_0 },
+  (MR_Integer) 1,
+  (MR_Integer) 4,
+  check_hlds__switch_detection__check_hlds__switch_detection__functor_number_map_local_switch_detect_info_0
+};
+
+static const MR_VA_PseudoTypeInfo_Struct7 check_hlds__switch_detection____vpti_pred_7__plain_term__ti_var_1parse_tree__prog_data__type_ctor_info_prog_var_type_0__plain_hlds__hlds_goal__type_ctor_info_hlds_goal_0__plain_list__ti_list_1hlds__hlds_goal__type_ctor_info_hlds_goal_0__pseudo_1__pseudo_1__pseudo_2__pseudo_2 = {
+  &mercury__builtin__builtin__type_ctor_info_pred_0,
+  (MR_Integer) 7,
+  {
+    (MR_PseudoTypeInfo) &check_hlds__switch_detection__term__ti_var_1parse_tree__prog_data__type_ctor_info_prog_var_type_0,
+    (MR_PseudoTypeInfo) &hlds__hlds_goal__hlds__hlds_goal__type_ctor_info_hlds_goal_0,
+    (MR_PseudoTypeInfo) &check_hlds__switch_detection__list__ti_list_1hlds__hlds_goal__type_ctor_info_hlds_goal_0,
+    (MR_PseudoTypeInfo) (MR_Integer) 1,
+    (MR_PseudoTypeInfo) (MR_Integer) 1,
+    (MR_PseudoTypeInfo) (MR_Integer) 2,
+    (MR_PseudoTypeInfo) (MR_Integer) 2
+  }
+};
+
+const MR_TypeCtorInfo_Struct check_hlds__switch_detection__check_hlds__switch_detection__type_ctor_info_process_unify_2 = {
+  (MR_Integer) 2,
+  (MR_Integer) 17,
+  (MR_Integer) -1,
+  mercury__private_builtin__MR_TYPECTOR_REP_EQUIV,
+  ((MR_Box) (check_hlds__switch_detection____Unify____process_unify_2_0_10001)),
+  ((MR_Box) (check_hlds__switch_detection____Compare____process_unify_2_0_10001)),
+  (MR_String) "check_hlds.switch_detection",
+  (MR_String) "process_unify",
+  {     NULL },
+  {     (MR_PseudoTypeInfo) &check_hlds__switch_detection____vpti_pred_7__plain_term__ti_var_1parse_tree__prog_data__type_ctor_info_prog_var_type_0__plain_hlds__hlds_goal__type_ctor_info_hlds_goal_0__plain_list__ti_list_1hlds__hlds_goal__type_ctor_info_hlds_goal_0__pseudo_1__pseudo_1__pseudo_2__pseudo_2 },
+  (MR_Integer) -1,
+  (MR_Integer) 0,
+  NULL
+};
+
+static const MR_PseudoTypeInfo check_hlds__switch_detection__check_hlds__switch_detection__field_types_switch_detect_info_0_0[2] = {
+  (MR_PseudoTypeInfo) &hlds__hlds_module__hlds__hlds_module__type_ctor_info_module_info_0,
+  (MR_PseudoTypeInfo) &check_hlds__switch_detection__check_hlds__switch_detection__type_ctor_info_allow_multi_arm_0
+};
+
+static const MR_ConstString check_hlds__switch_detection__check_hlds__switch_detection__field_names_switch_detect_info_0_0[2] = {
+  (MR_String) "sdi_module_info",
+  (MR_String) "sdi_allow_multi_arm"
+};
+
+static const MR_DuFunctorDesc check_hlds__switch_detection__check_hlds__switch_detection__du_functor_desc_switch_detect_info_0_0 = {
+  (MR_String) "switch_detect_info",
+  (MR_Integer) 2,
+  (MR_Integer) 0,
+  mercury__private_builtin__MR_SECTAG_NONE,
+  (MR_Integer) 0,
+  (MR_Integer) -1,
+  (MR_Integer) 0,
+  check_hlds__switch_detection__check_hlds__switch_detection__field_types_switch_detect_info_0_0,
+  check_hlds__switch_detection__check_hlds__switch_detection__field_names_switch_detect_info_0_0,
+  NULL,
+  NULL,
+  mercury__private_builtin__MR_FUNCTOR_SUBTYPE_NONE
+};
+
+static const MR_DuFunctorDescPtr check_hlds__switch_detection__check_hlds__switch_detection__du_stag_ordered_switch_detect_info_0_0[1] = {
+  &check_hlds__switch_detection__check_hlds__switch_detection__du_functor_desc_switch_detect_info_0_0
+};
+
+static const MR_DuPtagLayout check_hlds__switch_detection__check_hlds__switch_detection__du_ptag_ordered_switch_detect_info_0[1] = {
+  {
+    (MR_Integer) 1,
+    mercury__private_builtin__MR_SECTAG_NONE,
+    check_hlds__switch_detection__check_hlds__switch_detection__du_stag_ordered_switch_detect_info_0_0
+  }
+};
+
+static const MR_DuFunctorDescPtr check_hlds__switch_detection__check_hlds__switch_detection__du_name_ordered_switch_detect_info_0[1] = {
+  &check_hlds__switch_detection__check_hlds__switch_detection__du_functor_desc_switch_detect_info_0_0
+};
+
+static const MR_Integer check_hlds__switch_detection__check_hlds__switch_detection__functor_number_map_switch_detect_info_0[1] = {
+  (MR_Integer) 0
+};
+
+const MR_TypeCtorInfo_Struct check_hlds__switch_detection__check_hlds__switch_detection__type_ctor_info_switch_detect_info_0 = {
+  (MR_Integer) 0,
+  (MR_Integer) 17,
+  (MR_Integer) 1,
+  mercury__private_builtin__MR_TYPECTOR_REP_DU,
+  ((MR_Box) (check_hlds__switch_detection____Unify____switch_detect_info_0_0_10001)),
+  ((MR_Box) (check_hlds__switch_detection____Compare____switch_detect_info_0_0_10001)),
+  (MR_String) "check_hlds.switch_detection",
+  (MR_String) "switch_detect_info",
+  {     check_hlds__switch_detection__check_hlds__switch_detection__du_name_ordered_switch_detect_info_0 },
+  {     check_hlds__switch_detection__check_hlds__switch_detection__du_ptag_ordered_switch_detect_info_0 },
+  (MR_Integer) 1,
+  (MR_Integer) 4,
+  check_hlds__switch_detection__check_hlds__switch_detection__functor_number_map_switch_detect_info_0
+};
+
+static MR_bool MR_CALL 
+check_hlds__switch_detection____Unify____allow_multi_arm_0_0_10001(
+  MR_Box check_hlds__switch_detection__wrapper_arg_1,
+  MR_Box check_hlds__switch_detection__wrapper_arg_2)
+{
+  {
+    MR_bool check_hlds__switch_detection__succeeded;
+
+    {
+      check_hlds__switch_detection__succeeded = check_hlds__switch_detection____Unify____allow_multi_arm_0_0(((MR_Word) check_hlds__switch_detection__wrapper_arg_1), ((MR_Word) check_hlds__switch_detection__wrapper_arg_2));
+    }
+    return check_hlds__switch_detection__succeeded;
+  }
+}
+
+static void MR_CALL 
+check_hlds__switch_detection____Compare____allow_multi_arm_0_0_10001(
+  MR_Box * check_hlds__switch_detection__wrapper_arg_1,
+  MR_Box check_hlds__switch_detection__wrapper_arg_2,
+  MR_Box check_hlds__switch_detection__wrapper_arg_3)
+{
+  {
+    MR_Word check_hlds__switch_detection__conv0_HeadVar__1_1;
+
+    {
+      check_hlds__switch_detection____Compare____allow_multi_arm_0_0(&check_hlds__switch_detection__conv0_HeadVar__1_1, ((MR_Word) check_hlds__switch_detection__wrapper_arg_2), ((MR_Word) check_hlds__switch_detection__wrapper_arg_3));
+    }
+    *check_hlds__switch_detection__wrapper_arg_1 = ((MR_Box) (check_hlds__switch_detection__conv0_HeadVar__1_1));
+  }
+}
+
+static MR_bool MR_CALL 
+check_hlds__switch_detection____Unify____candidate_switch_0_0_10001(
+  MR_Box check_hlds__switch_detection__wrapper_arg_1,
+  MR_Box check_hlds__switch_detection__wrapper_arg_2)
+{
+  {
+    MR_bool check_hlds__switch_detection__succeeded;
+
+    {
+      check_hlds__switch_detection__succeeded = check_hlds__switch_detection____Unify____candidate_switch_0_0(((MR_Word) check_hlds__switch_detection__wrapper_arg_1), ((MR_Word) check_hlds__switch_detection__wrapper_arg_2));
+    }
+    return check_hlds__switch_detection__succeeded;
+  }
+}
+
+static void MR_CALL 
+check_hlds__switch_detection____Compare____candidate_switch_0_0_10001(
+  MR_Box * check_hlds__switch_detection__wrapper_arg_1,
+  MR_Box check_hlds__switch_detection__wrapper_arg_2,
+  MR_Box check_hlds__switch_detection__wrapper_arg_3)
+{
+  {
+    MR_Word check_hlds__switch_detection__conv0_HeadVar__1_1;
+
+    {
+      check_hlds__switch_detection____Compare____candidate_switch_0_0(&check_hlds__switch_detection__conv0_HeadVar__1_1, ((MR_Word) check_hlds__switch_detection__wrapper_arg_2), ((MR_Word) check_hlds__switch_detection__wrapper_arg_3));
+    }
+    *check_hlds__switch_detection__wrapper_arg_1 = ((MR_Box) (check_hlds__switch_detection__conv0_HeadVar__1_1));
+  }
+}
+
+static MR_bool MR_CALL 
+check_hlds__switch_detection____Unify____candidate_switch_rank_0_0_10001(
+  MR_Box check_hlds__switch_detection__wrapper_arg_1,
+  MR_Box check_hlds__switch_detection__wrapper_arg_2)
+{
+  {
+    MR_bool check_hlds__switch_detection__succeeded;
+
+    {
+      check_hlds__switch_detection__succeeded = check_hlds__switch_detection____Unify____candidate_switch_rank_0_0(((MR_Word) check_hlds__switch_detection__wrapper_arg_1), ((MR_Word) check_hlds__switch_detection__wrapper_arg_2));
+    }
+    return check_hlds__switch_detection__succeeded;
+  }
+}
+
+static void MR_CALL 
+check_hlds__switch_detection____Compare____candidate_switch_rank_0_0_10001(
+  MR_Box * check_hlds__switch_detection__wrapper_arg_1,
+  MR_Box check_hlds__switch_detection__wrapper_arg_2,
+  MR_Box check_hlds__switch_detection__wrapper_arg_3)
+{
+  {
+    MR_Word check_hlds__switch_detection__conv0_HeadVar__1_1;
+
+    {
+      check_hlds__switch_detection____Compare____candidate_switch_rank_0_0(&check_hlds__switch_detection__conv0_HeadVar__1_1, ((MR_Word) check_hlds__switch_detection__wrapper_arg_2), ((MR_Word) check_hlds__switch_detection__wrapper_arg_3));
+    }
+    *check_hlds__switch_detection__wrapper_arg_1 = ((MR_Box) (check_hlds__switch_detection__conv0_HeadVar__1_1));
+  }
+}
+
+static MR_bool MR_CALL 
+check_hlds__switch_detection____Unify____case_arm_0_0_10001(
+  MR_Box check_hlds__switch_detection__wrapper_arg_1,
+  MR_Box check_hlds__switch_detection__wrapper_arg_2)
+{
+  {
+    MR_bool check_hlds__switch_detection__succeeded;
+
+    {
+      check_hlds__switch_detection__succeeded = check_hlds__switch_detection____Unify____case_arm_0_0(((MR_Word) check_hlds__switch_detection__wrapper_arg_1), ((MR_Word) check_hlds__switch_detection__wrapper_arg_2));
+    }
+    return check_hlds__switch_detection__succeeded;
+  }
+}
+
+static void MR_CALL 
+check_hlds__switch_detection____Compare____case_arm_0_0_10001(
+  MR_Box * check_hlds__switch_detection__wrapper_arg_1,
+  MR_Box check_hlds__switch_detection__wrapper_arg_2,
+  MR_Box check_hlds__switch_detection__wrapper_arg_3)
+{
+  {
+    MR_Word check_hlds__switch_detection__conv0_HeadVar__1_1;
+
+    {
+      check_hlds__switch_detection____Compare____case_arm_0_0(&check_hlds__switch_detection__conv0_HeadVar__1_1, ((MR_Word) check_hlds__switch_detection__wrapper_arg_2), ((MR_Word) check_hlds__switch_detection__wrapper_arg_3));
+    }
+    *check_hlds__switch_detection__wrapper_arg_1 = ((MR_Box) (check_hlds__switch_detection__conv0_HeadVar__1_1));
+  }
+}
+
+static MR_bool MR_CALL 
+check_hlds__switch_detection____Unify____cases_missing_0_0_10001(
+  MR_Box check_hlds__switch_detection__wrapper_arg_1,
+  MR_Box check_hlds__switch_detection__wrapper_arg_2)
+{
+  {
+    MR_bool check_hlds__switch_detection__succeeded;
+
+    {
+      check_hlds__switch_detection__succeeded = check_hlds__switch_detection____Unify____cases_missing_0_0(((MR_Word) check_hlds__switch_detection__wrapper_arg_1), ((MR_Word) check_hlds__switch_detection__wrapper_arg_2));
+    }
+    return check_hlds__switch_detection__succeeded;
+  }
+}
+
+static void MR_CALL 
+check_hlds__switch_detection____Compare____cases_missing_0_0_10001(
+  MR_Box * check_hlds__switch_detection__wrapper_arg_1,
+  MR_Box check_hlds__switch_detection__wrapper_arg_2,
+  MR_Box check_hlds__switch_detection__wrapper_arg_3)
+{
+  {
+    MR_Word check_hlds__switch_detection__conv0_HeadVar__1_1;
+
+    {
+      check_hlds__switch_detection____Compare____cases_missing_0_0(&check_hlds__switch_detection__conv0_HeadVar__1_1, ((MR_Word) check_hlds__switch_detection__wrapper_arg_2), ((MR_Word) check_hlds__switch_detection__wrapper_arg_3));
+    }
+    *check_hlds__switch_detection__wrapper_arg_1 = ((MR_Box) (check_hlds__switch_detection__conv0_HeadVar__1_1));
+  }
+}
+
+static MR_bool MR_CALL 
+check_hlds__switch_detection____Unify____cases_table_0_0_10001(
+  MR_Box check_hlds__switch_detection__wrapper_arg_1,
+  MR_Box check_hlds__switch_detection__wrapper_arg_2)
+{
+  {
+    MR_bool check_hlds__switch_detection__succeeded;
+
+    {
+      check_hlds__switch_detection__succeeded = check_hlds__switch_detection____Unify____cases_table_0_0(((MR_Word) check_hlds__switch_detection__wrapper_arg_1), ((MR_Word) check_hlds__switch_detection__wrapper_arg_2));
+    }
+    return check_hlds__switch_detection__succeeded;
+  }
+}
+
+static void MR_CALL 
+check_hlds__switch_detection____Compare____cases_table_0_0_10001(
+  MR_Box * check_hlds__switch_detection__wrapper_arg_1,
+  MR_Box check_hlds__switch_detection__wrapper_arg_2,
+  MR_Box check_hlds__switch_detection__wrapper_arg_3)
+{
+  {
+    MR_Word check_hlds__switch_detection__conv0_HeadVar__1_1;
+
+    {
+      check_hlds__switch_detection____Compare____cases_table_0_0(&check_hlds__switch_detection__conv0_HeadVar__1_1, ((MR_Word) check_hlds__switch_detection__wrapper_arg_2), ((MR_Word) check_hlds__switch_detection__wrapper_arg_3));
+    }
+    *check_hlds__switch_detection__wrapper_arg_1 = ((MR_Box) (check_hlds__switch_detection__conv0_HeadVar__1_1));
+  }
+}
+
+static MR_bool MR_CALL 
+check_hlds__switch_detection____Unify____cons_id_entry_0_0_10001(
+  MR_Box check_hlds__switch_detection__wrapper_arg_1,
+  MR_Box check_hlds__switch_detection__wrapper_arg_2)
+{
+  {
+    MR_bool check_hlds__switch_detection__succeeded;
+
+    {
+      check_hlds__switch_detection__succeeded = check_hlds__switch_detection____Unify____cons_id_entry_0_0(((MR_Word) check_hlds__switch_detection__wrapper_arg_1), ((MR_Word) check_hlds__switch_detection__wrapper_arg_2));
+    }
+    return check_hlds__switch_detection__succeeded;
+  }
+}
+
+static void MR_CALL 
+check_hlds__switch_detection____Compare____cons_id_entry_0_0_10001(
+  MR_Box * check_hlds__switch_detection__wrapper_arg_1,
+  MR_Box check_hlds__switch_detection__wrapper_arg_2,
+  MR_Box check_hlds__switch_detection__wrapper_arg_3)
+{
+  {
+    MR_Word check_hlds__switch_detection__conv0_HeadVar__1_1;
+
+    {
+      check_hlds__switch_detection____Compare____cons_id_entry_0_0(&check_hlds__switch_detection__conv0_HeadVar__1_1, ((MR_Word) check_hlds__switch_detection__wrapper_arg_2), ((MR_Word) check_hlds__switch_detection__wrapper_arg_3));
+    }
+    *check_hlds__switch_detection__wrapper_arg_1 = ((MR_Box) (check_hlds__switch_detection__conv0_HeadVar__1_1));
+  }
+}
+
+static MR_bool MR_CALL 
+check_hlds__switch_detection____Unify____cons_id_state_0_0_10001(
+  MR_Box check_hlds__switch_detection__wrapper_arg_1,
+  MR_Box check_hlds__switch_detection__wrapper_arg_2)
+{
+  {
+    MR_bool check_hlds__switch_detection__succeeded;
+
+    {
+      check_hlds__switch_detection__succeeded = check_hlds__switch_detection____Unify____cons_id_state_0_0(((MR_Word) check_hlds__switch_detection__wrapper_arg_1), ((MR_Word) check_hlds__switch_detection__wrapper_arg_2));
+    }
+    return check_hlds__switch_detection__succeeded;
+  }
+}
+
+static void MR_CALL 
+check_hlds__switch_detection____Compare____cons_id_state_0_0_10001(
+  MR_Box * check_hlds__switch_detection__wrapper_arg_1,
+  MR_Box check_hlds__switch_detection__wrapper_arg_2,
+  MR_Box check_hlds__switch_detection__wrapper_arg_3)
+{
+  {
+    MR_Word check_hlds__switch_detection__conv0_HeadVar__1_1;
+
+    {
+      check_hlds__switch_detection____Compare____cons_id_state_0_0(&check_hlds__switch_detection__conv0_HeadVar__1_1, ((MR_Word) check_hlds__switch_detection__wrapper_arg_2), ((MR_Word) check_hlds__switch_detection__wrapper_arg_3));
+    }
+    *check_hlds__switch_detection__wrapper_arg_1 = ((MR_Box) (check_hlds__switch_detection__conv0_HeadVar__1_1));
+  }
+}
+
+static MR_bool MR_CALL 
+check_hlds__switch_detection____Unify____deconstruct_search_0_0_10001(
+  MR_Box check_hlds__switch_detection__wrapper_arg_1,
+  MR_Box check_hlds__switch_detection__wrapper_arg_2)
+{
+  {
+    MR_bool check_hlds__switch_detection__succeeded;
+
+    {
+      check_hlds__switch_detection__succeeded = check_hlds__switch_detection____Unify____deconstruct_search_0_0(((MR_Word) check_hlds__switch_detection__wrapper_arg_1), ((MR_Word) check_hlds__switch_detection__wrapper_arg_2));
+    }
+    return check_hlds__switch_detection__succeeded;
+  }
+}
+
+static void MR_CALL 
+check_hlds__switch_detection____Compare____deconstruct_search_0_0_10001(
+  MR_Box * check_hlds__switch_detection__wrapper_arg_1,
+  MR_Box check_hlds__switch_detection__wrapper_arg_2,
+  MR_Box check_hlds__switch_detection__wrapper_arg_3)
+{
+  {
+    MR_Word check_hlds__switch_detection__conv0_HeadVar__1_1;
+
+    {
+      check_hlds__switch_detection____Compare____deconstruct_search_0_0(&check_hlds__switch_detection__conv0_HeadVar__1_1, ((MR_Word) check_hlds__switch_detection__wrapper_arg_2), ((MR_Word) check_hlds__switch_detection__wrapper_arg_3));
+    }
+    *check_hlds__switch_detection__wrapper_arg_1 = ((MR_Box) (check_hlds__switch_detection__conv0_HeadVar__1_1));
+  }
+}
+
+static MR_bool MR_CALL 
+check_hlds__switch_detection____Unify____found_deconstruct_0_0_10001(
+  MR_Box check_hlds__switch_detection__wrapper_arg_1,
+  MR_Box check_hlds__switch_detection__wrapper_arg_2)
+{
+  {
+    MR_bool check_hlds__switch_detection__succeeded;
+
+    {
+      check_hlds__switch_detection__succeeded = check_hlds__switch_detection____Unify____found_deconstruct_0_0(((MR_Word) check_hlds__switch_detection__wrapper_arg_1), ((MR_Word) check_hlds__switch_detection__wrapper_arg_2));
+    }
+    return check_hlds__switch_detection__succeeded;
+  }
+}
+
+static void MR_CALL 
+check_hlds__switch_detection____Compare____found_deconstruct_0_0_10001(
+  MR_Box * check_hlds__switch_detection__wrapper_arg_1,
+  MR_Box check_hlds__switch_detection__wrapper_arg_2,
+  MR_Box check_hlds__switch_detection__wrapper_arg_3)
+{
+  {
+    MR_Word check_hlds__switch_detection__conv0_HeadVar__1_1;
+
+    {
+      check_hlds__switch_detection____Compare____found_deconstruct_0_0(&check_hlds__switch_detection__conv0_HeadVar__1_1, ((MR_Word) check_hlds__switch_detection__wrapper_arg_2), ((MR_Word) check_hlds__switch_detection__wrapper_arg_3));
+    }
+    *check_hlds__switch_detection__wrapper_arg_1 = ((MR_Box) (check_hlds__switch_detection__conv0_HeadVar__1_1));
+  }
+}
+
+static MR_bool MR_CALL 
+check_hlds__switch_detection____Unify____local_switch_detect_info_0_0_10001(
+  MR_Box check_hlds__switch_detection__wrapper_arg_1,
+  MR_Box check_hlds__switch_detection__wrapper_arg_2)
+{
+  {
+    MR_bool check_hlds__switch_detection__succeeded;
+
+    {
+      check_hlds__switch_detection__succeeded = check_hlds__switch_detection____Unify____local_switch_detect_info_0_0(((MR_Word) check_hlds__switch_detection__wrapper_arg_1), ((MR_Word) check_hlds__switch_detection__wrapper_arg_2));
+    }
+    return check_hlds__switch_detection__succeeded;
+  }
+}
+
+static void MR_CALL 
+check_hlds__switch_detection____Compare____local_switch_detect_info_0_0_10001(
+  MR_Box * check_hlds__switch_detection__wrapper_arg_1,
+  MR_Box check_hlds__switch_detection__wrapper_arg_2,
+  MR_Box check_hlds__switch_detection__wrapper_arg_3)
+{
+  {
+    MR_Word check_hlds__switch_detection__conv0_HeadVar__1_1;
+
+    {
+      check_hlds__switch_detection____Compare____local_switch_detect_info_0_0(&check_hlds__switch_detection__conv0_HeadVar__1_1, ((MR_Word) check_hlds__switch_detection__wrapper_arg_2), ((MR_Word) check_hlds__switch_detection__wrapper_arg_3));
+    }
+    *check_hlds__switch_detection__wrapper_arg_1 = ((MR_Box) (check_hlds__switch_detection__conv0_HeadVar__1_1));
+  }
+}
+
+static MR_bool MR_CALL 
+check_hlds__switch_detection____Unify____process_unify_2_0_10001(
+  MR_Box check_hlds__switch_detection__wrapper_arg_1,
+  MR_Box check_hlds__switch_detection__wrapper_arg_2,
+  MR_Box check_hlds__switch_detection__wrapper_arg_3,
+  MR_Box check_hlds__switch_detection__wrapper_arg_4)
+{
+  {
+    MR_bool check_hlds__switch_detection__succeeded;
+
+    {
+      check_hlds__switch_detection__succeeded = check_hlds__switch_detection____Unify____process_unify_2_0(((MR_Word) check_hlds__switch_detection__wrapper_arg_1), ((MR_Word) check_hlds__switch_detection__wrapper_arg_2), ((MR_Word) check_hlds__switch_detection__wrapper_arg_3), ((MR_Word) check_hlds__switch_detection__wrapper_arg_4));
+    }
+    return check_hlds__switch_detection__succeeded;
+  }
+}
+
+static void MR_CALL 
+check_hlds__switch_detection____Compare____process_unify_2_0_10001(
+  MR_Box check_hlds__switch_detection__wrapper_arg_1,
+  MR_Box check_hlds__switch_detection__wrapper_arg_2,
+  MR_Box * check_hlds__switch_detection__wrapper_arg_3,
+  MR_Box check_hlds__switch_detection__wrapper_arg_4,
+  MR_Box check_hlds__switch_detection__wrapper_arg_5)
+{
+  {
+    MR_Word check_hlds__switch_detection__conv0_HeadVar__1_1;
+
+    {
+      check_hlds__switch_detection____Compare____process_unify_2_0(((MR_Word) check_hlds__switch_detection__wrapper_arg_1), ((MR_Word) check_hlds__switch_detection__wrapper_arg_2), &check_hlds__switch_detection__conv0_HeadVar__1_1, ((MR_Word) check_hlds__switch_detection__wrapper_arg_4), ((MR_Word) check_hlds__switch_detection__wrapper_arg_5));
+    }
+    *check_hlds__switch_detection__wrapper_arg_3 = ((MR_Box) (check_hlds__switch_detection__conv0_HeadVar__1_1));
+  }
+}
+
+static MR_bool MR_CALL 
+check_hlds__switch_detection____Unify____switch_detect_info_0_0_10001(
+  MR_Box check_hlds__switch_detection__wrapper_arg_1,
+  MR_Box check_hlds__switch_detection__wrapper_arg_2)
+{
+  {
+    MR_bool check_hlds__switch_detection__succeeded;
+
+    {
+      check_hlds__switch_detection__succeeded = check_hlds__switch_detection____Unify____switch_detect_info_0_0(((MR_Word) check_hlds__switch_detection__wrapper_arg_1), ((MR_Word) check_hlds__switch_detection__wrapper_arg_2));
+    }
+    return check_hlds__switch_detection__succeeded;
+  }
+}
+
+static void MR_CALL 
+check_hlds__switch_detection____Compare____switch_detect_info_0_0_10001(
+  MR_Box * check_hlds__switch_detection__wrapper_arg_1,
+  MR_Box check_hlds__switch_detection__wrapper_arg_2,
+  MR_Box check_hlds__switch_detection__wrapper_arg_3)
+{
+  {
+    MR_Word check_hlds__switch_detection__conv0_HeadVar__1_1;
+
+    {
+      check_hlds__switch_detection____Compare____switch_detect_info_0_0(&check_hlds__switch_detection__conv0_HeadVar__1_1, ((MR_Word) check_hlds__switch_detection__wrapper_arg_2), ((MR_Word) check_hlds__switch_detection__wrapper_arg_3));
+    }
+    *check_hlds__switch_detection__wrapper_arg_1 = ((MR_Box) (check_hlds__switch_detection__conv0_HeadVar__1_1));
+  }
+}
+
+static void MR_CALL 
+check_hlds__switch_detection__f_85_110_117_115_101_100_65_114_103_115_95_95_112_114_101_100_95_95_99_111_110_106_95_102_105_110_100_95_98_105_110_100_95_118_97_114_95_95_91_49_44_32_50_93_95_48_11_p_0(
+  MR_Word check_hlds__switch_detection__HeadVar__1_1,
+  MR_Word check_hlds__switch_detection__ProcessUnify_2,
+  MR_Word check_hlds__switch_detection__HeadVar__3_3,
+  MR_Word * check_hlds__switch_detection__HeadVar__4_4,
+  MR_Word check_hlds__switch_detection__STATE_VARIABLE_Subst_0_5,
+  MR_Word * check_hlds__switch_detection__STATE_VARIABLE_Subst_6,
+  MR_Box check_hlds__switch_detection__STATE_VARIABLE_Result_0_7,
+  MR_Box * check_hlds__switch_detection__STATE_VARIABLE_Result_8,
+  MR_Box check_hlds__switch_detection__STATE_VARIABLE_Info_0_9,
+  MR_Box * check_hlds__switch_detection__STATE_VARIABLE_Info_10,
+  MR_Word * check_hlds__switch_detection__HeadVar__11_11)
+{
+  {
+    MR_bool check_hlds__switch_detection__succeeded;
+
+    if ((check_hlds__switch_detection__HeadVar__3_3 == ((MR_Word) MR_mkword(MR_mktag(0), MR_mkbody((MR_Integer) 0)))))
+      {
+        *check_hlds__switch_detection__HeadVar__4_4 = (MR_Word) MR_mkword(MR_mktag(0), MR_mkbody((MR_Integer) 0));
+        *check_hlds__switch_detection__HeadVar__11_11 = (MR_Integer) 0;
+        *check_hlds__switch_detection__STATE_VARIABLE_Info_10 = check_hlds__switch_detection__STATE_VARIABLE_Info_0_9;
+        *check_hlds__switch_detection__STATE_VARIABLE_Result_8 = check_hlds__switch_detection__STATE_VARIABLE_Result_0_7;
+        *check_hlds__switch_detection__STATE_VARIABLE_Subst_6 = check_hlds__switch_detection__STATE_VARIABLE_Subst_0_5;
+      }
+    else
+      {
+        MR_Word check_hlds__switch_detection__Goal0_25 = ((MR_Word) (MR_hl_field(MR_mktag(1), check_hlds__switch_detection__HeadVar__3_3, (MR_Integer) 0)));
+        MR_Word check_hlds__switch_detection__Goals0_26 = ((MR_Word) (MR_hl_field(MR_mktag(1), check_hlds__switch_detection__HeadVar__3_3, (MR_Integer) 1)));
+        MR_Word check_hlds__switch_detection__Goal_27;
+        MR_Word check_hlds__switch_detection__Goals_28;
+        MR_Word check_hlds__switch_detection__FoundDeconstruct1_33;
+        MR_Word check_hlds__switch_detection__STATE_VARIABLE_Subst_40_40;
+        MR_Box check_hlds__switch_detection__STATE_VARIABLE_Result_41_41;
+        MR_Box check_hlds__switch_detection__STATE_VARIABLE_Info_42_42;
+
+        {
+          check_hlds__switch_detection__f_85_110_117_115_101_100_65_114_103_115_95_95_112_114_101_100_95_95_102_105_110_100_95_98_105_110_100_95_118_97_114_95_50_95_95_91_49_44_32_50_93_95_48_11_p_0(check_hlds__switch_detection__HeadVar__1_1, check_hlds__switch_detection__ProcessUnify_2, check_hlds__switch_detection__Goal0_25, &check_hlds__switch_detection__Goal_27, check_hlds__switch_detection__STATE_VARIABLE_Subst_0_5, &check_hlds__switch_detection__STATE_VARIABLE_Subst_40_40, check_hlds__switch_detection__STATE_VARIABLE_Result_0_7, &check_hlds__switch_detection__STATE_VARIABLE_Result_41_41, check_hlds__switch_detection__STATE_VARIABLE_Info_0_9, &check_hlds__switch_detection__STATE_VARIABLE_Info_42_42, &check_hlds__switch_detection__FoundDeconstruct1_33);
+        }
+        switch (check_hlds__switch_detection__FoundDeconstruct1_33) {
+          default: /*NOTREACHED*/ MR_assert(0);
+          case (MR_Integer) 0:
+            {
+              check_hlds__switch_detection__f_85_110_117_115_101_100_65_114_103_115_95_95_112_114_101_100_95_95_99_111_110_106_95_102_105_110_100_95_98_105_110_100_95_118_97_114_95_95_91_49_44_32_50_93_95_48_11_p_0(check_hlds__switch_detection__HeadVar__1_1, check_hlds__switch_detection__ProcessUnify_2, check_hlds__switch_detection__Goals0_26, &check_hlds__switch_detection__Goals_28, check_hlds__switch_detection__STATE_VARIABLE_Subst_40_40, check_hlds__switch_detection__STATE_VARIABLE_Subst_6, check_hlds__switch_detection__STATE_VARIABLE_Result_41_41, check_hlds__switch_detection__STATE_VARIABLE_Result_8, check_hlds__switch_detection__STATE_VARIABLE_Info_42_42, check_hlds__switch_detection__STATE_VARIABLE_Info_10, check_hlds__switch_detection__HeadVar__11_11);
+            }
+            break;
+          case (MR_Integer) 1:
+          case (MR_Integer) 2:
+            {
+              *check_hlds__switch_detection__HeadVar__11_11 = check_hlds__switch_detection__FoundDeconstruct1_33;
+              check_hlds__switch_detection__Goals_28 = check_hlds__switch_detection__Goals0_26;
+              *check_hlds__switch_detection__STATE_VARIABLE_Subst_6 = check_hlds__switch_detection__STATE_VARIABLE_Subst_40_40;
+              *check_hlds__switch_detection__STATE_VARIABLE_Result_8 = check_hlds__switch_detection__STATE_VARIABLE_Result_41_41;
+              *check_hlds__switch_detection__STATE_VARIABLE_Info_10 = check_hlds__switch_detection__STATE_VARIABLE_Info_42_42;
+            }
+            break;
+        }
+        {
+          MR_Word base;
+          base = (MR_Word) MR_mkword(MR_mktag(1), MR_new_object(MR_Word, ((MR_Integer) 2 * sizeof(MR_Word)), NULL, NULL));
+          *check_hlds__switch_detection__HeadVar__4_4 = base;
+          MR_hl_field(MR_mktag(1), base, 0) = ((MR_Box) (check_hlds__switch_detection__Goal_27));
+          MR_hl_field(MR_mktag(1), base, 1) = ((MR_Box) (check_hlds__switch_detection__Goals_28));
+        }
+      }
+  }
+}
+
+static void MR_CALL 
+check_hlds__switch_detection__f_85_110_117_115_101_100_65_114_103_115_95_95_112_114_101_100_95_95_102_105_110_100_95_98_105_110_100_95_118_97_114_95_50_95_95_91_49_44_32_50_93_95_48_11_p_0(
+  MR_Word check_hlds__switch_detection__Var_12,
+  MR_Word check_hlds__switch_detection__ProcessUnify_13,
+  MR_Word check_hlds__switch_detection__Goal0_14,
+  MR_Word * check_hlds__switch_detection__Goal_15,
+  MR_Word check_hlds__switch_detection__STATE_VARIABLE_Subst_0_87,
+  MR_Word * check_hlds__switch_detection__STATE_VARIABLE_Subst_88,
+  MR_Box check_hlds__switch_detection__STATE_VARIABLE_Result_0_89,
+  MR_Box * check_hlds__switch_detection__STATE_VARIABLE_Result_90,
+  MR_Box check_hlds__switch_detection__STATE_VARIABLE_Info_0_91,
+  MR_Box * check_hlds__switch_detection__STATE_VARIABLE_Info_92,
+  MR_Word * check_hlds__switch_detection__FoundDeconstruct_19)
+{
+  {
+    MR_bool check_hlds__switch_detection__succeeded;
+    MR_Word check_hlds__switch_detection__GoalExpr0_20 = ((MR_Word) (MR_hl_field(MR_mktag(0), check_hlds__switch_detection__Goal0_14, (MR_Integer) 0)));
+    MR_Word check_hlds__switch_detection__GoalInfo_21 = ((MR_Word) (MR_hl_field(MR_mktag(0), check_hlds__switch_detection__Goal0_14, (MR_Integer) 1)));
+
+    switch (MR_tag((MR_Word) check_hlds__switch_detection__GoalExpr0_20)) {
+      default: /*NOTREACHED*/ MR_assert(0);
+      case (MR_Integer) 0:
+        {
+          *check_hlds__switch_detection__Goal_15 = check_hlds__switch_detection__Goal0_14;
+          {
+            check_hlds__switch_detection__succeeded = hlds__hlds_goal__goal_info_has_feature_2_p_0(check_hlds__switch_detection__GoalInfo_21, (MR_Integer) 1);
+          }
+          if (check_hlds__switch_detection__succeeded)
+            *check_hlds__switch_detection__FoundDeconstruct_19 = (MR_Integer) 0;
+          else
+            *check_hlds__switch_detection__FoundDeconstruct_19 = (MR_Integer) 2;
+          *check_hlds__switch_detection__STATE_VARIABLE_Subst_88 = check_hlds__switch_detection__STATE_VARIABLE_Subst_0_87;
+          *check_hlds__switch_detection__STATE_VARIABLE_Result_90 = check_hlds__switch_detection__STATE_VARIABLE_Result_0_89;
+          *check_hlds__switch_detection__STATE_VARIABLE_Info_92 = check_hlds__switch_detection__STATE_VARIABLE_Info_0_91;
+        }
+        break;
+      case (MR_Integer) 1:
+        {
+          MR_Word check_hlds__switch_detection__LHS_32 = ((MR_Word) (MR_hl_field(MR_mktag(1), check_hlds__switch_detection__GoalExpr0_20, (MR_Integer) 0)));
+          MR_Word check_hlds__switch_detection__RHS_33 = ((MR_Word) (MR_hl_field(MR_mktag(1), check_hlds__switch_detection__GoalExpr0_20, (MR_Integer) 1)));
+          MR_Word check_hlds__switch_detection__UnifyInfo0_35 = ((MR_Word) (MR_hl_field(MR_mktag(1), check_hlds__switch_detection__GoalExpr0_20, (MR_Integer) 3)));
+          MR_Word check_hlds__switch_detection__Var_34 = ((MR_Word) (MR_hl_field(MR_mktag(1), check_hlds__switch_detection__GoalExpr0_20, (MR_Integer) 2)));
+          MR_Word check_hlds__switch_detection__Var_36 = ((MR_Word) (MR_hl_field(MR_mktag(1), check_hlds__switch_detection__GoalExpr0_20, (MR_Integer) 4)));
+          MR_Word check_hlds__switch_detection__TypeCtorInfo_120_120;
+          MR_Word check_hlds__switch_detection__TypeInfo_125_125;
+          MR_Word check_hlds__switch_detection__UnifyVar_37;
+          MR_Word check_hlds__switch_detection__SubstVar_43;
+          MR_Word check_hlds__switch_detection__SubstUnifyVar_44;
+          MR_Word check_hlds__switch_detection__Var_97;
+          MR_Word check_hlds__switch_detection__Var_98;
+          MR_Word check_hlds__switch_detection__Var_99;
+          MR_Word check_hlds__switch_detection__Var_100;
+          MR_Word check_hlds__switch_detection__Var_101;
+          MR_Word check_hlds__switch_detection__Var_102;
+          MR_Word check_hlds__switch_detection__Var_103;
+          MR_Word check_hlds__switch_detection__Var_104;
+          MR_Word check_hlds__switch_detection__Var_121;
+          MR_Word check_hlds__switch_detection__Var_122;
+          MR_Word check_hlds__switch_detection__Var_38;
+          MR_Word check_hlds__switch_detection__Var_39;
+          MR_Word check_hlds__switch_detection__Var_40;
+          MR_Word check_hlds__switch_detection__Var_41;
+          MR_Word check_hlds__switch_detection__Var_42;
+
+          check_hlds__switch_detection__succeeded = ((MR_tag((MR_Word) check_hlds__switch_detection__UnifyInfo0_35)) == (MR_mktag((MR_Integer) 1)));
+          if (check_hlds__switch_detection__succeeded)
+            {
+              check_hlds__switch_detection__UnifyVar_37 = ((MR_Word) (MR_hl_field(MR_mktag(1), check_hlds__switch_detection__UnifyInfo0_35, (MR_Integer) 0)));
+              check_hlds__switch_detection__Var_38 = ((MR_Word) (MR_hl_field(MR_mktag(1), check_hlds__switch_detection__UnifyInfo0_35, (MR_Integer) 1)));
+              check_hlds__switch_detection__Var_39 = ((MR_Word) (MR_hl_field(MR_mktag(1), check_hlds__switch_detection__UnifyInfo0_35, (MR_Integer) 2)));
+              check_hlds__switch_detection__Var_40 = ((MR_Word) (MR_hl_field(MR_mktag(1), check_hlds__switch_detection__UnifyInfo0_35, (MR_Integer) 3)));
+              check_hlds__switch_detection__Var_41 = ((MR_Word) (MR_hl_field(MR_mktag(1), check_hlds__switch_detection__UnifyInfo0_35, (MR_Integer) 4)));
+              check_hlds__switch_detection__Var_42 = ((MR_Word) (MR_hl_field(MR_mktag(1), check_hlds__switch_detection__UnifyInfo0_35, (MR_Integer) 5)));
+              {
+                check_hlds__switch_detection__Var_99 = mercury__term__context_init_0_f_0();
+              }
+              {
+                check_hlds__switch_detection__Var_97 = (MR_Word) MR_mkword(MR_mktag(1), MR_new_object(MR_Word, ((MR_Integer) 2 * sizeof(MR_Word)), NULL, NULL));
+                MR_hl_field(MR_mktag(1), check_hlds__switch_detection__Var_97, 0) = ((MR_Box) (check_hlds__switch_detection__Var_12));
+                MR_hl_field(MR_mktag(1), check_hlds__switch_detection__Var_97, 1) = ((MR_Box) (check_hlds__switch_detection__Var_99));
+              }
+              {
+                check_hlds__switch_detection__Var_100 = mercury__term__context_init_0_f_0();
+              }
+              check_hlds__switch_detection__TypeCtorInfo_120_120 = (MR_Word) &parse_tree__prog_data__parse_tree__prog_data__type_ctor_info_prog_var_type_0;
+              {
+                mercury__term__apply_rec_substitution_in_term_3_p_0(check_hlds__switch_detection__TypeCtorInfo_120_120, check_hlds__switch_detection__STATE_VARIABLE_Subst_0_87, check_hlds__switch_detection__Var_97, &check_hlds__switch_detection__Var_98);
+              }
+              check_hlds__switch_detection__succeeded = ((MR_tag((MR_Word) check_hlds__switch_detection__Var_98)) == (MR_mktag((MR_Integer) 1)));
+              if (check_hlds__switch_detection__succeeded)
+                {
+                  check_hlds__switch_detection__SubstVar_43 = ((MR_Word) (MR_hl_field(MR_mktag(1), check_hlds__switch_detection__Var_98, (MR_Integer) 0)));
+                  check_hlds__switch_detection__Var_121 = ((MR_Word) (MR_hl_field(MR_mktag(1), check_hlds__switch_detection__Var_98, (MR_Integer) 1)));
+                  {
+                    check_hlds__switch_detection__succeeded = mercury__term____Unify____context_0_0(check_hlds__switch_detection__Var_100, check_hlds__switch_detection__Var_121);
+                  }
+                  if (check_hlds__switch_detection__succeeded)
+                    {
+                      {
+                        check_hlds__switch_detection__Var_103 = mercury__term__context_init_0_f_0();
+                      }
+                      {
+                        check_hlds__switch_detection__Var_101 = (MR_Word) MR_mkword(MR_mktag(1), MR_new_object(MR_Word, ((MR_Integer) 2 * sizeof(MR_Word)), NULL, NULL));
+                        MR_hl_field(MR_mktag(1), check_hlds__switch_detection__Var_101, 0) = ((MR_Box) (check_hlds__switch_detection__UnifyVar_37));
+                        MR_hl_field(MR_mktag(1), check_hlds__switch_detection__Var_101, 1) = ((MR_Box) (check_hlds__switch_detection__Var_103));
+                      }
+                      {
+                        check_hlds__switch_detection__Var_104 = mercury__term__context_init_0_f_0();
+                      }
+                      {
+                        mercury__term__apply_rec_substitution_in_term_3_p_0(check_hlds__switch_detection__TypeCtorInfo_120_120, check_hlds__switch_detection__STATE_VARIABLE_Subst_0_87, check_hlds__switch_detection__Var_101, &check_hlds__switch_detection__Var_102);
+                      }
+                      check_hlds__switch_detection__succeeded = ((MR_tag((MR_Word) check_hlds__switch_detection__Var_102)) == (MR_mktag((MR_Integer) 1)));
+                      if (check_hlds__switch_detection__succeeded)
+                        {
+                          check_hlds__switch_detection__SubstUnifyVar_44 = ((MR_Word) (MR_hl_field(MR_mktag(1), check_hlds__switch_detection__Var_102, (MR_Integer) 0)));
+                          check_hlds__switch_detection__Var_122 = ((MR_Word) (MR_hl_field(MR_mktag(1), check_hlds__switch_detection__Var_102, (MR_Integer) 1)));
+                          {
+                            check_hlds__switch_detection__succeeded = mercury__term____Unify____context_0_0(check_hlds__switch_detection__Var_104, check_hlds__switch_detection__Var_122);
+                          }
+                          if (check_hlds__switch_detection__succeeded)
+                            {
+                              check_hlds__switch_detection__TypeInfo_125_125 = (MR_Word) &check_hlds__switch_detection_scalar_common_1[0];
+                              {
+                                check_hlds__switch_detection__succeeded = mercury__builtin__unify_2_p_0(check_hlds__switch_detection__TypeInfo_125_125, ((MR_Box) (check_hlds__switch_detection__SubstVar_43)), ((MR_Box) (check_hlds__switch_detection__SubstUnifyVar_44)));
+                              }
+                            }
+                        }
+                    }
+                }
+            }
+          if (check_hlds__switch_detection__succeeded)
+            {
+              MR_Word check_hlds__switch_detection__Goals_45;
+              void MR_CALL (* check_hlds__switch_detection__func_0)(MR_Box, MR_Box, MR_Box, MR_Box *, MR_Box, MR_Box *, MR_Box, MR_Box *) = ((void MR_CALL (*)(MR_Box, MR_Box, MR_Box, MR_Box *, MR_Box, MR_Box *, MR_Box, MR_Box *)) (MR_hl_field(MR_mktag(0), check_hlds__switch_detection__ProcessUnify_13, (MR_Integer) 1)));
+              MR_Box check_hlds__switch_detection__conv1_Goals_45;
+
+              {
+                check_hlds__switch_detection__func_0(((MR_Box) check_hlds__switch_detection__ProcessUnify_13), ((MR_Box) (check_hlds__switch_detection__Var_12)), ((MR_Box) (check_hlds__switch_detection__Goal0_14)), &check_hlds__switch_detection__conv1_Goals_45, check_hlds__switch_detection__STATE_VARIABLE_Result_0_89, check_hlds__switch_detection__STATE_VARIABLE_Result_90, check_hlds__switch_detection__STATE_VARIABLE_Info_0_91, check_hlds__switch_detection__STATE_VARIABLE_Info_92);
+              }
+              check_hlds__switch_detection__Goals_45 = ((MR_Word) check_hlds__switch_detection__conv1_Goals_45);
+              {
+                hlds__hlds_goal__conj_list_to_goal_3_p_0(check_hlds__switch_detection__Goals_45, check_hlds__switch_detection__GoalInfo_21, check_hlds__switch_detection__Goal_15);
+              }
+              *check_hlds__switch_detection__FoundDeconstruct_19 = (MR_Integer) 1;
+              *check_hlds__switch_detection__STATE_VARIABLE_Subst_88 = check_hlds__switch_detection__STATE_VARIABLE_Subst_0_87;
+            }
+          else
+            {
+              MR_Word check_hlds__switch_detection__NewSubst_46;
+
+              *check_hlds__switch_detection__Goal_15 = check_hlds__switch_detection__Goal0_14;
+              *check_hlds__switch_detection__FoundDeconstruct_19 = (MR_Integer) 0;
+              {
+                check_hlds__switch_detection__succeeded = check_hlds__det_util__interpret_unify_4_p_0(check_hlds__switch_detection__LHS_32, check_hlds__switch_detection__RHS_33, check_hlds__switch_detection__STATE_VARIABLE_Subst_0_87, &check_hlds__switch_detection__NewSubst_46);
+              }
+              if (check_hlds__switch_detection__succeeded)
+                *check_hlds__switch_detection__STATE_VARIABLE_Subst_88 = check_hlds__switch_detection__NewSubst_46;
+              else
+                *check_hlds__switch_detection__STATE_VARIABLE_Subst_88 = check_hlds__switch_detection__STATE_VARIABLE_Subst_0_87;
+              *check_hlds__switch_detection__STATE_VARIABLE_Info_92 = check_hlds__switch_detection__STATE_VARIABLE_Info_0_91;
+              *check_hlds__switch_detection__STATE_VARIABLE_Result_90 = check_hlds__switch_detection__STATE_VARIABLE_Result_0_89;
+            }
+        }
+        break;
+      case (MR_Integer) 2:
+        {
+          *check_hlds__switch_detection__Goal_15 = check_hlds__switch_detection__Goal0_14;
+          {
+            check_hlds__switch_detection__succeeded = hlds__hlds_goal__goal_info_has_feature_2_p_0(check_hlds__switch_detection__GoalInfo_21, (MR_Integer) 1);
+          }
+          if (check_hlds__switch_detection__succeeded)
+            *check_hlds__switch_detection__FoundDeconstruct_19 = (MR_Integer) 0;
+          else
+            *check_hlds__switch_detection__FoundDeconstruct_19 = (MR_Integer) 2;
+          *check_hlds__switch_detection__STATE_VARIABLE_Subst_88 = check_hlds__switch_detection__STATE_VARIABLE_Subst_0_87;
+          *check_hlds__switch_detection__STATE_VARIABLE_Result_90 = check_hlds__switch_detection__STATE_VARIABLE_Result_0_89;
+          *check_hlds__switch_detection__STATE_VARIABLE_Info_92 = check_hlds__switch_detection__STATE_VARIABLE_Info_0_91;
+        }
+        break;
+      case (MR_Integer) 3:
+        switch (((MR_Integer) (MR_Word) (MR_hl_field(MR_mktag(3), check_hlds__switch_detection__GoalExpr0_20, (MR_Integer) 0)))) {
+          default: /*NOTREACHED*/ MR_assert(0);
+          case (MR_Integer) 0:
+          case (MR_Integer) 1:
+          case (MR_Integer) 3:
+          case (MR_Integer) 4:
+          case (MR_Integer) 6:
+            {
+              *check_hlds__switch_detection__Goal_15 = check_hlds__switch_detection__Goal0_14;
+              {
+                check_hlds__switch_detection__succeeded = hlds__hlds_goal__goal_info_has_feature_2_p_0(check_hlds__switch_detection__GoalInfo_21, (MR_Integer) 1);
+              }
+              if (check_hlds__switch_detection__succeeded)
+                *check_hlds__switch_detection__FoundDeconstruct_19 = (MR_Integer) 0;
+              else
+                *check_hlds__switch_detection__FoundDeconstruct_19 = (MR_Integer) 2;
+              *check_hlds__switch_detection__STATE_VARIABLE_Subst_88 = check_hlds__switch_detection__STATE_VARIABLE_Subst_0_87;
+              *check_hlds__switch_detection__STATE_VARIABLE_Result_90 = check_hlds__switch_detection__STATE_VARIABLE_Result_0_89;
+              *check_hlds__switch_detection__STATE_VARIABLE_Info_92 = check_hlds__switch_detection__STATE_VARIABLE_Info_0_91;
+            }
+            break;
+          case (MR_Integer) 2:
+            {
+              MR_Word check_hlds__switch_detection__ConjType_27 = ((MR_Word) (MR_hl_field(MR_mktag(3), check_hlds__switch_detection__GoalExpr0_20, (MR_Integer) 1)));
+              MR_Word check_hlds__switch_detection__SubGoals0_28 = ((MR_Word) (MR_hl_field(MR_mktag(3), check_hlds__switch_detection__GoalExpr0_20, (MR_Integer) 2)));
+
+              switch (check_hlds__switch_detection__ConjType_27) {
+                default: /*NOTREACHED*/ MR_assert(0);
+                case (MR_Integer) 1:
+                  {
+                    *check_hlds__switch_detection__Goal_15 = check_hlds__switch_detection__Goal0_14;
+                    *check_hlds__switch_detection__FoundDeconstruct_19 = (MR_Integer) 2;
+                    *check_hlds__switch_detection__STATE_VARIABLE_Subst_88 = check_hlds__switch_detection__STATE_VARIABLE_Subst_0_87;
+                    *check_hlds__switch_detection__STATE_VARIABLE_Result_90 = check_hlds__switch_detection__STATE_VARIABLE_Result_0_89;
+                    *check_hlds__switch_detection__STATE_VARIABLE_Info_92 = check_hlds__switch_detection__STATE_VARIABLE_Info_0_91;
+                  }
+                  break;
+                case (MR_Integer) 0:
+                  if ((check_hlds__switch_detection__SubGoals0_28 == ((MR_Word) MR_mkword(MR_mktag(0), MR_mkbody((MR_Integer) 0)))))
+                    {
+                      *check_hlds__switch_detection__Goal_15 = check_hlds__switch_detection__Goal0_14;
+                      *check_hlds__switch_detection__FoundDeconstruct_19 = (MR_Integer) 0;
+                      *check_hlds__switch_detection__STATE_VARIABLE_Subst_88 = check_hlds__switch_detection__STATE_VARIABLE_Subst_0_87;
+                      *check_hlds__switch_detection__STATE_VARIABLE_Result_90 = check_hlds__switch_detection__STATE_VARIABLE_Result_0_89;
+                      *check_hlds__switch_detection__STATE_VARIABLE_Info_92 = check_hlds__switch_detection__STATE_VARIABLE_Info_0_91;
+                    }
+                  else
+                    {
+                      MR_Word check_hlds__switch_detection__SubGoals_31;
+                      MR_Word check_hlds__switch_detection__Var_111;
+
+                      {
+                        check_hlds__switch_detection__f_85_110_117_115_101_100_65_114_103_115_95_95_112_114_101_100_95_95_99_111_110_106_95_102_105_110_100_95_98_105_110_100_95_118_97_114_95_95_91_49_44_32_50_93_95_48_11_p_0(check_hlds__switch_detection__Var_12, check_hlds__switch_detection__ProcessUnify_13, check_hlds__switch_detection__SubGoals0_28, &check_hlds__switch_detection__SubGoals_31, check_hlds__switch_detection__STATE_VARIABLE_Subst_0_87, check_hlds__switch_detection__STATE_VARIABLE_Subst_88, check_hlds__switch_detection__STATE_VARIABLE_Result_0_89, check_hlds__switch_detection__STATE_VARIABLE_Result_90, check_hlds__switch_detection__STATE_VARIABLE_Info_0_91, check_hlds__switch_detection__STATE_VARIABLE_Info_92, check_hlds__switch_detection__FoundDeconstruct_19);
+                      }
+                      {
+                        check_hlds__switch_detection__Var_111 = (MR_Word) MR_mkword(MR_mktag(3), MR_new_object(MR_Word, ((MR_Integer) 3 * sizeof(MR_Word)), NULL, NULL));
+                        MR_hl_field(MR_mktag(3), check_hlds__switch_detection__Var_111, 0) = ((MR_Box) (MR_Word) ((MR_Integer) 2));
+                        MR_hl_field(MR_mktag(3), check_hlds__switch_detection__Var_111, 1) = ((MR_Box) (check_hlds__switch_detection__ConjType_27));
+                        MR_hl_field(MR_mktag(3), check_hlds__switch_detection__Var_111, 2) = ((MR_Box) (check_hlds__switch_detection__SubGoals_31));
+                      }
+                      {
+                        MR_Word base;
+                        base = (MR_Word) MR_new_object(MR_Word, ((MR_Integer) 2 * sizeof(MR_Word)), NULL, NULL);
+                        *check_hlds__switch_detection__Goal_15 = base;
+                        MR_hl_field(MR_mktag(0), base, 0) = ((MR_Box) (check_hlds__switch_detection__Var_111));
+                        MR_hl_field(MR_mktag(0), base, 1) = ((MR_Box) (check_hlds__switch_detection__GoalInfo_21));
+                      }
+                    }
+                  break;
+              }
+            }
+            break;
+          case (MR_Integer) 5:
+            {
+              MR_Word check_hlds__switch_detection__Reason0_22 = ((MR_Word) (MR_hl_field(MR_mktag(3), check_hlds__switch_detection__GoalExpr0_20, (MR_Integer) 1)));
+              MR_Word check_hlds__switch_detection__SubGoal0_23 = ((MR_Word) (MR_hl_field(MR_mktag(3), check_hlds__switch_detection__GoalExpr0_20, (MR_Integer) 2)));
+              MR_Word check_hlds__switch_detection__Var_112;
+              MR_Word check_hlds__switch_detection__Var_24;
+
+              check_hlds__switch_detection__succeeded = ((((MR_tag((MR_Word) check_hlds__switch_detection__Reason0_22)) == (MR_mktag((MR_Integer) 3)))) && (((((MR_Integer) (MR_Word) (MR_hl_field(MR_mktag(3), check_hlds__switch_detection__Reason0_22, (MR_Integer) 0)))) == (MR_Integer) 6)));
+              if (check_hlds__switch_detection__succeeded)
+                {
+                  check_hlds__switch_detection__Var_24 = ((MR_Word) (MR_hl_field(MR_mktag(3), check_hlds__switch_detection__Reason0_22, (MR_Integer) 1)));
+                  check_hlds__switch_detection__Var_112 = ((MR_Word) (MR_hl_field(MR_mktag(3), check_hlds__switch_detection__Reason0_22, (MR_Integer) 2)));
+                  check_hlds__switch_detection__succeeded = (check_hlds__switch_detection__Var_112 == (MR_Integer) 1);
+                }
+              if (check_hlds__switch_detection__succeeded)
+                {
+                  *check_hlds__switch_detection__Goal_15 = check_hlds__switch_detection__Goal0_14;
+                  *check_hlds__switch_detection__FoundDeconstruct_19 = (MR_Integer) 0;
+                  *check_hlds__switch_detection__STATE_VARIABLE_Info_92 = check_hlds__switch_detection__STATE_VARIABLE_Info_0_91;
+                  *check_hlds__switch_detection__STATE_VARIABLE_Result_90 = check_hlds__switch_detection__STATE_VARIABLE_Result_0_89;
+                  *check_hlds__switch_detection__STATE_VARIABLE_Subst_88 = check_hlds__switch_detection__STATE_VARIABLE_Subst_0_87;
+                }
+              else
+                {
+                  MR_Word check_hlds__switch_detection__SubGoal_25;
+                  MR_Word check_hlds__switch_detection__Var_116;
+                  MR_Word check_hlds__switch_detection__Var_26;
+
+                  {
+                    check_hlds__switch_detection__f_85_110_117_115_101_100_65_114_103_115_95_95_112_114_101_100_95_95_102_105_110_100_95_98_105_110_100_95_118_97_114_95_50_95_95_91_49_44_32_50_93_95_48_11_p_0(check_hlds__switch_detection__Var_12, check_hlds__switch_detection__ProcessUnify_13, check_hlds__switch_detection__SubGoal0_23, &check_hlds__switch_detection__SubGoal_25, check_hlds__switch_detection__STATE_VARIABLE_Subst_0_87, check_hlds__switch_detection__STATE_VARIABLE_Subst_88, check_hlds__switch_detection__STATE_VARIABLE_Result_0_89, check_hlds__switch_detection__STATE_VARIABLE_Result_90, check_hlds__switch_detection__STATE_VARIABLE_Info_0_91, check_hlds__switch_detection__STATE_VARIABLE_Info_92, check_hlds__switch_detection__FoundDeconstruct_19);
+                  }
+                  check_hlds__switch_detection__succeeded = (*check_hlds__switch_detection__FoundDeconstruct_19 == (MR_Integer) 1);
+                  if (check_hlds__switch_detection__succeeded)
+                    {
+                      check_hlds__switch_detection__succeeded = ((((MR_tag((MR_Word) check_hlds__switch_detection__Reason0_22)) == (MR_mktag((MR_Integer) 3)))) && (((((MR_Integer) (MR_Word) (MR_hl_field(MR_mktag(3), check_hlds__switch_detection__Reason0_22, (MR_Integer) 0)))) == (MR_Integer) 6)));
+                      if (check_hlds__switch_detection__succeeded)
+                        {
+                          check_hlds__switch_detection__Var_26 = ((MR_Word) (MR_hl_field(MR_mktag(3), check_hlds__switch_detection__Reason0_22, (MR_Integer) 1)));
+                          check_hlds__switch_detection__Var_116 = ((MR_Word) (MR_hl_field(MR_mktag(3), check_hlds__switch_detection__Reason0_22, (MR_Integer) 2)));
+                          check_hlds__switch_detection__succeeded = (check_hlds__switch_detection__Var_116 == (MR_Integer) 2);
+                        }
+                    }
+                  if (check_hlds__switch_detection__succeeded)
+                    *check_hlds__switch_detection__Goal_15 = check_hlds__switch_detection__SubGoal_25;
+                  else
+                    {
+                      MR_Word check_hlds__switch_detection__Var_117;
+
+                      {
+                        check_hlds__switch_detection__Var_117 = (MR_Word) MR_mkword(MR_mktag(3), MR_new_object(MR_Word, ((MR_Integer) 3 * sizeof(MR_Word)), NULL, NULL));
+                        MR_hl_field(MR_mktag(3), check_hlds__switch_detection__Var_117, 0) = ((MR_Box) (MR_Word) ((MR_Integer) 5));
+                        MR_hl_field(MR_mktag(3), check_hlds__switch_detection__Var_117, 1) = ((MR_Box) (check_hlds__switch_detection__Reason0_22));
+                        MR_hl_field(MR_mktag(3), check_hlds__switch_detection__Var_117, 2) = ((MR_Box) (check_hlds__switch_detection__SubGoal_25));
+                      }
+                      {
+                        MR_Word base;
+                        base = (MR_Word) MR_new_object(MR_Word, ((MR_Integer) 2 * sizeof(MR_Word)), NULL, NULL);
+                        *check_hlds__switch_detection__Goal_15 = base;
+                        MR_hl_field(MR_mktag(0), base, 0) = ((MR_Box) (check_hlds__switch_detection__Var_117));
+                        MR_hl_field(MR_mktag(0), base, 1) = ((MR_Box) (check_hlds__switch_detection__GoalInfo_21));
+                      }
+                    }
+                }
+            }
+            break;
+          case (MR_Integer) 7:
+            {
+              MR_Word check_hlds__switch_detection__ShortHand0_74 = ((MR_Word) (MR_hl_field(MR_mktag(3), check_hlds__switch_detection__GoalExpr0_20, (MR_Integer) 1)));
+
+              switch (MR_tag((MR_Word) check_hlds__switch_detection__ShortHand0_74)) {
+                default: /*NOTREACHED*/ MR_assert(0);
+                case (MR_Integer) 0:
+                  {
+                    {
+                      mercury__require__unexpected_3_p_0((MR_String) "check_hlds.switch_detection", (MR_String) "predicate \140check_hlds.switch_detection.find_bind_var_2\'/11", (MR_String) "bi_implication");
+                      return;
+                    }
+                  }
+                  break;
+                case (MR_Integer) 1:
+                  {
+                    *check_hlds__switch_detection__Goal_15 = check_hlds__switch_detection__Goal0_14;
+                    *check_hlds__switch_detection__FoundDeconstruct_19 = (MR_Integer) 2;
+                  }
+                  break;
+                case (MR_Integer) 2:
+                  {
+                    *check_hlds__switch_detection__Goal_15 = check_hlds__switch_detection__Goal0_14;
+                    *check_hlds__switch_detection__FoundDeconstruct_19 = (MR_Integer) 2;
+                  }
+                  break;
+              }
+              *check_hlds__switch_detection__STATE_VARIABLE_Subst_88 = check_hlds__switch_detection__STATE_VARIABLE_Subst_0_87;
+              *check_hlds__switch_detection__STATE_VARIABLE_Result_90 = check_hlds__switch_detection__STATE_VARIABLE_Result_0_89;
+              *check_hlds__switch_detection__STATE_VARIABLE_Info_92 = check_hlds__switch_detection__STATE_VARIABLE_Info_0_91;
+            }
+            break;
+        }
+        break;
+    }
+  }
+}
+
+static void MR_CALL 
+check_hlds__switch_detection__f_85_110_117_115_101_100_65_114_103_115_95_95_112_114_101_100_95_95_102_105_110_100_95_98_105_110_100_95_118_97_114_95_102_111_114_95_115_119_105_116_99_104_95_105_110_95_100_101_99_111_110_115_116_114_117_99_116_95_95_91_52_44_32_54_93_95_48_7_p_0(
+  MR_Word check_hlds__switch_detection__SwitchVar_8,
+  MR_Word check_hlds__switch_detection__Goal0_9,
+  MR_Word * check_hlds__switch_detection__Goals_10,
+  MR_Word * check_hlds__switch_detection__Result_12)
+{
+  {
+    MR_bool check_hlds__switch_detection__succeeded;
+    MR_Word check_hlds__switch_detection__GoalExpr0_14;
+    MR_Word check_hlds__switch_detection__GoalInfo_15;
+    MR_Word check_hlds__switch_detection__Unification0_19;
+    MR_Word check_hlds__switch_detection__UnifyVar_21;
+    MR_Word check_hlds__switch_detection__Functor_22;
+    MR_Word check_hlds__switch_detection__ArgVars_23;
+    MR_Word check_hlds__switch_detection__Var_16;
+    MR_Word check_hlds__switch_detection__Var_17;
+    MR_Word check_hlds__switch_detection__Var_18;
+    MR_Word check_hlds__switch_detection__Var_20;
+    MR_Word check_hlds__switch_detection__Var_24;
+    MR_Word check_hlds__switch_detection__Var_25;
+    MR_Word check_hlds__switch_detection__Var_26;
+
+    mercury__private_builtin__dummy_var = (MR_Integer) 0;
+    check_hlds__switch_detection__GoalExpr0_14 = ((MR_Word) (MR_hl_field(MR_mktag(0), check_hlds__switch_detection__Goal0_9, (MR_Integer) 0)));
+    check_hlds__switch_detection__GoalInfo_15 = ((MR_Word) (MR_hl_field(MR_mktag(0), check_hlds__switch_detection__Goal0_9, (MR_Integer) 1)));
+    check_hlds__switch_detection__succeeded = ((MR_tag((MR_Word) check_hlds__switch_detection__GoalExpr0_14)) == (MR_mktag((MR_Integer) 1)));
+    if (check_hlds__switch_detection__succeeded)
+      {
+        check_hlds__switch_detection__Var_16 = ((MR_Word) (MR_hl_field(MR_mktag(1), check_hlds__switch_detection__GoalExpr0_14, (MR_Integer) 0)));
+        check_hlds__switch_detection__Var_17 = ((MR_Word) (MR_hl_field(MR_mktag(1), check_hlds__switch_detection__GoalExpr0_14, (MR_Integer) 1)));
+        check_hlds__switch_detection__Var_18 = ((MR_Word) (MR_hl_field(MR_mktag(1), check_hlds__switch_detection__GoalExpr0_14, (MR_Integer) 2)));
+        check_hlds__switch_detection__Unification0_19 = ((MR_Word) (MR_hl_field(MR_mktag(1), check_hlds__switch_detection__GoalExpr0_14, (MR_Integer) 3)));
+        check_hlds__switch_detection__Var_20 = ((MR_Word) (MR_hl_field(MR_mktag(1), check_hlds__switch_detection__GoalExpr0_14, (MR_Integer) 4)));
+        check_hlds__switch_detection__succeeded = ((MR_tag((MR_Word) check_hlds__switch_detection__Unification0_19)) == (MR_mktag((MR_Integer) 1)));
+        if (check_hlds__switch_detection__succeeded)
+          {
+            check_hlds__switch_detection__UnifyVar_21 = ((MR_Word) (MR_hl_field(MR_mktag(1), check_hlds__switch_detection__Unification0_19, (MR_Integer) 0)));
+            check_hlds__switch_detection__Functor_22 = ((MR_Word) (MR_hl_field(MR_mktag(1), check_hlds__switch_detection__Unification0_19, (MR_Integer) 1)));
+            check_hlds__switch_detection__ArgVars_23 = ((MR_Word) (MR_hl_field(MR_mktag(1), check_hlds__switch_detection__Unification0_19, (MR_Integer) 2)));
+            check_hlds__switch_detection__Var_24 = ((MR_Word) (MR_hl_field(MR_mktag(1), check_hlds__switch_detection__Unification0_19, (MR_Integer) 3)));
+            check_hlds__switch_detection__Var_25 = ((MR_Word) (MR_hl_field(MR_mktag(1), check_hlds__switch_detection__Unification0_19, (MR_Integer) 4)));
+            check_hlds__switch_detection__Var_26 = ((MR_Word) (MR_hl_field(MR_mktag(1), check_hlds__switch_detection__Unification0_19, (MR_Integer) 5)));
+          }
+      }
+    if (check_hlds__switch_detection__succeeded)
+      {
+        MR_Word check_hlds__switch_detection__TypeInfo_46_46;
+
+        {
+          MR_Word base;
+          base = (MR_Word) MR_mkword(MR_mktag(1), MR_new_object(MR_Word, ((MR_Integer) 1 * sizeof(MR_Word)), NULL, NULL));
+          *check_hlds__switch_detection__Result_12 = base;
+          MR_hl_field(MR_mktag(1), base, 0) = ((MR_Box) (check_hlds__switch_detection__Functor_22));
+        }
+        check_hlds__switch_detection__succeeded = (check_hlds__switch_detection__ArgVars_23 == ((MR_Word) MR_mkword(MR_mktag(0), MR_mkbody((MR_Integer) 0))));
+        if (check_hlds__switch_detection__succeeded)
+          {
+            check_hlds__switch_detection__TypeInfo_46_46 = (MR_Word) &check_hlds__switch_detection_scalar_common_1[0];
+            {
+              check_hlds__switch_detection__succeeded = mercury__builtin__unify_2_p_0(check_hlds__switch_detection__TypeInfo_46_46, ((MR_Box) (check_hlds__switch_detection__SwitchVar_8)), ((MR_Box) (check_hlds__switch_detection__UnifyVar_21)));
+            }
+          }
+        if (check_hlds__switch_detection__succeeded)
+          *check_hlds__switch_detection__Goals_10 = (MR_Word) MR_mkword(MR_mktag(0), MR_mkbody((MR_Integer) 0));
+        else
+          {
+            MR_Word check_hlds__switch_detection__Unification_27;
+            MR_Word check_hlds__switch_detection__GoalExpr_28;
+            MR_Word check_hlds__switch_detection__Goal_29;
+            MR_Word check_hlds__switch_detection__Var_35 = ((MR_Word) (MR_hl_field(MR_mktag(1), check_hlds__switch_detection__Unification0_19, (MR_Integer) 0)));
+            MR_Word check_hlds__switch_detection__Var_36 = ((MR_Word) (MR_hl_field(MR_mktag(1), check_hlds__switch_detection__Unification0_19, (MR_Integer) 1)));
+            MR_Word check_hlds__switch_detection__Var_37 = ((MR_Word) (MR_hl_field(MR_mktag(1), check_hlds__switch_detection__Unification0_19, (MR_Integer) 2)));
+            MR_Word check_hlds__switch_detection__Var_38 = ((MR_Word) (MR_hl_field(MR_mktag(1), check_hlds__switch_detection__Unification0_19, (MR_Integer) 3)));
+            MR_Word check_hlds__switch_detection__Var_40 = ((MR_Word) (MR_hl_field(MR_mktag(1), check_hlds__switch_detection__Unification0_19, (MR_Integer) 5)));
+            MR_Word check_hlds__switch_detection__Var_39 = ((MR_Word) (MR_hl_field(MR_mktag(1), check_hlds__switch_detection__Unification0_19, (MR_Integer) 4)));
+            MR_Word check_hlds__switch_detection__Var_41;
+            MR_Word check_hlds__switch_detection__Var_42;
+            MR_Word check_hlds__switch_detection__Var_43;
+            MR_Word check_hlds__switch_detection__Var_45;
+            MR_Word check_hlds__switch_detection__Var_44;
+
+            {
+              check_hlds__switch_detection__Unification_27 = (MR_Word) MR_mkword(MR_mktag(1), MR_new_object(MR_Word, ((MR_Integer) 6 * sizeof(MR_Word)), NULL, NULL));
+              MR_hl_field(MR_mktag(1), check_hlds__switch_detection__Unification_27, 0) = ((MR_Box) (check_hlds__switch_detection__Var_35));
+              MR_hl_field(MR_mktag(1), check_hlds__switch_detection__Unification_27, 1) = ((MR_Box) (check_hlds__switch_detection__Var_36));
+              MR_hl_field(MR_mktag(1), check_hlds__switch_detection__Unification_27, 2) = ((MR_Box) (check_hlds__switch_detection__Var_37));
+              MR_hl_field(MR_mktag(1), check_hlds__switch_detection__Unification_27, 3) = ((MR_Box) (check_hlds__switch_detection__Var_38));
+              MR_hl_field(MR_mktag(1), check_hlds__switch_detection__Unification_27, 4) = ((MR_Box) ((MR_Integer) 1));
+              MR_hl_field(MR_mktag(1), check_hlds__switch_detection__Unification_27, 5) = ((MR_Box) (check_hlds__switch_detection__Var_40));
+            }
+            check_hlds__switch_detection__Var_41 = ((MR_Word) (MR_hl_field(MR_mktag(1), check_hlds__switch_detection__GoalExpr0_14, (MR_Integer) 0)));
+            check_hlds__switch_detection__Var_42 = ((MR_Word) (MR_hl_field(MR_mktag(1), check_hlds__switch_detection__GoalExpr0_14, (MR_Integer) 1)));
+            check_hlds__switch_detection__Var_43 = ((MR_Word) (MR_hl_field(MR_mktag(1), check_hlds__switch_detection__GoalExpr0_14, (MR_Integer) 2)));
+            check_hlds__switch_detection__Var_44 = ((MR_Word) (MR_hl_field(MR_mktag(1), check_hlds__switch_detection__GoalExpr0_14, (MR_Integer) 3)));
+            check_hlds__switch_detection__Var_45 = ((MR_Word) (MR_hl_field(MR_mktag(1), check_hlds__switch_detection__GoalExpr0_14, (MR_Integer) 4)));
+            {
+              check_hlds__switch_detection__GoalExpr_28 = (MR_Word) MR_mkword(MR_mktag(1), MR_new_object(MR_Word, ((MR_Integer) 5 * sizeof(MR_Word)), NULL, NULL));
+              MR_hl_field(MR_mktag(1), check_hlds__switch_detection__GoalExpr_28, 0) = ((MR_Box) (check_hlds__switch_detection__Var_41));
+              MR_hl_field(MR_mktag(1), check_hlds__switch_detection__GoalExpr_28, 1) = ((MR_Box) (check_hlds__switch_detection__Var_42));
+              MR_hl_field(MR_mktag(1), check_hlds__switch_detection__GoalExpr_28, 2) = ((MR_Box) (check_hlds__switch_detection__Var_43));
+              MR_hl_field(MR_mktag(1), check_hlds__switch_detection__GoalExpr_28, 3) = ((MR_Box) (check_hlds__switch_detection__Unification_27));
+              MR_hl_field(MR_mktag(1), check_hlds__switch_detection__GoalExpr_28, 4) = ((MR_Box) (check_hlds__switch_detection__Var_45));
+            }
+            {
+              check_hlds__switch_detection__Goal_29 = (MR_Word) MR_new_object(MR_Word, ((MR_Integer) 2 * sizeof(MR_Word)), NULL, NULL);
+              MR_hl_field(MR_mktag(0), check_hlds__switch_detection__Goal_29, 0) = ((MR_Box) (check_hlds__switch_detection__GoalExpr_28));
+              MR_hl_field(MR_mktag(0), check_hlds__switch_detection__Goal_29, 1) = ((MR_Box) (check_hlds__switch_detection__GoalInfo_15));
+            }
+            {
+              MR_Word base;
+              base = (MR_Word) MR_mkword(MR_mktag(1), MR_new_object(MR_Word, ((MR_Integer) 2 * sizeof(MR_Word)), NULL, NULL));
+              *check_hlds__switch_detection__Goals_10 = base;
+              MR_hl_field(MR_mktag(1), base, 0) = ((MR_Box) (check_hlds__switch_detection__Goal_29));
+              MR_hl_field(MR_mktag(1), base, 1) = ((MR_Box) (MR_mkword(MR_mktag(0), MR_mkbody((MR_Integer) 0))));
+            }
+          }
+      }
+    else
+      {
+        {
+          mercury__require__unexpected_3_p_0((MR_String) "check_hlds.switch_detection", (MR_String) "predicate \140check_hlds.switch_detection.find_bind_var_for_switch_in_deconstruct\'/7", (MR_String) "goal is not a deconstruct unification");
+          return;
+        }
+      }
+  }
+}
+
+static void MR_CALL 
+check_hlds__switch_detection__IntroducedFrom__pred__delete_covered_functors__1502__1_3_p_0(
+  MR_Word check_hlds__switch_detection__HeadVar__1_20,
+  MR_Word check_hlds__switch_detection__HeadVar__2_21,
+  MR_Word * check_hlds__switch_detection__HeadVar__3_22)
+{
+  {
+    MR_bool check_hlds__switch_detection__succeeded;
+
+    {
+      mercury__set_tree234__delete_3_p_0((MR_Word) &parse_tree__prog_data__parse_tree__prog_data__type_ctor_info_cons_id_0, ((MR_Box) (check_hlds__switch_detection__HeadVar__1_20)), check_hlds__switch_detection__HeadVar__2_21, check_hlds__switch_detection__HeadVar__3_22);
+    }
+  }
+}
+
+static MR_bool MR_CALL 
+check_hlds__switch_detection__IntroducedFrom__pred__convert_case__527__1_2_p_0(
+  MR_Word check_hlds__switch_detection__ConflictConsIds_9,
+  MR_Word check_hlds__switch_detection__HeadVar__2_92)
+{
+  {
+    MR_bool check_hlds__switch_detection__succeeded;
+
+    {
+      check_hlds__switch_detection__succeeded = mercury__set_tree234__contains_2_p_0((MR_Word) &parse_tree__prog_data__parse_tree__prog_data__type_ctor_info_cons_id_0, check_hlds__switch_detection__ConflictConsIds_9, ((MR_Box) (check_hlds__switch_detection__HeadVar__2_92)));
+    }
+    return check_hlds__switch_detection__succeeded;
+  }
+}
+
+static MR_bool MR_CALL 
+check_hlds__switch_detection__IntroducedFrom__pred__convert_case__490__1_2_p_0(
+  MR_Word check_hlds__switch_detection__IsMember_18,
+  MR_Word check_hlds__switch_detection__HeadVar__2_62)
+{
+  {
+    MR_bool check_hlds__switch_detection__succeeded = (check_hlds__switch_detection__IsMember_18 == check_hlds__switch_detection__HeadVar__2_62);
+
+    return check_hlds__switch_detection__succeeded;
+  }
+}
+
+static MR_bool MR_CALL 
+check_hlds__switch_detection__IntroducedFrom__pred__convert_case__500__1_2_p_0(
+  MR_Word check_hlds__switch_detection__HeadVar__1_54,
+  MR_Word check_hlds__switch_detection__IsMember_66)
+{
+  {
+    MR_bool check_hlds__switch_detection__succeeded = (check_hlds__switch_detection__IsMember_66 == check_hlds__switch_detection__HeadVar__1_54);
+
+    return check_hlds__switch_detection__succeeded;
+  }
+}
+
+static MR_bool MR_CALL 
+check_hlds__switch_detection__IntroducedFrom__pred__convert_case__482__1_2_p_0(
+  MR_Word check_hlds__switch_detection__HeadVar__1_39,
+  MR_Word check_hlds__switch_detection__HeadVar__2_96)
+{
+  {
+    MR_bool check_hlds__switch_detection__succeeded = (check_hlds__switch_detection__HeadVar__2_96 == check_hlds__switch_detection__HeadVar__1_39);
+
+    return check_hlds__switch_detection__succeeded;
+  }
+}
+
+void MR_CALL 
+check_hlds__switch_detection____Compare____switch_detect_info_0_0(
+  MR_Word * check_hlds__switch_detection__HeadVar__1_1,
+  MR_Word check_hlds__switch_detection__HeadVar__2_2,
+  MR_Word check_hlds__switch_detection__HeadVar__3_3)
+{
+  {
+    MR_bool check_hlds__switch_detection__succeeded;
+    MR_Integer check_hlds__switch_detection__CastX_9 = (MR_Integer) check_hlds__switch_detection__HeadVar__2_2;
+    MR_Integer check_hlds__switch_detection__CastY_10 = (MR_Integer) check_hlds__switch_detection__HeadVar__3_3;
+
+    check_hlds__switch_detection__succeeded = (check_hlds__switch_detection__CastX_9 == check_hlds__switch_detection__CastY_10);
+    if (check_hlds__switch_detection__succeeded)
+      *check_hlds__switch_detection__HeadVar__1_1 = (MR_Integer) 0;
+    else
+      {
+        MR_Word check_hlds__switch_detection__Var_4 = ((MR_Word) (MR_hl_field(MR_mktag(0), check_hlds__switch_detection__HeadVar__2_2, (MR_Integer) 0)));
+        MR_Word check_hlds__switch_detection__Var_5 = ((MR_Word) (MR_hl_field(MR_mktag(0), check_hlds__switch_detection__HeadVar__2_2, (MR_Integer) 1)));
+        MR_Word check_hlds__switch_detection__Var_6 = ((MR_Word) (MR_hl_field(MR_mktag(0), check_hlds__switch_detection__HeadVar__3_3, (MR_Integer) 0)));
+        MR_Word check_hlds__switch_detection__Var_7 = ((MR_Word) (MR_hl_field(MR_mktag(0), check_hlds__switch_detection__HeadVar__3_3, (MR_Integer) 1)));
+        MR_Word check_hlds__switch_detection__Var_8;
+
+        {
+          hlds__hlds_module____Compare____module_info_0_0(&check_hlds__switch_detection__Var_8, check_hlds__switch_detection__Var_4, check_hlds__switch_detection__Var_6);
+        }
+        check_hlds__switch_detection__succeeded = (check_hlds__switch_detection__Var_8 == (MR_Integer) 0);
+        check_hlds__switch_detection__succeeded = !(check_hlds__switch_detection__succeeded);
+        if (check_hlds__switch_detection__succeeded)
+          *check_hlds__switch_detection__HeadVar__1_1 = check_hlds__switch_detection__Var_8;
+        else
+          {
+            MR_Integer check_hlds__switch_detection__Var_13 = (MR_Integer) check_hlds__switch_detection__Var_5;
+            MR_Integer check_hlds__switch_detection__Var_14 = (MR_Integer) check_hlds__switch_detection__Var_7;
+
+            {
+              mercury__private_builtin__builtin_compare_int_3_p_0(check_hlds__switch_detection__HeadVar__1_1, check_hlds__switch_detection__Var_13, check_hlds__switch_detection__Var_14);
+            }
+          }
+      }
+  }
+}
+
+MR_bool MR_CALL 
+check_hlds__switch_detection____Unify____switch_detect_info_0_0(
+  MR_Word check_hlds__switch_detection__HeadVar__1_1,
+  MR_Word check_hlds__switch_detection__HeadVar__2_2)
+{
+  {
+    MR_bool check_hlds__switch_detection__succeeded;
+    MR_Integer check_hlds__switch_detection__CastX_7 = (MR_Integer) check_hlds__switch_detection__HeadVar__1_1;
+    MR_Integer check_hlds__switch_detection__CastY_8 = (MR_Integer) check_hlds__switch_detection__HeadVar__2_2;
+
+    check_hlds__switch_detection__succeeded = (check_hlds__switch_detection__CastX_7 == check_hlds__switch_detection__CastY_8);
+    if (check_hlds__switch_detection__succeeded)
+      check_hlds__switch_detection__succeeded = MR_TRUE;
+    else
+      {
+        MR_Word check_hlds__switch_detection__Var_3 = ((MR_Word) (MR_hl_field(MR_mktag(0), check_hlds__switch_detection__HeadVar__1_1, (MR_Integer) 0)));
+        MR_Word check_hlds__switch_detection__Var_4 = ((MR_Word) (MR_hl_field(MR_mktag(0), check_hlds__switch_detection__HeadVar__1_1, (MR_Integer) 1)));
+        MR_Word check_hlds__switch_detection__Var_5 = ((MR_Word) (MR_hl_field(MR_mktag(0), check_hlds__switch_detection__HeadVar__2_2, (MR_Integer) 0)));
+        MR_Word check_hlds__switch_detection__Var_6 = ((MR_Word) (MR_hl_field(MR_mktag(0), check_hlds__switch_detection__HeadVar__2_2, (MR_Integer) 1)));
+
+        {
+          check_hlds__switch_detection__succeeded = hlds__hlds_module____Unify____module_info_0_0(check_hlds__switch_detection__Var_3, check_hlds__switch_detection__Var_5);
+        }
+        if (check_hlds__switch_detection__succeeded)
+          check_hlds__switch_detection__succeeded = (check_hlds__switch_detection__Var_4 == check_hlds__switch_detection__Var_6);
+      }
+    return check_hlds__switch_detection__succeeded;
+  }
+}
+
+void MR_CALL 
+check_hlds__switch_detection____Compare____process_unify_2_0(
+  MR_Word check_hlds__switch_detection__TypeInfo_for_Result_6,
+  MR_Word check_hlds__switch_detection__TypeInfo_for_Info_7,
+  MR_Word * check_hlds__switch_detection__HeadVar__1_1,
+  MR_Word check_hlds__switch_detection__HeadVar__2_2,
+  MR_Word check_hlds__switch_detection__HeadVar__3_3)
+{
+  {
+    MR_bool check_hlds__switch_detection__succeeded;
+    MR_Word check_hlds__switch_detection__Cast_HeadVar1_4 = check_hlds__switch_detection__HeadVar__2_2;
+    MR_Word check_hlds__switch_detection__Cast_HeadVar2_5 = check_hlds__switch_detection__HeadVar__3_3;
+
+    {
+      mercury__private_builtin__builtin_compare_pred_3_p_0(check_hlds__switch_detection__HeadVar__1_1, (MR_Word) check_hlds__switch_detection__Cast_HeadVar1_4, (MR_Word) check_hlds__switch_detection__Cast_HeadVar2_5);
+    }
+  }
+}
+
+MR_bool MR_CALL 
+check_hlds__switch_detection____Unify____process_unify_2_0(
+  MR_Word check_hlds__switch_detection__TypeInfo_for_Result_5,
+  MR_Word check_hlds__switch_detection__TypeInfo_for_Info_6,
+  MR_Word check_hlds__switch_detection__HeadVar__1_1,
+  MR_Word check_hlds__switch_detection__HeadVar__2_2)
+{
+  {
+    MR_bool check_hlds__switch_detection__succeeded;
+    MR_Word check_hlds__switch_detection__Cast_HeadVar1_3 = check_hlds__switch_detection__HeadVar__1_1;
+    MR_Word check_hlds__switch_detection__Cast_HeadVar2_4 = check_hlds__switch_detection__HeadVar__2_2;
+
+    {
+      check_hlds__switch_detection__succeeded = mercury__private_builtin__builtin_unify_pred_2_p_0((MR_Word) check_hlds__switch_detection__Cast_HeadVar1_3, (MR_Word) check_hlds__switch_detection__Cast_HeadVar2_4);
+    }
+    return check_hlds__switch_detection__succeeded;
+  }
+}
+
+static void MR_CALL 
+check_hlds__switch_detection____Compare____local_switch_detect_info_0_0(
+  MR_Word * check_hlds__switch_detection__HeadVar__1_1,
+  MR_Word check_hlds__switch_detection__HeadVar__2_2,
+  MR_Word check_hlds__switch_detection__HeadVar__3_3)
+{
+  {
+    MR_bool check_hlds__switch_detection__succeeded;
+    MR_Integer check_hlds__switch_detection__CastX_18 = (MR_Integer) check_hlds__switch_detection__HeadVar__2_2;
+    MR_Integer check_hlds__switch_detection__CastY_19 = (MR_Integer) check_hlds__switch_detection__HeadVar__3_3;
+
+    check_hlds__switch_detection__succeeded = (check_hlds__switch_detection__CastX_18 == check_hlds__switch_detection__CastY_19);
+    if (check_hlds__switch_detection__succeeded)
+      *check_hlds__switch_detection__HeadVar__1_1 = (MR_Integer) 0;
+    else
+      {
+        MR_Word check_hlds__switch_detection__Var_4 = ((MR_Word) (MR_hl_field(MR_mktag(0), check_hlds__switch_detection__HeadVar__2_2, (MR_Integer) 0)));
+        MR_Word check_hlds__switch_detection__Var_5 = ((MR_Word) (MR_hl_field(MR_mktag(0), check_hlds__switch_detection__HeadVar__2_2, (MR_Integer) 1)));
+        MR_Word check_hlds__switch_detection__Var_6 = ((MR_Word) (MR_hl_field(MR_mktag(0), check_hlds__switch_detection__HeadVar__2_2, (MR_Integer) 2)));
+        MR_Word check_hlds__switch_detection__Var_7 = ((MR_Word) (MR_hl_field(MR_mktag(0), check_hlds__switch_detection__HeadVar__2_2, (MR_Integer) 3)));
+        MR_Word check_hlds__switch_detection__Var_8 = ((MR_Word) (MR_hl_field(MR_mktag(0), check_hlds__switch_detection__HeadVar__2_2, (MR_Integer) 4)));
+        MR_Word check_hlds__switch_detection__Var_9 = ((MR_Word) (MR_hl_field(MR_mktag(0), check_hlds__switch_detection__HeadVar__3_3, (MR_Integer) 0)));
+        MR_Word check_hlds__switch_detection__Var_10 = ((MR_Word) (MR_hl_field(MR_mktag(0), check_hlds__switch_detection__HeadVar__3_3, (MR_Integer) 1)));
+        MR_Word check_hlds__switch_detection__Var_11 = ((MR_Word) (MR_hl_field(MR_mktag(0), check_hlds__switch_detection__HeadVar__3_3, (MR_Integer) 2)));
+        MR_Word check_hlds__switch_detection__Var_12 = ((MR_Word) (MR_hl_field(MR_mktag(0), check_hlds__switch_detection__HeadVar__3_3, (MR_Integer) 3)));
+        MR_Word check_hlds__switch_detection__Var_13 = ((MR_Word) (MR_hl_field(MR_mktag(0), check_hlds__switch_detection__HeadVar__3_3, (MR_Integer) 4)));
+        MR_Word check_hlds__switch_detection__Var_14;
+
+        {
+          hlds__hlds_module____Compare____module_info_0_0(&check_hlds__switch_detection__Var_14, check_hlds__switch_detection__Var_4, check_hlds__switch_detection__Var_9);
+        }
+        check_hlds__switch_detection__succeeded = (check_hlds__switch_detection__Var_14 == (MR_Integer) 0);
+        check_hlds__switch_detection__succeeded = !(check_hlds__switch_detection__succeeded);
+        if (check_hlds__switch_detection__succeeded)
+          *check_hlds__switch_detection__HeadVar__1_1 = check_hlds__switch_detection__Var_14;
+        else
+          {
+            MR_Word check_hlds__switch_detection__Var_15;
+            MR_Integer check_hlds__switch_detection__Var_25 = (MR_Integer) check_hlds__switch_detection__Var_5;
+            MR_Integer check_hlds__switch_detection__Var_26 = (MR_Integer) check_hlds__switch_detection__Var_10;
+
+            {
+              mercury__private_builtin__builtin_compare_int_3_p_0(&check_hlds__switch_detection__Var_15, check_hlds__switch_detection__Var_25, check_hlds__switch_detection__Var_26);
+            }
+            check_hlds__switch_detection__succeeded = (check_hlds__switch_detection__Var_15 == (MR_Integer) 0);
+            check_hlds__switch_detection__succeeded = !(check_hlds__switch_detection__succeeded);
+            if (check_hlds__switch_detection__succeeded)
+              *check_hlds__switch_detection__HeadVar__1_1 = check_hlds__switch_detection__Var_15;
+            else
+              {
+                MR_Word check_hlds__switch_detection__Var_16;
+
+                {
+                  mercury__builtin__compare_3_p_0((MR_Word) &check_hlds__switch_detection_scalar_common_2[2], &check_hlds__switch_detection__Var_16, ((MR_Box) (check_hlds__switch_detection__Var_6)), ((MR_Box) (check_hlds__switch_detection__Var_11)));
+                }
+                check_hlds__switch_detection__succeeded = (check_hlds__switch_detection__Var_16 == (MR_Integer) 0);
+                check_hlds__switch_detection__succeeded = !(check_hlds__switch_detection__succeeded);
+                if (check_hlds__switch_detection__succeeded)
+                  *check_hlds__switch_detection__HeadVar__1_1 = check_hlds__switch_detection__Var_16;
+                else
+                  {
+                    MR_Word check_hlds__switch_detection__Var_17;
+                    MR_Integer check_hlds__switch_detection__Var_27 = (MR_Integer) check_hlds__switch_detection__Var_7;
+                    MR_Integer check_hlds__switch_detection__Var_28 = (MR_Integer) check_hlds__switch_detection__Var_12;
+
+                    {
+                      mercury__private_builtin__builtin_compare_int_3_p_0(&check_hlds__switch_detection__Var_17, check_hlds__switch_detection__Var_27, check_hlds__switch_detection__Var_28);
+                    }
+                    check_hlds__switch_detection__succeeded = (check_hlds__switch_detection__Var_17 == (MR_Integer) 0);
+                    check_hlds__switch_detection__succeeded = !(check_hlds__switch_detection__succeeded);
+                    if (check_hlds__switch_detection__succeeded)
+                      *check_hlds__switch_detection__HeadVar__1_1 = check_hlds__switch_detection__Var_17;
+                    else
+                      {
+                        {
+                          mercury__builtin__compare_3_p_0((MR_Word) &check_hlds__switch_detection_scalar_common_1[7], check_hlds__switch_detection__HeadVar__1_1, ((MR_Box) (check_hlds__switch_detection__Var_8)), ((MR_Box) (check_hlds__switch_detection__Var_13)));
+                        }
+                      }
+                  }
+              }
+          }
+      }
+  }
+}
+
+static MR_bool MR_CALL 
+check_hlds__switch_detection____Unify____local_switch_detect_info_0_0(
+  MR_Word check_hlds__switch_detection__HeadVar__1_1,
+  MR_Word check_hlds__switch_detection__HeadVar__2_2)
+{
+  {
+    MR_bool check_hlds__switch_detection__succeeded;
+    MR_Integer check_hlds__switch_detection__CastX_13 = (MR_Integer) check_hlds__switch_detection__HeadVar__1_1;
+    MR_Integer check_hlds__switch_detection__CastY_14 = (MR_Integer) check_hlds__switch_detection__HeadVar__2_2;
+
+    check_hlds__switch_detection__succeeded = (check_hlds__switch_detection__CastX_13 == check_hlds__switch_detection__CastY_14);
+    if (check_hlds__switch_detection__succeeded)
+      check_hlds__switch_detection__succeeded = MR_TRUE;
+    else
+      {
+        MR_Word check_hlds__switch_detection__TypeInfo_16_16;
+        MR_Word check_hlds__switch_detection__TypeInfo_17_17;
+        MR_Word check_hlds__switch_detection__Var_3 = ((MR_Word) (MR_hl_field(MR_mktag(0), check_hlds__switch_detection__HeadVar__1_1, (MR_Integer) 0)));
+        MR_Word check_hlds__switch_detection__Var_4 = ((MR_Word) (MR_hl_field(MR_mktag(0), check_hlds__switch_detection__HeadVar__1_1, (MR_Integer) 1)));
+        MR_Word check_hlds__switch_detection__Var_5 = ((MR_Word) (MR_hl_field(MR_mktag(0), check_hlds__switch_detection__HeadVar__1_1, (MR_Integer) 2)));
+        MR_Word check_hlds__switch_detection__Var_6 = ((MR_Word) (MR_hl_field(MR_mktag(0), check_hlds__switch_detection__HeadVar__1_1, (MR_Integer) 3)));
+        MR_Word check_hlds__switch_detection__Var_7 = ((MR_Word) (MR_hl_field(MR_mktag(0), check_hlds__switch_detection__HeadVar__1_1, (MR_Integer) 4)));
+        MR_Word check_hlds__switch_detection__Var_8 = ((MR_Word) (MR_hl_field(MR_mktag(0), check_hlds__switch_detection__HeadVar__2_2, (MR_Integer) 0)));
+        MR_Word check_hlds__switch_detection__Var_9 = ((MR_Word) (MR_hl_field(MR_mktag(0), check_hlds__switch_detection__HeadVar__2_2, (MR_Integer) 1)));
+        MR_Word check_hlds__switch_detection__Var_10 = ((MR_Word) (MR_hl_field(MR_mktag(0), check_hlds__switch_detection__HeadVar__2_2, (MR_Integer) 2)));
+        MR_Word check_hlds__switch_detection__Var_11 = ((MR_Word) (MR_hl_field(MR_mktag(0), check_hlds__switch_detection__HeadVar__2_2, (MR_Integer) 3)));
+        MR_Word check_hlds__switch_detection__Var_12 = ((MR_Word) (MR_hl_field(MR_mktag(0), check_hlds__switch_detection__HeadVar__2_2, (MR_Integer) 4)));
+
+        {
+          check_hlds__switch_detection__succeeded = hlds__hlds_module____Unify____module_info_0_0(check_hlds__switch_detection__Var_3, check_hlds__switch_detection__Var_8);
+        }
+        if (check_hlds__switch_detection__succeeded)
+          {
+            check_hlds__switch_detection__succeeded = (check_hlds__switch_detection__Var_4 == check_hlds__switch_detection__Var_9);
+            if (check_hlds__switch_detection__succeeded)
+              {
+                check_hlds__switch_detection__TypeInfo_16_16 = (MR_Word) &check_hlds__switch_detection_scalar_common_2[2];
+                {
+                  check_hlds__switch_detection__succeeded = mercury__builtin__unify_2_p_0(check_hlds__switch_detection__TypeInfo_16_16, ((MR_Box) (check_hlds__switch_detection__Var_5)), ((MR_Box) (check_hlds__switch_detection__Var_10)));
+                }
+                if (check_hlds__switch_detection__succeeded)
+                  {
+                    check_hlds__switch_detection__succeeded = (check_hlds__switch_detection__Var_6 == check_hlds__switch_detection__Var_11);
+                    if (check_hlds__switch_detection__succeeded)
+                      {
+                        check_hlds__switch_detection__TypeInfo_17_17 = (MR_Word) &check_hlds__switch_detection_scalar_common_1[7];
+                        {
+                          check_hlds__switch_detection__succeeded = mercury__builtin__unify_2_p_0(check_hlds__switch_detection__TypeInfo_17_17, ((MR_Box) (check_hlds__switch_detection__Var_7)), ((MR_Box) (check_hlds__switch_detection__Var_12)));
+                        }
+                      }
+                  }
+              }
+          }
+      }
+    return check_hlds__switch_detection__succeeded;
+  }
+}
+
+void MR_CALL 
+check_hlds__switch_detection____Compare____found_deconstruct_0_0(
+  MR_Word * check_hlds__switch_detection__HeadVar__1_1,
+  MR_Word check_hlds__switch_detection__HeadVar__2_2,
+  MR_Word check_hlds__switch_detection__HeadVar__3_3)
+{
+  {
+    MR_bool check_hlds__switch_detection__succeeded;
+    MR_Integer check_hlds__switch_detection__Cast_HeadVar1_4 = (MR_Integer) check_hlds__switch_detection__HeadVar__2_2;
+    MR_Integer check_hlds__switch_detection__Cast_HeadVar2_5 = (MR_Integer) check_hlds__switch_detection__HeadVar__3_3;
+
+    {
+      mercury__private_builtin__builtin_compare_int_3_p_0(check_hlds__switch_detection__HeadVar__1_1, check_hlds__switch_detection__Cast_HeadVar1_4, check_hlds__switch_detection__Cast_HeadVar2_5);
+    }
+  }
+}
+
+MR_bool MR_CALL 
+check_hlds__switch_detection____Unify____found_deconstruct_0_0(
+  MR_Word check_hlds__switch_detection__HeadVar__2_1,
+  MR_Word check_hlds__switch_detection__HeadVar__2_2)
+{
+  {
+    MR_bool check_hlds__switch_detection__succeeded = (check_hlds__switch_detection__HeadVar__2_1 == check_hlds__switch_detection__HeadVar__2_2);
+
+    return check_hlds__switch_detection__succeeded;
+  }
+}
+
+static void MR_CALL 
+check_hlds__switch_detection____Compare____deconstruct_search_0_0(
+  MR_Word * check_hlds__switch_detection__HeadVar__1_1,
+  MR_Word check_hlds__switch_detection__HeadVar__2_2,
+  MR_Word check_hlds__switch_detection__HeadVar__3_3)
+{
+  {
+    MR_bool check_hlds__switch_detection__succeeded;
+    MR_Integer check_hlds__switch_detection__Cast_HeadVar1_4 = (MR_Integer) check_hlds__switch_detection__HeadVar__2_2;
+    MR_Integer check_hlds__switch_detection__Cast_HeadVar2_5 = (MR_Integer) check_hlds__switch_detection__HeadVar__3_3;
+
+    {
+      mercury__private_builtin__builtin_compare_int_3_p_0(check_hlds__switch_detection__HeadVar__1_1, check_hlds__switch_detection__Cast_HeadVar1_4, check_hlds__switch_detection__Cast_HeadVar2_5);
+    }
+  }
+}
+
+static MR_bool MR_CALL 
+check_hlds__switch_detection____Unify____deconstruct_search_0_0(
+  MR_Word check_hlds__switch_detection__HeadVar__2_1,
+  MR_Word check_hlds__switch_detection__HeadVar__2_2)
+{
+  {
+    MR_bool check_hlds__switch_detection__succeeded = (check_hlds__switch_detection__HeadVar__2_1 == check_hlds__switch_detection__HeadVar__2_2);
+
+    return check_hlds__switch_detection__succeeded;
+  }
+}
+
+static void MR_CALL 
+check_hlds__switch_detection____Compare____cons_id_state_0_0(
+  MR_Word * check_hlds__switch_detection__HeadVar__1_1,
+  MR_Word check_hlds__switch_detection__HeadVar__2_2,
+  MR_Word check_hlds__switch_detection__HeadVar__3_3)
+{
+  {
+    MR_bool check_hlds__switch_detection__succeeded;
+    MR_Integer check_hlds__switch_detection__Cast_HeadVar1_4 = (MR_Integer) check_hlds__switch_detection__HeadVar__2_2;
+    MR_Integer check_hlds__switch_detection__Cast_HeadVar2_5 = (MR_Integer) check_hlds__switch_detection__HeadVar__3_3;
+
+    {
+      mercury__private_builtin__builtin_compare_int_3_p_0(check_hlds__switch_detection__HeadVar__1_1, check_hlds__switch_detection__Cast_HeadVar1_4, check_hlds__switch_detection__Cast_HeadVar2_5);
+    }
+  }
+}
+
+static MR_bool MR_CALL 
+check_hlds__switch_detection____Unify____cons_id_state_0_0(
+  MR_Word check_hlds__switch_detection__HeadVar__2_1,
+  MR_Word check_hlds__switch_detection__HeadVar__2_2)
+{
+  {
+    MR_bool check_hlds__switch_detection__succeeded = (check_hlds__switch_detection__HeadVar__2_1 == check_hlds__switch_detection__HeadVar__2_2);
+
+    return check_hlds__switch_detection__succeeded;
+  }
+}
+
+static void MR_CALL 
+check_hlds__switch_detection____Compare____cons_id_entry_0_0(
+  MR_Word * check_hlds__switch_detection__HeadVar__1_1,
+  MR_Word check_hlds__switch_detection__HeadVar__2_2,
+  MR_Word check_hlds__switch_detection__HeadVar__3_3)
+{
+  {
+    MR_bool check_hlds__switch_detection__succeeded;
+    MR_Integer check_hlds__switch_detection__CastX_9 = (MR_Integer) check_hlds__switch_detection__HeadVar__2_2;
+    MR_Integer check_hlds__switch_detection__CastY_10 = (MR_Integer) check_hlds__switch_detection__HeadVar__3_3;
+
+    check_hlds__switch_detection__succeeded = (check_hlds__switch_detection__CastX_9 == check_hlds__switch_detection__CastY_10);
+    if (check_hlds__switch_detection__succeeded)
+      *check_hlds__switch_detection__HeadVar__1_1 = (MR_Integer) 0;
+    else
+      {
+        MR_Word check_hlds__switch_detection__Var_4 = ((MR_Word) (MR_hl_field(MR_mktag(0), check_hlds__switch_detection__HeadVar__2_2, (MR_Integer) 0)));
+        MR_Word check_hlds__switch_detection__Var_5 = ((MR_Word) (MR_hl_field(MR_mktag(0), check_hlds__switch_detection__HeadVar__2_2, (MR_Integer) 1)));
+        MR_Word check_hlds__switch_detection__Var_6 = ((MR_Word) (MR_hl_field(MR_mktag(0), check_hlds__switch_detection__HeadVar__3_3, (MR_Integer) 0)));
+        MR_Word check_hlds__switch_detection__Var_7 = ((MR_Word) (MR_hl_field(MR_mktag(0), check_hlds__switch_detection__HeadVar__3_3, (MR_Integer) 1)));
+        MR_Word check_hlds__switch_detection__Var_8;
+        MR_Integer check_hlds__switch_detection__Var_13 = (MR_Integer) check_hlds__switch_detection__Var_4;
+        MR_Integer check_hlds__switch_detection__Var_14 = (MR_Integer) check_hlds__switch_detection__Var_6;
+
+        {
+          mercury__private_builtin__builtin_compare_int_3_p_0(&check_hlds__switch_detection__Var_8, check_hlds__switch_detection__Var_13, check_hlds__switch_detection__Var_14);
+        }
+        check_hlds__switch_detection__succeeded = (check_hlds__switch_detection__Var_8 == (MR_Integer) 0);
+        check_hlds__switch_detection__succeeded = !(check_hlds__switch_detection__succeeded);
+        if (check_hlds__switch_detection__succeeded)
+          *check_hlds__switch_detection__HeadVar__1_1 = check_hlds__switch_detection__Var_8;
+        else
+          {
+            {
+              mercury__builtin__compare_3_p_0((MR_Word) &check_hlds__switch_detection_scalar_common_1[6], check_hlds__switch_detection__HeadVar__1_1, ((MR_Box) (check_hlds__switch_detection__Var_5)), ((MR_Box) (check_hlds__switch_detection__Var_7)));
+            }
+          }
+      }
+  }
+}
+
+static MR_bool MR_CALL 
+check_hlds__switch_detection____Unify____cons_id_entry_0_0(
+  MR_Word check_hlds__switch_detection__HeadVar__1_1,
+  MR_Word check_hlds__switch_detection__HeadVar__2_2)
+{
+  {
+    MR_bool check_hlds__switch_detection__succeeded;
+    MR_Integer check_hlds__switch_detection__CastX_7 = (MR_Integer) check_hlds__switch_detection__HeadVar__1_1;
+    MR_Integer check_hlds__switch_detection__CastY_8 = (MR_Integer) check_hlds__switch_detection__HeadVar__2_2;
+
+    check_hlds__switch_detection__succeeded = (check_hlds__switch_detection__CastX_7 == check_hlds__switch_detection__CastY_8);
+    if (check_hlds__switch_detection__succeeded)
+      check_hlds__switch_detection__succeeded = MR_TRUE;
+    else
+      {
+        MR_Word check_hlds__switch_detection__TypeInfo_9_9;
+        MR_Word check_hlds__switch_detection__Var_3 = ((MR_Word) (MR_hl_field(MR_mktag(0), check_hlds__switch_detection__HeadVar__1_1, (MR_Integer) 0)));
+        MR_Word check_hlds__switch_detection__Var_4 = ((MR_Word) (MR_hl_field(MR_mktag(0), check_hlds__switch_detection__HeadVar__1_1, (MR_Integer) 1)));
+        MR_Word check_hlds__switch_detection__Var_5 = ((MR_Word) (MR_hl_field(MR_mktag(0), check_hlds__switch_detection__HeadVar__2_2, (MR_Integer) 0)));
+        MR_Word check_hlds__switch_detection__Var_6 = ((MR_Word) (MR_hl_field(MR_mktag(0), check_hlds__switch_detection__HeadVar__2_2, (MR_Integer) 1)));
+
+        check_hlds__switch_detection__succeeded = (check_hlds__switch_detection__Var_3 == check_hlds__switch_detection__Var_5);
+        if (check_hlds__switch_detection__succeeded)
+          {
+            check_hlds__switch_detection__TypeInfo_9_9 = (MR_Word) &check_hlds__switch_detection_scalar_common_1[6];
+            {
+              check_hlds__switch_detection__succeeded = mercury__builtin__unify_2_p_0(check_hlds__switch_detection__TypeInfo_9_9, ((MR_Box) (check_hlds__switch_detection__Var_4)), ((MR_Box) (check_hlds__switch_detection__Var_6)));
+            }
+          }
+      }
+    return check_hlds__switch_detection__succeeded;
+  }
+}
+
+static void MR_CALL 
+check_hlds__switch_detection____Compare____cases_table_0_0(
+  MR_Word * check_hlds__switch_detection__HeadVar__1_1,
+  MR_Word check_hlds__switch_detection__HeadVar__2_2,
+  MR_Word check_hlds__switch_detection__HeadVar__3_3)
+{
+  {
+    MR_bool check_hlds__switch_detection__succeeded;
+    MR_Integer check_hlds__switch_detection__CastX_9 = (MR_Integer) check_hlds__switch_detection__HeadVar__2_2;
+    MR_Integer check_hlds__switch_detection__CastY_10 = (MR_Integer) check_hlds__switch_detection__HeadVar__3_3;
+
+    check_hlds__switch_detection__succeeded = (check_hlds__switch_detection__CastX_9 == check_hlds__switch_detection__CastY_10);
+    if (check_hlds__switch_detection__succeeded)
+      *check_hlds__switch_detection__HeadVar__1_1 = (MR_Integer) 0;
+    else
+      {
+        MR_Word check_hlds__switch_detection__Var_4 = ((MR_Word) (MR_hl_field(MR_mktag(0), check_hlds__switch_detection__HeadVar__2_2, (MR_Integer) 0)));
+        MR_Word check_hlds__switch_detection__Var_5 = ((MR_Word) (MR_hl_field(MR_mktag(0), check_hlds__switch_detection__HeadVar__2_2, (MR_Integer) 1)));
+        MR_Word check_hlds__switch_detection__Var_6 = ((MR_Word) (MR_hl_field(MR_mktag(0), check_hlds__switch_detection__HeadVar__3_3, (MR_Integer) 0)));
+        MR_Word check_hlds__switch_detection__Var_7 = ((MR_Word) (MR_hl_field(MR_mktag(0), check_hlds__switch_detection__HeadVar__3_3, (MR_Integer) 1)));
+        MR_Word check_hlds__switch_detection__Var_8;
+
+        {
+          mercury__builtin__compare_3_p_0((MR_Word) &check_hlds__switch_detection_scalar_common_2[1], &check_hlds__switch_detection__Var_8, ((MR_Box) (check_hlds__switch_detection__Var_4)), ((MR_Box) (check_hlds__switch_detection__Var_6)));
+        }
+        check_hlds__switch_detection__succeeded = (check_hlds__switch_detection__Var_8 == (MR_Integer) 0);
+        check_hlds__switch_detection__succeeded = !(check_hlds__switch_detection__succeeded);
+        if (check_hlds__switch_detection__succeeded)
+          *check_hlds__switch_detection__HeadVar__1_1 = check_hlds__switch_detection__Var_8;
+        else
+          {
+            {
+              mercury__builtin__compare_3_p_0((MR_Word) &check_hlds__switch_detection_scalar_common_1[3], check_hlds__switch_detection__HeadVar__1_1, ((MR_Box) (check_hlds__switch_detection__Var_5)), ((MR_Box) (check_hlds__switch_detection__Var_7)));
+            }
+          }
+      }
+  }
+}
+
+static MR_bool MR_CALL 
+check_hlds__switch_detection____Unify____cases_table_0_0(
+  MR_Word check_hlds__switch_detection__HeadVar__1_1,
+  MR_Word check_hlds__switch_detection__HeadVar__2_2)
+{
+  {
+    MR_bool check_hlds__switch_detection__succeeded;
+    MR_Integer check_hlds__switch_detection__CastX_7 = (MR_Integer) check_hlds__switch_detection__HeadVar__1_1;
+    MR_Integer check_hlds__switch_detection__CastY_8 = (MR_Integer) check_hlds__switch_detection__HeadVar__2_2;
+
+    check_hlds__switch_detection__succeeded = (check_hlds__switch_detection__CastX_7 == check_hlds__switch_detection__CastY_8);
+    if (check_hlds__switch_detection__succeeded)
+      check_hlds__switch_detection__succeeded = MR_TRUE;
+    else
+      {
+        MR_Word check_hlds__switch_detection__TypeInfo_10_10;
+        MR_Word check_hlds__switch_detection__Var_3 = ((MR_Word) (MR_hl_field(MR_mktag(0), check_hlds__switch_detection__HeadVar__1_1, (MR_Integer) 0)));
+        MR_Word check_hlds__switch_detection__Var_4 = ((MR_Word) (MR_hl_field(MR_mktag(0), check_hlds__switch_detection__HeadVar__1_1, (MR_Integer) 1)));
+        MR_Word check_hlds__switch_detection__Var_5 = ((MR_Word) (MR_hl_field(MR_mktag(0), check_hlds__switch_detection__HeadVar__2_2, (MR_Integer) 0)));
+        MR_Word check_hlds__switch_detection__Var_6 = ((MR_Word) (MR_hl_field(MR_mktag(0), check_hlds__switch_detection__HeadVar__2_2, (MR_Integer) 1)));
+
+        {
+          check_hlds__switch_detection__succeeded = mercury__builtin__unify_2_p_0((MR_Word) &check_hlds__switch_detection_scalar_common_2[1], ((MR_Box) (check_hlds__switch_detection__Var_3)), ((MR_Box) (check_hlds__switch_detection__Var_5)));
+        }
+        if (check_hlds__switch_detection__succeeded)
+          {
+            check_hlds__switch_detection__TypeInfo_10_10 = (MR_Word) &check_hlds__switch_detection_scalar_common_1[3];
+            {
+              check_hlds__switch_detection__succeeded = mercury__builtin__unify_2_p_0(check_hlds__switch_detection__TypeInfo_10_10, ((MR_Box) (check_hlds__switch_detection__Var_4)), ((MR_Box) (check_hlds__switch_detection__Var_6)));
+            }
+          }
+      }
+    return check_hlds__switch_detection__succeeded;
+  }
+}
+
+static void MR_CALL 
+check_hlds__switch_detection____Compare____cases_missing_0_0(
+  MR_Word * check_hlds__switch_detection__HeadVar__1_1,
+  MR_Word check_hlds__switch_detection__HeadVar__2_2,
+  MR_Word check_hlds__switch_detection__HeadVar__3_3)
+{
+  {
+    MR_bool check_hlds__switch_detection__succeeded;
+    MR_Integer check_hlds__switch_detection__Cast_HeadVar1_4 = (MR_Integer) check_hlds__switch_detection__HeadVar__2_2;
+    MR_Integer check_hlds__switch_detection__Cast_HeadVar2_5 = (MR_Integer) check_hlds__switch_detection__HeadVar__3_3;
+
+    {
+      mercury__private_builtin__builtin_compare_int_3_p_0(check_hlds__switch_detection__HeadVar__1_1, check_hlds__switch_detection__Cast_HeadVar1_4, check_hlds__switch_detection__Cast_HeadVar2_5);
+    }
+  }
+}
+
+static MR_bool MR_CALL 
+check_hlds__switch_detection____Unify____cases_missing_0_0(
+  MR_Word check_hlds__switch_detection__HeadVar__2_1,
+  MR_Word check_hlds__switch_detection__HeadVar__2_2)
+{
+  {
+    MR_bool check_hlds__switch_detection__succeeded = (check_hlds__switch_detection__HeadVar__2_1 == check_hlds__switch_detection__HeadVar__2_2);
+
+    return check_hlds__switch_detection__succeeded;
+  }
+}
+
+static void MR_CALL 
+check_hlds__switch_detection____Compare____case_arm_0_0(
+  MR_Word * check_hlds__switch_detection__HeadVar__1_1,
+  MR_Word check_hlds__switch_detection__HeadVar__2_2,
+  MR_Word check_hlds__switch_detection__HeadVar__3_3)
+{
+  {
+    MR_bool check_hlds__switch_detection__succeeded;
+    MR_Integer check_hlds__switch_detection__CastX_27 = (MR_Integer) check_hlds__switch_detection__HeadVar__2_2;
+    MR_Integer check_hlds__switch_detection__CastY_28 = (MR_Integer) check_hlds__switch_detection__HeadVar__3_3;
+
+    check_hlds__switch_detection__succeeded = (check_hlds__switch_detection__CastX_27 == check_hlds__switch_detection__CastY_28);
+    if (check_hlds__switch_detection__succeeded)
+      *check_hlds__switch_detection__HeadVar__1_1 = (MR_Integer) 0;
+    else
+    if (((MR_tag((MR_Word) check_hlds__switch_detection__HeadVar__2_2)) == (MR_mktag((MR_Integer) 1))))
+      {
+        MR_Word check_hlds__switch_detection__Var_34 = ((MR_Word) (MR_hl_field(MR_mktag(1), check_hlds__switch_detection__HeadVar__2_2, (MR_Integer) 2)));
+        MR_Word check_hlds__switch_detection__Var_35 = ((MR_Word) (MR_hl_field(MR_mktag(1), check_hlds__switch_detection__HeadVar__2_2, (MR_Integer) 1)));
+        MR_Word check_hlds__switch_detection__Var_36 = ((MR_Word) (MR_hl_field(MR_mktag(1), check_hlds__switch_detection__HeadVar__2_2, (MR_Integer) 0)));
+
+        if (((MR_tag((MR_Word) check_hlds__switch_detection__HeadVar__3_3)) == (MR_mktag((MR_Integer) 1))))
+          {
+            MR_Word check_hlds__switch_detection__Var_22 = ((MR_Word) (MR_hl_field(MR_mktag(1), check_hlds__switch_detection__HeadVar__3_3, (MR_Integer) 0)));
+            MR_Word check_hlds__switch_detection__Var_23 = ((MR_Word) (MR_hl_field(MR_mktag(1), check_hlds__switch_detection__HeadVar__3_3, (MR_Integer) 1)));
+            MR_Word check_hlds__switch_detection__Var_24 = ((MR_Word) (MR_hl_field(MR_mktag(1), check_hlds__switch_detection__HeadVar__3_3, (MR_Integer) 2)));
+            MR_Word check_hlds__switch_detection__Var_25;
+
+            {
+              parse_tree__prog_data____Compare____cons_id_0_0(&check_hlds__switch_detection__Var_25, check_hlds__switch_detection__Var_36, check_hlds__switch_detection__Var_22);
+            }
+            check_hlds__switch_detection__succeeded = (check_hlds__switch_detection__Var_25 == (MR_Integer) 0);
+            check_hlds__switch_detection__succeeded = !(check_hlds__switch_detection__succeeded);
+            if (check_hlds__switch_detection__succeeded)
+              *check_hlds__switch_detection__HeadVar__1_1 = check_hlds__switch_detection__Var_25;
+            else
+              {
+                MR_Word check_hlds__switch_detection__Var_26;
+
+                {
+                  mercury__builtin__compare_3_p_0((MR_Word) &check_hlds__switch_detection_scalar_common_1[5], &check_hlds__switch_detection__Var_26, ((MR_Box) (check_hlds__switch_detection__Var_35)), ((MR_Box) (check_hlds__switch_detection__Var_23)));
+                }
+                check_hlds__switch_detection__succeeded = (check_hlds__switch_detection__Var_26 == (MR_Integer) 0);
+                check_hlds__switch_detection__succeeded = !(check_hlds__switch_detection__succeeded);
+                if (check_hlds__switch_detection__succeeded)
+                  *check_hlds__switch_detection__HeadVar__1_1 = check_hlds__switch_detection__Var_26;
+                else
+                  {
+                    hlds__hlds_goal____Compare____hlds_goal_0_0(check_hlds__switch_detection__HeadVar__1_1, check_hlds__switch_detection__Var_34, check_hlds__switch_detection__Var_24);
+                  }
+              }
+          }
+        else
+          *check_hlds__switch_detection__HeadVar__1_1 = (MR_Integer) 2;
+      }
+    else
+      {
+        MR_Word check_hlds__switch_detection__Var_37 = ((MR_Word) (MR_hl_field(MR_mktag(0), check_hlds__switch_detection__HeadVar__2_2, (MR_Integer) 1)));
+        MR_Word check_hlds__switch_detection__Var_38 = ((MR_Word) (MR_hl_field(MR_mktag(0), check_hlds__switch_detection__HeadVar__2_2, (MR_Integer) 0)));
+
+        if (((MR_tag((MR_Word) check_hlds__switch_detection__HeadVar__3_3)) == (MR_mktag((MR_Integer) 1))))
+          *check_hlds__switch_detection__HeadVar__1_1 = (MR_Integer) 1;
+        else
+          {
+            MR_Word check_hlds__switch_detection__Var_6 = ((MR_Word) (MR_hl_field(MR_mktag(0), check_hlds__switch_detection__HeadVar__3_3, (MR_Integer) 0)));
+            MR_Word check_hlds__switch_detection__Var_7 = ((MR_Word) (MR_hl_field(MR_mktag(0), check_hlds__switch_detection__HeadVar__3_3, (MR_Integer) 1)));
+            MR_Word check_hlds__switch_detection__Var_8;
+
+            {
+              parse_tree__prog_data____Compare____cons_id_0_0(&check_hlds__switch_detection__Var_8, check_hlds__switch_detection__Var_38, check_hlds__switch_detection__Var_6);
+            }
+            check_hlds__switch_detection__succeeded = (check_hlds__switch_detection__Var_8 == (MR_Integer) 0);
+            check_hlds__switch_detection__succeeded = !(check_hlds__switch_detection__succeeded);
+            if (check_hlds__switch_detection__succeeded)
+              *check_hlds__switch_detection__HeadVar__1_1 = check_hlds__switch_detection__Var_8;
+            else
+              {
+                hlds__hlds_goal____Compare____hlds_goal_0_0(check_hlds__switch_detection__HeadVar__1_1, check_hlds__switch_detection__Var_37, check_hlds__switch_detection__Var_7);
+              }
+          }
+      }
+  }
+}
+
+static MR_bool MR_CALL 
+check_hlds__switch_detection____Unify____case_arm_0_0(
+  MR_Word check_hlds__switch_detection__HeadVar__1_1,
+  MR_Word check_hlds__switch_detection__HeadVar__2_2)
+{
+  {
+    MR_bool check_hlds__switch_detection__succeeded;
+    MR_Integer check_hlds__switch_detection__CastX_13 = (MR_Integer) check_hlds__switch_detection__HeadVar__1_1;
+    MR_Integer check_hlds__switch_detection__CastY_14 = (MR_Integer) check_hlds__switch_detection__HeadVar__2_2;
+
+    check_hlds__switch_detection__succeeded = (check_hlds__switch_detection__CastX_13 == check_hlds__switch_detection__CastY_14);
+    if (check_hlds__switch_detection__succeeded)
+      check_hlds__switch_detection__succeeded = MR_TRUE;
+    else
+    if (((MR_tag((MR_Word) check_hlds__switch_detection__HeadVar__1_1)) == (MR_mktag((MR_Integer) 1))))
+      {
+        MR_Word check_hlds__switch_detection__TypeInfo_16_16;
+        MR_Word check_hlds__switch_detection__Var_7 = ((MR_Word) (MR_hl_field(MR_mktag(1), check_hlds__switch_detection__HeadVar__1_1, (MR_Integer) 0)));
+        MR_Word check_hlds__switch_detection__Var_8 = ((MR_Word) (MR_hl_field(MR_mktag(1), check_hlds__switch_detection__HeadVar__1_1, (MR_Integer) 1)));
+        MR_Word check_hlds__switch_detection__Var_9 = ((MR_Word) (MR_hl_field(MR_mktag(1), check_hlds__switch_detection__HeadVar__1_1, (MR_Integer) 2)));
+        MR_Word check_hlds__switch_detection__Var_10;
+        MR_Word check_hlds__switch_detection__Var_11;
+        MR_Word check_hlds__switch_detection__Var_12;
+
+        check_hlds__switch_detection__succeeded = ((MR_tag((MR_Word) check_hlds__switch_detection__HeadVar__2_2)) == (MR_mktag((MR_Integer) 1)));
+        if (check_hlds__switch_detection__succeeded)
+          {
+            check_hlds__switch_detection__Var_10 = ((MR_Word) (MR_hl_field(MR_mktag(1), check_hlds__switch_detection__HeadVar__2_2, (MR_Integer) 0)));
+            check_hlds__switch_detection__Var_11 = ((MR_Word) (MR_hl_field(MR_mktag(1), check_hlds__switch_detection__HeadVar__2_2, (MR_Integer) 1)));
+            check_hlds__switch_detection__Var_12 = ((MR_Word) (MR_hl_field(MR_mktag(1), check_hlds__switch_detection__HeadVar__2_2, (MR_Integer) 2)));
+            {
+              check_hlds__switch_detection__succeeded = parse_tree__prog_data____Unify____cons_id_0_0(check_hlds__switch_detection__Var_7, check_hlds__switch_detection__Var_10);
+            }
+            if (check_hlds__switch_detection__succeeded)
+              {
+                check_hlds__switch_detection__TypeInfo_16_16 = (MR_Word) &check_hlds__switch_detection_scalar_common_1[5];
+                {
+                  check_hlds__switch_detection__succeeded = mercury__builtin__unify_2_p_0(check_hlds__switch_detection__TypeInfo_16_16, ((MR_Box) (check_hlds__switch_detection__Var_8)), ((MR_Box) (check_hlds__switch_detection__Var_11)));
+                }
+                if (check_hlds__switch_detection__succeeded)
+                  {
+                    check_hlds__switch_detection__succeeded = hlds__hlds_goal____Unify____hlds_goal_0_0(check_hlds__switch_detection__Var_9, check_hlds__switch_detection__Var_12);
+                  }
+              }
+          }
+      }
+    else
+      {
+        MR_Word check_hlds__switch_detection__Var_3 = ((MR_Word) (MR_hl_field(MR_mktag(0), check_hlds__switch_detection__HeadVar__1_1, (MR_Integer) 0)));
+        MR_Word check_hlds__switch_detection__Var_4 = ((MR_Word) (MR_hl_field(MR_mktag(0), check_hlds__switch_detection__HeadVar__1_1, (MR_Integer) 1)));
+        MR_Word check_hlds__switch_detection__Var_5;
+        MR_Word check_hlds__switch_detection__Var_6;
+
+        check_hlds__switch_detection__succeeded = ((MR_tag((MR_Word) check_hlds__switch_detection__HeadVar__2_2)) == (MR_mktag((MR_Integer) 0)));
+        if (check_hlds__switch_detection__succeeded)
+          {
+            check_hlds__switch_detection__Var_5 = ((MR_Word) (MR_hl_field(MR_mktag(0), check_hlds__switch_detection__HeadVar__2_2, (MR_Integer) 0)));
+            check_hlds__switch_detection__Var_6 = ((MR_Word) (MR_hl_field(MR_mktag(0), check_hlds__switch_detection__HeadVar__2_2, (MR_Integer) 1)));
+            {
+              check_hlds__switch_detection__succeeded = parse_tree__prog_data____Unify____cons_id_0_0(check_hlds__switch_detection__Var_3, check_hlds__switch_detection__Var_5);
+            }
+            if (check_hlds__switch_detection__succeeded)
+              {
+                check_hlds__switch_detection__succeeded = hlds__hlds_goal____Unify____hlds_goal_0_0(check_hlds__switch_detection__Var_4, check_hlds__switch_detection__Var_6);
+              }
+          }
+      }
+    return check_hlds__switch_detection__succeeded;
+  }
+}
+
+static void MR_CALL 
+check_hlds__switch_detection____Compare____candidate_switch_rank_0_0(
+  MR_Word * check_hlds__switch_detection__HeadVar__1_1,
+  MR_Word check_hlds__switch_detection__HeadVar__2_2,
+  MR_Word check_hlds__switch_detection__HeadVar__3_3)
+{
+  {
+    MR_bool check_hlds__switch_detection__succeeded;
+    MR_Integer check_hlds__switch_detection__CastX_36 = (MR_Integer) check_hlds__switch_detection__HeadVar__2_2;
+    MR_Integer check_hlds__switch_detection__CastY_37 = (MR_Integer) check_hlds__switch_detection__HeadVar__3_3;
+
+    check_hlds__switch_detection__succeeded = (check_hlds__switch_detection__CastX_36 == check_hlds__switch_detection__CastY_37);
+    if (check_hlds__switch_detection__succeeded)
+      *check_hlds__switch_detection__HeadVar__1_1 = (MR_Integer) 0;
+    else
+      switch (MR_tag((MR_Word) check_hlds__switch_detection__HeadVar__2_2)) {
+        default: /*NOTREACHED*/ MR_assert(0);
+        case (MR_Integer) 0:
+          switch (MR_unmkbody(check_hlds__switch_detection__HeadVar__2_2)) {
+            default: /*NOTREACHED*/ MR_assert(0);
+            case (MR_Integer) 0:
+              switch (MR_tag((MR_Word) check_hlds__switch_detection__HeadVar__3_3)) {
+                default: /*NOTREACHED*/ MR_assert(0);
+                case (MR_Integer) 0:
+                  switch (MR_unmkbody(check_hlds__switch_detection__HeadVar__3_3)) {
+                    default: /*NOTREACHED*/ MR_assert(0);
+                    case (MR_Integer) 0:
+                      *check_hlds__switch_detection__HeadVar__1_1 = (MR_Integer) 0;
+                      break;
+                    case (MR_Integer) 1:
+                      *check_hlds__switch_detection__HeadVar__1_1 = (MR_Integer) 1;
+                      break;
+                    case (MR_Integer) 2:
+                      *check_hlds__switch_detection__HeadVar__1_1 = (MR_Integer) 1;
+                      break;
+                    case (MR_Integer) 3:
+                      *check_hlds__switch_detection__HeadVar__1_1 = (MR_Integer) 1;
+                      break;
+                    case (MR_Integer) 4:
+                      *check_hlds__switch_detection__HeadVar__1_1 = (MR_Integer) 1;
+                      break;
+                    case (MR_Integer) 5:
+                      *check_hlds__switch_detection__HeadVar__1_1 = (MR_Integer) 1;
+                      break;
+                  }
+                  break;
+                case (MR_Integer) 1:
+                  *check_hlds__switch_detection__HeadVar__1_1 = (MR_Integer) 2;
+                  break;
+                case (MR_Integer) 2:
+                  *check_hlds__switch_detection__HeadVar__1_1 = (MR_Integer) 2;
+                  break;
+              }
+              break;
+            case (MR_Integer) 1:
+              switch (MR_tag((MR_Word) check_hlds__switch_detection__HeadVar__3_3)) {
+                default: /*NOTREACHED*/ MR_assert(0);
+                case (MR_Integer) 0:
+                  switch (MR_unmkbody(check_hlds__switch_detection__HeadVar__3_3)) {
+                    default: /*NOTREACHED*/ MR_assert(0);
+                    case (MR_Integer) 0:
+                      *check_hlds__switch_detection__HeadVar__1_1 = (MR_Integer) 2;
+                      break;
+                    case (MR_Integer) 1:
+                      *check_hlds__switch_detection__HeadVar__1_1 = (MR_Integer) 0;
+                      break;
+                    case (MR_Integer) 2:
+                      *check_hlds__switch_detection__HeadVar__1_1 = (MR_Integer) 1;
+                      break;
+                    case (MR_Integer) 3:
+                      *check_hlds__switch_detection__HeadVar__1_1 = (MR_Integer) 1;
+                      break;
+                    case (MR_Integer) 4:
+                      *check_hlds__switch_detection__HeadVar__1_1 = (MR_Integer) 1;
+                      break;
+                    case (MR_Integer) 5:
+                      *check_hlds__switch_detection__HeadVar__1_1 = (MR_Integer) 1;
+                      break;
+                  }
+                  break;
+                case (MR_Integer) 1:
+                  *check_hlds__switch_detection__HeadVar__1_1 = (MR_Integer) 2;
+                  break;
+                case (MR_Integer) 2:
+                  *check_hlds__switch_detection__HeadVar__1_1 = (MR_Integer) 2;
+                  break;
+              }
+              break;
+            case (MR_Integer) 2:
+              switch (MR_tag((MR_Word) check_hlds__switch_detection__HeadVar__3_3)) {
+                default: /*NOTREACHED*/ MR_assert(0);
+                case (MR_Integer) 0:
+                  switch (MR_unmkbody(check_hlds__switch_detection__HeadVar__3_3)) {
+                    default: /*NOTREACHED*/ MR_assert(0);
+                    case (MR_Integer) 0:
+                      *check_hlds__switch_detection__HeadVar__1_1 = (MR_Integer) 2;
+                      break;
+                    case (MR_Integer) 1:
+                      *check_hlds__switch_detection__HeadVar__1_1 = (MR_Integer) 2;
+                      break;
+                    case (MR_Integer) 2:
+                      *check_hlds__switch_detection__HeadVar__1_1 = (MR_Integer) 0;
+                      break;
+                    case (MR_Integer) 3:
+                      *check_hlds__switch_detection__HeadVar__1_1 = (MR_Integer) 1;
+                      break;
+                    case (MR_Integer) 4:
+                      *check_hlds__switch_detection__HeadVar__1_1 = (MR_Integer) 1;
+                      break;
+                    case (MR_Integer) 5:
+                      *check_hlds__switch_detection__HeadVar__1_1 = (MR_Integer) 1;
+                      break;
+                  }
+                  break;
+                case (MR_Integer) 1:
+                  *check_hlds__switch_detection__HeadVar__1_1 = (MR_Integer) 2;
+                  break;
+                case (MR_Integer) 2:
+                  *check_hlds__switch_detection__HeadVar__1_1 = (MR_Integer) 2;
+                  break;
+              }
+              break;
+            case (MR_Integer) 3:
+              switch (MR_tag((MR_Word) check_hlds__switch_detection__HeadVar__3_3)) {
+                default: /*NOTREACHED*/ MR_assert(0);
+                case (MR_Integer) 0:
+                  switch (MR_unmkbody(check_hlds__switch_detection__HeadVar__3_3)) {
+                    default: /*NOTREACHED*/ MR_assert(0);
+                    case (MR_Integer) 0:
+                      *check_hlds__switch_detection__HeadVar__1_1 = (MR_Integer) 2;
+                      break;
+                    case (MR_Integer) 1:
+                      *check_hlds__switch_detection__HeadVar__1_1 = (MR_Integer) 2;
+                      break;
+                    case (MR_Integer) 2:
+                      *check_hlds__switch_detection__HeadVar__1_1 = (MR_Integer) 2;
+                      break;
+                    case (MR_Integer) 3:
+                      *check_hlds__switch_detection__HeadVar__1_1 = (MR_Integer) 0;
+                      break;
+                    case (MR_Integer) 4:
+                      *check_hlds__switch_detection__HeadVar__1_1 = (MR_Integer) 1;
+                      break;
+                    case (MR_Integer) 5:
+                      *check_hlds__switch_detection__HeadVar__1_1 = (MR_Integer) 1;
+                      break;
+                  }
+                  break;
+                case (MR_Integer) 1:
+                  *check_hlds__switch_detection__HeadVar__1_1 = (MR_Integer) 2;
+                  break;
+                case (MR_Integer) 2:
+                  *check_hlds__switch_detection__HeadVar__1_1 = (MR_Integer) 2;
+                  break;
+              }
+              break;
+            case (MR_Integer) 4:
+              switch (MR_tag((MR_Word) check_hlds__switch_detection__HeadVar__3_3)) {
+                default: /*NOTREACHED*/ MR_assert(0);
+                case (MR_Integer) 0:
+                  switch (MR_unmkbody(check_hlds__switch_detection__HeadVar__3_3)) {
+                    default: /*NOTREACHED*/ MR_assert(0);
+                    case (MR_Integer) 0:
+                      *check_hlds__switch_detection__HeadVar__1_1 = (MR_Integer) 2;
+                      break;
+                    case (MR_Integer) 1:
+                      *check_hlds__switch_detection__HeadVar__1_1 = (MR_Integer) 2;
+                      break;
+                    case (MR_Integer) 2:
+                      *check_hlds__switch_detection__HeadVar__1_1 = (MR_Integer) 2;
+                      break;
+                    case (MR_Integer) 3:
+                      *check_hlds__switch_detection__HeadVar__1_1 = (MR_Integer) 2;
+                      break;
+                    case (MR_Integer) 4:
+                      *check_hlds__switch_detection__HeadVar__1_1 = (MR_Integer) 0;
+                      break;
+                    case (MR_Integer) 5:
+                      *check_hlds__switch_detection__HeadVar__1_1 = (MR_Integer) 1;
+                      break;
+                  }
+                  break;
+                case (MR_Integer) 1:
+                  *check_hlds__switch_detection__HeadVar__1_1 = (MR_Integer) 2;
+                  break;
+                case (MR_Integer) 2:
+                  *check_hlds__switch_detection__HeadVar__1_1 = (MR_Integer) 2;
+                  break;
+              }
+              break;
+            case (MR_Integer) 5:
+              switch (MR_tag((MR_Word) check_hlds__switch_detection__HeadVar__3_3)) {
+                default: /*NOTREACHED*/ MR_assert(0);
+                case (MR_Integer) 0:
+                  switch (MR_unmkbody(check_hlds__switch_detection__HeadVar__3_3)) {
+                    default: /*NOTREACHED*/ MR_assert(0);
+                    case (MR_Integer) 0:
+                      *check_hlds__switch_detection__HeadVar__1_1 = (MR_Integer) 2;
+                      break;
+                    case (MR_Integer) 1:
+                      *check_hlds__switch_detection__HeadVar__1_1 = (MR_Integer) 2;
+                      break;
+                    case (MR_Integer) 2:
+                      *check_hlds__switch_detection__HeadVar__1_1 = (MR_Integer) 2;
+                      break;
+                    case (MR_Integer) 3:
+                      *check_hlds__switch_detection__HeadVar__1_1 = (MR_Integer) 2;
+                      break;
+                    case (MR_Integer) 4:
+                      *check_hlds__switch_detection__HeadVar__1_1 = (MR_Integer) 2;
+                      break;
+                    case (MR_Integer) 5:
+                      *check_hlds__switch_detection__HeadVar__1_1 = (MR_Integer) 0;
+                      break;
+                  }
+                  break;
+                case (MR_Integer) 1:
+                  *check_hlds__switch_detection__HeadVar__1_1 = (MR_Integer) 2;
+                  break;
+                case (MR_Integer) 2:
+                  *check_hlds__switch_detection__HeadVar__1_1 = (MR_Integer) 2;
+                  break;
+              }
+              break;
+          }
+          break;
+        case (MR_Integer) 1:
+          {
+            MR_Integer check_hlds__switch_detection__Var_40 = ((MR_Integer) (MR_hl_field(MR_mktag(1), check_hlds__switch_detection__HeadVar__2_2, (MR_Integer) 0)));
+
+            switch (MR_tag((MR_Word) check_hlds__switch_detection__HeadVar__3_3)) {
+              default: /*NOTREACHED*/ MR_assert(0);
+              case (MR_Integer) 0:
+                switch (MR_unmkbody(check_hlds__switch_detection__HeadVar__3_3)) {
+                  default: /*NOTREACHED*/ MR_assert(0);
+                  case (MR_Integer) 0:
+                    *check_hlds__switch_detection__HeadVar__1_1 = (MR_Integer) 1;
+                    break;
+                  case (MR_Integer) 1:
+                    *check_hlds__switch_detection__HeadVar__1_1 = (MR_Integer) 1;
+                    break;
+                  case (MR_Integer) 2:
+                    *check_hlds__switch_detection__HeadVar__1_1 = (MR_Integer) 1;
+                    break;
+                  case (MR_Integer) 3:
+                    *check_hlds__switch_detection__HeadVar__1_1 = (MR_Integer) 1;
+                    break;
+                  case (MR_Integer) 4:
+                    *check_hlds__switch_detection__HeadVar__1_1 = (MR_Integer) 1;
+                    break;
+                  case (MR_Integer) 5:
+                    *check_hlds__switch_detection__HeadVar__1_1 = (MR_Integer) 1;
+                    break;
+                }
+                break;
+              case (MR_Integer) 1:
+                {
+                  MR_Integer check_hlds__switch_detection__Var_5 = ((MR_Integer) (MR_hl_field(MR_mktag(1), check_hlds__switch_detection__HeadVar__3_3, (MR_Integer) 0)));
+
+                  {
+                    mercury__private_builtin__builtin_compare_int_3_p_0(check_hlds__switch_detection__HeadVar__1_1, check_hlds__switch_detection__Var_40, check_hlds__switch_detection__Var_5);
+                  }
+                }
+                break;
+              case (MR_Integer) 2:
+                *check_hlds__switch_detection__HeadVar__1_1 = (MR_Integer) 1;
+                break;
+            }
+          }
+          break;
+        case (MR_Integer) 2:
+          {
+            MR_Integer check_hlds__switch_detection__Var_41 = ((MR_Integer) (MR_hl_field(MR_mktag(2), check_hlds__switch_detection__HeadVar__2_2, (MR_Integer) 0)));
+
+            switch (MR_tag((MR_Word) check_hlds__switch_detection__HeadVar__3_3)) {
+              default: /*NOTREACHED*/ MR_assert(0);
+              case (MR_Integer) 0:
+                switch (MR_unmkbody(check_hlds__switch_detection__HeadVar__3_3)) {
+                  default: /*NOTREACHED*/ MR_assert(0);
+                  case (MR_Integer) 0:
+                    *check_hlds__switch_detection__HeadVar__1_1 = (MR_Integer) 1;
+                    break;
+                  case (MR_Integer) 1:
+                    *check_hlds__switch_detection__HeadVar__1_1 = (MR_Integer) 1;
+                    break;
+                  case (MR_Integer) 2:
+                    *check_hlds__switch_detection__HeadVar__1_1 = (MR_Integer) 1;
+                    break;
+                  case (MR_Integer) 3:
+                    *check_hlds__switch_detection__HeadVar__1_1 = (MR_Integer) 1;
+                    break;
+                  case (MR_Integer) 4:
+                    *check_hlds__switch_detection__HeadVar__1_1 = (MR_Integer) 1;
+                    break;
+                  case (MR_Integer) 5:
+                    *check_hlds__switch_detection__HeadVar__1_1 = (MR_Integer) 1;
+                    break;
+                }
+                break;
+              case (MR_Integer) 1:
+                *check_hlds__switch_detection__HeadVar__1_1 = (MR_Integer) 2;
+                break;
+              case (MR_Integer) 2:
+                {
+                  MR_Integer check_hlds__switch_detection__Var_17 = ((MR_Integer) (MR_hl_field(MR_mktag(2), check_hlds__switch_detection__HeadVar__3_3, (MR_Integer) 0)));
+
+                  {
+                    mercury__private_builtin__builtin_compare_int_3_p_0(check_hlds__switch_detection__HeadVar__1_1, check_hlds__switch_detection__Var_41, check_hlds__switch_detection__Var_17);
+                  }
+                }
+                break;
+            }
+          }
+          break;
+      }
+  }
+}
+
+static MR_bool MR_CALL 
+check_hlds__switch_detection____Unify____candidate_switch_rank_0_0(
+  MR_Word check_hlds__switch_detection__HeadVar__1_1,
+  MR_Word check_hlds__switch_detection__HeadVar__2_2)
+{
+  {
+    MR_bool check_hlds__switch_detection__succeeded;
+    MR_Integer check_hlds__switch_detection__CastX_19 = (MR_Integer) check_hlds__switch_detection__HeadVar__1_1;
+    MR_Integer check_hlds__switch_detection__CastY_20 = (MR_Integer) check_hlds__switch_detection__HeadVar__2_2;
+
+    check_hlds__switch_detection__succeeded = (check_hlds__switch_detection__CastX_19 == check_hlds__switch_detection__CastY_20);
+    if (check_hlds__switch_detection__succeeded)
+      check_hlds__switch_detection__succeeded = MR_TRUE;
+    else
+      switch (MR_tag((MR_Word) check_hlds__switch_detection__HeadVar__1_1)) {
+        default: /*NOTREACHED*/ MR_assert(0);
+        case (MR_Integer) 0:
+          switch (MR_unmkbody(check_hlds__switch_detection__HeadVar__1_1)) {
+            default: /*NOTREACHED*/ MR_assert(0);
+            case (MR_Integer) 0:
+              {
+                MR_Integer check_hlds__switch_detection__CastX_7 = (MR_Integer) check_hlds__switch_detection__HeadVar__1_1;
+                MR_Integer check_hlds__switch_detection__CastY_8 = (MR_Integer) check_hlds__switch_detection__HeadVar__2_2;
+
+                check_hlds__switch_detection__succeeded = (check_hlds__switch_detection__CastY_8 == check_hlds__switch_detection__CastX_7);
+              }
+              break;
+            case (MR_Integer) 1:
+              {
+                MR_Integer check_hlds__switch_detection__CastX_9 = (MR_Integer) check_hlds__switch_detection__HeadVar__1_1;
+                MR_Integer check_hlds__switch_detection__CastY_10 = (MR_Integer) check_hlds__switch_detection__HeadVar__2_2;
+
+                check_hlds__switch_detection__succeeded = (check_hlds__switch_detection__CastY_10 == check_hlds__switch_detection__CastX_9);
+              }
+              break;
+            case (MR_Integer) 2:
+              {
+                MR_Integer check_hlds__switch_detection__CastX_11 = (MR_Integer) check_hlds__switch_detection__HeadVar__1_1;
+                MR_Integer check_hlds__switch_detection__CastY_12 = (MR_Integer) check_hlds__switch_detection__HeadVar__2_2;
+
+                check_hlds__switch_detection__succeeded = (check_hlds__switch_detection__CastY_12 == check_hlds__switch_detection__CastX_11);
+              }
+              break;
+            case (MR_Integer) 3:
+              {
+                MR_Integer check_hlds__switch_detection__CastX_13 = (MR_Integer) check_hlds__switch_detection__HeadVar__1_1;
+                MR_Integer check_hlds__switch_detection__CastY_14 = (MR_Integer) check_hlds__switch_detection__HeadVar__2_2;
+
+                check_hlds__switch_detection__succeeded = (check_hlds__switch_detection__CastY_14 == check_hlds__switch_detection__CastX_13);
+              }
+              break;
+            case (MR_Integer) 4:
+              {
+                MR_Integer check_hlds__switch_detection__CastX_15 = (MR_Integer) check_hlds__switch_detection__HeadVar__1_1;
+                MR_Integer check_hlds__switch_detection__CastY_16 = (MR_Integer) check_hlds__switch_detection__HeadVar__2_2;
+
+                check_hlds__switch_detection__succeeded = (check_hlds__switch_detection__CastY_16 == check_hlds__switch_detection__CastX_15);
+              }
+              break;
+            case (MR_Integer) 5:
+              {
+                MR_Integer check_hlds__switch_detection__CastX_17 = (MR_Integer) check_hlds__switch_detection__HeadVar__1_1;
+                MR_Integer check_hlds__switch_detection__CastY_18 = (MR_Integer) check_hlds__switch_detection__HeadVar__2_2;
+
+                check_hlds__switch_detection__succeeded = (check_hlds__switch_detection__CastY_18 == check_hlds__switch_detection__CastX_17);
+              }
+              break;
+          }
+          break;
+        case (MR_Integer) 1:
+          {
+            MR_Integer check_hlds__switch_detection__Var_3 = ((MR_Integer) (MR_hl_field(MR_mktag(1), check_hlds__switch_detection__HeadVar__1_1, (MR_Integer) 0)));
+            MR_Integer check_hlds__switch_detection__Var_4;
+
+            check_hlds__switch_detection__succeeded = ((MR_tag((MR_Word) check_hlds__switch_detection__HeadVar__2_2)) == (MR_mktag((MR_Integer) 1)));
+            if (check_hlds__switch_detection__succeeded)
+              {
+                check_hlds__switch_detection__Var_4 = ((MR_Integer) (MR_hl_field(MR_mktag(1), check_hlds__switch_detection__HeadVar__2_2, (MR_Integer) 0)));
+                check_hlds__switch_detection__succeeded = (check_hlds__switch_detection__Var_3 == check_hlds__switch_detection__Var_4);
+              }
+          }
+          break;
+        case (MR_Integer) 2:
+          {
+            MR_Integer check_hlds__switch_detection__Var_5 = ((MR_Integer) (MR_hl_field(MR_mktag(2), check_hlds__switch_detection__HeadVar__1_1, (MR_Integer) 0)));
+            MR_Integer check_hlds__switch_detection__Var_6;
+
+            check_hlds__switch_detection__succeeded = ((MR_tag((MR_Word) check_hlds__switch_detection__HeadVar__2_2)) == (MR_mktag((MR_Integer) 2)));
+            if (check_hlds__switch_detection__succeeded)
+              {
+                check_hlds__switch_detection__Var_6 = ((MR_Integer) (MR_hl_field(MR_mktag(2), check_hlds__switch_detection__HeadVar__2_2, (MR_Integer) 0)));
+                check_hlds__switch_detection__succeeded = (check_hlds__switch_detection__Var_5 == check_hlds__switch_detection__Var_6);
+              }
+          }
+          break;
+      }
+    return check_hlds__switch_detection__succeeded;
+  }
+}
+
+static void MR_CALL 
+check_hlds__switch_detection____Compare____candidate_switch_0_0(
+  MR_Word * check_hlds__switch_detection__HeadVar__1_1,
+  MR_Word check_hlds__switch_detection__HeadVar__2_2,
+  MR_Word check_hlds__switch_detection__HeadVar__3_3)
+{
+  {
+    MR_bool check_hlds__switch_detection__succeeded;
+    MR_Integer check_hlds__switch_detection__CastX_21 = (MR_Integer) check_hlds__switch_detection__HeadVar__2_2;
+    MR_Integer check_hlds__switch_detection__CastY_22 = (MR_Integer) check_hlds__switch_detection__HeadVar__3_3;
+
+    check_hlds__switch_detection__succeeded = (check_hlds__switch_detection__CastX_21 == check_hlds__switch_detection__CastY_22);
+    if (check_hlds__switch_detection__succeeded)
+      *check_hlds__switch_detection__HeadVar__1_1 = (MR_Integer) 0;
+    else
+      {
+        MR_Word check_hlds__switch_detection__Var_4 = ((MR_Word) (MR_hl_field(MR_mktag(0), check_hlds__switch_detection__HeadVar__2_2, (MR_Integer) 0)));
+        MR_Word check_hlds__switch_detection__Var_5 = ((MR_Word) (MR_hl_field(MR_mktag(0), check_hlds__switch_detection__HeadVar__2_2, (MR_Integer) 1)));
+        MR_Word check_hlds__switch_detection__Var_6 = ((MR_Word) (MR_hl_field(MR_mktag(0), check_hlds__switch_detection__HeadVar__2_2, (MR_Integer) 2)));
+        MR_Word check_hlds__switch_detection__Var_7 = ((MR_Word) (MR_hl_field(MR_mktag(0), check_hlds__switch_detection__HeadVar__2_2, (MR_Integer) 3)));
+        MR_Word check_hlds__switch_detection__Var_8 = ((MR_Word) (MR_hl_field(MR_mktag(0), check_hlds__switch_detection__HeadVar__2_2, (MR_Integer) 4)));
+        MR_Word check_hlds__switch_detection__Var_9 = ((MR_Word) (MR_hl_field(MR_mktag(0), check_hlds__switch_detection__HeadVar__2_2, (MR_Integer) 5)));
+        MR_Word check_hlds__switch_detection__Var_10 = ((MR_Word) (MR_hl_field(MR_mktag(0), check_hlds__switch_detection__HeadVar__3_3, (MR_Integer) 0)));
+        MR_Word check_hlds__switch_detection__Var_11 = ((MR_Word) (MR_hl_field(MR_mktag(0), check_hlds__switch_detection__HeadVar__3_3, (MR_Integer) 1)));
+        MR_Word check_hlds__switch_detection__Var_12 = ((MR_Word) (MR_hl_field(MR_mktag(0), check_hlds__switch_detection__HeadVar__3_3, (MR_Integer) 2)));
+        MR_Word check_hlds__switch_detection__Var_13 = ((MR_Word) (MR_hl_field(MR_mktag(0), check_hlds__switch_detection__HeadVar__3_3, (MR_Integer) 3)));
+        MR_Word check_hlds__switch_detection__Var_14 = ((MR_Word) (MR_hl_field(MR_mktag(0), check_hlds__switch_detection__HeadVar__3_3, (MR_Integer) 4)));
+        MR_Word check_hlds__switch_detection__Var_15 = ((MR_Word) (MR_hl_field(MR_mktag(0), check_hlds__switch_detection__HeadVar__3_3, (MR_Integer) 5)));
+        MR_Word check_hlds__switch_detection__Var_16;
+
+        {
+          mercury__builtin__compare_3_p_0((MR_Word) &check_hlds__switch_detection_scalar_common_1[0], &check_hlds__switch_detection__Var_16, ((MR_Box) (check_hlds__switch_detection__Var_4)), ((MR_Box) (check_hlds__switch_detection__Var_10)));
+        }
+        check_hlds__switch_detection__succeeded = (check_hlds__switch_detection__Var_16 == (MR_Integer) 0);
+        check_hlds__switch_detection__succeeded = !(check_hlds__switch_detection__succeeded);
+        if (check_hlds__switch_detection__succeeded)
+          *check_hlds__switch_detection__HeadVar__1_1 = check_hlds__switch_detection__Var_16;
+        else
+          {
+            MR_Word check_hlds__switch_detection__Var_17;
+
+            {
+              mercury__builtin__compare_3_p_0((MR_Word) &check_hlds__switch_detection_scalar_common_1[2], &check_hlds__switch_detection__Var_17, ((MR_Box) (check_hlds__switch_detection__Var_5)), ((MR_Box) (check_hlds__switch_detection__Var_11)));
+            }
+            check_hlds__switch_detection__succeeded = (check_hlds__switch_detection__Var_17 == (MR_Integer) 0);
+            check_hlds__switch_detection__succeeded = !(check_hlds__switch_detection__succeeded);
+            if (check_hlds__switch_detection__succeeded)
+              *check_hlds__switch_detection__HeadVar__1_1 = check_hlds__switch_detection__Var_17;
+            else
+              {
+                MR_Word check_hlds__switch_detection__Var_18;
+
+                {
+                  mercury__builtin__compare_3_p_0((MR_Word) &check_hlds__switch_detection_scalar_common_1[4], &check_hlds__switch_detection__Var_18, ((MR_Box) (check_hlds__switch_detection__Var_6)), ((MR_Box) (check_hlds__switch_detection__Var_12)));
+                }
+                check_hlds__switch_detection__succeeded = (check_hlds__switch_detection__Var_18 == (MR_Integer) 0);
+                check_hlds__switch_detection__succeeded = !(check_hlds__switch_detection__succeeded);
+                if (check_hlds__switch_detection__succeeded)
+                  *check_hlds__switch_detection__HeadVar__1_1 = check_hlds__switch_detection__Var_18;
+                else
+                  {
+                    MR_Word check_hlds__switch_detection__Var_19;
+
+                    {
+                      mercury__builtin__compare_3_p_0((MR_Word) &check_hlds__switch_detection_scalar_common_1[4], &check_hlds__switch_detection__Var_19, ((MR_Box) (check_hlds__switch_detection__Var_7)), ((MR_Box) (check_hlds__switch_detection__Var_13)));
+                    }
+                    check_hlds__switch_detection__succeeded = (check_hlds__switch_detection__Var_19 == (MR_Integer) 0);
+                    check_hlds__switch_detection__succeeded = !(check_hlds__switch_detection__succeeded);
+                    if (check_hlds__switch_detection__succeeded)
+                      *check_hlds__switch_detection__HeadVar__1_1 = check_hlds__switch_detection__Var_19;
+                    else
+                      {
+                        MR_Word check_hlds__switch_detection__Var_20;
+                        MR_Integer check_hlds__switch_detection__CastX_63 = (MR_Integer) check_hlds__switch_detection__Var_8;
+                        MR_Integer check_hlds__switch_detection__CastY_64 = (MR_Integer) check_hlds__switch_detection__Var_14;
+
+                        check_hlds__switch_detection__succeeded = (check_hlds__switch_detection__CastX_63 == check_hlds__switch_detection__CastY_64);
+                        if (check_hlds__switch_detection__succeeded)
+                          {
+                            check_hlds__switch_detection__succeeded = ((MR_Integer) 0 == (MR_Integer) 0);
+                            check_hlds__switch_detection__succeeded = !(check_hlds__switch_detection__succeeded);
+                            if (check_hlds__switch_detection__succeeded)
+                              {
+                                check_hlds__switch_detection__Var_20 = (MR_Integer) 0;
+                                check_hlds__switch_detection__succeeded = MR_TRUE;
+                              }
+                          }
+                        else
+                          switch (MR_tag((MR_Word) check_hlds__switch_detection__Var_8)) {
+                            default: /*NOTREACHED*/ MR_assert(0);
+                            case (MR_Integer) 0:
+                              switch (MR_unmkbody(check_hlds__switch_detection__Var_8)) {
+                                default: /*NOTREACHED*/ MR_assert(0);
+                                case (MR_Integer) 0:
+                                  switch (MR_tag((MR_Word) check_hlds__switch_detection__Var_14)) {
+                                    default: /*NOTREACHED*/ MR_assert(0);
+                                    case (MR_Integer) 0:
+                                      switch (MR_unmkbody(check_hlds__switch_detection__Var_14)) {
+                                        default: /*NOTREACHED*/ MR_assert(0);
+                                        case (MR_Integer) 0:
+                                          {
+                                            check_hlds__switch_detection__succeeded = ((MR_Integer) 0 == (MR_Integer) 0);
+                                            check_hlds__switch_detection__succeeded = !(check_hlds__switch_detection__succeeded);
+                                            if (check_hlds__switch_detection__succeeded)
+                                              {
+                                                check_hlds__switch_detection__Var_20 = (MR_Integer) 0;
+                                                check_hlds__switch_detection__succeeded = MR_TRUE;
+                                              }
+                                          }
+                                          break;
+                                        case (MR_Integer) 1:
+                                          {
+                                            check_hlds__switch_detection__Var_20 = (MR_Integer) 1;
+                                            check_hlds__switch_detection__succeeded = MR_TRUE;
+                                          }
+                                          break;
+                                        case (MR_Integer) 2:
+                                          {
+                                            check_hlds__switch_detection__Var_20 = (MR_Integer) 1;
+                                            check_hlds__switch_detection__succeeded = MR_TRUE;
+                                          }
+                                          break;
+                                        case (MR_Integer) 3:
+                                          {
+                                            check_hlds__switch_detection__Var_20 = (MR_Integer) 1;
+                                            check_hlds__switch_detection__succeeded = MR_TRUE;
+                                          }
+                                          break;
+                                        case (MR_Integer) 4:
+                                          {
+                                            check_hlds__switch_detection__Var_20 = (MR_Integer) 1;
+                                            check_hlds__switch_detection__succeeded = MR_TRUE;
+                                          }
+                                          break;
+                                        case (MR_Integer) 5:
+                                          {
+                                            check_hlds__switch_detection__Var_20 = (MR_Integer) 1;
+                                            check_hlds__switch_detection__succeeded = MR_TRUE;
+                                          }
+                                          break;
+                                      }
+                                      break;
+                                    case (MR_Integer) 1:
+                                      {
+                                        check_hlds__switch_detection__Var_20 = (MR_Integer) 2;
+                                        check_hlds__switch_detection__succeeded = MR_TRUE;
+                                      }
+                                      break;
+                                    case (MR_Integer) 2:
+                                      {
+                                        check_hlds__switch_detection__Var_20 = (MR_Integer) 2;
+                                        check_hlds__switch_detection__succeeded = MR_TRUE;
+                                      }
+                                      break;
+                                  }
+                                  break;
+                                case (MR_Integer) 1:
+                                  switch (MR_tag((MR_Word) check_hlds__switch_detection__Var_14)) {
+                                    default: /*NOTREACHED*/ MR_assert(0);
+                                    case (MR_Integer) 0:
+                                      switch (MR_unmkbody(check_hlds__switch_detection__Var_14)) {
+                                        default: /*NOTREACHED*/ MR_assert(0);
+                                        case (MR_Integer) 0:
+                                          {
+                                            check_hlds__switch_detection__Var_20 = (MR_Integer) 2;
+                                            check_hlds__switch_detection__succeeded = MR_TRUE;
+                                          }
+                                          break;
+                                        case (MR_Integer) 1:
+                                          {
+                                            check_hlds__switch_detection__succeeded = ((MR_Integer) 0 == (MR_Integer) 0);
+                                            check_hlds__switch_detection__succeeded = !(check_hlds__switch_detection__succeeded);
+                                            if (check_hlds__switch_detection__succeeded)
+                                              {
+                                                check_hlds__switch_detection__Var_20 = (MR_Integer) 0;
+                                                check_hlds__switch_detection__succeeded = MR_TRUE;
+                                              }
+                                          }
+                                          break;
+                                        case (MR_Integer) 2:
+                                          {
+                                            check_hlds__switch_detection__Var_20 = (MR_Integer) 1;
+                                            check_hlds__switch_detection__succeeded = MR_TRUE;
+                                          }
+                                          break;
+                                        case (MR_Integer) 3:
+                                          {
+                                            check_hlds__switch_detection__Var_20 = (MR_Integer) 1;
+                                            check_hlds__switch_detection__succeeded = MR_TRUE;
+                                          }
+                                          break;
+                                        case (MR_Integer) 4:
+                                          {
+                                            check_hlds__switch_detection__Var_20 = (MR_Integer) 1;
+                                            check_hlds__switch_detection__succeeded = MR_TRUE;
+                                          }
+                                          break;
+                                        case (MR_Integer) 5:
+                                          {
+                                            check_hlds__switch_detection__Var_20 = (MR_Integer) 1;
+                                            check_hlds__switch_detection__succeeded = MR_TRUE;
+                                          }
+                                          break;
+                                      }
+                                      break;
+                                    case (MR_Integer) 1:
+                                      {
+                                        check_hlds__switch_detection__Var_20 = (MR_Integer) 2;
+                                        check_hlds__switch_detection__succeeded = MR_TRUE;
+                                      }
+                                      break;
+                                    case (MR_Integer) 2:
+                                      {
+                                        check_hlds__switch_detection__Var_20 = (MR_Integer) 2;
+                                        check_hlds__switch_detection__succeeded = MR_TRUE;
+                                      }
+                                      break;
+                                  }
+                                  break;
+                                case (MR_Integer) 2:
+                                  switch (MR_tag((MR_Word) check_hlds__switch_detection__Var_14)) {
+                                    default: /*NOTREACHED*/ MR_assert(0);
+                                    case (MR_Integer) 0:
+                                      switch (MR_unmkbody(check_hlds__switch_detection__Var_14)) {
+                                        default: /*NOTREACHED*/ MR_assert(0);
+                                        case (MR_Integer) 0:
+                                          {
+                                            check_hlds__switch_detection__Var_20 = (MR_Integer) 2;
+                                            check_hlds__switch_detection__succeeded = MR_TRUE;
+                                          }
+                                          break;
+                                        case (MR_Integer) 1:
+                                          {
+                                            check_hlds__switch_detection__Var_20 = (MR_Integer) 2;
+                                            check_hlds__switch_detection__succeeded = MR_TRUE;
+                                          }
+                                          break;
+                                        case (MR_Integer) 2:
+                                          {
+                                            check_hlds__switch_detection__succeeded = ((MR_Integer) 0 == (MR_Integer) 0);
+                                            check_hlds__switch_detection__succeeded = !(check_hlds__switch_detection__succeeded);
+                                            if (check_hlds__switch_detection__succeeded)
+                                              {
+                                                check_hlds__switch_detection__Var_20 = (MR_Integer) 0;
+                                                check_hlds__switch_detection__succeeded = MR_TRUE;
+                                              }
+                                          }
+                                          break;
+                                        case (MR_Integer) 3:
+                                          {
+                                            check_hlds__switch_detection__Var_20 = (MR_Integer) 1;
+                                            check_hlds__switch_detection__succeeded = MR_TRUE;
+                                          }
+                                          break;
+                                        case (MR_Integer) 4:
+                                          {
+                                            check_hlds__switch_detection__Var_20 = (MR_Integer) 1;
+                                            check_hlds__switch_detection__succeeded = MR_TRUE;
+                                          }
+                                          break;
+                                        case (MR_Integer) 5:
+                                          {
+                                            check_hlds__switch_detection__Var_20 = (MR_Integer) 1;
+                                            check_hlds__switch_detection__succeeded = MR_TRUE;
+                                          }
+                                          break;
+                                      }
+                                      break;
+                                    case (MR_Integer) 1:
+                                      {
+                                        check_hlds__switch_detection__Var_20 = (MR_Integer) 2;
+                                        check_hlds__switch_detection__succeeded = MR_TRUE;
+                                      }
+                                      break;
+                                    case (MR_Integer) 2:
+                                      {
+                                        check_hlds__switch_detection__Var_20 = (MR_Integer) 2;
+                                        check_hlds__switch_detection__succeeded = MR_TRUE;
+                                      }
+                                      break;
+                                  }
+                                  break;
+                                case (MR_Integer) 3:
+                                  switch (MR_tag((MR_Word) check_hlds__switch_detection__Var_14)) {
+                                    default: /*NOTREACHED*/ MR_assert(0);
+                                    case (MR_Integer) 0:
+                                      switch (MR_unmkbody(check_hlds__switch_detection__Var_14)) {
+                                        default: /*NOTREACHED*/ MR_assert(0);
+                                        case (MR_Integer) 0:
+                                          {
+                                            check_hlds__switch_detection__Var_20 = (MR_Integer) 2;
+                                            check_hlds__switch_detection__succeeded = MR_TRUE;
+                                          }
+                                          break;
+                                        case (MR_Integer) 1:
+                                          {
+                                            check_hlds__switch_detection__Var_20 = (MR_Integer) 2;
+                                            check_hlds__switch_detection__succeeded = MR_TRUE;
+                                          }
+                                          break;
+                                        case (MR_Integer) 2:
+                                          {
+                                            check_hlds__switch_detection__Var_20 = (MR_Integer) 2;
+                                            check_hlds__switch_detection__succeeded = MR_TRUE;
+                                          }
+                                          break;
+                                        case (MR_Integer) 3:
+                                          {
+                                            check_hlds__switch_detection__succeeded = ((MR_Integer) 0 == (MR_Integer) 0);
+                                            check_hlds__switch_detection__succeeded = !(check_hlds__switch_detection__succeeded);
+                                            if (check_hlds__switch_detection__succeeded)
+                                              {
+                                                check_hlds__switch_detection__Var_20 = (MR_Integer) 0;
+                                                check_hlds__switch_detection__succeeded = MR_TRUE;
+                                              }
+                                          }
+                                          break;
+                                        case (MR_Integer) 4:
+                                          {
+                                            check_hlds__switch_detection__Var_20 = (MR_Integer) 1;
+                                            check_hlds__switch_detection__succeeded = MR_TRUE;
+                                          }
+                                          break;
+                                        case (MR_Integer) 5:
+                                          {
+                                            check_hlds__switch_detection__Var_20 = (MR_Integer) 1;
+                                            check_hlds__switch_detection__succeeded = MR_TRUE;
+                                          }
+                                          break;
+                                      }
+                                      break;
+                                    case (MR_Integer) 1:
+                                      {
+                                        check_hlds__switch_detection__Var_20 = (MR_Integer) 2;
+                                        check_hlds__switch_detection__succeeded = MR_TRUE;
+                                      }
+                                      break;
+                                    case (MR_Integer) 2:
+                                      {
+                                        check_hlds__switch_detection__Var_20 = (MR_Integer) 2;
+                                        check_hlds__switch_detection__succeeded = MR_TRUE;
+                                      }
+                                      break;
+                                  }
+                                  break;
+                                case (MR_Integer) 4:
+                                  switch (MR_tag((MR_Word) check_hlds__switch_detection__Var_14)) {
+                                    default: /*NOTREACHED*/ MR_assert(0);
+                                    case (MR_Integer) 0:
+                                      switch (MR_unmkbody(check_hlds__switch_detection__Var_14)) {
+                                        default: /*NOTREACHED*/ MR_assert(0);
+                                        case (MR_Integer) 0:
+                                          {
+                                            check_hlds__switch_detection__Var_20 = (MR_Integer) 2;
+                                            check_hlds__switch_detection__succeeded = MR_TRUE;
+                                          }
+                                          break;
+                                        case (MR_Integer) 1:
+                                          {
+                                            check_hlds__switch_detection__Var_20 = (MR_Integer) 2;
+                                            check_hlds__switch_detection__succeeded = MR_TRUE;
+                                          }
+                                          break;
+                                        case (MR_Integer) 2:
+                                          {
+                                            check_hlds__switch_detection__Var_20 = (MR_Integer) 2;
+                                            check_hlds__switch_detection__succeeded = MR_TRUE;
+                                          }
+                                          break;
+                                        case (MR_Integer) 3:
+                                          {
+                                            check_hlds__switch_detection__Var_20 = (MR_Integer) 2;
+                                            check_hlds__switch_detection__succeeded = MR_TRUE;
+                                          }
+                                          break;
+                                        case (MR_Integer) 4:
+                                          {
+                                            check_hlds__switch_detection__succeeded = ((MR_Integer) 0 == (MR_Integer) 0);
+                                            check_hlds__switch_detection__succeeded = !(check_hlds__switch_detection__succeeded);
+                                            if (check_hlds__switch_detection__succeeded)
+                                              {
+                                                check_hlds__switch_detection__Var_20 = (MR_Integer) 0;
+                                                check_hlds__switch_detection__succeeded = MR_TRUE;
+                                              }
+                                          }
+                                          break;
+                                        case (MR_Integer) 5:
+                                          {
+                                            check_hlds__switch_detection__Var_20 = (MR_Integer) 1;
+                                            check_hlds__switch_detection__succeeded = MR_TRUE;
+                                          }
+                                          break;
+                                      }
+                                      break;
+                                    case (MR_Integer) 1:
+                                      {
+                                        check_hlds__switch_detection__Var_20 = (MR_Integer) 2;
+                                        check_hlds__switch_detection__succeeded = MR_TRUE;
+                                      }
+                                      break;
+                                    case (MR_Integer) 2:
+                                      {
+                                        check_hlds__switch_detection__Var_20 = (MR_Integer) 2;
+                                        check_hlds__switch_detection__succeeded = MR_TRUE;
+                                      }
+                                      break;
+                                  }
+                                  break;
+                                case (MR_Integer) 5:
+                                  switch (MR_tag((MR_Word) check_hlds__switch_detection__Var_14)) {
+                                    default: /*NOTREACHED*/ MR_assert(0);
+                                    case (MR_Integer) 0:
+                                      switch (MR_unmkbody(check_hlds__switch_detection__Var_14)) {
+                                        default: /*NOTREACHED*/ MR_assert(0);
+                                        case (MR_Integer) 0:
+                                          {
+                                            check_hlds__switch_detection__Var_20 = (MR_Integer) 2;
+                                            check_hlds__switch_detection__succeeded = MR_TRUE;
+                                          }
+                                          break;
+                                        case (MR_Integer) 1:
+                                          {
+                                            check_hlds__switch_detection__Var_20 = (MR_Integer) 2;
+                                            check_hlds__switch_detection__succeeded = MR_TRUE;
+                                          }
+                                          break;
+                                        case (MR_Integer) 2:
+                                          {
+                                            check_hlds__switch_detection__Var_20 = (MR_Integer) 2;
+                                            check_hlds__switch_detection__succeeded = MR_TRUE;
+                                          }
+                                          break;
+                                        case (MR_Integer) 3:
+                                          {
+                                            check_hlds__switch_detection__Var_20 = (MR_Integer) 2;
+                                            check_hlds__switch_detection__succeeded = MR_TRUE;
+                                          }
+                                          break;
+                                        case (MR_Integer) 4:
+                                          {
+                                            check_hlds__switch_detection__Var_20 = (MR_Integer) 2;
+                                            check_hlds__switch_detection__succeeded = MR_TRUE;
+                                          }
+                                          break;
+                                        case (MR_Integer) 5:
+                                          {
+                                            check_hlds__switch_detection__succeeded = ((MR_Integer) 0 == (MR_Integer) 0);
+                                            check_hlds__switch_detection__succeeded = !(check_hlds__switch_detection__succeeded);
+                                            if (check_hlds__switch_detection__succeeded)
+                                              {
+                                                check_hlds__switch_detection__Var_20 = (MR_Integer) 0;
+                                                check_hlds__switch_detection__succeeded = MR_TRUE;
+                                              }
+                                          }
+                                          break;
+                                      }
+                                      break;
+                                    case (MR_Integer) 1:
+                                      {
+                                        check_hlds__switch_detection__Var_20 = (MR_Integer) 2;
+                                        check_hlds__switch_detection__succeeded = MR_TRUE;
+                                      }
+                                      break;
+                                    case (MR_Integer) 2:
+                                      {
+                                        check_hlds__switch_detection__Var_20 = (MR_Integer) 2;
+                                        check_hlds__switch_detection__succeeded = MR_TRUE;
+                                      }
+                                      break;
+                                  }
+                                  break;
+                              }
+                              break;
+                            case (MR_Integer) 1:
+                              {
+                                MR_Integer check_hlds__switch_detection__Var_67 = ((MR_Integer) (MR_hl_field(MR_mktag(1), check_hlds__switch_detection__Var_8, (MR_Integer) 0)));
+
+                                switch (MR_tag((MR_Word) check_hlds__switch_detection__Var_14)) {
+                                  default: /*NOTREACHED*/ MR_assert(0);
+                                  case (MR_Integer) 0:
+                                    switch (MR_unmkbody(check_hlds__switch_detection__Var_14)) {
+                                      default: /*NOTREACHED*/ MR_assert(0);
+                                      case (MR_Integer) 0:
+                                        {
+                                          check_hlds__switch_detection__Var_20 = (MR_Integer) 1;
+                                          check_hlds__switch_detection__succeeded = MR_TRUE;
+                                        }
+                                        break;
+                                      case (MR_Integer) 1:
+                                        {
+                                          check_hlds__switch_detection__Var_20 = (MR_Integer) 1;
+                                          check_hlds__switch_detection__succeeded = MR_TRUE;
+                                        }
+                                        break;
+                                      case (MR_Integer) 2:
+                                        {
+                                          check_hlds__switch_detection__Var_20 = (MR_Integer) 1;
+                                          check_hlds__switch_detection__succeeded = MR_TRUE;
+                                        }
+                                        break;
+                                      case (MR_Integer) 3:
+                                        {
+                                          check_hlds__switch_detection__Var_20 = (MR_Integer) 1;
+                                          check_hlds__switch_detection__succeeded = MR_TRUE;
+                                        }
+                                        break;
+                                      case (MR_Integer) 4:
+                                        {
+                                          check_hlds__switch_detection__Var_20 = (MR_Integer) 1;
+                                          check_hlds__switch_detection__succeeded = MR_TRUE;
+                                        }
+                                        break;
+                                      case (MR_Integer) 5:
+                                        {
+                                          check_hlds__switch_detection__Var_20 = (MR_Integer) 1;
+                                          check_hlds__switch_detection__succeeded = MR_TRUE;
+                                        }
+                                        break;
+                                    }
+                                    break;
+                                  case (MR_Integer) 1:
+                                    {
+                                      MR_Integer check_hlds__switch_detection__Var_32 = ((MR_Integer) (MR_hl_field(MR_mktag(1), check_hlds__switch_detection__Var_14, (MR_Integer) 0)));
+
+                                      {
+                                        mercury__private_builtin__builtin_compare_int_3_p_0(&check_hlds__switch_detection__Var_20, check_hlds__switch_detection__Var_67, check_hlds__switch_detection__Var_32);
+                                      }
+                                      check_hlds__switch_detection__succeeded = (check_hlds__switch_detection__Var_20 == (MR_Integer) 0);
+                                      check_hlds__switch_detection__succeeded = !(check_hlds__switch_detection__succeeded);
+                                    }
+                                    break;
+                                  case (MR_Integer) 2:
+                                    {
+                                      check_hlds__switch_detection__Var_20 = (MR_Integer) 1;
+                                      check_hlds__switch_detection__succeeded = MR_TRUE;
+                                    }
+                                    break;
+                                }
+                              }
+                              break;
+                            case (MR_Integer) 2:
+                              {
+                                MR_Integer check_hlds__switch_detection__Var_68 = ((MR_Integer) (MR_hl_field(MR_mktag(2), check_hlds__switch_detection__Var_8, (MR_Integer) 0)));
+
+                                switch (MR_tag((MR_Word) check_hlds__switch_detection__Var_14)) {
+                                  default: /*NOTREACHED*/ MR_assert(0);
+                                  case (MR_Integer) 0:
+                                    switch (MR_unmkbody(check_hlds__switch_detection__Var_14)) {
+                                      default: /*NOTREACHED*/ MR_assert(0);
+                                      case (MR_Integer) 0:
+                                        {
+                                          check_hlds__switch_detection__Var_20 = (MR_Integer) 1;
+                                          check_hlds__switch_detection__succeeded = MR_TRUE;
+                                        }
+                                        break;
+                                      case (MR_Integer) 1:
+                                        {
+                                          check_hlds__switch_detection__Var_20 = (MR_Integer) 1;
+                                          check_hlds__switch_detection__succeeded = MR_TRUE;
+                                        }
+                                        break;
+                                      case (MR_Integer) 2:
+                                        {
+                                          check_hlds__switch_detection__Var_20 = (MR_Integer) 1;
+                                          check_hlds__switch_detection__succeeded = MR_TRUE;
+                                        }
+                                        break;
+                                      case (MR_Integer) 3:
+                                        {
+                                          check_hlds__switch_detection__Var_20 = (MR_Integer) 1;
+                                          check_hlds__switch_detection__succeeded = MR_TRUE;
+                                        }
+                                        break;
+                                      case (MR_Integer) 4:
+                                        {
+                                          check_hlds__switch_detection__Var_20 = (MR_Integer) 1;
+                                          check_hlds__switch_detection__succeeded = MR_TRUE;
+                                        }
+                                        break;
+                                      case (MR_Integer) 5:
+                                        {
+                                          check_hlds__switch_detection__Var_20 = (MR_Integer) 1;
+                                          check_hlds__switch_detection__succeeded = MR_TRUE;
+                                        }
+                                        break;
+                                    }
+                                    break;
+                                  case (MR_Integer) 1:
+                                    {
+                                      check_hlds__switch_detection__Var_20 = (MR_Integer) 2;
+                                      check_hlds__switch_detection__succeeded = MR_TRUE;
+                                    }
+                                    break;
+                                  case (MR_Integer) 2:
+                                    {
+                                      MR_Integer check_hlds__switch_detection__Var_44 = ((MR_Integer) (MR_hl_field(MR_mktag(2), check_hlds__switch_detection__Var_14, (MR_Integer) 0)));
+
+                                      {
+                                        mercury__private_builtin__builtin_compare_int_3_p_0(&check_hlds__switch_detection__Var_20, check_hlds__switch_detection__Var_68, check_hlds__switch_detection__Var_44);
+                                      }
+                                      check_hlds__switch_detection__succeeded = (check_hlds__switch_detection__Var_20 == (MR_Integer) 0);
+                                      check_hlds__switch_detection__succeeded = !(check_hlds__switch_detection__succeeded);
+                                    }
+                                    break;
+                                }
+                              }
+                              break;
+                          }
+                        if (check_hlds__switch_detection__succeeded)
+                          *check_hlds__switch_detection__HeadVar__1_1 = check_hlds__switch_detection__Var_20;
+                        else
+                          {
+                            MR_Integer check_hlds__switch_detection__Var_29 = (MR_Integer) check_hlds__switch_detection__Var_9;
+                            MR_Integer check_hlds__switch_detection__Var_30 = (MR_Integer) check_hlds__switch_detection__Var_15;
+
+                            {
+                              mercury__private_builtin__builtin_compare_int_3_p_0(check_hlds__switch_detection__HeadVar__1_1, check_hlds__switch_detection__Var_29, check_hlds__switch_detection__Var_30);
+                            }
+                          }
+                      }
+                  }
+              }
+          }
+      }
+  }
+}
+
+static MR_bool MR_CALL 
+check_hlds__switch_detection____Unify____candidate_switch_0_0(
+  MR_Word check_hlds__switch_detection__HeadVar__1_1,
+  MR_Word check_hlds__switch_detection__HeadVar__2_2)
+{
+  {
+    MR_bool check_hlds__switch_detection__succeeded;
+    MR_Integer check_hlds__switch_detection__CastX_15 = (MR_Integer) check_hlds__switch_detection__HeadVar__1_1;
+    MR_Integer check_hlds__switch_detection__CastY_16 = (MR_Integer) check_hlds__switch_detection__HeadVar__2_2;
+
+    check_hlds__switch_detection__succeeded = (check_hlds__switch_detection__CastX_15 == check_hlds__switch_detection__CastY_16);
+    if (check_hlds__switch_detection__succeeded)
+      check_hlds__switch_detection__succeeded = MR_TRUE;
+    else
+      {
+        MR_Word check_hlds__switch_detection__TypeInfo_18_18;
+        MR_Word check_hlds__switch_detection__TypeInfo_19_19;
+        MR_Word check_hlds__switch_detection__TypeInfo_20_20;
+        MR_Word check_hlds__switch_detection__Var_3 = ((MR_Word) (MR_hl_field(MR_mktag(0), check_hlds__switch_detection__HeadVar__1_1, (MR_Integer) 0)));
+        MR_Word check_hlds__switch_detection__Var_4 = ((MR_Word) (MR_hl_field(MR_mktag(0), check_hlds__switch_detection__HeadVar__1_1, (MR_Integer) 1)));
+        MR_Word check_hlds__switch_detection__Var_5 = ((MR_Word) (MR_hl_field(MR_mktag(0), check_hlds__switch_detection__HeadVar__1_1, (MR_Integer) 2)));
+        MR_Word check_hlds__switch_detection__Var_6 = ((MR_Word) (MR_hl_field(MR_mktag(0), check_hlds__switch_detection__HeadVar__1_1, (MR_Integer) 3)));
+        MR_Word check_hlds__switch_detection__Var_7 = ((MR_Word) (MR_hl_field(MR_mktag(0), check_hlds__switch_detection__HeadVar__1_1, (MR_Integer) 4)));
+        MR_Word check_hlds__switch_detection__Var_8 = ((MR_Word) (MR_hl_field(MR_mktag(0), check_hlds__switch_detection__HeadVar__1_1, (MR_Integer) 5)));
+        MR_Word check_hlds__switch_detection__Var_9 = ((MR_Word) (MR_hl_field(MR_mktag(0), check_hlds__switch_detection__HeadVar__2_2, (MR_Integer) 0)));
+        MR_Word check_hlds__switch_detection__Var_10 = ((MR_Word) (MR_hl_field(MR_mktag(0), check_hlds__switch_detection__HeadVar__2_2, (MR_Integer) 1)));
+        MR_Word check_hlds__switch_detection__Var_11 = ((MR_Word) (MR_hl_field(MR_mktag(0), check_hlds__switch_detection__HeadVar__2_2, (MR_Integer) 2)));
+        MR_Word check_hlds__switch_detection__Var_12 = ((MR_Word) (MR_hl_field(MR_mktag(0), check_hlds__switch_detection__HeadVar__2_2, (MR_Integer) 3)));
+        MR_Word check_hlds__switch_detection__Var_13 = ((MR_Word) (MR_hl_field(MR_mktag(0), check_hlds__switch_detection__HeadVar__2_2, (MR_Integer) 4)));
+        MR_Word check_hlds__switch_detection__Var_14 = ((MR_Word) (MR_hl_field(MR_mktag(0), check_hlds__switch_detection__HeadVar__2_2, (MR_Integer) 5)));
+
+        {
+          check_hlds__switch_detection__succeeded = mercury__builtin__unify_2_p_0((MR_Word) &check_hlds__switch_detection_scalar_common_1[0], ((MR_Box) (check_hlds__switch_detection__Var_3)), ((MR_Box) (check_hlds__switch_detection__Var_9)));
+        }
+        if (check_hlds__switch_detection__succeeded)
+          {
+            check_hlds__switch_detection__TypeInfo_18_18 = (MR_Word) &check_hlds__switch_detection_scalar_common_1[2];
+            {
+              check_hlds__switch_detection__succeeded = mercury__builtin__unify_2_p_0(check_hlds__switch_detection__TypeInfo_18_18, ((MR_Box) (check_hlds__switch_detection__Var_4)), ((MR_Box) (check_hlds__switch_detection__Var_10)));
+            }
+            if (check_hlds__switch_detection__succeeded)
+              {
+                check_hlds__switch_detection__TypeInfo_19_19 = (MR_Word) &check_hlds__switch_detection_scalar_common_1[4];
+                {
+                  check_hlds__switch_detection__succeeded = mercury__builtin__unify_2_p_0(check_hlds__switch_detection__TypeInfo_19_19, ((MR_Box) (check_hlds__switch_detection__Var_5)), ((MR_Box) (check_hlds__switch_detection__Var_11)));
+                }
+                if (check_hlds__switch_detection__succeeded)
+                  {
+                    check_hlds__switch_detection__TypeInfo_20_20 = (MR_Word) &check_hlds__switch_detection_scalar_common_1[4];
+                    {
+                      check_hlds__switch_detection__succeeded = mercury__builtin__unify_2_p_0(check_hlds__switch_detection__TypeInfo_20_20, ((MR_Box) (check_hlds__switch_detection__Var_6)), ((MR_Box) (check_hlds__switch_detection__Var_12)));
+                    }
+                    if (check_hlds__switch_detection__succeeded)
+                      {
+                        {
+                          check_hlds__switch_detection__succeeded = check_hlds__switch_detection____Unify____candidate_switch_rank_0_0(check_hlds__switch_detection__Var_7, check_hlds__switch_detection__Var_13);
+                        }
+                        if (check_hlds__switch_detection__succeeded)
+                          check_hlds__switch_detection__succeeded = (check_hlds__switch_detection__Var_8 == check_hlds__switch_detection__Var_14);
+                      }
+                  }
+              }
+          }
+      }
+    return check_hlds__switch_detection__succeeded;
+  }
+}
+
+static void MR_CALL 
+check_hlds__switch_detection____Compare____allow_multi_arm_0_0(
+  MR_Word * check_hlds__switch_detection__HeadVar__1_1,
+  MR_Word check_hlds__switch_detection__HeadVar__2_2,
+  MR_Word check_hlds__switch_detection__HeadVar__3_3)
+{
+  {
+    MR_bool check_hlds__switch_detection__succeeded;
+    MR_Integer check_hlds__switch_detection__Cast_HeadVar1_4 = (MR_Integer) check_hlds__switch_detection__HeadVar__2_2;
+    MR_Integer check_hlds__switch_detection__Cast_HeadVar2_5 = (MR_Integer) check_hlds__switch_detection__HeadVar__3_3;
+
+    {
+      mercury__private_builtin__builtin_compare_int_3_p_0(check_hlds__switch_detection__HeadVar__1_1, check_hlds__switch_detection__Cast_HeadVar1_4, check_hlds__switch_detection__Cast_HeadVar2_5);
+    }
+  }
+}
+
+static MR_bool MR_CALL 
+check_hlds__switch_detection____Unify____allow_multi_arm_0_0(
+  MR_Word check_hlds__switch_detection__HeadVar__2_1,
+  MR_Word check_hlds__switch_detection__HeadVar__2_2)
+{
+  {
+    MR_bool check_hlds__switch_detection__succeeded = (check_hlds__switch_detection__HeadVar__2_1 == check_hlds__switch_detection__HeadVar__2_2);
+
+    return check_hlds__switch_detection__succeeded;
+  }
+}
+
+static MR_Integer MR_CALL 
+check_hlds__switch_detection__count_covered_cons_ids_1_f_0(
+  MR_Word check_hlds__switch_detection__HeadVar__1_1)
+{
+  {
+    MR_bool check_hlds__switch_detection__succeeded;
+    MR_Integer check_hlds__switch_detection__HeadVar__2_2;
+
+    if ((check_hlds__switch_detection__HeadVar__1_1 == ((MR_Word) MR_mkword(MR_mktag(0), MR_mkbody((MR_Integer) 0)))))
+      check_hlds__switch_detection__HeadVar__2_2 = (MR_Integer) 0;
+    else
+      {
+        MR_Word check_hlds__switch_detection__Case_3 = ((MR_Word) (MR_hl_field(MR_mktag(1), check_hlds__switch_detection__HeadVar__1_1, (MR_Integer) 0)));
+        MR_Word check_hlds__switch_detection__Cases_4 = ((MR_Word) (MR_hl_field(MR_mktag(1), check_hlds__switch_detection__HeadVar__1_1, (MR_Integer) 1)));
+        MR_Integer check_hlds__switch_detection__CaseCount_5;
+        MR_Integer check_hlds__switch_detection__CasesCount_6;
+        MR_Word check_hlds__switch_detection__OtherConsIds_8 = ((MR_Word) (MR_hl_field(MR_mktag(0), check_hlds__switch_detection__Case_3, (MR_Integer) 1)));
+        MR_Integer check_hlds__switch_detection__Var_11;
+        MR_Word check_hlds__switch_detection___MainConsId_7 = ((MR_Word) (MR_hl_field(MR_mktag(0), check_hlds__switch_detection__Case_3, (MR_Integer) 0)));
+        MR_Word check_hlds__switch_detection___Goal_9 = ((MR_Word) (MR_hl_field(MR_mktag(0), check_hlds__switch_detection__Case_3, (MR_Integer) 2)));
+
+        {
+          check_hlds__switch_detection__Var_11 = mercury__list__length_1_f_0((MR_Word) &parse_tree__prog_data__parse_tree__prog_data__type_ctor_info_cons_id_0, check_hlds__switch_detection__OtherConsIds_8);
+        }
+        check_hlds__switch_detection__CaseCount_5 = ((MR_Integer) 1 + check_hlds__switch_detection__Var_11);
+        {
+          check_hlds__switch_detection__CasesCount_6 = check_hlds__switch_detection__count_covered_cons_ids_1_f_0(check_hlds__switch_detection__Cases_4);
+        }
+        check_hlds__switch_detection__HeadVar__2_2 = (check_hlds__switch_detection__CaseCount_5 + check_hlds__switch_detection__CasesCount_6);
+      }
+    return check_hlds__switch_detection__HeadVar__2_2;
+  }
+}
+
+static void MR_CALL 
+check_hlds__switch_detection__delete_covered_functors_3_p_0_1(
+  MR_Box check_hlds__switch_detection__closure_arg,
+  MR_Box check_hlds__switch_detection__wrapper_arg_1,
+  MR_Box check_hlds__switch_detection__wrapper_arg_2,
+  MR_Box * check_hlds__switch_detection__wrapper_arg_3)
+{
+  {
+    MR_Box check_hlds__switch_detection__closure = check_hlds__switch_detection__closure_arg;
+    MR_Word check_hlds__switch_detection__conv0_HeadVar__3_22;
+
+    {
+      check_hlds__switch_detection__IntroducedFrom__pred__delete_covered_functors__1502__1_3_p_0(((MR_Word) check_hlds__switch_detection__wrapper_arg_1), ((MR_Word) check_hlds__switch_detection__wrapper_arg_2), &check_hlds__switch_detection__conv0_HeadVar__3_22);
+    }
+    *check_hlds__switch_detection__wrapper_arg_3 = ((MR_Box) (check_hlds__switch_detection__conv0_HeadVar__3_22));
+  }
+}
+
+static void MR_CALL 
+check_hlds__switch_detection__delete_covered_functors_3_p_0(
+  MR_Word check_hlds__switch_detection__HeadVar__1_1,
+  MR_Word check_hlds__switch_detection__STATE_VARIABLE_UncoveredConsIds_0_2,
+  MR_Word * check_hlds__switch_detection__STATE_VARIABLE_UncoveredConsIds_3)
+{
+  while (MR_TRUE)
+    {
+      /* tailcall optimized into a loop */
+      {
+        MR_bool check_hlds__switch_detection__succeeded;
+
+        if ((check_hlds__switch_detection__HeadVar__1_1 == ((MR_Word) MR_mkword(MR_mktag(0), MR_mkbody((MR_Integer) 0)))))
+          *check_hlds__switch_detection__STATE_VARIABLE_UncoveredConsIds_3 = check_hlds__switch_detection__STATE_VARIABLE_UncoveredConsIds_0_2;
+        else
+          {
+            MR_Word check_hlds__switch_detection__TypeCtorInfo_19_19 = (MR_Word) &parse_tree__prog_data__parse_tree__prog_data__type_ctor_info_cons_id_0;
+            MR_Word check_hlds__switch_detection__Case_7 = ((MR_Word) (MR_hl_field(MR_mktag(1), check_hlds__switch_detection__HeadVar__1_1, (MR_Integer) 0)));
+            MR_Word check_hlds__switch_detection__Cases_8 = ((MR_Word) (MR_hl_field(MR_mktag(1), check_hlds__switch_detection__HeadVar__1_1, (MR_Integer) 1)));
+            MR_Word check_hlds__switch_detection__MainConsId_10 = ((MR_Word) (MR_hl_field(MR_mktag(0), check_hlds__switch_detection__Case_7, (MR_Integer) 0)));
+            MR_Word check_hlds__switch_detection__OtherConsIds_11 = ((MR_Word) (MR_hl_field(MR_mktag(0), check_hlds__switch_detection__Case_7, (MR_Integer) 1)));
+            MR_Word check_hlds__switch_detection__STATE_VARIABLE_UncoveredConsIds_15_15;
+            MR_Word check_hlds__switch_detection__STATE_VARIABLE_UncoveredConsIds_17_17;
+            MR_Word check_hlds__switch_detection___Goal_12 = ((MR_Word) (MR_hl_field(MR_mktag(0), check_hlds__switch_detection__Case_7, (MR_Integer) 2)));
+            MR_Box check_hlds__switch_detection__conv1_STATE_VARIABLE_UncoveredConsIds_17_17;
+
+            {
+              mercury__set_tree234__delete_3_p_0(check_hlds__switch_detection__TypeCtorInfo_19_19, ((MR_Box) (check_hlds__switch_detection__MainConsId_10)), check_hlds__switch_detection__STATE_VARIABLE_UncoveredConsIds_0_2, &check_hlds__switch_detection__STATE_VARIABLE_UncoveredConsIds_15_15);
+            }
+            {
+              mercury__list__foldl_4_p_0(check_hlds__switch_detection__TypeCtorInfo_19_19, (MR_Word) &check_hlds__switch_detection_scalar_common_1[3], (MR_Word) &check_hlds__switch_detection_scalar_common_2[6], check_hlds__switch_detection__OtherConsIds_11, ((MR_Box) (check_hlds__switch_detection__STATE_VARIABLE_UncoveredConsIds_15_15)), &check_hlds__switch_detection__conv1_STATE_VARIABLE_UncoveredConsIds_17_17);
+            }
+            check_hlds__switch_detection__STATE_VARIABLE_UncoveredConsIds_17_17 = ((MR_Word) check_hlds__switch_detection__conv1_STATE_VARIABLE_UncoveredConsIds_17_17);
+            /* direct tailcall eliminated */
+            {
+              MR_Word check_hlds__switch_detection__next_value_of_HeadVar__1_1 = check_hlds__switch_detection__Cases_8;
+              MR_Word check_hlds__switch_detection__next_value_of_STATE_VARIABLE_UncoveredConsIds_0_2 = check_hlds__switch_detection__STATE_VARIABLE_UncoveredConsIds_17_17;
+
+              check_hlds__switch_detection__STATE_VARIABLE_UncoveredConsIds_0_2 = check_hlds__switch_detection__next_value_of_STATE_VARIABLE_UncoveredConsIds_0_2;
+              check_hlds__switch_detection__HeadVar__1_1 = check_hlds__switch_detection__next_value_of_HeadVar__1_1;
+            }
+            continue;
+          }
+      }
+      break;
+    }
+}
+
+static void MR_CALL 
+check_hlds__switch_detection__find_bind_var_for_switch_in_deconstruct_7_p_0(
+  MR_Word check_hlds__switch_detection__SwitchVar_8,
+  MR_Word check_hlds__switch_detection__Goal0_9,
+  MR_Word * check_hlds__switch_detection__Goals_10,
+  MR_Word check_hlds__switch_detection___Result0_11,
+  MR_Word * check_hlds__switch_detection__Result_12)
+{
+  {
+    MR_bool check_hlds__switch_detection__succeeded;
+
+    {
+      check_hlds__switch_detection__f_85_110_117_115_101_100_65_114_103_115_95_95_112_114_101_100_95_95_102_105_110_100_95_98_105_110_100_95_118_97_114_95_102_111_114_95_115_119_105_116_99_104_95_105_110_95_100_101_99_111_110_115_116_114_117_99_116_95_95_91_52_44_32_54_93_95_48_7_p_0(check_hlds__switch_detection__SwitchVar_8, check_hlds__switch_detection__Goal0_9, check_hlds__switch_detection__Goals_10, check_hlds__switch_detection__Result_12);
+    }
+  }
+}
+
+static void MR_CALL 
+check_hlds__switch_detection__partition_disj_trial_6_p_0_1(
+  MR_Box check_hlds__switch_detection__closure_arg,
+  MR_Box check_hlds__switch_detection__wrapper_arg_1,
+  MR_Box check_hlds__switch_detection__wrapper_arg_2,
+  MR_Box * check_hlds__switch_detection__wrapper_arg_3,
+  MR_Box check_hlds__switch_detection__wrapper_arg_4,
+  MR_Box * check_hlds__switch_detection__wrapper_arg_5,
+  MR_Box check_hlds__switch_detection__wrapper_arg_6,
+  MR_Box * check_hlds__switch_detection__wrapper_arg_7)
+{
+  {
+    MR_Box check_hlds__switch_detection__closure = check_hlds__switch_detection__closure_arg;
+    MR_Word check_hlds__switch_detection__conv1_Goals_10;
+    MR_Word check_hlds__switch_detection__conv0_Result_12;
+
+    {
+      check_hlds__switch_detection__find_bind_var_for_switch_in_deconstruct_7_p_0(((MR_Word) check_hlds__switch_detection__wrapper_arg_1), ((MR_Word) check_hlds__switch_detection__wrapper_arg_2), &check_hlds__switch_detection__conv1_Goals_10, ((MR_Word) check_hlds__switch_detection__wrapper_arg_4), &check_hlds__switch_detection__conv0_Result_12);
+    }
+    *check_hlds__switch_detection__wrapper_arg_3 = ((MR_Box) (check_hlds__switch_detection__conv1_Goals_10));
+    *check_hlds__switch_detection__wrapper_arg_5 = ((MR_Box) (check_hlds__switch_detection__conv0_Result_12));
+  }
+}
+
+static void MR_CALL 
+check_hlds__switch_detection__partition_disj_trial_6_p_0(
+  MR_Word check_hlds__switch_detection__HeadVar__1_1,
+  MR_Word check_hlds__switch_detection__HeadVar__2_2,
+  MR_Word check_hlds__switch_detection__STATE_VARIABLE_Left_0_3,
+  MR_Word * check_hlds__switch_detection__STATE_VARIABLE_Left_4,
+  MR_Word check_hlds__switch_detection__STATE_VARIABLE_CasesTable_0_5,
+  MR_Word * check_hlds__switch_detection__STATE_VARIABLE_CasesTable_6)
+{
+  while (MR_TRUE)
+    {
+      /* tailcall optimized into a loop */
+      {
+        MR_bool check_hlds__switch_detection__succeeded;
+
+        if ((check_hlds__switch_detection__HeadVar__1_1 == ((MR_Word) MR_mkword(MR_mktag(0), MR_mkbody((MR_Integer) 0)))))
+          {
+            *check_hlds__switch_detection__STATE_VARIABLE_CasesTable_6 = check_hlds__switch_detection__STATE_VARIABLE_CasesTable_0_5;
+            *check_hlds__switch_detection__STATE_VARIABLE_Left_4 = check_hlds__switch_detection__STATE_VARIABLE_Left_0_3;
+          }
+        else
+          {
+            MR_Word check_hlds__switch_detection__Disjunct0_14 = ((MR_Word) (MR_hl_field(MR_mktag(1), check_hlds__switch_detection__HeadVar__1_1, (MR_Integer) 0)));
+            MR_Word check_hlds__switch_detection__Disjuncts0_15 = ((MR_Word) (MR_hl_field(MR_mktag(1), check_hlds__switch_detection__HeadVar__1_1, (MR_Integer) 1)));
+            MR_Word check_hlds__switch_detection__Disjunct_19;
+            MR_Word check_hlds__switch_detection__MaybeConsId_20;
+            MR_Word check_hlds__switch_detection__STATE_VARIABLE_Left_31_31;
+            MR_Word check_hlds__switch_detection__STATE_VARIABLE_CasesTable_32_32;
+            MR_Word check_hlds__switch_detection__Subst_57;
+            MR_Word check_hlds__switch_detection__Var_58;
+            MR_Word check_hlds__switch_detection__DeconstructSearch_59;
+            MR_Box check_hlds__switch_detection__conv3_MaybeConsId_20;
+            MR_Box check_hlds__switch_detection__conv2_Var_21;
+
+            mercury__private_builtin__dummy_var = (MR_Integer) 0;
+            {
+              mercury__map__init_1_p_0((MR_Word) &check_hlds__switch_detection_scalar_common_1[0], (MR_Word) &check_hlds__switch_detection_scalar_common_1[1], &check_hlds__switch_detection__Subst_57);
+            }
+            {
+              check_hlds__switch_detection__f_85_110_117_115_101_100_65_114_103_115_95_95_112_114_101_100_95_95_102_105_110_100_95_98_105_110_100_95_118_97_114_95_50_95_95_91_49_44_32_50_93_95_48_11_p_0(check_hlds__switch_detection__HeadVar__2_2, (MR_Word) &check_hlds__switch_detection_scalar_common_2[5], check_hlds__switch_detection__Disjunct0_14, &check_hlds__switch_detection__Disjunct_19, check_hlds__switch_detection__Subst_57, &check_hlds__switch_detection__Var_58, ((MR_Box) (MR_mkword(MR_mktag(0), MR_mkbody((MR_Integer) 0)))), &check_hlds__switch_detection__conv3_MaybeConsId_20, ((MR_Box) ((MR_Integer) 0)), &check_hlds__switch_detection__conv2_Var_21, &check_hlds__switch_detection__DeconstructSearch_59);
+            }
+            check_hlds__switch_detection__MaybeConsId_20 = ((MR_Word) check_hlds__switch_detection__conv3_MaybeConsId_20);
+            if ((check_hlds__switch_detection__MaybeConsId_20 == ((MR_Word) MR_mkword(MR_mktag(0), MR_mkbody((MR_Integer) 0)))))
+              {
+                {
+                  check_hlds__switch_detection__STATE_VARIABLE_Left_31_31 = (MR_Word) MR_mkword(MR_mktag(1), MR_new_object(MR_Word, ((MR_Integer) 2 * sizeof(MR_Word)), NULL, NULL));
+                  MR_hl_field(MR_mktag(1), check_hlds__switch_detection__STATE_VARIABLE_Left_31_31, 0) = ((MR_Box) (check_hlds__switch_detection__Disjunct0_14));
+                  MR_hl_field(MR_mktag(1), check_hlds__switch_detection__STATE_VARIABLE_Left_31_31, 1) = ((MR_Box) (check_hlds__switch_detection__STATE_VARIABLE_Left_0_3));
+                }
+                check_hlds__switch_detection__STATE_VARIABLE_CasesTable_32_32 = check_hlds__switch_detection__STATE_VARIABLE_CasesTable_0_5;
+              }
+            else
+              {
+                MR_Word check_hlds__switch_detection__ConsId_23 = ((MR_Word) (MR_hl_field(MR_mktag(1), check_hlds__switch_detection__MaybeConsId_20, (MR_Integer) 0)));
+                MR_Word check_hlds__switch_detection__CasesMap0_71 = ((MR_Word) (MR_hl_field(MR_mktag(0), check_hlds__switch_detection__STATE_VARIABLE_CasesTable_0_5, (MR_Integer) 0)));
+                MR_Word check_hlds__switch_detection__ConflictConsIds0_72 = ((MR_Word) (MR_hl_field(MR_mktag(0), check_hlds__switch_detection__STATE_VARIABLE_CasesTable_0_5, (MR_Integer) 1)));
+                MR_Word check_hlds__switch_detection__Arm_73;
+                MR_Word check_hlds__switch_detection__ConflictConsIds_78;
+                MR_Word check_hlds__switch_detection__CasesMap_81;
+                MR_Word check_hlds__switch_detection__Entry0_74;
+                MR_Box check_hlds__switch_detection__conv4_Entry0_74;
+
+                {
+                  check_hlds__switch_detection__Arm_73 = (MR_Word) MR_new_object(MR_Word, ((MR_Integer) 2 * sizeof(MR_Word)), NULL, NULL);
+                  MR_hl_field(MR_mktag(0), check_hlds__switch_detection__Arm_73, 0) = ((MR_Box) (check_hlds__switch_detection__ConsId_23));
+                  MR_hl_field(MR_mktag(0), check_hlds__switch_detection__Arm_73, 1) = ((MR_Box) (check_hlds__switch_detection__Disjunct_19));
+                }
+                {
+                  check_hlds__switch_detection__succeeded = mercury__map__search_3_p_0((MR_Word) &parse_tree__prog_data__parse_tree__prog_data__type_ctor_info_cons_id_0, (MR_Word) &check_hlds__switch_detection__check_hlds__switch_detection__type_ctor_info_cons_id_entry_0, check_hlds__switch_detection__CasesMap0_71, ((MR_Box) (check_hlds__switch_detection__ConsId_23)), &check_hlds__switch_detection__conv4_Entry0_74);
+                }
+                if (check_hlds__switch_detection__succeeded)
+                  {
+                    check_hlds__switch_detection__Entry0_74 = ((MR_Word) check_hlds__switch_detection__conv4_Entry0_74);
+                    check_hlds__switch_detection__succeeded = MR_TRUE;
+                  }
+                if (check_hlds__switch_detection__succeeded)
+                  {
+                    MR_Word check_hlds__switch_detection__State0_75 = ((MR_Word) (MR_hl_field(MR_mktag(0), check_hlds__switch_detection__Entry0_74, (MR_Integer) 0)));
+                    MR_Word check_hlds__switch_detection__Arms0_76 = ((MR_Word) (MR_hl_field(MR_mktag(0), check_hlds__switch_detection__Entry0_74, (MR_Integer) 1)));
+                    MR_Word check_hlds__switch_detection__State_77;
+                    MR_Word check_hlds__switch_detection__Arms_79;
+                    MR_Word check_hlds__switch_detection__Entry_80;
+
+                    switch (check_hlds__switch_detection__State0_75) {
+                      default: /*NOTREACHED*/ MR_assert(0);
+                      case (MR_Integer) 0:
+                        {
+                          check_hlds__switch_detection__State_77 = (MR_Integer) 0;
+                          check_hlds__switch_detection__ConflictConsIds_78 = check_hlds__switch_detection__ConflictConsIds0_72;
+                        }
+                        break;
+                      case (MR_Integer) 2:
+                        {
+                          check_hlds__switch_detection__State_77 = (MR_Integer) 2;
+                          check_hlds__switch_detection__ConflictConsIds_78 = check_hlds__switch_detection__ConflictConsIds0_72;
+                        }
+                        break;
+                      case (MR_Integer) 1:
+                        {
+                          check_hlds__switch_detection__State_77 = (MR_Integer) 2;
+                          {
+                            mercury__set_tree234__insert_3_p_0((MR_Word) &parse_tree__prog_data__parse_tree__prog_data__type_ctor_info_cons_id_0, ((MR_Box) (check_hlds__switch_detection__ConsId_23)), check_hlds__switch_detection__ConflictConsIds0_72, &check_hlds__switch_detection__ConflictConsIds_78);
+                          }
+                        }
+                        break;
+                    }
+                    {
+                      check_hlds__switch_detection__Arms_79 = mercury__cord__snoc_2_f_0((MR_Word) &check_hlds__switch_detection__check_hlds__switch_detection__type_ctor_info_case_arm_0, check_hlds__switch_detection__Arms0_76, ((MR_Box) (check_hlds__switch_detection__Arm_73)));
+                    }
+                    {
+                      check_hlds__switch_detection__Entry_80 = (MR_Word) MR_new_object(MR_Word, ((MR_Integer) 2 * sizeof(MR_Word)), NULL, NULL);
+                      MR_hl_field(MR_mktag(0), check_hlds__switch_detection__Entry_80, 0) = ((MR_Box) (check_hlds__switch_detection__State_77));
+                      MR_hl_field(MR_mktag(0), check_hlds__switch_detection__Entry_80, 1) = ((MR_Box) (check_hlds__switch_detection__Arms_79));
+                    }
+                    {
+                      mercury__map__det_update_4_p_0((MR_Word) &parse_tree__prog_data__parse_tree__prog_data__type_ctor_info_cons_id_0, (MR_Word) &check_hlds__switch_detection__check_hlds__switch_detection__type_ctor_info_cons_id_entry_0, ((MR_Box) (check_hlds__switch_detection__ConsId_23)), ((MR_Box) (check_hlds__switch_detection__Entry_80)), check_hlds__switch_detection__CasesMap0_71, &check_hlds__switch_detection__CasesMap_81);
+                    }
+                  }
+                else
+                  {
+                    MR_Word check_hlds__switch_detection__Arms_83;
+                    MR_Word check_hlds__switch_detection__Entry_84;
+
+                    {
+                      check_hlds__switch_detection__Arms_83 = mercury__cord__singleton_1_f_0((MR_Word) &check_hlds__switch_detection__check_hlds__switch_detection__type_ctor_info_case_arm_0, ((MR_Box) (check_hlds__switch_detection__Arm_73)));
+                    }
+                    {
+                      check_hlds__switch_detection__Entry_84 = (MR_Word) MR_new_object(MR_Word, ((MR_Integer) 2 * sizeof(MR_Word)), NULL, NULL);
+                      MR_hl_field(MR_mktag(0), check_hlds__switch_detection__Entry_84, 0) = ((MR_Box) ((MR_Integer) 0));
+                      MR_hl_field(MR_mktag(0), check_hlds__switch_detection__Entry_84, 1) = ((MR_Box) (check_hlds__switch_detection__Arms_83));
+                    }
+                    {
+                      mercury__map__det_insert_4_p_0((MR_Word) &parse_tree__prog_data__parse_tree__prog_data__type_ctor_info_cons_id_0, (MR_Word) &check_hlds__switch_detection__check_hlds__switch_detection__type_ctor_info_cons_id_entry_0, ((MR_Box) (check_hlds__switch_detection__ConsId_23)), ((MR_Box) (check_hlds__switch_detection__Entry_84)), check_hlds__switch_detection__CasesMap0_71, &check_hlds__switch_detection__CasesMap_81);
+                    }
+                    check_hlds__switch_detection__ConflictConsIds_78 = check_hlds__switch_detection__ConflictConsIds0_72;
+                  }
+                {
+                  check_hlds__switch_detection__STATE_VARIABLE_CasesTable_32_32 = (MR_Word) MR_new_object(MR_Word, ((MR_Integer) 2 * sizeof(MR_Word)), NULL, NULL);
+                  MR_hl_field(MR_mktag(0), check_hlds__switch_detection__STATE_VARIABLE_CasesTable_32_32, 0) = ((MR_Box) (check_hlds__switch_detection__CasesMap_81));
+                  MR_hl_field(MR_mktag(0), check_hlds__switch_detection__STATE_VARIABLE_CasesTable_32_32, 1) = ((MR_Box) (check_hlds__switch_detection__ConflictConsIds_78));
+                }
+                check_hlds__switch_detection__STATE_VARIABLE_Left_31_31 = check_hlds__switch_detection__STATE_VARIABLE_Left_0_3;
+              }
+            /* direct tailcall eliminated */
+            {
+              MR_Word check_hlds__switch_detection__next_value_of_HeadVar__1_1 = check_hlds__switch_detection__Disjuncts0_15;
+              MR_Word check_hlds__switch_detection__next_value_of_STATE_VARIABLE_Left_0_3 = check_hlds__switch_detection__STATE_VARIABLE_Left_31_31;
+              MR_Word check_hlds__switch_detection__next_value_of_STATE_VARIABLE_CasesTable_0_5 = check_hlds__switch_detection__STATE_VARIABLE_CasesTable_32_32;
+
+              check_hlds__switch_detection__STATE_VARIABLE_CasesTable_0_5 = check_hlds__switch_detection__next_value_of_STATE_VARIABLE_CasesTable_0_5;
+              check_hlds__switch_detection__STATE_VARIABLE_Left_0_3 = check_hlds__switch_detection__next_value_of_STATE_VARIABLE_Left_0_3;
+              check_hlds__switch_detection__HeadVar__1_1 = check_hlds__switch_detection__next_value_of_HeadVar__1_1;
+            }
+            continue;
+          }
+      }
+      break;
+    }
+}
+
+static void MR_CALL 
+check_hlds__switch_detection__create_expanded_conjunction_5_p_0(
+  MR_Word check_hlds__switch_detection__Unifies_6,
+  MR_Word check_hlds__switch_detection__LaterGoals_7,
+  MR_Word check_hlds__switch_detection__GoalInfo_8,
+  MR_Word check_hlds__switch_detection__Disjunct_9,
+  MR_Word * check_hlds__switch_detection__Goal_10)
+{
+  {
+    MR_bool check_hlds__switch_detection__succeeded;
+    MR_Word check_hlds__switch_detection__Conjuncts_13;
+    MR_Word check_hlds__switch_detection__Var_20;
+    MR_Word check_hlds__switch_detection__DisjunctGoals_11;
+    MR_Word check_hlds__switch_detection__Var_14 = ((MR_Word) (MR_hl_field(MR_mktag(0), check_hlds__switch_detection__Disjunct_9, (MR_Integer) 0)));
+    MR_Word check_hlds__switch_detection__Var_15;
+    MR_Word check_hlds__switch_detection__Var_12 = ((MR_Word) (MR_hl_field(MR_mktag(0), check_hlds__switch_detection__Disjunct_9, (MR_Integer) 1)));
+
+    check_hlds__switch_detection__succeeded = ((((MR_tag((MR_Word) check_hlds__switch_detection__Var_14)) == (MR_mktag((MR_Integer) 3)))) && (((((MR_Integer) (MR_Word) (MR_hl_field(MR_mktag(3), check_hlds__switch_detection__Var_14, (MR_Integer) 0)))) == (MR_Integer) 2)));
+    if (check_hlds__switch_detection__succeeded)
+      {
+        check_hlds__switch_detection__Var_15 = ((MR_Word) (MR_hl_field(MR_mktag(3), check_hlds__switch_detection__Var_14, (MR_Integer) 1)));
+        check_hlds__switch_detection__DisjunctGoals_11 = ((MR_Word) (MR_hl_field(MR_mktag(3), check_hlds__switch_detection__Var_14, (MR_Integer) 2)));
+        check_hlds__switch_detection__succeeded = (check_hlds__switch_detection__Var_15 == (MR_Integer) 0);
+      }
+    if (check_hlds__switch_detection__succeeded)
+      {
+        MR_Word check_hlds__switch_detection__TypeCtorInfo_22_22 = (MR_Word) &hlds__hlds_goal__hlds__hlds_goal__type_ctor_info_hlds_goal_0;
+        MR_Word check_hlds__switch_detection__Var_16;
+
+        {
+          check_hlds__switch_detection__Var_16 = mercury__list__f_43_43_2_f_0(check_hlds__switch_detection__TypeCtorInfo_22_22, check_hlds__switch_detection__DisjunctGoals_11, check_hlds__switch_detection__LaterGoals_7);
+        }
+        {
+          check_hlds__switch_detection__Conjuncts_13 = mercury__list__f_43_43_2_f_0(check_hlds__switch_detection__TypeCtorInfo_22_22, check_hlds__switch_detection__Unifies_6, check_hlds__switch_detection__Var_16);
+        }
+      }
+    else
+      {
+        MR_Word check_hlds__switch_detection__TypeCtorInfo_23_23 = (MR_Word) &hlds__hlds_goal__hlds__hlds_goal__type_ctor_info_hlds_goal_0;
+        MR_Word check_hlds__switch_detection__Var_17;
+        MR_Word check_hlds__switch_detection__Var_18;
+
+        {
+          check_hlds__switch_detection__Var_18 = (MR_Word) MR_mkword(MR_mktag(1), MR_new_object(MR_Word, ((MR_Integer) 2 * sizeof(MR_Word)), NULL, NULL));
+          MR_hl_field(MR_mktag(1), check_hlds__switch_detection__Var_18, 0) = ((MR_Box) (check_hlds__switch_detection__Disjunct_9));
+          MR_hl_field(MR_mktag(1), check_hlds__switch_detection__Var_18, 1) = ((MR_Box) (MR_mkword(MR_mktag(0), MR_mkbody((MR_Integer) 0))));
+        }
+        {
+          check_hlds__switch_detection__Var_17 = mercury__list__f_43_43_2_f_0(check_hlds__switch_detection__TypeCtorInfo_23_23, check_hlds__switch_detection__Var_18, check_hlds__switch_detection__LaterGoals_7);
+        }
+        {
+          check_hlds__switch_detection__Conjuncts_13 = mercury__list__f_43_43_2_f_0(check_hlds__switch_detection__TypeCtorInfo_23_23, check_hlds__switch_detection__Unifies_6, check_hlds__switch_detection__Var_17);
+        }
+      }
+    {
+      check_hlds__switch_detection__Var_20 = (MR_Word) MR_mkword(MR_mktag(3), MR_new_object(MR_Word, ((MR_Integer) 3 * sizeof(MR_Word)), NULL, NULL));
+      MR_hl_field(MR_mktag(3), check_hlds__switch_detection__Var_20, 0) = ((MR_Box) (MR_Word) ((MR_Integer) 2));
+      MR_hl_field(MR_mktag(3), check_hlds__switch_detection__Var_20, 1) = ((MR_Box) ((MR_Integer) 0));
+      MR_hl_field(MR_mktag(3), check_hlds__switch_detection__Var_20, 2) = ((MR_Box) (check_hlds__switch_detection__Conjuncts_13));
+    }
+    {
+      MR_Word base;
+      base = (MR_Word) MR_new_object(MR_Word, ((MR_Integer) 2 * sizeof(MR_Word)), NULL, NULL);
+      *check_hlds__switch_detection__Goal_10 = base;
+      MR_hl_field(MR_mktag(0), base, 0) = ((MR_Box) (check_hlds__switch_detection__Var_20));
+      MR_hl_field(MR_mktag(0), base, 1) = ((MR_Box) (check_hlds__switch_detection__GoalInfo_8));
+    }
+  }
+}
+
+static MR_bool MR_CALL 
+check_hlds__switch_detection__all_disjuncts_are_switch_var_unifies_3_p_0(
+  MR_Word check_hlds__switch_detection__HeadVar__1_1,
+  MR_Word check_hlds__switch_detection__HeadVar__2_2,
+  MR_Word * check_hlds__switch_detection__HeadVar__3_3)
+{
+  {
+    MR_bool check_hlds__switch_detection__succeeded;
+
+    if ((check_hlds__switch_detection__HeadVar__2_2 == ((MR_Word) MR_mkword(MR_mktag(0), MR_mkbody((MR_Integer) 0)))))
+      {
+        *check_hlds__switch_detection__HeadVar__3_3 = (MR_Word) MR_mkword(MR_mktag(0), MR_mkbody((MR_Integer) 0));
+        check_hlds__switch_detection__succeeded = MR_TRUE;
+      }
+    else
+      {
+        MR_Word check_hlds__switch_detection__TypeInfo_22_22;
+        MR_Word check_hlds__switch_detection__Goal_6 = ((MR_Word) (MR_hl_field(MR_mktag(1), check_hlds__switch_detection__HeadVar__2_2, (MR_Integer) 0)));
+        MR_Word check_hlds__switch_detection__Goals_7 = ((MR_Word) (MR_hl_field(MR_mktag(1), check_hlds__switch_detection__HeadVar__2_2, (MR_Integer) 1)));
+        MR_Word check_hlds__switch_detection__ConsId_8;
+        MR_Word check_hlds__switch_detection__ConsIds_9;
+        MR_Word check_hlds__switch_detection__GoalExpr_10 = ((MR_Word) (MR_hl_field(MR_mktag(0), check_hlds__switch_detection__Goal_6, (MR_Integer) 0)));
+        MR_Word check_hlds__switch_detection__UnifyInfo0_15;
+        MR_Word check_hlds__switch_detection__Var_21;
+        MR_Word check_hlds__switch_detection___GoalInfo_11 = ((MR_Word) (MR_hl_field(MR_mktag(0), check_hlds__switch_detection__Goal_6, (MR_Integer) 1)));
+        MR_Word check_hlds__switch_detection___LHS_12;
+        MR_Word check_hlds__switch_detection___RHS_13;
+        MR_Word check_hlds__switch_detection__Var_14;
+        MR_Word check_hlds__switch_detection__Var_16;
+        MR_Word check_hlds__switch_detection__Var_17;
+        MR_Word check_hlds__switch_detection__Var_18;
+        MR_Word check_hlds__switch_detection__Var_19;
+        MR_Word check_hlds__switch_detection__Var_20;
+
+        check_hlds__switch_detection__succeeded = ((MR_tag((MR_Word) check_hlds__switch_detection__GoalExpr_10)) == (MR_mktag((MR_Integer) 1)));
+        if (check_hlds__switch_detection__succeeded)
+          {
+            check_hlds__switch_detection___LHS_12 = ((MR_Word) (MR_hl_field(MR_mktag(1), check_hlds__switch_detection__GoalExpr_10, (MR_Integer) 0)));
+            check_hlds__switch_detection___RHS_13 = ((MR_Word) (MR_hl_field(MR_mktag(1), check_hlds__switch_detection__GoalExpr_10, (MR_Integer) 1)));
+            check_hlds__switch_detection__Var_14 = ((MR_Word) (MR_hl_field(MR_mktag(1), check_hlds__switch_detection__GoalExpr_10, (MR_Integer) 2)));
+            check_hlds__switch_detection__UnifyInfo0_15 = ((MR_Word) (MR_hl_field(MR_mktag(1), check_hlds__switch_detection__GoalExpr_10, (MR_Integer) 3)));
+            check_hlds__switch_detection__Var_16 = ((MR_Word) (MR_hl_field(MR_mktag(1), check_hlds__switch_detection__GoalExpr_10, (MR_Integer) 4)));
+            check_hlds__switch_detection__succeeded = ((MR_tag((MR_Word) check_hlds__switch_detection__UnifyInfo0_15)) == (MR_mktag((MR_Integer) 1)));
+            if (check_hlds__switch_detection__succeeded)
+              {
+                check_hlds__switch_detection__Var_21 = ((MR_Word) (MR_hl_field(MR_mktag(1), check_hlds__switch_detection__UnifyInfo0_15, (MR_Integer) 0)));
+                check_hlds__switch_detection__ConsId_8 = ((MR_Word) (MR_hl_field(MR_mktag(1), check_hlds__switch_detection__UnifyInfo0_15, (MR_Integer) 1)));
+                check_hlds__switch_detection__Var_17 = ((MR_Word) (MR_hl_field(MR_mktag(1), check_hlds__switch_detection__UnifyInfo0_15, (MR_Integer) 2)));
+                check_hlds__switch_detection__Var_18 = ((MR_Word) (MR_hl_field(MR_mktag(1), check_hlds__switch_detection__UnifyInfo0_15, (MR_Integer) 3)));
+                check_hlds__switch_detection__Var_19 = ((MR_Word) (MR_hl_field(MR_mktag(1), check_hlds__switch_detection__UnifyInfo0_15, (MR_Integer) 4)));
+                check_hlds__switch_detection__Var_20 = ((MR_Word) (MR_hl_field(MR_mktag(1), check_hlds__switch_detection__UnifyInfo0_15, (MR_Integer) 5)));
+                check_hlds__switch_detection__TypeInfo_22_22 = (MR_Word) &check_hlds__switch_detection_scalar_common_1[0];
+                {
+                  check_hlds__switch_detection__succeeded = mercury__builtin__unify_2_p_0(check_hlds__switch_detection__TypeInfo_22_22, ((MR_Box) (check_hlds__switch_detection__HeadVar__1_1)), ((MR_Box) (check_hlds__switch_detection__Var_21)));
+                }
+                if (check_hlds__switch_detection__succeeded)
+                  {
+                    {
+                      check_hlds__switch_detection__succeeded = check_hlds__switch_detection__all_disjuncts_are_switch_var_unifies_3_p_0(check_hlds__switch_detection__HeadVar__1_1, check_hlds__switch_detection__Goals_7, &check_hlds__switch_detection__ConsIds_9);
+                    }
+                    if (check_hlds__switch_detection__succeeded)
+                      {
+                        {
+                          MR_Word base;
+                          base = (MR_Word) MR_mkword(MR_mktag(1), MR_new_object(MR_Word, ((MR_Integer) 2 * sizeof(MR_Word)), NULL, NULL));
+                          *check_hlds__switch_detection__HeadVar__3_3 = base;
+                          MR_hl_field(MR_mktag(1), base, 0) = ((MR_Box) (check_hlds__switch_detection__ConsId_8));
+                          MR_hl_field(MR_mktag(1), base, 1) = ((MR_Box) (check_hlds__switch_detection__ConsIds_9));
+                        }
+                        check_hlds__switch_detection__succeeded = MR_TRUE;
+                      }
+                  }
+              }
+          }
+      }
+    return check_hlds__switch_detection__succeeded;
+  }
+}
+
+static void MR_CALL 
+check_hlds__switch_detection__expand_sub_disj_process_conj_7_p_0_2(
+  MR_Box check_hlds__switch_detection__closure_arg,
+  MR_Box check_hlds__switch_detection__wrapper_arg_1,
+  MR_Box * check_hlds__switch_detection__wrapper_arg_2)
+{
+  {
+    MR_Box check_hlds__switch_detection__closure = check_hlds__switch_detection__closure_arg;
+    MR_Word check_hlds__switch_detection__conv2_Goal_10;
+
+    {
+      check_hlds__switch_detection__create_expanded_conjunction_5_p_0(((MR_Word) (MR_hl_field(MR_mktag(0), check_hlds__switch_detection__closure, (MR_Integer) 3))), ((MR_Word) (MR_hl_field(MR_mktag(0), check_hlds__switch_detection__closure, (MR_Integer) 4))), ((MR_Word) (MR_hl_field(MR_mktag(0), check_hlds__switch_detection__closure, (MR_Integer) 5))), ((MR_Word) check_hlds__switch_detection__wrapper_arg_1), &check_hlds__switch_detection__conv2_Goal_10);
+    }
+    *check_hlds__switch_detection__wrapper_arg_2 = ((MR_Box) (check_hlds__switch_detection__conv2_Goal_10));
+  }
+}
+
+static void MR_CALL 
+check_hlds__switch_detection__expand_sub_disj_process_conj_7_p_0_1(
+  MR_Box check_hlds__switch_detection__closure_arg,
+  MR_Box check_hlds__switch_detection__wrapper_arg_1,
+  MR_Box check_hlds__switch_detection__wrapper_arg_2,
+  MR_Box * check_hlds__switch_detection__wrapper_arg_3)
+{
+  {
+    MR_Box check_hlds__switch_detection__closure = check_hlds__switch_detection__closure_arg;
+    MR_Word check_hlds__switch_detection__conv0_CasesTable_8;
+
+    {
+      check_hlds__switch_detection__add_multi_entry_for_cons_id_4_p_0(((MR_Word) (MR_hl_field(MR_mktag(0), check_hlds__switch_detection__closure, (MR_Integer) 3))), ((MR_Word) check_hlds__switch_detection__wrapper_arg_1), ((MR_Word) check_hlds__switch_detection__wrapper_arg_2), &check_hlds__switch_detection__conv0_CasesTable_8);
+    }
+    *check_hlds__switch_detection__wrapper_arg_3 = ((MR_Box) (check_hlds__switch_detection__conv0_CasesTable_8));
+  }
+}
+
+static MR_bool MR_CALL 
+check_hlds__switch_detection__expand_sub_disj_process_conj_7_p_0(
+  MR_Word check_hlds__switch_detection__AllowMulti_8,
+  MR_Word check_hlds__switch_detection__Var_9,
+  MR_Word check_hlds__switch_detection__ConjGoals_10,
+  MR_Word check_hlds__switch_detection__STATE_VARIABLE_RevUnifies_0_36,
+  MR_Word check_hlds__switch_detection__GoalInfo_12,
+  MR_Word check_hlds__switch_detection__STATE_VARIABLE_CasesTable_0_37,
+  MR_Word * check_hlds__switch_detection__STATE_VARIABLE_CasesTable_38)
+{
+  while (MR_TRUE)
+    {
+      /* tailcall optimized into a loop */
+      {
+        MR_bool check_hlds__switch_detection__succeeded = ((MR_tag((MR_Word) check_hlds__switch_detection__ConjGoals_10)) == (MR_mktag((MR_Integer) 1)));
+        MR_Word check_hlds__switch_detection__FirstGoal_14;
+        MR_Word check_hlds__switch_detection__LaterGoals_15;
+        MR_Word check_hlds__switch_detection__FirstGoalExpr_16;
+        MR_Word check_hlds__switch_detection__FirstGoalInfo_17;
+
+        if (check_hlds__switch_detection__succeeded)
+          {
+            check_hlds__switch_detection__FirstGoal_14 = ((MR_Word) (MR_hl_field(MR_mktag(1), check_hlds__switch_detection__ConjGoals_10, (MR_Integer) 0)));
+            check_hlds__switch_detection__LaterGoals_15 = ((MR_Word) (MR_hl_field(MR_mktag(1), check_hlds__switch_detection__ConjGoals_10, (MR_Integer) 1)));
+            check_hlds__switch_detection__FirstGoalExpr_16 = ((MR_Word) (MR_hl_field(MR_mktag(0), check_hlds__switch_detection__FirstGoal_14, (MR_Integer) 0)));
+            check_hlds__switch_detection__FirstGoalInfo_17 = ((MR_Word) (MR_hl_field(MR_mktag(0), check_hlds__switch_detection__FirstGoal_14, (MR_Integer) 1)));
+            if (((MR_tag((MR_Word) check_hlds__switch_detection__FirstGoalExpr_16)) == (MR_mktag((MR_Integer) 1))))
+              {
+                MR_Word check_hlds__switch_detection__STATE_VARIABLE_RevUnifies_45_47;
+
+                {
+                  check_hlds__switch_detection__STATE_VARIABLE_RevUnifies_45_47 = (MR_Word) MR_mkword(MR_mktag(1), MR_new_object(MR_Word, ((MR_Integer) 2 * sizeof(MR_Word)), NULL, NULL));
+                  MR_hl_field(MR_mktag(1), check_hlds__switch_detection__STATE_VARIABLE_RevUnifies_45_47, 0) = ((MR_Box) (check_hlds__switch_detection__FirstGoal_14));
+                  MR_hl_field(MR_mktag(1), check_hlds__switch_detection__STATE_VARIABLE_RevUnifies_45_47, 1) = ((MR_Box) (check_hlds__switch_detection__STATE_VARIABLE_RevUnifies_0_36));
+                }
+                /* direct tailcall eliminated */
+                {
+                  MR_Word check_hlds__switch_detection__next_value_of_ConjGoals_10 = check_hlds__switch_detection__LaterGoals_15;
+                  MR_Word check_hlds__switch_detection__next_value_of_STATE_VARIABLE_RevUnifies_0_36 = check_hlds__switch_detection__STATE_VARIABLE_RevUnifies_45_47;
+
+                  check_hlds__switch_detection__STATE_VARIABLE_RevUnifies_0_36 = check_hlds__switch_detection__next_value_of_STATE_VARIABLE_RevUnifies_0_36;
+                  check_hlds__switch_detection__ConjGoals_10 = check_hlds__switch_detection__next_value_of_ConjGoals_10;
+                }
+                continue;
+              }
+            else
+            if (((((MR_tag((MR_Word) check_hlds__switch_detection__FirstGoalExpr_16)) == (MR_mktag((MR_Integer) 3)))) && (((((MR_Integer) (MR_Word) (MR_hl_field(MR_mktag(3), check_hlds__switch_detection__FirstGoalExpr_16, (MR_Integer) 0)))) == (MR_Integer) 3))))
+              {
+                MR_Word check_hlds__switch_detection__Disjuncts_23 = ((MR_Word) (MR_hl_field(MR_mktag(3), check_hlds__switch_detection__FirstGoalExpr_16, (MR_Integer) 1)));
+                MR_Word check_hlds__switch_detection__Var_24;
+                MR_Word check_hlds__switch_detection__Var_25;
+                MR_Word check_hlds__switch_detection__SortedDisjConsIds_29;
+                MR_Word check_hlds__switch_detection__MainConsId_30;
+                MR_Word check_hlds__switch_detection__OtherConsIds_31;
+                MR_Word check_hlds__switch_detection__TypeCtorInfo_52_52;
+                MR_Word check_hlds__switch_detection__TypeCtorInfo_53_53;
+                MR_Word check_hlds__switch_detection__TypeInfo_22_90;
+                MR_Word check_hlds__switch_detection__NonLocals_26;
+                MR_Word check_hlds__switch_detection__OtherNonLocals_27;
+                MR_Word check_hlds__switch_detection__DisjConsIds_28;
+                MR_Word check_hlds__switch_detection__Goal_74;
+                MR_Word check_hlds__switch_detection__Goals_75;
+                MR_Word check_hlds__switch_detection__ConsId_76;
+                MR_Word check_hlds__switch_detection__ConsIds_77;
+                MR_Word check_hlds__switch_detection__GoalExpr_78;
+                MR_Word check_hlds__switch_detection__UnifyInfo0_83;
+                MR_Word check_hlds__switch_detection__Var_89;
+                MR_Word check_hlds__switch_detection___GoalInfo_79;
+                MR_Word check_hlds__switch_detection___LHS_80;
+                MR_Word check_hlds__switch_detection___RHS_81;
+                MR_Word check_hlds__switch_detection__Var_82;
+                MR_Word check_hlds__switch_detection__Var_84;
+                MR_Word check_hlds__switch_detection__Var_85;
+                MR_Word check_hlds__switch_detection__Var_86;
+                MR_Word check_hlds__switch_detection__Var_87;
+                MR_Word check_hlds__switch_detection__Var_88;
+
+                check_hlds__switch_detection__succeeded = ((MR_tag((MR_Word) check_hlds__switch_detection__Disjuncts_23)) == (MR_mktag((MR_Integer) 1)));
+                if (check_hlds__switch_detection__succeeded)
+                  {
+                    check_hlds__switch_detection__Var_24 = ((MR_Word) (MR_hl_field(MR_mktag(1), check_hlds__switch_detection__Disjuncts_23, (MR_Integer) 0)));
+                    check_hlds__switch_detection__Var_25 = ((MR_Word) (MR_hl_field(MR_mktag(1), check_hlds__switch_detection__Disjuncts_23, (MR_Integer) 1)));
+                    check_hlds__switch_detection__succeeded = (check_hlds__switch_detection__AllowMulti_8 == (MR_Integer) 0);
+                    if (check_hlds__switch_detection__succeeded)
+                      {
+                        check_hlds__switch_detection__succeeded = (check_hlds__switch_detection__STATE_VARIABLE_RevUnifies_0_36 == ((MR_Word) MR_mkword(MR_mktag(0), MR_mkbody((MR_Integer) 0))));
+                        if (check_hlds__switch_detection__succeeded)
+                          {
+                            {
+                              check_hlds__switch_detection__NonLocals_26 = hlds__hlds_goal__goal_info_get_nonlocals_1_f_0(check_hlds__switch_detection__FirstGoalInfo_17);
+                            }
+                            check_hlds__switch_detection__TypeCtorInfo_52_52 = (MR_Word) &parse_tree__prog_data__parse_tree__prog_data__type_ctor_info_prog_var_type_0;
+                            {
+                              parse_tree__set_of_var__delete_3_p_0(check_hlds__switch_detection__TypeCtorInfo_52_52, check_hlds__switch_detection__Var_9, check_hlds__switch_detection__NonLocals_26, &check_hlds__switch_detection__OtherNonLocals_27);
+                            }
+                            {
+                              check_hlds__switch_detection__succeeded = parse_tree__set_of_var__is_empty_1_p_0(check_hlds__switch_detection__TypeCtorInfo_52_52, check_hlds__switch_detection__OtherNonLocals_27);
+                            }
+                            if (check_hlds__switch_detection__succeeded)
+                              {
+                                check_hlds__switch_detection__Goal_74 = ((MR_Word) (MR_hl_field(MR_mktag(1), check_hlds__switch_detection__Disjuncts_23, (MR_Integer) 0)));
+                                check_hlds__switch_detection__Goals_75 = ((MR_Word) (MR_hl_field(MR_mktag(1), check_hlds__switch_detection__Disjuncts_23, (MR_Integer) 1)));
+                                check_hlds__switch_detection__GoalExpr_78 = ((MR_Word) (MR_hl_field(MR_mktag(0), check_hlds__switch_detection__Goal_74, (MR_Integer) 0)));
+                                check_hlds__switch_detection___GoalInfo_79 = ((MR_Word) (MR_hl_field(MR_mktag(0), check_hlds__switch_detection__Goal_74, (MR_Integer) 1)));
+                                check_hlds__switch_detection__succeeded = ((MR_tag((MR_Word) check_hlds__switch_detection__GoalExpr_78)) == (MR_mktag((MR_Integer) 1)));
+                                if (check_hlds__switch_detection__succeeded)
+                                  {
+                                    check_hlds__switch_detection___LHS_80 = ((MR_Word) (MR_hl_field(MR_mktag(1), check_hlds__switch_detection__GoalExpr_78, (MR_Integer) 0)));
+                                    check_hlds__switch_detection___RHS_81 = ((MR_Word) (MR_hl_field(MR_mktag(1), check_hlds__switch_detection__GoalExpr_78, (MR_Integer) 1)));
+                                    check_hlds__switch_detection__Var_82 = ((MR_Word) (MR_hl_field(MR_mktag(1), check_hlds__switch_detection__GoalExpr_78, (MR_Integer) 2)));
+                                    check_hlds__switch_detection__UnifyInfo0_83 = ((MR_Word) (MR_hl_field(MR_mktag(1), check_hlds__switch_detection__GoalExpr_78, (MR_Integer) 3)));
+                                    check_hlds__switch_detection__Var_84 = ((MR_Word) (MR_hl_field(MR_mktag(1), check_hlds__switch_detection__GoalExpr_78, (MR_Integer) 4)));
+                                    check_hlds__switch_detection__succeeded = ((MR_tag((MR_Word) check_hlds__switch_detection__UnifyInfo0_83)) == (MR_mktag((MR_Integer) 1)));
+                                    if (check_hlds__switch_detection__succeeded)
+                                      {
+                                        check_hlds__switch_detection__Var_89 = ((MR_Word) (MR_hl_field(MR_mktag(1), check_hlds__switch_detection__UnifyInfo0_83, (MR_Integer) 0)));
+                                        check_hlds__switch_detection__ConsId_76 = ((MR_Word) (MR_hl_field(MR_mktag(1), check_hlds__switch_detection__UnifyInfo0_83, (MR_Integer) 1)));
+                                        check_hlds__switch_detection__Var_85 = ((MR_Word) (MR_hl_field(MR_mktag(1), check_hlds__switch_detection__UnifyInfo0_83, (MR_Integer) 2)));
+                                        check_hlds__switch_detection__Var_86 = ((MR_Word) (MR_hl_field(MR_mktag(1), check_hlds__switch_detection__UnifyInfo0_83, (MR_Integer) 3)));
+                                        check_hlds__switch_detection__Var_87 = ((MR_Word) (MR_hl_field(MR_mktag(1), check_hlds__switch_detection__UnifyInfo0_83, (MR_Integer) 4)));
+                                        check_hlds__switch_detection__Var_88 = ((MR_Word) (MR_hl_field(MR_mktag(1), check_hlds__switch_detection__UnifyInfo0_83, (MR_Integer) 5)));
+                                        check_hlds__switch_detection__TypeInfo_22_90 = (MR_Word) &check_hlds__switch_detection_scalar_common_1[0];
+                                        {
+                                          check_hlds__switch_detection__succeeded = mercury__builtin__unify_2_p_0(check_hlds__switch_detection__TypeInfo_22_90, ((MR_Box) (check_hlds__switch_detection__Var_9)), ((MR_Box) (check_hlds__switch_detection__Var_89)));
+                                        }
+                                        if (check_hlds__switch_detection__succeeded)
+                                          {
+                                            {
+                                              check_hlds__switch_detection__succeeded = check_hlds__switch_detection__all_disjuncts_are_switch_var_unifies_3_p_0(check_hlds__switch_detection__Var_9, check_hlds__switch_detection__Goals_75, &check_hlds__switch_detection__ConsIds_77);
+                                            }
+                                            if (check_hlds__switch_detection__succeeded)
+                                              {
+                                                check_hlds__switch_detection__TypeCtorInfo_53_53 = (MR_Word) &parse_tree__prog_data__parse_tree__prog_data__type_ctor_info_cons_id_0;
+                                                {
+                                                  check_hlds__switch_detection__DisjConsIds_28 = (MR_Word) MR_mkword(MR_mktag(1), MR_new_object(MR_Word, ((MR_Integer) 2 * sizeof(MR_Word)), NULL, NULL));
+                                                  MR_hl_field(MR_mktag(1), check_hlds__switch_detection__DisjConsIds_28, 0) = ((MR_Box) (check_hlds__switch_detection__ConsId_76));
+                                                  MR_hl_field(MR_mktag(1), check_hlds__switch_detection__DisjConsIds_28, 1) = ((MR_Box) (check_hlds__switch_detection__ConsIds_77));
+                                                }
+                                                {
+                                                  mercury__list__sort_2_p_0(check_hlds__switch_detection__TypeCtorInfo_53_53, check_hlds__switch_detection__DisjConsIds_28, &check_hlds__switch_detection__SortedDisjConsIds_29);
+                                                }
+                                                check_hlds__switch_detection__succeeded = ((MR_tag((MR_Word) check_hlds__switch_detection__SortedDisjConsIds_29)) == (MR_mktag((MR_Integer) 1)));
+                                                if (check_hlds__switch_detection__succeeded)
+                                                  {
+                                                    check_hlds__switch_detection__MainConsId_30 = ((MR_Word) (MR_hl_field(MR_mktag(1), check_hlds__switch_detection__SortedDisjConsIds_29, (MR_Integer) 0)));
+                                                    check_hlds__switch_detection__OtherConsIds_31 = ((MR_Word) (MR_hl_field(MR_mktag(1), check_hlds__switch_detection__SortedDisjConsIds_29, (MR_Integer) 1)));
+                                                  }
+                                              }
+                                          }
+                                      }
+                                  }
+                              }
+                          }
+                      }
+                    if (check_hlds__switch_detection__succeeded)
+                      {
+                        MR_Word check_hlds__switch_detection__SharedGoal_32;
+                        MR_Word check_hlds__switch_detection__Var_39;
+                        MR_Word check_hlds__switch_detection__Arm_64;
+                        MR_Word check_hlds__switch_detection__Var_65;
+                        MR_Box check_hlds__switch_detection__conv1_STATE_VARIABLE_CasesTable_38;
+
+                        {
+                          check_hlds__switch_detection__Var_39 = (MR_Word) MR_mkword(MR_mktag(3), MR_new_object(MR_Word, ((MR_Integer) 3 * sizeof(MR_Word)), NULL, NULL));
+                          MR_hl_field(MR_mktag(3), check_hlds__switch_detection__Var_39, 0) = ((MR_Box) (MR_Word) ((MR_Integer) 2));
+                          MR_hl_field(MR_mktag(3), check_hlds__switch_detection__Var_39, 1) = ((MR_Box) ((MR_Integer) 0));
+                          MR_hl_field(MR_mktag(3), check_hlds__switch_detection__Var_39, 2) = ((MR_Box) (check_hlds__switch_detection__LaterGoals_15));
+                        }
+                        {
+                          check_hlds__switch_detection__SharedGoal_32 = (MR_Word) MR_new_object(MR_Word, ((MR_Integer) 2 * sizeof(MR_Word)), NULL, NULL);
+                          MR_hl_field(MR_mktag(0), check_hlds__switch_detection__SharedGoal_32, 0) = ((MR_Box) (check_hlds__switch_detection__Var_39));
+                          MR_hl_field(MR_mktag(0), check_hlds__switch_detection__SharedGoal_32, 1) = ((MR_Box) (check_hlds__switch_detection__GoalInfo_12));
+                        }
+                        {
+                          check_hlds__switch_detection__Arm_64 = (MR_Word) MR_mkword(MR_mktag(1), MR_new_object(MR_Word, ((MR_Integer) 3 * sizeof(MR_Word)), NULL, NULL));
+                          MR_hl_field(MR_mktag(1), check_hlds__switch_detection__Arm_64, 0) = ((MR_Box) (check_hlds__switch_detection__MainConsId_30));
+                          MR_hl_field(MR_mktag(1), check_hlds__switch_detection__Arm_64, 1) = ((MR_Box) (check_hlds__switch_detection__OtherConsIds_31));
+                          MR_hl_field(MR_mktag(1), check_hlds__switch_detection__Arm_64, 2) = ((MR_Box) (check_hlds__switch_detection__SharedGoal_32));
+                        }
+                        {
+                          check_hlds__switch_detection__Var_65 = (MR_Word) MR_new_object(MR_Word, ((MR_Integer) 4 * sizeof(MR_Word)), NULL, NULL);
+                          MR_hl_field(MR_mktag(0), check_hlds__switch_detection__Var_65, 0) = ((MR_Box) (&check_hlds__switch_detection_scalar_common_5[0]));
+                          MR_hl_field(MR_mktag(0), check_hlds__switch_detection__Var_65, 1) = ((MR_Box) (check_hlds__switch_detection__expand_sub_disj_process_conj_7_p_0_1));
+                          MR_hl_field(MR_mktag(0), check_hlds__switch_detection__Var_65, 2) = ((MR_Box) (MR_Word) ((MR_Integer) 1));
+                          MR_hl_field(MR_mktag(0), check_hlds__switch_detection__Var_65, 3) = ((MR_Box) (check_hlds__switch_detection__Arm_64));
+                        }
+                        {
+                          mercury__list__foldl_4_p_0((MR_Word) &parse_tree__prog_data__parse_tree__prog_data__type_ctor_info_cons_id_0, (MR_Word) &check_hlds__switch_detection__check_hlds__switch_detection__type_ctor_info_cases_table_0, check_hlds__switch_detection__Var_65, check_hlds__switch_detection__SortedDisjConsIds_29, ((MR_Box) (check_hlds__switch_detection__STATE_VARIABLE_CasesTable_0_37)), &check_hlds__switch_detection__conv1_STATE_VARIABLE_CasesTable_38);
+                        }
+                        *check_hlds__switch_detection__STATE_VARIABLE_CasesTable_38 = ((MR_Word) check_hlds__switch_detection__conv1_STATE_VARIABLE_CasesTable_38);
+                        check_hlds__switch_detection__succeeded = MR_TRUE;
+                      }
+                    else
+                      {
+                        MR_Word check_hlds__switch_detection__TypeCtorInfo_54_54 = (MR_Word) &hlds__hlds_goal__hlds__hlds_goal__type_ctor_info_hlds_goal_0;
+                        MR_Word check_hlds__switch_detection__Unifies_33;
+                        MR_Word check_hlds__switch_detection__ExpandedConjunctions_34;
+                        MR_Word check_hlds__switch_detection__Left_35;
+                        MR_Word check_hlds__switch_detection__Var_42;
+
+                        {
+                          mercury__list__reverse_2_p_0(check_hlds__switch_detection__TypeCtorInfo_54_54, check_hlds__switch_detection__STATE_VARIABLE_RevUnifies_0_36, &check_hlds__switch_detection__Unifies_33);
+                        }
+                        {
+                          check_hlds__switch_detection__Var_42 = (MR_Word) MR_new_object(MR_Word, ((MR_Integer) 6 * sizeof(MR_Word)), NULL, NULL);
+                          MR_hl_field(MR_mktag(0), check_hlds__switch_detection__Var_42, 0) = ((MR_Box) (&check_hlds__switch_detection_scalar_common_6[0]));
+                          MR_hl_field(MR_mktag(0), check_hlds__switch_detection__Var_42, 1) = ((MR_Box) (check_hlds__switch_detection__expand_sub_disj_process_conj_7_p_0_2));
+                          MR_hl_field(MR_mktag(0), check_hlds__switch_detection__Var_42, 2) = ((MR_Box) (MR_Word) ((MR_Integer) 3));
+                          MR_hl_field(MR_mktag(0), check_hlds__switch_detection__Var_42, 3) = ((MR_Box) (check_hlds__switch_detection__Unifies_33));
+                          MR_hl_field(MR_mktag(0), check_hlds__switch_detection__Var_42, 4) = ((MR_Box) (check_hlds__switch_detection__LaterGoals_15));
+                          MR_hl_field(MR_mktag(0), check_hlds__switch_detection__Var_42, 5) = ((MR_Box) (check_hlds__switch_detection__GoalInfo_12));
+                        }
+                        {
+                          mercury__list__map_3_p_0(check_hlds__switch_detection__TypeCtorInfo_54_54, check_hlds__switch_detection__TypeCtorInfo_54_54, check_hlds__switch_detection__Var_42, check_hlds__switch_detection__Disjuncts_23, &check_hlds__switch_detection__ExpandedConjunctions_34);
+                        }
+                        {
+                          check_hlds__switch_detection__partition_disj_trial_6_p_0(check_hlds__switch_detection__ExpandedConjunctions_34, check_hlds__switch_detection__Var_9, (MR_Word) MR_mkword(MR_mktag(0), MR_mkbody((MR_Integer) 0)), &check_hlds__switch_detection__Left_35, check_hlds__switch_detection__STATE_VARIABLE_CasesTable_0_37, check_hlds__switch_detection__STATE_VARIABLE_CasesTable_38);
+                        }
+                        check_hlds__switch_detection__succeeded = (check_hlds__switch_detection__Left_35 == ((MR_Word) MR_mkword(MR_mktag(0), MR_mkbody((MR_Integer) 0))));
+                      }
+                  }
+              }
+            else
+              check_hlds__switch_detection__succeeded = MR_FALSE;
+          }
+        return check_hlds__switch_detection__succeeded;
+      }
+      break;
+    }
+}
+
+static MR_bool MR_CALL 
+check_hlds__switch_detection__expand_sub_disjs_5_p_0(
+  MR_Word check_hlds__switch_detection__HeadVar__1_1,
+  MR_Word check_hlds__switch_detection__HeadVar__2_2,
+  MR_Word check_hlds__switch_detection__HeadVar__3_3,
+  MR_Word check_hlds__switch_detection__STATE_VARIABLE_CasesTable_0_4,
+  MR_Word * check_hlds__switch_detection__STATE_VARIABLE_CasesTable_5)
+{
+  while (MR_TRUE)
+    {
+      /* tailcall optimized into a loop */
+      {
+        MR_bool check_hlds__switch_detection__succeeded;
+
+        if ((check_hlds__switch_detection__HeadVar__3_3 == ((MR_Word) MR_mkword(MR_mktag(0), MR_mkbody((MR_Integer) 0)))))
+          {
+            *check_hlds__switch_detection__STATE_VARIABLE_CasesTable_5 = check_hlds__switch_detection__STATE_VARIABLE_CasesTable_0_4;
+            check_hlds__switch_detection__succeeded = MR_TRUE;
+          }
+        else
+          {
+            MR_Word check_hlds__switch_detection__LeftGoal_13 = ((MR_Word) (MR_hl_field(MR_mktag(1), check_hlds__switch_detection__HeadVar__3_3, (MR_Integer) 0)));
+            MR_Word check_hlds__switch_detection__LeftGoals_14 = ((MR_Word) (MR_hl_field(MR_mktag(1), check_hlds__switch_detection__HeadVar__3_3, (MR_Integer) 1)));
+            MR_Word check_hlds__switch_detection__STATE_VARIABLE_CasesTable_18_18;
+            MR_Word check_hlds__switch_detection__GoalExpr_26 = ((MR_Word) (MR_hl_field(MR_mktag(0), check_hlds__switch_detection__LeftGoal_13, (MR_Integer) 0)));
+            MR_Word check_hlds__switch_detection__GoalInfo0_27 = ((MR_Word) (MR_hl_field(MR_mktag(0), check_hlds__switch_detection__LeftGoal_13, (MR_Integer) 1)));
+            MR_Word check_hlds__switch_detection__GoalInfo_28;
+            MR_Word check_hlds__switch_detection__SubGoals_29;
+            MR_Word check_hlds__switch_detection__Var_32;
+
+            {
+              hlds__hlds_goal__goal_info_add_feature_3_p_0((MR_Integer) 14, check_hlds__switch_detection__GoalInfo0_27, &check_hlds__switch_detection__GoalInfo_28);
+            }
+            check_hlds__switch_detection__succeeded = ((((MR_tag((MR_Word) check_hlds__switch_detection__GoalExpr_26)) == (MR_mktag((MR_Integer) 3)))) && (((((MR_Integer) (MR_Word) (MR_hl_field(MR_mktag(3), check_hlds__switch_detection__GoalExpr_26, (MR_Integer) 0)))) == (MR_Integer) 2)));
+            if (check_hlds__switch_detection__succeeded)
+              {
+                check_hlds__switch_detection__Var_32 = ((MR_Word) (MR_hl_field(MR_mktag(3), check_hlds__switch_detection__GoalExpr_26, (MR_Integer) 1)));
+                check_hlds__switch_detection__SubGoals_29 = ((MR_Word) (MR_hl_field(MR_mktag(3), check_hlds__switch_detection__GoalExpr_26, (MR_Integer) 2)));
+                check_hlds__switch_detection__succeeded = (check_hlds__switch_detection__Var_32 == (MR_Integer) 0);
+              }
+            if (check_hlds__switch_detection__succeeded)
+              {
+                {
+                  check_hlds__switch_detection__succeeded = check_hlds__switch_detection__expand_sub_disj_process_conj_7_p_0(check_hlds__switch_detection__HeadVar__1_1, check_hlds__switch_detection__HeadVar__2_2, check_hlds__switch_detection__SubGoals_29, (MR_Word) MR_mkword(MR_mktag(0), MR_mkbody((MR_Integer) 0)), check_hlds__switch_detection__GoalInfo_28, check_hlds__switch_detection__STATE_VARIABLE_CasesTable_0_4, &check_hlds__switch_detection__STATE_VARIABLE_CasesTable_18_18);
+                }
+              }
+            else
+              {
+                MR_Word check_hlds__switch_detection__Var_35;
+                MR_Word check_hlds__switch_detection__Var_36;
+                MR_Word check_hlds__switch_detection__Var_38;
+                MR_Word check_hlds__switch_detection__Var_30;
+
+                check_hlds__switch_detection__succeeded = ((((MR_tag((MR_Word) check_hlds__switch_detection__GoalExpr_26)) == (MR_mktag((MR_Integer) 3)))) && (((((MR_Integer) (MR_Word) (MR_hl_field(MR_mktag(3), check_hlds__switch_detection__GoalExpr_26, (MR_Integer) 0)))) == (MR_Integer) 3)));
+                if (check_hlds__switch_detection__succeeded)
+                  {
+                    check_hlds__switch_detection__Var_30 = ((MR_Word) (MR_hl_field(MR_mktag(3), check_hlds__switch_detection__GoalExpr_26, (MR_Integer) 1)));
+                    check_hlds__switch_detection__Var_38 = (MR_Word) MR_mkword(MR_mktag(0), MR_mkbody((MR_Integer) 0));
+                    check_hlds__switch_detection__Var_36 = (MR_Word) MR_mkword(MR_mktag(0), MR_mkbody((MR_Integer) 0));
+                    {
+                      check_hlds__switch_detection__Var_35 = (MR_Word) MR_mkword(MR_mktag(1), MR_new_object(MR_Word, ((MR_Integer) 2 * sizeof(MR_Word)), NULL, NULL));
+                      MR_hl_field(MR_mktag(1), check_hlds__switch_detection__Var_35, 0) = ((MR_Box) (check_hlds__switch_detection__LeftGoal_13));
+                      MR_hl_field(MR_mktag(1), check_hlds__switch_detection__Var_35, 1) = ((MR_Box) (check_hlds__switch_detection__Var_38));
+                    }
+                    {
+                      check_hlds__switch_detection__succeeded = check_hlds__switch_detection__expand_sub_disj_process_conj_7_p_0(check_hlds__switch_detection__HeadVar__1_1, check_hlds__switch_detection__HeadVar__2_2, check_hlds__switch_detection__Var_35, check_hlds__switch_detection__Var_36, check_hlds__switch_detection__GoalInfo_28, check_hlds__switch_detection__STATE_VARIABLE_CasesTable_0_4, &check_hlds__switch_detection__STATE_VARIABLE_CasesTable_18_18);
+                    }
+                  }
+              }
+            if (check_hlds__switch_detection__succeeded)
+              {
+                /* direct tailcall eliminated */
+                {
+                  MR_Word check_hlds__switch_detection__next_value_of_HeadVar__3_3 = check_hlds__switch_detection__LeftGoals_14;
+                  MR_Word check_hlds__switch_detection__next_value_of_STATE_VARIABLE_CasesTable_0_4 = check_hlds__switch_detection__STATE_VARIABLE_CasesTable_18_18;
+
+                  check_hlds__switch_detection__STATE_VARIABLE_CasesTable_0_4 = check_hlds__switch_detection__next_value_of_STATE_VARIABLE_CasesTable_0_4;
+                  check_hlds__switch_detection__HeadVar__3_3 = check_hlds__switch_detection__next_value_of_HeadVar__3_3;
+                }
+                continue;
+              }
+          }
+        return check_hlds__switch_detection__succeeded;
+      }
+      break;
+    }
+}
+
+static void MR_CALL 
+check_hlds__switch_detection__partition_disj_7_p_0_2(
+  MR_Box check_hlds__switch_detection__closure_arg,
+  MR_Box check_hlds__switch_detection__wrapper_arg_1,
+  MR_Box check_hlds__switch_detection__wrapper_arg_2,
+  MR_Box * check_hlds__switch_detection__wrapper_arg_3,
+  MR_Box check_hlds__switch_detection__wrapper_arg_4,
+  MR_Box * check_hlds__switch_detection__wrapper_arg_5)
+{
+  {
+    MR_Box check_hlds__switch_detection__closure = check_hlds__switch_detection__closure_arg;
+    MR_Word check_hlds__switch_detection__conv5_STATE_VARIABLE_Cases_32;
+    MR_Word check_hlds__switch_detection__conv4_STATE_VARIABLE_AlreadyHandledConsIds_34;
+
+    {
+      check_hlds__switch_detection__convert_case_7_p_0(((MR_Word) (MR_hl_field(MR_mktag(0), check_hlds__switch_detection__closure, (MR_Integer) 3))), ((MR_Word) (MR_hl_field(MR_mktag(0), check_hlds__switch_detection__closure, (MR_Integer) 4))), ((MR_Word) check_hlds__switch_detection__wrapper_arg_1), ((MR_Word) check_hlds__switch_detection__wrapper_arg_2), &check_hlds__switch_detection__conv5_STATE_VARIABLE_Cases_32, ((MR_Word) check_hlds__switch_detection__wrapper_arg_4), &check_hlds__switch_detection__conv4_STATE_VARIABLE_AlreadyHandledConsIds_34);
+    }
+    *check_hlds__switch_detection__wrapper_arg_3 = ((MR_Box) (check_hlds__switch_detection__conv5_STATE_VARIABLE_Cases_32));
+    *check_hlds__switch_detection__wrapper_arg_5 = ((MR_Box) (check_hlds__switch_detection__conv4_STATE_VARIABLE_AlreadyHandledConsIds_34));
+  }
+}
+
+static void MR_CALL 
+check_hlds__switch_detection__partition_disj_7_p_0_1(
+  MR_Box check_hlds__switch_detection__closure_arg,
+  MR_Box check_hlds__switch_detection__wrapper_arg_1,
+  MR_Box check_hlds__switch_detection__wrapper_arg_2,
+  MR_Box * check_hlds__switch_detection__wrapper_arg_3,
+  MR_Box check_hlds__switch_detection__wrapper_arg_4,
+  MR_Box * check_hlds__switch_detection__wrapper_arg_5)
+{
+  {
+    MR_Box check_hlds__switch_detection__closure = check_hlds__switch_detection__closure_arg;
+    MR_Word check_hlds__switch_detection__conv1_STATE_VARIABLE_Cases_32;
+    MR_Word check_hlds__switch_detection__conv0_STATE_VARIABLE_AlreadyHandledConsIds_34;
+
+    {
+      check_hlds__switch_detection__convert_case_7_p_0(((MR_Word) (MR_hl_field(MR_mktag(0), check_hlds__switch_detection__closure, (MR_Integer) 3))), ((MR_Word) (MR_hl_field(MR_mktag(0), check_hlds__switch_detection__closure, (MR_Integer) 4))), ((MR_Word) check_hlds__switch_detection__wrapper_arg_1), ((MR_Word) check_hlds__switch_detection__wrapper_arg_2), &check_hlds__switch_detection__conv1_STATE_VARIABLE_Cases_32, ((MR_Word) check_hlds__switch_detection__wrapper_arg_4), &check_hlds__switch_detection__conv0_STATE_VARIABLE_AlreadyHandledConsIds_34);
+    }
+    *check_hlds__switch_detection__wrapper_arg_3 = ((MR_Box) (check_hlds__switch_detection__conv1_STATE_VARIABLE_Cases_32));
+    *check_hlds__switch_detection__wrapper_arg_5 = ((MR_Box) (check_hlds__switch_detection__conv0_STATE_VARIABLE_AlreadyHandledConsIds_34));
+  }
+}
+
+static MR_bool MR_CALL 
+check_hlds__switch_detection__partition_disj_7_p_0(
+  MR_Word check_hlds__switch_detection__Disjuncts0_8,
+  MR_Word check_hlds__switch_detection__Var_9,
+  MR_Word check_hlds__switch_detection__GoalInfo_10,
+  MR_Word * check_hlds__switch_detection__Left_11,
+  MR_Word * check_hlds__switch_detection__Cases_12,
+  MR_Word check_hlds__switch_detection__STATE_VARIABLE_LocalInfo_0_21,
+  MR_Word * check_hlds__switch_detection__STATE_VARIABLE_LocalInfo_22)
+{
+  {
+    MR_bool check_hlds__switch_detection__succeeded;
+    MR_Word check_hlds__switch_detection__TypeCtorInfo_41_41 = (MR_Word) &parse_tree__prog_data__parse_tree__prog_data__type_ctor_info_cons_id_0;
+    MR_Word check_hlds__switch_detection__CasesTable0_14;
+    MR_Word check_hlds__switch_detection__Left1_15;
+    MR_Word check_hlds__switch_detection__CasesTable1_16;
+    MR_Word check_hlds__switch_detection__Var_23;
+    MR_Word check_hlds__switch_detection__Var_24;
+
+    {
+      check_hlds__switch_detection__Var_23 = mercury__map__init_0_f_0(check_hlds__switch_detection__TypeCtorInfo_41_41, (MR_Word) &check_hlds__switch_detection__check_hlds__switch_detection__type_ctor_info_cons_id_entry_0);
+    }
+    {
+      check_hlds__switch_detection__Var_24 = mercury__set_tree234__init_0_f_0(check_hlds__switch_detection__TypeCtorInfo_41_41);
+    }
+    {
+      check_hlds__switch_detection__CasesTable0_14 = (MR_Word) MR_new_object(MR_Word, ((MR_Integer) 2 * sizeof(MR_Word)), NULL, NULL);
+      MR_hl_field(MR_mktag(0), check_hlds__switch_detection__CasesTable0_14, 0) = ((MR_Box) (check_hlds__switch_detection__Var_23));
+      MR_hl_field(MR_mktag(0), check_hlds__switch_detection__CasesTable0_14, 1) = ((MR_Box) (check_hlds__switch_detection__Var_24));
+    }
+    {
+      check_hlds__switch_detection__partition_disj_trial_6_p_0(check_hlds__switch_detection__Disjuncts0_8, check_hlds__switch_detection__Var_9, (MR_Word) MR_mkword(MR_mktag(0), MR_mkbody((MR_Integer) 0)), &check_hlds__switch_detection__Left1_15, check_hlds__switch_detection__CasesTable0_14, &check_hlds__switch_detection__CasesTable1_16);
+    }
+    if ((check_hlds__switch_detection__Left1_15 == ((MR_Word) MR_mkword(MR_mktag(0), MR_mkbody((MR_Integer) 0)))))
+      {
+        MR_Word check_hlds__switch_detection__TypeCtorInfo_15_58;
+        MR_Word check_hlds__switch_detection__TypeCtorInfo_16_59;
+        MR_Word check_hlds__switch_detection__TypeInfo_22_65;
+        MR_Word check_hlds__switch_detection__TypeInfo_23_66;
+        MR_Word check_hlds__switch_detection__TypeInfo_24_67;
+        MR_Word check_hlds__switch_detection__TypeCtorInfo_25_68;
+        MR_Integer check_hlds__switch_detection__Var_30;
+        MR_Word check_hlds__switch_detection__CasesMap_43 = ((MR_Word) (MR_hl_field(MR_mktag(0), check_hlds__switch_detection__CasesTable1_16, (MR_Integer) 0)));
+        MR_Word check_hlds__switch_detection__CasesMap_50;
+        MR_Word check_hlds__switch_detection__ConflictIds_51;
+        MR_Word check_hlds__switch_detection__CasesAssocList_52;
+        MR_Word check_hlds__switch_detection__Cases_53;
+        MR_Word check_hlds__switch_detection__Var_55;
+        MR_Word check_hlds__switch_detection__Var_56;
+        MR_Word check_hlds__switch_detection__Var_57;
+        MR_Word check_hlds__switch_detection__Var_44 = ((MR_Word) (MR_hl_field(MR_mktag(0), check_hlds__switch_detection__CasesTable1_16, (MR_Integer) 1)));
+        MR_Word check_hlds__switch_detection___AlreadyHandledConsIds_54;
+        MR_Box check_hlds__switch_detection__conv3_Cases_53;
+        MR_Box check_hlds__switch_detection__conv2__AlreadyHandledConsIds_54;
+
+        {
+          check_hlds__switch_detection__Var_30 = mercury__map__count_1_f_0((MR_Word) &parse_tree__prog_data__parse_tree__prog_data__type_ctor_info_cons_id_0, (MR_Word) &check_hlds__switch_detection__check_hlds__switch_detection__type_ctor_info_cons_id_entry_0, check_hlds__switch_detection__CasesMap_43);
+        }
+        check_hlds__switch_detection__succeeded = (check_hlds__switch_detection__Var_30 >= (MR_Integer) 1);
+        if (check_hlds__switch_detection__succeeded)
+          {
+            *check_hlds__switch_detection__Left_11 = check_hlds__switch_detection__Left1_15;
+            check_hlds__switch_detection__CasesMap_50 = ((MR_Word) (MR_hl_field(MR_mktag(0), check_hlds__switch_detection__CasesTable1_16, (MR_Integer) 0)));
+            check_hlds__switch_detection__ConflictIds_51 = ((MR_Word) (MR_hl_field(MR_mktag(0), check_hlds__switch_detection__CasesTable1_16, (MR_Integer) 1)));
+            check_hlds__switch_detection__TypeCtorInfo_15_58 = (MR_Word) &parse_tree__prog_data__parse_tree__prog_data__type_ctor_info_cons_id_0;
+            check_hlds__switch_detection__TypeCtorInfo_16_59 = (MR_Word) &check_hlds__switch_detection__check_hlds__switch_detection__type_ctor_info_cons_id_entry_0;
+            {
+              mercury__map__to_assoc_list_2_p_0(check_hlds__switch_detection__TypeCtorInfo_15_58, check_hlds__switch_detection__TypeCtorInfo_16_59, check_hlds__switch_detection__CasesMap_50, &check_hlds__switch_detection__CasesAssocList_52);
+            }
+            check_hlds__switch_detection__Var_56 = (MR_Word) MR_mkword(MR_mktag(0), MR_mkbody((MR_Integer) 0));
+            {
+              check_hlds__switch_detection__Var_55 = (MR_Word) MR_new_object(MR_Word, ((MR_Integer) 5 * sizeof(MR_Word)), NULL, NULL);
+              MR_hl_field(MR_mktag(0), check_hlds__switch_detection__Var_55, 0) = ((MR_Box) (&check_hlds__switch_detection_scalar_common_3[0]));
+              MR_hl_field(MR_mktag(0), check_hlds__switch_detection__Var_55, 1) = ((MR_Box) (check_hlds__switch_detection__partition_disj_7_p_0_1));
+              MR_hl_field(MR_mktag(0), check_hlds__switch_detection__Var_55, 2) = ((MR_Box) (MR_Word) ((MR_Integer) 2));
+              MR_hl_field(MR_mktag(0), check_hlds__switch_detection__Var_55, 3) = ((MR_Box) (check_hlds__switch_detection__GoalInfo_10));
+              MR_hl_field(MR_mktag(0), check_hlds__switch_detection__Var_55, 4) = ((MR_Box) (check_hlds__switch_detection__ConflictIds_51));
+            }
+            {
+              check_hlds__switch_detection__Var_57 = mercury__set_tree234__init_0_f_0(check_hlds__switch_detection__TypeCtorInfo_15_58);
+            }
+            check_hlds__switch_detection__TypeInfo_22_65 = (MR_Word) &check_hlds__switch_detection_scalar_common_2[0];
+            check_hlds__switch_detection__TypeInfo_23_66 = (MR_Word) &check_hlds__switch_detection_scalar_common_1[2];
+            check_hlds__switch_detection__TypeInfo_24_67 = (MR_Word) &check_hlds__switch_detection_scalar_common_1[3];
+            {
+              mercury__list__foldl2_6_p_0(check_hlds__switch_detection__TypeInfo_22_65, check_hlds__switch_detection__TypeInfo_23_66, check_hlds__switch_detection__TypeInfo_24_67, check_hlds__switch_detection__Var_55, check_hlds__switch_detection__CasesAssocList_52, ((MR_Box) (check_hlds__switch_detection__Var_56)), &check_hlds__switch_detection__conv3_Cases_53, ((MR_Box) (check_hlds__switch_detection__Var_57)), &check_hlds__switch_detection__conv2__AlreadyHandledConsIds_54);
+            }
+            check_hlds__switch_detection__Cases_53 = ((MR_Word) check_hlds__switch_detection__conv3_Cases_53);
+            check_hlds__switch_detection___AlreadyHandledConsIds_54 = ((MR_Word) check_hlds__switch_detection__conv2__AlreadyHandledConsIds_54);
+            check_hlds__switch_detection__TypeCtorInfo_25_68 = (MR_Word) &hlds__hlds_goal__hlds__hlds_goal__type_ctor_info_case_0;
+            {
+              mercury__list__sort_2_p_0(check_hlds__switch_detection__TypeCtorInfo_25_68, check_hlds__switch_detection__Cases_53, check_hlds__switch_detection__Cases_12);
+            }
+            *check_hlds__switch_detection__STATE_VARIABLE_LocalInfo_22 = check_hlds__switch_detection__STATE_VARIABLE_LocalInfo_0_21;
+            check_hlds__switch_detection__succeeded = MR_TRUE;
+          }
+      }
+    else
+      {
+        MR_Word check_hlds__switch_detection__AllowMulti_19 = ((MR_Word) (MR_hl_field(MR_mktag(0), check_hlds__switch_detection__STATE_VARIABLE_LocalInfo_0_21, (MR_Integer) 1)));
+        MR_Word check_hlds__switch_detection__Var_32 = ((MR_Word) (MR_hl_field(MR_mktag(0), check_hlds__switch_detection__STATE_VARIABLE_LocalInfo_0_21, (MR_Integer) 0)));
+        MR_Word check_hlds__switch_detection__Var_33 = ((MR_Word) (MR_hl_field(MR_mktag(0), check_hlds__switch_detection__STATE_VARIABLE_LocalInfo_0_21, (MR_Integer) 2)));
+        MR_Word check_hlds__switch_detection__Var_34 = ((MR_Word) (MR_hl_field(MR_mktag(0), check_hlds__switch_detection__STATE_VARIABLE_LocalInfo_0_21, (MR_Integer) 3)));
+        MR_Word check_hlds__switch_detection__Var_35 = ((MR_Word) (MR_hl_field(MR_mktag(0), check_hlds__switch_detection__STATE_VARIABLE_LocalInfo_0_21, (MR_Integer) 4)));
+        MR_Word check_hlds__switch_detection__CasesTable_20;
+
+        {
+          check_hlds__switch_detection__succeeded = check_hlds__switch_detection__expand_sub_disjs_5_p_0(check_hlds__switch_detection__AllowMulti_19, check_hlds__switch_detection__Var_9, check_hlds__switch_detection__Left1_15, check_hlds__switch_detection__CasesTable1_16, &check_hlds__switch_detection__CasesTable_20);
+        }
+        if (check_hlds__switch_detection__succeeded)
+          {
+            MR_Word check_hlds__switch_detection__TypeCtorInfo_15_84;
+            MR_Word check_hlds__switch_detection__TypeCtorInfo_16_85;
+            MR_Word check_hlds__switch_detection__TypeInfo_22_91;
+            MR_Word check_hlds__switch_detection__TypeInfo_23_92;
+            MR_Word check_hlds__switch_detection__TypeInfo_24_93;
+            MR_Word check_hlds__switch_detection__TypeCtorInfo_25_94;
+            MR_Integer check_hlds__switch_detection__Var_26;
+            MR_Word check_hlds__switch_detection__Var_29;
+            MR_Word check_hlds__switch_detection__CasesMap_69;
+            MR_Word check_hlds__switch_detection__CasesMap_76;
+            MR_Word check_hlds__switch_detection__ConflictIds_77;
+            MR_Word check_hlds__switch_detection__CasesAssocList_78;
+            MR_Word check_hlds__switch_detection__Cases_79;
+            MR_Word check_hlds__switch_detection__Var_81;
+            MR_Word check_hlds__switch_detection__Var_82;
+            MR_Word check_hlds__switch_detection__Var_83;
+            MR_Word check_hlds__switch_detection__Var_70;
+            MR_Word check_hlds__switch_detection___AlreadyHandledConsIds_80;
+            MR_Box check_hlds__switch_detection__conv7_Cases_79;
+            MR_Box check_hlds__switch_detection__conv6__AlreadyHandledConsIds_80;
+            MR_Word check_hlds__switch_detection__Var_36;
+            MR_Word check_hlds__switch_detection__Var_37;
+            MR_Word check_hlds__switch_detection__Var_38;
+            MR_Word check_hlds__switch_detection__Var_40;
+            MR_Word check_hlds__switch_detection__Var_39;
+
+            *check_hlds__switch_detection__Left_11 = (MR_Word) MR_mkword(MR_mktag(0), MR_mkbody((MR_Integer) 0));
+            check_hlds__switch_detection__CasesMap_69 = ((MR_Word) (MR_hl_field(MR_mktag(0), check_hlds__switch_detection__CasesTable_20, (MR_Integer) 0)));
+            check_hlds__switch_detection__Var_70 = ((MR_Word) (MR_hl_field(MR_mktag(0), check_hlds__switch_detection__CasesTable_20, (MR_Integer) 1)));
+            {
+              check_hlds__switch_detection__Var_26 = mercury__map__count_1_f_0((MR_Word) &parse_tree__prog_data__parse_tree__prog_data__type_ctor_info_cons_id_0, (MR_Word) &check_hlds__switch_detection__check_hlds__switch_detection__type_ctor_info_cons_id_entry_0, check_hlds__switch_detection__CasesMap_69);
+            }
+            check_hlds__switch_detection__succeeded = (check_hlds__switch_detection__Var_26 >= (MR_Integer) 1);
+            if (check_hlds__switch_detection__succeeded)
+              {
+                check_hlds__switch_detection__CasesMap_76 = ((MR_Word) (MR_hl_field(MR_mktag(0), check_hlds__switch_detection__CasesTable_20, (MR_Integer) 0)));
+                check_hlds__switch_detection__ConflictIds_77 = ((MR_Word) (MR_hl_field(MR_mktag(0), check_hlds__switch_detection__CasesTable_20, (MR_Integer) 1)));
+                check_hlds__switch_detection__TypeCtorInfo_15_84 = (MR_Word) &parse_tree__prog_data__parse_tree__prog_data__type_ctor_info_cons_id_0;
+                check_hlds__switch_detection__TypeCtorInfo_16_85 = (MR_Word) &check_hlds__switch_detection__check_hlds__switch_detection__type_ctor_info_cons_id_entry_0;
+                {
+                  mercury__map__to_assoc_list_2_p_0(check_hlds__switch_detection__TypeCtorInfo_15_84, check_hlds__switch_detection__TypeCtorInfo_16_85, check_hlds__switch_detection__CasesMap_76, &check_hlds__switch_detection__CasesAssocList_78);
+                }
+                check_hlds__switch_detection__Var_82 = (MR_Word) MR_mkword(MR_mktag(0), MR_mkbody((MR_Integer) 0));
+                {
+                  check_hlds__switch_detection__Var_81 = (MR_Word) MR_new_object(MR_Word, ((MR_Integer) 5 * sizeof(MR_Word)), NULL, NULL);
+                  MR_hl_field(MR_mktag(0), check_hlds__switch_detection__Var_81, 0) = ((MR_Box) (&check_hlds__switch_detection_scalar_common_3[0]));
+                  MR_hl_field(MR_mktag(0), check_hlds__switch_detection__Var_81, 1) = ((MR_Box) (check_hlds__switch_detection__partition_disj_7_p_0_2));
+                  MR_hl_field(MR_mktag(0), check_hlds__switch_detection__Var_81, 2) = ((MR_Box) (MR_Word) ((MR_Integer) 2));
+                  MR_hl_field(MR_mktag(0), check_hlds__switch_detection__Var_81, 3) = ((MR_Box) (check_hlds__switch_detection__GoalInfo_10));
+                  MR_hl_field(MR_mktag(0), check_hlds__switch_detection__Var_81, 4) = ((MR_Box) (check_hlds__switch_detection__ConflictIds_77));
+                }
+                {
+                  check_hlds__switch_detection__Var_83 = mercury__set_tree234__init_0_f_0(check_hlds__switch_detection__TypeCtorInfo_15_84);
+                }
+                check_hlds__switch_detection__TypeInfo_22_91 = (MR_Word) &check_hlds__switch_detection_scalar_common_2[0];
+                check_hlds__switch_detection__TypeInfo_23_92 = (MR_Word) &check_hlds__switch_detection_scalar_common_1[2];
+                check_hlds__switch_detection__TypeInfo_24_93 = (MR_Word) &check_hlds__switch_detection_scalar_common_1[3];
+                {
+                  mercury__list__foldl2_6_p_0(check_hlds__switch_detection__TypeInfo_22_91, check_hlds__switch_detection__TypeInfo_23_92, check_hlds__switch_detection__TypeInfo_24_93, check_hlds__switch_detection__Var_81, check_hlds__switch_detection__CasesAssocList_78, ((MR_Box) (check_hlds__switch_detection__Var_82)), &check_hlds__switch_detection__conv7_Cases_79, ((MR_Box) (check_hlds__switch_detection__Var_83)), &check_hlds__switch_detection__conv6__AlreadyHandledConsIds_80);
+                }
+                check_hlds__switch_detection__Cases_79 = ((MR_Word) check_hlds__switch_detection__conv7_Cases_79);
+                check_hlds__switch_detection___AlreadyHandledConsIds_80 = ((MR_Word) check_hlds__switch_detection__conv6__AlreadyHandledConsIds_80);
+                check_hlds__switch_detection__TypeCtorInfo_25_94 = (MR_Word) &hlds__hlds_goal__hlds__hlds_goal__type_ctor_info_case_0;
+                {
+                  mercury__list__sort_2_p_0(check_hlds__switch_detection__TypeCtorInfo_25_94, check_hlds__switch_detection__Cases_79, check_hlds__switch_detection__Cases_12);
+                }
+                check_hlds__switch_detection__Var_29 = (MR_Integer) 0;
+                check_hlds__switch_detection__Var_36 = ((MR_Word) (MR_hl_field(MR_mktag(0), check_hlds__switch_detection__STATE_VARIABLE_LocalInfo_0_21, (MR_Integer) 0)));
+                check_hlds__switch_detection__Var_37 = ((MR_Word) (MR_hl_field(MR_mktag(0), check_hlds__switch_detection__STATE_VARIABLE_LocalInfo_0_21, (MR_Integer) 1)));
+                check_hlds__switch_detection__Var_38 = ((MR_Word) (MR_hl_field(MR_mktag(0), check_hlds__switch_detection__STATE_VARIABLE_LocalInfo_0_21, (MR_Integer) 2)));
+                check_hlds__switch_detection__Var_39 = ((MR_Word) (MR_hl_field(MR_mktag(0), check_hlds__switch_detection__STATE_VARIABLE_LocalInfo_0_21, (MR_Integer) 3)));
+                check_hlds__switch_detection__Var_40 = ((MR_Word) (MR_hl_field(MR_mktag(0), check_hlds__switch_detection__STATE_VARIABLE_LocalInfo_0_21, (MR_Integer) 4)));
+                {
+                  MR_Word base;
+                  base = (MR_Word) MR_new_object(MR_Word, ((MR_Integer) 5 * sizeof(MR_Word)), NULL, NULL);
+                  *check_hlds__switch_detection__STATE_VARIABLE_LocalInfo_22 = base;
+                  MR_hl_field(MR_mktag(0), base, 0) = ((MR_Box) (check_hlds__switch_detection__Var_36));
+                  MR_hl_field(MR_mktag(0), base, 1) = ((MR_Box) (check_hlds__switch_detection__Var_37));
+                  MR_hl_field(MR_mktag(0), base, 2) = ((MR_Box) (check_hlds__switch_detection__Var_38));
+                  MR_hl_field(MR_mktag(0), base, 3) = ((MR_Box) (check_hlds__switch_detection__Var_29));
+                  MR_hl_field(MR_mktag(0), base, 4) = ((MR_Box) (check_hlds__switch_detection__Var_40));
+                }
+                check_hlds__switch_detection__succeeded = MR_TRUE;
+              }
+          }
+        else
+          {
+            *check_hlds__switch_detection__Left_11 = check_hlds__switch_detection__Left1_15;
+            {
+              *check_hlds__switch_detection__Cases_12 = check_hlds__switch_detection__convert_cases_table_2_f_0(check_hlds__switch_detection__GoalInfo_10, check_hlds__switch_detection__CasesTable1_16);
+            }
+            *check_hlds__switch_detection__STATE_VARIABLE_LocalInfo_22 = check_hlds__switch_detection__STATE_VARIABLE_LocalInfo_0_21;
+            check_hlds__switch_detection__succeeded = MR_TRUE;
+          }
+      }
+    return check_hlds__switch_detection__succeeded;
+  }
+}
+
+static void MR_CALL 
+check_hlds__switch_detection__select_best_candidate_switch_3_p_0(
+  MR_Word check_hlds__switch_detection__HeadVar__1_1,
+  MR_Word check_hlds__switch_detection__STATE_VARIABLE_BestCandidate_0_2,
+  MR_Word * check_hlds__switch_detection__STATE_VARIABLE_BestCandidate_3)
+{
+  while (MR_TRUE)
+    {
+      /* tailcall optimized into a loop */
+      {
+        MR_bool check_hlds__switch_detection__succeeded;
+
+        if ((check_hlds__switch_detection__HeadVar__1_1 == ((MR_Word) MR_mkword(MR_mktag(0), MR_mkbody((MR_Integer) 0)))))
+          *check_hlds__switch_detection__STATE_VARIABLE_BestCandidate_3 = check_hlds__switch_detection__STATE_VARIABLE_BestCandidate_0_2;
+        else
+          {
+            MR_Word check_hlds__switch_detection__Candidate_7 = ((MR_Word) (MR_hl_field(MR_mktag(1), check_hlds__switch_detection__HeadVar__1_1, (MR_Integer) 0)));
+            MR_Word check_hlds__switch_detection__Candidates_8 = ((MR_Word) (MR_hl_field(MR_mktag(1), check_hlds__switch_detection__HeadVar__1_1, (MR_Integer) 1)));
+            MR_Word check_hlds__switch_detection__Result_10;
+            MR_Word check_hlds__switch_detection__Var_13 = ((MR_Word) (MR_hl_field(MR_mktag(0), check_hlds__switch_detection__Candidate_7, (MR_Integer) 4)));
+            MR_Word check_hlds__switch_detection__Var_14 = ((MR_Word) (MR_hl_field(MR_mktag(0), check_hlds__switch_detection__STATE_VARIABLE_BestCandidate_0_2, (MR_Integer) 4)));
+            MR_Word check_hlds__switch_detection__STATE_VARIABLE_BestCandidate_15_15;
+            MR_Word check_hlds__switch_detection__Var_17 = ((MR_Word) (MR_hl_field(MR_mktag(0), check_hlds__switch_detection__Candidate_7, (MR_Integer) 0)));
+            MR_Word check_hlds__switch_detection__Var_18 = ((MR_Word) (MR_hl_field(MR_mktag(0), check_hlds__switch_detection__Candidate_7, (MR_Integer) 1)));
+            MR_Word check_hlds__switch_detection__Var_19 = ((MR_Word) (MR_hl_field(MR_mktag(0), check_hlds__switch_detection__Candidate_7, (MR_Integer) 2)));
+            MR_Word check_hlds__switch_detection__Var_20 = ((MR_Word) (MR_hl_field(MR_mktag(0), check_hlds__switch_detection__Candidate_7, (MR_Integer) 3)));
+            MR_Word check_hlds__switch_detection__Var_21 = ((MR_Word) (MR_hl_field(MR_mktag(0), check_hlds__switch_detection__Candidate_7, (MR_Integer) 5)));
+            MR_Word check_hlds__switch_detection__Var_22 = ((MR_Word) (MR_hl_field(MR_mktag(0), check_hlds__switch_detection__STATE_VARIABLE_BestCandidate_0_2, (MR_Integer) 0)));
+            MR_Word check_hlds__switch_detection__Var_23 = ((MR_Word) (MR_hl_field(MR_mktag(0), check_hlds__switch_detection__STATE_VARIABLE_BestCandidate_0_2, (MR_Integer) 1)));
+            MR_Word check_hlds__switch_detection__Var_24 = ((MR_Word) (MR_hl_field(MR_mktag(0), check_hlds__switch_detection__STATE_VARIABLE_BestCandidate_0_2, (MR_Integer) 2)));
+            MR_Word check_hlds__switch_detection__Var_25 = ((MR_Word) (MR_hl_field(MR_mktag(0), check_hlds__switch_detection__STATE_VARIABLE_BestCandidate_0_2, (MR_Integer) 3)));
+            MR_Word check_hlds__switch_detection__Var_26 = ((MR_Word) (MR_hl_field(MR_mktag(0), check_hlds__switch_detection__STATE_VARIABLE_BestCandidate_0_2, (MR_Integer) 5)));
+            MR_Integer check_hlds__switch_detection__CastX_60 = (MR_Integer) check_hlds__switch_detection__Var_13;
+            MR_Integer check_hlds__switch_detection__CastY_61 = (MR_Integer) check_hlds__switch_detection__Var_14;
+
+            check_hlds__switch_detection__succeeded = (check_hlds__switch_detection__CastX_60 == check_hlds__switch_detection__CastY_61);
+            if (check_hlds__switch_detection__succeeded)
+              check_hlds__switch_detection__Result_10 = (MR_Integer) 0;
+            else
+              switch (MR_tag((MR_Word) check_hlds__switch_detection__Var_13)) {
+                default: /*NOTREACHED*/ MR_assert(0);
+                case (MR_Integer) 0:
+                  switch (MR_unmkbody(check_hlds__switch_detection__Var_13)) {
+                    default: /*NOTREACHED*/ MR_assert(0);
+                    case (MR_Integer) 0:
+                      switch (MR_tag((MR_Word) check_hlds__switch_detection__Var_14)) {
+                        default: /*NOTREACHED*/ MR_assert(0);
+                        case (MR_Integer) 0:
+                          switch (MR_unmkbody(check_hlds__switch_detection__Var_14)) {
+                            default: /*NOTREACHED*/ MR_assert(0);
+                            case (MR_Integer) 0:
+                              check_hlds__switch_detection__Result_10 = (MR_Integer) 0;
+                              break;
+                            case (MR_Integer) 1:
+                              check_hlds__switch_detection__Result_10 = (MR_Integer) 1;
+                              break;
+                            case (MR_Integer) 2:
+                              check_hlds__switch_detection__Result_10 = (MR_Integer) 1;
+                              break;
+                            case (MR_Integer) 3:
+                              check_hlds__switch_detection__Result_10 = (MR_Integer) 1;
+                              break;
+                            case (MR_Integer) 4:
+                              check_hlds__switch_detection__Result_10 = (MR_Integer) 1;
+                              break;
+                            case (MR_Integer) 5:
+                              check_hlds__switch_detection__Result_10 = (MR_Integer) 1;
+                              break;
+                          }
+                          break;
+                        case (MR_Integer) 1:
+                          check_hlds__switch_detection__Result_10 = (MR_Integer) 2;
+                          break;
+                        case (MR_Integer) 2:
+                          check_hlds__switch_detection__Result_10 = (MR_Integer) 2;
+                          break;
+                      }
+                      break;
+                    case (MR_Integer) 1:
+                      switch (MR_tag((MR_Word) check_hlds__switch_detection__Var_14)) {
+                        default: /*NOTREACHED*/ MR_assert(0);
+                        case (MR_Integer) 0:
+                          switch (MR_unmkbody(check_hlds__switch_detection__Var_14)) {
+                            default: /*NOTREACHED*/ MR_assert(0);
+                            case (MR_Integer) 0:
+                              check_hlds__switch_detection__Result_10 = (MR_Integer) 2;
+                              break;
+                            case (MR_Integer) 1:
+                              check_hlds__switch_detection__Result_10 = (MR_Integer) 0;
+                              break;
+                            case (MR_Integer) 2:
+                              check_hlds__switch_detection__Result_10 = (MR_Integer) 1;
+                              break;
+                            case (MR_Integer) 3:
+                              check_hlds__switch_detection__Result_10 = (MR_Integer) 1;
+                              break;
+                            case (MR_Integer) 4:
+                              check_hlds__switch_detection__Result_10 = (MR_Integer) 1;
+                              break;
+                            case (MR_Integer) 5:
+                              check_hlds__switch_detection__Result_10 = (MR_Integer) 1;
+                              break;
+                          }
+                          break;
+                        case (MR_Integer) 1:
+                          check_hlds__switch_detection__Result_10 = (MR_Integer) 2;
+                          break;
+                        case (MR_Integer) 2:
+                          check_hlds__switch_detection__Result_10 = (MR_Integer) 2;
+                          break;
+                      }
+                      break;
+                    case (MR_Integer) 2:
+                      switch (MR_tag((MR_Word) check_hlds__switch_detection__Var_14)) {
+                        default: /*NOTREACHED*/ MR_assert(0);
+                        case (MR_Integer) 0:
+                          switch (MR_unmkbody(check_hlds__switch_detection__Var_14)) {
+                            default: /*NOTREACHED*/ MR_assert(0);
+                            case (MR_Integer) 0:
+                              check_hlds__switch_detection__Result_10 = (MR_Integer) 2;
+                              break;
+                            case (MR_Integer) 1:
+                              check_hlds__switch_detection__Result_10 = (MR_Integer) 2;
+                              break;
+                            case (MR_Integer) 2:
+                              check_hlds__switch_detection__Result_10 = (MR_Integer) 0;
+                              break;
+                            case (MR_Integer) 3:
+                              check_hlds__switch_detection__Result_10 = (MR_Integer) 1;
+                              break;
+                            case (MR_Integer) 4:
+                              check_hlds__switch_detection__Result_10 = (MR_Integer) 1;
+                              break;
+                            case (MR_Integer) 5:
+                              check_hlds__switch_detection__Result_10 = (MR_Integer) 1;
+                              break;
+                          }
+                          break;
+                        case (MR_Integer) 1:
+                          check_hlds__switch_detection__Result_10 = (MR_Integer) 2;
+                          break;
+                        case (MR_Integer) 2:
+                          check_hlds__switch_detection__Result_10 = (MR_Integer) 2;
+                          break;
+                      }
+                      break;
+                    case (MR_Integer) 3:
+                      switch (MR_tag((MR_Word) check_hlds__switch_detection__Var_14)) {
+                        default: /*NOTREACHED*/ MR_assert(0);
+                        case (MR_Integer) 0:
+                          switch (MR_unmkbody(check_hlds__switch_detection__Var_14)) {
+                            default: /*NOTREACHED*/ MR_assert(0);
+                            case (MR_Integer) 0:
+                              check_hlds__switch_detection__Result_10 = (MR_Integer) 2;
+                              break;
+                            case (MR_Integer) 1:
+                              check_hlds__switch_detection__Result_10 = (MR_Integer) 2;
+                              break;
+                            case (MR_Integer) 2:
+                              check_hlds__switch_detection__Result_10 = (MR_Integer) 2;
+                              break;
+                            case (MR_Integer) 3:
+                              check_hlds__switch_detection__Result_10 = (MR_Integer) 0;
+                              break;
+                            case (MR_Integer) 4:
+                              check_hlds__switch_detection__Result_10 = (MR_Integer) 1;
+                              break;
+                            case (MR_Integer) 5:
+                              check_hlds__switch_detection__Result_10 = (MR_Integer) 1;
+                              break;
+                          }
+                          break;
+                        case (MR_Integer) 1:
+                          check_hlds__switch_detection__Result_10 = (MR_Integer) 2;
+                          break;
+                        case (MR_Integer) 2:
+                          check_hlds__switch_detection__Result_10 = (MR_Integer) 2;
+                          break;
+                      }
+                      break;
+                    case (MR_Integer) 4:
+                      switch (MR_tag((MR_Word) check_hlds__switch_detection__Var_14)) {
+                        default: /*NOTREACHED*/ MR_assert(0);
+                        case (MR_Integer) 0:
+                          switch (MR_unmkbody(check_hlds__switch_detection__Var_14)) {
+                            default: /*NOTREACHED*/ MR_assert(0);
+                            case (MR_Integer) 0:
+                              check_hlds__switch_detection__Result_10 = (MR_Integer) 2;
+                              break;
+                            case (MR_Integer) 1:
+                              check_hlds__switch_detection__Result_10 = (MR_Integer) 2;
+                              break;
+                            case (MR_Integer) 2:
+                              check_hlds__switch_detection__Result_10 = (MR_Integer) 2;
+                              break;
+                            case (MR_Integer) 3:
+                              check_hlds__switch_detection__Result_10 = (MR_Integer) 2;
+                              break;
+                            case (MR_Integer) 4:
+                              check_hlds__switch_detection__Result_10 = (MR_Integer) 0;
+                              break;
+                            case (MR_Integer) 5:
+                              check_hlds__switch_detection__Result_10 = (MR_Integer) 1;
+                              break;
+                          }
+                          break;
+                        case (MR_Integer) 1:
+                          check_hlds__switch_detection__Result_10 = (MR_Integer) 2;
+                          break;
+                        case (MR_Integer) 2:
+                          check_hlds__switch_detection__Result_10 = (MR_Integer) 2;
+                          break;
+                      }
+                      break;
+                    case (MR_Integer) 5:
+                      switch (MR_tag((MR_Word) check_hlds__switch_detection__Var_14)) {
+                        default: /*NOTREACHED*/ MR_assert(0);
+                        case (MR_Integer) 0:
+                          switch (MR_unmkbody(check_hlds__switch_detection__Var_14)) {
+                            default: /*NOTREACHED*/ MR_assert(0);
+                            case (MR_Integer) 0:
+                              check_hlds__switch_detection__Result_10 = (MR_Integer) 2;
+                              break;
+                            case (MR_Integer) 1:
+                              check_hlds__switch_detection__Result_10 = (MR_Integer) 2;
+                              break;
+                            case (MR_Integer) 2:
+                              check_hlds__switch_detection__Result_10 = (MR_Integer) 2;
+                              break;
+                            case (MR_Integer) 3:
+                              check_hlds__switch_detection__Result_10 = (MR_Integer) 2;
+                              break;
+                            case (MR_Integer) 4:
+                              check_hlds__switch_detection__Result_10 = (MR_Integer) 2;
+                              break;
+                            case (MR_Integer) 5:
+                              check_hlds__switch_detection__Result_10 = (MR_Integer) 0;
+                              break;
+                          }
+                          break;
+                        case (MR_Integer) 1:
+                          check_hlds__switch_detection__Result_10 = (MR_Integer) 2;
+                          break;
+                        case (MR_Integer) 2:
+                          check_hlds__switch_detection__Result_10 = (MR_Integer) 2;
+                          break;
+                      }
+                      break;
+                  }
+                  break;
+                case (MR_Integer) 1:
+                  {
+                    MR_Integer check_hlds__switch_detection__Var_64 = ((MR_Integer) (MR_hl_field(MR_mktag(1), check_hlds__switch_detection__Var_13, (MR_Integer) 0)));
+
+                    switch (MR_tag((MR_Word) check_hlds__switch_detection__Var_14)) {
+                      default: /*NOTREACHED*/ MR_assert(0);
+                      case (MR_Integer) 0:
+                        switch (MR_unmkbody(check_hlds__switch_detection__Var_14)) {
+                          default: /*NOTREACHED*/ MR_assert(0);
+                          case (MR_Integer) 0:
+                            check_hlds__switch_detection__Result_10 = (MR_Integer) 1;
+                            break;
+                          case (MR_Integer) 1:
+                            check_hlds__switch_detection__Result_10 = (MR_Integer) 1;
+                            break;
+                          case (MR_Integer) 2:
+                            check_hlds__switch_detection__Result_10 = (MR_Integer) 1;
+                            break;
+                          case (MR_Integer) 3:
+                            check_hlds__switch_detection__Result_10 = (MR_Integer) 1;
+                            break;
+                          case (MR_Integer) 4:
+                            check_hlds__switch_detection__Result_10 = (MR_Integer) 1;
+                            break;
+                          case (MR_Integer) 5:
+                            check_hlds__switch_detection__Result_10 = (MR_Integer) 1;
+                            break;
+                        }
+                        break;
+                      case (MR_Integer) 1:
+                        {
+                          MR_Integer check_hlds__switch_detection__Var_29 = ((MR_Integer) (MR_hl_field(MR_mktag(1), check_hlds__switch_detection__Var_14, (MR_Integer) 0)));
+
+                          {
+                            mercury__private_builtin__builtin_compare_int_3_p_0(&check_hlds__switch_detection__Result_10, check_hlds__switch_detection__Var_64, check_hlds__switch_detection__Var_29);
+                          }
+                        }
+                        break;
+                      case (MR_Integer) 2:
+                        check_hlds__switch_detection__Result_10 = (MR_Integer) 1;
+                        break;
+                    }
+                  }
+                  break;
+                case (MR_Integer) 2:
+                  {
+                    MR_Integer check_hlds__switch_detection__Var_65 = ((MR_Integer) (MR_hl_field(MR_mktag(2), check_hlds__switch_detection__Var_13, (MR_Integer) 0)));
+
+                    switch (MR_tag((MR_Word) check_hlds__switch_detection__Var_14)) {
+                      default: /*NOTREACHED*/ MR_assert(0);
+                      case (MR_Integer) 0:
+                        switch (MR_unmkbody(check_hlds__switch_detection__Var_14)) {
+                          default: /*NOTREACHED*/ MR_assert(0);
+                          case (MR_Integer) 0:
+                            check_hlds__switch_detection__Result_10 = (MR_Integer) 1;
+                            break;
+                          case (MR_Integer) 1:
+                            check_hlds__switch_detection__Result_10 = (MR_Integer) 1;
+                            break;
+                          case (MR_Integer) 2:
+                            check_hlds__switch_detection__Result_10 = (MR_Integer) 1;
+                            break;
+                          case (MR_Integer) 3:
+                            check_hlds__switch_detection__Result_10 = (MR_Integer) 1;
+                            break;
+                          case (MR_Integer) 4:
+                            check_hlds__switch_detection__Result_10 = (MR_Integer) 1;
+                            break;
+                          case (MR_Integer) 5:
+                            check_hlds__switch_detection__Result_10 = (MR_Integer) 1;
+                            break;
+                        }
+                        break;
+                      case (MR_Integer) 1:
+                        check_hlds__switch_detection__Result_10 = (MR_Integer) 2;
+                        break;
+                      case (MR_Integer) 2:
+                        {
+                          MR_Integer check_hlds__switch_detection__Var_41 = ((MR_Integer) (MR_hl_field(MR_mktag(2), check_hlds__switch_detection__Var_14, (MR_Integer) 0)));
+
+                          {
+                            mercury__private_builtin__builtin_compare_int_3_p_0(&check_hlds__switch_detection__Result_10, check_hlds__switch_detection__Var_65, check_hlds__switch_detection__Var_41);
+                          }
+                        }
+                        break;
+                    }
+                  }
+                  break;
+              }
+            switch (check_hlds__switch_detection__Result_10) {
+              default: /*NOTREACHED*/ MR_assert(0);
+              case (MR_Integer) 1:
+                check_hlds__switch_detection__STATE_VARIABLE_BestCandidate_15_15 = check_hlds__switch_detection__STATE_VARIABLE_BestCandidate_0_2;
+                break;
+              case (MR_Integer) 0:
+                check_hlds__switch_detection__STATE_VARIABLE_BestCandidate_15_15 = check_hlds__switch_detection__STATE_VARIABLE_BestCandidate_0_2;
+                break;
+              case (MR_Integer) 2:
+                check_hlds__switch_detection__STATE_VARIABLE_BestCandidate_15_15 = check_hlds__switch_detection__Candidate_7;
+                break;
+            }
+            /* direct tailcall eliminated */
+            {
+              MR_Word check_hlds__switch_detection__next_value_of_HeadVar__1_1 = check_hlds__switch_detection__Candidates_8;
+              MR_Word check_hlds__switch_detection__next_value_of_STATE_VARIABLE_BestCandidate_0_2 = check_hlds__switch_detection__STATE_VARIABLE_BestCandidate_15_15;
+
+              check_hlds__switch_detection__STATE_VARIABLE_BestCandidate_0_2 = check_hlds__switch_detection__next_value_of_STATE_VARIABLE_BestCandidate_0_2;
+              check_hlds__switch_detection__HeadVar__1_1 = check_hlds__switch_detection__next_value_of_HeadVar__1_1;
+            }
+            continue;
+          }
+      }
+      break;
+    }
+}
+
+static MR_bool MR_CALL 
+check_hlds__switch_detection__is_candidate_switch_8_p_0(
+  MR_Word check_hlds__switch_detection__ModuleInfo_9,
+  MR_Word check_hlds__switch_detection__MaybeRequiredVar_10,
+  MR_Word check_hlds__switch_detection__Var_11,
+  MR_Word check_hlds__switch_detection__VarType_12,
+  MR_Word check_hlds__switch_detection__VarInst0_13,
+  MR_Word check_hlds__switch_detection__Cases0_14,
+  MR_Word check_hlds__switch_detection__LeftOver_15,
+  MR_Word * check_hlds__switch_detection__Candidate_16)
+{
+  {
+    MR_bool check_hlds__switch_detection__succeeded = (check_hlds__switch_detection__LeftOver_15 == ((MR_Word) MR_mkword(MR_mktag(0), MR_mkbody((MR_Integer) 0))));
+    MR_Word check_hlds__switch_detection__CanFail_20;
+    MR_Word check_hlds__switch_detection__CasesMissing_21;
+    MR_Word check_hlds__switch_detection__Cases_22;
+    MR_Word check_hlds__switch_detection__UnreachableCaseGoals_23;
+    MR_Word check_hlds__switch_detection__Rank_24;
+    MR_Word check_hlds__switch_detection__Functors_42;
+
+    if (!(check_hlds__switch_detection__succeeded))
+      {
+        MR_Word check_hlds__switch_detection__Var_31;
+        MR_Word check_hlds__switch_detection__Var_17;
+        MR_Word check_hlds__switch_detection__Var_18;
+        MR_Word check_hlds__switch_detection__Var_19;
+
+        check_hlds__switch_detection__succeeded = ((MR_tag((MR_Word) check_hlds__switch_detection__Cases0_14)) == (MR_mktag((MR_Integer) 1)));
+        if (check_hlds__switch_detection__succeeded)
+          {
+            check_hlds__switch_detection__Var_17 = ((MR_Word) (MR_hl_field(MR_mktag(1), check_hlds__switch_detection__Cases0_14, (MR_Integer) 0)));
+            check_hlds__switch_detection__Var_31 = ((MR_Word) (MR_hl_field(MR_mktag(1), check_hlds__switch_detection__Cases0_14, (MR_Integer) 1)));
+            check_hlds__switch_detection__succeeded = ((MR_tag((MR_Word) check_hlds__switch_detection__Var_31)) == (MR_mktag((MR_Integer) 1)));
+            if (check_hlds__switch_detection__succeeded)
+              {
+                check_hlds__switch_detection__Var_18 = ((MR_Word) (MR_hl_field(MR_mktag(1), check_hlds__switch_detection__Var_31, (MR_Integer) 0)));
+                check_hlds__switch_detection__Var_19 = ((MR_Word) (MR_hl_field(MR_mktag(1), check_hlds__switch_detection__Var_31, (MR_Integer) 1)));
+              }
+          }
+      }
+    if (check_hlds__switch_detection__succeeded)
+      {
+        {
+          check_hlds__switch_detection__succeeded = check_hlds__inst_test__inst_is_bound_to_functors_3_p_0(check_hlds__switch_detection__ModuleInfo_9, check_hlds__switch_detection__VarInst0_13, &check_hlds__switch_detection__Functors_42);
+        }
+        if (check_hlds__switch_detection__succeeded)
+          {
+            MR_Word check_hlds__switch_detection__TypeCtorInfo_11_52;
+            MR_Word check_hlds__switch_detection__TypeCtor_43;
+            MR_Word check_hlds__switch_detection__ConsIds_44;
+            MR_Word check_hlds__switch_detection__UncoveredFunctors0_50;
+            MR_Word check_hlds__switch_detection__UncoveredFunctors_51;
+
+            {
+              parse_tree__prog_type__type_to_ctor_det_2_p_0(check_hlds__switch_detection__VarType_12, &check_hlds__switch_detection__TypeCtor_43);
+            }
+            {
+              parse_tree__prog_mode__bound_insts_to_cons_ids_3_p_0(check_hlds__switch_detection__TypeCtor_43, check_hlds__switch_detection__Functors_42, &check_hlds__switch_detection__ConsIds_44);
+            }
+            {
+              check_hlds__det_util__delete_unreachable_cases_4_p_0(check_hlds__switch_detection__Cases0_14, check_hlds__switch_detection__ConsIds_44, &check_hlds__switch_detection__Cases_22, &check_hlds__switch_detection__UnreachableCaseGoals_23);
+            }
+            check_hlds__switch_detection__TypeCtorInfo_11_52 = (MR_Word) &parse_tree__prog_data__parse_tree__prog_data__type_ctor_info_cons_id_0;
+            {
+              check_hlds__switch_detection__UncoveredFunctors0_50 = mercury__set_tree234__list_to_set_1_f_0(check_hlds__switch_detection__TypeCtorInfo_11_52, check_hlds__switch_detection__ConsIds_44);
+            }
+            {
+              check_hlds__switch_detection__delete_covered_functors_3_p_0(check_hlds__switch_detection__Cases_22, check_hlds__switch_detection__UncoveredFunctors0_50, &check_hlds__switch_detection__UncoveredFunctors_51);
+            }
+            {
+              check_hlds__switch_detection__succeeded = mercury__set_tree234__empty_1_p_0(check_hlds__switch_detection__TypeCtorInfo_11_52, check_hlds__switch_detection__UncoveredFunctors_51);
+            }
+            if (check_hlds__switch_detection__succeeded)
+              {
+                check_hlds__switch_detection__CanFail_20 = (MR_Integer) 1;
+                check_hlds__switch_detection__CasesMissing_21 = (MR_Integer) 0;
+              }
+            else
+              {
+                check_hlds__switch_detection__CanFail_20 = (MR_Integer) 0;
+                check_hlds__switch_detection__CasesMissing_21 = (MR_Integer) 1;
+              }
+          }
+        else
+          {
+            MR_Integer check_hlds__switch_detection__NumFunctors_45;
+
+            check_hlds__switch_detection__Cases_22 = check_hlds__switch_detection__Cases0_14;
+            check_hlds__switch_detection__UnreachableCaseGoals_23 = (MR_Word) MR_mkword(MR_mktag(0), MR_mkbody((MR_Integer) 0));
+            {
+              check_hlds__switch_detection__succeeded = check_hlds__type_util__switch_type_num_functors_3_p_0(check_hlds__switch_detection__ModuleInfo_9, check_hlds__switch_detection__VarType_12, &check_hlds__switch_detection__NumFunctors_45);
+            }
+            if (check_hlds__switch_detection__succeeded)
+              {
+                MR_Integer check_hlds__switch_detection__NumCoveredConsIds_57;
+
+                {
+                  check_hlds__switch_detection__NumCoveredConsIds_57 = check_hlds__switch_detection__count_covered_cons_ids_1_f_0(check_hlds__switch_detection__Cases_22);
+                }
+                check_hlds__switch_detection__succeeded = (check_hlds__switch_detection__NumCoveredConsIds_57 == check_hlds__switch_detection__NumFunctors_45);
+                if (check_hlds__switch_detection__succeeded)
+                  {
+                    check_hlds__switch_detection__CanFail_20 = (MR_Integer) 1;
+                    check_hlds__switch_detection__CasesMissing_21 = (MR_Integer) 0;
+                  }
+                else
+                  {
+                    check_hlds__switch_detection__CanFail_20 = (MR_Integer) 0;
+                    check_hlds__switch_detection__CasesMissing_21 = (MR_Integer) 1;
+                  }
+              }
+            else
+              {
+                check_hlds__switch_detection__CanFail_20 = (MR_Integer) 0;
+                check_hlds__switch_detection__CasesMissing_21 = (MR_Integer) 2;
+              }
+          }
+        if ((check_hlds__switch_detection__LeftOver_15 == ((MR_Word) MR_mkword(MR_mktag(0), MR_mkbody((MR_Integer) 0)))))
+          if ((check_hlds__switch_detection__Cases_22 == ((MR_Word) MR_mkword(MR_mktag(0), MR_mkbody((MR_Integer) 0)))))
+            check_hlds__switch_detection__Rank_24 = (MR_Word) MR_mkword(MR_mktag(0), MR_mkbody((MR_Integer) 4));
+          else
+            {
+              MR_Word check_hlds__switch_detection__LaterCases_26 = ((MR_Word) (MR_hl_field(MR_mktag(1), check_hlds__switch_detection__Cases_22, (MR_Integer) 1)));
+              MR_Word check_hlds__switch_detection___FirstCase_25 = ((MR_Word) (MR_hl_field(MR_mktag(1), check_hlds__switch_detection__Cases_22, (MR_Integer) 0)));
+
+              check_hlds__switch_detection__succeeded = (check_hlds__switch_detection__LaterCases_26 == ((MR_Word) MR_mkword(MR_mktag(0), MR_mkbody((MR_Integer) 0))));
+              if (check_hlds__switch_detection__succeeded)
+                check_hlds__switch_detection__succeeded = (check_hlds__switch_detection__UnreachableCaseGoals_23 == ((MR_Word) MR_mkword(MR_mktag(0), MR_mkbody((MR_Integer) 0))));
+              if (check_hlds__switch_detection__succeeded)
+                check_hlds__switch_detection__Rank_24 = (MR_Word) MR_mkword(MR_mktag(0), MR_mkbody((MR_Integer) 1));
+              else
+                {
+                  MR_Word check_hlds__switch_detection__TypeInfo_33_33;
+                  MR_Word check_hlds__switch_detection__RequiredVar_27;
+
+                  check_hlds__switch_detection__succeeded = ((MR_tag((MR_Word) check_hlds__switch_detection__MaybeRequiredVar_10)) == (MR_mktag((MR_Integer) 1)));
+                  if (check_hlds__switch_detection__succeeded)
+                    {
+                      check_hlds__switch_detection__RequiredVar_27 = ((MR_Word) (MR_hl_field(MR_mktag(1), check_hlds__switch_detection__MaybeRequiredVar_10, (MR_Integer) 0)));
+                      check_hlds__switch_detection__TypeInfo_33_33 = (MR_Word) &check_hlds__switch_detection_scalar_common_1[0];
+                      {
+                        check_hlds__switch_detection__succeeded = mercury__builtin__unify_2_p_0(check_hlds__switch_detection__TypeInfo_33_33, ((MR_Box) (check_hlds__switch_detection__RequiredVar_27)), ((MR_Box) (check_hlds__switch_detection__Var_11)));
+                      }
+                    }
+                  if (check_hlds__switch_detection__succeeded)
+                    check_hlds__switch_detection__Rank_24 = (MR_Word) MR_mkword(MR_mktag(0), MR_mkbody((MR_Integer) 5));
+                  else
+                    switch (check_hlds__switch_detection__CasesMissing_21) {
+                      default: /*NOTREACHED*/ MR_assert(0);
+                      case (MR_Integer) 0:
+                        check_hlds__switch_detection__Rank_24 = (MR_Word) MR_mkword(MR_mktag(0), MR_mkbody((MR_Integer) 3));
+                        break;
+                      case (MR_Integer) 1:
+                        check_hlds__switch_detection__Rank_24 = (MR_Word) MR_mkword(MR_mktag(0), MR_mkbody((MR_Integer) 0));
+                        break;
+                      case (MR_Integer) 2:
+                        check_hlds__switch_detection__Rank_24 = (MR_Word) MR_mkword(MR_mktag(0), MR_mkbody((MR_Integer) 2));
+                        break;
+                    }
+                }
+            }
+        else
+          {
+            MR_Integer check_hlds__switch_detection__NumCases_30;
+
+            {
+              mercury__list__length_2_p_0((MR_Word) &hlds__hlds_goal__hlds__hlds_goal__type_ctor_info_case_0, check_hlds__switch_detection__Cases_22, &check_hlds__switch_detection__NumCases_30);
+            }
+            switch (check_hlds__switch_detection__CanFail_20) {
+              default: /*NOTREACHED*/ MR_assert(0);
+              case (MR_Integer) 0:
+                {
+                  check_hlds__switch_detection__Rank_24 = (MR_Word) MR_mkword(MR_mktag(1), MR_new_object(MR_Word, ((MR_Integer) 1 * sizeof(MR_Word)), NULL, NULL));
+                  MR_hl_field(MR_mktag(1), check_hlds__switch_detection__Rank_24, 0) = ((MR_Box) (check_hlds__switch_detection__NumCases_30));
+                }
+                break;
+              case (MR_Integer) 1:
+                {
+                  check_hlds__switch_detection__Rank_24 = (MR_Word) MR_mkword(MR_mktag(2), MR_new_object(MR_Word, ((MR_Integer) 1 * sizeof(MR_Word)), NULL, NULL));
+                  MR_hl_field(MR_mktag(2), check_hlds__switch_detection__Rank_24, 0) = ((MR_Box) (check_hlds__switch_detection__NumCases_30));
+                }
+                break;
+            }
+          }
+        {
+          MR_Word base;
+          base = (MR_Word) MR_new_object(MR_Word, ((MR_Integer) 6 * sizeof(MR_Word)), NULL, NULL);
+          *check_hlds__switch_detection__Candidate_16 = base;
+          MR_hl_field(MR_mktag(0), base, 0) = ((MR_Box) (check_hlds__switch_detection__Var_11));
+          MR_hl_field(MR_mktag(0), base, 1) = ((MR_Box) (check_hlds__switch_detection__Cases_22));
+          MR_hl_field(MR_mktag(0), base, 2) = ((MR_Box) (check_hlds__switch_detection__UnreachableCaseGoals_23));
+          MR_hl_field(MR_mktag(0), base, 3) = ((MR_Box) (check_hlds__switch_detection__LeftOver_15));
+          MR_hl_field(MR_mktag(0), base, 4) = ((MR_Box) (check_hlds__switch_detection__Rank_24));
+          MR_hl_field(MR_mktag(0), base, 5) = ((MR_Box) (check_hlds__switch_detection__CanFail_20));
+        }
+        check_hlds__switch_detection__succeeded = MR_TRUE;
+      }
+    return check_hlds__switch_detection__succeeded;
+  }
+}
+
+static void MR_CALL 
+check_hlds__switch_detection__detect_switch_candidates_in_disj_9_p_0(
+  MR_Word check_hlds__switch_detection__HeadVar__1_1,
+  MR_Word check_hlds__switch_detection__HeadVar__2_2,
+  MR_Word check_hlds__switch_detection__HeadVar__3_3,
+  MR_Word check_hlds__switch_detection__HeadVar__4_4,
+  MR_Word check_hlds__switch_detection__HeadVar__5_5,
+  MR_Word check_hlds__switch_detection__STATE_VARIABLE_Candidates_0_6,
+  MR_Word * check_hlds__switch_detection__STATE_VARIABLE_Candidates_7,
+  MR_Word check_hlds__switch_detection__STATE_VARIABLE_LocalInfo_0_8,
+  MR_Word * check_hlds__switch_detection__STATE_VARIABLE_LocalInfo_9)
+{
+  while (MR_TRUE)
+    {
+      /* tailcall optimized into a loop */
+      {
+        MR_bool check_hlds__switch_detection__succeeded;
+
+        if ((check_hlds__switch_detection__HeadVar__5_5 == ((MR_Word) MR_mkword(MR_mktag(0), MR_mkbody((MR_Integer) 0)))))
+          {
+            *check_hlds__switch_detection__STATE_VARIABLE_LocalInfo_9 = check_hlds__switch_detection__STATE_VARIABLE_LocalInfo_0_8;
+            *check_hlds__switch_detection__STATE_VARIABLE_Candidates_7 = check_hlds__switch_detection__STATE_VARIABLE_Candidates_0_6;
+          }
+        else
+          {
+            MR_Word check_hlds__switch_detection__Var_24 = ((MR_Word) (MR_hl_field(MR_mktag(1), check_hlds__switch_detection__HeadVar__5_5, (MR_Integer) 0)));
+            MR_Word check_hlds__switch_detection__Vars_25 = ((MR_Word) (MR_hl_field(MR_mktag(1), check_hlds__switch_detection__HeadVar__5_5, (MR_Integer) 1)));
+            MR_Word check_hlds__switch_detection__ModuleInfo_28 = ((MR_Word) (MR_hl_field(MR_mktag(0), check_hlds__switch_detection__STATE_VARIABLE_LocalInfo_0_8, (MR_Integer) 0)));
+            MR_Word check_hlds__switch_detection__VarInst0_29;
+            MR_Word check_hlds__switch_detection__STATE_VARIABLE_Candidates_40_40;
+            MR_Word check_hlds__switch_detection__STATE_VARIABLE_LocalInfo_41_41;
+            MR_Word check_hlds__switch_detection__Var_44 = ((MR_Word) (MR_hl_field(MR_mktag(0), check_hlds__switch_detection__STATE_VARIABLE_LocalInfo_0_8, (MR_Integer) 1)));
+            MR_Word check_hlds__switch_detection__Var_45 = ((MR_Word) (MR_hl_field(MR_mktag(0), check_hlds__switch_detection__STATE_VARIABLE_LocalInfo_0_8, (MR_Integer) 2)));
+            MR_Word check_hlds__switch_detection__Var_46 = ((MR_Word) (MR_hl_field(MR_mktag(0), check_hlds__switch_detection__STATE_VARIABLE_LocalInfo_0_8, (MR_Integer) 3)));
+            MR_Word check_hlds__switch_detection__Var_47 = ((MR_Word) (MR_hl_field(MR_mktag(0), check_hlds__switch_detection__STATE_VARIABLE_LocalInfo_0_8, (MR_Integer) 4)));
+            MR_Word check_hlds__switch_detection__Candidate_34;
+            MR_Word check_hlds__switch_detection__STATE_VARIABLE_LocalInfo_39_39;
+            MR_Word check_hlds__switch_detection__Left_30;
+            MR_Word check_hlds__switch_detection__Cases_31;
+            MR_Word check_hlds__switch_detection__VarTypes_32;
+            MR_Word check_hlds__switch_detection__VarType_33;
+            MR_Word check_hlds__switch_detection__Var_48;
+            MR_Word check_hlds__switch_detection__Var_49;
+            MR_Word check_hlds__switch_detection__Var_50;
+            MR_Word check_hlds__switch_detection__Var_51;
+
+            {
+              hlds__instmap__instmap_lookup_var_3_p_0(check_hlds__switch_detection__HeadVar__3_3, check_hlds__switch_detection__Var_24, &check_hlds__switch_detection__VarInst0_29);
+            }
+            {
+              check_hlds__switch_detection__succeeded = check_hlds__inst_test__inst_is_bound_2_p_0(check_hlds__switch_detection__ModuleInfo_28, check_hlds__switch_detection__VarInst0_29);
+            }
+            if (check_hlds__switch_detection__succeeded)
+              {
+                {
+                  check_hlds__switch_detection__succeeded = check_hlds__switch_detection__partition_disj_7_p_0(check_hlds__switch_detection__HeadVar__2_2, check_hlds__switch_detection__Var_24, check_hlds__switch_detection__HeadVar__1_1, &check_hlds__switch_detection__Left_30, &check_hlds__switch_detection__Cases_31, check_hlds__switch_detection__STATE_VARIABLE_LocalInfo_0_8, &check_hlds__switch_detection__STATE_VARIABLE_LocalInfo_39_39);
+                }
+                if (check_hlds__switch_detection__succeeded)
+                  {
+                    check_hlds__switch_detection__Var_48 = ((MR_Word) (MR_hl_field(MR_mktag(0), check_hlds__switch_detection__STATE_VARIABLE_LocalInfo_39_39, (MR_Integer) 0)));
+                    check_hlds__switch_detection__Var_49 = ((MR_Word) (MR_hl_field(MR_mktag(0), check_hlds__switch_detection__STATE_VARIABLE_LocalInfo_39_39, (MR_Integer) 1)));
+                    check_hlds__switch_detection__VarTypes_32 = ((MR_Word) (MR_hl_field(MR_mktag(0), check_hlds__switch_detection__STATE_VARIABLE_LocalInfo_39_39, (MR_Integer) 2)));
+                    check_hlds__switch_detection__Var_50 = ((MR_Word) (MR_hl_field(MR_mktag(0), check_hlds__switch_detection__STATE_VARIABLE_LocalInfo_39_39, (MR_Integer) 3)));
+                    check_hlds__switch_detection__Var_51 = ((MR_Word) (MR_hl_field(MR_mktag(0), check_hlds__switch_detection__STATE_VARIABLE_LocalInfo_39_39, (MR_Integer) 4)));
+                    {
+                      hlds__vartypes__lookup_var_type_3_p_0(check_hlds__switch_detection__VarTypes_32, check_hlds__switch_detection__Var_24, &check_hlds__switch_detection__VarType_33);
+                    }
+                    {
+                      check_hlds__switch_detection__succeeded = check_hlds__switch_detection__is_candidate_switch_8_p_0(check_hlds__switch_detection__ModuleInfo_28, check_hlds__switch_detection__HeadVar__4_4, check_hlds__switch_detection__Var_24, check_hlds__switch_detection__VarType_33, check_hlds__switch_detection__VarInst0_29, check_hlds__switch_detection__Cases_31, check_hlds__switch_detection__Left_30, &check_hlds__switch_detection__Candidate_34);
+                    }
+                  }
+              }
+            if (check_hlds__switch_detection__succeeded)
+              {
+                check_hlds__switch_detection__STATE_VARIABLE_LocalInfo_41_41 = check_hlds__switch_detection__STATE_VARIABLE_LocalInfo_39_39;
+                {
+                  check_hlds__switch_detection__STATE_VARIABLE_Candidates_40_40 = mercury__cord__snoc_2_f_0((MR_Word) &check_hlds__switch_detection__check_hlds__switch_detection__type_ctor_info_candidate_switch_0, check_hlds__switch_detection__STATE_VARIABLE_Candidates_0_6, ((MR_Box) (check_hlds__switch_detection__Candidate_34)));
+                }
+              }
+            else
+              {
+                check_hlds__switch_detection__STATE_VARIABLE_LocalInfo_41_41 = check_hlds__switch_detection__STATE_VARIABLE_LocalInfo_0_8;
+                check_hlds__switch_detection__STATE_VARIABLE_Candidates_40_40 = check_hlds__switch_detection__STATE_VARIABLE_Candidates_0_6;
+              }
+            /* direct tailcall eliminated */
+            {
+              MR_Word check_hlds__switch_detection__next_value_of_HeadVar__5_5 = check_hlds__switch_detection__Vars_25;
+              MR_Word check_hlds__switch_detection__next_value_of_STATE_VARIABLE_Candidates_0_6 = check_hlds__switch_detection__STATE_VARIABLE_Candidates_40_40;
+              MR_Word check_hlds__switch_detection__next_value_of_STATE_VARIABLE_LocalInfo_0_8 = check_hlds__switch_detection__STATE_VARIABLE_LocalInfo_41_41;
+
+              check_hlds__switch_detection__STATE_VARIABLE_LocalInfo_0_8 = check_hlds__switch_detection__next_value_of_STATE_VARIABLE_LocalInfo_0_8;
+              check_hlds__switch_detection__STATE_VARIABLE_Candidates_0_6 = check_hlds__switch_detection__next_value_of_STATE_VARIABLE_Candidates_0_6;
+              check_hlds__switch_detection__HeadVar__5_5 = check_hlds__switch_detection__next_value_of_HeadVar__5_5;
+            }
+            continue;
+          }
+      }
+      break;
+    }
+}
+
+static void MR_CALL 
+check_hlds__switch_detection__detect_switches_in_disj_7_p_0(
+  MR_Word check_hlds__switch_detection__GoalInfo_8,
+  MR_Word check_hlds__switch_detection__Disjuncts0_9,
+  MR_Word check_hlds__switch_detection__InstMap0_10,
+  MR_Word check_hlds__switch_detection__MaybeRequiredVar_11,
+  MR_Word * check_hlds__switch_detection__GoalExpr_12,
+  MR_Word check_hlds__switch_detection__STATE_VARIABLE_LocalInfo_0_35,
+  MR_Word * check_hlds__switch_detection__STATE_VARIABLE_LocalInfo_36)
+{
+  {
+    MR_bool check_hlds__switch_detection__succeeded;
+    MR_Word check_hlds__switch_detection__TypeCtorInfo_55_55;
+    MR_Word check_hlds__switch_detection__NonLocals_14;
+    MR_Word check_hlds__switch_detection__VarsToTry_15;
+    MR_Word check_hlds__switch_detection__CandidatesCord_16;
+    MR_Word check_hlds__switch_detection__Candidates_17;
+    MR_Word check_hlds__switch_detection__Var_37;
+    MR_Word check_hlds__switch_detection__STATE_VARIABLE_LocalInfo_38_38;
+
+    {
+      check_hlds__switch_detection__NonLocals_14 = hlds__hlds_goal__goal_info_get_nonlocals_1_f_0(check_hlds__switch_detection__GoalInfo_8);
+    }
+    {
+      parse_tree__set_of_var__to_sorted_list_2_p_0((MR_Word) &parse_tree__prog_data__parse_tree__prog_data__type_ctor_info_prog_var_type_0, check_hlds__switch_detection__NonLocals_14, &check_hlds__switch_detection__VarsToTry_15);
+    }
+    check_hlds__switch_detection__TypeCtorInfo_55_55 = (MR_Word) &check_hlds__switch_detection__check_hlds__switch_detection__type_ctor_info_candidate_switch_0;
+    {
+      check_hlds__switch_detection__Var_37 = mercury__cord__init_0_f_0(check_hlds__switch_detection__TypeCtorInfo_55_55);
+    }
+    {
+      check_hlds__switch_detection__detect_switch_candidates_in_disj_9_p_0(check_hlds__switch_detection__GoalInfo_8, check_hlds__switch_detection__Disjuncts0_9, check_hlds__switch_detection__InstMap0_10, check_hlds__switch_detection__MaybeRequiredVar_11, check_hlds__switch_detection__VarsToTry_15, check_hlds__switch_detection__Var_37, &check_hlds__switch_detection__CandidatesCord_16, check_hlds__switch_detection__STATE_VARIABLE_LocalInfo_0_35, &check_hlds__switch_detection__STATE_VARIABLE_LocalInfo_38_38);
+    }
+    {
+      check_hlds__switch_detection__Candidates_17 = mercury__cord__to_list_1_f_0(check_hlds__switch_detection__TypeCtorInfo_55_55, check_hlds__switch_detection__CandidatesCord_16);
+    }
+    if ((check_hlds__switch_detection__Candidates_17 == ((MR_Word) MR_mkword(MR_mktag(0), MR_mkbody((MR_Integer) 0)))))
+      {
+        MR_Word check_hlds__switch_detection__Disjuncts_18;
+
+        {
+          check_hlds__switch_detection__detect_sub_switches_in_disj_5_p_0(check_hlds__switch_detection__InstMap0_10, check_hlds__switch_detection__Disjuncts0_9, &check_hlds__switch_detection__Disjuncts_18, check_hlds__switch_detection__STATE_VARIABLE_LocalInfo_38_38, check_hlds__switch_detection__STATE_VARIABLE_LocalInfo_36);
+        }
+        {
+          MR_Word base;
+          base = (MR_Word) MR_mkword(MR_mktag(3), MR_new_object(MR_Word, ((MR_Integer) 2 * sizeof(MR_Word)), NULL, NULL));
+          *check_hlds__switch_detection__GoalExpr_12 = base;
+          MR_hl_field(MR_mktag(3), base, 0) = ((MR_Box) (MR_Word) ((MR_Integer) 3));
+          MR_hl_field(MR_mktag(3), base, 1) = ((MR_Box) (check_hlds__switch_detection__Disjuncts_18));
+        }
+      }
+    else
+      {
+        MR_Word check_hlds__switch_detection__FirstCandidate_19 = ((MR_Word) (MR_hl_field(MR_mktag(1), check_hlds__switch_detection__Candidates_17, (MR_Integer) 0)));
+        MR_Word check_hlds__switch_detection__LaterCandidates_20 = ((MR_Word) (MR_hl_field(MR_mktag(1), check_hlds__switch_detection__Candidates_17, (MR_Integer) 1)));
+        MR_Word check_hlds__switch_detection__BestCandidate_21;
+        MR_Word check_hlds__switch_detection__BestRank_25;
+        MR_Word check_hlds__switch_detection__Var_44;
+        MR_Word check_hlds__switch_detection__Var_45;
+        MR_Word check_hlds__switch_detection__Var_46;
+        MR_Word check_hlds__switch_detection__Var_48;
+        MR_Word check_hlds__switch_detection__Var_47;
+
+        if ((check_hlds__switch_detection__LaterCandidates_20 == ((MR_Word) MR_mkword(MR_mktag(0), MR_mkbody((MR_Integer) 0)))))
+          check_hlds__switch_detection__BestCandidate_21 = check_hlds__switch_detection__FirstCandidate_19;
+        else
+          {
+            check_hlds__switch_detection__select_best_candidate_switch_3_p_0(check_hlds__switch_detection__LaterCandidates_20, check_hlds__switch_detection__FirstCandidate_19, &check_hlds__switch_detection__BestCandidate_21);
+          }
+        check_hlds__switch_detection__Var_44 = ((MR_Word) (MR_hl_field(MR_mktag(0), check_hlds__switch_detection__BestCandidate_21, (MR_Integer) 0)));
+        check_hlds__switch_detection__Var_45 = ((MR_Word) (MR_hl_field(MR_mktag(0), check_hlds__switch_detection__BestCandidate_21, (MR_Integer) 1)));
+        check_hlds__switch_detection__Var_46 = ((MR_Word) (MR_hl_field(MR_mktag(0), check_hlds__switch_detection__BestCandidate_21, (MR_Integer) 2)));
+        check_hlds__switch_detection__Var_47 = ((MR_Word) (MR_hl_field(MR_mktag(0), check_hlds__switch_detection__BestCandidate_21, (MR_Integer) 3)));
+        check_hlds__switch_detection__BestRank_25 = ((MR_Word) (MR_hl_field(MR_mktag(0), check_hlds__switch_detection__BestCandidate_21, (MR_Integer) 4)));
+        check_hlds__switch_detection__Var_48 = ((MR_Word) (MR_hl_field(MR_mktag(0), check_hlds__switch_detection__BestCandidate_21, (MR_Integer) 5)));
+        switch (MR_tag((MR_Word) check_hlds__switch_detection__BestRank_25)) {
+          default: /*NOTREACHED*/ MR_assert(0);
+          case (MR_Integer) 0:
+            switch (MR_unmkbody(check_hlds__switch_detection__BestRank_25)) {
+              default: /*NOTREACHED*/ MR_assert(0);
+              case (MR_Integer) 0:
+              case (MR_Integer) 2:
+              case (MR_Integer) 3:
+              case (MR_Integer) 4:
+              case (MR_Integer) 5:
+                {
+                  MR_Word check_hlds__switch_detection__SwitchGoalExpr_28;
+                  MR_Word check_hlds__switch_detection__LeftDisjuncts0_29;
+                  MR_Word check_hlds__switch_detection__STATE_VARIABLE_LocalInfo_39_39;
+                  MR_Word check_hlds__switch_detection__Cases_73;
+                  MR_Word check_hlds__switch_detection__STATE_VARIABLE_LocalInfo_26_76;
+                  MR_Word check_hlds__switch_detection__Var_49;
+                  MR_Word check_hlds__switch_detection__Var_50;
+                  MR_Word check_hlds__switch_detection__Var_51;
+                  MR_Word check_hlds__switch_detection__Var_52;
+                  MR_Word check_hlds__switch_detection__Var_53;
+
+                  if ((check_hlds__switch_detection__Var_46 == ((MR_Word) MR_mkword(MR_mktag(0), MR_mkbody((MR_Integer) 0)))))
+                    check_hlds__switch_detection__STATE_VARIABLE_LocalInfo_26_76 = check_hlds__switch_detection__STATE_VARIABLE_LocalInfo_38_38;
+                  else
+                    {
+                      MR_Word check_hlds__switch_detection__UnreachableCalledProcs_70;
+                      MR_Word check_hlds__switch_detection__DeletedCallCallees0_71;
+                      MR_Word check_hlds__switch_detection__DeletedCallCallees_72;
+                      MR_Word check_hlds__switch_detection__Var_79;
+                      MR_Word check_hlds__switch_detection__Var_80;
+                      MR_Word check_hlds__switch_detection__Var_81;
+                      MR_Word check_hlds__switch_detection__Var_82;
+                      MR_Word check_hlds__switch_detection__Var_83;
+                      MR_Word check_hlds__switch_detection__Var_84;
+                      MR_Word check_hlds__switch_detection__Var_85;
+                      MR_Word check_hlds__switch_detection__Var_86;
+                      MR_Word check_hlds__switch_detection__Var_87;
+
+                      {
+                        check_hlds__switch_detection__UnreachableCalledProcs_70 = hlds__goal_util__goals_proc_refs_1_f_0(check_hlds__switch_detection__Var_46);
+                      }
+                      check_hlds__switch_detection__Var_79 = ((MR_Word) (MR_hl_field(MR_mktag(0), check_hlds__switch_detection__STATE_VARIABLE_LocalInfo_38_38, (MR_Integer) 0)));
+                      check_hlds__switch_detection__Var_80 = ((MR_Word) (MR_hl_field(MR_mktag(0), check_hlds__switch_detection__STATE_VARIABLE_LocalInfo_38_38, (MR_Integer) 1)));
+                      check_hlds__switch_detection__Var_81 = ((MR_Word) (MR_hl_field(MR_mktag(0), check_hlds__switch_detection__STATE_VARIABLE_LocalInfo_38_38, (MR_Integer) 2)));
+                      check_hlds__switch_detection__Var_82 = ((MR_Word) (MR_hl_field(MR_mktag(0), check_hlds__switch_detection__STATE_VARIABLE_LocalInfo_38_38, (MR_Integer) 3)));
+                      check_hlds__switch_detection__DeletedCallCallees0_71 = ((MR_Word) (MR_hl_field(MR_mktag(0), check_hlds__switch_detection__STATE_VARIABLE_LocalInfo_38_38, (MR_Integer) 4)));
+                      {
+                        mercury__set__union_3_p_0((MR_Word) &hlds__hlds_pred__hlds__hlds_pred__type_ctor_info_pred_proc_id_0, check_hlds__switch_detection__UnreachableCalledProcs_70, check_hlds__switch_detection__DeletedCallCallees0_71, &check_hlds__switch_detection__DeletedCallCallees_72);
+                      }
+                      check_hlds__switch_detection__Var_83 = ((MR_Word) (MR_hl_field(MR_mktag(0), check_hlds__switch_detection__STATE_VARIABLE_LocalInfo_38_38, (MR_Integer) 0)));
+                      check_hlds__switch_detection__Var_84 = ((MR_Word) (MR_hl_field(MR_mktag(0), check_hlds__switch_detection__STATE_VARIABLE_LocalInfo_38_38, (MR_Integer) 1)));
+                      check_hlds__switch_detection__Var_85 = ((MR_Word) (MR_hl_field(MR_mktag(0), check_hlds__switch_detection__STATE_VARIABLE_LocalInfo_38_38, (MR_Integer) 2)));
+                      check_hlds__switch_detection__Var_86 = ((MR_Word) (MR_hl_field(MR_mktag(0), check_hlds__switch_detection__STATE_VARIABLE_LocalInfo_38_38, (MR_Integer) 3)));
+                      check_hlds__switch_detection__Var_87 = ((MR_Word) (MR_hl_field(MR_mktag(0), check_hlds__switch_detection__STATE_VARIABLE_LocalInfo_38_38, (MR_Integer) 4)));
+                      {
+                        check_hlds__switch_detection__STATE_VARIABLE_LocalInfo_26_76 = (MR_Word) MR_new_object(MR_Word, ((MR_Integer) 5 * sizeof(MR_Word)), NULL, NULL);
+                        MR_hl_field(MR_mktag(0), check_hlds__switch_detection__STATE_VARIABLE_LocalInfo_26_76, 0) = ((MR_Box) (check_hlds__switch_detection__Var_83));
+                        MR_hl_field(MR_mktag(0), check_hlds__switch_detection__STATE_VARIABLE_LocalInfo_26_76, 1) = ((MR_Box) (check_hlds__switch_detection__Var_84));
+                        MR_hl_field(MR_mktag(0), check_hlds__switch_detection__STATE_VARIABLE_LocalInfo_26_76, 2) = ((MR_Box) (check_hlds__switch_detection__Var_85));
+                        MR_hl_field(MR_mktag(0), check_hlds__switch_detection__STATE_VARIABLE_LocalInfo_26_76, 3) = ((MR_Box) (check_hlds__switch_detection__Var_86));
+                        MR_hl_field(MR_mktag(0), check_hlds__switch_detection__STATE_VARIABLE_LocalInfo_26_76, 4) = ((MR_Box) (check_hlds__switch_detection__DeletedCallCallees_72));
+                      }
+                    }
+                  {
+                    check_hlds__switch_detection__detect_switches_in_cases_6_p_0(check_hlds__switch_detection__Var_44, check_hlds__switch_detection__InstMap0_10, check_hlds__switch_detection__Var_45, &check_hlds__switch_detection__Cases_73, check_hlds__switch_detection__STATE_VARIABLE_LocalInfo_26_76, &check_hlds__switch_detection__STATE_VARIABLE_LocalInfo_39_39);
+                  }
+                  if ((check_hlds__switch_detection__Cases_73 == ((MR_Word) MR_mkword(MR_mktag(0), MR_mkbody((MR_Integer) 0)))))
+                    {
+                      check_hlds__switch_detection__SwitchGoalExpr_28 = (MR_Word) MR_mkword(MR_mktag(3), &check_hlds__switch_detection_scalar_common_1[8]);
+                    }
+                  else
+                    {
+                      check_hlds__switch_detection__SwitchGoalExpr_28 = (MR_Word) MR_mkword(MR_mktag(3), MR_new_object(MR_Word, ((MR_Integer) 4 * sizeof(MR_Word)), NULL, NULL));
+                      MR_hl_field(MR_mktag(3), check_hlds__switch_detection__SwitchGoalExpr_28, 0) = ((MR_Box) (MR_Word) ((MR_Integer) 4));
+                      MR_hl_field(MR_mktag(3), check_hlds__switch_detection__SwitchGoalExpr_28, 1) = ((MR_Box) (check_hlds__switch_detection__Var_44));
+                      MR_hl_field(MR_mktag(3), check_hlds__switch_detection__SwitchGoalExpr_28, 2) = ((MR_Box) (check_hlds__switch_detection__Var_48));
+                      MR_hl_field(MR_mktag(3), check_hlds__switch_detection__SwitchGoalExpr_28, 3) = ((MR_Box) (check_hlds__switch_detection__Cases_73));
+                    }
+                  check_hlds__switch_detection__Var_49 = ((MR_Word) (MR_hl_field(MR_mktag(0), check_hlds__switch_detection__BestCandidate_21, (MR_Integer) 0)));
+                  check_hlds__switch_detection__Var_50 = ((MR_Word) (MR_hl_field(MR_mktag(0), check_hlds__switch_detection__BestCandidate_21, (MR_Integer) 1)));
+                  check_hlds__switch_detection__Var_51 = ((MR_Word) (MR_hl_field(MR_mktag(0), check_hlds__switch_detection__BestCandidate_21, (MR_Integer) 2)));
+                  check_hlds__switch_detection__LeftDisjuncts0_29 = ((MR_Word) (MR_hl_field(MR_mktag(0), check_hlds__switch_detection__BestCandidate_21, (MR_Integer) 3)));
+                  check_hlds__switch_detection__Var_52 = ((MR_Word) (MR_hl_field(MR_mktag(0), check_hlds__switch_detection__BestCandidate_21, (MR_Integer) 4)));
+                  check_hlds__switch_detection__Var_53 = ((MR_Word) (MR_hl_field(MR_mktag(0), check_hlds__switch_detection__BestCandidate_21, (MR_Integer) 5)));
+                  if ((check_hlds__switch_detection__LeftDisjuncts0_29 == ((MR_Word) MR_mkword(MR_mktag(0), MR_mkbody((MR_Integer) 0)))))
+                    {
+                      *check_hlds__switch_detection__GoalExpr_12 = check_hlds__switch_detection__SwitchGoalExpr_28;
+                      *check_hlds__switch_detection__STATE_VARIABLE_LocalInfo_36 = check_hlds__switch_detection__STATE_VARIABLE_LocalInfo_39_39;
+                    }
+                  else
+                    {
+                      MR_Word check_hlds__switch_detection__LeftGoal_32;
+                      MR_Word check_hlds__switch_detection__LeftDisjuncts_33;
+                      MR_Word check_hlds__switch_detection__SwitchGoal_34;
+                      MR_Word check_hlds__switch_detection__Var_41;
+                      MR_Word check_hlds__switch_detection__Var_42;
+
+                      {
+                        check_hlds__switch_detection__detect_switches_in_disj_7_p_0(check_hlds__switch_detection__GoalInfo_8, check_hlds__switch_detection__LeftDisjuncts0_29, check_hlds__switch_detection__InstMap0_10, check_hlds__switch_detection__MaybeRequiredVar_11, &check_hlds__switch_detection__LeftGoal_32, check_hlds__switch_detection__STATE_VARIABLE_LocalInfo_39_39, check_hlds__switch_detection__STATE_VARIABLE_LocalInfo_36);
+                      }
+                      {
+                        check_hlds__switch_detection__Var_41 = (MR_Word) MR_new_object(MR_Word, ((MR_Integer) 2 * sizeof(MR_Word)), NULL, NULL);
+                        MR_hl_field(MR_mktag(0), check_hlds__switch_detection__Var_41, 0) = ((MR_Box) (check_hlds__switch_detection__LeftGoal_32));
+                        MR_hl_field(MR_mktag(0), check_hlds__switch_detection__Var_41, 1) = ((MR_Box) (check_hlds__switch_detection__GoalInfo_8));
+                      }
+                      {
+                        hlds__hlds_goal__goal_to_disj_list_2_p_0(check_hlds__switch_detection__Var_41, &check_hlds__switch_detection__LeftDisjuncts_33);
+                      }
+                      {
+                        check_hlds__switch_detection__SwitchGoal_34 = (MR_Word) MR_new_object(MR_Word, ((MR_Integer) 2 * sizeof(MR_Word)), NULL, NULL);
+                        MR_hl_field(MR_mktag(0), check_hlds__switch_detection__SwitchGoal_34, 0) = ((MR_Box) (check_hlds__switch_detection__SwitchGoalExpr_28));
+                        MR_hl_field(MR_mktag(0), check_hlds__switch_detection__SwitchGoal_34, 1) = ((MR_Box) (check_hlds__switch_detection__GoalInfo_8));
+                      }
+                      {
+                        check_hlds__switch_detection__Var_42 = (MR_Word) MR_mkword(MR_mktag(1), MR_new_object(MR_Word, ((MR_Integer) 2 * sizeof(MR_Word)), NULL, NULL));
+                        MR_hl_field(MR_mktag(1), check_hlds__switch_detection__Var_42, 0) = ((MR_Box) (check_hlds__switch_detection__SwitchGoal_34));
+                        MR_hl_field(MR_mktag(1), check_hlds__switch_detection__Var_42, 1) = ((MR_Box) (check_hlds__switch_detection__LeftDisjuncts_33));
+                      }
+                      {
+                        MR_Word base;
+                        base = (MR_Word) MR_mkword(MR_mktag(3), MR_new_object(MR_Word, ((MR_Integer) 2 * sizeof(MR_Word)), NULL, NULL));
+                        *check_hlds__switch_detection__GoalExpr_12 = base;
+                        MR_hl_field(MR_mktag(3), base, 0) = ((MR_Box) (MR_Word) ((MR_Integer) 3));
+                        MR_hl_field(MR_mktag(3), base, 1) = ((MR_Box) (check_hlds__switch_detection__Var_42));
+                      }
+                    }
+                }
+                break;
+              case (MR_Integer) 1:
+                {
+                  {
+                    MR_Word base;
+                    base = (MR_Word) MR_mkword(MR_mktag(3), MR_new_object(MR_Word, ((MR_Integer) 2 * sizeof(MR_Word)), NULL, NULL));
+                    *check_hlds__switch_detection__GoalExpr_12 = base;
+                    MR_hl_field(MR_mktag(3), base, 0) = ((MR_Box) (MR_Word) ((MR_Integer) 3));
+                    MR_hl_field(MR_mktag(3), base, 1) = ((MR_Box) (check_hlds__switch_detection__Disjuncts0_9));
+                  }
+                  *check_hlds__switch_detection__STATE_VARIABLE_LocalInfo_36 = check_hlds__switch_detection__STATE_VARIABLE_LocalInfo_38_38;
+                }
+                break;
+            }
+            break;
+          case (MR_Integer) 1:
+          case (MR_Integer) 2:
+            {
+              MR_Word check_hlds__switch_detection__SwitchGoalExpr_28;
+              MR_Word check_hlds__switch_detection__LeftDisjuncts0_29;
+              MR_Word check_hlds__switch_detection__STATE_VARIABLE_LocalInfo_39_39;
+              MR_Word check_hlds__switch_detection__Cases_73;
+              MR_Word check_hlds__switch_detection__STATE_VARIABLE_LocalInfo_26_76;
+              MR_Word check_hlds__switch_detection__Var_49;
+              MR_Word check_hlds__switch_detection__Var_50;
+              MR_Word check_hlds__switch_detection__Var_51;
+              MR_Word check_hlds__switch_detection__Var_52;
+              MR_Word check_hlds__switch_detection__Var_53;
+
+              if ((check_hlds__switch_detection__Var_46 == ((MR_Word) MR_mkword(MR_mktag(0), MR_mkbody((MR_Integer) 0)))))
+                check_hlds__switch_detection__STATE_VARIABLE_LocalInfo_26_76 = check_hlds__switch_detection__STATE_VARIABLE_LocalInfo_38_38;
+              else
+                {
+                  MR_Word check_hlds__switch_detection__UnreachableCalledProcs_70;
+                  MR_Word check_hlds__switch_detection__DeletedCallCallees0_71;
+                  MR_Word check_hlds__switch_detection__DeletedCallCallees_72;
+                  MR_Word check_hlds__switch_detection__Var_79;
+                  MR_Word check_hlds__switch_detection__Var_80;
+                  MR_Word check_hlds__switch_detection__Var_81;
+                  MR_Word check_hlds__switch_detection__Var_82;
+                  MR_Word check_hlds__switch_detection__Var_83;
+                  MR_Word check_hlds__switch_detection__Var_84;
+                  MR_Word check_hlds__switch_detection__Var_85;
+                  MR_Word check_hlds__switch_detection__Var_86;
+                  MR_Word check_hlds__switch_detection__Var_87;
+
+                  {
+                    check_hlds__switch_detection__UnreachableCalledProcs_70 = hlds__goal_util__goals_proc_refs_1_f_0(check_hlds__switch_detection__Var_46);
+                  }
+                  check_hlds__switch_detection__Var_79 = ((MR_Word) (MR_hl_field(MR_mktag(0), check_hlds__switch_detection__STATE_VARIABLE_LocalInfo_38_38, (MR_Integer) 0)));
+                  check_hlds__switch_detection__Var_80 = ((MR_Word) (MR_hl_field(MR_mktag(0), check_hlds__switch_detection__STATE_VARIABLE_LocalInfo_38_38, (MR_Integer) 1)));
+                  check_hlds__switch_detection__Var_81 = ((MR_Word) (MR_hl_field(MR_mktag(0), check_hlds__switch_detection__STATE_VARIABLE_LocalInfo_38_38, (MR_Integer) 2)));
+                  check_hlds__switch_detection__Var_82 = ((MR_Word) (MR_hl_field(MR_mktag(0), check_hlds__switch_detection__STATE_VARIABLE_LocalInfo_38_38, (MR_Integer) 3)));
+                  check_hlds__switch_detection__DeletedCallCallees0_71 = ((MR_Word) (MR_hl_field(MR_mktag(0), check_hlds__switch_detection__STATE_VARIABLE_LocalInfo_38_38, (MR_Integer) 4)));
+                  {
+                    mercury__set__union_3_p_0((MR_Word) &hlds__hlds_pred__hlds__hlds_pred__type_ctor_info_pred_proc_id_0, check_hlds__switch_detection__UnreachableCalledProcs_70, check_hlds__switch_detection__DeletedCallCallees0_71, &check_hlds__switch_detection__DeletedCallCallees_72);
+                  }
+                  check_hlds__switch_detection__Var_83 = ((MR_Word) (MR_hl_field(MR_mktag(0), check_hlds__switch_detection__STATE_VARIABLE_LocalInfo_38_38, (MR_Integer) 0)));
+                  check_hlds__switch_detection__Var_84 = ((MR_Word) (MR_hl_field(MR_mktag(0), check_hlds__switch_detection__STATE_VARIABLE_LocalInfo_38_38, (MR_Integer) 1)));
+                  check_hlds__switch_detection__Var_85 = ((MR_Word) (MR_hl_field(MR_mktag(0), check_hlds__switch_detection__STATE_VARIABLE_LocalInfo_38_38, (MR_Integer) 2)));
+                  check_hlds__switch_detection__Var_86 = ((MR_Word) (MR_hl_field(MR_mktag(0), check_hlds__switch_detection__STATE_VARIABLE_LocalInfo_38_38, (MR_Integer) 3)));
+                  check_hlds__switch_detection__Var_87 = ((MR_Word) (MR_hl_field(MR_mktag(0), check_hlds__switch_detection__STATE_VARIABLE_LocalInfo_38_38, (MR_Integer) 4)));
+                  {
+                    check_hlds__switch_detection__STATE_VARIABLE_LocalInfo_26_76 = (MR_Word) MR_new_object(MR_Word, ((MR_Integer) 5 * sizeof(MR_Word)), NULL, NULL);
+                    MR_hl_field(MR_mktag(0), check_hlds__switch_detection__STATE_VARIABLE_LocalInfo_26_76, 0) = ((MR_Box) (check_hlds__switch_detection__Var_83));
+                    MR_hl_field(MR_mktag(0), check_hlds__switch_detection__STATE_VARIABLE_LocalInfo_26_76, 1) = ((MR_Box) (check_hlds__switch_detection__Var_84));
+                    MR_hl_field(MR_mktag(0), check_hlds__switch_detection__STATE_VARIABLE_LocalInfo_26_76, 2) = ((MR_Box) (check_hlds__switch_detection__Var_85));
+                    MR_hl_field(MR_mktag(0), check_hlds__switch_detection__STATE_VARIABLE_LocalInfo_26_76, 3) = ((MR_Box) (check_hlds__switch_detection__Var_86));
+                    MR_hl_field(MR_mktag(0), check_hlds__switch_detection__STATE_VARIABLE_LocalInfo_26_76, 4) = ((MR_Box) (check_hlds__switch_detection__DeletedCallCallees_72));
+                  }
+                }
+              {
+                check_hlds__switch_detection__detect_switches_in_cases_6_p_0(check_hlds__switch_detection__Var_44, check_hlds__switch_detection__InstMap0_10, check_hlds__switch_detection__Var_45, &check_hlds__switch_detection__Cases_73, check_hlds__switch_detection__STATE_VARIABLE_LocalInfo_26_76, &check_hlds__switch_detection__STATE_VARIABLE_LocalInfo_39_39);
+              }
+              if ((check_hlds__switch_detection__Cases_73 == ((MR_Word) MR_mkword(MR_mktag(0), MR_mkbody((MR_Integer) 0)))))
+                {
+                  check_hlds__switch_detection__SwitchGoalExpr_28 = (MR_Word) MR_mkword(MR_mktag(3), &check_hlds__switch_detection_scalar_common_1[8]);
+                }
+              else
+                {
+                  check_hlds__switch_detection__SwitchGoalExpr_28 = (MR_Word) MR_mkword(MR_mktag(3), MR_new_object(MR_Word, ((MR_Integer) 4 * sizeof(MR_Word)), NULL, NULL));
+                  MR_hl_field(MR_mktag(3), check_hlds__switch_detection__SwitchGoalExpr_28, 0) = ((MR_Box) (MR_Word) ((MR_Integer) 4));
+                  MR_hl_field(MR_mktag(3), check_hlds__switch_detection__SwitchGoalExpr_28, 1) = ((MR_Box) (check_hlds__switch_detection__Var_44));
+                  MR_hl_field(MR_mktag(3), check_hlds__switch_detection__SwitchGoalExpr_28, 2) = ((MR_Box) (check_hlds__switch_detection__Var_48));
+                  MR_hl_field(MR_mktag(3), check_hlds__switch_detection__SwitchGoalExpr_28, 3) = ((MR_Box) (check_hlds__switch_detection__Cases_73));
+                }
+              check_hlds__switch_detection__Var_49 = ((MR_Word) (MR_hl_field(MR_mktag(0), check_hlds__switch_detection__BestCandidate_21, (MR_Integer) 0)));
+              check_hlds__switch_detection__Var_50 = ((MR_Word) (MR_hl_field(MR_mktag(0), check_hlds__switch_detection__BestCandidate_21, (MR_Integer) 1)));
+              check_hlds__switch_detection__Var_51 = ((MR_Word) (MR_hl_field(MR_mktag(0), check_hlds__switch_detection__BestCandidate_21, (MR_Integer) 2)));
+              check_hlds__switch_detection__LeftDisjuncts0_29 = ((MR_Word) (MR_hl_field(MR_mktag(0), check_hlds__switch_detection__BestCandidate_21, (MR_Integer) 3)));
+              check_hlds__switch_detection__Var_52 = ((MR_Word) (MR_hl_field(MR_mktag(0), check_hlds__switch_detection__BestCandidate_21, (MR_Integer) 4)));
+              check_hlds__switch_detection__Var_53 = ((MR_Word) (MR_hl_field(MR_mktag(0), check_hlds__switch_detection__BestCandidate_21, (MR_Integer) 5)));
+              if ((check_hlds__switch_detection__LeftDisjuncts0_29 == ((MR_Word) MR_mkword(MR_mktag(0), MR_mkbody((MR_Integer) 0)))))
+                {
+                  *check_hlds__switch_detection__GoalExpr_12 = check_hlds__switch_detection__SwitchGoalExpr_28;
+                  *check_hlds__switch_detection__STATE_VARIABLE_LocalInfo_36 = check_hlds__switch_detection__STATE_VARIABLE_LocalInfo_39_39;
+                }
+              else
+                {
+                  MR_Word check_hlds__switch_detection__LeftGoal_32;
+                  MR_Word check_hlds__switch_detection__LeftDisjuncts_33;
+                  MR_Word check_hlds__switch_detection__SwitchGoal_34;
+                  MR_Word check_hlds__switch_detection__Var_41;
+                  MR_Word check_hlds__switch_detection__Var_42;
+
+                  {
+                    check_hlds__switch_detection__detect_switches_in_disj_7_p_0(check_hlds__switch_detection__GoalInfo_8, check_hlds__switch_detection__LeftDisjuncts0_29, check_hlds__switch_detection__InstMap0_10, check_hlds__switch_detection__MaybeRequiredVar_11, &check_hlds__switch_detection__LeftGoal_32, check_hlds__switch_detection__STATE_VARIABLE_LocalInfo_39_39, check_hlds__switch_detection__STATE_VARIABLE_LocalInfo_36);
+                  }
+                  {
+                    check_hlds__switch_detection__Var_41 = (MR_Word) MR_new_object(MR_Word, ((MR_Integer) 2 * sizeof(MR_Word)), NULL, NULL);
+                    MR_hl_field(MR_mktag(0), check_hlds__switch_detection__Var_41, 0) = ((MR_Box) (check_hlds__switch_detection__LeftGoal_32));
+                    MR_hl_field(MR_mktag(0), check_hlds__switch_detection__Var_41, 1) = ((MR_Box) (check_hlds__switch_detection__GoalInfo_8));
+                  }
+                  {
+                    hlds__hlds_goal__goal_to_disj_list_2_p_0(check_hlds__switch_detection__Var_41, &check_hlds__switch_detection__LeftDisjuncts_33);
+                  }
+                  {
+                    check_hlds__switch_detection__SwitchGoal_34 = (MR_Word) MR_new_object(MR_Word, ((MR_Integer) 2 * sizeof(MR_Word)), NULL, NULL);
+                    MR_hl_field(MR_mktag(0), check_hlds__switch_detection__SwitchGoal_34, 0) = ((MR_Box) (check_hlds__switch_detection__SwitchGoalExpr_28));
+                    MR_hl_field(MR_mktag(0), check_hlds__switch_detection__SwitchGoal_34, 1) = ((MR_Box) (check_hlds__switch_detection__GoalInfo_8));
+                  }
+                  {
+                    check_hlds__switch_detection__Var_42 = (MR_Word) MR_mkword(MR_mktag(1), MR_new_object(MR_Word, ((MR_Integer) 2 * sizeof(MR_Word)), NULL, NULL));
+                    MR_hl_field(MR_mktag(1), check_hlds__switch_detection__Var_42, 0) = ((MR_Box) (check_hlds__switch_detection__SwitchGoal_34));
+                    MR_hl_field(MR_mktag(1), check_hlds__switch_detection__Var_42, 1) = ((MR_Box) (check_hlds__switch_detection__LeftDisjuncts_33));
+                  }
+                  {
+                    MR_Word base;
+                    base = (MR_Word) MR_mkword(MR_mktag(3), MR_new_object(MR_Word, ((MR_Integer) 2 * sizeof(MR_Word)), NULL, NULL));
+                    *check_hlds__switch_detection__GoalExpr_12 = base;
+                    MR_hl_field(MR_mktag(3), base, 0) = ((MR_Box) (MR_Word) ((MR_Integer) 3));
+                    MR_hl_field(MR_mktag(3), base, 1) = ((MR_Box) (check_hlds__switch_detection__Var_42));
+                  }
+                }
+            }
+            break;
+        }
+      }
+  }
+}
+
+static void MR_CALL 
+check_hlds__switch_detection__add_multi_entry_for_cons_id_4_p_0(
+  MR_Word check_hlds__switch_detection__Arm_5,
+  MR_Word check_hlds__switch_detection__ConsId_6,
+  MR_Word check_hlds__switch_detection__CasesTable0_7,
+  MR_Word * check_hlds__switch_detection__CasesTable_8)
+{
+  {
+    MR_bool check_hlds__switch_detection__succeeded;
+    MR_Word check_hlds__switch_detection__CasesMap0_9 = ((MR_Word) (MR_hl_field(MR_mktag(0), check_hlds__switch_detection__CasesTable0_7, (MR_Integer) 0)));
+    MR_Word check_hlds__switch_detection__ConflictConsIds0_10 = ((MR_Word) (MR_hl_field(MR_mktag(0), check_hlds__switch_detection__CasesTable0_7, (MR_Integer) 1)));
+    MR_Word check_hlds__switch_detection__ConflictConsIds_14;
+    MR_Word check_hlds__switch_detection__CasesMap_18;
+    MR_Word check_hlds__switch_detection__Entry0_11;
+    MR_Box check_hlds__switch_detection__conv0_Entry0_11;
+
+    {
+      check_hlds__switch_detection__succeeded = mercury__map__search_3_p_0((MR_Word) &parse_tree__prog_data__parse_tree__prog_data__type_ctor_info_cons_id_0, (MR_Word) &check_hlds__switch_detection__check_hlds__switch_detection__type_ctor_info_cons_id_entry_0, check_hlds__switch_detection__CasesMap0_9, ((MR_Box) (check_hlds__switch_detection__ConsId_6)), &check_hlds__switch_detection__conv0_Entry0_11);
+    }
+    if (check_hlds__switch_detection__succeeded)
+      {
+        check_hlds__switch_detection__Entry0_11 = ((MR_Word) check_hlds__switch_detection__conv0_Entry0_11);
+        check_hlds__switch_detection__succeeded = MR_TRUE;
+      }
+    if (check_hlds__switch_detection__succeeded)
+      {
+        MR_Word check_hlds__switch_detection__State0_12 = ((MR_Word) (MR_hl_field(MR_mktag(0), check_hlds__switch_detection__Entry0_11, (MR_Integer) 0)));
+        MR_Word check_hlds__switch_detection__Arms0_13 = ((MR_Word) (MR_hl_field(MR_mktag(0), check_hlds__switch_detection__Entry0_11, (MR_Integer) 1)));
+        MR_Word check_hlds__switch_detection__Arms_16;
+        MR_Word check_hlds__switch_detection__Entry_17;
+
+        switch (check_hlds__switch_detection__State0_12) {
+          default: /*NOTREACHED*/ MR_assert(0);
+          case (MR_Integer) 0:
+          case (MR_Integer) 1:
+            {
+              {
+                mercury__set_tree234__insert_3_p_0((MR_Word) &parse_tree__prog_data__parse_tree__prog_data__type_ctor_info_cons_id_0, ((MR_Box) (check_hlds__switch_detection__ConsId_6)), check_hlds__switch_detection__ConflictConsIds0_10, &check_hlds__switch_detection__ConflictConsIds_14);
+              }
+            }
+            break;
+          case (MR_Integer) 2:
+            check_hlds__switch_detection__ConflictConsIds_14 = check_hlds__switch_detection__ConflictConsIds0_10;
+            break;
+        }
+        {
+          check_hlds__switch_detection__Arms_16 = mercury__cord__snoc_2_f_0((MR_Word) &check_hlds__switch_detection__check_hlds__switch_detection__type_ctor_info_case_arm_0, check_hlds__switch_detection__Arms0_13, ((MR_Box) (check_hlds__switch_detection__Arm_5)));
+        }
+        {
+          check_hlds__switch_detection__Entry_17 = (MR_Word) MR_new_object(MR_Word, ((MR_Integer) 2 * sizeof(MR_Word)), NULL, NULL);
+          MR_hl_field(MR_mktag(0), check_hlds__switch_detection__Entry_17, 0) = ((MR_Box) ((MR_Integer) 2));
+          MR_hl_field(MR_mktag(0), check_hlds__switch_detection__Entry_17, 1) = ((MR_Box) (check_hlds__switch_detection__Arms_16));
+        }
+        {
+          mercury__map__det_update_4_p_0((MR_Word) &parse_tree__prog_data__parse_tree__prog_data__type_ctor_info_cons_id_0, (MR_Word) &check_hlds__switch_detection__check_hlds__switch_detection__type_ctor_info_cons_id_entry_0, ((MR_Box) (check_hlds__switch_detection__ConsId_6)), ((MR_Box) (check_hlds__switch_detection__Entry_17)), check_hlds__switch_detection__CasesMap0_9, &check_hlds__switch_detection__CasesMap_18);
+        }
+      }
+    else
+      {
+        MR_Word check_hlds__switch_detection__Arms_20;
+        MR_Word check_hlds__switch_detection__Entry_21;
+
+        {
+          check_hlds__switch_detection__Arms_20 = mercury__cord__singleton_1_f_0((MR_Word) &check_hlds__switch_detection__check_hlds__switch_detection__type_ctor_info_case_arm_0, ((MR_Box) (check_hlds__switch_detection__Arm_5)));
+        }
+        {
+          check_hlds__switch_detection__Entry_21 = (MR_Word) MR_new_object(MR_Word, ((MR_Integer) 2 * sizeof(MR_Word)), NULL, NULL);
+          MR_hl_field(MR_mktag(0), check_hlds__switch_detection__Entry_21, 0) = ((MR_Box) ((MR_Integer) 1));
+          MR_hl_field(MR_mktag(0), check_hlds__switch_detection__Entry_21, 1) = ((MR_Box) (check_hlds__switch_detection__Arms_20));
+        }
+        {
+          mercury__map__det_insert_4_p_0((MR_Word) &parse_tree__prog_data__parse_tree__prog_data__type_ctor_info_cons_id_0, (MR_Word) &check_hlds__switch_detection__check_hlds__switch_detection__type_ctor_info_cons_id_entry_0, ((MR_Box) (check_hlds__switch_detection__ConsId_6)), ((MR_Box) (check_hlds__switch_detection__Entry_21)), check_hlds__switch_detection__CasesMap0_9, &check_hlds__switch_detection__CasesMap_18);
+        }
+        check_hlds__switch_detection__ConflictConsIds_14 = check_hlds__switch_detection__ConflictConsIds0_10;
+      }
+    {
+      MR_Word base;
+      base = (MR_Word) MR_new_object(MR_Word, ((MR_Integer) 2 * sizeof(MR_Word)), NULL, NULL);
+      *check_hlds__switch_detection__CasesTable_8 = base;
+      MR_hl_field(MR_mktag(0), base, 0) = ((MR_Box) (check_hlds__switch_detection__CasesMap_18));
+      MR_hl_field(MR_mktag(0), base, 1) = ((MR_Box) (check_hlds__switch_detection__ConflictConsIds_14));
+    }
+  }
+}
+
+static void MR_CALL 
+check_hlds__switch_detection__gather_smallest_context_3_p_0(
+  MR_Word check_hlds__switch_detection__HeadVar__1_1,
+  MR_Word check_hlds__switch_detection__STATE_VARIABLE_SmallestContext_0_2,
+  MR_Word * check_hlds__switch_detection__STATE_VARIABLE_SmallestContext_3)
+{
+  while (MR_TRUE)
+    {
+      /* tailcall optimized into a loop */
+      {
+        MR_bool check_hlds__switch_detection__succeeded;
+
+        if ((check_hlds__switch_detection__HeadVar__1_1 == ((MR_Word) MR_mkword(MR_mktag(0), MR_mkbody((MR_Integer) 0)))))
+          *check_hlds__switch_detection__STATE_VARIABLE_SmallestContext_3 = check_hlds__switch_detection__STATE_VARIABLE_SmallestContext_0_2;
+        else
+          {
+            MR_Word check_hlds__switch_detection__Goal_7 = ((MR_Word) (MR_hl_field(MR_mktag(1), check_hlds__switch_detection__HeadVar__1_1, (MR_Integer) 0)));
+            MR_Word check_hlds__switch_detection__Goals_8 = ((MR_Word) (MR_hl_field(MR_mktag(1), check_hlds__switch_detection__HeadVar__1_1, (MR_Integer) 1)));
+            MR_Word check_hlds__switch_detection__GoalInfo_11 = ((MR_Word) (MR_hl_field(MR_mktag(0), check_hlds__switch_detection__Goal_7, (MR_Integer) 1)));
+            MR_Word check_hlds__switch_detection__Context_12;
+            MR_Word check_hlds__switch_detection__STATE_VARIABLE_SmallestContext_16_16;
+            MR_Word check_hlds__switch_detection___GoalExpr_10 = ((MR_Word) (MR_hl_field(MR_mktag(0), check_hlds__switch_detection__Goal_7, (MR_Integer) 0)));
+            MR_Word check_hlds__switch_detection__Var_19;
+
+            {
+              check_hlds__switch_detection__Context_12 = hlds__hlds_goal__goal_info_get_context_1_f_0(check_hlds__switch_detection__GoalInfo_11);
+            }
+            {
+              mercury__term____Compare____context_0_0(&check_hlds__switch_detection__Var_19, check_hlds__switch_detection__Context_12, check_hlds__switch_detection__STATE_VARIABLE_SmallestContext_0_2);
+            }
+            check_hlds__switch_detection__succeeded = ((MR_Integer) 1 == check_hlds__switch_detection__Var_19);
+            if (check_hlds__switch_detection__succeeded)
+              check_hlds__switch_detection__STATE_VARIABLE_SmallestContext_16_16 = check_hlds__switch_detection__Context_12;
+            else
+              check_hlds__switch_detection__STATE_VARIABLE_SmallestContext_16_16 = check_hlds__switch_detection__STATE_VARIABLE_SmallestContext_0_2;
+            /* direct tailcall eliminated */
+            {
+              MR_Word check_hlds__switch_detection__next_value_of_HeadVar__1_1 = check_hlds__switch_detection__Goals_8;
+              MR_Word check_hlds__switch_detection__next_value_of_STATE_VARIABLE_SmallestContext_0_2 = check_hlds__switch_detection__STATE_VARIABLE_SmallestContext_16_16;
+
+              check_hlds__switch_detection__STATE_VARIABLE_SmallestContext_0_2 = check_hlds__switch_detection__next_value_of_STATE_VARIABLE_SmallestContext_0_2;
+              check_hlds__switch_detection__HeadVar__1_1 = check_hlds__switch_detection__next_value_of_HeadVar__1_1;
+            }
+            continue;
+          }
+      }
+      break;
+    }
+}
+
+static void MR_CALL 
+check_hlds__switch_detection__use_context_of_first_disjunct_3_p_0(
+  MR_Word check_hlds__switch_detection__Disjuncts_4,
+  MR_Word check_hlds__switch_detection__GoalInfo0_5,
+  MR_Word * check_hlds__switch_detection__GoalInfo_6)
+{
+  {
+    MR_bool check_hlds__switch_detection__succeeded;
+
+    if ((check_hlds__switch_detection__Disjuncts_4 == ((MR_Word) MR_mkword(MR_mktag(0), MR_mkbody((MR_Integer) 0)))))
+      *check_hlds__switch_detection__GoalInfo_6 = check_hlds__switch_detection__GoalInfo0_5;
+    else
+      {
+        MR_Word check_hlds__switch_detection__FirstDisjunct_7 = ((MR_Word) (MR_hl_field(MR_mktag(1), check_hlds__switch_detection__Disjuncts_4, (MR_Integer) 0)));
+        MR_Word check_hlds__switch_detection__LaterDisjuncts_8 = ((MR_Word) (MR_hl_field(MR_mktag(1), check_hlds__switch_detection__Disjuncts_4, (MR_Integer) 1)));
+        MR_Word check_hlds__switch_detection__FirstGoalInfo_10 = ((MR_Word) (MR_hl_field(MR_mktag(0), check_hlds__switch_detection__FirstDisjunct_7, (MR_Integer) 1)));
+        MR_Word check_hlds__switch_detection__FirstContext_11;
+        MR_Word check_hlds__switch_detection__SmallestContext_12;
+        MR_Word check_hlds__switch_detection___FirstGoalExpr_9 = ((MR_Word) (MR_hl_field(MR_mktag(0), check_hlds__switch_detection__FirstDisjunct_7, (MR_Integer) 0)));
+
+        {
+          check_hlds__switch_detection__FirstContext_11 = hlds__hlds_goal__goal_info_get_context_1_f_0(check_hlds__switch_detection__FirstGoalInfo_10);
+        }
+        {
+          check_hlds__switch_detection__gather_smallest_context_3_p_0(check_hlds__switch_detection__LaterDisjuncts_8, check_hlds__switch_detection__FirstContext_11, &check_hlds__switch_detection__SmallestContext_12);
+        }
+        {
+          hlds__hlds_goal__goal_info_set_context_3_p_0(check_hlds__switch_detection__SmallestContext_12, check_hlds__switch_detection__GoalInfo0_5, check_hlds__switch_detection__GoalInfo_6);
+        }
+      }
+  }
+}
+
+static MR_Word MR_CALL 
+check_hlds__switch_detection__project_single_arm_goal_1_f_0(
+  MR_Word check_hlds__switch_detection__HeadVar__1_1)
+{
+  {
+    MR_bool check_hlds__switch_detection__succeeded;
+    MR_Word check_hlds__switch_detection__Goal_2;
+
+    if (((MR_tag((MR_Word) check_hlds__switch_detection__HeadVar__1_1)) == (MR_mktag((MR_Integer) 1))))
+      {
+        {
+          mercury__require__unexpected_3_p_0((MR_String) "check_hlds.switch_detection", (MR_String) "function \140check_hlds.switch_detection.project_single_arm_goal\'/1", (MR_String) "multi arm");
+        }
+      }
+    else
+      {
+        MR_Word check_hlds__switch_detection__Var_3 = ((MR_Word) (MR_hl_field(MR_mktag(0), check_hlds__switch_detection__HeadVar__1_1, (MR_Integer) 0)));
+
+        check_hlds__switch_detection__Goal_2 = ((MR_Word) (MR_hl_field(MR_mktag(0), check_hlds__switch_detection__HeadVar__1_1, (MR_Integer) 1)));
+      }
+    return check_hlds__switch_detection__Goal_2;
+  }
+}
+
+static MR_Word MR_CALL 
+check_hlds__switch_detection__project_arm_goal_1_f_0(
+  MR_Word check_hlds__switch_detection__HeadVar__1_1)
+{
+  {
+    MR_bool check_hlds__switch_detection__succeeded;
+    MR_Word check_hlds__switch_detection__Goal_2;
+
+    if (((MR_tag((MR_Word) check_hlds__switch_detection__HeadVar__1_1)) == (MR_mktag((MR_Integer) 1))))
+      {
+        MR_Word check_hlds__switch_detection__Var_5 = ((MR_Word) (MR_hl_field(MR_mktag(1), check_hlds__switch_detection__HeadVar__1_1, (MR_Integer) 0)));
+        MR_Word check_hlds__switch_detection__Var_6 = ((MR_Word) (MR_hl_field(MR_mktag(1), check_hlds__switch_detection__HeadVar__1_1, (MR_Integer) 1)));
+
+        check_hlds__switch_detection__Goal_2 = ((MR_Word) (MR_hl_field(MR_mktag(1), check_hlds__switch_detection__HeadVar__1_1, (MR_Integer) 2)));
+      }
+    else
+      {
+        MR_Word check_hlds__switch_detection__Var_3 = ((MR_Word) (MR_hl_field(MR_mktag(0), check_hlds__switch_detection__HeadVar__1_1, (MR_Integer) 0)));
+
+        check_hlds__switch_detection__Goal_2 = ((MR_Word) (MR_hl_field(MR_mktag(0), check_hlds__switch_detection__HeadVar__1_1, (MR_Integer) 1)));
+      }
+    return check_hlds__switch_detection__Goal_2;
+  }
+}
+
+static MR_bool MR_CALL 
+check_hlds__switch_detection__convert_case_7_p_0_6(
+  MR_Box check_hlds__switch_detection__closure_arg,
+  MR_Box check_hlds__switch_detection__wrapper_arg_1)
+{
+  {
+    MR_bool check_hlds__switch_detection__succeeded;
+    MR_Box check_hlds__switch_detection__closure = check_hlds__switch_detection__closure_arg;
+
+    {
+      check_hlds__switch_detection__succeeded = check_hlds__switch_detection__IntroducedFrom__pred__convert_case__527__1_2_p_0(((MR_Word) (MR_hl_field(MR_mktag(0), check_hlds__switch_detection__closure, (MR_Integer) 3))), ((MR_Word) check_hlds__switch_detection__wrapper_arg_1));
+    }
+    return check_hlds__switch_detection__succeeded;
+  }
+}
+
+static MR_Box MR_CALL 
+check_hlds__switch_detection__convert_case_7_p_0_5(
+  MR_Box check_hlds__switch_detection__closure_arg,
+  MR_Box check_hlds__switch_detection__wrapper_arg_1)
+{
+  {
+    MR_Box check_hlds__switch_detection__wrapper_arg_2;
+    MR_Box check_hlds__switch_detection__closure = check_hlds__switch_detection__closure_arg;
+    MR_Word check_hlds__switch_detection__conv1_Goal_2;
+
+    {
+      check_hlds__switch_detection__conv1_Goal_2 = check_hlds__switch_detection__project_arm_goal_1_f_0(((MR_Word) check_hlds__switch_detection__wrapper_arg_1));
+    }
+    check_hlds__switch_detection__wrapper_arg_2 = ((MR_Box) (check_hlds__switch_detection__conv1_Goal_2));
+    return check_hlds__switch_detection__wrapper_arg_2;
+  }
+}
+
+static MR_bool MR_CALL 
+check_hlds__switch_detection__convert_case_7_p_0_4(
+  MR_Box check_hlds__switch_detection__closure_arg)
+{
+  {
+    MR_bool check_hlds__switch_detection__succeeded;
+    MR_Box check_hlds__switch_detection__closure = check_hlds__switch_detection__closure_arg;
+
+    {
+      check_hlds__switch_detection__succeeded = check_hlds__switch_detection__IntroducedFrom__pred__convert_case__490__1_2_p_0(((MR_Word) (MR_hl_field(MR_mktag(0), check_hlds__switch_detection__closure, (MR_Integer) 3))), ((MR_Word) (MR_hl_field(MR_mktag(0), check_hlds__switch_detection__closure, (MR_Integer) 4))));
+    }
+    return check_hlds__switch_detection__succeeded;
+  }
+}
+
+static MR_Box MR_CALL 
+check_hlds__switch_detection__convert_case_7_p_0_3(
+  MR_Box check_hlds__switch_detection__closure_arg,
+  MR_Box check_hlds__switch_detection__wrapper_arg_1)
+{
+  {
+    MR_Box check_hlds__switch_detection__wrapper_arg_2;
+    MR_Box check_hlds__switch_detection__closure = check_hlds__switch_detection__closure_arg;
+    MR_Word check_hlds__switch_detection__conv0_Goal_2;
+
+    {
+      check_hlds__switch_detection__conv0_Goal_2 = check_hlds__switch_detection__project_single_arm_goal_1_f_0(((MR_Word) check_hlds__switch_detection__wrapper_arg_1));
+    }
+    check_hlds__switch_detection__wrapper_arg_2 = ((MR_Box) (check_hlds__switch_detection__conv0_Goal_2));
+    return check_hlds__switch_detection__wrapper_arg_2;
+  }
+}
+
+static MR_bool MR_CALL 
+check_hlds__switch_detection__convert_case_7_p_0_2(
+  MR_Box check_hlds__switch_detection__closure_arg)
+{
+  {
+    MR_bool check_hlds__switch_detection__succeeded;
+    MR_Box check_hlds__switch_detection__closure = check_hlds__switch_detection__closure_arg;
+
+    {
+      check_hlds__switch_detection__succeeded = check_hlds__switch_detection__IntroducedFrom__pred__convert_case__500__1_2_p_0(((MR_Word) (MR_hl_field(MR_mktag(0), check_hlds__switch_detection__closure, (MR_Integer) 3))), ((MR_Word) (MR_hl_field(MR_mktag(0), check_hlds__switch_detection__closure, (MR_Integer) 4))));
+    }
+    return check_hlds__switch_detection__succeeded;
+  }
+}
+
+static MR_bool MR_CALL 
+check_hlds__switch_detection__convert_case_7_p_0_1(
+  MR_Box check_hlds__switch_detection__closure_arg)
+{
+  {
+    MR_bool check_hlds__switch_detection__succeeded;
+    MR_Box check_hlds__switch_detection__closure = check_hlds__switch_detection__closure_arg;
+
+    {
+      check_hlds__switch_detection__succeeded = check_hlds__switch_detection__IntroducedFrom__pred__convert_case__482__1_2_p_0(((MR_Word) (MR_hl_field(MR_mktag(0), check_hlds__switch_detection__closure, (MR_Integer) 3))), ((MR_Word) (MR_hl_field(MR_mktag(0), check_hlds__switch_detection__closure, (MR_Integer) 4))));
+    }
+    return check_hlds__switch_detection__succeeded;
+  }
+}
+
+static void MR_CALL 
+check_hlds__switch_detection__convert_case_7_p_0(
+  MR_Word check_hlds__switch_detection__GoalInfo0_8,
+  MR_Word check_hlds__switch_detection__ConflictConsIds_9,
+  MR_Word check_hlds__switch_detection__HeadVar__3_3,
+  MR_Word check_hlds__switch_detection__STATE_VARIABLE_Cases_0_31,
+  MR_Word * check_hlds__switch_detection__STATE_VARIABLE_Cases_32,
+  MR_Word check_hlds__switch_detection__STATE_VARIABLE_AlreadyHandledConsIds_0_33,
+  MR_Word * check_hlds__switch_detection__STATE_VARIABLE_AlreadyHandledConsIds_34)
+{
+  {
+    MR_bool check_hlds__switch_detection__succeeded;
+    MR_Word check_hlds__switch_detection__ConsId_10 = ((MR_Word) (MR_hl_field(MR_mktag(0), check_hlds__switch_detection__HeadVar__3_3, (MR_Integer) 0)));
+    MR_Word check_hlds__switch_detection__Entry_11 = ((MR_Word) (MR_hl_field(MR_mktag(0), check_hlds__switch_detection__HeadVar__3_3, (MR_Integer) 1)));
+    MR_Word check_hlds__switch_detection__Var_95 = ((MR_Word) (MR_hl_field(MR_mktag(0), check_hlds__switch_detection__Entry_11, (MR_Integer) 1)));
+    MR_Word check_hlds__switch_detection__Var_96 = ((MR_Word) (MR_hl_field(MR_mktag(0), check_hlds__switch_detection__Entry_11, (MR_Integer) 0)));
+
+    {
+      check_hlds__switch_detection__succeeded = mercury__set_tree234__contains_2_p_0((MR_Word) &parse_tree__prog_data__parse_tree__prog_data__type_ctor_info_cons_id_0, check_hlds__switch_detection__STATE_VARIABLE_AlreadyHandledConsIds_0_33, ((MR_Box) (check_hlds__switch_detection__ConsId_10)));
+    }
+    if (check_hlds__switch_detection__succeeded)
+      {
+        MR_Word check_hlds__switch_detection__Var_35;
+
+        {
+          check_hlds__switch_detection__Var_35 = (MR_Word) MR_new_object(MR_Word, ((MR_Integer) 5 * sizeof(MR_Word)), NULL, NULL);
+          MR_hl_field(MR_mktag(0), check_hlds__switch_detection__Var_35, 0) = ((MR_Box) (&check_hlds__switch_detection_scalar_common_4[0]));
+          MR_hl_field(MR_mktag(0), check_hlds__switch_detection__Var_35, 1) = ((MR_Box) (check_hlds__switch_detection__convert_case_7_p_0_1));
+          MR_hl_field(MR_mktag(0), check_hlds__switch_detection__Var_35, 2) = ((MR_Box) (MR_Word) ((MR_Integer) 2));
+          MR_hl_field(MR_mktag(0), check_hlds__switch_detection__Var_35, 3) = ((MR_Box) ((MR_Integer) 1));
+          MR_hl_field(MR_mktag(0), check_hlds__switch_detection__Var_35, 4) = ((MR_Box) (check_hlds__switch_detection__Var_96));
+        }
+        {
+          mercury__require__expect_4_p_0(check_hlds__switch_detection__Var_35, (MR_String) "check_hlds.switch_detection", (MR_String) "predicate \140check_hlds.switch_detection.convert_case\'/7", (MR_String) "already handled but not cons_id_has_one_multi");
+        }
+        *check_hlds__switch_detection__STATE_VARIABLE_AlreadyHandledConsIds_34 = check_hlds__switch_detection__STATE_VARIABLE_AlreadyHandledConsIds_0_33;
+        *check_hlds__switch_detection__STATE_VARIABLE_Cases_32 = check_hlds__switch_detection__STATE_VARIABLE_Cases_0_31;
+      }
+    else
+      {
+        MR_Word check_hlds__switch_detection__TypeCtorInfo_81_81 = (MR_Word) &check_hlds__switch_detection__check_hlds__switch_detection__type_ctor_info_case_arm_0;
+        MR_Word check_hlds__switch_detection__Arms_17;
+
+        {
+          check_hlds__switch_detection__Arms_17 = mercury__cord__list_1_f_0(check_hlds__switch_detection__TypeCtorInfo_81_81, check_hlds__switch_detection__Var_95);
+        }
+        switch (check_hlds__switch_detection__Var_96) {
+          default: /*NOTREACHED*/ MR_assert(0);
+          case (MR_Integer) 0:
+            {
+              MR_Word check_hlds__switch_detection__Var_50;
+              MR_Word check_hlds__switch_detection__IsMember_66;
+              MR_Word check_hlds__switch_detection__Disjuncts_67;
+              MR_Word check_hlds__switch_detection__GoalInfo_68;
+              MR_Word check_hlds__switch_detection__Goal_69;
+              MR_Word check_hlds__switch_detection__Case_70;
+
+              {
+                mercury__set_tree234__is_member_3_p_0((MR_Word) &parse_tree__prog_data__parse_tree__prog_data__type_ctor_info_cons_id_0, check_hlds__switch_detection__ConflictConsIds_9, ((MR_Box) (check_hlds__switch_detection__ConsId_10)), &check_hlds__switch_detection__IsMember_66);
+              }
+              {
+                check_hlds__switch_detection__Var_50 = (MR_Word) MR_new_object(MR_Word, ((MR_Integer) 5 * sizeof(MR_Word)), NULL, NULL);
+                MR_hl_field(MR_mktag(0), check_hlds__switch_detection__Var_50, 0) = ((MR_Box) (&check_hlds__switch_detection_scalar_common_4[1]));
+                MR_hl_field(MR_mktag(0), check_hlds__switch_detection__Var_50, 1) = ((MR_Box) (check_hlds__switch_detection__convert_case_7_p_0_2));
+                MR_hl_field(MR_mktag(0), check_hlds__switch_detection__Var_50, 2) = ((MR_Box) (MR_Word) ((MR_Integer) 2));
+                MR_hl_field(MR_mktag(0), check_hlds__switch_detection__Var_50, 3) = ((MR_Box) ((MR_Integer) 0));
+                MR_hl_field(MR_mktag(0), check_hlds__switch_detection__Var_50, 4) = ((MR_Box) (check_hlds__switch_detection__IsMember_66));
+              }
+              {
+                mercury__require__expect_4_p_0(check_hlds__switch_detection__Var_50, (MR_String) "check_hlds.switch_detection", (MR_String) "predicate \140check_hlds.switch_detection.convert_case\'/7", (MR_String) "singles status but in ConflictConsIds");
+              }
+              {
+                check_hlds__switch_detection__Disjuncts_67 = mercury__list__map_2_f_0(check_hlds__switch_detection__TypeCtorInfo_81_81, (MR_Word) &hlds__hlds_goal__hlds__hlds_goal__type_ctor_info_hlds_goal_0, (MR_Word) &check_hlds__switch_detection_scalar_common_2[3], check_hlds__switch_detection__Arms_17);
+              }
+              {
+                check_hlds__switch_detection__use_context_of_first_disjunct_3_p_0(check_hlds__switch_detection__Disjuncts_67, check_hlds__switch_detection__GoalInfo0_8, &check_hlds__switch_detection__GoalInfo_68);
+              }
+              {
+                hlds__hlds_goal__disj_list_to_goal_3_p_0(check_hlds__switch_detection__Disjuncts_67, check_hlds__switch_detection__GoalInfo_68, &check_hlds__switch_detection__Goal_69);
+              }
+              {
+                check_hlds__switch_detection__Case_70 = (MR_Word) MR_new_object(MR_Word, ((MR_Integer) 3 * sizeof(MR_Word)), NULL, NULL);
+                MR_hl_field(MR_mktag(0), check_hlds__switch_detection__Case_70, 0) = ((MR_Box) (check_hlds__switch_detection__ConsId_10));
+                MR_hl_field(MR_mktag(0), check_hlds__switch_detection__Case_70, 1) = ((MR_Box) (MR_mkword(MR_mktag(0), MR_mkbody((MR_Integer) 0))));
+                MR_hl_field(MR_mktag(0), check_hlds__switch_detection__Case_70, 2) = ((MR_Box) (check_hlds__switch_detection__Goal_69));
+              }
+              {
+                MR_Word base;
+                base = (MR_Word) MR_mkword(MR_mktag(1), MR_new_object(MR_Word, ((MR_Integer) 2 * sizeof(MR_Word)), NULL, NULL));
+                *check_hlds__switch_detection__STATE_VARIABLE_Cases_32 = base;
+                MR_hl_field(MR_mktag(1), base, 0) = ((MR_Box) (check_hlds__switch_detection__Case_70));
+                MR_hl_field(MR_mktag(1), base, 1) = ((MR_Box) (check_hlds__switch_detection__STATE_VARIABLE_Cases_0_31));
+              }
+              *check_hlds__switch_detection__STATE_VARIABLE_AlreadyHandledConsIds_34 = check_hlds__switch_detection__STATE_VARIABLE_AlreadyHandledConsIds_0_33;
+            }
+            break;
+          case (MR_Integer) 2:
+            {
+              MR_Word check_hlds__switch_detection__IsMember_18;
+              MR_Word check_hlds__switch_detection__Disjuncts_19;
+              MR_Word check_hlds__switch_detection__GoalInfo_20;
+              MR_Word check_hlds__switch_detection__Goal_21;
+              MR_Word check_hlds__switch_detection__Case_22;
+              MR_Word check_hlds__switch_detection__Var_58;
+
+              {
+                mercury__set_tree234__is_member_3_p_0((MR_Word) &parse_tree__prog_data__parse_tree__prog_data__type_ctor_info_cons_id_0, check_hlds__switch_detection__ConflictConsIds_9, ((MR_Box) (check_hlds__switch_detection__ConsId_10)), &check_hlds__switch_detection__IsMember_18);
+              }
+              {
+                check_hlds__switch_detection__Var_58 = (MR_Word) MR_new_object(MR_Word, ((MR_Integer) 5 * sizeof(MR_Word)), NULL, NULL);
+                MR_hl_field(MR_mktag(0), check_hlds__switch_detection__Var_58, 0) = ((MR_Box) (&check_hlds__switch_detection_scalar_common_4[1]));
+                MR_hl_field(MR_mktag(0), check_hlds__switch_detection__Var_58, 1) = ((MR_Box) (check_hlds__switch_detection__convert_case_7_p_0_4));
+                MR_hl_field(MR_mktag(0), check_hlds__switch_detection__Var_58, 2) = ((MR_Box) (MR_Word) ((MR_Integer) 2));
+                MR_hl_field(MR_mktag(0), check_hlds__switch_detection__Var_58, 3) = ((MR_Box) (check_hlds__switch_detection__IsMember_18));
+                MR_hl_field(MR_mktag(0), check_hlds__switch_detection__Var_58, 4) = ((MR_Box) ((MR_Integer) 1));
+              }
+              {
+                mercury__require__expect_4_p_0(check_hlds__switch_detection__Var_58, (MR_String) "check_hlds.switch_detection", (MR_String) "predicate \140check_hlds.switch_detection.convert_case\'/7", (MR_String) "conflict status but not in ConflictConsIds");
+              }
+              {
+                check_hlds__switch_detection__Disjuncts_19 = mercury__list__map_2_f_0(check_hlds__switch_detection__TypeCtorInfo_81_81, (MR_Word) &hlds__hlds_goal__hlds__hlds_goal__type_ctor_info_hlds_goal_0, (MR_Word) &check_hlds__switch_detection_scalar_common_2[4], check_hlds__switch_detection__Arms_17);
+              }
+              {
+                check_hlds__switch_detection__use_context_of_first_disjunct_3_p_0(check_hlds__switch_detection__Disjuncts_19, check_hlds__switch_detection__GoalInfo0_8, &check_hlds__switch_detection__GoalInfo_20);
+              }
+              {
+                hlds__hlds_goal__disj_list_to_goal_3_p_0(check_hlds__switch_detection__Disjuncts_19, check_hlds__switch_detection__GoalInfo_20, &check_hlds__switch_detection__Goal_21);
+              }
+              {
+                check_hlds__switch_detection__Case_22 = (MR_Word) MR_new_object(MR_Word, ((MR_Integer) 3 * sizeof(MR_Word)), NULL, NULL);
+                MR_hl_field(MR_mktag(0), check_hlds__switch_detection__Case_22, 0) = ((MR_Box) (check_hlds__switch_detection__ConsId_10));
+                MR_hl_field(MR_mktag(0), check_hlds__switch_detection__Case_22, 1) = ((MR_Box) (MR_mkword(MR_mktag(0), MR_mkbody((MR_Integer) 0))));
+                MR_hl_field(MR_mktag(0), check_hlds__switch_detection__Case_22, 2) = ((MR_Box) (check_hlds__switch_detection__Goal_21));
+              }
+              {
+                MR_Word base;
+                base = (MR_Word) MR_mkword(MR_mktag(1), MR_new_object(MR_Word, ((MR_Integer) 2 * sizeof(MR_Word)), NULL, NULL));
+                *check_hlds__switch_detection__STATE_VARIABLE_Cases_32 = base;
+                MR_hl_field(MR_mktag(1), base, 0) = ((MR_Box) (check_hlds__switch_detection__Case_22));
+                MR_hl_field(MR_mktag(1), base, 1) = ((MR_Box) (check_hlds__switch_detection__STATE_VARIABLE_Cases_0_31));
+              }
+              *check_hlds__switch_detection__STATE_VARIABLE_AlreadyHandledConsIds_34 = check_hlds__switch_detection__STATE_VARIABLE_AlreadyHandledConsIds_0_33;
+            }
+            break;
+          case (MR_Integer) 1:
+            {
+              MR_Word check_hlds__switch_detection__MainConsId0_24;
+              MR_Word check_hlds__switch_detection__OtherConsIds0_25;
+              MR_Word check_hlds__switch_detection__Goal_74;
+              MR_Word check_hlds__switch_detection__Arm_23;
+              MR_Word check_hlds__switch_detection__Var_40;
+
+              check_hlds__switch_detection__succeeded = ((MR_tag((MR_Word) check_hlds__switch_detection__Arms_17)) == (MR_mktag((MR_Integer) 1)));
+              if (check_hlds__switch_detection__succeeded)
+                {
+                  check_hlds__switch_detection__Arm_23 = ((MR_Word) (MR_hl_field(MR_mktag(1), check_hlds__switch_detection__Arms_17, (MR_Integer) 0)));
+                  check_hlds__switch_detection__Var_40 = ((MR_Word) (MR_hl_field(MR_mktag(1), check_hlds__switch_detection__Arms_17, (MR_Integer) 1)));
+                  check_hlds__switch_detection__succeeded = (check_hlds__switch_detection__Var_40 == ((MR_Word) MR_mkword(MR_mktag(0), MR_mkbody((MR_Integer) 0))));
+                  if (check_hlds__switch_detection__succeeded)
+                    {
+                      check_hlds__switch_detection__succeeded = ((MR_tag((MR_Word) check_hlds__switch_detection__Arm_23)) == (MR_mktag((MR_Integer) 1)));
+                      if (check_hlds__switch_detection__succeeded)
+                        {
+                          check_hlds__switch_detection__MainConsId0_24 = ((MR_Word) (MR_hl_field(MR_mktag(1), check_hlds__switch_detection__Arm_23, (MR_Integer) 0)));
+                          check_hlds__switch_detection__OtherConsIds0_25 = ((MR_Word) (MR_hl_field(MR_mktag(1), check_hlds__switch_detection__Arm_23, (MR_Integer) 1)));
+                          check_hlds__switch_detection__Goal_74 = ((MR_Word) (MR_hl_field(MR_mktag(1), check_hlds__switch_detection__Arm_23, (MR_Integer) 2)));
+                        }
+                    }
+                }
+              if (check_hlds__switch_detection__succeeded)
+                {
+                  MR_Word check_hlds__switch_detection__TypeCtorInfo_94_94;
+                  MR_Word check_hlds__switch_detection__AllConsIds0_26;
+                  MR_Word check_hlds__switch_detection__AllConsIds_28;
+                  MR_Word check_hlds__switch_detection__Var_41;
+                  MR_Word check_hlds__switch_detection__Var_27;
+
+                  {
+                    check_hlds__switch_detection__AllConsIds0_26 = (MR_Word) MR_mkword(MR_mktag(1), MR_new_object(MR_Word, ((MR_Integer) 2 * sizeof(MR_Word)), NULL, NULL));
+                    MR_hl_field(MR_mktag(1), check_hlds__switch_detection__AllConsIds0_26, 0) = ((MR_Box) (check_hlds__switch_detection__MainConsId0_24));
+                    MR_hl_field(MR_mktag(1), check_hlds__switch_detection__AllConsIds0_26, 1) = ((MR_Box) (check_hlds__switch_detection__OtherConsIds0_25));
+                  }
+                  {
+                    check_hlds__switch_detection__Var_41 = (MR_Word) MR_new_object(MR_Word, ((MR_Integer) 4 * sizeof(MR_Word)), NULL, NULL);
+                    MR_hl_field(MR_mktag(0), check_hlds__switch_detection__Var_41, 0) = ((MR_Box) (&check_hlds__switch_detection_scalar_common_4[3]));
+                    MR_hl_field(MR_mktag(0), check_hlds__switch_detection__Var_41, 1) = ((MR_Box) (check_hlds__switch_detection__convert_case_7_p_0_6));
+                    MR_hl_field(MR_mktag(0), check_hlds__switch_detection__Var_41, 2) = ((MR_Box) (MR_Word) ((MR_Integer) 1));
+                    MR_hl_field(MR_mktag(0), check_hlds__switch_detection__Var_41, 3) = ((MR_Box) (check_hlds__switch_detection__ConflictConsIds_9));
+                  }
+                  check_hlds__switch_detection__TypeCtorInfo_94_94 = (MR_Word) &parse_tree__prog_data__parse_tree__prog_data__type_ctor_info_cons_id_0;
+                  {
+                    mercury__list__filter_4_p_0(check_hlds__switch_detection__TypeCtorInfo_94_94, check_hlds__switch_detection__Var_41, check_hlds__switch_detection__AllConsIds0_26, &check_hlds__switch_detection__Var_27, &check_hlds__switch_detection__AllConsIds_28);
+                  }
+                  if ((check_hlds__switch_detection__AllConsIds_28 == ((MR_Word) MR_mkword(MR_mktag(0), MR_mkbody((MR_Integer) 0)))))
+                    {
+                      {
+                        mercury__require__unexpected_3_p_0((MR_String) "check_hlds.switch_detection", (MR_String) "predicate \140check_hlds.switch_detection.convert_case\'/7", (MR_String) "cons_id_has_one_multi: AllConsIds = []");
+                        return;
+                      }
+                    }
+                  else
+                    {
+                      MR_Word check_hlds__switch_detection__MainConsId_29 = ((MR_Word) (MR_hl_field(MR_mktag(1), check_hlds__switch_detection__AllConsIds_28, (MR_Integer) 0)));
+                      MR_Word check_hlds__switch_detection__OtherConsIds_30 = ((MR_Word) (MR_hl_field(MR_mktag(1), check_hlds__switch_detection__AllConsIds_28, (MR_Integer) 1)));
+                      MR_Word check_hlds__switch_detection__Case_71;
+
+                      {
+                        check_hlds__switch_detection__Case_71 = (MR_Word) MR_new_object(MR_Word, ((MR_Integer) 3 * sizeof(MR_Word)), NULL, NULL);
+                        MR_hl_field(MR_mktag(0), check_hlds__switch_detection__Case_71, 0) = ((MR_Box) (check_hlds__switch_detection__MainConsId_29));
+                        MR_hl_field(MR_mktag(0), check_hlds__switch_detection__Case_71, 1) = ((MR_Box) (check_hlds__switch_detection__OtherConsIds_30));
+                        MR_hl_field(MR_mktag(0), check_hlds__switch_detection__Case_71, 2) = ((MR_Box) (check_hlds__switch_detection__Goal_74));
+                      }
+                      {
+                        mercury__set_tree234__insert_list_3_p_0(check_hlds__switch_detection__TypeCtorInfo_94_94, check_hlds__switch_detection__OtherConsIds_30, check_hlds__switch_detection__STATE_VARIABLE_AlreadyHandledConsIds_0_33, check_hlds__switch_detection__STATE_VARIABLE_AlreadyHandledConsIds_34);
+                      }
+                      {
+                        MR_Word base;
+                        base = (MR_Word) MR_mkword(MR_mktag(1), MR_new_object(MR_Word, ((MR_Integer) 2 * sizeof(MR_Word)), NULL, NULL));
+                        *check_hlds__switch_detection__STATE_VARIABLE_Cases_32 = base;
+                        MR_hl_field(MR_mktag(1), base, 0) = ((MR_Box) (check_hlds__switch_detection__Case_71));
+                        MR_hl_field(MR_mktag(1), base, 1) = ((MR_Box) (check_hlds__switch_detection__STATE_VARIABLE_Cases_0_31));
+                      }
+                    }
+                }
+              else
+                {
+                  {
+                    mercury__require__unexpected_3_p_0((MR_String) "check_hlds.switch_detection", (MR_String) "predicate \140check_hlds.switch_detection.convert_case\'/7", (MR_String) "misleading cons_id_has_one_multi");
+                    return;
+                  }
+                }
+            }
+            break;
+        }
+      }
+  }
+}
+
+static void MR_CALL 
+check_hlds__switch_detection__convert_cases_table_2_f_0_1(
+  MR_Box check_hlds__switch_detection__closure_arg,
+  MR_Box check_hlds__switch_detection__wrapper_arg_1,
+  MR_Box check_hlds__switch_detection__wrapper_arg_2,
+  MR_Box * check_hlds__switch_detection__wrapper_arg_3,
+  MR_Box check_hlds__switch_detection__wrapper_arg_4,
+  MR_Box * check_hlds__switch_detection__wrapper_arg_5)
+{
+  {
+    MR_Box check_hlds__switch_detection__closure = check_hlds__switch_detection__closure_arg;
+    MR_Word check_hlds__switch_detection__conv1_STATE_VARIABLE_Cases_32;
+    MR_Word check_hlds__switch_detection__conv0_STATE_VARIABLE_AlreadyHandledConsIds_34;
+
+    {
+      check_hlds__switch_detection__convert_case_7_p_0(((MR_Word) (MR_hl_field(MR_mktag(0), check_hlds__switch_detection__closure, (MR_Integer) 3))), ((MR_Word) (MR_hl_field(MR_mktag(0), check_hlds__switch_detection__closure, (MR_Integer) 4))), ((MR_Word) check_hlds__switch_detection__wrapper_arg_1), ((MR_Word) check_hlds__switch_detection__wrapper_arg_2), &check_hlds__switch_detection__conv1_STATE_VARIABLE_Cases_32, ((MR_Word) check_hlds__switch_detection__wrapper_arg_4), &check_hlds__switch_detection__conv0_STATE_VARIABLE_AlreadyHandledConsIds_34);
+    }
+    *check_hlds__switch_detection__wrapper_arg_3 = ((MR_Box) (check_hlds__switch_detection__conv1_STATE_VARIABLE_Cases_32));
+    *check_hlds__switch_detection__wrapper_arg_5 = ((MR_Box) (check_hlds__switch_detection__conv0_STATE_VARIABLE_AlreadyHandledConsIds_34));
+  }
+}
+
+static MR_Word MR_CALL 
+check_hlds__switch_detection__convert_cases_table_2_f_0(
+  MR_Word check_hlds__switch_detection__GoalInfo_4,
+  MR_Word check_hlds__switch_detection__CasesTable_5)
+{
+  {
+    MR_bool check_hlds__switch_detection__succeeded;
+    MR_Word check_hlds__switch_detection__SortedCases_6;
+    MR_Word check_hlds__switch_detection__TypeCtorInfo_15_15 = (MR_Word) &parse_tree__prog_data__parse_tree__prog_data__type_ctor_info_cons_id_0;
+    MR_Word check_hlds__switch_detection__CasesMap_7 = ((MR_Word) (MR_hl_field(MR_mktag(0), check_hlds__switch_detection__CasesTable_5, (MR_Integer) 0)));
+    MR_Word check_hlds__switch_detection__ConflictIds_8 = ((MR_Word) (MR_hl_field(MR_mktag(0), check_hlds__switch_detection__CasesTable_5, (MR_Integer) 1)));
+    MR_Word check_hlds__switch_detection__CasesAssocList_9;
+    MR_Word check_hlds__switch_detection__Cases_10;
+    MR_Word check_hlds__switch_detection__Var_12;
+    MR_Word check_hlds__switch_detection__Var_14;
+    MR_Word check_hlds__switch_detection___AlreadyHandledConsIds_11;
+    MR_Box check_hlds__switch_detection__conv3_Cases_10;
+    MR_Box check_hlds__switch_detection__conv2__AlreadyHandledConsIds_11;
+
+    {
+      mercury__map__to_assoc_list_2_p_0(check_hlds__switch_detection__TypeCtorInfo_15_15, (MR_Word) &check_hlds__switch_detection__check_hlds__switch_detection__type_ctor_info_cons_id_entry_0, check_hlds__switch_detection__CasesMap_7, &check_hlds__switch_detection__CasesAssocList_9);
+    }
+    {
+      check_hlds__switch_detection__Var_12 = (MR_Word) MR_new_object(MR_Word, ((MR_Integer) 5 * sizeof(MR_Word)), NULL, NULL);
+      MR_hl_field(MR_mktag(0), check_hlds__switch_detection__Var_12, 0) = ((MR_Box) (&check_hlds__switch_detection_scalar_common_3[0]));
+      MR_hl_field(MR_mktag(0), check_hlds__switch_detection__Var_12, 1) = ((MR_Box) (check_hlds__switch_detection__convert_cases_table_2_f_0_1));
+      MR_hl_field(MR_mktag(0), check_hlds__switch_detection__Var_12, 2) = ((MR_Box) (MR_Word) ((MR_Integer) 2));
+      MR_hl_field(MR_mktag(0), check_hlds__switch_detection__Var_12, 3) = ((MR_Box) (check_hlds__switch_detection__GoalInfo_4));
+      MR_hl_field(MR_mktag(0), check_hlds__switch_detection__Var_12, 4) = ((MR_Box) (check_hlds__switch_detection__ConflictIds_8));
+    }
+    {
+      check_hlds__switch_detection__Var_14 = mercury__set_tree234__init_0_f_0(check_hlds__switch_detection__TypeCtorInfo_15_15);
+    }
+    {
+      mercury__list__foldl2_6_p_0((MR_Word) &check_hlds__switch_detection_scalar_common_2[0], (MR_Word) &check_hlds__switch_detection_scalar_common_1[2], (MR_Word) &check_hlds__switch_detection_scalar_common_1[3], check_hlds__switch_detection__Var_12, check_hlds__switch_detection__CasesAssocList_9, ((MR_Box) (MR_mkword(MR_mktag(0), MR_mkbody((MR_Integer) 0)))), &check_hlds__switch_detection__conv3_Cases_10, ((MR_Box) (check_hlds__switch_detection__Var_14)), &check_hlds__switch_detection__conv2__AlreadyHandledConsIds_11);
+    }
+    check_hlds__switch_detection__Cases_10 = ((MR_Word) check_hlds__switch_detection__conv3_Cases_10);
+    check_hlds__switch_detection___AlreadyHandledConsIds_11 = ((MR_Word) check_hlds__switch_detection__conv2__AlreadyHandledConsIds_11);
+    {
+      mercury__list__sort_2_p_0((MR_Word) &hlds__hlds_goal__hlds__hlds_goal__type_ctor_info_case_0, check_hlds__switch_detection__Cases_10, &check_hlds__switch_detection__SortedCases_6);
+    }
+    return check_hlds__switch_detection__SortedCases_6;
+  }
+}
+
+static void MR_CALL 
+check_hlds__switch_detection__detect_switches_in_orelse_5_p_0(
+  MR_Word check_hlds__switch_detection__InstMap_1,
+  MR_Word check_hlds__switch_detection__HeadVar__2_2,
+  MR_Word * check_hlds__switch_detection__HeadVar__3_3,
+  MR_Word check_hlds__switch_detection__STATE_VARIABLE_LocalInfo_0_4,
+  MR_Word * check_hlds__switch_detection__STATE_VARIABLE_LocalInfo_5)
+{
+  {
+    MR_bool check_hlds__switch_detection__succeeded;
+
+    if ((check_hlds__switch_detection__HeadVar__2_2 == ((MR_Word) MR_mkword(MR_mktag(0), MR_mkbody((MR_Integer) 0)))))
+      {
+        *check_hlds__switch_detection__HeadVar__3_3 = (MR_Word) MR_mkword(MR_mktag(0), MR_mkbody((MR_Integer) 0));
+        *check_hlds__switch_detection__STATE_VARIABLE_LocalInfo_5 = check_hlds__switch_detection__STATE_VARIABLE_LocalInfo_0_4;
+      }
+    else
+      {
+        MR_Word check_hlds__switch_detection__Goal0_11 = ((MR_Word) (MR_hl_field(MR_mktag(1), check_hlds__switch_detection__HeadVar__2_2, (MR_Integer) 0)));
+        MR_Word check_hlds__switch_detection__Goals0_12 = ((MR_Word) (MR_hl_field(MR_mktag(1), check_hlds__switch_detection__HeadVar__2_2, (MR_Integer) 1)));
+        MR_Word check_hlds__switch_detection__Goal_13;
+        MR_Word check_hlds__switch_detection__Goals_14;
+        MR_Word check_hlds__switch_detection__STATE_VARIABLE_LocalInfo_19_19;
+        MR_Word check_hlds__switch_detection__GoalExpr0_28 = ((MR_Word) (MR_hl_field(MR_mktag(0), check_hlds__switch_detection__Goal0_11, (MR_Integer) 0)));
+        MR_Word check_hlds__switch_detection__GoalInfo_29 = ((MR_Word) (MR_hl_field(MR_mktag(0), check_hlds__switch_detection__Goal0_11, (MR_Integer) 1)));
+        MR_Word check_hlds__switch_detection__GoalExpr_30;
+
+        {
+          check_hlds__switch_detection__detect_switches_in_goal_expr_7_p_0(check_hlds__switch_detection__InstMap_1, (MR_Word) MR_mkword(MR_mktag(0), MR_mkbody((MR_Integer) 0)), check_hlds__switch_detection__GoalInfo_29, check_hlds__switch_detection__GoalExpr0_28, &check_hlds__switch_detection__GoalExpr_30, check_hlds__switch_detection__STATE_VARIABLE_LocalInfo_0_4, &check_hlds__switch_detection__STATE_VARIABLE_LocalInfo_19_19);
+        }
+        {
+          check_hlds__switch_detection__Goal_13 = (MR_Word) MR_new_object(MR_Word, ((MR_Integer) 2 * sizeof(MR_Word)), NULL, NULL);
+          MR_hl_field(MR_mktag(0), check_hlds__switch_detection__Goal_13, 0) = ((MR_Box) (check_hlds__switch_detection__GoalExpr_30));
+          MR_hl_field(MR_mktag(0), check_hlds__switch_detection__Goal_13, 1) = ((MR_Box) (check_hlds__switch_detection__GoalInfo_29));
+        }
+        {
+          check_hlds__switch_detection__detect_switches_in_orelse_5_p_0(check_hlds__switch_detection__InstMap_1, check_hlds__switch_detection__Goals0_12, &check_hlds__switch_detection__Goals_14, check_hlds__switch_detection__STATE_VARIABLE_LocalInfo_19_19, check_hlds__switch_detection__STATE_VARIABLE_LocalInfo_5);
+        }
+        {
+          MR_Word base;
+          base = (MR_Word) MR_mkword(MR_mktag(1), MR_new_object(MR_Word, ((MR_Integer) 2 * sizeof(MR_Word)), NULL, NULL));
+          *check_hlds__switch_detection__HeadVar__3_3 = base;
+          MR_hl_field(MR_mktag(1), base, 0) = ((MR_Box) (check_hlds__switch_detection__Goal_13));
+          MR_hl_field(MR_mktag(1), base, 1) = ((MR_Box) (check_hlds__switch_detection__Goals_14));
+        }
+      }
+  }
+}
+
+static void MR_CALL 
+check_hlds__switch_detection__detect_switches_in_conj_5_p_0(
+  MR_Word check_hlds__switch_detection__InstMap0_1,
+  MR_Word check_hlds__switch_detection__HeadVar__2_2,
+  MR_Word * check_hlds__switch_detection__HeadVar__3_3,
+  MR_Word check_hlds__switch_detection__STATE_VARIABLE_LocalInfo_0_4,
+  MR_Word * check_hlds__switch_detection__STATE_VARIABLE_LocalInfo_5)
+{
+  {
+    MR_bool check_hlds__switch_detection__succeeded;
+
+    if ((check_hlds__switch_detection__HeadVar__2_2 == ((MR_Word) MR_mkword(MR_mktag(0), MR_mkbody((MR_Integer) 0)))))
+      {
+        *check_hlds__switch_detection__HeadVar__3_3 = (MR_Word) MR_mkword(MR_mktag(0), MR_mkbody((MR_Integer) 0));
+        *check_hlds__switch_detection__STATE_VARIABLE_LocalInfo_5 = check_hlds__switch_detection__STATE_VARIABLE_LocalInfo_0_4;
+      }
+    else
+      {
+        MR_Word check_hlds__switch_detection__Goal0_11 = ((MR_Word) (MR_hl_field(MR_mktag(1), check_hlds__switch_detection__HeadVar__2_2, (MR_Integer) 0)));
+        MR_Word check_hlds__switch_detection__Goals0_12 = ((MR_Word) (MR_hl_field(MR_mktag(1), check_hlds__switch_detection__HeadVar__2_2, (MR_Integer) 1)));
+        MR_Word check_hlds__switch_detection__Goal_13;
+        MR_Word check_hlds__switch_detection__Goals_14;
+        MR_Word check_hlds__switch_detection__InstMap1_16;
+        MR_Word check_hlds__switch_detection__STATE_VARIABLE_LocalInfo_19_19;
+        MR_Word check_hlds__switch_detection__GoalExpr0_29 = ((MR_Word) (MR_hl_field(MR_mktag(0), check_hlds__switch_detection__Goal0_11, (MR_Integer) 0)));
+        MR_Word check_hlds__switch_detection__GoalInfo_30 = ((MR_Word) (MR_hl_field(MR_mktag(0), check_hlds__switch_detection__Goal0_11, (MR_Integer) 1)));
+        MR_Word check_hlds__switch_detection__GoalExpr_31;
+
+        {
+          check_hlds__switch_detection__detect_switches_in_goal_expr_7_p_0(check_hlds__switch_detection__InstMap0_1, (MR_Word) MR_mkword(MR_mktag(0), MR_mkbody((MR_Integer) 0)), check_hlds__switch_detection__GoalInfo_30, check_hlds__switch_detection__GoalExpr0_29, &check_hlds__switch_detection__GoalExpr_31, check_hlds__switch_detection__STATE_VARIABLE_LocalInfo_0_4, &check_hlds__switch_detection__STATE_VARIABLE_LocalInfo_19_19);
+        }
+        {
+          check_hlds__switch_detection__Goal_13 = (MR_Word) MR_new_object(MR_Word, ((MR_Integer) 2 * sizeof(MR_Word)), NULL, NULL);
+          MR_hl_field(MR_mktag(0), check_hlds__switch_detection__Goal_13, 0) = ((MR_Box) (check_hlds__switch_detection__GoalExpr_31));
+          MR_hl_field(MR_mktag(0), check_hlds__switch_detection__Goal_13, 1) = ((MR_Box) (check_hlds__switch_detection__GoalInfo_30));
+        }
+        {
+          hlds__goal_util__update_instmap_3_p_0(check_hlds__switch_detection__Goal0_11, check_hlds__switch_detection__InstMap0_1, &check_hlds__switch_detection__InstMap1_16);
+        }
+        {
+          check_hlds__switch_detection__detect_switches_in_conj_5_p_0(check_hlds__switch_detection__InstMap1_16, check_hlds__switch_detection__Goals0_12, &check_hlds__switch_detection__Goals_14, check_hlds__switch_detection__STATE_VARIABLE_LocalInfo_19_19, check_hlds__switch_detection__STATE_VARIABLE_LocalInfo_5);
+        }
+        {
+          MR_Word base;
+          base = (MR_Word) MR_mkword(MR_mktag(1), MR_new_object(MR_Word, ((MR_Integer) 2 * sizeof(MR_Word)), NULL, NULL));
+          *check_hlds__switch_detection__HeadVar__3_3 = base;
+          MR_hl_field(MR_mktag(1), base, 0) = ((MR_Box) (check_hlds__switch_detection__Goal_13));
+          MR_hl_field(MR_mktag(1), base, 1) = ((MR_Box) (check_hlds__switch_detection__Goals_14));
+        }
+      }
+  }
+}
+
+static void MR_CALL 
+check_hlds__switch_detection__detect_switches_in_cases_6_p_0(
+  MR_Word check_hlds__switch_detection__Var_1,
+  MR_Word check_hlds__switch_detection__InstMap0_2,
+  MR_Word check_hlds__switch_detection__HeadVar__3_3,
+  MR_Word * check_hlds__switch_detection__HeadVar__4_4,
+  MR_Word check_hlds__switch_detection__STATE_VARIABLE_LocalInfo_0_5,
+  MR_Word * check_hlds__switch_detection__STATE_VARIABLE_LocalInfo_6)
+{
+  {
+    MR_bool check_hlds__switch_detection__succeeded;
+
+    if ((check_hlds__switch_detection__HeadVar__3_3 == ((MR_Word) MR_mkword(MR_mktag(0), MR_mkbody((MR_Integer) 0)))))
+      {
+        *check_hlds__switch_detection__HeadVar__4_4 = (MR_Word) MR_mkword(MR_mktag(0), MR_mkbody((MR_Integer) 0));
+        *check_hlds__switch_detection__STATE_VARIABLE_LocalInfo_6 = check_hlds__switch_detection__STATE_VARIABLE_LocalInfo_0_5;
+      }
+    else
+      {
+        MR_Word check_hlds__switch_detection__Case0_14 = ((MR_Word) (MR_hl_field(MR_mktag(1), check_hlds__switch_detection__HeadVar__3_3, (MR_Integer) 0)));
+        MR_Word check_hlds__switch_detection__Cases0_15 = ((MR_Word) (MR_hl_field(MR_mktag(1), check_hlds__switch_detection__HeadVar__3_3, (MR_Integer) 1)));
+        MR_Word check_hlds__switch_detection__Case_16;
+        MR_Word check_hlds__switch_detection__Cases_17;
+        MR_Word check_hlds__switch_detection__MainConsId_19 = ((MR_Word) (MR_hl_field(MR_mktag(0), check_hlds__switch_detection__Case0_14, (MR_Integer) 0)));
+        MR_Word check_hlds__switch_detection__OtherConsIds_20 = ((MR_Word) (MR_hl_field(MR_mktag(0), check_hlds__switch_detection__Case0_14, (MR_Integer) 1)));
+        MR_Word check_hlds__switch_detection__Goal0_21 = ((MR_Word) (MR_hl_field(MR_mktag(0), check_hlds__switch_detection__Case0_14, (MR_Integer) 2)));
+        MR_Word check_hlds__switch_detection__VarTypes_22 = ((MR_Word) (MR_hl_field(MR_mktag(0), check_hlds__switch_detection__STATE_VARIABLE_LocalInfo_0_5, (MR_Integer) 2)));
+        MR_Word check_hlds__switch_detection__ModuleInfo0_23 = ((MR_Word) (MR_hl_field(MR_mktag(0), check_hlds__switch_detection__STATE_VARIABLE_LocalInfo_0_5, (MR_Integer) 0)));
+        MR_Word check_hlds__switch_detection__VarType_24;
+        MR_Word check_hlds__switch_detection__InstMap1_25;
+        MR_Word check_hlds__switch_detection__ModuleInfo_26;
+        MR_Word check_hlds__switch_detection__Goal_27;
+        MR_Word check_hlds__switch_detection__STATE_VARIABLE_LocalInfo_30_30;
+        MR_Word check_hlds__switch_detection__STATE_VARIABLE_LocalInfo_32_32;
+        MR_Word check_hlds__switch_detection__GoalExpr0_54;
+        MR_Word check_hlds__switch_detection__GoalInfo_55;
+        MR_Word check_hlds__switch_detection__GoalExpr_56;
+        MR_Word check_hlds__switch_detection__Var_35 = ((MR_Word) (MR_hl_field(MR_mktag(0), check_hlds__switch_detection__STATE_VARIABLE_LocalInfo_0_5, (MR_Integer) 1)));
+        MR_Word check_hlds__switch_detection__Var_36 = ((MR_Word) (MR_hl_field(MR_mktag(0), check_hlds__switch_detection__STATE_VARIABLE_LocalInfo_0_5, (MR_Integer) 3)));
+        MR_Word check_hlds__switch_detection__Var_37 = ((MR_Word) (MR_hl_field(MR_mktag(0), check_hlds__switch_detection__STATE_VARIABLE_LocalInfo_0_5, (MR_Integer) 4)));
+        MR_Word check_hlds__switch_detection__Var_43;
+        MR_Word check_hlds__switch_detection__Var_44;
+        MR_Word check_hlds__switch_detection__Var_45;
+        MR_Word check_hlds__switch_detection__Var_46;
+        MR_Word check_hlds__switch_detection__Var_42;
+
+        {
+          hlds__vartypes__lookup_var_type_3_p_0(check_hlds__switch_detection__VarTypes_22, check_hlds__switch_detection__Var_1, &check_hlds__switch_detection__VarType_24);
+        }
+        {
+          hlds__instmap__bind_var_to_functors_8_p_0(check_hlds__switch_detection__Var_1, check_hlds__switch_detection__VarType_24, check_hlds__switch_detection__MainConsId_19, check_hlds__switch_detection__OtherConsIds_20, check_hlds__switch_detection__InstMap0_2, &check_hlds__switch_detection__InstMap1_25, check_hlds__switch_detection__ModuleInfo0_23, &check_hlds__switch_detection__ModuleInfo_26);
+        }
+        check_hlds__switch_detection__Var_42 = ((MR_Word) (MR_hl_field(MR_mktag(0), check_hlds__switch_detection__STATE_VARIABLE_LocalInfo_0_5, (MR_Integer) 0)));
+        check_hlds__switch_detection__Var_43 = ((MR_Word) (MR_hl_field(MR_mktag(0), check_hlds__switch_detection__STATE_VARIABLE_LocalInfo_0_5, (MR_Integer) 1)));
+        check_hlds__switch_detection__Var_44 = ((MR_Word) (MR_hl_field(MR_mktag(0), check_hlds__switch_detection__STATE_VARIABLE_LocalInfo_0_5, (MR_Integer) 2)));
+        check_hlds__switch_detection__Var_45 = ((MR_Word) (MR_hl_field(MR_mktag(0), check_hlds__switch_detection__STATE_VARIABLE_LocalInfo_0_5, (MR_Integer) 3)));
+        check_hlds__switch_detection__Var_46 = ((MR_Word) (MR_hl_field(MR_mktag(0), check_hlds__switch_detection__STATE_VARIABLE_LocalInfo_0_5, (MR_Integer) 4)));
+        {
+          check_hlds__switch_detection__STATE_VARIABLE_LocalInfo_30_30 = (MR_Word) MR_new_object(MR_Word, ((MR_Integer) 5 * sizeof(MR_Word)), NULL, NULL);
+          MR_hl_field(MR_mktag(0), check_hlds__switch_detection__STATE_VARIABLE_LocalInfo_30_30, 0) = ((MR_Box) (check_hlds__switch_detection__ModuleInfo_26));
+          MR_hl_field(MR_mktag(0), check_hlds__switch_detection__STATE_VARIABLE_LocalInfo_30_30, 1) = ((MR_Box) (check_hlds__switch_detection__Var_43));
+          MR_hl_field(MR_mktag(0), check_hlds__switch_detection__STATE_VARIABLE_LocalInfo_30_30, 2) = ((MR_Box) (check_hlds__switch_detection__Var_44));
+          MR_hl_field(MR_mktag(0), check_hlds__switch_detection__STATE_VARIABLE_LocalInfo_30_30, 3) = ((MR_Box) (check_hlds__switch_detection__Var_45));
+          MR_hl_field(MR_mktag(0), check_hlds__switch_detection__STATE_VARIABLE_LocalInfo_30_30, 4) = ((MR_Box) (check_hlds__switch_detection__Var_46));
+        }
+        check_hlds__switch_detection__GoalExpr0_54 = ((MR_Word) (MR_hl_field(MR_mktag(0), check_hlds__switch_detection__Goal0_21, (MR_Integer) 0)));
+        check_hlds__switch_detection__GoalInfo_55 = ((MR_Word) (MR_hl_field(MR_mktag(0), check_hlds__switch_detection__Goal0_21, (MR_Integer) 1)));
+        {
+          check_hlds__switch_detection__detect_switches_in_goal_expr_7_p_0(check_hlds__switch_detection__InstMap1_25, (MR_Word) MR_mkword(MR_mktag(0), MR_mkbody((MR_Integer) 0)), check_hlds__switch_detection__GoalInfo_55, check_hlds__switch_detection__GoalExpr0_54, &check_hlds__switch_detection__GoalExpr_56, check_hlds__switch_detection__STATE_VARIABLE_LocalInfo_30_30, &check_hlds__switch_detection__STATE_VARIABLE_LocalInfo_32_32);
+        }
+        {
+          check_hlds__switch_detection__Goal_27 = (MR_Word) MR_new_object(MR_Word, ((MR_Integer) 2 * sizeof(MR_Word)), NULL, NULL);
+          MR_hl_field(MR_mktag(0), check_hlds__switch_detection__Goal_27, 0) = ((MR_Box) (check_hlds__switch_detection__GoalExpr_56));
+          MR_hl_field(MR_mktag(0), check_hlds__switch_detection__Goal_27, 1) = ((MR_Box) (check_hlds__switch_detection__GoalInfo_55));
+        }
+        {
+          check_hlds__switch_detection__Case_16 = (MR_Word) MR_new_object(MR_Word, ((MR_Integer) 3 * sizeof(MR_Word)), NULL, NULL);
+          MR_hl_field(MR_mktag(0), check_hlds__switch_detection__Case_16, 0) = ((MR_Box) (check_hlds__switch_detection__MainConsId_19));
+          MR_hl_field(MR_mktag(0), check_hlds__switch_detection__Case_16, 1) = ((MR_Box) (check_hlds__switch_detection__OtherConsIds_20));
+          MR_hl_field(MR_mktag(0), check_hlds__switch_detection__Case_16, 2) = ((MR_Box) (check_hlds__switch_detection__Goal_27));
+        }
+        {
+          check_hlds__switch_detection__detect_switches_in_cases_6_p_0(check_hlds__switch_detection__Var_1, check_hlds__switch_detection__InstMap0_2, check_hlds__switch_detection__Cases0_15, &check_hlds__switch_detection__Cases_17, check_hlds__switch_detection__STATE_VARIABLE_LocalInfo_32_32, check_hlds__switch_detection__STATE_VARIABLE_LocalInfo_6);
+        }
+        {
+          MR_Word base;
+          base = (MR_Word) MR_mkword(MR_mktag(1), MR_new_object(MR_Word, ((MR_Integer) 2 * sizeof(MR_Word)), NULL, NULL));
+          *check_hlds__switch_detection__HeadVar__4_4 = base;
+          MR_hl_field(MR_mktag(1), base, 0) = ((MR_Box) (check_hlds__switch_detection__Case_16));
+          MR_hl_field(MR_mktag(1), base, 1) = ((MR_Box) (check_hlds__switch_detection__Cases_17));
+        }
+      }
+  }
+}
+
+static void MR_CALL 
+check_hlds__switch_detection__detect_sub_switches_in_disj_5_p_0(
+  MR_Word check_hlds__switch_detection__InstMap_1,
+  MR_Word check_hlds__switch_detection__HeadVar__2_2,
+  MR_Word * check_hlds__switch_detection__HeadVar__3_3,
+  MR_Word check_hlds__switch_detection__STATE_VARIABLE_LocalInfo_0_4,
+  MR_Word * check_hlds__switch_detection__STATE_VARIABLE_LocalInfo_5)
+{
+  {
+    MR_bool check_hlds__switch_detection__succeeded;
+
+    if ((check_hlds__switch_detection__HeadVar__2_2 == ((MR_Word) MR_mkword(MR_mktag(0), MR_mkbody((MR_Integer) 0)))))
+      {
+        *check_hlds__switch_detection__HeadVar__3_3 = (MR_Word) MR_mkword(MR_mktag(0), MR_mkbody((MR_Integer) 0));
+        *check_hlds__switch_detection__STATE_VARIABLE_LocalInfo_5 = check_hlds__switch_detection__STATE_VARIABLE_LocalInfo_0_4;
+      }
+    else
+      {
+        MR_Word check_hlds__switch_detection__Goal0_11 = ((MR_Word) (MR_hl_field(MR_mktag(1), check_hlds__switch_detection__HeadVar__2_2, (MR_Integer) 0)));
+        MR_Word check_hlds__switch_detection__Goals0_12 = ((MR_Word) (MR_hl_field(MR_mktag(1), check_hlds__switch_detection__HeadVar__2_2, (MR_Integer) 1)));
+        MR_Word check_hlds__switch_detection__Goal_13;
+        MR_Word check_hlds__switch_detection__Goals_14;
+        MR_Word check_hlds__switch_detection__STATE_VARIABLE_LocalInfo_19_19;
+        MR_Word check_hlds__switch_detection__GoalExpr0_28 = ((MR_Word) (MR_hl_field(MR_mktag(0), check_hlds__switch_detection__Goal0_11, (MR_Integer) 0)));
+        MR_Word check_hlds__switch_detection__GoalInfo_29 = ((MR_Word) (MR_hl_field(MR_mktag(0), check_hlds__switch_detection__Goal0_11, (MR_Integer) 1)));
+        MR_Word check_hlds__switch_detection__GoalExpr_30;
+
+        {
+          check_hlds__switch_detection__detect_switches_in_goal_expr_7_p_0(check_hlds__switch_detection__InstMap_1, (MR_Word) MR_mkword(MR_mktag(0), MR_mkbody((MR_Integer) 0)), check_hlds__switch_detection__GoalInfo_29, check_hlds__switch_detection__GoalExpr0_28, &check_hlds__switch_detection__GoalExpr_30, check_hlds__switch_detection__STATE_VARIABLE_LocalInfo_0_4, &check_hlds__switch_detection__STATE_VARIABLE_LocalInfo_19_19);
+        }
+        {
+          check_hlds__switch_detection__Goal_13 = (MR_Word) MR_new_object(MR_Word, ((MR_Integer) 2 * sizeof(MR_Word)), NULL, NULL);
+          MR_hl_field(MR_mktag(0), check_hlds__switch_detection__Goal_13, 0) = ((MR_Box) (check_hlds__switch_detection__GoalExpr_30));
+          MR_hl_field(MR_mktag(0), check_hlds__switch_detection__Goal_13, 1) = ((MR_Box) (check_hlds__switch_detection__GoalInfo_29));
+        }
+        {
+          check_hlds__switch_detection__detect_sub_switches_in_disj_5_p_0(check_hlds__switch_detection__InstMap_1, check_hlds__switch_detection__Goals0_12, &check_hlds__switch_detection__Goals_14, check_hlds__switch_detection__STATE_VARIABLE_LocalInfo_19_19, check_hlds__switch_detection__STATE_VARIABLE_LocalInfo_5);
+        }
+        {
+          MR_Word base;
+          base = (MR_Word) MR_mkword(MR_mktag(1), MR_new_object(MR_Word, ((MR_Integer) 2 * sizeof(MR_Word)), NULL, NULL));
+          *check_hlds__switch_detection__HeadVar__3_3 = base;
+          MR_hl_field(MR_mktag(1), base, 0) = ((MR_Box) (check_hlds__switch_detection__Goal_13));
+          MR_hl_field(MR_mktag(1), base, 1) = ((MR_Box) (check_hlds__switch_detection__Goals_14));
+        }
+      }
+  }
+}
+
+static void MR_CALL 
+check_hlds__switch_detection__detect_switches_in_goal_expr_7_p_0(
+  MR_Word check_hlds__switch_detection__InstMap0_8,
+  MR_Word check_hlds__switch_detection__MaybeRequiredVar_9,
+  MR_Word check_hlds__switch_detection__GoalInfo_10,
+  MR_Word check_hlds__switch_detection__GoalExpr0_11,
+  MR_Word * check_hlds__switch_detection__GoalExpr_12,
+  MR_Word check_hlds__switch_detection__STATE_VARIABLE_LocalInfo_0_111,
+  MR_Word * check_hlds__switch_detection__STATE_VARIABLE_LocalInfo_112)
+{
+  {
+    MR_bool check_hlds__switch_detection__succeeded;
+
+    switch (MR_tag((MR_Word) check_hlds__switch_detection__GoalExpr0_11)) {
+      default: /*NOTREACHED*/ MR_assert(0);
+      case (MR_Integer) 0:
+        {
+          MR_Word check_hlds__switch_detection__SubGoal0_20 = (MR_Word) MR_body(((MR_Word) check_hlds__switch_detection__GoalExpr0_11), (MR_Integer) 0);
+          MR_Word check_hlds__switch_detection__SubGoal_21;
+
+          {
+            check_hlds__switch_detection__detect_switches_in_goal_6_p_0(check_hlds__switch_detection__InstMap0_8, (MR_Word) MR_mkword(MR_mktag(0), MR_mkbody((MR_Integer) 0)), check_hlds__switch_detection__SubGoal0_20, &check_hlds__switch_detection__SubGoal_21, check_hlds__switch_detection__STATE_VARIABLE_LocalInfo_0_111, check_hlds__switch_detection__STATE_VARIABLE_LocalInfo_112);
+          }
+          *check_hlds__switch_detection__GoalExpr_12 = (MR_Word) MR_mkword(MR_mktag(0), (MR_Word) check_hlds__switch_detection__SubGoal_21);
+        }
+        break;
+      case (MR_Integer) 1:
+        {
+          MR_Word check_hlds__switch_detection__RHS0_59 = ((MR_Word) (MR_hl_field(MR_mktag(1), check_hlds__switch_detection__GoalExpr0_11, (MR_Integer) 1)));
+          MR_Word check_hlds__switch_detection__Var_58 = ((MR_Word) (MR_hl_field(MR_mktag(1), check_hlds__switch_detection__GoalExpr0_11, (MR_Integer) 0)));
+          MR_Word check_hlds__switch_detection__Var_60 = ((MR_Word) (MR_hl_field(MR_mktag(1), check_hlds__switch_detection__GoalExpr0_11, (MR_Integer) 2)));
+          MR_Word check_hlds__switch_detection__Var_61 = ((MR_Word) (MR_hl_field(MR_mktag(1), check_hlds__switch_detection__GoalExpr0_11, (MR_Integer) 3)));
+          MR_Word check_hlds__switch_detection__Var_62 = ((MR_Word) (MR_hl_field(MR_mktag(1), check_hlds__switch_detection__GoalExpr0_11, (MR_Integer) 4)));
+
+          switch (MR_tag((MR_Word) check_hlds__switch_detection__RHS0_59)) {
+            default: /*NOTREACHED*/ MR_assert(0);
+            case (MR_Integer) 0:
+            case (MR_Integer) 1:
+              {
+                *check_hlds__switch_detection__GoalExpr_12 = check_hlds__switch_detection__GoalExpr0_11;
+                *check_hlds__switch_detection__STATE_VARIABLE_LocalInfo_112 = check_hlds__switch_detection__STATE_VARIABLE_LocalInfo_0_111;
+              }
+              break;
+            case (MR_Integer) 2:
+              {
+                MR_Word check_hlds__switch_detection__Modes_68 = ((MR_Word) (MR_hl_field(MR_mktag(2), check_hlds__switch_detection__RHS0_59, (MR_Integer) 4)));
+                MR_Word check_hlds__switch_detection__LambdaGoal0_70 = ((MR_Word) (MR_hl_field(MR_mktag(2), check_hlds__switch_detection__RHS0_59, (MR_Integer) 6)));
+                MR_Word check_hlds__switch_detection__ModuleInfo_71 = ((MR_Word) (MR_hl_field(MR_mktag(0), check_hlds__switch_detection__STATE_VARIABLE_LocalInfo_0_111, (MR_Integer) 0)));
+                MR_Word check_hlds__switch_detection__LambdaGoal_72;
+                MR_Word check_hlds__switch_detection__RHS_73;
+                MR_Word check_hlds__switch_detection__Vars_144 = ((MR_Word) (MR_hl_field(MR_mktag(2), check_hlds__switch_detection__RHS0_59, (MR_Integer) 3)));
+                MR_Word check_hlds__switch_detection__InstMap1_145;
+                MR_Word check_hlds__switch_detection__Var_63 = ((((MR_Word) (MR_hl_field(MR_mktag(2), check_hlds__switch_detection__RHS0_59, (MR_Integer) 0)))) & (MR_Integer) 3);
+                MR_Word check_hlds__switch_detection__Var_64 = ((((((MR_Word) (MR_hl_field(MR_mktag(2), check_hlds__switch_detection__RHS0_59, (MR_Integer) 0)))) >> (MR_Integer) 2)) & (MR_Integer) 1);
+                MR_Word check_hlds__switch_detection__Var_65 = ((((((MR_Word) (MR_hl_field(MR_mktag(2), check_hlds__switch_detection__RHS0_59, (MR_Integer) 0)))) >> (MR_Integer) 3)) & (MR_Integer) 1);
+                MR_Word check_hlds__switch_detection__Var_67 = ((MR_Word) (MR_hl_field(MR_mktag(2), check_hlds__switch_detection__RHS0_59, (MR_Integer) 2)));
+                MR_Word check_hlds__switch_detection__Var_69 = ((MR_Word) (MR_hl_field(MR_mktag(2), check_hlds__switch_detection__RHS0_59, (MR_Integer) 5)));
+                MR_Word check_hlds__switch_detection__Var_156 = ((MR_Word) (MR_hl_field(MR_mktag(0), check_hlds__switch_detection__STATE_VARIABLE_LocalInfo_0_111, (MR_Integer) 1)));
+                MR_Word check_hlds__switch_detection__Var_157 = ((MR_Word) (MR_hl_field(MR_mktag(0), check_hlds__switch_detection__STATE_VARIABLE_LocalInfo_0_111, (MR_Integer) 2)));
+                MR_Word check_hlds__switch_detection__Var_158 = ((MR_Word) (MR_hl_field(MR_mktag(0), check_hlds__switch_detection__STATE_VARIABLE_LocalInfo_0_111, (MR_Integer) 3)));
+                MR_Word check_hlds__switch_detection__Var_159 = ((MR_Word) (MR_hl_field(MR_mktag(0), check_hlds__switch_detection__STATE_VARIABLE_LocalInfo_0_111, (MR_Integer) 4)));
+                MR_Word check_hlds__switch_detection__Var_160;
+                MR_Word check_hlds__switch_detection__Var_161;
+                MR_Word check_hlds__switch_detection__Var_162;
+                MR_Word check_hlds__switch_detection__Var_164;
+                MR_Word check_hlds__switch_detection__Var_165;
+                MR_Word check_hlds__switch_detection__Var_166;
+                MR_Word check_hlds__switch_detection__Var_167;
+                MR_Word check_hlds__switch_detection__Var_168;
+                MR_Word check_hlds__switch_detection__Var_169;
+                MR_Word check_hlds__switch_detection__Var_171;
+                MR_Word check_hlds__switch_detection__Var_172;
+                MR_Word check_hlds__switch_detection__Var_173;
+                MR_Word check_hlds__switch_detection__Var_170;
+
+                {
+                  hlds__instmap__pre_lambda_update_5_p_0(check_hlds__switch_detection__ModuleInfo_71, check_hlds__switch_detection__Vars_144, check_hlds__switch_detection__Modes_68, check_hlds__switch_detection__InstMap0_8, &check_hlds__switch_detection__InstMap1_145);
+                }
+                {
+                  check_hlds__switch_detection__detect_switches_in_goal_6_p_0(check_hlds__switch_detection__InstMap1_145, (MR_Word) MR_mkword(MR_mktag(0), MR_mkbody((MR_Integer) 0)), check_hlds__switch_detection__LambdaGoal0_70, &check_hlds__switch_detection__LambdaGoal_72, check_hlds__switch_detection__STATE_VARIABLE_LocalInfo_0_111, check_hlds__switch_detection__STATE_VARIABLE_LocalInfo_112);
+                }
+                check_hlds__switch_detection__Var_160 = ((((MR_Word) (MR_hl_field(MR_mktag(2), check_hlds__switch_detection__RHS0_59, (MR_Integer) 0)))) & (MR_Integer) 3);
+                check_hlds__switch_detection__Var_161 = ((((((MR_Word) (MR_hl_field(MR_mktag(2), check_hlds__switch_detection__RHS0_59, (MR_Integer) 0)))) >> (MR_Integer) 2)) & (MR_Integer) 1);
+                check_hlds__switch_detection__Var_162 = ((((((MR_Word) (MR_hl_field(MR_mktag(2), check_hlds__switch_detection__RHS0_59, (MR_Integer) 0)))) >> (MR_Integer) 3)) & (MR_Integer) 1);
+                check_hlds__switch_detection__Var_164 = ((MR_Word) (MR_hl_field(MR_mktag(2), check_hlds__switch_detection__RHS0_59, (MR_Integer) 2)));
+                check_hlds__switch_detection__Var_165 = ((MR_Word) (MR_hl_field(MR_mktag(2), check_hlds__switch_detection__RHS0_59, (MR_Integer) 3)));
+                check_hlds__switch_detection__Var_166 = ((MR_Word) (MR_hl_field(MR_mktag(2), check_hlds__switch_detection__RHS0_59, (MR_Integer) 4)));
+                check_hlds__switch_detection__Var_167 = ((MR_Word) (MR_hl_field(MR_mktag(2), check_hlds__switch_detection__RHS0_59, (MR_Integer) 5)));
+                check_hlds__switch_detection__Var_168 = ((MR_Word) (MR_hl_field(MR_mktag(2), check_hlds__switch_detection__RHS0_59, (MR_Integer) 6)));
+                {
+                  check_hlds__switch_detection__RHS_73 = (MR_Word) MR_mkword(MR_mktag(2), MR_new_object(MR_Word, ((MR_Integer) 7 * sizeof(MR_Word)), NULL, NULL));
+                  MR_hl_field(MR_mktag(2), check_hlds__switch_detection__RHS_73, 0) = ((MR_Box) ((check_hlds__switch_detection__Var_160 | ((((check_hlds__switch_detection__Var_161 << (MR_Integer) 2)) | ((check_hlds__switch_detection__Var_162 << (MR_Integer) 3)))))));
+                  MR_hl_field(MR_mktag(2), check_hlds__switch_detection__RHS_73, 1) = (MR_Integer) 0;
+                  MR_hl_field(MR_mktag(2), check_hlds__switch_detection__RHS_73, 2) = ((MR_Box) (check_hlds__switch_detection__Var_164));
+                  MR_hl_field(MR_mktag(2), check_hlds__switch_detection__RHS_73, 3) = ((MR_Box) (check_hlds__switch_detection__Var_165));
+                  MR_hl_field(MR_mktag(2), check_hlds__switch_detection__RHS_73, 4) = ((MR_Box) (check_hlds__switch_detection__Var_166));
+                  MR_hl_field(MR_mktag(2), check_hlds__switch_detection__RHS_73, 5) = ((MR_Box) (check_hlds__switch_detection__Var_167));
+                  MR_hl_field(MR_mktag(2), check_hlds__switch_detection__RHS_73, 6) = ((MR_Box) (check_hlds__switch_detection__LambdaGoal_72));
+                }
+                check_hlds__switch_detection__Var_169 = ((MR_Word) (MR_hl_field(MR_mktag(1), check_hlds__switch_detection__GoalExpr0_11, (MR_Integer) 0)));
+                check_hlds__switch_detection__Var_170 = ((MR_Word) (MR_hl_field(MR_mktag(1), check_hlds__switch_detection__GoalExpr0_11, (MR_Integer) 1)));
+                check_hlds__switch_detection__Var_171 = ((MR_Word) (MR_hl_field(MR_mktag(1), check_hlds__switch_detection__GoalExpr0_11, (MR_Integer) 2)));
+                check_hlds__switch_detection__Var_172 = ((MR_Word) (MR_hl_field(MR_mktag(1), check_hlds__switch_detection__GoalExpr0_11, (MR_Integer) 3)));
+                check_hlds__switch_detection__Var_173 = ((MR_Word) (MR_hl_field(MR_mktag(1), check_hlds__switch_detection__GoalExpr0_11, (MR_Integer) 4)));
+                {
+                  MR_Word base;
+                  base = (MR_Word) MR_mkword(MR_mktag(1), MR_new_object(MR_Word, ((MR_Integer) 5 * sizeof(MR_Word)), NULL, NULL));
+                  *check_hlds__switch_detection__GoalExpr_12 = base;
+                  MR_hl_field(MR_mktag(1), base, 0) = ((MR_Box) (check_hlds__switch_detection__Var_169));
+                  MR_hl_field(MR_mktag(1), base, 1) = ((MR_Box) (check_hlds__switch_detection__RHS_73));
+                  MR_hl_field(MR_mktag(1), base, 2) = ((MR_Box) (check_hlds__switch_detection__Var_171));
+                  MR_hl_field(MR_mktag(1), base, 3) = ((MR_Box) (check_hlds__switch_detection__Var_172));
+                  MR_hl_field(MR_mktag(1), base, 4) = ((MR_Box) (check_hlds__switch_detection__Var_173));
+                }
+              }
+              break;
+          }
+        }
+        break;
+      case (MR_Integer) 2:
+        {
+          *check_hlds__switch_detection__GoalExpr_12 = check_hlds__switch_detection__GoalExpr0_11;
+          *check_hlds__switch_detection__STATE_VARIABLE_LocalInfo_112 = check_hlds__switch_detection__STATE_VARIABLE_LocalInfo_0_111;
+        }
+        break;
+      case (MR_Integer) 3:
+        switch (((MR_Integer) (MR_Word) (MR_hl_field(MR_mktag(3), check_hlds__switch_detection__GoalExpr0_11, (MR_Integer) 0)))) {
+          default: /*NOTREACHED*/ MR_assert(0);
+          case (MR_Integer) 0:
+          case (MR_Integer) 1:
+            {
+              *check_hlds__switch_detection__GoalExpr_12 = check_hlds__switch_detection__GoalExpr0_11;
+              *check_hlds__switch_detection__STATE_VARIABLE_LocalInfo_112 = check_hlds__switch_detection__STATE_VARIABLE_LocalInfo_0_111;
+            }
+            break;
+          case (MR_Integer) 2:
+            {
+              MR_Word check_hlds__switch_detection__ConjType_17 = ((MR_Word) (MR_hl_field(MR_mktag(3), check_hlds__switch_detection__GoalExpr0_11, (MR_Integer) 1)));
+              MR_Word check_hlds__switch_detection__Goals0_18 = ((MR_Word) (MR_hl_field(MR_mktag(3), check_hlds__switch_detection__GoalExpr0_11, (MR_Integer) 2)));
+              MR_Word check_hlds__switch_detection__Goals_19;
+
+              {
+                check_hlds__switch_detection__detect_switches_in_conj_5_p_0(check_hlds__switch_detection__InstMap0_8, check_hlds__switch_detection__Goals0_18, &check_hlds__switch_detection__Goals_19, check_hlds__switch_detection__STATE_VARIABLE_LocalInfo_0_111, check_hlds__switch_detection__STATE_VARIABLE_LocalInfo_112);
+              }
+              {
+                MR_Word base;
+                base = (MR_Word) MR_mkword(MR_mktag(3), MR_new_object(MR_Word, ((MR_Integer) 3 * sizeof(MR_Word)), NULL, NULL));
+                *check_hlds__switch_detection__GoalExpr_12 = base;
+                MR_hl_field(MR_mktag(3), base, 0) = ((MR_Box) (MR_Word) ((MR_Integer) 2));
+                MR_hl_field(MR_mktag(3), base, 1) = ((MR_Box) (check_hlds__switch_detection__ConjType_17));
+                MR_hl_field(MR_mktag(3), base, 2) = ((MR_Box) (check_hlds__switch_detection__Goals_19));
+              }
+            }
+            break;
+          case (MR_Integer) 3:
+            {
+              MR_Word check_hlds__switch_detection__Disjuncts0_14 = ((MR_Word) (MR_hl_field(MR_mktag(3), check_hlds__switch_detection__GoalExpr0_11, (MR_Integer) 1)));
+
+              if ((check_hlds__switch_detection__Disjuncts0_14 == ((MR_Word) MR_mkword(MR_mktag(0), MR_mkbody((MR_Integer) 0)))))
+                {
+                  *check_hlds__switch_detection__GoalExpr_12 = (MR_Word) MR_mkword(MR_mktag(3), &check_hlds__switch_detection_scalar_common_1[8]);
+                  *check_hlds__switch_detection__STATE_VARIABLE_LocalInfo_112 = check_hlds__switch_detection__STATE_VARIABLE_LocalInfo_0_111;
+                }
+              else
+                {
+                  check_hlds__switch_detection__detect_switches_in_disj_7_p_0(check_hlds__switch_detection__GoalInfo_10, check_hlds__switch_detection__Disjuncts0_14, check_hlds__switch_detection__InstMap0_8, check_hlds__switch_detection__MaybeRequiredVar_9, check_hlds__switch_detection__GoalExpr_12, check_hlds__switch_detection__STATE_VARIABLE_LocalInfo_0_111, check_hlds__switch_detection__STATE_VARIABLE_LocalInfo_112);
+                }
+            }
+            break;
+          case (MR_Integer) 4:
+            {
+              MR_Word check_hlds__switch_detection__Var_30 = ((MR_Word) (MR_hl_field(MR_mktag(3), check_hlds__switch_detection__GoalExpr0_11, (MR_Integer) 1)));
+              MR_Word check_hlds__switch_detection__CanFail_31 = ((MR_Word) (MR_hl_field(MR_mktag(3), check_hlds__switch_detection__GoalExpr0_11, (MR_Integer) 2)));
+              MR_Word check_hlds__switch_detection__Cases0_32 = ((MR_Word) (MR_hl_field(MR_mktag(3), check_hlds__switch_detection__GoalExpr0_11, (MR_Integer) 3)));
+              MR_Word check_hlds__switch_detection__Cases_33;
+
+              {
+                check_hlds__switch_detection__detect_switches_in_cases_6_p_0(check_hlds__switch_detection__Var_30, check_hlds__switch_detection__InstMap0_8, check_hlds__switch_detection__Cases0_32, &check_hlds__switch_detection__Cases_33, check_hlds__switch_detection__STATE_VARIABLE_LocalInfo_0_111, check_hlds__switch_detection__STATE_VARIABLE_LocalInfo_112);
+              }
+              {
+                MR_Word base;
+                base = (MR_Word) MR_mkword(MR_mktag(3), MR_new_object(MR_Word, ((MR_Integer) 4 * sizeof(MR_Word)), NULL, NULL));
+                *check_hlds__switch_detection__GoalExpr_12 = base;
+                MR_hl_field(MR_mktag(3), base, 0) = ((MR_Box) (MR_Word) ((MR_Integer) 4));
+                MR_hl_field(MR_mktag(3), base, 1) = ((MR_Box) (check_hlds__switch_detection__Var_30));
+                MR_hl_field(MR_mktag(3), base, 2) = ((MR_Box) (check_hlds__switch_detection__CanFail_31));
+                MR_hl_field(MR_mktag(3), base, 3) = ((MR_Box) (check_hlds__switch_detection__Cases_33));
+              }
+            }
+            break;
+          case (MR_Integer) 5:
+            {
+              MR_Word check_hlds__switch_detection__Reason_34 = ((MR_Word) (MR_hl_field(MR_mktag(3), check_hlds__switch_detection__GoalExpr0_11, (MR_Integer) 1)));
+              MR_Word check_hlds__switch_detection__SubGoal0_142 = ((MR_Word) (MR_hl_field(MR_mktag(3), check_hlds__switch_detection__GoalExpr0_11, (MR_Integer) 2)));
+              MR_Word check_hlds__switch_detection__SubGoal_143;
+
+              switch (MR_tag((MR_Word) check_hlds__switch_detection__Reason_34)) {
+                default: /*NOTREACHED*/ MR_assert(0);
+                case (MR_Integer) 0:
+                  {
+                    {
+                      check_hlds__switch_detection__detect_switches_in_goal_6_p_0(check_hlds__switch_detection__InstMap0_8, (MR_Word) MR_mkword(MR_mktag(0), MR_mkbody((MR_Integer) 0)), check_hlds__switch_detection__SubGoal0_142, &check_hlds__switch_detection__SubGoal_143, check_hlds__switch_detection__STATE_VARIABLE_LocalInfo_0_111, check_hlds__switch_detection__STATE_VARIABLE_LocalInfo_112);
+                    }
+                  }
+                  break;
+                case (MR_Integer) 1:
+                  {
+                    {
+                      check_hlds__switch_detection__detect_switches_in_goal_6_p_0(check_hlds__switch_detection__InstMap0_8, (MR_Word) MR_mkword(MR_mktag(0), MR_mkbody((MR_Integer) 0)), check_hlds__switch_detection__SubGoal0_142, &check_hlds__switch_detection__SubGoal_143, check_hlds__switch_detection__STATE_VARIABLE_LocalInfo_0_111, check_hlds__switch_detection__STATE_VARIABLE_LocalInfo_112);
+                    }
+                  }
+                  break;
+                case (MR_Integer) 2:
+                  {
+                    {
+                      check_hlds__switch_detection__detect_switches_in_goal_6_p_0(check_hlds__switch_detection__InstMap0_8, (MR_Word) MR_mkword(MR_mktag(0), MR_mkbody((MR_Integer) 0)), check_hlds__switch_detection__SubGoal0_142, &check_hlds__switch_detection__SubGoal_143, check_hlds__switch_detection__STATE_VARIABLE_LocalInfo_0_111, check_hlds__switch_detection__STATE_VARIABLE_LocalInfo_112);
+                    }
+                  }
+                  break;
+                case (MR_Integer) 3:
+                  switch (((MR_Integer) (MR_Word) (MR_hl_field(MR_mktag(3), check_hlds__switch_detection__Reason_34, (MR_Integer) 0)))) {
+                    default: /*NOTREACHED*/ MR_assert(0);
+                    case (MR_Integer) 0:
+                      {
+                        {
+                          check_hlds__switch_detection__detect_switches_in_goal_6_p_0(check_hlds__switch_detection__InstMap0_8, (MR_Word) MR_mkword(MR_mktag(0), MR_mkbody((MR_Integer) 0)), check_hlds__switch_detection__SubGoal0_142, &check_hlds__switch_detection__SubGoal_143, check_hlds__switch_detection__STATE_VARIABLE_LocalInfo_0_111, check_hlds__switch_detection__STATE_VARIABLE_LocalInfo_112);
+                        }
+                      }
+                      break;
+                    case (MR_Integer) 1:
+                      {
+                        {
+                          check_hlds__switch_detection__detect_switches_in_goal_6_p_0(check_hlds__switch_detection__InstMap0_8, (MR_Word) MR_mkword(MR_mktag(0), MR_mkbody((MR_Integer) 0)), check_hlds__switch_detection__SubGoal0_142, &check_hlds__switch_detection__SubGoal_143, check_hlds__switch_detection__STATE_VARIABLE_LocalInfo_0_111, check_hlds__switch_detection__STATE_VARIABLE_LocalInfo_112);
+                        }
+                      }
+                      break;
+                    case (MR_Integer) 2:
+                      {
+                        MR_Word check_hlds__switch_detection__RequiredVar_56 = ((MR_Word) (MR_hl_field(MR_mktag(3), check_hlds__switch_detection__Reason_34, (MR_Integer) 1)));
+                        MR_Word check_hlds__switch_detection__Var_123;
+
+                        {
+                          check_hlds__switch_detection__Var_123 = (MR_Word) MR_mkword(MR_mktag(1), MR_new_object(MR_Word, ((MR_Integer) 1 * sizeof(MR_Word)), NULL, NULL));
+                          MR_hl_field(MR_mktag(1), check_hlds__switch_detection__Var_123, 0) = ((MR_Box) (check_hlds__switch_detection__RequiredVar_56));
+                        }
+                        {
+                          check_hlds__switch_detection__detect_switches_in_goal_6_p_0(check_hlds__switch_detection__InstMap0_8, check_hlds__switch_detection__Var_123, check_hlds__switch_detection__SubGoal0_142, &check_hlds__switch_detection__SubGoal_143, check_hlds__switch_detection__STATE_VARIABLE_LocalInfo_0_111, check_hlds__switch_detection__STATE_VARIABLE_LocalInfo_112);
+                        }
+                      }
+                      break;
+                    case (MR_Integer) 3:
+                      {
+                        MR_Word check_hlds__switch_detection__RequiredVar_185 = ((MR_Word) (MR_hl_field(MR_mktag(3), check_hlds__switch_detection__Reason_34, (MR_Integer) 1)));
+                        MR_Word check_hlds__switch_detection__Var_186;
+                        MR_Word check_hlds__switch_detection__Var_57 = ((MR_Word) (MR_hl_field(MR_mktag(3), check_hlds__switch_detection__Reason_34, (MR_Integer) 2)));
+
+                        {
+                          check_hlds__switch_detection__Var_186 = (MR_Word) MR_mkword(MR_mktag(1), MR_new_object(MR_Word, ((MR_Integer) 1 * sizeof(MR_Word)), NULL, NULL));
+                          MR_hl_field(MR_mktag(1), check_hlds__switch_detection__Var_186, 0) = ((MR_Box) (check_hlds__switch_detection__RequiredVar_185));
+                        }
+                        {
+                          check_hlds__switch_detection__detect_switches_in_goal_6_p_0(check_hlds__switch_detection__InstMap0_8, check_hlds__switch_detection__Var_186, check_hlds__switch_detection__SubGoal0_142, &check_hlds__switch_detection__SubGoal_143, check_hlds__switch_detection__STATE_VARIABLE_LocalInfo_0_111, check_hlds__switch_detection__STATE_VARIABLE_LocalInfo_112);
+                        }
+                      }
+                      break;
+                    case (MR_Integer) 4:
+                      {
+                        {
+                          check_hlds__switch_detection__detect_switches_in_goal_6_p_0(check_hlds__switch_detection__InstMap0_8, (MR_Word) MR_mkword(MR_mktag(0), MR_mkbody((MR_Integer) 0)), check_hlds__switch_detection__SubGoal0_142, &check_hlds__switch_detection__SubGoal_143, check_hlds__switch_detection__STATE_VARIABLE_LocalInfo_0_111, check_hlds__switch_detection__STATE_VARIABLE_LocalInfo_112);
+                        }
+                      }
+                      break;
+                    case (MR_Integer) 5:
+                      {
+                        {
+                          check_hlds__switch_detection__detect_switches_in_goal_6_p_0(check_hlds__switch_detection__InstMap0_8, (MR_Word) MR_mkword(MR_mktag(0), MR_mkbody((MR_Integer) 0)), check_hlds__switch_detection__SubGoal0_142, &check_hlds__switch_detection__SubGoal_143, check_hlds__switch_detection__STATE_VARIABLE_LocalInfo_0_111, check_hlds__switch_detection__STATE_VARIABLE_LocalInfo_112);
+                        }
+                      }
+                      break;
+                    case (MR_Integer) 6:
+                      {
+                        MR_Word check_hlds__switch_detection__Var_188 = ((MR_Word) (MR_hl_field(MR_mktag(3), check_hlds__switch_detection__Reason_34, (MR_Integer) 2)));
+                        MR_Word check_hlds__switch_detection__Var_189 = ((MR_Word) (MR_hl_field(MR_mktag(3), check_hlds__switch_detection__Reason_34, (MR_Integer) 1)));
+
+                        switch (check_hlds__switch_detection__Var_188) {
+                          default: /*NOTREACHED*/ MR_assert(0);
+                          case (MR_Integer) 1:
+                            {
+                              check_hlds__switch_detection__SubGoal_143 = check_hlds__switch_detection__SubGoal0_142;
+                              *check_hlds__switch_detection__STATE_VARIABLE_LocalInfo_112 = check_hlds__switch_detection__STATE_VARIABLE_LocalInfo_0_111;
+                            }
+                            break;
+                          case (MR_Integer) 2:
+                            {
+                              {
+                                check_hlds__switch_detection__detect_switches_in_goal_6_p_0(check_hlds__switch_detection__InstMap0_8, (MR_Word) MR_mkword(MR_mktag(0), MR_mkbody((MR_Integer) 0)), check_hlds__switch_detection__SubGoal0_142, &check_hlds__switch_detection__SubGoal_143, check_hlds__switch_detection__STATE_VARIABLE_LocalInfo_0_111, check_hlds__switch_detection__STATE_VARIABLE_LocalInfo_112);
+                              }
+                            }
+                            break;
+                          case (MR_Integer) 0:
+                            {
+                              {
+                                check_hlds__switch_detection__detect_switches_in_goal_6_p_0(check_hlds__switch_detection__InstMap0_8, (MR_Word) MR_mkword(MR_mktag(0), MR_mkbody((MR_Integer) 0)), check_hlds__switch_detection__SubGoal0_142, &check_hlds__switch_detection__SubGoal_143, check_hlds__switch_detection__STATE_VARIABLE_LocalInfo_0_111, check_hlds__switch_detection__STATE_VARIABLE_LocalInfo_112);
+                              }
+                            }
+                            break;
+                          case (MR_Integer) 3:
+                            {
+                              {
+                                check_hlds__switch_detection__detect_switches_in_goal_6_p_0(check_hlds__switch_detection__InstMap0_8, (MR_Word) MR_mkword(MR_mktag(0), MR_mkbody((MR_Integer) 0)), check_hlds__switch_detection__SubGoal0_142, &check_hlds__switch_detection__SubGoal_143, check_hlds__switch_detection__STATE_VARIABLE_LocalInfo_0_111, check_hlds__switch_detection__STATE_VARIABLE_LocalInfo_112);
+                              }
+                            }
+                            break;
+                        }
+                      }
+                      break;
+                    case (MR_Integer) 7:
+                      {
+                        {
+                          check_hlds__switch_detection__detect_switches_in_goal_6_p_0(check_hlds__switch_detection__InstMap0_8, (MR_Word) MR_mkword(MR_mktag(0), MR_mkbody((MR_Integer) 0)), check_hlds__switch_detection__SubGoal0_142, &check_hlds__switch_detection__SubGoal_143, check_hlds__switch_detection__STATE_VARIABLE_LocalInfo_0_111, check_hlds__switch_detection__STATE_VARIABLE_LocalInfo_112);
+                        }
+                      }
+                      break;
+                    case (MR_Integer) 8:
+                      {
+                        {
+                          check_hlds__switch_detection__detect_switches_in_goal_6_p_0(check_hlds__switch_detection__InstMap0_8, (MR_Word) MR_mkword(MR_mktag(0), MR_mkbody((MR_Integer) 0)), check_hlds__switch_detection__SubGoal0_142, &check_hlds__switch_detection__SubGoal_143, check_hlds__switch_detection__STATE_VARIABLE_LocalInfo_0_111, check_hlds__switch_detection__STATE_VARIABLE_LocalInfo_112);
+                        }
+                      }
+                      break;
+                  }
+                  break;
+              }
+              {
+                MR_Word base;
+                base = (MR_Word) MR_mkword(MR_mktag(3), MR_new_object(MR_Word, ((MR_Integer) 3 * sizeof(MR_Word)), NULL, NULL));
+                *check_hlds__switch_detection__GoalExpr_12 = base;
+                MR_hl_field(MR_mktag(3), base, 0) = ((MR_Box) (MR_Word) ((MR_Integer) 5));
+                MR_hl_field(MR_mktag(3), base, 1) = ((MR_Box) (check_hlds__switch_detection__Reason_34));
+                MR_hl_field(MR_mktag(3), base, 2) = ((MR_Box) (check_hlds__switch_detection__SubGoal_143));
+              }
+            }
+            break;
+          case (MR_Integer) 6:
+            {
+              MR_Word check_hlds__switch_detection__Vars_22 = ((MR_Word) (MR_hl_field(MR_mktag(3), check_hlds__switch_detection__GoalExpr0_11, (MR_Integer) 1)));
+              MR_Word check_hlds__switch_detection__Cond0_23 = ((MR_Word) (MR_hl_field(MR_mktag(3), check_hlds__switch_detection__GoalExpr0_11, (MR_Integer) 2)));
+              MR_Word check_hlds__switch_detection__Then0_24 = ((MR_Word) (MR_hl_field(MR_mktag(3), check_hlds__switch_detection__GoalExpr0_11, (MR_Integer) 3)));
+              MR_Word check_hlds__switch_detection__Else0_25 = ((MR_Word) (MR_hl_field(MR_mktag(3), check_hlds__switch_detection__GoalExpr0_11, (MR_Integer) 4)));
+              MR_Word check_hlds__switch_detection__InstMap1_26;
+              MR_Word check_hlds__switch_detection__Cond_27;
+              MR_Word check_hlds__switch_detection__Then_28;
+              MR_Word check_hlds__switch_detection__Else_29;
+              MR_Word check_hlds__switch_detection__STATE_VARIABLE_LocalInfo_132_132;
+              MR_Word check_hlds__switch_detection__STATE_VARIABLE_LocalInfo_134_134;
+
+              {
+                check_hlds__switch_detection__detect_switches_in_goal_update_instmap_6_p_0(check_hlds__switch_detection__InstMap0_8, &check_hlds__switch_detection__InstMap1_26, check_hlds__switch_detection__Cond0_23, &check_hlds__switch_detection__Cond_27, check_hlds__switch_detection__STATE_VARIABLE_LocalInfo_0_111, &check_hlds__switch_detection__STATE_VARIABLE_LocalInfo_132_132);
+              }
+              {
+                check_hlds__switch_detection__detect_switches_in_goal_6_p_0(check_hlds__switch_detection__InstMap1_26, (MR_Word) MR_mkword(MR_mktag(0), MR_mkbody((MR_Integer) 0)), check_hlds__switch_detection__Then0_24, &check_hlds__switch_detection__Then_28, check_hlds__switch_detection__STATE_VARIABLE_LocalInfo_132_132, &check_hlds__switch_detection__STATE_VARIABLE_LocalInfo_134_134);
+              }
+              {
+                check_hlds__switch_detection__detect_switches_in_goal_6_p_0(check_hlds__switch_detection__InstMap0_8, (MR_Word) MR_mkword(MR_mktag(0), MR_mkbody((MR_Integer) 0)), check_hlds__switch_detection__Else0_25, &check_hlds__switch_detection__Else_29, check_hlds__switch_detection__STATE_VARIABLE_LocalInfo_134_134, check_hlds__switch_detection__STATE_VARIABLE_LocalInfo_112);
+              }
+              {
+                MR_Word base;
+                base = (MR_Word) MR_mkword(MR_mktag(3), MR_new_object(MR_Word, ((MR_Integer) 5 * sizeof(MR_Word)), NULL, NULL));
+                *check_hlds__switch_detection__GoalExpr_12 = base;
+                MR_hl_field(MR_mktag(3), base, 0) = ((MR_Box) (MR_Word) ((MR_Integer) 6));
+                MR_hl_field(MR_mktag(3), base, 1) = ((MR_Box) (check_hlds__switch_detection__Vars_22));
+                MR_hl_field(MR_mktag(3), base, 2) = ((MR_Box) (check_hlds__switch_detection__Cond_27));
+                MR_hl_field(MR_mktag(3), base, 3) = ((MR_Box) (check_hlds__switch_detection__Then_28));
+                MR_hl_field(MR_mktag(3), base, 4) = ((MR_Box) (check_hlds__switch_detection__Else_29));
+              }
+            }
+            break;
+          case (MR_Integer) 7:
+            {
+              MR_Word check_hlds__switch_detection__ShortHand0_96 = ((MR_Word) (MR_hl_field(MR_mktag(3), check_hlds__switch_detection__GoalExpr0_11, (MR_Integer) 1)));
+              MR_Word check_hlds__switch_detection__ShortHand_106;
+
+              switch (MR_tag((MR_Word) check_hlds__switch_detection__ShortHand0_96)) {
+                default: /*NOTREACHED*/ MR_assert(0);
+                case (MR_Integer) 0:
+                  {
+                    {
+                      mercury__require__unexpected_3_p_0((MR_String) "check_hlds.switch_detection", (MR_String) "predicate \140check_hlds.switch_detection.detect_switches_in_goal_expr\'/7", (MR_String) "bi_implication");
+                      return;
+                    }
+                  }
+                  break;
+                case (MR_Integer) 1:
+                  {
+                    MR_Word check_hlds__switch_detection__GoalType_97 = ((MR_Word) (MR_hl_field(MR_mktag(1), check_hlds__switch_detection__ShortHand0_96, (MR_Integer) 0)));
+                    MR_Word check_hlds__switch_detection__Outer_98 = ((MR_Word) (MR_hl_field(MR_mktag(1), check_hlds__switch_detection__ShortHand0_96, (MR_Integer) 1)));
+                    MR_Word check_hlds__switch_detection__Inner_99 = ((MR_Word) (MR_hl_field(MR_mktag(1), check_hlds__switch_detection__ShortHand0_96, (MR_Integer) 2)));
+                    MR_Word check_hlds__switch_detection__MaybeOutputVars_100 = ((MR_Word) (MR_hl_field(MR_mktag(1), check_hlds__switch_detection__ShortHand0_96, (MR_Integer) 3)));
+                    MR_Word check_hlds__switch_detection__MainGoal0_101 = ((MR_Word) (MR_hl_field(MR_mktag(1), check_hlds__switch_detection__ShortHand0_96, (MR_Integer) 4)));
+                    MR_Word check_hlds__switch_detection__OrElseGoals0_102 = ((MR_Word) (MR_hl_field(MR_mktag(1), check_hlds__switch_detection__ShortHand0_96, (MR_Integer) 5)));
+                    MR_Word check_hlds__switch_detection__OrElseInners_103 = ((MR_Word) (MR_hl_field(MR_mktag(1), check_hlds__switch_detection__ShortHand0_96, (MR_Integer) 6)));
+                    MR_Word check_hlds__switch_detection__MainGoal_104;
+                    MR_Word check_hlds__switch_detection__OrElseGoals_105;
+                    MR_Word check_hlds__switch_detection__STATE_VARIABLE_LocalInfo_119_119;
+
+                    {
+                      check_hlds__switch_detection__detect_switches_in_goal_6_p_0(check_hlds__switch_detection__InstMap0_8, (MR_Word) MR_mkword(MR_mktag(0), MR_mkbody((MR_Integer) 0)), check_hlds__switch_detection__MainGoal0_101, &check_hlds__switch_detection__MainGoal_104, check_hlds__switch_detection__STATE_VARIABLE_LocalInfo_0_111, &check_hlds__switch_detection__STATE_VARIABLE_LocalInfo_119_119);
+                    }
+                    {
+                      check_hlds__switch_detection__detect_switches_in_orelse_5_p_0(check_hlds__switch_detection__InstMap0_8, check_hlds__switch_detection__OrElseGoals0_102, &check_hlds__switch_detection__OrElseGoals_105, check_hlds__switch_detection__STATE_VARIABLE_LocalInfo_119_119, check_hlds__switch_detection__STATE_VARIABLE_LocalInfo_112);
+                    }
+                    {
+                      check_hlds__switch_detection__ShortHand_106 = (MR_Word) MR_mkword(MR_mktag(1), MR_new_object(MR_Word, ((MR_Integer) 7 * sizeof(MR_Word)), NULL, NULL));
+                      MR_hl_field(MR_mktag(1), check_hlds__switch_detection__ShortHand_106, 0) = ((MR_Box) (check_hlds__switch_detection__GoalType_97));
+                      MR_hl_field(MR_mktag(1), check_hlds__switch_detection__ShortHand_106, 1) = ((MR_Box) (check_hlds__switch_detection__Outer_98));
+                      MR_hl_field(MR_mktag(1), check_hlds__switch_detection__ShortHand_106, 2) = ((MR_Box) (check_hlds__switch_detection__Inner_99));
+                      MR_hl_field(MR_mktag(1), check_hlds__switch_detection__ShortHand_106, 3) = ((MR_Box) (check_hlds__switch_detection__MaybeOutputVars_100));
+                      MR_hl_field(MR_mktag(1), check_hlds__switch_detection__ShortHand_106, 4) = ((MR_Box) (check_hlds__switch_detection__MainGoal_104));
+                      MR_hl_field(MR_mktag(1), check_hlds__switch_detection__ShortHand_106, 5) = ((MR_Box) (check_hlds__switch_detection__OrElseGoals_105));
+                      MR_hl_field(MR_mktag(1), check_hlds__switch_detection__ShortHand_106, 6) = ((MR_Box) (check_hlds__switch_detection__OrElseInners_103));
+                    }
+                  }
+                  break;
+                case (MR_Integer) 2:
+                  {
+                    MR_Word check_hlds__switch_detection__MaybeIO_107 = ((MR_Word) (MR_hl_field(MR_mktag(2), check_hlds__switch_detection__ShortHand0_96, (MR_Integer) 0)));
+                    MR_Word check_hlds__switch_detection__ResultVar_108 = ((MR_Word) (MR_hl_field(MR_mktag(2), check_hlds__switch_detection__ShortHand0_96, (MR_Integer) 1)));
+                    MR_Word check_hlds__switch_detection__SubGoal0_150 = ((MR_Word) (MR_hl_field(MR_mktag(2), check_hlds__switch_detection__ShortHand0_96, (MR_Integer) 2)));
+                    MR_Word check_hlds__switch_detection__SubGoal_151;
+
+                    {
+                      check_hlds__switch_detection__detect_switches_in_goal_6_p_0(check_hlds__switch_detection__InstMap0_8, (MR_Word) MR_mkword(MR_mktag(0), MR_mkbody((MR_Integer) 0)), check_hlds__switch_detection__SubGoal0_150, &check_hlds__switch_detection__SubGoal_151, check_hlds__switch_detection__STATE_VARIABLE_LocalInfo_0_111, check_hlds__switch_detection__STATE_VARIABLE_LocalInfo_112);
+                    }
+                    {
+                      check_hlds__switch_detection__ShortHand_106 = (MR_Word) MR_mkword(MR_mktag(2), MR_new_object(MR_Word, ((MR_Integer) 3 * sizeof(MR_Word)), NULL, NULL));
+                      MR_hl_field(MR_mktag(2), check_hlds__switch_detection__ShortHand_106, 0) = ((MR_Box) (check_hlds__switch_detection__MaybeIO_107));
+                      MR_hl_field(MR_mktag(2), check_hlds__switch_detection__ShortHand_106, 1) = ((MR_Box) (check_hlds__switch_detection__ResultVar_108));
+                      MR_hl_field(MR_mktag(2), check_hlds__switch_detection__ShortHand_106, 2) = ((MR_Box) (check_hlds__switch_detection__SubGoal_151));
+                    }
+                  }
+                  break;
+              }
+              {
+                MR_Word base;
+                base = (MR_Word) MR_mkword(MR_mktag(3), MR_new_object(MR_Word, ((MR_Integer) 2 * sizeof(MR_Word)), NULL, NULL));
+                *check_hlds__switch_detection__GoalExpr_12 = base;
+                MR_hl_field(MR_mktag(3), base, 0) = ((MR_Box) (MR_Word) ((MR_Integer) 7));
+                MR_hl_field(MR_mktag(3), base, 1) = ((MR_Box) (check_hlds__switch_detection__ShortHand_106));
+              }
+            }
+            break;
+        }
+        break;
+    }
+  }
+}
+
+static void MR_CALL 
+check_hlds__switch_detection__detect_switches_in_goal_update_instmap_6_p_0(
+  MR_Word check_hlds__switch_detection__STATE_VARIABLE_InstMap_0_14,
+  MR_Word * check_hlds__switch_detection__STATE_VARIABLE_InstMap_15,
+  MR_Word check_hlds__switch_detection__Goal0_8,
+  MR_Word * check_hlds__switch_detection__Goal_9,
+  MR_Word check_hlds__switch_detection__STATE_VARIABLE_LocalInfo_0_16,
+  MR_Word * check_hlds__switch_detection__STATE_VARIABLE_LocalInfo_17)
+{
+  {
+    MR_bool check_hlds__switch_detection__succeeded;
+    MR_Word check_hlds__switch_detection__GoalExpr0_11 = ((MR_Word) (MR_hl_field(MR_mktag(0), check_hlds__switch_detection__Goal0_8, (MR_Integer) 0)));
+    MR_Word check_hlds__switch_detection__GoalInfo_12 = ((MR_Word) (MR_hl_field(MR_mktag(0), check_hlds__switch_detection__Goal0_8, (MR_Integer) 1)));
+    MR_Word check_hlds__switch_detection__GoalExpr_13;
+
+    {
+      check_hlds__switch_detection__detect_switches_in_goal_expr_7_p_0(check_hlds__switch_detection__STATE_VARIABLE_InstMap_0_14, (MR_Word) MR_mkword(MR_mktag(0), MR_mkbody((MR_Integer) 0)), check_hlds__switch_detection__GoalInfo_12, check_hlds__switch_detection__GoalExpr0_11, &check_hlds__switch_detection__GoalExpr_13, check_hlds__switch_detection__STATE_VARIABLE_LocalInfo_0_16, check_hlds__switch_detection__STATE_VARIABLE_LocalInfo_17);
+    }
+    {
+      MR_Word base;
+      base = (MR_Word) MR_new_object(MR_Word, ((MR_Integer) 2 * sizeof(MR_Word)), NULL, NULL);
+      *check_hlds__switch_detection__Goal_9 = base;
+      MR_hl_field(MR_mktag(0), base, 0) = ((MR_Box) (check_hlds__switch_detection__GoalExpr_13));
+      MR_hl_field(MR_mktag(0), base, 1) = ((MR_Box) (check_hlds__switch_detection__GoalInfo_12));
+    }
+    {
+      hlds__goal_util__update_instmap_3_p_0(check_hlds__switch_detection__Goal0_8, check_hlds__switch_detection__STATE_VARIABLE_InstMap_0_14, check_hlds__switch_detection__STATE_VARIABLE_InstMap_15);
+    }
+  }
+}
+
+static void MR_CALL 
+check_hlds__switch_detection__detect_switches_in_goal_6_p_0(
+  MR_Word check_hlds__switch_detection__InstMap0_7,
+  MR_Word check_hlds__switch_detection__MaybeRequiredVar_8,
+  MR_Word check_hlds__switch_detection__Goal0_9,
+  MR_Word * check_hlds__switch_detection__Goal_10,
+  MR_Word check_hlds__switch_detection__STATE_VARIABLE_LocalInfo_0_15,
+  MR_Word * check_hlds__switch_detection__STATE_VARIABLE_LocalInfo_16)
+{
+  {
+    MR_bool check_hlds__switch_detection__succeeded;
+    MR_Word check_hlds__switch_detection__GoalExpr0_12 = ((MR_Word) (MR_hl_field(MR_mktag(0), check_hlds__switch_detection__Goal0_9, (MR_Integer) 0)));
+    MR_Word check_hlds__switch_detection__GoalInfo_13 = ((MR_Word) (MR_hl_field(MR_mktag(0), check_hlds__switch_detection__Goal0_9, (MR_Integer) 1)));
+    MR_Word check_hlds__switch_detection__GoalExpr_14;
+
+    {
+      check_hlds__switch_detection__detect_switches_in_goal_expr_7_p_0(check_hlds__switch_detection__InstMap0_7, check_hlds__switch_detection__MaybeRequiredVar_8, check_hlds__switch_detection__GoalInfo_13, check_hlds__switch_detection__GoalExpr0_12, &check_hlds__switch_detection__GoalExpr_14, check_hlds__switch_detection__STATE_VARIABLE_LocalInfo_0_15, check_hlds__switch_detection__STATE_VARIABLE_LocalInfo_16);
+    }
+    {
+      MR_Word base;
+      base = (MR_Word) MR_new_object(MR_Word, ((MR_Integer) 2 * sizeof(MR_Word)), NULL, NULL);
+      *check_hlds__switch_detection__Goal_10 = base;
+      MR_hl_field(MR_mktag(0), base, 0) = ((MR_Box) (check_hlds__switch_detection__GoalExpr_14));
+      MR_hl_field(MR_mktag(0), base, 1) = ((MR_Box) (check_hlds__switch_detection__GoalInfo_13));
+    }
+  }
+}
+
+static void MR_CALL 
+check_hlds__switch_detection__detect_switches_in_procs_4_p_0(
+  MR_Word check_hlds__switch_detection__HeadVar__1_1,
+  MR_Word check_hlds__switch_detection__HeadVar__2_2,
+  MR_Word check_hlds__switch_detection__HeadVar__3_3,
+  MR_Word * check_hlds__switch_detection__HeadVar__4_4)
+{
+  {
+    MR_bool check_hlds__switch_detection__succeeded;
+
+    if ((check_hlds__switch_detection__HeadVar__3_3 == ((MR_Word) MR_mkword(MR_mktag(0), MR_mkbody((MR_Integer) 0)))))
+      *check_hlds__switch_detection__HeadVar__4_4 = (MR_Word) MR_mkword(MR_mktag(0), MR_mkbody((MR_Integer) 0));
+    else
+      {
+        MR_Word check_hlds__switch_detection__ProcIdInfo0_9 = ((MR_Word) (MR_hl_field(MR_mktag(1), check_hlds__switch_detection__HeadVar__3_3, (MR_Integer) 0)));
+        MR_Word check_hlds__switch_detection__ProcIdsInfos0_10 = ((MR_Word) (MR_hl_field(MR_mktag(1), check_hlds__switch_detection__HeadVar__3_3, (MR_Integer) 1)));
+        MR_Word check_hlds__switch_detection__ProcIdInfo_11;
+        MR_Word check_hlds__switch_detection__ProcIdsInfos_12;
+        MR_Integer check_hlds__switch_detection__ProcId_13 = ((MR_Integer) (MR_hl_field(MR_mktag(0), check_hlds__switch_detection__ProcIdInfo0_9, (MR_Integer) 0)));
+        MR_Word check_hlds__switch_detection__ProcInfo0_14 = ((MR_Word) (MR_hl_field(MR_mktag(0), check_hlds__switch_detection__ProcIdInfo0_9, (MR_Integer) 1)));
+
+        {
+          check_hlds__switch_detection__succeeded = mercury__list__member_2_p_0((MR_Word) &mercury__builtin__builtin__type_ctor_info_int_0, ((MR_Box) (check_hlds__switch_detection__ProcId_13)), check_hlds__switch_detection__HeadVar__2_2);
+        }
+        if (check_hlds__switch_detection__succeeded)
+          {
+            MR_Word check_hlds__switch_detection__ProcInfo_15;
+
+            {
+              check_hlds__switch_detection__detect_switches_in_proc_3_p_0(check_hlds__switch_detection__HeadVar__1_1, check_hlds__switch_detection__ProcInfo0_14, &check_hlds__switch_detection__ProcInfo_15);
+            }
+            {
+              check_hlds__switch_detection__ProcIdInfo_11 = (MR_Word) MR_new_object(MR_Word, ((MR_Integer) 2 * sizeof(MR_Word)), NULL, NULL);
+              MR_hl_field(MR_mktag(0), check_hlds__switch_detection__ProcIdInfo_11, 0) = ((MR_Box) (check_hlds__switch_detection__ProcId_13));
+              MR_hl_field(MR_mktag(0), check_hlds__switch_detection__ProcIdInfo_11, 1) = ((MR_Box) (check_hlds__switch_detection__ProcInfo_15));
+            }
+          }
+        else
+          check_hlds__switch_detection__ProcIdInfo_11 = check_hlds__switch_detection__ProcIdInfo0_9;
+        {
+          check_hlds__switch_detection__detect_switches_in_procs_4_p_0(check_hlds__switch_detection__HeadVar__1_1, check_hlds__switch_detection__HeadVar__2_2, check_hlds__switch_detection__ProcIdsInfos0_10, &check_hlds__switch_detection__ProcIdsInfos_12);
+        }
+        {
+          MR_Word base;
+          base = (MR_Word) MR_mkword(MR_mktag(1), MR_new_object(MR_Word, ((MR_Integer) 2 * sizeof(MR_Word)), NULL, NULL));
+          *check_hlds__switch_detection__HeadVar__4_4 = base;
+          MR_hl_field(MR_mktag(1), base, 0) = ((MR_Box) (check_hlds__switch_detection__ProcIdInfo_11));
+          MR_hl_field(MR_mktag(1), base, 1) = ((MR_Box) (check_hlds__switch_detection__ProcIdsInfos_12));
+        }
+      }
+  }
+}
+
+static void MR_CALL 
+check_hlds__switch_detection__detect_switches_in_preds_4_p_0(
+  MR_Word check_hlds__switch_detection__Info_1,
+  MR_Word check_hlds__switch_detection__ValidPredIdSet_2,
+  MR_Word check_hlds__switch_detection__HeadVar__3_3,
+  MR_Word * check_hlds__switch_detection__HeadVar__4_4)
+{
+  {
+    MR_bool check_hlds__switch_detection__succeeded;
+
+    if ((check_hlds__switch_detection__HeadVar__3_3 == ((MR_Word) MR_mkword(MR_mktag(0), MR_mkbody((MR_Integer) 0)))))
+      *check_hlds__switch_detection__HeadVar__4_4 = (MR_Word) MR_mkword(MR_mktag(0), MR_mkbody((MR_Integer) 0));
+    else
+      {
+        MR_Word check_hlds__switch_detection__PredIdInfo0_9 = ((MR_Word) (MR_hl_field(MR_mktag(1), check_hlds__switch_detection__HeadVar__3_3, (MR_Integer) 0)));
+        MR_Word check_hlds__switch_detection__PredIdsInfos0_10 = ((MR_Word) (MR_hl_field(MR_mktag(1), check_hlds__switch_detection__HeadVar__3_3, (MR_Integer) 1)));
+        MR_Word check_hlds__switch_detection__PredIdInfo_11;
+        MR_Word check_hlds__switch_detection__PredIdsInfos_12;
+        MR_Word check_hlds__switch_detection__PredId_13 = ((MR_Word) (MR_hl_field(MR_mktag(0), check_hlds__switch_detection__PredIdInfo0_9, (MR_Integer) 0)));
+        MR_Word check_hlds__switch_detection__PredInfo0_14 = ((MR_Word) (MR_hl_field(MR_mktag(0), check_hlds__switch_detection__PredIdInfo0_9, (MR_Integer) 1)));
+
+        {
+          check_hlds__switch_detection__succeeded = mercury__set_tree234__contains_2_p_0((MR_Word) &hlds__hlds_pred__hlds__hlds_pred__type_ctor_info_pred_id_0, check_hlds__switch_detection__ValidPredIdSet_2, ((MR_Box) (check_hlds__switch_detection__PredId_13)));
+        }
+        if (check_hlds__switch_detection__succeeded)
+          {
+            MR_Word check_hlds__switch_detection__PredInfo_15;
+            MR_Word check_hlds__switch_detection__NonImportedProcIds_22;
+
+            {
+              check_hlds__switch_detection__NonImportedProcIds_22 = hlds__hlds_pred__pred_info_non_imported_procids_1_f_0(check_hlds__switch_detection__PredInfo0_14);
+            }
+            if ((check_hlds__switch_detection__NonImportedProcIds_22 == ((MR_Word) MR_mkword(MR_mktag(0), MR_mkbody((MR_Integer) 0)))))
+              check_hlds__switch_detection__PredInfo_15 = check_hlds__switch_detection__PredInfo0_14;
+            else
+              {
+                MR_Word check_hlds__switch_detection__TypeCtorInfo_24_36;
+                MR_Word check_hlds__switch_detection__TypeCtorInfo_25_37;
+                MR_Word check_hlds__switch_detection__ProcTable0_27;
+                MR_Word check_hlds__switch_detection__ProcList0_28;
+                MR_Word check_hlds__switch_detection__ProcList_29;
+                MR_Word check_hlds__switch_detection__ProcTable_30;
+                MR_Word check_hlds__switch_detection__ModuleInfo_26 = ((MR_Word) (MR_hl_field(MR_mktag(0), check_hlds__switch_detection__Info_1, (MR_Integer) 0)));
+                MR_Word check_hlds__switch_detection__Var_35 = ((MR_Word) (MR_hl_field(MR_mktag(0), check_hlds__switch_detection__Info_1, (MR_Integer) 1)));
+
+                {
+                  hlds__passes_aux__write_pred_progress_message_5_p_0((MR_String) "% Detecting switches in ", check_hlds__switch_detection__PredId_13, check_hlds__switch_detection__ModuleInfo_26);
+                }
+                {
+                  hlds__hlds_pred__pred_info_get_proc_table_2_p_0(check_hlds__switch_detection__PredInfo0_14, &check_hlds__switch_detection__ProcTable0_27);
+                }
+                check_hlds__switch_detection__TypeCtorInfo_24_36 = (MR_Word) &mercury__builtin__builtin__type_ctor_info_int_0;
+                check_hlds__switch_detection__TypeCtorInfo_25_37 = (MR_Word) &hlds__hlds_pred__hlds__hlds_pred__type_ctor_info_proc_info_0;
+                {
+                  mercury__map__to_assoc_list_2_p_0(check_hlds__switch_detection__TypeCtorInfo_24_36, check_hlds__switch_detection__TypeCtorInfo_25_37, check_hlds__switch_detection__ProcTable0_27, &check_hlds__switch_detection__ProcList0_28);
+                }
+                {
+                  check_hlds__switch_detection__detect_switches_in_procs_4_p_0(check_hlds__switch_detection__Info_1, check_hlds__switch_detection__NonImportedProcIds_22, check_hlds__switch_detection__ProcList0_28, &check_hlds__switch_detection__ProcList_29);
+                }
+                {
+                  mercury__map__from_sorted_assoc_list_2_p_0(check_hlds__switch_detection__TypeCtorInfo_24_36, check_hlds__switch_detection__TypeCtorInfo_25_37, check_hlds__switch_detection__ProcList_29, &check_hlds__switch_detection__ProcTable_30);
+                }
+                {
+                  hlds__hlds_pred__pred_info_set_proc_table_3_p_0(check_hlds__switch_detection__ProcTable_30, check_hlds__switch_detection__PredInfo0_14, &check_hlds__switch_detection__PredInfo_15);
+                }
+              }
+            {
+              check_hlds__switch_detection__PredIdInfo_11 = (MR_Word) MR_new_object(MR_Word, ((MR_Integer) 2 * sizeof(MR_Word)), NULL, NULL);
+              MR_hl_field(MR_mktag(0), check_hlds__switch_detection__PredIdInfo_11, 0) = ((MR_Box) (check_hlds__switch_detection__PredId_13));
+              MR_hl_field(MR_mktag(0), check_hlds__switch_detection__PredIdInfo_11, 1) = ((MR_Box) (check_hlds__switch_detection__PredInfo_15));
+            }
+          }
+        else
+          check_hlds__switch_detection__PredIdInfo_11 = check_hlds__switch_detection__PredIdInfo0_9;
+        {
+          check_hlds__switch_detection__detect_switches_in_preds_4_p_0(check_hlds__switch_detection__Info_1, check_hlds__switch_detection__ValidPredIdSet_2, check_hlds__switch_detection__PredIdsInfos0_10, &check_hlds__switch_detection__PredIdsInfos_12);
+        }
+        {
+          MR_Word base;
+          base = (MR_Word) MR_mkword(MR_mktag(1), MR_new_object(MR_Word, ((MR_Integer) 2 * sizeof(MR_Word)), NULL, NULL));
+          *check_hlds__switch_detection__HeadVar__4_4 = base;
+          MR_hl_field(MR_mktag(1), base, 0) = ((MR_Box) (check_hlds__switch_detection__PredIdInfo_11));
+          MR_hl_field(MR_mktag(1), base, 1) = ((MR_Box) (check_hlds__switch_detection__PredIdsInfos_12));
+        }
+      }
+  }
+}
+
+void MR_CALL 
+check_hlds__switch_detection__find_bind_var_9_p_0(
+  MR_Word check_hlds__switch_detection__TypeInfo_for_Result_28,
+  MR_Word check_hlds__switch_detection__TypeInfo_for_Info_29,
+  MR_Word check_hlds__switch_detection__Var_10,
+  MR_Word check_hlds__switch_detection__ProcessUnify_11,
+  MR_Word check_hlds__switch_detection__STATE_VARIABLE_Goal_0_19,
+  MR_Word * check_hlds__switch_detection__STATE_VARIABLE_Goal_20,
+  MR_Box check_hlds__switch_detection__STATE_VARIABLE_Result_0_21,
+  MR_Box * check_hlds__switch_detection__STATE_VARIABLE_Result_22,
+  MR_Box check_hlds__switch_detection__STATE_VARIABLE_Info_0_23,
+  MR_Box * check_hlds__switch_detection__STATE_VARIABLE_Info_24,
+  MR_Word * check_hlds__switch_detection__FoundDeconstruct_15)
+{
+  {
+    MR_bool check_hlds__switch_detection__succeeded;
+    MR_Word check_hlds__switch_detection__Subst_16;
+    MR_Word check_hlds__switch_detection__DeconstructSearch_18;
+    MR_Word check_hlds__switch_detection__Var_17;
+
+    {
+      mercury__map__init_1_p_0((MR_Word) &check_hlds__switch_detection_scalar_common_1[0], (MR_Word) &check_hlds__switch_detection_scalar_common_1[1], &check_hlds__switch_detection__Subst_16);
+    }
+    {
+      check_hlds__switch_detection__f_85_110_117_115_101_100_65_114_103_115_95_95_112_114_101_100_95_95_102_105_110_100_95_98_105_110_100_95_118_97_114_95_50_95_95_91_49_44_32_50_93_95_48_11_p_0(check_hlds__switch_detection__Var_10, check_hlds__switch_detection__ProcessUnify_11, check_hlds__switch_detection__STATE_VARIABLE_Goal_0_19, check_hlds__switch_detection__STATE_VARIABLE_Goal_20, check_hlds__switch_detection__Subst_16, &check_hlds__switch_detection__Var_17, check_hlds__switch_detection__STATE_VARIABLE_Result_0_21, check_hlds__switch_detection__STATE_VARIABLE_Result_22, check_hlds__switch_detection__STATE_VARIABLE_Info_0_23, check_hlds__switch_detection__STATE_VARIABLE_Info_24, &check_hlds__switch_detection__DeconstructSearch_18);
+    }
+    switch (check_hlds__switch_detection__DeconstructSearch_18) {
+      default: /*NOTREACHED*/ MR_assert(0);
+      case (MR_Integer) 0:
+        *check_hlds__switch_detection__FoundDeconstruct_15 = (MR_Integer) 1;
+        break;
+      case (MR_Integer) 1:
+        *check_hlds__switch_detection__FoundDeconstruct_15 = (MR_Integer) 0;
+        break;
+      case (MR_Integer) 2:
+        *check_hlds__switch_detection__FoundDeconstruct_15 = (MR_Integer) 1;
+        break;
+    }
+  }
+}
+
+void MR_CALL 
+check_hlds__switch_detection__detect_switches_in_proc_3_p_0(
+  MR_Word check_hlds__switch_detection__Info_4,
+  MR_Word check_hlds__switch_detection__STATE_VARIABLE_ProcInfo_0_23,
+  MR_Word * check_hlds__switch_detection__STATE_VARIABLE_ProcInfo_24)
+{
+  {
+    MR_bool check_hlds__switch_detection__succeeded;
+    MR_Word check_hlds__switch_detection__TypeCtorInfo_30_30;
+    MR_Word check_hlds__switch_detection__ModuleInfo_6 = ((MR_Word) (MR_hl_field(MR_mktag(0), check_hlds__switch_detection__Info_4, (MR_Integer) 0)));
+    MR_Word check_hlds__switch_detection__AllowMulti_7 = ((MR_Word) (MR_hl_field(MR_mktag(0), check_hlds__switch_detection__Info_4, (MR_Integer) 1)));
+    MR_Word check_hlds__switch_detection__VarTypes_8;
+    MR_Word check_hlds__switch_detection__BodyDeletedCallCallees0_10;
+    MR_Word check_hlds__switch_detection__LocalInfo0_11;
+    MR_Word check_hlds__switch_detection__Goal0_12;
+    MR_Word check_hlds__switch_detection__InstMap0_13;
+    MR_Word check_hlds__switch_detection__Goal_14;
+    MR_Word check_hlds__switch_detection__LocalInfo_15;
+    MR_Word check_hlds__switch_detection__Requant_19;
+    MR_Word check_hlds__switch_detection__BodyDeletedCallCallees_20;
+    MR_Word check_hlds__switch_detection__DeletedCallCallees0_21;
+    MR_Word check_hlds__switch_detection__DeletedCallCallees_22;
+    MR_Word check_hlds__switch_detection__STATE_VARIABLE_ProcInfo_26_26;
+    MR_Word check_hlds__switch_detection__STATE_VARIABLE_ProcInfo_28_28;
+    MR_Word check_hlds__switch_detection__GoalExpr0_38;
+    MR_Word check_hlds__switch_detection__GoalInfo_39;
+    MR_Word check_hlds__switch_detection__GoalExpr_40;
+    MR_Word check_hlds__switch_detection___ModuleInfo_16;
+    MR_Word check_hlds__switch_detection___AllowMulti_17;
+    MR_Word check_hlds__switch_detection___VarTypes_18;
+
+    {
+      hlds__hlds_pred__proc_info_get_vartypes_2_p_0(check_hlds__switch_detection__STATE_VARIABLE_ProcInfo_0_23, &check_hlds__switch_detection__VarTypes_8);
+    }
+    check_hlds__switch_detection__TypeCtorInfo_30_30 = (MR_Word) &hlds__hlds_pred__hlds__hlds_pred__type_ctor_info_pred_proc_id_0;
+    {
+      check_hlds__switch_detection__BodyDeletedCallCallees0_10 = mercury__set__init_0_f_0(check_hlds__switch_detection__TypeCtorInfo_30_30);
+    }
+    {
+      check_hlds__switch_detection__LocalInfo0_11 = (MR_Word) MR_new_object(MR_Word, ((MR_Integer) 5 * sizeof(MR_Word)), NULL, NULL);
+      MR_hl_field(MR_mktag(0), check_hlds__switch_detection__LocalInfo0_11, 0) = ((MR_Box) (check_hlds__switch_detection__ModuleInfo_6));
+      MR_hl_field(MR_mktag(0), check_hlds__switch_detection__LocalInfo0_11, 1) = ((MR_Box) (check_hlds__switch_detection__AllowMulti_7));
+      MR_hl_field(MR_mktag(0), check_hlds__switch_detection__LocalInfo0_11, 2) = ((MR_Box) (check_hlds__switch_detection__VarTypes_8));
+      MR_hl_field(MR_mktag(0), check_hlds__switch_detection__LocalInfo0_11, 3) = ((MR_Box) ((MR_Integer) 1));
+      MR_hl_field(MR_mktag(0), check_hlds__switch_detection__LocalInfo0_11, 4) = ((MR_Box) (check_hlds__switch_detection__BodyDeletedCallCallees0_10));
+    }
+    {
+      hlds__hlds_pred__proc_info_get_goal_2_p_0(check_hlds__switch_detection__STATE_VARIABLE_ProcInfo_0_23, &check_hlds__switch_detection__Goal0_12);
+    }
+    {
+      hlds__hlds_pred__proc_info_get_initial_instmap_3_p_0(check_hlds__switch_detection__STATE_VARIABLE_ProcInfo_0_23, check_hlds__switch_detection__ModuleInfo_6, &check_hlds__switch_detection__InstMap0_13);
+    }
+    check_hlds__switch_detection__GoalExpr0_38 = ((MR_Word) (MR_hl_field(MR_mktag(0), check_hlds__switch_detection__Goal0_12, (MR_Integer) 0)));
+    check_hlds__switch_detection__GoalInfo_39 = ((MR_Word) (MR_hl_field(MR_mktag(0), check_hlds__switch_detection__Goal0_12, (MR_Integer) 1)));
+    {
+      check_hlds__switch_detection__detect_switches_in_goal_expr_7_p_0(check_hlds__switch_detection__InstMap0_13, (MR_Word) MR_mkword(MR_mktag(0), MR_mkbody((MR_Integer) 0)), check_hlds__switch_detection__GoalInfo_39, check_hlds__switch_detection__GoalExpr0_38, &check_hlds__switch_detection__GoalExpr_40, check_hlds__switch_detection__LocalInfo0_11, &check_hlds__switch_detection__LocalInfo_15);
+    }
+    {
+      check_hlds__switch_detection__Goal_14 = (MR_Word) MR_new_object(MR_Word, ((MR_Integer) 2 * sizeof(MR_Word)), NULL, NULL);
+      MR_hl_field(MR_mktag(0), check_hlds__switch_detection__Goal_14, 0) = ((MR_Box) (check_hlds__switch_detection__GoalExpr_40));
+      MR_hl_field(MR_mktag(0), check_hlds__switch_detection__Goal_14, 1) = ((MR_Box) (check_hlds__switch_detection__GoalInfo_39));
+    }
+    {
+      hlds__hlds_pred__proc_info_set_goal_3_p_0(check_hlds__switch_detection__Goal_14, check_hlds__switch_detection__STATE_VARIABLE_ProcInfo_0_23, &check_hlds__switch_detection__STATE_VARIABLE_ProcInfo_26_26);
+    }
+    check_hlds__switch_detection___ModuleInfo_16 = ((MR_Word) (MR_hl_field(MR_mktag(0), check_hlds__switch_detection__LocalInfo_15, (MR_Integer) 0)));
+    check_hlds__switch_detection___AllowMulti_17 = ((MR_Word) (MR_hl_field(MR_mktag(0), check_hlds__switch_detection__LocalInfo_15, (MR_Integer) 1)));
+    check_hlds__switch_detection___VarTypes_18 = ((MR_Word) (MR_hl_field(MR_mktag(0), check_hlds__switch_detection__LocalInfo_15, (MR_Integer) 2)));
+    check_hlds__switch_detection__Requant_19 = ((MR_Word) (MR_hl_field(MR_mktag(0), check_hlds__switch_detection__LocalInfo_15, (MR_Integer) 3)));
+    check_hlds__switch_detection__BodyDeletedCallCallees_20 = ((MR_Word) (MR_hl_field(MR_mktag(0), check_hlds__switch_detection__LocalInfo_15, (MR_Integer) 4)));
+    switch (check_hlds__switch_detection__Requant_19) {
+      default: /*NOTREACHED*/ MR_assert(0);
+      case (MR_Integer) 1:
+        check_hlds__switch_detection__STATE_VARIABLE_ProcInfo_28_28 = check_hlds__switch_detection__STATE_VARIABLE_ProcInfo_26_26;
+        break;
+      case (MR_Integer) 0:
+        {
+          {
+            hlds__quantification__requantify_proc_general_3_p_0((MR_Integer) 0, check_hlds__switch_detection__STATE_VARIABLE_ProcInfo_26_26, &check_hlds__switch_detection__STATE_VARIABLE_ProcInfo_28_28);
+          }
+        }
+        break;
+    }
+    {
+      hlds__hlds_pred__proc_info_get_deleted_call_callees_2_p_0(check_hlds__switch_detection__STATE_VARIABLE_ProcInfo_28_28, &check_hlds__switch_detection__DeletedCallCallees0_21);
+    }
+    {
+      mercury__set__union_3_p_0(check_hlds__switch_detection__TypeCtorInfo_30_30, check_hlds__switch_detection__BodyDeletedCallCallees_20, check_hlds__switch_detection__DeletedCallCallees0_21, &check_hlds__switch_detection__DeletedCallCallees_22);
+    }
+    {
+      hlds__hlds_pred__proc_info_set_deleted_call_callees_3_p_0(check_hlds__switch_detection__DeletedCallCallees_22, check_hlds__switch_detection__STATE_VARIABLE_ProcInfo_28_28, check_hlds__switch_detection__STATE_VARIABLE_ProcInfo_24);
+    }
+  }
+}
+
+MR_Word MR_CALL 
+check_hlds__switch_detection__init_switch_detect_info_1_f_0(
+  MR_Word check_hlds__switch_detection__ModuleInfo_3)
+{
+  {
+    MR_bool check_hlds__switch_detection__succeeded;
+    MR_Word check_hlds__switch_detection__Info_4;
+    MR_Word check_hlds__switch_detection__AllowMulti_5;
+    MR_Word check_hlds__switch_detection__Globals_8;
+    MR_Word check_hlds__switch_detection__Allow_9;
+
+    {
+      hlds__hlds_module__module_info_get_globals_2_p_0(check_hlds__switch_detection__ModuleInfo_3, &check_hlds__switch_detection__Globals_8);
+    }
+    {
+      libs__globals__lookup_bool_option_3_p_0(check_hlds__switch_detection__Globals_8, (MR_Integer) 302, &check_hlds__switch_detection__Allow_9);
+    }
+    switch (check_hlds__switch_detection__Allow_9) {
+      default: /*NOTREACHED*/ MR_assert(0);
+      case (MR_Integer) 0:
+        check_hlds__switch_detection__AllowMulti_5 = (MR_Integer) 1;
+        break;
+      case (MR_Integer) 1:
+        check_hlds__switch_detection__AllowMulti_5 = (MR_Integer) 0;
+        break;
+    }
+    {
+      check_hlds__switch_detection__Info_4 = (MR_Word) MR_new_object(MR_Word, ((MR_Integer) 2 * sizeof(MR_Word)), NULL, NULL);
+      MR_hl_field(MR_mktag(0), check_hlds__switch_detection__Info_4, 0) = ((MR_Box) (check_hlds__switch_detection__ModuleInfo_3));
+      MR_hl_field(MR_mktag(0), check_hlds__switch_detection__Info_4, 1) = ((MR_Box) (check_hlds__switch_detection__AllowMulti_5));
+    }
+    return check_hlds__switch_detection__Info_4;
+  }
+}
+
+void MR_CALL 
+check_hlds__switch_detection__detect_switches_in_module_2_p_0(
+  MR_Word check_hlds__switch_detection__STATE_VARIABLE_ModuleInfo_0_11,
+  MR_Word * check_hlds__switch_detection__STATE_VARIABLE_ModuleInfo_12)
+{
+  {
+    MR_bool check_hlds__switch_detection__succeeded;
+    MR_Word check_hlds__switch_detection__TypeCtorInfo_14_14;
+    MR_Word check_hlds__switch_detection__TypeCtorInfo_15_15;
+    MR_Word check_hlds__switch_detection__Info_4;
+    MR_Word check_hlds__switch_detection__ValidPredIds_5;
+    MR_Word check_hlds__switch_detection__ValidPredIdSet_6;
+    MR_Word check_hlds__switch_detection__PredMap0_7;
+    MR_Word check_hlds__switch_detection__PredIdsInfos0_8;
+    MR_Word check_hlds__switch_detection__PredIdsInfos_9;
+    MR_Word check_hlds__switch_detection__PredMap_10;
+    MR_Word check_hlds__switch_detection__AllowMulti_18;
+    MR_Word check_hlds__switch_detection__Globals_21;
+    MR_Word check_hlds__switch_detection__Allow_22;
+
+    {
+      hlds__hlds_module__module_info_get_globals_2_p_0(check_hlds__switch_detection__STATE_VARIABLE_ModuleInfo_0_11, &check_hlds__switch_detection__Globals_21);
+    }
+    {
+      libs__globals__lookup_bool_option_3_p_0(check_hlds__switch_detection__Globals_21, (MR_Integer) 302, &check_hlds__switch_detection__Allow_22);
+    }
+    switch (check_hlds__switch_detection__Allow_22) {
+      default: /*NOTREACHED*/ MR_assert(0);
+      case (MR_Integer) 0:
+        check_hlds__switch_detection__AllowMulti_18 = (MR_Integer) 1;
+        break;
+      case (MR_Integer) 1:
+        check_hlds__switch_detection__AllowMulti_18 = (MR_Integer) 0;
+        break;
+    }
+    {
+      check_hlds__switch_detection__Info_4 = (MR_Word) MR_new_object(MR_Word, ((MR_Integer) 2 * sizeof(MR_Word)), NULL, NULL);
+      MR_hl_field(MR_mktag(0), check_hlds__switch_detection__Info_4, 0) = ((MR_Box) (check_hlds__switch_detection__STATE_VARIABLE_ModuleInfo_0_11));
+      MR_hl_field(MR_mktag(0), check_hlds__switch_detection__Info_4, 1) = ((MR_Box) (check_hlds__switch_detection__AllowMulti_18));
+    }
+    {
+      hlds__hlds_module__module_info_get_valid_pred_ids_2_p_0(check_hlds__switch_detection__STATE_VARIABLE_ModuleInfo_0_11, &check_hlds__switch_detection__ValidPredIds_5);
+    }
+    check_hlds__switch_detection__TypeCtorInfo_14_14 = (MR_Word) &hlds__hlds_pred__hlds__hlds_pred__type_ctor_info_pred_id_0;
+    {
+      check_hlds__switch_detection__ValidPredIdSet_6 = mercury__set_tree234__list_to_set_1_f_0(check_hlds__switch_detection__TypeCtorInfo_14_14, check_hlds__switch_detection__ValidPredIds_5);
+    }
+    {
+      hlds__hlds_module__module_info_get_preds_2_p_0(check_hlds__switch_detection__STATE_VARIABLE_ModuleInfo_0_11, &check_hlds__switch_detection__PredMap0_7);
+    }
+    check_hlds__switch_detection__TypeCtorInfo_15_15 = (MR_Word) &hlds__hlds_pred__hlds__hlds_pred__type_ctor_info_pred_info_0;
+    {
+      mercury__map__to_assoc_list_2_p_0(check_hlds__switch_detection__TypeCtorInfo_14_14, check_hlds__switch_detection__TypeCtorInfo_15_15, check_hlds__switch_detection__PredMap0_7, &check_hlds__switch_detection__PredIdsInfos0_8);
+    }
+    {
+      check_hlds__switch_detection__detect_switches_in_preds_4_p_0(check_hlds__switch_detection__Info_4, check_hlds__switch_detection__ValidPredIdSet_6, check_hlds__switch_detection__PredIdsInfos0_8, &check_hlds__switch_detection__PredIdsInfos_9);
+    }
+    {
+      mercury__map__from_sorted_assoc_list_2_p_0(check_hlds__switch_detection__TypeCtorInfo_14_14, check_hlds__switch_detection__TypeCtorInfo_15_15, check_hlds__switch_detection__PredIdsInfos_9, &check_hlds__switch_detection__PredMap_10);
+    }
+    {
+      hlds__hlds_module__module_info_set_preds_3_p_0(check_hlds__switch_detection__PredMap_10, check_hlds__switch_detection__STATE_VARIABLE_ModuleInfo_0_11, check_hlds__switch_detection__STATE_VARIABLE_ModuleInfo_12);
+    }
+  }
+}
+
+void mercury__check_hlds__switch_detection__init(void)
+{
+}
+
+void mercury__check_hlds__switch_detection__init_type_tables(void)
+{
+	static MR_bool initialised = MR_FALSE;
+	if (initialised) return;
+	initialised = MR_TRUE;
+
+	MR_register_type_ctor_info(&check_hlds__switch_detection__check_hlds__switch_detection__type_ctor_info_allow_multi_arm_0);
+	MR_register_type_ctor_info(&check_hlds__switch_detection__check_hlds__switch_detection__type_ctor_info_candidate_switch_0);
+	MR_register_type_ctor_info(&check_hlds__switch_detection__check_hlds__switch_detection__type_ctor_info_candidate_switch_rank_0);
+	MR_register_type_ctor_info(&check_hlds__switch_detection__check_hlds__switch_detection__type_ctor_info_case_arm_0);
+	MR_register_type_ctor_info(&check_hlds__switch_detection__check_hlds__switch_detection__type_ctor_info_cases_missing_0);
+	MR_register_type_ctor_info(&check_hlds__switch_detection__check_hlds__switch_detection__type_ctor_info_cases_table_0);
+	MR_register_type_ctor_info(&check_hlds__switch_detection__check_hlds__switch_detection__type_ctor_info_cons_id_entry_0);
+	MR_register_type_ctor_info(&check_hlds__switch_detection__check_hlds__switch_detection__type_ctor_info_cons_id_state_0);
+	MR_register_type_ctor_info(&check_hlds__switch_detection__check_hlds__switch_detection__type_ctor_info_deconstruct_search_0);
+	MR_register_type_ctor_info(&check_hlds__switch_detection__check_hlds__switch_detection__type_ctor_info_found_deconstruct_0);
+	MR_register_type_ctor_info(&check_hlds__switch_detection__check_hlds__switch_detection__type_ctor_info_local_switch_detect_info_0);
+	MR_register_type_ctor_info(&check_hlds__switch_detection__check_hlds__switch_detection__type_ctor_info_process_unify_2);
+	MR_register_type_ctor_info(&check_hlds__switch_detection__check_hlds__switch_detection__type_ctor_info_switch_detect_info_0);
+}
+
+void mercury__check_hlds__switch_detection__init_debugger(void)
+{
+	MR_fatal_error("debugger initialization in MLDS grade");
+}
+
+// Ensure everything is compiled with the same grade.
+const char *mercury__check_hlds__switch_detection__grade_check(void)
+{
+    return &MR_GRADE_VAR;
+}
+
+/* :- end_module check_hlds.switch_detection. */

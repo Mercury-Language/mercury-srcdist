@@ -1,0 +1,14 @@
+:- module (ml_backend.rtti_to_mlds).
+:- interface.
+:- import_module backend_libs.
+:- import_module hlds.
+:- import_module list.
+:- import_module (backend_libs.rtti).
+:- import_module (hlds.hlds_module).
+:- import_module (ml_backend.ml_global_data).
+:- import_module (ml_backend.mlds).
+:- pred add_rtti_data_to_mlds(hlds.hlds_module.module_info, backend_libs.rtti.rtti_data, ml_backend.ml_global_data.ml_global_data, ml_backend.ml_global_data.ml_global_data).
+:- mode add_rtti_data_to_mlds((builtin.in), (builtin.in), (builtin.in), (builtin.out)) is det.
+:- pred add_rtti_datas_to_mlds(hlds.hlds_module.module_info, list.list(backend_libs.rtti.rtti_data), ml_backend.ml_global_data.ml_global_data, ml_backend.ml_global_data.ml_global_data).
+:- mode add_rtti_datas_to_mlds((builtin.in), (builtin.in), (builtin.in), (builtin.out)) is det.
+:- func order_mlds_rtti_defns(list.list(ml_backend.mlds.mlds_data_defn)) = list.list(list.list(ml_backend.mlds.mlds_data_defn)).

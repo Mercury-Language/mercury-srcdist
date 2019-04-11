@@ -1,0 +1,11 @@
+:- module (hlds.hlds_dependency_graph).
+:- interface.
+:- type hlds_bottom_up_dependency_sccs.
+:- type hlds_dependency_graph.
+:- type hlds_dependency_graph_key.
+:- type hlds_dependency_info.
+:- type include_imported
+	where	type_is_abstract_enum(1).
+:- type scc_with_entry_points.
+:- type what_dependency_edges
+	where	type_is_abstract_enum(1).

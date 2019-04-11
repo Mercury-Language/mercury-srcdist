@@ -1,0 +1,37 @@
+echo on
+register --quiet
+break half_siblings
+continue
+finish
+dd -d 3 -n 7
+no
+yes
+no
+yes
+no
+yes
+yes
+yes
+yes
+yes
+yes
+yes
+yes
+yes
+yes
+yes
+continue
+continue
+finish
+dd -d 3 -n 7
+no
+yes
+continue
+continue
+finish
+dd -d 3 -n 7
+no
+yes
+no
+yes
+quit -y

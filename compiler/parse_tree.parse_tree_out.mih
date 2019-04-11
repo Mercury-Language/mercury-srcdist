@@ -1,0 +1,170 @@
+/*
+** Automatically generated from `parse_tree_out.m'
+** by the Mercury compiler,
+** version rotd-2017-06-12
+** configured for x86_64-apple-darwin13.4.0.
+** Do not edit.
+**
+** The autoconfigured grade settings governing
+** the generation of this C file were
+**
+** TAG_BITS=2
+** UNBOXED_FLOAT=no
+** PREGENERATED_DIST=yes
+** HIGHLEVEL_CODE=yes
+**
+** END_OF_C_GRADE_INFO
+*/
+
+
+/* :- module parse_tree.parse_tree_out. */
+/* :- interface. */
+
+#ifndef MR_HEADER_GUARD_parse_tree__parse_tree_out
+#define MR_HEADER_GUARD_parse_tree__parse_tree_out
+
+#ifdef __cplusplus
+extern "C" {
+#endif
+
+#include "mercury.h"
+
+
+#ifndef PARSE_TREE__PARSE_TREE_OUT_DECL_GUARD
+#define PARSE_TREE__PARSE_TREE_OUT_DECL_GUARD
+#include "parse_tree.mih"
+
+#endif
+
+
+
+
+extern const MR_TypeCtorInfo_Struct parse_tree__parse_tree_out__parse_tree__parse_tree_out__type_ctor_info_output_parse_tree_1;
+
+void MR_CALL 
+parse_tree__parse_tree_out__convert_to_mercury_int_5_p_0(
+  MR_Word parse_tree__parse_tree_out__param_1,
+  MR_String parse_tree__parse_tree_out__param_2,
+  MR_Word parse_tree__parse_tree_out__param_3);
+
+void MR_CALL 
+parse_tree__parse_tree_out__convert_to_mercury_opt_5_p_0(
+  MR_Word parse_tree__parse_tree_out__param_1,
+  MR_String parse_tree__parse_tree_out__param_2,
+  MR_Word parse_tree__parse_tree_out__param_3);
+
+void MR_CALL 
+parse_tree__parse_tree_out__convert_to_mercury_src_5_p_0(
+  MR_Word parse_tree__parse_tree_out__param_1,
+  MR_String parse_tree__parse_tree_out__param_2,
+  MR_Word parse_tree__parse_tree_out__param_3);
+
+void MR_CALL 
+parse_tree__parse_tree_out__mercury_output_aug_compilation_unit_4_p_0(
+  MR_Word parse_tree__parse_tree_out__param_1,
+  MR_Word parse_tree__parse_tree_out__param_2);
+
+void MR_CALL 
+parse_tree__parse_tree_out__mercury_output_ctor_4_p_0(
+  MR_Word parse_tree__parse_tree_out__param_1,
+  MR_Word parse_tree__parse_tree_out__param_2);
+
+void MR_CALL 
+parse_tree__parse_tree_out__mercury_output_instance_method_3_p_0(
+  MR_Word parse_tree__parse_tree_out__param_1);
+
+void MR_CALL 
+parse_tree__parse_tree_out__mercury_output_int_for_opt_item_block_4_p_0(
+  MR_Word parse_tree__parse_tree_out__param_1,
+  MR_Word parse_tree__parse_tree_out__param_2);
+
+void MR_CALL 
+parse_tree__parse_tree_out__mercury_output_int_for_opt_item_blocks_4_p_0(
+  MR_Word parse_tree__parse_tree_out__param_1,
+  MR_Word parse_tree__parse_tree_out__param_2);
+
+void MR_CALL 
+parse_tree__parse_tree_out__mercury_output_int_item_block_4_p_0(
+  MR_Word parse_tree__parse_tree_out__param_1,
+  MR_Word parse_tree__parse_tree_out__param_2);
+
+void MR_CALL 
+parse_tree__parse_tree_out__mercury_output_int_item_blocks_4_p_0(
+  MR_Word parse_tree__parse_tree_out__param_1,
+  MR_Word parse_tree__parse_tree_out__param_2);
+
+void MR_CALL 
+parse_tree__parse_tree_out__mercury_output_item_4_p_0(
+  MR_Word parse_tree__parse_tree_out__param_1,
+  MR_Word parse_tree__parse_tree_out__param_2);
+
+void MR_CALL 
+parse_tree__parse_tree_out__mercury_output_opt_item_block_4_p_0(
+  MR_Word parse_tree__parse_tree_out__param_1,
+  MR_Word parse_tree__parse_tree_out__param_2);
+
+void MR_CALL 
+parse_tree__parse_tree_out__mercury_output_opt_item_blocks_4_p_0(
+  MR_Word parse_tree__parse_tree_out__param_1,
+  MR_Word parse_tree__parse_tree_out__param_2);
+
+void MR_CALL 
+parse_tree__parse_tree_out__mercury_output_parse_tree_int_4_p_0(
+  MR_Word parse_tree__parse_tree_out__param_1,
+  MR_Word parse_tree__parse_tree_out__param_2);
+
+void MR_CALL 
+parse_tree__parse_tree_out__mercury_output_parse_tree_opt_4_p_0(
+  MR_Word parse_tree__parse_tree_out__param_1,
+  MR_Word parse_tree__parse_tree_out__param_2);
+
+void MR_CALL 
+parse_tree__parse_tree_out__mercury_output_parse_tree_src_4_p_0(
+  MR_Word parse_tree__parse_tree_out__param_1,
+  MR_Word parse_tree__parse_tree_out__param_2);
+
+void MR_CALL 
+parse_tree__parse_tree_out__mercury_output_raw_compilation_unit_4_p_0(
+  MR_Word parse_tree__parse_tree_out__param_1,
+  MR_Word parse_tree__parse_tree_out__param_2);
+
+void MR_CALL 
+parse_tree__parse_tree_out__mercury_output_raw_item_block_4_p_0(
+  MR_Word parse_tree__parse_tree_out__param_1,
+  MR_Word parse_tree__parse_tree_out__param_2);
+
+void MR_CALL 
+parse_tree__parse_tree_out__mercury_output_raw_item_blocks_4_p_0(
+  MR_Word parse_tree__parse_tree_out__param_1,
+  MR_Word parse_tree__parse_tree_out__param_2);
+
+void MR_CALL 
+parse_tree__parse_tree_out__mercury_output_src_item_block_4_p_0(
+  MR_Word parse_tree__parse_tree_out__param_1,
+  MR_Word parse_tree__parse_tree_out__param_2);
+
+void MR_CALL 
+parse_tree__parse_tree_out__mercury_output_src_item_blocks_4_p_0(
+  MR_Word parse_tree__parse_tree_out__param_1,
+  MR_Word parse_tree__parse_tree_out__param_2);
+
+void MR_CALL 
+parse_tree__parse_tree_out__mercury_output_where_attributes_7_p_0(
+  MR_Word parse_tree__parse_tree_out__param_1,
+  MR_Word parse_tree__parse_tree_out__param_2,
+  MR_Word parse_tree__parse_tree_out__param_3,
+  MR_Word parse_tree__parse_tree_out__param_4,
+  MR_Word parse_tree__parse_tree_out__param_5);
+
+void mercury__parse_tree__parse_tree_out__init(void);
+void mercury__parse_tree__parse_tree_out__init_type_tables(void);
+void mercury__parse_tree__parse_tree_out__init_debugger(void);
+const char *mercury__parse_tree__parse_tree_out__grade_check(void);
+
+#ifdef __cplusplus
+}
+#endif
+
+#endif /* MR_HEADER_GUARD_parse_tree.parse_tree_out */
+
+/* :- end_interface parse_tree.parse_tree_out. */

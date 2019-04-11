@@ -1,0 +1,17 @@
+:- module (ml_backend.ml_util).
+:- interface.
+:- import_module assoc_list.
+:- import_module bool.
+:- import_module cord.
+:- import_module counter.
+:- import_module hlds.
+:- import_module libs.
+:- import_module list.
+:- import_module maybe.
+:- import_module set_tree234.
+:- import_module (hlds.hlds_data).
+:- import_module (hlds.hlds_module).
+:- import_module (libs.globals).
+:- import_module (ml_backend.mlds).
+:- type code_addrs_in_consts
+    --->    code_addrs_in_consts(set_tree234.set_tree234(ml_backend.mlds.mlds_code_addr), counter.counter, assoc_list.assoc_list(int, ml_backend.mlds.mlds_code_addr)).

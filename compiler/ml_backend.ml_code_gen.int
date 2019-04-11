@@ -1,0 +1,23 @@
+:- module (ml_backend.ml_code_gen).
+:- interface.
+:- import_module hlds.
+:- import_module list.
+:- import_module parse_tree.
+:- import_module (hlds.code_model).
+:- import_module (hlds.hlds_goal).
+:- import_module (hlds.vartypes).
+:- import_module (ml_backend.ml_gen_info).
+:- import_module (ml_backend.mlds).
+:- import_module (parse_tree.prog_data).
+:- pred ml_gen_goal(hlds.code_model.code_model, hlds.hlds_goal.hlds_goal, list.list(ml_backend.mlds.mlds_defn), list.list(ml_backend.mlds.statement), ml_backend.ml_gen_info.ml_gen_info, ml_backend.ml_gen_info.ml_gen_info).
+:- mode ml_gen_goal((builtin.in), (builtin.in), (builtin.out), (builtin.out), (builtin.in), (builtin.out)) is det.
+:- pred ml_gen_goal_as_block(hlds.code_model.code_model, hlds.hlds_goal.hlds_goal, ml_backend.mlds.statement, ml_backend.ml_gen_info.ml_gen_info, ml_backend.ml_gen_info.ml_gen_info).
+:- mode ml_gen_goal_as_block((builtin.in), (builtin.in), (builtin.out), (builtin.in), (builtin.out)) is det.
+:- pred ml_gen_goal_as_branch(hlds.code_model.code_model, hlds.hlds_goal.hlds_goal, list.list(ml_backend.mlds.mlds_defn), list.list(ml_backend.mlds.statement), ml_backend.ml_gen_info.ml_gen_info, ml_backend.ml_gen_info.ml_gen_info).
+:- mode ml_gen_goal_as_branch((builtin.in), (builtin.in), (builtin.out), (builtin.out), (builtin.in), (builtin.out)) is det.
+:- pred ml_gen_goal_as_branch_block(hlds.code_model.code_model, hlds.hlds_goal.hlds_goal, ml_backend.mlds.statement, ml_backend.ml_gen_info.ml_gen_info, ml_backend.ml_gen_info.ml_gen_info).
+:- mode ml_gen_goal_as_branch_block((builtin.in), (builtin.in), (builtin.out), (builtin.in), (builtin.out)) is det.
+:- pred ml_gen_local_var_decls(parse_tree.prog_data.prog_varset, hlds.vartypes.vartypes, parse_tree.prog_data.prog_context, parse_tree.prog_data.prog_vars, list.list(ml_backend.mlds.mlds_data_defn), ml_backend.ml_gen_info.ml_gen_info, ml_backend.ml_gen_info.ml_gen_info).
+:- mode ml_gen_local_var_decls((builtin.in), (builtin.in), (builtin.in), (builtin.in), (builtin.out), (builtin.in), (builtin.out)) is det.
+:- pred ml_gen_maybe_convert_goal_code_model(hlds.code_model.code_model, hlds.code_model.code_model, parse_tree.prog_data.prog_context, list.list(ml_backend.mlds.statement), list.list(ml_backend.mlds.statement), ml_backend.ml_gen_info.ml_gen_info, ml_backend.ml_gen_info.ml_gen_info).
+:- mode ml_gen_maybe_convert_goal_code_model((builtin.in), (builtin.in), (builtin.in), (builtin.in), (builtin.out), (builtin.in), (builtin.out)) is det.
