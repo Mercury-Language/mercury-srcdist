@@ -1,0 +1,14 @@
+:- module (hlds.assertion).
+:- interface.
+:- import_module list.
+:- import_module parse_tree.
+:- import_module (hlds.hlds_goal).
+:- import_module (hlds.hlds_module).
+:- import_module (hlds.hlds_pred).
+:- import_module (hlds.hlds_promise).
+:- import_module (parse_tree.prog_data).
+:- import_module (parse_tree.set_of_var).
+:- type associative_vars_output_var
+    --->    associative_vars_output_var(parse_tree.set_of_var.set_of_progvar, parse_tree.prog_data.prog_var).
+:- type state_update_vars
+    --->    state_update_vars(parse_tree.prog_data.prog_var, parse_tree.prog_data.prog_var).

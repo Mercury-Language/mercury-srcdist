@@ -1,0 +1,5 @@
+:- module (ll_backend.unify_gen_util).
+:- interface.
+:- type arg_and_width(Arg).
+:- type assign_dir
+	where	type_is_abstract_enum(2).

@@ -1,0 +1,12 @@
+:- module (ml_backend.ml_unify_gen_test).
+:- interface.
+:- import_module hlds.
+:- import_module parse_tree.
+:- import_module (hlds.hlds_data).
+:- import_module (ml_backend.ml_gen_info).
+:- import_module (ml_backend.mlds).
+:- import_module (parse_tree.prog_data).
+:- pred ml_gen_known_tag_test(parse_tree.prog_data.prog_var, hlds.hlds_data.tagged_cons_id, ml_backend.mlds.mlds_rval, ml_backend.ml_gen_info.ml_gen_info, ml_backend.ml_gen_info.ml_gen_info).
+:- mode ml_gen_known_tag_test((builtin.in), (builtin.in), (builtin.out), (builtin.in), (builtin.out)) is det.
+:- pred ml_gen_tag_test(parse_tree.prog_data.prog_var, parse_tree.prog_data.cons_id, ml_backend.mlds.mlds_rval, ml_backend.ml_gen_info.ml_gen_info, ml_backend.ml_gen_info.ml_gen_info).
+:- mode ml_gen_tag_test((builtin.in), (builtin.in), (builtin.out), (builtin.in), (builtin.out)) is det.
