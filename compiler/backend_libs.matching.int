@@ -1,0 +1,14 @@
+:- module (backend_libs.matching).
+:- interface.
+:- import_module bool.
+:- import_module list.
+:- import_module parse_tree.
+:- import_module set.
+:- import_module (parse_tree.prog_data).
+:- import_module (parse_tree.set_of_var).
+:- type benefit_node.
+:- type cost_node.
+:- type matching_params
+    --->    matching_params(((backend_libs.matching).cell_var_store_cost) :: int, ((backend_libs.matching).cell_var_load_cost) :: int, ((backend_libs.matching).field_var_store_cost) :: int, ((backend_libs.matching).field_var_load_cost) :: int, ((backend_libs.matching).one_path_op_ratio) :: int, ((backend_libs.matching).one_path_node_ratio) :: int, ((backend_libs.matching).include_all_candidates) :: bool.bool).
+:- pred find_via_cell_vars(parse_tree.prog_data.prog_var, parse_tree.set_of_var.set_of_progvar, bool.bool, parse_tree.set_of_var.set_of_progvar, list.list(parse_tree.set_of_var.set_of_progvar), backend_libs.matching.matching_params, set.set(backend_libs.matching.benefit_node), set.set(backend_libs.matching.cost_node), parse_tree.set_of_var.set_of_progvar).
+:- mode find_via_cell_vars((builtin.in), (builtin.in), (builtin.in), (builtin.in), (builtin.in), (builtin.in), (builtin.out), (builtin.out), (builtin.out)) is det.
