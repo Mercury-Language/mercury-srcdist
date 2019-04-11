@@ -1,0 +1,4 @@
+:- module (mdb.cterm).
+:- interface.
+:- type cargs.
+:- type cterm.
