@@ -1,0 +1,15 @@
+:- module (ml_backend.ml_unify_gen_util).
+:- interface.
+:- type arg_const_type_and_width.
+:- type arg_to_type(Arg).
+:- type arg_type_and_width(Arg).
+:- type arg_var_type_and_width.
+:- type assign_dir
+	where	type_is_abstract_enum(2).
+:- type cons_id_or_closure.
+:- type field_gen.
+:- type field_via.
+:- type may_have_extra_args
+	where	type_is_abstract_enum(1).
+:- type ml_maybe_zero_const
+	where	type_is_abstract_enum(1).
