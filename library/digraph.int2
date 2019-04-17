@@ -1,0 +1,13 @@
+:- module digraph.
+:- interface.
+:- import_module assoc_list.
+:- import_module enum.
+:- import_module list.
+:- import_module map.
+:- import_module pair.
+:- import_module set.
+:- import_module sparse_bitset.
+:- type digraph(T).
+:- type digraph_key(T).
+:- type digraph_key_set(T) == sparse_bitset.sparse_bitset(digraph.digraph_key(T)).
+:- instance (enum.enum(digraph.digraph_key(T))).
