@@ -1,0 +1,24 @@
+:- module (ml_backend.mlds_to_java_type).
+:- interface.
+:- import_module backend_libs.
+:- import_module io.
+:- import_module list.
+:- import_module parse_tree.
+:- import_module (backend_libs.rtti).
+:- import_module (ml_backend.mlds).
+:- import_module (ml_backend.mlds_to_java_util).
+:- import_module (parse_tree.prog_data).
+:- import_module (parse_tree.prog_type).
+:- pred boxed_type_to_string_for_java(ml_backend.mlds_to_java_util.java_out_info, ml_backend.mlds.mlds_type, string).
+:- mode boxed_type_to_string_for_java((builtin.in), (builtin.in), (builtin.out)) is det.
+:- pred hand_defined_type_for_java(parse_tree.prog_data.mer_type, parse_tree.prog_type.type_ctor_category, string, list.list(int)).
+:- mode hand_defined_type_for_java((builtin.in), (builtin.in), (builtin.out), (builtin.out)) is semidet.
+:- pred java_builtin_type(ml_backend.mlds.mlds_type, string, string, string).
+:- mode java_builtin_type((builtin.in), (builtin.out), (builtin.out), (builtin.out)) is semidet.
+:- pred java_primitive_foreign_language_type(parse_tree.prog_data.foreign_language_type, string, string, string, string).
+:- mode java_primitive_foreign_language_type((builtin.in), (builtin.out), (builtin.out), (builtin.out), (builtin.out)) is semidet.
+:- pred output_type_for_java(ml_backend.mlds_to_java_util.java_out_info, ml_backend.mlds.mlds_type, io.io, io.io).
+:- mode output_type_for_java((builtin.in), (builtin.in), (builtin.di), (builtin.uo)) is det.
+:- func type_is_array_for_java(ml_backend.mlds.mlds_type) = backend_libs.rtti.is_array.
+:- pred type_to_string_for_java(ml_backend.mlds_to_java_util.java_out_info, ml_backend.mlds.mlds_type, string, list.list(int)).
+:- mode type_to_string_for_java((builtin.in), (builtin.in), (builtin.out), (builtin.out)) is det.
