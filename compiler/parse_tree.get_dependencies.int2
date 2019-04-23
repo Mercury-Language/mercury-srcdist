@@ -1,0 +1,35 @@
+:- module (parse_tree.get_dependencies).
+:- interface.
+:- import_module libs.
+:- import_module list.
+:- import_module mdbcomp.
+:- import_module multi_map.
+:- import_module set.
+:- import_module (libs.globals).
+:- import_module (mdbcomp.sym_name).
+:- import_module (parse_tree.prog_data).
+:- import_module (parse_tree.prog_data_foreign).
+:- import_module (parse_tree.prog_item).
+:- type implicit_import_needs
+    --->    implicit_import_needs(((parse_tree.get_dependencies).iin_tabling) :: parse_tree.get_dependencies.maybe_need_tabling, ((parse_tree.get_dependencies).iin_tabling_statistics) :: parse_tree.get_dependencies.maybe_need_tabling_statistics, ((parse_tree.get_dependencies).iin_stm) :: parse_tree.get_dependencies.maybe_need_stm, ((parse_tree.get_dependencies).iin_exception) :: parse_tree.get_dependencies.maybe_need_exception, ((parse_tree.get_dependencies).iin_string_format) :: parse_tree.get_dependencies.maybe_need_string_format, ((parse_tree.get_dependencies).iin_stream_format) :: parse_tree.get_dependencies.maybe_need_stream_format, ((parse_tree.get_dependencies).iin_io) :: parse_tree.get_dependencies.maybe_need_io).
+:- type maybe_need_exception
+    --->    dont_need_exception 
+    ;       do_need_exception .
+:- type maybe_need_io
+    --->    dont_need_io 
+    ;       do_need_io .
+:- type maybe_need_stm
+    --->    dont_need_stm 
+    ;       do_need_stm .
+:- type maybe_need_stream_format
+    --->    dont_need_stream_format 
+    ;       do_need_stream_format .
+:- type maybe_need_string_format
+    --->    dont_need_string_format 
+    ;       do_need_string_format .
+:- type maybe_need_tabling
+    --->    dont_need_tabling 
+    ;       do_need_tabling .
+:- type maybe_need_tabling_statistics
+    --->    dont_need_tabling_statistics 
+    ;       do_need_tabling_statistics .
