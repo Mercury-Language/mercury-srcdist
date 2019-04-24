@@ -1,0 +1,4 @@
+:- module (mdb.frame).
+:- interface.
+:- type clip_rect.
+:- type frame.

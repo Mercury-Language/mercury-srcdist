@@ -1,0 +1,44 @@
+:- module (ll_backend.exprn_aux).
+:- interface.
+:- import_module assoc_list.
+:- import_module bool.
+:- import_module list.
+:- import_module parse_tree.
+:- import_module (ll_backend.llds).
+:- import_module (parse_tree.prog_data).
+:- type transform_lval(T) == pred(ll_backend.llds.lval, ll_backend.llds.lval, T, T).
+:- inst (transform_lval) == (pred((builtin.in), (builtin.out), (builtin.in), (builtin.out)) is det).
+:- pred const_is_constant(ll_backend.llds.rval_const, ll_backend.llds.exprn_opts, bool.bool).
+:- mode const_is_constant((builtin.in), (builtin.in), (builtin.out)) is det.
+:- pred lval_addrs(ll_backend.llds.lval, list.list(ll_backend.llds.code_addr), list.list(ll_backend.llds.data_id)).
+:- mode lval_addrs((builtin.in), (builtin.out), (builtin.out)) is det.
+:- pred lval_list_addrs(list.list(ll_backend.llds.lval), list.list(ll_backend.llds.code_addr), list.list(ll_backend.llds.data_id)).
+:- mode lval_list_addrs((builtin.in), (builtin.out), (builtin.out)) is det.
+:- func lval_to_rval(ll_backend.llds.lval) = ll_backend.llds.rval.
+:- pred rval_addrs(ll_backend.llds.rval, list.list(ll_backend.llds.code_addr), list.list(ll_backend.llds.data_id)).
+:- mode rval_addrs((builtin.in), (builtin.out), (builtin.out)) is det.
+:- pred rval_list_addrs(list.list(ll_backend.llds.rval), list.list(ll_backend.llds.code_addr), list.list(ll_backend.llds.data_id)).
+:- mode rval_list_addrs((builtin.in), (builtin.out), (builtin.out)) is det.
+:- pred simplify_rval(ll_backend.llds.rval, ll_backend.llds.rval).
+:- mode simplify_rval((builtin.in), (builtin.out)) is det.
+:- pred substitute_lval_in_instr(ll_backend.llds.lval, ll_backend.llds.lval, ll_backend.llds.instruction, ll_backend.llds.instruction, int, int).
+:- mode substitute_lval_in_instr((builtin.in), (builtin.in), (builtin.in), (builtin.out), (builtin.in), (builtin.out)) is det.
+:- pred substitute_lval_in_lval(ll_backend.llds.lval, ll_backend.llds.lval, ll_backend.llds.lval, ll_backend.llds.lval).
+:- mode substitute_lval_in_lval((builtin.in), (builtin.in), (builtin.in), (builtin.out)) is det.
+:- pred substitute_lval_in_rval(ll_backend.llds.lval, ll_backend.llds.lval, ll_backend.llds.rval, ll_backend.llds.rval).
+:- mode substitute_lval_in_rval((builtin.in), (builtin.in), (builtin.in), (builtin.out)) is det.
+:- pred substitute_rval_in_rval(ll_backend.llds.rval, ll_backend.llds.rval, ll_backend.llds.rval, ll_backend.llds.rval).
+:- mode substitute_rval_in_rval((builtin.in), (builtin.in), (builtin.in), (builtin.out)) is det.
+:- pred substitute_rvals_in_rval(assoc_list.assoc_list(ll_backend.llds.rval, ll_backend.llds.rval), ll_backend.llds.rval, ll_backend.llds.rval).
+:- mode substitute_rvals_in_rval((builtin.in), (builtin.in), (builtin.out)) is det.
+:- pred substitute_vars_in_rval(assoc_list.assoc_list(parse_tree.prog_data.prog_var, ll_backend.llds.rval), ll_backend.llds.rval, ll_backend.llds.rval).
+:- mode substitute_vars_in_rval((builtin.in), (builtin.in), (builtin.out)) is det.
+:- pred transform_lval_in_instr(ll_backend.exprn_aux.transform_lval(T), ll_backend.llds.instruction, ll_backend.llds.instruction, T, T).
+:- mode transform_lval_in_instr(builtin.in(((ll_backend.exprn_aux).transform_lval)), (builtin.in), (builtin.out), (builtin.in), (builtin.out)) is det.
+:- pred transform_lval_in_rval(ll_backend.exprn_aux.transform_lval(T), ll_backend.llds.rval, ll_backend.llds.rval, T, T).
+:- mode transform_lval_in_rval(builtin.in(((ll_backend.exprn_aux).transform_lval)), (builtin.in), (builtin.out), (builtin.in), (builtin.out)) is det.
+:- func var_lval_to_rval(parse_tree.prog_data.prog_var, ll_backend.llds.lval) = ll_backend.llds.rval.
+:- pred vars_in_lval(ll_backend.llds.lval, list.list(parse_tree.prog_data.prog_var)).
+:- mode vars_in_lval((builtin.in), (builtin.out)) is det.
+:- pred vars_in_rval(ll_backend.llds.rval, list.list(parse_tree.prog_data.prog_var)).
+:- mode vars_in_rval((builtin.in), (builtin.out)) is det.
