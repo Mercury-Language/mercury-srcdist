@@ -1,0 +1,13 @@
+module(1, "term_to_html.m",
+	(mdb.term_to_html),
+	{mdb},
+	{builtin, io, maybe, private_builtin, (mdb.browser_term)},
+	{bool, builtin, char, construct, deconstruct, dir, exception, int, io, list, maybe, private_builtin, string, type_desc, univ, (mdb.browse), (mdb.browser_term), (mdb.percent_encoding)},
+	{},
+	{},
+	{},
+	{},
+	{},
+	no_foreign_export,
+	no_main
+).
