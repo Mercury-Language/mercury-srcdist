@@ -1,0 +1,7 @@
+:- module edit_seq.
+:- interface.
+:- type diff(T).
+:- type diff_seq(T).
+:- type edit(T).
+:- type edit_params.
+:- type edit_seq(T).

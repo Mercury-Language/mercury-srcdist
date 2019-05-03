@@ -1,0 +1,61 @@
+:- module (ll_backend.trace_gen).
+:- interface.
+:- import_module assoc_list.
+:- import_module hlds.
+:- import_module libs.
+:- import_module map.
+:- import_module maybe.
+:- import_module mdbcomp.
+:- import_module pair.
+:- import_module parse_tree.
+:- import_module set.
+:- import_module (hlds.hlds_goal).
+:- import_module (hlds.hlds_module).
+:- import_module (hlds.hlds_pred).
+:- import_module (libs.globals).
+:- import_module (ll_backend.code_info).
+:- import_module (ll_backend.code_loc_dep).
+:- import_module (ll_backend.continuation_info).
+:- import_module (ll_backend.llds).
+:- import_module (mdbcomp.goal_path).
+:- import_module (parse_tree.prog_data).
+:- import_module (parse_tree.set_of_var).
+:- type external_event_info
+    --->    external_event_info(ll_backend.llds.label, map.map(parse_tree.prog_data.tvar, set.set(ll_backend.llds.layout_locn)), ll_backend.llds.llds_code).
+:- type external_trace_port
+    --->    external_port_call 
+    ;       external_port_exit 
+    ;       external_port_fail 
+    ;       external_port_tailrec_call .
+:- type negation_end_port
+    --->    neg_success 
+    ;       neg_failure .
+:- type trace_info.
+:- type trace_slot_info
+    --->    trace_slot_info(((ll_backend.trace_gen).slot_from_full) :: maybe.maybe(int), ((ll_backend.trace_gen).slot_io) :: maybe.maybe(int), ((ll_backend.trace_gen).slot_trail) :: maybe.maybe(int), ((ll_backend.trace_gen).slot_maxfr) :: maybe.maybe(int), ((ll_backend.trace_gen).slot_call_table) :: maybe.maybe(int), ((ll_backend.trace_gen).slot_tail_rec) :: maybe.maybe(int)).
+:- pred do_we_need_maxfr_slot(libs.globals.globals, hlds.hlds_module.module_info, hlds.hlds_pred.pred_info, hlds.hlds_pred.proc_info, hlds.hlds_pred.proc_info).
+:- mode do_we_need_maxfr_slot((builtin.in), (builtin.in), (builtin.in), (builtin.in), (builtin.out)) is det.
+:- pred generate_external_event_code(ll_backend.trace_gen.external_trace_port, ll_backend.trace_gen.trace_info, parse_tree.prog_data.prog_context, maybe.maybe(ll_backend.trace_gen.external_event_info), ll_backend.code_info.code_info, ll_backend.code_info.code_info, ll_backend.code_loc_dep.code_loc_dep, ll_backend.code_loc_dep.code_loc_dep).
+:- mode generate_external_event_code((builtin.in), (builtin.in), (builtin.in), (builtin.out), (builtin.in), (builtin.out), (builtin.in), (builtin.out)) is det.
+:- pred generate_slot_fill_code(ll_backend.code_info.code_info, ll_backend.trace_gen.trace_info, ll_backend.llds.llds_code).
+:- mode generate_slot_fill_code((builtin.in), (builtin.in), (builtin.out)) is det.
+:- pred generate_tailrec_event_code(ll_backend.trace_gen.trace_info, assoc_list.assoc_list(parse_tree.prog_data.prog_var, hlds.hlds_pred.arg_info), mdbcomp.goal_path.goal_id, parse_tree.prog_data.prog_context, ll_backend.llds.llds_code, ll_backend.llds.label, ll_backend.code_info.code_info, ll_backend.code_info.code_info, ll_backend.code_loc_dep.code_loc_dep, ll_backend.code_loc_dep.code_loc_dep).
+:- mode generate_tailrec_event_code((builtin.in), (builtin.in), (builtin.in), (builtin.in), (builtin.out), (builtin.out), (builtin.in), (builtin.out), (builtin.in), (builtin.out)) is det.
+:- pred generate_user_event_code(ll_backend.continuation_info.user_event_info, hlds.hlds_goal.hlds_goal_info, ll_backend.llds.llds_code, ll_backend.code_info.code_info, ll_backend.code_info.code_info, ll_backend.code_loc_dep.code_loc_dep, ll_backend.code_loc_dep.code_loc_dep).
+:- mode generate_user_event_code((builtin.in), (builtin.in), (builtin.out), (builtin.in), (builtin.out), (builtin.in), (builtin.out)) is det.
+:- pred get_trace_maybe_tail_rec_info(ll_backend.trace_gen.trace_info, maybe.maybe(pair.pair(ll_backend.llds.lval, ll_backend.llds.label))).
+:- mode get_trace_maybe_tail_rec_info((builtin.in), (builtin.out)) is det.
+:- pred maybe_generate_internal_event_code(hlds.hlds_goal.hlds_goal, hlds.hlds_goal.hlds_goal_info, ll_backend.llds.llds_code, ll_backend.code_info.code_info, ll_backend.code_info.code_info, ll_backend.code_loc_dep.code_loc_dep, ll_backend.code_loc_dep.code_loc_dep).
+:- mode maybe_generate_internal_event_code((builtin.in), (builtin.in), (builtin.out), (builtin.in), (builtin.out), (builtin.in), (builtin.out)) is det.
+:- pred maybe_generate_negated_event_code(hlds.hlds_goal.hlds_goal, hlds.hlds_goal.hlds_goal_info, ll_backend.trace_gen.negation_end_port, ll_backend.llds.llds_code, ll_backend.code_info.code_info, ll_backend.code_info.code_info, ll_backend.code_loc_dep.code_loc_dep, ll_backend.code_loc_dep.code_loc_dep).
+:- mode maybe_generate_negated_event_code((builtin.in), (builtin.in), (builtin.in), (builtin.out), (builtin.in), (builtin.out), (builtin.in), (builtin.out)) is det.
+:- pred maybe_setup_redo_event(ll_backend.trace_gen.trace_info, ll_backend.llds.llds_code).
+:- mode maybe_setup_redo_event((builtin.in), (builtin.out)) is det.
+:- pred trace_fail_vars(hlds.hlds_module.module_info, hlds.hlds_pred.proc_info, parse_tree.set_of_var.set_of_progvar).
+:- mode trace_fail_vars((builtin.in), (builtin.in), (builtin.out)) is det.
+:- pred trace_prepare_for_call(ll_backend.code_info.code_info, ll_backend.llds.llds_code).
+:- mode trace_prepare_for_call((builtin.in), (builtin.out)) is det.
+:- pred trace_reserved_slots(hlds.hlds_module.module_info, hlds.hlds_pred.pred_info, hlds.hlds_pred.proc_info, libs.globals.globals, int, maybe.maybe(pair.pair(parse_tree.prog_data.prog_var, int))).
+:- mode trace_reserved_slots((builtin.in), (builtin.in), (builtin.in), (builtin.in), (builtin.out), (builtin.out)) is det.
+:- pred trace_setup(hlds.hlds_module.module_info, hlds.hlds_pred.pred_info, hlds.hlds_pred.proc_info, libs.globals.globals, maybe.maybe(ll_backend.llds.label), ll_backend.trace_gen.trace_slot_info, ll_backend.trace_gen.trace_info, ll_backend.code_info.code_info, ll_backend.code_info.code_info).
+:- mode trace_setup((builtin.in), (builtin.in), (builtin.in), (builtin.in), (builtin.in), (builtin.out), (builtin.out), (builtin.in), (builtin.out)) is det.

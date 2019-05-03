@@ -1,0 +1,7 @@
+:- module (mdb.declarative_user).
+:- interface.
+:- type user_question(T).
+:- type user_response(T).
+:- type user_search_mode
+	where	type_is_abstract_enum(2).
+:- type user_state.
