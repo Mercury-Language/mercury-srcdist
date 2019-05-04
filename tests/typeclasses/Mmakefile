@@ -1,0 +1,107 @@
+#-----------------------------------------------------------------------------#
+# vim: ts=8 sw=8 noexpandtab ft=make
+#-----------------------------------------------------------------------------#
+
+THIS_DIR = typeclasses
+SUBDIRS =
+TESTS_DIR = ..
+MAYBE_J1 =
+
+#-----------------------------------------------------------------------------#
+
+ORDINARY_PROGS = \
+	arbitrary_constraint_class \
+	arbitrary_constraint_pred_2 \
+	arbitrary_constraint_pred_1 \
+	complicated_constraint \
+	complicated_fundeps \
+	constrained_lambda \
+	extract_typeinfo \
+	extract_typeinfo2 \
+	exist_disjunction \
+	existential_type_classes \
+	existential_data_types \
+	existential_data_types_regr_test \
+	existential_type_switch \
+	extra_typeinfo \
+	func_default_mode_bug \
+	fundeps_1 \
+	fundeps_2 \
+	fundeps_3 \
+	fundeps_4 \
+	fundeps_5 \
+	fundeps_6 \
+	fundeps_7 \
+	ground_constraint \
+	ground_constraint_2 \
+	ho_map \
+	implied_instance \
+	implied_instance_multi_constraint \
+	implied_instance_missing_constraint \
+	implied_instance_poly \
+	impure_methods \
+	instance_clauses \
+	instance_unconstrained_tvar \
+	instance_unconstrained_tvar_dup \
+	instance_unconstrained_tvar_type_spec \
+	inference_test \
+	inference_test_2 \
+	intermod_typeclass_bug \
+	lambda_multi_constraint_same_tvar \
+	mode_decl_order_bug \
+	module_test \
+	multi_constraint_diff_tvar \
+	multi_constraint_same_tvar \
+	multi_moded \
+	multi_parameter \
+	multi_parameter_bug \
+	no_fundep_infer \
+	nondet_class_method \
+	operator_classname \
+	record_syntax \
+	reordered_existential_constraint \
+	submodule_consistency_test \
+	superclass_bug \
+	superclass_bug2 \
+	superclass_bug3 \
+	superclass_call \
+	test_default_func_mode \
+	tuple_instance \
+	typeclass_exist_method \
+	typeclass_exist_method_2 \
+	typeclass_order_bug \
+	typeclass_order_bug2 \
+	typeclass_order_bug3 \
+	typeclass_test_5 \
+	typeclass_test_6 \
+	type_spec \
+	unbound_tvar \
+	unqualified_method \
+	use_abstract_instance \
+	use_abstract_typeclass
+
+# The following tests do not (yet) work with the C# and Java back-ends.
+#
+ifeq "$(filter csharp% java%,$(GRADE))" ""
+	C_ONLY_PROGS = \
+		existential_rtti \
+		recursive_instance_1
+else
+	C_ONLY_PROGS = 
+endif
+
+PROGS = \
+	$(ORDINARY_PROGS) \
+	$(C_ONLY_PROGS)
+
+
+TESTS = $(PROGS)
+include $(TESTS_DIR)/Mmake.common
+
+# Module-specific options should go in Mercury.options so they
+# can be found by `mmc --make'.
+include Mercury.options
+
+%.runtest: %.res ;
+
+#-----------------------------------------------------------------------------#

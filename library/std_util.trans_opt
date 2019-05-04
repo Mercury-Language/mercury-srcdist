@@ -1,0 +1,19 @@
+:- module std_util.
+
+:- pragma termination_info(std_util.compose((builtin.in), (builtin.in), (builtin.in)) = (builtin.out), infinite, can_loop).
+:- pragma termination_info(std_util.converse((builtin.in), (builtin.in), (builtin.in)) = (builtin.out), infinite, can_loop).
+:- pragma termination_info(std_util.id((builtin.in)) = (builtin.out), finite(0, [no, yes, no]), cannot_loop).
+:- pragma termination_info(std_util.isnt(builtin.in((pred((builtin.in)) is semidet)), (builtin.in)), infinite, can_loop).
+:- pragma termination_info(std_util.maybe_func((func((builtin.in)) = (builtin.out) is semidet), (builtin.in)) = (builtin.out), infinite, can_loop).
+:- pragma termination_info(std_util.maybe_pred((pred((builtin.in), (builtin.out)) is semidet), (builtin.in), (builtin.out)), infinite, can_loop).
+:- pragma termination_info(std_util.negate(builtin.in(((pred) is semidet))), infinite, can_loop).
+:- pragma termination_info(std_util.pow((builtin.in), (builtin.in), (builtin.in)) = (builtin.out), infinite, can_loop).
+
+:- pragma exceptions(function, (std_util.compose), 4, 0, may_throw(user_exception)).
+:- pragma exceptions(function, (std_util.converse), 4, 0, may_throw(user_exception)).
+:- pragma exceptions(function, (std_util.id), 2, 0, will_not_throw).
+:- pragma exceptions(predicate, (std_util.isnt), 2, 0, may_throw(user_exception)).
+:- pragma exceptions(function, (std_util.maybe_func), 3, 0, may_throw(user_exception)).
+:- pragma exceptions(predicate, (std_util.maybe_pred), 3, 0, may_throw(user_exception)).
+:- pragma exceptions(predicate, (std_util.negate), 1, 0, may_throw(user_exception)).
+:- pragma exceptions(function, (std_util.pow), 4, 0, may_throw(user_exception)).
