@@ -1,0 +1,25 @@
+:- module (parse_tree.module_imports).
+:- interface.
+:- import_module cord.
+:- import_module libs.
+:- import_module list.
+:- import_module map.
+:- import_module maybe.
+:- import_module mdbcomp.
+:- import_module multi_map.
+:- import_module recompilation.
+:- import_module set.
+:- import_module (libs.file_util).
+:- import_module (libs.globals).
+:- import_module (libs.timestamp).
+:- import_module (mdbcomp.sym_name).
+:- import_module (parse_tree.error_util).
+:- import_module (parse_tree.file_kind).
+:- import_module (parse_tree.parse_error).
+:- import_module (parse_tree.prog_data).
+:- import_module (parse_tree.prog_data_foreign).
+:- import_module (parse_tree.prog_item).
+:- type module_and_imports.
+:- type module_timestamp
+    --->    module_timestamp(((parse_tree.module_imports).mts_file_kind) :: parse_tree.file_kind.file_kind, ((parse_tree.module_imports).mts_timestamp) :: libs.timestamp.timestamp, ((parse_tree.module_imports).mts_need_qualifier) :: parse_tree.prog_data.need_qualifier).
+:- type module_timestamp_map == map.map(mdbcomp.sym_name.module_name, parse_tree.module_imports.module_timestamp).

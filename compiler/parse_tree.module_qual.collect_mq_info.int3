@@ -1,0 +1,7 @@
+:- module ((parse_tree.module_qual).collect_mq_info).
+:- interface.
+:- import_module list.
+:- import_module (parse_tree.prog_item).
+:- type mq_section.
+:- type section_mq_info(MS).
+:- inst (section_mq_info) == (pred(in, out, out) is det).

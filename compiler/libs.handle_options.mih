@@ -1,0 +1,96 @@
+/*
+** Automatically generated from `handle_options.m'
+** by the Mercury compiler,
+** version rotd-2019-05-06
+** configured for x86_64-pc-linux-gnu.
+** Do not edit.
+**
+** The autoconfigured grade settings governing
+** the generation of this C file were
+**
+** TAG_BITS=2
+** UNBOXED_FLOAT=no
+** UNBOXED_INT64S=no
+** PREGENERATED_DIST=yes
+** HIGHLEVEL_CODE=yes
+**
+** END_OF_C_GRADE_INFO
+*/
+
+
+// :- module libs.handle_options.
+// :- interface.
+
+#ifndef MR_HEADER_GUARD_libs__handle_options
+#define MR_HEADER_GUARD_libs__handle_options
+
+#ifdef __cplusplus
+extern "C" {
+#endif
+
+#include "mercury.h"
+
+
+#ifndef LIBS__HANDLE_OPTIONS_DECL_GUARD
+#define LIBS__HANDLE_OPTIONS_DECL_GUARD
+#include "libs.mih"
+#ifdef MR_HIGHLEVEL_CODE
+    extern MR_Word libs__handle_options__mutable_variable_already_printed_usage;
+#else
+    extern MR_Word libs__handle_options__mutable_variable_already_printed_usage;
+#endif
+#ifdef MR_THREAD_SAFE
+    extern MercuryLock libs__handle_options__mutable_variable_already_printed_usage_lock;
+#endif
+
+
+#endif
+
+
+
+
+void MR_CALL 
+libs__handle_options__display_compiler_version_2_p_0(void);
+
+void MR_CALL 
+libs__handle_options__generate_default_globals_3_p_0(
+  MR_Word * param_1);
+
+void MR_CALL 
+libs__handle_options__handle_given_options_7_p_0(
+  MR_Word param_1,
+  MR_Word * param_2,
+  MR_Word * param_3,
+  MR_Word * param_4,
+  MR_Word * param_5);
+
+void MR_CALL 
+libs__handle_options__long_usage_2_p_0(void);
+
+void MR_CALL 
+libs__handle_options__separate_option_args_5_p_0(
+  MR_Word param_1,
+  MR_Word * param_2,
+  MR_Word * param_3);
+
+void MR_CALL 
+libs__handle_options__usage_2_p_0(void);
+
+void MR_CALL 
+libs__handle_options__usage_errors_4_p_0(
+  MR_Word param_1,
+  MR_Word param_2);
+
+void mercury__libs__handle_options__init(void);
+void mercury__libs__handle_options__init_type_tables(void);
+void mercury__libs__handle_options__init_debugger(void);
+void mercury__libs__handle_options__required_init(void);
+const char *mercury__libs__handle_options__grade_check(void);
+
+#ifdef __cplusplus
+}
+#endif
+
+#endif // MR_HEADER_GUARD_libs.handle_options
+
+// :- end_interface libs.handle_options.

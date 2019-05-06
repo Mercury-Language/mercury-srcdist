@@ -1,0 +1,6 @@
+echo on
+step
+finish
+dd -d 3 -n 7
+q
+c
