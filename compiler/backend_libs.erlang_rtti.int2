@@ -1,0 +1,39 @@
+:- module (backend_libs.erlang_rtti).
+:- interface.
+:- import_module hlds.
+:- import_module list.
+:- import_module maybe.
+:- import_module mdbcomp.
+:- import_module (backend_libs.rtti).
+:- import_module (hlds.hlds_rtti).
+:- import_module (mdbcomp.sym_name).
+:- type erlang_atom_raw
+    --->    erlang_atom_raw(string).
+:- type erlang_du_functor
+    --->    erlang_du_functor(((backend_libs.erlang_rtti).edu_name) :: string, ((backend_libs.erlang_rtti).edu_orig_arity) :: uint16, ((backend_libs.erlang_rtti).edu_ordinal) :: uint32, ((backend_libs.erlang_rtti).edu_lex) :: uint32, ((backend_libs.erlang_rtti).edu_rep) :: backend_libs.erlang_rtti.erlang_atom_raw, ((backend_libs.erlang_rtti).edu_arg_infos) :: list.list(backend_libs.rtti.du_arg_info), ((backend_libs.erlang_rtti).edu_exist_info) :: maybe.maybe(backend_libs.rtti.exist_info), ((backend_libs.erlang_rtti).edu_subtype_info) :: backend_libs.rtti.functor_subtype_info).
+:- type erlang_impl_ctor
+    --->    erlang_impl_ctor_type_info 
+    ;       erlang_impl_ctor_type_ctor_info 
+    ;       erlang_impl_ctor_typeclass_info 
+    ;       erlang_impl_ctor_base_typeclass_info 
+    ;       erlang_impl_ctor_hp 
+    ;       erlang_impl_ctor_subgoal 
+    ;       erlang_impl_ctor_ticket .
+:- type erlang_rtti_data
+    --->    erlang_rtti_data_type_ctor_info(backend_libs.erlang_rtti.erlang_type_ctor_data)
+    ;       erlang_rtti_data_type_info(backend_libs.rtti.rtti_type_info)
+    ;       erlang_rtti_data_pseudo_type_info(backend_libs.rtti.rtti_pseudo_type_info)
+    ;       erlang_rtti_data_base_typeclass_info(backend_libs.rtti.tc_name, mdbcomp.sym_name.module_name, string, backend_libs.rtti.base_typeclass_info)
+    ;       erlang_rtti_data_type_class_decl(backend_libs.rtti.tc_decl)
+    ;       erlang_rtti_data_type_class_instance(backend_libs.rtti.tc_instance).
+:- type erlang_type_ctor_data
+    --->    erlang_type_ctor_data(((backend_libs.erlang_rtti).etcr_version) :: uint8, ((backend_libs.erlang_rtti).etcr_module_name) :: mdbcomp.sym_name.module_name, ((backend_libs.erlang_rtti).etcr_type_name) :: string, ((backend_libs.erlang_rtti).etcr_arity) :: uint16, ((backend_libs.erlang_rtti).etcr_unify) :: maybe.maybe(hlds.hlds_rtti.rtti_proc_label), ((backend_libs.erlang_rtti).etcr_compare) :: maybe.maybe(hlds.hlds_rtti.rtti_proc_label), ((backend_libs.erlang_rtti).etcr_rep_details) :: backend_libs.erlang_rtti.erlang_type_ctor_details).
+:- type erlang_type_ctor_details
+    --->    erlang_du(((backend_libs.erlang_rtti).edu_functors) :: list.list(backend_libs.erlang_rtti.erlang_du_functor))
+    ;       erlang_dummy(((backend_libs.erlang_rtti).edummy_name) :: string)
+    ;       erlang_list 
+    ;       erlang_array 
+    ;       erlang_eqv(((backend_libs.erlang_rtti).eeqv_type) :: backend_libs.rtti.rtti_maybe_pseudo_type_info)
+    ;       erlang_builtin(((backend_libs.erlang_rtti).ebuiltin_ctor) :: backend_libs.rtti.builtin_ctor)
+    ;       erlang_impl_artifact(((backend_libs.erlang_rtti).eimpl_ctor) :: backend_libs.erlang_rtti.erlang_impl_ctor)
+    ;       erlang_foreign .
