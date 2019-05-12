@@ -1,0 +1,6 @@
+:- module (check_hlds.polymorphism).
+:- interface.
+:- type int_or_var.
+:- type poly_info.
+:- type type_info_kind
+	where	type_is_abstract_enum(1).
