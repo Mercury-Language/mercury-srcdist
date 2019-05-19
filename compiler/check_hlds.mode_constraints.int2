@@ -1,0 +1,5 @@
+:- module (check_hlds.mode_constraints).
+:- implementation.
+:- typeclass has_ho_modes(T).
+:- typeclass has_mc_info(T).
+:- typeclass has_module_info(T).

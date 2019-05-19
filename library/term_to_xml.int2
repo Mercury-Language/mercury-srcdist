@@ -1,0 +1,53 @@
+:- module term_to_xml.
+:- interface.
+:- import_module deconstruct.
+:- import_module list.
+:- import_module maybe.
+:- import_module stream.
+:- import_module type_desc.
+:- type attr
+    --->    attr(string, string).
+:- type attr_from_source
+    --->    attr_from_source((term_to_xml.attr_name) :: string, (term_to_xml.attr_source) :: term_to_xml.attr_source).
+:- type attr_source
+    --->    functor 
+    ;       field_name 
+    ;       type_name 
+    ;       arity .
+:- type doctype
+    --->    public(string)
+    ;       public_system(string, string)
+    ;       system(string).
+:- type dtd_generation_result
+    --->    ok 
+    ;       multiple_functors_for_root 
+    ;       duplicate_elements((term_to_xml.duplicate_element) :: string, (term_to_xml.duplicate_types) :: list.list(type_desc.type_desc))
+    ;       unsupported_dtd_type(type_desc.type_desc)
+    ;       type_not_ground(type_desc.pseudo_type_desc).
+:- type element_mapping
+    --->    simple 
+    ;       unique 
+    ;       custom(term_to_xml.element_pred).
+:- type element_pred == pred(type_desc.type_desc, term_to_xml.maybe_functor_info, string, list.list(term_to_xml.attr_from_source)).
+:- type maybe_dtd
+    --->    embed_dtd 
+    ;       external_dtd(term_to_xml.doctype)
+    ;       no_dtd .
+:- type maybe_functor_info
+    --->    du_functor((term_to_xml.functor_name) :: string, (term_to_xml.functor_arity) :: int)
+    ;       non_du .
+:- type maybe_stylesheet
+    --->    with_stylesheet((term_to_xml.stylesheet_type) :: string, (term_to_xml.stylesheet_href) :: string)
+    ;       no_stylesheet .
+:- type xml
+    --->    elem((term_to_xml.element_name) :: string, (term_to_xml.attributes) :: list.list(term_to_xml.attr), (term_to_xml.children) :: list.list(term_to_xml.xml))
+    ;       data(string)
+    ;       cdata(string)
+    ;       comment(string)
+    ;       entity(string)
+    ;       raw(string).
+:- inst (element_mapping) for term_to_xml.element_mapping/0 == bound(custom((term_to_xml.element_pred)) ; simple ; unique).
+:- inst (element_pred) == (pred((builtin.in), (builtin.in), (builtin.out), (builtin.out)) is det).
+:- inst (non_embedded_dtd) for term_to_xml.maybe_dtd/0 == bound(external_dtd(ground) ; no_dtd).
+:- inst (xml_doc) for term_to_xml.xml/0 == bound(elem(ground, ground, ground)).
+:- typeclass xmlable(T).

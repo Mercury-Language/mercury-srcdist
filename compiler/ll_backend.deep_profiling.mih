@@ -1,0 +1,97 @@
+/*
+** Automatically generated from `deep_profiling.m'
+** by the Mercury compiler,
+** version rotd-2019-05-19
+** configured for x86_64-pc-linux-gnu.
+** Do not edit.
+**
+** The autoconfigured grade settings governing
+** the generation of this C file were
+**
+** TAG_BITS=2
+** UNBOXED_FLOAT=no
+** UNBOXED_INT64S=no
+** PREGENERATED_DIST=yes
+** HIGHLEVEL_CODE=yes
+**
+** END_OF_C_GRADE_INFO
+*/
+
+
+// :- module ll_backend.deep_profiling.
+// :- interface.
+
+#ifndef MR_HEADER_GUARD_ll_backend__deep_profiling
+#define MR_HEADER_GUARD_ll_backend__deep_profiling
+
+#ifdef __cplusplus
+extern "C" {
+#endif
+
+#include "mercury.h"
+
+
+#ifndef LL_BACKEND__DEEP_PROFILING_DECL_GUARD
+#define LL_BACKEND__DEEP_PROFILING_DECL_GUARD
+#include "ll_backend.mih"
+
+#endif
+
+
+
+
+extern const MR_TypeCtorInfo_Struct ll_backend__deep_profiling__ll_backend__deep_profiling__type_ctor_info_call_class_0;
+
+extern const MR_TypeCtorInfo_Struct ll_backend__deep_profiling__ll_backend__deep_profiling__type_ctor_info_deep_info_0;
+
+extern const MR_TypeCtorInfo_Struct ll_backend__deep_profiling__ll_backend__deep_profiling__type_ctor_info_deep_prof_tail_rec_info_0;
+
+void MR_CALL 
+ll_backend__deep_profiling__apply_deep_profiling_transform_2_p_0(
+  MR_Word param_1,
+  MR_Word * param_2);
+
+void MR_CALL 
+ll_backend__deep_profiling__generate_deep_call_7_p_0(
+  MR_Word param_1,
+  MR_String param_2,
+  MR_Integer param_3,
+  MR_Word param_4,
+  MR_Word param_5,
+  MR_Word param_6,
+  MR_Word * param_7);
+
+void MR_CALL 
+ll_backend__deep_profiling__generate_deep_const_unify_3_p_0(
+  MR_Word param_1,
+  MR_Word param_2,
+  MR_Word * param_3);
+
+void MR_CALL 
+ll_backend__deep_profiling__generate_var_5_p_0(
+  MR_String param_1,
+  MR_Word param_2,
+  MR_Word * param_3,
+  MR_Word param_4,
+  MR_Word * param_5);
+
+void MR_CALL 
+ll_backend__deep_profiling__get_deep_profile_builtin_ppid_5_p_0(
+  MR_Word param_1,
+  MR_String param_2,
+  MR_Integer param_3,
+  MR_Word * param_4,
+  MR_Integer * param_5);
+
+void mercury__ll_backend__deep_profiling__init(void);
+void mercury__ll_backend__deep_profiling__init_type_tables(void);
+void mercury__ll_backend__deep_profiling__init_debugger(void);
+const char *mercury__ll_backend__deep_profiling__grade_check(void);
+
+#ifdef __cplusplus
+}
+#endif
+
+#endif // MR_HEADER_GUARD_ll_backend.deep_profiling
+
+// :- end_interface ll_backend.deep_profiling.
