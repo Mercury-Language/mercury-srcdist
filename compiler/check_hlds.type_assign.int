@@ -1,0 +1,62 @@
+:- module (check_hlds.type_assign).
+:- interface.
+:- import_module hlds.
+:- import_module io.
+:- import_module list.
+:- import_module maybe.
+:- import_module parse_tree.
+:- import_module (hlds.hlds_class).
+:- import_module (hlds.hlds_module).
+:- import_module (hlds.hlds_pred).
+:- import_module (hlds.vartypes).
+:- import_module (parse_tree.error_util).
+:- import_module (parse_tree.prog_data).
+:- type args_type_assign
+    --->    args_type_assign(((check_hlds.type_assign).ata_caller_arg_assign) :: check_hlds.type_assign.type_assign, ((check_hlds.type_assign).ata_callee_arg_types) :: list.list(parse_tree.prog_data.mer_type), ((check_hlds.type_assign).ata_callee_constraints) :: hlds.hlds_class.hlds_constraints).
+:- type args_type_assign_set == list.list(check_hlds.type_assign.args_type_assign).
+:- type type_assign
+    --->    type_assign(((check_hlds.type_assign).ta_var_types) :: hlds.vartypes.vartypes, ((check_hlds.type_assign).ta_type_varset) :: parse_tree.prog_data.tvarset, ((check_hlds.type_assign).ta_external_type_params) :: hlds.hlds_pred.external_type_params, ((check_hlds.type_assign).ta_type_bindings) :: parse_tree.prog_data.tsubst, ((check_hlds.type_assign).ta_class_constraints) :: hlds.hlds_class.hlds_constraints, ((check_hlds.type_assign).ta_constraint_proof_map) :: hlds.hlds_class.constraint_proof_map, ((check_hlds.type_assign).ta_constraint_map) :: hlds.hlds_class.constraint_map).
+:- type type_assign_set == list.list(check_hlds.type_assign.type_assign).
+:- func args_type_assign_set_to_pieces(check_hlds.type_assign.args_type_assign_set, maybe.maybe(int), parse_tree.prog_data.prog_varset) = list.list(parse_tree.error_util.format_component).
+:- func convert_args_type_assign_set(check_hlds.type_assign.args_type_assign_set) = check_hlds.type_assign.type_assign_set.
+:- func convert_args_type_assign_set_check_empty_args(check_hlds.type_assign.args_type_assign_set) = check_hlds.type_assign.type_assign_set.
+:- func get_callee_arg_types(check_hlds.type_assign.args_type_assign) = list.list(parse_tree.prog_data.mer_type).
+:- func get_callee_constraints(check_hlds.type_assign.args_type_assign) = hlds.hlds_class.hlds_constraints.
+:- func get_caller_arg_assign(check_hlds.type_assign.args_type_assign) = check_hlds.type_assign.type_assign.
+:- pred type_assign_get_constraint_map(check_hlds.type_assign.type_assign, hlds.hlds_class.constraint_map).
+:- mode type_assign_get_constraint_map((builtin.in), (builtin.out)) is det.
+:- pred type_assign_get_constraint_proof_map(check_hlds.type_assign.type_assign, hlds.hlds_class.constraint_proof_map).
+:- mode type_assign_get_constraint_proof_map((builtin.in), (builtin.out)) is det.
+:- pred type_assign_get_external_type_params(check_hlds.type_assign.type_assign, hlds.hlds_pred.external_type_params).
+:- mode type_assign_get_external_type_params((builtin.in), (builtin.out)) is det.
+:- pred type_assign_get_type_bindings(check_hlds.type_assign.type_assign, parse_tree.prog_data.tsubst).
+:- mode type_assign_get_type_bindings((builtin.in), (builtin.out)) is det.
+:- pred type_assign_get_typeclass_constraints(check_hlds.type_assign.type_assign, hlds.hlds_class.hlds_constraints).
+:- mode type_assign_get_typeclass_constraints((builtin.in), (builtin.out)) is det.
+:- pred type_assign_get_typevarset(check_hlds.type_assign.type_assign, parse_tree.prog_data.tvarset).
+:- mode type_assign_get_typevarset((builtin.in), (builtin.out)) is det.
+:- pred type_assign_get_var_types(check_hlds.type_assign.type_assign, hlds.vartypes.vartypes).
+:- mode type_assign_get_var_types((builtin.in), (builtin.out)) is det.
+:- pred type_assign_set_constraint_map(hlds.hlds_class.constraint_map, check_hlds.type_assign.type_assign, check_hlds.type_assign.type_assign).
+:- mode type_assign_set_constraint_map((builtin.in), (builtin.in), (builtin.out)) is det.
+:- pred type_assign_set_constraint_proof_map(hlds.hlds_class.constraint_proof_map, check_hlds.type_assign.type_assign, check_hlds.type_assign.type_assign).
+:- mode type_assign_set_constraint_proof_map((builtin.in), (builtin.in), (builtin.out)) is det.
+:- pred type_assign_set_external_type_params(hlds.hlds_pred.external_type_params, check_hlds.type_assign.type_assign, check_hlds.type_assign.type_assign).
+:- mode type_assign_set_external_type_params((builtin.in), (builtin.in), (builtin.out)) is det.
+:- pred type_assign_set_get_final_info(check_hlds.type_assign.type_assign_set, list.list(parse_tree.prog_data.tvar), parse_tree.prog_data.existq_tvars, hlds.vartypes.vartypes, parse_tree.prog_data.tvarset, parse_tree.prog_data.existq_tvars, hlds.vartypes.vartypes, parse_tree.prog_data.prog_constraints, hlds.hlds_class.constraint_proof_map, hlds.hlds_class.constraint_map, parse_tree.prog_data.tvar_renaming, parse_tree.prog_data.tvar_renaming).
+:- mode type_assign_set_get_final_info((builtin.in), (builtin.in), (builtin.in), (builtin.in), (builtin.out), (builtin.out), (builtin.out), (builtin.out), (builtin.out), (builtin.out), (builtin.out), (builtin.out)) is det.
+:- pred type_assign_set_init(parse_tree.prog_data.tvarset, hlds.vartypes.vartypes, hlds.hlds_pred.external_type_params, hlds.hlds_class.hlds_constraints, check_hlds.type_assign.type_assign_set).
+:- mode type_assign_set_init((builtin.in), (builtin.in), (builtin.in), (builtin.in), (builtin.out)) is det.
+:- pred type_assign_set_reduce_results(parse_tree.prog_data.tvarset, parse_tree.prog_data.tsubst, hlds.hlds_class.hlds_constraints, hlds.hlds_class.constraint_proof_map, hlds.hlds_class.constraint_map, check_hlds.type_assign.type_assign, check_hlds.type_assign.type_assign).
+:- mode type_assign_set_reduce_results((builtin.in), (builtin.in), (builtin.in), (builtin.in), (builtin.in), (builtin.in), (builtin.out)) is det.
+:- func type_assign_set_to_pieces(check_hlds.type_assign.type_assign_set, maybe.maybe(int), parse_tree.prog_data.prog_varset) = list.list(parse_tree.error_util.format_component).
+:- pred type_assign_set_type_bindings(parse_tree.prog_data.tsubst, check_hlds.type_assign.type_assign, check_hlds.type_assign.type_assign).
+:- mode type_assign_set_type_bindings((builtin.in), (builtin.in), (builtin.out)) is det.
+:- pred type_assign_set_typeclass_constraints(hlds.hlds_class.hlds_constraints, check_hlds.type_assign.type_assign, check_hlds.type_assign.type_assign).
+:- mode type_assign_set_typeclass_constraints((builtin.in), (builtin.in), (builtin.out)) is det.
+:- pred type_assign_set_typevarset(parse_tree.prog_data.tvarset, check_hlds.type_assign.type_assign, check_hlds.type_assign.type_assign).
+:- mode type_assign_set_typevarset((builtin.in), (builtin.in), (builtin.out)) is det.
+:- pred type_assign_set_var_types(hlds.vartypes.vartypes, check_hlds.type_assign.type_assign, check_hlds.type_assign.type_assign).
+:- mode type_assign_set_var_types((builtin.in), (builtin.in), (builtin.out)) is det.
+:- pred type_checkpoint(string, hlds.hlds_module.module_info, parse_tree.prog_data.prog_varset, check_hlds.type_assign.type_assign_set, io.io, io.io).
+:- mode type_checkpoint((builtin.in), (builtin.in), (builtin.in), (builtin.in), (builtin.di), (builtin.uo)) is det.
