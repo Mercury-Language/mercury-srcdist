@@ -1,0 +1,20 @@
+:- module prolog.
+:- interface.
+:- import_module list.
+:- import_module pair.
+:- import_module univ.
+:- type univ_result == pair.pair(string, list.list(univ.univ)).
+:- pred =..(T, prolog.univ_result).
+:- mode =..((builtin.in), (builtin.out)) is det.
+:- pred =:=(T, T).
+:- mode =:=((builtin.in), (builtin.in)) is semidet.
+:- pred ==(T, T).
+:- mode ==((builtin.in), (builtin.in)) is semidet.
+:- pred =\=(T, T).
+:- mode =\=((builtin.in), (builtin.in)) is semidet.
+:- pred \==(T, T).
+:- mode \==((builtin.in), (builtin.in)) is semidet.
+:- pred arg(int, T, univ.univ).
+:- mode arg((builtin.in), (builtin.in), (builtin.out)) is semidet.
+:- pred det_arg(int, T, univ.univ).
+:- mode det_arg((builtin.in), (builtin.in), (builtin.out)) is det.

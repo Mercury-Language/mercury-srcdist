@@ -1,0 +1,3 @@
+:- module percent_encoding.
+:- interface.
+:- func percent_encode_path_segment(string) = string.

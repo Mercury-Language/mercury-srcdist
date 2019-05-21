@@ -1,0 +1,13 @@
+module(1, "percent_encoding.m",
+	percent_encoding,
+	{},
+	{builtin, private_builtin},
+	{builtin, char, int, list, private_builtin, string},
+	{},
+	{},
+	{},
+	{},
+	{},
+	no_foreign_export,
+	no_main
+).

@@ -1,0 +1,59 @@
+/*
+** Automatically generated from `mdprof_dump.m'
+** by the Mercury compiler,
+** version rotd-2017-08-15
+** configured for x86_64-apple-darwin13.4.0.
+** Do not edit.
+**
+** The autoconfigured grade settings governing
+** the generation of this C file were
+**
+** TAG_BITS=2
+** UNBOXED_FLOAT=no
+** PREGENERATED_DIST=yes
+** HIGHLEVEL_CODE=yes
+**
+** END_OF_C_GRADE_INFO
+*/
+
+
+/* :- module mdprof_dump. */
+/* :- interface. */
+
+#ifndef MR_HEADER_GUARD_mdprof_dump
+#define MR_HEADER_GUARD_mdprof_dump
+
+#ifdef __cplusplus
+extern "C" {
+#endif
+
+#include "mercury.h"
+
+
+#ifndef MDPROF_DUMP_DECL_GUARD
+#define MDPROF_DUMP_DECL_GUARD
+
+#endif
+
+
+
+
+extern const MR_TypeCtorInfo_Struct mdprof_dump__mdprof_dump__type_ctor_info_option_0;
+
+extern const MR_TypeCtorInfo_Struct mdprof_dump__mdprof_dump__type_ctor_info_option_table_0;
+
+void MR_CALL 
+main_2_p_0(void);
+
+void mercury__mdprof_dump__init(void);
+void mercury__mdprof_dump__init_type_tables(void);
+void mercury__mdprof_dump__init_debugger(void);
+const char *mercury__mdprof_dump__grade_check(void);
+
+#ifdef __cplusplus
+}
+#endif
+
+#endif /* MR_HEADER_GUARD_mdprof_dump */
+
+/* :- end_interface mdprof_dump. */
