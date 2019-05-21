@@ -1,0 +1,913 @@
+/*
+** Automatically generated from `version_array.m'
+** by the Mercury compiler,
+** version rotd-2017-07-11
+** configured for x86_64-apple-darwin13.4.0.
+** Do not edit.
+**
+** The autoconfigured grade settings governing
+** the generation of this C file were
+**
+** TAG_BITS=2
+** UNBOXED_FLOAT=no
+** PREGENERATED_DIST=yes
+** HIGHLEVEL_CODE=yes
+**
+** END_OF_C_GRADE_INFO
+*/
+
+
+/* :- module version_array. */
+/* :- interface. */
+
+#ifndef MR_HEADER_GUARD_version_array
+#define MR_HEADER_GUARD_version_array
+
+#ifdef __cplusplus
+extern "C" {
+#endif
+
+#include "mercury.h"
+
+
+#ifndef VERSION_ARRAY_DECL_GUARD
+#define VERSION_ARRAY_DECL_GUARD
+
+/*
+** If index is -1 then value is undefined and rest is the latest
+** array value.
+**
+** Otherwise value is the overwritten value at index and rest is
+** a pointer to the next version in the chain.
+*/
+
+typedef struct ML_va        *ML_va_ptr;
+typedef const struct ML_va  *ML_const_va_ptr;
+
+struct ML_va {
+    MR_Integer          index;  /* -1 for latest, >= 0 for older */
+    MR_Word             value;  /* Valid if index >= 0           */
+    union {
+        MR_ArrayPtr     array;  /* Valid if index == -1          */
+        ML_va_ptr       next;   /* Valid if index >= 0           */
+    } rest;
+#ifdef MR_THREAD_SAFE
+    MercuryLock         *lock;  /* NULL or lock                  */
+#endif
+};
+
+/*
+** Returns a pointer to the latest version of the array.
+*/
+extern ML_va_ptr
+ML_va_get_latest(ML_const_va_ptr VA);
+
+/*
+** Returns the number of items in a version array.
+*/
+extern MR_Integer
+ML_va_size_dolock(ML_const_va_ptr);
+
+/*
+** If I is in range then ML_va_get(VA, I, &X) sets X to the I'th item
+** in VA (counting from zero) and returns MR_TRUE. Otherwise it
+** returns MR_FALSE.
+*/
+extern MR_bool
+ML_va_get_dolock(ML_const_va_ptr, MR_Integer, MR_Word *);
+
+/*
+** If I is in range then ML_va_set(VA0, I, X, VA) sets VA to be VA0
+** updated with the I'th item as X (counting from zero) and
+** returns MR_TRUE. Otherwise it returns MR_FALSE.
+*/
+extern MR_bool
+ML_va_set_dolock(ML_va_ptr, MR_Integer, MR_Word, ML_va_ptr *,
+    MR_AllocSiteInfoPtr);
+
+/*
+** `Rewinds' a version array, invalidating all extant successors
+** including the argument.
+*/
+extern ML_va_ptr
+ML_va_rewind_dolock(ML_va_ptr, MR_AllocSiteInfoPtr);
+
+/*
+** Resize a version array.
+*/
+extern ML_va_ptr
+ML_va_resize_dolock(ML_va_ptr, MR_Integer, MR_Word, MR_AllocSiteInfoPtr);
+
+
+
+#endif
+
+
+
+
+extern const MR_TypeCtorInfo_Struct mercury__version_array__version_array__type_ctor_info_index_out_of_bounds_0;
+
+extern const MR_TypeCtorInfo_Struct mercury__version_array__version_array__type_ctor_info_version_array_1;
+
+MR_bool MR_CALL 
+mercury__version_array__all_false_2_p_0(
+  MR_Word mercury__version_array__param_1,
+  MR_Word mercury__version_array__param_2,
+  MR_Box mercury__version_array__param_3);
+
+MR_bool MR_CALL 
+mercury__version_array__all_true_2_p_0(
+  MR_Word mercury__version_array__param_1,
+  MR_Word mercury__version_array__param_2,
+  MR_Box mercury__version_array__param_3);
+
+void MR_CALL 
+mercury__version_array__cmp_version_array_3_p_0(
+  MR_Word mercury__version_array__param_1,
+  MR_Word * mercury__version_array__param_2,
+  MR_Box mercury__version_array__param_3,
+  MR_Box mercury__version_array__param_4);
+
+MR_bool MR_CALL 
+mercury__version_array__do_all_false_4_p_0(
+  MR_Word mercury__version_array__param_1,
+  MR_Word mercury__version_array__param_2,
+  MR_Integer mercury__version_array__param_3,
+  MR_Integer mercury__version_array__param_4,
+  MR_Box mercury__version_array__param_5);
+
+MR_bool MR_CALL 
+mercury__version_array__do_all_true_4_p_0(
+  MR_Word mercury__version_array__param_1,
+  MR_Word mercury__version_array__param_2,
+  MR_Integer mercury__version_array__param_3,
+  MR_Integer mercury__version_array__param_4,
+  MR_Box mercury__version_array__param_5);
+
+void MR_CALL 
+mercury__version_array__do_foldl2_8_p_0(
+  MR_Word mercury__version_array__param_1,
+  MR_Word mercury__version_array__param_2,
+  MR_Word mercury__version_array__param_3,
+  MR_Word mercury__version_array__param_4,
+  MR_Box mercury__version_array__param_5,
+  MR_Integer mercury__version_array__param_6,
+  MR_Integer mercury__version_array__param_7,
+  MR_Box mercury__version_array__param_8,
+  MR_Box * mercury__version_array__param_9,
+  MR_Box mercury__version_array__param_10,
+  MR_Box * mercury__version_array__param_11);
+
+void MR_CALL 
+mercury__version_array__do_foldl2_8_p_1(
+  MR_Word mercury__version_array__param_1,
+  MR_Word mercury__version_array__param_2,
+  MR_Word mercury__version_array__param_3,
+  MR_Word mercury__version_array__param_4,
+  MR_Box mercury__version_array__param_5,
+  MR_Integer mercury__version_array__param_6,
+  MR_Integer mercury__version_array__param_7,
+  MR_Box mercury__version_array__param_8,
+  MR_Box * mercury__version_array__param_9,
+  MR_Box mercury__version_array__param_10,
+  MR_Box * mercury__version_array__param_11);
+
+void MR_CALL 
+mercury__version_array__do_foldl2_8_p_2(
+  MR_Word mercury__version_array__param_1,
+  MR_Word mercury__version_array__param_2,
+  MR_Word mercury__version_array__param_3,
+  MR_Word mercury__version_array__param_4,
+  MR_Box mercury__version_array__param_5,
+  MR_Integer mercury__version_array__param_6,
+  MR_Integer mercury__version_array__param_7,
+  MR_Box mercury__version_array__param_8,
+  MR_Box * mercury__version_array__param_9,
+  MR_Box mercury__version_array__param_10,
+  MR_Box * mercury__version_array__param_11);
+
+MR_bool MR_CALL 
+mercury__version_array__do_foldl2_8_p_3(
+  MR_Word mercury__version_array__param_1,
+  MR_Word mercury__version_array__param_2,
+  MR_Word mercury__version_array__param_3,
+  MR_Word mercury__version_array__param_4,
+  MR_Box mercury__version_array__param_5,
+  MR_Integer mercury__version_array__param_6,
+  MR_Integer mercury__version_array__param_7,
+  MR_Box mercury__version_array__param_8,
+  MR_Box * mercury__version_array__param_9,
+  MR_Box mercury__version_array__param_10,
+  MR_Box * mercury__version_array__param_11);
+
+MR_bool MR_CALL 
+mercury__version_array__do_foldl2_8_p_4(
+  MR_Word mercury__version_array__param_1,
+  MR_Word mercury__version_array__param_2,
+  MR_Word mercury__version_array__param_3,
+  MR_Word mercury__version_array__param_4,
+  MR_Box mercury__version_array__param_5,
+  MR_Integer mercury__version_array__param_6,
+  MR_Integer mercury__version_array__param_7,
+  MR_Box mercury__version_array__param_8,
+  MR_Box * mercury__version_array__param_9,
+  MR_Box mercury__version_array__param_10,
+  MR_Box * mercury__version_array__param_11);
+
+MR_bool MR_CALL 
+mercury__version_array__do_foldl2_8_p_5(
+  MR_Word mercury__version_array__param_1,
+  MR_Word mercury__version_array__param_2,
+  MR_Word mercury__version_array__param_3,
+  MR_Word mercury__version_array__param_4,
+  MR_Box mercury__version_array__param_5,
+  MR_Integer mercury__version_array__param_6,
+  MR_Integer mercury__version_array__param_7,
+  MR_Box mercury__version_array__param_8,
+  MR_Box * mercury__version_array__param_9,
+  MR_Box mercury__version_array__param_10,
+  MR_Box * mercury__version_array__param_11);
+
+void MR_CALL 
+mercury__version_array__do_foldl_pred_6_p_0(
+  MR_Word mercury__version_array__param_1,
+  MR_Word mercury__version_array__param_2,
+  MR_Word mercury__version_array__param_3,
+  MR_Box mercury__version_array__param_4,
+  MR_Integer mercury__version_array__param_5,
+  MR_Integer mercury__version_array__param_6,
+  MR_Box mercury__version_array__param_7,
+  MR_Box * mercury__version_array__param_8);
+
+void MR_CALL 
+mercury__version_array__do_foldl_pred_6_p_1(
+  MR_Word mercury__version_array__param_1,
+  MR_Word mercury__version_array__param_2,
+  MR_Word mercury__version_array__param_3,
+  MR_Box mercury__version_array__param_4,
+  MR_Integer mercury__version_array__param_5,
+  MR_Integer mercury__version_array__param_6,
+  MR_Box mercury__version_array__param_7,
+  MR_Box * mercury__version_array__param_8);
+
+void MR_CALL 
+mercury__version_array__do_foldl_pred_6_p_2(
+  MR_Word mercury__version_array__param_1,
+  MR_Word mercury__version_array__param_2,
+  MR_Word mercury__version_array__param_3,
+  MR_Box mercury__version_array__param_4,
+  MR_Integer mercury__version_array__param_5,
+  MR_Integer mercury__version_array__param_6,
+  MR_Box mercury__version_array__param_7,
+  MR_Box * mercury__version_array__param_8);
+
+MR_bool MR_CALL 
+mercury__version_array__do_foldl_pred_6_p_3(
+  MR_Word mercury__version_array__param_1,
+  MR_Word mercury__version_array__param_2,
+  MR_Word mercury__version_array__param_3,
+  MR_Box mercury__version_array__param_4,
+  MR_Integer mercury__version_array__param_5,
+  MR_Integer mercury__version_array__param_6,
+  MR_Box mercury__version_array__param_7,
+  MR_Box * mercury__version_array__param_8);
+
+MR_bool MR_CALL 
+mercury__version_array__do_foldl_pred_6_p_4(
+  MR_Word mercury__version_array__param_1,
+  MR_Word mercury__version_array__param_2,
+  MR_Word mercury__version_array__param_3,
+  MR_Box mercury__version_array__param_4,
+  MR_Integer mercury__version_array__param_5,
+  MR_Integer mercury__version_array__param_6,
+  MR_Box mercury__version_array__param_7,
+  MR_Box * mercury__version_array__param_8);
+
+MR_bool MR_CALL 
+mercury__version_array__do_foldl_pred_6_p_5(
+  MR_Word mercury__version_array__param_1,
+  MR_Word mercury__version_array__param_2,
+  MR_Word mercury__version_array__param_3,
+  MR_Box mercury__version_array__param_4,
+  MR_Integer mercury__version_array__param_5,
+  MR_Integer mercury__version_array__param_6,
+  MR_Box mercury__version_array__param_7,
+  MR_Box * mercury__version_array__param_8);
+
+void MR_CALL 
+mercury__version_array__do_foldr2_7_p_0(
+  MR_Word mercury__version_array__param_1,
+  MR_Word mercury__version_array__param_2,
+  MR_Word mercury__version_array__param_3,
+  MR_Word mercury__version_array__param_4,
+  MR_Box mercury__version_array__param_5,
+  MR_Integer mercury__version_array__param_6,
+  MR_Box mercury__version_array__param_7,
+  MR_Box * mercury__version_array__param_8,
+  MR_Box mercury__version_array__param_9,
+  MR_Box * mercury__version_array__param_10);
+
+void MR_CALL 
+mercury__version_array__do_foldr2_7_p_1(
+  MR_Word mercury__version_array__param_1,
+  MR_Word mercury__version_array__param_2,
+  MR_Word mercury__version_array__param_3,
+  MR_Word mercury__version_array__param_4,
+  MR_Box mercury__version_array__param_5,
+  MR_Integer mercury__version_array__param_6,
+  MR_Box mercury__version_array__param_7,
+  MR_Box * mercury__version_array__param_8,
+  MR_Box mercury__version_array__param_9,
+  MR_Box * mercury__version_array__param_10);
+
+void MR_CALL 
+mercury__version_array__do_foldr2_7_p_2(
+  MR_Word mercury__version_array__param_1,
+  MR_Word mercury__version_array__param_2,
+  MR_Word mercury__version_array__param_3,
+  MR_Word mercury__version_array__param_4,
+  MR_Box mercury__version_array__param_5,
+  MR_Integer mercury__version_array__param_6,
+  MR_Box mercury__version_array__param_7,
+  MR_Box * mercury__version_array__param_8,
+  MR_Box mercury__version_array__param_9,
+  MR_Box * mercury__version_array__param_10);
+
+MR_bool MR_CALL 
+mercury__version_array__do_foldr2_7_p_3(
+  MR_Word mercury__version_array__param_1,
+  MR_Word mercury__version_array__param_2,
+  MR_Word mercury__version_array__param_3,
+  MR_Word mercury__version_array__param_4,
+  MR_Box mercury__version_array__param_5,
+  MR_Integer mercury__version_array__param_6,
+  MR_Box mercury__version_array__param_7,
+  MR_Box * mercury__version_array__param_8,
+  MR_Box mercury__version_array__param_9,
+  MR_Box * mercury__version_array__param_10);
+
+MR_bool MR_CALL 
+mercury__version_array__do_foldr2_7_p_4(
+  MR_Word mercury__version_array__param_1,
+  MR_Word mercury__version_array__param_2,
+  MR_Word mercury__version_array__param_3,
+  MR_Word mercury__version_array__param_4,
+  MR_Box mercury__version_array__param_5,
+  MR_Integer mercury__version_array__param_6,
+  MR_Box mercury__version_array__param_7,
+  MR_Box * mercury__version_array__param_8,
+  MR_Box mercury__version_array__param_9,
+  MR_Box * mercury__version_array__param_10);
+
+MR_bool MR_CALL 
+mercury__version_array__do_foldr2_7_p_5(
+  MR_Word mercury__version_array__param_1,
+  MR_Word mercury__version_array__param_2,
+  MR_Word mercury__version_array__param_3,
+  MR_Word mercury__version_array__param_4,
+  MR_Box mercury__version_array__param_5,
+  MR_Integer mercury__version_array__param_6,
+  MR_Box mercury__version_array__param_7,
+  MR_Box * mercury__version_array__param_8,
+  MR_Box mercury__version_array__param_9,
+  MR_Box * mercury__version_array__param_10);
+
+void MR_CALL 
+mercury__version_array__do_foldr_pred_5_p_0(
+  MR_Word mercury__version_array__param_1,
+  MR_Word mercury__version_array__param_2,
+  MR_Word mercury__version_array__param_3,
+  MR_Box mercury__version_array__param_4,
+  MR_Integer mercury__version_array__param_5,
+  MR_Box mercury__version_array__param_6,
+  MR_Box * mercury__version_array__param_7);
+
+void MR_CALL 
+mercury__version_array__do_foldr_pred_5_p_1(
+  MR_Word mercury__version_array__param_1,
+  MR_Word mercury__version_array__param_2,
+  MR_Word mercury__version_array__param_3,
+  MR_Box mercury__version_array__param_4,
+  MR_Integer mercury__version_array__param_5,
+  MR_Box mercury__version_array__param_6,
+  MR_Box * mercury__version_array__param_7);
+
+void MR_CALL 
+mercury__version_array__do_foldr_pred_5_p_2(
+  MR_Word mercury__version_array__param_1,
+  MR_Word mercury__version_array__param_2,
+  MR_Word mercury__version_array__param_3,
+  MR_Box mercury__version_array__param_4,
+  MR_Integer mercury__version_array__param_5,
+  MR_Box mercury__version_array__param_6,
+  MR_Box * mercury__version_array__param_7);
+
+MR_bool MR_CALL 
+mercury__version_array__do_foldr_pred_5_p_3(
+  MR_Word mercury__version_array__param_1,
+  MR_Word mercury__version_array__param_2,
+  MR_Word mercury__version_array__param_3,
+  MR_Box mercury__version_array__param_4,
+  MR_Integer mercury__version_array__param_5,
+  MR_Box mercury__version_array__param_6,
+  MR_Box * mercury__version_array__param_7);
+
+MR_bool MR_CALL 
+mercury__version_array__do_foldr_pred_5_p_4(
+  MR_Word mercury__version_array__param_1,
+  MR_Word mercury__version_array__param_2,
+  MR_Word mercury__version_array__param_3,
+  MR_Box mercury__version_array__param_4,
+  MR_Integer mercury__version_array__param_5,
+  MR_Box mercury__version_array__param_6,
+  MR_Box * mercury__version_array__param_7);
+
+MR_bool MR_CALL 
+mercury__version_array__do_foldr_pred_5_p_5(
+  MR_Word mercury__version_array__param_1,
+  MR_Word mercury__version_array__param_2,
+  MR_Word mercury__version_array__param_3,
+  MR_Box mercury__version_array__param_4,
+  MR_Integer mercury__version_array__param_5,
+  MR_Box mercury__version_array__param_6,
+  MR_Box * mercury__version_array__param_7);
+
+MR_bool MR_CALL 
+mercury__version_array__eq_version_array_2_p_0(
+  MR_Word mercury__version_array__param_1,
+  MR_Box mercury__version_array__param_2,
+  MR_Box mercury__version_array__param_3);
+
+void MR_CALL 
+mercury__version_array__foldl_4_p_0(
+  MR_Word mercury__version_array__param_1,
+  MR_Word mercury__version_array__param_2,
+  MR_Word mercury__version_array__param_3,
+  MR_Box mercury__version_array__param_4,
+  MR_Box mercury__version_array__param_5,
+  MR_Box * mercury__version_array__param_6);
+
+void MR_CALL 
+mercury__version_array__foldl_4_p_1(
+  MR_Word mercury__version_array__param_1,
+  MR_Word mercury__version_array__param_2,
+  MR_Word mercury__version_array__param_3,
+  MR_Box mercury__version_array__param_4,
+  MR_Box mercury__version_array__param_5,
+  MR_Box * mercury__version_array__param_6);
+
+void MR_CALL 
+mercury__version_array__foldl_4_p_2(
+  MR_Word mercury__version_array__param_1,
+  MR_Word mercury__version_array__param_2,
+  MR_Word mercury__version_array__param_3,
+  MR_Box mercury__version_array__param_4,
+  MR_Box mercury__version_array__param_5,
+  MR_Box * mercury__version_array__param_6);
+
+MR_bool MR_CALL 
+mercury__version_array__foldl_4_p_3(
+  MR_Word mercury__version_array__param_1,
+  MR_Word mercury__version_array__param_2,
+  MR_Word mercury__version_array__param_3,
+  MR_Box mercury__version_array__param_4,
+  MR_Box mercury__version_array__param_5,
+  MR_Box * mercury__version_array__param_6);
+
+MR_bool MR_CALL 
+mercury__version_array__foldl_4_p_4(
+  MR_Word mercury__version_array__param_1,
+  MR_Word mercury__version_array__param_2,
+  MR_Word mercury__version_array__param_3,
+  MR_Box mercury__version_array__param_4,
+  MR_Box mercury__version_array__param_5,
+  MR_Box * mercury__version_array__param_6);
+
+MR_bool MR_CALL 
+mercury__version_array__foldl_4_p_5(
+  MR_Word mercury__version_array__param_1,
+  MR_Word mercury__version_array__param_2,
+  MR_Word mercury__version_array__param_3,
+  MR_Box mercury__version_array__param_4,
+  MR_Box mercury__version_array__param_5,
+  MR_Box * mercury__version_array__param_6);
+
+void MR_CALL 
+mercury__version_array__foldl2_6_p_0(
+  MR_Word mercury__version_array__param_1,
+  MR_Word mercury__version_array__param_2,
+  MR_Word mercury__version_array__param_3,
+  MR_Word mercury__version_array__param_4,
+  MR_Box mercury__version_array__param_5,
+  MR_Box mercury__version_array__param_6,
+  MR_Box * mercury__version_array__param_7,
+  MR_Box mercury__version_array__param_8,
+  MR_Box * mercury__version_array__param_9);
+
+void MR_CALL 
+mercury__version_array__foldl2_6_p_1(
+  MR_Word mercury__version_array__param_1,
+  MR_Word mercury__version_array__param_2,
+  MR_Word mercury__version_array__param_3,
+  MR_Word mercury__version_array__param_4,
+  MR_Box mercury__version_array__param_5,
+  MR_Box mercury__version_array__param_6,
+  MR_Box * mercury__version_array__param_7,
+  MR_Box mercury__version_array__param_8,
+  MR_Box * mercury__version_array__param_9);
+
+void MR_CALL 
+mercury__version_array__foldl2_6_p_2(
+  MR_Word mercury__version_array__param_1,
+  MR_Word mercury__version_array__param_2,
+  MR_Word mercury__version_array__param_3,
+  MR_Word mercury__version_array__param_4,
+  MR_Box mercury__version_array__param_5,
+  MR_Box mercury__version_array__param_6,
+  MR_Box * mercury__version_array__param_7,
+  MR_Box mercury__version_array__param_8,
+  MR_Box * mercury__version_array__param_9);
+
+MR_bool MR_CALL 
+mercury__version_array__foldl2_6_p_3(
+  MR_Word mercury__version_array__param_1,
+  MR_Word mercury__version_array__param_2,
+  MR_Word mercury__version_array__param_3,
+  MR_Word mercury__version_array__param_4,
+  MR_Box mercury__version_array__param_5,
+  MR_Box mercury__version_array__param_6,
+  MR_Box * mercury__version_array__param_7,
+  MR_Box mercury__version_array__param_8,
+  MR_Box * mercury__version_array__param_9);
+
+MR_bool MR_CALL 
+mercury__version_array__foldl2_6_p_4(
+  MR_Word mercury__version_array__param_1,
+  MR_Word mercury__version_array__param_2,
+  MR_Word mercury__version_array__param_3,
+  MR_Word mercury__version_array__param_4,
+  MR_Box mercury__version_array__param_5,
+  MR_Box mercury__version_array__param_6,
+  MR_Box * mercury__version_array__param_7,
+  MR_Box mercury__version_array__param_8,
+  MR_Box * mercury__version_array__param_9);
+
+MR_bool MR_CALL 
+mercury__version_array__foldl2_6_p_5(
+  MR_Word mercury__version_array__param_1,
+  MR_Word mercury__version_array__param_2,
+  MR_Word mercury__version_array__param_3,
+  MR_Word mercury__version_array__param_4,
+  MR_Box mercury__version_array__param_5,
+  MR_Box mercury__version_array__param_6,
+  MR_Box * mercury__version_array__param_7,
+  MR_Box mercury__version_array__param_8,
+  MR_Box * mercury__version_array__param_9);
+
+void MR_CALL 
+mercury__version_array__foldr_4_p_0(
+  MR_Word mercury__version_array__param_1,
+  MR_Word mercury__version_array__param_2,
+  MR_Word mercury__version_array__param_3,
+  MR_Box mercury__version_array__param_4,
+  MR_Box mercury__version_array__param_5,
+  MR_Box * mercury__version_array__param_6);
+
+void MR_CALL 
+mercury__version_array__foldr_4_p_1(
+  MR_Word mercury__version_array__param_1,
+  MR_Word mercury__version_array__param_2,
+  MR_Word mercury__version_array__param_3,
+  MR_Box mercury__version_array__param_4,
+  MR_Box mercury__version_array__param_5,
+  MR_Box * mercury__version_array__param_6);
+
+void MR_CALL 
+mercury__version_array__foldr_4_p_2(
+  MR_Word mercury__version_array__param_1,
+  MR_Word mercury__version_array__param_2,
+  MR_Word mercury__version_array__param_3,
+  MR_Box mercury__version_array__param_4,
+  MR_Box mercury__version_array__param_5,
+  MR_Box * mercury__version_array__param_6);
+
+MR_bool MR_CALL 
+mercury__version_array__foldr_4_p_3(
+  MR_Word mercury__version_array__param_1,
+  MR_Word mercury__version_array__param_2,
+  MR_Word mercury__version_array__param_3,
+  MR_Box mercury__version_array__param_4,
+  MR_Box mercury__version_array__param_5,
+  MR_Box * mercury__version_array__param_6);
+
+MR_bool MR_CALL 
+mercury__version_array__foldr_4_p_4(
+  MR_Word mercury__version_array__param_1,
+  MR_Word mercury__version_array__param_2,
+  MR_Word mercury__version_array__param_3,
+  MR_Box mercury__version_array__param_4,
+  MR_Box mercury__version_array__param_5,
+  MR_Box * mercury__version_array__param_6);
+
+MR_bool MR_CALL 
+mercury__version_array__foldr_4_p_5(
+  MR_Word mercury__version_array__param_1,
+  MR_Word mercury__version_array__param_2,
+  MR_Word mercury__version_array__param_3,
+  MR_Box mercury__version_array__param_4,
+  MR_Box mercury__version_array__param_5,
+  MR_Box * mercury__version_array__param_6);
+
+void MR_CALL 
+mercury__version_array__foldr2_6_p_0(
+  MR_Word mercury__version_array__param_1,
+  MR_Word mercury__version_array__param_2,
+  MR_Word mercury__version_array__param_3,
+  MR_Word mercury__version_array__param_4,
+  MR_Box mercury__version_array__param_5,
+  MR_Box mercury__version_array__param_6,
+  MR_Box * mercury__version_array__param_7,
+  MR_Box mercury__version_array__param_8,
+  MR_Box * mercury__version_array__param_9);
+
+void MR_CALL 
+mercury__version_array__foldr2_6_p_1(
+  MR_Word mercury__version_array__param_1,
+  MR_Word mercury__version_array__param_2,
+  MR_Word mercury__version_array__param_3,
+  MR_Word mercury__version_array__param_4,
+  MR_Box mercury__version_array__param_5,
+  MR_Box mercury__version_array__param_6,
+  MR_Box * mercury__version_array__param_7,
+  MR_Box mercury__version_array__param_8,
+  MR_Box * mercury__version_array__param_9);
+
+void MR_CALL 
+mercury__version_array__foldr2_6_p_2(
+  MR_Word mercury__version_array__param_1,
+  MR_Word mercury__version_array__param_2,
+  MR_Word mercury__version_array__param_3,
+  MR_Word mercury__version_array__param_4,
+  MR_Box mercury__version_array__param_5,
+  MR_Box mercury__version_array__param_6,
+  MR_Box * mercury__version_array__param_7,
+  MR_Box mercury__version_array__param_8,
+  MR_Box * mercury__version_array__param_9);
+
+MR_bool MR_CALL 
+mercury__version_array__foldr2_6_p_3(
+  MR_Word mercury__version_array__param_1,
+  MR_Word mercury__version_array__param_2,
+  MR_Word mercury__version_array__param_3,
+  MR_Word mercury__version_array__param_4,
+  MR_Box mercury__version_array__param_5,
+  MR_Box mercury__version_array__param_6,
+  MR_Box * mercury__version_array__param_7,
+  MR_Box mercury__version_array__param_8,
+  MR_Box * mercury__version_array__param_9);
+
+MR_bool MR_CALL 
+mercury__version_array__foldr2_6_p_4(
+  MR_Word mercury__version_array__param_1,
+  MR_Word mercury__version_array__param_2,
+  MR_Word mercury__version_array__param_3,
+  MR_Word mercury__version_array__param_4,
+  MR_Box mercury__version_array__param_5,
+  MR_Box mercury__version_array__param_6,
+  MR_Box * mercury__version_array__param_7,
+  MR_Box mercury__version_array__param_8,
+  MR_Box * mercury__version_array__param_9);
+
+MR_bool MR_CALL 
+mercury__version_array__foldr2_6_p_5(
+  MR_Word mercury__version_array__param_1,
+  MR_Word mercury__version_array__param_2,
+  MR_Word mercury__version_array__param_3,
+  MR_Word mercury__version_array__param_4,
+  MR_Box mercury__version_array__param_5,
+  MR_Box mercury__version_array__param_6,
+  MR_Box * mercury__version_array__param_7,
+  MR_Box mercury__version_array__param_8,
+  MR_Box * mercury__version_array__param_9);
+
+MR_bool MR_CALL 
+mercury__version_array__get_if_in_range_3_p_0(
+  MR_Word mercury__version_array__param_1,
+  MR_Box mercury__version_array__param_2,
+  MR_Integer mercury__version_array__param_3,
+  MR_Box * mercury__version_array__param_4);
+
+MR_bool MR_CALL 
+mercury__version_array__is_empty_1_p_0(
+  MR_Word mercury__version_array__param_1,
+  MR_Box mercury__version_array__param_2);
+
+void MR_CALL 
+mercury__version_array__out_of_bounds_error_3_p_0(
+  MR_Integer mercury__version_array__param_1,
+  MR_Integer mercury__version_array__param_2,
+  MR_String mercury__version_array__param_3);
+
+void MR_CALL 
+mercury__version_array__resize_4_p_0(
+  MR_Word mercury__version_array__param_1,
+  MR_Integer mercury__version_array__param_2,
+  MR_Box mercury__version_array__param_3,
+  MR_Box mercury__version_array__param_4,
+  MR_Box * mercury__version_array__param_5);
+
+void MR_CALL 
+mercury__version_array__set_4_p_0(
+  MR_Word mercury__version_array__param_1,
+  MR_Integer mercury__version_array__param_2,
+  MR_Box mercury__version_array__param_3,
+  MR_Box mercury__version_array__param_4,
+  MR_Box * mercury__version_array__param_5);
+
+MR_bool MR_CALL 
+mercury__version_array__set_if_in_range_4_p_0(
+  MR_Word mercury__version_array__param_1,
+  MR_Integer mercury__version_array__param_2,
+  MR_Box mercury__version_array__param_3,
+  MR_Box mercury__version_array__param_4,
+  MR_Box * mercury__version_array__param_5);
+
+void MR_CALL 
+mercury__version_array__unsafe_rewind_2_p_0(
+  MR_Word mercury__version_array__param_1,
+  MR_Box mercury__version_array__param_2,
+  MR_Box * mercury__version_array__param_3);
+
+MR_Box MR_CALL 
+mercury__version_array__copy_1_f_0(
+  MR_Word mercury__version_array__param_1,
+  MR_Box mercury__version_array__param_2);
+
+MR_Box MR_CALL 
+mercury__version_array__do_foldl_func_5_f_0(
+  MR_Word mercury__version_array__param_1,
+  MR_Word mercury__version_array__param_2,
+  MR_Word mercury__version_array__param_3,
+  MR_Box mercury__version_array__param_4,
+  MR_Box mercury__version_array__param_5,
+  MR_Integer mercury__version_array__param_6,
+  MR_Integer mercury__version_array__param_7);
+
+MR_Box MR_CALL 
+mercury__version_array__do_foldr_func_4_f_0(
+  MR_Word mercury__version_array__param_1,
+  MR_Word mercury__version_array__param_2,
+  MR_Word mercury__version_array__param_3,
+  MR_Box mercury__version_array__param_4,
+  MR_Box mercury__version_array__param_5,
+  MR_Integer mercury__version_array__param_6);
+
+MR_Box MR_CALL 
+mercury__version_array__elem_2_f_0(
+  MR_Word mercury__version_array__param_1,
+  MR_Integer mercury__version_array__param_2,
+  MR_Box mercury__version_array__param_3);
+
+MR_Box MR_CALL 
+mercury__version_array__f_101_108_101_109_32_58_61_3_f_0(
+  MR_Word mercury__version_array__param_1,
+  MR_Integer mercury__version_array__param_2,
+  MR_Box mercury__version_array__param_3,
+  MR_Box mercury__version_array__param_4);
+
+MR_Box MR_CALL 
+mercury__version_array__empty_0_f_0(
+  MR_Word mercury__version_array__param_1);
+
+MR_Box MR_CALL 
+mercury__version_array__foldl_3_f_0(
+  MR_Word mercury__version_array__param_1,
+  MR_Word mercury__version_array__param_2,
+  MR_Word mercury__version_array__param_3,
+  MR_Box mercury__version_array__param_4,
+  MR_Box mercury__version_array__param_5);
+
+MR_Box MR_CALL 
+mercury__version_array__foldr_3_f_0(
+  MR_Word mercury__version_array__param_1,
+  MR_Word mercury__version_array__param_2,
+  MR_Word mercury__version_array__param_3,
+  MR_Box mercury__version_array__param_4,
+  MR_Box mercury__version_array__param_5);
+
+MR_Box MR_CALL 
+mercury__version_array__from_list_1_f_0(
+  MR_Word mercury__version_array__param_1,
+  MR_Word mercury__version_array__param_2);
+
+MR_Box MR_CALL 
+mercury__version_array__from_reverse_list_1_f_0(
+  MR_Word mercury__version_array__param_1,
+  MR_Word mercury__version_array__param_2);
+
+MR_Box MR_CALL 
+mercury__version_array__init_2_f_0(
+  MR_Word mercury__version_array__param_1,
+  MR_Integer mercury__version_array__param_2,
+  MR_Box mercury__version_array__param_3);
+
+MR_Word MR_CALL 
+mercury__version_array__list_1_f_0(
+  MR_Word mercury__version_array__param_1,
+  MR_Box mercury__version_array__param_2);
+
+MR_Box MR_CALL 
+mercury__version_array__lookup_2_f_0(
+  MR_Word mercury__version_array__param_1,
+  MR_Box mercury__version_array__param_2,
+  MR_Integer mercury__version_array__param_3);
+
+MR_Integer MR_CALL 
+mercury__version_array__max_1_f_0(
+  MR_Word mercury__version_array__param_1,
+  MR_Box mercury__version_array__param_2);
+
+MR_Box MR_CALL 
+mercury__version_array__resize_3_f_0(
+  MR_Word mercury__version_array__param_1,
+  MR_Box mercury__version_array__param_2,
+  MR_Integer mercury__version_array__param_3,
+  MR_Box mercury__version_array__param_4);
+
+MR_Integer MR_CALL 
+mercury__version_array__size_1_f_0(
+  MR_Word mercury__version_array__param_1,
+  MR_Box mercury__version_array__param_2);
+
+MR_Word MR_CALL 
+mercury__version_array__to_list_1_f_0(
+  MR_Word mercury__version_array__param_1,
+  MR_Box mercury__version_array__param_2);
+
+MR_Box MR_CALL 
+mercury__version_array__unsafe_empty_0_f_0(
+  MR_Word mercury__version_array__param_1);
+
+MR_Box MR_CALL 
+mercury__version_array__unsafe_init_2_f_0(
+  MR_Word mercury__version_array__param_1,
+  MR_Integer mercury__version_array__param_2,
+  MR_Box mercury__version_array__param_3);
+
+MR_Box MR_CALL 
+mercury__version_array__unsafe_new_2_f_0(
+  MR_Word mercury__version_array__param_1,
+  MR_Integer mercury__version_array__param_2,
+  MR_Box mercury__version_array__param_3);
+
+MR_Box MR_CALL 
+mercury__version_array__unsafe_rewind_1_f_0(
+  MR_Word mercury__version_array__param_1,
+  MR_Box mercury__version_array__param_2);
+
+MR_Box MR_CALL 
+mercury__version_array__version_array_1_f_0(
+  MR_Word mercury__version_array__param_1,
+  MR_Word mercury__version_array__param_2);
+
+MR_Word MR_CALL 
+mercury__version_array__version_array_to_doc_1_f_0(
+  MR_Word mercury__version_array__param_1,
+  MR_Box mercury__version_array__param_2);
+
+void MR_CALL 
+mercury__version_array____Compare____index_out_of_bounds_0_0(
+  MR_Word * mercury__version_array__param_1,
+  MR_Word mercury__version_array__param_2,
+  MR_Word mercury__version_array__param_3);
+
+void MR_CALL 
+mercury__version_array____Compare____version_array_1_0(
+  MR_Word mercury__version_array__param_1,
+  MR_Word * mercury__version_array__param_2,
+  MR_Box mercury__version_array__param_3,
+  MR_Box mercury__version_array__param_4);
+
+MR_bool MR_CALL 
+mercury__version_array____Unify____index_out_of_bounds_0_0(
+  MR_Word mercury__version_array__param_1,
+  MR_Word mercury__version_array__param_2);
+
+MR_bool MR_CALL 
+mercury__version_array____Unify____version_array_1_0(
+  MR_Word mercury__version_array__param_1,
+  MR_Box mercury__version_array__param_2,
+  MR_Box mercury__version_array__param_3);
+
+void mercury__version_array__init(void);
+void mercury__version_array__init_type_tables(void);
+void mercury__version_array__init_debugger(void);
+const char *mercury__version_array__grade_check(void);
+
+#ifdef __cplusplus
+}
+#endif
+
+#endif /* MR_HEADER_GUARD_version_array */
+
+/* :- end_interface version_array. */

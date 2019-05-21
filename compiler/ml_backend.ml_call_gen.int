@@ -1,0 +1,18 @@
+:- module (ml_backend.ml_call_gen).
+:- interface.
+:- import_module bool.
+:- import_module hlds.
+:- import_module list.
+:- import_module parse_tree.
+:- import_module (hlds.code_model).
+:- import_module (hlds.hlds_goal).
+:- import_module (hlds.hlds_pred).
+:- import_module (ml_backend.ml_gen_info).
+:- import_module (ml_backend.mlds).
+:- import_module (parse_tree.prog_data).
+:- pred ml_gen_builtin(hlds.hlds_pred.pred_id, hlds.hlds_pred.proc_id, list.list(parse_tree.prog_data.prog_var), hlds.code_model.code_model, parse_tree.prog_data.prog_context, list.list(ml_backend.mlds.mlds_defn), list.list(ml_backend.mlds.mlds_stmt), ml_backend.ml_gen_info.ml_gen_info, ml_backend.ml_gen_info.ml_gen_info).
+:- mode ml_gen_builtin((builtin.in), (builtin.in), (builtin.in), (builtin.in), (builtin.in), (builtin.out), (builtin.out), (builtin.in), (builtin.out)) is det.
+:- pred ml_gen_call(hlds.hlds_pred.pred_id, hlds.hlds_pred.proc_id, list.list(ml_backend.mlds.mlds_var_name), list.list(ml_backend.mlds.mlds_lval), list.list(parse_tree.prog_data.mer_type), hlds.code_model.code_model, parse_tree.prog_data.prog_context, bool.bool, list.list(ml_backend.mlds.mlds_defn), list.list(ml_backend.mlds.mlds_stmt), ml_backend.ml_gen_info.ml_gen_info, ml_backend.ml_gen_info.ml_gen_info).
+:- mode ml_gen_call((builtin.in), (builtin.in), (builtin.in), (builtin.in), (builtin.in), (builtin.in), (builtin.in), (builtin.in), (builtin.out), (builtin.out), (builtin.in), (builtin.out)) is det.
+:- pred ml_gen_generic_call(hlds.hlds_goal.generic_call, list.list(parse_tree.prog_data.prog_var), list.list(parse_tree.prog_data.mer_mode), parse_tree.prog_data.determinism, parse_tree.prog_data.prog_context, list.list(ml_backend.mlds.mlds_defn), list.list(ml_backend.mlds.mlds_stmt), ml_backend.ml_gen_info.ml_gen_info, ml_backend.ml_gen_info.ml_gen_info).
+:- mode ml_gen_generic_call((builtin.in), (builtin.in), (builtin.in), (builtin.in), (builtin.in), (builtin.out), (builtin.out), (builtin.in), (builtin.out)) is det.
