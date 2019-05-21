@@ -1,0 +1,19 @@
+:- module (libs.dependency_graph).
+:- interface.
+:- import_module assoc_list.
+:- import_module digraph.
+:- import_module list.
+:- import_module map.
+:- import_module set.
+:- type bottom_up_dependency_sccs(T) == list.list(set.set(T)).
+:- type dependency_arcs(T) == assoc_list.assoc_list(digraph.digraph_key(T), digraph.digraph_key(T)).
+:- type dependency_graph(T) == digraph.digraph(T).
+:- type dependency_graph_key(T) == digraph.digraph_key(T).
+:- type dependency_info(T).
+:- type scc_map(T) == map.map(T, set.set(T)).
+:- func dependency_info_get_arcs(libs.dependency_graph.dependency_info(T)) = libs.dependency_graph.dependency_arcs(T).
+:- func dependency_info_get_bottom_up_sccs(libs.dependency_graph.dependency_info(T)) = libs.dependency_graph.bottom_up_dependency_sccs(T).
+:- func dependency_info_get_condensed_bottom_up_sccs(libs.dependency_graph.dependency_info(T)) = list.list(T).
+:- func dependency_info_get_graph(libs.dependency_graph.dependency_info(T)) = libs.dependency_graph.dependency_graph(T).
+:- func dependency_info_make_scc_map(libs.dependency_graph.dependency_info(T)) = libs.dependency_graph.scc_map(T).
+:- func make_dependency_info(digraph.digraph(T), libs.dependency_graph.dependency_arcs(T)) = libs.dependency_graph.dependency_info(T).

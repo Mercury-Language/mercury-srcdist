@@ -1,0 +1,8 @@
+:- module (parse_tree.deps_map).
+:- interface.
+:- type deps.
+:- type deps_map.
+:- type have_processed
+	where	type_is_abstract_enum(1).
+:- type submodule_kind
+	where	type_is_abstract_enum(2).
