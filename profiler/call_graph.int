@@ -1,0 +1,7 @@
+:- module call_graph.
+:- interface.
+:- import_module digraph.
+:- import_module io.
+:- import_module list.
+:- pred build_call_graph(list.list(string), digraph.digraph(string), digraph.digraph(string), io.io, io.io).
+:- mode build_call_graph((builtin.in), (builtin.in), (builtin.out), (builtin.di), (builtin.uo)) is det.
