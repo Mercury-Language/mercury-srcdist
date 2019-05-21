@@ -1,0 +1,9 @@
+:- module (ll_backend.exprn_aux).
+:- interface.
+:- import_module assoc_list.
+:- import_module bool.
+:- import_module list.
+:- import_module (ll_backend.llds).
+:- import_module (parse_tree.prog_data).
+:- type transform_lval(T).
+:- inst (transform_lval) == (pred(in, out, in, out) is det).
