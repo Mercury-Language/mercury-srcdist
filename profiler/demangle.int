@@ -1,0 +1,4 @@
+:- module demangle.
+:- interface.
+:- pred demangle(string, string).
+:- mode demangle((builtin.in), (builtin.out)) is det.
