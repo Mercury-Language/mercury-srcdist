@@ -1,0 +1,11 @@
+:- module array2d.
+:- interface.
+:- import_module array.
+:- import_module list.
+:- type array2d(T).
+:- type array2d(T)
+    --->    array2d(int, int, array.array(T)).
+:- inst (array2d) for array2d.array2d/1 == bound(array2d(ground, ground, (array.array))).
+:- mode (array2d_di) == builtin.di((array2d.array2d)).
+:- mode (array2d_ui) == builtin.in((array2d.array2d)).
+:- mode (array2d_uo) == builtin.out((array2d.array2d)).
