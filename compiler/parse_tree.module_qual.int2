@@ -1,0 +1,35 @@
+:- module (parse_tree.module_qual).
+:- interface.
+:- import_module libs.
+:- import_module list.
+:- import_module maybe.
+:- import_module mdbcomp.
+:- import_module recompilation.
+:- import_module (libs.globals).
+:- import_module (mdbcomp.sym_name).
+:- import_module (parse_tree.error_util).
+:- import_module (parse_tree.prog_data).
+:- import_module (parse_tree.prog_data_event).
+:- import_module (parse_tree.prog_item).
+:- type maybe_found_undef_inst
+    --->    did_not_find_undef_inst 
+    ;       found_undef_inst .
+:- type maybe_found_undef_mode
+    --->    did_not_find_undef_mode 
+    ;       found_undef_mode .
+:- type maybe_found_undef_type
+    --->    did_not_find_undef_type 
+    ;       found_undef_type .
+:- type maybe_found_undef_typeclass
+    --->    did_not_find_undef_typeclass 
+    ;       found_undef_typeclass .
+:- type mq_in_interface
+    --->    mq_not_used_in_interface 
+    ;       mq_used_in_interface .
+:- type mq_info.
+:- type partial_qualifier_info.
+:- implementation.
+:- include_module ((parse_tree.module_qual).collect_mq_info).
+:- include_module ((parse_tree.module_qual).id_set).
+:- include_module ((parse_tree.module_qual).qual_errors).
+:- include_module ((parse_tree.module_qual).qualify_items).

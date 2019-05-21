@@ -1,0 +1,123 @@
+/*
+** Automatically generated from `prog_rep.m'
+** by the Mercury compiler,
+** version rotd-2017-08-31
+** configured for x86_64-apple-darwin13.4.0.
+** Do not edit.
+**
+** The autoconfigured grade settings governing
+** the generation of this C file were
+**
+** TAG_BITS=2
+** UNBOXED_FLOAT=no
+** PREGENERATED_DIST=yes
+** HIGHLEVEL_CODE=yes
+**
+** END_OF_C_GRADE_INFO
+*/
+
+
+/* :- module ll_backend.prog_rep. */
+/* :- interface. */
+
+#ifndef MR_HEADER_GUARD_ll_backend__prog_rep
+#define MR_HEADER_GUARD_ll_backend__prog_rep
+
+#ifdef __cplusplus
+extern "C" {
+#endif
+
+#include "mercury.h"
+
+
+#ifndef LL_BACKEND__PROG_REP_DECL_GUARD
+#define LL_BACKEND__PROG_REP_DECL_GUARD
+#include "ll_backend.mih"
+
+#endif
+
+
+
+
+extern const MR_TypeCtorInfo_Struct ll_backend__prog_rep__ll_backend__prog_rep__type_ctor_info_flatten_par_conjs_0;
+
+extern const MR_TypeCtorInfo_Struct ll_backend__prog_rep__ll_backend__prog_rep__type_ctor_info_prog_rep_info_0;
+
+extern const MR_TypeCtorInfo_Struct ll_backend__prog_rep__ll_backend__prog_rep__type_ctor_info_var_num_map_0;
+
+void MR_CALL 
+ll_backend__prog_rep__encode_oisu_type_procs_4_p_0(
+  MR_Word param_1,
+  MR_Word param_2,
+  MR_Integer * param_3,
+  MR_Word * param_4);
+
+void MR_CALL 
+ll_backend__prog_rep__goal_to_goal_rep_4_p_0(
+  MR_Word param_1,
+  MR_Word param_2,
+  MR_Word param_3,
+  MR_Word * param_4);
+
+void MR_CALL 
+ll_backend__prog_rep__represent_proc_as_bytecodes_14_p_0(
+  MR_Word param_1,
+  MR_Word param_2,
+  MR_Word param_3,
+  MR_Word param_4,
+  MR_Word param_5,
+  MR_Word param_6,
+  MR_Word param_7,
+  MR_Word param_8,
+  MR_Word param_9,
+  MR_Word param_10,
+  MR_Word * param_11,
+  MR_Word param_12,
+  MR_Word * param_13,
+  MR_Word * param_14);
+
+void MR_CALL 
+ll_backend__prog_rep____Compare____flatten_par_conjs_0_0(
+  MR_Word * param_1,
+  MR_Word param_2,
+  MR_Word param_3);
+
+void MR_CALL 
+ll_backend__prog_rep____Compare____prog_rep_info_0_0(
+  MR_Word * param_1,
+  MR_Word param_2,
+  MR_Word param_3);
+
+void MR_CALL 
+ll_backend__prog_rep____Compare____var_num_map_0_0(
+  MR_Word * param_1,
+  MR_Word param_2,
+  MR_Word param_3);
+
+MR_bool MR_CALL 
+ll_backend__prog_rep____Unify____flatten_par_conjs_0_0(
+  MR_Word param_1,
+  MR_Word param_2);
+
+MR_bool MR_CALL 
+ll_backend__prog_rep____Unify____prog_rep_info_0_0(
+  MR_Word param_1,
+  MR_Word param_2);
+
+MR_bool MR_CALL 
+ll_backend__prog_rep____Unify____var_num_map_0_0(
+  MR_Word param_1,
+  MR_Word param_2);
+
+void mercury__ll_backend__prog_rep__init(void);
+void mercury__ll_backend__prog_rep__init_type_tables(void);
+void mercury__ll_backend__prog_rep__init_debugger(void);
+const char *mercury__ll_backend__prog_rep__grade_check(void);
+
+#ifdef __cplusplus
+}
+#endif
+
+#endif /* MR_HEADER_GUARD_ll_backend.prog_rep */
+
+/* :- end_interface ll_backend.prog_rep. */
