@@ -1,0 +1,13 @@
+module(1, "erlang_rtti_implementation.m",
+	erlang_rtti_implementation,
+	{},
+	{builtin, construct, deconstruct, list, private_builtin, type_desc, univ},
+	{array, builtin, char, construct, deconstruct, int, list, maybe, private_builtin, require, string, term_io, type_desc, univ},
+	{},
+	{},
+	{},
+	{},
+	{"Erlang" - erlang_rtti_implementation},
+	no_foreign_export,
+	no_main
+).

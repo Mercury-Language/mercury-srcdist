@@ -1,0 +1,19 @@
+:- module (hlds.hlds_inst_mode).
+:- interface.
+:- type any_inst_table.
+:- type ground_inst_table.
+:- type hlds_inst_body.
+:- type hlds_inst_defn.
+:- type hlds_mode_body.
+:- type hlds_mode_defn.
+:- type inst_for_type_ctor.
+:- type inst_table.
+:- type maybe_inst.
+:- type maybe_inst_det.
+:- type merge_inst_table.
+:- type mode_defns.
+:- type mode_table.
+:- type mostly_uniq_inst_table.
+:- type shared_inst_table.
+:- type unify_inst_table.
+:- type user_inst_table.
