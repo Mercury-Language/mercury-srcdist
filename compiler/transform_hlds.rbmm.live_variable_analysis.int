@@ -1,0 +1,7 @@
+:- module ((transform_hlds.rbmm).live_variable_analysis).
+:- interface.
+:- import_module hlds.
+:- import_module (hlds.hlds_module).
+:- import_module ((transform_hlds.rbmm).region_liveness_info).
+:- pred live_variable_analysis(hlds.hlds_module.module_info, transform_hlds.rbmm.region_liveness_info.execution_path_table, transform_hlds.rbmm.region_liveness_info.proc_pp_varset_table, transform_hlds.rbmm.region_liveness_info.proc_pp_varset_table, transform_hlds.rbmm.region_liveness_info.proc_pp_varset_table).
+:- mode live_variable_analysis((builtin.in), (builtin.in), (builtin.out), (builtin.out), (builtin.out)) is det.

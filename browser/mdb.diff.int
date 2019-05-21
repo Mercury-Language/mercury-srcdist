@@ -1,0 +1,6 @@
+:- module (mdb.diff).
+:- interface.
+:- import_module io.
+:- import_module univ.
+:- pred report_diffs(int, int, univ.univ, univ.univ, io.io, io.io).
+:- mode report_diffs((builtin.in), (builtin.in), (builtin.in), (builtin.in), (builtin.di), (builtin.uo)) is cc_multi.
