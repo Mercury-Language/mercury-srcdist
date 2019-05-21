@@ -1,0 +1,93 @@
+:- module bt_array.
+
+:- pragma termination_info(bt_array.actual_position((builtin.in), (builtin.in), (builtin.in), (builtin.out)), finite(0, [no, no, no, no]), cannot_loop).
+:- pragma termination_info(bt_array.add_elements((builtin.in), (builtin.in), (builtin.in), (builtin.out)), infinite, can_loop).
+:- pragma termination_info(bt_array.bounds((builtin.in), (builtin.out), (builtin.out)), finite(-3, [no, yes, no, no]), cannot_loop).
+:- pragma termination_info(bt_array.bsearch((builtin.in), (builtin.in), builtin.in((builtin.comparison_pred)), (builtin.out)), infinite, can_loop).
+:- pragma termination_info(bt_array.bsearch_loop((builtin.in), (builtin.in), (builtin.in), (builtin.in), builtin.in((pred((builtin.in), (builtin.in), (builtin.out)) is det)), (builtin.out)), infinite, can_loop).
+:- pragma termination_info(bt_array.elem((builtin.in), (builtin.in)) = (builtin.out), finite(-7, [no, no, yes, no]), cannot_loop).
+:- pragma termination_info(bt_array.'elem :='((builtin.in), (builtin.in), (builtin.in)) = (builtin.out), finite(1, [no, no, yes, yes, no]), cannot_loop).
+:- pragma termination_info(bt_array.fetch_items((builtin.in), (builtin.in), (builtin.in), (builtin.out)), infinite, can_loop).
+:- pragma termination_info(bt_array.fetch_items((builtin.in), (builtin.in), (builtin.in)) = (builtin.out), infinite, can_loop).
+:- pragma termination_info(bt_array.from_list((builtin.in), (builtin.in), (builtin.out)), infinite, can_loop).
+:- pragma termination_info(bt_array.from_list((builtin.in), (builtin.in)) = (builtin.out), infinite, can_loop).
+:- pragma termination_info(bt_array.in_bounds((builtin.in), (builtin.in)), finite(0, [no, no, no]), cannot_loop).
+:- pragma termination_info(bt_array.init((builtin.in), (builtin.in), (builtin.in), (builtin.out)), infinite, can_loop).
+:- pragma termination_info(bt_array.init((builtin.in), (builtin.in), (builtin.in)) = (builtin.out), infinite, can_loop).
+:- pragma termination_info(bt_array.lookup((builtin.in), (builtin.in), (builtin.out)), finite(-7, [no, yes, no, no]), cannot_loop).
+:- pragma termination_info(bt_array.lookup((builtin.in), (builtin.in)) = (builtin.out), finite(-7, [no, yes, no, no]), cannot_loop).
+:- pragma termination_info(bt_array.make_empty_array((builtin.in), (builtin.out)), finite(3, [no, yes, no]), cannot_loop).
+:- pragma termination_info(bt_array.make_empty_array((builtin.in)) = (builtin.out), finite(3, [no, yes, no]), cannot_loop).
+:- pragma termination_info(bt_array.max((builtin.in), (builtin.out)), finite(-3, [no, yes, no]), cannot_loop).
+:- pragma termination_info(bt_array.max((builtin.in)) = (builtin.out), finite(-3, [no, yes, no]), cannot_loop).
+:- pragma termination_info(bt_array.min((builtin.in), (builtin.out)), finite(-3, [no, yes, no]), cannot_loop).
+:- pragma termination_info(bt_array.min((builtin.in)) = (builtin.out), finite(-3, [no, yes, no]), cannot_loop).
+:- pragma termination_info(bt_array.ra_list_bintree_lookup((builtin.in), (builtin.in), (builtin.in), (builtin.out)), finite(-1, [no, no, yes, no, no]), cannot_loop).
+:- pragma termination_info(bt_array.ra_list_bintree_update((builtin.in), (builtin.in), (builtin.in), (builtin.in), (builtin.out)), finite(1, [no, no, yes, no, yes, no]), cannot_loop).
+:- pragma termination_info(bt_array.ra_list_cons((builtin.in), (builtin.in), (builtin.out)), finite(4, [no, yes, yes, no]), cannot_loop).
+:- pragma termination_info(bt_array.ra_list_head_tail((builtin.in), (builtin.out), (builtin.out)), infinite, cannot_loop).
+:- pragma termination_info(bt_array.ra_list_lookup((builtin.in), (builtin.in), (builtin.out)), finite(-4, [no, no, yes, no]), cannot_loop).
+:- pragma termination_info(bt_array.ra_list_lookup_2((builtin.in), (builtin.in), (builtin.out)), finite(-4, [no, no, yes, no]), cannot_loop).
+:- pragma termination_info(bt_array.ra_list_nil((builtin.uo)), finite(0, [no, no]), cannot_loop).
+:- pragma termination_info(bt_array.ra_list_update((builtin.in), (builtin.in), (builtin.in), (builtin.out)), finite(1, [no, yes, no, yes, no]), cannot_loop).
+:- pragma termination_info(bt_array.ra_list_update_2((builtin.in), (builtin.in), (builtin.in), (builtin.out)), finite(1, [no, yes, no, yes, no]), cannot_loop).
+:- pragma termination_info(bt_array.resize((builtin.in), (builtin.in), (builtin.in), (builtin.in), (builtin.out)), infinite, can_loop).
+:- pragma termination_info(bt_array.resize((builtin.in), (builtin.in), (builtin.in), (builtin.in)) = (builtin.out), infinite, can_loop).
+:- pragma termination_info(bt_array.reverse_from_ra_list((builtin.in), (builtin.in), (builtin.out)), infinite, can_loop).
+:- pragma termination_info(bt_array.reverse_into_ra_list((builtin.in), (builtin.in), (builtin.out)), infinite, can_loop).
+:- pragma termination_info(bt_array.semidet_lookup((builtin.in), (builtin.in), (builtin.out)), finite(-7, [no, yes, no, no]), cannot_loop).
+:- pragma termination_info(bt_array.semidet_set((builtin.in), (builtin.in), (builtin.in), (builtin.out)), finite(1, [no, yes, no, yes, no]), cannot_loop).
+:- pragma termination_info(bt_array.set((builtin.in), (builtin.in), (builtin.in), (builtin.out)), finite(1, [no, yes, no, yes, no]), cannot_loop).
+:- pragma termination_info(bt_array.set((builtin.in), (builtin.in), (builtin.in)) = (builtin.out), finite(1, [no, yes, no, yes, no]), cannot_loop).
+:- pragma termination_info(bt_array.shrink((builtin.in), (builtin.in), (builtin.in), (builtin.out)), infinite, can_loop).
+:- pragma termination_info(bt_array.shrink((builtin.in), (builtin.in), (builtin.in)) = (builtin.out), infinite, can_loop).
+:- pragma termination_info(bt_array.size((builtin.in), (builtin.out)), finite(0, [no, no, no]), cannot_loop).
+:- pragma termination_info(bt_array.size((builtin.in)) = (builtin.out), finite(0, [no, no, no]), cannot_loop).
+:- pragma termination_info(bt_array.to_list((builtin.in), (builtin.out)), infinite, can_loop).
+:- pragma termination_info(bt_array.to_list((builtin.in)) = (builtin.out), infinite, can_loop).
+
+:- pragma exceptions(predicate, (bt_array.actual_position), 4, 0, will_not_throw).
+:- pragma exceptions(predicate, (bt_array.add_elements), 4, 0, will_not_throw).
+:- pragma exceptions(predicate, (bt_array.bounds), 3, 0, will_not_throw).
+:- pragma exceptions(predicate, (bt_array.bsearch), 4, 0, may_throw(user_exception)).
+:- pragma exceptions(predicate, (bt_array.bsearch_loop), 6, 0, may_throw(user_exception)).
+:- pragma exceptions(function, (bt_array.elem), 3, 0, may_throw(user_exception)).
+:- pragma exceptions(function, (bt_array.'elem :='), 4, 0, may_throw(user_exception)).
+:- pragma exceptions(predicate, (bt_array.fetch_items), 4, 0, may_throw(user_exception)).
+:- pragma exceptions(function, (bt_array.fetch_items), 4, 0, may_throw(user_exception)).
+:- pragma exceptions(predicate, (bt_array.from_list), 3, 0, will_not_throw).
+:- pragma exceptions(function, (bt_array.from_list), 3, 0, will_not_throw).
+:- pragma exceptions(predicate, (bt_array.in_bounds), 2, 0, will_not_throw).
+:- pragma exceptions(predicate, (bt_array.init), 4, 0, will_not_throw).
+:- pragma exceptions(function, (bt_array.init), 4, 0, will_not_throw).
+:- pragma exceptions(predicate, (bt_array.lookup), 3, 0, may_throw(user_exception)).
+:- pragma exceptions(function, (bt_array.lookup), 3, 0, may_throw(user_exception)).
+:- pragma exceptions(predicate, (bt_array.make_empty_array), 2, 0, will_not_throw).
+:- pragma exceptions(function, (bt_array.make_empty_array), 2, 0, will_not_throw).
+:- pragma exceptions(predicate, (bt_array.max), 2, 0, will_not_throw).
+:- pragma exceptions(function, (bt_array.max), 2, 0, will_not_throw).
+:- pragma exceptions(predicate, (bt_array.min), 2, 0, will_not_throw).
+:- pragma exceptions(function, (bt_array.min), 2, 0, will_not_throw).
+:- pragma exceptions(predicate, (bt_array.ra_list_bintree_lookup), 4, 0, may_throw(user_exception)).
+:- pragma exceptions(predicate, (bt_array.ra_list_bintree_update), 5, 0, may_throw(user_exception)).
+:- pragma exceptions(predicate, (bt_array.ra_list_cons), 3, 0, will_not_throw).
+:- pragma exceptions(predicate, (bt_array.ra_list_head_tail), 3, 0, may_throw(user_exception)).
+:- pragma exceptions(predicate, (bt_array.ra_list_lookup), 3, 0, may_throw(user_exception)).
+:- pragma exceptions(predicate, (bt_array.ra_list_lookup_2), 3, 0, may_throw(user_exception)).
+:- pragma exceptions(predicate, (bt_array.ra_list_nil), 1, 0, will_not_throw).
+:- pragma exceptions(predicate, (bt_array.ra_list_update), 4, 0, may_throw(user_exception)).
+:- pragma exceptions(predicate, (bt_array.ra_list_update_2), 4, 0, may_throw(user_exception)).
+:- pragma exceptions(predicate, (bt_array.resize), 5, 0, may_throw(user_exception)).
+:- pragma exceptions(function, (bt_array.resize), 5, 0, may_throw(user_exception)).
+:- pragma exceptions(predicate, (bt_array.reverse_from_ra_list), 3, 0, may_throw(user_exception)).
+:- pragma exceptions(predicate, (bt_array.reverse_into_ra_list), 3, 0, will_not_throw).
+:- pragma exceptions(predicate, (bt_array.semidet_lookup), 3, 0, may_throw(user_exception)).
+:- pragma exceptions(predicate, (bt_array.semidet_set), 4, 0, may_throw(user_exception)).
+:- pragma exceptions(predicate, (bt_array.set), 4, 0, may_throw(user_exception)).
+:- pragma exceptions(function, (bt_array.set), 4, 0, may_throw(user_exception)).
+:- pragma exceptions(predicate, (bt_array.shrink), 4, 0, may_throw(user_exception)).
+:- pragma exceptions(function, (bt_array.shrink), 4, 0, may_throw(user_exception)).
+:- pragma exceptions(predicate, (bt_array.size), 2, 0, will_not_throw).
+:- pragma exceptions(function, (bt_array.size), 2, 0, will_not_throw).
+:- pragma exceptions(predicate, (bt_array.to_list), 2, 0, may_throw(user_exception)).
+:- pragma exceptions(function, (bt_array.to_list), 2, 0, may_throw(user_exception)).
